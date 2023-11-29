@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "paths": {
+      "@internal/searchIndex": [
+        "./plugins/plugin-search/src/client/searchIndex.d.ts"
+      ],
+      "@internal/themeData": [
+        "./plugins/plugin-theme-data/src/client/themeData.d.ts"
+      ],
+      "@theme/*": ["./themes/theme-default/src/client/components/*"]
+    },
+    "types": ["webpack-env", "vite/client"]
+  },
+  "include": [
+    "**/.vuepress/**/*",
+    "plugins/**/*",
+    "themes/**/*",
+    "vitest.config.ts"
+  ],
+  "exclude": ["node_modules", ".temp", "lib", "dist"]
+}

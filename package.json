@@ -1,0 +1,55 @@
+{
+  "name": "@vuepress/ecosystem",
+  "version": "2.0.0-rc.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm build:all && pnpm build:copy",
+    "build:all": "pnpm --parallel --stream build",
+    "build:copy": "pnpm --parallel --stream copy",
+    "build:tsc": "tsc -b tsconfig.build.json",
+    "clean": "pnpm --parallel --stream clean",
+    "format": "prettier --write .",
+    "lint": "eslint --ext .cjs,.js,.ts,.vue . && prettier --check .",
+    "lint:fix": "eslint --fix --ext .cjs,.js,.ts,.vue . && prettier --write .",
+    "prepare": "husky install",
+    "release": "pnpm release:check && pnpm release:publish",
+    "release:check": "pnpm lint && pnpm clean && pnpm build && pnpm test",
+    "release:publish": "lerna publish",
+    "test": "vitest run",
+    "test:cov": "vitest run --coverage"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown",
+    "*.{cjs,js,ts,vue}": "eslint --fix",
+    "package.json": "sort-package-json"
+  },
+  "prettier": "prettier-config-vuepress",
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@lerna-lite/cli": "^3.0.0",
+    "@lerna-lite/publish": "^3.0.0",
+    "@types/node": "^20.10.0",
+    "@types/webpack-env": "^1.18.4",
+    "@vitest/coverage-istanbul": "1.0.0-beta.6",
+    "cpx2": "^6.0.1",
+    "eslint": "^8.54.0",
+    "eslint-config-vuepress": "^4.7.0",
+    "eslint-config-vuepress-typescript": "^4.7.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.1.0",
+    "prettier": "^3.1.0",
+    "prettier-config-vuepress": "^4.4.0",
+    "rimraf": "^5.0.5",
+    "sort-package-json": "^2.6.0",
+    "tsconfig-vuepress": "^4.5.0",
+    "typescript": "^5.3.2",
+    "vite": "~5.0.3",
+    "vitest": "1.0.0-beta.6"
+  },
+  "packageManager": "pnpm@8.11.0",
+  "engines": {
+    "node": ">=18.16.0"
+  }
+}
