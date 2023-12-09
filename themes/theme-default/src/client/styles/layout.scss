@@ -126,7 +126,7 @@
 }
 
 .theme-default-content {
-  a:hover {
+  a:not(.anchor-header):hover {
     text-decoration: underline;
   }
 

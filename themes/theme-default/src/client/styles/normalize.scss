@@ -93,7 +93,8 @@ h6 {
   }
 
   &:hover .header-anchor {
-    opacity: 1;
+    color: var(--c-text-accent);
+    text-decoration: none;
   }
 }
 
@@ -125,28 +126,6 @@ h6 {
 }
 
 a {
-  &.header-anchor {
-    font-size: 0.85em;
-    float: left;
-    margin-left: -0.87em;
-    padding-right: 0.23em;
-    margin-top: 0.125em;
-    opacity: 0;
-    user-select: none;
-
-    @media print {
-      display: none;
-    }
-
-    &:hover {
-      text-decoration: none;
-    }
-
-    &:focus-visible {
-      opacity: 1;
-    }
-  }
-
   @media print {
     &[href^="http://"],
     &[href^="https://"]
