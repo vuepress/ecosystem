@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@vuepress/core": "2.0.0-rc.0",
-    "shiki": "^0.14.5"
+    "shikiji": "^0.9.11"
   },
   "publishConfig": {
     "access": "public"

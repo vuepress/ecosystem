@@ -1,26 +1,58 @@
 import type { Plugin } from '@vuepress/core'
-import { getHighlighter } from 'shiki'
-import type { HighlighterOptions } from 'shiki'
+import {
+  
+  
+  getHighlighter
+  
+  
+  
+  
+  
+} from 'shikiji'
+import type {BundledLanguage, BundledTheme, LanguageInput, SpecialLanguage, StringLiteralUnion, ThemeRegistration, ThemeRegistrationRaw} from 'shikiji';
+
+const defaultTheme = 'nord'
+
+export type ShikiPluginTheme =
+  | ThemeRegistration
+  | ThemeRegistrationRaw
+  | StringLiteralUnion<BundledTheme>
 
 /**
  * Options of @vuepress/plugin-shiki
  */
-export type ShikiPluginOptions = Pick<HighlighterOptions, 'theme' | 'langs'>
+export interface ShikiPluginOptions {
+  theme?: ShikiPluginTheme
+  lightTheme?: ShikiPluginTheme
+  darkTheme?: ShikiPluginTheme
+  langs?: (
+    | LanguageInput
+    | StringLiteralUnion<BundledLanguage>
+    | SpecialLanguage
+  )[]
+}
 
 export const shikiPlugin = ({
-  theme = 'nord',
+  theme,
+  lightTheme,
+  darkTheme,
   langs,
 }: ShikiPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-shiki',
-
   extendsMarkdown: async (md) => {
     const highlighter = await getHighlighter({
-      theme,
+      themes: [theme, lightTheme, darkTheme].filter(
+        (t) => t !== undefined,
+      ) as ShikiPluginTheme[],
       langs,
     })
     md.options.highlight = (code, lang) =>
       highlighter.codeToHtml(code, {
         lang,
+        themes: {
+          light: lightTheme ?? theme ?? defaultTheme,
+          dark: darkTheme ?? theme ?? defaultTheme,
+        },
       })
   },
 })
