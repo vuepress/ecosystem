@@ -1,15 +1,14 @@
 import type { Plugin } from '@vuepress/core'
-import {
-  
-  
-  getHighlighter
-  
-  
-  
-  
-  
+import { getHighlighter } from 'shikiji'
+import type {
+  BundledLanguage,
+  BundledTheme,
+  LanguageInput,
+  SpecialLanguage,
+  StringLiteralUnion,
+  ThemeRegistration,
+  ThemeRegistrationRaw,
 } from 'shikiji'
-import type {BundledLanguage, BundledTheme, LanguageInput, SpecialLanguage, StringLiteralUnion, ThemeRegistration, ThemeRegistrationRaw} from 'shikiji';
 
 const defaultTheme = 'nord'
 
