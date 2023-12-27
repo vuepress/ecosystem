@@ -24,8 +24,28 @@ export type ShikiTheme =
  * Options of @vuepress/plugin-shiki
  */
 export interface ShikiPluginOptions {
+  /**
+   * Languages to be loaded.
+   *
+   * Shikiji does not preload any languages to avoid extra overhead. So you need
+   * to specify the languages you want to use.
+   *
+   * @see https://shikiji.netlify.app/languages
+   */
   langs?: ShikiLang[]
+
+  /**
+   * The single theme to use
+   *
+   * @see https://shikiji.netlify.app/themes
+   */
   theme?: ShikiTheme
+
+  /**
+   * The dark and light themes to use
+   *
+   * @see https://shikiji.netlify.app/themes
+   */
   themes?: {
     dark: ShikiTheme
     light: ShikiTheme
