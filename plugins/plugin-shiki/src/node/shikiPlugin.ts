@@ -38,11 +38,13 @@ export const shikiPlugin = ({
   themes,
 }: ShikiPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-shiki',
+
   extendsMarkdown: async (md) => {
     const highlighter = await getHighlighter({
       langs,
       themes: themes ? [themes.dark, themes.light] : [theme],
     })
+
     md.options.highlight = (code, lang) =>
       highlighter.codeToHtml(code, {
         lang,
