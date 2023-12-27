@@ -10,48 +10,43 @@ import type {
   ThemeRegistrationRaw,
 } from 'shikiji'
 
-const defaultTheme = 'nord'
-
-export type ShikiPluginTheme =
+export type ShikiTheme =
   | ThemeRegistration
   | ThemeRegistrationRaw
   | StringLiteralUnion<BundledTheme>
+
+export type ShikiLang =
+  | LanguageInput
+  | StringLiteralUnion<BundledLanguage>
+  | SpecialLanguage
 
 /**
  * Options of @vuepress/plugin-shiki
  */
 export interface ShikiPluginOptions {
-  theme?: ShikiPluginTheme
-  lightTheme?: ShikiPluginTheme
-  darkTheme?: ShikiPluginTheme
-  langs?: (
-    | LanguageInput
-    | StringLiteralUnion<BundledLanguage>
-    | SpecialLanguage
-  )[]
+  langs?: ShikiLang[]
+  theme?: ShikiTheme
+  themes?: {
+    dark: ShikiTheme
+    light: ShikiTheme
+  }
 }
 
 export const shikiPlugin = ({
-  theme,
-  lightTheme,
-  darkTheme,
   langs,
+  theme = 'nord',
+  themes,
 }: ShikiPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-shiki',
   extendsMarkdown: async (md) => {
     const highlighter = await getHighlighter({
-      themes: [theme, lightTheme, darkTheme].filter(
-        (t) => t !== undefined,
-      ) as ShikiPluginTheme[],
       langs,
+      themes: themes ? [themes.dark, themes.light] : [theme],
     })
     md.options.highlight = (code, lang) =>
       highlighter.codeToHtml(code, {
         lang,
-        themes: {
-          light: lightTheme ?? theme ?? defaultTheme,
-          dark: darkTheme ?? theme ?? defaultTheme,
-        },
+        ...(themes ? { themes } : { theme }),
       })
   },
 })
