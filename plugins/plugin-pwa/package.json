@@ -39,7 +39,7 @@
     "@vuepress/utils": "2.0.0-rc.0",
     "mitt": "^3.0.1",
     "register-service-worker": "^1.7.2",
-    "vue": "^3.3.9",
+    "vue": "^3.3.13",
     "workbox-build": "^7.0.0"
   },
   "publishConfig": {
