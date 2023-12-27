@@ -10,15 +10,15 @@ import type {
   ThemeRegistrationRaw,
 } from 'shikiji'
 
-export type ShikiTheme =
-  | ThemeRegistration
-  | ThemeRegistrationRaw
-  | StringLiteralUnion<BundledTheme>
-
 export type ShikiLang =
   | LanguageInput
   | StringLiteralUnion<BundledLanguage>
   | SpecialLanguage
+
+export type ShikiTheme =
+  | ThemeRegistration
+  | ThemeRegistrationRaw
+  | StringLiteralUnion<BundledTheme>
 
 /**
  * Options of @vuepress/plugin-shiki
