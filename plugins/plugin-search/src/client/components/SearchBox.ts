@@ -108,7 +108,8 @@ export const SearchBox = defineComponent({
             value: query.value,
             onFocus: () => (isActive.value = true),
             onBlur: () => (isActive.value = false),
-            onInput: (event) => (query.value = event.target.value),
+            onInput: (event) =>
+              (query.value = (event.target as HTMLInputElement).value),
             onKeydown: (event) => {
               switch (event.key) {
                 case 'ArrowUp': {
