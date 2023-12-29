@@ -41,7 +41,7 @@
     "@vuepress/core": "2.0.0-rc.0",
     "@vuepress/utils": "2.0.0-rc.0",
     "medium-zoom": "^1.1.0",
-    "vue": "^3.3.13"
+    "vue": "^3.4.0"
   },
   "publishConfig": {
     "access": "public"
