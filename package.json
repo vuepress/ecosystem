@@ -19,7 +19,7 @@
     "test": "vitest run",
     "test:cov": "vitest run --coverage"
   },
-  "lint-staged": {
+  "nano-staged": {
     "**/*": "prettier --write --ignore-unknown",
     "*.{cjs,js,ts,vue}": "eslint --fix",
     "package.json": "sort-package-json"
@@ -38,7 +38,7 @@
     "eslint-config-vuepress": "^4.10.0",
     "eslint-config-vuepress-typescript": "^4.10.0",
     "husky": "^8.0.3",
-    "lint-staged": "^15.2.0",
+    "nano-staged": "^0.8.0",
     "prettier": "^3.1.1",
     "prettier-config-vuepress": "^4.4.0",
     "rimraf": "^5.0.5",
