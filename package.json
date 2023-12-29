@@ -32,11 +32,11 @@
     "@lerna-lite/publish": "^3.1.0",
     "@types/node": "^20.10.5",
     "@types/webpack-env": "^1.18.4",
-    "@vitest/coverage-istanbul": "1.0.0-beta.6",
+    "@vitest/coverage-istanbul": "1.1.0",
     "cpx2": "^7.0.0",
     "eslint": "^8.56.0",
-    "eslint-config-vuepress": "^4.9.0",
-    "eslint-config-vuepress-typescript": "^4.9.0",
+    "eslint-config-vuepress": "^4.10.0",
+    "eslint-config-vuepress-typescript": "^4.10.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "prettier": "^3.1.1",
@@ -46,7 +46,7 @@
     "tsconfig-vuepress": "^4.5.0",
     "typescript": "^5.3.3",
     "vite": "~5.0.10",
-    "vitest": "1.0.0-beta.6"
+    "vitest": "1.1.0"
   },
   "packageManager": "pnpm@8.13.1",
   "engines": {
