@@ -4,6 +4,7 @@
     "composite": true
   },
   "references": [
+    { "path": "./create/tsconfig.build.json" },
     {
       "path": "./plugins/plugin-active-header-links/tsconfig.build.json"
     },
