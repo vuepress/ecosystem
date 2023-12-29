@@ -1,4 +1,4 @@
-import { isArray } from '@vuepress/shared'
+import { isArray } from 'vuepress/shared'
 import type { DocsearchOptions } from '../../shared/index.js'
 
 type FacetFilters =

@@ -1,5 +1,5 @@
-import { defineClientConfig } from '@vuepress/client'
 import { defineComponent, h } from 'vue'
+import { defineClientConfig } from 'vuepress/client'
 import { PwaPopup } from './components/index.js'
 import type { PwaPopupLocales } from './components/index.js'
 

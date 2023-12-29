@@ -1,5 +1,5 @@
-import { defineClientConfig } from '@vuepress/client'
 import { h } from 'vue'
+import { defineClientConfig } from 'vuepress/client'
 import type { ExternalLinkIconLocales } from '../shared/index.js'
 import { ExternalLinkIcon } from './components/index.js'
 
