@@ -72,22 +72,6 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0(@types/node@20.10.5)
 
-  create:
-    dependencies:
-      cac:
-        specifier: ^6.7.14
-        version: 6.7.14
-      execa:
-        specifier: ^8.0.1
-        version: 8.0.1
-      inquirer:
-        specifier: ^9.2.12
-        version: 9.2.12
-    devDependencies:
-      '@types/inquirer':
-        specifier: 9.0.7
-        version: 9.0.7
-
   plugins/plugin-active-header-links:
     dependencies:
       '@vuepress/client':
@@ -481,6 +465,22 @@ importers:
       vue-router:
         specifier: ^4.2.5
         version: 4.2.5(vue@3.4.0)
+
+  tools/create-vuepress:
+    dependencies:
+      cac:
+        specifier: ^6.7.14
+        version: 6.7.14
+      execa:
+        specifier: ^8.0.1
+        version: 8.0.1
+      inquirer:
+        specifier: ^9.2.12
+        version: 9.2.12
+    devDependencies:
+      '@types/inquirer':
+        specifier: 9.0.7
+        version: 9.0.7
 
 packages:
 

@@ -16,9 +16,9 @@
   },
   "include": [
     "**/.vuepress/**/*",
-    "create/**/*",
     "plugins/**/*",
     "themes/**/*",
+    "tools/**/*",
     "vitest.config.ts"
   ],
   "exclude": ["node_modules", ".temp", "lib", "dist"]

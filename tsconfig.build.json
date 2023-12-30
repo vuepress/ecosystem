@@ -4,7 +4,6 @@
     "composite": true
   },
   "references": [
-    { "path": "./create/tsconfig.build.json" },
     {
       "path": "./plugins/plugin-active-header-links/tsconfig.build.json"
     },
@@ -35,7 +34,8 @@
     { "path": "./plugins/plugin-shiki/tsconfig.build.json" },
     { "path": "./plugins/plugin-theme-data/tsconfig.build.json" },
     { "path": "./plugins/plugin-toc/tsconfig.build.json" },
-    { "path": "./themes/theme-default/tsconfig.build.json" }
+    { "path": "./themes/theme-default/tsconfig.build.json" },
+    { "path": "./tools/create-vuepress/tsconfig.build.json" }
   ],
   "files": []
 }
