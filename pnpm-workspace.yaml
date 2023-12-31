@@ -1,3 +1,4 @@
 packages:
   - plugins/*
   - themes/*
+  - tools/*
