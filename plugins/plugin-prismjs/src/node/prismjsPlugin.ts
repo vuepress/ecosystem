@@ -1,4 +1,4 @@
-import type { Plugin } from '@vuepress/core'
+import type { Plugin } from 'vuepress/core'
 import { loadLanguages } from './loadLanguages.js'
 import { resolveHighlighter } from './resolveHighlighter.js'
 

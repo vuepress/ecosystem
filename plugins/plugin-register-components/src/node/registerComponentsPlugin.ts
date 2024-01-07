@@ -1,6 +1,6 @@
-import type { Plugin } from '@vuepress/core'
-import { hash, path } from '@vuepress/utils'
 import chokidar from 'chokidar'
+import type { Plugin } from 'vuepress/core'
+import { hash, path } from 'vuepress/utils'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 
 /**

@@ -1,6 +1,6 @@
-import type { Plugin } from '@vuepress/core'
-import type { MarkdownEnv } from '@vuepress/markdown'
-import { getDirname, path } from '@vuepress/utils'
+import type { Plugin } from 'vuepress/core'
+import type { MarkdownEnv } from 'vuepress/markdown'
+import { getDirname, path } from 'vuepress/utils'
 import type { ExternalLinkIconLocales } from '../shared/index.js'
 
 const __dirname = getDirname(import.meta.url)

@@ -1,7 +1,7 @@
-import type { Page, Plugin } from '@vuepress/core'
-import type { LocaleConfig } from '@vuepress/shared'
-import { getDirname, path } from '@vuepress/utils'
 import chokidar from 'chokidar'
+import type { Page, Plugin } from 'vuepress/core'
+import type { LocaleConfig } from 'vuepress/shared'
+import { getDirname, path } from 'vuepress/utils'
 import type { HotKeyOptions } from '../shared/index.js'
 import { prepareSearchIndex } from './prepareSearchIndex.js'
 

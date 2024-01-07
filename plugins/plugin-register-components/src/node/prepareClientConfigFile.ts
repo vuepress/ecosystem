@@ -1,4 +1,4 @@
-import type { App } from '@vuepress/core'
+import type { App } from 'vuepress/core'
 import { getComponentsFromDir } from './getComponentsFromDir.js'
 import type { RegisterComponentsPluginOptions } from './registerComponentsPlugin.js'
 

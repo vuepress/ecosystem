@@ -7,7 +7,7 @@
     "paths": {
       "@theme/*": ["./src/client/components/*"]
     },
-    "types": ["@vuepress/client/types"]
+    "types": ["vuepress/client-types"]
   },
   "include": ["./src"],
   "references": [

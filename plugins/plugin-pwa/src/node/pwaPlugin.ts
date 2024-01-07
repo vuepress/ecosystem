@@ -1,5 +1,5 @@
-import type { Plugin, PluginObject } from '@vuepress/core'
-import { getDirname, path, withSpinner } from '@vuepress/utils'
+import type { Plugin, PluginObject } from 'vuepress/core'
+import { getDirname, path, withSpinner } from 'vuepress/utils'
 import { generateServiceWorker } from './generateServiceWorker.js'
 import type { GenerateSWConfig } from './generateServiceWorker.js'
 

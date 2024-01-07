@@ -1,6 +1,6 @@
-import { useRouteLocale } from '@vuepress/client'
 import { computed, defineComponent, h } from 'vue'
 import type { PropType } from 'vue'
+import { useRouteLocale } from 'vuepress/client'
 import type { ExternalLinkIconLocales } from '../../shared/index.js'
 
 import '../styles/vars.css'

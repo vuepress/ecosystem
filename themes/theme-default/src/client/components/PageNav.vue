@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import AutoLink from '@theme/AutoLink.vue'
-import { usePageFrontmatter } from '@vuepress/client'
-import { isPlainObject, isString } from '@vuepress/shared'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { usePageFrontmatter } from 'vuepress/client'
+import { isPlainObject, isString } from 'vuepress/shared'
 import type {
   DefaultThemeNormalPageFrontmatter,
   NavLink,

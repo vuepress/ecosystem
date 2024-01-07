@@ -1,6 +1,6 @@
-import type { Plugin, PluginObject } from '@vuepress/core'
-import type { LocaleConfig } from '@vuepress/shared'
-import { getDirname, path } from '@vuepress/utils'
+import type { Plugin, PluginObject } from 'vuepress/core'
+import type { LocaleConfig } from 'vuepress/shared'
+import { getDirname, path } from 'vuepress/utils'
 
 const __dirname = getDirname(import.meta.url)
 

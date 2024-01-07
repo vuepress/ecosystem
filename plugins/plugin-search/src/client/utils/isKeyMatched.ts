@@ -1,4 +1,4 @@
-import { isString } from '@vuepress/shared'
+import { isString } from 'vuepress/shared'
 import type { HotKeyOptions } from '../../shared/index.js'
 
 export const isKeyMatched = (

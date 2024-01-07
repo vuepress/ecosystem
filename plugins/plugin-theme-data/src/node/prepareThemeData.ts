@@ -1,4 +1,4 @@
-import type { App } from '@vuepress/core'
+import type { App } from 'vuepress/core'
 import type { ThemeData } from '../shared/index.js'
 
 const HMR_CODE = `

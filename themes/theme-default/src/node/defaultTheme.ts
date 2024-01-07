@@ -1,4 +1,3 @@
-import type { Page, Theme } from '@vuepress/core'
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
 import { containerPlugin } from '@vuepress/plugin-container'
@@ -9,7 +8,8 @@ import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { palettePlugin } from '@vuepress/plugin-palette'
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
-import { fs, getDirname, path } from '@vuepress/utils'
+import type { Page, Theme } from 'vuepress/core'
+import { fs, getDirname, path } from 'vuepress/utils'
 import type {
   DefaultThemeLocaleOptions,
   DefaultThemePageData,

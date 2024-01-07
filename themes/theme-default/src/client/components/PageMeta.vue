@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import AutoLink from '@theme/AutoLink.vue'
-import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
+import { usePageData, usePageFrontmatter } from 'vuepress/client'
 import type {
   DefaultThemeNormalPageFrontmatter,
   DefaultThemePageData,

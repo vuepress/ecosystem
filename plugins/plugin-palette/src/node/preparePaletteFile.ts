@@ -1,5 +1,5 @@
-import type { App } from '@vuepress/core'
-import { fs } from '@vuepress/utils'
+import type { App } from 'vuepress/core'
+import { fs } from 'vuepress/utils'
 import type { PalettePluginOptions } from './palettePlugin.js'
 
 export const preparePaletteFile = async (

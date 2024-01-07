@@ -1,5 +1,5 @@
-import type { Plugin } from '@vuepress/core'
 import chokidar from 'chokidar'
+import type { Plugin } from 'vuepress/core'
 import { preparePaletteFile } from './preparePaletteFile.js'
 import { prepareStyleFile } from './prepareStyleFile.js'
 import { presetOptions } from './presetOptions.js'
