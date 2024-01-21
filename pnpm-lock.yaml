@@ -41,6 +41,9 @@ importers:
       eslint-config-vuepress-typescript:
         specifier: ^4.10.0
         version: 4.10.0(eslint-plugin-import@2.29.1)(eslint-plugin-n@16.5.0)(eslint-plugin-promise@6.1.1)(eslint@8.56.0)(typescript@5.3.3)
+      eslint-plugin-cypress:
+        specifier: ^2.15.1
+        version: 2.15.1(eslint@8.56.0)
       husky:
         specifier: ^8.0.3
         version: 8.0.3
@@ -5785,6 +5788,15 @@ packages:
       eslint-import-resolver-node: 0.3.9
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /eslint-plugin-cypress@2.15.1(eslint@8.56.0):
+    resolution: {integrity: sha512-eLHLWP5Q+I4j2AWepYq0PgFEei9/s5LvjuSqWrxurkg1YZ8ltxdvMNmdSf0drnsNo57CTgYY/NIHHLRSWejR7w==}
+    peerDependencies:
+      eslint: '>= 3.2.1'
+    dependencies:
+      eslint: 8.56.0
+      globals: 13.24.0
     dev: true
 
   /eslint-plugin-es-x@7.5.0(eslint@8.56.0):
