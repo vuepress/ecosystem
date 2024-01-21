@@ -43,7 +43,8 @@ export type SidebarGroup = SidebarItem &
     collapsible?: boolean
   }
 export type SidebarConfigArray = (SidebarItem | SidebarGroup | string)[]
-export type SidebarConfigObject = Record<string, SidebarConfigArray>
+export type SidebarConfigObjectItem = SidebarConfigArray | 'auto'
+export type SidebarConfigObject = Record<string, SidebarConfigObjectItem>
 export type SidebarConfig = SidebarConfigArray | SidebarConfigObject
 // resolved
 export type ResolvedSidebarItem = SidebarItem &

@@ -15,6 +15,7 @@ import type {
   ResolvedSidebarItem,
   SidebarConfigArray,
   SidebarConfigObject,
+  SidebarConfigObjectItem,
   SidebarItem,
 } from '../../shared/index.js'
 import { useNavLink } from './useNavLink.js'
@@ -66,7 +67,7 @@ export const resolveSidebarItems = (
     return []
   }
 
-  if (sidebarConfig === 'auto') {
+  if (isAutoSidebar(sidebarConfig)) {
     return resolveAutoSidebarItems(sidebarDepth)
   }
 
@@ -175,5 +176,20 @@ export const resolveMultiSidebarItems = (
   const sidebarPath = resolveLocalePath(sidebarConfig, route.path)
   const matchedSidebarConfig = sidebarConfig[sidebarPath] ?? []
 
-  return resolveArraySidebarItems(matchedSidebarConfig, sidebarDepth)
+  if (isAutoSidebar(matchedSidebarConfig)) {
+    return resolveAutoSidebarItems(sidebarDepth)
+  }
+  return resolveArraySidebarItems(
+    matchedSidebarConfig as SidebarConfigArray,
+    sidebarDepth,
+  )
+}
+
+/**
+ * Check if the sidebar config is `auto`
+ */
+export const isAutoSidebar = (
+  config: SidebarConfigObject | SidebarConfigObjectItem,
+): boolean => {
+  return config === 'auto'
 }

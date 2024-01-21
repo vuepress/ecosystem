@@ -23,6 +23,10 @@ export default defineConfig({
         find: new RegExp(`^@vuepress/(${themePackages.join('|')})$`),
         replacement: path.resolve(root, './themes/$1/src/index.ts'),
       },
+      {
+        find: new RegExp(`^@vuepress/(${themePackages.join('|')}/client)$`),
+        replacement: path.resolve(root, './themes/$1/src/client/index.ts'),
+      },
     ],
   },
   test: {

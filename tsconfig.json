@@ -18,7 +18,8 @@
     "**/.vuepress/**/*",
     "plugins/**/*",
     "themes/**/*",
-    "vitest.config.ts"
+    "vitest.config.ts",
+    "e2e/**/*"
   ],
   "exclude": ["node_modules", ".temp", "lib", "dist"]
 }
