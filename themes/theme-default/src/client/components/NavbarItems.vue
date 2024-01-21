@@ -176,7 +176,11 @@ useUpdateDeviceStatus(
 </script>
 
 <template>
-  <nav v-if="navbarLinks.length" class="navbar-items">
+  <nav
+    v-if="navbarLinks.length"
+    class="navbar-items"
+    aria-label="site navigation"
+  >
     <div v-for="item in navbarLinks" :key="item.text" class="navbar-item">
       <NavbarDropdown
         v-if="item.children"

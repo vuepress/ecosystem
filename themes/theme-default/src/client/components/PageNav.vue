@@ -89,7 +89,11 @@ const nextNavLink = computed(() => {
 </script>
 
 <template>
-  <nav v-if="prevNavLink || nextNavLink" class="page-nav">
+  <nav
+    v-if="prevNavLink || nextNavLink"
+    class="page-nav"
+    aria-label="page navigation"
+  >
     <p class="inner">
       <span v-if="prevNavLink" class="prev">
         <AutoLink :item="prevNavLink" />
