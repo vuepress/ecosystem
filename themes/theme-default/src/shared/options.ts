@@ -99,6 +99,14 @@ export interface DefaultThemeLocaleData extends LocaleData {
   logoDark?: null | string
 
   /**
+   * The alt text of navbar logo.
+   * Defaults to the site title if not specified.
+   * If the value is the same as the site title and the site title is displayed (i.e not mobile)
+   * the alt attribute will still be rendered but with an empty value to not be read twice by screen readers.
+   */
+  logoAlt?: null | string
+
+  /**
    * Navbar repository config
    *
    * Used for the repository link of navbar
