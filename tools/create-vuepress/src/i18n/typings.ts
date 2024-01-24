@@ -19,6 +19,7 @@ export interface CreateLocaleOptions {
     description: string
     license: string
     workflow: string
+    bundler: string
     preset: string
     devServer: string
   }
@@ -32,6 +33,7 @@ export interface CreateLocaleOptions {
   error: {
     name: string
     version: string
+    bundler: string
     preset: string
     theme: string
     dirMissing: (packageManager: PackageManager) => string

@@ -9,6 +9,14 @@ const PACKAGE_NAME_REG =
 
 const VERSION_REG = /^[0-9]+\.[0-9]+\.(?:[0-9]+|[0-9]+-[a-z]+\.[0-9])$/u
 
+interface CreatePackageJsonOptions {
+  targetDir: string
+  packageManager: PackageManager
+  locale: CreateLocaleOptions
+  preset: 'blog' | 'docs'
+  bundler: 'vite' | 'webpack'
+}
+
 interface PackageJsonAnswer {
   name: string
   version: string
@@ -19,16 +27,18 @@ interface PackageJsonAnswer {
 /**
  * generate package.json
  */
-export const createPackageJson = async (
-  targetDir: string,
-  packageManager: PackageManager,
-  locale: CreateLocaleOptions,
-  preset: 'blog' | 'docs',
-): Promise<void> => {
+export const createPackageJson = async ({
+  targetDir,
+  packageManager,
+  locale,
+  preset,
+  bundler,
+}: CreatePackageJsonOptions): Promise<void> => {
   const packageJsonPath = join(targetDir, 'package.json')
   // TODO: Update it
   const devDependencies = {
     '@vuepress/client': '^2.0.0-rc.0',
+    [`@vuepress/bundler-${bundler}`]: '^2.0.0-rc.0',
     '@vuepress/theme-default': '^2.0.0-rc.0',
     'vue': '^3.4.0',
     'vuepress': '^2.0.0-rc.0',

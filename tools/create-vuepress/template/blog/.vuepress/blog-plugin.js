@@ -13,28 +13,30 @@ const generateCategory = async (app, name) => {
     const value = page.frontmatter[name]
 
     await (Array.isArray(value) ? value : [value]).map(async (item) => {
-      if (item && !map[item]) {
-        const itemPath = `/${name}/${slugify(item)}/`
+      if (item) {
+        if (!map[item]) {
+          const itemPath = `/${name}/${slugify(item)}/`
 
-        map[item] = {
-          path: itemPath,
-          keys: [],
+          map[item] = {
+            path: itemPath,
+            keys: [],
+          }
+
+          app.pages.push(
+            await createPage(app, {
+              path: itemPath,
+              frontmatter: {
+                title: `${name} > ${item}`,
+                key: item,
+                layout: name[0].toUpperCase() + name.slice(1),
+                sidebar: false,
+              },
+            }),
+          )
         }
 
-        app.pages.push(
-          await createPage(app, {
-            path: itemPath,
-            frontmatter: {
-              title: `${name} > ${item}`,
-              key: item,
-              layout: name,
-              sidebar: false,
-            },
-          }),
-        )
+        map[item].keys.push(page.key)
       }
-
-      map[item].keys.push(page.key)
     })
   })
 
@@ -43,7 +45,7 @@ const generateCategory = async (app, name) => {
       path: `/${name}/`,
       frontmatter: {
         title: name,
-        layout: name,
+        layout: name[0].toUpperCase() + name.slice(1),
         sidebar: false,
       },
     }),
@@ -67,7 +69,7 @@ const generateType = async (
       path: `/${name}/`,
       frontmatter: {
         title: name,
-        layout: name,
+        layout: name[0].toUpperCase() + name.slice(1),
         sidebar: false,
       },
     }),

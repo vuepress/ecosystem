@@ -14,6 +14,7 @@ export const en: CreateLocaleOptions = {
   question: {
     i18n: 'Does the project need multiple languages?',
     workflow: 'Do you need a GitHub workflow to deploy docs on GitHub pages?',
+    bundler: 'Which bundler do you want to use?',
     preset: 'What type of project do you want to create?',
     packageManager: 'Choose package manager',
     devServer: 'Would you like to preview template now?',
@@ -34,6 +35,7 @@ export const en: CreateLocaleOptions = {
   error: {
     name: 'package name should only contain lowercase characters, numbers and dash',
     version: "This version is not a valid one. Version should be like 'x.x.x'",
+    bundler: 'bundler (--bundler) only support "vite" or "webpack"',
     preset: 'preset (--preset) only support "doc" or "blog"',
     theme:
       'Current theme is not supported yet, using @vuepress/theme-default instead.',

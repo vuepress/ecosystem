@@ -14,13 +14,18 @@ import {
 } from './utils/index.js'
 
 interface CreateOptions {
+  bundler?: 'vite' | 'webpack' | null
   preset?: 'docs' | 'blog' | null
   theme?: string
 }
 
 export const mainAction = async (
   targetDir: string,
-  { preset = null, theme = '@vuepress/theme-default' }: CreateOptions,
+  {
+    bundler = null,
+    preset = null,
+    theme = '@vuepress/theme-default',
+  }: CreateOptions,
 ): Promise<void> => {
   // get language
   const { lang, locale } = await getLanguage()
@@ -42,6 +47,10 @@ export const mainAction = async (
 
   if (theme !== '@vuepress/theme-default') console.warn(locale.error.theme)
 
+  // check bundler
+  if (bundler && !['vite', 'webpack'].includes(bundler))
+    return console.log(locale.error.bundler)
+
   // check presets
   if (preset && !['docs', 'blog'].includes(preset))
     return console.log(locale.error.preset)
@@ -58,10 +67,20 @@ export const mainAction = async (
 
   ensureDirExistSync(targetDirPath)
 
-  /*
-   * Generate template
-   */
+  // complete bundler
+  if (!bundler)
+    bundler = (
+      await inquirer.prompt<{ bundler: 'vite' | 'webpack' }>([
+        {
+          name: 'bundler',
+          type: 'list',
+          message: locale.question.bundler,
+          choices: ['vite', 'webpack'],
+        },
+      ])
+    ).bundler
 
+  // complete preset
   if (!preset)
     preset = (
       await inquirer.prompt<{ preset: 'blog' | 'docs' }>([
@@ -74,8 +93,25 @@ export const mainAction = async (
       ])
     ).preset
 
-  await createPackageJson(targetDir, packageManager, locale, preset)
-  await generateTemplate(targetDir, packageManager, lang, locale, preset)
+  /*
+   * Generate template
+   */
+
+  await createPackageJson({
+    targetDir,
+    packageManager,
+    locale,
+    preset,
+    bundler,
+  })
+  await generateTemplate({
+    targetDirPath,
+    packageManager,
+    lang,
+    locale,
+    preset,
+    bundler,
+  })
 
   /*
    * Install deps

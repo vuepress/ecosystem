@@ -1,9 +1,9 @@
 import {
-  createReadStream,
-  createWriteStream,
   mkdirSync,
   readdirSync,
+  readFileSync,
   statSync,
+  writeFileSync,
 } from 'node:fs'
 import { dirname } from 'node:path'
 
@@ -23,11 +23,7 @@ export const copyFile = (srcFile: string, targetFile: string): void => {
   const targetDir = dirname(targetFile)
 
   ensureDirExistSync(targetDir)
-
-  const rs = createReadStream(srcFile) // create read stream
-  const ws = createWriteStream(targetFile) // create write stream
-
-  rs.pipe(ws)
+  writeFileSync(targetFile, readFileSync(srcFile))
 }
 
 export const copyDir = (srcDir: string, targetDir: string): void => {

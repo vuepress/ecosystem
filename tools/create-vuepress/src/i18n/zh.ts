@@ -15,6 +15,7 @@ export const zh: CreateLocaleOptions = {
     packageManager: '选择包管理器',
     i18n: '项目需要用到多语言么?',
     workflow: '是否需要一个自动部署文档到 GitHub Pages 的工作流？',
+    bundler: '你想要使用哪个打包器？',
     preset: '你想要创建什么类型的项目？',
     devServer: '是否想要现在启动 Demo 查看?',
     name: '设置应用名称',
@@ -34,6 +35,7 @@ export const zh: CreateLocaleOptions = {
   error: {
     name: '应用名称应只包含小写字母、数字和连接线 (-)',
     version: "此版本无效，版本号应为 'x.x.x'",
+    bundler: '打包器 (--bundler) 仅支持 vite 或 webpack',
     preset: '预设 (--preset) 仅支持 doc 或 blog',
     theme: '当前主题暂不支持，将使用 @vuepress/theme-default 代替',
     dirMissing: (packageManager: PackageManager): string =>

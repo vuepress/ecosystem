@@ -1,6 +1,6 @@
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
-import { simpleBlogPlugin } from './blog-plugin'
+import { simpleBlogPlugin } from './blog-plugin.js'
 
 export default defineUserConfig({
   lang: 'en-US',

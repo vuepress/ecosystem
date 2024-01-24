@@ -1,4 +1,4 @@
-import { writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 import { createRequire } from 'node:module'
 import { dirname, join } from 'node:path'
 import inquirer from 'inquirer'
@@ -97,13 +97,23 @@ ${
           folder: src/.vuepress/dist
 `
 
-export const generateTemplate = async (
-  targetDir: string,
-  packageManager: PackageManager,
-  lang: Lang,
-  locale: CreateLocaleOptions,
-  preset: 'blog' | 'docs',
-): Promise<void> => {
+interface GenerateTemplateOptions {
+  targetDirPath: string
+  lang: Lang
+  packageManager: PackageManager
+  locale: CreateLocaleOptions
+  preset: 'blog' | 'docs'
+  bundler: 'vite' | 'webpack'
+}
+
+export const generateTemplate = async ({
+  targetDirPath,
+  packageManager,
+  lang,
+  locale,
+  preset,
+  bundler,
+}: GenerateTemplateOptions): Promise<void> => {
   const { workflow } = await inquirer.prompt<{
     workflow: boolean
   }>([
@@ -118,10 +128,25 @@ export const generateTemplate = async (
   console.log(locale.flow.generateTemplate)
 
   // copy template
-  copy(join(templateFolder, preset), join(targetDir, 'src'))
+  copy(join(templateFolder, preset), join(targetDirPath, 'src'))
+
+  const configFilePath = join(targetDirPath, 'src/.vuepress/config.js')
+
+  const content = readFileSync(configFilePath, { encoding: 'utf-8' })
+
+  writeFileSync(
+    configFilePath,
+    content
+      .replace(
+        /\n\nexport default defineUserConfig\(\{/,
+        `\nimport { ${bundler}Bundler } from '@vuepress/bundler-${bundler}'\n\nexport default defineUserConfig({`,
+      )
+      .replace(/\}\)\n$/, `\n  bundler: ${bundler}Bundler(),\n})\n`),
+    { encoding: 'utf-8' },
+  )
 
   if (workflow) {
-    const workflowDir = join(targetDir, '.github/workflows')
+    const workflowDir = join(targetDirPath, '.github/workflows')
 
     ensureDirExistSync(workflowDir)
 
