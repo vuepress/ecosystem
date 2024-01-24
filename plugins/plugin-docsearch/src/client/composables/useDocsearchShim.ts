@@ -1,7 +1,7 @@
 import type { DocSearchProps } from '@docsearch/react'
-import { resolveRoutePathFromUrl } from '@vuepress/shared'
 import { debounce } from 'ts-debounce'
 import { useRouter } from 'vue-router'
+import { resolveRoutePathFromUrl } from 'vuepress/shared'
 
 declare const __DOCSEARCH_INDEX_BASE__: string
 

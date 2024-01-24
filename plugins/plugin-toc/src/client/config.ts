@@ -1,5 +1,6 @@
-import { defineClientConfig } from '@vuepress/client'
 import { h } from 'vue'
+import { defineClientConfig } from 'vuepress/client'
+import type { ClientConfig } from 'vuepress/client'
 import type { TocPropsOptions } from '../shared/index.js'
 import { Toc } from './components/Toc.js'
 
@@ -21,4 +22,4 @@ export default defineClientConfig({
       }),
     )
   },
-})
+}) as ClientConfig

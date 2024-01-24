@@ -1,4 +1,3 @@
-import { isArray } from '@vuepress/shared'
 import type { DocsearchOptions } from '../../shared/index.js'
 
 type FacetFilters =
@@ -12,7 +11,7 @@ export const getFacetFilters = (
   lang: string,
 ): FacetFilters => [
   `lang:${lang}`,
-  ...((isArray(rawFacetFilters)
+  ...((Array.isArray(rawFacetFilters)
     ? rawFacetFilters
     : [rawFacetFilters]) as string[]),
 ]

@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import { computed, h } from 'vue'
+import type { FunctionalComponent } from 'vue'
 import {
   ClientOnly,
   useRouteLocale,
   useSiteLocaleData,
   withBase,
-} from '@vuepress/client'
-import { computed, h } from 'vue'
-import type { FunctionalComponent } from 'vue'
+} from 'vuepress/client'
 import { useDarkMode, useThemeLocaleData } from '../composables/index.js'
 
 const routeLocale = useRouteLocale()
