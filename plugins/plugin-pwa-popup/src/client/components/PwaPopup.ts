@@ -1,8 +1,8 @@
-import { useRouteLocale } from '@vuepress/client'
 import { usePwaEvent, useSkipWaiting } from '@vuepress/plugin-pwa/client'
-import type { LocaleConfig } from '@vuepress/shared'
 import type { PropType } from 'vue'
 import { computed, defineComponent, h, ref, Transition } from 'vue'
+import { useRouteLocale } from 'vuepress/client'
+import type { LocaleConfig } from 'vuepress/shared'
 
 import '../styles/vars.css'
 import '../styles/pwa-popup.css'

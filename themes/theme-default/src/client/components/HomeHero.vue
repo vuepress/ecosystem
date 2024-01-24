@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import AutoLink from '@theme/AutoLink.vue'
+import type { FunctionalComponent } from 'vue'
+import { computed, h } from 'vue'
 import {
   ClientOnly,
   usePageFrontmatter,
   useSiteLocaleData,
   withBase,
-} from '@vuepress/client'
-import { isArray } from '@vuepress/shared'
-import type { FunctionalComponent } from 'vue'
-import { computed, h } from 'vue'
+} from 'vuepress/client'
 import type { DefaultThemeHomePageFrontmatter } from '../../shared/index.js'
 import { useDarkMode } from '../composables/index.js'
 
@@ -46,7 +45,7 @@ const tagline = computed(() => {
 })
 
 const actions = computed(() => {
-  if (!isArray(frontmatter.value.actions)) {
+  if (!Array.isArray(frontmatter.value.actions)) {
     return []
   }
 

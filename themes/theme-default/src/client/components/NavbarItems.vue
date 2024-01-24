@@ -1,15 +1,11 @@
 <script setup lang="ts">
 import AutoLink from '@theme/AutoLink.vue'
 import NavbarDropdown from '@theme/NavbarDropdown.vue'
-import {
-  useRouteLocale,
-  useSiteData,
-  useSiteLocaleData,
-} from '@vuepress/client'
-import { isLinkHttp, isString } from '@vuepress/shared'
 import { computed, ref } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useRouter } from 'vue-router'
+import { useRouteLocale, useSiteData, useSiteLocaleData } from 'vuepress/client'
+import { isLinkHttp, isString } from 'vuepress/shared'
 import type {
   NavbarGroup,
   NavbarItem,

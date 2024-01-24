@@ -1,14 +1,9 @@
-import { usePageData, usePageFrontmatter } from '@vuepress/client'
-import type { PageHeader } from '@vuepress/client'
-import {
-  isArray,
-  isPlainObject,
-  isString,
-  resolveLocalePath,
-} from '@vuepress/shared'
 import { computed, inject, provide } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
 import { useRoute } from 'vue-router'
+import { usePageData, usePageFrontmatter } from 'vuepress/client'
+import type { PageHeader } from 'vuepress/client'
+import { isPlainObject, isString, resolveLocalePath } from 'vuepress/shared'
 import type {
   DefaultThemeData,
   DefaultThemeNormalPageFrontmatter,
@@ -70,7 +65,7 @@ export const resolveSidebarItems = (
     return resolveAutoSidebarItems(sidebarDepth)
   }
 
-  if (isArray(sidebarConfig)) {
+  if (Array.isArray(sidebarConfig)) {
     return resolveArraySidebarItems(sidebarConfig, sidebarDepth)
   }
 

@@ -1,5 +1,5 @@
-import type { App } from '@vuepress/core'
-import { logger } from '@vuepress/utils'
+import type { App } from 'vuepress/core'
+import { logger } from 'vuepress/utils'
 import type { GenerateSWOptions } from 'workbox-build'
 
 const assetsExtensions = [
