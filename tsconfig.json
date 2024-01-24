@@ -16,6 +16,7 @@
   },
   "include": [
     "**/.vuepress/**/*",
+    "e2e/**/*",
     "plugins/**/*",
     "themes/**/*",
     "vitest.config.ts",

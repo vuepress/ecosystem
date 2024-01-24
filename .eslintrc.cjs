@@ -21,6 +21,10 @@ module.exports = {
       },
     },
     {
+      files: ['**/e2e/**/*.cy.ts', '**/e2e/cypress/**/*.ts'],
+      extends: 'plugin:cypress/recommended',
+    },
+    {
       files: ['**/tests/**/*.ts'],
       rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
