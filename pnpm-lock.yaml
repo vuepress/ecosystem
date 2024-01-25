@@ -317,8 +317,8 @@ importers:
   plugins/plugin-shiki:
     dependencies:
       shikiji:
-        specifier: ^0.9.19
-        version: 0.9.19
+        specifier: ^0.10.0
+        version: 0.10.0
       vuepress:
         specifier: 2.0.0-rc.1
         version: 2.0.0-rc.1(@vuepress/bundler-vite@2.0.0-rc.1)(@vuepress/bundler-webpack@2.0.0-rc.1)(typescript@5.3.3)(vue@3.4.15)
@@ -9964,14 +9964,14 @@ packages:
   /shell-quote@1.8.1:
     resolution: {integrity: sha512-6j1W9l1iAs/4xYBI1SYOVZyFcCis9b4KCLQ8fgAGG07QvzaRLVVRQvAy85yNmmZSjYjg4MWh4gNvlPujU/5LpA==}
 
-  /shikiji-core@0.9.19:
-    resolution: {integrity: sha512-AFJu/vcNT21t0e6YrfadZ+9q86gvPum6iywRyt1OtIPjPFe25RQnYJyxHQPMLKCCWA992TPxmEmbNcOZCAJclw==}
+  /shikiji-core@0.10.0:
+    resolution: {integrity: sha512-imG+bvRkuNlZUi2q9tMVfegRRouTpDxMFejpfF/6J+bFX3NDKtlW9T9iIAkBYnw4pcCtSwirW0AvkwlQR4wyxg==}
     dev: false
 
-  /shikiji@0.9.19:
-    resolution: {integrity: sha512-Kw2NHWktdcdypCj1GkKpXH4o6Vxz8B8TykPlPuLHOGSV8VkhoCLcFOH4k19K4LXAQYRQmxg+0X/eM+m2sLhAkg==}
+  /shikiji@0.10.0:
+    resolution: {integrity: sha512-1dAzIOWbtM7B4Sem5BvE+CEdsebDsRA34SfCxM4qJ4PLgR73ZD92VEtNfbcoZ3xOLSqvtV0J9i4WpCgVsmQteg==}
     dependencies:
-      shikiji-core: 0.9.19
+      shikiji-core: 0.10.0
     dev: false
 
   /side-channel@1.0.4:
