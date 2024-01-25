@@ -92,9 +92,29 @@ h6 {
     outline: none;
   }
 
-  &:hover .header-anchor {
-    color: var(--c-text-accent);
+  .header-anchor {
+    color: inherit;
     text-decoration: none;
+    position: relative;
+
+    &:hover ::before {
+      content: '¶';
+      position: absolute;
+      left: -0.75em;
+      color: var(--c-brand);
+    }
+
+    &:focus-visible {
+      outline: none;
+
+      &::before {
+        content: '¶';
+        position: absolute;
+        left: -0.75em;
+        color: var(--c-brand);
+        outline: auto;
+      }
+    }
   }
 }
 

@@ -1,5 +1,6 @@
-import { defineClientConfig } from '@vuepress/client'
 import { h } from 'vue'
+import { defineClientConfig } from 'vuepress/client'
+import type { ClientConfig } from 'vuepress/client'
 import { Badge, CodeGroup, CodeGroupItem } from './components/global/index.js'
 import {
   setupDarkMode,
@@ -53,4 +54,4 @@ export default defineClientConfig({
     Layout,
     NotFound,
   },
-})
+}) as ClientConfig

@@ -1,5 +1,5 @@
 import type { DocSearchProps } from '@docsearch/react'
-import type { LocaleConfig } from '@vuepress/shared'
+import type { LocaleConfig } from 'vuepress/shared'
 
 export type DocsearchLocaleData = Pick<
   DocSearchProps,

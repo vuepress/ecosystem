@@ -34,9 +34,10 @@
     "copy": "cpx \"src/**/*.{css,svg}\" lib"
   },
   "dependencies": {
-    "@vuepress/core": "2.0.0-rc.0",
-    "@vuepress/utils": "2.0.0-rc.0",
     "chokidar": "^3.5.3"
+  },
+  "peerDependencies": {
+    "vuepress": "2.0.0-rc.1"
   },
   "publishConfig": {
     "access": "public"

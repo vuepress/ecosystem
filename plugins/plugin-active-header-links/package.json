@@ -35,12 +35,12 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-rc.0",
-    "@vuepress/core": "2.0.0-rc.0",
-    "@vuepress/utils": "2.0.0-rc.0",
     "ts-debounce": "^4.0.0",
-    "vue": "^3.4.0",
+    "vue": "^3.4.15",
     "vue-router": "^4.2.5"
+  },
+  "peerDependencies": {
+    "vuepress": "2.0.0-rc.1"
   },
   "publishConfig": {
     "access": "public"

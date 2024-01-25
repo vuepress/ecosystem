@@ -1,6 +1,7 @@
-import { defineClientConfig, withBase } from '@vuepress/client'
 import mitt from 'mitt'
 import { onMounted, provide } from 'vue'
+import type { ClientConfig } from 'vuepress/client'
+import { defineClientConfig, withBase } from 'vuepress/client'
 import { pwaEventSymbol } from './composables/index.js'
 import type { PwaEvent } from './composables/index.js'
 
@@ -62,4 +63,4 @@ export default defineClientConfig({
       })
     })
   },
-})
+}) as ClientConfig

@@ -1,6 +1,6 @@
-import { createBaseApp } from '@vuepress/core'
-import { fs, path } from '@vuepress/utils'
 import { describe, expect, it } from 'vitest'
+import { createBaseApp } from 'vuepress/core'
+import { fs, path } from 'vuepress/utils'
 import { prepareStyleFile, presetOptions } from '../../src/node/index.js'
 
 const app = createBaseApp({

@@ -1,4 +1,4 @@
-import type { PageData } from '@vuepress/shared'
+import type { PageData } from 'vuepress/shared'
 
 export interface SearchIndexItem
   extends Pick<PageData, 'title' | 'headers' | 'path'> {

@@ -1,5 +1,6 @@
-import { defineClientConfig } from '@vuepress/client'
 import { h } from 'vue'
+import { defineClientConfig } from 'vuepress/client'
+import type { ClientConfig } from 'vuepress/client'
 import { SearchBox } from './components/index.js'
 import type { SearchBoxLocales } from './components/index.js'
 
@@ -26,4 +27,4 @@ export default defineClientConfig({
       }),
     )
   },
-})
+}) as ClientConfig
