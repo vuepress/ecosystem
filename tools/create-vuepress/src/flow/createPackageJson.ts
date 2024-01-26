@@ -37,15 +37,15 @@ export const createPackageJson = async ({
   const packageJsonPath = join(targetDir, 'package.json')
   // TODO: Update it
   const devDependencies = {
-    '@vuepress/client': '^2.0.0-rc.0',
-    [`@vuepress/bundler-${bundler}`]: '^2.0.0-rc.0',
-    '@vuepress/theme-default': '^2.0.0-rc.0',
+    '@vuepress/client': '^2.0.0-rc.2',
+    [`@vuepress/bundler-${bundler}`]: '^2.0.0-rc.2',
+    '@vuepress/theme-default': '^2.0.0-rc.2',
     'vue': '^3.4.0',
-    'vuepress': '^2.0.0-rc.0',
+    'vuepress': '^2.0.0-rc.2',
   }
 
   if (preset === 'blog') {
-    devDependencies['@vuepress/core'] = '^2.0.0-rc.0'
+    devDependencies['@vuepress/core'] = '^2.0.0-rc.2'
     devDependencies['vue-router'] = '^4.2.5'
   }
 
