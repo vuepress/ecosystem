@@ -15,7 +15,7 @@
     "prepare": "husky",
     "release": "pnpm release:check && pnpm release:version prerelease && pnpm release:publish",
     "release:check": "pnpm lint && pnpm clean && pnpm build && pnpm test",
-    "release:publish": "lerna publish --dist-tag next --from-git",
+    "release:publish": "lerna publish --dist-tag next from-package",
     "release:version": "lerna version",
     "test": "pnpm test:unit && pnpm test:e2e",
     "test:cov": "vitest run --coverage ",
