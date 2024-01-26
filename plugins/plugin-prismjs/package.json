@@ -40,7 +40,7 @@
     "@types/prismjs": "^1.26.3"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.1"
+    "vuepress": "2.0.0-rc.2"
   },
   "publishConfig": {
     "access": "public"
