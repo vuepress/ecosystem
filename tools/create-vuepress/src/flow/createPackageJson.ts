@@ -35,9 +35,7 @@ export const createPackageJson = async ({
   bundler,
 }: CreatePackageJsonOptions): Promise<void> => {
   const packageJsonPath = join(targetDir, 'package.json')
-  // TODO: Update it
   const devDependencies = {
-    '@vuepress/client': '^2.0.0-rc.2',
     [`@vuepress/bundler-${bundler}`]: '^2.0.0-rc.2',
     '@vuepress/theme-default': '^2.0.0-rc.2',
     'vue': '^3.4.0',
