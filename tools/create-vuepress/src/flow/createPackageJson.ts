@@ -87,11 +87,11 @@ export const createPackageJson = async ({
     type: 'module',
     scripts: {
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      'docs:build': `vuepress build src`,
+      'docs:build': `vuepress build docs`,
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      'docs:clean-dev': `vuepress dev src --clean-cache`,
+      'docs:clean-dev': `vuepress dev docs --clean-cache`,
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      'docs:dev': `vuepress dev src`,
+      'docs:dev': `vuepress dev docs`,
       // eslint-disable-next-line @typescript-eslint/naming-convention
       'docs:update-package': `${
         packageManager === 'npm' ? 'npx' : `${packageManager} dlx`
