@@ -14,7 +14,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuepress/ecosystem.git"
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/plugin-external-link-icon"
   },
   "license": "MIT",
   "author": "meteorlxy",
