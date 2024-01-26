@@ -17,7 +17,8 @@
     "release:check": "pnpm lint && pnpm clean && pnpm build && pnpm test",
     "release:publish": "lerna publish",
     "test": "vitest run",
-    "test:cov": "vitest run --coverage"
+    "test:cov": "vitest run --coverage",
+    "test:e2e": "pnpm --dir e2e e2e:ci:build"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown",
