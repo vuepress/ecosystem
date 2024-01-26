@@ -21,8 +21,15 @@ module.exports = {
       },
     },
     {
-      files: ['**/e2e/**/*.cy.ts', '**/e2e/cypress/**/*.ts'],
+      files: ['e2e/**/*.cy.ts', 'e2e/cypress/**/*.ts'],
       extends: 'plugin:cypress/recommended',
+    },
+    {
+      files: ['tools/create-helper/**/*.ts', 'tools/create-helper/**/*.vue'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+        'import/named': 'off',
+      },
     },
     {
       files: ['**/tests/**/*.ts'],

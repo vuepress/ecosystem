@@ -2,3 +2,4 @@ packages:
   - e2e
   - plugins/*
   - themes/*
+  - tools/*
