@@ -7,30 +7,23 @@ describe('homepage', () => {
     const heroImage = 'https://v2.vuepress.vuejs.org/images/hero.png'
 
     cy.visit('/')
-    cy.get('.hero').then((el) => {
-      cy.wrap(el)
-        .get('img')
-        .should('have.attr', 'src', heroImage)
-        .should('have.attr', 'alt', title)
 
-      cy.wrap(el).get('#main-title').should('have.text', title)
+    cy.get('.hero img')
+      .should('have.attr', 'src', heroImage)
+      .should('have.attr', 'alt', title)
 
-      cy.wrap(el).get('.description').should('have.text', description)
+    cy.get('#main-title').should('have.text', title)
 
-      cy.wrap(el)
-        .get('.actions')
-        .then((el) => {
-          cy.wrap(el)
-            .get('.action-button')
-            .should('have.length', 2)
-            .each((el, index) => {
-              cy.wrap(el)
-                .should('have.attr', 'href', `${BASE}action${index + 1}.html`)
-                .should('have.attr', 'aria-label', `Action${index + 1}`)
-                .contains(`Action${index + 1}`)
-            })
-        })
-    })
+    cy.get('.hero .description').should('have.text', description)
+
+    cy.get('.actions .action-button')
+      .should('have.length', 2)
+      .each((el, index) => {
+        cy.wrap(el)
+          .should('have.attr', 'href', `${BASE}action${index + 1}.html`)
+          .should('have.attr', 'aria-label', `Action${index + 1}`)
+          .contains(`Action${index + 1}`)
+      })
 
     cy.get('.features .feature').then((el) => {
       cy.wrap(el)
