@@ -13,7 +13,8 @@ const PNPM_LOCK = 'pnpm-lock.yaml'
 const isPackageManagerInstalled = (packageManager: PackageManager): boolean => {
   try {
     return (
-      spawnSync(`${packageManager} --version`, { stdio: 'ignore' }).status === 0
+      spawnSync(`${packageManager} --version`, { shell: true, stdio: 'ignore' })
+        .status === 0
     )
   } catch (e) {
     return false

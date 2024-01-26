@@ -6,12 +6,7 @@ import { isString, startsWith } from './helper.js'
 export const isUrl = (test: unknown): boolean => {
   if (!isString(test) || test === '') return false
 
-  // url Math
-  const result = /^(?:\w+:)?\/\/(\S+)$/u.exec(test)
-
-  if (!result) return false
-
-  const address = result[1]
+  const address = /^(?:\w+:)?\/\/(\S+)$/u.exec(test)?.[1]
 
   if (!address) return false
 
