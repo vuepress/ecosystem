@@ -1,3 +1,5 @@
+const BASE = Cypress.env('E2E_BASE')
+
 describe('homepage', () => {
   it('has hero info', () => {
     const title = 'VuePress Ecosystem E2E'
@@ -18,36 +20,30 @@ describe('homepage', () => {
       cy.wrap(el)
         .get('.actions')
         .then((el) => {
-          cy.wrap(el).get('.action-button').should('have.length', 2)
-
           cy.wrap(el)
             .get('.action-button')
-            .eq(0)
-            .should('have.attr', 'href', '/action1.html')
-            .should('have.attr', 'aria-label', 'Action1')
-            .contains('Action1')
-
-          cy.wrap(el)
-            .get('.action-button')
-            .eq(1)
-            .should('have.attr', 'href', '/action2.html')
-            .should('have.attr', 'aria-label', 'Action2')
-            .contains('Action2')
+            .should('have.length', 2)
+            .each((el, index) => {
+              cy.wrap(el)
+                .should('have.attr', 'href', `${BASE}action${index + 1}.html`)
+                .should('have.attr', 'aria-label', `Action${index + 1}`)
+                .contains(`Action${index + 1}`)
+            })
         })
     })
 
     cy.get('.features .feature').then((el) => {
-      cy.wrap(el).should('have.length', 3)
-      ;[1, 2, 3].forEach((i) => {
-        cy.wrap(el)
-          .eq(i - 1)
-          .get('h2')
-          .contains('Feature' + i)
-        cy.wrap(el)
-          .eq(i - 1)
-          .get('p')
-          .contains('Detail' + i)
-      })
+      cy.wrap(el)
+        .should('have.length', 3)
+        .each((el, index) => {
+          cy.wrap(el)
+            .get('h2')
+            .contains(`Feature${index + 1}`)
+
+          cy.wrap(el)
+            .get('p')
+            .contains(`Detail${index + 1}`)
+        })
     })
   })
 
