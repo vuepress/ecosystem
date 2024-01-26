@@ -37,20 +37,7 @@ export default defineUserConfig({
     },
   },
 
-  bundler:
-    E2E_BUNDLER === 'webpack'
-      ? webpackBundler()
-      : viteBundler({
-          // TODO: Remove once upstream has a fix
-          viteOptions: {
-            optimizeDeps: {
-              exclude: ['vuepress/client', 'vuepress/shared'],
-            },
-            ssr: {
-              noExternal: ['vuepress'],
-            },
-          },
-        }),
+  bundler: E2E_BUNDLER === 'webpack' ? webpackBundler() : viteBundler(),
 
   theme: defaultTheme({
     logo: 'https://v2.vuepress.vuejs.org/images/hero.png',
