@@ -9,5 +9,7 @@
       "message": "build: publish v%v",
       "syncWorkspaceLock": true
     }
-  }
+  },
+  "packages": ["plugins/*", "themes/*", "tools/*"],
+  "ignoreChanges": ["./*/tests/**", "**/*.md"]
 }

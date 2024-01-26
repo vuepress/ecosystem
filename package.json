@@ -13,12 +13,13 @@
     "lint": "eslint --ext .cjs,.js,.ts,.vue . && prettier --check .",
     "lint:fix": "eslint --fix --ext .cjs,.js,.ts,.vue . && prettier --write .",
     "prepare": "husky",
-    "release": "pnpm release:check && pnpm release:publish",
-    "release:check": "pnpm lint && pnpm clean && pnpm build && pnpm test",
-    "release:publish": "lerna publish",
+    "release": "pnpm release:check && pnpm release:version prerelease && pnpm release:publish",
+    "release:check": "pnpm lint && pnpm clean && pnpm build && pnpm test && pnpm test e2e",
+    "release:publish": "lerna publish --dist-tag next --from-git",
+    "release:version": "lerna version",
     "test": "vitest run",
     "test:cov": "vitest run --coverage",
-    "test:e2e": "pnpm --dir e2e e2e:ci:build"
+    "test:e2e": "pnpm --dir e2e e2e:ci:build && pnpm --dir e2e e2e:ci:build"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown",
@@ -34,6 +35,7 @@
     "@types/node": "^20.11.6",
     "@types/webpack-env": "^1.18.4",
     "@vitest/coverage-istanbul": "^1.2.1",
+    "conventional-changelog-cli": "^4.1.0",
     "cpx2": "^7.0.1",
     "eslint": "^8.56.0",
     "eslint-config-vuepress": "^4.10.0",
