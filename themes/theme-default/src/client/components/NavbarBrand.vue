@@ -29,7 +29,7 @@ const NavbarBrandLogo: FunctionalComponent = () => {
   const img = h('img', {
     class: 'logo',
     src: withBase(navbarBrandLogo.value),
-    alt: navbarBrandTitle.value,
+    alt: '',
   })
   if (themeLocale.value.logoDark === undefined) {
     return img
