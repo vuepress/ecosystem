@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-
 /**
 Types from https://github.com/rollup/plugins/blob/master/packages/alias/types/index.d.ts
 Inlined because the plugin is bundled.
