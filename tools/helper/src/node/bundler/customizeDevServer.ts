@@ -52,9 +52,9 @@ export const customizeDevServer = (
   const bundlerName = getBundlerName(app)
 
   // in dev
-  if (app.env.isDev)
+  if (app.env.isDev) {
+    // for vite
     if (bundlerName === 'vite') {
-      // for vite
       const viteBundlerOptions = bundlerOptions as ViteBundlerOptions
       const handler: HandleFunction = (
         request: IncomingMessage,
@@ -108,4 +108,5 @@ export const customizeDevServer = (
           : middlewares
       }
     }
+  }
 }
