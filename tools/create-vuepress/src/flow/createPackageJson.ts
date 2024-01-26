@@ -45,7 +45,6 @@ export const createPackageJson = async ({
   }
 
   if (preset === 'blog') {
-    devDependencies['@vuepress/core'] = '^2.0.0-rc.2'
     devDependencies['vue-router'] = '^4.2.5'
   }
 
