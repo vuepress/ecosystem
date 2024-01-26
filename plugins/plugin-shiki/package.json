@@ -34,10 +34,10 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "shikiji": "^0.10.0"
+    "shikiji": "^0.10.1"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.1"
+    "vuepress": "2.0.0-rc.2"
   },
   "publishConfig": {
     "access": "public"
