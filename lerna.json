@@ -11,5 +11,5 @@
     }
   },
   "packages": ["plugins/*", "themes/*", "tools/*"],
-  "ignoreChanges": ["./*/tests/**", "**/*.md"]
+  "ignoreChanges": ["**/tests/**", "**/*.md"]
 }
