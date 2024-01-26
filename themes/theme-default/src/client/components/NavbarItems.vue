@@ -4,6 +4,7 @@ import NavbarDropdown from '@theme/NavbarDropdown.vue'
 import { computed, ref } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useRouter } from 'vue-router'
+import type { Router } from 'vue-router'
 import { useRouteLocale, useSiteData, useSiteLocaleData } from 'vuepress/client'
 import { isLinkHttp, isString } from 'vuepress/shared'
 import type {
@@ -13,12 +14,11 @@ import type {
 } from '../../shared/index.js'
 import {
   DeviceType,
-  useNavLink,
   useThemeData,
   useThemeLocaleData,
   useUpdateDeviceStatus,
 } from '../composables/index.js'
-import { resolveRepoType } from '../utils/index.js'
+import { getNavLink, resolveRepoType } from '../utils/index.js'
 
 /**
  * Get navbar config of select language dropdown
@@ -129,23 +129,32 @@ const useNavbarRepo = (): ComputedRef<ResolvedNavbarItem[]> => {
 }
 
 const resolveNavbarItem = (
+  router: Router,
   item: NavbarItem | NavbarGroup | string,
 ): ResolvedNavbarItem => {
   if (isString(item)) {
-    return useNavLink(item)
+    return getNavLink(router, item)
   }
   if ((item as NavbarGroup).children) {
     return {
       ...item,
-      children: (item as NavbarGroup).children.map(resolveNavbarItem),
+      children: (item as NavbarGroup).children.map((item) =>
+        resolveNavbarItem(router, item),
+      ),
     }
   }
   return item as ResolvedNavbarItem
 }
 
 const useNavbarConfig = (): ComputedRef<ResolvedNavbarItem[]> => {
+  const router = useRouter()
   const themeLocale = useThemeLocaleData()
-  return computed(() => (themeLocale.value.navbar || []).map(resolveNavbarItem))
+
+  return computed(() =>
+    (themeLocale.value.navbar || []).map((item) =>
+      resolveNavbarItem(router, item),
+    ),
+  )
 }
 
 const isMobile = ref(false)
