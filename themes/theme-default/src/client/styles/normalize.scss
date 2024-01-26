@@ -97,7 +97,8 @@ h6 {
     text-decoration: none;
     position: relative;
 
-    &:hover ::before {
+    &:hover::before {
+      font-size: 0.8em;
       content: '¶';
       position: absolute;
       left: -0.75em;
