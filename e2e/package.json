@@ -1,0 +1,31 @@
+{
+  "name": "@vuepress/ecosystem-e2e",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "e2e:build": "vuepress build docs --clean-cache --clean-temp",
+    "e2e:build-webpack": "E2E_BUNDLER=webpack pnpm e2e:build",
+    "e2e:ci:build": "pnpm e2e:build && start-server-and-test e2e:serve http-get://localhost:9080 e2e:run",
+    "e2e:ci:dev": "start-server-and-test e2e:dev http-get://127.0.0.1:9080 e2e:run",
+    "e2e:clean": "rimraf docs/.vuepress/.temp docs/.vuepress/.cache docs/.vuepress/dist",
+    "e2e:dev": "vuepress dev docs --clean-cache --clean-temp",
+    "e2e:dev-webpack": "E2E_BUNDLER=webpack pnpm e2e:dev",
+    "e2e:open": "cypress open",
+    "e2e:run": "cypress run",
+    "e2e:serve": "anywhere -s -h localhost -p 9080 -d docs/.vuepress/dist"
+  },
+  "dependencies": {
+    "@vuepress/bundler-vite": "2.0.0-rc.2",
+    "@vuepress/bundler-webpack": "2.0.0-rc.2",
+    "@vuepress/theme-default": "workspace:*",
+    "sass": "^1.70.0",
+    "sass-loader": "^14.0.0",
+    "vue": "^3.4.15",
+    "vuepress": "2.0.0-rc.2"
+  },
+  "devDependencies": {
+    "anywhere": "^1.6.0",
+    "cypress": "^13.6.3",
+    "start-server-and-test": "^2.0.3"
+  }
+}

@@ -12,12 +12,14 @@
       ],
       "@theme/*": ["./themes/theme-default/src/client/components/*"]
     },
-    "types": ["webpack-env", "vite/client"]
+    "types": ["vuepress/client-types", "webpack-env", "vite/client"]
   },
   "include": [
     "**/.vuepress/**/*",
+    "e2e/**/*",
     "plugins/**/*",
     "themes/**/*",
+    "tools/**/*",
     "vitest.config.ts"
   ],
   "exclude": ["node_modules", ".temp", "lib", "dist"]

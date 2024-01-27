@@ -7,7 +7,7 @@
 
 ## Documentation
 
-https://v2.vuepress.vuejs.org
+<https://v2.vuepress.vuejs.org>
 
 ## Contribution
 

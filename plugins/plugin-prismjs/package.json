@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-prismjs",
-  "version": "2.0.0-rc.0",
+  "version": "2.0.0-rc.1",
   "description": "VuePress plugin - prismjs",
   "keywords": [
     "vuepress-plugin",
@@ -34,11 +34,13 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/core": "2.0.0-rc.0",
     "prismjs": "^1.29.0"
   },
   "devDependencies": {
     "@types/prismjs": "^1.26.3"
+  },
+  "peerDependencies": {
+    "vuepress": "2.0.0-rc.2"
   },
   "publishConfig": {
     "access": "public"

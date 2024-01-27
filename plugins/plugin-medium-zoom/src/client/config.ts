@@ -1,6 +1,7 @@
-import { defineClientConfig } from '@vuepress/client'
 import mediumZoom from 'medium-zoom'
 import type { ZoomOptions } from 'medium-zoom'
+import { defineClientConfig } from 'vuepress/client'
+import type { ClientConfig } from 'vuepress/client'
 import { mediumZoomSymbol } from './composables/index.js'
 
 import './styles/vars.css'
@@ -30,4 +31,4 @@ export default defineClientConfig({
       setTimeout(() => zoom.refresh(), delay)
     })
   },
-})
+}) as ClientConfig

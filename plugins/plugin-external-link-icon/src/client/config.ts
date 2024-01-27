@@ -1,5 +1,6 @@
-import { defineClientConfig } from '@vuepress/client'
 import { h } from 'vue'
+import { defineClientConfig } from 'vuepress/client'
+import type { ClientConfig } from 'vuepress/client'
 import type { ExternalLinkIconLocales } from '../shared/index.js'
 import { ExternalLinkIcon } from './components/index.js'
 
@@ -12,4 +13,4 @@ export default defineClientConfig({
     // wrap the `<ExternalLinkIcon />` component with plugin options
     app.component('ExternalLinkIcon', h(ExternalLinkIcon, { locales }))
   },
-})
+}) as ClientConfig

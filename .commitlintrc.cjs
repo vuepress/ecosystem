@@ -8,11 +8,16 @@ const getSubDirectories = (dir) =>
 
 const pluginPackages = getSubDirectories(path.resolve(__dirname, 'plugins'))
 const themePackages = getSubDirectories(path.resolve(__dirname, 'themes'))
+const toolsPackages = getSubDirectories(path.resolve(__dirname, 'tools'))
 
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {
-    'scope-enum': [2, 'always', [...pluginPackages, ...themePackages]],
+    'scope-enum': [
+      2,
+      'always',
+      ['e2e', ...pluginPackages, ...themePackages, ...toolsPackages],
+    ],
     'footer-max-line-length': [0],
   },
 }

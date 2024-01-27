@@ -1,6 +1,6 @@
 {
   "npmClient": "pnpm",
-  "version": "2.0.0-rc.0",
+  "version": "2.0.0-rc.2",
   "command": {
     "version": {
       "allowBranch": "main",
@@ -9,5 +9,7 @@
       "message": "build: publish v%v",
       "syncWorkspaceLock": true
     }
-  }
+  },
+  "packages": ["plugins/*", "themes/*", "tools/*"],
+  "ignoreChanges": ["**/tests/**", "**/*.md"]
 }

@@ -1,4 +1,4 @@
-import { globby, path } from '@vuepress/utils'
+import { globby, path } from 'vuepress/utils'
 import type { RegisterComponentsPluginOptions } from './registerComponentsPlugin.js'
 
 export const getComponentsFromDir = async ({

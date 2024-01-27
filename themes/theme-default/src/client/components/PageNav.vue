@@ -1,20 +1,23 @@
 <script setup lang="ts">
 import AutoLink from '@theme/AutoLink.vue'
-import { usePageFrontmatter } from '@vuepress/client'
-import { isPlainObject, isString } from '@vuepress/shared'
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import type { Router } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
+import { usePageFrontmatter } from 'vuepress/client'
+import { isPlainObject, isString } from 'vuepress/shared'
 import type {
   DefaultThemeNormalPageFrontmatter,
   NavLink,
   ResolvedSidebarItem,
 } from '../../shared/index.js'
-import { useNavLink, useSidebarItems } from '../composables/index.js'
+import { useSidebarItems } from '../composables/index.js'
+import { getNavLink } from '../utils/index.js'
 
 /**
  * Resolve `prev` or `next` config from frontmatter
  */
 const resolveFromFrontmatterConfig = (
+  router: Router,
   conf: unknown,
 ): null | false | NavLink => {
   if (conf === false) {
@@ -22,7 +25,7 @@ const resolveFromFrontmatterConfig = (
   }
 
   if (isString(conf)) {
-    return useNavLink(conf)
+    return getNavLink(router, conf)
   }
 
   if (isPlainObject<NavLink>(conf)) {
@@ -68,9 +71,13 @@ const resolveFromSidebarItems = (
 const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
 const sidebarItems = useSidebarItems()
 const route = useRoute()
+const router = useRouter()
 
 const prevNavLink = computed(() => {
-  const prevConfig = resolveFromFrontmatterConfig(frontmatter.value.prev)
+  const prevConfig = resolveFromFrontmatterConfig(
+    router,
+    frontmatter.value.prev,
+  )
   if (prevConfig !== false) {
     return prevConfig
   }
@@ -79,7 +86,10 @@ const prevNavLink = computed(() => {
 })
 
 const nextNavLink = computed(() => {
-  const nextConfig = resolveFromFrontmatterConfig(frontmatter.value.next)
+  const nextConfig = resolveFromFrontmatterConfig(
+    router,
+    frontmatter.value.next,
+  )
   if (nextConfig !== false) {
     return nextConfig
   }

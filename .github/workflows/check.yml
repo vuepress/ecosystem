@@ -37,11 +37,11 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Lint
+      - name: Linter Test
         run: pnpm lint
 
-      - name: Test
-        run: pnpm test
+      - name: Unit Test
+        run: pnpm test:unit
 
   check-result:
     if: ${{ always() }}
