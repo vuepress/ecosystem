@@ -83,7 +83,7 @@ ${
           NODE_OPTIONS: --max_old_space_size=8192
         run: |-
           ${packageManager} run docs:build
-          > src/.vuepress/dist/.nojekyll
+          > docs/.vuepress/dist/.nojekyll
 
       - name: ${lang === '简体中文' ? '部署文档' : 'Deploy Docs'}
         uses: JamesIves/github-pages-deploy-action@v4
@@ -94,7 +94,7 @@ ${
               : 'This is the branch where the docs are deployed to'
           }
           branch: gh-pages
-          folder: src/.vuepress/dist
+          folder: docs/.vuepress/dist
 `
 
 interface GenerateTemplateOptions {
@@ -128,9 +128,9 @@ export const generateTemplate = async ({
   console.log(locale.flow.generateTemplate)
 
   // copy template
-  copy(join(templateFolder, preset), join(targetDirPath, 'src'))
+  copy(join(templateFolder, preset), join(targetDirPath, 'docs'))
 
-  const configFilePath = join(targetDirPath, 'src/.vuepress/config.js')
+  const configFilePath = join(targetDirPath, 'docs/.vuepress/config.js')
 
   const content = readFileSync(configFilePath, { encoding: 'utf-8' })
 

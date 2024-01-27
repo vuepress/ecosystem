@@ -1,4 +1,4 @@
-import { createPage } from '@vuepress/core'
+import { createPage } from 'vuepress/core'
 
 const slugify = (name) =>
   name
