@@ -11,7 +11,6 @@ import type {
   ResolvedSidebarItem,
   SidebarConfigArray,
   SidebarConfigObject,
-  SidebarConfigObjectItem,
   SidebarItem,
 } from '../../shared/index.js'
 import { getNavLink } from '../utils/index.js'
@@ -76,8 +75,8 @@ export const resolveSidebarItems = (
     return []
   }
 
-  if (isAutoSidebar(sidebarConfig)) {
-    return resolveAutoSidebarItems(sidebarDepth)
+  if (sidebarConfig === 'auto') {
+    return resolveAutoSidebarItems(page, sidebarDepth)
   }
 
   if (Array.isArray(sidebarConfig)) {
@@ -196,8 +195,8 @@ export const resolveMultiSidebarItems = (
   const sidebarPath = resolveLocalePath(sidebarConfig, path)
   const matchedSidebarConfig = sidebarConfig[sidebarPath] ?? []
 
-  if (isAutoSidebar(matchedSidebarConfig)) {
-    return resolveAutoSidebarItems(sidebarDepth)
+  if (matchedSidebarConfig === 'heading') {
+    return resolveAutoSidebarItems(page, sidebarDepth)
   }
   return resolveArraySidebarItems(
     page,
@@ -206,13 +205,4 @@ export const resolveMultiSidebarItems = (
     matchedSidebarConfig as SidebarConfigArray,
     sidebarDepth,
   )
-}
-
-/**
- * Check if the sidebar config is `auto`
- */
-export const isAutoSidebar = (
-  config: SidebarConfigObject | SidebarConfigObjectItem,
-): boolean => {
-  return config === 'auto'
 }

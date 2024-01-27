@@ -1,5 +1,5 @@
-it("route has 'auto' sidebar", () => {
-  cy.visit('/auto-sidebar/')
+it("route has 'heading' sidebar", () => {
+  cy.visit('/heading-sidebar/')
   cy.get('.theme-default-content').then((el) => {
     cy.wrap(el)
       .get('h1')
@@ -26,12 +26,12 @@ it("route has 'auto' sidebar", () => {
 })
 
 it('route has custom sidebar', () => {
-  cy.visit('/custom-sidebar/')
+  cy.visit('/sidebar/')
   cy.get('.theme-default-content').then((el) => {
-    cy.wrap(el).get('.sidebar-heading').should('contain', 'custom-sidebar')
+    cy.wrap(el).get('.sidebar-heading').should('contain', 'Sidebar')
     cy.wrap(el)
       .get('a.sidebar-item')
-      .should('contain', 'custom-child-1')
-      .should('contain', 'custom-child-2')
+      .should('contain', 'Sidebar Heading 1')
+      .should('contain', 'Sidebar Heading 2')
   })
 })

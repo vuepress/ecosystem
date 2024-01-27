@@ -69,6 +69,7 @@ export default defineUserConfig({
           ],
         },
       ],
+      '/heading-sidebar/': 'heading',
     },
   }),
 }) as UserConfig

@@ -1,4 +1,4 @@
-# auto-sidebar
+# heading-sidebar
 
 ## header 1
 
