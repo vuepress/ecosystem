@@ -15,7 +15,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuepress/ecosystem.git"
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/plugin-shiki"
   },
   "license": "MIT",
   "author": "meteorlxy",
