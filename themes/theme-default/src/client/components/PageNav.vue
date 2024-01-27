@@ -10,7 +10,7 @@ import type {
   NavLink,
   ResolvedSidebarItem,
 } from '../../shared/index.js'
-import { useSidebarItems } from '../composables/index.js'
+import { useSidebarItems, useThemeLocaleData } from '../composables/index.js'
 import { getNavLink } from '../utils/index.js'
 
 /**
@@ -96,13 +96,18 @@ const nextNavLink = computed(() => {
 
   return resolveFromSidebarItems(sidebarItems.value, route.path, 1)
 })
+
+const navbarLabel = computed(() => {
+  const themeLocale = useThemeLocaleData()
+  return themeLocale.value.pageNavbarLabel ?? 'page navigation'
+})
 </script>
 
 <template>
   <nav
     v-if="prevNavLink || nextNavLink"
     class="page-nav"
-    aria-label="page navigation"
+    :aria-label="navbarLabel"
   >
     <p class="inner">
       <span v-if="prevNavLink" class="prev">

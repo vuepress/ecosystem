@@ -85,6 +85,16 @@ export interface DefaultThemeLocaleData extends LocaleData {
   navbar?: false | NavbarConfig
 
   /**
+   * Navbar label used for screen readers using the `aria-label` attribute
+   */
+  navbarLabel?: null | string
+
+  /**
+   * Page navbar label used for screen readers using the `aria-label` attribute
+   */
+  pageNavbarLabel?: null | string
+
+  /**
    * Navbar logo config
    *
    * Logo to display in navbar
