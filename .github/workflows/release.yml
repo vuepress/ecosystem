@@ -15,9 +15,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Push to release branch
-        run: git push origin HEAD:release
-
       - name: Create release
         if: ${{ github.event_name != 'workflow_dispatch' }}
         id: release_tag

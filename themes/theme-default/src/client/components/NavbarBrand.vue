@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import { computed, h } from 'vue'
+import type { FunctionalComponent } from 'vue'
 import {
   ClientOnly,
   useRouteLocale,
   useSiteLocaleData,
   withBase,
-} from '@vuepress/client'
-import { computed, h } from 'vue'
-import type { FunctionalComponent } from 'vue'
+} from 'vuepress/client'
 import { useDarkMode, useThemeLocaleData } from '../composables/index.js'
 
 const routeLocale = useRouteLocale()
@@ -29,7 +29,7 @@ const NavbarBrandLogo: FunctionalComponent = () => {
   const img = h('img', {
     class: 'logo',
     src: withBase(navbarBrandLogo.value),
-    alt: navbarBrandTitle.value,
+    alt: '',
   })
   if (themeLocale.value.logoDark === undefined) {
     return img

@@ -1,4 +1,5 @@
-import { defineClientConfig } from '@vuepress/client'
+import { defineClientConfig } from 'vuepress/client'
+import type { ClientConfig } from 'vuepress/client'
 import { useActiveHeaderLinks } from './composables/index.js'
 
 declare const __AHL_HEADER_LINK_SELECTOR__: string
@@ -22,4 +23,4 @@ export default defineClientConfig({
       offset,
     })
   },
-})
+}) as ClientConfig

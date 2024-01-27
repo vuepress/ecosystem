@@ -1,4 +1,3 @@
-import type { Plugin } from '@vuepress/core'
 import { getHighlighter } from 'shikiji'
 import type {
   BundledLanguage,
@@ -9,6 +8,7 @@ import type {
   ThemeRegistration,
   ThemeRegistrationRaw,
 } from 'shikiji'
+import type { Plugin } from 'vuepress/core'
 
 export type ShikiLang =
   | LanguageInput

@@ -1,5 +1,5 @@
-import type { Page, Plugin } from '@vuepress/core'
-import { path } from '@vuepress/utils'
+import type { Page, Plugin } from 'vuepress/core'
+import { path } from 'vuepress/utils'
 import type { GitPluginFrontmatter, GitPluginPageData } from './types.js'
 import {
   checkGitRepo,

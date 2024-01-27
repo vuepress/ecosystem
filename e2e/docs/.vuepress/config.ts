@@ -1,10 +1,13 @@
 import process from 'node:process'
 import { viteBundler } from '@vuepress/bundler-vite'
-import { defineUserConfig } from '@vuepress/cli'
+import { webpackBundler } from '@vuepress/bundler-webpack'
 import { defaultTheme } from '@vuepress/theme-default'
-import { path } from '@vuepress/utils'
+import { defineUserConfig } from 'vuepress/cli'
+import type { UserConfig } from 'vuepress/cli'
+import { path } from 'vuepress/utils'
 
 const E2E_BASE = (process.env.E2E_BASE ?? '/') as '/' | `/${string}/`
+const E2E_BUNDLER = process.env.E2E_BUNDLER ?? 'vite'
 
 export default defineUserConfig({
   base: E2E_BASE,
@@ -27,37 +30,45 @@ export default defineUserConfig({
     },
   },
 
-  bundler: viteBundler(),
+  markdown: {
+    assets: {
+      // FIXME
+      absolutePathPrependBase: E2E_BUNDLER === 'webpack',
+    },
+  },
+
+  bundler: E2E_BUNDLER === 'webpack' ? webpackBundler() : viteBundler(),
 
   theme: defaultTheme({
-    logo: '/logo.png',
+    logo: 'https://v2.vuepress.vuejs.org/images/hero.png',
     navbar: [
       {
         text: 'Home',
         link: '/',
       },
       {
-        text: 'Auto Sidebar',
-        link: '/auto-sidebar/',
-      },
-      {
-        text: 'Custom Sidebar',
-        link: '/custom-sidebar/',
+        text: 'Dropdown',
+        children: [
+          {
+            text: 'sidebar',
+            link: '/sidebar/',
+          },
+        ],
       },
     ],
+
     sidebar: {
-      '/': 'auto',
-      '/auto-sidebar/': 'auto',
-      '/custom-sidebar/': [
+      '/': ['/sidebar/'],
+      '/sidebar/': [
         {
-          text: 'custom-sidebar',
-          link: '/custom-sidebar/',
+          text: 'Sidebar',
+          link: '/sidebar/',
           children: [
-            { text: 'custom-child-1', link: '/custom-sidebar/custom-one' },
-            { text: 'custom-child-2', link: '/custom-sidebar/custom-two' },
+            { text: 'sidebar 1', link: '/sidebar/1.html' },
+            { text: 'sidebar 2', link: '/sidebar/2.html' },
           ],
         },
       ],
     },
   }),
-})
+}) as UserConfig

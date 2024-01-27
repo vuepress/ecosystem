@@ -1,7 +1,7 @@
-import { createBaseApp } from '@vuepress/core'
-import type { MarkdownEnv, MarkdownOptions } from '@vuepress/markdown'
-import { path } from '@vuepress/utils'
 import { describe, expect, it } from 'vitest'
+import { createBaseApp } from 'vuepress/core'
+import type { MarkdownEnv, MarkdownOptions } from 'vuepress/markdown'
+import { path } from 'vuepress/utils'
 import { externalLinkIconPlugin } from '../../src/node/index.js'
 
 const getTestApp = async (markdown?: MarkdownOptions) => {
