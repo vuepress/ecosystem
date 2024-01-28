@@ -1,5 +1,5 @@
 ---
-title: Demo Page
+title: Page with excerpt separator
 author: Mr.Hope
 date: 2021-01-01
 category:

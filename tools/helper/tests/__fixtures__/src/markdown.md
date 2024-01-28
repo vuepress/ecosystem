@@ -1,3 +1,7 @@
+# Content Example
+
+## Headings
+
 # Heading 1
 
 ## Heading 2
@@ -9,6 +13,8 @@
 ##### Heading 5
 
 ###### Heading 6
+
+### Heading with **markdown** and <span>html</span>
 
 ## Text
 
@@ -71,13 +77,19 @@ In codes above, two spaces are behind `at`.
 
 ## Link
 
-[Home page using absolute path](/)
-
-[Home page using relative path](../../README.md)
+- [relative markdown link](./excerpt.md)
+- [relative html link](./excerpt.html)
+- [absolute markdown link](/README.md)
+- [absolute html link](/index.html)
+- [Anchor](#link)
 
 ## Image
 
-![Logo](/logo.svg)
+![Logo](/logo.png)
+
+![logo](https://exmaple.com/logo.png)
+
+A inline image ![relative](./assets/relative.jpg), ![image with absolute link](/logo.png) and a ![image with full url](https://exmaple.com/logo.png).
 
 ## Emoji
 
@@ -95,7 +107,7 @@ Classic:
 
 ## Codes
 
-Inline Code: `code`
+Inline Code: `inline code`
 
 Block code:
 
@@ -105,10 +117,14 @@ Sample text here...
 
 Syntax highlighting:
 
-```js
+```js {2}
 var foo = function (bar) {
   return bar++;
 };
 
 console.log(foo(5));
 ```
+
+## Comment
+
+<!-- Here is a comment -->

@@ -42,12 +42,36 @@ export interface PageExcerptOptions {
    * @description 用于判断一个标签是否是自定义元素，因为在摘要中，所有的未知标签都会被移除。
    */
   isCustomElement?: (tagName: string) => boolean
+
+  /**
+   * Whether remove the first node if its h1
+   *
+   * 是否在第一个节点是 h1 的时候移除它
+   *
+   * @default false
+   */
+  preserveTitle?: boolean
+
+  /**
+   * Whether preserve tags like line numbers and highlight lines for code blocks
+   *
+   * 是否保留代码块的标签，诸如行号和高亮行
+   *
+   * @default false
+   */
+  preserveFenceDom?: boolean
+}
+
+interface NodeOptions
+  extends Required<
+    Pick<PageExcerptOptions, 'isCustomElement' | 'preserveFenceDom'>
+  > {
+  base: string
 }
 
 const handleNode = (
   node: AnyNode,
-  base: string,
-  isCustomElement: (tagName: string) => boolean,
+  { base, isCustomElement, preserveFenceDom }: NodeOptions,
 ): AnyNode | null => {
   if (node.type === 'tag') {
     // image using relative urls shall be dropped
@@ -72,10 +96,13 @@ const handleNode = (
       isSVGTag(node.tagName) ||
       isMathMLTag(node.tagName)
     ) {
-      // remove heading id tabindex
+      // handing heading tags
       if (HEADING_TAGS.includes(node.tagName)) {
+        // remove heading id tabindex
         delete node.attribs.id
         delete node.attribs.tabindex
+
+        // extract heading tags and remove anchor
         if (
           node.children.length === 1 &&
           node.children[0].type === 'tag' &&
@@ -85,11 +112,36 @@ const handleNode = (
           node.children = (node.children[0].children[0] as Element).children
       }
 
+      if (
+        node.tagName === 'div' &&
+        node.attribs.class.startsWith('language-')
+      ) {
+        const firstChild = node.children[0]
+
+        if (
+          // we are sure this is a code fence
+          firstChild.type === 'tag' &&
+          firstChild.tagName === 'pre' &&
+          firstChild.attribs.class.startsWith('language-') &&
+          !preserveFenceDom
+        ) {
+          node.attribs.class = node.attribs.class.replace(
+            ' line-numbers-mode',
+            '',
+          )
+          node.children = [node.children[0]]
+        }
+      }
+
       // remove `v-pre` attribute
       if (node.tagName === 'code' || node.tagName === 'pre')
         delete node.attribs['v-pre']
 
-      node.children = handleNodes(node.children, base, isCustomElement)
+      node.children = handleNodes(node.children, {
+        base,
+        isCustomElement,
+        preserveFenceDom,
+      })
 
       return node
     }
@@ -98,16 +150,22 @@ const handleNode = (
     if (node.tagName === 'routerlink' || node.tagName === 'vplink') {
       node.tagName = 'a'
       node.attribs.href = `${removeEndingSlash(base)}${node.attribs.to}`
-      node.attribs.target = 'blank'
+      node.attribs.target = '_blank'
       delete node.attribs.to
-      node.children = handleNodes(node.children, base, isCustomElement)
+
+      node.children = handleNodes(node.children, {
+        base,
+        isCustomElement,
+        preserveFenceDom,
+      })
 
       return node
     }
 
+    // keep custom element as is
     if (isCustomElement(node.tagName)) return node
 
-    // other tags will be considered as vue components and will be dropped
+    // other tags are considered as vue components and dropped
     return null
   }
 
@@ -116,16 +174,20 @@ const handleNode = (
 
 const handleNodes = (
   nodes: AnyNode[] | null,
-  base: string,
-  isCustomElement: (tagName: string) => boolean,
+  { base, isCustomElement, preserveFenceDom }: NodeOptions,
 ): AnyNode[] =>
   isArray(nodes)
     ? nodes
-        .map((node) => handleNode(node, base, isCustomElement))
+        .map((node) =>
+          handleNode(node, { base, isCustomElement, preserveFenceDom }),
+        )
         .filter((node): node is AnyNode => node !== null)
     : []
 
 const $ = load('')
+
+const isH1Tag = (node: AnyNode): boolean =>
+  node.type === 'tag' && node.tagName === 'h1'
 
 export const getPageExcerpt = (
   { markdown, options: { base } }: App,
@@ -134,6 +196,8 @@ export const getPageExcerpt = (
     isCustomElement = (): boolean => false,
     excerptSeparator = '<!-- more -->',
     excerptLength = 300,
+    preserveTitle = false,
+    preserveFenceDom = false,
   }: PageExcerptOptions = {},
 ): string => {
   // get page content
@@ -154,15 +218,27 @@ export const getPageExcerpt = (
       },
     )
 
+    const rootNodes = $.parseHTML(renderedContent)
+
+    if (rootNodes[0] && !preserveTitle && isH1Tag(rootNodes[0]))
+      rootNodes.shift()
+
     return $.html(
-      handleNodes($.parseHTML(renderedContent), base, isCustomElement),
+      handleNodes(rootNodes, { base, isCustomElement, preserveFenceDom }),
     )
   } else if (excerptLength > 0) {
     let excerpt = ''
     const rootNodes = $.parseHTML(contentRendered) || []
 
+    if (rootNodes[0] && !preserveTitle && isH1Tag(rootNodes[0]))
+      rootNodes.shift()
+
     for (const node of rootNodes) {
-      const resolvedNode = handleNode(node, base, isCustomElement)
+      const resolvedNode = handleNode(node, {
+        base,
+        isCustomElement,
+        preserveFenceDom,
+      })
 
       if (resolvedNode) {
         excerpt += `${$.html(resolvedNode)}`
