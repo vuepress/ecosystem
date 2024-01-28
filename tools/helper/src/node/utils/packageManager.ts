@@ -10,7 +10,7 @@ const NPM_LOCK = 'package-lock.json'
 const YARN_LOCK = 'yarn.lock'
 const PNPM_LOCK = 'pnpm-lock.yaml'
 
-const isPackageManagerInstalled = (packageManager: PackageManager): boolean => {
+const isInstalled = (packageManager: PackageManager): boolean => {
   try {
     return (
       spawnSync(`${packageManager} --version`, { shell: true, stdio: 'ignore' })
@@ -26,7 +26,7 @@ const isPackageManagerInstalled = (packageManager: PackageManager): boolean => {
  *
  * @param packageManager package manager
  */
-export const hasGlobalInstallation = (
+export const isPackageManagerInstalled = (
   packageManager: PackageManager,
 ): boolean => {
   const key = `global:${packageManager}`
@@ -35,7 +35,7 @@ export const hasGlobalInstallation = (
 
   if (status !== undefined) return status
 
-  if (isPackageManagerInstalled(packageManager)) {
+  if (isInstalled(packageManager)) {
     globalCache.set(key, true)
 
     return true
@@ -123,9 +123,9 @@ export const detectPackageManager = (
 
   return (
     type ||
-    (hasGlobalInstallation('pnpm')
+    (isPackageManagerInstalled('pnpm')
       ? 'pnpm'
-      : hasGlobalInstallation('yarn')
+      : isPackageManagerInstalled('yarn')
         ? 'yarn'
         : 'npm')
   )

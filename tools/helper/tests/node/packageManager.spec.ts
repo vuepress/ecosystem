@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { getDirname, path } from 'vuepress/utils'
 import {
   detectPackageManager,
-  hasGlobalInstallation,
+  isPackageManagerInstalled,
 } from '../../src/node/utils/packageManager.js'
 
 const __dirname = getDirname(import.meta.url)
@@ -10,8 +10,8 @@ const __dirname = getDirname(import.meta.url)
 const fixtures = path.resolve(__dirname, '../__fixtures__/package-manager')
 
 it('Should detect global package manager', () => {
-  expect(hasGlobalInstallation('npm')).toBeTruthy()
-  expect(hasGlobalInstallation('pnpm')).toBeTruthy()
+  expect(isPackageManagerInstalled('npm')).toBeTruthy()
+  expect(isPackageManagerInstalled('pnpm')).toBeTruthy()
 })
 
 describe('Should detect lockfile', () => {
