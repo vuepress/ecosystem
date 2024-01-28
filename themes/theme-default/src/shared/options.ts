@@ -85,6 +85,16 @@ export interface DefaultThemeLocaleData extends LocaleData {
   navbar?: false | NavbarConfig
 
   /**
+   * Navbar label used for screen readers using the `aria-label` attribute
+   */
+  navbarLabel?: null | string
+
+  /**
+   * Page navbar label used for screen readers using the `aria-label` attribute
+   */
+  pageNavbarLabel?: null | string
+
+  /**
    * Navbar logo config
    *
    * Logo to display in navbar
@@ -97,6 +107,14 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Logo to display in navbar in dark mode
    */
   logoDark?: null | string
+
+  /**
+   * The alt text of navbar logo.
+   * Defaults to the site title if not specified.
+   * If the value is the same as the site title, the site title rendered in the navbar will be
+   * hidden from screen readers to avoid duplication.
+   */
+  logoAlt?: null | string
 
   /**
    * Navbar repository config
