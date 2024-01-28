@@ -115,7 +115,7 @@ export const getTypeofLockFile = (
  * @param deep whether to search in parent directories
  * @returns the type of package manager
  */
-export const detectPackageManager = (
+export const getPackageManager = (
   cwd = process.cwd(),
   deep = true,
 ): PackageManager => {

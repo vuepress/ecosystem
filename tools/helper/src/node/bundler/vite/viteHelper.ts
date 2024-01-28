@@ -1,7 +1,7 @@
 import type { ViteBundlerOptions } from '@vuepress/bundler-vite'
 import type { App } from 'vuepress/core'
 import { isString } from '../../../shared/index.js'
-import { detectPackageManager } from '../../utils/index.js'
+import { getPackageManager } from '../../utils/index.js'
 import { getBundlerName } from '../getBundlerName.js'
 import { mergeViteConfig } from './mergeViteConfig.js'
 
@@ -41,7 +41,7 @@ export const addViteOptimizeDepsInclude = (
   if (
     'OPTIMIZE_DEPS' in process.env
       ? Boolean(process.env.OPTIMIZE_DEPS)
-      : detectPackageManager() !== 'pnpm'
+      : getPackageManager() !== 'pnpm'
   )
     addViteConfig(bundlerOptions, app, {
       optimizeDeps: {

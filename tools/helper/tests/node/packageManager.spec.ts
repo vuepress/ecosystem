@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { getDirname, path } from 'vuepress/utils'
 import {
-  detectPackageManager,
+  getPackageManager,
   isPackageManagerInstalled,
 } from '../../src/node/utils/packageManager.js'
 
@@ -16,20 +16,20 @@ it('Should detect global package manager', () => {
 
 describe('Should detect lockfile', () => {
   it('Should be npm', () => {
-    expect(
-      detectPackageManager(path.resolve(fixtures, 'lock-file/npm')),
-    ).toEqual('npm')
+    expect(getPackageManager(path.resolve(fixtures, 'lock-file/npm'))).toEqual(
+      'npm',
+    )
   })
 
   it('Should be yarn', () => {
-    expect(
-      detectPackageManager(path.resolve(fixtures, 'lock-file/yarn')),
-    ).toEqual('yarn')
+    expect(getPackageManager(path.resolve(fixtures, 'lock-file/yarn'))).toEqual(
+      'yarn',
+    )
   })
 
   it('Should be pnpm', () => {
-    expect(
-      detectPackageManager(path.resolve(fixtures, 'lock-file/pnpm')),
-    ).toEqual('pnpm')
+    expect(getPackageManager(path.resolve(fixtures, 'lock-file/pnpm'))).toEqual(
+      'pnpm',
+    )
   })
 })
