@@ -14,7 +14,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuepress/ecosystem.git"
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "tools/create-vuepress"
   },
   "license": "MIT",
   "author": {
