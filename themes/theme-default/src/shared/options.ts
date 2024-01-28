@@ -111,8 +111,8 @@ export interface DefaultThemeLocaleData extends LocaleData {
   /**
    * The alt text of navbar logo.
    * Defaults to the site title if not specified.
-   * If the value is the same as the site title and the site title is displayed (i.e not mobile)
-   * the alt attribute will still be rendered but with an empty value to not be read twice by screen readers.
+   * If the value is the same as the site title, the site title rendered in the navbar will be
+   * hidden from screen readers to avoid duplication.
    */
   logoAlt?: null | string
 
