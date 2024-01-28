@@ -25,10 +25,9 @@ module.exports = {
       extends: 'plugin:cypress/recommended',
     },
     {
-      files: ['tools/create-helper/**/*.ts', 'tools/create-helper/**/*.vue'],
+      files: ['tools/create-vuepress/**/*.vue'],
       rules: {
-        'import/no-extraneous-dependencies': 'off',
-        'import/named': 'off',
+        'vue/no-v-html': 'off',
       },
     },
     {
