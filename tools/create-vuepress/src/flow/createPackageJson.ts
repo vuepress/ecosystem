@@ -35,9 +35,7 @@ export const createPackageJson = async ({
   bundler,
 }: CreatePackageJsonOptions): Promise<void> => {
   const packageJsonPath = join(targetDir, 'package.json')
-  // TODO: Update it
   const devDependencies = {
-    '@vuepress/client': '^2.0.0-rc.2',
     [`@vuepress/bundler-${bundler}`]: '^2.0.0-rc.2',
     '@vuepress/theme-default': '^2.0.0-rc.2',
     'vue': '^3.4.0',
@@ -45,7 +43,6 @@ export const createPackageJson = async ({
   }
 
   if (preset === 'blog') {
-    devDependencies['@vuepress/core'] = '^2.0.0-rc.2'
     devDependencies['vue-router'] = '^4.2.5'
   }
 
@@ -86,13 +83,9 @@ export const createPackageJson = async ({
     ...result,
     type: 'module',
     scripts: {
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      'docs:build': `vuepress build src`,
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      'docs:clean-dev': `vuepress dev src --clean-cache`,
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      'docs:dev': `vuepress dev src`,
-      // eslint-disable-next-line @typescript-eslint/naming-convention
+      'docs:build': `vuepress build docs`,
+      'docs:clean-dev': `vuepress dev docs --clean-cache`,
+      'docs:dev': `vuepress dev docs`,
       'docs:update-package': `${
         packageManager === 'npm' ? 'npx' : `${packageManager} dlx`
       } vp-update`,
