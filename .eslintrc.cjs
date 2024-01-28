@@ -38,9 +38,5 @@ module.exports = {
         'vue/one-component-per-file': 'off',
       },
     },
-    {
-      files: ['**/e2e/**/*.cy.ts', '**/e2e/cypress/**/*.ts'],
-      extends: 'plugin:cypress/recommended',
-    },
   ],
 }

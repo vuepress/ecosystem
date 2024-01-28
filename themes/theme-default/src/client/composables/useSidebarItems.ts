@@ -202,7 +202,7 @@ export const resolveMultiSidebarItems = (
     page,
     router,
     path,
-    matchedSidebarConfig as SidebarConfigArray,
+    matchedSidebarConfig,
     sidebarDepth,
   )
 }
