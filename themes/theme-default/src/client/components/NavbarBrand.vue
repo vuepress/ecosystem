@@ -24,14 +24,7 @@ const navbarBrandLogo = computed(() => {
   }
   return themeLocale.value.logo
 })
-const navbarBrandLogoAlt = computed(
-  () => themeLocale.value.logoAlt ?? navbarBrandTitle.value,
-)
-const navBarLogoAltMatchesTitle = computed(
-  () =>
-    navbarBrandTitle.value.toLocaleUpperCase().trim() ===
-    navbarBrandLogoAlt.value.toLocaleUpperCase().trim(),
-)
+const navbarBrandLogoAlt = computed(() => themeLocale.value.logoAlt ?? '')
 const NavbarBrandLogo: FunctionalComponent = () => {
   if (!navbarBrandLogo.value) return null
   const img = h('img', {
@@ -56,7 +49,6 @@ const NavbarBrandLogo: FunctionalComponent = () => {
       v-if="navbarBrandTitle"
       class="site-name"
       :class="{ 'can-hide': navbarBrandLogo }"
-      :aria-hidden="navBarLogoAltMatchesTitle"
     >
       {{ navbarBrandTitle }}
     </span>
