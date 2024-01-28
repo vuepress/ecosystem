@@ -6,6 +6,7 @@ export type PackageManager = 'npm' | 'yarn' | 'pnpm'
 const globalCache = new Map<string, boolean>()
 const localCache = new Map<string, PackageManager>()
 
+const PACKAGE_CONFIG = 'package.json'
 const NPM_LOCK = 'package-lock.json'
 const YARN_LOCK = 'yarn.lock'
 const PNPM_LOCK = 'pnpm-lock.yaml'
@@ -42,6 +43,66 @@ export const isPackageManagerInstalled = (
   }
 
   return false
+}
+
+/**
+ * Get package manager setting in package.json
+ *
+ * @param cwd current working directory
+ * @param deep whether to search in parent directories
+ * @returns the type of lock file
+ */
+export const getPackageManagerSetting = (
+  cwd = process.cwd(),
+  deep = true,
+): PackageManager | null => {
+  const key = `package:${cwd}`
+
+  const status = localCache.get(key)
+
+  if (status !== undefined) return status
+
+  if (fs.existsSync(path.resolve(cwd, PACKAGE_CONFIG))) {
+    const { packageManager: packageManagerSettings } = JSON.parse(
+      fs.readFileSync(path.resolve(cwd, PACKAGE_CONFIG), 'utf-8'),
+    ) as Record<string, unknown> & { packageManager?: string }
+
+    if (packageManagerSettings) {
+      const packageManager = packageManagerSettings.split(
+        '@',
+      )[0] as PackageManager
+
+      localCache.set(key, packageManager)
+
+      return packageManager
+    }
+  }
+
+  if (deep) {
+    let dir = cwd
+
+    while (dir !== path.dirname(dir)) {
+      dir = path.dirname(dir)
+
+      if (fs.existsSync(path.resolve(cwd, PACKAGE_CONFIG))) {
+        const { packageManager: packageManagerSettings } = JSON.parse(
+          fs.readFileSync(path.resolve(cwd, PACKAGE_CONFIG), 'utf-8'),
+        ) as Record<string, unknown> & { packageManager?: string }
+
+        if (packageManagerSettings) {
+          const packageManager = packageManagerSettings.split(
+            '@',
+          )[0] as PackageManager
+
+          localCache.set(key, packageManager)
+
+          return packageManager
+        }
+      }
+    }
+  }
+
+  return null
 }
 
 /**
@@ -118,15 +179,11 @@ export const getTypeofLockFile = (
 export const getPackageManager = (
   cwd = process.cwd(),
   deep = true,
-): PackageManager => {
-  const type = getTypeofLockFile(cwd, deep)
-
-  return (
-    type ||
-    (isPackageManagerInstalled('pnpm')
-      ? 'pnpm'
-      : isPackageManagerInstalled('yarn')
-        ? 'yarn'
-        : 'npm')
-  )
-}
+): PackageManager =>
+  getPackageManagerSetting(cwd, deep) ||
+  getTypeofLockFile(cwd, deep) ||
+  (isPackageManagerInstalled('pnpm')
+    ? 'pnpm'
+    : isPackageManagerInstalled('yarn')
+      ? 'yarn'
+      : 'npm')
