@@ -195,6 +195,9 @@ export const resolveMultiSidebarItems = (
   const sidebarPath = resolveLocalePath(sidebarConfig, path)
   const matchedSidebarConfig = sidebarConfig[sidebarPath] ?? []
 
+  if (matchedSidebarConfig === 'heading') {
+    return resolveAutoSidebarItems(page, sidebarDepth)
+  }
   return resolveArraySidebarItems(
     page,
     router,
