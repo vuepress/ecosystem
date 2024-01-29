@@ -10,6 +10,7 @@ import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import { seoPlugin } from '@vuepress/plugin-seo'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import type { Page, Theme } from 'vuepress/core'
+import { isPlainObject } from 'vuepress/shared'
 import { fs, getDirname, path } from 'vuepress/utils'
 import type {
   DefaultThemeLocaleOptions,
@@ -25,6 +26,11 @@ const __dirname = getDirname(import.meta.url)
 
 export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
   /**
+   * Domain to be deployed
+   */
+  hostname?: string
+
+  /**
    * To avoid confusion with the root `plugins` option,
    * we use `themePlugins`
    */
@@ -33,6 +39,7 @@ export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
 
 export const defaultTheme = ({
   themePlugins = {},
+  hostname,
   ...localeOptions
 }: DefaultThemeOptions = {}): Theme => {
   assignDefaultLocaleOptions(localeOptions)
@@ -163,7 +170,12 @@ export const defaultTheme = ({
       themePlugins.prismjs !== false ? prismjsPlugin() : [],
 
       // @vuepress/plugin-seo
-      themePlugins.seo !== false ? seoPlugin() : [],
+      themePlugins.seo !== false
+        ? seoPlugin({
+            hostname,
+            ...(isPlainObject(themePlugins.seo) ? themePlugins.seo : {}),
+          })
+        : [],
 
       // @vuepress/plugin-theme-data
       themeDataPlugin({ themeData: localeOptions }),
