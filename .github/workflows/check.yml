@@ -35,7 +35,9 @@ jobs:
         run: pnpm lint
 
       - name: Docs Test
-        run: pnpm --filter @vuepress/ecosystem-docs docs:build
+        run: |
+          pnpm --filter @vuepress/ecosystem-docs docs:build
+          pnpm --filter @vuepress/ecosystem-docs docs:build-webpack
 
       - name: Unit Test
         run: pnpm test:unit
