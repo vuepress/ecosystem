@@ -7,8 +7,10 @@ import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { palettePlugin } from '@vuepress/plugin-palette'
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
+import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import type { Page, Theme } from 'vuepress/core'
+import { isPlainObject } from 'vuepress/shared'
 import { fs, getDirname, path } from 'vuepress/utils'
 import type {
   DefaultThemeLocaleOptions,
@@ -24,6 +26,11 @@ const __dirname = getDirname(import.meta.url)
 
 export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
   /**
+   * deployed hostname
+   */
+  hostname?: string
+
+  /**
    * To avoid confusion with the root `plugins` option,
    * we use `themePlugins`
    */
@@ -31,6 +38,7 @@ export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
 }
 
 export const defaultTheme = ({
+  hostname,
   themePlugins = {},
   ...localeOptions
 }: DefaultThemeOptions = {}): Theme => {
@@ -160,6 +168,16 @@ export const defaultTheme = ({
 
       // @vuepress/plugin-prismjs
       themePlugins.prismjs !== false ? prismjsPlugin() : [],
+
+      // @vuepress/plugin-sitemap
+      hostname && themePlugins.sitemap !== false
+        ? sitemapPlugin({
+            hostname,
+            ...(isPlainObject(themePlugins.sitemap)
+              ? themePlugins.sitemap
+              : {}),
+          })
+        : [],
 
       // @vuepress/plugin-theme-data
       themeDataPlugin({ themeData: localeOptions }),
