@@ -609,7 +609,7 @@ export default {
 
 - 详情：
 
-  [ExternalLinkIcon](../plugin/external-link-icon.md#externallinkicon). 链接内的 `sr-only` 文字。
+  [ExternalLinkIcon](../../plugins/external-link-icon.md#externallinkicon). 链接内的 `sr-only` 文字。
 
   它主要是为了站点的可访问性 (a11y) 。
 
@@ -661,7 +661,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-active-header-links](../plugin/active-header-links.md) 。
+  是否启用 [@vuepress/plugin-active-header-links](../../plugins/active-header-links.md) 。
 
 #### themePlugins.backToTop
 
@@ -671,7 +671,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-back-to-top](../plugin/back-to-top.md) 。
+  是否启用 [@vuepress/plugin-back-to-top](../../plugins/back-to-top.md) 。
 
 ### themePlugins.container
 
@@ -679,7 +679,7 @@ export default {
 
 - 详情：
 
-  是否启用由 [@vuepress/plugin-container](../plugin/container.md) 支持的自定义容器。
+  是否启用由 [@vuepress/plugin-container](../../plugins/container.md) 支持的自定义容器。
 
   `ContainerType` 类型为：
 
@@ -701,7 +701,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-external-link-icon](../plugin/external-link-icon.md) 。
+  是否启用 [@vuepress/plugin-external-link-icon](../../plugins/external-link-icon.md) 。
 
 ### themePlugins.git
 
@@ -711,7 +711,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-git](../plugin/git.md) 。
+  是否启用 [@vuepress/plugin-git](../../plugins/git.md) 。
 
 ### themePlugins.mediumZoom
 
@@ -721,7 +721,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-medium-zoom](../plugin/medium-zoom.md) 。
+  是否启用 [@vuepress/plugin-medium-zoom](../../plugins/medium-zoom.md) 。
 
 ### themePlugins.nprogress
 
@@ -731,4 +731,14 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-nprogress](../plugin/nprogress.md) 。
+  是否启用 [@vuepress/plugin-nprogress](../../plugins/nprogress.md) 。
+
+### themePlugins.sitemap
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否启用 [@vuepress/plugin-sitemap](../../plugins/sitemap/README.md) 。
