@@ -17,7 +17,7 @@ export interface PageExcerptOptions {
    *
    * @default "<!-- more -->"
    */
-  excerptSeparator?: string
+  separator?: string
 
   /**
    * Length of excerpt
@@ -30,7 +30,7 @@ export interface PageExcerptOptions {
    *
    * @default 300
    */
-  excerptLength?: number
+  length?: number
 
   /**
    * Tags which is considered as custom elements
@@ -44,13 +44,13 @@ export interface PageExcerptOptions {
   isCustomElement?: (tagName: string) => boolean
 
   /**
-   * Whether remove the first node if its h1
+   * Whether keep page title (first h1) in excerpt
    *
-   * 是否在第一个节点是 h1 的时候移除它
+   * 是否保留页面标题 (第一个 h1)
    *
    * @default false
    */
-  preserveTitle?: boolean
+  keepPageTitle?: boolean
 
   /**
    * Whether preserve tags like line numbers and highlight lines for code blocks
@@ -59,19 +59,19 @@ export interface PageExcerptOptions {
    *
    * @default false
    */
-  preserveFenceDom?: boolean
+  keepFenceDom?: boolean
 }
 
 interface NodeOptions
   extends Required<
-    Pick<PageExcerptOptions, 'isCustomElement' | 'preserveFenceDom'>
+    Pick<PageExcerptOptions, 'isCustomElement' | 'keepFenceDom'>
   > {
   base: string
 }
 
 const handleNode = (
   node: AnyNode,
-  { base, isCustomElement, preserveFenceDom }: NodeOptions,
+  { base, isCustomElement, keepFenceDom }: NodeOptions,
 ): AnyNode | null => {
   if (node.type === 'tag') {
     // image using relative urls shall be dropped
@@ -116,31 +116,34 @@ const handleNode = (
         node.tagName === 'div' &&
         node.attribs.class.startsWith('language-')
       ) {
-        const firstChild = node.children[0]
+        const pre = node.children.find(
+          (node) =>
+            node.type === 'tag' &&
+            node.tagName === 'pre' &&
+            node.attribs.class.startsWith('language-'),
+        )
 
         if (
           // we are sure this is a code fence
-          firstChild.type === 'tag' &&
-          firstChild.tagName === 'pre' &&
-          firstChild.attribs.class.startsWith('language-') &&
-          !preserveFenceDom
+          pre &&
+          !keepFenceDom
         ) {
           node.attribs.class = node.attribs.class.replace(
             ' line-numbers-mode',
             '',
           )
-          node.children = [node.children[0]]
+          node.children = [pre]
         }
       }
 
-      // remove `v-pre` attribute
+      // remove `v-pre` attribute on code
       if (node.tagName === 'code' || node.tagName === 'pre')
         delete node.attribs['v-pre']
 
       node.children = handleNodes(node.children, {
         base,
         isCustomElement,
-        preserveFenceDom,
+        keepFenceDom,
       })
 
       return node
@@ -156,7 +159,7 @@ const handleNode = (
       node.children = handleNodes(node.children, {
         base,
         isCustomElement,
-        preserveFenceDom,
+        keepFenceDom,
       })
 
       return node
@@ -174,12 +177,16 @@ const handleNode = (
 
 const handleNodes = (
   nodes: AnyNode[] | null,
-  { base, isCustomElement, preserveFenceDom }: NodeOptions,
+  { base, isCustomElement, keepFenceDom }: NodeOptions,
 ): AnyNode[] =>
   isArray(nodes)
     ? nodes
         .map((node) =>
-          handleNode(node, { base, isCustomElement, preserveFenceDom }),
+          handleNode(node, {
+            base,
+            isCustomElement,
+            keepFenceDom,
+          }),
         )
         .filter((node): node is AnyNode => node !== null)
     : []
@@ -194,16 +201,16 @@ export const getPageExcerpt = (
   { content, contentRendered, filePath, filePathRelative, frontmatter }: Page,
   {
     isCustomElement = (): boolean => false,
-    excerptSeparator = '<!-- more -->',
-    excerptLength = 300,
-    preserveTitle = false,
-    preserveFenceDom = false,
+    separator = '<!-- more -->',
+    length = 300,
+    keepPageTitle = false,
+    keepFenceDom = false,
   }: PageExcerptOptions = {},
 ): string => {
   // get page content
   const { excerpt } = matter(content, {
     excerpt: true,
-    excerpt_separator: excerptSeparator,
+    excerpt_separator: separator,
   })
 
   if (excerpt) {
@@ -220,29 +227,33 @@ export const getPageExcerpt = (
 
     const rootNodes = $.parseHTML(renderedContent)
 
-    if (rootNodes[0] && !preserveTitle && isH1Tag(rootNodes[0]))
+    if (rootNodes[0] && !keepPageTitle && isH1Tag(rootNodes[0]))
       rootNodes.shift()
 
     return $.html(
-      handleNodes(rootNodes, { base, isCustomElement, preserveFenceDom }),
+      handleNodes(rootNodes, {
+        base,
+        isCustomElement,
+        keepFenceDom,
+      }),
     )
-  } else if (excerptLength > 0) {
+  } else if (length > 0) {
     let excerpt = ''
     const rootNodes = $.parseHTML(contentRendered) || []
 
-    if (rootNodes[0] && !preserveTitle && isH1Tag(rootNodes[0]))
+    if (rootNodes[0] && !keepPageTitle && isH1Tag(rootNodes[0]))
       rootNodes.shift()
 
     for (const node of rootNodes) {
       const resolvedNode = handleNode(node, {
         base,
         isCustomElement,
-        preserveFenceDom,
+        keepFenceDom,
       })
 
       if (resolvedNode) {
         excerpt += `${$.html(resolvedNode)}`
-        if (excerpt.length >= excerptLength) break
+        if (excerpt.length >= length) break
       }
     }
 

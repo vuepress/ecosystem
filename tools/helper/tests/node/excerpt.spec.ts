@@ -33,72 +33,70 @@ describe('generate page excerpt correctly', async () => {
     })
 
     describe('handle contents correctly', () => {
-      getExcerptData({ excerptLength: Infinity }).forEach(
-        ({ excerpt, path }) => {
-          if (path === '/markdown.html') {
-            it('clean heading', () => {
-              ;[1, 2, 3, 4, 5, 6].forEach((i) => {
-                expect(excerpt).toContain(`<h${i}>Heading ${i}</h${i}>`)
-              })
-
-              expect(excerpt).toContain(
-                '<h3>Heading with <strong>markdown</strong> and <span>html</span></h3>',
-              )
+      getExcerptData({ length: Infinity }).forEach(({ excerpt, path }) => {
+        if (path === '/markdown.html') {
+          it('clean heading', () => {
+            ;[1, 2, 3, 4, 5, 6].forEach((i) => {
+              expect(excerpt).toContain(`<h${i}>Heading ${i}</h${i}>`)
             })
 
-            it('handle inline tags', () => {
-              expect(excerpt).toContain('<strong>bold</strong>')
-              expect(excerpt).toContain('<em>italic</em>')
-              expect(excerpt).toContain('<s>delete</s>')
-            })
+            expect(excerpt).toContain(
+              '<h3>Heading with <strong>markdown</strong> and <span>html</span></h3>',
+            )
+          })
 
-            it('handle block tags', () => {
-              expect(excerpt).toContain('<p>')
-              expect(excerpt).toContain('<ul>')
-              expect(excerpt).toContain('<ol>')
-              expect(excerpt).toContain('<li>')
-              expect(excerpt).toContain('<blockquote>')
-            })
+          it('handle inline tags', () => {
+            expect(excerpt).toContain('<strong>bold</strong>')
+            expect(excerpt).toContain('<em>italic</em>')
+            expect(excerpt).toContain('<s>delete</s>')
+          })
 
-            it('handle links', () => {
-              expect(excerpt).toContain(
-                '<a href="/excerpt.html" target="_blank">relative markdown link</a>',
-              )
-              expect(excerpt).toContain(
-                '<a href="/excerpt.html" target="_blank">relative html link</a>',
-              )
-              expect(excerpt).toContain(
-                '<a href="/" target="_blank">absolute markdown link</a>',
-              )
-              expect(excerpt).toContain(
-                '<a href="/index.html" target="_blank">absolute html link</a>',
-              )
-              expect(excerpt).toContain('<a href="#link">Anchor</a>')
-            })
+          it('handle block tags', () => {
+            expect(excerpt).toContain('<p>')
+            expect(excerpt).toContain('<ul>')
+            expect(excerpt).toContain('<ol>')
+            expect(excerpt).toContain('<li>')
+            expect(excerpt).toContain('<blockquote>')
+          })
 
-            it('remove relative image', () => {
-              expect(excerpt).not.toContain('relative.jpg')
-            })
+          it('handle links', () => {
+            expect(excerpt).toContain(
+              '<a href="/excerpt.html" target="_blank">relative markdown link</a>',
+            )
+            expect(excerpt).toContain(
+              '<a href="/excerpt.html" target="_blank">relative html link</a>',
+            )
+            expect(excerpt).toContain(
+              '<a href="/" target="_blank">absolute markdown link</a>',
+            )
+            expect(excerpt).toContain(
+              '<a href="/index.html" target="_blank">absolute html link</a>',
+            )
+            expect(excerpt).toContain('<a href="#link">Anchor</a>')
+          })
 
-            it('preserve image with url or absolute links', () => {
-              expect(excerpt).toContain('src="https://exmaple.com/logo.png"')
-              expect(excerpt).toContain('src="/logo.png"')
-            })
+          it('remove relative image', () => {
+            expect(excerpt).not.toContain('relative.jpg')
+          })
 
-            it('inline code', () => {
-              expect(excerpt).toContain('<code>inline code</code>')
-            })
+          it('preserve image with url or absolute links', () => {
+            expect(excerpt).toContain('src="https://exmaple.com/logo.png"')
+            expect(excerpt).toContain('src="/logo.png"')
+          })
 
-            it('code fence', () => {
-              expect(excerpt).toContain('<code>inline code</code>')
-            })
+          it('inline code', () => {
+            expect(excerpt).toContain('<code>inline code</code>')
+          })
 
-            it('remove comment', () => {
-              expect(excerpt).toContain('Sample text here...')
-            })
-          }
-        },
-      )
+          it('code fence', () => {
+            expect(excerpt).toContain('<code>inline code</code>')
+          })
+
+          it('remove comment', () => {
+            expect(excerpt).toContain('Sample text here...')
+          })
+        }
+      })
     })
 
     it('remove unknown tags', () => {
@@ -113,7 +111,7 @@ describe('generate page excerpt correctly', async () => {
 
   describe('excerptLength', () => {
     it('only generate when having marker with 0', () => {
-      getExcerptData({ excerptLength: 0 }).forEach(({ excerpt, path }) => {
+      getExcerptData({ length: 0 }).forEach(({ excerpt, path }) => {
         if (path === '/separator.html') {
           expect(excerpt).toContain('article excerpt')
           expect(excerpt).not.toContain('main content')
@@ -125,16 +123,14 @@ describe('generate page excerpt correctly', async () => {
     })
 
     it('extract all content with Infinity', () => {
-      getExcerptData({ excerptLength: Infinity }).forEach(
-        ({ excerpt, path }) => {
-          expect(excerpt.length).toBeGreaterThan(0)
-          expect(excerpt).toMatchSnapshot(path)
+      getExcerptData({ length: Infinity }).forEach(({ excerpt, path }) => {
+        expect(excerpt.length).toBeGreaterThan(0)
+        expect(excerpt).toMatchSnapshot(path)
 
-          if (path === '/long-content.html') {
-            expect(excerpt).toContain('Content ends.')
-          }
-        },
-      )
+        if (path === '/long-content.html') {
+          expect(excerpt).toContain('Content ends.')
+        }
+      })
     })
   })
 
@@ -150,7 +146,7 @@ describe('generate page excerpt correctly', async () => {
     })
 
     it('generate excerpt with custom marker', () => {
-      getExcerptData({ excerptSeparator: 'END_OF_EXCERPT' }).forEach(
+      getExcerptData({ separator: 'END_OF_EXCERPT' }).forEach(
         ({ excerpt, path }) => {
           if (path === '/custom-separator.html') {
             expect(excerpt).toContain('article excerpt')
@@ -177,7 +173,7 @@ describe('generate page excerpt correctly', async () => {
     })
   })
 
-  describe('preserveTitle', () => {
+  describe('keepPageTitle', () => {
     it('remove first h1', () => {
       getExcerptData().forEach(({ excerpt, path }) => {
         if (path === '/markdown.html') {
@@ -187,7 +183,7 @@ describe('generate page excerpt correctly', async () => {
     })
 
     it('not remove first h1', () => {
-      getExcerptData({ preserveTitle: true }).forEach(({ excerpt, path }) => {
+      getExcerptData({ keepPageTitle: true }).forEach(({ excerpt, path }) => {
         if (path === '/markdown.html') {
           expect(excerpt).toContain('Content Example')
         }
@@ -195,22 +191,20 @@ describe('generate page excerpt correctly', async () => {
     })
   })
 
-  describe('preserveFenceDom', () => {
+  describe('keepFenceDom', () => {
     it('remove highlight lines and line numbers', () => {
-      getExcerptData({ excerptLength: Infinity }).forEach(
-        ({ excerpt, path }) => {
-          if (path === '/markdown.html') {
-            expect(excerpt).not.toContain('line-numbers')
-            expect(excerpt).not.toContain('highlight-line')
-          }
-        },
-      )
+      getExcerptData({ length: Infinity }).forEach(({ excerpt, path }) => {
+        if (path === '/markdown.html') {
+          expect(excerpt).not.toContain('line-numbers')
+          expect(excerpt).not.toContain('highlight-line')
+        }
+      })
     })
 
     it('preserve highlight lines and line numbers', () => {
       getExcerptData({
-        excerptLength: Infinity,
-        preserveFenceDom: true,
+        length: Infinity,
+        keepFenceDom: true,
       }).forEach(({ excerpt, path }) => {
         if (path === '/markdown.html') {
           expect(excerpt).toContain('line-numbers')
