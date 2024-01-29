@@ -41,6 +41,7 @@ export const sidebarZh: SidebarConfig = {
     {
       text: '默认主题',
       children: [
+        '/zh/themes/default/',
         '/zh/themes/default/config',
         '/zh/themes/default/frontmatter',
         '/zh/themes/default/components',

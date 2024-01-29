@@ -6,14 +6,7 @@ export const navbarEn: NavbarConfig = [
     children: [
       {
         text: 'Default Theme',
-        children: [
-          '/themes/default/config',
-          '/themes/default/frontmatter',
-          '/themes/default/components',
-          '/themes/default/markdown',
-          '/themes/default/styles',
-          '/themes/default/extending',
-        ],
+        link: '/themes/default/',
       },
     ],
   },

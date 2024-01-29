@@ -6,14 +6,7 @@ export const navbarZh: NavbarConfig = [
     children: [
       {
         text: '默认主题',
-        children: [
-          '/zh/themes/default/config',
-          '/zh/themes/default/frontmatter',
-          '/zh/themes/default/components',
-          '/zh/themes/default/markdown',
-          '/zh/themes/default/styles',
-          '/zh/themes/default/extending',
-        ],
+        link: '/zh/themes/default/',
       },
     ],
   },

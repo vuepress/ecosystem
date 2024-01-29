@@ -1,17 +1,5 @@
 # Config
 
-<NpmBadge package="@vuepress/theme-default" />
-
-```ts
-import { defaultTheme } from '@vuepress/theme-default'
-
-export default {
-  theme: defaultTheme({
-    // set config here
-  }),
-}
-```
-
 ## Basic Config
 
 ### locales
