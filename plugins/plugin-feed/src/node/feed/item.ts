@@ -1,5 +1,6 @@
 import {
   getPageExcerpt,
+  getPageText,
   isAbsoluteUrl,
   isArray,
   isFunction,
@@ -79,7 +80,7 @@ export class FeedItem {
 
     if (this.frontmatter.description) return this.frontmatter.description
 
-    const pageText = getPageText(this.page)
+    const pageText = getPageText(this.app, this.page, { length: 180 })
 
     return pageText.length > 180 ? `${pageText.slice(0, 177)}...` : pageText
   }
