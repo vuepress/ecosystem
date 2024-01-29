@@ -1,6 +1,5 @@
 import {
-  compareDate,
-  deepAssign,
+  dateSorter,
   fromEntries,
   isArray,
   isFunction,
@@ -89,7 +88,7 @@ export const getFeedOptions = (
             pageA: Page<{ git?: GitData }, Record<string, never>>,
             pageB: Page<{ git?: GitData }, Record<string, never>>,
           ): number =>
-            compareDate(
+            dateSorter(
               pageA.data.git?.createdTime
                 ? new Date(pageA.data.git?.createdTime)
                 : pageA.frontmatter.date,
@@ -125,7 +124,12 @@ export const getFeedChannelOption = (
 ): FeedChannelOption => {
   const { base } = app.options
   const { title, description, lang, locales } = app.siteData
-  const { channel = {}, hostname, icon, image } = options
+  const {
+    channel: { icon: channelIcon, image: channelImage, ...channel } = {},
+    hostname,
+    icon,
+    image,
+  } = options
   const authorName = isArray(options.channel?.author)
     ? options.channel?.author[0]?.name
     : options.channel?.author?.name
@@ -150,22 +154,24 @@ export const getFeedChannelOption = (
       : {}),
   }
 
-  return deepAssign(defaultChannelOption, channel, {
-    ...(channel.icon
+  return {
+    ...defaultChannelOption,
+    ...channel,
+    ...(channelIcon
       ? {
-          icon: isLinkHttp(channel.icon)
-            ? channel.icon
-            : getUrl(hostname, base, channel.icon),
+          icon: isLinkHttp(channelIcon)
+            ? channelIcon
+            : getUrl(hostname, base, channelIcon),
         }
       : {}),
-    ...(channel.image
+    ...(channelImage
       ? {
-          image: isLinkHttp(channel.image)
-            ? channel.image
-            : getUrl(hostname, base, channel.image),
+          image: isLinkHttp(channelImage)
+            ? channelImage
+            : getUrl(hostname, base, channelImage),
         }
       : {}),
-  })
+  }
 }
 
 export const getFilename = (

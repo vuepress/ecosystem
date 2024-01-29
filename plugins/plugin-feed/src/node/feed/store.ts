@@ -1,12 +1,12 @@
 import type { App } from 'vuepress/core'
-import type { FeedItem } from './feedItem.js'
-import type { FeedLinks, ResolvedFeedOptions } from './options.js'
-import { getFeedChannelOption, getFeedLinks } from './options.js'
+import type { FeedLinks, ResolvedFeedOptions } from '../options.js'
+import { getFeedChannelOption, getFeedLinks } from '../options.js'
 import type {
   FeedCategory,
   FeedChannelOption,
   FeedContributor,
-} from './typings/index.js'
+} from '../typings/index.js'
+import type { FeedItem } from './item.js'
 
 export class FeedStore {
   public categories = new Set<string>()

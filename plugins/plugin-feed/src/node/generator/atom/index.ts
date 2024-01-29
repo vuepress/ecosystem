@@ -1,6 +1,6 @@
 import { isArray } from '@vuepress/helper/node'
 import { js2xml } from 'xml-js'
-import type { FeedStore } from '../../feedStore.js'
+import type { FeedStore } from '../../feed/store.js'
 import type { FeedAuthor, FeedCategory } from '../../typings/index.js'
 import { encodeXML, FEED_GENERATOR } from '../../utils/index.js'
 import type {

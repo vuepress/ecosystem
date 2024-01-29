@@ -1,5 +1,5 @@
 import { isArray } from '@vuepress/helper/node'
-import type { FeedStore } from '../../feedStore.js'
+import type { FeedStore } from '../../feed/store.js'
 import type { FeedAuthor } from '../../typings/index.js'
 import type { JSONAuthor, JSONContent, JSONItem } from './typings.js'
 

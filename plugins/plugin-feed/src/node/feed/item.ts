@@ -10,8 +10,7 @@ import type { GitData } from '@vuepress/plugin-git'
 import type { App, Page } from 'vuepress/core'
 import { isString } from 'vuepress/shared'
 import type { PageFrontmatter } from 'vuepress/shared'
-import { getAuthor, getCategory, getPageText } from './not'
-import type { ResolvedFeedOptions } from './options.js'
+import type { ResolvedFeedOptions } from '../options.js'
 import type {
   AuthorInfo,
   FeedAuthor,
@@ -21,8 +20,13 @@ import type {
   FeedFrontmatterOption,
   FeedGetter,
   FeedPluginFrontmatter,
-} from './typings/index.js'
-import { getImageMineType, getUrl } from './utils/index.js'
+} from '../typings/index.js'
+import {
+  getFeedAuthor,
+  getFeedCategory,
+  getImageMineType,
+  getUrl,
+} from '../utils/index.js'
 
 export class FeedItem {
   private pageOptions: FeedFrontmatterOption
@@ -98,9 +102,9 @@ export class FeedItem {
     if (isPlainObject(this.pageOptions.author)) return [this.pageOptions.author]
 
     return this.frontmatter.author
-      ? getAuthor(this.frontmatter.author)
+      ? getFeedAuthor(this.frontmatter.author)
       : this.options.channel?.author
-        ? getAuthor(this.options.channel?.author as AuthorInfo)
+        ? getFeedAuthor(this.options.channel?.author as AuthorInfo)
         : []
   }
 
@@ -117,7 +121,7 @@ export class FeedItem {
 
     const { categories, category = categories } = this.frontmatter
 
-    return getCategory(category).map((item) => ({ name: item }))
+    return getFeedCategory(category).map((item) => ({ name: item }))
   }
 
   /**
@@ -192,8 +196,8 @@ export class FeedItem {
 
     return getPageExcerpt(this.app, this.page, {
       isCustomElement: this.options.isPreservedElement,
-      excerptSeparator: '',
-      excerptLength: Infinity,
+      separator: '',
+      length: Infinity,
     })
   }
 
