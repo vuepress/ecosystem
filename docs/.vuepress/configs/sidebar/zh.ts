@@ -15,12 +15,25 @@ export const sidebarZh: SidebarConfig = {
       ],
     },
     {
-      text: '内容搜索',
+      text: '搜索',
       children: ['/zh/plugins/docsearch', '/zh/plugins/search'],
     },
     {
       text: 'PWA',
       children: ['/zh/plugins/pwa', '/zh/plugins/pwa-popup'],
+    },
+    {
+      text: '搜索引擎增强',
+      children: [
+        {
+          text: '站点地图',
+          children: [
+            '/zh/plugins/sitemap/guide',
+            '/zh/plugins/sitemap/config',
+            '/zh/plugins/sitemap/frontmatter',
+          ],
+        },
+      ],
     },
     {
       text: '语法高亮',

@@ -26,12 +26,16 @@ export const navbarZh: NavbarConfig = [
         ],
       },
       {
-        text: '内容搜索',
+        text: '搜索',
         children: ['/zh/plugins/docsearch', '/zh/plugins/search'],
       },
       {
         text: 'PWA',
         children: ['/zh/plugins/pwa', '/zh/plugins/pwa-popup'],
+      },
+      {
+        text: '搜索引擎增强',
+        children: ['/zh/plugins/sitemap'],
       },
       {
         text: '语法高亮',
