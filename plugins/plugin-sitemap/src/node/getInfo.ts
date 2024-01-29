@@ -1,7 +1,7 @@
 import type { GitData } from '@vuepress/plugin-git'
 import type { App, Page } from 'vuepress/core'
-import { removeLeadingSlash } from 'vuepress-shared/node'
-import type { PageModifyTimeGetter, SitemapOptions } from './options.js'
+import { removeLeadingSlash } from 'vuepress/shared'
+import type { SitemapOptions } from './options.js'
 import type {
   SitemapImageOption,
   SitemapLinkOption,
@@ -46,10 +46,10 @@ export const getSitemapInfos = (
   const {
     changefreq = 'daily',
     excludeUrls = ['/404.html'],
-    modifyTimeGetter = (page: Page<{ git: GitData }>): string =>
+    modifyTimeGetter = (page: Page<{ git?: GitData }>): string =>
       page.data.git?.updatedTime
         ? new Date(page.data.git.updatedTime).toISOString()
-        : ('' as PageModifyTimeGetter),
+        : '',
   } = options
   const { base, locales } = app.options
 
@@ -58,7 +58,7 @@ export const getSitemapInfos = (
   const sitemapInfos: [path: string, info: SitemapInfo][] = []
 
   app.pages.forEach(
-    (page: Page<Record<never, never>, SitemapPluginFrontmatter>) => {
+    (page: Page<{ git?: GitData }, SitemapPluginFrontmatter>) => {
       const pageOptions = page.frontmatter.sitemap
 
       if (pageOptions === false) return
