@@ -18,7 +18,7 @@ const isProd = process.env.NODE_ENV === 'production'
 
 export default defineUserConfig({
   // set site base to default value
-  base: '/',
+  base: (process.env.BASE as `/${string}/` | '/') || '/',
 
   // extra tags in `<head>`
   head,

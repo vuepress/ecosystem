@@ -1,33 +1,11 @@
-name: release
+name: Deploy Ecosystem Docs
 
 on:
   push:
-    tags:
-      - 'v*'
-  workflow_dispatch:
 
 jobs:
-  release:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Create release
-        if: ${{ github.event_name != 'workflow_dispatch' }}
-        id: release_tag
-        uses: yyx990803/release-tag@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          body: |
-            Please refer to [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md) for details.
-
-  deploy-docs:
-    name: Deploy ecosystem docs to Netlify
+  deploy-github-docs:
+    name: Deploy ecosystem docs to Github Pages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -52,12 +30,13 @@ jobs:
 
       - name: Docs build
         env:
+          BASE: /ecosystem/
           NODE_OPTIONS: --max_old_space_size=8192
         run: pnpm --filter @vuepress/ecosystem-docs docs-build
 
       - name: Deploy docs
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: netlify
+          branch: gh-pages
           folder: docs/.vuepress/dist
           single-commit: true
