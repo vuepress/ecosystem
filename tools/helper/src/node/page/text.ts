@@ -57,6 +57,17 @@ export interface PageTextOptions {
    */
   singleLine?: boolean
 
+  /**
+   * Length of text
+   *
+   * @description Text length will be the minimal possible length reaching this value
+   *
+   * 文字的长度
+   *
+   * @description 文字的长度会尽可能的接近这个值
+   *
+   * @default 300
+   */
   length?: number
 
   /**
