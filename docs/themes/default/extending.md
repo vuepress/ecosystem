@@ -2,8 +2,6 @@
 
 VuePress default theme is widely used by users, so it is designed to be extendable, allowing users to make their own customization with ease.
 
-VuePress provides basic ability to extend a theme, but different themes may have different features to be extended. Thus, if you are using a community theme, you'd better refer to the theme's own documentation for how to extending it.
-
 ## Layout Slots
 
 Default theme's `Layout` provides some slots:
