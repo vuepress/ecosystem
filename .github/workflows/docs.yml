@@ -2,6 +2,8 @@ name: Deploy Ecosystem Docs
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
   deploy-github-docs:
