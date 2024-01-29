@@ -7,6 +7,7 @@ import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { palettePlugin } from '@vuepress/plugin-palette'
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
+import { seoPlugin } from '@vuepress/plugin-seo'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import type { Page, Theme } from 'vuepress/core'
 import { fs, getDirname, path } from 'vuepress/utils'
@@ -160,6 +161,9 @@ export const defaultTheme = ({
 
       // @vuepress/plugin-prismjs
       themePlugins.prismjs !== false ? prismjsPlugin() : [],
+
+      // @vuepress/plugin-seo
+      themePlugins.seo !== false ? seoPlugin() : [],
 
       // @vuepress/plugin-theme-data
       themeDataPlugin({ themeData: localeOptions }),

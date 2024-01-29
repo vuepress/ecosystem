@@ -389,6 +389,9 @@ importers:
       '@vuepress/plugin-prismjs':
         specifier: workspace:*
         version: link:../../plugins/plugin-prismjs
+      '@vuepress/plugin-seo':
+        specifier: workspace:*
+        version: link:../../plugins/plugin-seo
       '@vuepress/plugin-theme-data':
         specifier: workspace:*
         version: link:../../plugins/plugin-theme-data
