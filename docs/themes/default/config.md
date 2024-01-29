@@ -2,6 +2,14 @@
 
 ## Basic Config
 
+### hostname
+
+- Type: `string`
+
+- Details:
+
+  Hostname to be deployed, e.g.: `https://example.com`
+
 ### locales
 
 - Type: `{ [path: string]: Partial<DefaultThemeLocaleData> }`

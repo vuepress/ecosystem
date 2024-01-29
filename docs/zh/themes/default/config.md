@@ -2,6 +2,14 @@
 
 ## 基础配置
 
+### hostname
+
+- 类型： `string`
+
+- 详情：
+
+  部署的域名, e.g.: `https://example.com`
+
 ### locales
 
 - 类型： `{ [path: string]: Partial<DefaultThemeLocaleData> }`
