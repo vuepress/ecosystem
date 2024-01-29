@@ -31,6 +31,7 @@
       "path": "./plugins/plugin-register-components/tsconfig.build.json"
     },
     { "path": "./plugins/plugin-search/tsconfig.build.json" },
+    { "path": "./plugins/plugin-seo/tsconfig.build.json" },
     { "path": "./plugins/plugin-shiki/tsconfig.build.json" },
     { "path": "./plugins/plugin-theme-data/tsconfig.build.json" },
     { "path": "./plugins/plugin-toc/tsconfig.build.json" },
