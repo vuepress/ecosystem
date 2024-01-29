@@ -1,16 +1,16 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`generate page excerpt correctly > default > generate excerpt for all pages > / 1`] = `
+exports[`getPageExcerpt > default > generate excerpt for all pages > / 1`] = `
 "<p>Homepage Content</p>
 "
 `;
 
-exports[`generate page excerpt correctly > default > generate excerpt for all pages > /component.html 1`] = `
+exports[`getPageExcerpt > default > generate excerpt for all pages > /component.html 1`] = `
 "<p>A text with </p>
 "
 `;
 
-exports[`generate page excerpt correctly > default > generate excerpt for all pages > /custom-separator.html 1`] = `
+exports[`getPageExcerpt > default > generate excerpt for all pages > /custom-separator.html 1`] = `
 "<p>Here is <strong>article excerpt</strong>.</p>
 <div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1;
 </code></pre></div><p>END_OF_EXCERPT</p>
@@ -23,12 +23,12 @@ exports[`generate page excerpt correctly > default > generate excerpt for all pa
 </ol>"
 `;
 
-exports[`generate page excerpt correctly > default > generate excerpt for all pages > /long-content.html 1`] = `
+exports[`getPageExcerpt > default > generate excerpt for all pages > /long-content.html 1`] = `
 "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, rem. Recusandae itaque rem, non perspiciatis magnam molestiae, in ab quae, dolore illo neque possimus nisi inventore? Laudantium officia nihil iusto!</p>
 <p>Quod delectus vero dicta perferendis quia sint incidunt vitae pariatur, nemo suscipit saepe veritatis laudantium deleniti aperiam! Explicabo dignissimos, corporis, odio voluptatum eius aut pariatur dicta inventore, amet optio modi!</p>"
 `;
 
-exports[`generate page excerpt correctly > default > generate excerpt for all pages > /markdown.html 1`] = `
+exports[`getPageExcerpt > default > generate excerpt for all pages > /markdown.html 1`] = `
 "
 <h2>Headings</h2>
 <h1>Heading 1</h1>
@@ -42,23 +42,23 @@ exports[`generate page excerpt correctly > default > generate excerpt for all pa
 <p>This sentence has <strong>bold</strong>、<em>italic</em> and <s>delete</s> style text.</p>"
 `;
 
-exports[`generate page excerpt correctly > default > generate excerpt for all pages > /separator.html 1`] = `
+exports[`getPageExcerpt > default > generate excerpt for all pages > /separator.html 1`] = `
 "<p>Here is <strong>article excerpt</strong>.</p>
 <div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1;
 </code></pre></div>"
 `;
 
-exports[`generate page excerpt correctly > excerptLength > extract all content with Infinity > / 1`] = `
+exports[`getPageExcerpt > excerptLength > extract all content with Infinity > / 1`] = `
 "<p>Homepage Content</p>
 "
 `;
 
-exports[`generate page excerpt correctly > excerptLength > extract all content with Infinity > /component.html 1`] = `
+exports[`getPageExcerpt > excerptLength > extract all content with Infinity > /component.html 1`] = `
 "<p>A text with </p>
 "
 `;
 
-exports[`generate page excerpt correctly > excerptLength > extract all content with Infinity > /custom-separator.html 1`] = `
+exports[`getPageExcerpt > excerptLength > extract all content with Infinity > /custom-separator.html 1`] = `
 "<p>Here is <strong>article excerpt</strong>.</p>
 <div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1;
 </code></pre></div><p>END_OF_EXCERPT</p>
@@ -73,7 +73,7 @@ exports[`generate page excerpt correctly > excerptLength > extract all content w
 </code></pre></div>"
 `;
 
-exports[`generate page excerpt correctly > excerptLength > extract all content with Infinity > /long-content.html 1`] = `
+exports[`getPageExcerpt > excerptLength > extract all content with Infinity > /long-content.html 1`] = `
 "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, rem. Recusandae itaque rem, non perspiciatis magnam molestiae, in ab quae, dolore illo neque possimus nisi inventore? Laudantium officia nihil iusto!</p>
 <p>Quod delectus vero dicta perferendis quia sint incidunt vitae pariatur, nemo suscipit saepe veritatis laudantium deleniti aperiam! Explicabo dignissimos, corporis, odio voluptatum eius aut pariatur dicta inventore, amet optio modi!</p>
 <p>Eligendi voluptatum animi aspernatur rerum hic quasi neque doloribus mollitia quaerat. Id blanditiis, nostrum autem sequi vero praesentium magnam totam in sit animi velit, veritatis hic natus? Quidem, distinctio provident!</p>
@@ -128,7 +128,7 @@ exports[`generate page excerpt correctly > excerptLength > extract all content w
 "
 `;
 
-exports[`generate page excerpt correctly > excerptLength > extract all content with Infinity > /markdown.html 1`] = `
+exports[`getPageExcerpt > excerptLength > extract all content with Infinity > /markdown.html 1`] = `
 "
 <h2>Headings</h2>
 <h1>Heading 1</h1>
@@ -231,7 +231,7 @@ line break again</li>
 <td style="text-align:left">For left align use <code>:-</code></td>
 </tr>
 <tr>
-<td style="text-align:center">b</td>
+<td style="text-align:center">table text</td>
 <td style="text-align:right">aaaaaaaaa</td>
 <td style="text-align:left">aaaa</td>
 </tr>
@@ -257,25 +257,25 @@ console.log(foo(5));
 "
 `;
 
-exports[`generate page excerpt correctly > excerptLength > extract all content with Infinity > /separator.html 1`] = `
+exports[`getPageExcerpt > excerptLength > extract all content with Infinity > /separator.html 1`] = `
 "<p>Here is <strong>article excerpt</strong>.</p>
 <div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1;
 </code></pre></div>"
 `;
 
-exports[`generate page excerpt correctly > excerptLength > only generate when having marker with 0 > /separator.html 1`] = `
+exports[`getPageExcerpt > excerptLength > only generate when having marker with 0 > /separator.html 1`] = `
 "<p>Here is <strong>article excerpt</strong>.</p>
 <div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1;
 </code></pre></div>"
 `;
 
-exports[`generate page excerpt correctly > excerptSeparator > generate excerpt with custom marker > /custom-separator.html 1`] = `
+exports[`getPageExcerpt > excerptSeparator > generate excerpt with custom marker > /custom-separator.html 1`] = `
 "<p>Here is <strong>article excerpt</strong>.</p>
 <div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1;
 </code></pre></div>"
 `;
 
-exports[`generate page excerpt correctly > excerptSeparator > generate excerpt with default marker > /separator.html 1`] = `
+exports[`getPageExcerpt > excerptSeparator > generate excerpt with default marker > /separator.html 1`] = `
 "<p>Here is <strong>article excerpt</strong>.</p>
 <div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1;
 </code></pre></div>"
