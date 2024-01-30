@@ -33,8 +33,7 @@ export class FeedItem {
   private pageOptions: FeedFrontmatterOption
   private frontmatter: PageFrontmatter<FeedPluginFrontmatter>
   private base: string
-  private hostname: string
-  getter: FeedGetter
+  private getter: FeedGetter
 
   constructor(
     private app: App,
@@ -43,8 +42,8 @@ export class FeedItem {
       { excerpt?: string; git?: GitData },
       FeedPluginFrontmatter
     >,
+    private hostname: string,
   ) {
-    this.hostname = this.options.hostname
     this.base = this.app.options.base
     this.frontmatter = page.frontmatter
     this.getter = options.getter || {}

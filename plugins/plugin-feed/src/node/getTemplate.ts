@@ -11,12 +11,12 @@ const TEMPLATE_FOLDER = ensureEndingSlash(
   path.resolve(__dirname, '../../templates'),
 )
 
-export const DEFAULT_ATOM_XML_TEMPLATE = fs.readFileSync(
+const DEFAULT_ATOM_XML_TEMPLATE = fs.readFileSync(
   `${TEMPLATE_FOLDER}atom.xsl`,
   'utf-8',
 )
 
-export const DEFAULT_RSS_XML_TEMPLATE = fs.readFileSync(
+const DEFAULT_RSS_XML_TEMPLATE = fs.readFileSync(
   `${TEMPLATE_FOLDER}rss.xsl`,
   'utf-8',
 )

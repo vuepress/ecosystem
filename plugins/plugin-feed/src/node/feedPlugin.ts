@@ -1,11 +1,12 @@
-import { customizeDevServer } from '@vuepress/helper/node'
+import { customizeDevServer, values } from '@vuepress/helper/node'
 import type { PluginFunction, PluginObject } from 'vuepress/core'
+import { isLinkHttp, removeEndingSlash } from 'vuepress/shared'
 import { colors } from 'vuepress/utils'
 import type { FeedPluginOptions } from '../typings/index.js'
 import { addFeedLinks } from './addFeedLinks.js'
 import { getFeedFiles } from './getFeed.js'
 import { getAtomTemplates, getRSSTemplates } from './getTemplate.js'
-import { checkOutput, ensureHostName, getFeedOptions } from './options.js'
+import { getFeedOptions } from './options.js'
 import { writeFiles } from './output.js'
 import { FEED_GENERATOR, logger } from './utils/index.js'
 
@@ -18,13 +19,32 @@ export const feedPlugin =
       name: FEED_GENERATOR,
     }
 
-    if (!ensureHostName(app, options)) {
+    let hostname = app.env.isDev
+      ? options.devHostname || `http://localhost:${app.options.port}`
+      : options.hostname
+
+    if (!hostname) {
       logger.error(`Option ${colors.magenta('hostname')} is required!`)
 
       return plugin
     }
 
-    if (!checkOutput(options)) {
+    // make sure hostname do not end with `/`
+    hostname = removeEndingSlash(
+      isLinkHttp(hostname) ? hostname : `https://${hostname}`,
+    )
+
+    if (
+      //  no output in root
+      !options.atom &&
+      !options.json &&
+      !options.rss &&
+      // no output in every locales
+      options.locales &&
+      values(options.locales).every(
+        ({ atom, json, rss }) => !atom && !json && !rss,
+      )
+    ) {
       logger.info('No feed output requested, the plugin won’t start!')
 
       return plugin
@@ -42,7 +62,7 @@ export const feedPlugin =
       extendsBundlerOptions: (config, app): void => {
         if (options.devServer)
           [
-            ...getFeedFiles(app, feedOptions),
+            ...getFeedFiles(app, feedOptions, hostname),
             ...getAtomTemplates(feedOptions),
             ...getRSSTemplates(feedOptions),
           ].forEach(([path, content]) => {
@@ -56,7 +76,7 @@ export const feedPlugin =
 
       onGenerated: async (app): Promise<void> => {
         await Promise.all([
-          ...writeFiles(app, getFeedFiles(app, feedOptions)),
+          ...writeFiles(app, getFeedFiles(app, feedOptions, hostname)),
           ...writeFiles(app, getAtomTemplates(feedOptions)),
           ...writeFiles(app, getRSSTemplates(feedOptions)),
         ])

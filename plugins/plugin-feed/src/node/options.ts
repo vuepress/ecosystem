@@ -4,15 +4,10 @@ import {
   isArray,
   isFunction,
   keys,
-  values,
 } from '@vuepress/helper/node'
 import type { GitData } from '@vuepress/plugin-git'
 import type { App, Page } from 'vuepress/core'
-import {
-  isLinkHttp,
-  removeEndingSlash,
-  removeLeadingSlash,
-} from 'vuepress/shared'
+import { isLinkHttp, removeLeadingSlash } from 'vuepress/shared'
 import type {
   BaseFeedPluginOptions,
   FeedChannelOption,
@@ -31,35 +26,6 @@ export interface ResolvedFeedOptions
 }
 
 export type ResolvedFeedOptionsMap = Record<string, ResolvedFeedOptions>
-
-export const ensureHostName = (
-  app: App,
-  options: Partial<FeedPluginOptions>,
-): boolean => {
-  const hostname = app.env.isDev
-    ? options.devHostname || `http://localhost:${app.options.port}`
-    : options.hostname
-
-  if (hostname) {
-    // make sure hostname do not end with `/`
-    options.hostname = removeEndingSlash(
-      isLinkHttp(hostname) ? hostname : `https://${hostname}`,
-    )
-
-    return true
-  }
-
-  return false
-}
-
-export const checkOutput = (options: Partial<FeedPluginOptions>): boolean =>
-  // some locales request output
-  (options.locales &&
-    values(options.locales).some(
-      ({ atom, json, rss }) => atom || json || rss,
-    )) ||
-  // root option requests output
-  Boolean(options.atom || options.json || options.rss)
 
 export const getFeedOptions = (
   { siteData }: App,
@@ -218,10 +184,11 @@ export interface FeedLinks {
 }
 
 export const getFeedLinks = (
-  { options: { base } }: App,
+  app: App,
   options: ResolvedFeedOptions,
   localePath: string,
 ): FeedLinks => {
+  const { base } = app.options
   const { hostname } = options
   const {
     atomOutputFilename,

@@ -3,8 +3,7 @@ import type { GitData } from '@vuepress/plugin-git'
 import type { App, Page } from 'vuepress/core'
 import { colors } from 'vuepress/utils'
 import type { FeedConfig, FeedPluginFrontmatter } from '../typings/index.js'
-import { FeedItem } from './feed/item.js'
-import { FeedStore } from './feed/store.js'
+import { FeedItem, FeedStore } from './feed/index.js'
 import { getAtomFeed } from './generator/atom/index.js'
 import { getJSONFeed } from './generator/json/index.js'
 import { getRssFeed } from './generator/rss/index.js'
@@ -15,6 +14,7 @@ import { logger } from './utils/index.js'
 export const getFeedFiles = (
   app: App,
   options: ResolvedFeedOptionsMap,
+  hostname: string,
 ): FeedConfig[] => {
   const localMap: Record<string, FeedStore> = fromEntries(
     entries(options).map(([localePath, localeOptions]) => [
@@ -49,6 +49,7 @@ export const getFeedFiles = (
             app,
             localeOptions,
             page as Page<{ git?: GitData }, FeedPluginFrontmatter>,
+            hostname,
           )
 
           feedStore.add(feedItem)
