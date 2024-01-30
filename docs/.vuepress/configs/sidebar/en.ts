@@ -23,6 +23,19 @@ export const sidebarEn: SidebarConfig = {
       children: ['/plugins/pwa', '/plugins/pwa-popup'],
     },
     {
+      text: 'SEO',
+      children: [
+        {
+          text: 'Sitemap',
+          children: [
+            '/plugins/sitemap/guide',
+            '/plugins/sitemap/config',
+            '/plugins/sitemap/frontmatter',
+          ],
+        },
+      ],
+    },
+    {
       text: 'Syntax Highlighting',
       children: ['/plugins/prismjs', '/plugins/shiki'],
     },

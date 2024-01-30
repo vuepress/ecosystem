@@ -26,12 +26,16 @@ export const navbarEn: NavbarConfig = [
         ],
       },
       {
-        text: 'Content Search',
+        text: 'Search',
         children: ['/plugins/docsearch', '/plugins/search'],
       },
       {
         text: 'PWA',
         children: ['/plugins/pwa', '/plugins/pwa-popup'],
+      },
+      {
+        text: 'SEO',
+        children: ['/plugins/sitemap'],
       },
       {
         text: 'Syntax Highlighting',
