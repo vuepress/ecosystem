@@ -59,17 +59,17 @@ export default defineUserConfig({
 
     sidebar: {
       '/': ['/sidebar/'],
-      '/sidebar/': [
+      '/sidebar/heading/': 'heading',
+      '/sidebar/config/': [
         {
           text: 'Sidebar',
-          link: '/sidebar/',
+          link: '/sidebar/config/',
           children: [
-            { text: 'sidebar 1', link: '/sidebar/1.html' },
-            { text: 'sidebar 2', link: '/sidebar/2.html' },
+            { text: 'sidebar 1', link: '/sidebar/config/1.html' },
+            { text: 'sidebar 2', link: '/sidebar/config/2.html' },
           ],
         },
       ],
-      '/heading-sidebar/': 'heading',
     },
   }),
 }) as UserConfig
