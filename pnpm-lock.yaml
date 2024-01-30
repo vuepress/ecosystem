@@ -149,6 +149,9 @@ importers:
       '@vuepress/client':
         specifier: 2.0.0-rc.2
         version: 2.0.0-rc.2(typescript@5.3.3)
+      '@vuepress/plugin-feed':
+        specifier: workspace:*
+        version: link:../plugins/plugin-feed
       '@vuepress/theme-default':
         specifier: workspace:*
         version: link:../themes/theme-default

@@ -1,11 +1,20 @@
 describe('sitemap', () => {
   const BASE = Cypress.env('E2E_BASE')
 
-  it('have sitemap', () => {
+  it('have sitemap xml', () => {
     cy.request(`${BASE}sitemap.xml`).then((res) => {
       expect(res.body).to.be.a('string')
       expect(res.body).to.contain('<?xml version="1.0"')
-      expect(res.body).to.contain('/markdown.html')
+      expect(res.body).to.contain(
+        `https://example.com${BASE}markdown.html</loc>`,
+      )
+    })
+  })
+
+  it('have sitemap xsl', () => {
+    cy.request(`${BASE}sitemap.xsl`).then((res) => {
+      expect(res.body).to.be.a('string')
+      expect(res.body).to.contain('<?xml version="1.0"')
     })
   })
 
