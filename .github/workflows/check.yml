@@ -11,13 +11,7 @@ on:
 
 jobs:
   check:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        node: ['18', '20']
-
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -39,6 +33,11 @@ jobs:
 
       - name: Linter Test
         run: pnpm lint
+
+      - name: Docs Test
+        run: |
+          pnpm --filter @vuepress/ecosystem-docs docs:build
+          pnpm --filter @vuepress/ecosystem-docs docs:build-webpack
 
       - name: Unit Test
         run: pnpm test:unit
