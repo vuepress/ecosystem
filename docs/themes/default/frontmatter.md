@@ -12,7 +12,7 @@ Frontmatter in this section will take effect in all types of pages.
 
 - Details:
 
-  Provided by [@vuepress/plugin-external-link-icon](../plugin/external-link-icon.md#externallinkicon).
+  Provided by [@vuepress/plugin-external-link-icon](../../plugins/external-link-icon.md#externallinkicon).
 
 - Also see:
   - [Default Theme > Config Reference > themePlugins.externalLinkIcon](./config.md#themeplugins-externallinkicon)
@@ -99,7 +99,7 @@ heroImage: https://vuejs.org/images/logo.png
 ```
 
 - Also see:
-  - [Guide > Assets > Public Files](../../guide/assets.md#public-files)
+  - [Guide > Assets > Public Files](https://v2.vuepress.vuejs.org/guide/assets.html#public-files)
 
 ### heroImageDark
 
@@ -147,7 +147,7 @@ heroImage: https://vuejs.org/images/logo.png
 
   Specify the the hero text.
 
-  This will fallback to the site [title](../config.md#title).
+  This will fallback to the site [title](https://v2.vuepress.vuejs.org/reference/config.html#title).
 
   Set to `null` to disable hero text.
 
@@ -159,7 +159,7 @@ heroImage: https://vuejs.org/images/logo.png
 
   Specify the the tagline.
 
-  This will fallback to the site [description](../config.md#description).
+  This will fallback to the site [description](https://v2.vuepress.vuejs.org/reference/config.html#description).
 
   Set to `null` to disable tagline.
 
