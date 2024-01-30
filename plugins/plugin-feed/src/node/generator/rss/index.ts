@@ -1,8 +1,8 @@
 import { isUrl } from '@vuepress/helper/node'
 import { js2xml } from 'xml-js'
+import type { FeedCategory, FeedEnclosure } from '../../../typings/index.js'
 import type { FeedItem } from '../../feed/item.js'
 import type { FeedStore } from '../../feed/store.js'
-import type { FeedCategory, FeedEnclosure } from '../../typings/index.js'
 import { encodeXML, FEED_GENERATOR } from '../../utils/index.js'
 import type {
   RSSCategory,

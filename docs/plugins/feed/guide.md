@@ -1,11 +1,8 @@
----
-title: Guide
-icon: lightbulb
----
+# Guide
 
 ## Usage
 
-The `vuepress-plugin-feed2` plugin can generate feed files in the following three formats for you:
+The plugin can generate feed files in the following three formats for you:
 
 - Atom 1.0
 - JSON 1.1

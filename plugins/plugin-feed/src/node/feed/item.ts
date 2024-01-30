@@ -11,7 +11,6 @@ import type { GitData } from '@vuepress/plugin-git'
 import type { App, Page } from 'vuepress/core'
 import { isString } from 'vuepress/shared'
 import type { PageFrontmatter } from 'vuepress/shared'
-import type { ResolvedFeedOptions } from '../options.js'
 import type {
   AuthorInfo,
   FeedAuthor,
@@ -21,7 +20,8 @@ import type {
   FeedFrontmatterOption,
   FeedGetter,
   FeedPluginFrontmatter,
-} from '../typings/index.js'
+} from '../../typings/index.js'
+import type { ResolvedFeedOptions } from '../options.js'
 import {
   getFeedAuthor,
   getFeedCategory,

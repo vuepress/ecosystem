@@ -145,7 +145,7 @@ Atom 格式输出路径，相对于输出路径。
 ## atomXslTemplate
 
 - 类型: `string`
-- 默认值: `vuepress-plugin-feed2/templates/atom.xsl` 的内容
+- 默认值: `@vuepress/plugin-feed/templates/atom.xsl` 的内容
 
 Atom xsl 模板文件没人陪美国
 
@@ -173,7 +173,7 @@ RSS 格式输出路径，相对于输出路径。
 ## rssXslTemplate
 
 - 类型: `string`
-- 默认值: `vuepress-plugin-feed2/templates/rss.xsl` 的内容
+- 默认值: `@vuepress/plugin-feed/templates/rss.xsl` 的内容
 
 RSS xsl 模板文件内容。
 

@@ -526,7 +526,7 @@
           </xsl:for-each>
         </div>
         <footer>
-          Generatd by <a href="https://plugin-feed2.vuejs.press">@vuepress/plugin-feed</a>
+          Generatd by <a href="https://ecosystem.vuejs.press/plugins/feed/">@vuepress/plugin-feed</a>
         </footer>
       </body>
     </html>

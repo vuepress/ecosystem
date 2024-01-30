@@ -1,9 +1,9 @@
 import { entries } from '@vuepress/helper/node'
 import { ensureEndingSlash } from 'vuepress/shared'
 import { fs, getDirname, path } from 'vuepress/utils'
+import type { FeedConfig } from '../typings/index.js'
 import type { ResolvedFeedOptionsMap } from './options.js'
 import { getFilename } from './options.js'
-import type { FeedConfig } from './typings/index.js'
 
 const __dirname = getDirname(import.meta.url)
 

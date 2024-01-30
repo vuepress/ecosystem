@@ -1,16 +1,16 @@
 import { customizeDevServer } from '@vuepress/helper/node'
 import type { PluginFunction, PluginObject } from 'vuepress/core'
 import { colors } from 'vuepress/utils'
+import type { FeedPluginOptions } from '../typings/index.js'
 import { addFeedLinks } from './addFeedLinks.js'
 import { getFeedFiles } from './getFeed.js'
 import { getAtomTemplates, getRSSTemplates } from './getTemplate.js'
 import { checkOutput, ensureHostName, getFeedOptions } from './options.js'
 import { writeFiles } from './output.js'
-import type { FeedOptions } from './typings/index.js'
 import { FEED_GENERATOR, logger } from './utils/index.js'
 
 export const feedPlugin =
-  (options: FeedOptions): PluginFunction =>
+  (options: FeedPluginOptions): PluginFunction =>
   (app) => {
     if (app.env.isDebug) logger.info('Options:', options)
 

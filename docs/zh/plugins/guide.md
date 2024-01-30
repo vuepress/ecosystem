@@ -1,11 +1,8 @@
----
-title: 指南
-icon: lightbulb
----
+# 指南
 
 ## 使用
 
-`vuepress-plugin-feed2` 插件可为你生成以下三种格式的 feed 文件:
+插件可为你生成以下三种格式的 feed 文件:
 
 - Atom 1.0
 - JSON 1.1

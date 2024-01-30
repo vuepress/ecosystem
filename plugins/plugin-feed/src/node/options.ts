@@ -14,15 +14,18 @@ import {
   removeLeadingSlash,
 } from 'vuepress/shared'
 import type {
-  BaseFeedOptions,
+  BaseFeedPluginOptions,
   FeedChannelOption,
-  FeedOptions,
-} from './typings/index.js'
+  FeedPluginOptions,
+} from '../typings/index.js'
 import { getUrl } from './utils/index.js'
 
 export interface ResolvedFeedOptions
-  extends Omit<BaseFeedOptions, 'sorter' | 'filter' | 'preservedElements'>,
-    Required<Pick<BaseFeedOptions, 'sorter' | 'filter'>> {
+  extends Omit<
+      BaseFeedPluginOptions,
+      'sorter' | 'filter' | 'preservedElements'
+    >,
+    Required<Pick<BaseFeedPluginOptions, 'sorter' | 'filter'>> {
   hostname: string
   isPreservedElement: (tagName: string) => boolean
 }
@@ -31,7 +34,7 @@ export type ResolvedFeedOptionsMap = Record<string, ResolvedFeedOptions>
 
 export const ensureHostName = (
   app: App,
-  options: Partial<FeedOptions>,
+  options: Partial<FeedPluginOptions>,
 ): boolean => {
   const hostname = app.env.isDev
     ? options.devHostname || `http://localhost:${app.options.port}`
@@ -49,7 +52,7 @@ export const ensureHostName = (
   return false
 }
 
-export const checkOutput = (options: Partial<FeedOptions>): boolean =>
+export const checkOutput = (options: Partial<FeedPluginOptions>): boolean =>
   // some locales request output
   (options.locales &&
     values(options.locales).some(
@@ -60,7 +63,7 @@ export const checkOutput = (options: Partial<FeedOptions>): boolean =>
 
 export const getFeedOptions = (
   { siteData }: App,
-  options: FeedOptions,
+  options: FeedPluginOptions,
 ): ResolvedFeedOptionsMap =>
   fromEntries(
     keys({
@@ -119,7 +122,7 @@ export const getFeedOptions = (
 
 export const getFeedChannelOption = (
   app: App,
-  options: FeedOptions,
+  options: FeedPluginOptions,
   localePath = '',
 ): FeedChannelOption => {
   const { base } = app.options
@@ -179,7 +182,7 @@ export const getFilename = (
   prefix = '/',
 ): Required<
   Pick<
-    FeedOptions,
+    FeedPluginOptions,
     | 'atomOutputFilename'
     | 'atomXslFilename'
     | 'jsonOutputFilename'
