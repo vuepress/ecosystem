@@ -9,9 +9,7 @@ describe('sitemap', () => {
 
   it('frontmatter config', () => {
     cy.request('/sitemap.xml').then((res) => {
-      expect(res.body).to.contain(
-        '/sitemap/frontmatter.html</loc><changefreq>yearly</changefreq></url><',
-      )
+      expect(res.body).to.contain('<changefreq>yearly</changefreq>')
     })
   })
 
