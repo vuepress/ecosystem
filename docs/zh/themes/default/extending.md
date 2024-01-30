@@ -63,7 +63,7 @@ import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 
 布局插槽十分实用，但有时候你可能会觉得它不够灵活。默认主题同样提供了替换单个组件的能力。
 
-默认主题将所有 [非全局的组件](https://github.com/vuepress/ecosystem/tree/main/themes/theme-default/src/client/components) 都注册了一个带 `@theme` 前缀的 [alias](../plugin-api.md#alias) 。例如，`HomeFooter.vue` 的别名是 `@theme/HomeFooter.vue` 。
+默认主题将所有 [非全局的组件](https://github.com/vuepress/ecosystem/tree/main/themes/theme-default/src/client/components) 都注册了一个带 `@theme` 前缀的 [alias](https://v2.vuepress.vuejs.org/zh/reference/plugin-api.html#alias) 。例如，`HomeFooter.vue` 的别名是 `@theme/HomeFooter.vue` 。
 
 接下来，如果你想要替换 `HomeFooter.vue` 组件，只需要在配置文件 `.vuepress/config.ts` 中覆盖这个别名即可：
 

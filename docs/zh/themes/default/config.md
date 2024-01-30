@@ -22,10 +22,10 @@
 
   所有在 [Locale 配置](#locale-配置) 章节内的配置项都可以在 locales 中使用。
 
-  该配置项仅能在默认主题内生效，注意不要和 [站点配置](../config.md#locales) 中的 `locales` 混淆。
+  该配置项仅能在默认主题内生效，注意不要和 [站点配置](https://v2.vuepress.vuejs.org/zh/reference/config.html#locales) 中的 `locales` 混淆。
 
 - 参考：
-  - [指南 > 多语言支持](../../guide/i18n.md)
+  - [指南 > 多语言支持](https://v2.vuepress.vuejs.org/zh/guide/i18n.html)
 
 ## Locale 配置
 
@@ -160,7 +160,7 @@ export default {
 
 ### logo
 
-- 类型： `null | string `
+- 类型： `null | string`
 
 - 详情：
 
@@ -184,7 +184,7 @@ export default {
 ```
 
 - 参考：
-  - [指南 > 静态资源 > Public 文件](../../guide/assets.md#public-文件)
+  - [指南 > 静态资源 > Public 文件](https://v2.vuepress.vuejs.org/zh/guide/assets.html#public-文件)
 
 ### logoDark
 
@@ -244,7 +244,7 @@ export default {
 
   _选择语言菜单_ 的文字。
 
-  如果你在站点配置中设置了多个 [locales](../config.md#locales) ，那么 _选择语言菜单_ 就会显示在导航栏中仓库按钮的旁边。
+  如果你在站点配置中设置了多个 [locales](https://v2.vuepress.vuejs.org/zh/config.html#locales) ，那么 _选择语言菜单_ 就会显示在导航栏中仓库按钮的旁边。
 
 ### selectLanguageAriaLabel
 
@@ -414,7 +414,7 @@ export default {
   - 设为 `2` 来包含 `<h2>` 和 `<h3>` 标题。
   - ...
 
-  最大值取决于你通过 [markdown.headers.level](../config.md#markdown-headers) 提取了哪些级别的标题。
+  最大值取决于你通过 [markdown.headers.level](https://v2.vuepress.vuejs.org/zh/config.html#markdown-headers) 提取了哪些级别的标题。
 
   由于 `markdown.headers.level` 的默认值是 `[2, 3]` ，因此 `sidebarDepth` 的默认最大值是 `2` 。
 

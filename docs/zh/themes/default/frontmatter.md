@@ -12,7 +12,7 @@
 
 - 详情：
 
-  由[@vuepress/plugin-external-link-icon](../plugin/external-link-icon.md#externallinkicon) 提供。
+  由[@vuepress/plugin-external-link-icon](../../plugins/external-link-icon.md#externallinkicon) 提供。
 
 - 参考：
   - [默认主题 > 配置 > themePlugins.externalLinkIcon](./config.md#themeplugins-externallinkicon)
@@ -99,7 +99,7 @@ pageClass: custom-page-class
   ```
 
 - 参考：
-  - [指南 > 静态资源 > Public 文件](../../guide/assets.md#public-文件)
+  - [指南 > 静态资源 > Public 文件](https://v2.vuepress.vuejs.org/zh/guide/assets.html#public-文件)
 
 ### heroImageDark
 
@@ -147,7 +147,7 @@ pageClass: custom-page-class
 
   首页的大标题。
 
-  如果不设置，则默认使用站点 [title](../config.md#title) 。
+  如果不设置，则默认使用站点 [title](https://v2.vuepress.vuejs.org/zh/reference/config.html#title) 。
 
   设置为 `null` 来禁用首页大标题。
 
@@ -159,7 +159,7 @@ pageClass: custom-page-class
 
   首页的标语。
 
-  如果不设置，则默认使用站点 [description](../config.md#description) 。
+  如果不设置，则默认使用站点 [description](https://v2.vuepress.vuejs.org/zh/reference/config.html#description) 。
 
   设置为 `null` 来禁用首页标语。
 

@@ -120,7 +120,7 @@ npm install
 
 所有内容首先都必须是合法的 Markdown ，然后才是一个 Vue SFC 。
 
-了解更多： [Cookbook > Markdown 与 Vue SFC](../../advanced/cookbook/markdown-and-vue-sfc.md)
+了解更多： [Cookbook > Markdown 与 Vue SFC](https://v2.vuepress.vuejs.org/zh/advanced/cookbook/markdown-and-vue-sfc.html)
 
 或者你可以选择使用 [自定义容器](./markdown.md#自定义容器) 。
 :::

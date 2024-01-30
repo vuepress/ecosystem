@@ -22,10 +22,10 @@
 
   All the options inside the [Locale Config](#locale-config) section can be used in locales.
 
-  This option will only take effect in default theme, so don't confuse with `locales` in [Site Config](../config.md#locales).
+  This option will only take effect in default theme, so don't confuse with `locales` in [Site Config](./config.md#locales).
 
 - Also see:
-  - [Guide > I18n](../../guide/i18n.md)
+  - [Guide > I18n](https://v2.vuepress.vuejs.org/guide/i18n.html)
 
 ## Locale Config
 
@@ -184,7 +184,7 @@ export default {
 ```
 
 - Also see:
-  - [Guide > Assets > Public Files](../../guide/assets.md#public-files)
+  - [Guide > Assets > Public Files](https://v2.vuepress.vuejs.org/guide/assets.html#public-files)
 
 ### logoDark
 
@@ -244,7 +244,7 @@ export default {
 
   Specify the text of the _select language menu_.
 
-  The _select language menu_ will appear next to the repository button in the navbar when you set multiple [locales](../config.md#locales) in your site config.
+  The _select language menu_ will appear next to the repository button in the navbar when you set multiple [locales](./config.md#locales) in your site config.
 
 ### selectLanguageAriaLabel
 
@@ -414,7 +414,7 @@ export default {
   - Set to `2` to include `<h2>` and `<h3>` headers.
   - ...
 
-  The max value depends on which levels of headers you have extracted via [markdown.headers.level](../config.md#markdown-headers).
+  The max value depends on which levels of headers you have extracted via [markdown.headers.level](https://v2.vuepress.vuejs.org/reference/config.html#markdown-headers).
 
   The default value of `markdown.headers.level` is `[2, 3]`, so the default max value of `sidebarDepth` is `2`.
 
