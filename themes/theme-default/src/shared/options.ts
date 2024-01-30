@@ -1,4 +1,5 @@
 import type { SeoOptions } from '@vuepress/plugin-seo'
+import type { SitemapPluginOptions } from '@vuepress/plugin-sitemap'
 import type { ThemeData } from '@vuepress/plugin-theme-data'
 import type { LocaleData } from 'vuepress/shared'
 import type { NavbarConfig, SidebarConfig } from './nav.js'
@@ -54,7 +55,9 @@ export interface DefaultThemePluginsOptions {
   /**
    * Enable @vuepress/plugin-seo or not
    */
-  seo?: SeoOptions | boolean
+  seo?: Partial<SeoOptions> | boolean
+
+  sitemap?: Partial<SitemapPluginOptions> | boolean
 }
 
 export type DefaultThemeLocaleOptions = DefaultThemeData

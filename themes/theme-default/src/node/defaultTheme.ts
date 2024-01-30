@@ -8,6 +8,7 @@ import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { palettePlugin } from '@vuepress/plugin-palette'
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import { seoPlugin } from '@vuepress/plugin-seo'
+import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import type { Page, Theme } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
@@ -26,7 +27,7 @@ const __dirname = getDirname(import.meta.url)
 
 export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
   /**
-   * Domain to be deployed
+   * deployed hostname
    */
   hostname?: string
 
@@ -38,8 +39,8 @@ export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
 }
 
 export const defaultTheme = ({
-  themePlugins = {},
   hostname,
+  themePlugins = {},
   ...localeOptions
 }: DefaultThemeOptions = {}): Theme => {
   assignDefaultLocaleOptions(localeOptions)
@@ -170,10 +171,20 @@ export const defaultTheme = ({
       themePlugins.prismjs !== false ? prismjsPlugin() : [],
 
       // @vuepress/plugin-seo
-      themePlugins.seo !== false
+      hostname && themePlugins.seo !== false
         ? seoPlugin({
             hostname,
             ...(isPlainObject(themePlugins.seo) ? themePlugins.seo : {}),
+          })
+        : [],
+
+      // @vuepress/plugin-sitemap
+      hostname && themePlugins.sitemap !== false
+        ? sitemapPlugin({
+            hostname,
+            ...(isPlainObject(themePlugins.sitemap)
+              ? themePlugins.sitemap
+              : {}),
           })
         : [],
 

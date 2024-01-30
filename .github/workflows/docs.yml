@@ -1,0 +1,44 @@
+name: Deploy Ecosystem Docs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-github-docs:
+    name: Deploy ecosystem docs to Github Pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Project
+        run: pnpm build
+
+      - name: Docs build
+        env:
+          BASE: /ecosystem/
+          NODE_OPTIONS: --max_old_space_size=8192
+        run: pnpm --filter @vuepress/ecosystem-docs docs:build
+
+      - name: Deploy docs
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: docs/.vuepress/dist
+          single-commit: true
