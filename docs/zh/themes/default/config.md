@@ -8,7 +8,7 @@
 
 - 详情：
 
-  部署的域名, e.g.: `https://example.com`
+  部署的域名，例如 `https://example.com`
 
 ### locales
 
