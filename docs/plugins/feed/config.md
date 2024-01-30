@@ -1,7 +1,4 @@
----
-title: Plugin Config
-icon: gears
----
+# Plugin Config
 
 ## hostname
 
@@ -59,7 +56,7 @@ If your site has a lot of articles, you may consider this option to reduce feed 
 
 Custom element or component which should be preserved in feed.
 
-::: note By default, all unknown tags will be removed.
+::: tip By default, all unknown tags will be removed.
 
 :::
 
@@ -103,7 +100,7 @@ Custom sorter function for feed items.
 
 The default sorting behavior is by file adding time coming from git (needs `@vuepress/plugin-git`).
 
-::: important
+::: tip
 
 You should enable `@vuepress/plugin-git` to get the newest created pages as feed items. Otherwise, the feed items will be sorted by the default order of pages in VuePress.
 
@@ -122,7 +119,7 @@ For available options, please see [Config → Channel](channel.md)
 
 Whether enabled in devServer.
 
-::: note
+::: tip
 
 For performance reasons, we do not provide hot reload. Reboot your devServer to sync your changes.
 
@@ -188,7 +185,7 @@ RSS syntax xsl filename, relative to dest folder.
 
 Feed generation controller, see [Feed Getter](./getter.md).
 
-::: note The plugin has a built-in getter, only set this if you want full control of feed generation.
+::: tip The plugin has a built-in getter, only set this if you want full control of feed generation.
 
 :::
 

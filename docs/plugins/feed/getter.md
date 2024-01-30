@@ -1,7 +1,4 @@
----
-title: Feed Getter
-icon: shapes
----
+# Feed Getter
 
 You can take full control of feed items generation by setting `getter` in the plugin options.
 
@@ -23,7 +20,7 @@ Item link getter
 
 Item description getter
 
-::: note
+::: tip
 
 Due to Atom support HTML in summary, so you can return HTML content here if possible, but the content must start with mark `html:`.
 
@@ -41,7 +38,7 @@ Item content getter
 
 Item author getter.
 
-::: important The getter should return an empty array when author information is missing.
+::: tip The getter should return an empty array when author information is missing.
 
 :::
 
@@ -161,7 +158,7 @@ Item last update date getter
 
 Item Image Getter
 
-::: important Ensure it's returning a full URL
+::: tip Ensure it's returning a full URL
 
 :::
 
@@ -171,7 +168,7 @@ Item Image Getter
 
 Item Contributor Getter
 
-::: important The getter should return an empty array when contributor information is missing.
+::: tip The getter should return an empty array when contributor information is missing.
 
 :::
 

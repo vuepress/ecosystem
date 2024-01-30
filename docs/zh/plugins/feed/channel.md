@@ -1,9 +1,6 @@
----
-title: 频道设置
-icon: clapperboard
----
+# 频道设置
 
-`channel` 选项用于配置 feed 的频道。可以配置的选项与默认值如下:
+`channel` 插件选项用于配置 feed 的频道。
 
 ## channel.title
 
@@ -114,7 +111,7 @@ interface FeedAuthor {
 
 Websub 的链接。Websub 需要服务器后端，与 VuePress 主旨不符，如无特殊需要忽略即可。
 
-::: info WebSub
+::: tip WebSub
 
 有关信息，详见 [Websub](https://w3c.github.io/websub/#subscription-migration)。
 

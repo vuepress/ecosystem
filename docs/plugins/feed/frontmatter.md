@@ -1,19 +1,12 @@
----
-title: Page Config
-icon: file-lines
----
+# Frontmatter Config
 
-You can have individual control over each feed item generation by configuring Frontmatter for each page.
+You can control each feed item generation by setting page frontmatter.
 
-## Addition and Remove
+## Additions and Removals
 
-By default, all articles are added to the feed stream. To remove specific pages from the feed, you can set `feed: false` in frontmatter.
+By default, all articles are added to the feed stream. Set `feed: false` in frontmatter to remove a page from feed.
 
-## Information read by default
-
-`page.except` and the original content of the page are read during feed item generation.
-
-The frontmatter options read in feed item generation and their corresponding meanings are as follows:
+## Frontmatter Information
 
 ### title
 
@@ -47,13 +40,13 @@ Whether the page is an article
 
 Page copyright information
 
-### image
+### cover / image / banner
 
 - Type: `string`
 
-Page cover/share image, should be full link or absolute link.
+Image used as page cover , should be full link or absolute link.
 
-## FrontMatter Options
+## Frontmatter Options
 
 ### feed.title
 
@@ -155,6 +148,6 @@ interface FeedContributor {
 
 The identifier of feed item, used to identify the feed item.
 
-::: note You should ensure every feed has a unique guid.
+::: tip You should ensure every feed has a unique guid.
 
 :::

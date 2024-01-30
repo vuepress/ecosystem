@@ -23,7 +23,7 @@ icon: shapes
 
 项目描述获取器
 
-::: note
+::: tip
 
 因为 Atom 在摘要中支持 HTML，所以如果可能的话，你可以在这里返回 HTML 内容，但内容必须以标记 `html:` 开头。
 
@@ -41,7 +41,7 @@ icon: shapes
 
 项目作者获取器。
 
-::: important 获取器应在作者信息缺失时返回空数组。
+::: tip 获取器应在作者信息缺失时返回空数组。
 
 :::
 
@@ -161,7 +161,7 @@ interface FeedEnclosure {
 
 项目图片获取器
 
-::: important 确保返回一个完整的 URL。
+::: tip 确保返回一个完整的 URL。
 
 :::
 
@@ -171,7 +171,7 @@ interface FeedEnclosure {
 
 项目贡献者获取器
 
-::: important 获取器应在贡献者信息缺失时返回空数组。
+::: tip 获取器应在贡献者信息缺失时返回空数组。
 
 :::
 

@@ -1,7 +1,4 @@
----
-title: 页面设置
-icon: file-lines
----
+# Frontmatter 配置
 
 你可以通过配置每个页面的 Frontmatter，来对每个 Feed 项目生成进行单独的控制。
 
@@ -9,11 +6,7 @@ icon: file-lines
 
 默认情况下，所有文章均会被添加至 feed 流。如果你想在 feed 中移除特定页面，你可以在 frontmatter 中设置 `feed: false`。
 
-## 默认读取内容
-
-Feed 项目生成中会读取 `page.except` 和页面的原本内容。
-
-Feed 项目生成中读取的 frontmatter 选项及对应含义如下:
+## 读取的 Frontmatter 信息
 
 ### title
 
@@ -47,13 +40,13 @@ Feed 项目生成中读取的 frontmatter 选项及对应含义如下:
 
 页面版权信息
 
-### image
+### cover / image / banner
 
 - 类型: `string`
 
 页面的封面/分享图，需为完整链接或绝对链接。
 
-## FrontMatter 中的 Feed 配置
+## Frontmatter 选项
 
 ### feed.title
 
@@ -155,8 +148,6 @@ interface FeedContributor {
 
 Feed 项目的标识符，用于标识 Feed 项目。
 
-::: note
-
-你应该确保此项全局唯一。
+::: tip 你应该确保每个 Feed 项目有全局唯一的 guid。
 
 :::

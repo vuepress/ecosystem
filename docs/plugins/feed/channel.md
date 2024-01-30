@@ -1,9 +1,6 @@
----
-title: Channel Config
-icon: clapperboard
----
+# Channel Config
 
-The channel option is used to config the feed channel.
+The channel plugin option is used to config the feed channel.
 
 ## channel.title
 
@@ -116,7 +113,7 @@ interface FeedAuthor {
 
 Link to Websub. Websub requires a server backend, which is inconsistent with VuePress, so ignore it if there is no special need.
 
-::: info WebSub
+::: tip WebSub
 
 For details, see [Websub](https://w3c.github.io/websub/#subscription-migration).
 
