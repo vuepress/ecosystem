@@ -1,5 +1,6 @@
 packages:
-  - e2e
+  - docs/
+  - e2e/
   - plugins/*
   - themes/*
   - tools/*
