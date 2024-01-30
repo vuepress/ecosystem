@@ -74,7 +74,10 @@ export default defineUserConfig({
     },
 
     themePlugins: {
-      sitemap: true,
+      sitemap: {
+        devServer: true,
+        excludeUrls: ['/sitemap/config-exclude.html', '/404.html'],
+      },
     },
   }),
 }) as UserConfig

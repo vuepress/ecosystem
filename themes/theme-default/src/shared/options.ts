@@ -51,7 +51,7 @@ export interface DefaultThemePluginsOptions {
    */
   prismjs?: boolean
 
-  sitemap?: SitemapPluginOptions | boolean
+  sitemap?: Partial<SitemapPluginOptions> | boolean
 }
 
 export type DefaultThemeLocaleOptions = DefaultThemeData
