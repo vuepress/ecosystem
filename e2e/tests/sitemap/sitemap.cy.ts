@@ -1,5 +1,3 @@
-// const BASE = Cypress.env('E2E_BASE')
-
 describe('sitemap', () => {
   it('have sitemap', () => {
     cy.request('/sitemap.xml').then((res) => {
