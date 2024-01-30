@@ -1,5 +1,6 @@
 import type { PageFrontmatter } from 'vuepress/core'
 import type {
+  SitemapChangeFrequency,
   SitemapImageOption,
   SitemapNewsOption,
   SitemapVideoOption,
@@ -11,14 +12,7 @@ export interface SitemapFrontmatterOption {
    *
    * 更新频率
    */
-  changefreq?:
-    | 'always'
-    | 'hourly'
-    | 'daily'
-    | 'weekly'
-    | 'monthly'
-    | 'yearly'
-    | 'never'
+  changefreq?: SitemapChangeFrequency
 
   /**
    * Priority of this page, supports 0.0 -1.0

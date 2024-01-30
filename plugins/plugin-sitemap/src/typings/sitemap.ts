@@ -1,4 +1,12 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+export type SitemapChangeFrequency =
+  | 'always'
+  | 'hourly'
+  | 'daily'
+  | 'weekly'
+  | 'monthly'
+  | 'yearly'
+  | 'never'
+
 /**
  * None standard sitemap options used by google
  */
