@@ -1,15 +1,15 @@
 import type { GitData } from '@vuepress/plugin-git'
 import type { App, Page } from 'vuepress/core'
 import { removeLeadingSlash } from 'vuepress/shared'
-import type { SitemapOptions } from './options.js'
 import type {
   SitemapImageOption,
   SitemapLinkOption,
   SitemapNewsOption,
   SitemapPluginFrontmatter,
+  SitemapPluginOptions,
   SitemapVideoOption,
-} from './typings/index.js'
-import { logger } from './utils.js'
+} from '../typings/index.js'
+import { logger } from './logger.js'
 
 const reportedLocales: string[] = []
 
@@ -41,7 +41,7 @@ export interface SitemapInfo {
 
 export const getSitemapInfos = (
   app: App,
-  options: SitemapOptions,
+  options: SitemapPluginOptions,
 ): [path: string, info: SitemapInfo][] => {
   const {
     changefreq = 'daily',

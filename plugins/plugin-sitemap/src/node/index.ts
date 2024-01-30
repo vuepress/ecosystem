@@ -1,3 +1,2 @@
-export * from './options.js'
-export * from './plugin.js'
-export * from './typings/index.js'
+export * from './sitemapPlugin.js'
+export type * from '../typings/index.js'

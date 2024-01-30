@@ -1,20 +1,21 @@
 import type { App } from 'vuepress/core'
 import { colors, fs } from 'vuepress/utils'
+import type { SitemapPluginOptions } from '../typings/index.js'
 import { getSiteMap } from './getSitemap.js'
 import { getSiteMapTemplate } from './getSitemapTemplate.js'
-import type { SitemapOptions } from './options.js'
-import { logger } from './utils.js'
+import { logger } from './logger.js'
 
 export const outputSitemap = async (
   app: App,
-  options: SitemapOptions,
+  options: SitemapPluginOptions,
+  hostname: string,
 ): Promise<void> => {
   const {
     dir,
     options: { base },
   } = app
 
-  const [sitemapPath, sitemapContent] = await getSiteMap(app, options)
+  const [sitemapPath, sitemapContent] = await getSiteMap(app, options, hostname)
   const [templatePath, templateContent] = getSiteMapTemplate(options)
 
   fs.writeFileSync(app.dir.dest(sitemapPath), sitemapContent)
@@ -32,7 +33,7 @@ export const outputSitemap = async (
     const newRobotsTxtContent = `${robotsTxt.replace(
       /^Sitemap: .*$/u,
       '',
-    )}\nSitemap: ${options.hostname}${base}${sitemapPath}\n`
+    )}\nSitemap: ${hostname}${base}${sitemapPath}\n`
 
     await fs.writeFile(robotTxtPath, newRobotsTxtContent, {
       encoding: 'utf-8',

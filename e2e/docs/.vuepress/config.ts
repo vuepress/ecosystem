@@ -40,6 +40,7 @@ export default defineUserConfig({
   bundler: E2E_BUNDLER === 'webpack' ? webpackBundler() : viteBundler(),
 
   theme: defaultTheme({
+    hostname: 'https://e2e-test.com',
     logo: 'https://v2.vuepress.vuejs.org/images/hero.png',
     navbar: [
       {
@@ -70,6 +71,10 @@ export default defineUserConfig({
           ],
         },
       ],
+    },
+
+    themePlugins: {
+      sitemap: true,
     },
   }),
 }) as UserConfig

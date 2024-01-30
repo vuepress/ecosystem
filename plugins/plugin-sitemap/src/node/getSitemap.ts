@@ -1,15 +1,15 @@
 import { SitemapStream, streamToPromise } from 'sitemap'
 import type { App } from 'vuepress/core'
 import { removeLeadingSlash } from 'vuepress/shared'
+import type { SitemapPluginOptions } from '../typings/index.js'
 import { getSitemapInfos } from './getInfo.js'
-import type { SitemapOptions } from './options.js'
 
 export const getSiteMap = async (
   app: App,
-  options: SitemapOptions,
+  options: SitemapPluginOptions,
+  hostname: string,
 ): Promise<[path: string, content: string]> => {
   const { extraUrls = [], xmlNameSpace: xmlns } = options
-  const hostname = options.hostname
   const sitemapFilename = options.sitemapFilename
     ? removeLeadingSlash(options.sitemapFilename)
     : 'sitemap.xml'

@@ -20,6 +20,7 @@
     { "path": "../../plugins/plugin-nprogress/tsconfig.build.json" },
     { "path": "../../plugins/plugin-palette/tsconfig.build.json" },
     { "path": "../../plugins/plugin-prismjs/tsconfig.build.json" },
+    { "path": "../../plugins/plugin-sitemap/tsconfig.build.json" },
     { "path": "../../plugins/plugin-theme-data/tsconfig.build.json" }
   ]
 }

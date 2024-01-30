@@ -12,7 +12,7 @@ export type PageModifyTimeGetter = <
   app: App,
 ) => string
 
-export interface SitemapOptions {
+export interface SitemapPluginOptions {
   /**
    * domain which to be deployed to
    *
