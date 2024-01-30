@@ -21,7 +21,7 @@ import type {
   FeedGetter,
   FeedPluginFrontmatter,
 } from '../../typings/index.js'
-import type { ResolvedFeedOptions } from '../options.js'
+import type { ResolvedFeedOptions } from '../getFeedOptions.js'
 import {
   getFeedAuthor,
   getFeedCategory,

@@ -1,8 +1,8 @@
 import { keys } from '@vuepress/helper/node'
 import type { App } from 'vuepress/core'
 import type { HeadConfig } from 'vuepress/shared'
-import type { ResolvedFeedOptionsMap } from './options.js'
-import { getFilename } from './options.js'
+import { getFeedFilenames } from './getFeedFilenames.js'
+import type { ResolvedFeedOptionsMap } from './getFeedOptions.js'
 import { getUrl } from './utils/index.js'
 
 export const addFeedLinks = (
@@ -16,7 +16,7 @@ export const addFeedLinks = (
   // there is only one language, so we append it to siteData
   if (localePaths.length === 1) {
     const { atomOutputFilename, jsonOutputFilename, rssOutputFilename } =
-      getFilename(options['/'])
+      getFeedFilenames(options['/'])
     const { atom, json, rss, hostname } = options['/']
 
     const getHeadItem = (
@@ -64,7 +64,7 @@ export const addFeedLinks = (
 
       if (localePaths.includes(pathLocale)) {
         const { atomOutputFilename, jsonOutputFilename, rssOutputFilename } =
-          getFilename(localeOptions, pathLocale)
+          getFeedFilenames(localeOptions, pathLocale)
 
         const getHeadItem = (
           name: string,

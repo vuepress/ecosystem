@@ -2,7 +2,7 @@ import type { Page } from 'vuepress/core'
 import type {
   FeedAuthor,
   FeedCategory,
-  FeedChannelOption,
+  FeedChannelOptions,
   FeedContributor,
   FeedEnclosure,
 } from './feed.js'
@@ -382,7 +382,7 @@ export interface BaseFeedPluginOptions {
    *
    * Feed 频道选项
    */
-  channel?: Partial<FeedChannelOption>
+  channel?: Partial<FeedChannelOptions>
 
   /**
    * Atom syntax output filename, relative to dest folder.

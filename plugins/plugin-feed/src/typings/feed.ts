@@ -88,7 +88,7 @@ export interface FeedEnclosure {
   length?: number
 }
 
-export interface FeedChannelOption {
+export interface FeedChannelOptions {
   /**
    * Channel title
    *

@@ -7,8 +7,8 @@ import { FeedItem, FeedStore } from './feed/index.js'
 import { getAtomFeed } from './generator/atom/index.js'
 import { getJSONFeed } from './generator/json/index.js'
 import { getRssFeed } from './generator/rss/index.js'
-import type { ResolvedFeedOptionsMap } from './options.js'
-import { getFilename } from './options.js'
+import { getFeedFilenames } from './getFeedFilenames.js'
+import type { ResolvedFeedOptionsMap } from './getFeedOptions.js'
 import { logger } from './utils/index.js'
 
 export const getFeedFiles = (
@@ -67,7 +67,7 @@ export const getFeedFiles = (
         )
 
         const { atomOutputFilename, jsonOutputFilename, rssOutputFilename } =
-          getFilename(localeOptions, localePath)
+          getFeedFilenames(localeOptions, localePath)
         const results: FeedConfig[] = []
 
         // generate feed

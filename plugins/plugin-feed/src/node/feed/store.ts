@@ -1,11 +1,13 @@
 import type { App } from 'vuepress/core'
 import type {
   FeedCategory,
-  FeedChannelOption,
+  FeedChannelOptions,
   FeedContributor,
 } from '../../typings/index.js'
-import type { FeedLinks, ResolvedFeedOptions } from '../options.js'
-import { getFeedChannelOption, getFeedLinks } from '../options.js'
+import { getFeedChannelOptions } from '../getFeedChannelOptions.js'
+import type { FeedLinks } from '../getFeedLinks.js'
+import { getFeedLinks } from '../getFeedLinks.js'
+import type { ResolvedFeedOptions } from '../getFeedOptions.js'
 import type { FeedItem } from './item.js'
 
 export class FeedStore {
@@ -14,14 +16,14 @@ export class FeedStore {
   public items: FeedItem[] = []
 
   private _contributorKeys = new Set<string>()
-  public channel: FeedChannelOption
+  public channel: FeedChannelOptions
   public links: FeedLinks
   constructor(
     app: App,
     localeOptions: ResolvedFeedOptions,
     localePath: string,
   ) {
-    this.channel = getFeedChannelOption(app, localeOptions, localePath)
+    this.channel = getFeedChannelOptions(app, localeOptions, localePath)
     this.links = getFeedLinks(app, localeOptions, localePath)
   }
 
