@@ -102,7 +102,7 @@ Classic:
 |           center           |                    right | left                    |
 | :------------------------: | -----------------------: | :---------------------- |
 | For center align use `:-:` | For right align use `-:` | For left align use `:-` |
-|             b              |                aaaaaaaaa | aaaa                    |
+|             table text              |                aaaaaaaaa | aaaa                    |
 |             c              |                     aaaa | a                       |
 
 ## Codes
