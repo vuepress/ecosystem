@@ -1,25 +1,22 @@
----
-title: Feed 获取器
-icon: shapes
----
+# Feed 获取器
 
 你可以通过控制插件选项中的 `getter` 来完全控制 Feed 项目的生成。
 
 ## getter.title
 
-- 类型: `(page: Page) => string`
+- 类型：`(page: Page) => string`
 
 项目标题获取器
 
 ## getter.link
 
-- 类型: `(page: Page) => string`
+- 类型：`(page: Page) => string`
 
 项目链接获取器
 
 ## getter.description
 
-- 类型: `(page: Page) => string | undefined`
+- 类型：`(page: Page) => string | undefined`
 
 项目描述获取器
 
@@ -31,13 +28,13 @@ icon: shapes
 
 ## getter.content
 
-- 类型: `(page: Page) => string`
+- 类型：`(page: Page) => string`
 
 项目内容获取器
 
 ## getter.author
 
-- 类型: `(page: Page) => FeedAuthor[]`
+- 类型：`(page: Page) => FeedAuthor[]`
 
 项目作者获取器。
 
@@ -79,7 +76,7 @@ interface FeedAuthor {
 
 ## getter.category
 
-- 类型: `(page: Page) => FeedCategory[] | undefined`
+- 类型：`(page: Page) => FeedCategory[] | undefined`
 
 项目分类获取器。
 
@@ -112,7 +109,7 @@ interface FeedCategory {
 
 ## getter.enclosure
 
-- 类型: `(page: Page) => FeedEnclosure | undefined`
+- 类型：`(page: Page) => FeedEnclosure | undefined`
 
 项目附件获取器。
 
@@ -145,19 +142,19 @@ interface FeedEnclosure {
 
 ## getter.publishDate
 
-- 类型: `(page: Page) => Date | undefined`
+- 类型：`(page: Page) => Date | undefined`
 
 项目发布日期获取器
 
 ## getter.lastUpdateDate
 
-- 类型: `(page: Page) => Date`
+- 类型：`(page: Page) => Date`
 
 项目最后更新日期获取器
 
 ## getter.image
 
-- 类型: `(page: Page) => string`
+- 类型：`(page: Page) => string`
 
 项目图片获取器
 
@@ -167,7 +164,7 @@ interface FeedEnclosure {
 
 ## getter.contributor
 
-- 类型: `(page: Page) => FeedContributor[]`
+- 类型：`(page: Page) => FeedContributor[]`
 
 项目贡献者获取器
 
@@ -209,6 +206,6 @@ interface FeedContributor {
 
 ## getter.copyright
 
-- 类型: `(page: Page) => string | undefined`
+- 类型：`(page: Page) => string | undefined`
 
 项目版权获取器

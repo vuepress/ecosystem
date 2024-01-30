@@ -2,48 +2,48 @@
 
 ## hostname
 
-- 类型: `string`
-- 必填: 是
+- 类型：`string`
+- 必填：是
 
 部署网站的域名。
 
 ## atom
 
-- 类型: `boolean`
-- 默认值: `false`
+- 类型：`boolean`
+- 默认值：`false`
 
 是否启用 Atom 格式输出。
 
 ## json
 
-- 类型: `boolean`
-- 默认值: `false`
+- 类型：`boolean`
+- 默认值：`false`
 
 是否启用 JSON 格式输出。
 
 ## rss
 
-- 类型: `boolean`
-- 默认值: `false`
+- 类型：`boolean`
+- 默认值：`false`
 
 是否启用 RSS 格式输出。
 
 ## image
 
-- 类型: `string`
+- 类型：`string`
 
 一个大的图片，用作 feed 展示。
 
 ## icon
 
-- 类型: `string`
+- 类型：`string`
 
 一个小的图标，显示在订阅列表中。
 
 ## count
 
-- 类型: `number`
-- 默认值: `100`
+- 类型：`number`
+- 默认值：`100`
 
 设置 feed 的最大项目数量。在所有页面排序好后，插件会截取前 count 个项目。
 
@@ -51,8 +51,7 @@
 
 ## preservedElements
 
-- 类型: `(RegExp | string)[] | (tagName: string) => boolean`
-- 默认值: `[]`
+- 类型：`(RegExp | string)[] | (tagName：string) => boolean`
 
 应在 Feed 中保留的自定义元素或组件。
 
@@ -62,8 +61,8 @@
 
 ## filter
 
-- 类型: `(page: Page)=> boolean`
-- 默认值:
+- 类型：`(page: Page)=> boolean`
+- 默认值：
 
   ```ts
   ({ frontmatter, filePathRelative }: Page): boolean =>
@@ -79,9 +78,9 @@
 
 ## sorter
 
-- 类型: `(pageA: Page, pageB: Page)=> number`
+- 类型： `(pageA: Page, pageB: Page)=> number`
 
-- 默认值:
+- 默认值：
 
   ```ts
   // compareDate 来源于 vuepress-shared
@@ -114,8 +113,8 @@ Feed 项目的排序器。
 
 ## devServer
 
-- 类型: `boolean`
-- 默认值: `false`
+- 类型：`boolean`
+- 默认值：`false`
 
 是否在开发服务器中启用
 
@@ -127,57 +126,57 @@ Feed 项目的排序器。
 
 ## devHostname
 
-- 类型: `string`
-- 默认值: `"http://localhost:${port}"`
+- 类型：`string`
+- 默认值：`"http://localhost:${port}"`
 
 开发服务器使用的主机名
 
 ## atomOutputFilename
 
-- 类型: `string`
-- 默认值: `"atom.xml"`
+- 类型：`string`
+- 默认值：`"atom.xml"`
 
 Atom 格式输出路径，相对于输出路径。
 
 ## atomXslTemplate
 
-- 类型: `string`
-- 默认值: `@vuepress/plugin-feed/templates/atom.xsl` 的内容
+- 类型：`string`
+- 默认值：`@vuepress/plugin-feed/templates/atom.xsl` 的内容
 
 Atom xsl 模板文件没人陪美国
 
 ## atomXslFilename
 
-- 类型: `string`
-- 默认值: `"atom.xsl"`
+- 类型：`string`
+- 默认值：`"atom.xsl"`
 
 Atom xsl 输出路径，相对于输出路径。
 
 ## jsonOutputFilename
 
-- 类型: `string`
-- 默认值: `"feed.json"`
+- 类型：`string`
+- 默认值：`"feed.json"`
 
 JSON 格式输出路径，相对于输出路径。
 
 ## rssOutputFilename
 
-- 类型: `string`
-- 默认值: `"rss.xml"`
+- 类型：`string`
+- 默认值：`"rss.xml"`
 
 RSS 格式输出路径，相对于输出路径。
 
 ## rssXslTemplate
 
-- 类型: `string`
-- 默认值: `@vuepress/plugin-feed/templates/rss.xsl` 的内容
+- 类型：`string`
+- 默认值：`@vuepress/plugin-feed/templates/rss.xsl` 的内容
 
 RSS xsl 模板文件内容。
 
 ## rssXslFilename
 
-- 类型: `string`
-- 默认值: `"rss.xsl"`
+- 类型：`string`
+- 默认值：`"rss.xsl"`
 
 RSS xsl 输出路径，相对于输出路径。
 
@@ -191,8 +190,7 @@ Feed 生成控制器，详见 [Feed 生成器](./getter.md)。
 
 ## locales
 
-- 类型: `Record<string, BaseFeedOptions>`
-- 必填: 否
+- 类型：`Record<string, BaseFeedOptions>`
 
 你可以将它用于每个语言环境的特定选项。
 

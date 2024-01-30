@@ -10,25 +10,25 @@
 
 ### title
 
-- 类型: `string`
+- 类型：`string`
 
 由 VuePress 自动生成，默认为页面的 h1 内容
 
 ### description
 
-- 类型: `string`
+- 类型：`string`
 
 页面描述
 
 ### date
 
-- 类型: `Date`
+- 类型：`Date`
 
 页面的发布日期
 
 ### article
 
-- 类型: `boolean`
+- 类型：`boolean`
 
 该页面是否是文章
 
@@ -36,13 +36,13 @@
 
 ### copyright
 
-- 类型: `string`
+- 类型：`string`
 
 页面版权信息
 
 ### cover / image / banner
 
-- 类型: `string`
+- 类型：`string`
 
 页面的封面/分享图，需为完整链接或绝对链接。
 
@@ -50,25 +50,25 @@
 
 ### feed.title
 
-- 类型: `string`
+- 类型：`string`
 
 Feed 项目的标题
 
 ### feed.description
 
-- 类型: `string`
+- 类型：`string`
 
 Feed 项目的描述
 
 ### feed.content
 
-- 类型: `string`
+- 类型：`string`
 
 Feed 项目的内容
 
 ### feed.author
 
-- 类型: `FeedAuthor[] | FeedAuthor`
+- 类型：`FeedAuthor[] | FeedAuthor`
 
 Feed 项目的作者
 
@@ -106,7 +106,7 @@ interface FeedAuthor {
 
 ### feed.contributor
 
-- 类型: `FeedContributor[] | FeedContributor`
+- 类型：`FeedContributor[] | FeedContributor`
 
 Feed 项目的贡献者
 
@@ -144,7 +144,7 @@ interface FeedContributor {
 
 ### feed.guid
 
-- 类型: `string`
+- 类型：`string`
 
 Feed 项目的标识符，用于标识 Feed 项目。
 

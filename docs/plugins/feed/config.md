@@ -52,7 +52,6 @@ If your site has a lot of articles, you may consider this option to reduce feed 
 ## preservedElements
 
 - Type: `(RegExp | string)[] | (tagName: string) => boolean`
-- Default: `[]`
 
 Custom element or component which should be preserved in feed.
 
@@ -192,7 +191,6 @@ Feed generation controller, see [Feed Getter](./getter.md).
 ## locales
 
 - Type: `Record<string, BaseFeedOptions>`
-- Required: No
 
 You can use it to specific options for each locale.
 
