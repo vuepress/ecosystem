@@ -1,6 +1,6 @@
-const BASE = Cypress.env('E2E_BASE')
-
 describe('homepage', () => {
+  const BASE = Cypress.env('E2E_BASE')
+
   it('has hero info', () => {
     const title = 'VuePress Ecosystem E2E'
     const description = 'VuePress Ecosystem E2E Test Site'

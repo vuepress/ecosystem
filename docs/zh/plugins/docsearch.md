@@ -47,7 +47,7 @@ new Crawler({
     'https://YOUR_WEBSITE_URL/',
   ],
   sitemaps: [
-    // 如果你在使用 Sitemap 插件 (如: vuepress-plugin-sitemap2)，你可以提供 Sitemap 链接
+    // 如果你在使用 Sitemap 插件 (如: @vuepress-plugin/sitemap)，你可以提供 Sitemap 链接
     'https://YOUR_WEBSITE_URL/sitemap.xml',
   ],
   ignoreCanonicalTo: false,

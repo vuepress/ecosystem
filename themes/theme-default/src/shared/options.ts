@@ -1,3 +1,4 @@
+import type { SitemapPluginOptions } from '@vuepress/plugin-sitemap'
 import type { ThemeData } from '@vuepress/plugin-theme-data'
 import type { LocaleData } from 'vuepress/shared'
 import type { NavbarConfig, SidebarConfig } from './nav.js'
@@ -49,6 +50,8 @@ export interface DefaultThemePluginsOptions {
    * Enable @vuepress/plugin-prismjs or not
    */
   prismjs?: boolean
+
+  sitemap?: Partial<SitemapPluginOptions> | boolean
 }
 
 export type DefaultThemeLocaleOptions = DefaultThemeData

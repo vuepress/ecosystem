@@ -2,6 +2,14 @@
 
 ## Basic Config
 
+### hostname
+
+- Type: `string`
+
+- Details:
+
+  Hostname to be deployed, e.g.: `https://example.com`
+
 ### locales
 
 - Type: `{ [path: string]: Partial<DefaultThemeLocaleData> }`
@@ -609,7 +617,7 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
 - Details:
 
-  Specify the `sr-only` text of the [ExternalLinkIcon](../plugin/external-link-icon.md#externallinkicon).
+  Specify the `sr-only` text of the [ExternalLinkIcon](../../plugins/external-link-icon.md#externallinkicon).
 
   This is mainly for a11y purpose.
 
@@ -661,7 +669,7 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
 - Details:
 
-  Enable [@vuepress/plugin-active-header-links](../plugin/active-header-links.md) or not.
+  Enable [@vuepress/plugin-active-header-links](../../plugins/active-header-links.md) or not.
 
 ### themePlugins.backToTop
 
@@ -671,7 +679,7 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
 - Details:
 
-  Enable [@vuepress/plugin-back-to-top](../plugin/back-to-top.md) or not.
+  Enable [@vuepress/plugin-back-to-top](../../plugins/back-to-top.md) or not.
 
 ### themePlugins.container
 
@@ -679,7 +687,7 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
 - Details:
 
-  Enable custom containers that powered by [@vuepress/plugin-container](../plugin/container.md) or not.
+  Enable custom containers that powered by [@vuepress/plugin-container](../../plugins/container.md) or not.
 
   `ContainerType` type is:
 
@@ -701,7 +709,7 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
 - Details:
 
-  Enable [@vuepress/plugin-external-link-icon](../plugin/external-link-icon.md) or not.
+  Enable [@vuepress/plugin-external-link-icon](../../plugins/external-link-icon.md) or not.
 
 ### themePlugins.git
 
@@ -711,7 +719,7 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
 - Details:
 
-  Enable [@vuepress/plugin-git](../plugin/git.md) or not.
+  Enable [@vuepress/plugin-git](../../plugins/git.md) or not.
 
 ### themePlugins.mediumZoom
 
@@ -721,7 +729,7 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
 - Details:
 
-  Enable [@vuepress/plugin-medium-zoom](../plugin/medium-zoom.md) or not.
+  Enable [@vuepress/plugin-medium-zoom](../../plugins/medium-zoom.md) or not.
 
 ### themePlugins.nprogress
 
@@ -731,4 +739,14 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
 - Details:
 
-  Enable [@vuepress/plugin-nprogress](../plugin/nprogress.md) or not.
+  Enable [@vuepress/plugin-nprogress](../../plugins/nprogress.md) or not.
+
+### themePlugins.sitemap
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Enable [@vuepress/plugin-sitemap](../../plugins/sitemap/README.md) or not.

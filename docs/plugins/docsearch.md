@@ -48,7 +48,7 @@ new Crawler({
     'https://YOUR_WEBSITE_URL/',
   ],
   sitemaps: [
-    // if you are using sitemap plugins (e.g.: vuepress-plugin-sitemap2), you may provide one
+    // if you are using sitemap plugins (e.g.: @vuepress-plugin/sitemap), you may provide one
     'https://YOUR_WEBSITE_URL/sitemap.xml',
   ],
   ignoreCanonicalTo: false,
