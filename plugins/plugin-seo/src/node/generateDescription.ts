@@ -1,6 +1,6 @@
 import { getPageText } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
-import type { ExtendPage } from './typings/index.js'
+import type { ExtendPage } from '../typings/index.js'
 
 export const generateDescription = (
   app: App,
@@ -13,7 +13,6 @@ export const generateDescription = (
 
     page.frontmatter.description =
       pageText.length > 180 ? `${pageText.slice(0, 177)}...` : pageText
-
     page.data.autoDesc = true
   }
 }

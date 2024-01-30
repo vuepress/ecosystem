@@ -1,13 +1,13 @@
 import { isAbsoluteUrl, isUrl } from '@vuepress/helper/node'
 import type { App } from 'vuepress/core'
-import type { SeoOptions } from '../options.js'
-import type { ExtendPage } from '../typings/index.js'
+import type { ExtendPage } from '../../typings/index.js'
+import type { SeoPluginOptions } from '../options.js'
 import { getUrl } from './getUrl.js'
 
 export const getImages = (
   { content }: ExtendPage,
   { options: { base } }: App,
-  { hostname }: SeoOptions,
+  { hostname }: SeoPluginOptions,
 ): string[] => {
   const result = /!\[.*?\]\((.*?)\)/giu.exec(content)
 

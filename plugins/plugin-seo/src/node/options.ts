@@ -6,9 +6,9 @@ import type {
   SeoAuthor,
   SeoContent,
   WebPageSchema,
-} from './typings/index.js'
+} from '../typings/index.js'
 
-export interface SeoOptions {
+export interface SeoPluginOptions {
   /**
    * Deploy hostname
    *

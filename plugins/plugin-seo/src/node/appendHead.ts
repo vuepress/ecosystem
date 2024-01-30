@@ -6,7 +6,7 @@ import type {
   BlogPostingSchema,
   SeoContent,
   WebPageSchema,
-} from './typings/index.js'
+} from '../typings/index.js'
 
 interface MetaOptions {
   name: string

@@ -1,15 +1,7 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-import { isArray, isFunction, isString, parseDate } from '@vuepress/helper'
+import { isArray, isString, parseDate } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
-import { removeEndingSlash } from 'vuepress/shared'
-import type { SeoOptions } from './options.js'
-import type {
-  ArticleSchema,
-  BlogPostingSchema,
-  ExtendPage,
-  SeoContent,
-  WebPageSchema,
-} from './typings/index.js'
+import type { ExtendPage, SeoContent } from '../typings/index.js'
+import type { SeoPluginOptions } from './options.js'
 import {
   getAlternatePaths,
   getCover,
@@ -18,9 +10,9 @@ import {
   getUrl,
 } from './utils/index.js'
 
-export const getOGP = (
+export const getOGPInfo = (
   page: ExtendPage,
-  options: SeoOptions,
+  options: SeoPluginOptions,
   app: App,
 ): SeoContent => {
   const {
@@ -91,68 +83,3 @@ export const getOGP = (
 
   return defaultOGP
 }
-
-export const getJSONLD = (
-  page: ExtendPage,
-  options: SeoOptions,
-  app: App,
-): ArticleSchema | BlogPostingSchema | WebPageSchema => {
-  const {
-    isArticle = (page): boolean =>
-      Boolean(page.filePathRelative && !page.frontmatter.home),
-    author: globalAuthor,
-  } = options
-
-  const {
-    title,
-    frontmatter: { author: pageAuthor, description, time, date = time },
-    data: { git = {} },
-  } = page
-
-  const author = getSEOAuthor(pageAuthor || globalAuthor)
-  const datePublished = parseDate(date)?.value?.toISOString()
-  const dateModified = git.updatedTime
-    ? new Date(git.updatedTime).toISOString()
-    : null
-  const cover = getCover(page, app, options)
-  const images = getImages(page, app, options)
-
-  return isArticle(page)
-    ? {
-        '@context': 'https://schema.org',
-        '@type': 'Article',
-        'headline': title,
-        'image': images.length
-          ? images
-          : [cover || options.fallBackImage || ''],
-        datePublished,
-        dateModified,
-        'author': author.map((item) => ({ '@type': 'Person', ...item })),
-      }
-    : {
-        '@context': 'https://schema.org',
-        '@type': 'WebPage',
-        'name': title,
-        ...(description ? { description } : {}),
-      }
-}
-
-export const getCanonicalLink = (
-  page: ExtendPage,
-  options: SeoOptions,
-): string | null =>
-  isFunction(options.canonical)
-    ? options.canonical(page)
-    : isString(options.canonical)
-      ? `${removeEndingSlash(options.canonical)}${page.path}`
-      : null
-
-export const getAlternateLinks = (
-  app: App,
-  page: ExtendPage,
-  { hostname }: SeoOptions,
-): { lang: string; path: string }[] =>
-  getAlternatePaths(page, app).map(({ lang, path }) => ({
-    lang,
-    path: getUrl(hostname, app.options.base, path),
-  }))
