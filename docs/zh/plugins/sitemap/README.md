@@ -9,7 +9,7 @@ npm i -D @vuepress/plugin-sitemap@next
 ```
 
 ```ts title=".vuepress/config.ts"
-import { sitemapPlugin } from "vuepress-plugin-sitemap2";
+import { sitemapPlugin } from "@vuepress/plugin-sitemap";
 
 export default {
   plugins: [

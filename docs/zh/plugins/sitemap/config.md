@@ -64,7 +64,7 @@
 ## sitemapXSLTemplate
 
 - 类型: `string`
-- 默认值: `"vuepress-plugin-sitemap2/templates/sitemap.xsl"`
+- 默认值: `"@vuepress-plugin/sitemap/templates/sitemap.xsl"`
 
 用作模板的 XSL 文件内容
 

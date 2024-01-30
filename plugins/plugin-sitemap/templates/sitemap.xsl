@@ -199,7 +199,7 @@
           </table>
         </div>
         <footer>
-          Generatd by <a href="https://plugin-sitemap2.vuejs.press">@vuepress/plugin-sitemap</a>
+          Generatd by <a href="https://ecosystem.vuejs.press/plugins/sitemap/">@vuepress/plugin-sitemap</a>
         </footer>
       </body>
     </html>

@@ -64,7 +64,7 @@ Output xsl filename, relative to dest folder.
 ## sitemapXSLTemplate
 
 - Type: `string`
-- Default value: `"vuepress-plugin-sitemap2/templates/sitemap.xsl"`
+- Default value: `"@vuepress/plugin-sitemap/templates/sitemap.xsl"`
 
 XSL content used as template.
 
