@@ -5,11 +5,8 @@ describe('copy-code', () => {
       .then((el) => {
         expect(el.length).to.be.greaterThan(0)
 
-        el.each((i, el) => {
-          el.click()
-
-          cy.get('.copy-code-button').eq(i).should('have.class', 'copied')
-        })
+        cy.wrap(el).click({ multiple: true })
+        cy.wrap(el).should('have.class', 'copied')
       })
   })
 })
