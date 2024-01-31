@@ -220,6 +220,21 @@ importers:
         specifier: 2.0.0-rc.2
         version: 2.0.0-rc.2(@vuepress/bundler-vite@2.0.0-rc.2)(@vuepress/bundler-webpack@2.0.0-rc.2)(typescript@5.3.3)(vue@3.4.15)
 
+  plugins/plugin-copy-code:
+    dependencies:
+      '@vuepress/helper':
+        specifier: 2.0.0-rc.5
+        version: link:../../tools/helper
+      '@vueuse/core':
+        specifier: ^10.7.2
+        version: 10.7.2(vue@3.4.15)
+      vue:
+        specifier: ^3.4.15
+        version: 3.4.15(typescript@5.3.3)
+      vuepress:
+        specifier: 2.0.0-rc.2
+        version: 2.0.0-rc.2(@vuepress/bundler-vite@2.0.0-rc.2)(@vuepress/bundler-webpack@2.0.0-rc.2)(typescript@5.3.3)(vue@3.4.15)
+
   plugins/plugin-docsearch:
     dependencies:
       '@docsearch/css':

@@ -1,0 +1,4 @@
+:root {
+  --copy-icon: url('copy-button.svg');
+  --copied-icon: url('copied-button.svg');
+}
