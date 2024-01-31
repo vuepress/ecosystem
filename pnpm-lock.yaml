@@ -226,7 +226,7 @@ importers:
   plugins/plugin-copy-code:
     dependencies:
       '@vuepress/helper':
-        specifier: 2.0.0-rc.5
+        specifier: 2.0.0-rc.6
         version: link:../../tools/helper
       '@vueuse/core':
         specifier: ^10.7.2
