@@ -1,8 +1,8 @@
-import { fromEntries, keys, Logger } from '@vuepress/helper/node'
 import type { App } from 'vuepress/core'
 import type { LocaleConfig, LocaleData } from 'vuepress/shared'
 import type { ExactLocaleConfig } from '../../shared/index.js'
-import { deepAssign } from '../../shared/index.js'
+import { deepAssign, fromEntries, keys } from '../../shared/index.js'
+import { Logger } from '../utils/index.js'
 import { lang2PathConfig, path2langConfig } from './config.js'
 import type { KnownLangCode } from './types.js'
 
