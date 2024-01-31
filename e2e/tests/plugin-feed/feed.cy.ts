@@ -15,14 +15,14 @@ describe('feed', () => {
 
   it('have json feed', () => {
     cy.request(`${BASE}feed.json`).then((res) => {
-      const jsonFeed = JSON.parse(res.body)
-
-      expect(jsonFeed).to.be.a('object')
-      expect(jsonFeed).to.have.property(
+      expect(res.body).to.be.a('object')
+      expect(res.body).to.have.property(
         'version',
         'https://jsonfeed.org/version/1.1',
       )
-      expect(res.body).to.contain('<strong>article excerpt</strong>')
+      expect(JSON.stringify(res.body)).to.contain(
+        '<strong>article excerpt</strong>',
+      )
     })
   })
 
@@ -43,11 +43,15 @@ describe('feed', () => {
       expect(res.body).to.contain('Custom feed title')
       expect(res.body).to.contain('Custom feed content.')
     })
+
     cy.request(`${BASE}feed.json`).then((res) => {
-      expect(res.body).to.contain('Custom feed title')
-      expect(res.body).to.contain('Custom feed description')
-      expect(res.body).to.contain('Custom feed content.')
+      const content = JSON.stringify(res.body)
+
+      expect(content).to.contain('Custom feed title')
+      expect(content).to.contain('Custom feed description')
+      expect(content).to.contain('Custom feed content.')
     })
+
     cy.request(`${BASE}rss.xml`).then((res) => {
       expect(res.body).to.contain('Custom feed title')
       expect(res.body).to.contain('Custom feed description')
@@ -59,9 +63,13 @@ describe('feed', () => {
     cy.request(`${BASE}atom.xml`).then((res) => {
       expect(res.body).to.not.contain('Excluded feed page content.')
     })
+
     cy.request(`${BASE}feed.json`).then((res) => {
-      expect(res.body).to.not.contain('Excluded feed page content.')
+      const content = JSON.stringify(res.body)
+
+      expect(content).to.not.contain('Excluded feed page content.')
     })
+
     cy.request(`${BASE}rss.xml`).then((res) => {
       expect(res.body).to.not.contain('Excluded feed page content.')
     })
