@@ -1,5 +1,7 @@
 import { isString } from 'vuepress/shared'
 
+export { isFunction, isString, isPlainObject } from 'vuepress/shared'
+
 /* Type helper */
 export const isDef = <T = any>(val?: T | undefined): val is T =>
   typeof val !== 'undefined'
