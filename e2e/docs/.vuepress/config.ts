@@ -1,6 +1,7 @@
 import process from 'node:process'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
+import { feedPlugin } from '@vuepress/plugin-feed'
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress/cli'
 import type { UserConfig } from 'vuepress/cli'
@@ -40,7 +41,7 @@ export default defineUserConfig({
   bundler: E2E_BUNDLER === 'webpack' ? webpackBundler() : viteBundler(),
 
   theme: defaultTheme({
-    hostname: 'https://e2e-test.com',
+    hostname: 'https://ecosystem-e2e-test.com',
     logo: 'https://v2.vuepress.vuejs.org/images/hero.png',
     navbar: [
       {
@@ -76,8 +77,20 @@ export default defineUserConfig({
     themePlugins: {
       sitemap: {
         devServer: true,
+        devHostname: 'https://ecosystem-e2e-test.com',
         excludeUrls: ['/sitemap/config-exclude.html', '/404.html'],
       },
     },
   }),
+
+  plugins: [
+    feedPlugin({
+      hostname: 'https://ecosystem-e2e-test.com',
+      devServer: true,
+      devHostname: 'https://example.com',
+      atom: true,
+      json: true,
+      rss: true,
+    }),
+  ],
 }) as UserConfig

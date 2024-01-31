@@ -19,6 +19,22 @@ export const sidebarZh: SidebarConfig = {
       children: ['/zh/plugins/docsearch', '/zh/plugins/search'],
     },
     {
+      text: '博客',
+      children: [
+        {
+          text: 'Feed',
+          link: '/zh/plugins/feed/',
+          children: [
+            '/zh/plugins/feed/guide',
+            '/zh/plugins/feed/config',
+            '/zh/plugins/feed/frontmatter',
+            '/zh/plugins/feed/channel',
+            '/zh/plugins/feed/getter',
+          ],
+        },
+      ],
+    },
+    {
       text: 'PWA',
       children: ['/zh/plugins/pwa', '/zh/plugins/pwa-popup'],
     },
@@ -27,6 +43,7 @@ export const sidebarZh: SidebarConfig = {
       children: [
         {
           text: '站点地图',
+          link: '/zh/plugins/sitemap/',
           children: [
             '/zh/plugins/sitemap/guide',
             '/zh/plugins/sitemap/config',
