@@ -272,7 +272,7 @@ importers:
         version: 1.6.11
     devDependencies:
       '@vuepress/plugin-git':
-        specifier: 2.0.0-rc.1
+        specifier: 2.0.0-rc.3
         version: link:../plugin-git
 
   plugins/plugin-git:
@@ -400,7 +400,7 @@ importers:
         version: 2.0.0-rc.2(@vuepress/bundler-vite@2.0.0-rc.2)(@vuepress/bundler-webpack@2.0.0-rc.2)(typescript@5.3.3)(vue@3.4.15)
     devDependencies:
       '@vuepress/plugin-git':
-        specifier: 2.0.0-rc.1
+        specifier: 2.0.0-rc.3
         version: link:../plugin-git
 
   plugins/plugin-shiki:
@@ -425,7 +425,7 @@ importers:
         version: 2.0.0-rc.2(@vuepress/bundler-vite@2.0.0-rc.2)(@vuepress/bundler-webpack@2.0.0-rc.2)(typescript@5.3.3)(vue@3.4.15)
     devDependencies:
       '@vuepress/plugin-git':
-        specifier: 2.0.0-rc.1
+        specifier: 2.0.0-rc.3
         version: link:../plugin-git
 
   plugins/plugin-theme-data:
@@ -556,7 +556,7 @@ importers:
         specifier: 2.0.0-rc.2
         version: 2.0.0-rc.2(typescript@5.3.3)
       '@vuepress/plugin-git':
-        specifier: 2.0.0-rc.1
+        specifier: 2.0.0-rc.3
         version: link:../../plugins/plugin-git
       vite:
         specifier: 5.0.12
