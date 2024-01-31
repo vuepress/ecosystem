@@ -1,4 +1,4 @@
-import type { SeoOptions } from '@vuepress/plugin-seo'
+import type { SeoPluginOptions } from '@vuepress/plugin-seo'
 import type { SitemapPluginOptions } from '@vuepress/plugin-sitemap'
 import type { ThemeData } from '@vuepress/plugin-theme-data'
 import type { LocaleData } from 'vuepress/shared'
@@ -55,7 +55,7 @@ export interface DefaultThemePluginsOptions {
   /**
    * Enable @vuepress/plugin-seo or not
    */
-  seo?: Partial<SeoOptions> | boolean
+  seo?: Partial<SeoPluginOptions> | boolean
 
   /**
    * Enable @vuepress/plugin-sitemap or not

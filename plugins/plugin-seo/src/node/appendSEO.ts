@@ -11,6 +11,7 @@ import { getJSONLDInfo } from './getJSONLDInfo.js'
 import { getOGPInfo } from './getOGPInfo.js'
 import type { SeoPluginOptions } from './options.js'
 import { getAlternateLinks, getCanonicalLink } from './utils/getLinks.js'
+import { logger } from './utils/index.js'
 
 export const appendSEO = (app: App, options: SeoPluginOptions): void => {
   app.pages.forEach((page: ExtendPage) => {
@@ -33,6 +34,11 @@ export const appendSEO = (app: App, options: SeoPluginOptions): void => {
       const jsonLDContent = options.jsonLd
         ? options.jsonLd(defaultJSONLD, page, app)
         : defaultJSONLD
+
+      if (app.env.isDebug) {
+        logger.info(`OGP of ${page.path}:`, ogpContent)
+        logger.info(`JSON-LD of ${page.path}:`, ogpContent)
+      }
 
       addOGP(head, ogpContent)
       appendJSONLD(head, jsonLDContent)

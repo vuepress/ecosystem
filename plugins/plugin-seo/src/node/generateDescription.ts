@@ -9,7 +9,7 @@ export const generateDescription = (
 ): void => {
   // generate description
   if (!page.frontmatter.description && autoDescription) {
-    const pageText = getPageText(app, page, { length: 180 })
+    const pageText = getPageText(app, page, { length: 180, singleLine: true })
 
     page.frontmatter.description =
       pageText.length > 180 ? `${pageText.slice(0, 177)}...` : pageText

@@ -40,7 +40,7 @@ export default defineUserConfig({
   bundler: E2E_BUNDLER === 'webpack' ? webpackBundler() : viteBundler(),
 
   theme: defaultTheme({
-    hostname: 'https://e2e-test.com',
+    hostname: 'https://ecosystem-e2e-test.com',
     logo: 'https://v2.vuepress.vuejs.org/images/hero.png',
     navbar: [
       {
@@ -59,7 +59,6 @@ export default defineUserConfig({
     ],
 
     sidebar: {
-      '/': ['/sidebar/'],
       '/sidebar/heading/': 'heading',
       '/sidebar/config/': [
         {
@@ -71,6 +70,7 @@ export default defineUserConfig({
           ],
         },
       ],
+      '/': [],
     },
 
     themePlugins: {
