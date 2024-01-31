@@ -65,10 +65,14 @@ export const feedPlugin =
             ...getFeedFiles(app, feedOptions, hostname),
             ...getAtomTemplates(feedOptions),
             ...getRSSTemplates(feedOptions),
-          ].forEach(([path, content]) => {
+          ].forEach(([path, content, contentType]) => {
             customizeDevServer(config, app, {
               path,
-              response: async () => Promise.resolve(content),
+              response: (_res, req) => {
+                if (contentType) req.setHeader('Content-Type', contentType)
+
+                return Promise.resolve(content)
+              },
               errMsg: 'Unexpected feed generation error',
             })
           })

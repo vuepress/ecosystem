@@ -1,1 +1,1 @@
-export type FeedConfig = [path: string, content: string]
+export type FeedConfig = [path: string, content: string, contentType?: string]

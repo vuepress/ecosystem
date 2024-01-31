@@ -1,10 +1,8 @@
 import type { App } from 'vuepress/core'
 import { fs, path } from 'vuepress/utils'
+import type { FeedConfig } from '../typings/index.js'
 
-export const writeFiles = (
-  app: App,
-  files: [filename: string, content: string][],
-): Promise<void>[] =>
+export const writeFiles = (app: App, files: FeedConfig[]): Promise<void>[] =>
   files.map(async ([filename, content]) => {
     const location = app.dir.dest(filename)
 
