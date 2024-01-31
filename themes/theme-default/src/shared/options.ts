@@ -28,6 +28,9 @@ export interface DefaultThemePluginsOptions {
     codeGroupItem?: boolean
   }
 
+  /**
+   * Enable @vuepress/plugin-copy-code or not
+   */
   copyCode?: CopyCodePluginOptions | boolean
 
   /**
