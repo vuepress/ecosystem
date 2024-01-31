@@ -149,6 +149,9 @@ importers:
       '@vuepress/client':
         specifier: 2.0.0-rc.2
         version: 2.0.0-rc.2(typescript@5.3.3)
+      '@vuepress/plugin-feed':
+        specifier: workspace:*
+        version: link:../plugins/plugin-feed
       '@vuepress/theme-default':
         specifier: workspace:*
         version: link:../themes/theme-default
@@ -252,6 +255,25 @@ importers:
       vuepress:
         specifier: 2.0.0-rc.2
         version: 2.0.0-rc.2(@vuepress/bundler-vite@2.0.0-rc.2)(@vuepress/bundler-webpack@2.0.0-rc.2)(typescript@5.3.3)(vue@3.4.15)
+
+  plugins/plugin-feed:
+    dependencies:
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../tools/helper
+      cheerio:
+        specifier: 1.0.0-rc.12
+        version: 1.0.0-rc.12
+      vuepress:
+        specifier: 2.0.0-rc.2
+        version: 2.0.0-rc.2(@vuepress/bundler-vite@2.0.0-rc.2)(@vuepress/bundler-webpack@2.0.0-rc.2)(typescript@5.3.3)(vue@3.4.15)
+      xml-js:
+        specifier: ^1.6.11
+        version: 1.6.11
+    devDependencies:
+      '@vuepress/plugin-git':
+        specifier: 2.0.0-rc.1
+        version: link:../plugin-git
 
   plugins/plugin-git:
     dependencies:
@@ -12395,6 +12417,13 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
+
+  /xml-js@1.6.11:
+    resolution: {integrity: sha512-7rVi2KMfwfWFl+GpPg6m80IVMWXLRjO+PxTq7V2CDhoGak0wzYzFgUY2m4XJ47OGdXd8eLE8EmwfAmdjw7lC1g==}
+    hasBin: true
+    dependencies:
+      sax: 1.3.0
+    dev: false
 
   /xml-name-validator@4.0.0:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}

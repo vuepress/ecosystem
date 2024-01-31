@@ -30,6 +30,10 @@ export const navbarEn: NavbarConfig = [
         children: ['/plugins/docsearch', '/plugins/search'],
       },
       {
+        text: 'Blogging',
+        children: ['/plugins/feed/'],
+      },
+      {
         text: 'PWA',
         children: ['/plugins/pwa', '/plugins/pwa-popup'],
       },

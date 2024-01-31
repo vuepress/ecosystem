@@ -19,6 +19,22 @@ export const sidebarEn: SidebarConfig = {
       children: ['/plugins/docsearch', '/plugins/search'],
     },
     {
+      text: 'Blogging',
+      children: [
+        {
+          text: 'Feed',
+          link: '/plugins/feed/',
+          children: [
+            '/plugins/feed/guide',
+            '/plugins/feed/config',
+            '/plugins/feed/frontmatter',
+            '/plugins/feed/channel',
+            '/plugins/feed/getter',
+          ],
+        },
+      ],
+    },
+    {
       text: 'PWA',
       children: ['/plugins/pwa', '/plugins/pwa-popup'],
     },

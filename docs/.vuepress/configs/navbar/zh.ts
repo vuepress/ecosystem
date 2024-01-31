@@ -30,6 +30,10 @@ export const navbarZh: NavbarConfig = [
         children: ['/zh/plugins/docsearch', '/zh/plugins/search'],
       },
       {
+        text: '博客',
+        children: ['/plugins/feed/'],
+      },
+      {
         text: 'PWA',
         children: ['/zh/plugins/pwa', '/zh/plugins/pwa-popup'],
       },
