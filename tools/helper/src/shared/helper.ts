@@ -17,6 +17,13 @@ export const startsWith = (str: unknown, prefix: string): boolean =>
 export const endsWith = (str: unknown, suffix: string): boolean =>
   isString(str) && str.endsWith(suffix)
 
+export {
+  ensureEndingSlash,
+  ensureLeadingSlash,
+  removeEndingSlash,
+  removeLeadingSlash,
+} from 'vuepress/shared'
+
 /* Object helper */
 export const entries = Object.entries
 export const fromEntries = Object.fromEntries
