@@ -22,7 +22,7 @@
 
 - Example: `['/about.html', '/api/']`
 
-## excludeUrls
+## excludePaths
 
 - Type: `string[]`
 

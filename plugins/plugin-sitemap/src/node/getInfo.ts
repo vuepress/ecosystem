@@ -45,7 +45,7 @@ export const getSitemapInfos = (
 ): [path: string, info: SitemapInfo][] => {
   const {
     changefreq = 'daily',
-    excludeUrls = ['/404.html'],
+    excludePaths = ['/404.html'],
     modifyTimeGetter = (page: Page<{ git?: GitData }>): string =>
       page.data.git?.updatedTime
         ? new Date(page.data.git.updatedTime).toISOString()
@@ -74,7 +74,7 @@ export const getSitemapInfos = (
           .map((content) => content.trim())
           .includes('noindex') ||
         // exclude in plugin options
-        excludeUrls.includes(page.path)
+        excludePaths.includes(page.path)
       )
         return
 
