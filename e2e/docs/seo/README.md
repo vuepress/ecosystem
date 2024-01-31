@@ -11,7 +11,7 @@ tag:
 Here is **article excerpt**.
 
 ```js
-const a = 1;
+const a = 1
 ```
 
 <!-- more -->
@@ -27,5 +27,5 @@ Here is main content of **article**.
 1. C
 
 ```js
-const a = 1;
+const a = 1
 ```

@@ -93,17 +93,17 @@ The author of the channel.
 ```ts
 interface FeedAuthor {
   /** Author name */
-  name: string;
+  name: string
   /** Author's email */
-  email?: string;
+  email?: string
   /** Author's site */
-  url?: string;
+  url?: string
   /**
    * Author's avatar address
    *
    * Square, preferably not less than 128×128 with transparent background
    */
-  avatar?: string;
+  avatar?: string
 }
 ```
 

@@ -9,7 +9,7 @@ npm i -D @vuepress/plugin-feed@next
 ```
 
 ```ts title=".vuepress/config.ts"
-import { feedPlugin } from "@vuepress/plugin-feed";
+import { feedPlugin } from '@vuepress/plugin-feed'
 
 export default {
   plugins: [

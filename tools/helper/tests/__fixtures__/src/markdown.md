@@ -102,7 +102,7 @@ Classic:
 |           center           |                    right | left                    |
 | :------------------------: | -----------------------: | :---------------------- |
 | For center align use `:-:` | For right align use `-:` | For left align use `:-` |
-|             table text              |                aaaaaaaaa | aaaa                    |
+|         table text         |                aaaaaaaaa | aaaa                    |
 |             c              |                     aaaa | a                       |
 
 ## Codes
@@ -119,10 +119,10 @@ Syntax highlighting:
 
 ```js {2}
 var foo = function (bar) {
-  return bar++;
-};
+  return bar++
+}
 
-console.log(foo(5));
+console.log(foo(5))
 ```
 
 ## Comment

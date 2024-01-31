@@ -79,26 +79,26 @@ interface FeedAuthor {
   /**
    * 作者名字
    */
-  name?: string;
+  name?: string
 
   /**
    * 作者邮件
    */
-  email?: string;
+  email?: string
 
   /**
    * 作者网站
    *
    * @description json format only
    */
-  url?: string;
+  url?: string
 
   /**
    * 作者头像
    *
    * @description json format only
    */
-  avatar?: string;
+  avatar?: string
 }
 ```
 
@@ -117,26 +117,26 @@ interface FeedContributor {
   /**
    * 作者名字
    */
-  name?: string;
+  name?: string
 
   /**
    * 作者邮件
    */
-  email?: string;
+  email?: string
 
   /**
    * 作者网站
    *
    * @description json format only
    */
-  url?: string;
+  url?: string
 
   /**
    * 作者头像
    *
    * @description json format only
    */
-  avatar?: string;
+  avatar?: string
 }
 ```
 

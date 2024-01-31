@@ -13,26 +13,26 @@
 - 类型：`Author`
 
   ```ts
-  type AuthorName = string;
+  type AuthorName = string
 
   interface AuthorInfo {
     /**
      * 作者姓名
      */
-    name: string;
+    name: string
 
     /**
      * 作者网站
      */
-    url?: string;
+    url?: string
 
     /**
      * 作者 Email
      */
-    email?: string;
+    email?: string
   }
 
-  type Author = AuthorName | AuthorName[] | AuthorInfo | AuthorInfo[];
+  type Author = AuthorName | AuthorName[] | AuthorInfo | AuthorInfo[]
   ```
 
 - 详情：
@@ -101,7 +101,7 @@
     page: Page,
     /** VuePress App */
     app: App,
-  ): SeoContent;
+  ): SeoContent
   ```
 
 - 详情：
@@ -122,7 +122,7 @@
     page: Page,
     /** VuePress App */
     app: App,
-  ): ArticleSchema | BlogPostingSchema | WebPageSchema;
+  ): ArticleSchema | BlogPostingSchema | WebPageSchema
   ```
 
 - 详情：
@@ -143,7 +143,7 @@
     page: Page,
     /** VuePress App */
     app: App,
-  ): void;
+  ): void
   ```
 
 - 详情：

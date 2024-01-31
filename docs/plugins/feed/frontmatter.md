@@ -79,26 +79,26 @@ interface FeedAuthor {
   /**
    * Author name
    */
-  name?: string;
+  name?: string
 
   /**
    * Author email
    */
-  email?: string;
+  email?: string
 
   /**
    * Author site
    *
    * @description json format only
    */
-  url?: string;
+  url?: string
 
   /**
    * Author avatar
    *
    * @description json format only
    */
-  avatar?: string;
+  avatar?: string
 }
 ```
 
@@ -117,26 +117,26 @@ interface FeedContributor {
   /**
    * Author name
    */
-  name?: string;
+  name?: string
 
   /**
    * Author email
    */
-  email?: string;
+  email?: string
 
   /**
    * Author site
    *
    * @description json format only
    */
-  url?: string;
+  url?: string
 
   /**
    * Author avatar
    *
    * @description json format only
    */
-  avatar?: string;
+  avatar?: string
 }
 ```
 
