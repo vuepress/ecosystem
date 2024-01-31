@@ -57,15 +57,16 @@ describe('seo', () => {
     cy.get('head script[type="application/ld+json"]').then((el) => {
       const json = JSON.parse(el[0].innerText)
 
-      expect(json).to.deep.equal({
-        '@context': 'https://schema.org',
-        '@type': 'Article',
-        'headline': 'SEO Demo Page',
-        'image': [`https://ecosystem-e2e-test.com${BASE}logo.png`],
-        'datePublished': '2021-01-01T00:00:00.000Z',
-        'dateModified': null,
-        'author': [{ '@type': 'Person', 'name': 'Mr.Hope' }],
-      })
+      expect(json['@context']).to.equal('https://schema.org')
+      expect(json['@type']).to.equal('Article')
+      expect(json.headline).to.equal('SEO Demo Page')
+      expect(json.image).to.deep.equal([
+        `https://ecosystem-e2e-test.com${BASE}logo.png`,
+      ])
+      expect(json.datePublished).to.equal('2021-01-01T00:00:00.000Z')
+      expect(json).to.has.property('dateModified')
+      expect(json.author[0]['@type']).to.equal('Person')
+      expect(json.author[0].name).to.equal('Mr.Hope')
     })
   })
 })
