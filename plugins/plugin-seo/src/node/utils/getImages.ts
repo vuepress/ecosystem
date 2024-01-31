@@ -13,8 +13,6 @@ export const getImages = (
 ): string[] =>
   Array.from(content.matchAll(IMAGE_REG_EXP))
     .map(([, link]) => {
-      console.log(link)
-
       if (isAbsoluteUrl(link)) return getUrl(hostname, base, link)
 
       if (isUrl(link)) return link
