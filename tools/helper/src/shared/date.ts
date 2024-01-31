@@ -1,4 +1,5 @@
-import { isDef, isString } from './helper.js'
+import { isString } from 'vuepress/shared'
+import { isDef } from './helper.js'
 
 export interface DateInfo {
   type: 'date' | 'time' | 'full'
