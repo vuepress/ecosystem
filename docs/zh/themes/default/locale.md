@@ -71,6 +71,22 @@ export default {
 }
 ```
 
+### navbarLabel
+
+- 类型：`null | string`
+
+- 详情：
+
+  导航栏中主导航 `aria-label` 属性的值。
+
+### pageNavbarLabel
+
+- 类型：`null | string`
+
+- 详情：
+
+  下一页/上一页导航 `aria-label` 属性的值
+
 ## editLinkText
 
 - 类型： `string`

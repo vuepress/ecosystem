@@ -202,6 +202,16 @@ export default {
   - [默认主题 > 配置 > logo](#logo)
   - [默认主题 > 配置 > colorMode](#colormode)
 
+### logoAlt
+
+- 类型：`null | string`
+
+- 详情：
+
+  指定 Logo 图片的替代文字。
+
+  当未指定时，将默认与站点标题相同。
+
 ### repo
 
 - 类型： `string`
@@ -248,7 +258,7 @@ export default {
   如果你想在不同子路径中使用不同的侧边栏，你可以将该配置项设置为 _侧边栏对象_ ：
 
   - Key 为路径前缀。
-  - Value 为 _侧边栏数组_ 。
+  - Value 为 _侧边栏数组_ 或 `"heading"` 以自动为相应路径生成基于标题的侧边栏。
 
 - 示例 1：
 
@@ -294,12 +304,7 @@ export default {
           children: ['/guide/introduction.md', '/guide/getting-started.md'],
         },
       ],
-      '/reference/': [
-        {
-          text: 'Reference',
-          children: ['/reference/cli.md', '/reference/config.md'],
-        },
-      ],
+      '/reference/': 'heading',
     },
   }),
 }

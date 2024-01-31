@@ -202,6 +202,16 @@ export default {
   - [Default Theme > Config > logo](#logo)
   - [Default Theme > Config > colorMode](#colormode)
 
+### logoAlt
+
+- Type: `null | string`
+
+- Details:
+
+  Specify the alt text of the logo image.
+
+  If not specified, defaults to be the same as the site title.
+
 ### repo
 
 - Type: `string`
@@ -248,7 +258,7 @@ export default {
   If you want to set different sidebar for different sub paths, you can set this option to a _sidebar object_:
 
   - The key should be the path prefix.
-  - The value should be a _sidebar array_.
+  - The value should be a _sidebar array_ or set to `'heading'` to automatically generate the sidebar from the page headers for just the corresponding path.
 
 - Example 1:
 
@@ -294,12 +304,7 @@ export default {
           children: ['/guide/introduction.md', '/guide/getting-started.md'],
         },
       ],
-      '/reference/': [
-        {
-          text: 'Reference',
-          children: ['/reference/cli.md', '/reference/config.md'],
-        },
-      ],
+      '/reference/': 'heading',
     },
   }),
 }

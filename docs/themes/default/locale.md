@@ -71,6 +71,22 @@ export default {
 }
 ```
 
+### navbarLabel
+
+- Type: `null | string`
+
+- Details:
+
+  `aria-label` value for main navigation in navbar.
+
+### pageNavbarLabel
+
+- Type: `null | string`
+
+- Details:
+
+  `aria-label` value for next/previous page navigation.
+
 ## editLinkText
 
 - Type: `string`
