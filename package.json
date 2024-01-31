@@ -12,7 +12,7 @@
     "lint": "eslint --ext .cjs,.js,.ts,.vue . && prettier --check .",
     "lint:fix": "eslint --fix --ext .cjs,.js,.ts,.vue . && prettier --write .",
     "prepare": "husky",
-    "release": "pnpm release:check && pnpm release:version prerelease && pnpm release:publish",
+    "release": "pnpm release:check && pnpm release:version && pnpm release:publish",
     "release:check": "pnpm lint && pnpm clean && pnpm build && pnpm test",
     "release:publish": "lerna publish --dist-tag next from-package",
     "release:version": "lerna version",
