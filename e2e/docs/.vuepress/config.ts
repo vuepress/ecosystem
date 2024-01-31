@@ -41,7 +41,7 @@ export default defineUserConfig({
   bundler: E2E_BUNDLER === 'webpack' ? webpackBundler() : viteBundler(),
 
   theme: defaultTheme({
-    hostname: 'https://e2e-test.com',
+    hostname: 'https://ecosystem-e2e-test.com',
     logo: 'https://v2.vuepress.vuejs.org/images/hero.png',
     navbar: [
       {
@@ -77,7 +77,7 @@ export default defineUserConfig({
     themePlugins: {
       sitemap: {
         devServer: true,
-        devHostname: 'https://example.com',
+        devHostname: 'https://ecosystem-e2e-test.com',
         excludeUrls: ['/sitemap/config-exclude.html', '/404.html'],
       },
     },
@@ -85,7 +85,7 @@ export default defineUserConfig({
 
   plugins: [
     feedPlugin({
-      hostname: 'https://example.com',
+      hostname: 'https://ecosystem-e2e-test.com',
       devServer: true,
       devHostname: 'https://example.com',
       atom: true,

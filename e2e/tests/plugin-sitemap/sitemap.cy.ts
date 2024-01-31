@@ -6,7 +6,7 @@ describe('sitemap', () => {
       expect(res.body).to.be.a('string')
       expect(res.body).to.contain('<?xml version="1.0"')
       expect(res.body).to.contain(
-        `https://example.com${BASE}markdown.html</loc>`,
+        `https://ecosystem-e2e-test.com${BASE}markdown.html</loc>`,
       )
     })
   })
