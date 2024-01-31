@@ -25,6 +25,10 @@ div[class*='language-'] > .copy-code-button {
   }
 }
 
+div[class*='language-']:hover::before {
+  display: none;
+}
+
 div[class*='language-']:hover > .copy-code-button,
 div[class*='language-'] > .copy-code-button:focus,
 div[class*='language-'] > .copy-code-button.copied {
@@ -33,7 +37,7 @@ div[class*='language-'] > .copy-code-button.copied {
 
 div[class*='language-'] > .copy-code-button:hover,
 div[class*='language-'] > .copy-code-button.copied {
-  background: var(--code-hl-bg-color, rgb(0 0 0 / 66%));
+  background: var(--copy-code-hover);
 }
 
 div[class*='language-'] > .copy-code-button .copy-icon {
@@ -42,12 +46,12 @@ div[class*='language-'] > .copy-code-button .copy-icon {
   padding: 0.625rem;
 
   background: currentcolor;
-  color: var(--code-ln-color, #9e9e9e);
+  color: var(--copy-code-color);
 
   font-size: 1.25rem;
 
-  -webkit-mask-image: var(--copy-icon);
-  mask-image: var(--copy-icon);
+  -webkit-mask-image: var(--code-copy-icon);
+  mask-image: var(--code-copy-icon);
   -webkit-mask-position: 50%;
   mask-position: 50%;
   -webkit-mask-repeat: no-repeat;
@@ -57,8 +61,8 @@ div[class*='language-'] > .copy-code-button .copy-icon {
 }
 
 div[class*='language-'] > .copy-code-button.copied .copy-icon {
-  -webkit-mask-image: var(--copied-icon);
-  mask-image: var(--copied-icon);
+  -webkit-mask-image: var(--code-copied-icon);
+  mask-image: var(--code-copied-icon);
 }
 
 div[class*='language-'] > .copy-code-button.copied::after {
@@ -74,8 +78,8 @@ div[class*='language-'] > .copy-code-button.copied::after {
   padding: 0.625rem;
   border-radius: 0.5rem;
 
-  background: var(--code-hl-bg-color, rgb(0 0 0 / 66%));
-  color: var(--code-ln-color, #9e9e9e);
+  background: var(--copy-code-hover);
+  color: var(--copy-code-color);
 
   font-weight: 500;
   line-height: 1.25rem;

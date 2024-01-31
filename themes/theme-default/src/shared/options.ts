@@ -1,3 +1,4 @@
+import type { CopyCodePluginOptions } from '@vuepress/plugin-copy-code'
 import type { SeoPluginOptions } from '@vuepress/plugin-seo'
 import type { SitemapPluginOptions } from '@vuepress/plugin-sitemap'
 import type { ThemeData } from '@vuepress/plugin-theme-data'
@@ -26,6 +27,8 @@ export interface DefaultThemePluginsOptions {
     codeGroup?: boolean
     codeGroupItem?: boolean
   }
+
+  copyCode?: CopyCodePluginOptions | boolean
 
   /**
    * Enable @vuepress/plugin-external-link-icon or not

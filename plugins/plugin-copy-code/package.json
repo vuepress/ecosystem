@@ -38,7 +38,7 @@
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "copy": "cpx \"src/client/**/*.scss\" lib/client"
+    "copy": "cpx \"src/**/*.{css,svg}\" lib"
   },
   "dependencies": {
     "@vuepress/helper": "2.0.0-rc.5",

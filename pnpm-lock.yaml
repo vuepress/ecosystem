@@ -95,6 +95,9 @@ importers:
       '@vuepress/plugin-back-to-top':
         specifier: workspace:*
         version: link:../plugins/plugin-back-to-top
+      '@vuepress/plugin-copy-code':
+        specifier: workspace:*
+        version: link:../plugins/plugin-copy-code
       '@vuepress/plugin-docsearch':
         specifier: workspace:*
         version: link:../plugins/plugin-docsearch
@@ -481,6 +484,9 @@ importers:
       '@vuepress/plugin-container':
         specifier: workspace:*
         version: link:../../plugins/plugin-container
+      '@vuepress/plugin-copy-code':
+        specifier: workspace:*
+        version: link:../../plugins/plugin-copy-code
       '@vuepress/plugin-external-link-icon':
         specifier: workspace:*
         version: link:../../plugins/plugin-external-link-icon

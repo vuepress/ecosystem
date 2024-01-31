@@ -3,7 +3,7 @@ import { defineClientConfig } from 'vuepress/client'
 import { setupCopyCode } from './composables/index.js'
 
 import './styles/copy-code.css'
-import './styles/var.css'
+import './styles/vars.css'
 
 export default defineClientConfig({
   setup: () => {

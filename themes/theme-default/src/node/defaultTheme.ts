@@ -1,6 +1,7 @@
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
 import { containerPlugin } from '@vuepress/plugin-container'
+import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 import { externalLinkIconPlugin } from '@vuepress/plugin-external-link-icon'
 import { gitPlugin } from '@vuepress/plugin-git'
 import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
@@ -85,6 +86,15 @@ export const defaultTheme = ({
 
       // @vuepress/plugin-back-to-top
       themePlugins.backToTop !== false ? backToTopPlugin() : [],
+
+      // @vuepress/plugin-copy-code
+      themePlugins.copyCode !== false
+        ? copyCodePlugin({
+            ...(isPlainObject(themePlugins.copyCode)
+              ? themePlugins.copyCode
+              : {}),
+          })
+        : [],
 
       // @vuepress/plugin-container
       themePlugins.container?.tip !== false
