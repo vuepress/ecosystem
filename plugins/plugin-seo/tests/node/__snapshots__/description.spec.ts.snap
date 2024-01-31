@@ -27,8 +27,7 @@ exports[`Should generate seo information > Should contain basic properties 1`] =
   [
     "meta",
     {
-      "content": "This is a home page.
-",
+      "content": "This is a home page. ",
       "property": "og:description",
     },
   ],
@@ -58,7 +57,7 @@ exports[`Should generate seo information > Should contain basic properties 1`] =
     {
       "type": "application/ld+json",
     },
-    "{"@context":"https://schema.org","@type":"WebPage","name":"","description":"This is a home page.\\n"}",
+    "{"@context":"https://schema.org","@type":"WebPage","name":"","description":"This is a home page. "}",
   ],
 ]
 `;
@@ -166,18 +165,7 @@ exports[`Should generate seo information > Should contain basic properties 3`] =
   [
     "meta",
     {
-      "content": "Heading 1
-Heading 2
-Heading 3
-Heading 4
-Heading 5
-Heading 6
-Text
-This sentence has bold、italic and  style text.
-Paragraph
-This is a paragraph.
-This is another paragraph.
-Line Br...",
+      "content": "Heading 1 Heading 2 Heading 3 Heading 4 Heading 5 Heading 6 Text This sentence has bold、italic and style text. Paragraph This is a paragraph. This is another paragraph. Line Bre...",
       "property": "og:description",
     },
   ],
@@ -186,6 +174,13 @@ Line Br...",
     {
       "content": "article",
       "property": "og:type",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "https://exmaple.com/logo.png",
+      "property": "og:image",
     },
   ],
   [
@@ -203,11 +198,25 @@ Line Br...",
     },
   ],
   [
+    "meta",
+    {
+      "content": "summary_large_image",
+      "name": "twitter:card",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "Heading 1",
+      "name": "twitter:image:alt",
+    },
+  ],
+  [
     "script",
     {
       "type": "application/ld+json",
     },
-    "{"@context":"https://schema.org","@type":"Article","headline":"Heading 1","image":[""],"dateModified":null,"author":[]}",
+    "{"@context":"https://schema.org","@type":"Article","headline":"Heading 1","image":["https://exmaple.com/logo.png"],"dateModified":null,"author":[]}",
   ],
 ]
 `;
@@ -239,8 +248,7 @@ exports[`Should generate seo information > Should contain basic properties 4`] =
   [
     "meta",
     {
-      "content": "这是一个主页。
-",
+      "content": "这是一个主页。 ",
       "property": "og:description",
     },
   ],
@@ -270,7 +278,7 @@ exports[`Should generate seo information > Should contain basic properties 4`] =
     {
       "type": "application/ld+json",
     },
-    "{"@context":"https://schema.org","@type":"WebPage","name":"","description":"这是一个主页。\\n"}",
+    "{"@context":"https://schema.org","@type":"WebPage","name":"","description":"这是一个主页。 "}",
   ],
 ]
 `;
@@ -378,41 +386,7 @@ exports[`Should generate seo information > Should contain basic properties 6`] =
   [
     "meta",
     {
-      "content": "一级标题
-二级标题
-三级标题
-四级标题
-五级标题
-六级标题
-Text
-这句话里拥有加粗、倾斜和
-段落
-这是一个段落。
-这是另一个段落。
-换行
-这是一句话不过我要在这里
-换行
-::: tip
-上方的代码中 这里 后面有两个空格
-:::
-引用
-
-引用也可以连用
-
-可以添加额外的大于号制造更深的引用
-
-
-列表
-无序列表
-
-
-无序列表项
-
-
-无序列表项
-
-
-列...",
+      "content": "一级标题 二级标题 三级标题 四级标题 五级标题 六级标题 Text 这句话里拥有加粗、倾斜和 段落 这是一个段落。 这是另一个段落。 换行 这是一句话不过我要在这里 换行 ::: tip 上方的代码中 这里 后面有两个空格 ::: 引用 引用也可以连用 可以添加额外的大于号制造更深的引用 列表 无序列表 无序列表项 无序列表项 列表中的列表项 更多的...",
       "property": "og:description",
     },
   ],
@@ -421,6 +395,13 @@ Text
     {
       "content": "article",
       "property": "og:type",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "https://exmaple.com/logo.png",
+      "property": "og:image",
     },
   ],
   [
@@ -438,11 +419,25 @@ Text
     },
   ],
   [
+    "meta",
+    {
+      "content": "summary_large_image",
+      "name": "twitter:card",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "一级标题",
+      "name": "twitter:image:alt",
+    },
+  ],
+  [
     "script",
     {
       "type": "application/ld+json",
     },
-    "{"@context":"https://schema.org","@type":"Article","headline":"一级标题","image":[""],"dateModified":null,"author":[]}",
+    "{"@context":"https://schema.org","@type":"Article","headline":"一级标题","image":["https://exmaple.com/logo.png"],"dateModified":null,"author":[]}",
   ],
 ]
 `;
