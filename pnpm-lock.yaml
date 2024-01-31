@@ -454,6 +454,9 @@ importers:
 
   themes/theme-default:
     dependencies:
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../tools/helper
       '@vuepress/plugin-active-header-links':
         specifier: workspace:*
         version: link:../../plugins/plugin-active-header-links
