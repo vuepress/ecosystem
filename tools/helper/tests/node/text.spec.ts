@@ -28,7 +28,7 @@ describe('getPageText', async () => {
       expect(text).toMatchSnapshot(path)
 
       if (path === '/markdown.html') {
-        expect(text).not.toContain('console.log(foo(5));')
+        expect(text).not.toContain('console.log(foo(5))')
         expect(text).not.toContain('table text')
       }
     })
@@ -51,7 +51,7 @@ describe('getPageText', async () => {
       if (path === '/markdown.html') {
         expect(text).toContain('Create a list')
         expect(text).toContain('Integer molestie lorem at massa')
-        expect(text).toContain('console.log(foo(5));')
+        expect(text).toContain('console.log(foo(5))')
         expect(text).toContain('table text')
       }
     })
@@ -64,7 +64,7 @@ describe('getPageText', async () => {
         if (path === '/markdown.html') {
           expect(text).not.toContain('Create a list')
           expect(text).not.toContain('Integer molestie lorem at massa')
-          expect(text).not.toContain('console.log(foo(5));')
+          expect(text).not.toContain('console.log(foo(5))')
           expect(text).not.toContain('table text')
         }
       },
