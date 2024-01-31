@@ -1,4 +1,4 @@
-import { parseDate } from '@vuepress/helper'
+import { getDate } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import type {
   ArticleSchema,
@@ -27,7 +27,7 @@ export const getJSONLDInfo = (
   } = page
 
   const author = getSEOAuthor(pageAuthor || globalAuthor)
-  const datePublished = parseDate(date)?.value?.toISOString()
+  const datePublished = getDate(date)?.toISOString()
   const dateModified = git.updatedTime
     ? new Date(git.updatedTime).toISOString()
     : null

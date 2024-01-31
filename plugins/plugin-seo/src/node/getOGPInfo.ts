@@ -1,4 +1,4 @@
-import { isArray, isString, parseDate } from '@vuepress/helper'
+import { getDate, isArray, isString } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import type { ExtendPage, SeoContent } from '../typings/index.js'
 import type { SeoPluginOptions } from './options.js'
@@ -49,7 +49,7 @@ export const getOGPInfo = (
   const cover = getCover(page, app, options)
   const images = getImages(page, app, options)
   const locales = getAlternatePaths(page, app)
-  const publishedTime = parseDate(date)?.value?.toISOString()
+  const publishedTime = getDate(date)?.toISOString()
 
   const ogImage = cover || images[0] || options.fallBackImage || ''
 
