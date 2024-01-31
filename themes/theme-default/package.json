@@ -51,6 +51,7 @@
     "@vuepress/plugin-nprogress": "workspace:*",
     "@vuepress/plugin-palette": "workspace:*",
     "@vuepress/plugin-prismjs": "workspace:*",
+    "@vuepress/plugin-seo": "workspace:*",
     "@vuepress/plugin-sitemap": "workspace:*",
     "@vuepress/plugin-theme-data": "workspace:*",
     "@vueuse/core": "^10.7.2",

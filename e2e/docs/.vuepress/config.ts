@@ -60,7 +60,6 @@ export default defineUserConfig({
     ],
 
     sidebar: {
-      '/': ['/sidebar/'],
       '/sidebar/heading/': 'heading',
       '/sidebar/config/': [
         {
@@ -72,6 +71,7 @@ export default defineUserConfig({
           ],
         },
       ],
+      '/': [],
     },
 
     themePlugins: {

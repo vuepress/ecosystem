@@ -741,6 +741,16 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
   Enable [@vuepress/plugin-nprogress](../../plugins/nprogress.md) or not.
 
+### themePlugins.seo
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Enable [@vuepress/plugin-seo](../../plugins/seo/README.md) or not.
+
 ### themePlugins.sitemap
 
 - Type: `boolean`

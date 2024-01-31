@@ -39,7 +39,7 @@ export const navbarZh: NavbarConfig = [
       },
       {
         text: '搜索引擎增强',
-        children: ['/zh/plugins/sitemap'],
+        children: ['/zh/plugins/seo/', '/zh/plugins/sitemap/'],
       },
       {
         text: '语法高亮',

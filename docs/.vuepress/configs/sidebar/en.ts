@@ -42,6 +42,11 @@ export const sidebarEn: SidebarConfig = {
       text: 'SEO',
       children: [
         {
+          text: 'SEO',
+          link: '/plugins/seo/',
+          children: ['/plugins/seo/guide', '/plugins/seo/config'],
+        },
+        {
           text: 'Sitemap',
           link: '/plugins/sitemap/',
           children: [

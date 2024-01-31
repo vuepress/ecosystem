@@ -741,6 +741,16 @@ export default {
 
   是否启用 [@vuepress/plugin-nprogress](../../plugins/nprogress.md) 。
 
+### themePlugins.seo
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否启用 [@vuepress/plugin-seo](../../plugins/seo/README.md) 。
+
 ### themePlugins.sitemap
 
 - 类型： `boolean`

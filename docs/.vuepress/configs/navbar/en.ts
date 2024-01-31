@@ -39,7 +39,7 @@ export const navbarEn: NavbarConfig = [
       },
       {
         text: 'SEO',
-        children: ['/plugins/sitemap'],
+        children: ['/plugins/seo/', '/plugins/sitemap/'],
       },
       {
         text: 'Syntax Highlighting',
