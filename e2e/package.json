@@ -21,13 +21,13 @@
     "@vuepress/plugin-feed": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
     "sass": "^1.70.0",
-    "sass-loader": "^14.0.0",
+    "sass-loader": "^14.1.0",
     "vue": "^3.4.15",
     "vuepress": "2.0.0-rc.2"
   },
   "devDependencies": {
     "anywhere": "^1.6.0",
-    "cypress": "^13.6.3",
+    "cypress": "^13.6.4",
     "start-server-and-test": "^2.0.3"
   }
 }
