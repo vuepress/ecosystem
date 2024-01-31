@@ -2,13 +2,9 @@
 
 <NpmBadge package="@vuepress/plugin-copy-code" />
 
-
-This plugin will automatically add a copy button to the top right corner of each code block on PC devices. The default selector matches `@vuepress/theme-default`, and you might need to change it when integrating your own theme.
-
 此插件会自动在 PC 设备上为每个代码块右上角添加复制按钮。
 
 默认选择器匹配 `@vuepress/theme-default`，所以在你自己的主题中集成时可能需要调整它。
-
 
 ## 使用
 
