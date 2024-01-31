@@ -37,11 +37,14 @@ export const addViteOptimizeDepsInclude = (
   bundlerOptions: unknown,
   app: App,
   module: string | string[],
+  isDeep = false,
 ): void => {
   if (
-    'OPTIMIZE_DEPS' in process.env
-      ? Boolean(process.env.OPTIMIZE_DEPS)
-      : getPackageManager() !== 'pnpm'
+    getPackageManager() !== 'pnpm' ||
+    // pnpm is not able to optimize deps in tree at first startup
+    ('FORCE_OPTIMIZE_DEPS' in process.env
+      ? Boolean(process.env.FORCE_OPTIMIZE_DEPS)
+      : !isDeep)
   )
     addViteConfig(bundlerOptions, app, {
       optimizeDeps: {

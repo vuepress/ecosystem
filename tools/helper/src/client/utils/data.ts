@@ -18,8 +18,6 @@ export const encodeData = (
 }
 
 export const decodeData = (base64: string): string => {
-  console.log(base64)
-
   const binary = __VUEPRESS_SSR__
     ? Buffer.from(base64, 'base64').toString('binary')
     : atob(base64)
