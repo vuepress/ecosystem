@@ -1,15 +1,11 @@
-export { isPlainObject } from 'vuepress/shared'
+import { isString } from 'vuepress/shared'
 
 /* Type helper */
 export const isDef = <T = any>(val?: T | undefined): val is T =>
   typeof val !== 'undefined'
 export const isBoolean = (val: any): val is boolean => typeof val === 'boolean'
 export const isNumber = (val: any): val is number => typeof val === 'number'
-export const isString = (val: unknown): val is string => typeof val === 'string'
 export const isArray = Array.isArray
-// eslint-disable-next-line @typescript-eslint/ban-types
-export const isFunction = <T extends Function>(val: any): val is T =>
-  typeof val === 'function'
 export const isRegExp = (val: unknown): val is RegExp => val instanceof RegExp
 
 /* String helper */

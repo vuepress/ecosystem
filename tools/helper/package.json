@@ -29,6 +29,7 @@
     "./client": "./lib/client/index.js",
     "./client/*": "./lib/client/*",
     "./node": "./lib/node/index.js",
+    "./shared": "./lib/shared/index.js",
     "./noopComponent": "./lib/client/noopComponent.js",
     "./noopModule": "./lib/client/noopModule.js",
     "./package.json": "./package.json"
