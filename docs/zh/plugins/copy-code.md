@@ -69,16 +69,16 @@ export default {
     /**
      * 复制文字
      */
-    copy: string;
+    copy: string
 
     /**
      * 已复制文字
      */
-    copied: string;
+    copied: string
   }
 
   interface CopyCodeLocaleConfig {
-    [localePath: string]: CopyCodeLocaleData;
+    [localePath: string]: CopyCodeLocaleData
   }
   ```
 
@@ -90,35 +90,35 @@ export default {
 - 示例：
 
   ```ts
-  import { copyCodePlugin } from "vuepress-plugin-copy-code2";
+  import { copyCodePlugin } from 'vuepress-plugin-copy-code2'
 
   export default {
     locales: {
-      "/": {
+      '/': {
         // 这是一个支持的语言
-        lang: "zh-CN",
+        lang: 'zh-CN',
       },
-      "/xx/": {
+      '/xx/': {
         // 这是一个没有收到插件支持的语言
-        lang: "mm-NN",
+        lang: 'mm-NN',
       },
     },
 
     plugins: [
       copyCodePlugin({
         locales: {
-          "/": {
+          '/': {
             // 覆盖复制按钮标签文字
-            copy: "复制此段代码",
+            copy: '复制此段代码',
           },
 
-          "/xx/": {
+          '/xx/': {
             // 在这里完整设置 `mm-NN` 的多语言配置
           },
         },
       }),
     ],
-  };
+  }
   ```
 
 ::: details 内置支持语言
@@ -145,10 +145,8 @@ export default {
 
 :::
 
-
 ## 样式
 
 你可以通过 CSS 变量来自定义*复制按钮*的样式：
-
 
 @[code css](@vuepress/plugin-copy-code/src/client/styles/vars.css)
