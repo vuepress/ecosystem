@@ -19,7 +19,7 @@
 
 - 示例：`['/about.html', '/api/']`
 
-## excludeUrls
+## excludePaths
 
 - 类型：`string[]`
 - 默认值：`['/404.html']`

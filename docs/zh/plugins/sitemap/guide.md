@@ -10,7 +10,7 @@
 
 如果你希望在 VuePress 项目页面之外，添加其他页面链接到 Sitemap，请将它们变成数组传入插件的 `extraUrls` 选项。
 
-如果你需要排除一些链接，你可以将它们变成数组传入到插件的 `excludeUrls` 选项。你也可以在对应页面的 frontmatter 中，设置 `sitemap.exclude` 为 `true`。
+如果你需要排除一些页面路径，你可以将它们变成数组传入到插件的 `excludePaths` 选项。你也可以在对应页面的 frontmatter 中，设置 `sitemap` 为 `false`。
 
 ## 输出位置
 

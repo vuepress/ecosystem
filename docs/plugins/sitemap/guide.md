@@ -10,7 +10,7 @@ By default, all site links except 404 page will be added to the Sitemap.
 
 To add other pages to the Sitemap outside the VuePress project page, please turn them into an array and pass to the `extraUrls` plugin option.
 
-If you don't want certain pages to appear in the sitemap, you can turn them into an array and pass them to the `excludeUrls` plugin option, or set `sitemap.exclude` to `true` in the frontmatter of the corresponding page.
+If you don't want certain pages to appear in the sitemap, you can turn their paths into an array and pass to the `excludePaths` plugin option, or set `sitemap` to `false` in the frontmatter of the corresponding page.
 
 ## Output Location
 

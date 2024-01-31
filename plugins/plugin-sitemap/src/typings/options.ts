@@ -29,11 +29,11 @@ export interface SitemapPluginOptions {
   extraUrls?: string[]
 
   /**
-   * Urls to be excluded
+   * Page paths to be excluded
    *
-   * 不被收录的页面
+   * 不被收录的页面路径
    */
-  excludeUrls?: string[]
+  excludePaths?: string[]
 
   /**
    * Output filename, relative to dest folder

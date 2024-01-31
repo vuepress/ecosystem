@@ -78,7 +78,7 @@ export default defineUserConfig({
       sitemap: {
         devServer: true,
         devHostname: 'https://ecosystem-e2e-test.com',
-        excludeUrls: ['/sitemap/config-exclude.html', '/404.html'],
+        excludePaths: ['/sitemap/config-exclude.html', '/404.html'],
       },
     },
   }),
