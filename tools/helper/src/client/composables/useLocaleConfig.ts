@@ -2,8 +2,7 @@ import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useRouteLocale } from 'vuepress/client'
 import type { LocaleData } from 'vuepress/shared'
-
-export type ExactLocaleConfig<T extends LocaleData> = Record<string, T>
+import type { ExactLocaleConfig } from '../../shared/index.js'
 
 /**
  * Get current locale config

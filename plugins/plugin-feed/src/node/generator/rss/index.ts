@@ -1,4 +1,4 @@
-import { isUrl } from '@vuepress/helper/node'
+import { isLinkWithProtocol } from '@vuepress/helper/node'
 import { js2xml } from 'xml-js'
 import type { FeedCategory, FeedEnclosure } from '../../../typings/index.js'
 import type { FeedItem } from '../../feed/item.js'
@@ -25,7 +25,7 @@ const getRSSGuid = (item: FeedItem): RSSGuid => {
   const guid = item.guid || item.link
 
   return {
-    ...(isUrl(guid)
+    ...(isLinkWithProtocol(guid)
       ? {}
       : {
           _attributes: {
