@@ -57,6 +57,9 @@ export interface DefaultThemePluginsOptions {
    */
   seo?: Partial<SeoOptions> | boolean
 
+  /**
+   * Enable @vuepress/plugin-sitemap or not
+   */
   sitemap?: Partial<SitemapPluginOptions> | boolean
 }
 

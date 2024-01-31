@@ -26,7 +26,13 @@ export const sidebarZh: SidebarConfig = {
       text: '搜索引擎增强',
       children: [
         {
+          text: '搜索引擎增强',
+          link: '/zh/plugins/seo/',
+          children: ['/zh/plugins/seo/guide', '/zh/plugins/seo/config'],
+        },
+        {
           text: '站点地图',
+          link: '/zh/plugins/sitemap/',
           children: [
             '/zh/plugins/sitemap/guide',
             '/zh/plugins/sitemap/config',
