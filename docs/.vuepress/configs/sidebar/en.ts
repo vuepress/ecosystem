@@ -79,6 +79,8 @@ export const sidebarEn: SidebarConfig = {
       children: [
         '/themes/default/',
         '/themes/default/config',
+        '/themes/default/plugin',
+        '/themes/default/locale',
         '/themes/default/frontmatter',
         '/themes/default/components',
         '/themes/default/markdown',

@@ -28,6 +28,7 @@ export const sidebarZh: SidebarConfig = {
           children: [
             '/zh/plugins/feed/guide',
             '/zh/plugins/feed/config',
+            '/zh/themes/default/plugin',
             '/zh/plugins/feed/frontmatter',
             '/zh/plugins/feed/channel',
             '/zh/plugins/feed/getter',
@@ -79,6 +80,8 @@ export const sidebarZh: SidebarConfig = {
       children: [
         '/zh/themes/default/',
         '/zh/themes/default/config',
+        '/zh/themes/default/plugin',
+        '/zh/themes/default/locale',
         '/zh/themes/default/frontmatter',
         '/zh/themes/default/components',
         '/zh/themes/default/markdown',
