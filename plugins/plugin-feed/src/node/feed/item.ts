@@ -1,11 +1,11 @@
 import {
   getPageExcerpt,
   getPageText,
-  isAbsoluteUrl,
   isArray,
   isFunction,
+  isLinkAbsolute,
+  isLinkWithProtocol,
   isPlainObject,
-  isUrl,
 } from '@vuepress/helper/node'
 import type { GitData } from '@vuepress/plugin-git'
 import type { App, Page } from 'vuepress/core'
@@ -213,23 +213,23 @@ export class FeedItem {
     const { banner, cover } = this.frontmatter
 
     if (banner) {
-      if (isAbsoluteUrl(banner)) return getUrl(hostname, base, banner)
+      if (isLinkAbsolute(banner)) return getUrl(hostname, base, banner)
 
-      if (isUrl(banner)) return banner
+      if (isLinkWithProtocol(banner)) return banner
     }
 
     if (cover) {
-      if (isAbsoluteUrl(cover)) return getUrl(hostname, base, cover)
+      if (isLinkAbsolute(cover)) return getUrl(hostname, base, cover)
 
-      if (isUrl(cover)) return cover
+      if (isLinkWithProtocol(cover)) return cover
     }
 
     const result = /!\[.*?\]\((.*?)\)/iu.exec(this.page.content)
 
     if (result) {
-      if (isAbsoluteUrl(result[1])) return getUrl(hostname, base, result[1])
+      if (isLinkAbsolute(result[1])) return getUrl(hostname, base, result[1])
 
-      if (isUrl(result[1])) return result[1]
+      if (isLinkWithProtocol(result[1])) return result[1]
     }
 
     return null

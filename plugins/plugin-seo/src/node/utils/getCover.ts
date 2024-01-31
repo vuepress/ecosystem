@@ -1,4 +1,4 @@
-import { isAbsoluteUrl, isUrl } from '@vuepress/helper/node'
+import { isLinkAbsolute, isLinkWithProtocol } from '@vuepress/helper/node'
 import type { App } from 'vuepress/core'
 import type { ExtendPage } from '../../typings/index.js'
 import type { SeoPluginOptions } from '../options.js'
@@ -12,15 +12,13 @@ export const getCover = (
   const { banner, cover } = frontmatter
 
   if (banner) {
-    if (isAbsoluteUrl(banner)) return getUrl(hostname, base, banner)
-
-    if (isUrl(banner)) return banner
+    if (isLinkAbsolute(banner)) return getUrl(hostname, base, banner)
+    if (isLinkWithProtocol(banner)) return banner
   }
 
   if (cover) {
-    if (isAbsoluteUrl(cover)) return getUrl(hostname, base, cover)
-
-    if (isUrl(cover)) return cover
+    if (isLinkAbsolute(cover)) return getUrl(hostname, base, cover)
+    if (isLinkWithProtocol(cover)) return cover
   }
 
   return null

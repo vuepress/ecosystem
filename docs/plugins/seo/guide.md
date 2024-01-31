@@ -72,7 +72,7 @@ For most pages, there are basically only two types: articles and website, so the
 
 The option accepts a function in the format `(page: Page) => boolean`, by default all non-home pages generated from Markdown files are treated as articles.
 
-::: note
+::: tip
 
 If a page does fit into the "unpopular" genre like books, music, etc., you can handle them by setting the three options below.
 

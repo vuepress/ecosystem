@@ -1,4 +1,4 @@
-import { isAbsoluteUrl, isUrl } from '@vuepress/helper/node'
+import { isLinkAbsolute, isLinkWithProtocol } from '@vuepress/helper/node'
 import type { App } from 'vuepress/core'
 import type { ExtendPage } from '../../typings/index.js'
 import type { SeoPluginOptions } from '../options.js'
@@ -13,11 +13,8 @@ export const getImages = (
 ): string[] =>
   Array.from(content.matchAll(IMAGE_REG_EXP))
     .map(([, link]) => {
-      console.log(link)
-
-      if (isAbsoluteUrl(link)) return getUrl(hostname, base, link)
-
-      if (isUrl(link)) return link
+      if (isLinkAbsolute(link)) return getUrl(hostname, base, link)
+      if (isLinkWithProtocol(link)) return link
 
       return null
     })

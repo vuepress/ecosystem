@@ -5,7 +5,7 @@ import { load } from 'cheerio'
 import matter from 'gray-matter'
 import type { App, Page } from 'vuepress/core'
 import { isLinkHttp, removeEndingSlash } from 'vuepress/shared'
-import { isAbsoluteUrl, isArray } from '../../shared/index.js'
+import { isArray, isLinkAbsolute } from '../../shared/index.js'
 
 const HEADING_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
 
@@ -79,7 +79,7 @@ const handleNode = (
       const { src } = node.attribs
 
       // this is not a resolvable image link
-      if (!isLinkHttp(src) && !isAbsoluteUrl(src)) return null
+      if (!isLinkHttp(src) && !isLinkAbsolute(src)) return null
     }
 
     // toc should be dropped
