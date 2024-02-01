@@ -711,6 +711,16 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
   Enable [@vuepress/plugin-external-link-icon](../../plugins/external-link-icon.md) or not.
 
+### themePlugins.copyCode
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Enable [@vuepress/plugin-copy-code](../../plugins/copy-code.md) or not.
+
 ### themePlugins.git
 
 - Type: `boolean`

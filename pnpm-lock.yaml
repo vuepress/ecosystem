@@ -95,6 +95,9 @@ importers:
       '@vuepress/plugin-back-to-top':
         specifier: workspace:*
         version: link:../plugins/plugin-back-to-top
+      '@vuepress/plugin-copy-code':
+        specifier: workspace:*
+        version: link:../plugins/plugin-copy-code
       '@vuepress/plugin-docsearch':
         specifier: workspace:*
         version: link:../plugins/plugin-docsearch
@@ -216,6 +219,21 @@ importers:
       markdown-it-container:
         specifier: ^4.0.0
         version: 4.0.0
+      vuepress:
+        specifier: 2.0.0-rc.2
+        version: 2.0.0-rc.2(@vuepress/bundler-vite@2.0.0-rc.2)(@vuepress/bundler-webpack@2.0.0-rc.2)(typescript@5.3.3)(vue@3.4.15)
+
+  plugins/plugin-copy-code:
+    dependencies:
+      '@vuepress/helper':
+        specifier: 2.0.0-rc.5
+        version: link:../../tools/helper
+      '@vueuse/core':
+        specifier: ^10.7.2
+        version: 10.7.2(vue@3.4.15)
+      vue:
+        specifier: ^3.4.15
+        version: 3.4.15(typescript@5.3.3)
       vuepress:
         specifier: 2.0.0-rc.2
         version: 2.0.0-rc.2(@vuepress/bundler-vite@2.0.0-rc.2)(@vuepress/bundler-webpack@2.0.0-rc.2)(typescript@5.3.3)(vue@3.4.15)
@@ -466,6 +484,9 @@ importers:
       '@vuepress/plugin-container':
         specifier: workspace:*
         version: link:../../plugins/plugin-container
+      '@vuepress/plugin-copy-code':
+        specifier: workspace:*
+        version: link:../../plugins/plugin-copy-code
       '@vuepress/plugin-external-link-icon':
         specifier: workspace:*
         version: link:../../plugins/plugin-external-link-icon

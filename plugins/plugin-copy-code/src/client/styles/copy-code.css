@@ -1,0 +1,87 @@
+div[class*='language-'] > .copy-code-button {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  z-index: 5;
+
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-width: 0;
+  border-radius: 0.5rem;
+
+  background: transparent;
+  outline: none;
+
+  opacity: 0;
+  cursor: pointer;
+
+  transition: opacity 0.4s;
+}
+
+@media print {
+  div[class*='language-'] > .copy-code-button {
+    display: none;
+  }
+}
+
+div[class*='language-']:hover::before {
+  display: none;
+}
+
+div[class*='language-']:hover > .copy-code-button,
+div[class*='language-'] > .copy-code-button:focus,
+div[class*='language-'] > .copy-code-button.copied {
+  opacity: 1;
+}
+
+div[class*='language-'] > .copy-code-button:hover,
+div[class*='language-'] > .copy-code-button.copied {
+  background: var(--copy-code-hover);
+}
+
+div[class*='language-'] > .copy-code-button .copy-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0.625rem;
+
+  background: currentcolor;
+  color: var(--copy-code-color);
+
+  font-size: 1.25rem;
+
+  -webkit-mask-image: var(--code-copy-icon);
+  mask-image: var(--code-copy-icon);
+  -webkit-mask-position: 50%;
+  mask-position: 50%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 1em;
+  mask-size: 1em;
+}
+
+div[class*='language-'] > .copy-code-button.copied .copy-icon {
+  -webkit-mask-image: var(--code-copied-icon);
+  mask-image: var(--code-copied-icon);
+}
+
+div[class*='language-'] > .copy-code-button.copied::after {
+  content: attr(data-copied);
+
+  position: absolute;
+  top: 0;
+  right: calc(100% + 0.25rem);
+
+  display: block;
+
+  height: 1.25rem;
+  padding: 0.625rem;
+  border-radius: 0.5rem;
+
+  background: var(--copy-code-hover);
+  color: var(--copy-code-color);
+
+  font-weight: 500;
+  line-height: 1.25rem;
+  white-space: nowrap;
+}

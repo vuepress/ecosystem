@@ -18,6 +18,7 @@ export const navbarEn: NavbarConfig = [
         children: [
           '/plugins/back-to-top',
           '/plugins/container',
+          '/plugins/copy-code',
           '/plugins/external-link-icon',
           '/plugins/google-analytics',
           '/plugins/medium-zoom',
