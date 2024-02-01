@@ -69,6 +69,7 @@ export const sidebarZh: SidebarConfig = {
         '/zh/plugins/active-header-links',
         '/zh/plugins/git',
         '/zh/plugins/palette',
+        '/zh/plugins/rtl',
         '/zh/plugins/theme-data',
         '/zh/plugins/toc',
       ],

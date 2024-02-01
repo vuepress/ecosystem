@@ -52,6 +52,7 @@ export const navbarEn: NavbarConfig = [
           '/plugins/active-header-links',
           '/plugins/git',
           '/plugins/palette',
+          '/plugins/rtl',
           '/plugins/theme-data',
           '/plugins/toc',
         ],

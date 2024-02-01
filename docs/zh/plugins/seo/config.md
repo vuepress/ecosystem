@@ -43,7 +43,7 @@
 
 - 类型：`boolean`
 
-- 默认值: `true`
+- 默认值：`true`
 
 - 详情：
 
@@ -91,7 +91,7 @@
 
 ## ogp
 
-- 类型:
+- 类型：
 
   ```ts
   function ogp(
@@ -112,7 +112,7 @@
 
 ## jsonLd
 
-- 类型:
+- 类型：
 
   ```ts
   function jsonLd(
@@ -133,7 +133,7 @@
 
 ## customHead
 
-- 类型:
+- 类型：
 
   ```ts
   function customHead(
