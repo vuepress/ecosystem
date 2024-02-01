@@ -8,14 +8,13 @@ import { readingTimePlugin } from './readingTimePlugin.js'
 export const useReadingTimePlugin = (
   app: App,
   options: ReadingTimePluginOptions = {},
-  legacy = true,
 ): void => {
   const { plugins } = app.pluginApi
 
   if (
     plugins.every((plugin) => plugin.name !== '@vuepress/plugin-reading-time')
   )
-    app.use(readingTimePlugin(options, legacy))
+    app.use(readingTimePlugin(options))
 }
 
 /**
