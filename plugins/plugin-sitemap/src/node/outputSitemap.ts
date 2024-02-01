@@ -26,7 +26,9 @@ export const outputSitemap = async (
   const robotTxtPath = dir.dest('robots.txt')
 
   if (fs.existsSync(robotTxtPath)) {
-    logger.load(`Appended sitemap path to ${colors.cyan('robots.txt')}`)
+    const { succeed } = logger.load(
+      `Appended sitemap path to ${colors.cyan('robots.txt')}`,
+    )
 
     const robotsTxt = await fs.readFile(robotTxtPath, 'utf-8')
 
@@ -40,6 +42,6 @@ export const outputSitemap = async (
       flag: 'w',
     })
 
-    logger.succeed()
+    succeed()
   }
 }
