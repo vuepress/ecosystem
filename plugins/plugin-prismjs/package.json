@@ -9,7 +9,7 @@
     "prismjs",
     "highlight"
   ],
-  "homepage": "https://github.com/vuepress",
+  "homepage": "https://ecosystem.vuejs.press/plugins/prismjs.html",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
   },

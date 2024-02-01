@@ -8,7 +8,7 @@
     "vuepress-plugin",
     "feed"
   ],
-  "homepage": "https://github.com/vuepress",
+  "homepage": "https://ecosystem.vuejs.press/plugins/feed/",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
   },
