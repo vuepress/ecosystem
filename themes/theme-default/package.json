@@ -42,6 +42,7 @@
     "copy": "cpx \"src/**/*.{d.ts,vue,scss}\" lib"
   },
   "dependencies": {
+    "@vuepress/helper": "workspace:*",
     "@vuepress/plugin-active-header-links": "workspace:*",
     "@vuepress/plugin-back-to-top": "workspace:*",
     "@vuepress/plugin-container": "workspace:*",

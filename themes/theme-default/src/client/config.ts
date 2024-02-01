@@ -1,3 +1,4 @@
+import { hasGlobalComponent } from '@vuepress/helper/client'
 import { h } from 'vue'
 import { defineClientConfig } from 'vuepress/client'
 import type { ClientConfig } from 'vuepress/client'
@@ -14,9 +15,10 @@ import './styles/index.scss'
 
 export default defineClientConfig({
   enhance({ app, router }) {
-    app.component('Badge', Badge)
-    app.component('CodeGroup', CodeGroup)
-    app.component('CodeGroupItem', CodeGroupItem)
+    if (!hasGlobalComponent('Badge')) app.component('Badge', Badge)
+    if (!hasGlobalComponent('CodeGroup')) app.component('CodeGroup', CodeGroup)
+    if (!hasGlobalComponent('CodeGroupItem'))
+      app.component('CodeGroupItem', CodeGroupItem)
 
     // compat with @vuepress/plugin-external-link-icon
     app.component('AutoLinkExternalIcon', () => {
