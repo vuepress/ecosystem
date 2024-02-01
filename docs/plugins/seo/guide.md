@@ -90,7 +90,7 @@ function ogp(
   page: Page,
   /** VuePress App */
   app: App,
-): SeoContent;
+): SeoContent
 ```
 
 For detailed parameter structure, see [Config](./config.md).
@@ -101,9 +101,9 @@ For example, if you are using a third-party theme and set a `banner` in frontmat
 seoPlugin({
   ogp: (ogp, page) => ({
     ...ogp,
-    "og:image": page.frontmatter.banner || ogp["og:image"],
+    'og:image': page.frontmatter.banner || ogp['og:image'],
   }),
-});
+})
 ```
 
 ### JSON-LD
@@ -118,7 +118,7 @@ function jsonLd(
   page: Page,
   /** VuePress App */
   app: App,
-): ArticleSchema | BlogPostingSchema | WebPageSchema;
+): ArticleSchema | BlogPostingSchema | WebPageSchema
 ```
 
 ## Canonical Link
@@ -150,7 +150,7 @@ function customHead(
   page: Page,
   /** VuePress App */
   app: App,
-): void;
+): void
 ```
 
 You should modify the `head` array in this function directly.

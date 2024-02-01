@@ -13,26 +13,26 @@
 - Type: `Author`
 
   ```ts
-  type AuthorName = string;
+  type AuthorName = string
 
   interface AuthorInfo {
     /**
      * Author name
      */
-    name: string;
+    name: string
 
     /**
      * Author website
      */
-    url?: string;
+    url?: string
 
     /**
      * Author email
      */
-    email?: string;
+    email?: string
   }
 
-  type Author = AuthorName | AuthorName[] | AuthorInfo | AuthorInfo[];
+  type Author = AuthorName | AuthorName[] | AuthorInfo | AuthorInfo[]
   ```
 
 - Required: No
@@ -96,7 +96,7 @@
     page: Page,
     /** VuePress App */
     app: App,
-  ): SeoContent;
+  ): SeoContent
   ```
 
 - Required: No
@@ -118,7 +118,7 @@
     page: Page,
     /** VuePress App */
     app: App,
-  ): ArticleSchema | BlogPostingSchema | WebPageSchema;
+  ): ArticleSchema | BlogPostingSchema | WebPageSchema
   ```
 
 - Required: No
@@ -141,7 +141,7 @@
     page: Page,
     /** VuePress App */
     app: App,
-  ): void;
+  ): void
   ```
 
 - Required: No

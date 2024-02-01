@@ -89,17 +89,17 @@
 ```ts
 interface FeedAuthor {
   /** 作者姓名 */
-  name: string;
+  name: string
   /** 作者电子邮箱 */
-  email?: string;
+  email?: string
   /** 作者网站 */
-  url?: string;
+  url?: string
   /**
    * 作者头像地址
    *
    * 正方形，最好不小于 128×128，透明背景
    */
-  avatar?: string;
+  avatar?: string
 }
 ```
 

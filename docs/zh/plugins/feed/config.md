@@ -65,13 +65,13 @@
 - 默认值：
 
   ```ts
-  ({ frontmatter, filePathRelative }: Page): boolean =>
+  ;({ frontmatter, filePathRelative }: Page): boolean =>
     !(
       frontmatter.home ||
       !filePathRelative ||
       frontmatter.article === false ||
       frontmatter.feed === false
-    );
+    )
   ```
 
 自定义的过滤函数，用于过滤哪些项目在 feed 中显示。
@@ -84,7 +84,7 @@
 
   ```ts
   // compareDate 来源于 vuepress-shared
-  (pageA, pageB): number =>
+  ;(pageA, pageB): number =>
     compareDate(
       pageA.data.git?.createdTime
         ? new Date(pageA.data.git?.createdTime)
@@ -92,7 +92,7 @@
       pageB.data.git?.createdTime
         ? new Date(pageB.data.git?.createdTime)
         : pageB.frontmatter.date,
-    );
+    )
   ```
 
 Feed 项目的排序器。

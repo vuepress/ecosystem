@@ -12,7 +12,7 @@ exports[`getPageExcerpt > default > generate excerpt for all pages > /component.
 
 exports[`getPageExcerpt > default > generate excerpt for all pages > /custom-separator.html 1`] = `
 "<p>Here is <strong>article excerpt</strong>.</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1;
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1
 </code></pre></div><p>END_OF_EXCERPT</p>
 <h2>Content</h2>
 <p>Here is main content of <strong>article</strong>.</p>
@@ -44,7 +44,7 @@ exports[`getPageExcerpt > default > generate excerpt for all pages > /markdown.h
 
 exports[`getPageExcerpt > default > generate excerpt for all pages > /separator.html 1`] = `
 "<p>Here is <strong>article excerpt</strong>.</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1;
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1
 </code></pre></div>"
 `;
 
@@ -60,7 +60,7 @@ exports[`getPageExcerpt > excerptLength > extract all content with Infinity > /c
 
 exports[`getPageExcerpt > excerptLength > extract all content with Infinity > /custom-separator.html 1`] = `
 "<p>Here is <strong>article excerpt</strong>.</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1;
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1
 </code></pre></div><p>END_OF_EXCERPT</p>
 <h2>Content</h2>
 <p>Here is main content of <strong>article</strong>.</p>
@@ -69,7 +69,7 @@ exports[`getPageExcerpt > excerptLength > extract all content with Infinity > /c
 <li>B</li>
 <li>C</li>
 </ol>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1;
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1
 </code></pre></div>"
 `;
 
@@ -248,10 +248,10 @@ line break again</li>
 <div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>Sample text here...
 </code></pre></div><p>Syntax highlighting:</p>
 <div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>var foo = function (bar) {
-  return bar++;
-};
+  return bar++
+}
 
-console.log(foo(5));
+console.log(foo(5))
 </code></pre></div><h2>Comment</h2>
 <!-- Here is a comment -->
 "
@@ -259,24 +259,24 @@ console.log(foo(5));
 
 exports[`getPageExcerpt > excerptLength > extract all content with Infinity > /separator.html 1`] = `
 "<p>Here is <strong>article excerpt</strong>.</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1;
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1
 </code></pre></div>"
 `;
 
 exports[`getPageExcerpt > excerptLength > only generate when having marker with 0 > /separator.html 1`] = `
 "<p>Here is <strong>article excerpt</strong>.</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1;
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1
 </code></pre></div>"
 `;
 
 exports[`getPageExcerpt > excerptSeparator > generate excerpt with custom marker > /custom-separator.html 1`] = `
 "<p>Here is <strong>article excerpt</strong>.</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1;
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1
 </code></pre></div>"
 `;
 
 exports[`getPageExcerpt > excerptSeparator > generate excerpt with default marker > /separator.html 1`] = `
 "<p>Here is <strong>article excerpt</strong>.</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1;
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>const a = 1
 </code></pre></div>"
 `;

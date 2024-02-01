@@ -49,26 +49,26 @@ interface FeedAuthor {
   /**
    * 作者名字
    */
-  name?: string;
+  name?: string
 
   /**
    * 作者邮件
    */
-  email?: string;
+  email?: string
 
   /**
    * 作者网站
    *
    * @description json format only
    */
-  url?: string;
+  url?: string
 
   /**
    * 作者头像
    *
    * @description json format only
    */
-  avatar?: string;
+  avatar?: string
 }
 ```
 
@@ -87,21 +87,21 @@ interface FeedCategory {
   /**
    * 分类名称
    */
-  name: string;
+  name: string
 
   /**
    * 标识分类法的字符串
    *
    * @description rss format only
    */
-  domain?: string;
+  domain?: string
 
   /**
    * URI 标识的分类 scheme
    *
    * @description atom format only
    */
-  scheme?: string;
+  scheme?: string
 }
 ```
 
@@ -120,21 +120,21 @@ interface FeedEnclosure {
   /**
    * Enclosure 地址
    */
-  url: string;
+  url: string
 
   /**
    * 类型
    *
    * @description 应为一个标准的 MIME 类型，rss format only
    */
-  type: string;
+  type: string
 
   /**
    * 按照字节数计算的大小
    *
    * @description rss format only
    */
-  length?: number;
+  length?: number
 }
 ```
 
@@ -179,26 +179,26 @@ interface FeedContributor {
   /**
    * 作者名字
    */
-  name?: string;
+  name?: string
 
   /**
    * 作者邮件
    */
-  email?: string;
+  email?: string
 
   /**
    * 作者网站
    *
    * @description json format only
    */
-  url?: string;
+  url?: string
 
   /**
    * 作者头像
    *
    * @description json format only
    */
-  avatar?: string;
+  avatar?: string
 }
 ```
 

@@ -87,7 +87,7 @@ function ogp(
   page: Page,
   /** VuePress App */
   app: App,
-): SeoContent;
+): SeoContent
 ```
 
 详细的参数结构详见 [配置](./config.md)。
@@ -98,9 +98,9 @@ function ogp(
 seoPlugin({
   ogp: (ogp, page) => ({
     ...ogp,
-    "og:image": page.frontmatter.banner || ogp["og:image"],
+    'og:image': page.frontmatter.banner || ogp['og:image'],
   }),
-});
+})
 ```
 
 ### JSON-LD
@@ -115,7 +115,7 @@ function jsonLd(
   page: Page,
   /** VuePress App */
   app: App,
-): ArticleSchema | BlogPostingSchema | WebPageSchema;
+): ArticleSchema | BlogPostingSchema | WebPageSchema
 ```
 
 ## 规范链接
@@ -147,7 +147,7 @@ function customHead(
   page: Page,
   /** VuePress App */
   app: App,
-): void;
+): void
 ```
 
 你应该直接修改传入的 `head` 参数。

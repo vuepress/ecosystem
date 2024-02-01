@@ -65,13 +65,13 @@ Custom element or component which should be preserved in feed.
 - Default:
 
   ```ts
-  ({ frontmatter, filePathRelative }: Page): boolean =>
+  ;({ frontmatter, filePathRelative }: Page): boolean =>
     !(
       frontmatter.home ||
       !filePathRelative ||
       frontmatter.article === false ||
       frontmatter.feed === false
-    );
+    )
   ```
 
 A custom filter function, used to filter feed items.
@@ -84,7 +84,7 @@ A custom filter function, used to filter feed items.
 
   ```ts
   // compareDate is from vuepress-shared
-  (pageA: Page, pageB: Page): number =>
+  ;(pageA: Page, pageB: Page): number =>
     compareDate(
       pageA.data.git?.createdTime
         ? new Date(pageA.data.git?.createdTime)
@@ -92,7 +92,7 @@ A custom filter function, used to filter feed items.
       pageB.data.git?.createdTime
         ? new Date(pageB.data.git?.createdTime)
         : pageB.frontmatter.date,
-    );
+    )
   ```
 
 Custom sorter function for feed items.

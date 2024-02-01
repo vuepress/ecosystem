@@ -49,26 +49,26 @@ interface FeedAuthor {
   /**
    * Author name
    */
-  name?: string;
+  name?: string
 
   /**
    * Author email
    */
-  email?: string;
+  email?: string
 
   /**
    * Author site
    *
    * @description json format only
    */
-  url?: string;
+  url?: string
 
   /**
    * Author avatar
    *
    * @description json format only
    */
-  avatar?: string;
+  avatar?: string
 }
 ```
 
@@ -87,21 +87,21 @@ interface FeedCategory {
   /**
    * Category Name
    */
-  name: string;
+  name: string
 
   /**
    * A string that identifies a categorization taxonomy
    *
    * @description rss format only
    */
-  domain?: string;
+  domain?: string
 
   /**
    * the categorization scheme via a URI
    *
    * @description atom format only
    */
-  scheme?: string;
+  scheme?: string
 }
 ```
 
@@ -120,21 +120,21 @@ interface FeedEnclosure {
   /**
    * Enclosure link
    */
-  url: string;
+  url: string
 
   /**
    * what its type is
    *
    * @description should be a standard MIME Type, rss format only
    */
-  Type: string;
+  Type: string
 
   /**
    * Size in bytes
    *
    * @description rss format only
    */
-  length?: number;
+  length?: number
 }
 ```
 
@@ -179,26 +179,26 @@ interface FeedContributor {
   /**
    * Author name
    */
-  name?: string;
+  name?: string
 
   /**
    * Author email
    */
-  email?: string;
+  email?: string
 
   /**
    * Author site
    *
    * @description json format only
    */
-  url?: string;
+  url?: string
 
   /**
    * Author avatar
    *
    * @description json format only
    */
-  avatar?: string;
+  avatar?: string
 }
 ```
 

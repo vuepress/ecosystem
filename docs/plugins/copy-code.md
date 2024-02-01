@@ -91,35 +91,35 @@ export default {
 - Example:
 
   ```ts
-  import { copyCodePlugin } from "vuepress-plugin-copy-code2";
+  import { copyCodePlugin } from 'vuepress-plugin-copy-code2'
 
   export default {
     locales: {
-      "/": {
+      '/': {
         // this is a supported language
-        lang: "en-US",
+        lang: 'en-US',
       },
-      "/xx/": {
+      '/xx/': {
         // the plugin does not support this language
-        lang: "mm-NN",
+        lang: 'mm-NN',
       },
     },
 
     plugins: [
       copyCodePlugin({
         locales: {
-          "/": {
+          '/': {
             // Override copy button label text
-            copy: "Copy Codes from code block",
+            copy: 'Copy Codes from code block',
           },
 
-          "/xx/": {
+          '/xx/': {
             // Complete locale config for `mm-NN` language here
           },
         },
       }),
     ],
-  };
+  }
   ```
 
 ::: details Built-in Supported Languages
@@ -148,6 +148,6 @@ export default {
 
 ## Styles
 
-You can customize the icon of the *copy button* via CSS variables:
+You can customize the icon of the _copy button_ via CSS variables:
 
 @[code css](@vuepress/plugin-copy-code/src/client/styles/vars.css)
