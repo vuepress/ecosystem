@@ -1,7 +1,7 @@
 {
   "name": "@vuepress/plugin-copy-code",
   "version": "2.0.0-rc.6",
-  "description": "Copy Code plugin for vuepress",
+  "description": "VuePress plugin - copy code block",
   "keywords": [
     "vuepress-plugin",
     "vuepress",
@@ -9,7 +9,7 @@
     "copy-code",
     "code-copy"
   ],
-  "homepage": "https://github.com/vuepress",
+  "homepage": "https://ecosystem.vuejs.press/plugins/copy-code.html",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
   },

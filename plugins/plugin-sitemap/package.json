@@ -8,7 +8,7 @@
     "vuepress-plugin",
     "sitemap"
   ],
-  "homepage": "https://github.com/vuepress",
+  "homepage": "https://ecosystem.vuejs.press/plugins/sitemap/",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
   },
