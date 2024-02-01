@@ -701,6 +701,16 @@ export default {
 - 参考：
   - [默认主题 > Markdown > 自定义容器](./markdown.md#自定义容器)
 
+### themePlugins.copyCode
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否启用 [@vuepress/plugin-copy-code](../../plugins/copy-code.md) 。
+
 ### themePlugins.externalLinkIcon
 
 - 类型： `boolean`

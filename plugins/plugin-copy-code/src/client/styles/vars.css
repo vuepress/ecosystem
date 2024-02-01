@@ -1,0 +1,6 @@
+:root {
+  --code-copy-icon: url('copy-button.svg');
+  --code-copied-icon: url('copied-button.svg');
+  --copy-code-color: var(--code-ln-color, #9e9e9e);
+  --copy-code-hover: var(--code-hl-bg-color, rgb(0 0 0 / 66%));
+}
