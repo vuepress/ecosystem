@@ -1,5 +1,5 @@
 {
-  "name": "vuepress-plugin-rtl",
+  "name": "@vuepress/plugin-rtl",
   "version": "2.0.0-rc.0",
   "description": "VuePress plugin - rtl",
   "keywords": [
@@ -35,8 +35,7 @@
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
-    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "copy": "cpx \"src/**/*.{d.ts,css,svg}\" lib"
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
     "vue": "^3.4.15"
