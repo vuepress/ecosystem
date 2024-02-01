@@ -28,32 +28,32 @@ export default {
 
 ### selector
 
-- 类型: `string | string[]`
-- 默认值: `'.theme-default-content div[class*="language-"] pre'`
+- 类型：`string | string[]`
+- 默认值：`'.theme-default-content div[class*="language-"] pre'`
 - 详情:
 
   代码块选择器
 
 ### showInMobile
 
-- 类型: `boolean`
-- 默认值: `false`
+- 类型：`boolean`
+- 默认值：`false`
 - 详情:
 
   是否展示在移动端
 
 ### duration
 
-- 类型: `number`
-- 默认值: `2000`
+- 类型：`number`
+- 默认值：`2000`
 - 详情:
 
   提示消息显示时间，设置为 `0` 会禁用提示。
 
 ### delay
 
-- 类型: `number`
-- 默认值: `800`
+- 类型：`number`
+- 默认值：`800`
 - 详情:
 
   注册复制按钮的延时，单位 ms。
@@ -62,7 +62,7 @@ export default {
 
 ### locales
 
-- 类型: `CopyCodeLocaleConfig`
+- 类型：`CopyCodeLocaleConfig`
 
   ```ts
   interface CopyCodeLocaleData {
@@ -82,7 +82,7 @@ export default {
   }
   ```
 
-- 必填: 否
+- 必填：否
 - 详情:
 
   复制按钮插件的国际化配置。
