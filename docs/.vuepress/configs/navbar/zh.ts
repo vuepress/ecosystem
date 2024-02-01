@@ -52,6 +52,7 @@ export const navbarZh: NavbarConfig = [
           '/zh/plugins/active-header-links',
           '/zh/plugins/git',
           '/zh/plugins/palette',
+          '/zh/plugins/reading-time',
           '/zh/plugins/rtl',
           '/zh/plugins/theme-data',
           '/zh/plugins/toc',
