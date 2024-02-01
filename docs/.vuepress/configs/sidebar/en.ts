@@ -68,6 +68,7 @@ export const sidebarEn: SidebarConfig = {
         '/plugins/active-header-links',
         '/plugins/git',
         '/plugins/palette',
+        '/plugins/reading-time',
         '/plugins/rtl',
         '/plugins/theme-data',
         '/plugins/toc',
