@@ -1,2 +1,2 @@
 export * from './feedPlugin.js'
-export * from '../typings/index.js'
+export type * from '../typings/index.js'
