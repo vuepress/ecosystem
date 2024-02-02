@@ -226,7 +226,7 @@ importers:
   plugins/plugin-copy-code:
     dependencies:
       '@vuepress/helper':
-        specifier: 2.0.0-rc.6
+        specifier: workspace:*
         version: link:../../tools/helper
       '@vueuse/core':
         specifier: ^10.7.2
@@ -387,7 +387,7 @@ importers:
   plugins/plugin-reading-time:
     dependencies:
       '@vuepress/helper':
-        specifier: 2.0.0-rc.6
+        specifier: workspace:*
         version: link:../../tools/helper
       vue:
         specifier: ^3.4.15

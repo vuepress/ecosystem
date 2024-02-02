@@ -41,7 +41,7 @@
     "copy": "cpx \"src/**/*.{css,svg}\" lib"
   },
   "dependencies": {
-    "@vuepress/helper": "2.0.0-rc.6",
+    "@vuepress/helper": "workspace:*",
     "@vueuse/core": "^10.7.2",
     "vue": "^3.4.15"
   },
