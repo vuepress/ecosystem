@@ -16,14 +16,14 @@ import {
 } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useRouteLocale } from 'vuepress/client'
-import {
-  redirectLocaleConfig,
-  redirectLocaleEntries,
-  redirectLocales,
-} from '../define.js'
+import type { RedirectPluginLocaleConfig } from '../../shared/locales.js'
+import { redirectLocaleConfig, redirectLocaleEntries } from '../define.js'
 
 import '../styles/language-switch.scss'
 
+declare const __REDIRECT_LOCALES__: RedirectPluginLocaleConfig
+
+const redirectLocales = __REDIRECT_LOCALES__
 const { switchLocale } = redirectLocaleConfig
 
 interface LocaleInfo {
@@ -32,7 +32,7 @@ interface LocaleInfo {
 }
 
 const REDIRECT_LOCALE_STORAGE = useSessionStorage<Record<string, boolean>>(
-  'VUEPRESS___REDIRECT_LOCALES__',
+  'VUEPRESS_REDIRECT_LOCALES',
   {},
 )
 
