@@ -24,7 +24,7 @@ export default {
 }
 ```
 
-## 使用方法
+## 选项
 
 ### selector
 

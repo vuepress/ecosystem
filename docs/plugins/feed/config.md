@@ -83,9 +83,9 @@ A custom filter function, used to filter feed items.
 - Default:
 
   ```ts
-  // compareDate is from vuepress-shared
+  // dateSorter is from @vuepress/helper
   ;(pageA: Page, pageB: Page): number =>
-    compareDate(
+    dateSorter(
       pageA.data.git?.createdTime
         ? new Date(pageA.data.git?.createdTime)
         : pageA.frontmatter.date,
