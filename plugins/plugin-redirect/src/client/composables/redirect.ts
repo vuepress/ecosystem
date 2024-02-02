@@ -1,4 +1,4 @@
-import { redirectMap } from '@temp/redirect/config.js'
+import { redirectMap } from '@temp/redirect/map.js'
 import { entries, isLinkHttp } from '@vuepress/helper/client'
 import { usePreferredLanguages } from '@vueuse/core'
 import { computed, watch } from 'vue'

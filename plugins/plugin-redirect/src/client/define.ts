@@ -4,11 +4,11 @@ import type {
   RedirectPluginLocaleConfig,
 } from '../shared/index.js'
 
-declare const REDIRECT_LOCALE_CONFIG: RedirectLocaleConfig
-declare const REDIRECT_LOCALES: RedirectPluginLocaleConfig
-declare const REDIRECT_LOCALE_SWITCH: boolean
+declare const __REDIRECT_LOCALE_CONFIG__: RedirectLocaleConfig
+declare const __REDIRECT_LOCALES__: RedirectPluginLocaleConfig
+declare const __REDIRECT_LOCALE_SWITCH__: boolean
 
-export const redirectLocaleConfig = REDIRECT_LOCALE_CONFIG
+export const redirectLocaleConfig = __REDIRECT_LOCALE_CONFIG__
 export const redirectLocaleEntries = entries(redirectLocaleConfig.localeConfig)
-export const redirectLocales = REDIRECT_LOCALES
-export const enableLocaleSwitch = REDIRECT_LOCALE_SWITCH
+export const redirectLocales = __REDIRECT_LOCALES__
+export const enableLocaleSwitch = __REDIRECT_LOCALE_SWITCH__

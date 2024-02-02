@@ -32,7 +32,7 @@ interface LocaleInfo {
 }
 
 const REDIRECT_LOCALE_STORAGE = useSessionStorage<Record<string, boolean>>(
-  'VUEPRESS_REDIRECT_LOCALES',
+  'VUEPRESS___REDIRECT_LOCALES__',
   {},
 )
 

@@ -27,9 +27,9 @@ export const redirectPlugin =
       name: PLUGIN_NAME,
 
       define: {
-        REDIRECT_LOCALE_CONFIG: redirectLocaleConfig,
-        REDIRECT_LOCALE_SWITCH: Boolean(redirectLocaleConfig.switchLocale),
-        REDIRECT_LOCALES: getLocaleConfig({
+        __REDIRECT_LOCALE_CONFIG__: redirectLocaleConfig,
+        __REDIRECT_LOCALE_SWITCH__: Boolean(redirectLocaleConfig.switchLocale),
+        __REDIRECT_LOCALES__: getLocaleConfig({
           app,
           name: 'redirect',
           config: options.locales,
@@ -38,10 +38,7 @@ export const redirectPlugin =
       },
 
       extendsBundlerOptions: (bundlerOptions: unknown, app): void => {
-        addViteSsrNoExternal(bundlerOptions, app, [
-          '@vuepress/helper',
-          'vuepress-shared',
-        ])
+        addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
 
       onInitialized: async (app): Promise<void> => {
@@ -57,7 +54,7 @@ export const redirectPlugin =
 
       onPrepared: async (app): Promise<void> => {
         await app.writeTemp(
-          'redirect/config.js',
+          'redirect/map.js',
           `\
 export const redirectMap = ${
             app.env.isDev ? JSON.stringify(redirectMap, null, 2) : '{}'
