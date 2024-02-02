@@ -1,4 +1,4 @@
-import { Logger } from '@vuepress/helper/node'
+import { Logger } from '@vuepress/helper'
 
 export const FEED_GENERATOR = '@vuepress/plugin-feed'
 

@@ -1,4 +1,4 @@
-import { customizeDevServer, values } from '@vuepress/helper/node'
+import { customizeDevServer, values } from '@vuepress/helper'
 import type { PluginFunction, PluginObject } from 'vuepress/core'
 import { isLinkHttp, removeEndingSlash } from 'vuepress/shared'
 import { colors } from 'vuepress/utils'

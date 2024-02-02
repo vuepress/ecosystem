@@ -1,4 +1,4 @@
-import { entries } from '@vuepress/helper/node'
+import { entries } from '@vuepress/helper'
 import { ensureEndingSlash } from 'vuepress/shared'
 import { fs, getDirname, path } from 'vuepress/utils'
 import type { FeedConfig } from '../typings/index.js'

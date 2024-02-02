@@ -4,7 +4,7 @@ import {
   isArray,
   isFunction,
   keys,
-} from '@vuepress/helper/node'
+} from '@vuepress/helper'
 import type { GitData } from '@vuepress/plugin-git'
 import type { App, Page } from 'vuepress/core'
 import type {

@@ -1,4 +1,4 @@
-import { addViteSsrNoExternal, getLocaleConfig } from '@vuepress/helper/node'
+import { addViteSsrNoExternal, getLocaleConfig } from '@vuepress/helper'
 import type { Page, PluginFunction } from 'vuepress/core'
 import type { ReadingTime } from '../shared/index.js'
 import { getReadingTime } from './getReadingTime.js'

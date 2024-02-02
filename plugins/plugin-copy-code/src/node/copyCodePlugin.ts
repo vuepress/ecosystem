@@ -3,7 +3,7 @@ import {
   getLocaleConfig,
   isArray,
   isString,
-} from '@vuepress/helper/node'
+} from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 import { copyCodeLocales } from './locales.js'

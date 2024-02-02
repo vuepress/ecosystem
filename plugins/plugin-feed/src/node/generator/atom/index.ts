@@ -1,4 +1,4 @@
-import { isArray } from '@vuepress/helper/node'
+import { isArray } from '@vuepress/helper'
 import { js2xml } from 'xml-js'
 import type { FeedAuthor, FeedCategory } from '../../../typings/index.js'
 import type { FeedStore } from '../../feed/store.js'

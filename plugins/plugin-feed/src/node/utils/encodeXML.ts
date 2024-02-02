@@ -1,9 +1,4 @@
-import {
-  entries,
-  fromEntries,
-  isArray,
-  isPlainObject,
-} from '@vuepress/helper/node'
+import { entries, fromEntries, isArray, isPlainObject } from '@vuepress/helper'
 import type { ElementCompact } from 'xml-js'
 
 /**

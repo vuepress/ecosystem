@@ -1,4 +1,4 @@
-import { isArray, isString } from '@vuepress/helper/node'
+import { isArray, isString } from '@vuepress/helper'
 
 export const getFeedCategory = (
   category: string[] | string | undefined,

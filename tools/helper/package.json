@@ -28,7 +28,6 @@
     ".": "./lib/node/index.js",
     "./client": "./lib/client/index.js",
     "./client/*": "./lib/client/*",
-    "./node": "./lib/node/index.js",
     "./shared": "./lib/shared/index.js",
     "./noopComponent": "./lib/client/noopComponent.js",
     "./noopModule": "./lib/client/noopModule.js",
@@ -59,12 +58,6 @@
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.2"
-  },
-  "engines": {
-    "node": ">=18.16.0",
-    "npm": ">=8",
-    "pnpm": ">=7",
-    "yarn": ">=2"
   },
   "publishConfig": {
     "access": "public"

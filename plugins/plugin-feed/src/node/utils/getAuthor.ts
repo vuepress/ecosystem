@@ -1,4 +1,4 @@
-import { isArray, isPlainObject, isString } from '@vuepress/helper/node'
+import { isArray, isPlainObject, isString } from '@vuepress/helper'
 import type { FeedAuthor, FrontmatterAuthor } from '../../typings/index.js'
 
 const isFeedAuthor = (author: unknown): author is FeedAuthor =>

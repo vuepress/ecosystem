@@ -1,4 +1,4 @@
-import { entries, isString } from '@vuepress/helper/node'
+import { entries, isString } from '@vuepress/helper'
 import type { App, Page } from 'vuepress/core'
 
 export interface AlternatePath {

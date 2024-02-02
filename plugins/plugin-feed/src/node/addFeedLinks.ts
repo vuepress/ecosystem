@@ -1,4 +1,4 @@
-import { keys } from '@vuepress/helper/node'
+import { keys } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import type { HeadConfig } from 'vuepress/shared'
 import { getFeedFilenames } from './getFeedFilenames.js'

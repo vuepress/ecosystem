@@ -1,4 +1,4 @@
-import { isArray } from '@vuepress/helper/node'
+import { isArray } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { isLinkHttp } from 'vuepress/shared'
 import type { FeedChannelOptions, FeedPluginOptions } from '../typings/index.js'

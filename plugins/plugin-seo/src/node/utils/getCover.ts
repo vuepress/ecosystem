@@ -1,4 +1,4 @@
-import { isLinkAbsolute, isLinkWithProtocol } from '@vuepress/helper/node'
+import { isLinkAbsolute, isLinkWithProtocol } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import type { ExtendPage } from '../../typings/index.js'
 import type { SeoPluginOptions } from '../options.js'

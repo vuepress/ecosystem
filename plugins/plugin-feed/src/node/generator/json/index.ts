@@ -1,4 +1,4 @@
-import { isArray } from '@vuepress/helper/node'
+import { isArray } from '@vuepress/helper'
 import type { FeedAuthor } from '../../../typings/index.js'
 import type { FeedStore } from '../../feed/store.js'
 import type { JSONAuthor, JSONContent, JSONItem } from './typings.js'

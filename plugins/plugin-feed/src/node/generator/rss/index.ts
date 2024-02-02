@@ -1,4 +1,4 @@
-import { isLinkWithProtocol } from '@vuepress/helper/node'
+import { isLinkWithProtocol } from '@vuepress/helper'
 import { js2xml } from 'xml-js'
 import type { FeedCategory, FeedEnclosure } from '../../../typings/index.js'
 import type { FeedItem } from '../../feed/item.js'
