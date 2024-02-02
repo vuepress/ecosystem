@@ -1,5 +1,5 @@
 import { removeEndingSlash } from '@vuepress/helper'
-import type { LocaleRedirectConfig } from '../../shared/index.js'
+import type { RedirectLocaleConfig } from '../../shared/index.js'
 
 export const getLocaleRedirectHTML = (
   {
@@ -7,7 +7,7 @@ export const getLocaleRedirectHTML = (
     defaultBehavior,
     defaultLocale,
     localeFallback,
-  }: LocaleRedirectConfig,
+  }: RedirectLocaleConfig,
   availableLocales: string[],
   base: string,
 ): string => `<!DOCTYPE html>
@@ -49,7 +49,7 @@ ${
             matchedLocalePath = localePath;
             break findLanguage;
           }
-    
+
     // default link
     const defaultLink = defaultLocale? \`\${origin}${removeEndingSlash(
       base,

@@ -1,28 +1,34 @@
 import { addViteSsrNoExternal, getLocaleConfig } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
-import { CLIENT_FOLDER, PLUGIN_NAME } from './constant.js'
+import { getDirname, path } from 'vuepress/utils'
+import { ensureRootHomePage } from './ensureRootHomePage.js'
 import { generateAutoLocaleRedirects, generateRedirects } from './generate.js'
-import { ensureRootHomePage } from './homepage.js'
-import { getLocaleSettings } from './locale.js'
+import { getRedirectLocaleConfig } from './getRedirectLocaleConfig.js'
 import { redirectLocales } from './locales.js'
 import type { RedirectOptions } from './options.js'
-import { prepareRedirects } from './prepare.js'
-import { getRedirectMap, handleRedirectTo, logger } from './utils/index.js'
+import {
+  getRedirectMap,
+  handleRedirectTo,
+  logger,
+  PLUGIN_NAME,
+} from './utils/index.js'
+
+const __dirname = getDirname(import.meta.url)
 
 export const redirectPlugin =
   (options: RedirectOptions = {}): PluginFunction =>
   (app) => {
     if (app.env.isDebug) logger.info('Options:', options)
 
-    const localeConfig = getLocaleSettings(app, options)
+    const redirectLocaleConfig = getRedirectLocaleConfig(app, options)
     let redirectMap: Record<string, string>
 
     return {
       name: PLUGIN_NAME,
 
       define: {
-        REDIRECT_LOCALE_CONFIG: localeConfig,
-        REDIRECT_LOCALE_SWITCH: Boolean(localeConfig.switchLocale),
+        REDIRECT_LOCALE_CONFIG: redirectLocaleConfig,
+        REDIRECT_LOCALE_SWITCH: Boolean(redirectLocaleConfig.switchLocale),
         REDIRECT_LOCALES: getLocaleConfig({
           app,
           name: 'redirect',
@@ -45,17 +51,27 @@ export const redirectPlugin =
 
         handleRedirectTo(app, options)
 
-        if (localeConfig.autoLocale) await ensureRootHomePage(app, localeConfig)
+        if (redirectLocaleConfig.autoLocale)
+          await ensureRootHomePage(app, redirectLocaleConfig)
       },
 
-      onPrepared: (app): Promise<void> => prepareRedirects(app, redirectMap),
+      onPrepared: async (app): Promise<void> => {
+        await app.writeTemp(
+          'redirect/config.js',
+          `\
+export const redirectMap = ${
+            app.env.isDev ? JSON.stringify(redirectMap, null, 2) : '{}'
+          };
+`,
+        )
+      },
 
       onGenerated: async (app): Promise<void> => {
         await generateRedirects(app, redirectMap)
-        if (localeConfig.autoLocale)
-          await generateAutoLocaleRedirects(app, localeConfig)
+        if (redirectLocaleConfig.autoLocale)
+          await generateAutoLocaleRedirects(app, redirectLocaleConfig)
       },
 
-      clientConfigFile: `${CLIENT_FOLDER}config.js`,
+      clientConfigFile: path.join(__dirname, '../client/config.js'),
     }
   }

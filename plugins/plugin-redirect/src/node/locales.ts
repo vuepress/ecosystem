@@ -1,7 +1,7 @@
-import type { RedirectLocaleConfig } from '../shared/index.js'
+import type { RedirectPluginLocaleConfig } from '../shared/index.js'
 
 /** Multi language config for redirect popup */
-export const redirectLocales: RedirectLocaleConfig = {
+export const redirectLocales: RedirectPluginLocaleConfig = {
   '/en/': {
     name: 'English',
     hint: 'Your primary language is $1, do you want to switch to it?',

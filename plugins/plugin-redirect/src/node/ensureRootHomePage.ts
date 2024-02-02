@@ -1,11 +1,11 @@
 import { removeEndingSlash } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { createPage } from 'vuepress/core'
-import type { LocaleRedirectConfig } from '../shared/index.js'
+import type { RedirectLocaleConfig } from '../shared/index.js'
 
 export const ensureRootHomePage = async (
   app: App,
-  localeOptions: LocaleRedirectConfig,
+  localeOptions: RedirectLocaleConfig,
 ): Promise<void> => {
   const {
     options: { base },
@@ -59,7 +59,7 @@ if(!__VUEPRESS_DEV__)
             matchedLocalePath = localePath;
             break findLanguage;
           }
-    
+
     // default link
     const defaultLink = defaultLocale? \`\${origin}${removeEndingSlash(
       base,

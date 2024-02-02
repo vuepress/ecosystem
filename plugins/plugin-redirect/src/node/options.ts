@@ -1,11 +1,11 @@
 import type { App, LocaleConfig } from 'vuepress/core'
 import type {
-  LocaleRedirectConfig,
-  RedirectLocaleData,
+  RedirectLocaleConfig,
+  RedirectPluginLocaleData,
 } from '../shared/index.js'
 
 export interface RedirectOptions
-  extends Partial<Omit<LocaleRedirectConfig, 'localeConfig'>> {
+  extends Partial<Omit<RedirectLocaleConfig, 'localeConfig'>> {
   /**
    * Redirect mapping
    *
@@ -40,5 +40,5 @@ export interface RedirectOptions
    *
    * @see [默认配置](https://github.com/vuepress-theme-hope/vuepress-theme-hope/blob/main/packages/redirect/src/node/locales.ts)
    */
-  locales?: LocaleConfig<RedirectLocaleData>
+  locales?: LocaleConfig<RedirectPluginLocaleData>
 }

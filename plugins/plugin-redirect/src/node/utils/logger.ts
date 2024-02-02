@@ -1,4 +1,5 @@
 import { Logger } from '@vuepress/helper'
-import { PLUGIN_NAME } from '../constant.js'
+
+export const PLUGIN_NAME = '@vuepress/plugin-redirect'
 
 export const logger = new Logger(PLUGIN_NAME)

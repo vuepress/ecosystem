@@ -7,12 +7,12 @@ import {
 } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { fs, path, withSpinner } from 'vuepress/utils'
-import type { LocaleRedirectConfig } from '../shared/index.js'
+import type { RedirectLocaleConfig } from '../shared/index.js'
 import { getLocaleRedirectHTML, getRedirectHTML } from './utils/index.js'
 
 export const generateAutoLocaleRedirects = async (
   { dir, options, pages }: App,
-  localeOptions: LocaleRedirectConfig,
+  localeOptions: RedirectLocaleConfig,
 ): Promise<void> => {
   const rootPaths = pages
     .filter(({ pathLocale }) => pathLocale === '/')

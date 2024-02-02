@@ -10,8 +10,8 @@ import {
   removeLeadingSlash,
 } from '@vuepress/helper'
 import type { App, Page } from 'vuepress/core'
+import type { RedirectPluginFrontmatterOption } from '../frontmatter.js'
 import type { RedirectOptions } from '../options.js'
-import type { RedirectPluginFrontmatterOption } from '../typings/index.js'
 import { normalizePath } from './normalizePath.js'
 
 export const handleRedirectTo = (

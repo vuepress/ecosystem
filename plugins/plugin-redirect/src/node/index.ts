@@ -1,3 +1,3 @@
+export * from './frontmatter.js'
 export * from './options.js'
-export * from './plugin.js'
-export * from './typings/index.js'
+export * from './redirectPlugin.js'

@@ -1,4 +1,4 @@
-import { redirectConfig } from '@temp/redirect/config.js'
+import { redirectMap } from '@temp/redirect/config.js'
 import { entries, isLinkHttp } from '@vuepress/helper/client'
 import { usePreferredLanguages } from '@vueuse/core'
 import { computed, watch } from 'vue'
@@ -97,7 +97,7 @@ export const setupRedirect = (): void => {
     () => route.path,
     (path) => {
       // handle redirects
-      for (const [from, to] of entries(redirectConfig))
+      for (const [from, to] of entries(redirectMap))
         if (normalizePath(path.toLowerCase()) === from.toLowerCase()) {
           if (isLinkHttp(to)) window.open(to)
           else router.replace(to)
