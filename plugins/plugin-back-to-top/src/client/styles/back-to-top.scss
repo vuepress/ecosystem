@@ -8,20 +8,16 @@
   background-color: var(--back-to-top-color);
   mask: url('back-to-top.svg') no-repeat;
   z-index: var(--back-to-top-z-index);
-}
 
-.back-to-top:hover {
-  background-color: var(--back-to-top-color-hover);
-}
+  &:hover {
+    background-color: var(--back-to-top-color-hover);
+  }
 
-@media (max-width: 959px) {
-  .back-to-top {
+  @media (max-width: 959px) {
     display: none;
   }
-}
 
-@media print {
-  .back-to-top {
+  @media print {
     display: none;
   }
 }

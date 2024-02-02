@@ -33,7 +33,8 @@
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "copy": "cpx \"src/**/*.{css,svg}\" lib"
+    "copy": "cpx \"src/**/*.{css,svg}\" lib",
+    "style": "sass src:lib --style=compressed --no-source-map"
   },
   "dependencies": {
     "ts-debounce": "^4.0.0",
