@@ -1,12 +1,19 @@
 describe('copy-code', () => {
   it('have copy code button', () => {
-    cy.visit('/markdown.html')
-      .get('.copy-code-button')
-      .then((el) => {
-        expect(el.length).to.be.greaterThan(0)
+    cy.visit('/copy-code/')
+      .get('.theme-default-content')
+      .within(() => {
+        cy.get('.copy-code-button')
+          .should('have.lengthOf.greaterThan', 0)
+          .each((el) => {
+            cy.wrap(el).click()
+            cy.wrap(el).should('have.class', 'copied')
+            cy.window()
+              .then((win) => win.navigator.clipboard.readText())
+              .should('match', /const a = 1\r?\nconst b = 2\r?\n/)
 
-        cy.wrap(el).click({ multiple: true })
-        cy.wrap(el).should('have.class', 'copied')
+            cy.window().then((win) => win.navigator.clipboard.writeText(''))
+          })
       })
   })
 })
