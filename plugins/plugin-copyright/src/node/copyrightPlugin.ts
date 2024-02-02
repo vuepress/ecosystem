@@ -82,6 +82,6 @@ export const copyrightPlugin =
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
 
-      clientConfigFile: path.resolve(__dirname, '../client/index.js'),
+      clientConfigFile: path.resolve(__dirname, '../client/config.js'),
     }
   }
