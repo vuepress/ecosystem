@@ -6,7 +6,8 @@ import {
   removeLeadingSlash,
 } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
-import { fs, path, withSpinner } from 'vuepress/utils'
+import { fs, path } from 'vuepress/utils'
+import { logger } from '../logger.js'
 import { getRedirectHTML } from './getRedirectHTML.js'
 
 export const generateRedirectFiles = async (
@@ -18,20 +19,22 @@ export const generateRedirectFiles = async (
     ? removeEndingSlash(isLinkHttp(hostname) ? hostname : `https://${hostname}`)
     : ''
 
-  await withSpinner('Generating redirect files')(() =>
-    Promise.all(
-      entries(config).map(([from, to]) => {
-        const filePath = dir.dest(removeLeadingSlash(from))
+  const { succeed } = logger.load('Generating redirect files')
+
+  await Promise.all(
+    entries(config).map(async ([from, to]) => {
+      const filePath = dir.dest(removeLeadingSlash(from))
+
+      if (!fs.existsSync(filePath)) {
         const redirectUrl = isLinkAbsolute(to)
           ? `${resolvedHostname}${options.base}${removeLeadingSlash(to)}`
           : to
 
-        return fs.existsSync(filePath)
-          ? Promise.resolve()
-          : fs
-              .ensureDir(path.dirname(filePath))
-              .then(() => fs.writeFile(filePath, getRedirectHTML(redirectUrl)))
-      }),
-    ),
+        await fs.ensureDir(path.dirname(filePath))
+        await fs.writeFile(filePath, getRedirectHTML(redirectUrl))
+      }
+    }),
   )
+
+  succeed()
 }

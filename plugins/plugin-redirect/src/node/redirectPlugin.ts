@@ -2,8 +2,10 @@ import { addViteSsrNoExternal, getLocaleConfig } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 import { ensureRootHomePage } from './ensureRootHomePage.js'
-import { generateAutoLocaleRedirectFiles } from './generateAutoLocaleRedirectFiles.js'
-import { generateRedirectFiles } from './generateRedirectFiles.js'
+import {
+  generateAutoLocaleRedirectFiles,
+  generateRedirectFiles,
+} from './generate/index.js'
 import { getRedirectLocaleConfig } from './getRedirectLocaleConfig.js'
 import { getRedirectMap } from './getRedirectMap.js'
 import { handleRedirectTo } from './handleRedirectTo.js'

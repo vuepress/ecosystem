@@ -40,11 +40,6 @@ export const getRedirectMap = (
         )
         .flat(),
     ),
-    ...fromEntries(
-      entries(config).map(([from, to]) => [
-        normalizePath(from),
-        normalizePath(to),
-      ]),
-    ),
+    ...fromEntries(entries(config).map((item) => item.map(normalizePath))),
   }
 }

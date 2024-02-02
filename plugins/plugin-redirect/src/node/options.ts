@@ -34,11 +34,7 @@ export interface RedirectOptions
   /**
    * Locales config
    *
-   * @see [default config](https://github.com/vuepress-theme-hope/vuepress-theme-hope/blob/main/packages/redirect/src/node/locales.ts)
-   *
    * 多语言选项
-   *
-   * @see [默认配置](https://github.com/vuepress-theme-hope/vuepress-theme-hope/blob/main/packages/redirect/src/node/locales.ts)
    */
   locales?: LocaleConfig<RedirectPluginLocaleData>
 }

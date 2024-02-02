@@ -13,7 +13,7 @@ export const ensureRootHomePage = async (
   } = app
 
   if (
-    // homepage not exists
+    // root homepage not exists
     pages.every(({ path }) => path !== '/')
   ) {
     const availableLocales = pages

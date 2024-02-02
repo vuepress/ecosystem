@@ -1,7 +1,8 @@
 import { entries, removeLeadingSlash } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
-import { fs, path, withSpinner } from 'vuepress/utils'
-import type { RedirectLocaleConfig } from '../shared/index.js'
+import { fs, path } from 'vuepress/utils'
+import type { RedirectLocaleConfig } from '../../shared/index.js'
+import { logger } from '../logger.js'
 import { getLocaleRedirectHTML } from './getLocaleRedirectHTML.js'
 
 export const generateAutoLocaleRedirectFiles = async (
@@ -24,26 +25,21 @@ export const generateAutoLocaleRedirectFiles = async (
         (localeRedirectMap[rootPath] ??= []).push(pathLocale)
     })
 
-  await withSpinner('Generating locale redirect files')(() =>
-    Promise.all(
-      entries(localeRedirectMap).map(([rootPath, availableLocales]) => {
-        const filePath = dir.dest(removeLeadingSlash(rootPath))
+  const { succeed } = logger.load('Generating locale redirect files')
 
-        return fs.existsSync(filePath)
-          ? Promise.resolve()
-          : fs
-              .ensureDir(path.dirname(filePath))
-              .then(() =>
-                fs.writeFile(
-                  filePath,
-                  getLocaleRedirectHTML(
-                    localeOptions,
-                    availableLocales,
-                    options.base,
-                  ),
-                ),
-              )
-      }),
-    ),
+  await Promise.all(
+    entries(localeRedirectMap).map(async ([rootPath, availableLocales]) => {
+      const filePath = dir.dest(removeLeadingSlash(rootPath))
+
+      if (!fs.existsSync(filePath)) {
+        await fs.ensureDir(path.dirname(filePath))
+        await fs.writeFile(
+          filePath,
+          getLocaleRedirectHTML(localeOptions, availableLocales, options.base),
+        )
+      }
+    }),
   )
+
+  succeed()
 }
