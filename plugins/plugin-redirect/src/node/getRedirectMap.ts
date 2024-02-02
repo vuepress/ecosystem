@@ -3,47 +3,12 @@ import {
   fromEntries,
   isArray,
   isFunction,
-  isLinkAbsolute,
-  isLinkHttp,
   isPlainObject,
-  removeEndingSlash,
-  removeLeadingSlash,
 } from '@vuepress/helper'
 import type { App, Page } from 'vuepress/core'
-import type { RedirectPluginFrontmatterOption } from '../frontmatter.js'
-import type { RedirectOptions } from '../options.js'
+import type { RedirectPluginFrontmatterOption } from './frontmatter.js'
 import { normalizePath } from './normalizePath.js'
-
-export const handleRedirectTo = (
-  app: App,
-  { hostname }: RedirectOptions,
-): void => {
-  const { base } = app.options
-  const resolvedHostname = hostname
-    ? removeEndingSlash(isLinkHttp(hostname) ? hostname : `https://${hostname}`)
-    : ''
-
-  app.pages.forEach(({ frontmatter }) => {
-    const { redirectTo } = frontmatter as RedirectPluginFrontmatterOption
-
-    if (redirectTo) {
-      const redirectUrl = normalizePath(
-        isLinkAbsolute(redirectTo)
-          ? `${resolvedHostname}${base}${removeLeadingSlash(redirectTo)}`
-          : redirectTo,
-      )
-
-      ;(frontmatter.head ??= []).unshift([
-        'script',
-        {},
-        `{\
-const anchor = window.location.hash.substring(1);\
-location.href=\`${redirectUrl}\${anchor? \`#\${anchor}\`: ""}\`;\
-}`,
-      ])
-    }
-  })
-}
+import type { RedirectOptions } from './options.js'
 
 export const getRedirectMap = (
   app: App,

@@ -1,5 +1,5 @@
 import { removeEndingSlash } from '@vuepress/helper'
-import type { RedirectLocaleConfig } from '../../shared/index.js'
+import type { RedirectLocaleConfig } from '../shared/index.js'
 
 export const getLocaleRedirectHTML = (
   {
@@ -89,25 +89,6 @@ ${
     else {
       location.href = \`\${origin}${removeEndingSlash(base)}/404.html\`;
     }
-  </script>
-</head>
-<body>
-  <p>Redirecting...</p>
-</body>
-</html>
-`
-
-export const getRedirectHTML = (redirectUrl: string): string => `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="robots" content="noindex">
-  <meta http-equiv="refresh" content="0; url=${redirectUrl}">
-  <link rel="canonical" href="${redirectUrl}">
-  <title>Redirecting...</title>
-  <script>
-    const anchor = window.location.hash.substring(1);
-    location.href = \`${redirectUrl}\${anchor? \`#\${anchor}\`: ""}\`;
   </script>
 </head>
 <body>
