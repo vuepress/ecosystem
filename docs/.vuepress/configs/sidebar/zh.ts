@@ -8,6 +8,7 @@ export const sidebarZh: SidebarConfig = {
         '/zh/plugins/back-to-top',
         '/zh/plugins/container',
         '/zh/plugins/copy-code',
+        '/zh/plugins/copyright',
         '/zh/plugins/external-link-icon',
         '/zh/plugins/google-analytics',
         '/zh/plugins/medium-zoom',

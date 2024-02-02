@@ -1,21 +1,21 @@
 {
   "name": "@vuepress/plugin-copyright",
-  "version": "2.0.0-rc.18",
-  "description": "Copyright plugin for VuePress",
+  "version": "2.0.0-rc.0",
+  "description": "VuePress plugin - copyright",
   "keywords": [
-    "vuepress",
-    "vuepress2",
     "vuepress-plugin",
+    "vuepress",
+    "plugin",
     "copyright"
   ],
-  "homepage": "https://plugin-copyright2.vuejs.press",
+  "homepage": "https://ecosystem.vuejs.press/plugins/copyright.html",
   "bugs": {
-    "url": "https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues"
+    "url": "https://github.com/vuepress/ecosystem/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuepress-theme-hope/vuepress-theme-hope.git",
-    "directory": "packages/copyright2"
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/plugin-copyright"
   },
   "license": "MIT",
   "author": {
