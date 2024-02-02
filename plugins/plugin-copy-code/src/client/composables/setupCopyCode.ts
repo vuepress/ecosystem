@@ -31,8 +31,8 @@ export const setupCopyCode = (): void => {
       const copyElement = document.createElement('button')
 
       copyElement.type = 'button'
-      copyElement.classList.add('copy-code-button')
-      copyElement.innerHTML = '<div class="copy-icon" />'
+      copyElement.classList.add('vp-copy-code-button')
+      copyElement.innerHTML = '<div class="vp-copy-icon" />'
       copyElement.setAttribute('aria-label', locale.value.copy)
       copyElement.setAttribute('data-copied', locale.value.copied)
 
@@ -99,7 +99,7 @@ export const setupCopyCode = (): void => {
 
         if (preBlock)
           copyContent(codeContainer, preBlock, el as HTMLButtonElement)
-      } else if (el.matches('div[class*="language-"] div.copy-icon')) {
+      } else if (el.matches('div[class*="language-"] div.vp-copy-icon')) {
         const buttonElement = el.parentElement as HTMLButtonElement
         const codeContainer = buttonElement.parentElement as HTMLDivElement
         const preBlock =

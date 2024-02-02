@@ -3,7 +3,7 @@ describe('copy-code', () => {
     cy.visit('/copy-code/')
       .get('.theme-default-content')
       .within(() => {
-        cy.get('.copy-code-button')
+        cy.get('.vp-copy-code-button')
           .should('have.lengthOf.greaterThan', 0)
           .each((el) => {
             cy.wrap(el).click()

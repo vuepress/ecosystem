@@ -65,6 +65,9 @@ importers:
       rimraf:
         specifier: ^5.0.5
         version: 5.0.5
+      sass:
+        specifier: 1.70.0
+        version: 1.70.0
       sort-package-json:
         specifier: ^2.7.0
         version: 2.7.0
@@ -79,7 +82,7 @@ importers:
         version: 5.0.12(@types/node@20.11.13)(sass@1.70.0)
       vitest:
         specifier: ^1.2.2
-        version: 1.2.2(@types/node@20.11.13)
+        version: 1.2.2(@types/node@20.11.13)(sass@1.70.0)
       vuepress:
         specifier: 2.0.0-rc.2
         version: 2.0.0-rc.2(@vuepress/bundler-vite@2.0.0-rc.2)(@vuepress/bundler-webpack@2.0.0-rc.2)(typescript@5.3.3)(vue@3.4.15)
@@ -3993,7 +3996,7 @@ packages:
       magicast: 0.3.3
       picocolors: 1.0.0
       test-exclude: 6.0.0
-      vitest: 1.2.2(@types/node@20.11.13)
+      vitest: 1.2.2(@types/node@20.11.13)(sass@1.70.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -11814,7 +11817,7 @@ packages:
       extsprintf: 1.3.0
     dev: true
 
-  /vite-node@1.2.2(@types/node@20.11.13):
+  /vite-node@1.2.2(@types/node@20.11.13)(sass@1.70.0):
     resolution: {integrity: sha512-1as4rDTgVWJO3n1uHmUYqq7nsFgINQ9u+mRcXpjeOMJUmviqNKjcZB7UfRZrlM7MjYXMKpuWp5oGkjaFLnjawg==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -11871,7 +11874,7 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
 
-  /vitest@1.2.2(@types/node@20.11.13):
+  /vitest@1.2.2(@types/node@20.11.13)(sass@1.70.0):
     resolution: {integrity: sha512-d5Ouvrnms3GD9USIK36KG8OZ5bEvKEkITFtnGv56HFaSlbItJuYr7hv2Lkn903+AvRAgSixiamozUVfORUekjw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -11916,7 +11919,7 @@ packages:
       tinybench: 2.5.1
       tinypool: 0.8.2
       vite: 5.0.12(@types/node@20.11.13)(sass@1.70.0)
-      vite-node: 1.2.2(@types/node@20.11.13)
+      vite-node: 1.2.2(@types/node@20.11.13)(sass@1.70.0)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
