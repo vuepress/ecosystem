@@ -1,0 +1,53 @@
+{
+  "name": "@vuepress/plugin-copyright",
+  "version": "2.0.0-rc.18",
+  "description": "Copyright plugin for VuePress",
+  "keywords": [
+    "vuepress",
+    "vuepress2",
+    "vuepress-plugin",
+    "copyright"
+  ],
+  "homepage": "https://plugin-copyright2.vuejs.press",
+  "bugs": {
+    "url": "https://github.com/vuepress-theme-hope/vuepress-theme-hope/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress-theme-hope/vuepress-theme-hope.git",
+    "directory": "packages/copyright2"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mr.Hope",
+    "email": "mister-hope@outlook.com",
+    "url": "https://mister-hope.com"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./lib/node/index.js",
+    "./client/*": "./lib/client/*",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
+  },
+  "dependencies": {
+    "@vuepress/helper": "workspace:*",
+    "@vueuse/core": "^10.7.2",
+    "vue": "^3.4.15",
+    "vue-router": "^4.2.5"
+  },
+  "peerDependencies": {
+    "vuepress": "2.0.0-rc.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

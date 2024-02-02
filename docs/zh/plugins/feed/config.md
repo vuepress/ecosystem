@@ -83,9 +83,9 @@
 - 默认值：
 
   ```ts
-  // compareDate 来源于 vuepress-shared
+  // dateSorter 来源于 @vuepress/helper
   ;(pageA, pageB): number =>
-    compareDate(
+    dateSorter(
       pageA.data.git?.createdTime
         ? new Date(pageA.data.git?.createdTime)
         : pageA.frontmatter.date,
