@@ -144,7 +144,7 @@ export const getPageText = (
   }: PageTextOptions = {},
 ): string => {
   let result = ''
-  const rootNodes = $.parseHTML(contentRendered) || []
+  const rootNodes = $.parseHTML(contentRendered) ?? []
 
   for (const node of rootNodes) {
     const text = handleNode(node, { base, removedTags })

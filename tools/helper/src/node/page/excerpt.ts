@@ -225,7 +225,7 @@ export const getPageExcerpt = (
       },
     )
 
-    const rootNodes = $.parseHTML(renderedContent)
+    const rootNodes = $.parseHTML(renderedContent) ?? []
 
     if (rootNodes[0] && !keepPageTitle && isH1Tag(rootNodes[0]))
       rootNodes.shift()
@@ -239,7 +239,7 @@ export const getPageExcerpt = (
     )
   } else if (length > 0) {
     let excerpt = ''
-    const rootNodes = $.parseHTML(contentRendered) || []
+    const rootNodes = $.parseHTML(contentRendered) ?? []
 
     if (rootNodes[0] && !keepPageTitle && isH1Tag(rootNodes[0]))
       rootNodes.shift()
