@@ -1,7 +1,7 @@
 import { spawnSync } from 'node:child_process'
 import { fs, path } from 'vuepress/utils'
 
-export type PackageManager = 'npm' | 'yarn' | 'pnpm'
+export type PackageManager = 'npm' | 'yarn' | 'pnpm' | 'bun'
 
 const globalCache = new Map<string, boolean>()
 const localCache = new Map<string, PackageManager>()
@@ -10,6 +10,7 @@ const PACKAGE_CONFIG = 'package.json'
 const NPM_LOCK = 'package-lock.json'
 const YARN_LOCK = 'yarn.lock'
 const PNPM_LOCK = 'pnpm-lock.yaml'
+const BUN_LOCK = 'bun.lockb'
 
 const isInstalled = (packageManager: PackageManager): boolean => {
   try {
@@ -134,6 +135,12 @@ export const getTypeofLockFile = (
     return 'yarn'
   }
 
+  if (fs.existsSync(path.resolve(cwd, BUN_LOCK))) {
+    localCache.set(key, 'bun')
+
+    return 'bun'
+  }
+
   if (fs.existsSync(path.resolve(cwd, NPM_LOCK))) {
     localCache.set(key, 'npm')
 
@@ -156,6 +163,12 @@ export const getTypeofLockFile = (
         localCache.set(key, 'yarn')
 
         return 'yarn'
+      }
+
+      if (fs.existsSync(path.resolve(cwd, BUN_LOCK))) {
+        localCache.set(key, 'bun')
+
+        return 'bun'
       }
 
       if (fs.existsSync(path.resolve(dir, NPM_LOCK))) {
@@ -186,4 +199,6 @@ export const getPackageManager = (
     ? 'pnpm'
     : isPackageManagerInstalled('yarn')
       ? 'yarn'
-      : 'npm')
+      : isPackageManagerInstalled('bun')
+        ? 'bun'
+        : 'npm')
