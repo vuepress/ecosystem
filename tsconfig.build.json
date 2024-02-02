@@ -31,6 +31,7 @@
     },
     { "path": "./plugins/plugin-pwa/tsconfig.build.json" },
     { "path": "./plugins/plugin-pwa-popup/tsconfig.build.json" },
+    { "path": "./plugins/plugin-redirect/tsconfig.build.json" },
     { "path": "./plugins/plugin-reading-time/tsconfig.build.json" },
     {
       "path": "./plugins/plugin-register-components/tsconfig.build.json"
