@@ -33,7 +33,8 @@
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "copy": "cpx \"src/**/*.{d.ts,css,svg}\" lib"
+    "copy": "cpx \"src/**/*.{d.ts,svg}\" lib",
+    "style": "sass src:lib --style=compressed --no-source-map"
   },
   "dependencies": {
     "chokidar": "^3.5.3",
