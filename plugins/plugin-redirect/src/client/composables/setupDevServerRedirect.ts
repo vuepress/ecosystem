@@ -14,10 +14,7 @@ const {
   localeFallback,
 } = redirectLocaleConfig
 
-/**
- * @description devServer only function to handle redirects
- */
-export const setupRedirect = (): void => {
+export const setupDevServerRedirect = (): void => {
   const languages = usePreferredLanguages()
   const route = useRoute()
   const router = useRouter()

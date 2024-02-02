@@ -1,14 +1,12 @@
 import type { ClientConfig } from 'vuepress/client'
 import { defineClientConfig } from 'vuepress/client'
 import LanguageSwitch from './components/LanguageSwitch.js'
-import { setupRedirect } from './composables/redirect.js'
+import { setupDevServerRedirect } from './composables/setupDevServerRedirect.js'
 import { enableLocaleSwitch } from './define.js'
-
-declare const __VUEPRESS_DEV__: boolean
 
 export default defineClientConfig({
   setup() {
-    if (__VUEPRESS_DEV__) setupRedirect()
+    if (__VUEPRESS_DEV__) setupDevServerRedirect()
   },
   rootComponents: enableLocaleSwitch ? [LanguageSwitch] : [],
 }) as ClientConfig

@@ -1,1 +1,1 @@
-export * from './redirect.js'
+export * from './setupDevServerRedirect.js'
