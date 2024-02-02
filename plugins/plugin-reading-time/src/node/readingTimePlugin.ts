@@ -32,10 +32,7 @@ export const readingTimePlugin =
       },
 
       extendsBundlerOptions: (bundlerOptions: unknown, app): void => {
-        addViteSsrNoExternal(bundlerOptions, app, [
-          '@vuepress/helper',
-          'vuepress-shared',
-        ])
+        addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
     }
   }
