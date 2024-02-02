@@ -18,7 +18,7 @@ cli
     'pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]',
   )
   .example('docs')
-  .action(async (targetDir = '') => {
+  .action(async (targetDir = ''): Promise<Error | void> => {
     console.log('Bumping deps...')
     const dir = resolve(process.cwd(), targetDir)
     const packageJSON = resolve(dir, 'package.json')
