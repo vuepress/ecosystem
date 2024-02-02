@@ -10,7 +10,7 @@ describe('copy-code', () => {
             cy.wrap(el).should('have.class', 'copied')
             cy.window()
               .then((win) => win.navigator.clipboard.readText())
-              .should('eq', `const a = 1\nconst b = 2\n`)
+              .should('match', /const a = 1\r?\nconst b = 2\r?\n/)
 
             cy.window().then((win) => win.navigator.clipboard.writeText(''))
           })
