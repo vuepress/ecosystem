@@ -34,7 +34,7 @@
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "copy": "cpx \"src/**/*.css\" lib"
+    "style": "sass src:lib --style=compressed --no-source-map"
   },
   "dependencies": {
     "@vuepress/plugin-pwa": "workspace:*",
