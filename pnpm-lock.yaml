@@ -152,9 +152,6 @@ importers:
       '@vuepress/bundler-webpack':
         specifier: 2.0.0-rc.3
         version: 2.0.0-rc.3(typescript@5.3.3)
-      '@vuepress/client':
-        specifier: 2.0.0-rc.3
-        version: 2.0.0-rc.3(typescript@5.3.3)
       '@vuepress/plugin-copyright':
         specifier: workspace:*
         version: link:../plugins/plugin-copyright
