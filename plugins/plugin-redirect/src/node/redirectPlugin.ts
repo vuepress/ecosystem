@@ -41,12 +41,14 @@ export const redirectPlugin =
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
 
+      extendsPage: (page, app) => {
+        handleRedirectTo(page, app, options)
+      },
+
       onInitialized: async (app): Promise<void> => {
         redirectMap = getRedirectMap(app, options)
 
         if (app.env.isDebug) logger.info('Redirect Map:', redirectMap)
-
-        handleRedirectTo(app, options)
 
         if (redirectLocaleConfig.autoLocale)
           await ensureRootHomePage(app, redirectLocaleConfig)

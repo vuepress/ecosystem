@@ -4,8 +4,8 @@ import { usePreferredLanguages } from '@vueuse/core'
 import { computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useRouteLocale } from 'vuepress/client'
+import { normalizePath } from '../../shared/index.js'
 import { redirectLocaleConfig, redirectLocaleEntries } from '../define.js'
-import { normalizePath } from '../utils/index.js'
 
 const {
   autoLocale,

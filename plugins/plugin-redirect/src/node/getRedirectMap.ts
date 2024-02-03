@@ -6,8 +6,8 @@ import {
   isPlainObject,
 } from '@vuepress/helper'
 import type { App, Page } from 'vuepress/core'
+import { normalizePath } from '../shared/normalizePath.js'
 import type { RedirectPluginFrontmatterOption } from './frontmatter.js'
-import { normalizePath } from './normalizePath.js'
 import type { RedirectOptions } from './options.js'
 
 export const getRedirectMap = (
@@ -31,15 +31,20 @@ export const getRedirectMap = (
         .map<[string, string][]>(({ frontmatter, path }) =>
           isArray(frontmatter.redirectFrom)
             ? frontmatter.redirectFrom.map((from) => [
-                normalizePath(from),
+                normalizePath(from, true),
                 path,
               ])
             : frontmatter.redirectFrom
-              ? [[normalizePath(frontmatter.redirectFrom), path]]
+              ? [[normalizePath(frontmatter.redirectFrom, true), path]]
               : [],
         )
         .flat(),
     ),
-    ...fromEntries(entries(config).map((item) => item.map(normalizePath))),
+    ...fromEntries(
+      entries(config).map(([from, to]) => [
+        normalizePath(from, true),
+        normalizePath(to),
+      ]),
+    ),
   }
 }
