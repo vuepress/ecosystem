@@ -5,7 +5,7 @@ import { load } from 'cheerio'
 import matter from 'gray-matter'
 import type { App, Page } from 'vuepress/core'
 import { isLinkHttp, removeEndingSlash } from 'vuepress/shared'
-import { isArray, isLinkAbsolute } from '../../shared/index.js'
+import { isArray, isLinkAbsolute, startsWith } from '../../shared/index.js'
 
 const HEADING_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
 
@@ -107,20 +107,20 @@ const handleNode = (
           node.children.length === 1 &&
           node.children[0].type === 'tag' &&
           node.children[0].tagName === 'a' &&
-          node.children[0].attribs.class === 'header-anchor'
+          node.children[0].attribs?.class === 'header-anchor'
         )
           node.children = (node.children[0].children[0] as Element).children
       }
 
       if (
         node.tagName === 'div' &&
-        node.attribs.class.startsWith('language-')
+        startsWith(node.attribs.class, 'language-')
       ) {
         const pre = node.children.find(
           (node) =>
             node.type === 'tag' &&
             node.tagName === 'pre' &&
-            node.attribs.class.startsWith('language-'),
+            startsWith(node.attribs.class, 'language-'),
         )
 
         if (
