@@ -19,7 +19,7 @@ import { useRouteLocale } from 'vuepress/client'
 import type { RedirectPluginLocaleConfig } from '../../shared/locales.js'
 import { redirectLocaleConfig, redirectLocaleEntries } from '../define.js'
 
-import '../styles/language-switch.scss'
+import '../styles/language-switch.css'
 
 declare const __REDIRECT_LOCALES__: RedirectPluginLocaleConfig
 
