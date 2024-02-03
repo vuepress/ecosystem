@@ -8,6 +8,10 @@ export const navbarEn: NavbarConfig = [
         text: 'Default Theme',
         link: '/themes/default/',
       },
+      {
+        text: 'Hope Theme',
+        link: 'https://theme-hope.vuejs.press',
+      },
     ],
   },
   {
@@ -59,6 +63,15 @@ export const navbarEn: NavbarConfig = [
           '/plugins/theme-data',
           '/plugins/toc',
         ],
+      },
+    ],
+  },
+  {
+    text: 'Tools',
+    children: [
+      {
+        text: 'helper',
+        link: '/tools/helper/',
       },
     ],
   },

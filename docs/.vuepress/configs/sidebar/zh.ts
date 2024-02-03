@@ -85,8 +85,8 @@ export const sidebarZh: SidebarConfig = {
   '/zh/themes/': [
     {
       text: '默认主题',
+      link: '/zh/themes/default/',
       children: [
-        '/zh/themes/default/',
         '/zh/themes/default/config',
         '/zh/themes/default/plugin',
         '/zh/themes/default/locale',
@@ -95,6 +95,18 @@ export const sidebarZh: SidebarConfig = {
         '/zh/themes/default/markdown',
         '/zh/themes/default/styles',
         '/zh/themes/default/extending',
+      ],
+    },
+  ],
+  '/zh/tools/': [
+    {
+      text: '@vuepress/helper',
+      link: '/zh/tools/helper/',
+      children: [
+        '/zh/tools/helper/node/bundler',
+        '/zh/tools/helper/node/page',
+        '/zh/tools/helper/client',
+        '/zh/tools/helper/shared',
       ],
     },
   ],

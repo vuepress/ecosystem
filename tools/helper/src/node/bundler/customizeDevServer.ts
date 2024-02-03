@@ -11,7 +11,7 @@ import { removeLeadingSlash } from 'vuepress/shared'
 import { getBundlerName } from './getBundlerName.js'
 import { mergeViteConfig } from './vite/index.js'
 
-export interface CustomServerOptions {
+export interface DevServerOptions {
   /**
    * Path to be responded
    */
@@ -46,7 +46,7 @@ export const customizeDevServer = (
     errMsg = 'The server encountered an error',
     response: responseHandler,
     path,
-  }: CustomServerOptions,
+  }: DevServerOptions,
 ): void => {
   const { base } = app.options
   const bundlerName = getBundlerName(app)

@@ -26,7 +26,7 @@ export default {
 
   是否启用 [@vuepress/plugin-active-header-links](../../plugins/active-header-links.md) 。
 
-### themePlugins.backToTop
+## themePlugins.backToTop
 
 - 类型： `BackToTopPluginOptions | boolean`
 

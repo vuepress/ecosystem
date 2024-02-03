@@ -71,7 +71,7 @@ export default {
 }
 ```
 
-### navbarLabel
+## navbarLabel
 
 - Type: `null | string`
 
@@ -79,7 +79,7 @@ export default {
 
   `aria-label` value for main navigation in navbar.
 
-### pageNavbarLabel
+## pageNavbarLabel
 
 - Type: `null | string`
 
