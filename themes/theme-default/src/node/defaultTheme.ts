@@ -85,7 +85,11 @@ export const defaultTheme = ({
         : [],
 
       // @vuepress/plugin-back-to-top
-      themePlugins.backToTop !== false ? backToTopPlugin() : [],
+      themePlugins.backToTop !== false
+        ? backToTopPlugin(
+            isPlainObject(themePlugins.backToTop) ? themePlugins.backToTop : {},
+          )
+        : [],
 
       // @vuepress/plugin-copy-code
       themePlugins.copyCode !== false

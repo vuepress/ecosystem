@@ -28,13 +28,15 @@ export default {
 
 ## themePlugins.backToTop
 
-- Type: `boolean`
+- Type: `BackToTopPluginOptions | boolean`
 
 - Default: `true`
 
 - Details:
 
   Enable [@vuepress/plugin-back-to-top](../../plugins/back-to-top.md) or not.
+
+  Object value is supported as plugin options.
 
 ## themePlugins.container
 
@@ -68,13 +70,15 @@ export default {
 
 ## themePlugins.copyCode
 
-- Type: `boolean`
+- Type: `CopyCodePluginOptions | boolean`
 
 - Default: `true`
 
 - Details:
 
   Enable [@vuepress/plugin-copy-code](../../plugins/copy-code.md) or not.
+
+  Object value is supported as plugin options.
 
 ## themePlugins.git
 
@@ -108,7 +112,7 @@ export default {
 
 ## themePlugins.seo
 
-- Type: `boolean`
+- Type: `SeoPluginOptions | boolean`
 
 - Default: `true`
 
@@ -116,12 +120,16 @@ export default {
 
   Enable [@vuepress/plugin-seo](../../plugins/seo/README.md) or not.
 
+  Object value is supported as plugin options.
+
 ## themePlugins.sitemap
 
-- Type: `boolean`
+- Type: `SitemapPluginOptions | boolean`
 
 - Default: `true`
 
 - Details:
 
   Enable [@vuepress/plugin-sitemap](../../plugins/sitemap/README.md) or not.
+
+  Object value is supported as plugin options.

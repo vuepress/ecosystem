@@ -20,6 +20,20 @@ export default {
 }
 ```
 
+## Options
+
+### threshold
+
+- Type: `number`
+- Default: `100`
+- Details: Scroll threshold distance to display back to top button (in pixels)
+
+### progress
+
+- Type: `boolean`
+- Default: `true`
+- Details: Whether display progress bar around icon
+
 ## Styles
 
 You can customize the style of the _back to top_ button via CSS variables:

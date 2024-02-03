@@ -37,7 +37,8 @@
     "style": "sass src:lib --no-source-map"
   },
   "dependencies": {
-    "ts-debounce": "^4.0.0",
+    "@vuepress/helper": "workspace:*",
+    "@vueuse/core": "^10.7.2",
     "vue": "^3.4.15"
   },
   "peerDependencies": {

@@ -28,13 +28,15 @@ export default {
 
 ### themePlugins.backToTop
 
-- 类型： `boolean`
+- 类型： `BackToTopPluginOptions | boolean`
 
 - 默认值： `true`
 
 - 详情：
 
   是否启用 [@vuepress/plugin-back-to-top](../../plugins/back-to-top.md) 。
+
+  支持对象格式以作为插件选项。
 
 ## themePlugins.container
 
@@ -58,13 +60,15 @@ export default {
 
 ## themePlugins.copyCode
 
-- 类型： `boolean`
+- 类型： `CopyCodePluginOptions | boolean`
 
 - 默认值： `true`
 
 - 详情：
 
   是否启用 [@vuepress/plugin-copy-code](../../plugins/copy-code.md) 。
+
+  支持对象格式以作为插件选项。
 
 ## themePlugins.externalLinkIcon
 
@@ -108,7 +112,7 @@ export default {
 
 ## themePlugins.seo
 
-- 类型： `boolean`
+- 类型： `SeoPluginOptions | boolean`
 
 - 默认值： `true`
 
@@ -116,12 +120,16 @@ export default {
 
   是否启用 [@vuepress/plugin-seo](../../plugins/seo/README.md) 。
 
+  支持对象格式以作为插件选项。
+
 ## themePlugins.sitemap
 
-- 类型： `boolean`
+- 类型： `SitemapPluginOptions | boolean`
 
 - 默认值： `true`
 
 - 详情：
 
   是否启用 [@vuepress/plugin-sitemap](../../plugins/sitemap/README.md) 。
+
+  支持对象格式以作为插件选项。

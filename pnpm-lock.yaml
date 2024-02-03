@@ -207,9 +207,12 @@ importers:
 
   plugins/plugin-back-to-top:
     dependencies:
-      ts-debounce:
-        specifier: ^4.0.0
-        version: 4.0.0
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../tools/helper
+      '@vueuse/core':
+        specifier: ^10.7.2
+        version: 10.7.2(vue@3.4.15)
       vue:
         specifier: ^3.4.15
         version: 3.4.15(typescript@5.3.3)

@@ -1,3 +1,4 @@
+import type { BackToTopPluginOptions } from '@vuepress/plugin-back-to-top'
 import type { CopyCodePluginOptions } from '@vuepress/plugin-copy-code'
 import type { SeoPluginOptions } from '@vuepress/plugin-seo'
 import type { SitemapPluginOptions } from '@vuepress/plugin-sitemap'
@@ -14,7 +15,7 @@ export interface DefaultThemePluginsOptions {
   /**
    * Enable @vuepress/plugin-back-to-top or not
    */
-  backToTop?: boolean
+  backToTop?: BackToTopPluginOptions | boolean
 
   /**
    * Enable @vuepress/plugin-container or not
