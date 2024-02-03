@@ -106,7 +106,7 @@ interface TocPropsOptions {
   containerClass: string
   listClass: string
   itemClass: string
-  linkTag: 'a' | 'VPLink' | 'VPLink'
+  linkTag: 'a' | 'RouterLink' | 'VPLink'
   linkClass: string
   linkActiveClass: string
   linkChildrenActiveClass: string
