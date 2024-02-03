@@ -4,7 +4,7 @@ import type {
   RedirectPluginLocaleData,
 } from '../shared/index.js'
 
-export interface RedirectOptions
+export interface RedirectPluginOptions
   extends Partial<Omit<RedirectLocaleConfig, 'localeConfig'>> {
   /**
    * Redirect mapping

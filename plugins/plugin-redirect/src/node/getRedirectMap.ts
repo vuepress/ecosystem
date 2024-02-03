@@ -8,11 +8,11 @@ import {
 import type { App, Page } from 'vuepress/core'
 import { normalizePath } from '../shared/normalizePath.js'
 import type { RedirectPluginFrontmatterOption } from './frontmatter.js'
-import type { RedirectOptions } from './options.js'
+import type { RedirectPluginOptions } from './options.js'
 
 export const getRedirectMap = (
   app: App,
-  options: RedirectOptions,
+  options: RedirectPluginOptions,
 ): Record<string, string> => {
   const config = isFunction(options.config)
     ? options.config(app)
