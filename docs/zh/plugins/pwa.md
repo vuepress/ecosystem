@@ -6,6 +6,12 @@
 
 该插件使用 [workbox-build](https://developers.google.com/web/tools/workbox/modules/workbox-build) 来生成 Service Worker 文件，并通过 [register-service-worker](https://github.com/yyx990803/register-service-worker) 来注册 Service Worker 。
 
+::: warning
+
+如果你启用过该插件，并想要禁用它，你可能需要 [`@vuepress/plugin-remove-pwa](./remove-pwa.md) 来移除现有的 Service Worker 。
+
+:::
+
 ## 使用方法
 
 ```bash
