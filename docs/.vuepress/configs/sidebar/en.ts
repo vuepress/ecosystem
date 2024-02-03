@@ -13,6 +13,7 @@ export const sidebarEn: SidebarConfig = {
         '/plugins/google-analytics',
         '/plugins/medium-zoom',
         '/plugins/nprogress',
+        '/plugins/redirect',
         '/plugins/register-components',
       ],
     },

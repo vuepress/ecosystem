@@ -24,6 +24,7 @@ export const navbarEn: NavbarConfig = [
           '/plugins/google-analytics',
           '/plugins/medium-zoom',
           '/plugins/nprogress',
+          '/plugins/redirect',
           '/plugins/register-components',
         ],
       },
