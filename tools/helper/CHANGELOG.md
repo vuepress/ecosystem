@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.9](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.8...v2.0.0-rc.9) (2024-02-03)
+
+### Bug Fixes
+
+- **helper:** fix getPageExcerpt in edge case ([8004b12](https://github.com/vuepress/ecosystem/commit/8004b12d2c13d1cdd4ff7b635745fe3cd972c6c8))
+
 # [2.0.0-rc.7](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.6...v2.0.0-rc.7) (2024-02-02)
 
 ### Bug Fixes
