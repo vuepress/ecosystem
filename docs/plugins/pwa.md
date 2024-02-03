@@ -6,6 +6,12 @@ Make your VuePress site a [Progressive Web Application (PWA)](https://developer.
 
 This plugin uses [workbox-build](https://developers.google.com/web/tools/workbox/modules/workbox-build) to generate service worker file, and uses [register-service-worker](https://github.com/yyx990803/register-service-worker) to register service worker.
 
+::: warning
+
+If you enabled this plugin once and you want to disable it, you might need [`@vuepress/plugin-remove-pwa](./remove-pwa.md) to remove the existing service worker.
+
+:::
+
 ## Usage
 
 ```bash

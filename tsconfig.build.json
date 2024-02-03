@@ -35,6 +35,7 @@
     {
       "path": "./plugins/plugin-register-components/tsconfig.build.json"
     },
+    { "path": "./plugins/plugin-remove-pwa/tsconfig.build.json" },
     { "path": "./plugins/plugin-rtl/tsconfig.build.json" },
     { "path": "./plugins/plugin-search/tsconfig.build.json" },
     { "path": "./plugins/plugin-seo/tsconfig.build.json" },

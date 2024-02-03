@@ -429,6 +429,12 @@ importers:
         specifier: 2.0.0-rc.2
         version: 2.0.0-rc.2(@vuepress/bundler-vite@2.0.0-rc.2)(@vuepress/bundler-webpack@2.0.0-rc.2)(typescript@5.3.3)(vue@3.4.15)
 
+  plugins/plugin-remove-pwa:
+    dependencies:
+      vuepress:
+        specifier: 2.0.0-rc.2
+        version: 2.0.0-rc.2(@vuepress/bundler-vite@2.0.0-rc.2)(@vuepress/bundler-webpack@2.0.0-rc.2)(typescript@5.3.3)(vue@3.4.15)
+
   plugins/plugin-rtl:
     dependencies:
       vue:
