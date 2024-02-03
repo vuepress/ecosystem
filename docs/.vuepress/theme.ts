@@ -1,11 +1,12 @@
 import { defaultTheme } from '@vuepress/theme-default'
+import type { Theme } from 'vuepress/core'
 import { navbarEn, navbarZh, sidebarEn, sidebarZh } from './configs'
 
 const isProd = process.env.NODE_ENV === 'production'
 
 export default defaultTheme({
   logo: '/images/hero.png',
-  repo: 'vuepress/docs',
+  repo: 'vuepress/ecosystem',
   docsDir: 'docs',
 
   // theme-level locales config
@@ -65,4 +66,4 @@ export default defaultTheme({
     // use shiki plugin in production mode instead
     prismjs: !isProd,
   },
-})
+}) as Theme
