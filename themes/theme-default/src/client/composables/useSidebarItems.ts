@@ -1,7 +1,6 @@
 import { computed, inject, provide } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import type { Router } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { usePageData, usePageFrontmatter } from 'vuepress/client'
 import type { PageData, PageHeader } from 'vuepress/client'
 import { isPlainObject, isString, resolveLocalePath } from 'vuepress/shared'
@@ -40,14 +39,12 @@ export const setupSidebarItems = (): void => {
   const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
   const page = usePageData()
   const route = useRoute()
-  const router = useRouter()
 
   const sidebarItems = computed(() =>
     resolveSidebarItems(
       frontmatter.value,
       themeLocale.value,
       page.value,
-      router,
       route.path,
     ),
   )
@@ -63,7 +60,6 @@ export const resolveSidebarItems = (
   frontmatter: DefaultThemeNormalPageFrontmatter,
   themeLocale: DefaultThemeData,
   page: PageData,
-  router: Router,
   path: string,
 ): ResolvedSidebarItem[] => {
   // get sidebar config from frontmatter > theme data
@@ -80,23 +76,11 @@ export const resolveSidebarItems = (
   }
 
   if (Array.isArray(sidebarConfig)) {
-    return resolveArraySidebarItems(
-      page,
-      router,
-      path,
-      sidebarConfig,
-      sidebarDepth,
-    )
+    return resolveArraySidebarItems(page, path, sidebarConfig, sidebarDepth)
   }
 
   if (isPlainObject(sidebarConfig)) {
-    return resolveMultiSidebarItems(
-      page,
-      router,
-      path,
-      sidebarConfig,
-      sidebarDepth,
-    )
+    return resolveMultiSidebarItems(page, path, sidebarConfig, sidebarDepth)
   }
 
   return []
@@ -142,7 +126,6 @@ export const resolveAutoSidebarItems = (
  */
 export const resolveArraySidebarItems = (
   page: PageData,
-  router: Router,
   path: string,
   sidebarConfig: SidebarConfigArray,
   sidebarDepth: number,
@@ -152,7 +135,7 @@ export const resolveArraySidebarItems = (
   ): ResolvedSidebarItem => {
     let childItem: ResolvedSidebarItem
     if (isString(item)) {
-      childItem = getNavLink(router, item)
+      childItem = getNavLink(item)
     } else {
       childItem = item as ResolvedSidebarItem
     }
@@ -187,7 +170,6 @@ export const resolveArraySidebarItems = (
  */
 export const resolveMultiSidebarItems = (
   page: PageData,
-  router: Router,
   path: string,
   sidebarConfig: SidebarConfigObject,
   sidebarDepth: number,
@@ -200,7 +182,6 @@ export const resolveMultiSidebarItems = (
   }
   return resolveArraySidebarItems(
     page,
-    router,
     path,
     matchedSidebarConfig,
     sidebarDepth,
