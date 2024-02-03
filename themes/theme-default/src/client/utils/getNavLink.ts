@@ -13,7 +13,6 @@ interface RouteMeta {
  * - Output: { text: 'Home', link: '/' }
  */
 export const getNavLink = (config: string): NavLink => {
-  // @ts-expect-error: FIXME: upstream bug
   const { notFound, meta, path } = resolveRoute<RouteMeta>(config)
 
   return notFound
