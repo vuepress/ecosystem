@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRouteLocale, VPLink } from 'vuepress/client'
+import { useRouteLocale } from 'vuepress/client'
 import { useThemeLocaleData } from '../composables/index.js'
 
 const routeLocale = useRouteLocale()
@@ -20,7 +20,7 @@ const homeText = themeLocale.value.backToHome ?? 'Back to home'
 
         <blockquote>{{ getMsg() }}</blockquote>
 
-        <VPLink :to="homeLink">{{ homeText }}</VPLink>
+        <RouterLink :to="homeLink">{{ homeText }}</RouterLink>
       </div>
     </main>
   </div>

@@ -461,13 +461,6 @@ exports[`Should generate seo information > Should contain basic properties 7`] =
   [
     "meta",
     {
-      "content": "404 Not Found ",
-      "property": "og:description",
-    },
-  ],
-  [
-    "meta",
-    {
       "content": "website",
       "property": "og:type",
     },
@@ -484,7 +477,7 @@ exports[`Should generate seo information > Should contain basic properties 7`] =
     {
       "type": "application/ld+json",
     },
-    "{"@context":"https://schema.org","@type":"WebPage","name":"","description":"404 Not Found "}",
+    "{"@context":"https://schema.org","@type":"WebPage","name":""}",
   ],
 ]
 `;

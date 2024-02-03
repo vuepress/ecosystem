@@ -3,7 +3,7 @@ export interface TocPropsOptions {
   containerClass: string
   listClass: string
   itemClass: string
-  linkTag: 'a' | 'RouterLink' | 'VPLink'
+  linkTag: 'a' | 'RouterLink'
   linkClass: string
   linkActiveClass: string
   linkChildrenActiveClass: string

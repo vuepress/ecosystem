@@ -41,8 +41,8 @@ const linkTarget = computed(() => {
 })
 // if the `target` attr is '_blank'
 const isBlankTarget = computed(() => linkTarget.value === '_blank')
-// is `<VPLink>` or not
-const isVPLink = computed(
+// is `<RouterLink>` or not
+const isRouterLink = computed(
   () =>
     !hasHttpProtocol.value && !hasNonHttpProtocol.value && !isBlankTarget.value,
 )
@@ -74,7 +74,7 @@ const isActiveInSubpath = computed(() => {
 
 // if this link is active
 const isActive = computed(() => {
-  if (!isVPLink.value) {
+  if (!isRouterLink.value) {
     return false
   }
   if (item.value.activeMatch) {
@@ -85,9 +85,9 @@ const isActive = computed(() => {
 </script>
 
 <template>
-  <VPLink
-    v-if="isVPLink"
-    :class="{ 'vp-link-active': isActive }"
+  <RouterLink
+    v-if="isRouterLink"
+    :class="{ 'router-link-active': isActive }"
     :to="item.link"
     :aria-label="linkAriaLabel"
     v-bind="$attrs"
@@ -95,7 +95,7 @@ const isActive = computed(() => {
     <slot name="before" />
     {{ item.text }}
     <slot name="after" />
-  </VPLink>
+  </RouterLink>
   <a
     v-else
     class="external-link"

@@ -106,7 +106,7 @@ interface TocPropsOptions {
   containerClass: string
   listClass: string
   itemClass: string
-  linkTag: 'a' | 'RouterLink' | 'VPLink'
+  linkTag: 'a' | 'RouterLink'
   linkClass: string
   linkActiveClass: string
   linkChildrenActiveClass: string
@@ -123,7 +123,7 @@ const defaultOptions = {
   containerClass: 'vuepress-toc',
   listClass: 'vuepress-toc-list',
   itemClass: 'vuepress-toc-item',
-  linkTag: 'VPLink',
+  linkTag: 'RouterLink',
   linkClass: 'vuepress-toc-link',
   linkActiveClass: 'active',
   linkChildrenActiveClass: 'active',
@@ -149,20 +149,20 @@ const defaultOptions = {
       <!-- item -->
       <li class="vuepress-toc-item">
         <!-- link -->
-        <VPLink class="vuepress-toc-link" to="#foo">Foo</VPLink>
+        <RouterLink class="vuepress-toc-link" to="#foo">Foo</RouterLink>
       </li>
       <!-- item with children -->
       <li class="vuepress-toc-item">
         <!-- link (children active) -->
-        <VPLink class="vuepress-toc-link active" to="#bar">Bar</VPLink>
+        <RouterLink class="vuepress-toc-link active" to="#bar">Bar</RouterLink>
         <!-- list (children) -->
         <ul class="vuepress-toc-list">
           <!-- item -->
           <li class="vuepress-toc-item">
             <!-- link (active) -->
-            <VPLink class="vuepress-toc-link active" to="#bar-child">
+            <RouterLink class="vuepress-toc-link active" to="#bar-child">
               Bar Child
-            </VPLink>
+            </RouterLink>
           </li>
         </ul>
       </li>
