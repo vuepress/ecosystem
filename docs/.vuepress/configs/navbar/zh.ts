@@ -8,6 +8,10 @@ export const navbarZh: NavbarConfig = [
         text: '默认主题',
         link: '/zh/themes/default/',
       },
+      {
+        text: 'Hope 主题',
+        link: 'https://theme-hope.vuejs.press/zh/',
+      },
     ],
   },
   {
@@ -63,6 +67,15 @@ export const navbarZh: NavbarConfig = [
           '/zh/plugins/theme-data',
           '/zh/plugins/toc',
         ],
+      },
+    ],
+  },
+  {
+    text: '工具',
+    children: [
+      {
+        text: 'helper',
+        link: '/zh/tools/helper/',
       },
     ],
   },

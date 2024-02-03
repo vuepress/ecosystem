@@ -71,7 +71,7 @@ export default {
 }
 ```
 
-### navbarLabel
+## navbarLabel
 
 - 类型：`null | string`
 
@@ -79,7 +79,7 @@ export default {
 
   导航栏中主导航 `aria-label` 属性的值。
 
-### pageNavbarLabel
+## pageNavbarLabel
 
 - 类型：`null | string`
 

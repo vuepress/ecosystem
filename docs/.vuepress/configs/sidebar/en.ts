@@ -80,8 +80,8 @@ export const sidebarEn: SidebarConfig = {
   '/themes/': [
     {
       text: 'Default Theme',
+      link: '/themes/default/',
       children: [
-        '/themes/default/',
         '/themes/default/config',
         '/themes/default/plugin',
         '/themes/default/locale',
@@ -90,6 +90,18 @@ export const sidebarEn: SidebarConfig = {
         '/themes/default/markdown',
         '/themes/default/styles',
         '/themes/default/extending',
+      ],
+    },
+  ],
+  '/tools/': [
+    {
+      text: '@vuepress/helper',
+      link: '/tools/helper/',
+      children: [
+        '/tools/helper/node/bundler',
+        '/tools/helper/node/page',
+        '/tools/helper/client',
+        '/tools/helper/shared',
       ],
     },
   ],
