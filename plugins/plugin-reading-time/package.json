@@ -40,7 +40,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:*",
+    "@vuepress/helper": "workspace:~*",
     "vue": "^3.4.15"
   },
   "peerDependencies": {

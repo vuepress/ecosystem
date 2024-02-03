@@ -208,7 +208,7 @@ importers:
   plugins/plugin-back-to-top:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:*
+        specifier: workspace:~*
         version: link:../../tools/helper
       '@vueuse/core':
         specifier: ^10.7.2
@@ -238,7 +238,7 @@ importers:
   plugins/plugin-copy-code:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:*
+        specifier: workspace:~*
         version: link:../../tools/helper
       '@vueuse/core':
         specifier: ^10.7.2
@@ -253,7 +253,7 @@ importers:
   plugins/plugin-copyright:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:*
+        specifier: workspace:~*
         version: link:../../tools/helper
       '@vueuse/core':
         specifier: ^10.7.2
@@ -307,7 +307,7 @@ importers:
   plugins/plugin-feed:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:*
+        specifier: workspace:~*
         version: link:../../tools/helper
       cheerio:
         specifier: 1.0.0-rc.12
@@ -417,7 +417,7 @@ importers:
   plugins/plugin-reading-time:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:*
+        specifier: workspace:~*
         version: link:../../tools/helper
       vue:
         specifier: ^3.4.15
@@ -429,7 +429,7 @@ importers:
   plugins/plugin-redirect:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:*
+        specifier: workspace:~*
         version: link:../../tools/helper
       '@vueuse/core':
         specifier: ^10.7.2
@@ -511,7 +511,7 @@ importers:
   plugins/plugin-sitemap:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:*
+        specifier: workspace:~*
         version: link:../../tools/helper
       sitemap:
         specifier: ^7.1.1
@@ -551,7 +551,7 @@ importers:
   themes/theme-default:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:*
+        specifier: workspace:~*
         version: link:../../tools/helper
       '@vuepress/plugin-active-header-links':
         specifier: workspace:*
