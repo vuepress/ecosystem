@@ -3,6 +3,7 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { copyrightPlugin } from '@vuepress/plugin-copyright'
 import { feedPlugin } from '@vuepress/plugin-feed'
+import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress/cli'
 import type { UserConfig } from 'vuepress/cli'
@@ -93,6 +94,12 @@ export default defineUserConfig({
       atom: true,
       json: true,
       rss: true,
+    }),
+    redirectPlugin({
+      config: {
+        '/redirect/config.html': '/redirect/final.html',
+        '/redirect/': '/redirect/final.html',
+      },
     }),
   ],
 }) as UserConfig

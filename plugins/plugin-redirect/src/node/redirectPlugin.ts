@@ -42,7 +42,7 @@ export const redirectPlugin =
       },
 
       extendsPage: (page, app) => {
-        handleRedirectTo(page, app, options)
+        handleRedirectTo(page, app)
       },
 
       onInitialized: async (app): Promise<void> => {

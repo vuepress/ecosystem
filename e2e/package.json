@@ -20,6 +20,7 @@
     "@vuepress/client": "2.0.0-rc.2",
     "@vuepress/plugin-copyright": "workspace:*",
     "@vuepress/plugin-feed": "workspace:*",
+    "@vuepress/plugin-redirect": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
     "sass": "^1.70.0",
     "sass-loader": "^14.1.0",

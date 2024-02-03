@@ -161,6 +161,9 @@ importers:
       '@vuepress/plugin-feed':
         specifier: workspace:*
         version: link:../plugins/plugin-feed
+      '@vuepress/plugin-redirect':
+        specifier: workspace:*
+        version: link:../plugins/plugin-redirect
       '@vuepress/theme-default':
         specifier: workspace:*
         version: link:../themes/theme-default
