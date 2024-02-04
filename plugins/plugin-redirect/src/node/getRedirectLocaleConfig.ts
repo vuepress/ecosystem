@@ -41,10 +41,12 @@ export const getRedirectLocaleConfig = (
         .map(([key, { lang }]) => [key, [lang!]]),
     ),
     isPlainObject(options.localeConfig)
-      ? entries(options.localeConfig).map(([routePath, lang]) => [
-          routePath,
-          isArray(lang) ? lang : [lang],
-        ])
+      ? fromEntries(
+          entries(options.localeConfig).map(([routePath, lang]) => [
+            routePath,
+            isArray(lang) ? lang : [lang],
+          ]),
+        )
       : {},
   )
   const defaultLocale = options.defaultLocale || keys(localeConfig).pop()!
