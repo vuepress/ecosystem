@@ -15,7 +15,7 @@ export const logger = new Logger(PLUGIN_NAME)
 const __dirname = getDirname(import.meta.url)
 
 export const copyrightPlugin =
-  (options: CopyrightPluginOptions): PluginFunction =>
+  (options: CopyrightPluginOptions = {}): PluginFunction =>
   (app) => {
     if (app.env.isDebug) logger.info('Options:', options)
 
