@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import AutoLink from '@theme/AutoLink.vue'
 import NavbarDropdown from '@theme/NavbarDropdown.vue'
+import { useRoutePaths } from '@vuepress/helper/client'
 import { computed, ref } from 'vue'
 import type { ComputedRef } from 'vue'
-import { useRouter } from 'vue-router'
-import type { Router } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { useRouteLocale, useSiteData, useSiteLocaleData } from 'vuepress/client'
 import { isLinkHttp, isString } from 'vuepress/shared'
 import type {
@@ -24,7 +24,8 @@ import { getNavLink, resolveRepoType } from '../utils/index.js'
  * Get navbar config of select language dropdown
  */
 const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
-  const router = useRouter()
+  const route = useRoute()
+  const routePaths = useRoutePaths()
   const routeLocale = useRouteLocale()
   const site = useSiteData()
   const siteLocale = useSiteLocaleData()
@@ -37,8 +38,8 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
     if (localePaths.length < 2) {
       return []
     }
-    const currentPath = router.currentRoute.value.path
-    const currentFullPath = router.currentRoute.value.fullPath
+    const currentPath = route.path
+    const currentFullPath = route.fullPath
 
     const languageDropdown: ResolvedNavbarItem = {
       text: `${themeLocale.value.selectLanguageText}`,
@@ -67,9 +68,7 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
             routeLocale.value,
             targetLocalePath,
           )
-          if (
-            router.getRoutes().some((item) => item.path === targetLocalePage)
-          ) {
+          if (routePaths.value.some((item) => item === targetLocalePage)) {
             // try to keep current hash and params across languages
             link = currentFullPath.replace(currentPath, targetLocalePage)
           } else {
@@ -129,17 +128,16 @@ const useNavbarRepo = (): ComputedRef<ResolvedNavbarItem[]> => {
 }
 
 const resolveNavbarItem = (
-  router: Router,
   item: NavbarItem | NavbarGroup | string,
 ): ResolvedNavbarItem => {
   if (isString(item)) {
-    return getNavLink(router, item)
+    return getNavLink(item)
   }
   if ((item as NavbarGroup).children) {
     return {
       ...item,
       children: (item as NavbarGroup).children.map((item) =>
-        resolveNavbarItem(router, item),
+        resolveNavbarItem(item),
       ),
     }
   }
@@ -147,13 +145,10 @@ const resolveNavbarItem = (
 }
 
 const useNavbarConfig = (): ComputedRef<ResolvedNavbarItem[]> => {
-  const router = useRouter()
   const themeLocale = useThemeLocaleData()
 
   return computed(() =>
-    (themeLocale.value.navbar || []).map((item) =>
-      resolveNavbarItem(router, item),
-    ),
+    (themeLocale.value.navbar || []).map((item) => resolveNavbarItem(item)),
   )
 }
 
@@ -189,7 +184,7 @@ const navbarLabel = computed(() => {
   <nav v-if="navbarLinks.length" class="navbar-items" :aria-label="navbarLabel">
     <div v-for="item in navbarLinks" :key="item.text" class="navbar-item">
       <NavbarDropdown
-        v-if="item.children"
+        v-if="'children' in item"
         :item="item"
         :class="isMobile ? 'mobile' : ''"
       />

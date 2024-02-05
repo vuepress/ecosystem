@@ -3,6 +3,7 @@ import { computed, h } from 'vue'
 import type { FunctionalComponent } from 'vue'
 import {
   ClientOnly,
+  RouteLink,
   useRouteLocale,
   useSiteLocaleData,
   withBase,
@@ -49,7 +50,7 @@ const NavbarBrandLogo: FunctionalComponent = () => {
 </script>
 
 <template>
-  <RouterLink :to="navbarBrandLink">
+  <RouteLink :to="navbarBrandLink">
     <NavbarBrandLogo />
 
     <span
@@ -60,5 +61,5 @@ const NavbarBrandLogo: FunctionalComponent = () => {
     >
       {{ navbarBrandTitle }}
     </span>
-  </RouterLink>
+  </RouteLink>
 </template>

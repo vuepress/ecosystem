@@ -70,7 +70,7 @@ describe('getPageExcerpt', async () => {
               '<a href="/" target="_blank">absolute markdown link</a>',
             )
             expect(excerpt).toContain(
-              '<a href="/index.html" target="_blank">absolute html link</a>',
+              '<a href="/" target="_blank">absolute html link</a>',
             )
             expect(excerpt).toContain('<a href="#link">Anchor</a>')
           })

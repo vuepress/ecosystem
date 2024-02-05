@@ -149,8 +149,8 @@ const handleNode = (
       return node
     }
 
-    // we shall convert `<RouterLink>` and `<VPLink>` to `<a>` tag
-    if (node.tagName === 'routerlink' || node.tagName === 'vplink') {
+    // we shall convert `<RouteLink>` and `<RouterLink>` to `<a>` tag
+    if (node.tagName === 'routelink' || node.tagName === 'routerlink') {
       node.tagName = 'a'
       node.attribs.href = `${removeEndingSlash(base)}${node.attribs.to}`
       node.attribs.target = '_blank'

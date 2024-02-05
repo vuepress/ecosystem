@@ -1,9 +1,9 @@
 <script setup>
 import { map } from '@temp/blog/category.js'
-import { usePageFrontmatter } from '@vuepress/client'
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 import { computed } from 'vue'
-import { RouterLink, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
+import { RouteLink, usePageFrontmatter } from 'vuepress/client'
 import ArticleList from '../components/ArticleList.vue'
 
 const routes = useRouter().getRoutes()
@@ -31,7 +31,7 @@ const items = computed(() =>
     <template #page>
       <main class="page">
         <div class="category-wrapper">
-          <RouterLink
+          <RouteLink
             v-for="{ name, path, keys } in categories"
             :key="name"
             :to="path"
@@ -41,7 +41,7 @@ const items = computed(() =>
             <span class="category-num">
               {{ keys.length }}
             </span>
-          </RouterLink>
+          </RouteLink>
         </div>
         <ArticleList :items="items" />
       </main>
