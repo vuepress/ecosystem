@@ -11,7 +11,7 @@ import { getRedirectMap } from './getRedirectMap.js'
 import { handleRedirectTo } from './handleRedirectTo.js'
 import { redirectLocales } from './locales.js'
 import { logger, PLUGIN_NAME } from './logger.js'
-import type { RedirectPluginOptions } from './options.js'
+import type { RedirectPluginOptions } from './types/index.js'
 
 const __dirname = getDirname(import.meta.url)
 

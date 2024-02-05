@@ -5,6 +5,7 @@ import { webpackBundler } from '@vuepress/bundler-webpack'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 // import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
+import { searchPlugin } from '@vuepress/plugin-search'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { defineUserConfig } from 'vuepress'
 import type { UserConfig } from 'vuepress'
@@ -122,6 +123,7 @@ export default defineUserConfig({
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, './components'),
     }),
+    searchPlugin(),
     // only enable shiki plugin in production mode
     isProd
       ? shikiPlugin({

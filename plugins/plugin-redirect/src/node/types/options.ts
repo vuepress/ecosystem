@@ -2,7 +2,7 @@ import type { App, LocaleConfig } from 'vuepress/core'
 import type {
   RedirectLocaleConfig,
   RedirectPluginLocaleData,
-} from '../shared/index.js'
+} from '../../shared/index.js'
 
 export interface RedirectPluginOptions
   extends Partial<Omit<RedirectLocaleConfig, 'localeConfig'>> {
