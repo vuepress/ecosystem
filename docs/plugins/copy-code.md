@@ -91,7 +91,7 @@ export default {
 - Example:
 
   ```ts
-  import { copyCodePlugin } from 'vuepress-plugin-copy-code2'
+  import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 
   export default {
     locales: {
