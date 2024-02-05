@@ -10,7 +10,7 @@ import type { App } from 'vuepress/core'
 import { colors } from 'vuepress/utils'
 import type { RedirectLocaleConfig } from '../shared/index.js'
 import { logger } from './logger.js'
-import type { RedirectPluginOptions } from './options.js'
+import type { RedirectPluginOptions } from './types/index.js'
 
 const AVAILABLE_FALLBACK = ['defaultLocale', 'homepage', '404'] as const
 

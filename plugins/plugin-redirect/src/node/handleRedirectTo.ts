@@ -1,7 +1,7 @@
 import { isLinkAbsolute, removeLeadingSlash } from '@vuepress/helper'
 import type { App, Page } from 'vuepress/core'
 import { normalizePath } from '../shared/normalizePath.js'
-import type { RedirectPluginFrontmatterOption } from './frontmatter.js'
+import type { RedirectPluginFrontmatterOption } from './types/index.js'
 
 export const handleRedirectTo = ({ frontmatter }: Page, app: App): void => {
   const { base } = app.options

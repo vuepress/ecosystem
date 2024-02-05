@@ -7,8 +7,10 @@ import {
 } from '@vuepress/helper'
 import type { App, Page } from 'vuepress/core'
 import { normalizePath } from '../shared/normalizePath.js'
-import type { RedirectPluginFrontmatterOption } from './frontmatter.js'
-import type { RedirectPluginOptions } from './options.js'
+import type {
+  RedirectPluginFrontmatterOption,
+  RedirectPluginOptions,
+} from './types/index.js'
 
 export const getRedirectMap = (
   app: App,
