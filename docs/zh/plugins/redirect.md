@@ -242,3 +242,9 @@ Options:
 
 - 类型：`string`
 - 详情：该页面重定向到的地址。
+
+## 样式
+
+你可以通过 CSS 变量来自定义重定向弹窗的样式：
+
+@[code css](@vuepress/plugin-redirect/src/client/styles/vars.css)

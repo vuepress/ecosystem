@@ -20,6 +20,7 @@
     "@vuepress/plugin-medium-zoom": "workspace:*",
     "@vuepress/plugin-nprogress": "workspace:*",
     "@vuepress/plugin-pwa-popup": "workspace:*",
+    "@vuepress/plugin-redirect": "workspace:*",
     "@vuepress/plugin-register-components": "workspace:*",
     "@vuepress/plugin-search": "workspace:*",
     "@vuepress/plugin-shiki": "workspace:*",

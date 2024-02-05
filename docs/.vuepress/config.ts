@@ -4,6 +4,7 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 // import { docsearchPlugin } from '@vuepress/plugin-docsearch'
+import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { searchPlugin } from '@vuepress/plugin-search'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
@@ -120,6 +121,9 @@ export default defineUserConfig({
     //     },
     //   },
     // }),
+    redirectPlugin({
+      switchLocale: 'modal',
+    }),
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, './components'),
     }),

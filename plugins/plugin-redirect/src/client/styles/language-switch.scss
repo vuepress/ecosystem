@@ -11,7 +11,7 @@
 .lang-modal-mask {
   position: fixed;
   inset: 0;
-  z-index: 1499;
+  z-index: var(--redirect-z-index);
 
   display: flex;
   align-items: center;
@@ -34,7 +34,7 @@
   padding: 1rem 2rem;
   border-radius: 8px;
 
-  background: var(--vp-bg);
+  background: var(--redirect-bg-color);
   box-shadow: 0 2px 6px 0 var(--card-shadow);
 }
 
@@ -47,21 +47,21 @@
   border: none;
   border-radius: 8px;
 
-  background-color: var(--vp-bglt);
-  color: var(--vp-c);
+  background-color: var(--redirect-bg-color-lighter);
+  color: inherit;
 
   cursor: pointer;
 
   &:hover {
-    background-color: var(--vp-bgl);
+    background-color: var(--redirect-bg-color-light);
   }
 
   &.primary {
-    background-color: var(--vp-tc);
-    color: var(--white);
+    background-color: var(--redirect-primary-color);
+    color: var(--redirect-primary-text-color);
 
     &:hover {
-      background-color: var(--vp-tcl);
+      background-color: var(--redirect-primary-hover-color);
     }
   }
 }

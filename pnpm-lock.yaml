@@ -119,6 +119,9 @@ importers:
       '@vuepress/plugin-pwa-popup':
         specifier: workspace:*
         version: link:../plugins/plugin-pwa-popup
+      '@vuepress/plugin-redirect':
+        specifier: workspace:*
+        version: link:../plugins/plugin-redirect
       '@vuepress/plugin-register-components':
         specifier: workspace:*
         version: link:../plugins/plugin-register-components

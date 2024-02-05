@@ -153,6 +153,17 @@
   --pwa-popup-btn-hover-bg-color: var(--c-brand-light);
 }
 
+// plugin-redirect
+.language-modal-mask {
+  --redirect-bg-color: var(--c-bg);
+  --redirect-bg-color-light: var(--c-bg-light);
+  --redirect-bg-color-lighter: var(--c-bg-lighter);
+  --redirect-text-color: var(--c-text);
+  --redirect-primary-bg-color: var(--c-brand);
+  --redirect-primary-hover-bg-color: var(--c-brand-light);
+  --redirect-primary-text-color: var(--c-bg);
+}
+
 // plugin-search
 .search-box {
   --search-bg-color: var(--c-bg);

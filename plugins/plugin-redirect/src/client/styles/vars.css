@@ -1,0 +1,10 @@
+:root {
+  --redirect-z-index: 1499;
+  --redirect-bg-color: #fff;
+  --redirect-bg-color-light: #f3f4f5;
+  --redirect-bg-color-lighter: #eeeeee;
+  --redirect-text-color: #2c3e50;
+  --redirect-primary-bg-color: #3eaf7c;
+  --redirect-primary-hover-bg-color: #4abf8a;
+  --redirect-primary-text-color: #fff;
+}
