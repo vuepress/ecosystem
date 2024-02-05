@@ -27,7 +27,7 @@ export default {
 First, you should set catalog info in routeMeta:
 
 ```js title=".vuepress/config.js"
-import { autoCatalogPlugin } from '@vuepress/plugin-catalog'
+import { catalogPlugin } from '@vuepress/plugin-catalog'
 
 export default {
   extendsPage: (page) => {
@@ -87,15 +87,15 @@ Project with order -1
 
 :::
 
-## Using AutoCatalog Component
+## Using Catalog Component
 
-The plugin globally register and use `<AutoCatalog />` component by default.
+The plugin globally register and use `<Catalog />` component by default.
 
-- The `<AutoCatalog />` will render 3 levels of pages as catalog items by default, and you can change the level depth by setting `level` option (max 3 levels).
+- The `<Catalog />` will render 3 levels of pages as catalog items by default, and you can change the level depth by setting `level` option (max 3 levels).
 - To index to catalog item, add `index` prop.
-- By default, `<AutoCatalog />` generates catalog for current folder. Set `base` props if you want catalog of another folder.
+- By default, `<Catalog />` generates catalog for current folder. Set `base` props if you want catalog of another folder.
 
-You can use `<AutoCatalog />` in your theme layout, or in your markdown files directly.
+You can use `<Catalog />` in your theme layout, or in your markdown files directly.
 
 If you want to use your own, you can register your component globally and set `component` option with your component name. Auto catalog page will use your component.
 
@@ -121,11 +121,11 @@ If you want to use your own, you can register your component globally and set `c
 - Example:
 
   ```js title=".vuepress/config.js"
-  import { autoCatalogPlugin } from '@vuepress/plugin-catalog'
+  import { catalogPlugin } from '@vuepress/plugin-catalog'
 
   export default {
     plugins: [
-      autoCatalogPlugin({
+      catalogPlugin({
         frontmatter: (path) => ({
           // frontmatter you want
           // you may customize title, author. time, etc.
@@ -158,10 +158,10 @@ If you want to use your own, you can register your component globally and set `c
 
 ### locales
 
-- Type: `AutoCatalogLocaleConfig`
+- Type: `CatalogLocaleConfig`
 
   ```ts
-  interface AutoCatalogLocaleData {
+  interface CatalogLocaleData {
     /**
      * Catalog title
      */
@@ -173,8 +173,8 @@ If you want to use your own, you can register your component globally and set `c
     empty: string
   }
 
-  interface AutoCatalogLocaleConfig {
-    [localePath: string]: AutoCatalogLocaleData
+  interface CatalogLocaleConfig {
+    [localePath: string]: CatalogLocaleData
   }
   ```
 
@@ -211,7 +211,7 @@ If you want to use your own, you can register your component globally and set `c
 ### defineCatalogInfoGetter
 
 ```ts
-interface AutoCatalogInfo {
+interface CatalogInfo {
   /** Catalog title */
   title: string
   /** Catalog order */
@@ -220,16 +220,14 @@ interface AutoCatalogInfo {
   content?: Component
 }
 
-type AutoCatalogInfoGetter = (
-  meta: Record<string, unknown>,
-) => AutoCatalogInfo | null
+type CatalogInfoGetter = (meta: Record<string, unknown>) => CatalogInfo | null
 
-const defineCatalogInfoGetter: (options: AutoCatalogInfoGetter) => void
+const defineCatalogInfoGetter: (options: CatalogInfoGetter) => void
 ```
 
 Customize how to extract catalog info from meta.
 
-## AutoCatalog Component Props
+## Catalog Component Props
 
 ### base
 

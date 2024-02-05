@@ -6,7 +6,6 @@
     "vuepress-plugin",
     "vuepress",
     "plugin",
-    "auto-catalog",
     "catalog",
     "readme"
   ],
