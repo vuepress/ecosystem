@@ -1,4 +1,4 @@
-export const getRedirectHTML = (redirectUrl: string): string => `<!DOCTYPE html>
+export const getRedirectHTML = (redirectUrl: string): string => `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">

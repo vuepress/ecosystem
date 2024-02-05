@@ -10,7 +10,7 @@ export const getLocaleRedirectHTML = (
   }: RedirectLocaleConfig,
   availableLocales: string[],
   base: string,
-): string => `<!DOCTYPE html>
+): string => `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
