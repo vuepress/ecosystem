@@ -244,7 +244,7 @@ importers:
   plugins/plugin-catalog:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:*
+        specifier: workspace:~*
         version: link:../../tools/helper
       vue:
         specifier: ^3.4.15
@@ -525,7 +525,7 @@ importers:
   plugins/plugin-seo:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:*
+        specifier: workspace:~*
         version: link:../../tools/helper
       vuepress:
         specifier: 2.0.0-rc.5

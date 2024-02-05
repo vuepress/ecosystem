@@ -42,7 +42,7 @@
     "style": "sass src:lib --no-source-map"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:*",
+    "@vuepress/helper": "workspace:~*",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
   },

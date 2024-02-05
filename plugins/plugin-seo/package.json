@@ -38,7 +38,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:*"
+    "@vuepress/helper": "workspace:~*"
   },
   "devDependencies": {
     "@vuepress/plugin-git": "2.0.0-rc.7"
