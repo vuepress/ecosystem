@@ -98,6 +98,9 @@ importers:
       '@vuepress/plugin-back-to-top':
         specifier: workspace:*
         version: link:../plugins/plugin-back-to-top
+      '@vuepress/plugin-catalog':
+        specifier: workspace:*
+        version: link:../plugins/plugin-catalog
       '@vuepress/plugin-copy-code':
         specifier: workspace:*
         version: link:../plugins/plugin-copy-code
@@ -152,6 +155,9 @@ importers:
       '@vuepress/bundler-webpack':
         specifier: 2.0.0-rc.5
         version: 2.0.0-rc.5(typescript@5.3.3)
+      '@vuepress/plugin-catalog':
+        specifier: workspace:*
+        version: link:../plugins/plugin-catalog
       '@vuepress/plugin-copyright':
         specifier: workspace:*
         version: link:../plugins/plugin-copyright
@@ -225,6 +231,21 @@ importers:
       chokidar:
         specifier: ^3.5.3
         version: 3.5.3
+      vue:
+        specifier: ^3.4.15
+        version: 3.4.15(typescript@5.3.3)
+      vue-router:
+        specifier: ^4.2.5
+        version: 4.2.5(vue@3.4.15)
+      vuepress:
+        specifier: 2.0.0-rc.5
+        version: 2.0.0-rc.5(@vuepress/bundler-vite@2.0.0-rc.5)(@vuepress/bundler-webpack@2.0.0-rc.5)(typescript@5.3.3)(vue@3.4.15)
+
+  plugins/plugin-catalog:
+    dependencies:
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../tools/helper
       vue:
         specifier: ^3.4.15
         version: 3.4.15(typescript@5.3.3)

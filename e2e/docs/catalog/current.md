@@ -1,0 +1,3 @@
+# Current Page Catalog
+
+<Catalog />

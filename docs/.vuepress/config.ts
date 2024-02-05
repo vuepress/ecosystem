@@ -2,6 +2,7 @@ import { createRequire } from 'node:module'
 import process from 'node:process'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
+import { catalogPlugin } from '@vuepress/plugin-catalog'
 // import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { searchPlugin } from '@vuepress/plugin-search'
@@ -67,6 +68,7 @@ export default defineUserConfig({
 
   // use plugins
   plugins: [
+    catalogPlugin(),
     // docsearchPlugin({
     //   appId: '34YFD9IUQ2',
     //   apiKey: '9a9058b8655746634e01071411c366b8',
