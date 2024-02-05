@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-reading-time",
-  "version": "2.0.0-rc.9",
+  "version": "2.0.0-rc.10",
   "description": "VuePress plugin - reading-time",
   "keywords": [
     "vuepress-plugin",
@@ -40,7 +40,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:~*",
+    "@vuepress/helper": "workspace:~2.0.0-rc.10",
     "vue": "^3.4.15"
   },
   "peerDependencies": {

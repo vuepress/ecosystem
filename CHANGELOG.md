@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.10](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.9...v2.0.0-rc.10) (2024-02-05)
+
+### Bug Fixes
+
+- **plugin-redirect:** fix locale config ([ecf5650](https://github.com/vuepress/ecosystem/commit/ecf56503ac0c7674a455547d7589af41945e3a9b))
+- **plugin-remove-pwa:** fix plugin name ([a76a639](https://github.com/vuepress/ecosystem/commit/a76a639d1658ee28f89e7f9486bc17a7f913cd47))
+- **plugin-search:** fix hot reload ([637db2c](https://github.com/vuepress/ecosystem/commit/637db2ccefd00bea7aee0ed74b829e079d37e2a2))
+- **theme-default:** fix back to top style ([10c2847](https://github.com/vuepress/ecosystem/commit/10c2847538013b0a56f557d822aad5a2e9995f0a))
+
+### Features
+
+- compatible with visual routes ([#57](https://github.com/vuepress/ecosystem/issues/57)) ([f1281be](https://github.com/vuepress/ecosystem/commit/f1281be141b9a5cb71d80048a2042b669cd4823e))
+- **plugin-blog:** add plugin-blog ([#61](https://github.com/vuepress/ecosystem/issues/61)) ([30779e3](https://github.com/vuepress/ecosystem/commit/30779e33c079d0f62ab81a5c04208efb511718e9))
+- **plugin-catalog:** add catalog plugin ([#60](https://github.com/vuepress/ecosystem/issues/60)) ([18ad620](https://github.com/vuepress/ecosystem/commit/18ad620c4d9ebf4398257a3e704a563e35de6629))
+- **plugin-copyright:** make plugin options optional ([64bb166](https://github.com/vuepress/ecosystem/commit/64bb1664935f27469b874afc814c7260d09a624e))
+
+### Reverts
+
+- "test: update snapshots" ([8cf90fb](https://github.com/vuepress/ecosystem/commit/8cf90fbcc050232ab63927da0b810d0472f4a4ef))
+
 # [2.0.0-rc.9](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.8...v2.0.0-rc.9) (2024-02-03)
 
 ### Bug Fixes
