@@ -1,4 +1,6 @@
-# 使用方法
+# 默认主题
+
+## 使用方法
 
 <NpmBadge package="@vuepress/theme-default" />
 

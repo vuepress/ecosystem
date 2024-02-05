@@ -21,6 +21,7 @@ export const navbarEn: NavbarConfig = [
         text: 'Common Features',
         children: [
           '/plugins/back-to-top',
+          '/plugins/catalog',
           '/plugins/container',
           '/plugins/copy-code',
           '/plugins/copyright',
