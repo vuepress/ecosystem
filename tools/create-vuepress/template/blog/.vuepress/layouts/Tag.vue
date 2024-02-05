@@ -3,7 +3,7 @@ import { map } from '@temp/blog/tag.js'
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { usePageFrontmatter, VPLink } from 'vuepress/client'
+import { RouteLink, usePageFrontmatter } from 'vuepress/client'
 import ArticleList from '../components/ArticleList.vue'
 
 const routes = useRouter().getRoutes()
@@ -31,7 +31,7 @@ const items = computed(() =>
     <template #page>
       <main class="page">
         <div class="tag-wrapper">
-          <VPLink
+          <RouteLink
             v-for="{ name, path, keys } in tags"
             :key="name"
             :to="path"
@@ -41,7 +41,7 @@ const items = computed(() =>
             <span class="tag-num">
               {{ keys.length }}
             </span>
-          </VPLink>
+          </RouteLink>
         </div>
         <ArticleList :items="items" />
       </main>

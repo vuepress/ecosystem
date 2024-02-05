@@ -3,7 +3,7 @@ import type { PropType, VNode } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import type { PageHeader } from 'vuepress/client'
-import { usePageData, VPLink } from 'vuepress/client'
+import { RouteLink, usePageData } from 'vuepress/client'
 import type { TocPropsOptions } from '../../shared/index.js'
 
 export type TocPropsHeaders = PageHeader[]
@@ -34,9 +34,9 @@ const renderLink = (
     linkClass.push(options.linkChildrenActiveClass)
   }
 
-  if (options.linkTag === 'VPLink') {
+  if (options.linkTag === 'RouteLink') {
     return h(
-      VPLink,
+      RouteLink,
       {
         to: hash,
         class: linkClass,
@@ -135,7 +135,7 @@ export const Toc = defineComponent({
       containerClass: 'vuepress-toc',
       listClass: 'vuepress-toc-list',
       itemClass: 'vuepress-toc-item',
-      linkTag: 'VPLink',
+      linkTag: 'RouteLink',
       linkClass: 'vuepress-toc-link',
       linkActiveClass: 'active',
       linkChildrenActiveClass: 'active',

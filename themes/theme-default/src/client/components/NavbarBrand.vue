@@ -3,9 +3,9 @@ import { computed, h } from 'vue'
 import type { FunctionalComponent } from 'vue'
 import {
   ClientOnly,
+  RouteLink,
   useRouteLocale,
   useSiteLocaleData,
-  VPLink,
   withBase,
 } from 'vuepress/client'
 import { useDarkMode, useThemeLocaleData } from '../composables/index.js'
@@ -50,7 +50,7 @@ const NavbarBrandLogo: FunctionalComponent = () => {
 </script>
 
 <template>
-  <VPLink :to="navbarBrandLink">
+  <RouteLink :to="navbarBrandLink">
     <NavbarBrandLogo />
 
     <span
@@ -61,5 +61,5 @@ const NavbarBrandLogo: FunctionalComponent = () => {
     >
       {{ navbarBrandTitle }}
     </span>
-  </VPLink>
+  </RouteLink>
 </template>
