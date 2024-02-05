@@ -8,6 +8,7 @@
       "path": "./plugins/plugin-active-header-links/tsconfig.build.json"
     },
     { "path": "./plugins/plugin-back-to-top/tsconfig.build.json" },
+    { "path": "./plugins/plugin-blog/tsconfig.build.json" },
     { "path": "./plugins/plugin-container/tsconfig.build.json" },
     { "path": "./plugins/plugin-copy-code/tsconfig.build.json" },
     { "path": "./plugins/plugin-docsearch/tsconfig.build.json" },
