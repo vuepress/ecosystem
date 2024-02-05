@@ -211,7 +211,7 @@ importers:
   plugins/plugin-back-to-top:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~2.0.0-rc.10
+        specifier: workspace:~2.0.0-rc.11
         version: link:../../tools/helper
       '@vueuse/core':
         specifier: ^10.7.2
@@ -226,7 +226,7 @@ importers:
   plugins/plugin-blog:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~2.0.0-rc.10
+        specifier: workspace:~2.0.0-rc.11
         version: link:../../tools/helper
       chokidar:
         specifier: ^3.5.3
@@ -244,7 +244,7 @@ importers:
   plugins/plugin-catalog:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~2.0.0-rc.10
+        specifier: workspace:~2.0.0-rc.11
         version: link:../../tools/helper
       vue:
         specifier: ^3.4.15
@@ -274,7 +274,7 @@ importers:
   plugins/plugin-copy-code:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~2.0.0-rc.10
+        specifier: workspace:~2.0.0-rc.11
         version: link:../../tools/helper
       '@vueuse/core':
         specifier: ^10.7.2
@@ -289,7 +289,7 @@ importers:
   plugins/plugin-copyright:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~2.0.0-rc.10
+        specifier: workspace:~2.0.0-rc.11
         version: link:../../tools/helper
       '@vueuse/core':
         specifier: ^10.7.2
@@ -343,7 +343,7 @@ importers:
   plugins/plugin-feed:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~2.0.0-rc.10
+        specifier: workspace:~2.0.0-rc.11
         version: link:../../tools/helper
       cheerio:
         specifier: 1.0.0-rc.12
@@ -356,7 +356,7 @@ importers:
         version: 1.6.11
     devDependencies:
       '@vuepress/plugin-git':
-        specifier: 2.0.0-rc.10
+        specifier: 2.0.0-rc.11
         version: link:../plugin-git
 
   plugins/plugin-git:
@@ -453,7 +453,7 @@ importers:
   plugins/plugin-reading-time:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~2.0.0-rc.10
+        specifier: workspace:~2.0.0-rc.11
         version: link:../../tools/helper
       vue:
         specifier: ^3.4.15
@@ -465,7 +465,7 @@ importers:
   plugins/plugin-redirect:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~2.0.0-rc.10
+        specifier: workspace:~2.0.0-rc.11
         version: link:../../tools/helper
       '@vueuse/core':
         specifier: ^10.7.2
@@ -525,14 +525,14 @@ importers:
   plugins/plugin-seo:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~2.0.0-rc.10
+        specifier: workspace:~2.0.0-rc.11
         version: link:../../tools/helper
       vuepress:
         specifier: 2.0.0-rc.6
         version: 2.0.0-rc.6(@vuepress/bundler-vite@2.0.0-rc.6)(@vuepress/bundler-webpack@2.0.0-rc.6)(typescript@5.3.3)(vue@3.4.15)
     devDependencies:
       '@vuepress/plugin-git':
-        specifier: 2.0.0-rc.10
+        specifier: 2.0.0-rc.11
         version: link:../plugin-git
 
   plugins/plugin-shiki:
@@ -547,7 +547,7 @@ importers:
   plugins/plugin-sitemap:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~2.0.0-rc.10
+        specifier: workspace:~2.0.0-rc.11
         version: link:../../tools/helper
       sitemap:
         specifier: ^7.1.1
@@ -557,7 +557,7 @@ importers:
         version: 2.0.0-rc.6(@vuepress/bundler-vite@2.0.0-rc.6)(@vuepress/bundler-webpack@2.0.0-rc.6)(typescript@5.3.3)(vue@3.4.15)
     devDependencies:
       '@vuepress/plugin-git':
-        specifier: 2.0.0-rc.10
+        specifier: 2.0.0-rc.11
         version: link:../plugin-git
 
   plugins/plugin-theme-data:
@@ -587,7 +587,7 @@ importers:
   themes/theme-default:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~2.0.0-rc.10
+        specifier: workspace:~2.0.0-rc.11
         version: link:../../tools/helper
       '@vuepress/plugin-active-header-links':
         specifier: workspace:*
@@ -694,7 +694,7 @@ importers:
         specifier: 2.0.0-rc.6
         version: 2.0.0-rc.6(typescript@5.3.3)
       '@vuepress/plugin-git':
-        specifier: 2.0.0-rc.10
+        specifier: 2.0.0-rc.11
         version: link:../../plugins/plugin-git
       vite:
         specifier: 5.0.12

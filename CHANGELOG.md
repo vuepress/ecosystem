@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.11](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.10...v2.0.0-rc.11) (2024-02-05)
+
+### Bug Fixes
+
+- **plugin-active-header-links:** fix hash update ([0ee8078](https://github.com/vuepress/ecosystem/commit/0ee80783b87b41e4d5924c4af0faa4e3c4e1bb8c))
+- **plugin-docsearch:** hide search while print ([8b35bed](https://github.com/vuepress/ecosystem/commit/8b35bedda22f31b5b91e2724f7aaea46e19a9dbe))
+
+### Features
+
+- **plugin-redirect:** add style variables ([152bfa0](https://github.com/vuepress/ecosystem/commit/152bfa0ebf30e9cacf990fda99cf7efa449b2f2e))
+- **plugin-redirect:** improve autoLocale homepage ([0d63fb4](https://github.com/vuepress/ecosystem/commit/0d63fb4ecf9a12c358d6a365582c3d0d0821ab81))
+
 # [2.0.0-rc.10](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.9...v2.0.0-rc.10) (2024-02-05)
 
 ### Bug Fixes

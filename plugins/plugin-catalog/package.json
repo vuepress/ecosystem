@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-catalog",
-  "version": "2.0.0-rc.10",
+  "version": "2.0.0-rc.11",
   "description": "VuePress plugin - catalog",
   "keywords": [
     "vuepress-plugin",
@@ -42,7 +42,7 @@
     "style": "sass src:lib --no-source-map"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:~2.0.0-rc.10",
+    "@vuepress/helper": "workspace:~2.0.0-rc.11",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
   },

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-blog",
-  "version": "2.0.0-rc.10",
+  "version": "2.0.0-rc.11",
   "description": "VuePress plugin - blog",
   "keywords": [
     "vuepress-plugin",
@@ -39,7 +39,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:~2.0.0-rc.10",
+    "@vuepress/helper": "workspace:~2.0.0-rc.11",
     "chokidar": "^3.5.3",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"

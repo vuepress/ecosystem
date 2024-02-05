@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/theme-default",
-  "version": "2.0.0-rc.10",
+  "version": "2.0.0-rc.11",
   "description": "Default theme of VuePress",
   "keywords": [
     "vuepress-theme",
@@ -42,7 +42,7 @@
     "copy": "cpx \"src/**/*.{d.ts,vue,scss}\" lib"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:~2.0.0-rc.10",
+    "@vuepress/helper": "workspace:~2.0.0-rc.11",
     "@vuepress/plugin-active-header-links": "workspace:*",
     "@vuepress/plugin-back-to-top": "workspace:*",
     "@vuepress/plugin-container": "workspace:*",
