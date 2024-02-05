@@ -26,6 +26,11 @@ export const sidebarEn: SidebarConfig = {
       text: 'Blogging',
       children: [
         {
+          text: 'Blog',
+          link: '/plugins/blog/',
+          children: ['/plugins/blog/guide', '/plugins/blog/config'],
+        },
+        {
           text: 'Feed',
           link: '/plugins/feed/',
           children: [

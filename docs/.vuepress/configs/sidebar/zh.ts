@@ -26,6 +26,11 @@ export const sidebarZh: SidebarConfig = {
       text: '博客',
       children: [
         {
+          text: '博客',
+          link: '/zh/plugins/blog/',
+          children: ['/zh/plugins/blog/guide', '/zh/plugins/blog/config'],
+        },
+        {
           text: 'Feed',
           link: '/zh/plugins/feed/',
           children: [

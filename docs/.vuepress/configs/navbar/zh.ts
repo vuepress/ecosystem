@@ -39,7 +39,7 @@ export const navbarZh: NavbarConfig = [
       },
       {
         text: '博客',
-        children: ['/plugins/feed/'],
+        children: ['/zh/pugins/blog/', '/zh/plugins/feed/'],
       },
       {
         text: 'PWA',
