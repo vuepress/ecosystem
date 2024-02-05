@@ -27,7 +27,7 @@ export default {
 First, you should set catalog info in routeMeta:
 
 ```js title=".vuepress/config.js"
-import { autoCatalogPlugin } from 'vuepress-plugin-auto-catalog'
+import { autoCatalogPlugin } from '@vuepress/plugin-catalog'
 
 export default {
   extendsPage: (page) => {
@@ -41,12 +41,12 @@ export default {
 }
 ```
 
-You can then import `defineCatalogInfoGetter` from `vuepress-plugin-auto-catalog/client` and use it in [client config file][client-config] to extract catalog info from meta.
+You can then import `defineCatalogInfoGetter` from `@vuepress/plugin-catalog/client` and use it in [client config file][client-config] to extract catalog info from meta.
 
 @tab JS
 
 ```js title=".vuepress/client.js"
-import { defineCatalogInfoGetter } from 'vuepress-plugin-auto-catalog/client'
+import { defineCatalogInfoGetter } from '@vuepress/plugin-catalog/client'
 
 export default {
   setup: () => {
@@ -121,7 +121,7 @@ If you want to use your own, you can register your component globally and set `c
 - Example:
 
   ```js title=".vuepress/config.js"
-  import { autoCatalogPlugin } from 'vuepress-plugin-auto-catalog'
+  import { autoCatalogPlugin } from '@vuepress/plugin-catalog'
 
   export default {
     plugins: [
