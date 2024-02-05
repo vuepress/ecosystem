@@ -38,7 +38,7 @@
     "shikiji": "^0.10.2"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.5"
+    "vuepress": "2.0.0-rc.6"
   },
   "publishConfig": {
     "access": "public"

@@ -48,7 +48,7 @@
     "@vuepress/plugin-git": "2.0.0-rc.10"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.5"
+    "vuepress": "2.0.0-rc.6"
   },
   "publishConfig": {
     "access": "public"

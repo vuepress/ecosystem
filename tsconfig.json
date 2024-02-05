@@ -5,14 +5,14 @@
     "jsx": "preserve",
     "paths": {
       "@internal/searchIndex": [
-        "./plugins/plugin-search/src/client/searchIndex.d.ts",
+        "./plugins/plugin-search/src/client/searchIndex.d.ts"
       ],
       "@internal/themeData": [
-        "./plugins/plugin-theme-data/src/client/themeData.d.ts",
+        "./plugins/plugin-theme-data/src/client/themeData.d.ts"
       ],
-      "@theme/*": ["./themes/theme-default/src/client/components/*"],
+      "@theme/*": ["./themes/theme-default/src/client/components/*"]
     },
-    "types": ["vuepress/client-types", "webpack-env", "vite/client"],
+    "types": ["vuepress/client-types", "webpack-env", "vite/client"]
   },
   "include": [
     "**/.vuepress/**/*",
@@ -20,7 +20,7 @@
     "plugins/**/*",
     "themes/**/*",
     "tools/**/*",
-    "vitest.config.ts",
+    "vitest.config.ts"
   ],
-  "exclude": ["node_modules", ".temp", "lib", "dist"],
+  "exclude": ["node_modules", ".temp", "lib", "dist"]
 }
