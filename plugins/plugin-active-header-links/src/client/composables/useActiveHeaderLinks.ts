@@ -120,9 +120,10 @@ const updateHash = async (router: Router, hash: string): Promise<void> => {
   // restore it after navigation
   const { scrollBehavior } = router.options
   router.options.scrollBehavior = undefined
-  console.log('replace hash', hash)
+
   await router
     .replace({
+      path: router.currentRoute.value.path,
       query: router.currentRoute.value.query,
       hash,
     })
