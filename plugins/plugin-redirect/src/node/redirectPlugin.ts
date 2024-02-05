@@ -50,8 +50,8 @@ export const redirectPlugin =
 
         if (app.env.isDebug) logger.info('Redirect Map:', redirectMap)
 
-        if (redirectLocaleConfig.autoLocale)
-          await ensureRootHomePage(app, redirectLocaleConfig)
+        if (redirectLocaleConfig.autoLocale && app.env.isDebug)
+          await ensureRootHomePage(app)
       },
 
       onPrepared: async (app): Promise<void> => {
