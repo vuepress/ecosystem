@@ -1,4 +1,6 @@
-# Usage
+# theme-default
+
+## Usage
 
 <NpmBadge package="@vuepress/theme-default" />
 

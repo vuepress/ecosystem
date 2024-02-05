@@ -100,6 +100,15 @@
   --back-to-top-bg-color: var(--c-bg);
 }
 
+// catalog
+.vp-catalog-wrapper {
+  --catalog-bg-color: var(--c-bg);
+  --catalog-bg-secondary-color: var(--c-bg-dark);
+  --catalog-border-color: var(--c-border);
+  --catalog-active-color: var(--c-brand);
+  --catalog-hover-color: var(--c-brand-light);
+}
+
 // plugin-docsearch
 .DocSearch {
   --docsearch-primary-color: var(--c-brand);

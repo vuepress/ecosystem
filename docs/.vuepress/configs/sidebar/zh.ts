@@ -6,6 +6,7 @@ export const sidebarZh: SidebarConfig = {
       text: '常用功能',
       children: [
         '/zh/plugins/back-to-top',
+        '/zh/plugins/catalog',
         '/zh/plugins/container',
         '/zh/plugins/copy-code',
         '/zh/plugins/copyright',

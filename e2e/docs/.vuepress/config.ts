@@ -1,6 +1,7 @@
 import process from 'node:process'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
+import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { copyrightPlugin } from '@vuepress/plugin-copyright'
 import { feedPlugin } from '@vuepress/plugin-feed'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
@@ -86,6 +87,7 @@ export default defineUserConfig({
   }),
 
   plugins: [
+    catalogPlugin(),
     copyrightPlugin({}),
     feedPlugin({
       hostname: 'https://ecosystem-e2e-test.com',
