@@ -24,7 +24,7 @@ export default {
 }
 ```
 
-## Reporting Events
+### Reporting Events
 
 Google Analytics will [automatically collect some events](https://support.google.com/analytics/answer/9234069), such as `page_view`, `first_visit`, etc.
 

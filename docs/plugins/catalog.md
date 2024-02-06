@@ -22,8 +22,6 @@ export default {
 }
 ```
 
-### Extracting Info
-
 First, you should set catalog info in routeMeta:
 
 ```js title=".vuepress/config.js"
@@ -42,8 +40,6 @@ export default {
 ```
 
 You can then import `defineCatalogInfoGetter` from `@vuepress/plugin-catalog/client` and use it in [client config file][client-config] to extract catalog info from meta.
-
-@tab JS
 
 ```js title=".vuepress/client.js"
 import { defineCatalogInfoGetter } from '@vuepress/plugin-catalog/client'
@@ -87,19 +83,7 @@ Project with order -1
 
 :::
 
-## Using Catalog Component
-
-The plugin globally register and use `<Catalog />` component by default.
-
-- The `<Catalog />` will render 3 levels of pages as catalog items by default, and you can change the level depth by setting `level` option (max 3 levels).
-- To index to catalog item, add `index` prop.
-- By default, `<Catalog />` generates catalog for current folder. Set `base` props if you want catalog of another folder.
-
-You can use `<Catalog />` in your theme layout, or in your markdown files directly.
-
-If you want to use your own, you can register your component globally and set `component` option with your component name. Auto catalog page will use your component.
-
-## Config
+## Options
 
 ### level <Badge text="Built-in component only" />
 
@@ -227,30 +211,27 @@ const defineCatalogInfoGetter: (options: CatalogInfoGetter) => void
 
 Customize how to extract catalog info from meta.
 
-## Catalog Component Props
+## Components
 
-### base
+### Catalog
 
-- Type: `string`
-- Default: Folder of current route path
-- Details: Catalog Base
+- Details:
 
-### level
+  The plugin will globally register a `<Catalog />` component by default (unless you set the `component` option).
 
-- Type: `1 | 2 | 3`
-- Default: `3`
-- Details: Max level of catalog.
+  You can use `<Catalog />` in the theme layout or directly in the Markdown file.
 
-### index
+  The component supports four props:
 
-- Type: `boolean`
-- Default: `false`
-- Details: Whether display index number for catalog.
-
-### hideHeading
-
-- Type: `boolean`
-- Default: `false`
-- Details: Whether hide `Category` title.
+  - `level`: Change the display depth (maximum support 3 levels), default is `3`.
+  - `base`: Display catalog of the specified folder, default is the current folder directory.
+  - `index`: Add an index number to the directory item, default is no number.
+  - `hideHeading`: Hide the component title, default is to display the `Catalog` title.
 
 [client-config]: https://vuejs.press/guide/configuration.html#client-config-file
+
+## Styles
+
+You can customize the style of catalog via CSS variables:
+
+@[code css](@vuepress/plugin-catalog/src/client/styles/vars.css)

@@ -38,7 +38,7 @@ export default {
 
 :::
 
-## 插件选项
+## 选项
 
 ### selector
 

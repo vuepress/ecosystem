@@ -91,7 +91,7 @@ export default {
 }
 ```
 
-## 配置项
+## 选项
 
 该插件的配置项可以接收 workbox-build 中 [generateSW 方法](https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-build#.generateSW) 除了 `globDirectory` 和 `swDest` 以外的所有参数。
 

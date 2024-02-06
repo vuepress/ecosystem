@@ -24,7 +24,7 @@ export default {
 }
 ```
 
-## 配置项
+## 选项
 
 ### locales
 

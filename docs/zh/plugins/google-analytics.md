@@ -24,7 +24,7 @@ export default {
 }
 ```
 
-## 上报事件
+### 上报事件
 
 Google Analytics 会 [自动收集部分事件](https://support.google.com/analytics/answer/9234069) ，比如 `page_view`, `first_visit` 等。
 
@@ -32,7 +32,7 @@ Google Analytics 会 [自动收集部分事件](https://support.google.com/analy
 
 在引入该插件之后，一个全局的 `gtag()` 函数会被挂载到 `window` 对象上，你可以使用它进行 [自定义事件的上报](https://developers.google.com/analytics/devguides/collection/ga4/events) 。
 
-## 配置项
+## 选项
 
 ### id
 

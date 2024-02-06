@@ -146,7 +146,7 @@ You need to pass in VuePress project source dir and also set the `hostname` opti
 
 By default, the plugin will output to `.vuepress/redirect` directory under source directory. And you should upload it to your original site to provide redirection.
 
-## Plugin Options
+## Options
 
 ### config
 
@@ -223,7 +223,7 @@ By default, the plugin will output to `.vuepress/redirect` directory under sourc
 - Default: the first locale
 - Details: Default locale path.
 
-## Frontmatter options
+## Frontmatter
 
 ### redirectFrom
 

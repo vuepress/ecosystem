@@ -18,7 +18,7 @@ PWA 插件，如 [`@vuepress/plugin-pwa`](./pwa.md) 将 Service Worker 注册到
 
 :::
 
-## Usage
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-remove-pwa@next
@@ -36,7 +36,7 @@ export default {
 }
 ```
 
-## Config
+## 选项
 
 ### cachePrefix
 

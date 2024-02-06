@@ -35,7 +35,7 @@ export default {
 }
 ```
 
-## Config
+## Options
 
 ### cachePrefix
 

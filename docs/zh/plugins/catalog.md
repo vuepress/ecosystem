@@ -22,11 +22,7 @@ export default {
 }
 ```
 
-### 提取信息
-
 首先，你应该在路由元信息中设置目录信息:
-
-@tab JS
 
 ```js title=".vuepress/config.js"
 import { catalogPlugin } from '@vuepress/plugin-catalog'
@@ -43,9 +39,7 @@ export default {
 }
 ```
 
-你可以之后导入 `defineCatalogInfoGetter` 并在[客户端配置文件][client-config]中使用它来从元信息中提取目录信息。
-
-@tab JS
+你可以之后导入 `defineCatalogInfoGetter` 并在 [客户端配置文件][client-config] 中使用它来从元信息中提取目录信息。
 
 ```js title=".vuepress/client.js"
 import { defineCatalogInfoGetter } from '@vuepress/plugin-catalog/client'
@@ -89,17 +83,7 @@ order -1 的项目
 
 :::
 
-### 使用 Catalog 组件
-
-该插件默认全局注册并使用 `<Catalog />` 组件。你可以在主题布局中或直接在 Markdown 文件中使用 `<Catalog />`。
-
-- `<Catalog />` 默认会将 3 层页面呈现为目录项，你可以通过设置 `level` 选项更改层次深度（最大仅支持 3 层）。
-- 添加 `index` 属性可为目录项添加索引号
-- `<Catalog />` 为默认当前文件夹生成目录。如果你需要为其他文件夹生成目录，你可以设置 `base` 属性。
-
-如果你想使用自己的组件，你可以全局注册你的组件并使用你的组件名称设置 `component` 选项。自动目录页会使用你设置的组件。
-
-## 配置项
+## 选项
 
 ### level <Badge text="仅限内置组件" />
 
@@ -227,30 +211,27 @@ const defineCatalogInfoGetter: (options: CatalogInfoGetter) => void
 
 自定义如何从 meta 中提取目录信息。
 
-## Catalog 组件属性
+## 组件
 
-### base
+### Catalog
 
-- 类型：`string`
-- 默认值：当前路由所在的文件夹路径
-- 详情：目录基础路径
+- 详情：
 
-### level
+  该插件默认会全局注册一个 `<Catalog />` 组件（除非你设置了 `component` 选项）。
 
-- 类型：`1 | 2 | 3`
-- 默认值：`3`
-- 详情：目录的最大层级
+  你可以在主题布局中或直接在 Markdown 文件中使用 `<Catalog />`。
 
-### index
+  组件支持四个属性：
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：是否在目录列表中显示索引
+  - `level`：更改显示层次深度（最大仅支持 3 层），默认为 `3`。
+  - `base`：显示指定文件夹的目录，默认显示当前文件夹目录。
+  - `index`：为目录项添加索引号，默认无标号。
+  - `hideHeading`：隐藏组件标题，默认会显示 `目录` 标题。
 
-### hideHeading
+## 样式
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：是否隐藏 `目录` 标题
+你可以通过 CSS 变量来自定义目录样式：
+
+@[code css](@vuepress/plugin-catalog/src/client/styles/vars.css)
 
 [client-config]: https://vuejs.press/zh/guide/configuration.html#%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6

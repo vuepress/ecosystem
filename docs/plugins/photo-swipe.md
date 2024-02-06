@@ -38,7 +38,7 @@ In preview mode, you can:
 
 :::
 
-## Config
+## Options
 
 ### selector
 
