@@ -3,8 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "pnpm build:all && pnpm build:copy && pnpm build:style",
-    "build:all": "pnpm --parallel --stream build",
+    "build": "pnpm build:tsc && pnpm build:copy && pnpm build:style",
     "build:copy": "pnpm --parallel --stream copy",
     "build:style": "pnpm --parallel --stream style",
     "build:tsc": "tsc -b tsconfig.build.json",
