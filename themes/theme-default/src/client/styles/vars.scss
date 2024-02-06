@@ -100,7 +100,7 @@
   --back-to-top-bg-color: var(--c-bg);
 }
 
-// catalog
+// plugin-catalog
 .vp-catalog-wrapper {
   --catalog-bg-color: var(--c-bg);
   --catalog-bg-secondary-color: var(--c-bg-dark);
@@ -140,6 +140,12 @@
 // plugin-nprogress
 #nprogress {
   --nprogress-color: var(--c-brand);
+}
+
+// plugin-photo-swipe
+body {
+  --photo-swipe-bullet: var(--c-bg);
+  --photo-swipe-bullet-active: var(--c-brand);
 }
 
 // plugin-pwa-popup
