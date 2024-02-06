@@ -36,10 +36,10 @@ export const createPackageJson = async ({
 }: CreatePackageJsonOptions): Promise<void> => {
   const packageJsonPath = join(targetDir, 'package.json')
   const devDependencies = {
-    [`@vuepress/bundler-${bundler}`]: '^2.0.0-rc.6',
+    [`@vuepress/bundler-${bundler}`]: '^2.0.0-rc.7',
     '@vuepress/theme-default': '^2.0.0-rc.11',
     'vue': '^3.4.0',
-    'vuepress': '^2.0.0-rc.6',
+    'vuepress': '^2.0.0-rc.7',
   }
 
   if (preset === 'blog') {
