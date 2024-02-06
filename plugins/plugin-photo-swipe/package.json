@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-photo-swipe",
-  "version": "2.0.0-rc.11",
+  "version": "2.0.0-rc.12",
   "description": "VuePress plugin - photo-swipe",
   "keywords": [
     "vuepress-plugin",
@@ -43,7 +43,7 @@
     "style": "sass src:lib --no-source-map"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:~2.0.0-rc.11",
+    "@vuepress/helper": "workspace:~2.0.0-rc.12",
     "@vueuse/core": "^10.7.2",
     "photoswipe": "^5.4.3",
     "vue": "^3.4.15"

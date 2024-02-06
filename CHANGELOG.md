@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.12](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.11...v2.0.0-rc.12) (2024-02-06)
+
+### Bug Fixes
+
+- **plugin-theme-data:** fix compatibility with vuepress/client ([8f01436](https://github.com/vuepress/ecosystem/commit/8f014362a01cf3fe1fde81f3cc13481020a5cfe8))
+
+### Features
+
+- **create-vuepress:** use plugin-blog in blog template ([#64](https://github.com/vuepress/ecosystem/issues/64)) ([a25014e](https://github.com/vuepress/ecosystem/commit/a25014e7c17f905db88e6e39de8f036f67cb860a))
+- **plugin-copy-code:** expose composable api ([#67](https://github.com/vuepress/ecosystem/issues/67)) ([fced29c](https://github.com/vuepress/ecosystem/commit/fced29cc445433c326f25f176f6a5cfa5415f739))
+- **plugin-photo-swipe:** add photo-swipe plugin ([#69](https://github.com/vuepress/ecosystem/issues/69)) ([58a9855](https://github.com/vuepress/ecosystem/commit/58a9855414333f389c34ce6e1a66377e72356911))
+- **plugin-shiki:** use shiki v1 ([#68](https://github.com/vuepress/ecosystem/issues/68)) ([2e4343c](https://github.com/vuepress/ecosystem/commit/2e4343c9b89c8577f28970eca915128f9983c124))
+- **theme-default:** apply styles to photo-swipe plugin ([5d1fd63](https://github.com/vuepress/ecosystem/commit/5d1fd631d8068074befa4935df6aa842168dc672))
+
 # [2.0.0-rc.11](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.10...v2.0.0-rc.11) (2024-02-05)
 
 ### Bug Fixes
