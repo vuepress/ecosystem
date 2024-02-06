@@ -2,9 +2,10 @@
 <script setup lang="ts">
 import { useBlogCategory } from '@vuepress/plugin-blog/client'
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
-import { VPLink } from 'vuepress/client'
+import { RouteLink, useRoute } from 'vuepress/client'
 import ArticleList from '../components/ArticleList.vue'
 
+const route = useRoute()
 const tagMap = useBlogCategory('tag')
 </script>
 
@@ -13,17 +14,18 @@ const tagMap = useBlogCategory('tag')
     <template #page>
       <main class="page">
         <div class="tag-wrapper">
-          <VPLink
+          <RouteLink
             v-for="({ items, path }, name) in tagMap.map"
             :key="name"
             :to="path"
+            :active="route.path === path"
             class="tag"
           >
             {{ name }}
             <span class="tag-num">
               {{ items.length }}
             </span>
-          </VPLink>
+          </RouteLink>
         </div>
 
         <ArticleList :items="tagMap.currentItems ?? []" />
@@ -81,7 +83,7 @@ const tagMap = useBlogCategory('tag')
       text-align: center;
     }
 
-    &.router-link-active {
+    &.route-link-active {
       background: var(--c-brand);
       color: var(--c-bg);
 

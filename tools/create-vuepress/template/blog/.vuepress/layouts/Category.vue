@@ -1,29 +1,11 @@
 <script setup>
-import { map } from '@temp/blog/category.js'
+import { useBlogCategory } from '@vuepress/plugin-blog/client'
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
-import { computed } from 'vue'
-import { useRouter } from 'vue-router'
-import { RouteLink, usePageFrontmatter } from 'vuepress/client'
+import { RouteLink, useRoute } from 'vuepress/client'
 import ArticleList from '../components/ArticleList.vue'
 
-const routes = useRouter().getRoutes()
-const frontmatter = usePageFrontmatter()
-
-const categories = Object.entries(map).map(([name, { path, keys }]) => ({
-  name,
-  path,
-  keys,
-}))
-
-const currentCategory = computed(() => frontmatter.value.key)
-
-const items = computed(() =>
-  currentCategory.value
-    ? map[currentCategory.value].keys
-        .map((key) => routes.find(({ name }) => name === key))
-        .map(({ path, meta }) => ({ path, info: meta }))
-    : [],
-)
+const route = useRoute()
+const categoryMap = useBlogCategory('category')
 </script>
 
 <template>
@@ -32,18 +14,20 @@ const items = computed(() =>
       <main class="page">
         <div class="category-wrapper">
           <RouteLink
-            v-for="{ name, path, keys } in categories"
+            v-for="({ items, path }, name) in categoryMap.map"
             :key="name"
             :to="path"
+            :active="route.path === path"
             class="category"
           >
             {{ name }}
             <span class="category-num">
-              {{ keys.length }}
+              {{ items.length }}
             </span>
           </RouteLink>
         </div>
-        <ArticleList :items="items" />
+
+        <ArticleList :items="categoryMap.currentItems ?? []" />
       </main>
     </template>
   </ParentLayout>
@@ -98,7 +82,7 @@ const items = computed(() =>
       text-align: center;
     }
 
-    &.router-link-active {
+    &.route-link-active {
       background: var(--c-brand);
       color: var(--c-bg);
 

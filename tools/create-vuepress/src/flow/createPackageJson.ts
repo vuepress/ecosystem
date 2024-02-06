@@ -36,14 +36,14 @@ export const createPackageJson = async ({
 }: CreatePackageJsonOptions): Promise<void> => {
   const packageJsonPath = join(targetDir, 'package.json')
   const devDependencies = {
-    [`@vuepress/bundler-${bundler}`]: '^2.0.0-rc.2',
-    '@vuepress/theme-default': '^2.0.0-rc.2',
+    [`@vuepress/bundler-${bundler}`]: '^2.0.0-rc.6',
+    '@vuepress/theme-default': '^2.0.0-rc.11',
     'vue': '^3.4.0',
-    'vuepress': '^2.0.0-rc.2',
+    'vuepress': '^2.0.0-rc.6',
   }
 
   if (preset === 'blog') {
-    devDependencies['vue-router'] = '^4.2.5'
+    devDependencies['@vuepress/plugin-blog'] = '^2.0.0-rc.11'
   }
 
   console.log(locale.flow.createPackage)

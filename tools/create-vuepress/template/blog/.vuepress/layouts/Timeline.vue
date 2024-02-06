@@ -1,14 +1,9 @@
 <script setup>
-import { keys } from '@temp/blog/timeline.js'
+import { useBlogType } from '@vuepress/plugin-blog/client'
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
-import { useRouter } from 'vue-router'
 import ArticleList from '../components/ArticleList.vue'
 
-const routes = useRouter().getRoutes()
-
-const timelines = keys
-  .map((key) => routes.find(({ name }) => name === key))
-  .map(({ path, meta }) => ({ path, info: meta }))
+const timelines = useBlogType('timeline')
 </script>
 
 <template>
@@ -16,7 +11,8 @@ const timelines = keys
     <template #page>
       <main class="page">
         <h1 class="timeline-title">Timeline</h1>
-        <ArticleList :items="timelines" is-timeline />
+
+        <ArticleList :items="timelines.items" is-timeline />
       </main>
     </template>
   </ParentLayout>
