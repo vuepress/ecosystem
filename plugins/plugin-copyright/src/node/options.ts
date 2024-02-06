@@ -66,11 +66,6 @@ export interface CopyrightPluginOptions {
   ) => string | null
 
   /**
-   * @deprecated Use `triggerLength` instead
-   */
-  triggerWords?: number
-
-  /**
    * Min length triggering copyright append
    *
    * 触发附加版权的最小长度
