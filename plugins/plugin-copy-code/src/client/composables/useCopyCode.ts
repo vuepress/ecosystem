@@ -3,27 +3,31 @@ import { useClipboard, useEventListener } from '@vueuse/core'
 import { nextTick, onMounted, watch } from 'vue'
 import { usePageData } from 'vuepress/client'
 import type { CopyCodeLocaleConfig } from '../../shared/index.js'
-
-declare const __CC_DELAY__: number
-declare const __CC_DURATION__: number
-declare const __CC_LOCALES__: CopyCodeLocaleConfig
-declare const __CC_SELECTOR__: string[]
-declare const __CC_SHOW_IN_MOBILE__: boolean
+import { isMobile } from '../utils/index.js'
 
 const timeoutIdMap = new Map<HTMLElement, number>()
 
-const MOBILE_USERAGENT_REGEXP =
-  /\b(?:Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini)/i
+export interface UseCopyCodeOptions {
+  locales: CopyCodeLocaleConfig
+  selector: string[]
 
-const isMobile = (): boolean =>
-  typeof window !== 'undefined' &&
-  window.navigator &&
-  'userAgent' in window.navigator &&
-  MOBILE_USERAGENT_REGEXP.test(navigator.userAgent)
+  /** @default 500 */
+  delay: number
+  /** @default 2000 */
+  duration: number
+  /** @default false */
+  showInMobile?: boolean
+}
 
-export const setupCopyCode = (): void => {
+export const useCopyCode = ({
+  delay = 500,
+  duration = 2000,
+  locales,
+  selector,
+  showInMobile,
+}: UseCopyCodeOptions): void => {
   const { copy } = useClipboard({ legacy: true })
-  const locale = useLocaleConfig(__CC_LOCALES__)
+  const locale = useLocaleConfig(locales)
   const page = usePageData()
 
   const insertCopyButton = (codeBlockElement: HTMLElement): void => {
@@ -49,10 +53,10 @@ export const setupCopyCode = (): void => {
   const appendCopyButton = (): void => {
     nextTick().then(() =>
       setTimeout(() => {
-        __CC_SELECTOR__.forEach((item) => {
+        selector.forEach((item) => {
           document.querySelectorAll<HTMLElement>(item).forEach(insertCopyButton)
         })
-      }, __CC_DELAY__),
+      }, delay),
     )
   }
 
@@ -79,14 +83,14 @@ export const setupCopyCode = (): void => {
         button.classList.remove('copied')
         button.blur()
         timeoutIdMap.delete(button)
-      }, __CC_DURATION__) as unknown as number
+      }, duration) as unknown as number
 
       timeoutIdMap.set(button, timeoutId)
     })
   }
 
   onMounted(() => {
-    const enabled = !isMobile() || __CC_SHOW_IN_MOBILE__
+    const enabled = !isMobile() || showInMobile
 
     if (enabled) appendCopyButton()
 
