@@ -116,6 +116,9 @@ importers:
       '@vuepress/plugin-nprogress':
         specifier: workspace:*
         version: link:../plugins/plugin-nprogress
+      '@vuepress/plugin-photo-swipe':
+        specifier: workspace:*
+        version: link:../plugins/plugin-photo-swipe
       '@vuepress/plugin-pwa-popup':
         specifier: workspace:*
         version: link:../plugins/plugin-pwa-popup
@@ -406,6 +409,24 @@ importers:
       chokidar:
         specifier: ^3.5.3
         version: 3.5.3
+      vuepress:
+        specifier: 2.0.0-rc.6
+        version: 2.0.0-rc.6(@vuepress/bundler-vite@2.0.0-rc.6)(@vuepress/bundler-webpack@2.0.0-rc.6)(typescript@5.3.3)(vue@3.4.15)
+
+  plugins/plugin-photo-swipe:
+    dependencies:
+      '@vuepress/helper':
+        specifier: workspace:~2.0.0-rc.11
+        version: link:../../tools/helper
+      '@vueuse/core':
+        specifier: ^10.7.2
+        version: 10.7.2(vue@3.4.15)
+      photoswipe:
+        specifier: ^5.4.3
+        version: 5.4.3
+      vue:
+        specifier: ^3.4.15
+        version: 3.4.15(typescript@5.3.3)
       vuepress:
         specifier: 2.0.0-rc.6
         version: 2.0.0-rc.6(@vuepress/bundler-vite@2.0.0-rc.6)(@vuepress/bundler-webpack@2.0.0-rc.6)(typescript@5.3.3)(vue@3.4.15)
@@ -9500,6 +9521,11 @@ packages:
   /performance-now@2.1.0:
     resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
     dev: true
+
+  /photoswipe@5.4.3:
+    resolution: {integrity: sha512-9UC6oJBK4oXFZ5HcdlcvGkfEHsVrmE4csUdCQhEjHYb3PvPLO3PG7UhnPuOgjxwmhq5s17Un5NUdum01LgBDng==}
+    engines: {node: '>= 0.12.0'}
+    dev: false
 
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
