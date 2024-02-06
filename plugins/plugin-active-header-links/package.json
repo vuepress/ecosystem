@@ -36,7 +36,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "ts-debounce": "^4.0.0",
+    "@vueuse/core": "^10.7.1",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
   },

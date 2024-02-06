@@ -1,5 +1,4 @@
-import { debounce } from 'ts-debounce'
-import { onBeforeUnmount, onMounted } from 'vue'
+import { useDebounceFn, useEventListener } from '@vueuse/core'
 import { useRouter } from 'vue-router'
 import type { Router } from 'vue-router'
 
@@ -8,6 +7,20 @@ export interface UseActiveHeaderLinksOptions {
   headerAnchorSelector: string
   delay: number
   offset?: number
+}
+
+/**
+ * Update current hash and do not trigger `scrollBehavior`
+ */
+const updateHash = async (router: Router, hash: string): Promise<void> => {
+  const { path, query } = router.currentRoute.value
+  const { scrollBehavior } = router.options
+
+  // temporarily disable `scrollBehavior`
+  router.options.scrollBehavior = undefined
+  await router.replace({ path, query, hash })
+  // restore it after navigation
+  router.options.scrollBehavior = scrollBehavior
 }
 
 export const useActiveHeaderLinks = ({
@@ -102,30 +115,5 @@ export const useActiveHeaderLinks = ({
     }
   }
 
-  const onScroll: () => Promise<void> = debounce(setActiveRouteHash, delay)
-
-  onMounted(() => {
-    window.addEventListener('scroll', onScroll)
-  })
-  onBeforeUnmount(() => {
-    window.removeEventListener('scroll', onScroll)
-  })
-}
-
-/**
- * Update current hash and do not trigger `scrollBehavior`
- */
-const updateHash = async (router: Router, hash: string): Promise<void> => {
-  // temporarily disable `scrollBehavior`
-  // restore it after navigation
-  const { scrollBehavior } = router.options
-  router.options.scrollBehavior = undefined
-
-  await router
-    .replace({
-      path: router.currentRoute.value.path,
-      query: router.currentRoute.value.query,
-      hash,
-    })
-    .finally(() => (router.options.scrollBehavior = scrollBehavior))
+  useEventListener('scroll', useDebounceFn(setActiveRouteHash, delay))
 }
