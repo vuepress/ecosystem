@@ -155,6 +155,9 @@ importers:
       '@vuepress/bundler-webpack':
         specifier: 2.0.0-rc.6
         version: 2.0.0-rc.6(typescript@5.3.3)
+      '@vuepress/plugin-blog':
+        specifier: workspace:*
+        version: link:../plugins/plugin-blog
       '@vuepress/plugin-catalog':
         specifier: workspace:*
         version: link:../plugins/plugin-catalog

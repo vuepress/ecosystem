@@ -1,21 +1,16 @@
 <script setup>
-import { keys } from '@temp/blog/article.js'
+import { useBlogType } from '@vuepress/plugin-blog/client'
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
-import { useRouter } from 'vue-router'
 import ArticleList from '../components/ArticleList.vue'
 
-const routes = useRouter().getRoutes()
-
-const articles = keys
-  .map((key) => routes.find(({ name }) => name === key))
-  .map(({ path, meta }) => ({ path, info: meta }))
+const articles = useBlogType('article')
 </script>
 
 <template>
   <ParentLayout>
     <template #page>
       <main class="page">
-        <ArticleList :items="articles" />
+        <ArticleList :items="articles.items" />
       </main>
     </template>
   </ParentLayout>

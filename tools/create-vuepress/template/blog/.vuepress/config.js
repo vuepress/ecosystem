@@ -1,6 +1,6 @@
+import { blogPlugin } from '@vuepress/plugin-blog'
 import { defaultTheme } from '@vuepress/theme-default'
-import { defineUserConfig } from 'vuepress/cli'
-import { simpleBlogPlugin } from './blog-plugin.js'
+import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
   lang: 'en-US',
@@ -33,29 +33,73 @@ export default defineUserConfig({
   }),
 
   plugins: [
-    simpleBlogPlugin({
-      // only files under posts are articles
+    blogPlugin({
+      // Only files under posts are articles
       filter: ({ filePathRelative }) =>
         filePathRelative ? filePathRelative.startsWith('posts/') : false,
 
-      // getting article info
-      getInfo: ({ frontmatter, title }) => ({
+      // Getting article info
+      getInfo: ({ frontmatter, title, data }) => ({
         title,
         author: frontmatter.author || '',
         date: frontmatter.date || null,
         category: frontmatter.category || [],
         tag: frontmatter.tag || [],
-        excerpt: frontmatter.excerpt || '',
+        excerpt:
+          // Support manually set excerpt through frontmatter
+          typeof frontmatter.excerpt === 'string'
+            ? frontmatter.excerpt
+            : data?.excerpt || '',
       }),
 
-      category: ['category', 'tag'],
+      // Generate excerpt for all pages excerpt those users choose to disable
+      excerptFilter: ({ frontmatter }) =>
+        !frontmatter.home &&
+        frontmatter.excerpt !== false &&
+        typeof frontmatter.excerpt !== 'string',
+
+      category: [
+        {
+          key: 'category',
+          getter: (page) => page.frontmatter.category || [],
+          layout: 'Category',
+          itemLayout: 'Category',
+          frontmatter: () => ({
+            title: 'Categories',
+            sidebar: false,
+          }),
+          itemFrontmatter: (name) => ({
+            title: `Category ${name}`,
+            sidebar: false,
+          }),
+        },
+        {
+          key: 'tag',
+          getter: (page) => page.frontmatter.tag || [],
+          layout: 'Tag',
+          itemLayout: 'Tag',
+          frontmatter: () => ({
+            title: 'Tags',
+            sidebar: false,
+          }),
+          itemFrontmatter: (name) => ({
+            title: `Tag ${name}`,
+            sidebar: false,
+          }),
+        },
+      ],
 
       type: [
         {
           key: 'article',
-          // remove archive articles
+          // Remove archive articles
           filter: (page) => !page.frontmatter.archive,
-
+          layout: 'Article',
+          frontmatter: () => ({
+            title: 'Articles',
+            sidebar: false,
+          }),
+          // Sort pages with time and sticky
           sorter: (pageA, pageB) => {
             if (pageA.frontmatter.sticky && pageB.frontmatter.sticky)
               return pageB.frontmatter.sticky - pageA.frontmatter.sticky
@@ -75,14 +119,20 @@ export default defineUserConfig({
         },
         {
           key: 'timeline',
-          // only article with date should be added to timeline
+          // Only article with date should be added to timeline
           filter: (page) => page.frontmatter.date instanceof Date,
-          // sort pages with time
+          // Sort pages with time
           sorter: (pageA, pageB) =>
             new Date(pageB.frontmatter.date).getTime() -
             new Date(pageA.frontmatter.date).getTime(),
+          layout: 'Timeline',
+          frontmatter: () => ({
+            title: 'Timeline',
+            sidebar: false,
+          }),
         },
       ],
+      hotReload: true,
     }),
   ],
 })
