@@ -6,7 +6,7 @@ import { usePhotoSwipeOptions } from '../helpers/index.js'
 import { getImages, registerPhotoSwipe } from '../utils/index.js'
 
 import 'photoswipe/dist/photoswipe.css'
-import '../styles/photo-swipe.scss'
+import '../styles/photo-swipe.css'
 
 export interface UsePhotoSwipeOptions {
   selector: string | string[]
