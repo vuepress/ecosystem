@@ -35,14 +35,12 @@ export interface CopyCodePluginOptions {
 
   /**
    * The delay of registering copy code buttons, in ms.
-   *
-   * If the theme you are using has a switching animation, it is recommended to configure this option to `Switch animation duration + 200`.
+   * If the theme you are using has a switching animation causing the dom not available just after routing, then you might need it.
    *
    * 注册复制按钮的延时，单位 ms。
+   * 如果你使用的主题有切换动画，导致路由后瞬间 dom 不可用，你可能需要它。
    *
-   * 如果你使用的主题有切换动画，建议配置此选项为 `切换动画时长 + 200`
-   *
-   * @default 800
+   * @default 500
    */
   delay?: number
 

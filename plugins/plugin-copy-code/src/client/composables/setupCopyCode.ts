@@ -4,11 +4,11 @@ import { nextTick, onMounted, watch } from 'vue'
 import { usePageData } from 'vuepress/client'
 import type { CopyCodeLocaleConfig } from '../../shared/index.js'
 
-declare const __COPY_CODE_DELAY__: number
-declare const __COPY_CODE_DURATION__: number
-declare const __COPY_CODE_LOCALES__: CopyCodeLocaleConfig
-declare const __COPY_CODE_SELECTOR__: string[]
-declare const __COPY_CODE_SHOW_IN_MOBILE__: boolean
+declare const __CC_DELAY__: number
+declare const __CC_DURATION__: number
+declare const __CC_LOCALES__: CopyCodeLocaleConfig
+declare const __CC_SELECTOR__: string[]
+declare const __CC_SHOW_IN_MOBILE__: boolean
 
 const timeoutIdMap = new Map<HTMLElement, number>()
 
@@ -23,7 +23,7 @@ const isMobile = (): boolean =>
 
 export const setupCopyCode = (): void => {
   const { copy } = useClipboard({ legacy: true })
-  const locale = useLocaleConfig(__COPY_CODE_LOCALES__)
+  const locale = useLocaleConfig(__CC_LOCALES__)
   const page = usePageData()
 
   const insertCopyButton = (codeBlockElement: HTMLElement): void => {
@@ -49,10 +49,10 @@ export const setupCopyCode = (): void => {
   const appendCopyButton = (): void => {
     nextTick().then(() =>
       setTimeout(() => {
-        __COPY_CODE_SELECTOR__.forEach((item) => {
+        __CC_SELECTOR__.forEach((item) => {
           document.querySelectorAll<HTMLElement>(item).forEach(insertCopyButton)
         })
-      }, __COPY_CODE_DELAY__),
+      }, __CC_DELAY__),
     )
   }
 
@@ -79,14 +79,14 @@ export const setupCopyCode = (): void => {
         button.classList.remove('copied')
         button.blur()
         timeoutIdMap.delete(button)
-      }, __COPY_CODE_DURATION__) as unknown as number
+      }, __CC_DURATION__) as unknown as number
 
       timeoutIdMap.set(button, timeoutId)
     })
   }
 
   onMounted(() => {
-    const enabled = !isMobile() || __COPY_CODE_SHOW_IN_MOBILE__
+    const enabled = !isMobile() || __CC_SHOW_IN_MOBILE__
 
     if (enabled) appendCopyButton()
 
