@@ -1,1 +1,1 @@
-export * from './setupCopyCode.js'
+export * from './useCopyCode.js'
