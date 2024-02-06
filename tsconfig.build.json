@@ -12,6 +12,7 @@
     { "path": "./plugins/plugin-catalog/tsconfig.build.json" },
     { "path": "./plugins/plugin-container/tsconfig.build.json" },
     { "path": "./plugins/plugin-copy-code/tsconfig.build.json" },
+    { "path": "./plugins/plugin-copyright/tsconfig.build.json" },
     { "path": "./plugins/plugin-docsearch/tsconfig.build.json" },
     {
       "path": "./plugins/plugin-external-link-icon/tsconfig.build.json"
@@ -29,15 +30,18 @@
       "path": "./plugins/plugin-palette/tsconfig.build.json"
     },
     {
+      "path": "./plugins/plugin-photo-swipe/tsconfig.build.json"
+    },
+    {
       "path": "./plugins/plugin-prismjs/tsconfig.build.json"
     },
     { "path": "./plugins/plugin-pwa/tsconfig.build.json" },
     { "path": "./plugins/plugin-pwa-popup/tsconfig.build.json" },
     { "path": "./plugins/plugin-redirect/tsconfig.build.json" },
-    { "path": "./plugins/plugin-reading-time/tsconfig.build.json" },
     {
       "path": "./plugins/plugin-register-components/tsconfig.build.json"
     },
+    { "path": "./plugins/plugin-reading-time/tsconfig.build.json" },
     { "path": "./plugins/plugin-remove-pwa/tsconfig.build.json" },
     { "path": "./plugins/plugin-rtl/tsconfig.build.json" },
     { "path": "./plugins/plugin-search/tsconfig.build.json" },
