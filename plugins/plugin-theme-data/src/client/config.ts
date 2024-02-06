@@ -1,7 +1,7 @@
 import { setupDevtoolsPlugin } from '@vue/devtools-api'
 import { computed } from 'vue'
-import type { ClientConfig, RouteLocaleRef } from 'vuepress/client'
-import { defineClientConfig, routeLocaleSymbol } from 'vuepress/client'
+import type { ClientConfig, ClientData } from 'vuepress/client'
+import { clientDataSymbol, defineClientConfig } from 'vuepress/client'
 import {
   resolveThemeLocaleData,
   themeLocaleDataSymbol,
@@ -12,10 +12,10 @@ export default defineClientConfig({
   enhance({ app }) {
     // provide theme data & theme locale data
     const themeData = useThemeData()
-    const routeLocale: RouteLocaleRef =
-      app._context.provides[routeLocaleSymbol as unknown as symbol]
+    const clientData: ClientData =
+      app._context.provides[clientDataSymbol as unknown as symbol]
     const themeLocaleData = computed(() =>
-      resolveThemeLocaleData(themeData.value, routeLocale.value),
+      resolveThemeLocaleData(themeData.value, clientData.routeLocale.value),
     )
     app.provide(themeLocaleDataSymbol, themeLocaleData)
 
