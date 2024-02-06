@@ -41,7 +41,7 @@ export default {
 
   该配置项会被传递到 Shikiji 的 `getHighlighter()` 方法中。
 
-  你需要明确传入所有你使用的语言列表，否则 Shikiji 将不会加载任何语言。
+  你最好明确传入所有你使用的语言列表，否则 Shikiji 会加载所有语言，并可能影响性能。
 
 - 参考：
   - [shikiji > Languages](https://shikiji.netlify.app/languages)
