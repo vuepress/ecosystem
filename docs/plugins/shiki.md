@@ -41,7 +41,7 @@ export default {
 
   This option will be forwarded to `getHighlighter()` method of shikiji.
 
-  You need to provide the languages list you are using explicitly, otherwise shikiji won't load any languages.
+  You'd better provide the languages list you are using explicitly, otherwise shikiji will load all languages and can affect performance.
 
 - Also see:
   - [shikiji > Languages](https://shikiji.netlify.app/languages)
