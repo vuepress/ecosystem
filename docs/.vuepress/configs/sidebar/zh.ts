@@ -14,6 +14,7 @@ export const sidebarZh: SidebarConfig = {
         '/zh/plugins/google-analytics',
         '/zh/plugins/medium-zoom',
         '/zh/plugins/nprogress',
+        '/zh/plugins/photo-swipe',
         '/zh/plugins/redirect',
         '/zh/plugins/register-components',
       ],

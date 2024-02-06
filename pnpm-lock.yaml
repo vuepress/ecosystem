@@ -116,6 +116,9 @@ importers:
       '@vuepress/plugin-nprogress':
         specifier: workspace:*
         version: link:../plugins/plugin-nprogress
+      '@vuepress/plugin-photo-swipe':
+        specifier: workspace:*
+        version: link:../plugins/plugin-photo-swipe
       '@vuepress/plugin-pwa-popup':
         specifier: workspace:*
         version: link:../plugins/plugin-pwa-popup
