@@ -540,9 +540,9 @@ importers:
 
   plugins/plugin-shiki:
     dependencies:
-      shikiji:
-        specifier: ^0.10.2
-        version: 0.10.2
+      shiki:
+        specifier: ^1.0.0-rc.0
+        version: 1.0.0-rc.0
       vuepress:
         specifier: 2.0.0-rc.6
         version: 2.0.0-rc.6(@vuepress/bundler-vite@2.0.0-rc.6)(@vuepress/bundler-webpack@2.0.0-rc.6)(typescript@5.3.3)(vue@3.4.15)
@@ -3269,6 +3269,10 @@ packages:
     os: [win32]
     requiresBuild: true
     optional: true
+
+  /@shikijs/core@1.0.0-rc.0:
+    resolution: {integrity: sha512-j/7te+hvEYlQTvk/wPoA+1rOklZTz8QuyqVvV81KcEN/g1WXKVnqp9WZ7jFuv0ZVLqBtDx/V8viRDROJniyMLA==}
+    dev: false
 
   /@sideway/address@4.1.5:
     resolution: {integrity: sha512-IqO/DUQHUkPeixNQ8n0JA6102hT9CmaljNTPmQ1u8MEhBo/R4Q8eKLN/vGZxuebwOroDB4cbpjheD4+/sKFK4Q==}
@@ -10390,14 +10394,10 @@ packages:
   /shell-quote@1.8.1:
     resolution: {integrity: sha512-6j1W9l1iAs/4xYBI1SYOVZyFcCis9b4KCLQ8fgAGG07QvzaRLVVRQvAy85yNmmZSjYjg4MWh4gNvlPujU/5LpA==}
 
-  /shikiji-core@0.10.2:
-    resolution: {integrity: sha512-9Of8HMlF96usXJHmCL3Gd0Fcf0EcyJUF9m8EoAKKd98mHXi0La2AZl1h6PegSFGtiYcBDK/fLuKbDa1l16r1fA==}
-    dev: false
-
-  /shikiji@0.10.2:
-    resolution: {integrity: sha512-wtZg3T0vtYV2PnqusWQs3mDaJBdCPWxFDrBM/SE5LfrX92gjUvfEMlc+vJnoKY6Z/S44OWaCRzNIsdBRWcTAiw==}
+  /shiki@1.0.0-rc.0:
+    resolution: {integrity: sha512-aeEjERF5qeK+YChgEv94LOjcEcjZBLd0acPaHginz0N8FvyTn2iSLhO0AtoqfvlZ8cWGCJRKLWtDApnQVQB6/Q==}
     dependencies:
-      shikiji-core: 0.10.2
+      '@shikijs/core': 1.0.0-rc.0
     dev: false
 
   /side-channel@1.0.4:

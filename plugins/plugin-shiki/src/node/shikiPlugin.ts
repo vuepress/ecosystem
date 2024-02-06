@@ -1,4 +1,3 @@
-import { getHighlighter } from 'shikiji'
 import type {
   BundledLanguage,
   BundledTheme,
@@ -7,7 +6,8 @@ import type {
   StringLiteralUnion,
   ThemeRegistration,
   ThemeRegistrationRaw,
-} from 'shikiji'
+} from 'shiki'
+import { bundledLanguages, getHighlighter } from 'shiki/bundle/full'
 import type { Plugin } from 'vuepress/core'
 
 export type ShikiLang =
@@ -52,8 +52,10 @@ export interface ShikiPluginOptions {
   }
 }
 
+const DEFAULT_LANGS = Object.keys(bundledLanguages)
+
 export const shikiPlugin = ({
-  langs,
+  langs = DEFAULT_LANGS,
   theme = 'nord',
   themes,
 }: ShikiPluginOptions = {}): Plugin => ({
