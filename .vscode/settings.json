@@ -36,7 +36,6 @@
     "preload",
     "prismjs",
     "shiki",
-    "shikiji",
     "slugify",
     "tsbuildinfo",
     "unmount",

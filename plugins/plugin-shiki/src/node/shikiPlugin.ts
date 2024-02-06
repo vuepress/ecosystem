@@ -27,24 +27,24 @@ export interface ShikiPluginOptions {
   /**
    * Languages to be loaded.
    *
-   * Shikiji does not preload any languages to avoid extra overhead. So you need
+   * Shiki does not preload any languages to avoid extra overhead. So you need
    * to specify the languages you want to use.
    *
-   * @see https://shikiji.netlify.app/languages
+   * @see https://shiki.style/languages
    */
   langs?: ShikiLang[]
 
   /**
    * The single theme to use
    *
-   * @see https://shikiji.netlify.app/themes
+   * @see https://shiki.style/themes
    */
   theme?: ShikiTheme
 
   /**
    * The dark and light themes to use
    *
-   * @see https://shikiji.netlify.app/themes
+   * @see https://shiki.style/themes
    */
   themes?: {
     dark: ShikiTheme

@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/plugin-shiki" />
 
-This plugin will enable syntax highlighting for markdown code fence with [Shiki](https://shiki.matsu.io/) ([Shikiji](https://shikiji.netlify.app/)).
+This plugin will enable syntax highlighting for markdown code fence with [Shiki](https://shiki.style/).
 
 ::: tip
 [Shiki](https://shiki.matsu.io/) is the syntax highlighter being used by VSCode. It has higher fidelity, but it could be slower than [Prism.js](https://prismjs.com/), especially when you have a lot of code blocks.
@@ -37,14 +37,14 @@ export default {
 
 - Details:
 
-  Languages of code blocks to be parsed by shikiji.
+  Languages of code blocks to be parsed by Shiki.
 
-  This option will be forwarded to `getHighlighter()` method of shikiji.
+  This option will be forwarded to `getHighlighter()` method of Shiki.
 
-  You'd better provide the languages list you are using explicitly, otherwise shikiji will load all languages and can affect performance.
+  You'd better provide the languages list you are using explicitly, otherwise Shiki will load all languages and can affect performance.
 
 - Also see:
-  - [shikiji > Languages](https://shikiji.netlify.app/languages)
+  - [Shiki > Languages](https://shiki.style/languages)
 
 ### theme
 
@@ -54,12 +54,12 @@ export default {
 
 - Details:
 
-  Theme of shikiji.
+  Theme of Shiki.
 
-  This option will be forwarded to `codeToHtml()` method of shikiji.
+  This option will be forwarded to `codeToHtml()` method of Shiki.
 
 - Also see:
-  - [shikiji > Themes](https://shikiji.netlify.app/themes)
+  - [Shiki > Themes](https://shiki.style/themes)
 
 ### themes
 
@@ -67,9 +67,9 @@ export default {
 
 - Details:
 
-  Dark / Light Dual themes of shikiji.
+  Dark / Light Dual themes of Shiki.
 
-  This option will be forwarded to `codeToHtml()` method of shikiji.
+  This option will be forwarded to `codeToHtml()` method of Shiki.
 
 - Also see:
-  - [shikiji > Dual Themes](https://shikiji.netlify.app/guide/dual-themes)
+  - [Shiki > Dual Themes](https://shiki.style/guide/dual-themes)

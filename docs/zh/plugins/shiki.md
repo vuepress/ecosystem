@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/plugin-shiki" />
 
-该插件使用 [Shiki](https://shiki.matsu.io/) ([Shikiji](https://shikiji.netlify.app/)) 来为 Markdown 代码块启用代码高亮。
+该插件使用 [Shiki](https://shiki.matsu.io/) 来为 Markdown 代码块启用代码高亮。
 
 ::: tip
 [Shiki](https://shiki.matsu.io/) 是 VSCode 正在使用的代码高亮器。它具有更高的保真度，但可能会比 [Prism.js](https://prismjs.com/) 要慢一些，特别是在有大量代码块需要处理的时候。
@@ -37,14 +37,14 @@ export default {
 
 - 详情：
 
-  Shikiji 要解析的代码块的语言。
+  Shiki 要解析的代码块的语言。
 
-  该配置项会被传递到 Shikiji 的 `getHighlighter()` 方法中。
+  该配置项会被传递到 Shiki 的 `getHighlighter()` 方法中。
 
-  你最好明确传入所有你使用的语言列表，否则 Shikiji 会加载所有语言，并可能影响性能。
+  你最好明确传入所有你使用的语言列表，否则 Shiki 会加载所有语言，并可能影响性能。
 
 - 参考：
-  - [shikiji > Languages](https://shikiji.netlify.app/languages)
+  - [shiki > Languages](https://shiki.style/languages)
 
 ### theme
 
@@ -54,12 +54,12 @@ export default {
 
 - 详情：
 
-  Shikiji 的主题。
+  Shiki 的主题。
 
-  该配置项会被传递到 Shikiji 的 `codeToHtml()` 方法中。
+  该配置项会被传递到 Shiki 的 `codeToHtml()` 方法中。
 
 - 参考：
-  - [shikiji > Themes](https://shikiji.netlify.app/themes)
+  - [Shiki > Themes](https://shiki.style/themes)
 
 ### themes
 
@@ -67,9 +67,9 @@ export default {
 
 - 详情：
 
-  Shikiji 的暗黑和明亮模式双主题。
+  Shiki 的暗黑和明亮模式双主题。
 
-  该配置项会被传递到 Shikiji 的 `codeToHtml()` 方法中。
+  该配置项会被传递到 Shiki 的 `codeToHtml()` 方法中。
 
 - 参考：
-  - [shikiji > Dual Themes](https://shikiji.netlify.app/guide/dual-themes)
+  - [Shiki > Dual Themes](https://shiki.style/guide/dual-themes)
