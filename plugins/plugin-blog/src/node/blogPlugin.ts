@@ -108,20 +108,27 @@ export const blogPlugin =
           app.env.isDebug,
         )
 
-        const pages = (
-          await Promise.all(
-            [...categoryResult.pageOptions, ...typeResult.pageOptions].map(
-              (pageOptions) => {
-                if (app.pages.every((page) => page.path !== pageOptions.path))
-                  return createPage(app, pageOptions)
+        await Promise.all(
+          [...categoryResult.pageOptions, ...typeResult.pageOptions].map(
+            async (pageOptions) => {
+              const index = app.pages.findIndex(
+                (page) => page.path === pageOptions.path,
+              )
 
-                return null
-              },
-            ),
-          )
-        ).filter((page): page is Page => page !== null)
+              if (index !== -1) {
+                logger.warn('Overriding existing page:', pageOptions.path)
 
-        app.pages.push(...pages)
+                const index = app.pages.findIndex(
+                  (page) => page.path === pageOptions.path,
+                )
+
+                app.pages.splice(index, 1, await createPage(app, pageOptions))
+              }
+
+              app.pages.push(await createPage(app, pageOptions))
+            },
+          ),
+        )
 
         // store data for onPrepared and onWatched
         blogPagePaths = [
