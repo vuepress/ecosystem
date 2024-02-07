@@ -26,7 +26,6 @@ export const navbarZh: NavbarConfig = [
           '/zh/plugins/copy-code',
           '/zh/plugins/copyright',
           '/zh/plugins/external-link-icon',
-          '/zh/plugins/google-analytics',
           '/zh/plugins/medium-zoom',
           '/zh/plugins/nprogress',
           '/zh/plugins/photo-swipe',
@@ -52,7 +51,12 @@ export const navbarZh: NavbarConfig = [
       },
       {
         text: '搜索引擎增强',
-        children: ['/zh/plugins/seo/', '/zh/plugins/sitemap/'],
+        children: [
+          '/zh/plugins/baidu-analytics',
+          '/zh/plugins/google-analytics',
+          '/zh/plugins/seo/',
+          '/zh/plugins/sitemap/',
+        ],
       },
       {
         text: '语法高亮',

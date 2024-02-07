@@ -11,7 +11,6 @@ export const sidebarEn: SidebarConfig = {
         '/plugins/copy-code',
         '/plugins/copyright',
         '/plugins/external-link-icon',
-        '/plugins/google-analytics',
         '/plugins/medium-zoom',
         '/plugins/nprogress',
         '/plugins/photo-swipe',
@@ -54,7 +53,12 @@ export const sidebarEn: SidebarConfig = {
         {
           text: 'SEO',
           link: '/plugins/seo/',
-          children: ['/plugins/seo/guide', '/plugins/seo/config'],
+          children: [
+            '/plugins/baidu-analytics',
+            '/plugins/google-analytics',
+            '/plugins/seo/guide',
+            '/plugins/seo/config',
+          ],
         },
         {
           text: 'Sitemap',
