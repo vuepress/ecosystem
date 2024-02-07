@@ -26,7 +26,6 @@ export const navbarEn: NavbarConfig = [
           '/plugins/copy-code',
           '/plugins/copyright',
           '/plugins/external-link-icon',
-          '/plugins/google-analytics',
           '/plugins/medium-zoom',
           '/plugins/nprogress',
           '/plugins/photo-swipe',
@@ -48,7 +47,12 @@ export const navbarEn: NavbarConfig = [
       },
       {
         text: 'SEO',
-        children: ['/plugins/seo/', '/plugins/sitemap/'],
+        children: [
+          '/plugins/baidu-analytics',
+          '/plugins/google-analytics',
+          '/plugins/seo/',
+          '/plugins/sitemap/',
+        ],
       },
       {
         text: 'Syntax Highlighting',

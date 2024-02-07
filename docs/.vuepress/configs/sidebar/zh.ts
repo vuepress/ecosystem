@@ -11,7 +11,6 @@ export const sidebarZh: SidebarConfig = {
         '/zh/plugins/copy-code',
         '/zh/plugins/copyright',
         '/zh/plugins/external-link-icon',
-        '/zh/plugins/google-analytics',
         '/zh/plugins/medium-zoom',
         '/zh/plugins/nprogress',
         '/zh/plugins/photo-swipe',
@@ -59,7 +58,12 @@ export const sidebarZh: SidebarConfig = {
         {
           text: '搜索引擎增强',
           link: '/zh/plugins/seo/',
-          children: ['/zh/plugins/seo/guide', '/zh/plugins/seo/config'],
+          children: [
+            '/zh/plugins/baidu-analytics',
+            '/zh/plugins/google-analytics',
+            '/zh/plugins/seo/guide',
+            '/zh/plugins/seo/config',
+          ],
         },
         {
           text: '站点地图',
