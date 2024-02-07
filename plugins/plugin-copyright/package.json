@@ -39,9 +39,9 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:~2.0.0-rc.12",
+    "@vuepress/helper": "workspace:~*",
     "@vueuse/core": "^10.7.2",
-    "vue": "^3.4.15",
+    "vue": "^3.4.16",
     "vue-router": "^4.2.5"
   },
   "peerDependencies": {

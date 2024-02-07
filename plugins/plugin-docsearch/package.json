@@ -43,7 +43,7 @@
     "@docsearch/react": "^3.5.2",
     "@vueuse/core": "^10.7.2",
     "ts-debounce": "^4.0.0",
-    "vue": "^3.4.15",
+    "vue": "^3.4.16",
     "vue-router": "^4.2.5"
   },
   "peerDependencies": {

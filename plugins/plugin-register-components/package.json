@@ -35,7 +35,7 @@
     "copy": "cpx \"src/**/*.{css,svg}\" lib"
   },
   "dependencies": {
-    "chokidar": "^3.5.3"
+    "chokidar": "^3.6.0"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.7"

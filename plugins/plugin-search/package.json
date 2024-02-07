@@ -37,8 +37,8 @@
     "style": "sass src:lib --no-source-map"
   },
   "dependencies": {
-    "chokidar": "^3.5.3",
-    "vue": "^3.4.15",
+    "chokidar": "^3.6.0",
+    "vue": "^3.4.16",
     "vue-router": "^4.2.5"
   },
   "peerDependencies": {

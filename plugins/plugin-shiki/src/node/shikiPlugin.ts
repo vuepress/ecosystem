@@ -7,7 +7,7 @@ import type {
   ThemeRegistration,
   ThemeRegistrationRaw,
 } from 'shiki'
-import { bundledLanguages, getHighlighter } from 'shiki/bundle/full'
+import { bundledLanguages, getHighlighter } from 'shiki'
 import type { Plugin } from 'vuepress/core'
 
 export type ShikiLang =
