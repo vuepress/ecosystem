@@ -183,7 +183,8 @@ export const blogPlugin =
               ...typeResult.pageOptions,
             ]
 
-            await prepareStore(app, store)
+            await prepareCategoriesMap(app, categoryResult.categoriesMap)
+            await prepareTypesMap(app, typeResult.typesMap)
 
             const pagesToBeAdded = newPageOptions.filter(
               (pageOptions) => !blogPagePaths.includes(pageOptions.path!),
