@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.14](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.13...v2.0.0-rc.14) (2024-02-08)
+
+### Bug Fixes
+
+- **plugin-blog:** fix hotReload, close [#62](https://github.com/vuepress/ecosystem/issues/62) ([204cf8f](https://github.com/vuepress/ecosystem/commit/204cf8f735f43902a4289432697f96bc0200e50b))
+- **plugin-blog:** override existing page at startup ([a006959](https://github.com/vuepress/ecosystem/commit/a0069597d6052b4353b83291ab05d1d545719824))
+
+### Features
+
+- **plugin-baidu-analytics:** add plugin-baidu-analytics ([#70](https://github.com/vuepress/ecosystem/issues/70)) ([0d5810e](https://github.com/vuepress/ecosystem/commit/0d5810e3d5634c47c9d0f1132637f4e358fb2fce))
+
 # [2.0.0-rc.13](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.12...v2.0.0-rc.13) (2024-02-06)
 
 ### Bug Fixes

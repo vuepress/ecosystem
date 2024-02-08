@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-sitemap",
-  "version": "2.0.0-rc.12",
+  "version": "2.0.0-rc.14",
   "description": "Sitemap plugin for vuepress",
   "keywords": [
     "vuepress",
@@ -40,7 +40,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:~*",
+    "@vuepress/helper": "workspace:~2.0.0-rc.14",
     "sitemap": "^7.1.1"
   },
   "devDependencies": {
