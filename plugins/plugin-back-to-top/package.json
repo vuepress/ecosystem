@@ -37,9 +37,9 @@
     "style": "sass src:lib --no-source-map"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:~2.0.0-rc.14",
+    "@vuepress/helper": "workspace:~",
     "@vueuse/core": "^10.7.2",
-    "vue": "^3.4.16"
+    "vue": "^3.4.19"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.7"

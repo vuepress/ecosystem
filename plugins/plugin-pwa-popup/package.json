@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@vuepress/plugin-pwa": "workspace:*",
-    "vue": "^3.4.16"
+    "vue": "^3.4.19"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.7"
