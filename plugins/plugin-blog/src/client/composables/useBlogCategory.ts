@@ -41,10 +41,10 @@ export const useBlogCategory = <
       return { path: '/', map: {} }
     }
 
-    if (!blogCategoryMap.value[mapKey])
+    if (!categoryMapRef.value[mapKey])
       throw new Error(`useBlogCategory: key ${mapKey} is invalid`)
 
-    const currentMap = blogCategoryMap.value[mapKey][routeLocale.value]
+    const currentMap = categoryMapRef.value[mapKey][routeLocale.value]
     const result: BlogCategoryData<T> = {
       path: currentMap.path,
       map: {},

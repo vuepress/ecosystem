@@ -39,10 +39,10 @@ export const useBlogType = <
       return { path: '/', items: [] }
     }
 
-    if (!blogTypeMap.value[mapKey])
+    if (!typeMapRef.value[mapKey])
       throw new Error(`useBlogType: key ${key} is invalid`)
 
-    const configMap = blogTypeMap.value[mapKey][routeLocale.value]
+    const configMap = typeMapRef.value[mapKey][routeLocale.value]
     const result: BlogTypeData<T> = {
       path: configMap.path,
       items: [],
