@@ -109,7 +109,6 @@ export default {
 
 但是如果你不设置 `skipWaiting` 或设置为 `false` ，你就需要手动激活新的 Service Worker 。
 
-- 对于用户，你可以配合我们提供的 [pwa-popup](./pwa-popup.md) 插件一起使用。
 - 对于开发者，你可以使用该插件提供的 [Composition API](#composition-api) 来控制 Service Worker 的行为。
 
 ### serviceWorkerFilename

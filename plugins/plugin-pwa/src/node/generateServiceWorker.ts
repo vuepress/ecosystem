@@ -1,54 +1,99 @@
+import { endsWith } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
-import { logger } from 'vuepress/utils'
-import type { GenerateSWOptions } from 'workbox-build'
+import { colors } from 'vuepress/utils'
+import type {
+  ManifestEntry,
+  ManifestTransform,
+  ManifestTransformResult,
+} from 'workbox-build'
+import { generateSW } from 'workbox-build'
+import { logger } from './logger.js'
+import type { PWAPluginOptions } from './options.js'
 
-const assetsExtensions = [
-  // basic
-  'html',
+const imageExtensions = ['png', 'jpg', 'jpeg', 'webp', 'bmp', 'gif']
+const cacheExtensions = [
   'js',
   'css',
-  // images
-  'png',
-  'jpg',
-  'jpeg',
-  'gif',
   'svg',
-  // fonts
   'woff',
   'woff2',
   'eot',
-  'tff',
+  'ttf',
   'otf',
 ]
 
-export type GenerateSWConfig = Omit<
-  GenerateSWOptions,
-  'swDest' | 'globDirectory'
->
+const imageFilter =
+  (maxSize = 1024): ManifestTransform =>
+  (
+    manifestEntries: (ManifestEntry & { size: number })[],
+  ): ManifestTransformResult => {
+    const warnings: string[] = []
+    const manifest: (ManifestEntry & { size: number })[] = []
+
+    for (const entry of manifestEntries) {
+      const { url, size } = entry
+
+      if (imageExtensions.some((ext) => endsWith(url, `.${ext}`)))
+        if (size > maxSize * 1024)
+          warnings.push(`Skipped ${url}, as it's ${Math.ceil(size / 1024)} KB.`)
+        else manifest.push(entry)
+      else manifest.push(entry)
+    }
+
+    return { warnings, manifest }
+  }
 
 export const generateServiceWorker = async (
   app: App,
-  serviceWorkerFilename: string,
-  generateSWConfig: GenerateSWConfig,
+  options: PWAPluginOptions,
 ): Promise<void> => {
-  // lazy-load workbox-build
-  const { generateSW } = await import('workbox-build')
+  const { succeed } = logger.load('Generating service worker')
 
-  const globDirectory = app.dir.dest()
-  const swDest = app.dir.dest(serviceWorkerFilename)
+  const globPatterns = [`**/*.{${cacheExtensions.join(',')}}`]
 
-  const { warnings } = await generateSW({
+  if (options.cacheHTML) globPatterns.push('**/*.html')
+  else globPatterns.push('./index.html', './404.html')
+
+  if (options.cachePic) globPatterns.push(`**/*.{${imageExtensions.join(',')}}`)
+
+  await generateSW({
     dontCacheBustURLsMatching: new RegExp(
-      `\\.[0-9a-f]{8}\\.(${assetsExtensions.join('|')})$`,
+      `\\.[0-9a-f]{8}\\.(${['html', ...cacheExtensions, ...imageExtensions].join('|')})$`,
     ),
-    globPatterns: [`**/*.{${assetsExtensions.join(',')}}`],
+    globPatterns,
+    cleanupOutdatedCaches: true,
+    clientsClaim: true,
+    maximumFileSizeToCacheInBytes: (options.maxSize || 2048) * 1024,
+    manifestTransforms: [imageFilter(options.maxPicSize)],
     mode: app.env.isDebug ? 'development' : 'production',
     sourcemap: app.env.isDebug,
-    ...generateSWConfig,
+    ...options.generateSWConfig,
     // should not be override by user config
-    globDirectory,
-    swDest,
-  })
+    globDirectory: app.dir.dest(),
+    swDest: app.dir.dest(options.serviceWorkerFilename ?? 'service-worker.js'),
+  }).then(({ count, size, warnings }) => {
+    succeed()
 
-  warnings.forEach((warning) => logger.warn('[@vuepress/plugin-pwa]', warning))
+    logger.info(
+      `Precache ${colors.cyan(`${count} files`)}, totaling ${colors.cyan(
+        `${(size / 1024 / 1024).toFixed(2)} Mb.`,
+      )}.`,
+    )
+
+    if (warnings.length)
+      logger.warn(`\n${warnings.map((warning) => `  · ${warning}`).join('\n')}`)
+
+    if (size > 104857600)
+      logger.error(
+        `Cache Size is larger than 100MB, so that it can not be registered on all browsers.\n${colors.blue(
+          'Please consider disable `cacheHTML` and `cachePic`, or set `maxSize` and `maxPicSize` option.\n',
+        )}`,
+      )
+    else if (size > 52428800)
+      logger.warn(
+        `\nCache Size is larger than 50MB, which will not be registered on Safari.\n${colors.blue(
+          'Please consider disable `cacheHTML` and `cachePic`, or set `maxSize` and `maxPicSize` option.\n',
+        )}`,
+      )
+  })
 }

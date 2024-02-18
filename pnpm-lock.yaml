@@ -119,9 +119,6 @@ importers:
       '@vuepress/plugin-photo-swipe':
         specifier: workspace:*
         version: link:../plugins/plugin-photo-swipe
-      '@vuepress/plugin-pwa-popup':
-        specifier: workspace:*
-        version: link:../plugins/plugin-pwa-popup
       '@vuepress/plugin-redirect':
         specifier: workspace:*
         version: link:../plugins/plugin-redirect
@@ -170,6 +167,9 @@ importers:
       '@vuepress/plugin-feed':
         specifier: workspace:*
         version: link:../plugins/plugin-feed
+      '@vuepress/plugin-pwa':
+        specifier: workspace:*
+        version: link:../plugins/plugin-pwa
       '@vuepress/plugin-redirect':
         specifier: workspace:*
         version: link:../plugins/plugin-redirect
@@ -458,6 +458,12 @@ importers:
 
   plugins/plugin-pwa:
     dependencies:
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../tools/helper
+      '@vueuse/core':
+        specifier: ^10.7.2
+        version: 10.7.2(vue@3.4.19)
       mitt:
         specifier: ^3.0.1
         version: 3.0.1
@@ -473,18 +479,6 @@ importers:
       workbox-build:
         specifier: ^7.0.0
         version: 7.0.0
-
-  plugins/plugin-pwa-popup:
-    dependencies:
-      '@vuepress/plugin-pwa':
-        specifier: workspace:*
-        version: link:../plugin-pwa
-      vue:
-        specifier: ^3.4.19
-        version: 3.4.19(typescript@5.3.3)
-      vuepress:
-        specifier: 2.0.0-rc.8
-        version: 2.0.0-rc.8(@vuepress/bundler-vite@2.0.0-rc.8)(@vuepress/bundler-webpack@2.0.0-rc.8)(typescript@5.3.3)(vue@3.4.19)
 
   plugins/plugin-reading-time:
     dependencies:

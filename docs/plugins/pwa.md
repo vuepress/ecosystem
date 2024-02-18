@@ -109,7 +109,6 @@ export default {
 
 But if you omit `skipWaiting` or set it to `false`, you have to activate the new service worker manually:
 
-- For users, you can use our [pwa-popup](./pwa-popup.md) plugin together.
 - For developers, you can use our [composition API](#composition-api) to take control of the service worker behavior.
 
 ### serviceWorkerFilename

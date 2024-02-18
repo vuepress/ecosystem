@@ -1,8 +1,10 @@
 import type { Emitter } from 'mitt'
-import { inject } from 'vue'
 import type { InjectionKey } from 'vue'
+import { inject } from 'vue'
 
-export type PwaEvent = Emitter<{
+declare const __VUEPRESS_DEV__: boolean
+
+export type PWAEvent = Emitter<{
   ready: ServiceWorkerRegistration
   registered: ServiceWorkerRegistration
   cached: ServiceWorkerRegistration
@@ -12,12 +14,14 @@ export type PwaEvent = Emitter<{
   error: Error
 }>
 
-export const pwaEventSymbol: InjectionKey<PwaEvent> = Symbol('pwaEvent')
+export const pwaEventSymbol: InjectionKey<PWAEvent> = Symbol(
+  __VUEPRESS_DEV__ ? 'PWAEvent' : '',
+)
 
-export const usePwaEvent = (): PwaEvent => {
+export const usePWAEvent = (): PWAEvent => {
   const pwaEvent = inject(pwaEventSymbol)
-  if (!pwaEvent) {
-    throw new Error('usePwaEvent() is called without provider.')
-  }
+
+  if (!pwaEvent) throw new Error('usePWAEvent() is called without provider.')
+
   return pwaEvent
 }

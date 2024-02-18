@@ -5,6 +5,7 @@ import { blogPlugin } from '@vuepress/plugin-blog'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { copyrightPlugin } from '@vuepress/plugin-copyright'
 import { feedPlugin } from '@vuepress/plugin-feed'
+import { pwaPlugin } from '@vuepress/plugin-pwa'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress/cli'
@@ -86,6 +87,8 @@ export default defineUserConfig({
       },
     },
   }),
+
+  shouldPrefetch: false,
 
   plugins: [
     blogPlugin({
@@ -202,6 +205,17 @@ export default defineUserConfig({
       atom: true,
       json: true,
       rss: true,
+    }),
+    pwaPlugin({
+      manifest: {
+        icons: [
+          {
+            src: '/logo.png',
+            sizes: '600x600',
+            type: 'image/png',
+          },
+        ],
+      },
     }),
     redirectPlugin({
       config: {
