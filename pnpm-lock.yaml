@@ -119,6 +119,9 @@ importers:
       '@vuepress/plugin-photo-swipe':
         specifier: workspace:*
         version: link:../plugins/plugin-photo-swipe
+      '@vuepress/plugin-pwa':
+        specifier: workspace:*
+        version: link:../plugins/plugin-pwa
       '@vuepress/plugin-redirect':
         specifier: workspace:*
         version: link:../plugins/plugin-redirect

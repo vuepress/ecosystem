@@ -28,7 +28,7 @@ export const SWUpdatePopup = defineComponent({
 
   slots: Object as SlotsType<{
     default?: (props: {
-      enabled: boolean
+      isReady: boolean
       reload: () => void
     }) => VNode[] | VNode | null
   }>,
@@ -37,7 +37,7 @@ export const SWUpdatePopup = defineComponent({
     const locale = useLocaleConfig(props.locales)
     const registration = shallowRef<ServiceWorkerRegistration>()
 
-    const enabled = computed(() => Boolean(registration.value))
+    const isReady = computed(() => Boolean(registration.value))
 
     const reload = (): void => {
       if (registration.value) {
@@ -60,10 +60,10 @@ export const SWUpdatePopup = defineComponent({
         { name: 'popup' },
         () =>
           slots.default?.({
-            enabled: enabled.value,
+            isReady: isReady.value,
             reload,
           }) ||
-          (enabled.value
+          (isReady.value
             ? h(
                 'button',
                 {

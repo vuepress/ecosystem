@@ -20,21 +20,21 @@ export const SWHintPopup = defineComponent({
 
   slots: Object as SlotsType<{
     default?: (props: {
-      enabled: boolean
-      uninstall: () => void
+      found: boolean
+      refresh: () => void
     }) => VNode[] | VNode | null
   }>,
 
   setup(props, { slots }) {
     const locale = useLocaleConfig(props.locales)
-    const enabled = ref(false)
+    const found = ref(false)
 
-    const uninstall = (): void => {
-      if (enabled.value) {
+    const refresh = (): void => {
+      if (found.value) {
         // force refresh
         // @ts-expect-error: A non-standard API
         window.location.reload(true)
-        enabled.value = false
+        found.value = false
       }
     }
 
@@ -44,12 +44,12 @@ export const SWHintPopup = defineComponent({
       event.on('updatefound', () => {
         navigator.serviceWorker.getRegistration().then((registration) => {
           // Check whether a valid service worker is active
-          if (registration && registration.active) enabled.value = true
+          if (registration && registration.active) found.value = true
         })
       })
 
       event.on('updated', () => {
-        enabled.value = false
+        found.value = false
       })
     })
 
@@ -59,17 +59,17 @@ export const SWHintPopup = defineComponent({
         { name: 'popup' },
         () =>
           slots.default?.({
-            enabled: enabled.value,
-            uninstall,
+            found: found.value,
+            refresh,
           }) ||
-          (enabled.value
+          (found.value
             ? h(
                 'button',
                 {
                   type: 'button',
                   class: 'sw-hint-popup',
                   tabindex: 0,
-                  onClick: () => uninstall(),
+                  onClick: () => refresh(),
                 },
                 [
                   locale.value.hint,

@@ -43,7 +43,7 @@ export const navbarEn: NavbarConfig = [
       },
       {
         text: 'PWA',
-        children: ['/plugins/pwa', '/plugins/remove-pwa'],
+        children: ['/plugins/pwa/', '/plugins/remove-pwa'],
       },
       {
         text: 'SEO',

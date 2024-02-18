@@ -54,7 +54,8 @@ export const generateServiceWorker = async (
   if (options.cacheHTML) globPatterns.push('**/*.html')
   else globPatterns.push('./index.html', './404.html')
 
-  if (options.cachePic) globPatterns.push(`**/*.{${imageExtensions.join(',')}}`)
+  if (options.cacheImage)
+    globPatterns.push(`**/*.{${imageExtensions.join(',')}}`)
 
   await generateSW({
     dontCacheBustURLsMatching: new RegExp(
@@ -64,7 +65,7 @@ export const generateServiceWorker = async (
     cleanupOutdatedCaches: true,
     clientsClaim: true,
     maximumFileSizeToCacheInBytes: (options.maxSize || 2048) * 1024,
-    manifestTransforms: [imageFilter(options.maxPicSize)],
+    manifestTransforms: [imageFilter(options.maxImageSize)],
     mode: app.env.isDebug ? 'development' : 'production',
     sourcemap: app.env.isDebug,
     ...options.generateSWConfig,
@@ -86,13 +87,13 @@ export const generateServiceWorker = async (
     if (size > 104857600)
       logger.error(
         `Cache Size is larger than 100MB, so that it can not be registered on all browsers.\n${colors.blue(
-          'Please consider disable `cacheHTML` and `cachePic`, or set `maxSize` and `maxPicSize` option.\n',
+          'Please consider disable `cacheHTML` and `cacheImage`, or set `maxSize` and `maxImageSize` option.\n',
         )}`,
       )
     else if (size > 52428800)
       logger.warn(
         `\nCache Size is larger than 50MB, which will not be registered on Safari.\n${colors.blue(
-          'Please consider disable `cacheHTML` and `cachePic`, or set `maxSize` and `maxPicSize` option.\n',
+          'Please consider disable `cacheHTML` and `cacheImage`, or set `maxSize` and `maxImageSize` option.\n',
         )}`,
       )
   })

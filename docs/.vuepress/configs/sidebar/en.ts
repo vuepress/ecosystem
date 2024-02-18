@@ -45,7 +45,14 @@ export const sidebarEn: SidebarConfig = {
     },
     {
       text: 'PWA',
-      children: ['/plugins/pwa', '/plugins/remove-pwa'],
+      children: [
+        {
+          text: 'PWA',
+          link: '/plugins/pwa/',
+          children: ['/plugins/pwa/guide', '/plugins/pwa/config'],
+        },
+        '/plugins/remove-pwa',
+      ],
     },
     {
       text: 'SEO',

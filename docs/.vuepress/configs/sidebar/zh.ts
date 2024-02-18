@@ -46,7 +46,14 @@ export const sidebarZh: SidebarConfig = {
     },
     {
       text: 'PWA',
-      children: ['/zh/plugins/pwa', '/zh/plugins/remove-pwa'],
+      children: [
+        {
+          text: 'PWA',
+          link: '/zh/plugins/pwa/',
+          children: ['/zh/plugins/pwa/guide', '/zh/plugins/pwa/config'],
+        },
+        '/zh/plugins/remove-pwa',
+      ],
     },
     {
       text: '搜索引擎增强',

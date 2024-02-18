@@ -119,7 +119,7 @@ export interface PWAPluginOptions {
    *
    * @default false
    */
-  cachePic?: boolean
+  cacheImage?: boolean
 
   /**
    * Max size which allows to cache, with KB unit
@@ -128,7 +128,7 @@ export interface PWAPluginOptions {
    *
    * @default 1024
    */
-  maxPicSize?: number
+  maxImageSize?: number
 
   /**
    * Settings for apple
