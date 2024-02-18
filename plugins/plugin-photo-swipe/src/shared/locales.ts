@@ -44,5 +44,5 @@ export interface PhotoSwipePluginLocaleData {
   arrowNext: string
 }
 
-export type PhotoSwipeLocaleConfig =
+export type PhotoSwipePluginLocaleConfig =
   ExactLocaleConfig<PhotoSwipePluginLocaleData>

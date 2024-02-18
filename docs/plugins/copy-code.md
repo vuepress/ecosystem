@@ -62,10 +62,10 @@ export default {
 
 ### locales
 
-- Type: `CopyCodeLocaleConfig`
+- Type: `CopyCodePluginLocaleConfig`
 
   ```ts
-  interface CopyCodeLocaleData {
+  interface CopyCodePluginLocaleData {
     /**
      * Copy text
      */
@@ -77,8 +77,8 @@ export default {
     copied: string
   }
 
-  interface CopyCodeLocaleConfig {
-    [localePath: string]: CopyCodeLocaleData
+  interface CopyCodePluginLocaleConfig {
+    [localePath: string]: CopyCodePluginLocaleData
   }
   ```
 

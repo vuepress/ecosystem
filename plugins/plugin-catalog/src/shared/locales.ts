@@ -1,6 +1,6 @@
 import type { ExactLocaleConfig } from '@vuepress/helper'
 
-export interface CatalogLocaleData {
+export interface CatalogPluginLocaleData {
   /**
    * Catalog title text
    *
@@ -16,4 +16,5 @@ export interface CatalogLocaleData {
   empty: string
 }
 
-export type CatalogLocaleConfig = ExactLocaleConfig<CatalogLocaleData>
+export type CatalogPluginLocaleConfig =
+  ExactLocaleConfig<CatalogPluginLocaleData>

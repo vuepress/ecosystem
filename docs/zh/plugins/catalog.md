@@ -140,10 +140,10 @@ order -1 的项目
 
 ### locales
 
-- 类型：`CatalogLocaleConfig`
+- 类型：`CatalogPluginLocaleConfig`
 
   ```ts
-  interface CatalogLocaleData {
+  interface CatalogPluginLocaleData {
     /**
      * 目录标题
      */
@@ -155,8 +155,8 @@ order -1 的项目
     empty: string
   }
 
-  interface CatalogLocaleConfig {
-    [localePath: string]: CatalogLocaleData
+  interface CatalogPluginLocaleConfig {
+    [localePath: string]: CatalogPluginLocaleData
   }
   ```
 

@@ -13,13 +13,13 @@ import {
 import type { VNode } from 'vue'
 import { computed, defineComponent, h, shallowRef } from 'vue'
 import { RouteLink, usePageData, useRoutes, useSiteData } from 'vuepress/client'
-import type { CatalogLocaleConfig } from '../../shared/index.js'
+import type { CatalogPluginLocaleConfig } from '../../shared/index.js'
 import type { CatalogInfo } from '../helpers/index.js'
 import { useCatalogInfoGetter } from '../helpers/index.js'
 
 import '../styles/catalog.css'
 
-declare const __CATALOG_LOCALES__: CatalogLocaleConfig
+declare const __CATALOG_LOCALES__: CatalogPluginLocaleConfig
 
 export interface CatalogProps {
   base?: string

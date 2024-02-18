@@ -121,10 +121,10 @@ export default {
 
 ### locales
 
-- 类型：`CopyrightLocaleConfig`
+- 类型：`CopyrightPluginLocaleConfig`
 
   ```ts
-  interface CopyrightLocaleData {
+  interface CopyrightPluginLocaleData {
     /**
      * 作者文字
      *
@@ -147,8 +147,8 @@ export default {
     link: string
   }
 
-  interface CopyrightLocaleConfig {
-    [localePath: string]: CopyrightLocaleData
+  interface CopyrightPluginLocaleConfig {
+    [localePath: string]: CopyrightPluginLocaleData
   }
   ```
 

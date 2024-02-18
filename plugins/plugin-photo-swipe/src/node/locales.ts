@@ -1,6 +1,6 @@
-import type { PhotoSwipeLocaleConfig } from '../shared/index.js'
+import type { PhotoSwipePluginLocaleConfig } from '../shared/index.js'
 
-export const photoSwipeLocales: PhotoSwipeLocaleConfig = {
+export const photoSwipeLocales: PhotoSwipePluginLocaleConfig = {
   '/en/': {
     close: 'Close',
     download: 'Download Image',

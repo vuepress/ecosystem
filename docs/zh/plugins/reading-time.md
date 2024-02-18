@@ -79,10 +79,10 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 分钟", words: "
 
 ### locales
 
-- 类型：`ReadingTimeLocaleConfig`
+- 类型：`ReadingTimePluginLocaleConfig`
 
   ```ts
-  interface ReadingTimeLocaleData {
+  interface ReadingTimePluginLocaleData {
     /**
      * 字数模板，模板中 `$word` 会被自动替换为字数
      */
@@ -99,8 +99,8 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 分钟", words: "
     time: string
   }
 
-  interface ReadingTimeLocaleConfig {
-    [localePath: string]: ReadingTimeLocaleData
+  interface ReadingTimePluginLocaleConfig {
+    [localePath: string]: ReadingTimePluginLocaleData
   }
   ```
 

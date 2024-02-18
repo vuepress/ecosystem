@@ -1,7 +1,7 @@
-import type { CopyCodeLocaleConfig } from '../shared/index.js'
+import type { CopyCodePluginLocaleConfig } from '../shared/index.js'
 
 /** Multi language config for copy code */
-export const copyCodeLocales: CopyCodeLocaleConfig = {
+export const copyCodeLocales: CopyCodePluginLocaleConfig = {
   '/en/': {
     copy: 'Copy code',
     copied: 'Copied',

@@ -142,10 +142,10 @@ Project with order -1
 
 ### locales
 
-- Type: `CatalogLocaleConfig`
+- Type: `CatalogPluginLocaleConfig`
 
   ```ts
-  interface CatalogLocaleData {
+  interface CatalogPluginLocaleData {
     /**
      * Catalog title
      */
@@ -157,8 +157,8 @@ Project with order -1
     empty: string
   }
 
-  interface CatalogLocaleConfig {
-    [localePath: string]: CatalogLocaleData
+  interface CatalogPluginLocaleConfig {
+    [localePath: string]: CatalogPluginLocaleData
   }
   ```
 

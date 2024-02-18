@@ -2,13 +2,15 @@ import { useLocaleConfig } from '@vuepress/helper/client'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import type {
-  ReadingTimeLocaleConfig,
-  ReadingTimeLocaleData,
+  ReadingTimePluginLocaleConfig,
+  ReadingTimePluginLocaleData,
 } from '../../shared/index.js'
 import { getReadingTimeLocale } from '../utils/index.js'
 import { useReadingTimeData } from './useReadingTimeData.js'
 
-declare const __READING_TIME_LOCALES__: ReadingTimeLocaleConfig | undefined
+declare const __READING_TIME_LOCALES__:
+  | ReadingTimePluginLocaleConfig
+  | undefined
 
 const DEFAULT_LOCALE = { words: '', time: '' }
 
@@ -18,7 +20,7 @@ const readingTimeLocales =
     : __READING_TIME_LOCALES__
 
 export const useReadingTimeLocaleConfig =
-  (): ComputedRef<ReadingTimeLocaleData | null> =>
+  (): ComputedRef<ReadingTimePluginLocaleData | null> =>
     readingTimeLocales
       ? useLocaleConfig(readingTimeLocales)
       : computed(() => null)

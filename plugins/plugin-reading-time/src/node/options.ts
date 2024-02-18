@@ -1,5 +1,5 @@
 import type { LocaleConfig } from 'vuepress/shared'
-import type { ReadingTimeLocaleData } from '../shared/index.js'
+import type { ReadingTimePluginLocaleData } from '../shared/index.js'
 
 export interface ReadingTimePluginOptions {
   /**
@@ -21,5 +21,5 @@ export interface ReadingTimePluginOptions {
    * @see https://ecosystem.vuejs.press/plugins/zh/reading-time.html#locales
    */
 
-  locales?: LocaleConfig<ReadingTimeLocaleData>
+  locales?: LocaleConfig<ReadingTimePluginLocaleData>
 }

@@ -62,10 +62,10 @@ export default {
 
 ### locales
 
-- 类型：`CopyCodeLocaleConfig`
+- 类型：`CopyCodePluginLocaleConfig`
 
   ```ts
-  interface CopyCodeLocaleData {
+  interface CopyCodePluginLocaleData {
     /**
      * 复制文字
      */
@@ -77,8 +77,8 @@ export default {
     copied: string
   }
 
-  interface CopyCodeLocaleConfig {
-    [localePath: string]: CopyCodeLocaleData
+  interface CopyCodePluginLocaleConfig {
+    [localePath: string]: CopyCodePluginLocaleData
   }
   ```
 

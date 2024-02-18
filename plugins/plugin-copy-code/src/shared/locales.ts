@@ -1,6 +1,6 @@
 import type { ExactLocaleConfig } from '@vuepress/helper/shared'
 
-export interface CopyCodeLocaleData {
+export interface CopyCodePluginLocaleData {
   /**
    * Copy text
    *
@@ -16,4 +16,5 @@ export interface CopyCodeLocaleData {
   copied: string
 }
 
-export type CopyCodeLocaleConfig = ExactLocaleConfig<CopyCodeLocaleData>
+export type CopyCodePluginLocaleConfig =
+  ExactLocaleConfig<CopyCodePluginLocaleData>

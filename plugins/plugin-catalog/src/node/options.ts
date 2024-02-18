@@ -1,5 +1,5 @@
 import type { LocaleConfig, PageFrontmatter } from 'vuepress/shared'
-import type { CatalogLocaleData } from '../shared/index.js'
+import type { CatalogPluginLocaleData } from '../shared/index.js'
 
 export interface CatalogPluginOptions {
   /**
@@ -62,5 +62,5 @@ export interface CatalogPluginOptions {
    *
    * 目录组件国际化配置
    */
-  locales?: LocaleConfig<CatalogLocaleData>
+  locales?: LocaleConfig<CatalogPluginLocaleData>
 }

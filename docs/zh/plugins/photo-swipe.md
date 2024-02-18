@@ -68,10 +68,10 @@ export default {
 
 ### locales
 
-- 类型：`PhotoSwipeLocaleConfig`
+- 类型：`PhotoSwipePluginLocaleConfig`
 
   ```ts
-  interface PhotoSwipeLocaleData {
+  interface PhotoSwipePluginLocaleData {
     /**
      * 关闭按钮标签文字
      */
@@ -108,8 +108,8 @@ export default {
     buttons: PhotoSwipeDefaultUI.ShareButtonData[]
   }
 
-  interface PhotoSwipeLocaleConfig {
-    [localePath: string]: PhotoSwipeLocaleData
+  interface PhotoSwipePluginLocaleConfig {
+    [localePath: string]: PhotoSwipePluginLocaleData
   }
   ```
 

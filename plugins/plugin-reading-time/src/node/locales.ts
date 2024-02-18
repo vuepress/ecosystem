@@ -1,9 +1,9 @@
-import type { ReadingTimeLocaleConfig } from '../shared/index.js'
+import type { ReadingTimePluginLocaleConfig } from '../shared/index.js'
 
 /**
  * Default locale config for `@vuepress/plugin-reading-time` plugin
  */
-export const readingTimeLocales: ReadingTimeLocaleConfig = {
+export const readingTimeLocales: ReadingTimePluginLocaleConfig = {
   '/en/': {
     word: 'About $word words',
     less1Minute: 'Less than 1 minute',

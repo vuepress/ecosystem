@@ -5,7 +5,7 @@ import type { ExactLocaleConfig } from '@vuepress/helper/shared'
  *
  * `@vuepress/plugin-reading-time` 插件的多语言配置
  */
-export interface ReadingTimeLocaleData {
+export interface ReadingTimePluginLocaleData {
   /**
    * Word template, `$word` will be automatically replaced by actual words
    *
@@ -28,4 +28,5 @@ export interface ReadingTimeLocaleData {
   time: string
 }
 
-export type ReadingTimeLocaleConfig = ExactLocaleConfig<ReadingTimeLocaleData>
+export type ReadingTimePluginLocaleConfig =
+  ExactLocaleConfig<ReadingTimePluginLocaleData>

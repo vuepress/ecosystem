@@ -119,10 +119,10 @@ So copyright message triggered on another site also points to your preferred sit
 
 ### locales
 
-- Type: `CopyrightLocaleConfig`
+- Type: `CopyrightPluginLocaleConfig`
 
   ```ts
-  interface CopyrightLocaleData {
+  interface CopyrightPluginLocaleData {
     /**
      * Author text
      *
@@ -145,8 +145,8 @@ So copyright message triggered on another site also points to your preferred sit
     link: string
   }
 
-  interface CopyrightLocaleConfig {
-    [localePath: string]: CopyrightLocaleData
+  interface CopyrightPluginLocaleConfig {
+    [localePath: string]: CopyrightPluginLocaleData
   }
   ```
 

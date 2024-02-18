@@ -68,10 +68,10 @@ In preview mode, you can:
 
 ### locales
 
-- Type: `PhotoSwipeLocaleConfig`
+- Type: `PhotoSwipePluginLocaleConfig`
 
   ```ts
-  interface PhotoSwipeLocaleData {
+  interface PhotoSwipePluginLocaleData {
     /**
      * Close button label text
      */
@@ -108,8 +108,8 @@ In preview mode, you can:
     buttons: PhotoSwipeDefaultUI.ShareButtonData[]
   }
 
-  interface PhotoSwipeLocaleConfig {
-    [localePath: string]: PhotoSwipeLocaleData
+  interface PhotoSwipePluginLocaleConfig {
+    [localePath: string]: PhotoSwipePluginLocaleData
   }
   ```
 

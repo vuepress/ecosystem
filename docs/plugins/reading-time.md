@@ -79,10 +79,10 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "
 
 ### locales
 
-- Type: `ReadingTimeLocaleConfig`
+- Type: `ReadingTimePluginLocaleConfig`
 
   ```ts
-  interface ReadingTimeLocaleData {
+  interface ReadingTimePluginLocaleData {
     /**
      * Word template, `$word` will be automatically replaced by actual words
      */
@@ -99,8 +99,8 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "
     time: string
   }
 
-  interface ReadingTimeLocaleConfig {
-    [localePath: string]: ReadingTimeLocaleData
+  interface ReadingTimePluginLocaleConfig {
+    [localePath: string]: ReadingTimePluginLocaleData
   }
   ```
 

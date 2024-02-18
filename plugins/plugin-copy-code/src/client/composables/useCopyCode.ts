@@ -2,13 +2,13 @@ import { useLocaleConfig } from '@vuepress/helper/client'
 import { useClipboard, useEventListener } from '@vueuse/core'
 import { nextTick, onMounted, watch } from 'vue'
 import { usePageData } from 'vuepress/client'
-import type { CopyCodeLocaleConfig } from '../../shared/index.js'
+import type { CopyCodePluginLocaleConfig } from '../../shared/index.js'
 import { isMobile } from '../utils/index.js'
 
 const timeoutIdMap = new Map<HTMLElement, number>()
 
 export interface UseCopyCodeOptions {
-  locales: CopyCodeLocaleConfig
+  locales: CopyCodePluginLocaleConfig
   selector: string[]
 
   /** @default 500 */
