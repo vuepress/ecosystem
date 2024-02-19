@@ -138,8 +138,8 @@ import { SWHintPopup } from '@vuepress/plugin-pwa/client'
 <template>
   <SWHintPopup v-slot="{ found, refresh }">
     <div v-if="found">
-      New content is found.
-      <button @click="refresh">Refresh</button>
+      已找到新内容
+      <button @click="refresh">刷新</button>
     </div>
   </SWHintPopup>
 </template>
@@ -152,8 +152,8 @@ import { SWUpdatePopup } from '@vuepress/plugin-pwa/client'
 <template>
   <SWUpdatePopup v-slot="{ isReady, reload }">
     <div v-if="isReady">
-      New content is ready.
-      <button @click="reload">Apply</button>
+      新内容已就绪
+      <button @click="reload">应用</button>
     </div>
   </SWUpdatePopup>
 </template>
@@ -161,7 +161,7 @@ import { SWUpdatePopup } from '@vuepress/plugin-pwa/client'
 
 ## 其他选项
 
-插件还提供了其他 PWA 相关选项，比如微软磁贴图标与颜色设置，苹果图标等。 如果你是一个高级用户，你也可以设置 `generateSwConfig` 来配置 `workbox-build`。查看 [插件选项](./config.md#options) 了解更多细节。
+插件还提供了其他 PWA 相关选项，比如微软磁贴图标与颜色设置，苹果图标等。 如果你是一个高级用户，你也可以设置 `generateSwConfig` 来配置 `workbox-build`。查看 [插件选项](./config.md#选项) 了解更多细节。
 
 ## 相关阅读
 
