@@ -46,6 +46,7 @@ import { h }  from "vue";
 import { defineClientConfig } from "vuepress/client";
 import { setupPWA } from "${path.join(__dirname, '../client/composables/setupPWA.js')}";
 ${configImport}
+import "${path.join(__dirname, '../client/styles/vars.css')}";
 
 const locales = PWA_LOCALES;
 

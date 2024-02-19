@@ -86,6 +86,9 @@ importers:
 
   docs:
     dependencies:
+      '@mdit/plugin-footnote':
+        specifier: 0.8.0
+        version: 0.8.0(markdown-it@14.0.0)
       '@vuepress/bundler-vite':
         specifier: 2.0.0-rc.8
         version: 2.0.0-rc.8(@types/node@20.11.19)(sass@1.71.0)(typescript@5.3.3)
@@ -2858,6 +2861,16 @@ packages:
 
   /@mdit-vue/types@2.0.0:
     resolution: {integrity: sha512-1BeEB+DbtmDMUAfvbNUj5Hso8cSl2sBVK2iTyOMAqhfDVLdh+/9+D0JmQHaCeUk/vuJoMhOwbweZvh55wHxm4w==}
+
+  /@mdit/plugin-footnote@0.8.0(markdown-it@14.0.0):
+    resolution: {integrity: sha512-AaX1rfkJwq9vLX+H/a+XQ3ZxahOXrnMLr5dVZfNdazjqdDEJ7Cc/A7UFtLfOM19F2w3EgvcHR1gbINxIVDn/eg==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      markdown-it: ^14.0.0
+    dependencies:
+      '@types/markdown-it': 13.0.7
+      markdown-it: 14.0.0
+    dev: false
 
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
