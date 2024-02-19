@@ -36,7 +36,7 @@ A PWA uses a Service Worker [^service-worker] (SW for short) to cache and proxy 
 
 ## 网络 App 清单
 
-为了使你的网站符合 PWA 的要求，一个 [网络 App 清单](https://developer.mozilla.org/zh-CN/docs/Web/Manifest) 文件是必要的，并且你的 PWA 应满足可安装性[^installable]要求。
+为了使你的网站符合 PWA 的要求，一个网络 App 清单[^manifest]文件是必要的，并且你的 PWA 应满足可安装性[^installable]要求。
 
 [^manifest]: **清单文件**
 
