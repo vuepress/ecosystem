@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import SidebarItem from '@theme/SidebarItem.vue'
 import { onMounted, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute } from 'vuepress/client'
 import { useSidebarItems } from '../composables/index.js'
 
 const route = useRoute()

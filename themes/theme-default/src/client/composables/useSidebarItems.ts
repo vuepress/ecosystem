@@ -1,7 +1,6 @@
 import { computed, inject, provide } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
-import { useRoute } from 'vue-router'
-import { usePageData, usePageFrontmatter } from 'vuepress/client'
+import { usePageData, usePageFrontmatter, useRoute } from 'vuepress/client'
 import type { PageData, PageHeader } from 'vuepress/client'
 import { isPlainObject, isString, resolveLocalePath } from 'vuepress/shared'
 import type {

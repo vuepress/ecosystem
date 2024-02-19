@@ -168,6 +168,7 @@ So with node side settings above, you can get information about "tag" and "star"
 ```vue
 <script setup lang="ts">
 import { useBlogCategory } from '@vuepress/plugin-blog'
+import { RouteLink } from 'vuepress/client'
 
 const categoryMap = useBlogCategory('tag')
 </script>
@@ -177,12 +178,12 @@ const categoryMap = useBlogCategory('tag')
     <h1>Tag page</h1>
     <ul>
       <li v-for="({ items, path }, name) in categoryMap.map">
-        <RouterLink :key="name" :to="path" class="category">
+        <RouteLink :key="name" :to="path" class="category">
           {{ name }}
           <span class="category-num">
             {{ items.length }}
           </span>
-        </RouterLink>
+        </RouteLink>
       </li>
     </ul>
   </div>
@@ -202,7 +203,7 @@ const categoryMap = useBlogCategory('tag')
   <div>
     <h1>Tag page</h1>
     <div class="category-wrapper">
-      <RouterLink
+      <RouteLink
         v-for="({ items, path }, name) in categoryMap.map"
         :key="name"
         :to="path"
@@ -212,7 +213,7 @@ const categoryMap = useBlogCategory('tag')
         <span class="category-num">
           {{ items.length }}
         </span>
-      </RouterLink>
+      </RouteLink>
     </div>
     <div class="article-wrapper" v-if="categoryMap.currentItems">
       <div v-if="!categoryMap.currentItems.length">Nothing in here.</div>
@@ -255,6 +256,7 @@ const categoryMap = useBlogCategory('tag')
 ```vue
 <script setup lang="ts">
 import { useBlogType } from '@vuepress/plugin-blog/client'
+import { RouteLink } from 'vuepress/client'
 
 import ArticleList from '../components/ArticleList.vue'
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'

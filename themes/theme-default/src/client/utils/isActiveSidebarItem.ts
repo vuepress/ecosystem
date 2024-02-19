@@ -1,4 +1,4 @@
-import type { RouteLocationNormalizedLoaded } from 'vue-router'
+import type { RouteLocationNormalizedLoaded } from 'vuepress/client'
 import type { ResolvedSidebarItem } from '../../shared/index.js'
 
 const normalizePath = (path: string): string =>

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed, toRefs } from 'vue'
 import type { PropType } from 'vue'
-import { useRoute } from 'vue-router'
-import { useSiteData } from 'vuepress/client'
+import { useRoute, useSiteData } from 'vuepress/client'
 import { isLinkHttp, isLinkWithProtocol } from 'vuepress/shared'
 import type { NavLink } from '../../shared/index.js'
 

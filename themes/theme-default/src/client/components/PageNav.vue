@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import AutoLink from '@theme/AutoLink.vue'
 import { computed } from 'vue'
-import type { Router } from 'vue-router'
-import { useRoute, useRouter } from 'vue-router'
-import { usePageFrontmatter } from 'vuepress/client'
+import type { Router } from 'vuepress/client'
+import { usePageFrontmatter, useRoute, useRouter } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
 import type {
   DefaultThemeNormalPageFrontmatter,

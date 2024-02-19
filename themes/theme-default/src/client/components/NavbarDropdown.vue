@@ -3,7 +3,7 @@ import AutoLink from '@theme/AutoLink.vue'
 import DropdownTransition from '@theme/DropdownTransition.vue'
 import { computed, ref, toRefs, watch } from 'vue'
 import type { PropType } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute } from 'vuepress/client'
 import type { NavbarItem, ResolvedNavbarItem } from '../../shared/index.js'
 
 const props = defineProps({

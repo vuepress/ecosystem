@@ -45,8 +45,7 @@
     "@vuepress/helper": "workspace:~",
     "@vueuse/core": "^10.7.2",
     "cac": "^6.7.14",
-    "vue": "^3.4.19",
-    "vue-router": "^4.2.5"
+    "vue": "^3.4.19"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.8"

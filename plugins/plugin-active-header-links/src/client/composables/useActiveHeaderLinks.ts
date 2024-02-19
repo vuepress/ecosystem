@@ -1,6 +1,6 @@
 import { useDebounceFn, useEventListener } from '@vueuse/core'
-import { useRouter } from 'vue-router'
-import type { Router } from 'vue-router'
+import { useRouter } from 'vuepress/client'
+import type { Router } from 'vuepress/client'
 
 export interface UseActiveHeaderLinksOptions {
   headerLinkSelector: string

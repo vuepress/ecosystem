@@ -4,8 +4,12 @@ import NavbarDropdown from '@theme/NavbarDropdown.vue'
 import { useRoutePaths } from '@vuepress/helper/client'
 import { computed, ref } from 'vue'
 import type { ComputedRef } from 'vue'
-import { useRoute } from 'vue-router'
-import { useRouteLocale, useSiteData, useSiteLocaleData } from 'vuepress/client'
+import {
+  useRoute,
+  useRouteLocale,
+  useSiteData,
+  useSiteLocaleData,
+} from 'vuepress/client'
 import { isLinkHttp, isString } from 'vuepress/shared'
 import type {
   NavbarGroup,

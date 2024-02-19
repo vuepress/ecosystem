@@ -14,8 +14,7 @@ import {
   TransitionGroup,
   watch,
 } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { useRouteLocale } from 'vuepress/client'
+import { useRoute, useRouteLocale, useRouter } from 'vuepress/client'
 import type { RedirectPluginLocaleConfig } from '../../shared/locales.js'
 import { redirectLocaleConfig, redirectLocaleEntries } from '../define.js'
 

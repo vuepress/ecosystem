@@ -1,7 +1,6 @@
 import { computed, defineComponent, h, ref, toRefs } from 'vue'
 import type { PropType } from 'vue'
-import { useRouter } from 'vue-router'
-import { useRouteLocale } from 'vuepress/client'
+import { useRouteLocale, useRouter } from 'vuepress/client'
 import type { LocaleConfig } from 'vuepress/shared'
 import type { HotKeyOptions } from '../../shared/index.js'
 import {

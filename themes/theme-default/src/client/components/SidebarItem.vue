@@ -4,7 +4,7 @@ import DropdownTransition from '@theme/DropdownTransition.vue'
 import { useToggle } from '@vueuse/core'
 import { computed, nextTick, onBeforeUnmount, toRefs } from 'vue'
 import type { PropType } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vuepress/client'
 import type { ResolvedSidebarItem } from '../../shared/index.js'
 import { isActiveSidebarItem } from '../utils/index.js'
 
