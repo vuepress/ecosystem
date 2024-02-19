@@ -14,6 +14,7 @@ export const getRegistry = (packageManager: PackageManager): string => {
   )
     return spawnSync(`${packageManager} config get npmRegistryServer`)
       .stdout.toString()
+      .trim()
       .replace(/\/?$/, '/')
 
   if (
@@ -31,6 +32,7 @@ export const getRegistry = (packageManager: PackageManager): string => {
       { shell: true },
     )
       .stdout.toString()
+      .trim()
       .replace(/\/?$/, '/')
   }
 
@@ -38,6 +40,7 @@ export const getRegistry = (packageManager: PackageManager): string => {
     shell: true,
   })
     .stdout.toString()
+    .trim()
     .replace(/\/?$/, '/')
 }
 
