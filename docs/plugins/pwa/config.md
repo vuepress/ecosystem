@@ -172,16 +172,16 @@ Special settings for Microsoft tiles, ignoring these options are safe.
 - Default value: `themeColor`
 - Details: Tile color
 
-### hintComponent
+### foundComponent
 
 - Type: `string`
-- Default: `"SWHintPopup"`
+- Default: `"PWAFoundPopup"`
 - Details: Path of custom hint popup component.
 
-### updateComponent
+### readyComponent
 
 - Type: `string`
-- Default: `"SWUpdatePopup"`
+- Default: `"PWAReadyPopup"`
 - Details: Path of custom update popup component.
 
 ### appendBase

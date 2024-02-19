@@ -21,22 +21,22 @@ import { PWAInstall as _PWAInstall } from "${path.join(__dirname, '../client/com
 
   if (options.update === 'hint') {
     configImport += `\
-import { SWHintPopup as _SWHintPopup } from "${
-      options.hintComponent ||
-      path.join(__dirname, '../client/components/SWHintPopup.js')
+import { PWAFoundPopup as _PWAFoundPopup } from "${
+      options.foundComponent ||
+      path.join(__dirname, '../client/components/PWAFoundPopup.js')
     }";
 `
 
-    rootComponents.push('SWHintPopup')
+    rootComponents.push('PWAFoundPopup')
   } else if (options.update !== 'disable' && options.update !== 'force') {
     configImport += `\
-import { SWUpdatePopup as _SWUpdatePopup } from "${
-      options.updateComponent ||
-      path.join(__dirname, '../client/components/SWUpdatePopup.js')
+import { PWAReadyPopup as _PWAReadyPopup } from "${
+      options.readyComponent ||
+      path.join(__dirname, '../client/components/PWAReadyPopup.js')
     }";
 `
 
-    rootComponents.push('SWUpdatePopup')
+    rootComponents.push('PWAReadyPopup')
   }
 
   return app.writeTemp(

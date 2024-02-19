@@ -168,18 +168,18 @@ export interface PWAPluginOptions {
    *
    * 用于替换默认提示弹出组件的自定义组件。
    *
-   * @default "SWHintPopup"
+   * @default "PWAFoundPopup"
    */
-  hintComponent?: string
+  foundComponent?: string
 
   /**
    * A custom component to replace the default update popup component.
    *
    * 用于替换默认更新弹出组件的自定义组件。
    *
-   * @default "SWUpdatePopup"
+   * @default "PWAReadyPopup"
    */
-  updateComponent?: string
+  readyComponent?: string
 
   /**
    * workbox-build’s [generateSW config](https://developers.google.com/web/tools/workbox/modules/workbox-build#full_generatesw_config)

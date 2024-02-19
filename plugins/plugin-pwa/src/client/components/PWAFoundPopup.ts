@@ -1,22 +1,14 @@
 import { useLocaleConfig } from '@vuepress/helper/client'
 import type { PropType, SlotsType, VNode } from 'vue'
-import {
-  computed,
-  defineComponent,
-  h,
-  onMounted,
-  shallowRef,
-  Transition,
-} from 'vue'
+import { defineComponent, h, onMounted, ref, Transition } from 'vue'
 import type { PWAPluginLocaleConfig } from '../../shared/index.js'
 import { usePWAEvent } from '../composables/index.js'
-import { skipWaiting } from '../utils/index.js'
 import { UpdateIcon } from './icons.js'
 
 import '../styles/popup.scss'
 
-export const SWUpdatePopup = defineComponent({
-  name: 'SWUpdatePopup',
+export const PWAFoundPopup = defineComponent({
+  name: 'PWAFoundPopup',
 
   props: {
     /** locale data */
@@ -28,29 +20,36 @@ export const SWUpdatePopup = defineComponent({
 
   slots: Object as SlotsType<{
     default?: (props: {
-      isReady: boolean
-      reload: () => void
+      found: boolean
+      refresh: () => void
     }) => VNode[] | VNode | null
   }>,
 
   setup(props, { slots }) {
     const locale = useLocaleConfig(props.locales)
-    const registration = shallowRef<ServiceWorkerRegistration>()
+    const found = ref(false)
 
-    const isReady = computed(() => Boolean(registration.value))
-
-    const reload = (): void => {
-      if (registration.value) {
-        skipWaiting(registration.value)
-        registration.value = undefined
+    const refresh = (): void => {
+      if (found.value) {
+        // force refresh
+        // @ts-expect-error: A non-standard API
+        window.location.reload(true)
+        found.value = false
       }
     }
 
     onMounted(() => {
       const event = usePWAEvent()
 
-      event.on('updated', (reg) => {
-        if (reg) registration.value = reg
+      event.on('updatefound', () => {
+        navigator.serviceWorker.getRegistration().then((registration) => {
+          // Check whether a valid service worker is active
+          if (registration && registration.active) found.value = true
+        })
+      })
+
+      event.on('updated', () => {
+        found.value = false
       })
     })
 
@@ -60,20 +59,20 @@ export const SWUpdatePopup = defineComponent({
         { name: 'popup' },
         () =>
           slots.default?.({
-            isReady: isReady.value,
-            reload,
+            found: found.value,
+            refresh,
           }) ||
-          (isReady.value
+          (found.value
             ? h(
                 'button',
                 {
                   type: 'button',
-                  class: 'sw-update-popup',
+                  class: 'sw-hint-popup',
                   tabindex: 0,
-                  onClick: () => reload(),
+                  onClick: () => refresh(),
                 },
                 [
-                  locale.value.update,
+                  locale.value.hint,
                   h('span', { class: 'icon-wrapper' }, h(UpdateIcon)),
                 ],
               )

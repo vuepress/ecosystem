@@ -1,3 +1,3 @@
 export * from './PWAInstall.js'
-export * from './SWHintPopup.js'
-export * from './SWUpdatePopup.js'
+export * from './PWAFoundPopup.js'
+export * from './PWAReadyPopup.js'

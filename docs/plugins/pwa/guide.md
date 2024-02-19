@@ -122,33 +122,33 @@ To speed up user access under weak or no network conditions through SW, but also
 
 When new content is detected (new SW detected), a update found popup appears; and when the new content is ready, an update ready popup appears.
 
-If you are not satisfied with the default popup content, you can use your own component. Import `SWHintPopup` or `SWUpdatePopup` from `@vuepress/plugin-pwa/client` and use its slot to customize the popup content, then pass the component path to `hintComponent` or `updateComponent` option:
+If you are not satisfied with the default popup content, you can use your own component. Import `PWAFoundPopup` or `PWAReadyPopup` from `@vuepress/plugin-pwa/client` and use its slot to customize the popup content, then pass the component path to `foundComponent` or `readyComponent` option:
 
 ```vue
 <script setup lang="ts">
-import { SWHintPopup } from '@vuepress/plugin-pwa/client'
+import { PWAFoundPopup } from '@vuepress/plugin-pwa/client'
 </script>
 <template>
-  <SWHintPopup v-slot="{ found, refresh }">
+  <PWAFoundPopup v-slot="{ found, refresh }">
     <div v-if="found">
       New content is found.
       <button @click="refresh">Refresh</button>
     </div>
-  </SWHintPopup>
+  </PWAFoundPopup>
 </template>
 ```
 
 ```vue
 <script setup lang="ts">
-import { SWUpdatePopup } from '@vuepress/plugin-pwa/client'
+import { PWAReadyPopup } from '@vuepress/plugin-pwa/client'
 </script>
 <template>
-  <SWUpdatePopup v-slot="{ isReady, reload }">
+  <PWAReadyPopup v-slot="{ isReady, reload }">
     <div v-if="isReady">
       New content is ready.
       <button @click="reload">Apply</button>
     </div>
-  </SWUpdatePopup>
+  </PWAReadyPopup>
 </template>
 ```
 

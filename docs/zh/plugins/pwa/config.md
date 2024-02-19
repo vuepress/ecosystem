@@ -170,16 +170,16 @@
 - 默认值：`themeColor`
 - 详情：磁贴颜色。
 
-### hintComponent
+### foundComponent
 
 - 类型：`string`
-- 默认值：`"SWHintPopup"`
+- 默认值：`"PWAFoundPopup"`
 - 详情：自定义的提示弹窗组件路径。
 
-### updateComponent
+### readyComponent
 
 - 类型：`string`
-- 默认值：`"SWUpdatePopup"`
+- 默认值：`"PWAReadyPopup"`
 - 详情：自定义的更新弹窗组件路径。
 
 ### appendBase
