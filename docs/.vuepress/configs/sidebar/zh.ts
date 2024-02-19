@@ -58,12 +58,7 @@ export const sidebarZh: SidebarConfig = {
         {
           text: '搜索引擎增强',
           link: '/zh/plugins/seo/',
-          children: [
-            '/zh/plugins/baidu-analytics',
-            '/zh/plugins/google-analytics',
-            '/zh/plugins/seo/guide',
-            '/zh/plugins/seo/config',
-          ],
+          children: ['/zh/plugins/seo/guide', '/zh/plugins/seo/config'],
         },
         {
           text: '站点地图',
@@ -74,6 +69,8 @@ export const sidebarZh: SidebarConfig = {
             '/zh/plugins/sitemap/frontmatter',
           ],
         },
+        '/zh/plugins/baidu-analytics',
+        '/zh/plugins/google-analytics',
       ],
     },
     {

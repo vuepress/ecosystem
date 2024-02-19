@@ -53,12 +53,7 @@ export const sidebarEn: SidebarConfig = {
         {
           text: 'SEO',
           link: '/plugins/seo/',
-          children: [
-            '/plugins/baidu-analytics',
-            '/plugins/google-analytics',
-            '/plugins/seo/guide',
-            '/plugins/seo/config',
-          ],
+          children: ['/plugins/seo/guide', '/plugins/seo/config'],
         },
         {
           text: 'Sitemap',
@@ -69,6 +64,8 @@ export const sidebarEn: SidebarConfig = {
             '/plugins/sitemap/frontmatter',
           ],
         },
+        '/plugins/baidu-analytics',
+        '/plugins/google-analytics',
       ],
     },
     {
