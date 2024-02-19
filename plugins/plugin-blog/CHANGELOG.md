@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.15](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.14...v2.0.0-rc.15) (2024-02-19)
+
+### Performance Improvements
+
+- **plugin-blog:** use original ref ([3651a7f](https://github.com/vuepress/ecosystem/commit/3651a7f91d648a4f504705768a64feb4dad8025d))
+
 # [2.0.0-rc.14](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.13...v2.0.0-rc.14) (2024-02-08)
 
 ### Bug Fixes

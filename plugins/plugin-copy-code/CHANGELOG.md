@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.15](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.14...v2.0.0-rc.15) (2024-02-19)
+
+### Bug Fixes
+
+- **plugin-copy-code:** update default css var ([503b6fd](https://github.com/vuepress/ecosystem/commit/503b6fd54a26e007edb4a7707673b3b6b767e661))
+
 # [2.0.0-rc.14](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.13...v2.0.0-rc.14) (2024-02-08)
 
 **Note:** Version bump only for package @vuepress/plugin-copy-code
