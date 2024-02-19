@@ -43,11 +43,7 @@ export const navbarZh: NavbarConfig = [
       },
       {
         text: 'PWA',
-        children: [
-          '/zh/plugins/pwa',
-          '/zh/plugins/pwa-popup',
-          '/zh/plugins/remove-pwa',
-        ],
+        children: ['/zh/plugins/pwa/', '/zh/plugins/remove-pwa'],
       },
       {
         text: '搜索引擎增强',

@@ -1,6 +1,4 @@
-import { pwaPlugin } from './pwaPlugin.js'
-
-export * from './generateServiceWorker.js'
+export * from './locales.js'
+export * from './options.js'
 export * from './pwaPlugin.js'
-/** @deprecated Use named export instead */
-export default pwaPlugin
+export * from '../shared/index.js'

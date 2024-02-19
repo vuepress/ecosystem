@@ -1,5 +1,6 @@
 import { createRequire } from 'node:module'
 import process from 'node:process'
+import { footnote } from '@mdit/plugin-footnote'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
@@ -62,6 +63,10 @@ export default defineUserConfig({
         return importPath
       },
     },
+  },
+
+  extendsMarkdown: (md) => {
+    md.use(footnote)
   },
 
   // configure default theme

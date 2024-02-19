@@ -86,6 +86,9 @@ importers:
 
   docs:
     dependencies:
+      '@mdit/plugin-footnote':
+        specifier: 0.8.0
+        version: 0.8.0(markdown-it@14.0.0)
       '@vuepress/bundler-vite':
         specifier: 2.0.0-rc.8
         version: 2.0.0-rc.8(@types/node@20.11.19)(sass@1.71.0)(typescript@5.3.3)
@@ -119,9 +122,9 @@ importers:
       '@vuepress/plugin-photo-swipe':
         specifier: workspace:*
         version: link:../plugins/plugin-photo-swipe
-      '@vuepress/plugin-pwa-popup':
+      '@vuepress/plugin-pwa':
         specifier: workspace:*
-        version: link:../plugins/plugin-pwa-popup
+        version: link:../plugins/plugin-pwa
       '@vuepress/plugin-redirect':
         specifier: workspace:*
         version: link:../plugins/plugin-redirect
@@ -170,6 +173,9 @@ importers:
       '@vuepress/plugin-feed':
         specifier: workspace:*
         version: link:../plugins/plugin-feed
+      '@vuepress/plugin-pwa':
+        specifier: workspace:*
+        version: link:../plugins/plugin-pwa
       '@vuepress/plugin-redirect':
         specifier: workspace:*
         version: link:../plugins/plugin-redirect
@@ -440,6 +446,12 @@ importers:
 
   plugins/plugin-pwa:
     dependencies:
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../tools/helper
+      '@vueuse/core':
+        specifier: ^10.7.2
+        version: 10.7.2(vue@3.4.19)
       mitt:
         specifier: ^3.0.1
         version: 3.0.1
@@ -455,18 +467,6 @@ importers:
       workbox-build:
         specifier: ^7.0.0
         version: 7.0.0
-
-  plugins/plugin-pwa-popup:
-    dependencies:
-      '@vuepress/plugin-pwa':
-        specifier: workspace:*
-        version: link:../plugin-pwa
-      vue:
-        specifier: ^3.4.19
-        version: 3.4.19(typescript@5.3.3)
-      vuepress:
-        specifier: 2.0.0-rc.8
-        version: 2.0.0-rc.8(@vuepress/bundler-vite@2.0.0-rc.8)(@vuepress/bundler-webpack@2.0.0-rc.8)(typescript@5.3.3)(vue@3.4.19)
 
   plugins/plugin-reading-time:
     dependencies:
@@ -2834,6 +2834,16 @@ packages:
 
   /@mdit-vue/types@2.0.0:
     resolution: {integrity: sha512-1BeEB+DbtmDMUAfvbNUj5Hso8cSl2sBVK2iTyOMAqhfDVLdh+/9+D0JmQHaCeUk/vuJoMhOwbweZvh55wHxm4w==}
+
+  /@mdit/plugin-footnote@0.8.0(markdown-it@14.0.0):
+    resolution: {integrity: sha512-AaX1rfkJwq9vLX+H/a+XQ3ZxahOXrnMLr5dVZfNdazjqdDEJ7Cc/A7UFtLfOM19F2w3EgvcHR1gbINxIVDn/eg==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      markdown-it: ^14.0.0
+    dependencies:
+      '@types/markdown-it': 13.0.7
+      markdown-it: 14.0.0
+    dev: false
 
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}

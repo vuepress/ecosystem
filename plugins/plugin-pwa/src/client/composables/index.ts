@@ -1,2 +1,3 @@
-export * from './usePwaEvent.js'
-export * from './useSkipWaiting.js'
+export * from './setupPWA.js'
+export * from './usePWAEvent.js'
+export * from './useRegisterSW.js'

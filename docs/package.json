@@ -9,6 +9,7 @@
     "docs:serve": "anywhere -s -h localhost -d .vuepress/dist"
   },
   "dependencies": {
+    "@mdit/plugin-footnote": "0.8.0",
     "@vuepress/bundler-vite": "2.0.0-rc.8",
     "@vuepress/bundler-webpack": "2.0.0-rc.8",
     "@vuepress/plugin-back-to-top": "workspace:*",
@@ -20,7 +21,7 @@
     "@vuepress/plugin-medium-zoom": "workspace:*",
     "@vuepress/plugin-nprogress": "workspace:*",
     "@vuepress/plugin-photo-swipe": "workspace:*",
-    "@vuepress/plugin-pwa-popup": "workspace:*",
+    "@vuepress/plugin-pwa": "workspace:*",
     "@vuepress/plugin-redirect": "workspace:*",
     "@vuepress/plugin-register-components": "workspace:*",
     "@vuepress/plugin-search": "workspace:*",
