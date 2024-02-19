@@ -447,7 +447,7 @@ importers:
   plugins/plugin-pwa:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:*
+        specifier: workspace:~
         version: link:../../tools/helper
       '@vueuse/core':
         specifier: ^10.7.2
