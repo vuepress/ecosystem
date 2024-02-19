@@ -15,6 +15,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **plugin-blog:** use original ref ([3651a7f](https://github.com/vuepress/ecosystem/commit/3651a7f91d648a4f504705768a64feb4dad8025d))
 
+### BREAKING CHANGES
+
+- **plugin-pwa:** rebuild plugin
+- **plugin-pwa-popup**: removed
+
 # [2.0.0-rc.14](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.13...v2.0.0-rc.14) (2024-02-08)
 
 ### Bug Fixes
