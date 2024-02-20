@@ -31,7 +31,7 @@ describe('pwa manifest', () => {
 
     cy.request(`${BASE}manifest.webmanifest`)
       .its('body')
-      .should('have.a.property', 'start_url', '/')
+      .should('have.a.property', 'start_url', BASE)
 
     cy.request(`${BASE}manifest.webmanifest`)
       .its('body')
@@ -59,14 +59,14 @@ describe('pwa manifest', () => {
     cy.get('link[rel="manifest"]').should(
       'have.attr',
       'href',
-      '/manifest.webmanifest',
+      `${BASE}manifest.webmanifest`,
     )
 
     cy.visit('/404.html')
     cy.get('link[rel="manifest"]').should(
       'have.attr',
       'href',
-      '/manifest.webmanifest',
+      `${BASE}manifest.webmanifest`,
     )
   })
 })
