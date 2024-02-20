@@ -149,19 +149,13 @@ body {
 }
 
 // plugin-pwa-popup
-html {
+body {
   --pwa-text-color: var(--c-text);
   --pwa-bg-color: var(--c-bg);
   --pwa-border-color: var(--c-brand);
   --pwa-btn-text-color: var(--c-bg);
   --pwa-btn-bg-color: var(--c-brand);
   --pwa-btn-hover-bg-color: var(--c-brand-light);
-}
-
-html.dark {
-  --pwa-shadow-color: rgb(0 0 0 / 30%);
-  --pwa-content-color: #ccc;
-  --pwa-content-light-color: #999;
 }
 
 // plugin-redirect

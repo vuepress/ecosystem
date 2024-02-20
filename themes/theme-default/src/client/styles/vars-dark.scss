@@ -66,3 +66,10 @@ html.dark .DocSearch {
   --docsearch-footer-shadow: inset 0 1px 0 0 rgba(73, 76, 106, 0.5),
     0 -4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+
+// plugin-pwa
+html.dark body {
+  --pwa-shadow-color: rgb(0 0 0 / 30%);
+  --pwa-content-color: #ccc;
+  --pwa-content-light-color: #999;
+}
