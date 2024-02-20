@@ -25,11 +25,11 @@ npm i -D @vuepress/plugin-remove-pwa@next
 ```
 
 ```ts
-import { removePwaPlugin } from '@vuepress/plugin-remove-pwa'
+import { removePWAPlugin } from '@vuepress/plugin-remove-pwa'
 
 export default {
   plugins: [
-    removePwaPlugin({
+    removePWAPlugin({
       // options
     }),
   ],
