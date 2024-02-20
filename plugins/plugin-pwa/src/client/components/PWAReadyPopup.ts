@@ -13,7 +13,7 @@ import { usePWAEvent } from '../composables/index.js'
 import { skipWaiting } from '../utils/index.js'
 import { UpdateIcon } from './icons.js'
 
-import '../styles/popup.scss'
+import '../styles/popup.css'
 
 export const PWAReadyPopup = defineComponent({
   name: 'PWAReadyPopup',

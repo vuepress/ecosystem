@@ -8,7 +8,7 @@ import type {
 } from '../../shared/index.js'
 import { PWAInstallModal } from './PWAInstallModal.js'
 
-import '../styles/modal.scss'
+import '../styles/modal.css'
 
 interface ModernNavigator extends Navigator {
   // Nonstandard Api

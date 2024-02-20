@@ -5,7 +5,7 @@ import type { PWAPluginLocaleConfig } from '../../shared/index.js'
 import { usePWAEvent } from '../composables/index.js'
 import { UpdateIcon } from './icons.js'
 
-import '../styles/popup.scss'
+import '../styles/popup.css'
 
 export const PWAFoundPopup = defineComponent({
   name: 'PWAFoundPopup',
