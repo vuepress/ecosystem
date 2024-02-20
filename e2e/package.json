@@ -11,7 +11,7 @@
     "docs:dev": "vuepress dev docs --clean-cache --clean-temp",
     "docs:dev-webpack": "E2E_BUNDLER=webpack pnpm e2e:dev",
     "docs:serve": "anywhere -s -h localhost -p 9080 -d docs/.vuepress/dist",
-    "e2e:build": "pnpm docs:build && start-server-and-test e2e:serve http-get://localhost:9080 cy:run",
+    "e2e:build": "pnpm docs:build && start-server-and-test docs:serve http-get://localhost:9080 cy:run",
     "e2e:dev": "start-server-and-test docs:dev http-get://127.0.0.1:9080 cy:run"
   },
   "dependencies": {

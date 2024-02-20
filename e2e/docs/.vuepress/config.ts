@@ -220,7 +220,7 @@ export default defineUserConfig({
     redirectPlugin({
       config: {
         '/redirect/config.html': '/redirect/final.html',
-        '/redirect/': '/redirect/final.html',
+        '/redirect/config/': '/redirect/final.html',
       },
     }),
   ],

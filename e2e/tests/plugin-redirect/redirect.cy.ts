@@ -18,7 +18,7 @@ describe('redirect', () => {
 
     cy.location('pathname').should('eq', `${BASE}redirect/final.html`)
 
-    cy.visit('/redirect/')
+    cy.visit('/redirect/config/')
 
     cy.location('pathname').should('eq', `${BASE}redirect/final.html`)
   })
