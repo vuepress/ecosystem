@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.16](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.15...v2.0.0-rc.16) (2024-02-20)
+
+### Bug Fixes
+
+- **plugin-pwa:** fix style files ([7edadbf](https://github.com/vuepress/ecosystem/commit/7edadbff6073af51b27c2fb3b134add60917b471))
+
 # [2.0.0-rc.15](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.14...v2.0.0-rc.15) (2024-02-19)
 
 **Note:** Version bump only for package @vuepress/plugin-pwa
