@@ -18,7 +18,7 @@
     "release:version": "lerna version",
     "test": "pnpm test:unit && pnpm test:e2e",
     "test:cov": "cross-env TZ=Etc/UTC vitest run --coverage ",
-    "test:e2e": "pnpm --filter e2e e2e:dev && pnpm --filter e2e e2e:build",
+    "test:e2e": "pnpm --filter ecosystem-e2e e2e:dev && pnpm --filter ecosystem-e2e e2e:build",
     "test:unit": "cross-env TZ=Etc/UTC vitest run"
   },
   "lint-staged": {
