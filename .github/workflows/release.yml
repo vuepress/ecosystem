@@ -15,6 +15,28 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Project
+        run: pnpm build
+
+      - name: Update npmrc
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+
+      - name: Publish packages
+        run: pnpm release:publish
+
       - name: Create release
         if: ${{ github.event_name != 'workflow_dispatch' }}
         id: release_tag
