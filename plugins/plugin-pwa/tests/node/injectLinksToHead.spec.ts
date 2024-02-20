@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import type { HeadConfig } from 'vuepress/core'
-import type { PWAPluginOptions } from '../../src/node/index.js'
+import type { PwaPluginOptions } from '../../src/node/index.js'
 import { injectLinksToHead } from '../../src/node/injectLinksToHead.js'
 
-const options: PWAPluginOptions = {
+const options: PwaPluginOptions = {
   favicon: '/favicon.ico',
 
   manifest: {
@@ -57,7 +57,7 @@ const options: PWAPluginOptions = {
   },
 }
 
-const options2: PWAPluginOptions = {
+const options2: PwaPluginOptions = {
   manifest: {
     icons: [
       {

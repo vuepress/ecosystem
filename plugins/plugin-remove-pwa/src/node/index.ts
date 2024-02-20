@@ -1,1 +1,1 @@
-export * from './removePWAPlugin.js'
+export * from './removePwaPlugin.js'

@@ -1,10 +1,10 @@
 import { withBase } from 'vuepress/client'
 import { registerSW } from '../utils/index.js'
-import type { PWAEvent } from './usePWAEvent.js'
+import type { PwaEvent } from './usePwaEvent.js'
 
 export const useRegisterSW = async (
   serviceWorkerPath: string,
-  event: PWAEvent,
+  event: PwaEvent,
 ): Promise<void> =>
   registerSW(withBase(serviceWorkerPath), {
     ready(registration) {

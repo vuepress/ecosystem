@@ -1,6 +1,6 @@
 import type { ExactLocaleConfig } from '@vuepress/helper'
 
-export interface PWAPluginLocaleData {
+export interface PwaPluginLocaleData {
   /**
    * Install button text
    *
@@ -79,4 +79,4 @@ export interface PWAPluginLocaleData {
   update: string
 }
 
-export type PWAPluginLocaleConfig = ExactLocaleConfig<PWAPluginLocaleData>
+export type PwaPluginLocaleConfig = ExactLocaleConfig<PwaPluginLocaleData>

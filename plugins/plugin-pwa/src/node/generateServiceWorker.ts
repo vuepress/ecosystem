@@ -8,7 +8,7 @@ import type {
 } from 'workbox-build'
 import { generateSW } from 'workbox-build'
 import { logger } from './logger.js'
-import type { PWAPluginOptions } from './options.js'
+import type { PwaPluginOptions } from './options.js'
 
 const imageExtensions = ['png', 'jpg', 'jpeg', 'webp', 'bmp', 'gif']
 const cacheExtensions = [
@@ -45,7 +45,7 @@ const imageFilter =
 
 export const generateServiceWorker = async (
   app: App,
-  options: PWAPluginOptions,
+  options: PwaPluginOptions,
 ): Promise<void> => {
   const { succeed } = logger.load('Generating service worker')
 

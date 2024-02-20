@@ -1,9 +1,9 @@
 import { isPlainObject } from '@vuepress/helper'
 import type { HeadConfig } from 'vuepress/core'
-import type { PWAPluginOptions } from './options.js'
+import type { PwaPluginOptions } from './options.js'
 
 export const injectLinksToHead = (
-  options: PWAPluginOptions,
+  options: PwaPluginOptions,
   base = '/',
   head: HeadConfig[] = [],
 ): HeadConfig[] => {

@@ -4,7 +4,7 @@ import { inject } from 'vue'
 
 declare const __VUEPRESS_DEV__: boolean
 
-export type PWAEvent = Emitter<{
+export type PwaEvent = Emitter<{
   ready: ServiceWorkerRegistration
   registered: ServiceWorkerRegistration
   cached: ServiceWorkerRegistration
@@ -14,14 +14,14 @@ export type PWAEvent = Emitter<{
   error: Error
 }>
 
-export const pwaEventSymbol: InjectionKey<PWAEvent> = Symbol(
-  __VUEPRESS_DEV__ ? 'PWAEvent' : '',
+export const pwaEventSymbol: InjectionKey<PwaEvent> = Symbol(
+  __VUEPRESS_DEV__ ? 'PwaEvent' : '',
 )
 
-export const usePWAEvent = (): PWAEvent => {
+export const usePwaEvent = (): PwaEvent => {
   const pwaEvent = inject(pwaEventSymbol)
 
-  if (!pwaEvent) throw new Error('usePWAEvent() is called without provider.')
+  if (!pwaEvent) throw new Error('usePwaEvent() is called without provider.')
 
   return pwaEvent
 }

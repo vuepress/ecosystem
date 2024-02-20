@@ -2,11 +2,11 @@ import { getRootLang } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { fs } from 'vuepress/utils'
 import type { AppManifest } from '../shared/index.js'
-import type { PWAPluginOptions } from './options.js'
+import type { PwaPluginOptions } from './options.js'
 
 export const getManifest = async (
   app: App,
-  options: PWAPluginOptions,
+  options: PwaPluginOptions,
 ): Promise<AppManifest> => {
   const { siteData } = app
   const { base } = app.options

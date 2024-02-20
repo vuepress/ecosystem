@@ -3,7 +3,7 @@ import { useEventListener } from '@vueuse/core'
 import type { PropType, VNode } from 'vue'
 import { defineComponent, h, onMounted, shallowRef } from 'vue'
 import { withBase } from 'vuepress/client'
-import type { AppManifest, PWAPluginLocaleConfig } from '../../shared/index.js'
+import type { AppManifest, PwaPluginLocaleConfig } from '../../shared/index.js'
 import { ArrowLeftIcon, ArrowRightIcon, CloseIcon } from './icons.js'
 
 interface InstallPromptEvent extends Event {
@@ -12,13 +12,13 @@ interface InstallPromptEvent extends Event {
   readonly userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>
 }
 
-export const PWAInstallModal = defineComponent({
-  name: 'PWAInstallModal',
+export const PwaInstallModal = defineComponent({
+  name: 'PwaInstallModal',
 
   props: {
     /** locale data */
     locales: {
-      type: Object as PropType<PWAPluginLocaleConfig>,
+      type: Object as PropType<PwaPluginLocaleConfig>,
       required: true,
     },
 

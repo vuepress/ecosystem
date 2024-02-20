@@ -175,13 +175,13 @@ Special settings for Microsoft tiles, ignoring these options are safe.
 ### foundComponent
 
 - Type: `string`
-- Default: `"PWAFoundPopup"`
+- Default: `"PwaFoundPopup"`
 - Details: Path of custom hint popup component.
 
 ### readyComponent
 
 - Type: `string`
-- Default: `"PWAReadyPopup"`
+- Default: `"PwaReadyPopup"`
 - Details: Path of custom update popup component.
 
 ### appendBase
@@ -198,10 +198,10 @@ Special settings for Microsoft tiles, ignoring these options are safe.
 
 ### locales
 
-- Type: `PWAPluginLocaleConfig`
+- Type: `PwaPluginLocaleConfig`
 
   ```ts
-  interface PWAPluginLocaleData {
+  interface PwaPluginLocaleData {
     /**
      * Install button text
      */
@@ -258,8 +258,8 @@ Special settings for Microsoft tiles, ignoring these options are safe.
     update: string
   }
 
-  interface PWAPluginLocaleConfig {
-    [localePath: string]: PWAPluginLocaleData
+  interface PwaPluginLocaleConfig {
+    [localePath: string]: PwaPluginLocaleData
   }
   ```
 

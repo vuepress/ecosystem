@@ -8,20 +8,20 @@ import {
   shallowRef,
   Transition,
 } from 'vue'
-import type { PWAPluginLocaleConfig } from '../../shared/index.js'
-import { usePWAEvent } from '../composables/index.js'
+import type { PwaPluginLocaleConfig } from '../../shared/index.js'
+import { usePwaEvent } from '../composables/index.js'
 import { skipWaiting } from '../utils/index.js'
 import { UpdateIcon } from './icons.js'
 
 import '../styles/popup.css'
 
-export const PWAReadyPopup = defineComponent({
-  name: 'PWAReadyPopup',
+export const PwaReadyPopup = defineComponent({
+  name: 'PwaReadyPopup',
 
   props: {
     /** locale data */
     locales: {
-      type: Object as PropType<PWAPluginLocaleConfig>,
+      type: Object as PropType<PwaPluginLocaleConfig>,
       required: true,
     },
   },
@@ -47,7 +47,7 @@ export const PWAReadyPopup = defineComponent({
     }
 
     onMounted(() => {
-      const event = usePWAEvent()
+      const event = usePwaEvent()
 
       event.on('updated', (reg) => {
         if (reg) registration.value = reg

@@ -2,7 +2,7 @@ import type { PluginObject } from 'vuepress/core'
 import { removeLeadingSlash } from 'vuepress/shared'
 import { fs } from 'vuepress/utils'
 
-export interface RemovePWAPluginOptions {
+export interface RemovePwaPluginOptions {
   /**
    * Original service worker cache prefix
    *
@@ -22,10 +22,10 @@ export interface RemovePWAPluginOptions {
   swLocation?: string
 }
 
-export const removePWAPlugin = ({
+export const removePwaPlugin = ({
   cachePrefix = 'workbox',
   swLocation = 'service-worker.js',
-}: RemovePWAPluginOptions): PluginObject => ({
+}: RemovePwaPluginOptions): PluginObject => ({
   name: '@vuepress/plugin-remove-pwa',
 
   onGenerated: async (app): Promise<void> => {

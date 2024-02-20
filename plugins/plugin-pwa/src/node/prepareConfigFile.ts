@@ -1,42 +1,42 @@
 import type { App } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
-import type { PWAPluginOptions } from './options.js'
+import type { PwaPluginOptions } from './options.js'
 
 const __dirname = getDirname(import.meta.url)
 
 export const prepareConfigFile = (
   app: App,
-  options: PWAPluginOptions,
+  options: PwaPluginOptions,
 ): Promise<string> => {
   let configImport = ''
   const rootComponents: string[] = []
 
   if (options.showInstall) {
     configImport += `\
-import { PWAInstall as _PWAInstall } from "${path.join(__dirname, '../client/components/PWAInstall.js')}";
+import { PwaInstall as _PwaInstall } from "${path.join(__dirname, '../client/components/PwaInstall.js')}";
 `
 
-    rootComponents.push('PWAInstall')
+    rootComponents.push('PwaInstall')
   }
 
   if (options.update === 'hint') {
     configImport += `\
-import { PWAFoundPopup as _PWAFoundPopup } from "${
+import { PwaFoundPopup as _PwaFoundPopup } from "${
       options.foundComponent ||
-      path.join(__dirname, '../client/components/PWAFoundPopup.js')
+      path.join(__dirname, '../client/components/PwaFoundPopup.js')
     }";
 `
 
-    rootComponents.push('PWAFoundPopup')
+    rootComponents.push('PwaFoundPopup')
   } else if (options.update !== 'disable' && options.update !== 'force') {
     configImport += `\
-import { PWAReadyPopup as _PWAReadyPopup } from "${
+import { PwaReadyPopup as _PwaReadyPopup } from "${
       options.readyComponent ||
-      path.join(__dirname, '../client/components/PWAReadyPopup.js')
+      path.join(__dirname, '../client/components/PwaReadyPopup.js')
     }";
 `
 
-    rootComponents.push('PWAReadyPopup')
+    rootComponents.push('PwaReadyPopup')
   }
 
   return app.writeTemp(
@@ -44,17 +44,17 @@ import { PWAReadyPopup as _PWAReadyPopup } from "${
     `\
 import { h }  from "vue";
 import { defineClientConfig } from "vuepress/client";
-import { setupPWA } from "${path.join(__dirname, '../client/composables/setupPWA.js')}";
+import { setupPwa } from "${path.join(__dirname, '../client/composables/setupPwa.js')}";
 ${configImport}
 import "${path.join(__dirname, '../client/styles/vars.css')}";
 
-const locales = PWA_LOCALES;
+const locales = __PWA_LOCALES__;
 
 ${rootComponents.map((item) => `const ${item} = () => h(_${item}, { locales })`).join('\n')}
 
 export default defineClientConfig({
   setup: () => {
-    setupPWA(SW_PATH, SW_FORCE_UPDATE);
+    setupPwa(__SW_PATH__, __SW_FORCE_UPDATE__);
   },
   rootComponents: [
 ${rootComponents.map((item) => `    ${item},`).join('\n')}

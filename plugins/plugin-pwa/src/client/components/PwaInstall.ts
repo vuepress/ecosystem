@@ -4,9 +4,9 @@ import type { PropType, VNode } from 'vue'
 import { computed, defineComponent, h, onMounted, ref } from 'vue'
 import type {
   ManifestExternalApplicationResource,
-  PWAPluginLocaleConfig,
+  PwaPluginLocaleConfig,
 } from '../../shared/index.js'
-import { PWAInstallModal } from './PWAInstallModal.js'
+import { PwaInstallModal } from './PwaInstallModal.js'
 
 import '../styles/modal.css'
 
@@ -20,13 +20,13 @@ interface SafariNavigator extends Navigator {
   standalone: boolean
 }
 
-export const PWAInstall = defineComponent({
-  name: 'PWAInstall',
+export const PwaInstall = defineComponent({
+  name: 'PwaInstall',
 
   props: {
     /** locale data */
     locales: {
-      type: Object as PropType<PWAPluginLocaleConfig>,
+      type: Object as PropType<PwaPluginLocaleConfig>,
       required: true,
     },
   },
@@ -110,7 +110,7 @@ export const PWAInstall = defineComponent({
               locale.value.install,
             )
           : null,
-        h(PWAInstallModal, {
+        h(PwaInstallModal, {
           style: {
             display: isOpen.value ? 'block' : 'none',
           },

@@ -1,6 +1,6 @@
 import { isLinkAbsolute } from '@vuepress/helper'
 import type { AppManifest } from '../shared/index.js'
-import type { PWAPluginOptions } from './options.js'
+import type { PwaPluginOptions } from './options.js'
 
 const appendBaseToLink = (base: string, link: string): string =>
   isLinkAbsolute(link) ? link.replace(/^\//, base) : link
@@ -35,7 +35,7 @@ export const appendBaseToManifest = (
   return manifest
 }
 
-export const appendBase = (base: string, options: PWAPluginOptions): void => {
+export const appendBase = (base: string, options: PwaPluginOptions): void => {
   if (options.favicon) options.favicon = appendBaseToLink(base, options.favicon)
 
   if (options.apple) {

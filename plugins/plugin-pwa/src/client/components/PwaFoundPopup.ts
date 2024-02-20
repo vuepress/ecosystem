@@ -1,19 +1,19 @@
 import { useLocaleConfig } from '@vuepress/helper/client'
 import type { PropType, SlotsType, VNode } from 'vue'
 import { defineComponent, h, onMounted, ref, Transition } from 'vue'
-import type { PWAPluginLocaleConfig } from '../../shared/index.js'
-import { usePWAEvent } from '../composables/index.js'
+import type { PwaPluginLocaleConfig } from '../../shared/index.js'
+import { usePwaEvent } from '../composables/index.js'
 import { UpdateIcon } from './icons.js'
 
 import '../styles/popup.css'
 
-export const PWAFoundPopup = defineComponent({
-  name: 'PWAFoundPopup',
+export const PwaFoundPopup = defineComponent({
+  name: 'PwaFoundPopup',
 
   props: {
     /** locale data */
     locales: {
-      type: Object as PropType<PWAPluginLocaleConfig>,
+      type: Object as PropType<PwaPluginLocaleConfig>,
       required: true,
     },
   },
@@ -39,7 +39,7 @@ export const PWAFoundPopup = defineComponent({
     }
 
     onMounted(() => {
-      const event = usePWAEvent()
+      const event = usePwaEvent()
 
       event.on('updatefound', () => {
         navigator.serviceWorker.getRegistration().then((registration) => {

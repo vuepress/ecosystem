@@ -12,11 +12,11 @@ import { appendBase } from './helper.js'
 import { injectLinksToHead } from './injectLinksToHead.js'
 import { pwaLocales } from './locales.js'
 import { logger, PLUGIN_NAME } from './logger.js'
-import type { PWAPluginOptions } from './options.js'
+import type { PwaPluginOptions } from './options.js'
 import { prepareConfigFile } from './prepareConfigFile.js'
 
 export const pwaPlugin =
-  (options: PWAPluginOptions = {}): PluginFunction =>
+  (options: PwaPluginOptions = {}): PluginFunction =>
   (app) => {
     if (app.env.isDebug) logger.info('Options:', options)
 
@@ -35,14 +35,14 @@ export const pwaPlugin =
       name: PLUGIN_NAME,
 
       define: () => ({
-        PWA_LOCALES: getLocaleConfig({
+        __PWA_LOCALES__: getLocaleConfig({
           app,
           name: PLUGIN_NAME,
           default: pwaLocales,
           config: options.locales,
         }),
-        SW_FORCE_UPDATE: options.update === 'force',
-        SW_PATH: options.serviceWorkerFilename || 'service-worker.js',
+        __SW_FORCE_UPDATE__: options.update === 'force',
+        __SW_PATH__: options.serviceWorkerFilename || 'service-worker.js',
       }),
 
       extendsBundlerOptions: (bundlerOptions: unknown, app): void => {

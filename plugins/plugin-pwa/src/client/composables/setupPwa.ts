@@ -1,18 +1,18 @@
 import mitt from 'mitt'
 import { onMounted, provide } from 'vue'
 import { forceUpdate } from '../utils/index.js'
-import { pwaEventSymbol } from './usePWAEvent.js'
+import { pwaEventSymbol } from './usePwaEvent.js'
 import { useRegisterSW } from './useRegisterSW.js'
-import type { PWAEvent } from './index.js'
+import type { PwaEvent } from './index.js'
 
-export const setupPWA = (
+export const setupPwa = (
   serviceWorkerPath: string,
   shouldForceUpdate = false,
 ): void => {
   if (__VUEPRESS_SSR__) return
 
   // Create event emitter and provide it
-  const event: PWAEvent = mitt()
+  const event: PwaEvent = mitt()
 
   provide(pwaEventSymbol, event)
 

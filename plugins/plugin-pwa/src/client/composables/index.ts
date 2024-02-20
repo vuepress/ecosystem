@@ -1,3 +1,3 @@
-export * from './setupPWA.js'
-export * from './usePWAEvent.js'
+export * from './setupPwa.js'
+export * from './usePwaEvent.js'
 export * from './useRegisterSW.js'

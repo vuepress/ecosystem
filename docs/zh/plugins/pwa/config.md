@@ -173,13 +173,13 @@
 ### foundComponent
 
 - 类型：`string`
-- 默认值：`"PWAFoundPopup"`
+- 默认值：`"PwaFoundPopup"`
 - 详情：自定义的提示弹窗组件路径。
 
 ### readyComponent
 
 - 类型：`string`
-- 默认值：`"PWAReadyPopup"`
+- 默认值：`"PwaReadyPopup"`
 - 详情：自定义的更新弹窗组件路径。
 
 ### appendBase
@@ -196,10 +196,10 @@
 
 ### locales
 
-- 类型：`PWAPluginLocaleConfig`
+- 类型：`PwaPluginLocaleConfig`
 
   ```ts
-  interface PWAPluginLocaleData {
+  interface PwaPluginLocaleData {
     /**
      * 安装按钮文字
      */
@@ -256,8 +256,8 @@
     update: string
   }
 
-  interface PWAPluginLocaleConfig {
-    [localePath: string]: PWAPluginLocaleData
+  interface PwaPluginLocaleConfig {
+    [localePath: string]: PwaPluginLocaleData
   }
   ```
 

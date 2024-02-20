@@ -1,8 +1,8 @@
 import type { LocaleConfig } from 'vuepress/shared'
 import type { GenerateSWOptions } from 'workbox-build'
-import type { AppManifest, PWAPluginLocaleData } from '../shared/index.js'
+import type { AppManifest, PwaPluginLocaleData } from '../shared/index.js'
 
-interface ApplePWAOptions {
+interface ApplePwaOptions {
   /**
    * Path of icon used on apple devices
    *
@@ -31,7 +31,7 @@ interface ApplePWAOptions {
   maskIcon?: string
 }
 
-interface MicrosoftPWAOptions {
+interface MicrosoftPwaOptions {
   /**
    * Microsoft tile image
    *
@@ -51,8 +51,7 @@ interface MicrosoftPWAOptions {
   color?: string
 }
 
-/** PWA 配置 */
-export interface PWAPluginOptions {
+export interface PwaPluginOptions {
   /**
    * Service Worker file path
    *
@@ -135,14 +134,14 @@ export interface PWAPluginOptions {
    *
    * 苹果设置
    */
-  apple?: ApplePWAOptions | false
+  apple?: ApplePwaOptions | false
 
   /**
    * Settings for Microsoft
    *
    * 微软设置
    */
-  msTile?: MicrosoftPWAOptions | false
+  msTile?: MicrosoftPwaOptions | false
 
   /**
    * Update logic
@@ -168,7 +167,7 @@ export interface PWAPluginOptions {
    *
    * 用于替换默认提示弹出组件的自定义组件。
    *
-   * @default "PWAFoundPopup"
+   * @default "PwaFoundPopup"
    */
   foundComponent?: string
 
@@ -177,7 +176,7 @@ export interface PWAPluginOptions {
    *
    * 用于替换默认更新弹出组件的自定义组件。
    *
-   * @default "PWAReadyPopup"
+   * @default "PwaReadyPopup"
    */
   readyComponent?: string
 
@@ -193,7 +192,7 @@ export interface PWAPluginOptions {
    * 国际化配置
    */
 
-  locales?: LocaleConfig<PWAPluginLocaleData>
+  locales?: LocaleConfig<PwaPluginLocaleData>
 
   /**
    * Whether append base to all absolute links in options
