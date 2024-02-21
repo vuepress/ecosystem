@@ -21,7 +21,7 @@ describe('seo', () => {
       .should(
         'have.attr',
         'content',
-        'Here is article excerpt. Content alt Here is main content of article. A B C ',
+        'Here is article excerpt. Content alt Here is main content of article. A B C',
       )
 
       .get('head meta[property="og:type"]')

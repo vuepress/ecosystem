@@ -27,7 +27,7 @@ exports[`Should generate seo information > Should contain basic properties 1`] =
   [
     "meta",
     {
-      "content": "This is a home page. ",
+      "content": "This is a home page.",
       "property": "og:description",
     },
   ],
@@ -57,7 +57,7 @@ exports[`Should generate seo information > Should contain basic properties 1`] =
     {
       "type": "application/ld+json",
     },
-    "{"@context":"https://schema.org","@type":"WebPage","name":"","description":"This is a home page. "}",
+    "{"@context":"https://schema.org","@type":"WebPage","name":"","description":"This is a home page."}",
   ],
 ]
 `;
@@ -248,7 +248,7 @@ exports[`Should generate seo information > Should contain basic properties 4`] =
   [
     "meta",
     {
-      "content": "这是一个主页。 ",
+      "content": "这是一个主页。",
       "property": "og:description",
     },
   ],
@@ -278,7 +278,7 @@ exports[`Should generate seo information > Should contain basic properties 4`] =
     {
       "type": "application/ld+json",
     },
-    "{"@context":"https://schema.org","@type":"WebPage","name":"","description":"这是一个主页。 "}",
+    "{"@context":"https://schema.org","@type":"WebPage","name":"","description":"这是一个主页。"}",
   ],
 ]
 `;
@@ -461,7 +461,7 @@ exports[`Should generate seo information > Should contain basic properties 7`] =
   [
     "meta",
     {
-      "content": "404 Not Found ",
+      "content": "404 Not Found",
       "property": "og:description",
     },
   ],
@@ -484,7 +484,7 @@ exports[`Should generate seo information > Should contain basic properties 7`] =
     {
       "type": "application/ld+json",
     },
-    "{"@context":"https://schema.org","@type":"WebPage","name":"","description":"404 Not Found "}",
+    "{"@context":"https://schema.org","@type":"WebPage","name":"","description":"404 Not Found"}",
   ],
 ]
 `;
