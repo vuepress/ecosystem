@@ -22,7 +22,6 @@ export const navbarZh: NavbarConfig = [
         children: [
           '/zh/plugins/back-to-top',
           '/zh/plugins/catalog',
-          '/zh/plugins/container',
           '/zh/plugins/copy-code',
           '/zh/plugins/copyright',
           '/zh/plugins/external-link-icon',
@@ -32,6 +31,10 @@ export const navbarZh: NavbarConfig = [
           '/zh/plugins/redirect',
           '/zh/plugins/register-components',
         ],
+      },
+      {
+        text: 'Markdown',
+        children: ['/zh/plugins/container', '/zh/plugins/links-check'],
       },
       {
         text: '搜索',

@@ -22,7 +22,6 @@ export const navbarEn: NavbarConfig = [
         children: [
           '/plugins/back-to-top',
           '/plugins/catalog',
-          '/plugins/container',
           '/plugins/copy-code',
           '/plugins/copyright',
           '/plugins/external-link-icon',
@@ -32,6 +31,10 @@ export const navbarEn: NavbarConfig = [
           '/plugins/redirect',
           '/plugins/register-components',
         ],
+      },
+      {
+        text: 'Markdown',
+        children: ['/plugins/container', '/plugins/links-check'],
       },
       {
         text: 'Search',

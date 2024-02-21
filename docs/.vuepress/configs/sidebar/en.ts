@@ -7,7 +7,6 @@ export const sidebarEn: SidebarConfig = {
       children: [
         '/plugins/back-to-top',
         '/plugins/catalog',
-        '/plugins/container',
         '/plugins/copy-code',
         '/plugins/copyright',
         '/plugins/external-link-icon',
@@ -17,6 +16,10 @@ export const sidebarEn: SidebarConfig = {
         '/plugins/redirect',
         '/plugins/register-components',
       ],
+    },
+    {
+      text: 'Markdown',
+      children: ['/plugins/container', '/plugins/links-check'],
     },
     {
       text: 'Content Search',
