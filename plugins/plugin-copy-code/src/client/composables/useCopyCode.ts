@@ -5,8 +5,6 @@ import { usePageData } from 'vuepress/client'
 import type { CopyCodePluginLocaleConfig } from '../../shared/index.js'
 import { isMobile } from '../utils/index.js'
 
-const timeoutIdMap = new Map<HTMLElement, number>()
-
 export interface UseCopyCodeOptions {
   locales: CopyCodePluginLocaleConfig
   selector: string[]
@@ -26,7 +24,10 @@ export const useCopyCode = ({
   selector,
   showInMobile,
 }: UseCopyCodeOptions): void => {
-  const { copy } = useClipboard({ legacy: true })
+  const { copy, copied } = useClipboard({
+    legacy: true,
+    copiedDuring: duration,
+  })
   const locale = useLocaleConfig(locales)
   const page = usePageData()
 
@@ -77,15 +78,15 @@ export const useCopyCode = ({
 
     copy(text).then(() => {
       button.classList.add('copied')
-      clearTimeout(timeoutIdMap.get(button))
 
-      const timeoutId = setTimeout(() => {
-        button.classList.remove('copied')
-        button.blur()
-        timeoutIdMap.delete(button)
-      }, duration) as unknown as number
-
-      timeoutIdMap.set(button, timeoutId)
+      watch(
+        copied,
+        () => {
+          button.classList.remove('copied')
+          button.blur()
+        },
+        { once: true },
+      )
     })
   }
 
