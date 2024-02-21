@@ -48,10 +48,10 @@ export default {
 
   _标题锚点_ 的选择器。
 
-  你通常不需要设置该选项，除非你通过 [markdown.anchor](../config.md#markdown-anchor) 修改了 [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor#readme) 的 `permalinkClass` 选项。
+  你通常不需要设置该选项，除非你通过 [markdown.anchor](https://vuejs.press/zh/reference/config.html#markdown-anchor) 修改了 [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor#readme) 的 `permalinkClass` 选项。
 
 - 参考：
-  - [指南 > Markdown > 语法扩展 > 标题锚点](../../guide/markdown.md#标题锚点)
+  - [指南 > Markdown > 语法扩展 > 标题锚点](https://vuejs.press/zh/guide/markdown.html#标题锚点)
 
 ### delay
 

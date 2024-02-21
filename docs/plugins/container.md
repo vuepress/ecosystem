@@ -6,7 +6,7 @@ Register markdown custom containers in your VuePress site.
 
 This plugin simplifies the use of [markdown-it-container](https://github.com/markdown-it/markdown-it-container), but also retains its original capabilities.
 
-The [Custom Containers](../default-theme/markdown.md#custom-containers) of default theme is powered by this plugin.
+The [Custom Containers](../themes/default/markdown.md#custom-containers) of default theme is powered by this plugin.
 
 ## Usage
 
@@ -85,7 +85,7 @@ export default {
 ```
 
 - Also see:
-  - [Guide > I18n](../../guide/i18n.md)
+  - [Guide > I18n](https://vuejs.press/guide/i18n.html)
 
 ### before
 

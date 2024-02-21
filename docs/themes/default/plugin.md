@@ -58,16 +58,6 @@ export default {
 - Also see:
   - [Default Theme > Markdown > Custom Containers](./markdown.md#custom-containers)
 
-## themePlugins.externalLinkIcon
-
-- Type: `boolean`
-
-- Default: `true`
-
-- Details:
-
-  Enable [@vuepress/plugin-external-link-icon](../../plugins/external-link-icon.md) or not.
-
 ## themePlugins.copyCode
 
 - Type: `CopyCodePluginOptions | boolean`
@@ -80,6 +70,16 @@ export default {
 
   Object value is supported as plugin options.
 
+## themePlugins.externalLinkIcon
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Enable [@vuepress/plugin-external-link-icon](../../plugins/external-link-icon.md) or not.
+
 ## themePlugins.git
 
 - Type: `boolean`
@@ -89,6 +89,16 @@ export default {
 - Details:
 
   Enable [@vuepress/plugin-git](../../plugins/git.md) or not.
+
+## themePlugins.linksCheck
+
+- Type: `LinksCheckPluginOptions | boolean`
+
+- Default: `true`
+
+- Details:
+
+  Enable [@vuepress/plugin-links-check](../../plugins/links-check.md) or not.
 
 ## themePlugins.mediumZoom
 
@@ -109,6 +119,16 @@ export default {
 - Details:
 
   Enable [@vuepress/plugin-nprogress](../../plugins/nprogress.md) or not.
+
+## themePlugins.prismjs
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Enable [@vuepress/plugin-prismjs](../../plugins/prismjs.md) or not.
 
 ## themePlugins.seo
 

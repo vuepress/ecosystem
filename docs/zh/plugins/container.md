@@ -6,7 +6,7 @@
 
 该插件简化了 [markdown-it-container](https://github.com/markdown-it/markdown-it-container) 的使用方法，但同时也保留了其原本的能力。
 
-默认主题的 [自定义容器](../default-theme/markdown.md#自定义容器) 就是由该插件支持的。
+默认主题的 [自定义容器](../themes/default/markdown.md#自定义容器) 就是由该插件支持的。
 
 ## 使用方法
 
@@ -85,7 +85,7 @@ export default {
 ```
 
 - 参考：
-  - [指南 > 多语言支持](../../guide/i18n.md)
+  - [指南 > 多语言支持](https://vuejs.press/zh/guide/i18n.html)
 
 ### before
 

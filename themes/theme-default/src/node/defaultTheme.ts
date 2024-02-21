@@ -4,6 +4,7 @@ import { containerPlugin } from '@vuepress/plugin-container'
 import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 import { externalLinkIconPlugin } from '@vuepress/plugin-external-link-icon'
 import { gitPlugin } from '@vuepress/plugin-git'
+import { linksCheckPlugin } from '@vuepress/plugin-links-check'
 import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { palettePlugin } from '@vuepress/plugin-palette'
@@ -162,6 +163,15 @@ export const defaultTheme = ({
             updatedTime: localeOptions.lastUpdated !== false,
             contributors: localeOptions.contributors !== false,
           })
+        : [],
+
+      // @vuepress/plugin-links-check
+      themePlugins.linksCheck !== false
+        ? linksCheckPlugin(
+            isPlainObject(themePlugins.linksCheck)
+              ? themePlugins.linksCheck
+              : {},
+          )
         : [],
 
       // @vuepress/plugin-medium-zoom

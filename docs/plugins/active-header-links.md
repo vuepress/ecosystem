@@ -48,10 +48,10 @@ export default {
 
   Selector of _header anchor_.
 
-  You don't need to specify this option unless you have changed the `permalinkClass` option of [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor#readme) via [markdown.anchor](../config.md#markdown-anchor).
+  You don't need to specify this option unless you have changed the `permalinkClass` option of [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor#readme) via [markdown.anchor](https://vuejs.press/reference/config.html#markdown-anchor).
 
 - Also see:
-  - [Guide > Markdown > Syntax Extensions > Header Anchors](../../guide/markdown.md#header-anchors)
+  - [Guide > Markdown > Syntax Extensions > Header Anchors](https://vuejs.press/guide/markdown.html#header-anchors)
 
 ### delay
 

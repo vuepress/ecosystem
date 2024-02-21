@@ -4,7 +4,7 @@
 
 This plugin will collect git information of your pages, including the created and updated time, the contributors, etc.
 
-The [lastUpdated](../default-theme/config.md#lastupdated) and [contributors](../default-theme/config.md#contributors) of default theme is powered by this plugin.
+The [lastUpdated](../themes/default/config.md#lastupdated) and [contributors](../themes/default/config.md#contributors) of default theme is powered by this plugin.
 
 This plugin is mainly used to develop themes. You won't need to use it directly in most cases.
 

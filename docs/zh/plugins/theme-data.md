@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/plugin-theme-data" />
 
-为你的主题提供客户端数据，包含 VuePress 的 [多语言支持](../../guide/i18n.md) 。
+为你的主题提供客户端数据，包含 VuePress 的 [多语言支持](https://vuejs.press/zh/guide/i18n.html) 。
 
 该插件主要用于开发主题，并且已经集成到默认主题中。大部分情况下你不需要直接使用它。
 

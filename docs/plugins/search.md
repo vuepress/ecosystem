@@ -66,7 +66,7 @@ export default {
 ```
 
 - Also see:
-  - [Guide > I18n](../../guide/i18n.md)
+  - [Guide > I18n](https://vuejs.press/guide/i18n.html)
 
 ### hotKeys
 

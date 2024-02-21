@@ -315,13 +315,13 @@ export default {
 ```
 
 - Also see:
-  - [Guide > I18n](../../guide/i18n.md)
+  - [Guide > I18n](https://vuejs.press/guide/i18n.html)
 
 ### indexBase
 
 - Type: `string`
 
-- Default: [base](../config.md#base)
+- Default: [base](https://vuejs.press/reference/config.html#base)
 
 - Details:
 
@@ -329,7 +329,7 @@ export default {
 
   If you are deploying your site to multiple domains, you don't need to submit all of them to DocSearch and generate search index separately. You could choose one of the domains as the _index domain_, and only submit the _index domain_ to Docsearch for crawling search index. Then, you could reuse the search index across all deployments.
 
-  However, if the [base](../config.md#base) of your deployments are different for different domains, you need to set the option to the [base](../config.md#base) of your _index domain_, so that other deployments could reuse the search index correctly.
+  However, if the [base](https://vuejs.press/reference/config.html#base) of your deployments are different for different domains, you need to set the option to the [base](https://vuejs.press/reference/config.html#base) of your _index domain_, so that other deployments could reuse the search index correctly.
 
 ### injectStyles
 

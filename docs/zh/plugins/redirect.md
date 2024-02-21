@@ -194,8 +194,6 @@ Options:
 - 类型：`boolean`
 - 默认值: `false`
 - 详情： 是否启用语言重定向
-- 参考：
-  - [指南 → 重定向语言](./guide.md#重定向语言)
 
 ### switchLocale
 

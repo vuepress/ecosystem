@@ -4,7 +4,7 @@
 
 该插件会收集你的页面的 Git 信息，包括创建和更新时间、贡献者等。
 
-默认主题的 [lastUpdated](../default-theme/config.md#lastupdated) 和 [contributors](../default-theme/config.md#contributors) 就是由该插件支持的。
+默认主题的 [lastUpdated](../themes/default/config.md#lastupdated) 和 [contributors](../themes/default/config.md#contributors) 就是由该插件支持的。
 
 该插件主要用于开发主题，大部分情况下你不需要直接使用它。
 

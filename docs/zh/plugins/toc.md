@@ -24,7 +24,7 @@ export default {
 
 ## 与 Markdown 目录语法的区别
 
-与 [Markdown 目录语法](../../guide/markdown.md#目录) 类似，该插件提供的目录组件可以直接在你的 Markdown 内容中使用：
+与 [Markdown 目录语法](https://vuejs.press/zh/guide/markdown.html#目录) 类似，该插件提供的目录组件可以直接在你的 Markdown 内容中使用：
 
 ```md
 <!-- Markdown 目录语法 -->

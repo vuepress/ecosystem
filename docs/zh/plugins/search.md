@@ -66,7 +66,7 @@ export default {
 ```
 
 - 参考：
-  - [指南 > 多语言支持](../../guide/i18n.md)
+  - [指南 > 多语言支持](https://vuejs.press/zh/guide/i18n.html)
 
 ### hotKeys
 

@@ -24,7 +24,7 @@ export default {
 
 ## Differences with Markdown TOC Syntax
 
-Similar to the [Table of Contents Markdown Syntax](../../guide/markdown.md#table-of-contents), the TOC component that provided by this plugin could be used in your markdown content directly:
+Similar to the [Table of Contents Markdown Syntax](https://vuejs.press/guide/markdown.html#table-of-contents), the TOC component that provided by this plugin could be used in your markdown content directly:
 
 ```md
 <!-- markdown toc syntax -->

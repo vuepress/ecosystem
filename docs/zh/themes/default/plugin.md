@@ -90,6 +90,16 @@ export default {
 
   是否启用 [@vuepress/plugin-git](../../plugins/git.md) 。
 
+## themePlugins.links-check
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否启用 [@vuepress/plugin-links-check](../../plugins/links-check.md) 。
+
 ## themePlugins.mediumZoom
 
 - 类型： `boolean`
@@ -109,6 +119,16 @@ export default {
 - 详情：
 
   是否启用 [@vuepress/plugin-nprogress](../../plugins/nprogress.md) 。
+
+## themePlugins.prismjs
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否启用 [@vuepress/plugin-prismjs](../../plugins/prismjs.md) 。
 
 ## themePlugins.seo
 
