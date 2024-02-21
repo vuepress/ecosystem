@@ -38,6 +38,7 @@
     "copy": "cpx \"src/**/*.css\" lib"
   },
   "dependencies": {
+    "@vuepress/helper": "workspace:~",
     "medium-zoom": "^1.1.0",
     "vue": "^3.4.19"
   },

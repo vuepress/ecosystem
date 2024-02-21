@@ -1,4 +1,4 @@
-import { useLocaleConfig } from '@vuepress/helper/client'
+import { useLocaleConfig, wait } from '@vuepress/helper/client'
 import { useClipboard, useEventListener } from '@vueuse/core'
 import { nextTick, onMounted, watch } from 'vue'
 import { usePageData } from 'vuepress/client'
@@ -51,13 +51,13 @@ export const useCopyCode = ({
   }
 
   const appendCopyButton = (): void => {
-    nextTick().then(() =>
-      setTimeout(() => {
+    nextTick()
+      .then(() => wait(delay))
+      .then(() => {
         selector.forEach((item) => {
           document.querySelectorAll<HTMLElement>(item).forEach(insertCopyButton)
         })
-      }, delay),
-    )
+      })
   }
 
   const copyContent = (

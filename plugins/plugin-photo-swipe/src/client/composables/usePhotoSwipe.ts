@@ -1,4 +1,4 @@
-import { isString, useLocaleConfig } from '@vuepress/helper/client'
+import { isString, useLocaleConfig, wait } from '@vuepress/helper/client'
 import { nextTick, onMounted, onUnmounted, watch } from 'vue'
 import { usePageData, usePageFrontmatter } from 'vuepress/client'
 import type { PhotoSwipePluginLocaleData } from '../../shared/index.js'
@@ -38,7 +38,7 @@ export const usePhotoSwipe = ({
 
     if (photoSwipe !== false)
       nextTick()
-        .then(() => new Promise<void>((resolve) => setTimeout(resolve, delay)))
+        .then(() => wait(delay))
         .then(async () => {
           const imageSelector = isString(photoSwipe) ? photoSwipe : selector
 
