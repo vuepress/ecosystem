@@ -1,6 +1,6 @@
-import { useLocaleConfig } from '@vuepress/helper/client'
+import { isString, useLocaleConfig } from '@vuepress/helper/client'
 import { nextTick, onMounted, onUnmounted, watch } from 'vue'
-import { usePageData } from 'vuepress/client'
+import { usePageData, usePageFrontmatter } from 'vuepress/client'
 import type { PhotoSwipePluginLocaleData } from '../../shared/index.js'
 import { usePhotoSwipeOptions } from '../helpers/index.js'
 import { getImages, registerPhotoSwipe } from '../utils/index.js'
@@ -29,22 +29,29 @@ export const usePhotoSwipe = ({
   const photoSwipeOptions = usePhotoSwipeOptions()
   const locale = useLocaleConfig(locales)
   const page = usePageData()
+  const frontmatter = usePageFrontmatter<{ photoSwipe: string | boolean }>()
 
   let destroy: (() => void) | null = null
 
-  const setupPhotoSwipe = (): Promise<void> =>
-    new Promise<void>((resolve) => setTimeout(resolve, delay))
-      .then(() => nextTick())
-      .then(async () => {
-        destroy = await registerPhotoSwipe(
-          getImages(selector),
-          {
-            ...photoSwipeOptions,
-            ...locale.value,
-          },
-          scrollToClose,
-        )
-      })
+  const setupPhotoSwipe = (): void => {
+    const { photoSwipe } = frontmatter.value
+
+    if (photoSwipe !== false)
+      nextTick()
+        .then(() => new Promise<void>((resolve) => setTimeout(resolve, delay)))
+        .then(async () => {
+          const imageSelector = isString(photoSwipe) ? photoSwipe : selector
+
+          destroy = await registerPhotoSwipe(
+            getImages(imageSelector),
+            {
+              ...photoSwipeOptions,
+              ...locale.value,
+            },
+            scrollToClose,
+          )
+        })
+  }
 
   onMounted(() => {
     setupPhotoSwipe()

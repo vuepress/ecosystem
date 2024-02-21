@@ -176,6 +176,8 @@ In preview mode, you can:
 
 ## Frontmatter
 
+### photoSwipe
+
 - Type: `string | false`
 - Details:
 
