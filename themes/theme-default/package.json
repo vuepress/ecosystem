@@ -56,8 +56,8 @@
     "@vuepress/plugin-seo": "workspace:~",
     "@vuepress/plugin-sitemap": "workspace:~",
     "@vuepress/plugin-theme-data": "workspace:~",
-    "@vueuse/core": "^10.7.2",
-    "sass": "^1.71.0",
+    "@vueuse/core": "^10.8.0",
+    "sass": "^1.71.1",
     "vue": "^3.4.19"
   },
   "peerDependencies": {
