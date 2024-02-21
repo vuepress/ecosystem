@@ -32,7 +32,7 @@ export default defineUserConfig({
     '/': {
       lang: 'en-US',
       title: 'VuePress Ecosystem',
-      description: 'VuePress official themes plugins',
+      description: 'VuePress official themes and plugins',
     },
     '/zh/': {
       lang: 'zh-CN',
