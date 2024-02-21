@@ -155,5 +155,7 @@ export const getPageText = (
     }
   }
 
-  return singleLine ? result.replace(/\n/g, ' ').replace(/\s+/g, ' ') : result
+  return (
+    singleLine ? result.replace(/\n/g, ' ').replace(/\s+/g, ' ') : result
+  ).trim()
 }
