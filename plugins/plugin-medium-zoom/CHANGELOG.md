@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.17](https://github.com/vuepress/ecosystem/compare/v2.0.0-ci-test.0...v2.0.0-rc.17) (2024-02-21)
+
+### Features
+
+- **helper:** add wait utils ([75a409a](https://github.com/vuepress/ecosystem/commit/75a409ac992ebfbb581febd4a500dc009915a8f3))
+
 # [2.0.0-rc.15](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.14...v2.0.0-rc.15) (2024-02-19)
 
 **Note:** Version bump only for package @vuepress/plugin-medium-zoom

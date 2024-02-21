@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.17](https://github.com/vuepress/ecosystem/compare/v2.0.0-ci-test.0...v2.0.0-rc.17) (2024-02-21)
+
+### Bug Fixes
+
+- **plugin-photo-swipe:** support frontmatter ([28f29ba](https://github.com/vuepress/ecosystem/commit/28f29ba27776123f5cc1f064653d73ca725c76eb))
+
+### Features
+
+- **helper:** add wait utils ([75a409a](https://github.com/vuepress/ecosystem/commit/75a409ac992ebfbb581febd4a500dc009915a8f3))
+- **plugin-links-check:** add links check plugin ([082a953](https://github.com/vuepress/ecosystem/commit/082a9532226d8a6c0672a919c3e2a94811c50d8c))
+
 # [2.0.0-rc.16](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.15...v2.0.0-rc.16) (2024-02-20)
 
 ### Bug Fixes
