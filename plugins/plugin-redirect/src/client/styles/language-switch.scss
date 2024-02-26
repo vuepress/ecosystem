@@ -57,11 +57,11 @@
   }
 
   &.primary {
-    background-color: var(--redirect-primary-color);
+    background-color: var(--redirect-primary-bg-color);
     color: var(--redirect-primary-text-color);
 
     &:hover {
-      background-color: var(--redirect-primary-hover-color);
+      background-color: var(--redirect-primary-hover-bg-color);
     }
   }
 }
