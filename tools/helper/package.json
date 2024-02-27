@@ -43,11 +43,11 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@vue/shared": "^3.4.19",
+    "@vue/shared": "^3.4.20",
     "cheerio": "1.0.0-rc.12",
     "fflate": "^0.8.2",
     "gray-matter": "^4.0.3",
-    "vue": "^3.4.19"
+    "vue": "^3.4.20"
   },
   "devDependencies": {
     "@types/connect": "3.4.38",

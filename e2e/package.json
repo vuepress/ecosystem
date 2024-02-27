@@ -26,12 +26,12 @@
     "@vuepress/theme-default": "workspace:*",
     "sass": "^1.71.1",
     "sass-loader": "^14.1.1",
-    "vue": "^3.4.19",
+    "vue": "^3.4.20",
     "vuepress": "2.0.0-rc.8"
   },
   "devDependencies": {
     "anywhere": "^1.6.0",
-    "cypress": "^13.6.5",
+    "cypress": "^13.6.6",
     "start-server-and-test": "^2.0.3"
   }
 }

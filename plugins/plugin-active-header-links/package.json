@@ -36,8 +36,8 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@vueuse/core": "^10.8.0",
-    "vue": "^3.4.19"
+    "@vueuse/core": "^10.9.0",
+    "vue": "^3.4.20"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.8"
