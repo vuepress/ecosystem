@@ -44,13 +44,9 @@ You can then import `defineCatalogInfoGetter` from `@vuepress/plugin-catalog/cli
 ```js title=".vuepress/client.js"
 import { defineCatalogInfoGetter } from '@vuepress/plugin-catalog/client'
 
-export default {
-  setup: () => {
-    defineCatalogInfoGetter((meta) =>
-      meta.title ? { title: meta.title } : null,
-    )
-  },
-}
+defineCatalogInfoGetter((meta) => (meta.title ? { title: meta.title } : null))
+
+export default {}
 ```
 
 Catalog info should contains:

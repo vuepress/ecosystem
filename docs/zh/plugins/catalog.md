@@ -44,13 +44,9 @@ export default {
 ```js title=".vuepress/client.js"
 import { defineCatalogInfoGetter } from '@vuepress/plugin-catalog/client'
 
-export default {
-  setup: () => {
-    defineCatalogInfoGetter((meta) =>
-      meta.title ? { title: meta.title } : null,
-    )
-  },
-}
+defineCatalogInfoGetter((meta) => (meta.title ? { title: meta.title } : null))
+
+export default {}
 ```
 
 目录信息应包含:
