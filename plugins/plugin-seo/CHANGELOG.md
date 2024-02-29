@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.18](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.17...v2.0.0-rc.18) (2024-02-29)
+
+### Bug Fixes
+
+- **plugin-seo:** only generate description when page has content ([63471d3](https://github.com/vuepress/ecosystem/commit/63471d30f6d78d91889e7d4d388551a27adc6397))
+
 # [2.0.0-rc.17](https://github.com/vuepress/ecosystem/compare/v2.0.0-ci-test.0...v2.0.0-rc.17) (2024-02-21)
 
 **Note:** Version bump only for package @vuepress/plugin-seo
