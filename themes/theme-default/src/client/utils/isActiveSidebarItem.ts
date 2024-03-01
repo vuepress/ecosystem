@@ -10,12 +10,15 @@ const isActiveLink = (
   link: string,
   route: RouteLocationNormalizedLoaded,
 ): boolean => {
-  if (route.hash === link) {
-    return true
-  }
   const currentPath = normalizePath(route.path)
-  const targetPath = normalizePath(link)
-  return currentPath === targetPath
+  if (link.includes('#')) {
+    const [linkPath, linkHash] = link.split('#')
+    return (
+      currentPath === normalizePath(linkPath) && route.hash === `#${linkHash}`
+    )
+  }
+  // Otherwise, check if the link exactly matches the current path
+  return currentPath === normalizePath(link)
 }
 
 export const isActiveSidebarItem = (

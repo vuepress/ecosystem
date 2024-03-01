@@ -89,20 +89,24 @@ export const resolveSidebarItems = (
  * Util to transform page header to sidebar item
  */
 export const headerToSidebarItem = (
+  path: string,
   header: PageHeader,
   sidebarDepth: number,
 ): ResolvedSidebarItem => ({
   text: header.title,
-  link: header.link,
-  children: headersToSidebarItemChildren(header.children, sidebarDepth),
+  link: path + header.link,
+  children: headersToSidebarItemChildren(path, header.children, sidebarDepth),
 })
 
 export const headersToSidebarItemChildren = (
+  path: string,
   headers: PageHeader[],
   sidebarDepth: number,
 ): ResolvedSidebarItem[] =>
   sidebarDepth > 0
-    ? headers.map((header) => headerToSidebarItem(header, sidebarDepth - 1))
+    ? headers.map((header) =>
+        headerToSidebarItem(path, header, sidebarDepth - 1),
+      )
     : []
 
 /**
@@ -115,7 +119,11 @@ export const resolveAutoSidebarItems = (
   return [
     {
       text: page.title,
-      children: headersToSidebarItemChildren(page.headers, sidebarDepth),
+      children: headersToSidebarItemChildren(
+        page.path,
+        page.headers,
+        sidebarDepth,
+      ),
     },
   ]
 }
@@ -154,7 +162,11 @@ export const resolveArraySidebarItems = (
         page.headers[0]?.level === 1 ? page.headers[0].children : page.headers
       return {
         ...childItem,
-        children: headersToSidebarItemChildren(headers, sidebarDepth),
+        children: headersToSidebarItemChildren(
+          page.path,
+          headers,
+          sidebarDepth,
+        ),
       }
     }
 
