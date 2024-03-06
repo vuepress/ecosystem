@@ -22,8 +22,11 @@
     "test:unit": "cross-env TZ=Etc/UTC vitest run"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown",
-    "*.{cjs,js,ts,vue}": "eslint --fix",
+    "*.!(cjs|js|ts|vue)": "prettier --write --ignore-unknown",
+    "*.(cjs|js|ts|vue)": [
+      "eslint --fix",
+      "prettier --write"
+    ],
     "package.json": "sort-package-json"
   },
   "prettier": "prettier-config-vuepress",
