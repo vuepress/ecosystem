@@ -38,9 +38,9 @@
     "copy": "cpx \"src/**/*.css\" lib"
   },
   "dependencies": {
-    "@docsearch/css": "^3.5.2",
-    "@docsearch/js": "^3.5.2",
-    "@docsearch/react": "^3.5.2",
+    "@docsearch/css": "^3.6.0",
+    "@docsearch/js": "^3.6.0",
+    "@docsearch/react": "^3.6.0",
     "@vueuse/core": "^10.9.0",
     "ts-debounce": "^4.0.0",
     "vue": "^3.4.21"
