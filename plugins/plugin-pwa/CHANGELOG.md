@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.19](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.18...v2.0.0-rc.19) (2024-03-10)
+
+### Bug Fixes
+
+- **plugin-pwa:** only set viewpoint in pwa, close [#84](https://github.com/vuepress/ecosystem/issues/84) ([e84d023](https://github.com/vuepress/ecosystem/commit/e84d0235fc29b7bad211080e1c41c68e4c05e868))
+
 # [2.0.0-rc.18](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.17...v2.0.0-rc.18) (2024-02-29)
 
 **Note:** Version bump only for package @vuepress/plugin-pwa
