@@ -58,31 +58,31 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
         const targetLang = `${targetSiteLocale.lang}`
 
         const text = targetThemeLocale.selectLanguageName ?? targetLang
-        let link
 
+        // if the target language is current language
+        // stay at current link
         if (targetLang === siteLocale.value.lang) {
-          // if the target language is current language
-          // stay at current link
-          link = currentFullPath
-        } else {
-          // if the target language is not current language
-          // try to link to the corresponding page of current page
-          // or fallback to homepage
-          const targetLocalePage = currentPath.replace(
-            routeLocale.value,
-            targetLocalePath,
-          )
-          if (routePaths.value.some((item) => item === targetLocalePage)) {
-            // try to keep current hash and params across languages
-            link = currentFullPath.replace(currentPath, targetLocalePage)
-          } else {
-            link = targetThemeLocale.home ?? targetLocalePath
+          return {
+            text,
+            activeMatch: /./,
+            link: route.hash ?? '#',
           }
         }
 
+        // if the target language is not current language
+        // try to link to the corresponding page of current page
+        // or fallback to homepage
+        const targetLocalePage = currentPath.replace(
+          routeLocale.value,
+          targetLocalePath,
+        )
+
         return {
           text,
-          link,
+          // try to keep current hash and params across languages
+          link: routePaths.value.some((item) => item === targetLocalePage)
+            ? currentFullPath.replace(currentPath, targetLocalePage)
+            : targetThemeLocale.home ?? targetLocalePath,
         }
       }),
     }

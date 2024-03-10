@@ -63,13 +63,6 @@ const shouldBeActiveInSubpath = computed(() => {
   }
   return item.value.link !== '/'
 })
-// if this link is active in subpath
-const isActiveInSubpath = computed(() => {
-  if (!shouldBeActiveInSubpath.value) {
-    return false
-  }
-  return route.path.startsWith(item.value.link)
-})
 
 // if this link is active
 const isActive = computed(() => {
@@ -79,7 +72,13 @@ const isActive = computed(() => {
   if (item.value.activeMatch) {
     return new RegExp(item.value.activeMatch).test(route.path)
   }
-  return isActiveInSubpath.value
+
+  if (!shouldBeActiveInSubpath.value) {
+    return false
+  }
+
+  // if this link is active in subpath
+  return route.path.startsWith(item.value.link)
 })
 </script>
 
