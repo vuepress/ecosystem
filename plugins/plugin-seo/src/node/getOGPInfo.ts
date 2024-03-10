@@ -68,9 +68,10 @@ export const getOGPInfo = (
       : {}),
 
     ...(options.twitterID ? { 'twitter:creator': options.twitterID } : {}),
-    ...(ogImage
+    ...(cover
       ? {
           'twitter:card': 'summary_large_image',
+          'twitter:image:src': cover,
           'twitter:image:alt': articleTitle,
         }
       : {}),
