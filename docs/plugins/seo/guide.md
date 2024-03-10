@@ -16,23 +16,23 @@ The following are the `<meta>` tags and their values that will be injected into 
 
 The following are the `<meta>` tags and their value injected into `<head>` by default to satisfy OGP:
 
-|        Meta Name         |                                                    Value                                                     |
-| :----------------------: | :----------------------------------------------------------------------------------------------------------: |
-|         `og:url`         |                                         `options.hostname` + `path`                                          |
-|      `og:site_name`      |                                              `siteConfig.title`                                              |
-|        `og:title`        |                                                 `page.title`                                                 |
-|     `og:description`     |   `page.frontmatter.description` \|\| auto generated (when `autoDescription` is `true` in plugin options)    |
-|        `og:type`         |                                                 `"article"`                                                  |
-|        `og:image`        | `options.hostname` + `page.frontmatter.image` \|\|first image in page \|\| `fallbackImage` in plugin options |
-|    `og:updated_time`     |                                            `page.git.updatedTime`                                            |
-|       `og:locale`        |                                                 `page.lang`                                                  |
-|  `og:locale:alternate`   |                                    Other languages in `siteData.locales`                                     |
-|      `twitter:card`      |                          `"summary_large_image"` (only available when image found)                           |
-|   `twitter:image:alt`    |                                `page.title` (only available when image found)                                |
-|     `article:author`     |                               `page.frontmatter.author` \|\| `options.author`                                |
-|      `article:tag`       |                             `page.frontmatter.tags` \|\| `page.frontmatter.tag`                              |
-| `article:published_time` |                             `page.frontmatter.date` \|\| `page.git.createdTime`                              |
-| `article:modified_time`  |                                            `page.git.updatedTime`                                            |
+|        Meta Name         |                                                          Value                                                          |
+| :----------------------: | :---------------------------------------------------------------------------------------------------------------------: |
+|         `og:url`         |                                               `options.hostname` + `path`                                               |
+|      `og:site_name`      |                                                   `siteConfig.title`                                                    |
+|        `og:title`        |                                                      `page.title`                                                       |
+|     `og:description`     |         `page.frontmatter.description` \|\| auto generated (when `autoDescription` is `true` in plugin options)         |
+|        `og:type`         |                                                       `"article"`                                                       |
+|        `og:image`        | `page.frontmatter.banner` \|\| `page.frontmatter.cover` \|\| first image in page \|\| `fallbackImage` in plugin options |
+|    `og:updated_time`     |                                                 `page.git.updatedTime`                                                  |
+|       `og:locale`        |                                                       `page.lang`                                                       |
+|  `og:locale:alternate`   |                                          Other languages in `siteData.locales`                                          |
+|      `twitter:card`      |                                `"summary_large_image"` (only available when image found)                                |
+|   `twitter:image:alt`    |                                     `page.title` (only available when image found)                                      |
+|     `article:author`     |                                     `page.frontmatter.author` \|\| `options.author`                                     |
+|      `article:tag`       |                                   `page.frontmatter.tags` \|\| `page.frontmatter.tag`                                   |
+| `article:published_time` |                                   `page.frontmatter.date` \|\| `page.git.createdTime`                                   |
+| `article:modified_time`  |                                                 `page.git.updatedTime`                                                  |
 
 ### Default JSON-LD Generation
 

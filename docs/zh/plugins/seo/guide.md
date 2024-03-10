@@ -12,23 +12,23 @@
 
 ### 默认的 OGP 生成逻辑
 
-|         属性名称         |                                                 值                                                 |
-| :----------------------: | :------------------------------------------------------------------------------------------------: |
-|         `og:url`         |                                    `options.hostname` + `path`                                     |
-|      `og:site_name`      |                                         `siteConfig.title`                                         |
-|        `og:title`        |                                            `page.title`                                            |
-|     `og:description`     |    `page.frontmatter.description` \|\| 自动生成 (当插件选项中的 `autoDescription` 为 `true` 时)    |
-|        `og:type`         |                                            `"article"`                                             |
-|        `og:image`        | `options.hostname` + `page.frontmatter.image` \|\| 页面的第一张图片\|\| 插件选项的 `fallbackImage` |
-|    `og:updated_time`     |                                       `page.git.updatedTime`                                       |
-|       `og:locale`        |                                            `page.lang`                                             |
-|  `og:locale:alternate`   |                                 `siteData.locales` 包含的其他语言                                  |
-|      `twitter:card`      |                              `"summary_large_image"` (仅在找到图片时)                              |
-|   `twitter:image:alt`    |                                   `page.title` (仅在找到图片时)                                    |
-|     `article:author`     |                          `page.frontmatter.author` \|\| `options.author`                           |
-|      `article:tag`       |                        `page.frontmatter.tags` \|\| `page.frontmatter.tag`                         |
-| `article:published_time` |                        `page.frontmatter.date` \|\| `page.git.createdTime`                         |
-| `article:modified_time`  |                                       `page.git.updatedTime`                                       |
+|         属性名称         |                                                      值                                                      |
+| :----------------------: | :----------------------------------------------------------------------------------------------------------: |
+|         `og:url`         |                                         `options.hostname` + `path`                                          |
+|      `og:site_name`      |                                              `siteConfig.title`                                              |
+|        `og:title`        |                                                 `page.title`                                                 |
+|     `og:description`     |         `page.frontmatter.description` \|\| 自动生成 (当插件选项中的 `autoDescription` 为 `true` 时)         |
+|        `og:type`         |                                                 `"article"`                                                  |
+|        `og:image`        | `page.frontmatter.banner` \|\| `page.frontmatter.cover` \|\| 页面的第一张图片\|\| 插件选项的 `fallbackImage` |
+|    `og:updated_time`     |                                            `page.git.updatedTime`                                            |
+|       `og:locale`        |                                                 `page.lang`                                                  |
+|  `og:locale:alternate`   |                                      `siteData.locales` 包含的其他语言                                       |
+|      `twitter:card`      |                                   `"summary_large_image"` (仅在找到图片时)                                   |
+|   `twitter:image:alt`    |                                        `page.title` (仅在找到图片时)                                         |
+|     `article:author`     |                               `page.frontmatter.author` \|\| `options.author`                                |
+|      `article:tag`       |                             `page.frontmatter.tags` \|\| `page.frontmatter.tag`                              |
+| `article:published_time` |                             `page.frontmatter.date` \|\| `page.git.createdTime`                              |
+| `article:modified_time`  |                                            `page.git.updatedTime`                                            |
 
 ### 默认的 JSON-LD 生成逻辑
 
