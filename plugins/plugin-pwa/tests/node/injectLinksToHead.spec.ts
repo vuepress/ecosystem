@@ -139,14 +139,6 @@ describe('Test head function', () => {
         },
       ],
       ['meta', { name: 'msapplication-TileColor', content: '#ffffff' }],
-      [
-        'meta',
-        {
-          name: 'viewport',
-          content:
-            'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover',
-        },
-      ],
     ])
   })
 
@@ -191,14 +183,6 @@ describe('Test head function', () => {
           content: '/img/icon/msIcon144.png',
         },
       ],
-      [
-        'meta',
-        {
-          name: 'viewport',
-          content:
-            'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover',
-        },
-      ],
     ])
   })
 
@@ -239,14 +223,6 @@ describe('Test head function', () => {
         },
       ],
       ['meta', { name: 'msapplication-TileColor', content: '#46bd87' }],
-      [
-        'meta',
-        {
-          name: 'viewport',
-          content:
-            'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover',
-        },
-      ],
     ])
   })
 })

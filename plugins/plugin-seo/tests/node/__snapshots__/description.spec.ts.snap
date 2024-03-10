@@ -198,20 +198,6 @@ exports[`Should generate seo information > Should contain basic properties 3`] =
     },
   ],
   [
-    "meta",
-    {
-      "content": "summary_large_image",
-      "name": "twitter:card",
-    },
-  ],
-  [
-    "meta",
-    {
-      "content": "Heading 1",
-      "name": "twitter:image:alt",
-    },
-  ],
-  [
     "script",
     {
       "type": "application/ld+json",
@@ -416,20 +402,6 @@ exports[`Should generate seo information > Should contain basic properties 6`] =
     {
       "content": "en-US",
       "property": "og:locale:alternate",
-    },
-  ],
-  [
-    "meta",
-    {
-      "content": "summary_large_image",
-      "name": "twitter:card",
-    },
-  ],
-  [
-    "meta",
-    {
-      "content": "一级标题",
-      "name": "twitter:image:alt",
     },
   ],
   [
