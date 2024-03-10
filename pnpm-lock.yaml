@@ -110,6 +110,9 @@ importers:
       '@vuepress/plugin-external-link-icon':
         specifier: workspace:*
         version: link:../plugins/plugin-external-link-icon
+      '@vuepress/plugin-feed':
+        specifier: workspace:*
+        version: link:../plugins/plugin-feed
       '@vuepress/plugin-google-analytics':
         specifier: workspace:*
         version: link:../plugins/plugin-google-analytics
