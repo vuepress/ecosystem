@@ -45,6 +45,7 @@ import { PwaReadyPopup as _PwaReadyPopup } from "${
 import { h }  from "vue";
 import { defineClientConfig } from "vuepress/client";
 import { setupPwa } from "${path.join(__dirname, '../client/composables/setupPwa.js')}";
+import { setupViewPoint } from "${path.join(__dirname, '../client/composables/setupViewPoint.js')}";
 ${configImport}
 import "${path.join(__dirname, '../client/styles/vars.css')}";
 
@@ -55,6 +56,7 @@ ${rootComponents.map((item) => `const ${item} = () => h(_${item}, { locales })`)
 export default defineClientConfig({
   setup: () => {
     setupPwa(__SW_PATH__, __SW_FORCE_UPDATE__);
+    setupViewPoint();
   },
   rootComponents: [
 ${rootComponents.map((item) => `    ${item},`).join('\n')}

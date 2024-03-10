@@ -83,11 +83,5 @@ export const injectLinksToHead = (
     setMeta('msapplication-TileColor', options.themeColor || '#46bd87')
   }
 
-  // Enhance pwa experience
-  setMeta(
-    'viewport',
-    'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover',
-  )
-
   return head
 }
