@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.20](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.19...v2.0.0-rc.20) (2024-03-11)
+
+### Bug Fixes
+
+- **plugin-pwa:** remove vuepress-shared ([94659a7](https://github.com/vuepress/ecosystem/commit/94659a74022d79927a554b31c12df668225c9390))
+
+### Features
+
+- add append-date plugin ([#88](https://github.com/vuepress/ecosystem/issues/88)) ([3fe39bc](https://github.com/vuepress/ecosystem/commit/3fe39bc4ffd60f20db3fbba2d5d69f7663eb9bdc))
+- add comment plugin ([#87](https://github.com/vuepress/ecosystem/issues/87)) ([5debe9d](https://github.com/vuepress/ecosystem/commit/5debe9d28cee2213933857b900455edb1b1e0643))
+
 # [2.0.0-rc.19](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.18...v2.0.0-rc.19) (2024-03-10)
 
 ### Bug Fixes
