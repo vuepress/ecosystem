@@ -19,7 +19,6 @@ import { useWalineOptions } from '../helpers/index.js'
 import { LoadingIcon } from './LoadingIcon.js'
 
 import '@waline/client/waline.css'
-import '../styles/waline.css'
 
 declare const WALINE_META: boolean
 declare const WALINE_LOCALES: WalineLocaleConfig

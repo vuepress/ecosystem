@@ -109,6 +109,17 @@
   --catalog-hover-color: var(--c-brand-light);
 }
 
+// plugin-comment
+.waline-wrapper {
+  --waline-bg-color: var(--c-bg);
+  --waline-bg-color-light: var(--c-bg-light);
+  --waline-text-color: var(--c-color);
+  --waline-border: 1px solid var(--c-border);
+  --waline-border-color: var(--c-border);
+  --waline-theme-color: var(--c-brand);
+  --waline-active-color: var(--c-brand-light);
+}
+
 // plugin-docsearch
 .DocSearch {
   --docsearch-primary-color: var(--c-brand);

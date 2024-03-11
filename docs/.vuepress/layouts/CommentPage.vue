@@ -33,11 +33,3 @@ onMounted(() => {
     </template>
   </ParentLayout>
 </template>
-
-<style lang="scss">
-@use '@vuepress/theme-default/styles/mixins';
-
-#vp-comment {
-  @include mixins.content_wrapper;
-}
-</style>
