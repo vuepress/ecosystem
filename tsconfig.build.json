@@ -7,6 +7,7 @@
     {
       "path": "./plugins/plugin-active-header-links/tsconfig.build.json"
     },
+    { "path": "./plugins/plugin-append-date/tsconfig.build.json" },
     { "path": "./plugins/plugin-back-to-top/tsconfig.build.json" },
     { "path": "./plugins/plugin-baidu-analytics/tsconfig.build.json" },
     { "path": "./plugins/plugin-blog/tsconfig.build.json" },
