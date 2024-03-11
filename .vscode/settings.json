@@ -19,19 +19,23 @@
     "vue"
   ],
   "cSpell.words": [
+    "artalk",
     "bumpp",
     "composables",
+    "darkmode",
     "devtool",
     "docsearch",
     "envinfo",
     "esbuild",
     "frontmatter",
+    "giscus",
     "globby",
     "gtag",
     "jsonld",
     "mdit",
     "nord",
     "nprogress",
+    "pageview",
     "photoswipe",
     "prefetch",
     "preload",
@@ -39,10 +43,12 @@
     "shiki",
     "slugify",
     "tsbuildinfo",
+    "twikoo",
     "unmount",
     "vuejs",
     "vuepress",
     "vueuse",
+    "waline",
     "zoomable"
   ]
 }
