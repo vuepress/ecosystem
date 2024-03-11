@@ -4,6 +4,7 @@ import { footnote } from '@mdit/plugin-footnote'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
+import { commentPlugin } from '@vuepress/plugin-comment'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
@@ -48,6 +49,9 @@ export default defineUserConfig({
 
   // configure markdown
   markdown: {
+    code: {
+      lineNumbers: 10,
+    },
     importCode: {
       handleImportPath: (importPath) => {
         // handle @vuepress packages import path
@@ -76,6 +80,7 @@ export default defineUserConfig({
   // use plugins
   plugins: [
     catalogPlugin(),
+    commentPlugin({ provider: 'Giscus' }),
     docsearchPlugin({
       appId: 'N7UOPMVZ5B',
       apiKey: 'aa626dfa43a5e32cd519ba84735ad384',

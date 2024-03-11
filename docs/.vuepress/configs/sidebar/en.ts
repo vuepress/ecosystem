@@ -34,6 +34,17 @@ export const sidebarEn: SidebarConfig = {
           children: ['/plugins/blog/guide', '/plugins/blog/config'],
         },
         {
+          text: 'Comment',
+          link: '/plugins/comment/',
+          children: [
+            '/plugins/comment/guide',
+            '/plugins/comment/giscus/',
+            '/plugins/comment/waline/',
+            '/plugins/comment/artalk/',
+            '/plugins/comment/twikoo/',
+          ],
+        },
+        {
           text: 'Feed',
           link: '/plugins/feed/',
           children: [

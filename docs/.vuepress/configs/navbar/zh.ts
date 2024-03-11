@@ -42,7 +42,11 @@ export const navbarZh: NavbarConfig = [
       },
       {
         text: '博客',
-        children: ['/zh/plugins/blog/', '/zh/plugins/feed/'],
+        children: [
+          '/zh/plugins/blog/',
+          '/zh/plugins/comment/',
+          '/zh/plugins/feed/',
+        ],
       },
       {
         text: 'PWA',
