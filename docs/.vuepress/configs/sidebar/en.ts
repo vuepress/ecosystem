@@ -5,6 +5,7 @@ export const sidebarEn: SidebarConfig = {
     {
       text: 'Common Features',
       children: [
+        '/plugins/append-date',
         '/plugins/back-to-top',
         '/plugins/catalog',
         '/plugins/copy-code',

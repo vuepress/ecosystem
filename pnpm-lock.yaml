@@ -223,6 +223,18 @@ importers:
         specifier: 2.0.0-rc.8
         version: 2.0.0-rc.8(@vuepress/bundler-vite@2.0.0-rc.8)(@vuepress/bundler-webpack@2.0.0-rc.8)(typescript@5.4.2)(vue@3.4.21)
 
+  plugins/plugin-append-date:
+    dependencies:
+      '@vuepress/helper':
+        specifier: workspace:~
+        version: link:../../tools/helper
+      '@vuepress/plugin-git':
+        specifier: workspace:~
+        version: link:../plugin-git
+      vuepress:
+        specifier: 2.0.0-rc.8
+        version: 2.0.0-rc.8(@vuepress/bundler-vite@2.0.0-rc.8)(@vuepress/bundler-webpack@2.0.0-rc.8)(typescript@5.4.2)(vue@3.4.21)
+
   plugins/plugin-back-to-top:
     dependencies:
       '@vuepress/helper':

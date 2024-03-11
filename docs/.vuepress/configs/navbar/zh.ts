@@ -20,6 +20,7 @@ export const navbarZh: NavbarConfig = [
       {
         text: '常用功能',
         children: [
+          '/zh/plugins/append-date',
           '/zh/plugins/back-to-top',
           '/zh/plugins/catalog',
           '/zh/plugins/copy-code',
