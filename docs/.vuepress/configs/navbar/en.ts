@@ -43,7 +43,7 @@ export const navbarEn: NavbarConfig = [
       },
       {
         text: 'Blogging',
-        children: ['/plugins/blog/', '/plugins/feed/'],
+        children: ['/plugins/blog/', '/plugins/comment/', '/plugins/feed/'],
       },
       {
         text: 'PWA',

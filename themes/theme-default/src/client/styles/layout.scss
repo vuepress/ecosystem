@@ -201,3 +201,7 @@
     font-size: 1.9rem;
   }
 }
+
+#vp-comment {
+  @include content_wrapper;
+}
