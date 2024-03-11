@@ -50,10 +50,7 @@ export const pwaPlugin =
           'mitt',
           'register-service-worker',
         ])
-        addViteSsrNoExternal(bundlerOptions, app, [
-          '@vuepress/helper',
-          'vuepress-shared',
-        ])
+        addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
 
         customizeDevServer(bundlerOptions, app, {
           path: '/manifest.webmanifest',
