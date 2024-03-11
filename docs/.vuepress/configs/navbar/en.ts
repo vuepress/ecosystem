@@ -20,6 +20,7 @@ export const navbarEn: NavbarConfig = [
       {
         text: 'Common Features',
         children: [
+          '/plugins/append-date',
           '/plugins/back-to-top',
           '/plugins/catalog',
           '/plugins/copy-code',
