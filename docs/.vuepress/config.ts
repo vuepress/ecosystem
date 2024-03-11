@@ -49,6 +49,9 @@ export default defineUserConfig({
 
   // configure markdown
   markdown: {
+    code: {
+      lineNumbers: 10,
+    },
     importCode: {
       handleImportPath: (importPath) => {
         // handle @vuepress packages import path
