@@ -14,6 +14,7 @@
     "@vuepress/bundler-webpack": "2.0.0-rc.8",
     "@vuepress/plugin-back-to-top": "workspace:*",
     "@vuepress/plugin-catalog": "workspace:*",
+    "@vuepress/plugin-comment": "workspace:*",
     "@vuepress/plugin-copy-code": "workspace:*",
     "@vuepress/plugin-docsearch": "workspace:*",
     "@vuepress/plugin-external-link-icon": "workspace:*",

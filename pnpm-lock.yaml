@@ -101,6 +101,9 @@ importers:
       '@vuepress/plugin-catalog':
         specifier: workspace:*
         version: link:../plugins/plugin-catalog
+      '@vuepress/plugin-comment':
+        specifier: workspace:*
+        version: link:../plugins/plugin-comment
       '@vuepress/plugin-copy-code':
         specifier: workspace:*
         version: link:../plugins/plugin-copy-code

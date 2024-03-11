@@ -9,9 +9,9 @@ import type {
 } from '../../shared/index.js'
 
 declare const __VUEPRESS_DEV__: boolean
-declare const COMMENT_OPTIONS: CommentOptions
+declare const __COMMENT_OPTIONS__: CommentOptions
 
-const commentOptions = COMMENT_OPTIONS
+const commentOptions = __COMMENT_OPTIONS__
 
 let comment: CommentOptions = commentOptions
 

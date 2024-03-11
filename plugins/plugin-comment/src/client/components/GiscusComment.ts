@@ -10,7 +10,7 @@ import type {
 import { useGiscusOptions } from '../helpers/index.js'
 import { LoadingIcon } from './LoadingIcon.js'
 
-import '../styles/giscus.scss'
+import '../styles/giscus.css'
 
 // Note: Should be updated with https://github.com/giscus/giscus/tree/main/locales
 const SUPPORTED_LANGUAGES = [

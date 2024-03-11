@@ -52,7 +52,7 @@ export const commentPlugin =
             : {}
 
         return {
-          COMMENT_OPTIONS: options,
+          __COMMENT_OPTIONS__: options,
           ...(options.provider === 'Waline'
             ? {
                 WALINE_LOCALES: userWalineLocales,

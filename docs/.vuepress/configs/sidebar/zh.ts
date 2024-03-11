@@ -34,6 +34,17 @@ export const sidebarZh: SidebarConfig = {
           children: ['/zh/plugins/blog/guide', '/zh/plugins/blog/config'],
         },
         {
+          text: '评论',
+          link: '/zh/plugins/comment/',
+          children: [
+            '/zh/plugins/comment/guide',
+            '/zh/plugins/comment/giscus/',
+            '/zh/plugins/comment/waline/',
+            '/zh/plugins/comment/artalk/',
+            '/zh/plugins/comment/twikoo/',
+          ],
+        },
+        {
           text: 'Feed',
           link: '/zh/plugins/feed/',
           children: [
