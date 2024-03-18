@@ -212,6 +212,75 @@ exports[`Should generate seo information > Should contain basic properties 4`] =
   [
     "link",
     {
+      "href": "https://exmaple.com/excerpt.html",
+      "rel": "canonical",
+    },
+  ],
+  [
+    "link",
+    {
+      "href": "https://exmaple.com/zh/excerpt.html",
+      "hreflang": "zh-cn",
+      "rel": "alternate",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "https://exmaple.com/excerpt.html",
+      "property": "og:url",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "Page Excerpt",
+      "property": "og:title",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "This is excerpt content.",
+      "property": "og:description",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "article",
+      "property": "og:type",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "en-US",
+      "property": "og:locale",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "zh-CN",
+      "property": "og:locale:alternate",
+    },
+  ],
+  [
+    "script",
+    {
+      "type": "application/ld+json",
+    },
+    "{"@context":"https://schema.org","@type":"Article","headline":"Page Excerpt","image":[""],"dateModified":null,"author":[]}",
+  ],
+]
+`;
+
+exports[`Should generate seo information > Should contain basic properties 5`] = `
+[
+  [
+    "link",
+    {
       "href": "https://exmaple.com/zh/",
       "rel": "canonical",
     },
@@ -269,7 +338,7 @@ exports[`Should generate seo information > Should contain basic properties 4`] =
 ]
 `;
 
-exports[`Should generate seo information > Should contain basic properties 5`] = `
+exports[`Should generate seo information > Should contain basic properties 6`] = `
 [
   [
     "link",
@@ -338,7 +407,7 @@ exports[`Should generate seo information > Should contain basic properties 5`] =
 ]
 `;
 
-exports[`Should generate seo information > Should contain basic properties 6`] = `
+exports[`Should generate seo information > Should contain basic properties 7`] = `
 [
   [
     "link",
@@ -414,7 +483,76 @@ exports[`Should generate seo information > Should contain basic properties 6`] =
 ]
 `;
 
-exports[`Should generate seo information > Should contain basic properties 7`] = `
+exports[`Should generate seo information > Should contain basic properties 8`] = `
+[
+  [
+    "link",
+    {
+      "href": "https://exmaple.com/zh/excerpt.html",
+      "rel": "canonical",
+    },
+  ],
+  [
+    "link",
+    {
+      "href": "https://exmaple.com/excerpt.html",
+      "hreflang": "en-us",
+      "rel": "alternate",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "https://exmaple.com/zh/excerpt.html",
+      "property": "og:url",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "页面摘要",
+      "property": "og:title",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "这是页面摘要。",
+      "property": "og:description",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "article",
+      "property": "og:type",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "zh-CN",
+      "property": "og:locale",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "en-US",
+      "property": "og:locale:alternate",
+    },
+  ],
+  [
+    "script",
+    {
+      "type": "application/ld+json",
+    },
+    "{"@context":"https://schema.org","@type":"Article","headline":"页面摘要","image":[""],"dateModified":null,"author":[]}",
+  ],
+]
+`;
+
+exports[`Should generate seo information > Should contain basic properties 9`] = `
 [
   [
     "link",

@@ -1,4 +1,4 @@
-import { getPageText } from '@vuepress/helper'
+import { getPageExcerptContent, getText } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import type { ExtendPage } from '../typings/index.js'
 
@@ -9,7 +9,14 @@ export const generateDescription = (
 ): void => {
   // generate description
   if (!page.frontmatter.description && autoDescription) {
-    const pageText = getPageText(app, page, { length: 180, singleLine: true })
+    const content = getPageExcerptContent(page.content)
+      ? page.data.excerpt ?? page.contentRendered
+      : page.contentRendered
+
+    const pageText = getText(content, app.options.base, {
+      length: 180,
+      singleLine: true,
+    })
 
     if (pageText.length) {
       page.frontmatter.description =

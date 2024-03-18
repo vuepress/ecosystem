@@ -196,6 +196,15 @@ const $ = load('')
 const isH1Tag = (node: AnyNode): boolean =>
   node.type === 'tag' && node.tagName === 'h1'
 
+export const getPageExcerptContent = (
+  content: string,
+  separator = '<!-- more -->',
+): string | undefined =>
+  matter(content, {
+    excerpt: true,
+    excerpt_separator: separator,
+  }).excerpt
+
 export const getPageExcerpt = (
   { markdown, options: { base } }: App,
   { content, contentRendered, filePath, filePathRelative, frontmatter }: Page,
@@ -208,10 +217,7 @@ export const getPageExcerpt = (
   }: PageExcerptOptions = {},
 ): string => {
   // get page content
-  const { excerpt } = matter(content, {
-    excerpt: true,
-    excerpt_separator: separator,
-  })
+  const excerpt = getPageExcerptContent(content, separator)
 
   if (excerpt) {
     const renderedContent = markdown.render(

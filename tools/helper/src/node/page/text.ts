@@ -47,43 +47,6 @@ const REMOVED_TAGS = [
   'datalist',
 ]
 
-export interface PageTextOptions {
-  /**
-   * Whether convert text to single line content
-   *
-   * 是否将文字转换成单行内容
-   *
-   * @default false
-   */
-  singleLine?: boolean
-
-  /**
-   * Length of text
-   *
-   * @description Text length will be the minimal possible length reaching this value
-   *
-   * 文字的长度
-   *
-   * @description 文字的长度会尽可能的接近这个值
-   *
-   * @default 300
-   */
-  length?: number
-
-  /**
-   * Tags to be removed
-   *
-   * @description Table and code blocks are removed by default.
-   *
-   * 需要移除的标签
-   *
-   * @description 默认情况下表格和代码块会被移除
-   *
-   * @default ['table', 'pre']
-   */
-  removedTags?: string[]
-}
-
 interface NodeOptions {
   base: string
   removedTags: string[]
@@ -134,9 +97,46 @@ const handleNodes = (
 
 const $ = load('')
 
-export const getPageText = (
-  { options: { base } }: App,
-  { contentRendered }: Page,
+export interface PageTextOptions {
+  /**
+   * Whether convert text to single line content
+   *
+   * 是否将文字转换成单行内容
+   *
+   * @default false
+   */
+  singleLine?: boolean
+
+  /**
+   * Length of text
+   *
+   * @description Text length will be the minimal possible length reaching this value
+   *
+   * 文字的长度
+   *
+   * @description 文字的长度会尽可能的接近这个值
+   *
+   * @default 300
+   */
+  length?: number
+
+  /**
+   * Tags to be removed
+   *
+   * @description Table and code blocks are removed by default.
+   *
+   * 需要移除的标签
+   *
+   * @description 默认情况下表格和代码块会被移除
+   *
+   * @default ['table', 'pre']
+   */
+  removedTags?: string[]
+}
+
+export const getText = (
+  content: string,
+  base: string,
   {
     length = 300,
     singleLine,
@@ -144,7 +144,7 @@ export const getPageText = (
   }: PageTextOptions = {},
 ): string => {
   let result = ''
-  const rootNodes = $.parseHTML(contentRendered) ?? []
+  const rootNodes = $.parseHTML(content) ?? []
 
   for (const node of rootNodes) {
     const text = handleNode(node, { base, removedTags })
@@ -154,8 +154,13 @@ export const getPageText = (
       if (text.length >= length) break
     }
   }
-
   return (
     singleLine ? result.replace(/\n/g, ' ').replace(/\s+/g, ' ') : result
   ).trim()
 }
+
+export const getPageText = (
+  { options: { base } }: App,
+  { contentRendered }: Page,
+  options: PageTextOptions = {},
+): string => getText(contentRendered, base, options)

@@ -2,6 +2,7 @@
 import { describe, expect, it } from 'vitest'
 import { createBaseApp } from 'vuepress/core'
 import { path } from 'vuepress/utils'
+import { blogPlugin } from '../../../plugin-blog/src/node/blogPlugin.js'
 import { seoPlugin } from '../../src/node/index.js'
 import { emptyTheme } from '../__fixtures__/theme/empty.js'
 
@@ -18,6 +19,7 @@ const app = createBaseApp({
     },
   },
   plugins: [
+    blogPlugin({}),
     seoPlugin({
       hostname: 'https://exmaple.com',
       canonical: 'https://exmaple.com',
