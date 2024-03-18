@@ -130,6 +130,7 @@ export default defineUserConfig({
       },
     }),
     feedPlugin({
+      hostname: 'https://ecosystem.vuejs.press',
       atom: true,
       json: true,
       rss: true,

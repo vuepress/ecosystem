@@ -8,6 +8,7 @@ export default defaultTheme({
   logo: '/images/hero.png',
   repo: 'vuepress/ecosystem',
   docsDir: 'docs',
+  hostname: 'https://ecosystem.vuejs.press',
 
   // theme-level locales config
   locales: {
