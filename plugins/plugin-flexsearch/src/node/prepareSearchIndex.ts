@@ -31,11 +31,9 @@ const prepContent = (html: string): string => {
 export const prepareSearchIndex = async ({
   app,
   isSearchable,
-  getExtraFields,
 }: {
   app: App
   isSearchable: Required<FlexsearchPluginOptions>['isSearchable']
-  getExtraFields: Required<FlexsearchPluginOptions>['getExtraFields']
 }): Promise<string> => {
   // generate search index
   const pages = app.pages.filter(isSearchable)

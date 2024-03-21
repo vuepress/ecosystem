@@ -124,31 +124,6 @@ export default {
 }
 ```
 
-### getExtraFields
-
-- Type: `(page: Page) => string[]`
-
-- Default: `() => []`
-
-- Details:
-
-  A function to add extra fields to the search index of a page.
-
-  By default, this plugin will use page title and headers as the search index. This option could help you to add more searchable fields.
-
-- Example:
-
-```ts
-export default {
-  plugins: [
-    searchPlugin({
-      // allow searching the `tags` frontmatter
-      getExtraFields: (page) => page.frontmatter.tags ?? [],
-    }),
-  ],
-}
-```
-
 ## Styles
 
 You can customize the style of the search box via CSS variables:
