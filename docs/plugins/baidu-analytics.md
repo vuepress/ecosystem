@@ -4,6 +4,12 @@
 
 Integrate [Baidu Analytics](https://tongji.baidu.com/) into VuePress.
 
+::: tip
+
+Do not enable SPA mode in Baidu Analytics settings. The plugin will report page view events correctly.
+
+:::
+
 ## Usage
 
 ```bash
