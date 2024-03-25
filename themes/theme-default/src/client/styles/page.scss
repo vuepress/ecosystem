@@ -58,30 +58,3 @@
     }
   }
 }
-
-.page-nav {
-  @include content_wrapper;
-  padding-top: 1rem;
-  padding-bottom: 0;
-
-  .inner {
-    min-height: 2rem;
-    margin-top: 0;
-    border-top: 1px solid var(--c-border);
-    transition: border-color var(--t-color);
-    padding-top: 1rem;
-    overflow: auto;
-  }
-
-  .prev {
-    a:before {
-      content: '←';
-    }
-  }
-  .next {
-    float: right;
-    a:after {
-      content: '→';
-    }
-  }
-}

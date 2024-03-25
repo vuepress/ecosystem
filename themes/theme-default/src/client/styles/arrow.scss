@@ -1,37 +1,31 @@
 .arrow {
   display: inline-block;
-  width: 0;
-  height: 0;
+  vertical-align: middle;
 
-  &.up {
-    border: {
-      left: 4px solid transparent;
-      right: 4px solid transparent;
-      bottom: 6px solid var(--c-bg-arrow);
-    }
+  width: 1em;
+  height: 1em;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='rgba(0,0,0,0.5)' d='M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+
+  line-height: normal;
+
+  transition: all 0.3s;
+
+  html.dark & {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='rgba(255,255,255,0.5)' d='M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z'/%3E%3C/svg%3E");
   }
 
   &.down {
-    border: {
-      left: 4px solid transparent;
-      right: 4px solid transparent;
-      top: 6px solid var(--c-bg-arrow);
-    }
+    transform: rotate(180deg);
   }
 
   &.right {
-    border: {
-      top: 4px solid transparent;
-      bottom: 4px solid transparent;
-      left: 6px solid var(--c-bg-arrow);
-    }
+    transform: rotate(90deg);
   }
 
   &.left {
-    border: {
-      top: 4px solid transparent;
-      bottom: 4px solid transparent;
-      right: 6px solid var(--c-bg-arrow);
-    }
+    transform: rotate(-90deg);
   }
 }

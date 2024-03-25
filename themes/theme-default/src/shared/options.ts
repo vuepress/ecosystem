@@ -324,4 +324,14 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * A11y text for sidebar toggle button
    */
   toggleSidebar?: string
+
+  /**
+   * text for prev link
+   */
+  prev?: string
+
+  /**
+   * text for next link
+   */
+  next?: string
 }
