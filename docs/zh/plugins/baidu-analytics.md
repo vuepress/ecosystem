@@ -4,6 +4,12 @@
 
 将 [百度统计](https://tongji.baidu.com/) 集成到 VuePress 中。
 
+::: tip
+
+请勿打开[百度统计内置的“单页应用数据统计”功能](https://tongji.baidu.com/web/help/article?id=324&type=0)，本插件会正确处理相关逻辑。
+
+:::
+
 ## 使用方法
 
 ```bash
