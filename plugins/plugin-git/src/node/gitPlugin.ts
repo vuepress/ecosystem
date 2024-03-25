@@ -65,5 +65,12 @@ export const gitPlugin =
           page.data.git.contributors = await getContributors(filePaths, cwd)
         }
       },
+
+      // remove `gitInclude` from frontmatter
+      onInitialized: (app) => {
+        app.pages.forEach((page) => {
+          delete page.frontmatter.gitInclude
+        })
+      },
     }
   }
