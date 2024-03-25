@@ -210,3 +210,21 @@ export default {
   Title text for sidebar toggle button.
 
   This is mainly for a11y purpose.
+
+## prev
+
+- Type: `string`
+
+- Default: `'Prev'`
+
+- Details:
+
+  Text for the previous page navigation button.
+
+## next
+
+- Type: `string`
+- Default: `'Next'`
+- Details:
+
+  Text for the next page navigation button.
