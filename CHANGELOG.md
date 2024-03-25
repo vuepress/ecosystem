@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.21](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.20...v2.0.0-rc.21) (2024-03-25)
+
+### Bug Fixes
+
+- **create-vuepress:** fix template link ([cb3225f](https://github.com/vuepress/ecosystem/commit/cb3225f655d0eb3012ea9735e86baacbc552ea17))
+
+### Features
+
+- **plugin-seo:** use excerpt content as description if present ([0aa59c8](https://github.com/vuepress/ecosystem/commit/0aa59c8f269de814e201d44f63c7fae7e0105592))
+- **plugin-shiki:** add transformers option, close [#92](https://github.com/vuepress/ecosystem/issues/92) ([4cfaace](https://github.com/vuepress/ecosystem/commit/4cfaace02365d50f519c9448d840a3e3e0eec8b0))
+- **theme-default:** support alt + ←→ to navigate and rebuild page nav ([424f888](https://github.com/vuepress/ecosystem/commit/424f888937f4cf61927d6bb651757dc53064c54a))
+
 # [2.0.0-rc.20](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.19...v2.0.0-rc.20) (2024-03-11)
 
 ### Bug Fixes

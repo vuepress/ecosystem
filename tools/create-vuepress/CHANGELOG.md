@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.21](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.20...v2.0.0-rc.21) (2024-03-25)
+
+### Bug Fixes
+
+- **create-vuepress:** fix template link ([cb3225f](https://github.com/vuepress/ecosystem/commit/cb3225f655d0eb3012ea9735e86baacbc552ea17))
+
 # [2.0.0-rc.17](https://github.com/vuepress/ecosystem/compare/v2.0.0-ci-test.0...v2.0.0-rc.17) (2024-02-21)
 
 **Note:** Version bump only for package create-vuepress

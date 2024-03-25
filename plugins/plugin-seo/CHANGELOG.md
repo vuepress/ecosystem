@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.21](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.20...v2.0.0-rc.21) (2024-03-25)
+
+### Features
+
+- **plugin-seo:** use excerpt content as description if present ([0aa59c8](https://github.com/vuepress/ecosystem/commit/0aa59c8f269de814e201d44f63c7fae7e0105592))
+
 # [2.0.0-rc.19](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.18...v2.0.0-rc.19) (2024-03-10)
 
 ### Bug Fixes
