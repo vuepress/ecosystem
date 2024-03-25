@@ -73,3 +73,16 @@ export default {
 
 - Also see:
   - [Shiki > Dual Themes](https://shiki.style/guide/dual-themes)
+
+### transformers
+
+- Type: `ShikiTransformer[]`
+
+- Details:
+
+  Transformers of Shiki.
+
+  This option will be forwarded to `codeToHtml()` method of Shiki.
+
+- Also see:
+  - [Shiki > Transformers](https://shiki.style/guide/transformers)

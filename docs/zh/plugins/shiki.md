@@ -73,3 +73,15 @@ export default {
 
 - 参考：
   - [Shiki > Dual Themes](https://shiki.style/guide/dual-themes)
+
+### transformers
+
+- 类型：`ShikiTransformer[]`
+- 详情：
+
+  Shiki 的转换器。
+
+  该配置项会被传递到 Shiki 的 `codeToHtml()` 方法中。
+
+- 参考：
+  - [Shiki > Transformers](https://shiki.style/guide/transformers)
