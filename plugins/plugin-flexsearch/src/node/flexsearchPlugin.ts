@@ -47,7 +47,6 @@ export const flexsearchPlugin = ({
   hotKeys = ['s', '/'],
   maxSuggestions = 5,
   isSearchable = () => true,
-  getExtraFields = () => [],
 }: FlexsearchPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-flexsearch',
 
