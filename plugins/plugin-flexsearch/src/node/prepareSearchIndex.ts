@@ -38,11 +38,13 @@ export const prepareSearchIndex = async ({
   // generate search index
   const pages = app.pages.filter(isSearchable)
 
-  const index = FS.create({
-    doc: {
+  const index = new FS.Document({
+    document: {
       id: 'id',
-      field: ['title', 'content'],
+      index: ['title', 'content'],
+      store: true,
     },
+    tokenize: 'forward',
   })
 
   const paths: string[] = []
@@ -54,7 +56,10 @@ export const prepareSearchIndex = async ({
     index.add(d)
   })
 
-  const data = index.export()
+  const data = {}
+  await index.export((key, datum) => {
+    data[key] = datum
+  })
 
   // search index file content
   let content = `\

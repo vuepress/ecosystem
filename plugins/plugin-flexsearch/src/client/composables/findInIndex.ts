@@ -9,22 +9,26 @@ export interface SearchIndexRet {
 
 export type ClientSideSearchIndex = (string, number) => SearchIndexRet[]
 
-const index = FS.create({
-  async: false,
-  doc: {
+const index = new FS.Document({
+  document: {
     id: 'id',
-    field: ['title', 'content'],
+    index: ['title', 'content'],
   },
 })
-index.import(searchIndexRaw.idx)
+for (const key in searchIndexRaw.idx) {
+  console.log('importing ' + key)
+  index.import(key, searchIndexRaw.idx[key])
+}
 
 export const findInIndex: ClientSideSearchIndex = (q: string, c: number) => {
-  const searchResult: any = index.search(q, c)
-  return searchResult.map((r) => {
-    return {
-      path: searchIndexRaw.paths[r.id],
-      title: r.title,
-      content: r.content,
-    }
+  const searchResult: any = index.search(q, { enrich: true, limit: c })
+  return searchResult.flatMap((r) => {
+    return r.result.map((fieldResult) => {
+      return {
+        path: searchIndexRaw.paths[fieldResult.id],
+        title: fieldResult.doc.title,
+        content: fieldResult.doc.content,
+      }
+    })
   })
 }

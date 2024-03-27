@@ -419,8 +419,8 @@ importers:
         specifier: ^3.6.0
         version: 3.6.0
       flexsearch:
-        specifier: ^0.6
-        version: 0.6.32
+        specifier: ^0.7.43
+        version: 0.7.43
       he:
         specifier: ^1.2.0
         version: 1.2.0
@@ -6961,8 +6961,8 @@ packages:
     resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
     dev: true
 
-  /flexsearch@0.6.32:
-    resolution: {integrity: sha512-EF1BWkhwoeLtbIlDbY/vDSLBen/E5l/f1Vg7iX5CDymQCamcx1vhlc3tIZxIDplPjgi0jhG37c67idFbjg+v+Q==}
+  /flexsearch@0.7.43:
+    resolution: {integrity: sha512-c5o/+Um8aqCSOXGcZoqZOm+NqtVwNsvVpWv6lfmSclU954O3wvQKxxK8zj74fPaSJbXpSLTs4PRhh+wnoCXnKg==}
     dev: false
 
   /follow-redirects@1.15.6(debug@2.6.9):
