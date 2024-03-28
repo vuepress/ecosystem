@@ -1,3 +1,4 @@
+import { useEventListener } from '@vueuse/core'
 import { onMounted } from 'vue'
 import cssVars from '../styles/_variables.module.scss?module'
 
@@ -22,9 +23,10 @@ export const useUpdateDeviceStatus = (
     return
   }
 
+  useEventListener('orientationchange', () => callback(width), false)
+  useEventListener('resize', () => callback(width), false)
+
   onMounted(() => {
     callback(width)
-    window.addEventListener('resize', () => callback(width), false)
-    window.addEventListener('orientationchange', () => callback(width), false)
   })
 }

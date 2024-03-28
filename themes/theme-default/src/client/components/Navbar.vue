@@ -32,6 +32,16 @@ const linksWrapperStyle = computed(() => {
   }
 })
 
+const getCssValue = (el: HTMLElement | null, property: string): number => {
+  // NOTE: Known bug, will return 'auto' if style value is 'auto'
+  const val = el?.ownerDocument?.defaultView?.getComputedStyle(el, null)?.[
+    property
+  ]
+  const num = Number.parseInt(val, 10)
+
+  return Number.isNaN(num) ? 0 : num
+}
+
 useUpdateDeviceStatus(
   DeviceType.MOBILE,
   (mobileDesktopBreakpoint: number): void => {
@@ -49,15 +59,6 @@ useUpdateDeviceStatus(
     }
   },
 )
-
-function getCssValue(el: HTMLElement | null, property: string): number {
-  // NOTE: Known bug, will return 'auto' if style value is 'auto'
-  const val = el?.ownerDocument?.defaultView?.getComputedStyle(el, null)?.[
-    property
-  ]
-  const num = Number.parseInt(val, 10)
-  return Number.isNaN(num) ? 0 : num
-}
 </script>
 
 <template>
