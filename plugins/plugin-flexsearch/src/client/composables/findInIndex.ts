@@ -16,7 +16,6 @@ const index = new FS.Document({
   },
 })
 for (const key in searchIndexRaw.idx) {
-  console.log('importing ' + key)
   index.import(key, searchIndexRaw.idx[key])
 }
 
