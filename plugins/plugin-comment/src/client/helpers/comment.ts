@@ -22,7 +22,7 @@ const defineCommentConfig = <T extends CommentOptions>(options: T): void => {
 }
 
 export const useCommentOptions = <T extends CommentOptions>(): T =>
-  inject(commentSymbol)!
+  inject(commentSymbol)! ?? comment
 
 export const defineArtalkConfig = defineCommentConfig<ArtalkOptions>
 
