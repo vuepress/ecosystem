@@ -32,7 +32,7 @@
     ".": "./lib/node/index.js",
     "./client": "./lib/client/index.js",
     "./client/*": "./lib/client/*",
-    "./pageview": "./lib/client/pageview.js",
+    "./pageview": "./lib/client/composables/pageview.js",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
