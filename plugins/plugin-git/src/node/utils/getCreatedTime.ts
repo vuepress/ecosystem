@@ -9,7 +9,14 @@ export const getCreatedTime = async (
 ): Promise<number> => {
   const { stdout } = await execa(
     'git',
-    ['--no-pager', 'log', '--diff-filter=A', '--format=%at', ...filePaths],
+    [
+      '--no-pager',
+      'log',
+      '--follow',
+      '--diff-filter=A',
+      '--format=%at',
+      ...filePaths,
+    ],
     {
       cwd,
     },
