@@ -1,6 +1,6 @@
 import { resolveRoute as _resolveRoute } from 'vuepress/client'
 import type { Route, RouteMeta } from 'vuepress/client'
-import { isLinkAbsolute } from '../../shared'
+import { isLinkAbsolute } from '../../shared/index.js'
 
 const FAKE_HOST = 'http://.'
 
