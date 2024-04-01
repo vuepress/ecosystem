@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import AutoLink from '@theme/AutoLink.vue'
+import { resolveRoute } from '@vuepress/helper/client'
 import { useEventListener } from '@vueuse/core'
 import { computed } from 'vue'
-import type { Router } from 'vuepress/client'
-import { usePageFrontmatter, useRoute, useRouter } from 'vuepress/client'
+import { usePageFrontmatter, useRoute } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
 import type {
   DefaultThemeNormalPageFrontmatter,
@@ -15,25 +15,36 @@ import {
   useSidebarItems,
   useThemeLocaleData,
 } from '../composables/index.js'
-import { getNavLink } from '../utils/index.js'
 
 /**
  * Resolve `prev` or `next` config from frontmatter
  */
 const resolveFromFrontmatterConfig = (
-  router: Router,
   conf: unknown,
+  current: string,
 ): null | false | NavLink => {
   if (conf === false) {
     return null
   }
 
   if (isString(conf)) {
-    return getNavLink(router, conf)
+    const { notFound, meta, path } = resolveRoute<{
+      title?: string
+    }>(conf, current)
+
+    return notFound
+      ? { text: path, link: path }
+      : {
+          text: meta.title || path,
+          link: path,
+        }
   }
 
   if (isPlainObject<NavLink>(conf)) {
-    return conf
+    return {
+      ...conf,
+      link: resolveRoute(conf.link, current).path,
+    }
   }
 
   return false
@@ -76,13 +87,12 @@ const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
 const sidebarItems = useSidebarItems()
 const themeLocale = useThemeLocaleData()
 const route = useRoute()
-const router = useRouter()
 const navigate = useNavigate()
 
 const prevNavLink = computed(() => {
   const prevConfig = resolveFromFrontmatterConfig(
-    router,
     frontmatter.value.prev,
+    route.path,
   )
   if (prevConfig !== false) {
     return prevConfig
@@ -93,8 +103,8 @@ const prevNavLink = computed(() => {
 
 const nextNavLink = computed(() => {
   const nextConfig = resolveFromFrontmatterConfig(
-    router,
     frontmatter.value.next,
+    route.path,
   )
   if (nextConfig !== false) {
     return nextConfig
