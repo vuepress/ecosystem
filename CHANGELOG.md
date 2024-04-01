@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.22](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.21...v2.0.0-rc.22) (2024-04-01)
+
+### Bug Fixes
+
+- **plugin-baidu-analytics:** fix client-side error ([#96](https://github.com/vuepress/ecosystem/issues/96)) ([7f1b5e1](https://github.com/vuepress/ecosystem/commit/7f1b5e190926ae859f8686defc3ed63f921cacf7))
+- **plugin-git:** add the --follow parameter to the git log command ([#98](https://github.com/vuepress/ecosystem/issues/98)) ([bbe3222](https://github.com/vuepress/ecosystem/commit/bbe3222ec2f633257f7663d3225d11a354e289b1))
+- **theme-default:** remove event listener correctly ([03e67c1](https://github.com/vuepress/ecosystem/commit/03e67c11e8388041c67fb0d5933e632db655e701))
+
+### Features
+
+- **plugin-git:** do not pass unneeded data to client ([520a3b6](https://github.com/vuepress/ecosystem/commit/520a3b6bc508f5103b80950ae48538676c6f996a))
+
 # [2.0.0-rc.21](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.20...v2.0.0-rc.21) (2024-03-25)
 
 ### Bug Fixes
