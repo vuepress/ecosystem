@@ -1,4 +1,4 @@
-# back-to-top
+# append-date
 
 <NpmBadge package="@vuepress/plugin-append-date" />
 
