@@ -8,7 +8,7 @@ export const updatePageview = async (): UpdatePageview => {
 
   try {
     const { pageviewCount } = await import(
-      /* webpackMode: "week" */ /* webpackChunkName: "pageview" */ '@waline/client/pageview'
+      /* webpackMode: "weak" */ /* webpackChunkName: "pageview" */ '@waline/client/pageview'
     )
 
     return pageviewCount({ serverURL: commentOptions.serverURL })
