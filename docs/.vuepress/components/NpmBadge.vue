@@ -14,7 +14,7 @@ const props = defineProps({
 })
 
 const badgeLink = computed(
-  () => `https://www.npmjs.com/package/${props.package}`,
+  () => `https://www.npmjs.com/package/${props.package}/v/next`,
 )
 const badgeLabel = computed(() => {
   if (props.distTag) {
