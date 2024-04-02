@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.23](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.22...v2.0.0-rc.23) (2024-04-02)
+
+### Bug Fixes
+
+- **helper:** fix import path ([d7ece9f](https://github.com/vuepress/ecosystem/commit/d7ece9f8301ee4afa1b5d78ff0ca5c7cf62b7b86))
+- **theme-default:** fix PageNav relative url ([966525e](https://github.com/vuepress/ecosystem/commit/966525e63ccab141f071917f6ef649ff448897ab))
+
 # [2.0.0-rc.22](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.21...v2.0.0-rc.22) (2024-04-01)
 
 **Note:** Version bump only for package @vuepress/helper

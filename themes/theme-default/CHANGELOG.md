@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.23](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.22...v2.0.0-rc.23) (2024-04-02)
+
+### Bug Fixes
+
+- **theme-default:** fix PageNav relative url ([966525e](https://github.com/vuepress/ecosystem/commit/966525e63ccab141f071917f6ef649ff448897ab))
+
+### Features
+
+- **theme-default:** improve page meta outlook ([8ee423c](https://github.com/vuepress/ecosystem/commit/8ee423cd6fd6cfd8e12e6c4f04db295d9db0e41a))
+
 # [2.0.0-rc.22](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.21...v2.0.0-rc.22) (2024-04-01)
 
 ### Bug Fixes
