@@ -106,13 +106,11 @@ export const Toc = defineComponent({
   props: {
     headers: {
       type: Array as PropType<TocPropsHeaders>,
-      required: false,
       default: null,
     },
 
     options: {
       type: Object as PropType<Partial<TocPropsOptions>>,
-      required: false,
       default: () => ({}),
     },
   },
