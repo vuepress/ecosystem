@@ -41,7 +41,7 @@
     "@vuepress/helper": "workspace:~"
   },
   "peerDependencies": {
-    "@vuepress/plugin-git": "workspace:~",
+    "@vuepress/plugin-git": "~2.0.0-rc.22",
     "vuepress": "2.0.0-rc.9"
   },
   "publishConfig": {
