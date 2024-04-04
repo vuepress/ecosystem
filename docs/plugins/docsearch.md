@@ -261,6 +261,19 @@ If you are not using default theme, or you meet any problems when using docsearc
 - Also see:
   - [DocSearch > Options > initialQuery](https://docsearch.algolia.com/docs/api/#initialquery)
 
+### maxResultsPerGroup
+
+- Type: `number`
+
+- Default: `5`
+
+- Details:
+
+  The maximum number of results per group.
+
+- Also see:
+  - [DocSearch > Options > maxResultsPerGroup](https://docsearch.algolia.com/docs/api/#maxresultspergroup)
+
 ### translations
 
 - Type: `Partial<DocSearchTranslations>`
@@ -345,6 +358,25 @@ export default {
 
   When this option is disabled, you need to import your own styles for DocSearch. Also notice that all styles customization in [Styles](#styles) section would be unavailable.
 
+## Client options
+
+### defineDocSearchConfig
+
+```ts
+type DocSearchClientLocaleOptions = Omit<
+  DocSearchProps,
+  'hitComponent' | 'navigator' | 'transformSearchClient'
+>
+
+interface DocSearchClientOptions extends DocSearchClientLocaleOptions {
+  locales?: Record<string, DocSearchClientLocaleOptions>
+}
+
+const defineDocSearchConfig: (options: DocSearchClientOptions) => void
+```
+
+Customize DocSearch options.
+
 ## Styles
 
 You can customize styles via CSS variables that provided by [@docsearch/css](https://docsearch.algolia.com/docs/styling):
@@ -407,5 +439,7 @@ You can customize styles via CSS variables that provided by [@docsearch/css](htt
   Put this component to where you want to place the docsearch button. For example, default theme puts this component to the end of the navbar.
 
 ::: tip
+
 This component is mainly used for theme development. You don't need to use it directly in most cases.
+
 :::

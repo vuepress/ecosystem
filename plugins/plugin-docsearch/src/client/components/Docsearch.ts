@@ -6,6 +6,7 @@ import {
   useDocsearchHotkeyListener,
   useDocsearchShim,
 } from '../composables/index.js'
+import { useDocSearchOptions } from '../helpers/index.js'
 import {
   getFacetFilters,
   getSearchButtonTemplate,
@@ -14,9 +15,6 @@ import {
 } from '../utils/index.js'
 
 declare const __DOCSEARCH_INJECT_STYLES__: boolean
-declare const __DOCSEARCH_OPTIONS__: DocsearchOptions
-
-const optionsDefault = __DOCSEARCH_OPTIONS__
 
 if (__DOCSEARCH_INJECT_STYLES__) {
   import('@docsearch/css')
@@ -33,11 +31,12 @@ export const Docsearch = defineComponent({
     },
     options: {
       type: Object as PropType<DocsearchOptions>,
-      default: () => optionsDefault,
+      default: () => ({}),
     },
   },
 
   setup(props) {
+    const docSearchOptions = useDocSearchOptions()
     const docsearchShim = useDocsearchShim()
     const lang = usePageLang()
     const routeLocale = useRouteLocale()
@@ -46,10 +45,15 @@ export const Docsearch = defineComponent({
     const hasTriggered = ref(false)
 
     // resolve docsearch options for current locale
-    const options = computed(() => ({
-      ...props.options,
-      ...props.options.locales?.[routeLocale.value],
-    }))
+    const options = computed(() => {
+      const { locales = {}, ...options } = props.options
+
+      return {
+        ...docSearchOptions.value,
+        ...options,
+        ...locales[routeLocale.value],
+      }
+    })
 
     /**
      * Import docsearch js and initialize

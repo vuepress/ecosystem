@@ -372,6 +372,9 @@ importers:
       '@docsearch/react':
         specifier: ^3.6.0
         version: 3.6.0(@algolia/client-search@4.23.2)(search-insights@2.13.0)
+      '@vuepress/helper':
+        specifier: workspace:~
+        version: link:../../tools/helper
       '@vueuse/core':
         specifier: ^10.9.0
         version: 10.9.0(vue@3.4.21)

@@ -271,6 +271,19 @@ new Crawler({
 - 参考：
   - [DocSearch > Options > translations](https://docsearch.algolia.com/docs/api/#translations)
 
+### maxResultsPerGroup
+
+- 类型： `number`
+
+- 默认值： `5`
+
+- 详情：
+
+  每个组的最大结果数。
+
+- 参考：
+  - [DocSearch > Options > maxResultsPerGroup](https://docsearch.algolia.com/docs/api#maxresultspergroup)
+
 ### locales
 
 - 类型： `Record<string, DocsearchPluginOptions>`
@@ -343,6 +356,25 @@ export default {
   如果你认为 DocSearch 的默认样式和你的站点不兼容，你可以尝试覆盖默认样式，或者将该选项设置为 `false` 来完全移除默认样式。
 
   当该选项被禁用时，你需要为 DocSearch 引入你自己的样式。同时要注意，你也无法再使用 [样式](#样式) 章节中提到的样式自定义能力。
+
+## 客户端选项
+
+### defineDocSearchConfig
+
+```ts
+type DocSearchClientLocaleOptions = Omit<
+  DocSearchProps,
+  'hitComponent' | 'navigator' | 'transformSearchClient'
+>
+
+interface DocSearchClientOptions extends DocSearchClientLocaleOptions {
+  locales?: Record<string, DocSearchClientLocaleOptions>
+}
+
+const defineDocSearchConfig: (options: DocSearchClientOptions) => void
+```
+
+自定义 DocSearch 选项。
 
 ## 样式
 

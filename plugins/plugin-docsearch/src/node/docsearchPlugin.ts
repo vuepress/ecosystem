@@ -23,7 +23,7 @@ export const docsearchPlugin = ({
   injectStyles = true,
   indexBase,
   ...options
-}: DocsearchPluginOptions): Plugin => ({
+}: DocsearchPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-docsearch',
 
   clientConfigFile: path.resolve(__dirname, '../client/config.js'),
