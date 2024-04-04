@@ -229,7 +229,7 @@ importers:
         specifier: workspace:~
         version: link:../../tools/helper
       '@vuepress/plugin-git':
-        specifier: workspace:~
+        specifier: ~2.0.0-rc.22
         version: link:../plugin-git
       vuepress:
         specifier: 2.0.0-rc.9
