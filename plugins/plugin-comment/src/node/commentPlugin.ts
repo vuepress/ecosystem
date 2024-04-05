@@ -95,7 +95,10 @@ export const commentPlugin =
           }
         }
 
-        addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
+        addViteSsrNoExternal(bundlerOptions, app, [
+          '@vuepress/helper',
+          '@vuepress/plugin-comment',
+        ])
       },
 
       clientConfigFile: `${CLIENT_FOLDER}config.js`,
