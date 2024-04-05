@@ -1,16 +1,26 @@
 import { noopModule } from '@vuepress/helper'
-import { CLIENT_FOLDER, logger } from './utils.js'
+import type { CommentPluginOptions } from './options.js'
+import { CLIENT_FOLDER, logger, PLUGIN_NAME } from './utils.js'
 
-const COMMENT_PROVIDERS = ['Artalk', 'Giscus', 'Waline', 'Twikoo']
+const COMMENT_SERVICES = ['Artalk', 'Giscus', 'Waline', 'Twikoo']
+const PAGEVIEW_SERVICES = ['Artalk', 'Twikoo']
 
-export const getProviderComponent = (provider = 'None'): string => {
-  if (COMMENT_PROVIDERS.includes(provider))
+export const getServiceComponent = (provider = 'None'): string => {
+  if (COMMENT_SERVICES.includes(provider))
     return `${CLIENT_FOLDER}components/${provider}Comment.js`
 
   if (provider !== 'None') logger.error(`Invalid provider: ${provider}`)
 
   return noopModule
 }
+
+export const getPageviewChunk = (provider = 'None'): string =>
+  `${CLIENT_FOLDER}pageview/${PAGEVIEW_SERVICES.includes(provider) ? provider.toLowerCase() : 'noop'}.js`
+
+export const getAlias = (options: CommentPluginOptions) => ({
+  [`${PLUGIN_NAME}/service`]: getServiceComponent(options.provider),
+  [`${PLUGIN_NAME}/pageview`]: getPageviewChunk(options.provider),
+})
 
 export const getProviderPackage = (provider?: string): string | null => {
   switch (provider) {

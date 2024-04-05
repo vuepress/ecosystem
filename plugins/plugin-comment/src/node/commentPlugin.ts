@@ -8,7 +8,7 @@ import {
   getLocaleConfig,
 } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
-import { getProviderComponent, getProviderPackage } from './getProvider.js'
+import { getAlias, getProviderPackage } from './getProvider.js'
 import { walineLocales } from './locales.js'
 import type { CommentPluginOptions } from './options.js'
 import { CLIENT_FOLDER, logger, PLUGIN_NAME } from './utils.js'
@@ -36,9 +36,7 @@ export const commentPlugin =
     return {
       name: PLUGIN_NAME,
 
-      alias: {
-        [`${PLUGIN_NAME}/provider`]: getProviderComponent(options.provider),
-      },
+      alias: getAlias(options),
 
       define: (app) => {
         const userWalineLocales =
