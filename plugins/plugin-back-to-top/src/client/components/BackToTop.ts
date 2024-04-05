@@ -20,7 +20,7 @@ declare const __BACK_TO_TOP_THRESHOLD__: number
 export const BackToTop = defineComponent({
   name: 'BackToTop',
 
-  setup(props) {
+  setup() {
     const pageFrontmatter = usePageFrontmatter<{ backToTop?: boolean }>()
     const locale = useLocaleConfig(__BACK_TO_TOP_LOCALES__)
     const body = shallowRef<HTMLElement>()
@@ -71,15 +71,15 @@ export const BackToTop = defineComponent({
                       h(
                         'svg',
                         h('circle', {
-                          cx: '50%',
-                          cy: '50%',
-                          style: {
-                            'stroke-dasharray': `calc(${
-                              Math.PI * progress.value
-                            }% - ${4 * Math.PI}px) calc(${Math.PI * 100}% - ${
-                              4 * Math.PI
-                            }px)`,
-                          },
+                          'cx': '26',
+                          'cy': '26',
+                          'r': '24',
+                          'fill': 'none',
+                          'stroke': 'currentColor',
+                          'stroke-width': '4',
+                          'stroke-dasharray': `${
+                            Math.PI * progress.value * 0.48
+                          } ${Math.PI * (100 - progress.value) * 0.48}`,
                         }),
                       ),
                     )

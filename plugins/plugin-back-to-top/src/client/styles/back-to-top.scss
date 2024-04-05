@@ -4,9 +4,9 @@
   inset-inline-end: 1rem;
   z-index: 100;
 
-  width: 3rem;
-  height: 3rem;
-  padding: 0.5rem;
+  width: 48px;
+  height: 48px;
+  padding: 8px;
   border-width: 0;
   border-radius: 50%;
 
@@ -17,10 +17,9 @@
   cursor: pointer;
 
   @media (max-width: 959px) {
-    width: 2.5rem;
-    height: 2.5rem;
+    transform: scale(0.8);
+    transform-origin: 100% 100%;
   }
-
   @media print {
     display: none;
   }
@@ -49,8 +48,8 @@
   right: -2px;
   bottom: -2px;
 
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
+  width: 52px;
+  height: 52px;
 
   svg {
     width: 100%;
@@ -59,20 +58,9 @@
 
   circle {
     opacity: 0.9;
-    fill: none;
-    stroke: currentColor;
 
     transform: rotate(-90deg);
     transform-origin: 50% 50%;
-
-    r: 22;
-
-    stroke-dasharray: 0% 314.1593%;
-    stroke-width: 3px;
-
-    @media (max-width: 959px) {
-      r: 18;
-    }
   }
 }
 
