@@ -3,7 +3,7 @@ import type { CommentPluginOptions } from './options.js'
 import { CLIENT_FOLDER, logger, PLUGIN_NAME } from './utils.js'
 
 const COMMENT_SERVICES = ['Artalk', 'Giscus', 'Waline', 'Twikoo']
-const PAGEVIEW_SERVICES = ['Artalk', 'Twikoo']
+const PAGEVIEW_SERVICES = ['Artalk', 'Waline']
 
 export const getServiceComponent = (provider = 'None'): string => {
   if (COMMENT_SERVICES.includes(provider))
