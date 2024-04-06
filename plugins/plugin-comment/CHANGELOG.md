@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.24](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.23...v2.0.0-rc.24) (2024-04-06)
+
+### Bug Fixes
+
+- **plugin-comment:** ensure comment is not externalize in ssr, close [#99](https://github.com/vuepress/ecosystem/issues/99) ([d0a0f25](https://github.com/vuepress/ecosystem/commit/d0a0f25523e3331645f18943fc9119c78bc93950))
+- **plugin-comment:** fix typo in webpack comment ([7ade07d](https://github.com/vuepress/ecosystem/commit/7ade07dd9fd4d51fb1753c6ef381cc4ad34aafed))
+
 # [2.0.0-rc.23](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.22...v2.0.0-rc.23) (2024-04-02)
 
 ### Bug Fixes

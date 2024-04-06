@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.24](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.23...v2.0.0-rc.24) (2024-04-06)
+
+### Bug Fixes
+
+- **plugin-append-date:** fix peer ([7cc9865](https://github.com/vuepress/ecosystem/commit/7cc98655139846076e325291efe2830a1abb2ebc))
+- **plugin-comment:** ensure comment is not externalize in ssr, close [#99](https://github.com/vuepress/ecosystem/issues/99) ([d0a0f25](https://github.com/vuepress/ecosystem/commit/d0a0f25523e3331645f18943fc9119c78bc93950))
+- **plugin-comment:** fix typo in webpack comment ([7ade07d](https://github.com/vuepress/ecosystem/commit/7ade07dd9fd4d51fb1753c6ef381cc4ad34aafed))
+
+### Features
+
+- **plugin-back-to-top:** support safari, close [#102](https://github.com/vuepress/ecosystem/issues/102) ([5f0b85c](https://github.com/vuepress/ecosystem/commit/5f0b85cab67bb7397a973f9b64238dc6bb156d85))
+- **plugin-docsearch:** support client config ([76f7952](https://github.com/vuepress/ecosystem/commit/76f7952e248be374772ae313c862ac1b599231c2))
+
 # [2.0.0-rc.23](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.22...v2.0.0-rc.23) (2024-04-02)
 
 ### Bug Fixes

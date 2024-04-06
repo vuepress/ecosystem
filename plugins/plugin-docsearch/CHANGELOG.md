@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.24](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.23...v2.0.0-rc.24) (2024-04-06)
+
+### Features
+
+- **plugin-docsearch:** support client config ([76f7952](https://github.com/vuepress/ecosystem/commit/76f7952e248be374772ae313c862ac1b599231c2))
+
 # [2.0.0-rc.21](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.20...v2.0.0-rc.21) (2024-03-25)
 
 **Note:** Version bump only for package @vuepress/plugin-docsearch

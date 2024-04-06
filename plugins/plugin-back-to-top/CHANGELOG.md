@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.24](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.23...v2.0.0-rc.24) (2024-04-06)
+
+### Features
+
+- **plugin-back-to-top:** support safari, close [#102](https://github.com/vuepress/ecosystem/issues/102) ([5f0b85c](https://github.com/vuepress/ecosystem/commit/5f0b85cab67bb7397a973f9b64238dc6bb156d85))
+
 # [2.0.0-rc.23](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.22...v2.0.0-rc.23) (2024-04-02)
 
 **Note:** Version bump only for package @vuepress/plugin-back-to-top
