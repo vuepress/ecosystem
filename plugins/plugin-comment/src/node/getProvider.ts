@@ -17,7 +17,9 @@ export const getServiceComponent = (provider = 'None'): string => {
 export const getPageviewChunk = (provider = 'None'): string =>
   `${CLIENT_FOLDER}pageview/${PAGEVIEW_SERVICES.includes(provider) ? provider.toLowerCase() : 'noop'}.js`
 
-export const getAlias = (options: CommentPluginOptions) => ({
+export const getAlias = (
+  options: CommentPluginOptions,
+): Record<string, string> => ({
   [`${PLUGIN_NAME}/service`]: getServiceComponent(options.provider),
   [`${PLUGIN_NAME}/pageview`]: getPageviewChunk(options.provider),
 })
