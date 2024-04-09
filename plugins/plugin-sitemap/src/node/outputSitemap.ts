@@ -21,7 +21,7 @@ export const outputSitemap = async (
   fs.writeFileSync(app.dir.dest(sitemapPath), sitemapContent)
   fs.writeFileSync(app.dir.dest(templatePath), templateContent)
 
-  logger.succeed(`Generating sitemap to ${colors.cyan(`/${sitemapPath}`)}`)
+  logger.succeed(`Generating sitemap to ${colors.cyan(sitemapPath)}`)
 
   const robotTxtPath = dir.dest('robots.txt')
 
