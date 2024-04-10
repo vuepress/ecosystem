@@ -91,7 +91,7 @@ encodeURIComponent(content) // '%0A%7B%0A%20%20%22type%22%3A%20%22bar%22%2C%0A%2
 
 Return `false` if `a` is not a string.
 
-## 对象相关
+## Object Related
 
 - `keys(x)`: Return an array of keys of object `x`.
 - `values(x)`: Return an array of values of object `x`.
