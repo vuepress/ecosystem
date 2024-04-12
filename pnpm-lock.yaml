@@ -419,6 +419,24 @@ importers:
         specifier: workspace:*
         version: link:../plugin-git
 
+  plugins/plugin-flexsearch:
+    dependencies:
+      chokidar:
+        specifier: ^3.6.0
+        version: 3.6.0
+      flexsearch:
+        specifier: ^0.7.43
+        version: 0.7.43
+      he:
+        specifier: ^1.2.0
+        version: 1.2.0
+      vue:
+        specifier: ^3.4.21
+        version: 3.4.21(typescript@5.4.3)
+      vuepress:
+        specifier: 2.0.0-rc.9
+        version: 2.0.0-rc.9(@vuepress/bundler-vite@2.0.0-rc.9)(@vuepress/bundler-webpack@2.0.0-rc.9)(typescript@5.4.3)(vue@3.4.21)
+
   plugins/plugin-git:
     dependencies:
       execa:
@@ -7222,6 +7240,10 @@ packages:
   /flatted@3.3.1:
     resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
     dev: true
+
+  /flexsearch@0.7.43:
+    resolution: {integrity: sha512-c5o/+Um8aqCSOXGcZoqZOm+NqtVwNsvVpWv6lfmSclU954O3wvQKxxK8zj74fPaSJbXpSLTs4PRhh+wnoCXnKg==}
+    dev: false
 
   /follow-redirects@1.15.6(debug@2.6.9):
     resolution: {integrity: sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==}
