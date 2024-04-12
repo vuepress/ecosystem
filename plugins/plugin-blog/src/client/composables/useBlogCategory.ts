@@ -67,7 +67,7 @@ export const useBlogCategory = <
         })
       }
 
-      if (page.value.path === categoryMap.path)
+      if (decodeURIComponent(page.value.path) === categoryMap.path)
         result.currentItems = result.map[category].items
     }
 
