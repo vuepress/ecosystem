@@ -1,5 +1,5 @@
-import type Renderer from 'markdown-it/lib/renderer.js'
-import type Token from 'markdown-it/lib/token.js'
+import type Renderer from 'markdown-it/lib/renderer.mjs'
+import type Token from 'markdown-it/lib/token.mjs'
 import container from 'markdown-it-container'
 import type { Plugin, PluginObject } from 'vuepress/core'
 import type { MarkdownEnv } from 'vuepress/markdown'

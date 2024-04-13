@@ -24,14 +24,14 @@
     "@vuepress/plugin-pwa": "workspace:*",
     "@vuepress/plugin-redirect": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
-    "sass": "^1.74.1",
-    "sass-loader": "^14.1.1",
+    "sass": "^1.75.0",
+    "sass-loader": "^14.2.0",
     "vue": "^3.4.21",
     "vuepress": "2.0.0-rc.9"
   },
   "devDependencies": {
     "anywhere": "^1.6.0",
-    "cypress": "^13.7.2",
+    "cypress": "^13.7.3",
     "start-server-and-test": "^2.0.3"
   }
 }

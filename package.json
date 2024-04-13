@@ -35,9 +35,9 @@
     "@commitlint/config-conventional": "^19.1.0",
     "@lerna-lite/cli": "^3.3.2",
     "@lerna-lite/publish": "^3.3.2",
-    "@types/node": "^20.12.4",
+    "@types/node": "^20.12.7",
     "@types/webpack-env": "^1.18.4",
-    "@vitest/coverage-istanbul": "^1.4.0",
+    "@vitest/coverage-istanbul": "^1.5.0",
     "conventional-changelog-cli": "^4.1.0",
     "cpx2": "^7.0.1",
     "cross-env": "^7.0.3",
@@ -50,13 +50,13 @@
     "prettier": "^3.2.5",
     "prettier-config-vuepress": "^4.4.0",
     "rimraf": "^5.0.5",
-    "sass": "1.74.1",
+    "sass": "1.75.0",
     "sort-package-json": "^2.10.0",
     "tsconfig-vuepress": "^4.5.0",
     "tsx": "4.7.2",
-    "typescript": "^5.4.4",
+    "typescript": "^5.4.5",
     "vite": "~5.2.8",
-    "vitest": "^1.4.0"
+    "vitest": "^1.5.0"
   },
   "packageManager": "pnpm@8.15.6",
   "engines": {
