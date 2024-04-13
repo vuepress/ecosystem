@@ -3,6 +3,7 @@ import { defineConfig } from 'cypress'
 export default defineConfig({
   e2e: {
     baseUrl: 'http://localhost:9080',
+    experimentalRunAllSpecs: true,
     specPattern: 'tests/**/*.cy.ts',
   },
   env: {
