@@ -1,7 +1,7 @@
 ---
 date: 2021-01-01
 category:
-  - CategoryC
+  - Category C
 tag:
   - tag E
 sticky: true

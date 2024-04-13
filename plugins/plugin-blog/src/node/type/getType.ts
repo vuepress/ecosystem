@@ -6,6 +6,7 @@ import type { PagesMap } from '../getPagesMap.js'
 import { logger } from '../logger.js'
 import type { BlogTypeOptions } from '../options.js'
 import type { Store } from '../store.js'
+import { getPagePath } from '../utils.js'
 
 export const getType = (
   pagesMap: PagesMap,
@@ -50,7 +51,7 @@ export const getType = (
 
         if (pagePath)
           pageOptions.push({
-            path: encodeURI(pagePath),
+            path: pagePath,
             frontmatter: {
               ...frontmatter(localePath),
               blog: {
@@ -66,7 +67,7 @@ export const getType = (
             `${key} type in locale ${localePath}: found ${indexes.length} items\n`,
           )
 
-        typeMap[localePath] = { path: pagePath, indexes }
+        typeMap[localePath] = { path: getPagePath(pagePath), indexes }
       })
 
       return { key, typeMap, pageOptions }

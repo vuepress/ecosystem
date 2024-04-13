@@ -11,6 +11,7 @@ import type { PagesMap } from '../getPagesMap.js'
 import { logger } from '../logger.js'
 import type { BlogCategoryOptions } from '../options.js'
 import type { Store } from '../store.js'
+import { getPagePath } from '../utils.js'
 
 /**
  * @returns Page paths to be generated
@@ -58,7 +59,7 @@ export const getCategory = (
           )}`
 
           pageOptions.push({
-            path: encodeURI(pagePath),
+            path: pagePath,
             frontmatter: {
               ...frontmatter(localePath),
               blog: {
@@ -70,7 +71,7 @@ export const getCategory = (
           })
 
           categoryMap[localePath] = {
-            path: pagePath,
+            path: getPagePath(pagePath),
             map: {},
           }
         } else {
@@ -107,7 +108,7 @@ export const getCategory = (
                 })
 
                 map[category] = {
-                  path: itemPagePath,
+                  path: getPagePath(itemPagePath),
                   indexes: [],
                 }
               } else {

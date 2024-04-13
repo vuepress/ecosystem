@@ -1,11 +1,15 @@
 ---
 date: 2022-01-12
 category:
-  - CategoryA
-  - CategoryB
+  - Category A
+  - Category B
+  - 分类 1
+  - 分类 2
 tag:
   - tag C
   - tag D
+  - 标签 1
+  - 标签 2
 ---
 
 # Article 12
