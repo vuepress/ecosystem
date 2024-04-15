@@ -29,7 +29,7 @@ test.describe('plugin-blog', () => {
 
     for (const [name, items] of Object.entries(categoryConfig)) {
       for (const item of items) {
-        await page.goto(`${name}/${encodeURI(item)}`)
+        await page.goto(`${name}/${encodeURI(item)}/`)
 
         expect(await page.locator('main')).not.toHaveText('404')
       }
