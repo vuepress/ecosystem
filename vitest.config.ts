@@ -35,5 +35,10 @@ export default defineConfig({
       provider: 'istanbul',
       reporter: ['clover', 'json', 'lcov', 'text'],
     },
+    include: [
+      'plugins/**/tests/**/*.spec.ts',
+      'themes/**/tests/**/*.spec.ts',
+      'tools/**/tests/**/*.spec.ts',
+    ],
   },
 })

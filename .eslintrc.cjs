@@ -27,6 +27,13 @@ module.exports = {
       },
     },
     {
+      files: ['tools/create-vuepress/template/**/*.js'],
+      rules: {
+        'import/named': 'off',
+        'import/no-extraneous-dependencies': 'off',
+      },
+    },
+    {
       files: ['**/tests/**/*.ts'],
       rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
