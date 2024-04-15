@@ -21,10 +21,6 @@ module.exports = {
       },
     },
     {
-      files: ['e2e/**/*.cy.ts', 'e2e/cypress/**/*.ts'],
-      extends: 'plugin:cypress/recommended',
-    },
-    {
       files: ['tools/create-vuepress/**/*.vue'],
       rules: {
         'vue/no-v-html': 'off',
