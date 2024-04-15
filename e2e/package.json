@@ -30,7 +30,7 @@
     "vuepress": "2.0.0-rc.9"
   },
   "devDependencies": {
-    "@playwright/test": "^1.43.0",
+    "@playwright/test": "^1.43.1",
     "anywhere": "^1.6.0",
     "cross-env": "^7.0.3"
   }

@@ -35,7 +35,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@types/markdown-it": "^14.0.0",
+    "@types/markdown-it": "^14.0.1",
     "markdown-it": "^14.1.0",
     "markdown-it-container": "^4.0.0"
   },
