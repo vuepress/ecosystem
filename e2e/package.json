@@ -3,16 +3,16 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
     "docs:build": "vuepress build docs --clean-cache --clean-temp",
-    "docs:build-webpack": "E2E_BUNDLER=webpack pnpm docs:build",
+    "docs:build-webpack": "cross-env E2E_BUNDLER=webpack pnpm docs:build",
     "docs:clean": "rimraf docs/.vuepress/.temp docs/.vuepress/.cache docs/.vuepress/dist",
     "docs:dev": "vuepress dev docs --clean-cache --clean-temp",
-    "docs:dev-webpack": "E2E_BUNDLER=webpack pnpm e2e:dev",
+    "docs:dev-webpack": "cross-env E2E_BUNDLER=webpack pnpm docs:dev",
     "docs:serve": "anywhere -s -h localhost -p 9080 -d docs/.vuepress/dist",
-    "e2e:build": "pnpm docs:build && start-server-and-test docs:serve http-get://localhost:9080 cy:run",
-    "e2e:dev": "start-server-and-test docs:dev http-get://127.0.0.1:9080 cy:run"
+    "e2e:build": "cross-env E2E_COMMAND=build playwright test",
+    "e2e:build-webpack": "cross-env E2E_COMMAND=build E2E_BUNDLER=webpack playwright test",
+    "e2e:dev": "cross-env E2E_COMMAND=dev playwright test",
+    "e2e:dev-webpack": "cross-env E2E_COMMAND=dev E2E_BUNDLER=webpack playwright test"
   },
   "dependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.9",
@@ -30,8 +30,8 @@
     "vuepress": "2.0.0-rc.9"
   },
   "devDependencies": {
+    "@playwright/test": "^1.43.1",
     "anywhere": "^1.6.0",
-    "cypress": "^13.7.3",
-    "start-server-and-test": "^2.0.3"
+    "cross-env": "^7.0.3"
   }
 }
