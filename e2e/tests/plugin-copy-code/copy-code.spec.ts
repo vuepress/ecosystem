@@ -7,16 +7,18 @@ test.describe('copy-code', () => {
     await page.goto('copy-code/')
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
-    const locator = await page.locator('.vp-copy-code-button')
+    const locator = page.locator('.vp-copy-code-button')
 
-    expect(await locator.count()).toBe(1)
+    await expect(locator).toHaveCount(1)
 
-    for (const item of await locator.all()) {
-      await item.click()
-      expect(item).toHaveAttribute('class', /copied/)
-      const content = await page.evaluate(() => navigator.clipboard.readText())
-      expect(content).toMatch(/const a = 1\r?\nconst b = 2\r?\n/)
-      await page.evaluate(() => navigator.clipboard.writeText(''))
-    }
+    await locator.first().click()
+
+    expect(locator.first()).toHaveAttribute('class', /copied/)
+
+    const content = await page.evaluate(() => navigator.clipboard.readText())
+
+    expect(content).toMatch(/const a = 1\r?\nconst b = 2\r?\n/)
+
+    await page.evaluate(() => navigator.clipboard.writeText(''))
   })
 })

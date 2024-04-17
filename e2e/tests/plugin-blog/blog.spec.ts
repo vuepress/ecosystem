@@ -6,7 +6,8 @@ test.describe('plugin-blog', () => {
 
     for (const type of types) {
       await page.goto(`${type}/`)
-      expect(await page.locator('article').count()).toBeGreaterThan(0)
+      await expect(page.locator('main')).not.toHaveText('404')
+      await expect(page.locator('article').first()).toBeVisible()
     }
   })
 
@@ -15,9 +16,9 @@ test.describe('plugin-blog', () => {
 
     for (const category of categories) {
       await page.goto(`${category}/`)
-      expect(await page.locator('main')).not.toHaveText('404')
-      expect(await page.locator('.article-wrapper')).toBeVisible()
-      expect(await page.locator('article').count()).toBe(0)
+      await expect(page.locator('main')).not.toHaveText('404')
+      await expect(page.locator('.article-wrapper')).toBeVisible()
+      await expect(page.locator('article')).toHaveCount(0)
     }
   })
 
@@ -31,7 +32,7 @@ test.describe('plugin-blog', () => {
       for (const item of items) {
         await page.goto(`${name}/${encodeURI(item)}/`)
 
-        expect(await page.locator('main')).not.toHaveText('404')
+        await expect(page.locator('main')).not.toHaveText('404')
       }
     }
   })

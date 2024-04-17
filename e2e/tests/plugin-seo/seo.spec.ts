@@ -4,38 +4,38 @@ import { BASE } from '../../utils/env.js'
 test.describe('plugin-seo', () => {
   test('have OGP', async ({ page }) => {
     await page.goto('seo/')
-    expect(await page.locator('head meta[property="og:url"]')).toHaveAttribute(
+    await expect(page.locator('head meta[property="og:url"]')).toHaveAttribute(
       'content',
       `https://ecosystem-e2e-test.com${BASE}seo/`,
     )
 
-    expect(
-      await page.locator('head meta[property="og:site_name"]'),
+    await expect(
+      page.locator('head meta[property="og:site_name"]'),
     ).toHaveAttribute('content', 'VuePress Ecosystem E2E')
-    expect(
-      await page.locator('head meta[property="og:title"]'),
+    await expect(
+      page.locator('head meta[property="og:title"]'),
     ).toHaveAttribute('content', 'SEO Demo Page')
-    expect(
-      await page.locator('head meta[property="og:description"]'),
+    await expect(
+      page.locator('head meta[property="og:description"]'),
     ).toHaveAttribute(
       'content',
       'Here is article excerpt. Content alt Here is main content of article. A B C',
     )
-    expect(await page.locator('head meta[property="og:type"]')).toHaveAttribute(
+    await expect(page.locator('head meta[property="og:type"]')).toHaveAttribute(
       'content',
       'article',
     )
-    expect(
-      await page.locator('head meta[property="og:locale"]'),
+    await expect(
+      page.locator('head meta[property="og:locale"]'),
     ).toHaveAttribute('content', 'en-US')
-    expect(
-      await page.locator('head meta[property="article:author"]'),
+    await expect(
+      page.locator('head meta[property="article:author"]'),
     ).toHaveAttribute('content', 'Mr.Hope')
-    expect(
-      await page.locator('head meta[property="article:tag"]'),
+    await expect(
+      page.locator('head meta[property="article:tag"]'),
     ).toHaveAttribute('content', 'Demo')
-    expect(
-      await page.locator('head meta[property="article:published_time"]'),
+    await expect(
+      page.locator('head meta[property="article:published_time"]'),
     ).toHaveAttribute('content', '2021-01-01T00:00:00.000Z')
   })
 

@@ -29,13 +29,13 @@ test.describe('plugin-pwa', () => {
   test('have manifest links', async ({ page }) => {
     await page.goto('')
 
-    expect(await page.locator('link[rel="manifest"]')).toHaveAttribute(
+    await expect(page.locator('link[rel="manifest"]')).toHaveAttribute(
       'href',
       `${BASE}manifest.webmanifest`,
     )
     await page.goto('404.html')
 
-    expect(await page.locator('link[rel="manifest"]')).toHaveAttribute(
+    await expect(page.locator('link[rel="manifest"]')).toHaveAttribute(
       'href',
       `${BASE}manifest.webmanifest`,
     )
