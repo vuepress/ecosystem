@@ -1,14 +1,14 @@
-.lang-modal-fade-enter-active,
-.lang-modal-fade-leave-active {
+.redirect-modal-fade-enter-active,
+.redirect-modal-fade-leave-active {
   transition: opacity 0.5s;
 }
 
-.lang-modal-fade-enter,
-.lang-modal-fade-leave-to {
+.redirect-modal-fade-enter,
+.redirect-modal-fade-leave-to {
   opacity: 0;
 }
 
-.lang-modal-mask {
+.redirect-modal-mask {
   position: fixed;
   inset: 0;
   z-index: var(--redirect-z-index);
@@ -24,7 +24,7 @@
   }
 }
 
-.lang-modal-wrapper {
+.redirect-modal-wrapper {
   position: relative;
   z-index: 1500;
 
@@ -38,7 +38,7 @@
   box-shadow: 0 2px 6px 0 var(--card-shadow);
 }
 
-.lang-modal-action {
+.redirect-modal-action {
   display: block;
 
   width: 100%;

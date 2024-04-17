@@ -8,8 +8,8 @@ import {
   computed,
   defineComponent,
   h,
+  onBeforeUnmount,
   onMounted,
-  onUnmounted,
   ref,
   TransitionGroup,
   watch,
@@ -111,35 +111,35 @@ export default defineComponent({
         { immediate: true },
       )
 
-      onUnmounted(() => {
+      onBeforeUnmount(() => {
         isLocked.value = false
       })
     })
 
     return (): VNode | null =>
       showModal.value
-        ? h(TransitionGroup, { name: 'lang-modal-fade' }, () =>
+        ? h(TransitionGroup, { name: 'redirect-modal-fade' }, () =>
             showModal.value
               ? h(
                   'div',
-                  { key: 'mask', class: 'lang-modal-mask' },
+                  { key: 'mask', class: 'redirect-modal-mask' },
                   h(
                     'div',
                     {
                       key: 'popup',
-                      class: 'lang-modal-wrapper',
+                      class: 'redirect-modal-wrapper',
                     },
                     [
                       h(
                         'div',
-                        { class: 'lang-modal-content' },
+                        { class: 'redirect-modal-content' },
                         locale.value?.hint.map((text) => h('p', text)),
                       ),
                       h(
                         'button',
                         {
                           type: 'button',
-                          class: 'lang-modal-action primary',
+                          class: 'redirect-modal-action primary',
                           onClick: () => {
                             updateStatus()
                             router.replace(targetRoute.value!)
@@ -151,7 +151,7 @@ export default defineComponent({
                         'button',
                         {
                           type: 'button',
-                          class: 'lang-modal-action',
+                          class: 'redirect-modal-action',
                           onClick: () => updateStatus(),
                         },
                         locale.value?.cancel,

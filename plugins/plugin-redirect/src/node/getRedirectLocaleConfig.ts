@@ -24,8 +24,6 @@ export const getRedirectLocaleConfig = (
     fromEntries(
       entries(locales)
         .filter(([key, { lang }]) => {
-          if (key === '/') return false
-
           if (!lang) {
             logger.error(
               `Missing ${colors.magenta(
