@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.25](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.24...v2.0.0-rc.25) (2024-04-17)
+
+### Bug Fixes
+
+- **plugin-blog:** correct page path, close [#107](https://github.com/vuepress/ecosystem/issues/107) ([5143ed5](https://github.com/vuepress/ecosystem/commit/5143ed59cd0fafb9fcfa0c6fc3595bf6ba20dc83))
+- **plugin-comment:** fix Waline Pageview ([4ff7a6c](https://github.com/vuepress/ecosystem/commit/4ff7a6c29641d50bc0676698f5487203cd5e5263))
+- **plugin-redirect:** fix scrollLock, close [#105](https://github.com/vuepress/ecosystem/issues/105) ([238e222](https://github.com/vuepress/ecosystem/commit/238e222ed5cd446d60a264c04658f12fe13d3d71))
+
 # [2.0.0-rc.24](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.23...v2.0.0-rc.24) (2024-04-06)
 
 ### Bug Fixes

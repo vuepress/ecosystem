@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.25](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.24...v2.0.0-rc.25) (2024-04-17)
+
+### Bug Fixes
+
+- **plugin-comment:** fix Waline Pageview ([4ff7a6c](https://github.com/vuepress/ecosystem/commit/4ff7a6c29641d50bc0676698f5487203cd5e5263))
+
 # [2.0.0-rc.24](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.23...v2.0.0-rc.24) (2024-04-06)
 
 ### Bug Fixes
