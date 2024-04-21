@@ -1,4 +1,4 @@
-declare module 'vuepress-plugin-comment2/service' {
+declare module '@vuepress/plugin-comment/service' {
   import type { DefineComponent } from 'vue'
 
   const component: DefineComponent

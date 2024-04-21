@@ -11,7 +11,7 @@ layout: CommentPage
 ### 通过插件选项
 
 ```ts
-import { commentPlugin } from 'vuepress-plugin-comment2'
+import { commentPlugin } from '@vuepress/plugin-comment'
 
 // .vuepress/config.ts
 export default {
@@ -35,7 +35,7 @@ import {
   // defineGiscusConfig,
   // defineTwikooConfig,
   // defineWalineConfig,
-} from 'vuepress-plugin-comment2/client'
+} from '@vuepress/plugin-comment/client'
 
 defineArtalkConfig({
   // 选项

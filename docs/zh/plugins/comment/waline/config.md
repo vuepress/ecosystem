@@ -273,7 +273,7 @@
 
 ```ts title=".vuepress/config.ts"
 import { defineUserConfig } from 'vuepress'
-import { commentPlugin } from 'vuepress-plugin-comment2'
+import { commentPlugin } from '@vuepress/plugin-comment'
 
 export default defineUserConfig({
   plugins: [
@@ -292,7 +292,7 @@ export default defineUserConfig({
 
 ```ts title=".vuepress/client.ts"
 import { defineClientConfig } from 'vuepress/client'
-import { defineWalineConfig } from 'vuepress-plugin-comment2/client'
+import { defineWalineConfig } from '@vuepress/plugin-comment/client'
 
 defineWalineConfig({
   // Waline 选项

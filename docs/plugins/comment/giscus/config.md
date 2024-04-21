@@ -116,7 +116,7 @@ You can directly configure serializable options in the plugin options:
 
 ```ts title=".vuepress/config.ts"
 import { defineUserConfig } from 'vuepress'
-import { commentPlugin } from 'vuepress-plugin-comment2'
+import { commentPlugin } from '@vuepress/plugin-comment'
 
 export default defineUserConfig({
   plugins: [
@@ -135,7 +135,7 @@ You can use the `defineGiscusConfig` function to customize Giscus:
 
 ```ts title=".vuepress/client.ts"
 import { defineClientConfig } from 'vuepress/client'
-import { defineGiscusConfig } from 'vuepress-plugin-comment2/client'
+import { defineGiscusConfig } from '@vuepress/plugin-comment/client'
 
 defineGiscusConfig({
   // Giscus config
