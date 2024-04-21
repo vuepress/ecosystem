@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.26](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.25...v2.0.0-rc.26) (2024-04-21)
+
+### Bug Fixes
+
+- fix wrong plugin name ([d15d4aa](https://github.com/vuepress/ecosystem/commit/d15d4aa61d8e574e5aeb72618db8f4efdc66860c))
+
 # [2.0.0-rc.25](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.24...v2.0.0-rc.25) (2024-04-17)
 
 ### Bug Fixes
