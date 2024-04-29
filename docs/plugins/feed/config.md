@@ -64,14 +64,9 @@ Custom element or component which should be preserved in feed.
 - Type: `(page: Page)=> boolean`
 - Default:
 
-  ```ts
-  ;({ frontmatter, filePathRelative }: Page): boolean =>
-    !(
-      frontmatter.home ||
-      !filePathRelative ||
-      frontmatter.article === false ||
-      frontmatter.feed === false
-    )
+  ```js
+  ;({ frontmatter, filePathRelative }) =>
+    Boolean(frontmatter.feed ?? (filePathRelative && !frontmatter.home))
   ```
 
 A custom filter function, used to filter feed items.

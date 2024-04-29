@@ -64,14 +64,9 @@
 - 类型：`(page: Page)=> boolean`
 - 默认值：
 
-  ```ts
-  ;({ frontmatter, filePathRelative }: Page): boolean =>
-    !(
-      frontmatter.home ||
-      !filePathRelative ||
-      frontmatter.article === false ||
-      frontmatter.feed === false
-    )
+  ```js
+  ;({ frontmatter, filePathRelative }) =>
+    Boolean(frontmatter.feed ?? (filePathRelative && !frontmatter.home))
   ```
 
 自定义的过滤函数，用于过滤哪些项目在 feed 中显示。

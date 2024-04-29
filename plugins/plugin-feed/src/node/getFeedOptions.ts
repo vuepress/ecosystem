@@ -9,6 +9,7 @@ import type { GitData } from '@vuepress/plugin-git'
 import type { App, Page } from 'vuepress/core'
 import type {
   BaseFeedPluginOptions,
+  FeedPluginFrontmatter,
   FeedPluginOptions,
 } from '../typings/index.js'
 
@@ -43,12 +44,12 @@ export const getFeedOptions = (
         localePath,
         {
           // default values
-          filter: ({ frontmatter, filePathRelative }: Page): boolean =>
-            !(
-              frontmatter.home ||
-              !filePathRelative ||
-              frontmatter.article === false ||
-              frontmatter.feed === false
+          filter: ({
+            frontmatter,
+            filePathRelative,
+          }: Page<Record<string, never>, FeedPluginFrontmatter>): boolean =>
+            Boolean(
+              frontmatter.feed ?? (filePathRelative && !frontmatter.home),
             ),
           sorter: (
             pageA: Page<{ git?: GitData }, Record<string, never>>,
