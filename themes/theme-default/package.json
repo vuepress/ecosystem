@@ -59,7 +59,7 @@
     "@vuepress/plugin-theme-data": "workspace:~",
     "@vueuse/core": "^10.9.0",
     "sass": "^1.75.0",
-    "vue": "^3.4.23"
+    "vue": "^3.4.26"
   },
   "peerDependencies": {
     "sass-loader": "^14.0.0",

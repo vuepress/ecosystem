@@ -35,7 +35,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "vue": "^3.4.23",
+    "vue": "^3.4.26",
     "vue-router": "^4.3.2"
   },
   "peerDependencies": {

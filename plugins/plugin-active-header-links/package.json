@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^10.9.0",
-    "vue": "^3.4.23"
+    "vue": "^3.4.26"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.9"
