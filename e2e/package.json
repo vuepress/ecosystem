@@ -8,7 +8,7 @@
     "docs:clean": "rimraf docs/.vuepress/.temp docs/.vuepress/.cache docs/.vuepress/dist",
     "docs:dev": "vuepress dev docs --clean-cache --clean-temp",
     "docs:dev-webpack": "cross-env E2E_BUNDLER=webpack pnpm docs:dev",
-    "docs:serve": "anywhere -s -h localhost -p 9080 -d docs/.vuepress/dist",
+    "docs:serve": "http-server -a localhost -p 9080 docs/.vuepress/dist",
     "e2e:build": "cross-env E2E_COMMAND=build playwright test",
     "e2e:build-webpack": "cross-env E2E_COMMAND=build E2E_BUNDLER=webpack playwright test",
     "e2e:dev": "cross-env E2E_COMMAND=dev playwright test",
@@ -30,8 +30,6 @@
     "vuepress": "2.0.0-rc.9"
   },
   "devDependencies": {
-    "@playwright/test": "^1.43.1",
-    "anywhere": "^1.6.0",
-    "cross-env": "^7.0.3"
+    "@playwright/test": "^1.43.1"
   }
 }
