@@ -11,7 +11,7 @@ export const watermarkPlugin = ({
   options.global ??= true
 
   return {
-    name: 'vuepress-plugin-watermark',
+    name: '@vuepress/plugin-watermark',
     define: {
       __VUEPRESS_PLUGIN_WATERMARK_OPTIONS__: options,
     },
