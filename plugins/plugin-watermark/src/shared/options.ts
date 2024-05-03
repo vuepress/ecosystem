@@ -28,7 +28,7 @@ export interface WatermarkPluginOptions {
   global?: boolean
   /**
    * Page filter
-   * @default []
+   * @default () => true
    */
   pageFilter?: (page: Page) => boolean
 
