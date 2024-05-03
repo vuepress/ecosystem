@@ -36,15 +36,17 @@ export default {
 
   When enabled globally, a watermark will be added to all pages.
 
-  If not enabled globally, specify which pages need the watermark using [pageFilter](#pagefilter).
+  If not enabled globally, specify which pages need the watermark using [filter](#filter).
 
-### pageFilter
+### filter
 
 - Type： `(page: Page) => boolean`
 
 - Default： `() => true`
 
-- Details：Specify which pages need to have watermarks added.
+- Details：When `global` is set to `false`,
+
+  Specify which pages need to have watermarks added.
 
   Pages that return `true` will have watermarks added.
 
@@ -115,5 +117,30 @@ import { defineWatermarkConfig } from '@vuepress/plugin-watermark/client'
 
 defineWatermarkConfig({
   // Set up additional watermark configurations here.
+})
+```
+
+In most cases, the majority of options should be defined in Node,
+but there are some special situations. For example,
+it may be necessary to control different watermark opacities, font colors,
+etc., in **dark/light mode** , or to pass in callbacks such as `onSuccess`, `extraDrawFunc`, and so on.
+
+```ts
+import { computed } from 'vue'
+
+export default defineClientConfig({
+  setup() {
+    const isDark = useDarkMode()
+    defineWatermarkConfig(
+      computed(() => {
+        return {
+          fontColor: isDark.value ? '#fff' : '#000',
+          onSuccess: () => {
+            console.log('success')
+          },
+        }
+      }),
+    )
+  },
 })
 ```

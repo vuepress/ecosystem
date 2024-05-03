@@ -1,1 +1,4 @@
-export * from './options.js'
+export {
+  type WatermarkOptions,
+  type WatermarkPluginFrontmatter,
+} from './options.js'

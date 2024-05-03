@@ -36,15 +36,15 @@ export default {
 
   当全局启用时，所有页面都会添加水印。
 
-  当不全局启用时，需要通过 [pageFilter](#pagefilter) 来指定哪些页面需要添加水印。
+  当不全局启用时，需要通过 [filter](#filter) 来指定哪些页面需要添加水印。
 
-### pageFilter
+### filter
 
 - 类型： `(page: Page) => boolean`
 
 - 默认值： `() => true`
 
-- 详情：指定哪些页面需要添加水印。
+- 详情：当 `global` 为 `false` 时，指定哪些页面需要添加水印。
 
   返回 `true` 的页面将会被添加水印。
 
@@ -115,5 +115,29 @@ import { defineWatermarkConfig } from '@vuepress/plugin-watermark/client'
 
 defineWatermarkConfig({
   // 在此设置额外的 watermark 配置
+})
+```
+
+通常来说，大部分选项应该在 Node 中定义，但存在一些特殊情况。
+比如需要在 **深色/浅色 模式** 下控制不同的 水印 透明度、字体颜色等，
+或者需要传入如 `onSuccess`、`extraDrawFunc` 等回调函数。
+
+```ts
+import { computed } from 'vue'
+
+export default defineClientConfig({
+  setup() {
+    const isDark = useDarkMode()
+    defineWatermarkConfig(
+      computed(() => {
+        return {
+          fontColor: isDark.value ? '#fff' : '#000',
+          onSuccess: () => {
+            console.log('success')
+          },
+        }
+      }),
+    )
+  },
 })
 ```

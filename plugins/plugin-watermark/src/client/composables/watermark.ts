@@ -1,51 +1,24 @@
-import { isFunction, isLinkHttp, wait } from '@vuepress/helper/client'
-import { computed, isRef, nextTick, ref, toValue, watch } from 'vue'
-import type { MaybeRefOrGetter } from 'vue'
+import { isLinkHttp, wait } from '@vuepress/helper/client'
+import { computed, nextTick, toValue, watch } from 'vue'
 import { usePageFrontmatter, useRoutePath, withBase } from 'vuepress/client'
 // https://github.com/zhensherlock/watermark-js-plus/issues/579
 import { Watermark } from 'watermark-js-plus/dist/index.esm.js'
 import type {
   WatermarkOptions,
-  WatermarkPluginOptions,
+  WatermarkPluginFrontmatter,
 } from '../../shared/index.js'
+import { userOptions } from '../helper/defineWatermarkConfig.js'
 
-declare const __VUEPRESS_PLUGIN_WATERMARK_OPTIONS__: Omit<
-  WatermarkPluginOptions,
-  'pageFilter'
->
+declare const __WATERMARK_OPTIONS__: WatermarkOptions
 
 const {
   global = true,
   delay = 500,
   watermarkOptions: options,
-} = __VUEPRESS_PLUGIN_WATERMARK_OPTIONS__
-
-const userOptions = ref<WatermarkOptions>({})
-
-export function defineWatermarkConfig(
-  userConfig: MaybeRefOrGetter<WatermarkOptions>,
-): void {
-  if (isRef(userConfig)) {
-    watch(
-      userConfig,
-      (value) => {
-        userOptions.value = value
-      },
-      { immediate: true },
-    )
-  } else if (isFunction(userConfig)) {
-    watch(userConfig, (value) => {
-      userOptions.value = value
-    })
-  } else {
-    userOptions.value = userConfig
-  }
-}
+} = __WATERMARK_OPTIONS__
 
 export function setupWatermark(): void {
-  const frontmatter = usePageFrontmatter<{
-    watermark?: boolean | Omit<WatermarkPluginOptions, 'pageFilter' | 'global'>
-  }>()
+  const frontmatter = usePageFrontmatter<WatermarkPluginFrontmatter>()
   const routePath = useRoutePath()
 
   let watermark: Watermark | null = null
@@ -59,9 +32,10 @@ export function setupWatermark(): void {
     }
     return { ...options, ...userOptions.value, ...frontmatter.value.watermark }
   })
+
   const enabled = computed(() => {
-    if (global) return frontmatter.value.watermark !== false
-    return !!frontmatter.value.watermark
+    const watermark = frontmatter.value.watermark
+    return global ? watermark !== false : watermark
   })
 
   watch(
