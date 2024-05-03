@@ -53,6 +53,7 @@
     { "path": "./plugins/plugin-sitemap/tsconfig.build.json" },
     { "path": "./plugins/plugin-theme-data/tsconfig.build.json" },
     { "path": "./plugins/plugin-toc/tsconfig.build.json" },
+    { "path": "./plugins/plugin-watermark/tsconfig.build.json" },
     { "path": "./themes/theme-default/tsconfig.build.json" },
     { "path": "./tools/create-vuepress/tsconfig.build.json" },
     { "path": "./tools/helper/tsconfig.build.json" },
