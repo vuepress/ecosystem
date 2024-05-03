@@ -31,6 +31,7 @@ export const navbarZh: NavbarConfig = [
           '/zh/plugins/photo-swipe',
           '/zh/plugins/redirect',
           '/zh/plugins/register-components',
+          '/zh/plugins/watermark',
         ],
       },
       {
