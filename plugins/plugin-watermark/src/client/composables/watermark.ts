@@ -1,4 +1,4 @@
-import { isLinkHttp, wait } from '@vuepress/helper/client'
+import { wait } from '@vuepress/helper/client'
 import { computed, nextTick, toValue, watch } from 'vue'
 import { usePageFrontmatter, useRoutePath, withBase } from 'vuepress/client'
 // https://github.com/zhensherlock/watermark-js-plus/issues/579
@@ -62,11 +62,7 @@ export function setupWatermark(): void {
       options = { globalAlpha: 0.005, ...options }
     }
 
-    if (
-      options.image &&
-      !isLinkHttp(options.image) &&
-      options.image.startsWith('/')
-    ) {
+    if (options.image && options.image.startsWith('/')) {
       options.image = withBase(options.image)
     }
 
