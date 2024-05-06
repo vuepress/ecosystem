@@ -104,7 +104,7 @@ export const sidebarEn: SidebarConfig = {
         '/plugins/reading-time',
         '/plugins/rtl',
         {
-          text: 'sass palette',
+          text: 'Sass Palette',
           link: '/plugins/sass-palette/',
           children: [
             '/plugins/sass-palette/guide',
