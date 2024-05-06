@@ -16,7 +16,7 @@ const {
   watermarkOptions: options,
 } = __WATERMARK_OPTIONS__
 
-export function setupWatermark(): void {
+export const setupWatermark = (): void => {
   const frontmatter = usePageFrontmatter<WatermarkPluginFrontmatter>()
   const routePath = useRoutePath()
 
@@ -29,6 +29,7 @@ export function setupWatermark(): void {
     ) {
       return { ...options, ...userOptions.value }
     }
+
     return { ...options, ...userOptions.value, ...frontmatter.value.watermark }
   })
 
@@ -36,6 +37,26 @@ export function setupWatermark(): void {
     const watermark = frontmatter.value.watermark
     return global ? watermark !== false : watermark
   })
+
+  const renderWatermark = (): void => {
+    let options = toValue(opts)
+
+    // Blind mode default alpha is 0.005
+    if (options.mode === 'blind') {
+      options = { globalAlpha: 0.005, ...options }
+    }
+
+    if (options.image?.startsWith('/')) {
+      options.image = withBase(options.image)
+    }
+
+    if (!watermark) {
+      watermark = new Watermark(options)
+      watermark.create()
+    } else {
+      watermark.changeOptions(options, 'overwrite', true)
+    }
+  }
 
   watch(
     () => [opts.value, enabled.value, routePath.value],
@@ -48,33 +69,10 @@ export function setupWatermark(): void {
             renderWatermark()
           }
         } else {
-          destroyWatermark()
+          watermark?.destroy()
+          watermark = null
         }
       }),
     { immediate: true },
   )
-
-  function renderWatermark(): void {
-    let options = toValue(opts)
-    // Blind mode default alpha is 0.005
-    if (options.mode === 'blind') {
-      options = { globalAlpha: 0.005, ...options }
-    }
-
-    if (options.image && options.image.startsWith('/')) {
-      options.image = withBase(options.image)
-    }
-
-    if (!watermark) {
-      watermark = new Watermark(options)
-      watermark.create()
-    } else {
-      watermark.changeOptions(options, 'overwrite', true)
-    }
-  }
-
-  function destroyWatermark(): void {
-    watermark?.destroy()
-    watermark = null
-  }
 }

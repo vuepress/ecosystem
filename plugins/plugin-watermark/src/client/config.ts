@@ -1,6 +1,6 @@
 import { defineClientConfig } from 'vuepress/client'
 import type { ClientConfig } from 'vuepress/client'
-import { setupWatermark } from './index.js'
+import { setupWatermark } from './composables/index.js'
 
 export default defineClientConfig({
   setup() {
