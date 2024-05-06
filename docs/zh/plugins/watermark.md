@@ -118,16 +118,15 @@ import { computed } from 'vue'
 export default defineClientConfig({
   setup() {
     const isDark = useDarkMode()
-    defineWatermarkConfig(
-      computed(() => {
-        return {
-          fontColor: isDark.value ? '#fff' : '#000',
-          onSuccess: () => {
-            console.log('success')
-          },
-        }
-      }),
-    )
+
+    const watermarkConfig = computed(() => ({
+      fontColor: isDark.value ? '#fff' : '#000',
+      onSuccess: () => {
+        console.log('success')
+      },
+    }))
+
+    defineWatermarkConfig(watermarkConfig)
   },
 })
 ```
