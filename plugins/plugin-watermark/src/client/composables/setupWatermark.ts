@@ -17,20 +17,17 @@ export const setupWatermark = (
   enabled: Ref<boolean>,
   delay = 500,
 ): void => {
-  const isInsideApp = (target?: string | Element): boolean => {
-    const el =
-      typeof target === 'string' ? document.querySelector(target) : target
-
-    return Boolean(
-      el &&
-        (getCurrentInstance()?.appContext.app._container as Element).contains?.(
-          el,
-        ),
-    )
-  }
-
   onMounted(() => {
+    const appContainer: Element | null =
+      getCurrentInstance()?.appContext.app._container
     const watermark = new Watermark()
+
+    const isInsideApp = (target?: string | Element): boolean => {
+      const el =
+        typeof target === 'string' ? document.querySelector(target) : target
+
+      return Boolean(el && appContainer?.contains(el))
+    }
 
     const updateWaterMark = (
       // shadow clone options object so that we can modify later
@@ -50,14 +47,7 @@ export const setupWatermark = (
       else watermark.changeOptions(options, 'overwrite', false)
     }
 
-    if (isRef(options))
-      watch(
-        () => options,
-        () => {
-          updateWaterMark(options.value)
-        },
-        { immediate: true },
-      )
+    if (isRef(options)) watch(options, updateWaterMark, { immediate: true })
     else updateWaterMark(options)
 
     watch(enabled, () =>
