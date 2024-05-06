@@ -61,6 +61,7 @@ export const navbarZh: NavbarConfig = [
           '/zh/plugins/google-analytics',
           '/zh/plugins/seo/',
           '/zh/plugins/sitemap/',
+          '/zh/plugins/umami-analytics',
         ],
       },
       {
