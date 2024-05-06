@@ -1,5 +1,13 @@
 import type { VNode } from 'vue'
-import { defineComponent, h, nextTick, onMounted, ref, watch } from 'vue'
+import {
+  computed,
+  defineComponent,
+  h,
+  nextTick,
+  onMounted,
+  ref,
+  watch,
+} from 'vue'
 import { usePageLang } from 'vuepress/client'
 import { useTwikooOptions } from '../helpers/index.js'
 import { LoadingIcon } from './LoadingIcon.js'
@@ -23,7 +31,7 @@ export default defineComponent({
 
     const loaded = ref(false)
 
-    const enableTwikoo = Boolean(twikooOptions.envId)
+    const enableTwikoo = computed(() => Boolean(twikooOptions.value.envId))
 
     const initTwikoo = async (): Promise<void> => {
       const [{ init }] = await Promise.all([
@@ -31,7 +39,7 @@ export default defineComponent({
         new Promise<void>((resolve) => {
           setTimeout(() => {
             resolve()
-          }, twikooOptions.delay || 800)
+          }, twikooOptions.value.delay || 800)
         }),
       ])
 
@@ -42,21 +50,21 @@ export default defineComponent({
       await init({
         lang: lang.value === 'zh-CN' ? 'zh-CN' : 'en',
         path: props.identifier,
-        ...twikooOptions,
+        ...twikooOptions.value,
         el: '#twikoo-comment',
       })
     }
 
     onMounted(() => {
       watch(
-        () => props.identifier,
+        () => [props.identifier, twikooOptions.value],
         () => initTwikoo(),
         { immediate: true },
       )
     })
 
     return (): VNode | null =>
-      enableTwikoo
+      enableTwikoo.value
         ? h('div', { id: 'comment', class: 'twikoo-wrapper' }, [
             loaded.value ? null : h(LoadingIcon),
             h('div', { id: 'twikoo-comment' }),

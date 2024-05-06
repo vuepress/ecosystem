@@ -45,7 +45,7 @@ export const usePhotoSwipe = ({
           destroy = await registerPhotoSwipe(
             getImages(imageSelector),
             {
-              ...photoSwipeOptions,
+              ...photoSwipeOptions.value,
               ...locale.value,
             },
             scrollToClose,
@@ -57,7 +57,7 @@ export const usePhotoSwipe = ({
     setupPhotoSwipe()
 
     watch(
-      () => page.value.path,
+      () => [page.value.path, photoSwipeOptions.value],
       () => {
         destroy?.()
         setupPhotoSwipe()

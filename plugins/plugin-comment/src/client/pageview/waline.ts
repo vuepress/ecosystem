@@ -5,7 +5,8 @@ import type { UpdatePageview } from './typings.js'
 export const isSupported = true
 
 export const usePageview = (): UpdatePageview => {
-  const { serverURL } = useWalineOptions()
+  const walineOptions = useWalineOptions()
 
-  return (options) => pageviewCount({ serverURL, ...options })
+  return (options) =>
+    pageviewCount({ serverURL: walineOptions.value.serverURL, ...options })
 }
