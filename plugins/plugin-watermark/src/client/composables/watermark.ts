@@ -1,8 +1,7 @@
 import { wait } from '@vuepress/helper/client'
 import { computed, nextTick, toValue, watch } from 'vue'
 import { usePageFrontmatter, useRoutePath, withBase } from 'vuepress/client'
-// https://github.com/zhensherlock/watermark-js-plus/issues/579
-import { Watermark } from 'watermark-js-plus/dist/index.esm.js'
+import { Watermark } from 'watermark-js-plus'
 import type {
   WatermarkOptions,
   WatermarkPluginFrontmatter,

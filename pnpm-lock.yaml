@@ -668,8 +668,8 @@ importers:
         specifier: 2.0.0-rc.9
         version: 2.0.0-rc.9(@vuepress/bundler-vite@2.0.0-rc.9(@types/node@20.12.7)(jiti@1.21.0)(sass@1.75.0)(terser@5.30.4)(typescript@5.4.5))(@vuepress/bundler-webpack@2.0.0-rc.9(typescript@5.4.5))(typescript@5.4.5)(vue@3.4.26(typescript@5.4.5))
       watermark-js-plus:
-        specifier: ^1.4.21
-        version: 1.4.21
+        specifier: ^1.4.22
+        version: 1.4.22
 
   themes/theme-default:
     dependencies:
@@ -6495,8 +6495,8 @@ packages:
     resolution: {integrity: sha512-8wrBCMtVhqcXP2Sup1ctSkga6uc2Bx0IIvKyT7yTFier5AXHooSI+QyQQAtTb7+E0IUCCKyTFmXqdqgum2XWGg==}
     engines: {node: '>=10.13.0'}
 
-  watermark-js-plus@1.4.21:
-    resolution: {integrity: sha512-rC7oeGlioa8iBsEEcxPMBG8FpPHkMB5ywrywnx3L3bf2+xi3IqrCidB4Fvn6Nec2e/DnhyGx7E2yIX72jEiFIg==}
+  watermark-js-plus@1.4.22:
+    resolution: {integrity: sha512-/UquC1Wkj3UuraGDmx29Ri3tu4gla05k9u0e+l4T1Ms69bWvLi/K74y9iyzp502gL55gm4BV8jUjvs6LvAzKmA==}
     engines: {node: '>=16.0.0'}
 
   wbuf@1.7.3:
@@ -13240,7 +13240,7 @@ snapshots:
       glob-to-regexp: 0.4.1
       graceful-fs: 4.2.11
 
-  watermark-js-plus@1.4.21: {}
+  watermark-js-plus@1.4.22: {}
 
   wbuf@1.7.3:
     dependencies:
