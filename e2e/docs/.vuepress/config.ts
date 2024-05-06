@@ -7,6 +7,7 @@ import { copyrightPlugin } from '@vuepress/plugin-copyright'
 import { feedPlugin } from '@vuepress/plugin-feed'
 import { pwaPlugin } from '@vuepress/plugin-pwa'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
+import { watermarkPlugin } from '@vuepress/plugin-watermark'
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress/cli'
 import type { UserConfig } from 'vuepress/cli'
@@ -221,6 +222,17 @@ export default defineUserConfig({
       config: {
         '/redirect/config.html': '/redirect/final.html',
         '/redirect/config/': '/redirect/final.html',
+      },
+    }),
+    watermarkPlugin({
+      global: false,
+      filter(page) {
+        return page.path.startsWith('/watermark/')
+      },
+      watermarkOptions: {
+        content: 'VuePress Watermark',
+        width: 200,
+        height: 200,
       },
     }),
   ],
