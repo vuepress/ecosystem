@@ -16,6 +16,7 @@ export const sidebarZh: SidebarConfig = {
         '/zh/plugins/photo-swipe',
         '/zh/plugins/redirect',
         '/zh/plugins/register-components',
+        '/zh/plugins/watermark',
       ],
     },
     {

@@ -31,6 +31,7 @@ export const navbarEn: NavbarConfig = [
           '/plugins/photo-swipe',
           '/plugins/redirect',
           '/plugins/register-components',
+          '/plugins/watermark',
         ],
       },
       {

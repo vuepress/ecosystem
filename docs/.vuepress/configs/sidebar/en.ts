@@ -16,6 +16,7 @@ export const sidebarEn: SidebarConfig = {
         '/plugins/photo-swipe',
         '/plugins/redirect',
         '/plugins/register-components',
+        '/plugins/watermark',
       ],
     },
     {

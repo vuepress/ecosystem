@@ -23,6 +23,7 @@
     "@vuepress/plugin-feed": "workspace:*",
     "@vuepress/plugin-pwa": "workspace:*",
     "@vuepress/plugin-redirect": "workspace:*",
+    "@vuepress/plugin-watermark": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
     "sass": "^1.75.0",
     "sass-loader": "^14.2.1",
