@@ -6,9 +6,5 @@
     "types": ["vuepress/client-types"]
   },
   "include": ["./src"],
-  "references": [
-    {
-      "path": "../../tools/helper/tsconfig.build.json"
-    }
-  ]
+  "references": [{ "path": "../../tools/helper/tsconfig.build.json" }]
 }

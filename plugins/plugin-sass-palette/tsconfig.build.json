@@ -2,7 +2,9 @@
   "extends": "../../tsconfig.build.json",
   "compilerOptions": {
     "rootDir": "./src",
-    "outDir": "./lib"
+    "outDir": "./lib",
+    "types": ["vuepress/client-types"]
   },
-  "include": ["./src"]
+  "include": ["./src"],
+  "references": [{ "path": "../../tools/helper/tsconfig.build.json" }]
 }
