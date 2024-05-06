@@ -75,7 +75,7 @@ export const navbarZh: NavbarConfig = [
           '/zh/plugins/palette',
           '/zh/plugins/reading-time',
           '/zh/plugins/rtl',
-          '/zh/plugins/sass-palette',
+          '/zh/plugins/sass-palette/',
           '/zh/plugins/theme-data',
           '/zh/plugins/toc',
         ],

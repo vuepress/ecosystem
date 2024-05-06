@@ -71,7 +71,7 @@ export const navbarEn: NavbarConfig = [
           '/plugins/palette',
           '/plugins/reading-time',
           '/plugins/rtl',
-          '/plugins/sass-palette',
+          '/plugins/sass-palette/',
           '/plugins/theme-data',
           '/plugins/toc',
         ],
