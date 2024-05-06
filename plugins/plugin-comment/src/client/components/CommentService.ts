@@ -22,12 +22,12 @@ export default defineComponent({
     const page = usePageData()
     const frontmatter = usePageFrontmatter<CommentPluginFrontmatter>()
 
-    const enableComment = commentOptions.comment !== false
+    const enableComment = computed(() => commentOptions.value.comment !== false)
 
     const enabled = computed(
       () =>
         frontmatter.value.comment ||
-        (enableComment && frontmatter.value.comment !== false),
+        (enableComment.value && frontmatter.value.comment !== false),
     )
 
     return (): VNode | null =>

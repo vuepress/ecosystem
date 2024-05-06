@@ -89,14 +89,14 @@ export default defineComponent({
     const giscusOptions = useGiscusOptions()
     const lang = usePageLang()
 
-    const enableGiscus = Boolean(
-      giscusOptions.repo &&
-        giscusOptions.repoId &&
-        giscusOptions.category &&
-        giscusOptions.categoryId,
+    const enableGiscus = computed(() =>
+      Boolean(
+        giscusOptions.value.repo &&
+          giscusOptions.value.repoId &&
+          giscusOptions.value.category &&
+          giscusOptions.value.categoryId,
+      ),
     )
-
-    const { repo, repoId, category, categoryId } = giscusOptions
 
     const loaded = ref(false)
 
@@ -114,21 +114,21 @@ export default defineComponent({
     const config = computed(
       () =>
         ({
-          repo,
-          repoId,
-          category,
-          categoryId,
+          repo: giscusOptions.value.repo,
+          repoId: giscusOptions.value.repoId,
+          category: giscusOptions.value.category,
+          categoryId: giscusOptions.value.categoryId,
           lang: giscusLang.value,
           theme: props.darkmode
-            ? giscusOptions.darkTheme || 'dark'
-            : giscusOptions.lightTheme || 'light',
-          mapping: giscusOptions.mapping || 'pathname',
+            ? giscusOptions.value.darkTheme || 'dark'
+            : giscusOptions.value.lightTheme || 'light',
+          mapping: giscusOptions.value.mapping || 'pathname',
           term: props.identifier,
-          inputPosition: giscusOptions.inputPosition || 'top',
+          inputPosition: giscusOptions.value.inputPosition || 'top',
           reactionsEnabled:
-            giscusOptions.reactionsEnabled === false ? '0' : '1',
-          strict: giscusOptions.strict === false ? '0' : '1',
-          loading: giscusOptions.lazyLoading === false ? 'eager' : 'lazy',
+            giscusOptions.value.reactionsEnabled === false ? '0' : '1',
+          strict: giscusOptions.value.strict === false ? '0' : '1',
+          loading: giscusOptions.value.lazyLoading === false ? 'eager' : 'lazy',
           emitMetadata: '0',
         }) as GiscusProps,
     )
@@ -139,14 +139,14 @@ export default defineComponent({
     })
 
     return (): VNode | null =>
-      enableGiscus
+      enableGiscus.value
         ? h(
             'div',
             {
               id: 'comment',
               class: [
                 'giscus-wrapper',
-                { 'input-top': giscusOptions.inputPosition !== 'bottom' },
+                { 'input-top': giscusOptions.value.inputPosition !== 'bottom' },
               ],
             },
             loaded.value ? h('giscus-widget', config.value) : h(LoadingIcon),

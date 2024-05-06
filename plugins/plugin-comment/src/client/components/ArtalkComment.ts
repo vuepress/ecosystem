@@ -2,6 +2,7 @@ import { isString } from '@vuepress/helper/client'
 import type Artalk from 'artalk'
 import type { VNode } from 'vue'
 import {
+  computed,
   defineComponent,
   h,
   nextTick,
@@ -48,7 +49,7 @@ export default defineComponent({
 
     let artalk: Artalk | null = null
 
-    const enableArtalk = isString(artalkOptions.server)
+    const enableArtalk = computed(() => isString(artalkOptions.value.server))
 
     const initArtalk = async (): Promise<void> => {
       const [{ default: Artalk }] = await Promise.all([
@@ -56,7 +57,7 @@ export default defineComponent({
         new Promise<void>((resolve) => {
           setTimeout(() => {
             resolve()
-          }, artalkOptions.delay || 800)
+          }, artalkOptions.value.delay || 800)
         }),
       ])
 
@@ -67,13 +68,13 @@ export default defineComponent({
         useBackendConf: false,
         site: site.value.title,
         pageTitle: page.value.title,
-        ...artalkOptions,
+        ...artalkOptions.value,
         el: artalkContainer.value!,
         pageKey: props.identifier,
         darkMode: props.darkmode,
       })
 
-      if (artalkOptions.useBackendConf)
+      if (artalkOptions.value.useBackendConf)
         artalk.on('mounted', () => {
           artalk!.setDarkMode(props.darkmode)
         })
@@ -89,7 +90,14 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      initArtalk()
+      watch(
+        () => artalkOptions.value,
+        () => {
+          artalk?.destroy()
+          initArtalk()
+        },
+        { immediate: true },
+      )
 
       watch(
         () => props.identifier,
@@ -111,7 +119,7 @@ export default defineComponent({
     })
 
     return (): VNode | null =>
-      enableArtalk
+      enableArtalk.value
         ? h('div', { class: 'artalk-wrapper' }, [
             loaded.value ? null : h(LoadingIcon),
             h('div', { ref: artalkContainer }),

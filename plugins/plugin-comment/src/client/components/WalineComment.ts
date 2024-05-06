@@ -48,11 +48,11 @@ export default defineComponent({
     const walineLocale = useLocaleConfig(walineLocales)
 
     let abort: () => void
-    const enableWaline = Boolean(walineOptions.serverURL)
+    const enableWaline = computed(() => Boolean(walineOptions.value.serverURL))
 
     const enablePageViews = computed(() => {
-      if (!enableWaline) return false
-      const pluginConfig = walineOptions.pageview !== false
+      if (!enableWaline.value) return false
+      const pluginConfig = walineOptions.value.pageview !== false
       const pageConfig = frontmatter.value.pageview
 
       return (
@@ -67,13 +67,18 @@ export default defineComponent({
       lang: lang.value === 'zh-CN' ? 'zh-CN' : 'en',
       locale: walineLocale.value,
       dark: 'html.dark',
-      ...walineOptions,
+      ...walineOptions.value,
       path: props.identifier,
     }))
 
     onMounted(() => {
       watch(
-        () => props.identifier,
+        () => [
+          props.identifier,
+          walineOptions.value.serverURL,
+          walineOptions.value.delay,
+          enablePageViews.value,
+        ],
         () => {
           abort?.()
 
@@ -81,10 +86,10 @@ export default defineComponent({
             nextTick().then(() => {
               setTimeout(() => {
                 abort = pageviewCount({
-                  serverURL: walineOptions.serverURL,
+                  serverURL: walineOptions.value.serverURL,
                   path: props.identifier,
                 })
-              }, walineOptions.delay || 800)
+              }, walineOptions.value.delay || 800)
             })
         },
         { immediate: true },
@@ -92,7 +97,7 @@ export default defineComponent({
     })
 
     return (): VNode | null =>
-      enableWaline
+      enableWaline.value
         ? h(
             'div',
             { id: 'comment', class: 'waline-wrapper' },
