@@ -1,47 +1,39 @@
-import type { Page, Plugin } from 'vuepress/core'
+import type { Plugin } from 'vuepress/core'
+import { isFunction } from 'vuepress/shared'
 import { getDirname, path } from 'vuepress/utils'
-import type { WatermarkOptions } from '../shared/index.js'
-import { logger, PLUGIN_NAME } from './utils.js'
+import { logger, PLUGIN_NAME } from './logger.js'
+import type { WatermarkPluginOptions } from './options.js'
 
 const __dirname = getDirname(import.meta.url)
 
-export interface WatermarkPluginOptions extends WatermarkOptions {
-  /**
-   * When `global` is set to `false`, Specify which pages need to have watermarks added,
-   * pages that return `true` will have watermarks added.
-   *
-   * 当 `global` 为 `false` 时，
-   * 指定哪些页面需要添加水印，返回 `true` 的页面将会被添加水印。
-   *
-   * @default () => true
-   */
-  filter?: (page: Page) => boolean
-}
-
 export const watermarkPlugin =
-  ({ filter = () => true, ...options }: WatermarkPluginOptions = {}): Plugin =>
+  ({
+    enabled: enable = true,
+    ...options
+  }: WatermarkPluginOptions = {}): Plugin =>
   (app) => {
-    options.global ??= true
-
     if (app.env.isDebug) logger.info('Options:', options)
 
     return {
       name: PLUGIN_NAME,
 
-      clientConfigFile: path.resolve(__dirname, '../client/config.js'),
-
       define: {
-        __WATERMARK_OPTIONS__: options,
+        __WM_DELAY__: options.delay ?? 500,
+        __WM_GLOBAL__: enable === true,
+        __WM_OPTIONS__: options.watermarkOptions ?? {},
       },
 
       extendsPage: (page) => {
-        // When global watermark is not enabled, enable watermark for matching pages.
-        if (!options.global) {
-          const frontmatter = page.frontmatter
-          if (typeof frontmatter.watermark === 'undefined' && filter(page)) {
+        // When watermark is a filter function, enable watermark for matching pages.
+        if (isFunction(enable)) {
+          const { frontmatter } = page
+
+          if (!('watermark' in frontmatter) && enable(page)) {
             frontmatter.watermark = true
           }
         }
       },
+
+      clientConfigFile: path.resolve(__dirname, '../client/config.js'),
     }
   }

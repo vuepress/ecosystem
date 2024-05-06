@@ -1,1 +1,1 @@
-export { defineWatermarkConfig } from './defineWatermarkConfig.js'
+export * from './watermark.js'

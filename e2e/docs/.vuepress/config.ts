@@ -225,10 +225,8 @@ export default defineUserConfig({
       },
     }),
     watermarkPlugin({
-      global: false,
-      filter(page) {
-        return page.path.startsWith('/watermark/')
-      },
+      enable: (page) => page.path.startsWith('/watermark/'),
+
       watermarkOptions: {
         content: 'VuePress Watermark',
         width: 200,

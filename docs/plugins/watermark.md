@@ -26,59 +26,47 @@ export default {
 
 ## Options
 
-### global
+### enabled
 
-- Type： `boolean`
+- Type: `boolean | ((page: Page) => boolean)`
 
-- Default： `true`
+- Default: `false`
 
-- Details：Enable watermark globally.
-
-  When enabled globally, a watermark will be added to all pages.
-
-  If not enabled globally, specify which pages need the watermark using [filter](#filter).
-
-### filter
-
-- Type： `(page: Page) => boolean`
-
-- Default： `() => true`
-
-- Details：When `global` is set to `false`,
+- Details:
 
   Specify which pages need to have watermarks added.
 
-  Pages that return `true` will have watermarks added.
-
-### delay
-
-- Type： `number`
-
-- Default： `500`
-
-- Details：Delay for adding watermarks. In milliseconds.
-
-  This delay will only take effect when adding watermarks to a specific element on the page.
-
-  After switching routes, a delay is required before adding watermarks.
+  Pages with `true` value will have watermarks added.
 
 ### watermarkOptions
 
-- Type： `WatermarkOptions`
+- Type: `WatermarkOptions`
 
-- Default： `undefined`
+- Default: `undefined`
 
-- Details： Please refer to the [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/zh/config/) configuration options.
+- Details: Please refer to the [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/zh/config/) configuration options.
 
 #### watermarkOptions.parent
 
-- Type： `string`
+- Type: `string`
 
-- Default： `body`
+- Default: `body`
 
-- Details：Parent element selector for adding watermark.
+- Details: Parent element selector for adding watermark.
 
   By default, it is inserted into the body, but you can specify inserting it into a specific element on the page.
+
+### delay
+
+- Type: `number`
+
+- Default: `500`
+
+- Details: Delay for adding watermarks. In milliseconds.
+
+  This delay will only take effect when adding watermarks to a specific element on the page.
+
+  A delay is required when the watermark parent is rerendered when switching pages.
 
 ## Frontmatter
 
@@ -86,7 +74,7 @@ export default {
 
 - Type: `boolean | WatermarkOptions`
 
-- Details：
+- Details:
 
   When the type is `boolean`, it indicates whether the watermark is enabled.
 
@@ -108,7 +96,7 @@ watermark:
 
 ### defineWatermarkConfig(config)
 
-- Type： `(config: MaybeRefOrGetter<WatermarkOptions>) => void`
+- Type: `(config: MaybeRefOrGetter<WatermarkOptions>) => void`
 
 Additional configuration passed to [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/en/config/).
 

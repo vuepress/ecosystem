@@ -1,78 +1,79 @@
 import { wait } from '@vuepress/helper/client'
-import { computed, nextTick, toValue, watch } from 'vue'
-import { usePageFrontmatter, useRoutePath, withBase } from 'vuepress/client'
+import {
+  getCurrentInstance,
+  isRef,
+  nextTick,
+  onMounted,
+  toValue,
+  watch,
+} from 'vue'
+import type { MaybeRef, Ref } from 'vue'
+import { withBase } from 'vuepress/client'
 import { Watermark } from 'watermark-js-plus'
-import type {
-  WatermarkOptions,
-  WatermarkPluginFrontmatter,
-} from '../../shared/index.js'
-import { userOptions } from '../helper/defineWatermarkConfig.js'
+import type { WatermarkOptions } from '../helper/index.js'
 
-declare const __WATERMARK_OPTIONS__: WatermarkOptions
-
-const {
-  global = true,
+export const setupWatermark = (
+  options: MaybeRef<WatermarkOptions>,
+  enabled: Ref<boolean>,
   delay = 500,
-  watermarkOptions: options,
-} = __WATERMARK_OPTIONS__
+): void => {
+  const isInsideApp = (target?: string | Element): boolean => {
+    const el =
+      typeof target === 'string' ? document.querySelector(target) : target
 
-export const setupWatermark = (): void => {
-  const frontmatter = usePageFrontmatter<WatermarkPluginFrontmatter>()
-  const routePath = useRoutePath()
-
-  let watermark: Watermark | null = null
-
-  const opts = computed(() => {
-    if (
-      typeof frontmatter.value.watermark === 'boolean' ||
-      !frontmatter.value.watermark
-    ) {
-      return { ...options, ...userOptions.value }
-    }
-
-    return { ...options, ...userOptions.value, ...frontmatter.value.watermark }
-  })
-
-  const enabled = computed(() => {
-    const watermark = frontmatter.value.watermark
-    return global ? watermark !== false : watermark
-  })
-
-  const renderWatermark = (): void => {
-    let options = toValue(opts)
-
-    // Blind mode default alpha is 0.005
-    if (options.mode === 'blind') {
-      options = { globalAlpha: 0.005, ...options }
-    }
-
-    if (options.image?.startsWith('/')) {
-      options.image = withBase(options.image)
-    }
-
-    if (!watermark) {
-      watermark = new Watermark(options)
-      watermark.create()
-    } else {
-      watermark.changeOptions(options, 'overwrite', true)
-    }
+    return Boolean(
+      el &&
+        (getCurrentInstance()?.appContext.app._container as Element).contains?.(
+          el,
+        ),
+    )
   }
 
-  watch(
-    () => [opts.value, enabled.value, routePath.value],
-    () =>
+  onMounted(() => {
+    const watermark = new Watermark()
+
+    const updateWaterMark = (
+      // shadow clone options object so that we can modify later
+      { ...options }: WatermarkOptions,
+    ): void => {
+      // Blind mode default alpha is 0.005
+      if (options.mode === 'blind' && !options.globalAlpha) {
+        options.globalAlpha = 0.005
+      }
+
+      if (options.image?.startsWith('/')) {
+        options.image = withBase(options.image)
+      }
+
+      if (toValue(enabled))
+        nextTick(() => watermark.changeOptions(options, 'overwrite'))
+      else watermark.changeOptions(options, 'overwrite', false)
+    }
+
+    if (isRef(options))
+      watch(
+        () => options,
+        () => {
+          updateWaterMark(options.value)
+        },
+        { immediate: true },
+      )
+    else updateWaterMark(options)
+
+    watch(enabled, () =>
       nextTick(() => {
         if (enabled.value) {
-          if (opts.value.parent !== 'body' && delay > 0) {
-            wait(delay).then(renderWatermark)
+          if (isInsideApp(toValue(options).parent)) {
+            wait(delay).then(() => {
+              watermark.create()
+            })
           } else {
-            renderWatermark()
+            watermark.create()
           }
         } else {
-          watermark?.destroy()
-          watermark = null
+          watermark.destroy()
         }
       }),
-    { immediate: true },
-  )
+    )
+  })
 }
