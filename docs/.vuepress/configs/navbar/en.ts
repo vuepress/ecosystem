@@ -57,6 +57,7 @@ export const navbarEn: NavbarConfig = [
           '/plugins/google-analytics',
           '/plugins/seo/',
           '/plugins/sitemap/',
+          '/plugins/umami-analytics',
         ],
       },
       {
