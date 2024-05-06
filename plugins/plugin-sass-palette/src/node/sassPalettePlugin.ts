@@ -1,6 +1,6 @@
 import { watch } from 'chokidar'
 import type { PluginFunction } from 'vuepress/core'
-import { getDirname, path } from 'vuepress/utils'
+import { colors, getDirname, path } from 'vuepress/utils'
 import { injectScssConfigModule } from './injectScssConfigModule.js'
 import type { SassPalettePluginOptions } from './options.js'
 import {
@@ -20,7 +20,7 @@ export const sassPalettePlugin =
     if (app.env.isDebug) logger.info('Options:', options)
 
     const {
-      id = 'hope',
+      id,
       config = `.vuepress/styles/${id}-config.scss`,
       defaultConfig = path.resolve(
         __dirname,
@@ -38,6 +38,14 @@ export const sassPalettePlugin =
     const userConfig = app.dir.source(config)
     const userPalette = app.dir.source(palette)
     const userStyle = style ? app.dir.source(style) : null
+
+    if (!id) {
+      logger.error(`${colors.magenta('id')} is required`)
+
+      return {
+        name: PLUGIN_NAME,
+      }
+    }
 
     return {
       name: PLUGIN_NAME,
