@@ -5,12 +5,12 @@ import type { UpdatePageview } from './typings.js'
 export const isSupported = true
 
 export const usePageview = (): UpdatePageview => {
-  const { server, site } = useArtalkOptions()
+  const options = useArtalkOptions()
 
   return ({ selector }) =>
     Artalk.loadCountWidget({
-      server,
-      site,
+      server: options.value.server,
+      site: options.value.site,
       ...(selector ? { countEl: selector } : {}),
     })
 }
