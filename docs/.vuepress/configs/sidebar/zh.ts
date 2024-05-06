@@ -104,6 +104,14 @@ export const sidebarZh: SidebarConfig = {
         '/zh/plugins/palette',
         '/zh/plugins/reading-time',
         '/zh/plugins/rtl',
+        {
+          text: 'SASS 调色板',
+          link: '/zh/plugins/sass-palette/',
+          children: [
+            '/zh/plugins/sass-palette/guide',
+            '/zh/plugins/sass-palette/config',
+          ],
+        },
         '/zh/plugins/theme-data',
         '/zh/plugins/toc',
       ],
