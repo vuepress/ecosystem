@@ -47,6 +47,9 @@
     { "path": "./plugins/plugin-reading-time/tsconfig.build.json" },
     { "path": "./plugins/plugin-remove-pwa/tsconfig.build.json" },
     { "path": "./plugins/plugin-rtl/tsconfig.build.json" },
+    {
+      "path": "./plugins/plugin-sass-palette/tsconfig.build.json"
+    },
     { "path": "./plugins/plugin-search/tsconfig.build.json" },
     { "path": "./plugins/plugin-seo/tsconfig.build.json" },
     { "path": "./plugins/plugin-shiki/tsconfig.build.json" },

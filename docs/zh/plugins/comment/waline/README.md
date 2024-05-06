@@ -41,7 +41,7 @@ npm i -D @waline/client
 
 1. 点击上方按钮，跳转至 Vercel 进行 Server 端部署。
 
-   ::: note
+   ::: tip
 
    如果你未登录的话，Vercel 会让你注册或登录，请使用 GitHub 账户进行快捷登录。
 
@@ -63,7 +63,7 @@ npm i -D @waline/client
 
    ![设置环境变量](/images/comment/vercel-5.png)
 
-   ::: note
+   ::: tip
 
    如果你使用 LeanCloud 国内版，请额外配置 `LEAN_SERVER` 环境变量，值为你绑定好的域名。
 
