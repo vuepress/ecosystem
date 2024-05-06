@@ -8,7 +8,7 @@
     "sass",
     "palette"
   ],
-  "homepage": "https://ecosystem.vuejs.press/plugins/sass-palette.html",
+  "homepage": "https://ecosystem.vuejs.press/plugins/sass-palette/",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
   },
