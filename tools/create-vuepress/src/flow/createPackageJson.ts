@@ -3,6 +3,7 @@ import { join } from 'node:path'
 import inquirer from 'inquirer'
 import type { CreateLocaleOptions } from '../i18n/index.js'
 import type { PackageManager } from '../utils/index.js'
+import { version } from '../utils/index.js'
 
 const PACKAGE_NAME_REG =
   /^(?:@[a-z0-9-*~][a-z0-9-*._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/u
@@ -37,13 +38,13 @@ export const createPackageJson = async ({
   const packageJsonPath = join(targetDir, 'package.json')
   const devDependencies = {
     [`@vuepress/bundler-${bundler}`]: '^2.0.0-rc.9',
-    '@vuepress/theme-default': '^2.0.0-rc.20',
-    'vue': '^3.4.21',
+    '@vuepress/theme-default': `^${version}`,
+    'vue': '^3.4.26',
     'vuepress': '^2.0.0-rc.9',
   }
 
   if (preset === 'blog') {
-    devDependencies['@vuepress/plugin-blog'] = '^2.0.0-rc.19'
+    devDependencies['@vuepress/plugin-blog'] = `^${version}`
   }
 
   console.log(locale.flow.createPackage)
