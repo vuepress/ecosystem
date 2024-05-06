@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.27](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.26...v2.0.0-rc.27) (2024-05-06)
+
+### Features
+
+- `defineXXXConfig` support `MaybeRefOrGetter` options ([#112](https://github.com/vuepress/ecosystem/issues/112)) ([fca6b29](https://github.com/vuepress/ecosystem/commit/fca6b2994e52a77ae1c9b6aa2a910598f64dc09e))
+
 # [2.0.0-rc.26](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.25...v2.0.0-rc.26) (2024-04-21)
 
 ### Bug Fixes

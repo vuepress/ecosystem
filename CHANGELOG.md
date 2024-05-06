@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.27](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.26...v2.0.0-rc.27) (2024-05-06)
+
+### Bug Fixes
+
+- **plugin-feed:** fix filter default value ([85faf13](https://github.com/vuepress/ecosystem/commit/85faf13278b39f6e7a08e5518df06349f50d3965))
+- **plugin-watermark:** fix option reactivity ([5d3cdf1](https://github.com/vuepress/ecosystem/commit/5d3cdf19b0ae55e14d690f1bbc73d23ce745033c))
+
+### Features
+
+- `defineXXXConfig` support `MaybeRefOrGetter` options ([#112](https://github.com/vuepress/ecosystem/issues/112)) ([fca6b29](https://github.com/vuepress/ecosystem/commit/fca6b2994e52a77ae1c9b6aa2a910598f64dc09e))
+- add sass-palette plugin ([#115](https://github.com/vuepress/ecosystem/issues/115)) ([cf62701](https://github.com/vuepress/ecosystem/commit/cf627013e21a8a937f5afc8cdf151fffa6ff2dde))
+- init umami analytics plugin ([#116](https://github.com/vuepress/ecosystem/issues/116)) ([0e68dc5](https://github.com/vuepress/ecosystem/commit/0e68dc5f9c3fa7c3f55e9214663f7a932ff24c4d))
+- init watermark plugin ([#111](https://github.com/vuepress/ecosystem/issues/111)) ([969b03b](https://github.com/vuepress/ecosystem/commit/969b03b8de534f85308fc38060932ccc0bebfd9a))
+
 # [2.0.0-rc.26](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.25...v2.0.0-rc.26) (2024-04-21)
 
 ### Bug Fixes
