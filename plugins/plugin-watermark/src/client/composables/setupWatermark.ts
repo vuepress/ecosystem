@@ -16,17 +16,15 @@ export const setupWatermark = (
   onMounted(() => {
     const watermark = new Watermark()
 
-    const updateWaterMark = (
-      // shadow clone options object so that we can modify later
-      { ...options }: WatermarkOptions,
-    ): void => {
-      // set default text to site title
-      if (!options.content) options.content = siteData.value.title
-      // set font color to make it readable both lightmode and darkmode
-      if (!options.fontColor) options.fontColor = '#76747f'
-      if (!options.globalAlpha) {
+    const updateWaterMark = (watermarkOptions: WatermarkOptions): void => {
+      const options = {
+        // set default text to site title
+        content: siteData.value.title,
+        // set font color to make it readable both lightmode and darkmode
+        fontColor: '#76747f',
         // default alpha of blind mode is 0.005 while default mode is 0.165
-        options.globalAlpha = options.mode === 'blind' ? 0.005 : 0.165
+        globalAlpha: watermarkOptions.mode === 'blind' ? 0.005 : 0.165,
+        ...watermarkOptions,
       }
 
       if (options.image?.startsWith('/')) {
