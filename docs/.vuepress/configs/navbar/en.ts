@@ -55,6 +55,7 @@ export const navbarEn: NavbarConfig = [
         children: [
           '/plugins/baidu-analytics',
           '/plugins/google-analytics',
+          '/plugins/google-tag-manager',
           '/plugins/seo/',
           '/plugins/sitemap/',
           '/plugins/umami-analytics',

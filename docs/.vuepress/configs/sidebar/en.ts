@@ -89,6 +89,7 @@ export const sidebarEn: SidebarConfig = {
         },
         '/plugins/baidu-analytics',
         '/plugins/google-analytics',
+        '/plugins/google-tag-manager',
         '/plugins/umami-analytics',
       ],
     },

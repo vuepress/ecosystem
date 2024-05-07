@@ -9,11 +9,6 @@ export interface GoogleTagManagerPluginOptions {
    * The Container ID of Google Tag Manager which should start with `'GTM-'`.
    */
   id: string
-
-  /**
-   * Enable debug mode.
-   */
-  debug?: boolean
 }
 
 export const googleTagManagerPlugin =
@@ -28,23 +23,16 @@ export const googleTagManagerPlugin =
       return plugin
     }
 
-    // returns an empty plugin in dev mode when debug mode is not enabled
-    if (app.env.isDev && !options.debug) {
-      return plugin
-    }
+    // enable plugin in build mode or debug mode
+    if (app.env.isBuild || app.env.isDebug)
+      return {
+        ...plugin,
 
-    return {
-      ...plugin,
-
-      define: {
-        __GTM_OPTIONS__: options,
-      },
-
-      onInitialized: (app) => {
-        app.options.head.push([
-          'script',
-          {},
-          `\
+        onInitialized: (app) => {
+          app.options.head.push([
+            'script',
+            {},
+            `\
 ((w,d,s,l,i)=>{\
 w[l]=w[l]||[];\
 w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});\
@@ -53,7 +41,9 @@ j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;\
 f.parentNode.insertBefore(j,f);\
 })(window,document,'script','dataLayer','${options.id}');\
 `,
-        ])
-      },
-    }
+          ])
+        },
+      }
+
+    return plugin
   }
