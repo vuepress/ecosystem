@@ -1,14 +1,7 @@
 import { wait } from '@vuepress/helper/client'
-import {
-  getCurrentInstance,
-  isRef,
-  nextTick,
-  onMounted,
-  toValue,
-  watch,
-} from 'vue'
+import { computed, nextTick, onMounted, toValue, watch } from 'vue'
 import type { MaybeRef, Ref } from 'vue'
-import { withBase } from 'vuepress/client'
+import { useRoutePath, useSiteLocaleData, withBase } from 'vuepress/client'
 import { Watermark } from 'watermark-js-plus'
 import type { WatermarkOptions } from '../helper/index.js'
 
@@ -17,17 +10,20 @@ export const setupWatermark = (
   enabled: Ref<boolean>,
   delay = 500,
 ): void => {
-  onMounted(() => {
-    const appContainer: Element | null =
-      getCurrentInstance()?.appContext.app._container
-    const watermark = new Watermark()
+  const routePath = useRoutePath()
+  const siteData = useSiteLocaleData()
 
-    const isInsideApp = (target?: string | Element): boolean => {
-      const el =
-        typeof target === 'string' ? document.querySelector(target) : target
-
-      return Boolean(el && appContainer?.contains(el))
+  const watermarkOptions = computed(() => {
+    return {
+      globalAlpha: 0.165,
+      fontColor: '#76747f',
+      content: siteData.value.title,
+      ...toValue(options),
     }
+  })
+
+  onMounted(() => {
+    const watermark = new Watermark()
 
     const updateWaterMark = (
       // shadow clone options object so that we can modify later
@@ -42,28 +38,24 @@ export const setupWatermark = (
         options.image = withBase(options.image)
       }
 
-      if (toValue(enabled))
-        nextTick(() => watermark.changeOptions(options, 'overwrite'))
-      else watermark.changeOptions(options, 'overwrite', false)
+      if (toValue(enabled)) {
+        watermark?.changeOptions(options, 'overwrite', true)
+      }
     }
 
-    if (isRef(options)) watch(options, updateWaterMark, { immediate: true })
-    else updateWaterMark(options)
-
-    watch(enabled, () =>
-      nextTick(() => {
-        if (enabled.value) {
-          if (isInsideApp(toValue(options).parent)) {
-            wait(delay).then(() => {
-              watermark.create()
-            })
+    watch(
+      [enabled, routePath],
+      () =>
+        nextTick(() => {
+          if (enabled.value) {
+            wait(delay).then(() => updateWaterMark(toValue(watermarkOptions)))
           } else {
-            watermark.create()
+            watermark?.destroy()
           }
-        } else {
-          watermark.destroy()
-        }
-      }),
+        }),
+      { immediate: true },
     )
+
+    watch(watermarkOptions, updateWaterMark)
   })
 }
