@@ -45,7 +45,7 @@
     "@vueuse/core": "^10.9.0",
     "mitt": "^3.0.1",
     "register-service-worker": "^1.7.2",
-    "vue": "^3.4.26",
+    "vue": "^3.4.27",
     "workbox-build": "^7.1.0"
   },
   "peerDependencies": {
