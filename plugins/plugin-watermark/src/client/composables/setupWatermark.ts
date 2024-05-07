@@ -39,7 +39,7 @@ export const setupWatermark = (
       }
 
       if (toValue(enabled)) {
-        watermark?.changeOptions(options, 'overwrite', true)
+        watermark.changeOptions(options)
       }
     }
 
