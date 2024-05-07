@@ -27,6 +27,9 @@
     {
       "path": "./plugins/plugin-google-analytics/tsconfig.build.json"
     },
+    {
+      "path": "./plugins/plugin-google-tag-manager/tsconfig.build.json"
+    },
     { "path": "./plugins/plugin-links-check/tsconfig.build.json" },
     { "path": "./plugins/plugin-medium-zoom/tsconfig.build.json" },
     { "path": "./plugins/plugin-nprogress/tsconfig.build.json" },

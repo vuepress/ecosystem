@@ -431,6 +431,12 @@ importers:
         specifier: 2.0.0-rc.9
         version: 2.0.0-rc.9(@vuepress/bundler-vite@2.0.0-rc.9(@types/node@20.12.7)(jiti@1.21.0)(sass@1.76.0)(terser@5.30.4)(typescript@5.4.5))(@vuepress/bundler-webpack@2.0.0-rc.9(typescript@5.4.5))(typescript@5.4.5)(vue@3.4.26(typescript@5.4.5))
 
+  plugins/plugin-google-tag-manager:
+    dependencies:
+      vuepress:
+        specifier: 2.0.0-rc.9
+        version: 2.0.0-rc.9(@vuepress/bundler-vite@2.0.0-rc.9(@types/node@20.12.7)(jiti@1.21.0)(sass@1.76.0)(terser@5.30.4)(typescript@5.4.5))(@vuepress/bundler-webpack@2.0.0-rc.9(typescript@5.4.5))(typescript@5.4.5)(vue@3.4.26(typescript@5.4.5))
+
   plugins/plugin-links-check:
     dependencies:
       '@vuepress/helper':
