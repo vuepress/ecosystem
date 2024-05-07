@@ -10,8 +10,7 @@ import {
 import { getJSONLDInfo } from './getJSONLDInfo.js'
 import { getOGPInfo } from './getOGPInfo.js'
 import type { SeoPluginOptions } from './options.js'
-import { getAlternateLinks, getCanonicalLink } from './utils/getLinks.js'
-import { logger } from './utils/index.js'
+import { getAlternateLinks, getCanonicalLink, logger } from './utils/index.js'
 
 export const appendSEO = (app: App, options: SeoPluginOptions): void => {
   app.pages.forEach((page: ExtendPage) => {
