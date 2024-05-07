@@ -1,7 +1,7 @@
 import type { ClientConfig } from 'vuepress/client'
 import { defineClientConfig } from 'vuepress/client'
-import LanguageSwitch from './components/LanguageSwitch.js'
-import { setupDevServerRedirect } from './composables/setupDevServerRedirect.js'
+import RedirectModal from './components/RedirectModal.js'
+import { setupDevServerRedirect } from './composables/index.js'
 
 import './styles/vars.css'
 
@@ -11,5 +11,5 @@ export default defineClientConfig({
   setup() {
     if (__VUEPRESS_DEV__) setupDevServerRedirect()
   },
-  rootComponents: __REDIRECT_LOCALE_SWITCH__ ? [LanguageSwitch] : [],
+  rootComponents: __REDIRECT_LOCALE_SWITCH__ ? [RedirectModal] : [],
 }) as ClientConfig
