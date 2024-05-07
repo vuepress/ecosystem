@@ -64,9 +64,9 @@ export default {
 
 - Details: Delay for adding watermarks. In milliseconds.
 
-  This delay will only take effect when adding watermarks to a specific element on the page.
+  The delay time depends on the duration of the page transition animation and can be adjusted according to the actual situation.
 
-  A delay is required when the watermark parent is rerendered when switching pages.
+  If the parent element of the watermark is re-rendered when switching pages, the delay time should be slightly longer than the page transition time.
 
 ## Frontmatter
 

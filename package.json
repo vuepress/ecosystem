@@ -59,7 +59,7 @@
     "vitest": "^1.5.2",
     "vuepress": "2.0.0-rc.9"
   },
-  "packageManager": "pnpm@9.0.6",
+  "packageManager": "pnpm@9.1.0",
   "engines": {
     "node": ">=18.18.0"
   }
