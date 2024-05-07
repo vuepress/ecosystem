@@ -13,14 +13,12 @@ export const setupWatermark = (
   const routePath = useRoutePath()
   const siteData = useSiteLocaleData()
 
-  const watermarkOptions = computed(() => {
-    return {
-      globalAlpha: 0.165,
-      fontColor: '#76747f',
-      content: siteData.value.title,
-      ...toValue(options),
-    }
-  })
+  const watermarkOptions = computed(() => ({
+    globalAlpha: 0.165,
+    fontColor: '#76747f',
+    content: siteData.value.title,
+    ...toValue(options),
+  }))
 
   onMounted(() => {
     const watermark = new Watermark()
@@ -48,9 +46,9 @@ export const setupWatermark = (
       () =>
         nextTick(() => {
           if (enabled.value) {
-            wait(delay).then(() => updateWaterMark(toValue(watermarkOptions)))
+            wait(delay).then(() => updateWaterMark(watermarkOptions.value))
           } else {
-            watermark?.destroy()
+            watermark.destroy()
           }
         }),
       { immediate: true },
