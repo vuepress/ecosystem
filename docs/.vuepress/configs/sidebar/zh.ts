@@ -90,6 +90,7 @@ export const sidebarZh: SidebarConfig = {
         },
         '/zh/plugins/baidu-analytics',
         '/zh/plugins/google-analytics',
+        '/zh/plugins/google-tag-manager',
         '/zh/plugins/umami-analytics',
       ],
     },
