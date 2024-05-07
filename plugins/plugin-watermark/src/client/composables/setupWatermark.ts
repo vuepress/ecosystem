@@ -1,5 +1,5 @@
 import { wait } from '@vuepress/helper/client'
-import { computed, nextTick, onMounted, toValue, watch } from 'vue'
+import { isRef, nextTick, onMounted, toValue, watch } from 'vue'
 import type { MaybeRef, Ref } from 'vue'
 import { useRoutePath, useSiteLocaleData, withBase } from 'vuepress/client'
 import { Watermark } from 'watermark-js-plus'
@@ -13,13 +13,6 @@ export const setupWatermark = (
   const routePath = useRoutePath()
   const siteData = useSiteLocaleData()
 
-  const watermarkOptions = computed(() => ({
-    globalAlpha: 0.165,
-    fontColor: '#76747f',
-    content: siteData.value.title,
-    ...toValue(options),
-  }))
-
   onMounted(() => {
     const watermark = new Watermark()
 
@@ -27,9 +20,13 @@ export const setupWatermark = (
       // shadow clone options object so that we can modify later
       { ...options }: WatermarkOptions,
     ): void => {
-      // Blind mode default alpha is 0.005
-      if (options.mode === 'blind' && !options.globalAlpha) {
-        options.globalAlpha = 0.005
+      // set default text to site title
+      if (!options.content) options.content = siteData.value.title
+      // set font color to make it readable both lightmode and darkmode
+      if (!options.fontColor) options.fontColor = '#76747f'
+      if (!options.globalAlpha) {
+        // default alpha of blind mode is 0.005 while default mode is 0.165
+        options.globalAlpha = options.mode === 'blind' ? 0.005 : 0.165
       }
 
       if (options.image?.startsWith('/')) {
@@ -46,7 +43,7 @@ export const setupWatermark = (
       () =>
         nextTick(() => {
           if (enabled.value) {
-            wait(delay).then(() => updateWaterMark(watermarkOptions.value))
+            wait(delay).then(() => updateWaterMark(toValue(options)))
           } else {
             watermark.destroy()
           }
@@ -54,6 +51,6 @@ export const setupWatermark = (
       { immediate: true },
     )
 
-    watch(watermarkOptions, updateWaterMark)
+    if (isRef(options)) watch(options, updateWaterMark)
   })
 }
