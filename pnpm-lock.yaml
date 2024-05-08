@@ -182,6 +182,9 @@ importers:
       '@vuepress/plugin-feed':
         specifier: workspace:*
         version: link:../plugins/plugin-feed
+      '@vuepress/plugin-notice':
+        specifier: workspace:*
+        version: link:../plugins/plugin-notice
       '@vuepress/plugin-pwa':
         specifier: workspace:*
         version: link:../plugins/plugin-pwa
@@ -460,6 +463,21 @@ importers:
       vuepress:
         specifier: 2.0.0-rc.9
         version: 2.0.0-rc.9(@vuepress/bundler-vite@2.0.0-rc.9(@types/node@20.12.11)(sass@1.77.0)(terser@5.31.0)(tsx@4.9.3)(typescript@5.4.5))(@vuepress/bundler-webpack@2.0.0-rc.9(typescript@5.4.5))(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
+
+  plugins/plugin-notice:
+    dependencies:
+      '@vuepress/helper':
+        specifier: workspace:~
+        version: link:../../tools/helper
+      '@vueuse/core':
+        specifier: ^10.9.0
+        version: 10.9.0(vue@3.4.27(typescript@5.4.5))
+      vue:
+        specifier: ^3.4.27
+        version: 3.4.27(typescript@5.4.5)
+      vuepress:
+        specifier: 2.0.0-rc.9
+        version: 2.0.0-rc.9(@vuepress/bundler-vite@2.0.0-rc.9(@types/node@20.12.10)(sass@1.77.0)(terser@5.30.4)(typescript@5.4.5))(@vuepress/bundler-webpack@2.0.0-rc.9(typescript@5.4.5))(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
 
   plugins/plugin-nprogress:
     dependencies:

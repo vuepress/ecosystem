@@ -21,6 +21,7 @@
     "@vuepress/plugin-catalog": "workspace:*",
     "@vuepress/plugin-copyright": "workspace:*",
     "@vuepress/plugin-feed": "workspace:*",
+    "@vuepress/plugin-notice": "workspace:*",
     "@vuepress/plugin-pwa": "workspace:*",
     "@vuepress/plugin-redirect": "workspace:*",
     "@vuepress/plugin-watermark": "workspace:*",
