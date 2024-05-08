@@ -35,7 +35,7 @@
     "@commitlint/config-conventional": "^19.2.2",
     "@lerna-lite/cli": "^3.3.3",
     "@lerna-lite/publish": "^3.3.3",
-    "@types/node": "^20.12.10",
+    "@types/node": "^20.12.11",
     "@types/webpack-env": "^1.18.5",
     "@vitest/coverage-istanbul": "^1.6.0",
     "conventional-changelog-cli": "^5.0.0",
