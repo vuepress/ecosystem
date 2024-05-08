@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.28](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.27...v2.0.0-rc.28) (2024-05-08)
+
+### Bug Fixes
+
+- **plugin-redirect:** fix direct modal, close [#105](https://github.com/vuepress/ecosystem/issues/105) ([1c29a82](https://github.com/vuepress/ecosystem/commit/1c29a829b1c6d2bdaacf898febbcc44b3f93aac1))
+
 # [2.0.0-rc.27](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.26...v2.0.0-rc.27) (2024-05-06)
 
 **Note:** Version bump only for package @vuepress/plugin-redirect

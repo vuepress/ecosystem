@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.28](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.27...v2.0.0-rc.28) (2024-05-08)
+
+### Bug Fixes
+
+- **plugin-redirect:** fix direct modal, close [#105](https://github.com/vuepress/ecosystem/issues/105) ([1c29a82](https://github.com/vuepress/ecosystem/commit/1c29a829b1c6d2bdaacf898febbcc44b3f93aac1))
+
+### Features
+
+- add google tag manager plugin ([#118](https://github.com/vuepress/ecosystem/issues/118)) ([74abdd9](https://github.com/vuepress/ecosystem/commit/74abdd95664efc82c30bf0c79fb253e1595fea2c))
+- add notice plugin ([#119](https://github.com/vuepress/ecosystem/issues/119)) ([5c3daaa](https://github.com/vuepress/ecosystem/commit/5c3daaa91cd1d0995aa2c4cb38cb6d73aff63ca1))
+
+### Performance Improvements
+
+- **plugin-watermark:** optimize watermark redraw when switching pages ([#117](https://github.com/vuepress/ecosystem/issues/117)) ([080fa20](https://github.com/vuepress/ecosystem/commit/080fa2050311895f5b2fdd815ccbdbaf62619eda))
+
 # [2.0.0-rc.27](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.26...v2.0.0-rc.27) (2024-05-06)
 
 ### Bug Fixes

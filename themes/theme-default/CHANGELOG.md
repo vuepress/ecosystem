@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.28](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.27...v2.0.0-rc.28) (2024-05-08)
+
+### Features
+
+- add notice plugin ([#119](https://github.com/vuepress/ecosystem/issues/119)) ([5c3daaa](https://github.com/vuepress/ecosystem/commit/5c3daaa91cd1d0995aa2c4cb38cb6d73aff63ca1))
+
 # [2.0.0-rc.27](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.26...v2.0.0-rc.27) (2024-05-06)
 
 **Note:** Version bump only for package @vuepress/theme-default

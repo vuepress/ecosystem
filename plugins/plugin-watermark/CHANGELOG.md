@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.28](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.27...v2.0.0-rc.28) (2024-05-08)
+
+### Performance Improvements
+
+- **plugin-watermark:** optimize watermark redraw when switching pages ([#117](https://github.com/vuepress/ecosystem/issues/117)) ([080fa20](https://github.com/vuepress/ecosystem/commit/080fa2050311895f5b2fdd815ccbdbaf62619eda))
+
 # [2.0.0-rc.27](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.26...v2.0.0-rc.27) (2024-05-06)
 
 ### Bug Fixes
