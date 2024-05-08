@@ -27,6 +27,7 @@ export const navbarEn: NavbarConfig = [
           '/plugins/copyright',
           '/plugins/external-link-icon',
           '/plugins/medium-zoom',
+          '/plugins/notice',
           '/plugins/nprogress',
           '/plugins/photo-swipe',
           '/plugins/redirect',
