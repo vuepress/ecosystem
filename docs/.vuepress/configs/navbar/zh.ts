@@ -59,6 +59,7 @@ export const navbarZh: NavbarConfig = [
         children: [
           '/zh/plugins/baidu-analytics',
           '/zh/plugins/google-analytics',
+          '/zh/plugins/google-tag-manager',
           '/zh/plugins/seo/',
           '/zh/plugins/sitemap/',
           '/zh/plugins/umami-analytics',

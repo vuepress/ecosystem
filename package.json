@@ -35,10 +35,10 @@
     "@commitlint/config-conventional": "^19.2.2",
     "@lerna-lite/cli": "^3.3.3",
     "@lerna-lite/publish": "^3.3.3",
-    "@types/node": "^20.12.7",
-    "@types/webpack-env": "^1.18.4",
-    "@vitest/coverage-istanbul": "^1.5.2",
-    "conventional-changelog-cli": "^4.1.0",
+    "@types/node": "^20.12.10",
+    "@types/webpack-env": "^1.18.5",
+    "@vitest/coverage-istanbul": "^1.6.0",
+    "conventional-changelog-cli": "^5.0.0",
     "cpx2": "^7.0.1",
     "cross-env": "^7.0.3",
     "eslint": "^8.57.0",
@@ -50,17 +50,22 @@
     "prettier": "^3.2.5",
     "prettier-config-vuepress": "^4.4.0",
     "rimraf": "^5.0.5",
-    "sass": "1.75.0",
+    "sass": "1.77.0",
     "sort-package-json": "^2.10.0",
     "tsconfig-vuepress": "^4.5.0",
-    "tsx": "4.7.3",
+    "tsx": "4.9.3",
     "typescript": "^5.4.5",
-    "vite": "~5.2.10",
-    "vitest": "^1.5.2",
+    "vite": "~5.2.11",
+    "vitest": "^1.6.0",
     "vuepress": "2.0.0-rc.9"
   },
   "packageManager": "pnpm@9.1.0",
   "engines": {
     "node": ">=18.18.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/markdown-it": "14.1.1"
+    }
   }
 }
