@@ -4,7 +4,7 @@ export const photoSwipeLocales: PhotoSwipePluginLocaleConfig = {
   '/en/': {
     close: 'Close',
     download: 'Download Image',
-    fullscreen: 'Switch to full screen',
+    fullscreen: 'Switch to fullscreen',
     zoom: 'Zoom in/out',
     arrowPrev: 'Prev (Arrow Left)',
     arrowNext: 'Next (Arrow Right)',

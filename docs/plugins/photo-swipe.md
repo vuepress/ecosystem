@@ -27,7 +27,7 @@ In preview mode, you can:
 - Swipe left and right to preview other pictures on the page in order
 - View the description of the picture
 - Zoom in and zoom out the picture
-- View pictures in full screen
+- View pictures in fullscreen
 - Download pictures
 - Share pictures
 
