@@ -148,6 +148,19 @@
   --medium-zoom-bg-color: var(--c-bg);
 }
 
+// plugin-notice
+.vp-notice-wrapper {
+  --notice-color: var(--c-text);
+  --notice-bg-color: var(--c-bg);
+
+  --notice-primary-color: var(--c-brand);
+  --notice-primary-text-color: var(--c-bg);
+  --notice-primary-hover-color: var(--c-brand-light);
+
+  --notice-button-color: var(--c-bg-light);
+  --notice-button-hover-color: var(--c-bg-lighter);
+}
+
 // plugin-nprogress
 #nprogress {
   --nprogress-color: var(--c-brand);
