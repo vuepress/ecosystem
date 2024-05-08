@@ -6,6 +6,8 @@ title: nprogress
 
 <!-- so we add a 'plugin' suffix in the h1 title, and use title frontmatter to set the page title -->
 
+<!-- TODO: Remove this hack once we have attr feature -->
+
 # nprogress Plugin
 
 <NpmBadge package="@vuepress/plugin-nprogress" />
