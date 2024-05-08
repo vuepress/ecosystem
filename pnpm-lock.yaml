@@ -470,7 +470,7 @@ importers:
         specifier: ^10.9.0
         version: 10.9.0(vue@3.4.27(typescript@5.4.5))
       vue:
-        specifier: ^3.4.26
+        specifier: ^3.4.27
         version: 3.4.27(typescript@5.4.5)
       vuepress:
         specifier: 2.0.0-rc.9
