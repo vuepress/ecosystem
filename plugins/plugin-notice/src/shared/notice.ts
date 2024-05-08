@@ -86,9 +86,9 @@ export interface NoticeItemOptions {
 
 export interface NoticePathOptions extends NoticeItemOptions {
   /**
-   * Path of the notice
+   * Path prefix to match
    *
-   * 公告的路径
+   * 公告需要匹配的前缀路径
    */
   path: string
 }

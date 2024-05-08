@@ -5,6 +5,7 @@ import { blogPlugin } from '@vuepress/plugin-blog'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { copyrightPlugin } from '@vuepress/plugin-copyright'
 import { feedPlugin } from '@vuepress/plugin-feed'
+import { noticePlugin } from '@vuepress/plugin-notice'
 import { pwaPlugin } from '@vuepress/plugin-pwa'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { watermarkPlugin } from '@vuepress/plugin-watermark'
@@ -206,6 +207,37 @@ export default defineUserConfig({
       atom: true,
       json: true,
       rss: true,
+    }),
+    noticePlugin({
+      config: [
+        {
+          path: '/notice/',
+          title: 'Notice Title',
+          content: 'Notice content',
+          actions: [
+            {
+              text: 'Primary Action',
+              link: 'https://example.com/',
+              type: 'primary',
+            },
+            { text: 'Default Action' },
+          ],
+        },
+        {
+          match: /^\/notice\/fullscreen\.html$/,
+          title: 'Notice Title',
+          content: 'Notice fullscreen content',
+          actions: [
+            {
+              text: 'Primary Action',
+              link: 'https://example.com/',
+              type: 'primary',
+            },
+            { text: 'Default Action' },
+          ],
+          fullscreen: true,
+        },
+      ],
     }),
     pwaPlugin({
       manifest: {

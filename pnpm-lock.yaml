@@ -182,6 +182,9 @@ importers:
       '@vuepress/plugin-feed':
         specifier: workspace:*
         version: link:../plugins/plugin-feed
+      '@vuepress/plugin-notice':
+        specifier: workspace:*
+        version: link:../plugins/plugin-notice
       '@vuepress/plugin-pwa':
         specifier: workspace:*
         version: link:../plugins/plugin-pwa

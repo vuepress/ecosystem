@@ -107,7 +107,7 @@ export default defineComponent({
     const key = computed(() =>
       props.noticeKey
         ? `notice-${props.noticeKey}`
-        : `${props.title}${props.content}`,
+        : `notice:${props.title}${props.content}`,
     )
 
     const isMatched = computed(() =>

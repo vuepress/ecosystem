@@ -5,7 +5,7 @@ import { usePageData } from 'vuepress/client'
 import type { NoticeItemOptions } from '../../shared/index.js'
 import NoticeItem from './NoticeItem.js'
 
-import '../styles/notice.scss'
+import '../styles/notice.css'
 
 type NoticeClientOption = Omit<NoticeItemOptions, 'key'> & {
   noticeKey?: string
