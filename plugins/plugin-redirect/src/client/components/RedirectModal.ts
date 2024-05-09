@@ -13,8 +13,9 @@ import {
   onMounted,
   ref,
   TransitionGroup,
+  watch,
 } from 'vue'
-import { useRoute, useRouteLocale, useRouter } from 'vuepress/client'
+import { useRouteLocale, useRoutePath, useRouter } from 'vuepress/client'
 import type { RedirectPluginLocaleConfig } from '../../shared/locales.js'
 import { redirectLocaleConfig, redirectLocaleEntries } from '../define.js'
 
@@ -40,8 +41,8 @@ export default defineComponent({
 
   setup() {
     const languages = usePreferredLanguages()
-    const route = useRoute()
     const router = useRouter()
+    const routePath = useRoutePath()
     const routeLocale = useRouteLocale()
 
     const body = ref<HTMLElement>()
@@ -85,18 +86,21 @@ export default defineComponent({
     })
 
     const redirect = (): void => {
-      if (info.value)
-        router.replace(
-          route.path.replace(routeLocale.value, info.value.localePath),
-        )
+      router.replace(
+        routePath.value.replace(routeLocale.value, info.value!.localePath),
+      )
     }
+
+    watch(routePath, () => {
+      showModal.value = false
+    })
 
     onMounted(async () => {
       body.value = document.body
 
       await nextTick()
 
-      if (!redirectStatusStorage.value[routeLocale.value]) {
+      if (!redirectStatusStorage.value[routeLocale.value] && info.value) {
         if (switchLocale === 'direct') redirect()
         else if (switchLocale === 'modal') showModal.value = true
       }
