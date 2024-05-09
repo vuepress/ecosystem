@@ -1,7 +1,7 @@
 import { startsWith } from '@vuepress/helper/client'
-import type { FunctionalComponent, PropType } from 'vue'
-import { h } from 'vue'
-import { usePageData } from 'vuepress/client'
+import type { PropType } from 'vue'
+import { computed, defineComponent, h } from 'vue'
+import { ClientOnly, useRoutePath } from 'vuepress/client'
 import type { NoticeItemOptions } from '../../shared/index.js'
 import NoticeItem from './NoticeItem.js'
 
@@ -11,29 +11,33 @@ type NoticeClientOption = Omit<NoticeItemOptions, 'key'> & {
   noticeKey?: string
 } & ({ path: string } | { match: string })
 
-export const Notice: FunctionalComponent<{
-  config: NoticeClientOption[]
-}> = ({ config }) => {
-  const page = usePageData()
+export const Notice = defineComponent({
+  name: 'Notice',
 
-  const item = config.find((item) =>
-    'match' in item
-      ? new RegExp(item.match).test(page.value.path)
-      : startsWith(page.value.path, item.path),
-  )
-
-  return item ? h(NoticeItem, item) : null
-}
-
-Notice.displayName = 'Notice'
-Notice.props = {
-  /**
-   * Notice locales settings
-   *
-   * 通知的多语言设置
-   */
-  config: {
-    type: Array as PropType<NoticeClientOption[]>,
-    required: true,
+  props: {
+    /**
+     * Notice locales settings
+     *
+     * 通知的多语言设置
+     */
+    config: {
+      type: Array as PropType<NoticeClientOption[]>,
+      required: true,
+    },
   },
-}
+
+  setup(props) {
+    const routePath = useRoutePath()
+
+    const item = computed(() =>
+      props.config.find((item) =>
+        'match' in item
+          ? new RegExp(item.match).test(routePath.value)
+          : startsWith(routePath.value, item.path),
+      ),
+    )
+
+    return () =>
+      h(ClientOnly, () => (item.value ? h(NoticeItem, item.value) : null))
+  },
+})
