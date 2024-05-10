@@ -8,11 +8,14 @@ import { feedPlugin } from '@vuepress/plugin-feed'
 import { noticePlugin } from '@vuepress/plugin-notice'
 import { pwaPlugin } from '@vuepress/plugin-pwa'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
+import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { watermarkPlugin } from '@vuepress/plugin-watermark'
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress/cli'
 import type { UserConfig } from 'vuepress/cli'
-import { path } from 'vuepress/utils'
+import { getDirname, path } from 'vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
 
 const E2E_BASE = (process.env.E2E_BASE ?? '/') as '/' | `/${string}/`
 const E2E_BUNDLER = process.env.E2E_BUNDLER ?? 'vite'
@@ -264,6 +267,24 @@ export default defineUserConfig({
         '/redirect/config.html': '/redirect/final.html',
         '/redirect/config/': '/redirect/final.html',
       },
+    }),
+    registerComponentsPlugin({
+      components: {
+        GlobalComponent4: path.resolve(
+          __dirname,
+          './components/GlobalComponent4.vue',
+        ),
+        GlobalComponent5: path.resolve(
+          __dirname,
+          './components/GlobalComponent5.ts',
+        ),
+        GlobalComponent6: path.resolve(
+          __dirname,
+          './components/GlobalComponent6.js',
+        ),
+      },
+      componentsDir: path.resolve(__dirname, 'global-components/'),
+      componentsPatterns: ['**/*.vue', '**/*.ts', '**/*.js'],
     }),
     watermarkPlugin({
       enabled: (page) => page.path.startsWith('/watermark/'),
