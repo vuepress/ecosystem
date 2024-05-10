@@ -191,6 +191,9 @@ importers:
       '@vuepress/plugin-redirect':
         specifier: workspace:*
         version: link:../plugins/plugin-redirect
+      '@vuepress/plugin-theme-data':
+        specifier: workspace:*
+        version: link:../plugins/plugin-theme-data
       '@vuepress/plugin-watermark':
         specifier: workspace:*
         version: link:../plugins/plugin-watermark

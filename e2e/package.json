@@ -24,6 +24,7 @@
     "@vuepress/plugin-notice": "workspace:*",
     "@vuepress/plugin-pwa": "workspace:*",
     "@vuepress/plugin-redirect": "workspace:*",
+    "@vuepress/plugin-theme-data": "workspace:*",
     "@vuepress/plugin-watermark": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
     "sass": "^1.77.0",

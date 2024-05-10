@@ -36,6 +36,11 @@ export default defineUserConfig({
       title: 'VuePress Ecosystem E2E',
       description: 'VuePress Ecosystem E2E Test Site',
     },
+    '/zh/': {
+      lang: 'zh-CN',
+      title: 'VuePress 生态系统 E2e',
+      description: 'VuePress 生态系统 E2E 测试站',
+    },
   },
 
   markdown: {
@@ -51,16 +56,13 @@ export default defineUserConfig({
     hostname: 'https://ecosystem-e2e-test.com',
     logo: 'https://v2.vuepress.vuejs.org/images/hero.png',
     navbar: [
-      {
-        text: 'Home',
-        link: '/',
-      },
+      '/',
       {
         text: 'Dropdown',
         children: [
           {
-            text: 'sidebar',
-            link: '/sidebar/',
+            text: 'item',
+            link: '/dropdown/',
           },
         ],
       },
@@ -79,6 +81,13 @@ export default defineUserConfig({
         },
       ],
       '/': [],
+    },
+
+    locales: {
+      '/zh/': {
+        navbar: ['/zh/'],
+        sidebar: false,
+      },
     },
 
     themePlugins: {

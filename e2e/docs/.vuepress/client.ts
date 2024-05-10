@@ -1,5 +1,6 @@
 import { defineClientConfig } from 'vuepress/client'
 import type { ClientConfig } from 'vuepress/client'
+import ThemeData from './components/ThemeData.vue'
 import Article from './layouts/Article.vue'
 import Category from './layouts/Category.vue'
 import Tag from './layouts/Tag.vue'
@@ -12,4 +13,5 @@ export default defineClientConfig({
     Tag,
     Timeline,
   },
+  rootComponents: [ThemeData],
 }) as ClientConfig
