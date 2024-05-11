@@ -6,6 +6,7 @@ settings:
 
 overrides:
   '@types/markdown-it': 14.1.1
+  artalk: 2.8.5
 
 importers:
 
@@ -307,8 +308,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.3(typescript@5.4.5)
       artalk:
-        specifier: ^2.7.3
-        version: 2.8.6
+        specifier: 2.8.5
+        version: 2.8.5
       giscus:
         specifier: ^1.5.0
         version: 1.5.0
@@ -2754,8 +2755,8 @@ packages:
     resolution: {integrity: sha512-bMxMKAjg13EBSVscxTaYA4mRc5t1UAXa2kXiGTNfZ079HIWXEkKmkgFrh/nJqamaLSrXO5H4WFFkPEaLJWbs3A==}
     engines: {node: '>= 0.4'}
 
-  artalk@2.8.6:
-    resolution: {integrity: sha512-Wt6x9F6A9l7Bw6y8tZayheHkJJ2tF0T3yZVxtqHTpDgZOKlOI91UzBvZ2bSjScayy7JH9ZSAkTC/qVDODeUhbA==}
+  artalk@2.8.5:
+    resolution: {integrity: sha512-Ms2Zvxdf5Dn5RmhVDMyw+7MX3e5/3zk1EeEXtBUfWK2XeOjKM/jIT84vm+vR1m6o55FAJfxVvs72BeZWsIcSmw==}
 
   assertion-error@1.1.0:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
@@ -9210,7 +9211,7 @@ snapshots:
       is-array-buffer: 3.0.4
       is-shared-array-buffer: 1.0.3
 
-  artalk@2.8.6:
+  artalk@2.8.5:
     dependencies:
       abortcontroller-polyfill: 1.7.5
       hanabi: 0.4.0

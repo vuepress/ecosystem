@@ -65,7 +65,8 @@
   },
   "pnpm": {
     "overrides": {
-      "@types/markdown-it": "14.1.1"
+      "@types/markdown-it": "14.1.1",
+      "artalk": "2.8.5"
     }
   }
 }
