@@ -10,7 +10,7 @@ import {
   preparePaletteSass,
   prepareStyleSass,
 } from './prepare.js'
-import { logger, PLUGIN_NAME } from './utils.js'
+import { EMPTY_FILE, logger, PLUGIN_NAME } from './utils.js'
 
 const __dirname = getDirname(import.meta.url)
 
@@ -31,7 +31,7 @@ export const sassPalettePlugin =
         __dirname,
         '../../styles/default/palette.scss',
       ),
-      generator = path.resolve(__dirname, '../../styles/empty.scss'),
+      generator = EMPTY_FILE,
       style = '',
     } = options
 
