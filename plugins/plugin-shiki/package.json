@@ -35,7 +35,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "shiki": "^1.4.0"
+    "shiki": "^1.5.1"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.9"

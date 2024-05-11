@@ -48,7 +48,7 @@
   "dependencies": {
     "@vuepress/helper": "workspace:*",
     "chokidar": "^3.6.0",
-    "sass": "^1.77.0"
+    "sass": "^1.77.1"
   },
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.9",
