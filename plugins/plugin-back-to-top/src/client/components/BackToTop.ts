@@ -5,8 +5,10 @@ import {
   defineComponent,
   h,
   onMounted,
+  ref,
   shallowRef,
   Transition,
+  watch,
 } from 'vue'
 import { usePageFrontmatter } from 'vuepress/client'
 import type { BackToTopPluginLocaleConfig } from '../../shared/index.js'
@@ -40,6 +42,22 @@ export const BackToTop = defineComponent({
     const progress = computed(
       () => (y.value / (bodyHeight.value - windowHeight.value)) * 100,
     )
+    const percent = computed(
+      () => `${Math.min(Math.round(progress.value), 100) || 0}%`,
+    )
+
+    const isScrolling = ref(false)
+
+    if (__BACK_TO_TOP_PROGRESS__) {
+      let timer: ReturnType<typeof setTimeout> | null = null
+      watch(y, () => {
+        isScrolling.value = true
+        timer && clearTimeout(timer)
+        timer = setTimeout(() => {
+          isScrolling.value = false
+        }, 1000)
+      })
+    }
 
     onMounted(() => {
       body.value = document.body
@@ -84,7 +102,21 @@ export const BackToTop = defineComponent({
                       ),
                     )
                   : null,
-                h('div', { class: 'back-to-top-icon' }),
+                __BACK_TO_TOP_PROGRESS__
+                  ? h(
+                      'span',
+                      {
+                        class: [
+                          'vp-scroll-progress-label',
+                          isScrolling.value && 'show',
+                        ],
+                      },
+                      percent.value,
+                    )
+                  : null,
+                h('div', {
+                  class: ['back-to-top-icon', !isScrolling.value && 'show'],
+                }),
               ],
             )
           : null,
