@@ -21,12 +21,9 @@
     "test:e2e": "pnpm --filter ecosystem-e2e e2e:dev && pnpm --filter ecosystem-e2e e2e:build",
     "test:unit": "cross-env TZ=Etc/UTC vitest run"
   },
-  "lint-staged": {
-    "*.!(cjs|js|ts|vue)": "prettier --write --ignore-unknown",
-    "*.(cjs|js|ts|vue)": [
-      "eslint --fix",
-      "prettier --write"
-    ],
+  "nano-staged": {
+    "**/*": "prettier --write --ignore-unknown",
+    "*.(cjs|js|ts|vue)": "eslint --fix",
     "package.json": "sort-package-json"
   },
   "prettier": "prettier-config-vuepress",
@@ -44,16 +41,16 @@
     "eslint": "^8.57.0",
     "eslint-config-vuepress": "^4.10.1",
     "eslint-config-vuepress-typescript": "^4.10.1",
-    "http-server": "14.1.1",
+    "http-server": "^14.1.1",
     "husky": "^9.0.11",
-    "lint-staged": "^15.2.2",
+    "nano-staged": "^0.8.0",
     "prettier": "^3.2.5",
     "prettier-config-vuepress": "^4.4.0",
     "rimraf": "^5.0.6",
     "sass": "1.77.1",
     "sort-package-json": "^2.10.0",
     "tsconfig-vuepress": "^4.5.0",
-    "tsx": "4.9.4",
+    "tsx": "^4.9.4",
     "typescript": "^5.4.5",
     "vite": "~5.2.11",
     "vitest": "^1.6.0",
