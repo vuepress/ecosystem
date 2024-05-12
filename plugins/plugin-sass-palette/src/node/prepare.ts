@@ -1,36 +1,36 @@
 import type { App } from 'vuepress/core'
-import { getPath } from './utils.js'
+import { getIdPrefix, getPath } from './utils.js'
 
 export const prepareConfigFile = (app: App, id: string): Promise<string> =>
   app.writeTemp(
-    `sass-palette/load-${id}.js`,
+    `sass-palette/load-${id || 'default'}.js`,
     `\
-import "@sass-palette/${id}-inject";
+import "@sass-palette/${getIdPrefix(id)}inject";
 export default {};
 `,
   )
 
 export const prepareInjectSass = (app: App, id: string): Promise<string> =>
   app.writeTemp(
-    `sass-palette/${id}-inject.scss`,
+    `sass-palette/${getIdPrefix(id)}inject.scss`,
     `\
 @use "sass:meta";
 
 @use "@sass-palette/helper";
-@use "@sass-palette/${id}-palette";
+@use "@sass-palette/${getIdPrefix(id)}palette";
 
-$palette-variables: meta.module-variables("${id}-palette");
+$palette-variables: meta.module-variables("${getIdPrefix(id)}palette");
 ${
   app.env.isDebug
     ? `
 @debug "${id} palette variables: #{meta.inspect($palette-variables)}";
-@debug "${id} config variables: #{meta.inspect(meta.module-variables("${id}-config"))}";
+@debug "${id} config variables: #{meta.inspect(meta.module-variables("${getIdPrefix(id)}config"))}";
 `
     : ''
 }
 
-@if meta.global-variable-exists("dark-selector", $module: "${id}-config") {
-  @include helper.inject($palette-variables, ${id}-config.$dark-selector);
+@if meta.global-variable-exists("dark-selector", $module: "${getIdPrefix(id)}config") {
+  @include helper.inject($palette-variables, ${getIdPrefix(id)}config.$dark-selector);
 } @else {
   @include helper.inject($palette-variables);
 }
@@ -58,7 +58,7 @@ export const prepareConfigSass = (
   }: PrepareConfigOptions,
 ): Promise<string> =>
   app.writeTemp(
-    `sass-palette/${id}-config.scss`,
+    `sass-palette/${getIdPrefix(id)}config.scss`,
     `\
 @import "file:///${getPath(defaultPalette)}";
 @import "file:///${getPath(defaultConfig)}";
@@ -80,7 +80,7 @@ export const preparePaletteSass = (
   { id, defaultPalette, generator, userPalette }: PreparePaletteOptions,
 ): Promise<string> =>
   app.writeTemp(
-    `sass-palette/${id}-palette.scss`,
+    `sass-palette/${getIdPrefix(id)}palette.scss`,
     `\
 @import "file:///${getPath(defaultPalette)}";
 @import "file:///${getPath(userPalette)}";
@@ -99,7 +99,7 @@ export const prepareStyleSass = (
 ): Promise<string | null> =>
   userStyle
     ? app.writeTemp(
-        `sass-palette/${id}-style.scss`,
+        `sass-palette/${getIdPrefix(id)}style.scss`,
         `\
 @forward "file:///${getPath(userStyle)}";
 `,

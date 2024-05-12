@@ -11,3 +11,5 @@ export const logger = new Logger(PLUGIN_NAME)
 
 export const getPath = (path: string): string =>
   fs.pathExistsSync(path) ? path : EMPTY_FILE
+
+export const getIdPrefix = (id: string): string => (id ? `${id}-` : '')
