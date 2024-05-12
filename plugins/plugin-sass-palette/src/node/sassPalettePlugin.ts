@@ -4,12 +4,12 @@ import { getDirname, path } from 'vuepress/utils'
 import { injectScssConfigModule } from './injectScssConfigModule.js'
 import type { SassPalettePluginOptions } from './options.js'
 import {
-  prepareConfigFile,
+  prepareClientConfigFile,
   prepareConfigSass,
   prepareInjectSass,
   preparePaletteSass,
   prepareStyleSass,
-} from './prepare.js'
+} from './prepare/index.js'
 import { EMPTY_FILE, getIdPrefix, logger, PLUGIN_NAME } from './utils.js'
 
 const __dirname = getDirname(import.meta.url)
@@ -181,6 +181,6 @@ export const sassPalettePlugin =
         }
       },
 
-      clientConfigFile: (app) => prepareConfigFile(app, id),
+      clientConfigFile: (app) => prepareClientConfigFile(app, id),
     }
   }
