@@ -21,7 +21,7 @@ export const sidebarEn: SidebarConfig = {
     },
     {
       text: 'Markdown',
-      children: ['/plugins/container', '/plugins/links-check'],
+      children: ['/plugins/markdown-container', '/plugins/links-check'],
     },
     {
       text: 'Content Search',

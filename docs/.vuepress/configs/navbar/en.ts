@@ -36,7 +36,7 @@ export const navbarEn: NavbarConfig = [
       },
       {
         text: 'Markdown',
-        children: ['/plugins/container', '/plugins/links-check'],
+        children: ['/plugins/markdown-container', '/plugins/links-check'],
       },
       {
         text: 'Search',
