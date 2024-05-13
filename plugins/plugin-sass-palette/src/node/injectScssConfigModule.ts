@@ -10,7 +10,7 @@ import {
   mergeViteConfig,
 } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
-import { getIdPrefix } from './utils'
+import { getIdPrefix } from './utils.js'
 
 type LoaderContext =
   Exclude<LoaderOptions['additionalData'], string | undefined> extends (

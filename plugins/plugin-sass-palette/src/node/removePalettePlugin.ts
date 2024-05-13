@@ -9,5 +9,5 @@ export const removePalettePlugin = (app: App, id: string): void => {
     >((plugin): plugin is PluginObject & { id: string } => plugin.name === `@vuepress/plugin-sass-palette`)
     .findIndex((plugin) => plugin.id === id)
 
-  if (index !== -1) app.pluginApi.plugins.splice(index, 1)
+  if (index !== -1) plugins.splice(index, 1)
 }
