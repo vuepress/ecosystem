@@ -94,8 +94,7 @@ function onBlur(): void {
 .button {
   display: flex;
   align-items: center;
-  padding: 0 12px;
-  height: var(--vp-nav-height);
+  padding: 8px 12px;
   color: var(--vp-c-text-1);
   transition: color 0.5s;
 }
@@ -103,7 +102,6 @@ function onBlur(): void {
 .text {
   display: flex;
   align-items: center;
-  line-height: var(--vp-nav-height);
   font-size: 14px;
   font-weight: 500;
   color: var(--vp-c-text-1);
@@ -127,7 +125,7 @@ function onBlur(): void {
 
 .menu {
   position: absolute;
-  top: calc(var(--vp-nav-height) / 2 + 20px);
+  top: 100%;
   right: 0;
   opacity: 0;
   visibility: hidden;

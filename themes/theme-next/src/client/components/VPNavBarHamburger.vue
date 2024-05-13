@@ -30,7 +30,7 @@ defineEmits<(e: 'click') => void>()
   justify-content: center;
   align-items: center;
   width: 48px;
-  height: var(--vp-nav-height);
+  height: 48px;
 }
 
 @media (min-width: 768px) {

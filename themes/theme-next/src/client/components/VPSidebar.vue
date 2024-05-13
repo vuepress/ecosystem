@@ -1,15 +1,17 @@
 <script lang="ts" setup>
 import VPSidebarItem from '@theme/VPSidebarItem.vue'
 import { useScrollLock } from '@vueuse/core'
-import { ref, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
+import { useRoutePath } from 'vuepress/client'
 import { useSidebar } from '../composables/sidebar.js'
 import { inBrowser } from '../utils/index.js'
-
-const { sidebarGroups, hasSidebar } = useSidebar()
 
 const props = defineProps<{
   open: boolean
 }>()
+
+const { sidebarGroups, hasSidebar } = useSidebar()
+const routePath = useRoutePath()
 
 // a11y: focus Nav element when menu has opened
 const navEl = ref<HTMLElement | null>(null)
@@ -25,6 +27,20 @@ watch(
   },
   { immediate: true, flush: 'post' },
 )
+
+onMounted(() => {
+  const activeItem = document.querySelector(
+    `.vpSidebar .vpLink[href*="${routePath.value}"]`,
+  )
+  if (!activeItem || !navEl.value) return
+
+  const { top: navTop, height: navHeight } = navEl.value.getBoundingClientRect()
+  const { top: activeTop, height: activeHeight } =
+    activeItem.getBoundingClientRect()
+
+  if (activeTop < navTop || activeTop + activeHeight > navTop + navHeight)
+    activeItem.scrollIntoView({ block: 'center' })
+})
 </script>
 
 <template>

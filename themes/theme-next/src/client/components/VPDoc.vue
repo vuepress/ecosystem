@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import VPDocAside from '@theme/VPDocAside.vue'
 import VPDocFooter from '@theme/VPDocFooter.vue'
-import { computed } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
 import { useData } from '../composables/data.js'
 import { useSidebar } from '../composables/sidebar.js'
@@ -19,6 +19,32 @@ const enabledExternalLinkIcon = computed(
     theme.value.externalLinkIcon &&
     frontmatter.value.externalLinkIcon !== false,
 )
+
+const asideEl = ref<HTMLElement>()
+
+watch(
+  () => route.hash,
+  (hash) =>
+    nextTick(() => {
+      if (!asideEl.value) return
+      const activeItem = asideEl.value.querySelector(
+        `.outline-link[href="${hash}"]`,
+      )
+      if (!activeItem || !hash) {
+        asideEl.value.scrollTop = 0
+        return
+      }
+
+      const { top: navTop, height: navHeight } =
+        asideEl.value.getBoundingClientRect()
+      const { top: activeTop, height: activeHeight } =
+        activeItem.getBoundingClientRect()
+
+      if (activeTop < navTop || activeTop + activeHeight > navTop + navHeight)
+        activeItem.scrollIntoView({ block: 'center' })
+    }),
+  { immediate: true },
+)
 </script>
 
 <template>
@@ -30,7 +56,7 @@ const enabledExternalLinkIcon = computed(
     <div class="container">
       <div v-if="hasAside" class="aside" :class="{ 'left-aside': leftAside }">
         <div class="aside-curtain" />
-        <div class="aside-container">
+        <div ref="asideEl" class="aside-container">
           <div class="aside-content">
             <VPDocAside>
               <template #aside-top><slot name="aside-top" /></template>

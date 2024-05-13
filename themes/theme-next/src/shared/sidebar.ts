@@ -32,6 +32,13 @@ export interface SidebarItem {
   items?: 'structure' | (string | SidebarItem)[]
 
   /**
+   * The children of the item.
+   *
+   * @deprecated Use `items` instead
+   */
+  children?: (string | SidebarItem)[]
+
+  /**
    * If not specified, group is not collapsible.
    *
    * If `true`, group is collapsible and collapsed by default

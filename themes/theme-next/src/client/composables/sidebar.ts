@@ -1,4 +1,5 @@
 import { sidebarData as sidebarDataRaw } from '@internal/sidebar'
+import { ensureLeadingSlash } from '@vuepress/helper/client'
 import { useMediaQuery } from '@vueuse/core'
 import {
   computed,
@@ -12,7 +13,7 @@ import {
 import type { ComputedRef, Ref } from 'vue'
 import { resolveRoutePath } from 'vuepress/client'
 import type { ResolvedSidebarItem } from '../../shared/resolved/sidebar.js'
-import { ensureStartingSlash, isActive } from '../utils/index.js'
+import { isActive } from '../utils/index.js'
 import { useData } from './data.js'
 
 export type SidebarDataRef = Ref<Record<string, ResolvedSidebarItem[]>>
@@ -234,7 +235,7 @@ export function getSidebar(path: string): ResolvedSidebarItem[] {
   if (Array.isArray(_sidebar)) return _sidebar
   if (_sidebar == null) return []
 
-  path = ensureStartingSlash(path)
+  path = ensureLeadingSlash(path)
 
   const dir = Object.keys(_sidebar)
     .sort((a, b) => {
@@ -242,7 +243,7 @@ export function getSidebar(path: string): ResolvedSidebarItem[] {
     })
     .find((dir) => {
       // make sure the multi sidebar key starts with slash too
-      return path.startsWith(ensureStartingSlash(dir))
+      return path.startsWith(ensureLeadingSlash(dir))
     })
 
   const sidebar = dir ? _sidebar[dir] : []

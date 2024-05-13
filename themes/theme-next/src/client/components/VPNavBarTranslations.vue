@@ -44,4 +44,8 @@ const { localeLinks, currentLang } = useLangs()
   font-weight: 700;
   color: var(--vp-c-text-1);
 }
+
+.vpNavBarTranslations :deep(.button) {
+  padding: 12px;
+}
 </style>

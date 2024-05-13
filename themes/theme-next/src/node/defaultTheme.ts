@@ -11,7 +11,7 @@ import { resolvePageHead } from './config/resolvePageHead.js'
 import { extendsMarkdown } from './markdown/index.js'
 import { getPlugins } from './plugins.js'
 import { prepareNavbarData, prepareSidebarData } from './prepare/index.js'
-import { THEME_NAME } from './utils/index.js'
+import { logger, THEME_NAME } from './utils/index.js'
 
 const __dirname = getDirname(import.meta.url)
 
@@ -41,6 +41,10 @@ export const defaultTheme = ({
   ...localeOptions
 }: DefaultThemeOptions): Theme => {
   return (app) => {
+    if (app.env.isDebug) {
+      logger.info('Plugin Options:', themePlugins)
+    }
+
     const onPrepareData = async (app: App): Promise<void> => {
       await Promise.all([
         prepareNavbarData(app, localeOptions),
