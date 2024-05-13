@@ -24,6 +24,25 @@ export default {
 }
 ```
 
+::: tip Working with Javascript Disabled
+
+If you want Google Tag Manager to work properly when javascript is disabled, you should add the following content to the body part of build template via `templateBuild`:
+
+```html
+<!-- Google Tag Manager (noscript) -->
+<noscript
+  ><iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-ABCDEFGH"
+    height="0"
+    width="0"
+    style="display:none;visibility:hidden"
+  ></iframe
+></noscript>
+<!-- End Google Tag Manager (noscript) -->
+```
+
+:::
+
 ## Options
 
 ### id
