@@ -10,6 +10,7 @@ import {
   mergeViteConfig,
 } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
+import { getIdPrefix } from './utils'
 
 type LoaderContext =
   Exclude<LoaderOptions['additionalData'], string | undefined> extends (
@@ -20,7 +21,7 @@ type LoaderContext =
     : never
 
 /**
- * Use "additionalData" to make `${id}-config` available in scss
+ * Use "additionalData" to make `${getIdPrefix(id)}config` available in scss
  *
  * @param config VuePress Bundler config
  * @param app VuePress Node App
@@ -65,10 +66,12 @@ export const injectScssConfigModule = (
                     : source
 
                 return originalContent.match(
-                  new RegExp(`@use\\s+["']@sass-palette\\/${id}-config["'];`),
+                  new RegExp(
+                    `@use\\s+["']@sass-palette\\/${getIdPrefix(id)}config["'];`,
+                  ),
                 )
                   ? originalContent
-                  : `@use "@sass-palette/${id}-config";\n${originalContent}`
+                  : `@use "@sass-palette/${getIdPrefix(id)}config";\n${originalContent}`
               },
             },
           },
@@ -96,10 +99,12 @@ export const injectScssConfigModule = (
           : content
 
       return originalContent.match(
-        new RegExp(`@use\\s+(["'])@sass-palette\\/${id}-config\\1;`),
+        new RegExp(
+          `@use\\s+(["'])@sass-palette\\/${getIdPrefix(id)}config\\1;`,
+        ),
       )
         ? originalContent
-        : `@use "@sass-palette/${id}-config";\n${originalContent}`
+        : `@use "@sass-palette/${getIdPrefix(id)}config";\n${originalContent}`
     }
 
     webpackBundlerConfig.scss.additionalData = additionalDataHandler
