@@ -35,7 +35,6 @@ export function getPlugins(
         headerAnchorSelector: '.header-anchor',
         // should greater than page transition duration
         delay: 300,
-        offset: 134,
       }),
     )
   }

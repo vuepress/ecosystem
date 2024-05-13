@@ -3,8 +3,8 @@ export type NavItem = string | NavItemWithLink | NavItemWithChildren
 export interface NavItemWithLink {
   text: string
   link: string
-  items?: never
 
+  items?: never
   /**
    * @deprecated Use `items` instead
    * */
@@ -18,6 +18,7 @@ export interface NavItemWithLink {
    * 我们不能在这里使用实际的 RegExp 对象，因为它在构建期间不可序列化。
    */
   activeMatch?: string
+
   rel?: string
   target?: string
   noIcon?: boolean
@@ -25,6 +26,11 @@ export interface NavItemWithLink {
 
 export interface NavItemChildren {
   text?: string
+  /**
+   * The items in the dropdown menu
+   *
+   * 导航栏下拉菜单，
+   */
   items: (string | NavItemWithLink)[]
 
   /**
@@ -37,6 +43,11 @@ export interface NavItemChildren {
 
 export interface NavItemWithChildren {
   text?: string
+  /**
+   * The items in the dropdown menu
+   *
+   * 导航栏下拉菜单，
+   */
   items: (string | NavItemChildren | NavItemWithLink)[]
 
   /**

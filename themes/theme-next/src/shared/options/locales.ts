@@ -70,6 +70,7 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * The sidebar menu label
    *
    * 侧边栏 菜单标签
+   *
    * @default 'Menu'
    */
   sidebarMenuLabel?: string
@@ -131,6 +132,12 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Page meta - edit link config
    *
    * Whether to show "Edit this page" or not
+   *
+   * 页面元数据 - 编辑链接
+   *
+   * 是否显示 "编辑此页"
+   *
+   * @default true
    */
   editLink?: boolean
 
@@ -138,6 +145,12 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Page meta - edit link config
    *
    * The text to replace the default "Edit this page"
+   *
+   * 页面元数据 - 编辑链接
+   *
+   * 编辑此页的文本
+   *
+   * @default 'Edit this page'
    */
   editLinkText?: string
 
@@ -146,6 +159,10 @@ export interface DefaultThemeLocaleData extends LocaleData {
    *
    * Pattern of edit link
    *
+   * 编辑链接的模式匹配
+   *
+   * `:repo` {@link docsRepo} | `:branch` {@link docsBranch} |  `:path` {@link docsDir}
+   *
    * @example ':repo/edit/:branch/:path'
    */
   editLinkPattern?: string
@@ -153,9 +170,11 @@ export interface DefaultThemeLocaleData extends LocaleData {
   /**
    * Page meta - edit link config
    *
-   * Use `repo` config by default
-   *
    * Set this config if your docs is placed in a different repo
+   *
+   * 页面元数据 - 编辑链接
+   *
+   * 如果你的文档位于不同的仓库， 设置此配置
    */
   docsRepo?: string
 
@@ -163,6 +182,10 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Page meta - edit link config
    *
    * Set this config if the branch of your docs is not 'main'
+   *
+   * 页面元数据 - 编辑链接
+   *
+   * 如果你的文档分支不是 'main'
    */
   docsBranch?: string
 
@@ -170,6 +193,10 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Page meta - edit link config
    *
    * Set this config if your docs is placed in sub dir of your `docsRepo`
+   *
+   * 页面元数据 - 编辑链接
+   *
+   * 如果你的文档位于 `docsRepo` 下的子目录
    */
   docsDir?: string
 
@@ -177,6 +204,10 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Page meta - last updated config
    *
    * Whether to show "Last Updated" or not
+   *
+   * 页面元数据 - 最后更新时间
+   *
+   * 是否显示 "最后更新时间"
    */
   lastUpdated?: boolean
 
@@ -184,6 +215,10 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Page meta - last updated config
    *
    * The text to replace the default "Last Updated"
+   *
+   * 页面元数据 - 最后更新时间
+   *
+   * 最后更新时间的文本
    */
   lastUpdatedText?: string
 
@@ -202,6 +237,10 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Page meta - contributors config
    *
    * Whether to show "Contributors" or not
+   *
+   * 页面元数据 - 贡献者
+   *
+   * 是否显示 "贡献者数据"
    */
   contributors?: boolean
 
@@ -209,31 +248,47 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Page meta - contributors config
    *
    * The text to replace the default "Contributors"
+   *
+   * 页面元数据 - 贡献者
+   *
+   * 贡献者的文本
    */
   contributorsText?: string
 
   /**
    * Set custom prev/next labels.
+   *
+   * 自定义 prev/next
    */
   docFooter?: DocFooter
 
   /**
    * The social links to be displayed at the end of the nav bar. Perfect for
    * placing links to social services such as GitHub, Twitter, Facebook, etc.
+   *
+   * 在导航栏中显示的社交链接， 适合放置与 GitHub， Twitter， Facebook 等社交服务相关的链接
    */
   socialLinks?: SocialLink[]
 
   /**
    * The footer configuration.
+   *
+   * 页脚
    */
   footer?: Footer
 
   /**
    * The container configuration.
+   *
+   * 提示容器标题
    */
   container?: ContainerOptions
 
   /**
+   * Local Nav config
+   *
+   * Local Nav 配置
+   *
    * @default 'Return to top'
    */
   returnToTopLabel?: string
