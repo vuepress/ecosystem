@@ -46,6 +46,9 @@
     "@vueuse/core": "^10.9.0",
     "vue": "^3.4.27"
   },
+  "devDependencies": {
+    "sass": "^1.77.1"
+  },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.9"
   },

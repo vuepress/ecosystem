@@ -46,13 +46,6 @@ export default defineUserConfig({
     },
   },
 
-  markdown: {
-    assets: {
-      // FIXME
-      absolutePathPrependBase: E2E_BUNDLER === 'webpack',
-    },
-  },
-
   bundler: E2E_BUNDLER === 'webpack' ? webpackBundler() : viteBundler(),
 
   theme: defaultTheme({

@@ -19,10 +19,10 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
 
-      - name: Use Node.js ${{ matrix.node }}
+      - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 20
           cache: pnpm
 
       - name: Install dependencies
