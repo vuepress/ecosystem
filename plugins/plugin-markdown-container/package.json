@@ -36,11 +36,13 @@
   },
   "dependencies": {
     "@types/markdown-it": "^14.1.1",
-    "markdown-it": "^14.1.0",
     "markdown-it-container": "^4.0.0"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.9"
+  },
+  "devDependencies": {
+    "markdown-it": "^14.1.0"
   },
   "publishConfig": {
     "access": "public"

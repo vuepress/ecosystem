@@ -335,21 +335,6 @@ importers:
         specifier: ^1.77.1
         version: 1.77.1
 
-  plugins/plugin-markdown-container:
-    dependencies:
-      '@types/markdown-it':
-        specifier: ^14.1.1
-        version: 14.1.1
-      markdown-it:
-        specifier: ^14.1.0
-        version: 14.1.0
-      markdown-it-container:
-        specifier: ^4.0.0
-        version: 4.0.0
-      vuepress:
-        specifier: 2.0.0-rc.9
-        version: 2.0.0-rc.9(@vuepress/bundler-vite@2.0.0-rc.9(@types/node@20.12.11)(jiti@1.21.0)(sass@1.77.1)(terser@5.31.0)(tsx@4.10.1)(typescript@5.4.5))(@vuepress/bundler-webpack@2.0.0-rc.9(typescript@5.4.5))(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
-
   plugins/plugin-copy-code:
     dependencies:
       '@vuepress/helper':
@@ -459,6 +444,22 @@ importers:
       vuepress:
         specifier: 2.0.0-rc.9
         version: 2.0.0-rc.9(@vuepress/bundler-vite@2.0.0-rc.9(@types/node@20.12.11)(jiti@1.21.0)(sass@1.77.1)(terser@5.31.0)(tsx@4.10.1)(typescript@5.4.5))(@vuepress/bundler-webpack@2.0.0-rc.9(typescript@5.4.5))(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
+
+  plugins/plugin-markdown-container:
+    dependencies:
+      '@types/markdown-it':
+        specifier: ^14.1.1
+        version: 14.1.1
+      markdown-it-container:
+        specifier: ^4.0.0
+        version: 4.0.0
+      vuepress:
+        specifier: 2.0.0-rc.9
+        version: 2.0.0-rc.9(@vuepress/bundler-vite@2.0.0-rc.9(@types/node@20.12.11)(jiti@1.21.0)(sass@1.77.1)(terser@5.31.0)(tsx@4.10.1)(typescript@5.4.5))(@vuepress/bundler-webpack@2.0.0-rc.9(typescript@5.4.5))(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
+    devDependencies:
+      markdown-it:
+        specifier: ^14.1.0
+        version: 14.1.0
 
   plugins/plugin-medium-zoom:
     dependencies:
@@ -774,9 +775,6 @@ importers:
       '@vuepress/plugin-back-to-top':
         specifier: workspace:~
         version: link:../../plugins/plugin-back-to-top
-      '@vuepress/plugin-markdown-container':
-        specifier: workspace:~
-        version: link:../../plugins/plugin-markdown-container
       '@vuepress/plugin-copy-code':
         specifier: workspace:~
         version: link:../../plugins/plugin-copy-code
@@ -786,6 +784,9 @@ importers:
       '@vuepress/plugin-links-check':
         specifier: workspace:~
         version: link:../../plugins/plugin-links-check
+      '@vuepress/plugin-markdown-container':
+        specifier: workspace:~
+        version: link:../../plugins/plugin-markdown-container
       '@vuepress/plugin-medium-zoom':
         specifier: workspace:~
         version: link:../../plugins/plugin-medium-zoom
