@@ -44,7 +44,7 @@ export default {
 
 - 详情：
 
-  是否启用由 [@vuepress/plugin-container](../../plugins/container.md) 支持的自定义容器。
+  是否启用由 [@vuepress/plugin-markdown-container](../../plugins/markdown-container.md) 支持的自定义容器。
 
   `ContainerType` 类型为：
 

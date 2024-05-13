@@ -5,27 +5,27 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [2.0.0-rc.28](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.27...v2.0.0-rc.28) (2024-05-08)
 
-**Note:** Version bump only for package @vuepress/plugin-container
+**Note:** Version bump only for package @vuepress/plugin-markdown-container
 
 # [2.0.0-rc.25](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.24...v2.0.0-rc.25) (2024-04-17)
 
-**Note:** Version bump only for package @vuepress/plugin-container
+**Note:** Version bump only for package @vuepress/plugin-markdown-container
 
 # [2.0.0-rc.21](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.20...v2.0.0-rc.21) (2024-03-25)
 
-**Note:** Version bump only for package @vuepress/plugin-container
+**Note:** Version bump only for package @vuepress/plugin-markdown-container
 
 # [2.0.0-rc.15](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.14...v2.0.0-rc.15) (2024-02-19)
 
-**Note:** Version bump only for package @vuepress/plugin-container
+**Note:** Version bump only for package @vuepress/plugin-markdown-container
 
 # [2.0.0-rc.12](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.11...v2.0.0-rc.12) (2024-02-06)
 
-**Note:** Version bump only for package @vuepress/plugin-container
+**Note:** Version bump only for package @vuepress/plugin-markdown-container
 
 # [2.0.0-rc.11](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.10...v2.0.0-rc.11) (2024-02-05)
 
-**Note:** Version bump only for package @vuepress/plugin-container
+**Note:** Version bump only for package @vuepress/plugin-markdown-container
 
 # [2.0.0-rc.10](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.9...v2.0.0-rc.10) (2024-02-05)
 
@@ -35,11 +35,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [2.0.0-rc.7](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.6...v2.0.0-rc.7) (2024-02-02)
 
-**Note:** Version bump only for package @vuepress/plugin-container
+**Note:** Version bump only for package @vuepress/plugin-markdown-container
 
 # [2.0.0-rc.3](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.2...v2.0.0-rc.3) (2024-01-31)
 
-**Note:** Version bump only for package @vuepress/plugin-container
+**Note:** Version bump only for package @vuepress/plugin-markdown-container
 
 # 2.0.0-rc.1 (2024-01-26)
 

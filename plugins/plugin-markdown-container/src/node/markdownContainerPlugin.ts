@@ -43,9 +43,10 @@ export type MarkdownItContainerRenderFunction = (
 export type RenderPlaceFunction = (info: string) => string
 
 /**
- * Options for @vuepress/plugin-container
+ * Options for @vuepress/plugin-markdown-container
  */
-export interface ContainerPluginOptions extends MarkdownItContainerOptions {
+export interface MarkdownContainerPluginOptions
+  extends MarkdownItContainerOptions {
   /**
    * The type of the container
    *
@@ -83,7 +84,7 @@ export interface ContainerPluginOptions extends MarkdownItContainerOptions {
   after?: RenderPlaceFunction
 }
 
-export const containerPlugin = ({
+export const markdownContainerPlugin = ({
   // plugin options
   type,
   after,
@@ -94,9 +95,9 @@ export const containerPlugin = ({
   validate,
   marker,
   render,
-}: ContainerPluginOptions): Plugin => {
+}: MarkdownContainerPluginOptions): Plugin => {
   const plugin: PluginObject = {
-    name: '@vuepress/plugin-container',
+    name: '@vuepress/plugin-markdown-container',
     multiple: true,
   }
 

@@ -326,7 +326,7 @@ importers:
         specifier: 2.0.0-rc.9
         version: 2.0.0-rc.9(@vuepress/bundler-vite@2.0.0-rc.9(@types/node@20.12.11)(jiti@1.21.0)(sass@1.77.1)(terser@5.31.0)(tsx@4.9.4)(typescript@5.4.5))(@vuepress/bundler-webpack@2.0.0-rc.9(typescript@5.4.5))(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
 
-  plugins/plugin-container:
+  plugins/plugin-markdown-container:
     dependencies:
       '@types/markdown-it':
         specifier: 14.1.1
@@ -750,9 +750,9 @@ importers:
       '@vuepress/plugin-back-to-top':
         specifier: workspace:~
         version: link:../../plugins/plugin-back-to-top
-      '@vuepress/plugin-container':
+      '@vuepress/plugin-markdown-container':
         specifier: workspace:~
-        version: link:../../plugins/plugin-container
+        version: link:../../plugins/plugin-markdown-container
       '@vuepress/plugin-copy-code':
         specifier: workspace:~
         version: link:../../plugins/plugin-copy-code

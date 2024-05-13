@@ -1,6 +1,6 @@
-# container
+# markdown-container
 
-<NpmBadge package="@vuepress/plugin-container" />
+<NpmBadge package="@vuepress/plugin-markdown-container" />
 
 Register markdown custom containers in your VuePress site.
 
@@ -11,15 +11,15 @@ The [Custom Containers](../themes/default/markdown.md#custom-containers) of defa
 ## Usage
 
 ```bash
-npm i -D @vuepress/plugin-container@next
+npm i -D @vuepress/plugin-markdown-container@next
 ```
 
 ```ts
-import { containerPlugin } from '@vuepress/plugin-container'
+import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
 
 export default {
   plugins: [
-    containerPlugin({
+    markdownContainerPlugin({
       // options
     }),
   ],
@@ -69,7 +69,7 @@ This plugin can be used multiple times to support different types of containers.
 ```ts
 export default {
   plugins: [
-    containerPlugin({
+    markdownContainerPlugin({
       type: 'tip',
       locales: {
         '/': {

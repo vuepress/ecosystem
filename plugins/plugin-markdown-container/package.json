@@ -1,5 +1,5 @@
 {
-  "name": "@vuepress/plugin-container",
+  "name": "@vuepress/plugin-markdown-container",
   "version": "2.0.0-rc.28",
   "description": "VuePress plugin - markdown container",
   "keywords": [
@@ -16,7 +16,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/ecosystem.git",
-    "directory": "plugins/plugin-container"
+    "directory": "plugins/plugin-markdown-container"
   },
   "license": "MIT",
   "author": "meteorlxy",
