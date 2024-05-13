@@ -4,6 +4,7 @@
 
   --back-to-top-bg-color: #fff;
   --back-to-top-color: #3eaf7c;
+  --back-to-top-icon-color: currentColor;
   --back-to-top-color-hover: #71cda3;
   --back-to-top-shadow: rgb(0 0 0 / 20%);
 }
