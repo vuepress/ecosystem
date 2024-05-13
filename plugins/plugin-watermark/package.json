@@ -37,7 +37,7 @@
   "dependencies": {
     "@vuepress/helper": "workspace:~",
     "vue": "^3.4.27",
-    "watermark-js-plus": "^1.4.24"
+    "watermark-js-plus": "^1.4.25"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.9"

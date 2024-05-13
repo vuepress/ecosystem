@@ -50,6 +50,9 @@
   "peerDependencies": {
     "vuepress": "2.0.0-rc.9"
   },
+  "devDependencies": {
+    "sass": "^1.77.1"
+  },
   "publishConfig": {
     "access": "public"
   }

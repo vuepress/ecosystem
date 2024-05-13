@@ -46,23 +46,23 @@
     "nano-staged": "^0.8.0",
     "prettier": "^3.2.5",
     "prettier-config-vuepress": "^4.4.0",
-    "rimraf": "^5.0.6",
+    "rimraf": "^5.0.7",
     "sass": "1.77.1",
     "sort-package-json": "^2.10.0",
     "tsconfig-vuepress": "^4.5.0",
-    "tsx": "^4.9.4",
+    "tsx": "^4.10.1",
     "typescript": "^5.4.5",
     "vite": "~5.2.11",
     "vitest": "^1.6.0",
     "vuepress": "2.0.0-rc.9"
   },
-  "packageManager": "pnpm@9.1.0",
+  "packageManager": "pnpm@9.1.1",
   "engines": {
-    "node": ">=18.18.0"
+    "node": ">=18.19.0"
   },
   "pnpm": {
     "overrides": {
-      "@types/markdown-it": "14.1.1",
+      "@types/markdown-it": "^14.1.1",
       "artalk": "2.8.5"
     }
   }
