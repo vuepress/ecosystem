@@ -1,4 +1,4 @@
-import type { WatermarkOptions as _WatermarkRawOptions } from 'watermark-js-plus/dist/types/src/types/index.js'
+import type { WatermarkOptions as _WatermarkRawOptions } from 'watermark-js-plus'
 
 export type WatermarkPureOptions = Omit<
   Partial<_WatermarkRawOptions>,

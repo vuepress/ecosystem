@@ -12,10 +12,10 @@ Frontmatter in this section will take effect in all types of pages.
 
 - Details:
 
-  Provided by [@vuepress/plugin-external-link-icon](../../plugins/external-link-icon.md#externallinkicon).
+  Show external link icon on external links or not.
 
 - Also see:
-  - [Default Theme > Config Reference > themePlugins.externalLinkIcon](./config.md#themeplugins-externallinkicon)
+  - [Default Theme > Config > externalLinkIcon](./config.md#externallinkicon)
 
 ### navbar
 

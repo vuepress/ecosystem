@@ -20,15 +20,6 @@ export default defineClientConfig({
     if (!hasGlobalComponent('CodeGroupItem'))
       app.component('CodeGroupItem', CodeGroupItem)
 
-    // compat with @vuepress/plugin-external-link-icon
-    app.component('AutoLinkExternalIcon', () => {
-      const ExternalLinkIcon = app.component('ExternalLinkIcon')
-      if (ExternalLinkIcon) {
-        return h(ExternalLinkIcon)
-      }
-      return null
-    })
-
     // compat with @vuepress/plugin-docsearch and @vuepress/plugin-search
     app.component('NavbarSearch', () => {
       const SearchComponent =

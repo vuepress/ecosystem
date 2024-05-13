@@ -12,10 +12,10 @@
 
 - 详情：
 
-  由[@vuepress/plugin-external-link-icon](../../plugins/external-link-icon.md#externallinkicon) 提供。
+  是否在外部链接上显示外部链接图标。
 
 - 参考：
-  - [默认主题 > 配置 > themePlugins.externalLinkIcon](./config.md#themeplugins-externallinkicon)
+  - [默认主题 > 配置 > externalLinkIcon](./config.md#externallinkicon)
 
 ### navbar
 

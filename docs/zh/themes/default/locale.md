@@ -169,21 +169,6 @@ export default {
 
   404 页面中 _返回首页_ 链接的文字。
 
-## openInNewWindow
-
-- 类型： `string`
-
-- 默认值： `'open in new window'`
-
-- 详情：
-
-  [ExternalLinkIcon](../../plugins/external-link-icon.md#externallinkicon). 链接内的 `sr-only` 文字。
-
-  它主要是为了站点的可访问性 (a11y) 。
-
-- 参考：
-  - [默认主题 > 插件配置 > themePlugins.externalLinkIcon](./plugin.md#themeplugins-externallinkicon)
-
 ## toggleColorMode
 
 - 类型： `string`

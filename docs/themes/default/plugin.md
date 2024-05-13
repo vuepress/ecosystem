@@ -70,16 +70,6 @@ export default {
 
   Object value is supported as plugin options.
 
-## themePlugins.externalLinkIcon
-
-- Type: `boolean`
-
-- Default: `true`
-
-- Details:
-
-  Enable [@vuepress/plugin-external-link-icon](../../plugins/external-link-icon.md) or not.
-
 ## themePlugins.git
 
 - Type: `boolean`

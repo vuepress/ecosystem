@@ -59,12 +59,19 @@ const onTouchEnd = (e): void => {
   }
 }
 
+// external-link-icon
+const enableExternalLinkIcon = computed(
+  () =>
+    frontmatter.value.externalLinkIcon ?? themeLocale.externalLinkIcon ?? true,
+)
+
 // classes
 const containerClass = computed(() => [
   {
     'no-navbar': !shouldShowNavbar.value,
     'no-sidebar': !sidebarItems.value.length,
     'sidebar-open': isSidebarOpen.value,
+    'external-link-icon': enableExternalLinkIcon.value,
   },
   frontmatter.value.pageClass,
 ])

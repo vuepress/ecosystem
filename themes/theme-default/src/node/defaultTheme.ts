@@ -1,7 +1,6 @@
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
 import { copyCodePlugin } from '@vuepress/plugin-copy-code'
-import { externalLinkIconPlugin } from '@vuepress/plugin-external-link-icon'
 import { gitPlugin } from '@vuepress/plugin-git'
 import { linksCheckPlugin } from '@vuepress/plugin-links-check'
 import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
@@ -139,22 +138,6 @@ export const defaultTheme = ({
             type: 'code-group-item',
             before: (info) => `<CodeGroupItem title="${info}">\n`,
             after: () => '</CodeGroupItem>\n',
-          })
-        : [],
-
-      // @vuepress/plugin-external-link-icon
-      themePlugins.externalLinkIcon !== false
-        ? externalLinkIconPlugin({
-            locales: Object.entries(localeOptions.locales || {}).reduce(
-              (result, [key, value]) => {
-                result[key] = {
-                  openInNewWindow:
-                    value.openInNewWindow ?? localeOptions.openInNewWindow,
-                }
-                return result
-              },
-              {},
-            ),
           })
         : [],
 
