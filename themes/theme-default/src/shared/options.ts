@@ -19,7 +19,7 @@ export interface DefaultThemePluginsOptions {
   backToTop?: BackToTopPluginOptions | boolean
 
   /**
-   * Enable @vuepress/plugin-container or not
+   * Enable @vuepress/plugin-markdown-container or not
    */
   container?: {
     tip?: boolean

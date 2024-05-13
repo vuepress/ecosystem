@@ -1,15 +1,15 @@
-import type { ContainerPluginOptions } from '@vuepress/plugin-container'
+import type { MarkdownContainerPluginOptions } from '@vuepress/plugin-markdown-container'
 import type { DefaultThemeData } from '../../shared/index.js'
 
 /**
- * Resolve options for @vuepress/plugin-container
+ * Resolve options for @vuepress/plugin-markdown-container
  *
  * For custom containers default title
  */
-export const resolveContainerPluginOptions = (
+export const resolveMarkdownContainerPluginOptions = (
   localeOptions: DefaultThemeData,
   type: 'tip' | 'warning' | 'danger',
-): ContainerPluginOptions => {
+): MarkdownContainerPluginOptions => {
   const locales = Object.entries(localeOptions.locales || {}).reduce(
     (result, [key, value]) => {
       result[key] = {

@@ -335,7 +335,7 @@ importers:
         specifier: ^1.77.1
         version: 1.77.1
 
-  plugins/plugin-container:
+  plugins/plugin-markdown-container:
     dependencies:
       '@types/markdown-it':
         specifier: ^14.1.1
@@ -774,9 +774,9 @@ importers:
       '@vuepress/plugin-back-to-top':
         specifier: workspace:~
         version: link:../../plugins/plugin-back-to-top
-      '@vuepress/plugin-container':
+      '@vuepress/plugin-markdown-container':
         specifier: workspace:~
-        version: link:../../plugins/plugin-container
+        version: link:../../plugins/plugin-markdown-container
       '@vuepress/plugin-copy-code':
         specifier: workspace:~
         version: link:../../plugins/plugin-copy-code

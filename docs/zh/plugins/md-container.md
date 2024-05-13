@@ -1,6 +1,6 @@
-# container
+# markdown-container
 
-<NpmBadge package="@vuepress/plugin-container" />
+<NpmBadge package="@vuepress/plugin-markdown-container" />
 
 为你的 VuePress 站点注册自定义容器。
 
@@ -11,15 +11,15 @@
 ## 使用方法
 
 ```bash
-npm i -D @vuepress/plugin-container@next
+npm i -D @vuepress/plugin-markdown-container@next
 ```
 
 ```ts
-import { containerPlugin } from '@vuepress/plugin-container'
+import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
 
 export default {
   plugins: [
-    containerPlugin({
+    markdownContainerPlugin({
       // 配置项
     }),
   ],
@@ -69,7 +69,7 @@ export default {
 ```ts
 export default {
   plugins: [
-    containerPlugin({
+    markdownContainerPlugin({
       type: 'tip',
       locales: {
         '/': {

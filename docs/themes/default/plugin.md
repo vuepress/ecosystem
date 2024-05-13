@@ -44,7 +44,7 @@ export default {
 
 - Details:
 
-  Enable custom containers that powered by [@vuepress/plugin-container](../../plugins/container.md) or not.
+  Enable custom containers that powered by [@vuepress/plugin-markdown-container](../../plugins/markdown-container.md) or not.
 
   `ContainerType` type is:
 
