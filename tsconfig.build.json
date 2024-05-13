@@ -60,6 +60,7 @@
     { "path": "./plugins/plugin-umami-analytics/tsconfig.build.json" },
     { "path": "./plugins/plugin-watermark/tsconfig.build.json" },
     { "path": "./themes/theme-default/tsconfig.build.json" },
+    { "path": "./themes/theme-next/tsconfig.build.json" },
     { "path": "./tools/create-vuepress/tsconfig.build.json" },
     { "path": "./tools/helper/tsconfig.build.json" },
     { "path": "./tools/vp-update/tsconfig.build.json" }

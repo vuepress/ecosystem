@@ -1,5 +1,5 @@
 {
-  "name": "@vuepress/theme-default",
+  "name": "@vuepress/theme-legacy",
   "version": "2.0.0-rc.28",
   "description": "Default theme of VuePress",
   "keywords": [

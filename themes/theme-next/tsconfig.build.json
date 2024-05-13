@@ -1,0 +1,45 @@
+{
+  "extends": "../../tsconfig.build.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "baseUrl": ".",
+    "paths": {
+      "@theme/*": ["./src/client/components/*"]
+    },
+    "types": ["vuepress/client-types", "vite/client", "webpack-env"]
+  },
+  "include": ["./src"],
+  "references": [
+    {
+      "path": "../../plugins/plugin-active-header-links/tsconfig.build.json"
+    },
+    {
+      "path": "../../plugins/plugin-copy-code/tsconfig.build.json"
+    },
+    {
+      "path": "../../plugins/plugin-git/tsconfig.build.json"
+    },
+    {
+      "path": "../../plugins/plugin-links-check/tsconfig.build.json"
+    },
+    {
+      "path": "../../plugins/plugin-medium-zoom/tsconfig.build.json"
+    },
+    {
+      "path": "../../plugins/plugin-nprogress/tsconfig.build.json"
+    },
+    {
+      "path": "../../plugins/plugin-shiki/tsconfig.build.json"
+    },
+    {
+      "path": "../../plugins/plugin-seo/tsconfig.build.json"
+    },
+    {
+      "path": "../../plugins/plugin-sitemap/tsconfig.build.json"
+    },
+    {
+      "path": "../../plugins/plugin-theme-data/tsconfig.build.json"
+    }
+  ]
+}

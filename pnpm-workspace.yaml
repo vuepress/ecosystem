@@ -4,3 +4,4 @@ packages:
   - plugins/*
   - themes/*
   - tools/*
+  - docs-next/
