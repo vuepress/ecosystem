@@ -120,9 +120,6 @@ importers:
       '@vuepress/plugin-docsearch':
         specifier: workspace:*
         version: link:../plugins/plugin-docsearch
-      '@vuepress/plugin-external-link-icon':
-        specifier: workspace:*
-        version: link:../plugins/plugin-external-link-icon
       '@vuepress/plugin-feed':
         specifier: workspace:*
         version: link:../plugins/plugin-feed
@@ -391,15 +388,6 @@ importers:
       ts-debounce:
         specifier: ^4.0.0
         version: 4.0.0
-      vue:
-        specifier: ^3.4.27
-        version: 3.4.27(typescript@5.4.5)
-      vuepress:
-        specifier: 2.0.0-rc.9
-        version: 2.0.0-rc.9(@vuepress/bundler-vite@2.0.0-rc.9(@types/node@20.12.11)(jiti@1.21.0)(sass@1.77.1)(terser@5.31.0)(tsx@4.9.4)(typescript@5.4.5))(@vuepress/bundler-webpack@2.0.0-rc.9(typescript@5.4.5))(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
-
-  plugins/plugin-external-link-icon:
-    dependencies:
       vue:
         specifier: ^3.4.27
         version: 3.4.27(typescript@5.4.5)
@@ -756,9 +744,6 @@ importers:
       '@vuepress/plugin-copy-code':
         specifier: workspace:~
         version: link:../../plugins/plugin-copy-code
-      '@vuepress/plugin-external-link-icon':
-        specifier: workspace:~
-        version: link:../../plugins/plugin-external-link-icon
       '@vuepress/plugin-git':
         specifier: workspace:~
         version: link:../../plugins/plugin-git

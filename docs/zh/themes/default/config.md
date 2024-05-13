@@ -62,6 +62,16 @@
   - [默认主题 > 配置 > colorMode](#colormode)
   - [默认主题 > 语言配置 > toggleColorMode](./locale.md#togglecolormode)
 
+### externalLinkIcon
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否在外部链接上显示外部链接图标。
+
 ### home
 
 - 类型： `string`

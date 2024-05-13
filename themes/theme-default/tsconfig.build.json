@@ -15,7 +15,6 @@
     { "path": "../../plugins/plugin-back-to-top/tsconfig.build.json" },
     { "path": "../../plugins/plugin-copy-code/tsconfig.build.json" },
     { "path": "../../plugins/plugin-container/tsconfig.build.json" },
-    { "path": "../../plugins/plugin-external-link-icon/tsconfig.build.json" },
     { "path": "../../plugins/plugin-git/tsconfig.build.json" },
     { "path": "../../plugins/plugin-links-check/tsconfig.build.json" },
     { "path": "../../plugins/plugin-medium-zoom/tsconfig.build.json" },

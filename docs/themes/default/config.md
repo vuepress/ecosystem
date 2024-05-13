@@ -62,6 +62,16 @@ Config of this section can be used as normal config, and can also be used in the
   - [Default Theme > Config > colorMode](#colormode)
   - [Default Theme > Locale Config > toggleColorMode](./locale.md#togglecolormode)
 
+### externalLinkIcon
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Show external link icon on external links or not.
+
 ### home
 
 - Type: `string`

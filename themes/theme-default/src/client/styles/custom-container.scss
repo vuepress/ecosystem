@@ -39,6 +39,8 @@
   }
 
   &.warning {
+    --external-link-icon-color: var(--c-warning-text-quote);
+
     border-color: var(--c-warning);
     background-color: var(--c-warning-bg);
     color: var(--c-warning-text);
@@ -68,13 +70,11 @@
         background-color: var(--c-warning-bg-lighter);
       }
     }
-
-    .external-link-icon {
-      --external-link-icon-color: var(--c-warning-text-quote);
-    }
   }
 
   &.danger {
+    --external-link-icon-color: var(--c-danger-text-quote);
+
     border-color: var(--c-danger);
     background-color: var(--c-danger-bg);
     color: var(--c-danger-text);
@@ -103,10 +103,6 @@
       code {
         background-color: var(--c-danger-bg-lighter);
       }
-    }
-
-    .external-link-icon {
-      --external-link-icon-color: var(--c-danger-text-quote);
     }
   }
 

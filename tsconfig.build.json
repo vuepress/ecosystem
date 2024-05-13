@@ -18,9 +18,6 @@
     { "path": "./plugins/plugin-copyright/tsconfig.build.json" },
     { "path": "./plugins/plugin-docsearch/tsconfig.build.json" },
     {
-      "path": "./plugins/plugin-external-link-icon/tsconfig.build.json"
-    },
-    {
       "path": "./plugins/plugin-feed/tsconfig.build.json"
     },
     { "path": "./plugins/plugin-git/tsconfig.build.json" },

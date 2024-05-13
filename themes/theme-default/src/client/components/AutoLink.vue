@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { computed, toRefs } from 'vue'
 import type { PropType } from 'vue'
-import { useRoute, useSiteData } from 'vuepress/client'
+import { usePageFrontmatter, useRoute, useSiteData } from 'vuepress/client'
 import { isLinkHttp, isLinkWithProtocol } from 'vuepress/shared'
-import type { NavLink } from '../../shared/index.js'
+import type {
+  DefaultThemePageFrontmatter,
+  NavLink,
+} from '../../shared/index.js'
+import { useThemeLocaleData } from '../composables/index.js'
 
 defineOptions({
   inheritAttrs: false,
@@ -24,6 +28,8 @@ defineSlots<{
 const route = useRoute()
 const site = useSiteData()
 const { item } = toRefs(props)
+const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>()
+const themeLocale = useThemeLocaleData()
 
 // if the link has http protocol
 const hasHttpProtocol = computed(() => isLinkHttp(item.value.link))
@@ -80,6 +86,12 @@ const isActive = computed(() => {
   // if this link is active in subpath
   return route.path.startsWith(item.value.link)
 })
+
+// external-link-icon
+const enableExternalLinkIcon = computed(
+  () =>
+    frontmatter.value.externalLinkIcon ?? themeLocale.externalLinkIcon ?? true,
+)
 </script>
 
 <template>
@@ -90,26 +102,18 @@ const isActive = computed(() => {
     :aria-label="linkAriaLabel"
     v-bind="$attrs"
   >
-    <slot>
-      <slot name="before" />
-      {{ item.text }}
-      <slot name="after" />
-    </slot>
+    <slot><slot name="before" />{{ item.text }}<slot name="after" /></slot>
   </RouteLink>
   <a
     v-else
     class="external-link"
+    :class="{ 'vp-external-link-icon': enableExternalLinkIcon }"
     :href="item.link"
     :rel="linkRel"
     :target="linkTarget"
     :aria-label="linkAriaLabel"
     v-bind="$attrs"
   >
-    <slot>
-      <slot name="before" />
-      {{ item.text }}
-      <AutoLinkExternalIcon v-if="isBlankTarget" />
-      <slot name="after" />
-    </slot>
+    <slot><slot name="before" />{{ item.text }}<slot name="after" /></slot>
   </a>
 </template>

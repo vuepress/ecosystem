@@ -169,21 +169,6 @@ export default {
 
   Specify the text of the _back to home_ link in the 404 page.
 
-## openInNewWindow
-
-- Type: `string`
-
-- Default: `'open in new window'`
-
-- Details:
-
-  Specify the `sr-only` text of the [ExternalLinkIcon](../../plugins/external-link-icon.md#externallinkicon).
-
-  This is mainly for a11y purpose.
-
-- Also see:
-  - [Default Theme > Plugin Config > themePlugins.externalLinkIcon](./plugin.md#themeplugins-externallinkicon)
-
 ## toggleColorMode
 
 - Type: `string`

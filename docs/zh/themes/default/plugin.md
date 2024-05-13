@@ -70,16 +70,6 @@ export default {
 
   支持对象格式以作为插件选项。
 
-## themePlugins.externalLinkIcon
-
-- 类型： `boolean`
-
-- 默认值： `true`
-
-- 详情：
-
-  是否启用 [@vuepress/plugin-external-link-icon](../../plugins/external-link-icon.md) 。
-
 ## themePlugins.git
 
 - 类型： `boolean`

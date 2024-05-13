@@ -47,7 +47,6 @@
     "@vuepress/plugin-back-to-top": "workspace:~",
     "@vuepress/plugin-container": "workspace:~",
     "@vuepress/plugin-copy-code": "workspace:~",
-    "@vuepress/plugin-external-link-icon": "workspace:~",
     "@vuepress/plugin-git": "workspace:~",
     "@vuepress/plugin-links-check": "workspace:~",
     "@vuepress/plugin-medium-zoom": "workspace:~",
