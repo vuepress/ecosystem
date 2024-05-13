@@ -10,7 +10,6 @@ export const sidebarEn: SidebarConfig = {
         '/plugins/catalog',
         '/plugins/copy-code',
         '/plugins/copyright',
-        '/plugins/external-link-icon',
         '/plugins/medium-zoom',
         '/plugins/notice',
         '/plugins/nprogress',

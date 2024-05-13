@@ -36,11 +36,6 @@ export interface DefaultThemePluginsOptions {
   copyCode?: CopyCodePluginOptions | boolean
 
   /**
-   * Enable @vuepress/plugin-external-link-icon or not
-   */
-  externalLinkIcon?: boolean
-
-  /**
    * Enable @vuepress/plugin-git or not
    */
   git?: boolean
@@ -94,6 +89,13 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * @default true
    */
   colorModeSwitch?: boolean
+
+  /**
+   * Whether show external link icon
+   *
+   * @default true
+   */
+  externalLinkIcon?: boolean
 
   /**
    * Home path of current locale

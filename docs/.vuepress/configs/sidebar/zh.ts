@@ -10,7 +10,6 @@ export const sidebarZh: SidebarConfig = {
         '/zh/plugins/catalog',
         '/zh/plugins/copy-code',
         '/zh/plugins/copyright',
-        '/zh/plugins/external-link-icon',
         '/zh/plugins/medium-zoom',
         '/zh/plugins/notice',
         '/zh/plugins/nprogress',

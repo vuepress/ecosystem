@@ -17,7 +17,6 @@
     "@vuepress/plugin-comment": "workspace:*",
     "@vuepress/plugin-copy-code": "workspace:*",
     "@vuepress/plugin-docsearch": "workspace:*",
-    "@vuepress/plugin-external-link-icon": "workspace:*",
     "@vuepress/plugin-feed": "workspace:*",
     "@vuepress/plugin-medium-zoom": "workspace:*",
     "@vuepress/plugin-nprogress": "workspace:*",

@@ -91,6 +91,10 @@
   --sidebar-width-mobile: calc(var(--sidebar-width) * 0.82);
   --content-width: 740px;
   --homepage-width: 960px;
+
+  // external-link-icon
+  --external-link-icon: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' %3E%3Cpath d='M0 0h24v24H0V0z' fill='none' /%3E%3Cpath d='M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z' /%3E%3C/svg%3E");
+  --external-link-icon-color: var(--c-text-quote);
 }
 
 // plugin-back-to-top
@@ -136,11 +140,6 @@
   --docsearch-hit-background: var(--c-bg);
   --docsearch-hit-shadow: 0 1px 3px 0 var(--c-border-dark);
   --docsearch-footer-background: var(--c-bg);
-}
-
-// plugin-external-link-icon
-.external-link-icon {
-  --external-link-icon-color: var(--c-text-quote);
 }
 
 // plugin-medium-zoom
