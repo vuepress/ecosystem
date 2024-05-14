@@ -40,7 +40,7 @@ export const navbarZh: NavItem[] = [
       },
       {
         text: 'Markdown',
-        items: ['/zh/plugins/container', '/zh/plugins/links-check'],
+        items: ['/zh/plugins/markdown-container', '/zh/plugins/links-check'],
       },
       {
         text: '搜索',

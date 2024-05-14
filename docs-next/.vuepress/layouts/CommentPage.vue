@@ -6,9 +6,15 @@ const isDarkMode = useDarkMode()
 
 <template>
   <Layout>
-    <template #doc-bottom>
+    <template #doc-after>
       <!-- eslint-disable-next-line vue/no-undef-components -->
-      <CommentService :darkmode="isDarkMode" />
+      <CommentService class="vp-doc-comment" :darkmode="isDarkMode" />
     </template>
   </Layout>
 </template>
+
+<style scoped>
+.vp-doc-comment {
+  margin-top: 64px;
+}
+</style>

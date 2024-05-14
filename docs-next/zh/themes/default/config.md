@@ -1,4 +1,16 @@
-# 配置
+# 主题配置
+
+主题配置使你能够自定义主题，通过在给 主题 `defaultTheme()` 函数传入配置来实现：
+
+```ts
+import { defaultTheme } from '@vuepress/theme-default'
+
+export default {
+  theme: defaultTheme({
+    // 在这里添加主题配置
+  }),
+}
+```
 
 ## 基础配置
 
@@ -65,6 +77,7 @@ export default {
 type DefaultThemeImage =
   | string
   | { src: string; alt?: string; [prop: string]: any }
+  // 使用 `light` 和 `dark` 指定 浅色/深色 模式下的 图片 访问路径
   | { light: string; dark: string; alt?: string; [prop: string]: any }
 ```
 
@@ -111,7 +124,7 @@ type DefaultThemeImage =
 
   导航栏配置。
 
-  为了配置导航栏元素，你可以将其设置为 _导航栏数组_ ，其中的每个元素是 `NavItem[]` 对象。
+  为了配置导航栏元素，你可以将其设置为 _导航栏数组_ ，其中的每个元素是 `NavItem` 对象。
 
 ```ts
 export default {
@@ -238,7 +251,7 @@ export default {
 
 - 详情：
 
-  The configuration for the sidebar menu item. More details in [Default Theme: Sidebar](./sidebar.md).
+  侧边栏菜单项的配置。可以在 [Default Theme: Sidebar](./sidebar.md) 了解更多详情。
 
 ```ts
 export default {
@@ -261,47 +274,49 @@ export default {
 export type Sidebar = SidebarItem[] | SidebarMulti
 
 export interface SidebarMulti {
-  [path: string]: SidebarItem[] | { items: SidebarItem[]; base: string }
+  [path: string]: SidebarItem[]
 }
 
-export type SidebarItem = {
-  /**
-   * The text label of the item.
-   */
-  text?: string
+export type SidebarItem =
+  | string
+  | {
+      /**
+       * The text label of the item.
+       */
+      text?: string
 
-  /**
-   * The link of the item.
-   */
-  link?: string
+      /**
+       * The link of the item.
+       */
+      link?: string
 
-  /**
-   * The children of the item.
-   */
-  items?: SidebarItem[]
+      /**
+       * The children of the item.
+       */
+      items?: SidebarItem[]
 
-  /**
-   * If not specified, group is not collapsible.
-   *
-   * If `true`, group is collapsible and collapsed by default
-   *
-   * If `false`, group is collapsible but expanded by default
-   */
-  collapsed?: boolean
+      /**
+       * If not specified, group is not collapsible.
+       *
+       * If `true`, group is collapsible and collapsed by default
+       *
+       * If `false`, group is collapsible but expanded by default
+       */
+      collapsed?: boolean
 
-  /**
-   * Base path for the children items.
-   */
-  base?: string
+      /**
+       * Base path for the children items.
+       */
+      base?: string
 
-  /**
-   * Customize text that appears on the footer of previous/next page.
-   */
-  docFooterText?: string
+      /**
+       * Customize text that appears on the footer of previous/next page.
+       */
+      docFooterText?: string
 
-  rel?: string
-  target?: string
-}
+      rel?: string
+      target?: string
+    }
 ```
 
 ### aside
@@ -310,25 +325,25 @@ export type SidebarItem = {
 
 - 默认值： `true`
 
-  - Setting this value to `false` prevents rendering of aside container.
-  - Setting this value to `true` renders the aside to the right.
-  - Setting this value to `'left'` renders the aside to the left.
+  - 将此值设置为 `false` 可禁用 aside 容器。
+  - 将此值设置为 `true` 将在页面右侧渲染。
+  - 将此值设置为 `left` 将在页面左侧渲染。
 
-  If you want to disable it for all viewports, you should use `outline: false` instead.
+如果想对所有页面禁用它，应该使用 `outline: false` 。
 
-  You can override this global option via [aside](./frontmatter.md#aside) frontmatter in your pages.
+您可以通过页面的[aside](./frontmatter.md#aside) frontmatter 覆盖这个全局选项。
 
 ### outline
 
 - 类型： `false | number | [number, number] | 'deep'`
 
-- 默认值： `2`
+- 默认值： `[2, 3]`
 
 - 详情：
 
-  Custom header levels of outline in the aside component.
+  在侧边栏中自定义大纲的标题级别。
 
-  You can override this global option via [outline](./frontmatter.md#outline) frontmatter in your pages.
+  您可以通过页面中的 [outline](./frontmatter.md#outline) frontmatter 覆盖此全局选项。
 
 ### socialLinks
 
@@ -336,7 +351,7 @@ export type SidebarItem = {
 
 - 详情：
 
-  You may define this option to show your social account links with icons in nav.
+  您可以定义此选项，以在导航中显示带图标的社交账号链接。
 
 ```ts
 export default {
@@ -344,13 +359,13 @@ export default {
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
       { icon: 'twitter', link: '...' },
-      // You can also add custom icons by passing SVG as string:
+      // 可以通过将 SVG 作为字符串传递来添加自定义图标：
       {
         icon: {
           svg: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Dribbble</title><path d="M12...6.38z"/></svg>',
         },
         link: '...',
-        // You can include a custom label for accessibility too (optional but recommended):
+        // 也可以为无障碍添加一个自定义标签 (可选但推荐):
         ariaLabel: 'cool link',
       },
     ],
@@ -386,7 +401,7 @@ type SocialLinkIcon =
 
 - 详情：
 
-  Footer configuration. You can add a message or copyright text on the footer, however, it will only be displayed when the page doesn't contain a sidebar. This is due to design concerns.
+  页脚配置。可以添加 message 和 copyright。由于设计原因，仅当页面不包含侧边栏时才会显示页脚。
 
 ```ts
 export interface Footer {
@@ -403,9 +418,9 @@ export interface Footer {
 
 - 详情：
 
-  Enable the _edit this page_ link or not.
+  是否启用 _编辑此页面_ 链接。
 
-  You can override this global option via [editLink](./frontmatter.md#editlink) frontmatter in your pages.
+  可以通过页面的frontmatter中的[editLink](./frontmatter.md#editlink)来覆盖这个全局选项。
 
 ### editLinkPattern
 
@@ -413,21 +428,21 @@ export interface Footer {
 
 - 详情：
 
-  Specify the pattern of the _edit this page_ link.
+  _编辑此页_ 链接的 Pattern 。
 
-  This will be used for generating the _edit this page_ link.
+  它将会用于生成 _编辑此页_ 的链接。
 
-  If you don't set this option, the pattern will be inferred from the [docsRepo](#docsrepo) option. But if your documentation repository is not hosted on a common platform, for example, GitHub, GitLab, Bitbucket, Gitee, etc., you have to set this option explicitly to make the _edit this page_ link work.
+  如果你不设置该选项，则会根据 [docsRepo](#docsrepo) 配置项来推断 Pattern 。但是如果你的文档仓库没有托管在常用的平台上，比如 GitHub 、 GitLab 、 Bitbucket 、 Gitee 等，那么你必须设置该选项才能使 _编辑此页_ 链接正常工作。
 
-- Usage:
+- 用法：
 
-  | Pattern   | Description                                                                                         |
-  | --------- | --------------------------------------------------------------------------------------------------- |
-  | `:repo`   | The docs repo url, i.e. [docsRepo](#docsrepo)                                                       |
-  | `:branch` | The docs repo branch, i.e. [docsBranch](#docsbranch)                                                |
-  | `:path`   | The path of the page source file, i.e. [docsDir](#docsdir) joins the relative path of the page file |
+  | Pattern   | 描述                                                              |
+  | --------- | ----------------------------------------------------------------- |
+  | `:repo`   | 文档仓库 URL ，即 [docsRepo](#docsrepo)                           |
+  | `:branch` | 文档仓库分支 ，即 [docsBranch](#docsbranch)                       |
+  | `:path`   | 页面源文件的路径，即 [docsDir](#docsdir) 拼接上页面文件的相对路径 |
 
-- Example:
+- 示例：
 
 ```ts
 export default {
@@ -440,7 +455,7 @@ export default {
 }
 ```
 
-The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/docs/path/to/file.md'`.
+则会生成类似于 `'https://gitlab.com/owner/name/-/edit/master/docs/path/to/file.md'` 的链接。
 
 ### docsRepo
 
@@ -448,9 +463,9 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
 - 详情：
 
-  Specify the repository url of your documentation source files.
+  文档源文件的仓库 URL 。
 
-  This will be used for generating the _edit this page_ link.
+  它将会用于生成 _编辑此页_ 的链接。
 
 ### docsBranch
 
@@ -460,9 +475,9 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
 - 详情：
 
-  Specify the repository branch of your documentation source files.
+  文档源文件的仓库分支。
 
-  This will be used for generating the _edit this page_ link.
+  它将会用于生成 _编辑此页_ 的链接。
 
 ### docsDir
 
@@ -472,9 +487,9 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
 - 详情：
 
-  Specify the directory of your documentation source files in the repository.
+  文档源文件存放在仓库中的目录名。
 
-  This will be used for generating the _edit this page_ link.
+  它将会用于生成 _编辑此页_ 的链接。
 
 ### lastUpdated
 
@@ -484,9 +499,9 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
 - 详情：
 
-  Enable the _last updated timestamp_ or not.
+  是否启用 _最近更新时间戳_ 。
 
-  You can override this global option via [lastUpdated](./frontmatter.md#lastupdated) frontmatter in your pages. Notice that if you have already set this option to `false`, this feature will be disabled totally and could not be enabled in locales nor page frontmatter.
+  你可以通过页面的 [lastUpdated](./frontmatter.md#lastupdated) frontmatter 来覆盖这个全局配置。要注意的是，如果你已经将该选项设为了 `false` ，那么这个功能会被完全禁用，并且无法在 locales 或页面 frontmatter 中启用。
 
 ### lastUpdatedFormatOptions
 
@@ -496,9 +511,9 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
 - 详情：
 
-  Set options for last updated time formatting.
+  设置最后更新时间格式的选项。
 
-  see [Intl.DateTimeFormatOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat#using_options)
+  查看 [Intl.DateTimeFormatOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat#using_options) 了解更多。
 
 ### contributors
 
@@ -508,9 +523,9 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
 - 详情：
 
-  Enable the _contributors list_ or not.
+  是否启用 _贡献者列表_ 。
 
-  You can override this global option via [contributors](./frontmatter.md#contributors) frontmatter in your pages. Notice that if you have already set this option to `false`, this feature will be disabled totally and could not be enabled in locales nor page frontmatter.
+  你可以通过页面的 [contributors](./frontmatter.md#contributors) frontmatter 来覆盖这个全局配置。要注意的是，如果你已经将该选项设为了 `false` ，那么这个功能会被完全禁用，并且无法在 locales 或页面 frontmatter 中启用。
 
 ### docFooter
 
@@ -518,7 +533,8 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
 
 - 详情：
 
-  Can be used to customize text appearing above previous and next links. Helpful if not writing docs in English. Also can be used to disable prev/next links globally.
+  可用于自定义出现在上一页和下一页链接上方的文本。
+  如果不是用英语编写文档，则非常有帮助。还可以用于全局禁用上一页/下一页链接。
 
 ```ts
 export default {
@@ -538,7 +554,7 @@ export interface DocFooter {
 }
 ```
 
-### returnToTop
+### externalLinkIcon
 
 - 类型： `boolean`
 
@@ -546,17 +562,7 @@ export interface DocFooter {
 
 - 详情：
 
-  Enable the _return to top_ button or not.
-
-### externalLinkIcon
-
-- 类型： `boolean`
-
-- 默认值： `false`
-
-- 详情：
-
-  Whether to show an external link icon next to external links in markdown.
+  是否在 markdown 中的外部链接旁显示外部链接图标。
 
 ### carbonAds
 
@@ -564,7 +570,7 @@ export interface DocFooter {
 
 - 详情：
 
-  An option to display [Carbon Ads](https://www.carbonads.net/).
+  配置展示 [Carbon Ads](https://www.carbonads.net/).
 
 ```ts
 export default {
@@ -584,10 +590,10 @@ export interface CarbonAdsOptions {
 }
 ```
 
-These values are used to call carbon CDN script as shown below.
+这些值用于调用 carbon CDN 脚本，如下所示。
 
 ```js
 ;`//cdn.carbonads.com/carbon.js?serve=${code}&placement=${placement}`
 ```
 
-To learn more about Carbon Ads configuration, please visit [Carbon Ads website](https://www.carbonads.net/).
+要了解有关 Carbon Ads 配置的更多信息，请访问 [Carbon Ads website](https://www.carbonads.net/).

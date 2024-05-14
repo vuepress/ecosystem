@@ -1,10 +1,12 @@
 import { createRequire } from 'node:module'
 import process from 'node:process'
+import { footnote } from '@mdit/plugin-footnote'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { commentPlugin } from '@vuepress/plugin-comment'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
+import { feedPlugin } from '@vuepress/plugin-feed'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { defineUserConfig } from 'vuepress'
 import type { UserConfig } from 'vuepress'
@@ -66,12 +68,22 @@ export default defineUserConfig({
     },
   },
 
+  extendsMarkdown: (md) => {
+    md.use(footnote)
+  },
+
   plugins: [
     catalogPlugin(),
     docsearchPlugin(),
     commentPlugin({ provider: 'Giscus' }),
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, './components'),
+    }),
+    feedPlugin({
+      hostname: 'https://ecosystem.vuejs.press',
+      atom: true,
+      json: true,
+      rss: true,
     }),
   ],
 

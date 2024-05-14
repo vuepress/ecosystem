@@ -41,7 +41,7 @@ export const navbarEn: NavItem[] = [
       },
       {
         text: 'Markdown',
-        items: ['/plugins/container', '/plugins/links-check'],
+        items: ['/plugins/markdown-container', '/plugins/links-check'],
       },
       {
         text: 'Search',

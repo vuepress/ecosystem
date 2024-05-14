@@ -3,19 +3,18 @@ import type { Sidebar } from '@vuepress/theme-default'
 export const sidebarZh: Sidebar = {
   '/zh/themes/': [
     {
-      text: 'Default Theme',
+      text: '默认主题',
       link: '/zh/themes/default/',
-      base: '/zh/themes/default/',
       items: [
-        { link: 'config', text: '配置' },
-        { link: 'plugin', text: '插件配置' },
-        { link: 'locale', text: '语法配置' },
-        { link: 'sidebar', text: '侧边栏' },
-        { link: '/zh/themes/default/frontmatter', text: 'Frontmatter' },
-        { link: '/zh/themes/default/components', text: '内置组件' },
-        { link: '/zh/themes/default/markdown', text: 'Markdown' },
-        { link: '/zh/themes/default/styles', text: '样式' },
-        { link: '/zh/themes/default/extending', text: '继承' },
+        '/zh/themes/default/config',
+        '/zh/themes/default/plugin',
+        '/zh/themes/default/locale',
+        '/zh/themes/default/sidebar',
+        '/zh/themes/default/frontmatter',
+        '/zh/themes/default/components',
+        '/zh/themes/default/markdown',
+        '/zh/themes/default/styles',
+        '/zh/themes/default/extending',
       ],
     },
   ],
@@ -29,6 +28,7 @@ export const sidebarZh: Sidebar = {
         '/zh/plugins/copy-code',
         '/zh/plugins/copyright',
         '/zh/plugins/medium-zoom',
+        '/zh/plugins/notice',
         '/zh/plugins/nprogress',
         '/zh/plugins/photo-swipe',
         '/zh/plugins/redirect',
@@ -38,7 +38,7 @@ export const sidebarZh: Sidebar = {
     },
     {
       text: 'Markdown',
-      items: ['/zh/plugins/container', '/zh/plugins/links-check'],
+      items: ['/zh/plugins/markdown-container', '/zh/plugins/links-check'],
     },
     {
       text: '搜索',
@@ -46,20 +46,67 @@ export const sidebarZh: Sidebar = {
     },
     {
       text: '博客',
-      items: ['/zh/plugins/blog/', '/zh/plugins/comment/', '/zh/plugins/feed/'],
+      items: [
+        {
+          text: '博客',
+          link: '/zh/plugins/blog/',
+          items: ['/zh/plugins/blog/guide', '/zh/plugins/blog/config'],
+        },
+        {
+          text: '评论',
+          link: '/zh/plugins/comment/',
+          items: [
+            '/zh/plugins/comment/guide',
+            '/zh/plugins/comment/giscus/',
+            '/zh/plugins/comment/waline/',
+            '/zh/plugins/comment/artalk/',
+            '/zh/plugins/comment/twikoo/',
+          ],
+        },
+        {
+          text: 'Feed',
+          link: '/zh/plugins/feed/',
+          items: [
+            '/zh/plugins/feed/guide',
+            '/zh/plugins/feed/config',
+            '/zh/plugins/feed/frontmatter',
+            '/zh/plugins/feed/channel',
+            '/zh/plugins/feed/getter',
+          ],
+        },
+      ],
     },
     {
       text: 'PWA',
-      items: ['/zh/plugins/pwa/', '/zh/plugins/remove-pwa'],
+      items: [
+        {
+          text: 'PWA',
+          link: '/zh/plugins/pwa/',
+          items: ['/zh/plugins/pwa/guide', '/zh/plugins/pwa/config'],
+        },
+        '/zh/plugins/remove-pwa',
+      ],
     },
     {
       text: '搜索引擎增强',
       items: [
+        {
+          text: '搜索引擎增强',
+          link: '/zh/plugins/seo/',
+          items: ['/zh/plugins/seo/guide', '/zh/plugins/seo/config'],
+        },
+        {
+          text: '站点地图',
+          link: '/zh/plugins/sitemap/',
+          items: [
+            '/zh/plugins/sitemap/guide',
+            '/zh/plugins/sitemap/config',
+            '/zh/plugins/sitemap/frontmatter',
+          ],
+        },
         '/zh/plugins/baidu-analytics',
         '/zh/plugins/google-analytics',
         '/zh/plugins/google-tag-manager',
-        '/zh/plugins/seo/',
-        '/zh/plugins/sitemap/',
         '/zh/plugins/umami-analytics',
       ],
     },
@@ -75,7 +122,14 @@ export const sidebarZh: Sidebar = {
         '/zh/plugins/palette',
         '/zh/plugins/reading-time',
         '/zh/plugins/rtl',
-        '/zh/plugins/sass-palette/',
+        {
+          text: 'SASS 调色板',
+          link: '/zh/plugins/sass-palette/',
+          items: [
+            '/zh/plugins/sass-palette/guide',
+            '/zh/plugins/sass-palette/config',
+          ],
+        },
         '/zh/plugins/theme-data',
         '/zh/plugins/toc',
       ],
@@ -86,10 +140,10 @@ export const sidebarZh: Sidebar = {
       text: '@vuepress/helper',
       link: '/zh/tools/helper/',
       items: [
-        { link: '/zh/tools/helper/node/bundler', text: '打包器相关' },
-        { link: '/zh/tools/helper/node/page', text: '页面相关' },
-        { link: '/zh/tools/helper/client', text: '客户端相关' },
-        { link: '/zh/tools/helper/shared', text: '共享方法' },
+        '/zh/tools/helper/node/bundler',
+        '/zh/tools/helper/node/page',
+        '/zh/tools/helper/client',
+        '/zh/tools/helper/shared',
       ],
     },
   ],
