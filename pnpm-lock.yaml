@@ -123,6 +123,9 @@ importers:
       '@vuepress/plugin-feed':
         specifier: workspace:*
         version: link:../plugins/plugin-feed
+      '@vuepress/plugin-markdown-image':
+        specifier: workspace:*
+        version: link:../plugins/plugin-markdown-image
       '@vuepress/plugin-medium-zoom':
         specifier: workspace:*
         version: link:../plugins/plugin-medium-zoom

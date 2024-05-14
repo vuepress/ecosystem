@@ -5,21 +5,22 @@ import { imgSize, obsidianImageSize } from '@mdit/plugin-img-size'
 import type { Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import type { MarkdownImagePluginOptions } from './options.js'
+import { prepareClientConfigFile } from './prepare/prepareClientConfigFile.js'
 
-export const markdownImagePlugin = ({
-  figure: enableFigure,
-  lazyload,
-  mark,
-  obsidianSize,
-  size,
-}: MarkdownImagePluginOptions): Plugin => ({
+export const markdownImagePlugin = (
+  options: MarkdownImagePluginOptions,
+): Plugin => ({
   name: '@vuepress/plugin-markdown-image',
 
   extendsMarkdown: (md) => {
-    if (enableFigure) md.use(figure)
-    if (lazyload) md.use(imgLazyload)
-    if (obsidianSize) md.use(obsidianImageSize)
-    if (size) md.use(imgSize)
+    const { mark } = options
+
+    if (options.figure) md.use(figure)
+    if (options.lazyload) md.use(imgLazyload)
+    if (options.obsidianSize) md.use(obsidianImageSize)
+    if (options.size) md.use(imgSize)
     if (mark) md.use(imgMark, isPlainObject(mark) ? mark : {})
   },
+
+  clientConfigFile: (app) => prepareClientConfigFile(app, options),
 })

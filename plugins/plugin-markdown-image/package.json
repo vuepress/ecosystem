@@ -1,5 +1,5 @@
 {
-  "name": "@vuepress/plugin-image",
+  "name": "@vuepress/plugin-markdown-image",
   "version": "2.0.0-rc.28",
   "description": "VuePress plugin - markdown image",
   "keywords": [
@@ -13,14 +13,14 @@
     "image mark",
     "image size"
   ],
-  "homepage": "https://ecosystem.vuejs.press/plugins/image.html",
+  "homepage": "https://ecosystem.vuejs.press/plugins/markdown-image.html",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/ecosystem.git",
-    "directory": "plugins/plugin-image"
+    "directory": "plugins/plugin-markdown-image"
   },
   "license": "MIT",
   "author": {
