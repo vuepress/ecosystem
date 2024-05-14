@@ -13,7 +13,6 @@
     { "path": "./plugins/plugin-blog/tsconfig.build.json" },
     { "path": "./plugins/plugin-catalog/tsconfig.build.json" },
     { "path": "./plugins/plugin-comment/tsconfig.build.json" },
-    { "path": "./plugins/plugin-markdown-container/tsconfig.build.json" },
     { "path": "./plugins/plugin-copy-code/tsconfig.build.json" },
     { "path": "./plugins/plugin-copyright/tsconfig.build.json" },
     { "path": "./plugins/plugin-docsearch/tsconfig.build.json" },
@@ -28,6 +27,8 @@
       "path": "./plugins/plugin-google-tag-manager/tsconfig.build.json"
     },
     { "path": "./plugins/plugin-links-check/tsconfig.build.json" },
+    { "path": "./plugins/plugin-markdown-container/tsconfig.build.json" },
+    { "path": "./plugins/plugin-markdown-image/tsconfig.build.json" },
     { "path": "./plugins/plugin-medium-zoom/tsconfig.build.json" },
     { "path": "./plugins/plugin-notice/tsconfig.build.json" },
     { "path": "./plugins/plugin-nprogress/tsconfig.build.json" },

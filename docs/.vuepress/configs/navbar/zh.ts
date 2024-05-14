@@ -36,7 +36,11 @@ export const navbarZh: NavbarConfig = [
       },
       {
         text: 'Markdown',
-        children: ['/zh/plugins/markdown-container', '/zh/plugins/links-check'],
+        children: [
+          '/zh/plugins/markdown-container',
+          '/zh/plugins/markdown-image',
+          '/zh/plugins/links-check',
+        ],
       },
       {
         text: '搜索',
