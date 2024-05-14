@@ -21,7 +21,7 @@ import type {
   ResolvedSidebar,
   ResolvedSidebarItem,
 } from '../../../shared/resolved/sidebar.js'
-import { getNavLinkWithPath } from '../../utils/index.js'
+import { getNavLinkWithPath, normalizeLink } from '../../utils/index.js'
 import { getSidebarInfo } from './getSidebarInfo.js'
 import { getSidebarSorter } from './getSidebarSorter.js'
 
@@ -115,14 +115,15 @@ function resolveSidebarItems(
 ): ResolvedSidebarItem[] {
   return items.map((item) => {
     if (isString(item)) {
-      return getNavLinkWithPath(app.pages, item)
+      return getNavLinkWithPath(app.pages, item, _base)
     }
     const { base, link, items, ...args } = item
     return {
       ...args,
       link: isLinkExternal(link || '')
         ? link
-        : _base && link !== undefined && !link.startsWith('/')
+        : // link maybe a empty string, so must be check `undefined`
+          _base && link !== undefined && !link.startsWith('/')
           ? normalizeLink(_base, link)
           : link,
       items:
@@ -163,8 +164,4 @@ function getSidebarItemsFromInfos(infos: SidebarInfo[]): ResolvedSidebarItem[] {
       items: getSidebarItemsFromInfos(info.children),
     }
   })
-}
-
-function normalizeLink(base: string, link: string): string {
-  return `${base}/${link}`.replace(/\/+/g, '/')
 }

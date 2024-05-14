@@ -297,6 +297,12 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Navbar language selection config
    *
    * Text of the language selection dropdown
+   *
+   * 导航栏语言选择配置
+   *
+   * 语言选择下拉菜单的文本
+   *
+   * @default 'Language'
    */
   selectLanguageText?: string
 
@@ -306,23 +312,35 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Language name of current locale
    *
    * Displayed inside the language selection dropdown
+   *
+   * 导航栏语言选择配置
+   *
+   * 当前区域的语言名称
+   *
+   * 显示在语言选择下拉菜单中
    */
   selectLanguageName?: string
 
   /**
    * The carbon ads options. Leave it undefined to disable the ads feature.
+   *
+   * Carbon广告选项。将其保留为未定义以禁用广告功能。
    */
   carbonAds?: CarbonAdsOptions
 
   /**
    * Show external link icon in Markdown links.
    *
-   * @default false
+   * 在Markdown链接中显示外部链接图标。
+   *
+   * @default true
    */
   externalLinkIcon?: boolean
 
   /**
    * Customize text of 404 page.
+   *
+   * 定制404页面的文本。
    */
   notFound?: NotFoundOptions
 
@@ -330,9 +348,14 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Configure the scroll offset when the theme has a sticky header.
    * Can be a number or a selector element to get the offset from.
    * Can also be an array of selectors in case some elements will be
-   * invisible due to responsive layout. VitePress will fallback to the next
+   * invisible due to responsive layout. VuePress will fallback to the next
    * selector if a selector fails to match, or the matched element is not
    * currently visible in viewport.
+   *
+   * 配置主题具有粘性标题时的滚动偏移量。
+   * 可以是一个数字或选择器元素以获取偏移量。
+   * 也可以是选择器数组，以防某些元素由于响应式布局而不可见。
+   * VuePress 将在选择器无法匹配或匹配的元素当前不可见于视口时，回退到下一个选择器。
    */
   scrollOffset?:
     | number
@@ -347,12 +370,16 @@ export interface DocFooter {
   /**
    * Custom label for previous page button. Can be set to `false` to disable.
    *
+   * 设置上一页按钮的自定义标签。可以设置为 `false` 来禁用。
+   *
    * @default 'Previous page'
    */
   prev?: string | boolean
 
   /**
    * Custom label for next page button. Can be set to `false` to disable.
+   *
+   * 设置下一页按钮的自定义标签。可以设置为 `false` 来禁用。
    *
    * @default 'Next page'
    */
@@ -383,12 +410,16 @@ export interface NotFoundOptions {
   /**
    * Set custom not found message.
    *
+   * 自定义 页面未找到 消息。
+   *
    * @default 'PAGE NOT FOUND'
    */
   title?: string
 
   /**
    * Set custom not found description.
+   *
+   * 自定义 页面的未找到 描述。
    *
    * @default "But if you don't change your direction, and if you keep looking, you may end up where you are heading."
    */

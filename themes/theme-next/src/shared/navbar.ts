@@ -5,9 +5,12 @@ export interface NavItemWithLink {
   link: string
 
   items?: never
+
   /**
    * @deprecated Use `items` instead
-   * */
+   *
+   * @deprecated 使用 `items` 替换
+   *  */
   children?: never
 
   /**
@@ -29,7 +32,7 @@ export interface NavItemChildren {
   /**
    * The items in the dropdown menu
    *
-   * 导航栏下拉菜单，
+   * 导航栏下拉菜单
    */
   items: (string | NavItemWithLink)[]
 
@@ -46,7 +49,7 @@ export interface NavItemWithChildren {
   /**
    * The items in the dropdown menu
    *
-   * 导航栏下拉菜单，
+   * 导航栏下拉菜单
    */
   items: (string | NavItemChildren | NavItemWithLink)[]
 

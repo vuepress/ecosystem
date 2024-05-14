@@ -36,8 +36,8 @@
   margin: 0;
   background: var(--docsearch-searchbox-background);
   transition:
-    border-color var(--t-color),
-    background var(--t-color);
+    border-color 0.5s ease,
+    background 0.5s ease;
 }
 
 .vpNavBarSearch .DocSearch-Button:hover {
@@ -68,7 +68,7 @@
   height: 16px;
   color: var(--vp-c-text-1);
   fill: currentcolor;
-  transition: color var(--t-color);
+  transition: color 0.5s ease;
 }
 
 .DocSearch-Button:hover .DocSearch-Search-Icon {
@@ -82,7 +82,7 @@
   font-size: 13px;
   font-weight: 500;
   color: var(--vp-c-text-2);
-  transition: color var(--t-color);
+  transition: color 0.5s ease;
 }
 
 .DocSearch-Button:hover .DocSearch-Button-Placeholder {
@@ -116,8 +116,8 @@
   border-right: none;
   border-radius: 4px 0 0 4px;
   transition:
-    color var(--t-color),
-    border-color var(--t-color);
+    color 0.5s ease,
+    border-color 0.5s ease;
 }
 
 .DocSearch-Button .DocSearch-Button-Key + .DocSearch-Button-Key {

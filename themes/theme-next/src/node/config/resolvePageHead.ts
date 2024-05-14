@@ -26,11 +26,11 @@ export function resolvePageHead(
       fallbackPreference === 'force-dark'
         ? `document.documentElement.classList.add('dark')`
         : `;(() => {
-                const preference = localStorage.getItem('vuepress-color-scheme') || '${fallbackPreference}'
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-                if (!preference || preference === 'auto' ? prefersDark : preference === 'dark')
-                  document.documentElement.classList.add('dark')
-              })()`,
+  const preference = localStorage.getItem('vuepress-color-scheme') || '${fallbackPreference}'
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  if (!preference || preference === 'auto' ? prefersDark : preference === 'dark')
+    document.documentElement.classList.add('dark')
+})()`,
     ])
   }
 

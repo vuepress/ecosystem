@@ -3,16 +3,22 @@ import { ensureLeadingSlash, isLinkExternal } from 'vuepress/shared'
 import type { ResolvedNavItemWithLink } from '../../shared/resolved/navbar.js'
 import { logger } from '../utils/index.js'
 
+export function normalizeLink(base: string, link: string): string {
+  return `${base}/${link}`.replace(/\/+/g, '/')
+}
+
 export function getNavLinkWithPath(
   pages: Page[],
   filepath: string,
+  base?: string,
 ): ResolvedNavItemWithLink {
-  const fallback = { link: filepath, text: filepath }
-  const nativePath = filepath
   // external link
   if (isLinkExternal(filepath)) {
-    return fallback
+    return { link: filepath, text: filepath }
   }
+  filepath =
+    base && !filepath.startsWith('/') ? normalizeLink(base, filepath) : filepath
+  const fallback = { link: filepath, text: filepath }
   filepath = ensureLeadingSlash(filepath).slice(1)
   // /aa/ -> maybe `page.path` or `/aa/README.md`
   if (filepath.endsWith('/')) {
@@ -22,7 +28,7 @@ export function getNavLinkWithPath(
     )
 
     if (!page) {
-      logger.warn(`nav link not found: ${nativePath}`)
+      logger.warn(`nav link not found: ${fallback.link}`)
     }
 
     return page
@@ -34,7 +40,7 @@ export function getNavLinkWithPath(
   const page = pages.find((page) => page.filePathRelative === filepath)
 
   if (!page) {
-    logger.warn(`nav link not found: ${nativePath}`)
+    logger.warn(`nav link not found: ${fallback.link}`)
   }
 
   return page
