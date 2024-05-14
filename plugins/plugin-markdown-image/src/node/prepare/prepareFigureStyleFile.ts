@@ -30,9 +30,8 @@ ${contentSelector} figure img {
   border-radius: 8px;
 }
 
-${contentSelector} figure img[tabindex]:hover,
 ${contentSelector} figure img[tabindex]:focus {
-  box-shadow: 2px 2px 10px 0 var(--card-shadow);
+  outline: 2px solid var(--theme-color, #3eaf7c);
 }
 
 ${contentSelector} figure figcaption {
