@@ -42,8 +42,12 @@ const badgeImg = computed(
   </a>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .npm-badge {
   margin-right: 0.5rem;
+
+  &::after {
+    display: none !important;
+  }
 }
 </style>
