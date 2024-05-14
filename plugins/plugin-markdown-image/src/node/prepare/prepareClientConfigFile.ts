@@ -6,7 +6,6 @@ import { prepareMarkStyleFile } from './prepareMarkStyleFile.js'
 export const prepareClientConfigFile = async (
   app: App,
   {
-    contentSelector = '.theme-default-content',
     lightmodeSelector = 'html:not(.dark)',
     darkmodeSelector = 'html.dark',
     figure,
@@ -17,7 +16,7 @@ export const prepareClientConfigFile = async (
 
   if (figure) {
     content += `\
-import "${await prepareFigureStyleFile(app, contentSelector)}"
+import "${await prepareFigureStyleFile(app)}"
 `
   }
 

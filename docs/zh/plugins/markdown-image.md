@@ -146,12 +146,6 @@ interface ImageMarkOptions {
 - 类型：`boolean`
 - 详情：是否启用 Obsidian 图片尺寸支持。
 
-### contentSelector
-
-- 类型：`string`
-- 默认值：`'.theme-default-content'`
-- 详情：内容容器的选择器。
-
 ### lightmodeSelector
 
 - 类型：`string`

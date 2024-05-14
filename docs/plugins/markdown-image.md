@@ -147,12 +147,6 @@ If the image is standalone in a line, wrapped or not wrapped by link, it will be
 - Type: `boolean`
 - Details: Whether enable Obsidian image size support.
 
-### contentSelector
-
-- Type: `string`
-- Default: `'.theme-default-content'`
-- Details: The selector the content container.
-
 ### lightmodeSelector
 
 - Type: `string`
