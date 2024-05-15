@@ -21,7 +21,7 @@ export interface PrismjsPluginOptions extends PreWrapperOptions {
 
 export const prismjsPlugin = ({
   preloadLanguages = ['markdown', 'jsdoc', 'yaml'],
-  ...preWrapperOption
+  ...preWrapperOptions
 }: PrismjsPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-prismjs',
 
@@ -35,6 +35,6 @@ export const prismjsPlugin = ({
       return highlighter?.(code) || ''
     }
 
-    md.use(preWrapperPlugin, preWrapperOption)
+    md.use(preWrapperPlugin, preWrapperOptions)
   },
 })

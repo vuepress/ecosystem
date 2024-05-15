@@ -29,7 +29,7 @@ export function preWrapperPlugin(
     // remove `<code>` attributes
     let result = code.replace(/<code[^]*?>/, '<code>')
 
-    // resolve v-pre mark from token inf
+    // resolve v-pre mark from token info
     const useVPre = resolveVPre(info) ?? vPreBlock
     if (useVPre) {
       result = `<pre v-pre${result.slice('<pre'.length)}`
