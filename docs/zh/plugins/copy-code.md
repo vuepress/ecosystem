@@ -29,7 +29,7 @@ export default {
 ### selector
 
 - 类型：`string | string[]`
-- 默认值：`'.theme-default-content div[class*="language-"] pre'`
+- 默认值：`'#vp-content div[class*="language-"] pre'`
 - 详情:
 
   代码块选择器

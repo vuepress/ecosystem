@@ -53,9 +53,7 @@ test.describe('homepage', () => {
   })
 
   test('has content', async ({ page }) => {
-    await expect(page.locator('.theme-default-content')).toHaveText(
-      'HomePage Content',
-    )
+    await expect(page.locator('#vp-content')).toHaveText('HomePage Content')
   })
 
   test('has footer', async ({ page }) => {

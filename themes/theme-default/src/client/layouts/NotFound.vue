@@ -13,7 +13,7 @@ const homeText = themeLocale.value.backToHome ?? 'Back to home'
 </script>
 
 <template>
-  <div class="theme-container">
+  <div id="vp-container">
     <main class="page">
       <div class="theme-default-content">
         <h1>404</h1>

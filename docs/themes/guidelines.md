@@ -14,11 +14,12 @@ A theme may have the following optional elements:
 - Navbar: An element which is the navbar of the theme. This element should have the id `vp-navbar`.
 - Sidebar: An element which is the sidebar of the theme. This element should have the id `vp-sidebar`.
 - Outline: An element which holds headings or outline of the main content. This element should have the id `vp-outline`.
+- Comment: An element which holds comment service. This element should have the id `vp-comment`.
 
 If a theme has darkmode and lightmode, it must:
 
-- Attach an id called `vp-light` on html in lightmode.
-- Attach an id called `vp-dark` on html in darkmode.
+- Set `data-theme` to `dark` on html in darkmode.
+- Set `data-theme` to `light` on html in lightmode.
 
 ## Color Variables
 

@@ -11,7 +11,7 @@
   mask-image: var(--external-link-icon);
 }
 
-.external-link-icon .theme-default-content {
+.external-link-icon #vp-content {
   a[href*="://"],
   a[target=_blank] {
     &:not(.no-external-link-icon)::after {

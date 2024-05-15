@@ -61,7 +61,7 @@
   display: none;
 }
 
-.theme-container {
+#vp-container {
   &.sidebar-open {
     .sidebar-mask {
       display: block;
@@ -90,7 +90,7 @@
   }
 
   &.no-navbar {
-    .theme-default-content {
+    #vp-content {
       h1,
       h2,
       h3,
@@ -110,22 +110,23 @@
       top: 0;
     }
   }
-}
-.theme-container.no-sidebar {
-  .sidebar {
-    display: none;
 
-    @media (max-width: $MQMobile) {
-      display: block;
+  &.no-sidebar {
+    .sidebar {
+      display: none;
+
+      @media (max-width: $MQMobile) {
+        display: block;
+      }
+    }
+
+    .page {
+      padding-left: 0;
     }
   }
-
-  .page {
-    padding-left: 0;
-  }
 }
 
-.theme-default-content {
+#vp-content {
   a:not(.header-anchor):hover {
     text-decoration: underline;
   }
@@ -180,7 +181,7 @@
     padding-left: 0;
   }
 
-  .theme-container {
+  #vp-container {
     &.sidebar-open {
       .sidebar {
         transform: translateX(0);

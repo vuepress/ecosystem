@@ -66,7 +66,7 @@ export default defineComponent({
     const walineProps = computed(() => ({
       lang: lang.value === 'zh-CN' ? 'zh-CN' : 'en',
       locale: walineLocale.value,
-      dark: 'html.dark',
+      dark: "html[data-theme='dark']",
       ...walineOptions.value,
       path: props.identifier,
     }))

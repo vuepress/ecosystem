@@ -49,7 +49,7 @@ pageClass: custom-page-class
 Then you can customize styles of this page in `.vuepress/styles/index.scss` file:
 
 ```scss
-.theme-container.custom-page-class {
+#vp-container.custom-page-class {
   /* page styles */
 }
 ```

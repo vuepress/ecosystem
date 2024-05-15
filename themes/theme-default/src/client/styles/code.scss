@@ -125,7 +125,7 @@ pre[class*='language-'] {
 
 // ===============================
 
-.theme-default-content {
+#vp-content {
   pre,
   pre[class*='language-'] {
     line-height: $line-height;
@@ -254,7 +254,7 @@ div[class*='language-'] {
 
 // narrow mobile
 @media (max-width: $MQMobileNarrow) {
-  .theme-default-content {
+  #vp-content {
     div[class*='language-'] {
       margin: 0.85rem -1.5rem;
       border-radius: 0;
