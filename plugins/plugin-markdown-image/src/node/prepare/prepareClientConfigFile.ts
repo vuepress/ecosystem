@@ -1,7 +1,10 @@
+import { createRequire } from 'node:module'
 import type { App } from 'vuepress'
 import type { MarkdownImagePluginOptions } from '../options.js'
-import { prepareFigureStyleFile } from './prepareFigureStyleFile.js'
+import { PLUGIN_NAME } from '../utils.js'
 import { prepareMarkStyleFile } from './prepareMarkStyleFile.js'
+
+const require = createRequire(import.meta.url)
 
 export const prepareClientConfigFile = async (
   app: App,
@@ -16,7 +19,7 @@ export const prepareClientConfigFile = async (
 
   if (figure) {
     content += `\
-import "${await prepareFigureStyleFile(app)}"
+import "${require.resolve(`${PLUGIN_NAME}/styles/figure.css`)}"
 `
   }
 

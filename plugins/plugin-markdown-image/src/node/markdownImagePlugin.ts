@@ -6,11 +6,12 @@ import type { Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import type { MarkdownImagePluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepare/prepareClientConfigFile.js'
+import { PLUGIN_NAME } from './utils.js'
 
 export const markdownImagePlugin = (
   options: MarkdownImagePluginOptions,
 ): Plugin => ({
-  name: '@vuepress/plugin-markdown-image',
+  name: PLUGIN_NAME,
 
   extendsMarkdown: (md) => {
     const { mark } = options

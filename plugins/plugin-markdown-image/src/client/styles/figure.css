@@ -1,9 +1,3 @@
-import type { App } from 'vuepress'
-
-export const prepareFigureStyleFile = async (app: App): Promise<string> =>
-  app.writeTemp(
-    'markdown-image/figure.css',
-    `\
 figure {
   text-align: center;
 }
@@ -17,5 +11,3 @@ figure > a[href*="://"]::after,
 figure > a[target=_blank]::after {
   display: none !important;
 }
-`,
-  )

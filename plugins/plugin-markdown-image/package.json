@@ -31,6 +31,7 @@
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
+    "./styles/*": "./lib/client/styles/*",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
