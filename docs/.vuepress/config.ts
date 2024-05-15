@@ -50,9 +50,7 @@ export default defineUserConfig({
 
   // configure markdown
   markdown: {
-    code: {
-      lineNumbers: 10,
-    },
+    code: isProd ? false : { lineNumbers: 10 },
     importCode: {
       handleImportPath: (importPath) => {
         // handle @vuepress packages import path
@@ -106,6 +104,7 @@ export default defineUserConfig({
       ? shikiPlugin({
           langs: ['bash', 'diff', 'json', 'md', 'ts', 'vue'],
           theme: 'dark-plus',
+          lineNumbers: 10,
         })
       : [],
   ],

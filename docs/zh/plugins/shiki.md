@@ -46,6 +46,14 @@ export default {
 - 参考：
   - [shiki > Languages](https://shiki.style/languages)
 
+### defaultHighlightLang
+
+- 类型： `string`
+
+- 详情：
+
+  当指定的语言不可用时，使用备选语言。
+
 ### theme
 
 - 类型： `ShikiTheme`
@@ -85,3 +93,242 @@ export default {
 
 - 参考：
   - [Shiki > Transformers](https://shiki.style/guide/transformers)
+
+### lineNumbers
+
+- 类型： `boolean | number`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否启用行号。
+
+  - 当配置为 `true` 时，会在代码块前面添加行号。
+  - 当配置为 `false` 时，不会添加行号。
+  - 当配置为 `number` 时，代表显示行号所需的最少行数。
+    例如，如果你将它设置为 4 ，那么只有在你的代码块包含至少 4 行代码时才会启用行号。
+
+  你可以在代码块添加 `:line-numbers` / `:no-line-numbers` 标记来覆盖配置项中的设置。
+
+**输入**
+
+````md
+```ts
+// 行号默认是启用的
+const line2 = 'This is line 2'
+const line3 = 'This is line 3'
+```
+
+```ts:no-line-numbers
+// 行号被禁用
+const line2 = 'This is line 2'
+const line3 = 'This is line 3'
+```
+````
+
+**输出**
+
+```ts
+// 行号默认是启用的
+const line2 = 'This is line 2'
+const line3 = 'This is line 3'
+```
+
+```ts:no-line-numbers
+// 行号被禁用
+const line2 = 'This is line 2'
+const line3 = 'This is line 3'
+```
+
+### highlightLines
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否启用 行高亮。
+
+  在代码块添加行数范围标记，来为对应代码行进行高亮。
+
+  行数范围标记的例子：
+
+  - 行数范围： `{5-8}`
+  - 多个单行： `{4,7,9}`
+  - 组合： `{4,7-13,16,23-27,40}`
+
+**输入**
+
+````md
+```ts{1,7-9}
+import { defaultTheme } from '@vuepress/theme-default'
+import { defineUserConfig } from 'vuepress'
+
+export default defineUserConfig({
+  title: '你好， VuePress',
+
+  theme: defaultTheme({
+    logo: 'https://vuejs.org/images/logo.png',
+  }),
+})
+```
+````
+
+**输出**
+
+```ts{1,7-9}
+import { defaultTheme } from '@vuepress/theme-default'
+import { defineUserConfig } from 'vuepress'
+
+export default defineUserConfig({
+  title: '你好， VuePress',
+
+  theme: defaultTheme({
+    logo: 'https://vuejs.org/images/logo.png',
+  }),
+})
+```
+
+### vPre
+
+- 类型： `{ block?: boolean; inline?: boolean }`
+
+- 默认值： `{ block: true, inline: true }`
+
+- 详情：
+
+  为了避免你的代码块被 Vue 编译, 插件默认会在你的代码块添加 [v-pre](https://v3.vuejs.org/api/directives.html#v-pre) 指令。
+
+  - `vPre.block`: 是否在代码块的 `<pre>` 标签上添加 `v-pre` 指令。
+  - `vPre.inline`: 是否在行内代码的 `<code>` 标签上添加 `v-pre` 指令。
+
+  你可以在代码块添加 `:v-pre` / `:no-v-pre` 标记来覆盖配置项中的设置。
+
+**输入**
+
+````md
+```md
+<!-- 默认情况下，这里会被保持原样 -->
+
+1 + 2 + 3 = {{ 1 + 2 + 3 }}
+```
+
+```md:no-v-pre
+<!-- 这里会被 Vue 编译 -->
+
+1 + 2 + 3 = {{ 1 + 2 + 3 }}
+```
+
+```js:no-v-pre
+// 由于 JS 代码高亮，这里不会被正确编译
+const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
+```
+````
+
+**输出**
+
+```md
+<!-- 默认情况下，这里会被保持原样 -->
+
+1 + 2 + 3 = {{ 1 + 2 + 3 }}
+```
+
+```md:no-v-pre
+<!-- 这里会被 Vue 编译 -->
+
+1 + 2 + 3 = {{ 1 + 2 + 3 }}
+```
+
+```js
+// 由于 JS 代码高亮，这里不会被正确编译
+const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
+```
+
+### defaultColor
+
+- 类型： `false | 'light' | 'dark' | string`
+
+- 默认值： `'light'`
+
+- 详情：
+
+  应用于代码的默认主题（通过内联`color`样式）。其余主题通过CSS变量应用，并通过CSS覆盖进行切换。
+
+  例如，如果`defaultColor`是`light`，则将`light`主题应用于代码，并通过CSS变量应用`dark`主题和其他自定义主题：
+
+```html
+<span style="color:#{light};--shiki-dark:#{dark};--shiki-custom:#{custom};"
+  >code</span
+>
+```
+
+设置为 `false` 时，将不会应用任何默认样式，完全由用户自行应用样式。
+
+```html
+<span
+  style="--shiki-light:#{light};--shiki-dark:#{dark};--shiki-custom:#{custom};"
+  >code</span
+>
+```
+
+### shikiSetup
+
+- 类型： `(shiki: Highlighter) => void | Promise<void>`
+
+- 详情：
+
+  自定义shiki设置函数。您可以通过在配置中添加自己的shikiSetup函数来定制shiki实例。
+
+:::warning
+以下配置启用相关功能后，需要自行在主题中定义相关的样式。
+:::
+
+### notationDiff
+
+- 类型： `boolean`
+
+- 默认值： `false`
+
+- 详情：
+
+  是否启用 notation diff
+
+  参考： [Shiki > Notation Diff](https://shiki.style/packages/transformers#transformernotationdiff)
+
+### notationFocus
+
+- 类型： `boolean`
+
+- 默认值： `false`
+
+- 详情：
+
+  是否启用 notation focus.
+
+  参考： [Shiki > Notation Focus](https://shiki.style/packages/transformers#transformernotationfocus)
+
+### notationHighlight
+
+- 类型： `boolean`
+
+- 默认值： `false`
+
+- 详情：
+
+  是否启用 notation highlight.
+
+  参考： [Shiki > Notation Highlight](https://shiki.style/packages/transformers#transformernotationhighlight)
+
+### notationErrorLevel
+
+- 类型： `boolean`
+
+- 默认值： `false`
+
+- 详情：
+
+  是否启用 notation error level.
+
+  参考： [Shiki > Notation Error Level](https://shiki.style/packages/transformers#transformernotationerrorlevel)

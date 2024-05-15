@@ -711,9 +711,15 @@ importers:
 
   plugins/plugin-shiki:
     dependencies:
+      '@shikijs/transformers':
+        specifier: ^1.5.2
+        version: 1.5.2
+      nanoid:
+        specifier: ^5.0.7
+        version: 5.0.7
       shiki:
-        specifier: ^1.5.1
-        version: 1.5.1
+        specifier: ^1.5.2
+        version: 1.5.2
       vuepress:
         specifier: 2.0.0-rc.9
         version: 2.0.0-rc.9(@vuepress/bundler-vite@2.0.0-rc.9(@types/node@20.12.11)(jiti@1.21.0)(sass@1.77.1)(terser@5.31.0)(tsx@4.10.1)(typescript@5.4.5))(@vuepress/bundler-webpack@2.0.0-rc.9(typescript@5.4.5))(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
@@ -2263,8 +2269,11 @@ packages:
   '@sec-ant/readable-stream@0.4.1':
     resolution: {integrity: sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg==}
 
-  '@shikijs/core@1.5.1':
-    resolution: {integrity: sha512-xjV63pRUBvxA1LsxOUhRKLPh0uUjwBLzAKLdEuYSLIylo71sYuwDcttqNP01Ib1TZlLfO840CXHPlgUUsYFjzg==}
+  '@shikijs/core@1.5.2':
+    resolution: {integrity: sha512-wSAOgaz48GmhILFElMCeQypSZmj6Ru6DttOOtl3KNkdJ17ApQuGNCfzpk4cClasVrnIu45++2DBwG4LNMQAfaA==}
+
+  '@shikijs/transformers@1.5.2':
+    resolution: {integrity: sha512-/Sh64rKOFGMQLCvtHeL1Y7EExdq8LLxcdVkvoGx2aMHsYMOn8DckYl2gYKMHRBu/YUt1C38/Amd1Jdh48tWHgw==}
 
   '@sigstore/bundle@2.3.1':
     resolution: {integrity: sha512-eqV17lO3EIFqCWK3969Rz+J8MYrRZKw9IBHpSo6DEcEX2c+uzDFOgHE9f2MnyDpfs48LFO4hXmk9KhQ74JzU1g==}
@@ -5040,6 +5049,11 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  nanoid@5.0.7:
+    resolution: {integrity: sha512-oLxFY2gd2IqnjcYyOXD8XGCftpGtZP2AbHbOkthDkvRywH5ayNtPVy9YlOPcHckXzbLTCHpkb7FB+yuxKV13pQ==}
+    engines: {node: ^18 || >=20}
+    hasBin: true
+
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
@@ -5870,8 +5884,8 @@ packages:
   shell-quote@1.8.1:
     resolution: {integrity: sha512-6j1W9l1iAs/4xYBI1SYOVZyFcCis9b4KCLQ8fgAGG07QvzaRLVVRQvAy85yNmmZSjYjg4MWh4gNvlPujU/5LpA==}
 
-  shiki@1.5.1:
-    resolution: {integrity: sha512-vx4Ds3M3B9ZEmLeSXqBAB85osBWV8ErZfP69kuFQZozPgHc33m7spLTCUkcjwEjFm3gk3F9IdXMv8kX+v9xDHA==}
+  shiki@1.5.2:
+    resolution: {integrity: sha512-fpPbuSaatinmdGijE7VYUD3hxLozR3ZZ+iAx8Iy2X6REmJGyF5hQl94SgmiUNTospq346nXUVZx0035dyGvIVw==}
 
   side-channel@1.0.6:
     resolution: {integrity: sha512-fDW/EZ6Q9RiO8eFG8Hj+7u/oW+XrPTIChwCOM2+th2A6OblDtYYIpve9m+KvI9Z4C9qSEXlaGR6bTEYHReuglA==}
@@ -8408,7 +8422,11 @@ snapshots:
 
   '@sec-ant/readable-stream@0.4.1': {}
 
-  '@shikijs/core@1.5.1': {}
+  '@shikijs/core@1.5.2': {}
+
+  '@shikijs/transformers@1.5.2':
+    dependencies:
+      shiki: 1.5.2
 
   '@sigstore/bundle@2.3.1':
     dependencies:
@@ -11701,6 +11719,8 @@ snapshots:
 
   nanoid@3.3.7: {}
 
+  nanoid@5.0.7: {}
+
   natural-compare@1.4.0: {}
 
   negotiator@0.6.3: {}
@@ -12606,9 +12626,9 @@ snapshots:
 
   shell-quote@1.8.1: {}
 
-  shiki@1.5.1:
+  shiki@1.5.2:
     dependencies:
-      '@shikijs/core': 1.5.1
+      '@shikijs/core': 1.5.2
 
   side-channel@1.0.6:
     dependencies:
