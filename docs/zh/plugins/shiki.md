@@ -254,7 +254,7 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 
 - 详情：
 
-  应用于代码的默认主题（通过内联`color`样式）。其余主题通过CSS变量应用，并通过CSS覆盖进行切换。
+  应用于代码的默认主题（通过内联 `color` 样式）。其余主题通过 CSS 变量应用，并通过 CSS 覆盖进行切换。
 
   例如，如果 `defaultColor` 是 `light`，则将 `light` 主题应用于代码，并通过 CSS 变量应用 `dark` 主题和其他自定义主题：
 

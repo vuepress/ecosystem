@@ -105,14 +105,14 @@ export default {
 
   Configure code line numbers.
 
-  - If the option is set to `true` , the line numbers will be enabled.
+  - `true`: enable line numbers
   - If the option is set to `false` , the line numbers will be disabled.
   - If the option is set to `number` ，is the minimum number of lines to enable line numbers。
     For example, if you set it to 4, line numbers will only be enabled when your code block has at least 4 lines of code.
 
   You can add `:line-numbers` / `:no-line-numbers` mark in your fenced code blocks to override the value set in config.
 
-**Input**
+**Input**:
 
 ````md
 ```ts
@@ -154,7 +154,7 @@ const line3 = 'This is line 3'
 
 - Details:
 
-  Enable code line highlighting or not.
+  Whether enable code line highlighting.
 
   You can highlight specified lines of your code blocks by adding line ranges mark in your fenced code blocks.
 
@@ -284,10 +284,12 @@ When set to `false`, no default styles will be applied, and totally up to users 
 
 - Details:
 
-  Custom shiki setup function. You can customize the shiki instance by adding your own shikiSetup function in your config.
+  Custom Shiki setup function. You can customize the shiki instance by adding your own shikiSetup function in your config.
 
-:::warning
+::: warning
+
 After enabling the relevant features in the settings, you will need to define the corresponding styles in the theme yourself.
+
 :::
 
 ### notationDiff
