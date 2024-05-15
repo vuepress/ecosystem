@@ -19,7 +19,7 @@ export const prepareClientConfigFile = async (
 
   if (figure) {
     content += `\
-import "${require.resolve(`${PLUGIN_NAME}/styles/figure.css`)}"
+import "${require.resolve(`${PLUGIN_NAME}/client/styles/figure.css`)}"
 `
   }
 
