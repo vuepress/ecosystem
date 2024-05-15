@@ -1,5 +1,5 @@
 import { watch } from 'chokidar'
-import type { App, Page, Theme } from 'vuepress/core'
+import type { Page, Theme } from 'vuepress/core'
 import { fs, getDirname, path } from 'vuepress/utils'
 import type {
   DefaultThemeLocaleOptions,
@@ -10,7 +10,7 @@ import type {
 import { resolvePageHead } from './config/resolvePageHead.js'
 import { extendsMarkdown } from './markdown/index.js'
 import { getPlugins } from './plugins.js'
-import { prepareNavbarData, prepareSidebarData } from './prepare/index.js'
+import { prepareSidebarData } from './prepare/index.js'
 import { logger, THEME_NAME } from './utils/index.js'
 
 const __dirname = getDirname(import.meta.url)
@@ -49,13 +49,6 @@ export const defaultTheme = ({
       logger.info('Plugin Options:', themePlugins)
     }
 
-    const onPrepareData = async (app: App): Promise<void> => {
-      await Promise.all([
-        prepareNavbarData(app, localeOptions),
-        prepareSidebarData(app, localeOptions, sidebarSorter),
-      ])
-    }
-
     return {
       name: THEME_NAME,
 
@@ -78,7 +71,8 @@ export const defaultTheme = ({
 
       plugins: getPlugins(app, { hostname, themePlugins, localeOptions }),
 
-      onPrepared: (app) => onPrepareData(app),
+      onPrepared: (app) =>
+        prepareSidebarData(app, localeOptions, sidebarSorter),
 
       onWatched: (app, watchers) => {
         const watcher = watch(
@@ -90,9 +84,15 @@ export const defaultTheme = ({
           },
         )
 
-        watcher.on('add', () => onPrepareData(app))
-        watcher.on('change', () => onPrepareData(app))
-        watcher.on('unlink', () => onPrepareData(app))
+        watcher.on('add', () =>
+          prepareSidebarData(app, localeOptions, sidebarSorter),
+        )
+        watcher.on('change', () =>
+          prepareSidebarData(app, localeOptions, sidebarSorter),
+        )
+        watcher.on('unlink', () =>
+          prepareSidebarData(app, localeOptions, sidebarSorter),
+        )
 
         watchers.push(watcher)
       },

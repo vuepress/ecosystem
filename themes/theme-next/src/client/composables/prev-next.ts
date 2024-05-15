@@ -4,7 +4,7 @@ import { resolveRoutePath } from 'vuepress/client'
 import type { NavItemWithLink } from '../../shared/index.js'
 import { isActive } from '../utils/index.js'
 import { useData } from './data.js'
-import { getFlatSideBarLinks, getSidebar } from './sidebar.js'
+import { getFlatSideBarLinks, useSidebarData } from './sidebar.js'
 
 export interface PrevNext {
   prev?: Partial<NavItemWithLink>
@@ -13,10 +13,10 @@ export interface PrevNext {
 
 export function usePrevNext(): ComputedRef<PrevNext> {
   const { theme, page, frontmatter } = useData()
+  const sidebar = useSidebarData()
 
   return computed(() => {
-    const sidebar = getSidebar(page.value.path)
-    const links = getFlatSideBarLinks(sidebar)
+    const links = getFlatSideBarLinks(sidebar.value)
 
     // ignore inner-page links with hashes
     const candidates = uniqBy(links, (link) => link.link.replace(/[?#].*$/, ''))

@@ -7,7 +7,7 @@ import type {
 import { LOCALES_OPTIONS } from '../locales/index.js'
 import { THEME_NAME } from '../utils/index.js'
 
-const EXCLUDE_LIST = ['sidebar', 'locales', 'container', 'navbar']
+const EXCLUDE_LIST = ['locales', 'container']
 
 const FALLBACK_OPTIONS: DefaultThemeLocaleData = {
   appearance: true,

@@ -7,7 +7,11 @@ import { defineClientConfig } from 'vuepress/client'
 import type { ClientConfig } from 'vuepress/client'
 import Badge from './components/VPBadge.vue'
 import { Content } from './components/VPMarkdownContent.js'
-import { setupDarkMode, useScrollPromise } from './composables/index.js'
+import {
+  setupDarkMode,
+  setupSidebarData,
+  useScrollPromise,
+} from './composables/index.js'
 import Layout from './layouts/Layout.vue'
 import NotFound from './layouts/NotFound.vue'
 
@@ -42,6 +46,7 @@ export default defineClientConfig({
 
   setup() {
     setupDarkMode()
+    setupSidebarData()
   },
 
   layouts: {

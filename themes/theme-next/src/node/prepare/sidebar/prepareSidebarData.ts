@@ -3,9 +3,7 @@ import {
   ensureLeadingSlash,
   entries,
   isArray,
-  isLinkExternal,
   isPlainObject,
-  isString,
   removeLeadingSlash,
 } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
@@ -17,11 +15,8 @@ import type {
   SidebarSorter,
   SidebarSorterFunction,
 } from '../../../shared/index.js'
-import type {
-  ResolvedSidebar,
-  ResolvedSidebarItem,
-} from '../../../shared/resolved/sidebar.js'
-import { getNavLinkWithPath, normalizeLink } from '../../utils/index.js'
+import type { ResolvedSidebarItem } from '../../../shared/resolved/sidebar.js'
+import { normalizeLink } from '../../utils/index.js'
 import { getSidebarInfo } from './getSidebarInfo.js'
 import { getSidebarSorter } from './getSidebarSorter.js'
 
@@ -72,68 +67,65 @@ export function getSidebarData(
   app: App,
   locales: Record<string, Sidebar | undefined>,
   sorter?: SidebarSorter,
-): ResolvedSidebar {
-  const resolved: ResolvedSidebar = {}
+): Sidebar {
+  const structureDir: string[] = []
+
+  const resolved: Sidebar = {}
   const sorters = getSidebarSorter(sorter)
 
   entries(locales).forEach(([localePath, sidebar]) => {
     if (!sidebar) return
+
     if (isArray(sidebar)) {
-      resolved[localePath] = resolveSidebarItems(app, sorters, sidebar)
+      structureDir.push(...findStructureList(sidebar, localePath))
     } else if (isPlainObject(sidebar)) {
       entries(sidebar).forEach(([dirname, config]) => {
-        resolved[dirname] =
-          config === 'structure'
-            ? getSidebarItemsFromStructure(app, sorters, dirname)
-            : isArray(config)
-              ? resolveSidebarItems(app, sorters, config)
-              : config.items === 'structure'
-                ? getSidebarItemsFromStructure(
-                    app,
-                    sorters,
-                    config.base || dirname,
-                  )
-                : resolveSidebarItems(app, sorters, config.items, config.base)
+        const prefix = normalizeLink(localePath, dirname)
+        config === 'structure'
+          ? structureDir.push(prefix)
+          : isArray(config)
+            ? structureDir.push(...findStructureList(config, prefix))
+            : config.items === 'structure'
+              ? structureDir.push(normalizeLink(prefix, config.prefix))
+              : structureDir.push(
+                  ...findStructureList(
+                    config.items,
+                    normalizeLink(prefix, config.prefix),
+                  ),
+                )
       })
     } else if (sidebar === 'structure') {
-      resolved[localePath] = getSidebarItemsFromStructure(
-        app,
-        sorters,
-        localePath,
-      )
+      structureDir.push(localePath)
     }
+  })
+
+  structureDir.forEach((dirname) => {
+    resolved[dirname] = getSidebarItemsFromStructure(app, sorters, dirname)
   })
 
   return resolved
 }
 
-function resolveSidebarItems(
-  app: App,
-  sorter: SidebarSorterFunction[],
-  items: (string | SidebarItem)[],
-  _base = '',
-): ResolvedSidebarItem[] {
-  return items.map((item) => {
-    if (isString(item)) {
-      return getNavLinkWithPath(app.pages, item, _base)
-    }
-    const { base, link, items, ...args } = item
-    return {
-      ...args,
-      link: isLinkExternal(link || '')
-        ? link
-        : // link maybe a empty string, so must be check `undefined`
-          _base && link !== undefined && !link.startsWith('/')
-          ? normalizeLink(_base, link)
-          : link,
-      items:
-        items === 'structure'
-          ? getSidebarItemsFromStructure(app, sorter, base || _base)
-          : items?.length
-            ? resolveSidebarItems(app, sorter, items, base || _base)
-            : undefined,
+function findStructureList(
+  sidebar: (string | SidebarItem)[],
+  prefix = '',
+): string[] {
+  const list: string[] = []
+  if (!sidebar.length) return list
+
+  sidebar.forEach((item) => {
+    if (isPlainObject(item)) {
+      const nextPrefix = normalizeLink(prefix, item.prefix)
+      if (item.items === 'structure') {
+        list.push(nextPrefix)
+      } else {
+        item.items?.length &&
+          list.push(...findStructureList(item.items, nextPrefix))
+      }
     }
   })
+
+  return list
 }
 
 function getSidebarItemsFromStructure(

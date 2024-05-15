@@ -24,19 +24,19 @@ export function resolvePageHead(
       'script',
       { id: 'check-dark-mode' },
       fallbackPreference === 'force-dark'
-        ? `document.documentElement.classList.add('dark')`
+        ? `;document.documentElement.classList.add('dark')`
         : `;(() => {
-  const preference = localStorage.getItem('vuepress-color-scheme') || '${fallbackPreference}'
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-  if (!preference || preference === 'auto' ? prefersDark : preference === 'dark')
-    document.documentElement.classList.add('dark')
-})()`,
+    const preference = localStorage.getItem('vuepress-color-scheme') || '${fallbackPreference}'
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    if (!preference || preference === 'auto' ? prefersDark : preference === 'dark')
+      document.documentElement.classList.add('dark')
+  })()`,
     ])
   }
 
   page.frontmatter.head?.push([
     'script',
     { id: 'check-mac-os' },
-    `document.documentElement.classList.toggle('mac', /Mac|iPhone|iPod|iPad/i.test(navigator.platform))`,
+    `;document.documentElement.classList.toggle('mac', /Mac|iPhone|iPod|iPad/i.test(navigator.platform))`,
   ])
 }

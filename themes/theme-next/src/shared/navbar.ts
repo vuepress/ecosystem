@@ -4,6 +4,8 @@ export interface NavItemWithLink {
   text: string
   link: string
 
+  prefix?: never
+
   items?: never
 
   /**
@@ -28,7 +30,18 @@ export interface NavItemWithLink {
 }
 
 export interface NavItemChildren {
+  /**
+   * The text of the dropdown menu
+   */
   text?: string
+
+  /**
+   * Link prefix of current group
+   *
+   * 当前分组的页面前缀
+   */
+  prefix?: string
+
   /**
    * The items in the dropdown menu
    *
@@ -46,6 +59,13 @@ export interface NavItemChildren {
 
 export interface NavItemWithChildren {
   text?: string
+  /**
+   * Link prefix of current group
+   *
+   * 当前分组的页面前缀
+   */
+  prefix?: string
+
   /**
    * The items in the dropdown menu
    *

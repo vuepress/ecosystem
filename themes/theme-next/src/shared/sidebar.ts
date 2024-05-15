@@ -12,7 +12,7 @@ export type SidebarMulti = Record<
   string,
   | 'structure'
   | (string | SidebarItem)[]
-  | { items: 'structure' | (string | SidebarItem)[]; base: string }
+  | { items: 'structure' | (string | SidebarItem)[]; prefix?: string }
 >
 
 export interface SidebarItem {
@@ -48,9 +48,9 @@ export interface SidebarItem {
   collapsed?: boolean
 
   /**
-   * Base path for the children items.
+   * prefix path for the children items.
    */
-  base?: string
+  prefix?: string
 
   /**
    * Customize text that appears on the footer of previous/next page.

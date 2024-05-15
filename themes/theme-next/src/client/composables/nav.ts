@@ -1,17 +1,42 @@
-import { navbarData as navbarDataRaw } from '@internal/navbar'
 import { computed, ref, watch } from 'vue'
 import type { Ref } from 'vue'
-import { useRoute, useRouteLocale } from 'vuepress/client'
-import type { ResolvedNavItem } from '../../shared/resolved/navbar.js'
-
-export type NavbarLocalesRef = Ref<Record<string, ResolvedNavItem[]>>
-
-const navbarData: NavbarLocalesRef = ref(navbarDataRaw)
+import { useRoute } from 'vuepress/client'
+import type { NavItem } from '../../shared/index.js'
+import type {
+  ResolvedNavItem,
+  ResolvedNavItemWithLink,
+} from '../../shared/resolved/navbar.js'
+import { getNavLink, normalizeLink } from '../utils/index.js'
+import { useData } from './data.js'
 
 export const useNavbarData = (): Ref<ResolvedNavItem[]> => {
-  const routeLocale = useRouteLocale()
+  const { theme } = useData()
 
-  return computed(() => navbarData.value[routeLocale.value] || [])
+  return computed(() => resolveNavbar(theme.value.navbar || []))
+}
+
+function resolveNavbar(navbar: NavItem[], _prefix = ''): ResolvedNavItem[] {
+  const resolved: ResolvedNavItem[] = []
+  navbar.forEach((item) => {
+    if (typeof item === 'string') {
+      resolved.push(getNavLink(normalizeLink(_prefix, item)))
+    } else {
+      const { items, children, prefix, ...args } = item
+      const list = items?.length ? items : children
+      const res = { ...args } as ResolvedNavItem
+      if ('link' in res) {
+        res.link = normalizeLink(_prefix, res.link)
+      }
+      if (list?.length) {
+        res.items = resolveNavbar(
+          list,
+          normalizeLink(_prefix, prefix),
+        ) as ResolvedNavItemWithLink[]
+      }
+      resolved.push(res)
+    }
+  })
+  return resolved
 }
 
 export interface UseNavReturn {
@@ -53,13 +78,5 @@ export function useNav(): UseNavReturn {
     openScreen,
     closeScreen,
     toggleScreen,
-  }
-}
-
-if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
-  __VUE_HMR_RUNTIME__.updateNavbarData = (
-    data: Record<string, ResolvedNavItem[]>,
-  ) => {
-    navbarData.value = data
   }
 }

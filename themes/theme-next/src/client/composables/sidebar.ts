@@ -1,26 +1,71 @@
-import { sidebarData as sidebarDataRaw } from '@internal/sidebar'
-import { ensureLeadingSlash } from '@vuepress/helper/client'
+import { sidebarData as structureSidebarDataRaw } from '@internal/sidebar'
+import {
+  ensureLeadingSlash,
+  isArray,
+  isPlainObject,
+  isString,
+} from '@vuepress/helper/client'
 import { useMediaQuery } from '@vueuse/core'
 import {
   computed,
+  inject,
   onMounted,
   onUnmounted,
+  provide,
   ref,
   watch,
   watchEffect,
   watchPostEffect,
 } from 'vue'
-import type { ComputedRef, Ref } from 'vue'
-import { resolveRoutePath } from 'vuepress/client'
+import type { ComputedRef, InjectionKey, Ref } from 'vue'
+import { resolveRoutePath, useRouteLocale } from 'vuepress/client'
+import type { Sidebar, SidebarItem } from '../../shared/index.js'
 import type { ResolvedSidebarItem } from '../../shared/resolved/sidebar.js'
-import { isActive } from '../utils/index.js'
+import {
+  getNavLink,
+  isActive,
+  normalizeLink,
+  normalizePrefix,
+} from '../utils/index.js'
 import { useData } from './data.js'
 
-export type SidebarDataRef = Ref<Record<string, ResolvedSidebarItem[]>>
+export type StructureSidebarDataRef = Ref<Record<string, ResolvedSidebarItem[]>>
 
-const sidebarData: SidebarDataRef = ref(sidebarDataRaw)
+const structureSidebarData: StructureSidebarDataRef = ref(
+  structureSidebarDataRaw,
+)
 
-export const useSidebarData = (): SidebarDataRef => sidebarData
+const sidebarSymbol: InjectionKey<Ref<ResolvedSidebarItem[]>> = Symbol(
+  __VUEPRESS_DEV__ ? 'sidebar' : '',
+)
+
+export function setupSidebarData(): void {
+  const { theme, page, frontmatter } = useData()
+  const routeLocale = useRouteLocale()
+
+  const hasSidebar = computed(
+    () =>
+      frontmatter.value.sidebar !== false &&
+      frontmatter.value.layout !== 'home' &&
+      frontmatter.value.pageLayout !== 'home',
+  )
+
+  const sidebar = computed(() => {
+    return hasSidebar.value
+      ? getSidebar(theme.value.sidebar, page.value.path, routeLocale.value)
+      : []
+  })
+
+  provide(sidebarSymbol, sidebar)
+}
+
+export function useSidebarData(): Ref<ResolvedSidebarItem[]> {
+  const sidebarData = inject(sidebarSymbol)
+  if (!sidebarData) {
+    throw new Error('useSidebarData() is called without provider.')
+  }
+  return sidebarData
+}
 
 export interface SidebarLink {
   text: string
@@ -54,29 +99,19 @@ export interface UseSidebarReturn {
 const containsActiveLink = hasActiveLink
 
 export function useSidebar(): UseSidebarReturn {
-  const { theme, page, frontmatter } = useData()
+  const { theme, frontmatter } = useData()
   const is960 = useMediaQuery('(min-width: 960px)')
 
   const isOpen = ref(false)
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  const _sidebar = computed(() => {
-    const relativePath = page.value.filePathRelative || ''
-    return getSidebar(relativePath)
-  })
-
-  const sidebar = ref(_sidebar.value)
-
-  watch(_sidebar, (next, prev) => {
-    if (JSON.stringify(next) !== JSON.stringify(prev))
-      sidebar.value = _sidebar.value
-  })
+  const sidebar = useSidebarData()
 
   const hasSidebar = computed(() => {
     return (
       frontmatter.value.sidebar !== false &&
       sidebar.value.length > 0 &&
-      frontmatter.value.layout !== 'home'
+      frontmatter.value.layout !== 'home' &&
+      frontmatter.value.pageLayout !== 'home'
     )
   })
 
@@ -229,25 +264,69 @@ export function useSidebarControl(
  * as matching `guide/` and `/guide/`. If no matching config was found, it will
  * return empty array.
  */
-export function getSidebar(path: string): ResolvedSidebarItem[] {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  const _sidebar = sidebarData.value
-  if (Array.isArray(_sidebar)) return _sidebar
-  if (_sidebar == null) return []
+export function getSidebar(
+  _sidebar: Sidebar | undefined,
+  routePath: string,
+  routeLocal: string,
+): ResolvedSidebarItem[] {
+  if (_sidebar === 'structure') {
+    return resolveSidebarItems(structureSidebarData.value[routeLocal])
+  } else if (isArray(_sidebar)) {
+    return resolveSidebarItems(_sidebar, routeLocal)
+  } else if (isPlainObject(_sidebar)) {
+    const dir =
+      Object.keys(_sidebar)
+        .sort((a, b) => b.split('/').length - a.split('/').length)
+        .find((dir) => {
+          // make sure the multi sidebar key starts with slash too
+          return routePath.startsWith(ensureLeadingSlash(dir))
+        }) || ''
+    const sidebar = dir ? _sidebar[dir] : undefined
 
-  path = ensureLeadingSlash(path)
+    if (sidebar === 'structure') {
+      return resolveSidebarItems(
+        dir ? structureSidebarData.value[dir] : [],
+        routeLocal,
+      )
+    } else if (isArray(sidebar)) {
+      return resolveSidebarItems(sidebar, dir)
+    } else if (isPlainObject(sidebar)) {
+      const prefix = normalizePrefix(dir, sidebar.prefix)
+      return resolveSidebarItems(
+        sidebar.items === 'structure'
+          ? structureSidebarData.value[prefix]
+          : sidebar.items,
+        prefix,
+      )
+    }
+  }
+  return []
+}
 
-  const dir = Object.keys(_sidebar)
-    .sort((a, b) => {
-      return b.split('/').length - a.split('/').length
-    })
-    .find((dir) => {
-      // make sure the multi sidebar key starts with slash too
-      return path.startsWith(ensureLeadingSlash(dir))
-    })
-
-  const sidebar = dir ? _sidebar[dir] : []
-  return sidebar as ResolvedSidebarItem[]
+function resolveSidebarItems(
+  sidebarItems: (string | SidebarItem)[],
+  _prefix = '',
+): ResolvedSidebarItem[] {
+  const resolved: ResolvedSidebarItem[] = []
+  sidebarItems.forEach((item) => {
+    if (isString(item)) {
+      resolved.push(getNavLink(normalizeLink(_prefix, item)))
+    } else {
+      const { link, items, prefix, ...args } = item
+      const navLink = { ...args } as ResolvedSidebarItem
+      navLink.link = normalizeLink(_prefix, item.link)
+      const nextPrefix = normalizePrefix(_prefix, prefix)
+      if (items === 'structure') {
+        navLink.items = structureSidebarData.value[nextPrefix]
+      } else {
+        navLink.items = items?.length
+          ? resolveSidebarItems(items, nextPrefix)
+          : undefined
+      }
+      resolved.push(navLink)
+    }
+  })
+  return resolved
 }
 
 /**
@@ -326,6 +405,6 @@ if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
   __VUE_HMR_RUNTIME__.updateSidebarData = (
     data: Record<string, ResolvedSidebarItem[]>,
   ) => {
-    sidebarData.value = data
+    structureSidebarData.value = data
   }
 }
