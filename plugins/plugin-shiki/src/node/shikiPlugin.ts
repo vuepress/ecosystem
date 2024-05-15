@@ -1,6 +1,7 @@
 import type {
   BundledLanguage,
   BundledTheme,
+  HighlighterGeneric,
   LanguageInput,
   ShikiTransformer,
   SpecialLanguage,
@@ -53,6 +54,8 @@ export interface ShikiPluginOptions {
   }
 
   transformers?: ShikiTransformer[]
+  
+  extendsHighlighterConfigOptions?: (highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>) => void
 }
 
 const DEFAULT_LANGS = Object.keys(bundledLanguages)
@@ -62,6 +65,7 @@ export const shikiPlugin = ({
   theme = 'nord',
   themes,
   transformers = [],
+  extendsHighlighterConfigOptions
 }: ShikiPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-shiki',
 
@@ -70,6 +74,10 @@ export const shikiPlugin = ({
       langs,
       themes: themes ? [themes.dark, themes.light] : [theme],
     })
+
+    if (extendsHighlighterConfigOptions) {
+        extendsHighlighterConfigOptions(highlighter);
+    }
 
     md.options.highlight = (code, lang) =>
       highlighter.codeToHtml(code, {
