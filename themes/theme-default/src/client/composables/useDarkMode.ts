@@ -59,7 +59,7 @@ export const setupDarkMode = (): void => {
 
 export const updateHtmlDarkClass = (isDarkMode: DarkModeRef): void => {
   const update = (value = isDarkMode.value): void => {
-    const htmlEl = window.document.querySelector('html')!
+    const htmlEl = document.querySelector('html')!
 
     // set `data-theme="light|dark"` on `<html>` element
     htmlEl.dataset.theme = value ? 'dark' : 'light'
