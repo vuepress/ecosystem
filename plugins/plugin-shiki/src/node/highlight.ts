@@ -13,7 +13,7 @@ import {
   isPlainLang,
   isSpecialLang,
 } from 'shiki'
-import { colors as c, logger } from 'vuepress/utils'
+import { colors, logger } from 'vuepress/utils'
 import type { ShikiPluginOptions } from './types.js'
 import { attrsToLines, resolveLanguage, vueRE } from './utils.js'
 
@@ -91,7 +91,7 @@ export async function highlight({
       const langLoaded = highlighter.getLoadedLanguages().includes(lang as any)
       if (!langLoaded && !isPlainLang(lang) && !isSpecialLang(lang)) {
         logger.warn(
-          c.yellow(
+          colors.yellow(
             `\nThe language '${lang}' is not loaded, falling back to '${'txt'}' for syntax highlighting.`,
           ),
         )
