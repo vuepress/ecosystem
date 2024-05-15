@@ -256,7 +256,7 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 
   应用于代码的默认主题（通过内联`color`样式）。其余主题通过CSS变量应用，并通过CSS覆盖进行切换。
 
-  例如，如果`defaultColor`是`light`，则将`light`主题应用于代码，并通过CSS变量应用`dark`主题和其他自定义主题：
+  例如，如果 `defaultColor` 是 `light`，则将 `light` 主题应用于代码，并通过 CSS 变量应用 `dark` 主题和其他自定义主题：
 
 ```html
 <span style="color:#{light};--shiki-dark:#{dark};--shiki-custom:#{custom};"
@@ -279,7 +279,7 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 
 - 详情：
 
-  自定义shiki设置函数。您可以通过在配置中添加自己的shikiSetup函数来定制shiki实例。
+  自定义 Shiki 设置函数。您可以通过在配置中添加自己的 shikiSetup 函数来定制 Shiki 实例。
 
 :::warning
 以下配置启用相关功能后，需要自行在主题中定义相关的样式。
@@ -293,7 +293,7 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 
 - 详情：
 
-  是否启用 notation diff
+  是否启用 Notation Diff
 
   参考： [Shiki > Notation Diff](https://shiki.style/packages/transformers#transformernotationdiff)
 
@@ -305,7 +305,7 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 
 - 详情：
 
-  是否启用 notation focus.
+  是否启用 Notation Focus.
 
   参考： [Shiki > Notation Focus](https://shiki.style/packages/transformers#transformernotationfocus)
 
@@ -317,7 +317,7 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 
 - 详情：
 
-  是否启用 notation highlight.
+  是否启用 Notation Highlight.
 
   参考： [Shiki > Notation Highlight](https://shiki.style/packages/transformers#transformernotationhighlight)
 
@@ -329,6 +329,6 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 
 - 详情：
 
-  是否启用 notation error level.
+  是否启用 Notation Error Level.
 
   参考： [Shiki > Notation Error Level](https://shiki.style/packages/transformers#transformernotationerrorlevel)
