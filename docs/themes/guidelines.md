@@ -15,6 +15,7 @@ A theme may have the following optional elements:
 - Sidebar: An element which is the sidebar of the theme. This element should have the id `vp-sidebar`.
 - Outline: An element which holds headings or outline of the main content. This element should have the id `vp-outline`.
 - Comment: An element which holds comment service. This element should have the id `vp-comment`.
+- Footer: An element which is the footer of the theme. This element should have the id `vp-footer`.
 
 If a theme has darkmode and lightmode, it must:
 

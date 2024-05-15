@@ -62,7 +62,7 @@ useUpdateDeviceStatus(
 </script>
 
 <template>
-  <header ref="navbar" class="navbar">
+  <header id="vp-navbar" ref="navbar" class="navbar">
     <ToggleSidebarButton @toggle="$emit('toggle-sidebar')" />
 
     <span ref="navbarBrand">
