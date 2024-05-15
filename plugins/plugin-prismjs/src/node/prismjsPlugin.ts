@@ -1,11 +1,13 @@
 import type { Plugin } from 'vuepress/core'
 import { loadLanguages } from './loadLanguages.js'
+import { preWrapperPlugin } from './preWrapperPlugin.js'
 import { resolveHighlighter } from './resolveHighlighter.js'
+import type { PreWrapperOptions } from './types.js'
 
 /**
  * Options of @vuepress/plugin-prismjs
  */
-export interface PrismjsPluginOptions {
+export interface PrismjsPluginOptions extends PreWrapperOptions {
   /**
    * Languages to preload
    *
@@ -19,6 +21,7 @@ export interface PrismjsPluginOptions {
 
 export const prismjsPlugin = ({
   preloadLanguages = ['markdown', 'jsdoc', 'yaml'],
+  ...preWrapperOption
 }: PrismjsPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-prismjs',
 
@@ -31,5 +34,7 @@ export const prismjsPlugin = ({
       const highlighter = resolveHighlighter(lang)
       return highlighter?.(code) || ''
     }
+
+    md.use(preWrapperPlugin, preWrapperOption)
   },
 })

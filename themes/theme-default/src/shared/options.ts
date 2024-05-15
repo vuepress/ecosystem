@@ -1,6 +1,7 @@
 import type { BackToTopPluginOptions } from '@vuepress/plugin-back-to-top'
 import type { CopyCodePluginOptions } from '@vuepress/plugin-copy-code'
 import type { LinksCheckPluginOptions } from '@vuepress/plugin-links-check'
+import type { PrismjsPluginOptions } from '@vuepress/plugin-prismjs'
 import type { SeoPluginOptions } from '@vuepress/plugin-seo'
 import type { SitemapPluginOptions } from '@vuepress/plugin-sitemap'
 import type { ThemeData } from '@vuepress/plugin-theme-data'
@@ -58,7 +59,7 @@ export interface DefaultThemePluginsOptions {
   /**
    * Enable @vuepress/plugin-prismjs or not
    */
-  prismjs?: boolean
+  prismjs?: boolean | PrismjsPluginOptions
 
   /**
    * Enable @vuepress/plugin-seo or not

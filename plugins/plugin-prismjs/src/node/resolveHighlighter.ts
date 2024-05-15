@@ -1,5 +1,6 @@
 import Prism from 'prismjs'
 import { loadLanguages } from './loadLanguages.js'
+import { resolveLanguage } from './utils/resolveLanguage.js'
 
 const languageNameMap = {
   html: 'markup',
@@ -22,6 +23,8 @@ export type Highlighter = (code: string) => string
  * Resolve syntax highlighter for corresponding language
  */
 export const resolveHighlighter = (language: string): Highlighter | null => {
+  const languageInfo = resolveLanguage(language)
+  language = languageInfo.name
   // get the languages that need to be loaded
   const lang: string = languageNameMap[language] || language
   const langsToLoad = [lang]
