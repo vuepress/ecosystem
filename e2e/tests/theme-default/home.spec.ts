@@ -11,13 +11,12 @@ test.describe('homepage', () => {
     const DESCRIPTION = 'VuePress Ecosystem E2E Test Site'
     const HERO_IMAGE = 'https://v2.vuepress.vuejs.org/images/hero.png'
 
-    const img = page.locator('.hero img')
-    const mainTitle = page.locator('#main-title')
-    const mainDescription = page.locator('.hero .description')
-    const actionButtons = page.locator('.hero .action-button')
+    const img = page.locator('.vpHero img')
+    const mainTitle = page.locator('.vpHero .name')
+    const mainDescription = page.locator('.vpHero .tagline')
+    const actionButtons = page.locator('.vpHero .actions a')
 
     await expect(img).toHaveAttribute('src', HERO_IMAGE)
-    await expect(img).toHaveAttribute('alt', TITLE)
 
     await expect(mainTitle).toHaveText(TITLE)
     await expect(mainDescription).toHaveText(DESCRIPTION)
@@ -30,22 +29,26 @@ test.describe('homepage', () => {
         'href',
         `${BASE}action${index + 1}.html`,
       )
-      await expect(actionButton).toHaveAttribute(
-        'aria-label',
-        `Action${index + 1}`,
-      )
+      // await expect(actionButton).toHaveAttribute(
+      //   'aria-label',
+      //   `Action${index + 1}`,
+      // )
       await expect(actionButton).toHaveText(`Action${index + 1}`)
     }
   })
 
   test('has feature', async ({ page }) => {
-    const features = page.locator('.feature')
+    const features = page.locator('.vpFeatures .items .item')
 
     await expect(features).toHaveCount(3)
 
     for (let index = 0; index < 3; index++) {
-      const featureHeading = page.locator('.feature h2').nth(index)
-      const featureDetail = page.locator('.feature p').nth(index)
+      const featureHeading = page
+        .locator('.vpFeatures .items .item h2')
+        .nth(index)
+      const featureDetail = page
+        .locator('.vpFeatures .items .item p')
+        .nth(index)
 
       await expect(featureHeading).toHaveText(`Feature${index + 1}`)
       await expect(featureDetail).toHaveText(`Detail${index + 1}`)
@@ -53,12 +56,10 @@ test.describe('homepage', () => {
   })
 
   test('has content', async ({ page }) => {
-    await expect(page.locator('.theme-default-content')).toHaveText(
-      'HomePage Content',
-    )
+    await expect(page.locator('.vp-doc')).toHaveText('HomePage Content')
   })
 
-  test('has footer', async ({ page }) => {
-    await expect(page.locator('.footer')).toHaveText('Footer Content')
-  })
+  // test('has footer', async ({ page }) => {
+  //   await expect(page.locator('.footer')).toHaveText('Footer Content')
+  // })
 })

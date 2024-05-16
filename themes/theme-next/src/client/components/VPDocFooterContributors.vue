@@ -2,12 +2,20 @@
 import { useContributors } from '../composables/contributors.js'
 import { useData } from '../composables/data.js'
 
+defineProps<{
+  align: 'left' | 'right'
+}>()
+
 const { theme } = useData()
 const contributors = useContributors()
 </script>
 
 <template>
-  <p v-if="contributors?.length" class="vpContributors">
+  <p
+    v-if="contributors?.length"
+    class="vpContributors"
+    :style="{ '--vp-contributors-align': align }"
+  >
     {{ theme.contributorsText || 'Contributors' }}:
     <template
       v-for="(contributor, index) in contributors"
@@ -38,7 +46,7 @@ const contributors = useContributors()
     line-height: 32px;
     font-size: 14px;
     font-weight: 500;
-    text-align: right;
+    text-align: var(--vp-contributors-align, right);
   }
 }
 </style>

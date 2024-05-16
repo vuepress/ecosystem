@@ -11,7 +11,7 @@ const categoryMap = useBlogCategory('category')
 
 <template>
   <ParentLayout>
-    <template #page>
+    <template #custom-content>
       <main class="page">
         <div class="category-wrapper">
           <RouteLink
@@ -35,7 +35,7 @@ const categoryMap = useBlogCategory('category')
 </template>
 
 <style lang="scss">
-@use '@vuepress/theme-default/styles/mixins';
+@use '../styles/mixins.scss';
 
 .category-wrapper {
   @include mixins.content_wrapper;

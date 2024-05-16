@@ -89,7 +89,7 @@ export function getSidebarData(
               ? structureDir.push(normalizeLink(prefix, config.prefix))
               : structureDir.push(
                   ...findStructureList(
-                    config.items,
+                    config.items || [],
                     normalizeLink(prefix, config.prefix),
                   ),
                 )

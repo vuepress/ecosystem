@@ -37,7 +37,6 @@ const { page } = useData()
   display: flex;
   align-items: center;
   padding: 0 12px;
-  line-height: var(--vp-nav-height);
   font-size: 14px;
   font-weight: 500;
   color: var(--vp-c-text-1);

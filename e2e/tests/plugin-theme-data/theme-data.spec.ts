@@ -9,34 +9,28 @@ test.describe('plugin-theme-data', () => {
     )
 
     await expect(themeData).toEqual({
+      appearance: true,
+      outline: [2, 3],
+      aside: true,
+      scrollOffset: 134,
+      editLink: true,
+      lastUpdated: true,
+      contributors: true,
+      externalLinkIcon: true,
       logo: 'https://v2.vuepress.vuejs.org/images/hero.png',
       navbar: [
         '/',
-        {
-          text: 'Dropdown',
-          children: [
-            {
-              text: 'item',
-              link: '/dropdown/',
-            },
-          ],
-        },
+        { text: 'Dropdown', items: [{ text: 'item', link: '/dropdown/' }] },
       ],
       sidebar: {
-        '/sidebar/heading/': 'heading',
+        '/sidebar/heading/': 'structure',
         '/sidebar/config/': [
           {
             text: 'Sidebar',
             link: '/sidebar/config/',
-            children: [
-              {
-                text: 'sidebar 1',
-                link: '/sidebar/config/1.html',
-              },
-              {
-                text: 'sidebar 2',
-                link: '/sidebar/config/2.html',
-              },
+            items: [
+              { text: 'sidebar 1', link: '/sidebar/config/1.html' },
+              { text: 'sidebar 2', link: '/sidebar/config/2.html' },
             ],
           },
         ],
@@ -44,38 +38,108 @@ test.describe('plugin-theme-data', () => {
       },
       locales: {
         '/zh/': {
+          darkModeSwitchLabel: '外观',
+          lightModeSwitchTitle: '切换到浅色主题',
+          darkModeSwitchTitle: '切换到深色主题',
+          selectLanguageText: '选择语言',
+          selectLanguageName: '简体中文',
+          returnToTopLabel: '返回顶部',
+          sidebarMenuLabel: '目录',
+          outlineTitle: '此页内容',
+          editLinkText: '编辑此页',
+          lastUpdatedText: '最后更新于',
+          contributorsText: '贡献者',
+          docFooter: { prev: '上一页', next: '下一页' },
+          notFound: {
+            title: '页面未找到',
+            quote:
+              '如果你不改变方向，继续寻找，最终可能会到达你正在前往的地方。',
+            linkLabel: '回到首页',
+            linkText: '回到首页',
+            code: '404',
+          },
+          container: {
+            infoLabel: '信息',
+            noteLabel: '注意',
+            tipLabel: '提示',
+            warningLabel: '警告',
+            dangerLabel: '危险',
+            detailsLabel: '详情',
+            importantLabel: '重要',
+            cautionLabel: '危险',
+          },
+          logo: 'https://v2.vuepress.vuejs.org/images/hero.png',
           navbar: ['/zh/'],
-          sidebar: false,
+          sidebar: {
+            '/sidebar/heading/': 'structure',
+            '/sidebar/config/': [
+              {
+                text: 'Sidebar',
+                link: '/sidebar/config/',
+                items: [
+                  { text: 'sidebar 1', link: '/sidebar/config/1.html' },
+                  { text: 'sidebar 2', link: '/sidebar/config/2.html' },
+                ],
+              },
+            ],
+            '/': [],
+          },
         },
         '/': {
+          darkModeSwitchLabel: 'Appearance',
+          lightModeSwitchTitle: 'Switch to light theme',
+          darkModeSwitchTitle: 'Switch to dark theme',
+          selectLanguageText: 'Languages',
           selectLanguageName: 'English',
+          returnToTopLabel: 'Return to top',
+          sidebarMenuLabel: 'Menu',
+          outlineTitle: 'On This Page',
+          editLinkText: 'Edit this page',
+          lastUpdatedText: 'Last Updated',
+          contributorsText: 'Contributors',
+          docFooter: { prev: 'Previous Page', next: 'Next Page' },
+          notFound: {
+            title: 'PAGE NOT FOUND',
+            quote:
+              "But if you don't change your direction, and if you keep looking, you may end up where you are heading.",
+            linkLabel: 'go to home',
+            linkText: 'Take me home',
+            code: '404',
+          },
+          container: {
+            infoLabel: 'INFO',
+            noteLabel: 'NOTE',
+            tipLabel: 'TIP',
+            warningLabel: 'WARNING',
+            dangerLabel: 'DANGER',
+            detailsLabel: 'DETAILS',
+            importantLabel: 'IMPORTANT',
+            cautionLabel: 'CAUTION',
+          },
+          logo: 'https://v2.vuepress.vuejs.org/images/hero.png',
+          navbar: [
+            '/',
+            { text: 'Dropdown', items: [{ text: 'item', link: '/dropdown/' }] },
+          ],
+          sidebar: {
+            '/sidebar/heading/': 'structure',
+            '/sidebar/config/': [
+              {
+                text: 'Sidebar',
+                link: '/sidebar/config/',
+                items: [
+                  { text: 'sidebar 1', link: '/sidebar/config/1.html' },
+                  { text: 'sidebar 2', link: '/sidebar/config/2.html' },
+                ],
+              },
+            ],
+            '/': [],
+          },
         },
       },
-      colorMode: 'auto',
-      colorModeSwitch: true,
-      repo: null,
-      selectLanguageText: 'Languages',
-      selectLanguageAriaLabel: 'Select language',
-      sidebarDepth: 2,
-      editLink: true,
-      editLinkText: 'Edit this page',
-      lastUpdated: true,
-      lastUpdatedText: 'Last Updated',
-      contributors: true,
-      contributorsText: 'Contributors',
-      notFound: [
-        "There's nothing here.",
-        'How did we get here?',
-        "That's a Four-Oh-Four.",
-        "Looks like we've got some broken links.",
-      ],
-      backToHome: 'Take me home',
-      openInNewWindow: 'open in new window',
-      toggleColorMode: 'toggle color mode',
-      toggleSidebar: 'toggle sidebar',
     })
 
-    await page.locator('.action-button').first().click()
+    await page.locator('.actions .vpButton').first().click()
 
     await page.waitForURL('action1.html')
 
@@ -92,7 +156,7 @@ test.describe('plugin-theme-data', () => {
     expect(themeLocaleData).toHaveProperty('navbar', ['/zh/'])
     expect(themeLocaleData).not.toHaveProperty('locales')
 
-    await page.locator('.theme-default-content a').click()
+    await page.locator('.vp-content .route-link').click()
 
     await page.waitForURL('zh/test.html')
 
@@ -101,7 +165,7 @@ test.describe('plugin-theme-data', () => {
     )
 
     await page.goto('zh/')
-    await page.locator('.action-button').first().click()
+    await page.locator('.action .vpButton').first().click()
 
     await page.waitForURL('action1.html')
 

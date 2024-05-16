@@ -1,15 +1,19 @@
 ---
 home: true
 title: Home
-heroImage: https://v2.vuepress.vuejs.org/images/hero.png
+hero:
+  name: VuePress Ecosystem E2E
+  text: VuePress Ecosystem E2E
+  tagline: VuePress Ecosystem E2E Test Site
+  image: https://v2.vuepress.vuejs.org/images/hero.png
 actions:
   - text: Action1
     link: /action1.html
-    type: primary
+    theme: brand
 
   - text: Action2
     link: /action2.html
-    type: secondary
+    theme: alt
 
 features:
   - title: Feature1
@@ -20,8 +24,6 @@ features:
 
   - title: Feature3
     details: Detail3
-
-footer: Footer Content
 ---
 
 HomePage Content

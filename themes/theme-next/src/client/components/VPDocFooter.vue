@@ -50,7 +50,9 @@ const showFooter = computed(() => {
     </div>
 
     <div v-if="hasContributors" class="contributors">
-      <VPDocFooterContributors />
+      <VPDocFooterContributors
+        :align="editLink && hasLastUpdated ? 'right' : 'left'"
+      />
     </div>
 
     <nav
