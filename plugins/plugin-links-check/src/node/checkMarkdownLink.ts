@@ -27,14 +27,16 @@ export const checkMarkdownLink = (
     ...markdownLinks
       // Absolute markdown links
       .filter(({ raw }) => isLinkAbsolute(raw))
-      .filter(({ absolute }) =>
-        // Check whether the page exists
-        pages.every(
-          ({ filePathRelative }) =>
-            !filePathRelative ||
-            (`${options.base}${filePathRelative}` !== decodeURI(absolute) &&
-              !isIgnoreLink(absolute)),
-        ),
+      .filter(
+        ({ absolute }) =>
+          // Check whether the page exists
+          absolute &&
+          pages.every(
+            ({ filePathRelative }) =>
+              !filePathRelative ||
+              (`${options.base}${filePathRelative}` !== decodeURI(absolute) &&
+                !isIgnoreLink(absolute)),
+          ),
       ),
   ].map(({ raw }) => raw)
 

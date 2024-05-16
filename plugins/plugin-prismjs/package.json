@@ -41,7 +41,7 @@
     "@types/prismjs": "^1.26.4"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.9"
+    "vuepress": "2.0.0-rc.11"
   },
   "publishConfig": {
     "access": "public"

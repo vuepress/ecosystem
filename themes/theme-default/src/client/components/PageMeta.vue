@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import AutoLink from '@theme/AutoLink.vue'
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
-import { usePageData, usePageFrontmatter } from 'vuepress/client'
+import { AutoLink, usePageData, usePageFrontmatter } from 'vuepress/client'
+import type { AutoLinkConfig } from 'vuepress/client'
 import type {
   DefaultThemeNormalPageFrontmatter,
   DefaultThemePageData,
-  NavLink,
 } from '../../shared/index.js'
 import { useThemeLocaleData } from '../composables/index.js'
 import { resolveEditLink } from '../utils/index.js'
 
-const useEditNavLink = (): ComputedRef<null | NavLink> => {
+const useEditNavLink = (): ComputedRef<null | AutoLinkConfig> => {
   const themeLocale = useThemeLocaleData()
   const page = usePageData<DefaultThemePageData>()
   const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
@@ -96,7 +95,7 @@ const contributors = useContributors()
 <template>
   <footer class="vp-page-meta">
     <div v-if="editNavLink" class="vp-meta-item edit-link">
-      <AutoLink class="label" :item="editNavLink">
+      <AutoLink class="label" :config="editNavLink">
         <template #before>
           <svg class="icon" viewBox="0 0 1024 1024">
             <g fill="currentColor">
