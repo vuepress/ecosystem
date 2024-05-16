@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import AutoLink from '@theme/AutoLink.vue'
 import DropdownTransition from '@theme/DropdownTransition.vue'
 import { computed, ref, toRefs, watch } from 'vue'
 import type { PropType } from 'vue'
-import { useRoute } from 'vuepress/client'
+import { AutoLink, useRoute } from 'vuepress/client'
 import type { NavbarItem, ResolvedNavbarItem } from '../../shared/index.js'
 
 const props = defineProps({
@@ -82,7 +81,7 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
             <h4 class="navbar-dropdown-subtitle">
               <AutoLink
                 v-if="child.link"
-                :item="child"
+                :config="child"
                 @focusout="
                   isLastItemOfArray(child, item.children) &&
                     child.children.length === 0 &&
@@ -100,7 +99,7 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
                 class="navbar-dropdown-subitem"
               >
                 <AutoLink
-                  :item="grandchild"
+                  :config="grandchild"
                   @focusout="
                     isLastItemOfArray(grandchild, child.children) &&
                       isLastItemOfArray(child, item.children) &&
@@ -113,7 +112,7 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
 
           <template v-else>
             <AutoLink
-              :item="child"
+              :config="child"
               @focusout="
                 isLastItemOfArray(child, item.children) && (open = false)
               "
