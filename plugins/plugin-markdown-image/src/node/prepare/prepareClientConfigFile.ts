@@ -1,10 +1,8 @@
-import { createRequire } from 'node:module'
+import { getRealPath } from '@vuepress/helper'
 import type { App } from 'vuepress'
 import type { MarkdownImagePluginOptions } from '../options.js'
 import { PLUGIN_NAME } from '../utils.js'
 import { prepareMarkStyleFile } from './prepareMarkStyleFile.js'
-
-const require = createRequire(import.meta.url)
 
 export const prepareClientConfigFile = async (
   app: App,
@@ -19,7 +17,7 @@ export const prepareClientConfigFile = async (
 
   if (figure) {
     content += `\
-import "${require.resolve(`${PLUGIN_NAME}/client/styles/figure.css`)}"
+import "${getRealPath(`${PLUGIN_NAME}/client/styles/figure.css`, import.meta.url)}"
 `
   }
 

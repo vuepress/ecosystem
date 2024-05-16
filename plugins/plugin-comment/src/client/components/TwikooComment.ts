@@ -1,3 +1,4 @@
+import { wait } from '@vuepress/helper/client'
 import type { VNode } from 'vue'
 import {
   computed,
@@ -36,11 +37,7 @@ export default defineComponent({
     const initTwikoo = async (): Promise<void> => {
       const [{ init }] = await Promise.all([
         import(/* webpackChunkName: "twikoo" */ 'twikoo'),
-        new Promise<void>((resolve) => {
-          setTimeout(() => {
-            resolve()
-          }, twikooOptions.value.delay || 800)
-        }),
+        wait(twikooOptions.value.delay || 800),
       ])
 
       loaded.value = true

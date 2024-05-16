@@ -78,12 +78,12 @@ export const nprogress: NProgress = {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         progress.offsetWidth /* Repaint */
 
-        setTimeout(function () {
+        setTimeout(() => {
           css(progress, {
             transition: 'all ' + speed + 'ms linear',
             opacity: '0',
           })
-          setTimeout(function () {
+          setTimeout(() => {
             nprogress.remove()
             next()
           }, speed)
