@@ -39,6 +39,7 @@ export const navbarZh: NavbarConfig = [
         children: [
           '/zh/plugins/markdown-container',
           '/zh/plugins/markdown-image',
+          '/zh/plugins/markdown-math',
           '/zh/plugins/links-check',
         ],
       },
