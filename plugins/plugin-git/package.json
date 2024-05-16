@@ -34,7 +34,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "execa": "^9.0.2"
+    "execa": "^9.1.0"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.9"
