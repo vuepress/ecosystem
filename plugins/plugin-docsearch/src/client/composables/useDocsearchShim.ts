@@ -1,7 +1,7 @@
 import type { DocSearchProps } from '@docsearch/react'
 import { debounce } from 'ts-debounce'
 import { useRouter } from 'vuepress/client'
-import { resolveRoutePathFromUrl } from 'vuepress/shared'
+import { removeLeadingSlash, resolveRoutePathFromUrl } from 'vuepress/shared'
 
 declare const __DOCSEARCH_INDEX_BASE__: string
 
@@ -19,6 +19,19 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
   const router = useRouter()
 
   return {
+    // convert item url to pathname of current site
+    transformItems: (items) =>
+      items.map((item) => ({
+        ...item,
+        url: `${
+          // append current base
+          __VUEPRESS_BASE__
+        }${removeLeadingSlash(
+          // get route path
+          resolveRoutePathFromUrl(item.url, __DOCSEARCH_INDEX_BASE__),
+        )}`,
+      })),
+
     // render the hit component with custom `onClick` handler
     hitComponent: ({ hit, children }) =>
       ({
@@ -34,9 +47,7 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
               return
             }
             event.preventDefault()
-            router.push(
-              resolveRoutePathFromUrl(hit.url, __DOCSEARCH_INDEX_BASE__),
-            )
+            router.push(resolveRoutePathFromUrl(hit.url))
           },
           children,
         },
@@ -47,7 +58,7 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
     navigator: {
       // when pressing Enter without metaKey
       navigate: ({ itemUrl }) => {
-        router.push(resolveRoutePathFromUrl(itemUrl, __DOCSEARCH_INDEX_BASE__))
+        router.push(itemUrl)
       },
     },
 

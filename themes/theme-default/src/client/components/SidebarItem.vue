@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import AutoLink from '@theme/AutoLink.vue'
 import DropdownTransition from '@theme/DropdownTransition.vue'
 import { useToggle } from '@vueuse/core'
 import { computed, nextTick, onBeforeUnmount, toRefs } from 'vue'
 import type { PropType } from 'vue'
-import { useRoute, useRouter } from 'vuepress/client'
+import { AutoLink, useRoute, useRouter } from 'vuepress/client'
 import type { ResolvedSidebarItem } from '../../shared/index.js'
 import { isActiveSidebarItem } from '../utils/index.js'
 
@@ -57,7 +56,7 @@ onBeforeUnmount(() => {
 
 <template>
   <li>
-    <AutoLink v-if="item.link" :class="itemClass" :item="item" />
+    <AutoLink v-if="item.link" :class="itemClass" :config="item" />
     <p
       v-else
       tabindex="0"

@@ -1,4 +1,4 @@
-import { isString } from '@vuepress/helper/client'
+import { isString, wait } from '@vuepress/helper/client'
 import type Artalk from 'artalk'
 import type { VNode } from 'vue'
 import {
@@ -54,11 +54,7 @@ export default defineComponent({
     const initArtalk = async (): Promise<void> => {
       const [{ default: Artalk }] = await Promise.all([
         import(/* webpackChunkName: "artalk" */ 'artalk/dist/Artalk.mjs'),
-        new Promise<void>((resolve) => {
-          setTimeout(() => {
-            resolve()
-          }, artalkOptions.value.delay || 800)
-        }),
+        wait(artalkOptions.value.delay || 800),
       ])
 
       loaded.value = true

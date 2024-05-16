@@ -1,6 +1,7 @@
+import { getRealPath } from '@vuepress/helper'
 import type { App } from 'vuepress'
 import type { MarkdownImagePluginOptions } from '../options.js'
-import { prepareFigureStyleFile } from './prepareFigureStyleFile.js'
+import { PLUGIN_NAME } from '../utils.js'
 import { prepareMarkStyleFile } from './prepareMarkStyleFile.js'
 
 export const prepareClientConfigFile = async (
@@ -16,7 +17,7 @@ export const prepareClientConfigFile = async (
 
   if (figure) {
     content += `\
-import "${await prepareFigureStyleFile(app)}"
+import "${getRealPath(`${PLUGIN_NAME}/client/styles/figure.css`, import.meta.url)}"
 `
   }
 

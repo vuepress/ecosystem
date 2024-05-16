@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/theme-default",
-  "version": "2.0.0-rc.28",
+  "version": "2.0.0-rc.30",
   "description": "Default theme of VuePress",
   "keywords": [
     "vuepress-theme",
@@ -45,10 +45,10 @@
     "@vuepress/helper": "workspace:~",
     "@vuepress/plugin-active-header-links": "workspace:~",
     "@vuepress/plugin-back-to-top": "workspace:~",
-    "@vuepress/plugin-markdown-container": "workspace:~",
     "@vuepress/plugin-copy-code": "workspace:~",
     "@vuepress/plugin-git": "workspace:~",
     "@vuepress/plugin-links-check": "workspace:~",
+    "@vuepress/plugin-markdown-container": "workspace:~",
     "@vuepress/plugin-medium-zoom": "workspace:~",
     "@vuepress/plugin-nprogress": "workspace:~",
     "@vuepress/plugin-palette": "workspace:~",
@@ -62,7 +62,7 @@
   },
   "peerDependencies": {
     "sass-loader": "^14.0.0",
-    "vuepress": "2.0.0-rc.9"
+    "vuepress": "2.0.0-rc.11"
   },
   "peerDependenciesMeta": {
     "sass-loader": {

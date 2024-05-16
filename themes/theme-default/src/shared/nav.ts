@@ -1,3 +1,5 @@
+import type { AutoLinkConfig } from 'vuepress/client'
+
 /**
  * Base nav item, displayed as text
  */
@@ -14,20 +16,10 @@ export interface NavGroup<T> extends NavItem {
 }
 
 /**
- * Props for `<AutoLink>`
- */
-export interface NavLink extends NavItem {
-  link: string
-  rel?: string
-  target?: string
-  activeMatch?: string
-}
-
-/**
  * Navbar types
  */
 // user config
-export type NavbarItem = NavLink
+export type NavbarItem = AutoLinkConfig
 export type NavbarGroup = NavGroup<NavbarGroup | NavbarItem | string>
 export type NavbarConfig = (NavbarItem | NavbarGroup | string)[]
 // resolved
@@ -37,7 +29,7 @@ export type ResolvedNavbarItem = NavbarItem | NavGroup<ResolvedNavbarItem>
  * Sidebar types
  */
 // user config
-export type SidebarItem = NavItem & Partial<NavLink>
+export type SidebarItem = NavItem & Partial<AutoLinkConfig>
 export type SidebarGroup = SidebarItem &
   NavGroup<SidebarItem | SidebarGroup | string> & {
     collapsible?: boolean
