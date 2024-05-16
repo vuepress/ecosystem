@@ -314,7 +314,9 @@ function resolveSidebarItems(
     } else {
       const { link, items, prefix, ...args } = item
       const navLink = { ...args } as ResolvedSidebarItem
-      navLink.link = normalizeLink(_prefix, item.link)
+      if (link) {
+        navLink.link = normalizeLink(_prefix, link)
+      }
       const nextPrefix = normalizePrefix(_prefix, prefix)
       if (items === 'structure') {
         navLink.items = structureSidebarData.value[nextPrefix]

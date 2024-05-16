@@ -8,7 +8,7 @@ import { onMounted, onUnmounted, onUpdated } from 'vue'
 import type { Ref } from 'vue'
 import type { DefaultThemeLocaleData } from '../../shared/index.js'
 import { getScrollOffset, throttleAndDebounce } from '../utils/index.js'
-import { useAside } from './aside'
+import { useAside } from './aside.js'
 import { useData } from './data.js'
 
 export interface Header {

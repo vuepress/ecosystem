@@ -1,7 +1,7 @@
 import { useMediaQuery } from '@vueuse/core'
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
-import { useSidebar } from './sidebar'
+import { useSidebar } from './sidebar.js'
 
 export function useAside(): {
   isAsideEnabled: ComputedRef<boolean>
