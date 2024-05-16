@@ -9,6 +9,7 @@
   -webkit-overflow-scrolling: touch;
   padding-top: 0.2em;
   padding-bottom: 0.2em;
+  scrollbar-width: thin;
 
   &::-webkit-scrollbar {
     height: 3px;

@@ -2,7 +2,7 @@ import type { MarkdownItKatexOptions } from '@mdit/plugin-katex-slim'
 import type { MarkdownItMathjaxOptions } from '@mdit/plugin-mathjax-slim'
 
 export interface MarkdownKatexPluginOptions
-  extends Omit<MarkdownItKatexOptions, 'vPre'> {
+  extends Omit<MarkdownItKatexOptions, 'transformer'> {
   type?: 'katex'
 
   /**
@@ -14,7 +14,7 @@ export interface MarkdownKatexPluginOptions
 }
 
 export interface MarkdownMathjaxPluginOptions
-  extends Omit<MarkdownItMathjaxOptions, 'vPre'> {
+  extends Omit<MarkdownItMathjaxOptions, 'transformer'> {
   type?: 'mathjax'
 }
 
