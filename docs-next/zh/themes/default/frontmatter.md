@@ -2,19 +2,19 @@
 
 <NpmBadge package="@vuepress/theme-default" />
 
-## All Pages
+## 所有页面
 
-Frontmatter in this section will take effect in all types of pages.
+本章节中的 Frontmatter 会在所有类型的页面中生效。
 
 ### pageClass
 
-- Type: `string`
+- 类型： `string`
 
-- Details:
+- 详情：
 
-  Add extra class name to this page.
+  将额外的类名称添加到特定页面。
 
-- Example:
+- 示例：
 
 ```md
 ---
@@ -22,27 +22,30 @@ pageClass: custom-page-class
 ---
 ```
 
-Then you can customize styles of this page in `.vuepress/styles/index.scss` file:
+然后可以在 `.vuepress/styles/custom.css` 文件中自定义该特定页面的样式：
 
 ```scss
-.theme-container.custom-page-class {
+.custom-page-class {
   /* page styles */
 }
 ```
 
-- Also see:
+- 参考：
   - [Default Theme > Styles > Style File](./styles.md#style-file)
 
 ### pageLayout
 
-- Type: `doc | home | page`
-- Default: `doc`
+- 类型： `doc | home | page`
 
-Determines the layout of the page.
+- 默认值： `doc`
 
-- `doc` - It applies default documentation styles to the markdown content.
-- `home` - Special layout for "Home Page". You may add extra options such as `hero` and `features` to rapidly create beautiful landing page.
-- `page` - Behave similar to `doc` but it applies no styles to the content. Useful when you want to create a fully custom page.
+- 详情：
+
+  指定页面的布局。
+
+  - `doc` —— 它将默认文档样式应用于 markdown 内容。
+  - `home` —— “主页”的特殊布局。可以添加额外的选项，例如 `hero` 和 `features` ，以快速创建漂亮的落地页。
+  - `page` —— 表现类似于 `doc`，但它不对内容应用任何样式。当想创建一个完全自定义的页面时很有用。
 
 ```yaml
 ---
@@ -52,13 +55,13 @@ pageLayout: doc
 
 ### navbar
 
-- Type: `boolean`
+- 类型： `boolean`
 
-- Default: `true`
+- 默认值： `true`
 
-- Details:
+- 详情：
 
-  Whether to display [navbar](./config.md#navbar).
+  是否显示 [navbar](./config.md#navbar).
 
 ```md
 ---
@@ -68,11 +71,11 @@ navbar: false
 
 ### externalLinkIcon
 
-- Type: `boolean`
+- 类型： `boolean`
 
-- Details:
+- 详情：
 
-  Show external link icon in Markdown links.
+  是否在外部链接上显示外部链接图标。
 
 ```md
 ---
@@ -82,27 +85,29 @@ externalLinkIcon: false
 
 ### footer
 
-- Type: `boolean`
+- 类型： `boolean`
 
-- Details:
+- 详情：
 
-  Whether to display [footer](./config.md#footer).
+  是否显示 [footer](./config.md#footer).
 
-## Home Page
+## 首页
 
-Frontmatter in this section will only take effect in home pages.
+本章节中的 Frontmatter 只会在首页中生效。
 
 ### home
 
-- Type: `boolean`
+- 类型： `boolean`
 
-- Details:
+- 详情：
 
-  Specify whether the page is homepage or a normal page.
+  设定该页面是首页还是普通页面。
 
-  If you don't set this frontmatter or set it to `false`, the page would be a [normal page](#normal-page).
+  如果你不设置该 Frontmatter 或将其设为 `false` ，则该页面会是一个 [普通页面](#普通页面).
 
-- Example:
+  > home 为 `true` 等价于将 `pageLayout` 设为 `home`。
+
+- 示例：
 
 ```md
 ---
@@ -112,7 +117,7 @@ home: true
 
 ### hero
 
-Defines contents of home hero section when `pageLayout` is set to `home`.
+主页布局设置为“home”时，定义 主页 `hero` 部分的内容。
 
 ```md
 ---
@@ -127,46 +132,42 @@ hero:
 
 #### hero.image
 
-- Type: `DefaultThemeImage`
+- 类型： `DefaultThemeImage`
 
-- Details:
+- 详情：
 
-  Specify the url of the hero image.
+  首页 Hero 部分图片的 URL 。
 
-- Also see:
-  - [Guide > Assets > Public Files](https://v2.vuepress.vuejs.org/guide/assets.html#public-files)
+- 参考：
+  - [Guide > Assets > Public Files](https://v2.vuepress.vuejs.org/zh/guide/assets.html#public-files)
 
 #### hero.name
 
-- Type: `string`
+- 类型： `string`
 
-- Details:
+- 详情：
 
-  Specify the the hero name.
+  `text` 上方的字符，带有品牌颜色, 尽量简短，例如产品名称
 
 #### hero.text
 
-- Type: `string`
+- 类型： `string`
 
-- Details:
+- 详情：
 
-  Specify the the hero text.
+  hero 部分的主要文字，被定义为 `h1` 标签
 
 #### hero.tagline
 
-- Type: `string | null`
+- 类型： `string`
 
-- Details:
+- 详情：
 
-  Specify the the tagline.
-
-  This will fallback to the site [description](https://v2.vuepress.vuejs.org/reference/config.html#description).
-
-  Set to `null` to disable tagline.
+  `text` 下方的标语
 
 ### actions
 
-- Type: `HeroAction[]`
+- 类型： `HeroAction[]`
 
 ```ts
 interface HeroAction {
@@ -178,11 +179,11 @@ interface HeroAction {
 }
 ```
 
-- Details:
+- 详情：
 
-  Configuration of the action buttons.
+  配置首页按钮。
 
-- Example:
+- 示例：
 
 ```md
 ---
@@ -198,7 +199,7 @@ actions:
 
 ### features
 
-- Type: `Feature[]`
+- 类型： `Feature[]`
 
 ```ts
 interface Feature {
@@ -230,11 +231,11 @@ export type FeatureIcon =
     }
 ```
 
-- Details:
+- 详情：
 
-  Configuration of the features list.
+  配置首页特性列表。
 
-- Example:
+- 示例：
 
 ```md
 ---
@@ -248,78 +249,88 @@ features:
 ---
 ```
 
-## Normal Page
+### markdownStyles
 
-Frontmatter in this section will only take effect in normal pages.
+- 类型：`boolean`
+
+- 默认值：`true`
+
+- 详情：
+
+  是否为首页 其它的内容 使用 markdown 样式。
+
+## 普通页面
+
+本章节中的 Frontmatter 只会在普通页面中生效。
 
 ### editLink
 
-- Type: `boolean`
+- 类型： `boolean`
 
-- Details:
+- 详情：
 
-  Enable the _edit this page_ link in this page or not.
+  是否在本页面中启用 _编辑此页_ 链接。
 
-- Also see:
+- 参考：
   - [Default Theme > Config > editLink](./config.md#editlink)
 
 ### editLinkPattern
 
-- Type: `string`
+- 类型： `string`
 
-- Details:
+- 详情：
 
-  Specify the pattern of the _edit this page_ link of this page.
+  本页面中 _编辑此页_ 链接的 Pattern 。
 
-- Also see:
+- 参考：
   - [Default Theme > Config > editLinkPattern](./config.md#editlinkpattern)
 
 ### lastUpdated
 
-- Type: `boolean`
+- 类型： `boolean`
 
-- Details:
+- 详情：
 
-  Enable the _last updated timestamp_ in this page or not.
+  是否在本页面中启用 _最近更新时间戳_ 。
 
-- Also see:
+- 参考：
   - [Default Theme > Config > lastUpdated](./config.md#lastupdated)
 
 ### contributors
 
-- Type: `boolean`
+- 类型： `boolean`
 
-- Details:
+- 详情：
 
-  Enable the _contributors list_ in this page or not.
+  是否在本页面中启用 _贡献者列表_ 。
 
-- Also see:
+- 参考：
   - [Default Theme > Config > contributors](./config.md#contributors)
 
 ### sidebar
 
-- Type: `boolean`
+- 类型： `boolean`
 
-- Details:
+- 详情：
 
-  Whether to display the sidebar of this page.
+  是否显示 侧边栏
 
-- Also see:
+- 参考：
   - [Default Theme > Config > sidebar](./config.md#sidebar)
 
 ### aside
 
-- Type: `boolean | 'left'`
+- 类型： `boolean | 'left'`
 
-- Default: `true`
+- 默认值： `true`
 
-- Details:
+- 详情：
 
-  Defines the location of the aside component in the `doc` layout.
+  定义侧边栏组件在 `doc` 布局中的位置。
 
-  - Setting this value to `false` prevents rendering of aside container.\
-  - Setting this value to `true` renders the aside to the right.\
-  - Setting this value to `'left'` renders the aside to the left.
+  - 将此值设置为 `false` 可禁用侧边栏容器。
+  - 将此值设置为 `true` 会将侧边栏渲染到右侧。
+  - 将此值设置为 `left` 会将侧边栏渲染到左侧。
 
 ```yaml
 ---
@@ -329,24 +340,25 @@ aside: false
 
 ### outline
 
-- Type: `number | [number, number] | 'deep' | false`
+- 类型： `number | [number, number] | 'deep' | false`
 
-- Default: `2`
+- 默认值： `[2,3]`
 
-- Details:
+- 详情：
 
-  The levels of header in the outline to display for the page.
-  It's same as [outline](./config.md#outline), and it overrides the value set in site-level config.
+大纲中显示的标题级别。它与 [outline](./config.md#outline) 相同，它会覆盖站点级的配置。
 
 ### prev
 
-- Type: `string | false | { text?: string; link?: string }`
+- 类型： `string | false | { text?: string; link?: string }`
 
-- Details:
+- 详情：
 
-  Specifies the text/link to show on the link to the previous page. If you don't set this in frontmatter, the text/link will be inferred from the sidebar config.
+  上一个页面的链接。
 
-- Example:
+  如果你不设置该 Frontmatter ，该链接会自动根据侧边栏配置进行推断。
+
+- 示例：
 
 ```md
 ---
@@ -370,12 +382,12 @@ prev: ../../guide/getting-started.md
 
 ### next
 
-- Type: `string | false | { text?: string; link?: string }`
+- 类型： `string | false | { text?: string; link?: string }`
 
-- Details:
+- 详情：
 
-  Specify the link of the next page.
+  下一个页面的链接。
 
-  If you don't set this frontmatter, the link will be inferred from the sidebar config.
+  如果你不设置该 Frontmatter ，该链接会自动根据侧边栏配置进行推断。
 
-  The type is the same as [prev](#prev) frontmatter.
+  类型和 prev Frontmatter 相同。

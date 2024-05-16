@@ -2,14 +2,13 @@
 
 <NpmBadge package="@vuepress/theme-default" />
 
-Users can customize style variables via a [palette file](#palette-file),
-and add extra styles via a [style file](#style-file).
+The default theme is styled using CSS, with CSS Variables defining the style variables.
 
-## Palette File
+Users can override the default CSS variables and write additional styles through the [style file](#style-file).
 
-The path of the palette file is `.vuepress/styles/index.css`.
+## CSS Variable File
 
-You can make use of it to override predefined SASS variables of the default theme.
+You can override the default CSS variables in the [style file](#style-file).
 
 ::: details Click to expand CSS variables
 @[code scss](@vuepress/theme-default/src/client/styles/vars.css)
@@ -17,7 +16,7 @@ You can make use of it to override predefined SASS variables of the default them
 
 ## Style File
 
-The path of the style file is `.vuepress/styles/index.scss`.
+The path of the style file is `.vuepress/styles/index.css`.
 
 You can add extra styles here, or override the default styles:
 

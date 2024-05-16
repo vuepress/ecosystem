@@ -42,6 +42,7 @@ export function getPlugins(
   if (themePlugins.copyCode !== false) {
     plugins.push(
       copyCodePlugin({
+        selector: '.vp-content div[class*="language-"] pre',
         ...(isPlainObject(themePlugins.copyCode) ? themePlugins.copyCode : {}),
       }),
     )
@@ -68,8 +69,7 @@ export function getPlugins(
   if (themePlugins.mediumZoom !== false) {
     plugins.push(
       mediumZoomPlugin({
-        selector:
-          '.theme-default-content > img, .theme-default-content :not(a) > img',
+        selector: '.vp-content > img, .vp-content :not(a) > img',
         zoomOptions: {},
         // should greater than page transition duration
         delay: 300,

@@ -2,9 +2,9 @@
 
 <NpmBadge package="@vuepress/theme-default" />
 
-## Tables
+## 表格
 
-**Input:**
+**输入：**
 
 ```md
 | Tables        |      Are      |  Cool |
@@ -14,7 +14,7 @@
 | zebra stripes |   are neat    |    $1 |
 ```
 
-**Output:**
+**输出：**
 
 | Tables        |      Are      |   Cool |
 | ------------- | :-----------: | -----: |
@@ -24,21 +24,21 @@
 
 ## Emoji :tada:
 
-**Input:**
+**输入：**
 
 ```txt
 :tada: :100:
 ```
 
-**Output:**
+**输出：**
 
 :tada: :100:
 
-A [list of all emojis](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.mjs) is available.
+这里可以找到 [所有支持的 emoji 列表](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.mjs) 。
 
-## Custom Containers
+## 自定义容器
 
-- Usage:
+- 使用：
 
   ```md
   ::: <type> [title]
@@ -46,146 +46,148 @@ A [list of all emojis](https://github.com/markdown-it/markdown-it-emoji/blob/mas
   :::
   ```
 
-  The `type` is required, and the `title` and `content` are optional.
+  `type` 是必需的， `title` 和 `content` 是可选的。
 
-  Supported `type` :
+  支持的 `type` 有：
 
   - `info`
   - `tip`
   - `warning`
-  - `danger` ( alias `caution` )
+  - `danger` （别名 `caution` ）
   - `details`
   - `important`
 
-- Example 1 (default title):
+- 示例 1 （默认标题）：
 
-**Input:**
+**输入：**
 
 ```md
 ::: info
-This is a info
+这是一个 信息
 :::
 
 ::: tip
-This is a tip
+这是一个提示
 :::
 
 ::: warning
-This is a warning
+这是一个警告
 :::
 
 ::: danger
-This is a dangerous warning
+这是一个危险警告
 :::
 
 ::: important
-This is an important
+这是一个重要内容
 :::
 
 ::: details
-This is a details block
+这是一个details 标签
 :::
 ```
 
-**Output:**
+**输出：**
 
 ::: info
-This is a info
+这是一个 信息
 :::
 
 ::: tip
-This is a tip
+这是一个提示
 :::
 
 ::: warning
-This is a warning
+这是一个警告
 :::
 
 ::: danger
-This is a dangerous warning
+这是一个危险警告
 :::
 
 ::: important
-This is an important
+这是一个重要内容
 :::
 
 ::: details
-This is a details block
+这是一个details 标签
 :::
 
-- Example 2 (custom title):
+- 示例 2 （自定义标题）：
 
-**Input:**
+**输入**
 
 ````md
 ::: danger STOP
-Danger zone, do not proceed
+危险区域，禁止通行
 :::
 
-::: details Click me to view the code
+::: details 点击查看代码
 
 ```ts
-console.log('Hello, VuePress!')
+console.log('你好，VuePress！')
 ```
 
 :::
 ````
 
-**Output:**
+**输出**
 
 ::: danger STOP
-Danger zone, do not proceed
+危险区域，禁止通行
 :::
 
-::: details Click me to view the code
+::: details 点击查看代码
 
 ```ts
-console.log('Hello, VuePress!')
+console.log('你好，VuePress！')
 ```
 
 :::
 
-## GitHub-flavored Alerts
+## GitHub 风格的警报
 
-VitePress also supports [GitHub-flavored alerts](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts) to render as callouts. They will be rendered the same as the [custom containers](#custom-containers).
+VuePress 默认主题同样支持以标注的方式渲染 [GitHub-flavored alerts](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts) 。
+
+它们和 [自定义容器](#自定义容器) 的渲染方式相同。
 
 ```md
 > [!NOTE]
-> Highlights information that users should take into account, even when skimming.
+> 强调用户在快速浏览文档时也不应忽略的重要信息。
 
 > [!TIP]
-> Optional information to help a user be more successful.
+> 有助于用户更顺利达成目标的建议性信息。
 
 > [!IMPORTANT]
-> Crucial information necessary for users to succeed.
+> 对用户达成目标至关重要的信息。
 
 > [!WARNING]
-> Critical content demanding immediate user attention due to potential risks.
+> 因为可能存在风险，所以需要用户立即关注的关键内容。
 
 > [!CAUTION]
-> Negative potential consequences of an action.
+> 行为可能带来的负面影响。
 ```
 
 > [!NOTE]
-> Highlights information that users should take into account, even when skimming.
+> 强调用户在快速浏览文档时也不应忽略的重要信息。
 
 > [!TIP]
-> Optional information to help a user be more successful.
+> 有助于用户更顺利达成目标的建议性信息。
 
 > [!IMPORTANT]
-> Crucial information necessary for users to succeed.
+> 对用户达成目标至关重要的信息。
 
 > [!WARNING]
-> Critical content demanding immediate user attention due to potential risks.
+> 因为可能存在风险，所以需要用户立即关注的关键内容。
 
 > [!CAUTION]
-> Negative potential consequences of an action.
+> 行为可能带来的负面影响。
 
-## Line Highlighting in Code Blocks
+## 在代码块中实现行高亮
 
-**Input:**
+**输入：**
 
-````
+````txt
 ```js{4}
 export default {
   data () {
@@ -197,7 +199,7 @@ export default {
 ```
 ````
 
-**Output:**
+**输出：**
 
 ```js{4}
 export default {
@@ -209,15 +211,15 @@ export default {
 }
 ```
 
-In addition to a single line, you can also specify multiple single lines, ranges, or both:
+除了单行之外，还可以指定多个单行、多行，或两者均指定：
 
-- Line ranges: for example `{5-8}`, `{3-10}`, `{10-17}`
-- Multiple single lines: for example `{4,7,9}`
-- Line ranges and single lines: for example `{4,7-13,16,23-27,40}`
+- 多行：例如 `{5-8}` 、`{3-10}` 、`{10-17}`
+- 多个单行：例如 `{4,7,9}`
+- 多行与单行：例如 `{4,7-13,16,23-27,40}`
 
-**Input:**
+**输入：**
 
-````
+````txt
 ```js{1,4,6-8}
 export default { // Highlighted
   data () {
@@ -233,7 +235,7 @@ export default { // Highlighted
 ```
 ````
 
-**Output:**
+**输出：**
 
 ```js{1,4,6-8}
 export default { // Highlighted
@@ -249,11 +251,11 @@ export default { // Highlighted
 }
 ```
 
-Alternatively, it's possible to highlight directly in the line by using the `// [!code highlight]` comment.
+也可以使用 `// [!code highlight]` 注释实现行高亮。
 
-**Input:**
+**输入：**
 
-````
+````txt
 ```js
 export default {
   data () {
@@ -265,7 +267,7 @@ export default {
 ```
 ````
 
-**Output:**
+**输出：**
 
 ```js
 export default {
@@ -277,15 +279,15 @@ export default {
 }
 ```
 
-## Focus in Code Blocks
+## 代码块中聚焦
 
-Adding the `// [!code focus]` comment on a line will focus it and blur the other parts of the code.
+在某一行上添加 `// [!code focus]` 注释将聚焦它并模糊代码的其他部分。
 
-Additionally, you can define a number of lines to focus using `// [!code focus:<lines>]`.
+此外，可以使用 `// [!code focus:<lines>]` 定义要聚焦的行数。
 
-**Input:**
+**输入：**
 
-````
+````txt
 ```js
 export default {
   data () {
@@ -297,7 +299,7 @@ export default {
 ```
 ````
 
-**Output:**
+**输出：**
 
 ```js
 export default {
@@ -309,13 +311,13 @@ export default {
 }
 ```
 
-## Colored Diffs in Code Blocks
+## 代码块中的颜色差异
 
-Adding the `// [!code --]` or `// [!code ++]` comments on a line will create a diff of that line, while keeping the colors of the codeblock.
+在某一行添加 `// [!code --]` 或 `// [!code ++]` 注释将会为该行创建 diff，同时保留代码块的颜色。
 
-**Input:**
+**输入：**
 
-````
+````txt
 ```js
 export default {
   data () {
@@ -328,7 +330,7 @@ export default {
 ```
 ````
 
-**Output:**
+**输出：**
 
 ```js
 export default {
@@ -341,13 +343,13 @@ export default {
 }
 ```
 
-## Errors and Warnings in Code Blocks
+## 高亮“错误”和“警告”
 
-Adding the `// [!code warning]` or `// [!code error]` comments on a line will color it accordingly.
+在某一行添加 `// [!code warning]` 或 `// [!code error]` 注释将会为该行相应的着色。
 
-**Input:**
+**输入：**
 
-````
+````txt
 ```js
 export default {
   data () {
@@ -360,7 +362,7 @@ export default {
 ```
 ````
 
-**Output:**
+**输出：**
 
 ```js
 export default {
@@ -373,11 +375,11 @@ export default {
 }
 ```
 
-## Code Groups
+## 代码组
 
-You can group multiple code blocks like this:
+可以像这样将多个代码块分组：
 
-**Input:**
+**输入：**
 
 ````md
 ::: code-group
@@ -393,7 +395,7 @@ const bar = 'bar'
 :::
 ````
 
-**Output:**
+**输出：**
 
 ::: code-group
 
@@ -407,9 +409,9 @@ const bar = 'bar'
 
 :::
 
-You can also add the `active` option to display the code block by default.
+还可以添加`active`选项以默认显示代码块。
 
-**Input:**
+**输入：**
 
 ````md
 ::: code-group
@@ -425,7 +427,7 @@ const bar = 'bar'
 :::
 ````
 
-**Output:**
+**输出：**
 
 ::: code-group
 

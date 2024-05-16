@@ -1,8 +1,8 @@
-# Plugins Config
+# 插件配置
 
-You can configure the plugins that used by default theme with `themePlugins`.
+你可以通过 `themePlugins` 设置默认主题使用的插件。
 
-Default theme is using some plugins by default. You can disable a plugin if you really do not want to use it. Make sure you understand what the plugin is for before disabling it.
+默认主题使用了一些插件，如果你确实不需要该插件，你可以选择禁用它。在禁用插件之前，请确保你已了解它的用途。
 
 ```ts
 import { defaultTheme } from '@vuepress/theme-default'
@@ -10,7 +10,7 @@ import { defaultTheme } from '@vuepress/theme-default'
 export default {
   theme: defaultTheme({
     themePlugins: {
-      // customize theme plugins here
+      // 在这里自定义主题插件
     },
   }),
 }
@@ -18,96 +18,96 @@ export default {
 
 ## themePlugins.activeHeaderLinks
 
-- Type: `boolean`
+- 类型： `boolean`
 
-- Default: `true`
+- 默认值： `true`
 
-- Details:
+- 详情：
 
-  Enable [@vuepress/plugin-active-header-links](../../plugins/active-header-links.md) or not.
+  是否启用 [@vuepress/plugin-active-header-links](../../plugins/active-header-links.md)。
 
 ## themePlugins.copyCode
 
-- Type: `CopyCodePluginOptions | boolean`
+- 类型： `CopyCodePluginOptions | boolean`
 
-- Default: `true`
+- 默认值： `true`
 
-- Details:
+- 详情：
 
-  Enable [@vuepress/plugin-copy-code](../../plugins/copy-code.md) or not.
+  是否启用 [@vuepress/plugin-copy-code](../../plugins/copy-code.md)。
 
   Object value is supported as plugin options.
 
 ## themePlugins.git
 
-- Type: `boolean`
+- 类型： `boolean`
 
-- Default: `true`
+- 默认值： `true`
 
-- Details:
+- 详情：
 
-  Enable [@vuepress/plugin-git](../../plugins/git.md) or not.
+  是否启用 [@vuepress/plugin-git](../../plugins/git.md)。
 
 ## themePlugins.linksCheck
 
-- Type: `LinksCheckPluginOptions | boolean`
+- 类型： `LinksCheckPluginOptions | boolean`
 
-- Default: `true`
+- 默认值： `true`
 
-- Details:
+- 详情：
 
-  Enable [@vuepress/plugin-links-check](../../plugins/links-check.md) or not.
+  是否启用 [@vuepress/plugin-links-check](../../plugins/links-check.md)。
 
 ## themePlugins.mediumZoom
 
-- Type: `boolean`
+- 类型： `boolean`
 
-- Default: `true`
+- 默认值： `true`
 
-- Details:
+- 详情：
 
-  Enable [@vuepress/plugin-medium-zoom](../../plugins/medium-zoom.md) or not.
+  是否启用 [@vuepress/plugin-medium-zoom](../../plugins/medium-zoom.md)。
 
 ## themePlugins.nprogress
 
-- Type: `boolean`
+- 类型： `boolean`
 
-- Default: `true`
+- 默认值： `true`
 
-- Details:
+- 详情：
 
-  Enable [@vuepress/plugin-nprogress](../../plugins/nprogress.md) or not.
+  是否启用 [@vuepress/plugin-nprogress](../../plugins/nprogress.md)。
 
 ## themePlugins.shiki
 
-- Type: `boolean | ShikiPluginOptions`
+- 类型： `boolean | ShikiPluginOptions`
 
-- Default: `true`
+- 默认值： `true`
 
-- Details:
+- 详情：
 
-  Enable [@vuepress/plugin-shiki](../../plugins/shiki.md) or not.
+  是否启用 [@vuepress/plugin-shiki](../../plugins/shiki.md)。
 
 ## themePlugins.seo
 
-- Type: `SeoPluginOptions | boolean`
+- 类型： `SeoPluginOptions | boolean`
 
-- Default: `true`
+- 默认值： `true`
 
-- Details:
+- 详情：
 
-  Enable [@vuepress/plugin-seo](../../plugins/seo/README.md) or not.
+  是否启用 [@vuepress/plugin-seo](../../plugins/seo/README.md)。
 
   Object value is supported as plugin options.
 
 ## themePlugins.sitemap
 
-- Type: `SitemapPluginOptions | boolean`
+- 类型： `SitemapPluginOptions | boolean`
 
-- Default: `true`
+- 默认值： `true`
 
-- Details:
+- 详情：
 
-  Enable [@vuepress/plugin-sitemap](../../plugins/sitemap/README.md) or not.
+  是否启用 [@vuepress/plugin-sitemap](../../plugins/sitemap/README.md)。
 
-  Object value is supported as plugin options.
+  支持对象格式以作为插件选项。

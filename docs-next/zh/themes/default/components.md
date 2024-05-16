@@ -2,7 +2,7 @@
 outline: 2
 ---
 
-# Built-in Components
+# 内置组件
 
 <NpmBadge package="@vuepress/theme-default" />
 
@@ -11,15 +11,15 @@ outline: 2
 - Props:
 
   - type
-    - Type: `'info' |'tip' | 'warning' | 'danger'`
-    - Default: `'tip'`
+    - 类型： `'info' |'tip' | 'warning' | 'danger'`
+    - 默认值： `'tip'`
   - text
-    - Type: `string`
-    - Default: `''`
+    - 类型： `string`
+    - 默认值： `''`
 
-### Example
+### 示例
 
-**Input:**
+**输入：**
 
 ```md
 - VuePress - <Badge type="info" text="v2" />
@@ -36,7 +36,7 @@ outline: 2
 #### Title <Badge type="danger" text="caution" />
 ```
 
-**Output:**
+**输出：**
 
 - VuePress - <Badge type="info" text="v2" />
 - VuePress - <Badge type="tip" text="v2" />
@@ -51,9 +51,9 @@ outline: 2
 
 #### Title <Badge type="danger" text="caution" />
 
-## Custom Children
+## 自定义子节点
 
-`<Badge>` accept `children`, which will be displayed in the badge.
+`<Badge>` 接受 `children`, 这将显示在徽标中。
 
 ```html
 ### Title <Badge type="info">custom element</Badge>
@@ -61,9 +61,9 @@ outline: 2
 
 ### Title <Badge type="info">custom element</Badge>
 
-### Customize Type Color
+### 自定义不同类型徽标的背景色
 
-You can customize the style of badges by overriding css variables. The following are the default values:
+可以通过覆盖 css 来自定义不同类型 `<Badge />` 的样式。以下是默认值：
 
 ```css
 :root {

@@ -10,7 +10,7 @@ If your site is served in a different language besides English, you should set t
 - Default: `'Change language'`
 - Details:
 
-  Can be used to customize the aria-label of the language toggle button in navbar.
+  Can be used to customize the `aria-label` of the language toggle button in navbar.
 
   This option will **only take effect inside** the [locales](./config.md#locales) of your theme config.
 

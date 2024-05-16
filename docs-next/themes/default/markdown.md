@@ -147,7 +147,9 @@ console.log('Hello, VuePress!')
 
 ## GitHub-flavored Alerts
 
-VitePress also supports [GitHub-flavored alerts](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts) to render as callouts. They will be rendered the same as the [custom containers](#custom-containers).
+VuePress Theme Default also supports [GitHub-flavored alerts](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts) to render as callouts.
+
+They will be rendered the same as the [custom containers](#custom-containers).
 
 ```md
 > [!NOTE]

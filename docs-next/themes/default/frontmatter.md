@@ -22,10 +22,10 @@ pageClass: custom-page-class
 ---
 ```
 
-Then you can customize styles of this page in `.vuepress/styles/index.scss` file:
+Then you can customize styles of this page in `.vuepress/styles/custom.css` file:
 
 ```scss
-.theme-container.custom-page-class {
+.custom-page-class {
   /* page styles */
 }
 ```
@@ -36,13 +36,16 @@ Then you can customize styles of this page in `.vuepress/styles/index.scss` file
 ### pageLayout
 
 - Type: `doc | home | page`
+
 - Default: `doc`
 
-Determines the layout of the page.
+- Details:
 
-- `doc` - It applies default documentation styles to the markdown content.
-- `home` - Special layout for "Home Page". You may add extra options such as `hero` and `features` to rapidly create beautiful landing page.
-- `page` - Behave similar to `doc` but it applies no styles to the content. Useful when you want to create a fully custom page.
+  Determines the layout of the page.
+
+  - `doc` - It applies default documentation styles to the markdown content.
+  - `home` - Special layout for "Home Page". You may add extra options such as `hero` and `features` to rapidly create beautiful landing page.
+  - `page` - Behave similar to `doc` but it applies no styles to the content. Useful when you want to create a fully custom page.
 
 ```yaml
 ---
@@ -154,15 +157,11 @@ hero:
 
 #### hero.tagline
 
-- Type: `string | null`
+- Type: `string`
 
 - Details:
 
   Specify the the tagline.
-
-  This will fallback to the site [description](https://v2.vuepress.vuejs.org/reference/config.html#description).
-
-  Set to `null` to disable tagline.
 
 ### actions
 
@@ -248,6 +247,16 @@ features:
 ---
 ```
 
+### markdownStyles
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Whether use markdown styles
+
 ## Normal Page
 
 Frontmatter in this section will only take effect in normal pages.
@@ -317,8 +326,8 @@ Frontmatter in this section will only take effect in normal pages.
 
   Defines the location of the aside component in the `doc` layout.
 
-  - Setting this value to `false` prevents rendering of aside container.\
-  - Setting this value to `true` renders the aside to the right.\
+  - Setting this value to `false` prevents rendering of aside container.
+  - Setting this value to `true` renders the aside to the right.
   - Setting this value to `'left'` renders the aside to the left.
 
 ```yaml

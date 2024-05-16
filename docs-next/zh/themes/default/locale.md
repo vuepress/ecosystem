@@ -1,30 +1,30 @@
-# Locale Config
+# 语言配置
 
-These options configure locale-related texts.
+这些选项用于配置与语言相关的文本。
 
-If your site is served in a different language besides English, you should set these options per locale to provide translations.
+如果你的站点是以英语以外的其他语言提供服务的，你应该为每个语言设置这些选项来提供翻译。
 
 ## selectLanguageText
 
-- Type: `string`
-- Default: `'Change language'`
-- Details:
+- 类型： `string`
+- 默认值： `'Change language'`
+- 详情：
 
-  Can be used to customize the aria-label of the language toggle button in navbar.
+  用于自定义导航栏中语言切换按钮的 `aria-label` 。
 
-  This option will **only take effect inside** the [locales](./config.md#locales) of your theme config.
+  此选项仅在您主题配置的[locales](./config.md#locales)中生效。
 
 ## selectLanguageName
 
-- Type: `string`
+- 类型： `string`
 
-- Details:
+- 详情：
 
-  Specify the name of the language of a locale.
+  Locale 的语言名称。
 
-  This option will **only take effect inside** the [locales](./config.md#locales) of your theme config. It will be used as the language name of the locale, which will be displayed in the _select language menu_.
+  该配置项 **仅能在主题配置的 [locales](./config.md#locales) 的内部生效** 。它将被用作 locale 的语言名称，展示在 _选择语言菜单_ 内。
 
-- Example:
+- 示例：
 
 ```ts
 export default {
@@ -51,101 +51,101 @@ export default {
 
 ## outlineTitle
 
-- Type: `string`
+- 类型： `string`
 
-- Default: `'On this page'`
+- 默认值： `'此页内容'`
 
-- Details:
+- 详情：
 
-  The title to be displayed on the outline.
+  显示在 outline 上的标题。
 
 ## sidebarMenuLabel
 
-- Type: `string`
+- 类型： `string`
 
-- Default: `'Menu'`
+- 默认值： `'Menu'`
 
-- Details:
+- 详情：
 
-  Can be used to customize the sidebar menu label. This label is only displayed in the mobile view.
+  用于自定义侧边栏菜单标签，该标签仅在移动端视图中显示。
 
 ## darkModeSwitchLabel
 
-- Type: `string`
+- 类型： `string`
 
-- Default: `'Appearance'`
+- 默认值： `'Appearance'`
 
-- Details:
+- 详情：
 
-  Can be used to customize the dark mode switch label. This label is only displayed in the mobile view.
+  用于自定义深色模式开关标签，该标签仅在移动端视图中显示。
 
 ## lightModeSwitchTitle
 
-- Type: `string`
+- 类型： `string`
 
-- Default: `'Switch to light theme'`
+- 默认值： `'Switch to light theme'`
 
-- Details:
+- 详情：
 
-  Can be used to customize the light mode switch title that appears on hovering.
+  用于自定义悬停时显示的浅色模式开关标题。
 
 ## darkModeSwitchTitle
 
-- Type: `string`
+- 类型： `string`
 
-- Default: `'Switch to dark theme'`
+- 默认值： `'Switch to dark theme'`
 
-- Details:
+- 详情：
 
-  Can be used to customize the dark mode switch title that appears on hovering.
+  用于自定义悬停时显示的深色模式开关标题。
 
 ## editLinkText
 
-- Type: `string`
+- 类型： `string`
 
-- Default: `'Edit this page'`
+- 默认值： `'Edit this page'`
 
-- Details:
+- 详情：
 
-  Specify the text of the _edit this page_ link.
+  _编辑此页_ 链接的文字。
 
 ## lastUpdatedText
 
-- Type: `string`
+- 类型： `string`
 
-- Default: `'Last Updated'`
+- 默认值： `'Last Updated'`
 
-- Details:
+- 详情：
 
-  Specify the text of the _last updated timestamp_ label.
+  _最近更新时间戳_ 标签的文字。
 
 ## contributorsText
 
-- Type: `string`
+- 类型： `string`
 
-- Default: `'Contributors'`
+- 默认值： `'Contributors'`
 
-- Details:
+- 详情：
 
-  Specify the text of the _contributors list_ label.
+  _贡献者列表_ 标签的文字。
 
 ## returnToTopLabel
 
-- Type: `string`
+- 类型： `string`
 
-- Default: `Return to top`
+- 默认值： `Return to top`
 
-- Details:
+- 详情：
 
-  Can be used to customize the label of the return to top button. This label is only displayed in the mobile view.
+  用于自定义返回顶部按钮的标签，该标签仅在移动端视图中显示。
 
 ## notFound
 
-- Type: `NotFoundOptions`
+- 类型： `NotFoundOptions`
 
-- Details:
+- 详情：
 
-  Customize text of 404 page.
+  用于自定义 404 页面 的内容.
 
 ```ts
 export default {
@@ -165,22 +165,22 @@ export default {
 ```ts
 interface NotFoundOptions {
   /**
-   * Set custom not found message.
+   * 自定义 页面未找到 消息。
    */
   title?: string
 
   /**
-   * Set custom not found description.
+   * 自定义 页面的未找到 描述。
    */
   quote?: string
 
   /**
-   * Set aria label for home link.
+   * 自定义 返回首页 按钮的 aria-label
    */
   linkLabel?: string
 
   /**
-   * Set custom home link text.
+   * 自定义返回首页按钮的文字
    */
   linkText?: string
 
@@ -188,5 +188,43 @@ interface NotFoundOptions {
    * @default '404'
    */
   code?: string
+}
+```
+
+## container
+
+- 类型： `ContainerOptions`
+
+- 详情：
+
+  用于自定义 提示容器 的标题。
+
+```ts
+export default {
+  theme: defaultTheme({
+    container: {
+      infoLabel: 'INFO',
+      noteLabel: 'NOTE',
+      tipLabel: 'TIP',
+      warningLabel: 'WARNING',
+      dangerLabel: 'DANGER',
+      detailsLabel: 'DETAILS',
+      importantLabel: 'IMPORTANT',
+      cautionLabel: 'CAUTION',
+    },
+  }),
+}
+```
+
+```ts
+interface ContainerOptions {
+  infoLabel?: string
+  noteLabel?: string
+  tipLabel?: string
+  warningLabel?: string
+  dangerLabel?: string
+  detailsLabel?: string
+  importantLabel?: string
+  cautionLabel?: string
 }
 ```

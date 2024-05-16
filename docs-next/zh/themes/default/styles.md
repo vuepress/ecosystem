@@ -1,27 +1,26 @@
-# Styles
+# 样式
 
 <NpmBadge package="@vuepress/theme-default" />
 
-Users can customize style variables via a [palette file](#palette-file),
-and add extra styles via a [style file](#style-file).
+默认主题使用 CSS 编写样式，使用 CSS Variables 定义样式变量。
 
-## Palette File
+用户可以通过 [样式文件](#样式文件) 覆盖默认的 CSS 变量，以及编写额外的样式。
 
-The path of the palette file is `.vuepress/styles/index.css`.
+## CSS 变量文件
 
-You can make use of it to override predefined SASS variables of the default theme.
+你可以在 [样式文件](#样式文件) 中覆盖默认的 CSS 变量。
 
-::: details Click to expand CSS variables
+::: details 点击展开 CSS 变量
 @[code scss](@vuepress/theme-default/src/client/styles/vars.css)
 :::
 
-## Style File
+## 样式文件
 
-The path of the style file is `.vuepress/styles/index.scss`.
+样式文件的路径是 `.vuepress/styles/index.scss`.
 
-You can add extra styles here, or override the default styles:
+你可以在这里编写额外的样式，或覆盖默认样式：
 
-```scss
+```css
 :root {
   scroll-behavior: smooth;
 }

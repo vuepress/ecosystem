@@ -12,7 +12,7 @@ const { hasSidebar } = useSidebar()
 <template>
   <div
     id="VPContent"
-    class="vpContent theme-default-content"
+    class="vpContent vp-content"
     :class="{
       'has-sidebar': hasSidebar,
       'is-home': frontmatter.pageLayout === 'home' || frontmatter.home,
