@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { isLinkExternal } from '@vuepress/helper/client'
 import { computed } from 'vue'
-import { resolveRoutePath, useRouter } from 'vuepress/client'
+import { resolveRoutePath, useRouter, withBase } from 'vuepress/client'
 
 const props = defineProps<{
   tag?: string
@@ -43,7 +43,7 @@ function linkTo(e: Event): void {
       'vp-external-link-icon': isExternal,
       'no-icon': noIcon,
     }"
-    :href="link"
+    :href="withBase(link || '')"
     :target="target ?? (isExternal ? '_blank' : undefined)"
     :rel="rel ?? (isExternal ? 'noopener noreferrer' : undefined)"
     @click="linkTo"

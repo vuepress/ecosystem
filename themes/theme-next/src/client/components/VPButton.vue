@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { isLinkExternal } from '@vuepress/helper/client'
 import { computed } from 'vue'
-import { resolveRoutePath, useRouter } from 'vuepress/client'
+import { resolveRoutePath, useRouter, withBase } from 'vuepress/client'
 
 interface Props {
   tag?: string
@@ -48,7 +48,7 @@ function linkTo(e: Event): void {
     :is="component"
     class="vpButton"
     :class="[size, theme]"
-    :href="link"
+    :href="withBase(link || '')"
     :target="props.target ?? (isExternal ? '_blank' : undefined)"
     :rel="props.rel ?? (isExternal ? 'noreferrer' : undefined)"
     @click="linkTo"
