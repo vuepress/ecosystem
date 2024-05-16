@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-redirect",
-  "version": "2.0.0-rc.29",
+  "version": "2.0.0-rc.30",
   "description": "VuePress plugin - redirect",
   "keywords": [
     "vuepress-plugin",

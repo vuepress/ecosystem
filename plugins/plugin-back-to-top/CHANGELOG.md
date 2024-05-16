@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.30](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.29...v2.0.0-rc.30) (2024-05-16)
+
+### Features
+
+- **plugin-back-to-top:** optimize backToTop icons ([#126](https://github.com/vuepress/ecosystem/issues/126)) ([30d684e](https://github.com/vuepress/ecosystem/commit/30d684ec18aa624be7243621e805b97223e6a582))
+- update to latest vuepress rc ([#144](https://github.com/vuepress/ecosystem/issues/144)) ([129d05d](https://github.com/vuepress/ecosystem/commit/129d05d6d6da0565a7b443f5d2265d27a4d40893))
+
 # [2.0.0-rc.28](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.27...v2.0.0-rc.28) (2024-05-08)
 
 **Note:** Version bump only for package @vuepress/plugin-back-to-top
