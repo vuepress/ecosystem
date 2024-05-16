@@ -1,5 +1,5 @@
-import type { AutoLinkConfig } from 'vuepress/client'
 import type { GitPluginPageData } from '@vuepress/plugin-git'
+import type { AutoLinkConfig } from 'vuepress/client'
 import type { SidebarConfig } from './nav.js'
 
 export interface DefaultThemePageData extends GitPluginPageData {
