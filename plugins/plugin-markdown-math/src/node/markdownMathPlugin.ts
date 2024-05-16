@@ -16,7 +16,7 @@ import { PLUGIN_NAME } from './utils.js'
 export const markdownMathPlugin = ({
   type,
   ...options
-}: MarkdownMathPluginOptions): Plugin => {
+}: MarkdownMathPluginOptions = {}): Plugin => {
   const isMathjaxInstalled = getInstalledStatus('mathjax-full', import.meta.url)
   const isKatexInstalled = getInstalledStatus('katex', import.meta.url)
 

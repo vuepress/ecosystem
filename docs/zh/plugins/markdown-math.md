@@ -2,7 +2,9 @@
 
 <NpmBadge package="@vuepress/plugin-markdown-math" />
 
-向你的 Markdown 图像添加附加功能。
+在你的 Markdown 添加数学支持。
+
+此插件允许你使用 `mathjax` 或 `katex` 在 Markdown 中渲染 $\TeX$ 内容。
 
 ## 使用方法
 

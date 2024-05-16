@@ -8,6 +8,7 @@ import { commentPlugin } from '@vuepress/plugin-comment'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
+import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { searchPlugin } from '@vuepress/plugin-search'
@@ -95,6 +96,7 @@ export default defineUserConfig({
       mark: true,
       size: true,
     }),
+    markdownMathPlugin(),
     redirectPlugin({
       switchLocale: 'modal',
     }),

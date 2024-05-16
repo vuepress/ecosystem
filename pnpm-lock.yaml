@@ -129,6 +129,9 @@ importers:
       '@vuepress/plugin-markdown-image':
         specifier: workspace:*
         version: link:../plugins/plugin-markdown-image
+      '@vuepress/plugin-markdown-math':
+        specifier: workspace:*
+        version: link:../plugins/plugin-markdown-math
       '@vuepress/plugin-medium-zoom':
         specifier: workspace:*
         version: link:../plugins/plugin-medium-zoom
@@ -156,6 +159,9 @@ importers:
       '@vuepress/theme-default':
         specifier: workspace:*
         version: link:../themes/theme-default
+      mathjax-full:
+        specifier: 3.2.2
+        version: 3.2.2
       sass-loader:
         specifier: ^14.2.1
         version: 14.2.1(sass@1.77.1)(webpack@5.91.0)
