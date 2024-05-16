@@ -1,13 +1,13 @@
 import { useEventListener } from '@vueuse/core'
 import { onMounted } from 'vue'
-import cssVars from '../styles/_variables.module.scss?module'
+import { mobile } from '../styles/_variables.module.scss?module'
 
 export enum DeviceType {
   MOBILE = 'mobile',
 }
 
 const DeviceTypeMap = {
-  [DeviceType.MOBILE]: Number.parseInt(cssVars.mobile?.replace('px', ''), 10),
+  [DeviceType.MOBILE]: Number.parseInt(mobile?.replace('px', ''), 10),
 }
 
 /**
