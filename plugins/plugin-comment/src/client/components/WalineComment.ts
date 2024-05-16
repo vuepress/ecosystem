@@ -1,4 +1,4 @@
-import { useLocaleConfig } from '@vuepress/helper/client'
+import { useLocaleConfig, wait } from '@vuepress/helper/client'
 import { pageviewCount } from '@waline/client/pageview'
 import type { VNode } from 'vue'
 import {
@@ -83,14 +83,16 @@ export default defineComponent({
           abort?.()
 
           if (enablePageViews.value)
-            nextTick().then(() => {
-              setTimeout(() => {
-                abort = pageviewCount({
-                  serverURL: walineOptions.value.serverURL,
-                  path: props.identifier,
+            nextTick()
+              .then(() => wait(walineOptions.value.delay || 800))
+              .then(() => {
+                setTimeout(() => {
+                  abort = pageviewCount({
+                    serverURL: walineOptions.value.serverURL,
+                    path: props.identifier,
+                  })
                 })
-              }, walineOptions.value.delay || 800)
-            })
+              })
         },
         { immediate: true },
       )

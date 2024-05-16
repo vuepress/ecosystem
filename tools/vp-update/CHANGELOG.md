@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.30](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.29...v2.0.0-rc.30) (2024-05-16)
+
+### Bug Fixes
+
+- **vp-update:** fix yarn berry registry command ([4298469](https://github.com/vuepress/ecosystem/commit/4298469921ea5361a8e5f6650349888286721796))
+
 # [2.0.0-rc.28](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.27...v2.0.0-rc.28) (2024-05-08)
 
 **Note:** Version bump only for package vp-update

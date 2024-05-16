@@ -29,6 +29,7 @@
     { "path": "./plugins/plugin-links-check/tsconfig.build.json" },
     { "path": "./plugins/plugin-markdown-container/tsconfig.build.json" },
     { "path": "./plugins/plugin-markdown-image/tsconfig.build.json" },
+    { "path": "./plugins/plugin-markdown-math/tsconfig.build.json" },
     { "path": "./plugins/plugin-medium-zoom/tsconfig.build.json" },
     { "path": "./plugins/plugin-notice/tsconfig.build.json" },
     { "path": "./plugins/plugin-nprogress/tsconfig.build.json" },

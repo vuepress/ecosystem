@@ -24,6 +24,7 @@ export const sidebarEn: SidebarConfig = {
       children: [
         '/plugins/markdown-container',
         '/plugins/markdown-image',
+        '/plugins/markdown-math',
         '/plugins/links-check',
       ],
     },

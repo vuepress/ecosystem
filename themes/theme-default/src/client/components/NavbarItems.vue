@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import AutoLink from '@theme/AutoLink.vue'
 import NavbarDropdown from '@theme/NavbarDropdown.vue'
 import { useRoutePaths } from '@vuepress/helper/client'
 import { computed, ref } from 'vue'
 import type { ComputedRef } from 'vue'
 import {
+  AutoLink,
   useRoute,
   useRouteLocale,
   useSiteData,
@@ -22,7 +22,7 @@ import {
   useThemeLocaleData,
   useUpdateDeviceStatus,
 } from '../composables/index.js'
-import { getNavLink, resolveRepoType } from '../utils/index.js'
+import { getAutoLink, resolveRepoType } from '../utils/index.js'
 
 /**
  * Get navbar config of select language dropdown
@@ -135,7 +135,7 @@ const resolveNavbarItem = (
   item: NavbarItem | NavbarGroup | string,
 ): ResolvedNavbarItem => {
   if (isString(item)) {
-    return getNavLink(item)
+    return getAutoLink(item)
   }
   if ((item as NavbarGroup).children) {
     return {
@@ -192,7 +192,7 @@ const navbarLabel = computed(() => {
         :item="item"
         :class="isMobile ? 'mobile' : ''"
       />
-      <AutoLink v-else :item="item" />
+      <AutoLink v-else :config="item" />
     </div>
   </nav>
 </template>

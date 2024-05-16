@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.30](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.29...v2.0.0-rc.30) (2024-05-16)
+
+### Bug Fixes
+
+- **vp-update:** fix yarn berry registry command ([4298469](https://github.com/vuepress/ecosystem/commit/4298469921ea5361a8e5f6650349888286721796))
+
+### Features
+
+- add plugin-markdown-image ([#132](https://github.com/vuepress/ecosystem/issues/132)) ([9bdf83c](https://github.com/vuepress/ecosystem/commit/9bdf83cd20eb76025e86e71d34f199951feac89c))
+- add plugin-markdown-math ([#142](https://github.com/vuepress/ecosystem/issues/142)) ([0976303](https://github.com/vuepress/ecosystem/commit/09763031654c46f8d7a531527072ff982ab3f515))
+- **plugin-back-to-top:** optimize backToTop icons ([#126](https://github.com/vuepress/ecosystem/issues/126)) ([30d684e](https://github.com/vuepress/ecosystem/commit/30d684ec18aa624be7243621e805b97223e6a582))
+- **plugin-docsearch:** improve search result item ([#138](https://github.com/vuepress/ecosystem/issues/138)) ([300f006](https://github.com/vuepress/ecosystem/commit/300f0061abad85925e090ede43262b7dbd5f6b2b))
+- **plugin-sass-palette:** allow empty id ([#127](https://github.com/vuepress/ecosystem/issues/127)) ([407e41e](https://github.com/vuepress/ecosystem/commit/407e41ee9303dd50d4c7966d2053a1fa345e9991))
+- update to latest vuepress rc ([#144](https://github.com/vuepress/ecosystem/issues/144)) ([129d05d](https://github.com/vuepress/ecosystem/commit/129d05d6d6da0565a7b443f5d2265d27a4d40893))
+
 # [2.0.0-rc.29](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.28...v2.0.0-rc.29) (2024-05-09)
 
 ### Bug Fixes
