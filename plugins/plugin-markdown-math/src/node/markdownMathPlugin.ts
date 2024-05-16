@@ -1,6 +1,6 @@
 import { katex } from '@mdit/plugin-katex-slim'
 import { createMathjaxInstance, mathjax } from '@mdit/plugin-mathjax-slim'
-import { getInstalledStatus } from '@vuepress/helper'
+import { addCustomElement, getInstalledStatus } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import { colors, logger } from 'vuepress/utils'
 import type {
@@ -60,6 +60,12 @@ export const markdownMathPlugin =
 
     return {
       name: PLUGIN_NAME,
+
+      extendsBundlerOptions: (bundlerOptions, app) => {
+        if (mathRenderer === 'mathjax') {
+          addCustomElement(bundlerOptions, app, /^mjx-/)
+        }
+      },
 
       extendsMarkdown: (md) => {
         if (mathRenderer === 'mathjax') {
