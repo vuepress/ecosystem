@@ -1,6 +1,7 @@
 import type { Plugin } from 'vuepress/core'
+import { colors, logger } from 'vuepress/utils'
 import { loadLanguages } from './loadLanguages.js'
-import { preWrapperPlugin } from './markdown/preWrapperPlugin.js'
+import { preWrapperPlugin } from './markdown/index.js'
 import { resolveHighlighter } from './resolveHighlighter.js'
 import type { PreWrapperOptions } from './types.js'
 
@@ -24,6 +25,14 @@ export const prismjsPlugin = ({
   ...preWrapperOptions
 }: PrismjsPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-prismjs',
+
+  extendsMarkdownOptions(options) {
+    if (options.code) {
+      logger.warn(
+        `The \`markdown.code\` has been deprecated in vuepress, you should set it to \`false\`. see ${colors.cyan('https://v2.vuepress.vuejs.org/reference/config.html#markdown-code')}`,
+      )
+    }
+  },
 
   extendsMarkdown(md) {
     if (preloadLanguages?.length !== 0) {
