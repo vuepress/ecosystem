@@ -20,10 +20,15 @@ npm i -D katex
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 
 export default {
-  plugins: [
-    markdownMathPlugin({
+  markdown: {
+    // 配置插件
+    math: {
       // 选项
-    }),
+    },
+  },
+  plugins: [
+    // 应用插件
+    markdownMathPlugin(),
   ],
 }
 ```
@@ -91,6 +96,8 @@ Mathjax:
 - [支持的 TeX/LaTeX 命令](https://docs.mathjax.org/en/latest/input/tex/macros/index.html#tex-commands)
 
 ## 配置项
+
+你可以在 VuePress 配置文件中的 `markdown.math` 字段中配置此插件，也可以在调用时传入配置，后者具有更高优先级。
 
 ### 类型
 

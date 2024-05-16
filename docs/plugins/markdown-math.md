@@ -20,10 +20,15 @@ npm i -D katex
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 
 export default {
-  plugins: [
-    markdownMathPlugin({
+  markdown: {
+    // config the plugin
+    math: {
       // options
-    }),
+    },
+  },
+  plugins: [
+    // apply the plugin
+    markdownMathPlugin(),
   ],
 }
 ```
@@ -91,6 +96,8 @@ Mathjax:
 - [Supported TeX/LaTeX commands](https://docs.mathjax.org/en/latest/input/tex/macros/index.html#tex-commands)
 
 ## Options
+
+You can set these options under `markdown.math` in your vuepress config file, or pass them to `markdownMathPlugin` directly. The latter has higher priority.
 
 ### type
 

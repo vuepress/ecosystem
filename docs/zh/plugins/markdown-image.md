@@ -14,8 +14,9 @@ npm i -D @vuepress/plugin-markdown-image@next
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 
 export default {
-  plugins: [
-    markdownImagePlugin({
+  markdown: {
+    // 配置插件
+    image: {
       // 启用 figure
       figure: true,
       // 启用图片懒加载
@@ -24,7 +25,11 @@ export default {
       mark: true,
       // 启用图片大小
       size: true,
-    }),
+    },
+  },
+  plugins: [
+    // 应用插件
+    markdownImagePlugin(),
   ],
 }
 ```
@@ -110,6 +115,8 @@ interface ImageMarkOptions {
 ```
 
 ## 配置项
+
+你可以在 VuePress 配置文件中的 `markdown.image` 字段中配置此插件，也可以在调用时传入配置，后者具有更高优先级。
 
 ### figure
 

@@ -14,8 +14,9 @@ npm i -D @vuepress/plugin-markdown-image@next
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 
 export default {
-  plugins: [
-    markdownImagePlugin({
+  markdown: {
+    // config the plugin
+    image: {
       // Enable figure
       figure: true,
       // Enable image lazyload
@@ -24,7 +25,11 @@ export default {
       mark: true,
       // Enable image size
       size: true,
-    }),
+    },
+  },
+  plugins: [
+    // apply the plugin
+    markdownImagePlugin(),
   ],
 }
 ```
@@ -110,6 +115,8 @@ If the image is standalone in a line, wrapped or not wrapped by link, it will be
 ```
 
 ## Options
+
+You can set these options under `markdown.image` in your vuepress config file, or pass them to `markdownImagePlugin` directly. The latter has higher priority.
 
 ### figure
 
