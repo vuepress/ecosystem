@@ -31,6 +31,7 @@
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
+    "./client/*": "./lib/client/*",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
@@ -40,7 +41,8 @@
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
-    "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
+    "style": "sass src:lib --no-source-map"
   },
   "dependencies": {
     "@types/markdown-it": "^14.1.1",
