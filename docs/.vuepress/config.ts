@@ -71,6 +71,11 @@ export default defineUserConfig({
         return importPath
       },
     },
+    image: {
+      figure: true,
+      mark: true,
+      size: true,
+    },
   },
 
   extendsMarkdown: (md) => {
@@ -91,11 +96,7 @@ export default defineUserConfig({
       json: true,
       rss: true,
     }),
-    markdownImagePlugin({
-      figure: true,
-      mark: true,
-      size: true,
-    }),
+    markdownImagePlugin(),
     markdownMathPlugin(),
     redirectPlugin({
       switchLocale: 'modal',

@@ -8,20 +8,24 @@ import type { MarkdownImagePluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepare/index.js'
 import { PLUGIN_NAME } from './utils.js'
 
-export const markdownImagePlugin = (
-  options: MarkdownImagePluginOptions,
-): Plugin => ({
-  name: PLUGIN_NAME,
+export const markdownImagePlugin =
+  (pluginOptions?: MarkdownImagePluginOptions): Plugin =>
+  (app) => {
+    const options = pluginOptions ?? app.options.markdown.image ?? {}
 
-  extendsMarkdown: (md) => {
-    const { mark } = options
+    return {
+      name: PLUGIN_NAME,
 
-    if (options.figure) md.use(figure)
-    if (options.lazyload) md.use(imgLazyload)
-    if (options.obsidianSize) md.use(obsidianImageSize)
-    if (options.size) md.use(imgSize)
-    if (mark) md.use(imgMark, isPlainObject(mark) ? mark : {})
-  },
+      extendsMarkdown: (md) => {
+        const { mark } = options
 
-  clientConfigFile: (app) => prepareClientConfigFile(app, options),
-})
+        if (options.figure) md.use(figure)
+        if (options.lazyload) md.use(imgLazyload)
+        if (options.obsidianSize) md.use(obsidianImageSize)
+        if (options.size) md.use(imgSize)
+        if (mark) md.use(imgMark, isPlainObject(mark) ? mark : {})
+      },
+
+      clientConfigFile: (app) => prepareClientConfigFile(app, options),
+    }
+  }
