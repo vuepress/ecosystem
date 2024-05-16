@@ -43,6 +43,8 @@ export const markdownMathPlugin = ({
     mathRenderer === 'mathjax'
       ? createMathjaxInstance({
           ...(options as MarkdownMathjaxPluginOptions),
+          transformer: (content: string) =>
+            content.replace(/^<mjx-container/, '<mjx-container v-pre'),
         })
       : null
 
@@ -86,6 +88,8 @@ export const markdownMathPlugin = ({
               )
           },
           ...options,
+          transformer: (content: string) =>
+            content.replace(/^(<[a-z]+ )/g, '$1v-pre '),
         })
       }
     },

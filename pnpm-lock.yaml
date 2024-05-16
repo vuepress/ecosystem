@@ -485,11 +485,11 @@ importers:
   plugins/plugin-markdown-math:
     dependencies:
       '@mdit/plugin-katex-slim':
-        specifier: ^0.11.0
-        version: 0.11.0(katex@0.16.10)(markdown-it@14.1.0)
+        specifier: ^0.12.0
+        version: 0.12.0(katex@0.16.10)(markdown-it@14.1.0)
       '@mdit/plugin-mathjax-slim':
-        specifier: ^0.11.0
-        version: 0.11.0(markdown-it@14.1.0)(mathjax-full@3.2.2)
+        specifier: ^0.12.0
+        version: 0.12.0(markdown-it@14.1.0)(mathjax-full@3.2.2)
       '@types/markdown-it':
         specifier: ^14.1.1
         version: 14.1.1
@@ -2045,8 +2045,8 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-katex-slim@0.11.0':
-    resolution: {integrity: sha512-5G4WBAT90uVPKmvvgDtZmFR5/meEHalwirvPCMFAj0iYYWdJ1PweyMo/AGeLLMNvVbaWDV5w1WCtuofR7jv3Aw==}
+  '@mdit/plugin-katex-slim@0.12.0':
+    resolution: {integrity: sha512-s2MJGXFZT7u8IUTmy6K1rxxAdYRmGggu0m860siyUrThL112xLN9r3jmXZ83epgi4UA/gLkRDAU5vF6R2JtyjQ==}
     engines: {node: '>= 18'}
     peerDependencies:
       katex: ^0.16.9
@@ -2057,8 +2057,8 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-mathjax-slim@0.11.0':
-    resolution: {integrity: sha512-4fue9zuAA8gkHjrCgbCynwwVSxFIdqtIOACNmSMpotgzH41p1NlfgToVNNdkkFI/6/GwrM+2+XyFv6Sl84JutQ==}
+  '@mdit/plugin-mathjax-slim@0.12.0':
+    resolution: {integrity: sha512-bLM+JnCTN/3XiyKb64Yhpx014VYLfHBexua4n92cUyoKR9g3waB0loF1WMlg6GdyCTc7OvrUSceNjwWj3YRogg==}
     engines: {node: '>= 18'}
     peerDependencies:
       markdown-it: ^14.1.0
@@ -2069,8 +2069,8 @@ packages:
       mathjax-full:
         optional: true
 
-  '@mdit/plugin-tex@0.11.0':
-    resolution: {integrity: sha512-IhycXjzakjTimf6oLZLKfLH2CZaItRw3c/YOzQDB/A2ckqS9x0oZMIiqFizvUaxXjjtwHApr18waY1TM3/SQnQ==}
+  '@mdit/plugin-tex@0.12.0':
+    resolution: {integrity: sha512-ejeSgSeZvcI5P4hFFQ4q5pHrZBGO2fQWVGm6dZ3BhX4ldoV8LjCIzkcMMXhrhSOVjwHnqmF6xOh9EvI0jzak1w==}
     engines: {node: '>= 18'}
     peerDependencies:
       markdown-it: ^14.1.0
@@ -8270,25 +8270,25 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.1.0
 
-  '@mdit/plugin-katex-slim@0.11.0(katex@0.16.10)(markdown-it@14.1.0)':
+  '@mdit/plugin-katex-slim@0.12.0(katex@0.16.10)(markdown-it@14.1.0)':
     dependencies:
-      '@mdit/plugin-tex': 0.11.0(markdown-it@14.1.0)
+      '@mdit/plugin-tex': 0.12.0(markdown-it@14.1.0)
       '@types/katex': 0.16.7
       '@types/markdown-it': 14.1.1
     optionalDependencies:
       katex: 0.16.10
       markdown-it: 14.1.0
 
-  '@mdit/plugin-mathjax-slim@0.11.0(markdown-it@14.1.0)(mathjax-full@3.2.2)':
+  '@mdit/plugin-mathjax-slim@0.12.0(markdown-it@14.1.0)(mathjax-full@3.2.2)':
     dependencies:
-      '@mdit/plugin-tex': 0.11.0(markdown-it@14.1.0)
+      '@mdit/plugin-tex': 0.12.0(markdown-it@14.1.0)
       '@types/markdown-it': 14.1.1
       upath: 2.0.1
     optionalDependencies:
       markdown-it: 14.1.0
       mathjax-full: 3.2.2
 
-  '@mdit/plugin-tex@0.11.0(markdown-it@14.1.0)':
+  '@mdit/plugin-tex@0.12.0(markdown-it@14.1.0)':
     dependencies:
       '@types/markdown-it': 14.1.1
     optionalDependencies:
