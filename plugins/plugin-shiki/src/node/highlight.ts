@@ -18,8 +18,12 @@ import type { ShikiPluginOptions } from './types.js'
 import { attrsToLines, resolveLanguage, vueRE } from './utils.js'
 
 const DEFAULT_LANGS = Object.keys(bundledLanguages)
+
 const RE_ESCAPE = /\[\\!code/g
 const mustacheRE = /\{\{.*?\}\}/g
+const RE_V_PRE = /:v-pre($| )/
+const RE_NO_V_PRE = /:no-v-pre($| )/
+
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz', 10)
 
 export async function highlight({
@@ -27,7 +31,7 @@ export async function highlight({
   theme = 'nord',
   themes,
   defaultHighlightLang = '',
-  transformers: useTransformers = [],
+  transformers: userTransformers = [],
   ...options
 }: ShikiPluginOptions = {}): Promise<
   (str: string, lang: string, attrs: string) => string
@@ -61,6 +65,7 @@ export async function highlight({
   if (options.notationErrorLevel) {
     transformers.push(transformerNotationErrorLevel())
   }
+
   transformers.push(
     ...([
       {
@@ -84,15 +89,22 @@ export async function highlight({
   )
   const vPrevBlock = options.vPre?.block ?? true
 
-  return (str, lang, attrs) => {
-    const vPre = vueRE.test(lang) ? '' : 'v-pre'
-    lang = resolveLanguage(lang)
+  return (str, language, attrs) => {
+    let lang = resolveLanguage(language)
+    let vPre = false
+    if (
+      (vPrevBlock && !RE_NO_V_PRE.test(language)) ||
+      (!vPrevBlock && RE_V_PRE.test(language))
+    ) {
+      vPre = !vueRE.test(lang)
+    }
+
     if (lang) {
       const langLoaded = highlighter.getLoadedLanguages().includes(lang as any)
       if (!langLoaded && !isPlainLang(lang) && !isSpecialLang(lang)) {
         logger.warn(
           colors.yellow(
-            `\nThe language '${lang}' is not loaded, falling back to '${'txt'}' for syntax highlighting.`,
+            `\nThe language '${lang}' is not loaded, falling back to '${defaultHighlightLang || 'txt'}' for syntax highlighting.`,
           ),
         )
         lang = defaultHighlightLang
@@ -103,7 +115,9 @@ export async function highlight({
       {
         name: 'vuepress:v-pre',
         pre(node) {
-          if (vPrevBlock && vPre) node.properties['v-pre'] = ''
+          if (vPre) {
+            node.properties['v-pre'] = ''
+          }
         },
       },
       {
@@ -159,7 +173,7 @@ export async function highlight({
     const highlighted = highlighter.codeToHtml(str, {
       lang,
       meta: { __raw: attrs },
-      transformers: [...transformers, ...codeTransformers, ...useTransformers],
+      transformers: [...transformers, ...codeTransformers, ...userTransformers],
       ...(themes ? { themes, defaultColor: options.defaultColor } : { theme }),
     })
 

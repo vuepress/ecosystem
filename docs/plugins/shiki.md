@@ -105,9 +105,9 @@ export default {
 
   Configure code line numbers.
 
-  - `true`: enable line numbers
-  - If the option is set to `false` , the line numbers will be disabled.
-  - If the option is set to `number` ，is the minimum number of lines to enable line numbers。
+  - `true`: enable line numbers.
+  - `false`: disabled line numbers.
+  - `number`: the minimum number of lines to enable line numbers.
     For example, if you set it to 4, line numbers will only be enabled when your code block has at least 4 lines of code.
 
   You can add `:line-numbers` / `:no-line-numbers` mark in your fenced code blocks to override the value set in config.

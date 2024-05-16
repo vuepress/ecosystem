@@ -104,9 +104,9 @@ export default {
 
   是否启用行号。
 
-  - 当配置为 `true` 时，会在代码块前面添加行号。
-  - 当配置为 `false` 时，不会添加行号。
-  - 当配置为 `number` 时，代表显示行号所需的最少行数。
+  - `true`：启用代码行号
+  - `false`：禁用代码行号。
+  - `number`：显示行号所需的最少行数。
     例如，如果你将它设置为 4 ，那么只有在你的代码块包含至少 4 行代码时才会启用行号。
 
   你可以在代码块添加 `:line-numbers` / `:no-line-numbers` 标记来覆盖配置项中的设置。
@@ -279,10 +279,12 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 
 - 详情：
 
-  自定义 Shiki 设置函数。您可以通过在配置中添加自己的 shikiSetup 函数来定制 Shiki 实例。
+  自定义 Shiki 函数。您可以通过在配置中添加自己的 shikiSetup 函数来扩展 Shiki 实例。
 
-:::warning
+::: warning
+
 以下配置启用相关功能后，需要自行在主题中定义相关的样式。
+
 :::
 
 ### notationDiff
