@@ -59,7 +59,7 @@ export default {
 
   你可以在代码块添加 `:line-numbers` / `:no-line-numbers` 标记来覆盖配置项中的设置。
 
-**输入**
+**输入：**
 
 ````md
 ```ts
@@ -75,7 +75,7 @@ const line3 = 'This is line 3'
 ```
 ````
 
-**输出**
+**输出：**
 
 ```ts
 // 行号默认是启用的
@@ -107,7 +107,7 @@ const line3 = 'This is line 3'
   - 多个单行： `{4,7,9}`
   - 组合： `{4,7-13,16,23-27,40}`
 
-**输入**
+**输入：**
 
 ````md
 ```ts{1,7-9}
@@ -124,7 +124,7 @@ export default defineUserConfig({
 ```
 ````
 
-**输出**
+**输出：**
 
 ```ts{1,7-9}
 import { defaultTheme } from '@vuepress/theme-default'
@@ -154,7 +154,7 @@ export default defineUserConfig({
 
   你可以在代码块添加 `:v-pre` / `:no-v-pre` 标记来覆盖配置项中的设置。
 
-**输入**
+**输入：**
 
 ````md
 ```md
@@ -175,7 +175,7 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 ```
 ````
 
-**输出**
+**输出：**
 
 ```md
 <!-- 默认情况下，这里会被保持原样 -->

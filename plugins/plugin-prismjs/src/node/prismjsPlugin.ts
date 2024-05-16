@@ -1,6 +1,6 @@
 import type { Plugin } from 'vuepress/core'
 import { loadLanguages } from './loadLanguages.js'
-import { preWrapperPlugin } from './preWrapperPlugin.js'
+import { preWrapperPlugin } from './markdown/preWrapperPlugin.js'
 import { resolveHighlighter } from './resolveHighlighter.js'
 import type { PreWrapperOptions } from './types.js'
 

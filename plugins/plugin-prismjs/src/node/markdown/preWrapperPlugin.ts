@@ -1,13 +1,13 @@
 import type { Markdown } from 'vuepress/markdown'
-import type { PreWrapperOptions } from './types.js'
-import { resolveAttr } from './utils/resolveAttr.js'
+import type { PreWrapperOptions } from '../types.js'
+import { resolveAttr } from './resolveAttr.js'
 import {
   isHighlightLine,
   resolveHighlightLines,
-} from './utils/resolveHighlightLines.js'
-import { resolveLanguage } from './utils/resolveLanguage.js'
-import { resolveLineNumbers } from './utils/resolveLineNumbers.js'
-import { resolveVPre } from './utils/resolveVPre.js'
+} from './resolveHighlightLines.js'
+import { resolveLanguage } from './resolveLanguage.js'
+import { resolveLineNumbers } from './resolveLineNumbers.js'
+import { resolveVPre } from './resolveVPre.js'
 
 export function preWrapperPlugin(
   md: Markdown,
