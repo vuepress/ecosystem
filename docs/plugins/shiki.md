@@ -112,7 +112,7 @@ export default {
 
   You can add `:line-numbers` / `:no-line-numbers` mark in your fenced code blocks to override the value set in config.
 
-**Input**:
+**Input:**
 
 ````md
 ```ts
@@ -132,7 +132,7 @@ const line3 = 'This is line 3'
 ```
 ````
 
-**Output**
+**Output:**
 
 ```ts
 // line-numbers is enabled by default
@@ -164,7 +164,7 @@ const line3 = 'This is line 3'
   - Multiple single lines: `{4,7,9}`
   - Combined: `{4,7-13,16,23-27,40}`
 
-**Input**
+**Input:**
 
 ````md
 ```ts{1,7-9}
@@ -181,7 +181,7 @@ export default defineUserConfig({
 ```
 ````
 
-**Output**
+**Output:**
 
 ```ts{1,7-9}
 import { defaultTheme } from '@vuepress/theme-default'
@@ -211,7 +211,7 @@ export default defineUserConfig({
 
   You can add `:v-pre` / `:no-v-pre` mark in your fenced code blocks to override the value set in config.
 
-**Input**
+**Input:**
 
 ````md
 ```md
@@ -232,7 +232,7 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 ```
 ````
 
-**Output**
+**Output:**
 
 ```md
 <!-- This will be kept as is by default -->
