@@ -21,8 +21,8 @@ const DEFAULT_LANGS = Object.keys(bundledLanguages)
 
 const RE_ESCAPE = /\[\\!code/g
 const mustacheRE = /\{\{.*?\}\}/g
-const RE_V_PRE = /:v-pre($| )/
-const RE_NO_V_PRE = /:no-v-pre($| )/
+const RE_V_PRE = /:v-pre\b/
+const RE_NO_V_PRE = /:no-v-pre\b/
 
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz', 10)
 
