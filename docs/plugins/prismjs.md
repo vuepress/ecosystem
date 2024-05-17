@@ -143,6 +143,23 @@ export default defineUserConfig({
 })
 ```
 
+### preWrapper
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Enable the extra wrapper of the `<pre>` tag or not.
+
+  The wrapper is required by the `highlightLines` and `lineNumbers`. That means, if you disable `preWrapper`, the line highlighting and line numbers will also be disabled.
+
+::: tip
+You can disable it if you want to implement them in client side. For example,
+[Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) or [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/).
+:::
+
 ### vPre
 
 - Type: `{ block?: boolean; inline?: boolean }`

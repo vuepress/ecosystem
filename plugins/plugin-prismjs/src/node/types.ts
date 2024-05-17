@@ -1,5 +1,15 @@
 export interface PreWrapperOptions {
   /**
+   * Wrap the `<pre>` tag with an extra `<div>` or not. Do not disable it unless you
+   * understand what's it for
+   *
+   * - Required for `highlightLines`
+   * - Required for `lineNumbers`
+   * - Required for title display of default theme
+   */
+  preWrapper?: boolean
+
+  /**
    * Enable line numbers or not
    *
    * - A `boolean` value is to enable line numbers or not.

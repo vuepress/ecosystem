@@ -14,8 +14,9 @@ export function preWrapperPlugin(
   {
     highlightLines = true,
     lineNumbers = true,
+    preWrapper = true,
     vPre: { block: vPreBlock = true, inline: vPreInline = true } = {},
-  }: PreWrapperOptions,
+  }: PreWrapperOptions = {},
 ): void {
   const fence = md.renderer.rules.fence!
   md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
@@ -23,17 +24,27 @@ export function preWrapperPlugin(
 
     // get token info
     const info = token.info ? md.utils.unescapeAll(token.info).trim() : ''
+    // resolve language from token info
+    const language = resolveLanguage(info)
+    const languageClass = `${options.langPrefix}${language.name}`
 
     const code = fence(tokens, idx, options, env, slf)
 
     // remove `<code>` attributes
     let result = code.replace(/<code[^]*?>/, '<code>')
 
+    result = `<pre class="${languageClass}"${result.slice('<pre'.length)}`
+
     // resolve v-pre mark from token info
     const useVPre = resolveVPre(info) ?? vPreBlock
     if (useVPre) {
       result = `<pre v-pre${result.slice('<pre'.length)}`
     }
+
+    if (!preWrapper) {
+      return result
+    }
+
     // code fences always have an ending `\n`, so we should trim the last line
     const lines = result
       .slice(result.indexOf('<code>'), result.indexOf('</code>'))
@@ -74,11 +85,8 @@ export function preWrapperPlugin(
       result = `${result}<div class="line-numbers" aria-hidden="true">${lineNumbersCode}</div>`
     }
 
-    // resolve language from token info
-    const language = resolveLanguage(info)
     // resolve title from token info
     const title = resolveAttr(info, 'title') ?? language.ext
-    const languageClass = `${options.langPrefix}${language.name}`
 
     result = `<div class="${languageClass}${
       useLineNumbers ? ' line-numbers-mode' : ''

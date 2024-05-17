@@ -139,6 +139,23 @@ export default defineUserConfig({
 })
 ```
 
+### preWrapper
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否在 `<pre>` 标签外额外包裹一层。
+
+  `highlightLines` 和 `lineNumbers` 依赖于这个额外的包裹层。这换句话说，如果你禁用了 `preWrapper` ，那么行高亮和行号也会被同时禁用。
+
+::: tip
+如果你想要在客户端来实现这些功能时，可以禁用该配置项。比如使用
+[Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) 或者 [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/)。
+:::
+
 ### vPre
 
 - 类型： `{ block?: boolean; inline?: boolean }`
