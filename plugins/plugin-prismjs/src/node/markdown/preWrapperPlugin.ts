@@ -9,7 +9,7 @@ import { resolveLanguage } from './resolveLanguage.js'
 import { resolveLineNumbers } from './resolveLineNumbers.js'
 import { resolveVPre } from './resolveVPre.js'
 
-export function preWrapperPlugin(
+export const preWrapperPlugin = (
   md: Markdown,
   {
     highlightLines = true,
@@ -17,8 +17,9 @@ export function preWrapperPlugin(
     preWrapper = true,
     vPre: { block: vPreBlock = true, inline: vPreInline = true } = {},
   }: PreWrapperOptions = {},
-): void {
+): void => {
   const fence = md.renderer.rules.fence!
+
   md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
     const token = tokens[idx]
 
@@ -37,6 +38,7 @@ export function preWrapperPlugin(
 
     // resolve v-pre mark from token info
     const useVPre = resolveVPre(info) ?? vPreBlock
+
     if (useVPre) {
       result = `<pre v-pre${result.slice('<pre'.length)}`
     }
@@ -55,6 +57,7 @@ export function preWrapperPlugin(
     const highlightLinesRanges = highlightLines
       ? resolveHighlightLines(info)
       : null
+
     // generate highlight lines
     if (highlightLinesRanges) {
       const highlightLinesCode = lines
