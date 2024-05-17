@@ -2,7 +2,10 @@
   "extends": "../../tsconfig.build.json",
   "compilerOptions": {
     "rootDir": "./src",
-    "outDir": "./lib"
+    "outDir": "./lib",
+    "paths": {
+      "@vuepress/markdown": ["./src/node/plugin-markdown-math.d.ts"]
+    }
   },
   "include": ["./src"]
 }
