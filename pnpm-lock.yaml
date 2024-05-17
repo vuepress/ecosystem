@@ -157,7 +157,7 @@ importers:
         version: link:../plugins/plugin-shiki
       '@vuepress/theme-default':
         specifier: workspace:*
-        version: link:../themes/theme-next
+        version: link:../themes/theme-default
       mathjax-full:
         specifier: 3.2.2
         version: 3.2.2
