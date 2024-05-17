@@ -4,45 +4,45 @@
 
 import type { Markdown } from 'vuepress/markdown'
 
-const RE = /{([\d,-]+)}/
+const HIGHLIGHT_LINES_REGEXP = /{([\d,-]+)}/
 
-export const highlightLinePlugin = (md: Markdown): void => {
-  const fence = md.renderer.rules.fence!
+export const highlightLinesPlugin = (md: Markdown): void => {
+  const originalFence = md.renderer.rules.fence!
+
   md.renderer.rules.fence = (...args) => {
     const [tokens, idx] = args
     const token = tokens[idx]
 
     // due to use of markdown-it-attrs, the {0} syntax would have been
     // converted to attrs on the token
-    const attr = token.attrs && token.attrs[0]
+    const attr = token.attrs?.[0]
 
     let lines: string | null = null
 
+    // markdown-it-attrs maybe disabled
     if (!attr) {
-      // markdown-it-attrs maybe disabled
       const rawInfo = token.info
+      const result = rawInfo?.match(HIGHLIGHT_LINES_REGEXP)
 
-      if (!rawInfo || !RE.test(rawInfo)) {
-        return fence(...args)
+      if (!result) {
+        return originalFence(...args)
       }
 
-      const langName = rawInfo.replace(RE, '').trim()
-
       // ensure the next plugin get the correct lang
-      token.info = langName
+      token.info = rawInfo.replace(HIGHLIGHT_LINES_REGEXP, '').trim()
 
-      lines = RE.exec(rawInfo)![1]
+      lines = result[1]
     }
 
     if (!lines) {
       lines = attr![0]
 
       if (!lines || !/[\d,-]+/.test(lines)) {
-        return fence(...args)
+        return originalFence(...args)
       }
     }
 
     token.info += ' ' + lines
-    return fence(...args)
+    return originalFence(...args)
   }
 }

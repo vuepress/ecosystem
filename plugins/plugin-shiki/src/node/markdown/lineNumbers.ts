@@ -3,21 +3,22 @@
 
 import type { Markdown } from 'vuepress/markdown'
 
-const RE_LINE_NUMBERS = /:line-numbers($| )/
-const RE_NO_LINE_NUMBERS = /:no-line-numbers($| )/
+const LINE_NUMBERS_REGEXP = /:line-numbers\b/
+const NO_LINE_NUMBERS_REGEXP = /:no-line-numbers\b/
 
 export const lineNumberPlugin = (
   md: Markdown,
   enable: boolean | number = true,
 ): void => {
   const fence = md.renderer.rules.fence!
+
   md.renderer.rules.fence = (...args) => {
     const rawCode = fence(...args)
 
     const [tokens, idx] = args
     const info = tokens[idx].info
-    const enableLineNumbers = RE_LINE_NUMBERS.test(info)
-    const disableLineNumbers = RE_NO_LINE_NUMBERS.test(info)
+    const enableLineNumbers = LINE_NUMBERS_REGEXP.test(info)
+    const disableLineNumbers = NO_LINE_NUMBERS_REGEXP.test(info)
 
     if ((!enable && !enableLineNumbers) || (enable && disableLineNumbers)) {
       return rawCode

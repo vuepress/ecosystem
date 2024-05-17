@@ -1,9 +1,12 @@
 import type { Plugin } from 'vuepress/core'
+import { isPlainObject } from 'vuepress/shared'
 import { colors, logger } from 'vuepress/utils'
 import { highlight } from './highlight.js'
-import { highlightLinePlugin } from './markdown/highlightLines.js'
-import { lineNumberPlugin } from './markdown/lineNumbers.js'
-import { preWrapperPlugin } from './markdown/preWrapper.js'
+import {
+  highlightLinesPlugin,
+  lineNumberPlugin,
+  preWrapperPlugin,
+} from './markdown/index.js'
 import type { ShikiPluginOptions } from './types.js'
 
 export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => ({
@@ -12,15 +15,20 @@ export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => ({
   extendsMarkdownOptions(options) {
     if (options.code) {
       logger.warn(
-        `The \`markdown.code\` has been deprecated in vuepress, you should set it to \`false\`. see ${colors.cyan('https://v2.vuepress.vuejs.org/reference/config.html#markdown-code')}`,
+        `${colors.magenta('markdown.code')} options is deprecated, see ${colors.cyan('https://v2.vuepress.vuejs.org/reference/config.html#markdown-code')}`,
       )
     }
   },
 
-  extendsMarkdown: async (md) => {
-    md.options.highlight = await highlight(options)
+  extendsMarkdown: async (md, app) => {
+    const { code } = app.options.markdown
 
-    md.use(highlightLinePlugin)
+    md.options.highlight = await highlight({
+      ...(isPlainObject(code) ? code : {}),
+      ...options,
+    })
+
+    md.use(highlightLinesPlugin)
     md.use(preWrapperPlugin, options.vPre)
     md.use(lineNumberPlugin, options.lineNumbers)
   },
