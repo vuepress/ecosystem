@@ -52,7 +52,7 @@ ${
   packageManager === 'pnpm'
     ? `\
       - name: ${lang === '简体中文' ? '安装 pnpm' : 'Install pnpm'}
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           run_install: true
           version: 8
