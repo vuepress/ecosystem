@@ -15,14 +15,18 @@ import {
 } from 'shiki'
 import { colors, logger } from 'vuepress/utils'
 import type { ShikiPluginOptions } from './types.js'
-import { attrsToLines, resolveLanguage, vueRE } from './utils.js'
+import {
+  attrsToLines,
+  NO_V_PRE_RE,
+  resolveLanguage,
+  V_PRE_RE,
+  vueRE,
+} from './utils.js'
 
 const DEFAULT_LANGS = Object.keys(bundledLanguages)
 
 const RE_ESCAPE = /\[\\!code/g
 const mustacheRE = /\{\{.*?\}\}/g
-const RE_V_PRE = /:v-pre\b/
-const RE_NO_V_PRE = /:no-v-pre\b/
 
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz', 10)
 
@@ -93,8 +97,8 @@ export const highlight = async ({
     let lang = resolveLanguage(language)
     let vPre = false
     if (
-      (vPrevBlock && !RE_NO_V_PRE.test(language)) ||
-      (!vPrevBlock && RE_V_PRE.test(language))
+      (vPrevBlock && !NO_V_PRE_RE.test(language)) ||
+      (!vPrevBlock && V_PRE_RE.test(language))
     ) {
       vPre = !vueRE.test(lang)
     }

@@ -29,7 +29,9 @@ export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => ({
     })
 
     md.use(highlightLinesPlugin)
-    md.use(preWrapperPlugin, options.vPre)
-    md.use(lineNumberPlugin, options.lineNumbers)
+    md.use(preWrapperPlugin, options)
+    if (options.preWrapper ?? true) {
+      md.use(lineNumberPlugin, options.lineNumbers)
+    }
   },
 })

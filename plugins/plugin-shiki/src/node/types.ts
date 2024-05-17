@@ -85,6 +85,16 @@ export interface ShikiPluginOptions {
   highlightLines?: boolean
 
   /**
+   * Wrap the `<pre>` tag with an extra `<div>` or not. Do not disable it unless you
+   * understand what's it for
+   *
+   * - Required for `highlightLines`
+   * - Required for `lineNumbers`
+   * - Required for title display of default theme
+   */
+  preWrapper?: boolean
+
+  /**
    * Add `v-pre` directive or not
    *
    * @default { block: true, inline: true }
