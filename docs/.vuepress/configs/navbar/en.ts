@@ -36,7 +36,12 @@ export const navbarEn: NavbarConfig = [
       },
       {
         text: 'Markdown',
-        children: ['/plugins/markdown-container', '/plugins/links-check'],
+        children: [
+          '/plugins/markdown-container',
+          '/plugins/markdown-image',
+          '/plugins/markdown-math',
+          '/plugins/links-check',
+        ],
       },
       {
         text: 'Search',

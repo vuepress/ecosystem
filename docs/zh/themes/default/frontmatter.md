@@ -312,7 +312,7 @@ features:
 
 ### prev
 
-- 类型： `NavLink | string`
+- 类型： `AutoLinkConfig | string`
 
 - 详情：
 
@@ -320,21 +320,21 @@ features:
 
   如果你不设置该 Frontmatter ，该链接会自动根据侧边栏配置进行推断。
 
-  为了手动配置上一页面的链接，你可以将其设置为一个 `NavLink` 对象或者一个字符串：
+  为了手动配置上一页面的链接，你可以将其设置为一个 `AutoLinkConfig` 对象或者一个字符串：
 
-  - `NavLink` 对象应该有一个 `text` 字段和一个 `link` 字段。
-  - 字符串应为目标页面文件的路径。它将会被转换为 `NavLink` 对象，将页面标题作为 `text` ，将页面路由路径作为 `link` 。
+  - `AutoLinkConfig` 对象应该有一个 `text` 字段和一个 `link` 字段。
+  - 字符串应为目标页面文件的路径。它将会被转换为 `AutoLinkConfig` 对象，将页面标题作为 `text` ，将页面路由路径作为 `link` 。
 
 - 示例：
 
 ```md
 ---
-# NavLink
+# AutoLinkConfig
 prev:
   text: Get Started
   link: /guide/getting-started.html
 
-# NavLink - 外部 URL
+# AutoLinkConfig - 外部 URL
 prev:
   text: GitHub
   link: https://github.com
@@ -349,7 +349,7 @@ prev: ../../guide/getting-started.md
 
 ### next
 
-- 类型： `NavLink | string`
+- 类型： `AutoLinkConfig | string`
 
 - 详情：
 

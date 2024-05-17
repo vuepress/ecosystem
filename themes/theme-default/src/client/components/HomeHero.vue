@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import AutoLink from '@theme/AutoLink.vue'
 import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
 import {
+  AutoLink,
   ClientOnly,
   usePageFrontmatter,
   useSiteLocaleData,
@@ -90,7 +90,7 @@ const HomeHeroImage: FunctionalComponent = () => {
         :key="action.text"
         class="action-button"
         :class="[action.type]"
-        :item="action"
+        :config="action"
       />
     </p>
   </header>

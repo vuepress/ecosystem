@@ -1,14 +1,14 @@
 import { resolveRoute } from 'vuepress/client'
-import type { NavLink } from '../../shared/index.js'
+import type { AutoLinkConfig } from 'vuepress/client'
 
 /**
- * Resolve NavLink props from string
+ * Resolve AutoLink props from string
  *
  * @example
  * - Input: '/README.md'
  * - Output: { text: 'Home', link: '/' }
  */
-export const getNavLink = (config: string): NavLink => {
+export const getAutoLink = (config: string): AutoLinkConfig => {
   const { notFound, meta, path } = resolveRoute<{
     title?: string
   }>(config)

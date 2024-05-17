@@ -1,12 +1,14 @@
-import { createRequire } from 'node:module'
 import process from 'node:process'
 import { footnote } from '@mdit/plugin-footnote'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
+import { getRealPath } from '@vuepress/helper'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { commentPlugin } from '@vuepress/plugin-comment'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
+import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
+import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { searchPlugin } from '@vuepress/plugin-search'
@@ -18,7 +20,6 @@ import { head } from './configs/index.js'
 import theme from './theme.js'
 
 const __dirname = getDirname(import.meta.url)
-const require = createRequire(import.meta.url)
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -60,7 +61,9 @@ export default defineUserConfig({
           return importPath
             .replace(
               packageName,
-              path.dirname(require.resolve(`${packageName}/package.json`)),
+              path.dirname(
+                getRealPath(`${packageName}/package.json`, import.meta.url),
+              ),
             )
             .replace('/src/', '/lib/')
             .replace(/hotKey\.ts$/, 'hotKey.d.ts')
@@ -88,6 +91,12 @@ export default defineUserConfig({
       json: true,
       rss: true,
     }),
+    markdownImagePlugin({
+      figure: true,
+      mark: true,
+      size: true,
+    }),
+    markdownMathPlugin(),
     redirectPlugin({
       switchLocale: 'modal',
     }),

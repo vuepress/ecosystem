@@ -11,7 +11,7 @@ import type {
   SidebarConfigObject,
   SidebarItem,
 } from '../../shared/index.js'
-import { getNavLink } from '../utils/index.js'
+import { getAutoLink } from '../utils/index.js'
 import { useThemeLocaleData } from './useThemeData.js'
 
 export type SidebarItemsRef = ComputedRef<ResolvedSidebarItem[]>
@@ -134,7 +134,7 @@ export const resolveArraySidebarItems = (
   ): ResolvedSidebarItem => {
     let childItem: ResolvedSidebarItem
     if (isString(item)) {
-      childItem = getNavLink(item)
+      childItem = getAutoLink(item)
     } else {
       childItem = item as ResolvedSidebarItem
     }
