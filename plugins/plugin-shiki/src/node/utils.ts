@@ -2,16 +2,13 @@ import type { TransformerCompactLineOption } from '@shikijs/transformers'
 
 export const vueRE = /-vue$/
 
-export function resolveLanguage(info: string): string {
-  return (
-    info
-      .match(/^([^ :[{]+)/)?.[1]
-      ?.replace(vueRE, '')
-      .toLowerCase() || 'txt'
-  )
-}
+export const resolveLanguage = (info: string): string =>
+  info
+    .match(/^([^ :[{]+)/)?.[1]
+    ?.replace(vueRE, '')
+    .toLowerCase() || 'txt'
 
-export function resolveAttr(info: string, attr: string): string | null {
+export const resolveAttr = (info: string, attr: string): string | null => {
   // try to match specified attr mark
   const pattern = `\\b${attr}\\s*=\\s*(?<quote>['"])(?<content>.+?)\\k<quote>(\\s|$)`
   const regex = new RegExp(pattern, 'i')
@@ -29,12 +26,15 @@ export function resolveAttr(info: string, attr: string): string | null {
  * 2. convert line numbers into line options:
  *    [{ line: number, classes: string[] }]
  */
-export function attrsToLines(attrs: string): TransformerCompactLineOption[] {
+export const attrsToLines = (attrs: string): TransformerCompactLineOption[] => {
   attrs = attrs.replace(/^(?:\[.*?\])?.*?([\d,-]+).*/, '$1').trim()
+
   const result: number[] = []
+
   if (!attrs) {
     return []
   }
+
   attrs
     .split(',')
     .map((v) => v.split('-').map((v) => parseInt(v, 10)))
@@ -47,8 +47,9 @@ export function attrsToLines(attrs: string): TransformerCompactLineOption[] {
         result.push(start)
       }
     })
-  return result.map((v) => ({
-    line: v,
+
+  return result.map((line) => ({
+    line,
     classes: ['highlighted'],
   }))
 }

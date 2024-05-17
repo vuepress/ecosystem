@@ -26,7 +26,7 @@ const RE_NO_V_PRE = /:no-v-pre($| )/
 
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz', 10)
 
-export async function highlight({
+export const highlight = async ({
   langs = DEFAULT_LANGS,
   theme = 'nord',
   themes,
@@ -35,7 +35,7 @@ export async function highlight({
   ...options
 }: ShikiPluginOptions = {}): Promise<
   (str: string, lang: string, attrs: string) => string
-> {
+> => {
   const highlighter = await getHighlighter({
     langs,
     themes: themes ? [themes.dark, themes.light] : [theme],
