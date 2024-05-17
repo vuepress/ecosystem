@@ -48,6 +48,10 @@ export default defineUserConfig({
 
   bundler: E2E_BUNDLER === 'webpack' ? webpackBundler() : viteBundler(),
 
+  markdown: {
+    code: false,
+  },
+
   theme: defaultTheme({
     hostname: 'https://ecosystem-e2e-test.com',
     logo: 'https://v2.vuepress.vuejs.org/images/hero.png',

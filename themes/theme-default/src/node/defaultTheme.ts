@@ -177,7 +177,11 @@ export const defaultTheme = ({
       palettePlugin({ preset: 'sass' }),
 
       // @vuepress/plugin-prismjs
-      themePlugins.prismjs !== false ? prismjsPlugin() : [],
+      themePlugins.prismjs !== false
+        ? prismjsPlugin(
+            isPlainObject(themePlugins.prismjs) ? themePlugins.prismjs : {},
+          )
+        : [],
 
       // @vuepress/plugin-seo
       hostname && themePlugins.seo !== false

@@ -50,7 +50,7 @@ export default defineUserConfig({
 
   // configure markdown
   markdown: {
-    code: isProd ? false : { lineNumbers: 10 },
+    code: false,
     importCode: {
       handleImportPath: (importPath) => {
         // handle @vuepress packages import path
