@@ -1,4 +1,4 @@
-import type { MarkdownMathPluginOptions } from './options.js'
+import type { MarkdownMathPluginOptions } from './node/options.js'
 
 declare module 'vuepress/markdown' {
   export interface MarkdownOptions {

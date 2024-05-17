@@ -4,7 +4,7 @@
     "rootDir": "./src",
     "outDir": "./lib",
     "paths": {
-      "@vuepress/markdown": ["./src/node/plugin-markdown-math.d.ts"]
+      "@vuepress/markdown": ["./src/types.d.ts"]
     }
   },
   "include": ["./src"]
