@@ -1,10 +1,28 @@
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it, vi } from 'vitest'
-import { preWrapperPlugin } from '../src/node/index.js'
+import type { PrismjsPluginOptions } from '../src/node/index.js'
+import {
+  highlightPlugin,
+  inlineCodePlugin,
+  lineNumbersPlugin,
+  preWrapperPlugin,
+} from '../src/node/index.js'
 
 const codeFence = '```'
 
-describe('@vuepress/plugin-prismjs > preWrapperPlugin', () => {
+const createMarkdown = (options: PrismjsPluginOptions = {}): MarkdownIt => {
+  const md = MarkdownIt()
+
+  md.use(inlineCodePlugin, options.vPre?.inline)
+  md.use(highlightPlugin, options)
+  md.use(preWrapperPlugin, options)
+  if (options.preWrapper ?? true) {
+    md.use(lineNumbersPlugin, options.lineNumbers)
+  }
+  return md
+}
+
+describe('@vuepress/plugin-prismjs > markdown fence overall', () => {
   describe('plugin options', () => {
     const source = `\
 ${codeFence}
@@ -43,13 +61,13 @@ ${codeFence}{{ inlineCode }}${codeFence}
 `
 
     it('should process code fences with default options', () => {
-      const md = MarkdownIt().use(preWrapperPlugin)
+      const md = createMarkdown()
 
       expect(md.render(source)).toMatchSnapshot()
     })
 
     it('should disable `highlightLines`', () => {
-      const md = MarkdownIt().use(preWrapperPlugin, {
+      const md = createMarkdown({
         highlightLines: false,
       })
 
@@ -57,7 +75,7 @@ ${codeFence}{{ inlineCode }}${codeFence}
     })
 
     it('should disable `lineNumbers`', () => {
-      const md = MarkdownIt().use(preWrapperPlugin, {
+      const md = createMarkdown({
         lineNumbers: false,
       })
 
@@ -65,7 +83,7 @@ ${codeFence}{{ inlineCode }}${codeFence}
     })
 
     it('should enable `lineNumbers` according to number of code lines', () => {
-      const md = MarkdownIt().use(preWrapperPlugin, {
+      const md = createMarkdown({
         lineNumbers: 4,
       })
 
@@ -73,7 +91,7 @@ ${codeFence}{{ inlineCode }}${codeFence}
     })
 
     it('should disable `preWrapper`', () => {
-      const md = MarkdownIt().use(preWrapperPlugin, {
+      const md = createMarkdown({
         preWrapper: false,
       })
 
@@ -81,7 +99,7 @@ ${codeFence}{{ inlineCode }}${codeFence}
     })
 
     it('should disable `vPre.block`', () => {
-      const md = MarkdownIt().use(preWrapperPlugin, {
+      const md = createMarkdown({
         vPre: {
           block: false,
           inline: true,
@@ -92,7 +110,7 @@ ${codeFence}{{ inlineCode }}${codeFence}
     })
 
     it('should disable `vPre.inline`', () => {
-      const md = MarkdownIt().use(preWrapperPlugin, {
+      const md = createMarkdown({
         vPre: {
           block: true,
           inline: false,
@@ -103,7 +121,7 @@ ${codeFence}{{ inlineCode }}${codeFence}
     })
 
     it('should disable `vPre.inline` and `vPre.block`', () => {
-      const md = MarkdownIt().use(preWrapperPlugin, {
+      const md = createMarkdown({
         vPre: {
           block: false,
           inline: false,
@@ -113,27 +131,12 @@ ${codeFence}{{ inlineCode }}${codeFence}
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should always disable `highlightLines` if `preWrapper` is disabled', () => {
-      const mdWithHighlightLines = MarkdownIt().use(preWrapperPlugin, {
-        highlightLines: true,
-        preWrapper: false,
-      })
-      const mdWithoutHighlightLine = MarkdownIt().use(preWrapperPlugin, {
-        highlightLines: false,
-        preWrapper: false,
-      })
-
-      expect(mdWithHighlightLines.render(source)).toBe(
-        mdWithoutHighlightLine.render(source),
-      )
-    })
-
     it('should always disable `lineNumbers` if `preWrapper` is disabled', () => {
-      const mdWithLineNumbers = MarkdownIt().use(preWrapperPlugin, {
+      const mdWithLineNumbers = createMarkdown({
         lineNumbers: true,
         preWrapper: false,
       })
-      const mdWithoutLineNumbers = MarkdownIt().use(preWrapperPlugin, {
+      const mdWithoutLineNumbers = createMarkdown({
         lineNumbers: false,
         preWrapper: false,
       })
@@ -208,7 +211,7 @@ ${codeFence}
 `
 
     it('should work properly if `lineNumbers` is enabled by default', () => {
-      const md = MarkdownIt().use(preWrapperPlugin, {
+      const md = createMarkdown({
         lineNumbers: true,
       })
 
@@ -216,7 +219,7 @@ ${codeFence}
     })
 
     it('should work properly if `lineNumbers` is disabled by default', () => {
-      const md = MarkdownIt().use(preWrapperPlugin, {
+      const md = createMarkdown({
         lineNumbers: false,
       })
 
@@ -224,7 +227,7 @@ ${codeFence}
     })
 
     it('should work properly if `lineNumbers` is set to a number by default', () => {
-      const md = MarkdownIt().use(preWrapperPlugin, {
+      const md = createMarkdown({
         lineNumbers: 4,
       })
 
@@ -296,7 +299,7 @@ ${codeFence}
 `
 
     it('should work properly if `vPre.block` is enabled by default', () => {
-      const md = MarkdownIt().use(preWrapperPlugin, {
+      const md = createMarkdown({
         vPre: {
           block: true,
         },
@@ -306,7 +309,7 @@ ${codeFence}
     })
 
     it('should work properly if `vPre.block` is disabled by default', () => {
-      const md = MarkdownIt().use(preWrapperPlugin, {
+      const md = createMarkdown({
         vPre: {
           block: false,
         },
@@ -353,7 +356,9 @@ ${codeFence}
         (code, lang) =>
           `<pre><code>highlighted code: ${code}, lang: ${lang}</code></pre>`,
       )
-      const md = MarkdownIt({ highlight }).use(preWrapperPlugin)
+      const md = createMarkdown()
+
+      md.options.highlight = highlight
 
       expect(md.render(source)).toMatchSnapshot()
       expect(highlight).toHaveBeenCalledTimes(4)
@@ -363,7 +368,9 @@ ${codeFence}
       const highlight = vi.fn(
         (code, lang) => `highlighted code: ${code}, lang: ${lang}`,
       )
-      const md = MarkdownIt({ highlight }).use(preWrapperPlugin)
+      const md = createMarkdown()
+
+      md.options.highlight = highlight
 
       expect(md.render(source)).toMatchSnapshot()
       expect(highlight).toHaveBeenCalledTimes(4)

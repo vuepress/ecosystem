@@ -1,0 +1,122 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`@vuepress/plugin-prismjs > parser > normal parse 1`] = `
+"<pre><code><span class="line">const a = 1</span>
+<span class="line">const b = 2</span>
+<span class="line">const c = 3</span>
+<span class="line"></code></pre></span>"
+`;
+
+exports[`@vuepress/plugin-prismjs > parser > normal parse line node add class 1`] = `
+"<pre><code><span class="line highlighted">  const a = 1</span>
+<span class="line highlighted">  const b = 2</span>
+<span class="line highlighted">  console.log(a + b)</code></pre></span>"
+`;
+
+exports[`@vuepress/plugin-prismjs > parser > parse highlight lines 1`] = `
+"<pre><code><span class="line highlighted">const a = 1</span>
+<span class="line">const b = 2</span>
+<span class="line highlighted">const c = 3</span>
+<span class="line">console.log(a + b)</span>
+<span class="line"></span>
+<span class="line highlighted">function add(a, b) {</span>
+<span class="line highlighted">  return a + b</span>
+<span class="line highlighted">}</span>
+<span class="line"></code></pre></span>"
+`;
+
+exports[`@vuepress/plugin-prismjs > parser > parse notation diff ++:number 1`] = `
+"<pre class="has-diff"><code><span class="line">const a = 1</span>
+<span class="line diff add">const b = 2</span>
+<span class="line diff add">const c = 3</span>
+<span class="line diff add">console.log(a + b)</span>
+<span class="line"></span>
+<span class="line">function add(a, b) {</span>
+<span class="line">  return a + b</span>
+<span class="line">}</span>
+<span class="line"></code></pre></span>"
+`;
+
+exports[`@vuepress/plugin-prismjs > parser > parse notation diff 1`] = `
+"<pre class="has-diff"><code><span class="line">const a = 1</span>
+<span class="line diff add">const b = 2</span>
+<span class="line">const c = 3</span>
+<span class="line diff remove">console.log(a + b)</span>
+<span class="line"></span>
+<span class="line diff add">function add(a, b) {</span>
+<span class="line">  return a + b</span>
+<span class="line">}</span>
+<span class="line"></code></pre></span>"
+`;
+
+exports[`@vuepress/plugin-prismjs > parser > parse notation diff error:number 1`] = `
+"<pre class="has-highlighted"><code><span class="line">const a = 1</span>
+<span class="line highlighted error">const b = 2</span>
+<span class="line highlighted error">const c = 3</span>
+<span class="line highlighted error">console.log(a + b)</span>
+<span class="line"></span>
+<span class="line">function add(a, b) {</span>
+<span class="line">  return a + b</span>
+<span class="line">}</span>
+<span class="line"></code></pre></span>"
+`;
+
+exports[`@vuepress/plugin-prismjs > parser > parse notation error level 1`] = `
+"<pre class="has-highlighted"><code><span class="line">const a = 1</span>
+<span class="line highlighted warning">const b = 2</span>
+<span class="line">const c = 3</span>
+<span class="line highlighted error">console.log(a + b)</span>
+<span class="line"></span>
+<span class="line highlighted warning">function add(a, b) {</span>
+<span class="line">  return a + b</span>
+<span class="line">}</span>
+<span class="line"></code></pre></span>"
+`;
+
+exports[`@vuepress/plugin-prismjs > parser > parse notation focus 1`] = `
+"<pre class="has-focused"><code><span class="line">const a = 1</span>
+<span class="line focused">const b = 2</span>
+<span class="line">const c = 3</span>
+<span class="line">console.log(a + b)</span>
+<span class="line"></span>
+<span class="line focused">function add(a, b) {</span>
+<span class="line">  return a + b</span>
+<span class="line">}</span>
+<span class="line"></code></pre></span>"
+`;
+
+exports[`@vuepress/plugin-prismjs > parser > parse notation focus:number 1`] = `
+"<pre class="has-focused"><code><span class="line">const a = 1</span>
+<span class="line focused">const b = 2</span>
+<span class="line focused">const c = 3</span>
+<span class="line focused">console.log(a + b)</span>
+<span class="line"></span>
+<span class="line">function add(a, b) {</span>
+<span class="line">  return a + b</span>
+<span class="line">}</span>
+<span class="line"></code></pre></span>"
+`;
+
+exports[`@vuepress/plugin-prismjs > parser > parse notation highlight 1`] = `
+"<pre class="has-highlighted"><code><span class="line">const a = 1</span>
+<span class="line">const b = 2</span>
+<span class="line highlighted">const c = 3</span>
+<span class="line highlighted">console.log(a + b)</span>
+<span class="line"></span>
+<span class="line">function add(a, b) {</span>
+<span class="line">  return a + b</span>
+<span class="line">}</span>
+<span class="line"></code></pre></span>"
+`;
+
+exports[`@vuepress/plugin-prismjs > parser > parse notation highlight:number 1`] = `
+"<pre class="has-highlighted"><code><span class="line">const a = 1</span>
+<span class="line highlighted">const b = 2</span>
+<span class="line highlighted">const c = 3</span>
+<span class="line highlighted">console.log(a + b)</span>
+<span class="line"></span>
+<span class="line">function add(a, b) {</span>
+<span class="line">  return a + b</span>
+<span class="line">}</span>
+<span class="line"></code></pre></span>"
+`;
