@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`@vuepress/plugin-prismjs > preWrapperPlugin > :line-numbers / :no-line-numbers > should work properly if \`lineNumbers\` is disabled by default 1`] = `
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :line-numbers / :no-line-numbers > should work properly if \`lineNumbers\` is disabled by default 1`] = `
 "<div class="language-text" data-ext="text" data-title="text"><pre v-pre class="language-text"><code><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
 </div><div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code><span class="line">Raw text</span>
@@ -46,7 +46,7 @@ exports[`@vuepress/plugin-prismjs > preWrapperPlugin > :line-numbers / :no-line-
 </div>"
 `;
 
-exports[`@vuepress/plugin-prismjs > preWrapperPlugin > :line-numbers / :no-line-numbers > should work properly if \`lineNumbers\` is enabled by default 1`] = `
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :line-numbers / :no-line-numbers > should work properly if \`lineNumbers\` is enabled by default 1`] = `
 "<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code><span class="line">Raw text</span>
@@ -92,7 +92,7 @@ exports[`@vuepress/plugin-prismjs > preWrapperPlugin > :line-numbers / :no-line-
 </div>"
 `;
 
-exports[`@vuepress/plugin-prismjs > preWrapperPlugin > :line-numbers / :no-line-numbers > should work properly if \`lineNumbers\` is set to a number by default 1`] = `
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :line-numbers / :no-line-numbers > should work properly if \`lineNumbers\` is set to a number by default 1`] = `
 "<div class="language-text" data-ext="text" data-title="text"><pre v-pre class="language-text"><code><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
 </div><div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code><span class="line">Raw text</span>
@@ -138,7 +138,7 @@ exports[`@vuepress/plugin-prismjs > preWrapperPlugin > :line-numbers / :no-line-
 </div>"
 `;
 
-exports[`@vuepress/plugin-prismjs > preWrapperPlugin > :v-pre / :no-v-pre > should work properly if \`vPre.block\` is disabled by default 1`] = `
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :v-pre / :no-v-pre > should work properly if \`vPre.block\` is disabled by default 1`] = `
 "<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre class="language-text"><code><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code><span class="line">Raw text</span>
@@ -184,7 +184,7 @@ exports[`@vuepress/plugin-prismjs > preWrapperPlugin > :v-pre / :no-v-pre > shou
 <div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
 `;
 
-exports[`@vuepress/plugin-prismjs > preWrapperPlugin > :v-pre / :no-v-pre > should work properly if \`vPre.block\` is enabled by default 1`] = `
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :v-pre / :no-v-pre > should work properly if \`vPre.block\` is enabled by default 1`] = `
 "<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code><span class="line">Raw text</span>
@@ -230,7 +230,7 @@ exports[`@vuepress/plugin-prismjs > preWrapperPlugin > :v-pre / :no-v-pre > shou
 <div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
 `;
 
-exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should disable \`highlightLines\` 1`] = `
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > plugin options > should disable \`highlightLines\` 1`] = `
 "<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code><span class="line">const foo = 'foo'</span>
@@ -259,7 +259,7 @@ exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should d
 "
 `;
 
-exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should disable \`lineNumbers\` 1`] = `
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > plugin options > should disable \`lineNumbers\` 1`] = `
 "<div class="language-text" data-ext="text" data-title="text"><pre v-pre class="language-text"><code><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
 </div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code><span class="line">const foo = 'foo'</span>
@@ -288,7 +288,7 @@ exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should d
 "
 `;
 
-exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should disable \`preWrapper\` 1`] = `
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > plugin options > should disable \`preWrapper\` 1`] = `
 "<pre v-pre class="language-text"><code><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
 <pre v-pre class="language-typescript"><code><span class="line">const foo = 'foo'</span>
@@ -317,7 +317,7 @@ exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should d
 "
 `;
 
-exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should disable \`vPre.block\` 1`] = `
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > plugin options > should disable \`vPre.block\` 1`] = `
 "<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre class="language-text"><code><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="line">const foo = 'foo'</span>
@@ -346,7 +346,7 @@ exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should d
 "
 `;
 
-exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should disable \`vPre.inline\` 1`] = `
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > plugin options > should disable \`vPre.inline\` 1`] = `
 "<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code><span class="line">const foo = 'foo'</span>
@@ -375,7 +375,7 @@ exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should d
 "
 `;
 
-exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should disable \`vPre.inline\` and \`vPre.block\` 1`] = `
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > plugin options > should disable \`vPre.inline\` and \`vPre.block\` 1`] = `
 "<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre class="language-text"><code><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="line">const foo = 'foo'</span>
@@ -404,7 +404,7 @@ exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should d
 "
 `;
 
-exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should enable \`lineNumbers\` according to number of code lines 1`] = `
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > plugin options > should enable \`lineNumbers\` according to number of code lines 1`] = `
 "<div class="language-text" data-ext="text" data-title="text"><pre v-pre class="language-text"><code><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
 </div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code><span class="line">const foo = 'foo'</span>
@@ -433,7 +433,7 @@ exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should e
 "
 `;
 
-exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should process code fences with default options 1`] = `
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > plugin options > should process code fences with default options 1`] = `
 "<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code><span class="line">const foo = 'foo'</span>
@@ -462,7 +462,7 @@ exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should p
 "
 `;
 
-exports[`@vuepress/plugin-prismjs > preWrapperPlugin > syntax highlighting > should work if highlighted code is not wrapped with \`<pre>\` 1`] = `
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > syntax highlighting > should work if highlighted code is not wrapped with \`<pre>\` 1`] = `
 "<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code><span class="line">highlighted code: Raw text</span>
 <span class="line">, lang: </span></code></pre>
 <div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code><span class="line">highlighted code: const foo = 'foo'</span>
@@ -487,7 +487,7 @@ exports[`@vuepress/plugin-prismjs > preWrapperPlugin > syntax highlighting > sho
 <div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
 `;
 
-exports[`@vuepress/plugin-prismjs > preWrapperPlugin > syntax highlighting > should work if highlighted code is wrapped with \`<pre>\` 1`] = `
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > syntax highlighting > should work if highlighted code is wrapped with \`<pre>\` 1`] = `
 "<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code><span class="line">highlighted code: Raw text</span>
 <span class="line">, lang: </span></code></pre>
 <div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code><span class="line">highlighted code: const foo = 'foo'</span>

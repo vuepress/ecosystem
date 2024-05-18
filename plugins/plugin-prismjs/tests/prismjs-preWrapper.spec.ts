@@ -22,7 +22,7 @@ const createMarkdown = (options: PrismjsPluginOptions = {}): MarkdownIt => {
   return md
 }
 
-describe('@vuepress/plugin-prismjs > markdown fence overall', () => {
+describe('@vuepress/plugin-prismjs > markdown fence preWrapper', () => {
   describe('plugin options', () => {
     const source = `\
 ${codeFence}

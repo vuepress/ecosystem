@@ -20,7 +20,7 @@ const createMarkdown = (options: ShikiPluginOptions = {}): MarkdownIt => {
 
 const codeFence = '```'
 
-describe('@vuepress/markdown > plugins > codePlugin', () => {
+describe('@vuepress/plugin-shiki > fence preWrapper', () => {
   describe('plugin options', () => {
     const source = `\
 ${codeFence}
