@@ -2,17 +2,12 @@
 // v-pre block logic is in `../highlight.ts`
 import type { Markdown } from 'vuepress/markdown'
 import type { ShikiPluginOptions } from '../types.js'
-import {
-  NO_V_PRE_RE,
-  resolveAttr,
-  resolveLanguage,
-  V_PRE_RE,
-} from '../utils.js'
+import { resolveAttr, resolveLanguage } from '../utils.js'
 
 export const preWrapperPlugin = (
   md: Markdown,
   {
-    vPre: { inline: vPreInline = true, block: vPrevBlock = true } = {},
+    vPre: { inline: vPreInline = true } = {},
     preWrapper = true,
   }: ShikiPluginOptions = {},
 ): void => {
@@ -34,13 +29,6 @@ export const preWrapperPlugin = (
       // remove `<code>` attributes
       result = result.replace(/<code[^]*?>/, '<code>')
       result = `<pre class="${languageClass}"${result.slice('<pre'.length)}`
-      if (
-        (vPrevBlock && !NO_V_PRE_RE.test(info)) ||
-        (!vPrevBlock && V_PRE_RE.test(info))
-      ) {
-        result = `<pre v-pre${result.slice('<pre'.length)}`
-      }
-
       return result
     }
 

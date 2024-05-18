@@ -1,5 +1,6 @@
 import MarkdownIt from 'markdown-it'
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it } from 'vitest'
+import { highlight } from '../src/node/highlight.js'
 import {
   highlightLinesPlugin,
   lineNumberPlugin,
@@ -7,9 +8,11 @@ import {
 } from '../src/node/markdown/index.js'
 import type { ShikiPluginOptions } from '../src/node/types.js'
 
-const createMarkdown = (options: ShikiPluginOptions = {}): MarkdownIt => {
+const createMarkdown = async (
+  options: ShikiPluginOptions = {},
+): Promise<MarkdownIt> => {
   const md = MarkdownIt()
-
+  md.options.highlight = await highlight(options)
   md.use(highlightLinesPlugin)
   md.use(preWrapperPlugin, options)
   if (options.preWrapper ?? true) {
@@ -55,49 +58,53 @@ const baz = () => {
 }
 ${codeFence}
 
+${codeFence}ts
+console.log('1 + 2 + 3 =' + {{ 1 + 2 + 3 }})
+${codeFence}
+
 ${codeFence}{{ inlineCode }}${codeFence}
 `
 
-    it('should process code fences with default options', () => {
-      const md = createMarkdown()
+    it('should process code fences with default options', async () => {
+      const md = await createMarkdown()
 
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should disable `highlightLines`', () => {
-      const md = createMarkdown({
+    it('should disable `highlightLines`', async () => {
+      const md = await createMarkdown({
         highlightLines: false,
       })
 
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should disable `lineNumbers`', () => {
-      const md = createMarkdown({
+    it('should disable `lineNumbers`', async () => {
+      const md = await createMarkdown({
         lineNumbers: false,
       })
 
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should enable `lineNumbers` according to number of code lines', () => {
-      const md = createMarkdown({
+    it('should enable `lineNumbers` according to number of code lines', async () => {
+      const md = await createMarkdown({
         lineNumbers: 4,
       })
 
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should disable `preWrapper`', () => {
-      const md = createMarkdown({
+    it('should disable `preWrapper`', async () => {
+      const md = await createMarkdown({
         preWrapper: false,
       })
 
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should disable `vPre.block`', () => {
-      const md = createMarkdown({
+    it('should disable `vPre.block`', async () => {
+      const md = await createMarkdown({
         vPre: {
           block: false,
           inline: true,
@@ -107,8 +114,8 @@ ${codeFence}{{ inlineCode }}${codeFence}
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should disable `vPre.inline`', () => {
-      const md = createMarkdown({
+    it('should disable `vPre.inline`', async () => {
+      const md = await createMarkdown({
         vPre: {
           block: true,
           inline: false,
@@ -118,8 +125,8 @@ ${codeFence}{{ inlineCode }}${codeFence}
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should disable `vPre.inline` and `vPre.block`', () => {
-      const md = createMarkdown({
+    it('should disable `vPre.inline` and `vPre.block`', async () => {
+      const md = await createMarkdown({
         vPre: {
           block: false,
           inline: false,
@@ -129,27 +136,12 @@ ${codeFence}{{ inlineCode }}${codeFence}
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should always disable `highlightLines` if `preWrapper` is disabled', () => {
-      const mdWithHighlightLines = createMarkdown({
-        highlightLines: true,
-        preWrapper: false,
-      })
-      const mdWithoutHighlightLine = createMarkdown({
-        highlightLines: false,
-        preWrapper: false,
-      })
-
-      expect(mdWithHighlightLines.render(source)).toBe(
-        mdWithoutHighlightLine.render(source),
-      )
-    })
-
-    it('should always disable `lineNumbers` if `preWrapper` is disabled', () => {
-      const mdWithLineNumbers = createMarkdown({
+    it('should always disable `lineNumbers` if `preWrapper` is disabled', async () => {
+      const mdWithLineNumbers = await createMarkdown({
         lineNumbers: true,
         preWrapper: false,
       })
-      const mdWithoutLineNumbers = createMarkdown({
+      const mdWithoutLineNumbers = await createMarkdown({
         lineNumbers: false,
         preWrapper: false,
       })
@@ -223,24 +215,24 @@ function bar () {
 ${codeFence}
 `
 
-    it('should work properly if `lineNumbers` is enabled by default', () => {
-      const md = createMarkdown({
+    it('should work properly if `lineNumbers` is enabled by default', async () => {
+      const md = await createMarkdown({
         lineNumbers: true,
       })
 
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should work properly if `lineNumbers` is disabled by default', () => {
-      const md = createMarkdown({
+    it('should work properly if `lineNumbers` is disabled by default', async () => {
+      const md = await createMarkdown({
         lineNumbers: false,
       })
 
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should work properly if `lineNumbers` is set to a number by default', () => {
-      const md = createMarkdown({
+    it('should work properly if `lineNumbers` is set to a number by default', async () => {
+      const md = await createMarkdown({
         lineNumbers: 4,
       })
 
@@ -311,8 +303,8 @@ function bar () {
 ${codeFence}
 `
 
-    it('should work properly if `vPre.block` is enabled by default', () => {
-      const md = createMarkdown({
+    it('should work properly if `vPre.block` is enabled by default', async () => {
+      const md = await createMarkdown({
         vPre: {
           block: true,
         },
@@ -321,8 +313,8 @@ ${codeFence}
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should work properly if `vPre.block` is disabled by default', () => {
-      const md = createMarkdown({
+    it('should work properly if `vPre.block` is disabled by default', async () => {
+      const md = await createMarkdown({
         vPre: {
           block: false,
         },
@@ -332,61 +324,32 @@ ${codeFence}
     })
   })
 
-  describe('syntax highlighting', () => {
+  describe('notation transformers', () => {
     const source = `\
-${codeFence}
-Raw text
-${codeFence}
-
-${codeFence}js
-const foo = 'foo'
-
-function bar () {
-  return 1024
-}
+${codeFence}ts
+const foo = 'foo' // [!code highlight]
+const bar = 'bar' // [!code ++]
+const baz = 'baz' // [!code --]
+const bax = 'bax' // [!code warning]
+const buz = 'buz' // [!code error]
+const qux = 'qux' // [!code focus]
 ${codeFence}
 
 ${codeFence}ts
-const foo: string = 'foo'
-
-function bar (): number {
-  return 1024
-}
-${codeFence}
-
-${codeFence}vue-html
-<template>
-  <div>msg: {{msg}}</div>
-</template>
-<script setup lang="ts">
-const msg = 'hello world';
-</script>
+// [!code highlight:3]
+const foo = 'foo'
+const bar = 'bar'
 ${codeFence}
 `
-
-    it('should work if highlighted code is wrapped with `<pre>`', () => {
-      const highlight = vi.fn(
-        (code, lang) =>
-          `<pre><code>highlighted code: ${code}, lang: ${lang}</code></pre>`,
-      )
-      const md = createMarkdown()
-
-      md.options.highlight = highlight
+    it('should work notation enabled', async () => {
+      const md = await createMarkdown({
+        notationDiff: true,
+        notationErrorLevel: true,
+        notationFocus: true,
+        notationHighlight: true,
+      })
 
       expect(md.render(source)).toMatchSnapshot()
-      expect(highlight).toHaveBeenCalledTimes(4)
-    })
-
-    it('should work if highlighted code is not wrapped with `<pre>`', () => {
-      const highlight = vi.fn(
-        (code, lang) => `highlighted code: ${code}, lang: ${lang}`,
-      )
-      const md = createMarkdown()
-
-      md.options.highlight = highlight
-
-      expect(md.render(source)).toMatchSnapshot()
-      expect(highlight).toHaveBeenCalledTimes(4)
     })
   })
 })

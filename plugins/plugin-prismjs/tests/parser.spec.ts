@@ -25,6 +25,14 @@ const c = 3
     expect(parser.stringify()).toMatchSnapshot()
   })
 
+  it('parse <pre xxxx>', () => {
+    const code = `<pre class="test"><code>highlight code</code></pre>`
+
+    const parser = parse(code)
+
+    expect(parser.pre.class.includes('test')).toBe(true)
+  })
+
   it('normal parse line node add class', () => {
     const code = genCode(`  const a = 1
   const b = 2
@@ -266,6 +274,21 @@ function add(a, b) {
     const result = parser.stringify()
 
     expect(parser.lines[0].content.includes('// [!code focus]')).toBe(true)
+
+    expect(result).toMatchSnapshot()
+  })
+
+  it('should remove single line // [!code xxx]', () => {
+    const code = genCode(`const a = 1
+// [!code focus:2]
+const b = 2`)
+
+    const parser = parse(code)
+    notationFocus(parser)
+
+    const result = parser.stringify()
+
+    expect(parser.lines.length).toBe(2)
 
     expect(result).toMatchSnapshot()
   })

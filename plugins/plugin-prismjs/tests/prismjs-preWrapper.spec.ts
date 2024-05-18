@@ -7,11 +7,17 @@ import {
   lineNumbersPlugin,
   preWrapperPlugin,
 } from '../src/node/index.js'
+import { resolveHighlighter } from '../src/node/resolveHighlighter.js'
 
 const codeFence = '```'
 
 const createMarkdown = (options: PrismjsPluginOptions = {}): MarkdownIt => {
   const md = MarkdownIt()
+
+  md.options.highlight = (code, lang) => {
+    const highlighter = resolveHighlighter(lang)
+    return highlighter?.(code) || ''
+  }
 
   md.use(inlineCodePlugin, options.vPre?.inline)
   md.use(highlightPlugin, options)
@@ -374,6 +380,28 @@ ${codeFence}
 
       expect(md.render(source)).toMatchSnapshot()
       expect(highlight).toHaveBeenCalledTimes(4)
+    })
+  })
+
+  describe('highlight notation', () => {
+    it('should highlight notation', () => {
+      const source = `\
+${codeFence}js
+const foo = 'foo' // [!code hl]
+const bar = 'bar' // [!code focus]
+const baz = 'baz' // [!code ++]
+const qux = 'qux' // [!code --]
+const quux = 'quux' // [!code error]
+const corge = 'corge' // [!code warning]
+${codeFence}
+`
+      const md = createMarkdown({
+        notationDiff: true,
+        notationErrorLevel: true,
+        notationFocus: true,
+        notationHighlight: true,
+      })
+      expect(md.render(source)).toMatchSnapshot()
     })
   })
 })
