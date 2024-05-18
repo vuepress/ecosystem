@@ -293,11 +293,15 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 
   自定义 Shiki 函数。您可以通过在配置中添加自己的 shikiSetup 函数来扩展 Shiki 实例。
 
-::: tip
+:::: tip
 
 以下配置启用相关功能后，需要自行在主题中定义相关的样式。
 
+::: details 查看样式示例
+@[code{262-327}](@vuepress/theme-default/src/client/styles/code.scss)
 :::
+
+::::
 
 ### notationDiff
 

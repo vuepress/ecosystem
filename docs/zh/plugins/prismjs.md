@@ -216,14 +216,18 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 ```
 
-::: tip
+:::: tip
 
 以下配置启用相关功能后，需要自行在主题中定义相关的样式。
 
 在新的版本中，实现了类似于 [shiki](https://shiki.style/packages/transformers) 的部分功能，
 你可以使用与其相同的语法来为代码块添加样式。
 
+::: details 查看样式示例
+@[code{262-327}](@vuepress/theme-default/src/client/styles/code.scss)
 :::
+
+::::
 
 ### notationDiff
 
