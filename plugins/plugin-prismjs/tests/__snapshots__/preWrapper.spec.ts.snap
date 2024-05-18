@@ -1,251 +1,251 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`@vuepress/plugin-prismjs > preWrapperPlugin > :line-numbers / :no-line-numbers > should work properly if \`lineNumbers\` is disabled by default 1`] = `
-"<div class="language-text" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>Raw text
+"<div class="language-text" data-ext="text" data-title="text"><pre v-pre><code>Raw text
 </code></pre>
-</div><div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>Raw text
+</div><div class="language-text" data-ext="text" data-title="text"><pre v-pre><code class="language-:line-numbers">Raw text
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-text" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>Raw text
+</div><div class="language-text" data-ext="text" data-title="text"><pre v-pre><code class="language-:no-line-numbers">Raw text
 </code></pre>
-</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-</div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts:line-numbers">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts:no-line-numbers">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts{1,2}">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts{1,2}:line-numbers">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript" data-ext="ts" data-title="config/foo.ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="config/foo.ts"><pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div></div>"
+</div>"
 `;
 
 exports[`@vuepress/plugin-prismjs > preWrapperPlugin > :line-numbers / :no-line-numbers > should work properly if \`lineNumbers\` is enabled by default 1`] = `
-"<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>Raw text
+"<div class="language-text" data-ext="text" data-title="text"><pre v-pre><code>Raw text
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>Raw text
+</div><div class="language-text" data-ext="text" data-title="text"><pre v-pre><code class="language-:line-numbers">Raw text
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-text" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>Raw text
+</div><div class="language-text" data-ext="text" data-title="text"><pre v-pre><code class="language-:no-line-numbers">Raw text
 </code></pre>
-</div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts:line-numbers">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts:no-line-numbers">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-</div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts{1,2}">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts{1,2}:line-numbers">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript" data-ext="ts" data-title="config/foo.ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="config/foo.ts"><pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div></div>"
+</div>"
 `;
 
 exports[`@vuepress/plugin-prismjs > preWrapperPlugin > :line-numbers / :no-line-numbers > should work properly if \`lineNumbers\` is set to a number by default 1`] = `
-"<div class="language-text" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>Raw text
+"<div class="language-text" data-ext="text" data-title="text"><pre v-pre><code>Raw text
 </code></pre>
-</div><div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>Raw text
+</div><div class="language-text" data-ext="text" data-title="text"><pre v-pre><code class="language-:line-numbers">Raw text
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-text" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>Raw text
+</div><div class="language-text" data-ext="text" data-title="text"><pre v-pre><code class="language-:no-line-numbers">Raw text
 </code></pre>
-</div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts:line-numbers">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts:no-line-numbers">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-</div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts{1,2}">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts{1,2}:line-numbers">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript" data-ext="ts" data-title="config/foo.ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="config/foo.ts"><pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div></div>"
+</div>"
 `;
 
 exports[`@vuepress/plugin-prismjs > preWrapperPlugin > :v-pre / :no-v-pre > should work properly if \`vPre.block\` is disabled by default 1`] = `
-"<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre class="language-text"><code>Raw text
+"<div class="language-text" data-ext="text" data-title="text"><pre><code>Raw text
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>Raw text
+</div><div class="language-text" data-ext="text" data-title="text"><pre v-pre><code class="language-:v-pre">Raw text
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre class="language-text"><code>Raw text
+</div><div class="language-text" data-ext="text" data-title="text"><pre><code class="language-:no-v-pre">Raw text
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts:v-pre">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre><code class="language-ts:no-v-pre">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre><code class="language-ts{1,2}">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts{1,2}:v-pre">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre><code class="language-ts{1,2}:no-v-pre">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
+</div>"
 `;
 
 exports[`@vuepress/plugin-prismjs > preWrapperPlugin > :v-pre / :no-v-pre > should work properly if \`vPre.block\` is enabled by default 1`] = `
-"<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>Raw text
+"<div class="language-text" data-ext="text" data-title="text"><pre v-pre><code>Raw text
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>Raw text
+</div><div class="language-text" data-ext="text" data-title="text"><pre v-pre><code class="language-:v-pre">Raw text
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre class="language-text"><code>Raw text
+</div><div class="language-text" data-ext="text" data-title="text"><pre><code class="language-:no-v-pre">Raw text
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts:v-pre">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre><code class="language-ts:no-v-pre">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts{1,2}">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts{1,2}:v-pre">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre><code class="language-ts{1,2}:no-v-pre">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
+</div>"
 `;
 
 exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should disable \`highlightLines\` 1`] = `
-"<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>Raw text
+"<div class="language-text" data-ext="text" data-title="text"><pre v-pre><code>Raw text
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts{1,2}">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="config/foo.ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="config/foo.ts"><pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
@@ -255,26 +255,26 @@ const baz = () =&gt; {
   return 2048
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code v-pre>{{ inlineCode }}</code></p>
+</div><p><code>{{ inlineCode }}</code></p>
 "
 `;
 
 exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should disable \`lineNumbers\` 1`] = `
-"<div class="language-text" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>Raw text
+"<div class="language-text" data-ext="text" data-title="text"><pre v-pre><code>Raw text
 </code></pre>
-</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts{1,2}">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div></div><div class="language-typescript" data-ext="ts" data-title="config/foo.ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="config/foo.ts"><pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
@@ -284,26 +284,26 @@ const baz = () =&gt; {
   return 2048
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br><br></div></div><p><code v-pre>{{ inlineCode }}</code></p>
+</div><p><code>{{ inlineCode }}</code></p>
 "
 `;
 
 exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should disable \`preWrapper\` 1`] = `
-"<pre v-pre class="language-text"><code>Raw text
+"<pre v-pre><code>Raw text
 </code></pre>
-<pre v-pre class="language-typescript"><code>const foo = 'foo'
+<pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<pre v-pre class="language-typescript"><code>const foo = 'foo'
+<pre v-pre><code class="language-ts{1,2}">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<pre v-pre class="language-typescript"><code>const foo = 'foo'
+<pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
@@ -313,26 +313,26 @@ const baz = () =&gt; {
   return 2048
 }
 </code></pre>
-<p><code v-pre>{{ inlineCode }}</code></p>
+<p><code>{{ inlineCode }}</code></p>
 "
 `;
 
 exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should disable \`vPre.block\` 1`] = `
-"<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre class="language-text"><code>Raw text
+"<div class="language-text" data-ext="text" data-title="text"><pre><code>Raw text
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre><code class="language-ts{1,2}">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="config/foo.ts"><pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="config/foo.ts"><pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
@@ -342,26 +342,26 @@ const baz = () =&gt; {
   return 2048
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code v-pre>{{ inlineCode }}</code></p>
+</div><p><code>{{ inlineCode }}</code></p>
 "
 `;
 
 exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should disable \`vPre.inline\` 1`] = `
-"<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>Raw text
+"<div class="language-text" data-ext="text" data-title="text"><pre v-pre><code>Raw text
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts{1,2}">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="config/foo.ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="config/foo.ts"><pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
@@ -371,26 +371,26 @@ const baz = () =&gt; {
   return 2048
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>{{ inlineCode }}</code></p>
+</div><p><code>{{ inlineCode }}</code></p>
 "
 `;
 
 exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should disable \`vPre.inline\` and \`vPre.block\` 1`] = `
-"<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre class="language-text"><code>Raw text
+"<div class="language-text" data-ext="text" data-title="text"><pre><code>Raw text
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre><code class="language-ts{1,2}">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="config/foo.ts"><pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="config/foo.ts"><pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
@@ -400,26 +400,26 @@ const baz = () =&gt; {
   return 2048
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>{{ inlineCode }}</code></p>
+</div><p><code>{{ inlineCode }}</code></p>
 "
 `;
 
 exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should enable \`lineNumbers\` according to number of code lines 1`] = `
-"<div class="language-text" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>Raw text
+"<div class="language-text" data-ext="text" data-title="text"><pre v-pre><code>Raw text
 </code></pre>
-</div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts{1,2}">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="config/foo.ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="config/foo.ts"><pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
@@ -429,26 +429,26 @@ const baz = () =&gt; {
   return 2048
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code v-pre>{{ inlineCode }}</code></p>
+</div><p><code>{{ inlineCode }}</code></p>
 "
 `;
 
 exports[`@vuepress/plugin-prismjs > preWrapperPlugin > plugin options > should process code fences with default options 1`] = `
-"<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>Raw text
+"<div class="language-text" data-ext="text" data-title="text"><pre v-pre><code>Raw text
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts{1,2}">const foo = 'foo'
 
 function bar () {
   return 1024
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="config/foo.ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="config/foo.ts"><pre v-pre><code class="language-ts">const foo = 'foo'
 
 function bar () {
   return 1024
@@ -458,56 +458,56 @@ const baz = () =&gt; {
   return 2048
 }
 </code></pre>
-<div class="highlight-lines"><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><div class="highlight-line">&nbsp;</div><br><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code v-pre>{{ inlineCode }}</code></p>
+</div><p><code>{{ inlineCode }}</code></p>
 "
 `;
 
 exports[`@vuepress/plugin-prismjs > preWrapperPlugin > syntax highlighting > should work if highlighted code is not wrapped with \`<pre>\` 1`] = `
-"<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>highlighted code: Raw text
+"<div class="language-text" data-ext="text" data-title="text"><pre v-pre><code>highlighted code: Raw text
 , lang: </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code>highlighted code: const foo = 'foo'
+</div><div class="language-javascript" data-ext="js" data-title="js"><pre v-pre><code class="language-js">highlighted code: const foo = 'foo'
 
 function bar () {
   return 1024
 }
 , lang: js</code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>highlighted code: const foo: string = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code class="language-ts">highlighted code: const foo: string = 'foo'
 
 function bar (): number {
   return 1024
 }
 , lang: ts</code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-vue-html line-numbers-mode" data-ext="vue-html" data-title="vue-html"><pre v-pre class="language-vue-html"><code>highlighted code: <template>
+</div><div class="language-vue-html" data-ext="vue-html" data-title="vue-html"><pre v-pre><code class="language-vue-html">highlighted code: <template>
   <div>msg: {{msg}}</div>
 </template>
 <script setup lang="ts">
 const msg = 'hello world';
 </script>
 , lang: vue-html</code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
+</div>"
 `;
 
 exports[`@vuepress/plugin-prismjs > preWrapperPlugin > syntax highlighting > should work if highlighted code is wrapped with \`<pre>\` 1`] = `
-"<div class="language-text line-numbers-mode" data-ext="text" data-title="text"><pre v-pre class="language-text"><code>highlighted code: Raw text
+"<div class="language-text" data-ext="text" data-title="text"><pre v-pre><code>highlighted code: Raw text
 , lang: </code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-ext="js" data-title="js"><pre v-pre class="language-javascript"><code>highlighted code: const foo = 'foo'
+</div><div class="language-javascript" data-ext="js" data-title="js"><pre v-pre><code>highlighted code: const foo = 'foo'
 
 function bar () {
   return 1024
 }
 , lang: js</code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre v-pre class="language-typescript"><code>highlighted code: const foo: string = 'foo'
+</div><div class="language-typescript" data-ext="ts" data-title="ts"><pre v-pre><code>highlighted code: const foo: string = 'foo'
 
 function bar (): number {
   return 1024
 }
 , lang: ts</code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-vue-html line-numbers-mode" data-ext="vue-html" data-title="vue-html"><pre v-pre class="language-vue-html"><code>highlighted code: <template>
+</div><div class="language-vue-html" data-ext="vue-html" data-title="vue-html"><pre v-pre><code>highlighted code: <template>
   <div>msg: {{msg}}</div>
 </template>
 <script setup lang="ts">
 const msg = 'hello world';
 </script>
 , lang: vue-html</code></pre>
-<div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
+</div>"
 `;

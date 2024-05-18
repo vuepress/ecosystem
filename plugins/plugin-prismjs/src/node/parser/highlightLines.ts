@@ -1,3 +1,5 @@
+import type { Parser } from './parse'
+
 export type HighlightLinesRange = [start: number, end: number]
 
 /**
@@ -32,3 +34,16 @@ export const isHighlightLine = (
   ranges: HighlightLinesRange[],
 ): boolean =>
   ranges.some(([start, end]) => lineNumber >= start && lineNumber <= end)
+
+export const highlightLines = (
+  parser: Parser,
+  ranges: HighlightLinesRange[] | null,
+): void => {
+  if (ranges?.length) {
+    parser.line((node, index) => {
+      if (isHighlightLine(index, ranges)) {
+        node.class.push('highlighted')
+      }
+    })
+  }
+}

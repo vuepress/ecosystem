@@ -1,6 +1,6 @@
 import Prism from 'prismjs'
 import { loadLanguages } from './loadLanguages.js'
-import { resolveLanguage } from './markdown/resolveLanguage.js'
+import { resolveLanguage } from './utils/index.js'
 
 const languageNameMap = {
   html: 'markup',

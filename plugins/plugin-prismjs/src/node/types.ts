@@ -42,4 +42,40 @@ export interface PreWrapperOptions {
      */
     inline?: boolean
   }
+
+  /**
+   * Enable notation diff
+   *
+   * @default false
+   *
+   * @see https://shiki.style/packages/transformers#transformernotationdiff
+   */
+  notationDiff?: boolean
+
+  /**
+   * Enable notation focus
+   *
+   * @default false
+   *
+   * @see https://shiki.style/packages/transformers#transformernotationfocus
+   */
+  notationFocus?: boolean
+
+  /**
+   * Enable notation highlight
+   *
+   * @default false
+   *
+   * @see https://shiki.style/packages/transformers#transformernotationhighlight
+   */
+  notationHighlight?: boolean
+
+  /**
+   * Enable notation error level
+   *
+   * @default false
+   *
+   * @see https://shiki.style/packages/transformers#transformernotationerrorlevel
+   */
+  notationErrorLevel?: boolean
 }
