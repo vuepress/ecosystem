@@ -196,6 +196,18 @@ export default defineUserConfig({
 })
 ```
 
+### preWrapper
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Enable the extra wrapper of the `<pre>` tag or not.
+
+  The wrapper is required by the `lineNumbers`. That means, if you disable `preWrapper`, the line line numbers will also be disabled.
+
 ### vPre
 
 - Type: `{ block?: boolean; inline?: boolean }`
@@ -286,7 +298,7 @@ When set to `false`, no default styles will be applied, and totally up to users 
 
   Custom Shiki setup function. You can customize the shiki instance by adding your own shikiSetup function in your config.
 
-::: warning
+::: tip
 
 After enabling the relevant features in the settings, you will need to define the corresponding styles in the theme yourself.
 

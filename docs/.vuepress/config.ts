@@ -108,6 +108,10 @@ export default defineUserConfig({
           langs: ['bash', 'diff', 'json', 'md', 'ts', 'vue'],
           theme: 'dark-plus',
           lineNumbers: 10,
+          notationDiff: true,
+          notationErrorLevel: true,
+          notationFocus: true,
+          notationHighlight: true,
         })
       : [],
   ],

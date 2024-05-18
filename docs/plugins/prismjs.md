@@ -111,6 +111,10 @@ const line3 = 'This is line 3'
   - Multiple single lines: `{4,7,9}`
   - Combined: `{4,7-13,16,23-27,40}`
 
+::: tip
+In the new version, we have rewritten the implementation of `highlightLines`. It now achieves line highlighting by adding the class name `highlighted` to `<span class="line">` within the code block.
+:::
+
 **Input:**
 
 ````md
@@ -153,7 +157,7 @@ export default defineUserConfig({
 
   Enable the extra wrapper of the `<pre>` tag or not.
 
-  The wrapper is required by the `highlightLines` and `lineNumbers`. That means, if you disable `preWrapper`, the line highlighting and line numbers will also be disabled.
+  The wrapper is required by the `lineNumbers`. That means, if you disable `preWrapper`, the line line numbers will also be disabled.
 
 ::: tip
 You can disable it if you want to implement them in client side. For example,
@@ -214,3 +218,58 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 // This won't be compiled correctly because of js syntax highlighting
 const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 ```
+
+::: tip
+
+After enabling the relevant features in the settings, you will need to define the corresponding styles in the theme yourself.
+
+In the new version, some functionalities similar to [shiki](https://shiki.style/packages/transformers) have been implemented, allowing you to style code blocks using the same syntax.
+:::
+
+### notationDiff
+
+- Type: `boolean`
+
+- Default: `false`
+
+- Details:
+
+  Whether enable notation diff
+
+  Also see: [Shiki > Notation Diff](https://shiki.style/packages/transformers#transformernotationdiff)
+
+### notationFocus
+
+- Type: `boolean`
+
+- Default: `false`
+
+- Details:
+
+  Whether enable notation focus.
+
+  Also see: [Shiki > Notation Focus](https://shiki.style/packages/transformers#transformernotationfocus)
+
+### notationHighlight
+
+- Type: `boolean`
+
+- Default: `false`
+
+- Details:
+
+  Whether enable notation highlight.
+
+  Also see: [Shiki > Notation Highlight](https://shiki.style/packages/transformers#transformernotationhighlight)
+
+### notationErrorLevel
+
+- Type: `boolean`
+
+- Default: `false`
+
+- Details:
+
+  Whether enable notation error level.
+
+  Also see: [Shiki > Notation Error Level](https://shiki.style/packages/transformers#transformernotationerrorlevel)

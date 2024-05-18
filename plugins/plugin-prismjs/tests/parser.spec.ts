@@ -175,10 +175,10 @@ function add(a, b) { // [!code focus]
 
     const result = parser.stringify()
 
-    expect(parser.lines[1].class.includes('focused')).toBe(true) // line 2
-    expect(parser.lines[5].class.includes('focused')).toBe(true) // line 5
+    expect(parser.lines[1].class.includes('has-focus')).toBe(true) // line 2
+    expect(parser.lines[5].class.includes('has-focus')).toBe(true) // line 5
 
-    expect(parser.pre.class.includes('has-focused')).toBe(true)
+    expect(parser.pre.class.includes('has-focused-lines')).toBe(true)
 
     expect(result).toMatchSnapshot()
   })
@@ -199,10 +199,12 @@ function add(a, b) {
     const result = parser.stringify()
 
     expect(
-      parser.lines.slice(1, 4).every((line) => line.class.includes('focused')),
+      parser.lines
+        .slice(1, 4)
+        .every((line) => line.class.includes('has-focus')),
     ).toBe(true)
 
-    expect(parser.lines[4].class.includes('focused')).toBe(false)
+    expect(parser.lines[4].class.includes('has-focus')).toBe(false)
 
     expect(result).toMatchSnapshot()
   })
@@ -252,6 +254,18 @@ function add(a, b) {
     ).toBe(true)
 
     expect(parser.lines[4].class.includes('error')).toBe(false)
+
+    expect(result).toMatchSnapshot()
+  })
+
+  it('should not remove // [\\!code xxx]', () => {
+    const code = genCode(`const a = 1 // [\\!code focus]`)
+
+    const parser = parse(code)
+
+    const result = parser.stringify()
+
+    expect(parser.lines[0].content.includes('// [!code focus]')).toBe(true)
 
     expect(result).toMatchSnapshot()
   })

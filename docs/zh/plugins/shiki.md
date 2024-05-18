@@ -191,6 +191,18 @@ export default defineUserConfig({
 })
 ```
 
+### preWrapper
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否在 `<pre>` 标签外额外包裹一层。
+
+  `lineNumbers` 依赖于这个额外的包裹层。这换句话说，如果你禁用了 `preWrapper` ，那么 行号 也会被同时禁用。
+
 ### vPre
 
 - 类型： `{ block?: boolean; inline?: boolean }`
@@ -281,7 +293,7 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 
   自定义 Shiki 函数。您可以通过在配置中添加自己的 shikiSetup 函数来扩展 Shiki 实例。
 
-::: warning
+::: tip
 
 以下配置启用相关功能后，需要自行在主题中定义相关的样式。
 

@@ -74,22 +74,22 @@ exports[`@vuepress/plugin-prismjs > parser > parse notation error level 1`] = `
 `;
 
 exports[`@vuepress/plugin-prismjs > parser > parse notation focus 1`] = `
-"<pre class="has-focused"><code><span class="line">const a = 1</span>
-<span class="line focused">const b = 2</span>
+"<pre class="has-focused-lines"><code><span class="line">const a = 1</span>
+<span class="line has-focus">const b = 2</span>
 <span class="line">const c = 3</span>
 <span class="line">console.log(a + b)</span>
 <span class="line"></span>
-<span class="line focused">function add(a, b) {</span>
+<span class="line has-focus">function add(a, b) {</span>
 <span class="line">  return a + b</span>
 <span class="line">}</span>
 <span class="line"></code></pre></span>"
 `;
 
 exports[`@vuepress/plugin-prismjs > parser > parse notation focus:number 1`] = `
-"<pre class="has-focused"><code><span class="line">const a = 1</span>
-<span class="line focused">const b = 2</span>
-<span class="line focused">const c = 3</span>
-<span class="line focused">console.log(a + b)</span>
+"<pre class="has-focused-lines"><code><span class="line">const a = 1</span>
+<span class="line has-focus">const b = 2</span>
+<span class="line has-focus">const c = 3</span>
+<span class="line has-focus">console.log(a + b)</span>
 <span class="line"></span>
 <span class="line">function add(a, b) {</span>
 <span class="line">  return a + b</span>
@@ -120,3 +120,5 @@ exports[`@vuepress/plugin-prismjs > parser > parse notation highlight:number 1`]
 <span class="line">}</span>
 <span class="line"></code></pre></span>"
 `;
+
+exports[`@vuepress/plugin-prismjs > parser > should not remove // [\\!code xxx] 1`] = `"<pre><code><span class="line">const a = 1 // [!code focus]</code></pre></span>"`;

@@ -107,6 +107,11 @@ const line3 = 'This is line 3'
   - 多个单行： `{4,7,9}`
   - 组合： `{4,7-13,16,23-27,40}`
 
+::: tip
+我们在 新的版本中 重写了 `highlightLines` 的实现，现在它通过在 代码块内的 `<span class="line">` 上添加
+类名 `highlighted` 来实现行高亮。
+:::
+
 **输入：**
 
 ````md
@@ -149,7 +154,7 @@ export default defineUserConfig({
 
   是否在 `<pre>` 标签外额外包裹一层。
 
-  `highlightLines` 和 `lineNumbers` 依赖于这个额外的包裹层。这换句话说，如果你禁用了 `preWrapper` ，那么行高亮和行号也会被同时禁用。
+  `lineNumbers` 依赖于这个额外的包裹层。这换句话说，如果你禁用了 `preWrapper` ，那么 行号 也会被同时禁用。
 
 ::: tip
 如果你想要在客户端来实现这些功能时，可以禁用该配置项。比如使用
@@ -210,3 +215,60 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 // 由于 JS 代码高亮，这里不会被正确编译
 const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 ```
+
+::: tip
+
+以下配置启用相关功能后，需要自行在主题中定义相关的样式。
+
+在新的版本中，实现了类似于 [shiki](https://shiki.style/packages/transformers) 的部分功能，
+你可以使用与其相同的语法来为代码块添加样式。
+
+:::
+
+### notationDiff
+
+- 类型： `boolean`
+
+- 默认值： `false`
+
+- 详情：
+
+  是否启用 Notation Diff
+
+  参考： [Shiki > Notation Diff](https://shiki.style/packages/transformers#transformernotationdiff)
+
+### notationFocus
+
+- 类型： `boolean`
+
+- 默认值： `false`
+
+- 详情：
+
+  是否启用 Notation Focus.
+
+  参考： [Shiki > Notation Focus](https://shiki.style/packages/transformers#transformernotationfocus)
+
+### notationHighlight
+
+- 类型： `boolean`
+
+- 默认值： `false`
+
+- 详情：
+
+  是否启用 Notation Highlight.
+
+  参考： [Shiki > Notation Highlight](https://shiki.style/packages/transformers#transformernotationhighlight)
+
+### notationErrorLevel
+
+- 类型： `boolean`
+
+- 默认值： `false`
+
+- 详情：
+
+  是否启用 Notation Error Level.
+
+  参考： [Shiki > Notation Error Level](https://shiki.style/packages/transformers#transformernotationerrorlevel)

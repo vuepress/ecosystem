@@ -65,6 +65,14 @@ export default defaultTheme({
     // only enable git plugin in production mode
     git: isProd,
     // use shiki plugin in production mode instead
-    prismjs: isProd ? false : { lineNumbers: 10 },
+    prismjs: isProd
+      ? false
+      : {
+          lineNumbers: 10,
+          notationDiff: true,
+          notationErrorLevel: true,
+          notationFocus: true,
+          notationHighlight: true,
+        },
   },
 }) as Theme

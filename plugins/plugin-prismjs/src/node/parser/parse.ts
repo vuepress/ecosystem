@@ -8,6 +8,7 @@ const CODE_RE = /^(<code[^]*?>)/
 const END_RE = /(<\/code><\/pre>(\r?\n))?$/
 const SPLIT_RE = /(\r?\n)/g
 const CLASS_RE = /class="([^]*)"/
+const ESCAPE_RE = /\[\\!code/g
 
 export interface NodeOpen {
   /**
@@ -100,6 +101,7 @@ export const parse = (html: string): Parser => {
   const stringify = (): string => {
     const resolvedLines = lineNodeList.map((line, index) => {
       lineNodeHandlers.forEach((handler) => handler(line, index + 1))
+      line.content = line.content.replace(ESCAPE_RE, '[!code')
       return nodeOpenStringify(line) + '</span>'
     })
 

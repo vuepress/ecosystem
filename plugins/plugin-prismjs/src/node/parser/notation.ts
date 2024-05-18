@@ -97,9 +97,9 @@ export const notationHighlight = (parser: Parser): void => {
 export const notationFocus = (parser: Parser): void => {
   notationBase(parser, {
     classMap: {
-      focus: 'focused',
+      focus: 'has-focus',
     },
-    classPre: 'has-focused',
+    classPre: 'has-focused-lines',
   })
 }
 
