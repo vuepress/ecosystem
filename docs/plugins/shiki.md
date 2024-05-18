@@ -296,11 +296,11 @@ When set to `false`, no default styles will be applied, and totally up to users 
 
 - Details:
 
-  Custom Shiki setup function. You can customize the shiki instance by adding your own shikiSetup function in your config.
+  Function to customize Shiki hightlighter instance.
 
 :::: tip
 
-After enabling the relevant features in the settings, you will need to define the corresponding styles in the theme yourself.
+The following features requires additional style to work, which should be handled by themes or users.
 
 ::: details View Styles Example
 @[code{262-327}](@vuepress/theme-default/src/client/styles/code.scss)
