@@ -221,9 +221,9 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 
 :::: tip
 
-After enabling the relevant features in the settings, you will need to define the corresponding styles in the theme yourself.
-
 In the new version, some functionalities similar to [shiki](https://shiki.style/packages/transformers) have been implemented, allowing you to style code blocks using the same syntax.
+
+The following features requires additional style to work, which should be handled by themes or users.
 
 ::: details View Styles Example
 @[code{262-327}](@vuepress/theme-default/src/client/styles/code.scss)

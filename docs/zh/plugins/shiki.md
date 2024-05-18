@@ -295,7 +295,7 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 
 :::: tip
 
-以下配置启用相关功能后，需要自行在主题中定义相关的样式。
+以下功能需要额外的样式才能正常工作，这应该由主题或用户来处理。
 
 ::: details 查看样式示例
 @[code{262-327}](@vuepress/theme-default/src/client/styles/code.scss)

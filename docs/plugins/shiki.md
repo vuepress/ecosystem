@@ -296,7 +296,7 @@ When set to `false`, no default styles will be applied, and totally up to users 
 
 - Details:
 
-  Function to customize Shiki hightlighter instance.
+  Function to customize Shiki highlighter instance.
 
 :::: tip
 
