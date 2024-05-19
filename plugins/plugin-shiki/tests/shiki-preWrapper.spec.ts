@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { highlight } from '../src/node/highlight.js'
 import {
   highlightLinesPlugin,
+  inlineCodePlugin,
   lineNumberPlugin,
   preWrapperPlugin,
 } from '../src/node/markdown/index.js'
@@ -13,6 +14,7 @@ const createMarkdown = async (
 ): Promise<MarkdownIt> => {
   const md = MarkdownIt()
   md.options.highlight = await highlight(options)
+  md.use(inlineCodePlugin, options.vPre?.inline ?? true)
   md.use(highlightLinesPlugin)
   md.use(preWrapperPlugin, options)
   if (options.preWrapper ?? true) {

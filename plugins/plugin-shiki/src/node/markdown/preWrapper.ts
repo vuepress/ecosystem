@@ -6,10 +6,7 @@ import { resolveAttr, resolveLanguage } from '../utils.js'
 
 export const preWrapperPlugin = (
   md: Markdown,
-  {
-    vPre: { inline: vPreInline = true } = {},
-    preWrapper = true,
-  }: ShikiPluginOptions = {},
+  { preWrapper = true }: ShikiPluginOptions = {},
 ): void => {
   const fence = md.renderer.rules.fence!
   md.renderer.rules.fence = (...args) => {
@@ -33,13 +30,5 @@ export const preWrapperPlugin = (
     }
 
     return `<div class="${languageClass}" data-ext="${lang}" data-title="${title}">${result}</div>`
-  }
-
-  if (vPreInline) {
-    const rawInlineCodeRule = md.renderer.rules.code_inline!
-    md.renderer.rules.code_inline = (tokens, idx, options, env, slf) => {
-      const result = rawInlineCodeRule(tokens, idx, options, env, slf)
-      return `<code v-pre${result.slice('<code'.length)}`
-    }
   }
 }
