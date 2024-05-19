@@ -1,17 +1,20 @@
 import type { Markdown } from 'vuepress/markdown'
 import type { PreWrapperOptions } from '../types.js'
-import { resolveAttr, resolveLanguage, resolveVPre } from '../utils/index.js'
+import { resolveAttr, resolveLanguage } from '../utils/index.js'
 
 export const preWrapperPlugin = (
   md: Markdown,
-  {
-    preWrapper = true,
-    vPre: { block: vPreBlock = true } = {},
-  }: PreWrapperOptions = {},
+  { preWrapper = true }: PreWrapperOptions = {},
 ): void => {
   const fence = md.renderer.rules.fence!
 
   md.renderer.rules.fence = (...args) => {
+    const result = fence(...args)
+
+    if (!preWrapper) {
+      return result
+    }
+
     const [tokens, idx, { langPrefix }] = args
     const token = tokens[idx]
 
@@ -20,16 +23,6 @@ export const preWrapperPlugin = (
     // resolve language from token info
     const language = resolveLanguage(info)
     const languageClass = `${langPrefix}${language.name}`
-
-    let result = fence(...args)
-
-    if (resolveVPre(info) ?? vPreBlock) {
-      result = `<pre v-pre${result.slice('<pre'.length)}`
-    }
-
-    if (!preWrapper) {
-      return result
-    }
 
     // resolve title from token info
     const title = resolveAttr(info, 'title') ?? language.ext

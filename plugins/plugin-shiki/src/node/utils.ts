@@ -1,14 +1,12 @@
 import type { TransformerCompactLineOption } from '@shikijs/transformers'
 
-export const vueRE = /-vue$/
-export const V_PRE_RE = /:v-pre\b/
-export const NO_V_PRE_RE = /:no-v-pre\b/
+export const VUE_RE = /-vue$/
 
 export const resolveLanguage = (info: string): string =>
   info
     .match(/^([^ :[{]+)/)?.[1]
-    ?.replace(vueRE, '')
-    .toLowerCase() || ''
+    ?.replace(VUE_RE, '')
+    .toLowerCase() ?? ''
 
 export const resolveAttr = (info: string, attr: string): string | null => {
   // try to match specified attr mark

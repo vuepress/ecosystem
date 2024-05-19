@@ -161,61 +161,6 @@ export default defineUserConfig({
 [Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) 或者 [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/)。
 :::
 
-### vPre
-
-- 类型： `{ block?: boolean; inline?: boolean }`
-
-- 默认值： `{ block: true, inline: true }`
-
-- 详情：
-
-  为了避免你的代码块被 Vue 编译, 插件默认会在你的代码块添加 [v-pre](https://v3.vuejs.org/api/directives.html#v-pre) 指令。
-
-  - `vPre.block`: 是否在代码块的 `<pre>` 标签上添加 `v-pre` 指令。
-  - `vPre.inline`: 是否在行内代码的 `<code>` 标签上添加 `v-pre` 指令。
-
-  你可以在代码块添加 `:v-pre` / `:no-v-pre` 标记来覆盖配置项中的设置。
-
-**输入：**
-
-````md
-```md
-<!-- 默认情况下，这里会被保持原样 -->
-
-1 + 2 + 3 = {{ 1 + 2 + 3 }}
-```
-
-```md:no-v-pre
-<!-- 这里会被 Vue 编译 -->
-
-1 + 2 + 3 = {{ 1 + 2 + 3 }}
-```
-
-```js:no-v-pre
-// 由于 JS 代码高亮，这里不会被正确编译
-const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
-```
-````
-
-**输出：**
-
-```md
-<!-- 默认情况下，这里会被保持原样 -->
-
-1 + 2 + 3 = {{ 1 + 2 + 3 }}
-```
-
-```md:no-v-pre
-<!-- 这里会被 Vue 编译 -->
-
-1 + 2 + 3 = {{ 1 + 2 + 3 }}
-```
-
-```js
-// 由于 JS 代码高亮，这里不会被正确编译
-const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
-```
-
 :::: tip
 
 在新的版本中，实现了类似于 [shiki](https://shiki.style/packages/transformers) 的部分功能，
@@ -224,7 +169,7 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 以下功能需要额外的样式才能正常工作，这应该由主题或用户来处理。
 
 ::: details 查看样式示例
-@[code{262-327}](@vuepress/theme-default/src/client/styles/code.scss)
+@[code{260-349}](@vuepress/theme-default/src/client/styles/code.scss)
 :::
 
 ::::

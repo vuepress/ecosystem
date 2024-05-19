@@ -208,61 +208,6 @@ export default defineUserConfig({
 
   The wrapper is required by the `lineNumbers`. That means, if you disable `preWrapper`, the line line numbers will also be disabled.
 
-### vPre
-
-- Type: `{ block?: boolean; inline?: boolean }`
-
-- Default: `{ block: true, inline: true }`
-
-- Details:
-
-  To avoid your code blocks being compiled by Vue, VuePress will add [v-pre](https://v3.vuejs.org/api/directives.html#v-pre) directive to your code blocks by default, which can be disabled in config.
-
-  - `vPre.block`: Add `v-pre` directive to `<pre>` tag of code block or not.
-  - `vPre.inline`: Add `v-pre` directive to `<code>` tag of inline code or not.
-
-  You can add `:v-pre` / `:no-v-pre` mark in your fenced code blocks to override the value set in config.
-
-**Input:**
-
-````md
-```md
-<!-- This will be kept as is by default -->
-
-1 + 2 + 3 = {{ 1 + 2 + 3 }}
-```
-
-```md:no-v-pre
-<!-- This will be compiled by Vue -->
-
-1 + 2 + 3 = {{ 1 + 2 + 3 }}
-```
-
-```js:no-v-pre
-// This won't be compiled correctly because of js syntax highlighting
-const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
-```
-````
-
-**Output:**
-
-```md
-<!-- This will be kept as is by default -->
-
-1 + 2 + 3 = {{ 1 + 2 + 3 }}
-```
-
-```md:no-v-pre
-<!-- This will be compiled by Vue -->
-
-1 + 2 + 3 = {{ 1 + 2 + 3 }}
-```
-
-```js
-// This won't be compiled correctly because of js syntax highlighting
-const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
-```
-
 ### defaultColor
 
 - Type: `false | 'light' | 'dark' | string`
@@ -303,7 +248,7 @@ When set to `false`, no default styles will be applied, and totally up to users 
 The following features requires additional style to work, which should be handled by themes or users.
 
 ::: details View Styles Example
-@[code{262-327}](@vuepress/theme-default/src/client/styles/code.scss)
+@[code{260-349}](@vuepress/theme-default/src/client/styles/code.scss)
 :::
 
 ::::

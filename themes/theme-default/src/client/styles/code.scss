@@ -1,6 +1,5 @@
 @import '_variables';
 
-// Safari only support integer pixel value for line-height
 // the original font-size is 14px, 1.7 will make line-height be 23.8px
 $line-height: 1.7;
 
@@ -32,7 +31,6 @@ pre[class*='language-'] {
 
 /* Code blocks */
 pre[class*='language-'] {
-  // padding: 1em;
   margin: 0.5em 0;
   overflow: auto;
 }
@@ -259,7 +257,24 @@ div[class*='language-'] {
   }
 }
 
+// ------------ code notation highlighting ------------
+// matches `<span class="line xxxx" ></span>`
+
 div[class*='language-'] pre {
+  // highlight lines and  notation highlight
+  //
+  // `!code highlight` and `!code hl` are the same:
+  // - `// [\!code highlight]`
+  // - `// [\!code hl]`
+  // - `// [\!code highlight:3]`
+  // - `// [\!code hl:3]`
+  //
+  // It also has the style of error level,
+  // covering the background color with 'warning' and 'error' classes.
+  // - `// [\!code warning]`
+  // - `// [\!code error]`
+  // - `// [\!code warning:3]`
+  // - `// [\!code error:3]`
   code .highlighted {
     background-color: var(--code-hl-bg-color);
     transition: background-color 0.5s;
@@ -277,6 +292,10 @@ div[class*='language-'] pre {
     }
   }
 
+  // notation diff line
+  //
+  // - class="diff add": `// [\!code ++]` or `// [\!code ++:3]`
+  // - class="diff remove":  `// [\!code --]` or `// [\!code --:3]`
   code .diff {
     transition: background-color 0.5s;
     margin: 0 -24px;
@@ -310,15 +329,17 @@ div[class*='language-'] pre {
   }
 }
 
+// notation focused lines
+//
+// - `// [\!code focus]`
+// - `// [\!code focus:3]`
 div[class*='language-'] {
-  .has-focused-lines {
-    .line:not(.has-focus) {
-      filter: blur(0.095rem);
-      opacity: 0.7;
-      transition:
-        filter 0.35s,
-        opacity 0.35s;
-    }
+  .has-focused-lines .line:not(.has-focus) {
+    filter: blur(0.095rem);
+    opacity: 0.7;
+    transition:
+      filter 0.35s,
+      opacity 0.35s;
   }
 
   &:hover .has-focused-lines .line:not(.has-focus) {

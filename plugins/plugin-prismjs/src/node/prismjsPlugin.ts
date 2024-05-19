@@ -2,7 +2,6 @@ import type { Plugin } from 'vuepress/core'
 import { loadLanguages } from './loadLanguages.js'
 import {
   highlightPlugin,
-  inlineCodePlugin,
   lineNumbersPlugin,
   preWrapperPlugin,
 } from './markdown/index.js'
@@ -40,7 +39,6 @@ export const prismjsPlugin = ({
       return highlighter?.(code) || ''
     }
 
-    md.use(inlineCodePlugin, options.vPre?.inline)
     md.use(highlightPlugin, options)
     md.use(preWrapperPlugin, options)
     if (options.preWrapper ?? true) {

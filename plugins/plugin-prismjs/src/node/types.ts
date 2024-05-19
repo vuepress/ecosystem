@@ -26,23 +26,6 @@ export interface PreWrapperOptions {
   highlightLines?: boolean
 
   /**
-   * Add `v-pre` directive or not
-   *
-   * @default { block: true, inline: true }
-   */
-  vPre?: {
-    /**
-     * Add `v-pre` directive to `<pre>` tag of code block or not
-     */
-    block?: boolean
-
-    /**
-     * Add `v-pre` directive to `<code>` tag of inline code or not
-     */
-    inline?: boolean
-  }
-
-  /**
    * Enable notation diff
    *
    * @default false

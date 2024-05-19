@@ -3,7 +3,6 @@ import { isPlainObject } from 'vuepress/shared'
 import { highlight } from './highlight.js'
 import {
   highlightLinesPlugin,
-  inlineCodePlugin,
   lineNumberPlugin,
   preWrapperPlugin,
 } from './markdown/index.js'
@@ -20,7 +19,6 @@ export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => ({
       ...options,
     })
 
-    md.use(inlineCodePlugin, options.vPre?.inline ?? true)
     md.use(highlightLinesPlugin)
     md.use(preWrapperPlugin, options)
     if (options.preWrapper ?? true) {

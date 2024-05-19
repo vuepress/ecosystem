@@ -15,13 +15,7 @@ import {
 } from 'shiki'
 import { colors, logger } from 'vuepress/utils'
 import type { ShikiPluginOptions } from './types.js'
-import {
-  attrsToLines,
-  NO_V_PRE_RE,
-  resolveLanguage,
-  V_PRE_RE,
-  vueRE,
-} from './utils.js'
+import { attrsToLines, resolveLanguage } from './utils.js'
 
 const DEFAULT_LANGS = Object.keys(bundledLanguages)
 
@@ -91,17 +85,9 @@ export const highlight = async ({
       },
     ] as ShikiTransformer[]),
   )
-  const vPrevBlock = options.vPre?.block ?? true
 
   return (str, language, attrs) => {
     let lang = resolveLanguage(language)
-    let vPre = false
-    if (
-      (vPrevBlock && !NO_V_PRE_RE.test(language)) ||
-      (!vPrevBlock && V_PRE_RE.test(language))
-    ) {
-      vPre = !vueRE.test(lang)
-    }
 
     if (lang) {
       const langLoaded = highlighter.getLoadedLanguages().includes(lang as any)
@@ -116,14 +102,6 @@ export const highlight = async ({
     }
 
     const codeTransformers: ShikiTransformer[] = [
-      {
-        name: 'vuepress:v-pre',
-        pre(node) {
-          if (vPre) {
-            node.properties['v-pre'] = ''
-          }
-        },
-      },
       {
         name: 'vuepress:empty-line',
         code(hast) {
@@ -154,7 +132,6 @@ export const highlight = async ({
     const mustaches = new Map<string, string>()
 
     const removeMustache = (s: string): string => {
-      if (vPre) return s
       return s.replace(mustacheRE, (match) => {
         let marker = mustaches.get(match)
         if (!marker) {

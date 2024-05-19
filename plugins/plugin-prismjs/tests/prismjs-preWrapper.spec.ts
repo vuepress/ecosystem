@@ -3,7 +3,6 @@ import { describe, expect, it, vi } from 'vitest'
 import type { PrismjsPluginOptions } from '../src/node/index.js'
 import {
   highlightPlugin,
-  inlineCodePlugin,
   lineNumbersPlugin,
   preWrapperPlugin,
 } from '../src/node/index.js'
@@ -18,8 +17,6 @@ const createMarkdown = (options: PrismjsPluginOptions = {}): MarkdownIt => {
     const highlighter = resolveHighlighter(lang)
     return highlighter?.(code) || ''
   }
-
-  md.use(inlineCodePlugin, options.vPre?.inline)
   md.use(highlightPlugin, options)
   md.use(preWrapperPlugin, options)
   if (options.preWrapper ?? true) {
@@ -99,39 +96,6 @@ ${codeFence}{{ inlineCode }}${codeFence}
     it('should disable `preWrapper`', () => {
       const md = createMarkdown({
         preWrapper: false,
-      })
-
-      expect(md.render(source)).toMatchSnapshot()
-    })
-
-    it('should disable `vPre.block`', () => {
-      const md = createMarkdown({
-        vPre: {
-          block: false,
-          inline: true,
-        },
-      })
-
-      expect(md.render(source)).toMatchSnapshot()
-    })
-
-    it('should disable `vPre.inline`', () => {
-      const md = createMarkdown({
-        vPre: {
-          block: true,
-          inline: false,
-        },
-      })
-
-      expect(md.render(source)).toMatchSnapshot()
-    })
-
-    it('should disable `vPre.inline` and `vPre.block`', () => {
-      const md = createMarkdown({
-        vPre: {
-          block: false,
-          inline: false,
-        },
       })
 
       expect(md.render(source)).toMatchSnapshot()
@@ -235,90 +199,6 @@ ${codeFence}
     it('should work properly if `lineNumbers` is set to a number by default', () => {
       const md = createMarkdown({
         lineNumbers: 4,
-      })
-
-      expect(md.render(source)).toMatchSnapshot()
-    })
-  })
-
-  describe(':v-pre / :no-v-pre', () => {
-    const source = `\
-${codeFence}
-Raw text
-${codeFence}
-
-${codeFence}:v-pre
-Raw text
-${codeFence}
-
-${codeFence}:no-v-pre
-Raw text
-${codeFence}
-
-${codeFence}ts
-const foo = 'foo'
-
-function bar () {
-  return 1024
-}
-${codeFence}
-
-${codeFence}ts:v-pre
-const foo = 'foo'
-
-function bar () {
-  return 1024
-}
-${codeFence}
-
-${codeFence}ts:no-v-pre
-const foo = 'foo'
-
-function bar () {
-  return 1024
-}
-${codeFence}
-
-${codeFence}ts{1,2}
-const foo = 'foo'
-
-function bar () {
-  return 1024
-}
-${codeFence}
-
-${codeFence}ts{1,2}:v-pre
-const foo = 'foo'
-
-function bar () {
-  return 1024
-}
-${codeFence}
-
-${codeFence}ts{1,2}:no-v-pre
-const foo = 'foo'
-
-function bar () {
-  return 1024
-}
-${codeFence}
-`
-
-    it('should work properly if `vPre.block` is enabled by default', () => {
-      const md = createMarkdown({
-        vPre: {
-          block: true,
-        },
-      })
-
-      expect(md.render(source)).toMatchSnapshot()
-    })
-
-    it('should work properly if `vPre.block` is disabled by default', () => {
-      const md = createMarkdown({
-        vPre: {
-          block: false,
-        },
       })
 
       expect(md.render(source)).toMatchSnapshot()

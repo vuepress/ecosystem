@@ -57,9 +57,7 @@ export interface ShikiPluginOptions {
   }
 
   /**
-   * Setup Shiki instance
-   *
-   * Custom shiki setup function. You can customize the shiki instance by adding your own shikiSetup function in your config.
+   * Function to customize Shiki highlighter instance.
    */
   shikiSetup?: (shiki: Highlighter) => void | Promise<void>
 
@@ -92,24 +90,6 @@ export interface ShikiPluginOptions {
    * - Required for title display of default theme
    */
   preWrapper?: boolean
-
-  /**
-   * Add `v-pre` directive or not
-   *
-   * @default { block: true, inline: true }
-   */
-  vPre?: {
-    /**
-     *
-     * Add `v-pre` directive to `<pre>` tag of code block or not
-     */
-    block?: boolean
-
-    /**
-     * Add `v-pre` directive to `<code>` tag of inline code or not
-     */
-    inline?: boolean
-  }
 
   /**
    * Enable notation diff transformer
