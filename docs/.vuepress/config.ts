@@ -73,6 +73,18 @@ export default defineUserConfig({
 
   extendsMarkdown: (md) => {
     md.use(footnote)
+
+    const fence = md.renderer.rules.fence!
+    md.renderer.rules.fence = (...args) => {
+      const result = fence(...args)
+      return result.replace('<pre', '<pre v-pre ')
+    }
+
+    const inlineCode = md.renderer.rules.code_inline!
+    md.renderer.rules.code_inline = (...args) => {
+      const result = inlineCode(...args)
+      return `<code v-pre${result.slice('<code'.length)}`
+    }
   },
 
   // configure default theme
