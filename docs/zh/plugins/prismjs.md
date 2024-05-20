@@ -184,7 +184,16 @@ export default defineUserConfig({
 
   是否启用 Notation Diff
 
-  参考： [Shiki > Notation Diff](https://shiki.style/packages/transformers#transformernotationdiff)
+- 示例：
+
+  ```ts
+  console.log('hewwo') // [!code --]
+  console.log('hello') // [!code ++]
+  console.log('goodbye')
+  ```
+
+- 参考：
+  - [Shiki > Notation Diff](https://shiki.style/packages/transformers#transformernotationdiff)
 
 ### notationFocus
 
@@ -196,7 +205,16 @@ export default defineUserConfig({
 
   是否启用 Notation Focus.
 
-  参考： [Shiki > Notation Focus](https://shiki.style/packages/transformers#transformernotationfocus)
+- 示例：
+
+  ```ts
+  console.log('Not focused')
+  console.log('Focused') // [!code focus]
+  console.log('Not focused')
+  ```
+
+- 参考：
+  - [Shiki > Notation Focus](https://shiki.style/packages/transformers#transformernotationfocus)
 
 ### notationHighlight
 
@@ -208,7 +226,16 @@ export default defineUserConfig({
 
   是否启用 Notation Highlight.
 
-  参考： [Shiki > Notation Highlight](https://shiki.style/packages/transformers#transformernotationhighlight)
+- 示例：
+
+  ```ts
+  console.log('Not highlighted')
+  console.log('Highlighted') // [!code highlight]
+  console.log('Not highlighted')
+  ```
+
+- 参考：
+  - [Shiki > Notation Highlight](https://shiki.style/packages/transformers#transformernotationhighlight)
 
 ### notationErrorLevel
 
@@ -220,4 +247,13 @@ export default defineUserConfig({
 
   是否启用 Notation Error Level.
 
-  参考： [Shiki > Notation Error Level](https://shiki.style/packages/transformers#transformernotationerrorlevel)
+- 示例：
+
+  ```ts
+  console.log('No errors or warnings')
+  console.warn('Warning') // [!code warning]
+  console.error('Error') // [!code error]
+  ```
+
+- 参考：
+  - [Shiki > Notation Error Level](https://shiki.style/packages/transformers#transformernotationerrorlevel)

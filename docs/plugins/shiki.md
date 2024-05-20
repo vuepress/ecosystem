@@ -263,7 +263,16 @@ The following features requires additional style to work, which should be handle
 
   Whether enable notation diff
 
-  Also see: [Shiki > Notation Diff](https://shiki.style/packages/transformers#transformernotationdiff)
+- Example:
+
+  ```ts
+  console.log('hewwo') // [!code --]
+  console.log('hello') // [!code ++]
+  console.log('goodbye')
+  ```
+
+- Also see:
+  - [Shiki > Notation Diff](https://shiki.style/packages/transformers#transformernotationdiff)
 
 ### notationFocus
 
@@ -275,7 +284,16 @@ The following features requires additional style to work, which should be handle
 
   Whether enable notation focus.
 
-  Also see: [Shiki > Notation Focus](https://shiki.style/packages/transformers#transformernotationfocus)
+- Example:
+
+  ```ts
+  console.log('Not focused')
+  console.log('Focused') // [!code focus]
+  console.log('Not focused')
+  ```
+
+- Also see:
+  - [Shiki > Notation Focus](https://shiki.style/packages/transformers#transformernotationfocus)
 
 ### notationHighlight
 
@@ -287,7 +305,16 @@ The following features requires additional style to work, which should be handle
 
   Whether enable notation highlight.
 
-  Also see: [Shiki > Notation Highlight](https://shiki.style/packages/transformers#transformernotationhighlight)
+- Example:
+
+  ```ts
+  console.log('Not highlighted')
+  console.log('Highlighted') // [!code highlight]
+  console.log('Not highlighted')
+  ```
+
+- Also see:
+  - [Shiki > Notation Highlight](https://shiki.style/packages/transformers#transformernotationhighlight)
 
 ### notationErrorLevel
 
@@ -299,4 +326,13 @@ The following features requires additional style to work, which should be handle
 
   Whether enable notation error level.
 
-  Also see: [Shiki > Notation Error Level](https://shiki.style/packages/transformers#transformernotationerrorlevel)
+- Example:
+
+  ```ts
+  console.log('No errors or warnings')
+  console.warn('Warning') // [!code warning]
+  console.error('Error') // [!code error]
+  ```
+
+- Also see:
+  - [Shiki > Notation Error Level](https://shiki.style/packages/transformers#transformernotationerrorlevel)
