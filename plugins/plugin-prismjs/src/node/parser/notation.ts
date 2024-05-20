@@ -15,9 +15,14 @@
  * - `// [!code ++:3]`
  * - ...more
  */
+import { escapeRegExp } from '../utils/index.js'
 import type { NodeOpen, Parser } from './parse.js'
 
-const commentEmptyTag = /<span class="token comment">\s*?<\/span>/
+const COMMENT_EMPTY_TAG = /<span class="token comment">\s*?<\/span>/
+
+const toArray = <T>(value: T | T[]): T[] =>
+  Array.isArray(value) ? value : [value]
+
 export interface NotationOption {
   classMap: Record<string, string | string[]>
   classPre?: string
@@ -57,21 +62,13 @@ export const notationBase = (parser: Parser, options: NotationOption): void => {
     })
     if (
       replaced &&
-      !(node.content = node.content.replace(commentEmptyTag, '')).trim()
+      !(node.content = node.content.replace(COMMENT_EMPTY_TAG, '')).trim()
     ) {
       nodeRemove.push(node)
     }
   })
   for (const node of nodeRemove)
     parser.lines.splice(parser.lines.indexOf(node), 1)
-}
-
-function escapeRegExp(str: string): string {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-}
-
-function toArray<T>(value: T | T[]): T[] {
-  return Array.isArray(value) ? value : [value]
 }
 
 /**

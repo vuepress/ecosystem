@@ -42,9 +42,11 @@ export interface Parser {
 const splitLines = (code: string): string[] => {
   const parts = code.split(SPLIT_RE)
   const lines: string[] = []
+
   for (let i = 0; i < parts.length; i += 2) {
     lines.push(parts[i])
   }
+
   return lines
 }
 
@@ -54,6 +56,7 @@ const createNodeOpen = (
   classes: string[] = [],
 ): NodeOpen => {
   const match = html.match(CLASS_RE)
+
   if (!match) {
     const hashHtml = html.length > 1
     return {
