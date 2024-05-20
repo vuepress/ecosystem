@@ -33,7 +33,9 @@ export const highlightPlugin = (
     const language = resolveLanguage(info)
     const languageClass = `${langPrefix}${language.name}`
 
-    const code = rawFence(...args).replace(/<code[^]*?>/, '<code>')
+    const code = rawFence(...args)
+      // remove the default `language-${ext}` class
+      .replace(/<code[^]*?>/, '<code>')
 
     const parser = parse(code)
 
