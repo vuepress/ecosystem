@@ -8,7 +8,7 @@ import {
   notationFocus,
   notationHighlight,
 } from '../parser/index.js'
-import type { PreWrapperOptions } from '../types.js'
+import type { HighlightOptions } from '../types.js'
 import { resolveLanguage } from '../utils/index.js'
 
 export const highlightPlugin = (
@@ -19,7 +19,7 @@ export const highlightPlugin = (
     notationErrorLevel: enabledErrorLevel,
     notationFocus: enabledFocus,
     notationHighlight: enabledHighlight,
-  }: PreWrapperOptions = {},
+  }: HighlightOptions = {},
 ): void => {
   const rawFence = md.renderer.rules.fence!
 

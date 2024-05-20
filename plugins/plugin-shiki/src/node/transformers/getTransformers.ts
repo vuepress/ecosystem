@@ -5,7 +5,7 @@ import {
   transformerNotationHighlight,
 } from '@shikijs/transformers'
 import type { ShikiTransformer } from 'shiki'
-import type { ShikiPluginOptions } from '../types.js'
+import type { ShikiHighlightOptions } from '../types.js'
 import {
   addClassTransformer,
   emptyLineTransformer,
@@ -13,7 +13,7 @@ import {
 } from './vuepressTransformers.js'
 
 export const getTransformers = (
-  options: ShikiPluginOptions,
+  options: ShikiHighlightOptions,
 ): ShikiTransformer[] => {
   const transformers: ShikiTransformer[] = []
 
