@@ -10,10 +10,10 @@ export const lineNumberPlugin = (
   md: Markdown,
   enable: boolean | number = true,
 ): void => {
-  const fence = md.renderer.rules.fence!
+  const rawFence = md.renderer.rules.fence!
 
   md.renderer.rules.fence = (...args) => {
-    const rawCode = fence(...args)
+    const rawCode = rawFence(...args)
 
     const [tokens, idx] = args
     const info = tokens[idx].info

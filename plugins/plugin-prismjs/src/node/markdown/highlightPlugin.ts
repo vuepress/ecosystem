@@ -21,7 +21,7 @@ export const highlightPlugin = (
     notationHighlight: enabledHighlight,
   }: PreWrapperOptions = {},
 ): void => {
-  const fence = md.renderer.rules.fence!
+  const rawFence = md.renderer.rules.fence!
 
   md.renderer.rules.fence = (...args) => {
     const [tokens, idx, { langPrefix }] = args
@@ -33,7 +33,7 @@ export const highlightPlugin = (
     const language = resolveLanguage(info)
     const languageClass = `${langPrefix}${language.name}`
 
-    const code = fence(...args).replace(/<code[^]*?>/, '<code>')
+    const code = rawFence(...args).replace(/<code[^]*?>/, '<code>')
 
     const parser = parse(code)
 

@@ -8,7 +8,8 @@ export const preWrapperPlugin = (
   md: Markdown,
   { preWrapper = true }: ShikiPluginOptions = {},
 ): void => {
-  const fence = md.renderer.rules.fence!
+  const rawFence = md.renderer.rules.fence!
+
   md.renderer.rules.fence = (...args) => {
     const [tokens, idx, options] = args
     const token = tokens[idx]
@@ -20,7 +21,7 @@ export const preWrapperPlugin = (
     const title = resolveAttr(info, 'title') || lang
     const languageClass = `${options.langPrefix}${lang}`
 
-    let result = fence(...args)
+    let result = rawFence(...args)
 
     if (!preWrapper) {
       // remove `<code>` attributes

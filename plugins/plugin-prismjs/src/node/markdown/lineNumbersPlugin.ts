@@ -6,14 +6,14 @@ export const lineNumbersPlugin = (
   md: Markdown,
   lineNumbers: PreWrapperOptions['lineNumbers'] = true,
 ): void => {
-  const fence = md.renderer.rules.fence!
+  const rawFence = md.renderer.rules.fence!
 
   md.renderer.rules.fence = (...args) => {
     const [tokens, idx] = args
     const token = tokens[idx]
     // get token info
     const info = token.info ? md.utils.unescapeAll(token.info).trim() : ''
-    const rawCode = fence(...args)
+    const rawCode = rawFence(...args)
 
     const code = rawCode.slice(
       rawCode.indexOf('<code>'),

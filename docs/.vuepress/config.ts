@@ -74,15 +74,17 @@ export default defineUserConfig({
   extendsMarkdown: (md) => {
     md.use(footnote)
 
-    const fence = md.renderer.rules.fence!
+    // FIXME: Should be removed with next vuepress version
+    const rawFence = md.renderer.rules.fence!
+    const rawCodeInline = md.renderer.rules.code_inline!
+
     md.renderer.rules.fence = (...args) => {
-      const result = fence(...args)
+      const result = rawFence(...args)
       return result.replace('<pre', '<pre v-pre ')
     }
 
-    const inlineCode = md.renderer.rules.code_inline!
     md.renderer.rules.code_inline = (...args) => {
-      const result = inlineCode(...args)
+      const result = rawCodeInline(...args)
       return `<code v-pre${result.slice('<code'.length)}`
     }
   },
