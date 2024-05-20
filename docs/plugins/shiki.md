@@ -5,9 +5,9 @@
 This plugin will enable syntax highlighting for markdown code fence with [Shiki](https://shiki.style/).
 
 ::: tip
-[Shiki](https://shiki.matsu.io/) is the syntax highlighter being used by VSCode. It has higher fidelity, but it could be slower than [Prism.js](https://prismjs.com/), especially when you have a lot of code blocks.
 
-You could consider disabling this plugin in `dev` mode to get better development experience.
+[Shiki](https://shiki.style/) is the syntax highlighter being used by VSCode. It has higher fidelity, but it could be slower than [Prism.js](https://prismjs.com/), especially when you have a lot of code blocks.
+
 :::
 
 ## Usage
