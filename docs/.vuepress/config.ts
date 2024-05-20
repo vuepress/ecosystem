@@ -50,9 +50,7 @@ export default defineUserConfig({
 
   // configure markdown
   markdown: {
-    code: {
-      lineNumbers: 10,
-    },
+    code: false,
     importCode: {
       handleImportPath: (importPath) => {
         // handle @vuepress packages import path
@@ -75,6 +73,20 @@ export default defineUserConfig({
 
   extendsMarkdown: (md) => {
     md.use(footnote)
+
+    // FIXME: Should be removed with next vuepress version
+    const rawFence = md.renderer.rules.fence!
+    const rawCodeInline = md.renderer.rules.code_inline!
+
+    md.renderer.rules.fence = (...args) => {
+      const result = rawFence(...args)
+      return result.replace('<pre', '<pre v-pre ')
+    }
+
+    md.renderer.rules.code_inline = (...args) => {
+      const result = rawCodeInline(...args)
+      return `<code v-pre${result.slice('<code'.length)}`
+    }
   },
 
   // configure default theme
@@ -109,6 +121,11 @@ export default defineUserConfig({
       ? shikiPlugin({
           langs: ['bash', 'diff', 'json', 'md', 'ts', 'vue'],
           theme: 'dark-plus',
+          lineNumbers: 10,
+          notationDiff: true,
+          notationErrorLevel: true,
+          notationFocus: true,
+          notationHighlight: true,
         })
       : [],
   ],

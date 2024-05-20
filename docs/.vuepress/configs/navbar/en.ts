@@ -41,6 +41,8 @@ export const navbarEn: NavbarConfig = [
           '/plugins/markdown-image',
           '/plugins/markdown-math',
           '/plugins/links-check',
+          '/plugins/prismjs',
+          '/plugins/shiki',
         ],
       },
       {
@@ -65,10 +67,6 @@ export const navbarEn: NavbarConfig = [
           '/plugins/sitemap/',
           '/plugins/umami-analytics',
         ],
-      },
-      {
-        text: 'Syntax Highlighting',
-        children: ['/plugins/prismjs', '/plugins/shiki'],
       },
       {
         text: 'Theme Development',

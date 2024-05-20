@@ -38,7 +38,9 @@
     "prismjs": "^1.29.0"
   },
   "devDependencies": {
-    "@types/prismjs": "^1.26.4"
+    "@types/markdown-it": "^14.1.1",
+    "@types/prismjs": "^1.26.4",
+    "markdown-it": "^14.1.0"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.11"
