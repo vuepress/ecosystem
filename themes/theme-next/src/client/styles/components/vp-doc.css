@@ -318,6 +318,7 @@
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
+  background-color: transparent !important;
 }
 
 .vp-doc [class*='language-'] pre {
