@@ -37,11 +37,21 @@ export const highlightPlugin = (
 
     const parser = parse(code)
 
-    enabledHighlightLines && highlightLines(parser, resolveHighlightLines(info))
-    enabledDiff && notationDiff(parser)
-    enabledErrorLevel && notationErrorLevel(parser)
-    enabledFocus && notationFocus(parser)
-    enabledHighlight && notationHighlight(parser)
+    if (enabledHighlightLines) {
+      highlightLines(parser, resolveHighlightLines(info))
+    }
+    if (enabledDiff) {
+      notationDiff(parser)
+    }
+    if (enabledErrorLevel) {
+      notationErrorLevel(parser)
+    }
+    if (enabledFocus) {
+      notationFocus(parser)
+    }
+    if (enabledHighlight) {
+      notationHighlight(parser)
+    }
 
     parser.pre.class.push(languageClass)
 
