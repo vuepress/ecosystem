@@ -24,7 +24,7 @@ const mustacheRE = /\{\{.*?\}\}/g
 
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz', 10)
 
-export const highlight = async ({
+export const resolveHighlight = async ({
   langs = DEFAULT_LANGS,
   theme = 'nord',
   themes,

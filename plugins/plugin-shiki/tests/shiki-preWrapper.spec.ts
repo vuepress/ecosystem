@@ -1,18 +1,18 @@
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
-import { highlight } from '../src/node/highlight.js'
 import {
   highlightLinesPlugin,
   lineNumberPlugin,
   preWrapperPlugin,
 } from '../src/node/markdown/index.js'
+import { resolveHighlight } from '../src/node/resolveHighlight.js'
 import type { ShikiPluginOptions } from '../src/node/types.js'
 
 const createMarkdown = async (
   options: ShikiPluginOptions = {},
 ): Promise<MarkdownIt> => {
   const md = MarkdownIt()
-  md.options.highlight = await highlight(options)
+  md.options.highlight = await resolveHighlight(options)
   md.use(highlightLinesPlugin)
   md.use(preWrapperPlugin, options)
   if (options.preWrapper ?? true) {

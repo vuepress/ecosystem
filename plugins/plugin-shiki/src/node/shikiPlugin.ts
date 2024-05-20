@@ -1,11 +1,11 @@
 import type { Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
-import { highlight } from './highlight.js'
 import {
   highlightLinesPlugin,
   lineNumberPlugin,
   preWrapperPlugin,
 } from './markdown/index.js'
+import { resolveHighlight } from './resolveHighlight.js'
 import type { ShikiPluginOptions } from './types.js'
 
 export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => ({
@@ -14,7 +14,7 @@ export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => ({
   extendsMarkdown: async (md, app) => {
     const { code } = app.options.markdown
 
-    md.options.highlight = await highlight({
+    md.options.highlight = await resolveHighlight({
       ...(isPlainObject(code) ? code : {}),
       ...options,
     })
