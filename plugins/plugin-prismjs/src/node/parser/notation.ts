@@ -16,7 +16,7 @@
  * - ...more
  */
 import { escapeRegExp } from '../utils/index.js'
-import type { NodeOpen, CodeParser } from './parse.js'
+import type { NodeOpen, CodeParser } from './getCodeParser.js'
 
 const COMMENT_EMPTY_TAG = /<span class="token comment">\s*?<\/span>/
 

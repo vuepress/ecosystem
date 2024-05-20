@@ -59,6 +59,7 @@ const createNodeOpen = (
 
   if (!match) {
     const hashHtml = html.length > 1
+
     return {
       before: hashHtml ? html.slice(0, -1) : '',
       class: [...classes],
@@ -66,6 +67,7 @@ const createNodeOpen = (
       content,
     }
   }
+
   return {
     before: html.slice(0, match.index!),
     class: [...classes, ...match[1].split(' ')],
@@ -83,7 +85,7 @@ const nodeOpenStringify = (node: NodeOpen): string => {
   return `${before}${classes && before ? ` class="${classes}"` : ''}${after}${content}`
 }
 
-export const parse = (html: string): CodeParser => {
+export const getCodeParser = (html: string): CodeParser => {
   const pre = html.match(PRE_RE)?.[1] || ''
   html = html.slice(pre.length)
   const code = html.match(CODE_RE)?.[1] || ''

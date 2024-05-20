@@ -1,4 +1,4 @@
-import type { CodeParser } from './parse'
+import type { CodeParser } from './getCodeParser'
 
 export type HighlightLinesRange = [start: number, end: number]
 

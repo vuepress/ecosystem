@@ -6,7 +6,7 @@ import {
   notationErrorLevel,
   notationFocus,
   notationHighlight,
-  parse,
+  getCodeParser,
 } from '../parser/index.js'
 import type { PreWrapperOptions } from '../types.js'
 import { resolveLanguage } from '../utils/index.js'
@@ -37,7 +37,7 @@ export const highlightPlugin = (
       // remove the default `language-${ext}` class
       .replace(/<code[^]*?>/, '<code>')
 
-    const parser = parse(code)
+    const parser = getCodeParser(code)
 
     if (highlightLines) {
       highlightCodeLines(parser, getHighlightLinesRange(info))

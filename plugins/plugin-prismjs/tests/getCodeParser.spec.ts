@@ -6,7 +6,7 @@ import {
   notationErrorLevel,
   notationFocus,
   notationHighlight,
-  parse,
+  getCodeParser,
 } from '../src/node/index.js'
 
 const genCode = (code: string) => `<pre><code>${code}</code></pre>`
@@ -17,18 +17,18 @@ describe('@vuepress/plugin-prismjs > parser', () => {
 const b = 2
 const c = 3
 `)
-    const parser = parse(code)
+    const parser = getCodeParser(code)
+
     expect(parser.lines.length).toBe(4)
     expect(parser.pre.before).toContain('<pre')
     expect(parser.lines.every((line) => line.class.includes('line'))).toBe(true)
-
     expect(parser.stringify()).toMatchSnapshot()
   })
 
   it('parse <pre xxxx>', () => {
     const code = `<pre class="test"><code>highlight code</code></pre>`
 
-    const parser = parse(code)
+    const parser = getCodeParser(code)
 
     expect(parser.pre.class.includes('test')).toBe(true)
   })
@@ -37,7 +37,7 @@ const c = 3
     const code = genCode(`  const a = 1
   const b = 2
   console.log(a + b)`)
-    const parser = parse(code)
+    const parser = getCodeParser(code)
 
     parser.line((node) => node.class.push('highlighted'))
 
@@ -54,7 +54,7 @@ function add(a, b) {
   return a + b
 }
 `)
-    const parser = parse(code)
+    const parser = getCodeParser(code)
 
     highlightCodeLines(parser, getHighlightLinesRange('{1,3,6-8}'))
 
@@ -77,7 +77,7 @@ function add(a, b) {
   return a + b
 }
 `)
-    const parser = parse(code)
+    const parser = getCodeParser(code)
     notationHighlight(parser)
 
     const result = parser.stringify()
@@ -103,7 +103,7 @@ function add(a, b) {
   return a + b
 }
 `)
-    const parser = parse(code)
+    const parser = getCodeParser(code)
     notationHighlight(parser)
 
     const result = parser.stringify()
@@ -129,7 +129,7 @@ function add(a, b) { // [!code ++]
   return a + b
 }
 `)
-    const parser = parse(code)
+    const parser = getCodeParser(code)
     notationDiff(parser)
 
     const result = parser.stringify()
@@ -154,7 +154,7 @@ function add(a, b) {
   return a + b
 }
 `)
-    const parser = parse(code)
+    const parser = getCodeParser(code)
     notationDiff(parser)
 
     const result = parser.stringify()
@@ -178,7 +178,7 @@ function add(a, b) { // [!code focus]
   return a + b
 }
 `)
-    const parser = parse(code)
+    const parser = getCodeParser(code)
     notationFocus(parser)
 
     const result = parser.stringify()
@@ -201,7 +201,7 @@ function add(a, b) {
   return a + b
 }
 `)
-    const parser = parse(code)
+    const parser = getCodeParser(code)
     notationFocus(parser)
 
     const result = parser.stringify()
@@ -227,7 +227,7 @@ function add(a, b) { // [!code warning]
   return a + b
 }
 `)
-    const parser = parse(code)
+    const parser = getCodeParser(code)
     notationErrorLevel(parser)
 
     const result = parser.stringify()
@@ -252,7 +252,7 @@ function add(a, b) {
   return a + b
 }
 `)
-    const parser = parse(code)
+    const parser = getCodeParser(code)
     notationErrorLevel(parser)
 
     const result = parser.stringify()
@@ -269,7 +269,7 @@ function add(a, b) {
   it('should not remove // [\\!code xxx]', () => {
     const code = genCode(`const a = 1 // [\\!code focus]`)
 
-    const parser = parse(code)
+    const parser = getCodeParser(code)
 
     const result = parser.stringify()
 
@@ -283,7 +283,7 @@ function add(a, b) {
 // [!code focus:2]
 const b = 2`)
 
-    const parser = parse(code)
+    const parser = getCodeParser(code)
     notationFocus(parser)
 
     const result = parser.stringify()
