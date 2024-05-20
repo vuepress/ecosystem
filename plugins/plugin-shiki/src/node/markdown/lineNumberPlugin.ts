@@ -2,13 +2,14 @@
 // It depends on preWrapper plugin.
 
 import type { Markdown } from 'vuepress/markdown'
+import type { LineNumberOptions } from '../types.js'
 
 const LINE_NUMBERS_REGEXP = /:line-numbers\b/
 const NO_LINE_NUMBERS_REGEXP = /:no-line-numbers\b/
 
 export const lineNumberPlugin = (
   md: Markdown,
-  enable: boolean | number = true,
+  { lineNumbers = true }: LineNumberOptions = {},
 ): void => {
   const rawFence = md.renderer.rules.fence!
 
@@ -20,7 +21,10 @@ export const lineNumberPlugin = (
     const enableLineNumbers = LINE_NUMBERS_REGEXP.test(info)
     const disableLineNumbers = NO_LINE_NUMBERS_REGEXP.test(info)
 
-    if ((!enable && !enableLineNumbers) || (enable && disableLineNumbers)) {
+    if (
+      (!lineNumbers && !enableLineNumbers) ||
+      (lineNumbers && disableLineNumbers)
+    ) {
       return rawCode
     }
 
@@ -32,8 +36,8 @@ export const lineNumberPlugin = (
     const lines = code.split('\n')
 
     if (
-      typeof enable === 'number' &&
-      lines.length < enable &&
+      typeof lineNumbers === 'number' &&
+      lines.length < lineNumbers &&
       !enableLineNumbers
     ) {
       return rawCode

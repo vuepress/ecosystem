@@ -6,9 +6,24 @@ import {
   preWrapperPlugin,
 } from './markdown/index.js'
 import { resolveHighlight } from './resolveHighlight.js'
-import type { ShikiPluginOptions } from './types.js'
+import type {
+  LineNumberOptions,
+  PreWrapperOptions,
+  ShikiHighlightOptions,
+} from './types.js'
 
-export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => ({
+/**
+ * Options of @vuepress/plugin-shiki
+ */
+export type ShikiPluginOptions = ShikiHighlightOptions &
+  PreWrapperOptions &
+  LineNumberOptions
+
+export const shikiPlugin = ({
+  preWrapper = true,
+  lineNumbers = true,
+  ...options
+}: ShikiPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-shiki',
 
   extendsMarkdown: async (md, app) => {
@@ -20,9 +35,9 @@ export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => ({
     })
 
     md.use(highlightLinesPlugin)
-    md.use(preWrapperPlugin, options)
-    if (options.preWrapper ?? true) {
-      md.use(lineNumberPlugin, options.lineNumbers)
+    md.use<PreWrapperOptions>(preWrapperPlugin, { preWrapper })
+    if (preWrapper) {
+      md.use<LineNumberOptions>(lineNumberPlugin, { lineNumbers })
     }
   },
 })
