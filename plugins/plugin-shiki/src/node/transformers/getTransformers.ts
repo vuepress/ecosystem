@@ -8,7 +8,6 @@ import type { ShikiTransformer } from 'shiki'
 import type { ShikiPluginOptions } from '../types.js'
 import {
   addClassTransformer,
-  cleanUpTransformer,
   emptyLineTransformer,
   removeEscapeTransformer,
 } from './vuepressTransformers.js'
@@ -41,7 +40,6 @@ export const getTransformers = (
 
   transformers.push(
     addClassTransformer,
-    cleanUpTransformer,
     removeEscapeTransformer,
     emptyLineTransformer,
   )

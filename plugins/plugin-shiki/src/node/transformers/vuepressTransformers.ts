@@ -9,14 +9,6 @@ export const addClassTransformer: ShikiTransformer = {
   },
 }
 
-export const cleanUpTransformer: ShikiTransformer = {
-  name: 'vuepress:clean-up',
-  pre(node) {
-    delete node.properties.tabindex
-    delete node.properties.style
-  },
-}
-
 export const removeEscapeTransformer: ShikiTransformer = {
   name: 'vuepress:remove-escape',
   postprocess(code) {
