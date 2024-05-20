@@ -26,6 +26,8 @@ export const sidebarZh: SidebarConfig = {
         '/zh/plugins/markdown-image',
         '/zh/plugins/markdown-math',
         '/zh/plugins/links-check',
+        '/zh/plugins/prismjs',
+        '/zh/plugins/shiki',
       ],
     },
     {
@@ -98,10 +100,6 @@ export const sidebarZh: SidebarConfig = {
         '/zh/plugins/google-tag-manager',
         '/zh/plugins/umami-analytics',
       ],
-    },
-    {
-      text: '语法高亮',
-      children: ['/zh/plugins/prismjs', '/zh/plugins/shiki'],
     },
     {
       text: '主题开发',
