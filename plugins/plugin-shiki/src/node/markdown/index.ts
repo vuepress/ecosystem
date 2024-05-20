@@ -1,3 +1,3 @@
-export * from './highlightLines.js'
-export * from './lineNumbers.js'
-export * from './preWrapper.js'
+export * from './highlightLinesPlugin.js'
+export * from './lineNumberPlugin.js'
+export * from './preWrapperPlugin.js'
