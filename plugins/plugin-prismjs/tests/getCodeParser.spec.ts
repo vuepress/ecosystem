@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import {
+  getCodeParser,
   getHighlightLinesRange,
   highlightCodeLines,
   notationDiff,
   notationErrorLevel,
   notationFocus,
   notationHighlight,
-  getCodeParser,
 } from '../src/node/index.js'
 
 const genCode = (code: string) => `<pre><code>${code}</code></pre>`
@@ -21,7 +21,9 @@ const c = 3
 
     expect(parser.lines.length).toBe(4)
     expect(parser.pre.before).toContain('<pre')
-    expect(parser.lines.every((line) => line.class.includes('line'))).toBe(true)
+    expect(parser.lines.every((line) => line.classList.includes('line'))).toBe(
+      true,
+    )
     expect(parser.stringify()).toMatchSnapshot()
   })
 
@@ -30,7 +32,7 @@ const c = 3
 
     const parser = getCodeParser(code)
 
-    expect(parser.pre.class.includes('test')).toBe(true)
+    expect(parser.pre.classList.includes('test')).toBe(true)
   })
 
   it('normal parse line node add class', () => {
@@ -39,7 +41,7 @@ const c = 3
   console.log(a + b)`)
     const parser = getCodeParser(code)
 
-    parser.line((node) => node.class.push('highlighted'))
+    parser.line((node) => node.classList.push('highlighted'))
 
     expect(parser.stringify()).toMatchSnapshot()
   })
@@ -60,9 +62,9 @@ function add(a, b) {
 
     const result = parser.stringify()
 
-    expect(parser.lines[0].class.includes('highlighted')).toBe(true) // line 1
-    expect(parser.lines[6].class.includes('highlighted')).toBe(true) // line 7
-    expect(parser.lines[4].class.includes('highlighted')).toBe(false) // line 4
+    expect(parser.lines[0].classList.includes('highlighted')).toBe(true) // line 1
+    expect(parser.lines[6].classList.includes('highlighted')).toBe(true) // line 7
+    expect(parser.lines[4].classList.includes('highlighted')).toBe(false) // line 4
 
     expect(result).toMatchSnapshot()
   })
@@ -82,13 +84,13 @@ function add(a, b) {
 
     const result = parser.stringify()
 
-    expect(parser.lines[2].class.includes('highlighted')).toBe(true) // line 3
+    expect(parser.lines[2].classList.includes('highlighted')).toBe(true) // line 3
     // magic comment should be removed
     expect(parser.lines[2].content.includes('// [!code highlight]')).toBe(false) // line 3
-    expect(parser.lines[3].class.includes('highlighted')).toBe(true) // line 4
+    expect(parser.lines[3].classList.includes('highlighted')).toBe(true) // line 4
 
     // pre tag should add has-highlighted class
-    expect(parser.pre.class.includes('has-highlighted')).toBe(true)
+    expect(parser.pre.classList.includes('has-highlighted')).toBe(true)
 
     expect(result).toMatchSnapshot()
   })
@@ -111,10 +113,10 @@ function add(a, b) {
     expect(
       parser.lines
         .slice(1, 4)
-        .every((line) => line.class.includes('highlighted')),
+        .every((line) => line.classList.includes('highlighted')),
     ).toBe(true)
 
-    expect(parser.lines[4].class.includes('highlighted')).toBe(false)
+    expect(parser.lines[4].classList.includes('highlighted')).toBe(false)
 
     expect(result).toMatchSnapshot()
   })
@@ -134,12 +136,12 @@ function add(a, b) { // [!code ++]
 
     const result = parser.stringify()
 
-    expect(parser.lines[1].class.includes('diff add')).toBe(true) // line 2
-    expect(parser.lines[3].class.includes('diff remove')).toBe(true) // line 4
+    expect(parser.lines[1].classList.includes('diff add')).toBe(true) // line 2
+    expect(parser.lines[3].classList.includes('diff remove')).toBe(true) // line 4
 
     expect(parser.lines[5].content.includes('// [!code ++]')).toBe(false)
 
-    expect(parser.pre.class.includes('has-diff')).toBe(true)
+    expect(parser.pre.classList.includes('has-diff')).toBe(true)
 
     expect(result).toMatchSnapshot()
   })
@@ -160,10 +162,12 @@ function add(a, b) {
     const result = parser.stringify()
 
     expect(
-      parser.lines.slice(1, 4).every((line) => line.class.includes('diff add')),
+      parser.lines
+        .slice(1, 4)
+        .every((line) => line.classList.includes('diff add')),
     ).toBe(true)
 
-    expect(parser.lines[4].class.includes('diff add')).toBe(false)
+    expect(parser.lines[4].classList.includes('diff add')).toBe(false)
 
     expect(result).toMatchSnapshot()
   })
@@ -183,10 +187,10 @@ function add(a, b) { // [!code focus]
 
     const result = parser.stringify()
 
-    expect(parser.lines[1].class.includes('has-focus')).toBe(true) // line 2
-    expect(parser.lines[5].class.includes('has-focus')).toBe(true) // line 5
+    expect(parser.lines[1].classList.includes('has-focus')).toBe(true) // line 2
+    expect(parser.lines[5].classList.includes('has-focus')).toBe(true) // line 5
 
-    expect(parser.pre.class.includes('has-focused-lines')).toBe(true)
+    expect(parser.pre.classList.includes('has-focused-lines')).toBe(true)
 
     expect(result).toMatchSnapshot()
   })
@@ -209,10 +213,10 @@ function add(a, b) {
     expect(
       parser.lines
         .slice(1, 4)
-        .every((line) => line.class.includes('has-focus')),
+        .every((line) => line.classList.includes('has-focus')),
     ).toBe(true)
 
-    expect(parser.lines[4].class.includes('has-focus')).toBe(false)
+    expect(parser.lines[4].classList.includes('has-focus')).toBe(false)
 
     expect(result).toMatchSnapshot()
   })
@@ -232,12 +236,12 @@ function add(a, b) { // [!code warning]
 
     const result = parser.stringify()
 
-    expect(parser.lines[1].class.includes('warning')).toBe(true) // line 2
-    expect(parser.lines[3].class.includes('error')).toBe(true) // line 4
+    expect(parser.lines[1].classList.includes('warning')).toBe(true) // line 2
+    expect(parser.lines[3].classList.includes('error')).toBe(true) // line 4
 
     expect(parser.lines[5].content.includes('// [!code warning]')).toBe(false)
 
-    expect(parser.pre.class.includes('has-highlighted')).toBe(true)
+    expect(parser.pre.classList.includes('has-highlighted')).toBe(true)
 
     expect(result).toMatchSnapshot()
   })
@@ -258,10 +262,12 @@ function add(a, b) {
     const result = parser.stringify()
 
     expect(
-      parser.lines.slice(1, 4).every((line) => line.class.includes('error')),
+      parser.lines
+        .slice(1, 4)
+        .every((line) => line.classList.includes('error')),
     ).toBe(true)
 
-    expect(parser.lines[4].class.includes('error')).toBe(false)
+    expect(parser.lines[4].classList.includes('error')).toBe(false)
 
     expect(result).toMatchSnapshot()
   })

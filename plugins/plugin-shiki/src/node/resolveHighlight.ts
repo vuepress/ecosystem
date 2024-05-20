@@ -12,7 +12,7 @@ import { attrsToLines, nanoid, resolveLanguage } from './utils.js'
 
 const DEFAULT_LANGS = Object.keys(bundledLanguages)
 
-const MUSTACHE_REG = /\{\{[\s\S]*?\}\}/g
+const MUSTACHE_REG = /\{\{[^]*?\}\}/g
 
 export const resolveHighlight = async ({
   langs = DEFAULT_LANGS,

@@ -1,12 +1,12 @@
 import type { Markdown } from 'vuepress/markdown'
 import {
+  getCodeParser,
   getHighlightLinesRange,
   highlightCodeLines,
   notationDiff,
   notationErrorLevel,
   notationFocus,
   notationHighlight,
-  getCodeParser,
 } from '../parser/index.js'
 import type { PreWrapperOptions } from '../types.js'
 import { resolveLanguage } from '../utils/index.js'
@@ -55,7 +55,7 @@ export const highlightPlugin = (
       notationHighlight(parser)
     }
 
-    parser.pre.class.push(languageClass)
+    parser.pre.classList.push(languageClass)
 
     return parser.stringify()
   }

@@ -16,7 +16,7 @@
  * - ...more
  */
 import { escapeRegExp } from '../utils/index.js'
-import type { NodeOpen, CodeParser } from './getCodeParser.js'
+import type { CodeParser, OpenTag } from './getCodeParser.js'
 
 const COMMENT_EMPTY_TAG = /<span class="token comment">\s*?<\/span>/
 
@@ -38,19 +38,19 @@ export const createNotationRule = (
     `\\s*(?://|/\\*|<!--|#|--)\\s+\\[!code (${Object.keys(classMap).map(escapeRegExp).join('|')})(:\\d+)?\\]\\s*(?:\\*/|-->)?`,
   )
 
-  const nodeRemove: NodeOpen[] = []
+  const nodeRemove: OpenTag[] = []
 
   const onMatch = (
     [, match, range = ':1']: string[],
     index: number,
   ): boolean => {
-    const lineNum = Number(range.slice(1))
+    const lineNum = Number.parseInt(range.slice(1), 10)
 
     parser.lines.slice(index, index + lineNum).forEach((node) => {
-      node.class.push(...toArray(classMap[match]))
+      node.classList.push(...toArray(classMap[match]))
     })
     if (classPre) {
-      parser.pre.class.push(classPre)
+      parser.pre.classList.push(classPre)
     }
 
     return true

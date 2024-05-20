@@ -24,7 +24,7 @@ export const getHighlightLinesRange = (
       range.push(range[0])
     }
 
-    return range.map(Number) as HighlightLinesRange
+    return range.map((line) => Number.parseInt(line, 10)) as HighlightLinesRange
   })
 }
 
@@ -44,7 +44,7 @@ export const highlightCodeLines = (
   if (ranges?.length) {
     parser.line((node, index) => {
       if (isLineHighlighted(index, ranges)) {
-        node.class.push('highlighted')
+        node.classList.push('highlighted')
       }
     })
   }

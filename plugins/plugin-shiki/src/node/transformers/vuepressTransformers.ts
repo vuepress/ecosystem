@@ -1,6 +1,6 @@
 import type { ShikiTransformer } from 'shiki'
 
-const ESCAPE_RE = /\[\\!code/g
+const CODE_ESCAPE_RE = /\[\\!code/g
 
 export const addClassTransformer: ShikiTransformer = {
   name: 'vuepress:add-class',
@@ -20,7 +20,7 @@ export const cleanUpTransformer: ShikiTransformer = {
 export const removeEscapeTransformer: ShikiTransformer = {
   name: 'vuepress:remove-escape',
   postprocess(code) {
-    return code.replace(ESCAPE_RE, '[!code')
+    return code.replace(CODE_ESCAPE_RE, '[!code')
   },
 }
 
