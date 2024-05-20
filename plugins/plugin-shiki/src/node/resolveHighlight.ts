@@ -5,7 +5,6 @@ import {
   transformerNotationFocus,
   transformerNotationHighlight,
 } from '@shikijs/transformers'
-import { customAlphabet } from 'nanoid'
 import type { ShikiTransformer } from 'shiki'
 import {
   bundledLanguages,
@@ -15,14 +14,12 @@ import {
 } from 'shiki'
 import { colors, logger } from 'vuepress/utils'
 import type { ShikiPluginOptions } from './types.js'
-import { attrsToLines, resolveLanguage } from './utils.js'
+import { attrsToLines, nanoid, resolveLanguage } from './utils.js'
 
 const DEFAULT_LANGS = Object.keys(bundledLanguages)
 
 const RE_ESCAPE = /\[\\!code/g
 const mustacheRE = /\{\{.*?\}\}/g
-
-const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz', 10)
 
 export const resolveHighlight = async ({
   langs = DEFAULT_LANGS,

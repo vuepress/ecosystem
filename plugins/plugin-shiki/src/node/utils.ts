@@ -1,6 +1,9 @@
 import type { TransformerCompactLineOption } from '@shikijs/transformers'
+import { customAlphabet } from 'nanoid'
 
-export const VUE_RE = /-vue$/
+const VUE_RE = /-vue$/
+
+export const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz', 10)
 
 export const resolveLanguage = (info: string): string =>
   info
