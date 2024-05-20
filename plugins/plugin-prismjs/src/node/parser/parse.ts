@@ -25,7 +25,7 @@ export interface NodeOpen {
 
 type LineHandler = (node: NodeOpen, index: number) => void
 
-export interface Parser {
+export interface CodeParser {
   pre: NodeOpen
   code: NodeOpen
   lines: NodeOpen[]
@@ -83,7 +83,7 @@ const nodeOpenStringify = (node: NodeOpen): string => {
   return `${before}${classes && before ? ` class="${classes}"` : ''}${after}${content}`
 }
 
-export const parse = (html: string): Parser => {
+export const parse = (html: string): CodeParser => {
   const pre = html.match(PRE_RE)?.[1] || ''
   html = html.slice(pre.length)
   const code = html.match(CODE_RE)?.[1] || ''

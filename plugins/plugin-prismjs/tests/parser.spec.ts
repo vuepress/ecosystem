@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import {
-  highlightLines,
+  getHighlightLinesRange,
+  highlightCodeLines,
   notationDiff,
   notationErrorLevel,
   notationFocus,
   notationHighlight,
   parse,
-  resolveHighlightLines,
 } from '../src/node/index.js'
 
 const genCode = (code: string) => `<pre><code>${code}</code></pre>`
@@ -56,7 +56,7 @@ function add(a, b) {
 `)
     const parser = parse(code)
 
-    highlightLines(parser, resolveHighlightLines('{1,3,6-8}'))
+    highlightCodeLines(parser, getHighlightLinesRange('{1,3,6-8}'))
 
     const result = parser.stringify()
 

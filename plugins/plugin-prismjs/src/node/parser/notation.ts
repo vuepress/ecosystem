@@ -16,7 +16,7 @@
  * - ...more
  */
 import { escapeRegExp } from '../utils/index.js'
-import type { NodeOpen, Parser } from './parse.js'
+import type { NodeOpen, CodeParser } from './parse.js'
 
 const COMMENT_EMPTY_TAG = /<span class="token comment">\s*?<\/span>/
 
@@ -28,7 +28,10 @@ export interface NotationOption {
   classPre?: string
 }
 
-export const notationBase = (parser: Parser, options: NotationOption): void => {
+export const createNotationRule = (
+  parser: CodeParser,
+  options: NotationOption,
+): void => {
   const { classMap, classPre } = options
 
   const pattern = new RegExp(
@@ -41,13 +44,15 @@ export const notationBase = (parser: Parser, options: NotationOption): void => {
     [, match, range = ':1']: string[],
     index: number,
   ): boolean => {
-    const lineNum = Number.parseInt(range.slice(1), 10)
+    const lineNum = Number(range.slice(1))
+
     parser.lines.slice(index, index + lineNum).forEach((node) => {
       node.class.push(...toArray(classMap[match]))
     })
     if (classPre) {
       parser.pre.class.push(classPre)
     }
+
     return true
   }
 
@@ -76,8 +81,8 @@ export const notationBase = (parser: Parser, options: NotationOption): void => {
  *
  * `// [!code highlight]`, or `// [!code hl]`
  */
-export const notationHighlight = (parser: Parser): void => {
-  notationBase(parser, {
+export const notationHighlight = (parser: CodeParser): void => {
+  createNotationRule(parser, {
     classMap: {
       highlight: 'highlighted',
       hl: 'highlighted',
@@ -91,8 +96,8 @@ export const notationHighlight = (parser: Parser): void => {
  *
  * `// [!code focus]`
  */
-export const notationFocus = (parser: Parser): void => {
-  notationBase(parser, {
+export const notationFocus = (parser: CodeParser): void => {
+  createNotationRule(parser, {
     classMap: {
       focus: 'has-focus',
     },
@@ -105,8 +110,8 @@ export const notationFocus = (parser: Parser): void => {
  *
  * `// [!code ++]` and `// [!code --]`
  */
-export const notationDiff = (parser: Parser): void => {
-  notationBase(parser, {
+export const notationDiff = (parser: CodeParser): void => {
+  createNotationRule(parser, {
     classMap: {
       '++': 'diff add',
       '--': 'diff remove',
@@ -120,8 +125,8 @@ export const notationDiff = (parser: Parser): void => {
  *
  * `// [!code warning]` and `// [!code error]`
  */
-export const notationErrorLevel = (parser: Parser): void => {
-  notationBase(parser, {
+export const notationErrorLevel = (parser: CodeParser): void => {
+  createNotationRule(parser, {
     classMap: {
       error: ['highlighted', 'error'],
       warning: ['highlighted', 'warning'],

@@ -1,12 +1,12 @@
 import type { Markdown } from 'vuepress/markdown'
 import {
-  highlightLines,
+  getHighlightLinesRange,
+  highlightCodeLines,
   notationDiff,
   notationErrorLevel,
   notationFocus,
   notationHighlight,
   parse,
-  resolveHighlightLines,
 } from '../parser/index.js'
 import type { PreWrapperOptions } from '../types.js'
 import { resolveLanguage } from '../utils/index.js'
@@ -14,7 +14,7 @@ import { resolveLanguage } from '../utils/index.js'
 export const highlightPlugin = (
   md: Markdown,
   {
-    highlightLines: enabledHighlightLines = true,
+    highlightLines = true,
     notationDiff: enabledDiff,
     notationErrorLevel: enabledErrorLevel,
     notationFocus: enabledFocus,
@@ -39,8 +39,8 @@ export const highlightPlugin = (
 
     const parser = parse(code)
 
-    if (enabledHighlightLines) {
-      highlightLines(parser, resolveHighlightLines(info))
+    if (highlightLines) {
+      highlightCodeLines(parser, getHighlightLinesRange(info))
     }
     if (enabledDiff) {
       notationDiff(parser)
