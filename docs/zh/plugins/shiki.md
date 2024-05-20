@@ -114,14 +114,14 @@ export default {
 **输入：**
 
 ````md
-```ts
-// 行号默认是启用的
+```ts:line-numbers
+// 启用行号
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
 ```ts:no-line-numbers
-// 行号被禁用
+// 禁用行号
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
@@ -129,14 +129,14 @@ const line3 = 'This is line 3'
 
 **输出：**
 
-```ts
-// 行号默认是启用的
+```ts:line-numbers
+// 启用行号
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
 ```ts:no-line-numbers
-// 行号被禁用
+// 禁用行号
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```

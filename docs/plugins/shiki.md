@@ -115,8 +115,8 @@ export default {
 **Input:**
 
 ````md
-```ts
-// line-numbers is enabled by default
+```ts:line-numbers
+// line-numbers is enabled
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
@@ -134,8 +134,8 @@ const line3 = 'This is line 3'
 
 **Output:**
 
-```ts
-// line-numbers is enabled by default
+```ts:line-numbers
+// line-numbers is enabled
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
