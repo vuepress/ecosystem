@@ -31,7 +31,7 @@ const a = 1
 `
 
     expect(md.render(source)).toBe(`\
-<div class="wrapper"><button class="copy" title="Copy code" data-copied="Copied"></button><pre><code class="language-js">const a = 1
+<div class="wrapper"><button class="vp-copy-code" title="Copy code" data-copied="Copied"></button><pre><code class="language-js">const a = 1
 </code></pre>
 </div>`)
     expect(mockFence).toBeCalledTimes(1)

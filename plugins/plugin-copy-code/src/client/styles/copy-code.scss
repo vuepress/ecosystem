@@ -1,4 +1,4 @@
-div[class*='language-'] button.copy {
+div[class*='language-'] button.vp-copy-code {
   position: absolute;
   top: 0.5em;
   right: 0.5em;
@@ -65,7 +65,7 @@ div[class*='language-'] button.copy {
   }
 }
 
-div[class*='language-'] button.copy::before {
+div[class*='language-'] button.vp-copy-code::before {
   content: '';
   display: inline-block;
   width: 1.25rem;
@@ -92,7 +92,7 @@ div[class*='language-']:hover {
     display: none;
   }
 
-  button.copy {
+  button.vp-copy-code {
     opacity: 1;
   }
 }

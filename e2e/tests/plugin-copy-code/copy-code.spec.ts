@@ -7,7 +7,7 @@ test.describe('copy-code', () => {
     await page.goto('copy-code/')
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
-    const locator = page.locator('.copy')
+    const locator = page.locator('.vp-copy-code')
 
     await expect(locator).toHaveCount(1)
 

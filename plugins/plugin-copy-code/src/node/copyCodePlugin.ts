@@ -25,7 +25,7 @@ export const copyCodePlugin =
       define: {
         __CC_DURATION__: options.duration || 2000,
         __CC_SELECTOR__:
-          options.selector ?? 'div[class*="language-"] > button.copy',
+          options.selector ?? 'div[class*="language-"] > button.vp-copy-code',
       },
 
       clientConfigFile: (app) =>

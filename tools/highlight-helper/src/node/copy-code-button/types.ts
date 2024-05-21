@@ -9,7 +9,7 @@ export interface CopyCodeButtonOptions {
   /**
    * Class name of the button
    *
-   * @default 'copy'
+   * @default 'vp-copy-code'
    */
   className?: string
 

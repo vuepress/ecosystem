@@ -27,7 +27,7 @@ export default {
 ### selector
 
 - 类型：`string`
-- 默认值：`'div[class*="language-"] > button.copy'`
+- 默认值：`'div[class*="language-"] > button.vp-copy-code'`
 - 详情:
 
   代码块复制按钮选择器
@@ -56,7 +56,7 @@ export default {
 
 @[code css](@vuepress/plugin-copy-code/src/client/styles/vars.css)
 
-当不使用默认样式时，你应该在自己样式文件中，自定义*复制按钮*的样式。
+当不使用默认样式时，你应该在自己样式文件中，自定义 _复制按钮_ 的样式。
 
 ::: details 复制按钮样式示例
 @[code css](@vuepress/plugin-copy-code/src/client/styles/copy-code.css)
@@ -91,7 +91,7 @@ import { useCopyCode } from '@vuepress/plugin-copy-code/client'
 export default {
   setup() {
     useCopyCode({
-      selector: 'div[class*="language-"] > button.copy',
+      selector: 'div[class*="language-"] > button.vp-copy-code',
       duration: 2000,
     })
   },

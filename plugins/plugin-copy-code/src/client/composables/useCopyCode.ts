@@ -5,7 +5,7 @@ const SHELL_RE = /language-(shellscript|shell|bash|sh|zsh)/
 const IGNORE_NODES = ['.vp-copy-ignore', '.diff.remove']
 
 export const useCopyCode = ({
-  selector = 'div[class*="language-"] > button.copy',
+  selector = 'div[class*="language-"] > button.vp-copy-code',
   duration = 2000,
 }: CopyCodeOptions = {}): void => {
   if (__VUEPRESS_SSR__) return

@@ -4,7 +4,7 @@ export interface CopyCodeOptions {
    *
    * 复制代码按钮 选择器
    *
-   * @default 'div[class*="language-"] > button.copy'
+   * @default 'div[class*="language-"] > button.vp-copy-code'
    */
   selector?: string
 

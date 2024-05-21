@@ -27,7 +27,7 @@ export default {
 ### selector
 
 - Type: `string`
-- Default: `'div[class*="language-"] > button.copy'`
+- Default: `'div[class*="language-"] > button.vp-copy-code'`
 - Details:
 
   Code block copy code button selector
@@ -89,7 +89,7 @@ import { useCopyCode } from '@vuepress/plugin-copy-code/client'
 export default {
   setup() {
     useCopyCode({
-      selector: 'div[class*="language-"] > button.copy',
+      selector: 'div[class*="language-"] > button.vp-copy-code',
       duration: 2000,
     })
   },

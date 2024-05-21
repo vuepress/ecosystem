@@ -20,11 +20,8 @@ export const createCopyCodeButtonRender = (
     return null
   }
 
-  const { className = 'copy', locales: userLocales = {} } = isPlainObject(
-    options,
-  )
-    ? options
-    : {}
+  const { className = 'vp-copy-code', locales: userLocales = {} } =
+    isPlainObject(options) ? options : {}
 
   const root = getRootLangPath(app)
   const locales: LocaleConfig<CopyCodeButtonLocaleOptions> = {

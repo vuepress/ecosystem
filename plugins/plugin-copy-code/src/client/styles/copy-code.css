@@ -1,14 +1,4 @@
-@media (max-width: 419px) {
-  div[class*='language-']:hover::before {
-    display: none;
-  }
-}
-
-div[class*='language-']:hover button.copy {
-  opacity: 1;
-}
-
-div[class*='language-'] button.copy {
+div[class*='language-'] button.vp-copy-code {
   position: absolute;
   top: 0.5em;
   right: 0.5em;
@@ -26,33 +16,33 @@ div[class*='language-'] button.copy {
 }
 
 @media print {
-  div[class*='language-'] button.copy {
+  div[class*='language-'] button.vp-copy-code {
     display: none;
   }
 }
 
 @media (max-width: 419px) {
-  div[class*='language-'] button.copy {
+  div[class*='language-'] button.vp-copy-code {
     display: none;
   }
 }
 
-div[class*='language-'] button.copy:focus,
-div[class*='language-'] button.copy.copied {
+div[class*='language-'] button.vp-copy-code:focus,
+div[class*='language-'] button.vp-copy-code.copied {
   opacity: 1;
 }
 
-div[class*='language-'] button.copy:hover,
-div[class*='language-'] button.copy.copied {
+div[class*='language-'] button.vp-copy-code:hover,
+div[class*='language-'] button.vp-copy-code.copied {
   background: var(--copy-code-hover);
 }
 
-div[class*='language-'] button.copy.copied::before {
+div[class*='language-'] button.vp-copy-code.copied::before {
   -webkit-mask-image: var(--code-copied-icon);
   mask-image: var(--code-copied-icon);
 }
 
-div[class*='language-'] button.copy.copied::after {
+div[class*='language-'] button.vp-copy-code.copied::after {
   content: attr(data-copied);
   position: absolute;
   top: 0;
@@ -68,7 +58,7 @@ div[class*='language-'] button.copy.copied::after {
   white-space: nowrap;
 }
 
-div[class*='language-'] button.copy::before {
+div[class*='language-'] button.vp-copy-code::before {
   content: '';
   display: inline-block;
   width: 1.25rem;
@@ -85,4 +75,12 @@ div[class*='language-'] button.copy::before {
   mask-repeat: no-repeat;
   -webkit-mask-size: 1em;
   mask-size: 1em;
+}
+
+div[class*='language-']:hover::before {
+  display: none;
+}
+
+div[class*='language-']:hover button.vp-copy-code {
+  opacity: 1;
 }

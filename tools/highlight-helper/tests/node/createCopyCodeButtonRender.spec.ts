@@ -18,7 +18,7 @@ describe('@vuepress/highlight-helper -> createCopyCodeButtonRender', () => {
     expect(render).toBeDefined()
 
     expect(render!('')).toBe(
-      '<button class="copy" title="Copy code" data-copied="Copied"></button>',
+      '<button class="vp-copy-code" title="Copy code" data-copied="Copied"></button>',
     )
   })
 
@@ -26,7 +26,7 @@ describe('@vuepress/highlight-helper -> createCopyCodeButtonRender', () => {
     const render = createCopyCodeButtonRender(createApp('zh-CN'))
 
     expect(render!('')).toBe(
-      '<button class="copy" title="复制代码" data-copied="已复制"></button>',
+      '<button class="vp-copy-code" title="复制代码" data-copied="已复制"></button>',
     )
   })
 
@@ -36,15 +36,15 @@ describe('@vuepress/highlight-helper -> createCopyCodeButtonRender', () => {
     )
 
     expect(render!('')).toBe(
-      '<button class="copy" title="Copy code" data-copied="Copied"></button>',
+      '<button class="vp-copy-code" title="Copy code" data-copied="Copied"></button>',
     )
 
     expect(render!('/zh/')).toBe(
-      '<button class="copy" title="复制代码" data-copied="已复制"></button>',
+      '<button class="vp-copy-code" title="复制代码" data-copied="已复制"></button>',
     )
 
     expect(render!('fr/xxx')).toBe(
-      '<button class="copy" title="Copier le code" data-copied="Copié"></button>',
+      '<button class="vp-copy-code" title="Copier le code" data-copied="Copié"></button>',
     )
   })
 
@@ -78,7 +78,7 @@ describe('@vuepress/highlight-helper -> createCopyCodeButtonRender', () => {
     )
 
     expect(render!('foo/')).toBe(
-      '<button class="copy" title="Copy foo code" data-copied="Foo code copied"></button>',
+      '<button class="vp-copy-code" title="Copy foo code" data-copied="Foo code copied"></button>',
     )
   })
 })
