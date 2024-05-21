@@ -1,5 +1,7 @@
+import { copyCodeButtonPlugin } from '@vuepress/highlight-helper'
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it, vi } from 'vitest'
+import type { App } from 'vuepress'
 import type {
   HighlightOptions,
   LineNumbersOptions,
@@ -18,9 +20,12 @@ const codeFence = '```'
 const createMarkdown = ({
   preWrapper = true,
   lineNumbers = true,
+  copyCodeButton = true,
   ...options
 }: PrismjsPluginOptions = {}): MarkdownIt => {
   const md = MarkdownIt()
+  // mock site data
+  const app = { siteData: { lang: 'en-US', locales: {} }, env: {} } as App
 
   md.options.highlight = (code, lang) => {
     const highlighter = resolveHighlighter(lang)
@@ -28,7 +33,9 @@ const createMarkdown = ({
   }
   md.use<HighlightOptions>(highlightPlugin, options)
   md.use<PreWrapperOptions>(preWrapperPlugin, { preWrapper })
+
   if (preWrapper) {
+    copyCodeButtonPlugin(md, app, copyCodeButton)
     md.use<LineNumbersOptions>(lineNumbersPlugin, { lineNumbers })
   }
   return md
@@ -102,6 +109,14 @@ ${codeFence}{{ inlineCode }}${codeFence}
       expect(md.render(source)).toMatchSnapshot()
     })
 
+    it('should work disabled `copyCodeButton`', () => {
+      const md = createMarkdown({
+        copyCodeButton: false,
+      })
+
+      expect(md.render(source)).toMatchSnapshot()
+    })
+
     it('should disable `preWrapper`', () => {
       const md = createMarkdown({
         preWrapper: false,
@@ -110,13 +125,15 @@ ${codeFence}{{ inlineCode }}${codeFence}
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should always disable `lineNumbers` if `preWrapper` is disabled', () => {
+    it('should always disable `lineNumbers` and `copyCodeButton` if `preWrapper` is disabled', () => {
       const mdWithLineNumbers = createMarkdown({
         lineNumbers: true,
+        copyCodeButton: true,
         preWrapper: false,
       })
       const mdWithoutLineNumbers = createMarkdown({
         lineNumbers: false,
+        copyCodeButton: true,
         preWrapper: false,
       })
 

@@ -1,127 +1,53 @@
-import { useLocaleConfig, wait } from '@vuepress/helper/client'
 import { useClipboard, useEventListener } from '@vueuse/core'
-import { nextTick, onMounted, watch } from 'vue'
-import { usePageData } from 'vuepress/client'
-import type { CopyCodePluginLocaleConfig } from '../../shared/index.js'
-import { isMobile } from '../utils/index.js'
+import type { CopyCodeOptions } from '../../shared/index.js'
 
-import '../styles/copy-code.css'
-import '../styles/vars.css'
-
-export interface UseCopyCodeOptions {
-  locales: CopyCodePluginLocaleConfig
-  selector: string[]
-
-  /** @default 500 */
-  delay: number
-  /** @default 2000 */
-  duration: number
-  /** @default false */
-  showInMobile?: boolean
-}
+const SHELL_RE = /language-(shellscript|shell|bash|sh|zsh)/
+const IGNORE_NODES = ['.vp-copy-ignore', '.diff.remove']
 
 export const useCopyCode = ({
-  delay = 500,
+  selector = 'div[class*="language-"] > button.copy',
   duration = 2000,
-  locales,
-  selector,
-  showInMobile,
-}: UseCopyCodeOptions): void => {
-  const { copy, copied } = useClipboard({
-    legacy: true,
-    copiedDuring: duration,
-  })
-  const locale = useLocaleConfig(locales)
-  const page = usePageData()
+}: CopyCodeOptions = {}): void => {
+  if (__VUEPRESS_SSR__) return
 
-  const insertCopyButton = (codeBlockElement: HTMLElement): void => {
-    if (!codeBlockElement.hasAttribute('copy-code-registered')) {
-      const copyElement = document.createElement('button')
+  const timeoutIdMap = new WeakMap<HTMLElement, ReturnType<typeof setTimeout>>()
 
-      copyElement.type = 'button'
-      copyElement.classList.add('vp-copy-code-button')
-      copyElement.innerHTML = '<div class="vp-copy-icon" />'
-      copyElement.setAttribute('aria-label', locale.value.copy)
-      copyElement.setAttribute('data-copied', locale.value.copied)
+  const { copy } = useClipboard({ legacy: true })
 
-      if (codeBlockElement.parentElement)
-        codeBlockElement.parentElement.insertBefore(
-          copyElement,
-          codeBlockElement,
-        )
-
-      codeBlockElement.setAttribute('copy-code-registered', '')
-    }
-  }
-
-  const appendCopyButton = (): void => {
-    nextTick()
-      .then(() => wait(delay))
-      .then(() => {
-        selector.forEach((item) => {
-          document.querySelectorAll<HTMLElement>(item).forEach(insertCopyButton)
-        })
-      })
-  }
-
-  const copyContent = (
-    codeContainer: HTMLDivElement,
-    codeContent: HTMLPreElement,
-    button: HTMLButtonElement,
-  ): void => {
-    let { innerText: text = '' } = codeContent
-
-    if (
-      // is shell
-      /language-(shellscript|shell|bash|sh|zsh)/.test(
-        codeContainer.classList.toString(),
-      )
-    )
-      text = text.replace(/^ *(\$|>) /gm, '')
-
-    copy(text).then(() => {
-      button.classList.add('copied')
-
-      watch(
-        copied,
-        () => {
-          button.classList.remove('copied')
-          button.blur()
-        },
-        { once: true },
-      )
-    })
-  }
-
-  onMounted(() => {
-    const enabled = !isMobile() || showInMobile
-
-    if (enabled) appendCopyButton()
-
-    useEventListener('click', (event) => {
-      const el = event.target as HTMLElement
-
-      if (el.matches('div[class*="language-"] > button.copy')) {
-        const codeContainer = el.parentElement as HTMLDivElement
-        const preBlock = el.nextElementSibling as HTMLPreElement | null
-
-        if (preBlock)
-          copyContent(codeContainer, preBlock, el as HTMLButtonElement)
-      } else if (el.matches('div[class*="language-"] div.vp-copy-icon')) {
-        const buttonElement = el.parentElement as HTMLButtonElement
-        const codeContainer = buttonElement.parentElement as HTMLDivElement
-        const preBlock =
-          buttonElement.nextElementSibling as HTMLPreElement | null
-
-        if (preBlock) copyContent(codeContainer, preBlock, buttonElement)
+  useEventListener('click', (e) => {
+    const el = e.target as HTMLElement
+    if (el.matches(selector)) {
+      const parent = el.parentElement
+      const sibling = el.nextElementSibling
+      if (!parent || !sibling) {
+        return
       }
-    })
+      const isShell = SHELL_RE.test(parent.className)
 
-    watch(
-      () => page.value.path,
-      () => {
-        if (enabled) appendCopyButton()
-      },
-    )
+      // Clone the node and remove the ignored nodes
+      const clone = sibling.cloneNode(true) as HTMLElement
+      clone
+        .querySelectorAll(IGNORE_NODES.join(','))
+        .forEach((node) => node.remove())
+
+      let text = clone.textContent || ''
+
+      if (isShell) {
+        text = text.replace(/^ *(\$|>) /gm, '').trim()
+      }
+
+      copy(text).then(() => {
+        if (duration <= 0) return
+
+        el.classList.add('copied')
+        clearTimeout(timeoutIdMap.get(el))
+        const timeoutId = setTimeout(() => {
+          el.classList.remove('copied')
+          el.blur()
+          timeoutIdMap.delete(el)
+        }, duration)
+        timeoutIdMap.set(el, timeoutId)
+      })
+    }
   })
 }

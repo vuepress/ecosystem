@@ -1,1 +1,1 @@
-export * from './locales.js'
+export * from './copyCode.js'

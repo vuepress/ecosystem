@@ -1,5 +1,8 @@
+import { copyCodeButtonPlugin } from '@vuepress/highlight-helper'
+import type { CopyCodeButtonOptions } from '@vuepress/highlight-helper'
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
+import type { App } from 'vuepress'
 import {
   highlightLinesPlugin,
   lineNumberPlugin,
@@ -15,16 +18,23 @@ import type {
 const createMarkdown = async ({
   preWrapper = true,
   lineNumbers = true,
+  copyCodeButton = true,
   ...options
 }: LineNumberOptions &
   PreWrapperOptions &
-  ShikiHighlightOptions = {}): Promise<MarkdownIt> => {
+  ShikiHighlightOptions & {
+    copyCodeButton?: boolean | CopyCodeButtonOptions
+  } = {}): Promise<MarkdownIt> => {
   const md = MarkdownIt()
+  // mock site data
+  const app = { siteData: { lang: 'en-US', locales: {} }, env: {} } as App
+
   md.options.highlight = await resolveHighlight(options)
 
   md.use(highlightLinesPlugin)
   md.use<PreWrapperOptions>(preWrapperPlugin, { preWrapper })
   if (preWrapper) {
+    copyCodeButtonPlugin(md, app, copyCodeButton)
     md.use<LineNumberOptions>(lineNumberPlugin, { lineNumbers })
   }
   return md
@@ -112,19 +122,29 @@ ${codeFence}{{ inlineCode }}${codeFence}
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should always disable `lineNumbers` if `preWrapper` is disabled', async () => {
+    it('should always disable `lineNumbers` and `copyCodeButton` if `preWrapper` is disabled', async () => {
       const mdWithLineNumbers = await createMarkdown({
         lineNumbers: true,
+        copyCodeButton: true,
         preWrapper: false,
       })
       const mdWithoutLineNumbers = await createMarkdown({
         lineNumbers: false,
+        copyCodeButton: false,
         preWrapper: false,
       })
 
       expect(mdWithLineNumbers.render(source)).toBe(
         mdWithoutLineNumbers.render(source),
       )
+    })
+
+    it('should work disabled `copyCodeButton`', async () => {
+      const md = await createMarkdown({
+        copyCodeButton: false,
+      })
+
+      expect(md.render(source)).toMatchSnapshot()
     })
   })
 

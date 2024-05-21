@@ -1,25 +1,25 @@
 {
-  "name": "@vuepress/plugin-shiki",
+  "name": "@vuepress/highlight-helper",
   "version": "2.0.0-rc.30",
-  "description": "VuePress plugin - shiki",
+  "description": "VuePress highlight helper",
   "keywords": [
-    "vuepress-plugin",
     "vuepress",
-    "plugin",
+    "helper",
     "shiki",
+    "prismjs",
     "highlight"
   ],
-  "homepage": "https://ecosystem.vuejs.press/plugins/shiki.html",
+  "homepage": "https://ecosystem.vuejs.press/tools/highlight-helper/",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/ecosystem.git",
-    "directory": "plugins/plugin-shiki"
+    "directory": "tools/highlight-helper"
   },
   "license": "MIT",
-  "author": "meteorlxy",
+  "author": "pengzhanbo",
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
@@ -35,10 +35,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/highlight-helper": "workspace:~",
-    "@shikijs/transformers": "^1.6.0",
-    "nanoid": "^5.0.7",
-    "shiki": "^1.6.0"
+    "@vuepress/helper": "workspace:~"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.11"
@@ -47,7 +44,6 @@
     "access": "public"
   },
   "devDependencies": {
-    "@types/markdown-it": "^14.1.1",
     "markdown-it": "^14.1.0"
   }
 }

@@ -600,6 +600,9 @@ importers:
 
   plugins/plugin-prismjs:
     dependencies:
+      '@vuepress/highlight-helper':
+        specifier: workspace:~
+        version: link:../../tools/highlight-helper
       prismjs:
         specifier: ^1.29.0
         version: 1.29.0
@@ -762,6 +765,9 @@ importers:
       '@shikijs/transformers':
         specifier: ^1.6.0
         version: 1.6.0
+      '@vuepress/highlight-helper':
+        specifier: workspace:~
+        version: link:../../tools/highlight-helper
       nanoid:
         specifier: ^5.0.7
         version: 5.0.7
@@ -958,6 +964,19 @@ importers:
       vite:
         specifier: 5.2.11
         version: 5.2.11(@types/node@20.12.12)(sass@1.77.1)(terser@5.31.0)
+
+  tools/highlight-helper:
+    dependencies:
+      '@vuepress/helper':
+        specifier: workspace:~
+        version: link:../helper
+      vuepress:
+        specifier: 2.0.0-rc.11
+        version: 2.0.0-rc.11(@vuepress/bundler-vite@2.0.0-rc.11(@types/node@20.12.12)(sass@1.77.1)(terser@5.31.0)(tsx@4.10.3)(typescript@5.4.5))(@vuepress/bundler-webpack@2.0.0-rc.11(typescript@5.4.5))(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
+    devDependencies:
+      markdown-it:
+        specifier: ^14.1.0
+        version: 14.1.0
 
   tools/vp-update:
     dependencies:
@@ -13417,6 +13436,22 @@ snapshots:
       typescript: 5.4.5
 
   vuepress@2.0.0-rc.11(@vuepress/bundler-vite@2.0.0-rc.11(@types/node@20.12.12)(jiti@1.21.0)(sass@1.77.1)(terser@5.31.0)(tsx@4.10.3)(typescript@5.4.5))(@vuepress/bundler-webpack@2.0.0-rc.11(typescript@5.4.5))(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5)):
+    dependencies:
+      '@vuepress/cli': 2.0.0-rc.11(typescript@5.4.5)
+      '@vuepress/client': 2.0.0-rc.11(typescript@5.4.5)
+      '@vuepress/core': 2.0.0-rc.11(typescript@5.4.5)
+      '@vuepress/markdown': 2.0.0-rc.11
+      '@vuepress/shared': 2.0.0-rc.11
+      '@vuepress/utils': 2.0.0-rc.11
+      vue: 3.4.27(typescript@5.4.5)
+    optionalDependencies:
+      '@vuepress/bundler-vite': 2.0.0-rc.11(@types/node@20.12.12)(jiti@1.21.0)(sass@1.77.1)(terser@5.31.0)(tsx@4.10.3)(typescript@5.4.5)
+      '@vuepress/bundler-webpack': 2.0.0-rc.11(typescript@5.4.5)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+
+  vuepress@2.0.0-rc.11(@vuepress/bundler-vite@2.0.0-rc.11(@types/node@20.12.12)(sass@1.77.1)(terser@5.31.0)(tsx@4.10.3)(typescript@5.4.5))(@vuepress/bundler-webpack@2.0.0-rc.11(typescript@5.4.5))(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5)):
     dependencies:
       '@vuepress/cli': 2.0.0-rc.11(typescript@5.4.5)
       '@vuepress/client': 2.0.0-rc.11(typescript@5.4.5)

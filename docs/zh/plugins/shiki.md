@@ -191,6 +191,69 @@ export default defineUserConfig({
 })
 ```
 
+### copyCodeButton
+
+- 类型： `boolean | CopyCodeButtonOptions`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否在代码块中添加 复制按钮。
+
+::: tip
+`@vuepress/plugin-shiki` 插件仅在代码块中添加复制按钮，并不提供功能实现以及样式。
+
+你应该配合使用 [@vuepress/plugin-copy-code](./copy-code.md) 插件来实现 代码复制功能 和 样式。
+:::
+
+```ts
+interface CopyCodeButtonOptions {
+  /**
+   * 复制按钮的类名
+   * @default 'copy'
+   */
+  className: string
+  // 多语言配置
+  locales: {
+    [localPath: string]: {
+      /**
+       * 复制按钮的标题
+       */
+      title: string
+      /**
+       * 复制成功的提示文字
+       */
+      copied: string
+    }
+  }
+}
+```
+
+::: details 内置支持语言
+
+- **简体中文** (zh-CN)
+- **繁体中文** (zh-TW)
+- **英文(美国)** (en-US)
+- **德语** (de-DE)
+- **德语(澳大利亚)** (de-AT)
+- **俄语** (ru-RU)
+- **乌克兰语** (uk-UA)
+- **越南语** (vi-VN)
+- **葡萄牙语(巴西)** (pt-BR)
+- **波兰语** (pl-PL)
+- **法语** (fr-FR)
+- **西班牙语** (es-ES)
+- **斯洛伐克** (sk-SK)
+- **日语** (ja-JP)
+- **土耳其语** (tr-TR)
+- **韩语** (ko-KR)
+- **芬兰语** (fi-FI)
+- **印尼语** (id-ID)
+- **荷兰语** (nl-NL)
+
+:::
+
 ### preWrapper
 
 - 类型： `boolean`
@@ -201,7 +264,7 @@ export default defineUserConfig({
 
   是否在 `<pre>` 标签外额外包裹一层。
 
-  `lineNumbers` 依赖于这个额外的包裹层。这换句话说，如果你禁用了 `preWrapper` ，那么 行号 也会被同时禁用。
+  `lineNumbers` 和 `copyCodeButton` 依赖于这个额外的包裹层。这换句话说，如果你禁用了 `preWrapper` ，那么 行号 和 复制按钮 也会被同时禁用。
 
 ### defaultColor
 

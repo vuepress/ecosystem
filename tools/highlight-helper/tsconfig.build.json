@@ -3,12 +3,12 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./lib",
-    "types": ["vuepress/client-types"]
+    "baseUrl": "."
   },
   "include": ["./src"],
   "references": [
     {
-      "path": "../../tools/helper/tsconfig.build.json"
+      "path": "../helper/tsconfig.build.json"
     }
   ]
 }

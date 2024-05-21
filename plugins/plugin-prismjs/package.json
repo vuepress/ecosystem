@@ -35,7 +35,8 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "prismjs": "^1.29.0"
+    "prismjs": "^1.29.0",
+    "@vuepress/highlight-helper": "workspace:~"
   },
   "devDependencies": {
     "@types/markdown-it": "^14.1.1",

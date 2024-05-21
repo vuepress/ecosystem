@@ -1,14 +1,4 @@
-div[class*='language-']:hover {
-  &::before {
-    display: none;
-  }
-
-  .vp-copy-code-button {
-    opacity: 1;
-  }
-}
-
-.vp-copy-code-button {
+div[class*='language-'] button.copy {
   position: absolute;
   top: 0.5em;
   right: 0.5em;
@@ -32,6 +22,10 @@ div[class*='language-']:hover {
     display: none;
   }
 
+  @media (max-width: 419px) {
+    display: none;
+  }
+
   &:focus,
   &.copied {
     opacity: 1;
@@ -43,7 +37,7 @@ div[class*='language-']:hover {
   }
 
   &.copied {
-    .vp-copy-icon {
+    &::before {
       -webkit-mask-image: var(--code-copied-icon);
       mask-image: var(--code-copied-icon);
     }
@@ -71,7 +65,9 @@ div[class*='language-']:hover {
   }
 }
 
-.vp-copy-icon {
+div[class*='language-'] button.copy::before {
+  content: '';
+  display: inline-block;
   width: 1.25rem;
   height: 1.25rem;
   padding: 0.625rem;
@@ -89,4 +85,14 @@ div[class*='language-']:hover {
   mask-repeat: no-repeat;
   -webkit-mask-size: 1em;
   mask-size: 1em;
+}
+
+div[class*='language-']:hover {
+  &::before {
+    display: none;
+  }
+
+  button.copy {
+    opacity: 1;
+  }
 }

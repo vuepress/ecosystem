@@ -38,7 +38,7 @@ export default {
 
   你希望在 Client 端中使用的主题数据对象。
 
-  你可以通过该配置项，在 Node 端提供主题数据，然后在客户端通过 [useThemeData](#useThemeData) 和 [useThemeLocaleData](#useThemeLocaleData) 来使用主题数据。
+  你可以通过该配置项，在 Node 端提供主题数据，然后在客户端通过 [useThemeData](#usethemedata) 和 [useThemeLocaleData](#usethemelocaledata) 来使用主题数据。
 
 - 示例：
 

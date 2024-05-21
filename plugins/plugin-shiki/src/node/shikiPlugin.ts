@@ -1,3 +1,5 @@
+import { copyCodeButtonPlugin } from '@vuepress/highlight-helper'
+import type { CopyCodeButtonOptions } from '@vuepress/highlight-helper'
 import type { Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import {
@@ -15,13 +17,22 @@ import type {
 /**
  * Options of @vuepress/plugin-shiki
  */
-export type ShikiPluginOptions = ShikiHighlightOptions &
-  PreWrapperOptions &
-  LineNumberOptions
+export interface ShikiPluginOptions
+  extends ShikiHighlightOptions,
+    PreWrapperOptions,
+    LineNumberOptions {
+  /**
+   * Add copy code button
+   *
+   * @default true
+   */
+  copyCodeButton?: boolean | CopyCodeButtonOptions
+}
 
 export const shikiPlugin = ({
   preWrapper = true,
   lineNumbers = true,
+  copyCodeButton = true,
   ...options
 }: ShikiPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-shiki',
@@ -35,8 +46,11 @@ export const shikiPlugin = ({
     })
 
     md.use(highlightLinesPlugin)
-    md.use<PreWrapperOptions>(preWrapperPlugin, { preWrapper })
+    md.use<PreWrapperOptions>(preWrapperPlugin, {
+      preWrapper,
+    })
     if (preWrapper) {
+      copyCodeButtonPlugin(md, app, copyCodeButton)
       md.use<LineNumberOptions>(lineNumberPlugin, { lineNumbers })
     }
   },

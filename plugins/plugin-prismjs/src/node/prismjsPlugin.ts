@@ -1,3 +1,5 @@
+import { copyCodeButtonPlugin } from '@vuepress/highlight-helper'
+import type { CopyCodeButtonOptions } from '@vuepress/highlight-helper'
 import type { Plugin } from 'vuepress/core'
 import { loadLanguages } from './loadLanguages.js'
 import {
@@ -28,17 +30,25 @@ export interface PrismjsPluginOptions
    * @see https://github.com/PrismJS/prism/issues/2716
    */
   preloadLanguages?: string[]
+
+  /**
+   * Add copy code button
+   *
+   * @default true
+   */
+  copyCodeButton?: boolean | CopyCodeButtonOptions
 }
 
 export const prismjsPlugin = ({
   preloadLanguages = ['markdown', 'jsdoc', 'yaml'],
   preWrapper = true,
   lineNumbers = true,
+  copyCodeButton = true,
   ...options
 }: PrismjsPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-prismjs',
 
-  extendsMarkdown(md) {
+  extendsMarkdown(md, app) {
     if (preloadLanguages?.length !== 0) {
       loadLanguages(preloadLanguages)
     }
@@ -50,7 +60,9 @@ export const prismjsPlugin = ({
 
     md.use<HighlightOptions>(highlightPlugin, options)
     md.use<PreWrapperOptions>(preWrapperPlugin, { preWrapper })
+
     if (preWrapper) {
+      copyCodeButtonPlugin(md, app, copyCodeButton)
       md.use<LineNumbersOptions>(lineNumbersPlugin, { lineNumbers })
     }
   },

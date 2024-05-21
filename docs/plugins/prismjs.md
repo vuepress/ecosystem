@@ -143,6 +143,69 @@ export default defineUserConfig({
 })
 ```
 
+### copyCodeButton
+
+- Type: `boolean | CopyCodeButtonOptions`
+
+- Default: `true`
+
+- Details：
+
+  Enable add the copy code button or not.
+
+::: tip
+The `@vuepress/plugin-prismjs` plugin only add copy button to code blocks, but it does not provide the functionality or styles.
+
+To achieve both code copy functionality and styling, you should use the [@vuepress/plugin-copy-code](./copy-code.md) plugin.
+:::
+
+```ts
+interface CopyCodeButtonOptions {
+  /**
+   * The class name of the copy button
+   * @default 'copy'
+   */
+  className: string
+  // locales config
+  locales: {
+    [localPath: string]: {
+      /**
+       * The title of the copy button
+       */
+      title: string
+      /**
+       * The copied message
+       */
+      copied: string
+    }
+  }
+}
+```
+
+::: details Built-in Supported Languages
+
+- **Simplified Chinese** (zh-CN)
+- **Traditional Chinese** (zh-TW)
+- **English (United States)** (en-US)
+- **German** (de-DE)
+- **German (Australia)** (de-AT)
+- **Russian** (ru-RU)
+- **Ukrainian** (uk-UA)
+- **Vietnamese** (vi-VN)
+- **Portuguese (Brazil)** (pt-BR)
+- **Polish** (pl-PL)
+- **French** (fr-FR)
+- **Spanish** (es-ES)
+- **Slovak** (sk-SK)
+- **Japanese** (ja-JP)
+- **Turkish** (tr-TR)
+- **Korean** (ko-KR)
+- **Finnish** (fi-FI)
+- **Indonesian** (id-ID)
+- **Dutch** (nl-NL)
+
+:::
+
 ### preWrapper
 
 - Type: `boolean`
@@ -153,7 +216,7 @@ export default defineUserConfig({
 
   Enable the extra wrapper of the `<pre>` tag or not.
 
-  The wrapper is required by the `lineNumbers`. That means, if you disable `preWrapper`, the line line numbers will also be disabled.
+  The wrapper is required by the `lineNumbers` and `copyCodeButton`. That means, if you disable `preWrapper`, the line line numbers and copy code button will also be disabled.
 
 ::: tip
 You can disable it if you want to implement them in client side. For example,
