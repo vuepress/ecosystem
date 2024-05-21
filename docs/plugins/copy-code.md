@@ -56,7 +56,7 @@ When using the default style, you can customize the appearance of the _copy butt
 
 When not using the default style, you should customize the style of the _copy button_ in your own style file.
 
-::: details 复制按钮样式示例
+::: details Copy Button Style Example
 @[code css](@vuepress/plugin-copy-code/src/client/styles/copy-code.css)
 :::
 
