@@ -5,7 +5,7 @@ import {
 } from '@vuepress/helper'
 import type { App, LocaleConfig } from 'vuepress'
 import { ensureLeadingSlash, resolveLocalePath } from 'vuepress/shared'
-import { copyCodeButtonLocales } from './locales.js'
+import { copyCodeButtonLocales } from './copyCodeButtonLocales.js'
 import type {
   CopyCodeButtonLocaleOptions,
   CopyCodeButtonOptions,
