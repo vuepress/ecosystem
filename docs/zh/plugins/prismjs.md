@@ -148,40 +148,45 @@ export default defineUserConfig({
 
 - 类型： `boolean | CopyCodeButtonOptions`
 
+  ```ts
+  interface CopyCodeButtonOptions {
+    /**
+     * 复制按钮的类名
+     *
+     * @default 'vp-copy-code'
+     */
+    className: string
+    /**
+     * 多语言配置
+     */
+    locales: {
+      [localPath: string]: {
+        /**
+         * 复制按钮的标题
+         */
+        title: string
+        /**
+         * 复制成功的提示文字
+         */
+        copied: string
+      }
+    }
+  }
+  ```
+
 - 默认值： `true`
 
 - 详情：
 
-  是否在代码块中添加 复制按钮。
+  是否在代码块中添加复制按钮。
 
-::: tip
-`@vuepress/plugin-prismjs` 插件仅在代码块中添加复制按钮，并不提供功能实现以及样式。
+  ::: tip
 
-你应该配合使用 [@vuepress/plugin-copy-code](./copy-code.md) 插件来实现 代码复制功能 和 样式。
-:::
+  插件只会在代码块中添加复制按钮，不会提供功能实现以及样式。
 
-```ts
-interface CopyCodeButtonOptions {
-  /**
-   * 复制按钮的类名
-   * @default 'copy'
-   */
-  className: string
-  // 多语言配置
-  locales: {
-    [localPath: string]: {
-      /**
-       * 复制按钮的标题
-       */
-      title: string
-      /**
-       * 复制成功的提示文字
-       */
-      copied: string
-    }
-  }
-}
-```
+  你应该配合使用 [@vuepress/plugin-copy-code](./copy-code.md) 插件来实现代码复制功能和样式。
+
+  :::
 
 ::: details 内置支持语言
 

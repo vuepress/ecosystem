@@ -147,40 +147,46 @@ export default defineUserConfig({
 
 - Type: `boolean | CopyCodeButtonOptions`
 
+  ```ts
+  interface CopyCodeButtonOptions {
+    /**
+     * The class name of the copy button
+     *
+     * @default 'vp-copy-code'
+     */
+    className: string
+
+    /**
+     * locale config
+     */
+    locales: {
+      [localPath: string]: {
+        /**
+         * The title of the copy button
+         */
+        title: string
+        /**
+         * The copied message
+         */
+        copied: string
+      }
+    }
+  }
+  ```
+
 - Default: `true`
 
 - Details：
 
-  Enable add the copy code button or not.
+  Adding a copy code button to code block or not.
 
-::: tip
-The `@vuepress/plugin-prismjs` plugin only add copy button to code blocks, but it does not provide the functionality or styles.
+  ::: tip
 
-To achieve both code copy functionality and styling, you should use the [@vuepress/plugin-copy-code](./copy-code.md) plugin.
-:::
+  The plugin only adds copy button inside code blocks, without providing any functionality or styles.
 
-```ts
-interface CopyCodeButtonOptions {
-  /**
-   * The class name of the copy button
-   * @default 'copy'
-   */
-  className: string
-  // locales config
-  locales: {
-    [localPath: string]: {
-      /**
-       * The title of the copy button
-       */
-      title: string
-      /**
-       * The copied message
-       */
-      copied: string
-    }
-  }
-}
-```
+  To achieve both code copy functionality and styling, you should use the [@vuepress/plugin-copy-code](./copy-code.md) plugin.
+
+  :::
 
 ::: details Built-in Supported Languages
 
