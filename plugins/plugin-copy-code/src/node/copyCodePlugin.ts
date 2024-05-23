@@ -23,6 +23,7 @@ export const copyCodePlugin =
       define: (app) => ({
         __CC_DELAY__: options.delay || 500,
         __CC_DURATION__: options.duration || 2000,
+        __CC_IGNORE_NODES__: options.ignoreNodes || [],
         __CC_LOCALES__: getLocaleConfig({
           app,
           name: PLUGIN_NAME,
