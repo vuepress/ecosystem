@@ -9,6 +9,13 @@ export const addClassTransformer: ShikiTransformer = {
   },
 }
 
+/**
+ * This `transformer` is primarily for the usage instructions of themes.
+ * When developers need to provide an example like `// [!code xxx]`,
+ * they can use `// [\!code xxx]` to avoid being processed by `shiki`.
+ * After `shiki` completes the processing,
+ * replace `[\!code` back with `[!code` to display the correct text.
+ */
 export const removeEscapeTransformer: ShikiTransformer = {
   name: 'vuepress:remove-escape',
   postprocess(code) {

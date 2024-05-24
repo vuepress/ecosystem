@@ -7,7 +7,7 @@ import {
 } from 'shiki'
 import { colors, logger } from 'vuepress/utils'
 import { getTransformers } from './transformers/getTransformers.js'
-import type { ShikiPluginOptions } from './types.js'
+import type { ShikiHighlightOptions } from './types.js'
 import { attrsToLines, nanoid, resolveLanguage } from './utils.js'
 
 const DEFAULT_LANGS = Object.keys(bundledLanguages)
@@ -21,7 +21,7 @@ export const resolveHighlight = async ({
   defaultHighlightLang = '',
   transformers: userTransformers = [],
   ...options
-}: ShikiPluginOptions = {}): Promise<
+}: ShikiHighlightOptions = {}): Promise<
   (str: string, lang: string, attrs: string) => string
 > => {
   const highlighter = await getHighlighter({
@@ -74,7 +74,13 @@ export const resolveHighlight = async ({
 
     const highlighted = highlighter.codeToHtml(str, {
       lang,
-      meta: { __raw: attrs },
+      meta: {
+        /**
+         * Custom `transformers` passed by users may require `attrs`.
+         * e.g. [transformerNotationWordHighlight](https://shiki.style/packages/transformers#transformernotationwordhighlight)
+         */
+        __raw: attrs,
+      },
       transformers: [
         ...transformers,
         ...(options.highlightLines ?? true

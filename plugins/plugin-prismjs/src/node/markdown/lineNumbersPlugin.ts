@@ -1,10 +1,10 @@
 import type { Markdown } from 'vuepress/markdown'
-import type { PreWrapperOptions } from '../types.js'
+import type { LineNumbersOptions } from '../types.js'
 import { resolveLineNumbers } from '../utils/index.js'
 
 export const lineNumbersPlugin = (
   md: Markdown,
-  lineNumbers: PreWrapperOptions['lineNumbers'] = true,
+  { lineNumbers = true }: LineNumbersOptions = {},
 ): void => {
   const rawFence = md.renderer.rules.fence!
 

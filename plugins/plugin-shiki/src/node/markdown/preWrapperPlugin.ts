@@ -1,12 +1,12 @@
 // markdown-it plugin for generating line numbers.
 // v-pre block logic is in `../highlight.ts`
 import type { Markdown } from 'vuepress/markdown'
-import type { ShikiPluginOptions } from '../types.js'
+import type { PreWrapperOptions } from '../types.js'
 import { resolveAttr, resolveLanguage } from '../utils.js'
 
 export const preWrapperPlugin = (
   md: Markdown,
-  { preWrapper = true }: ShikiPluginOptions = {},
+  { preWrapper = true }: PreWrapperOptions = {},
 ): void => {
   const rawFence = md.renderer.rules.fence!
 

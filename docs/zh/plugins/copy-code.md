@@ -60,6 +60,42 @@ export default {
 
   如果你使用的主题有切换动画，建议配置此选项为 `切换动画时长 + 200`
 
+### ignoreSelector
+
+- 类型：`string[]`
+- 详情:
+
+  代码块中的元素选择器，用于在复制时忽略相关元素。
+
+  例如: `['.token.comment']` 将忽略代码块中类名为 `.token.comment` 的节点 （这会在 `prismjs` 中忽略注释）。
+
+### transform <Badge type="tip" text="仅限组合式 API" />
+
+- 类型：`(preElement: HTMLPreElement) => void`
+- 详情:
+
+  一个转换器，用于在复制之前对 `<pre>` 中代码块内容进行修改。该选项仅在使用 `useCopyCode()` 时有效。
+
+- 示例：
+
+  ```ts
+  import { useCopyCode } from '@vuepress/plugin-copy-code/client'
+
+  export default {
+    setup() {
+      useCopyCode({
+        transform: (preElement) => {
+          // 删除 `.ignore` 类名的元素
+          pre.querySelectorAll('.ignore').remove()
+          // 插入版权信息
+          pre.innerHTML += `\n Copied by VuePress`
+        },
+        // ...其它选项
+      })
+    },
+  }
+  ```
+
 ### locales
 
 - 类型：`CopyCodePluginLocaleConfig`
@@ -149,4 +185,4 @@ export default {
 
 你可以通过 CSS 变量来自定义*复制按钮*的样式：
 
-@[code css](@vuepress/plugin-copy-code/src/client/styles/vars.css)
+@[code{1-6} css](@vuepress/plugin-copy-code/src/client/styles/copy-code.css)

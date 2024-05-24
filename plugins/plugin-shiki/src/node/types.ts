@@ -20,10 +20,7 @@ export type ShikiTheme =
   | ThemeRegistrationRaw
   | StringLiteralUnion<BundledTheme>
 
-/**
- * Options of @vuepress/plugin-shiki
- */
-export interface ShikiPluginOptions {
+export interface ShikiHighlightOptions {
   /**
    * Languages to be loaded.
    *
@@ -70,26 +67,11 @@ export interface ShikiPluginOptions {
   defaultColor?: false | StringLiteralUnion<'light' | 'dark'>
 
   /**
-   * Show line numbers in code blocks
-   * @default true
-   */
-  lineNumbers?: boolean | number
-
-  /**
    * Enable highlight lines or not
    *
    * @default true
    */
   highlightLines?: boolean
-
-  /**
-   * Wrap the `<pre>` tag with an extra `<div>` or not. Do not disable it unless you
-   * understand what's it for
-   *
-   * - Required for `lineNumbers`
-   * - Required for title display of default theme
-   */
-  preWrapper?: boolean
 
   /**
    * Enable notation diff transformer
@@ -126,4 +108,23 @@ export interface ShikiPluginOptions {
    * @see https://shiki.style/packages/transformers#transformernotationerrorlevel
    */
   notationErrorLevel?: boolean
+}
+
+export interface LineNumberOptions {
+  /**
+   * Show line numbers in code blocks
+   * @default true
+   */
+  lineNumbers?: boolean | number
+}
+
+export interface PreWrapperOptions {
+  /**
+   * Wrap the `<pre>` tag with an extra `<div>` or not. Do not disable it unless you
+   * understand what's it for
+   *
+   * - Required for `lineNumbers`
+   * - Required for title display of default theme
+   */
+  preWrapper?: boolean
 }

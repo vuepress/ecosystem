@@ -1,6 +1,11 @@
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it, vi } from 'vitest'
-import type { PrismjsPluginOptions } from '../src/node/index.js'
+import type {
+  HighlightOptions,
+  LineNumbersOptions,
+  PreWrapperOptions,
+  PrismjsPluginOptions,
+} from '../src/node/index.js'
 import {
   highlightPlugin,
   lineNumbersPlugin,
@@ -10,17 +15,21 @@ import { resolveHighlighter } from '../src/node/resolveHighlighter.js'
 
 const codeFence = '```'
 
-const createMarkdown = (options: PrismjsPluginOptions = {}): MarkdownIt => {
+const createMarkdown = ({
+  preWrapper = true,
+  lineNumbers = true,
+  ...options
+}: PrismjsPluginOptions = {}): MarkdownIt => {
   const md = MarkdownIt()
 
   md.options.highlight = (code, lang) => {
     const highlighter = resolveHighlighter(lang)
     return highlighter?.(code) || ''
   }
-  md.use(highlightPlugin, options)
-  md.use(preWrapperPlugin, options)
-  if (options.preWrapper ?? true) {
-    md.use(lineNumbersPlugin, options.lineNumbers)
+  md.use<HighlightOptions>(highlightPlugin, options)
+  md.use<PreWrapperOptions>(preWrapperPlugin, { preWrapper })
+  if (preWrapper) {
+    md.use<LineNumbersOptions>(lineNumbersPlugin, { lineNumbers })
   }
   return md
 }

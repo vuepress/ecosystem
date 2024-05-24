@@ -6,17 +6,26 @@ import {
   preWrapperPlugin,
 } from '../src/node/markdown/index.js'
 import { resolveHighlight } from '../src/node/resolveHighlight.js'
-import type { ShikiPluginOptions } from '../src/node/types.js'
+import type {
+  LineNumberOptions,
+  PreWrapperOptions,
+  ShikiHighlightOptions,
+} from '../src/node/types.js'
 
-const createMarkdown = async (
-  options: ShikiPluginOptions = {},
-): Promise<MarkdownIt> => {
+const createMarkdown = async ({
+  preWrapper = true,
+  lineNumbers = true,
+  ...options
+}: LineNumberOptions &
+  PreWrapperOptions &
+  ShikiHighlightOptions = {}): Promise<MarkdownIt> => {
   const md = MarkdownIt()
   md.options.highlight = await resolveHighlight(options)
+
   md.use(highlightLinesPlugin)
-  md.use(preWrapperPlugin, options)
-  if (options.preWrapper ?? true) {
-    md.use(lineNumberPlugin, options.lineNumbers)
+  md.use<PreWrapperOptions>(preWrapperPlugin, { preWrapper })
+  if (preWrapper) {
+    md.use<LineNumberOptions>(lineNumberPlugin, { lineNumbers })
   }
   return md
 }

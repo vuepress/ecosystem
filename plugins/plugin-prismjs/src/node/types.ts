@@ -7,7 +7,9 @@ export interface PreWrapperOptions {
    * - Required for title display of default theme
    */
   preWrapper?: boolean
+}
 
+export interface LineNumbersOptions {
   /**
    * Enable line numbers or not
    *
@@ -17,7 +19,9 @@ export interface PreWrapperOptions {
    * @default true
    */
   lineNumbers?: boolean | number
+}
 
+export interface HighlightOptions {
   /**
    * Enable highlight lines or not
    *
