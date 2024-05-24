@@ -45,6 +45,15 @@ export interface CopyCodePluginOptions {
   delay?: number
 
   /**
+   * When copying code, selecting to ignore nodes in the code block will result in the text content of the selected nodes not being copied.
+   *
+   * 复制代码时，选择忽略代码块中的节点，被选中的节点文本内容将不会被复制
+   *
+   * @default []
+   */
+  ignoreSelector?: string[]
+
+  /**
    * Locale config
    *
    * 国际化配置

@@ -60,6 +60,43 @@ export default {
 
   If the theme you are using has a switching animation, it is recommended to configure this option to `Switch animation duration + 200`.
 
+### ignoreSelector
+
+- Type: `string[]`
+- Details:
+
+  Elements selector in code blocks, used to ignore related elements when copying.
+
+  For example, `['.token.comment']` will ignore nodes with the class name `.token.comment` in code blocks (which in `prismjs` refers to ignoring comments).
+
+### transform <Badge type="tip" text="Composables API Only" />
+
+- Type: `(preElement: HTMLPreElement) => void`
+- Default: `undefined`
+- Details:
+
+  A transformer to modify the content of the code block in the `<pre>` element before copying. This option is only valid when using `useCopyCode()`.
+
+- Example:
+
+  ```ts
+  import { useCopyCode } from '@vuepress/plugin-copy-code/client'
+
+  export default {
+    setup() {
+      useCopyCode({
+        transform: (preElement) => {
+          // Remove all `.ignore` elements
+          pre.querySelectorAll('.ignore').remove()
+          // insert copyright
+          pre.innerHTML += `\n Copied by VuePress`
+        },
+        // ...other options
+      })
+    },
+  }
+  ```
+
 ### locales
 
 - Type: `CopyCodePluginLocaleConfig`
@@ -150,4 +187,4 @@ export default {
 
 You can customize the icon of the _copy button_ via CSS variables:
 
-@[code css](@vuepress/plugin-copy-code/src/client/styles/vars.css)
+@[code{1-6} css](@vuepress/plugin-copy-code/src/client/styles/copy-code.css)
