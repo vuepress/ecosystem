@@ -17,7 +17,7 @@ export interface UseCopyCodeOptions {
   /** @default false */
   showInMobile?: boolean
   /** @default [] */
-  ignoreNodes?: string[]
+  ignoreSelector?: string[]
 
   /**
    * Transform pre element before copy
@@ -49,7 +49,7 @@ export const useCopyCode = ({
   locales,
   selector,
   showInMobile,
-  ignoreNodes = [],
+  ignoreSelector = [],
   transform,
 }: UseCopyCodeOptions): void => {
   if (__VUEPRESS_SSR__) return
@@ -103,9 +103,9 @@ export const useCopyCode = ({
   ): void => {
     const clone = codeContent.cloneNode(true) as HTMLPreElement
 
-    if (ignoreNodes.length) {
+    if (ignoreSelector.length) {
       clone
-        .querySelectorAll(ignoreNodes.join(','))
+        .querySelectorAll(ignoreSelector.join(','))
         .forEach((node) => node.remove())
     }
 

@@ -60,13 +60,12 @@ export default {
 
   If the theme you are using has a switching animation, it is recommended to configure this option to `Switch animation duration + 200`.
 
-### ignoreNodes
+### ignoreSelector
 
 - Type: `string[]`
-- Default: `[]`
 - Details:
 
-  When copying code, selecting to ignore nodes in the code block will result in the text content of the selected nodes not being copied.
+  Elements selector in code blocks, used to ignore related elements when copying.
 
   For example, `['.token.comment']` will ignore nodes with the class name `.token.comment` in code blocks (which in `prismjs` refers to ignoring comments).
 
@@ -76,11 +75,9 @@ export default {
 - Default: `undefined`
 - Details:
 
-  Transform pre element before copy.
+  A transformer to modify the content of the code block in the `<pre>` element before copying. This option is only valid when using `useCopyCode()`.
 
-  For example, deleting certain elements before copying, or inserting copyright information.
-
-  This option is only valid when using `useCopyCode()`.
+- Example:
 
   ```ts
   import { useCopyCode } from '@vuepress/plugin-copy-code/client'

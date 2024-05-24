@@ -60,27 +60,23 @@ export default {
 
   如果你使用的主题有切换动画，建议配置此选项为 `切换动画时长 + 200`
 
-### ignoreNodes
+### ignoreSelector
 
 - 类型：`string[]`
-- 默认值：`[]`
 - 详情:
 
-  复制代码时，选择忽略代码块中的节点，被选中的节点文本内容将不会被复制
+  代码块中的元素选择器，用于在复制时忽略相关元素。
 
-  例如: `['.token.comment']` 将忽略 代码块中类名为 `.token.comment` 的节点 （这在 `prismjs` 中为忽略注释）
+  例如: `['.token.comment']` 将忽略代码块中类名为 `.token.comment` 的节点 （这会在 `prismjs` 中忽略注释）。
 
-### transform <Badge type="tip" text="Composables API Only" />
+### transform <Badge type="tip" text="仅限组合式 API" />
 
 - 类型：`(preElement: HTMLPreElement) => void`
-- 默认值：`undefined`
 - 详情:
 
-  在复制之前修改 `<pre>` 元素
+  一个转换器，用于在复制之前对 `<pre>` 中代码块内容进行修改。该选项仅在使用 `useCopyCode()` 时有效。
 
-  例如，在复制之前删除特定子元素，或插入版权信息。
-
-  该选项仅在使用 `useCopyCode()` 时有效
+- 示例：
 
   ```ts
   import { useCopyCode } from '@vuepress/plugin-copy-code/client'

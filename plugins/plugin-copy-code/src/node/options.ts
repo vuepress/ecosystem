@@ -51,7 +51,7 @@ export interface CopyCodePluginOptions {
    *
    * @default []
    */
-  ignoreNodes?: string[]
+  ignoreSelector?: string[]
 
   /**
    * Locale config
