@@ -23,7 +23,7 @@ export const preWrapperPlugin = (
 
     let result = rawFence(...args)
 
-    if (!preWrapper) {
+    if (!preWrapper || !result.startsWith('<pre')) {
       // remove `<code>` attributes
       result = result.replace(/<code[^]*?>/, '<code>')
       result = `<pre class="${languageClass}"${result.slice('<pre'.length)}`
