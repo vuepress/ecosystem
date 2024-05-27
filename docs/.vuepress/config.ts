@@ -50,7 +50,6 @@ export default defineUserConfig({
 
   // configure markdown
   markdown: {
-    code: false,
     importCode: {
       handleImportPath: (importPath) => {
         // handle @vuepress packages import path

@@ -38,8 +38,4 @@ import { defineArtalkConfig } from '@vuepress/plugin-comment/client'
 defineArtalkConfig({
   // Artalk config
 })
-
-export default defineClientConfig({
-  // ...
-})
 ```

@@ -29,17 +29,12 @@ export default {
     useKatexCopy();
   }
 };
-
 `
-    : `\
-export default {};
-`
+    : ''
 }`
   } else if (mathRenderer === 'mathjax') {
     content += `\
 import './mathjax.css';
-
-export default {};
 `
   }
 

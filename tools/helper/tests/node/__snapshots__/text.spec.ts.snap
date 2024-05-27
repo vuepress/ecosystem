@@ -6,6 +6,7 @@ exports[`getPageText > default > /component.html 1`] = `"A text with"`;
 
 exports[`getPageText > default > /custom-separator.html 1`] = `
 "Here is article excerpt.
+
 END_OF_EXCERPT
 Content
 Here is main content of article.
@@ -161,12 +162,15 @@ Tables
 Codes
 Inline Code: inline code
 Block code:
+
 Syntax highlighting:
- Comment"
+
+Comment"
 `;
 
 exports[`getPageText > default > /separator.html 1`] = `
 "Here is article excerpt.
+
 
 Content
 Here is main content of article.
@@ -187,6 +191,7 @@ exports[`getPageText > removedTags > /component.html 2`] = `"A text with"`;
 exports[`getPageText > removedTags > /custom-separator.html 1`] = `
 "Here is article excerpt.
 const a = 1
+
 END_OF_EXCERPT
 Content
 Here is main content of article.
@@ -200,6 +205,7 @@ const a = 1"
 
 exports[`getPageText > removedTags > /custom-separator.html 2`] = `
 "Here is article excerpt.
+
 END_OF_EXCERPT
 Content
 Here is main content of article."
@@ -431,13 +437,15 @@ Codes
 Inline Code: inline code
 Block code:
 Sample text here...
+
 Syntax highlighting:
 var foo = function (bar) {
   return bar++
 }
 
 console.log(foo(5))
- Comment"
+
+Comment"
 `;
 
 exports[`getPageText > removedTags > /markdown.html 2`] = `
@@ -492,13 +500,16 @@ Tables
 Codes
 Inline Code: inline code
 Block code:
+
 Syntax highlighting:
- Comment"
+
+Comment"
 `;
 
 exports[`getPageText > removedTags > /separator.html 1`] = `
 "Here is article excerpt.
 const a = 1
+
 
 Content
 Here is main content of article.
@@ -512,6 +523,7 @@ const a = 1"
 
 exports[`getPageText > removedTags > /separator.html 2`] = `
 "Here is article excerpt.
+
 
 Content
 Here is main content of article."

@@ -304,8 +304,4 @@ import { defineWalineConfig } from '@vuepress/plugin-comment/client'
 defineWalineConfig({
   // Waline config
 })
-
-export default defineClientConfig({
-  // ...
-})
 ```
