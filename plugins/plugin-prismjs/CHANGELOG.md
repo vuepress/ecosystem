@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.32](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.31...v2.0.0-rc.32) (2024-05-27)
+
+### Bug Fixes
+
+- fix preWrapper plugin ([#157](https://github.com/vuepress/ecosystem/issues/157)) ([28359b9](https://github.com/vuepress/ecosystem/commit/28359b95181ef0961ea8e5e0058319615f0a5f67))
+
 # [2.0.0-rc.31](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.30...v2.0.0-rc.31) (2024-05-27)
 
 ### Features
