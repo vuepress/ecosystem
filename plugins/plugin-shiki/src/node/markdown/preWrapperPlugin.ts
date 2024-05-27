@@ -11,6 +11,12 @@ export const preWrapperPlugin = (
   const rawFence = md.renderer.rules.fence!
 
   md.renderer.rules.fence = (...args) => {
+    let result = rawFence(...args)
+
+    if (!result.startsWith('<pre')) {
+      return result
+    }
+
     const [tokens, idx, options] = args
     const token = tokens[idx]
 
@@ -18,14 +24,7 @@ export const preWrapperPlugin = (
     const info = token.info ? md.utils.unescapeAll(token.info).trim() : ''
 
     const lang = resolveLanguage(info)
-    const title = resolveAttr(info, 'title') || lang
     const languageClass = `${options.langPrefix}${lang}`
-
-    let result = rawFence(...args)
-
-    if (!result.startsWith('<pre')) {
-      return result
-    }
 
     if (!preWrapper) {
       // remove `<code>` attributes
@@ -33,6 +32,8 @@ export const preWrapperPlugin = (
       result = `<pre class="${languageClass}"${result.slice('<pre'.length)}`
       return result
     }
+
+    const title = resolveAttr(info, 'title') || lang
 
     return `<div class="${languageClass}" data-ext="${lang}" data-title="${title}">${result}</div>`
   }
