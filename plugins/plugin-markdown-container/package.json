@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-container",
-  "version": "2.0.0-rc.30",
+  "version": "2.0.0-rc.31",
   "description": "VuePress plugin - markdown container",
   "keywords": [
     "vuepress-plugin",
