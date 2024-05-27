@@ -174,21 +174,6 @@ div[class*='language-'] {
     z-index: 1;
   }
 
-  .highlight-lines {
-    user-select: none;
-    padding-top: 1.3rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    font-size: 0.875em;
-    line-height: $line-height;
-
-    .highlight-line {
-      background-color: var(--code-hl-bg-color);
-    }
-  }
-
   &:not(.line-numbers-mode) {
     .line-numbers {
       display: none;
@@ -196,21 +181,6 @@ div[class*='language-'] {
   }
 
   &.line-numbers-mode {
-    .highlight-lines .highlight-line {
-      position: relative;
-
-      &::before {
-        content: ' ';
-        position: absolute;
-        z-index: 2;
-        left: 0;
-        top: 0;
-        display: block;
-        width: var(--code-ln-wrapper-width);
-        height: 100%;
-      }
-    }
-
     pre {
       margin-left: var(--code-ln-wrapper-width);
       vertical-align: middle;
@@ -260,7 +230,7 @@ div[class*='language-'] {
 // ------------ code notation highlighting ------------
 // matches `<span class="line xxxx" ></span>`
 
-div[class*='language-'] pre {
+div[class*='language-'] {
   // highlight lines and  notation highlight
   //
   // `!code highlight` and `!code hl` are the same:
@@ -275,7 +245,7 @@ div[class*='language-'] pre {
   // - `// [\!code error]`
   // - `// [\!code warning:3]`
   // - `// [\!code error:3]`
-  code .highlighted {
+  .line.highlighted {
     background-color: var(--code-hl-bg-color);
     transition: background-color 0.5s;
     margin: 0 -24px;
@@ -296,7 +266,7 @@ div[class*='language-'] pre {
   //
   // - class="diff add": `// [\!code ++]` or `// [\!code ++:3]`
   // - class="diff remove":  `// [\!code --]` or `// [\!code --:3]`
-  code .diff {
+  .line.diff {
     transition: background-color 0.5s;
     margin: 0 -24px;
     padding: 0 24px;
@@ -327,13 +297,11 @@ div[class*='language-'] pre {
       }
     }
   }
-}
 
-// notation focused lines
-//
-// - `// [\!code focus]`
-// - `// [\!code focus:3]`
-div[class*='language-'] {
+  // notation focused lines
+  //
+  // - `// [\!code focus]`
+  // - `// [\!code focus:3]`
   .has-focused-lines .line:not(.has-focus) {
     filter: blur(0.095rem);
     opacity: 0.7;
