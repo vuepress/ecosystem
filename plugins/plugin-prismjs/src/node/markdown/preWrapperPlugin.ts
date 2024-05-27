@@ -11,7 +11,7 @@ export const preWrapperPlugin = (
   md.renderer.rules.fence = (...args) => {
     const result = rawFence(...args)
 
-    if (!preWrapper) {
+    if (!preWrapper || !result.startsWith('<pre')) {
       return result
     }
 
