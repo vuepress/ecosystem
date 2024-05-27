@@ -31,8 +31,6 @@ import "${await prepareMarkStyleFile(app, lightmodeSelector, darkmodeSelector)}"
     'markdown-image/client.js',
     `\
 ${content}
-
-export default {}
 `,
   )
 }

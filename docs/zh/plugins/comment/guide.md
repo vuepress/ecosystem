@@ -40,10 +40,6 @@ import {
 defineArtalkConfig({
   // 选项
 })
-
-export default defineClientConfig({
-  // ...
-})
 ```
 
 有以下你需要注意的限制：
