@@ -54,7 +54,7 @@ export const preWrapperPlugin = (
     // after: style="*" tab-index="*"
     result = result.replace(PRE_ATTRS_REGEXP, (_, before, after) => {
       attrs = after.trim()
-      // Keep `v-pre`, remove the rest.
+      // Keep `v-pre class="*"`, remove the rest.
       return `<pre${before.trimEnd()}>`
     })
 
