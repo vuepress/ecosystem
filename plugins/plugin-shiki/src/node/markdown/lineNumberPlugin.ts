@@ -44,17 +44,15 @@ export const lineNumberPlugin = (
       return rawCode
     }
 
-    const startNumbers = Number(info.match(LINE_NUMBERS_START_REGEXP)?.[1] ?? 1)
+    const startNumbers =
+      Number(info.match(LINE_NUMBERS_START_REGEXP)?.[1] ?? 1) - 1
+    const lineNumbersStyle = `style="counter-reset:line-number ${startNumbers}"`
 
-    /**
-     * Originally intended to use `counter-reset: line-number attr(data-start number)`,
-     * but due to its poor compatibility, the current approach was chosen.
-     */
     const lineNumbersCode = [...Array(lines.length)]
-      .map((_, i) => `<div class="line-number">${startNumbers + i}</div>`)
+      .map(() => `<div class="line-number"></div>`)
       .join('')
 
-    const lineNumbersWrapperCode = `<div class="line-numbers" aria-hidden="true">${lineNumbersCode}</div>`
+    const lineNumbersWrapperCode = `<div class="line-numbers" aria-hidden="true" ${lineNumbersStyle}>${lineNumbersCode}</div>`
 
     const finalCode = rawCode
       .replace(/<\/div>$/, `${lineNumbersWrapperCode}</div>`)

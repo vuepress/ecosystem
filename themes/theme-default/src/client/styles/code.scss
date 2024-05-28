@@ -235,6 +235,11 @@ div[class*='language-'] {
         z-index: 3;
         user-select: none;
         height: #{$line-height}em;
+
+        &::before {
+          counter-increment: line-number;
+          content: counter(line-number);
+        }
       }
     }
 
