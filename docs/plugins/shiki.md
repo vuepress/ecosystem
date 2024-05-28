@@ -112,6 +112,8 @@ export default {
 
   You can add `:line-numbers` / `:no-line-numbers` mark in your fenced code blocks to override the value set in config.
 
+  You can also customize the starting line number by adding `=` after `:line-numbers`. For example, `:line-numbers=2` means the line numbers in code blocks will start from `2`.
+
 **Input:**
 
 ````md
@@ -127,8 +129,10 @@ const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
-```
-
+```ts:line-numbers=2
+// line-numbers is enabled and start from 2
+const line3 = 'This is line 3'
+const line4 = 'This is line 4'
 ```
 ````
 
@@ -144,6 +148,12 @@ const line3 = 'This is line 3'
 // line-numbers is disabled
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
+```
+
+```ts:line-numbers=2
+// line-numbers is enabled and start from 2
+const line3 = 'This is line 3'
+const line4 = 'This is line 4'
 ```
 
 ### highlightLines
