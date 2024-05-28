@@ -1,3 +1,3 @@
 # Plugins
 
-<Catalog :level="2" />
+<Catalog :level="2" hideHeading />
