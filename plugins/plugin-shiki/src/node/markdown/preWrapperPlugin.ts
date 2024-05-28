@@ -4,6 +4,8 @@ import type { Markdown } from 'vuepress/markdown'
 import type { PreWrapperOptions } from '../types.js'
 import { resolveAttr, resolveLanguage } from '../utils.js'
 
+const PRE_ATTRS_REGEXP = /<pre([\s\S]*?class="[^"]*")([^>]*)>/
+
 export const preWrapperPlugin = (
   md: Markdown,
   { preWrapper = true }: PreWrapperOptions = {},
@@ -46,7 +48,16 @@ export const preWrapperPlugin = (
     }
 
     const title = resolveAttr(info, 'title') || lang
+    let attrs = ''
 
-    return `<div class="${languageClass}" data-ext="${lang}" data-title="${title}">${result}</div>`
+    // before: maybe `v-pre class="shiki *"`
+    // after: style="*" tab-index="*"
+    result = result.replace(PRE_ATTRS_REGEXP, (_, before, after) => {
+      attrs = after.trim()
+      // Keep `v-pre class="*"`, remove the rest.
+      return `<pre${before.trimEnd()}>`
+    })
+
+    return `<div class="${languageClass}" data-ext="${lang}" data-title="${title}" ${attrs}>${result}</div>`
   }
 }
