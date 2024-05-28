@@ -1,3 +1,3 @@
 # Plugins
 
-<Catalog :level="1" />
+<Catalog :level="2" />
