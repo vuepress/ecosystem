@@ -31,6 +31,10 @@ code {
   }
 }
 
+kbd {
+  border-color: var(--c-border-dark);
+}
+
 blockquote {
   color: var(--c-text-quote);
   border-color: var(--c-border-dark);
