@@ -24,7 +24,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-active-header-links](../../plugins/active-header-links.md) 。
+  是否启用 [@vuepress/plugin-active-header-links](../../plugins/development/active-header-links.md) 。
 
 ## themePlugins.backToTop
 
@@ -34,7 +34,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-back-to-top](../../plugins/back-to-top.md) 。
+  是否启用 [@vuepress/plugin-back-to-top](../../plugins/features/back-to-top.md) 。
 
   支持对象格式以作为插件选项。
 
@@ -44,7 +44,7 @@ export default {
 
 - 详情：
 
-  是否启用由 [@vuepress/plugin-markdown-container](../../plugins/markdown-container.md) 支持的自定义容器。
+  是否启用由 [@vuepress/plugin-markdown-container](../../plugins/markdown/markdown-container.md) 支持的自定义容器。
 
   `ContainerType` 类型为：
 
@@ -66,7 +66,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-copy-code](../../plugins/copy-code.md) 。
+  是否启用 [@vuepress/plugin-copy-code](../../plugins/features/copy-code.md) 。
 
   支持对象格式以作为插件选项。
 
@@ -78,7 +78,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-git](../../plugins/git.md) 。
+  是否启用 [@vuepress/plugin-git](../../plugins/development/git.md) 。
 
 ## themePlugins.links-check
 
@@ -88,7 +88,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-links-check](../../plugins/links-check.md) 。
+  是否启用 [@vuepress/plugin-links-check](../../plugins/markdown/links-check.md) 。
 
 ## themePlugins.mediumZoom
 
@@ -98,7 +98,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-medium-zoom](../../plugins/medium-zoom.md) 。
+  是否启用 [@vuepress/plugin-medium-zoom](../../plugins/features/medium-zoom.md) 。
 
 ## themePlugins.nprogress
 
@@ -108,7 +108,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-nprogress](../../plugins/nprogress.md) 。
+  是否启用 [@vuepress/plugin-nprogress](../../plugins/features/nprogress.md) 。
 
 ## themePlugins.prismjs
 
@@ -118,7 +118,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-prismjs](../../plugins/prismjs.md) 。
+  是否启用 [@vuepress/plugin-prismjs](../../plugins/markdown/prismjs.md) 。
 
 ## themePlugins.seo
 
@@ -128,7 +128,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-seo](../../plugins/seo/README.md) 。
+  是否启用 [@vuepress/plugin-seo](../../plugins/seo/seo/README.md) 。
 
   支持对象格式以作为插件选项。
 
@@ -140,6 +140,6 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-sitemap](../../plugins/sitemap/README.md) 。
+  是否启用 [@vuepress/plugin-sitemap](../../plugins/seo/sitemap/README.md) 。
 
   支持对象格式以作为插件选项。

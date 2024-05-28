@@ -4,123 +4,153 @@ export const sidebarEn: SidebarConfig = {
   '/plugins/': [
     {
       text: 'Common Features',
-      children: [
-        '/plugins/append-date',
-        '/plugins/back-to-top',
-        '/plugins/catalog',
-        '/plugins/copy-code',
-        '/plugins/copyright',
-        '/plugins/medium-zoom',
-        '/plugins/notice',
-        '/plugins/nprogress',
-        '/plugins/photo-swipe',
-        '/plugins/redirect',
-        '/plugins/register-components',
-        '/plugins/watermark',
-      ],
+      link: '/plugins/features/',
     },
     {
       text: 'Markdown',
-      children: [
-        '/plugins/markdown-container',
-        '/plugins/markdown-image',
-        '/plugins/markdown-math',
-        '/plugins/links-check',
-        '/plugins/prismjs',
-        '/plugins/shiki',
-      ],
+      link: '/plugins/markdown/',
     },
     {
       text: 'Content Search',
-      children: ['/plugins/docsearch', '/plugins/search'],
+      link: '/plugins/search/',
     },
     {
       text: 'Blogging',
-      children: [
-        {
-          text: 'Blog',
-          link: '/plugins/blog/',
-          children: ['/plugins/blog/guide', '/plugins/blog/config'],
-        },
-        {
-          text: 'Comment',
-          link: '/plugins/comment/',
-          children: [
-            '/plugins/comment/guide',
-            '/plugins/comment/giscus/',
-            '/plugins/comment/waline/',
-            '/plugins/comment/artalk/',
-            '/plugins/comment/twikoo/',
-          ],
-        },
-        {
-          text: 'Feed',
-          link: '/plugins/feed/',
-          children: [
-            '/plugins/feed/guide',
-            '/plugins/feed/config',
-            '/plugins/feed/frontmatter',
-            '/plugins/feed/channel',
-            '/plugins/feed/getter',
-          ],
-        },
-      ],
+      link: '/plugins/blog/',
     },
+
     {
-      text: 'PWA',
-      children: [
-        {
-          text: 'PWA',
-          link: '/plugins/pwa/',
-          children: ['/plugins/pwa/guide', '/plugins/pwa/config'],
-        },
-        '/plugins/remove-pwa',
-      ],
+      text: 'Analytics',
+      link: '/plugins/analytics/',
     },
     {
       text: 'SEO',
-      children: [
-        {
-          text: 'SEO',
-          link: '/plugins/seo/',
-          children: ['/plugins/seo/guide', '/plugins/seo/config'],
-        },
-        {
-          text: 'Sitemap',
-          link: '/plugins/sitemap/',
-          children: [
-            '/plugins/sitemap/guide',
-            '/plugins/sitemap/config',
-            '/plugins/sitemap/frontmatter',
-          ],
-        },
-        '/plugins/baidu-analytics',
-        '/plugins/google-analytics',
-        '/plugins/google-tag-manager',
-        '/plugins/umami-analytics',
-      ],
+      link: '/plugins/seo/',
+    },
+    {
+      text: 'PWA',
+      link: '/plugins/pwa/',
     },
     {
       text: 'Theme Development',
+      link: '/plugins/development/',
+    },
+    {
+      text: 'Tools',
+      link: '/plugins/tools/',
+    },
+  ],
+
+  '/plugins/analytics/': [
+    '/plugins/analytics/baidu-analytics',
+    '/plugins/analytics/google-analytics',
+    '/plugins/analytics/umami-analytics',
+  ],
+
+  '/plugins/blog/': [
+    {
+      text: 'Blog',
+      link: '/plugins/blog/blog/',
+      children: ['/plugins/blog/blog/guide', '/plugins/blog/blog/config'],
+    },
+    {
+      text: 'Comment',
+      link: '/plugins/blog/comment/',
       children: [
-        '/plugins/active-header-links',
-        '/plugins/git',
-        '/plugins/palette',
-        '/plugins/reading-time',
-        '/plugins/rtl',
-        {
-          text: 'Sass Palette',
-          link: '/plugins/sass-palette/',
-          children: [
-            '/plugins/sass-palette/guide',
-            '/plugins/sass-palette/config',
-          ],
-        },
-        '/plugins/theme-data',
-        '/plugins/toc',
+        '/plugins/blog/comment/guide',
+        '/plugins/blog/comment/giscus/',
+        '/plugins/blog/comment/waline/',
+        '/plugins/blog/comment/artalk/',
+        '/plugins/blog/comment/twikoo/',
+      ],
+    },
+    {
+      text: 'Feed',
+      link: '/plugins/blog/feed/',
+      children: [
+        '/plugins/blog/feed/guide',
+        '/plugins/blog/feed/config',
+        '/plugins/blog/feed/frontmatter',
+        '/plugins/blog/feed/channel',
+        '/plugins/blog/feed/getter',
       ],
     },
   ],
+
+  '/plugins/development/': [
+    '/plugins/development/active-header-links',
+    '/plugins/development/git',
+    '/plugins/development/palette',
+    '/plugins/development/reading-time',
+    '/plugins/development/rtl',
+    {
+      text: 'Sass Palette',
+      link: '/plugins/development/sass-palette/',
+      children: [
+        '/plugins/development/sass-palette/guide',
+        '/plugins/development/sass-palette/config',
+      ],
+    },
+    '/plugins/development/theme-data',
+    '/plugins/development/toc',
+  ],
+
+  '/plugins/features/': [
+    '/plugins/features/back-to-top',
+    '/plugins/features/catalog',
+    '/plugins/features/copy-code',
+    '/plugins/features/copyright',
+    '/plugins/features/medium-zoom',
+    '/plugins/features/notice',
+    '/plugins/features/nprogress',
+    '/plugins/features/photo-swipe',
+    '/plugins/features/watermark',
+  ],
+
+  '/plugins/markdown/': [
+    '/plugins/markdown/append-date',
+    '/plugins/markdown/markdown-container',
+    '/plugins/markdown/markdown-image',
+    '/plugins/markdown/markdown-math',
+    '/plugins/markdown/links-check',
+    '/plugins/markdown/prismjs',
+    '/plugins/markdown/shiki',
+  ],
+
+  '/plugins/pwa/': [
+    {
+      text: 'PWA',
+      link: '/plugins/pwa/pwa/',
+      children: ['/plugins/pwa/pwa/guide', '/plugins/pwa/pwa/config'],
+    },
+    '/plugins/pwa/remove-pwa',
+  ],
+
+  '/plugins/tools/': [
+    '/plugins/tools/google-tag-manager',
+    '/plugins/tools/redirect',
+    '/plugins/tools/register-components',
+  ],
+
+  '/plugins/search/': ['/plugins/search/docsearch', '/plugins/search/search'],
+
+  '/plugins/seo/': [
+    {
+      text: 'SEO',
+      link: '/plugins/seo/seo/',
+      children: ['/plugins/seo/seo/guide', '/plugins/seo/seo/config'],
+    },
+    {
+      text: 'Sitemap',
+      link: '/plugins/seo/sitemap/',
+      children: [
+        '/plugins/seo/sitemap/guide',
+        '/plugins/seo/sitemap/config',
+        '/plugins/seo/sitemap/frontmatter',
+      ],
+    },
+  ],
+
   '/themes/': [
     {
       text: 'Default Theme',
@@ -137,6 +167,7 @@ export const sidebarEn: SidebarConfig = {
       ],
     },
   ],
+
   '/tools/': [
     {
       text: '@vuepress/helper',
