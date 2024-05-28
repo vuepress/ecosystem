@@ -229,18 +229,12 @@ div[class*='language-'] {
       padding-top: 1.3rem;
       font-size: 0.875em;
       line-height: $line-height;
-      counter-reset: line-number;
 
       .line-number {
         position: relative;
         z-index: 3;
         user-select: none;
         height: #{$line-height}em;
-
-        &::before {
-          counter-increment: line-number;
-          content: counter(line-number);
-        }
       }
     }
 
@@ -255,6 +249,26 @@ div[class*='language-'] {
       border-right: 1px solid var(--code-hl-bg-color);
     }
   }
+}
+
+// ------------ plugin-shiki code highlighting ------------
+// when defaultColor is `false`, override the background color
+div[class*='language'] {
+  background-color: var(--shiki-light-bg, var(--code-bg-color));
+  transition: background-color var(--t-color);
+}
+
+.dark div[class*='language'] {
+  background-color: var(--shiki-dark-bg, var(--code-bg-color));
+}
+
+// dual themes, override the color
+.vp-code pre span {
+  color: var(--shiki-light, inherit);
+}
+
+.dark .vp-code pre span {
+  color: var(--shiki-dark, inherit);
 }
 
 // ------------ code notation highlighting ------------
