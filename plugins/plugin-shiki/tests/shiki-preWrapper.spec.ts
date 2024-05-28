@@ -216,6 +216,49 @@ ${codeFence}
     })
   })
 
+  describe(':line-numbers=number', () => {
+    const source = `\
+${codeFence}ts:line-numbers=2
+const line2 = 'line 2'
+const line3 = 'line 3'
+${codeFence}
+
+${codeFence}ts{2,3}:line-numbers=3
+const line3 = 'line 3'
+const line4 = 'line 4'
+const line5 = 'line 5'
+${codeFence}
+
+${codeFence}ts title="config/foo.ts" foo="foo" {1,2}:line-numbers=10
+const line10 = 'line 10'
+const line11 = 'line 11'
+${codeFence}
+`
+    it('should work properly if `lineNumbers` is enabled by default', async () => {
+      const md = await createMarkdown({
+        lineNumbers: true,
+      })
+
+      expect(md.render(source)).toMatchSnapshot()
+    })
+
+    it('should work properly if `lineNumbers` is disabled by default', async () => {
+      const md = await createMarkdown({
+        lineNumbers: false,
+      })
+
+      expect(md.render(source)).toMatchSnapshot()
+    })
+
+    it('should work properly if `lineNumbers` is set to a number by default', async () => {
+      const md = await createMarkdown({
+        lineNumbers: 4,
+      })
+
+      expect(md.render(source)).toMatchSnapshot()
+    })
+  })
+
   describe('notation transformers', () => {
     const source = `\
 ${codeFence}ts
