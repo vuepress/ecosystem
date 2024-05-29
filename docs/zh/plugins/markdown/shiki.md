@@ -288,6 +288,20 @@ export default defineUserConfig({
 
 - 详情：指定的语言不可用时所使用的备选语言。
 
+### logLevel
+
+- 类型：`'warn' | 'debug' | 'silent'`
+
+- 默认值：`'warn'`
+
+- 详情：
+
+  Shiki 语言检测的日志级别。
+
+  - `warn`: 每次检测到未知语言时发出警告（默认）
+  - `debug`: 每次检测到未知代码块时记录其文件路径（设置 `--debug` 标记时默认）
+  - `silent`: 不发出警告
+
 ### preWrapper
 
 - 类型：`boolean`

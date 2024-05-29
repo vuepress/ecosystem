@@ -286,6 +286,20 @@ The following features requires additional style to work, which should be handle
 
 - Details: Fallback language when the specified language is not available.
 
+### logLevel
+
+- Type: `'warn' | 'debug' | 'silent'`
+
+- Default: `'warn'`
+
+- Details:
+
+  Log level of Shiki language detection.
+
+  - `warn`: warn each unknown lang one time (default)
+  - `debug`: log every unknown code block with its file path. (default when `--debug` flag is set)
+  - `silent`: no warning
+
 ### preWrapper
 
 - Type: `boolean`
