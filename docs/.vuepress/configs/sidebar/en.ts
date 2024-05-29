@@ -146,6 +146,7 @@ export const sidebarEn: SidebarConfig = {
         '/tools/helper/node/page',
         '/tools/helper/client',
         '/tools/helper/shared',
+        '/tools/helper/style',
       ],
     },
   ],
