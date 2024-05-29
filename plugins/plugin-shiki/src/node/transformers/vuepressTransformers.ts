@@ -9,6 +9,13 @@ export const addClassTransformer: ShikiTransformer = {
   },
 }
 
+export const cleanupTransformer: ShikiTransformer = {
+  name: 'vuepress:cleanup',
+  pre(node) {
+    delete node.properties.tabindex
+  },
+}
+
 /**
  * This `transformer` is primarily for the usage instructions of themes.
  * When developers need to provide an example like `// [!code xxx]`,
