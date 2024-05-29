@@ -155,7 +155,7 @@ export const resolveArraySidebarItems = (
   ): ResolvedSidebarItem => {
     const childItem: ResolvedSidebarItem = isString(item)
       ? getAutoLink(resolvePrefix(pathPrefix, item))
-      : item.link
+      : isString(item.link)
         ? {
             ...item,
             link: isLinkInternal(item.link)
