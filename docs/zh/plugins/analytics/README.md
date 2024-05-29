@@ -1,3 +1,3 @@
 # 统计分析插件
 
-<Catalog />
+<Catalog :level="1" />

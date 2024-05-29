@@ -1,3 +1,3 @@
 # Current Page Catalog
 
-<Catalog />
+<Catalog :level="1" />

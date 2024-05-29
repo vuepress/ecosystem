@@ -14,9 +14,10 @@ const WARNED_LANGS = new Set<string>()
 
 export const resolveHighlight = async ({
   langs = bundledLanguageNames,
+  langAlias = {},
   theme = 'nord',
   themes,
-  defaultHighlightLang = '',
+  defaultLang = '',
   transformers: userTransformers = [],
   ...options
 }: ShikiHighlightOptions = {}): Promise<
@@ -24,6 +25,7 @@ export const resolveHighlight = async ({
 > => {
   const highlighter = await getHighlighter({
     langs,
+    langAlias,
     themes: themes ? [themes.dark, themes.light] : [theme],
   })
 
@@ -38,11 +40,11 @@ export const resolveHighlight = async ({
     if (lang && !loadedLanguages.includes(lang) && !isSpecialLang(lang)) {
       if (!WARNED_LANGS.has(lang)) {
         logger.warn(
-          `Missing ${colors.cyan(lang)}' highlighter, use '${colors.cyan(defaultHighlightLang || 'txt')}' to highlight instead.`,
+          `Missing ${colors.cyan(lang)}' highlighter, use '${colors.cyan(defaultLang || 'plain')}' to highlight instead.`,
         )
         WARNED_LANGS.add(lang)
       }
-      lang = defaultHighlightLang
+      lang = defaultLang
     }
 
     const codeMustaches = new Map<string, string>()

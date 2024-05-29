@@ -1,3 +1,3 @@
 # Blog Plugins
 
-<Catalog />
+<Catalog :level="1" />
