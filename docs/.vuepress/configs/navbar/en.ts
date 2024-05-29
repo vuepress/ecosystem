@@ -12,6 +12,10 @@ export const navbarEn: NavbarConfig = [
         text: 'Hope Theme',
         link: 'https://theme-hope.vuejs.press',
       },
+      {
+        text: 'Plume Theme',
+        link: 'https://theme-plume.vuejs.press',
+      },
     ],
   },
   {
