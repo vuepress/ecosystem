@@ -46,6 +46,14 @@ export default {
 - Also see:
   - [Shiki > Languages](https://shiki.style/languages)
 
+### langAlias
+
+- Type: `{ [lang: string]: string }`
+
+- Default: `'plain'`
+
+  Fallback language when the specified language is not available.
+
 ### defaultHighlightLang
 
 - Type: `string`

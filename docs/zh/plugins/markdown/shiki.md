@@ -46,6 +46,14 @@ export default {
 - 参考：
   - [shiki > Languages](https://shiki.style/languages)
 
+### langAlias
+
+- 类型： `string`
+
+- 默认值：`'plain'`
+
+  当指定的语言不可用时，使用备选语言。
+
 ### defaultHighlightLang
 
 - 类型： `string`

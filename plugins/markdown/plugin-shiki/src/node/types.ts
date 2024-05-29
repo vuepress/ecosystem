@@ -32,6 +32,13 @@ export interface ShikiHighlightOptions {
   langs?: ShikiLang[]
 
   /**
+   * Language alias
+   *
+   * @see https://shiki.style/guide/load-lang#custom-language-aliases
+   */
+  langAlias?: Record<string, StringLiteralUnion<BundledLanguage>>
+
+  /**
    * Fallback language when the specified language is not available.
    */
   defaultHighlightLang?: string
