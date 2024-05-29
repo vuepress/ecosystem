@@ -50,13 +50,16 @@ export default {
 - Also see:
   - [Shiki > Languages](https://shiki.style/languages)
 
-### defaultHighlightLang
+### langAlias
 
-- Type: `string`
+- Type: `{ [lang: string]: string }`
 
 - Details:
 
-  Fallback language when the specified language is not available.
+  Customize language aliases for Shiki.
+
+- 参考：
+  - [Shiki > Custom Language Aliases](https://shiki.style/guide/load-lang#custom-language-aliases)
 
 ### theme
 
@@ -64,9 +67,7 @@ export default {
 
 - Default: `'nord'`
 
-- Details:
-
-  Theme of Shiki, will be default applied to code block.
+- Details: Theme of Shiki, will be applied to code blocks.
 
 - Also see:
   - [Shiki > Themes](https://shiki.style/themes)
@@ -88,19 +89,6 @@ export default {
 - Also see:
   - [Shiki > Dual Themes](https://shiki.style/guide/dual-themes)
 
-### transformers
-
-- Type: `ShikiTransformer[]`
-
-- Details:
-
-  Transformers of Shiki.
-
-  This option will be forwarded to `codeToHtml()` method of Shiki.
-
-- Also see:
-  - [Shiki > Transformers](https://shiki.style/guide/transformers)
-
 ### lineNumbers
 
 - Type: `boolean | number`
@@ -109,16 +97,12 @@ export default {
 
 - Details:
 
-  Configure code line numbers.
-
   - `true`: enable line numbers.
   - `false`: disabled line numbers.
   - `number`: the minimum number of lines to enable line numbers.
     For example, if you set it to 4, line numbers will only be enabled when your code block has at least 4 lines of code.
 
-  You can add `:line-numbers` / `:no-line-numbers` mark in your fenced code blocks to override the value set in config.
-
-  You can also customize the starting line number by adding `=` after `:line-numbers`. For example, `:line-numbers=2` means the line numbers in code blocks will start from `2`.
+  You can add `:line-numbers` / `:no-line-numbers` mark in your fenced code blocks to override the value set in config, and customize the beginning number by adding `=` after `:line-numbers`. For example, `:line-numbers=2` means the line numbers in code blocks will start from `2`.
 
 **Input:**
 
@@ -129,13 +113,13 @@ const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
-```ts:no-line-numbers
+```ts :no-line-numbers
 // line-numbers is disabled
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
-```ts:line-numbers=2
+```ts :line-numbers=2
 // line-numbers is enabled and start from 2
 const line3 = 'This is line 3'
 const line4 = 'This is line 4'
@@ -144,19 +128,19 @@ const line4 = 'This is line 4'
 
 **Output:**
 
-```ts:line-numbers
+```ts :line-numbers
 // line-numbers is enabled
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
-```ts:no-line-numbers
+```ts :no-line-numbers
 // line-numbers is disabled
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
-```ts:line-numbers=2
+```ts :line-numbers=2
 // line-numbers is enabled and start from 2
 const line3 = 'This is line 3'
 const line4 = 'This is line 4'
@@ -170,11 +154,7 @@ const line4 = 'This is line 4'
 
 - Details:
 
-  Whether enable code line highlighting.
-
-  You can highlight specified lines of your code blocks by adding line ranges mark in your fenced code blocks.
-
-  Examples for line ranges mark:
+  Whether enable code line highlighting. You can highlight specified lines of your code blocks by adding line ranges mark in your fenced code blocks:
 
   - Line ranges: `{5-8}`
   - Multiple single lines: `{4,7,9}`
@@ -183,7 +163,7 @@ const line4 = 'This is line 4'
 **Input:**
 
 ````md
-```ts{1,7-9}
+```ts {1,7-9}
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 
@@ -199,7 +179,7 @@ export default defineUserConfig({
 
 **Output:**
 
-```ts{1,7-9}
+```ts {1,7-9}
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 
@@ -211,26 +191,6 @@ export default defineUserConfig({
   }),
 })
 ```
-
-### preWrapper
-
-- Type: `boolean`
-
-- Default: `true`
-
-- Details:
-
-  Enable the extra wrapper of the `<pre>` tag or not.
-
-  The wrapper is required by the `lineNumbers`. That means, if you disable `preWrapper`, the line line numbers will also be disabled.
-
-### shikiSetup
-
-- Type: `(shiki: Highlighter) => void | Promise<void>`
-
-- Details:
-
-  Function to customize Shiki highlighter instance.
 
 :::: tip
 
@@ -248,9 +208,7 @@ The following features requires additional style to work, which should be handle
 
 - Default: `false`
 
-- Details:
-
-  Whether enable notation diff
+- Details: Whether enable notation diff.
 
 - Example:
 
@@ -269,9 +227,7 @@ The following features requires additional style to work, which should be handle
 
 - Default: `false`
 
-- Details:
-
-  Whether enable notation focus.
+- Details: Whether enable notation focus.
 
 - Example:
 
@@ -290,9 +246,7 @@ The following features requires additional style to work, which should be handle
 
 - Default: `false`
 
-- Details:
-
-  Whether enable notation highlight.
+- Details: Whether enable notation highlight.
 
 - Example:
 
@@ -311,9 +265,7 @@ The following features requires additional style to work, which should be handle
 
 - Default: `false`
 
-- Details:
-
-  Whether enable notation error level.
+- Details: Whether enable notation error level.
 
 - Example:
 
@@ -325,3 +277,44 @@ The following features requires additional style to work, which should be handle
 
 - Also see:
   - [Shiki > Notation Error Level](https://shiki.style/packages/transformers#transformernotationerrorlevel)
+
+## Advanced Options
+
+### defaultLang
+
+- Type: `string`
+
+- Default: `'plain'`
+
+- Details: Fallback language when the specified language is not available.
+
+### preWrapper
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Adds extra wrapper outside `<pre>` tag or not.
+
+  The wrapper is required by the `lineNumbers`. That means, if you disable `preWrapper`, the line line numbers will also be disabled.
+
+### shikiSetup
+
+- Type: `(shiki: Highlighter) => void | Promise<void>`
+
+- Details: A function hook to customize Shiki highlighter instance.
+
+### transformers
+
+- Type: `ShikiTransformer[]`
+
+- Details:
+
+  Transformers of Shiki.
+
+  This option will be forwarded to `codeToHtml()` method of Shiki.
+
+- Also see:
+  - [Shiki > Transformers](https://shiki.style/guide/transformers)

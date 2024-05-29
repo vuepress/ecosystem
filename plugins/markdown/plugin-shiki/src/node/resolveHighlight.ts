@@ -13,7 +13,7 @@ const MUSTACHE_REG = /\{\{[^]*?\}\}/g
 export const resolveHighlight = async ({
   langs = bundledLanguageNames,
   langAlias = {},
-  defaultHighlightLang = '',
+  defaultLang = '',
   transformers: userTransformers = [],
   ...options
 }: ShikiHighlightOptions = {}): Promise<
@@ -38,9 +38,9 @@ export const resolveHighlight = async ({
 
     if (lang && !loadedLanguages.includes(lang) && !isSpecialLang(lang)) {
       logger.warn(
-        `${colors.cyan(lang)}' is not loaded! Using '${colors.cyan(defaultHighlightLang || 'txt')}' to highlight instead.`,
+        `${colors.cyan(lang)}' is not loaded! Using '${colors.cyan(defaultLang || 'plain')}' to highlight instead.`,
       )
-      lang = defaultHighlightLang
+      lang = defaultLang
     }
 
     const codeMustaches = new Map<string, string>()

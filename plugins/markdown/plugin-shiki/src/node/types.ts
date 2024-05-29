@@ -61,8 +61,10 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
 
   /**
    * Fallback language when the specified language is not available.
+   *
+   * @default 'plain'
    */
-  defaultHighlightLang?: string
+  defaultLang?: string
 
   /**
    * Function to customize Shiki highlighter instance.
