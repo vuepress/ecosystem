@@ -14,6 +14,10 @@ body {
   font-family: var(--font-family);
 }
 
+h2 {
+  border-color: var(--c-border);
+}
+
 a {
   color: var(--c-text-accent);
 }
