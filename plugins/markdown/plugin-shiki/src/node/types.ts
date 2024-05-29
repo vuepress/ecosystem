@@ -16,6 +16,8 @@ export type ShikiLang =
 
 export type ShikiTheme = ThemeRegistrationAny | StringLiteralUnion<BundledTheme>
 
+export type LogLevel = 'silent' | 'warn' | 'debug'
+
 export interface ShikiSingleThemeOptions {
   /**
    * The single theme to use
@@ -126,7 +128,7 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
    *
    * @default 'warn'
    */
-  logLevel?: 'silent' | 'warn' | 'debug'
+  logLevel?: LogLevel
 }
 
 export interface LineNumberOptions {

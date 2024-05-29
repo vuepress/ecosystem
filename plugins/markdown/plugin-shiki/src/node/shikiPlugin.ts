@@ -1,6 +1,6 @@
 import type { Plugin } from 'vuepress/core'
-import type { MarkdownEnv } from 'vuepress/markdown'
 import { isPlainObject } from 'vuepress/shared'
+import { createHighlightLogger } from './highlightLogger.js'
 import {
   highlightLinesPlugin,
   lineNumberPlugin,
@@ -19,33 +19,20 @@ export const shikiPlugin = ({
 
   extendsMarkdown: async (md, app) => {
     const { code } = app.options.markdown
-    const logLevel = _logLevel ?? app.env.isDebug ? 'debug' : 'warn'
-    const store: { path?: string | null } = {}
+    const logLevel = _logLevel ?? (app.env.isDebug ? 'debug' : 'warn')
 
     md.options.highlight = await resolveHighlight(
       {
         ...(isPlainObject(code) ? code : {}),
         ...options,
       },
-      logLevel,
-      store,
+      createHighlightLogger(md, logLevel),
     )
 
     md.use(highlightLinesPlugin)
     md.use(preWrapperPlugin, { preWrapper })
     if (preWrapper) {
       md.use(lineNumberPlugin, { lineNumbers })
-    }
-
-    if (logLevel === 'debug') {
-      const rawRender = md.render
-
-      md.render = (src, env: MarkdownEnv) => {
-        // store file path before each render
-        store.path = env.filePathRelative
-
-        return rawRender(src, env)
-      }
     }
   },
 })

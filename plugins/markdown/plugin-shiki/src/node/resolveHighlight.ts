@@ -1,9 +1,10 @@
 import { transformerCompactLineOptions } from '@shikijs/transformers'
 import { bundledLanguages, getHighlighter, isSpecialLang } from 'shiki'
 import { colors } from 'vuepress/utils'
+import type { HighlightLogger } from './highlightLogger.js'
 import { getTransformers } from './transformers/getTransformers.js'
 import type { ShikiHighlightOptions } from './types.js'
-import { attrsToLines, logger, nanoid, resolveLanguage } from './utils.js'
+import { attrsToLines, nanoid, resolveLanguage } from './utils.js'
 
 export { bundledLanguages } from 'shiki'
 export const bundledLanguageNames = Object.keys(bundledLanguages)
@@ -20,8 +21,7 @@ export const resolveHighlight = async (
     transformers: userTransformers = [],
     ...options
   }: ShikiHighlightOptions = {},
-  logLevel: 'silent' | 'warn' | 'debug',
-  store: { path?: string | null },
+  logger: HighlightLogger,
 ): Promise<(str: string, lang: string, attrs: string) => string> => {
   const highlighter = await getHighlighter({
     langs,
@@ -40,14 +40,14 @@ export const resolveHighlight = async (
     let lang = resolveLanguage(language)
 
     if (lang && !loadedLanguages.includes(lang) && !isSpecialLang(lang)) {
-      if (logLevel === 'debug') {
-        logger.info(
-          `Unknown language ${colors.cyan(lang)} found in ${colors.cyan(store.path || 'dynamic pages')}`,
-        )
-      } else if (logLevel === 'warn' && !WARNED_LANGS.has(lang)) {
+      logger.debug(
+        `Unknown language ${colors.cyan(lang)} found in ${colors.cyan(logger.filepath || 'dynamic pages')}`,
+      )
+      !WARNED_LANGS.has(lang) &&
         logger.warn(
           `Missing ${colors.cyan(lang)} highlighter, use ${colors.cyan(defaultLang || 'plain')} to highlight instead.`,
         )
+      if (logger.logLevel === 'warn') {
         WARNED_LANGS.add(lang)
       }
       lang = defaultLang
