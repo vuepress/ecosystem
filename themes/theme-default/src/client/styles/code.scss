@@ -235,7 +235,6 @@ div[class*='language-'] {
         position: relative;
         z-index: 3;
         user-select: none;
-        height: #{$line-height}em;
 
         &::before {
           counter-increment: line-number;
