@@ -2,11 +2,11 @@
 
 <NpmBadge package="@vuepress/plugin-shiki" />
 
-该插件使用 [Shiki](https://shiki.style/) 来为 Markdown 代码块启用代码高亮。
+该插件使用 [Shiki](https://shiki.tmrs.site/) 来为 Markdown 代码块启用代码高亮。
 
 ::: tip
 
-[Shiki](https://shiki.style/) 是 VSCode 正在使用的代码高亮器。它具有更高的保真度，但可能会比 [Prism.js](https://prismjs.com/) 要慢一些，特别是在有大量代码块需要处理的时候。
+[Shiki](https://shiki.tmrs.site/) 是 VSCode 正在使用的代码高亮器。它具有更高的保真度，但可能会比 [Prism.js](https://prismjs.com/) 要慢一些，特别是在有大量代码块需要处理的时候。
 
 :::
 
@@ -33,7 +33,7 @@ export default {
 
 ### langs
 
-- 类型： `ShikiLang[]`
+- 类型：`ShikiLang[]`
 
 - 详情：
 
@@ -41,10 +41,14 @@ export default {
 
   该配置项会被传递到 Shiki 的 `getHighlighter()` 方法中。
 
-  你最好明确传入所有你使用的语言列表，否则 Shiki 会加载所有语言，并可能影响性能。
+  ::: warning
+
+  我们建议明确传入所有你使用的语言列表，否则 Shiki 会加载所有语言，并可能影响性能。
+
+  :::
 
 - 参考：
-  - [shiki > Languages](https://shiki.style/languages)
+  - [Shiki > 语言](https://shiki.tmrs.site/languages)
 
 ### langAlias
 
@@ -52,92 +56,70 @@ export default {
 
 - 详情：自定义 Shiki 语言别名。
 
+  自定义 Shiki 语言别名。
+
 - 参考：
   - [Shiki > 自定义语言别名](https://shiki.tmrs.site/guide/load-lang#custom-language-aliases)
 
-### defaultLang
-
-- 类型：`string`
-
-- 默认值：`'plain'`
-
-- 详情：指定的语言不可用时所使用的备选语言。
-
 ### theme
 
-- 类型： `ShikiTheme`
+- 类型：`ShikiTheme`
 
-- 默认值： `'nord'`
+- 默认值：`'nord'`
 
-- 详情：
-
-  Shiki 的主题。
-
-  该配置项会被传递到 Shiki 的 `codeToHtml()` 方法中。
+- 详情：Shiki 的主题。该主题会应用到代码块上。
 
 - 参考：
-  - [Shiki > Themes](https://shiki.style/themes)
+  - [Shiki > 主题](https://shiki.tmrs.site/themes)
 
 ### themes
 
-- 类型：`Record<'dark' | 'light', ShikiTheme>`
+- 类型：`{ light: ShikiTheme; dark: ShikiTheme }`
 
 - 详情：
 
   Shiki 的暗黑和明亮模式双主题。
 
-  该配置项会被传递到 Shiki 的 `codeToHtml()` 方法中。
+  两个主题的样式会分别通过 `--shiki-light` 和 `--shiki-dark` 注入到代码块上：
+
+  ```html
+  <span style="--shiki-light:lightColor;--shiki-dark:darkColor;">code</span>
+  ```
 
 - 参考：
-  - [Shiki > Dual Themes](https://shiki.style/guide/dual-themes)
-
-### transformers
-
-- 类型：`ShikiTransformer[]`
-- 详情：
-
-  Shiki 的转换器。
-
-  该配置项会被传递到 Shiki 的 `codeToHtml()` 方法中。
-
-- 参考：
-  - [Shiki > Transformers](https://shiki.style/guide/transformers)
+  - [Shiki > 双主题](https://shiki.tmrs.site/guide/dual-themes)
 
 ### lineNumbers
 
-- 类型： `boolean | number`
+- 类型：`boolean | number`
 
-- 默认值： `true`
+- 默认值：`true`
 
 - 详情：
-
-  是否启用行号。
 
   - `true`：启用代码行号
   - `false`：禁用代码行号。
   - `number`：显示行号所需的最少行数。
     例如，如果你将它设置为 4 ，那么只有在你的代码块包含至少 4 行代码时才会启用行号。
 
-  你可以在代码块添加 `:line-numbers` / `:no-line-numbers` 标记来覆盖配置项中的设置。
-
-  还可以通过在 `:line-numbers` 之后添加 `=` 来自定义起始行号，例如 `:line-numbers=2` 表示代码块中的行号从 `2` 开始。
+  你可以在代码块添加 `:line-numbers` / `:no-line-numbers` 标记来覆盖配置项中的设置，还可以在 `:line-numbers` 之后添加 `=` 来自定义起始行号，例如 `:line-numbers=2` 表示代码块中的行号从 `2` 开始。
 
 **输入：**
 
 ````md
-```ts:line-numbers
+```ts :line-numbers
 // 启用行号
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
-```ts:no-line-numbers
+```ts :no-line-numbers
 // 禁用行号
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
-```ts:line-numbers=2
+```ts :line-numbers=2
 // 行号已启用，并从 2 开始
 const line3 = 'This is line 3'
 const line4 = 'This is line 4'
@@ -146,19 +128,19 @@ const line4 = 'This is line 4'
 
 **输出：**
 
-```ts:line-numbers
+```ts :line-numbers
 // 启用行号
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
-```ts:no-line-numbers
+```ts :no-line-numbers
 // 禁用行号
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
-```ts:line-numbers=2
+```ts :line-numbers=2
 // 行号已启用，并从 2 开始
 const line3 = 'This is line 3'
 const line4 = 'This is line 4'
@@ -166,26 +148,22 @@ const line4 = 'This is line 4'
 
 ### highlightLines
 
-- 类型： `boolean`
+- 类型：`boolean`
 
-- 默认值： `true`
+- 默认值：`true`
 
 - 详情：
 
-  是否启用 行高亮。
+  是否启用行高亮。启用后，可在代码块的信息描述中添加行数标记来高亮指定的行：
 
-  在代码块添加行数范围标记，来为对应代码行进行高亮。
-
-  行数范围标记的例子：
-
-  - 行数范围： `{5-8}`
-  - 多个单行： `{4,7,9}`
-  - 组合： `{4,7-13,16,23-27,40}`
+  - 行数范围：`{5-8}`
+  - 多个单行：`{4,7,9}`
+  - 组合：`{4,7-13,16,23-27,40}`
 
 **输入：**
 
 ````md
-```ts{1,7-9}
+```ts {1,7-9}
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 
@@ -201,7 +179,7 @@ export default defineUserConfig({
 
 **输出：**
 
-```ts{1,7-9}
+```ts {1,7-9}
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 
@@ -213,53 +191,6 @@ export default defineUserConfig({
   }),
 })
 ```
-
-### preWrapper
-
-- 类型： `boolean`
-
-- 默认值： `true`
-
-- 详情：
-
-  是否在 `<pre>` 标签外额外包裹一层。
-
-  `lineNumbers` 依赖于这个额外的包裹层。这换句话说，如果你禁用了 `preWrapper` ，那么 行号 也会被同时禁用。
-
-### defaultColor
-
-- 类型： `false | 'light' | 'dark' | string`
-
-- 默认值： `'light'`
-
-- 详情：
-
-  应用于代码的默认主题（通过内联 `color` 样式）。其余主题通过 CSS 变量应用，并通过 CSS 覆盖进行切换。
-
-  例如，如果 `defaultColor` 是 `light`，则将 `light` 主题应用于代码，并通过 CSS 变量应用 `dark` 主题和其他自定义主题：
-
-```html
-<span style="color:#{light};--shiki-dark:#{dark};--shiki-custom:#{custom};"
-  >code</span
->
-```
-
-设置为 `false` 时，将不会应用任何默认样式，完全由用户自行应用样式。
-
-```html
-<span
-  style="--shiki-light:#{light};--shiki-dark:#{dark};--shiki-custom:#{custom};"
-  >code</span
->
-```
-
-### shikiSetup
-
-- 类型： `(shiki: Highlighter) => void | Promise<void>`
-
-- 详情：
-
-  自定义 Shiki 函数。您可以通过在配置中添加自己的 shikiSetup 函数来扩展 Shiki 实例。
 
 :::: tip
 
@@ -273,13 +204,11 @@ export default defineUserConfig({
 
 ### notationDiff
 
-- 类型： `boolean`
+- 类型：`boolean`
 
-- 默认值： `false`
+- 默认值：`false`
 
-- 详情：
-
-  是否启用 Notation Diff
+- 详情：是否启用差异标记。
 
 - 示例：
 
@@ -290,17 +219,15 @@ export default defineUserConfig({
   ```
 
 - 参考：
-  - [Shiki > Notation Diff](https://shiki.style/packages/transformers#transformernotationdiff)
+  - [Shiki > 差异标记](https://shiki.tmrs.site/packages/transformers#transformernotationdiff)
 
 ### notationFocus
 
-- 类型： `boolean`
+- 类型：`boolean`
 
-- 默认值： `false`
+- 默认值：`false`
 
-- 详情：
-
-  是否启用 Notation Focus.
+- 详情：是否启用聚焦标记。
 
 - 示例：
 
@@ -311,17 +238,15 @@ export default defineUserConfig({
   ```
 
 - 参考：
-  - [Shiki > Notation Focus](https://shiki.style/packages/transformers#transformernotationfocus)
+  - [Shiki > 聚焦标记](https://shiki.tmrs.site/packages/transformers#transformernotationfocus)
 
 ### notationHighlight
 
-- 类型： `boolean`
+- 类型：`boolean`
 
-- 默认值： `false`
+- 默认值：`false`
 
-- 详情：
-
-  是否启用 Notation Highlight.
+- 详情：是否启用高亮标记。
 
 - 示例：
 
@@ -332,17 +257,15 @@ export default defineUserConfig({
   ```
 
 - 参考：
-  - [Shiki > Notation Highlight](https://shiki.style/packages/transformers#transformernotationhighlight)
+  - [Shiki > 高亮标记](https://shiki.tmrs.site/packages/transformers#transformernotationhighlight)
 
 ### notationErrorLevel
 
-- 类型： `boolean`
+- 类型：`boolean`
 
-- 默认值： `false`
+- 默认值：`false`
 
-- 详情：
-
-  是否启用 Notation Error Level.
+- 详情：是否启用错误级别标记。
 
 - 示例：
 
@@ -353,4 +276,45 @@ export default defineUserConfig({
   ```
 
 - 参考：
-  - [Shiki > Notation Error Level](https://shiki.style/packages/transformers#transformernotationerrorlevel)
+  - [Shiki > 错误级别标记](https://shiki.tmrs.site/packages/transformers#transformernotationerrorlevel)
+
+## 高级选项
+
+### defaultLang
+
+- 类型：`string`
+
+- 默认值：`'plain'`
+
+- 详情：指定的语言不可用时所使用的备选语言。
+
+### preWrapper
+
+- 类型：`boolean`
+
+- 默认值：`true`
+
+- 详情：
+
+  是否在 `<pre>` 标签外添加包裹容器。
+
+  `lineNumbers` 依赖于这个额外的包裹层。这换句话说，如果你禁用了 `preWrapper` ，那么行号也会被同时禁用。
+
+### shikiSetup
+
+- 类型：`(shiki: Highlighter) => void | Promise<void>`
+
+- 详情： 一个用于自定义 Shiki 高亮器的钩子函数。
+
+### transformers
+
+- 类型：`ShikiTransformer[]`
+
+- 详情：
+
+  添加 Shiki 转换器。
+
+  该配置项会被传递到 Shiki 的 `codeToHtml()` 方法中。
+
+- 参考：
+  - [Shiki > 转换器](https://shiki.tmrs.site/guide/transformers)
