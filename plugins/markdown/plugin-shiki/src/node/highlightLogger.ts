@@ -42,7 +42,7 @@ export const createHighlightLogger = (
 
   highlightLogger.warn = (msg: string) => {
     if (logLevels[level] >= logLevels.warn) {
-      logger.info(msg)
+      logger.warn(msg)
     }
   }
 
