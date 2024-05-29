@@ -147,6 +147,7 @@ export const sidebarZh: SidebarConfig = {
         '/zh/tools/helper/node/page',
         '/zh/tools/helper/client',
         '/zh/tools/helper/shared',
+        '/zh/tools/helper/style',
       ],
     },
   ],
