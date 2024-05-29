@@ -1,3 +1,3 @@
 # SEO Plugins
 
-<Catalog />
+<Catalog :level="1" />

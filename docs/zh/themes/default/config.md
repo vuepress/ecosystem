@@ -102,7 +102,7 @@
   为了配置导航栏元素，你可以将其设置为 _导航栏数组_ ，其中的每个元素是 `NavbarItem` 对象、 `NavbarGroup` 对象、或者字符串：
 
   - `NavbarItem` 对象应该有一个 `text` 字段和一个 `link` 字段，还有一个可选的 `activeMatch` 字段。
-  - `NavbarGroup` 对象应该有一个 `text` 字段和一个 `children` 字段。 `children` 字段同样是一个 _导航栏数组_ 。
+  - `NavbarGroup` 对象应该有一个 `text` 字段和一个 `children` 字段，还有一个可选的 `prefix` 字段。 `children` 字段同样是一个 _导航栏数组_，而 `prefix` 会作为 _导航栏数组_ 的路径前缀。
   - 字符串应为目标页面文件的路径。它将会被转换为 `NavbarItem` 对象，将页面标题作为 `text` ，将页面路由路径作为 `link` 。
 
 - 示例 1：
@@ -119,7 +119,8 @@ export default {
       // NavbarGroup
       {
         text: 'Group',
-        children: ['/group/foo.md', '/group/bar.md'],
+        prefix: '/group/',
+        children: ['foo.md', 'bar.md'],
       },
       // 字符串 - 页面文件路径
       '/bar/README.md',
@@ -137,10 +138,33 @@ export default {
       // 嵌套 Group - 最大深度为 2
       {
         text: 'Group',
+        prefix: '/group/',
         children: [
           {
-            text: 'SubGroup',
-            children: ['/group/sub/foo.md', '/group/sub/bar.md'],
+            text: 'SubGroup1',
+            prefix: 'sub1/',
+            children: [
+              'foo.md', // 解析为 `/guide/group/sub1/bar.md`
+              'bar.md', // 解析为 `/guide/group/sub1/bar.md`
+
+              // 一个外部链接
+              {
+                text: 'Example',
+                link: 'https://example.com',
+              },
+            ],
+          },
+          {
+            text: 'SubGroup2',
+            prefix: 'sub2/',
+            // 项目内链接的 .md 或 .html 后缀是可以省略的
+            children: [
+              'foo', // 解析为 `/guide/group/sub2/foo.md`
+              'bar', // 解析为 `/guide/group/sub2/bar.md`
+
+              // 不在 SubGroup2 内的链接
+              '/baz/', // 解析为 `/baz/README.md`
+            ],
           },
         ],
       },
@@ -262,7 +286,7 @@ export default {
 
   为了手动配置侧边栏元素，你可以将其设置为 _侧边栏数组_ ，其中的每个元素是一个 `SidebarItem` 对象或者一个字符串：
 
-  - `SidebarItem` 对象应该有一个 `text` 字段，有一个可选的 `link` 字段、一个可选的 `children` 字段和一个可选的 `collapsible` 字段。 `children` 字段同样是一个 _侧边栏数组_ 。 `collapsible` 字段来控制它是否可折叠。
+  - `SidebarItem` 对象应该有一个 `text` 字段，有一个可选的 `link` 字段、一个可选的 `children` 字段、一个可选的 `collapsible` 字段和一个可选的 `prefix` 字段。 `children` 字段同样是一个 _侧边栏数组_，`prefix` 会作为每个子项目的路径前缀。 `collapsible` 字段来控制它是否可折叠。
   - 字符串应为目标页面文件的路径。它将会被转换为 `SidebarItem` 对象，将页面标题作为 `text` ，将页面路由路径作为 `link` ，并根据页面小标题自动生成 `children` 。
 
   如果你想在不同子路径中使用不同的侧边栏，你可以将该配置项设置为 _侧边栏对象_ ：
@@ -281,6 +305,7 @@ export default {
       // SidebarItem
       {
         text: 'Foo',
+        prefix: '/foo/',
         link: '/foo/',
         children: [
           // SidebarItem
@@ -290,7 +315,8 @@ export default {
             children: [],
           },
           // 字符串 - 页面文件路径
-          '/foo/bar.md',
+          'bar.md', // 解析为 `/foo/bar.md`
+          '/ray.md', // 解析为 `/ray.md`
         ],
       },
       // 字符串 - 页面文件路径
@@ -311,7 +337,11 @@ export default {
       '/guide/': [
         {
           text: 'Guide',
-          children: ['/guide/introduction.md', '/guide/getting-started.md'],
+          // 相对路径会自动追加子路径前缀
+          children: [
+            'introduction.md', // 解析为 `/guide/introduction.md`
+            'getting-started.md', // 解析为 `/guide/getting-started.md`
+          ],
         },
       ],
       '/reference/': 'heading',
@@ -331,15 +361,15 @@ export default {
         {
           text: 'VuePress Reference',
           collapsible: true,
-          children: ['/reference/cli.md', '/reference/config.md'],
+          // 基于项目路径的 .md 或 .html 后缀是可以省略的
+          children: ['cli', 'config'],
         },
         {
           text: 'Bundlers Reference',
           collapsible: true,
-          children: [
-            '/reference/bundler/vite.md',
-            '/reference/bundler/webpack.md',
-          ],
+          // 前缀可以是相对路径，等同于 `prefix: /reference/bundler/`
+          prefix: 'bundler/',
+          children: ['vite', 'webpack'],
         },
       ],
     },

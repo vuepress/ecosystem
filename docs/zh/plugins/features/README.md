@@ -1,3 +1,3 @@
 # 新功能插件
 
-<Catalog />
+<Catalog :level="1" />

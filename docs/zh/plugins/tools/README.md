@@ -1,3 +1,3 @@
 # 工具插件
 
-<Catalog />
+<Catalog :level="1" />
