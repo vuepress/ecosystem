@@ -1,7 +1,7 @@
 packages:
   - docs/
   - e2e/
-  - plugins/*
+  - plugins/*/*
   - themes/*
   - tools/*
   - docs-next/
