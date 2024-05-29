@@ -41,7 +41,7 @@ export const shikiPlugin = ({
       const rawRender = md.render
 
       md.render = (src, env: MarkdownEnv) => {
-        // update store.path for each render
+        // store file path before each render
         store.path = env.filePathRelative
 
         return rawRender(src, env)
