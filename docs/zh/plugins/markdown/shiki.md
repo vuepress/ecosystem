@@ -48,11 +48,12 @@ export default {
 
 ### langAlias
 
-- 类型： `string`
+- 类型：`{ [lang: string]: string }`
 
-- 默认值：`'plain'`
+- 详情：自定义 Shiki 语言别名。
 
-  当指定的语言不可用时，使用备选语言。
+- 参考：
+  - [Shiki > 自定义语言别名](https://shiki.tmrs.site/guide/load-lang#custom-language-aliases)
 
 ### defaultHighlightLang
 

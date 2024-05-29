@@ -52,7 +52,10 @@ export default {
 
 - Default: `'plain'`
 
-  Fallback language when the specified language is not available.
+- Details: Customize language aliases for Shiki.
+
+- Also see:
+  - [Shiki > Custom Language Aliases](https://shiki.style/guide/load-lang#custom-language-aliases)
 
 ### defaultHighlightLang
 
