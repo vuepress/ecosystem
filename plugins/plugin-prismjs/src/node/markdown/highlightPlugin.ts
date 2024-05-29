@@ -55,6 +55,11 @@ export const highlightPlugin = (
       notationHighlight(parser)
     }
 
+    /**
+     * Add the `prismjs` class name to distinguish the highlight library used for the current code block.
+     */
+    parser.pre.classList.push('prismjs')
+
     parser.pre.classList.push(languageClass)
 
     return parser.stringify()
