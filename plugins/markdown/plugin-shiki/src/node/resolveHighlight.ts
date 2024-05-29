@@ -12,8 +12,7 @@ const MUSTACHE_REG = /\{\{[^]*?\}\}/g
 
 export const resolveHighlight = async ({
   langs = bundledLanguageNames,
-  theme = 'nord',
-  themes,
+  langAlias = {},
   defaultHighlightLang = '',
   transformers: userTransformers = [],
   ...options
@@ -22,7 +21,11 @@ export const resolveHighlight = async ({
 > => {
   const highlighter = await getHighlighter({
     langs,
-    themes: themes ? [themes.dark, themes.light] : [theme],
+    langAlias,
+    themes:
+      'themes' in options
+        ? [options.themes.dark, options.themes.light]
+        : [options.theme ?? 'nord'],
   })
 
   await options.shikiSetup?.(highlighter)
@@ -80,7 +83,12 @@ export const resolveHighlight = async ({
           : []),
         ...userTransformers,
       ],
-      ...(themes ? { themes, defaultColor: options.defaultColor } : { theme }),
+      ...('themes' in options
+        ? {
+            themes: options.themes,
+            defaultColor: false,
+          }
+        : { theme: options.theme ?? 'nord' }),
     })
 
     return restoreMustache(highlighted)

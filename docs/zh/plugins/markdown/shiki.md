@@ -41,7 +41,11 @@ export default {
 
   该配置项会被传递到 Shiki 的 `getHighlighter()` 方法中。
 
-  你最好明确传入所有你使用的语言列表，否则 Shiki 会加载所有语言，并可能影响性能。
+  ::: warning
+
+  我们建议明确传入所有你使用的语言列表，否则 Shiki 会加载所有语言，并可能影响性能。
+
+  :::
 
 - 参考：
   - [shiki > Languages](https://shiki.style/languages)
@@ -52,7 +56,7 @@ export default {
 
 - 详情：
 
-  当指定的语言不可用时，使用备选语言。
+  当指定的语言不可用时所使用的备选语言。
 
 ### theme
 
@@ -62,22 +66,24 @@ export default {
 
 - 详情：
 
-  Shiki 的主题。
-
-  该配置项会被传递到 Shiki 的 `codeToHtml()` 方法中。
+  Shiki 的主题。该主题会默认应用到代码块上。
 
 - 参考：
   - [Shiki > Themes](https://shiki.style/themes)
 
 ### themes
 
-- 类型：`Record<'dark' | 'light', ShikiTheme>`
+- 类型：`{ light: ShikiTheme; dark: ShikiTheme }`
 
 - 详情：
 
   Shiki 的暗黑和明亮模式双主题。
 
-  该配置项会被传递到 Shiki 的 `codeToHtml()` 方法中。
+  两个主题的样式会分别通过 `--shiki-light` 和 `--shiki-dark` 注入到代码块上：
+
+  ```html
+  <span style="--shiki-light:lightColor;--shiki-dark:darkColor;">code</span>
+  ```
 
 - 参考：
   - [Shiki > Dual Themes](https://shiki.style/guide/dual-themes)
@@ -216,33 +222,6 @@ export default defineUserConfig({
   是否在 `<pre>` 标签外额外包裹一层。
 
   `lineNumbers` 依赖于这个额外的包裹层。这换句话说，如果你禁用了 `preWrapper` ，那么 行号 也会被同时禁用。
-
-### defaultColor
-
-- 类型： `false | 'light' | 'dark' | string`
-
-- 默认值： `'light'`
-
-- 详情：
-
-  应用于代码的默认主题（通过内联 `color` 样式）。其余主题通过 CSS 变量应用，并通过 CSS 覆盖进行切换。
-
-  例如，如果 `defaultColor` 是 `light`，则将 `light` 主题应用于代码，并通过 CSS 变量应用 `dark` 主题和其他自定义主题：
-
-```html
-<span style="color:#{light};--shiki-dark:#{dark};--shiki-custom:#{custom};"
-  >code</span
->
-```
-
-设置为 `false` 时，将不会应用任何默认样式，完全由用户自行应用样式。
-
-```html
-<span
-  style="--shiki-light:#{light};--shiki-dark:#{dark};--shiki-custom:#{custom};"
-  >code</span
->
-```
 
 ### shikiSetup
 

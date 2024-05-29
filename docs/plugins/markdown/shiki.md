@@ -41,7 +41,11 @@ export default {
 
   This option will be forwarded to `getHighlighter()` method of Shiki.
 
-  You'd better provide the languages list you are using explicitly, otherwise Shiki will load all languages and can affect performance.
+  ::: warning
+
+  We recommend you to provide the languages list you are using explicitly, otherwise Shiki will load all languages and can affect performance.
+
+  :::
 
 - Also see:
   - [Shiki > Languages](https://shiki.style/languages)
@@ -62,22 +66,24 @@ export default {
 
 - Details:
 
-  Theme of Shiki.
-
-  This option will be forwarded to `codeToHtml()` method of Shiki.
+  Theme of Shiki, will be default applied to code block.
 
 - Also see:
   - [Shiki > Themes](https://shiki.style/themes)
 
 ### themes
 
-- Type: `Record<'dark' | 'light', ShikiTheme>`
+- Type: `{ light: ShikiTheme; dark: ShikiTheme }`
 
 - Details:
 
   Dark / Light Dual themes of Shiki.
 
-  This option will be forwarded to `codeToHtml()` method of Shiki.
+  The styles of the 2 themes will be injected as `--shiki-light` and `--shiki-dark` to code blocks:
+
+  ```html
+  <span style="--shiki-light:lightColor;--shiki-dark:darkColor;">code</span>
+  ```
 
 - Also see:
   - [Shiki > Dual Themes](https://shiki.style/guide/dual-themes)
@@ -217,33 +223,6 @@ export default defineUserConfig({
   Enable the extra wrapper of the `<pre>` tag or not.
 
   The wrapper is required by the `lineNumbers`. That means, if you disable `preWrapper`, the line line numbers will also be disabled.
-
-### defaultColor
-
-- Type: `false | 'light' | 'dark' | string`
-
-- Default: `'light'`
-
-- Details:
-
-  The default theme applied to the code (via inline `color` style). The rest of the themes are applied via CSS variables, and toggled by CSS overrides.
-
-  For example, if `defaultColor` is `light`, then `light` theme is applied to the code, and the `dark` theme and other custom themes are applied via CSS variables:
-
-```html
-<span style="color:#{light};--shiki-dark:#{dark};--shiki-custom:#{custom};"
-  >code</span
->
-```
-
-When set to `false`, no default styles will be applied, and totally up to users to apply the styles:
-
-```html
-<span
-  style="--shiki-light:#{light};--shiki-dark:#{dark};--shiki-custom:#{custom};"
-  >code</span
->
-```
 
 ### shikiSetup
 
