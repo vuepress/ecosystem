@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import VPFlyout from '@theme/VPFlyout.vue'
 import { computed } from 'vue'
 import { resolveRoutePath } from 'vuepress/client'

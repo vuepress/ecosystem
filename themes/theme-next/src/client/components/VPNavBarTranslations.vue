@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import VPFlyout from '@theme/VPFlyout.vue'
 import VPMenuLink from '@theme/VPMenuLink.vue'
 import { useData } from '../composables/data.js'

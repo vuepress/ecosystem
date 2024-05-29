@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { useNavbarData } from '../composables/nav.js'
 import VPNavBarMenuGroup from './VPNavBarMenuGroup.vue'
 import VPNavBarMenuLink from './VPNavBarMenuLink.vue'

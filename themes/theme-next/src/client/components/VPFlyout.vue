@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import VPMenu from '@theme/VPMenu.vue'
 import { ref } from 'vue'
 import { useFlyout } from '../composables/flyout.js'

@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import VPSocialLinks from '@theme/VPSocialLinks.vue'
 import { useData } from '../composables/data.js'
 

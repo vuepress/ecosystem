@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import VPMenuGroup from '@theme/VPMenuGroup.vue'
 import VPMenuLink from '@theme/VPMenuLink.vue'
 

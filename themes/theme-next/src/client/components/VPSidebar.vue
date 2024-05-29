@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import VPSidebarItem from '@theme/VPSidebarItem.vue'
 import { useScrollLock } from '@vueuse/core'
 import { onMounted, ref, watch } from 'vue'

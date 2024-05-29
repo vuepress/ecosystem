@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import VPLink from '@theme/VPLink.vue'
 import { resolveRoutePath } from 'vuepress/client'
 import type { ResolvedNavItemWithLink } from '../../shared/resolved/navbar.js'

@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import VPSwitch from '@theme/VPSwitch.vue'
 import { computed, inject } from 'vue'
 import { useDarkMode } from '../composables/dark-mode.js'

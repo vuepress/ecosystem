@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import VPNavBarAppearance from '@theme/VPNavBarAppearance.vue'
 import VPNavBarExtra from '@theme/VPNavBarExtra.vue'
 import VPNavBarHamburger from '@theme/VPNavBarHamburger.vue'

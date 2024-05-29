@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { isLinkExternal } from '@vuepress/helper/client'
 import { computed } from 'vue'
 import { resolveRoutePath, useRouter, withBase } from 'vuepress/client'

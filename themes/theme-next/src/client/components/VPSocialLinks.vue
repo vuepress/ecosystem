@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import VPSocialLink from '@theme/VPSocialLink.vue'
 import type { SocialLink } from '../../shared/index.js'
 

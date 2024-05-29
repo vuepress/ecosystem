@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import VPNavScreenMenuGroupLink from '@theme/VPNavScreenMenuGroupLink.vue'
 import type { ResolvedNavItemWithLink } from '../../shared/resolved/navbar.js'
 
