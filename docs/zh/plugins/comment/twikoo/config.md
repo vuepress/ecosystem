@@ -44,8 +44,4 @@ import { defineTwikooConfig } from '@vuepress/plugin-comment/client'
 defineTwikooConfig({
   // Twikoo 选项
 })
-
-export default defineClientConfig({
-  // ...
-})
 ```

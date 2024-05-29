@@ -9,6 +9,5 @@ export const prepareClientConfigFile = (
     `sass-palette/load-${id || 'default'}.js`,
     `\
 import "@sass-palette/${getIdPrefix(id)}inject";
-export default {};
 `,
   )

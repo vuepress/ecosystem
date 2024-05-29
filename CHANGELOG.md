@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.32](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.31...v2.0.0-rc.32) (2024-05-27)
+
+### Bug Fixes
+
+- fix preWrapper plugin ([#157](https://github.com/vuepress/ecosystem/issues/157)) ([28359b9](https://github.com/vuepress/ecosystem/commit/28359b95181ef0961ea8e5e0058319615f0a5f67))
+
+# [2.0.0-rc.31](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.30...v2.0.0-rc.31) (2024-05-27)
+
+### Bug Fixes
+
+- **plugin-markdown-math:** fix mathjax custom element ([11557f1](https://github.com/vuepress/ecosystem/commit/11557f191d9133ce9589f4ace10d4c24f9fb02f2))
+- **theme-default:** fix externalLinkIcon, close [#153](https://github.com/vuepress/ecosystem/issues/153) ([82136e8](https://github.com/vuepress/ecosystem/commit/82136e863f73335ab5c3038b9402b967c783bb33))
+- **theme-default:** fix scss module with webpack ([4cd3c3c](https://github.com/vuepress/ecosystem/commit/4cd3c3c2ef690653571a737026a54ce573cf3974))
+
+### Features
+
+- improve types ([#149](https://github.com/vuepress/ecosystem/issues/149)) ([ac8c497](https://github.com/vuepress/ecosystem/commit/ac8c4974b9bb6c570b5a6c0711e5888e14497ea7))
+- migrate the `codePlugin` from `@vuepress/markdown` to `plugin-shiki` and `plugin-prismjs` ([#137](https://github.com/vuepress/ecosystem/issues/137)) ([49f96cf](https://github.com/vuepress/ecosystem/commit/49f96cfe5f2f43f6c5346164e4c96df2388b7887))
+- **plugin-copy-code:** add `ignoreSelector` and `transform` options ([#155](https://github.com/vuepress/ecosystem/issues/155)) ([1cc1d97](https://github.com/vuepress/ecosystem/commit/1cc1d97f376f0436c067eede0c410216d0973020))
+- support vuepress2 rc12 ([#156](https://github.com/vuepress/ecosystem/issues/156)) ([6a5b916](https://github.com/vuepress/ecosystem/commit/6a5b9161eb74eb44e40111257fdf11a616f5ee91))
+
 # [2.0.0-rc.30](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.29...v2.0.0-rc.30) (2024-05-16)
 
 ### Bug Fixes

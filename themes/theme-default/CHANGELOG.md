@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.32](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.31...v2.0.0-rc.32) (2024-05-27)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.31](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.30...v2.0.0-rc.31) (2024-05-27)
+
+### Bug Fixes
+
+- **theme-default:** fix externalLinkIcon, close [#153](https://github.com/vuepress/ecosystem/issues/153) ([82136e8](https://github.com/vuepress/ecosystem/commit/82136e863f73335ab5c3038b9402b967c783bb33))
+- **theme-default:** fix scss module with webpack ([4cd3c3c](https://github.com/vuepress/ecosystem/commit/4cd3c3c2ef690653571a737026a54ce573cf3974))
+
+### Features
+
+- migrate the `codePlugin` from `@vuepress/markdown` to `plugin-shiki` and `plugin-prismjs` ([#137](https://github.com/vuepress/ecosystem/issues/137)) ([49f96cf](https://github.com/vuepress/ecosystem/commit/49f96cfe5f2f43f6c5346164e4c96df2388b7887))
+- support vuepress2 rc12 ([#156](https://github.com/vuepress/ecosystem/issues/156)) ([6a5b916](https://github.com/vuepress/ecosystem/commit/6a5b9161eb74eb44e40111257fdf11a616f5ee91))
+
 # [2.0.0-rc.30](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.29...v2.0.0-rc.30) (2024-05-16)
 
 ### Features

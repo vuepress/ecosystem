@@ -38,8 +38,4 @@ import { defineTwikooConfig } from '@vuepress/plugin-comment/client'
 defineTwikooConfig({
   // Twikoo config
 })
-
-export default defineClientConfig({
-  // ...
-})
 ```

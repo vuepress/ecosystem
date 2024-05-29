@@ -1,6 +1,6 @@
 {
-  "name": "@vuepress/theme-legacy",
-  "version": "2.0.0-rc.30",
+  "name": "@vuepress/theme-classic",
+  "version": "2.0.0-rc.32",
   "description": "Default theme of VuePress",
   "keywords": [
     "vuepress-theme",
@@ -62,7 +62,7 @@
   },
   "peerDependencies": {
     "sass-loader": "^14.0.0",
-    "vuepress": "2.0.0-rc.11"
+    "vuepress": "2.0.0-rc.12"
   },
   "peerDependenciesMeta": {
     "sass-loader": {

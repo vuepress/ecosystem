@@ -140,8 +140,4 @@ import { defineGiscusConfig } from '@vuepress/plugin-comment/client'
 defineGiscusConfig({
   // Giscus config
 })
-
-export default defineClientConfig({
-  // ...
-})
 ```
