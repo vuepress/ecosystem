@@ -1,4 +1,4 @@
-import type { SidebarConfig } from '@vuepress/theme-default'
+import type { SidebarConfig } from '@vuepress/theme-classic'
 
 export const sidebarZh: SidebarConfig = {
   '/zh/plugins/': [

@@ -29,7 +29,7 @@
     "@vuepress/plugin-register-components": "workspace:*",
     "@vuepress/plugin-search": "workspace:*",
     "@vuepress/plugin-shiki": "workspace:*",
-    "@vuepress/theme-default": "workspace:*",
+    "@vuepress/theme-classic": "workspace:*",
     "mathjax-full": "3.2.2",
     "sass-loader": "^14.2.1",
     "vue": "^3.4.27",

@@ -1,4 +1,4 @@
-import { defaultTheme } from '@vuepress/theme-default'
+import { defaultTheme } from '@vuepress/theme-classic'
 import type { Theme } from 'vuepress/core'
 import { navbarEn, navbarZh, sidebarEn, sidebarZh } from './configs'
 
@@ -15,7 +15,7 @@ export default defaultTheme({
     /**
      * English locale config
      *
-     * As the default locale of @vuepress/theme-default is English,
+     * As the default locale of @vuepress/theme-classic is English,
      * we don't need to set all of the locale fields
      */
     '/': {
