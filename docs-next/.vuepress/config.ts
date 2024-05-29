@@ -1,4 +1,4 @@
-import { createRequire } from 'node:module'
+// import { createRequire } from 'node:module'
 import process from 'node:process'
 import { footnote } from '@mdit/plugin-footnote'
 import { viteBundler } from '@vuepress/bundler-vite'
@@ -16,7 +16,7 @@ import { head } from './configs/index.js'
 import theme from './theme.js'
 
 // const __dirname = getDirname(import.meta.url)
-const require = createRequire(import.meta.url)
+// const require = createRequire(import.meta.url)
 
 // const isProd = process.env.NODE_ENV === 'production'
 
