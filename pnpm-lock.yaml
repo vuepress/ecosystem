@@ -993,8 +993,8 @@ importers:
         specifier: workspace:~
         version: link:../../plugins/development/plugin-theme-data
       '@vueuse/core':
-        specifier: ^10.9.0
-        version: 10.9.0(vue@3.4.27(typescript@5.4.5))
+        specifier: ^10.10.0
+        version: 10.10.0(vue@3.4.27(typescript@5.4.5))
       chokidar:
         specifier: ^3.6.0
         version: 3.6.0
