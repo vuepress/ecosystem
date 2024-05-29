@@ -1,3 +1,3 @@
-# New Features Plugins
+# New Feature Plugins
 
 <Catalog />

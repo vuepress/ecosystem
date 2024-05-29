@@ -1,3 +1,3 @@
-# Tools Plugins
+# Tool Plugins
 
 <Catalog />
