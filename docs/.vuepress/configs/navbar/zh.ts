@@ -12,6 +12,10 @@ export const navbarZh: NavbarConfig = [
         text: 'Hope 主题',
         link: 'https://theme-hope.vuejs.press/zh/',
       },
+      {
+        text: 'Plume 主题',
+        link: 'https://theme-plume.vuejs.press',
+      },
     ],
   },
   {
