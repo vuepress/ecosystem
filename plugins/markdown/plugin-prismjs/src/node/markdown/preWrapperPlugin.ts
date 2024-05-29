@@ -27,6 +27,9 @@ export const preWrapperPlugin = (
     // resolve title from token info
     const title = resolveAttr(info, 'title') ?? language.ext
 
-    return `<div class="${languageClass}" data-ext="${language.ext}" data-title="${title}">${result}</div>`
+    /**
+     * Add the `prismjs` class name to distinguish the highlight library used for the current code block.
+     */
+    return `<div class="prismjs ${languageClass}" data-ext="${language.ext}" data-title="${title}">${result}</div>`
   }
 }

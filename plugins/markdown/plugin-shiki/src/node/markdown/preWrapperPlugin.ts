@@ -58,6 +58,9 @@ export const preWrapperPlugin = (
       return `<pre ${before.trim()}${after.trimEnd()}>`
     })
 
-    return `<div class="${languageClass}" data-ext="${lang}" data-title="${title}" style="${styles}">${result}</div>`
+    /**
+     * Add the `shiki` class name to distinguish the highlight library used for the current code block.
+     */
+    return `<div class="shiki ${languageClass}" data-ext="${lang}" data-title="${title}" style="${styles}">${result}</div>`
   }
 }
