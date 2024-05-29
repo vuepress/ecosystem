@@ -55,13 +55,13 @@ export default {
 - Also see:
   - [Shiki > Custom Language Aliases](https://shiki.style/guide/load-lang#custom-language-aliases)
 
-### defaultHighlightLang
+### defaultLang
 
 - Type: `string`
 
-- Details:
+- Default: `'plain'`
 
-  Fallback language when the specified language is not available.
+- Details: Fallback language when the specified language is not available.
 
 ### theme
 

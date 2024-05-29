@@ -41,7 +41,7 @@ export interface ShikiHighlightOptions {
   /**
    * Fallback language when the specified language is not available.
    */
-  defaultHighlightLang?: string
+  defaultLang?: string
 
   /**
    * The single theme to use
