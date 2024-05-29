@@ -1,3 +1,3 @@
 # 渐进式应用插件
 
-<Catalog />
+<Catalog :level="1" />

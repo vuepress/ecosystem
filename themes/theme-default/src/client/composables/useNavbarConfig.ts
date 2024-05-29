@@ -6,24 +6,32 @@ import type {
   NavbarItem,
   ResolvedNavbarItem,
 } from '../../shared/index.js'
-import { getAutoLink } from '../utils/index.js'
+import { getAutoLink, isLinkInternal, resolvePrefix } from '../utils/index.js'
 import { useThemeLocaleData } from './useThemeData.js'
 
 const resolveNavbarItem = (
   item: NavbarItem | NavbarGroup | string,
+  prefix = '',
 ): ResolvedNavbarItem => {
   if (isString(item)) {
-    return getAutoLink(item)
+    return getAutoLink(resolvePrefix(prefix, item))
   }
-  if ((item as NavbarGroup).children) {
+
+  if ('children' in item) {
     return {
       ...item,
-      children: (item as NavbarGroup).children.map((item) =>
-        resolveNavbarItem(item),
+      children: item.children.map((child) =>
+        resolveNavbarItem(child, resolvePrefix(prefix, item.prefix)),
       ),
     }
   }
-  return item as ResolvedNavbarItem
+
+  return {
+    ...item,
+    link: isLinkInternal(item.link)
+      ? getAutoLink(resolvePrefix(prefix, item.link)).link
+      : item.link,
+  }
 }
 
 export const useNavbarConfig = (): ComputedRef<ResolvedNavbarItem[]> => {
