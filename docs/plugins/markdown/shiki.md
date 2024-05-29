@@ -50,8 +50,6 @@ export default {
 
 - Type: `{ [lang: string]: string }`
 
-- Default: `'plain'`
-
 - Details: Customize language aliases for Shiki.
 
 - Also see:
