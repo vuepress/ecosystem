@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@shikijs/transformers": "^1.6.1",
-    "@vuepress/helper": "workspace:~",
+    "@vuepress/helper": "workspace:*",
     "nanoid": "^5.0.7",
     "shiki": "^1.6.1"
   },
