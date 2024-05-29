@@ -31,7 +31,7 @@
     "./shared": "./lib/shared/index.js",
     "./noopComponent": "./lib/client/noopComponent.js",
     "./noopModule": "./lib/client/noopModule.js",
-    "./normalize": "./lib/client/styles/normalize.css",
+    "./normalize.css": "./lib/client/styles/normalize.css",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
