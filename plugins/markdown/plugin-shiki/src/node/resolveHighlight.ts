@@ -1,9 +1,9 @@
 import { transformerCompactLineOptions } from '@shikijs/transformers'
 import { bundledLanguages, getHighlighter, isSpecialLang } from 'shiki'
-import { colors, logger } from 'vuepress/utils'
+import { colors } from 'vuepress/utils'
 import { getTransformers } from './transformers/getTransformers.js'
 import type { ShikiHighlightOptions } from './types.js'
-import { attrsToLines, nanoid, resolveLanguage } from './utils.js'
+import { attrsToLines, logger, nanoid, resolveLanguage } from './utils.js'
 
 export { bundledLanguages } from 'shiki'
 export const bundledLanguageNames = Object.keys(bundledLanguages)
@@ -35,9 +35,7 @@ export const resolveHighlight = async ({
 
     if (lang && !loadedLanguages.includes(lang) && !isSpecialLang(lang)) {
       logger.warn(
-        colors.yellow(
-          `\nThe language '${lang}' is not loaded, falling back to '${defaultHighlightLang || 'txt'}' for syntax highlighting.`,
-        ),
+        `${colors.cyan(lang)}' is not loaded! Using '${colors.cyan(defaultHighlightLang || 'txt')}' to highlight instead.`,
       )
       lang = defaultHighlightLang
     }
