@@ -65,7 +65,7 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
           return {
             text,
             activeMatch: /./,
-            link: route.hash ?? '#',
+            link: route.fullPath,
           }
         }
 
