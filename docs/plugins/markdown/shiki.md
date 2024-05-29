@@ -46,13 +46,13 @@ export default {
 - Also see:
   - [Shiki > Languages](https://shiki.style/languages)
 
-### defaultHighlightLang
+### defaultLang
 
 - Type: `string`
 
-- Details:
+- Default: `'plain'`
 
-  Fallback language when the specified language is not available.
+- Details: Fallback language when the specified language is not available.
 
 ### theme
 
