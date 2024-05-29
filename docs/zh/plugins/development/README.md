@@ -1,3 +1,3 @@
 # 主题开发插件
 
-<Catalog />
+<Catalog :level="1" />

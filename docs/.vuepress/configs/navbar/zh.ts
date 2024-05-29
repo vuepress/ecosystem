@@ -3,10 +3,11 @@ import type { NavbarConfig } from '@vuepress/theme-classic'
 export const navbarZh: NavbarConfig = [
   {
     text: '主题',
+    prefix: '/zh/themes/',
     children: [
       {
         text: '默认主题',
-        link: '/zh/themes/default/',
+        link: 'default/',
       },
       {
         text: 'Hope 主题',
@@ -20,51 +21,53 @@ export const navbarZh: NavbarConfig = [
   },
   {
     text: '插件',
+    prefix: '/zh/plugins/',
     children: [
       {
         text: '常用功能',
-        link: '/zh/plugins/features/',
+        link: 'features/',
       },
       {
         text: 'Markdown',
-        link: '/zh/plugins/markdown/',
+        link: 'markdown/',
       },
       {
         text: '搜索',
-        link: '/zh/plugins/search/',
+        link: 'search/',
       },
       {
         text: '博客',
-        link: '/zh/plugins/blog/',
+        link: 'blog/',
       },
       {
         text: 'PWA',
-        link: '/zh/plugins/pwa/',
+        link: 'pwa/',
       },
       {
         text: '统计分析',
-        link: '/zh/plugins/analytics/',
+        link: 'analytics/',
       },
       {
         text: '搜索引擎增强',
-        link: '/zh/plugins/seo/',
+        link: 'seo/',
       },
       {
         text: '主题开发',
-        link: '/zh/plugins/development/',
+        link: 'development/',
       },
       {
         text: '工具',
-        link: '/zh/plugins/tools/',
+        link: 'tools/',
       },
     ],
   },
   {
     text: '工具',
+    prefix: '/zh/tools/',
     children: [
       {
         text: 'helper',
-        link: '/zh/tools/helper/',
+        link: 'helper/',
       },
     ],
   },

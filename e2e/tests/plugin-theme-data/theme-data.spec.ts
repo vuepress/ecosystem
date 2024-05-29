@@ -27,10 +27,16 @@ test.describe('plugin-theme-data', () => {
         '/sidebar/config/': [
           {
             text: 'Sidebar',
-            link: '/sidebar/config/',
-            items: [
-              { text: 'sidebar 1', link: '/sidebar/config/1.html' },
-              { text: 'sidebar 2', link: '/sidebar/config/2.html' },
+            link: '',
+            children: [
+              {
+                text: 'sidebar 1',
+                link: '1.html',
+              },
+              {
+                text: 'sidebar 2',
+                link: '2.html',
+              },
             ],
           },
         ],

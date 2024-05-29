@@ -12,6 +12,13 @@ export interface NavItem {
  * Base nav group, has nav items children
  */
 export interface NavGroup<T> extends NavItem {
+  /**
+   * Link prefix of current group
+   *
+   * 当前分组的页面前缀
+   */
+  prefix?: string
+
   children: T[]
 }
 
