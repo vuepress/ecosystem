@@ -1,0 +1,3 @@
+# Theme Development Plugins
+
+<Catalog />
