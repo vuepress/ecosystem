@@ -12,6 +12,7 @@ const MUSTACHE_REG = /\{\{[^]*?\}\}/g
 
 export const resolveHighlight = async ({
   langs = bundledLanguageNames,
+  langAlias = {},
   theme = 'nord',
   themes,
   defaultLang = '',
@@ -22,6 +23,7 @@ export const resolveHighlight = async ({
 > => {
   const highlighter = await getHighlighter({
     langs,
+    langAlias,
     themes: themes ? [themes.dark, themes.light] : [theme],
   })
 

@@ -46,6 +46,15 @@ export default {
 - Also see:
   - [Shiki > Languages](https://shiki.style/languages)
 
+### langAlias
+
+- Type: `{ [lang: string]: string }`
+
+- Details: Customize language aliases for Shiki.
+
+- Also see:
+  - [Shiki > Custom Language Aliases](https://shiki.style/guide/load-lang#custom-language-aliases)
+
 ### defaultLang
 
 - Type: `string`

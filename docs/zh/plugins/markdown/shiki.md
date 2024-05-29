@@ -46,6 +46,15 @@ export default {
 - 参考：
   - [shiki > Languages](https://shiki.style/languages)
 
+### langAlias
+
+- 类型：`{ [lang: string]: string }`
+
+- 详情：自定义 Shiki 语言别名。
+
+- 参考：
+  - [Shiki > 自定义语言别名](https://shiki.tmrs.site/guide/load-lang#custom-language-aliases)
+
 ### defaultLang
 
 - 类型：`string`
