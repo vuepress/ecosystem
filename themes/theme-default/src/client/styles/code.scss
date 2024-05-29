@@ -229,6 +229,7 @@ div[class*='language-'] {
       padding-top: 1.3rem;
       font-size: 0.875em;
       line-height: $line-height;
+      counter-reset: line-number;
 
       .line-number {
         position: relative;
