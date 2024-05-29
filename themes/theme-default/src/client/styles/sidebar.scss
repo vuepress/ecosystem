@@ -87,12 +87,6 @@
 
   &.collapsible {
     cursor: pointer;
-
-    .arrow {
-      position: relative;
-      top: -0.12em;
-      left: 0.5em;
-    }
   }
 
   &:not(.sidebar-heading) {
