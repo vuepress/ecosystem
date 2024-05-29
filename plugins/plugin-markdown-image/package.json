@@ -32,6 +32,7 @@
   "exports": {
     ".": "./lib/node/index.js",
     "./client/*": "./lib/client/*",
+    "./types": "./lib/types.d.ts",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
@@ -40,7 +41,8 @@
     "lib"
   ],
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
+    "build": "tsc -b ./tsconfig.build.json",
+    "copy": "cpx \"src/types.d.ts\" lib",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
     "style": "sass src:lib --no-source-map"
   },

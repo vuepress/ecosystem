@@ -27,6 +27,7 @@
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
+    "./types": "./lib/types.d.ts",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
@@ -37,6 +38,7 @@
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
+    "copy": "cpx \"src/types.d.ts\" lib",
     "style": "sass src:lib --no-source-map"
   },
   "dependencies": {
