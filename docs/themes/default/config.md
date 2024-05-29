@@ -102,7 +102,7 @@ Config of this section can be used as normal config, and can also be used in the
   To configure the navbar items, you can set it to a _navbar array_, each item of which could be a `NavbarItem` object, a `NavbarGroup` object, or a string:
 
   - A `NavbarItem` object should have a `text` field and a `link` field, could have an optional `activeMatch` field.
-  - A `NavbarGroup` object should have a `text` field and a `children` field. The `children` field should be a _navbar array_, too.
+  - A `NavbarGroup` object should have a `text` field and a `children` field, could have an optional `prefix` field. The `children` field should be a _navbar array_ too, and `prefix` will be prepended before every link inside it.
   - A string should be the path to the target page file. It will be converted to a `NavbarItem` object, using the page title as `text`, and the page route path as `link`.
 
 - Example 1:
@@ -119,7 +119,8 @@ export default {
       // NavbarGroup
       {
         text: 'Group',
-        children: ['/group/foo.md', '/group/bar.md'],
+        prefix: '/group/',
+        children: ['foo.md', 'bar.md'],
       },
       // string - page file path
       '/bar/README.md',
@@ -139,8 +140,30 @@ export default {
         text: 'Group',
         children: [
           {
-            text: 'SubGroup',
-            children: ['/group/sub/foo.md', '/group/sub/bar.md'],
+            text: 'SubGroup1',
+            prefix: 'sub1/',
+            children: [
+              'foo.md', // resolved as `/guide/group/sub1/bar.md`
+              'bar.md', // resolved as `/guide/group/sub1/bar.md`
+
+              // an external link
+              {
+                text: 'Example',
+                link: 'https://example.com',
+              },
+            ],
+          },
+          {
+            text: 'SubGroup2',
+            prefix: 'sub2/',
+            // for project links, .md or .html suffix is optional
+            children: [
+              'foo', // resolved as `/guide/group/sub2/foo.md`
+              'bar', // resolved as `/guide/group/sub2/bar.md`
+
+              // link not inside SubGroup2
+              '/baz/', // resolved as `/baz/README.md`
+            ],
           },
         ],
       },
@@ -262,7 +285,7 @@ export default {
 
   To configure the sidebar items manually, you can set this option to a _sidebar array_, each item of which could be a `SidebarItem` object or a string:
 
-  - A `SidebarItem` object should have a `text` field, could have an optional `link` field, an optional `children` field and an optional `collapsible` field. The `children` field should be a _sidebar array_. The `collapsible` field controls whether the item is collapsible.
+  - A `SidebarItem` object should have a `text` field, could have an optional `link` field, an optional `children` field, an optional `collapsible` field and an optional `prefix` field. The `children` field should be a _sidebar array_, where `prefix` will be prepended to every link inside it. The `collapsible` field controls whether the item is collapsible.
   - A string should be the path to the target page file. It will be converted to a `SidebarItem` object, whose `text` is the page title, `link` is the page route path, and `children` is automatically generated from the page headers.
 
   If you want to set different sidebar for different sub paths, you can set this option to a _sidebar object_:
@@ -281,6 +304,7 @@ export default {
       // SidebarItem
       {
         text: 'Foo',
+        prefix: '/foo/',
         link: '/foo/',
         children: [
           // SidebarItem
@@ -290,7 +314,8 @@ export default {
             children: [],
           },
           // string - page file path
-          '/foo/bar.md',
+          'bar.md', // resolved to `/foo/bar.md`
+          '/ray.md', // resolved to `/ray.md`
         ],
       },
       // string - page file path
@@ -311,7 +336,11 @@ export default {
       '/guide/': [
         {
           text: 'Guide',
-          children: ['/guide/introduction.md', '/guide/getting-started.md'],
+          // prefix will be prepended to relative paths
+          children: [
+            'introduction.md', // resolved to `/guide/introduction.md`
+            'getting-started.md', // resolved to `/guide/getting-started.md`
+          ],
         },
       ],
       '/reference/': 'heading',
@@ -331,15 +360,15 @@ export default {
         {
           text: 'VuePress Reference',
           collapsible: true,
-          children: ['/reference/cli.md', '/reference/config.md'],
+          // for project links, .md or .html suffix is optional
+          children: ['cli', 'config'],,
         },
         {
           text: 'Bundlers Reference',
           collapsible: true,
-          children: [
-            '/reference/bundler/vite.md',
-            '/reference/bundler/webpack.md',
-          ],
+         // prefix can be a relative path, which is equivalent to `prefix: /reference/bundler/`
+          prefix: 'bundler/',
+          children: ['vite', 'webpack'],
         },
       ],
     },
