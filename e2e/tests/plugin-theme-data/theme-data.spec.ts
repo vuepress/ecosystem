@@ -28,7 +28,7 @@ test.describe('plugin-theme-data', () => {
           {
             text: 'Sidebar',
             link: '',
-            children: [
+            items: [
               {
                 text: 'sidebar 1',
                 link: '1.html',
@@ -81,10 +81,10 @@ test.describe('plugin-theme-data', () => {
             '/sidebar/config/': [
               {
                 text: 'Sidebar',
-                link: '/sidebar/config/',
+                link: '',
                 items: [
-                  { text: 'sidebar 1', link: '/sidebar/config/1.html' },
-                  { text: 'sidebar 2', link: '/sidebar/config/2.html' },
+                  { text: 'sidebar 1', link: '1.html' },
+                  { text: 'sidebar 2', link: '2.html' },
                 ],
               },
             ],
@@ -132,10 +132,10 @@ test.describe('plugin-theme-data', () => {
             '/sidebar/config/': [
               {
                 text: 'Sidebar',
-                link: '/sidebar/config/',
+                link: '',
                 items: [
-                  { text: 'sidebar 1', link: '/sidebar/config/1.html' },
-                  { text: 'sidebar 2', link: '/sidebar/config/2.html' },
+                  { text: 'sidebar 1', link: '1.html' },
+                  { text: 'sidebar 2', link: '2.html' },
                 ],
               },
             ],

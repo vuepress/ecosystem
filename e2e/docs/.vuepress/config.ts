@@ -70,7 +70,7 @@ export default defineUserConfig({
         {
           text: 'Sidebar',
           link: '',
-          children: [
+          items: [
             { text: 'sidebar 1', link: '1.html' },
             { text: 'sidebar 2', link: '2.html' },
           ],

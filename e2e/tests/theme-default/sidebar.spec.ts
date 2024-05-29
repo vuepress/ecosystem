@@ -38,6 +38,6 @@ test('has configured sidebar', async ({ page }) => {
 
   const sidebarItems = page.locator('#VPSidebarNav .vpLink')
 
-  await expect(sidebarItems.nth(1)).toContainText('sidebar 1')
-  await expect(sidebarItems.nth(2)).toContainText('sidebar 2')
+  await expect(sidebarItems.nth(0)).toContainText('sidebar 1')
+  await expect(sidebarItems.nth(1)).toContainText('sidebar 2')
 })
