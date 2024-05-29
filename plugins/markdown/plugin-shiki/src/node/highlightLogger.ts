@@ -1,15 +1,15 @@
 import type { Markdown, MarkdownEnv } from 'vuepress/markdown'
-import type { LogLevel } from './types.js'
+import type { ShikiLogLevel } from './types.js'
 import { logger } from './utils.js'
 
 export interface HighlightLogger {
   debug: (msg: string) => void
   warn: (msg: string) => void
-  logLevel: LogLevel
+  logLevel: ShikiLogLevel
   filepath?: string | null
 }
 
-export const logLevels: Record<LogLevel, number> = {
+export const logLevels: Record<ShikiLogLevel, number> = {
   silent: 0,
   warn: 1,
   debug: 2,
@@ -17,7 +17,7 @@ export const logLevels: Record<LogLevel, number> = {
 
 export const createHighlightLogger = (
   md: Markdown,
-  level: LogLevel = 'warn',
+  level: ShikiLogLevel = 'warn',
 ): HighlightLogger => {
   const highlightLogger = {
     logLevel: level,
