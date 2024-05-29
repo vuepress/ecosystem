@@ -35,7 +35,7 @@ export const resolveHighlight = async ({
 
     if (lang && !loadedLanguages.includes(lang) && !isSpecialLang(lang)) {
       logger.warn(
-        `${colors.cyan(lang)}' is not loaded! Using '${colors.cyan(defaultLang || 'txt')}' to highlight instead.`,
+        `${colors.cyan(lang)}' is not loaded! Using '${colors.cyan(defaultLang || 'plain')}' to highlight instead.`,
       )
       lang = defaultLang
     }
