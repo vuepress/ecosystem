@@ -63,7 +63,7 @@
   counter-increment: catalog-item;
 
   &-main-title {
-    margin-top: calc(0.5rem - var(--navbar-height, 3.6rem));
+    margin-top: calc(1rem - var(--navbar-height, 3.6rem));
     margin-bottom: 0.5rem;
     padding-top: var(--navbar-height, 3.6rem);
 
@@ -87,7 +87,7 @@
     margin-bottom: 0.5rem !important;
 
     &.has-children {
-      margin-top: calc(0.5rem - var(--navbar-height, 3.6rem));
+      margin-top: calc(1rem - var(--navbar-height, 3.6rem));
       padding-top: var(--navbar-height, 3.6rem);
       border-bottom: 1px solid var(--catalog-border-color);
 
