@@ -276,7 +276,7 @@
 .vp-block {
   position: relative;
   margin: 16px -24px;
-  background-color: var(--vp-code-block-bg);
+  background-color: var(--vp-code-block-bg) !important;
   overflow-x: auto;
   transition: background-color 0.5s;
 }
@@ -339,22 +339,6 @@
   font-size: var(--vp-code-font-size);
   color: var(--vp-code-block-color);
   transition: color 0.5s;
-}
-
-.vp-doc [class*='language-'] .highlight-lines {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px 0;
-  line-height: var(--vp-code-line-height);
-  font-size: var(--vp-code-font-size);
-  pointer-events: none;
-}
-
-.vp-doc [class*='language-'] .highlight-lines .highlight-line {
-  background-color: var(--vp-c-default-soft);
-  transition: background-color 0.5s;
 }
 
 .vp-doc [class*='language-'] code .highlighted {
@@ -468,48 +452,28 @@
   display: none;
 }
 
-.vp-doc [class*='language-'] > button.vp-copy-code-button {
-  /*rtl:ignore*/
-  direction: ltr;
-  position: absolute;
+.vp-doc div[class*='language'] > .vp-copy-code-button {
   top: 12px;
   /*rtl:ignore*/
   right: 12px;
-  z-index: 3;
+  background-color: var(--vp-code-block-bg);
   border: 1px solid var(--vp-code-copy-code-border-color);
   border-radius: 4px;
-  width: 40px;
-  height: 40px;
-  background-color: var(--vp-code-copy-code-bg);
-  opacity: 0;
-  cursor: pointer;
-  background-image: var(--vp-icon-copy);
-  background-position: 50%;
-  background-size: 20px;
-  background-repeat: no-repeat;
+  font-size: 20px;
   transition:
-    border-color 0.25s,
     background-color 0.25s,
+    border-color 0.25s,
     opacity 0.25s;
 }
 
-.vp-doc [class*='language-'] > button.vp-copy-code-button .vp-copy-icon {
-  opacity: 0;
+.vp-doc div[class*='language'] > .vp-copy-code-button::before {
   width: 100%;
   height: 100%;
+  mask-image: var(--vp-icon-copy);
 }
 
-.vp-doc [class*='language-'] > button.vp-copy-code-button::after {
-  display: none;
-}
-
-.vp-doc [class*='language-']:hover > button.vp-copy-code-button,
-.vp-doc [class*='language-'] > button.vp-copy-code-button:focus {
-  opacity: 1;
-}
-
-.vp-doc [class*='language-'] > button.vp-copy-code-button:hover,
-.vp-doc [class*='language-'] > button.vp-copy-code-button.copied {
+.vp-doc div[class*='language'] > .vp-copy-code-button:hover,
+.vp-doc div[class*='language'] > .vp-copy-code-button.copied {
   border-color: var(--vp-code-copy-code-hover-border-color);
   background-color: var(--vp-code-copy-code-hover-bg);
 }
@@ -518,14 +482,17 @@
 .vp-doc [class*='language-'] > button.vp-copy-code-button:hover.copied {
   /*rtl:ignore*/
   border-radius: 0 4px 4px 0;
-  background-color: var(--vp-code-copy-code-hover-bg);
-  background-image: var(--vp-icon-copied);
 }
 
 .vp-doc [class*='language-'] > button.vp-copy-code-button.copied::before,
 .vp-doc [class*='language-'] > button.vp-copy-code-button:hover.copied::before {
-  position: relative;
+  mask-image: var(--vp-icon-copied);
+}
+
+.vp-doc [class*='language-'] > button.vp-copy-code-button.copied::after,
+.vp-doc [class*='language-'] > button.vp-copy-code-button:hover.copied::after {
   top: -1px;
+  right: unset;
   /*rtl:ignore*/
   transform: translateX(calc(-100% - 1px));
   display: flex;
@@ -544,7 +511,6 @@
   color: var(--vp-code-copy-code-active-text);
   background-color: var(--vp-code-copy-code-hover-bg);
   white-space: nowrap;
-  content: var(--vp-code-copy-copied-text-content);
 }
 
 .vp-doc [class*='language-']::before {

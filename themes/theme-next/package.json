@@ -51,7 +51,7 @@
     "@vuepress/plugin-copy-code": "workspace:~",
     "@vuepress/plugin-git": "workspace:~",
     "@vuepress/plugin-links-check": "workspace:~",
-    "@vuepress/plugin-medium-zoom": "workspace:~",
+    "@vuepress/plugin-photo-swipe": "workspace:~",
     "@vuepress/plugin-nprogress": "workspace:~",
     "@vuepress/plugin-seo": "workspace:~",
     "@vuepress/plugin-shiki": "workspace:~",

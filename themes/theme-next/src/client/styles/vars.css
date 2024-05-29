@@ -559,3 +559,11 @@
 #nprogress {
   --nprogress-color: var(--vp-c-brand-1);
 }
+
+/**
+ * plugin-photo-swipe
+ * -------------------------------------------------------------------------- */
+:root {
+  --photo-swipe-bullet: var(--vp-c-bg);
+  --photo-swipe-bullet-active: var(--vp-c-brand-1);
+}

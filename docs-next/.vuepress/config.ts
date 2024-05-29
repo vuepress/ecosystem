@@ -3,6 +3,7 @@ import process from 'node:process'
 import { footnote } from '@mdit/plugin-footnote'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
+import { getRealPath } from '@vuepress/helper'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { commentPlugin } from '@vuepress/plugin-comment'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
@@ -47,7 +48,6 @@ export default defineUserConfig({
 
   // configure markdown
   markdown: {
-    code: false,
     importCode: {
       handleImportPath: (importPath) => {
         // handle @vuepress packages import path
@@ -56,7 +56,9 @@ export default defineUserConfig({
           return importPath
             .replace(
               packageName,
-              path.dirname(require.resolve(`${packageName}/package.json`)),
+              path.dirname(
+                getRealPath(`${packageName}/package.json`, import.meta.url),
+              ),
             )
             .replace('/src/', '/lib/')
             .replace(/hotKey\.ts$/, 'hotKey.d.ts')
@@ -68,20 +70,6 @@ export default defineUserConfig({
 
   extendsMarkdown: (md) => {
     md.use(footnote)
-
-    // FIXME: Should be removed with next vuepress version
-    const rawFence = md.renderer.rules.fence!
-    const rawCodeInline = md.renderer.rules.code_inline!
-
-    md.renderer.rules.fence = (...args) => {
-      const result = rawFence(...args)
-      return result.replace('<pre', '<pre v-pre ')
-    }
-
-    md.renderer.rules.code_inline = (...args) => {
-      const result = rawCodeInline(...args)
-      return `<code v-pre${result.slice('<code'.length)}`
-    }
   },
 
   plugins: [

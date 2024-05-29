@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import VPLink from '@theme/VPLink.vue'
 import { computed } from 'vue'
-import type { SidebarItem } from '../../shared/index.js'
+import type { ResolvedSidebarItem } from '../../shared/resolved/sidebar.js'
 import { useSidebarControl } from '../composables/sidebar.js'
 
 const props = defineProps<{
-  item: SidebarItem
+  item: ResolvedSidebarItem
   depth: number
 }>()
 

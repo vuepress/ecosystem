@@ -27,9 +27,9 @@ export interface DefaultThemePluginsOptions {
   linksCheck?: LinksCheckPluginOptions | boolean
 
   /**
-   * Enable @vuepress/plugin-medium-zoom or not
+   * Enable @vuepress/plugin-photo-swipe or not
    */
-  mediumZoom?: boolean
+  photoSwipe?: boolean
 
   /**
    * Enable @vuepress/plugin-nprogress or not

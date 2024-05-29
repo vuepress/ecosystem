@@ -2,10 +2,11 @@ import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 import { gitPlugin } from '@vuepress/plugin-git'
 import { linksCheckPlugin } from '@vuepress/plugin-links-check'
-import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 import { nprogressPlugin } from '@vuepress/plugin-nprogress'
+import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
 import { seoPlugin } from '@vuepress/plugin-seo'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
+import type { ShikiPluginOptions } from '@vuepress/plugin-shiki'
 import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import type { App, PluginConfig } from 'vuepress/core'
@@ -66,11 +67,10 @@ export function getPlugins(
     )
   }
 
-  if (themePlugins.mediumZoom !== false) {
+  if (themePlugins.photoSwipe !== false) {
     plugins.push(
-      mediumZoomPlugin({
+      photoSwipePlugin({
         selector: '.vp-content > img, .vp-content :not(a) > img',
-        zoomOptions: {},
         // should greater than page transition duration
         delay: 300,
       }),
@@ -82,11 +82,20 @@ export function getPlugins(
   }
 
   if (themePlugins.shiki !== false) {
+    const defaultOption: ShikiPluginOptions = {
+      notationDiff: true,
+      notationErrorLevel: true,
+      notationFocus: true,
+      notationHighlight: true,
+    }
     plugins.push(
       shikiPlugin(
         isPlainObject(themePlugins.shiki)
-          ? themePlugins.shiki
-          : { themes: { light: 'github-light', dark: 'github-dark' } },
+          ? { ...defaultOption, ...themePlugins.shiki }
+          : {
+              ...defaultOption,
+              themes: { light: 'github-light', dark: 'github-dark' },
+            },
       ),
     )
   }
