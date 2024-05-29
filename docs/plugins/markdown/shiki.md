@@ -258,7 +258,7 @@ When set to `false`, no default styles will be applied, and totally up to users 
 The following features requires additional style to work, which should be handled by themes or users.
 
 ::: details View Styles Example
-@[code{260-349}](@vuepress/theme-default/src/client/styles/code.scss)
+@[code{260-349}](@vuepress/theme-classic/src/client/styles/code.scss)
 :::
 
 ::::

@@ -160,5 +160,5 @@ If the image is standalone in a line, wrapped or not wrapped by link, it will be
 - Details: The selector to detect dark mode.
 
 <script setup>
-import ToggleColorModeButton from '@vuepress/theme-default/components/ToggleColorModeButton.vue'
+import ToggleColorModeButton from '@vuepress/theme-classic/components/ToggleColorModeButton.vue'
 </script>

@@ -159,5 +159,5 @@ interface ImageMarkOptions {
 - 详情：夜间模式的选择器。
 
 <script setup>
-import ToggleColorModeButton from '@vuepress/theme-default/components/ToggleColorModeButton.vue'
+import ToggleColorModeButton from '@vuepress/theme-classic/components/ToggleColorModeButton.vue'
 </script>
