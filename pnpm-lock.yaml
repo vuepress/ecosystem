@@ -686,6 +686,9 @@ importers:
       '@shikijs/transformers':
         specifier: ^1.6.1
         version: 1.6.1
+      '@vuepress/helper':
+        specifier: workspace:~
+        version: link:../../../tools/helper
       nanoid:
         specifier: ^5.0.7
         version: 5.0.7

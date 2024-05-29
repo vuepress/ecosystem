@@ -1,7 +1,12 @@
 import type { TransformerCompactLineOption } from '@shikijs/transformers'
+import { Logger } from '@vuepress/helper'
 import { customAlphabet } from 'nanoid'
 
 const VUE_RE = /-vue$/
+
+export const PLUGIN_NAME = '@vuepress/plugin-shiki'
+
+export const logger = new Logger(PLUGIN_NAME)
 
 export const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz', 10)
 

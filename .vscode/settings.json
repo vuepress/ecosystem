@@ -46,6 +46,7 @@
     "preload",
     "prismjs",
     "shiki",
+    "shikijs",
     "slugify",
     "tsbuildinfo",
     "twikoo",
