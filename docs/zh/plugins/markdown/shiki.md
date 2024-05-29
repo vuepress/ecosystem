@@ -111,6 +111,8 @@ export default {
 
   你可以在代码块添加 `:line-numbers` / `:no-line-numbers` 标记来覆盖配置项中的设置。
 
+  还可以通过在 `:line-numbers` 之后添加 `=` 来自定义起始行号，例如 `:line-numbers=2` 表示代码块中的行号从 `2` 开始。
+
 **输入：**
 
 ````md
@@ -124,6 +126,12 @@ const line3 = 'This is line 3'
 // 禁用行号
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
+```
+
+```ts:line-numbers=2
+// 行号已启用，并从 2 开始
+const line3 = 'This is line 3'
+const line4 = 'This is line 4'
 ```
 ````
 
@@ -139,6 +147,12 @@ const line3 = 'This is line 3'
 // 禁用行号
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
+```
+
+```ts:line-numbers=2
+// 行号已启用，并从 2 开始
+const line3 = 'This is line 3'
+const line4 = 'This is line 4'
 ```
 
 ### highlightLines

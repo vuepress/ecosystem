@@ -154,32 +154,33 @@ export const sidebarZh: SidebarConfig = {
     },
   ],
 
-  '/themes/': [
+  '/zh/themes/': [
     {
       text: '默认主题',
-      link: '/themes/default/',
+      link: '/zh/themes/default/',
       children: [
-        '/themes/default/config',
-        '/themes/default/plugin',
-        '/themes/default/locale',
-        '/themes/default/frontmatter',
-        '/themes/default/components',
-        '/themes/default/markdown',
-        '/themes/default/styles',
-        '/themes/default/extending',
+        '/zh/themes/default/config',
+        '/zh/themes/default/plugin',
+        '/zh/themes/default/locale',
+        '/zh/themes/default/frontmatter',
+        '/zh/themes/default/components',
+        '/zh/themes/default/markdown',
+        '/zh/themes/default/styles',
+        '/zh/themes/default/extending',
       ],
     },
   ],
 
-  '/tools/': [
+  '/zh/tools/': [
     {
       text: '@vuepress/helper',
-      link: '/tools/helper/',
+      link: '/zh/tools/helper/',
       children: [
-        '/tools/helper/node/bundler',
-        '/tools/helper/node/page',
-        '/tools/helper/client',
-        '/tools/helper/shared',
+        '/zh/tools/helper/node/bundler',
+        '/zh/tools/helper/node/page',
+        '/zh/tools/helper/client',
+        '/zh/tools/helper/shared',
+        '/zh/tools/helper/style',
       ],
     },
   ],
