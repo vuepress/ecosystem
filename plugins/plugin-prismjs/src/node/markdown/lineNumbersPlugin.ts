@@ -2,6 +2,8 @@ import type { Markdown } from 'vuepress/markdown'
 import type { LineNumbersOptions } from '../types.js'
 import { resolveLineNumbers } from '../utils/index.js'
 
+const LINE_NUMBERS_START_REGEXP = /:line-numbers=(\d+)\b/
+
 export const lineNumbersPlugin = (
   md: Markdown,
   { lineNumbers = true }: LineNumbersOptions = {},
@@ -33,11 +35,15 @@ export const lineNumbersPlugin = (
       return rawCode
     }
 
+    const startNumbers =
+      Number(info.match(LINE_NUMBERS_START_REGEXP)?.[1] ?? 1) - 1
+    const lineNumbersStyle = `style="counter-reset:line-number ${startNumbers}"`
+
     const lineNumbersCode = [...Array(lines.length)]
       .map(() => `<div class="line-number"></div>`)
       .join('')
 
-    const lineNumbersWrapperCode = `<div class="line-numbers" aria-hidden="true">${lineNumbersCode}</div>`
+    const lineNumbersWrapperCode = `<div class="line-numbers" aria-hidden="true" ${lineNumbersStyle}>${lineNumbersCode}</div>`
 
     const finalCode = rawCode
       .replace(/<\/div>$/, `${lineNumbersWrapperCode}</div>`)
