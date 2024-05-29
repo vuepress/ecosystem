@@ -10,6 +10,8 @@ export const bundledLanguageNames = Object.keys(bundledLanguages)
 
 const MUSTACHE_REG = /\{\{[^]*?\}\}/g
 
+const WARNED_LANGS = new Set<string>()
+
 export const resolveHighlight = async ({
   langs = bundledLanguageNames,
   theme = 'nord',
@@ -34,9 +36,12 @@ export const resolveHighlight = async ({
     let lang = resolveLanguage(language)
 
     if (lang && !loadedLanguages.includes(lang) && !isSpecialLang(lang)) {
-      logger.warn(
-        `${colors.cyan(lang)}' is not loaded! Using '${colors.cyan(defaultHighlightLang || 'txt')}' to highlight instead.`,
-      )
+      if (!WARNED_LANGS.has(lang)) {
+        logger.warn(
+          `Missing ${colors.cyan(lang)}' highlighter, use '${colors.cyan(defaultHighlightLang || 'txt')}' to highlight instead.`,
+        )
+        WARNED_LANGS.add(lang)
+      }
       lang = defaultHighlightLang
     }
 
