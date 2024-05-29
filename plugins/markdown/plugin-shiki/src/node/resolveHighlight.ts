@@ -12,17 +12,19 @@ const MUSTACHE_REG = /\{\{[^]*?\}\}/g
 
 const WARNED_LANGS = new Set<string>()
 
-export const resolveHighlight = async ({
-  langs = bundledLanguageNames,
-  langAlias = {},
-  theme = 'nord',
-  themes,
-  defaultLang = '',
-  transformers: userTransformers = [],
-  ...options
-}: ShikiHighlightOptions = {}): Promise<
-  (str: string, lang: string, attrs: string) => string
-> => {
+export const resolveHighlight = async (
+  {
+    langs = bundledLanguageNames,
+    langAlias = {},
+    theme = 'nord',
+    themes,
+    defaultLang = '',
+    transformers: userTransformers = [],
+    ...options
+  }: ShikiHighlightOptions = {},
+  logLevel: 'silent' | 'warn' | 'debug',
+  store: { path?: string | null },
+): Promise<(str: string, lang: string, attrs: string) => string> => {
   const highlighter = await getHighlighter({
     langs,
     langAlias,
@@ -33,14 +35,17 @@ export const resolveHighlight = async ({
 
   const transformers = getTransformers(options)
   const loadedLanguages = highlighter.getLoadedLanguages()
-
   return (str, language, attrs) => {
     let lang = resolveLanguage(language)
 
     if (lang && !loadedLanguages.includes(lang) && !isSpecialLang(lang)) {
-      if (!WARNED_LANGS.has(lang)) {
+      if (logLevel === 'debug') {
+        logger.info(
+          `Unknown ${colors.cyan(lang)} found in ${colors.cyan(store.path || 'dynamic pages')}`,
+        )
+      } else if (logLevel === 'warn' && !WARNED_LANGS.has(lang)) {
         logger.warn(
-          `Missing ${colors.cyan(lang)}' highlighter, use '${colors.cyan(defaultLang || 'plain')}' to highlight instead.`,
+          `Missing ${colors.cyan(lang)} highlighter, use ${colors.cyan(defaultLang || 'plain')} to highlight instead.`,
         )
         WARNED_LANGS.add(lang)
       }

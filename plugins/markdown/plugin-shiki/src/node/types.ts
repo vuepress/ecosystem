@@ -115,6 +115,15 @@ export interface ShikiHighlightOptions {
    * @see https://shiki.style/packages/transformers#transformernotationerrorlevel
    */
   notationErrorLevel?: boolean
+
+  /**
+   * Log level Highlighter language detecter
+   *
+   * @description defaults to `'debug'` when `--debug` flag is enabled
+   *
+   * @default 'warn'
+   */
+  logLevel?: 'silent' | 'warn' | 'debug'
 }
 
 export interface LineNumberOptions {
