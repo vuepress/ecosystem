@@ -42,7 +42,7 @@ export const resolveHighlight = async (
     if (lang && !loadedLanguages.includes(lang) && !isSpecialLang(lang)) {
       if (logLevel === 'debug') {
         logger.info(
-          `Unknown ${colors.cyan(lang)} found in ${colors.cyan(store.path || 'dynamic pages')}`,
+          `Unknown language ${colors.cyan(lang)} found in ${colors.cyan(store.path || 'dynamic pages')}`,
         )
       } else if (logLevel === 'warn' && !WARNED_LANGS.has(lang)) {
         logger.warn(
