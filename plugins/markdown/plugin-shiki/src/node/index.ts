@@ -1,10 +1,6 @@
 import { shikiPlugin } from './shikiPlugin.js'
 
 export * from './options.js'
-export {
-  bundledLanguageNames,
-  bundledLanguages,
-} from './markdown/applyHighlighter/index.js'
 export * from './shiki.js'
 export * from './shikiPlugin.js'
 export * from './types.js'
