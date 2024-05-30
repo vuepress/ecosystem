@@ -4,12 +4,16 @@ import { resolve } from 'node:path'
 
 const plugins = (
   await Promise.all(
-    readdirSync(resolve(process.cwd(), 'plugins')).map(
-      (packageName) =>
-        import(`../plugins/${packageName}/package.json`, {
-          assert: { type: 'json' },
-        }),
-    ),
+    readdirSync(resolve(process.cwd(), 'plugins'))
+      .map((category) =>
+        readdirSync(resolve(process.cwd(), 'plugins', category)).map(
+          (packageName) =>
+            import(`../plugins/${category}/${packageName}/package.json`, {
+              assert: { type: 'json' },
+            }),
+        ),
+      )
+      .flat(),
   )
 ).map(({ default: { name } }: { default: { name: string } }) => name)
 
