@@ -39,7 +39,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:~",
+    "@vuepress/helper": "workspace:*",
     "chokidar": "^3.6.0",
     "vue": "^3.4.27"
   },

@@ -43,7 +43,7 @@
     "style": "sass src:lib --no-source-map"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:~",
+    "@vuepress/helper": "workspace:*",
     "@vueuse/core": "^10.10.0",
     "photoswipe": "^5.4.4",
     "vue": "^3.4.27"
