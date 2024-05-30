@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.33](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.32...v2.0.0-rc.33) (2024-05-30)
+
+### Features
+
+- **helper:** add normalize.css ([#158](https://github.com/vuepress/ecosystem/issues/158)) ([47b9007](https://github.com/vuepress/ecosystem/commit/47b9007b6f1c9d08d96e255bb2c9e10f964881e0))
+- **helper:** normalize tab-size in pre ([4867254](https://github.com/vuepress/ecosystem/commit/486725428a95ead5ffd3f99ae14c0cb2037f284c))
+
 # [2.0.0-rc.31](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.30...v2.0.0-rc.31) (2024-05-27)
 
 ### Features

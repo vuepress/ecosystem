@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.33](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.32...v2.0.0-rc.33) (2024-05-30)
+
+### Bug Fixes
+
+- **plugin-copy-code:** copy button render incorrectly in Safari ([#165](https://github.com/vuepress/ecosystem/issues/165)) ([6008e9c](https://github.com/vuepress/ecosystem/commit/6008e9c25a276ec468c69e92850e266a5a404828))
+- **theme-default:** code block line number misalignment in Safari ([#164](https://github.com/vuepress/ecosystem/issues/164)) ([16f9024](https://github.com/vuepress/ecosystem/commit/16f902491137a9fdcb44d68fe66eae0aeb992023))
+- **theme-default:** fix arrow style ([bb0025c](https://github.com/vuepress/ecosystem/commit/bb0025ca54505fd2c4bf9ebbeb91e3f1ff12f36a))
+- **theme-default:** fix h2 border color ([7833fb0](https://github.com/vuepress/ecosystem/commit/7833fb0c1da495dcd362e6c3550d4e09e409930a))
+- **theme-default:** fix language dropdown, close [#160](https://github.com/vuepress/ecosystem/issues/160) ([199c266](https://github.com/vuepress/ecosystem/commit/199c2662762e0e2ffe43529f219299ce5aadba2f))
+- **theme-default:** fix normalize style import ([d0c626a](https://github.com/vuepress/ecosystem/commit/d0c626acb07d9182006160f4c1d910af7279c296))
+- **theme-default:** fix shiki code block style ([b20360a](https://github.com/vuepress/ecosystem/commit/b20360a24edfeb8336749002c9b86d6f1ca21d75))
+
+### Features
+
+- add `:line-numbers=number` supports ([#161](https://github.com/vuepress/ecosystem/issues/161)) ([a0a7288](https://github.com/vuepress/ecosystem/commit/a0a7288e64fa74ee82a0479d7d94e902495d82bf))
+- add `shiki`/`prismjs` class names to differentiate highlight plugins ([#181](https://github.com/vuepress/ecosystem/issues/181)) ([0ef4c98](https://github.com/vuepress/ecosystem/commit/0ef4c98abed7dc52d0a44753c78c2c132db0897b))
+- **helper:** add normalize.css ([#158](https://github.com/vuepress/ecosystem/issues/158)) ([47b9007](https://github.com/vuepress/ecosystem/commit/47b9007b6f1c9d08d96e255bb2c9e10f964881e0))
+- **helper:** normalize tab-size in pre ([4867254](https://github.com/vuepress/ecosystem/commit/486725428a95ead5ffd3f99ae14c0cb2037f284c))
+- **plugin-catalog:** improve catalog heading ([97354a2](https://github.com/vuepress/ecosystem/commit/97354a2c4fe3540beb11f8d56353e5ddc9ff9ee7))
+- **plugin-prismjs:** add `prismjs` classname to `<pre>` ([#167](https://github.com/vuepress/ecosystem/issues/167)) ([2ac6c53](https://github.com/vuepress/ecosystem/commit/2ac6c53a2981a6665bde7c37593b705ee40b05b6))
+- **plugin-shiki:** add langAlias option ([#178](https://github.com/vuepress/ecosystem/issues/178)) ([f11014a](https://github.com/vuepress/ecosystem/commit/f11014a8a970d6bb701065382fca41e8aa179865))
+- **plugin-shiki:** export bundled languages and their names and improve performance ([#163](https://github.com/vuepress/ecosystem/issues/163)) ([812f7e7](https://github.com/vuepress/ecosystem/commit/812f7e7f9c995fcddc8136add785aa8d99630e1e))
+- **plugin-shiki:** move `<pre>` `style` attr to `preWrapper` ([#166](https://github.com/vuepress/ecosystem/issues/166)) ([3942641](https://github.com/vuepress/ecosystem/commit/3942641fab33b2e7520ad58d906ffb0070c3ec9e))
+- **theme-default:** support prefix in navbar and sidebar ([#173](https://github.com/vuepress/ecosystem/issues/173)) ([991a161](https://github.com/vuepress/ecosystem/commit/991a1611eb99a7b0f5b7ccaa76d4c0486046f252))
+
+### Performance Improvements
+
+- move the `<pre>` extra attribute to `preWrapper` ([#162](https://github.com/vuepress/ecosystem/issues/162)) ([d0bc473](https://github.com/vuepress/ecosystem/commit/d0bc4730481e12eaa24e82cba70df94a6ead2fbb))
+
 # [2.0.0-rc.32](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.31...v2.0.0-rc.32) (2024-05-27)
 
 ### Bug Fixes

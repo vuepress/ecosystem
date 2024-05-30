@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-redirect",
-  "version": "2.0.0-rc.31",
+  "version": "2.0.0-rc.33",
   "description": "VuePress plugin - redirect",
   "keywords": [
     "vuepress-plugin",
@@ -42,7 +42,7 @@
     "style": "sass src:lib --no-source-map"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:~",
+    "@vuepress/helper": "workspace:*",
     "@vueuse/core": "^10.10.0",
     "cac": "^6.7.14",
     "vue": "^3.4.27"

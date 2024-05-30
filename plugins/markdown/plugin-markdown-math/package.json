@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-math",
-  "version": "2.0.0-rc.31",
+  "version": "2.0.0-rc.33",
   "description": "VuePress plugin - markdown math",
   "keywords": [
     "vuepress-plugin",
@@ -43,7 +43,7 @@
     "@mdit/plugin-katex-slim": "^0.12.0",
     "@mdit/plugin-mathjax-slim": "^0.12.0",
     "@types/markdown-it": "^14.1.1",
-    "@vuepress/helper": "workspace:~",
+    "@vuepress/helper": "workspace:*",
     "vue": "^3.4.27"
   },
   "peerDependencies": {

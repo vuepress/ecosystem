@@ -6,8 +6,7 @@ import type {
   ShikiTransformer,
   SpecialLanguage,
   StringLiteralUnion,
-  ThemeRegistration,
-  ThemeRegistrationRaw,
+  ThemeRegistrationAny,
 } from 'shiki'
 
 export type ShikiLang =
@@ -15,12 +14,34 @@ export type ShikiLang =
   | StringLiteralUnion<BundledLanguage>
   | SpecialLanguage
 
-export type ShikiTheme =
-  | ThemeRegistration
-  | ThemeRegistrationRaw
-  | StringLiteralUnion<BundledTheme>
+export type ShikiTheme = ThemeRegistrationAny | StringLiteralUnion<BundledTheme>
 
-export interface ShikiHighlightOptions {
+export interface ShikiSingleThemeOptions {
+  /**
+   * The single theme to use
+   *
+   * @see https://shiki.style/themes
+   *
+   * @default 'nord'
+   */
+  theme?: ShikiTheme
+}
+
+export interface ShikiDualThemeOptions {
+  /**
+   * The dark and light themes to use
+   *
+   * @see https://shiki.style/themes
+   */
+  themes: {
+    dark: ShikiTheme
+    light: ShikiTheme
+  }
+}
+
+export type ShikiThemeOptions = ShikiDualThemeOptions | ShikiSingleThemeOptions
+
+export type ShikiHighlightOptions = ShikiThemeOptions & {
   /**
    * Languages to be loaded.
    *
@@ -32,39 +53,28 @@ export interface ShikiHighlightOptions {
   langs?: ShikiLang[]
 
   /**
+   * Language alias
+   *
+   * @see https://shiki.style/guide/load-lang#custom-language-aliases
+   */
+  langAlias?: Record<string, StringLiteralUnion<BundledLanguage>>
+
+  /**
    * Fallback language when the specified language is not available.
-   */
-  defaultHighlightLang?: string
-
-  /**
-   * The single theme to use
    *
-   * @see https://shiki.style/themes
+   * @default 'plain'
    */
-  theme?: ShikiTheme
-
-  /**
-   * The dark and light themes to use
-   *
-   * @see https://shiki.style/themes
-   */
-  themes?: {
-    dark: ShikiTheme
-    light: ShikiTheme
-  }
+  defaultLang?: string
 
   /**
    * Function to customize Shiki highlighter instance.
    */
   shikiSetup?: (shiki: Highlighter) => void | Promise<void>
 
-  transformers?: ShikiTransformer[]
-
   /**
-   * The default theme applied to the code (via inline color style).
-   * The rest of the themes are applied via CSS variables, and toggled by CSS overrides.
+   * Shiki transformers
    */
-  defaultColor?: false | StringLiteralUnion<'light' | 'dark'>
+  transformers?: ShikiTransformer[]
 
   /**
    * Enable highlight lines or not
@@ -108,6 +118,15 @@ export interface ShikiHighlightOptions {
    * @see https://shiki.style/packages/transformers#transformernotationerrorlevel
    */
   notationErrorLevel?: boolean
+
+  /**
+   * Log level Highlighter language detecter
+   *
+   * @description defaults to `'debug'` when `--debug` flag is enabled
+   *
+   * @default 'warn'
+   */
+  logLevel?: 'silent' | 'warn' | 'debug'
 }
 
 export interface LineNumberOptions {

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-append-date",
-  "version": "2.0.0-rc.31",
+  "version": "2.0.0-rc.33",
   "description": "VuePress plugin - append date",
   "keywords": [
     "vuepress-plugin",
@@ -38,10 +38,10 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:~"
+    "@vuepress/helper": "workspace:*"
   },
   "peerDependencies": {
-    "@vuepress/plugin-git": "workspace:~",
+    "@vuepress/plugin-git": "workspace:*",
     "vuepress": "2.0.0-rc.12"
   },
   "publishConfig": {

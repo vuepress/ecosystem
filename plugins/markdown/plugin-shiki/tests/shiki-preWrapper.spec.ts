@@ -1,11 +1,12 @@
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
+import type { App } from 'vuepress'
 import {
+  applyHighlighter,
   highlightLinesPlugin,
   lineNumberPlugin,
   preWrapperPlugin,
 } from '../src/node/markdown/index.js'
-import { resolveHighlight } from '../src/node/resolveHighlight.js'
 import type {
   LineNumberOptions,
   PreWrapperOptions,
@@ -20,7 +21,8 @@ const createMarkdown = async ({
   PreWrapperOptions &
   ShikiHighlightOptions = {}): Promise<MarkdownIt> => {
   const md = MarkdownIt()
-  md.options.highlight = await resolveHighlight(options)
+
+  await applyHighlighter(md, { env: { isDebug: false } } as App, options)
 
   md.use(highlightLinesPlugin)
   md.use<PreWrapperOptions>(preWrapperPlugin, { preWrapper })

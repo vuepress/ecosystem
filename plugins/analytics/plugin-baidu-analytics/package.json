@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-baidu-analytics",
-  "version": "2.0.0-rc.31",
+  "version": "2.0.0-rc.33",
   "description": "VuePress plugin - baidu-analytics",
   "keywords": [
     "vuepress-plugin",
@@ -40,7 +40,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:~",
+    "@vuepress/helper": "workspace:*",
     "vue": "^3.4.27"
   },
   "peerDependencies": {

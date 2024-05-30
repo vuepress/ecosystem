@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-pwa",
-  "version": "2.0.0-rc.31",
+  "version": "2.0.0-rc.33",
   "description": "VuePress plugin - progressive web application",
   "keywords": [
     "vuepress-plugin",
@@ -41,7 +41,7 @@
     "style": "sass src:lib --no-source-map"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:~",
+    "@vuepress/helper": "workspace:*",
     "@vueuse/core": "^10.10.0",
     "mitt": "^3.0.1",
     "register-service-worker": "^1.7.2",

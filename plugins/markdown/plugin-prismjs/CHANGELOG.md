@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.33](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.32...v2.0.0-rc.33) (2024-05-30)
+
+### Features
+
+- add `shiki`/`prismjs` class names to differentiate highlight plugins ([#181](https://github.com/vuepress/ecosystem/issues/181)) ([0ef4c98](https://github.com/vuepress/ecosystem/commit/0ef4c98abed7dc52d0a44753c78c2c132db0897b))
+
 # [2.0.0-rc.32](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.31...v2.0.0-rc.32) (2024-05-27)
 
 ### Bug Fixes

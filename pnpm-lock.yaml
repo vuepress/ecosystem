@@ -310,7 +310,7 @@ importers:
   plugins/analytics/plugin-baidu-analytics:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       vue:
         specifier: ^3.4.27
@@ -328,7 +328,7 @@ importers:
   plugins/analytics/plugin-umami-analytics:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       vue:
         specifier: ^3.4.27
@@ -340,7 +340,7 @@ importers:
   plugins/blog/plugin-blog:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       chokidar:
         specifier: ^3.6.0
@@ -355,7 +355,7 @@ importers:
   plugins/blog/plugin-comment:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       '@waline/client':
         specifier: ^3.1.0
@@ -383,7 +383,7 @@ importers:
   plugins/blog/plugin-feed:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       cheerio:
         specifier: 1.0.0-rc.12
@@ -432,7 +432,7 @@ importers:
   plugins/development/plugin-reading-time:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       vue:
         specifier: ^3.4.27
@@ -502,7 +502,7 @@ importers:
   plugins/features/plugin-back-to-top:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: ^10.10.0
@@ -521,7 +521,7 @@ importers:
   plugins/features/plugin-catalog:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       vue:
         specifier: ^3.4.27
@@ -537,7 +537,7 @@ importers:
   plugins/features/plugin-copy-code:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: ^10.10.0
@@ -556,7 +556,7 @@ importers:
   plugins/features/plugin-copyright:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: ^10.10.0
@@ -571,7 +571,7 @@ importers:
   plugins/features/plugin-medium-zoom:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       medium-zoom:
         specifier: ^1.1.0
@@ -586,7 +586,7 @@ importers:
   plugins/features/plugin-notice:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: ^10.10.0
@@ -614,7 +614,7 @@ importers:
   plugins/features/plugin-photo-swipe:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: ^10.10.0
@@ -636,7 +636,7 @@ importers:
   plugins/features/plugin-watermark:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       vue:
         specifier: ^3.4.27
@@ -651,10 +651,10 @@ importers:
   plugins/markdown/plugin-append-date:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       '@vuepress/plugin-git':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../development/plugin-git
       vuepress:
         specifier: 2.0.0-rc.12
@@ -663,7 +663,7 @@ importers:
   plugins/markdown/plugin-links-check:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       vuepress:
         specifier: 2.0.0-rc.12
@@ -703,7 +703,7 @@ importers:
         specifier: ^14.1.1
         version: 14.1.1
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       vuepress:
         specifier: 2.0.0-rc.12
@@ -721,7 +721,7 @@ importers:
         specifier: ^14.1.1
         version: 14.1.1
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       katex:
         specifier: ^0.16.10
@@ -765,7 +765,7 @@ importers:
         specifier: ^1.6.1
         version: 1.6.1
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       nanoid:
         specifier: ^5.0.7
@@ -787,7 +787,7 @@ importers:
   plugins/pwa/plugin-pwa:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: ^10.10.0
@@ -830,7 +830,7 @@ importers:
         specifier: ^3.6.0
         version: 3.6.0(@algolia/client-search@4.23.3)(search-insights@2.13.0)
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: ^10.10.0
@@ -864,7 +864,7 @@ importers:
   plugins/seo/plugin-seo:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       vuepress:
         specifier: 2.0.0-rc.12
@@ -877,7 +877,7 @@ importers:
   plugins/seo/plugin-sitemap:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       sitemap:
         specifier: ^8.0.0
@@ -899,7 +899,7 @@ importers:
   plugins/tools/plugin-redirect:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: ^10.10.0
@@ -930,46 +930,46 @@ importers:
   themes/theme-default:
     dependencies:
       '@vuepress/helper':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../tools/helper
       '@vuepress/plugin-active-header-links':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../plugins/development/plugin-active-header-links
       '@vuepress/plugin-back-to-top':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../plugins/features/plugin-back-to-top
       '@vuepress/plugin-copy-code':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../plugins/features/plugin-copy-code
       '@vuepress/plugin-git':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../plugins/development/plugin-git
       '@vuepress/plugin-links-check':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../plugins/markdown/plugin-links-check
       '@vuepress/plugin-markdown-container':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../plugins/markdown/plugin-markdown-container
       '@vuepress/plugin-medium-zoom':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../plugins/features/plugin-medium-zoom
       '@vuepress/plugin-nprogress':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../plugins/features/plugin-nprogress
       '@vuepress/plugin-palette':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../plugins/development/plugin-palette
       '@vuepress/plugin-prismjs':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../plugins/markdown/plugin-prismjs
       '@vuepress/plugin-seo':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../plugins/seo/plugin-seo
       '@vuepress/plugin-sitemap':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../plugins/seo/plugin-sitemap
       '@vuepress/plugin-theme-data':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../plugins/development/plugin-theme-data
       '@vueuse/core':
         specifier: ^10.10.0
@@ -1091,7 +1091,7 @@ importers:
         specifier: 2.0.0-rc.12
         version: 2.0.0-rc.12(typescript@5.4.5)
       '@vuepress/plugin-git':
-        specifier: workspace:~
+        specifier: workspace:*
         version: link:../../plugins/development/plugin-git
       vite:
         specifier: 5.2.11
