@@ -59,8 +59,8 @@ export const preWrapperPlugin = (
     })
 
     /**
-     * Add the `shiki` class name to distinguish the highlight library used for the current code block.
+     * Add information to dataset for current code block.
      */
-    return `<div class="shiki ${languageClass}" data-ext="${lang}" data-title="${title}" style="${styles}">${result}</div>`
+    return `<div class="${languageClass}" data-highlighter="shiki" data-ext="${lang}" data-title="${title}" style="${styles}">${result}</div>`
   }
 }

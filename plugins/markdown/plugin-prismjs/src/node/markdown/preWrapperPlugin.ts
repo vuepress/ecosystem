@@ -28,8 +28,8 @@ export const preWrapperPlugin = (
     const title = resolveAttr(info, 'title') ?? language.ext
 
     /**
-     * Add the `prismjs` class name to distinguish the highlight library used for the current code block.
+     * Add information to dataset for current code block.
      */
-    return `<div class="prismjs ${languageClass}" data-ext="${language.ext}" data-title="${title}">${result}</div>`
+    return `<div class="${languageClass}" data-highlighter="prismjs" data-ext="${language.ext}" data-title="${title}">${result}</div>`
   }
 }
