@@ -6,14 +6,63 @@ import type { MarkdownEnv } from 'vuepress/markdown'
 import { colors } from 'vuepress/utils'
 import { getTransformers } from '../transformers/getTransformers.js'
 import type { ShikiHighlightOptions } from '../types.js'
-import { attrsToLines, logger, nanoid, resolveLanguage } from '../utils.js'
+import { attrsToLines, logger, resolveLanguage } from '../utils.js'
+import { handleMustache } from './handleMustache.js'
 
 export { bundledLanguages } from 'shiki'
 export const bundledLanguageNames = Object.keys(bundledLanguages)
 
-const MUSTACHE_REG = /\{\{[^]*?\}\}/g
-
 const WARNED_LANGS = new Set<string>()
+
+type MarkdownFilePathGetter = () => string
+
+const createMarkdownFilePathGetter = (
+  md: MarkdownIt,
+): MarkdownFilePathGetter => {
+  const store: { path?: string | null } = {}
+
+  const rawRender = md.render
+
+  // we need to store file path before each render
+  md.render = (src, env: MarkdownEnv) => {
+    store.path = env.filePathRelative
+
+    return rawRender(src, env)
+  }
+
+  return () => store.path || 'dynamic pages'
+}
+
+const getLanguage = (
+  lang: string,
+  loadedLanguages: string[],
+  defaultLang: string,
+  logLevel: string,
+  getMarkdownFilePath: MarkdownFilePathGetter,
+): string => {
+  let result = resolveLanguage(lang)
+
+  if (result && !loadedLanguages.includes(result) && !isSpecialLang(result)) {
+    // warn for unknown languages only once
+    if (logLevel !== 'silent' && !WARNED_LANGS.has(result)) {
+      logger.warn(
+        `Missing ${colors.cyan(lang)} highlighter, use ${colors.cyan(defaultLang)} to highlight instead.`,
+      )
+      WARNED_LANGS.add(result)
+    }
+
+    // log file path if unknown language is found
+    if (logLevel === 'debug') {
+      logger.info(
+        `Unknown language ${colors.cyan(result)} found in ${colors.cyan(getMarkdownFilePath())}`,
+      )
+    }
+
+    result = defaultLang
+  }
+
+  return result
+}
 
 export const applyHighlighter = async (
   md: MarkdownIt,
@@ -21,13 +70,14 @@ export const applyHighlighter = async (
   {
     langs = bundledLanguageNames,
     langAlias = {},
-    defaultLang = '',
+    defaultLang = 'plain',
     transformers: userTransformers = [],
     ...options
   }: ShikiHighlightOptions = {},
 ): Promise<void> => {
   const logLevel = options.logLevel ?? (app.env.isDebug ? 'debug' : 'warn')
-  const store: { path?: string | null } = {}
+  const getMarkdownFilePath =
+    logLevel === 'debug' ? createMarkdownFilePathGetter(md) : null
 
   const highlighter = await getHighlighter({
     langs,
@@ -43,87 +93,38 @@ export const applyHighlighter = async (
   const transformers = getTransformers(options)
   const loadedLanguages = highlighter.getLoadedLanguages()
 
-  // we need to store file path before each render
-  if (logLevel === 'debug') {
-    const rawRender = md.render
-
-    md.render = (src, env: MarkdownEnv) => {
-      store.path = env.filePathRelative
-
-      return rawRender(src, env)
-    }
-  }
-
   md.options.highlight = (str, language, attrs) => {
-    let lang = resolveLanguage(language)
-
-    if (lang && !loadedLanguages.includes(lang) && !isSpecialLang(lang)) {
-      // warn for unknown languages only once
-      if (logLevel !== 'silent' && !WARNED_LANGS.has(lang)) {
-        logger.warn(
-          `Missing ${colors.cyan(lang)} highlighter, use ${colors.cyan(defaultLang || 'plain')} to highlight instead.`,
-        )
-        WARNED_LANGS.add(lang)
-      }
-
-      // log file path if unknown language is found
-      if (logLevel === 'debug') {
-        logger.info(
-          `Unknown language ${colors.cyan(lang)} found in ${colors.cyan(store.path || 'dynamic pages')}`,
-        )
-      }
-
-      lang = defaultLang
-    }
-
-    const codeMustaches = new Map<string, string>()
-
-    const removeMustache = (str: string): string =>
-      str.replace(MUSTACHE_REG, (match) => {
-        let marker = codeMustaches.get(match)
-
-        if (!marker) {
-          marker = nanoid()
-          codeMustaches.set(match, marker)
-        }
-
-        return marker
+    const highlightCode = (str: string): string =>
+      highlighter.codeToHtml(str, {
+        lang: getLanguage(
+          language,
+          loadedLanguages,
+          defaultLang,
+          logLevel,
+          getMarkdownFilePath!,
+        ),
+        meta: {
+          /**
+           * Custom `transformers` passed by users may require `attrs`.
+           * e.g. [transformerNotationWordHighlight](https://shiki.style/packages/transformers#transformernotationwordhighlight)
+           */
+          __raw: attrs,
+        },
+        transformers: [
+          ...transformers,
+          ...(options.highlightLines ?? true
+            ? [transformerCompactLineOptions(attrsToLines(attrs))]
+            : []),
+          ...userTransformers,
+        ],
+        ...('themes' in options
+          ? {
+              themes: options.themes,
+              defaultColor: false,
+            }
+          : { theme: options.theme ?? 'nord' }),
       })
 
-    const restoreMustache = (str: string): string => {
-      codeMustaches.forEach((marker, match) => {
-        str = str.replaceAll(marker, match)
-      })
-
-      return str
-    }
-
-    str = removeMustache(str).trimEnd()
-
-    const highlighted = highlighter.codeToHtml(str, {
-      lang,
-      meta: {
-        /**
-         * Custom `transformers` passed by users may require `attrs`.
-         * e.g. [transformerNotationWordHighlight](https://shiki.style/packages/transformers#transformernotationwordhighlight)
-         */
-        __raw: attrs,
-      },
-      transformers: [
-        ...transformers,
-        ...(options.highlightLines ?? true
-          ? [transformerCompactLineOptions(attrsToLines(attrs))]
-          : []),
-        ...userTransformers,
-      ],
-      ...('themes' in options
-        ? {
-            themes: options.themes,
-            defaultColor: false,
-          }
-        : { theme: options.theme ?? 'nord' }),
-    })
-
-    return restoreMustache(highlighted)
+    return handleMustache(str, highlightCode)
   }
 }
