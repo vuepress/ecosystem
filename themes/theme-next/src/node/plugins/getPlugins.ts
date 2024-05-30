@@ -109,10 +109,10 @@ export function getPlugins(
       notationErrorLevel: true,
       notationFocus: true,
       notationHighlight: true,
+      themes: { light: 'github-light', dark: 'github-dark' },
     }
-    if (!shikiOptions.theme) {
-      defaultOptions.themes ??= { light: 'github-light', dark: 'github-dark' }
-      defaultOptions.defaultColor = false
+    if ('theme' in shikiOptions) {
+      delete (defaultOptions as any).themes
     }
     plugins.push(shikiPlugin({ ...defaultOptions, ...shikiOptions }))
   }

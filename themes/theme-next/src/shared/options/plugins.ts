@@ -37,7 +37,7 @@ export interface DefaultThemePluginsOptions {
   nprogress?: boolean
 
   /**
-   * Enable @vuepress/plugin-prismjs or not
+   * Enable @vuepress/plugin-shiki or not
    */
   shiki?: boolean | ShikiPluginOptions
 
