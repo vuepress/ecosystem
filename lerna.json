@@ -10,6 +10,6 @@
       "syncWorkspaceLock": true
     }
   },
-  "packages": ["plugins/*", "themes/*", "tools/*"],
+  "packages": ["plugins/*/*", "themes/*", "tools/*"],
   "ignoreChanges": ["**/tests/**", "**/*.md"]
 }
