@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.33](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.32...v2.0.0-rc.33) (2024-05-30)
+
+### Bug Fixes
+
+- **theme-default:** code block line number misalignment in Safari ([#164](https://github.com/vuepress/ecosystem/issues/164)) ([16f9024](https://github.com/vuepress/ecosystem/commit/16f902491137a9fdcb44d68fe66eae0aeb992023))
+- **theme-default:** fix arrow style ([bb0025c](https://github.com/vuepress/ecosystem/commit/bb0025ca54505fd2c4bf9ebbeb91e3f1ff12f36a))
+- **theme-default:** fix h2 border color ([7833fb0](https://github.com/vuepress/ecosystem/commit/7833fb0c1da495dcd362e6c3550d4e09e409930a))
+- **theme-default:** fix language dropdown, close [#160](https://github.com/vuepress/ecosystem/issues/160) ([199c266](https://github.com/vuepress/ecosystem/commit/199c2662762e0e2ffe43529f219299ce5aadba2f))
+- **theme-default:** fix normalize style import ([d0c626a](https://github.com/vuepress/ecosystem/commit/d0c626acb07d9182006160f4c1d910af7279c296))
+- **theme-default:** fix shiki code block style ([b20360a](https://github.com/vuepress/ecosystem/commit/b20360a24edfeb8336749002c9b86d6f1ca21d75))
+
+### Features
+
+- **helper:** add normalize.css ([#158](https://github.com/vuepress/ecosystem/issues/158)) ([47b9007](https://github.com/vuepress/ecosystem/commit/47b9007b6f1c9d08d96e255bb2c9e10f964881e0))
+- **helper:** normalize tab-size in pre ([4867254](https://github.com/vuepress/ecosystem/commit/486725428a95ead5ffd3f99ae14c0cb2037f284c))
+- **theme-default:** support prefix in navbar and sidebar ([#173](https://github.com/vuepress/ecosystem/issues/173)) ([991a161](https://github.com/vuepress/ecosystem/commit/991a1611eb99a7b0f5b7ccaa76d4c0486046f252))
+
+### Performance Improvements
+
+- move the `<pre>` extra attribute to `preWrapper` ([#162](https://github.com/vuepress/ecosystem/issues/162)) ([d0bc473](https://github.com/vuepress/ecosystem/commit/d0bc4730481e12eaa24e82cba70df94a6ead2fbb))
+
 # [2.0.0-rc.32](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.31...v2.0.0-rc.32) (2024-05-27)
 
 **Note:** Version bump only for package @vuepress/theme-default
