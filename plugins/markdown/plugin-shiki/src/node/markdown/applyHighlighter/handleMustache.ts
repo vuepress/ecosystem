@@ -1,4 +1,4 @@
-import { nanoid } from '../utils.js'
+import { nanoid } from '../../utils.js'
 
 const MUSTACHE_REG = /\{\{[^]*?\}\}/g
 
@@ -32,9 +32,9 @@ const restoreMustache = (str: string, store: MustacheStore): string => {
 
 export const handleMustache = (
   str: string,
-  render: (str: string) => string,
+  highlight: (str: string) => string,
 ): string => {
   const store = new Map<string, string>()
 
-  return restoreMustache(render(removeMustache(str, store).trimEnd()), store)
+  return restoreMustache(highlight(removeMustache(str, store).trimEnd()), store)
 }
