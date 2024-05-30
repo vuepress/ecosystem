@@ -227,7 +227,7 @@ div[class*='language-'] {
 }
 
 // ------------ plugin-shiki code highlighting ------------
-div[class*='language']:has(.shiki) {
+div[data-highlighter='shiki'] {
   background-color: var(--shiki-light-bg, var(--code-bg-color));
   transition: background-color var(--t-color);
 
