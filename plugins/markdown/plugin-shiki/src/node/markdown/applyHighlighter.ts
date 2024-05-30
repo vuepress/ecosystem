@@ -1,24 +1,34 @@
 import { transformerCompactLineOptions } from '@shikijs/transformers'
+import type MarkdownIt from 'markdown-it'
 import { bundledLanguages, getHighlighter, isSpecialLang } from 'shiki'
+import type { App } from 'vuepress'
+import type { MarkdownEnv } from 'vuepress/markdown'
 import { colors } from 'vuepress/utils'
-import { getTransformers } from './transformers/getTransformers.js'
-import type { ShikiHighlightOptions } from './types.js'
-import { attrsToLines, logger, nanoid, resolveLanguage } from './utils.js'
+import { getTransformers } from '../transformers/getTransformers.js'
+import type { ShikiHighlightOptions } from '../types.js'
+import { attrsToLines, logger, nanoid, resolveLanguage } from '../utils.js'
 
 export { bundledLanguages } from 'shiki'
 export const bundledLanguageNames = Object.keys(bundledLanguages)
 
 const MUSTACHE_REG = /\{\{[^]*?\}\}/g
 
-export const resolveHighlight = async ({
-  langs = bundledLanguageNames,
-  langAlias = {},
-  defaultLang = '',
-  transformers: userTransformers = [],
-  ...options
-}: ShikiHighlightOptions = {}): Promise<
-  (str: string, lang: string, attrs: string) => string
-> => {
+const WARNED_LANGS = new Set<string>()
+
+export const applyHighlighter = async (
+  md: MarkdownIt,
+  app: App,
+  {
+    langs = bundledLanguageNames,
+    langAlias = {},
+    defaultLang = '',
+    transformers: userTransformers = [],
+    ...options
+  }: ShikiHighlightOptions = {},
+): Promise<void> => {
+  const logLevel = options.logLevel ?? (app.env.isDebug ? 'debug' : 'warn')
+  const store: { path?: string | null } = {}
+
   const highlighter = await getHighlighter({
     langs,
     langAlias,
@@ -33,13 +43,36 @@ export const resolveHighlight = async ({
   const transformers = getTransformers(options)
   const loadedLanguages = highlighter.getLoadedLanguages()
 
-  return (str, language, attrs) => {
+  // we need to store file path before each render
+  if (logLevel === 'debug') {
+    const rawRender = md.render
+
+    md.render = (src, env: MarkdownEnv) => {
+      store.path = env.filePathRelative
+
+      return rawRender(src, env)
+    }
+  }
+
+  md.options.highlight = (str, language, attrs) => {
     let lang = resolveLanguage(language)
 
     if (lang && !loadedLanguages.includes(lang) && !isSpecialLang(lang)) {
-      logger.warn(
-        `${colors.cyan(lang)}' is not loaded! Using '${colors.cyan(defaultLang || 'plain')}' to highlight instead.`,
-      )
+      // warn for unknown languages only once
+      if (logLevel !== 'silent' && !WARNED_LANGS.has(lang)) {
+        logger.warn(
+          `Missing ${colors.cyan(lang)} highlighter, use ${colors.cyan(defaultLang || 'plain')} to highlight instead.`,
+        )
+        WARNED_LANGS.add(lang)
+      }
+
+      // log file path if unknown language is found
+      if (logLevel === 'debug') {
+        logger.info(
+          `Unknown language ${colors.cyan(lang)} found in ${colors.cyan(store.path || 'dynamic pages')}`,
+        )
+      }
+
       lang = defaultLang
     }
 
