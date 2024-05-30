@@ -58,6 +58,9 @@ export const preWrapperPlugin = (
       return `<pre ${before.trim()}${after.trimEnd()}>`
     })
 
-    return `<div class="${languageClass}" data-ext="${lang}" data-title="${title}" style="${styles}">${result}</div>`
+    /**
+     * Add information to dataset for current code block.
+     */
+    return `<div class="${languageClass}" data-highlighter="shiki" data-ext="${lang}" data-title="${title}" style="${styles}">${result}</div>`
   }
 }
