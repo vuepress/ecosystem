@@ -49,6 +49,7 @@
 .vp-sponsor-grid.xmini .vp-sponsor-grid-link {
   height: 64px;
 }
+
 .vp-sponsor-grid.xmini .vp-sponsor-grid-image {
   max-width: 64px;
   max-height: 22px;
@@ -57,6 +58,7 @@
 .vp-sponsor-grid.mini .vp-sponsor-grid-link {
   height: 72px;
 }
+
 .vp-sponsor-grid.mini .vp-sponsor-grid-image {
   max-width: 96px;
   max-height: 24px;
@@ -65,6 +67,7 @@
 .vp-sponsor-grid.small .vp-sponsor-grid-link {
   height: 96px;
 }
+
 .vp-sponsor-grid.small .vp-sponsor-grid-image {
   max-width: 96px;
   max-height: 24px;
@@ -73,6 +76,7 @@
 .vp-sponsor-grid.medium .vp-sponsor-grid-link {
   height: 112px;
 }
+
 .vp-sponsor-grid.medium .vp-sponsor-grid-image {
   max-width: 120px;
   max-height: 36px;
@@ -81,6 +85,7 @@
 .vp-sponsor-grid.big .vp-sponsor-grid-link {
   height: 184px;
 }
+
 .vp-sponsor-grid.big .vp-sponsor-grid-image {
   max-width: 192px;
   max-height: 56px;

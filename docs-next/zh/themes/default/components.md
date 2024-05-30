@@ -51,7 +51,7 @@ outline: 2
 
 #### Title <Badge type="danger" text="caution" />
 
-## 自定义子节点
+### 自定义子节点
 
 `<Badge>` 接受 `children`, 这将显示在徽标中。
 

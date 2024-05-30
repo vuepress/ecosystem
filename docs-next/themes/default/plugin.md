@@ -24,7 +24,7 @@ export default {
 
 - Details:
 
-  Enable [@vuepress/plugin-active-header-links](../../plugins/active-header-links.md) or not.
+  Enable [@vuepress/plugin-active-header-links](../../plugins/development/active-header-links.md) or not.
 
 ## themePlugins.copyCode
 
@@ -34,7 +34,7 @@ export default {
 
 - Details:
 
-  Enable [@vuepress/plugin-copy-code](../../plugins/copy-code.md) or not.
+  Enable [@vuepress/plugin-copy-code](../../plugins/features/copy-code.md) or not.
 
   Object value is supported as plugin options.
 
@@ -46,7 +46,7 @@ export default {
 
 - Details:
 
-  Enable [@vuepress/plugin-git](../../plugins/git.md) or not.
+  Enable [@vuepress/plugin-git](../../plugins/development/git.md) or not.
 
 ## themePlugins.linksCheck
 
@@ -56,9 +56,9 @@ export default {
 
 - Details:
 
-  Enable [@vuepress/plugin-links-check](../../plugins/links-check.md) or not.
+  Enable [@vuepress/plugin-links-check](../../plugins/markdown/links-check.md) or not.
 
-## themePlugins.mediumZoom
+## themePlugins.photoSwipe
 
 - Type: `boolean`
 
@@ -66,7 +66,7 @@ export default {
 
 - Details:
 
-  Enable [@vuepress/plugin-medium-zoom](../../plugins/medium-zoom.md) or not.
+  Enable [@vuepress/plugin-photo-swipe](../../plugins/features/photo-swipe.md) or not.
 
 ## themePlugins.nprogress
 
@@ -76,7 +76,7 @@ export default {
 
 - Details:
 
-  Enable [@vuepress/plugin-nprogress](../../plugins/nprogress.md) or not.
+  Enable [@vuepress/plugin-nprogress](../../plugins/features/nprogress.md) or not.
 
 ## themePlugins.shiki
 
@@ -86,7 +86,7 @@ export default {
 
 - Details:
 
-  Enable [@vuepress/plugin-shiki](../../plugins/shiki.md) or not.
+  Enable [@vuepress/plugin-shiki](../../plugins/markdown/shiki.md) or not.
 
 ## themePlugins.seo
 
@@ -96,7 +96,7 @@ export default {
 
 - Details:
 
-  Enable [@vuepress/plugin-seo](../../plugins/seo/README.md) or not.
+  Enable [@vuepress/plugin-seo](../../plugins/seo/seo/README.md) or not.
 
   Object value is supported as plugin options.
 
@@ -108,6 +108,6 @@ export default {
 
 - Details:
 
-  Enable [@vuepress/plugin-sitemap](../../plugins/sitemap/README.md) or not.
+  Enable [@vuepress/plugin-sitemap](../../plugins/seo/sitemap/README.md) or not.
 
   Object value is supported as plugin options.

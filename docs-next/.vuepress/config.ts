@@ -8,6 +8,8 @@ import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { commentPlugin } from '@vuepress/plugin-comment'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
+import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
+import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { defineUserConfig } from 'vuepress'
 import type { UserConfig } from 'vuepress'
@@ -76,6 +78,12 @@ export default defineUserConfig({
     catalogPlugin(),
     docsearchPlugin(),
     commentPlugin({ provider: 'Giscus' }),
+    markdownImagePlugin({
+      figure: true,
+      mark: true,
+      size: true,
+    }),
+    markdownMathPlugin(),
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, './components'),
     }),

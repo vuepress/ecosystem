@@ -24,9 +24,9 @@ const badgeLabel = computed(() => {
 })
 const badgeImg = computed(
   () =>
-    `https://badgen.net/npm/v/${props.package}/${
+    `https://img.shields.io/npm/v/${props.package}/${
       props.distTag
-    }?label=${encodeURIComponent(badgeLabel.value)}`,
+    }?label=${encodeURIComponent(badgeLabel.value)}&labelColor=2a2f45&color=5672cd`,
 )
 </script>
 

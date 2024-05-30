@@ -24,7 +24,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-active-header-links](../../plugins/active-header-links.md)。
+  是否启用 [@vuepress/plugin-active-header-links](../../plugins/development/active-header-links.md)。
 
 ## themePlugins.copyCode
 
@@ -34,7 +34,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-copy-code](../../plugins/copy-code.md)。
+  是否启用 [@vuepress/plugin-copy-code](../../plugins/features/copy-code.md)。
 
   Object value is supported as plugin options.
 
@@ -46,7 +46,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-git](../../plugins/git.md)。
+  是否启用 [@vuepress/plugin-git](../../plugins/development/git.md)。
 
 ## themePlugins.linksCheck
 
@@ -56,9 +56,9 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-links-check](../../plugins/links-check.md)。
+  是否启用 [@vuepress/plugin-links-check](../../plugins/markdown/links-check.md)。
 
-## themePlugins.mediumZoom
+## themePlugins.photoSwipe
 
 - 类型： `boolean`
 
@@ -66,7 +66,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-medium-zoom](../../plugins/medium-zoom.md)。
+  是否启用 [@vuepress/plugin-photo-swipe](../../plugins/features/photo-swipe.md)。
 
 ## themePlugins.nprogress
 
@@ -76,7 +76,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-nprogress](../../plugins/nprogress.md)。
+  是否启用 [@vuepress/plugin-nprogress](../../plugins/features/nprogress.md)。
 
 ## themePlugins.shiki
 
@@ -86,7 +86,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-shiki](../../plugins/shiki.md)。
+  是否启用 [@vuepress/plugin-shiki](../../plugins/markdown/shiki.md)。
 
 ## themePlugins.seo
 
@@ -96,7 +96,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-seo](../../plugins/seo/README.md)。
+  是否启用 [@vuepress/plugin-seo](../../plugins/seo/seo/README.md)。
 
   Object value is supported as plugin options.
 
@@ -108,6 +108,6 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-sitemap](../../plugins/sitemap/README.md)。
+  是否启用 [@vuepress/plugin-sitemap](../../plugins/seo/sitemap/README.md)。
 
   支持对象格式以作为插件选项。

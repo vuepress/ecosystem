@@ -21,7 +21,7 @@ export default defaultTheme({
 
   docsRepo: 'https://github.com/vuepress/ecosystem',
   docsBranch: 'main',
-  docsDir: 'docs-new',
+  docsDir: 'docs-next',
 
   footer: {
     message: 'Released under the MIT License.',

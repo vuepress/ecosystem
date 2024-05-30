@@ -51,7 +51,7 @@ outline: 2
 
 #### Title <Badge type="danger" text="caution" />
 
-## Custom Children
+### Custom Children
 
 `<Badge>` accept `children`, which will be displayed in the badge.
 

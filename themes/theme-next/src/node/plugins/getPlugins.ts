@@ -112,6 +112,7 @@ export function getPlugins(
     }
     if (!shikiOptions.theme) {
       defaultOptions.themes ??= { light: 'github-light', dark: 'github-dark' }
+      defaultOptions.defaultColor = false
     }
     plugins.push(shikiPlugin({ ...defaultOptions, ...shikiOptions }))
   }

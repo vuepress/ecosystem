@@ -415,36 +415,43 @@
   --vp-custom-block-info-text: var(--vp-c-text-1);
   --vp-custom-block-info-bg: var(--vp-c-default-soft);
   --vp-custom-block-info-code-bg: var(--vp-c-default-soft);
+  --vp-custom-block-info-icon-color: var(--vp-c-text-3);
 
   --vp-custom-block-note-border: transparent;
   --vp-custom-block-note-text: var(--vp-c-text-1);
   --vp-custom-block-note-bg: var(--vp-c-default-soft);
   --vp-custom-block-note-code-bg: var(--vp-c-default-soft);
+  --vp-custom-block-note-icon-color: var(--vp-c-text-3);
 
   --vp-custom-block-tip-border: transparent;
   --vp-custom-block-tip-text: var(--vp-c-text-1);
   --vp-custom-block-tip-bg: var(--vp-c-tip-soft);
   --vp-custom-block-tip-code-bg: var(--vp-c-tip-soft);
+  --vp-custom-block-tip-icon-color: var(--vp-c-tip-3);
 
   --vp-custom-block-important-border: transparent;
   --vp-custom-block-important-text: var(--vp-c-text-1);
   --vp-custom-block-important-bg: var(--vp-c-important-soft);
   --vp-custom-block-important-code-bg: var(--vp-c-important-soft);
+  --vp-custom-block-important-icon-color: var(--vp-c-important-3);
 
   --vp-custom-block-warning-border: transparent;
   --vp-custom-block-warning-text: var(--vp-c-text-1);
   --vp-custom-block-warning-bg: var(--vp-c-warning-soft);
   --vp-custom-block-warning-code-bg: var(--vp-c-warning-soft);
+  --vp-custom-block-warning-icon-color: var(--vp-c-warning-3);
 
   --vp-custom-block-danger-border: transparent;
   --vp-custom-block-danger-text: var(--vp-c-text-1);
   --vp-custom-block-danger-bg: var(--vp-c-danger-soft);
   --vp-custom-block-danger-code-bg: var(--vp-c-danger-soft);
+  --vp-custom-block-danger-icon-color: var(--vp-c-danger-3);
 
   --vp-custom-block-caution-border: transparent;
   --vp-custom-block-caution-text: var(--vp-c-text-1);
   --vp-custom-block-caution-bg: var(--vp-c-caution-soft);
   --vp-custom-block-caution-code-bg: var(--vp-c-caution-soft);
+  --vp-custom-block-caution-icon-color: var(--vp-c-caution-3);
 
   --vp-custom-block-details-border: var(--vp-custom-block-info-border);
   --vp-custom-block-details-text: var(--vp-custom-block-info-text);
