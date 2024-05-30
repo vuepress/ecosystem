@@ -101,22 +101,19 @@ export function getPlugins(
   }
 
   if (themePlugins.shiki !== false) {
-    const defaultOption: ShikiPluginOptions = {
+    const shikiOptions = isPlainObject(themePlugins.shiki)
+      ? themePlugins.shiki
+      : {}
+    const defaultOptions: ShikiPluginOptions = {
       notationDiff: true,
       notationErrorLevel: true,
       notationFocus: true,
       notationHighlight: true,
     }
-    plugins.push(
-      shikiPlugin(
-        isPlainObject(themePlugins.shiki)
-          ? { ...defaultOption, ...themePlugins.shiki }
-          : {
-              ...defaultOption,
-              themes: { light: 'github-light', dark: 'github-dark' },
-            },
-      ),
-    )
+    if (!shikiOptions.theme) {
+      defaultOptions.themes ??= { light: 'github-light', dark: 'github-dark' }
+    }
+    plugins.push(shikiPlugin({ ...defaultOptions, ...shikiOptions }))
   }
 
   if (hostname && themePlugins.seo !== false) {
