@@ -14,8 +14,10 @@ import { isPlainObject } from 'vuepress/shared'
 import type {
   DefaultThemeLocaleOptions,
   DefaultThemePluginsOptions,
-} from '../shared/index.js'
-import { resolveThemeData } from './config/resolveThemeData.js'
+} from '../../shared/index.js'
+import { resolveContainerLocales, resolveThemeData } from '../config/index.js'
+import { createCodeGroupPlugin } from './codeGroupPlugin.js'
+import { createContainerPlugin } from './createContainerPlugin.js'
 
 interface PluginsOptions {
   hostname?: string
@@ -28,6 +30,23 @@ export function getPlugins(
   { hostname, themePlugins, localeOptions }: PluginsOptions,
 ): PluginConfig {
   const plugins: PluginConfig = []
+
+  // ------------------ containers -----------------------------------
+
+  const containerLocales = resolveContainerLocales(app, localeOptions)
+  plugins.push(
+    ...[
+      createContainerPlugin('tip', containerLocales),
+      createContainerPlugin('info', containerLocales),
+      createContainerPlugin('warning', containerLocales),
+      createContainerPlugin('danger', containerLocales),
+      createContainerPlugin('caution', containerLocales),
+      createContainerPlugin('important', containerLocales),
+      createContainerPlugin('details', containerLocales),
+      // code-group
+      createCodeGroupPlugin(),
+    ],
+  )
 
   if (themePlugins.activeHeaderLinks !== false) {
     plugins.push(

@@ -72,7 +72,9 @@ export function getHeaders(
 }
 
 function serializeHeader(h: Element): string {
-  const el = h.querySelector('a span')
+  // <hx><a href="#"><span>title</span></a></hx>
+  const anchor = h.firstChild
+  const el = anchor?.firstChild
   let ret = ''
   for (const node of Array.from(el?.childNodes ?? [])) {
     if (node.nodeType === 1) {
@@ -86,6 +88,14 @@ function serializeHeader(h: Element): string {
     } else if (node.nodeType === 3) {
       ret += node.textContent
     }
+  }
+  // maybe `<hx><a href="#"></a><a href="xxx"></a</hx>` or more
+  let next = anchor?.nextSibling
+  while (next) {
+    if (next.nodeType === 1 || next.nodeType === 3) {
+      ret += next.textContent
+    }
+    next = next.nextSibling
   }
   return ret.trim()
 }

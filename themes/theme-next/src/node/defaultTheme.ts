@@ -7,9 +7,9 @@ import type {
   DefaultThemePluginsOptions,
   SidebarSorter,
 } from '../shared/index.js'
-import { resolvePageHead } from './config/resolvePageHead.js'
-import { extendsMarkdown } from './markdown/index.js'
-import { getPlugins } from './plugins.js'
+import { resolvePageHead } from './config/index.js'
+import { githubAlertsPlugin } from './markdown/index.js'
+import { getPlugins } from './plugins/index.js'
 import { prepareSidebarData } from './prepare/index.js'
 import { logger, THEME_NAME } from './utils/index.js'
 
@@ -106,7 +106,9 @@ export const defaultTheme = ({
         resolvePageHead(page, localeOptions)
       },
 
-      extendsMarkdown: (md, app) => extendsMarkdown(md, app, localeOptions),
+      extendsMarkdown: (md, app) => {
+        githubAlertsPlugin(md, app, localeOptions)
+      },
     }
   }
 }

@@ -21,7 +21,7 @@
   "author": "meteorlxy",
   "contributors": [
     "pengzhanbo (https://github.com/pengzhanbo)",
-    "Mr.Hope (https://github.com/mister-hope)"
+    "Mister-Hope (https://github.com/mister-hope)"
   ],
   "type": "module",
   "exports": {
@@ -46,25 +46,23 @@
     "copy": "cpx \"src/**/*.{d.ts,vue,css,scss,jpg,png,woff2}\" lib"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:~",
-    "@vuepress/plugin-active-header-links": "workspace:~",
-    "@vuepress/plugin-copy-code": "workspace:~",
-    "@vuepress/plugin-git": "workspace:~",
-    "@vuepress/plugin-links-check": "workspace:~",
-    "@vuepress/plugin-photo-swipe": "workspace:~",
-    "@vuepress/plugin-nprogress": "workspace:~",
-    "@vuepress/plugin-seo": "workspace:~",
-    "@vuepress/plugin-shiki": "workspace:~",
-    "@vuepress/plugin-sitemap": "workspace:~",
-    "@vuepress/plugin-theme-data": "workspace:~",
+    "@mdit/plugin-alert": "^0.12.0",
+    "@vuepress/helper": "workspace:*",
+    "@vuepress/plugin-active-header-links": "workspace:*",
+    "@vuepress/plugin-copy-code": "workspace:*",
+    "@vuepress/plugin-git": "workspace:*",
+    "@vuepress/plugin-links-check": "workspace:*",
+    "@vuepress/plugin-markdown-container": "workspace:*",
+    "@vuepress/plugin-nprogress": "workspace:*",
+    "@vuepress/plugin-photo-swipe": "workspace:*",
+    "@vuepress/plugin-seo": "workspace:*",
+    "@vuepress/plugin-shiki": "workspace:*",
+    "@vuepress/plugin-sitemap": "workspace:*",
+    "@vuepress/plugin-theme-data": "workspace:*",
     "@vueuse/core": "^10.10.0",
     "chokidar": "^3.6.0",
-    "markdown-it-container": "^4.0.0",
     "nanoid": "^5.0.7",
     "vue": "^3.4.27"
-  },
-  "devDependencies": {
-    "@types/markdown-it": "^14.0.1"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.12"
