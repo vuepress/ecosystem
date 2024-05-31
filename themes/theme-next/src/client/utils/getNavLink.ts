@@ -7,7 +7,7 @@ import {
 import { resolveRoute } from 'vuepress/client'
 import type { ResolvedNavItemWithLink } from '../../shared/resolved/navbar.js'
 
-export function getNavLink(filepath: string): ResolvedNavItemWithLink {
+export const getNavLink = (filepath: string): ResolvedNavItemWithLink => {
   const { notFound, path, meta } = resolveRoute<{ title?: string }>(filepath)
   if (notFound) {
     return { text: path, link: path }
@@ -15,12 +15,12 @@ export function getNavLink(filepath: string): ResolvedNavItemWithLink {
   return { text: meta.title || path, link: path }
 }
 
-export function normalizeLink(base = '', link = ''): string {
+export const normalizeLink = (base = '', link = ''): string => {
   return isLinkAbsolute(link) || isLinkWithProtocol(link)
     ? link
     : ensureLeadingSlash(`${base}/${link}`.replace(/\/+/g, '/'))
 }
 
-export function normalizePrefix(base: string, link = ''): string {
+export const normalizePrefix = (base: string, link = ''): string => {
   return ensureEndingSlash(normalizeLink(base, link))
 }

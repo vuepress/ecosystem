@@ -10,7 +10,7 @@ watch(
   () => backToTop.value.focus(),
 )
 
-function focusOnTargetAnchor({ target }: Event): void {
+const focusOnTargetAnchor = ({ target }: Event): void => {
   const el = document.getElementById(
     decodeURIComponent((target as HTMLAnchorElement).hash).slice(1),
   )

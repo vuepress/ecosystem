@@ -15,7 +15,7 @@ export const useNavbarData = (): Ref<ResolvedNavItem[]> => {
   return computed(() => resolveNavbar(theme.value.navbar || []))
 }
 
-function resolveNavbar(navbar: NavItem[], _prefix = ''): ResolvedNavItem[] {
+const resolveNavbar = (navbar: NavItem[], _prefix = ''): ResolvedNavItem[] => {
   const resolved: ResolvedNavItem[] = []
   navbar.forEach((item) => {
     if (typeof item === 'string') {
@@ -46,27 +46,27 @@ export interface UseNavReturn {
   toggleScreen: () => void
 }
 
-export function useNav(): UseNavReturn {
+export const useNav = (): UseNavReturn => {
   const isScreenOpen = ref(false)
 
-  function openScreen(): void {
+  const openScreen = (): void => {
     isScreenOpen.value = true
     window.addEventListener('resize', closeScreenOnTabletWindow)
   }
 
-  function closeScreen(): void {
+  const closeScreen = (): void => {
     isScreenOpen.value = false
     window.removeEventListener('resize', closeScreenOnTabletWindow)
   }
 
-  function toggleScreen(): void {
+  const toggleScreen = (): void => {
     isScreenOpen.value ? closeScreen() : openScreen()
   }
 
   /**
    * Close screen when the user resizes the window wider than tablet size.
    */
-  function closeScreenOnTabletWindow(): void {
+  const closeScreenOnTabletWindow = (): void => {
     window.outerWidth >= 768 && closeScreen()
   }
 

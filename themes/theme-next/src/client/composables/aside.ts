@@ -3,9 +3,9 @@ import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useSidebar } from './sidebar.js'
 
-export function useAside(): {
+export const useAside = (): {
   isAsideEnabled: ComputedRef<boolean>
-} {
+} => {
   const { hasSidebar } = useSidebar()
   const is960 = useMediaQuery('(min-width: 960px)')
   const is1280 = useMediaQuery('(min-width: 1280px)')

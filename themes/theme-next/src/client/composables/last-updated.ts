@@ -3,11 +3,11 @@ import type { ComputedRef, Ref } from 'vue'
 import { usePageLang } from 'vuepress/client'
 import { useData } from './data.js'
 
-export function useLastUpdated(): {
+export const useLastUpdated = (): {
   datetime: Ref<string>
   lastUpdatedText: ComputedRef<string | undefined>
   isoDatetime: ComputedRef<string | undefined>
-} {
+} => {
   const { theme, page, frontmatter } = useData()
   const lang = usePageLang()
 

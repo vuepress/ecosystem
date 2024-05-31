@@ -42,14 +42,14 @@ const classes = computed(() => [
   { 'has-active': hasActiveLink.value },
 ])
 
-function onItemInteraction(e: MouseEvent | Event): void {
+const onItemInteraction = (e: MouseEvent | Event): void => {
   if ('key' in e && e.key !== 'Enter') {
     return
   }
   !props.item.link && toggle()
 }
 
-function onCaretClick(): void {
+const onCaretClick = (): void => {
   props.item.link && toggle()
 }
 </script>

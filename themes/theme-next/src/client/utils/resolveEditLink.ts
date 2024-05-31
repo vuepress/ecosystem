@@ -14,13 +14,13 @@ export const editLinkPatterns: Record<Exclude<RepoType, null>, string> = {
     ':repo/src/:branch/:path?mode=edit&spa=0&at=:branch&fileviewer=file-view-default',
 }
 
-function resolveEditLinkPatterns({
+const resolveEditLinkPatterns = ({
   docsRepo,
   editLinkPattern,
 }: {
   docsRepo: string
   editLinkPattern?: string
-}): string | null {
+}): string | null => {
   if (editLinkPattern) return editLinkPattern
 
   const repoType = resolveRepoType(docsRepo)
@@ -29,7 +29,7 @@ function resolveEditLinkPatterns({
   return null
 }
 
-export function resolveEditLink({
+export const resolveEditLink = ({
   docsRepo,
   docsBranch,
   docsDir,
@@ -41,7 +41,7 @@ export function resolveEditLink({
   docsDir: string
   filePathRelative: string | null
   editLinkPattern?: string
-}): string | null {
+}): string | null => {
   if (!filePathRelative) return null
 
   const pattern = resolveEditLinkPatterns({ docsRepo, editLinkPattern })

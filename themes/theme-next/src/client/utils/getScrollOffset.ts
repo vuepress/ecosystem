@@ -1,8 +1,8 @@
 import type { DefaultThemeLocaleData } from '../../shared'
 
-export function getScrollOffset(
+export const getScrollOffset = (
   scrollOffset?: DefaultThemeLocaleData['scrollOffset'],
-): number {
+): number => {
   let offset = 0
   let padding = 24
   if (typeof scrollOffset === 'object' && 'padding' in scrollOffset) {
@@ -26,7 +26,7 @@ export function getScrollOffset(
   return offset
 }
 
-function tryOffsetSelector(selector: string, padding: number): number {
+const tryOffsetSelector = (selector: string, padding: number): number => {
   const el = document.querySelector(selector)
   if (!el) return 0
   const bot = el.getBoundingClientRect().bottom

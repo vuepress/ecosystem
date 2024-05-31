@@ -3,7 +3,7 @@ import { onMounted, onUnmounted, ref } from 'vue'
 
 const container = ref<HTMLElement | null>(null)
 
-function toggleCodeGroupItem(e: MouseEvent): void {
+const toggleCodeGroupItem = (e: MouseEvent): void => {
   const el = e.target as HTMLInputElement
 
   if (el.matches('.vp-code-group input')) {

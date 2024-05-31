@@ -13,11 +13,11 @@ defineProps<{
 const open = ref(false)
 const el = ref<HTMLElement>()
 
-useFlyout({ el, onBlur })
-
-function onBlur(): void {
+const onBlur = (): void => {
   open.value = false
 }
+
+useFlyout({ el, onBlur })
 </script>
 
 <template>

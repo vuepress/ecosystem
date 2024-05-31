@@ -1,4 +1,7 @@
-export function throttleAndDebounce(fn: () => void, delay: number): () => void {
+export const throttleAndDebounce = (
+  fn: () => void,
+  delay: number,
+): (() => void) => {
   let timeoutId: any
   let called = false
 

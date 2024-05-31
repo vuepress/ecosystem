@@ -39,7 +39,7 @@ const sidebarSymbol: InjectionKey<Ref<ResolvedSidebarItem[]>> = Symbol(
   __VUEPRESS_DEV__ ? 'sidebar' : '',
 )
 
-export function setupSidebarData(): void {
+export const setupSidebarData = (): void => {
   const { theme, page, frontmatter } = useData()
   const routeLocale = useRouteLocale()
 
@@ -59,12 +59,38 @@ export function setupSidebarData(): void {
   provide(sidebarSymbol, sidebar)
 }
 
-export function useSidebarData(): Ref<ResolvedSidebarItem[]> {
+export const useSidebarData = (): Ref<ResolvedSidebarItem[]> => {
   const sidebarData = inject(sidebarSymbol)
   if (!sidebarData) {
     throw new Error('useSidebarData() is called without provider.')
   }
   return sidebarData
+}
+
+/**
+ * Check if the given sidebar item contains any active link.
+ */
+export const hasActiveLink = (
+  path: string,
+  items: ResolvedSidebarItem | ResolvedSidebarItem[],
+): boolean => {
+  if (Array.isArray(items)) {
+    return items.some((item) => hasActiveLink(path, item))
+  }
+
+  return isActive(path, items.link ? resolveRoutePath(items.link) : undefined)
+    ? true
+    : items.items
+      ? hasActiveLink(path, items.items)
+      : false
+}
+
+if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
+  __VUE_HMR_RUNTIME__.updateSidebarData = (
+    data: Record<string, ResolvedSidebarItem[]>,
+  ) => {
+    structureSidebarData.value = data
+  }
 }
 
 export interface SidebarLink {
@@ -98,7 +124,7 @@ export interface UseSidebarReturn {
 
 const containsActiveLink = hasActiveLink
 
-export function useSidebar(): UseSidebarReturn {
+export const useSidebar = (): UseSidebarReturn => {
   const { theme, frontmatter } = useData()
   const is960 = useMediaQuery('(min-width: 960px)')
 
@@ -135,15 +161,15 @@ export function useSidebar(): UseSidebarReturn {
     return hasSidebar.value ? getSidebarGroups(sidebar.value) : []
   })
 
-  function open(): void {
+  const open = (): void => {
     isOpen.value = true
   }
 
-  function close(): void {
+  const close = (): void => {
     isOpen.value = false
   }
 
-  function toggle(): void {
+  const toggle = (): void => {
     isOpen.value ? close() : open()
   }
 
@@ -165,10 +191,10 @@ export function useSidebar(): UseSidebarReturn {
  * a11y: cache the element that opened the Sidebar (the menu button) then
  * focus that button again when Menu is closed with Escape key.
  */
-export function useCloseSidebarOnEscape(
+export const useCloseSidebarOnEscape = (
   isOpen: Ref<boolean>,
   close: () => void,
-): void {
+): void => {
   let triggerElement: HTMLButtonElement | undefined
 
   watchEffect(() => {
@@ -185,7 +211,7 @@ export function useCloseSidebarOnEscape(
     window.removeEventListener('keyup', onEscape)
   })
 
-  function onEscape(e: KeyboardEvent): void {
+  const onEscape = (e: KeyboardEvent): void => {
     if (e.key === 'Escape' && isOpen.value) {
       close()
       triggerElement?.focus()
@@ -193,9 +219,9 @@ export function useCloseSidebarOnEscape(
   }
 }
 
-export function useSidebarControl(
+export const useSidebarControl = (
   item: ComputedRef<ResolvedSidebarItem>,
-): SidebarControl {
+): SidebarControl => {
   const { page, hash } = useData()
 
   const collapsed = ref(false)
@@ -241,7 +267,7 @@ export function useSidebarControl(
     ;(isActiveLink.value || hasActiveLink.value) && (collapsed.value = false)
   })
 
-  function toggle(): void {
+  const toggle = (): void => {
     if (collapsible.value) {
       collapsed.value = !collapsed.value
     }
@@ -264,11 +290,11 @@ export function useSidebarControl(
  * as matching `guide/` and `/guide/`. If no matching config was found, it will
  * return empty array.
  */
-export function getSidebar(
+export const getSidebar = (
   _sidebar: Sidebar | undefined,
   routePath: string,
   routeLocal: string,
-): ResolvedSidebarItem[] {
+): ResolvedSidebarItem[] => {
   if (_sidebar === 'structure') {
     return resolveSidebarItems(structureSidebarData.value[routeLocal])
   } else if (isArray(_sidebar)) {
@@ -303,10 +329,10 @@ export function getSidebar(
   return []
 }
 
-function resolveSidebarItems(
+const resolveSidebarItems = (
   sidebarItems: (string | SidebarItem)[],
   _prefix = '',
-): ResolvedSidebarItem[] {
+): ResolvedSidebarItem[] => {
   const resolved: ResolvedSidebarItem[] = []
   sidebarItems.forEach((item) => {
     if (isString(item)) {
@@ -334,9 +360,9 @@ function resolveSidebarItems(
 /**
  * Get or generate sidebar group from the given sidebar items.
  */
-export function getSidebarGroups(
+export const getSidebarGroups = (
   sidebar: ResolvedSidebarItem[],
-): ResolvedSidebarItem[] {
+): ResolvedSidebarItem[] => {
   const groups: ResolvedSidebarItem[] = []
 
   let lastGroupIndex = 0
@@ -359,12 +385,12 @@ export function getSidebarGroups(
   return groups
 }
 
-export function getFlatSideBarLinks(
+export const getFlatSideBarLinks = (
   sidebar: ResolvedSidebarItem[],
-): SidebarLink[] {
+): SidebarLink[] => {
   const links: SidebarLink[] = []
 
-  function recursivelyExtractLinks(items: ResolvedSidebarItem[]): void {
+  const recursivelyExtractLinks = (items: ResolvedSidebarItem[]): void => {
     for (const item of items) {
       if (item.text && item.link) {
         links.push({
@@ -383,30 +409,4 @@ export function getFlatSideBarLinks(
   recursivelyExtractLinks(sidebar)
 
   return links
-}
-
-/**
- * Check if the given sidebar item contains any active link.
- */
-export function hasActiveLink(
-  path: string,
-  items: ResolvedSidebarItem | ResolvedSidebarItem[],
-): boolean {
-  if (Array.isArray(items)) {
-    return items.some((item) => hasActiveLink(path, item))
-  }
-
-  return isActive(path, items.link ? resolveRoutePath(items.link) : undefined)
-    ? true
-    : items.items
-      ? hasActiveLink(path, items.items)
-      : false
-}
-
-if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
-  __VUE_HMR_RUNTIME__.updateSidebarData = (
-    data: Record<string, ResolvedSidebarItem[]>,
-  ) => {
-    structureSidebarData.value = data
-  }
 }

@@ -1,14 +1,14 @@
 import { EXT_RE, HASH_RE, inBrowser } from './constants.js'
 
-export function normalize(path: string): string {
+export const normalize = (path: string): string => {
   return decodeURI(path).replace(HASH_RE, '').replace(EXT_RE, '')
 }
 
-export function isActive(
+export const isActive = (
   currentPath: string,
   matchPath?: string,
   asRegex = false,
-): boolean {
+): boolean => {
   if (matchPath === undefined) return false
 
   currentPath = normalize(`/${currentPath.replace(/^\//, '')}`)

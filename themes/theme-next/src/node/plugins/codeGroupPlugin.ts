@@ -50,7 +50,7 @@ export const createCodeGroupPlugin = (): Plugin => {
   })
 }
 
-function extractTitle(info: string, html = false): string {
+const extractTitle = (info: string, html = false): string => {
   if (html) {
     return (
       info.replace(/<!--[^]*?-->/g, '').match(/data-title="(.*?)"/)?.[1] || ''
@@ -59,7 +59,7 @@ function extractTitle(info: string, html = false): string {
   return info.match(/\[(.*)\]/)?.[1] || extractLang(info) || 'txt'
 }
 
-function extractLang(info: string): string {
+const extractLang = (info: string): string => {
   return info
     .trim()
     .replace(/=(\d*)/, '')

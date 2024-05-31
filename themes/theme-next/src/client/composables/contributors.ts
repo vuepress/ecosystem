@@ -3,9 +3,9 @@ import type { ComputedRef } from 'vue'
 import type { DefaultThemePageData } from '../../shared/index.js'
 import { useData } from './data.js'
 
-export function useContributors(): ComputedRef<
+export const useContributors = (): ComputedRef<
   null | Required<DefaultThemePageData['git']>['contributors']
-> {
+> => {
   const { theme, page, frontmatter } = useData()
 
   return computed(() => {

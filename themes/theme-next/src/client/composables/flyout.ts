@@ -13,7 +13,9 @@ export const focusedElement = ref<HTMLElement>()
 let active = false
 let listeners = 0
 
-export function useFlyout(options: UseFlyoutOptions): Readonly<Ref<boolean>> {
+export const useFlyout = (
+  options: UseFlyoutOptions,
+): Readonly<Ref<boolean>> => {
   const focus = ref(false)
 
   if (inBrowser) {
@@ -43,16 +45,16 @@ export function useFlyout(options: UseFlyoutOptions): Readonly<Ref<boolean>> {
   return readonly(focus)
 }
 
-function activateFocusTracking(): void {
+const activateFocusTracking = (): void => {
   document.addEventListener('focusin', handleFocusIn)
   active = true
   focusedElement.value = document.activeElement as HTMLElement
 }
 
-function deactivateFocusTracking(): void {
+const deactivateFocusTracking = (): void => {
   document.removeEventListener('focusin', handleFocusIn)
 }
 
-function handleFocusIn(): void {
+const handleFocusIn = (): void => {
   focusedElement.value = document.activeElement as HTMLElement
 }

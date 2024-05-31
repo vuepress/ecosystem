@@ -4,10 +4,10 @@ import type {
   DefaultThemePageData,
 } from '../../shared/index.js'
 
-export function resolvePageHead(
+export const resolvePageHead = (
   page: Page<Partial<DefaultThemePageData>>,
   options: DefaultThemeData,
-): void {
+): void => {
   page.frontmatter.head ??= []
 
   if (options?.appearance ?? true) {

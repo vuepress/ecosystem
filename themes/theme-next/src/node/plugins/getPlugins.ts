@@ -25,10 +25,10 @@ interface PluginsOptions {
   localeOptions: DefaultThemeLocaleOptions
 }
 
-export function getPlugins(
+export const getPlugins = (
   app: App,
   { hostname, themePlugins, localeOptions }: PluginsOptions,
-): PluginConfig {
+): PluginConfig => {
   const plugins: PluginConfig = []
 
   // ------------------ containers -----------------------------------

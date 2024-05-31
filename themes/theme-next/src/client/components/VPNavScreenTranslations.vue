@@ -6,7 +6,7 @@ import { useLangs } from '../composables/langs.js'
 const { localeLinks, currentLang } = useLangs()
 const isOpen = ref(false)
 
-function toggle(): void {
+const toggle = (): void => {
   isOpen.value = !isOpen.value
 }
 </script>

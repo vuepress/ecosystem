@@ -6,7 +6,7 @@ defineProps<{
   root?: boolean
 }>()
 
-function onClick({ target: el }: Event): void {
+const onClick = ({ target: el }: Event): void => {
   const id = (el as HTMLAnchorElement).href!.split('#')[1]
   const heading = document.getElementById(decodeURIComponent(id))
   heading?.focus({ preventScroll: true })

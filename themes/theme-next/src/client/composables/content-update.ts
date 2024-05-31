@@ -12,13 +12,13 @@ let contentUpdatedCallbacks: ((lifeCircleType: ContentUpdated) => any)[] = []
  * Register callback that is called every time the markdown content is updated
  * in the DOM.
  */
-export function onContentUpdated(fn: () => any): void {
+export const onContentUpdated = (fn: () => any): void => {
   contentUpdatedCallbacks.push(fn)
   onUnmounted(() => {
     contentUpdatedCallbacks = contentUpdatedCallbacks.filter((f) => f !== fn)
   })
 }
 
-export function runCallbacks(lifeCircleType: ContentUpdated): void {
+export const runCallbacks = (lifeCircleType: ContentUpdated): void => {
   contentUpdatedCallbacks.forEach((fn) => fn(lifeCircleType))
 }

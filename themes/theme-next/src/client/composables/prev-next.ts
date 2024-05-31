@@ -11,7 +11,7 @@ export interface PrevNext {
   next?: Partial<NavItemWithLink>
 }
 
-export function usePrevNext(): ComputedRef<PrevNext> {
+export const usePrevNext = (): ComputedRef<PrevNext> => {
   const { theme, page, frontmatter } = useData()
   const sidebar = useSidebarData()
 
@@ -73,7 +73,7 @@ export function usePrevNext(): ComputedRef<PrevNext> {
   })
 }
 
-function uniqBy<T>(array: T[], keyFn: (item: T) => any): T[] {
+const uniqBy = <T>(array: T[], keyFn: (item: T) => any): T[] => {
   const seen = new Set()
   return array.filter((item) => {
     const k = keyFn(item)

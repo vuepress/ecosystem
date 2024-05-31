@@ -22,7 +22,7 @@ export interface DocLocalNav {
   hasLocalNav: ComputedRef<boolean>
 }
 
-export function useLocalNav(): DocLocalNav {
+export const useLocalNav = (): DocLocalNav => {
   const { theme, frontmatter } = useData()
 
   const headers = shallowRef<MenuItem[]>([])

@@ -18,7 +18,7 @@ const vh = ref(0)
 const main = ref<HTMLDivElement>()
 const items = ref<HTMLDivElement>()
 
-function closeOnClickOutside(e: Event): void {
+const closeOnClickOutside = (e: Event): void => {
   if (!main.value?.contains(e.target as Node)) {
     open.value = false
   }
@@ -40,12 +40,12 @@ onContentUpdated(() => {
   open.value = false
 })
 
-function toggle(): void {
+const toggle = (): void => {
   open.value = !open.value
   vh.value = window.innerHeight + Math.min(window.scrollY - props.navHeight, 0)
 }
 
-function onItemClick(e: Event): void {
+const onItemClick = (e: Event): void => {
   if ((e.target as HTMLElement).classList.contains('outline-link')) {
     // disable animation on hash navigation when page jumps
     if (items.value) {
@@ -57,7 +57,7 @@ function onItemClick(e: Event): void {
   }
 }
 
-function scrollToTop(): void {
+const scrollToTop = (): void => {
   open.value = false
   window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
 }

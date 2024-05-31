@@ -48,15 +48,15 @@ export type MenuItem = Omit<Header, 'slug' | 'children'> & {
   children?: MenuItem[]
 }
 
-export function resolveTitle(theme: DefaultThemeLocaleData): string {
+export const resolveTitle = (theme: DefaultThemeLocaleData): string => {
   return theme.outlineTitle || 'On this page'
 }
 
-export function getHeaders(
+export const getHeaders = (
   range: DefaultThemeLocaleData['outline'],
-): MenuItem[] {
+): MenuItem[] => {
   const headers = Array.from(
-    document.querySelectorAll('.vp-doc :where(h1,h2,h3,h4,h5,h6)'),
+    document.querySelectorAll('.vpDoc :where(h1,h2,h3,h4,h5,h6)'),
   )
     .filter((el) => el.id && el.hasChildNodes())
     .map((el) => {
@@ -71,7 +71,7 @@ export function getHeaders(
   return resolveHeaders(headers, range)
 }
 
-function serializeHeader(h: Element): string {
+const serializeHeader = (h: Element): string => {
   // <hx><a href="#"><span>title</span></a></hx>
   const anchor = h.firstChild
   const el = anchor?.firstChild
@@ -100,10 +100,10 @@ function serializeHeader(h: Element): string {
   return ret.trim()
 }
 
-export function resolveHeaders(
+export const resolveHeaders = (
   headers: MenuItem[],
   range?: DefaultThemeLocaleData['outline'],
-): MenuItem[] {
+): MenuItem[] => {
   if (range === false) {
     return []
   }
@@ -147,32 +147,16 @@ export function resolveHeaders(
   return ret
 }
 
-export function useActiveAnchor(
+export const useActiveAnchor = (
   container: Ref<HTMLElement>,
   marker: Ref<HTMLElement>,
-): void {
+): void => {
   const { isAsideEnabled } = useAside()
   const { theme } = useData()
 
-  const onScroll = throttleAndDebounce(setActiveLink, 100)
-
   let prevActiveLink: HTMLAnchorElement | null = null
 
-  onMounted(() => {
-    requestAnimationFrame(setActiveLink)
-    window.addEventListener('scroll', onScroll)
-  })
-
-  onUpdated(() => {
-    // sidebar update means a route change
-    activateLink(location.hash)
-  })
-
-  onUnmounted(() => {
-    window.removeEventListener('scroll', onScroll)
-  })
-
-  function setActiveLink(): void {
+  const setActiveLink = (): void => {
     if (!isAsideEnabled.value) {
       return
     }
@@ -220,7 +204,7 @@ export function useActiveAnchor(
     activateLink(activeLink)
   }
 
-  function activateLink(hash: string | null): void {
+  const activateLink = (hash: string | null): void => {
     if (prevActiveLink) {
       prevActiveLink.classList.remove('active')
     }
@@ -244,9 +228,25 @@ export function useActiveAnchor(
       marker.value.style.opacity = '0'
     }
   }
+
+  const onScroll = throttleAndDebounce(setActiveLink, 100)
+
+  onMounted(() => {
+    requestAnimationFrame(setActiveLink)
+    window.addEventListener('scroll', onScroll)
+  })
+
+  onUpdated(() => {
+    // sidebar update means a route change
+    activateLink(location.hash)
+  })
+
+  onUnmounted(() => {
+    window.removeEventListener('scroll', onScroll)
+  })
 }
 
-function getAbsoluteTop(element: HTMLElement): number {
+const getAbsoluteTop = (element: HTMLElement): number => {
   let offsetTop = 0
   while (element !== document.body) {
     if (element === null) {

@@ -6,10 +6,10 @@ import type {
 } from '../../shared/index.js'
 import { LOCALES_OPTIONS } from '../locales/index.js'
 
-export function resolveContainerLocales(
+export const resolveContainerLocales = (
   app: App,
   localeOptions: DefaultThemeLocaleOptions,
-): Record<string, ContainerOptions> {
+): Record<string, ContainerOptions> => {
   const root = getRootLangPath(app)
   const containerLocales: Record<string, ContainerOptions> = {
     '/': localeOptions.container || LOCALES_OPTIONS[root].container || {},

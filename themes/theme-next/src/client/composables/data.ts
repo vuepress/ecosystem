@@ -10,12 +10,12 @@ import type {
 import { hash } from './hash.js'
 import { useThemeLocaleData } from './theme-data.js'
 
-export function useData(): {
+export const useData = (): {
   page: PageDataRef<DefaultThemePageData>
   frontmatter: PageFrontmatterRef<DefaultThemeNormalPageFrontmatter>
   theme: ThemeLocaleDataRef<DefaultThemeData>
   hash: Ref<string>
-} {
+} => {
   const page = usePageData<DefaultThemePageData>()
   const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
   const theme = useThemeLocaleData()

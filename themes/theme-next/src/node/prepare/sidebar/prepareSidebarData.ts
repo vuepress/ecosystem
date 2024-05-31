@@ -35,11 +35,11 @@ if (import.meta.hot) {
 }
 `
 
-export async function prepareSidebarData(
+export const prepareSidebarData = async (
   app: App,
   localesOptions: DefaultThemeLocaleOptions,
   sorters?: SidebarSorter,
-): Promise<void> {
+): Promise<void> => {
   const locales: Record<string, Sidebar | undefined> = {}
 
   entries(localesOptions.locales || {}).forEach(([localePath, locale]) => {
@@ -63,11 +63,11 @@ export const sidebarData = ${JSON.stringify(sidebarData)}
   await app.writeTemp('internal/sidebar.js', content)
 }
 
-export function getSidebarData(
+export const getSidebarData = (
   app: App,
   locales: Record<string, Sidebar | undefined>,
   sorter?: SidebarSorter,
-): Sidebar {
+): Sidebar => {
   const structureDir: string[] = []
 
   const resolved: Sidebar = {}
@@ -106,10 +106,10 @@ export function getSidebarData(
   return resolved
 }
 
-function findStructureList(
+const findStructureList = (
   sidebar: (string | SidebarItem)[],
   prefix = '',
-): string[] {
+): string[] => {
   const list: string[] = []
   if (!sidebar.length) return list
 
@@ -128,11 +128,11 @@ function findStructureList(
   return list
 }
 
-function getSidebarItemsFromStructure(
+const getSidebarItemsFromStructure = (
   app: App,
   sorters: SidebarSorterFunction[],
   dirname: string,
-): ResolvedSidebarItem[] {
+): ResolvedSidebarItem[] => {
   const infos = getSidebarInfo({
     pages: app.pages,
     sorters,
@@ -141,7 +141,9 @@ function getSidebarItemsFromStructure(
   return getSidebarItemsFromInfos(infos)
 }
 
-function getSidebarItemsFromInfos(infos: SidebarInfo[]): ResolvedSidebarItem[] {
+const getSidebarItemsFromInfos = (
+  infos: SidebarInfo[],
+): ResolvedSidebarItem[] => {
   return infos.map((info) => {
     if (info.type === 'file') {
       return {

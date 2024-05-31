@@ -35,7 +35,7 @@ const link = computed(() => {
   return resolveRoutePath(props.href)
 })
 
-function linkTo(e: Event): void {
+const linkTo = (e: Event): void => {
   if (!isExternal.value) {
     e.preventDefault()
     if (link.value) router.push({ path: link.value })

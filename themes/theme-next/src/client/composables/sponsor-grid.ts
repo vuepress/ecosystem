@@ -45,10 +45,14 @@ const GridSettings: GridSetting = {
   ],
 }
 
-export function useSponsorsGrid({
+export const useSponsorsGrid = ({
   el,
   size = 'medium',
-}: UseSponsorsGridOptions): void {
+}: UseSponsorsGridOptions): void => {
+  const manage = (): void => {
+    adjustSlots(el.value!, size)
+  }
+
   const onResize = throttleAndDebounce(manage, 100)
 
   onMounted(() => {
@@ -59,13 +63,9 @@ export function useSponsorsGrid({
   onUnmounted(() => {
     window.removeEventListener('resize', onResize)
   })
-
-  function manage(): void {
-    adjustSlots(el.value!, size)
-  }
 }
 
-function adjustSlots(el: HTMLElement, size: GridSize): void {
+const adjustSlots = (el: HTMLElement, size: GridSize): void => {
   const tsize = el.children.length
   const asize = el.querySelectorAll('.vp-sponsor-grid-item:not(.empty)').length
 
@@ -74,7 +74,7 @@ function adjustSlots(el: HTMLElement, size: GridSize): void {
   manageSlots(el, grid, tsize, asize)
 }
 
-function setGrid(el: HTMLElement, size: GridSize, items: number): number {
+const setGrid = (el: HTMLElement, size: GridSize, items: number): number => {
   const settings = GridSettings[size]
   const screen = window.innerWidth
 
@@ -93,16 +93,16 @@ function setGrid(el: HTMLElement, size: GridSize, items: number): number {
   return grid
 }
 
-function setGridData(el: HTMLElement, value: number): void {
+const setGridData = (el: HTMLElement, value: number): void => {
   el.dataset.vpGrid = String(value)
 }
 
-function manageSlots(
+const manageSlots = (
   el: HTMLElement,
   grid: number,
   tsize: number,
   asize: number,
-): void {
+): void => {
   const diff = tsize - asize
   const rem = asize % grid
   const drem = rem === 0 ? rem : grid - rem
@@ -110,7 +110,7 @@ function manageSlots(
   neutralizeSlots(el, drem - diff)
 }
 
-function neutralizeSlots(el: HTMLElement, count: number): void {
+const neutralizeSlots = (el: HTMLElement, count: number): void => {
   if (count === 0) {
     return
   }
@@ -118,7 +118,7 @@ function neutralizeSlots(el: HTMLElement, count: number): void {
   count > 0 ? addSlots(el, count) : removeSlots(el, count * -1)
 }
 
-function addSlots(el: HTMLElement, count: number): void {
+const addSlots = (el: HTMLElement, count: number): void => {
   for (let i = 0; i < count; i++) {
     const slot = document.createElement('div')
 
@@ -128,7 +128,7 @@ function addSlots(el: HTMLElement, count: number): void {
   }
 }
 
-function removeSlots(el: HTMLElement, count: number): void {
+const removeSlots = (el: HTMLElement, count: number): void => {
   for (let i = 0; i < count; i++) {
     el.removeChild(el.lastElementChild!)
   }

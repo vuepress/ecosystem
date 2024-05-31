@@ -4,7 +4,7 @@ import {
   isLinkWithProtocol,
 } from '@vuepress/helper'
 
-export function normalizeLink(base: string, link = ''): string {
+export const normalizeLink = (base: string, link = ''): string => {
   return isLinkAbsolute(link) || isLinkWithProtocol(link)
     ? link
     : ensureLeadingSlash(`${base}/${link}/`.replace(/\/+/g, '/'))

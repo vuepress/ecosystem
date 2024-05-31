@@ -14,7 +14,7 @@ const groupId = computed(
   () => `NavScreenGroup-${props.text.replace(' ', '-').toLowerCase()}`,
 )
 
-function toggle(): void {
+const toggle = (): void => {
   isOpen.value = !isOpen.value
 }
 </script>

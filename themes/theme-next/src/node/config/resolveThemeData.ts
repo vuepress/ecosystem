@@ -21,10 +21,10 @@ const FALLBACK_OPTIONS: DefaultThemeLocaleData = {
   externalLinkIcon: true,
 }
 
-export function resolveThemeData(
+export const resolveThemeData = (
   app: App,
   options: DefaultThemeLocaleOptions,
-): DefaultThemeLocaleOptions {
+): DefaultThemeLocaleOptions => {
   const resolved = resolveOptions(options)
 
   const themeData: DefaultThemeLocaleOptions = {
@@ -49,9 +49,9 @@ export function resolveThemeData(
   return themeData
 }
 
-function resolveOptions(
+const resolveOptions = (
   options: DefaultThemeLocaleData,
-): DefaultThemeLocaleData {
+): DefaultThemeLocaleData => {
   return fromEntries(
     entries(options).filter(([key]) => !EXCLUDE_LIST.includes(key)),
   )

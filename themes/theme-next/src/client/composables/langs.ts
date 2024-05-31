@@ -4,10 +4,10 @@ import { useRoute, useRouteLocale, useSiteData } from 'vuepress/client'
 import { hash } from './hash.js'
 import { useThemeData } from './theme-data.js'
 
-export function useLangs({ removeCurrent = true } = {}): {
+export const useLangs = ({ removeCurrent = true } = {}): {
   currentLang: Ref<{ label: string; link: string }>
   localeLinks: ComputedRef<{ text: string; link: string }[]>
-} {
+} => {
   const site = useSiteData()
   const theme = useThemeData()
   const routeLocale = useRouteLocale()

@@ -16,7 +16,7 @@ const container = ref()
 
 let isInitialized = false
 
-function init(): void {
+const init = (): void => {
   if (!isInitialized) {
     isInitialized = true
     const s = document.createElement('script')
