@@ -67,7 +67,7 @@ defineProps<Feature>()
   height: 100%;
 }
 
-.box > :deep(.vpImage) {
+.box > :deep(.vp-image) {
   margin-bottom: 20px;
 }
 

@@ -145,7 +145,7 @@ test.describe('plugin-theme-data', () => {
       },
     })
 
-    await page.locator('.actions .vpButton').first().click()
+    await page.locator('.actions .vp-button').first().click()
 
     await page.waitForURL('action1.html')
 
@@ -171,7 +171,7 @@ test.describe('plugin-theme-data', () => {
     )
 
     await page.goto('zh/')
-    await page.locator('.action .vpButton').first().click()
+    await page.locator('.action .vp-button').first().click()
 
     await page.waitForURL('action1.html')
 

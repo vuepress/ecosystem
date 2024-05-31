@@ -1,5 +1,5 @@
 <template>
-  <section class="vpTeamPageSection">
+  <section class="vp-team-page-section">
     <div class="title">
       <div class="title-line" />
       <h2 v-if="$slots.title" class="title-text">
@@ -16,18 +16,18 @@
 </template>
 
 <style scoped>
-.vpTeamPageSection {
+.vp-team-page-section {
   padding: 0 32px;
 }
 
 @media (min-width: 768px) {
-  .vpTeamPageSection {
+  .vp-team-page-section {
     padding: 0 48px;
   }
 }
 
 @media (min-width: 960px) {
-  .vpTeamPageSection {
+  .vp-team-page-section {
     padding: 0 64px;
   }
 }

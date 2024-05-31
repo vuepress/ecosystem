@@ -49,7 +49,7 @@ watch(
 
 <template>
   <div
-    class="vpDoc"
+    class="vp-doc"
     :class="{ 'has-sidebar': hasSidebar, 'has-aside': hasAside }"
   >
     <slot name="doc-top" />
@@ -104,50 +104,50 @@ watch(
 </template>
 
 <style scoped>
-.vpDoc {
+.vp-doc {
   padding: 32px 24px 96px;
   width: 100%;
 }
 
 @media (min-width: 768px) {
-  .vpDoc {
+  .vp-doc {
     padding: 48px 32px 128px;
   }
 }
 
 @media (min-width: 960px) {
-  .vpDoc {
+  .vp-doc {
     padding: 48px 32px 0;
   }
 
-  .vpDoc:not(.has-sidebar) .container {
+  .vp-doc:not(.has-sidebar) .container {
     display: flex;
     justify-content: center;
     max-width: 992px;
   }
 
-  .vpDoc:not(.has-sidebar) .content {
+  .vp-doc:not(.has-sidebar) .content {
     max-width: 752px;
   }
 }
 
 @media (min-width: 1280px) {
-  .vpDoc .container {
+  .vp-doc .container {
     display: flex;
     justify-content: center;
   }
 
-  .vpDoc .aside {
+  .vp-doc .aside {
     display: block;
   }
 }
 
 @media (min-width: 1440px) {
-  .vpDoc:not(.has-sidebar) .content {
+  .vp-doc:not(.has-sidebar) .content {
     max-width: 784px;
   }
 
-  .vpDoc:not(.has-sidebar) .container {
+  .vp-doc:not(.has-sidebar) .container {
     max-width: 1104px;
   }
 }
@@ -233,7 +233,7 @@ watch(
   margin: 0 auto;
 }
 
-.vpDoc.has-aside .content-container {
+.vp-doc.has-aside .content-container {
   max-width: 688px;
 }
 </style>

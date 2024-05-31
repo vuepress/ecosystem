@@ -11,10 +11,10 @@ test.describe('homepage', () => {
     const DESCRIPTION = 'VuePress Ecosystem E2E Test Site'
     const HERO_IMAGE = 'https://v2.vuepress.vuejs.org/images/hero.png'
 
-    const img = page.locator('.vpHero img')
-    const mainTitle = page.locator('.vpHero .name')
-    const mainDescription = page.locator('.vpHero .tagline')
-    const actionButtons = page.locator('.vpHero .actions a')
+    const img = page.locator('.vp-hero img')
+    const mainTitle = page.locator('.vp-hero .name')
+    const mainDescription = page.locator('.vp-hero .tagline')
+    const actionButtons = page.locator('.vp-hero .actions a')
 
     await expect(img).toHaveAttribute('src', HERO_IMAGE)
 
@@ -38,16 +38,16 @@ test.describe('homepage', () => {
   })
 
   test('has feature', async ({ page }) => {
-    const features = page.locator('.vpFeatures .items .item')
+    const features = page.locator('.vp-features .items .item')
 
     await expect(features).toHaveCount(3)
 
     for (let index = 0; index < 3; index++) {
       const featureHeading = page
-        .locator('.vpFeatures .items .item h2')
+        .locator('.vp-features .items .item h2')
         .nth(index)
       const featureDetail = page
-        .locator('.vpFeatures .items .item p')
+        .locator('.vp-features .items .item p')
         .nth(index)
 
       await expect(featureHeading).toHaveText(`Feature${index + 1}`)

@@ -79,7 +79,7 @@ function serializeHeader(h: Element): string {
   for (const node of Array.from(el?.childNodes ?? [])) {
     if (node.nodeType === 1) {
       if (
-        (node as Element).classList.contains('vpBadge') ||
+        (node as Element).classList.contains('vp-badge') ||
         (node as Element).classList.contains('ignore-header')
       ) {
         continue

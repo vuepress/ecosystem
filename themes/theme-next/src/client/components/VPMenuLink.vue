@@ -32,7 +32,7 @@ const { page } = useData()
 </template>
 
 <style scoped>
-.vpMenuGroup + .vp-menu-link {
+.vp-menu-group + .vp-menu-link {
   margin: 12px -12px 0;
   border-top: 1px solid var(--vp-c-divider);
   padding: 12px 12px 0;

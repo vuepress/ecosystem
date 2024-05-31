@@ -161,12 +161,12 @@ const classes = computed(() => {
   font-size: 14px;
 }
 
-.vpOutlineDropdown {
+.vp-outline-dropdown {
   padding: 12px 24px 11px;
 }
 
 @media (min-width: 768px) {
-  .vpOutlineDropdown {
+  .vp-outline-dropdown {
     padding: 12px 32px 11px;
   }
 }

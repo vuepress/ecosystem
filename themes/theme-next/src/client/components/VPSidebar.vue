@@ -47,7 +47,7 @@ onMounted(() => {
   <aside
     v-if="hasSidebar"
     ref="navEl"
-    class="vpSidebar"
+    class="vp-sidebar"
     :class="{ open }"
     @click.stop
   >
@@ -75,7 +75,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.vpSidebar {
+.vp-sidebar {
   position: fixed;
   top: var(--vp-layout-top-height, 0px);
   bottom: 0;
@@ -96,7 +96,7 @@ onMounted(() => {
   overscroll-behavior: contain;
 }
 
-.vpSidebar.open {
+.vp-sidebar.open {
   opacity: 1;
   visibility: visible;
   transform: translateX(0);
@@ -105,12 +105,12 @@ onMounted(() => {
     transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.dark .vpSidebar {
+.dark .vp-sidebar {
   box-shadow: var(--vp-shadow-1);
 }
 
 @media (min-width: 960px) {
-  .vpSidebar {
+  .vp-sidebar {
     padding-top: var(--vp-nav-height);
     width: var(--vp-sidebar-width);
     max-width: 100%;
@@ -123,7 +123,7 @@ onMounted(() => {
 }
 
 @media (min-width: 1440px) {
-  .vpSidebar {
+  .vp-sidebar {
     padding-left: max(
       32px,
       calc((100% - (var(--vp-layout-max-width) - 64px)) / 2)

@@ -21,11 +21,11 @@
 }
 
 :slotted(.vp-team-pageSection + .vp-team-pageSection),
-:slotted(.vpTeamMembers + .vp-team-pageSection) {
+:slotted(.vp-team-members + .vp-team-pageSection) {
   margin-top: 64px;
 }
 
-:slotted(.vpTeamMembers + .vpTeamMembers) {
+:slotted(.vp-team-members + .vp-team-members) {
   margin-top: 24px;
 }
 
@@ -35,23 +35,23 @@
   }
 
   :slotted(.vp-team-pageSection + .vp-team-pageSection),
-  :slotted(.vpTeamMembers + .vp-team-pageSection) {
+  :slotted(.vp-team-members + .vp-team-pageSection) {
     margin-top: 96px;
   }
 }
 
-:slotted(.vpTeamMembers) {
+:slotted(.vp-team-members) {
   padding: 0 24px;
 }
 
 @media (min-width: 768px) {
-  :slotted(.vpTeamMembers) {
+  :slotted(.vp-team-members) {
     padding: 0 48px;
   }
 }
 
 @media (min-width: 960px) {
-  :slotted(.vpTeamMembers) {
+  :slotted(.vp-team-members) {
     padding: 0 64px;
   }
 }
