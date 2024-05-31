@@ -89,7 +89,7 @@
 
 ### navbar
 
-- 类型： `false | (NavbarItem | NavbarGroup | string)[]`
+- 类型： `NavbarOptions`
 
 - 默认值： `[]`
 
@@ -99,11 +99,11 @@
 
   设置为 `false` 可以禁用导航栏。
 
-  为了配置导航栏元素，你可以将其设置为 _导航栏数组_ ，其中的每个元素是 `NavbarItem` 对象、 `NavbarGroup` 对象、或者字符串：
+  为了配置导航栏元素，你可以将其设置为 _导航栏数组_ ，其中的每个元素是 `NavbarLink` 对象、 `NavbarGroup` 对象、或者字符串：
 
-  - `NavbarItem` 对象应该有一个 `text` 字段和一个 `link` 字段，还有一个可选的 `activeMatch` 字段。
+  - `NavbarLink` 对象应该有一个 `text` 字段和一个 `link` 字段，还有一个可选的 `activeMatch` 字段。
   - `NavbarGroup` 对象应该有一个 `text` 字段和一个 `children` 字段，还有一个可选的 `prefix` 字段。 `children` 字段同样是一个 _导航栏数组_，而 `prefix` 会作为 _导航栏数组_ 的路径前缀。
-  - 字符串应为目标页面文件的路径。它将会被转换为 `NavbarItem` 对象，将页面标题作为 `text` ，将页面路由路径作为 `link` 。
+  - 字符串应为目标页面文件的路径。它将会被转换为 `NavbarLink` 对象，将页面标题作为 `text` ，将页面路由路径作为 `link` 。
 
 - 示例 1：
 
@@ -111,7 +111,7 @@
 export default {
   theme: defaultTheme({
     navbar: [
-      // NavbarItem
+      // NavbarLink
       {
         text: 'Foo',
         link: '/foo/',
@@ -270,9 +270,9 @@ export default {
 
 ### sidebar
 
-- 类型： `false | 'auto' | SidebarConfigArray | SidebarConfigObject`
+- 类型： `SidebarOptions`
 
-- 默认值： `'auto'`
+- 默认值： `'heading'`
 
 - 详情：
 
