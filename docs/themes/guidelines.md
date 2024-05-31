@@ -11,16 +11,18 @@ A theme must implement the following DOM structure:
 
 A theme may have the following optional elements:
 
-- Navbar: An element which is the navbar of the theme. This element should have the id `vp-navbar`.
-- Sidebar: An element which is the sidebar of the theme. This element should have the id `vp-sidebar`.
-- Outline: An element which holds headings or outline of the main content. This element should have the id `vp-outline`.
-- Comment: An element which holds comment service. This element should have the id `vp-comment`.
-- Footer: An element which is the footer of the theme. This element should have the id `vp-footer`.
+- Navbar: Navbar of the site. This element should have the id `vp-navbar`.
+- Sidebar: Sidebar of the site. This element should have the id `vp-sidebar`.
+- Outline: Headings or outline of the main content. This element should have the id `vp-outline`.
+- Comment: Comment service (comment box and comment list). This element should have the id `vp-comment`.
+- Footer: Footer of the site. This element should have the id `vp-footer`.
 
-If a theme has darkmode and lightmode, it must:
+A theme must:
 
 - Set `data-theme` to `dark` on html in darkmode.
 - Set `data-theme` to `light` on html in lightmode.
+
+If it only have one color scheme, it still needs to set `data-theme` to `light` or `dark` to indicate the default color scheme.
 
 ## Color Variables
 
