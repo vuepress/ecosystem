@@ -73,25 +73,118 @@ const HomeHeroImage: FunctionalComponent = () => {
 </script>
 
 <template>
-  <header class="hero">
+  <header class="vp-hero">
     <HomeHeroImage />
 
     <h1 v-if="heroText" id="main-title">
       {{ heroText }}
     </h1>
 
-    <p v-if="tagline" class="description">
+    <p v-if="tagline" class="vp-description">
       {{ tagline }}
     </p>
 
-    <p v-if="actions.length" class="actions">
+    <p v-if="actions.length" class="vp-actions">
       <AutoLink
         v-for="action in actions"
         :key="action.text"
-        class="action-button"
+        class="vp-action-button"
         :class="[action.type]"
         :config="action"
       />
     </p>
   </header>
 </template>
+
+<style lang="scss">
+@import '../styles//variables';
+
+.vp-hero {
+  text-align: center;
+
+  img {
+    max-width: 100%;
+    max-height: 280px;
+    display: block;
+    margin: 3rem auto 1.5rem;
+
+    @media (max-width: $MQMobileNarrow) {
+      max-height: 210px;
+      margin: 2rem auto 1.2rem;
+    }
+  }
+
+  h1 {
+    font-size: 3rem;
+
+    @media (max-width: $MQMobileNarrow) {
+      font-size: 2rem;
+    }
+  }
+
+  h1,
+  .vp-description,
+  .vp-actions {
+    margin: 1.8rem auto;
+
+    @media (max-width: $MQMobileNarrow) {
+      margin: 1.2rem auto;
+    }
+  }
+
+  .vp-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .vp-description {
+    max-width: 35rem;
+    font-size: 1.6rem;
+    line-height: 1.3;
+    color: var(--c-text-lightest);
+
+    @media (max-width: $MQMobileNarrow) {
+      font-size: 1.2rem;
+    }
+  }
+
+  .vp-action-button {
+    display: inline-block;
+    font-size: 1.2rem;
+    padding: 0.8rem 1.6rem;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 4px;
+    transition: background-color var(--t-color);
+    box-sizing: border-box;
+
+    @media (max-width: $MQMobileNarrow) {
+      font-size: 1rem;
+      padding: 0.6rem 1.2rem;
+    }
+
+    &.primary {
+      color: var(--c-bg);
+      background-color: var(--c-brand);
+      border-color: var(--c-brand);
+
+      &:hover {
+        background-color: var(--c-brand-light);
+      }
+    }
+
+    &.secondary {
+      color: var(--c-brand);
+      background-color: var(--c-bg);
+      border-color: var(--c-brand);
+
+      &:hover {
+        color: var(--c-bg);
+        background-color: var(--c-brand-light);
+      }
+    }
+  }
+}
+</style>

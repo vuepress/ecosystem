@@ -11,7 +11,17 @@ const footerHtml = computed(() => frontmatter.value.footerHtml)
 <template>
   <template v-if="footer">
     <!-- eslint-disable-next-line vue/no-v-html -->
-    <div v-if="footerHtml" class="footer" v-html="footer" />
-    <div v-else class="footer" v-text="footer" />
+    <div v-if="footerHtml" class="vp-footer" v-html="footer" />
+    <div v-else class="vp-footer" v-text="footer" />
   </template>
 </template>
+
+<style>
+.vp-footer {
+  padding: 2.5rem;
+  border-top: 1px solid var(--c-border);
+  text-align: center;
+  color: var(--c-text-lighter);
+  transition: border-color var(--t-color);
+}
+</style>
