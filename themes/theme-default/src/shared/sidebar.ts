@@ -43,4 +43,3 @@ export type SidebarOptions =
   | SidebarArrayOptions
   | SidebarObjectOptions
   | 'heading'
-  | false

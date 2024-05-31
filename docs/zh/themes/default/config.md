@@ -89,7 +89,7 @@
 
 ### navbar
 
-- 类型： `NavbarOptions`
+- 类型： `false | NavbarOptions`
 
 - 默认值： `[]`
 
@@ -270,7 +270,7 @@ export default {
 
 ### sidebar
 
-- 类型： `SidebarOptions`
+- 类型： `false | SidebarOptions`
 
 - 默认值： `'heading'`
 

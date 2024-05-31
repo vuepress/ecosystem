@@ -74,7 +74,7 @@ export const setupSidebarItems = (): void => {
  * It should only be resolved and provided once
  */
 export const resolveSidebarItems = (
-  sidebarConfig: SidebarOptions,
+  sidebarConfig: false | SidebarOptions,
   sidebarDepth: number,
   page: PageData,
   path: string,

@@ -187,7 +187,7 @@ export interface DefaultThemeLocaleData extends LocaleData {
    *
    * Set to `false` to disable sidebar in current locale
    */
-  sidebar?: SidebarOptions
+  sidebar?: false | SidebarOptions
 
   /**
    * Sidebar depth

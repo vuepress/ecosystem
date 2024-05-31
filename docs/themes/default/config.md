@@ -89,7 +89,7 @@ Config of this section can be used as normal config, and can also be used in the
 
 ### navbar
 
-- Type: `NavbarOptions`
+- Type: `false | NavbarOptions`
 
 - Default: `[]`
 
@@ -269,7 +269,7 @@ export default {
 
 ### sidebar
 
-- Type: `SidebarOptions`
+- Type: `false | SidebarOptions`
 
 - Default: `'heading'`
 

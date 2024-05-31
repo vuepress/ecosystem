@@ -290,7 +290,7 @@ features:
 
 ### sidebar
 
-- 类型： `SidebarOptions`
+- 类型： `false | SidebarOptions`
 
 - 详情：
 
