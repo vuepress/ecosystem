@@ -36,6 +36,8 @@ defineSlots<{
 .vp-page {
   padding-bottom: 2rem;
   display: block;
+  padding-top: var(--navbar-height);
+  padding-left: var(--sidebar-width);
 
   .theme-default-content {
     @include mixins.content_wrapper;

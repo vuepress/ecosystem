@@ -7,26 +7,6 @@
   }
 }
 
-.page {
-  padding-top: var(--navbar-height);
-  padding-left: var(--sidebar-width);
-}
-
-.navbar {
-  position: fixed;
-  z-index: 20;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--navbar-height);
-  box-sizing: border-box;
-  border-bottom: 1px solid var(--c-border);
-  background-color: var(--c-bg-navbar);
-  transition:
-    background-color var(--t-color),
-    border-color var(--t-color);
-}
-
 .sidebar {
   font-size: 16px;
   width: var(--sidebar-width);
@@ -71,27 +51,6 @@
   &.sidebar-open {
     .sidebar-mask {
       display: block;
-    }
-
-    .navbar > .toggle-sidebar-button .icon {
-      span {
-        &:nth-child(1) {
-          transform: rotate(45deg) translate3d(5.5px, 5.5px, 0);
-        }
-
-        &:nth-child(2) {
-          transform: scale3d(0, 1, 1);
-        }
-
-        &:nth-child(3) {
-          transform: rotate(-45deg) translate3d(6px, -6px, 0);
-        }
-
-        &:nth-child(1),
-        &:nth-child(3) {
-          transform-origin: center;
-        }
-      }
     }
   }
 

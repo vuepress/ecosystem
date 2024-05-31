@@ -61,6 +61,25 @@ const themeLocale = useThemeLocaleData()
       &:nth-child(2) {
         margin: 6px 0;
       }
+
+      .theme-container.sidebar-open & {
+        &:nth-child(1) {
+          transform: rotate(45deg) translate3d(5.5px, 5.5px, 0);
+        }
+
+        &:nth-child(2) {
+          transform: scale3d(0, 1, 1);
+        }
+
+        &:nth-child(3) {
+          transform: rotate(-45deg) translate3d(6px, -6px, 0);
+        }
+
+        &:nth-child(1),
+        &:nth-child(3) {
+          transform-origin: center;
+        }
+      }
     }
   }
 }

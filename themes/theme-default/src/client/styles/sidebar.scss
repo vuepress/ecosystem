@@ -12,32 +12,13 @@
     display: inline-block;
   }
 
-  .navbar-items {
+  .vp-navbar-items {
     display: none;
     border-bottom: 1px solid var(--c-border);
     transition: border-color var(--t-color);
     padding: 0.5rem 0 0.75rem 0;
 
-    a {
-      font-weight: 600;
-    }
-
-    .navbar-item {
-      display: block;
-      line-height: 1.25rem;
-      font-size: 1.1em;
-      padding: 0.5rem 0 0.5rem 1.5rem;
-    }
-  }
-
-  .sidebar-items {
-    padding: 1.5rem 0;
-  }
-}
-
-@media (max-width: $MQMobile) {
-  .sidebar {
-    .navbar-items {
+    @media (max-width: $MQMobile) {
       display: block;
 
       .navbar-dropdown-wrapper
@@ -48,7 +29,22 @@
       }
     }
 
-    .sidebar-items {
+    a {
+      font-weight: 600;
+    }
+  }
+
+  .vp-navbar-item {
+    display: block;
+    line-height: 1.25rem;
+    font-size: 1.1em;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+  }
+
+  .sidebar-items {
+    padding: 1.5rem 0;
+
+    @media (max-width: $MQMobile) {
       padding: 1rem 0;
     }
   }

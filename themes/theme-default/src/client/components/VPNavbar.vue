@@ -87,6 +87,18 @@ useUpdateDeviceStatus(
     var(--navbar-height) - 2 * var(--navbar-padding-v)
   );
 
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--navbar-height);
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--c-border);
+  background-color: var(--c-bg-navbar);
+  transition:
+    background-color var(--t-color),
+    border-color var(--t-color);
   padding: var(--navbar-padding-v) var(--navbar-padding-h);
   line-height: var(--navbar-line-height);
 
