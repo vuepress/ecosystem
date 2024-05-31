@@ -62,19 +62,48 @@ useUpdateDeviceStatus(
 </script>
 
 <template>
-  <header ref="navbar" class="navbar">
+  <header ref="navbar" class="vp-navbar">
     <VPToggleSidebarButton @toggle="$emit('toggle-sidebar')" />
 
     <span ref="navbarBrand">
       <VPNavbarBrand />
     </span>
 
-    <div class="navbar-items-wrapper" :style="linksWrapperStyle">
+    <div class="vp-navbar-items-wrapper" :style="linksWrapperStyle">
       <slot name="before" />
-      <VPNavbarItems class="can-hide" />
+      <VPNavbarItems class="vp-hide-mobile" />
       <slot name="after" />
       <VPToggleColorModeButton v-if="themeLocale.colorModeSwitch" />
       <VPSearch />
     </div>
   </header>
 </template>
+
+<style lang="scss">
+@import '../styles/variables';
+
+.vp-navbar {
+  --navbar-line-height: calc(
+    var(--navbar-height) - 2 * var(--navbar-padding-v)
+  );
+
+  padding: var(--navbar-padding-v) var(--navbar-padding-h);
+  line-height: var(--navbar-line-height);
+
+  @media screen and (max-width: $MQMobile) {
+    padding-left: 4rem;
+  }
+}
+
+.vp-navbar-items-wrapper {
+  display: flex;
+  position: absolute;
+  box-sizing: border-box;
+  top: var(--navbar-padding-v);
+  right: var(--navbar-padding-h);
+  height: var(--navbar-line-height);
+  padding-left: var(--navbar-padding-h);
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+</style>

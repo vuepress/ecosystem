@@ -7,11 +7,11 @@
 @use 'custom-container';
 @use 'external-link-icon';
 @use 'layout';
-@use 'navbar';
 @use 'navbar-dropdown';
 @use 'page';
 @use 'sidebar';
 @use 'toc';
 @use 'transitions';
+@use 'plugins';
 
 @use '@vuepress/plugin-palette/style';

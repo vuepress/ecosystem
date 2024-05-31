@@ -36,7 +36,7 @@ const navBarLogoAltMatchesTitle = computed(
 const NavbarBrandLogo: FunctionalComponent = () => {
   if (!navbarBrandLogo.value) return null
   const img = h('img', {
-    class: 'logo',
+    class: 'vp-site-logo',
     src: withBase(navbarBrandLogo.value),
     alt: navbarBrandLogoAlt.value,
   })
@@ -55,7 +55,7 @@ const NavbarBrandLogo: FunctionalComponent = () => {
 
     <span
       v-if="navbarBrandTitle"
-      class="site-name"
+      class="vp-site-name"
       :class="{ 'can-hide': navbarBrandLogo }"
       :aria-hidden="navBarLogoAltMatchesTitle"
     >
@@ -63,3 +63,31 @@ const NavbarBrandLogo: FunctionalComponent = () => {
     </span>
   </RouteLink>
 </template>
+
+<style lang="scss">
+@import '../styles/variables';
+
+.vp-site-logo {
+  height: var(--navbar-line-height);
+  margin-right: var(--navbar-padding-v);
+  vertical-align: top;
+}
+
+.vp-site-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--c-text);
+  position: relative;
+
+  @media screen and (max-width: $MQMobile) {
+    display: block;
+    // 5.5rem for .navbar padding-inline
+    // 4.5rem for ColorModeSwitch and VPSearch
+    // 1rem for gap
+    width: calc(100vw - 11rem);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+</style>

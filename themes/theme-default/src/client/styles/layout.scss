@@ -1,6 +1,12 @@
 @import 'mixins';
 @import 'variables';
 
+.vp-hide-mobile {
+  @media screen and (max-width: $MQMobile) {
+    display: none;
+  }
+}
+
 .page {
   padding-top: var(--navbar-height);
   padding-left: var(--sidebar-width);

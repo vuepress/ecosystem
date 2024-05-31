@@ -38,8 +38,12 @@ useUpdateDeviceStatus(
 </script>
 
 <template>
-  <nav v-if="navbarLinks.length" class="navbar-items" :aria-label="navbarLabel">
-    <div v-for="item in navbarLinks" :key="item.text" class="navbar-item">
+  <nav
+    v-if="navbarLinks.length"
+    class="vp-navbar-items"
+    :aria-label="navbarLabel"
+  >
+    <div v-for="item in navbarLinks" :key="item.text" class="vp-navbar-item">
       <VPNavbarDropdown
         v-if="'children' in item"
         :class="{ mobile: isMobile }"
@@ -49,3 +53,61 @@ useUpdateDeviceStatus(
     </div>
   </nav>
 </template>
+
+<style lang="scss">
+@import '../styles/variables';
+
+.vp-navbar-items {
+  display: inline-block;
+
+  @media print {
+    display: none;
+  }
+
+  a {
+    display: inline-block;
+    line-height: 1.4rem;
+    color: inherit;
+
+    &:hover,
+    &.route-link-active {
+      color: var(--c-text);
+    }
+  }
+}
+
+.vp-navbar-item {
+  position: relative;
+  display: inline-block;
+  margin-left: 1.5rem;
+  line-height: var(--navbar-line-height);
+
+  @media (max-width: $MQMobile) {
+    margin-left: 0;
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  a {
+    &:hover,
+    &.route-link-active {
+      color: var(--c-text-accent);
+    }
+  }
+
+  > a {
+    &:hover,
+    &.route-link-active {
+      margin-bottom: -2px;
+      border-bottom: 2px solid var(--c-text-accent);
+
+      @media (max-width: $MQMobile) {
+        margin-bottom: 0;
+        border-bottom: none;
+      }
+    }
+  }
+}
+</style>
