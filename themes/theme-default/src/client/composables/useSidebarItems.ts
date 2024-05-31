@@ -86,7 +86,7 @@ export const resolveSidebarItems = (
   }
 
   if (sidebarConfig === 'heading') {
-    return resolveAutoSidebarItems(sidebarDepth, page)
+    return resolveSidebarHeadingItem(sidebarDepth, page)
   }
 
   if (Array.isArray(sidebarConfig)) {
@@ -131,7 +131,7 @@ export const resolveSidebarHeaderItems = (
 /**
  * Resolve current page and its header to sidebar items if the config is `heading`
  */
-export const resolveAutoSidebarItems = (
+export const resolveSidebarHeadingItem = (
   sidebarDepth: number,
   page: PageData,
 ): SidebarItem[] => [
@@ -212,7 +212,7 @@ export const resolveMultiSidebarItems = (
 
       return matched
         ? matched === 'heading'
-          ? resolveAutoSidebarItems(sidebarDepth, page)
+          ? resolveSidebarHeadingItem(sidebarDepth, page)
           : resolveArraySidebarItems(matched, sidebarDepth, page, path, base)
         : []
     }
