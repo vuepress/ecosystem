@@ -83,12 +83,15 @@ export function getHeaders({
 }
 
 function serializeHeader(h: Element, ignore: string[] = []): string {
-  const clone = h.cloneNode(true) as Element
-
-  ignore.length &&
+  let text = ''
+  if (ignore.length) {
+    const clone = h.cloneNode(true) as Element
     clone.querySelectorAll(ignore.join(',')).forEach((el) => el.remove())
-
-  return clone.textContent?.trim() || ''
+    text = clone.textContent || ''
+  } else {
+    text = h.textContent || ''
+  }
+  return text.trim()
 }
 
 export function resolveHeaders(
