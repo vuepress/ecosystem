@@ -290,7 +290,7 @@ Frontmatter in this section will only take effect in normal pages.
 
 ### sidebar
 
-- Type: `false | 'auto' | SidebarConfigArray | SidebarConfigObject`
+- Type: `false | SidebarOptions`
 
 - Details:
 

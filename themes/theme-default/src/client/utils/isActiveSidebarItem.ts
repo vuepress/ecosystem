@@ -1,5 +1,5 @@
 import type { RouteLocationNormalizedLoaded } from 'vuepress/client'
-import type { ResolvedSidebarItem } from '../../shared/index.js'
+import type { SidebarItem } from '../typings.js'
 
 const normalizePath = (path: string): string =>
   decodeURI(path)
@@ -18,16 +18,16 @@ const isActiveLink = (
   return currentPath === targetPath
 }
 
-export const isActiveSidebarItem = (
-  item: ResolvedSidebarItem,
+export const isActiveLinkItem = (
+  item: SidebarItem,
   route: RouteLocationNormalizedLoaded,
 ): boolean => {
   if (item.link && isActiveLink(item.link, route)) {
     return true
   }
 
-  if (item.children) {
-    return item.children.some((child) => isActiveSidebarItem(child, route))
+  if ('children' in item) {
+    return item.children.some((child) => isActiveLinkItem(child, route))
   }
 
   return false
