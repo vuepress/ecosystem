@@ -33,7 +33,7 @@ function focusOnTargetAnchor({ target }: Event): void {
   <span ref="backToTop" tabindex="-1" />
   <a
     href="#VPContent"
-    class="vpSkipLink visually-hidden"
+    class="vp-skip-link visually-hidden"
     @click="focusOnTargetAnchor"
   >
     Skip to content
@@ -41,7 +41,7 @@ function focusOnTargetAnchor({ target }: Event): void {
 </template>
 
 <style scoped>
-.vpSkipLink {
+.vp-skip-link {
   top: 8px;
   left: 8px;
   padding: 8px 16px;
@@ -55,7 +55,7 @@ function focusOnTargetAnchor({ target }: Event): void {
   background-color: var(--vp-c-bg);
 }
 
-.vpSkipLink:focus {
+.vp-skip-link:focus {
   height: auto;
   width: auto;
   clip: auto;
@@ -63,7 +63,7 @@ function focusOnTargetAnchor({ target }: Event): void {
 }
 
 @media (min-width: 1280px) {
-  .vpSkipLink {
+  .vp-skip-link {
     top: 14px;
     left: 16px;
   }

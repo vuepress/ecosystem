@@ -30,7 +30,7 @@ watch(
 
 onMounted(() => {
   const activeItem = document.querySelector(
-    `.vpSidebar .vpLink[href*="${routePath.value}"]`,
+    `.vp-sidebar .vp-link[href*="${routePath.value}"]`,
   )
   if (!activeItem || !navEl.value) return
 

@@ -43,7 +43,7 @@ const emptyAndNoSidebar = computed(() => {
 
 const classes = computed(() => {
   return {
-    'vpLocalNav': true,
+    'vp-local-nav': true,
     'has-sidebar': hasSidebar.value,
     'empty': empty.value,
     'fixed': emptyAndNoSidebar.value,
@@ -78,7 +78,7 @@ const classes = computed(() => {
 </template>
 
 <style scoped>
-.vpLocalNav {
+.vp-local-nav {
   position: sticky;
   top: 0;
   /*rtl:ignore*/
@@ -90,32 +90,32 @@ const classes = computed(() => {
   background-color: var(--vp-local-nav-bg-color);
 }
 
-.vpLocalNav.fixed {
+.vp-local-nav.fixed {
   position: fixed;
 }
 
 @media (min-width: 960px) {
-  .vpLocalNav {
+  .vp-local-nav {
     top: var(--vp-nav-height);
   }
 
-  .vpLocalNav.has-sidebar {
+  .vp-local-nav.has-sidebar {
     padding-left: var(--vp-sidebar-width);
   }
 
-  .vpLocalNav.empty {
+  .vp-local-nav.empty {
     display: none;
   }
 }
 
 @media (min-width: 1280px) {
-  .vpLocalNav {
+  .vp-local-nav {
     display: none;
   }
 }
 
 @media (min-width: 1440px) {
-  .vpLocalNav.has-sidebar {
+  .vp-local-nav.has-sidebar {
     padding-left: calc(
       (100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width)
     );

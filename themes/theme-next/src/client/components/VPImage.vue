@@ -14,7 +14,7 @@ defineOptions({ inheritAttrs: false })
   <template v-if="image">
     <img
       v-if="typeof image === 'string' || 'src' in image"
-      class="vpImage"
+      class="vp-image"
       v-bind="typeof image === 'string' ? $attrs : { ...image, ...$attrs }"
       :src="withBase(typeof image === 'string' ? image : image.src)"
       :alt="alt ?? (typeof image === 'string' ? '' : image.alt || '')"
@@ -37,11 +37,11 @@ defineOptions({ inheritAttrs: false })
 </template>
 
 <style scoped>
-html:not(.dark) .vpImage.dark {
+html:not(.dark) .vp-image.dark {
   display: none;
 }
 
-.dark .vpImage.light {
+.dark .vp-image.light {
   display: none;
 }
 </style>

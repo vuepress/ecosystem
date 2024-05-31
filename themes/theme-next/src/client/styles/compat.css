@@ -26,7 +26,7 @@
   --docsearch-hit-shadow: none;
 }
 
-.vpNavBarSearch .DocSearch-Button {
+.vp-navbar-search .DocSearch-Button {
   display: flex;
   align-items: center;
   justify-content: center !important;
@@ -40,20 +40,20 @@
     background 0.5s ease;
 }
 
-.vpNavBarSearch .DocSearch-Button:hover {
+.vp-navbar-search .DocSearch-Button:hover {
   background: var(--docsearch-searchbox-focus-background);
 }
 
-.vpNavBarSearch .DocSearch-Button:focus {
+.vp-navbar-search .DocSearch-Button:focus {
   outline: 1px dotted;
   outline: 5px auto -webkit-focus-ring-color;
 }
 
-.vpNavBarSearch .DocSearch-Button:focus:not(:focus-visible) {
+.vp-navbar-search .DocSearch-Button:focus:not(:focus-visible) {
   outline: none !important;
 }
 
-.vpNavBarSearch #docsearch-container {
+.vp-navbar-search #docsearch-container {
   min-width: 32px;
 }
 
@@ -167,7 +167,7 @@
 }
 
 @media (min-width: 768px) {
-  .vpNavBarSearch .DocSearch-Button {
+  .vp-navbar-search .DocSearch-Button {
     justify-content: flex-start;
     width: 100%;
     height: 40px;
@@ -177,7 +177,7 @@
     border-radius: 8px;
   }
 
-  .vpNavBarSearch .DocSearch-Button:hover {
+  .vp-navbar-search .DocSearch-Button:hover {
     background: var(--docsearch-searchbox-focus-background);
     border-color: var(--vp-c-brand-1);
   }
@@ -210,7 +210,7 @@
 
 /* plugin-search */
 
-.vpNavBarSearch {
+.vp-navbar-search {
   --search-bg-color: var(--vp-c-bg);
   --search-accent-color: var(--vp-c-brand-1);
   --search-text-color: var(--vp-c-text-1);
@@ -220,12 +220,12 @@
   --search-item-focus-bg-color: var(--vp-c-bg-soft);
 }
 
-.vpNavBarSearch .search-box input {
+.vp-navbar-search .search-box input {
   padding: 0 0.3rem 0 1.655rem;
   background-position: 0.5rem 0.4rem;
 }
 
-.vpNavBarSearch .search-box .suggestions {
+.vp-navbar-search .search-box .suggestions {
   top: 40px;
   right: -16px;
   padding: 16px 12px;
@@ -236,7 +236,7 @@
 }
 
 @media (min-width: 768px) {
-  .vpNavBarSearch .search-box .suggestions {
+  .vp-navbar-search .search-box .suggestions {
     right: unset;
     left: -16px;
   }

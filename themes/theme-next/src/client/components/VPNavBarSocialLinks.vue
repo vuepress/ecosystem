@@ -8,18 +8,18 @@ const { theme } = useData()
 <template>
   <VPSocialLinks
     v-if="theme.socialLinks"
-    class="vpNavBarSocialLinks"
+    class="vp-navbar-social-links"
     :links="theme.socialLinks"
   />
 </template>
 
 <style scoped>
-.vpNavBarSocialLinks {
+.vp-navbar-social-links {
   display: none;
 }
 
 @media (min-width: 1280px) {
-  .vpNavBarSocialLinks {
+  .vp-navbar-social-links {
     display: flex;
     align-items: center;
   }

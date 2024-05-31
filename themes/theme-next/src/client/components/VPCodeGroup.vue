@@ -53,7 +53,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="container" class="vpCodeGroup">
+  <div ref="container" class="vp-code-group">
     <slot />
   </div>
 </template>

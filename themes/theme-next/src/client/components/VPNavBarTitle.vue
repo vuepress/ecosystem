@@ -32,7 +32,7 @@ const target = computed(() =>
 </script>
 
 <template>
-  <div class="vpNavBarTitle" :class="{ 'has-sidebar': hasSidebar }">
+  <div class="vp-navbar-title" :class="{ 'has-sidebar': hasSidebar }">
     <VPLink
       class="title"
       :href="link ?? currentLang.link"
@@ -70,7 +70,7 @@ const target = computed(() =>
     flex-shrink: 0;
   }
 
-  .vpNavBarTitle.has-sidebar .title {
+  .vp-navbar-title.has-sidebar .title {
     border-bottom-color: var(--vp-c-divider);
   }
 }

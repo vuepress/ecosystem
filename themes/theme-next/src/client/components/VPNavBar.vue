@@ -34,7 +34,7 @@ watchPostEffect(() => {
 </script>
 
 <template>
-  <div class="vpNavBar" :class="classes">
+  <div class="vp-navbar" :class="classes">
     <div class="wrapper">
       <div class="container">
         <div class="title">
@@ -75,7 +75,7 @@ watchPostEffect(() => {
 </template>
 
 <style scoped>
-.vpNavBar {
+.vp-navbar {
   position: relative;
   height: var(--vp-nav-height);
   pointer-events: none;
@@ -83,16 +83,16 @@ watchPostEffect(() => {
   transition: background-color 0.5s;
 }
 
-.vpNavBar:not(.home) {
+.vp-navbar:not(.home) {
   background-color: var(--vp-nav-bg-color);
 }
 
 @media (min-width: 960px) {
-  .vpNavBar:not(.home) {
+  .vp-navbar:not(.home) {
     background-color: transparent;
   }
 
-  .vpNavBar:not(.has-sidebar):not(.home.top) {
+  .vp-navbar:not(.has-sidebar):not(.home.top) {
     background-color: var(--vp-nav-bg-color);
   }
 }
@@ -108,7 +108,7 @@ watchPostEffect(() => {
 }
 
 @media (min-width: 960px) {
-  .vpNavBar.has-sidebar .wrapper {
+  .vp-navbar.has-sidebar .wrapper {
     padding: 0;
   }
 }
@@ -132,7 +132,7 @@ watchPostEffect(() => {
 }
 
 @media (min-width: 960px) {
-  .vpNavBar.has-sidebar .container {
+  .vp-navbar.has-sidebar .container {
     max-width: 100%;
   }
 }
@@ -144,7 +144,7 @@ watchPostEffect(() => {
 }
 
 @media (min-width: 960px) {
-  .vpNavBar.has-sidebar .title {
+  .vp-navbar.has-sidebar .title {
     position: absolute;
     top: 0;
     left: 0;
@@ -157,7 +157,7 @@ watchPostEffect(() => {
 }
 
 @media (min-width: 1440px) {
-  .vpNavBar.has-sidebar .title {
+  .vp-navbar.has-sidebar .title {
     padding-left: max(
       32px,
       calc((100% - (var(--vp-layout-max-width) - 64px)) / 2)
@@ -174,7 +174,7 @@ watchPostEffect(() => {
 }
 
 @media (min-width: 960px) {
-  .vpNavBar.has-sidebar .content {
+  .vp-navbar.has-sidebar .content {
     position: relative;
     z-index: 1;
     padding-right: 32px;
@@ -183,7 +183,7 @@ watchPostEffect(() => {
 }
 
 @media (min-width: 1440px) {
-  .vpNavBar.has-sidebar .content {
+  .vp-navbar.has-sidebar .content {
     padding-right: calc((100vw - var(--vp-layout-max-width)) / 2 + 32px);
     padding-left: calc(
       (100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width)
@@ -200,12 +200,12 @@ watchPostEffect(() => {
 }
 
 @media (min-width: 960px) {
-  .vpNavBar:not(.home.top) .content-body {
+  .vp-navbar:not(.home.top) .content-body {
     position: relative;
     background-color: var(--vp-nav-bg-color);
   }
 
-  .vpNavBar:not(.has-sidebar):not(.home.top) .content-body {
+  .vp-navbar:not(.has-sidebar):not(.home.top) .content-body {
     background-color: transparent;
   }
 }
@@ -248,13 +248,13 @@ watchPostEffect(() => {
 }
 
 @media (min-width: 960px) {
-  .vpNavBar.has-sidebar .divider {
+  .vp-navbar.has-sidebar .divider {
     padding-left: var(--vp-sidebar-width);
   }
 }
 
 @media (min-width: 1440px) {
-  .vpNavBar.has-sidebar .divider {
+  .vp-navbar.has-sidebar .divider {
     padding-left: calc(
       (100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width)
     );
@@ -267,16 +267,16 @@ watchPostEffect(() => {
   transition: background-color 0.5s;
 }
 
-.vpNavBar:not(.home) .divider-line {
+.vp-navbar:not(.home) .divider-line {
   background-color: var(--vp-c-gutter);
 }
 
 @media (min-width: 960px) {
-  .vpNavBar:not(.home.top) .divider-line {
+  .vp-navbar:not(.home.top) .divider-line {
     background-color: var(--vp-c-gutter);
   }
 
-  .vpNavBar:not(.has-sidebar):not(.home.top) .divider {
+  .vp-navbar:not(.has-sidebar):not(.home.top) .divider {
     background-color: var(--vp-c-gutter);
   }
 }

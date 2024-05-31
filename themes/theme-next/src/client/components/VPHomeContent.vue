@@ -37,19 +37,19 @@ const { width: vw } = useWindowSize({
   }
 }
 
-.vp-doc :deep(.vpHomeSponsors),
-.vp-doc :deep(.vpTeamPage) {
+.vp-doc :deep(.vp-home-sponsors),
+.vp-doc :deep(.vp-team-page) {
   margin-left: var(--vp-offset, calc(50% - 50vw));
   margin-right: var(--vp-offset, calc(50% - 50vw));
 }
 
-.vp-doc :deep(.vpHomeSponsors h2) {
+.vp-doc :deep(.vp-home-sponsors h2) {
   border-top: none;
   letter-spacing: normal;
 }
 
-.vp-doc :deep(.vpHomeSponsors a),
-.vp-doc :deep(.vpTeamPage a) {
+.vp-doc :deep(.vp-home-sponsors a),
+.vp-doc :deep(.vp-team-page a) {
   text-decoration: none;
 }
 </style>

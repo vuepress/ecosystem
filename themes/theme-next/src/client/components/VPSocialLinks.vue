@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="vpSocialLinks">
+  <div class="vp-social-links">
     <VPSocialLink
       v-for="{ link, icon, ariaLabel } in links"
       :key="link"
@@ -20,7 +20,7 @@ defineProps<{
 </template>
 
 <style scoped>
-.vpSocialLinks {
+.vp-social-links {
   display: flex;
   justify-content: center;
 }

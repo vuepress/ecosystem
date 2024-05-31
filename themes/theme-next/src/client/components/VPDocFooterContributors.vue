@@ -13,7 +13,7 @@ const contributors = useContributors()
 <template>
   <p
     v-if="contributors?.length"
-    class="vpContributors"
+    class="vp-contributors"
     :style="{ '--vp-contributors-align': align }"
   >
     {{ theme.contributorsText || 'Contributors' }}:
@@ -30,19 +30,19 @@ const contributors = useContributors()
 </template>
 
 <style scoped>
-.vpContributors {
+.vp-contributors {
   line-height: 24px;
   font-size: 14px;
   font-weight: 500;
   color: var(--vp-c-text-2);
 }
 
-.vpContributors .contributor {
+.vp-contributors .contributor {
   color: var(--vp-c-text-3);
 }
 
 @media (min-width: 640px) {
-  .vpContributors {
+  .vp-contributors {
     line-height: 32px;
     font-size: 14px;
     font-weight: 500;

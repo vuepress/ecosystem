@@ -37,7 +37,7 @@ function linkTo(e: Event): void {
 <template>
   <Component
     :is="tag"
-    class="vpLink"
+    class="vp-link"
     :class="{
       'link': link,
       'vp-external-link-icon': isExternal,

@@ -18,7 +18,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <section class="vpHomeSponsors">
+  <section class="vp-home-sponsors">
     <div class="container">
       <div class="header">
         <div class="love">
@@ -39,33 +39,33 @@ withDefaults(defineProps<Props>(), {
 </template>
 
 <style scoped>
-.vpHomeSponsors {
+.vp-home-sponsors {
   border-top: 1px solid var(--vp-c-gutter);
   padding-top: 88px !important;
 }
 
-.vpHomeSponsors {
+.vp-home-sponsors {
   margin: 96px 0;
 }
 
 @media (min-width: 768px) {
-  .vpHomeSponsors {
+  .vp-home-sponsors {
     margin: 128px 0;
   }
 }
 
-.vpHomeSponsors {
+.vp-home-sponsors {
   padding: 0 24px;
 }
 
 @media (min-width: 768px) {
-  .vpHomeSponsors {
+  .vp-home-sponsors {
     padding: 0 48px;
   }
 }
 
 @media (min-width: 960px) {
-  .vpHomeSponsors {
+  .vp-home-sponsors {
     padding: 0 64px;
   }
 }

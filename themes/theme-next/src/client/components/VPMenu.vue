@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="vpMenu">
+  <div class="vp-menu">
     <div v-if="items" class="items">
       <template v-for="item in items" :key="item.text">
         <VPMenuLink v-if="'link' in item" :item="item" />
@@ -21,7 +21,7 @@ defineProps<{
 </template>
 
 <style scoped>
-.vpMenu {
+.vp-menu {
   border-radius: 12px;
   padding: 12px;
   min-width: 128px;
@@ -33,31 +33,31 @@ defineProps<{
   overflow-y: auto;
 }
 
-.vpMenu :deep(.group) {
+.vp-menu :deep(.group) {
   margin: 0 -12px;
   padding: 0 12px 12px;
 }
 
-.vpMenu :deep(.group + .group) {
+.vp-menu :deep(.group + .group) {
   border-top: 1px solid var(--vp-c-divider);
   padding: 11px 12px 12px;
 }
 
-.vpMenu :deep(.group:last-child) {
+.vp-menu :deep(.group:last-child) {
   padding-bottom: 0;
 }
 
-.vpMenu :deep(.group + .item) {
+.vp-menu :deep(.group + .item) {
   border-top: 1px solid var(--vp-c-divider);
   padding: 11px 16px 0;
 }
 
-.vpMenu :deep(.item) {
+.vp-menu :deep(.item) {
   padding: 0 16px;
   white-space: nowrap;
 }
 
-.vpMenu :deep(.label) {
+.vp-menu :deep(.label) {
   flex-grow: 1;
   line-height: 28px;
   font-size: 12px;
@@ -66,7 +66,7 @@ defineProps<{
   transition: color 0.5s;
 }
 
-.vpMenu :deep(.action) {
+.vp-menu :deep(.action) {
   padding-left: 24px;
 }
 </style>

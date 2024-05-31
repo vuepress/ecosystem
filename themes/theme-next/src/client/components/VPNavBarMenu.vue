@@ -10,7 +10,7 @@ const navbar = useNavbarData()
   <nav
     v-if="navbar.length"
     aria-labelledby="main-nav-aria-label"
-    class="vpNavBarMenu"
+    class="vp-navbar-menu"
   >
     <span id="main-nav-aria-label" class="visually-hidden"
       >Main Navigation</span
@@ -23,12 +23,12 @@ const navbar = useNavbarData()
 </template>
 
 <style scoped>
-.vpNavBarMenu {
+.vp-navbar-menu {
   display: none;
 }
 
 @media (min-width: 768px) {
-  .vpNavBarMenu {
+  .vp-navbar-menu {
     display: flex;
   }
 }

@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="vpMenuGroup">
+  <div class="vp-menu-group">
     <p v-if="text" class="title">{{ text }}</p>
 
     <template v-for="item in items">
@@ -18,19 +18,19 @@ defineProps<{
 </template>
 
 <style scoped>
-.vpMenuGroup {
+.vp-menu-group {
   margin: 12px -12px 0;
   border-top: 1px solid var(--vp-c-divider);
   padding: 12px 12px 0;
 }
 
-.vpMenuGroup:first-child {
+.vp-menu-group:first-child {
   margin-top: 0;
   border-top: 0;
   padding-top: 0;
 }
 
-.vpMenuGroup + .vpMenuGroup {
+.vp-menu-group + .vp-menu-group {
   margin-top: 12px;
   border-top: 1px solid var(--vp-c-divider);
 }

@@ -1,5 +1,5 @@
 <template>
-  <button class="vpSwitch" type="button" role="switch">
+  <button class="vp-switch" type="button" role="switch">
     <span class="check">
       <span v-if="$slots.default" class="icon">
         <slot />
@@ -9,7 +9,7 @@
 </template>
 
 <style scoped>
-.vpSwitch {
+.vp-switch {
   position: relative;
   border-radius: 11px;
   display: block;
@@ -21,7 +21,7 @@
   transition: border-color 0.25s !important;
 }
 
-.vpSwitch:hover {
+.vp-switch:hover {
   border-color: var(--vp-c-brand-1);
 }
 

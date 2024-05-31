@@ -12,7 +12,7 @@ const { hasSidebar } = useSidebar()
 <template>
   <div
     id="VPContent"
-    class="vpContent vp-content"
+    class="vp-content"
     :class="{
       'has-sidebar': hasSidebar,
       'is-home': frontmatter.pageLayout === 'home' || frontmatter.home,
@@ -73,35 +73,35 @@ const { hasSidebar } = useSidebar()
 </template>
 
 <style scoped>
-.vpContent {
+.vp-content {
   flex-grow: 1;
   flex-shrink: 0;
   margin: var(--vp-layout-top-height, 0px) auto 0;
   width: 100%;
 }
 
-.vpContent.is-home {
+.vp-content.is-home {
   width: 100%;
   max-width: 100%;
 }
 
-.vpContent.has-sidebar {
+.vp-content.has-sidebar {
   margin: 0;
 }
 
 @media (min-width: 960px) {
-  .vpContent {
+  .vp-content {
     padding-top: var(--vp-nav-height);
   }
 
-  .vpContent.has-sidebar {
+  .vp-content.has-sidebar {
     margin: var(--vp-layout-top-height, 0px) 0 0;
     padding-left: var(--vp-sidebar-width);
   }
 }
 
 @media (min-width: 1440px) {
-  .vpContent.has-sidebar {
+  .vp-content.has-sidebar {
     padding-right: calc((100vw - var(--vp-layout-max-width)) / 2);
     padding-left: calc(
       (100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width)

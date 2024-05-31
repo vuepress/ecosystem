@@ -5,14 +5,14 @@ const { lastUpdatedText, isoDatetime, datetime } = useLastUpdated()
 </script>
 
 <template>
-  <p v-if="datetime" class="vpLastUpdated">
+  <p v-if="datetime" class="vp-last-updated">
     {{ lastUpdatedText }}:
     <time :datetime="isoDatetime">{{ datetime }}</time>
   </p>
 </template>
 
 <style scoped>
-.vpLastUpdated {
+.vp-last-updated {
   line-height: 24px;
   font-size: 14px;
   font-weight: 500;
@@ -20,7 +20,7 @@ const { lastUpdatedText, isoDatetime, datetime } = useLastUpdated()
 }
 
 @media (min-width: 640px) {
-  .vpLastUpdated {
+  .vp-last-updated {
     line-height: 32px;
     font-size: 14px;
     font-weight: 500;

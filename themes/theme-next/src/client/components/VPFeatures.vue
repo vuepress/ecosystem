@@ -26,7 +26,7 @@ const grid = computed(() => {
 </script>
 
 <template>
-  <div v-if="features" class="vpFeatures">
+  <div v-if="features" class="vp-features">
     <div class="container">
       <div class="items">
         <div
@@ -51,19 +51,19 @@ const grid = computed(() => {
 </template>
 
 <style scoped>
-.vpFeatures {
+.vp-features {
   position: relative;
   padding: 0 24px;
 }
 
 @media (min-width: 640px) {
-  .vpFeatures {
+  .vp-features {
     padding: 0 48px;
   }
 }
 
 @media (min-width: 960px) {
-  .vpFeatures {
+  .vp-features {
     padding: 0 64px;
   }
 }

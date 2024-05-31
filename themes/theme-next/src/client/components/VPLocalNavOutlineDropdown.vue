@@ -66,7 +66,7 @@ function scrollToTop(): void {
 <template>
   <div
     ref="main"
-    class="vpLocalNavOutlineDropdown"
+    class="vp-local-nav-outline-dropdown"
     :style="{ '--vp-vh': vh + 'px' }"
   >
     <button v-if="headers.length > 0" :class="{ open }" @click="toggle">
@@ -92,17 +92,17 @@ function scrollToTop(): void {
 </template>
 
 <style scoped>
-.vpLocalNavOutlineDropdown {
+.vp-local-nav-outline-dropdown {
   padding: 12px 20px 11px;
 }
 
 @media (min-width: 960px) {
-  .vpLocalNavOutlineDropdown {
+  .vp-local-nav-outline-dropdown {
     padding: 12px 36px 11px;
   }
 }
 
-.vpLocalNavOutlineDropdown button {
+.vp-local-nav-outline-dropdown button {
   display: block;
   font-size: 12px;
   font-weight: 500;
@@ -112,12 +112,12 @@ function scrollToTop(): void {
   position: relative;
 }
 
-.vpLocalNavOutlineDropdown button:hover {
+.vp-local-nav-outline-dropdown button:hover {
   color: var(--vp-c-text-1);
   transition: color 0.25s;
 }
 
-.vpLocalNavOutlineDropdown button.open {
+.vp-local-nav-outline-dropdown button.open {
   color: var(--vp-c-text-1);
 }
 
@@ -131,7 +131,7 @@ function scrollToTop(): void {
 }
 
 @media (min-width: 960px) {
-  .vpLocalNavOutlineDropdown button {
+  .vp-local-nav-outline-dropdown button {
     font-size: 14px;
   }
 

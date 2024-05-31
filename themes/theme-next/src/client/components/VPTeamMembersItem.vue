@@ -14,7 +14,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <article class="vpTeamMembersItem" :class="[size]">
+  <article class="vp-team-members-item" :class="[size]">
     <div class="profile">
       <figure class="avatar">
         <img class="avatar-img" :src="member.avatar" :alt="member.name" />
@@ -53,7 +53,7 @@ withDefaults(defineProps<Props>(), {
 </template>
 
 <style scoped>
-.vpTeamMembersItem {
+.vp-team-members-item {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -63,73 +63,73 @@ withDefaults(defineProps<Props>(), {
   overflow: hidden;
 }
 
-.vpTeamMembersItem.small .profile {
+.vp-team-members-item.small .profile {
   padding: 32px;
 }
 
-.vpTeamMembersItem.small .data {
+.vp-team-members-item.small .data {
   padding-top: 20px;
 }
 
-.vpTeamMembersItem.small .avatar {
+.vp-team-members-item.small .avatar {
   width: 64px;
   height: 64px;
 }
 
-.vpTeamMembersItem.small .name {
+.vp-team-members-item.small .name {
   line-height: 24px;
   font-size: 16px;
 }
 
-.vpTeamMembersItem.small .affiliation {
+.vp-team-members-item.small .affiliation {
   padding-top: 4px;
   line-height: 20px;
   font-size: 14px;
 }
 
-.vpTeamMembersItem.small .desc {
+.vp-team-members-item.small .desc {
   padding-top: 12px;
   line-height: 20px;
   font-size: 14px;
 }
 
-.vpTeamMembersItem.small .links {
+.vp-team-members-item.small .links {
   margin: 0 -16px -20px;
   padding: 10px 0 0;
 }
 
-.vpTeamMembersItem.medium .profile {
+.vp-team-members-item.medium .profile {
   padding: 48px 32px;
 }
 
-.vpTeamMembersItem.medium .data {
+.vp-team-members-item.medium .data {
   padding-top: 24px;
   text-align: center;
 }
 
-.vpTeamMembersItem.medium .avatar {
+.vp-team-members-item.medium .avatar {
   width: 96px;
   height: 96px;
 }
 
-.vpTeamMembersItem.medium .name {
+.vp-team-members-item.medium .name {
   letter-spacing: 0.15px;
   line-height: 28px;
   font-size: 20px;
 }
 
-.vpTeamMembersItem.medium .affiliation {
+.vp-team-members-item.medium .affiliation {
   padding-top: 4px;
   font-size: 16px;
 }
 
-.vpTeamMembersItem.medium .desc {
+.vp-team-members-item.medium .desc {
   padding-top: 16px;
   max-width: 288px;
   font-size: 16px;
 }
 
-.vpTeamMembersItem.medium .links {
+.vp-team-members-item.medium .links {
   margin: 0 -16px -12px;
   padding: 16px 12px 0;
 }

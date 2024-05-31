@@ -21,7 +21,7 @@ const switchTitle = computed(() => {
 <template>
   <VPSwitch
     :title="switchTitle"
-    class="vpSwitchAppearance"
+    class="vp-switch-appearance"
     :aria-checked="isDark"
     @click="toggleAppearance"
   >
@@ -47,7 +47,7 @@ const switchTitle = computed(() => {
   opacity: 1;
 }
 
-.dark .vpSwitchAppearance :deep(.check) {
+.dark .vp-switch-appearance :deep(.check) {
   /*rtl:ignore*/
   transform: translateX(18px);
 }

@@ -20,7 +20,7 @@ function toggle(): void {
 </script>
 
 <template>
-  <div class="vpNavScreenMenuGroup" :class="{ open: isOpen }">
+  <div class="vp-nav-screen-menu-group" :class="{ open: isOpen }">
     <button
       class="button"
       :aria-controls="groupId"
@@ -46,32 +46,32 @@ function toggle(): void {
 </template>
 
 <style scoped>
-.vpNavScreenMenuGroup {
+.vp-nav-screen-menu-group {
   border-bottom: 1px solid var(--vp-c-divider);
   height: 48px;
   overflow: hidden;
   transition: border-color 0.5s;
 }
 
-.vpNavScreenMenuGroup .items {
+.vp-nav-screen-menu-group .items {
   visibility: hidden;
 }
 
-.vpNavScreenMenuGroup.open .items {
+.vp-nav-screen-menu-group.open .items {
   visibility: visible;
 }
 
-.vpNavScreenMenuGroup.open {
+.vp-nav-screen-menu-group.open {
   padding-bottom: 10px;
   height: auto;
 }
 
-.vpNavScreenMenuGroup.open .button {
+.vp-nav-screen-menu-group.open .button {
   padding-bottom: 6px;
   color: var(--vp-c-brand-1);
 }
 
-.vpNavScreenMenuGroup.open .button-icon {
+.vp-nav-screen-menu-group.open .button-icon {
   /*rtl:ignore*/
   transform: rotate(45deg);
 }

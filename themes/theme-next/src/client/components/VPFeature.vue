@@ -8,7 +8,7 @@ defineProps<Feature>()
 
 <template>
   <VPLink
-    class="vpFeature"
+    class="vp-feature"
     :href="link"
     :rel="rel"
     :target="target"
@@ -45,7 +45,7 @@ defineProps<Feature>()
 </template>
 
 <style scoped>
-.vpFeature {
+.vp-feature {
   display: block;
   border: 1px solid var(--vp-c-bg-soft);
   border-radius: 12px;
@@ -56,7 +56,7 @@ defineProps<Feature>()
     background-color 0.25s;
 }
 
-.vpFeature.link:hover {
+.vp-feature.link:hover {
   border-color: var(--vp-c-brand-1);
 }
 

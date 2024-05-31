@@ -15,8 +15,8 @@ const { page } = useData()
 <template>
   <VPLink
     :class="{
-      vpNavBarMenuLink: true,
-      active: isActive(
+      'vp-navbar-menu-link': true,
+      'active': isActive(
         page.path,
         item.activeMatch || resolveRoutePath(item.link),
         !!item.activeMatch,
@@ -33,7 +33,7 @@ const { page } = useData()
 </template>
 
 <style scoped>
-.vpNavBarMenuLink {
+.vp-navbar-menu-link {
   display: flex;
   align-items: center;
   padding: 0 12px;
@@ -43,11 +43,11 @@ const { page } = useData()
   transition: color 0.25s;
 }
 
-.vpNavBarMenuLink.active {
+.vp-navbar-menu-link.active {
   color: var(--vp-c-brand-1);
 }
 
-.vpNavBarMenuLink:hover {
+.vp-navbar-menu-link:hover {
   color: var(--vp-c-brand-1);
 }
 </style>

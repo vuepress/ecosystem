@@ -16,7 +16,7 @@ const svg = computed(() => {
 
 <template>
   <a
-    class="vpSocialLink no-icon"
+    class="vp-social-link no-icon"
     :href="link"
     :aria-label="ariaLabel ?? (typeof icon === 'string' ? icon : '')"
     target="_blank"
@@ -26,7 +26,7 @@ const svg = computed(() => {
 </template>
 
 <style scoped>
-.vpSocialLink {
+.vp-social-link {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,13 +36,13 @@ const svg = computed(() => {
   transition: color 0.5s;
 }
 
-.vpSocialLink:hover {
+.vp-social-link:hover {
   color: var(--vp-c-text-1);
   transition: color 0.25s;
 }
 
-.vpSocialLink > :deep(svg),
-.vpSocialLink > :deep([class^='vpi-social-']) {
+.vp-social-link > :deep(svg),
+.vp-social-link > :deep([class^='vpi-social-']) {
   width: 20px;
   height: 20px;
   fill: currentColor;

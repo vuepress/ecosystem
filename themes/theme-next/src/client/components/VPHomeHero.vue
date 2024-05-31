@@ -9,7 +9,7 @@ const fm = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
 <template>
   <VPHero
     v-if="fm.hero"
-    class="vpHomeHero"
+    class="vp-home-hero"
     :name="fm.hero.name"
     :text="fm.hero.text"
     :tagline="fm.hero.tagline"

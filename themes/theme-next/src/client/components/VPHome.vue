@@ -9,7 +9,7 @@ const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
 </script>
 
 <template>
-  <div class="vpHome">
+  <div class="vp-home">
     <slot name="home-hero-before" />
     <VPHomeHero>
       <template #home-hero-info-before>
@@ -38,12 +38,12 @@ const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
 </template>
 
 <style scoped>
-.vpHome {
+.vp-home {
   margin-bottom: 96px;
 }
 
 @media (min-width: 768px) {
-  .vpHome {
+  .vp-home {
     margin-bottom: 128px;
   }
 }

@@ -11,7 +11,7 @@ const { localeLinks, currentLang } = useLangs()
 <template>
   <VPFlyout
     v-if="localeLinks.length && currentLang.label"
-    class="vpNavBarTranslations"
+    class="vp-navbar-translations"
     icon="vpi-languages"
     :label="theme.selectLanguageText || 'Change language'"
   >
@@ -26,12 +26,12 @@ const { localeLinks, currentLang } = useLangs()
 </template>
 
 <style scoped>
-.vpNavBarTranslations {
+.vp-navbar-translations {
   display: none;
 }
 
 @media (min-width: 1280px) {
-  .vpNavBarTranslations {
+  .vp-navbar-translations {
     display: flex;
     align-items: center;
   }
@@ -45,7 +45,7 @@ const { localeLinks, currentLang } = useLangs()
   color: var(--vp-c-text-1);
 }
 
-.vpNavBarTranslations :deep(.button) {
+.vp-navbar-translations :deep(.button) {
   padding: 12px;
 }
 </style>

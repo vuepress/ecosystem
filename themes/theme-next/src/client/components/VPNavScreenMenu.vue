@@ -7,7 +7,7 @@ const navbar = useNavbarData()
 </script>
 
 <template>
-  <nav v-if="navbar.length" class="vpNavScreenMenu">
+  <nav v-if="navbar.length" class="vp-nav-screen-menu">
     <template v-for="item in navbar" :key="item.text">
       <VPNavScreenMenuLink v-if="'link' in item" :item="item" />
       <VPNavScreenMenuGroup

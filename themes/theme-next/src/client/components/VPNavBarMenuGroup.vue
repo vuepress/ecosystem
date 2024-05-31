@@ -33,8 +33,8 @@ const childrenActive = computed(() => isChildActive(props.item))
 <template>
   <VPFlyout
     :class="{
-      vpNavBarMenuGroup: true,
-      active:
+      'vp-navbar-menu-group': true,
+      'active':
         isActive(page.path, item.activeMatch, !!item.activeMatch) ||
         childrenActive,
     }"

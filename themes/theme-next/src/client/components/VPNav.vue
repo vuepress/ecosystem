@@ -23,7 +23,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <header v-if="hasNavbar" class="vpNav">
+  <header v-if="hasNavbar" class="vp-nav">
     <VPNavBar :is-screen-open="isScreenOpen" @toggle-screen="toggleScreen">
       <template #nav-bar-title-before>
         <slot name="nav-bar-title-before" />
@@ -50,7 +50,7 @@ watchEffect(() => {
 </template>
 
 <style scoped>
-.vpNav {
+.vp-nav {
   position: relative;
   top: var(--vp-layout-top-height, 0px);
   /*rtl:ignore*/
@@ -62,7 +62,7 @@ watchEffect(() => {
 }
 
 @media (min-width: 960px) {
-  .vpNav {
+  .vp-nav {
     position: fixed;
   }
 }

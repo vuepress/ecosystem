@@ -55,7 +55,7 @@ function onCaretClick(): void {
 </script>
 
 <template>
-  <component :is="sectionTag" class="vpSidebarItem" :class="classes">
+  <component :is="sectionTag" class="vp-sidebar-item" :class="classes">
     <div
       v-if="item.text"
       class="item"
@@ -108,11 +108,11 @@ function onCaretClick(): void {
 </template>
 
 <style scoped>
-.vpSidebarItem.level-0 {
+.vp-sidebar-item.level-0 {
   padding-bottom: 24px;
 }
 
-.vpSidebarItem.collapsed.level-0 {
+.vp-sidebar-item.collapsed.level-0 {
   padding-bottom: 10px;
 }
 
@@ -122,7 +122,7 @@ function onCaretClick(): void {
   width: 100%;
 }
 
-.vpSidebarItem.collapsible > .item {
+.vp-sidebar-item.collapsible > .item {
   cursor: pointer;
 }
 
@@ -136,10 +136,10 @@ function onCaretClick(): void {
   transition: background-color 0.25s;
 }
 
-.vpSidebarItem.level-2.is-active > .item > .indicator,
-.vpSidebarItem.level-3.is-active > .item > .indicator,
-.vpSidebarItem.level-4.is-active > .item > .indicator,
-.vpSidebarItem.level-5.is-active > .item > .indicator {
+.vp-sidebar-item.level-2.is-active > .item > .indicator,
+.vp-sidebar-item.level-3.is-active > .item > .indicator,
+.vp-sidebar-item.level-4.is-active > .item > .indicator,
+.vp-sidebar-item.level-5.is-active > .item > .indicator {
   background-color: var(--vp-c-brand-1);
 }
 
@@ -157,50 +157,50 @@ function onCaretClick(): void {
   transition: color 0.25s;
 }
 
-.vpSidebarItem.level-0 .text {
+.vp-sidebar-item.level-0 .text {
   font-weight: 700;
   color: var(--vp-c-text-1);
 }
 
-.vpSidebarItem.level-1 .text,
-.vpSidebarItem.level-2 .text,
-.vpSidebarItem.level-3 .text,
-.vpSidebarItem.level-4 .text,
-.vpSidebarItem.level-5 .text {
+.vp-sidebar-item.level-1 .text,
+.vp-sidebar-item.level-2 .text,
+.vp-sidebar-item.level-3 .text,
+.vp-sidebar-item.level-4 .text,
+.vp-sidebar-item.level-5 .text {
   font-weight: 500;
   color: var(--vp-c-text-2);
 }
 
-.vpSidebarItem.level-0.is-link > .item > .link:hover .text,
-.vpSidebarItem.level-1.is-link > .item > .link:hover .text,
-.vpSidebarItem.level-2.is-link > .item > .link:hover .text,
-.vpSidebarItem.level-3.is-link > .item > .link:hover .text,
-.vpSidebarItem.level-4.is-link > .item > .link:hover .text,
-.vpSidebarItem.level-5.is-link > .item > .link:hover .text {
+.vp-sidebar-item.level-0.is-link > .item > .link:hover .text,
+.vp-sidebar-item.level-1.is-link > .item > .link:hover .text,
+.vp-sidebar-item.level-2.is-link > .item > .link:hover .text,
+.vp-sidebar-item.level-3.is-link > .item > .link:hover .text,
+.vp-sidebar-item.level-4.is-link > .item > .link:hover .text,
+.vp-sidebar-item.level-5.is-link > .item > .link:hover .text {
   color: var(--vp-c-brand-1);
 }
 
-.vpSidebarItem.level-0.has-active > .item > .text,
-.vpSidebarItem.level-1.has-active > .item > .text,
-.vpSidebarItem.level-2.has-active > .item > .text,
-.vpSidebarItem.level-3.has-active > .item > .text,
-.vpSidebarItem.level-4.has-active > .item > .text,
-.vpSidebarItem.level-5.has-active > .item > .text,
-.vpSidebarItem.level-0.has-active > .item > .link > .text,
-.vpSidebarItem.level-1.has-active > .item > .link > .text,
-.vpSidebarItem.level-2.has-active > .item > .link > .text,
-.vpSidebarItem.level-3.has-active > .item > .link > .text,
-.vpSidebarItem.level-4.has-active > .item > .link > .text,
-.vpSidebarItem.level-5.has-active > .item > .link > .text {
+.vp-sidebar-item.level-0.has-active > .item > .text,
+.vp-sidebar-item.level-1.has-active > .item > .text,
+.vp-sidebar-item.level-2.has-active > .item > .text,
+.vp-sidebar-item.level-3.has-active > .item > .text,
+.vp-sidebar-item.level-4.has-active > .item > .text,
+.vp-sidebar-item.level-5.has-active > .item > .text,
+.vp-sidebar-item.level-0.has-active > .item > .link > .text,
+.vp-sidebar-item.level-1.has-active > .item > .link > .text,
+.vp-sidebar-item.level-2.has-active > .item > .link > .text,
+.vp-sidebar-item.level-3.has-active > .item > .link > .text,
+.vp-sidebar-item.level-4.has-active > .item > .link > .text,
+.vp-sidebar-item.level-5.has-active > .item > .link > .text {
   color: var(--vp-c-text-1);
 }
 
-.vpSidebarItem.level-0.is-active > .item .link > .text,
-.vpSidebarItem.level-1.is-active > .item .link > .text,
-.vpSidebarItem.level-2.is-active > .item .link > .text,
-.vpSidebarItem.level-3.is-active > .item .link > .text,
-.vpSidebarItem.level-4.is-active > .item .link > .text,
-.vpSidebarItem.level-5.is-active > .item .link > .text {
+.vp-sidebar-item.level-0.is-active > .item .link > .text,
+.vp-sidebar-item.level-1.is-active > .item .link > .text,
+.vp-sidebar-item.level-2.is-active > .item .link > .text,
+.vp-sidebar-item.level-3.is-active > .item .link > .text,
+.vp-sidebar-item.level-4.is-active > .item .link > .text,
+.vp-sidebar-item.level-5.is-active > .item .link > .text {
   color: var(--vp-c-brand-1);
 }
 
@@ -231,20 +231,20 @@ function onCaretClick(): void {
   transition: transform 0.25s;
 }
 
-.vpSidebarItem.collapsed .caret-icon {
+.vp-sidebar-item.collapsed .caret-icon {
   transform: rotate(0);
 }
 
-.vpSidebarItem.level-1 .items,
-.vpSidebarItem.level-2 .items,
-.vpSidebarItem.level-3 .items,
-.vpSidebarItem.level-4 .items,
-.vpSidebarItem.level-5 .items {
+.vp-sidebar-item.level-1 .items,
+.vp-sidebar-item.level-2 .items,
+.vp-sidebar-item.level-3 .items,
+.vp-sidebar-item.level-4 .items,
+.vp-sidebar-item.level-5 .items {
   border-left: 1px solid var(--vp-c-divider);
   padding-left: 16px;
 }
 
-.vpSidebarItem.collapsed .items {
+.vp-sidebar-item.collapsed .items {
   display: none;
 }
 </style>

@@ -17,7 +17,7 @@ const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
 </script>
 
 <template>
-  <div class="vpHero" :class="{ 'has-image': image || heroImageSlotExists }">
+  <div class="vp-hero" :class="{ 'has-image': image || heroImageSlotExists }">
     <div class="container">
       <div class="main">
         <slot name="home-hero-info-before" />
@@ -59,7 +59,7 @@ const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
 </template>
 
 <style scoped>
-.vpHero {
+.vp-hero {
   margin-top: calc(
     (var(--vp-nav-height) + var(--vp-layout-top-height, 0px)) * -1
   );
@@ -68,7 +68,7 @@ const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
 }
 
 @media (min-width: 640px) {
-  .vpHero {
+  .vp-hero {
     padding: calc(
         var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 80px
       )
@@ -77,7 +77,7 @@ const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
 }
 
 @media (min-width: 960px) {
-  .vpHero {
+  .vp-hero {
     padding: calc(
         var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 80px
       )
@@ -106,12 +106,12 @@ const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
   flex-shrink: 0;
 }
 
-.vpHero.has-image .container {
+.vp-hero.has-image .container {
   text-align: center;
 }
 
 @media (min-width: 960px) {
-  .vpHero.has-image .container {
+  .vp-hero.has-image .container {
     text-align: left;
   }
 }
@@ -122,7 +122,7 @@ const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
     width: calc((100% / 3) * 2);
   }
 
-  .vpHero.has-image .main {
+  .vp-hero.has-image .main {
     max-width: 592px;
   }
 }
@@ -137,8 +137,8 @@ const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
   white-space: pre-wrap;
 }
 
-.vpHero.has-image .name,
-.vpHero.has-image .text {
+.vp-hero.has-image .name,
+.vp-hero.has-image .text {
   margin: 0 auto;
 }
 
@@ -169,8 +169,8 @@ const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
     font-size: 56px;
   }
 
-  .vpHero.has-image .name,
-  .vpHero.has-image .text {
+  .vp-hero.has-image .name,
+  .vp-hero.has-image .text {
     margin: 0;
   }
 }
@@ -185,7 +185,7 @@ const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
   color: var(--vp-c-text-2);
 }
 
-.vpHero.has-image .tagline {
+.vp-hero.has-image .tagline {
   margin: 0 auto;
 }
 
@@ -204,7 +204,7 @@ const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
     font-size: 24px;
   }
 
-  .vpHero.has-image .tagline {
+  .vp-hero.has-image .tagline {
     margin: 0;
   }
 }
@@ -216,7 +216,7 @@ const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
   padding-top: 24px;
 }
 
-.vpHero.has-image .actions {
+.vp-hero.has-image .actions {
   justify-content: center;
 }
 
@@ -227,7 +227,7 @@ const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
 }
 
 @media (min-width: 960px) {
-  .vpHero.has-image .actions {
+  .vp-hero.has-image .actions {
     justify-content: flex-start;
   }
 }

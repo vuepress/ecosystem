@@ -485,7 +485,7 @@
   --vp-nav-height: 0px;
 }
 
-.hide-nav .vpSidebar {
+.hide-nav .vp-sidebar {
   --vp-nav-height: 22px;
 }
 

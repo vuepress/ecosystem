@@ -9,7 +9,7 @@ const fm = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
 <template>
   <VPFeatures
     v-if="fm.features"
-    class="vpHomeFeatures"
+    class="vp-home-features"
     :features="fm.features"
   />
 </template>

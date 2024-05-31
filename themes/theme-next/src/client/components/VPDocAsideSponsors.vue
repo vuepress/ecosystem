@@ -10,7 +10,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="vpDocAsideSponsors">
+  <div class="vp-doc-aside-sponsors">
     <VPSponsors mode="aside" :tier="tier" :size="size" :data="data" />
   </div>
 </template>

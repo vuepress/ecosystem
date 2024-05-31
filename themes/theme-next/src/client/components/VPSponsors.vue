@@ -32,7 +32,7 @@ const sponsors = computed(() => {
 </script>
 
 <template>
-  <div class="vpSponsors vp-sponsor" :class="[mode]">
+  <div class="vp-sponsor" :class="[mode]">
     <section
       v-for="(sponsor, index) in sponsors"
       :key="index"

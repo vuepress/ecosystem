@@ -28,7 +28,7 @@ useActiveAnchor(container, marker)
   <nav
     ref="container"
     aria-labelledby="doc-outline-aria-label"
-    class="vpDocAsideOutline"
+    class="vp-doc-aside-outline"
     :class="{ 'has-outline': headers.length > 0 }"
     role="navigation"
   >
@@ -50,11 +50,11 @@ useActiveAnchor(container, marker)
 </template>
 
 <style scoped>
-.vpDocAsideOutline {
+.vp-doc-aside-outline {
   display: none;
 }
 
-.vpDocAsideOutline.has-outline {
+.vp-doc-aside-outline.has-outline {
   display: block;
 }
 

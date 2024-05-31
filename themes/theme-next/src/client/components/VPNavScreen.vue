@@ -21,7 +21,7 @@ const isLocked = useScrollLock(inBrowser ? document.body : null)
     @enter="isLocked = true"
     @after-leave="isLocked = false"
   >
-    <div v-if="open" id="VPNavScreen" ref="screen" class="vpNavScreen">
+    <div v-if="open" id="VPNavScreen" ref="screen" class="vp-nav-screen">
       <div class="container">
         <slot name="nav-screen-content-before" />
         <VPNavScreenMenu class="menu" />
@@ -35,7 +35,7 @@ const isLocked = useScrollLock(inBrowser ? document.body : null)
 </template>
 
 <style scoped>
-.vpNavScreen {
+.vp-nav-screen {
   position: fixed;
   top: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 1px);
   /*rtl:ignore*/
@@ -51,28 +51,28 @@ const isLocked = useScrollLock(inBrowser ? document.body : null)
   pointer-events: auto;
 }
 
-.vpNavScreen.fade-enter-active,
-.vpNavScreen.fade-leave-active {
+.vp-nav-screen.fade-enter-active,
+.vp-nav-screen.fade-leave-active {
   transition: opacity 0.25s;
 }
 
-.vpNavScreen.fade-enter-active .container,
-.vpNavScreen.fade-leave-active .container {
+.vp-nav-screen.fade-enter-active .container,
+.vp-nav-screen.fade-leave-active .container {
   transition: transform 0.25s ease;
 }
 
-.vpNavScreen.fade-enter-from,
-.vpNavScreen.fade-leave-to {
+.vp-nav-screen.fade-enter-from,
+.vp-nav-screen.fade-leave-to {
   opacity: 0;
 }
 
-.vpNavScreen.fade-enter-from .container,
-.vpNavScreen.fade-leave-to .container {
+.vp-nav-screen.fade-enter-from .container,
+.vp-nav-screen.fade-leave-to .container {
   transform: translateY(-8px);
 }
 
 @media (min-width: 768px) {
-  .vpNavScreen {
+  .vp-nav-screen {
     display: none;
   }
 }

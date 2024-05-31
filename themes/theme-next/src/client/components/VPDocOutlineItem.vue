@@ -14,7 +14,7 @@ function onClick({ target: el }: Event): void {
 </script>
 
 <template>
-  <ul class="vpDocOutlineItem" :class="root ? 'root' : 'nested'">
+  <ul class="vp-doc-outline-item" :class="root ? 'root' : 'nested'">
     <li v-for="{ children, link, title } in headers" :key="link">
       <a class="outline-link" :href="link" :title="title" @click="onClick">{{
         title

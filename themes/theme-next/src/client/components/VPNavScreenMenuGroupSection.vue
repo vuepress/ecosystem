@@ -9,7 +9,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="vpNavScreenMenuGroupSection">
+  <div class="vp-nav-screen-menu-group-section">
     <p v-if="text" class="title">{{ text }}</p>
     <VPNavScreenMenuGroupLink
       v-for="item in items"
@@ -20,7 +20,7 @@ defineProps<{
 </template>
 
 <style scoped>
-.vpNavScreenMenuGroupSection {
+.vp-nav-screen-menu-group-section {
   display: block;
 }
 

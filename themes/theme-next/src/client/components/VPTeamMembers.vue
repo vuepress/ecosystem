@@ -16,7 +16,7 @@ const classes = computed(() => [props.size, `count-${props.members.length}`])
 </script>
 
 <template>
-  <div class="vpTeamMembers" :class="classes">
+  <div class="vp-team-members" :class="classes">
     <div class="container">
       <div v-for="member in members" :key="member.name" class="item">
         <VPTeamMembersItem :size="size" :member="member" />
@@ -26,34 +26,34 @@ const classes = computed(() => [props.size, `count-${props.members.length}`])
 </template>
 
 <style scoped>
-.vpTeamMembers.small .container {
+.vp-team-members.small .container {
   grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
 }
 
-.vpTeamMembers.small.count-1 .container {
+.vp-team-members.small.count-1 .container {
   max-width: 276px;
 }
-.vpTeamMembers.small.count-2 .container {
+.vp-team-members.small.count-2 .container {
   max-width: calc(276px * 2 + 24px);
 }
-.vpTeamMembers.small.count-3 .container {
+.vp-team-members.small.count-3 .container {
   max-width: calc(276px * 3 + 24px * 2);
 }
 
-.vpTeamMembers.medium .container {
+.vp-team-members.medium .container {
   grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
 }
 
 @media (min-width: 375px) {
-  .vpTeamMembers.medium .container {
+  .vp-team-members.medium .container {
     grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
   }
 }
 
-.vpTeamMembers.medium.count-1 .container {
+.vp-team-members.medium.count-1 .container {
   max-width: 368px;
 }
-.vpTeamMembers.medium.count-2 .container {
+.vp-team-members.medium.count-2 .container {
   max-width: calc(368px * 2 + 24px);
 }
 

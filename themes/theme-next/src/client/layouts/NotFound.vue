@@ -35,7 +35,7 @@ const theme = useThemeLocaleData()
       </template>
     </VPNav>
 
-    <div id="VPContent" class="vpContent">
+    <div id="VPContent" class="vp-content">
       <slot name="not-found">
         <div class="notFound">
           <p class="code">{{ theme.notFound?.code ?? '404' }}</p>
@@ -72,7 +72,7 @@ const theme = useThemeLocaleData()
   min-height: 100vh;
 }
 
-.vpContent {
+.vp-content {
   flex-grow: 1;
   flex-shrink: 0;
   margin: var(--vp-layout-top-height, 0px) auto 0;
@@ -80,7 +80,7 @@ const theme = useThemeLocaleData()
 }
 
 @media (min-width: 960px) {
-  .vpContent {
+  .vp-content {
     padding-top: var(--vp-nav-height);
   }
 }

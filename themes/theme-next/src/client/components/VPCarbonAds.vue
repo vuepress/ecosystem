@@ -53,11 +53,11 @@ if (carbonOptions) {
 </script>
 
 <template>
-  <div ref="container" class="vpCarbonAds" />
+  <div ref="container" class="vp-carbon-ads" />
 </template>
 
 <style scoped>
-.vpCarbonAds {
+.vp-carbon-ads {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,12 +71,12 @@ if (carbonOptions) {
   background-color: var(--vp-carbon-ads-bg-color);
 }
 
-.vpCarbonAds :deep(img) {
+.vp-carbon-ads :deep(img) {
   margin: 0 auto;
   border-radius: 6px;
 }
 
-.vpCarbonAds :deep(.carbon-text) {
+.vp-carbon-ads :deep(.carbon-text) {
   display: block;
   margin: 0 auto;
   padding-top: 12px;
@@ -84,11 +84,11 @@ if (carbonOptions) {
   transition: color 0.25s;
 }
 
-.vpCarbonAds :deep(.carbon-text:hover) {
+.vp-carbon-ads :deep(.carbon-text:hover) {
   color: var(--vp-carbon-ads-hover-text-color);
 }
 
-.vpCarbonAds :deep(.carbon-poweredby) {
+.vp-carbon-ads :deep(.carbon-poweredby) {
   display: block;
   padding-top: 6px;
   font-size: 11px;
@@ -98,15 +98,15 @@ if (carbonOptions) {
   transition: color 0.25s;
 }
 
-.vpCarbonAds :deep(.carbon-poweredby:hover) {
+.vp-carbon-ads :deep(.carbon-poweredby:hover) {
   color: var(--vp-carbon-ads-hover-poweredby-color);
 }
 
-.vpCarbonAds :deep(> div) {
+.vp-carbon-ads :deep(> div) {
   display: none;
 }
 
-.vpCarbonAds :deep(> div:first-of-type) {
+.vp-carbon-ads :deep(> div:first-of-type) {
   display: block;
 }
 </style>

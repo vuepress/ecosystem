@@ -33,7 +33,7 @@ const showFooter = computed(() => {
 </script>
 
 <template>
-  <footer v-if="showFooter" class="vpDocFooter">
+  <footer v-if="showFooter" class="vp-doc-footer">
     <slot name="doc-footer-before" />
 
     <div v-if="hasEditLink || hasLastUpdated" class="edit-info">
@@ -93,7 +93,7 @@ const showFooter = computed(() => {
 </template>
 
 <style scoped>
-.vpDocFooter {
+.vp-doc-footer {
   margin-top: 64px;
 }
 

@@ -1,27 +1,27 @@
 <template>
-  <div class="vpTeamPage">
+  <div class="vp-team-page">
     <slot />
   </div>
 </template>
 
 <style scoped>
-.vpTeamPage {
+.vp-team-page {
   margin: 96px 0;
 }
 
 @media (min-width: 768px) {
-  .vpTeamPage {
+  .vp-team-page {
     margin: 128px 0;
   }
 }
 
-.vpHome :slotted(.vpTeamPageTitle) {
+.vp-home :slotted(.vp-team-pageTitle) {
   border-top: 1px solid var(--vp-c-gutter);
   padding-top: 88px !important;
 }
 
-:slotted(.vpTeamPageSection + .vpTeamPageSection),
-:slotted(.vpTeamMembers + .vpTeamPageSection) {
+:slotted(.vp-team-pageSection + .vp-team-pageSection),
+:slotted(.vpTeamMembers + .vp-team-pageSection) {
   margin-top: 64px;
 }
 
@@ -30,12 +30,12 @@
 }
 
 @media (min-width: 768px) {
-  :slotted(.vpTeamPageTitle + .vpTeamPageSection) {
+  :slotted(.vp-team-pageTitle + .vp-team-pageSection) {
     margin-top: 16px;
   }
 
-  :slotted(.vpTeamPageSection + .vpTeamPageSection),
-  :slotted(.vpTeamMembers + .vpTeamPageSection) {
+  :slotted(.vp-team-pageSection + .vp-team-pageSection),
+  :slotted(.vpTeamMembers + .vp-team-pageSection) {
     margin-top: 96px;
   }
 }

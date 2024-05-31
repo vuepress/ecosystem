@@ -9,7 +9,7 @@ const { hasSidebar } = useSidebar()
 <template>
   <footer
     v-if="theme.footer && frontmatter.footer !== false"
-    class="vpFooter"
+    class="vp-footer"
     :class="{ 'has-sidebar': hasSidebar }"
   >
     <div class="container">
@@ -28,7 +28,7 @@ const { hasSidebar } = useSidebar()
 </template>
 
 <style scoped>
-.vpFooter {
+.vp-footer {
   position: relative;
   z-index: var(--vp-z-index-footer);
   border-top: 1px solid var(--vp-c-gutter);
@@ -36,22 +36,22 @@ const { hasSidebar } = useSidebar()
   background-color: var(--vp-c-bg);
 }
 
-.vpFooter.has-sidebar {
+.vp-footer.has-sidebar {
   display: none;
 }
 
-.vpFooter :deep(a) {
+.vp-footer :deep(a) {
   text-decoration-line: underline;
   text-underline-offset: 2px;
   transition: color 0.25s;
 }
 
-.vpFooter :deep(a:hover) {
+.vp-footer :deep(a:hover) {
   color: var(--vp-c-text-1);
 }
 
 @media (min-width: 768px) {
-  .vpFooter {
+  .vp-footer {
     padding: 32px;
   }
 }

@@ -23,7 +23,7 @@ function onBlur(): void {
 <template>
   <div
     ref="el"
-    class="vpFlyout"
+    class="vp-feature"
     @mouseenter="open = true"
     @mouseleave="open = false"
   >
@@ -53,32 +53,32 @@ function onBlur(): void {
 </template>
 
 <style scoped>
-.vpFlyout {
+.vp-feature {
   position: relative;
 }
 
-.vpFlyout:hover {
+.vp-feature:hover {
   color: var(--vp-c-brand-1);
   transition: color 0.25s;
 }
 
-.vpFlyout:hover .text {
+.vp-feature:hover .text {
   color: var(--vp-c-text-2);
 }
 
-.vpFlyout:hover .icon {
+.vp-feature:hover .icon {
   fill: var(--vp-c-text-2);
 }
 
-.vpFlyout.active .text {
+.vp-feature.active .text {
   color: var(--vp-c-brand-1);
 }
 
-.vpFlyout.active:hover .text {
+.vp-feature.active:hover .text {
   color: var(--vp-c-brand-2);
 }
 
-.vpFlyout:hover .menu,
+.vp-feature:hover .menu,
 .button[aria-expanded='true'] + .menu {
   opacity: 1;
   visibility: visible;

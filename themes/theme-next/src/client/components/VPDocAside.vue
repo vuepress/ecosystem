@@ -7,7 +7,7 @@ const { theme } = useData()
 </script>
 
 <template>
-  <div class="vpDocAside">
+  <div class="vp-doc-aside">
     <slot name="aside-top" />
 
     <slot name="aside-outline-before" />
@@ -25,7 +25,7 @@ const { theme } = useData()
 </template>
 
 <style scoped>
-.vpDocAside {
+.vp-doc-aside {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -35,12 +35,12 @@ const { theme } = useData()
   flex-grow: 1;
 }
 
-.vpDocAside :deep(.spacer + .vpDocAsideSponsors),
-.vpDocAside :deep(.spacer + .vpDocAsideCarbonAds) {
+.vp-doc-aside :deep(.spacer + .vp-doc-asideSponsors),
+.vp-doc-aside :deep(.spacer + .vp-doc-asideCarbonAds) {
   margin-top: 24px;
 }
 
-.vpDocAside :deep(.vpDocAsideSponsors + .vpDocAsideCarbonAds) {
+.vp-doc-aside :deep(.vp-doc-asideSponsors + .vp-doc-asideCarbonAds) {
   margin-top: 16px;
 }
 </style>

@@ -15,7 +15,7 @@ const VPCarbonAds = theme.value.carbonAds
 </script>
 
 <template>
-  <div class="vpDocAsideCarbonAds">
+  <div class="vp-doc-aside-carbon-ads">
     <VPCarbonAds :carbon-ads="carbonAds" />
   </div>
 </template>

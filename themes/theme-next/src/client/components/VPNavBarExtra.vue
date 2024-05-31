@@ -21,7 +21,7 @@ const hasExtraContent = computed(
 <template>
   <VPFlyout
     v-if="hasExtraContent"
-    class="vpNavBarExtra"
+    class="vp-navbar-extra"
     label="extra navigation"
   >
     <div
@@ -58,19 +58,19 @@ const hasExtraContent = computed(
 </template>
 
 <style scoped>
-.vpNavBarExtra {
+.vp-navbar-extra {
   display: none;
   margin-right: -12px;
 }
 
 @media (min-width: 768px) {
-  .vpNavBarExtra {
+  .vp-navbar-extra {
     display: block;
   }
 }
 
 @media (min-width: 1280px) {
-  .vpNavBarExtra {
+  .vp-navbar-extra {
     display: none;
   }
 }

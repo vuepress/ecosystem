@@ -12,7 +12,7 @@ const closeScreen = inject('close-screen') as () => void
 
 <template>
   <VPLink
-    class="vpNavScreenMenuLink"
+    class="vp-nav-screen-menu-link"
     :href="item.link"
     :target="item.target"
     :rel="item.rel"
@@ -22,7 +22,7 @@ const closeScreen = inject('close-screen') as () => void
 </template>
 
 <style scoped>
-.vpNavScreenMenuLink {
+.vp-nav-screen-menu-link {
   display: block;
   border-bottom: 1px solid var(--vp-c-divider);
   padding: 12px 0 11px;
@@ -35,7 +35,7 @@ const closeScreen = inject('close-screen') as () => void
     color 0.25s;
 }
 
-.vpNavScreenMenuLink:hover {
+.vp-nav-screen-menu-link:hover {
   color: var(--vp-c-brand-1);
 }
 </style>
