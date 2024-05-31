@@ -4,7 +4,7 @@ declare module '*.vue' {
   export default comp
 }
 
-declare module '*.module.scss?module' {
-  const cssVars: Record<string, string>
-  export default cssVars
+declare module '*/styles/_variables.module.scss' {
+  const cSSVariables: Record<string, string>
+  export default cSSVariables
 }

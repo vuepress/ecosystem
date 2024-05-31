@@ -1,0 +1,53 @@
+{
+  "name": "@vuepress/plugin-shiki",
+  "version": "2.0.0-rc.33",
+  "description": "VuePress plugin - shiki",
+  "keywords": [
+    "vuepress-plugin",
+    "vuepress",
+    "plugin",
+    "shiki",
+    "highlight"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/plugins/markdown/shiki.html",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/markdown/plugin-shiki"
+  },
+  "license": "MIT",
+  "author": "meteorlxy",
+  "type": "module",
+  "exports": {
+    ".": "./lib/node/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
+  },
+  "dependencies": {
+    "@shikijs/transformers": "^1.6.1",
+    "@vuepress/helper": "workspace:*",
+    "nanoid": "^5.0.7",
+    "shiki": "^1.6.1"
+  },
+  "peerDependencies": {
+    "vuepress": "2.0.0-rc.12"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.1",
+    "markdown-it": "^14.1.0"
+  }
+}

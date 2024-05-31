@@ -3,97 +3,71 @@ import type { NavbarConfig } from '@vuepress/theme-default'
 export const navbarZh: NavbarConfig = [
   {
     text: '主题',
+    prefix: '/zh/themes/',
     children: [
       {
         text: '默认主题',
-        link: '/zh/themes/default/',
+        link: 'default/',
       },
       {
         text: 'Hope 主题',
         link: 'https://theme-hope.vuejs.press/zh/',
       },
+      {
+        text: 'Plume 主题',
+        link: 'https://theme-plume.vuejs.press',
+      },
     ],
   },
   {
     text: '插件',
+    prefix: '/zh/plugins/',
     children: [
       {
         text: '常用功能',
-        children: [
-          '/zh/plugins/append-date',
-          '/zh/plugins/back-to-top',
-          '/zh/plugins/catalog',
-          '/zh/plugins/copy-code',
-          '/zh/plugins/copyright',
-          '/zh/plugins/medium-zoom',
-          '/zh/plugins/notice',
-          '/zh/plugins/nprogress',
-          '/zh/plugins/photo-swipe',
-          '/zh/plugins/redirect',
-          '/zh/plugins/register-components',
-          '/zh/plugins/watermark',
-        ],
+        link: 'features/',
       },
       {
         text: 'Markdown',
-        children: [
-          '/zh/plugins/markdown-container',
-          '/zh/plugins/markdown-image',
-          '/zh/plugins/links-check',
-        ],
+        link: 'markdown/',
       },
       {
         text: '搜索',
-        children: ['/zh/plugins/docsearch', '/zh/plugins/search'],
+        link: 'search/',
       },
       {
         text: '博客',
-        children: [
-          '/zh/plugins/blog/',
-          '/zh/plugins/comment/',
-          '/zh/plugins/feed/',
-        ],
+        link: 'blog/',
       },
       {
         text: 'PWA',
-        children: ['/zh/plugins/pwa/', '/zh/plugins/remove-pwa'],
+        link: 'pwa/',
+      },
+      {
+        text: '统计分析',
+        link: 'analytics/',
       },
       {
         text: '搜索引擎增强',
-        children: [
-          '/zh/plugins/baidu-analytics',
-          '/zh/plugins/google-analytics',
-          '/zh/plugins/google-tag-manager',
-          '/zh/plugins/seo/',
-          '/zh/plugins/sitemap/',
-          '/zh/plugins/umami-analytics',
-        ],
-      },
-      {
-        text: '语法高亮',
-        children: ['/zh/plugins/prismjs', '/zh/plugins/shiki'],
+        link: 'seo/',
       },
       {
         text: '主题开发',
-        children: [
-          '/zh/plugins/active-header-links',
-          '/zh/plugins/git',
-          '/zh/plugins/palette',
-          '/zh/plugins/reading-time',
-          '/zh/plugins/rtl',
-          '/zh/plugins/sass-palette/',
-          '/zh/plugins/theme-data',
-          '/zh/plugins/toc',
-        ],
+        link: 'development/',
+      },
+      {
+        text: '工具',
+        link: 'tools/',
       },
     ],
   },
   {
     text: '工具',
+    prefix: '/zh/tools/',
     children: [
       {
         text: 'helper',
-        link: '/zh/tools/helper/',
+        link: 'helper/',
       },
     ],
   },

@@ -312,7 +312,7 @@ Frontmatter in this section will only take effect in normal pages.
 
 ### prev
 
-- Type: `NavLink | string`
+- Type: `AutoLinkConfig | string`
 
 - Details:
 
@@ -320,21 +320,21 @@ Frontmatter in this section will only take effect in normal pages.
 
   If you don't set this frontmatter, the link will be inferred from the sidebar config.
 
-  To configure the prev link manually, you can set this frontmatter to a `NavLink` object or a string:
+  To configure the prev link manually, you can set this frontmatter to a `AutoLinkConfig` object or a string:
 
-  - A `NavLink` object should have a `text` field and a `link` field.
-  - A string should be the path to the target page file. It will be converted to a `NavLink` object, whose `text` is the page title, and `link` is the page route path.
+  - A `AutoLinkConfig` object should have a `text` field and a `link` field.
+  - A string should be the path to the target page file. It will be converted to a `AutoLinkConfig` object, whose `text` is the page title, and `link` is the page route path.
 
 - Example:
 
 ```md
 ---
-# NavLink
+# AutoLinkConfig
 prev:
   text: Get Started
   link: /guide/getting-started.html
 
-# NavLink - external url
+# AutoLinkConfig - external url
 prev:
   text: GitHub
   link: https://github.com
@@ -349,7 +349,7 @@ prev: ../../guide/getting-started.md
 
 ### next
 
-- Type: `NavLink | string`
+- Type: `AutoLinkConfig | string`
 
 - Details:
 

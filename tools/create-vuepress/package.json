@@ -1,6 +1,6 @@
 {
   "name": "create-vuepress",
-  "version": "2.0.0-rc.28",
+  "version": "2.0.0-rc.31",
   "description": "VuePress template helper",
   "keywords": [
     "vuepress",
@@ -42,8 +42,8 @@
   },
   "dependencies": {
     "cac": "^6.7.14",
-    "execa": "^9.0.2",
-    "inquirer": "^9.2.20"
+    "execa": "^9.1.0",
+    "inquirer": "^9.2.22"
   },
   "devDependencies": {
     "@types/inquirer": "9.0.7"

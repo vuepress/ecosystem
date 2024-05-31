@@ -62,7 +62,9 @@ const onTouchEnd = (e): void => {
 // external-link-icon
 const enableExternalLinkIcon = computed(
   () =>
-    frontmatter.value.externalLinkIcon ?? themeLocale.externalLinkIcon ?? true,
+    frontmatter.value.externalLinkIcon ??
+    themeLocale.value.externalLinkIcon ??
+    true,
 )
 
 // classes

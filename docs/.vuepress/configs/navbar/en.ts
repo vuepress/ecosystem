@@ -3,93 +3,71 @@ import type { NavbarConfig } from '@vuepress/theme-default'
 export const navbarEn: NavbarConfig = [
   {
     text: 'Themes',
+    prefix: '/themes/',
     children: [
       {
         text: 'Default Theme',
-        link: '/themes/default/',
+        link: 'default/',
       },
       {
         text: 'Hope Theme',
         link: 'https://theme-hope.vuejs.press',
       },
+      {
+        text: 'Plume Theme',
+        link: 'https://theme-plume.vuejs.press',
+      },
     ],
   },
   {
     text: 'Plugins',
+    prefix: '/plugins/',
     children: [
       {
         text: 'Common Features',
-        children: [
-          '/plugins/append-date',
-          '/plugins/back-to-top',
-          '/plugins/catalog',
-          '/plugins/copy-code',
-          '/plugins/copyright',
-          '/plugins/medium-zoom',
-          '/plugins/notice',
-          '/plugins/nprogress',
-          '/plugins/photo-swipe',
-          '/plugins/redirect',
-          '/plugins/register-components',
-          '/plugins/watermark',
-        ],
+        link: 'features/',
       },
       {
         text: 'Markdown',
-        children: [
-          '/plugins/markdown-container',
-          '/plugins/markdown-image',
-          '/plugins/links-check',
-        ],
+        link: 'markdown/',
       },
       {
         text: 'Search',
-        children: ['/plugins/docsearch', '/plugins/search'],
+        link: 'search/',
       },
       {
         text: 'Blogging',
-        children: ['/plugins/blog/', '/plugins/comment/', '/plugins/feed/'],
+        link: 'blog/',
       },
       {
         text: 'PWA',
-        children: ['/plugins/pwa/', '/plugins/remove-pwa'],
+        link: 'pwa/',
+      },
+      {
+        text: 'Analytics',
+        link: 'analytics/',
       },
       {
         text: 'SEO',
-        children: [
-          '/plugins/baidu-analytics',
-          '/plugins/google-analytics',
-          '/plugins/google-tag-manager',
-          '/plugins/seo/',
-          '/plugins/sitemap/',
-          '/plugins/umami-analytics',
-        ],
-      },
-      {
-        text: 'Syntax Highlighting',
-        children: ['/plugins/prismjs', '/plugins/shiki'],
+        link: 'seo/',
       },
       {
         text: 'Theme Development',
-        children: [
-          '/plugins/active-header-links',
-          '/plugins/git',
-          '/plugins/palette',
-          '/plugins/reading-time',
-          '/plugins/rtl',
-          '/plugins/sass-palette/',
-          '/plugins/theme-data',
-          '/plugins/toc',
-        ],
+        link: 'development/',
+      },
+      {
+        text: 'Tools',
+        link: 'tools/',
       },
     ],
   },
   {
     text: 'Tools',
+    prefix: '/tools/',
     children: [
       {
         text: 'helper',
-        link: '/tools/helper/',
+        link: 'helper/',
       },
     ],
   },

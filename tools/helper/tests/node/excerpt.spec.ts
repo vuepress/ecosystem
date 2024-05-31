@@ -190,27 +190,4 @@ describe('getPageExcerpt', async () => {
       })
     })
   })
-
-  describe('keepFenceDom', () => {
-    it('remove highlight lines and line numbers', () => {
-      getExcerptData({ length: Infinity }).forEach(({ excerpt, path }) => {
-        if (path === '/markdown.html') {
-          expect(excerpt).not.toContain('line-numbers')
-          expect(excerpt).not.toContain('highlight-line')
-        }
-      })
-    })
-
-    it('preserve highlight lines and line numbers', () => {
-      getExcerptData({
-        length: Infinity,
-        keepFenceDom: true,
-      }).forEach(({ excerpt, path }) => {
-        if (path === '/markdown.html') {
-          expect(excerpt).toContain('line-numbers')
-          expect(excerpt).toContain('highlight-line')
-        }
-      })
-    })
-  })
 })
