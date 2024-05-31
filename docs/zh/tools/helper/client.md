@@ -57,3 +57,98 @@ locale.value // '标题'
 ```
 
 :::
+
+## 工具
+
+### getHeaders
+
+获取当前页面指定的 标题列表。
+
+```ts
+export const getHeaders: (options: GetHeadersOptions) => MenuItem[]
+```
+
+**参数:**
+
+```ts
+export interface GetHeadersOptions {
+  /**
+   * 页面标题选择器
+   *
+   * @default '#vp-content :where(h1,h2,h3,h4,h5,h6)'
+   */
+  selector?: string
+  /**
+   * 忽略标题内的特定元素选择器
+   *
+   * @default []
+   */
+  ignore?: string[]
+  /**
+   * 指定获取的标题层级
+   *
+   * - `false`: 不返回标题列表
+   * - `number`: 只获取指定的单个层级的标题。
+   * - `[number, number]: 第一个参数为最小层级，第二个参数为最大层级。
+   * - `deep`: 等同于 `[2, 6]`, 表示获取从 `<h2>` 到 `<h6>` 的所有标题。
+   *
+   * @default 2
+   */
+  levels?: HeaderLevels
+}
+```
+
+**返回结果:**
+
+```ts
+export interface Header {
+  /**
+   * 当前标题的层级
+   *
+   * `1` to `6` for `<h1>` to `<h6>`
+   */
+  level: number
+  /**
+   * 当前标题的内容
+   */
+  title: string
+  /**
+   * 标题的 标识
+   *
+   * 这通常是标题元素的 `id` 属性值
+   */
+  slug: string
+  /**
+   * 标题的链接
+   *
+   * 通常使用`#${slug}`作为锚点哈希
+   */
+  link: string
+  /**
+   * 标题的子标题列表
+   */
+  children: Header[]
+}
+
+export type HeaderLevels = false | number | [number, number] | 'deep'
+
+export type MenuItem = Omit<Header, 'slug' | 'children'> & {
+  element: HTMLHeadElement
+  children?: MenuItem[]
+}
+```
+
+::: details Examples
+
+```ts
+onMounted(() => {
+  const headers = getHeaders({
+    selector: '#vp-content :where(h1,h2,h3,h4,h5,h6)',
+    levels: [2, 3], // 只有 h2 和 h3
+    ignore: ['.badge'], // 忽略标题内的 <Badge />
+  })
+  console.log(headers)
+})
+```
+
+:::

@@ -76,6 +76,7 @@ export function getHeaders({
         element: el as HTMLHeadElement,
         title: serializeHeader(el, ignore),
         link: '#' + el.id,
+        slug: el.id,
         level,
       }
     })
