@@ -12,6 +12,7 @@ import { isPlainObject, isString } from 'vuepress/shared'
 import type {
   DefaultThemeNormalPageFrontmatter,
   SidebarArrayOptions,
+  SidebarItemOptions,
   SidebarObjectOptions,
   SidebarOptions,
 } from '../../shared/index.js'
@@ -128,7 +129,7 @@ export const resolveSidebarHeaderItems = (
     : []
 
 /**
- * Resolve sidebar items if the config is `auto`
+ * Resolve current page and its header to sidebar items if the config is `heading`
  */
 export const resolveAutoSidebarItems = (
   sidebarDepth: number,
@@ -151,10 +152,10 @@ export const resolveArraySidebarItems = (
   prefix = '',
 ): SidebarItem[] => {
   const handleChildItem = (
-    item: SidebarItem | string,
+    item: SidebarItemOptions,
     pathPrefix: string,
   ): SidebarItem => {
-    const childItem: SidebarItem = isString(item)
+    const childItem: SidebarItemOptions = isString(item)
       ? getAutoLink(resolvePrefix(pathPrefix, item))
       : isString(item.link)
         ? {

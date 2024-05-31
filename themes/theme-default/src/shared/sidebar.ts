@@ -32,7 +32,7 @@ export type SidebarItemOptions =
   | SidebarGroupOptions
   | string
 
-export type SidebarArrayOptions = SidebarLinkOptions[]
+export type SidebarArrayOptions = SidebarItemOptions[]
 
 export type SidebarObjectOptions = Record<
   string,
