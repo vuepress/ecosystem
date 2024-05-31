@@ -47,7 +47,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <ul v-if="sidebarItems.length" class="sidebar-items">
+  <ul v-if="sidebarItems.length" class="vp-sidebar-items">
     <VPSidebarItem
       v-for="item in sidebarItems"
       :key="`${item.text}${item.link}`"
@@ -55,3 +55,15 @@ onMounted(() => {
     />
   </ul>
 </template>
+
+<style lang="scss">
+@import '../styles/variables';
+
+.vp-sidebar-items {
+  padding: 1.5rem 0;
+
+  @media (max-width: $MQMobile) {
+    padding: 1rem 0;
+  }
+}
+</style>

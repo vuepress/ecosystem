@@ -28,8 +28,8 @@ const collapsible = computed(
 )
 const isActive = computed(() => isActiveLinkItem(item.value, route))
 const itemClass = computed(() => ({
-  'sidebar-item': true,
-  'sidebar-heading': depth.value === 0,
+  'vp-sidebar-item': true,
+  'vp-sidebar-heading': depth.value === 0,
   'active': isActive.value,
   'collapsible': collapsible.value,
 }))
@@ -76,7 +76,7 @@ onBeforeUnmount(() => {
     </p>
 
     <VPDropdownTransition v-if="'children' in item && item.children.length">
-      <ul v-show="isOpen" class="sidebar-item-children">
+      <ul v-show="isOpen" class="vp-sidebar-children">
         <VPSidebarItem
           v-for="child in item.children"
           :key="`${depth}${child.text}${child.link}`"
@@ -87,3 +87,81 @@ onBeforeUnmount(() => {
     </VPDropdownTransition>
   </li>
 </template>
+
+<style lang="scss">
+@use '../styles/mixins';
+@import '../styles/variables';
+
+.vp-sidebar-item {
+  cursor: default;
+  border-left: 0.25rem solid transparent;
+  color: var(--c-text);
+
+  &:focus-visible {
+    outline-width: 1px;
+    outline-offset: -1px;
+  }
+
+  &.vp-sidebar-heading {
+    transition: color 0.15s ease;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 0.35rem 1.5rem 0.35rem 1.25rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+
+    + .sidebar-children {
+      @include mixins.dropdown_wrapper;
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  &.collapsible {
+    cursor: pointer;
+  }
+
+  &:not(.vp-sidebar-heading) {
+    font-size: 1em;
+    font-weight: 400;
+    display: inline-block;
+    margin: 0;
+    padding: 0.35rem 1rem 0.35rem 2rem;
+    line-height: 1.4;
+    width: 100%;
+    box-sizing: border-box;
+
+    & + .vp-sidebar-children {
+      padding-left: 1rem;
+      font-size: 0.95em;
+    }
+
+    .vp-sidebar-children .vp-sidebar-children & {
+      padding: 0.25rem 1rem 0.25rem 1.75rem;
+
+      &.active {
+        font-weight: 500;
+        border-left-color: transparent;
+      }
+    }
+
+    a.vp-sidebar-heading + .vp-sidebar-children &.active {
+      border-left-color: transparent;
+    }
+  }
+
+  &.active:not(p.vp-sidebar-heading) {
+    font-weight: 600;
+    color: var(--c-text-accent);
+    border-left-color: var(--c-text-accent);
+  }
+}
+
+a.vp-sidebar-item {
+  cursor: pointer;
+
+  &:hover {
+    color: var(--c-text-accent);
+  }
+}
+</style>
