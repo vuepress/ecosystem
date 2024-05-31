@@ -46,7 +46,7 @@ export const setupSidebarItems = (): void => {
   const route = useRoute()
   const routeLocale = useRouteLocale()
 
-  const sidebarConfig = computed<SidebarOptions>(() =>
+  const sidebarConfig = computed<false | SidebarOptions>(() =>
     frontmatter.value.home
       ? false
       : frontmatter.value.sidebar ?? themeLocale.value.sidebar ?? 'heading',
