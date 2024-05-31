@@ -4,12 +4,12 @@ import { useToggle } from '@vueuse/core'
 import { computed, nextTick, onBeforeUnmount, toRefs } from 'vue'
 import type { PropType } from 'vue'
 import { AutoLink, useRoute, useRouter } from 'vuepress/client'
-import type { ResolvedSidebarItem } from '../../shared/index.js'
-import { isActiveSidebarItem } from '../utils/index.js'
+import type { SidebarItem } from '../typings.js'
+import { isActiveLinkItem } from '../utils/index.js'
 
 const props = defineProps({
   item: {
-    type: Object as PropType<ResolvedSidebarItem>,
+    type: Object as PropType<SidebarItem>,
     required: true,
   },
   depth: {
@@ -23,20 +23,23 @@ const { item, depth } = toRefs(props)
 const route = useRoute()
 const router = useRouter()
 
-const isActive = computed(() => isActiveSidebarItem(item.value, route))
+const collapsible = computed(
+  () => 'collapsible' in item.value && item.value.collapsible,
+)
+const isActive = computed(() => isActiveLinkItem(item.value, route))
 const itemClass = computed(() => ({
   'sidebar-item': true,
   'sidebar-heading': depth.value === 0,
   'active': isActive.value,
-  'collapsible': item.value.collapsible,
+  'collapsible': collapsible.value,
 }))
 
 const isOpenDefault = computed(() =>
-  item.value.collapsible ? isActive.value : true,
+  collapsible.value ? isActive.value : true,
 )
 const [isOpen, toggleIsOpen] = useToggle(isOpenDefault.value)
 const onClick = (e: Event): void => {
-  if (item.value.collapsible) {
+  if (collapsible.value) {
     e.preventDefault()
     // toggle open status on click
     toggleIsOpen()
@@ -66,13 +69,13 @@ onBeforeUnmount(() => {
     >
       {{ item.text }}
       <span
-        v-if="item.collapsible"
+        v-if="collapsible"
         class="arrow"
         :class="isOpen ? 'down' : 'right'"
       />
     </p>
 
-    <VPDropdownTransition v-if="item.children?.length">
+    <VPDropdownTransition v-if="'children' in item && item.children.length">
       <ul v-show="isOpen" class="sidebar-item-children">
         <VPSidebarItem
           v-for="child in item.children"

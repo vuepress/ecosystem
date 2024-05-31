@@ -3,11 +3,13 @@ import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
 import { computed, ref, toRefs, watch } from 'vue'
 import type { PropType } from 'vue'
 import { AutoLink, useRoute } from 'vuepress/client'
-import type { NavbarItem, ResolvedNavbarItem } from '../../shared/index.js'
+import type { AutoLinkOptions, NavGroup } from '../../shared/index.js'
 
 const props = defineProps({
   item: {
-    type: Object as PropType<Exclude<ResolvedNavbarItem, NavbarItem>>,
+    type: Object as PropType<
+      NavGroup<AutoLinkOptions | NavGroup<AutoLinkOptions>>
+    >,
     required: true,
   },
 })
@@ -77,7 +79,7 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
           :key="child.text"
           class="navbar-dropdown-item"
         >
-          <template v-if="child.children">
+          <template v-if="'children' in child">
             <h4 class="navbar-dropdown-subtitle">
               <AutoLink
                 v-if="child.link"
