@@ -1,5 +1,5 @@
 <template>
-  <div class="theme-default-content">
+  <div id="vp-content">
     <Content />
   </div>
 </template>

@@ -14,7 +14,7 @@ defineSlots<{
   <main class="page">
     <slot name="top" />
 
-    <div class="theme-default-content">
+    <div id="vp-content">
       <slot name="content-top" />
 
       <Content />
