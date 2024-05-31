@@ -56,7 +56,7 @@ const NavbarBrandLogo: FunctionalComponent = () => {
     <span
       v-if="navbarBrandTitle"
       class="vp-site-name"
-      :class="{ 'can-hide': navbarBrandLogo }"
+      :class="{ 'vp-hide-mobile': navbarBrandLogo }"
       :aria-hidden="navBarLogoAltMatchesTitle"
     >
       {{ navbarBrandTitle }}
