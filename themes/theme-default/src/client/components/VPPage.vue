@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import PageMeta from '@theme/PageMeta.vue'
-import PageNav from '@theme/PageNav.vue'
+import VPPageMeta from '@theme/VPPageMeta.vue'
+import VPPageNav from '@theme/VPPageNav.vue'
 
 defineSlots<{
   'top'?: (props: Record<never, never>) => any
@@ -22,9 +22,9 @@ defineSlots<{
       <slot name="content-bottom" />
     </div>
 
-    <PageMeta />
+    <VPPageMeta />
 
-    <PageNav />
+    <VPPageNav />
 
     <slot name="bottom" />
   </main>

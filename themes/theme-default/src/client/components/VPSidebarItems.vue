@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SidebarItem from '@theme/SidebarItem.vue'
+import VPSidebarItem from '@theme/VPSidebarItem.vue'
 import { onMounted, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
 import { useSidebarItems } from '../composables/index.js'
@@ -48,7 +48,7 @@ onMounted(() => {
 
 <template>
   <ul v-if="sidebarItems.length" class="sidebar-items">
-    <SidebarItem
+    <VPSidebarItem
       v-for="item in sidebarItems"
       :key="`${item.text}${item.link}`"
       :item="item"

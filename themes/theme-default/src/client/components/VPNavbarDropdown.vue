@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DropdownTransition from '@theme/DropdownTransition.vue'
+import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
 import { computed, ref, toRefs, watch } from 'vue'
 import type { PropType } from 'vue'
 import { AutoLink, useRoute } from 'vuepress/client'
@@ -70,7 +70,7 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
       <span class="arrow" :class="open ? 'down' : 'right'" />
     </button>
 
-    <DropdownTransition>
+    <VPDropdownTransition>
       <ul v-show="open" class="navbar-dropdown">
         <li
           v-for="child in item.children"
@@ -120,6 +120,6 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
           </template>
         </li>
       </ul>
-    </DropdownTransition>
+    </VPDropdownTransition>
   </div>
 </template>

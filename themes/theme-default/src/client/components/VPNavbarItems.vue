@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NavbarDropdown from '@theme/NavbarDropdown.vue'
+import VPNavbarDropdown from '@theme/VPNavbarDropdown.vue'
 import { computed, ref } from 'vue'
 import { AutoLink } from 'vuepress/client'
 import {
@@ -40,7 +40,7 @@ useUpdateDeviceStatus(
 <template>
   <nav v-if="navbarLinks.length" class="navbar-items" :aria-label="navbarLabel">
     <div v-for="item in navbarLinks" :key="item.text" class="navbar-item">
-      <NavbarDropdown
+      <VPNavbarDropdown
         v-if="'children' in item"
         :class="{ mobile: isMobile }"
         :item="item"

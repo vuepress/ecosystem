@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DropdownTransition from '@theme/DropdownTransition.vue'
+import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
 import { useToggle } from '@vueuse/core'
 import { computed, nextTick, onBeforeUnmount, toRefs } from 'vue'
 import type { PropType } from 'vue'
@@ -72,15 +72,15 @@ onBeforeUnmount(() => {
       />
     </p>
 
-    <DropdownTransition v-if="item.children?.length">
+    <VPDropdownTransition v-if="item.children?.length">
       <ul v-show="isOpen" class="sidebar-item-children">
-        <SidebarItem
+        <VPSidebarItem
           v-for="child in item.children"
           :key="`${depth}${child.text}${child.link}`"
           :item="child"
           :depth="depth + 1"
         />
       </ul>
-    </DropdownTransition>
+    </VPDropdownTransition>
   </li>
 </template>

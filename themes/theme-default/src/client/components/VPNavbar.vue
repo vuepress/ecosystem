@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import NavbarBrand from '@theme/NavbarBrand.vue'
-import NavbarItems from '@theme/NavbarItems.vue'
-import ToggleColorModeButton from '@theme/ToggleColorModeButton.vue'
-import ToggleSidebarButton from '@theme/ToggleSidebarButton.vue'
+import VPNavbarBrand from '@theme/VPNavbarBrand.vue'
+import VPNavbarItems from '@theme/VPNavbarItems.vue'
+import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'
+import VPToggleSidebarButton from '@theme/VPToggleSidebarButton.vue'
 import { computed, ref } from 'vue'
 import {
   DeviceType,
@@ -63,18 +63,18 @@ useUpdateDeviceStatus(
 
 <template>
   <header ref="navbar" class="navbar">
-    <ToggleSidebarButton @toggle="$emit('toggle-sidebar')" />
+    <VPToggleSidebarButton @toggle="$emit('toggle-sidebar')" />
 
     <span ref="navbarBrand">
-      <NavbarBrand />
+      <VPNavbarBrand />
     </span>
 
     <div class="navbar-items-wrapper" :style="linksWrapperStyle">
       <slot name="before" />
-      <NavbarItems class="can-hide" />
+      <VPNavbarItems class="can-hide" />
       <slot name="after" />
-      <ToggleColorModeButton v-if="themeLocale.colorModeSwitch" />
-      <NavbarSearch />
+      <VPToggleColorModeButton v-if="themeLocale.colorModeSwitch" />
+      <VPSearch />
     </div>
   </header>
 </template>

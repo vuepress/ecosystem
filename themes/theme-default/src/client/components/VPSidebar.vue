@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import NavbarItems from '@theme/NavbarItems.vue'
-import SidebarItems from '@theme/SidebarItems.vue'
+import VPNavbarItems from '@theme/VPNavbarItems.vue'
+import VPSidebarItems from '@theme/VPSidebarItems.vue'
 
 defineSlots<{
   top?: (props: Record<never, never>) => any
@@ -10,9 +10,9 @@ defineSlots<{
 
 <template>
   <aside class="sidebar">
-    <NavbarItems />
+    <VPNavbarItems />
     <slot name="top" />
-    <SidebarItems />
+    <VPSidebarItems />
     <slot name="bottom" />
   </aside>
 </template>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Home from '@theme/Home.vue'
-import Navbar from '@theme/Navbar.vue'
-import Page from '@theme/Page.vue'
-import Sidebar from '@theme/Sidebar.vue'
+import VPHome from '@theme/VPHome.vue'
+import VPNavbar from '@theme/VPNavbar.vue'
+import VPPage from '@theme/VPPage.vue'
+import VPSidebar from '@theme/VPSidebar.vue'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { usePageData, usePageFrontmatter, useRouter } from 'vuepress/client'
 import type { DefaultThemePageFrontmatter } from '../../shared/index.js'
@@ -104,31 +104,31 @@ const onBeforeLeave = scrollPromise.pending
     @touchend="onTouchEnd"
   >
     <slot name="navbar">
-      <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar">
+      <VPNavbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar">
         <template #before>
           <slot name="navbar-before" />
         </template>
         <template #after>
           <slot name="navbar-after" />
         </template>
-      </Navbar>
+      </VPNavbar>
     </slot>
 
     <div class="sidebar-mask" @click="toggleSidebar(false)" />
 
     <slot name="sidebar">
-      <Sidebar>
+      <VPSidebar>
         <template #top>
           <slot name="sidebar-top" />
         </template>
         <template #bottom>
           <slot name="sidebar-bottom" />
         </template>
-      </Sidebar>
+      </VPSidebar>
     </slot>
 
     <slot name="page">
-      <Home v-if="frontmatter.home" />
+      <VPHome v-if="frontmatter.home" />
 
       <Transition
         v-else
@@ -137,7 +137,7 @@ const onBeforeLeave = scrollPromise.pending
         @before-enter="onBeforeEnter"
         @before-leave="onBeforeLeave"
       >
-        <Page :key="page.path">
+        <VPPage :key="page.path">
           <template #top>
             <slot name="page-top" />
           </template>
@@ -150,7 +150,7 @@ const onBeforeLeave = scrollPromise.pending
           <template #bottom>
             <slot name="page-bottom" />
           </template>
-        </Page>
+        </VPPage>
       </Transition>
     </slot>
   </div>
