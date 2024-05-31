@@ -114,7 +114,7 @@ const onBeforeLeave = scrollPromise.pending
       </VPNavbar>
     </slot>
 
-    <div class="sidebar-mask" @click="toggleSidebar(false)" />
+    <div class="vp-sidebar-mask" @click="toggleSidebar(false)" />
 
     <slot name="sidebar">
       <VPSidebar>
