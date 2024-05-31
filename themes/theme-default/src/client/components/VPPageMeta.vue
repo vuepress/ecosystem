@@ -141,7 +141,7 @@ const contributors = useContributors()
 
 <style lang="scss">
 @use '../styles/mixins';
-@import '../styles/_variables';
+@import '../styles/variables';
 
 .vp-page-meta {
   @include mixins.content_wrapper;

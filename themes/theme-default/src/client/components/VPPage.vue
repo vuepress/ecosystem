@@ -11,7 +11,7 @@ defineSlots<{
 </script>
 
 <template>
-  <main class="page">
+  <main class="vp-page">
     <slot name="top" />
 
     <div class="theme-default-content">
@@ -29,3 +29,18 @@ defineSlots<{
     <slot name="bottom" />
   </main>
 </template>
+
+<style lang="scss">
+@use '../styles/mixins';
+
+.vp-page {
+  padding-bottom: 2rem;
+  display: block;
+
+  .theme-default-content {
+    @include mixins.content_wrapper;
+
+    padding-top: 0;
+  }
+}
+</style>
