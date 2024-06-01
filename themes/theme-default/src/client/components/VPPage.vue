@@ -37,11 +37,13 @@ defineSlots<{
 
 .vp-page {
   display: block;
+
   // leave space for navbar
   padding-top: var(--navbar-height);
+  padding-bottom: 2rem;
+
   // leave space for sidebar
   padding-left: var(--sidebar-width);
-  padding-bottom: 2rem;
 
   // narrow desktop / iPad
   @media (max-width: $MQNarrow) {

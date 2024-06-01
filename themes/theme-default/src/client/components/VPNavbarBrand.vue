@@ -68,26 +68,29 @@ const NavbarBrandLogo: FunctionalComponent = () => {
 @import '../styles/variables';
 
 .vp-site-logo {
+  vertical-align: top;
   height: var(--navbar-line-height);
   margin-right: var(--navbar-padding-v);
-  vertical-align: top;
 }
 
 .vp-site-name {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--c-text);
   position: relative;
+  color: var(--c-text);
+  font-weight: 600;
+  font-size: 1.3rem;
 
   @media screen and (max-width: $MQMobile) {
     display: block;
+
+    overflow: hidden;
+
     // 5.5rem for navbar padding-inline
     // 4.5rem for ColorModeSwitch and VPSearch
     // 1rem for gap
     width: calc(100vw - 11rem);
-    overflow: hidden;
-    white-space: nowrap;
+
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 </style>

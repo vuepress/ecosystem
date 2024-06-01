@@ -26,15 +26,15 @@ const themeLocale = useThemeLocaleData()
 <style lang="scss">
 @import '../styles/variables';
 
-/**
- * toggle sidebar button
- */
 .vp-toggle-sidebar-button {
   position: absolute;
   top: 0.6rem;
   left: 1rem;
+
   display: none;
+
   padding: 0.6rem;
+
   cursor: pointer;
 
   @media screen and (max-width: $MQMobile) {
@@ -44,18 +44,23 @@ const themeLocale = useThemeLocaleData()
   .icon {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+
     width: 1.25rem;
     height: 1.25rem;
+
     cursor: inherit;
 
     span {
       display: inline-block;
+
       width: 100%;
       height: 2px;
       border-radius: 2px;
+
       background-color: var(--c-text);
+
       transition: transform var(--t-transform);
 
       &:nth-child(2) {

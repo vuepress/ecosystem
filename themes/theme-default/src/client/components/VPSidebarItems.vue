@@ -69,8 +69,8 @@ onMounted(() => {
   }
 
   ul {
-    padding: 0;
     margin: 0;
+    padding: 0;
     list-style-type: none;
   }
 

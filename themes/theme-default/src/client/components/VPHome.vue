@@ -20,19 +20,19 @@ import { Content } from 'vuepress/client'
 @import '../styles//variables';
 
 .vp-home {
-  padding: var(--navbar-height) 2rem 0;
-  max-width: var(--homepage-width);
-  margin: 0px auto;
   display: block;
+  max-width: var(--homepage-width);
+  margin: 0 auto;
+  padding: var(--navbar-height) 2rem 0;
 
   @media (max-width: $MQMobileNarrow) {
-    padding-left: 1.5rem;
     padding-right: 1.5rem;
+    padding-left: 1.5rem;
   }
 
   .theme-default-content {
-    padding: 0;
     margin: 0;
+    padding: 0;
   }
 }
 </style>

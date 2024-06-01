@@ -88,19 +88,24 @@ useUpdateDeviceStatus(
   );
 
   position: fixed;
-  z-index: 20;
   top: 0;
-  left: 0;
   right: 0;
-  height: var(--navbar-height);
+  left: 0;
+  z-index: 20;
+
   box-sizing: border-box;
+
+  height: var(--navbar-height);
+  padding: var(--navbar-padding-v) var(--navbar-padding-h);
   border-bottom: 1px solid var(--c-border);
+
   background-color: var(--c-bg-navbar);
+
+  line-height: var(--navbar-line-height);
+
   transition:
     background-color var(--t-color),
     border-color var(--t-color);
-  padding: var(--navbar-padding-v) var(--navbar-padding-h);
-  line-height: var(--navbar-line-height);
 
   @media screen and (max-width: $MQMobile) {
     padding-left: 4rem;
@@ -108,14 +113,18 @@ useUpdateDeviceStatus(
 }
 
 .vp-navbar-items-wrapper {
-  display: flex;
   position: absolute;
-  box-sizing: border-box;
   top: var(--navbar-padding-v);
   right: var(--navbar-padding-h);
+
+  display: flex;
+
+  box-sizing: border-box;
+
   height: var(--navbar-line-height);
   padding-left: var(--navbar-padding-h);
-  white-space: nowrap;
+
   font-size: 0.9rem;
+  white-space: nowrap;
 }
 </style>

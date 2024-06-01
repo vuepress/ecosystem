@@ -66,8 +66,8 @@ useUpdateDeviceStatus(
 
   a {
     display: inline-block;
-    line-height: 1.4rem;
     color: inherit;
+    line-height: 1.4rem;
 
     &:hover,
     &.route-link-active {

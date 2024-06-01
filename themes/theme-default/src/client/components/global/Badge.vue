@@ -34,14 +34,18 @@ defineSlots<{
 <style lang="scss">
 .vp-badge {
   display: inline-block;
-  font-size: 14px;
-  font-weight: 600;
-  height: 18px;
-  line-height: 18px;
-  border-radius: 3px;
-  padding: 0 6px;
-  color: var(--c-bg);
   vertical-align: top;
+
+  height: 18px;
+  padding: 0 6px;
+  border-radius: 3px;
+
+  color: var(--c-bg);
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+
   transition:
     color var(--t-color),
     background-color var(--t-color);

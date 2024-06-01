@@ -21,15 +21,16 @@ const features = computed(() => frontmatter.value.features ?? [])
 @import '../styles/variables';
 
 .vp-features {
-  border-top: 1px solid var(--c-border);
-  transition: border-color var(--t-color);
-  padding: 1.2rem 0;
-  margin-top: 2.5rem;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  align-content: stretch;
-  justify-content: space-between;
+  place-content: stretch space-between;
+
+  margin-top: 2.5rem;
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--c-border);
+
+  transition: border-color var(--t-color);
 
   @media (max-width: $MQMobile) {
     flex-direction: column;
@@ -47,11 +48,13 @@ const features = computed(() => frontmatter.value.features ?? [])
   }
 
   h2 {
-    font-size: 1.4rem;
-    font-weight: 500;
-    border-bottom: none;
     padding-bottom: 0;
+    border-bottom: none;
+
     color: var(--c-text-light);
+
+    font-weight: 500;
+    font-size: 1.4rem;
 
     @media (max-width: $MQMobileNarrow) {
       font-size: 1.25rem;

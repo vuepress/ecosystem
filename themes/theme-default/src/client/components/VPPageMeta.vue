@@ -70,7 +70,8 @@ const contributors = useContributors()
 
   @media print {
     margin: 0 !important;
-    padding-inline: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   @media (max-width: $MQMobile) {
@@ -101,7 +102,7 @@ const contributors = useContributors()
   .edit-link {
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
-    margin-inline-end: 0.5rem;
+    margin-right: 0.5rem;
     font-size: 14px;
 
     @media print {
@@ -114,7 +115,7 @@ const contributors = useContributors()
 
       width: 1em;
       height: 1em;
-      margin-inline-end: 0.25em;
+      margin-right: 0.25em;
     }
   }
 

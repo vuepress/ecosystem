@@ -23,16 +23,16 @@ const toggleColorMode = (): void => {
 </template>
 
 <style lang="scss">
-/**
- * toggle color mode button
- */
 .vp-toggle-color-mode-button {
   display: flex;
+
   margin: auto;
   margin-left: 1rem;
   border: 0;
+
   background: none;
   color: var(--c-text);
+
   opacity: 0.8;
   cursor: pointer;
 

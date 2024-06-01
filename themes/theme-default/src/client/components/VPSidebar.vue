@@ -21,35 +21,43 @@ defineSlots<{
 @import '../styles/variables';
 
 .vp-sidebar {
-  font-size: 16px;
-  width: var(--sidebar-width);
   position: fixed;
-  z-index: 10;
-  margin: 0;
+
   // leave space for navbar
   top: var(--navbar-height);
-  left: 0;
   bottom: 0;
-  box-sizing: border-box;
-  border-right: 1px solid var(--c-border);
+  left: 0;
+  z-index: 10;
+
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--c-brand) var(--c-border);
+  box-sizing: border-box;
+
+  width: var(--sidebar-width);
+  margin: 0;
+  border-right: 1px solid var(--c-border);
+
   background-color: var(--c-bg-sidebar);
+
+  font-size: 16px;
+
   transition:
     transform var(--t-transform),
     background-color var(--t-color),
     border-color var(--t-color);
 
+  scrollbar-color: var(--c-brand) var(--c-border);
+  scrollbar-width: thin;
+
   // narrow desktop / iPad
   @media (max-width: $MQNarrow) {
-    font-size: 15px;
     width: var(--sidebar-width-mobile);
+    font-size: 15px;
   }
 
   // wide mobile
   @media (max-width: $MQMobile) {
     top: 0;
+
     // leave space for navbar
     padding-top: var(--navbar-height);
     transform: translateX(-100%);
@@ -70,9 +78,9 @@ defineSlots<{
   // override styles
   .vp-navbar-items {
     display: none;
+    padding: 0.5rem 0 0.75rem;
     border-bottom: 1px solid var(--c-border);
     transition: border-color var(--t-color);
-    padding: 0.5rem 0 0.75rem 0;
 
     @media (max-width: $MQMobile) {
       display: block;
@@ -83,8 +91,8 @@ defineSlots<{
     }
 
     ul {
-      padding: 0;
       margin: 0;
+      padding: 0;
       list-style-type: none;
     }
 
@@ -96,9 +104,9 @@ defineSlots<{
   // override styles
   .vp-navbar-item {
     display: block;
-    line-height: 1.25rem;
-    font-size: 1.1em;
     padding: 0.5rem 0 0.5rem 1.5rem;
+    font-size: 1.1em;
+    line-height: 1.25rem;
   }
 }
 </style>
