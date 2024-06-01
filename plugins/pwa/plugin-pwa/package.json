@@ -48,9 +48,6 @@
     "vue": "^3.4.27",
     "workbox-build": "^7.1.1"
   },
-  "devDependencies": {
-    "sass": "^1.77.4"
-  },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.13"
   },

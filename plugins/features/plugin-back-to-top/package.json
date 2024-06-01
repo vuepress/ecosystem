@@ -44,9 +44,6 @@
   "peerDependencies": {
     "vuepress": "2.0.0-rc.13"
   },
-  "devDependencies": {
-    "sass": "^1.77.4"
-  },
   "publishConfig": {
     "access": "public"
   }

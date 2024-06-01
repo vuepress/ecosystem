@@ -48,9 +48,6 @@
     "photoswipe": "^5.4.4",
     "vue": "^3.4.27"
   },
-  "devDependencies": {
-    "sass": "^1.77.4"
-  },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.13"
   },
