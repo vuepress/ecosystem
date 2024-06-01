@@ -14,7 +14,7 @@ export interface ActiveHeaderLinksPluginOptions {
    * this plugin won't change the route hash to that anchor when
    * scrolling to it.
    *
-   * @default 'a.sidebar-item'
+   * @default 'a.vp-sidebar-item'
    */
   headerLinkSelector?: string
 
@@ -41,7 +41,7 @@ export interface ActiveHeaderLinksPluginOptions {
 }
 
 export const activeHeaderLinksPlugin = ({
-  headerLinkSelector = 'a.sidebar-item',
+  headerLinkSelector = 'a.vp-sidebar-item',
   headerAnchorSelector = '.header-anchor',
   delay = 200,
   offset = 5,

@@ -13,9 +13,7 @@
       "@theme/composables": [
         "./themes/theme-default/src/client/composables/index.js"
       ],
-      "@theme/*": [
-        "./themes/theme-default/src/client/components/*"
-      ]
+      "@theme/*": ["./themes/theme-default/src/client/components/*"]
     },
     "types": ["vuepress/client-types", "webpack-env", "vite/client"]
   },

@@ -106,8 +106,9 @@ onBeforeUnmount(() => {
     box-sizing: border-box;
     margin: 0;
 
-    + .sidebar-children {
+    + .vp-sidebar-children {
       @include mixins.dropdown_wrapper;
+
       margin-bottom: 0.75rem;
     }
   }
