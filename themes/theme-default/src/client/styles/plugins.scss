@@ -1,3 +1,8 @@
+// plugin-comment
+#vp-comment {
+  @include content_wrapper;
+}
+
 .vp-navbar {
   // plugin-search
   .search-box {

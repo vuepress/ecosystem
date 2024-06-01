@@ -26,6 +26,7 @@ defineSlots<{
   position: fixed;
   z-index: 10;
   margin: 0;
+  // leave space for navbar
   top: var(--navbar-height);
   left: 0;
   bottom: 0;
@@ -39,6 +40,20 @@ defineSlots<{
     transform var(--t-transform),
     background-color var(--t-color),
     border-color var(--t-color);
+
+  // narrow desktop / iPad
+  @media (max-width: $MQNarrow) {
+    font-size: 15px;
+    width: var(--sidebar-width-mobile);
+  }
+
+  // wide mobile
+  @media (max-width: $MQMobile) {
+    top: 0;
+    // leave space for navbar
+    padding-top: var(--navbar-height);
+    transform: translateX(-100%);
+  }
 
   &::-webkit-scrollbar {
     width: 7px;

@@ -1,33 +1,24 @@
 <script setup lang="ts">
 import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
 import { computed, ref, toRefs, watch } from 'vue'
-import type { PropType } from 'vue'
 import { AutoLink, useRoute } from 'vuepress/client'
 import type { AutoLinkOptions, NavGroup } from '../../shared/index.js'
 
-const props = defineProps({
-  item: {
-    type: Object as PropType<
-      NavGroup<AutoLinkOptions | NavGroup<AutoLinkOptions>>
-    >,
-    required: true,
-  },
-})
+const props = defineProps<{
+  item: NavGroup<AutoLinkOptions | NavGroup<AutoLinkOptions>>
+}>()
 
 const { item } = toRefs(props)
+const route = useRoute()
+
+const open = ref(false)
 
 const dropdownAriaLabel = computed(
   () => item.value.ariaLabel || item.value.text,
 )
 
-const open = ref(false)
-const route = useRoute()
-watch(
-  () => route.path,
-  () => {
-    open.value = false
-  },
-)
+const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
+  arr[arr.length - 1] === item
 
 /**
  * Open the dropdown when user tab and click from keyboard.
@@ -39,15 +30,16 @@ watch(
  */
 const handleDropdown = (e): void => {
   const isTriggerByTab = e.detail === 0
-  if (isTriggerByTab) {
-    open.value = !open.value
-  } else {
-    open.value = false
-  }
+
+  open.value = isTriggerByTab ? !open.value : false
 }
 
-const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
-  arr[arr.length - 1] === item
+watch(
+  () => route.path,
+  () => {
+    open.value = false
+  },
+)
 </script>
 
 <template>
@@ -191,10 +183,6 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
   .vp-navbar-dropdown-wrapper.mobile & {
     display: none;
   }
-
-  // .vp-navbar-dropdown-wrapper.mobile.open & {
-  //   margin-bottom: 0.5rem;
-  // }
 
   &:hover {
     border-color: transparent;

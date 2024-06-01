@@ -2,13 +2,12 @@
 @use 'vars-dark';
 @use 'normalize';
 
+@use 'content';
+
 @use 'arrow';
-@use 'code';
-@use 'custom-container';
 @use 'external-link-icon';
+
 @use 'layout';
-@use 'toc';
-@use 'transitions';
 @use 'plugins';
 
 @use '@vuepress/plugin-palette/style';

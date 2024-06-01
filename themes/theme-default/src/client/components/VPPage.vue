@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import VPPageMeta from '@theme/VPPageMeta.vue'
 import VPPageNav from '@theme/VPPageNav.vue'
+import { Content } from 'vuepress/client'
 
 defineSlots<{
   'top'?: (props: Record<never, never>) => any
@@ -34,10 +35,24 @@ defineSlots<{
 @use '../styles/mixins';
 
 .vp-page {
-  padding-bottom: 2rem;
   display: block;
+  // leave space for navbar
   padding-top: var(--navbar-height);
+  // leave space for sidebar
   padding-left: var(--sidebar-width);
+  padding-bottom: 2rem;
+
+  // narrow desktop / iPad
+  @media (max-width: $MQNarrow) {
+    // leave space for sidebar
+    padding-left: var(--sidebar-width-mobile);
+  }
+
+  // wide mobile
+  @media (max-width: $MQMobile) {
+    // sidebar is collapsed
+    padding-left: 0;
+  }
 
   .theme-default-content {
     @include mixins.content_wrapper;

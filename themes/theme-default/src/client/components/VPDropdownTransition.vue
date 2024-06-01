@@ -15,7 +15,7 @@ const unsetHeight = (items): void => {
 
 <template>
   <Transition
-    name="dropdown"
+    name="vp-dropdown"
     @enter="setHeight"
     @after-enter="unsetHeight"
     @before-leave="setHeight"
@@ -23,3 +23,15 @@ const unsetHeight = (items): void => {
     <slot />
   </Transition>
 </template>
+
+<style lang="scss">
+/**
+ * dropdown
+ */
+.vp-dropdown {
+  &-enter-from,
+  &-leave-to {
+    height: 0 !important;
+  }
+}
+</style>

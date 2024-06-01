@@ -98,7 +98,7 @@ const onBeforeLeave = scrollPromise.pending
 
 <template>
   <div
-    class="theme-container"
+    class="vp-theme-container"
     :class="containerClass"
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
@@ -155,3 +155,96 @@ const onBeforeLeave = scrollPromise.pending
     </slot>
   </div>
 </template>
+
+<style lang="scss">
+@import '../styles/variables';
+
+.vp-sidebar-mask {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+}
+
+.vp-theme-container {
+  // navbar is disabled
+  &.no-navbar {
+    .vp-sidebar {
+      top: 0;
+
+      @media (max-width: $MQMobile) {
+        padding-top: 0;
+      }
+    }
+
+    .vp-page {
+      padding-top: 0;
+    }
+
+    // adjust heading margin and padding;
+    .theme-default-content {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-top: 1.5rem;
+        padding-top: 0;
+      }
+    }
+  }
+
+  &.no-sidebar {
+    // hide sidebar
+    .vp-sidebar {
+      display: none;
+
+      // show sidebar on mobile because it has navbar links
+      @media (max-width: $MQMobile) {
+        display: block;
+      }
+    }
+
+    .vp-page {
+      padding-left: 0;
+    }
+  }
+
+  &.sidebar-open {
+    @media (max-width: $MQMobile) {
+      // show sidebar
+      .vp-sidebar {
+        transform: translateX(0);
+      }
+
+      // show sidebar mask
+      .vp-sidebar-mask {
+        display: block;
+      }
+    }
+  }
+}
+
+/**
+ * fade-slide-y transition
+ */
+.fade-slide-y {
+  &-enter-active {
+    transition: all 0.2s ease;
+  }
+
+  &-leave-active {
+    transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+  }
+
+  &-enter-from,
+  &-leave-to {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+}
+</style>

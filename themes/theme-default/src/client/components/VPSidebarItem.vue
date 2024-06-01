@@ -2,22 +2,17 @@
 import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
 import { useToggle } from '@vueuse/core'
 import { computed, nextTick, onBeforeUnmount, toRefs } from 'vue'
-import type { PropType } from 'vue'
 import { AutoLink, useRoute, useRouter } from 'vuepress/client'
 import type { SidebarItem } from '../typings.js'
 import { isActiveLinkItem } from '../utils/index.js'
 
-const props = defineProps({
-  item: {
-    type: Object as PropType<SidebarItem>,
-    required: true,
-  },
-  depth: {
-    type: Number,
-    required: false,
-    default: 0,
-  },
-})
+const props = withDefaults(
+  defineProps<{
+    item: SidebarItem
+    depth?: number
+  }>(),
+  { depth: 0 },
+)
 
 const { item, depth } = toRefs(props)
 const route = useRoute()

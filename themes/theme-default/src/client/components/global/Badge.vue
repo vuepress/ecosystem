@@ -1,21 +1,16 @@
 <script setup lang="ts">
-defineProps({
-  type: {
-    type: String,
-    required: false,
-    default: 'tip',
+withDefaults(
+  defineProps<{
+    type?: string
+    text?: string
+    vertical?: string
+  }>(),
+  {
+    type: 'tip',
+    text: '',
+    vertical: undefined,
   },
-  text: {
-    type: String,
-    required: false,
-    default: '',
-  },
-  vertical: {
-    type: String,
-    required: false,
-    default: undefined,
-  },
-})
+)
 
 defineSlots<{
   default?: () => any

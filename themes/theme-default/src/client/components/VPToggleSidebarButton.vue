@@ -62,7 +62,7 @@ const themeLocale = useThemeLocaleData()
         margin: 6px 0;
       }
 
-      .theme-container.sidebar-open & {
+      .vp-theme-container.sidebar-open & {
         &:nth-child(1) {
           transform: rotate(45deg) translate3d(5.5px, 5.5px, 0);
         }

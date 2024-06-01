@@ -4,12 +4,8 @@ import { usePageFrontmatter } from 'vuepress/client'
 import type { DefaultThemeHomePageFrontmatter } from '../../shared/index.js'
 
 const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
-const features = computed(() => {
-  if (Array.isArray(frontmatter.value.features)) {
-    return frontmatter.value.features
-  }
-  return []
-})
+
+const features = computed(() => frontmatter.value.features ?? [])
 </script>
 
 <template>
