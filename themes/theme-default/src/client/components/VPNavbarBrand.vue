@@ -81,7 +81,7 @@ const NavbarBrandLogo: FunctionalComponent = () => {
 
   @media screen and (max-width: $MQMobile) {
     display: block;
-    // 5.5rem for .navbar padding-inline
+    // 5.5rem for navbar padding-inline
     // 4.5rem for ColorModeSwitch and VPSearch
     // 1rem for gap
     width: calc(100vw - 11rem);

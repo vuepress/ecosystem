@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { VNode } from 'vue'
+
 withDefaults(
   defineProps<{
     type?: string
@@ -13,7 +15,7 @@ withDefaults(
 )
 
 defineSlots<{
-  default?: () => any
+  default?: () => VNode | VNode | string | null
 }>()
 </script>
 
@@ -58,11 +60,13 @@ defineSlots<{
     color: var(--c-badge-danger-text);
   }
 
+  // update the vertical align for the badge in toc
   .table-of-contents & {
     vertical-align: middle;
   }
 
-  + & {
+  // avoid extra space between badges
+  & + & {
     margin-left: 5px;
   }
 }

@@ -11,10 +11,10 @@ test.describe('homepage', () => {
     const DESCRIPTION = 'VuePress Ecosystem E2E Test Site'
     const HERO_IMAGE = 'https://v2.vuepress.vuejs.org/images/hero.png'
 
-    const img = page.locator('.hero img')
+    const img = page.locator('.vp-hero-img')
     const mainTitle = page.locator('#main-title')
-    const mainDescription = page.locator('.hero .description')
-    const actionButtons = page.locator('.hero .action-button')
+    const mainDescription = page.locator('.vp-description')
+    const actionButtons = page.locator('.vp-hero-action-button')
 
     await expect(img).toHaveAttribute('src', HERO_IMAGE)
     await expect(img).toHaveAttribute('alt', TITLE)
@@ -39,13 +39,13 @@ test.describe('homepage', () => {
   })
 
   test('has feature', async ({ page }) => {
-    const features = page.locator('.feature')
+    const features = page.locator('.vp-feature')
 
     await expect(features).toHaveCount(3)
 
     for (let index = 0; index < 3; index++) {
-      const featureHeading = page.locator('.feature h2').nth(index)
-      const featureDetail = page.locator('.feature p').nth(index)
+      const featureHeading = page.locator('.vp-feature h2').nth(index)
+      const featureDetail = page.locator('.vp-feature p').nth(index)
 
       await expect(featureHeading).toHaveText(`Feature${index + 1}`)
       await expect(featureDetail).toHaveText(`Detail${index + 1}`)
@@ -59,6 +59,6 @@ test.describe('homepage', () => {
   })
 
   test('has footer', async ({ page }) => {
-    await expect(page.locator('.footer')).toHaveText('Footer Content')
+    await expect(page.locator('.vp-footer')).toHaveText('Footer Content')
   })
 })

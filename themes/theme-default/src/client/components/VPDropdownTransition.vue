@@ -25,9 +25,6 @@ const unsetHeight = (items): void => {
 </template>
 
 <style lang="scss">
-/**
- * dropdown
- */
 .vp-dropdown {
   &-enter-from,
   &-leave-to {
