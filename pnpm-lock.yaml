@@ -923,7 +923,7 @@ importers:
         specifier: workspace:*
         version: link:../../plugins/development/plugin-git
       vite:
-        specifier: 5.2.11
+        specifier: 5.2.11 || >5.2.12 <5.3.0
         version: 5.2.11(@types/node@20.13.0)(lightningcss@1.25.1)(sass@1.77.4)(terser@5.31.0)
 
   tools/vp-update:
