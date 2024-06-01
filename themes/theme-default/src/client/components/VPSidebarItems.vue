@@ -60,10 +60,22 @@ onMounted(() => {
 @import '../styles/variables';
 
 .vp-sidebar-items {
+  margin: 0;
   padding: 1.5rem 0;
+  list-style-type: none;
 
   @media (max-width: $MQMobile) {
     padding: 1rem 0;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+
+  a {
+    display: inline-block;
   }
 }
 </style>

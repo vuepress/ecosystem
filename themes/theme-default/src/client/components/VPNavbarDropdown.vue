@@ -145,6 +145,8 @@ watch(
 .vp-navbar-dropdown {
   .vp-navbar-dropdown-wrapper.mobile & {
     @include mixins.dropdown_wrapper;
+
+    padding-top: 0.5rem;
   }
 
   .vp-navbar-dropdown-wrapper:not(.mobile) & {

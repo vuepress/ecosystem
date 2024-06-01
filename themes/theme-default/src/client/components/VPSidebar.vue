@@ -67,16 +67,6 @@ defineSlots<{
     background-color: var(--c-brand);
   }
 
-  ul {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-  }
-
-  a {
-    display: inline-block;
-  }
-
   // override styles
   .vp-navbar-items {
     display: none;
@@ -90,6 +80,12 @@ defineSlots<{
       .vp-navbar-dropdown-item a.route-link-active::after {
         top: calc(1rem - 2px);
       }
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
     }
 
     a {

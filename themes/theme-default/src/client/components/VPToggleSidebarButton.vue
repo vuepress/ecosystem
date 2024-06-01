@@ -29,7 +29,7 @@ const themeLocale = useThemeLocaleData()
 /**
  * toggle sidebar button
  */
-.toggle-sidebar-button {
+.vp-toggle-sidebar-button {
   position: absolute;
   top: 0.6rem;
   left: 1rem;
