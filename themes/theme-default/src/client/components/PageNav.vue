@@ -9,15 +9,13 @@ import {
 } from 'vuepress/client'
 import type { AutoLinkConfig } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
-import type {
-  DefaultThemeNormalPageFrontmatter,
-  ResolvedSidebarItem,
-} from '../../shared/index.js'
+import type { DefaultThemeNormalPageFrontmatter } from '../../shared/index.js'
 import {
   useNavigate,
   useSidebarItems,
   useThemeLocaleData,
 } from '../composables/index.js'
+import type { SidebarItem } from '../typings.js'
 
 /**
  * Resolve `prev` or `next` config from frontmatter
@@ -57,7 +55,7 @@ const resolveFromFrontmatterConfig = (
  * Resolve `prev` or `next` config from sidebar items
  */
 const resolveFromSidebarItems = (
-  sidebarItems: ResolvedSidebarItem[],
+  sidebarItems: SidebarItem[],
   currentPath: string,
   offset: number,
 ): null | AutoLinkConfig => {
@@ -71,7 +69,7 @@ const resolveFromSidebarItems = (
   }
 
   for (const item of sidebarItems) {
-    if (item.children) {
+    if ('children' in item) {
       const childResult = resolveFromSidebarItems(
         item.children,
         currentPath,

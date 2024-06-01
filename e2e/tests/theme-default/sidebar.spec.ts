@@ -5,8 +5,6 @@ test.describe('has heading sidebar', () => {
    * sidebar no support heading
    */
   // test('frontmatter', async ({ page }) => {
-  //   await page.goto('sidebar/auto.html')
-
   //   const sidebarItems = page.locator('a.sidebar-item')
 
   //   await expect(sidebarItems.nth(0)).toContainText('Sidebar Heading 1')
@@ -30,11 +28,30 @@ test.describe('has heading sidebar', () => {
   })
 })
 
-test('has configured sidebar', async ({ page }) => {
-  await page.goto('sidebar/config/1.html')
+test.describe('has configured sidebar', () => {
+  test('theme config', async ({ page }) => {
+    await page.goto('sidebar/config/1.html')
+
+    const sidebarItems = page.locator('.vp-sidebar .vp-sidebar-item')
+
+    await expect(sidebarItems.nth(1)).toContainText('sidebar 1')
+    await expect(sidebarItems.nth(2)).toContainText('sidebar 2')
+  })
+
+  // no supported
+  // test('frontmatter', async ({ page }) => {
+  //   await page.goto('sidebar/frontmatter/config.html')
+
+  //   const sidebarItems = page.locator('a.sidebar-item')
+
+  //   await expect(sidebarItems.nth(0)).toContainText('Home')
+  //   await expect(sidebarItems.nth(1)).toContainText('主页')
+  // })
+})
+
+test('frontmatter disable', async ({ page }) => {
+  await page.goto('sidebar/frontmatter/disable.html')
 
   const sidebarItems = page.locator('#VPSidebarNav .vp-link')
-
-  await expect(sidebarItems.nth(0)).toContainText('sidebar 1')
-  await expect(sidebarItems.nth(1)).toContainText('sidebar 2')
+  expect(await sidebarItems.count()).toBe(0)
 })
