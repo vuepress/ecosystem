@@ -1,118 +1,17 @@
 <script setup lang="ts">
 import { useEventListener } from '@vueuse/core'
 import { computed } from 'vue'
-import {
-  AutoLink,
-  resolveRoute,
-  usePageFrontmatter,
-  useRoute,
-} from 'vuepress/client'
-import type { AutoLinkConfig } from 'vuepress/client'
-import { isPlainObject, isString } from 'vuepress/shared'
-import type { DefaultThemeNormalPageFrontmatter } from '../../shared/index.js'
+import { AutoLink } from 'vuepress/client'
 import {
   useNavigate,
-  useSidebarItems,
+  useRelatedLinks,
   useThemeLocaleData,
 } from '../composables/index.js'
-import type { SidebarItem } from '../typings.js'
 
-/**
- * Resolve `prev` or `next` config from frontmatter
- */
-const resolveFromFrontmatterConfig = (
-  conf: unknown,
-  current: string,
-): null | false | AutoLinkConfig => {
-  if (conf === false) {
-    return null
-  }
-
-  if (isString(conf)) {
-    const { notFound, meta, path } = resolveRoute<{
-      title?: string
-    }>(conf, current)
-
-    return notFound
-      ? { text: path, link: path }
-      : {
-          text: meta.title || path,
-          link: path,
-        }
-  }
-
-  if (isPlainObject<AutoLinkConfig>(conf)) {
-    return {
-      ...conf,
-      link: resolveRoute(conf.link, current).path,
-    }
-  }
-
-  return false
-}
-
-/**
- * Resolve `prev` or `next` config from sidebar items
- */
-const resolveFromSidebarItems = (
-  sidebarItems: SidebarItem[],
-  currentPath: string,
-  offset: number,
-): null | AutoLinkConfig => {
-  const index = sidebarItems.findIndex((item) => item.link === currentPath)
-  if (index !== -1) {
-    const targetItem = sidebarItems[index + offset]
-    if (!targetItem?.link) {
-      return null
-    }
-    return targetItem as AutoLinkConfig
-  }
-
-  for (const item of sidebarItems) {
-    if ('children' in item) {
-      const childResult = resolveFromSidebarItems(
-        item.children,
-        currentPath,
-        offset,
-      )
-      if (childResult) {
-        return childResult
-      }
-    }
-  }
-
-  return null
-}
-
-const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
-const sidebarItems = useSidebarItems()
 const themeLocale = useThemeLocaleData()
-const route = useRoute()
 const navigate = useNavigate()
 
-const prevNavLink = computed(() => {
-  const prevConfig = resolveFromFrontmatterConfig(
-    frontmatter.value.prev,
-    route.path,
-  )
-  if (prevConfig !== false) {
-    return prevConfig
-  }
-
-  return resolveFromSidebarItems(sidebarItems.value, route.path, -1)
-})
-
-const nextNavLink = computed(() => {
-  const nextConfig = resolveFromFrontmatterConfig(
-    frontmatter.value.next,
-    route.path,
-  )
-  if (nextConfig !== false) {
-    return nextConfig
-  }
-
-  return resolveFromSidebarItems(sidebarItems.value, route.path, 1)
-})
+const { prevLink, nextLink } = useRelatedLinks()
 
 const navbarLabel = computed(() => {
   const themeLocale = useThemeLocaleData()
@@ -120,44 +19,45 @@ const navbarLabel = computed(() => {
 })
 
 useEventListener('keydown', (event): void => {
-  if (event.altKey)
+  if (event.altKey) {
     if (event.key === 'ArrowRight') {
-      if (nextNavLink.value) {
-        navigate(nextNavLink.value.link)
+      if (nextLink.value) {
+        navigate(nextLink.value.link)
         event.preventDefault()
       }
     } else if (event.key === 'ArrowLeft') {
-      if (prevNavLink.value) {
-        navigate(prevNavLink.value.link)
+      if (prevLink.value) {
+        navigate(prevLink.value.link)
         event.preventDefault()
       }
     }
+  }
 })
 </script>
 
 <template>
   <nav
-    v-if="prevNavLink || nextNavLink"
+    v-if="prevLink || nextLink"
     class="vp-page-nav"
     :aria-label="navbarLabel"
   >
-    <AutoLink v-if="prevNavLink" class="prev" :config="prevNavLink">
+    <AutoLink v-if="prevLink" class="prev" :config="prevLink">
       <div class="hint">
         <span class="arrow left" />
         {{ themeLocale.prev ?? 'Prev' }}
       </div>
       <div class="link">
-        <span>{{ prevNavLink.text }}</span>
+        <span>{{ prevLink.text }}</span>
       </div>
     </AutoLink>
 
-    <AutoLink v-if="nextNavLink" class="next" :config="nextNavLink">
+    <AutoLink v-if="nextLink" class="next" :config="nextLink">
       <div class="hint">
         {{ themeLocale.next ?? 'Next' }}
         <span class="arrow right" />
       </div>
       <div class="link">
-        <span>{{ nextNavLink.text }}</span>
+        <span>{{ nextLink.text }}</span>
       </div>
     </AutoLink>
   </nav>
