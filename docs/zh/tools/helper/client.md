@@ -75,7 +75,7 @@ export interface GetHeadersOptions {
   /**
    * 页面标题选择器
    *
-   * @default '#vp-content :where(h1,h2,h3,h4,h5,h6)'
+   * @default '#vp-content h1, #vp-content h2, #vp-content h3, #vp-content h4, #vp-content h5, #vp-content h6'
    */
   selector?: string
   /**

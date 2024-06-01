@@ -78,7 +78,7 @@ export interface GetHeadersOptions {
    * It will be passed as an argument to `document.querySelectorAll(selector)`,
    * so you should pass a `CSS Selector` string.
    *
-   * @default '#vp-content :where(h1,h2,h3,h4,h5,h6)'
+   * @default '#vp-content h1, #vp-content h2, #vp-content h3, #vp-content h4, #vp-content h5, #vp-content h6'
    */
   selector?: string
   /**
