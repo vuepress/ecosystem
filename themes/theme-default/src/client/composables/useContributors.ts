@@ -5,7 +5,7 @@ import type {
   DefaultThemeNormalPageFrontmatter,
   DefaultThemePageData,
 } from '../../shared/index.js'
-import { useThemeLocaleData } from '../composables/index.js'
+import { useThemeLocaleData } from './useThemeData.js'
 
 export const useContributors = (): ComputedRef<
   null | Required<DefaultThemePageData['git']>['contributors']

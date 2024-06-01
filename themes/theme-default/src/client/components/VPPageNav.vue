@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { useEventListener } from '@vueuse/core'
-import { computed } from 'vue'
-import { AutoLink } from 'vuepress/client'
 import {
   useNavigate,
   useRelatedLinks,
   useThemeLocaleData,
-} from '../composables/index.js'
+} from '@theme/composables'
+import { useEventListener } from '@vueuse/core'
+import { computed } from 'vue'
+import { AutoLink } from 'vuepress/client'
 
 const themeLocale = useThemeLocaleData()
 const navigate = useNavigate()

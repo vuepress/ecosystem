@@ -10,7 +10,13 @@
       "@internal/themeData": [
         "./plugins/plugin-theme-data/src/client/themeData.d.ts"
       ],
-      "@theme/*": ["./themes/theme-default/src/client/components/*"]
+      "@theme/composables": [
+        "./themes/theme-default/src/client/composables/index.js"
+      ],
+      "@theme/*": [
+        "./src/client/*/index.js",
+        "./themes/theme-default/src/client/components/*"
+      ]
     },
     "types": ["vuepress/client-types", "webpack-env", "vite/client"]
   },

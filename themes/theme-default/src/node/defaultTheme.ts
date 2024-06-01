@@ -62,6 +62,10 @@ export const defaultTheme = ({
             path.resolve(__dirname, '../client/components', file),
           ]),
       ),
+      '@theme/composables': path.resolve(
+        __dirname,
+        '../client/composables/index.js',
+      ),
     },
 
     clientConfigFile: path.resolve(__dirname, '../client/config.js'),

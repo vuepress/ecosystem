@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import {
+  useScrollPromise,
+  useSidebarItems,
+  useThemeLocaleData,
+} from '@theme/composables'
 import VPHome from '@theme/VPHome.vue'
 import VPNavbar from '@theme/VPNavbar.vue'
 import VPPage from '@theme/VPPage.vue'
@@ -6,11 +11,6 @@ import VPSidebar from '@theme/VPSidebar.vue'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { usePageData, usePageFrontmatter, useRouter } from 'vuepress/client'
 import type { DefaultThemePageFrontmatter } from '../../shared/index.js'
-import {
-  useScrollPromise,
-  useSidebarItems,
-  useThemeLocaleData,
-} from '../composables/index.js'
 
 defineSlots<{
   'navbar'?: (props: Record<never, never>) => any

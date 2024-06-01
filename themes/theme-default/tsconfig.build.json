@@ -5,6 +5,7 @@
     "outDir": "./lib",
     "baseUrl": ".",
     "paths": {
+      "@theme/composables": ["./src/client/composables/index.js"],
       "@theme/*": ["./src/client/components/*"]
     },
     "types": ["vuepress/client-types"]

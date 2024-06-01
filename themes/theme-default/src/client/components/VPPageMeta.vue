@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { AutoLink } from 'vuepress/client'
 import {
   useContributors,
   useEditNavLink,
   useLastUpdated,
   useThemeLocaleData,
-} from '../composables/index.js'
+} from '@theme/composables'
+import { AutoLink } from 'vuepress/client'
 
 const themeLocale = useThemeLocaleData()
 const editNavLink = useEditNavLink()

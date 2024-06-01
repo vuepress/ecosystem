@@ -1,14 +1,14 @@
 <script setup lang="ts">
+import {
+  DeviceType,
+  useThemeLocaleData,
+  useUpdateDeviceStatus,
+} from '@theme/composables'
 import VPNavbarBrand from '@theme/VPNavbarBrand.vue'
 import VPNavbarItems from '@theme/VPNavbarItems.vue'
 import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'
 import VPToggleSidebarButton from '@theme/VPToggleSidebarButton.vue'
 import { computed, ref } from 'vue'
-import {
-  DeviceType,
-  useThemeLocaleData,
-  useUpdateDeviceStatus,
-} from '../composables/index.js'
 
 defineEmits<(e: 'toggle-sidebar') => void>()
 

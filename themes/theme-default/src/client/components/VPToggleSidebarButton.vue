@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useThemeLocaleData } from '../composables/index.js'
+import { useThemeLocaleData } from '@theme/composables'
 
 defineEmits<(e: 'toggle') => void>()
 

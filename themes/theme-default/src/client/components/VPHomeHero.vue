@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useDarkMode } from '@theme/composables'
 import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
 import {
@@ -9,7 +10,6 @@ import {
   withBase,
 } from 'vuepress/client'
 import type { DefaultThemeHomePageFrontmatter } from '../../shared/index.js'
-import { useDarkMode } from '../composables/index.js'
 
 const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
 const siteLocale = useSiteLocaleData()
