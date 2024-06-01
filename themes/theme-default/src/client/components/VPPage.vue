@@ -33,6 +33,7 @@ defineSlots<{
 
 <style lang="scss">
 @use '../styles/mixins';
+@import '../styles/variables';
 
 .vp-page {
   display: block;

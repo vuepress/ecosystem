@@ -1,6 +1,8 @@
+@use 'mixins';
+
 // plugin-comment
 #vp-comment {
-  @include content_wrapper;
+  @include mixins.content_wrapper;
 }
 
 .vp-navbar {
