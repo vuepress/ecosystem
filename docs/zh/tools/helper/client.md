@@ -81,15 +81,20 @@ export interface GetHeadersOptions {
   /**
    * 忽略标题内的特定元素选择器
    *
+   * 它将作为 `document.querySelectorAll` 的参数。
+   * 因此，你应该传入一个 `CSS 选择器` 字符串
+   *
    * @default []
    */
   ignore?: string[]
   /**
    * 指定获取的标题层级
    *
+   * `1` 至 `6` 表示 `<h1>` 至 `<h6>`
+   *
    * - `false`: 不返回标题列表
    * - `number`: 只获取指定的单个层级的标题。
-   * - `[number, number]: 第一个参数为最小层级，第二个参数为最大层级。
+   * - `[number, number]: 标题层级元组，第一个数字应小于第二个数字。例如，`[2, 4]` 表示显示从 `<h2>` 到 `<h4>` 的所有标题。
    * - `deep`: 等同于 `[2, 6]`, 表示获取从 `<h2>` 到 `<h6>` 的所有标题。
    *
    * @default 2
@@ -105,7 +110,7 @@ export interface Header {
   /**
    * 当前标题的层级
    *
-   * `1` to `6` for `<h1>` to `<h6>`
+   * `1` 至 `6` 表示 `<h1>` 至 `<h6>`
    */
   level: number
   /**
