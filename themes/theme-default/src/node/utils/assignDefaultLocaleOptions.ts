@@ -16,7 +16,7 @@ export const DEFAULT_LOCALE_OPTIONS: DefaultThemeLocaleOptions = {
   selectLanguageAriaLabel: 'Select language',
 
   // sidebar
-  sidebar: 'auto',
+  sidebar: 'heading',
   sidebarDepth: 2,
 
   // page meta

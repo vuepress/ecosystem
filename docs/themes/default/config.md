@@ -89,7 +89,7 @@ Config of this section can be used as normal config, and can also be used in the
 
 ### navbar
 
-- Type: `false | (NavbarItem | NavbarGroup | string)[]`
+- Type: `false | NavbarOptions`
 
 - Default: `[]`
 
@@ -99,11 +99,11 @@ Config of this section can be used as normal config, and can also be used in the
 
   Set to `false` to disable navbar.
 
-  To configure the navbar items, you can set it to a _navbar array_, each item of which could be a `NavbarItem` object, a `NavbarGroup` object, or a string:
+  To configure the navbar items, you can set it to a _navbar array_, each item of which could be a `NavbarLink` object, a `NavbarGroup` object, or a string:
 
-  - A `NavbarItem` object should have a `text` field and a `link` field, could have an optional `activeMatch` field.
+  - A `NavbarLink` object should have a `text` field and a `link` field, could have an optional `activeMatch` field.
   - A `NavbarGroup` object should have a `text` field and a `children` field, could have an optional `prefix` field. The `children` field should be a _navbar array_ too, and `prefix` will be prepended before every link inside it.
-  - A string should be the path to the target page file. It will be converted to a `NavbarItem` object, using the page title as `text`, and the page route path as `link`.
+  - A string should be the path to the target page file. It will be converted to a `NavbarLink` object, using the page title as `text`, and the page route path as `link`.
 
 - Example 1:
 
@@ -111,7 +111,7 @@ Config of this section can be used as normal config, and can also be used in the
 export default {
   theme: defaultTheme({
     navbar: [
-      // NavbarItem
+      // NavbarLink
       {
         text: 'Foo',
         link: '/foo/',
@@ -269,9 +269,9 @@ export default {
 
 ### sidebar
 
-- Type: `false | 'auto' | SidebarConfigArray | SidebarConfigObject`
+- Type: `false | SidebarOptions`
 
-- Default: `'auto'`
+- Default: `'heading'`
 
 - Details:
 
@@ -281,7 +281,7 @@ export default {
 
   Set to `false` to disable sidebar.
 
-  If you set it to `'auto'`, the sidebar will be automatically generated from the page headers.
+  If you set it to `'heading'`, the sidebar will be automatically generated from the page headers.
 
   To configure the sidebar items manually, you can set this option to a _sidebar array_, each item of which could be a `SidebarItem` object or a string:
 

@@ -1,6 +1,6 @@
 import type { GitPluginPageData } from '@vuepress/plugin-git'
 import type { AutoLinkConfig } from 'vuepress/client'
-import type { SidebarConfig } from './nav.js'
+import type { SidebarArrayOptions } from './sidebar.js'
 
 export interface DefaultThemePageData extends GitPluginPageData {
   filePathRelative: string | null
@@ -42,7 +42,7 @@ export interface DefaultThemeNormalPageFrontmatter
   editLinkPattern?: string
   lastUpdated?: boolean
   contributors?: boolean
-  sidebar?: 'auto' | false | SidebarConfig
+  sidebar?: false | 'heading' | SidebarArrayOptions
   sidebarDepth?: number
   prev?: string | AutoLinkConfig
   next?: string | AutoLinkConfig
