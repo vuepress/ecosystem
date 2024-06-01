@@ -14,7 +14,6 @@
         "./themes/theme-default/src/client/composables/index.js"
       ],
       "@theme/*": [
-        "./src/client/*/index.js",
         "./themes/theme-default/src/client/components/*"
       ]
     },
