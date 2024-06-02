@@ -197,7 +197,7 @@ export default defineUserConfig({
 以下功能需要额外的样式才能正常工作，这应该由主题或用户来处理。
 
 ::: details 查看样式示例
-@[code{260-349}](@vuepress/theme-default/src/client/styles/code.scss)
+@[code{260-349}](@vuepress/theme-default/src/client/styles/content/code.scss)
 :::
 
 ::::

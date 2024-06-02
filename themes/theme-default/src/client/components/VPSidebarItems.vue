@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import SidebarItem from '@theme/SidebarItem.vue'
+import { useSidebarItems } from '@theme/useSidebarItems'
+import VPSidebarItem from '@theme/VPSidebarItem.vue'
 import { onMounted, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
-import { useSidebarItems } from '../composables/index.js'
 
 const route = useRoute()
 const sidebarItems = useSidebarItems()
@@ -12,12 +12,12 @@ onMounted(() => {
     () => route.hash,
     (hash) => {
       // get the sidebar DOM
-      const sidebar = document.querySelector('.sidebar')
+      const sidebar = document.querySelector('.vp-sidebar')
       if (!sidebar) return
 
       // get the active sidebar item DOM, whose href equals to the current route
       const activeSidebarItem = document.querySelector(
-        `.sidebar a.sidebar-item[href="${route.path}${hash}"]`,
+        `.vp=sidebar a.vp-sidebar-item[href="${route.path}${hash}"]`,
       )
       if (!activeSidebarItem) return
 
@@ -47,11 +47,35 @@ onMounted(() => {
 </script>
 
 <template>
-  <ul v-if="sidebarItems.length" class="sidebar-items">
-    <SidebarItem
+  <ul v-if="sidebarItems.length" class="vp-sidebar-items">
+    <VPSidebarItem
       v-for="item in sidebarItems"
       :key="`${item.text}${item.link}`"
       :item="item"
     />
   </ul>
 </template>
+
+<style lang="scss">
+@import '../styles/variables';
+
+.vp-sidebar-items {
+  margin: 0;
+  padding: 1.5rem 0;
+  list-style-type: none;
+
+  @media (max-width: $MQMobile) {
+    padding: 1rem 0;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  a {
+    display: inline-block;
+  }
+}
+</style>

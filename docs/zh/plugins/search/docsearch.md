@@ -73,7 +73,7 @@ new Crawler({
         return helpers.docsearch({
           recordProps: {
             lvl0: {
-              selectors: '.sidebar-heading.active',
+              selectors: '.vp-sidebar-heading.active',
               defaultValue: 'Documentation',
             },
             lvl1: '.theme-default-content h1',
