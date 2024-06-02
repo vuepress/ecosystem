@@ -1,3 +1,4 @@
+import { useThemeLocaleData } from '@theme/useThemeData'
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
 import { usePageData, usePageFrontmatter } from 'vuepress/client'
@@ -7,9 +8,8 @@ import type {
   DefaultThemePageData,
 } from '../../shared/index.js'
 import { resolveEditLink } from '../utils/index.js'
-import { useThemeLocaleData } from './useThemeData.js'
 
-export const useEditNavLink = (): ComputedRef<null | AutoLinkConfig> => {
+export const useEditLink = (): ComputedRef<null | AutoLinkConfig> => {
   const themeLocale = useThemeLocaleData()
   const page = usePageData<DefaultThemePageData>()
   const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()

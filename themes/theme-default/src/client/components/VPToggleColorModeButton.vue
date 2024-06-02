@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useDarkMode, useThemeLocaleData } from '@theme/composables'
+import { useDarkMode } from '@theme/useDarkMode'
+import { useThemeLocaleData } from '@theme/useThemeData'
 import VPDarkIcon from '@theme/VPDarkIcon.vue'
 import VPLightIcon from '@theme/VPLightIcon.vue'
 

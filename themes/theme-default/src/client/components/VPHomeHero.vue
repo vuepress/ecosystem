@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDarkMode } from '@theme/composables'
+import { useDarkMode } from '@theme/useDarkMode'
 import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
 import {

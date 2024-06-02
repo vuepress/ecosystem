@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import {
-  DeviceType,
-  useThemeLocaleData,
-  useUpdateDeviceStatus,
-} from '@theme/composables'
+import { useThemeLocaleData } from '@theme/useThemeData'
+import { DeviceType, useUpdateDeviceStatus } from '@theme/useUpdateDeviceStatus'
 import VPNavbarBrand from '@theme/VPNavbarBrand.vue'
 import VPNavbarItems from '@theme/VPNavbarItems.vue'
 import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'

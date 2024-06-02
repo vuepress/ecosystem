@@ -1,23 +1,21 @@
 <script setup lang="ts">
-import {
-  useContributors,
-  useEditNavLink,
-  useLastUpdated,
-  useThemeLocaleData,
-} from '@theme/composables'
+import { useContributors } from '@theme/useContributors'
+import { useEditLink } from '@theme/useEditLink'
+import { useLastUpdated } from '@theme/useLastUpdated'
+import { useThemeLocaleData } from '@theme/useThemeData'
 import VPEditIcon from '@theme/VPEditIcon.vue'
 import { AutoLink } from 'vuepress/client'
 
 const themeLocale = useThemeLocaleData()
-const editNavLink = useEditNavLink()
+const editLink = useEditLink()
 const lastUpdated = useLastUpdated()
 const contributors = useContributors()
 </script>
 
 <template>
   <footer class="vp-page-meta">
-    <div v-if="editNavLink" class="vp-meta-item edit-link">
-      <AutoLink class="label" :config="editNavLink">
+    <div v-if="editLink" class="vp-meta-item edit-link">
+      <AutoLink class="label" :config="editLink">
         <template #before>
           <VPEditIcon />
         </template>

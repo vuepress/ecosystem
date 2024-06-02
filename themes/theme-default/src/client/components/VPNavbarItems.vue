@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import {
-  DeviceType,
-  useNavbarConfig,
-  useNavbarRepo,
-  useNavbarSelectLanguage,
-  useThemeLocaleData,
-  useUpdateDeviceStatus,
-} from '@theme/composables'
+import { useNavbarConfig } from '@theme/useNavbarConfig'
+import { useNavbarRepo } from '@theme/useNavbarRepo'
+import { useNavbarSelectLanguage } from '@theme/useNavbarSelectLanguage'
+import { useThemeLocaleData } from '@theme/useThemeData'
+import { DeviceType, useUpdateDeviceStatus } from '@theme/useUpdateDeviceStatus'
 import VPNavbarDropdown from '@theme/VPNavbarDropdown.vue'
 import { computed, ref } from 'vue'
 import { AutoLink } from 'vuepress/client'

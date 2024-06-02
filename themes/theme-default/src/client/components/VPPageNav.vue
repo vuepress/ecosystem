@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import {
-  useNavigate,
-  useRelatedLinks,
-  useThemeLocaleData,
-} from '@theme/composables'
+import { useNavigate } from '@theme/useNavigate'
+import { useRelatedLinks } from '@theme/useRelatedLinks'
+import { useThemeLocaleData } from '@theme/useThemeData'
 import { useEventListener } from '@vueuse/core'
 import { computed } from 'vue'
 import { AutoLink } from 'vuepress/client'

@@ -1,3 +1,4 @@
+import { useSidebarItems } from '@theme/useSidebarItems'
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
 import { resolveRoute, usePageFrontmatter, useRoute } from 'vuepress/client'
@@ -5,7 +6,6 @@ import type { AutoLinkConfig } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
 import type { DefaultThemeNormalPageFrontmatter } from '../../shared/index.js'
 import type { SidebarItem } from '../typings.js'
-import { useSidebarItems } from './useSidebarItems.js'
 
 /**
  * Resolve `prev` or `next` config from frontmatter

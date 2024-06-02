@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import {
-  useScrollPromise,
-  useSidebarItems,
-  useThemeLocaleData,
-} from '@theme/composables'
+import { useScrollPromise } from '@theme/useScrollPromise'
+import { useSidebarItems } from '@theme/useSidebarItems'
+import { useThemeLocaleData } from '@theme/useThemeData'
 import VPHome from '@theme/VPHome.vue'
 import VPNavbar from '@theme/VPNavbar.vue'
 import VPPage from '@theme/VPPage.vue'
