@@ -11,7 +11,7 @@ test.describe('homepage', () => {
     const DESCRIPTION = 'VuePress Ecosystem E2E Test Site'
     const HERO_IMAGE = 'https://v2.vuepress.vuejs.org/images/hero.png'
 
-    const img = page.locator('.vp-hero-img')
+    const img = page.locator('.vp-hero-image')
     const mainTitle = page.locator('#main-title')
     const mainDescription = page.locator('.vp-description')
     const actionButtons = page.locator('.vp-hero-action-button')
