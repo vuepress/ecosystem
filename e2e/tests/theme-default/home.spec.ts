@@ -13,7 +13,7 @@ test.describe('homepage', () => {
 
     const img = page.locator('.vp-hero-image')
     const mainTitle = page.locator('#main-title')
-    const mainDescription = page.locator('.vp-description')
+    const mainDescription = page.locator('.vp-hero-description')
     const actionButtons = page.locator('.vp-hero-action-button')
 
     await expect(img).toHaveAttribute('src', HERO_IMAGE)
