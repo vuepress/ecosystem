@@ -30,7 +30,7 @@ export default {
 
 - 类型： `string`
 
-- 默认值： `'a.vp-sidebar-item'`
+- 默认值： `'a.sidebar-item'`
 
 - 详情：
 

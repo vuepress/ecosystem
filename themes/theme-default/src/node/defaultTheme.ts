@@ -91,7 +91,7 @@ export const defaultTheme = ({
       // @vuepress/plugin-active-header-link
       themePlugins.activeHeaderLinks !== false
         ? activeHeaderLinksPlugin({
-            headerLinkSelector: 'a.sidebar-item',
+            headerLinkSelector: 'a.vp-sidebar-item',
             headerAnchorSelector: '.header-anchor',
             // should greater than page transition duration
             delay: 300,

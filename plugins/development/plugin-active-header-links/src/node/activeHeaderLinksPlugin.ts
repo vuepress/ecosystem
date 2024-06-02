@@ -14,7 +14,7 @@ export interface ActiveHeaderLinksPluginOptions {
    * this plugin won't change the route hash to that anchor when
    * scrolling to it.
    *
-   * @default 'a.vp-sidebar-item'
+   * @default 'a.sidebar-item'
    */
   headerLinkSelector?: string
 
