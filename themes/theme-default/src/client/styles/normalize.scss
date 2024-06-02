@@ -16,6 +16,7 @@ body {
 
 h2 {
   border-color: var(--c-border);
+  transition: border-color var(--t-color);
 }
 
 a {
