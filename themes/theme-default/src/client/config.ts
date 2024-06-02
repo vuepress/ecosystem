@@ -22,7 +22,7 @@ export default defineClientConfig({
       app.component('CodeGroupItem', CodeGroupItem)
 
     // compat with @vuepress/plugin-docsearch and @vuepress/plugin-search
-    app.component('NavbarSearch', () => {
+    app.component('VPSearch', () => {
       const SearchComponent =
         app.component('Docsearch') || app.component('SearchBox')
       if (SearchComponent) {

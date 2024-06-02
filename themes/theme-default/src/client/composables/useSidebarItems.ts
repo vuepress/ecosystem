@@ -1,3 +1,4 @@
+import { useThemeLocaleData } from '@theme/useThemeData'
 import { keys, startsWith } from '@vuepress/helper/client'
 import { computed, inject, provide } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
@@ -18,7 +19,6 @@ import type {
 } from '../../shared/index.js'
 import type { SidebarHeaderItem, SidebarItem } from '../typings.js'
 import { getAutoLink, isLinkInternal, resolvePrefix } from '../utils/index.js'
-import { useThemeLocaleData } from './useThemeData.js'
 
 export type SidebarItemsRef = ComputedRef<SidebarItem[]>
 

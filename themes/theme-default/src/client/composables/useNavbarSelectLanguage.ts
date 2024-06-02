@@ -1,3 +1,4 @@
+import { useThemeData, useThemeLocaleData } from '@theme/useThemeData'
 import { useRoutePaths } from '@vuepress/helper/client'
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
@@ -8,7 +9,6 @@ import {
   useSiteLocaleData,
 } from 'vuepress/client'
 import type { NavbarItem } from '../typings.js'
-import { useThemeData, useThemeLocaleData } from './useThemeData.js'
 
 /**
  * Get navbar config of select language dropdown

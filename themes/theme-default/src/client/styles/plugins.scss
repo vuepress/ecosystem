@@ -1,0 +1,19 @@
+@use 'mixins';
+
+// plugin-comment
+#vp-comment {
+  @include mixins.content_wrapper;
+}
+
+.vp-navbar {
+  // plugin-search
+  .search-box {
+    flex: 0 0 auto;
+    vertical-align: top;
+  }
+
+  // plugin-docsearch
+  .DocSearch {
+    transition: background-color var(--t-color);
+  }
+}

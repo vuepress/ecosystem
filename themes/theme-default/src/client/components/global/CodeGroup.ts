@@ -10,6 +10,8 @@ import {
   watch,
 } from 'vue'
 
+import '../../styles/code-group.scss'
+
 export const CodeGroup = defineComponent({
   name: 'CodeGroup',
 

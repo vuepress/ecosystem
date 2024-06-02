@@ -3,17 +3,10 @@ defineOptions({
   name: 'CodeGroupItem',
 })
 
-defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  active: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-})
+defineProps<{
+  title: string
+  active?: boolean
+}>()
 </script>
 
 <template>

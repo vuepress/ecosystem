@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useDarkMode } from '@theme/useDarkMode'
+import { useThemeLocaleData } from '@theme/useThemeData'
 import { computed, h } from 'vue'
 import type { FunctionalComponent } from 'vue'
 import {
@@ -8,7 +10,6 @@ import {
   useSiteLocaleData,
   withBase,
 } from 'vuepress/client'
-import { useDarkMode, useThemeLocaleData } from '../composables/index.js'
 
 const routeLocale = useRouteLocale()
 const siteLocale = useSiteLocaleData()
@@ -36,7 +37,7 @@ const navBarLogoAltMatchesTitle = computed(
 const NavbarBrandLogo: FunctionalComponent = () => {
   if (!navbarBrandLogo.value) return null
   const img = h('img', {
-    class: 'logo',
+    class: 'vp-site-logo',
     src: withBase(navbarBrandLogo.value),
     alt: navbarBrandLogoAlt.value,
   })
@@ -55,11 +56,42 @@ const NavbarBrandLogo: FunctionalComponent = () => {
 
     <span
       v-if="navbarBrandTitle"
-      class="site-name"
-      :class="{ 'can-hide': navbarBrandLogo }"
+      class="vp-site-name"
+      :class="{ 'vp-hide-mobile': navbarBrandLogo }"
       :aria-hidden="navBarLogoAltMatchesTitle"
     >
       {{ navbarBrandTitle }}
     </span>
   </RouteLink>
 </template>
+
+<style lang="scss">
+@import '../styles/variables';
+
+.vp-site-logo {
+  vertical-align: top;
+  height: var(--navbar-line-height);
+  margin-right: var(--navbar-padding-v);
+}
+
+.vp-site-name {
+  position: relative;
+  color: var(--c-text);
+  font-weight: 600;
+  font-size: 1.3rem;
+
+  @media screen and (max-width: $MQMobile) {
+    display: block;
+
+    overflow: hidden;
+
+    // 5.5rem for navbar padding-inline
+    // 4.5rem for ColorModeSwitch and VPSearch
+    // 1rem for gap
+    width: calc(100vw - 11rem);
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+</style>
