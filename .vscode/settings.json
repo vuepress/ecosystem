@@ -57,5 +57,6 @@
     "vueuse",
     "waline",
     "zoomable"
-  ]
+  ],
+  "stylelint.validate": ["css", "scss"]
 }

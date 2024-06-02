@@ -1,6 +1,6 @@
 .search-box {
-  display: inline-block;
   position: relative;
+  display: inline-block;
   margin-left: 1rem;
 
   @media print {
@@ -8,38 +8,44 @@
   }
 
   input {
-    -webkit-appearance: none;
-    appearance: none;
-    cursor: text;
+    display: inline-block;
+
     width: var(--search-input-width);
     height: 2rem;
-    color: var(--search-text-color);
-    display: inline-block;
+    padding: 0 0.5rem 0 2rem;
     border: 1px solid var(--search-border-color);
     border-radius: 2rem;
-    font-size: 0.9rem;
-    line-height: 2rem;
-    padding: 0 0.5rem 0 2rem;
-    outline: none;
-    transition: all ease 0.3s;
+
     background: var(--search-bg-color) url('search.svg') 0.6rem 0.5rem no-repeat;
     background-size: 1rem;
+    color: var(--search-text-color);
+    outline: none;
+
+    font-size: 0.9rem;
+    line-height: 2rem;
+
+    cursor: text;
+
+    transition: all ease 0.3s;
+
+    -webkit-appearance: none;
+    appearance: none;
 
     @media (max-width: 719px) {
-      cursor: pointer;
+      position: relative;
       width: 0;
       border-color: transparent;
-      position: relative;
+      cursor: pointer;
     }
 
     &:focus {
-      cursor: auto;
       border-color: var(--search-accent-color);
+      cursor: auto;
 
       @media (max-width: 719px) {
-        cursor: text;
         left: 0;
         width: 10rem;
+        cursor: text;
       }
 
       @media (max-width: 419px) {
@@ -49,31 +55,33 @@
   }
 
   .suggestions {
-    background: var(--search-bg-color);
-    width: var(--search-result-width);
     position: absolute;
     top: 2rem;
     right: 0;
+
+    width: var(--search-result-width);
+    padding: 0.4rem;
     border: 1px solid var(--search-border-color);
     border-radius: 6px;
-    padding: 0.4rem;
+
+    background: var(--search-bg-color);
     list-style-type: none;
 
     @media (max-width: 419px) {
-      width: calc(100vw - 4rem);
       right: -0.5rem;
+      width: calc(100vw - 4rem);
     }
   }
 
   .suggestion {
-    line-height: 1.4;
     padding: 0.4rem 0.6rem;
     border-radius: 4px;
+    line-height: 1.4;
     cursor: pointer;
 
     a {
-      white-space: normal;
       color: var(--search-item-text-color);
+      white-space: normal;
     }
 
     &.focus {
@@ -89,8 +97,8 @@
     }
 
     .page-header {
-      font-size: 0.9em;
       margin-left: 0.25em;
+      font-size: 0.9em;
     }
   }
 }

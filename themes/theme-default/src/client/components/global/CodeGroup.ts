@@ -130,7 +130,7 @@ export const CodeGroup = defineComponent({
       return h('div', { class: 'code-group' }, [
         h(
           'div',
-          { class: 'code-group__nav', role: 'tablist' },
+          { class: 'code-group-nav', role: 'tablist' },
           items.map((vnode, i) => {
             const isActive = i === activeIndex.value
             return h(
@@ -142,8 +142,8 @@ export const CodeGroup = defineComponent({
                   }
                 },
                 class: {
-                  'code-group__nav-tab': true,
-                  'code-group__nav-tab-active': isActive,
+                  'code-group-nav-tab': true,
+                  'active': isActive,
                 },
                 role: 'tab',
                 ariaSelected: isActive,

@@ -55,7 +55,7 @@ const contributors = useContributors()
 @import '../styles/variables';
 
 .vp-page-meta {
-  @include mixins.content_wrapper;
+  @include mixins.content-wrapper;
 
   display: flex;
   flex-wrap: wrap;

@@ -10,11 +10,7 @@ defineProps<{
 </script>
 
 <template>
-  <div
-    class="code-group-item"
-    :class="{ 'code-group-item__active': active }"
-    role="tabpanel"
-  >
+  <div class="code-group-item" :class="{ active }" role="tabpanel">
     <slot />
   </div>
 </template>

@@ -1,23 +1,26 @@
+/* stylelint-disable no-duplicate-selectors */
+/* stylelint-disable scss/comment-no-empty */
 @import '../variables';
 
 // the original font-size is 14px, 1.7 will make line-height be 23.8px
 $line-height: 1.7;
 
 pre[class*='language-'] {
-  font-family: var(--font-family-code);
-  font-size: 1em;
-  line-height: 1.5;
+  overflow: auto;
 
   margin: 0.5em 0;
-  overflow: auto;
+
+  font-size: 1em;
+  font-family: var(--font-family-code);
+  line-height: 1.5;
 }
 
 // ===============================
 // Forked and modified from prismjs/themes/prism-tomorrow.css
 
 pre[class*='language-'] {
-  color: #ccc;
   background: #2d2d2d;
+  color: #ccc;
 }
 
 .token.comment,
@@ -82,6 +85,7 @@ pre[class*='language-'] {
 .token.bold {
   font-weight: bold;
 }
+
 .token.italic {
   font-style: italic;
 }
@@ -99,21 +103,26 @@ pre[class*='language-'] {
 .theme-default-content {
   pre,
   pre[class*='language-'] {
-    line-height: $line-height;
+    overflow: auto;
     margin: 0.85rem 0;
     border-radius: 6px;
-    overflow: auto;
+    line-height: $line-height;
 
     code {
-      box-sizing: border-box;
-      color: #fff;
-      padding: 1.3rem 1.5rem;
       display: block;
+
+      box-sizing: border-box;
+
       width: fit-content;
       min-width: 100%;
-      background-color: transparent !important;
+      padding: 1.3rem 1.5rem;
       border-radius: 0;
+
+      background-color: transparent !important;
+      color: #fff;
+
       overflow-wrap: unset;
+
       -webkit-font-smoothing: auto;
       -moz-osx-font-smoothing: auto;
     }
@@ -126,25 +135,29 @@ pre[class*='language-'] {
 
 div[class*='language-'] {
   position: relative;
-  background-color: var(--code-bg-color);
   border-radius: 6px;
+  background-color: var(--code-bg-color);
 
   &::before {
     content: attr(data-title);
+
     position: absolute;
-    z-index: 3;
     top: 0.8em;
     right: 1em;
-    font-size: 0.75rem;
+    z-index: 3;
+
     color: var(--code-ln-color);
+
+    font-size: 0.75rem;
   }
 
   pre,
   pre[class*='language-'] {
-    // force override the background color to be compatible with shiki
-    background: transparent !important;
     position: relative;
     z-index: 1;
+
+    // force override the background color to be compatible with shiki
+    background: transparent !important;
   }
 
   &:not(.line-numbers-mode) {
@@ -155,8 +168,8 @@ div[class*='language-'] {
 
   &.line-numbers-mode {
     pre {
-      margin-left: var(--code-ln-wrapper-width);
       vertical-align: middle;
+      margin-left: var(--code-ln-wrapper-width);
     }
 
     code {
@@ -166,35 +179,41 @@ div[class*='language-'] {
     .line-numbers {
       position: absolute;
       top: 0;
+
       width: var(--code-ln-wrapper-width);
-      text-align: center;
-      color: var(--code-ln-color);
       padding-top: 1.3rem;
+
+      color: var(--code-ln-color);
+
       font-size: 0.875em;
       line-height: $line-height;
       counter-reset: line-number;
+      text-align: center;
 
       .line-number {
         position: relative;
         z-index: 3;
         user-select: none;
 
+        /* stylelint-disable-next-line max-nesting-depth */
         &::before {
-          counter-increment: line-number;
           content: counter(line-number);
+          counter-increment: line-number;
         }
       }
     }
 
     &::after {
       content: '';
+
       position: absolute;
       top: 0;
       left: 0;
+
       width: var(--code-ln-wrapper-width);
       height: 100%;
-      border-radius: 6px 0 0 6px;
       border-right: 1px solid var(--code-hl-bg-color);
+      border-radius: 6px 0 0 6px;
     }
   }
 }
@@ -236,12 +255,15 @@ div[class*='language-'] {
   // - `// [\!code warning:3]`
   // - `// [\!code error:3]`
   .line.highlighted {
-    background-color: var(--code-hl-bg-color);
-    transition: background-color 0.5s;
+    display: inline-block;
+
+    width: 100%;
     margin: 0 -24px;
     padding: 0 24px;
-    width: 100%;
-    display: inline-block;
+
+    background-color: var(--code-hl-bg-color);
+
+    transition: background-color 0.5s;
 
     &.error {
       background-color: var(--code-hl-error-bg-color);
@@ -257,11 +279,13 @@ div[class*='language-'] {
   // - class="diff add": `// [\!code ++]` or `// [\!code ++:3]`
   // - class="diff remove":  `// [\!code --]` or `// [\!code --:3]`
   .line.diff {
-    transition: background-color 0.5s;
+    display: inline-block;
+
+    width: 100%;
     margin: 0 -24px;
     padding: 0 24px;
-    width: 100%;
-    display: inline-block;
+
+    transition: background-color 0.5s;
 
     &::before {
       position: absolute;
@@ -293,16 +317,16 @@ div[class*='language-'] {
   // - `// [\!code focus]`
   // - `// [\!code focus:3]`
   .has-focused-lines .line:not(.has-focus) {
-    filter: blur(0.095rem);
     opacity: 0.7;
+    filter: blur(0.095rem);
     transition:
       filter 0.35s,
       opacity 0.35s;
   }
 
   &:hover .has-focused-lines .line:not(.has-focus) {
-    filter: blur(0);
     opacity: 1;
+    filter: blur(0);
   }
 }
 

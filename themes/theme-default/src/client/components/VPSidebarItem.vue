@@ -110,7 +110,7 @@ onBeforeUnmount(() => {
     transition: color 0.15s ease;
 
     + .vp-sidebar-children {
-      @include mixins.dropdown_wrapper;
+      @include mixins.dropdown-wrapper;
 
       margin-bottom: 0.75rem;
     }

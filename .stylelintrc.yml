@@ -1,0 +1,14 @@
+extends:
+  - stylelint-config-hope
+rules:
+  declaration-block-no-redundant-longhand-properties: true
+  media-feature-range-notation: prefix
+  no-descending-specificity: null
+ignoreFiles:
+  - .cache/
+  - .temp/
+  - '**/__fixtures__/**'
+  - node_modules/
+  - '**/lib/**/'
+  - '**/*.module.scss'
+  - '**/empty.scss'
