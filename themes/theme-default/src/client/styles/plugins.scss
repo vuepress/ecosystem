@@ -6,15 +6,15 @@
 }
 
 .vp-navbar {
-  // plugin-search
-  .search-box {
-    vertical-align: top;
-    flex: 0 0 auto;
-  }
-
   // plugin-docsearch
   /* stylelint-disable-next-line selector-class-pattern */
   .DocSearch {
     transition: background-color var(--t-color);
+  }
+
+  // plugin-search
+  .search-box {
+    vertical-align: top;
+    flex: 0 0 auto;
   }
 }

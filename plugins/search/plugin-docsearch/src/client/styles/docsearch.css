@@ -1,5 +1,6 @@
+/* stylelint-disable selector-class-pattern */
+
 @media (max-width: 750px) {
-  /* stylelint-disable-next-line selector-class-pattern */
   .DocSearch-Container {
     /* fix the search modal on mobile */
     position: fixed;
@@ -7,9 +8,8 @@
 }
 
 @media print {
-  /* stylelint-disable-next-line selector-class-pattern */
-  .DocSearch-Button,
-  #docsearch-container {
+  #docsearch-container,
+  .DocSearch-Button {
     display: none;
   }
 }
