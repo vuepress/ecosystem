@@ -652,6 +652,9 @@ importers:
 
   plugins/markdown/plugin-prismjs:
     dependencies:
+      '@vuepress/highlighter-helper':
+        specifier: workspace:*
+        version: link:../../../tools/highlighter-helper
       prismjs:
         specifier: ^1.29.0
         version: 1.29.0
@@ -677,6 +680,9 @@ importers:
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../../../tools/helper
+      '@vuepress/highlighter-helper':
+        specifier: workspace:*
+        version: link:../../../tools/highlighter-helper
       nanoid:
         specifier: ^5.0.7
         version: 5.0.7
@@ -937,6 +943,12 @@ importers:
       vite:
         specifier: 5.2.11 || >5.2.12 <5.3.0
         version: 5.2.11(@types/node@20.13.0)(lightningcss@1.25.1)(sass@1.77.4)(terser@5.31.0)
+
+  tools/highlighter-helper:
+    dependencies:
+      vuepress:
+        specifier: 2.0.0-rc.13
+        version: 2.0.0-rc.13(@vuepress/bundler-vite@2.0.0-rc.13(@types/node@20.13.0)(jiti@1.21.0)(lightningcss@1.25.1)(sass@1.77.4)(terser@5.31.0)(tsx@4.11.0)(typescript@5.4.5))(@vuepress/bundler-webpack@2.0.0-rc.13(typescript@5.4.5))(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
 
   tools/vp-update:
     dependencies:
