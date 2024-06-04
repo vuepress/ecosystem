@@ -198,16 +198,16 @@ export default {
 
 ## prev
 
-- 类型： `string`
+- 类型： `string | false`
 - 默认值： `'Prev'`
 - 详情：
 
-  上一页按钮的文字。
+  上一页按钮的文字。设置为 `false` 时，将隐藏上一页按钮。
 
 ## next
 
-- 类型： `string`
+- 类型： `string | false`
 - 默认值： `'Next'`
 - 详情：
 
-  下一页按钮的文字。
+  下一页按钮的文字。设置为 `false` 时，将隐藏下一页按钮。

@@ -332,10 +332,10 @@ export interface DefaultThemeLocaleData extends LocaleData {
   /**
    * text for prev link
    */
-  prev?: string
+  prev?: string | false
 
   /**
    * text for next link
    */
-  next?: string
+  next?: string | false
 }
