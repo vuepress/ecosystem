@@ -312,7 +312,7 @@ features:
 
 ### prev
 
-- 类型： `AutoLinkConfig | string`
+- 类型： `AutoLinkConfig | string | false`
 
 - 详情：
 
@@ -324,6 +324,7 @@ features:
 
   - `AutoLinkConfig` 对象应该有一个 `text` 字段和一个 `link` 字段。
   - 字符串应为目标页面文件的路径。它将会被转换为 `AutoLinkConfig` 对象，将页面标题作为 `text` ，将页面路由路径作为 `link` 。
+  - 如果你不想显示上一个页面的链接，可以将其设置为 `false` 。
 
 - 示例：
 
@@ -349,7 +350,7 @@ prev: ../../guide/getting-started.md
 
 ### next
 
-- 类型： `AutoLinkConfig | string`
+- 类型： `AutoLinkConfig | string | false`
 
 - 详情：
 

@@ -115,7 +115,7 @@ export const useRelatedLinks = (): RelatedLinks => {
     return prevConfig === false
       ? null
       : prevConfig ??
-          (themeLocale.value.prevLink === false
+          (themeLocale.value.prev === false
             ? null
             : resolveFromSidebarItems(sidebarItems.value, route.path, -1))
   })
@@ -129,7 +129,7 @@ export const useRelatedLinks = (): RelatedLinks => {
     return nextConfig === false
       ? null
       : nextConfig ??
-          (themeLocale.value.nextLink === false
+          (themeLocale.value.next === false
             ? null
             : resolveFromSidebarItems(sidebarItems.value, route.path, 1))
   })

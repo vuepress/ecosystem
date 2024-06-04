@@ -198,7 +198,7 @@ export default {
 
 ## prev
 
-- Type: `string`
+- Type: `string | false`
 
 - Default: `'Prev'`
 
@@ -206,10 +206,14 @@ export default {
 
   Text for the previous page navigation button.
 
+  Set to `false` to disable the previous page navigation button.
+
 ## next
 
-- Type: `string`
+- Type: `string | false`
 - Default: `'Next'`
 - Details:
 
   Text for the next page navigation button.
+
+  Set to `false` to disable the next page navigation button.
