@@ -24,9 +24,9 @@ a {
 }
 
 code {
-  font-family: var(--font-family-code);
-  color: var(--c-text-lighter);
   background-color: var(--c-bg-light);
+  color: var(--c-text-lighter);
+  font-family: var(--font-family-code);
   transition: background-color var(--t-color);
 
   p a & {
@@ -39,8 +39,8 @@ kbd {
 }
 
 blockquote {
-  color: var(--c-text-quote);
   border-color: var(--c-border-dark);
+  color: var(--c-text-quote);
 }
 
 hr {

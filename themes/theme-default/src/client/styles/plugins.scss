@@ -2,18 +2,19 @@
 
 // plugin-comment
 #vp-comment {
-  @include mixins.content_wrapper;
+  @include mixins.content-wrapper;
 }
 
 .vp-navbar {
-  // plugin-search
-  .search-box {
-    flex: 0 0 auto;
-    vertical-align: top;
-  }
-
   // plugin-docsearch
+  /* stylelint-disable-next-line selector-class-pattern */
   .DocSearch {
     transition: background-color var(--t-color);
+  }
+
+  // plugin-search
+  .search-box {
+    vertical-align: top;
+    flex: 0 0 auto;
   }
 }

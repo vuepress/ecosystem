@@ -6,6 +6,7 @@
 
   .custom-container-title {
     font-weight: 600;
+
     &:not(:only-child) {
       margin-bottom: -0.4rem;
     }
@@ -14,10 +15,10 @@
   &.tip,
   &.warning,
   &.danger {
+    margin: 1rem 0;
     padding: 0.1rem 1.5rem;
     border-left-width: 0.5rem;
     border-left-style: solid;
-    margin: 1rem 0;
   }
 
   &.tip {
@@ -59,8 +60,8 @@
     }
 
     code {
-      color: var(--c-warning-text-light);
       background-color: var(--c-warning-bg-light);
+      color: var(--c-warning-text-light);
     }
 
     details {
@@ -93,8 +94,8 @@
     }
 
     code {
-      color: var(--c-danger-text-light);
       background-color: var(--c-danger-bg-light);
+      color: var(--c-danger-text-light);
     }
 
     details {
@@ -107,11 +108,14 @@
   }
 
   &.details {
-    display: block;
     position: relative;
-    border-radius: 2px;
+
+    display: block;
+
     margin: 1.6em 0;
     padding: 1.6em;
+    border-radius: 2px;
+
     background-color: var(--c-details-bg);
 
     code {

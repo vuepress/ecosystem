@@ -58,7 +58,7 @@ defineSlots<{
   }
 
   .theme-default-content {
-    @include mixins.content_wrapper;
+    @include mixins.content-wrapper;
 
     padding-top: 0;
   }

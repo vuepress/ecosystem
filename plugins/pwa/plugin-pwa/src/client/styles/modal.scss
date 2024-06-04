@@ -32,7 +32,6 @@
 
 .modal-button {
   position: fixed;
-
   right: 1rem;
   bottom: 1rem;
   z-index: 50;
@@ -145,12 +144,16 @@
     }
 
     .close-button {
-      border-width: 0;
       float: right;
+
+      border-width: 0;
+
       background: transparent;
       color: var(--pwa-content-color);
-      transition: color 0.3s ease;
+
       cursor: pointer;
+
+      transition: color 0.3s ease;
 
       &:hover,
       &:focus {
@@ -298,8 +301,11 @@
     button {
       width: 4em;
       border-width: 0;
+
       background: transparent;
+
       cursor: pointer;
+
       transition: background 0.3s;
 
       &:hover,
@@ -381,6 +387,7 @@
     padding: 0.5rem 1rem;
     border: 2px solid var(--pwa-btn-bg-color);
     border-radius: 20px;
+
     background: transparent;
 
     font-weight: 600;

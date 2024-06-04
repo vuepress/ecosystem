@@ -38,7 +38,7 @@ const tagMap = useBlogCategory('tag')
 @use '@vuepress/theme-default/styles/mixins';
 
 .tag-wrapper {
-  @include mixins.content_wrapper;
+  @include mixins.content-wrapper;
 
   padding-top: 1rem !important;
   padding-bottom: 0 !important;

@@ -140,7 +140,7 @@ watch(
 
 .vp-navbar-dropdown {
   .vp-navbar-dropdown-wrapper.mobile & {
-    @include mixins.dropdown_wrapper;
+    @include mixins.dropdown-wrapper;
 
     padding-top: 0.5rem;
   }

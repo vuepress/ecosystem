@@ -1,3 +1,5 @@
+/* stylelint-disable selector-class-pattern */
+
 @media (max-width: 750px) {
   .DocSearch-Container {
     /* fix the search modal on mobile */

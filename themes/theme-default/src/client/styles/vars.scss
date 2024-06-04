@@ -4,14 +4,14 @@
   --c-brand-light: #4abf8a;
 
   // background colors
-  --c-bg: #ffffff;
+  --c-bg: #fff;
   --c-bg-light: #f3f4f5;
-  --c-bg-lighter: #eeeeee;
+  --c-bg-lighter: #eee;
   --c-bg-dark: #ebebec;
   --c-bg-darker: #e6e6e6;
   --c-bg-navbar: var(--c-bg);
   --c-bg-sidebar: var(--c-bg);
-  --c-bg-arrow: #cccccc;
+  --c-bg-arrow: #ccc;
 
   // text colors
   --c-text: #2c3e50;
@@ -19,7 +19,7 @@
   --c-text-light: #3a5169;
   --c-text-lighter: #4e6e8e;
   --c-text-lightest: #6a8bad;
-  --c-text-quote: #999999;
+  --c-text-quote: #999;
 
   // border colors
   --c-border: #eaecef;
@@ -49,11 +49,11 @@
   --c-danger-border-dark: #f1abab;
   --c-danger-details-bg: #ffd4d4;
   --c-danger-title: #ed1e2c;
-  --c-danger-text: #660000;
+  --c-danger-text: #600;
   --c-danger-text-accent: #bd1a1a;
   --c-danger-text-light: #b5474d;
   --c-danger-text-quote: #c15b5b;
-  --c-details-bg: #eeeeee;
+  --c-details-bg: #eee;
 
   // badge component colors
   --c-badge-tip: var(--c-tip);
@@ -63,7 +63,7 @@
   --c-badge-danger-text: var(--c-bg);
 
   // code group colors
-  --c-code-group-tab-title: rgba(255, 255, 255, 0.9);
+  --c-code-group-tab-title: rgb(255 255 255 / 90%);
   --c-code-group-tab-bg: var(--code-bg-color);
   --c-code-group-tab-outline: var(var(--c-code-group-tab-title));
   --c-code-group-tab-active-border: var(--c-brand);
@@ -74,20 +74,20 @@
 
   // code blocks vars
   --code-bg-color: #282c34;
-  --code-hl-bg-color: rgba(0, 0, 0, 0.66);
-  --code-hl-error-bg-color: rgba(244, 63, 94, 0.16);
-  --code-hl-warning-bg-color: rgba(255, 193, 7, 0.16);
-  --code-line-diff-remove-color: rgba(244, 63, 94, 0.16);
+  --code-hl-bg-color: rgb(0 0 0 / 66%);
+  --code-hl-error-bg-color: rgb(244 63 94 / 16%);
+  --code-hl-warning-bg-color: rgb(255 193 7 / 16%);
+  --code-line-diff-remove-color: rgb(244 63 94 / 16%);
   --code-line-diff-remove-symbol-color: #e0575b;
-  --code-line-diff-add-color: rgba(16, 185, 129, 0.16);
+  --code-line-diff-add-color: rgb(16 185 129 / 16%);
   --code-line-diff-add-symbol-color: #298459;
   --code-ln-color: #9e9e9e;
   --code-ln-wrapper-width: 3.5rem;
 
   // font vars
-  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --font-family-code: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  --font-family: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', roboto, oxygen,
+    ubuntu, cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-family-code: consolas, monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 
   // layout vars
   --navbar-height: 3.6rem;
@@ -131,12 +131,13 @@
 }
 
 // plugin-docsearch
+/* stylelint-disable-next-line selector-class-pattern */
 .DocSearch {
   --docsearch-primary-color: var(--c-brand);
   --docsearch-text-color: var(--c-text);
   --docsearch-highlight-color: var(--c-brand);
   --docsearch-muted-color: var(--c-text-quote);
-  --docsearch-container-background: rgba(9, 10, 17, 0.8);
+  --docsearch-container-background: rgb(9 10 17 / 80%);
   --docsearch-modal-background: var(--c-bg-light);
   --docsearch-searchbox-background: var(--c-bg-lighter);
   --docsearch-searchbox-focus-background: var(--c-bg);
@@ -157,11 +158,9 @@
 .vp-notice-wrapper {
   --notice-color: var(--c-text);
   --notice-bg-color: var(--c-bg);
-
   --notice-primary-color: var(--c-brand);
   --notice-primary-text-color: var(--c-bg);
   --notice-primary-hover-color: var(--c-brand-light);
-
   --notice-button-color: var(--c-bg-light);
   --notice-button-hover-color: var(--c-bg-lighter);
 }
@@ -171,14 +170,12 @@
   --nprogress-color: var(--c-brand);
 }
 
-// plugin-photo-swipe
 body {
+  // plugin-photo-swipe
   --photo-swipe-bullet: var(--c-bg);
   --photo-swipe-bullet-active: var(--c-brand);
-}
 
-// plugin-pwa-popup
-body {
+  // plugin-pwa-popup
   --pwa-text-color: var(--c-text);
   --pwa-bg-color: var(--c-bg);
   --pwa-border-color: var(--c-brand);
@@ -204,7 +201,6 @@ body {
   --search-accent-color: var(--c-brand);
   --search-text-color: var(--c-text);
   --search-border-color: var(--c-border);
-
   --search-item-text-color: var(--c-text-lighter);
   --search-item-focus-bg-color: var(--c-bg-light);
 }

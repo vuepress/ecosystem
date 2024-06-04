@@ -110,7 +110,7 @@ onBeforeUnmount(() => {
     transition: color 0.15s ease;
 
     + .vp-sidebar-children {
-      @include mixins.dropdown_wrapper;
+      @include mixins.dropdown-wrapper;
 
       margin-bottom: 0.75rem;
     }
@@ -133,7 +133,7 @@ onBeforeUnmount(() => {
     font-size: 1em;
     line-height: 1.4;
 
-    & + .vp-sidebar-children {
+    + .vp-sidebar-children {
       padding-left: 1rem;
       font-size: 0.95em;
     }
