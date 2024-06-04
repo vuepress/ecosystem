@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.34](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.33...v2.0.0-rc.34) (2024-06-04)
+
+### Features
+
+- **plugin-photo-swipe:** support download and fullscreen option, close [#185](https://github.com/vuepress/ecosystem/issues/185) ([#192](https://github.com/vuepress/ecosystem/issues/192)) ([ce49954](https://github.com/vuepress/ecosystem/commit/ce499542f45526039b108070914b7373e90e1887))
+
 # [2.0.0-rc.33](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.32...v2.0.0-rc.33) (2024-05-30)
 
 **Note:** Version bump only for package @vuepress/plugin-photo-swipe

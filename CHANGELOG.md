@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.34](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.33...v2.0.0-rc.34) (2024-06-04)
+
+### Bug Fixes
+
+- **theme-default:** fix h2 normalize, close [#190](https://github.com/vuepress/ecosystem/issues/190) ([03646b9](https://github.com/vuepress/ecosystem/commit/03646b9c2a6477af71ec493dc583ccf4ea7fd52a))
+
+### Features
+
+- extract lineNumbers plugin to @vuepress/highlighter-helper ([#193](https://github.com/vuepress/ecosystem/issues/193)) ([969a744](https://github.com/vuepress/ecosystem/commit/969a744155f9e37f05ce52e61537e65b757d5649))
+- **helper:** add `getHeaders()` ([#189](https://github.com/vuepress/ecosystem/issues/189)) ([421fece](https://github.com/vuepress/ecosystem/commit/421fece35335278b6c77af636b4a3d200b1104ea))
+- **plugin-comment:** export use apis ([6ac961f](https://github.com/vuepress/ecosystem/commit/6ac961f33f8211b01938323588faa49757d74516))
+- **plugin-photo-swipe:** support download and fullscreen option, close [#185](https://github.com/vuepress/ecosystem/issues/185) ([#192](https://github.com/vuepress/ecosystem/issues/192)) ([ce49954](https://github.com/vuepress/ecosystem/commit/ce499542f45526039b108070914b7373e90e1887))
+
 # [2.0.0-rc.33](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.32...v2.0.0-rc.33) (2024-05-30)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.34](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.33...v2.0.0-rc.34) (2024-06-04)
+
+### Bug Fixes
+
+- **theme-default:** fix h2 normalize, close [#190](https://github.com/vuepress/ecosystem/issues/190) ([03646b9](https://github.com/vuepress/ecosystem/commit/03646b9c2a6477af71ec493dc583ccf4ea7fd52a))
+
 # [2.0.0-rc.33](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.32...v2.0.0-rc.33) (2024-05-30)
 
 ### Bug Fixes
