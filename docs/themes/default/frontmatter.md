@@ -301,7 +301,7 @@ Frontmatter in this section will only take effect in normal pages.
 
 ### sidebarDepth
 
-- Type: `number`
+- Type: `false | number | [number, number] | 'deep'`
 
 - Details:
 

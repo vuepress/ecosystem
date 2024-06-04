@@ -379,22 +379,18 @@ export default {
 
 ### sidebarDepth
 
-- 类型： `number`
+- 类型： `false | number | [number, number] | 'deep'`
 
-- 默认值： `2`
+- 默认值： `[2, 3]`
 
 - 详情：
 
   设置根据页面标题自动生成的侧边栏的最大深度。
 
-  - 设为 `0` 来禁用所有级别的页面标题。
-  - 设为 `1` 来包含 `<h2>` 标题。
-  - 设为 `2` 来包含 `<h2>` 和 `<h3>` 标题。
-  - ...
-
-  最大值取决于你通过 [markdown.headers.level](https://v2.vuepress.vuejs.org/zh/config.html#markdown-headers) 提取了哪些级别的标题。
-
-  由于 `markdown.headers.level` 的默认值是 `[2, 3]` ，因此 `sidebarDepth` 的默认最大值是 `2` 。
+  - `false`: 不返回标题列表
+  - `number`: 只获取指定的单个层级的标题。 `1` 至 `6` 表示 `<h1>` 至 `<h6>`。
+  - `[number, number]`: 标题层级元组，第一个数字应小于第二个数字。例如，`[2, 4]` 表示显示从 `<h2>` 到 `<h4>` 的所有标题。
+  - `deep`: 等同于 `[2, 6]`, 表示获取从 `<h2>` 到 `<h6>` 的所有标题。
 
   你可以通过页面的 [sidebarDepth](./frontmatter.md#sidebardepth) frontmatter 来覆盖这个全局配置。
 

@@ -378,22 +378,18 @@ export default {
 
 ### sidebarDepth
 
-- Type: `number`
+- Type: `false | number | [number, number] | 'deep'`
 
-- Default: `2`
+- Default: `[2, 3]`
 
 - Details:
 
   Set the maximum depth of the sidebar children which are automatically generated from the page headers.
 
-  - Set to `0` to disable all levels of headers.
-  - Set to `1` to include `<h2>` headers.
-  - Set to `2` to include `<h2>` and `<h3>` headers.
-  - ...
-
-  The max value depends on which levels of headers you have extracted via [markdown.headers.level](https://v2.vuepress.vuejs.org/reference/config.html#markdown-headers).
-
-  The default value of `markdown.headers.level` is `[2, 3]`, so the default max value of `sidebarDepth` is `2`.
+  - `false`: No headers.
+  - `number`: only headings of that level will be displayed. `1` to `6` for `<h1>` to `<h6>`
+  - `[number, number]`: headings level tuple, where the first number should be less than the second number, for example, `[2, 4]` which means all headings from `<h2>` to `<h4>` will be displayed.
+  - `deep`: same as `[2, 6]`, which means all headings from `<h2>` to `<h6>` will be displayed.
 
   You can override this global option via [sidebarDepth](./frontmatter.md#sidebardepth) frontmatter in your pages.
 

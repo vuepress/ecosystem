@@ -17,7 +17,7 @@ onMounted(() => {
 
       // get the active sidebar item DOM, whose href equals to the current route
       const activeSidebarItem = document.querySelector(
-        `.vp=sidebar a.vp-sidebar-item[href="${route.path}${hash}"]`,
+        `.vp-sidebar a.vp-sidebar-item[href="${route.path}${hash}"]`,
       )
       if (!activeSidebarItem) return
 

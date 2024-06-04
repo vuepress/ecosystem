@@ -2,6 +2,7 @@
 import VPPageMeta from '@theme/VPPageMeta.vue'
 import VPPageNav from '@theme/VPPageNav.vue'
 import { Content } from 'vuepress/client'
+import { setupHeaders } from '../composables/index.js'
 
 defineSlots<{
   'top'?: (props: Record<never, never>) => any
@@ -9,6 +10,8 @@ defineSlots<{
   'content-top'?: (props: Record<never, never>) => any
   'content-bottom'?: (props: Record<never, never>) => any
 }>()
+
+setupHeaders()
 </script>
 
 <template>
