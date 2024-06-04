@@ -1,23 +1,17 @@
+import { lineNumbers as lineNumbersPlugin } from '@vuepress/highlighter-helper'
+import type { MarkdownItLineNumbersOptions } from '@vuepress/highlighter-helper'
 import type { Plugin } from 'vuepress/core'
 import { loadLanguages } from './loadLanguages.js'
-import {
-  highlightPlugin,
-  lineNumbersPlugin,
-  preWrapperPlugin,
-} from './markdown/index.js'
+import { highlightPlugin, preWrapperPlugin } from './markdown/index.js'
 import { resolveHighlighter } from './resolveHighlighter.js'
-import type {
-  HighlightOptions,
-  LineNumbersOptions,
-  PreWrapperOptions,
-} from './types.js'
+import type { HighlightOptions, PreWrapperOptions } from './types.js'
 
 /**
  * Options of @vuepress/plugin-prismjs
  */
 export interface PrismjsPluginOptions
-  extends PreWrapperOptions,
-    LineNumbersOptions,
+  extends Pick<MarkdownItLineNumbersOptions, 'lineNumbers'>,
+    PreWrapperOptions,
     HighlightOptions {
   /**
    * Languages to preload
@@ -51,7 +45,7 @@ export const prismjsPlugin = ({
     md.use<HighlightOptions>(highlightPlugin, options)
     md.use<PreWrapperOptions>(preWrapperPlugin, { preWrapper })
     if (preWrapper) {
-      md.use<LineNumbersOptions>(lineNumbersPlugin, { lineNumbers })
+      md.use(lineNumbersPlugin, { lineNumbers, removeLastLine: true })
     }
   },
 })

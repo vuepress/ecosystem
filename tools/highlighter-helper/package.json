@@ -1,25 +1,27 @@
 {
-  "name": "@vuepress/plugin-shiki",
+  "name": "@vuepress/highlighter-helper",
   "version": "2.0.0-rc.33",
-  "description": "VuePress plugin - shiki",
+  "description": "VuePress Highlighter helper",
   "keywords": [
-    "vuepress-plugin",
     "vuepress",
-    "plugin",
-    "shiki",
-    "highlight"
+    "helper",
+    "highlighter-helper"
   ],
-  "homepage": "https://ecosystem.vuejs.press/plugins/markdown/shiki.html",
+  "homepage": "https://ecosystem.vuejs.press/tools/highlighter-helper/",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/ecosystem.git",
-    "directory": "plugins/markdown/plugin-shiki"
+    "directory": "tools/highlighter-helper"
   },
   "license": "MIT",
-  "author": "meteorlxy",
+  "author": {
+    "name": "Mr.Hope",
+    "email": "mister-hope@outlook.com",
+    "url": "https://mister-hope.com"
+  },
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
@@ -32,23 +34,13 @@
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
-    "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
-  },
-  "dependencies": {
-    "@shikijs/transformers": "^1.6.1",
-    "@vuepress/highlighter-helper": "workspace:*",
-    "@vuepress/helper": "workspace:*",
-    "nanoid": "^5.0.7",
-    "shiki": "^1.6.1"
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
+    "style": "sass src:lib --no-source-map"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.13"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {
-    "@types/markdown-it": "^14.1.1",
-    "markdown-it": "^14.1.0"
   }
 }

@@ -1,18 +1,16 @@
 import type { Markdown } from 'vuepress/markdown'
-import type { LineNumbersOptions } from '../types.js'
-import { resolveLineNumbers } from '../utils/index.js'
+import type { MarkdownItLineNumbersOptions } from './options.js'
+import { resolveLineNumbers } from './resolveLineNumbers.js'
 
-const LINE_NUMBERS_START_REGEXP = /:line-numbers=(\d+)\b/
-
-export const lineNumbersPlugin = (
+export const lineNumbers = (
   md: Markdown,
-  { lineNumbers = true }: LineNumbersOptions = {},
+  { lineNumbers = true, removeLastLine }: MarkdownItLineNumbersOptions = {},
 ): void => {
   const rawFence = md.renderer.rules.fence!
 
   md.renderer.rules.fence = (...args) => {
-    const [tokens, idx] = args
-    const token = tokens[idx]
+    const [tokens, index] = args
+    const token = tokens[index]
     // get token info
     const info = token.info ? md.utils.unescapeAll(token.info).trim() : ''
     const rawCode = rawFence(...args)
@@ -22,25 +20,29 @@ export const lineNumbersPlugin = (
       rawCode.indexOf('</code>'),
     )
 
-    const lines = code.split('\n').slice(0, -1)
+    const lines = code.split('\n')
+
+    if (removeLastLine) {
+      lines.pop()
+    }
 
     // resolve line-numbers mark from token info
-    const useLineNumbers =
+    const lineNumbersInfo =
       resolveLineNumbers(info) ??
       (typeof lineNumbers === 'number'
         ? lines.length >= lineNumbers
         : lineNumbers)
 
-    if (!useLineNumbers) {
+    if (lineNumbersInfo === false) {
       return rawCode
     }
 
     const startNumbers =
-      Number(info.match(LINE_NUMBERS_START_REGEXP)?.[1] ?? 1) - 1
+      typeof lineNumbersInfo === 'number' ? lineNumbersInfo - 1 : 0
     const lineNumbersStyle = `style="counter-reset:line-number ${startNumbers}"`
 
-    const lineNumbersCode = [...Array(lines.length)]
-      .map(() => `<div class="line-number"></div>`)
+    const lineNumbersCode = Array(lines.length)
+      .fill('<div class="line-number"></div>')
       .join('')
 
     const lineNumbersWrapperCode = `<div class="line-numbers" aria-hidden="true" ${lineNumbersStyle}>${lineNumbersCode}</div>`

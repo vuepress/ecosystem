@@ -1,3 +1,4 @@
+import { lineNumbers as lineNumbersPlugin } from '@vuepress/highlighter-helper'
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it, vi } from 'vitest'
 import type {
@@ -6,11 +7,7 @@ import type {
   PreWrapperOptions,
   PrismjsPluginOptions,
 } from '../src/node/index.js'
-import {
-  highlightPlugin,
-  lineNumbersPlugin,
-  preWrapperPlugin,
-} from '../src/node/index.js'
+import { highlightPlugin, preWrapperPlugin } from '../src/node/index.js'
 import { resolveHighlighter } from '../src/node/resolveHighlighter.js'
 
 const codeFence = '```'
@@ -29,7 +26,10 @@ const createMarkdown = ({
   md.use<HighlightOptions>(highlightPlugin, options)
   md.use<PreWrapperOptions>(preWrapperPlugin, { preWrapper })
   if (preWrapper) {
-    md.use<LineNumbersOptions>(lineNumbersPlugin, { lineNumbers })
+    md.use(lineNumbersPlugin, {
+      lineNumbers,
+      removeLastLine: true,
+    })
   }
   return md
 }

@@ -1,9 +1,9 @@
 import type { Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
+import { lineNumbers as lineNumbersPlugin } from '@vuepress/highlighter-helper'
 import {
   applyHighlighter,
   highlightLinesPlugin,
-  lineNumberPlugin,
   preWrapperPlugin,
 } from './markdown/index.js'
 import type { ShikiPluginOptions } from './options.js'
@@ -26,7 +26,7 @@ export const shikiPlugin = ({
     md.use(highlightLinesPlugin)
     md.use(preWrapperPlugin, { preWrapper })
     if (preWrapper) {
-      md.use(lineNumberPlugin, { lineNumbers })
+      md.use(lineNumbersPlugin, { lineNumbers })
     }
   },
 })

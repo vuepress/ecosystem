@@ -1,14 +1,14 @@
+import { lineNumbers as lineNumbersPlugin } from '@vuepress/highlighter-helper'
+import type { MarkdownItLineNumbersOptions } from '@vuepress/highlighter-helper'
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 import type { App } from 'vuepress'
 import {
   applyHighlighter,
   highlightLinesPlugin,
-  lineNumberPlugin,
   preWrapperPlugin,
 } from '../src/node/markdown/index.js'
 import type {
-  LineNumberOptions,
   PreWrapperOptions,
   ShikiHighlightOptions,
 } from '../src/node/types.js'
@@ -17,7 +17,7 @@ const createMarkdown = async ({
   preWrapper = true,
   lineNumbers = true,
   ...options
-}: LineNumberOptions &
+}: MarkdownItLineNumbersOptions &
   PreWrapperOptions &
   ShikiHighlightOptions = {}): Promise<MarkdownIt> => {
   const md = MarkdownIt()
@@ -27,7 +27,7 @@ const createMarkdown = async ({
   md.use(highlightLinesPlugin)
   md.use<PreWrapperOptions>(preWrapperPlugin, { preWrapper })
   if (preWrapper) {
-    md.use<LineNumberOptions>(lineNumberPlugin, { lineNumbers })
+    md.use<MarkdownItLineNumbersOptions>(lineNumbersPlugin, { lineNumbers })
   }
   return md
 }

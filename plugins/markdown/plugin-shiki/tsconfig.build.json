@@ -5,5 +5,8 @@
     "outDir": "./lib"
   },
   "include": ["./src"],
-  "references": [{ "path": "../../../tools/helper/tsconfig.build.json" }]
+  "references": [
+    { "path": "../../../tools/highlighter-helper/tsconfig.build.json" },
+    { "path": "../../../tools/helper/tsconfig.build.json" }
+  ]
 }
