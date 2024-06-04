@@ -1,6 +1,6 @@
+import { lineNumbers as lineNumbersPlugin } from '@vuepress/highlighter-helper'
 import type { Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
-import { lineNumbers as lineNumbersPlugin } from '@vuepress/highlighter-helper'
 import {
   applyHighlighter,
   highlightLinesPlugin,

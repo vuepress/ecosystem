@@ -35,12 +35,12 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
+    "@vuepress/highlighter-helper": "workspace:*",
     "prismjs": "^1.29.0"
   },
   "devDependencies": {
     "@types/markdown-it": "^14.1.1",
     "@types/prismjs": "^1.26.4",
-    "@vuepress/highlighter-helper": "workspace:*",
     "markdown-it": "^14.1.0"
   },
   "peerDependencies": {

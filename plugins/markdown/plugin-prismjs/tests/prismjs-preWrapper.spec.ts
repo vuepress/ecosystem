@@ -3,7 +3,6 @@ import MarkdownIt from 'markdown-it'
 import { describe, expect, it, vi } from 'vitest'
 import type {
   HighlightOptions,
-  LineNumbersOptions,
   PreWrapperOptions,
   PrismjsPluginOptions,
 } from '../src/node/index.js'
