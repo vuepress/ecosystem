@@ -8,10 +8,13 @@ import type { AutoLinkOptions } from '../../shared'
  * - Input: '/README.md'
  * - Output: { text: 'Home', link: '/' }
  */
-export const getAutoLink = (config: string): AutoLinkOptions => {
+export const getAutoLink = (
+  config: string,
+  currentPath?: string,
+): AutoLinkOptions => {
   const { notFound, meta, path } = resolveRoute<{
     title?: string
-  }>(config)
+  }>(config, currentPath)
 
   return notFound
     ? { text: path, link: path }
