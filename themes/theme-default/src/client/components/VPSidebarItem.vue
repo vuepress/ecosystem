@@ -133,7 +133,7 @@ onBeforeUnmount(() => {
     font-size: 1em;
     line-height: 1.4;
 
-    & + .vp-sidebar-children {
+    + .vp-sidebar-children {
       padding-left: 1rem;
       font-size: 0.95em;
     }

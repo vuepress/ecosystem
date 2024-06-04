@@ -1,9 +1,6 @@
 extends:
   - stylelint-config-hope
-rules:
-  declaration-block-no-redundant-longhand-properties: true
-  media-feature-range-notation: prefix
-  no-descending-specificity: null
+
 ignoreFiles:
   - .cache/
   - .temp/
@@ -12,3 +9,40 @@ ignoreFiles:
   - '**/lib/**/'
   - '**/*.module.scss'
   - '**/empty.scss'
+
+rules:
+  declaration-block-no-redundant-longhand-properties: true
+  media-feature-range-notation: prefix
+  no-descending-specificity: null
+
+overrides:
+  - files:
+      - '**/*.html'
+    extends:
+      - stylelint-config-html/html
+
+  - files:
+      - '**/*.vue'
+    extends:
+      - stylelint-config-html/vue
+
+    rules:
+      function-no-unknown:
+        - true
+        - ignoreFunctions:
+            - v-bind
+
+      selector-pseudo-class-no-unknown:
+        - true
+
+        - ignorePseudoClasses:
+            - deep
+            - global
+            - slotted
+
+      selector-pseudo-element-no-unknown:
+        - true
+        - ignorePseudoElements:
+            - v-deep
+            - v-global
+            - v-slotted

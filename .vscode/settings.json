@@ -58,5 +58,5 @@
     "waline",
     "zoomable"
   ],
-  "stylelint.validate": ["css", "scss"]
+  "stylelint.validate": ["css", "html", "scss", "vue"]
 }

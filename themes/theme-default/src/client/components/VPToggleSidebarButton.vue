@@ -24,6 +24,7 @@ const themeLocale = useThemeLocaleData()
 </template>
 
 <style lang="scss">
+/* stylelint-disable max-nesting-depth */
 @import '../styles/variables';
 
 .vp-toggle-sidebar-button {

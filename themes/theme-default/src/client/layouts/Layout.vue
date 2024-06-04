@@ -159,12 +159,14 @@ const onBeforeLeave = scrollPromise.pending
 
 .vp-sidebar-mask {
   position: fixed;
-  z-index: 9;
   top: 0;
   left: 0;
+  z-index: 9;
+
+  display: none;
+
   width: 100vw;
   height: 100vh;
-  display: none;
 }
 
 .vp-theme-container {
@@ -241,8 +243,8 @@ const onBeforeLeave = scrollPromise.pending
 
   &-enter-from,
   &-leave-to {
-    transform: translateY(10px);
     opacity: 0;
+    transform: translateY(10px);
   }
 }
 </style>
