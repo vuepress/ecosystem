@@ -4,11 +4,12 @@ import { usePageData, usePageFrontmatter } from 'vuepress/client'
 import type { PhotoSwipePluginLocaleData } from '../../shared/index.js'
 import { usePhotoSwipeOptions } from '../helpers/index.js'
 import { getImages, registerPhotoSwipe } from '../utils/index.js'
+import type { PhotoSwipeBehaviorOptions } from '../utils/index.js'
 
 import 'photoswipe/dist/photoswipe.css'
 import '../styles/photo-swipe.css'
 
-export interface UsePhotoSwipeOptions {
+export interface UsePhotoSwipeOptions extends PhotoSwipeBehaviorOptions {
   selector: string | string[]
   locales: Record<
     string,
@@ -16,14 +17,14 @@ export interface UsePhotoSwipeOptions {
   >
   /** @default 500 */
   delay?: number
-  /** @default true */
-  scrollToClose?: boolean
 }
 
 export const usePhotoSwipe = ({
   selector,
   locales,
   delay = 500,
+  download = true,
+  fullscreen = true,
   scrollToClose = true,
 }: UsePhotoSwipeOptions): void => {
   const photoSwipeOptions = usePhotoSwipeOptions()
@@ -42,14 +43,13 @@ export const usePhotoSwipe = ({
         .then(async () => {
           const imageSelector = isString(photoSwipe) ? photoSwipe : selector
 
-          destroy = await registerPhotoSwipe(
-            getImages(imageSelector),
-            {
-              ...photoSwipeOptions.value,
-              ...locale.value,
-            },
+          destroy = await registerPhotoSwipe(getImages(imageSelector), {
+            ...photoSwipeOptions.value,
+            ...locale.value,
+            download,
+            fullscreen,
             scrollToClose,
-          )
+          })
         })
   }
 
