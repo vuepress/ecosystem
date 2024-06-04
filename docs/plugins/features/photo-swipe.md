@@ -46,6 +46,18 @@ In preview mode, you can:
 - Default: `".theme-default-content :not(a) > img:not([no-view])"`
 - Details: Image selector
 
+### download
+
+- Type: `boolean`
+- Default: `true`
+- Details: Whether to show the download button.
+
+### fullscreen
+
+- Type: `boolean`
+- Default: `true`
+- Details: Whether to show the fullscreen button.
+
 ### scrollToClose
 
 - Type: `boolean`

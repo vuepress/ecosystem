@@ -5,6 +5,7 @@ import type { PhotoSwipeOptions } from '../helpers/index.js'
 import { LOADING_ICON } from './icon.js'
 import { getImageUrlInfo } from './images.js'
 import { initPhotoSwipe } from './initPhotoSwipe.js'
+import type { PhotoSwipeBehaviorOptions } from './typings.js'
 
 export interface PhotoSwipeState {
   open: (index: number) => void
@@ -14,8 +15,12 @@ export interface PhotoSwipeState {
 
 export const createPhotoSwipe = (
   images: string[],
-  photoSwipeOptions: PhotoSwipeOptions,
-  scrollToClose = true,
+  {
+    scrollToClose = true,
+    download = true,
+    fullscreen = true,
+    ...photoSwipeOptions
+  }: PhotoSwipeOptions & PhotoSwipeBehaviorOptions,
 ): Promise<PhotoSwipeState> =>
   import(/* webpackChunkName: "photo-swipe" */ 'photoswipe').then(
     ({ default: PhotoSwipe }) => {
@@ -52,7 +57,7 @@ export const createPhotoSwipe = (
               : {}),
           })
 
-          initPhotoSwipe(currentPhotoSwipe)
+          initPhotoSwipe(currentPhotoSwipe, { download, fullscreen })
 
           currentPhotoSwipe.addFilter('placeholderSrc', () => images[index])
           currentPhotoSwipe.init()
