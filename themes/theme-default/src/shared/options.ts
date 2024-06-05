@@ -192,14 +192,18 @@ export interface DefaultThemeLocaleData extends LocaleData {
   /**
    * Sidebar depth
    *
-   * - `false`: No headers.
-   * - `number`: only headings of that level will be displayed.
-   * - `[number, number]`: headings level tuple, where the first number should be less than the second number, for example, `[2, 4]` which means all headings from `<h2>` to `<h4>` will be displayed.
-   * - `deep`: same as `[2, 6]`, which means all headings from `<h2>` to `<h6>` will be displayed.
+   * - Set to `0` to disable all levels
+   * - Set to `1` to include `<h2>`
+   * - Set to `2` to include `<h2>` and `<h3>`
+   * - ...
    *
-   * @default [2, 3]
+   * The max value depends on which headers you have extracted
+   * via `markdown.headers.level`.
+   *
+   * The default value of `markdown.headers.level` is `[2, 3]`,
+   * so the default max value of `sidebarDepth` is `2`
    */
-  sidebarDepth?: false | number | [number, number] | 'deep'
+  sidebarDepth?: number
 
   /**
    * Page meta - edit link config

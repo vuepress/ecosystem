@@ -43,7 +43,7 @@ export interface DefaultThemeNormalPageFrontmatter
   lastUpdated?: boolean
   contributors?: boolean
   sidebar?: false | 'heading' | SidebarArrayOptions
-  sidebarDepth?: false | number | [number, number] | 'deep'
+  sidebarDepth?: number
   prev?: string | AutoLinkConfig
   next?: string | AutoLinkConfig
 }

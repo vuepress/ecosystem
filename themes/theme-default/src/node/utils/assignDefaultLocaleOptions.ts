@@ -17,7 +17,7 @@ export const DEFAULT_LOCALE_OPTIONS: DefaultThemeLocaleOptions = {
 
   // sidebar
   sidebar: 'heading',
-  sidebarDepth: [2, 3],
+  sidebarDepth: 2,
 
   // page meta
   editLink: true,

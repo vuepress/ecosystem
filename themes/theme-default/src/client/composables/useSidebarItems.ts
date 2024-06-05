@@ -8,6 +8,7 @@ import {
   usePageFrontmatter,
   useRoute,
   useRouteLocale,
+  useRouter,
 } from 'vuepress/client'
 import type { PageData } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
@@ -26,29 +27,33 @@ export type HeadersRef = Ref<MenuItem[]>
 export const headersRef: HeadersRef = ref([])
 
 export const setupHeaders = (): void => {
-  const route = useRoute()
+  const router = useRouter()
   const themeLocale = useThemeLocaleData()
   const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
   const levels = computed(
     () => frontmatter.value.sidebarDepth ?? themeLocale.value.sidebarDepth ?? 2,
   )
 
+  router.beforeEach((to, from) => {
+    if (to.path !== from.path) {
+      headersRef.value = []
+    }
+  })
+
   const updateHeaders = (): void => {
+    if (levels.value <= 0) {
+      headersRef.value = []
+      return
+    }
+
     headersRef.value = getHeaders({
       selector: [...new Array(6)]
         .map((_, i) => `.theme-default-content h${i + 1}`)
         .join(','),
-      levels: levels.value,
+      levels: [2, levels.value + 1],
       ignore: ['.vp-badge'],
     })
   }
-
-  watch(
-    () => route.path,
-    () => {
-      headersRef.value = []
-    },
-  )
 
   watch(levels, updateHeaders)
 

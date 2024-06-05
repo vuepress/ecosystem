@@ -301,7 +301,7 @@ features:
 
 ### sidebarDepth
 
-- 类型： `false | number | [number, number] | 'deep'`
+- 类型： `number`
 
 - 详情：
 

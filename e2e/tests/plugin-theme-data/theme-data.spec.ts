@@ -56,7 +56,7 @@ test.describe('plugin-theme-data', () => {
       repo: null,
       selectLanguageText: 'Languages',
       selectLanguageAriaLabel: 'Select language',
-      sidebarDepth: [2, 3],
+      sidebarDepth: 2,
       editLink: true,
       editLinkText: 'Edit this page',
       lastUpdated: true,
