@@ -1,46 +1,37 @@
 import { useSidebarItems } from '@theme/useSidebarItems'
+import { useThemeLocaleData } from '@theme/useThemeData'
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
 import { resolveRoute, usePageFrontmatter, useRoute } from 'vuepress/client'
-import type { AutoLinkConfig } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
-import type { DefaultThemeNormalPageFrontmatter } from '../../shared/index.js'
+import type {
+  AutoLinkOptions,
+  DefaultThemeNormalPageFrontmatter,
+} from '../../shared/index.js'
 import type { SidebarItem } from '../typings.js'
+import { getAutoLink } from '../utils/index.js'
 
-/**
- * Resolve `prev` or `next` config from frontmatter
- */
 const resolveFromFrontmatterConfig = (
-  conf: unknown,
-  current: string,
-): null | false | AutoLinkConfig => {
-  if (conf === false) {
-    return null
+  config: unknown,
+  currentPath: string,
+): null | false | AutoLinkOptions => {
+  if (config === false) {
+    return false
   }
 
-  if (isString(conf)) {
-    const { notFound, meta, path } = resolveRoute<{
-      title?: string
-    }>(conf, current)
-
-    return notFound
-      ? { text: path, link: path }
-      : {
-          text: meta.title || path,
-          link: path,
-        }
+  if (isString(config)) {
+    return getAutoLink(config, currentPath)
   }
 
-  if (isPlainObject<AutoLinkConfig>(conf)) {
+  if (isPlainObject<AutoLinkOptions>(config)) {
     return {
-      ...conf,
-      link: resolveRoute(conf.link, current).path,
+      ...config,
+      link: getAutoLink(config.link, currentPath).link,
     }
   }
 
-  return false
+  return null
 }
-
 /**
  * Resolve `prev` or `next` config from sidebar items
  */
@@ -48,16 +39,23 @@ const resolveFromSidebarItems = (
   sidebarItems: SidebarItem[],
   currentPath: string,
   offset: number,
-): null | AutoLinkConfig => {
-  const index = sidebarItems.findIndex((item) => item.link === currentPath)
-  if (index !== -1) {
-    const targetItem = sidebarItems[index + offset]
+): null | AutoLinkOptions => {
+  const linkIndex = sidebarItems.findIndex((item) => item.link === currentPath)
 
-    if (!targetItem?.link) {
-      return null
-    }
+  if (linkIndex !== -1) {
+    const targetItem = sidebarItems[linkIndex + offset]
 
-    return targetItem as AutoLinkConfig
+    if (!targetItem) return null
+
+    if (targetItem.link) return targetItem as AutoLinkOptions
+
+    if ('prefix' in targetItem && !resolveRoute(targetItem.prefix!).notFound)
+      return {
+        ...targetItem,
+        link: targetItem.prefix!,
+      }
+
+    return null
   }
 
   for (const item of sidebarItems) {
@@ -74,16 +72,37 @@ const resolveFromSidebarItems = (
     }
   }
 
+  const prefixIndex = sidebarItems.findIndex(
+    (item) => 'prefix' in item && item.prefix === currentPath,
+  )
+
+  if (prefixIndex !== -1) {
+    const targetItem = sidebarItems[prefixIndex + offset]
+
+    if (!targetItem) return null
+
+    if (targetItem.link) return targetItem as AutoLinkOptions
+
+    if ('prefix' in targetItem && !resolveRoute(targetItem.prefix!).notFound)
+      return {
+        ...targetItem,
+        link: targetItem.prefix!,
+      }
+
+    return null
+  }
+
   return null
 }
 
 interface RelatedLinks {
-  prevLink: ComputedRef<AutoLinkConfig | null>
-  nextLink: ComputedRef<AutoLinkConfig | null>
+  prevLink: ComputedRef<AutoLinkOptions | null>
+  nextLink: ComputedRef<AutoLinkOptions | null>
 }
 
 export const useRelatedLinks = (): RelatedLinks => {
   const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
+  const themeLocale = useThemeLocaleData()
   const sidebarItems = useSidebarItems()
   const route = useRoute()
 
@@ -92,11 +111,13 @@ export const useRelatedLinks = (): RelatedLinks => {
       frontmatter.value.prev,
       route.path,
     )
-    if (prevConfig !== false) {
-      return prevConfig
-    }
 
-    return resolveFromSidebarItems(sidebarItems.value, route.path, -1)
+    return prevConfig === false
+      ? null
+      : prevConfig ??
+          (themeLocale.value.prev === false
+            ? null
+            : resolveFromSidebarItems(sidebarItems.value, route.path, -1))
   })
 
   const nextLink = computed(() => {
@@ -104,11 +125,13 @@ export const useRelatedLinks = (): RelatedLinks => {
       frontmatter.value.next,
       route.path,
     )
-    if (nextConfig !== false) {
-      return nextConfig
-    }
 
-    return resolveFromSidebarItems(sidebarItems.value, route.path, 1)
+    return nextConfig === false
+      ? null
+      : nextConfig ??
+          (themeLocale.value.next === false
+            ? null
+            : resolveFromSidebarItems(sidebarItems.value, route.path, 1))
   })
 
   return {
