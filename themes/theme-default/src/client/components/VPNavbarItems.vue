@@ -68,7 +68,7 @@ useUpdateDeviceStatus(
 
     &:hover,
     &.route-link-active {
-      color: var(--c-text);
+      color: var(--vp-c-text);
     }
   }
 }

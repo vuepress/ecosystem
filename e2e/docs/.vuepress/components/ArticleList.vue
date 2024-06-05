@@ -76,7 +76,8 @@ defineProps<{
   padding: 1rem 1.25rem;
   border: 1px solid var(--c-border);
   border-radius: 0.4rem;
-  color: var(--c-text);
+
+  color: var(--vp-c-text);
 
   text-align: start;
 
@@ -90,9 +91,7 @@ defineProps<{
 
   .title {
     position: relative;
-
     display: inline-block;
-
     font-size: 1.28rem;
     line-height: 2rem;
 
@@ -106,7 +105,7 @@ defineProps<{
       width: 100%;
       height: 2px;
 
-      background: var(--c-brand);
+      background: var(--vp-c-accent);
 
       visibility: hidden;
 

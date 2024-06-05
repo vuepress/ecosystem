@@ -1,21 +1,21 @@
 :root {
   // brand colors
-  --c-brand: #3eaf7c;
-  --c-brand-light: #4abf8a;
+  --vp-c-accent: #3eaf7c;
+  --vp-c-accent-hover: #4abf8a;
 
   // background colors
-  --c-bg: #fff;
+  --vp-c-bg: #fff;
   --c-bg-light: #f3f4f5;
   --c-bg-lighter: #eee;
   --c-bg-dark: #ebebec;
   --c-bg-darker: #e6e6e6;
-  --c-bg-navbar: var(--c-bg);
-  --c-bg-sidebar: var(--c-bg);
+  --c-bg-navbar: var(--vp-c-bg);
+  --c-bg-sidebar: var(--vp-c-bg);
   --c-bg-arrow: #ccc;
 
   // text colors
-  --c-text: #2c3e50;
-  --c-text-accent: var(--c-brand);
+  --vp-c-text: #2c3e50;
+  --c-text-accent: var(--vp-c-accent);
   --c-text-light: #3a5169;
   --c-text-lighter: #4e6e8e;
   --c-text-lightest: #6a8bad;
@@ -28,8 +28,8 @@
   // custom container colors
   --c-tip: #42b983;
   --c-tip-bg: var(--c-bg-light);
-  --c-tip-title: var(--c-text);
-  --c-tip-text: var(--c-text);
+  --c-tip-title: var(--vp-c-text);
+  --c-tip-text: var(--vp-c-text);
   --c-tip-text-accent: var(--c-text-accent);
   --c-warning: #ffc310;
   --c-warning-bg: #fffae3;
@@ -58,15 +58,15 @@
   // badge component colors
   --c-badge-tip: var(--c-tip);
   --c-badge-warning: #ecc808;
-  --c-badge-warning-text: var(--c-bg);
+  --c-badge-warning-text: var(--vp-c-bg);
   --c-badge-danger: #dc2626;
-  --c-badge-danger-text: var(--c-bg);
+  --c-badge-danger-text: var(--vp-c-bg);
 
   // code group colors
   --c-code-group-tab-title: rgb(255 255 255 / 90%);
   --c-code-group-tab-bg: var(--code-bg-color);
   --c-code-group-tab-outline: var(var(--c-code-group-tab-title));
-  --c-code-group-tab-active-border: var(--c-brand);
+  --c-code-group-tab-active-border: var(--vp-c-accent);
 
   // transition vars
   --t-color: 0.3s ease;
@@ -105,101 +105,101 @@
 
 // plugin-back-to-top
 .vp-back-to-top-button {
-  --back-to-top-color: var(--c-brand);
-  --back-to-top-color-hover: var(--c-brand-light);
-  --back-to-top-bg-color: var(--c-bg);
+  --back-to-top-color: var(--vp-c-accent);
+  --back-to-top-color-hover: var(--vp-c-accent-hover);
+  --back-to-top-bg-color: var(--vp-c-bg);
 }
 
 // plugin-catalog
 .vp-catalog-wrapper {
-  --catalog-bg-color: var(--c-bg);
+  --catalog-bg-color: var(--vp-c-bg);
   --catalog-bg-secondary-color: var(--c-bg-dark);
   --catalog-border-color: var(--c-border);
-  --catalog-active-color: var(--c-brand);
-  --catalog-hover-color: var(--c-brand-light);
+  --catalog-active-color: var(--vp-c-accent);
+  --catalog-hover-color: var(--vp-c-accent-hover);
 }
 
 // plugin-comment
 .waline-wrapper {
-  --waline-bg-color: var(--c-bg);
+  --waline-bg-color: var(--vp-c-bg);
   --waline-bg-color-light: var(--c-bg-light);
   --waline-text-color: var(--c-color);
   --waline-border: 1px solid var(--c-border);
   --waline-border-color: var(--c-border);
-  --waline-theme-color: var(--c-brand);
-  --waline-active-color: var(--c-brand-light);
+  --waline-theme-color: var(--vp-c-accent);
+  --waline-active-color: var(--vp-c-accent-hover);
 }
 
 // plugin-docsearch
 /* stylelint-disable-next-line selector-class-pattern */
 .DocSearch {
-  --docsearch-primary-color: var(--c-brand);
-  --docsearch-text-color: var(--c-text);
-  --docsearch-highlight-color: var(--c-brand);
+  --docsearch-primary-color: var(--vp-c-accent);
+  --docsearch-text-color: var(--vp-c-text);
+  --docsearch-highlight-color: var(--vp-c-accent);
   --docsearch-muted-color: var(--c-text-quote);
   --docsearch-container-background: rgb(9 10 17 / 80%);
   --docsearch-modal-background: var(--c-bg-light);
   --docsearch-searchbox-background: var(--c-bg-lighter);
-  --docsearch-searchbox-focus-background: var(--c-bg);
-  --docsearch-searchbox-shadow: inset 0 0 0 2px var(--c-brand);
+  --docsearch-searchbox-focus-background: var(--vp-c-bg);
+  --docsearch-searchbox-shadow: inset 0 0 0 2px var(--vp-c-accent);
   --docsearch-hit-color: var(--c-text-light);
-  --docsearch-hit-active-color: var(--c-bg);
-  --docsearch-hit-background: var(--c-bg);
+  --docsearch-hit-active-color: var(--vp-c-bg);
+  --docsearch-hit-background: var(--vp-c-bg);
   --docsearch-hit-shadow: 0 1px 3px 0 var(--c-border-dark);
-  --docsearch-footer-background: var(--c-bg);
+  --docsearch-footer-background: var(--vp-c-bg);
 }
 
 // plugin-medium-zoom
 .medium-zoom-overlay {
-  --medium-zoom-bg-color: var(--c-bg);
+  --medium-zoom-bg-color: var(--vp-c-bg);
 }
 
 // plugin-notice
 .vp-notice-wrapper {
-  --notice-color: var(--c-text);
-  --notice-bg-color: var(--c-bg);
-  --notice-primary-color: var(--c-brand);
-  --notice-primary-text-color: var(--c-bg);
-  --notice-primary-hover-color: var(--c-brand-light);
+  --notice-color: var(--vp-c-text);
+  --notice-bg-color: var(--vp-c-bg);
+  --notice-primary-color: var(--vp-c-accent);
+  --notice-primary-text-color: var(--vp-c-bg);
+  --notice-primary-hover-color: var(--vp-c-accent-hover);
   --notice-button-color: var(--c-bg-light);
   --notice-button-hover-color: var(--c-bg-lighter);
 }
 
 // plugin-nprogress
 #nprogress {
-  --nprogress-color: var(--c-brand);
+  --nprogress-color: var(--vp-c-accent);
 }
 
 body {
   // plugin-photo-swipe
-  --photo-swipe-bullet: var(--c-bg);
-  --photo-swipe-bullet-active: var(--c-brand);
+  --photo-swipe-bullet: var(--vp-c-bg);
+  --photo-swipe-bullet-active: var(--vp-c-accent);
 
   // plugin-pwa-popup
-  --pwa-text-color: var(--c-text);
-  --pwa-bg-color: var(--c-bg);
-  --pwa-border-color: var(--c-brand);
-  --pwa-btn-text-color: var(--c-bg);
-  --pwa-btn-bg-color: var(--c-brand);
-  --pwa-btn-hover-bg-color: var(--c-brand-light);
+  --pwa-text-color: var(--vp-c-text);
+  --pwa-bg-color: var(--vp-c-bg);
+  --pwa-border-color: var(--vp-c-accent);
+  --pwa-btn-text-color: var(--vp-c-bg);
+  --pwa-btn-bg-color: var(--vp-c-accent);
+  --pwa-btn-hover-bg-color: var(--vp-c-accent-hover);
 }
 
 // plugin-redirect
 .redirect-modal-mask {
-  --redirect-bg-color: var(--c-bg);
+  --redirect-bg-color: var(--vp-c-bg);
   --redirect-bg-color-light: var(--c-bg-light);
   --redirect-bg-color-lighter: var(--c-bg-lighter);
-  --redirect-text-color: var(--c-text);
-  --redirect-primary-color: var(--c-brand);
-  --redirect-primary-hover-color: var(--c-brand-light);
-  --redirect-primary-text-color: var(--c-bg);
+  --redirect-text-color: var(--vp-c-text);
+  --redirect-primary-color: var(--vp-c-accent);
+  --redirect-primary-hover-color: var(--vp-c-accent-hover);
+  --redirect-primary-text-color: var(--vp-c-bg);
 }
 
 // plugin-search
 .search-box {
-  --search-bg-color: var(--c-bg);
-  --search-accent-color: var(--c-brand);
-  --search-text-color: var(--c-text);
+  --search-bg-color: var(--vp-c-bg);
+  --search-accent-color: var(--vp-c-accent);
+  --search-text-color: var(--vp-c-text);
   --search-border-color: var(--c-border);
   --search-item-text-color: var(--c-text-lighter);
   --search-item-focus-bg-color: var(--c-bg-light);

@@ -1,6 +1,6 @@
 html,
 body {
-  background-color: var(--c-bg);
+  background-color: var(--vp-c-bg);
   transition: background-color var(--t-color);
 }
 
@@ -9,7 +9,7 @@ html[data-theme='dark'] {
 }
 
 body {
-  color: var(--c-text);
+  color: var(--vp-c-text);
   font-size: 1rem;
   font-family: var(--font-family);
 }

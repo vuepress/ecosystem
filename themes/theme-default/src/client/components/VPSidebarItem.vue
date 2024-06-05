@@ -89,7 +89,7 @@ onBeforeUnmount(() => {
 
 .vp-sidebar-item {
   border-left: 0.25rem solid transparent;
-  color: var(--c-text);
+  color: var(--vp-c-text);
   cursor: default;
 
   &:focus-visible {

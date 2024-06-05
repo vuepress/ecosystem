@@ -40,7 +40,7 @@ defineSlots<{
   padding: 0 6px;
   border-radius: 3px;
 
-  color: var(--c-bg);
+  color: #fff;
 
   font-weight: 600;
   font-size: 14px;

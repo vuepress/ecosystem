@@ -45,7 +45,7 @@ defineSlots<{
     background-color var(--t-color),
     border-color var(--t-color);
 
-  scrollbar-color: var(--c-brand) var(--c-border);
+  scrollbar-color: var(--vp-c-accent) var(--c-border);
   scrollbar-width: thin;
 
   // narrow desktop / iPad
@@ -72,7 +72,7 @@ defineSlots<{
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--c-brand);
+    background-color: var(--vp-c-accent);
   }
 
   // override styles
