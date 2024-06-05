@@ -7,6 +7,7 @@ import {
   preWrapperPlugin,
 } from './markdown/index.js'
 import type { ShikiPluginOptions } from './options.js'
+import { prepareConfigFile } from './prepareConfigFile.js'
 
 export const shikiPlugin = ({
   preWrapper = true,
@@ -29,4 +30,6 @@ export const shikiPlugin = ({
       md.use(lineNumbersPlugin, { lineNumbers })
     }
   },
+
+  clientConfigFile: (app) => prepareConfigFile(app, options),
 })

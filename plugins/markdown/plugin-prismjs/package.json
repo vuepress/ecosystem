@@ -23,6 +23,7 @@
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
+    "./styles/*": "./lib/client/styles/*",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
@@ -35,6 +36,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
+    "@vuepress/helper": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
     "prismjs": "^1.29.0"
   },

@@ -1,0 +1,68 @@
+:root {
+  --code-color: #9e9e9e;
+  --code-bg-color: #282c34;
+  --code-padding-x: 1.5rem;
+  --code-padding-y: 1.25rem;
+  --code-border-radius: 6px;
+  --code-line-height: 1.6;
+  --code-font-family: consolas, monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+
+  // highlight
+  --code-highlight-bg-color: rgb(0 0 0 / 66%);
+
+  // line number
+  --code-line-number-width: 3.5rem;
+}
+
+pre[class*='language-'] {
+  overflow-x: auto;
+
+  margin: 0.5em 0;
+  border-radius: var(--code-border-radius);
+
+  font-size: 1em;
+  font-family: var(--code-font-family);
+  line-height: var(--code-line-height);
+
+  code {
+    display: block;
+
+    box-sizing: border-box;
+
+    width: fit-content;
+    min-width: 100%;
+    padding: var(--code-padding-y) var(--code-padding-x);
+
+    background-color: transparent !important;
+
+    overflow-wrap: unset;
+
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+div[class*='language-'] {
+  position: relative;
+  border-radius: var(--code-border-radius);
+  background-color: var(--code-bg-color);
+
+  &::before {
+    content: attr(data-title);
+
+    position: absolute;
+    top: 0.8em;
+    right: 1em;
+    z-index: 3;
+
+    color: var(--code-color);
+
+    font-size: 0.75rem;
+  }
+
+  pre,
+  pre[class*='language-'] {
+    position: relative;
+    z-index: 1;
+  }
+}

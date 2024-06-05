@@ -48,14 +48,16 @@ kbd {
 }
 
 code {
-  margin: 0;
-  padding: 3px 6px;
-  border-radius: 4px;
+  :not(pre) > & {
+    margin: 0;
+    padding: 3px 6px;
+    border-radius: 4px;
 
-  background: rgb(127 127 127 / 12%);
+    background: rgb(127 127 127 / 12%);
 
-  font-size: 0.875em;
-  overflow-wrap: break-word;
+    font-size: 0.875em;
+    overflow-wrap: break-word;
+  }
 
   table & {
     padding: 0.1rem 0.4rem;
