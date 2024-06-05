@@ -1,13 +1,11 @@
+import { setupDarkMode } from '@theme/useDarkMode'
+import { useScrollPromise } from '@theme/useScrollPromise'
+import { setupSidebarItems } from '@theme/useSidebarItems'
 import { hasGlobalComponent } from '@vuepress/helper/client'
 import { h } from 'vue'
 import { defineClientConfig } from 'vuepress/client'
 import type { ClientConfig } from 'vuepress/client'
 import { Badge, CodeGroup, CodeGroupItem } from './components/global/index.js'
-import {
-  setupDarkMode,
-  setupSidebarItems,
-  useScrollPromise,
-} from './composables/index.js'
 import Layout from './layouts/Layout.vue'
 import NotFound from './layouts/NotFound.vue'
 
