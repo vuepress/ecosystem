@@ -1,18 +1,19 @@
+import { useThemeLocaleData } from '@theme/useThemeData'
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
 import { isString } from 'vuepress/shared'
 import type {
-  NavbarGroup,
-  NavbarItem,
-  ResolvedNavbarItem,
-} from '../../shared/index.js'
+  NavbarGroupOptions,
+  NavbarLinkOptions,
+  NavGroup,
+} from '../../shared/navbar.js'
+import type { NavbarItem } from '../typings.js'
 import { getAutoLink, isLinkInternal, resolvePrefix } from '../utils/index.js'
-import { useThemeLocaleData } from './useThemeData.js'
 
 const resolveNavbarItem = (
-  item: NavbarItem | NavbarGroup | string,
+  item: NavbarLinkOptions | NavbarGroupOptions | string,
   prefix = '',
-): ResolvedNavbarItem => {
+): NavbarItem => {
   if (isString(item)) {
     return getAutoLink(resolvePrefix(prefix, item))
   }
@@ -20,8 +21,12 @@ const resolveNavbarItem = (
   if ('children' in item) {
     return {
       ...item,
-      children: item.children.map((child) =>
-        resolveNavbarItem(child, resolvePrefix(prefix, item.prefix)),
+      children: item.children.map(
+        (child) =>
+          resolveNavbarItem(
+            child,
+            resolvePrefix(prefix, item.prefix),
+          ) as NavGroup<NavbarLinkOptions>,
       ),
     }
   }
@@ -34,7 +39,7 @@ const resolveNavbarItem = (
   }
 }
 
-export const useNavbarConfig = (): ComputedRef<ResolvedNavbarItem[]> => {
+export const useNavbarConfig = (): ComputedRef<NavbarItem[]> => {
   const themeLocale = useThemeLocaleData()
 
   return computed(() =>

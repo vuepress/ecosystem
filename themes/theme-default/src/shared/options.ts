@@ -6,7 +6,8 @@ import type { SeoPluginOptions } from '@vuepress/plugin-seo'
 import type { SitemapPluginOptions } from '@vuepress/plugin-sitemap'
 import type { ThemeData } from '@vuepress/plugin-theme-data'
 import type { LocaleData } from 'vuepress/shared'
-import type { NavbarConfig, SidebarConfig } from './nav.js'
+import type { NavbarOptions } from './navbar.js'
+import type { SidebarOptions } from './sidebar.js'
 
 export interface DefaultThemePluginsOptions {
   /**
@@ -110,7 +111,7 @@ export interface DefaultThemeLocaleData extends LocaleData {
    *
    * Set to `false` to disable navbar in current locale
    */
-  navbar?: false | NavbarConfig
+  navbar?: false | NavbarOptions
 
   /**
    * Navbar label used for screen readers using the `aria-label` attribute
@@ -186,7 +187,7 @@ export interface DefaultThemeLocaleData extends LocaleData {
    *
    * Set to `false` to disable sidebar in current locale
    */
-  sidebar?: 'auto' | false | SidebarConfig
+  sidebar?: false | SidebarOptions
 
   /**
    * Sidebar depth
@@ -331,10 +332,10 @@ export interface DefaultThemeLocaleData extends LocaleData {
   /**
    * text for prev link
    */
-  prev?: string
+  prev?: string | false
 
   /**
    * text for next link
    */
-  next?: string
+  next?: string | false
 }

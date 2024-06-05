@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.34](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.33...v2.0.0-rc.34) (2024-06-04)
+
+### Features
+
+- **helper:** add `getHeaders()` ([#189](https://github.com/vuepress/ecosystem/issues/189)) ([421fece](https://github.com/vuepress/ecosystem/commit/421fece35335278b6c77af636b4a3d200b1104ea))
+
 # [2.0.0-rc.33](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.32...v2.0.0-rc.33) (2024-05-30)
 
 ### Features

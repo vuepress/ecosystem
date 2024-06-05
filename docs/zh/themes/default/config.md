@@ -89,7 +89,7 @@
 
 ### navbar
 
-- 类型： `false | (NavbarItem | NavbarGroup | string)[]`
+- 类型： `false | NavbarOptions`
 
 - 默认值： `[]`
 
@@ -99,11 +99,11 @@
 
   设置为 `false` 可以禁用导航栏。
 
-  为了配置导航栏元素，你可以将其设置为 _导航栏数组_ ，其中的每个元素是 `NavbarItem` 对象、 `NavbarGroup` 对象、或者字符串：
+  为了配置导航栏元素，你可以将其设置为 _导航栏数组_ ，其中的每个元素是 `NavbarLink` 对象、 `NavbarGroup` 对象、或者字符串：
 
-  - `NavbarItem` 对象应该有一个 `text` 字段和一个 `link` 字段，还有一个可选的 `activeMatch` 字段。
+  - `NavbarLink` 对象应该有一个 `text` 字段和一个 `link` 字段，还有一个可选的 `activeMatch` 字段。
   - `NavbarGroup` 对象应该有一个 `text` 字段和一个 `children` 字段，还有一个可选的 `prefix` 字段。 `children` 字段同样是一个 _导航栏数组_，而 `prefix` 会作为 _导航栏数组_ 的路径前缀。
-  - 字符串应为目标页面文件的路径。它将会被转换为 `NavbarItem` 对象，将页面标题作为 `text` ，将页面路由路径作为 `link` 。
+  - 字符串应为目标页面文件的路径。它将会被转换为 `NavbarLink` 对象，将页面标题作为 `text` ，将页面路由路径作为 `link` 。
 
 - 示例 1：
 
@@ -111,7 +111,7 @@
 export default {
   theme: defaultTheme({
     navbar: [
-      // NavbarItem
+      // NavbarLink
       {
         text: 'Foo',
         link: '/foo/',
@@ -270,9 +270,9 @@ export default {
 
 ### sidebar
 
-- 类型： `false | 'auto' | SidebarConfigArray | SidebarConfigObject`
+- 类型： `false | SidebarOptions`
 
-- 默认值： `'auto'`
+- 默认值： `'heading'`
 
 - 详情：
 
@@ -282,7 +282,7 @@ export default {
 
   设置为 `false` 可以禁用侧边栏。
 
-  如果你设置为 `'auto'`，侧边栏会根据页面标题自动生成。
+  如果你设置为 `'heading'`，侧边栏会根据页面标题自动生成。
 
   为了手动配置侧边栏元素，你可以将其设置为 _侧边栏数组_ ，其中的每个元素是一个 `SidebarItem` 对象或者一个字符串：
 
@@ -391,10 +391,6 @@ export default {
   - 设为 `1` 来包含 `<h2>` 标题。
   - 设为 `2` 来包含 `<h2>` 和 `<h3>` 标题。
   - ...
-
-  最大值取决于你通过 [markdown.headers.level](https://v2.vuepress.vuejs.org/zh/config.html#markdown-headers) 提取了哪些级别的标题。
-
-  由于 `markdown.headers.level` 的默认值是 `[2, 3]` ，因此 `sidebarDepth` 的默认最大值是 `2` 。
 
   你可以通过页面的 [sidebarDepth](./frontmatter.md#sidebardepth) frontmatter 来覆盖这个全局配置。
 

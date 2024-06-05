@@ -129,14 +129,6 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
   logLevel?: 'silent' | 'warn' | 'debug'
 }
 
-export interface LineNumberOptions {
-  /**
-   * Show line numbers in code blocks
-   * @default true
-   */
-  lineNumbers?: boolean | number
-}
-
 export interface PreWrapperOptions {
   /**
    * Wrap the `<pre>` tag with an extra `<div>` or not. Do not disable it unless you

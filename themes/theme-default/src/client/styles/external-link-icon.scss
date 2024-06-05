@@ -1,13 +1,17 @@
 @mixin external-link-icon {
   &::after {
     content: '';
+
     display: inline-block;
-    margin-top: -1px;
-    margin-left: 4px;
+    flex-shrink: 0;
+
     width: 11px;
     height: 11px;
+    margin-top: -1px;
+    margin-left: 4px;
+
     background: var(--external-link-icon-color);
-    flex-shrink: 0;
+
     -webkit-mask-image: var(--external-link-icon);
     mask-image: var(--external-link-icon);
   }

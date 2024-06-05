@@ -175,15 +175,19 @@
 }
 
 .vp-catalog-header-anchor {
-  font-size: 0.85em;
+  content: '¶';
+
   float: left;
-  margin-left: -1em;
-  padding-right: 0em;
+
   margin-top: 0.125em;
+  margin-left: -1em;
+  padding-right: 0;
+
+  font-size: 0.85em;
+  text-decoration: none;
+
   opacity: 0;
   user-select: none;
-  text-decoration: none;
-  content: '¶';
 
   @media print {
     display: none;
@@ -191,8 +195,8 @@
 
   h2:hover &,
   h3:hover & {
-    opacity: 1;
     text-decoration: none;
+    opacity: 1;
   }
 
   &:focus-visible {

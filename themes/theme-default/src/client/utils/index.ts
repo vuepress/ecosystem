@@ -1,4 +1,4 @@
-export * from './getNavLink.js'
+export * from './getAutoLink.js'
 export * from './isActiveSidebarItem.js'
 export * from './isLinkInternal.js'
 export * from './resolveEditLink.js'

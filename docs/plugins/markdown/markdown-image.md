@@ -39,7 +39,7 @@ The plugin will enable image lazyload using native HTML5 features, so only it's 
 
 When you set `mark: true` in plugin options, you can mark pictures by `#light` and `#dark` suffix to let them be displayed under certain color mode. We support both GitHub's markup and the easy markup .
 
-<ToggleColorModeButton /> (Try to toggle theme mode)
+<VPToggleColorModeButton /> (Try to toggle theme mode)
 
 ![GitHub Light](/images/icon/github-light.svg#dark)
 ![GitHub Dark](/images/icon/github-dark.svg#light)
@@ -160,5 +160,5 @@ If the image is standalone in a line, wrapped or not wrapped by link, it will be
 - Details: The selector to detect dark mode.
 
 <script setup>
-import ToggleColorModeButton from '@vuepress/theme-default/components/ToggleColorModeButton.vue'
+import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'
 </script>

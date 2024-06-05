@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import Home from '@theme/Home.vue'
-import Navbar from '@theme/Navbar.vue'
-import Page from '@theme/Page.vue'
-import Sidebar from '@theme/Sidebar.vue'
+import { useScrollPromise } from '@theme/useScrollPromise'
+import { useSidebarItems } from '@theme/useSidebarItems'
+import { useThemeLocaleData } from '@theme/useThemeData'
+import VPHome from '@theme/VPHome.vue'
+import VPNavbar from '@theme/VPNavbar.vue'
+import VPPage from '@theme/VPPage.vue'
+import VPSidebar from '@theme/VPSidebar.vue'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { usePageData, usePageFrontmatter, useRouter } from 'vuepress/client'
 import type { DefaultThemePageFrontmatter } from '../../shared/index.js'
-import {
-  useScrollPromise,
-  useSidebarItems,
-  useThemeLocaleData,
-} from '../composables/index.js'
 
 defineSlots<{
   'navbar'?: (props: Record<never, never>) => any
@@ -98,37 +96,37 @@ const onBeforeLeave = scrollPromise.pending
 
 <template>
   <div
-    id="vp-container"
+    class="vp-theme-container"
     :class="containerClass"
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
     <slot name="navbar">
-      <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar">
+      <VPNavbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar">
         <template #before>
           <slot name="navbar-before" />
         </template>
         <template #after>
           <slot name="navbar-after" />
         </template>
-      </Navbar>
+      </VPNavbar>
     </slot>
 
-    <div class="sidebar-mask" @click="toggleSidebar(false)" />
+    <div class="vp-sidebar-mask" @click="toggleSidebar(false)" />
 
     <slot name="sidebar">
-      <Sidebar>
+      <VPSidebar>
         <template #top>
           <slot name="sidebar-top" />
         </template>
         <template #bottom>
           <slot name="sidebar-bottom" />
         </template>
-      </Sidebar>
+      </VPSidebar>
     </slot>
 
     <slot name="page">
-      <Home v-if="frontmatter.home" />
+      <VPHome v-if="frontmatter.home" />
 
       <Transition
         v-else
@@ -137,7 +135,7 @@ const onBeforeLeave = scrollPromise.pending
         @before-enter="onBeforeEnter"
         @before-leave="onBeforeLeave"
       >
-        <Page :key="page.path">
+        <VPPage :key="page.path">
           <template #top>
             <slot name="page-top" />
           </template>
@@ -150,8 +148,103 @@ const onBeforeLeave = scrollPromise.pending
           <template #bottom>
             <slot name="page-bottom" />
           </template>
-        </Page>
+        </VPPage>
       </Transition>
     </slot>
   </div>
 </template>
+
+<style lang="scss">
+@import '../styles/variables';
+
+.vp-sidebar-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+
+  display: none;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.vp-theme-container {
+  // navbar is disabled
+  &.no-navbar {
+    .vp-sidebar {
+      top: 0;
+
+      @media (max-width: $MQMobile) {
+        padding-top: 0;
+      }
+    }
+
+    .vp-page {
+      padding-top: 0;
+    }
+
+    // adjust heading margin and padding;
+    .theme-default-content {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-top: 1.5rem;
+        padding-top: 0;
+      }
+    }
+  }
+
+  &.no-sidebar {
+    // hide sidebar
+    .vp-sidebar {
+      display: none;
+
+      // show sidebar on mobile because it has navbar links
+      @media (max-width: $MQMobile) {
+        display: block;
+      }
+    }
+
+    .vp-page {
+      padding-left: 0;
+    }
+  }
+
+  &.sidebar-open {
+    @media (max-width: $MQMobile) {
+      // show sidebar
+      .vp-sidebar {
+        transform: translateX(0);
+      }
+
+      // show sidebar mask
+      .vp-sidebar-mask {
+        display: block;
+      }
+    }
+  }
+}
+
+/**
+ * fade-slide-y transition
+ */
+.fade-slide-y {
+  &-enter-active {
+    transition: all 0.2s ease;
+  }
+
+  &-leave-active {
+    transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+  }
+
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+</style>

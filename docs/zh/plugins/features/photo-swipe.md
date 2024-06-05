@@ -46,6 +46,18 @@ export default {
 - 默认值：`"#vp-content :not(a) > img:not([no-view])"`
 - 详情：图片选择器
 
+### download
+
+- 类型：`boolean`
+- 默认值：`true`
+- 详情：是否显示下载按钮。
+
+### fullscreen
+
+- 类型：`boolean`
+- 默认值：`true`
+- 详情：是否显示全屏按钮。
+
 ### scrollToClose
 
 - 类型：`boolean`

@@ -62,7 +62,7 @@ defineProps<{
 @use '@vuepress/theme-default/styles/mixins';
 
 .article-wrapper {
-  @include mixins.content_wrapper;
+  @include mixins.content-wrapper;
   text-align: center;
 }
 

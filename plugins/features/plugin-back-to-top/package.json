@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-back-to-top",
-  "version": "2.0.0-rc.33",
+  "version": "2.0.0-rc.34",
   "description": "VuePress plugin - back to top",
   "keywords": [
     "vuepress-plugin",
@@ -42,10 +42,7 @@
     "vue": "^3.4.27"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.12"
-  },
-  "devDependencies": {
-    "sass": "^1.77.2"
+    "vuepress": "2.0.0-rc.13"
   },
   "publishConfig": {
     "access": "public"

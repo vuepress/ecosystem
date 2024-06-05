@@ -37,7 +37,7 @@ const categoryMap = useBlogCategory('category')
 @use '@vuepress/theme-default/styles/mixins';
 
 .category-wrapper {
-  @include mixins.content_wrapper;
+  @include mixins.content-wrapper;
 
   padding-top: 1rem !important;
   padding-bottom: 0 !important;

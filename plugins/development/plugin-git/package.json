@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-git",
-  "version": "2.0.0-rc.33",
+  "version": "2.0.0-rc.34",
   "description": "VuePress plugin - git",
   "keywords": [
     "vuepress-plugin",
@@ -37,7 +37,7 @@
     "execa": "^9.1.0"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.12"
+    "vuepress": "2.0.0-rc.13"
   },
   "publishConfig": {
     "access": "public"

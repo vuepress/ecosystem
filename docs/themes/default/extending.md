@@ -85,6 +85,12 @@ export default defineUserConfig({
 })
 ```
 
+## Modifying Behavior
+
+Most of the core behaviors of the default theme have been extracted into a composable API, and also provide [aliases](https://v2.vuepress.vuejs.org/zh/reference/plugin-api.html#alias) with the `@theme` prefix.
+
+For example, if you want to add some default values ​​to the theme data of the default theme, you can override the `useThemeData` function of `@theme/useThemeData`.
+
 ## Developing a Child Theme
 
 Instead of extending the default theme directly in `.vuepress/config.ts` and `.vuepress/client.ts`, you can also develop your own theme extending the default theme:

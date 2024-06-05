@@ -25,6 +25,8 @@ export const photoSwipePlugin =
         __PS_SELECTOR__:
           options.selector || '#vp-content :not(a) > img:not([no-view])',
         __PS_DELAY__: options.delay || 800,
+        __PS_DOWNLOAD__: options.download ?? true,
+        __PS_FULLSCREEN__: options.fullscreen ?? true,
         __PS_SCROLL_TO_CLOSE__: options.scrollToClose ?? true,
         __PS_LOCALES__: fromEntries(
           entries(

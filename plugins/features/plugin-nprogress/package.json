@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-nprogress",
-  "version": "2.0.0-rc.33",
+  "version": "2.0.0-rc.34",
   "description": "VuePress plugin - nprogress",
   "keywords": [
     "vuepress-plugin",
@@ -39,7 +39,7 @@
     "vue": "^3.4.27"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.12"
+    "vuepress": "2.0.0-rc.13"
   },
   "publishConfig": {
     "access": "public"

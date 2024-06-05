@@ -74,7 +74,7 @@ new Crawler({
         return helpers.docsearch({
           recordProps: {
             lvl0: {
-              selectors: '.sidebar-heading.active',
+              selectors: '.vp-sidebar-heading.active',
               defaultValue: 'Documentation',
             },
             lvl1: '#vp-content h1',
@@ -396,8 +396,8 @@ You can customize styles via CSS variables that provided by [@docsearch/css](htt
   --docsearch-modal-width: 560px;
   --docsearch-modal-height: 600px;
   --docsearch-modal-background: rgb(245, 246, 247);
-  --docsearch-modal-shadow: inset 1px 1px 0 0 rgba(255, 255, 255, 0.5), 0 3px
-      8px 0 rgba(85, 90, 100, 1);
+  --docsearch-modal-shadow: inset 1px 1px 0 0 rgba(255, 255, 255, 0.5),
+    0 3px 8px 0 rgba(85, 90, 100, 1);
 
   /* searchbox */
   --docsearch-searchbox-height: 56px;
@@ -418,13 +418,14 @@ You can customize styles via CSS variables that provided by [@docsearch/css](htt
     rgb(213, 219, 228) 0%,
     rgb(248, 248, 248) 100%
   );
-  --docsearch-key-shadow: inset 0 -2px 0 0 rgb(205, 205, 230), inset 0 0 1px 1px
-      #fff, 0 1px 2px 1px rgba(30, 35, 90, 0.4);
+  --docsearch-key-shadow: inset 0 -2px 0 0 rgb(205, 205, 230),
+    inset 0 0 1px 1px #fff, 0 1px 2px 1px rgba(30, 35, 90, 0.4);
 
   /* footer */
   --docsearch-footer-height: 44px;
   --docsearch-footer-background: #fff;
-  --docsearch-footer-shadow: 0 -1px 0 0 rgb(224, 227, 232), 0 -3px 6px 0 rgba(69, 98, 155, 0.12);
+  --docsearch-footer-shadow: 0 -1px 0 0 rgb(224, 227, 232),
+    0 -3px 6px 0 rgba(69, 98, 155, 0.12);
 }
 ```
 

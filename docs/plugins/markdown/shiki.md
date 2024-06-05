@@ -195,7 +195,7 @@ export default defineUserConfig({
 The following features requires additional style to work, which should be handled by themes or users.
 
 ::: details View Styles Example
-@[code{260-349}](@vuepress/theme-default/src/client/styles/code.scss)
+@[code{260-349}](@vuepress/theme-default/src/client/styles/content/code.scss)
 :::
 
 ::::

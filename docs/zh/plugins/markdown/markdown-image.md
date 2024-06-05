@@ -39,7 +39,7 @@ export default {
 
 当你在插件选项中设置 `mark: true` 时，你可以通过 `#light` 和 `#dark` 标记图片，使得图片只在特定的模式显示。
 
-<ToggleColorModeButton /> (尝试切换主题)
+<VPToggleColorModeButton /> (尝试切换主题)
 
 ![GitHub Light](/images/icon/github-light.svg#dark)
 ![GitHub Dark](/images/icon/github-dark.svg#light)
@@ -159,5 +159,5 @@ interface ImageMarkOptions {
 - 详情：夜间模式的选择器。
 
 <script setup>
-import ToggleColorModeButton from '@vuepress/theme-default/components/ToggleColorModeButton.vue'
+import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'
 </script>

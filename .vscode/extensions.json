@@ -4,6 +4,7 @@
     "esbenp.prettier-vscode",
     "mrmlnc.vscode-scss",
     "ms-playwright.playwright",
+    "stylelint.vscode-stylelint",
     "vitest.explorer",
     "vue.volar"
   ]

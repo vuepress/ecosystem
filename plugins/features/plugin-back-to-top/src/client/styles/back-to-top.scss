@@ -20,6 +20,7 @@
     transform: scale(0.8);
     transform-origin: 100% 100%;
   }
+
   @media print {
     display: none;
   }
@@ -30,10 +31,13 @@
 
   .back-to-top-icon {
     overflow: hidden;
+
     width: 24px;
     height: 24px;
     margin: 0 auto;
+
     background: var(--back-to-top-icon-color);
+
     -webkit-mask-image: var(--back-to-top-icon);
     mask-image: var(--back-to-top-icon);
     -webkit-mask-position: 50%;
@@ -58,7 +62,6 @@
 
   circle {
     opacity: 0.9;
-
     transform: rotate(-90deg);
     transform-origin: 50% 50%;
   }

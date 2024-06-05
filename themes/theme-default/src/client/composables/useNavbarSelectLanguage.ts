@@ -1,3 +1,4 @@
+import { useThemeData, useThemeLocaleData } from '@theme/useThemeData'
 import { useRoutePaths } from '@vuepress/helper/client'
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
@@ -7,15 +8,12 @@ import {
   useSiteData,
   useSiteLocaleData,
 } from 'vuepress/client'
-import type { ResolvedNavbarItem } from '../../shared/index.js'
-import { useThemeData, useThemeLocaleData } from './useThemeData.js'
+import type { NavbarItem } from '../typings.js'
 
 /**
  * Get navbar config of select language dropdown
  */
-export const useNavbarSelectLanguage = (): ComputedRef<
-  ResolvedNavbarItem[]
-> => {
+export const useNavbarSelectLanguage = (): ComputedRef<NavbarItem[]> => {
   const route = useRoute()
   const routePaths = useRoutePaths()
   const routeLocale = useRouteLocale()
@@ -24,7 +22,7 @@ export const useNavbarSelectLanguage = (): ComputedRef<
   const theme = useThemeData()
   const themeLocale = useThemeLocaleData()
 
-  return computed<ResolvedNavbarItem[]>(() => {
+  return computed<NavbarItem[]>(() => {
     const localePaths = Object.keys(site.value.locales)
     // do not display language selection dropdown if there is only one language
     if (localePaths.length < 2) {
@@ -33,7 +31,7 @@ export const useNavbarSelectLanguage = (): ComputedRef<
     const currentPath = route.path
     const currentFullPath = route.fullPath
 
-    const languageDropdown: ResolvedNavbarItem = {
+    const languageDropdown: NavbarItem = {
       text: `${themeLocale.value.selectLanguageText}`,
       ariaLabel: `${
         themeLocale.value.selectLanguageAriaLabel ??
@@ -52,7 +50,7 @@ export const useNavbarSelectLanguage = (): ComputedRef<
         if (targetLang === siteLocale.value.lang) {
           return {
             text,
-            activeMatch: /./,
+            activeMatch: '.',
             link: route.fullPath,
           }
         }

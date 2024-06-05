@@ -1,6 +1,6 @@
-@import '_variables';
+@import 'variables';
 
-@mixin content_wrapper {
+@mixin content-wrapper {
   max-width: var(--content-width);
   margin: 0 auto;
   padding: 2rem 2.5rem;
@@ -14,7 +14,7 @@
   }
 }
 
-@mixin dropdown_wrapper {
-  transition: height 0.1s ease-out;
+@mixin dropdown-wrapper {
   overflow: hidden;
+  transition: height 0.1s ease-out;
 }

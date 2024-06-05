@@ -75,7 +75,7 @@ test.describe('plugin-theme-data', () => {
       toggleSidebar: 'toggle sidebar',
     })
 
-    await page.locator('.action-button').first().click()
+    await page.locator('.vp-hero-action-button').first().click()
 
     await page.waitForURL('action1.html')
 
@@ -101,7 +101,7 @@ test.describe('plugin-theme-data', () => {
     )
 
     await page.goto('zh/')
-    await page.locator('.action-button').first().click()
+    await page.locator('.vp-hero-action-button').first().click()
 
     await page.waitForURL('action1.html')
 
