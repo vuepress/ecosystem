@@ -103,31 +103,9 @@
   --external-link-icon-color: var(--c-text-quote);
 }
 
-// plugin-back-to-top
-.vp-back-to-top-button {
-  --back-to-top-color: var(--vp-c-accent);
-  --back-to-top-color-hover: var(--vp-c-accent-hover);
-  --back-to-top-bg-color: var(--vp-c-bg);
-}
-
 // plugin-catalog
 .vp-catalog-wrapper {
-  --catalog-bg-color: var(--vp-c-bg);
-  --catalog-bg-secondary-color: var(--c-bg-dark);
   --catalog-border-color: var(--c-border);
-  --catalog-active-color: var(--vp-c-accent);
-  --catalog-hover-color: var(--vp-c-accent-hover);
-}
-
-// plugin-comment
-.waline-wrapper {
-  --waline-bg-color: var(--vp-c-bg);
-  --waline-bg-color-light: var(--c-bg-light);
-  --waline-text-color: var(--c-color);
-  --waline-border: 1px solid var(--c-border);
-  --waline-border-color: var(--c-border);
-  --waline-theme-color: var(--vp-c-accent);
-  --waline-active-color: var(--vp-c-accent-hover);
 }
 
 // plugin-docsearch

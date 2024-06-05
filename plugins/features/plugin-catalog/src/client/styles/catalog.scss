@@ -120,7 +120,7 @@
     text-decoration: none;
 
     &:hover {
-      color: var(--catalog-active-color);
+      color: var(--vp-c-accent);
     }
   }
 }
@@ -158,7 +158,7 @@
   padding: 4px 8px;
   border-radius: 6px;
 
-  background-color: var(--catalog-bg-secondary-color);
+  background-color: var(--vp-c-bg-elv);
 
   line-height: 1.5;
   overflow-wrap: break-word;
@@ -168,8 +168,8 @@
     color 0.3s;
 
   &:hover {
-    background-color: var(--catalog-hover-color);
-    color: var(--catalog-bg-color);
+    background-color: var(--vp-c-accent-hover);
+    color: var(--vp-c-bg);
     text-decoration: none !important;
   }
 }
