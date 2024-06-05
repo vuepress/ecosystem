@@ -9,7 +9,7 @@ defineSlots<{
 </script>
 
 <template>
-  <aside class="vp-sidebar">
+  <aside class="vp-sidebar" vp-sidebar>
     <VPNavbarItems />
     <slot name="top" />
     <VPSidebarItems />

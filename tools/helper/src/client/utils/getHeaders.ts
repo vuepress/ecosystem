@@ -41,7 +41,7 @@ export interface GetHeadersOptions {
    * It will be passed as an argument to `document.querySelectorAll(selector)`,
    * so you should pass a `CSS Selector` string.
    *
-   * @default '#vp-content h1, #vp-content h2, #vp-content h3, #vp-content h4, #vp-content h5, #vp-content h6'
+   * @default '[vp-content] h1, [vp-content] h2, [vp-content] h3, [vp-content] h4, [vp-content] h5, [vp-content] h6'
    */
   selector?: string
   /**
@@ -68,7 +68,9 @@ export interface GetHeadersOptions {
 }
 
 export const getHeaders = ({
-  selector = [...new Array(6)].map((_, i) => `#vp-content h${i + 1}`).join(','),
+  selector = [...new Array(6)]
+    .map((_, i) => `[vp-content] h${i + 1}`)
+    .join(','),
   levels = 2,
   ignore = [],
 }: GetHeadersOptions = {}): MenuItem[] => {

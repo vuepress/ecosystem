@@ -48,12 +48,12 @@ export interface MarkdownImagePluginOptions {
   obsidianSize?: boolean
 
   /**
-   * @default 'html:not(.dark)'
+   * @default 'html[data-theme="light"]'
    */
   lightmodeSelector?: string
 
   /**
-   * @default 'html.dark'
+   * @default 'html[data-theme="dark"]'
    */
   darkmodeSelector?: string
 }

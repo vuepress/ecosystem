@@ -9,7 +9,7 @@
         --c-bg: #fff;
       }
 
-      html.dark {
+      html[data-theme='dark'] {
         --c-bg: #22272e;
       }
 
@@ -21,10 +21,14 @@
     <script>
       const userMode = localStorage.getItem('vuepress-color-scheme')
       const systemDarkMode =
-        window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches
-      if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
-        document.documentElement.classList.toggle('dark', true)
+        'matchMedia' in window
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : false
+
+      if (userMode === 'light') {
+        document.documentElement.dataset.theme = 'light'
+      } else if (userMode === 'dark' || systemDarkMode) {
+        document.documentElement.dataset.theme = 'dark'
       }
     </script>
     <!--vuepress-ssr-head-->

@@ -18,7 +18,7 @@ setupHeaders()
   <main class="vp-page">
     <slot name="top" />
 
-    <div class="theme-default-content">
+    <div class="theme-default-content" vp-content>
       <slot name="content-top" />
 
       <Content />

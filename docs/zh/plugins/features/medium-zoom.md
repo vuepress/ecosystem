@@ -30,7 +30,7 @@ export default {
 
 - 类型： `string`
 
-- 默认值： `':not(a) > img'`
+- 默认值： `'[vp-content] :not(a) > img'`
 
 - 详情：
 

@@ -149,13 +149,13 @@ interface ImageMarkOptions {
 ### lightmodeSelector
 
 - 类型：`string`
-- 默认值：`'html:not(.dark)'`
+- 默认值：`'html[data-theme="light"]'`
 - 详情：日间模式的选择器。
 
 ### darkmodeSelector
 
 - 类型：`string`
-- 默认值：`'html.dark'`
+- 默认值：`'html[data-theme="dark"]'`
 - 详情：夜间模式的选择器。
 
 <script setup>

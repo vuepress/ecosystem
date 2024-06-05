@@ -98,6 +98,7 @@ const onBeforeLeave = scrollPromise.pending
   <div
     class="vp-theme-container"
     :class="containerClass"
+    vp-container
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >

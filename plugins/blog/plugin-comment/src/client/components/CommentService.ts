@@ -32,10 +32,11 @@ export default defineComponent({
 
     return (): VNode | null =>
       h(CommentProvider, {
-        id: 'vp-comment',
-        identifier: frontmatter.value.commentID || page.value.path,
-        darkmode: props.darkmode,
-        style: { display: enabled.value ? 'block' : 'none' },
+        'class': 'vp-comment',
+        'vp-comment': '',
+        'identifier': frontmatter.value.commentID || page.value.path,
+        'darkmode': props.darkmode,
+        'style': { display: enabled.value ? 'block' : 'none' },
       })
   },
 })
