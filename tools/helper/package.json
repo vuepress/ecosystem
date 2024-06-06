@@ -26,7 +26,7 @@
   "type": "module",
   "exports": {
     ".": {
-      "sass": "./lib/client/styles/helper.scss",
+      "sass": "./lib/styles/helper.scss",
       "import": "./lib/node/index.js"
     },
     "./client": "./lib/client/index.js",
@@ -45,7 +45,8 @@
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "copy": "cpx \"src/**/*.{css,scss}\" lib"
+    "style": "sass src/client:lib/client --no-source-map",
+    "copy": "cpx \"src/styles/**/*.scss\" lib/styles"
   },
   "dependencies": {
     "@vue/shared": "^3.4.27",
