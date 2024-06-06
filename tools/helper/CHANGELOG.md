@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.36](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.35...v2.0.0-rc.36) (2024-06-06)
+
+### Features
+
+- add colors ([8a7477a](https://github.com/vuepress/ecosystem/commit/8a7477a6cab7592e3bd0de6fc56e18a2cb714998))
+- init guidelines ([d15d29b](https://github.com/vuepress/ecosystem/commit/d15d29b09c1006c71e661a5c011deeb60dc1f0a2))
+
 # [2.0.0-rc.34](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.33...v2.0.0-rc.34) (2024-06-04)
 
 ### Features

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.36](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.35...v2.0.0-rc.36) (2024-06-06)
+
+### Bug Fixes
+
+- **theme-default:** fix sidebar selector ([0a29075](https://github.com/vuepress/ecosystem/commit/0a29075388cb435e5f95d25dc1b54abbcd343d9a))
+
+### Features
+
+- add colors ([8a7477a](https://github.com/vuepress/ecosystem/commit/8a7477a6cab7592e3bd0de6fc56e18a2cb714998))
+- init guidelines ([d15d29b](https://github.com/vuepress/ecosystem/commit/d15d29b09c1006c71e661a5c011deeb60dc1f0a2))
+- **theme-default:** improve sidebar headers ([#196](https://github.com/vuepress/ecosystem/issues/196)) ([c39e4e4](https://github.com/vuepress/ecosystem/commit/c39e4e450c64e05c3939f866f56474cb83722b2c))
+
 # [2.0.0-rc.35](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.34...v2.0.0-rc.35) (2024-06-05)
 
 ### Bug Fixes
