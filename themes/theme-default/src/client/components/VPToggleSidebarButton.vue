@@ -60,7 +60,7 @@ const themeLocale = useThemeLocaleData()
       height: 2px;
       border-radius: 2px;
 
-      background-color: var(--c-text);
+      background-color: var(--vp-c-text);
 
       transition: transform var(--t-transform);
 

@@ -1,15 +1,16 @@
 html,
 body {
-  background-color: var(--c-bg);
+  background-color: var(--vp-c-bg);
   transition: background-color var(--t-color);
+  accent-color: var(--vp-c-accent);
 }
 
-html.dark {
+html[data-theme='dark'] {
   color-scheme: dark;
 }
 
 body {
-  color: var(--c-text);
+  color: var(--vp-c-text);
   font-size: 1rem;
   font-family: var(--font-family);
 }
@@ -40,7 +41,7 @@ kbd {
 
 blockquote {
   border-color: var(--c-border-dark);
-  color: var(--c-text-quote);
+  color: var(--vp-c-text-mute);
 }
 
 hr {

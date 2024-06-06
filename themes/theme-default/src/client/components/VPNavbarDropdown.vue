@@ -178,7 +178,7 @@ watch(
   border: none;
 
   background: transparent;
-  color: var(--c-text);
+  color: var(--vp-c-text);
 
   font-weight: 500;
   font-size: 0.9rem;
@@ -203,7 +203,7 @@ watch(
   border: none;
 
   background: transparent;
-  color: var(--c-text);
+  color: var(--vp-c-text);
 
   font-weight: 600;
   font-size: inherit;

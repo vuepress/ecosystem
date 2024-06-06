@@ -97,11 +97,11 @@ useEventListener('keydown', (event): void => {
     border-radius: 0.25rem;
 
     &:hover {
-      background: var(--c-bg-light);
+      background: var(--c-bg-soft);
     }
 
     .hint {
-      color: var(--c-text-quote);
+      color: var(--vp-c-text-mute);
       font-size: 0.875rem;
       line-height: 2;
     }

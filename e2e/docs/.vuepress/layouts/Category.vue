@@ -42,7 +42,6 @@ const categoryMap = useBlogCategory('category')
 
   padding-top: 1rem !important;
   padding-bottom: 0 !important;
-
   font-size: 14px;
 
   a {
@@ -84,11 +83,11 @@ const categoryMap = useBlogCategory('category')
     }
 
     &.route-link-active {
-      background: var(--c-brand);
-      color: var(--c-bg);
+      background: var(--vp-c-accent);
+      color: #fff;
 
       .category-num {
-        color: var(--c-bg);
+        color: #fff;
       }
     }
   }
