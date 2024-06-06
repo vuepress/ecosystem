@@ -1,25 +1,29 @@
 :root {
-  // brand colors
+  // accent colors
   --vp-c-accent: #3eaf7c;
   --vp-c-accent-hover: #4abf8a;
 
   // background colors
   --vp-c-bg: #fff;
+  --vp-c-bg-alt: #f6f6f7;
+  --vp-c-bg-hover: #f6f6f7;
+
+  // text colors
+  --vp-c-text: rgba(60 60 67);
+  --vp-c-text-mute: rgb(60 60 67 / 78%);
+  --vp-c-text-subtle: rgb(60 60 67 / 56%);
+
+  // original ones
   --c-bg-light: #f3f4f5;
   --c-bg-lighter: #eee;
   --c-bg-dark: #ebebec;
   --c-bg-darker: #e6e6e6;
   --c-bg-navbar: var(--vp-c-bg);
   --c-bg-sidebar: var(--vp-c-bg);
-  --c-bg-arrow: #ccc;
-
-  // text colors
-  --vp-c-text: #2c3e50;
   --c-text-accent: var(--vp-c-accent);
   --c-text-light: #3a5169;
   --c-text-lighter: #4e6e8e;
   --c-text-lightest: #6a8bad;
-  --c-text-quote: #999;
 
   // border colors
   --c-border: #eaecef;
@@ -100,7 +104,7 @@
 
   // external-link-icon
   --external-link-icon: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' %3E%3Cpath d='M0 0h24v24H0V0z' fill='none' /%3E%3Cpath d='M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z' /%3E%3C/svg%3E");
-  --external-link-icon-color: var(--c-text-quote);
+  --external-link-icon-color: var(--vp-c-text-mute);
 }
 
 // plugin-catalog
@@ -114,7 +118,7 @@
   --docsearch-primary-color: var(--vp-c-accent);
   --docsearch-text-color: var(--vp-c-text);
   --docsearch-highlight-color: var(--vp-c-accent);
-  --docsearch-muted-color: var(--c-text-quote);
+  --docsearch-muted-color: var(--vp-c-text-mute);
   --docsearch-container-background: rgb(9 10 17 / 80%);
   --docsearch-modal-background: var(--c-bg-light);
   --docsearch-searchbox-background: var(--c-bg-lighter);

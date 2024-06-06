@@ -2,6 +2,7 @@ html,
 body {
   background-color: var(--vp-c-bg);
   transition: background-color var(--t-color);
+  accent-color: var(--vp-c-accent);
 }
 
 html[data-theme='dark'] {
@@ -40,7 +41,7 @@ kbd {
 
 blockquote {
   border-color: var(--c-border-dark);
-  color: var(--c-text-quote);
+  color: var(--vp-c-text-mute);
 }
 
 hr {
