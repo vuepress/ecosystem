@@ -1,0 +1,24 @@
+@use '../functions/color' as *;
+
+/**
+ * Mixins for color palette
+ *
+ * Input:
+ * :root {
+ *   @include color-palette("accent", #5086a1);
+ * }
+ *
+ * Output:
+ * :root {
+ *   --vp-c-accent: #5086a1;
+ *   --vp-c-accent-hover: #6a9cb5;
+ *   --vp-c-accent-bg: #8cb3c6;
+ *   --vp-c-accent-soft: rgba(120, 165, 188, 0.2725);
+ * }
+ */
+@mixin color-palette($name, $color) {
+  --vp-c-#{$name}: #{$color};
+  --vp-c-#{$name}-hover: #{get-hover-color($color)};
+  --vp-c-#{$name}-bg: #{get-background-color($color)};
+  --vp-c-#{$name}-soft: #{get-soft-color($color)};
+}
