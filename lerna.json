@@ -3,7 +3,7 @@
   "version": "2.0.0-rc.35",
   "command": {
     "version": {
-      "allowBranch": "main",
+      "allowBranch": "lerna-test",
       "conventionalCommits": true,
       "exact": true,
       "message": "build: publish v%v",

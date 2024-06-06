@@ -5,3 +5,5 @@ export type * from './types.js'
 export * from './utils/index.js'
 /** @deprecated Use named export instead */
 export default gitPlugin
+
+// update
