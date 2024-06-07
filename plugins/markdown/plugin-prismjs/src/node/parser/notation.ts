@@ -24,14 +24,14 @@ import { highlightWordInLine } from './highlightWord.js'
 const toArray = <T>(value: T | T[]): T[] =>
   Array.isArray(value) ? value : [value]
 
-export interface NotationMapOption {
+export interface NotationCommentMarkerOption {
   classMap: Record<string, string | string[]>
   classPre?: string
 }
 
 const createNotationCommentMarkerRule = (
   parser: CodeParser,
-  { classMap, classPre }: NotationMapOption,
+  { classMap, classPre }: NotationCommentMarkerOption,
 ): void => {
   const marker = Object.keys(classMap).map(escapeRegExp).join('|')
   createNotationRule(
