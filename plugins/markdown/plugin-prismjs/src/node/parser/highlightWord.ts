@@ -5,13 +5,11 @@ const META_WORD_REGEXP = /\/((?:\\.|[^/])+)\//g
 
 export const highlightWordInLine = (
   node: OpenTag,
-  word: string | string[],
+  pattern: string | RegExp,
 ): void => {
   const before = '<span class="highlighted-word">'
   const after = '</span>'
-  const pattern = Array.isArray(word)
-    ? new RegExp(`${word.join('|')}`, 'g')
-    : word
+
   node.content = node.content
     .split(SPLIT_REGEXP)
     .map((text) => {
@@ -44,6 +42,7 @@ export const metaWordHighlight = (parser: CodeParser, meta: string): void => {
   const words = parseMetaHighlightWords(meta)
 
   if (words.length) {
-    parser.line((line) => highlightWordInLine(line, words))
+    const pattern = new RegExp(`${words.join('|')}`, 'g')
+    parser.line((line) => highlightWordInLine(line, pattern))
   }
 }
