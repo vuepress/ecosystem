@@ -3,10 +3,12 @@ import {
   getCodeParser,
   getHighlightLinesRange,
   highlightCodeLines,
+  metaWordHighlight,
   notationDiff,
   notationErrorLevel,
   notationFocus,
   notationHighlight,
+  notationWordHighlight,
 } from '../parser/index.js'
 import type { HighlightOptions } from '../types.js'
 import { resolveLanguage } from '../utils/index.js'
@@ -19,6 +21,7 @@ export const highlightPlugin = (
     notationErrorLevel: enabledErrorLevel,
     notationFocus: enabledFocus,
     notationHighlight: enabledHighlight,
+    notationWordHighLight: enabledWordHighlight,
   }: HighlightOptions = {},
 ): void => {
   const rawFence = md.renderer.rules.fence!
@@ -53,6 +56,11 @@ export const highlightPlugin = (
     }
     if (enabledHighlight) {
       notationHighlight(parser)
+    }
+
+    if (enabledWordHighlight) {
+      notationWordHighlight(parser)
+      metaWordHighlight(parser, info)
     }
 
     parser.pre.classList.push(languageClass)

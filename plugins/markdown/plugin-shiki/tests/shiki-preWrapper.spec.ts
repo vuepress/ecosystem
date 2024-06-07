@@ -277,6 +277,18 @@ ${codeFence}ts
 const foo = 'foo'
 const bar = 'bar'
 ${codeFence}
+
+${codeFence}ts
+// [!code word:Hello]
+const message = 'Hello World'
+console.log(message) // prints Hello World
+${codeFence}
+
+${codeFence}ts /Hello/
+const msg = 'Hello World'
+console.log(msg)
+console.log(msg) // prints Hello World
+${codeFence}
 `
     it('should work notation enabled', async () => {
       const md = await createMarkdown({
@@ -284,6 +296,7 @@ ${codeFence}
         notationErrorLevel: true,
         notationFocus: true,
         notationHighlight: true,
+        notationWordHighlight: true,
       })
 
       expect(md.render(source)).toMatchSnapshot()

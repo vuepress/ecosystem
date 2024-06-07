@@ -8,6 +8,7 @@
  * - line focus:       `// [!code focus]`
  * - line warning:     `// [!code warning]`
  * - line error:       `// [!code error]`
+ * - highlight word:   `// [!code word:xxx]` `xxx` can be any word
  *
  * You can also add `:\d` to achieve the same effect for the following `number` lines：
  *
@@ -16,64 +17,42 @@
  * - ...more
  */
 import { escapeRegExp } from '../utils/index.js'
-import type { CodeParser, OpenTag } from './getCodeParser.js'
-
-const COMMENT_EMPTY_TAG = /<span class="token comment">\s*?<\/span>/
+import { createNotationRule } from './createNotationRule.js'
+import type { CodeParser } from './getCodeParser.js'
+import { highlightWordInLine } from './highlightWord.js'
 
 const toArray = <T>(value: T | T[]): T[] =>
   Array.isArray(value) ? value : [value]
 
-export interface NotationOption {
+export interface NotationMapOption {
   classMap: Record<string, string | string[]>
   classPre?: string
 }
 
-export const createNotationRule = (
+const createNotationCommentMarkerRule = (
   parser: CodeParser,
-  options: NotationOption,
+  { classMap, classPre }: NotationMapOption,
 ): void => {
-  const { classMap, classPre } = options
+  const marker = Object.keys(classMap).map(escapeRegExp).join('|')
+  createNotationRule(
+    parser,
+    new RegExp(
+      // comment-begin               | marker           | range |   comment-end
+      `\\s*(?://|/\\*|<!--|#|--)\\s+\\[!code (${marker})(:\\d+)?\\]\\s*(?:\\*/|-->)?`,
+    ),
+    ([, match, range = ':1']: string[], index: number): boolean => {
+      const lineNum = Number.parseInt(range.slice(1), 10)
 
-  const pattern = new RegExp(
-    `\\s*(?://|/\\*|<!--|#|--)\\s+\\[!code (${Object.keys(classMap).map(escapeRegExp).join('|')})(:\\d+)?\\]\\s*(?:\\*/|-->)?`,
-  )
-
-  const nodeRemove: OpenTag[] = []
-
-  const onMatch = (
-    [, match, range = ':1']: string[],
-    index: number,
-  ): boolean => {
-    const lineNum = Number.parseInt(range.slice(1), 10)
-
-    parser.lines.slice(index, index + lineNum).forEach((node) => {
-      node.classList.push(...toArray(classMap[match]))
-    })
-    if (classPre) {
-      parser.pre.classList.push(classPre)
-    }
-
-    return true
-  }
-
-  parser.lines.forEach((node, index) => {
-    let replaced = false
-    node.content = node.content.replace(pattern, (...match) => {
-      if (onMatch(match, index)) {
-        replaced = true
-        return ''
+      parser.lines.slice(index, index + lineNum).forEach((node) => {
+        node.classList.push(...toArray(classMap[match]))
+      })
+      if (classPre) {
+        parser.pre.classList.push(classPre)
       }
-      return match[0]
-    })
-    if (
-      replaced &&
-      !(node.content = node.content.replace(COMMENT_EMPTY_TAG, '')).trim()
-    ) {
-      nodeRemove.push(node)
-    }
-  })
-  for (const node of nodeRemove)
-    parser.lines.splice(parser.lines.indexOf(node), 1)
+
+      return true
+    },
+  )
 }
 
 /**
@@ -82,7 +61,7 @@ export const createNotationRule = (
  * `// [!code highlight]`, or `// [!code hl]`
  */
 export const notationHighlight = (parser: CodeParser): void => {
-  createNotationRule(parser, {
+  createNotationCommentMarkerRule(parser, {
     classMap: {
       highlight: 'highlighted',
       hl: 'highlighted',
@@ -97,7 +76,7 @@ export const notationHighlight = (parser: CodeParser): void => {
  * `// [!code focus]`
  */
 export const notationFocus = (parser: CodeParser): void => {
-  createNotationRule(parser, {
+  createNotationCommentMarkerRule(parser, {
     classMap: {
       focus: 'has-focus',
     },
@@ -111,7 +90,7 @@ export const notationFocus = (parser: CodeParser): void => {
  * `// [!code ++]` and `// [!code --]`
  */
 export const notationDiff = (parser: CodeParser): void => {
-  createNotationRule(parser, {
+  createNotationCommentMarkerRule(parser, {
     classMap: {
       '++': 'diff add',
       '--': 'diff remove',
@@ -126,11 +105,40 @@ export const notationDiff = (parser: CodeParser): void => {
  * `// [!code warning]` and `// [!code error]`
  */
 export const notationErrorLevel = (parser: CodeParser): void => {
-  createNotationRule(parser, {
+  createNotationCommentMarkerRule(parser, {
     classMap: {
       error: ['highlighted', 'error'],
       warning: ['highlighted', 'warning'],
     },
     classPre: 'has-highlighted',
   })
+}
+
+/**
+ * highlight word
+ *
+ * `// [!code word:xxx]`: `xxx` can be any word.
+ * @param parser
+ */
+export const notationWordHighlight = (parser: CodeParser): void => {
+  createNotationRule(
+    parser,
+    // comment-begin             | marker    |word            | range |   comment-end
+    /\s*(?:\/\/|\/\*|<!--|#)\s+\[!code word:((?:\\.|[^:\]])+)(:\d+)?\]\s*(?:\*\/|-->)?/,
+    ([, word, range = ':1'], index): boolean => {
+      const lineNum = range
+        ? Number.parseInt(range.slice(1), 10)
+        : parser.lines.length
+
+      // escape backslashes
+      word = word.replace(/\\(.)/g, '$1')
+
+      parser.lines
+        // start from the next line after the comment
+        .slice(index + 1, index + lineNum + 1)
+        .forEach((line) => highlightWordInLine(line, word))
+
+      return true
+    },
+  )
 }

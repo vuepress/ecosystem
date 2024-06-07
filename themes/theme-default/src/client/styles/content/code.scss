@@ -146,7 +146,7 @@ div[class*='language-'] {
     right: 1em;
     z-index: 3;
 
-    color: var(--code-ln-color);
+    color: var(--code-line-number-color);
 
     font-size: 0.75rem;
   }
@@ -169,7 +169,7 @@ div[class*='language-'] {
   &.line-numbers-mode {
     pre {
       vertical-align: middle;
-      margin-left: var(--code-ln-wrapper-width);
+      margin-left: var(--code-line-number-wrapper-width);
     }
 
     code {
@@ -180,10 +180,10 @@ div[class*='language-'] {
       position: absolute;
       top: 0;
 
-      width: var(--code-ln-wrapper-width);
+      width: var(--code-line-number-wrapper-width);
       padding-top: 1.3rem;
 
-      color: var(--code-ln-color);
+      color: var(--code-line-number-color);
 
       font-size: 0.875em;
       line-height: $line-height;
@@ -210,9 +210,9 @@ div[class*='language-'] {
       top: 0;
       left: 0;
 
-      width: var(--code-ln-wrapper-width);
+      width: var(--code-line-number-wrapper-width);
       height: 100%;
-      border-right: 1px solid var(--code-hl-bg-color);
+      border-right: 1px solid var(--code-highlight-bg-color);
       border-radius: 6px 0 0 6px;
     }
   }
@@ -233,100 +233,6 @@ div[data-highlighter='shiki'] {
 
   .dark & {
     color: var(--shiki-dark, inherit);
-  }
-}
-
-// ------------ code notation highlighting ------------
-// matches `<span class="line xxxx" ></span>`
-
-div[class*='language-'] {
-  // highlight lines and  notation highlight
-  //
-  // `!code highlight` and `!code hl` are the same:
-  // - `// [\!code highlight]`
-  // - `// [\!code hl]`
-  // - `// [\!code highlight:3]`
-  // - `// [\!code hl:3]`
-  //
-  // It also has the style of error level,
-  // covering the background color with 'warning' and 'error' classes.
-  // - `// [\!code warning]`
-  // - `// [\!code error]`
-  // - `// [\!code warning:3]`
-  // - `// [\!code error:3]`
-  .line.highlighted {
-    display: inline-block;
-
-    width: 100%;
-    margin: 0 -24px;
-    padding: 0 24px;
-
-    background-color: var(--code-hl-bg-color);
-
-    transition: background-color 0.5s;
-
-    &.error {
-      background-color: var(--code-hl-error-bg-color);
-    }
-
-    &.warning {
-      background-color: var(--code-hl-warning-bg-color);
-    }
-  }
-
-  // notation diff line
-  //
-  // - class="diff add": `// [\!code ++]` or `// [\!code ++:3]`
-  // - class="diff remove":  `// [\!code --]` or `// [\!code --:3]`
-  .line.diff {
-    display: inline-block;
-
-    width: 100%;
-    margin: 0 -24px;
-    padding: 0 24px;
-
-    transition: background-color 0.5s;
-
-    &::before {
-      position: absolute;
-      left: 10px;
-    }
-
-    &.remove {
-      background-color: var(--code-line-diff-remove-color);
-      opacity: 0.7;
-
-      &::before {
-        content: '-';
-        color: var(--code-line-diff-remove-symbol-color);
-      }
-    }
-
-    &.add {
-      background-color: var(--code-line-diff-add-color);
-
-      &::before {
-        content: '+';
-        color: var(--code-line-diff-add-symbol-color);
-      }
-    }
-  }
-
-  // notation focused lines
-  //
-  // - `// [\!code focus]`
-  // - `// [\!code focus:3]`
-  .has-focused-lines .line:not(.has-focus) {
-    opacity: 0.7;
-    filter: blur(0.095rem);
-    transition:
-      filter 0.35s,
-      opacity 0.35s;
-  }
-
-  &:hover .has-focused-lines .line:not(.has-focus) {
-    opacity: 1;
-    filter: blur(0);
   }
 }
 

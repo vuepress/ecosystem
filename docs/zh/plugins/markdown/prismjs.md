@@ -153,7 +153,7 @@ export default defineUserConfig({
 以下功能需要额外的样式才能正常工作，这应该由主题或用户来处理。
 
 ::: details 查看样式示例
-@[code{260-349}](@vuepress/theme-default/src/client/styles/content/code.scss)
+@[code](@vuepress/theme-default/src/client/styles/content/code-notation.scss)
 :::
 
 ::::
@@ -167,6 +167,18 @@ export default defineUserConfig({
 - 详情：是否启用差异标记。
 
 - 示例：
+
+  **输入：**
+
+  ````md
+  ```ts
+  console.log('hewwo') // [\!code --]
+  console.log('hello') // [\!code ++]
+  console.log('goodbye')
+  ```
+  ````
+
+  **输出：**
 
   ```ts
   console.log('hewwo') // [!code --]
@@ -187,6 +199,18 @@ export default defineUserConfig({
 
 - 示例：
 
+  **输入：**
+
+  ````md
+  ```ts
+  console.log('Not focused')
+  console.log('Focused') // [\!code focus]
+  console.log('Not focused')
+  ```
+  ````
+
+  **输出：**
+
   ```ts
   console.log('Not focused')
   console.log('Focused') // [!code focus]
@@ -205,6 +229,18 @@ export default defineUserConfig({
 - 详情：是否启用高亮标记。
 
 - 示例：
+
+  **输入：**
+
+  ````md
+  ```ts
+  console.log('Not highlighted')
+  console.log('Highlighted') // [\!code highlight]
+  console.log('Not highlighted')
+  ```
+  ````
+
+  **输出：**
 
   ```ts
   console.log('Not highlighted')
@@ -225,6 +261,18 @@ export default defineUserConfig({
 
 - 示例：
 
+  **输入：**
+
+  ````md
+  ```ts
+  console.log('No errors or warnings')
+  console.warn('Warning') // [\!code warning]
+  console.error('Error') // [\!code error]
+  ```
+  ````
+
+  **输出：**
+
   ```ts
   console.log('No errors or warnings')
   console.warn('Warning') // [!code warning]
@@ -233,6 +281,60 @@ export default defineUserConfig({
 
 - 参考：
   - [Shiki > 错误级别标记](https://shiki.tmrs.site/packages/transformers#transformernotationerrorlevel)
+
+### notationWordHighlight
+
+- 类型：`boolean`
+
+- 默认值：`false`
+
+- 详情：是否启用词高亮标记。
+
+  词高亮标记 必须单独写在一行。
+
+- 示例：
+
+  **输入：**
+
+  ````md
+  ```ts
+  // [\!code word:Hello]
+  const message = 'Hello World'
+  console.log(message) // prints Hello World
+  ```
+  ````
+
+  **输出：**
+
+  ```ts
+  // [!code word:Hello]
+  const message = 'Hello World'
+  console.log(message) // prints Hello World
+  ```
+
+- 示例：根据代码片段中提供的元字符串，高亮显示词
+
+  **输入：**
+
+  ````md
+  ```js /Hello/
+  const msg = 'Hello World'
+  console.log(msg)
+  console.log(msg) // 打印 Hello World
+  ```
+  ````
+
+  **输出：**
+
+  ```js /Hello/
+  const msg = 'Hello World'
+  console.log(msg)
+  console.log(msg) // 打印 Hello World
+  ```
+
+- 参考：
+
+  - [Shiki > 词高亮标记](https://shiki.tmrs.site/packages/transformers#transformernotationwordhighlight)
 
 ### preWrapper
 

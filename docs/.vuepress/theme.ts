@@ -73,6 +73,7 @@ export default defaultTheme({
           notationErrorLevel: true,
           notationFocus: true,
           notationHighlight: true,
+          notationWordHighLight: true,
         },
   },
 }) as Theme

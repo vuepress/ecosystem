@@ -152,7 +152,7 @@ In the new version, some functionalities similar to [shiki](https://shiki.style/
 The following features requires additional style to work, which should be handled by themes or users.
 
 ::: details View Styles Example
-@[code{260-349}](@vuepress/theme-default/src/client/styles/content/code.scss)
+@[code](@vuepress/theme-default/src/client/styles/content/code-notation.scss)
 :::
 
 ::::
@@ -166,6 +166,18 @@ The following features requires additional style to work, which should be handle
 - Details: Whether enable notation diff.
 
 - Example:
+
+  **Input:**
+
+  ````md
+  ```ts
+  console.log('hewwo') // [\!code --]
+  console.log('hello') // [\!code ++]
+  console.log('goodbye')
+  ```
+  ````
+
+  **Output:**
 
   ```ts
   console.log('hewwo') // [!code --]
@@ -186,6 +198,18 @@ The following features requires additional style to work, which should be handle
 
 - Example:
 
+  **Input:**
+
+  ````md
+  ```ts
+  console.log('Not focused')
+  console.log('Focused') // [\!code focus]
+  console.log('Not focused')
+  ```
+  ````
+
+  **Output:**
+
   ```ts
   console.log('Not focused')
   console.log('Focused') // [!code focus]
@@ -204,6 +228,18 @@ The following features requires additional style to work, which should be handle
 - Details: Whether enable notation highlight.
 
 - Example:
+
+  **Input:**
+
+  ````md
+  ```ts
+  console.log('Not highlighted')
+  console.log('Highlighted') // [\!code highlight]
+  console.log('Not highlighted')
+  ```
+  ````
+
+  **Output:**
 
   ```ts
   console.log('Not highlighted')
@@ -224,6 +260,18 @@ The following features requires additional style to work, which should be handle
 
 - Example:
 
+  **Input:**
+
+  ````md
+  ```ts
+  console.log('No errors or warnings')
+  console.warn('Warning') // [\!code warning]
+  console.error('Error') // [\!code error]
+  ```
+  ````
+
+  **Output:**
+
   ```ts
   console.log('No errors or warnings')
   console.warn('Warning') // [!code warning]
@@ -232,6 +280,60 @@ The following features requires additional style to work, which should be handle
 
 - Also see:
   - [Shiki > Notation Error Level](https://shiki.style/packages/transformers#transformernotationerrorlevel)
+
+### notationWordHighlight
+
+- Type: `boolean`
+
+- Default: `false`
+
+- Details: Whether enable notation word highlight.
+
+  Word highlight must be written on a separate line.
+
+- Example:
+
+  **Input:**
+
+  ````md
+  ```ts
+  // [\!code word:Hello]
+  const message = 'Hello World'
+  console.log(message) // prints Hello World
+  ```
+  ````
+
+  **Output:**
+
+  ```ts
+  // [!code word:Hello]
+  const message = 'Hello World'
+  console.log(message) // prints Hello World
+  ```
+
+- Example：Highlight words based on the meta string provided on the code snippet
+
+  **Input:**
+
+  ````md
+  ```js /Hello/
+  const msg = 'Hello World'
+  console.log(msg)
+  console.log(msg) // prints Hello World
+  ```
+  ````
+
+  **Output:**
+
+  ```js /Hello/
+  const msg = 'Hello World'
+  console.log(msg)
+  console.log(msg) // prints Hello World
+  ```
+
+- Also see:
+
+  - [Shiki > Notation Word Highlight](https://shiki.style/packages/transformers#transformernotationwordhighlight)
 
 ### preWrapper
 

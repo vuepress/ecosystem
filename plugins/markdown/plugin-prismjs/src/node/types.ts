@@ -64,4 +64,13 @@ export interface HighlightOptions {
    * @see https://shiki.style/packages/transformers#transformernotationerrorlevel
    */
   notationErrorLevel?: boolean
+
+  /**
+   * Enable notation word highlight
+   *
+   * @default false
+   *
+   * @see https://shiki.style/packages/transformers#transformernotationwordhighlight
+   */
+  notationWordHighLight?: boolean
 }

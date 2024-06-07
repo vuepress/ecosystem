@@ -187,8 +187,9 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > highlight notati
 <span class="line diff remove"><span class="token keyword">const</span> qux <span class="token operator">=</span> <span class="token string">'qux'</span> </span>
 <span class="line highlighted error"><span class="token keyword">const</span> quux <span class="token operator">=</span> <span class="token string">'quux'</span> </span>
 <span class="line highlighted warning"><span class="token keyword">const</span> corge <span class="token operator">=</span> <span class="token string">'corge'</span> </span>
+<span class="line"><span class="token keyword">const</span> <span class="highlighted-word">grault</span> <span class="token operator">=</span> <span class="token string">'<span class="highlighted-word">foo</span>'</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
 `;
 
 exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > plugin options > should disable \`highlightLines\` 1`] = `

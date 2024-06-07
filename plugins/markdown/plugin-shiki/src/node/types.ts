@@ -120,6 +120,15 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
   notationErrorLevel?: boolean
 
   /**
+   * Enable notation word highlight transformer
+   *
+   * @default false
+   *
+   * @see https://shiki.style/packages/transformers#transformernotationwordhighlight
+   */
+  notationWordHighlight?: boolean
+
+  /**
    * Log level Highlighter language detecter
    *
    * @description defaults to `'debug'` when `--debug` flag is enabled

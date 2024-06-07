@@ -111,6 +111,7 @@ export default defineUserConfig({
           notationErrorLevel: true,
           notationFocus: true,
           notationHighlight: true,
+          notationWordHighlight: true,
         })
       : [],
   ],

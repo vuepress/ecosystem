@@ -117,7 +117,7 @@ export const getCodeParser = (html: string): CodeParser => {
   const stringify = (): string => {
     const linesContent = lineNodeList.map((line, index) => {
       lineNodeHandlers.forEach((handler) => handler(line, index + 1))
-      line.content = line.content.replace(CODE_ESCAPE_RE, '[!code')
+      line.content = line.content.replaceAll(CODE_ESCAPE_RE, '[!code')
 
       return line.toString() + '</span>'
     })
