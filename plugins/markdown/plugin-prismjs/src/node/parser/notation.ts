@@ -40,7 +40,7 @@ const createNotationCommentMarkerRule = (
       // comment-begin               | marker           | range |   comment-end
       `\\s*(?://|/\\*|<!--|#|--)\\s+\\[!code (${marker})(:\\d+)?\\]\\s*(?:\\*/|-->)?`,
     ),
-    ([, match, range = ':1']: string[], index: number): boolean => {
+    ([, match, range = ':1'], index): boolean => {
       const lineNum = Number.parseInt(range.slice(1), 10)
 
       parser.lines.slice(index, index + lineNum).forEach((node) => {
@@ -125,17 +125,17 @@ export const notationWordHighlight = (parser: CodeParser): void => {
     parser,
     // comment-begin             | marker    |word            | range |   comment-end
     /\s*(?:\/\/|\/\*|<!--|#)\s+\[!code word:((?:\\.|[^:\]])+)(:\d+)?\]\s*(?:\*\/|-->)?/,
-    ([, word, range = ':1'], index): boolean => {
+    ([, word, range], index): boolean => {
       const lineNum = range
         ? Number.parseInt(range.slice(1), 10)
-        : parser.lines.length
+        : parser.lines.length - 1
 
       // escape backslashes
       word = word.replace(/\\(.)/g, '$1')
 
       parser.lines
         // start from the next line after the comment
-        .slice(index + 1, index + lineNum + 1)
+        .slice(index + 1, index + 1 + lineNum)
         .forEach((line) => highlightWordInLine(line, word))
 
       return true

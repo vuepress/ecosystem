@@ -27,8 +27,7 @@ exports[`@vuepress/plugin-prismjs > parser > parse highlight lines 1`] = `
 
 exports[`@vuepress/plugin-prismjs > parser > parse multiple words highlight within meta 1`] = `
 "<pre><code><span class="line">const message = 'Hello <span class="highlighted-word">Foo</span>'</span>
-<span class="line">console.log(message) // prints Hello <span class="highlighted-word">Bar</span></span>
-<span class="line"></code></pre></span>"
+<span class="line">console.log(message) // prints Hello <span class="highlighted-word">Bar</span></code></pre></span>"
 `;
 
 exports[`@vuepress/plugin-prismjs > parser > parse notation diff ++:number 1`] = `
@@ -130,19 +129,17 @@ exports[`@vuepress/plugin-prismjs > parser > parse notation highlight:number 1`]
 exports[`@vuepress/plugin-prismjs > parser > parse notation word highlight :number 1`] = `
 "<pre><code><span class="line">const message = '<span class="highlighted-word">Hello</span> World'</span>
 <span class="line">console.log(message) // prints <span class="highlighted-word">Hello</span> World</span>
-<span class="line"></code></pre></span>"
+<span class="line">console.log(message) // prints Hello World</code></pre></span>"
 `;
 
 exports[`@vuepress/plugin-prismjs > parser > parse notation word highlight 1`] = `
 "<pre><code><span class="line">const message = '<span class="highlighted-word">Hello</span> World'</span>
-<span class="line">console.log(message) // prints Hello World</span>
-<span class="line"></code></pre></span>"
+<span class="line">console.log(message) // prints <span class="highlighted-word">Hello</span> World</code></pre></span>"
 `;
 
 exports[`@vuepress/plugin-prismjs > parser > parse word highlight within meta 1`] = `
 "<pre><code><span class="line">const message = '<span class="highlighted-word">Hello</span> World'</span>
-<span class="line">console.log(message) // prints <span class="highlighted-word">Hello</span> World</span>
-<span class="line"></code></pre></span>"
+<span class="line">console.log(message) // prints <span class="highlighted-word">Hello</span> World</code></pre></span>"
 `;
 
 exports[`@vuepress/plugin-prismjs > parser > should not remove // [\\!code xxx] 1`] = `"<pre><code><span class="line">const a = 1 // [!code focus]</code></pre></span>"`;
