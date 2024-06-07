@@ -16,9 +16,9 @@ export const highlightWordInLine = (
       if (!text || text[0] === '<') {
         return text
       }
-      return text.replaceAll(pattern, (match) => {
-        return `${before}${match}${after}`
-      })
+      return text.replaceAll(pattern, (match) =>
+        `${before}${match}${after}`
+      )
     })
     .join('')
 }
