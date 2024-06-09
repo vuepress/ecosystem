@@ -3,6 +3,7 @@ import {
   getCodeParser,
   getHighlightLinesRange,
   highlightCodeLines,
+  metaWhitespace,
   metaWordHighlight,
   notationDiff,
   notationErrorLevel,
@@ -371,5 +372,192 @@ const b = 2`)
     expect(parser.lines.length).toBe(2)
 
     expect(result).toMatchSnapshot()
+  })
+
+  describe('should work `metaWhitespace` with default options', () => {
+    const code = genCode(`function foo(bar: string, baz: string) {
+  console.log('hello world')  \n  console.log('hello world')
+\t\tconsole.log('hello world')
+console.log('hello world)\t
+}`)
+    it('no render whitespace without meta', () => {
+      const parser = getCodeParser(code)
+      metaWhitespace(parser, '')
+      const result = parser.stringify()
+
+      expect(result.includes('class="space"')).toBe(false)
+      expect(result.includes('class="tab"')).toBe(false)
+
+      expect(parser.stringify()).toMatchSnapshot()
+    })
+
+    it(':whitespace / :whitespace=all', () => {
+      const parser = getCodeParser(code)
+      metaWhitespace(parser, 'js :whitespace')
+      const result = parser.stringify()
+
+      expect(parser.lines[0].content.includes('class="space"')).toBe(true)
+      expect(parser.lines[1].content.includes('<span class="space">')).toBe(
+        true,
+      )
+      expect(parser.lines[3].content.includes('span class="tab"')).toBe(true)
+      expect(result).toMatchSnapshot()
+    })
+
+    it(':whitespace=boundary', () => {
+      const parser = getCodeParser(code)
+      metaWhitespace(parser, 'js :whitespace=boundary')
+      const result = parser.stringify()
+      expect(parser.lines[0].content.includes('class="space"')).toBe(false)
+      expect(
+        parser.lines[1].content.match(/<span class="space">/g)?.length,
+      ).toBe(4)
+      expect(parser.lines[3].content.match(/<span class="tab">/g)?.length).toBe(
+        2,
+      )
+      expect(result).toMatchSnapshot()
+    })
+
+    it(':whitespace=trailing', () => {
+      const parser = getCodeParser(code)
+      metaWhitespace(parser, 'js :whitespace=trailing')
+      const result = parser.stringify()
+      expect(parser.lines[0].content.includes('class="space"')).toBe(false)
+      expect(
+        parser.lines[1].content.match(/<span class="space">/g)?.length,
+      ).toBe(2)
+      expect(parser.lines[3].content.includes('class="space"')).toBe(false)
+      expect(result).toMatchSnapshot()
+    })
+  })
+
+  describe('should work `metaWhitespace` with `all` / `true` options', () => {
+    const code = genCode(`function foo(bar: string, baz: string) {
+  console.log('hello world')  \n  console.log('hello world')
+\t\tconsole.log('hello world')
+console.log('hello world)\t
+}`)
+
+    it('`true` and  `:whitespace`', () => {
+      const parser = getCodeParser(code)
+      metaWhitespace(parser, 'js :whitespace', true)
+      const result = parser.stringify()
+      expect(
+        parser.lines
+          .slice(0, -1)
+          .every((line) => line.content.includes('class="space"')),
+      ).toBe(true)
+      expect(result).toMatchSnapshot()
+    })
+
+    it('`true` and  `:whitespace=boundary`', () => {
+      const parser = getCodeParser(code)
+      metaWhitespace(parser, 'js :whitespace=boundary', true)
+      const result = parser.stringify()
+      expect(parser.lines[0].content.includes('class="space"')).toBe(false)
+      expect(parser.lines[1].content.includes('class="space"')).toBe(true)
+      expect(parser.lines[2].content.includes('class="space"')).toBe(true)
+      expect(parser.lines[3].content.includes('class="tab"')).toBe(true)
+      expect(parser.lines[4].content.includes('class="tab"')).toBe(true)
+      expect(result).toMatchSnapshot()
+    })
+
+    it('`true` and `:whitespace=trailing`', () => {
+      const parser = getCodeParser(code)
+      metaWhitespace(parser, 'js :whitespace=trailing', true)
+      const result = parser.stringify()
+
+      expect(parser.lines[0].content.includes('class="space"')).toBe(false)
+      expect(parser.lines[1].content.includes('class="space"')).toBe(true)
+      expect(parser.lines[2].content.includes('class="space"')).toBe(false)
+      expect(parser.lines[4].content.includes('class="tab"')).toBe(true)
+
+      expect(result).toMatchSnapshot()
+    })
+
+    it('`all` and  `:whitespace`', () => {
+      const parser = getCodeParser(code)
+      metaWhitespace(parser, 'js :whitespace', 'all')
+      const result = parser.stringify()
+      expect(
+        parser.lines
+          .slice(0, -1)
+          .every((line) => line.content.includes('class="space"')),
+      ).toBe(true)
+      expect(result).toMatchSnapshot()
+    })
+  })
+
+  describe('should work `metaWhitespace` with `boundary` options', () => {
+    const code =
+      genCode(`<span class="line">function foo(bar: string, baz: string) {</span>
+<span class="line">  console</span><span>.</span>log('hello world'<span>)  </span></span>\n  console.log('hello world')
+\t\tconsole.log('hello world')
+console.log('hello world)\t
+}`)
+
+    it('`boundary` and `:whitespace`', () => {
+      const parser = getCodeParser(code)
+      metaWhitespace(parser, 'js :whitespace', 'boundary')
+      const result = parser.stringify()
+      expect(parser.lines[0].content.includes('class="space"')).toBe(false)
+      expect(parser.lines[1].content.includes('class="space"')).toBe(true)
+      expect(parser.lines[2].content.includes('class="space"')).toBe(true)
+      expect(parser.lines[3].content.includes('class="tab"')).toBe(true)
+      expect(parser.lines[4].content.includes('class="tab"')).toBe(true)
+      expect(result).toMatchSnapshot()
+    })
+
+    it('`boundary` and `:whitespace=all', () => {
+      const parser = getCodeParser(code)
+      metaWhitespace(parser, 'js :whitespace=all', 'boundary')
+      const result = parser.stringify()
+      expect(
+        parser.lines
+          .slice(0, -1)
+          .every((line) => line.content.includes('class="space"')),
+      ).toBe(true)
+      expect(result).toMatchSnapshot()
+    })
+
+    it('`boundary` and `:whitespace=trailing`', () => {
+      const parser = getCodeParser(code)
+      metaWhitespace(parser, 'js :whitespace=trailing', 'boundary')
+      const result = parser.stringify()
+      expect(parser.lines[0].content.includes('class="space"')).toBe(false)
+      expect(parser.lines[1].content.includes('class="space"')).toBe(true)
+      expect(parser.lines[2].content.includes('class="space"')).toBe(false)
+      expect(parser.lines[4].content.includes('class="tab"')).toBe(true)
+      expect(result).toMatchSnapshot()
+    })
+  })
+
+  describe('should work `metaWhitespace` with `false`', () => {
+    const code = genCode(`function foo(bar: string, baz: string) {
+  console.log('hello world')  \n  console.log('hello world')
+\t\tconsole.log('hello world')
+console.log('hello world)\t
+}`)
+    it('disabled global', () => {
+      const parser = getCodeParser(code)
+      metaWhitespace(parser, 'js', false)
+      const result = parser.stringify()
+      expect(
+        parser.lines.every((line) => !line.content.includes('class="space"')),
+      ).toBe(true)
+      expect(result).toMatchSnapshot()
+    })
+
+    it('disabled global and :whitespace', () => {
+      const parser = getCodeParser(code)
+      metaWhitespace(parser, 'js :whitespace', false)
+      const result = parser.stringify()
+      expect(
+        parser.lines
+          .slice(0, -1)
+          .every((line) => line.content.includes('class="space"')),
+      ).toBe(true)
+      expect(result).toMatchSnapshot()
+    })
   })
 })
