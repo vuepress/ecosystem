@@ -62,13 +62,13 @@ overrides:
       declaration-block-no-redundant-longhand-properties: null
 
   - files:
-      - '**/vars.css'
+      - 'themes/theme-next/src/client/styles/vars.css'
 
     rules:
       no-duplicate-selectors: null
 
   - files:
-      - '**/compat.css'
+      - 'themes/theme-next/src/client/styles/compat.css'
 
     rules:
       selector-class-pattern: null
