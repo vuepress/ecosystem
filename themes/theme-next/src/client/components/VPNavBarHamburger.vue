@@ -27,8 +27,9 @@ defineEmits<(e: 'click') => void>()
 <style scoped>
 .vp-navbar-hamburger {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
   width: 48px;
   height: 48px;
 }
@@ -41,9 +42,9 @@ defineEmits<(e: 'click') => void>()
 
 .container {
   position: relative;
+  overflow: hidden;
   width: 16px;
   height: 14px;
-  overflow: hidden;
 }
 
 .vp-navbar-hamburger:hover .top {
@@ -51,11 +52,13 @@ defineEmits<(e: 'click') => void>()
   left: 0;
   transform: translateX(4px);
 }
+
 .vp-navbar-hamburger:hover .middle {
   top: 6px;
   left: 0;
   transform: translateX(0);
 }
+
 .vp-navbar-hamburger:hover .bottom {
   top: 12px;
   left: 0;
@@ -66,10 +69,12 @@ defineEmits<(e: 'click') => void>()
   top: 6px;
   transform: translateX(0) rotate(225deg);
 }
+
 .vp-navbar-hamburger.active .middle {
   top: 6px;
   transform: translateX(16px);
 }
+
 .vp-navbar-hamburger.active .bottom {
   top: 6px;
   transform: translateX(0) rotate(135deg);
@@ -89,9 +94,12 @@ defineEmits<(e: 'click') => void>()
 .middle,
 .bottom {
   position: absolute;
+
   width: 16px;
   height: 2px;
+
   background-color: var(--vp-c-text-1);
+
   transition:
     top 0.25s,
     background-color 0.5s,
@@ -103,11 +111,13 @@ defineEmits<(e: 'click') => void>()
   left: 0;
   transform: translateX(0);
 }
+
 .middle {
   top: 6px;
   left: 0;
   transform: translateX(8px);
 }
+
 .bottom {
   top: 12px;
   left: 0;

@@ -56,12 +56,16 @@ const target = computed(() =>
 .title {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid transparent;
+
   width: 100%;
   height: var(--vp-nav-height);
-  font-size: 16px;
-  font-weight: 600;
+  border-bottom: 1px solid transparent;
+
   color: var(--vp-c-text-1);
+
+  font-weight: 600;
+  font-size: 16px;
+
   transition: opacity 0.25s;
 }
 
@@ -76,7 +80,7 @@ const target = computed(() =>
 }
 
 :deep(.logo) {
-  margin-right: 8px;
   height: var(--vp-nav-logo-height);
+  margin-right: 8px;
 }
 </style>

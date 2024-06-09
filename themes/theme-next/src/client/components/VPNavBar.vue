@@ -77,9 +77,13 @@ watchPostEffect(() => {
 <style scoped>
 .vp-navbar {
   position: relative;
+
   height: var(--vp-nav-height);
-  pointer-events: none;
+
   white-space: nowrap;
+
+  pointer-events: none;
+
   transition: background-color 0.5s;
 }
 
@@ -92,7 +96,7 @@ watchPostEffect(() => {
     background-color: transparent;
   }
 
-  .vp-navbar:not(.has-sidebar):not(.home.top) {
+  .vp-navbar:not(.has-sidebar, .home.top) {
     background-color: var(--vp-nav-bg-color);
   }
 }
@@ -116,9 +120,11 @@ watchPostEffect(() => {
 .container {
   display: flex;
   justify-content: space-between;
-  margin: 0 auto;
+
   max-width: calc(var(--vp-layout-max-width) - 64px);
   height: var(--vp-nav-height);
+  margin: 0 auto;
+
   pointer-events: none;
 }
 
@@ -149,22 +155,24 @@ watchPostEffect(() => {
     top: 0;
     left: 0;
     z-index: 2;
-    padding: 0 32px;
+
     width: var(--vp-sidebar-width);
     height: var(--vp-nav-height);
+    padding: 0 32px;
+
     background-color: transparent;
   }
 }
 
 @media (min-width: 1440px) {
   .vp-navbar.has-sidebar .title {
-    padding-left: max(
-      32px,
-      calc((100% - (var(--vp-layout-max-width) - 64px)) / 2)
-    );
     width: calc(
       (100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) -
         32px
+    );
+    padding-left: max(
+      32px,
+      calc((100% - (var(--vp-layout-max-width) - 64px)) / 2)
     );
   }
 }
@@ -193,9 +201,11 @@ watchPostEffect(() => {
 
 .content-body {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: flex-end;
+
   height: var(--vp-nav-height);
+
   transition: background-color 0.5s;
 }
 
@@ -205,7 +215,7 @@ watchPostEffect(() => {
     background-color: var(--vp-nav-bg-color);
   }
 
-  .vp-navbar:not(.has-sidebar):not(.home.top) .content-body {
+  .vp-navbar:not(.has-sidebar, .home.top) .content-body {
     background-color: transparent;
   }
 }
@@ -221,12 +231,14 @@ watchPostEffect(() => {
 .menu + .social-links::before,
 .translations + .appearance::before,
 .appearance + .social-links::before {
-  margin-right: 8px;
-  margin-left: 8px;
+  content: '';
+
   width: 1px;
   height: 24px;
+  margin-right: 8px;
+  margin-left: 8px;
+
   background-color: var(--vp-c-divider);
-  content: '';
 }
 
 .menu + .appearance::before,
@@ -276,7 +288,7 @@ watchPostEffect(() => {
     background-color: var(--vp-c-gutter);
   }
 
-  .vp-navbar:not(.has-sidebar):not(.home.top) .divider {
+  .vp-navbar:not(.has-sidebar, .home.top) .divider {
     background-color: var(--vp-c-gutter);
   }
 }

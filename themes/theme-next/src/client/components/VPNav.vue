@@ -52,12 +52,16 @@ watchEffect(() => {
 <style scoped>
 .vp-nav {
   position: relative;
-  top: var(--vp-layout-top-height, 0px);
-  /*rtl:ignore*/
+  top: var(--vp-layout-top-height, 0);
+
+  /* rtl:ignore */
   left: 0;
   z-index: var(--vp-z-index-nav);
+
   width: 100%;
+
   pointer-events: none;
+
   transition: background-color 0.5s;
 }
 

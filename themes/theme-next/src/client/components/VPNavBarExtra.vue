@@ -77,10 +77,12 @@ const hasExtraContent = computed(
 
 .trans-title {
   padding: 0 24px 0 12px;
-  line-height: 32px;
-  font-size: 14px;
-  font-weight: 700;
+
   color: var(--vp-c-text-1);
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 32px;
 }
 
 .item.appearance,

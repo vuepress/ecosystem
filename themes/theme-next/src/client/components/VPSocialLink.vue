@@ -28,11 +28,14 @@ const svg = computed(() => {
 <style scoped>
 .vp-social-link {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
   width: 36px;
   height: 36px;
+
   color: var(--vp-c-text-2);
+
   transition: color 0.5s;
 }
 
@@ -45,6 +48,6 @@ const svg = computed(() => {
 .vp-social-link > :deep([class^='vpi-social-']) {
   width: 20px;
   height: 20px;
-  fill: currentColor;
+  fill: currentcolor;
 }
 </style>

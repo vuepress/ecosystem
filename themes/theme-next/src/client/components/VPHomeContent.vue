@@ -18,9 +18,9 @@ const { width: vw } = useWindowSize({
 
 <style scoped>
 .container {
-  margin: auto;
   width: 100%;
   max-width: 1280px;
+  margin: auto;
   padding: 0 24px;
 }
 
@@ -39,8 +39,8 @@ const { width: vw } = useWindowSize({
 
 .vp-doc :deep(.vp-home-sponsors),
 .vp-doc :deep(.vp-team-page) {
-  margin-left: var(--vp-offset, calc(50% - 50vw));
   margin-right: var(--vp-offset, calc(50% - 50vw));
+  margin-left: var(--vp-offset, calc(50% - 50vw));
 }
 
 .vp-doc :deep(.vp-home-sponsors h2) {

@@ -31,10 +31,10 @@ const contributors = useContributors()
 
 <style scoped>
 .vp-contributors {
-  line-height: 24px;
-  font-size: 14px;
-  font-weight: 500;
   color: var(--vp-c-text-2);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
 }
 
 .vp-contributors .contributor {
@@ -43,9 +43,9 @@ const contributors = useContributors()
 
 @media (min-width: 640px) {
   .vp-contributors {
-    line-height: 32px;
-    font-size: 14px;
     font-weight: 500;
+    font-size: 14px;
+    line-height: 32px;
     text-align: var(--vp-contributors-align, right);
   }
 }

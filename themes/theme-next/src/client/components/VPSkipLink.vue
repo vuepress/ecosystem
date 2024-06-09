@@ -44,21 +44,24 @@ const focusOnTargetAnchor = ({ target }: Event): void => {
 .vp-skip-link {
   top: 8px;
   left: 8px;
-  padding: 8px 16px;
   z-index: 999;
+
+  padding: 8px 16px;
   border-radius: 8px;
-  font-size: 12px;
-  font-weight: bold;
-  text-decoration: none;
+
+  background-color: var(--vp-c-bg);
   color: var(--vp-c-brand-1);
   box-shadow: var(--vp-shadow-3);
-  background-color: var(--vp-c-bg);
+
+  font-weight: bold;
+  font-size: 12px;
+  text-decoration: none;
 }
 
 .vp-skip-link:focus {
-  height: auto;
-  width: auto;
   clip: auto;
+  width: auto;
+  height: auto;
   clip-path: none;
 }
 

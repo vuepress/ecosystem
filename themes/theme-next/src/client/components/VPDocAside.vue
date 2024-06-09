@@ -27,20 +27,20 @@ const { theme } = useData()
 <style scoped>
 .vp-doc-aside {
   display: flex;
-  flex-direction: column;
   flex-grow: 1;
+  flex-direction: column;
 }
 
 .spacer {
   flex-grow: 1;
 }
 
-.vp-doc-aside :deep(.spacer + .vp-doc-asideSponsors),
-.vp-doc-aside :deep(.spacer + .vp-doc-asideCarbonAds) {
+.vp-doc-aside :deep(.spacer + .vp-doc-aside-sponsors),
+.vp-doc-aside :deep(.spacer + .vp-doc-aside-carbon-ads) {
   margin-top: 24px;
 }
 
-.vp-doc-aside :deep(.vp-doc-asideSponsors + .vp-doc-asideCarbonAds) {
+.vp-doc-aside :deep(.vp-doc-aside-sponsors + .vp-doc-aside-carbon-ads) {
   margin-top: 16px;
 }
 </style>

@@ -59,16 +59,19 @@ if (carbonOptions) {
 <style scoped>
 .vp-carbon-ads {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  min-height: 256px;
   padding: 24px;
   border-radius: 12px;
-  min-height: 256px;
-  text-align: center;
-  line-height: 18px;
-  font-size: 12px;
-  font-weight: 500;
+
   background-color: var(--vp-carbon-ads-bg-color);
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
 }
 
 .vp-carbon-ads :deep(img) {
@@ -78,9 +81,12 @@ if (carbonOptions) {
 
 .vp-carbon-ads :deep(.carbon-text) {
   display: block;
+
   margin: 0 auto;
   padding-top: 12px;
+
   color: var(--vp-carbon-ads-text-color);
+
   transition: color 0.25s;
 }
 
@@ -90,11 +96,15 @@ if (carbonOptions) {
 
 .vp-carbon-ads :deep(.carbon-poweredby) {
   display: block;
+
   padding-top: 6px;
-  font-size: 11px;
-  font-weight: 500;
+
   color: var(--vp-carbon-ads-poweredby-color);
+
+  font-weight: 500;
+  font-size: 11px;
   text-transform: uppercase;
+
   transition: color 0.25s;
 }
 

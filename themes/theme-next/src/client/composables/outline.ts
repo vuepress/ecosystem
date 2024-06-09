@@ -56,7 +56,7 @@ export const getHeaders = (
   range: DefaultThemeLocaleData['outline'],
 ): MenuItem[] => {
   const headers = Array.from(
-    document.querySelectorAll('.vpDoc :where(h1,h2,h3,h4,h5,h6)'),
+    document.querySelectorAll('.vp-doc-container :where(h1,h2,h3,h4,h5,h6)'),
   )
     .filter((el) => el.id && el.hasChildNodes())
     .map((el) => {

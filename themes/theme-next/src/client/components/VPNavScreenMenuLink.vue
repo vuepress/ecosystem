@@ -24,12 +24,16 @@ const closeScreen = inject('close-screen') as () => void
 <style scoped>
 .vp-nav-screen-menu-link {
   display: block;
-  border-bottom: 1px solid var(--vp-c-divider);
+
   padding: 12px 0 11px;
-  line-height: 24px;
-  font-size: 14px;
-  font-weight: 500;
+  border-bottom: 1px solid var(--vp-c-divider);
+
   color: var(--vp-c-text-1);
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+
   transition:
     border-color 0.25s,
     color 0.25s;

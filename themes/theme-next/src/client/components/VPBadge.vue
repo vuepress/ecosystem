@@ -18,20 +18,23 @@ withDefaults(defineProps<Props>(), {
 <style>
 .vp-badge {
   display: inline-block;
+
   margin-left: 2px;
+  padding: 0 10px;
   border: 1px solid transparent;
   border-radius: 12px;
-  padding: 0 10px;
-  line-height: 22px;
-  font-size: 12px;
+
   font-weight: 500;
+  font-size: 12px;
+  line-height: 22px;
+
   transform: translateY(-2px);
 }
 
 .vp-badge.small {
   padding: 0 6px;
-  line-height: 18px;
   font-size: 10px;
+  line-height: 18px;
   transform: translateY(-8px);
 }
 
@@ -40,14 +43,14 @@ withDefaults(defineProps<Props>(), {
 }
 
 .vp-doc h1 > .vp-badge {
-  margin-top: 4px;
   vertical-align: top;
+  margin-top: 4px;
 }
 
 .vp-doc h2 > .vp-badge {
+  vertical-align: top;
   margin-top: 3px;
   padding: 0 8px;
-  vertical-align: top;
 }
 
 .vp-doc h3 > .vp-badge {
@@ -63,25 +66,25 @@ withDefaults(defineProps<Props>(), {
 
 .vp-badge.info {
   border-color: var(--vp-badge-info-border);
-  color: var(--vp-badge-info-text);
   background-color: var(--vp-badge-info-bg);
+  color: var(--vp-badge-info-text);
 }
 
 .vp-badge.tip {
   border-color: var(--vp-badge-tip-border);
-  color: var(--vp-badge-tip-text);
   background-color: var(--vp-badge-tip-bg);
+  color: var(--vp-badge-tip-text);
 }
 
 .vp-badge.warning {
   border-color: var(--vp-badge-warning-border);
-  color: var(--vp-badge-warning-text);
   background-color: var(--vp-badge-warning-bg);
+  color: var(--vp-badge-warning-text);
 }
 
 .vp-badge.danger {
   border-color: var(--vp-badge-danger-border);
-  color: var(--vp-badge-danger-text);
   background-color: var(--vp-badge-danger-bg);
+  color: var(--vp-badge-danger-text);
 }
 </style>

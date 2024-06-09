@@ -48,7 +48,7 @@ const switchTitle = computed(() => {
 }
 
 .dark .vp-switch-appearance :deep(.check) {
-  /*rtl:ignore*/
+  /* rtl:ignore */
   transform: translateX(18px);
 }
 </style>

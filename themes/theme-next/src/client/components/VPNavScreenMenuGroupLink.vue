@@ -25,11 +25,15 @@ const closeScreen = inject('close-screen') as () => void
 <style scoped>
 .vp-nav-screen-menu-group {
   display: block;
+
   margin-left: 12px;
-  line-height: 32px;
-  font-size: 14px;
-  font-weight: 400;
+
   color: var(--vp-c-text-1);
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 32px;
+
   transition: color 0.25s;
 }
 

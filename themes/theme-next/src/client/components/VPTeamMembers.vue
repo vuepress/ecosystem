@@ -33,9 +33,11 @@ const classes = computed(() => [props.size, `count-${props.members.length}`])
 .vp-team-members.small.count-1 .container {
   max-width: 276px;
 }
+
 .vp-team-members.small.count-2 .container {
   max-width: calc(276px * 2 + 24px);
 }
+
 .vp-team-members.small.count-3 .container {
   max-width: calc(276px * 3 + 24px * 2);
 }
@@ -53,6 +55,7 @@ const classes = computed(() => [props.size, `count-${props.members.length}`])
 .vp-team-members.medium.count-1 .container {
   max-width: 368px;
 }
+
 .vp-team-members.medium.count-2 .container {
   max-width: calc(368px * 2 + 24px);
 }
@@ -60,7 +63,7 @@ const classes = computed(() => [props.size, `count-${props.members.length}`])
 .container {
   display: grid;
   gap: 24px;
-  margin: 0 auto;
   max-width: 1152px;
+  margin: 0 auto;
 }
 </style>

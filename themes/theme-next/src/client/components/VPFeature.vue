@@ -47,10 +47,13 @@ defineProps<Feature>()
 <style scoped>
 .vp-feature {
   display: block;
+
+  height: 100%;
   border: 1px solid var(--vp-c-bg-soft);
   border-radius: 12px;
-  height: 100%;
+
   background-color: var(--vp-c-bg-soft);
+
   transition:
     border-color 0.25s,
     background-color 0.25s;
@@ -63,8 +66,8 @@ defineProps<Feature>()
 .box {
   display: flex;
   flex-direction: column;
-  padding: 24px;
   height: 100%;
+  padding: 24px;
 }
 
 .box > :deep(.vp-image) {
@@ -73,30 +76,37 @@ defineProps<Feature>()
 
 .icon {
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
-  border-radius: 6px;
-  background-color: var(--vp-c-default-soft);
+  justify-content: center;
+
   width: 48px;
   height: 48px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+
+  background-color: var(--vp-c-default-soft);
+
   font-size: 24px;
+
   transition: background-color 0.25s;
 }
 
 .title {
-  line-height: 24px;
-  font-size: 16px;
   font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .details {
   flex-grow: 1;
+
   padding-top: 8px;
-  line-height: 24px;
-  font-size: 14px;
-  font-weight: 500;
+
   color: var(--vp-c-text-2);
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
 }
 
 .link-text {
@@ -106,9 +116,11 @@ defineProps<Feature>()
 .link-text-value {
   display: flex;
   align-items: center;
-  font-size: 14px;
-  font-weight: 500;
+
   color: var(--vp-c-brand-1);
+
+  font-weight: 500;
+  font-size: 14px;
 }
 
 .link-text-icon {

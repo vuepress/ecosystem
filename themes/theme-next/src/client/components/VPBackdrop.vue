@@ -14,13 +14,17 @@ defineProps<{
 .vp-backdrop {
   position: fixed;
   top: 0;
-  /*rtl:ignore*/
+
+  /* rtl:ignore */
   right: 0;
   bottom: 0;
-  /*rtl:ignore*/
+
+  /* rtl:ignore */
   left: 0;
   z-index: var(--vp-z-index-backdrop);
+
   background: var(--vp-backdrop-bg-color);
+
   transition: opacity 0.5s;
 }
 

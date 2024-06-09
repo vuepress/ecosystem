@@ -20,17 +20,19 @@ const { theme } = useData()
 <style scoped>
 .vp-nav-screen-appearance {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  border-radius: 8px;
+  justify-content: space-between;
+
   padding: 12px 14px 12px 16px;
+  border-radius: 8px;
+
   background-color: var(--vp-c-bg-soft);
 }
 
 .text {
-  line-height: 24px;
-  font-size: 12px;
-  font-weight: 500;
   color: var(--vp-c-text-2);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
 }
 </style>

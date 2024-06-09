@@ -22,15 +22,18 @@ defineProps<{
 
 <style scoped>
 .vp-menu {
-  border-radius: 12px;
-  padding: 12px;
+  overflow-y: auto;
+
   min-width: 128px;
+  max-height: calc(100vh - var(--vp-nav-height));
+  padding: 12px;
   border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+
   background-color: var(--vp-c-bg-elv);
   box-shadow: var(--vp-shadow-3);
+
   transition: background-color 0.5s;
-  max-height: calc(100vh - var(--vp-nav-height));
-  overflow-y: auto;
 }
 
 .vp-menu :deep(.group) {
@@ -39,8 +42,8 @@ defineProps<{
 }
 
 .vp-menu :deep(.group + .group) {
-  border-top: 1px solid var(--vp-c-divider);
   padding: 11px 12px 12px;
+  border-top: 1px solid var(--vp-c-divider);
 }
 
 .vp-menu :deep(.group:last-child) {
@@ -48,8 +51,8 @@ defineProps<{
 }
 
 .vp-menu :deep(.group + .item) {
-  border-top: 1px solid var(--vp-c-divider);
   padding: 11px 16px 0;
+  border-top: 1px solid var(--vp-c-divider);
 }
 
 .vp-menu :deep(.item) {
@@ -59,10 +62,13 @@ defineProps<{
 
 .vp-menu :deep(.label) {
   flex-grow: 1;
-  line-height: 28px;
-  font-size: 12px;
-  font-weight: 500;
+
   color: var(--vp-c-text-2);
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 28px;
+
   transition: color 0.5s;
 }
 

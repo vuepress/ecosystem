@@ -69,8 +69,8 @@ const grid = computed(() => {
 }
 
 .container {
-  margin: 0 auto;
   max-width: 1152px;
+  margin: 0 auto;
 }
 
 .items {
@@ -80,8 +80,8 @@ const grid = computed(() => {
 }
 
 .item {
-  padding: 8px;
   width: 100%;
+  padding: 8px;
 }
 
 @media (min-width: 640px) {

@@ -3,8 +3,8 @@
  * allied in onMounted` hook and we can't use scoped style.
  */
 .vp-sponsor {
-  border-radius: 16px;
   overflow: hidden;
+  border-radius: 16px;
 }
 
 .vp-sponsor.aside {
@@ -16,14 +16,16 @@
 }
 
 .vp-sponsor-tier {
-  margin: 0 0 4px !important;
-  text-align: center;
-  letter-spacing: 1px !important;
-  line-height: 24px;
   width: 100%;
-  font-weight: 600;
-  color: var(--vp-c-text-2);
+  margin: 0 0 4px !important;
+
   background-color: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 1px !important;
+  text-align: center;
 }
 
 .vp-sponsor.normal .vp-sponsor-tier {
@@ -144,8 +146,8 @@
 
 .vp-sponsor-grid-box {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 100%;
 }
 

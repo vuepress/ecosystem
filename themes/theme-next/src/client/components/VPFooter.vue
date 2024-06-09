@@ -31,8 +31,10 @@ const { hasSidebar } = useSidebar()
 .vp-footer {
   position: relative;
   z-index: var(--vp-z-index-footer);
-  border-top: 1px solid var(--vp-c-gutter);
+
   padding: 32px 24px;
+  border-top: 1px solid var(--vp-c-gutter);
+
   background-color: var(--vp-c-bg);
 }
 
@@ -41,9 +43,9 @@ const { hasSidebar } = useSidebar()
 }
 
 .vp-footer :deep(a) {
+  transition: color 0.25s;
   text-decoration-line: underline;
   text-underline-offset: 2px;
-  transition: color 0.25s;
 }
 
 .vp-footer :deep(a:hover) {
@@ -57,16 +59,16 @@ const { hasSidebar } = useSidebar()
 }
 
 .container {
-  margin: 0 auto;
   max-width: var(--vp-layout-max-width);
+  margin: 0 auto;
   text-align: center;
 }
 
 .message,
 .copyright {
-  line-height: 24px;
-  font-size: 14px;
-  font-weight: 500;
   color: var(--vp-c-text-2);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
 }
 </style>

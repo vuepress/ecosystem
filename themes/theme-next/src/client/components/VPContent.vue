@@ -76,8 +76,8 @@ const { hasSidebar } = useSidebar()
 .vp-content {
   flex-grow: 1;
   flex-shrink: 0;
-  margin: var(--vp-layout-top-height, 0px) auto 0;
   width: 100%;
+  margin: var(--vp-layout-top-height, 0) auto 0;
 }
 
 .vp-content.is-home {
@@ -95,7 +95,7 @@ const { hasSidebar } = useSidebar()
   }
 
   .vp-content.has-sidebar {
-    margin: var(--vp-layout-top-height, 0px) 0 0;
+    margin: var(--vp-layout-top-height, 0) 0 0;
     padding-left: var(--vp-sidebar-width);
   }
 }

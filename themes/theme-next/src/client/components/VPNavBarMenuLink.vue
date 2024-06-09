@@ -36,10 +36,14 @@ const { page } = useData()
 .vp-navbar-menu-link {
   display: flex;
   align-items: center;
+
   padding: 0 12px;
-  font-size: 14px;
-  font-weight: 500;
+
   color: var(--vp-c-text-1);
+
+  font-weight: 500;
+  font-size: 14px;
+
   transition: color 0.25s;
 }
 

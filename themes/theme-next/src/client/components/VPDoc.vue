@@ -49,7 +49,7 @@ watch(
 
 <template>
   <div
-    class="vpDoc"
+    class="vp-doc-container"
     :class="{ 'has-sidebar': hasSidebar, 'has-aside': hasAside }"
   >
     <slot name="doc-top" />
@@ -104,86 +104,91 @@ watch(
 </template>
 
 <style scoped>
-.vpDoc {
-  padding: 32px 24px 96px;
+.vp-doc-container {
   width: 100%;
+  padding: 32px 24px 96px;
 }
 
 @media (min-width: 768px) {
-  .vpDoc {
+  .vp-doc-container {
     padding: 48px 32px 128px;
   }
 }
 
 @media (min-width: 960px) {
-  .vpDoc {
+  .vp-doc-container {
     padding: 48px 32px 0;
   }
 
-  .vpDoc:not(.has-sidebar) .container {
+  .vp-doc-container:not(.has-sidebar) .container {
     display: flex;
     justify-content: center;
     max-width: 992px;
   }
 
-  .vpDoc:not(.has-sidebar) .content {
+  .vp-doc-container:not(.has-sidebar) .content {
     max-width: 752px;
   }
 }
 
 @media (min-width: 1280px) {
-  .vpDoc .container {
+  .vp-doc-container .container {
     display: flex;
     justify-content: center;
   }
 
-  .vpDoc .aside {
+  .vp-doc-container .aside {
     display: block;
   }
 }
 
 @media (min-width: 1440px) {
-  .vpDoc:not(.has-sidebar) .content {
+  .vp-doc-container:not(.has-sidebar) .content {
     max-width: 784px;
   }
 
-  .vpDoc:not(.has-sidebar) .container {
+  .vp-doc-container:not(.has-sidebar) .container {
     max-width: 1104px;
   }
 }
 
 .container {
-  margin: 0 auto;
   width: 100%;
+  margin: 0 auto;
 }
 
 .aside {
   position: relative;
+
   display: none;
-  order: 2;
   flex-grow: 1;
-  padding-left: 32px;
+  order: 2;
+
   width: 100%;
   max-width: 256px;
+  padding-left: 32px;
 }
 
 .left-aside {
   order: 1;
-  padding-left: unset;
   padding-right: 32px;
+  padding-left: unset;
 }
 
 .aside-container {
   position: fixed;
   top: 0;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  width: 224px;
+  height: 100vh;
   padding-top: calc(
     var(--vp-nav-height) + var(--vp-layout-top-height, 0px) +
       var(--vp-doc-top-height, 0px) + 48px
   );
-  width: 224px;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
+
   scrollbar-width: none;
 }
 
@@ -195,8 +200,10 @@ watch(
   position: fixed;
   bottom: 0;
   z-index: 10;
+
   width: 224px;
   height: 32px;
+
   background: linear-gradient(transparent, var(--vp-c-bg) 70%);
 }
 
@@ -211,8 +218,8 @@ watch(
 
 .content {
   position: relative;
-  margin: 0 auto;
   width: 100%;
+  margin: 0 auto;
 }
 
 @media (min-width: 960px) {
@@ -224,8 +231,8 @@ watch(
 @media (min-width: 1280px) {
   .content {
     order: 1;
-    margin: 0;
     min-width: 640px;
+    margin: 0;
   }
 }
 
@@ -233,7 +240,7 @@ watch(
   margin: 0 auto;
 }
 
-.vpDoc.has-aside .content-container {
+.vp-doc-container.has-aside .content-container {
   max-width: 688px;
 }
 </style>

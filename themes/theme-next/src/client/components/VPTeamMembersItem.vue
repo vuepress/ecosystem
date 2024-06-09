@@ -57,10 +57,12 @@ withDefaults(defineProps<Props>(), {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  border-radius: 12px;
+
+  overflow: hidden;
+
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  border-radius: 12px;
 }
 
 .vp-team-members-item.small .profile {
@@ -77,20 +79,20 @@ withDefaults(defineProps<Props>(), {
 }
 
 .vp-team-members-item.small .name {
-  line-height: 24px;
   font-size: 16px;
+  line-height: 24px;
 }
 
 .vp-team-members-item.small .affiliation {
   padding-top: 4px;
-  line-height: 20px;
   font-size: 14px;
+  line-height: 20px;
 }
 
 .vp-team-members-item.small .desc {
   padding-top: 12px;
-  line-height: 20px;
   font-size: 14px;
+  line-height: 20px;
 }
 
 .vp-team-members-item.small .links {
@@ -113,9 +115,9 @@ withDefaults(defineProps<Props>(), {
 }
 
 .vp-team-members-item.medium .name {
-  letter-spacing: 0.15px;
-  line-height: 28px;
   font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0.15px;
 }
 
 .vp-team-members-item.medium .affiliation {
@@ -124,8 +126,8 @@ withDefaults(defineProps<Props>(), {
 }
 
 .vp-team-members-item.medium .desc {
-  padding-top: 16px;
   max-width: 288px;
+  padding-top: 16px;
   font-size: 16px;
 }
 
@@ -145,9 +147,12 @@ withDefaults(defineProps<Props>(), {
 
 .avatar {
   position: relative;
+
   flex-shrink: 0;
+
   margin: 0 auto;
   border-radius: 50%;
+
   box-shadow: var(--vp-shadow-3);
 }
 
@@ -157,8 +162,10 @@ withDefaults(defineProps<Props>(), {
   right: 0;
   bottom: 0;
   left: 0;
-  border-radius: 50%;
+
   object-fit: cover;
+
+  border-radius: 50%;
 }
 
 .name {
@@ -168,8 +175,8 @@ withDefaults(defineProps<Props>(), {
 
 .affiliation {
   margin: 0;
-  font-weight: 500;
   color: var(--vp-c-text-2);
+  font-weight: 500;
 }
 
 .org.link {
@@ -186,10 +193,10 @@ withDefaults(defineProps<Props>(), {
 }
 
 .desc :deep(a) {
-  font-weight: 500;
   color: var(--vp-c-brand-1);
-  text-decoration-style: dotted;
+  font-weight: 500;
   transition: color 0.25s;
+  text-decoration-style: dotted;
 }
 
 .links {
@@ -200,14 +207,18 @@ withDefaults(defineProps<Props>(), {
 
 .sp-link {
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
+  justify-content: center;
+
   padding: 16px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--vp-c-sponsor);
+
   background-color: var(--vp-c-bg-soft);
+  color: var(--vp-c-sponsor);
+
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+
   transition:
     color 0.25s,
     background-color 0.25s;
@@ -215,9 +226,9 @@ withDefaults(defineProps<Props>(), {
 
 .sp .sp-link.link:hover,
 .sp .sp-link.link:focus {
-  outline: none;
-  color: var(--vp-c-white);
   background-color: var(--vp-c-sponsor);
+  color: var(--vp-c-white);
+  outline: none;
 }
 
 .sp-icon {

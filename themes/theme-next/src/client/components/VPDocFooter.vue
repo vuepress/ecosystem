@@ -109,8 +109,8 @@ const showFooter = computed(() => {
 @media (min-width: 640px) {
   .edit-info {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding-bottom: 14px;
   }
 
@@ -123,11 +123,15 @@ const showFooter = computed(() => {
 .edit-link-button {
   display: flex;
   align-items: center;
+
   border: 0;
-  line-height: 32px;
-  font-size: 14px;
-  font-weight: 500;
+
   color: var(--vp-c-brand-1);
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 32px;
+
   transition: color 0.25s;
 }
 
@@ -140,10 +144,10 @@ const showFooter = computed(() => {
 }
 
 .prev-next {
-  border-top: 1px solid var(--vp-c-divider);
-  padding-top: 24px;
   display: grid;
   grid-row-gap: 8px;
+  padding-top: 24px;
+  border-top: 1px solid var(--vp-c-divider);
 }
 
 @media (min-width: 640px) {
@@ -155,11 +159,13 @@ const showFooter = computed(() => {
 
 .pager-link {
   display: block;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 11px 16px 13px;
+
   width: 100%;
   height: 100%;
+  padding: 11px 16px 13px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+
   transition: border-color 0.25s;
 }
 
@@ -174,18 +180,23 @@ const showFooter = computed(() => {
 
 .desc {
   display: block;
-  line-height: 20px;
-  font-size: 12px;
-  font-weight: 500;
+
   color: var(--vp-c-text-2);
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
 }
 
 .title {
   display: block;
-  line-height: 20px;
-  font-size: 14px;
-  font-weight: 500;
+
   color: var(--vp-c-brand-1);
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+
   transition: color 0.25s;
 }
 </style>

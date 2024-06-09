@@ -81,12 +81,15 @@ const classes = computed(() => {
 .vp-local-nav {
   position: sticky;
   top: 0;
-  /*rtl:ignore*/
+
+  /* rtl:ignore */
   left: 0;
   z-index: var(--vp-z-index-local-nav);
-  border-bottom: 1px solid var(--vp-c-gutter);
-  padding-top: var(--vp-layout-top-height, 0px);
+
   width: 100%;
+  padding-top: var(--vp-layout-top-height, 0);
+  border-bottom: 1px solid var(--vp-c-gutter);
+
   background-color: var(--vp-local-nav-bg-color);
 }
 
@@ -124,18 +127,22 @@ const classes = computed(() => {
 
 .container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
 .menu {
   display: flex;
   align-items: center;
+
   padding: 12px 24px 11px;
-  line-height: 24px;
-  font-size: 12px;
-  font-weight: 500;
+
   color: var(--vp-c-text-2);
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
+
   transition: color 0.5s;
 }
 

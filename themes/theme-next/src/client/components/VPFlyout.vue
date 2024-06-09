@@ -94,22 +94,28 @@ useFlyout({ el, onBlur })
 .button {
   display: flex;
   align-items: center;
+
   padding: 8px 12px;
+
   color: var(--vp-c-text-1);
+
   transition: color 0.5s;
 }
 
 .text {
   display: flex;
   align-items: center;
-  font-size: 14px;
-  font-weight: 500;
+
   color: var(--vp-c-text-1);
+
+  font-weight: 500;
+  font-size: 14px;
+
   transition: color 0.25s;
 }
 
 .option-icon {
-  margin-right: 0px;
+  margin-right: 0;
   font-size: 16px;
 }
 
@@ -127,8 +133,10 @@ useFlyout({ el, onBlur })
   position: absolute;
   top: 100%;
   right: 0;
+
   opacity: 0;
   visibility: hidden;
+
   transition:
     opacity 0.25s,
     visibility 0.25s,

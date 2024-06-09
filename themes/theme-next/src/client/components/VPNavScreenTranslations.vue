@@ -33,8 +33,8 @@ const toggle = (): void => {
 
 <style scoped>
 .vp-nav-screen-translations {
-  height: 24px;
   overflow: hidden;
+  height: 24px;
 }
 
 .vp-nav-screen-translations.open {
@@ -44,9 +44,11 @@ const toggle = (): void => {
 .title {
   display: flex;
   align-items: center;
-  font-size: 14px;
-  font-weight: 500;
+
   color: var(--vp-c-text-1);
+
+  font-weight: 500;
+  font-size: 14px;
 }
 
 .icon {
@@ -66,8 +68,8 @@ const toggle = (): void => {
 }
 
 .link {
-  line-height: 32px;
-  font-size: 13px;
   color: var(--vp-c-text-1);
+  font-size: 13px;
+  line-height: 32px;
 }
 </style>

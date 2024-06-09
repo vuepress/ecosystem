@@ -13,17 +13,17 @@ const { lastUpdatedText, isoDatetime, datetime } = useLastUpdated()
 
 <style scoped>
 .vp-last-updated {
-  line-height: 24px;
-  font-size: 14px;
-  font-weight: 500;
   color: var(--vp-c-text-2);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
 }
 
 @media (min-width: 640px) {
   .vp-last-updated {
-    line-height: 32px;
-    font-size: 14px;
     font-weight: 500;
+    font-size: 14px;
+    line-height: 32px;
   }
 }
 </style>

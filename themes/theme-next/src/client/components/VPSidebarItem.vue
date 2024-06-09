@@ -131,8 +131,10 @@ const onCaretClick = (): void => {
   top: 6px;
   bottom: 6px;
   left: -17px;
+
   width: 2px;
   border-radius: 2px;
+
   transition: background-color 0.25s;
 }
 
@@ -145,21 +147,24 @@ const onCaretClick = (): void => {
 
 .link {
   display: flex;
-  align-items: center;
   flex-grow: 1;
+  align-items: center;
 }
 
 .text {
   flex-grow: 1;
+
   padding: 4px 0;
-  line-height: 24px;
+
   font-size: 14px;
+  line-height: 24px;
+
   transition: color 0.25s;
 }
 
 .vp-sidebar-item.level-0 .text {
-  font-weight: 700;
   color: var(--vp-c-text-1);
+  font-weight: 700;
 }
 
 .vp-sidebar-item.level-1 .text,
@@ -167,8 +172,8 @@ const onCaretClick = (): void => {
 .vp-sidebar-item.level-3 .text,
 .vp-sidebar-item.level-4 .text,
 .vp-sidebar-item.level-5 .text {
-  font-weight: 500;
   color: var(--vp-c-text-2);
+  font-weight: 500;
 }
 
 .vp-sidebar-item.level-0.is-link > .item > .link:hover .text,
@@ -206,15 +211,19 @@ const onCaretClick = (): void => {
 
 .caret {
   display: flex;
-  justify-content: center;
+  flex-shrink: 0;
   align-items: center;
-  margin-right: -7px;
+  justify-content: center;
+
   width: 32px;
   height: 32px;
+  margin-right: -7px;
+
   color: var(--vp-c-text-3);
+
   cursor: pointer;
+
   transition: color 0.25s;
-  flex-shrink: 0;
 }
 
 .item:hover .caret {
@@ -227,8 +236,8 @@ const onCaretClick = (): void => {
 
 .caret-icon {
   font-size: 18px;
-  transform: rotate(90deg);
   transition: transform 0.25s;
+  transform: rotate(90deg);
 }
 
 .vp-sidebar-item.collapsed .caret-icon {
@@ -240,8 +249,8 @@ const onCaretClick = (): void => {
 .vp-sidebar-item.level-3 .items,
 .vp-sidebar-item.level-4 .items,
 .vp-sidebar-item.level-5 .items {
-  border-left: 1px solid var(--vp-c-divider);
   padding-left: 16px;
+  border-left: 1px solid var(--vp-c-divider);
 }
 
 .vp-sidebar-item.collapsed .items {

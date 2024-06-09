@@ -47,9 +47,9 @@ const toggle = (): void => {
 
 <style scoped>
 .vp-nav-screen-menu-group {
-  border-bottom: 1px solid var(--vp-c-divider);
-  height: 48px;
   overflow: hidden;
+  height: 48px;
+  border-bottom: 1px solid var(--vp-c-divider);
   transition: border-color 0.5s;
 }
 
@@ -62,8 +62,8 @@ const toggle = (): void => {
 }
 
 .vp-nav-screen-menu-group.open {
-  padding-bottom: 10px;
   height: auto;
+  padding-bottom: 10px;
 }
 
 .vp-nav-screen-menu-group.open .button {
@@ -72,20 +72,24 @@ const toggle = (): void => {
 }
 
 .vp-nav-screen-menu-group.open .button-icon {
-  /*rtl:ignore*/
+  /* rtl:ignore */
   transform: rotate(45deg);
 }
 
 .button {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 12px 4px 11px 0;
+  justify-content: space-between;
+
   width: 100%;
-  line-height: 24px;
-  font-size: 14px;
-  font-weight: 500;
+  padding: 12px 4px 11px 0;
+
   color: var(--vp-c-text-1);
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+
   transition: color 0.25s;
 }
 
@@ -98,7 +102,7 @@ const toggle = (): void => {
 }
 
 .group:first-child {
-  padding-top: 0px;
+  padding-top: 0;
 }
 
 .group + .group,

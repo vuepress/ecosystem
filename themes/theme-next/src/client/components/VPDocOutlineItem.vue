@@ -39,13 +39,17 @@ const onClick = ({ target: el }: Event): void => {
 
 .outline-link {
   display: block;
-  line-height: 32px;
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--vp-c-text-2);
-  white-space: nowrap;
+
   overflow: hidden;
+
+  color: var(--vp-c-text-2);
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 32px;
   text-overflow: ellipsis;
+  white-space: nowrap;
+
   transition: color 0.5s;
 }
 

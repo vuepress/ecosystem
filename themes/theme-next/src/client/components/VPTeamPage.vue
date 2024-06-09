@@ -15,13 +15,13 @@
   }
 }
 
-.vp-home :slotted(.vp-team-pageTitle) {
-  border-top: 1px solid var(--vp-c-gutter);
+.vp-home :slotted(.vp-team-page-title) {
   padding-top: 88px !important;
+  border-top: 1px solid var(--vp-c-gutter);
 }
 
-:slotted(.vp-team-pageSection + .vp-team-pageSection),
-:slotted(.vp-team-members + .vp-team-pageSection) {
+:slotted(.vp-team-page-section + .vp-team-page-section),
+:slotted(.vp-team-members + .vp-team-page-section) {
   margin-top: 64px;
 }
 
@@ -30,12 +30,12 @@
 }
 
 @media (min-width: 768px) {
-  :slotted(.vp-team-pageTitle + .vp-team-pageSection) {
+  :slotted(.vp-team-page-title + .vp-team-page-section) {
     margin-top: 16px;
   }
 
-  :slotted(.vp-team-pageSection + .vp-team-pageSection),
-  :slotted(.vp-team-members + .vp-team-pageSection) {
+  :slotted(.vp-team-page-section + .vp-team-page-section),
+  :slotted(.vp-team-members + .vp-team-page-section) {
     margin-top: 96px;
   }
 }

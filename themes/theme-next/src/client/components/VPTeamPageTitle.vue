@@ -28,36 +28,38 @@
 }
 
 .title {
-  letter-spacing: 0;
-  line-height: 44px;
-  font-size: 36px;
   font-weight: 500;
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: 0;
 }
 
 @media (min-width: 768px) {
   .title {
-    letter-spacing: -0.5px;
-    line-height: 56px;
     font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.5px;
   }
 }
 
 .lead {
-  margin: 0 auto;
   max-width: 512px;
+  margin: 0 auto;
   padding-top: 12px;
-  line-height: 24px;
-  font-size: 16px;
-  font-weight: 500;
+
   color: var(--vp-c-text-2);
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 @media (min-width: 768px) {
   .lead {
     max-width: 592px;
-    letter-spacing: 0.15px;
-    line-height: 28px;
     font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0.15px;
   }
 }
 </style>

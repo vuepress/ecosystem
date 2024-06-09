@@ -38,17 +38,24 @@ const isLocked = useScrollLock(inBrowser ? document.body : null)
 .vp-nav-screen {
   position: fixed;
   top: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 1px);
-  /*rtl:ignore*/
+
+  /* rtl:ignore */
   right: 0;
   bottom: 0;
-  /*rtl:ignore*/
+
+  /* rtl:ignore */
   left: 0;
-  padding: 0 32px;
-  width: 100%;
-  background-color: var(--vp-nav-screen-bg-color);
+
   overflow-y: auto;
-  transition: background-color 0.5s;
+
+  width: 100%;
+  padding: 0 32px;
+
+  background-color: var(--vp-nav-screen-bg-color);
+
   pointer-events: auto;
+
+  transition: background-color 0.5s;
 }
 
 .vp-nav-screen.fade-enter-active,
@@ -78,9 +85,9 @@ const isLocked = useScrollLock(inBrowser ? document.body : null)
 }
 
 .container {
+  max-width: 288px;
   margin: 0 auto;
   padding: 24px 0 96px;
-  max-width: 288px;
 }
 
 .menu + .translations,

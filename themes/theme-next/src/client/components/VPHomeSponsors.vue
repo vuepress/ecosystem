@@ -40,22 +40,16 @@ withDefaults(defineProps<Props>(), {
 
 <style scoped>
 .vp-home-sponsors {
-  border-top: 1px solid var(--vp-c-gutter);
-  padding-top: 88px !important;
-}
-
-.vp-home-sponsors {
   margin: 96px 0;
+  padding: 0 24px;
+  padding-top: 88px !important;
+  border-top: 1px solid var(--vp-c-gutter);
 }
 
 @media (min-width: 768px) {
   .vp-home-sponsors {
     margin: 128px 0;
   }
-}
-
-.vp-home-sponsors {
-  padding: 0 24px;
 }
 
 @media (min-width: 768px) {
@@ -71,15 +65,15 @@ withDefaults(defineProps<Props>(), {
 }
 
 .container {
-  margin: 0 auto;
   max-width: 1152px;
+  margin: 0 auto;
 }
 
 .love {
-  margin: 0 auto;
   width: fit-content;
-  font-size: 28px;
+  margin: 0 auto;
   color: var(--vp-c-text-3);
+  font-size: 28px;
 }
 
 .icon {
@@ -87,14 +81,16 @@ withDefaults(defineProps<Props>(), {
 }
 
 .message {
+  max-width: 320px;
   margin: 0 auto;
   padding-top: 10px;
-  max-width: 320px;
-  text-align: center;
-  line-height: 24px;
-  font-size: 16px;
-  font-weight: 500;
+
   color: var(--vp-c-text-2);
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
 }
 
 .sponsors {

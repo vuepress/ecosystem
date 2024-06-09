@@ -103,13 +103,17 @@ const scrollToTop = (): void => {
 }
 
 .vp-local-nav-outline-dropdown button {
-  display: block;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 24px;
-  color: var(--vp-c-text-2);
-  transition: color 0.5s;
   position: relative;
+
+  display: block;
+
+  color: var(--vp-c-text-2);
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
+
+  transition: color 0.5s;
 }
 
 .vp-local-nav-outline-dropdown button:hover {
@@ -124,10 +128,13 @@ const scrollToTop = (): void => {
 .icon {
   display: inline-block;
   vertical-align: middle;
+
   margin-left: 2px;
+
   font-size: 14px;
-  transform: rotate(0deg);
+
   transition: transform 0.25s;
+  transform: rotate(0deg);
 }
 
 @media (min-width: 960px) {
@@ -149,13 +156,17 @@ const scrollToTop = (): void => {
   top: 40px;
   right: 16px;
   left: 16px;
+
   display: grid;
   gap: 1px;
+
+  overflow: hidden auto;
+
+  max-height: calc(var(--vp-vh, 100vh) - 86px);
   border: 1px solid var(--vp-c-border);
   border-radius: 8px;
+
   background-color: var(--vp-c-gutter);
-  max-height: calc(var(--vp-vh, 100vh) - 86px);
-  overflow: hidden auto;
   box-shadow: var(--vp-shadow-3);
 }
 
@@ -173,11 +184,14 @@ const scrollToTop = (): void => {
 
 .top-link {
   display: block;
+
   padding: 0 16px;
-  line-height: 48px;
-  font-size: 14px;
-  font-weight: 500;
+
   color: var(--vp-c-brand-1);
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 48px;
 }
 
 .outline {

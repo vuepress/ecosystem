@@ -1,14 +1,17 @@
+/* stylelint-disable rule-empty-line-before */
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,
   ::after {
-    animation-delay: -1ms !important;
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
     background-attachment: initial !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0s !important;
+
     transition-delay: 0s !important;
+    transition-duration: 0s !important;
+    animation-duration: 1ms !important;
+    animation-delay: -1ms !important;
+    animation-iteration-count: 1 !important;
+
+    scroll-behavior: auto !important;
   }
 }
 
@@ -19,10 +22,10 @@
 }
 
 html {
-  line-height: 1.4;
   font-size: 16px;
-  -webkit-text-size-adjust: 100%;
+  line-height: 1.4;
   scroll-padding-top: 130px;
+  -webkit-text-size-adjust: 100%;
 }
 
 @media (min-width: 960px) {
@@ -42,20 +45,23 @@ html.dark {
 }
 
 body {
-  margin: 0;
   width: 100%;
   min-width: 320px;
   min-height: 100vh;
-  line-height: 24px;
-  font-family: var(--vp-font-family-base);
-  font-size: 16px;
-  font-weight: 400;
-  color: var(--vp-c-text-1);
+  margin: 0;
+
   background-color: var(--vp-c-bg);
-  font-synthesis: style;
-  text-rendering: optimizeLegibility;
+  color: var(--vp-c-text-1);
+
+  font-weight: 400;
+  font-size: 16px;
+  font-family: var(--vp-font-family-base);
+  line-height: 24px;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-synthesis: style;
+  text-rendering: optimizelegibility;
 }
 
 main {
@@ -69,9 +75,9 @@ h4,
 h5,
 h6 {
   margin: 0;
-  line-height: 24px;
-  font-size: 16px;
   font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 p {
@@ -117,9 +123,9 @@ a {
 
 ol,
 ul {
-  list-style: none;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 blockquote {
@@ -159,17 +165,17 @@ input,
 optgroup,
 select,
 textarea {
-  border: 0;
   padding: 0;
-  line-height: inherit;
+  border: 0;
   color: inherit;
+  line-height: inherit;
 }
 
 button {
   padding: 0;
-  font-family: inherit;
   background-color: transparent;
   background-image: none;
+  font-family: inherit;
 }
 
 button:enabled,
@@ -201,13 +207,13 @@ input {
   background-color: transparent;
 }
 
-input:-ms-input-placeholder,
-textarea:-ms-input-placeholder {
+input:input-placeholder,
+textarea:input-placeholder {
   color: var(--vp-c-text-3);
 }
 
-input::-ms-input-placeholder,
-textarea::-ms-input-placeholder {
+input::input-placeholder,
+textarea::input-placeholder {
   color: var(--vp-c-text-3);
 }
 
@@ -218,8 +224,8 @@ textarea::placeholder {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
   margin: 0;
+  -webkit-appearance: none;
 }
 
 input[type='number'] {
