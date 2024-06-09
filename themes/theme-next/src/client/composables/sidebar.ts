@@ -18,7 +18,7 @@ import {
   watchPostEffect,
 } from 'vue'
 import type { ComputedRef, InjectionKey, Ref } from 'vue'
-import { resolveRoutePath, useRouteLocale } from 'vuepress/client'
+import { resolveRoutePath, useRoute, useRouteLocale } from 'vuepress/client'
 import type { Sidebar, SidebarItem } from '../../shared/index.js'
 import type { ResolvedSidebarItem } from '../../shared/resolved/sidebar.js'
 import {
@@ -222,7 +222,8 @@ export const useCloseSidebarOnEscape = (
 export const useSidebarControl = (
   item: ComputedRef<ResolvedSidebarItem>,
 ): SidebarControl => {
-  const { page, hash } = useData()
+  const { page } = useData()
+  const route = useRoute()
 
   const collapsed = ref(false)
 
@@ -242,7 +243,7 @@ export const useSidebarControl = (
     )
   }
 
-  watch([page, item, hash], updateIsActiveLink)
+  watch([page, item, () => route.hash], updateIsActiveLink)
   onMounted(updateIsActiveLink)
 
   const hasActiveLink = computed(() => {

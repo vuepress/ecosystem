@@ -1,7 +1,6 @@
 import { computed } from 'vue'
 import type { ComputedRef, Ref } from 'vue'
 import { useRoute, useRouteLocale, useSiteData } from 'vuepress/client'
-import { hash } from './hash.js'
 import { useThemeData } from './theme-data.js'
 
 export const useLangs = ({ removeCurrent = true } = {}): {
@@ -36,7 +35,7 @@ export const useLangs = ({ removeCurrent = true } = {}): {
               site.value.locales[localePath].lang ||
               '',
             link:
-              route.path.replace(routeLocale.value, localePath) + hash.value,
+              route.path.replace(routeLocale.value, localePath) + route.hash,
           }
     }),
   )
