@@ -63,9 +63,9 @@ import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 
 布局插槽十分实用，但有时候你可能会觉得它不够灵活。默认主题同样提供了替换单个组件的能力。
 
-默认主题将所有 [非全局的组件](https://github.com/vuepress/ecosystem/tree/main/themes/theme-default/src/client/components) 都注册了一个带 `@theme` 前缀的 [alias](https://v2.vuepress.vuejs.org/zh/reference/plugin-api.html#alias) 。例如，`HomeFooter.vue` 的别名是 `@theme/HomeFooter.vue` 。
+默认主题将所有 [非全局的组件](https://github.com/vuepress/ecosystem/tree/main/themes/theme-default/src/client/components) 都注册了一个带 `@theme` 前缀的 [alias](https://v2.vuepress.vuejs.org/zh/reference/plugin-api.html#alias) 。例如，`VPHomeFooter.vue` 的别名是 `@theme/VPHomeFooter.vue` 。
 
-接下来，如果你想要替换 `HomeFooter.vue` 组件，只需要在配置文件 `.vuepress/config.ts` 中覆盖这个别名即可：
+接下来，如果你想要替换 `VPHomeFooter.vue` 组件，只需要在配置文件 `.vuepress/config.ts` 中覆盖这个别名即可：
 
 ```ts
 import { defaultTheme } from '@vuepress/theme-default'
@@ -77,13 +77,19 @@ const __dirname = getDirname(import.meta.url)
 export default defineUserConfig({
   theme: defaultTheme(),
   alias: {
-    '@theme/HomeFooter.vue': path.resolve(
+    '@theme/VPHomeFooter.vue': path.resolve(
       __dirname,
       './components/MyHomeFooter.vue',
     ),
   },
 })
 ```
+
+## 修改行为
+
+默认主题的核心行为大多都被抽离成可组合式 API，并同样提供了 `@theme` 前缀的 [alias](https://v2.vuepress.vuejs.org/zh/reference/plugin-api.html#alias)。
+
+比如，如果你想为默认主题的主题数据添加一些默认值，你可以通过覆盖 `@theme/useThemeData` 的 `useThemeData` 函数来实现。
 
 ## 开发一个子主题
 
@@ -107,7 +113,7 @@ export const childTheme = (options: DefaultThemeOptions): Theme => {
 
     // 覆盖组件别名
     alias: {
-      '@theme/HomeFooter.vue': path.resolve(
+      '@theme/VPHomeFooter.vue': path.resolve(
         __dirname,
         './components/MyHomeFooter.vue',
       ),

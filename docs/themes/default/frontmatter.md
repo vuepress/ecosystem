@@ -312,7 +312,7 @@ Frontmatter in this section will only take effect in normal pages.
 
 ### prev
 
-- Type: `AutoLinkConfig | string`
+- Type: `AutoLinkConfig | string | false`
 
 - Details:
 
@@ -324,6 +324,7 @@ Frontmatter in this section will only take effect in normal pages.
 
   - A `AutoLinkConfig` object should have a `text` field and a `link` field.
   - A string should be the path to the target page file. It will be converted to a `AutoLinkConfig` object, whose `text` is the page title, and `link` is the page route path.
+  - Set to `false` to disable the prev link.
 
 - Example:
 
@@ -349,7 +350,7 @@ prev: ../../guide/getting-started.md
 
 ### next
 
-- Type: `AutoLinkConfig | string`
+- Type: `AutoLinkConfig | string | false`
 
 - Details:
 

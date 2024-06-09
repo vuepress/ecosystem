@@ -1,3 +1,4 @@
+import { useThemeLocaleData } from '@theme/useThemeData'
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
 import { isString } from 'vuepress/shared'
@@ -8,7 +9,6 @@ import type {
 } from '../../shared/navbar.js'
 import type { NavbarItem } from '../typings.js'
 import { getAutoLink, isLinkInternal, resolvePrefix } from '../utils/index.js'
-import { useThemeLocaleData } from './useThemeData.js'
 
 const resolveNavbarItem = (
   item: NavbarLinkOptions | NavbarGroupOptions | string,

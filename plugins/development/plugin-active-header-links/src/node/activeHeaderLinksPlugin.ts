@@ -41,7 +41,7 @@ export interface ActiveHeaderLinksPluginOptions {
 }
 
 export const activeHeaderLinksPlugin = ({
-  headerLinkSelector = 'a.sidebar-item',
+  headerLinkSelector = 'a.vp-sidebar-item',
   headerAnchorSelector = '.header-anchor',
   delay = 200,
   offset = 5,

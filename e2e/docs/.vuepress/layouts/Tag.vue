@@ -38,7 +38,7 @@ const tagMap = useBlogCategory('tag')
 @use '../styles/mixins.scss';
 
 .tag-wrapper {
-  @include mixins.content_wrapper;
+  @include mixins.content-wrapper;
 
   padding-top: 1rem !important;
   padding-bottom: 0 !important;

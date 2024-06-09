@@ -1,13 +1,16 @@
-import { keys, startsWith } from '@vuepress/helper/client'
-import { computed, inject, provide } from 'vue'
-import type { ComputedRef, InjectionKey } from 'vue'
+import { useThemeLocaleData } from '@theme/useThemeData'
+import { getHeaders, keys, startsWith } from '@vuepress/helper/client'
+import type { MenuItem } from '@vuepress/helper/client'
+import { computed, inject, onMounted, provide, ref, watch } from 'vue'
+import type { ComputedRef, InjectionKey, Ref } from 'vue'
 import {
   usePageData,
   usePageFrontmatter,
   useRoute,
   useRouteLocale,
+  useRouter,
 } from 'vuepress/client'
-import type { PageData, PageHeader } from 'vuepress/client'
+import type { PageData } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
 import type {
   DefaultThemeNormalPageFrontmatter,
@@ -18,7 +21,46 @@ import type {
 } from '../../shared/index.js'
 import type { SidebarHeaderItem, SidebarItem } from '../typings.js'
 import { getAutoLink, isLinkInternal, resolvePrefix } from '../utils/index.js'
-import { useThemeLocaleData } from './useThemeData.js'
+
+export type HeadersRef = Ref<MenuItem[]>
+
+export const headersRef: HeadersRef = ref([])
+
+export const setupHeaders = (): void => {
+  const router = useRouter()
+  const themeLocale = useThemeLocaleData()
+  const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
+  const levels = computed(
+    () => frontmatter.value.sidebarDepth ?? themeLocale.value.sidebarDepth ?? 2,
+  )
+
+  router.beforeEach((to, from) => {
+    if (to.path !== from.path) {
+      headersRef.value = []
+    }
+  })
+
+  const updateHeaders = (): void => {
+    if (levels.value <= 0) {
+      headersRef.value = []
+      return
+    }
+
+    headersRef.value = getHeaders({
+      selector: [...new Array(6)]
+        .map((_, i) => `.theme-default-content h${i + 1}`)
+        .join(','),
+      levels: [2, levels.value + 1],
+      ignore: ['.vp-badge'],
+    })
+  }
+
+  watch(levels, updateHeaders)
+
+  onMounted(updateHeaders)
+}
+
+export const useHeaders = (): HeadersRef => headersRef
 
 export type SidebarItemsRef = ComputedRef<SidebarItem[]>
 
@@ -45,6 +87,7 @@ export const setupSidebarItems = (): void => {
   const page = usePageData()
   const route = useRoute()
   const routeLocale = useRouteLocale()
+  const headers = useHeaders()
 
   const sidebarConfig = computed<false | SidebarOptions>(() =>
     frontmatter.value.home
@@ -52,17 +95,13 @@ export const setupSidebarItems = (): void => {
       : frontmatter.value.sidebar ?? themeLocale.value.sidebar ?? 'heading',
   )
 
-  const sidebarDepth = computed(
-    () => frontmatter.value.sidebarDepth ?? themeLocale.value.sidebarDepth ?? 2,
-  )
-
   const sidebarItems = computed(() =>
     resolveSidebarItems(
       sidebarConfig.value,
-      sidebarDepth.value,
       page.value,
       route.path,
       routeLocale.value,
+      headers.value,
     ),
   )
   provide(sidebarItemsSymbol, sidebarItems)
@@ -75,10 +114,10 @@ export const setupSidebarItems = (): void => {
  */
 export const resolveSidebarItems = (
   sidebarConfig: false | SidebarOptions,
-  sidebarDepth: number,
   page: PageData,
   path: string,
   routeLocale: string,
+  headers: MenuItem[],
 ): SidebarItem[] => {
   // resolve sidebar items according to the config
   if (sidebarConfig === false) {
@@ -86,21 +125,15 @@ export const resolveSidebarItems = (
   }
 
   if (sidebarConfig === 'heading') {
-    return resolveSidebarHeadingItem(sidebarDepth, page)
+    return resolveSidebarHeadingItem(page, headers)
   }
 
   if (Array.isArray(sidebarConfig)) {
-    return resolveArraySidebarItems(
-      sidebarConfig,
-      sidebarDepth,
-      page,
-      path,
-      routeLocale,
-    )
+    return resolveArraySidebarItems(sidebarConfig, headers, path, routeLocale)
   }
 
   if (isPlainObject(sidebarConfig)) {
-    return resolveMultiSidebarItems(sidebarConfig, sidebarDepth, page, path)
+    return resolveMultiSidebarItems(sidebarConfig, page, headers, path)
   }
 
   return []
@@ -110,34 +143,28 @@ export const resolveSidebarItems = (
  * Util to transform page header to sidebar item
  */
 export const resolveSidebarHeaderItem = (
-  sidebarDepth: number,
-  header: PageHeader,
+  header: MenuItem,
 ): SidebarHeaderItem => ({
   text: header.title,
   link: header.link,
-  children: resolveSidebarHeaderItems(sidebarDepth, header.children),
+  children: resolveSidebarHeaderItems(header.children),
 })
 
 export const resolveSidebarHeaderItems = (
-  sidebarDepth: number,
-  headers: PageHeader[],
+  headers?: MenuItem[],
 ): SidebarHeaderItem[] =>
-  sidebarDepth > 0
-    ? headers.map((header) =>
-        resolveSidebarHeaderItem(sidebarDepth - 1, header),
-      )
-    : []
+  headers ? headers.map((header) => resolveSidebarHeaderItem(header)) : []
 
 /**
  * Resolve current page and its header to sidebar items if the config is `heading`
  */
 export const resolveSidebarHeadingItem = (
-  sidebarDepth: number,
   page: PageData,
+  headers: MenuItem[],
 ): SidebarItem[] => [
   {
     text: page.title,
-    children: resolveSidebarHeaderItems(sidebarDepth, page.headers),
+    children: resolveSidebarHeaderItems(headers),
   },
 ]
 
@@ -146,8 +173,7 @@ export const resolveSidebarHeadingItem = (
  */
 export const resolveArraySidebarItems = (
   sidebarConfig: SidebarArrayOptions,
-  sidebarDepth: number,
-  page: PageData,
+  headers: MenuItem[],
   path: string,
   prefix = '',
 ): SidebarItem[] => {
@@ -179,12 +205,12 @@ export const resolveArraySidebarItems = (
     // use headers of current page as children
     if (childItem.link === path) {
       // skip h1 header
-      const headers =
-        page.headers[0]?.level === 1 ? page.headers[0].children : page.headers
+      const currentHeaders =
+        headers[0]?.level === 1 ? headers[0].children : headers
 
       return {
         ...childItem,
-        children: resolveSidebarHeaderItems(sidebarDepth, headers),
+        children: resolveSidebarHeaderItems(currentHeaders),
       }
     }
 
@@ -199,8 +225,8 @@ export const resolveArraySidebarItems = (
  */
 export const resolveMultiSidebarItems = (
   sidebarConfig: SidebarObjectOptions,
-  sidebarDepth: number,
   page: PageData,
+  headers: MenuItem[],
   path: string,
 ): SidebarItem[] => {
   const sidebarRoutes = keys(sidebarConfig).sort((x, y) => y.length - x.length)
@@ -212,8 +238,8 @@ export const resolveMultiSidebarItems = (
 
       return matched
         ? matched === 'heading'
-          ? resolveSidebarHeadingItem(sidebarDepth, page)
-          : resolveArraySidebarItems(matched, sidebarDepth, page, path, base)
+          ? resolveSidebarHeadingItem(page, headers)
+          : resolveArraySidebarItems(matched, headers, path, base)
         : []
     }
 

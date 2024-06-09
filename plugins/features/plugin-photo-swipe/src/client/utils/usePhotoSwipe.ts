@@ -5,11 +5,16 @@ import type { PhotoSwipeOptions } from '../helpers/index.js'
 import { LOADING_ICON } from './icon.js'
 import { getImageElementInfo } from './images.js'
 import { initPhotoSwipe } from './initPhotoSwipe.js'
+import type { PhotoSwipeBehaviorOptions } from './typings.js'
 
 export const registerPhotoSwipe = (
   images: HTMLImageElement[],
-  photoSwipeOptions: PhotoSwipeOptions,
-  scrollToClose = true,
+  {
+    scrollToClose = true,
+    download = true,
+    fullscreen = true,
+    ...photoSwipeOptions
+  }: PhotoSwipeOptions & PhotoSwipeBehaviorOptions,
 ): Promise<() => void> =>
   import(/* webpackChunkName: "photo-swipe" */ 'photoswipe').then(
     ({ default: PhotoSwipe }) => {
@@ -35,7 +40,7 @@ export const registerPhotoSwipe = (
               : {}),
           })
 
-          initPhotoSwipe(currentPhotoSwipe)
+          initPhotoSwipe(currentPhotoSwipe, { download, fullscreen })
 
           currentPhotoSwipe.addFilter('thumbEl', () => image)
           currentPhotoSwipe.addFilter('placeholderSrc', () => image.src)
