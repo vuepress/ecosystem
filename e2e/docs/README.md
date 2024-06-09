@@ -18,10 +18,8 @@ actions:
 features:
   - title: Feature1
     details: Detail1
-
   - title: Feature2
     details: Detail2
-
   - title: Feature3
     details: Detail3
 ---

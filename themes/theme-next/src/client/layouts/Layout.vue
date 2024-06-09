@@ -37,7 +37,7 @@ provide('hero-image-slot-exists', heroImageSlotExists)
 <template>
   <div
     v-if="frontmatter.pageLayout !== false"
-    class="Layout"
+    class="vp-layout"
     :class="frontmatter.pageClass"
   >
     <slot name="layout-top" />
@@ -128,7 +128,7 @@ provide('hero-image-slot-exists', heroImageSlotExists)
 </template>
 
 <style scoped>
-.Layout {
+.vp-layout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;

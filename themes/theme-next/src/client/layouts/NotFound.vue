@@ -10,7 +10,7 @@ const theme = useThemeLocaleData()
 </script>
 
 <template>
-  <div class="Layout">
+  <div class="vp-layout">
     <slot name="layout-top" />
     <VPSkipLink />
 
@@ -37,7 +37,7 @@ const theme = useThemeLocaleData()
 
     <div id="VPContent" class="vp-content">
       <slot name="not-found">
-        <div class="notFound">
+        <div class="vp-not-found">
           <p class="code">{{ theme.notFound?.code ?? '404' }}</p>
           <h1 class="title">{{ theme.notFound?.title ?? 'PAGE NOT FOUND' }}</h1>
           <div class="divider" />
@@ -66,7 +66,7 @@ const theme = useThemeLocaleData()
 </template>
 
 <style scoped>
-.Layout {
+.vp-layout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -75,8 +75,8 @@ const theme = useThemeLocaleData()
 .vp-content {
   flex-grow: 1;
   flex-shrink: 0;
-  margin: var(--vp-layout-top-height, 0px) auto 0;
   width: 100%;
+  margin: var(--vp-layout-top-height, 0) auto 0;
 }
 
 @media (min-width: 960px) {
@@ -85,44 +85,47 @@ const theme = useThemeLocaleData()
   }
 }
 
-.notFound {
+.vp-not-found {
   padding: 64px 24px 96px;
   text-align: center;
 }
 
 @media (min-width: 768px) {
-  .notFound {
+  .vp-not-found {
     padding: 96px 32px 168px;
   }
 }
 
 .code {
-  line-height: 64px;
-  font-size: 64px;
   font-weight: 600;
+  font-size: 64px;
+  line-height: 64px;
 }
 
 .title {
   padding-top: 12px;
-  letter-spacing: 2px;
-  line-height: 20px;
-  font-size: 20px;
+
   font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 2px;
 }
 
 .divider {
-  margin: 24px auto 18px;
   width: 64px;
   height: 1px;
+  margin: 24px auto 18px;
   background-color: var(--vp-c-divider);
 }
 
 .quote {
-  margin: 0 auto;
   max-width: 256px;
-  font-size: 14px;
-  font-weight: 500;
+  margin: 0 auto;
+
   color: var(--vp-c-text-2);
+
+  font-weight: 500;
+  font-size: 14px;
 }
 
 .action {
@@ -131,12 +134,16 @@ const theme = useThemeLocaleData()
 
 .link {
   display: inline-block;
+
+  padding: 3px 16px;
   border: 1px solid var(--vp-c-brand-1);
   border-radius: 16px;
-  padding: 3px 16px;
-  font-size: 14px;
-  font-weight: 500;
+
   color: var(--vp-c-brand-1);
+
+  font-weight: 500;
+  font-size: 14px;
+
   transition:
     border-color 0.25s,
     color 0.25s;

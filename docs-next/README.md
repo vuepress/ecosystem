@@ -9,11 +9,9 @@ actions:
   - text: Themes
     link: /themes/default/
     theme: brand
-
   - text: Plugins
     link: ./plugins/
     theme: brand
-
   - text: GitHub →
     link: https://github.com/vuepress/ecosystem
     theme: alt
