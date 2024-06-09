@@ -36,15 +36,18 @@ code {
 
 kbd {
   border-color: var(--c-border-dark);
+  transition: border-color var(--t-color);
 }
 
 blockquote {
   border-color: var(--c-border-dark);
   color: var(--c-text-quote);
+  transition: border-color var(--t-color);
 }
 
 hr {
   border-color: var(--c-border);
+  transition: border-color var(--t-color);
 }
 
 table {
