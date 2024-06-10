@@ -1,8 +1,10 @@
 import {
+  transformerMetaWordHighlight,
   transformerNotationDiff,
   transformerNotationErrorLevel,
   transformerNotationFocus,
   transformerNotationHighlight,
+  transformerNotationWordHighlight,
 } from '@shikijs/transformers'
 import type { ShikiTransformer } from 'shiki'
 import type { ShikiHighlightOptions } from '../types.js'
@@ -37,6 +39,11 @@ export const getTransformers = (
 
   if (options.notationErrorLevel) {
     transformers.push(transformerNotationErrorLevel())
+  }
+
+  if (options.notationWordHighlight) {
+    transformers.push(transformerNotationWordHighlight())
+    transformers.push(transformerMetaWordHighlight())
   }
 
   transformers.push(

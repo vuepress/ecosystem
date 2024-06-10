@@ -317,13 +317,15 @@ ${codeFence}
   describe('highlight notation', () => {
     it('should highlight notation', () => {
       const source = `\
-${codeFence}js
+${codeFence}js /grault/
 const foo = 'foo' // [!code hl]
 const bar = 'bar' // [!code focus]
 const baz = 'baz' // [!code ++]
 const qux = 'qux' // [!code --]
 const quux = 'quux' // [!code error]
 const corge = 'corge' // [!code warning]
+// [!code word:foo]
+const grault = 'foo'
 ${codeFence}
 `
       const md = createMarkdown({
@@ -331,6 +333,7 @@ ${codeFence}
         notationErrorLevel: true,
         notationFocus: true,
         notationHighlight: true,
+        notationWordHighLight: true,
       })
       expect(md.render(source)).toMatchSnapshot()
     })

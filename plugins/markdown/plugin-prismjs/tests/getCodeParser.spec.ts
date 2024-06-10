@@ -3,10 +3,12 @@ import {
   getCodeParser,
   getHighlightLinesRange,
   highlightCodeLines,
+  metaWordHighlight,
   notationDiff,
   notationErrorLevel,
   notationFocus,
   notationHighlight,
+  notationWordHighlight,
 } from '../src/node/index.js'
 
 const genCode = (code: string) => `<pre><code>${code}</code></pre>`
@@ -268,6 +270,78 @@ function add(a, b) {
     ).toBe(true)
 
     expect(parser.lines[4].classList.includes('error')).toBe(false)
+
+    expect(result).toMatchSnapshot()
+  })
+
+  it('parse notation word highlight', () => {
+    const code = genCode(`// [!code word:Hello]
+const message = 'Hello World'
+console.log(message) // prints Hello World`)
+    const parser = getCodeParser(code)
+    notationWordHighlight(parser)
+
+    const result = parser.stringify()
+    expect(
+      parser.lines.every((line) =>
+        line.content.includes('class="highlighted-word"'),
+      ),
+    ).toBe(true)
+
+    expect(result).toMatchSnapshot()
+  })
+
+  it('parse notation word highlight :number', () => {
+    const code = genCode(`// [!code word:Hello:2]
+const message = 'Hello World'
+console.log(message) // prints Hello World
+console.log(message) // prints Hello World`)
+    const parser = getCodeParser(code)
+    notationWordHighlight(parser)
+
+    const result = parser.stringify()
+    expect(parser.lines[0].content.includes('class="highlighted-word"')).toBe(
+      true,
+    )
+    expect(parser.lines[1].content.includes('class="highlighted-word"')).toBe(
+      true,
+    )
+    expect(parser.lines[2].content.includes('class="highlighted-word"')).toBe(
+      false,
+    )
+
+    expect(result).toMatchSnapshot()
+  })
+
+  it('parse word highlight within meta', () => {
+    const code = genCode(`const message = 'Hello World'
+console.log(message) // prints Hello World`)
+    const parser = getCodeParser(code)
+    metaWordHighlight(parser, '/Hello/')
+
+    const result = parser.stringify()
+    expect(
+      parser.lines.every((line) =>
+        line.content.includes('class="highlighted-word"'),
+      ),
+    ).toBe(true)
+
+    expect(result).toMatchSnapshot()
+  })
+
+  it('parse multiple words highlight within meta', () => {
+    const code = genCode(`const message = 'Hello Foo'
+console.log(message) // prints Hello Bar`)
+    const parser = getCodeParser(code)
+    metaWordHighlight(parser, '/Foo|Bar/')
+
+    const result = parser.stringify()
+    expect(parser.lines[0].content.includes('class="highlighted-word"')).toBe(
+      true,
+    )
+    expect(parser.lines[1].content.includes('class="highlighted-word"')).toBe(
+      true,
+    )
 
     expect(result).toMatchSnapshot()
   })
