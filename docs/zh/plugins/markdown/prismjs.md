@@ -336,6 +336,97 @@ export default defineUserConfig({
 
   - [Shiki > 词高亮标记](https://shiki.tmrs.site/packages/transformers#transformernotationwordhighlight)
 
+### whitespace
+
+- 类型：`boolean | 'all' | 'boundary' | 'trailing'`
+
+- 默认值：`false`
+
+- 详情：是否启用空白符（空格 和 Tab）渲染。
+
+  - `true`: 启用空白符渲染，等同于 `all`
+  - `false`: 禁用空白符渲染
+  - `'all'`: 渲染所有空白符
+  - `'boundary'`: 仅渲染行首行尾的空白符
+  - `'trailing'`: 仅渲染行尾的空白符
+
+  你可以在代码块中添加 `:whitespace / :no-whitespace` 标记来覆盖配置项中的设置。还可以在 `:whitespace` 之后添加 `=` 来定义渲染空白符的方式。比如 `:whitespace=boundary` 将渲染行首行尾的空白符。
+
+- 示例：
+
+  **输入：**
+
+  ````md
+  ```ts :whitespace
+  // 渲染所有空白符
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+  ```ts :whitespace=boundary
+  // 渲染行首行尾的空白符
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+  ```ts :whitespace=trailing
+  // 渲染行尾的空白符
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+  ```ts :no-whitespace
+  // 禁用空白符
+  function block() {
+    space()
+    tab()
+  }
+  ```
+  ````
+
+  **输出：**
+
+  ```ts :whitespace data-title="ts :whitespace"
+  // 渲染所有空白符
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+  ```ts :whitespace=boundary data-title="ts :whitespace=boundary"
+  // 渲染行首行尾的空白符
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+  ```ts :whitespace=trailing data-title="ts :whitespace=trailing"
+  // 渲染行尾的空白符
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+  ```ts :no-whitespace data-title="ts :no-whitespace"
+  // 禁用空白符
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+- 参考：
+  - [Shiki > 空白符渲染](https://shiki.tmrs.site/packages/transformers#transformerrenderwhitespace)
+
 ### preWrapper
 
 - 类型： `boolean`

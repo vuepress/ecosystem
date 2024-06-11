@@ -1,3 +1,4 @@
+import type { WhitespacePosition } from '@vuepress/highlighter-helper'
 import type {
   BundledLanguage,
   BundledTheme,
@@ -127,6 +128,24 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
    * @see https://shiki.style/packages/transformers#transformernotationwordhighlight
    */
   notationWordHighlight?: boolean
+
+  /**
+   * Enable whitespace
+   * - true: enable render whitespace, same of `all`
+   * - false: disable render whitespace
+   * - 'all': render all whitespace
+   * - 'boundary': render leading and trailing whitespace of each line.
+   * - 'trailing': render trailing whitespace of each line
+   *
+   * you are able to use `:whitespace` or `:no-whitespace` or `:whitespace=position` to set single code block
+   *
+   * position: 'all' | 'boundary' | 'trailing'
+   *
+   * @default false
+   *
+   * @see https://shiki.style/packages/transformers#transformerrenderwhitespace
+   */
+  whitespace?: boolean | WhitespacePosition
 
   /**
    * Log level Highlighter language detecter

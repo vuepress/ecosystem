@@ -378,6 +378,97 @@ The following features requires additional style to work, which should be handle
 
   - [Shiki > Notation Word Highlight](https://shiki.style/packages/transformers#transformernotationwordhighlight)
 
+### whitespace
+
+- Type: `boolean | 'all' | 'boundary' | 'trailing'`
+
+- Default: `false`
+
+- Details: Whether enable whitespace characters (Space and Tab).
+
+  - `true`: enable render whitespace, same of `all`
+  - `false`: disable render whitespace
+  - `'all'`: render all whitespace
+  - `'boundary'`: render leading and trailing whitespace of the line
+  - `'trailing'`: render trailing whitespace of the line
+
+  You can add `:whitespace / :no-whitespace` mark in your fenced code blocks to override the value set in config, and customize the render type by adding `=` after `:whitespace`. For example `:whitespace=boundary` will render leading and trailing whitespace of the line.
+
+- Example:
+
+  **Input:**
+
+  ````md
+  ```ts :whitespace
+  // render all whitespace
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+  ```ts :whitespace=boundary
+  // render leading and trailing whitespace of the line
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+  ```ts :whitespace=trailing
+  // render trailing whitespace of the line
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+  ```ts :no-whitespace
+  // disable render whitespace
+  function block() {
+    space()
+    tab()
+  }
+  ```
+  ````
+
+  **Output:**
+
+  ```ts :whitespace data-title="ts :whitespace"
+  // render all whitespace
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+  ```ts :whitespace=boundary data-title="ts :whitespace=boundary"
+  // render leading and trailing whitespace of the line
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+  ```ts :whitespace=trailing data-title="ts :whitespace=trailing"
+  // render trailing whitespace of the line
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+  ```ts :no-whitespace data-title="ts :no-whitespace"
+  // disable render whitespace
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+- Also see：
+  - [Shiki > Render Whitespace](https://shiki.style/packages/transformers#transformerrenderwhitespace)
+
 ## Advanced Options
 
 ### defaultLang
