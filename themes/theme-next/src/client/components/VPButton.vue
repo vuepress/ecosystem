@@ -21,14 +21,10 @@ const props = withDefaults(defineProps<Props>(), {
   rel: undefined,
 })
 
-declare const __VUEPRESS_BASE__: string
-
 const router = useRouter()
 
 const isExternal = computed(
-  () =>
-    (props.href && isLinkExternal(props.href, __VUEPRESS_BASE__)) ||
-    props.target === '_blank',
+  () => (props.href && isLinkExternal(props.href)) || props.target === '_blank',
 )
 
 const component = computed(() => {
