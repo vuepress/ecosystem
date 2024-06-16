@@ -58,9 +58,7 @@
 
   opacity: 0;
 
-  transition:
-    color 0.25s ease,
-    color 0.25s ease;
+  transition: color 0.25s ease;
 }
 
 .vp-doc .header-anchor:hover {
@@ -326,6 +324,9 @@
 
   /* rtl:ignore */
   text-align: left;
+
+  /* rtl:ignore */
+  direction: ltr;
   white-space: pre;
   word-spacing: normal;
   word-wrap: normal;
@@ -337,9 +338,6 @@
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-
-  /* rtl:ignore */
-  direction: ltr;
 }
 
 .vp-doc [class*='language-'] pre {
@@ -442,6 +440,8 @@
 }
 
 .vp-doc .line-numbers {
+  counter-reset: line-number;
+
   position: absolute;
   top: 0;
   bottom: 0;
@@ -461,7 +461,6 @@
   font-size: var(--vp-code-font-size);
   font-family: var(--vp-font-family-mono);
   line-height: var(--vp-code-line-height);
-  counter-reset: line-number;
   text-align: center;
 
   transition:
@@ -557,7 +556,7 @@
 }
 
 .vp-doc [class*='language-']::before {
-  content: attr(data-ext);
+  content: attr(data-title);
 
   position: absolute;
   top: 5px;

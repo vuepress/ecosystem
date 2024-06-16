@@ -26,6 +26,7 @@ const showFooter = computed(() => {
   return (
     hasEditLink.value ||
     hasLastUpdated.value ||
+    hasContributors.value ||
     control.value.prev ||
     control.value.next
   )
