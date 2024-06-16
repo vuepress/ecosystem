@@ -19,7 +19,7 @@ const tag = computed(() => props.tag ?? (props.href ? 'a' : 'span'))
 
 const isExternal = computed(
   () =>
-    (props.href && isLinkExternal(props.href), __VUEPRESS_BASE__) ||
+    (props.href && isLinkExternal(props.href, __VUEPRESS_BASE__)) ||
     props.target === '_blank',
 )
 const link = computed(() => {

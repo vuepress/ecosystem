@@ -44,9 +44,9 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^10.10.0",
+    "@vueuse/core": "^10.11.0",
     "photoswipe": "^5.4.4",
-    "vue": "^3.4.27"
+    "vue": "^3.4.28"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.13"

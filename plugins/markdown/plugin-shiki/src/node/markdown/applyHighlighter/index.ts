@@ -3,7 +3,10 @@ import type MarkdownIt from 'markdown-it'
 import { getHighlighter } from 'shiki'
 import type { App } from 'vuepress'
 import { bundledLanguageNames } from '../../shiki.js'
-import { getTransformers } from '../../transformers/getTransformers.js'
+import {
+  getTransformers,
+  whitespaceTransformer,
+} from '../../transformers/getTransformers.js'
 import type { ShikiHighlightOptions } from '../../types.js'
 import { attrsToLines } from '../../utils.js'
 import { createMarkdownFilePathGetter } from './createMarkdownFilePathGetter.js'
@@ -61,6 +64,7 @@ export const applyHighlighter = async (
           ...(options.highlightLines ?? true
             ? [transformerCompactLineOptions(attrsToLines(attrs))]
             : []),
+          ...whitespaceTransformer(attrs, options.whitespace),
           ...userTransformers,
         ],
         ...('themes' in options

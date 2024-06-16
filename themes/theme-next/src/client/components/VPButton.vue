@@ -27,7 +27,7 @@ const router = useRouter()
 
 const isExternal = computed(
   () =>
-    (props.href && isLinkExternal(props.href), __VUEPRESS_BASE__) ||
+    (props.href && isLinkExternal(props.href, __VUEPRESS_BASE__)) ||
     props.target === '_blank',
 )
 

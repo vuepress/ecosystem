@@ -317,13 +317,15 @@ ${codeFence}
   describe('highlight notation', () => {
     it('should highlight notation', () => {
       const source = `\
-${codeFence}js
+${codeFence}js /grault/
 const foo = 'foo' // [!code hl]
 const bar = 'bar' // [!code focus]
 const baz = 'baz' // [!code ++]
 const qux = 'qux' // [!code --]
 const quux = 'quux' // [!code error]
 const corge = 'corge' // [!code warning]
+// [!code word:foo]
+const grault = 'foo'
 ${codeFence}
 `
       const md = createMarkdown({
@@ -331,7 +333,62 @@ ${codeFence}
         notationErrorLevel: true,
         notationFocus: true,
         notationHighlight: true,
+        notationWordHighLight: true,
       })
+      expect(md.render(source)).toMatchSnapshot()
+    })
+  })
+
+  describe('render whitespace', () => {
+    const source = `\
+${codeFence}
+function foo () {  return 'foo'  \n}
+${codeFence}
+${codeFence}js :whitespace
+function foo () {
+\tconst foo = 'foo'
+\tif (foo === 'foo') {
+\t\treturn 'bar'
+\t}
+\treturn 'foo'
+}
+${codeFence}
+${codeFence}js :whitespace=boundary
+function foo () {
+  const foo = 'foo'  \n  return 'foo'  \n}
+${codeFence}
+${codeFence}js :whitespace=trailing
+function foo () {
+  const foo = 'foo'  \n  return 'foo'  \n}
+}
+${codeFence}
+${codeFence}js :whitespace=all
+function foo () {
+  const foo = 'foo'  \n  return 'foo'
+}
+`
+    it('should work whitespace with default options', () => {
+      const md = createMarkdown()
+      expect(md.render(source)).toMatchSnapshot()
+    })
+
+    it('should work whitespace with `all` option', () => {
+      const md = createMarkdown({ whitespace: 'all' })
+      expect(md.render(source)).toMatchSnapshot()
+    })
+
+    it('should work whitespace with `boundary` option', () => {
+      const md = createMarkdown({ whitespace: 'boundary' })
+      expect(md.render(source)).toMatchSnapshot()
+    })
+
+    it('should work whitespace with `trailing` option', () => {
+      const md = createMarkdown({ whitespace: 'trailing' })
+      expect(md.render(source)).toMatchSnapshot()
+    })
+
+    it('should work whitespace with `false` option', () => {
+      const md = createMarkdown({ whitespace: false })
       expect(md.render(source)).toMatchSnapshot()
     })
   })
