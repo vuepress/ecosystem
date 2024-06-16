@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import VPLink from '@theme/VPLink.vue'
-import { resolveRoutePath } from 'vuepress/client'
+import { resolveRouteFullPath } from 'vuepress/client'
 import type { ResolvedNavItemWithLink } from '../../shared/resolved/navbar.js'
 import { useData } from '../composables/data.js'
 import { isActive } from '../utils/index.js'
@@ -18,7 +18,7 @@ const { page } = useData()
       :class="{
         active: isActive(
           page.path,
-          item.activeMatch || resolveRoutePath(item.link),
+          item.activeMatch || resolveRouteFullPath(item.link),
           !!item.activeMatch,
         ),
       }"

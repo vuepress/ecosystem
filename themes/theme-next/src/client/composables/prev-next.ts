@@ -1,6 +1,6 @@
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
-import { resolveRoutePath } from 'vuepress/client'
+import { resolveRouteFullPath } from 'vuepress/client'
 import type { NavItemWithLink } from '../../shared/index.js'
 import { isActive } from '../utils/index.js'
 import { useData } from './data.js'
@@ -22,7 +22,7 @@ export const usePrevNext = (): ComputedRef<PrevNext> => {
     const candidates = uniqBy(links, (link) => link.link.replace(/[?#].*$/, ''))
 
     const index = candidates.findIndex((link) => {
-      return isActive(page.value.path, resolveRoutePath(link.link))
+      return isActive(page.value.path, resolveRouteFullPath(link.link))
     })
 
     const hidePrev =

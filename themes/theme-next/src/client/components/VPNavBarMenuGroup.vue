@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import VPFlyout from '@theme/VPFlyout.vue'
 import { computed } from 'vue'
-import { resolveRoutePath } from 'vuepress/client'
+import { resolveRouteFullPath } from 'vuepress/client'
 import type {
   ResolvedNavItem,
   ResolvedNavItemWithChildren,
@@ -19,7 +19,7 @@ const isChildActive = (navItem: ResolvedNavItem): boolean => {
   if ('link' in navItem) {
     return isActive(
       page.value.path,
-      resolveRoutePath(navItem.link),
+      resolveRouteFullPath(navItem.link),
       !!props.item.activeMatch,
     )
   } else {

@@ -18,7 +18,7 @@ import {
   watchPostEffect,
 } from 'vue'
 import type { ComputedRef, InjectionKey, Ref } from 'vue'
-import { resolveRoutePath, useRoute, useRouteLocale } from 'vuepress/client'
+import { resolveRouteFullPath, useRoute, useRouteLocale } from 'vuepress/client'
 import type { Sidebar, SidebarItem } from '../../shared/index.js'
 import type { ResolvedSidebarItem } from '../../shared/resolved/sidebar.js'
 import {
@@ -78,7 +78,10 @@ export const hasActiveLink = (
     return items.some((item) => hasActiveLink(path, item))
   }
 
-  return isActive(path, items.link ? resolveRoutePath(items.link) : undefined)
+  return isActive(
+    path,
+    items.link ? resolveRouteFullPath(items.link) : undefined,
+  )
     ? true
     : items.items
       ? hasActiveLink(path, items.items)
@@ -136,7 +139,6 @@ export const useSidebar = (): UseSidebarReturn => {
     return (
       frontmatter.value.sidebar !== false &&
       sidebar.value.length > 0 &&
-      frontmatter.value.layout !== 'home' &&
       frontmatter.value.pageLayout !== 'home'
     )
   })
@@ -150,7 +152,8 @@ export const useSidebar = (): UseSidebarReturn => {
   })
 
   const hasAside = computed(() => {
-    if (frontmatter.value.layout === 'home') return false
+    if (frontmatter.value.pageLayout === 'home' || frontmatter.value.home)
+      return false
     if (frontmatter.value.aside != null) return !!frontmatter.value.aside
     return theme.value.aside !== false
   })
@@ -239,7 +242,7 @@ export const useSidebarControl = (
   const updateIsActiveLink = (): void => {
     isActiveLink.value = isActive(
       page.value.path,
-      item.value.link ? resolveRoutePath(item.value.link) : undefined,
+      item.value.link ? resolveRouteFullPath(item.value.link) : undefined,
     )
   }
 
