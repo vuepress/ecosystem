@@ -28,9 +28,9 @@
     "@vuepress/plugin-theme-data": "workspace:*",
     "@vuepress/plugin-watermark": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
-    "sass": "^1.77.5",
+    "sass": "^1.77.6",
     "sass-loader": "^14.2.1",
-    "vue": "^3.4.28",
+    "vue": "^3.4.29",
     "vuepress": "2.0.0-rc.13"
   },
   "devDependencies": {

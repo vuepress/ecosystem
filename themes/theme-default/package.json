@@ -57,8 +57,8 @@
     "@vuepress/plugin-sitemap": "workspace:*",
     "@vuepress/plugin-theme-data": "workspace:*",
     "@vueuse/core": "^10.11.0",
-    "sass": "^1.77.5",
-    "vue": "^3.4.28"
+    "sass": "^1.77.6",
+    "vue": "^3.4.29"
   },
   "peerDependencies": {
     "sass-loader": "^14.0.0",

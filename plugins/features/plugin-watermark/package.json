@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "vue": "^3.4.28",
+    "vue": "^3.4.29",
     "watermark-js-plus": "^1.5.1"
   },
   "peerDependencies": {
