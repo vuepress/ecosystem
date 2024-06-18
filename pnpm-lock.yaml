@@ -4,9 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  artalk: 2.8.5
-
 importers:
 
   .:
@@ -295,8 +292,8 @@ importers:
         specifier: ^3.1.0
         version: 3.2.2(typescript@5.4.5)
       artalk:
-        specifier: 2.8.5
-        version: 2.8.5
+        specifier: ^2.8.7
+        version: 2.8.7
       giscus:
         specifier: ^1.5.0
         version: 1.5.0
@@ -3108,8 +3105,8 @@ packages:
     resolution: {integrity: sha512-bMxMKAjg13EBSVscxTaYA4mRc5t1UAXa2kXiGTNfZ079HIWXEkKmkgFrh/nJqamaLSrXO5H4WFFkPEaLJWbs3A==}
     engines: {node: '>= 0.4'}
 
-  artalk@2.8.5:
-    resolution: {integrity: sha512-Ms2Zvxdf5Dn5RmhVDMyw+7MX3e5/3zk1EeEXtBUfWK2XeOjKM/jIT84vm+vR1m6o55FAJfxVvs72BeZWsIcSmw==}
+  artalk@2.8.7:
+    resolution: {integrity: sha512-Pl6oKnG0mLf6/c0X93SEmUm7RqqO1zsfvf4j8EzO25pvcDn9pJdYQqLrWKupaHwO7JLvEcgq5pBBrJCLmBKGpw==}
 
   assertion-error@1.1.0:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
@@ -10237,7 +10234,7 @@ snapshots:
       is-array-buffer: 3.0.4
       is-shared-array-buffer: 1.0.3
 
-  artalk@2.8.5:
+  artalk@2.8.7:
     dependencies:
       abortcontroller-polyfill: 1.7.5
       hanabi: 0.4.0

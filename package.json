@@ -64,10 +64,5 @@
   "packageManager": "pnpm@9.4.0",
   "engines": {
     "node": ">=18.19.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "artalk": "2.8.5"
-    }
   }
 }
