@@ -45,6 +45,18 @@
     "execa": "^9.2.0",
     "inquirer": "^9.2.23"
   },
+  "peerDependencies": {
+    "@vuepress/plugin-blog": "workspace:*",
+    "@vuepress/theme-default": "workspace:*"
+  },
+  "peerDependenciesMeta": {
+    "@vuepress/plugin-blog": {
+      "optional": true
+    },
+    "@vuepress/theme-default": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "@types/inquirer": "9.0.7"
   },

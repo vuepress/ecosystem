@@ -893,6 +893,12 @@ importers:
 
   tools/create-vuepress:
     dependencies:
+      '@vuepress/plugin-blog':
+        specifier: workspace:*
+        version: link:../../plugins/blog/plugin-blog
+      '@vuepress/theme-default':
+        specifier: workspace:*
+        version: link:../../themes/theme-default
       cac:
         specifier: ^6.7.14
         version: 6.7.14
