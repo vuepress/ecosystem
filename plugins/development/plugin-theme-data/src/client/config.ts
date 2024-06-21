@@ -1,6 +1,6 @@
 import { setupDevtoolsPlugin } from '@vue/devtools-api'
 import { computed } from 'vue'
-import type { ClientConfig, ClientData } from 'vuepress/client'
+import type { ClientData } from 'vuepress/client'
 import { clientDataSymbol, defineClientConfig } from 'vuepress/client'
 import {
   resolveThemeLocaleData,
@@ -66,4 +66,4 @@ export default defineClientConfig({
       )
     }
   },
-}) as ClientConfig
+})

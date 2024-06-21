@@ -1,4 +1,3 @@
-import type { ClientConfig } from 'vuepress/client'
 import { defineClientConfig } from 'vuepress/client'
 import type { CopyCodePluginLocaleConfig } from '../shared/index.js'
 import { useCopyCode } from './composables/index.js'
@@ -19,4 +18,4 @@ export default defineClientConfig({
       showInMobile: __CC_SHOW_IN_MOBILE__,
     })
   },
-}) as ClientConfig
+})

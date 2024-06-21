@@ -1,4 +1,3 @@
-import type { ClientConfig } from 'vuepress/client'
 import { defineClientConfig } from 'vuepress/client'
 import RedirectModal from './components/RedirectModal.js'
 import { setupDevServerRedirect } from './composables/index.js'
@@ -12,4 +11,4 @@ export default defineClientConfig({
     if (__VUEPRESS_DEV__) setupDevServerRedirect()
   },
   rootComponents: __REDIRECT_LOCALE_SWITCH__ ? [RedirectModal] : [],
-}) as ClientConfig
+})

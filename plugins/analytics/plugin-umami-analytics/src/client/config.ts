@@ -1,5 +1,4 @@
 import { defineClientConfig } from 'vuepress/client'
-import type { ClientConfig } from 'vuepress/client'
 import type { UmamiOptions } from '../shared/index.js'
 import { useUmamiAnalytics } from './composables/index.js'
 
@@ -10,4 +9,4 @@ export default defineClientConfig({
     if (__VUEPRESS_SSR__) return
     useUmamiAnalytics(__UMM_OPTIONS__)
   },
-}) as ClientConfig
+})

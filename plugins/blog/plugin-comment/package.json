@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-comment",
-  "version": "2.0.0-rc.34",
+  "version": "2.0.0-rc.37",
   "description": "VuePress plugin - comment",
   "keywords": [
     "vuepress-plugin",
@@ -48,13 +48,13 @@
   "dependencies": {
     "@vuepress/helper": "workspace:*",
     "giscus": "^1.5.0",
-    "vue": "^3.4.28"
+    "vue": "^3.4.29"
   },
   "peerDependencies": {
     "@waline/client": "^3.1.0",
-    "artalk": "^2.7.3",
+    "artalk": "^2.8.7",
     "twikoo": "^1.5.0",
-    "vuepress": "2.0.0-rc.13"
+    "vuepress": "2.0.0-rc.14"
   },
   "peerDependenciesMeta": {
     "@waline/client": {

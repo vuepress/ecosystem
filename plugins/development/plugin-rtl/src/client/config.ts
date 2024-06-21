@@ -1,5 +1,4 @@
 import { onMounted, watch } from 'vue'
-import type { ClientConfig } from 'vuepress/client'
 import { defineClientConfig, useRouteLocale } from 'vuepress/client'
 
 declare const __RTL_LOCALES__: string[]
@@ -49,4 +48,4 @@ export default defineClientConfig({
       watch(routeLocale, toggleRTL, { immediate: true })
     })
   },
-}) as ClientConfig
+})

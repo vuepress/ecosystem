@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-photo-swipe",
-  "version": "2.0.0-rc.34",
+  "version": "2.0.0-rc.37",
   "description": "VuePress plugin - photo-swipe",
   "keywords": [
     "vuepress-plugin",
@@ -46,10 +46,10 @@
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "^10.11.0",
     "photoswipe": "^5.4.4",
-    "vue": "^3.4.28"
+    "vue": "^3.4.29"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.13"
+    "vuepress": "2.0.0-rc.14"
   },
   "publishConfig": {
     "access": "public"
