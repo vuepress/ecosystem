@@ -40,7 +40,7 @@
     "watermark-js-plus": "^1.5.1"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.13"
+    "vuepress": "2.0.0-rc.14"
   },
   "publishConfig": {
     "access": "public"

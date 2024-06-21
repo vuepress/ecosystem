@@ -33,7 +33,7 @@
     "@commitlint/config-conventional": "^19.2.2",
     "@lerna-lite/cli": "^3.5.1",
     "@lerna-lite/publish": "^3.5.2",
-    "@types/node": "^20.14.5",
+    "@types/node": "^20.14.7",
     "@types/webpack-env": "^1.18.5",
     "@vitest/coverage-istanbul": "^1.6.0",
     "conventional-changelog-cli": "^5.0.0",
@@ -55,11 +55,11 @@
     "stylelint-config-hope": "^7.0.2",
     "stylelint-config-html": "^1.1.0",
     "tsconfig-vuepress": "^4.5.0",
-    "tsx": "^4.15.6",
-    "typescript": "^5.4.5",
-    "vite": "5.2.13",
+    "tsx": "^4.15.7",
+    "typescript": "^5.5.2",
+    "vite": "5.3.1",
     "vitest": "^1.6.0",
-    "vuepress": "2.0.0-rc.13"
+    "vuepress": "2.0.0-rc.14"
   },
   "packageManager": "pnpm@9.4.0",
   "engines": {

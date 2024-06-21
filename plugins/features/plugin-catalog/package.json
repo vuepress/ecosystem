@@ -45,7 +45,7 @@
     "vue": "^3.4.29"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.13"
+    "vuepress": "2.0.0-rc.14"
   },
   "publishConfig": {
     "access": "public"
