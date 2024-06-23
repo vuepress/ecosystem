@@ -39,7 +39,7 @@ export default {
 
   Shiki 要解析的代码块的语言。
 
-  该配置项会被传递到 Shiki 的 `getHighlighter()` 方法中。
+  该配置项会被传递到 Shiki 的 `createHighlighter()` 方法中。
 
   ::: warning
 
