@@ -119,6 +119,9 @@ importers:
       '@vuepress/plugin-back-to-top':
         specifier: workspace:*
         version: link:../plugins/features/plugin-back-to-top
+      '@vuepress/plugin-cache':
+        specifier: workspace:*
+        version: link:../plugins/tools/plugin-cache
       '@vuepress/plugin-catalog':
         specifier: workspace:*
         version: link:../plugins/features/plugin-catalog
@@ -794,6 +797,12 @@ importers:
       '@vuepress/plugin-git':
         specifier: workspace:*
         version: link:../../development/plugin-git
+
+  plugins/tools/plugin-cache:
+    dependencies:
+      vuepress:
+        specifier: 2.0.0-rc.14
+        version: 2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(@types/node@20.14.7)(jiti@1.21.6)(lightningcss@1.25.1)(sass@1.77.6)(terser@5.31.1)(tsx@4.15.7)(typescript@5.5.2)(yaml@2.4.5))(@vuepress/bundler-webpack@2.0.0-rc.14(typescript@5.5.2))(typescript@5.5.2)(vue@3.4.29(typescript@5.5.2))
 
   plugins/tools/plugin-google-tag-manager:
     dependencies:
