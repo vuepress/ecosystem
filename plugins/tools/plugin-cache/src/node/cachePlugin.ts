@@ -1,6 +1,9 @@
 import type { Plugin } from 'vuepress/core'
 import { highlightCache } from './highlightCache.js'
-import { renderCacheWithFile, renderCacheWithMemory } from './renderCache.js'
+import {
+  renderCacheWithFilesystem,
+  renderCacheWithMemory,
+} from './renderCache.js'
 
 export interface CachePluginOptions {
   /**
@@ -25,7 +28,7 @@ export const cachePlugin = ({ type }: CachePluginOptions = {}): Plugin => {
     async extendsMarkdown(md, app) {
       highlightCache(md, app)
       if (type === 'filesystem') {
-        await renderCacheWithFile(md, app)
+        await renderCacheWithFilesystem(md, app)
       } else {
         await renderCacheWithMemory(md, app)
       }

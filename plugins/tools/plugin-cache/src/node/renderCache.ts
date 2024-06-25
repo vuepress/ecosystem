@@ -90,7 +90,7 @@ export const renderCacheWithMemory = async (
   }
 }
 
-export const renderCacheWithFile = async (
+export const renderCacheWithFilesystem = async (
   md: Markdown,
   app: App,
 ): Promise<void> => {
