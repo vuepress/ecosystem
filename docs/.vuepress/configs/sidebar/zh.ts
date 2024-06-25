@@ -120,6 +120,7 @@ export const sidebarZh: SidebarConfig = {
     'google-tag-manager',
     'redirect',
     'register-components',
+    'cache',
   ],
 
   '/zh/plugins/search/': ['docsearch', 'search'],
