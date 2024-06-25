@@ -11,7 +11,7 @@ export interface CachePluginOptions {
    *
    * @default 'memory'
    */
-  type?: 'memory' | 'file'
+  type?: 'memory' | 'filesystem'
 }
 /**
  * Cache markdown rendering, optimize compilation speed.
@@ -24,7 +24,7 @@ export const cachePlugin = ({ type }: CachePluginOptions = {}): Plugin => {
 
     async extendsMarkdown(md, app) {
       highlightCache(md, app)
-      if (type === 'file') {
+      if (type === 'filesystem') {
         await renderCacheWithFile(md, app)
       } else {
         await renderCacheWithMemory(md, app)
