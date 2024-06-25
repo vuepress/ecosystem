@@ -9,15 +9,21 @@
 import type { App } from 'vuepress'
 import type { Markdown, MarkdownEnv } from 'vuepress/markdown'
 import { fs } from 'vuepress/utils'
-import { hash, readFile, writeFile } from './utils.js'
+import {
+  hash,
+  normalizeFilename,
+  readFile,
+  readFileSync,
+  writeFile,
+} from './utils.js'
 
-export interface CacheDta {
+export interface CacheData {
   content: string
   env: MarkdownEnv
 }
 
 // { [filepath]: CacheDta }
-export type Cache = Record<string, CacheDta>
+export type Cache = Record<string, CacheData>
 
 // { [filepath]: hash }
 export type Metadata = Record<string, string>
@@ -26,7 +32,10 @@ const CACHE_DIR = 'markdown/rendered'
 const META_FILE = '_metadata.json'
 const CACHE_FILE = '_cache.json'
 
-export const renderCache = async (md: Markdown, app: App): Promise<void> => {
+export const renderCacheWithMemory = async (
+  md: Markdown,
+  app: App,
+): Promise<void> => {
   if (app.env.isBuild && !fs.existsSync(app.dir.cache(CACHE_DIR))) {
     return
   }
@@ -40,7 +49,7 @@ export const renderCache = async (md: Markdown, app: App): Promise<void> => {
   const [metadata, cache] = await Promise.all([
     readFile<Metadata>(metaFilepath),
     readFile<Cache>(cacheFilepath),
-  ])
+  ]).then(([metadata, cache]) => [metadata || {}, cache || {}] as const)
 
   let timer: ReturnType<typeof setTimeout> | null = null
   const update = async (): Promise<void> => {
@@ -76,6 +85,65 @@ export const renderCache = async (md: Markdown, app: App): Promise<void> => {
 
     update()
 
+    return content
+  }
+}
+
+export const renderCacheWithFile = async (
+  md: Markdown,
+  app: App,
+): Promise<void> => {
+  if (app.env.isBuild && !fs.existsSync(app.dir.cache(CACHE_DIR))) {
+    return
+  }
+  const basename = app.dir.cache(CACHE_DIR)
+  const metaFilepath = `${basename}/${META_FILE}`
+
+  const metadata = (await readFile<Metadata>(metaFilepath)) || {}
+
+  let timer: ReturnType<typeof setTimeout> | null = null
+  const update = (filepath: string, data: CacheData): void => {
+    timer && clearTimeout(timer)
+    timer = setTimeout(
+      async () =>
+        await Promise.all([
+          writeFile(metaFilepath, metadata),
+          writeFile(filepath, data),
+        ]),
+      200,
+    )
+  }
+  const rawRender = md.render
+  md.render = (input, env: MarkdownEnv) => {
+    const filepath = env.filePathRelative
+
+    if (!filepath) {
+      return rawRender(input, env)
+    }
+
+    const key = hash(input)
+    const filename = normalizeFilename(filepath)
+
+    if (metadata[filepath] === key) {
+      const cached = readFileSync<CacheData>(filename)
+      if (cached) {
+        Object.assign(env, cached.env)
+        return cached.content
+      } else {
+        metadata[filepath] = ''
+      }
+    }
+    const start = performance.now()
+    const content = rawRender(input, env)
+
+    /**
+     * High-frequency I/O is also a time-consuming operation,
+     * therefore, for render operations with low overhead, caching is not performed.
+     */
+    if (performance.now() - start >= 3) {
+      metadata[filepath] = key
+      update(filename, { content, env })
+    }
     return content
   }
 }

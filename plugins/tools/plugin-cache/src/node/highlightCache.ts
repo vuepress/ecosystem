@@ -9,12 +9,12 @@
  * Therefore, using the LRU cache algorithm can help by storing unchanged code blocks'
  * highlighted results and only processing the parts that have been modified.
  */
+import { LRUCache } from 'lru-cache'
 import type { App } from 'vuepress'
 import type { Markdown } from 'vuepress/markdown'
-import { LRUCache } from './lru.js'
 import { hash } from './utils.js'
 
-const cache = new LRUCache<string, string>(64)
+const cache = new LRUCache<string, string>({ max: 64 })
 
 export const highlightCache = (md: Markdown, app: App): void => {
   /**

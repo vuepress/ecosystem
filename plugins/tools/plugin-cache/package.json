@@ -38,5 +38,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "lru-cache": "^10.2.2"
   }
 }
