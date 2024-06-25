@@ -115,6 +115,6 @@ export default defineUserConfig({
           notationWordHighlight: true,
         })
       : [],
-    cachePlugin(),
+    cachePlugin({ type: 'file' }),
   ],
 }) as UserConfig

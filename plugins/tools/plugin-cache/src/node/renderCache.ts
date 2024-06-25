@@ -108,7 +108,7 @@ export const renderCacheWithFile = async (
       async () =>
         await Promise.all([
           writeFile(metaFilepath, metadata),
-          writeFile(filepath, data),
+          writeFile(`${basename}/${filepath}`, data),
         ]),
       200,
     )
@@ -140,7 +140,7 @@ export const renderCacheWithFile = async (
      * High-frequency I/O is also a time-consuming operation,
      * therefore, for render operations with low overhead, caching is not performed.
      */
-    if (performance.now() - start >= 3) {
+    if (performance.now() - start >= 0.05) {
       metadata[filepath] = key
       update(filename, { content, env })
     }
