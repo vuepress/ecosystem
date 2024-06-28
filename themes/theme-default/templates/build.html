@@ -9,7 +9,7 @@
         --c-bg: #fff;
       }
 
-      html.dark {
+      html[data-theme='dark'] {
         --c-bg: #22272e;
       }
 
@@ -24,7 +24,7 @@
         window.matchMedia &&
         window.matchMedia('(prefers-color-scheme: dark)').matches
       if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
-        document.documentElement.classList.toggle('dark', true)
+        document.documentElement.id = 'dark'
       }
     </script>
     <!--vuepress-ssr-head-->

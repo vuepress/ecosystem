@@ -29,7 +29,7 @@ export default {
 ### selector
 
 - Type: `string | string[]`
-- Default: `'.theme-default-content div[class*="language-"] pre'`
+- Default: `'#vp-content div[class*="language-"] pre'`
 - Details:
 
   Code block selector

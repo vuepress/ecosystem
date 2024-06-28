@@ -101,9 +101,9 @@ $sidebar-width: 18rem !default;
 
 ::: tip
 
-- 如果你正在开发插件，你可以在默认配置文件中设置 `$dark-selector: html.dark !default;`，因为这是 `@vuepress/theme-default` 的默认行为。
+- 如果你正在开发插件，你可以在默认配置文件中设置 `$dark-selector: html[data-theme=dark] !default;`，因为这是社区对主题的推荐要求。
 
-  你的插件将在默认主题正常工作，如果用户使用具有不同深色模式选择器的第三方主题，则用户可以在配置文件中更改此选择器。
+  你的插件将在绝大多主题中正常工作，如果用户使用具有不同深色模式选择器的第三方主题，则用户可以在配置文件中更改此选择器。
 
 - 如果你在开发主题，你可以在默认配置文件中设置 `$dark-selector` 为你的深色模式选择器同时不包含 `!default`，确保用户不能覆盖它。
 
@@ -178,7 +178,7 @@ $bg-color: (
 ) !default;
 ```
 
-然后，如果在配置文件中 `$dark-selector` 的值为 `"html.dark"`，你会得到:
+然后，如果在配置文件中 `$dark-selector` 的值为 `"html[data-theme=dark]"`，你会得到:
 
 ```scss
 :root {
@@ -186,7 +186,7 @@ $bg-color: (
   --bg-color: #fff;
 }
 
-html.dark {
+html[data-theme='dark'] {
   --text-color: #999;
   --bg-color: #1e1e1e;
 }

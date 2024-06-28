@@ -19,11 +19,11 @@ $mobile: 419px !default;
 $rtl-selector: 'html[dir="rtl"]' !default;
 
 /* Content Class */
-$content-class: '.theme-default-content' !default;
+$content-class: '#vp-content' !default;
 
 /** dark mode selectors */
-$dark-selector: 'html.dark' !default;
-$light-selector: 'html:not(.dark)' !default;
+$dark-selector: "html[data-theme='dark']" !default;
+$light-selector: "html[data-theme='light']" !default;
 
 /* Color list */
 $colors: #cf1322, #fa541c, #f39c12, #2ecc71, #25a55b, #10a5a5, #096dd9, #aa6fe9,

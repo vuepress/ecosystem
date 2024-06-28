@@ -22,7 +22,7 @@ test.describe('has heading sidebar', () => {
     await expect(pageTitle).not.toBeEmpty()
     await expect(sidebarHeadings).toContainText(pageTitleText)
 
-    const h2 = page.locator('.theme-default-content h2').first()
+    const h2 = page.locator('#vp-content h2').first()
     const h2Text = (await h2.innerText()).replace('#', '')
 
     await expect(h2).not.toBeEmpty()

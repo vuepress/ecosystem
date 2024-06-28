@@ -4,7 +4,7 @@ body {
   transition: background-color var(--t-color);
 }
 
-html.dark {
+html[data-theme='dark'] {
   color-scheme: dark;
 }
 
