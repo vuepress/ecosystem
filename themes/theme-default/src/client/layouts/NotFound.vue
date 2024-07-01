@@ -26,7 +26,7 @@ const homeText = themeLocale.value.backToHome ?? 'Back to home'
   </div>
 </template>
 
-<style>
+<style scoped lang="scss">
 .vp-theme-container {
   max-width: 740px;
   margin: 0 auto;
