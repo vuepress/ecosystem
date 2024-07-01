@@ -10,6 +10,11 @@
   "[markdown]": {
     "files.trimTrailingWhitespace": false
   },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+  "prettier.enable": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.validate": [
     "javascript",

@@ -21,6 +21,13 @@ module.exports = {
       },
     },
     {
+      files: ['themes/**/*.vue'],
+      rules: {
+        'vue/no-v-html': 'off',
+        'vue/no-v-text-v-html-on-component': 'off',
+      },
+    },
+    {
       files: ['tools/create-vuepress/**/*.vue'],
       rules: {
         'vue/no-v-html': 'off',

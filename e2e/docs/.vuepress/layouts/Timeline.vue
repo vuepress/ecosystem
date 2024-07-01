@@ -9,7 +9,7 @@ const timelines = useBlogType('timeline')
 
 <template>
   <ParentLayout>
-    <template #page>
+    <template #custom-content>
       <main class="page">
         <h1 class="timeline-title">Timeline</h1>
 
