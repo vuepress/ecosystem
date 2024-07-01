@@ -1,0 +1,47 @@
+@use 'sass:color';
+@use 'sass:math';
+
+/**
+ * By adjusting the brightness of a color and calculating a new opacity value based on the color's original opacity, a high-contrast color within the same color scheme can be obtained.
+ */
+@function get-soft-color($color) {
+  $lightness: color.lightness($color);
+  $alpha: 1;
+
+  @if $lightness > 50% {
+    $alpha: $lightness - 40%;
+    $lightness: -30%;
+  } @else {
+    $alpha: math.max($lightness - 20%, 0);
+    $lightness: 25%;
+  }
+
+  /* stylelint-disable-next-line order/order */
+  $alpha: math.div(math.floor(100 * $alpha), 100);
+
+  @return rgba(color.scale($color, $lightness: $lightness), $alpha);
+}
+
+@function get-hover-color($color) {
+  $lightness: color.lightness($color);
+
+  @if $lightness > 50% {
+    $lightness: -17%;
+  } @else {
+    $lightness: 17%;
+  }
+
+  @return rgba(color.scale($color, $lightness: $lightness), 1);
+}
+
+@function get-background-color($color) {
+  $lightness: color.lightness($color);
+
+  @if $lightness > 50% {
+    $lightness: -36.265%;
+  } @else {
+    $lightness: 36.265%;
+  }
+
+  @return rgba(color.scale($color, $lightness: $lightness), 1);
+}
