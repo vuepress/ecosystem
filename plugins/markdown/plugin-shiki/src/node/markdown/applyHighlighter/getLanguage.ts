@@ -8,7 +8,7 @@ const WARNED_LANGS = new Set<string>()
 export const getLanguage = (
   lang: string,
   loadedLanguages: string[],
-  defaultLang: string,
+  defaultLang: string | undefined,
   logLevel: string,
   getMarkdownFilePath: MarkdownFilePathGetter,
 ): string => {
@@ -18,7 +18,7 @@ export const getLanguage = (
     // warn for unknown languages only once
     if (logLevel !== 'silent' && !WARNED_LANGS.has(result)) {
       logger.warn(
-        `Missing ${colors.cyan(lang)} highlighter, use ${colors.cyan(defaultLang)} to highlight instead.`,
+        `Missing ${colors.cyan(lang)} highlighter, ${defaultLang ? `use ${colors.cyan(defaultLang)} to highlight instead.` : 'highlight ignored'}`,
       )
       WARNED_LANGS.add(result)
     }
@@ -30,7 +30,7 @@ export const getLanguage = (
       )
     }
 
-    result = defaultLang
+    result = defaultLang || 'plain'
   }
 
   return result

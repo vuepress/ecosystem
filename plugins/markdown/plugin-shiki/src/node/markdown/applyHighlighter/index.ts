@@ -19,7 +19,7 @@ export const applyHighlighter = async (
   {
     langs = bundledLanguageNames,
     langAlias = {},
-    defaultLang = 'plain',
+    defaultLang,
     transformers: userTransformers = [],
     ...options
   }: ShikiHighlightOptions = {},
