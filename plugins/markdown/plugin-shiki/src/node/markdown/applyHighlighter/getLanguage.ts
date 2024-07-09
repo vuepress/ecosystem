@@ -18,7 +18,7 @@ export const getLanguage = (
     // warn for unknown languages only once
     if (logLevel !== 'silent' && !WARNED_LANGS.has(result)) {
       logger.warn(
-        `Missing ${colors.cyan(lang)} highlighter, ${defaultLang ? `use ${colors.cyan(defaultLang)} to highlight instead.` : 'highlight ignored'}`,
+        `Missing ${colors.cyan(lang)} highlighter, ${defaultLang ? `use ${colors.cyan(defaultLang)} to highlight instead.` : 'skip highlighting'}`,
       )
       WARNED_LANGS.add(result)
     }
