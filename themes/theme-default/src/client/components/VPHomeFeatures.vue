@@ -23,8 +23,8 @@ const features = computed(() => frontmatter.value.features ?? [])
 .vp-features {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
   place-content: stretch space-between;
+  align-items: flex-start;
 
   margin-top: 2.5rem;
   padding: 1.2rem 0;

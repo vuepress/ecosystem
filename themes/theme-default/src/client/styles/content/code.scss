@@ -112,7 +112,6 @@ pre[class*='language-'] {
       display: block;
 
       box-sizing: border-box;
-
       width: fit-content;
       min-width: 100%;
       padding: 1.3rem 1.5rem;
@@ -177,6 +176,8 @@ div[class*='language-'] {
     }
 
     .line-numbers {
+      counter-reset: line-number;
+
       position: absolute;
       top: 0;
 
@@ -187,7 +188,6 @@ div[class*='language-'] {
 
       font-size: 0.875em;
       line-height: $line-height;
-      counter-reset: line-number;
       text-align: center;
 
       .line-number {

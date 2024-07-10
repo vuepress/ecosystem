@@ -36,7 +36,7 @@
     "copy": "cpx \"src/**/*.css\" lib"
   },
   "dependencies": {
-    "vue": "^3.4.29"
+    "vue": "^3.4.31"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.14"

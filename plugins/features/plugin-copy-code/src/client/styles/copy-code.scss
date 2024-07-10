@@ -47,10 +47,10 @@
     mask-image: var(--code-copy-icon);
     -webkit-mask-position: 50%;
     mask-position: 50%;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
     -webkit-mask-size: 1em;
     mask-size: 1em;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
   }
 
   &:focus,

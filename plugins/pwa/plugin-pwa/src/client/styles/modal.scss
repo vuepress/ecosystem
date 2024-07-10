@@ -97,9 +97,9 @@
     inset: 0;
     z-index: 998;
 
-    animation: 0.25s pwa-fade-in;
-
     backdrop-filter: blur(10px);
+
+    animation: 0.25s pwa-fade-in;
   }
 
   .install-modal {
@@ -115,6 +115,7 @@
     background: var(--pwa-bg-color);
 
     transition: background 0.3s;
+
     animation: 0.15s pwa-opened;
 
     @media (max-width: 1280px) {
@@ -325,12 +326,13 @@
     flex-flow: column wrap;
 
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
 
     width: 22em;
     max-height: 220px;
 
     scroll-snap-type: x mandatory;
+
+    -webkit-overflow-scrolling: touch;
 
     @media (max-width: 1280px) {
       justify-content: center;
@@ -429,7 +431,6 @@
     bottom: 0;
 
     box-sizing: border-box;
-
     width: 92%;
     margin: 2em auto;
     padding: 0.5em 2em;

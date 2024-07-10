@@ -35,11 +35,11 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@shikijs/transformers": "^1.9.0",
+    "@shikijs/transformers": "^1.10.3",
     "@vuepress/helper": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
     "nanoid": "^5.0.7",
-    "shiki": "^1.9.0"
+    "shiki": "^1.10.3"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.14"

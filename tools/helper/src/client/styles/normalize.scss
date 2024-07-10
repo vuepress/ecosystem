@@ -201,6 +201,7 @@ td {
 
 pre {
   text-align: left;
+  direction: ltr;
   white-space: pre;
   word-spacing: normal;
   word-wrap: normal;
@@ -208,8 +209,6 @@ pre {
   overflow-wrap: unset;
   tab-size: 4;
   hyphens: none;
-
-  direction: ltr;
 
   @media print {
     white-space: pre-wrap;
