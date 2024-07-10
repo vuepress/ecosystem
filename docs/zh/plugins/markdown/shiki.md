@@ -477,7 +477,7 @@ export default defineUserConfig({
 
 - 类型：`string`
 
-- 默认值：`'plain'`
+- 默认值：`''`
 
 - 详情：指定的语言不可用时所使用的备选语言。
 

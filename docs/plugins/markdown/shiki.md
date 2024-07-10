@@ -475,7 +475,7 @@ The following features requires additional style to work, which should be handle
 
 - Type: `string`
 
-- Default: `'plain'`
+- Default: `''`
 
 - Details: Fallback language when the specified language is not available.
 
