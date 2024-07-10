@@ -71,6 +71,10 @@ div[class*='language-'] {
     }
   }
 
+  &.line-numbers-mode .line.diff::before {
+    left: 4px;
+  }
+
   // notation focused lines
   // - `// [\!code focus]`
   // - `// [\!code focus:3]`

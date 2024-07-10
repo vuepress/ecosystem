@@ -39,7 +39,7 @@ export default {
 
   Languages of code blocks to be parsed by Shiki.
 
-  This option will be forwarded to `getHighlighter()` method of Shiki.
+  This option will be forwarded to `createHighlighter()` method of Shiki.
 
   ::: warning
 

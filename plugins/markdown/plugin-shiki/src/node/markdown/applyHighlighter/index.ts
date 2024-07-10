@@ -1,6 +1,6 @@
 import { transformerCompactLineOptions } from '@shikijs/transformers'
 import type MarkdownIt from 'markdown-it'
-import { getHighlighter } from 'shiki'
+import { createHighlighter } from 'shiki'
 import type { App } from 'vuepress'
 import { bundledLanguageNames } from '../../shiki.js'
 import {
@@ -28,7 +28,7 @@ export const applyHighlighter = async (
   const getMarkdownFilePath =
     logLevel === 'debug' ? createMarkdownFilePathGetter(md) : null
 
-  const highlighter = await getHighlighter({
+  const highlighter = await createHighlighter({
     langs,
     langAlias,
     themes:
