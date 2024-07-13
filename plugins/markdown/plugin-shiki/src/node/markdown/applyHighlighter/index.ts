@@ -61,7 +61,7 @@ export const applyHighlighter = async (
         },
         transformers: [
           ...transformers,
-          ...(options.highlightLines ?? true
+          ...((options.highlightLines ?? true)
             ? [transformerCompactLineOptions(attrsToLines(attrs))]
             : []),
           ...whitespaceTransformer(attrs, options.whitespace),
