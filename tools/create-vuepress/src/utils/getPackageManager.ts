@@ -6,7 +6,7 @@ const checkPnpmInstalled = (): boolean => {
     return (
       execaCommandSync('pnpm --version', { stdio: 'ignore' }).exitCode === 0
     )
-  } catch (e) {
+  } catch {
     return false
   }
 }
@@ -16,7 +16,7 @@ const checkYarnInstalled = (): boolean => {
     return (
       execaCommandSync('yarn --version', { stdio: 'ignore' }).exitCode === 0
     )
-  } catch (e) {
+  } catch {
     return false
   }
 }

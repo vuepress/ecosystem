@@ -18,7 +18,7 @@ const isInstalled = (packageManager: PackageManager): boolean => {
       spawnSync(`${packageManager} --version`, { shell: true, stdio: 'ignore' })
         .status === 0
     )
-  } catch (e) {
+  } catch {
     return false
   }
 }
