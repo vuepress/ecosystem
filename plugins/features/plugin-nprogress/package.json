@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-nprogress",
-  "version": "2.0.0-rc.37",
+  "version": "2.0.0-rc.38",
   "description": "VuePress plugin - nprogress",
   "keywords": [
     "vuepress-plugin",
