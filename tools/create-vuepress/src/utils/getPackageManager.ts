@@ -1,5 +1,5 @@
+import { select } from '@inquirer/prompts'
 import { execaCommandSync } from 'execa'
-import inquirer from 'inquirer'
 
 const checkPnpmInstalled = (): boolean => {
   try {
@@ -21,27 +21,18 @@ const checkYarnInstalled = (): boolean => {
   }
 }
 
-const availablePackageManagers = ['npm']
+export type PackageManager = 'npm' | 'yarn' | 'pnpm'
+
+const availablePackageManagers: PackageManager[] = ['npm']
 
 if (checkYarnInstalled()) availablePackageManagers.unshift('yarn')
 if (checkPnpmInstalled()) availablePackageManagers.unshift('pnpm')
 
-export type PackageManager = 'npm' | 'yarn' | 'pnpm'
-
-export interface PackageManagerAnswer {
-  packageManager: PackageManager
-}
-
-export const getPackageManager = async (
-  message: string,
-): Promise<PackageManager> =>
-  (
-    await inquirer.prompt<PackageManagerAnswer>([
-      {
-        name: 'packageManager',
-        type: 'list',
-        message,
-        choices: availablePackageManagers,
-      },
-    ])
-  ).packageManager
+export const getPackageManager = (message: string): Promise<PackageManager> =>
+  select<PackageManager>({
+    message,
+    choices: availablePackageManagers.map((pm) => ({
+      name: pm,
+      value: pm,
+    })),
+  })

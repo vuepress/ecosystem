@@ -41,9 +41,9 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
+    "@inquirer/prompts": "^5.1.2",
     "cac": "^6.7.14",
-    "execa": "^9.3.0",
-    "inquirer": "^9.3.5"
+    "execa": "^9.3.0"
   },
   "peerDependencies": {
     "@vuepress/plugin-blog": "workspace:*",
