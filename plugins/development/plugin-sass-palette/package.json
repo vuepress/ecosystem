@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-sass-palette",
-  "version": "2.0.0-rc.37",
+  "version": "2.0.0-rc.38",
   "description": "VuePress plugin - sass-palette",
   "keywords": [
     "vuepress-plugin",
@@ -48,7 +48,7 @@
   "dependencies": {
     "@vuepress/helper": "workspace:*",
     "chokidar": "^3.6.0",
-    "sass": "^1.77.6"
+    "sass": "^1.77.8"
   },
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.14",

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.38](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.37...v2.0.0-rc.38) (2024-07-13)
+
+### Bug Fixes
+
+- **theme-default:** disable sass deprecations for webpack ([28e1110](https://github.com/vuepress/ecosystem/commit/28e1110066bbafe568d3b9cc09098cbb158c210d))
+- **theme-default:** fix incorrect 404 page layout, close [#207](https://github.com/vuepress/ecosystem/issues/207) ([#213](https://github.com/vuepress/ecosystem/issues/213)) ([c7c9a72](https://github.com/vuepress/ecosystem/commit/c7c9a72e65a3f492a9d799836695ce2173a1566b))
+- **theme-default:** fix incorrect code notation diff layout, close [#212](https://github.com/vuepress/ecosystem/issues/212) ([#214](https://github.com/vuepress/ecosystem/issues/214)) ([983ad4a](https://github.com/vuepress/ecosystem/commit/983ad4aa04e47131cee4d898a939a2af880b2050))
+
+### Features
+
+- **create-vuepress:** use @inquirer/prompts ([984b53a](https://github.com/vuepress/ecosystem/commit/984b53ab97bd5936f09f488a97dc79f590a45fde))
+- **plugin-shiki:** rename `getHighlighter` to `createHighlighter` ([#208](https://github.com/vuepress/ecosystem/issues/208)) ([bb739df](https://github.com/vuepress/ecosystem/commit/bb739dfa0893bc8a46d9e40000f43eef28be856b))
+
+### Performance Improvements
+
+- **plugin-shiki:** improve logging when language is not available ([#215](https://github.com/vuepress/ecosystem/issues/215)) ([b84ce08](https://github.com/vuepress/ecosystem/commit/b84ce08df9c72dc56fabb8790afc192bc45abfda))
+
 # [2.0.0-rc.37](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.36...v2.0.0-rc.37) (2024-06-21)
 
 **Note:** Version bump only for package @vuepress/ecosystem

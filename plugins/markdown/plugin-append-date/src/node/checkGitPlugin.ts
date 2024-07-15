@@ -17,7 +17,7 @@ export const isGitPluginEnabled = (app: App): boolean => {
       logger.info(`${colors.magenta(GIT_PLUGIN_NAME)} is not enabled.`)
 
       return false
-    } catch (err) {
+    } catch {
       logger.error(
         `${colors.magenta(
           GIT_PLUGIN_NAME,

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-copy-code",
-  "version": "2.0.0-rc.37",
+  "version": "2.0.0-rc.38",
   "description": "VuePress plugin - copy code block",
   "keywords": [
     "vuepress-plugin",
@@ -44,7 +44,7 @@
   "dependencies": {
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "^10.11.0",
-    "vue": "^3.4.29"
+    "vue": "^3.4.31"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.14"

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-medium-zoom",
-  "version": "2.0.0-rc.37",
+  "version": "2.0.0-rc.38",
   "description": "VuePress plugin - medium-zoom",
   "keywords": [
     "vuepress-plugin",
@@ -40,7 +40,7 @@
   "dependencies": {
     "@vuepress/helper": "workspace:*",
     "medium-zoom": "^1.1.0",
-    "vue": "^3.4.29"
+    "vue": "^3.4.31"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.14"

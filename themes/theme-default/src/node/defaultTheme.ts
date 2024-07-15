@@ -1,4 +1,4 @@
-import { addViteOptimizeDepsExclude } from '@vuepress/helper'
+import { addViteOptimizeDepsExclude, chainWebpack } from '@vuepress/helper'
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
 import { copyCodePlugin } from '@vuepress/plugin-copy-code'
@@ -78,6 +78,19 @@ export const defaultTheme = ({
     clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
     extendsBundlerOptions: (bundlerOptions, app) => {
+      chainWebpack(bundlerOptions, app, (config) => {
+        config.module
+          .rule('scss')
+          .use('sass-loader')
+          .tap((options) => ({
+            api: 'modern-compiler',
+            ...options,
+            sassOptions: {
+              silenceDeprecations: ['mixed-decls'],
+              ...options.sassOptions,
+            },
+          }))
+      })
       addViteOptimizeDepsExclude(bundlerOptions, app, '@theme')
     },
 

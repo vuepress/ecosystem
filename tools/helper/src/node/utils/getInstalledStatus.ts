@@ -8,7 +8,7 @@ export const getInstalledStatus = (
     pkg && createRequire(currentUrl).resolve(pkg)
 
     return true
-  } catch (error) {
+  } catch {
     return false
   }
 }

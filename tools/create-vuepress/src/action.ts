@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import { existsSync, readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
+import { confirm, select } from '@inquirer/prompts'
 import { execaCommand, execaCommandSync } from 'execa'
-import inquirer from 'inquirer'
 import { KNOWN_THEME_COMMANDS } from './config/index.js'
 import { createPackageJson, generateTemplate } from './flow/index.js'
 import { getLanguage } from './i18n/index.js'
@@ -13,19 +13,21 @@ import {
   normalizeThemeName,
 } from './utils/index.js'
 
+type Bundler = 'vite' | 'webpack'
+type Preset = 'docs' | 'blog'
+
 interface CreateOptions {
-  bundler?: 'vite' | 'webpack' | null
-  preset?: 'docs' | 'blog' | null
+  bundler?: Bundler
+  preset?: Preset
   theme?: string
 }
 
+const bundlers: Bundler[] = ['vite', 'webpack']
+const presets: Preset[] = ['blog', 'docs']
+
 export const mainAction = async (
   targetDir: string,
-  {
-    bundler = null,
-    preset = null,
-    theme = '@vuepress/theme-default',
-  }: CreateOptions,
+  { bundler, preset, theme = '@vuepress/theme-default' }: CreateOptions,
 ): Promise<void> => {
   // get language
   const { lang, locale } = await getLanguage()
@@ -69,29 +71,23 @@ export const mainAction = async (
 
   // complete bundler
   if (!bundler)
-    bundler = (
-      await inquirer.prompt<{ bundler: 'vite' | 'webpack' }>([
-        {
-          name: 'bundler',
-          type: 'list',
-          message: locale.question.bundler,
-          choices: ['vite', 'webpack'],
-        },
-      ])
-    ).bundler
+    bundler = await select<Bundler>({
+      message: locale.question.bundler,
+      choices: bundlers.map((bundler) => ({
+        name: bundler,
+        value: bundler,
+      })),
+    })
 
   // complete preset
   if (!preset)
-    preset = (
-      await inquirer.prompt<{ preset: 'blog' | 'docs' }>([
-        {
-          name: 'preset',
-          type: 'list',
-          message: locale.question.preset,
-          choices: ['blog', 'docs'],
-        },
-      ])
-    ).preset
+    preset = await select<Preset>({
+      message: locale.question.preset,
+      choices: presets.map((preset) => ({
+        name: preset,
+        value: preset,
+      })),
+    })
 
   /*
    * Generate template
@@ -132,16 +128,12 @@ export const mainAction = async (
   /*
    * Open dev server
    */
-  const { devServer } = await inquirer.prompt<{ devServer: boolean }>([
-    {
-      name: 'devServer',
-      type: 'confirm',
+  if (
+    await confirm({
       message: locale.question.devServer,
       default: true,
-    },
-  ])
-
-  if (devServer) {
+    })
+  ) {
     console.log(locale.flow.devServer)
 
     await execaCommand(`${packageManager} run docs:dev`, {

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-docsearch",
-  "version": "2.0.0-rc.37",
+  "version": "2.0.0-rc.38",
   "description": "VuePress plugin - docsearch",
   "keywords": [
     "vuepress-plugin",
@@ -44,7 +44,7 @@
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "^10.11.0",
     "ts-debounce": "^4.0.0",
-    "vue": "^3.4.29"
+    "vue": "^3.4.31"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.14"

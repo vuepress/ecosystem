@@ -25,7 +25,7 @@ const isInstalled = (packageManager: PackageManager): boolean => {
       return result.stdout.toString().startsWith('1')
 
     return result.status === 0
-  } catch (e) {
+  } catch {
     return false
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/theme-default",
-  "version": "2.0.0-rc.37",
+  "version": "2.0.0-rc.38",
   "description": "Default theme of VuePress",
   "keywords": [
     "vuepress-theme",
@@ -57,8 +57,8 @@
     "@vuepress/plugin-sitemap": "workspace:*",
     "@vuepress/plugin-theme-data": "workspace:*",
     "@vueuse/core": "^10.11.0",
-    "sass": "^1.77.6",
-    "vue": "^3.4.29"
+    "sass": "^1.77.8",
+    "vue": "^3.4.31"
   },
   "peerDependencies": {
     "sass-loader": "^14.0.0",
