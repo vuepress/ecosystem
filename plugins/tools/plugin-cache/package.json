@@ -40,6 +40,6 @@
     "access": "public"
   },
   "dependencies": {
-    "lru-cache": "^10.2.2"
+    "lru-cache": "^10.4.3"
   }
 }
