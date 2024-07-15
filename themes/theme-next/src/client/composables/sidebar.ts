@@ -255,7 +255,7 @@ export const useSidebarControl = (
     }
 
     return item.value.items
-      ? containsActiveLink(page.value.filePathRelative || '', item.value.items)
+      ? containsActiveLink(page.value.path, item.value.items)
       : false
   })
 
