@@ -12,7 +12,7 @@
 import { LRUCache } from 'lru-cache'
 import type { App } from 'vuepress'
 import type { Markdown } from 'vuepress/markdown'
-import { hash } from './utils.js'
+import { hash } from 'vuepress/utils'
 
 const cache = new LRUCache<string, string>({ max: 64 })
 

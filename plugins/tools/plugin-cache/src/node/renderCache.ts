@@ -8,15 +8,8 @@
  */
 import type { App } from 'vuepress'
 import type { Markdown, MarkdownEnv } from 'vuepress/markdown'
-import { fs } from 'vuepress/utils'
-import {
-  checkIOSpeed,
-  hash,
-  normalizeFilename,
-  readFile,
-  readFileSync,
-  writeFile,
-} from './utils.js'
+import { fs, hash } from 'vuepress/utils'
+import { checkIOSpeed, readFile, readFileSync, writeFile } from './utils.js'
 
 export interface CacheData {
   content: string
@@ -123,7 +116,7 @@ export const renderCacheWithFilesystem = async (
     }
 
     const key = hash(input)
-    const filename = normalizeFilename(filepath)
+    const filename = hash(filepath)
 
     if (metadata[filepath] === key) {
       const cached = readFileSync<CacheData>(`${basename}/${filename}`)

@@ -117,10 +117,10 @@ export const sidebarEn: SidebarConfig = {
   ],
 
   '/plugins/tools/': [
+    'cache',
     'google-tag-manager',
     'redirect',
     'register-components',
-    'cache',
   ],
 
   '/plugins/search/': ['docsearch', 'search'],
