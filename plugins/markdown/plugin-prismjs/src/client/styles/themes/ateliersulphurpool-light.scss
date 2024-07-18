@@ -12,7 +12,7 @@ $code-color: #5e6687;
 $code-bg-color: #f5f7ff;
 
 @mixin style {
-  pre[class*='language-'] {
+  div[class*='language-'] pre {
     ::selection {
       background: #dfe2f1;
     }

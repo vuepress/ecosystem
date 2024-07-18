@@ -10,7 +10,7 @@ $code-color: #383a42;
 $code-bg-color: #ecf4fa;
 
 @mixin style {
-  pre[class*='language-'] {
+  div[class*='language-'] pre {
     // tab size
     tab-size: 2;
 

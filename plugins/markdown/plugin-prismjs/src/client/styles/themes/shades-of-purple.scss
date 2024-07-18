@@ -12,7 +12,7 @@ $code-color: #9efeff;
 $code-bg-color: #1e1e3f;
 
 @mixin style {
-  pre[class*='language-'] {
+  div[class*='language-'] pre {
     letter-spacing: 0.5px;
     text-shadow: 0 1px #222245;
 

@@ -7,33 +7,6 @@
   --code-font-family: consolas, monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
-pre[class*='language-'] {
-  overflow-x: auto;
-
-  margin: 0.75em 0;
-  border-radius: var(--code-border-radius);
-
-  font-size: 1em;
-  font-family: var(--code-font-family);
-  line-height: var(--code-line-height);
-
-  code {
-    display: block;
-
-    box-sizing: border-box;
-    width: fit-content;
-    min-width: 100%;
-    padding: var(--code-padding-y) var(--code-padding-x);
-
-    background-color: transparent !important;
-
-    overflow-wrap: unset;
-
-    -webkit-font-smoothing: auto;
-    -moz-osx-font-smoothing: auto;
-  }
-}
-
 div[class*='language-'] {
   position: relative;
   border-radius: var(--code-border-radius);
@@ -52,9 +25,33 @@ div[class*='language-'] {
     font-size: 0.75rem;
   }
 
-  pre,
-  pre[class*='language-'] {
+  pre {
     position: relative;
     z-index: 1;
+
+    overflow-x: auto;
+
+    margin: 0.75em 0;
+    border-radius: var(--code-border-radius);
+
+    font-size: 1em;
+    font-family: var(--code-font-family);
+    line-height: var(--code-line-height);
+
+    code {
+      display: block;
+
+      box-sizing: border-box;
+      width: fit-content;
+      min-width: 100%;
+      padding: var(--code-padding-y) var(--code-padding-x);
+
+      background-color: transparent !important;
+
+      overflow-wrap: unset;
+
+      -webkit-font-smoothing: auto;
+      -moz-osx-font-smoothing: auto;
+    }
   }
 }
