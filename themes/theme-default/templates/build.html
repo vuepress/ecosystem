@@ -25,6 +25,7 @@
         window.matchMedia('(prefers-color-scheme: dark)').matches
       if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
         document.documentElement.classList.toggle('dark', true)
+        document.documentElement.setAttribute('data-theme', 'dark')
       }
     </script>
     <!--vuepress-ssr-head-->

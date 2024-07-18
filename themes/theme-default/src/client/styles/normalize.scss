@@ -26,7 +26,7 @@ a {
 code {
   background-color: var(--c-bg-light);
   color: var(--c-text-lighter);
-  font-family: var(--font-family-code);
+  font-family: var(--code-font-family);
   transition: background-color var(--t-color);
 
   p a & {

@@ -192,16 +192,6 @@ export default defineUserConfig({
 })
 ```
 
-:::: tip
-
-以下功能需要额外的样式才能正常工作，这应该由主题或用户来处理。
-
-::: details 查看样式示例
-@[code](@vuepress/theme-default/src/client/styles/content/code-notation.scss)
-:::
-
-::::
-
 ### notationDiff
 
 - 类型：`boolean`
