@@ -3,10 +3,10 @@
   --code-word-highlight-border: #636363;
 }
 
+// notation word highlight
+// - `// [\!code word:xxx]`
+// - `// [\!code word:xxx:3]`
 div[class*='language-'] {
-  // notation word highlight
-  // - `// [\!code word:xxx]`
-  // - `// [\!code word:xxx:3]`
   .highlighted-word {
     margin: -1px -2px;
     padding: 1px 2px;

@@ -1,5 +1,8 @@
 @use 'notation-highlight';
 
+// notation error level
+// - `// [\!code warning]`
+// - `// [\!code error]`
 :root {
   --code-hl-error-bg-color: rgb(244 63 94 / 16%);
   --code-hl-warning-bg-color: rgb(255 193 7 / 16%);
