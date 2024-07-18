@@ -333,7 +333,7 @@ ${codeFence}
         notationErrorLevel: true,
         notationFocus: true,
         notationHighlight: true,
-        notationWordHighLight: true,
+        notationWordHighlight: true,
       })
       expect(md.render(source)).toMatchSnapshot()
     })
