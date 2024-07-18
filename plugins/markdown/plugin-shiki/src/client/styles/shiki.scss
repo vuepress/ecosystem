@@ -10,7 +10,7 @@
 .shiki span {
   color: var(--shiki-light, inherit);
 
-  #vp-dark & {
+  [data-theme='dark'] & {
     color: var(--shiki-dark, inherit);
   }
 }
@@ -18,7 +18,7 @@
 div[data-highlighter='shiki'] {
   background-color: var(--shiki-light-bg, var(--code-bg-color));
 
-  #vp-dark & {
+  [data-theme='dark'] & {
     background-color: var(--shiki-dark-bg, var(--code-bg-color));
   }
 }
