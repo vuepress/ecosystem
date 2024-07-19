@@ -1,7 +1,3 @@
-:root {
-  --notice-width: 250px;
-}
-
 .notice-fade-enter-active,
 .notice-fade-leave-active {
   transition: opacity 0.5s;
@@ -101,7 +97,7 @@
   border: none;
   border-radius: 8px;
 
-  background-color: var(--notice-c-control-bg);
+  background-color: var(--notice-c-control);
   color: var(--notice-c-text);
 
   cursor: pointer;

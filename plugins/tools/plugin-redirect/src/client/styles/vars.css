@@ -5,6 +5,6 @@
   --redirect-c-accent: var(--vp-c-accent);
   --redirect-c-accent-hover: var(--vp-c-accent-hover);
   --redirect-c-accent-text: var(--vp-c-accent-text);
-  --redirect-c-control-bg: var(--vp-c-control-bg);
+  --redirect-c-control: var(--vp-c-control);
   --redirect-c-control-hover: var(--vp-c-control-hover);
 }

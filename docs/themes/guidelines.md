@@ -61,7 +61,7 @@ Accent color and brand colors which used for interactive components.
 ## Controls
 
 - `--vp-c-control-text`: Text color for focus state of interactive controls.
-- `--vp-c-control-bg`: Background color for interactive controls, such as buttons or checkboxes.
+- `--vp-c-control`: Background color for interactive controls, such as buttons or checkboxes.
 - `--vp-c-control-hover`: Background color for hover state of interactive controls.
 - `--vp-c-control-active`: Background color for active or focus state of interactive controls.
 - `--vp-c-control-disabled`: Color for disabled state of interactive controls.

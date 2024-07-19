@@ -1,11 +1,13 @@
 :root {
   --pwa-z-index: 10;
-  --pwa-c-text: #2c3e50;
-  --pwa-c-bg: #fff;
-  --pwa-c-border: #3eaf7c;
+  --pwa-c-bg: var(--vp-c-bg-elv);
+  --pwa-c-text: var(--vp-c-text);
   --pwa-c-shadow: rgb(0 0 0 / 15%);
-  --pwa-c-control-text: #fff;
-  --pwa-c-control-bg: #3eaf7c;
+  --pwa-c-accent: var(--vp-c-accent);
+  --pwa-c-accent-hover: var(--vp-c-accent-hover);
+  --pwa-c-accent-text: var(--vp-c-accent-text);
+  --pwa-c-control: #3eaf7c;
   --pwa-c-control-hover: #4abf8a;
+  --pwa-c-control-text: #fff;
   --pwa-content-light-color: #666;
 }

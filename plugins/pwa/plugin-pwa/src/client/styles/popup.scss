@@ -58,10 +58,10 @@
     margin-inline-start: 0.4rem;
     border-radius: 0.75rem;
 
-    background: var(--pwa-c-control-bg);
+    background: var(--pwa-c-accent);
 
     &:hover {
-      background: var(--pwa-c-control-hover);
+      background: var(--pwa-c-accent-hover);
     }
 
     svg {
@@ -69,7 +69,7 @@
       height: 1.2rem;
       margin: 0.15rem;
 
-      color: var(--pwa-c-control-text);
+      color: var(--pwa-c-accent-text);
 
       animation: rotate 3s ease infinite;
     }

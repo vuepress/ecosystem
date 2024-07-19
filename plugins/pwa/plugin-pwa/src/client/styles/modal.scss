@@ -40,8 +40,8 @@
   border-width: 0;
   border-radius: 1.2rem;
 
-  background: var(--pwa-c-control-bg);
-  color: var(--pwa-c-control-text);
+  background: var(--pwa-c-accent);
+  color: var(--pwa-c-accent-text);
   outline: none;
 
   font-weight: 600;
@@ -63,7 +63,7 @@
 
   &:hover,
   &:active {
-    background: var(--pwa-c-control-hover);
+    background: var(--pwa-c-accent-hover);
   }
 }
 
@@ -387,7 +387,6 @@
     min-width: 80px;
     margin: 0.5rem 1rem;
     padding: 0.5rem 1rem;
-    border: 2px solid var(--pwa-c-control-bg);
     border-radius: 20px;
 
     background: transparent;
@@ -399,30 +398,29 @@
   }
 
   .install-button {
-    background: var(--pwa-c-control-bg);
-    color: var(--pwa-c-bg);
+    background: var(--pwa-c-accent);
+    color: var(--pwa-c-accent-text);
     transition: color 0.3s;
-
-    @media (max-width: 419px) {
-      span {
-        display: none;
-      }
-    }
 
     &:hover,
     &:focus {
-      background: var(--pwa-c-control-hover);
+      background: var(--pwa-c-accent-hover);
+    }
+
+    span {
+      @media (max-width: 419px) {
+        display: none;
+      }
     }
   }
 
   .cancel-button {
-    background: transparent;
-    color: var(--pwa-c-control-bg);
+    background: var(--pwa-c-control);
+    color: var(--pwa-c-control-text);
 
     &:hover,
     &:focus {
       background: var(--pwa-c-control-hover);
-      color: var(--pwa-c-bg);
     }
   }
 

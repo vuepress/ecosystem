@@ -124,36 +124,6 @@
   --medium-zoom-bg-color: var(--vp-c-bg);
 }
 
-// plugin-notice
-.vp-notice-wrapper {
-  --notice-color: var(--vp-c-text);
-  --notice-bg-color: var(--vp-c-bg);
-  --notice-primary-color: var(--vp-c-accent);
-  --notice-primary-text-color: var(--vp-c-bg);
-  --notice-primary-hover-color: var(--vp-c-accent-hover);
-  --notice-button-color: var(--c-bg-light);
-  --notice-button-hover-color: var(--c-bg-lighter);
-}
-
-// plugin-nprogress
-#nprogress {
-  --nprogress-color: var(--vp-c-accent);
-}
-
-body {
-  // plugin-photo-swipe
-  --photo-swipe-bullet: var(--vp-c-bg);
-  --photo-swipe-bullet-active: var(--vp-c-accent);
-
-  // plugin-pwa-popup
-  --pwa-text-color: var(--vp-c-text);
-  --pwa-bg-color: var(--vp-c-bg);
-  --pwa-border-color: var(--vp-c-accent);
-  --pwa-btn-text-color: var(--vp-c-bg);
-  --pwa-btn-bg-color: var(--vp-c-accent);
-  --pwa-btn-hover-bg-color: var(--vp-c-accent-hover);
-}
-
 // plugin-search
 .search-box {
   --search-bg-color: var(--vp-c-bg);
