@@ -18,7 +18,7 @@
             --border-color: #eaecef;
             --border-color-dark: #cfd4db;
             --code-bg-color: #ecf4fa;
-            --code-color: #383a42;
+            --code-c-text: #383a42;
             --brand-color: #3eaf7c;
             --font-family-mono: consolas, monaco, "Andale Mono", "Ubuntu Mono", monospace;
 
@@ -33,7 +33,7 @@
               --border-color: #30363d;
               --border-color-dark: #394048;
               --code-bg-color: #282c34;
-              --code-color: #abb2bf;
+              --code-c-text: #abb2bf;
             }
           }
 
@@ -85,7 +85,7 @@
             border-radius: 6px;
 
             background: var(--code-bg-color);
-            color: var(--code-color);
+            color: var(--code-c-text);
 
             direction: ltr;
           }

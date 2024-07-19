@@ -1,9 +1,9 @@
 @use 'sass:color';
 
-@mixin color($code-color, $code-bg-color) {
+@mixin color($code-text-color, $code-bg-color) {
   // base
-  --code-color: #{$code-color};
-  --code-bg-color: #{$code-bg-color};
+  --code-c-text: #{$code-text-color};
+  --code-c-bg: #{$code-bg-color};
 
   // highlight
   --code-highlight-bg-color: #{color.scale(
@@ -13,5 +13,5 @@
     )};
 
   // line-number
-  --code-line-number-color: #{color.scale($code-color, $alpha: -33%)};
+  --code-line-number-color: #{color.scale($code-text-color, $alpha: -33%)};
 }
