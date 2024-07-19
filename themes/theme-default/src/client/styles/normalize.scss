@@ -1,8 +1,8 @@
 html,
 body {
   background-color: var(--vp-c-bg);
-  transition: background-color var(--t-color);
   accent-color: var(--vp-c-accent);
+  transition: background-color var(--t-color);
 }
 
 [data-theme='dark'] {
