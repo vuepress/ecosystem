@@ -40,7 +40,7 @@
   }
 
   &.warning {
-    --external-link-icon-color: var(--c-warning-text-quote);
+    --external-link-c-icon: var(--c-warning-text-quote);
 
     border-color: var(--c-warning);
     background-color: var(--c-warning-bg);
@@ -74,7 +74,7 @@
   }
 
   &.danger {
-    --external-link-icon-color: var(--c-danger-text-quote);
+    --external-link-c-icon: var(--c-danger-text-quote);
 
     border-color: var(--c-danger);
     background-color: var(--c-danger-bg);
