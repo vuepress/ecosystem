@@ -22,7 +22,7 @@ export const highlightPlugin = (
     notationErrorLevel: enabledErrorLevel,
     notationFocus: enabledFocus,
     notationHighlight: enabledHighlight,
-    notationWordHighLight: enabledWordHighlight,
+    notationWordHighlight: enabledWordHighlight,
     whitespace: whitespacePosition = false,
   }: HighlightOptions = {},
 ): void => {
