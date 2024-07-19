@@ -1,4 +1,8 @@
 :root {
   --catalog-c-border: #e5e5e5;
+  --catalog-c-bg-elv: var(--vp-c-bg-elv);
+  --catalog-c-accent: var(--vp-c-accent);
+  --catalog-c-accent-hover: var(--vp-c-accent-hover);
+  --catalog-c-accent-text: var(--vp-c-accent-text);
   --catalog-header-offset: var(--navbar-height, 3.6rem);
 }
