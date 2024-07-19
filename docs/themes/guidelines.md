@@ -46,7 +46,8 @@ Accent color and brand colors which used for interactive components.
 
 - `--vp-c-accent`: The most solid color used mainly for colored text. It must satisfy the contrast ratio against when used on top of `--vp-c-accent-soft`.
 - `--vp-c-accent-hover`: Color used for hover state.
-- `--vp-c-accent-bg`: Color used for solid background. It must satisfy the contrast ratio with pure white (#ffffff) text on top of it.
+- `--vp-c-accent-bg`: Color used for solid background. It must satisfy the contrast ratio with `--vp-c-accent-text` on top of it.
+- `--vp-c-accent-text`: Color used for text with `--vp-c-accent-bg` background. It must satisfy the contrast ratio with `--vp-c-accent-bg`.
 - `--vp-c-accent-soft`: The color used for subtle background such as custom container or badges. It must satisfy the contrast ratio when putting `--vp-c-accent` colors on top of it.
 
   The soft color must be semi transparent alpha channel. This is crucial because it allows adding multiple "soft" colors on top of each other to create a accent, such as when having inline code block inside custom containers.
