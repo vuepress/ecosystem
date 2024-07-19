@@ -19,7 +19,10 @@ themeFiles.forEach((file) => {
 @use 'themes/${filename}';
 
 :root {
-  @include mixins.color($code-text-color: ${filename}.$code-text-color, $code-bg-color: ${filename}.$code-bg-color);
+  @include mixins.color(
+    $code-text-color: ${filename}.$code-text-color,
+    $code-bg-color: ${filename}.$code-bg-color
+  );
 }
 
 @include ${filename}.style;
@@ -30,7 +33,10 @@ themeFiles.forEach((file) => {
 @use 'themes/${filename}';
 
 [data-theme='light'] {
-  @include mixins.color($code-text-color: ${filename}.$code-text-color, $code-bg-color: ${filename}.$code-bg-color);
+  @include mixins.color(
+    $code-text-color: ${filename}.$code-text-color,
+    $code-bg-color: ${filename}.$code-bg-color
+  );
   @include ${filename}.style;
 }
 `
@@ -40,7 +46,10 @@ themeFiles.forEach((file) => {
 @use 'themes/${filename}';
 
 [data-theme='dark'] {
-  @include mixins.color($code-text-color: ${filename}.$code-text-color, $code-bg-color: ${filename}.$code-bg-color);
+  @include mixins.color(
+    $code-text-color: ${filename}.$code-text-color,
+    $code-bg-color: ${filename}.$code-bg-color
+  );
   @include ${filename}.style;
 }
 `
