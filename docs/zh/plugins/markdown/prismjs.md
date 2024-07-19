@@ -28,19 +28,68 @@ export default {
 
 ## 配置项
 
-### preloadLanguages
+### theme
 
-- 类型： `string[]`
+- 类型：`PrismjsTheme`
 
-- 默认值： `['markdown', 'jsdoc', 'yaml']`
+- 默认值：`'nord'`
+
+- 详情：Prismjs 的主题。该主题会应用到代码块上。
+
+### themes
+
+- 类型：`{ light: PrismjsTheme; dark: PrismjsTheme }`
 
 - 详情：
 
-  需要预加载的语言。
+  使用暗黑和明亮模式双主题。
 
-  默认情况下，语言会在解析 Markdown 文件时按需加载。
+  注意：想使用这个功能，你的主题必须在夜间模式下在 `<html>` 标签上 `data-theme="dark"` 属性。
 
-  然而， Prism.js 在动态加载语言时可能会遇到 [一些潜在的问题](https://github.com/PrismJS/prism/issues/2716) 。为了避免这些问题，你可以使用该配置项来预加载一些语言。
+::: tip 可用的 Prism.js 浅色主题
+
+- ateliersulphurpool-light
+- coldark-cold
+- coy
+- duotone-light
+- ghcolors
+- gruvbox-light
+- material-light
+- one-light
+- vs
+
+:::
+
+::: tip 可用的 Prism.js 深色主题
+
+- atom-dark
+- cb
+- coldark-dark
+- dark
+- dracula
+- duotone-dark
+- duotone-earth
+- duotone-forest
+- duotone-sea
+- duotone-space
+- gruvbox-dark
+- holi
+- hopscotch
+- lucario
+- material-dark
+- material-oceanic
+- night-owl
+- nord
+- one-dark
+- pojoaque
+- shades-of-purple
+- solarized-dark-atom
+- tomorrow
+- vsc-dark-plus
+- xonokai
+- z-touch
+
+:::
 
 ### lineNumbers
 
@@ -145,18 +194,12 @@ export default defineUserConfig({
 })
 ```
 
-:::: tip
+::: tip
 
 在新的版本中，实现了类似于 [shiki](https://shiki.style/packages/transformers) 的部分功能，
 你可以使用与其相同的语法来为代码块添加样式。
 
-以下功能需要额外的样式才能正常工作，这应该由主题或用户来处理。
-
-::: details 查看样式示例
-@[code](@vuepress/theme-default/src/client/styles/content/code-notation.scss)
 :::
-
-::::
 
 ### notationDiff
 
@@ -426,6 +469,20 @@ export default defineUserConfig({
 
 - 参考：
   - [Shiki > 空白符渲染](https://shiki.tmrs.site/packages/transformers#transformerrenderwhitespace)
+
+### preloadLanguages
+
+- 类型： `string[]`
+
+- 默认值： `['markdown', 'jsdoc', 'yaml']`
+
+- 详情：
+
+  需要预加载的语言。
+
+  默认情况下，语言会在解析 Markdown 文件时按需加载。
+
+  然而， Prism.js 在动态加载语言时可能会遇到 [一些潜在的问题](https://github.com/PrismJS/prism/issues/2716) 。为了避免这些问题，你可以使用该配置项来预加载一些语言。
 
 ### preWrapper
 

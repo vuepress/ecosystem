@@ -28,19 +28,68 @@ export default {
 
 ## Options
 
-### preloadLanguages
+### theme
 
-- Type: `string[]`
+- Type: `PrismjsTheme`
 
-- Default: `['markdown', 'jsdoc', 'yaml']`
+- Default: `'nord'`
+
+- Details: Theme of Prismjs, will be applied to code blocks.
+
+### themes
+
+- Type: `{ light: PrismjsTheme; dark: PrismjsTheme }`
 
 - Details:
 
-  Languages to preload.
+  Apply Light / Dark Dual themes.
 
-  By default, languages will be loaded on demand when parsing markdown files.
+  Note: To use this, your theme must set `data-theme="dark"` attribute on the `<html>` tag when dark mode is enabled.
 
-  However, Prism.js has [some potential issues](https://github.com/PrismJS/prism/issues/2716) about loading languages dynamically. To avoid them, you can preload languages via this option.
+::: tip Available Prism.js Light themes
+
+- ateliersulphurpool-light
+- coldark-cold
+- coy
+- duotone-light
+- ghcolors
+- gruvbox-light
+- material-light
+- one-light
+- vs
+
+:::
+
+::: tip Available Prism.js Dark themes
+
+- atom-dark
+- cb
+- coldark-dark
+- dark
+- dracula
+- duotone-dark
+- duotone-earth
+- duotone-forest
+- duotone-sea
+- duotone-space
+- gruvbox-dark
+- holi
+- hopscotch
+- lucario
+- material-dark
+- material-oceanic
+- night-owl
+- nord
+- one-dark
+- pojoaque
+- shades-of-purple
+- solarized-dark-atom
+- tomorrow
+- vsc-dark-plus
+- xonokai
+- z-touch
+
+:::
 
 ### lineNumbers
 
@@ -145,17 +194,11 @@ export default defineUserConfig({
 })
 ```
 
-:::: tip
+::: tip
 
 In the new version, some functionalities similar to [shiki](https://shiki.style/packages/transformers) have been implemented, allowing you to style code blocks using the same syntax.
 
-The following features requires additional style to work, which should be handled by themes or users.
-
-::: details View Styles Example
-@[code](@vuepress/theme-default/src/client/styles/content/code-notation.scss)
 :::
-
-::::
 
 ### notationDiff
 
@@ -425,6 +468,20 @@ The following features requires additional style to work, which should be handle
 
 - Also see：
   - [Shiki > Render Whitespace](https://shiki.style/packages/transformers#transformerrenderwhitespace)
+
+### preloadLanguages
+
+- Type: `string[]`
+
+- Default: `['markdown', 'jsdoc', 'yaml']`
+
+- Details:
+
+  Languages to preload.
+
+  By default, languages will be loaded on demand when parsing markdown files.
+
+  However, Prism.js has [some potential issues](https://github.com/PrismJS/prism/issues/2716) about loading languages dynamically. To avoid them, you can preload languages via this option.
 
 ### preWrapper
 
