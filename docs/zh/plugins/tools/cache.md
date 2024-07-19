@@ -13,7 +13,11 @@
 npm i -D @vuepress/plugin-cache@next
 ```
 
+::: tip 作为最后一个插件使用
+
 建议将 `cachePlugin` 放在 `plugins` 配置项中的最后一项，这能够确保缓存最大化的使用。
+
+:::
 
 ```ts
 import { cachePlugin } from '@vuepress/plugin-cache'
@@ -21,6 +25,8 @@ import { cachePlugin } from '@vuepress/plugin-cache'
 export default {
   plugins: [
     // ... 其它插件
+
+    // 作为最后一个插件使用
     cachePlugin({
       // 配置项
     }),

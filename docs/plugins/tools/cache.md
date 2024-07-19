@@ -12,7 +12,11 @@ By caching the `markdown render` during the initial startup of the VuePress deve
 npm i -D @vuepress/plugin-cache@next
 ```
 
+::: tip Using it as last plugin
+
 It is recommended to place `cachePlugin` as the last item in the `plugins` configuration, as this can ensure maximum utilization of caching.
+
+:::
 
 ```ts
 import { cachePlugin } from '@vuepress/plugin-cache'
@@ -20,6 +24,8 @@ import { cachePlugin } from '@vuepress/plugin-cache'
 export default {
   plugins: [
     // ... other plugins
+
+    // using as the last plugin
     cachePlugin({
       // options
     }),
