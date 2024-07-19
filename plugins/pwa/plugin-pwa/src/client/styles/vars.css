@@ -4,8 +4,8 @@
   --pwa-c-bg: #fff;
   --pwa-c-border: #3eaf7c;
   --pwa-c-shadow: rgb(0 0 0 / 15%);
-  --pwa-button-c-text: #fff;
-  --pwa-button-c-bg: #3eaf7c;
-  --pwa-button-c-bg-hover: #4abf8a;
+  --pwa-c-control-text: #fff;
+  --pwa-c-control-bg: #3eaf7c;
+  --pwa-c-control-hover: #4abf8a;
   --pwa-content-light-color: #666;
 }

@@ -47,13 +47,13 @@
   border: none;
   border-radius: 8px;
 
-  background-color: var(--redirect-c-bg-lighter);
+  background-color: var(--redirect-c-control-bg);
   color: inherit;
 
   cursor: pointer;
 
   &:hover {
-    background-color: var(--redirect-c-bg-light);
+    background-color: var(--redirect-c-control-hover);
   }
 
   &.primary {

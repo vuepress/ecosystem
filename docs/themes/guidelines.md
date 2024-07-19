@@ -56,3 +56,11 @@ Accent color and brand colors which used for interactive components.
 - `--vp-c-border`: Border color for interactive components. For example this should be used for a button outline.
 - `--vp-c-divider`: Color for separators, used to divide sections within the same components, such as having separator on "h2" heading.
 - `--vp-c-gutter`: Colors for gutter, used to divide components in the page. For example the header and the lest of the page.
+
+## Controls
+
+- `--vp-c-control-text`: Text color for focus state of interactive controls.
+- `--vp-c-control-bg`: Background color for interactive controls, such as buttons or checkboxes.
+- `--vp-c-control-hover`: Background color for hover state of interactive controls.
+- `--vp-c-control-active`: Background color for active or focus state of interactive controls.
+- `--vp-c-control-disabled`: Color for disabled state of interactive controls.

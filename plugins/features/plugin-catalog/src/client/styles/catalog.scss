@@ -158,7 +158,7 @@
   padding: 4px 8px;
   border-radius: 6px;
 
-  background-color: var(--catalog-c-bg-alt);
+  background-color: var(--catalog-c-control-bg);
 
   line-height: 1.5;
   overflow-wrap: break-word;
@@ -168,8 +168,8 @@
     color 0.3s;
 
   &:hover {
-    background-color: var(--catalog-c-accent-hover);
-    color: var(--catalog-c-accent-text);
+    background-color: var(--catalog-c-control-hover);
+    color: var(--catalog-c-accent);
     text-decoration: none !important;
   }
 }
