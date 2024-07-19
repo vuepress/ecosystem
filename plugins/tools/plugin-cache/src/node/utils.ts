@@ -23,6 +23,8 @@ export const writeFile = async <T = any>(
   data: T,
 ): Promise<void> => await fs.writeJSON(filepath, data, 'utf-8')
 
+const FALLBACK_SPEED = 0.15
+
 export const checkIOSpeed = (cwd = process.cwd()): number => {
   try {
     const tmp = path.join(cwd, 'tmp')
@@ -33,6 +35,6 @@ export const checkIOSpeed = (cwd = process.cwd()): number => {
     fs.unlinkSync(tmp)
     return end - start
   } catch {
-    return 0.15
+    return FALLBACK_SPEED
   }
 }
