@@ -31,10 +31,8 @@ const homeText = themeLocale.value.backToHome ?? 'Back to home'
   max-width: 740px;
   margin: 0 auto;
   padding: 2rem 2.5rem;
-}
 
-@media (max-width: 959px) {
-  .vp-theme-container {
+  @media (max-width: 959px) {
     padding: 2rem;
   }
 }
