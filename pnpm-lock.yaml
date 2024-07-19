@@ -649,6 +649,9 @@ importers:
 
   plugins/markdown/plugin-prismjs:
     dependencies:
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../../tools/helper
       '@vuepress/highlighter-helper':
         specifier: workspace:*
         version: link:../../../tools/highlighter-helper

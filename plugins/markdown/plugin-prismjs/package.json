@@ -23,6 +23,7 @@
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
+    "./styles/*": "./lib/client/styles/*",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
@@ -32,9 +33,11 @@
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
-    "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
+    "style": "tsx scripts/generateThemeFiles.ts"
   },
   "dependencies": {
+    "@vuepress/helper": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
     "prismjs": "^1.29.0"
   },

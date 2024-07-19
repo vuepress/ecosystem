@@ -1,0 +1,19 @@
+@use 'notation-highlight';
+
+// notation error level
+// - `// [\!code warning]`
+// - `// [\!code error]`
+:root {
+  --code-highlight-error-bg-color: rgb(244 63 94 / 16%);
+  --code-highlight-warning-bg-color: rgb(255 193 7 / 16%);
+}
+
+div[class*='language-'] .line.highlighted {
+  &.error {
+    background-color: var(--code-highlight-error-bg-color);
+  }
+
+  &.warning {
+    background-color: var(--code-highlight-warning-bg-color);
+  }
+}

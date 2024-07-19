@@ -190,16 +190,6 @@ export default defineUserConfig({
 })
 ```
 
-:::: tip
-
-The following features requires additional style to work, which should be handled by themes or users.
-
-::: details View Styles Example
-@[code](@vuepress/theme-default/src/client/styles/content/code-notation.scss)
-:::
-
-::::
-
 ### notationDiff
 
 - Type: `boolean`

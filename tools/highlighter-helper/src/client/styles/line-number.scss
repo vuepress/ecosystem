@@ -1,0 +1,64 @@
+:root {
+  // line number
+  --code-line-number-width: 3.5rem;
+}
+
+div[class*='language-'] {
+  &:not(.line-numbers-mode) {
+    .line-numbers {
+      display: none;
+    }
+  }
+
+  &.line-numbers-mode {
+    &::after {
+      content: '';
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: var(--code-line-number-width);
+      height: 100%;
+      border-right: 1px solid var(--code-highlight-bg-color);
+      border-radius: var(--code-border-radius) 0 0 var(--code-border-radius);
+    }
+
+    pre {
+      vertical-align: middle;
+      margin-left: var(--code-line-number-width);
+    }
+
+    code {
+      padding-left: 1rem;
+    }
+
+    .line-numbers {
+      counter-reset: line-number;
+
+      position: absolute;
+      top: 0;
+
+      width: var(--code-line-number-width);
+      padding-top: var(--code-padding-y);
+
+      color: var(--code-line-number-color, --code-c-text);
+
+      font-size: 0.875em;
+      line-height: var(--code-line-height);
+      text-align: center;
+    }
+
+    .line-number {
+      position: relative;
+      z-index: 3;
+      font-family: var(--code-font-family);
+      user-select: none;
+
+      &::before {
+        content: counter(line-number);
+        counter-increment: line-number;
+      }
+    }
+  }
+}
