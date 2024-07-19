@@ -98,7 +98,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: ['18', '20', '22']
+        # FIXME: https://github.com/nodejs/node/pull/53934
+        node: ['18', '20', '22.4.1']
         bundler: ['vite', 'webpack']
 
     runs-on: ubuntu-latest
