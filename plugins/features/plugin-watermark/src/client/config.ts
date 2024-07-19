@@ -1,7 +1,6 @@
 import { isPlainObject } from '@vuepress/helper/client'
 import { computed } from 'vue'
 import { defineClientConfig, usePageFrontmatter } from 'vuepress/client'
-import type { ClientConfig } from 'vuepress/client'
 import type { WatermarkPluginFrontmatter } from '../shared/options.js'
 import { setupWatermark } from './composables/index.js'
 import { injectWatermarkConfig, useWatermarkOptions } from './helper/index.js'
@@ -35,4 +34,4 @@ export default defineClientConfig({
 
     setupWatermark(watermarkOptions, enabled, __WM_DELAY__)
   },
-}) as ClientConfig
+})

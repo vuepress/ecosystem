@@ -68,7 +68,7 @@ export const useNavbarSelectLanguage = (): ComputedRef<NavbarItem[]> => {
           // try to keep current hash and params across languages
           link: routePaths.value.some((item) => item === targetLocalePage)
             ? currentFullPath.replace(currentPath, targetLocalePage)
-            : targetThemeLocale.home ?? targetLocalePath,
+            : (targetThemeLocale.home ?? targetLocalePath),
         }
       }),
     }

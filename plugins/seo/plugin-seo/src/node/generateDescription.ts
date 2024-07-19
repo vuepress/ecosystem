@@ -10,7 +10,7 @@ export const generateDescription = (
   // generate description
   if (!page.frontmatter.description && autoDescription) {
     const content = getPageExcerptContent(page.content)
-      ? page.data.excerpt ?? page.contentRendered
+      ? (page.data.excerpt ?? page.contentRendered)
       : page.contentRendered
 
     const pageText = getText(content, app.options.base, {

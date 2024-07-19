@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.39](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.38...v2.0.0-rc.39) (2024-07-19)
+
+### Bug Fixes
+
+- **plugin-prismjs:** fix scss variable ([f9dcfcf](https://github.com/vuepress/ecosystem/commit/f9dcfcf90fc85974fb86ba70409ca8be8d9da941))
+- **plugin-prismjs:** unify word highlight option name ([6b48402](https://github.com/vuepress/ecosystem/commit/6b48402a3ec501238e4f77a6db186298a8791185))
+
+### Features
+
+- make styles built-in for highlighter plugins ([#217](https://github.com/vuepress/ecosystem/issues/217)) ([25e1ea2](https://github.com/vuepress/ecosystem/commit/25e1ea2c755bb7858b397a93982d6b92ec8d18c5))
+
+# [2.0.0-rc.37](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.36...v2.0.0-rc.37) (2024-06-21)
+
+**Note:** Version bump only for package @vuepress/plugin-prismjs
+
+# [2.0.0-rc.36](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.35...v2.0.0-rc.36) (2024-06-18)
+
+### Features
+
+- add support for highlight whitespace ([#204](https://github.com/vuepress/ecosystem/issues/204)) ([b91d04e](https://github.com/vuepress/ecosystem/commit/b91d04e5cc44adcff7405f2cdc14c4b9a6d9834d))
+- add support for word highlight ([#201](https://github.com/vuepress/ecosystem/issues/201)) ([6f37277](https://github.com/vuepress/ecosystem/commit/6f372774488f79e8570e1d8b4b1e26a5744be807))
+
 # [2.0.0-rc.34](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.33...v2.0.0-rc.34) (2024-06-04)
 
 ### Features

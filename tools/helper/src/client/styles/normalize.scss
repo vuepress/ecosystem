@@ -1,7 +1,5 @@
 html,
 body {
-  margin: 0;
-  padding: 0;
   background: #fff;
 }
 
@@ -21,7 +19,12 @@ html {
 
 body {
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
+
   color: #2c3e50;
+
+  font-synthesis: style;
 }
 
 a {
@@ -48,14 +51,16 @@ kbd {
 }
 
 code {
-  margin: 0;
-  padding: 3px 6px;
-  border-radius: 4px;
+  :not(pre) > & {
+    margin: 0;
+    padding: 3px 6px;
+    border-radius: 4px;
 
-  background: rgb(127 127 127 / 12%);
+    background: rgb(127 127 127 / 12%);
 
-  font-size: 0.875em;
-  overflow-wrap: break-word;
+    font-size: 0.875em;
+    overflow-wrap: break-word;
+  }
 
   table & {
     padding: 0.1rem 0.4rem;
@@ -201,6 +206,7 @@ td {
 
 pre {
   text-align: left;
+  direction: ltr;
   white-space: pre;
   word-spacing: normal;
   word-wrap: normal;
@@ -208,8 +214,6 @@ pre {
   overflow-wrap: unset;
   tab-size: 4;
   hyphens: none;
-
-  direction: ltr;
 
   @media print {
     white-space: pre-wrap;
@@ -289,5 +293,22 @@ pre {
   tr,
   canvas {
     page-break-inside: avoid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    background-attachment: initial !important;
+
+    scroll-behavior: auto !important;
+
+    transition-delay: 0s !important;
+    transition-duration: 0s !important;
+
+    animation-duration: 1ms !important;
+    animation-delay: -1ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

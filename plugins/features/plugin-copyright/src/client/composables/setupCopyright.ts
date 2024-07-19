@@ -56,13 +56,14 @@ export const setupCopyright = (): void => {
 
   const disableSelection = computed(() =>
     enabled.value
-      ? copyOptions.value?.disableSelection ?? copyrightOptions.disableSelection
+      ? (copyOptions.value?.disableSelection ??
+        copyrightOptions.disableSelection)
       : false,
   )
 
   const maxLength = computed(() =>
     enabled.value
-      ? copyOptions.value?.maxLength ?? copyrightOptions.maxLength
+      ? (copyOptions.value?.maxLength ?? copyrightOptions.maxLength)
       : 0,
   )
 

@@ -3,6 +3,7 @@ import { footnote } from '@mdit/plugin-footnote'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { getRealPath } from '@vuepress/helper'
+import { cachePlugin } from '@vuepress/plugin-cache'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { commentPlugin } from '@vuepress/plugin-comment'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
@@ -105,13 +106,18 @@ export default defineUserConfig({
     isProd
       ? shikiPlugin({
           langs: ['bash', 'diff', 'json', 'md', 'ts', 'vue'],
-          theme: 'dark-plus',
+          themes: {
+            light: 'one-light',
+            dark: 'one-dark-pro',
+          },
           lineNumbers: 10,
           notationDiff: true,
           notationErrorLevel: true,
           notationFocus: true,
           notationHighlight: true,
+          notationWordHighlight: true,
         })
       : [],
+    cachePlugin(),
   ],
 }) as UserConfig

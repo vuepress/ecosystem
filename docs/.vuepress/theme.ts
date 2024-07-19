@@ -73,6 +73,12 @@ export default defaultTheme({
           notationErrorLevel: true,
           notationFocus: true,
           notationHighlight: true,
+          notationWordHighlight: true,
+          whitespace: true,
+          themes: {
+            light: 'one-light',
+            dark: 'one-dark',
+          },
         },
   },
 }) as Theme

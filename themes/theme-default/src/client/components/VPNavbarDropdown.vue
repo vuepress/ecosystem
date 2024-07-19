@@ -153,6 +153,7 @@ watch(
     display: none;
 
     overflow-y: auto;
+
     box-sizing: border-box;
 
     // Avoid height shake by clicking

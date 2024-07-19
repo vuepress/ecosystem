@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from 'node:fs'
 import { createRequire } from 'node:module'
 import { dirname, join } from 'node:path'
-import inquirer from 'inquirer'
+import { confirm } from '@inquirer/prompts'
 import type { CreateLocaleOptions, Lang } from '../i18n/index.js'
 import type { PackageManager } from '../utils/index.js'
 import { copy, ensureDirExistSync } from '../utils/index.js'
@@ -18,13 +18,13 @@ const getWorkflowContent = (
   lang: Lang,
 ): string =>
   `
-name: ${lang === '简体中文' ? '部署文档' : 'Deploy Docs'}
+name: ${lang === 'zh' ? '部署文档' : 'Deploy Docs'}
 
 on:
   push:
     branches:
       # ${
-        lang === '简体中文'
+        lang === 'zh'
           ? '确保这是你正在使用的分支名称'
           : 'make sure this is the branch you are using'
       }
@@ -42,7 +42,7 @@ jobs:
         with:
           fetch-depth: 0
           # ${
-            lang === '简体中文'
+            lang === 'zh'
               ? '如果你文档需要 Git 子模块，取消注释下一行'
               : 'if your docs needs submodules, uncomment the following line'
           }
@@ -51,7 +51,7 @@ jobs:
 ${
   packageManager === 'pnpm'
     ? `\
-      - name: ${lang === '简体中文' ? '安装 pnpm' : 'Install pnpm'}
+      - name: ${lang === 'zh' ? '安装 pnpm' : 'Install pnpm'}
         uses: pnpm/action-setup@v4
         with:
           run_install: true
@@ -60,7 +60,7 @@ ${
     : ''
 }
 
-      - name: ${lang === '简体中文' ? '设置 Node.js' : 'Setup Node.js'}
+      - name: ${lang === 'zh' ? '设置 Node.js' : 'Setup Node.js'}
         uses: actions/setup-node@v3
         with:
           node-version: 20
@@ -69,7 +69,7 @@ ${
 ${
   packageManager !== 'pnpm'
     ? `\
-      - name: ${lang === '简体中文' ? '安装依赖' : 'Install Deps'}
+      - name: ${lang === 'zh' ? '安装依赖' : 'Install Deps'}
         run: ${
           packageManager === 'npm'
             ? 'npm ci'
@@ -78,18 +78,18 @@ ${
 `
     : ''
 }
-      - name: ${lang === '简体中文' ? '构建文档' : 'Build Docs'}
+      - name: ${lang === 'zh' ? '构建文档' : 'Build Docs'}
         env:
           NODE_OPTIONS: --max_old_space_size=8192
         run: |-
           ${packageManager} run docs:build
           > docs/.vuepress/dist/.nojekyll
 
-      - name: ${lang === '简体中文' ? '部署文档' : 'Deploy Docs'}
+      - name: ${lang === 'zh' ? '部署文档' : 'Deploy Docs'}
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           # ${
-            lang === '简体中文'
+            lang === 'zh'
               ? '这是文档部署到的分支名称'
               : 'This is the branch where the docs are deployed to'
           }
@@ -114,16 +114,10 @@ export const generateTemplate = async ({
   preset,
   bundler,
 }: GenerateTemplateOptions): Promise<void> => {
-  const { workflow } = await inquirer.prompt<{
-    workflow: boolean
-  }>([
-    {
-      name: 'workflow',
-      type: 'confirm',
-      message: locale.question.workflow,
-      default: true,
-    },
-  ])
+  const enableWorkflow = await confirm({
+    message: locale.question.workflow,
+    default: true,
+  })
 
   console.log(locale.flow.generateTemplate)
 
@@ -145,7 +139,7 @@ export const generateTemplate = async ({
     { encoding: 'utf-8' },
   )
 
-  if (workflow) {
+  if (enableWorkflow) {
     const workflowDir = join(targetDirPath, '.github/workflows')
 
     ensureDirExistSync(workflowDir)

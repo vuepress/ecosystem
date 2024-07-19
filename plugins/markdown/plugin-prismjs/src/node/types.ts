@@ -1,3 +1,5 @@
+import type { WhitespacePosition } from '@vuepress/highlighter-helper'
+
 export interface PreWrapperOptions {
   /**
    * Wrap the `<pre>` tag with an extra `<div>` or not. Do not disable it unless you
@@ -64,4 +66,31 @@ export interface HighlightOptions {
    * @see https://shiki.style/packages/transformers#transformernotationerrorlevel
    */
   notationErrorLevel?: boolean
+
+  /**
+   * Enable notation word highlight
+   *
+   * @default false
+   *
+   * @see https://shiki.style/packages/transformers#transformernotationwordhighlight
+   */
+  notationWordHighlight?: boolean
+
+  /**
+   * Enable render whitespace
+   * - true: enable render whitespace, same of `all`
+   * - false: disable render whitespace
+   * - 'all': render all whitespace
+   * - 'boundary': render leading and trailing whitespace of each line.
+   * - 'trailing': render trailing whitespace of each line
+   *
+   * you are able to use `:whitespace` or `:no-whitespace` or `:whitespace=position` to set single code block
+   *
+   * position: 'all' | 'boundary' | 'trailing'
+   *
+   * @default false
+   *
+   * @see https://shiki.style/packages/transformers#transformerrenderwhitespace
+   */
+  whitespace?: boolean | WhitespacePosition
 }

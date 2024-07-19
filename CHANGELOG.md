@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.39](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.38...v2.0.0-rc.39) (2024-07-19)
+
+### Bug Fixes
+
+- **highlighter-helper:** fix code block style ([4db9133](https://github.com/vuepress/ecosystem/commit/4db9133ffcbf9a2a2033616333785aeaaedccddc))
+- **plugin-docsearch:** fix base issue ([7e56412](https://github.com/vuepress/ecosystem/commit/7e56412a1b21bb3974668230496708a5bd6d71fe))
+- **plugin-prismjs:** fix scss variable ([f9dcfcf](https://github.com/vuepress/ecosystem/commit/f9dcfcf90fc85974fb86ba70409ca8be8d9da941))
+- **plugin-prismjs:** unify word highlight option name ([6b48402](https://github.com/vuepress/ecosystem/commit/6b48402a3ec501238e4f77a6db186298a8791185))
+- **theme-default:** fix code highlight color ([c9a5fc2](https://github.com/vuepress/ecosystem/commit/c9a5fc20f505ad90fcef33a2d316534e1267feff))
+- **theme-default:** hide mixed-decls warnings for vite ([37211b2](https://github.com/vuepress/ecosystem/commit/37211b2892bf90f96d9a258de9722e91a15c4679))
+
+### Features
+
+- add cache plugin ([#209](https://github.com/vuepress/ecosystem/issues/209)) ([7e04cee](https://github.com/vuepress/ecosystem/commit/7e04cee1cdfd5d797fc74cb3fe2595b4851894b3))
+- **helper:** improve body normalize ([adfa670](https://github.com/vuepress/ecosystem/commit/adfa6707c64a7c8f81a2706d51927ddf36e14d27))
+- **helper:** improve normalize with motion reduce ([29058bc](https://github.com/vuepress/ecosystem/commit/29058bc9471700f590753a553135a5288833fac8))
+- make styles built-in for highlighter plugins ([#217](https://github.com/vuepress/ecosystem/issues/217)) ([25e1ea2](https://github.com/vuepress/ecosystem/commit/25e1ea2c755bb7858b397a93982d6b92ec8d18c5))
+
+# [2.0.0-rc.38](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.37...v2.0.0-rc.38) (2024-07-13)
+
+### Bug Fixes
+
+- **theme-default:** disable sass deprecations for webpack ([28e1110](https://github.com/vuepress/ecosystem/commit/28e1110066bbafe568d3b9cc09098cbb158c210d))
+- **theme-default:** fix incorrect 404 page layout, close [#207](https://github.com/vuepress/ecosystem/issues/207) ([#213](https://github.com/vuepress/ecosystem/issues/213)) ([c7c9a72](https://github.com/vuepress/ecosystem/commit/c7c9a72e65a3f492a9d799836695ce2173a1566b))
+- **theme-default:** fix incorrect code notation diff layout, close [#212](https://github.com/vuepress/ecosystem/issues/212) ([#214](https://github.com/vuepress/ecosystem/issues/214)) ([983ad4a](https://github.com/vuepress/ecosystem/commit/983ad4aa04e47131cee4d898a939a2af880b2050))
+
+### Features
+
+- **create-vuepress:** use @inquirer/prompts ([984b53a](https://github.com/vuepress/ecosystem/commit/984b53ab97bd5936f09f488a97dc79f590a45fde))
+- **plugin-shiki:** rename `getHighlighter` to `createHighlighter` ([#208](https://github.com/vuepress/ecosystem/issues/208)) ([bb739df](https://github.com/vuepress/ecosystem/commit/bb739dfa0893bc8a46d9e40000f43eef28be856b))
+
+### Performance Improvements
+
+- **plugin-shiki:** improve logging when language is not available ([#215](https://github.com/vuepress/ecosystem/issues/215)) ([b84ce08](https://github.com/vuepress/ecosystem/commit/b84ce08df9c72dc56fabb8790afc192bc45abfda))
+
+# [2.0.0-rc.37](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.36...v2.0.0-rc.37) (2024-06-21)
+
+**Note:** Version bump only for package @vuepress/ecosystem
+
+# [2.0.0-rc.36](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.35...v2.0.0-rc.36) (2024-06-18)
+
+### Bug Fixes
+
+- **theme-default:** fix transition for `<kbd>`, `<hr>` and `<blockquote>`, close [#203](https://github.com/vuepress/ecosystem/issues/203) ([#205](https://github.com/vuepress/ecosystem/issues/205)) ([69a07dc](https://github.com/vuepress/ecosystem/commit/69a07dcc445e3e555c52fb7852cb3270cd383702))
+- **theme-default:** fix alias with vite ([ba09b87](https://github.com/vuepress/ecosystem/commit/ba09b873cb525af4494d5b42663dee3e97b85bbe))
+- **theme-default:** fix sidebar selector ([0a29075](https://github.com/vuepress/ecosystem/commit/0a29075388cb435e5f95d25dc1b54abbcd343d9a))
+
+### Features
+
+- add support for highlight whitespace ([#204](https://github.com/vuepress/ecosystem/issues/204)) ([b91d04e](https://github.com/vuepress/ecosystem/commit/b91d04e5cc44adcff7405f2cdc14c4b9a6d9834d))
+- add support for word highlight ([#201](https://github.com/vuepress/ecosystem/issues/201)) ([6f37277](https://github.com/vuepress/ecosystem/commit/6f372774488f79e8570e1d8b4b1e26a5744be807))
+- **create-vuepress:** use optional peers to ensure version is up-to-date ([e8da8b8](https://github.com/vuepress/ecosystem/commit/e8da8b81a9b515e4a5b0838468be78724ffe2120))
+- **theme-default:** improve sidebar headers ([#196](https://github.com/vuepress/ecosystem/issues/196)) ([c39e4e4](https://github.com/vuepress/ecosystem/commit/c39e4e450c64e05c3939f866f56474cb83722b2c))
+
 # [2.0.0-rc.35](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.34...v2.0.0-rc.35) (2024-06-05)
 
 ### Bug Fixes

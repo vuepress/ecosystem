@@ -17,6 +17,10 @@ export const navbarEn: NavbarConfig = [
         text: 'Plume Theme',
         link: 'https://theme-plume.vuejs.press',
       },
+      {
+        text: 'Reco Theme',
+        link: 'https://theme-reco.vuejs.press/en',
+      },
     ],
   },
   {

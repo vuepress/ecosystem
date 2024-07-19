@@ -26,10 +26,9 @@
 
     cursor: text;
 
-    transition: all ease 0.3s;
-
-    -webkit-appearance: none;
     appearance: none;
+
+    transition: all ease 0.3s;
 
     @media (max-width: 719px) {
       position: relative;

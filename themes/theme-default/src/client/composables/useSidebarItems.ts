@@ -92,7 +92,7 @@ export const setupSidebarItems = (): void => {
   const sidebarConfig = computed<false | SidebarOptions>(() =>
     frontmatter.value.home
       ? false
-      : frontmatter.value.sidebar ?? themeLocale.value.sidebar ?? 'heading',
+      : (frontmatter.value.sidebar ?? themeLocale.value.sidebar ?? 'heading'),
   )
 
   const sidebarItems = computed(() =>

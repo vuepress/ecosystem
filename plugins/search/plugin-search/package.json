@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-search",
-  "version": "2.0.0-rc.34",
+  "version": "2.0.0-rc.39",
   "description": "VuePress plugin - built-in search",
   "keywords": [
     "vuepress-plugin",
@@ -38,10 +38,10 @@
   },
   "dependencies": {
     "chokidar": "^3.6.0",
-    "vue": "^3.4.27"
+    "vue": "^3.4.32"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.13"
+    "vuepress": "2.0.0-rc.14"
   },
   "publishConfig": {
     "access": "public"

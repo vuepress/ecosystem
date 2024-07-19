@@ -30,8 +30,8 @@ defineSlots<{
   z-index: 10;
 
   overflow-y: auto;
-  box-sizing: border-box;
 
+  box-sizing: border-box;
   width: var(--sidebar-width);
   margin: 0;
   border-right: 1px solid var(--c-border);
