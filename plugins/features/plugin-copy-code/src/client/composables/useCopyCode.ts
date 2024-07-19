@@ -5,6 +5,7 @@ import { usePageData } from 'vuepress/client'
 import type { CopyCodePluginLocaleConfig } from '../../shared/index.js'
 
 import '../styles/copy-code.css'
+import '../styles/vars.css'
 
 export interface UseCopyCodeOptions {
   locales: CopyCodePluginLocaleConfig

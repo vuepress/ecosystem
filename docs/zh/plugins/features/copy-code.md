@@ -185,4 +185,4 @@ export default {
 
 你可以通过 CSS 变量来自定义*复制按钮*的样式：
 
-@[code{1-6} css](@vuepress/plugin-copy-code/src/client/styles/copy-code.css)
+@[code{1-6} css](@vuepress/plugin-copy-code/src/client/styles/vars.css)
