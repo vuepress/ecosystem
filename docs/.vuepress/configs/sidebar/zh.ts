@@ -117,6 +117,7 @@ export const sidebarZh: SidebarConfig = {
   ],
 
   '/zh/plugins/tools/': [
+    'cache',
     'google-tag-manager',
     'redirect',
     'register-components',
