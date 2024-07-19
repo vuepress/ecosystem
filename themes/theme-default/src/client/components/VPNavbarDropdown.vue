@@ -161,7 +161,7 @@ watch(
     max-height: calc(100vh - 2.7rem);
     margin: 0;
     padding: 0.6rem 0;
-    border: 1px solid var(--c-border);
+    border: 1px solid var(--vp-c-border);
     border-bottom-color: var(--c-border-dark);
     border-radius: 0.25rem;
 
@@ -270,7 +270,7 @@ watch(
 .vp-navbar-dropdown-subtitle {
   margin: 0.45rem 0 0;
   padding: 1rem 0 0.45rem;
-  border-top: 1px solid var(--c-border);
+  border-top: 1px solid var(--vp-c-gutter);
   font-size: 0.9rem;
 
   .vp-navbar-dropdown-wrapper.mobile & {

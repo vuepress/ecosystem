@@ -73,7 +73,7 @@ defineProps<{
   width: 100%;
   margin: 0 auto 1.25rem;
   padding: 1rem 1.25rem;
-  border: 1px solid var(--c-border);
+  border: 1px solid var(--vp-c-border);
   border-radius: 0.4rem;
 
   color: var(--vp-c-text);

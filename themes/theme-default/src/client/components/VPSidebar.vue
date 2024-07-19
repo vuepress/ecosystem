@@ -34,7 +34,7 @@ defineSlots<{
   box-sizing: border-box;
   width: var(--sidebar-width);
   margin: 0;
-  border-right: 1px solid var(--c-border);
+  border-right: 1px solid var(--vp-c-border);
 
   background-color: var(--c-bg-sidebar);
 
@@ -45,7 +45,7 @@ defineSlots<{
     background-color var(--vp-t-color),
     border-color var(--vp-t-color);
 
-  scrollbar-color: var(--vp-c-accent) var(--c-border);
+  scrollbar-color: var(--vp-c-accent) var(--vp-c-gutter);
   scrollbar-width: thin;
 
   // narrow desktop / iPad
@@ -68,7 +68,7 @@ defineSlots<{
   }
 
   &::-webkit-scrollbar-track {
-    background-color: var(--c-border);
+    background-color: var(--vp-c-gutter);
   }
 
   &::-webkit-scrollbar-thumb {
@@ -79,7 +79,7 @@ defineSlots<{
   .vp-navbar-items {
     display: none;
     padding: 0.5rem 0 0.75rem;
-    border-bottom: 1px solid var(--c-border);
+    border-bottom: 1px solid var(--vp-c-gutter);
     transition: border-color var(--vp-t-color);
 
     @media (max-width: $MQMobile) {

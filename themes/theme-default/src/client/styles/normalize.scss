@@ -16,7 +16,7 @@ body {
 }
 
 h2 {
-  border-color: var(--c-border);
+  border-color: var(--vp-c-gutter);
   transition: border-color var(--vp-t-color);
 }
 
@@ -47,7 +47,7 @@ blockquote {
 }
 
 hr {
-  border-color: var(--c-border);
+  border-color: var(--vp-c-gutter);
   transition: border-color var(--vp-t-color);
 }
 
