@@ -4,31 +4,6 @@
 
 /** ensure default theme color */
 
-// background
-$vp-bg: 'var(--c-bg, #fff)';
-
-// background light
-$vp-bgl: 'var(--c-bg-light, #f3f4f5)';
-
-// background lighter
-$vp-bglt: 'var(--c-bg-lighter, #eeeeee)';
-
-// border-color
-$vp-brc: 'var(--c-border, #eaecef)';
-
-// border-color dark
-$vp-brcd: 'var(--c-border-dark, #dfe2e5)';
-
-// theme color
-$vp-tc: 'var(--vp-c-accent, #3eaf7c)';
-$vp-tcl: 'var(--vp-c-accent-hover, #4abf8a)';
-
-// color transition
-$vp-ct: 'var(--t-color, 0.3s ease)';
-
-// transform transition
-$vp-tt: 'var(--t-transform, 0.3s ease)';
-
 /** shadow */
 $box-shadow: (
   light: #f0f1f2,
@@ -40,10 +15,6 @@ $card-shadow: (
 ) !default;
 
 /* constants */
-$black: (
-  light: #000,
-  dark: #fff,
-) !default;
 $grey-dark: (
   light: #666,
   dark: #999,
@@ -51,10 +22,6 @@ $grey-dark: (
 $grey-light: (
   light: #999,
   dark: #666,
-) !default;
-$white: (
-  light: #fff,
-  dark: #000,
 ) !default;
 $grey-darker: (
   light: #333,

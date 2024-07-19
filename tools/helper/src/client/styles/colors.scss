@@ -41,6 +41,9 @@
 }
 
 [data-theme='dark'] {
+  --vp-c-white: #000;
+  --vp-c-black: #fff;
+
   // grey
   --vp-c-grey-text: #515c67;
   --vp-c-grey-hover: #414853;
