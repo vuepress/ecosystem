@@ -10,7 +10,7 @@
 div[class*='language-'] {
   position: relative;
   border-radius: var(--code-border-radius);
-  background-color: var(--code-bg-color);
+  background-color: var(--code-c-bg);
 
   &::before {
     content: attr(data-title);
@@ -20,7 +20,7 @@ div[class*='language-'] {
     right: 1em;
     z-index: 3;
 
-    color: var(--code-color);
+    color: var(--code-c-text);
 
     font-size: 0.75rem;
   }
