@@ -1,7 +1,5 @@
 html,
 body {
-  margin: 0;
-  padding: 0;
   background: #fff;
 }
 
@@ -21,7 +19,12 @@ html {
 
 body {
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
+
   color: #2c3e50;
+
+  font-synthesis: style;
 }
 
 a {
