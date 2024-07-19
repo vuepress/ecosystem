@@ -76,7 +76,7 @@ useEventListener('keydown', (event): void => {
   padding: 1rem 2rem 0;
   border-top: 1px solid var(--c-border);
 
-  transition: border-top var(--t-color);
+  transition: border-top var(--vp-t-color);
 
   @media (max-width: $MQNarrow) {
     padding-right: 1rem;

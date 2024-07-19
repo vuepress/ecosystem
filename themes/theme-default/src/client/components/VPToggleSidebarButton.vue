@@ -62,7 +62,7 @@ const themeLocale = useThemeLocaleData()
 
       background-color: var(--vp-c-text);
 
-      transition: transform var(--t-transform);
+      transition: transform var(--vp-t-transform);
 
       &:nth-child(2) {
         margin: 6px 0;

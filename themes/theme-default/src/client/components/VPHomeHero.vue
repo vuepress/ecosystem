@@ -167,7 +167,7 @@ const HomeHeroImage: FunctionalComponent = () => {
 
   font-size: 1.2rem;
 
-  transition: background-color var(--t-color);
+  transition: background-color var(--vp-t-color);
 
   @media (max-width: $MQMobileNarrow) {
     padding: 0.6rem 1.2rem;

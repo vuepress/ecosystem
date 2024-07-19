@@ -100,8 +100,8 @@ useUpdateDeviceStatus(
   line-height: var(--navbar-line-height);
 
   transition:
-    background-color var(--t-color),
-    border-color var(--t-color);
+    background-color var(--vp-t-color),
+    border-color var(--vp-t-color);
 
   @media screen and (max-width: $MQMobile) {
     padding-left: 4rem;

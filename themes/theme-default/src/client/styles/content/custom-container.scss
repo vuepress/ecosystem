@@ -1,8 +1,8 @@
 .custom-container {
   transition:
-    color var(--t-color),
-    border-color var(--t-color),
-    background-color var(--t-color);
+    color var(--vp-t-color),
+    border-color var(--vp-t-color),
+    background-color var(--vp-t-color);
 
   .custom-container-title {
     font-weight: 600;

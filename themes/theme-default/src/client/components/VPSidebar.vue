@@ -41,9 +41,9 @@ defineSlots<{
   font-size: 16px;
 
   transition:
-    transform var(--t-transform),
-    background-color var(--t-color),
-    border-color var(--t-color);
+    transform var(--vp-t-transform),
+    background-color var(--vp-t-color),
+    border-color var(--vp-t-color);
 
   scrollbar-color: var(--vp-c-accent) var(--c-border);
   scrollbar-width: thin;
@@ -80,7 +80,7 @@ defineSlots<{
     display: none;
     padding: 0.5rem 0 0.75rem;
     border-bottom: 1px solid var(--c-border);
-    transition: border-color var(--t-color);
+    transition: border-color var(--vp-t-color);
 
     @media (max-width: $MQMobile) {
       display: block;

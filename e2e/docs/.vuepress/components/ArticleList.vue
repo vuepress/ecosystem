@@ -108,7 +108,7 @@ defineProps<{
 
       visibility: hidden;
 
-      transition: transform var(--t-transform);
+      transition: transform var(--vp-t-transform);
 
       transform: scaleX(0);
     }

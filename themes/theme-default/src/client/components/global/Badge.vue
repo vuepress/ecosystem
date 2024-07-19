@@ -47,8 +47,8 @@ defineSlots<{
   line-height: 18px;
 
   transition:
-    color var(--t-color),
-    background-color var(--t-color);
+    color var(--vp-t-color),
+    background-color var(--vp-t-color);
 
   &.tip {
     background-color: var(--c-badge-tip);

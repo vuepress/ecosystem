@@ -26,6 +26,6 @@ const footerHtml = computed(() => frontmatter.value.footerHtml)
 
   text-align: center;
 
-  transition: border-color var(--t-color);
+  transition: border-color var(--vp-t-color);
 }
 </style>
