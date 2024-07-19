@@ -14,7 +14,7 @@ fs.ensureDirSync(outputDir)
 
 themeFiles.forEach((file) => {
   const filename = path.basename(file, '.scss')
-  const lightThemeContent = `
+  const themeContent = `
 @use 'mixins';
 @use 'themes/${filename}';
 
@@ -23,6 +23,16 @@ themeFiles.forEach((file) => {
 }
 
 @include ${filename}.style;
+`
+
+  const lightThemeContent = `
+@use 'mixins';
+@use 'themes/${filename}';
+
+[data-theme='light'] {
+  @include mixins.color($code-color: ${filename}.$code-color, $code-bg-color: ${filename}.$code-bg-color);
+  @include ${filename}.style;
+}
 `
 
   const darkThemeContent = `
@@ -35,6 +45,10 @@ themeFiles.forEach((file) => {
 }
 `
 
+  const themeCss = compileString(themeContent, {
+    loadPaths: [styleDir],
+  }).css
+
   const lightThemeCss = compileString(lightThemeContent, {
     loadPaths: [styleDir],
   }).css
@@ -43,7 +57,11 @@ themeFiles.forEach((file) => {
     loadPaths: [styleDir],
   }).css
 
-  fs.writeFileSync(path.resolve(outputDir, `${filename}.css`), lightThemeCss)
+  fs.writeFileSync(path.resolve(outputDir, `${filename}.css`), themeCss)
+  fs.writeFileSync(
+    path.resolve(outputDir, `${filename}.light.css`),
+    lightThemeCss,
+  )
 
   fs.writeFileSync(
     path.resolve(outputDir, `${filename}.dark.css`),
