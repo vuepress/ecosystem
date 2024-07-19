@@ -101,13 +101,13 @@
   border: none;
   border-radius: 8px;
 
-  background-color: var(--notice-c-button);
+  background-color: var(--notice-c-control-bg);
   color: var(--notice-c-text);
 
   cursor: pointer;
 
   &:hover {
-    background-color: var(--notice-c-button-hover);
+    background-color: var(--notice-c-control-hover);
   }
 
   &.primary {
