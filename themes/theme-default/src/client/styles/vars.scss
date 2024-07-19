@@ -114,17 +114,7 @@
   --docsearch-footer-background: var(--vp-c-bg);
 }
 
-// plugin-medium-zoom
-.medium-zoom-overlay {
-  --medium-zoom-bg-color: var(--vp-c-bg);
-}
-
 // plugin-search
 .search-box {
-  --search-bg-color: var(--vp-c-bg);
-  --search-accent-color: var(--vp-c-accent);
-  --search-text-color: var(--vp-c-text);
-  --search-border-color: var(--c-border);
-  --search-item-text-color: var(--c-text-lighter);
-  --search-item-focus-bg-color: var(--c-bg-light);
+  --search-c-item-text: var(--c-text-lighter);
 }
