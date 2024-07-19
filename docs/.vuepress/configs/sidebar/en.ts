@@ -116,7 +116,12 @@ export const sidebarEn: SidebarConfig = {
     '/plugins/pwa/remove-pwa',
   ],
 
-  '/plugins/tools/': ['google-tag-manager', 'redirect', 'register-components'],
+  '/plugins/tools/': [
+    'cache',
+    'google-tag-manager',
+    'redirect',
+    'register-components',
+  ],
 
   '/plugins/search/': ['docsearch', 'search'],
 
