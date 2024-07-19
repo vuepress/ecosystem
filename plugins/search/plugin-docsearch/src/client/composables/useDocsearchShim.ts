@@ -47,7 +47,7 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
               return
             }
             event.preventDefault()
-            router.push(resolveRoutePathFromUrl(hit.url))
+            router.push(hit.url.replace(__VUEPRESS_BASE__, '/'))
           },
           children,
         },
