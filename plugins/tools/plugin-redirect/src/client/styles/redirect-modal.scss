@@ -34,7 +34,7 @@
   padding: 1rem 2rem;
   border-radius: 8px;
 
-  background: var(--redirect-bg-color);
+  background: var(--redirect-c-bg);
   box-shadow: 0 2px 6px 0 var(--card-shadow);
 }
 
@@ -47,21 +47,21 @@
   border: none;
   border-radius: 8px;
 
-  background-color: var(--redirect-bg-color-lighter);
+  background-color: var(--redirect-c-bg-lighter);
   color: inherit;
 
   cursor: pointer;
 
   &:hover {
-    background-color: var(--redirect-bg-color-light);
+    background-color: var(--redirect-c-bg-light);
   }
 
   &.primary {
-    background-color: var(--redirect-primary-color);
-    color: var(--redirect-primary-text-color);
+    background-color: var(--redirect-c-accent);
+    color: var(--redirect-c-accent-text);
 
     &:hover {
-      background-color: var(--redirect-primary-hover-color);
+      background-color: var(--redirect-c-accent-hover);
     }
   }
 }

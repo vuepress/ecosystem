@@ -36,9 +36,9 @@
   border-width: 0;
   border-radius: 0.5rem;
 
-  background: var(--pwa-bg-color);
-  color: var(--pwa-color);
-  box-shadow: 0 2px 12px 0 var(--pwa-shadow-color);
+  background: var(--pwa-c-bg);
+  color: var(--pwa-c-text);
+  box-shadow: 0 2px 12px 0 var(--pwa-c-shadow);
 
   font-size: 1rem;
   line-height: 1.5;
@@ -58,10 +58,10 @@
     margin-inline-start: 0.4rem;
     border-radius: 0.75rem;
 
-    background: var(--pwa-btn-bg-color);
+    background: var(--pwa-button-c-bg);
 
     &:hover {
-      background: var(--pwa-btn-hover-bg-color);
+      background: var(--pwa-button-c-bg-hover);
     }
 
     svg {
@@ -69,7 +69,7 @@
       height: 1.2rem;
       margin: 0.15rem;
 
-      color: var(--pwa-btn-text-color);
+      color: var(--pwa-button-c-text);
 
       animation: rotate 3s ease infinite;
     }

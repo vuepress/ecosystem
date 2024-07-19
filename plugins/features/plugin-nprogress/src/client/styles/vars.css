@@ -1,4 +1,4 @@
 :root {
-  --nprogress-color: #29d;
+  --nprogress-c-text: var(--vp-c-accent, #29d);
   --nprogress-z-index: 1031;
 }

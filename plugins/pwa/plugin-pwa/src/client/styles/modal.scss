@@ -40,8 +40,8 @@
   border-width: 0;
   border-radius: 1.2rem;
 
-  background: var(--pwa-btn-bg-color);
-  color: var(--pwa-btn-text-color);
+  background: var(--pwa-button-c-bg);
+  color: var(--pwa-button-c-text);
   outline: none;
 
   font-weight: 600;
@@ -63,7 +63,7 @@
 
   &:hover,
   &:active {
-    background: var(--pwa-btn-hover-bg-color);
+    background: var(--pwa-button-c-bg-hover);
   }
 }
 
@@ -112,7 +112,7 @@
     max-width: 56em;
     border-radius: 10px;
 
-    background: var(--pwa-bg-color);
+    background: var(--pwa-c-bg);
 
     transition: background 0.3s;
 
@@ -150,7 +150,7 @@
       border-width: 0;
 
       background: transparent;
-      color: var(--pwa-content-color);
+      color: var(--pwa-c-text);
 
       cursor: pointer;
 
@@ -225,7 +225,7 @@
   .content {
     flex: 1;
     margin: 0 40px;
-    color: var(--pwa-content-color);
+    color: var(--pwa-c-text);
 
     @media (max-width: 719px) {
       margin: 0 20px;
@@ -387,7 +387,7 @@
     min-width: 80px;
     margin: 0.5rem 1rem;
     padding: 0.5rem 1rem;
-    border: 2px solid var(--pwa-btn-bg-color);
+    border: 2px solid var(--pwa-button-c-bg);
     border-radius: 20px;
 
     background: transparent;
@@ -399,8 +399,8 @@
   }
 
   .install-button {
-    background: var(--pwa-btn-bg-color);
-    color: var(--pwa-bg-color);
+    background: var(--pwa-button-c-bg);
+    color: var(--pwa-c-bg);
     transition: color 0.3s;
 
     @media (max-width: 419px) {
@@ -411,18 +411,18 @@
 
     &:hover,
     &:focus {
-      background: var(--pwa-btn-hover-bg-color);
+      background: var(--pwa-button-c-bg-hover);
     }
   }
 
   .cancel-button {
     background: transparent;
-    color: var(--pwa-btn-bg-color);
+    color: var(--pwa-button-c-bg);
 
     &:hover,
     &:focus {
-      background: var(--pwa-btn-hover-bg-color);
-      color: var(--pwa-bg-color);
+      background: var(--pwa-button-c-bg-hover);
+      color: var(--pwa-c-bg);
     }
   }
 
@@ -436,8 +436,8 @@
     padding: 0.5em 2em;
     border-radius: 8px;
 
-    background: var(--pwa-bg-color);
-    box-shadow: 0 2px 12px 0 var(--pwa-shadow-color);
+    background: var(--pwa-c-bg);
+    box-shadow: 0 2px 12px 0 var(--pwa-c-shadow);
 
     font-weight: bold;
     font-size: 14px;
@@ -456,7 +456,7 @@
 
       width: 0;
       height: 0;
-      border-top: 1em solid var(--pwa-bg-color);
+      border-top: 1em solid var(--pwa-c-bg);
       border-right: 0.8em solid transparent;
       border-left: 0.8em solid transparent;
 
@@ -474,7 +474,7 @@
       border-radius: 1em;
 
       background: #07c160;
-      color: var(--pwa-bg-color);
+      color: var(--pwa-c-bg);
 
       cursor: pointer;
 

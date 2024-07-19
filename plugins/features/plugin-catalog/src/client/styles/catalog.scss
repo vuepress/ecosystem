@@ -1,4 +1,4 @@
-.vp-catalog-wrapper {
+.vp-catalog {
   margin-top: 8px;
   margin-bottom: 8px;
 
@@ -11,11 +11,11 @@
       list-style-type: none;
     }
 
-    .vp-catalogs {
+    .vp-catalog-list {
       padding-inline-start: 0;
     }
 
-    .vp-catalog {
+    .vp-catalog-item {
       list-style-type: none;
     }
 
@@ -41,14 +41,14 @@
   }
 }
 
-.vp-catalogs {
+.vp-catalog-list {
   counter-reset: catalog-item;
   margin: 0;
 
   &.deep {
     padding-inline-start: 0;
 
-    .vp-catalog {
+    .vp-catalog-item {
       list-style-type: none;
     }
   }
@@ -59,13 +59,13 @@
   }
 }
 
-.vp-catalog {
+.vp-catalog-item {
   counter-increment: catalog-item;
 
   &-main-title {
-    margin-top: calc(1rem - var(--navbar-height, 3.6rem));
+    margin-top: calc(1rem - var(--catalog-header-offset));
     margin-bottom: 0.5rem;
-    padding-top: var(--navbar-height, 3.6rem);
+    padding-top: var(--catalog-header-offset);
 
     font-weight: 500;
     font-size: 1.75rem;
@@ -87,9 +87,9 @@
     margin-bottom: 0.5rem !important;
 
     &.has-children {
-      margin-top: calc(1rem - var(--navbar-height, 3.6rem));
-      padding-top: var(--navbar-height, 3.6rem);
-      border-bottom: 1px solid var(--catalog-border-color);
+      margin-top: calc(1rem - var(--catalog-header-offset));
+      padding-top: var(--catalog-header-offset);
+      border-bottom: 1px solid var(--catalog-c-border);
 
       font-weight: 500;
       font-size: 1.3rem;
