@@ -8,7 +8,7 @@ import { Badge, CodeGroup, CodeGroupItem } from './components/global/index.js'
 import Layout from './layouts/Layout.vue'
 import NotFound from './layouts/NotFound.vue'
 
-import '@vuepress/helper/color.css'
+import '@vuepress/helper/colors.css'
 import '@vuepress/helper/normalize.css'
 import './styles/index.scss'
 
