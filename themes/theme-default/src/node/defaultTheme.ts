@@ -223,9 +223,6 @@ export const defaultTheme = ({
       // @vuepress/plugin-medium-zoom
       themePlugins.mediumZoom !== false
         ? mediumZoomPlugin({
-            selector:
-              '.theme-default-content > img, .theme-default-content :not(a) > img',
-            zoomOptions: {},
             // should greater than page transition duration
             delay: 300,
           })

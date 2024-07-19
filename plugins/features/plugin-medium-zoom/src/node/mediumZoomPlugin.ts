@@ -11,7 +11,7 @@ export interface MediumZoomPluginOptions {
   /**
    * Selector of zoomable images
    *
-   * @default '[vp-content] :not(a) > img'
+   * @default '[vp-content] > img, [vp-content] :not(a) > img'
    */
   selector?: string
 
@@ -31,7 +31,7 @@ export interface MediumZoomPluginOptions {
 }
 
 export const mediumZoomPlugin = ({
-  selector = '[vp-content] :not(a) > img',
+  selector = '[vp-content] > img, [vp-content] :not(a) > img',
   zoomOptions = {},
   delay = 500,
 }: MediumZoomPluginOptions = {}): Plugin => ({

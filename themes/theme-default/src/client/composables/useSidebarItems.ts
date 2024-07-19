@@ -48,7 +48,7 @@ export const setupHeaders = (): void => {
 
     headersRef.value = getHeaders({
       selector: [...new Array(6)]
-        .map((_, i) => `.theme-default-content h${i + 1}`)
+        .map((_, i) => `[vp-content] h${i + 1}`)
         .join(','),
       levels: [2, levels.value + 1],
       ignore: ['.vp-badge'],
