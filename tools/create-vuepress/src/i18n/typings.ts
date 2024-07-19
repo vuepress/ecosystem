@@ -1,6 +1,6 @@
 import type { PackageManager } from '../utils/index.js'
 
-export type Lang = 'english (US)' | '简体中文'
+export type Lang = 'en' | 'zh'
 
 export interface CreateLocaleOptions {
   flow: {

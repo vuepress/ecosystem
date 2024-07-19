@@ -99,7 +99,6 @@ onBeforeUnmount(() => {
 
   &.vp-sidebar-heading {
     box-sizing: border-box;
-
     width: 100%;
     margin: 0;
     padding: 0.35rem 1.5rem 0.35rem 1.25rem;
@@ -124,7 +123,6 @@ onBeforeUnmount(() => {
     display: inline-block;
 
     box-sizing: border-box;
-
     width: 100%;
     margin: 0;
     padding: 0.35rem 1rem 0.35rem 2rem;

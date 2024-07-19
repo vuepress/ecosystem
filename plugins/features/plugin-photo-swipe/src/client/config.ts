@@ -1,4 +1,3 @@
-import type { ClientConfig } from 'vuepress/client'
 import { defineClientConfig } from 'vuepress/client'
 import type { PhotoSwipePluginLocaleData } from '../shared/index.js'
 import { usePhotoSwipe } from './composables/index.js'
@@ -38,4 +37,4 @@ export default defineClientConfig({
       scrollToClose,
     })
   },
-}) as ClientConfig
+})

@@ -1,5 +1,4 @@
 import { hasGlobalComponent } from '@vuepress/helper/client'
-import type { ClientConfig } from 'vuepress/client'
 import { defineClientConfig } from 'vuepress/client'
 import Catalog from './components/Catalog.js'
 import { injectCatalogInfoGetter } from './helpers/index.js'
@@ -12,4 +11,4 @@ export default defineClientConfig({
     injectCatalogInfoGetter(app)
     if (!hasGlobalComponent('Catalog', app)) app.component('Catalog', Catalog)
   },
-}) as ClientConfig
+})

@@ -1,6 +1,7 @@
 import { prismjsPlugin } from './prismjsPlugin.js'
 
 export * from './loadLanguages.js'
+export * from './options.js'
 export * from './prismjsPlugin.js'
 export * from './resolveHighlighter.js'
 export * from './markdown/index.js'

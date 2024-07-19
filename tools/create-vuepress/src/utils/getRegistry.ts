@@ -1,11 +1,7 @@
+import { select } from '@inquirer/prompts'
 import { execaCommandSync } from 'execa'
-import inquirer from 'inquirer'
 import type { Lang } from '../i18n/index.js'
 import type { PackageManager } from './getPackageManager.js'
-
-interface RegistryAnswer {
-  registry: '国内镜像源' | '当前源'
-}
 
 const NPM_MIRROR_REGISTRY = 'https://registry.npmmirror.com/'
 
@@ -41,15 +37,14 @@ export const getRegistry = async (
     )
   }
 
-  if (lang === '简体中文') {
-    const { registry } = await inquirer.prompt<RegistryAnswer>([
-      {
-        name: 'registry',
-        type: 'list',
-        message: '选择你想使用的源',
-        choices: ['国内镜像源', '当前源'],
-      },
-    ])
+  if (lang === 'zh') {
+    const registry = await select({
+      message: '选择你想使用的源',
+      choices: ['国内镜像源', '当前源'].map((registry) => ({
+        name: registry,
+        value: registry,
+      })),
+    })
 
     return registry === '国内镜像源' ? NPM_MIRROR_REGISTRY : userRegistry
   }

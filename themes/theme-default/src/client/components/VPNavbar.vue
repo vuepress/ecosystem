@@ -91,7 +91,6 @@ useUpdateDeviceStatus(
   z-index: 20;
 
   box-sizing: border-box;
-
   height: var(--navbar-height);
   padding: var(--navbar-padding-v) var(--navbar-padding-h);
   border-bottom: 1px solid var(--c-border);
@@ -117,7 +116,6 @@ useUpdateDeviceStatus(
   display: flex;
 
   box-sizing: border-box;
-
   height: var(--navbar-line-height);
   padding-left: var(--navbar-padding-h);
 

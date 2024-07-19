@@ -160,7 +160,6 @@ const HomeHeroImage: FunctionalComponent = () => {
   display: inline-block;
 
   box-sizing: border-box;
-
   padding: 0.8rem 1.6rem;
   border-width: 2px;
   border-style: solid;

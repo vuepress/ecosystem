@@ -28,8 +28,8 @@
 .sw-hint-popup,
 .sw-update-popup {
   position: fixed;
-  bottom: 1rem;
   inset-inline-end: 1rem;
+  bottom: 1rem;
   z-index: var(--pwa-z-index);
 
   padding: 0.5rem 0.75rem;

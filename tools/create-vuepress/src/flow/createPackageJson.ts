@@ -1,9 +1,9 @@
 import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import inquirer from 'inquirer'
+import { input } from '@inquirer/prompts'
 import type { CreateLocaleOptions } from '../i18n/index.js'
 import type { PackageManager } from '../utils/index.js'
-import { version } from '../utils/index.js'
+import { peerDependencies } from '../utils/index.js'
 
 const PACKAGE_NAME_REG =
   /^(?:@[a-z0-9-*~][a-z0-9-*._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/u
@@ -18,13 +18,6 @@ interface CreatePackageJsonOptions {
   bundler: 'vite' | 'webpack'
 }
 
-interface PackageJsonAnswer {
-  name: string
-  version: string
-  description: string
-  license: string
-}
-
 /**
  * generate package.json
  */
@@ -37,51 +30,48 @@ export const createPackageJson = async ({
 }: CreatePackageJsonOptions): Promise<void> => {
   const packageJsonPath = join(targetDir, 'package.json')
   const devDependencies = {
-    [`@vuepress/bundler-${bundler}`]: '2.0.0-rc.13',
-    '@vuepress/theme-default': `${version}`,
-    'vue': '^3.4.27',
-    'vuepress': '2.0.0-rc.13',
+    [`@vuepress/bundler-${bundler}`]: '2.0.0-rc.14',
+    '@vuepress/theme-default': `${peerDependencies['@vuepress/theme-default']}`,
+    'vue': '^3.4.29',
+    'vuepress': '2.0.0-rc.14',
   }
 
   if (preset === 'blog') {
-    devDependencies['@vuepress/plugin-blog'] = `^${version}`
+    devDependencies['@vuepress/plugin-blog'] =
+      `${peerDependencies['@vuepress/plugin-blog']}`
   }
 
   console.log(locale.flow.createPackage)
 
-  const result = await inquirer.prompt<PackageJsonAnswer>([
-    {
-      name: 'name',
-      type: 'input',
-      message: locale.question.name,
-      default: 'my-vuepress-site',
-      validate: (input: string): true | string =>
-        PACKAGE_NAME_REG.exec(input) ? true : locale.error.name,
-    },
-    {
-      name: 'version',
-      type: 'input',
-      message: locale.question.version,
-      default: '0.0.1',
-      validate: (input: string): true | string =>
-        VERSION_REG.exec(input) ? true : locale.error.version,
-    },
-    {
-      name: 'description',
-      type: 'input',
-      message: locale.question.description,
-      default: 'A VuePress project',
-    },
-    {
-      name: 'license',
-      type: 'input',
-      message: locale.question.license,
-      default: 'MIT',
-    },
-  ])
+  const name = await input({
+    message: locale.question.name,
+    default: 'my-vuepress-site',
+    validate: (input: string): true | string =>
+      PACKAGE_NAME_REG.exec(input) ? true : locale.error.name,
+  })
+
+  const description = await input({
+    message: locale.question.description,
+    default: 'A VuePress project',
+  })
+
+  const version = await input({
+    message: locale.question.version,
+    default: '0.0.1',
+    validate: (input: string): true | string =>
+      VERSION_REG.exec(input) ? true : locale.error.version,
+  })
+
+  const license = await input({
+    message: locale.question.license,
+    default: 'MIT',
+  })
 
   const packageContent = {
-    ...result,
+    name,
+    description,
+    version,
+    license,
     type: 'module',
     scripts: {
       'docs:build': `vuepress build docs`,

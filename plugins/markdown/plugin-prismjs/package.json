@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-prismjs",
-  "version": "2.0.0-rc.34",
+  "version": "2.0.0-rc.37",
   "description": "VuePress plugin - prismjs",
   "keywords": [
     "vuepress-plugin",
@@ -23,6 +23,7 @@
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
+    "./styles/*": "./lib/client/styles/*",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
@@ -32,9 +33,11 @@
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
-    "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
+    "style": "tsx scripts/generateThemeFiles.ts"
   },
   "dependencies": {
+    "@vuepress/helper": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
     "prismjs": "^1.29.0"
   },
@@ -44,7 +47,7 @@
     "markdown-it": "^14.1.0"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.13"
+    "vuepress": "2.0.0-rc.14"
   },
   "publishConfig": {
     "access": "public"

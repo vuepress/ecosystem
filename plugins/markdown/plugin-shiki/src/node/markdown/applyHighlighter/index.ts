@@ -1,9 +1,12 @@
 import { transformerCompactLineOptions } from '@shikijs/transformers'
 import type MarkdownIt from 'markdown-it'
-import { getHighlighter } from 'shiki'
+import { createHighlighter } from 'shiki'
 import type { App } from 'vuepress'
 import { bundledLanguageNames } from '../../shiki.js'
-import { getTransformers } from '../../transformers/getTransformers.js'
+import {
+  getTransformers,
+  whitespaceTransformer,
+} from '../../transformers/getTransformers.js'
 import type { ShikiHighlightOptions } from '../../types.js'
 import { attrsToLines } from '../../utils.js'
 import { createMarkdownFilePathGetter } from './createMarkdownFilePathGetter.js'
@@ -16,7 +19,7 @@ export const applyHighlighter = async (
   {
     langs = bundledLanguageNames,
     langAlias = {},
-    defaultLang = 'plain',
+    defaultLang,
     transformers: userTransformers = [],
     ...options
   }: ShikiHighlightOptions = {},
@@ -25,7 +28,7 @@ export const applyHighlighter = async (
   const getMarkdownFilePath =
     logLevel === 'debug' ? createMarkdownFilePathGetter(md) : null
 
-  const highlighter = await getHighlighter({
+  const highlighter = await createHighlighter({
     langs,
     langAlias,
     themes:
@@ -58,9 +61,10 @@ export const applyHighlighter = async (
         },
         transformers: [
           ...transformers,
-          ...(options.highlightLines ?? true
+          ...((options.highlightLines ?? true)
             ? [transformerCompactLineOptions(attrsToLines(attrs))]
             : []),
+          ...whitespaceTransformer(attrs, options.whitespace),
           ...userTransformers,
         ],
         ...('themes' in options

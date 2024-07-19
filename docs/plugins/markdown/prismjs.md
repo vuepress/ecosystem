@@ -28,19 +28,68 @@ export default {
 
 ## Options
 
-### preloadLanguages
+### theme
 
-- Type: `string[]`
+- Type: `PrismjsTheme`
 
-- Default: `['markdown', 'jsdoc', 'yaml']`
+- Default: `'nord'`
+
+- Details: Theme of Prismjs, will be applied to code blocks.
+
+### themes
+
+- Type: `{ light: PrismjsTheme; dark: PrismjsTheme }`
 
 - Details:
 
-  Languages to preload.
+  Apply Light / Dark Dual themes.
 
-  By default, languages will be loaded on demand when parsing markdown files.
+  Note: To use this, your theme must set `data-theme="dark"` attribute on the `<html>` tag when dark mode is enabled.
 
-  However, Prism.js has [some potential issues](https://github.com/PrismJS/prism/issues/2716) about loading languages dynamically. To avoid them, you can preload languages via this option.
+::: tip Available Prism.js Light themes
+
+- ateliersulphurpool-light
+- coldark-cold
+- coy
+- duotone-light
+- ghcolors
+- gruvbox-light
+- material-light
+- one-light
+- vs
+
+:::
+
+::: tip Available Prism.js Dark themes
+
+- atom-dark
+- cb
+- coldark-dark
+- dark
+- dracula
+- duotone-dark
+- duotone-earth
+- duotone-forest
+- duotone-sea
+- duotone-space
+- gruvbox-dark
+- holi
+- hopscotch
+- lucario
+- material-dark
+- material-oceanic
+- night-owl
+- nord
+- one-dark
+- pojoaque
+- shades-of-purple
+- solarized-dark-atom
+- tomorrow
+- vsc-dark-plus
+- xonokai
+- z-touch
+
+:::
 
 ### lineNumbers
 
@@ -145,17 +194,11 @@ export default defineUserConfig({
 })
 ```
 
-:::: tip
+::: tip
 
 In the new version, some functionalities similar to [shiki](https://shiki.style/packages/transformers) have been implemented, allowing you to style code blocks using the same syntax.
 
-The following features requires additional style to work, which should be handled by themes or users.
-
-::: details View Styles Example
-@[code{260-349}](@vuepress/theme-default/src/client/styles/content/code.scss)
 :::
-
-::::
 
 ### notationDiff
 
@@ -166,6 +209,18 @@ The following features requires additional style to work, which should be handle
 - Details: Whether enable notation diff.
 
 - Example:
+
+  **Input:**
+
+  ````md
+  ```ts
+  console.log('hewwo') // [\!code --]
+  console.log('hello') // [\!code ++]
+  console.log('goodbye')
+  ```
+  ````
+
+  **Output:**
 
   ```ts
   console.log('hewwo') // [!code --]
@@ -186,6 +241,18 @@ The following features requires additional style to work, which should be handle
 
 - Example:
 
+  **Input:**
+
+  ````md
+  ```ts
+  console.log('Not focused')
+  console.log('Focused') // [\!code focus]
+  console.log('Not focused')
+  ```
+  ````
+
+  **Output:**
+
   ```ts
   console.log('Not focused')
   console.log('Focused') // [!code focus]
@@ -204,6 +271,18 @@ The following features requires additional style to work, which should be handle
 - Details: Whether enable notation highlight.
 
 - Example:
+
+  **Input:**
+
+  ````md
+  ```ts
+  console.log('Not highlighted')
+  console.log('Highlighted') // [\!code highlight]
+  console.log('Not highlighted')
+  ```
+  ````
+
+  **Output:**
 
   ```ts
   console.log('Not highlighted')
@@ -224,6 +303,18 @@ The following features requires additional style to work, which should be handle
 
 - Example:
 
+  **Input:**
+
+  ````md
+  ```ts
+  console.log('No errors or warnings')
+  console.warn('Warning') // [\!code warning]
+  console.error('Error') // [\!code error]
+  ```
+  ````
+
+  **Output:**
+
   ```ts
   console.log('No errors or warnings')
   console.warn('Warning') // [!code warning]
@@ -232,6 +323,165 @@ The following features requires additional style to work, which should be handle
 
 - Also see:
   - [Shiki > Notation Error Level](https://shiki.style/packages/transformers#transformernotationerrorlevel)
+
+### notationWordHighlight
+
+- Type: `boolean`
+
+- Default: `false`
+
+- Details: Whether enable notation word highlight.
+
+  Word highlight must be written on a separate line.
+
+- Example:
+
+  **Input:**
+
+  ````md
+  ```ts
+  // [\!code word:Hello]
+  const message = 'Hello World'
+  console.log(message) // prints Hello World
+  ```
+  ````
+
+  **Output:**
+
+  ```ts
+  // [!code word:Hello]
+  const message = 'Hello World'
+  console.log(message) // prints Hello World
+  ```
+
+- Example：Highlight words based on the meta string provided on the code snippet
+
+  **Input:**
+
+  ````md
+  ```js /Hello/
+  const msg = 'Hello World'
+  console.log(msg)
+  console.log(msg) // prints Hello World
+  ```
+  ````
+
+  **Output:**
+
+  ```js /Hello/
+  const msg = 'Hello World'
+  console.log(msg)
+  console.log(msg) // prints Hello World
+  ```
+
+- Also see:
+
+  - [Shiki > Notation Word Highlight](https://shiki.style/packages/transformers#transformernotationwordhighlight)
+
+### whitespace
+
+- Type: `boolean | 'all' | 'boundary' | 'trailing'`
+
+- Default: `false`
+
+- Details: Whether enable whitespace characters (Space and Tab).
+
+  - `true`: enable render whitespace, same of `all`
+  - `false`: disable render whitespace
+  - `'all'`: render all whitespace
+  - `'boundary'`: render leading and trailing whitespace of the line
+  - `'trailing'`: render trailing whitespace of the line
+
+  You can add `:whitespace / :no-whitespace` mark in your fenced code blocks to override the value set in config, and customize the render type by adding `=` after `:whitespace`. For example `:whitespace=boundary` will render leading and trailing whitespace of the line.
+
+- Example:
+
+  **Input:**
+
+  ````md
+  ```ts :whitespace
+  // render all whitespace
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+  ```ts :whitespace=boundary
+  // render leading and trailing whitespace of the line
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+  ```ts :whitespace=trailing
+  // render trailing whitespace of the line
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+  ```ts :no-whitespace
+  // disable render whitespace
+  function block() {
+    space()
+    tab()
+  }
+  ```
+  ````
+
+  **Output:**
+
+  ```ts :whitespace data-title="ts :whitespace"
+  // render all whitespace
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+  ```ts :whitespace=boundary data-title="ts :whitespace=boundary"
+  // render leading and trailing whitespace of the line
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+  ```ts :whitespace=trailing data-title="ts :whitespace=trailing"
+  // render trailing whitespace of the line
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+  ```ts :no-whitespace data-title="ts :no-whitespace"
+  // disable render whitespace
+  function block() {
+    space()
+    tab()
+  }
+  ```
+
+- Also see：
+  - [Shiki > Render Whitespace](https://shiki.style/packages/transformers#transformerrenderwhitespace)
+
+### preloadLanguages
+
+- Type: `string[]`
+
+- Default: `['markdown', 'jsdoc', 'yaml']`
+
+- Details:
+
+  Languages to preload.
+
+  By default, languages will be loaded on demand when parsing markdown files.
+
+  However, Prism.js has [some potential issues](https://github.com/PrismJS/prism/issues/2716) about loading languages dynamically. To avoid them, you can preload languages via this option.
 
 ### preWrapper
 

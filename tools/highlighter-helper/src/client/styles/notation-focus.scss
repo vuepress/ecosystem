@@ -1,0 +1,17 @@
+// notation focused lines
+// - `// [\!code focus]`
+// - `// [\!code focus:3]`
+div[class*='language-'] {
+  .has-focused-lines .line:not(.has-focus) {
+    opacity: 0.7;
+    filter: blur(0.095rem);
+    transition:
+      filter 0.35s,
+      opacity 0.35s;
+  }
+
+  &:hover .has-focused-lines .line:not(.has-focus) {
+    opacity: 1;
+    filter: blur(0);
+  }
+}

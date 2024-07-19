@@ -9,6 +9,23 @@ export const darkModeSymbol: InjectionKey<DarkModeRef> = Symbol(
   __VUEPRESS_DEV__ ? 'darkMode' : '',
 )
 
+const applyDarkmodeToHTML = (isDarkMode: DarkModeRef): void => {
+  const update = (value = isDarkMode.value): void => {
+    // set `class="dark"` on `<html>` element
+    const el = window!.document.documentElement
+
+    el.classList.toggle('dark', value)
+    // set `data-theme="light|dark"` on `<html>` element
+    el.dataset.theme = value ? 'dark' : 'light'
+  }
+
+  onMounted(() => {
+    watch(isDarkMode, update, { immediate: true })
+  })
+
+  onUnmounted(() => update())
+}
+
 /**
  * Inject dark mode global computed
  */
@@ -54,20 +71,5 @@ export const setupDarkMode = (): void => {
   })
   provide(darkModeSymbol, isDarkMode)
 
-  updateHtmlDarkClass(isDarkMode)
-}
-
-export const updateHtmlDarkClass = (isDarkMode: DarkModeRef): void => {
-  const update = (value = isDarkMode.value): void => {
-    const htmlEl = document.querySelector('html')!
-
-    // set `data-theme="light|dark"` on `<html>` element
-    htmlEl.dataset.theme = value ? 'dark' : 'light'
-  }
-
-  onMounted(() => {
-    watch(isDarkMode, update, { immediate: true })
-  })
-
-  onUnmounted(() => update())
+  applyDarkmodeToHTML(isDarkMode)
 }

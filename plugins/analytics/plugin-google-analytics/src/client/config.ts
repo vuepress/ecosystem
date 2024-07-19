@@ -1,5 +1,4 @@
 import { defineClientConfig } from 'vuepress/client'
-import type { ClientConfig } from 'vuepress/client'
 import type { GoogleAnalyticsPluginOptions } from '../shared/index.js'
 import { useGoogleAnalytics } from './composables/index.js'
 
@@ -12,4 +11,4 @@ export default defineClientConfig({
     if (__VUEPRESS_SSR__) return
     useGoogleAnalytics(options)
   },
-}) as ClientConfig
+})

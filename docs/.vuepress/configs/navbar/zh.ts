@@ -17,6 +17,10 @@ export const navbarZh: NavbarConfig = [
         text: 'Plume 主题',
         link: 'https://theme-plume.vuejs.press',
       },
+      {
+        text: 'Reco 主题',
+        link: 'https://theme-reco.vuejs.press',
+      },
     ],
   },
   {

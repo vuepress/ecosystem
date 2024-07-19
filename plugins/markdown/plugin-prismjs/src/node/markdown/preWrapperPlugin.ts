@@ -30,6 +30,6 @@ export const preWrapperPlugin = (
     /**
      * Add information to dataset for current code block.
      */
-    return `<div class="${languageClass}" data-highlighter="prismjs" data-ext="${language.ext}" data-title="${title}">${result}</div>`
+    return `<div class="${languageClass}" data-highlighter="prismjs" data-ext="${language.ext}" data-title="${title}">${result.replace(` class="${languageClass}"`, '')}</div>`
   }
 }

@@ -50,7 +50,7 @@ export const PwaInstallModal = defineComponent({
 
           manifest.value = data
           localStorage.setItem('manifest', JSON.stringify(data))
-        } catch (err) {
+        } catch {
           console.error(
             '[PWA]: Error getting manifest, check that you have a valid web manifest or network connection',
           )

@@ -42,8 +42,8 @@
 }
 
 .vp-catalogs {
-  margin: 0;
   counter-reset: catalog-item;
+  margin: 0;
 
   &.deep {
     padding-inline-start: 0;

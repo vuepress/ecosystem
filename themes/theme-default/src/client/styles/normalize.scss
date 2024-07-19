@@ -27,7 +27,7 @@ a {
 code {
   background-color: var(--c-bg-light);
   color: var(--c-text-lighter);
-  font-family: var(--font-family-code);
+  font-family: var(--code-font-family);
   transition: background-color var(--t-color);
 
   p a & {
@@ -37,15 +37,18 @@ code {
 
 kbd {
   border-color: var(--c-border-dark);
+  transition: border-color var(--t-color);
 }
 
 blockquote {
   border-color: var(--c-border-dark);
   color: var(--vp-c-text-mute);
+  transition: border-color var(--t-color);
 }
 
 hr {
   border-color: var(--c-border);
+  transition: border-color var(--t-color);
 }
 
 table {
