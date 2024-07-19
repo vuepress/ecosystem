@@ -84,10 +84,10 @@ const categoryMap = useBlogCategory('category')
 
     &.route-link-active {
       background: var(--vp-c-accent);
-      color: var(--vp-c-white);
+      color: var(--vp-c-accent-text);
 
       .category-num {
-        color: var(--vp-c-white);
+        color: var(--vp-c-accent-text);
       }
     }
   }
