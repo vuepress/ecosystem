@@ -150,13 +150,13 @@ If the image is standalone in a line, wrapped or not wrapped by link, it will be
 ### lightmodeSelector
 
 - Type: `string`
-- Default: `'html[data-theme="light"]'`
+- Default: `'[data-theme="light"]'`
 - Details: The selector to detect light mode.
 
 ### darkmodeSelector
 
 - Type: `string`
-- Default: `'html[data-theme="dark"]'`
+- Default: `'[data-theme="dark"]'`
 - Details: The selector to detect dark mode.
 
 <script setup>

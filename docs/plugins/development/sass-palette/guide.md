@@ -103,7 +103,7 @@ If the Scss file is not imported directly, but is imported through `@use` or `@i
 
 ::: tip
 
-- If you are developing a plugin, you may set `$dark-selector: html[data-theme="dark"] !default;` in default config files, as our guideline is asking this.
+- If you are developing a plugin, you may set `$dark-selector: [data-theme="dark"] !default;` in default config files, as our guideline is asking this.
 
   Your plugin will work with most of theme, and users are still allowed to change this selector in config file if they are using a third-party theme with different dark selector.
 
@@ -180,7 +180,7 @@ $bg-color: (
 ) !default;
 ```
 
-Then if `$dark-selector` has a value `"html[data-theme="dark"]"` in config file, you will get:
+Then if `$dark-selector` has a value `"[data-theme="dark"]"` in config file, you will get:
 
 ```scss
 :root {
@@ -188,7 +188,7 @@ Then if `$dark-selector` has a value `"html[data-theme="dark"]"` in config file,
   --bg-color: #fff;
 }
 
-html[data-theme='dark'] {
+[data-theme='dark'] {
   --text-color: #999;
   --bg-color: #1e1e1e;
 }
