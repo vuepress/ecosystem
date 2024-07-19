@@ -13,11 +13,15 @@ export const prepareConfigFile = (
 
   const imports: string[] = [
     `import "${getRealPath('@vuepress/highlighter-helper/styles/base.css', url)}"`,
-    `import "${getRealPath(`@vuepress/plugin-prismjs/styles/${light}.css`, url)}"`,
   ]
 
-  if (light !== dark) {
+  if (light === dark) {
     imports.push(
+      `import "${getRealPath(`@vuepress/plugin-prismjs/styles/${light}.css`, url)}"`,
+    )
+  } else {
+    imports.push(
+      `import "${getRealPath(`@vuepress/plugin-prismjs/styles/${light}.light.css`, url)}"`,
       `import "${getRealPath(`@vuepress/plugin-prismjs/styles/${dark}.dark.css`, url)}"`,
     )
   }
