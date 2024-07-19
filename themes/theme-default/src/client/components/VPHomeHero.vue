@@ -177,7 +177,7 @@ const HomeHeroImage: FunctionalComponent = () => {
   &.primary {
     border-color: var(--vp-c-accent);
     background-color: var(--vp-c-accent);
-    color: #fff;
+    color: var(--vp-c-accent-text);
 
     &:hover {
       background-color: var(--vp-c-accent-hover);
@@ -191,7 +191,7 @@ const HomeHeroImage: FunctionalComponent = () => {
 
     &:hover {
       background-color: var(--vp-c-accent-hover);
-      color: #fff;
+      color: var(--vp-c-accent-text);
     }
   }
 }
