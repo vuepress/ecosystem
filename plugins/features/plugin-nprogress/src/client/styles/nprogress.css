@@ -11,5 +11,5 @@
   width: 100%;
   height: 2px;
 
-  background: var(--nprogress-c-text);
+  background: var(--nprogress-c);
 }
