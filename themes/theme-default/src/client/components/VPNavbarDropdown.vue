@@ -218,7 +218,7 @@ watch(
   }
 
   &:hover {
-    color: var(--c-text-accent);
+    color: var(--c-accent);
   }
 }
 
@@ -239,11 +239,11 @@ watch(
     line-height: 1.7rem;
 
     &:hover {
-      color: var(--c-text-accent);
+      color: var(--c-accent);
     }
 
     &.route-link-active {
-      color: var(--c-text-accent);
+      color: var(--c-accent);
 
       &::after {
         content: '';
@@ -256,7 +256,7 @@ watch(
         height: 0;
         border-top: 3px solid transparent;
         border-bottom: 3px solid transparent;
-        border-left: 5px solid var(--c-text-accent);
+        border-left: 5px solid var(--c-accent);
       }
     }
   }
