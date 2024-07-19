@@ -7,4 +7,5 @@
   --redirect-c-accent-text: var(--vp-c-accent-text);
   --redirect-c-control: var(--vp-c-control);
   --redirect-c-control-hover: var(--vp-c-control-hover);
+  --redirect-c-shadow: var(--vp-c-shadow);
 }

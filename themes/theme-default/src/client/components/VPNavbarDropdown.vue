@@ -162,7 +162,6 @@ watch(
     margin: 0;
     padding: 0.6rem 0;
     border: 1px solid var(--vp-c-border);
-    border-bottom-color: var(--c-border-dark);
     border-radius: 0.25rem;
 
     background-color: var(--c-bg-navbar);
@@ -218,7 +217,7 @@ watch(
   }
 
   &:hover {
-    color: var(--c-accent);
+    color: var(--vp-c-accent);
   }
 }
 
@@ -239,11 +238,11 @@ watch(
     line-height: 1.7rem;
 
     &:hover {
-      color: var(--c-accent);
+      color: var(--vp-c-accent);
     }
 
     &.route-link-active {
-      color: var(--c-accent);
+      color: var(--vp-c-accent);
 
       &::after {
         content: '';
@@ -256,7 +255,7 @@ watch(
         height: 0;
         border-top: 3px solid transparent;
         border-bottom: 3px solid transparent;
-        border-left: 5px solid var(--c-accent);
+        border-left: 5px solid var(--vp-c-accent);
       }
     }
   }

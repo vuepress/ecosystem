@@ -5,13 +5,28 @@
 
   // background colors
   --vp-c-bg: #22272e;
+  --vp-c-bg-alt: #343b44;
+  --vp-c-bg-elv: #22272e;
 
   // text colors
   --vp-c-text: #adbac7;
+  --vp-c-text-mute: rgb(235 235 245 / 60%);
+  --vp-c-text-subtle: rgb(235 235 245 / 38%);
 
   // border colors
   --vp-c-border: #3e4c5a;
-  --c-border-dark: #34404c;
+  --vp-c-gutter: #373f4c;
+  --vp-c-border-dark: #405064;
+
+  // shadow color
+  --vp-c-shadow: rgb(0 0 0 / 30%);
+  --vp-c-shadow-hard: #2f3841;
+
+  // control colors
+  --vp-c-control: #2d333b;
+  --vp-c-control-hover: #2f3841;
+  --vp-c-control-active: #333a44;
+  --vp-c-control-disabled: #3e4c5a;
 
   // original ones
   --c-bg-light: #2b313a;

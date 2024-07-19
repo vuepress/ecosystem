@@ -151,8 +151,8 @@ onBeforeUnmount(() => {
   }
 
   &.active:not(p.vp-sidebar-heading) {
-    border-left-color: var(--c-accent);
-    color: var(--c-accent);
+    border-left-color: var(--vp-c-accent);
+    color: var(--vp-c-accent);
     font-weight: 600;
   }
 }
@@ -161,7 +161,7 @@ a.vp-sidebar-item {
   cursor: pointer;
 
   &:hover {
-    color: var(--c-accent);
+    color: var(--vp-c-accent);
   }
 }
 </style>

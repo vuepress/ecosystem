@@ -7,11 +7,27 @@
   // background colors
   --vp-c-bg: #fff;
   --vp-c-bg-alt: #f6f6f7;
+  --vp-c-bg-elv: #fff;
 
   // text colors
   --vp-c-text: rgba(60 60 67);
   --vp-c-text-mute: rgb(60 60 67 / 78%);
   --vp-c-text-subtle: rgb(60 60 67 / 56%);
+
+  // border colors
+  --vp-c-border: #d7d9da;
+  --vp-c-gutter: #eaecef;
+  --vp-c-border-dark: #d1d4d7;
+
+  // shadow color
+  --vp-c-shadow: rgb(0 0 0 / 15%);
+  --vp-c-shadow-hard: #f1f3f5;
+
+  // control colors
+  --vp-c-control: #f8f9fa;
+  --vp-c-control-hover: #f1f3f5;
+  --vp-c-control-active: #e9ecef;
+  --vp-c-control-disabled: #ccc;
 
   // original ones
   --c-bg-light: #f3f4f5;
@@ -23,10 +39,6 @@
   --c-text-light: #3a5169;
   --c-text-lighter: #4e6e8e;
   --c-text-lightest: #6a8bad;
-
-  // border colors
-  --vp-c-border: #eaecef;
-  --c-border-dark: #dfe2e5;
 
   // custom container colors
   --c-tip: #42b983;
@@ -108,7 +120,7 @@
   --docsearch-hit-color: var(--c-text-light);
   --docsearch-hit-active-color: var(--vp-c-bg);
   --docsearch-hit-background: var(--vp-c-bg);
-  --docsearch-hit-shadow: 0 1px 3px 0 var(--c-border-dark);
+  --docsearch-hit-shadow: 0 1px 3px 0 var(--vp-c-border-dark);
   --docsearch-footer-background: var(--vp-c-bg);
 }
 
