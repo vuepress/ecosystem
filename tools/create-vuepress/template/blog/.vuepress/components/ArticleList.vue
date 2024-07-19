@@ -60,7 +60,6 @@ defineProps({
   position: relative;
 
   box-sizing: border-box;
-
   width: 100%;
   margin: 0 auto 1.25rem;
   padding: 1rem 1.25rem;
@@ -89,8 +88,8 @@ defineProps({
       content: '';
 
       position: absolute;
-      bottom: 0;
       inset-inline-start: 0;
+      bottom: 0;
 
       width: 100%;
       height: 2px;
@@ -99,7 +98,8 @@ defineProps({
 
       visibility: hidden;
 
-      transition: transform 0.3s ease-in-out;
+      transition: transform var(--t-transform);
+
       transform: scaleX(0);
     }
 
