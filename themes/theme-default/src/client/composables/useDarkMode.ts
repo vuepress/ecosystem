@@ -15,7 +15,7 @@ const applyDarkmodeToHTML = (isDarkMode: DarkModeRef): void => {
     const el = window!.document.documentElement
 
     el.classList.toggle('dark', value)
-    el.setAttribute('data-theme', value ? 'dark' : 'light')
+    el.dataset.theme = value ? 'dark' : 'light'
   }
 
   onMounted(() => {
