@@ -6,8 +6,8 @@
   --pwa-c-accent: var(--vp-c-accent);
   --pwa-c-accent-hover: var(--vp-c-accent-hover);
   --pwa-c-accent-text: var(--vp-c-accent-text);
-  --pwa-c-control: #3eaf7c;
-  --pwa-c-control-hover: #4abf8a;
-  --pwa-c-control-text: #fff;
-  --pwa-content-light-color: #666;
+  --pwa-c-control: var(--vp-c-control);
+  --pwa-c-control-hover: var(--vp-c-control-hover);
+  --pwa-c-control-text: var(--vp-c-control-text);
+  --pwa-c-text-light: #666;
 }
