@@ -48,7 +48,7 @@ kbd {
   border: 1px solid #eee;
   border-radius: 0.25em;
 
-  box-shadow: 1px 1px 4px 0 rgb(0 0 0 / 15%);
+  box-shadow: 1px 1px 4px 0 var(--vp-c-shadow);
 
   line-height: 1;
   letter-spacing: -0.1em;

@@ -3,7 +3,7 @@
   --notice-z-index: 1500;
   --notice-c-text: var(--vp-c-text);
   --notice-c-bg: var(--vp-c-bg-elv);
-  --notice-c-shadow: rgb(0 0 0 / 20%);
+  --notice-c-shadow: var(--vp-c-shadow);
   --notice-c-accent: var(--vp-c-accent);
   --notice-c-accent-hover: var(--vp-c-accent-hover);
   --notice-c-accent-text: var(--vp-c-accent-text);

@@ -4,6 +4,6 @@
   --back-to-top-c-bg: var(--vp-c-bg);
   --back-to-top-c-accent: var(--vp-c-accent);
   --back-to-top-c-accent-hover: var(--vp-c-accent-hover);
-  --back-to-top-c-shadow: rgb(0 0 0 / 20%);
+  --back-to-top-c-shadow: var(--vp-c-shadow);
   --back-to-top-c-icon: currentcolor;
 }
