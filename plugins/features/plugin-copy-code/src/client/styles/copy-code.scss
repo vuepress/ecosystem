@@ -84,12 +84,12 @@
     }
   }
 
-  .copy-code-disabled & {
+  .no-copy-code & {
     display: none;
   }
 }
 
-body:not(.copy-code-disabled) div[class*='language-']:hover {
+body:not(.no-copy-code) div[class*='language-']:hover {
   &::before {
     display: none;
   }

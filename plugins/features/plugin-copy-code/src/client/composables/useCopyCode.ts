@@ -66,7 +66,7 @@ export const useCopyCode = ({
   const page = usePageData()
 
   const insertCopyButton = (codeBlockElement: HTMLElement): void => {
-    if (codeBlockElement.hasAttribute('copy-code-registered')) return
+    if (codeBlockElement.hasAttribute('copy-code')) return
 
     const copyElement = document.createElement('button')
 
@@ -76,11 +76,11 @@ export const useCopyCode = ({
     copyElement.setAttribute('data-copied', locale.value.copied)
 
     codeBlockElement.parentElement?.insertBefore(copyElement, codeBlockElement)
-    codeBlockElement.setAttribute('copy-code-registered', '')
+    codeBlockElement.setAttribute('copy-code', '')
   }
 
   const appendCopyButton = async (): Promise<void> => {
-    document.body.classList.toggle('copy-code-disabled', !enabled.value)
+    document.body.classList.toggle('no-copy-code', !enabled.value)
     if (!enabled.value) return
 
     await nextTick()
