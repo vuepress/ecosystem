@@ -19,7 +19,7 @@
   --vp-c-gutter: #eaecef;
   --vp-c-border-dark: #d1d4d7;
 
-  // shadow color
+  // shadow colors
   --vp-c-shadow: rgb(0 0 0 / 15%);
   --vp-c-shadow-hard: #f1f3f5;
 
@@ -29,13 +29,41 @@
   --vp-c-control-active: #e9ecef;
   --vp-c-control-disabled: #ccc;
 
+  // layout colors
+  --vp-navbar-c-bg: var(--vp-c-bg);
+  --vp-sidebar-c-bg: var(--vp-c-bg);
+
+  // custom container colors
+  --vp-c-tip-text: var(--vp-c-green-text);
+  --vp-c-tip-hover: var(--vp-c-green-hover);
+  --vp-c-tip-bg: var(--vp-c-green-bg);
+  --vp-c-tip-soft: var(--vp-c-green-soft);
+  --vp-c-info-text: var(--vp-c-indigo-text);
+  --vp-c-info-hover: var(--vp-c-indigo-hover);
+  --vp-c-info-bg: var(--vp-c-indigo-bg);
+  --vp-c-info-soft: var(--vp-c-indigo-soft);
+  --vp-c-warning-text: var(--vp-c-yellow-text);
+  --vp-c-warning-hover: var(--vp-c-yellow-hover);
+  --vp-c-warning-bg: var(--vp-c-yellow-bg);
+  --vp-c-warning-soft: var(--vp-c-yellow-soft);
+  --vp-c-danger-text: var(--vp-c-red-text);
+  --vp-c-danger-hover: var(--vp-c-red-hover);
+  --vp-c-danger-bg: var(--vp-c-red-bg);
+  --vp-c-danger-soft: var(--vp-c-red-soft);
+  --vp-c-important-text: var(--vp-c-purple-text);
+  --vp-c-important-hover: var(--vp-c-purple-hover);
+  --vp-c-important-bg: var(--vp-c-purple-bg);
+  --vp-c-important-soft: var(--vp-c-purple-soft);
+  --vp-c-note-text: var(--vp-c-grey-text);
+  --vp-c-note-hover: var(--vp-c-grey-hover);
+  --vp-c-note-bg: var(--vp-c-grey-bg);
+  --vp-c-note-soft: var(--vp-c-grey-soft);
+
   // original ones
   --c-bg-light: #f3f4f5;
   --c-bg-lighter: #eee;
   --c-bg-dark: #ebebec;
   --c-bg-darker: #e6e6e6;
-  --c-bg-navbar: var(--vp-c-bg);
-  --c-bg-sidebar: var(--vp-c-bg);
   --c-text-light: #3a5169;
   --c-text-lighter: #4e6e8e;
   --c-text-lightest: #6a8bad;

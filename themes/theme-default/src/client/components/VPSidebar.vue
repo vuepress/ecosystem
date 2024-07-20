@@ -36,7 +36,7 @@ defineSlots<{
   margin: 0;
   border-right: 1px solid var(--vp-c-border);
 
-  background-color: var(--c-bg-sidebar);
+  background-color: var(--vp-sidebar-c-bg);
 
   font-size: 16px;
 

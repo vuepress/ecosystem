@@ -164,7 +164,7 @@ watch(
     border: 1px solid var(--vp-c-border);
     border-radius: 0.25rem;
 
-    background-color: var(--c-bg-navbar);
+    background-color: var(--vp-navbar-c-bg);
 
     text-align: left;
     white-space: nowrap;
