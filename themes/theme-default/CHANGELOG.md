@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.39](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.38...v2.0.0-rc.39) (2024-07-19)
+
+### Bug Fixes
+
+- **theme-default:** fix code highlight color ([c9a5fc2](https://github.com/vuepress/ecosystem/commit/c9a5fc20f505ad90fcef33a2d316534e1267feff))
+- **theme-default:** hide mixed-decls warnings for vite ([37211b2](https://github.com/vuepress/ecosystem/commit/37211b2892bf90f96d9a258de9722e91a15c4679))
+
+### Features
+
+- make styles built-in for highlighter plugins ([#217](https://github.com/vuepress/ecosystem/issues/217)) ([25e1ea2](https://github.com/vuepress/ecosystem/commit/25e1ea2c755bb7858b397a93982d6b92ec8d18c5))
+
 # [2.0.0-rc.38](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.37...v2.0.0-rc.38) (2024-07-13)
 
 ### Bug Fixes

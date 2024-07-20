@@ -391,71 +391,79 @@ export default defineUserConfig({
   **输入：**
 
   ````md
-  ```ts :whitespace
-  // 渲染所有空白符
-  function block() {
-    space()
-    tab()
-  }
+  ```md :whitespace
+  <!-- 渲染所有空白符 -->
+
+  具有尾随空格  
+  的文字
+
+      缩进文字
   ```
 
-  ```ts :whitespace=boundary
-  // 渲染行首行尾的空白符
-  function block() {
-    space()
-    tab()
-  }
+  ```md :whitespace=boundary
+  <!-- 渲染行首行尾的空白符 -->
+
+  具有尾随空格  
+  的文字
+
+      缩进文字
   ```
 
-  ```ts :whitespace=trailing
-  // 渲染行尾的空白符
-  function block() {
-    space()
-    tab()
-  }
+  ```md :whitespace=trailing
+  <!-- 渲染行尾的空白符 -->
+
+  具有尾随空格  
+  的文字
+
+      缩进文字
   ```
 
-  ```ts :no-whitespace
-  // 禁用空白符
-  function block() {
-    space()
-    tab()
-  }
+  ```md :no-whitespace
+  <!-- 禁用空白符 -->
+
+  A text
+  with line break
+
+      code block
   ```
   ````
 
   **输出：**
 
-  ```ts :whitespace data-title="ts :whitespace"
-  // 渲染所有空白符
-  function block() {
-    space()
-    tab()
-  }
+  ```md :whitespace
+  <!-- 渲染所有空白符 -->
+
+  具有尾随空格  
+  的文字
+
+      缩进文字
   ```
 
-  ```ts :whitespace=boundary data-title="ts :whitespace=boundary"
-  // 渲染行首行尾的空白符
-  function block() {
-    space()
-    tab()
-  }
+  ```md :whitespace=boundary
+  <!-- 渲染行首行尾的空白符 -->
+
+  具有尾随空格  
+  的文字
+
+      缩进文字
   ```
 
-  ```ts :whitespace=trailing data-title="ts :whitespace=trailing"
-  // 渲染行尾的空白符
-  function block() {
-    space()
-    tab()
-  }
+  ```md :whitespace=trailing
+  <!-- 渲染行尾的空白符 -->
+
+  具有尾随空格  
+  的文字
+
+      缩进文字
   ```
 
-  ```ts :no-whitespace data-title="ts :no-whitespace"
-  // 禁用空白符
-  function block() {
-    space()
-    tab()
-  }
+  ```md :no-whitespace
+  <!-- 禁用空白符 -->
+
+  A text
+  with line break
+
+      code block
   ```
 
 - 参考：

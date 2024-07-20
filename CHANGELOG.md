@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.39](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.38...v2.0.0-rc.39) (2024-07-19)
+
+### Bug Fixes
+
+- **highlighter-helper:** fix code block style ([4db9133](https://github.com/vuepress/ecosystem/commit/4db9133ffcbf9a2a2033616333785aeaaedccddc))
+- **plugin-docsearch:** fix base issue ([7e56412](https://github.com/vuepress/ecosystem/commit/7e56412a1b21bb3974668230496708a5bd6d71fe))
+- **plugin-prismjs:** fix scss variable ([f9dcfcf](https://github.com/vuepress/ecosystem/commit/f9dcfcf90fc85974fb86ba70409ca8be8d9da941))
+- **plugin-prismjs:** unify word highlight option name ([6b48402](https://github.com/vuepress/ecosystem/commit/6b48402a3ec501238e4f77a6db186298a8791185))
+- **theme-default:** fix code highlight color ([c9a5fc2](https://github.com/vuepress/ecosystem/commit/c9a5fc20f505ad90fcef33a2d316534e1267feff))
+- **theme-default:** hide mixed-decls warnings for vite ([37211b2](https://github.com/vuepress/ecosystem/commit/37211b2892bf90f96d9a258de9722e91a15c4679))
+
+### Features
+
+- add cache plugin ([#209](https://github.com/vuepress/ecosystem/issues/209)) ([7e04cee](https://github.com/vuepress/ecosystem/commit/7e04cee1cdfd5d797fc74cb3fe2595b4851894b3))
+- **helper:** improve body normalize ([adfa670](https://github.com/vuepress/ecosystem/commit/adfa6707c64a7c8f81a2706d51927ddf36e14d27))
+- **helper:** improve normalize with motion reduce ([29058bc](https://github.com/vuepress/ecosystem/commit/29058bc9471700f590753a553135a5288833fac8))
+- make styles built-in for highlighter plugins ([#217](https://github.com/vuepress/ecosystem/issues/217)) ([25e1ea2](https://github.com/vuepress/ecosystem/commit/25e1ea2c755bb7858b397a93982d6b92ec8d18c5))
+
 # [2.0.0-rc.38](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.37...v2.0.0-rc.38) (2024-07-13)
 
 ### Bug Fixes

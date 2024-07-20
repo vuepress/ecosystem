@@ -42,7 +42,7 @@ div[class*='language-'] {
       width: var(--code-line-number-width);
       padding-top: var(--code-padding-y);
 
-      color: var(--code-line-number-color, --code-c-text);
+      color: var(--code-c-line-number, --code-c-text);
 
       font-size: 0.875em;
       line-height: var(--code-line-height);
