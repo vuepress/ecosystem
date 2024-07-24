@@ -48,7 +48,7 @@
   "dependencies": {
     "@vuepress/helper": "workspace:*",
     "giscus": "^1.5.0",
-    "vue": "^3.4.32"
+    "vue": "^3.4.34"
   },
   "peerDependencies": {
     "@waline/client": "^3.1.0",
