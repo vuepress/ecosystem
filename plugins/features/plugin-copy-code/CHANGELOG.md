@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.40](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.39...v2.0.0-rc.40) (2024-07-24)
+
+### Bug Fixes
+
+- **plugin-shiki:** refine css variables and allow overriding default code block color ([201db1d](https://github.com/vuepress/ecosystem/commit/201db1d4b8a057bba9e774a276a3eec2323c3675))
+
 # [2.0.0-rc.39](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.38...v2.0.0-rc.39) (2024-07-19)
 
 ### Features
