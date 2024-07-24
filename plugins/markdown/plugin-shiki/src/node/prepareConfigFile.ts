@@ -7,44 +7,58 @@ const { url } = import.meta
 
 export const prepareConfigFile = (
   app: App,
-  options: ShikiPluginOptions,
+  {
+    lineNumbers = true,
+    notationDiff,
+    notationErrorLevel,
+    notationFocus,
+    notationHighlight,
+    notationWordHighlight,
+    whitespace,
+  }: ShikiPluginOptions,
 ): Promise<string> => {
   const imports: string[] = [
     `import "${getRealPath('@vuepress/highlighter-helper/styles/base.css', url)}"`,
     `import "${getRealPath(`${PLUGIN_NAME}/styles/shiki.css`, import.meta.url)}"`,
   ]
 
-  if (options.notationDiff) {
+  if (lineNumbers) {
+    imports.push(
+      `import "${getRealPath('@vuepress/highlighter-helper/styles/line-numbers.css', url)}"`,
+    )
+  }
+
+  if (notationDiff) {
     imports.push(
       `import "${getRealPath('@vuepress/highlighter-helper/styles/notation-diff.css', url)}"`,
     )
   }
 
-  if (options.notationErrorLevel) {
+  if (notationErrorLevel) {
     imports.push(
       `import "${getRealPath('@vuepress/highlighter-helper/styles/notation-error-level.css', url)}"`,
     )
   }
 
-  if (options.notationFocus) {
+  if (notationFocus) {
     imports.push(
       `import "${getRealPath('@vuepress/highlighter-helper/styles/notation-focus.css', url)}"`,
     )
   }
 
-  if (options.notationHighlight) {
+  if (notationHighlight) {
     imports.push(
       `import "${getRealPath('@vuepress/highlighter-helper/styles/notation-highlight.css', url)}"`,
     )
   }
 
-  if (options.notationWordHighlight) {
+  if (notationWordHighlight) {
     imports.push(
       `import "${getRealPath('@vuepress/highlighter-helper/styles/notation-word-highlight.css', url)}"`,
     )
   }
 
-  if (options.whitespace) {
+  if (whitespace) {
     imports.push(
       `import "${getRealPath('@vuepress/highlighter-helper/styles/whitespace.css', url)}"`,
     )
