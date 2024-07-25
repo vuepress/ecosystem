@@ -25,7 +25,7 @@
   margin: 0 5px;
   border-radius: 3px;
 
-  background: var(--photo-swipe-bullet);
+  background: var(--photo-swipe-c-bullet);
 
   transition:
     width 0.3s,
@@ -34,5 +34,5 @@
 
 .photo-swipe-bullet.active {
   width: 30px;
-  background: var(--photo-swipe-bullet-active);
+  background: var(--photo-swipe-c-bullet-active);
 }

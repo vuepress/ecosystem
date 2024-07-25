@@ -9,7 +9,7 @@ import { Content } from 'vuepress/client'
   <main class="vp-home">
     <VPHomeHero />
     <VPHomeFeatures />
-    <div class="theme-default-content">
+    <div class="theme-default-content" vp-content>
       <Content />
     </div>
     <VPHomeFooter />

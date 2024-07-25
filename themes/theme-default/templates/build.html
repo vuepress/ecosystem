@@ -6,28 +6,28 @@
     <meta name="generator" content="VuePress {{ version }}" />
     <style>
       :root {
-        --c-bg: #fff;
+        --vp-c-bg: #fff;
       }
 
-      html.dark {
-        --c-bg: #22272e;
+      [data-theme='dark'] {
+        --vp-c-bg: #22272e;
       }
 
       html,
       body {
-        background-color: var(--c-bg);
+        background-color: var(--vp-c-bg);
       }
     </style>
     <script>
       const userMode = localStorage.getItem('vuepress-color-scheme')
       const systemDarkMode =
-        window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches
+        'matchMedia' in window
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : false
 
       if (userMode === 'light') {
         document.documentElement.dataset.theme = 'light'
       } else if (userMode === 'dark' || systemDarkMode) {
-        document.documentElement.classList.toggle('dark', true)
         document.documentElement.dataset.theme = 'dark'
       }
     </script>

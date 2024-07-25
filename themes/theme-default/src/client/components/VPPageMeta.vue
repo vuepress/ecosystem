@@ -88,7 +88,7 @@ const contributors = useContributors()
     }
 
     .vp-meta-info {
-      color: var(--c-text-quote);
+      color: var(--vp-c-text-mute);
       font-weight: 400;
     }
   }

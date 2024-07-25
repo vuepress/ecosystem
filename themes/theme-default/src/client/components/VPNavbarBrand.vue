@@ -76,7 +76,7 @@ const NavbarBrandLogo: FunctionalComponent = () => {
 
 .vp-site-name {
   position: relative;
-  color: var(--c-text);
+  color: var(--vp-c-text);
   font-weight: 600;
   font-size: 1.3rem;
 

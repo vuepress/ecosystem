@@ -60,13 +60,13 @@ defineProps({
   position: relative;
 
   box-sizing: border-box;
-
   width: 100%;
   margin: 0 auto 1.25rem;
   padding: 1rem 1.25rem;
-  border: 1px solid var(--c-border);
+  border: 1px solid var(--vp-c-border);
   border-radius: 0.4rem;
-  color: var(--c-text);
+
+  color: var(--vp-c-text);
 
   text-align: start;
 
@@ -80,9 +80,7 @@ defineProps({
 
   .title {
     position: relative;
-
     display: inline-block;
-
     font-size: 1.28rem;
     line-height: 2rem;
 
@@ -90,17 +88,18 @@ defineProps({
       content: '';
 
       position: absolute;
-      bottom: 0;
       inset-inline-start: 0;
+      bottom: 0;
 
       width: 100%;
       height: 2px;
 
-      background: var(--c-brand);
+      background: var(--vp-c-accent);
 
       visibility: hidden;
 
-      transition: transform 0.3s ease-in-out;
+      transition: transform var(--vp-t-transform);
+
       transform: scaleX(0);
     }
 

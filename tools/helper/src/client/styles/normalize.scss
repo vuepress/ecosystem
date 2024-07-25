@@ -1,6 +1,6 @@
 html,
 body {
-  background: #fff;
+  background: var(--vp-c-bg);
 }
 
 html {
@@ -11,9 +11,14 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
+  text-size-adjust: none;
 
   @media print {
     font-size: 12pt;
+  }
+
+  &[data-theme='dark'] {
+    color-scheme: dark;
   }
 }
 
@@ -28,7 +33,7 @@ body {
 }
 
 a {
-  color: #3eaf7c;
+  color: var(--vp-c-accent);
   font-weight: 500;
   text-decoration: none;
   overflow-wrap: break-word;
@@ -43,7 +48,7 @@ kbd {
   border: 1px solid #eee;
   border-radius: 0.25em;
 
-  box-shadow: 1px 1px 4px 0 rgb(0 0 0 / 15%);
+  box-shadow: 1px 1px 4px 0 var(--vp-c-shadow);
 
   line-height: 1;
   letter-spacing: -0.1em;
@@ -67,7 +72,7 @@ code {
   }
 
   p a & {
-    color: #3eaf7c;
+    color: var(--vp-c-accent);
     font-weight: 400;
   }
 }
@@ -130,7 +135,7 @@ a.header-anchor {
       top: 0.4167em;
       left: -0.75em;
 
-      color: var(--c-brand);
+      color: var(--vp-c-accent);
 
       font-size: 0.75em;
     }
@@ -145,7 +150,7 @@ a.header-anchor {
       position: absolute;
       left: -0.75em;
 
-      color: var(--c-brand);
+      color: var(--vp-c-accent);
       outline: auto;
     }
   }

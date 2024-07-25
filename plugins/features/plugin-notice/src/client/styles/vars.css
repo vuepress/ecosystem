@@ -1,11 +1,12 @@
 :root {
+  --notice-width: 250px;
   --notice-z-index: 1500;
-  --notice-color: #2c3e50;
-  --notice-bg-color: #fff;
-  --notice-shadow-color: rgb(0 0 0 / 20%);
-  --notice-primary-color: #3eaf7c;
-  --notice-primary-text-color: #fff;
-  --notice-primary-hover-color: #71cda3;
-  --notice-button-color: #f8f8f8;
-  --notice-button-hover-color: #efeef4;
+  --notice-c-text: var(--vp-c-text);
+  --notice-c-bg: var(--vp-c-bg-elv);
+  --notice-c-shadow: var(--vp-c-shadow);
+  --notice-c-accent: var(--vp-c-accent);
+  --notice-c-accent-hover: var(--vp-c-accent-hover);
+  --notice-c-accent-text: var(--vp-c-accent-text);
+  --notice-c-control: var(--vp-c-control);
+  --notice-c-control-hover: var(--vp-c-control-hover);
 }

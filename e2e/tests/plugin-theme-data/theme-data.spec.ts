@@ -92,7 +92,7 @@ test.describe('plugin-theme-data', () => {
     expect(themeLocaleData).toHaveProperty('navbar', ['/zh/'])
     expect(themeLocaleData).not.toHaveProperty('locales')
 
-    await page.locator('.theme-default-content a').click()
+    await page.locator('[vp-content] a').click()
 
     await page.waitForURL('zh/test.html')
 

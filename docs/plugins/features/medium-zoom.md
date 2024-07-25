@@ -30,7 +30,7 @@ export default {
 
 - Type: `string`
 
-- Default: `':not(a) > img'`
+- Default: `'[vp-content] > img, [vp-content] :not(a) > img'`
 
 - Details:
 

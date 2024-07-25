@@ -29,7 +29,7 @@ export default {
 ### selector
 
 - 类型：`string | string[]`
-- 默认值：`'.theme-default-content div[class*="language-"] pre'`
+- 默认值：`'[vp-content] div[class*="language-"] pre'`
 - 详情:
 
   代码块选择器
@@ -185,4 +185,4 @@ export default {
 
 你可以通过 CSS 变量来自定义*复制按钮*的样式：
 
-@[code{1-6} css](@vuepress/plugin-copy-code/src/client/styles/copy-code.css)
+@[code{1-6} css](@vuepress/plugin-copy-code/src/client/styles/vars.css)

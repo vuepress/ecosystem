@@ -2,7 +2,7 @@
   z-index: var(--medium-zoom-z-index);
 
   /* override element style set by medium-zoom script */
-  background-color: var(--medium-zoom-bg-color) !important;
+  background-color: var(--medium-zoom-c-bg) !important;
 }
 
 .medium-zoom-overlay ~ img {

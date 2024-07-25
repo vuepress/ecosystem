@@ -34,7 +34,7 @@ export const copyCodePlugin =
           ? options.selector
           : isString(options.selector)
             ? [options.selector]
-            : ['.theme-default-content div[class*="language-"] pre'],
+            : ['[vp-content] div[class*="language-"] pre'],
         __CC_SHOW_IN_MOBILE__: options.showInMobile || false,
       }),
 
