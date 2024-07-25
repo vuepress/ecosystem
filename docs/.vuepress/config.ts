@@ -116,6 +116,7 @@ export default defineUserConfig({
           notationFocus: true,
           notationHighlight: true,
           notationWordHighlight: true,
+          whitespace: true,
         })
       : [],
     cachePlugin(),

@@ -68,6 +68,10 @@ export default defaultTheme({
     prismjs: isProd
       ? false
       : {
+          themes: {
+            light: 'one-light',
+            dark: 'one-dark',
+          },
           lineNumbers: 10,
           notationDiff: true,
           notationErrorLevel: true,
@@ -75,10 +79,6 @@ export default defaultTheme({
           notationHighlight: true,
           notationWordHighlight: true,
           whitespace: true,
-          themes: {
-            light: 'one-light',
-            dark: 'one-dark',
-          },
         },
   },
 }) as Theme
