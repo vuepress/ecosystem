@@ -1,10 +1,10 @@
+import ci from 'ci-info'
 import type { Plugin } from 'vuepress/core'
 import { highlightCache } from './highlightCache.js'
 import {
   renderCacheWithFilesystem,
   renderCacheWithMemory,
 } from './renderCache.js'
-import ci from 'ci-info'
 
 export interface CachePluginOptions {
   /**
