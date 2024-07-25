@@ -18,7 +18,7 @@ export interface CachePluginOptions {
   type?: 'memory' | 'filesystem'
 
   /**
-   * Enable cache plugin in CI env
+   * Whether to enable the cache in CI environment.
    *
    * @default false
    */
