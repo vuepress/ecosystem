@@ -43,7 +43,7 @@
     "eslint-config-vuepress": "^4.10.1",
     "eslint-config-vuepress-typescript": "^4.10.1",
     "http-server": "^14.1.1",
-    "husky": "^9.1.1",
+    "husky": "^9.1.2",
     "nano-staged": "^0.8.0",
     "postcss-html": "^1.7.0",
     "prettier": "^3.3.3",
@@ -57,11 +57,11 @@
     "tsconfig-vuepress": "^4.5.0",
     "tsx": "^4.16.2",
     "typescript": "^5.5.4",
-    "vite": "5.3.4",
+    "vite": "5.3.5",
     "vitest": "^2.0.4",
     "vuepress": "2.0.0-rc.14"
   },
-  "packageManager": "pnpm@9.5.0",
+  "packageManager": "pnpm@9.6.0",
   "engines": {
     "node": ">=18.19.0"
   }
