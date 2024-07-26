@@ -157,42 +157,35 @@ export const CodeGroup = defineComponent({
         })
       }
 
-      return h(
-        'div',
-        {
-          class: 'code-group',
-          ref: (el) => (groupRef.value = el as HTMLDivElement),
-        },
-        [
-          h(
-            'div',
-            { class: 'code-group-nav', role: 'tablist' },
-            items.map((vnode, i) => {
-              const isActive = i === activeIndex.value
-              return h(
-                'button',
-                {
-                  ref: (element) => {
-                    if (element) {
-                      tabRefs.value[i] = element as HTMLButtonElement
-                    }
-                  },
-                  class: {
-                    'code-group-nav-tab': true,
-                    'active': isActive,
-                  },
-                  role: 'tab',
-                  ariaSelected: isActive,
-                  onClick: () => (activeIndex.value = i),
-                  onKeydown: (e) => keyboardHandler(e, i),
+      return h('div', { class: 'code-group', ref: groupRef }, [
+        h(
+          'div',
+          { class: 'code-group-nav', role: 'tablist' },
+          items.map((vnode, i) => {
+            const isActive = i === activeIndex.value
+            return h(
+              'button',
+              {
+                ref: (element) => {
+                  if (element) {
+                    tabRefs.value[i] = element as HTMLButtonElement
+                  }
                 },
-                vnode.props.title,
-              )
-            }),
-          ),
-          items,
-        ],
-      )
+                class: {
+                  'code-group-nav-tab': true,
+                  'active': isActive,
+                },
+                role: 'tab',
+                ariaSelected: isActive,
+                onClick: () => (activeIndex.value = i),
+                onKeydown: (e) => keyboardHandler(e, i),
+              },
+              vnode.props.title,
+            )
+          }),
+        ),
+        items,
+      ])
     }
   },
 })
