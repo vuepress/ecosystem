@@ -9,6 +9,7 @@ import {
   ref,
   watch,
 } from 'vue'
+import { useDarkMode } from '../../composables/useDarkMode.js'
 
 import '../../styles/code-group.scss'
 
@@ -30,6 +31,35 @@ export const CodeGroup = defineComponent({
         tabRefs.value = []
       })
     }
+    const isDark = useDarkMode()
+    const groupRef = ref<HTMLDivElement>()
+    // shiki highlighter color & background
+    onMounted(() => {
+      if (!groupRef.value) return
+      const codeBlock = groupRef.value.querySelector(
+        'div[class*="language-"]',
+      ) as HTMLDivElement
+      if (codeBlock && codeBlock.dataset.highlighter === 'shiki') {
+        const lightColor = codeBlock.style.getPropertyValue('--shiki-light')
+        const darkColor = codeBlock.style.getPropertyValue('--shiki-dark')
+        const lightBg = codeBlock.style.getPropertyValue('--shiki-light-bg')
+        const darkBg = codeBlock.style.getPropertyValue('--shiki-dark-bg')
+        watch(
+          isDark,
+          (val) => {
+            groupRef.value!.style.setProperty(
+              '--c-code-group-tab-bg',
+              val ? darkBg : lightBg,
+            )
+            groupRef.value!.style.setProperty(
+              '--c-code-group-tab-title',
+              val ? darkColor : lightColor,
+            )
+          },
+          { immediate: true },
+        )
+      }
+    })
 
     // index of current active item
     const activeIndex = ref(-1)
@@ -127,35 +157,42 @@ export const CodeGroup = defineComponent({
         })
       }
 
-      return h('div', { class: 'code-group' }, [
-        h(
-          'div',
-          { class: 'code-group-nav', role: 'tablist' },
-          items.map((vnode, i) => {
-            const isActive = i === activeIndex.value
-            return h(
-              'button',
-              {
-                ref: (element) => {
-                  if (element) {
-                    tabRefs.value[i] = element as HTMLButtonElement
-                  }
+      return h(
+        'div',
+        {
+          class: 'code-group',
+          ref: (el) => (groupRef.value = el as HTMLDivElement),
+        },
+        [
+          h(
+            'div',
+            { class: 'code-group-nav', role: 'tablist' },
+            items.map((vnode, i) => {
+              const isActive = i === activeIndex.value
+              return h(
+                'button',
+                {
+                  ref: (element) => {
+                    if (element) {
+                      tabRefs.value[i] = element as HTMLButtonElement
+                    }
+                  },
+                  class: {
+                    'code-group-nav-tab': true,
+                    'active': isActive,
+                  },
+                  role: 'tab',
+                  ariaSelected: isActive,
+                  onClick: () => (activeIndex.value = i),
+                  onKeydown: (e) => keyboardHandler(e, i),
                 },
-                class: {
-                  'code-group-nav-tab': true,
-                  'active': isActive,
-                },
-                role: 'tab',
-                ariaSelected: isActive,
-                onClick: () => (activeIndex.value = i),
-                onKeydown: (e) => keyboardHandler(e, i),
-              },
-              vnode.props.title,
-            )
-          }),
-        ),
-        items,
-      ])
+                vnode.props.title,
+              )
+            }),
+          ),
+          items,
+        ],
+      )
     }
   },
 })

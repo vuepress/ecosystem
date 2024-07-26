@@ -1,6 +1,11 @@
 :root {
+  --code-word-highlight-bg-color: rgb(66 66 66 / 10%);
+  --code-word-highlight-border: rgb(120 120 120 / 40%);
+}
+
+[data-theme='dark'] {
   --code-word-highlight-bg-color: rgb(0 0 0 / 20%);
-  --code-word-highlight-border: #636363;
+  --code-word-highlight-border: rgb(99 99 99 / 80%);
 }
 
 // notation word highlight

@@ -6,6 +6,7 @@
 // - `// [\!code hl]`
 // - `// [\!code highlight:3]`
 // - `// [\!code hl:3]`
+
 div[class*='language-'] .line.highlighted {
   display: inline-block;
 
@@ -13,5 +14,5 @@ div[class*='language-'] .line.highlighted {
   margin: 0 calc(-1 * var(--code-padding-x));
   padding: 0 var(--code-padding-x);
 
-  background-color: var(--code-highlight-bg-color);
+  background-color: var(--code-c-highlight-bg);
 }
