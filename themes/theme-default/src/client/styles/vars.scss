@@ -63,8 +63,8 @@
   --c-badge-danger-text: var(--c-bg);
 
   // code group colors
-  --c-code-group-tab-title: rgb(255 255 255 / 90%);
-  --c-code-group-tab-bg: var(--code-bg-color);
+  --c-code-group-tab-title: var(--code-c-text, rgb(255 255 255 / 90%));
+  --c-code-group-tab-bg: var(--code-bg-color, var(--code-c-bg));
   --c-code-group-tab-outline: var(var(--c-code-group-tab-title));
   --c-code-group-tab-active-border: var(--c-brand);
 

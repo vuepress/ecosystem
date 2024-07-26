@@ -20,8 +20,10 @@ div[class*='language-'] {
 
       width: var(--code-line-number-width);
       height: 100%;
-      border-right: 1px solid var(--code-highlight-bg-color);
+      border-right: 1px solid var(--code-c-highlight-bg, var(--code-c-text));
       border-radius: var(--code-border-radius) 0 0 var(--code-border-radius);
+
+      transition: border var(--t-color);
     }
 
     pre {
@@ -42,7 +44,7 @@ div[class*='language-'] {
       width: var(--code-line-number-width);
       padding-top: var(--code-padding-y);
 
-      color: var(--code-c-line-number, --code-c-text);
+      color: var(--code-c-line-number, var(--code-c-text));
 
       font-size: 0.875em;
       line-height: var(--code-line-height);
