@@ -29,6 +29,5 @@ export default defineConfig({
     command: `pnpm docs:clean && pnpm ${commandPart1}${commandPart2}${commandPart3}`,
     url: 'http://127.0.0.1:9080',
     reuseExistingServer: !isCI,
-    timeout: 180 * 1000,
   },
 })
