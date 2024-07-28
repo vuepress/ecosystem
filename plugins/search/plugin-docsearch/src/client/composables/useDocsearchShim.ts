@@ -58,7 +58,7 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
     navigator: {
       // when pressing Enter without metaKey
       navigate: ({ itemUrl }) => {
-        router.push(itemUrl)
+        router.push(itemUrl.replace(__VUEPRESS_BASE__, '/'))
       },
     },
 
