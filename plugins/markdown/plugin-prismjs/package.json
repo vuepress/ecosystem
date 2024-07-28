@@ -44,7 +44,8 @@
   "devDependencies": {
     "@types/markdown-it": "^14.1.2",
     "@types/prismjs": "^1.26.4",
-    "markdown-it": "^14.1.0"
+    "markdown-it": "^14.1.0",
+    "sass-embedded": "^1.77.8"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.14"
