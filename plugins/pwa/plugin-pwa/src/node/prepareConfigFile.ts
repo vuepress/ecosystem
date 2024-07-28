@@ -4,7 +4,7 @@ import type { PwaPluginOptions } from './options.js'
 
 const __dirname = getDirname(import.meta.url)
 
-export const prepareConfigFile = async (
+export const prepareConfigFile = (
   app: App,
   options: PwaPluginOptions,
 ): Promise<string> => {
@@ -39,7 +39,7 @@ import { PwaReadyPopup as _PwaReadyPopup } from "${
     rootComponents.push('PwaReadyPopup')
   }
 
-  return await app.writeTemp(
+  return app.writeTemp(
     `pwa/config.js`,
     `\
 import { h }  from "vue";

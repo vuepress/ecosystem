@@ -5,10 +5,6 @@ const commandPart1 = isDev ? 'docs:dev' : 'docs:build'
 const commandPart2 = BUNDLER === 'vite' ? '' : `-${BUNDLER}`
 const commandPart3 = isDev ? '' : ' && pnpm docs:serve'
 
-console.log(
-  `pnpm docs:clean && pnpm ${commandPart1}${commandPart2}${commandPart3}`,
-)
-
 export default defineConfig({
   testDir: 'tests',
   forbidOnly: isCI,
