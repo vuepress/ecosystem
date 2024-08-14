@@ -1,7 +1,7 @@
 // eslint-disable-next-line vue/prefer-import-from-vue
 import { isHTMLTag, isMathMLTag, isSVGTag } from '@vue/shared'
-import type { AnyNode, Element } from 'cheerio'
 import { load } from 'cheerio'
+import type { AnyNode, Element } from 'domhandler'
 import matter from 'gray-matter'
 import type { App, Page } from 'vuepress/core'
 import { isLinkHttp, removeEndingSlash } from 'vuepress/shared'

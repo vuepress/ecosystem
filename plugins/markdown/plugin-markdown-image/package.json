@@ -45,10 +45,10 @@
     "style": "sass src:lib --no-source-map"
   },
   "dependencies": {
-    "@mdit/plugin-figure": "^0.12.0",
-    "@mdit/plugin-img-lazyload": "^0.12.0",
-    "@mdit/plugin-img-mark": "^0.12.0",
-    "@mdit/plugin-img-size": "^0.12.0",
+    "@mdit/plugin-figure": "^0.13.0",
+    "@mdit/plugin-img-lazyload": "^0.13.0",
+    "@mdit/plugin-img-mark": "^0.13.0",
+    "@mdit/plugin-img-size": "^0.13.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*"
   },

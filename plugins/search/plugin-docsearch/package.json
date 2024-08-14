@@ -42,9 +42,9 @@
     "@docsearch/js": "^3.6.1",
     "@docsearch/react": "^3.6.1",
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^10.11.0",
+    "@vueuse/core": "^10.11.1",
     "ts-debounce": "^4.0.0",
-    "vue": "^3.4.34"
+    "vue": "^3.4.37"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.14"

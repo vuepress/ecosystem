@@ -1,7 +1,7 @@
 // eslint-disable-next-line vue/prefer-import-from-vue
 import { isHTMLTag } from '@vue/shared'
-import type { AnyNode } from 'cheerio'
 import { load } from 'cheerio'
+import type { AnyNode } from 'domhandler'
 import type { App, Page } from 'vuepress/core'
 import {} from 'vuepress/shared'
 import { isArray } from '../../shared/index.js'

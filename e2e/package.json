@@ -29,11 +29,11 @@
     "@vuepress/plugin-watermark": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
     "sass": "^1.77.8",
-    "sass-loader": "^15.0.0",
-    "vue": "^3.4.34",
+    "sass-loader": "^16.0.0",
+    "vue": "^3.4.37",
     "vuepress": "2.0.0-rc.14"
   },
   "devDependencies": {
-    "@playwright/test": "^1.45.3"
+    "@playwright/test": "^1.46.0"
   }
 }

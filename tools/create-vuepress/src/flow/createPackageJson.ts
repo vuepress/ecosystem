@@ -32,7 +32,7 @@ export const createPackageJson = async ({
   const devDependencies = {
     [`@vuepress/bundler-${bundler}`]: '2.0.0-rc.14',
     '@vuepress/theme-default': `${peerDependencies['@vuepress/theme-default']}`,
-    'vue': '^3.4.29',
+    'vue': '^3.4.37',
     'vuepress': '2.0.0-rc.14',
   }
 
