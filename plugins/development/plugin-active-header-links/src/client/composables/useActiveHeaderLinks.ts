@@ -74,7 +74,9 @@ export const useActiveHeaderLinks = ({
 
     for (let i = 0; i < existedHeaderAnchors.length; i++) {
       const anchor = existedHeaderAnchors[i]
-      const nextAnchor = existedHeaderAnchors[i + 1]
+      const nextAnchor = existedHeaderAnchors[i + 1] as
+        | HTMLAnchorElement
+        | undefined
 
       // notice the `scrollTop` might not be exactly equal to `offsetTop` after clicking the anchor
       // so we add offset

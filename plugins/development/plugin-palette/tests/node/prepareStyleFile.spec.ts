@@ -1,18 +1,23 @@
 import { describe, expect, it } from 'vitest'
+import type { Bundler } from 'vuepress/core'
 import { createBaseApp } from 'vuepress/core'
 import { fs, path } from 'vuepress/utils'
+import type { PalettePluginOptions } from '../../src/node/index.js'
 import { prepareStyleFile, presetOptions } from '../../src/node/index.js'
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
   theme: { name: 'test' },
-  bundler: {} as any,
+  bundler: {} as Bundler,
   temp: path.resolve(__dirname, '../__fixtures__/.temp'),
 })
 
 describe('plugin-palette > node > prepareStyleFile', () => {
   describe('should generate style temp files correctly', () => {
-    const testCases = [
+    const testCases: {
+      name: Required<PalettePluginOptions>['preset']
+      ext: string
+    }[] = [
       {
         name: 'css',
         ext: 'css',

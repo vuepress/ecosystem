@@ -11,26 +11,48 @@ import { getOGPInfo } from './getOGPInfo.js'
 import type { SeoPluginOptions } from './options.js'
 import { getAlternateLinks, getCanonicalLink, logger } from './utils/index.js'
 
-export const appendSEO = (app: App, options: SeoPluginOptions): void => {
+export const appendSEO = (
+  app: App,
+  {
+    author,
+    canonical,
+    fallBackImage = '',
+    hostname,
+    isArticle = (articlePage): boolean =>
+      Boolean(articlePage.filePathRelative && !articlePage.frontmatter.home),
+    customHead,
+    ogp,
+    jsonLd,
+    ...rest
+  }: SeoPluginOptions,
+): void => {
   app.pages.forEach((page: ExtendPage) => {
     const head = page.frontmatter.head ?? []
 
-    const canonicalLink = getCanonicalLink(page, options)
-    const alternateLinks = getAlternateLinks(app, page, options)
+    const canonicalLink = getCanonicalLink(page, canonical)
+    const alternateLinks = getAlternateLinks(app, page, hostname)
 
     appendCanonical(head, canonicalLink)
     appendAlternate(head, alternateLinks)
 
     if (page.frontmatter.seo !== false) {
-      const defaultOGP = getOGPInfo(page, options, app)
-      const defaultJSONLD = getJSONLDInfo(page, options, app)
+      const defaultOGP = getOGPInfo(page, app, {
+        isArticle,
+        fallBackImage,
+        hostname,
+        ...rest,
+      })
+      const defaultJSONLD = getJSONLDInfo(page, app, {
+        isArticle,
+        hostname,
+        author,
+        fallBackImage,
+      })
 
-      const ogpContent = options.ogp
-        ? options.ogp(defaultOGP, page, app)
-        : defaultOGP
+      const ogpContent = ogp ? ogp(defaultOGP, page, app) : defaultOGP
 
-      const jsonLDContent = options.jsonLd
-        ? options.jsonLd(defaultJSONLD, page, app)
+      const jsonLDContent = jsonLd
+        ? jsonLd(defaultJSONLD, page, app)
         : defaultJSONLD
 
       if (app.env.isDebug) {
@@ -41,7 +63,7 @@ export const appendSEO = (app: App, options: SeoPluginOptions): void => {
       addOGP(head, ogpContent)
       appendJSONLD(head, jsonLDContent)
 
-      if (options.customHead) options.customHead(head, page, app)
+      if (customHead) customHead(head, page, app)
     }
 
     page.frontmatter.head = head

@@ -56,7 +56,7 @@ useUpdateDeviceStatus(
       linksWrapperMaxWidth.value =
         navbar.value!.offsetWidth -
         navbarHorizontalPadding -
-        (navbarBrand.value?.offsetWidth || 0)
+        (navbarBrand.value?.offsetWidth ?? 0)
     }
   },
 )

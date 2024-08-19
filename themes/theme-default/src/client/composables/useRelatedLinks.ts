@@ -43,7 +43,9 @@ const resolveFromSidebarItems = (
   const linkIndex = sidebarItems.findIndex((item) => item.link === currentPath)
 
   if (linkIndex !== -1) {
-    const targetItem = sidebarItems[linkIndex + offset]
+    const targetItem = sidebarItems[linkIndex + offset] as
+      | SidebarItem
+      | undefined
 
     if (!targetItem) return null
 
@@ -77,7 +79,9 @@ const resolveFromSidebarItems = (
   )
 
   if (prefixIndex !== -1) {
-    const targetItem = sidebarItems[prefixIndex + offset]
+    const targetItem = sidebarItems[prefixIndex + offset] as
+      | SidebarItem
+      | undefined
 
     if (!targetItem) return null
 

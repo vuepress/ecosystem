@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import type { Bundler } from 'vuepress/core'
 import { createBaseApp } from 'vuepress/core'
 import { fs, path } from 'vuepress/utils'
+import type { PalettePluginOptions } from '../../src/node/index.js'
 import { preparePaletteFile, presetOptions } from '../../src/node/index.js'
 
 const app = createBaseApp({
@@ -13,7 +14,10 @@ const app = createBaseApp({
 
 describe('plugin-palette > node > preparePaletteFile', () => {
   describe('should generate palette temp files correctly', () => {
-    const testCases = [
+    const testCases: {
+      name: Required<PalettePluginOptions>['preset']
+      ext: string
+    }[] = [
       {
         name: 'css',
         ext: 'css',

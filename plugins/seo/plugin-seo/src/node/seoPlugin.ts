@@ -12,9 +12,11 @@ export const seoPlugin =
   (app) => {
     if (app.env.isDebug) logger.info('Options:', options)
 
+    const { autoDescription = true, hostname, ...rest } = options
+
     const plugin: Plugin = { name: PLUGIN_NAME }
 
-    if (!options.hostname) {
+    if (!hostname) {
       logger.error(`Option ${colors.magenta('hostname')} is required!`)
 
       return plugin
@@ -25,11 +27,11 @@ export const seoPlugin =
 
       extendsPage: (page: ExtendPage): void => {
         if (page.frontmatter.seo !== false)
-          generateDescription(app, page, options.autoDescription !== false)
+          generateDescription(app, page, autoDescription)
       },
 
       onInitialized: (): void => {
-        appendSEO(app, options)
+        appendSEO(app, { hostname, ...rest })
       },
 
       onGenerated: (): Promise<void> => generateRobotsTxt(app),

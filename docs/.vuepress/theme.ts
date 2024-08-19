@@ -1,5 +1,5 @@
 import { defaultTheme } from '@vuepress/theme-default'
-import { navbarEn, navbarZh, sidebarEn, sidebarZh } from './configs'
+import { navbarEn, navbarZh, sidebarEn, sidebarZh } from './configs/index.js'
 
 const IS_PROD = process.env.NODE_ENV === 'production'
 

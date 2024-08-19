@@ -38,6 +38,7 @@ const itemClass = computed(() => ({
 const isOpenDefault = computed(() =>
   collapsible.value ? isActive.value : true,
 )
+// eslint-disable-next-line vue/no-ref-object-reactivity-loss
 const [isOpen, toggleIsOpen] = useToggle(isOpenDefault.value)
 const onClick = (e: Event): void => {
   if (collapsible.value) {

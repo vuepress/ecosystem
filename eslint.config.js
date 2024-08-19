@@ -54,13 +54,15 @@ export default vuepress(
           },
         ],
         '@typescript-eslint/promise-function-async': 'off',
-        // 'no-underscore-dangle': 'off',
+        'no-underscore-dangle': 'off',
       },
     },
     vue: {
       overrides: {
         // TODO: false positive in vue sfc
         'no-useless-assignment': 'off',
+        'vue/static-class-names-order': 'off',
+        'vue/multi-word-component-names': ['error', { ignores: ['Badge'] }],
       },
     },
   },

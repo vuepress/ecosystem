@@ -86,7 +86,7 @@ import { useMediumZoom } from '@vuepress/plugin-medium-zoom/client'
 import { nextTick } from 'vue'
 
 export default {
-  setup() {
+  setup(): void {
     const zoom = useMediumZoom()
 
     // ... do something to add new images in current page

@@ -96,7 +96,7 @@
   ```ts
   function ogp(
     /** 插件推断的 OGP 信息 */
-    ogp: SeoContent,
+    ogpInfo: SeoContent,
     /** 页面对象 */
     page: Page,
     /** VuePress App */

@@ -33,6 +33,7 @@ export const useBlogType = <
     const mapKey = key ?? frontmatter.value.blog?.key ?? ''
 
     if (!mapKey) {
+      // eslint-disable-next-line no-console
       console.warn(`useBlogType: key not found`)
 
       // Fallback data

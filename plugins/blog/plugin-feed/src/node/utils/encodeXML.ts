@@ -23,9 +23,9 @@ export const encodeXML = (content: ElementCompact): ElementCompact =>
           key,
           fromEntries(
             entries(value as Record<string, number | string | undefined>).map(
-              ([key, value]) => [
-                key,
-                value ? encodeXMLContent(value.toString()) : undefined,
+              ([attr, attrValue]) => [
+                attr,
+                attrValue ? encodeXMLContent(attrValue.toString()) : undefined,
               ],
             ),
           ),

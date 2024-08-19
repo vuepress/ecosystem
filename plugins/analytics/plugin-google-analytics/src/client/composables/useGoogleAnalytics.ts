@@ -1,12 +1,9 @@
 import type { GoogleAnalyticsPluginOptions } from '../../shared/index.js'
 
-declare const dataLayer: any[]
-declare const gtag: (...args: any[]) => void
-
 declare global {
   interface Window {
-    dataLayer?: typeof dataLayer
-    gtag?: typeof gtag
+    dataLayer?: unknown[]
+    gtag?: (...args: unknown[]) => void
   }
 }
 
@@ -39,16 +36,16 @@ export const useGoogleAnalytics = (
   // insert gtag snippet
   window.dataLayer = window.dataLayer ?? []
   // the gtag function must use `arguments` object to forward parameters
-  window.gtag = function () {
+  window.gtag = function gtag() {
     // eslint-disable-next-line prefer-rest-params
-    dataLayer.push(arguments)
+    window.dataLayer!.push(arguments)
   }
 
-  gtag('js', new Date())
+  window.gtag('js', new Date())
 
   if (options.debug) {
-    gtag('config', options.id, { debug_mode: true })
+    window.gtag('config', options.id, { debug_mode: true })
   } else {
-    gtag('config', options.id)
+    window.gtag('config', options.id)
   }
 }

@@ -91,7 +91,7 @@
   ```ts
   function ogp(
     /** OGP info inferred by plugin */
-    ogp: SeoContent,
+    ogpInfo: SeoContent,
     /** Page Object */
     page: Page,
     /** VuePress App */

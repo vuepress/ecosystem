@@ -84,7 +84,7 @@ type MyThemeData = ThemeData<{
 }>
 
 export default {
-  setup() {
+  setup(): void {
     const themeData = useThemeData<MyThemeData>()
     console.log(themeData.value)
   },
@@ -110,7 +110,7 @@ type MyThemeData = ThemeData<{
 }>
 
 export default {
-  setup() {
+  setup(): void {
     const themeLocaleData = useThemeLocaleData<MyThemeData>()
     console.log(themeLocaleData.value)
   },

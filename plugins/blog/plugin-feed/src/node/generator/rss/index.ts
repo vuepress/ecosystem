@@ -141,14 +141,14 @@ export const getRssFeed = (feedStore: FeedStore): string => {
     /**
      * Item Author
      */
-    if (entry.author) {
-      const author = entry.author.find((author) => author.email && author.name)
+    const author = entry.author.find(
+      (authorItem) => authorItem.email && authorItem.name,
+    )
 
-      if (author)
-        item.author = {
-          _text: `${author.email!} (${author.name!})`,
-        }
-    }
+    if (author)
+      item.author = {
+        _text: `${author.email!} (${author.name!})`,
+      }
 
     /**
      * Item Category

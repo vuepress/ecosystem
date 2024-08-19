@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import type { Bundler } from 'vuepress/core'
 import { createBaseApp } from 'vuepress/core'
 import { fs, getDirname, path } from 'vuepress/utils'
 import { prepareClientConfigFile } from '../src/node/index.js'
@@ -8,7 +9,7 @@ const __dirname = getDirname(import.meta.url)
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
   theme: { name: 'test' },
-  bundler: {} as any,
+  bundler: {} as Bundler,
   temp: path.resolve(__dirname, './__fixtures__/.temp'),
 })
 let identifier = 0

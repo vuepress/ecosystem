@@ -198,7 +198,7 @@ export default (options) => (app) => {
 
 我们也提供了一个 `removeReadingTimePlugin` api 来移除插件。你可以使用它来确保你的调用生效或清除插件:
 
-```ts title="你插件或主题的入口"
+```js title="你插件或主题的入口"
 import { useReadingTimePlugin } from '@vuepress/plugin-reading-time'
 
 export default (options) => (app) => {

@@ -1,4 +1,3 @@
-<!-- eslint-disable-next-line vue/multi-word-component-names -->
 <script setup lang="ts">
 import type { VNode } from 'vue'
 

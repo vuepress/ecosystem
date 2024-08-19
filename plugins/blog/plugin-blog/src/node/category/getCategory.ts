@@ -19,14 +19,14 @@ import { getPagePath } from '../utils.js'
 export const getCategory = (
   pagesMap: PagesMap,
   store: Store,
-  category: BlogCategoryOptions[],
+  categoryOptions: BlogCategoryOptions[],
   slugify: (name: string) => string,
   isDebug: boolean,
 ): {
   categoriesMap: CategoriesMap
   pageOptions: PageOptions[]
 } => {
-  const result = category.map(
+  const result = categoryOptions.map(
     ({
       key,
       getter,
@@ -34,17 +34,17 @@ export const getCategory = (
       path = '/:key/',
       layout = 'Layout',
       frontmatter = (): Record<string, string> => ({}),
-      itemPath = '/:key/:name/',
+      itemPath: itemPathOptions = '/:key/:name/',
       itemLayout = 'Layout',
       itemFrontmatter = (): Record<string, string> => ({}),
     }) => {
       if (isDebug) logger.info(`Generating ${colors.cyan(key)} category.\n`)
 
-      const getItemPath = isFunction(itemPath)
-        ? itemPath
-        : isString(itemPath)
+      const getItemPath = isFunction(itemPathOptions)
+        ? itemPathOptions
+        : isString(itemPathOptions)
           ? (name: string): string =>
-              itemPath
+              itemPathOptions
                 .replace(/:key/g, slugify(key))
                 .replace(/:name/g, slugify(name))
           : (): null => null
@@ -88,6 +88,7 @@ export const getCategory = (
           const categories = getter(page)
 
           for (const category of categories) {
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             if (!map[category]) {
               const itemPath = getItemPath(category)
 
@@ -127,17 +128,19 @@ export const getCategory = (
 
         for (const category in pageMapStore)
           map[category].indexes = store.addItems(
-            pageMapStore[category].sort(sorter).map(({ path }) => path),
+            pageMapStore[category]
+              .sort(sorter)
+              .map(({ path: pagePath }) => pagePath),
           )
 
         if (isDebug) {
           let infoMessage = `${key} category in locale ${localePath}:\n`
 
           for (const category in map) {
-            const { path, indexes: items } = map[category]
+            const { path: categoryPath, indexes: items } = map[category]
 
             infoMessage += `${category}: found ${items.length} items${
-              path ? ` in path: ${path}` : ''
+              categoryPath ? ` in path: ${categoryPath}` : ''
             }\n`
           }
 

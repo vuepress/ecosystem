@@ -43,7 +43,10 @@ export const renderCacheWithMemory = async (
   const [metadata, cache] = await Promise.all([
     readFile<Metadata>(metaFilepath),
     readFile<Cache>(cacheFilepath),
-  ]).then(([metadata, cache]) => [metadata ?? {}, cache ?? {}] as const)
+  ]).then(
+    ([metadataStore, cacheStore]) =>
+      [metadataStore ?? {}, cacheStore ?? {}] as const,
+  )
 
   let timer: ReturnType<typeof setTimeout> | null = null
 

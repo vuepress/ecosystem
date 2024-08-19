@@ -35,6 +35,7 @@ export const useBlogCategory = <
     const mapKey = key ?? frontmatter.value.blog?.key ?? ''
 
     if (!mapKey) {
+      // eslint-disable-next-line no-console
       console.warn(`useBlogCategory: key not found`)
 
       // Fallback data

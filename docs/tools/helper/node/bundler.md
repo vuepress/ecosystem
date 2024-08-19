@@ -92,7 +92,7 @@ export interface DevServerOptions {
   /**
    * Respond function
    */
-  response: (request?: IncomingMessage) => Promise<string | Buffer>
+  response: (request?: IncomingMessage) => Promise<Buffer | string>
 
   /**
    * error msg
