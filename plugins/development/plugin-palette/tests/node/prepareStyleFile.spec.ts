@@ -31,8 +31,8 @@ describe('plugin-palette > node > prepareStyleFile', () => {
       },
     ]
 
-    testCases.forEach(({ name, ext }) =>
-      it(`${name}`, async () => {
+    testCases.forEach(({ name, ext }) => {
+      it(name, async () => {
         const userStyleFile = path.resolve(
           __dirname,
           '../__fixtures__',
@@ -47,8 +47,8 @@ describe('plugin-palette > node > prepareStyleFile', () => {
         })
         const result = (await fs.readFile(tempFile)).toString()
         expect(result).toEqual(importCode(userStyleFile))
-      }),
-    )
+      })
+    })
   })
 
   it('should generate empty style temp file', async () => {

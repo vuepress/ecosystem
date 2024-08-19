@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import type { App } from 'vuepress/core'
 import type { ExtendPage } from '../typings/index.js'
 import {
@@ -14,7 +13,7 @@ import { getAlternateLinks, getCanonicalLink, logger } from './utils/index.js'
 
 export const appendSEO = (app: App, options: SeoPluginOptions): void => {
   app.pages.forEach((page: ExtendPage) => {
-    const head = page.frontmatter.head || []
+    const head = page.frontmatter.head ?? []
 
     const canonicalLink = getCanonicalLink(page, options)
     const alternateLinks = getAlternateLinks(app, page, options)

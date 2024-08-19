@@ -1,5 +1,5 @@
-import { computed, defineComponent, h, ref, toRefs } from 'vue'
 import type { PropType } from 'vue'
+import { computed, defineComponent, h, ref, toRefs } from 'vue'
 import { useRouteLocale, useRouter } from 'vuepress/client'
 import type { LocaleConfig } from 'vuepress/shared'
 import type { HotKeyOptions } from '../../shared/index.js'
@@ -24,7 +24,7 @@ export const SearchBox = defineComponent({
     },
 
     hotKeys: {
-      type: Array as PropType<(string | HotKeyOptions)[]>,
+      type: Array as PropType<(HotKeyOptions | string)[]>,
       default: () => [],
     },
 
@@ -77,6 +77,7 @@ export const SearchBox = defineComponent({
       }
 
       const suggestion = suggestions.value[index]
+
       if (!suggestion) {
         return
       }
@@ -102,10 +103,15 @@ export const SearchBox = defineComponent({
             autocomplete: 'off',
             spellcheck: false,
             value: query.value,
-            onFocus: () => (isActive.value = true),
-            onBlur: () => (isActive.value = false),
-            onInput: (event) =>
-              (query.value = (event.target as HTMLInputElement).value),
+            onFocus: () => {
+              isActive.value = true
+            },
+            onBlur: () => {
+              isActive.value = false
+            },
+            onInput: (event) => {
+              query.value = (event.target as HTMLInputElement).value
+            },
             onKeydown: (event) => {
               switch (event.key) {
                 case 'ArrowUp': {
@@ -121,6 +127,9 @@ export const SearchBox = defineComponent({
                   goTo(focusIndex.value)
                   break
                 }
+                default: {
+                  // do nothing
+                }
               }
             },
           }),
@@ -129,7 +138,9 @@ export const SearchBox = defineComponent({
               'ul',
               {
                 class: 'suggestions',
-                onMouseleave: () => (focusIndex.value = -1),
+                onMouseleave: () => {
+                  focusIndex.value = -1
+                },
               },
               suggestions.value.map(({ link, title, header }, index) =>
                 h(
@@ -141,14 +152,20 @@ export const SearchBox = defineComponent({
                         focus: focusIndex.value === index,
                       },
                     ],
-                    onMouseenter: () => (focusIndex.value = index),
-                    onMousedown: () => goTo(index),
+                    onMouseenter: () => {
+                      focusIndex.value = index
+                    },
+                    onMousedown: () => {
+                      goTo(index)
+                    },
                   },
                   h(
                     'a',
                     {
                       href: link,
-                      onClick: (event) => event.preventDefault(),
+                      onClick: (event) => {
+                        event.preventDefault()
+                      },
                     },
                     [
                       h(

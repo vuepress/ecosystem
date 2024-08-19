@@ -305,7 +305,7 @@
 import { usePwaEvent } from '@vuepress/plugin-pwa/client'
 
 export default {
-  setup() {
+  setup(): void {
     const event = usePwaEvent()
     event.on('ready', (registration) => {
       console.log('Service worker is active.')
@@ -329,7 +329,7 @@ import { forceUpdate } from '@vuepress/plugin-pwa/client'
 import { onMounted } from 'vue'
 
 export default {
-  setup() {
+  setup(): void {
     onMounted(() => {
       forceUpdate()
     })
@@ -371,7 +371,7 @@ import { registerSW } from '@vuepress/plugin-pwa/client'
 import { onMounted } from 'vue'
 
 export default {
-  setup() {
+  setup(): void {
     onMounted(() => {
       registerSW('/service-worker.js', {
         ready(registration) {
@@ -398,10 +398,10 @@ export default {
 - 示例：
 
 ```ts
-import { usePwaEvent, skipWaiting } from '@vuepress/plugin-pwa/client'
+import { skipWaiting, usePwaEvent } from '@vuepress/plugin-pwa/client'
 
 export default {
-  setup() {
+  setup(): void {
     const event = usePwaEvent()
 
     event.on('updated', (registration) => {
@@ -426,7 +426,7 @@ import { unregisterSW } from '@vuepress/plugin-pwa/client'
 import { onMounted } from 'vue'
 
 export default {
-  setup() {
+  setup(): void {
     onMounted(() => {
       unregisterSW()
     })

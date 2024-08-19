@@ -12,10 +12,10 @@ import type {
 
 export type ShikiLang =
   | LanguageInput
-  | StringLiteralUnion<BundledLanguage>
   | SpecialLanguage
+  | StringLiteralUnion<BundledLanguage>
 
-export type ShikiTheme = ThemeRegistrationAny | StringLiteralUnion<BundledTheme>
+export type ShikiTheme = StringLiteralUnion<BundledTheme> | ThemeRegistrationAny
 
 export interface ShikiSingleThemeOptions {
   /**
@@ -70,7 +70,7 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
   /**
    * Function to customize Shiki highlighter instance.
    */
-  shikiSetup?: (shiki: Highlighter) => void | Promise<void>
+  shikiSetup?: (shiki: Highlighter) => Promise<void> | void
 
   /**
    * Shiki transformers
@@ -145,7 +145,7 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
    *
    * @see https://shiki.style/packages/transformers#transformerrenderwhitespace
    */
-  whitespace?: boolean | WhitespacePosition
+  whitespace?: WhitespacePosition | boolean
 
   /**
    * Log level Highlighter language detecter
@@ -154,7 +154,7 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
    *
    * @default 'warn'
    */
-  logLevel?: 'silent' | 'warn' | 'debug'
+  logLevel?: 'debug' | 'silent' | 'warn'
 }
 
 export interface PreWrapperOptions {

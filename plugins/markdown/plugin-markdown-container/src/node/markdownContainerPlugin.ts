@@ -158,15 +158,15 @@ export const markdownContainerPlugin = ({
 
         // render
         return renderBefore(info)
-      } else {
-        // `after` tag
-
-        // pop the info from stack
-        const info = infoStack.pop() || ''
-
-        // render
-        return renderAfter(info)
       }
+
+      // `after` tag
+
+      // pop the info from stack
+      const info = infoStack.pop() || ''
+
+      // render
+      return renderAfter(info)
     }
   }
 

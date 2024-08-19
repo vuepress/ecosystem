@@ -12,6 +12,6 @@ import type { WalineOptions } from './waline.js'
 export type CommentOptions =
   | ArtalkOptions
   | GiscusOptions
+  | NoCommentPluginOptions
   | TwikooOptions
   | WalineOptions
-  | NoCommentPluginOptions

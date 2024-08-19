@@ -13,8 +13,8 @@ See [Artalk Configuration](https://artalk.js.org/guide/frontend/config.html) for
 You can directly configure serializable options in the plugin options:
 
 ```ts title=".vuepress/config.ts"
-import { defineUserConfig } from 'vuepress'
 import { commentPlugin } from '@vuepress/plugin-comment'
+import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
   plugins: [
@@ -32,8 +32,8 @@ export default defineUserConfig({
 You can use the `defineArtalkConfig` function to customize Artalk:
 
 ```ts title=".vuepress/client.ts"
-import { defineClientConfig } from 'vuepress/client'
 import { defineArtalkConfig } from '@vuepress/plugin-comment/client'
+import { defineClientConfig } from 'vuepress/client'
 
 defineArtalkConfig({
   // Artalk config

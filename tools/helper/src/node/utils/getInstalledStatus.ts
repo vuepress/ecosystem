@@ -5,7 +5,7 @@ export const getInstalledStatus = (
   currentUrl: string,
 ): boolean => {
   try {
-    pkg && createRequire(currentUrl).resolve(pkg)
+    if (pkg) createRequire(currentUrl).resolve(pkg)
 
     return true
   } catch {

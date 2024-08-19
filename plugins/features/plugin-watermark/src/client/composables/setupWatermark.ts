@@ -1,6 +1,6 @@
 import { wait } from '@vuepress/helper/client'
-import { isRef, nextTick, onMounted, toValue, watch } from 'vue'
 import type { MaybeRef, Ref } from 'vue'
+import { isRef, nextTick, onMounted, toValue, watch } from 'vue'
 import { useRoutePath, useSiteLocaleData, withBase } from 'vuepress/client'
 import { Watermark } from 'watermark-js-plus'
 import type { WatermarkOptions } from '../helper/index.js'
@@ -17,7 +17,7 @@ export const setupWatermark = (
     const watermark = new Watermark()
 
     const updateWaterMark = (watermarkOptions: WatermarkOptions): void => {
-      const options = {
+      const newOptions = {
         // set default text to site title
         content: siteData.value.title,
         // set font color to make it readable both lightmode and darkmode
@@ -27,12 +27,12 @@ export const setupWatermark = (
         ...watermarkOptions,
       }
 
-      if (options.image?.startsWith('/')) {
-        options.image = withBase(options.image)
+      if (newOptions.image?.startsWith('/')) {
+        newOptions.image = withBase(newOptions.image)
       }
 
       if (toValue(enabled)) {
-        watermark.changeOptions(options)
+        void watermark.changeOptions(newOptions)
       }
     }
 
@@ -41,7 +41,9 @@ export const setupWatermark = (
       () =>
         nextTick(() => {
           if (enabled.value) {
-            wait(delay).then(() => updateWaterMark(toValue(options)))
+            void wait(delay).then(() => {
+              updateWaterMark(toValue(options))
+            })
           } else {
             watermark.destroy()
           }

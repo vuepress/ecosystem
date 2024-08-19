@@ -1,17 +1,20 @@
 <script setup lang="ts">
-import { useThemeLocaleData } from '@theme/useThemeData'
-import { DeviceType, useUpdateDeviceStatus } from '@theme/useUpdateDeviceStatus'
 import VPNavbarBrand from '@theme/VPNavbarBrand.vue'
 import VPNavbarItems from '@theme/VPNavbarItems.vue'
 import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'
 import VPToggleSidebarButton from '@theme/VPToggleSidebarButton.vue'
+import { useThemeLocaleData } from '@theme/useThemeData'
+import { DeviceType, useUpdateDeviceStatus } from '@theme/useUpdateDeviceStatus'
+import type { VNode } from 'vue'
 import { computed, ref } from 'vue'
 
-defineEmits<(e: 'toggle-sidebar') => void>()
+defineEmits<{
+  toggleSidebar: []
+}>()
 
 defineSlots<{
-  before?: (props: Record<never, never>) => any
-  after?: (props: Record<never, never>) => any
+  before?: (props: Record<never, never>) => VNode | VNode[] | null
+  after?: (props: Record<never, never>) => VNode | VNode[] | null
 }>()
 
 const themeLocale = useThemeLocaleData()
@@ -25,16 +28,17 @@ const linksWrapperStyle = computed(() => {
     return {}
   }
   return {
-    maxWidth: linksWrapperMaxWidth.value + 'px',
+    maxWidth: `${linksWrapperMaxWidth.value}px`,
   }
 })
 
 const getCssValue = (el: HTMLElement | null, property: string): number => {
   // NOTE: Known bug, will return 'auto' if style value is 'auto'
-  const val = el?.ownerDocument?.defaultView?.getComputedStyle(el, null)?.[
-    property
+  const val = el?.ownerDocument.defaultView?.getComputedStyle(el, null)[
+    property as keyof CSSStyleDeclaration
   ]
-  const num = Number.parseInt(val, 10)
+
+  const num = Number.parseInt(val as string, 10)
 
   return Number.isNaN(num) ? 0 : num
 }
@@ -60,7 +64,7 @@ useUpdateDeviceStatus(
 
 <template>
   <header ref="navbar" class="vp-navbar">
-    <VPToggleSidebarButton @toggle="$emit('toggle-sidebar')" />
+    <VPToggleSidebarButton @toggle="$emit('toggleSidebar')" />
 
     <span ref="navbarBrand">
       <VPNavbarBrand />

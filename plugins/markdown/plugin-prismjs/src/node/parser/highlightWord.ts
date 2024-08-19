@@ -8,12 +8,12 @@ const WORD_AFTER = '</span>'
 
 export const highlightWordInLine = (
   node: OpenTag,
-  pattern: string | RegExp,
+  pattern: RegExp | string,
 ): void => {
   node.content = node.content
     .split(SPLIT_REGEXP)
     .map((text) => {
-      if (!text || text[0] === '<') {
+      if (!text || text.startsWith('<')) {
         return text
       }
       return text.replaceAll(
@@ -43,7 +43,9 @@ export const metaWordHighlight = (parser: CodeParser, meta: string): void => {
   const words = parseMetaHighlightWords(meta)
 
   if (words.length) {
-    const pattern = new RegExp(`${words.join('|')}`, 'g')
-    parser.line((line) => highlightWordInLine(line, pattern))
+    const pattern = new RegExp(words.join('|'), 'g')
+    parser.line((line) => {
+      highlightWordInLine(line, pattern)
+    })
   }
 }

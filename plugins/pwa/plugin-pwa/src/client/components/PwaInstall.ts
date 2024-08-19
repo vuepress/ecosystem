@@ -42,7 +42,7 @@ export const PwaInstall = defineComponent({
     const hinted = ref(false)
 
     const useHint = computed(
-      () => isIOS.value && isSafari.value && hinted.value === false,
+      () => isIOS.value && isSafari.value && !hinted.value,
     )
 
     const showInstall = computed(
@@ -88,7 +88,7 @@ export const PwaInstall = defineComponent({
       }
 
       if ('getInstalledRelatedApps' in (navigator as ModernNavigator))
-        (navigator as ModernNavigator)
+        void (navigator as ModernNavigator)
           .getInstalledRelatedApps()
           .then((result) => {
             hasRelatedApps.value = result.length > 0
@@ -119,7 +119,9 @@ export const PwaInstall = defineComponent({
           onCanInstall: (value: boolean) => {
             canInstall.value = value
           },
-          onHint: () => hint(),
+          onHint: () => {
+            hint()
+          },
           onClose: () => toggleIsOpen(false),
         }),
       ])

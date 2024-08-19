@@ -18,17 +18,21 @@ export const getFeedChannelOptions = (
     image,
   } = options
   const authorName = isArray(options.channel?.author)
-    ? options.channel?.author[0]?.name
+    ? options.channel.author[0]?.name
     : options.channel?.author?.name
 
   const defaultChannelOption: FeedChannelOptions = {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     title: locales[localePath]?.title || title || locales['/']?.title || '',
     link: getUrl(hostname, base, localePath),
     description:
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       locales[localePath]?.description ||
       description ||
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       locales['/']?.description ||
       '',
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     language: locales[localePath]?.lang || lang,
     copyright: authorName ? `Copyright by ${authorName}` : '',
     pubDate: new Date(),

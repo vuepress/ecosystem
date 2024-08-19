@@ -22,7 +22,7 @@ export const encodeXML = (content: ElementCompact): ElementCompact =>
         return [
           key,
           fromEntries(
-            entries(value as Record<string, string | number | undefined>).map(
+            entries(value as Record<string, number | string | undefined>).map(
               ([key, value]) => [
                 key,
                 value ? encodeXMLContent(value.toString()) : undefined,
@@ -32,7 +32,7 @@ export const encodeXML = (content: ElementCompact): ElementCompact =>
         ]
 
       if (key === '_text')
-        return [key, encodeXMLContent((value as string | number).toString())]
+        return [key, encodeXMLContent((value as number | string).toString())]
       if (key === '_cdata') return [key, encodeCDATA(value as string)]
       if (key === '_comment' || key === '_instruction') return [key, value]
 

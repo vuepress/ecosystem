@@ -37,7 +37,7 @@ page.data.readingTime // { minutes: 3.2, words: 934 }
 
 你可以在 `extendsPage` 以及其他生命周期获取它做进一步处理:
 
-```ts
+```js
 export default {
   // ...
   extendsPage: (page) => {
@@ -45,7 +45,7 @@ export default {
   },
 
   onInitialized: (app) => {
-    app.pages.map((page) => {
+    app.pages.forEach((page) => {
       page.data.readingTime // { minutes: 3.2, words: 934 }
     })
   },
@@ -174,7 +174,7 @@ const useReadingTimeLocale: () => ComputedRef<ReadingTimeLocale>
 
 由于此插件主要面向插件和主题开发者，所以提供了 "使用 API"：
 
-```ts title="你插件或主题的入口"
+```js title="你插件或主题的入口"
 import { useReadingTimePlugin } from '@vuepress/plugin-reading-time'
 
 export default (options) => (app) => {

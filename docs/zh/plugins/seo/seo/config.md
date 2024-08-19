@@ -32,7 +32,7 @@
     email?: string
   }
 
-  type Author = AuthorName | AuthorName[] | AuthorInfo | AuthorInfo[]
+  type Author = AuthorInfo | AuthorInfo[] | AuthorName | AuthorName[]
   ```
 
 - 详情：

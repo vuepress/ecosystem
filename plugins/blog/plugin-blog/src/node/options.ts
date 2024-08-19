@@ -72,7 +72,7 @@ export interface BlogCategoryOptions<
    *
    * @default `/:key/:name/`
    */
-  itemPath?: string | ((name: string) => string) | false
+  itemPath?: string | false | ((name: string) => string)
 
   /**
    * Item page layout name
@@ -163,7 +163,7 @@ export interface BlogPluginPageData {
 export interface BlogPluginOptions
   extends Pick<
     PageExcerptOptions,
-    'isCustomElement' | 'keepPageTitle' | 'keepFenceDom'
+    'isCustomElement' | 'keepFenceDom' | 'keepPageTitle'
   > {
   /**
    * Function getting article info.

@@ -69,8 +69,8 @@ Then, if you want to replace the `HomeFooter.vue` component, just override the a
 
 ```ts
 import { defaultTheme } from '@vuepress/theme-default'
-import { getDirname, path } from 'vuepress/utils'
 import { defineUserConfig } from 'vuepress'
+import { getDirname, path } from 'vuepress/utils'
 
 const __dirname = getDirname(import.meta.url)
 
@@ -96,29 +96,28 @@ For example, if you want to add some default values ​​to the theme data of t
 Instead of extending the default theme directly in `.vuepress/config.ts` and `.vuepress/client.ts`, you can also develop your own theme extending the default theme:
 
 ```ts
-import { defaultTheme, type DefaultThemeOptions } from '@vuepress/theme-default'
+import type { DefaultThemeOptions } from '@vuepress/theme-default'
+import { defaultTheme } from '@vuepress/theme-default'
 import type { Theme } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 
 const __dirname = getDirname(import.meta.url)
 
-export const childTheme = (options: DefaultThemeOptions): Theme => {
-  return {
-    name: 'vuepress-theme-child',
-    extends: defaultTheme(options),
+export const childTheme = (options: DefaultThemeOptions): Theme => ({
+  name: 'vuepress-theme-child',
+  extends: defaultTheme(options),
 
-    // override layouts in child theme's client config file
-    // notice that you would build ts to js before publishing to npm,
-    // so this should be the path to the js file
-    clientConfigFile: path.resolve(__dirname, './client.js'),
+  // override layouts in child theme's client config file
+  // notice that you would build ts to js before publishing to npm,
+  // so this should be the path to the js file
+  clientConfigFile: path.resolve(__dirname, './client.js'),
 
-    // override component alias
-    alias: {
-      '@theme/HomeFooter.vue': path.resolve(
-        __dirname,
-        './components/MyHomeFooter.vue',
-      ),
-    },
-  }
-}
+  // override component alias
+  alias: {
+    '@theme/HomeFooter.vue': path.resolve(
+      __dirname,
+      './components/MyHomeFooter.vue',
+    ),
+  },
+})
 ```

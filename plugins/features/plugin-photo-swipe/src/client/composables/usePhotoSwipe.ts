@@ -3,14 +3,14 @@ import { nextTick, onMounted, onUnmounted, watch } from 'vue'
 import { usePageData, usePageFrontmatter } from 'vuepress/client'
 import type { PhotoSwipePluginLocaleData } from '../../shared/index.js'
 import { usePhotoSwipeOptions } from '../helpers/index.js'
-import { getImages, registerPhotoSwipe } from '../utils/index.js'
 import type { PhotoSwipeBehaviorOptions } from '../utils/index.js'
+import { getImages, registerPhotoSwipe } from '../utils/index.js'
 
 import 'photoswipe/dist/photoswipe.css'
 import '../styles/photo-swipe.css'
 
 export interface UsePhotoSwipeOptions extends PhotoSwipeBehaviorOptions {
-  selector: string | string[]
+  selector: string[] | string
   locales: Record<
     string,
     Record<`${keyof PhotoSwipePluginLocaleData}Title`, string>
@@ -30,7 +30,7 @@ export const usePhotoSwipe = ({
   const photoSwipeOptions = usePhotoSwipeOptions()
   const locale = useLocaleConfig(locales)
   const page = usePageData()
-  const frontmatter = usePageFrontmatter<{ photoSwipe: string | boolean }>()
+  const frontmatter = usePageFrontmatter<{ photoSwipe: boolean | string }>()
 
   let destroy: (() => void) | null = null
 
@@ -38,7 +38,7 @@ export const usePhotoSwipe = ({
     const { photoSwipe } = frontmatter.value
 
     if (photoSwipe !== false)
-      nextTick()
+      void nextTick()
         .then(() => wait(delay))
         .then(async () => {
           const imageSelector = isString(photoSwipe) ? photoSwipe : selector

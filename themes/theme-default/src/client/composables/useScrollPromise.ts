@@ -8,9 +8,12 @@ let promise: Promise<void> | null = null
 let promiseResolve: (() => void) | null = null
 
 const scrollPromise: ScrollPromise = {
+  // eslint-disable-next-line @typescript-eslint/promise-function-async
   wait: () => promise,
   pending: () => {
-    promise = new Promise((resolve) => (promiseResolve = resolve))
+    promise = new Promise((resolve) => {
+      promiseResolve = resolve
+    })
   },
   resolve: () => {
     promiseResolve?.()

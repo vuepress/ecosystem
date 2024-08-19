@@ -13,8 +13,8 @@ npm i -D @vuepress/plugin-sass-palette@next
 ```
 
 ```ts title="Your plugin or theme entry"
-import { useSassPalettePlugin } from 'vuepress-plugin-sass-palette'
 import type { PluginFunction } from 'vuepress/core'
+import { useSassPalettePlugin } from 'vuepress-plugin-sass-palette'
 
 export const yourPlugin =
   (options): PluginFunction =>

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { readFileSync, writeFileSync } from 'node:fs'
 import { createRequire } from 'node:module'
 import { dirname, join } from 'node:path'
@@ -119,7 +120,7 @@ export const generateTemplate = async ({
     default: true,
   })
 
-  console.log(locale.flow.generateTemplate)
+  console.info(locale.flow.generateTemplate)
 
   // copy template
   copy(join(templateFolder, preset), join(targetDirPath, 'docs'))

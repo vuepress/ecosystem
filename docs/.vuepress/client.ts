@@ -59,7 +59,6 @@ defineDocSearchConfig({
   },
 })
 
-// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
 export default defineClientConfig({
   layouts: {
     // We override the default layout to provide comment service

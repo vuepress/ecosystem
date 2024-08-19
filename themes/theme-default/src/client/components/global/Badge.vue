@@ -1,10 +1,20 @@
+<!-- eslint-disable-next-line vue/multi-word-component-names -->
 <script setup lang="ts">
 import type { VNode } from 'vue'
 
 withDefaults(
   defineProps<{
+    /**
+     * The type of the badge
+     */
     type?: string
+    /**
+     * The text of the badge
+     */
     text?: string
+    /**
+     * The vertical align of the badge
+     */
     vertical?: string
   }>(),
   {
@@ -15,7 +25,7 @@ withDefaults(
 )
 
 defineSlots<{
-  default?: () => VNode | VNode | string | null
+  default?: () => VNode | VNode[] | string | null
 }>()
 </script>
 

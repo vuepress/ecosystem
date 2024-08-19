@@ -1,7 +1,7 @@
 import { useSidebarItems } from '@theme/useSidebarItems'
 import { useThemeLocaleData } from '@theme/useThemeData'
-import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
+import { computed } from 'vue'
 import { resolveRoute, usePageFrontmatter, useRoute } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
 import type {
@@ -14,7 +14,7 @@ import { getAutoLink } from '../utils/index.js'
 const resolveFromFrontmatterConfig = (
   config: unknown,
   currentPath: string,
-): null | false | AutoLinkOptions => {
+): AutoLinkOptions | false | null => {
   if (config === false) {
     return false
   }
@@ -39,7 +39,7 @@ const resolveFromSidebarItems = (
   sidebarItems: SidebarItem[],
   currentPath: string,
   offset: number,
-): null | AutoLinkOptions => {
+): AutoLinkOptions | null => {
   const linkIndex = sidebarItems.findIndex((item) => item.link === currentPath)
 
   if (linkIndex !== -1) {

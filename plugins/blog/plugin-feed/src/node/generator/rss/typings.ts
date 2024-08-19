@@ -34,7 +34,7 @@ export interface RSSEnclosure {
 
 export interface RSSGuid extends RSSText {
   _attributes?: {
-    isPermaLink: 'true' | 'false'
+    isPermaLink: 'false' | 'true'
   }
 }
 

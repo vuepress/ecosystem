@@ -5,7 +5,7 @@ import { appendSEO } from './appendSEO.js'
 import { generateDescription } from './generateDescription.js'
 import { generateRobotsTxt } from './generateRobotsTxt.js'
 import type { SeoPluginOptions } from './options.js'
-import { logger, PLUGIN_NAME } from './utils/index.js'
+import { PLUGIN_NAME, logger } from './utils/index.js'
 
 export const seoPlugin =
   (options: SeoPluginOptions): PluginFunction =>
@@ -28,10 +28,10 @@ export const seoPlugin =
           generateDescription(app, page, options.autoDescription !== false)
       },
 
-      onInitialized: (app): void => {
+      onInitialized: (): void => {
         appendSEO(app, options)
       },
 
-      onGenerated: (app): Promise<void> => generateRobotsTxt(app),
+      onGenerated: (): Promise<void> => generateRobotsTxt(app),
     }
   }

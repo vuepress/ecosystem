@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import type { Bundler } from 'vuepress/core'
 import { createBaseApp } from 'vuepress/core'
 import { fs, path } from 'vuepress/utils'
 import { preparePaletteFile, presetOptions } from '../../src/node/index.js'
@@ -6,7 +7,7 @@ import { preparePaletteFile, presetOptions } from '../../src/node/index.js'
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
   theme: { name: 'test' },
-  bundler: {} as any,
+  bundler: {} as Bundler,
   temp: path.resolve(__dirname, '../__fixtures__/.temp'),
 })
 
@@ -31,8 +32,8 @@ describe('plugin-palette > node > preparePaletteFile', () => {
       },
     ]
 
-    testCases.forEach(({ name, ext }) =>
-      it(`${name}`, async () => {
+    testCases.forEach(({ name, ext }) => {
+      it(name, async () => {
         const userPaletteFile = path.resolve(
           __dirname,
           '../__fixtures__',
@@ -47,8 +48,8 @@ describe('plugin-palette > node > preparePaletteFile', () => {
         })
         const result = (await fs.readFile(tempFile)).toString()
         expect(result).toEqual(importCode(userPaletteFile))
-      }),
-    )
+      })
+    })
   })
 
   it('should generate empty palette temp file', async () => {

@@ -3,7 +3,7 @@ import type { Page, PluginFunction } from 'vuepress/core'
 import type { ReadingTime } from '../shared/index.js'
 import { getReadingTime } from './getReadingTime.js'
 import { readingTimeLocales } from './locales.js'
-import { logger, PLUGIN_NAME } from './logger.js'
+import { PLUGIN_NAME, logger } from './logger.js'
 import type { ReadingTimePluginOptions } from './options.js'
 
 /** Reading time plugin */
@@ -15,7 +15,7 @@ export const readingTimePlugin =
     return {
       name: PLUGIN_NAME,
 
-      define: (app): Record<string, unknown> => ({
+      define: (): Record<string, unknown> => ({
         __READING_TIME_LOCALES__: getLocaleConfig({
           app,
           name: PLUGIN_NAME,
@@ -27,11 +27,11 @@ export const readingTimePlugin =
       extendsPage: (page: Page<{ readingTime?: ReadingTime }>): void => {
         page.data.readingTime = getReadingTime(
           page.content,
-          options.wordPerMinute || 300,
+          options.wordPerMinute ?? 300,
         )
       },
 
-      extendsBundlerOptions: (bundlerOptions: unknown, app): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown): void => {
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
     }

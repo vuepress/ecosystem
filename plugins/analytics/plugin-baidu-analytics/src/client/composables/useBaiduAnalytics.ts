@@ -3,7 +3,7 @@ import { usePageData } from 'vuepress/client'
 
 declare global {
   interface Window {
-    _hmt?: [name: string, options: any][]
+    _hmt?: [name: string, options: unknown][]
   }
 }
 

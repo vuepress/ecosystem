@@ -1,8 +1,7 @@
 import { defaultTheme } from '@vuepress/theme-default'
-import type { Theme } from 'vuepress/core'
 import { navbarEn, navbarZh, sidebarEn, sidebarZh } from './configs'
 
-const isProd = process.env.NODE_ENV === 'production'
+const IS_PROD = process.env.NODE_ENV === 'production'
 
 export default defaultTheme({
   logo: '/images/hero.png',
@@ -63,9 +62,9 @@ export default defaultTheme({
 
   themePlugins: {
     // only enable git plugin in production mode
-    git: isProd,
+    git: IS_PROD,
     // use shiki plugin in production mode instead
-    prismjs: isProd
+    prismjs: IS_PROD
       ? false
       : {
           themes: {
@@ -81,4 +80,4 @@ export default defaultTheme({
           whitespace: true,
         },
   },
-}) as Theme
+})

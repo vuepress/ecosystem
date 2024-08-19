@@ -19,8 +19,8 @@
 你可以直接在插件选项中配置可序列化的选项:
 
 ```ts title=".vuepress/config.ts"
-import { defineUserConfig } from 'vuepress'
 import { commentPlugin } from '@vuepress/plugin-comment'
+import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
   plugins: [
@@ -38,8 +38,8 @@ export default defineUserConfig({
 你可以使用 `defineTwikooConfig` 函数来配置 Twikoo。
 
 ```ts title=".vuepress/client.ts"
-import { defineClientConfig } from 'vuepress/client'
 import { defineTwikooConfig } from '@vuepress/plugin-comment/client'
+import { defineClientConfig } from 'vuepress/client'
 
 defineTwikooConfig({
   // Twikoo 选项

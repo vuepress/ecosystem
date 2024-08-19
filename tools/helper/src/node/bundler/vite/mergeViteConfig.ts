@@ -50,7 +50,7 @@ SOFTWARE.
 import { endsWith, isArray, isString, keys } from '../../../shared/index.js'
 
 interface Alias {
-  find: string | RegExp
+  find: RegExp | string
   replacement: string
   /**
    * Instructs the plugin to use an alternative resolving algorithm,
@@ -67,7 +67,7 @@ interface ResolverObject {
   resolveId: ResolverFunction
 }
 
-type AliasOptions = readonly Alias[] | Record<string, string>
+type AliasOptions = Record<string, string> | readonly Alias[]
 
 const isObject = (value: unknown): value is Record<string, any> =>
   Object.prototype.toString.call(value) === '[object Object]'

@@ -11,7 +11,7 @@ import type { PluginFunction } from 'vuepress/core'
 import { getAlias, getProviderPackage } from './getProvider.js'
 import { walineLocales } from './locales.js'
 import type { CommentPluginOptions } from './options.js'
-import { CLIENT_FOLDER, logger, PLUGIN_NAME } from './utils.js'
+import { CLIENT_FOLDER, PLUGIN_NAME, logger } from './utils.js'
 
 /** Comment Plugin */
 export const commentPlugin =
@@ -38,7 +38,7 @@ export const commentPlugin =
 
       alias: getAlias(options),
 
-      define: (app) => {
+      define: () => {
         const userWalineLocales =
           options.provider === 'Waline'
             ? getLocaleConfig({
@@ -60,7 +60,8 @@ export const commentPlugin =
         }
       },
 
-      extendsBundlerOptions: (bundlerOptions: unknown, app): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown): void => {
+        // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check, default-case
         switch (options.provider) {
           case 'Artalk': {
             addViteOptimizeDepsExclude(

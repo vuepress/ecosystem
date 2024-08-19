@@ -15,5 +15,5 @@ export interface AppendDatePluginOptions {
    *
    * @default 'date'
    */
-  format?: 'date' | 'time' | 'full'
+  format?: 'date' | 'full' | 'time'
 }

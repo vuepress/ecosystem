@@ -36,8 +36,10 @@ export const getOGPInfo = (
   } = page
 
   const title =
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     siteData.locales[page.pathLocale]?.title ||
     siteData.title ||
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     siteData.locales['/']?.title ||
     ''
   const author = getSEOAuthor(pageAuthor || globalAuthor)

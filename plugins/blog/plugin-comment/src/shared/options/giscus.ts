@@ -3,25 +3,25 @@ import type { BaseCommentPluginOptions } from './base.js'
 export type GiscusRepo = `${string}/${string}`
 
 export type GiscusMapping =
-  | 'url'
-  | 'title'
-  | 'og:title'
-  | 'specific'
   | 'number'
+  | 'og:title'
   | 'pathname'
+  | 'specific'
+  | 'title'
+  | 'url'
 
-export type GiscusInputPosition = 'top' | 'bottom'
+export type GiscusInputPosition = 'bottom' | 'top'
 
 export type GiscusTheme =
-  | 'light'
-  | 'light_high_contrast'
-  | 'light_protanopia'
-  | 'dark'
+  | 'dark_dimmed'
   | 'dark_high_contrast'
   | 'dark_protanopia'
-  | 'dark_dimmed'
-  | 'transparent_dark'
+  | 'dark'
+  | 'light_high_contrast'
+  | 'light_protanopia'
+  | 'light'
   | 'preferred_color_scheme'
+  | 'transparent_dark'
   | `https://${string}`
 
 export interface GiscusOptions extends BaseCommentPluginOptions {

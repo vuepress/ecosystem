@@ -8,7 +8,13 @@ import { isActiveLinkItem } from '../utils/index.js'
 
 const props = withDefaults(
   defineProps<{
+    /**
+     * The sidebar item to be rendered
+     */
     item: SidebarItem
+    /**
+     * The depth of the current sidebar item
+     */
     depth?: number
   }>(),
   { depth: 0 },
@@ -42,8 +48,8 @@ const onClick = (e: Event): void => {
 }
 
 // reset open status after navigation
-const unregisterRouterHook = router.afterEach((to) => {
-  nextTick(() => {
+const unregisterRouterHook = router.afterEach(() => {
+  void nextTick(() => {
     isOpen.value = isOpenDefault.value
   })
 })

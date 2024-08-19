@@ -1,8 +1,9 @@
 import type { Zoom } from 'medium-zoom'
-import { inject } from 'vue'
 import type { InjectionKey } from 'vue'
+import { inject } from 'vue'
 
 declare module 'medium-zoom' {
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   interface Zoom {
     refresh: (selector?: string) => void
   }

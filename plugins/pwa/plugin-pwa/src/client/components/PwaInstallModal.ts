@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useLocaleConfig } from '@vuepress/helper/client'
 import { useEventListener } from '@vueuse/core'
 import type { PropType, VNode } from 'vue'
@@ -120,13 +121,18 @@ export const PwaInstallModal = defineComponent({
           if (event.key === 'Escape') emit('close', false)
         })
 
-        getManifest()
+        void getManifest()
       }
     })
 
     return (): VNode =>
       h('div', { id: 'install-modal-wrapper' }, [
-        h('div', { class: 'background', onClick: () => emit('close', false) }),
+        h('div', {
+          class: 'background',
+          onClick: () => {
+            emit('close', false)
+          },
+        }),
 
         h('div', { class: 'install-modal' }, [
           h('div', { class: 'header' }, [
@@ -137,7 +143,9 @@ export const PwaInstallModal = defineComponent({
                 'type': 'button',
                 'class': 'close-button',
                 'aria-label': locale.value.close,
-                'onClick': () => emit('close', false),
+                'onClick': () => {
+                  emit('close', false)
+                },
               },
               h(CloseIcon),
             ),
@@ -227,7 +235,9 @@ export const PwaInstallModal = defineComponent({
                   {
                     type: 'button',
                     class: 'cancel-button',
-                    onClick: () => emit('close', false),
+                    onClick: () => {
+                      emit('close', false)
+                    },
                   },
                   locale.value.cancel,
                 ),

@@ -14,7 +14,7 @@ export const registerPhotoSwipe = (
     download = true,
     fullscreen = true,
     ...photoSwipeOptions
-  }: PhotoSwipeOptions & PhotoSwipeBehaviorOptions,
+  }: PhotoSwipeBehaviorOptions & PhotoSwipeOptions,
 ): Promise<() => void> =>
   import(/* webpackChunkName: "photo-swipe" */ 'photoswipe').then(
     ({ default: PhotoSwipe }) => {
@@ -59,7 +59,7 @@ export const registerPhotoSwipe = (
           image.setAttribute('photo-swipe', '')
         }
 
-        getImageElementInfo(image).then((data) => {
+        void getImageElementInfo(image).then((data) => {
           dataSource.splice(index, 1, data)
           currentPhotoSwipe?.refreshSlideContent(index)
         })

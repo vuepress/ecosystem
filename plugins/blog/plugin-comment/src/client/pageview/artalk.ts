@@ -7,10 +7,11 @@ export const isSupported = true
 export const usePageview = (): UpdatePageview => {
   const options = useArtalkOptions()
 
-  return ({ selector }) =>
+  return ({ selector }) => {
     Artalk.loadCountWidget({
       server: options.value.server,
       site: options.value.site,
       ...(selector ? { countEl: selector } : {}),
     })
+  }
 }

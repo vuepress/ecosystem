@@ -1,11 +1,11 @@
 export type SitemapChangeFrequency =
   | 'always'
-  | 'hourly'
   | 'daily'
-  | 'weekly'
+  | 'hourly'
   | 'monthly'
-  | 'yearly'
   | 'never'
+  | 'weekly'
+  | 'yearly'
 
 /**
  * None standard sitemap options used by google
@@ -155,17 +155,17 @@ export interface SitemapVideoOption {
    */
   'rating'?: number
 
-  'family_friendly'?: 'YES' | 'NO'
+  'family_friendly'?: 'NO' | 'YES'
 
   /**
    * Indicates whether a subscription (either paid or free) is required to view the video.
    */
-  'requires_subscription'?: 'YES' | 'NO'
+  'requires_subscription'?: 'NO' | 'YES'
 
   /**
    * Indicates whether the video is a live stream.
    */
-  'live'?: 'YES' | 'NO'
+  'live'?: 'NO' | 'YES'
 }
 
 /**

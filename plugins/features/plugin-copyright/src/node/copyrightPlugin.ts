@@ -1,4 +1,4 @@
-import { addViteSsrNoExternal, getLocaleConfig, Logger } from '@vuepress/helper'
+import { Logger, addViteSsrNoExternal, getLocaleConfig } from '@vuepress/helper'
 import type { Page, PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 import type {
@@ -78,7 +78,7 @@ export const copyrightPlugin =
         }
       },
 
-      extendsBundlerOptions: (bundlerOptions: unknown, app): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown): void => {
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
 

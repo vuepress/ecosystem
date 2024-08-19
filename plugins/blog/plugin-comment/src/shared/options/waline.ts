@@ -8,7 +8,7 @@ export type WalineLocaleConfig = ExactLocaleConfig<WalineLocaleData>
 
 export interface WalineOptions
   extends BaseCommentPluginOptions,
-    Omit<WalineInitOptions, 'el' | 'comment' | 'locale'> {
+    Omit<WalineInitOptions, 'comment' | 'el' | 'locale'> {
   /**
    * Whether enable page views count by default
    *

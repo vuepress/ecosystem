@@ -10,7 +10,7 @@ import { getRedirectLocaleConfig } from './getRedirectLocaleConfig.js'
 import { getRedirectMap } from './getRedirectMap.js'
 import { handleRedirectTo } from './handleRedirectTo.js'
 import { redirectLocales } from './locales.js'
-import { logger, PLUGIN_NAME } from './logger.js'
+import { PLUGIN_NAME, logger } from './logger.js'
 import type { RedirectPluginOptions } from './types/index.js'
 
 const __dirname = getDirname(import.meta.url)
@@ -37,15 +37,15 @@ export const redirectPlugin =
         }),
       },
 
-      extendsBundlerOptions: (bundlerOptions: unknown, app): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown): void => {
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
 
-      extendsPage: (page, app) => {
+      extendsPage: (page) => {
         handleRedirectTo(page, app)
       },
 
-      onInitialized: async (app): Promise<void> => {
+      onInitialized: async (): Promise<void> => {
         redirectMap = getRedirectMap(app, options)
 
         if (app.env.isDebug) logger.info('Redirect Map:', redirectMap)
@@ -54,7 +54,7 @@ export const redirectPlugin =
           await ensureRootHomePage(app)
       },
 
-      onPrepared: async (app): Promise<void> => {
+      onPrepared: async (): Promise<void> => {
         await app.writeTemp(
           'redirect/map.js',
           `\
@@ -65,7 +65,7 @@ export const redirectMap = ${
         )
       },
 
-      onGenerated: async (app): Promise<void> => {
+      onGenerated: async (): Promise<void> => {
         await generateRedirectFiles(app, redirectMap)
         if (redirectLocaleConfig.autoLocale)
           await generateAutoLocaleRedirectFiles(app, redirectLocaleConfig)

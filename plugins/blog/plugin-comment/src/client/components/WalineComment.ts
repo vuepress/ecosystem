@@ -26,7 +26,7 @@ declare const WALINE_LOCALES: WalineLocaleConfig
 const walineLocales = WALINE_LOCALES
 
 if (WALINE_META)
-  import(/* webpackChunkName: "waline" */ '@waline/client/waline-meta.css')
+  void import(/* webpackChunkName: "waline" */ '@waline/client/waline-meta.css')
 
 export default defineComponent({
   name: 'WalineComment',
@@ -47,7 +47,7 @@ export default defineComponent({
     const lang = usePageLang()
     const walineLocale = useLocaleConfig(walineLocales)
 
-    let abort: () => void
+    let abort: (() => void) | null = null
     const enableWaline = computed(() => Boolean(walineOptions.value.serverURL))
 
     const enablePageViews = computed(() => {
@@ -59,7 +59,7 @@ export default defineComponent({
         // Enable in page
         Boolean(pageConfig) ||
         // Not disabled in anywhere
-        (pluginConfig !== false && pageConfig !== false)
+        (pluginConfig && pageConfig !== false)
       )
     })
 
@@ -83,8 +83,8 @@ export default defineComponent({
           abort?.()
 
           if (enablePageViews.value)
-            nextTick()
-              .then(() => wait(walineOptions.value.delay || 800))
+            void nextTick()
+              .then(() => wait(walineOptions.value.delay ?? 800))
               .then(() => {
                 setTimeout(() => {
                   abort = pageviewCount({

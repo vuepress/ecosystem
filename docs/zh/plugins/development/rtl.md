@@ -38,7 +38,7 @@ export default {
 
   ```ts
   interface SelectorOptions {
-    [element: string]: {
+    [selector: string]: {
       [attrs: string]: string
     }
   }

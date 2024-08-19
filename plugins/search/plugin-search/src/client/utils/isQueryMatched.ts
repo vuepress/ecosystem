@@ -1,8 +1,8 @@
 // eslint-disable-next-line no-control-regex
 const nonASCIIRegExp = /[^\x00-\x7F]/
 
-const splitWords = (str: string): string[] =>
-  str
+const splitWords = (content: string): string[] =>
+  content
     .split(/\s+/g)
     .map((str) => str.trim())
     .filter((str) => !!str)
@@ -16,13 +16,13 @@ export const isQueryMatched = (query: string, toMatch: string[]): boolean => {
 
   if (nonASCIIRegExp.test(query)) {
     // if the query has non-ASCII chars, treat as other languages
-    return words.some((word) => toMatchStr.toLowerCase().indexOf(word) > -1)
+    return words.some((word) => toMatchStr.toLowerCase().includes(word))
   }
 
   // if the query only has ASCII chars, treat as English
   const hasTrailingSpace = query.endsWith(' ')
   const searchRegex = new RegExp(
-    words
+    `${words
       .map((word, index) => {
         if (words.length === index + 1 && !hasTrailingSpace) {
           // The last word - ok with the word being "startsWith"-like
@@ -31,7 +31,7 @@ export const isQueryMatched = (query: string, toMatch: string[]): boolean => {
         // Not the last word - expect the whole word exactly
         return `(?=.*\\b${escapeRegExp(word)}\\b)`
       })
-      .join('') + '.+',
+      .join('')}.+`,
     'gi',
   )
   return searchRegex.test(toMatchStr)

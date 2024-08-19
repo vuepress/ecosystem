@@ -30,7 +30,7 @@ export const rtlPlugin = (options: RTLPluginOptions = {}): PluginObject => ({
 
   define: {
     __RTL_LOCALES__: Array.isArray(options.locales) ? options.locales : ['/'],
-    __RTL_SELECTOR__: options.selector || { html: { dir: 'rtl' } },
+    __RTL_SELECTOR__: options.selector ?? { html: { dir: 'rtl' } },
   },
 
   clientConfigFile: path.join(__dirname, '../client/config.js'),

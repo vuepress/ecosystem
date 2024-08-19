@@ -37,7 +37,7 @@ export const useGoogleAnalytics = (
   document.head.appendChild(gtagScript)
 
   // insert gtag snippet
-  window.dataLayer = window.dataLayer || []
+  window.dataLayer = window.dataLayer ?? []
   // the gtag function must use `arguments` object to forward parameters
   window.gtag = function () {
     // eslint-disable-next-line prefer-rest-params

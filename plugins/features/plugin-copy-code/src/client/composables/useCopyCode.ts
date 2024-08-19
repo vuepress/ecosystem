@@ -104,9 +104,9 @@ export const useCopyCode = ({
     const clone = codeContent.cloneNode(true) as HTMLPreElement
 
     if (ignoreSelector.length) {
-      clone
-        .querySelectorAll(ignoreSelector.join(','))
-        .forEach((node) => node.remove())
+      clone.querySelectorAll(ignoreSelector.join(',')).forEach((node) => {
+        node.remove()
+      })
     }
 
     if (transform) transform(clone)

@@ -1,7 +1,7 @@
 import type { Plugin } from 'vuepress/core'
 import { isFunction } from 'vuepress/shared'
 import { getDirname, path } from 'vuepress/utils'
-import { logger, PLUGIN_NAME } from './logger.js'
+import { PLUGIN_NAME, logger } from './logger.js'
 import type { WatermarkPluginOptions } from './options.js'
 
 const __dirname = getDirname(import.meta.url)

@@ -25,7 +25,7 @@ export interface AuthorInfo {
   email?: string
 }
 
-export type SeoAuthor = AuthorName | AuthorName[] | AuthorInfo | AuthorInfo[]
+export type SeoAuthor = AuthorInfo | AuthorInfo[] | AuthorName | AuthorName[]
 
 export interface SEOPluginFrontmatter extends PageFrontmatter {
   /**

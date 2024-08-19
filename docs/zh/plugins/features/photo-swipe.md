@@ -130,8 +130,8 @@ export default {
 - 示例：
 
   ```ts
-  import { defineUserConfig } from 'vuepress'
   import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
+  import { defineUserConfig } from 'vuepress'
 
   export default defineUserConfig({
     locales: {
@@ -256,10 +256,10 @@ onUnmounted(() => {
 
 ```vue
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
 import { registerPhotoSwipe } from '@vuepress/plugin-photo-swipe/client'
+import { onMounted, onUnmounted } from 'vue'
 
-let destroy: () => void | null = null
+let destroy: () => null | void = null
 
 onMounted(async () => {
   await nextTick()
@@ -267,7 +267,7 @@ onMounted(async () => {
   const images = Array.from(document.querySelectorAll('img'))
 
   // 通过图片元素创建一个新的 photoswipe 实例
-  state = await registerPhotoSwipe(images, {
+  destroy = await registerPhotoSwipe(images, {
     // photoswipe 选项
   })
 })

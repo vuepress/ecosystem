@@ -11,10 +11,9 @@ const navigate = useNavigate()
 
 const { prevLink, nextLink } = useRelatedLinks()
 
-const navbarLabel = computed(() => {
-  const themeLocale = useThemeLocaleData()
-  return themeLocale.value.pageNavbarLabel ?? 'page navigation'
-})
+const navbarLabel = computed(
+  () => themeLocale.value.pageNavbarLabel ?? 'page navigation',
+)
 
 useEventListener('keydown', (event): void => {
   if (event.altKey) {
@@ -33,6 +32,7 @@ useEventListener('keydown', (event): void => {
 })
 </script>
 
+<!-- eslint-disable-next-line vue/no-root-v-if -->
 <template>
   <nav
     v-if="prevLink || nextLink"

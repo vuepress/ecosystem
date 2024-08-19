@@ -13,7 +13,7 @@ export interface PalettePluginOptions {
    *
    * @default 'css'
    */
-  preset?: 'css' | 'sass' | 'less' | 'stylus'
+  preset?: 'css' | 'less' | 'sass' | 'stylus'
 
   /**
    * File path of the user palette file, relative to source directory
@@ -77,14 +77,14 @@ export const palettePlugin = ({
       ignoreInitial: true,
     })
     paletteWatcher.on('add', () => {
-      preparePaletteFile(app, {
+      void preparePaletteFile(app, {
         userPaletteFile,
         tempPaletteFile,
         importCode,
       })
     })
     paletteWatcher.on('unlink', () => {
-      preparePaletteFile(app, {
+      void preparePaletteFile(app, {
         userPaletteFile,
         tempPaletteFile,
         importCode,
@@ -97,14 +97,14 @@ export const palettePlugin = ({
       ignoreInitial: true,
     })
     styleWatcher.on('add', () => {
-      prepareStyleFile(app, {
+      void prepareStyleFile(app, {
         userStyleFile,
         tempStyleFile,
         importCode,
       })
     })
     styleWatcher.on('unlink', () => {
-      prepareStyleFile(app, {
+      void prepareStyleFile(app, {
         userStyleFile,
         tempStyleFile,
         importCode,

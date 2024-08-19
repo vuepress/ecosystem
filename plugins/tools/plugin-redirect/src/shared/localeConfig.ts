@@ -44,7 +44,7 @@ export interface RedirectLocaleConfig {
    *
    * @default "defaultLocale"
    */
-  defaultBehavior: 'defaultLocale' | 'homepage' | '404'
+  defaultBehavior: '404' | 'defaultLocale' | 'homepage'
 
   /**
    * Default locale path

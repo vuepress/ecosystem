@@ -15,8 +15,8 @@ export const highlightLinesPlugin = (md: Markdown): void => {
 
     let lines: string | null = null
 
-    const rawInfo = token.info
-    const result = rawInfo?.match(HIGHLIGHT_LINES_REGEXP)
+    const rawInfo = token.info || ''
+    const result = rawInfo.match(HIGHLIGHT_LINES_REGEXP)
 
     if (!result) {
       return rawFence(...args)
@@ -27,7 +27,7 @@ export const highlightLinesPlugin = (md: Markdown): void => {
 
     lines = result[1]
 
-    token.info += ' ' + lines
+    token.info += ` ${lines}`
     return rawFence(...args)
   }
 }

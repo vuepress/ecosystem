@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import VPNavbarDropdown from '@theme/VPNavbarDropdown.vue'
 import { useNavbarConfig } from '@theme/useNavbarConfig'
 import { useNavbarRepo } from '@theme/useNavbarRepo'
 import { useNavbarSelectLanguage } from '@theme/useNavbarSelectLanguage'
 import { useThemeLocaleData } from '@theme/useThemeData'
 import { DeviceType, useUpdateDeviceStatus } from '@theme/useUpdateDeviceStatus'
-import VPNavbarDropdown from '@theme/VPNavbarDropdown.vue'
 import { computed, ref } from 'vue'
 import { AutoLink } from 'vuepress/client'
 
@@ -34,6 +34,7 @@ useUpdateDeviceStatus(
 )
 </script>
 
+<!-- eslint-disable-next-line vue/no-root-v-if -->
 <template>
   <nav
     v-if="navbarLinks.length"

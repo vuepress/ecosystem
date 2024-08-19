@@ -9,7 +9,7 @@ import { getBundlerName } from './getBundlerName.js'
 export const chainWebpack = (
   bundlerOptions: unknown,
   app: App,
-  chainWebpack: (
+  chain: (
     config: WebpackChainConfig,
     isServer: boolean,
     isBuild: boolean,
@@ -21,7 +21,7 @@ export const chainWebpack = (
 
     webpackBundlerOptions.chainWebpack = (config, isServer, isBuild): void => {
       originalChainWebpack?.(config, isServer, isBuild)
-      chainWebpack(config, isServer, isBuild)
+      chain(config, isServer, isBuild)
     }
   }
 }

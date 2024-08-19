@@ -26,8 +26,20 @@ export const useUpdateDeviceStatus = (
     return
   }
 
-  useEventListener('orientationchange', () => callback(width), false)
-  useEventListener('resize', () => callback(width), false)
+  useEventListener(
+    'orientationchange',
+    () => {
+      callback(width)
+    },
+    false,
+  )
+  useEventListener(
+    'resize',
+    () => {
+      callback(width)
+    },
+    false,
+  )
 
   onMounted(() => {
     callback(width)

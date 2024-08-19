@@ -22,7 +22,7 @@ const stripLocalePrefix = ({ path, pathLocale }: Page): string =>
 const getPagesLocaleMap = (app: App): Map<string, string[]> =>
   app.pages.reduce((map, page) => {
     const rootPath = stripLocalePrefix(page)
-    const pathLocales = map.get(rootPath) || []
+    const pathLocales = map.get(rootPath) ?? []
 
     pathLocales.push(page.pathLocale)
 
@@ -98,13 +98,14 @@ export const getSitemapInfos = (
           })
 
         links = relatedLocales.map((localePrefix) => ({
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           lang: locales[localePrefix]?.lang || 'en',
           url: `${base}${removeLeadingSlash(localePrefix)}${rootPath.substring(1)}`,
         }))
       }
 
       const sitemapInfo: SitemapInfo = {
-        ...(changefreq ? { changefreq } : {}),
+        changefreq,
         links,
         ...(lastModifyTime ? { lastmod: lastModifyTime } : {}),
         ...pageOptions,

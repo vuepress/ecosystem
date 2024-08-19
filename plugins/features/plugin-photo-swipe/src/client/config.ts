@@ -5,7 +5,7 @@ import { injectPhotoSwipeConfig } from './helpers/index.js'
 
 import './styles/vars.css'
 
-declare const __PS_SELECTOR__: string | string[]
+declare const __PS_SELECTOR__: string[] | string
 declare const __PS_DELAY__: number
 declare const __PS_LOCALES__: Record<
   string,
@@ -22,7 +22,6 @@ const download = __PS_DOWNLOAD__
 const fullscreen = __PS_FULLSCREEN__
 const scrollToClose = __PS_SCROLL_TO_CLOSE__
 
-// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
 export default defineClientConfig({
   enhance: ({ app }) => {
     injectPhotoSwipeConfig(app)

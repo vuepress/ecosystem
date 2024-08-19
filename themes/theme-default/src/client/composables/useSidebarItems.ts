@@ -1,8 +1,9 @@
 import { useThemeLocaleData } from '@theme/useThemeData'
-import { getHeaders, keys, startsWith } from '@vuepress/helper/client'
 import type { MenuItem } from '@vuepress/helper/client'
-import { computed, inject, onMounted, provide, ref, watch } from 'vue'
+import { getHeaders, keys, startsWith } from '@vuepress/helper/client'
 import type { ComputedRef, InjectionKey, Ref } from 'vue'
+import { computed, inject, onMounted, provide, ref, watch } from 'vue'
+import type { PageData } from 'vuepress/client'
 import {
   usePageData,
   usePageFrontmatter,
@@ -10,9 +11,9 @@ import {
   useRouteLocale,
   useRouter,
 } from 'vuepress/client'
-import type { PageData } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
 import type {
+  DefaultThemeHomePageFrontmatter,
   DefaultThemeNormalPageFrontmatter,
   SidebarArrayOptions,
   SidebarItemOptions,
@@ -47,6 +48,7 @@ export const setupHeaders = (): void => {
     }
 
     headersRef.value = getHeaders({
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       selector: [...new Array(6)]
         .map((_, i) => `.theme-default-content h${i + 1}`)
         .join(','),
@@ -61,83 +63,6 @@ export const setupHeaders = (): void => {
 }
 
 export const useHeaders = (): HeadersRef => headersRef
-
-export type SidebarItemsRef = ComputedRef<SidebarItem[]>
-
-export const sidebarItemsSymbol: InjectionKey<SidebarItemsRef> =
-  Symbol('sidebarItems')
-
-/**
- * Inject sidebar items global computed
- */
-export const useSidebarItems = (): SidebarItemsRef => {
-  const sidebarItems = inject(sidebarItemsSymbol)
-  if (!sidebarItems) {
-    throw new Error('useSidebarItems() is called without provider.')
-  }
-  return sidebarItems
-}
-
-/**
- * Create sidebar items ref and provide as global computed in setup
- */
-export const setupSidebarItems = (): void => {
-  const themeLocale = useThemeLocaleData()
-  const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
-  const page = usePageData()
-  const route = useRoute()
-  const routeLocale = useRouteLocale()
-  const headers = useHeaders()
-
-  const sidebarConfig = computed<false | SidebarOptions>(() =>
-    frontmatter.value.home
-      ? false
-      : (frontmatter.value.sidebar ?? themeLocale.value.sidebar ?? 'heading'),
-  )
-
-  const sidebarItems = computed(() =>
-    resolveSidebarItems(
-      sidebarConfig.value,
-      page.value,
-      route.path,
-      routeLocale.value,
-      headers.value,
-    ),
-  )
-  provide(sidebarItemsSymbol, sidebarItems)
-}
-
-/**
- * Resolve sidebar items global computed
- *
- * It should only be resolved and provided once
- */
-export const resolveSidebarItems = (
-  sidebarConfig: false | SidebarOptions,
-  page: PageData,
-  path: string,
-  routeLocale: string,
-  headers: MenuItem[],
-): SidebarItem[] => {
-  // resolve sidebar items according to the config
-  if (sidebarConfig === false) {
-    return []
-  }
-
-  if (sidebarConfig === 'heading') {
-    return resolveSidebarHeadingItem(page, headers)
-  }
-
-  if (Array.isArray(sidebarConfig)) {
-    return resolveArraySidebarItems(sidebarConfig, headers, path, routeLocale)
-  }
-
-  if (isPlainObject(sidebarConfig)) {
-    return resolveMultiSidebarItems(sidebarConfig, page, headers, path)
-  }
-
-  return []
-}
 
 /**
  * Util to transform page header to sidebar item
@@ -195,8 +120,8 @@ export const resolveArraySidebarItems = (
     if ('children' in childItem) {
       return {
         ...childItem,
-        children: childItem.children.map((item) =>
-          handleChildItem(item, resolvePrefix(pathPrefix, childItem.prefix)),
+        children: childItem.children.map((child) =>
+          handleChildItem(child, resolvePrefix(pathPrefix, childItem.prefix)),
         ),
       }
     }
@@ -243,7 +168,89 @@ export const resolveMultiSidebarItems = (
         : []
     }
 
+  // eslint-disable-next-line no-console
   console.warn(`${decodeURI(path)} is missing sidebar config.`)
 
   return []
+}
+
+export type SidebarItemsRef = ComputedRef<SidebarItem[]>
+
+export const sidebarItemsSymbol: InjectionKey<SidebarItemsRef> =
+  Symbol('sidebarItems')
+
+/**
+ * Inject sidebar items global computed
+ */
+export const useSidebarItems = (): SidebarItemsRef => {
+  const sidebarItems = inject(sidebarItemsSymbol)
+  if (!sidebarItems) {
+    throw new Error('useSidebarItems() is called without provider.')
+  }
+  return sidebarItems
+}
+
+/**
+ * Resolve sidebar items global computed
+ *
+ * It should only be resolved and provided once
+ */
+export const resolveSidebarItems = (
+  sidebarConfig: SidebarOptions | false,
+  page: PageData,
+  path: string,
+  routeLocale: string,
+  headers: MenuItem[],
+): SidebarItem[] => {
+  // resolve sidebar items according to the config
+  if (sidebarConfig === false) {
+    return []
+  }
+
+  if (sidebarConfig === 'heading') {
+    return resolveSidebarHeadingItem(page, headers)
+  }
+
+  if (Array.isArray(sidebarConfig)) {
+    return resolveArraySidebarItems(sidebarConfig, headers, path, routeLocale)
+  }
+
+  if (isPlainObject(sidebarConfig)) {
+    return resolveMultiSidebarItems(sidebarConfig, page, headers, path)
+  }
+
+  return []
+}
+
+/**
+ * Create sidebar items ref and provide as global computed in setup
+ */
+export const setupSidebarItems = (): void => {
+  const themeLocale = useThemeLocaleData()
+  const frontmatter = usePageFrontmatter<
+    DefaultThemeHomePageFrontmatter | DefaultThemeNormalPageFrontmatter
+  >()
+  const page = usePageData()
+  const route = useRoute()
+  const routeLocale = useRouteLocale()
+  const headers = useHeaders()
+
+  const sidebarConfig = computed<SidebarOptions | false>(() =>
+    frontmatter.value.home
+      ? false
+      : ((frontmatter.value as DefaultThemeNormalPageFrontmatter).sidebar ??
+        themeLocale.value.sidebar ??
+        'heading'),
+  )
+
+  const sidebarItems = computed(() =>
+    resolveSidebarItems(
+      sidebarConfig.value,
+      page.value,
+      route.path,
+      routeLocale.value,
+      headers.value,
+    ),
+  )
+  provide(sidebarItemsSymbol, sidebarItems)
 }

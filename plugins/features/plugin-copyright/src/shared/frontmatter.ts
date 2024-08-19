@@ -1,5 +1,6 @@
 export interface CopyrightPluginFrontmatter {
   copy?:
+    | boolean
     | {
         /**
          * Min words triggering copyright append
@@ -41,5 +42,4 @@ export interface CopyrightPluginFrontmatter {
          */
         disableSelection?: boolean
       }
-    | boolean
 }

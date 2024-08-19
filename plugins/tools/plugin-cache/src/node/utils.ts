@@ -1,27 +1,25 @@
 import { fs, path } from 'vuepress/utils'
 
-export const readFile = async <T = any>(
+export const readFile = async <T = unknown>(
   filepath: string,
 ): Promise<T | null> => {
   try {
-    return await fs.readJSON(filepath, 'utf-8')
+    return (await fs.readJSON(filepath, 'utf-8')) as T
   } catch {
     return null
   }
 }
 
-export const readFileSync = <T = any>(filepath: string): T | null => {
+export const readFileSync = <T = unknown>(filepath: string): T | null => {
   try {
-    return fs.readJSONSync(filepath, 'utf-8')
+    return fs.readJSONSync(filepath, 'utf-8') as T
   } catch {
     return null
   }
 }
 
-export const writeFile = async <T = any>(
-  filepath: string,
-  data: T,
-): Promise<void> => await fs.writeJSON(filepath, data, 'utf-8')
+export const writeFile = (filepath: string, data: unknown): Promise<void> =>
+  fs.writeJSON(filepath, data, 'utf-8')
 
 const FALLBACK_SPEED = 0.15
 

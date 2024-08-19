@@ -77,7 +77,7 @@ const createOpenTag = (
   }
 
   return {
-    before: snippet.slice(0, match.index!),
+    before: snippet.slice(0, match.index),
     classList: [...classList, ...match[1].split(' ')],
     after: snippet.slice(match.index! + match[0].length),
     content,
@@ -116,10 +116,12 @@ export const getCodeParser = (html: string): CodeParser => {
 
   const stringify = (): string => {
     const linesContent = lineNodeList.map((line, index) => {
-      lineNodeHandlers.forEach((handler) => handler(line, index + 1))
+      lineNodeHandlers.forEach((handler) => {
+        handler(line, index + 1)
+      })
       line.content = line.content.replace(CODE_ESCAPE_RE, '[!code')
 
-      return line.toString() + '</span>'
+      return `${line.toString()}</span>`
     })
 
     return [

@@ -2,11 +2,11 @@ import type { WatermarkOptions as _WatermarkRawOptions } from 'watermark-js-plus
 
 export type WatermarkPureOptions = Omit<
   Partial<_WatermarkRawOptions>,
-  | 'onSuccess'
+  | 'extraDrawFunc'
   | 'onBeforeDestroy'
   | 'onDestroyed'
-  | 'extraDrawFunc'
   | 'onObserveError'
+  | 'onSuccess'
   | 'parent'
 > & {
   /**

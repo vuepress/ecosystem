@@ -38,7 +38,7 @@ export const setupDevServerRedirect = (): void => {
     let matchedLocalePath: string | null = null
 
     // get matched locale
-    // eslint-disable-next-line no-labels
+    // eslint-disable-next-line no-labels, no-restricted-syntax
     findLanguage: for (const lang of languages.value)
       for (const [localePath, langs] of redirectLocaleEntries)
         if (langs.includes(lang)) {
@@ -61,7 +61,7 @@ export const setupDevServerRedirect = (): void => {
     // a locale matches
     if (matchedLocalePath) {
       const hasLocalePage = routes.some(
-        ({ path }) => route.path.replace('/', matchedLocalePath!) === path,
+        ({ path }) => route.path.replace('/', matchedLocalePath) === path,
       )
       const localeRoute = route.fullPath.replace('/', matchedLocalePath)
 

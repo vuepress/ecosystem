@@ -1,5 +1,5 @@
-import { ref } from 'vue'
 import type { Ref } from 'vue'
+import { ref } from 'vue'
 
 export const useSuggestionsFocus = (
   suggestions: Ref<unknown[]>,

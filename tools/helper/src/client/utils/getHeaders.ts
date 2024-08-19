@@ -27,11 +27,69 @@ export interface Header {
   children: Header[]
 }
 
-export type HeaderLevels = false | number | [number, number] | 'deep'
+export type HeaderLevels = number | 'deep' | false | [number, number]
 
-export type MenuItem = Omit<Header, 'slug' | 'children'> & {
+export type MenuItem = Omit<Header, 'children' | 'slug'> & {
   element: HTMLHeadElement
   children?: MenuItem[]
+}
+
+export const resolveHeaders = (
+  headers: MenuItem[],
+  levels: HeaderLevels = 2,
+): MenuItem[] => {
+  if (levels === false) {
+    return []
+  }
+
+  const [high, low]: [number, number] =
+    typeof levels === 'number'
+      ? [levels, levels]
+      : levels === 'deep'
+        ? [2, 6]
+        : levels
+
+  headers = headers.filter((h) => h.level >= high && h.level <= low)
+
+  const res: MenuItem[] = []
+
+  // eslint-disable-next-line no-labels, no-restricted-syntax
+  outer: for (let i = 0; i < headers.length; i++) {
+    const cur = headers[i]
+    if (i === 0) {
+      res.push(cur)
+    } else {
+      for (let j = i - 1; j >= 0; j--) {
+        const prev = headers[j]
+        if (prev.level < cur.level) {
+          ;(prev.children ??= []).push(cur)
+          // eslint-disable-next-line no-labels
+          continue outer
+        }
+      }
+      res.push(cur)
+    }
+  }
+
+  return res
+}
+
+const serializeHeader = (h: Element, ignore: string[] = []): string => {
+  let text = ''
+
+  if (ignore.length) {
+    const clone = h.cloneNode(true) as Element
+
+    clone.querySelectorAll(ignore.join(',')).forEach((el) => {
+      el.remove()
+    })
+
+    text = clone.textContent || ''
+  } else {
+    text = h.textContent || ''
+  }
+
+  return text.trim()
 }
 
 export interface GetHeadersOptions {
@@ -68,6 +126,7 @@ export interface GetHeadersOptions {
 }
 
 export const getHeaders = ({
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   selector = [...new Array(6)].map((_, i) => `#vp-content h${i + 1}`).join(','),
   levels = 2,
   ignore = [],
@@ -79,61 +138,10 @@ export const getHeaders = ({
       return {
         element: el as HTMLHeadElement,
         title: serializeHeader(el, ignore),
-        link: '#' + el.id,
+        link: `#${el.id}`,
         slug: el.id,
         level,
       }
     })
   return resolveHeaders(headers, levels)
-}
-
-const serializeHeader = (h: Element, ignore: string[] = []): string => {
-  let text = ''
-  if (ignore.length) {
-    const clone = h.cloneNode(true) as Element
-    clone.querySelectorAll(ignore.join(',')).forEach((el) => el.remove())
-    text = clone.textContent || ''
-  } else {
-    text = h.textContent || ''
-  }
-  return text.trim()
-}
-
-export const resolveHeaders = (
-  headers: MenuItem[],
-  levels: HeaderLevels = 2,
-): MenuItem[] => {
-  if (levels === false) {
-    return []
-  }
-
-  const [high, low]: [number, number] =
-    typeof levels === 'number'
-      ? [levels, levels]
-      : levels === 'deep'
-        ? [2, 6]
-        : levels
-
-  headers = headers.filter((h) => h.level >= high && h.level <= low)
-
-  const res: MenuItem[] = []
-  // eslint-disable-next-line no-labels
-  outer: for (let i = 0; i < headers.length; i++) {
-    const cur = headers[i]
-    if (i === 0) {
-      res.push(cur)
-    } else {
-      for (let j = i - 1; j >= 0; j--) {
-        const prev = headers[j]
-        if (prev.level < cur.level) {
-          ;(prev.children ??= []).push(cur)
-          // eslint-disable-next-line no-labels
-          continue outer
-        }
-      }
-      res.push(cur)
-    }
-  }
-
-  return res
 }

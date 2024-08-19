@@ -10,7 +10,7 @@ import {
   preparePaletteSass,
   prepareStyleSass,
 } from './prepare/index.js'
-import { EMPTY_FILE, getIdPrefix, logger, PLUGIN_NAME } from './utils.js'
+import { EMPTY_FILE, PLUGIN_NAME, getIdPrefix, logger } from './utils.js'
 
 const __dirname = getDirname(import.meta.url)
 
@@ -69,8 +69,8 @@ export const sassPalettePlugin =
           : {}),
       },
 
-      extendsBundlerOptions: (config: unknown, app): void => {
-        injectScssConfigModule(config, app, id)
+      extendsBundlerOptions: (bundlerOptions: unknown): void => {
+        injectScssConfigModule(bundlerOptions, app, id)
       },
 
       onInitialized: (): Promise<void> =>
@@ -98,7 +98,7 @@ export const sassPalettePlugin =
           if (app.env.isDebug) logger.info(`Style file for ${id} generated`)
         }),
 
-      onWatched: (app, watchers): void => {
+      onWatched: (_, watchers): void => {
         const configWatcher = watch(userConfig, {
           cwd: app.dir.source(),
           ignoreInitial: true,
@@ -117,10 +117,10 @@ export const sassPalettePlugin =
           })
 
         configWatcher.on('add', () => {
-          updateConfig()
+          void updateConfig()
         })
         configWatcher.on('unlink', () => {
-          updateConfig()
+          void updateConfig()
         })
 
         watchers.push(configWatcher)
@@ -152,10 +152,10 @@ export const sassPalettePlugin =
           })
 
         paletteWatcher.on('add', () => {
-          updatePalette()
+          void updatePalette()
         })
         paletteWatcher.on('unlink', () => {
-          updatePalette()
+          void updatePalette()
         })
 
         watchers.push(paletteWatcher)
@@ -172,15 +172,15 @@ export const sassPalettePlugin =
             })
 
           styleWatcher.on('add', () => {
-            updateStyle()
+            void updateStyle()
           })
           styleWatcher.on('unlink', () => {
-            updateStyle()
+            void updateStyle()
           })
           watchers.push(styleWatcher)
         }
       },
 
-      clientConfigFile: (app) => prepareClientConfigFile(app, id),
+      clientConfigFile: () => prepareClientConfigFile(app, id),
     }
   }

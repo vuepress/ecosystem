@@ -1,12 +1,12 @@
 import { useLocaleConfig } from '@vuepress/helper/client'
 import type { PropType, SlotsType, VNode } from 'vue'
 import {
+  Transition,
   computed,
   defineComponent,
   h,
   onMounted,
   shallowRef,
-  Transition,
 } from 'vue'
 import type { PwaPluginLocaleConfig } from '../../shared/index.js'
 import { usePwaEvent } from '../composables/index.js'
@@ -30,7 +30,7 @@ export const PwaReadyPopup = defineComponent({
     default?: (props: {
       isReady: boolean
       reload: () => void
-    }) => VNode[] | VNode | null
+    }) => VNode | VNode[] | null
   }>,
 
   setup(props, { slots }) {
@@ -50,7 +50,7 @@ export const PwaReadyPopup = defineComponent({
       const event = usePwaEvent()
 
       event.on('updated', (reg) => {
-        if (reg) registration.value = reg
+        registration.value = reg
       })
     })
 
@@ -62,7 +62,7 @@ export const PwaReadyPopup = defineComponent({
           slots.default?.({
             isReady: isReady.value,
             reload,
-          }) ||
+          }) ??
           (isReady.value
             ? h(
                 'button',
@@ -70,7 +70,9 @@ export const PwaReadyPopup = defineComponent({
                   type: 'button',
                   class: 'sw-update-popup',
                   tabindex: 0,
-                  onClick: () => reload(),
+                  onClick: () => {
+                    reload()
+                  },
                 },
                 [
                   locale.value.update,

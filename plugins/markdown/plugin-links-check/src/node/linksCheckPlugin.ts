@@ -28,7 +28,7 @@ export const linksCheckPlugin =
     return {
       name: '@vuepress/plugin-links-check',
 
-      extendsPage: (page, app) => {
+      extendsPage: (page) => {
         if (enabled && isAppInitialized) {
           checkMarkdownLink(page, app, isLinkIgnored)
         }

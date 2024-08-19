@@ -399,7 +399,7 @@ export default {
 - Example:
 
 ```ts
-import { usePwaEvent, skipWaiting } from '@vuepress/plugin-pwa/client'
+import { skipWaiting, usePwaEvent } from '@vuepress/plugin-pwa/client'
 
 export default {
   setup() {
