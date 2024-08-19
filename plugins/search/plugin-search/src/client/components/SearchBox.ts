@@ -82,7 +82,7 @@ export const SearchBox = defineComponent({
         return
       }
 
-      router.push(suggestion.link).then(() => {
+      void router.push(suggestion.link).then(() => {
         query.value = ''
         focusIndex.value = 0
       })

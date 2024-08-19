@@ -17,13 +17,19 @@ const maxSuggestions = __SEARCH_MAX_SUGGESTIONS__
 export default defineClientConfig({
   enhance({ app }) {
     // wrap the `<SearchBox />` component with plugin options
-    app.component('SearchBox', (props) =>
-      h(SearchBox, {
-        locales,
-        hotKeys,
-        maxSuggestions,
-        ...props,
-      }),
+    app.component(
+      'SearchBox',
+      (props: {
+        locales?: SearchBoxLocales
+        hotKeys?: string[]
+        maxSuggestions?: number
+      }) =>
+        h(SearchBox, {
+          locales,
+          hotKeys,
+          maxSuggestions,
+          ...props,
+        }),
     )
   },
 })

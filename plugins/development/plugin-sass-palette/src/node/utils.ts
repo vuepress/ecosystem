@@ -9,7 +9,7 @@ export const PLUGIN_NAME = '@vuepress/plugin-sass-palette'
 
 export const logger = new Logger(PLUGIN_NAME)
 
-export const getPath = (path: string): string =>
-  fs.pathExistsSync(path) ? path : EMPTY_FILE
+export const getPath = (filePath: string): string =>
+  fs.pathExistsSync(filePath) ? filePath : EMPTY_FILE
 
 export const getIdPrefix = (id: string): string => (id ? `${id}-` : '')

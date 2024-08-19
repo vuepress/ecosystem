@@ -48,19 +48,20 @@ export const resolveHeaders = (
       : levels === 'deep'
         ? [2, 6]
         : levels
-
-  headers = headers.filter((h) => h.level >= high && h.level <= low)
+  const allowedHeaders = headers.filter(
+    (h) => h.level >= high && h.level <= low,
+  )
 
   const res: MenuItem[] = []
 
   // eslint-disable-next-line no-labels, no-restricted-syntax
-  outer: for (let i = 0; i < headers.length; i++) {
-    const cur = headers[i]
+  outer: for (let i = 0; i < allowedHeaders.length; i++) {
+    const cur = allowedHeaders[i]
     if (i === 0) {
       res.push(cur)
     } else {
       for (let j = i - 1; j >= 0; j--) {
-        const prev = headers[j]
+        const prev = allowedHeaders[j]
         if (prev.level < cur.level) {
           ;(prev.children ??= []).push(cur)
           // eslint-disable-next-line no-labels
@@ -75,6 +76,7 @@ export const resolveHeaders = (
 }
 
 const serializeHeader = (h: Element, ignore: string[] = []): string => {
+  // eslint-disable-next-line no-useless-assignment
   let text = ''
 
   if (ignore.length) {

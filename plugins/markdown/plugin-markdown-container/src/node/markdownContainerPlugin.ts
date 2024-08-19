@@ -35,7 +35,7 @@ export interface MarkdownItContainerOptions {
 export type MarkdownItContainerRenderFunction = (
   tokens: Token[],
   index: number,
-  options: any,
+  options: unknown,
   env: MarkdownEnv,
   self: Renderer,
 ) => string
@@ -94,7 +94,7 @@ export const markdownContainerPlugin = ({
   // raw options for markdown-it-container
   validate,
   marker,
-  render,
+  render: renderOptions,
 }: MarkdownContainerPluginOptions): Plugin => {
   const plugin: PluginObject = {
     name: '@vuepress/plugin-markdown-container',
@@ -106,6 +106,8 @@ export const markdownContainerPlugin = ({
     logger.warn(`[${plugin.name}] ${colors.magenta('type')} option is required`)
     return plugin
   }
+
+  let render = renderOptions
 
   // if `render` option is not specified
   // use `before` and `after` to generate render function
@@ -129,7 +131,7 @@ export const markdownContainerPlugin = ({
     // token info stack
     const infoStack: string[] = []
 
-    render = (tokens, index, opts, env): string => {
+    render = (tokens, index, _, env): string => {
       const token = tokens[index]
 
       if (token.nesting === 1) {

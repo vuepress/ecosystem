@@ -80,6 +80,7 @@ export const mainAction = async (
 
   // complete bundler
   if (!bundler)
+    // eslint-disable-next-line no-param-reassign
     bundler = await select<Bundler>({
       message: locale.question.bundler,
       choices: bundlers.map((item) => ({
@@ -90,6 +91,7 @@ export const mainAction = async (
 
   // complete preset
   if (!preset)
+    // eslint-disable-next-line no-param-reassign
     preset = await select<Preset>({
       message: locale.question.preset,
       choices: presets.map((item) => ({

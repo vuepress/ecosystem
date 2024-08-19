@@ -131,13 +131,13 @@ export const notationWordHighlight = (parser: CodeParser): void => {
         : parser.lines.length - 1
 
       // escape backslashes
-      word = word.replace(/\\(.)/g, '$1')
+      const normalizedWord = word.replace(/\\(.)/g, '$1')
 
       parser.lines
         // start from the next line after the comment
         .slice(index + 1, index + 1 + lineNum)
         .forEach((line) => {
-          highlightWordInLine(line, word)
+          highlightWordInLine(line, normalizedWord)
         })
 
       return true

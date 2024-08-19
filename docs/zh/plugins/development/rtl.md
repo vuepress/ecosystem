@@ -38,8 +38,8 @@ export default {
 
   ```ts
   interface SelectorOptions {
-    [selector: string]: {
-      [attrs: string]: string
+    [cssSelector: string]: {
+      [attr: string]: string
     }
   }
   ```

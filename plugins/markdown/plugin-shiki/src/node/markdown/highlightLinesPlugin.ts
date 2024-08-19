@@ -13,8 +13,6 @@ export const highlightLinesPlugin = (md: Markdown): void => {
     const [tokens, idx] = args
     const token = tokens[idx]
 
-    let lines: string | null = null
-
     const rawInfo = token.info || ''
     const result = rawInfo.match(HIGHLIGHT_LINES_REGEXP)
 
@@ -25,7 +23,7 @@ export const highlightLinesPlugin = (md: Markdown): void => {
     // ensure the next plugin get the correct lang
     token.info = rawInfo.replace(HIGHLIGHT_LINES_REGEXP, '').trim()
 
-    lines = result[1]
+    const lines = result[1]
 
     token.info += ` ${lines}`
     return rawFence(...args)

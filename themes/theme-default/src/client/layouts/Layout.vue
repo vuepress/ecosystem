@@ -80,7 +80,7 @@ const containerClass = computed(() => [
 ])
 
 // close sidebar after navigation
-let unregisterRouterHook
+let unregisterRouterHook: () => void
 onMounted(() => {
   const router = useRouter()
   unregisterRouterHook = router.afterEach(() => {

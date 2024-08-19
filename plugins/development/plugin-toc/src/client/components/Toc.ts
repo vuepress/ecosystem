@@ -105,8 +105,8 @@ export const Toc = defineComponent({
 
   props: {
     headers: {
-      type: Array as PropType<TocPropsHeaders>,
-      default: null,
+      type: Array as PropType<TocPropsHeaders | undefined>,
+      default: undefined,
     },
 
     options: {
@@ -121,7 +121,7 @@ export const Toc = defineComponent({
     const route = useRoute()
     const page = usePageData()
     const headers = computed<TocPropsHeaders>(() => {
-      const headersToUse = propsHeaders.value || page.value.headers
+      const headersToUse = propsHeaders.value ?? page.value.headers
 
       // skip h1 header
       return headersToUse[0]?.level === 1

@@ -12,8 +12,9 @@ export default defineClientConfig({
   enhance({ app }) {
     // provide theme data & theme locale data
     const themeData = useThemeData()
-    const clientData: ClientData =
-      app._context.provides[clientDataSymbol as unknown as symbol]
+    const clientData = app._context.provides[
+      clientDataSymbol as unknown as symbol
+    ] as ClientData
     const themeLocaleData = computed(() =>
       resolveThemeLocaleData(themeData.value, clientData.routeLocale.value),
     )

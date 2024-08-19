@@ -52,11 +52,14 @@ export const preWrapperPlugin = (
 
     // before: maybe `v-pre class="shiki *"`
     // after: style="*" tab-index="*"
-    result = result.replace(PRE_ATTRS_REGEXP, (_, before, style, after) => {
-      styles = style.trim()
-      // Keep `v-pre class="*"`, remove the rest.
-      return `<pre ${before.trim()}${after.trimEnd()}>`
-    })
+    result = result.replace(
+      PRE_ATTRS_REGEXP,
+      (_, before: string, style: string, after: string) => {
+        styles = style.trim()
+        // Keep `v-pre class="*"`, remove the rest.
+        return `<pre ${before.trim()}${after.trimEnd()}>`
+      },
+    )
 
     /**
      * Add information to dataset for current code block.

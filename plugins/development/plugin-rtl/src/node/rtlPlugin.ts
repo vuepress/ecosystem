@@ -14,10 +14,8 @@ export interface RTLPluginOptions {
    *
    * @default { 'html': { dir: 'rtl' } }
    */
-  // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
   selector?: {
-    // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
-    [element: string]: {
+    [cssSelector: string]: {
       [attr: string]: string
     }
   }
