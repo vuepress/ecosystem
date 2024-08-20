@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Call `unregister()` inside current active worker
  *
@@ -20,7 +21,7 @@ export const unregisterSW = (): Promise<boolean> =>
 
       return false
     })
-    .catch((error) => {
+    .catch((error: unknown) => {
       console.log(
         '[PWA] Unregister current service worker failed with error:',
         error,

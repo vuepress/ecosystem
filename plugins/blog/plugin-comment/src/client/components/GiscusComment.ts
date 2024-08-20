@@ -46,7 +46,7 @@ type BooleanString = '0' | '1'
 
 export type GiscusLang = (typeof SUPPORTED_LANGUAGES)[number]
 
-export type GiscusLoading = 'lazy' | 'eager'
+export type GiscusLoading = 'eager' | 'lazy'
 
 export interface GiscusProps {
   id?: string | undefined
@@ -91,6 +91,7 @@ export default defineComponent({
 
     const enableGiscus = computed(() =>
       Boolean(
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         giscusOptions.value.repo &&
           giscusOptions.value.repoId &&
           giscusOptions.value.category &&

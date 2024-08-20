@@ -18,7 +18,7 @@ export interface RedirectPluginOptions
    *
    * 多语言语言配置
    */
-  localeConfig?: Record<string, string | string[]>
+  localeConfig?: Record<string, string[] | string>
 
   /**
    * Locales config

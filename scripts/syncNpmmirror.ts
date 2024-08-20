@@ -1,12 +1,12 @@
 import { readdirSync } from 'node:fs'
 import { request } from 'node:https'
-import { resolve } from 'node:path'
+import { resolve as pathResolve } from 'node:path'
 
 const plugins = (
   await Promise.all(
-    readdirSync(resolve(process.cwd(), 'plugins'))
+    readdirSync(pathResolve(process.cwd(), 'plugins'))
       .map((category) =>
-        readdirSync(resolve(process.cwd(), 'plugins', category)).map(
+        readdirSync(pathResolve(process.cwd(), 'plugins', category)).map(
           (packageName) =>
             import(`../plugins/${category}/${packageName}/package.json`, {
               assert: { type: 'json' },
@@ -19,7 +19,7 @@ const plugins = (
 
 const themes = (
   await Promise.all(
-    readdirSync(resolve(process.cwd(), 'themes')).map(
+    readdirSync(pathResolve(process.cwd(), 'themes')).map(
       (packageName) =>
         import(`../themes/${packageName}/package.json`, {
           assert: { type: 'json' },
@@ -30,7 +30,7 @@ const themes = (
 
 const tools = (
   await Promise.all(
-    readdirSync(resolve(process.cwd(), 'tools')).map(
+    readdirSync(pathResolve(process.cwd(), 'tools')).map(
       (packageName) =>
         import(`../tools/${packageName}/package.json`, {
           assert: { type: 'json' },

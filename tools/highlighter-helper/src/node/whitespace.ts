@@ -5,17 +5,19 @@ export type WhitespacePosition = 'all' | 'boundary' | 'trailing'
 
 export const resolveWhitespacePosition = (
   info: string,
-  defaultPosition?: boolean | WhitespacePosition,
+  defaultPosition?: WhitespacePosition | boolean,
 ): WhitespacePosition | false => {
   if (NO_WHITESPACE_REGEXP.test(info)) {
     return false
   }
 
-  defaultPosition = defaultPosition === true ? undefined : defaultPosition
+  const position = defaultPosition === true ? undefined : defaultPosition
 
   const match = info.match(WHITESPACE_REGEXP)
+
   if (match) {
-    return (match[1] || defaultPosition || 'all') as WhitespacePosition
+    return (match[1] as WhitespacePosition | undefined) || position || 'all'
   }
-  return defaultPosition ?? false
+
+  return position ?? false
 }

@@ -1,7 +1,7 @@
 import type {
   AutoLinkOptions,
-  NavbarLinkOptions,
   NavGroup,
+  NavbarLinkOptions,
   SidebarGroupOptions,
   SidebarLinkOptions,
 } from '../shared/index.js'
@@ -20,7 +20,7 @@ export interface SidebarHeaderItem {
 
 export interface SidebarGroupItem extends SidebarGroupOptions {
   prefix?: string
-  children: (SidebarItem | SidebarHeaderItem)[]
+  children: (SidebarHeaderItem | SidebarItem)[]
 }
 
-export type SidebarItem = SidebarLinkItem | SidebarGroupItem
+export type SidebarItem = SidebarGroupItem | SidebarLinkItem

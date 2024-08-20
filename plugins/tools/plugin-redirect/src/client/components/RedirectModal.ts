@@ -5,6 +5,7 @@ import {
 } from '@vueuse/core'
 import type { VNode } from 'vue'
 import {
+  TransitionGroup,
   computed,
   defineComponent,
   h,
@@ -12,7 +13,6 @@ import {
   onBeforeUnmount,
   onMounted,
   ref,
-  TransitionGroup,
   watch,
 } from 'vue'
 import { useRouteLocale, useRoutePath, useRouter } from 'vuepress/client'

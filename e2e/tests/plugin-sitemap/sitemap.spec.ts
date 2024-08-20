@@ -5,7 +5,7 @@ test.describe('sitemap', () => {
   test('have sitemap xml', async ({ request }) => {
     const response = await request.get('sitemap.xml')
 
-    expect(response).toBeOK()
+    await expect(response).toBeOK()
 
     const content = await response.text()
 
@@ -18,7 +18,7 @@ test.describe('sitemap', () => {
   test('have sitemap style file', async ({ request }) => {
     const response = await request.get('sitemap.xsl')
 
-    expect(response).toBeOK()
+    await expect(response).toBeOK()
 
     const content = await response.text()
 
@@ -28,7 +28,7 @@ test.describe('sitemap', () => {
   test('frontmatter config', async ({ request }) => {
     const response = await request.get('sitemap.xml')
 
-    expect(response).toBeOK()
+    await expect(response).toBeOK()
 
     const content = await response.text()
 
@@ -38,7 +38,7 @@ test.describe('sitemap', () => {
   test('exclude url', async ({ request }) => {
     const response = await request.get('sitemap.xml')
 
-    expect(response).toBeOK()
+    await expect(response).toBeOK()
 
     const content = await response.text()
 

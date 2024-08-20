@@ -8,18 +8,18 @@ import { getUrl } from './getUrl.js'
 
 export const getCanonicalLink = (
   page: ExtendPage,
-  options: SeoPluginOptions,
+  canonical: SeoPluginOptions['canonical'],
 ): string | null =>
-  isFunction(options.canonical)
-    ? options.canonical(page)
-    : isString(options.canonical)
-      ? `${removeEndingSlash(options.canonical)}${page.path}`
+  isFunction(canonical)
+    ? canonical(page)
+    : isString(canonical)
+      ? `${removeEndingSlash(canonical)}${page.path}`
       : null
 
 export const getAlternateLinks = (
   app: App,
   page: ExtendPage,
-  { hostname }: SeoPluginOptions,
+  hostname: string,
 ): { lang: string; path: string }[] =>
   getAlternatePaths(page, app).map(({ lang, path }) => ({
     lang,

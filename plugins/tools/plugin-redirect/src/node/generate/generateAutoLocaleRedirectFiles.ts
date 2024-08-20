@@ -11,13 +11,13 @@ export const generateAutoLocaleRedirectFiles = async (
 ): Promise<void> => {
   const rootPaths = pages
     .filter(({ pathLocale }) => pathLocale === '/')
-    .map(({ path }) => path)
+    .map(({ path: pagePath }) => pagePath)
   const localeRedirectMap: Record<string, string[]> = {}
 
   pages
     .filter(({ pathLocale }) => pathLocale !== '/')
-    .forEach(({ path, pathLocale }) => {
-      const rootPath = path
+    .forEach(({ path: pagePath, pathLocale }) => {
+      const rootPath = pagePath
         .replace(pathLocale, '/')
         .replace(/\/$/, '/index.html')
 

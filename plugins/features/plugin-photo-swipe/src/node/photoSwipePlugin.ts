@@ -8,7 +8,7 @@ import {
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 import { photoSwipeLocales } from './locales.js'
-import { logger, PLUGIN_NAME } from './logger.js'
+import { PLUGIN_NAME, logger } from './logger.js'
 import type { PhotoSwipePluginOptions } from './options.js'
 
 const __dirname = getDirname(import.meta.url)
@@ -21,11 +21,11 @@ export const photoSwipePlugin =
     return {
       name: PLUGIN_NAME,
 
-      define: (app): Record<string, unknown> => ({
+      define: (): Record<string, unknown> => ({
         __PS_SELECTOR__:
           options.selector ||
           '.theme-default-content :not(a) > img:not([no-view])',
-        __PS_DELAY__: options.delay || 800,
+        __PS_DELAY__: options.delay ?? 800,
         __PS_DOWNLOAD__: options.download ?? true,
         __PS_FULLSCREEN__: options.fullscreen ?? true,
         __PS_SCROLL_TO_CLOSE__: options.scrollToClose ?? true,
@@ -49,7 +49,7 @@ export const photoSwipePlugin =
         ),
       }),
 
-      extendsBundlerOptions: (bundlerOptions: unknown, app): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown): void => {
         addViteOptimizeDepsExclude(bundlerOptions, app, 'photoswipe')
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },

@@ -12,14 +12,23 @@ import {
 
 export const getOGPInfo = (
   page: ExtendPage,
-  options: SeoPluginOptions,
   app: App,
-): SeoContent => {
-  const {
-    isArticle = (page): boolean =>
-      Boolean(page.filePathRelative && !page.frontmatter.home),
+  {
+    isArticle,
     author: globalAuthor,
-  } = options
+    hostname,
+    fallBackImage,
+    restrictions,
+    twitterID,
+  }: {
+    isArticle: Exclude<SeoPluginOptions['isArticle'], undefined>
+    author?: SeoPluginOptions['author']
+    hostname: SeoPluginOptions['hostname']
+    fallBackImage: Exclude<SeoPluginOptions['fallBackImage'], undefined>
+    restrictions?: SeoPluginOptions['restrictions']
+    twitterID?: SeoPluginOptions['twitterID']
+  },
+): SeoContent => {
   const {
     options: { base },
     siteData,
@@ -36,8 +45,10 @@ export const getOGPInfo = (
   } = page
 
   const title =
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     siteData.locales[page.pathLocale]?.title ||
     siteData.title ||
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     siteData.locales['/']?.title ||
     ''
   const author = getSEOAuthor(pageAuthor || globalAuthor)
@@ -46,15 +57,15 @@ export const getOGPInfo = (
     : null
   const articleTags = isArray(tags) ? tags : isString(tag) ? [tag] : []
   const articleTitle = page.title
-  const cover = getCover(page, app, options)
-  const images = getImages(page, app, options)
+  const cover = getCover(page, app, hostname)
+  const images = getImages(page, app, hostname)
   const locales = getAlternatePaths(page, app)
   const publishedTime = getDate(date)?.toISOString()
 
-  const ogImage = cover || images[0] || options.fallBackImage || ''
+  const ogImage = cover || images[0] || fallBackImage
 
   const defaultOGP: SeoContent = {
-    'og:url': getUrl(options.hostname, base, page.path),
+    'og:url': getUrl(hostname, base, page.path),
     'og:site_name': title,
     'og:title': articleTitle,
     'og:description': page.frontmatter.description || '',
@@ -63,11 +74,8 @@ export const getOGPInfo = (
     'og:locale': page.lang,
     'og:locale:alternate': locales.map(({ lang }) => lang),
     ...(modifiedTime ? { 'og:updated_time': modifiedTime } : {}),
-    ...(options.restrictions
-      ? { 'og:restrictions:age': options.restrictions }
-      : {}),
-
-    ...(options.twitterID ? { 'twitter:creator': options.twitterID } : {}),
+    ...(restrictions ? { 'og:restrictions:age': restrictions } : {}),
+    ...(twitterID ? { 'twitter:creator': twitterID } : {}),
     ...(cover
       ? {
           'twitter:card': 'summary_large_image',

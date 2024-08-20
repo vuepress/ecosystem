@@ -26,6 +26,7 @@ export const getFeedFiles = (
   return (
     entries(options)
       // filter enabled locales
+      // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
       .filter(([, { atom, json, rss }]) => atom || json || rss)
       .map(([localePath, localeOptions]) => {
         const {

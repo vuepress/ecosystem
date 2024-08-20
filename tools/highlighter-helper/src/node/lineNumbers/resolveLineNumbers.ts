@@ -5,7 +5,7 @@ const LINE_NUMBERS_START_REGEXP = /:line-numbers=(\d+)\b/
 /**
  * Resolve the `:line-numbers` `:line-numbers=num` / `:no-line-numbers` mark from token info
  */
-export const resolveLineNumbers = (info: string): number | boolean | null => {
+export const resolveLineNumbers = (info: string): boolean | number | null => {
   const lineNumber = LINE_NUMBERS_START_REGEXP.exec(info)?.[1]
 
   if (lineNumber) {

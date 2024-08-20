@@ -78,7 +78,7 @@ export default {
 
 - 示例：
 
-  ```ts
+  ```js
   import { useCopyCode } from '@vuepress/plugin-copy-code/client'
 
   export default {

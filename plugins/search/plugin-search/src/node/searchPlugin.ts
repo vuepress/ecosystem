@@ -27,7 +27,7 @@ export interface SearchPluginOptions {
    *
    * @default ['s', '/']
    */
-  hotKeys?: (string | HotKeyOptions)[]
+  hotKeys?: (HotKeyOptions | string)[]
 
   /**
    * Specify the maximum number of search results
@@ -77,13 +77,13 @@ export const searchPlugin = ({
       ignoreInitial: true,
     })
     searchIndexWatcher.on('add', () => {
-      prepareSearchIndex({ app, isSearchable, getExtraFields })
+      void prepareSearchIndex({ app, isSearchable, getExtraFields })
     })
     searchIndexWatcher.on('change', () => {
-      prepareSearchIndex({ app, isSearchable, getExtraFields })
+      void prepareSearchIndex({ app, isSearchable, getExtraFields })
     })
     searchIndexWatcher.on('unlink', () => {
-      prepareSearchIndex({ app, isSearchable, getExtraFields })
+      void prepareSearchIndex({ app, isSearchable, getExtraFields })
     })
     watchers.push(searchIndexWatcher)
   },

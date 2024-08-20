@@ -23,11 +23,13 @@ const removeMustache = (str: string, store: MustacheStore): string =>
   })
 
 const restoreMustache = (str: string, store: MustacheStore): string => {
+  let result = str
+
   store.forEach((marker, match) => {
-    str = str.replaceAll(marker, match)
+    result = result.replaceAll(marker, match)
   })
 
-  return str
+  return result
 }
 
 export const handleMustache = (

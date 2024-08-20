@@ -16,7 +16,7 @@ export const prismjsPlugin = ({
   name: '@vuepress/plugin-prismjs',
 
   extendsMarkdown(md) {
-    if (preloadLanguages?.length !== 0) {
+    if (preloadLanguages.length !== 0) {
       loadLanguages(preloadLanguages)
     }
 

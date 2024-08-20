@@ -5,6 +5,7 @@ import { AutoLink, useRoute } from 'vuepress/client'
 import type { AutoLinkOptions, NavGroup } from '../../shared/index.js'
 
 const props = defineProps<{
+  /** dropdown items */
   item: NavGroup<AutoLinkOptions | NavGroup<AutoLinkOptions>>
 }>()
 
@@ -17,8 +18,8 @@ const dropdownAriaLabel = computed(
   () => item.value.ariaLabel || item.value.text,
 )
 
-const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
-  arr[arr.length - 1] === item
+const isLastItemOfArray = (arrayItem: unknown, array: unknown[]): boolean =>
+  array[array.length - 1] === arrayItem
 
 /**
  * Open the dropdown when user tab and click from keyboard.
@@ -28,7 +29,7 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail
  */
-const handleDropdown = (e): void => {
+const handleDropdown = (e: UIEvent): void => {
   const isTriggerByTab = e.detail === 0
 
   open.value = isTriggerByTab ? !open.value : false

@@ -7,7 +7,7 @@ import {
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 import { copyCodeLocales } from './locales.js'
-import { logger, PLUGIN_NAME } from './logger.js'
+import { PLUGIN_NAME, logger } from './logger.js'
 import type { CopyCodePluginOptions } from './options.js'
 
 const __dirname = getDirname(import.meta.url)
@@ -20,10 +20,10 @@ export const copyCodePlugin =
     return {
       name: PLUGIN_NAME,
 
-      define: (app) => ({
-        __CC_DELAY__: options.delay || 500,
-        __CC_DURATION__: options.duration || 2000,
-        __CC_IGNORE_SELECTOR__: options.ignoreSelector || [],
+      define: () => ({
+        __CC_DELAY__: options.delay ?? 500,
+        __CC_DURATION__: options.duration ?? 2000,
+        __CC_IGNORE_SELECTOR__: options.ignoreSelector ?? [],
         __CC_LOCALES__: getLocaleConfig({
           app,
           name: PLUGIN_NAME,
@@ -35,10 +35,10 @@ export const copyCodePlugin =
           : isString(options.selector)
             ? [options.selector]
             : ['.theme-default-content div[class*="language-"] pre'],
-        __CC_SHOW_IN_MOBILE__: options.showInMobile || false,
+        __CC_SHOW_IN_MOBILE__: options.showInMobile ?? false,
       }),
 
-      extendsBundlerOptions: (bundlerOptions: unknown, app): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown): void => {
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
 

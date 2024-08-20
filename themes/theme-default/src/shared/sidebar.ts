@@ -28,8 +28,8 @@ export interface SidebarGroupOptions extends NavItemOptions {
 }
 
 export type SidebarItemOptions =
-  | SidebarLinkOptions
   | SidebarGroupOptions
+  | SidebarLinkOptions
   | string
 
 export type SidebarArrayOptions = SidebarItemOptions[]

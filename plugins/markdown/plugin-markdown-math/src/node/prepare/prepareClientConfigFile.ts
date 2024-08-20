@@ -32,7 +32,7 @@ export default {
 `
     : ''
 }`
-  } else if (mathRenderer === 'mathjax') {
+  } else {
     content += `\
 import './mathjax.css';
 `

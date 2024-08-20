@@ -2,7 +2,7 @@ import { spawnSync } from 'node:child_process'
 import { existsSync, readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 
-export type PackageManager = 'npm' | 'yarn' | 'yarn1' | 'pnpm' | 'bun'
+export type PackageManager = 'bun' | 'npm' | 'pnpm' | 'yarn' | 'yarn1'
 
 const globalCache = new Map<string, boolean>()
 const localCache = new Map<string, PackageManager>()

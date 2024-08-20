@@ -8,12 +8,12 @@ import type { DefaultThemeData } from '../../shared/index.js'
  */
 export const resolveMarkdownContainerPluginOptions = (
   localeOptions: DefaultThemeData,
-  type: 'tip' | 'warning' | 'danger',
+  type: 'danger' | 'tip' | 'warning',
 ): MarkdownContainerPluginOptions => {
-  const locales = Object.entries(localeOptions.locales || {}).reduce(
+  const locales = Object.entries(localeOptions.locales ?? {}).reduce(
     (result, [key, value]) => {
       result[key] = {
-        defaultInfo: value?.[type] ?? localeOptions[type],
+        defaultInfo: value[type] ?? localeOptions[type],
       }
       return result
     },

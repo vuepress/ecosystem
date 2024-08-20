@@ -1,6 +1,6 @@
 import { wait } from '@vuepress/helper/client'
-import mediumZoom from 'medium-zoom'
 import type { ZoomOptions } from 'medium-zoom'
+import mediumZoom from 'medium-zoom'
 import { defineClientConfig } from 'vuepress/client'
 import { mediumZoomSymbol } from './composables/index.js'
 
@@ -28,7 +28,9 @@ export default defineClientConfig({
     app.provide(mediumZoomSymbol, zoom)
 
     router.afterEach(() => {
-      wait(delay).then(() => zoom.refresh())
+      void wait(delay).then(() => {
+        zoom.refresh()
+      })
     })
   },
 })

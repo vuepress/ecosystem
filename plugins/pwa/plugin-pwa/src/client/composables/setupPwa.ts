@@ -17,12 +17,12 @@ export const setupPwa = (
   provide(pwaEventSymbol, event)
 
   onMounted(async () => {
-    if (__VUEPRESS_DEV__) return
+    if (__VUEPRESS_DEV__ || !('serviceWorker' in navigator)) return
 
     let refreshing = false
 
     // Only listen controllerchange event when a serviceWorker is active
-    if (navigator.serviceWorker?.controller)
+    if (navigator.serviceWorker.controller)
       navigator.serviceWorker.addEventListener('controllerchange', () => {
         if (refreshing) return
 

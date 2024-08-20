@@ -1,17 +1,17 @@
 import { useThemeLocaleData } from '@theme/useThemeData'
-import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
+import { computed } from 'vue'
 import { isString } from 'vuepress/shared'
 import type {
+  NavGroup,
   NavbarGroupOptions,
   NavbarLinkOptions,
-  NavGroup,
 } from '../../shared/navbar.js'
 import type { NavbarItem } from '../typings.js'
 import { getAutoLink, isLinkInternal, resolvePrefix } from '../utils/index.js'
 
 const resolveNavbarItem = (
-  item: NavbarLinkOptions | NavbarGroupOptions | string,
+  item: NavbarGroupOptions | NavbarLinkOptions | string,
   prefix = '',
 ): NavbarItem => {
   if (isString(item)) {
@@ -43,6 +43,7 @@ export const useNavbarConfig = (): ComputedRef<NavbarItem[]> => {
   const themeLocale = useThemeLocaleData()
 
   return computed(() =>
+    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     (themeLocale.value.navbar || []).map((item) => resolveNavbarItem(item)),
   )
 }

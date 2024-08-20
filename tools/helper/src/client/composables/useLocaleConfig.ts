@@ -1,5 +1,5 @@
-import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
+import { computed } from 'vue'
 import { useRouteLocale } from 'vuepress/client'
 import type { LocaleData } from 'vuepress/shared'
 import type { ExactLocaleConfig } from '../../shared/index.js'

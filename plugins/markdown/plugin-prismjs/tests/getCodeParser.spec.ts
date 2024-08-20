@@ -12,7 +12,7 @@ import {
   notationWordHighlight,
 } from '../src/node/index.js'
 
-const genCode = (code: string) => `<pre><code>${code}</code></pre>`
+const genCode = (code: string): string => `<pre><code>${code}</code></pre>`
 
 describe('@vuepress/plugin-prismjs > parser', () => {
   it('normal parse', () => {

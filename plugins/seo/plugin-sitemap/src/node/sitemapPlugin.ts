@@ -5,7 +5,7 @@ import { colors } from 'vuepress/utils'
 import type { SitemapPluginOptions } from '../typings/index.js'
 import { getSiteMap } from './getSitemap.js'
 import { getSiteMapTemplate } from './getSitemapTemplate.js'
-import { logger, PLUGIN_NAME } from './logger.js'
+import { PLUGIN_NAME, logger } from './logger.js'
 import { outputSitemap } from './outputSitemap.js'
 
 export const sitemapPlugin =
@@ -35,7 +35,7 @@ export const sitemapPlugin =
     return {
       ...plugin,
 
-      extendsBundlerOptions: async (config, app): Promise<void> => {
+      extendsBundlerOptions: async (config): Promise<void> => {
         if (options.devServer)
           [
             await getSiteMap(app, options, hostname),
@@ -49,7 +49,6 @@ export const sitemapPlugin =
           })
       },
 
-      onGenerated: (app): Promise<void> =>
-        outputSitemap(app, options, hostname),
+      onGenerated: (): Promise<void> => outputSitemap(app, options, hostname),
     }
   }

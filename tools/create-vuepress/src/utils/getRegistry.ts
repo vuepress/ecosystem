@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { select } from '@inquirer/prompts'
 import { execaCommandSync } from 'execa'
 import type { Lang } from '../i18n/index.js'
@@ -38,15 +39,19 @@ export const getRegistry = async (
   }
 
   if (lang === 'zh') {
-    const registry = await select({
+    return select({
       message: '选择你想使用的源',
-      choices: ['国内镜像源', '当前源'].map((registry) => ({
-        name: registry,
-        value: registry,
-      })),
+      choices: [
+        {
+          name: '国内镜像源',
+          value: NPM_MIRROR_REGISTRY,
+        },
+        {
+          name: '当前源',
+          value: userRegistry,
+        },
+      ],
     })
-
-    return registry === '国内镜像源' ? NPM_MIRROR_REGISTRY : userRegistry
   }
 
   return userRegistry

@@ -10,7 +10,7 @@ export const preparePaletteFile = async (
     importCode,
   }: Pick<
     Required<PalettePluginOptions>,
-    'userPaletteFile' | 'tempPaletteFile' | 'importCode'
+    'importCode' | 'tempPaletteFile' | 'userPaletteFile'
   >,
 ): Promise<string> => {
   const userPalette = app.dir.source(userPaletteFile)

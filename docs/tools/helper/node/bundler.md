@@ -8,7 +8,7 @@ All functions should be called in `extendsBundlerOptions` lifecycle hook.
 
 We are omitting that in examples. The actual code should be like this:
 
-```ts
+```js
 // import functions you need
 import { addCustomElement } from '@vuepress/helper'
 
@@ -56,11 +56,11 @@ Add a custom element declaration to the current bundler.
  * @param app VuePress Node App
  * @param customElements tags recognized as custom element
  */
-export const addCustomElement = (
+export const addCustomElement: (
   bundlerOptions: unknown,
   app: App,
-  customElement: string[] | string | RegExp
-) => void;
+  customElement: RegExp | string[] | string,
+) => void
 ```
 
 ::: details Example
@@ -88,16 +88,16 @@ export interface DevServerOptions {
   /**
    * Path to be responded
    */
-  path: string;
+  path: string
   /**
    * Respond function
    */
-  response: (request?: IncomingMessage) => Promise<string | Buffer>;
+  response: (request?: IncomingMessage) => Promise<Buffer | string>
 
   /**
    * error msg
    */
-  errMsg?: string;
+  errMsg?: string
 }
 
 /**
@@ -113,11 +113,11 @@ export const customizeDevServer: (
   bundlerOptions: unknown,
   app: App,
   {
-    errMsg:"The server encountered an error",
-    response: responseHandler,
+    errMsg = 'The server encountered an error',
+    response,
     path,
-  }: CustomServerOptions
-) => void;
+  }: CustomServerOptions,
+) => void
 ```
 
 ::: details Example
@@ -182,7 +182,7 @@ useCustomDevServer(bundlerOptions, app, {
   export const addViteOptimizeDepsInclude: (
     bundlerOptions: unknown,
     app: App,
-    module: string | string[],
+    module: string[] | string,
   ) => void
 
   /**
@@ -191,7 +191,7 @@ useCustomDevServer(bundlerOptions, app, {
   export const addViteOptimizeDepsExclude: (
     bundlerOptions: unknown,
     app: App,
-    module: string | string[],
+    module: string[] | string,
   ) => void
 
   /**
@@ -200,7 +200,7 @@ useCustomDevServer(bundlerOptions, app, {
   export const addViteSsrExternal: (
     bundlerOptions: unknown,
     app: App,
-    module: string | string[],
+    module: string[] | string,
   ) => void
 
   /**
@@ -209,7 +209,7 @@ useCustomDevServer(bundlerOptions, app, {
   export const addViteSsrNoExternal: (
     bundlerOptions: unknown,
     app: App,
-    module: string | string[],
+    module: string[] | string,
   ) => void
   ```
 
@@ -217,8 +217,8 @@ useCustomDevServer(bundlerOptions, app, {
 
   ```ts
   import {
-    addViteOptimizeDepsInclude,
     addViteOptimizeDepsExclude,
+    addViteOptimizeDepsInclude,
     addViteSsrExternal,
     addViteSsrNoExternal,
   } from '@vuepress/helper'

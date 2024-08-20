@@ -3,7 +3,7 @@ import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 import { generateCatalogPage } from './generateCatalogPage.js'
 import { catalogLocales as defaultLocales } from './locales.js'
-import { logger, PLUGIN_NAME } from './logger.js'
+import { PLUGIN_NAME, logger } from './logger.js'
 import type { CatalogPluginOptions } from './options.js'
 
 const __dirname = getDirname(import.meta.url)
@@ -27,9 +27,9 @@ export const catalogPlugin =
         }),
       }),
 
-      onInitialized: (app): Promise<void> => generateCatalogPage(app, options),
+      onInitialized: (): Promise<void> => generateCatalogPage(app, options),
 
-      extendsBundlerOptions: (bundlerOptions: unknown, app): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown): void => {
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
 

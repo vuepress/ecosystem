@@ -361,12 +361,12 @@ export default {
           text: 'VuePress Reference',
           collapsible: true,
           // for project links, .md or .html suffix is optional
-          children: ['cli', 'config'],,
+          children: ['cli', 'config'],
         },
         {
           text: 'Bundlers Reference',
           collapsible: true,
-         // prefix can be a relative path, which is equivalent to `prefix: /reference/bundler/`
+          // prefix can be a relative path, which is equivalent to `prefix: /reference/bundler/`
           prefix: 'bundler/',
           children: ['vite', 'webpack'],
         },

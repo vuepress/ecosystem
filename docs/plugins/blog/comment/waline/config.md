@@ -279,8 +279,8 @@
 You can directly configure serializable options in the plugin options:
 
 ```ts title=".vuepress/config.ts"
-import { defineUserConfig } from 'vuepress'
 import { commentPlugin } from '@vuepress/plugin-comment'
+import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
   plugins: [
@@ -298,8 +298,8 @@ export default defineUserConfig({
 You can use the `defineWalineConfig` function to customize Waline:
 
 ```ts title=".vuepress/client.ts"
-import { defineClientConfig } from 'vuepress/client'
 import { defineWalineConfig } from '@vuepress/plugin-comment/client'
+import { defineClientConfig } from 'vuepress/client'
 
 defineWalineConfig({
   // Waline config

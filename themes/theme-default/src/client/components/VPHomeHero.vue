@@ -15,24 +15,12 @@ const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
 const siteLocale = useSiteLocaleData()
 const isDarkMode = useDarkMode()
 
-const heroImage = computed(() => {
-  if (isDarkMode.value && frontmatter.value.heroImageDark !== undefined) {
-    return frontmatter.value.heroImageDark
-  }
-  return frontmatter.value.heroImage
-})
-const heroAlt = computed(
-  () => frontmatter.value.heroAlt || heroText.value || 'hero',
-)
-const heroHeight = computed(() => frontmatter.value.heroHeight || 280)
-
 const heroText = computed(() => {
   if (frontmatter.value.heroText === null) {
     return null
   }
   return frontmatter.value.heroText || siteLocale.value.title || 'Hello'
 })
-
 const tagline = computed(() => {
   if (frontmatter.value.tagline === null) {
     return null
@@ -44,6 +32,16 @@ const tagline = computed(() => {
     'Welcome to your VuePress site'
   )
 })
+const heroImage = computed(() => {
+  if (isDarkMode.value && frontmatter.value.heroImageDark !== undefined) {
+    return frontmatter.value.heroImageDark
+  }
+  return frontmatter.value.heroImage
+})
+const heroAlt = computed(
+  () => frontmatter.value.heroAlt || heroText.value || 'hero',
+)
+const heroHeight = computed(() => frontmatter.value.heroHeight ?? 280)
 
 const actions = computed(() => {
   if (!Array.isArray(frontmatter.value.actions)) {

@@ -43,21 +43,25 @@ export const renderCacheWithMemory = async (
   const [metadata, cache] = await Promise.all([
     readFile<Metadata>(metaFilepath),
     readFile<Cache>(cacheFilepath),
-  ]).then(([metadata, cache]) => [metadata || {}, cache || {}] as const)
+  ]).then(
+    ([metadataStore, cacheStore]) =>
+      [metadataStore ?? {}, cacheStore ?? {}] as const,
+  )
 
   let timer: ReturnType<typeof setTimeout> | null = null
-  const update = async (): Promise<void> => {
-    timer && clearTimeout(timer)
-    timer = setTimeout(
-      async () =>
-        await Promise.all([
-          writeFile(metaFilepath, metadata),
-          writeFile(cacheFilepath, cache),
-        ]),
-      200,
-    )
+
+  const update = (): void => {
+    if (timer) clearTimeout(timer)
+
+    timer = setTimeout(() => {
+      void Promise.all([
+        writeFile(metaFilepath, metadata),
+        writeFile(cacheFilepath, cache),
+      ])
+    }, 200)
   }
 
+  // eslint-disable-next-line @typescript-eslint/unbound-method
   const rawRender = md.render
   md.render = (input, env: MarkdownEnv) => {
     const filepath = env.filePathRelative
@@ -67,7 +71,8 @@ export const renderCacheWithMemory = async (
     }
 
     const key = hash(input)
-    if (metadata[filepath] === key && cache[filepath]) {
+
+    if (metadata[filepath] === key && filepath in cache) {
       const cached = cache[filepath]
       Object.assign(env, cached.env)
       return cached.content
@@ -98,16 +103,23 @@ export const renderCacheWithFilesystem = async (
 
   const metaFilepath = `${basename}/${META_FILE}`
 
-  const metadata = (await readFile<Metadata>(metaFilepath)) || {}
+  const metadata = (await readFile<Metadata>(metaFilepath)) ?? {}
 
   let timer: ReturnType<typeof setTimeout> | null = null
-  const update = (filepath: string, data: CacheData): void => {
-    writeFile(`${basename}/${filepath}`, data)
 
-    timer && clearTimeout(timer)
-    timer = setTimeout(async () => writeFile(metaFilepath, metadata), 200)
+  const update = (filepath: string, data: CacheData): void => {
+    void writeFile(`${basename}/${filepath}`, data)
+
+    if (timer) clearTimeout(timer)
+
+    timer = setTimeout(() => {
+      void writeFile(metaFilepath, metadata)
+    }, 200)
   }
+
+  // eslint-disable-next-line @typescript-eslint/unbound-method
   const rawRender = md.render
+
   md.render = (input, env: MarkdownEnv) => {
     const filepath = env.filePathRelative
 
@@ -123,9 +135,8 @@ export const renderCacheWithFilesystem = async (
       if (cached) {
         Object.assign(env, cached.env)
         return cached.content
-      } else {
-        metadata[filepath] = ''
       }
+      metadata[filepath] = ''
     }
     const start = performance.now()
     const content = rawRender(input, env)

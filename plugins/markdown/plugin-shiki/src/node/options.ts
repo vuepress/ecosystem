@@ -4,6 +4,9 @@ import type { PreWrapperOptions, ShikiHighlightOptions } from './types.js'
 /**
  * Options of @vuepress/plugin-shiki
  */
-export type ShikiPluginOptions = ShikiHighlightOptions &
+export type ShikiPluginOptions = Pick<
+  MarkdownItLineNumbersOptions,
+  'lineNumbers'
+> &
   PreWrapperOptions &
-  Pick<MarkdownItLineNumbersOptions, 'lineNumbers'>
+  ShikiHighlightOptions

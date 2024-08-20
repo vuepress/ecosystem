@@ -1,5 +1,5 @@
-import { inject } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
+import { inject } from 'vue'
 import type { RouteLocale } from 'vuepress/client'
 import type { ThemeData } from '../../shared/index.js'
 

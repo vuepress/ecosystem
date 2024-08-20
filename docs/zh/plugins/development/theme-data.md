@@ -76,15 +76,15 @@ export default {
 - 示例：
 
 ```ts
-import { useThemeData } from '@vuepress/plugin-theme-data/client'
 import type { ThemeData } from '@vuepress/plugin-theme-data/client'
+import { useThemeData } from '@vuepress/plugin-theme-data/client'
 
 type MyThemeData = ThemeData<{
   foo: string
 }>
 
 export default {
-  setup() {
+  setup(): void {
     const themeData = useThemeData<MyThemeData>()
     console.log(themeData.value)
   },
@@ -102,15 +102,15 @@ export default {
 - 示例：
 
 ```ts
-import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 import type { ThemeData } from '@vuepress/plugin-theme-data/client'
+import { useThemeLocaleData } from '@vuepress/plugin-theme-data/client'
 
 type MyThemeData = ThemeData<{
   foo: string
 }>
 
 export default {
-  setup() {
+  setup(): void {
     const themeLocaleData = useThemeLocaleData<MyThemeData>()
     console.log(themeLocaleData.value)
   },

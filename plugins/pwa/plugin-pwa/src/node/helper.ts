@@ -22,7 +22,7 @@ export const appendBaseToManifest = (
         shortcut.icons?.map((icon) => ({
           ...icon,
           src: appendBaseToLink(base, icon.src),
-        })) || [],
+        })) ?? [],
       url: appendBaseToLink(base, shortcut.url),
     }))
 
