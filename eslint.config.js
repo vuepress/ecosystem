@@ -130,7 +130,6 @@ export default vuepress(
       },
     },
   },
-
   {
     files: ['**/tests/**'],
     rules: {

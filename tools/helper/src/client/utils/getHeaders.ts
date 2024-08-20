@@ -75,7 +75,7 @@ export const resolveHeaders = (
 }
 
 const serializeHeader = (h: Element, ignore: string[] = []): string => {
-  let text = ''
+  let text: string
 
   if (ignore.length) {
     const clone = h.cloneNode(true) as Element
