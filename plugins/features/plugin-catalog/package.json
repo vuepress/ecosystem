@@ -42,10 +42,10 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "vue": "^3.4.37"
+    "vue": "^3.4.38"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.14"
+    "vuepress": "2.0.0-rc.15"
   },
   "publishConfig": {
     "access": "public"

@@ -44,12 +44,12 @@
     "@mdit/plugin-mathjax-slim": "^0.13.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
-    "vue": "^3.4.37"
+    "vue": "^3.4.38"
   },
   "peerDependencies": {
     "katex": "^0.16.10",
     "mathjax-full": "^3.2.2",
-    "vuepress": "2.0.0-rc.14"
+    "vuepress": "2.0.0-rc.15"
   },
   "peerDependenciesMeta": {
     "katex": {

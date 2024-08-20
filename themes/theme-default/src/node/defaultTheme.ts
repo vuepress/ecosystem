@@ -87,24 +87,12 @@ export const defaultTheme = ({
         css: {
           preprocessorOptions: {
             sass: {
-              logger: {
-                warn: (message, { deprecation, deprecationType }) => {
-                  if (deprecation && deprecationType.id === 'mixed-decls')
-                    return
-
-                  console.warn(message)
-                },
-              },
+              api: 'modern',
+              silenceDeprecations: ['mixed-decls'],
             },
             scss: {
-              logger: {
-                warn: (message, { deprecation, deprecationType }) => {
-                  if (deprecation && deprecationType.id === 'mixed-decls')
-                    return
-
-                  console.warn(message)
-                },
-              },
+              api: 'modern',
+              silenceDeprecations: ['mixed-decls'],
             },
           },
         },
@@ -114,7 +102,6 @@ export const defaultTheme = ({
           .rule('scss')
           .use('sass-loader')
           .tap((options) => ({
-            api: 'modern-compiler',
             ...options,
             sassOptions: {
               silenceDeprecations: ['mixed-decls'],
