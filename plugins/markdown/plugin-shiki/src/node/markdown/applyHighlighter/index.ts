@@ -42,8 +42,8 @@ export const applyHighlighter = async (
   const transformers = getTransformers(options)
   const loadedLanguages = highlighter.getLoadedLanguages()
 
-  md.options.highlight = (str, language, attrs) =>
-    handleMustache(str, (str) =>
+  md.options.highlight = (content, language, attrs) =>
+    handleMustache(content, (str) =>
       highlighter.codeToHtml(str, {
         lang: getLanguage(
           language,

@@ -97,17 +97,17 @@ export const useCopyCode = ({
   const { copy } = useClipboard({ legacy: true })
   const timeoutIdMap = new WeakMap<HTMLElement, ReturnType<typeof setTimeout>>()
 
-  const copyContent = (
+  const copyContent = async (
     codeContainer: HTMLDivElement,
     codeContent: HTMLPreElement,
     button: HTMLButtonElement,
-  ): void => {
+  ): Promise<void> => {
     const clone = codeContent.cloneNode(true) as HTMLPreElement
 
     if (ignoreSelector.length) {
-      clone
-        .querySelectorAll(ignoreSelector.join(','))
-        .forEach((node) => node.remove())
+      clone.querySelectorAll(ignoreSelector.join(',')).forEach((node) => {
+        node.remove()
+      })
     }
 
     if (transform) transform(clone)
@@ -117,18 +117,18 @@ export const useCopyCode = ({
     if (SHELL_RE.test(codeContainer.className))
       text = text.replace(/^ *(\$|>) /gm, '')
 
-    copy(text).then(() => {
-      if (duration <= 0) return
+    await copy(text)
 
-      button.classList.add('copied')
-      clearTimeout(timeoutIdMap.get(button))
-      const timeoutId = setTimeout(() => {
-        button.classList.remove('copied')
-        button.blur()
-        timeoutIdMap.delete(button)
-      }, duration)
-      timeoutIdMap.set(button, timeoutId)
-    })
+    if (duration <= 0) return
+
+    button.classList.add('copied')
+    clearTimeout(timeoutIdMap.get(button))
+    const timeoutId = setTimeout(() => {
+      button.classList.remove('copied')
+      button.blur()
+      timeoutIdMap.delete(button)
+    }, duration)
+    timeoutIdMap.set(button, timeoutId)
   }
 
   useEventListener('click', (event) => {
@@ -138,12 +138,12 @@ export const useCopyCode = ({
       enabled.value &&
       el.matches('div[class*="language-"] > button.vp-copy-code-button')
     ) {
-      const codeContainer = el.parentElement as HTMLDivElement
+      const codeContainer = el.parentElement as HTMLDivElement | null
       const preBlock = el.nextElementSibling as HTMLPreElement | null
 
       if (!codeContainer || !preBlock) return
 
-      copyContent(codeContainer, preBlock, el as HTMLButtonElement)
+      void copyContent(codeContainer, preBlock, el as HTMLButtonElement)
     }
   })
 }

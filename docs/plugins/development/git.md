@@ -99,7 +99,7 @@ import type { GitPluginPageData } from '@vuepress/plugin-git'
 import { usePageData } from 'vuepress/client'
 
 export default {
-  setup() {
+  setup(): void {
     const page = usePageData<GitPluginPageData>()
     console.log(page.value.git)
   },

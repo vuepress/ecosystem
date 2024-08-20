@@ -15,7 +15,7 @@ export const backToTopPlugin =
     return {
       name: PLUGIN_NAME,
 
-      define: (app) => ({
+      define: () => ({
         __BACK_TO_TOP_LOCALES__: getLocaleConfig({
           app,
           name: 'back-to-top',

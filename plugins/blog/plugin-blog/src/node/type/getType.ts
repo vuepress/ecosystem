@@ -46,7 +46,7 @@ export const getType = (
           pages
             .filter(filter)
             .sort(sorter)
-            .map(({ path }) => path),
+            .map(({ path: itemPagePath }) => itemPagePath),
         )
 
         if (pagePath)

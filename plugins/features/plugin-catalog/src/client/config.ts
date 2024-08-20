@@ -5,7 +5,6 @@ import { injectCatalogInfoGetter } from './helpers/index.js'
 
 import './styles/vars.css'
 
-// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
 export default defineClientConfig({
   enhance: ({ app }) => {
     injectCatalogInfoGetter(app)

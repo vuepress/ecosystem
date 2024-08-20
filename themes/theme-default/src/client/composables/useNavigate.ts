@@ -12,7 +12,7 @@ export const useNavigate = (): ((url: string) => void) => {
         if (route.path !== url) router.push(url)
       } else if (isLinkWithProtocol(url)) {
         // external url
-        window?.open(url)
+        window.open(url)
       } else {
         // relative url
         router.push(encodeURI(url))

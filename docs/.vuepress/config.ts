@@ -15,18 +15,17 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { searchPlugin } from '@vuepress/plugin-search'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { defineUserConfig } from 'vuepress'
-import type { UserConfig } from 'vuepress'
 import { getDirname, path } from 'vuepress/utils'
 import { head } from './configs/index.js'
 import theme from './theme.js'
 
 const __dirname = getDirname(import.meta.url)
 
-const isProd = process.env.NODE_ENV === 'production'
+const IS_PROD = process.env.NODE_ENV === 'production'
 
 export default defineUserConfig({
   // set site base to default value
-  base: (process.env.BASE as `/${string}/` | '/') || '/',
+  base: (process.env.BASE as '/' | `/${string}/` | undefined) || '/',
 
   // extra tags in `<head>`
   head,
@@ -103,7 +102,7 @@ export default defineUserConfig({
     }),
     searchPlugin(),
     // only enable shiki plugin in production mode
-    isProd
+    IS_PROD
       ? shikiPlugin({
           langs: ['bash', 'diff', 'json', 'md', 'ts', 'vue'],
           themes: {
@@ -116,8 +115,9 @@ export default defineUserConfig({
           notationFocus: true,
           notationHighlight: true,
           notationWordHighlight: true,
+          whitespace: true,
         })
       : [],
     cachePlugin(),
   ],
-}) as UserConfig
+})

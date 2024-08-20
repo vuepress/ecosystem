@@ -6,10 +6,10 @@ import type {
   TwikooOptions,
   WalineLocaleData,
   WalineOptions,
-} from '..//shared/index.js'
+} from '../shared/index.js'
 
 export interface ArtalkPluginOptions
-  extends Omit<Partial<ArtalkOptions>, 'imgUploader' | 'avatarURLBuilder'> {
+  extends Omit<Partial<ArtalkOptions>, 'avatarURLBuilder' | 'imgUploader'> {
   provider: 'Artalk'
 }
 
@@ -24,7 +24,7 @@ export interface TwikooPluginOptions extends Partial<TwikooOptions> {
 export interface WalinePluginOptions
   extends Omit<
     Partial<WalineOptions>,
-    'search' | 'highlighter' | 'imageUploader' | 'texRenderer'
+    'highlighter' | 'imageUploader' | 'search' | 'texRenderer'
   > {
   provider: 'Waline'
 
@@ -51,6 +51,6 @@ export interface WalinePluginOptions
 export type CommentPluginOptions =
   | ArtalkPluginOptions
   | GiscusPluginOptions
+  | NoCommentPluginOptions
   | TwikooPluginOptions
   | WalinePluginOptions
-  | NoCommentPluginOptions

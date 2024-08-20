@@ -83,7 +83,7 @@ export default {
   import { useCopyCode } from '@vuepress/plugin-copy-code/client'
 
   export default {
-    setup() {
+    setup(): void {
       useCopyCode({
         transform: (preElement) => {
           // Remove all `.ignore` elements

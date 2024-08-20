@@ -33,13 +33,14 @@ export const useBlogType = <
     const mapKey = key ?? frontmatter.value.blog?.key ?? ''
 
     if (!mapKey) {
+      // eslint-disable-next-line no-console
       console.warn(`useBlogType: key not found`)
 
       // Fallback data
       return { path: '/', items: [] }
     }
 
-    if (!typeMapRef.value[mapKey])
+    if (!(mapKey in typeMapRef.value))
       throw new Error(`useBlogType: key ${key} is invalid`)
 
     const configMap = typeMapRef.value[mapKey][routeLocale.value]
@@ -65,6 +66,6 @@ export const useBlogType = <
 }
 
 if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot))
-  __VUE_HMR_RUNTIME__.updateBlogType = (typesMap: TypesMap): void => {
-    typeMapRef.value = typesMap
+  __VUE_HMR_RUNTIME__.updateBlogType = (value: TypesMap): void => {
+    typeMapRef.value = value
   }

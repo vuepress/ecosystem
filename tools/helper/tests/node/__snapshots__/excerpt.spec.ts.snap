@@ -254,8 +254,8 @@ line break again</li>
 <pre><code>Sample text here...
 </code></pre>
 <p>Syntax highlighting:</p>
-<pre><code class="language-js">var foo = function (bar) {
-  return bar++
+<pre><code class="language-js">function foo(bar) {
+  return \`Hello \${bar}\`
 }
 
 console.log(foo(5))

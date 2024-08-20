@@ -2,7 +2,7 @@ import { isArray } from '@vuepress/helper'
 import { js2xml } from 'xml-js'
 import type { FeedAuthor, FeedCategory } from '../../../typings/index.js'
 import type { FeedStore } from '../../feed/store.js'
-import { encodeXML, FEED_GENERATOR } from '../../utils/index.js'
+import { FEED_GENERATOR, encodeXML } from '../../utils/index.js'
 import type {
   AtomAuthor,
   AtomCategory,
@@ -110,7 +110,7 @@ export const getAtomFeed = (feedStore: FeedStore): string => {
       title: { _attributes: { type: 'text' }, _text: item.title },
       id: item.guid || item.link,
       link: { _attributes: { href: item.link } },
-      updated: item.lastUpdated.toISOString(),
+      updated: (item.lastUpdated ?? new Date()).toISOString(),
     }
 
     // entry: recommended elements
@@ -132,10 +132,9 @@ export const getAtomFeed = (feedStore: FeedStore): string => {
       }
 
     // author(s)
-    if (item.author)
-      entry.author = item.author
-        .filter((author) => author.name)
-        .map((author) => getAtomAuthor(author))
+    entry.author = item.author
+      .filter((author) => author.name)
+      .map((author) => getAtomAuthor(author))
 
     if (item.category)
       // category
@@ -144,7 +143,7 @@ export const getAtomFeed = (feedStore: FeedStore): string => {
       )
 
     // contributor
-    if (item.contributor)
+    if (item.contributor.length)
       entry.contributor = item.contributor.map((contributor) =>
         getAtomAuthor(contributor),
       )

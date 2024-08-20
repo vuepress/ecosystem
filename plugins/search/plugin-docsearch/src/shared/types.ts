@@ -4,14 +4,14 @@ import type { LocaleConfig } from 'vuepress/shared'
 export type DocsearchLocaleOptions = Partial<
   Pick<
     DocSearchProps,
-    | 'appId'
     | 'apiKey'
+    | 'appId'
+    | 'disableUserPersonalization'
     | 'indexName'
+    | 'initialQuery'
+    | 'maxResultsPerGroup'
     | 'placeholder'
     | 'searchParameters'
-    | 'maxResultsPerGroup'
-    | 'disableUserPersonalization'
-    | 'initialQuery'
     | 'translations'
   >
 >

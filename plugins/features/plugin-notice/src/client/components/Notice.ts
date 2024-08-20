@@ -1,12 +1,12 @@
 import { isLinkAbsolute, isLinkHttp, startsWith } from '@vuepress/helper/client'
 import type { PropType } from 'vue'
 import {
+  TransitionGroup,
   computed,
   defineComponent,
   h,
   onMounted,
   ref,
-  TransitionGroup,
   watch,
 } from 'vue'
 import { useRoutePath, useRouter } from 'vuepress/client'
@@ -17,7 +17,7 @@ import '../styles/notice.css'
 
 type NoticeClientOption = Omit<NoticeItemOptions, 'key'> & {
   noticeKey?: string
-} & ({ path: string } | { match: string })
+} & ({ match: string } | { path: string })
 
 export const Notice = defineComponent({
   name: 'Notice',
@@ -142,7 +142,9 @@ export const Notice = defineComponent({
                         h('button', {
                           type: 'button',
                           class: ['vp-notice-footer-action', type],
-                          onClick: () => footerAction(link),
+                          onClick: () => {
+                            footerAction(link)
+                          },
                           innerHTML: text,
                         }),
                     ),

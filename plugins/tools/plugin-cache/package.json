@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-cache",
-  "version": "2.0.0-rc.39",
+  "version": "2.0.0-rc.41",
   "description": "VuePress plugin - cache",
   "keywords": [
     "vuepress-plugin",
@@ -34,12 +34,13 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.14"
+    "vuepress": "2.0.0-rc.15"
   },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
+    "ci-info": "^4.0.0",
     "lru-cache": "^10.4.3"
   }
 }

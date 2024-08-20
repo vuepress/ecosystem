@@ -24,10 +24,10 @@ export const lang2PathConfig = {
   'zh-TW': '/zh-tw/',
 }
 
-export const supportedLangs = keys(lang2PathConfig)
+export const SUPPORTED_LANGS = keys(lang2PathConfig)
 
 export const path2langConfig = fromEntries(
-  (supportedLangs as KnownLangCode[]).map((lang) => [
+  (SUPPORTED_LANGS as KnownLangCode[]).map((lang) => [
     lang2PathConfig[lang],
     lang,
   ]),

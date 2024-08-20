@@ -11,7 +11,7 @@ import { getManifest } from './getManifest.js'
 import { appendBase } from './helper.js'
 import { injectLinksToHead } from './injectLinksToHead.js'
 import { pwaLocales } from './locales.js'
-import { logger, PLUGIN_NAME } from './logger.js'
+import { PLUGIN_NAME, logger } from './logger.js'
 import type { PwaPluginOptions } from './options.js'
 import { prepareConfigFile } from './prepareConfigFile.js'
 
@@ -45,7 +45,7 @@ export const pwaPlugin =
         __SW_PATH__: options.serviceWorkerFilename || 'service-worker.js',
       }),
 
-      extendsBundlerOptions: (bundlerOptions: unknown, app): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown): void => {
         addViteOptimizeDepsExclude(bundlerOptions, app, [
           'mitt',
           'register-service-worker',
@@ -63,11 +63,11 @@ export const pwaPlugin =
         })
       },
 
-      onGenerated: async (app): Promise<void> => {
+      onGenerated: async (): Promise<void> => {
         await generateManifest(app, options)
         await generateServiceWorker(app, options)
       },
 
-      clientConfigFile: (app) => prepareConfigFile(app, options),
+      clientConfigFile: () => prepareConfigFile(app, options),
     }
   }

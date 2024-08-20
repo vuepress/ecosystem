@@ -1,7 +1,7 @@
 import type { PageData } from 'vuepress/shared'
 
 export interface SearchIndexItem
-  extends Pick<PageData, 'title' | 'headers' | 'path'> {
+  extends Pick<PageData, 'headers' | 'path' | 'title'> {
   pathLocale: string
   extraFields: string[]
 }

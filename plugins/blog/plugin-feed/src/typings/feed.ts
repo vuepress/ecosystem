@@ -160,7 +160,7 @@ export interface FeedChannelOptions {
   /**
    * Global Author
    */
-  author?: FeedAuthor[] | FeedAuthor
+  author?: FeedAuthor | FeedAuthor[]
 
   /**
    * Link for websub

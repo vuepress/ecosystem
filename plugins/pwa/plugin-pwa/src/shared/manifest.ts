@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 /**
  * @see https://www.w3.org/TR/mediaqueries-5/#display-mode
  */
-export type DisplayMode = 'fullscreen' | 'standalone' | 'minimal-ui' | 'browser'
+export type DisplayMode = 'browser' | 'fullscreen' | 'minimal-ui' | 'standalone'
 
 /**
  * @see https://github.com/w3c/manifest/wiki/Categories
@@ -43,13 +41,13 @@ export type ManifestCategory =
  */
 export type OrientationLockType =
   | 'any'
-  | 'natural'
-  | 'landscape'
-  | 'portrait'
-  | 'portrait-primary'
-  | 'portrait-secondary'
   | 'landscape-primary'
   | 'landscape-secondary'
+  | 'landscape'
+  | 'natural'
+  | 'portrait-primary'
+  | 'portrait-secondary'
+  | 'portrait'
 
 /**
  * @see https://www.w3.org/TR/appmanifest/#manifest-image-resources
@@ -72,14 +70,14 @@ export interface ManifestExternalApplicationResource {
    * @see https://github.com/w3c/manifest/wiki/Platforms
    */
   platform:
+    | 'amazon'
     | 'chrome_web_store'
-    | 'play'
     | 'chromeos_play'
+    | 'f-droid'
     | 'itunes'
+    | 'play'
     | 'webapp'
     | 'windows'
-    | 'f-droid'
-    | 'amazon'
 
   url: string
 
@@ -131,7 +129,7 @@ export interface AppManifest extends Record<string, unknown> {
    *
    * The base direction for the localizable members of the manifest.
    */
-  dir?: 'ltr' | 'rtl' | 'auto'
+  dir?: 'auto' | 'ltr' | 'rtl'
 
   /**
    * @see https://www.w3.org/TR/appmanifest/#lang-member

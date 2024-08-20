@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.41](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.40...v2.0.0-rc.41) (2024-08-14)
+
+### Bug Fixes
+
+- correct spelling in RTL implementation ([#235](https://github.com/vuepress/ecosystem/issues/235)) ([726d4a3](https://github.com/vuepress/ecosystem/commit/726d4a3828e4221af58e5ecddb0b054b314a51ff))
+- improve code highlight style, close [#222](https://github.com/vuepress/ecosystem/issues/222), [#223](https://github.com/vuepress/ecosystem/issues/223) ([#226](https://github.com/vuepress/ecosystem/issues/226)) ([2a4768d](https://github.com/vuepress/ecosystem/commit/2a4768d1391b22570190d39a0a1a7730fc752e58))
+- **plugin-docsearch:** fix keydown event, close [#227](https://github.com/vuepress/ecosystem/issues/227) ([d9f6f0a](https://github.com/vuepress/ecosystem/commit/d9f6f0a22c66bf65f359573723bcce534254dd1c))
+
+### Features
+
+- **plugin-cache:** add support for disable cache in CI env ([#220](https://github.com/vuepress/ecosystem/issues/220)) ([b36bf40](https://github.com/vuepress/ecosystem/commit/b36bf4047bcb4980d62c96c232a4d55bcbc4eef4))
+
+# [2.0.0-rc.40](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.39...v2.0.0-rc.40) (2024-07-24)
+
+### Bug Fixes
+
+- fix lineNumbers style not working ([61e8df9](https://github.com/vuepress/ecosystem/commit/61e8df943604759dd299c3192095e8b52a40eb06))
+- **plugin-shiki:** refine css variables and allow overriding default code block color ([201db1d](https://github.com/vuepress/ecosystem/commit/201db1d4b8a057bba9e774a276a3eec2323c3675))
+
 # [2.0.0-rc.39](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.38...v2.0.0-rc.39) (2024-07-19)
 
 ### Bug Fixes

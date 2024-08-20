@@ -118,8 +118,8 @@ Sample text here...
 Syntax highlighting:
 
 ```js {2}
-var foo = function (bar) {
-  return bar++
+function foo(bar) {
+  return `Hello ${bar}`
 }
 
 console.log(foo(5))

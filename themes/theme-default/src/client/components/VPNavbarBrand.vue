@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useDarkMode } from '@theme/useDarkMode'
 import { useThemeLocaleData } from '@theme/useThemeData'
-import { computed, h } from 'vue'
 import type { FunctionalComponent } from 'vue'
+import { computed, h } from 'vue'
 import {
   ClientOnly,
   RouteLink,

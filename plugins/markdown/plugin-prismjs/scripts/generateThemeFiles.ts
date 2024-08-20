@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { compileString } from 'sass'
 import { fs, getDirname, path } from 'vuepress/utils'
 

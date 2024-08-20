@@ -1,6 +1,6 @@
 import type { ViteBundlerOptions } from '@vuepress/bundler-vite'
 import type {
-  LoaderOptions,
+  SassLoaderOptions,
   WebpackBundlerOptions,
 } from '@vuepress/bundler-webpack'
 import {
@@ -12,8 +12,8 @@ import {
 import type { App } from 'vuepress/core'
 import { getIdPrefix } from './utils.js'
 
-type LoaderContext =
-  Exclude<LoaderOptions['additionalData'], string | undefined> extends (
+type SassLoaderContext =
+  Exclude<SassLoaderOptions['additionalData'], string | undefined> extends (
     content: string,
     loaderContext: infer T,
   ) => string
@@ -41,13 +41,11 @@ export const injectScssConfigModule = (
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const originalAdditionalData:
       | string
-      | ((source: string, file: string) => string | Promise<string>)
+      | ((source: string, file: string) => Promise<string> | string)
       | undefined =
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       viteBundlerConfig.viteOptions?.css?.preprocessorOptions?.scss
         .additionalData // eslint-disable-line @typescript-eslint/no-unsafe-member-access
 
-    // eslint-disable-next-line
     viteBundlerConfig.viteOptions = mergeViteConfig(
       viteBundlerConfig.viteOptions ?? {},
       {
@@ -90,7 +88,7 @@ export const injectScssConfigModule = (
 
     const additionalDataHandler = (
       content: string,
-      loaderContext: LoaderContext,
+      loaderContext: SassLoaderContext,
     ): string => {
       const originalContent = isString(additionalData)
         ? `${additionalData}${content}`

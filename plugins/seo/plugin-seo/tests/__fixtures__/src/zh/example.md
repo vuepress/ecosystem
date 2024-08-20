@@ -115,8 +115,8 @@ Sample text here...
 高亮格式:
 
 ```js
-var foo = function (bar) {
-  return bar++
+function foo(bar) {
+  return `Hello, ${bar}`
 }
 
 console.log(foo(5))

@@ -8,7 +8,7 @@ export const createMarkdownFilePathGetter = (
 ): MarkdownFilePathGetter => {
   const store: { path?: string | null } = {}
 
-  const rawRender = md.render
+  const rawRender = md.render.bind(md)
 
   // we need to store file path before each render
   md.render = (src, env: MarkdownEnv) => {

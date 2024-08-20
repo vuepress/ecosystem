@@ -1,5 +1,5 @@
-import * as languages from './languages.js'
 import type { HighlightLanguage } from './languages.js'
+import * as languages from './languages.js'
 
 type LanguageAlias = string
 
@@ -11,11 +11,12 @@ type LanguagesMap = Record<LanguageAlias, HighlightLanguage>
  * - key: alias
  * - value: language
  */
-let languagesMap: LanguagesMap
+let languagesMap: LanguagesMap | null = null
 
 /**
  * Lazy generate languages map
  */
+// eslint-disable-next-line no-return-assign
 const getLanguagesMap = (): LanguagesMap =>
   (languagesMap ??= Object.values(languages).reduce<LanguagesMap>(
     (result, item) => ({

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import {
   DEPRECATED_PACKAGES,
   OFFICIAL_PACKAGES,

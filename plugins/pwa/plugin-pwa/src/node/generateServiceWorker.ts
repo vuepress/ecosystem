@@ -64,7 +64,7 @@ export const generateServiceWorker = async (
     globPatterns,
     cleanupOutdatedCaches: true,
     clientsClaim: true,
-    maximumFileSizeToCacheInBytes: (options.maxSize || 2048) * 1024,
+    maximumFileSizeToCacheInBytes: (options.maxSize ?? 2048) * 1024,
     manifestTransforms: [imageFilter(options.maxImageSize)],
     mode: app.env.isDebug ? 'development' : 'production',
     sourcemap: app.env.isDebug,

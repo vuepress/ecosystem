@@ -43,15 +43,15 @@ const isValidTheme = (theme?: string): theme is PrismjsTheme =>
   PRISMJS_THEMES.includes(theme)
 
 export const getTheme = (
-  options: PrismjsPluginOptions,
+  options: Pick<PrismjsPluginOptions, 'theme' | 'themes'>,
 ): { light: PrismjsTheme; dark: PrismjsTheme } => ({
   light: isValidTheme(options.themes?.light)
-    ? options.themes?.light
+    ? options.themes.light
     : isValidTheme(options.theme)
       ? options.theme
       : 'nord',
   dark: isValidTheme(options.themes?.dark)
-    ? options.themes?.dark
+    ? options.themes.dark
     : isValidTheme(options.theme)
       ? options.theme
       : 'nord',

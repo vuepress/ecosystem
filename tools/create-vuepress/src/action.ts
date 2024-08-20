@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 import { existsSync, readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { confirm, select } from '@inquirer/prompts'
@@ -14,7 +15,7 @@ import {
 } from './utils/index.js'
 
 type Bundler = 'vite' | 'webpack'
-type Preset = 'docs' | 'blog'
+type Preset = 'blog' | 'docs'
 
 interface CreateOptions {
   bundler?: Bundler
@@ -39,7 +40,7 @@ export const mainAction = async (
   const themePackageName = normalizeThemeName(theme)
 
   if (KNOWN_THEME_COMMANDS[themePackageName]) {
-    await execaCommandSync(
+    execaCommandSync(
       `${packageManager} ${KNOWN_THEME_COMMANDS[themePackageName]} ${targetDir}`,
       { stdio: 'inherit' },
     )
@@ -50,42 +51,52 @@ export const mainAction = async (
   if (theme !== '@vuepress/theme-default') console.warn(locale.error.theme)
 
   // check bundler
-  if (bundler && !['vite', 'webpack'].includes(bundler))
-    return console.log(locale.error.bundler)
+  if (bundler && !['vite', 'webpack'].includes(bundler)) {
+    console.error(locale.error.bundler)
+    return
+  }
 
   // check presets
-  if (preset && !['docs', 'blog'].includes(preset))
-    return console.log(locale.error.preset)
+  if (preset && !['docs', 'blog'].includes(preset)) {
+    console.error(locale.error.preset)
+    return
+  }
 
   // check if the user is a noob and warn him
-  if (!targetDir || (targetDir.startsWith('[') && targetDir.endsWith(']')))
-    return console.log(locale.error.dirMissing(packageManager))
+  if (!targetDir || (targetDir.startsWith('[') && targetDir.endsWith(']'))) {
+    console.error(locale.error.dirMissing(packageManager))
+    return
+  }
 
   const targetDirPath = resolve(process.cwd(), targetDir)
 
   // check if the user is trying to cover his files
-  if (existsSync(targetDirPath) && readdirSync(targetDirPath).length)
-    return console.error(locale.error.dirNotEmpty(targetDir))
+  if (existsSync(targetDirPath) && readdirSync(targetDirPath).length) {
+    console.error(locale.error.dirNotEmpty(targetDir))
+    return
+  }
 
   ensureDirExistSync(targetDirPath)
 
   // complete bundler
   if (!bundler)
+    // eslint-disable-next-line no-param-reassign
     bundler = await select<Bundler>({
       message: locale.question.bundler,
-      choices: bundlers.map((bundler) => ({
-        name: bundler,
-        value: bundler,
+      choices: bundlers.map((item) => ({
+        name: item,
+        value: item,
       })),
     })
 
   // complete preset
   if (!preset)
+    // eslint-disable-next-line no-param-reassign
     preset = await select<Preset>({
       message: locale.question.preset,
-      choices: presets.map((preset) => ({
-        name: preset,
-        value: preset,
+      choices: presets.map((item) => ({
+        name: item,
+        value: item,
       })),
     })
 

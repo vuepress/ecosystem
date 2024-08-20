@@ -20,7 +20,7 @@ export const createPhotoSwipe = (
     download = true,
     fullscreen = true,
     ...photoSwipeOptions
-  }: PhotoSwipeOptions & PhotoSwipeBehaviorOptions,
+  }: PhotoSwipeBehaviorOptions & PhotoSwipeOptions,
 ): Promise<PhotoSwipeState> =>
   import(/* webpackChunkName: "photo-swipe" */ 'photoswipe').then(
     ({ default: PhotoSwipe }) => {
@@ -32,7 +32,7 @@ export const createPhotoSwipe = (
       }))
 
       images.forEach((image, index) => {
-        getImageUrlInfo(image).then((data) => {
+        void getImageUrlInfo(image).then((data) => {
           dataSource.splice(index, 1, data)
           currentPhotoSwipe?.refreshSlideContent(index)
         })

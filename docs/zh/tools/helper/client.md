@@ -135,9 +135,9 @@ export interface Header {
   children: Header[]
 }
 
-export type HeaderLevels = false | number | [number, number] | 'deep'
+export type HeaderLevels = number | 'deep' | false | [number, number]
 
-export type MenuItem = Omit<Header, 'slug' | 'children'> & {
+export type MenuItem = Omit<Header, 'children' | 'slug'> & {
   element: HTMLHeadElement
   children?: MenuItem[]
 }

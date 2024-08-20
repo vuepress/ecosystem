@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { input } from '@inquirer/prompts'
@@ -31,23 +32,23 @@ export const createPackageJson = async ({
   const packageJsonPath = join(targetDir, 'package.json')
   const devDependencies = {
     [`@vuepress/bundler-${bundler}`]: '2.0.0-rc.14',
-    '@vuepress/theme-default': `${peerDependencies['@vuepress/theme-default']}`,
-    'vue': '^3.4.29',
+    '@vuepress/theme-default': peerDependencies['@vuepress/theme-default'],
+    'vue': '^3.4.37',
     'vuepress': '2.0.0-rc.14',
   }
 
   if (preset === 'blog') {
     devDependencies['@vuepress/plugin-blog'] =
-      `${peerDependencies['@vuepress/plugin-blog']}`
+      peerDependencies['@vuepress/plugin-blog']
   }
 
-  console.log(locale.flow.createPackage)
+  console.info(locale.flow.createPackage)
 
   const name = await input({
     message: locale.question.name,
     default: 'my-vuepress-site',
-    validate: (input: string): true | string =>
-      PACKAGE_NAME_REG.exec(input) ? true : locale.error.name,
+    validate: (value: string): string | true =>
+      PACKAGE_NAME_REG.exec(value) ? true : locale.error.name,
   })
 
   const description = await input({
@@ -58,8 +59,8 @@ export const createPackageJson = async ({
   const version = await input({
     message: locale.question.version,
     default: '0.0.1',
-    validate: (input: string): true | string =>
-      VERSION_REG.exec(input) ? true : locale.error.version,
+    validate: (value: string): string | true =>
+      VERSION_REG.exec(value) ? true : locale.error.version,
   })
 
   const license = await input({

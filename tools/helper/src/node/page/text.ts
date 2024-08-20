@@ -1,7 +1,7 @@
-// eslint-disable-next-line vue/prefer-import-from-vue
+/* eslint-disable @typescript-eslint/no-unsafe-enum-comparison */
 import { isHTMLTag } from '@vue/shared'
-import type { AnyNode } from 'cheerio'
 import { load } from 'cheerio'
+import type { AnyNode } from 'domhandler'
 import type { App, Page } from 'vuepress/core'
 import {} from 'vuepress/shared'
 import { isArray } from '../../shared/index.js'
@@ -76,6 +76,7 @@ const handleNode = (
       !removedTags.includes(node.tagName) &&
       isHTMLTag(node.tagName)
     ) {
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       return handleNodes(node.children, { base, removedTags })
     }
 
@@ -144,7 +145,7 @@ export const getText = (
   }: PageTextOptions = {},
 ): string => {
   let result = ''
-  const rootNodes = $.parseHTML(content) ?? []
+  const rootNodes = content ? $.parseHTML(content) : []
 
   for (const node of rootNodes) {
     const text = handleNode(node, { base, removedTags })

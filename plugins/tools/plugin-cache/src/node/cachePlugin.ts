@@ -1,3 +1,4 @@
+import ci from 'ci-info'
 import type { Plugin } from 'vuepress/core'
 import { highlightCache } from './highlightCache.js'
 import {
@@ -14,16 +15,34 @@ export interface CachePluginOptions {
    *
    * @default 'memory'
    */
-  type?: 'memory' | 'filesystem'
+  type?: 'filesystem' | 'memory'
+
+  /**
+   * Whether to enable the cache in CI environment.
+   *
+   * @default false
+   */
+  enableInCi?: boolean
 }
 /**
  * Cache markdown rendering, optimize compilation speed.
  *
  * This plugin is recommended to be placed after all other plugins to ensure maximum utilization of the cache.
  */
-export const cachePlugin = ({ type }: CachePluginOptions = {}): Plugin => {
-  return {
+export const cachePlugin = ({
+  type,
+  enableInCi = false,
+}: CachePluginOptions = {}): Plugin => {
+  const plugin: Plugin = {
     name: '@vuepress/plugin-cache',
+  }
+
+  if (ci.isCI && !enableInCi) {
+    return plugin
+  }
+
+  return {
+    ...plugin,
 
     async extendsMarkdown(md, app) {
       highlightCache(md, app)

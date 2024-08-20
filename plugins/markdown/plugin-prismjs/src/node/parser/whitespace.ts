@@ -1,5 +1,5 @@
-import { resolveWhitespacePosition } from '@vuepress/highlighter-helper'
 import type { WhitespacePosition } from '@vuepress/highlighter-helper'
+import { resolveWhitespacePosition } from '@vuepress/highlighter-helper'
 import type { CodeParser, OpenTag } from './getCodeParser.js'
 
 const SPLIT_REGEXP = /(<[^>]+>)/
@@ -27,7 +27,7 @@ export const renderWhitespaceInLine = (
   // match all whitespace
   if (position === 'all') {
     snippets = snippets.map((text) =>
-      !text || text[0] === '<' ? text : renderSpace(text),
+      !text || text.startsWith('<') ? text : renderSpace(text),
     )
   }
   // match whitespace at the beginning of the line
@@ -35,8 +35,10 @@ export const renderWhitespaceInLine = (
     let has = true
     for (let i = 0; i < snippets.length; i++) {
       const snippet = snippets[i]
-      if (snippet && snippet[0] !== '<') {
+
+      if (snippet && !snippet.startsWith('<')) {
         let j = 0
+
         while (snippet[j] && j < snippet.length) {
           if (!isSpace(snippet[j])) {
             has = false
@@ -90,10 +92,12 @@ export const renderWhitespaceInLine = (
 export const metaWhitespace = (
   parser: CodeParser,
   meta: string,
-  defaultPosition?: boolean | WhitespacePosition,
+  defaultPosition?: WhitespacePosition | boolean,
 ): void => {
   const position = resolveWhitespacePosition(meta, defaultPosition)
   if (position === false) return
 
-  parser.line((line) => renderWhitespaceInLine(line, position))
+  parser.line((line) => {
+    renderWhitespaceInLine(line, position)
+  })
 }

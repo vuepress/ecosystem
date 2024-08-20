@@ -15,10 +15,11 @@ export class FeedStore {
   public contributors: FeedContributor[] = []
   public items: FeedItem[] = []
 
-  private _contributorKeys = new Set<string>()
+  private readonly contributorKeys = new Set<string>()
   public channel: FeedChannelOptions
   public links: FeedLinks
-  constructor(
+
+  public constructor(
     app: App,
     localeOptions: ResolvedFeedOptions,
     localePath: string,
@@ -30,19 +31,19 @@ export class FeedStore {
   /**
    * Add category to store
    */
-  private addCategory = (category: FeedCategory): void => {
+  private readonly addCategory = (category: FeedCategory): void => {
     this.categories.add(category.name)
   }
 
   /**
    * Add contributor to store
    */
-  private addContributor = (contributor: FeedContributor): void => {
+  private readonly addContributor = (contributor: FeedContributor): void => {
     // use keys to avoid adding same contributor
     const key = contributor.email || contributor.name
 
-    if (key && !this._contributorKeys.has(key)) {
-      this._contributorKeys.add(key)
+    if (key && !this.contributorKeys.has(key)) {
+      this.contributorKeys.add(key)
       this.contributors.push(contributor)
     }
   }
@@ -56,7 +57,7 @@ export class FeedStore {
 
       this.items.push(item)
       category?.forEach(this.addCategory)
-      contributor?.forEach(this.addContributor)
+      contributor.forEach(this.addContributor)
     }
   }
 }

@@ -22,7 +22,7 @@ export const highlightCache = (md: Markdown, app: App): void => {
    */
   if (!app.env.isDev) return
 
-  const highlight = md.options.highlight
+  const { highlight } = md.options
 
   md.options.highlight = (...args) => {
     const key = hash(args.join(''))

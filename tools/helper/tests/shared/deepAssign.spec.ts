@@ -93,7 +93,7 @@ describe('deep merge', () => {
     const object2 = { a: { b: 1, c: 2 } }
     const object3 = { a: { b: 0 }, b: { a: 1 } }
 
-    const ans = deepAssign<Record<string, any>>(object1, object2, object3)
+    const ans = deepAssign<Record<string, unknown>>(object1, object2, object3)
 
     expect(ans).toEqual({ a: { a: 1, b: 0, c: 2 }, b: { a: 1 } })
   })

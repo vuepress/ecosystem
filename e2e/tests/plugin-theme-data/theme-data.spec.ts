@@ -6,9 +6,9 @@ test.describe('plugin-theme-data', () => {
 
     const themeData = JSON.parse(
       (await page.locator('#theme-data').textContent()) ?? '{}',
-    )
+    ) as Record<string, unknown>
 
-    await expect(themeData).toEqual({
+    expect(themeData).toEqual({
       logo: 'https://v2.vuepress.vuejs.org/images/hero.png',
       navbar: [
         '/',
@@ -87,7 +87,7 @@ test.describe('plugin-theme-data', () => {
 
     const themeLocaleData = JSON.parse(
       (await page.locator('#theme-locale-data').textContent()) ?? '{}',
-    )
+    ) as Record<string, unknown>
 
     expect(themeLocaleData).toHaveProperty('navbar', ['/zh/'])
     expect(themeLocaleData).not.toHaveProperty('locales')

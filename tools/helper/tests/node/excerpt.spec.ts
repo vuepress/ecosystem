@@ -1,24 +1,27 @@
 import { describe, expect, it } from 'vitest'
+import type { Bundler } from 'vuepress/core'
 import { createBaseApp } from 'vuepress/core'
 import { path } from 'vuepress/utils'
-import { getPageExcerpt } from '../../src/node/page/excerpt.js'
 import type { PageExcerptOptions } from '../../src/node/page/excerpt.js'
+import { getPageExcerpt } from '../../src/node/page/excerpt.js'
 import { emptyTheme } from '../__fixtures__/theme/empty.js'
 
 describe('getPageExcerpt', async () => {
   const app = createBaseApp({
-    bundler: {} as any,
+    bundler: {} as Bundler,
     source: path.resolve(__dirname, '../__fixtures__/src'),
     theme: emptyTheme,
   })
 
   await app.init()
 
-  const getExcerptData = (options: PageExcerptOptions = {}) =>
+  const getExcerptData = (
+    options: PageExcerptOptions = {},
+  ): { excerpt: string; pagePath: string }[] =>
     app.pages
-      .filter(({ path }) => path !== '/404.html')
+      .filter((page) => page.path !== '/404.html')
       .map((page) => ({
-        path: page.path,
+        pagePath: page.path,
         excerpt: getPageExcerpt(app, page, options),
       }))
 
@@ -26,15 +29,15 @@ describe('getPageExcerpt', async () => {
     const excerptData = getExcerptData()
 
     it('generate excerpt for all pages', () => {
-      excerptData.forEach(({ excerpt, path }) => {
+      excerptData.forEach(({ excerpt, pagePath }) => {
         expect(excerpt.length).toBeGreaterThan(0)
-        expect(excerpt).toMatchSnapshot(path)
+        expect(excerpt).toMatchSnapshot(pagePath)
       })
     })
 
     describe('handle contents correctly', () => {
-      getExcerptData({ length: Infinity }).forEach(({ excerpt, path }) => {
-        if (path === '/markdown.html') {
+      getExcerptData({ length: Infinity }).forEach(({ excerpt, pagePath }) => {
+        if (pagePath === '/markdown.html') {
           it('clean heading', () => {
             ;[1, 2, 3, 4, 5, 6].forEach((i) => {
               expect(excerpt).toContain(`<h${i}>Heading ${i}</h${i}>`)
@@ -100,8 +103,8 @@ describe('getPageExcerpt', async () => {
     })
 
     it('remove unknown tags', () => {
-      excerptData.forEach(({ excerpt, path }) => {
-        if (path === '/component.html') {
+      excerptData.forEach(({ excerpt, pagePath }) => {
+        if (pagePath === '/component.html') {
           expect(excerpt).not.toContain('custom-element')
           expect(excerpt).not.toContain('VueComponent')
         }
@@ -111,11 +114,11 @@ describe('getPageExcerpt', async () => {
 
   describe('excerptLength', () => {
     it('only generate when having marker with 0', () => {
-      getExcerptData({ length: 0 }).forEach(({ excerpt, path }) => {
-        if (path === '/separator.html') {
+      getExcerptData({ length: 0 }).forEach(({ excerpt, pagePath }) => {
+        if (pagePath === '/separator.html') {
           expect(excerpt).toContain('article excerpt')
           expect(excerpt).not.toContain('main content')
-          expect(excerpt).toMatchSnapshot(path)
+          expect(excerpt).toMatchSnapshot(pagePath)
         } else {
           expect(excerpt.length).toBe(0)
         }
@@ -123,11 +126,11 @@ describe('getPageExcerpt', async () => {
     })
 
     it('extract all content with Infinity', () => {
-      getExcerptData({ length: Infinity }).forEach(({ excerpt, path }) => {
+      getExcerptData({ length: Infinity }).forEach(({ excerpt, pagePath }) => {
         expect(excerpt.length).toBeGreaterThan(0)
-        expect(excerpt).toMatchSnapshot(path)
+        expect(excerpt).toMatchSnapshot(pagePath)
 
-        if (path === '/long-content.html') {
+        if (pagePath === '/long-content.html') {
           expect(excerpt).toContain('Content ends.')
         }
       })
@@ -136,22 +139,22 @@ describe('getPageExcerpt', async () => {
 
   describe('excerptSeparator', () => {
     it('generate excerpt with default marker', () => {
-      getExcerptData().forEach(({ excerpt, path }) => {
-        if (path === '/separator.html') {
+      getExcerptData().forEach(({ excerpt, pagePath }) => {
+        if (pagePath === '/separator.html') {
           expect(excerpt).toContain('article excerpt')
           expect(excerpt).not.toContain('main content')
-          expect(excerpt).toMatchSnapshot(path)
+          expect(excerpt).toMatchSnapshot(pagePath)
         }
       })
     })
 
     it('generate excerpt with custom marker', () => {
       getExcerptData({ separator: 'END_OF_EXCERPT' }).forEach(
-        ({ excerpt, path }) => {
-          if (path === '/custom-separator.html') {
+        ({ excerpt, pagePath }) => {
+          if (pagePath === '/custom-separator.html') {
             expect(excerpt).toContain('article excerpt')
             expect(excerpt).not.toContain('main content')
-            expect(excerpt).toMatchSnapshot(path)
+            expect(excerpt).toMatchSnapshot(pagePath)
           }
         },
       )
@@ -162,8 +165,8 @@ describe('getPageExcerpt', async () => {
     it('preserve custom element', () => {
       getExcerptData({
         isCustomElement: (tag) => tag.startsWith('custom-element'),
-      }).forEach(({ excerpt, path }) => {
-        if (path === '/component.html') {
+      }).forEach(({ excerpt, pagePath }) => {
+        if (pagePath === '/component.html') {
           expect(excerpt).toContain('custom-element1')
           expect(excerpt).toContain('custom-element2')
           expect(excerpt).toContain('custom-element3')
@@ -175,19 +178,21 @@ describe('getPageExcerpt', async () => {
 
   describe('keepPageTitle', () => {
     it('remove first h1', () => {
-      getExcerptData().forEach(({ excerpt, path }) => {
-        if (path === '/markdown.html') {
+      getExcerptData().forEach(({ excerpt, pagePath }) => {
+        if (pagePath === '/markdown.html') {
           expect(excerpt).not.toContain('Content Example')
         }
       })
     })
 
     it('not remove first h1', () => {
-      getExcerptData({ keepPageTitle: true }).forEach(({ excerpt, path }) => {
-        if (path === '/markdown.html') {
-          expect(excerpt).toContain('Content Example')
-        }
-      })
+      getExcerptData({ keepPageTitle: true }).forEach(
+        ({ excerpt, pagePath }) => {
+          if (pagePath === '/markdown.html') {
+            expect(excerpt).toContain('Content Example')
+          }
+        },
+      )
     })
   })
 })

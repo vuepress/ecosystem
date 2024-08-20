@@ -1,6 +1,6 @@
 import { useDebounceFn, useEventListener } from '@vueuse/core'
-import { useRouter } from 'vuepress/client'
 import type { Router } from 'vuepress/client'
+import { useRouter } from 'vuepress/client'
 
 export interface UseActiveHeaderLinksOptions {
   headerLinkSelector: string
@@ -43,7 +43,8 @@ export const useActiveHeaderLinks = ({
 
     // replace current route hash with empty string when scrolling back to the top
     if (isAtPageTop) {
-      updateHash(router, '')
+      void updateHash(router, '')
+
       return
     }
 
@@ -73,7 +74,9 @@ export const useActiveHeaderLinks = ({
 
     for (let i = 0; i < existedHeaderAnchors.length; i++) {
       const anchor = existedHeaderAnchors[i]
-      const nextAnchor = existedHeaderAnchors[i + 1]
+      const nextAnchor = existedHeaderAnchors[i + 1] as
+        | HTMLAnchorElement
+        | undefined
 
       // notice the `scrollTop` might not be exactly equal to `offsetTop` after clicking the anchor
       // so we add offset
@@ -110,7 +113,8 @@ export const useActiveHeaderLinks = ({
       }
 
       // replace current route hash with the active anchor hash
-      updateHash(router, anchorHash)
+      void updateHash(router, anchorHash)
+
       return
     }
   }

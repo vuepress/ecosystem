@@ -1,7 +1,7 @@
-// eslint-disable-next-line vue/prefer-import-from-vue
+/* eslint-disable @typescript-eslint/no-unsafe-enum-comparison */
 import { isHTMLTag, isMathMLTag, isSVGTag } from '@vue/shared'
-import type { AnyNode, Element } from 'cheerio'
 import { load } from 'cheerio'
+import type { AnyNode, Element } from 'domhandler'
 import matter from 'gray-matter'
 import type { App, Page } from 'vuepress/core'
 import { isLinkHttp, removeEndingSlash } from 'vuepress/shared'
@@ -107,7 +107,7 @@ const handleNode = (
           node.children.length === 1 &&
           node.children[0].type === 'tag' &&
           node.children[0].tagName === 'a' &&
-          node.children[0].attribs?.class === 'header-anchor'
+          node.children[0].attribs.class === 'header-anchor'
         )
           node.children = (node.children[0].children[0] as Element).children
       }
@@ -117,10 +117,10 @@ const handleNode = (
         startsWith(node.attribs.class, 'language-')
       ) {
         const pre = node.children.find(
-          (node) =>
-            node.type === 'tag' &&
-            node.tagName === 'pre' &&
-            startsWith(node.attribs.class, 'language-'),
+          (childNode) =>
+            childNode.type === 'tag' &&
+            childNode.tagName === 'pre' &&
+            startsWith(childNode.attribs.class, 'language-'),
         )
 
         if (
@@ -140,6 +140,7 @@ const handleNode = (
       if (node.tagName === 'code' || node.tagName === 'pre')
         delete node.attribs['v-pre']
 
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       node.children = handleNodes(node.children, {
         base,
         isCustomElement,
@@ -156,6 +157,7 @@ const handleNode = (
       node.attribs.target = '_blank'
       delete node.attribs.to
 
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       node.children = handleNodes(node.children, {
         base,
         isCustomElement,
@@ -231,7 +233,7 @@ export const getPageExcerpt = (
       },
     )
 
-    const rootNodes = $.parseHTML(renderedContent) ?? []
+    const rootNodes = renderedContent ? $.parseHTML(renderedContent) : []
 
     if (rootNodes[0] && !keepPageTitle && isH1Tag(rootNodes[0]))
       rootNodes.shift()
@@ -243,9 +245,12 @@ export const getPageExcerpt = (
         keepFenceDom,
       }),
     )
-  } else if (length > 0) {
-    let excerpt = ''
-    const rootNodes = $.parseHTML(contentRendered) ?? []
+  }
+
+  if (length > 0) {
+    let autoExcerpt = ''
+
+    const rootNodes = contentRendered ? $.parseHTML(contentRendered) : []
 
     if (rootNodes[0] && !keepPageTitle && isH1Tag(rootNodes[0]))
       rootNodes.shift()
@@ -258,12 +263,12 @@ export const getPageExcerpt = (
       })
 
       if (resolvedNode) {
-        excerpt += `${$.html(resolvedNode)}`
-        if (excerpt.length >= length) break
+        autoExcerpt += $.html(resolvedNode)
+        if (autoExcerpt.length >= length) break
       }
     }
 
-    return excerpt
+    return autoExcerpt
   }
 
   return ''

@@ -11,15 +11,19 @@ import { getCover, getImages, getSEOAuthor } from './utils/index.js'
 
 export const getJSONLDInfo = (
   page: ExtendPage,
-  options: SeoPluginOptions,
   app: App,
-): ArticleSchema | BlogPostingSchema | WebPageSchema => {
-  const {
-    isArticle = (page): boolean =>
-      Boolean(page.filePathRelative && !page.frontmatter.home),
+  {
+    isArticle,
     author: globalAuthor,
-  } = options
-
+    fallBackImage,
+    hostname,
+  }: {
+    isArticle: Exclude<SeoPluginOptions['isArticle'], undefined>
+    author?: SeoPluginOptions['author']
+    hostname: SeoPluginOptions['hostname']
+    fallBackImage: Exclude<SeoPluginOptions['fallBackImage'], undefined>
+  },
+): ArticleSchema | BlogPostingSchema | WebPageSchema => {
   const {
     title,
     frontmatter: { author: pageAuthor, description, time, date = time },
@@ -31,17 +35,15 @@ export const getJSONLDInfo = (
   const dateModified = git.updatedTime
     ? new Date(git.updatedTime).toISOString()
     : null
-  const cover = getCover(page, app, options)
-  const images = getImages(page, app, options)
+  const cover = getCover(page, app, hostname)
+  const images = getImages(page, app, hostname)
 
   return isArticle(page)
     ? {
         '@context': 'https://schema.org',
         '@type': 'Article',
         'headline': title,
-        'image': images.length
-          ? images
-          : [cover || options.fallBackImage || ''],
+        'image': images.length ? images : [cover || fallBackImage],
         datePublished,
         dateModified,
         'author': author.map((item) => ({ '@type': 'Person', ...item })),

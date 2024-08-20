@@ -31,8 +31,10 @@ export const addOGP = (head: HeadConfig[], content: SeoContent): void => {
   for (const property in content)
     switch (property) {
       case 'article:tag':
-        ;(content as ArticleSeoContent)['article:tag']!.forEach((tag: string) =>
-          appendMetaToHead(head, { name: 'article:tag', content: tag }),
+        ;(content as ArticleSeoContent)['article:tag']!.forEach(
+          (tag: string) => {
+            appendMetaToHead(head, { name: 'article:tag', content: tag })
+          },
         )
         break
       case 'og:locale:alternate':

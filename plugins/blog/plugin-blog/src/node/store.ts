@@ -1,13 +1,13 @@
 import type { App } from 'vuepress/core'
 
 export class Store {
-  store: string[]
+  public store: string[]
 
-  constructor() {
+  public constructor() {
     this.store = []
   }
 
-  addItem(item: string): number {
+  public addItem(item: string): number {
     const index = this.store.indexOf(item)
 
     if (index === -1) {
@@ -19,17 +19,17 @@ export class Store {
     return index
   }
 
-  addItems(items: string[]): number[] {
+  public addItems(items: string[]): number[] {
     return items.map((item) => this.addItem(item))
   }
 
-  clearItem(item: string): void {
+  public clearItem(item: string): void {
     const index = this.store.indexOf(item)
 
     if (index !== -1) this.store[index] = ''
   }
 
-  toJSON(): string {
+  public toJSON(): string {
     return JSON.stringify(this.store)
   }
 }

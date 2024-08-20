@@ -23,12 +23,14 @@ import { defineAsyncComponent } from 'vue'
 
 export default {
   enhance: ({ app }) => {\
-    ${Object.entries(componentsMap).map(
-      ([name, filepath]) => `
+    ${Object.entries(componentsMap)
+      .map(
+        ([name, filepath]) => `
       app.component(${JSON.stringify(
         name,
       )}, defineAsyncComponent(() => import(${JSON.stringify(filepath)})))`,
-    )}
+      )
+      .join('\n    ')}
   },
 }
 `

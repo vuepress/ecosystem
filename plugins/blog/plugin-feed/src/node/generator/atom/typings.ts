@@ -81,7 +81,7 @@ export interface AtomEntry {
   /**
    * 	Conveys a short summary, abstract, or excerpt of the entry.
    */
-  summary?: AtomText | AtomCDATA
+  summary?: AtomCDATA | AtomText
   /**
    * Specifies a category that the entry belongs to.
    *
@@ -159,6 +159,7 @@ export interface AtomContent {
      * 	Identifies the software used to generate the feed
      */
     generator:
+      | string
       | {
           _attributes?: {
             uri?: string
@@ -166,7 +167,6 @@ export interface AtomContent {
           }
           _text: string
         }
-      | string
     /**
      * Identifies a small image which provides iconic visual identification for the feed. Icons should be square.
      */

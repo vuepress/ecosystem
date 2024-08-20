@@ -26,5 +26,5 @@ export interface LinksCheckPluginOptions {
    *
    * 检查时需要排除的链接
    */
-  exclude?: (string | RegExp)[] | ((link: string, isDev: boolean) => boolean)
+  exclude?: (RegExp | string)[] | ((link: string, isDev: boolean) => boolean)
 }

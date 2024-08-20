@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.41](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.40...v2.0.0-rc.41) (2024-08-14)
+
+### Bug Fixes
+
+- **plugin-docsearch:** fix keydown event, close [#227](https://github.com/vuepress/ecosystem/issues/227) ([d9f6f0a](https://github.com/vuepress/ecosystem/commit/d9f6f0a22c66bf65f359573723bcce534254dd1c))
+
+# [2.0.0-rc.40](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.39...v2.0.0-rc.40) (2024-07-24)
+
+**Note:** Version bump only for package @vuepress/plugin-docsearch
+
 # [2.0.0-rc.39](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.38...v2.0.0-rc.39) (2024-07-19)
 
 ### Bug Fixes
