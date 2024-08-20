@@ -115,6 +115,7 @@ export default vuepress(
         // FIXME: Fail positives
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
+        'no-labels': 'off',
       },
     },
     vue: {

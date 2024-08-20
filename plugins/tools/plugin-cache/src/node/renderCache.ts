@@ -72,8 +72,7 @@ export const renderCacheWithMemory = async (
 
     const key = hash(input)
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (metadata[filepath] === key && cache[filepath]) {
+    if (metadata[filepath] === key && filepath in cache) {
       const cached = cache[filepath]
       Object.assign(env, cached.env)
       return cached.content

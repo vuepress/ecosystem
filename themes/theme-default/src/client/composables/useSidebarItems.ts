@@ -48,8 +48,7 @@ export const setupHeaders = (): void => {
     }
 
     headersRef.value = getHeaders({
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      selector: [...new Array(6)]
+      selector: [...new Array<undefined>(6)]
         .map((_, i) => `.theme-default-content h${i + 1}`)
         .join(','),
       levels: [2, levels.value + 1],

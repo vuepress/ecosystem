@@ -88,8 +88,7 @@ export const getCategory = (
           const categories = getter(page)
 
           for (const category of categories) {
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-            if (!map[category]) {
+            if (!(category in map)) {
               const itemPath = getItemPath(category)
 
               if (itemPath) {

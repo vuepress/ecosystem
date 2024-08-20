@@ -54,7 +54,7 @@ export const resolveHeaders = (
 
   const res: MenuItem[] = []
 
-  // eslint-disable-next-line no-labels, no-restricted-syntax
+  // eslint-disable-next-line no-restricted-syntax
   outer: for (let i = 0; i < allowedHeaders.length; i++) {
     const cur = allowedHeaders[i]
     if (i === 0) {
@@ -64,7 +64,6 @@ export const resolveHeaders = (
         const prev = allowedHeaders[j]
         if (prev.level < cur.level) {
           ;(prev.children ??= []).push(cur)
-          // eslint-disable-next-line no-labels
           continue outer
         }
       }
@@ -76,7 +75,6 @@ export const resolveHeaders = (
 }
 
 const serializeHeader = (h: Element, ignore: string[] = []): string => {
-  // eslint-disable-next-line no-useless-assignment
   let text = ''
 
   if (ignore.length) {
@@ -128,8 +126,9 @@ export interface GetHeadersOptions {
 }
 
 export const getHeaders = ({
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  selector = [...new Array(6)].map((_, i) => `#vp-content h${i + 1}`).join(','),
+  selector = [...new Array<undefined>(6)]
+    .map((_, i) => `#vp-content h${i + 1}`)
+    .join(','),
   levels = 2,
   ignore = [],
 }: GetHeadersOptions = {}): MenuItem[] => {

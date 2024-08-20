@@ -27,8 +27,7 @@ export const useUmamiAnalytics = ({
   hostUrl,
 }: UmamiOptions): void => {
   // avoid duplicated import
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (window.umami) return
+  if ('umami' in window) return
 
   const script = document.createElement('script')
   script.src = link!

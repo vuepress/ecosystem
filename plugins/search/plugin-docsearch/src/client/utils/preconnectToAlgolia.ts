@@ -3,8 +3,9 @@
  */
 export const preconnectToAlgolia = (appId: string): void => {
   const id = 'algolia-preconnect'
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  const rIC = window.requestIdleCallback || setTimeout
+  const rIC =
+    'requestIdleCallback' in window ? window.requestIdleCallback : setTimeout
+
   rIC(() => {
     if (document.head.querySelector(`#${id}`)) return
     const preconnect = document.createElement('link')
