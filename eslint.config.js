@@ -5,16 +5,19 @@ import { vuepress } from 'eslint-config-vuepress'
 
 const ROOT = path.resolve(fileURLToPath(import.meta.url), '..')
 const E2E_DIR = path.resolve(ROOT, 'e2e')
-const SCRIPTS_DIR = path.resolve(ROOT, 'scripts')
 const PLUGINS_DIRS = fs
   .readdirSync(path.resolve(ROOT, 'plugins'))
-  .map((item) => `./plugins/${item}`)
-const THEME_DIRS = fs
+  .flatMap((category) =>
+    fs
+      .readdirSync(path.resolve(ROOT, `./plugins/${category}`))
+      .map((plugin) => path.resolve(ROOT, `./plugins/${category}/${plugin}`)),
+  )
+const THEMES_DIRS = fs
   .readdirSync(path.resolve(ROOT, 'themes'))
-  .map((item) => `./themes/${item}`)
+  .map((item) => path.resolve(ROOT, `./themes/${item}`))
 const TOOLS_DIRS = fs
   .readdirSync(path.resolve(ROOT, 'tools'))
-  .map((item) => `./tools/${item}`)
+  .map((item) => path.resolve(ROOT, `./tools/${item}`))
 
 export default vuepress(
   {
@@ -23,9 +26,8 @@ export default vuepress(
       packageDir: [
         ROOT,
         E2E_DIR,
-        SCRIPTS_DIR,
         ...PLUGINS_DIRS,
-        ...THEME_DIRS,
+        ...THEMES_DIRS,
         ...TOOLS_DIRS,
       ],
     },
@@ -112,8 +114,6 @@ export default vuepress(
           },
         ],
         '@typescript-eslint/promise-function-async': 'off',
-        // FIXME: Fail positives
-        'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
         'no-labels': 'off',
       },
