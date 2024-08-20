@@ -219,18 +219,14 @@ const categoryMap = useBlogCategory('tag')
         @click="$router.push(path)"
       >
         <header class="title">
-          {{
-            (isTimeline
-              ? `${new Date(info.date).toLocaleDateString()}: `
-              : '') + info.title
-          }}
+          {{ info.title }}
         </header>
         <hr />
         <div class="article-info">
           <span v-if="info.author" class="author"
             >Author: {{ info.author }}</span
           >
-          <span v-if="info.date && !isTimeline" class="date"
+          <span v-if="info.date" class="date"
             >Date: {{ new Date(info.date).toLocaleDateString() }}</span
           >
           <span v-if="info.category" class="category"
@@ -267,15 +263,12 @@ const stars = useBlogType('star')
       @click="$router.push(path)"
     >
       <header class="title">
-        {{
-          (isTimeline ? `${new Date(info.date).toLocaleDateString()}: ` : '') +
-          info.title
-        }}
+        {{ info.title }}
       </header>
       <hr />
       <div class="article-info">
         <span v-if="info.author" class="author">Author: {{ info.author }}</span>
-        <span v-if="info.date && !isTimeline" class="date"
+        <span v-if="info.date" class="date"
           >Date: {{ new Date(info.date).toLocaleDateString() }}</span
         >
         <span v-if="info.category" class="category"

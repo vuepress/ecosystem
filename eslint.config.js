@@ -31,6 +31,7 @@ export default vuepress(
     },
     typescript: {
       overrides: {
+        '@typescript-eslint/consistent-indexed-object-style': 'off',
         '@typescript-eslint/naming-convention': [
           'warn',
 
@@ -89,7 +90,6 @@ export default vuepress(
             format: ['PascalCase'],
           },
         ],
-        '@typescript-eslint/consistent-indexed-object-style': 'off',
         '@typescript-eslint/no-dynamic-delete': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-floating-promises': [
@@ -121,11 +121,11 @@ export default vuepress(
       overrides: {
         // TODO: false positive in vue sfc
         'no-useless-assignment': 'off',
-        'vue/static-class-names-order': 'off',
         'vue/multi-word-component-names': [
           'error',
           { ignores: ['Badge', 'Layout'] },
         ],
+        'vue/static-class-names-order': 'off',
       },
     },
   },

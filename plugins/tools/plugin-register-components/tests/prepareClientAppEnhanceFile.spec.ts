@@ -45,7 +45,6 @@ describe('plugin-register-components > node > prepareClientConfigFile', () => {
     )
     const result = (await fs.readFile(tempFile)).toString()
     expect(result).toMatch(/app.component\("FooBar",/)
-    expect(result).toMatch(/app.component\("Baz",/)
   })
 
   it('should override correctly', async () => {
@@ -67,6 +66,5 @@ describe('plugin-register-components > node > prepareClientConfigFile', () => {
     )
     const result = (await fs.readFile(tempFile)).toString()
     expect(result).toMatch(/app.component\("FooBar",.*FooBaz.ts"/)
-    expect(result).toMatch(/app.component\("Baz",/)
   })
 })

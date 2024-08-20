@@ -21,6 +21,7 @@ cli
   .example('docs')
   .action(async (targetDir = ''): Promise<Error | void> => {
     console.log('Bumping deps...')
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     const dir = resolve(process.cwd(), targetDir)
     const packageJSON = resolve(dir, 'package.json')
 
