@@ -39,18 +39,9 @@
   --vp-c-code-tab-bg: var(--code-bg-color, var(--code-c-bg));
   --vp-c-code-tab-active: var(--vp-c-accent);
 
-  // original ones
-  --c-bg-light: #f3f4f5;
-  --c-bg-lighter: #eee;
-  --c-bg-dark: #ebebec;
-  --c-bg-darker: #e6e6e6;
-  --c-text-light: #3a5169;
-  --c-text-lighter: #4e6e8e;
-  --c-text-lightest: #6a8bad;
-
   // custom container colors
   --c-tip: #42b983;
-  --c-tip-bg: var(--c-bg-light);
+  --c-tip-bg: var(--vp-c-bg-alt);
   --c-tip-title: var(--vp-c-text);
   --c-tip-text: var(--vp-c-text);
   --c-tip-text-accent: var(--c-text-accent);

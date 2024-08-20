@@ -23,7 +23,7 @@ const footerHtml = computed(() => frontmatter.value.footerHtml)
   padding: 2.5rem;
   border-top: 1px solid var(--vp-c-border);
 
-  color: var(--c-text-lighter);
+  color: var(--c-text-mute);
 
   text-align: center;
 

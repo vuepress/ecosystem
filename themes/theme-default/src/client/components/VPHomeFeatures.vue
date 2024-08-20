@@ -51,9 +51,6 @@ const features = computed(() => frontmatter.value.features ?? [])
   h2 {
     padding-bottom: 0;
     border-bottom: none;
-
-    color: var(--c-text-light);
-
     font-weight: 500;
     font-size: 1.4rem;
 
@@ -63,7 +60,7 @@ const features = computed(() => frontmatter.value.features ?? [])
   }
 
   p {
-    color: var(--c-text-lighter);
+    color: var(--c-text-mute);
   }
 }
 </style>
