@@ -32,13 +32,18 @@ A theme must implement the following color variables:
 
 - `--vp-c-text`: Default text color.
 - `--vp-c-text-mute`: Colors for muted texts, such as "inactive menu" or "info texts".
+- `--vp-c-text-subtle`: Color for subtle text, such as as "placeholders" or "caret icon".
 
 ### Background
 
 - `--vp-c-bg`: The bg color used for main screen.
 - `--vp-c-bg-alt`: The alternative bg color used in places such as "sidebar", or "code block".
 - `--vp-c-bg-elv`: The elevated bg color. This is used at parts where it "floats", such as "dialog".
-- `--vp-c-bg-soft`: The bg color to slightly distinguish some components from the page. Used for things like "carbon ads" or "table".
+
+### Shadow
+
+- `--vp-c-shadow`: The normal shadow color
+- `--vp-c-shadow-hard`: The shadow color used for hard shadow, such as "dialog".
 
 ### Accent
 
@@ -52,16 +57,20 @@ Accent color and brand colors which used for interactive components.
 
   The soft color must be semi transparent alpha channel. This is crucial because it allows adding multiple "soft" colors on top of each other to create a accent, such as when having inline code block inside custom containers.
 
-## Borders
+### Borders
 
 - `--vp-c-border`: Border color for interactive components. For example this should be used for a button outline.
+- `--vp-c-border-hard`: Darker border colors, which is used for "hard" borders closed to text, such as table and kbd.
 - `--vp-c-divider`: Color for separators, used to divide sections within the same components, such as having separator on "h2" heading.
-- `--vp-c-gutter`: Colors for gutter, used to divide components in the page. For example the header and the lest of the page.
 
-## Controls
+### Controls
 
-- `--vp-c-control-text`: Text color for focus state of interactive controls.
 - `--vp-c-control`: Background color for interactive controls, such as buttons or checkboxes.
 - `--vp-c-control-hover`: Background color for hover state of interactive controls.
 - `--vp-c-control-active`: Background color for active or focus state of interactive controls.
 - `--vp-c-control-disabled`: Color for disabled state of interactive controls.
+
+## Transition timing
+
+- `--vp-t-color`: Color transition timing.
+- `--vp-t-transform`: Transform transition timing.

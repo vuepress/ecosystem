@@ -36,12 +36,12 @@ code {
 }
 
 kbd {
-  border-color: var(--vp-c-border-dark);
+  border-color: var(--vp-c-border-hard);
   transition: border-color var(--vp-t-color);
 }
 
 blockquote {
-  border-color: var(--vp-c-border-dark);
+  border-color: var(--vp-c-border-hard);
   color: var(--vp-c-text-mute);
   transition: border-color var(--vp-t-color);
 }
@@ -68,6 +68,6 @@ tr {
 
 th,
 td {
-  border-color: var(--vp-c-border-dark);
+  border-color: var(--vp-c-border-hard);
   transition: border-color var(--vp-t-color);
 }
