@@ -140,6 +140,7 @@ const handleNode = (
       if (node.tagName === 'code' || node.tagName === 'pre')
         delete node.attribs['v-pre']
 
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       node.children = handleNodes(node.children, {
         base,
         isCustomElement,
@@ -156,6 +157,7 @@ const handleNode = (
       node.attribs.target = '_blank'
       delete node.attribs.to
 
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       node.children = handleNodes(node.children, {
         base,
         isCustomElement,

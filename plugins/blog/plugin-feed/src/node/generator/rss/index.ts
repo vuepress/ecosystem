@@ -51,7 +51,7 @@ const getRSSEnclosure = (enclosure: FeedEnclosure): RSSEnclosure => ({
  */
 export const getRssFeed = (feedStore: FeedStore): string => {
   const { channel, links } = feedStore
-  let hasContent = false
+  let hasContent = false as boolean
 
   const content: RSSContent = {
     _declaration: { _attributes: { version: '1.0', encoding: 'utf-8' } },

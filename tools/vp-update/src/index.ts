@@ -19,7 +19,8 @@ cli
     'pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]',
   )
   .example('docs')
-  .action(async (targetDir = ''): Promise<Error | void> => {
+  // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+  .action(async (targetDir: string = ''): Promise<Error | void> => {
     console.log('Bumping deps...')
     const dir = resolve(process.cwd(), targetDir)
     const packageJSON = resolve(dir, 'package.json')

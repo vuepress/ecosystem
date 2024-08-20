@@ -76,6 +76,7 @@ const handleNode = (
       !removedTags.includes(node.tagName) &&
       isHTMLTag(node.tagName)
     ) {
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       return handleNodes(node.children, { base, removedTags })
     }
 

@@ -11,7 +11,7 @@ export const createNotationRule = (
   const nodeRemove: OpenTag[] = []
 
   parser.lines.forEach((node, index) => {
-    let replaced = false
+    let replaced = false as boolean
 
     node.content = node.content.replace(pattern, (...match) => {
       if (onMatch(match, index)) {

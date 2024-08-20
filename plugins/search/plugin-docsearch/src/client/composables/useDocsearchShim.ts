@@ -49,7 +49,7 @@ export const useDocsearchShim = (): Partial<DocSearchProps> => {
             event.preventDefault()
             router.push(hit.url.replace(__VUEPRESS_BASE__, '/'))
           },
-          children,
+          children: children as unknown,
         },
         __v: null,
       }) as unknown,
