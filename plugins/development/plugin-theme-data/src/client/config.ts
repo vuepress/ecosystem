@@ -38,6 +38,7 @@ export default defineClientConfig({
       setupDevtoolsPlugin(
         {
           // fix recursive reference
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
           app: app as any,
           id: 'org.vuejs.vuepress.plugin-theme-data',
           label: 'VuePress Theme Data Plugin',

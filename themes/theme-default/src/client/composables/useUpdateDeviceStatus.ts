@@ -3,11 +3,11 @@ import { onMounted } from 'vue'
 import cssVariables from '../styles/_variables.module.scss'
 
 export enum DeviceType {
-  MOBILE = 'mobile',
+  Mobile = 'mobile',
 }
 
 const DeviceTypeMap = {
-  [DeviceType.MOBILE]: Number.parseInt(
+  [DeviceType.Mobile]: Number.parseInt(
     cssVariables.mobile.replace('px', ''),
     10,
   ),

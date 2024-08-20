@@ -44,7 +44,7 @@ const getCssValue = (el: HTMLElement | null, property: string): number => {
 }
 
 useUpdateDeviceStatus(
-  DeviceType.MOBILE,
+  DeviceType.Mobile,
   (mobileDesktopBreakpoint: number): void => {
     // avoid overlapping of long title and long navbar links
     const navbarHorizontalPadding =

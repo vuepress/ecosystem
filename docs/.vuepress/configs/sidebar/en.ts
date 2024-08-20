@@ -1,6 +1,6 @@
-import type { SidebarConfig } from '@vuepress/theme-default'
+import type { SidebarOptions } from '@vuepress/theme-default'
 
-export const sidebarEn: SidebarConfig = {
+export const sidebarEn: SidebarOptions = {
   '/plugins/': [
     {
       text: 'Common Features',

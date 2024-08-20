@@ -3,6 +3,7 @@ import { computed, defineComponent, h, ref, toRefs } from 'vue'
 import { useRouteLocale, useRouter } from 'vuepress/client'
 import type { LocaleConfig } from 'vuepress/shared'
 import type { HotKeyOptions } from '../../shared/index.js'
+import type { SearchSuggestion } from '../composables/index.js'
 import {
   useHotKeys,
   useSearchIndex,
@@ -76,16 +77,15 @@ export const SearchBox = defineComponent({
         return
       }
 
-      const suggestion = suggestions.value[index]
+      const suggestion = suggestions.value[index] as
+        | SearchSuggestion
+        | undefined
 
-      if (!suggestion) {
-        return
-      }
-
-      void router.push(suggestion.link).then(() => {
-        query.value = ''
-        focusIndex.value = 0
-      })
+      if (suggestion)
+        void router.push(suggestion.link).then(() => {
+          query.value = ''
+          focusIndex.value = 0
+        })
     }
 
     return () =>

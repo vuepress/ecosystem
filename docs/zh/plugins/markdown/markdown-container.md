@@ -136,7 +136,7 @@ export default {
 type MarkdownItContainerRenderFunction = (
   tokens: Token[],
   index: number,
-  options: any,
+  options: unknown,
   env: MarkdownEnv,
   self: Renderer,
 ) => string

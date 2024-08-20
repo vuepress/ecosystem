@@ -10,6 +10,8 @@ const NEWLINE_RE = /(\r?\n)/g
 const CLASS_RE = /class="([^]*)"/
 const CODE_ESCAPE_RE = /\[\\!code/g
 
+const uniq = <T>(array: T[]): T[] => [...new Set(array)]
+
 export interface OpenTag {
   /**
    * @example <tag
@@ -68,8 +70,9 @@ const createOpenTag = (
       after: hashHtml ? snippet.slice(-1) : '',
       content,
       toString() {
-        const className = uniq(this.classList).join(' ')
-        const { before, after, content } = this
+        // eslint-disable-next-line @typescript-eslint/no-shadow
+        const { before, after, classList, content } = this
+        const className = uniq(classList).join(' ')
 
         return `${before}${className && before ? ` class="${className}"` : ''}${after}${content}`
       },
@@ -82,29 +85,32 @@ const createOpenTag = (
     after: snippet.slice(match.index! + match[0].length),
     content,
     toString() {
-      const className = uniq(this.classList).join(' ')
-      const { before, after, content } = this
+      // eslint-disable-next-line @typescript-eslint/no-shadow
+      const { before, after, classList, content } = this
+      const className = uniq(classList).join(' ')
 
       return `${before}${className && before ? ` class="${className}"` : ''}${after}${content}`
     },
   }
 }
 
-const uniq = <T>(array: T[]): T[] => [...new Set(array)]
-
 export const getCodeParser = (html: string): CodeParser => {
+  let content = html
   const preOpen = html.match(PRE_OPEN_TAG_RE)?.[1] ?? ''
 
-  html = html.slice(preOpen.length)
+  content = content.slice(preOpen.length)
 
-  const code = html.match(CODE_OPEN_TAG_RE)?.[1] ?? ''
-  const endLine = html.match(FENCE_CLOSE_TAG_RE)?.[1] ?? ''
+  const code = content.match(CODE_OPEN_TAG_RE)?.[1] ?? ''
+  const endLine = content.match(FENCE_CLOSE_TAG_RE)?.[1] ?? ''
 
-  html = html.slice(code.length, endLine.length ? -endLine.length : html.length)
+  content = content.slice(
+    code.length,
+    endLine.length ? -endLine.length : content.length,
+  )
 
   const preOpenTag = createOpenTag(preOpen)
   const codeOpenTag = createOpenTag(code)
-  const lineNodeList = splitLines(html).map((line) =>
+  const lineNodeList = splitLines(content).map((line) =>
     createOpenTag('<span>', line, ['line']),
   )
 

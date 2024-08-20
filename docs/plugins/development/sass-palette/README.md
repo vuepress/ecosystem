@@ -12,19 +12,16 @@ You must invoke `useSassPalettePlugin` function during plugin initialization to 
 npm i -D @vuepress/plugin-sass-palette@next
 ```
 
-```ts title="Your plugin or theme entry"
-import type { PluginFunction } from 'vuepress/core'
+```js title="Your plugin or theme entry"
 import { useSassPalettePlugin } from 'vuepress-plugin-sass-palette'
 
-export const yourPlugin =
-  (options): PluginFunction =>
-  (app) => {
-    useSassPalettePlugin(app, {
-      // plugin options
-    })
+export const yourPlugin = (options) => (app) => {
+  useSassPalettePlugin(app, {
+    // plugin options
+  })
 
-    return {
-      // your plugin api
-    }
+  return {
+    // your plugin api
   }
+}
 ```

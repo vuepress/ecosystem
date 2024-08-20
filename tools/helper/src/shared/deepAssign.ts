@@ -7,6 +7,7 @@ type IAnyObject = Record<string, any>
 export const deepAssign = <
   T extends IAnyObject,
   U extends IAnyObject = T,
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
   V extends Partial<T> & Partial<U> = T & U,
 >(
   originObject: T,

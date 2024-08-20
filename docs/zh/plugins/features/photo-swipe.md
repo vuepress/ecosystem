@@ -219,28 +219,28 @@ export default {}
 
 ```vue
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue';
-import { createPhotoSwipe } from "@vuepress/plugin-photo-swipe/client";
+import { createPhotoSwipe } from '@vuepress/plugin-photo-swipe/client'
+import { onMounted, onUnmounted } from 'vue'
 
-let state: PhotoSwipeState | null = null;
+let state: PhotoSwipeState | null = null
 
-const openPhotoSwipe = (index: number) => {
-  state?.open(index - 1);
-};
+const openPhotoSwipe = (index: number): void => {
+  state?.open(index - 1)
+}
 
 onMounted(async () => {
   // 通过图片链接创建一个新的 photoswipe 实例
-  state=  await createPhotoSwipe(
+  state = await createPhotoSwipe(
     [
-      'https://exmaple.com/image1.png'
-      'https://exmaple.com/image2.png'
-      'https://exmaple.com/image3.png'
+      'https://exmaple.com/image1.png',
+      'https://exmaple.com/image2.png',
+      'https://exmaple.com/image3.png',
     ],
     {
       // photoswipe 选项
-    }
-  );
-});
+    },
+  )
+})
 
 onUnmounted(() => {
   state?.destroy()
@@ -248,7 +248,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <button v-for="i in 3" @click="openPhotoSwipe(i)">open photo {{ i }}</button>
+  <button v-for="i in 3" :key="i" type="button" @click="openPhotoSwipe(i)">
+    open photo {{ i }}
+  </button>
 </template>
 ```
 

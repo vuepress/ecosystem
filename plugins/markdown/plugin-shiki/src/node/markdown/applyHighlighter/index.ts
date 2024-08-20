@@ -2,7 +2,7 @@ import { transformerCompactLineOptions } from '@shikijs/transformers'
 import type MarkdownIt from 'markdown-it'
 import { createHighlighter } from 'shiki'
 import type { App } from 'vuepress'
-import { BUNDLED_LANGUAGE_NAMES } from '../../shiki.js'
+import { bundledLanguageNames } from '../../shiki.js'
 import {
   getTransformers,
   whitespaceTransformer,
@@ -17,7 +17,7 @@ export const applyHighlighter = async (
   md: MarkdownIt,
   app: App,
   {
-    langs = BUNDLED_LANGUAGE_NAMES,
+    langs = bundledLanguageNames,
     langAlias = {},
     defaultLang,
     transformers: userTransformers = [],

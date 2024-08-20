@@ -26,7 +26,7 @@ const navbarLinks = computed(() => [
 ])
 
 useUpdateDeviceStatus(
-  DeviceType.MOBILE,
+  DeviceType.Mobile,
   (mobileDesktopBreakpoint: number): void => {
     // avoid overlapping of long title and long navbar links
     isMobile.value = window.innerWidth < mobileDesktopBreakpoint
