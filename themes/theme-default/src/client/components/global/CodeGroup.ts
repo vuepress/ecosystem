@@ -50,11 +50,11 @@ export const CodeGroup = defineComponent({
           isDark,
           (val) => {
             groupRef.value!.style.setProperty(
-              '--c-code-group-tab-bg',
+              '--vp-c-code-tab-bg',
               val ? darkBg : lightBg,
             )
             groupRef.value!.style.setProperty(
-              '--c-code-group-tab-title',
+              '--vp-c-code-tab-title',
               val ? darkColor : lightColor,
             )
           },
