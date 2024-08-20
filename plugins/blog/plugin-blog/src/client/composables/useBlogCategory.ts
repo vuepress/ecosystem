@@ -42,7 +42,7 @@ export const useBlogCategory = <
       return { path: '/', map: {} }
     }
 
-    if (!categoryMapRef.value[mapKey])
+    if (!(mapKey in categoryMapRef.value))
       throw new Error(`useBlogCategory: key ${mapKey} is invalid`)
 
     const currentMap = categoryMapRef.value[mapKey][routeLocale.value]
@@ -77,8 +77,6 @@ export const useBlogCategory = <
 }
 
 if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot))
-  __VUE_HMR_RUNTIME__.updateBlogCategory = (
-    categoriesMap: CategoriesMap,
-  ): void => {
-    categoryMapRef.value = categoriesMap
+  __VUE_HMR_RUNTIME__.updateBlogCategory = (value: CategoriesMap): void => {
+    categoryMapRef.value = value
   }

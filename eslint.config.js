@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { vuepress } from 'eslint-config-vuepress'
 
 const ROOT = path.resolve(fileURLToPath(import.meta.url), '..')
+const DOCS_DIR = path.resolve(ROOT, 'docs')
 const E2E_DIR = path.resolve(ROOT, 'e2e')
 const PLUGINS_DIRS = fs
   .readdirSync(path.resolve(ROOT, 'plugins'))
@@ -28,6 +29,7 @@ export default vuepress(
     imports: {
       packageDir: [
         ROOT,
+        DOCS_DIR,
         E2E_DIR,
         ...PLUGINS_DIRS,
         ...THEMES_DIRS,

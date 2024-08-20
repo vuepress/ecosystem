@@ -71,6 +71,7 @@ export const resolveSidebarHeaderItem = (
 ): SidebarHeaderItem => ({
   text: header.title,
   link: header.link,
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
   children: resolveSidebarHeaderItems(header.children),
 })
 

@@ -5,7 +5,7 @@ import type { SearchIndex } from '../../shared/index.js'
 
 export type SearchIndexRef = Ref<SearchIndex>
 
-export const searchIndex: SearchIndexRef = ref(SEARCH_INDEX)
+export const searchIndex = ref(SEARCH_INDEX)
 
 export const useSearchIndex = (): SearchIndexRef => searchIndex
 
