@@ -21,11 +21,9 @@ export const createNotationRule = (
       return match[0]
     })
 
-    if (
-      replaced &&
-      !(node.content = node.content.replace(COMMENT_EMPTY_TAG, '')).trim()
-    ) {
-      nodeRemove.push(node)
+    if (replaced) {
+      node.content = node.content.replace(COMMENT_EMPTY_TAG, '')
+      if (!node.content.trim()) nodeRemove.push(node)
     }
   })
   for (const node of nodeRemove)

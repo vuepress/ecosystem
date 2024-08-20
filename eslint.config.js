@@ -7,6 +7,9 @@ const ROOT = path.resolve(fileURLToPath(import.meta.url), '..')
 const E2E_DIR = path.resolve(ROOT, 'e2e')
 const PLUGINS_DIRS = fs
   .readdirSync(path.resolve(ROOT, 'plugins'))
+  .filter((category) =>
+    fs.statSync(path.resolve(ROOT, `./plugins/${category}`)).isDirectory(),
+  )
   .flatMap((category) =>
     fs
       .readdirSync(path.resolve(ROOT, `./plugins/${category}`))
