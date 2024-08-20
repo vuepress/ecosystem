@@ -14,7 +14,7 @@ export const initPhotoSwipe = (
       name: 'bulletsIndicator',
       className: 'photo-swipe-bullets-indicator',
       appendTo: 'wrapper',
-      onInit: (el, photoSwipe) => {
+      onInit: (el) => {
         const bullets: HTMLElement[] = []
         let prevIndex = -1
 
@@ -51,7 +51,7 @@ export const initPhotoSwipe = (
           html: '<svg class="pswp__icn" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M249.5 270.833H437v-75H212a37.5 37.5 0 0 0-37.5 37.5v225h75v-187.5zm-37.5 600h225v-75H249.5v-187.5h-75v225a37.5 37.5 0 0 0 37.5 37.5zm637.5-37.5v-225h-75v187.5H587v75h225a37.5 37.5 0 0 0 37.5-37.5zM587 270.833h187.5v187.5h75v-225a37.5 37.5 0 0 0-37.5-37.5H587v75z"/></svg>',
 
           onClick: () => {
-            toggle()
+            void toggle()
           },
         })
     }
@@ -72,7 +72,7 @@ export const initPhotoSwipe = (
           outlineID: 'pswp__icn-download',
         },
 
-        onInit: (el, photoSwipe) => {
+        onInit: (el) => {
           el.setAttribute('download', '')
           el.setAttribute('target', '_blank')
           el.setAttribute('rel', 'noopener')

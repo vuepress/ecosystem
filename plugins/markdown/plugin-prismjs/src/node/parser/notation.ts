@@ -25,7 +25,7 @@ const toArray = <T>(value: T | T[]): T[] =>
   Array.isArray(value) ? value : [value]
 
 export interface NotationCommentMarkerOption {
-  classMap: Record<string, string | string[]>
+  classMap: Record<string, string[] | string>
   classPre?: string
 }
 
@@ -131,12 +131,14 @@ export const notationWordHighlight = (parser: CodeParser): void => {
         : parser.lines.length - 1
 
       // escape backslashes
-      word = word.replace(/\\(.)/g, '$1')
+      const normalizedWord = word.replace(/\\(.)/g, '$1')
 
       parser.lines
         // start from the next line after the comment
         .slice(index + 1, index + 1 + lineNum)
-        .forEach((line) => highlightWordInLine(line, word))
+        .forEach((line) => {
+          highlightWordInLine(line, normalizedWord)
+        })
 
       return true
     },

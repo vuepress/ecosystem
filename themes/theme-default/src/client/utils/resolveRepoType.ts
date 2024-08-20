@@ -1,11 +1,11 @@
 import { isLinkHttp } from 'vuepress/shared'
 
-export type RepoType = 'GitHub' | 'GitLab' | 'Gitee' | 'Bitbucket' | null
+export type RepoType = 'Bitbucket' | 'Gitee' | 'GitHub' | 'GitLab' | null
 
 export const resolveRepoType = (repo: string): RepoType => {
-  if (!isLinkHttp(repo) || /github\.com/.test(repo)) return 'GitHub'
-  if (/bitbucket\.org/.test(repo)) return 'Bitbucket'
-  if (/gitlab\.com/.test(repo)) return 'GitLab'
-  if (/gitee\.com/.test(repo)) return 'Gitee'
+  if (!isLinkHttp(repo) || repo.includes('github.com')) return 'GitHub'
+  if (repo.includes('bitbucket.org')) return 'Bitbucket'
+  if (repo.includes('gitlab.com')) return 'GitLab'
+  if (repo.includes('gitee.com')) return 'Gitee'
   return null
 }

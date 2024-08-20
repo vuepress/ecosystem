@@ -39,8 +39,10 @@ export const generateCatalogPage = async (
           // not discovered yet
           !pathToBeGenerated.has(catalogPath) &&
           // not being excluded
+          // eslint-disable-next-line @typescript-eslint/no-loop-func
           exclude.every((pattern) => !catalogPath.match(pattern)) &&
           // path not found
+          // eslint-disable-next-line @typescript-eslint/no-loop-func
           pages.every(({ path }) => path !== catalogPath)
         ) {
           if (isDebug) logger.info(`Generating catalog ${catalogPath}`)
@@ -53,20 +55,20 @@ export const generateCatalogPage = async (
   await Promise.all(
     Array.from(pathToBeGenerated)
       .map((path) => decodeURI(path))
-      .map((path) => {
-        const [, basename = ''] = /\/([^/]+)\/?$/.exec(path) || []
+      .map(async (path) => {
+        const [, basename = ''] = /\/([^/]+)\/?$/.exec(path) ?? []
         const title = getTitleFromFilename(basename)
 
         return createPage(app, {
           frontmatter: {
             title,
-            ...(frontmatter(path) || {}),
+            ...frontmatter(path),
           },
           content,
           path,
         })
       }),
-  ).then((pages) => {
-    app.pages.push(...pages)
+  ).then((catalogPages) => {
+    app.pages.push(...catalogPages)
   })
 }

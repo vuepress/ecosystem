@@ -50,7 +50,10 @@ cli
   .option('--clean-cache', 'Clean the cache files before generation')
   .option('--clean-temp', 'Clean the temporary files before generation')
   .action(async (sourceDir: string, commandOptions: RedirectCommandOptions) => {
-    if (!sourceDir) return cli.outputHelp()
+    if (!sourceDir) {
+      cli.outputHelp()
+      return
+    }
 
     // ensure NODE_ENV is set
     process.env.NODE_ENV ??= 'production'
@@ -124,7 +127,9 @@ cli
     )
   })
 
-cli.command('').action(() => cli.outputHelp())
+cli.command('').action(() => {
+  cli.outputHelp()
+})
 
 cli.help()
 cli.version(version)

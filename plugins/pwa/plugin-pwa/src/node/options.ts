@@ -160,7 +160,7 @@ export interface PwaPluginOptions {
    *
    * @default "available"
    */
-  update?: 'available' | 'hint' | 'force' | 'disable'
+  update?: 'available' | 'disable' | 'force' | 'hint'
 
   /**
    * A custom component to replace the default hint popup component.

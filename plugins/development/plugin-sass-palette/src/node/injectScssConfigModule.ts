@@ -41,13 +41,11 @@ export const injectScssConfigModule = (
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const originalAdditionalData:
       | string
-      | ((source: string, file: string) => string | Promise<string>)
+      | ((source: string, file: string) => Promise<string> | string)
       | undefined =
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       viteBundlerConfig.viteOptions?.css?.preprocessorOptions?.scss
         .additionalData // eslint-disable-line @typescript-eslint/no-unsafe-member-access
 
-    // eslint-disable-next-line
     viteBundlerConfig.viteOptions = mergeViteConfig(
       viteBundlerConfig.viteOptions ?? {},
       {

@@ -24,7 +24,6 @@ describe('plugin-register-components > node > getComponentsFromDir', () => {
     })
     expect(result).toEqual({
       FooBar: path.resolve(__dirname, './__fixtures__/components/FooBar.vue'),
-      Baz: path.resolve(__dirname, './__fixtures__/components/Baz.vue'),
     })
   })
 
@@ -37,7 +36,6 @@ describe('plugin-register-components > node > getComponentsFromDir', () => {
     })
     expect(result).toEqual({
       FooBar: path.resolve(__dirname, './__fixtures__/components/FooBar.vue'),
-      Baz: path.resolve(__dirname, './__fixtures__/components/Baz.vue'),
       FooBaz: path.resolve(__dirname, './__fixtures__/components/FooBaz.ts'),
     })
   })

@@ -21,7 +21,7 @@ export const addViteConfig = (
     const viteBundlerOptions = bundlerOptions as ViteBundlerOptions
 
     viteBundlerOptions.viteOptions = mergeViteConfig(
-      viteBundlerOptions.viteOptions || {},
+      viteBundlerOptions.viteOptions ?? {},
       config,
     )
   }
@@ -36,7 +36,7 @@ export const addViteConfig = (
 export const addViteOptimizeDepsInclude = (
   bundlerOptions: unknown,
   app: App,
-  module: string | string[],
+  module: string[] | string,
   isDeep = false,
 ): void => {
   if (
@@ -62,7 +62,7 @@ export const addViteOptimizeDepsInclude = (
 export const addViteOptimizeDepsExclude = (
   bundlerOptions: unknown,
   app: App,
-  module: string | string[],
+  module: string[] | string,
 ): void => {
   addViteConfig(bundlerOptions, app, {
     optimizeDeps: {
@@ -80,7 +80,7 @@ export const addViteOptimizeDepsExclude = (
 export const addViteOptimizeDepsNeedsInterop = (
   bundlerOptions: unknown,
   app: App,
-  module: string | string[],
+  module: string[] | string,
 ): void => {
   addViteConfig(bundlerOptions, app, {
     optimizeDeps: {
@@ -98,7 +98,7 @@ export const addViteOptimizeDepsNeedsInterop = (
 export const addViteSsrExternal = (
   bundlerOptions: unknown,
   app: App,
-  module: string | string[],
+  module: string[] | string,
 ): void => {
   addViteConfig(bundlerOptions, app, {
     ssr: {
@@ -113,7 +113,7 @@ export const addViteSsrExternal = (
 export const addViteSsrNoExternal = (
   bundlerOptions: unknown,
   app: App,
-  module: string | string[],
+  module: string[] | string,
 ): void => {
   addViteConfig(bundlerOptions, app, {
     ssr: {

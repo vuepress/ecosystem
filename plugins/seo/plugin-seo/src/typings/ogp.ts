@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 export interface BaseSeoContent {
   /**
    * 文章的标题，不包含任何品牌，例如你的网站名称。
@@ -13,17 +12,17 @@ export interface BaseSeoContent {
    * Depending on the type you specify, other properties may also be required.
    */
   'og:type':
-    | 'music.song'
+    | 'article'
+    | 'book'
     | 'music.album'
     | 'music.playlist'
     | 'music.radio_station'
-    | 'video.movie'
-    | 'video.episode'
-    | 'video.tv_show'
-    | 'video.other'
-    | 'article'
-    | 'book'
+    | 'music.song'
     | 'profile'
+    | 'video.episode'
+    | 'video.movie'
+    | 'video.other'
+    | 'video.tv_show'
     | 'website'
   /**
    * 页面的图片网址。图片应至少为 600×315 像素，但最好是 1200×630 像素或更大的尺寸 (大小不超过 5MB)。
@@ -70,7 +69,7 @@ export interface SimpleSeoContent extends BaseSeoContent {
    * An enum of (a, an, the, "", auto). If auto is chosen, the consumer of your data should
    * chose between "a" or "an". Default is "" (blank).
    */
-  'og:determiner'?: 'a' | 'an' | 'the' | '' | 'auto'
+  'og:determiner'?: '' | 'a' | 'an' | 'auto' | 'the'
   /**
    * 页面使用的语言
    *
@@ -142,7 +141,7 @@ export interface FacebookSeoContent extends SimpleSeoContent {
 
 export interface TwitterSeoContent extends SimpleSeoContent {
   /** The card type */
-  'twitter:card'?: 'summary' | 'summary_large_image' | 'app' | 'player'
+  'twitter:card'?: 'app' | 'player' | 'summary_large_image' | 'summary'
   /**
    * 用户的 Twitter ID
    *
@@ -178,7 +177,7 @@ export interface ExtendedSeoContent extends SimpleSeoContent {
    *
    * Whether to enable rich attachment
    */
-  'og:rich_attachment': 'true' | 'false'
+  'og:rich_attachment': 'false' | 'true'
   /**
    * 内容年龄限制
    *
@@ -191,5 +190,5 @@ export type SeoContent =
   | ArticleSeoContent
   | ExtendedSeoContent
   | FacebookSeoContent
-  | TwitterSeoContent
   | SimpleSeoContent
+  | TwitterSeoContent

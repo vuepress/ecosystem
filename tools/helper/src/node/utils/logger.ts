@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { colors, ora } from 'vuepress/utils'
 
 type Ora = ReturnType<typeof ora>
@@ -6,11 +7,11 @@ type Ora = ReturnType<typeof ora>
  * Logger utils
  */
 export class Logger {
-  constructor(
+  public constructor(
     /**
      * Plugin/Theme name
      */
-    private name = '',
+    private readonly name = '',
   ) {}
 
   private init(text: string): Ora {
@@ -23,11 +24,11 @@ export class Logger {
   /**
    * Create a loading spinner with text
    */
-  load(text: string): {
+  public load(msg: string): {
     succeed: (text?: string) => void
     fail: (text?: string) => void
   } {
-    const instance = this.init(text)
+    const instance = this.init(msg)
 
     return {
       succeed: (text?: string) => instance.succeed(text),
@@ -41,7 +42,7 @@ export class Logger {
    * @param text Hint text
    * @returns Ora Instance
    */
-  info(text = '', ...args: any[]): void {
+  public info(text = '', ...args: unknown[]): void {
     this.init(colors.blue(text)).info()
 
     if (args.length) console.info(...args)
@@ -50,7 +51,7 @@ export class Logger {
   /**
    * Log success msg
    */
-  succeed(text = '', ...args: any[]): void {
+  public succeed(text = '', ...args: unknown[]): void {
     this.init(colors.green(text)).succeed()
 
     if (args.length) console.log(...args)
@@ -59,7 +60,7 @@ export class Logger {
   /**
    * Log warning msg
    */
-  warn(text = '', ...args: any[]): void {
+  public warn(text = '', ...args: unknown[]): void {
     this.init(colors.yellow(text)).warn()
 
     if (args.length) console.warn(...args)
@@ -68,7 +69,7 @@ export class Logger {
   /**
    * Log error msg
    */
-  error(text = '', ...args: any[]): void {
+  public error(text = '', ...args: unknown[]): void {
     this.init(colors.red(text)).fail()
 
     if (args.length) console.error(...args)

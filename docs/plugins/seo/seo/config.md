@@ -32,7 +32,7 @@
     email?: string
   }
 
-  type Author = AuthorName | AuthorName[] | AuthorInfo | AuthorInfo[]
+  type Author = AuthorInfo | AuthorInfo[] | AuthorName | AuthorName[]
   ```
 
 - Required: No
@@ -91,7 +91,7 @@
   ```ts
   function ogp(
     /** OGP info inferred by plugin */
-    ogp: SeoContent,
+    ogpInfo: SeoContent,
     /** Page Object */
     page: Page,
     /** VuePress App */

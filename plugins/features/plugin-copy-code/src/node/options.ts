@@ -9,7 +9,7 @@ export interface CopyCodePluginOptions {
    *
    * @default '.theme-default-content div[class*="language-"] pre'
    */
-  selector?: string | string[]
+  selector?: string[] | string
 
   /**
    * Prompt message display time

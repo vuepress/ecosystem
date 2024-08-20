@@ -11,6 +11,7 @@ export const path2Lang = (path = '', debug = false): KnownLangCode => {
   if (path in path2langConfig) return path2langConfig[path]
 
   if (debug)
+    // eslint-disable-next-line no-console
     console.warn(
       `${path} isn’t assign with a lang, and will return "en-US" instead.`,
     )
@@ -23,6 +24,7 @@ export const lang2Path = (lang = '', debug = false): string => {
   if (lang in lang2PathConfig) return lang2PathConfig[lang as KnownLangCode]
 
   if (debug)
+    // eslint-disable-next-line no-console
     console.warn(`${lang} has no path config, and will return "/" instead.`)
 
   return '/'
@@ -38,7 +40,8 @@ export const getRootLang = (app: App): string => {
   // infer from siteLocale
   const siteLocales = app.siteData.locales
 
-  if (siteLocales?.['/'] && siteLocales['/']?.lang) return siteLocales['/'].lang
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  if (siteLocales['/']?.lang) return siteLocales['/'].lang
 
   return app.siteData.lang
 }
@@ -91,6 +94,7 @@ export const getLocaleConfig = <T extends LocaleData>({
       .filter((localePath) => localePath !== '/')
       .map<[string, T]>((localePath) => {
         const defaultLocaleData =
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           defaultLocalesConfig[localePath] ||
           (lang2Path(app.options.locales[localePath].lang) === '/'
             ? null
@@ -98,6 +102,7 @@ export const getLocaleConfig = <T extends LocaleData>({
                 lang2Path(app.options.locales[localePath].lang)
               ])
 
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (!defaultLocaleData)
           logger.warn(`Locale ${localePath} is missing it's i18n config`)
 
@@ -105,8 +110,9 @@ export const getLocaleConfig = <T extends LocaleData>({
           localePath,
           deepAssign(
             {},
-            defaultLocaleData || defaultLocalesConfig[rootPath] || {},
-            userLocalesConfig[localePath] || {},
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+            defaultLocaleData ?? defaultLocalesConfig[rootPath] ?? {},
+            userLocalesConfig[localePath] ?? {},
           ),
         ]
       }),
@@ -115,7 +121,8 @@ export const getLocaleConfig = <T extends LocaleData>({
       deepAssign(
         {},
         defaultLocalesConfig[rootPath],
-        userLocalesConfig['/'] || userLocalesConfig[rootPath] || {},
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+        userLocalesConfig['/'] ?? userLocalesConfig[rootPath] ?? {},
       ),
     ],
   ])

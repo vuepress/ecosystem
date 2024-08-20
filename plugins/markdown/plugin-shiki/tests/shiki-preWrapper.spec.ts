@@ -1,5 +1,5 @@
-import { lineNumbers as lineNumbersPlugin } from '@vuepress/highlighter-helper'
 import type { MarkdownItLineNumbersOptions } from '@vuepress/highlighter-helper'
+import { lineNumbers as lineNumbersPlugin } from '@vuepress/highlighter-helper'
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 import type { App } from 'vuepress'

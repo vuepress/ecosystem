@@ -1,6 +1,6 @@
 import { useThemeLocaleData } from '@theme/useThemeData'
-import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
+import { computed } from 'vue'
 import { usePageData, usePageFrontmatter } from 'vuepress/client'
 import type {
   DefaultThemeNormalPageFrontmatter,
@@ -8,7 +8,7 @@ import type {
 } from '../../shared/index.js'
 
 export const useContributors = (): ComputedRef<
-  null | Required<DefaultThemePageData['git']>['contributors']
+  Exclude<DefaultThemePageData['git'], undefined>['contributors'] | null
 > => {
   const themeLocale = useThemeLocaleData()
   const page = usePageData<DefaultThemePageData>()

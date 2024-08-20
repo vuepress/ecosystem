@@ -39,7 +39,7 @@ export const prepareSearchIndex = async ({
 
   // search index file content
   let content = `\
-export const searchIndex = ${JSON.stringify(searchIndex, null, 2)}
+export const SEARCH_INDEX = ${JSON.stringify(searchIndex, null, 2)}
 `
 
   // inject HMR code

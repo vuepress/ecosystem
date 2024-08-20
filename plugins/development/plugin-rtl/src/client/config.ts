@@ -4,7 +4,7 @@ import { defineClientConfig, useRouteLocale } from 'vuepress/client'
 declare const __RTL_LOCALES__: string[]
 declare const __RTL_SELECTOR__: Record<string, Record<string, string>>
 
-const entries = Object.entries
+const { entries } = Object
 
 const getElement = (selector: string): HTMLElement | null =>
   selector === 'html'
@@ -17,8 +17,8 @@ export default defineClientConfig({
   setup() {
     const routeLocale = useRouteLocale()
 
-    const toggleRTL = (routeLocale: string): void => {
-      if (__RTL_LOCALES__.includes(routeLocale)) {
+    const toggleRTL = (localePath: string): void => {
+      if (__RTL_LOCALES__.includes(localePath)) {
         entries(__RTL_SELECTOR__).forEach(([selector, attrs = {}]) => {
           const element = getElement(selector)
 

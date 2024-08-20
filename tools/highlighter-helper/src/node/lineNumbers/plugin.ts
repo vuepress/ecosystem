@@ -4,7 +4,10 @@ import { resolveLineNumbers } from './resolveLineNumbers.js'
 
 export const lineNumbers = (
   md: Markdown,
-  { lineNumbers = true, removeLastLine }: MarkdownItLineNumbersOptions = {},
+  {
+    lineNumbers: lineNumberOptions = true,
+    removeLastLine,
+  }: MarkdownItLineNumbersOptions = {},
 ): void => {
   const rawFence = md.renderer.rules.fence!
 
@@ -29,9 +32,9 @@ export const lineNumbers = (
     // resolve line-numbers mark from token info
     const lineNumbersInfo =
       resolveLineNumbers(info) ??
-      (typeof lineNumbers === 'number'
-        ? lines.length >= lineNumbers
-        : lineNumbers)
+      (typeof lineNumberOptions === 'number'
+        ? lines.length >= lineNumberOptions
+        : lineNumberOptions)
 
     if (lineNumbersInfo === false) {
       return rawCode

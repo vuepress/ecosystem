@@ -60,7 +60,7 @@ export interface DefaultThemePluginsOptions {
   /**
    * Enable @vuepress/plugin-prismjs or not
    */
-  prismjs?: boolean | PrismjsPluginOptions
+  prismjs?: PrismjsPluginOptions | boolean
 
   /**
    * Enable @vuepress/plugin-seo or not
@@ -111,31 +111,31 @@ export interface DefaultThemeLocaleData extends LocaleData {
    *
    * Set to `false` to disable navbar in current locale
    */
-  navbar?: false | NavbarOptions
+  navbar?: NavbarOptions | false
 
   /**
    * Navbar label used for screen readers using the `aria-label` attribute
    */
-  navbarLabel?: null | string
+  navbarLabel?: string | null
 
   /**
    * Page navbar label used for screen readers using the `aria-label` attribute
    */
-  pageNavbarLabel?: null | string
+  pageNavbarLabel?: string | null
 
   /**
    * Navbar logo config
    *
    * Logo to display in navbar
    */
-  logo?: null | string
+  logo?: string | null
 
   /**
    * Navbar logo config for dark mode
    *
    * Logo to display in navbar in dark mode
    */
-  logoDark?: null | string
+  logoDark?: string | null
 
   /**
    * The alt text of navbar logo.
@@ -143,14 +143,14 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * If the value is the same as the site title, the site title rendered in the navbar will be
    * hidden from screen readers to avoid duplication.
    */
-  logoAlt?: null | string
+  logoAlt?: string | null
 
   /**
    * Navbar repository config
    *
    * Used for the repository link of navbar
    */
-  repo?: null | string
+  repo?: string | null
 
   /**
    * Navbar repository config
@@ -187,7 +187,7 @@ export interface DefaultThemeLocaleData extends LocaleData {
    *
    * Set to `false` to disable sidebar in current locale
    */
-  sidebar?: false | SidebarOptions
+  sidebar?: SidebarOptions | false
 
   /**
    * Sidebar depth

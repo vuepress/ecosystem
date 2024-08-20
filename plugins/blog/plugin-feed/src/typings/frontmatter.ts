@@ -27,10 +27,10 @@ export interface AuthorInfo {
 }
 
 export type FrontmatterAuthor =
-  | AuthorName
-  | AuthorName[]
   | AuthorInfo
   | AuthorInfo[]
+  | AuthorName
+  | AuthorName[]
 
 export interface FeedFrontmatterOption {
   /**
@@ -60,17 +60,17 @@ export interface FeedFrontmatterOption {
   /**
    * Feed author
    */
-  author?: FeedAuthor[] | FeedAuthor
+  author?: FeedAuthor | FeedAuthor[]
 
   /**
    * Feed contributor
    */
-  contributor?: FeedContributor[] | FeedContributor
+  contributor?: FeedContributor | FeedContributor[]
 
   /**
    * Feed category
    */
-  category?: FeedCategory[] | FeedCategory
+  category?: FeedCategory | FeedCategory[]
 
   /**
    * @description guid should be unique globally
@@ -98,7 +98,7 @@ export interface FeedPluginFrontmatter extends PageFrontmatter {
    *
    * 页面分类
    */
-  category?: string | string[]
+  category?: string[] | string
   categories?: string[]
 
   /**

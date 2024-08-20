@@ -17,8 +17,8 @@ import {
 declare const __DOCSEARCH_INJECT_STYLES__: boolean
 
 if (__DOCSEARCH_INJECT_STYLES__) {
-  import('@docsearch/css')
-  import('../styles/docsearch.css')
+  void import('@docsearch/css')
+  void import('../styles/docsearch.css')
 }
 
 export const Docsearch = defineComponent({
@@ -46,11 +46,11 @@ export const Docsearch = defineComponent({
 
     // resolve docsearch options for current locale
     const options = computed(() => {
-      const { locales = {}, ...options } = props.options
+      const { locales = {}, ...rest } = props.options
 
       return {
         ...docSearchOptions.value,
-        ...options,
+        ...rest,
         ...locales[routeLocale.value],
       }
     })
@@ -67,8 +67,8 @@ export const Docsearch = defineComponent({
         searchParameters: {
           ...options.value.searchParameters,
           facetFilters: getFacetFilters(
-            options.value.searchParameters?.facetFilters,
             lang.value,
+            options.value.searchParameters?.facetFilters,
           ),
         },
       })
@@ -84,7 +84,7 @@ export const Docsearch = defineComponent({
       // mark as triggered
       hasTriggered.value = true
       // initialize and open
-      initialize()
+      void initialize()
       pollToOpenDocsearch()
       // re-initialize when route locale changes
       watch(routeLocale, initialize)
@@ -94,7 +94,9 @@ export const Docsearch = defineComponent({
     useDocsearchHotkeyListener(trigger)
 
     // preconnect to algolia
-    onMounted(() => preconnectToAlgolia(options.value.appId))
+    onMounted(() => {
+      preconnectToAlgolia(options.value.appId)
+    })
 
     return () => [
       h('div', {

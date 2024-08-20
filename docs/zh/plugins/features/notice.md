@@ -13,7 +13,7 @@ npm i -D @vuepress/plugin-notice@next
 ```ts
 import { noticePlugin } from '@vuepress/plugin-notice'
 
-default {
+export default {
   plugins: [
     noticePlugin({
       // 选项

@@ -140,7 +140,7 @@ import { PwaFoundPopup } from '@vuepress/plugin-pwa/client'
   <PwaFoundPopup v-slot="{ found, refresh }">
     <div v-if="found">
       已找到新内容
-      <button @click="refresh">刷新</button>
+      <button type="button" @click="refresh">刷新</button>
     </div>
   </PwaFoundPopup>
 </template>
@@ -154,7 +154,7 @@ import { PwaReadyPopup } from '@vuepress/plugin-pwa/client'
   <PwaReadyPopup v-slot="{ isReady, reload }">
     <div v-if="isReady">
       新内容已就绪
-      <button @click="reload">应用</button>
+      <button type="button" @click="reload">应用</button>
     </div>
   </PwaReadyPopup>
 </template>

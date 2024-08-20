@@ -9,8 +9,8 @@ import {
 } from '@vuepress/helper'
 import type { GitData } from '@vuepress/plugin-git'
 import type { App, Page } from 'vuepress/core'
-import { isString } from 'vuepress/shared'
 import type { PageFrontmatter } from 'vuepress/shared'
+import { isString } from 'vuepress/shared'
 import type {
   AuthorInfo,
   FeedAuthor,
@@ -30,30 +30,31 @@ import {
 } from '../utils/index.js'
 
 export class FeedItem {
-  private pageOptions: FeedFrontmatterOption
-  private frontmatter: PageFrontmatter<FeedPluginFrontmatter>
-  private base: string
-  private getter: FeedGetter
+  private readonly pageOptions: FeedFrontmatterOption
+  private readonly frontmatter: PageFrontmatter<FeedPluginFrontmatter>
+  private readonly base: string
+  private readonly getter: FeedGetter
 
-  constructor(
-    private app: App,
-    private options: ResolvedFeedOptions,
-    private page: Page<
+  public constructor(
+    private readonly app: App,
+    private readonly options: ResolvedFeedOptions,
+    private readonly page: Page<
       { excerpt?: string; git?: GitData },
       FeedPluginFrontmatter
     >,
-    private hostname: string,
+    private readonly hostname: string,
   ) {
     this.base = this.app.options.base
     this.frontmatter = page.frontmatter
-    this.getter = options.getter || {}
+    this.getter = options.getter ?? {}
+    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     this.pageOptions = this.frontmatter.feed || {}
   }
 
   /**
    * Feed item title
    */
-  get title(): string {
+  public get title(): string {
     if (isFunction(this.getter.title)) return this.getter.title(this.page)
 
     return this.pageOptions.title || this.page.title
@@ -62,7 +63,7 @@ export class FeedItem {
   /**
    * The URL of the item.
    */
-  get link(): string {
+  public get link(): string {
     if (isFunction(this.getter.link)) return this.getter.link(this.page)
 
     return getUrl(this.hostname, this.base, this.page.path)
@@ -71,7 +72,7 @@ export class FeedItem {
   /**
    * Feed item description.
    */
-  get description(): string | null {
+  public get description(): string | null {
     if (isFunction(this.getter.description))
       return this.getter.description(this.page)
 
@@ -87,14 +88,14 @@ export class FeedItem {
   /**
    * A string that uniquely identifies feed item.
    */
-  get guid(): string {
+  public get guid(): string {
     return this.pageOptions.guid || this.link
   }
 
   /**
    * Authors of feed item.
    */
-  get author(): FeedAuthor[] {
+  public get author(): FeedAuthor[] {
     if (isFunction(this.getter.author)) return this.getter.author(this.page)
 
     if (isArray(this.pageOptions.author)) return this.pageOptions.author
@@ -104,14 +105,14 @@ export class FeedItem {
     return this.frontmatter.author
       ? getFeedAuthor(this.frontmatter.author)
       : this.options.channel?.author
-        ? getFeedAuthor(this.options.channel?.author as AuthorInfo)
+        ? getFeedAuthor(this.options.channel.author as AuthorInfo)
         : []
   }
 
   /**
    * Categories of feed item.
    */
-  get category(): FeedCategory[] | null {
+  public get category(): FeedCategory[] | null {
     if (isFunction(this.getter.category)) return this.getter.category(this.page)
 
     if (isArray(this.pageOptions.category)) return this.pageOptions.category
@@ -129,7 +130,7 @@ export class FeedItem {
    *
    * @description rss format only
    */
-  get enclosure(): FeedEnclosure | null {
+  public get enclosure(): FeedEnclosure | null {
     if (isFunction(this.getter.enclosure))
       return this.getter.enclosure(this.page)
 
@@ -145,13 +146,13 @@ export class FeedItem {
   /**
    * Indicates when feed item was published.
    */
-  get pubDate(): Date | null {
+  public get pubDate(): Date | null {
     if (isFunction(this.getter.publishDate))
       return this.getter.publishDate(this.page)
 
     const { time, date = time } = this.page.frontmatter
 
-    const { createdTime } = this.page.data.git || {}
+    const { createdTime } = this.page.data.git ?? {}
 
     return date && date instanceof Date
       ? date
@@ -163,19 +164,19 @@ export class FeedItem {
   /**
    * Indicates when feed item was updated.
    */
-  get lastUpdated(): Date {
+  public get lastUpdated(): Date | null {
     if (isFunction(this.getter.lastUpdateDate))
       return this.getter.lastUpdateDate(this.page)
 
-    const { updatedTime } = this.page.data.git || {}
+    const { updatedTime } = this.page.data.git ?? {}
 
-    return updatedTime ? new Date(updatedTime) : new Date()
+    return updatedTime ? new Date(updatedTime) : null
   }
 
   /**
    * Feed item summary
    */
-  get summary(): string | null {
+  public get summary(): string | null {
     if (isFunction(this.getter.excerpt)) return this.getter.excerpt(this.page)
 
     if (this.pageOptions.summary) return this.pageOptions.summary
@@ -189,7 +190,7 @@ export class FeedItem {
    * Feed Item content
    */
 
-  get content(): string {
+  public get content(): string {
     if (isFunction(this.getter.content)) return this.getter.content(this.page)
 
     if (this.pageOptions.content) return this.pageOptions.content
@@ -206,7 +207,7 @@ export class FeedItem {
    *
    * @description json format only
    */
-  get image(): string | null {
+  public get image(): string | null {
     if (isFunction(this.getter.image)) return this.getter.image(this.page)
 
     const { hostname, base } = this
@@ -240,7 +241,7 @@ export class FeedItem {
    *
    * @description atom format only
    */
-  get contributor(): FeedContributor[] {
+  public get contributor(): FeedContributor[] {
     if (isFunction(this.getter.contributor))
       return this.getter.contributor(this.page)
 
@@ -258,19 +259,20 @@ export class FeedItem {
    *
    * @description atom format only
    */
-  get copyright(): string | null {
+  public get copyright(): string | null {
     if (isFunction(this.getter.copyright))
       return this.getter.copyright(this.page)
 
     if (isString(this.frontmatter.copyright)) return this.frontmatter.copyright
     const firstAuthor = this.author[0]
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (firstAuthor?.name) return `Copyright by ${firstAuthor.name}`
 
     return null
   }
 
-  get isValid(): boolean {
+  public get isValid(): boolean {
     return Boolean(this.title || this.description)
   }
 }

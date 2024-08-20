@@ -21,7 +21,7 @@ const checkYarnInstalled = (): boolean => {
   }
 }
 
-export type PackageManager = 'npm' | 'yarn' | 'pnpm'
+export type PackageManager = 'npm' | 'pnpm' | 'yarn'
 
 const availablePackageManagers: PackageManager[] = ['npm']
 

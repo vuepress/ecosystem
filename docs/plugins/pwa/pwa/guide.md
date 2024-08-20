@@ -134,7 +134,7 @@ import { PwaFoundPopup } from '@vuepress/plugin-pwa/client'
   <PwaFoundPopup v-slot="{ found, refresh }">
     <div v-if="found">
       New content is found.
-      <button @click="refresh">Refresh</button>
+      <button type="button" @click="refresh">Refresh</button>
     </div>
   </PwaFoundPopup>
 </template>
@@ -148,7 +148,7 @@ import { PwaReadyPopup } from '@vuepress/plugin-pwa/client'
   <PwaReadyPopup v-slot="{ isReady, reload }">
     <div v-if="isReady">
       New content is ready.
-      <button @click="reload">Apply</button>
+      <button type="button" @click="reload">Apply</button>
     </div>
   </PwaReadyPopup>
 </template>

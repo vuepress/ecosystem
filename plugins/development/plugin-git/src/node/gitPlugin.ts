@@ -67,7 +67,7 @@ export const gitPlugin =
       },
 
       // remove `gitInclude` from frontmatter
-      onInitialized: (app) => {
+      onInitialized: () => {
         app.pages.forEach((page) => {
           delete page.frontmatter.gitInclude
         })

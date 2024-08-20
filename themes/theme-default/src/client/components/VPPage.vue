@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import VPPageMeta from '@theme/VPPageMeta.vue'
 import VPPageNav from '@theme/VPPageNav.vue'
+import type { VNode } from 'vue'
 import { Content } from 'vuepress/client'
 import { setupHeaders } from '../composables/index.js'
 
 defineSlots<{
-  'top'?: (props: Record<never, never>) => any
-  'bottom'?: (props: Record<never, never>) => any
-  'content-top'?: (props: Record<never, never>) => any
-  'content-bottom'?: (props: Record<never, never>) => any
+  'top'?: (props: Record<never, never>) => VNode | VNode[] | null
+  'bottom'?: (props: Record<never, never>) => VNode | VNode[] | null
+  'content-top'?: (props: Record<never, never>) => VNode | VNode[] | null
+  'content-bottom'?: (props: Record<never, never>) => VNode | VNode[] | null
 }>()
 
 setupHeaders()

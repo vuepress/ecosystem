@@ -20,7 +20,7 @@ export interface NoticeActionOption {
    *
    * @default "default"
    */
-  type?: 'primary' | 'default'
+  type?: 'default' | 'primary'
 }
 
 export interface NoticeItemOptions {
@@ -104,10 +104,10 @@ export interface NoticeMatchOptions extends NoticeItemOptions {
 
 export type NoticeOptions = NoticeMatchOptions | NoticePathOptions
 export type NoticeAttrOptions =
-  | (Omit<NoticePathOptions, 'key'> & {
-      noticeKey?: string
-    })
-  | (Omit<NoticeMatchOptions, 'match' | 'key'> & {
+  | (Omit<NoticeMatchOptions, 'key' | 'match'> & {
       noticeKey?: string
       match: string
+    })
+  | (Omit<NoticePathOptions, 'key'> & {
+      noticeKey?: string
     })

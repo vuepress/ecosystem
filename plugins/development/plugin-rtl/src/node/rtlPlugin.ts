@@ -14,10 +14,8 @@ export interface RTLPluginOptions {
    *
    * @default { 'html': { dir: 'rtl' } }
    */
-  // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
   selector?: {
-    // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
-    [element: string]: {
+    [cssSelector: string]: {
       [attr: string]: string
     }
   }
@@ -30,7 +28,7 @@ export const rtlPlugin = (options: RTLPluginOptions = {}): PluginObject => ({
 
   define: {
     __RTL_LOCALES__: Array.isArray(options.locales) ? options.locales : ['/'],
-    __RTL_SELECTOR__: options.selector || { html: { dir: 'rtl' } },
+    __RTL_SELECTOR__: options.selector ?? { html: { dir: 'rtl' } },
   },
 
   clientConfigFile: path.join(__dirname, '../client/config.js'),

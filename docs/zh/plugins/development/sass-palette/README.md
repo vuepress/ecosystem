@@ -12,19 +12,16 @@
 npm i -D @vuepress/plugin-sass-palette@next
 ```
 
-```ts title="你的插件或主题入口"
+```js title="你的插件或主题入口"
 import { useSassPalettePlugin } from 'vuepress-plugin-sass-palette'
-import type { PluginFunction } from 'vuepress/core'
 
-export const yourPlugin =
-  (options): PluginFunction =>
-  (app) => {
-    useSassPalettePlugin(app, {
-      // 插件选项
-    })
+export const yourPlugin = (options) => (app) => {
+  useSassPalettePlugin(app, {
+    // 插件选项
+  })
 
-    return {
-      // 你的插件 API
-    }
+  return {
+    // 你的插件 API
   }
+}
 ```

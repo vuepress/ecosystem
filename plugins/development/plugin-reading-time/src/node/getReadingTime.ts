@@ -23,7 +23,7 @@ export const getWordNumber = (content: string): number =>
     (accumulator, word) =>
       accumulator + (word.trim() === '' ? 0 : word.trim().split(/\s+/u).length),
     0,
-  ) || 0) + (getChinese(content)?.length || 0)
+  ) ?? 0) + (getChinese(content)?.length ?? 0)
 
 /**
  * Get reading time info

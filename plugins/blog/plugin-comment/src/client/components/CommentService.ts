@@ -22,18 +22,14 @@ export default defineComponent({
     const page = usePageData()
     const frontmatter = usePageFrontmatter<CommentPluginFrontmatter>()
 
-    const enableComment = computed(() => commentOptions.value.comment !== false)
-
     const enabled = computed(
-      () =>
-        frontmatter.value.comment ||
-        (enableComment.value && frontmatter.value.comment !== false),
+      () => frontmatter.value.comment ?? commentOptions.value.comment !== false,
     )
 
     return (): VNode | null =>
       h(CommentProvider, {
         id: 'vp-comment',
-        identifier: frontmatter.value.commentID || page.value.path,
+        identifier: frontmatter.value.commentID ?? page.value.path,
         darkmode: props.darkmode,
         style: { display: enabled.value ? 'block' : 'none' },
       })

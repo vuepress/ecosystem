@@ -36,6 +36,7 @@
     "copy": "cpx \"src/**/*.css\" lib"
   },
   "dependencies": {
+    "@vuepress/helper": "workspace:*",
     "vue": "^3.4.38"
   },
   "peerDependencies": {

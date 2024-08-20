@@ -45,7 +45,7 @@ export default {
 
       getInfo: ({ frontmatter, git = {}, data = {} }) => {
         // getting page info
-        const info: Record<string, any> = {
+        const info: Record<string, unknown> = {
           author: frontmatter.author || '',
           categories: frontmatter.categories || [],
           date: frontmatter.date || git.createdTime || null,
@@ -177,7 +177,7 @@ const categoryMap = useBlogCategory('tag')
   <div>
     <h1>Tag page</h1>
     <ul>
-      <li v-for="({ items, path }, name) in categoryMap.map">
+      <li v-for="({ items, path }, name) in categoryMap.map" :key="path">
         <RouteLink :key="name" :to="path" class="category">
           {{ name }}
           <span class="category-num">
@@ -215,26 +215,23 @@ const categoryMap = useBlogCategory('tag')
         </span>
       </RouteLink>
     </div>
-    <div class="article-wrapper" v-if="categoryMap.currentItems">
+    <div v-if="categoryMap.currentItems" class="article-wrapper">
       <div v-if="!categoryMap.currentItems.length">Nothing in here.</div>
       <article
         v-for="{ info, path } in categoryMap.currentItems"
+        :key="path"
         class="article"
         @click="$router.push(path)"
       >
         <header class="title">
-          {{
-            (isTimeline
-              ? `${new Date(info.date).toLocaleDateString()}: `
-              : '') + info.title
-          }}
+          {{ info.title }}
         </header>
         <hr />
         <div class="article-info">
           <span v-if="info.author" class="author"
             >Author: {{ info.author }}</span
           >
-          <span v-if="info.date && !isTimeline" class="date"
+          <span v-if="info.date" class="date"
             >Date: {{ new Date(info.date).toLocaleDateString() }}</span
           >
           <span v-if="info.category" class="category"
@@ -256,32 +253,29 @@ const categoryMap = useBlogCategory('tag')
 ```vue
 <script setup lang="ts">
 import { useBlogType } from '@vuepress/plugin-blog/client'
+import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 import { RouteLink } from 'vuepress/client'
 
 import ArticleList from '../components/ArticleList.vue'
-import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 
 const stars = useBlogType('star')
 </script>
 
 <template>
-  <div class="article-wrapper" v-if="stars.items">
-    <div v-if="!stars.items.length">Nothing in here.</div>
+  <div v-if="stars.items?.length" class="article-wrapper">
     <article
       v-for="{ info, path } in stars.items"
+      :key="path"
       class="article"
       @click="$router.push(path)"
     >
       <header class="title">
-        {{
-          (isTimeline ? `${new Date(info.date).toLocaleDateString()}: ` : '') +
-          info.title
-        }}
+        {{ info.title }}
       </header>
       <hr />
       <div class="article-info">
         <span v-if="info.author" class="author">Author: {{ info.author }}</span>
-        <span v-if="info.date && !isTimeline" class="date"
+        <span v-if="info.date" class="date"
           >Date: {{ new Date(info.date).toLocaleDateString() }}</span
         >
         <span v-if="info.category" class="category"
@@ -292,6 +286,7 @@ const stars = useBlogType('star')
       <div v-if="info.excerpt" class="excerpt" v-html="info.excerpt" />
     </article>
   </div>
+  <div v-else>Nothing in here.</div>
 </template>
 ```
 

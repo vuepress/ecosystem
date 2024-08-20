@@ -1,9 +1,9 @@
 import { themeData as themeDataRaw } from '@internal/themeData'
-import { ref } from 'vue'
 import type { Ref } from 'vue'
+import { ref } from 'vue'
 import type { ThemeData } from '../../shared/index.js'
 
-declare const __VUE_HMR_RUNTIME__: Record<string, any>
+declare const __VUE_HMR_RUNTIME__: Record<string, unknown>
 
 export type ThemeDataRef<T extends ThemeData = ThemeData> = Ref<T>
 
