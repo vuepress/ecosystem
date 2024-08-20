@@ -117,7 +117,6 @@ export const defaultTheme = ({
           .rule('scss')
           .use('sass-loader')
           .tap((options) => ({
-            api: 'modern-compiler',
             ...options,
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             sassOptions: {

@@ -1,6 +1,6 @@
 import type { ViteBundlerOptions } from '@vuepress/bundler-vite'
 import type {
-  LoaderOptions,
+  SassLoaderOptions,
   WebpackBundlerOptions,
 } from '@vuepress/bundler-webpack'
 import {
@@ -12,8 +12,8 @@ import {
 import type { App } from 'vuepress/core'
 import { getIdPrefix } from './utils.js'
 
-type LoaderContext =
-  Exclude<LoaderOptions['additionalData'], string | undefined> extends (
+type SassLoaderContext =
+  Exclude<SassLoaderOptions['additionalData'], string | undefined> extends (
     content: string,
     loaderContext: infer T,
   ) => string
@@ -88,7 +88,7 @@ export const injectScssConfigModule = (
 
     const additionalDataHandler = (
       content: string,
-      loaderContext: LoaderContext,
+      loaderContext: SassLoaderContext,
     ): string => {
       const originalContent = isString(additionalData)
         ? `${additionalData}${content}`

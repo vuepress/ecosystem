@@ -45,22 +45,22 @@
     "style": "sass src:lib --no-source-map"
   },
   "dependencies": {
-    "@vue/shared": "^3.4.37",
+    "@vue/shared": "^3.4.38",
     "cheerio": "1.0.0",
     "fflate": "^0.8.2",
     "gray-matter": "^4.0.3",
-    "vue": "^3.4.37"
+    "vue": "^3.4.38"
   },
   "devDependencies": {
     "@types/connect": "3.4.38",
-    "@vuepress/bundler-vite": "2.0.0-rc.14",
-    "@vuepress/bundler-webpack": "2.0.0-rc.14",
+    "@vuepress/bundler-vite": "2.0.0-rc.15",
+    "@vuepress/bundler-webpack": "2.0.0-rc.15",
     "@vuepress/plugin-git": "workspace:*",
     "domhandler": "5.0.3",
-    "vite": "~5.3.5"
+    "vite": "~5.4.1"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.14"
+    "vuepress": "2.0.0-rc.15"
   },
   "publishConfig": {
     "access": "public"

@@ -36,11 +36,11 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "vue": "^3.4.37",
-    "watermark-js-plus": "^1.5.2"
+    "vue": "^3.4.38",
+    "watermark-js-plus": "^1.5.3"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.14"
+    "vuepress": "2.0.0-rc.15"
   },
   "publishConfig": {
     "access": "public"

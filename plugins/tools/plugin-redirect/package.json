@@ -43,12 +43,12 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^10.11.1",
+    "@vueuse/core": "^11.0.1",
     "cac": "^6.7.14",
-    "vue": "^3.4.37"
+    "vue": "^3.4.38"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.14"
+    "vuepress": "2.0.0-rc.15"
   },
   "publishConfig": {
     "access": "public"
