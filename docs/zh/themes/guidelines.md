@@ -4,8 +4,6 @@
 
 ## DOM 结构
 
-A theme must implement the following DOM structure:
-
 一个主题必须实现以下 DOM 结构：
 
 - 容器：一个包含整个主题的元素。此元素应该有一个 `vp-container` 属性。
