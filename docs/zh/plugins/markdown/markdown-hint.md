@@ -27,7 +27,7 @@ export default {
 
 ## 指南
 
-默认情况下，我们支持 `important`、`info`、`note`、`tip`、`warning`、`caution`、`details` 容器与 markdown 容器：
+默认情况下，我们支持 `important`、`info`、`note`、`tip`、`warning`、`danger`、`details` 容器与 markdown 容器：
 
 ::: tip
 

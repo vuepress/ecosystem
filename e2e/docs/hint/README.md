@@ -18,6 +18,12 @@ Danger text
 
 :::
 
+::: info
+
+Info text
+
+:::
+
 ::: important
 
 Important text

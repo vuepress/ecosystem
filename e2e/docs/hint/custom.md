@@ -30,6 +30,16 @@ const a = 1
 
 :::
 
+::: info Info title
+
+A custom info container with `code`, [link](#demo).
+
+```js
+const a = 1
+```
+
+:::
+
 ::: important Important title
 
 A custom important container with `code`, [link](#demo).

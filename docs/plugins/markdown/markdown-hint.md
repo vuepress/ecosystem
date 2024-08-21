@@ -27,7 +27,7 @@ export default {
 
 ## Guide
 
-By default, we support `important`, `info`, `note`, `tip`, `warning`, `caution`, `details` containers with markdown container:
+By default, we support `important`, `info`, `note`, `tip`, `warning`, `danger`, `details` containers with markdown container:
 
 ::: tip
 
