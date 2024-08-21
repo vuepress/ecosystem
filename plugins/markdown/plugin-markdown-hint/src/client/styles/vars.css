@@ -1,0 +1,72 @@
+:root {
+  /* important */
+  --important-title-color: #230555;
+  --important-bg-color: #f4eefe;
+  --important-border-color: #a371f7;
+  --important-code-bg-color: rgb(163 113 247 / 10%);
+
+  /* info */
+  --info-title-color: #193c47;
+  --info-bg-color: #eef9fd;
+  --info-border-color: #4cb3d4;
+  --info-code-bg-color: rgb(76 179 212 / 10%);
+
+  /* note */
+  --note-title-color: #474748;
+  --note-bg-color: #fdfdfe;
+  --note-border-color: #ccc;
+  --note-code-bg-color: rgb(212 213 216 / 20%);
+
+  /* tip */
+  --tip-title-color: #003100;
+  --tip-bg-color: #e6f6e6;
+  --tip-border-color: #009400;
+  --tip-code-bg-color: rgb(0 148 0 / 15%);
+
+  /* warning */
+  --warning-title-color: #4d3800;
+  --warning-bg-color: #fff8e6;
+  --warning-border-color: #e6a700;
+  --warning-code-bg-color: rgb(230 167 0 / 15%);
+
+  /* caution */
+  --caution-title-color: #4b1113;
+  --caution-bg-color: #ffebec;
+  --caution-border-color: #e13238;
+  --caution-code-bg-color: rgb(225 50 56 / 15%);
+
+  /* detail */
+  --detail-bg-color: #eee;
+  --detail-text-color: inherit;
+  --detail-code-bg-color: rgb(127 127 127 / 15%);
+}
+
+[data-theme='dark'] {
+  /* important */
+  --important-title-color: #f4eefe;
+  --important-bg-color: #230555;
+
+  /* info */
+  --info-title-color: #eef9fd;
+  --info-bg-color: #193c47;
+
+  /* note */
+  --note-title-color: #fdfdfe;
+  --note-bg-color: #474748;
+
+  /* tip */
+  --tip-title-color: #e6f6e6;
+  --tip-bg-color: #003100;
+
+  /* warning */
+  --warning-title-color: #fff8e6;
+  --warning-bg-color: #4d3800;
+
+  /* caution */
+  --caution-title-color: #ffebec;
+  --caution-bg-color: #4b1113;
+
+  /* detail */
+  --detail-bg-color: #333;
+  --detail-text-color: #a8a8a8;
+}

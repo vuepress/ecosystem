@@ -48,10 +48,6 @@ export default {
 
   `ContainerType` 类型为：
 
-  - `tip`
-  - `warning`
-  - `danger`
-  - `details`
   - `codeGroup`
   - `codeGroupItem`
 
@@ -66,7 +62,7 @@ export default {
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-copy-code](../../plugins/features/copy-code.md) 。
+  是否启用 [@vuepress/plugin-copy-code](../../plugins/features/copy-code.md)。
 
   支持对象格式以作为插件选项。
 
@@ -79,6 +75,19 @@ export default {
 - 详情：
 
   是否启用 [@vuepress/plugin-git](../../plugins/development/git.md) 。
+
+## themePlugins.hint
+
+- 类型： `MarkdownHintPluginOptions | boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否启用 [@vuepress/plugin-markdown-hint](../../plugins/markdown/markdown-hint.md)。
+
+- 参考：
+  - [默认主题 > Markdown > 提示容器](./markdown.md#提示容器)
 
 ## themePlugins.links-check
 

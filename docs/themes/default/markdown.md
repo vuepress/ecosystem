@@ -2,27 +2,7 @@
 
 <NpmBadge package="@vuepress/theme-default" />
 
-## Custom Containers
-
-- Usage:
-
-  ```md
-  ::: <type> [title]
-  [content]
-  :::
-  ```
-
-  The `type` is required, and the `title` and `content` are optional.
-
-  Supported `type` :
-
-  - `tip`
-  - `warning`
-  - `danger`
-  - `details`
-  - Alias of [CodeGroup](./components.md#codegroup) and [CodeGroupItem](./components.md#codegroupitem):
-    - `code-group`
-    - `code-group-item`
+## Hint Containers
 
 - Example 1 (default title):
 
@@ -96,7 +76,25 @@ console.log('Hello, VuePress!')
 
 :::
 
-- Example 3 (code group alias):
+## Custom Containers
+
+- Usage:
+
+  ```md
+  ::: <type> [title]
+  [content]
+  :::
+  ```
+
+  The `type` is required, and the `title` and `content` are optional.
+
+  Supported `type` :
+
+  - Alias of [CodeGroup](./components.md#codegroup) and [CodeGroupItem](./components.md#codegroupitem):
+    - `code-group`
+    - `code-group-item`
+
+- Example:
 
 **Input**
 

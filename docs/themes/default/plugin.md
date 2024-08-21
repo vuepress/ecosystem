@@ -48,10 +48,6 @@ export default {
 
   `ContainerType` type is:
 
-  - `tip`
-  - `warning`
-  - `danger`
-  - `details`
   - `codeGroup`
   - `codeGroupItem`
 
@@ -79,6 +75,19 @@ export default {
 - Details:
 
   Enable [@vuepress/plugin-git](../../plugins/development/git.md) or not.
+
+## themePlugins.hint
+
+- Type: `MarkdownHintPluginOptions | boolean`
+
+- Default: `true`
+
+- Details:
+
+  Enable [@vuepress/plugin-markdown-hint](../../plugins/markdown/markdown-hint.md) or not.
+
+- Also see:
+  - [Default Theme > Markdown > Hint Containers](./markdown.md#hint-containers)
 
 ## themePlugins.linksCheck
 

@@ -100,6 +100,7 @@ export const sidebarEn: SidebarOptions = {
     'append-date',
     'markdown-container',
     'markdown-image',
+    'markdown-hint',
     'markdown-math',
     'links-check',
     'prismjs',

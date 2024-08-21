@@ -1,0 +1,284 @@
+@use 'sass:color';
+@use 'icons';
+@use 'svg';
+
+.hint-container {
+  position: relative;
+  transition:
+    background var(--vp-ct),
+    border-color var(--vp-ct),
+    color var(--vp-ct);
+
+  @media print {
+    page-break-inside: avoid;
+  }
+
+  .hint-container-title {
+    position: relative;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  &.important,
+  &.info,
+  &.note,
+  &.tip,
+  &.warning,
+  &.caution {
+    margin: 1rem 0;
+    padding: 0.25rem 1rem;
+    border-inline-start-width: 0.3rem;
+    border-inline-start-style: solid;
+    border-radius: 0.5rem;
+
+    color: inherit;
+
+    @media (max-width: 419px) {
+      margin-inline: -0.75rem;
+    }
+
+    .hint-container-title {
+      padding-inline-start: 1.75rem;
+
+      @media print {
+        padding-inline-start: 0;
+      }
+
+      &::before {
+        content: ' ';
+
+        position: absolute;
+        inset-inline-start: 0;
+        top: calc(50% - 0.6125em);
+
+        width: 1.25em;
+        height: 1.25em;
+
+        background-position: left;
+        background-repeat: no-repeat;
+
+        @media print {
+          display: none;
+        }
+      }
+    }
+
+    p {
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--vp-tc);
+    }
+  }
+
+  &.important {
+    border-color: var(--important-border-color);
+    background: var(--important-bg-color);
+
+    > .hint-container-title {
+      color: var(--important-title-color);
+
+      &::before {
+        @include svg.background-svg(icons.$important-icon);
+      }
+    }
+
+    :not(pre) > code {
+      background: var(--important-code-bg-color);
+    }
+  }
+
+  &.info {
+    border-color: var(--info-border-color);
+    background: var(--info-bg-color);
+
+    > .hint-container-title {
+      color: var(--info-title-color);
+
+      &::before {
+        @include svg.background-svg(icons.$info-icon);
+      }
+    }
+
+    :not(pre) > code {
+      background: var(--info-code-bg-color);
+    }
+  }
+
+  &.note {
+    border-color: var(--note-border-color);
+    background: var(--note-bg-color);
+
+    > .hint-container-title {
+      color: var(--note-title-color);
+
+      &::before {
+        @include svg.background-svg(icons.$note-icon);
+      }
+    }
+
+    :not(pre) > code {
+      background: var(--note-code-bg-color);
+    }
+  }
+
+  &.tip {
+    border-color: var(--tip-border-color);
+    background: var(--tip-bg-color);
+
+    > .hint-container-title {
+      color: var(--tip-title-color);
+
+      &::before {
+        @include svg.background-svg(icons.$tip-icon);
+      }
+    }
+
+    :not(pre) > code {
+      background: var(--tip-code-bg-color);
+    }
+  }
+
+  &.warning {
+    border-color: var(--warning-border-color);
+    background: var(--warning-bg-color);
+
+    > .hint-container-title {
+      color: var(--warning-title-color);
+
+      &::before {
+        @include svg.background-svg(icons.$warning-icon);
+      }
+    }
+
+    :not(pre) > code {
+      background: var(--warning-code-bg-color);
+    }
+  }
+
+  &.caution {
+    border-color: var(--caution-border-color);
+    background: var(--caution-bg-color);
+
+    > .hint-container-title {
+      color: var(--caution-title-color);
+
+      &::before {
+        @include svg.background-svg(icons.$caution-icon);
+      }
+    }
+
+    :not(pre) > code {
+      background: var(--caution-code-bg-color);
+    }
+  }
+
+  &.details {
+    position: relative;
+
+    display: block;
+
+    margin: 1rem 0;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+
+    background: var(--detail-bg-color);
+    color: var(--detail-text-color);
+
+    transition:
+      background var(--vp-tt),
+      color var(--vp-tt);
+
+    @media (max-width: 419px) {
+      margin-inline: -0.75rem;
+    }
+
+    h4 {
+      margin-top: 0;
+    }
+
+    figure,
+    p {
+      &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+
+    a {
+      color: var(--vp-tc);
+    }
+
+    :not(pre) > code {
+      background: var(--detail-code-bg-color);
+    }
+
+    summary {
+      position: relative;
+
+      margin: -1.5rem;
+      padding-block: 1.5rem;
+      padding-inline: 4rem 1.5rem;
+
+      list-style: none;
+
+      cursor: pointer;
+
+      // compatible with safari
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &::marker {
+        color: transparent;
+        font-size: 0;
+      }
+
+      &::before,
+      &::after {
+        content: ' ';
+
+        position: absolute;
+        inset-inline-start: 1.5rem;
+        top: calc(50% - 0.75rem);
+
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      &::before {
+        border-radius: 50%;
+        background: #ccc;
+        transition:
+          background var(--vp-ct),
+          transform var(--vp-tt);
+
+        /* stylelint-disable-next-line max-nesting-depth */
+        [data-theme='dark'] & {
+          background: #555;
+        }
+      }
+
+      &::after {
+        @include svg.background-svg(icons.$detail-icon);
+        line-height: normal;
+        transition: transform var(--vp-tt);
+        transform: rotate(90deg);
+
+        /* stylelint-disable-next-line max-nesting-depth */
+        [data-theme='dark'] & {
+          @include svg.background-svg(icons.$detail-dark-icon);
+        }
+      }
+    }
+
+    &[open] > summary {
+      margin-bottom: 0.5em;
+
+      &::after {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

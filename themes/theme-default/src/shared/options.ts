@@ -1,6 +1,7 @@
 import type { BackToTopPluginOptions } from '@vuepress/plugin-back-to-top'
 import type { CopyCodePluginOptions } from '@vuepress/plugin-copy-code'
 import type { LinksCheckPluginOptions } from '@vuepress/plugin-links-check'
+import type { MarkdownHintPluginOptions } from '@vuepress/plugin-markdown-hint'
 import type { PrismjsPluginOptions } from '@vuepress/plugin-prismjs'
 import type { SeoPluginOptions } from '@vuepress/plugin-seo'
 import type { SitemapPluginOptions } from '@vuepress/plugin-sitemap'
@@ -24,10 +25,6 @@ export interface DefaultThemePluginsOptions {
    * Enable @vuepress/plugin-markdown-container or not
    */
   container?: {
-    tip?: boolean
-    warning?: boolean
-    danger?: boolean
-    details?: boolean
     codeGroup?: boolean
     codeGroupItem?: boolean
   }
@@ -41,6 +38,8 @@ export interface DefaultThemePluginsOptions {
    * Enable @vuepress/plugin-git or not
    */
   git?: boolean
+
+  hint?: MarkdownHintPluginOptions | boolean
 
   /**
    * Enable @vuepress/plugin-links-check or not
@@ -299,6 +298,20 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Default title of DANGER custom block
    */
   danger?: string
+
+  /**
+   * Custom block config
+   *
+   * Default title of IMPORTANT custom block
+   */
+  important?: string
+
+  /**
+   * Custom block config
+   *
+   * Default title of NOTE custom block
+   */
+  note?: string
 
   /**
    * 404 page config

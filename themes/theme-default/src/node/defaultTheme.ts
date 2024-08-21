@@ -10,6 +10,7 @@ import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 import { gitPlugin } from '@vuepress/plugin-git'
 import { linksCheckPlugin } from '@vuepress/plugin-links-check'
 import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
+import { markdownHintPlugin } from '@vuepress/plugin-markdown-hint'
 import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { palettePlugin } from '@vuepress/plugin-palette'
@@ -27,7 +28,7 @@ import type {
 } from '../shared/index.js'
 import {
   assignDefaultLocaleOptions,
-  resolveMarkdownContainerPluginOptions,
+  resolveMarkdownHintLocales,
 } from './utils/index.js'
 
 const __dirname = getDirname(import.meta.url)
@@ -165,31 +166,13 @@ export const defaultTheme = ({
         : [],
 
       // @vuepress/plugin-markdown-container
-      themePlugins.container?.tip !== false
-        ? markdownContainerPlugin(
-            resolveMarkdownContainerPluginOptions(localeOptions, 'tip'),
-          )
-        : [],
-      themePlugins.container?.warning !== false
-        ? markdownContainerPlugin(
-            resolveMarkdownContainerPluginOptions(localeOptions, 'warning'),
-          )
-        : [],
-      themePlugins.container?.danger !== false
-        ? markdownContainerPlugin(
-            resolveMarkdownContainerPluginOptions(localeOptions, 'danger'),
-          )
-        : [],
-      themePlugins.container?.details !== false
-        ? markdownContainerPlugin({
-            type: 'details',
-            before: (info) =>
-              `<details class="custom-container details">${
-                info ? `<summary>${info}</summary>` : ''
-              }\n`,
-            after: () => '</details>\n',
+      themePlugins.hint !== false
+        ? markdownHintPlugin({
+            locales: resolveMarkdownHintLocales(localeOptions),
+            ...(isPlainObject(themePlugins.hint) ? themePlugins.hint : {}),
           })
         : [],
+
       themePlugins.container?.codeGroup !== false
         ? markdownContainerPlugin({
             type: 'code-group',
