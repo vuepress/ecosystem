@@ -142,6 +142,7 @@ export const sidebarEn: SidebarOptions = {
   ],
 
   '/themes/': [
+    'guidelines',
     {
       text: 'Default Theme',
       prefix: 'default/',

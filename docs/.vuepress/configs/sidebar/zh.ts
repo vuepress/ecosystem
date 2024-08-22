@@ -142,6 +142,7 @@ export const sidebarZh: SidebarOptions = {
   ],
 
   '/zh/themes/': [
+    'guidelines',
     {
       text: '默认主题',
       prefix: 'default/',

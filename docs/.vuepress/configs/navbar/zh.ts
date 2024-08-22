@@ -6,6 +6,10 @@ export const navbarZh: NavbarOptions = [
     prefix: '/zh/themes/',
     children: [
       {
+        text: '主题指南',
+        link: 'guidelines',
+      },
+      {
         text: '默认主题',
         link: 'default/',
       },

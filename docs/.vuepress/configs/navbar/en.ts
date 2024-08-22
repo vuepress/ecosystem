@@ -6,6 +6,10 @@ export const navbarEn: NavbarOptions = [
     prefix: '/themes/',
     children: [
       {
+        text: 'Theme Guidelines',
+        link: 'guidelines',
+      },
+      {
         text: 'Default Theme',
         link: 'default/',
       },
