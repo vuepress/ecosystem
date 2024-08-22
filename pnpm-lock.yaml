@@ -608,7 +608,7 @@ importers:
         version: link:../../../tools/helper
       vuepress:
         specifier: 2.0.0-rc.15
-        version: 2.0.0-rc.15(@vuepress/bundler-vite@2.0.0-rc.15(@types/node@22.4.1)(jiti@1.21.6)(lightningcss@1.26.0)(sass@1.77.8)(terser@5.31.6)(tsx@4.17.0)(typescript@5.5.4)(yaml@2.4.5))(@vuepress/bundler-webpack@2.0.0-rc.15(typescript@5.5.4))(typescript@5.5.4)(vue@3.4.38(typescript@5.5.4))
+        version: 2.0.0-rc.15(@vuepress/bundler-vite@2.0.0-rc.15(@types/node@22.5.0)(jiti@1.21.6)(lightningcss@1.26.0)(sass@1.77.8)(terser@5.31.6)(tsx@4.17.0)(typescript@5.5.4)(yaml@2.4.5))(@vuepress/bundler-webpack@2.0.0-rc.15(typescript@5.5.4))(typescript@5.5.4)(vue@3.4.38(typescript@5.5.4))
     devDependencies:
       markdown-it:
         specifier: ^14.1.0
@@ -2633,11 +2633,6 @@ packages:
     os: [linux]
     libc: [glibc]
 
-  '@rollup/rollup-linux-arm64-gnu@4.21.0':
-    resolution: {integrity: sha512-ZrPhydkTVhyeGTW94WJ8pnl1uroqVHM3j3hjdquwAcWnmivjAwOYjTEAuEDeJvGX7xv3Z9GAvrBkEzCgHq9U1w==}
-    cpu: [arm64]
-    os: [linux]
-
   '@rollup/rollup-linux-arm64-musl@4.21.0':
     resolution: {integrity: sha512-cfaupqd+UEFeURmqNP2eEvXqgbSox/LHOyN9/d2pSdV8xTrjdg3NgOFJCtc1vQ/jEke1qD0IejbBfxleBPHnPw==}
     cpu: [arm64]
@@ -2649,11 +2644,6 @@ packages:
     cpu: [ppc64]
     os: [linux]
     libc: [glibc]
-
-  '@rollup/rollup-linux-powerpc64le-gnu@4.21.0':
-    resolution: {integrity: sha512-ZKPan1/RvAhrUylwBXC9t7B2hXdpb/ufeu22pG2psV7RN8roOfGurEghw1ySmX/CmDDHNTDDjY3lo9hRlgtaHg==}
-    cpu: [ppc64]
-    os: [linux]
 
   '@rollup/rollup-linux-riscv64-gnu@4.21.0':
     resolution: {integrity: sha512-H1eRaCwd5E8eS8leiS+o/NqMdljkcb1d6r2h4fKSsCXQilLKArq6WS7XBLDu80Yz+nMqHVFDquwcVrQmGr28rg==}

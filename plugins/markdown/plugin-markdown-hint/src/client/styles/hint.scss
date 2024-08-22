@@ -4,17 +4,28 @@
 
 .hint-container {
   position: relative;
+  border-color: var(--hint-c-accent);
+  background: var(--hint-c-bg);
   transition:
-    background var(--vp-ct),
-    border-color var(--vp-ct),
-    color var(--vp-ct);
+    background var(--vp-t-color),
+    border-color var(--vp-t-color),
+    color var(--vp-t-color);
 
   @media print {
     page-break-inside: avoid;
   }
 
+  > .hint-container-title {
+    color: var(--hint-c-title);
+  }
+
+  :not(pre) > code {
+    background: var(--note-c-soft);
+  }
+
   .hint-container-title {
     position: relative;
+    margin-block: 0.75em;
     font-weight: 600;
     line-height: 1.25;
   }
@@ -25,7 +36,7 @@
   &.tip,
   &.warning,
   &.caution {
-    margin: 1rem 0;
+    margin: 0.85rem 0;
     padding: 0.25rem 1rem;
     border-inline-start-width: 0.3rem;
     border-inline-start-style: solid;
@@ -68,113 +79,110 @@
     }
 
     a {
-      color: var(--vp-tc);
+      color: var(--vp-c-accent);
     }
   }
 
   &.important {
-    border-color: var(--important-border-color);
-    background: var(--important-bg-color);
+    --hint-c-accent: var(--important-c-accent);
+    --hint-c-bg: var(--important-c-light);
+    --hint-c-title: var(--important-c-dark);
+    --hint-c-soft: var(--important-c-soft);
 
-    > .hint-container-title {
-      color: var(--important-title-color);
-
-      &::before {
-        @include svg.background-svg(icons.$important-icon);
-      }
+    [data-theme='dark'] & {
+      --hint-c-bg: var(--important-c-dark);
+      --hint-c-title: var(--important-c-light);
     }
 
-    :not(pre) > code {
-      background: var(--important-code-bg-color);
+    > .hint-container-title::before {
+      @include svg.background-svg(icons.$important-icon);
     }
   }
 
   &.info {
-    border-color: var(--info-border-color);
-    background: var(--info-bg-color);
+    --hint-c-accent: var(--info-c-accent);
+    --hint-c-bg: var(--info-c-light);
+    --hint-c-title: var(--info-c-dark);
+    --hint-c-soft: var(--info-c-soft);
 
-    > .hint-container-title {
-      color: var(--info-title-color);
-
-      &::before {
-        @include svg.background-svg(icons.$info-icon);
-      }
+    [data-theme='dark'] & {
+      --hint-c-bg: var(--info-c-dark);
+      --hint-c-title: var(--info-c-light);
     }
 
-    :not(pre) > code {
-      background: var(--info-code-bg-color);
+    > .hint-container-title::before {
+      @include svg.background-svg(icons.$info-icon);
     }
   }
 
   &.note {
-    border-color: var(--note-border-color);
-    background: var(--note-bg-color);
+    --hint-c-accent: var(--note-c-accent);
+    --hint-c-bg: var(--note-c-light);
+    --hint-c-title: var(--note-c-dark);
+    --hint-c-soft: var(--note-c-soft);
 
-    > .hint-container-title {
-      color: var(--note-title-color);
-
-      &::before {
-        @include svg.background-svg(icons.$note-icon);
-      }
+    [data-theme='dark'] & {
+      --hint-c-bg: var(--note-c-dark);
+      --hint-c-title: var(--note-c-light);
     }
 
-    :not(pre) > code {
-      background: var(--note-code-bg-color);
+    > .hint-container-title::before {
+      @include svg.background-svg(icons.$note-icon);
     }
   }
 
   &.tip {
-    border-color: var(--tip-border-color);
-    background: var(--tip-bg-color);
+    --hint-c-accent: var(--tip-c-accent);
+    --hint-c-bg: var(--tip-c-light);
+    --hint-c-title: var(--tip-c-dark);
+    --hint-c-soft: var(--tip-c-soft);
 
-    > .hint-container-title {
-      color: var(--tip-title-color);
-
-      &::before {
-        @include svg.background-svg(icons.$tip-icon);
-      }
+    [data-theme='dark'] & {
+      --hint-c-bg: var(--tip-c-dark);
+      --hint-c-title: var(--tip-c-light);
     }
 
-    :not(pre) > code {
-      background: var(--tip-code-bg-color);
+    > .hint-container-title::before {
+      @include svg.background-svg(icons.$tip-icon);
     }
   }
 
   &.warning {
-    border-color: var(--warning-border-color);
-    background: var(--warning-bg-color);
+    --hint-c-accent: var(--warning-c-accent);
+    --hint-c-bg: var(--warning-c-light);
+    --hint-c-title: var(--warning-c-dark);
+    --hint-c-soft: var(--warning-c-soft);
 
-    > .hint-container-title {
-      color: var(--warning-title-color);
-
-      &::before {
-        @include svg.background-svg(icons.$warning-icon);
-      }
+    [data-theme='dark'] & {
+      --hint-c-bg: var(--warning-c-dark);
+      --hint-c-title: var(--warning-c-light);
     }
 
-    :not(pre) > code {
-      background: var(--warning-code-bg-color);
+    > .hint-container-title::before {
+      @include svg.background-svg(icons.$warning-icon);
     }
   }
 
   &.caution {
-    border-color: var(--caution-border-color);
-    background: var(--caution-bg-color);
+    --hint-c-accent: var(--caution-c-accent);
+    --hint-c-bg: var(--caution-c-light);
+    --hint-c-title: var(--caution-c-dark);
+    --hint-c-soft: var(--caution-c-soft);
 
-    > .hint-container-title {
-      color: var(--caution-title-color);
-
-      &::before {
-        @include svg.background-svg(icons.$caution-icon);
-      }
+    [data-theme='dark'] & {
+      --hint-c-bg: var(--caution-c-dark);
+      --hint-c-title: var(--caution-c-light);
     }
 
-    :not(pre) > code {
-      background: var(--caution-code-bg-color);
+    > .hint-container-title::before {
+      @include svg.background-svg(icons.$caution-icon);
     }
   }
 
   &.details {
+    --detail-c-bg: var(--detail-c-light);
+    --detail-c-icon: var(--detail-c-icon-light);
+
     position: relative;
 
     display: block;
@@ -183,15 +191,20 @@
     padding: 1.5rem;
     border-radius: 0.5rem;
 
-    background: var(--detail-bg-color);
-    color: var(--detail-text-color);
+    background: var(--detail-c-bg);
+    // color: var(--detail-text-color);
 
     transition:
-      background var(--vp-tt),
-      color var(--vp-tt);
+      background var(--vp-t-transform),
+      color var(--vp-t-transform);
 
     @media (max-width: 419px) {
       margin-inline: -0.75rem;
+    }
+
+    [data-theme='dark'] & {
+      --detail-c-bg: var(--detail-c-dark);
+      --detail-c-icon: var(--detail-c-icon-dark);
     }
 
     h4 {
@@ -207,11 +220,11 @@
     }
 
     a {
-      color: var(--vp-tc);
+      color: var(--vp-c-accent);
     }
 
     :not(pre) > code {
-      background: var(--detail-code-bg-color);
+      background: var(--detail-c-soft);
     }
 
     summary {
@@ -249,21 +262,16 @@
 
       &::before {
         border-radius: 50%;
-        background: #ccc;
+        background: var(--detail-c-icon);
         transition:
-          background var(--vp-ct),
-          transform var(--vp-tt);
-
-        /* stylelint-disable-next-line max-nesting-depth */
-        [data-theme='dark'] & {
-          background: #555;
-        }
+          background var(--vp-t-color),
+          transform var(--vp-t-transform);
       }
 
       &::after {
         @include svg.background-svg(icons.$detail-icon);
         line-height: normal;
-        transition: transform var(--vp-tt);
+        transition: transform var(--vp-t-transform);
         transform: rotate(90deg);
 
         /* stylelint-disable-next-line max-nesting-depth */
