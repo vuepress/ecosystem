@@ -63,6 +63,9 @@ export default defaultTheme({
   themePlugins: {
     // only enable git plugin in production mode
     git: IS_PROD,
+    hint: {
+      alert: true,
+    },
     // use shiki plugin in production mode instead
     prismjs: IS_PROD
       ? false

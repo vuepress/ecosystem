@@ -44,6 +44,9 @@
     {
       "path": "./plugins/markdown/plugin-markdown-container/tsconfig.build.json"
     },
+    {
+      "path": "./plugins/markdown/plugin-markdown-hint/tsconfig.build.json"
+    },
     { "path": "./plugins/markdown/plugin-markdown-image/tsconfig.build.json" },
     { "path": "./plugins/markdown/plugin-markdown-math/tsconfig.build.json" },
     {

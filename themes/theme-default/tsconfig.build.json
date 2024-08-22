@@ -41,6 +41,9 @@
     {
       "path": "../../plugins/markdown/plugin-markdown-container/tsconfig.build.json"
     },
+    {
+      "path": "../../plugins/markdown/plugin-markdown-hint/tsconfig.build.json"
+    },
     { "path": "../../plugins/markdown/plugin-prismjs/tsconfig.build.json" },
 
     { "path": "../../plugins/seo/plugin-seo/tsconfig.build.json" },

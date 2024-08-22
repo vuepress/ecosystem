@@ -49,6 +49,7 @@
     "@vuepress/plugin-git": "workspace:*",
     "@vuepress/plugin-links-check": "workspace:*",
     "@vuepress/plugin-markdown-container": "workspace:*",
+    "@vuepress/plugin-markdown-hint": "workspace:*",
     "@vuepress/plugin-medium-zoom": "workspace:*",
     "@vuepress/plugin-nprogress": "workspace:*",
     "@vuepress/plugin-palette": "workspace:*",
