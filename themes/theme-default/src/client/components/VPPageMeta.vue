@@ -83,12 +83,12 @@ const contributors = useContributors()
       font-weight: 500;
 
       &:not(a) {
-        color: var(--c-text-lighter);
+        color: var(--vp-c-text-mute);
       }
     }
 
     .vp-meta-info {
-      color: var(--c-text-quote);
+      color: var(--vp-c-text-mute);
       font-weight: 400;
     }
   }

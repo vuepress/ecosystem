@@ -7,7 +7,7 @@ export interface CopyCodePluginOptions {
    *
    * 代码块选择器
    *
-   * @default '.theme-default-content div[class*="language-"] pre'
+   * @default '[vp-content] div[class*="language-"] pre'
    */
   selector?: string[] | string
 

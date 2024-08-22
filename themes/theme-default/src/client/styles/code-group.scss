@@ -14,7 +14,7 @@
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 
-  background-color: var(--c-code-group-tab-bg);
+  background-color: var(--vp-c-code-tab-bg);
 
   transition: background-color var(--t-color);
 
@@ -30,7 +30,7 @@
   border: 0;
 
   background-color: transparent;
-  color: var(--c-code-group-tab-title);
+  color: var(--vp-c-code-tab-title);
 
   font-weight: 600;
   font-size: 0.85em;
@@ -43,11 +43,11 @@
   }
 
   &:focus-visible {
-    outline: 1px solid var(--c-code-group-tab-outline);
+    outline: 1px solid;
   }
 
   &.active {
-    border-bottom: var(--c-code-group-tab-active-border) 1px solid;
+    border-bottom: var(--vp-c-code-tab-active) 1px solid;
   }
 }
 

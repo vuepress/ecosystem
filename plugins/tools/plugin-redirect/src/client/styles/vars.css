@@ -1,10 +1,11 @@
 :root {
   --redirect-z-index: 1499;
-  --redirect-bg-color: #fff;
-  --redirect-bg-color-light: #f3f4f5;
-  --redirect-bg-color-lighter: #eee;
-  --redirect-text-color: #2c3e50;
-  --redirect-primary-color: #3eaf7c;
-  --redirect-primary-hover-color: #4abf8a;
-  --redirect-primary-text-color: #fff;
+  --redirect-c-bg: var(--vp-c-bg-elv);
+  --redirect-c-text: var(--vp-c-text);
+  --redirect-c-accent: var(--vp-c-accent);
+  --redirect-c-accent-hover: var(--vp-c-accent-hover);
+  --redirect-c-accent-text: var(--vp-c-accent-text);
+  --redirect-c-control: var(--vp-c-control);
+  --redirect-c-control-hover: var(--vp-c-control-hover);
+  --redirect-c-shadow: var(--vp-c-shadow);
 }

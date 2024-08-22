@@ -10,7 +10,7 @@ defineSlots<{
 </script>
 
 <template>
-  <aside class="vp-sidebar">
+  <aside class="vp-sidebar" vp-sidebar>
     <VPNavbarItems />
     <slot name="top" />
     <VPSidebarItems />
@@ -35,18 +35,18 @@ defineSlots<{
   box-sizing: border-box;
   width: var(--sidebar-width);
   margin: 0;
-  border-right: 1px solid var(--c-border);
+  border-right: 1px solid var(--vp-c-border);
 
-  background-color: var(--c-bg-sidebar);
+  background-color: var(--vp-sidebar-c-bg);
 
   font-size: 16px;
 
   transition:
-    transform var(--t-transform),
-    background-color var(--t-color),
-    border-color var(--t-color);
+    transform var(--vp-t-transform),
+    background-color var(--vp-t-color),
+    border-color var(--vp-t-color);
 
-  scrollbar-color: var(--c-brand) var(--c-border);
+  scrollbar-color: var(--vp-c-accent) var(--vp-c-gutter);
   scrollbar-width: thin;
 
   // narrow desktop / iPad
@@ -69,19 +69,19 @@ defineSlots<{
   }
 
   &::-webkit-scrollbar-track {
-    background-color: var(--c-border);
+    background-color: var(--vp-c-gutter);
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--c-brand);
+    background-color: var(--vp-c-accent);
   }
 
   // override styles
   .vp-navbar-items {
     display: none;
     padding: 0.5rem 0 0.75rem;
-    border-bottom: 1px solid var(--c-border);
-    transition: border-color var(--t-color);
+    border-bottom: 1px solid var(--vp-c-gutter);
+    transition: border-color var(--vp-t-color);
 
     @media (max-width: $MQMobile) {
       display: block;

@@ -63,7 +63,7 @@ useUpdateDeviceStatus(
 </script>
 
 <template>
-  <header ref="navbar" class="vp-navbar">
+  <header ref="navbar" class="vp-navbar" vp-navbar>
     <VPToggleSidebarButton @toggle="$emit('toggleSidebar')" />
 
     <span ref="navbarBrand">
@@ -97,15 +97,15 @@ useUpdateDeviceStatus(
   box-sizing: border-box;
   height: var(--navbar-height);
   padding: var(--navbar-padding-v) var(--navbar-padding-h);
-  border-bottom: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--vp-c-border);
 
-  background-color: var(--c-bg-navbar);
+  background-color: var(--vp-navbar-c-bg);
 
   line-height: var(--navbar-line-height);
 
   transition:
-    background-color var(--t-color),
-    border-color var(--t-color);
+    background-color var(--vp-t-color),
+    border-color var(--vp-t-color);
 
   @media screen and (max-width: $MQMobile) {
     padding-left: 4rem;

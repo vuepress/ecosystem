@@ -33,7 +33,7 @@ const toggleColorMode = (): void => {
   border: 0;
 
   background: none;
-  color: var(--c-text);
+  color: var(--vp-c-text);
 
   opacity: 0.8;
   cursor: pointer;

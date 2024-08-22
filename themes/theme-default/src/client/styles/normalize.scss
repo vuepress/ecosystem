@@ -1,72 +1,73 @@
 html,
 body {
-  background-color: var(--c-bg);
-  transition: background-color var(--t-color);
+  background-color: var(--vp-c-bg);
+  accent-color: var(--vp-c-accent);
+  transition: background-color var(--vp-t-color);
 }
 
-html.dark {
+[data-theme='dark'] {
   color-scheme: dark;
 }
 
 body {
-  color: var(--c-text);
+  color: var(--vp-c-text);
   font-size: 1rem;
   font-family: var(--font-family);
 }
 
 h2 {
-  border-color: var(--c-border);
-  transition: border-color var(--t-color);
+  border-color: var(--vp-c-gutter);
+  transition: border-color var(--vp-t-color);
 }
 
 a {
-  color: var(--c-text-accent);
+  color: var(--vp-c-accent);
 }
 
 code {
-  background-color: var(--c-bg-light);
-  color: var(--c-text-lighter);
+  background-color: var(--vp-c-bg-alt);
+  color: var(--vp-c-text-mute);
   font-family: var(--code-font-family);
-  transition: background-color var(--t-color);
+  transition: background-color var(--vp-t-color);
 
   p a & {
-    color: var(--c-text-accent);
+    color: var(--vp-c-accent);
   }
 }
 
 kbd {
-  border-color: var(--c-border-dark);
-  transition: border-color var(--t-color);
+  border-color: var(--vp-c-border-hard);
+  transition: border-color var(--vp-t-color);
 }
 
 blockquote {
-  border-color: var(--c-border-dark);
-  color: var(--c-text-quote);
-  transition: border-color var(--t-color);
+  border-color: var(--vp-c-border-hard);
+  color: var(--vp-c-text-mute);
+  transition: border-color var(--vp-t-color);
 }
 
 hr {
-  border-color: var(--c-border);
-  transition: border-color var(--t-color);
+  border-color: var(--vp-c-gutter);
+  transition: border-color var(--vp-t-color);
 }
 
 table {
-  transition: border-color var(--t-color);
+  transition: border-color var(--vp-t-color);
 }
 
 tr {
   &:nth-child(odd) {
-    background-color: var(--c-bg-light);
-    transition: background-color var(--t-color);
+    background-color: var(--vp-c-bg-alt);
+    transition: background-color var(--vp-t-color);
 
     code {
-      background-color: var(--c-bg-dark);
+      background-color: var(--vp-c-gutter);
     }
   }
 }
 
 th,
 td {
-  border-color: var(--c-border-dark);
-  transition: border-color var(--t-color);
+  border-color: var(--vp-c-border-hard);
+  transition: border-color var(--vp-t-color);
 }
