@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.42](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.41...v2.0.0-rc.42) (2024-08-22)
+
+### Bug Fixes
+
+- **copy-code:** ignoreSelector dose not work ([#233](https://github.com/vuepress/ecosystem/issues/233)) ([df7f5b9](https://github.com/vuepress/ecosystem/commit/df7f5b95a78fdcb1ce6b75fd8d5f775d6812480c))
+
+### Features
+
+- init guidelines ([#198](https://github.com/vuepress/ecosystem/issues/198)) ([e8258c1](https://github.com/vuepress/ecosystem/commit/e8258c1b663ad218b1607a2619c02fccaf7d9831))
+
 # [2.0.0-rc.41](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.40...v2.0.0-rc.41) (2024-08-14)
 
 ### Bug Fixes
