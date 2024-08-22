@@ -60,7 +60,7 @@ const features = computed(() => frontmatter.value.features ?? [])
   }
 
   p {
-    color: var(--c-text-mute);
+    color: var(--vp-c-text-mute);
   }
 }
 </style>

@@ -83,7 +83,7 @@ const contributors = useContributors()
       font-weight: 500;
 
       &:not(a) {
-        color: var(--c-text-mute);
+        color: var(--vp-c-text-mute);
       }
     }
 

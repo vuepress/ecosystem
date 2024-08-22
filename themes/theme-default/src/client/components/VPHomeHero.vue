@@ -145,7 +145,7 @@ const HomeHeroImage: FunctionalComponent = () => {
 
 .vp-hero-description {
   max-width: 35rem;
-  color: var(--c-text-mute);
+  color: var(--vp-c-text-mute);
   font-size: 1.6rem;
   line-height: 1.3;
 
