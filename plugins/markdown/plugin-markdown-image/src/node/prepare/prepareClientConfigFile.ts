@@ -2,16 +2,10 @@ import { getRealPath } from '@vuepress/helper'
 import type { App } from 'vuepress'
 import type { MarkdownImagePluginOptions } from '../options.js'
 import { PLUGIN_NAME } from '../utils.js'
-import { prepareMarkStyleFile } from './prepareMarkStyleFile.js'
 
 export const prepareClientConfigFile = async (
   app: App,
-  {
-    lightmodeSelector = '[data-theme="light"]',
-    darkmodeSelector = '[data-theme="dark"]',
-    figure,
-    mark,
-  }: MarkdownImagePluginOptions,
+  { figure, mark }: MarkdownImagePluginOptions,
 ): Promise<string> => {
   let content = ''
 
@@ -23,7 +17,7 @@ import "${getRealPath(`${PLUGIN_NAME}/client/styles/figure.css`, import.meta.url
 
   if (mark) {
     content += `\
-import "${await prepareMarkStyleFile(app, lightmodeSelector, darkmodeSelector)}"
+import "${getRealPath(`${PLUGIN_NAME}/client/styles/mark.css`, import.meta.url)}"
 `
   }
 

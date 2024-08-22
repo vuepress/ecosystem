@@ -1,0 +1,13 @@
+[data-theme='light'] {
+  figure:has(img[data-mode='darkmode-only']),
+  img[data-mode='darkmode-only'] {
+    display: none !important;
+  }
+}
+
+[data-theme='dark'] {
+  figure:has(img[data-mode='lightmode-only']),
+  img[data-mode='lightmode-only'] {
+    display: none !important;
+  }
+}
