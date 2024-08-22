@@ -1,12 +1,12 @@
 :root {
   --pwa-z-index: 10;
-  --pwa-color: #2c3e50;
-  --pwa-bg-color: #fff;
-  --pwa-border-color: #3eaf7c;
-  --pwa-shadow-color: rgb(0 0 0 / 15%);
-  --pwa-btn-text-color: #fff;
-  --pwa-btn-bg-color: #3eaf7c;
-  --pwa-btn-hover-bg-color: #4abf8a;
-  --pwa-content-color: #333;
-  --pwa-content-light-color: #666;
+  --pwa-c-bg: var(--vp-c-bg-elv);
+  --pwa-c-text: var(--vp-c-text);
+  --pwa-c-shadow: var(--vp-c-shadow);
+  --pwa-c-accent: var(--vp-c-accent);
+  --pwa-c-accent-hover: var(--vp-c-accent-hover);
+  --pwa-c-accent-text: var(--vp-c-accent-text);
+  --pwa-c-control: var(--vp-c-control);
+  --pwa-c-control-hover: var(--vp-c-control-hover);
+  --pwa-c-text-mute: var(--vp-c-text-mute);
 }

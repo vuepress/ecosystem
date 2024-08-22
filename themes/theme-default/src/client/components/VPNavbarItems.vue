@@ -69,7 +69,7 @@ useUpdateDeviceStatus(
 
     &:hover,
     &.route-link-active {
-      color: var(--c-text);
+      color: var(--vp-c-text);
     }
   }
 }
@@ -91,7 +91,7 @@ useUpdateDeviceStatus(
   a {
     &:hover,
     &.route-link-active {
-      color: var(--c-text-accent);
+      color: var(--vp-c-accent);
     }
   }
 
@@ -99,7 +99,7 @@ useUpdateDeviceStatus(
     &:hover,
     &.route-link-active {
       margin-bottom: -2px;
-      border-bottom: 2px solid var(--c-text-accent);
+      border-bottom: 2px solid var(--vp-c-accent);
 
       @media (max-width: $MQMobile) {
         margin-bottom: 0;

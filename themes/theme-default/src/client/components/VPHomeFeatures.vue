@@ -29,9 +29,9 @@ const features = computed(() => frontmatter.value.features ?? [])
 
   margin-top: 2.5rem;
   padding: 1.2rem 0;
-  border-top: 1px solid var(--c-border);
+  border-top: 1px solid var(--vp-c-gutter);
 
-  transition: border-color var(--t-color);
+  transition: border-color var(--vp-t-color);
 
   @media (max-width: $MQMobile) {
     flex-direction: column;
@@ -51,9 +51,6 @@ const features = computed(() => frontmatter.value.features ?? [])
   h2 {
     padding-bottom: 0;
     border-bottom: none;
-
-    color: var(--c-text-light);
-
     font-weight: 500;
     font-size: 1.4rem;
 
@@ -63,7 +60,7 @@ const features = computed(() => frontmatter.value.features ?? [])
   }
 
   p {
-    color: var(--c-text-lighter);
+    color: var(--vp-c-text-mute);
   }
 }
 </style>

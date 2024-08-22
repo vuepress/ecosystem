@@ -1,8 +1,8 @@
 .custom-container {
   transition:
-    color var(--t-color),
-    border-color var(--t-color),
-    background-color var(--t-color);
+    color var(--vp-t-color),
+    border-color var(--vp-t-color),
+    background-color var(--vp-t-color);
 
   .custom-container-title {
     font-weight: 600;
@@ -35,12 +35,12 @@
     }
 
     code {
-      background-color: var(--c-bg-dark);
+      background-color: var(--vp-c-gutter);
     }
   }
 
   &.warning {
-    --external-link-icon-color: var(--c-warning-text-quote);
+    --external-link-c-icon: var(--c-warning-text-quote);
 
     border-color: var(--c-warning);
     background-color: var(--c-warning-bg);
@@ -74,7 +74,7 @@
   }
 
   &.danger {
-    --external-link-icon-color: var(--c-danger-text-quote);
+    --external-link-c-icon: var(--c-danger-text-quote);
 
     border-color: var(--c-danger);
     background-color: var(--c-danger-bg);
@@ -119,7 +119,7 @@
     background-color: var(--c-details-bg);
 
     code {
-      background-color: var(--c-bg-darker);
+      background-color: var(--vp-c-gutter);
     }
 
     h4 {

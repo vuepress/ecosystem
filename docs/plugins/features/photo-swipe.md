@@ -43,7 +43,7 @@ In preview mode, you can:
 ### selector
 
 - Type: `string | string[]`
-- Default: `".theme-default-content :not(a) > img:not([no-view])"`
+- Default: `"[vp-content] :not(a) > img:not([no-view])"`
 - Details: Image selector
 
 ### download

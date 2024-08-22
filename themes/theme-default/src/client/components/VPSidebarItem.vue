@@ -96,7 +96,7 @@ onBeforeUnmount(() => {
 
 .vp-sidebar-item {
   border-left: 0.25rem solid transparent;
-  color: var(--c-text);
+  color: var(--vp-c-text);
   cursor: default;
 
   &:focus-visible {
@@ -158,8 +158,8 @@ onBeforeUnmount(() => {
   }
 
   &.active:not(p.vp-sidebar-heading) {
-    border-left-color: var(--c-text-accent);
-    color: var(--c-text-accent);
+    border-left-color: var(--vp-c-accent);
+    color: var(--vp-c-accent);
     font-weight: 600;
   }
 }
@@ -168,7 +168,7 @@ a.vp-sidebar-item {
   cursor: pointer;
 
   &:hover {
-    color: var(--c-text-accent);
+    color: var(--vp-c-accent);
   }
 }
 </style>

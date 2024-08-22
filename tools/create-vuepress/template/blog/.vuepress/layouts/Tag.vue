@@ -41,7 +41,6 @@ const tagMap = useBlogCategory('tag')
 
   padding-top: 1rem !important;
   padding-bottom: 0 !important;
-
   font-size: 14px;
 
   a {
@@ -83,11 +82,11 @@ const tagMap = useBlogCategory('tag')
     }
 
     &.route-link-active {
-      background: var(--c-brand);
-      color: var(--c-bg);
+      background: var(--vp-c-accent);
+      color: var(--vp-c-accent-text);
 
       .tag-num {
-        color: var(--c-bg);
+        color: var(--vp-c-accent-text);
       }
     }
   }

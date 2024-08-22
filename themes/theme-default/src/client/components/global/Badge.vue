@@ -49,15 +49,15 @@ defineSlots<{
   padding: 0 6px;
   border-radius: 3px;
 
-  color: var(--c-bg);
+  color: var(--vp-c-accent-text);
 
   font-weight: 600;
   font-size: 14px;
   line-height: 18px;
 
   transition:
-    color var(--t-color),
-    background-color var(--t-color);
+    color var(--vp-t-color),
+    background-color var(--vp-t-color);
 
   &.tip {
     background-color: var(--c-badge-tip);

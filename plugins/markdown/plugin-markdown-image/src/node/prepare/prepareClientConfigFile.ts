@@ -7,8 +7,8 @@ import { prepareMarkStyleFile } from './prepareMarkStyleFile.js'
 export const prepareClientConfigFile = async (
   app: App,
   {
-    lightmodeSelector = 'html:not(.dark)',
-    darkmodeSelector = 'html.dark',
+    lightmodeSelector = '[data-theme="light"]',
+    darkmodeSelector = '[data-theme="dark"]',
     figure,
     mark,
   }: MarkdownImagePluginOptions,

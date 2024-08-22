@@ -1,4 +1,4 @@
-.vp-catalog-wrapper {
+.vp-catalog {
   margin-top: 8px;
   margin-bottom: 8px;
 
@@ -11,11 +11,11 @@
       list-style-type: none;
     }
 
-    .vp-catalogs {
+    .vp-catalog-list {
       padding-inline-start: 0;
     }
 
-    .vp-catalog {
+    .vp-catalog-item {
       list-style-type: none;
     }
 
@@ -41,14 +41,14 @@
   }
 }
 
-.vp-catalogs {
+.vp-catalog-list {
   counter-reset: catalog-item;
   margin: 0;
 
   &.deep {
     padding-inline-start: 0;
 
-    .vp-catalog {
+    .vp-catalog-item {
       list-style-type: none;
     }
   }
@@ -59,13 +59,13 @@
   }
 }
 
-.vp-catalog {
+.vp-catalog-item {
   counter-increment: catalog-item;
 
   &-main-title {
-    margin-top: calc(1rem - var(--navbar-height, 3.6rem));
+    margin-top: calc(1rem - var(--catalog-header-offset));
     margin-bottom: 0.5rem;
-    padding-top: var(--navbar-height, 3.6rem);
+    padding-top: var(--catalog-header-offset);
 
     font-weight: 500;
     font-size: 1.75rem;
@@ -87,9 +87,9 @@
     margin-bottom: 0.5rem !important;
 
     &.has-children {
-      margin-top: calc(1rem - var(--navbar-height, 3.6rem));
-      padding-top: var(--navbar-height, 3.6rem);
-      border-bottom: 1px solid var(--catalog-border-color);
+      margin-top: calc(1rem - var(--catalog-header-offset));
+      padding-top: var(--catalog-header-offset);
+      border-bottom: 1px solid var(--catalog-c-gutter);
 
       font-weight: 500;
       font-size: 1.3rem;
@@ -120,7 +120,7 @@
     text-decoration: none;
 
     &:hover {
-      color: var(--catalog-active-color);
+      color: var(--catalog-c-accent);
     }
   }
 }
@@ -158,7 +158,7 @@
   padding: 4px 8px;
   border-radius: 6px;
 
-  background-color: var(--catalog-bg-secondary-color);
+  background-color: var(--catalog-c-control);
 
   line-height: 1.5;
   overflow-wrap: break-word;
@@ -168,8 +168,8 @@
     color 0.3s;
 
   &:hover {
-    background-color: var(--catalog-hover-color);
-    color: var(--catalog-bg-color);
+    background-color: var(--catalog-c-control-hover);
+    color: var(--catalog-c-accent);
     text-decoration: none !important;
   }
 }

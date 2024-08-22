@@ -1,4 +1,4 @@
 :root {
-  --photo-swipe-bullet: #fff;
-  --photo-swipe-bullet-active: #3eaf7c;
+  --photo-swipe-c-bullet: var(--vp-c-bg-elv);
+  --photo-swipe-c-bullet-active: var(--vp-c-accent);
 }

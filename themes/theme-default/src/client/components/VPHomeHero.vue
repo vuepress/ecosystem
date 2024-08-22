@@ -145,7 +145,7 @@ const HomeHeroImage: FunctionalComponent = () => {
 
 .vp-hero-description {
   max-width: 35rem;
-  color: var(--c-text-lightest);
+  color: var(--vp-c-text-mute);
   font-size: 1.6rem;
   line-height: 1.3;
 
@@ -165,7 +165,7 @@ const HomeHeroImage: FunctionalComponent = () => {
 
   font-size: 1.2rem;
 
-  transition: background-color var(--t-color);
+  transition: background-color var(--vp-t-color);
 
   @media (max-width: $MQMobileNarrow) {
     padding: 0.6rem 1.2rem;
@@ -173,23 +173,23 @@ const HomeHeroImage: FunctionalComponent = () => {
   }
 
   &.primary {
-    border-color: var(--c-brand);
-    background-color: var(--c-brand);
-    color: var(--c-bg);
+    border-color: var(--vp-c-accent);
+    background-color: var(--vp-c-accent);
+    color: var(--vp-c-accent-text);
 
     &:hover {
-      background-color: var(--c-brand-light);
+      background-color: var(--vp-c-accent-hover);
     }
   }
 
   &.secondary {
-    border-color: var(--c-brand);
-    background-color: var(--c-bg);
-    color: var(--c-brand);
+    border-color: var(--vp-c-accent);
+    background-color: var(--vp-c-bg);
+    color: var(--vp-c-accent);
 
     &:hover {
-      background-color: var(--c-brand-light);
-      color: var(--c-bg);
+      background-color: var(--vp-c-accent-hover);
+      color: var(--vp-c-accent-text);
     }
   }
 }

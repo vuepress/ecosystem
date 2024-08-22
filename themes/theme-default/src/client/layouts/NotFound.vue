@@ -13,9 +13,9 @@ const homeText = themeLocale.value.backToHome ?? 'Back to home'
 </script>
 
 <template>
-  <div class="vp-theme-container">
+  <div class="vp-theme-container" vp-container>
     <main class="page">
-      <div class="theme-default-content">
+      <div class="theme-default-content" vp-content>
         <h1>404</h1>
 
         <blockquote>{{ getMsg() }}</blockquote>
@@ -31,10 +31,8 @@ const homeText = themeLocale.value.backToHome ?? 'Back to home'
   max-width: 740px;
   margin: 0 auto;
   padding: 2rem 2.5rem;
-}
 
-@media (max-width: 959px) {
-  .vp-theme-container {
+  @media (max-width: 959px) {
     padding: 2rem;
   }
 }

@@ -29,7 +29,7 @@ export default {
 ### selector
 
 - Type: `string | string[]`
-- Default: `'.theme-default-content div[class*="language-"] pre'`
+- Default: `'[vp-content] div[class*="language-"] pre'`
 - Details:
 
   Code block selector
@@ -187,4 +187,4 @@ export default {
 
 You can customize the icon of the _copy button_ via CSS variables:
 
-@[code{1-6} css](@vuepress/plugin-copy-code/src/client/styles/copy-code.css)
+@[code{1-6} css](@vuepress/plugin-copy-code/src/client/styles/vars.css)
