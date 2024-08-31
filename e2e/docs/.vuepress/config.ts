@@ -59,6 +59,16 @@ export default defineUserConfig({
             text: 'item',
             link: '/dropdown/',
           },
+          {
+            text: 'Nested',
+            children: [
+              {
+                text: 'nested item',
+                link: '/foo/',
+              },
+              'bar.md',
+            ],
+          },
         ],
       },
     ],
@@ -72,6 +82,7 @@ export default defineUserConfig({
           children: [
             { text: 'sidebar 1', link: '1.html' },
             { text: 'sidebar 2', link: '2.html' },
+            '1.md',
           ],
         },
       ],
