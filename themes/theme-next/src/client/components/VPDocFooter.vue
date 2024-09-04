@@ -6,31 +6,34 @@ import { computed } from 'vue'
 import { useData } from '../composables/data.js'
 import { useEditLink } from '../composables/edit-link.js'
 import { usePrevNext } from '../composables/prev-next.js'
+import type { Slot } from '../types.js'
+
+defineSlots<{ 'doc-footer-before'?: Slot }>()
 
 const { theme, frontmatter } = useData()
 
 const editLink = useEditLink()
 const control = usePrevNext()
 
-const hasEditLink = computed(() => {
-  return theme.value.editLink && frontmatter.value.editLink !== false
-})
-const hasLastUpdated = computed(() => {
-  return theme.value.lastUpdated && frontmatter.value.lastUpdated !== false
-})
-const hasContributors = computed(() => {
-  return theme.value.contributors && frontmatter.value.contributors !== false
-})
+const hasEditLink = computed(
+  () => theme.value.editLink && frontmatter.value.editLink !== false,
+)
+const hasLastUpdated = computed(
+  () => theme.value.lastUpdated && frontmatter.value.lastUpdated !== false,
+)
+const hasContributors = computed(
+  () => theme.value.contributors && frontmatter.value.contributors !== false,
+)
 
-const showFooter = computed(() => {
-  return (
+const showFooter = computed(
+  () =>
+    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     hasEditLink.value ||
     hasLastUpdated.value ||
     hasContributors.value ||
     control.value.prev ||
-    control.value.next
-  )
-})
+    control.value.next,
+)
 </script>
 
 <template>

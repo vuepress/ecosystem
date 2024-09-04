@@ -1,10 +1,10 @@
-import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
+import { computed } from 'vue'
 import type { DefaultThemePageData } from '../../shared/index.js'
 import { useData } from './data.js'
 
 export const useContributors = (): ComputedRef<
-  null | Required<DefaultThemePageData['git']>['contributors']
+  Required<NonNullable<DefaultThemePageData['git']>>['contributors'] | null
 > => {
   const { theme, page, frontmatter } = useData()
 

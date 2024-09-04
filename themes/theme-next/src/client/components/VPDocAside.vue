@@ -2,6 +2,16 @@
 import VPDocAsideCarbonAds from '@theme/VPDocAsideCarbonAds.vue'
 import VPDocAsideOutline from '@theme/VPDocAsideOutline.vue'
 import { useData } from '../composables/data.js'
+import type { Slot } from '../types.js'
+
+defineSlots<{
+  'aside-top'?: Slot
+  'aside-bottom'?: Slot
+  'aside-outline-before'?: Slot
+  'aside-outline-after'?: Slot
+  'aside-ads-before'?: Slot
+  'aside-ads-after'?: Slot
+}>()
 
 const { theme } = useData()
 </script>

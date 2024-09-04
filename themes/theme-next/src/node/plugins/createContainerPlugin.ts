@@ -1,5 +1,5 @@
-import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
 import type { MarkdownContainerPluginOptions } from '@vuepress/plugin-markdown-container'
+import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
 import type { Plugin } from 'vuepress'
 import type { ContainerOptions } from '../../shared/index.js'
 
@@ -11,7 +11,8 @@ export const createContainerPlugin = (
 
   Object.keys(locales).forEach((localePath) => {
     containerLocales[localePath] = {
-      defaultInfo: locales[localePath]?.[`${type}Label`],
+      defaultInfo:
+        locales[localePath][`${type}Label` as keyof ContainerOptions],
     }
   })
 

@@ -1,5 +1,5 @@
-import { computed, onMounted, ref, watchEffect } from 'vue'
 import type { ComputedRef, Ref } from 'vue'
+import { computed, onMounted, ref, watchEffect } from 'vue'
 import { usePageLang } from 'vuepress/client'
 import { useData } from './data.js'
 

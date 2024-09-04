@@ -4,10 +4,13 @@ import { inject } from 'vue'
 import type { ResolvedNavItemWithLink } from '../../shared/resolved/navbar.js'
 
 defineProps<{
+  /**
+   * Menu item
+   */
   item: ResolvedNavItemWithLink
 }>()
 
-const closeScreen = inject('close-screen') as () => void
+const closeScreen = inject('close-screen')!
 </script>
 
 <template>

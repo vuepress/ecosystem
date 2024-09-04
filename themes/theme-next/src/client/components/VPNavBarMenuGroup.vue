@@ -10,6 +10,9 @@ import { useData } from '../composables/data.js'
 import { isActive } from '../utils/index.js'
 
 const props = defineProps<{
+  /**
+   * Menu item
+   */
   item: ResolvedNavItemWithChildren
 }>()
 
@@ -22,22 +25,24 @@ const isChildActive = (navItem: ResolvedNavItem): boolean => {
       resolveRouteFullPath(navItem.link),
       !!props.item.activeMatch,
     )
-  } else {
-    return navItem.items.some(isChildActive)
   }
+  return navItem.items.some(isChildActive)
 }
 
-const childrenActive = computed(() => isChildActive(props.item))
+const active = computed(
+  () =>
+    isActive(
+      page.value.path,
+      props.item.activeMatch,
+      !!props.item.activeMatch,
+    ) || isChildActive(props.item),
+)
 </script>
 
 <template>
   <VPFlyout
-    :class="{
-      'vp-navbar-menu-group': true,
-      'active':
-        isActive(page.path, item.activeMatch, !!item.activeMatch) ||
-        childrenActive,
-    }"
+    class="vp-navbar-menu-group"
+    :class="{ active }"
     :button="item.text"
     :items="item.items"
   />

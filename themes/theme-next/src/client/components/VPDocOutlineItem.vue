@@ -2,12 +2,18 @@
 import type { MenuItem } from '../composables/outline.js'
 
 defineProps<{
+  /**
+   * Outline headers
+   */
   headers: MenuItem[]
+  /**
+   * If is root
+   */
   root?: boolean
 }>()
 
 const onClick = ({ target: el }: Event): void => {
-  const id = (el as HTMLAnchorElement).href!.split('#')[1]
+  const id = (el as HTMLAnchorElement).href.split('#')[1]
   const heading = document.getElementById(decodeURIComponent(id))
   heading?.focus({ preventScroll: true })
 }

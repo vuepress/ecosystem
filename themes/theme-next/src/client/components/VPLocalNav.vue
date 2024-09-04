@@ -7,10 +7,15 @@ import { useLocalNav } from '../composables/local-nav.js'
 import { useSidebar } from '../composables/sidebar.js'
 
 defineProps<{
+  /**
+   * whether the local nav is open
+   */
   open: boolean
 }>()
 
-defineEmits<(e: 'open-menu') => void>()
+defineEmits<{
+  openMenu: []
+}>()
 
 const { theme, frontmatter } = useData()
 const { hasSidebar } = useSidebar()
@@ -24,21 +29,20 @@ onMounted(() => {
     getComputedStyle(document.documentElement).getPropertyValue(
       '--vp-nav-height',
     ),
+    10,
   )
 })
 
-const noLocalNavAndNoSidebar = computed(() => {
-  return !hasLocalNav.value && !hasSidebar.value
-})
+const noLocalNavAndNoSidebar = computed(
+  () => !hasLocalNav.value && !hasSidebar.value,
+)
 
-const classes = computed(() => {
-  return {
-    'vp-local-nav': true,
-    'has-sidebar': hasSidebar.value,
-    'empty': !hasLocalNav.value,
-    'fixed': noLocalNavAndNoSidebar.value,
-  }
-})
+const classes = computed(() => ({
+  'vp-local-nav': true,
+  'has-sidebar': hasSidebar.value,
+  'empty': !hasLocalNav.value,
+  'fixed': noLocalNavAndNoSidebar.value,
+}))
 </script>
 
 <template>
@@ -52,10 +56,11 @@ const classes = computed(() => {
     <div class="container">
       <button
         v-if="hasSidebar"
+        type="button"
         class="menu"
         :aria-expanded="open"
         aria-controls="VPSidebarNav"
-        @click="$emit('open-menu')"
+        @click="$emit('openMenu')"
       >
         <span class="vpi-align-left menu-icon"></span>
         <span class="menu-text">

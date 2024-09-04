@@ -2,7 +2,7 @@ export const throttleAndDebounce = (
   fn: () => void,
   delay: number,
 ): (() => void) => {
-  let timeoutId: any
+  let timeoutId: NodeJS.Timeout | null = null
   let called = false
 
   return () => {
@@ -10,7 +10,10 @@ export const throttleAndDebounce = (
 
     if (!called) {
       fn()
-      ;(called = true) && setTimeout(() => (called = false), delay)
+      called = true
+      setTimeout(() => {
+        called = false
+      }, delay)
     } else timeoutId = setTimeout(fn, delay)
   }
 }

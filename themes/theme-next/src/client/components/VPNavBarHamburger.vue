@@ -1,9 +1,14 @@
 <script setup lang="ts">
 defineProps<{
+  /**
+   * Whether the navbar hamburger is active
+   */
   active: boolean
 }>()
 
-defineEmits<(e: 'click') => void>()
+defineEmits<{
+  click: []
+}>()
 </script>
 
 <template>

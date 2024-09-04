@@ -39,7 +39,7 @@ export interface DefaultThemePluginsOptions {
   /**
    * Enable @vuepress/plugin-shiki or not
    */
-  shiki?: boolean | ShikiPluginOptions
+  shiki?: ShikiPluginOptions | boolean
 
   /**
    * Enable @vuepress/plugin-seo or not

@@ -1,10 +1,17 @@
+<!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
 import VPNavScreenMenuGroupLink from '@theme/VPNavScreenMenuGroupLink.vue'
 import VPNavScreenMenuGroupSection from '@theme/VPNavScreenMenuGroupSection.vue'
 import { computed, ref } from 'vue'
 
 const props = defineProps<{
+  /**
+   * Group text
+   */
   text: string
+  /**
+   * Group items
+   */
   items: any[]
 }>()
 
@@ -23,6 +30,7 @@ const toggle = (): void => {
   <div class="vp-nav-screen-menu-group" :class="{ open: isOpen }">
     <button
       class="button"
+      type="button"
       :aria-controls="groupId"
       :aria-expanded="isOpen"
       @click="toggle"

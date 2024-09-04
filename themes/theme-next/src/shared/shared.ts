@@ -2,21 +2,21 @@
 
 export type DefaultThemeImage =
   | string
-  | { src: string; alt?: string; [prop: string]: any }
-  | { light: string; dark: string; alt?: string; [prop: string]: any }
+  | { light: string; dark: string; alt?: string; [prop: string]: unknown }
+  | { src: string; alt?: string; [prop: string]: unknown }
 
 export type FeatureIcon =
   | string
   | {
-      src: string
+      light: string
+      dark: string
       alt?: string
       width?: string
       height?: string
       wrap?: boolean
     }
   | {
-      light: string
-      dark: string
+      src: string
       alt?: string
       width?: string
       height?: string
@@ -33,7 +33,7 @@ export interface HeroAction {
    *
    * @default 'brand'
    */
-  theme?: 'brand' | 'alt'
+  theme?: 'alt' | 'brand'
   /**
    * Label of the button.
    *
@@ -141,7 +141,7 @@ export interface Sponsor {
 
 export interface Sponsors {
   tier?: string
-  size?: 'xmini' | 'mini' | 'small' | 'medium' | 'big'
+  size?: 'big' | 'medium' | 'mini' | 'small' | 'xmini'
   items: Sponsor[]
 }
 

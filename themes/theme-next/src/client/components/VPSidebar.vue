@@ -4,10 +4,19 @@ import { useScrollLock } from '@vueuse/core'
 import { onMounted, ref, watch } from 'vue'
 import { useRoutePath } from 'vuepress/client'
 import { useSidebar } from '../composables/sidebar.js'
+import type { Slot } from '../types.js'
 import { inBrowser } from '../utils/index.js'
 
 const props = defineProps<{
+  /**
+   * Whether the sidebar is open
+   */
   open: boolean
+}>()
+
+defineSlots<{
+  'sidebar-nav-before'?: Slot
+  'sidebar-nav-after'?: Slot
 }>()
 
 const { sidebarGroups, hasSidebar } = useSidebar()
@@ -93,13 +102,13 @@ onMounted(() => {
   box-shadow: var(--vp-c-shadow-3);
 
   opacity: 0;
+  overscroll-behavior: contain;
 
   transition:
     opacity 0.5s,
     transform 0.25s ease;
-  transform: translateX(-100%);
 
-  overscroll-behavior: contain;
+  transform: translateX(-100%);
 }
 
 .vp-sidebar.open {

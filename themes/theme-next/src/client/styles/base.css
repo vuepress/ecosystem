@@ -5,13 +5,14 @@
   ::after {
     background-attachment: initial !important;
 
+    scroll-behavior: auto !important;
+
     transition-delay: 0s !important;
     transition-duration: 0s !important;
+
     animation-duration: 1ms !important;
     animation-delay: -1ms !important;
     animation-iteration-count: 1 !important;
-
-    scroll-behavior: auto !important;
   }
 }
 
@@ -56,12 +57,13 @@ body {
   font-weight: 400;
   font-size: 16px;
   font-family: var(--vp-font-family-base);
+  font-synthesis: style;
   line-height: 24px;
+
+  text-rendering: optimizelegibility;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-synthesis: style;
-  text-rendering: optimizelegibility;
 }
 
 main {

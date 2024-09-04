@@ -5,10 +5,22 @@ import type { Sponsor, Sponsors } from '../../shared/index.js'
 import type { GridSize } from '../composables/sponsor-grid.js'
 
 interface Props {
-  mode?: 'normal' | 'aside'
+  /**
+   * Sponsor mode
+   */
+  mode?: 'aside' | 'normal'
+  /**
+   * Sponsor tier
+   */
   tier?: string
+  /**
+   * Sponsor size
+   */
   size?: GridSize
-  data: Sponsors[] | Sponsor[]
+  /**
+   * Sponsor data
+   */
+  data: Sponsor[] | Sponsors[]
 }
 const props = withDefaults(defineProps<Props>(), {
   mode: 'normal',
@@ -17,9 +29,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const sponsors = computed(() => {
-  const isSponsors = props.data.some((s) => {
-    return 'items' in s
-  })
+  const isSponsors = props.data.some((s) => 'items' in s)
 
   if (isSponsors) {
     return props.data as Sponsors[]

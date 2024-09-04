@@ -105,7 +105,7 @@ export interface DefaultThemeLocaleData extends LocaleData {
     | 'force-dark'
     | (Omit<
         UseDarkOptions,
-        'initialValue' | 'onChanged' | 'storageRef' | 'storageKey' | 'storage'
+        'initialValue' | 'onChanged' | 'storage' | 'storageKey' | 'storageRef'
       > & { initialValue?: 'dark' })
 
   /**
@@ -358,10 +358,10 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * VuePress 将在选择器无法匹配或匹配的元素当前不可见于视口时，回退到下一个选择器。
    */
   scrollOffset?:
+    | string[]
     | number
     | string
-    | string[]
-    | { selector: string | string[]; padding: number }
+    | { selector: string[] | string; padding: number }
 }
 
 // prev-next -----------------------------------------------------------------
@@ -374,7 +374,7 @@ export interface DocFooter {
    *
    * @default 'Previous page'
    */
-  prev?: string | boolean
+  prev?: boolean | string
 
   /**
    * Custom label for next page button. Can be set to `false` to disable.
@@ -383,7 +383,7 @@ export interface DocFooter {
    *
    * @default 'Next page'
    */
-  next?: string | boolean
+  next?: boolean | string
 }
 
 // footer --------------------------------------------------------------------
@@ -395,7 +395,7 @@ export interface Footer {
 
 // outline -------------------------------------------------------------------
 
-export type Outline = number | [number, number] | 'deep'
+export type Outline = number | 'deep' | [number, number]
 
 // carbon ads ----------------------------------------------------------------
 

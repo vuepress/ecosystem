@@ -15,12 +15,10 @@ export const getNavLink = (filepath: string): ResolvedNavItemWithLink => {
   return { text: meta.title || path, link: path }
 }
 
-export const normalizeLink = (base = '', link = ''): string => {
-  return isLinkAbsolute(link) || isLinkWithProtocol(link)
+export const normalizeLink = (base = '', link = ''): string =>
+  isLinkAbsolute(link) || isLinkWithProtocol(link)
     ? link
     : ensureLeadingSlash(`${base}/${link}`.replace(/\/+/g, '/'))
-}
 
-export const normalizePrefix = (base: string, link = ''): string => {
-  return ensureEndingSlash(normalizeLink(base, link))
-}
+export const normalizePrefix = (base: string, link = ''): string =>
+  ensureEndingSlash(normalizeLink(base, link))

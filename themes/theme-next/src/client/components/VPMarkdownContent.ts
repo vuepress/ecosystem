@@ -26,9 +26,15 @@ export const Content = defineComponent({
 
     return () =>
       h(ContentComponent.value, {
-        onVnodeMounted: () => runCallbacks({ mounted: true }),
-        onVnodeUpdated: () => runCallbacks({ updated: true }),
-        onVnodeBeforeUnmount: () => runCallbacks({ beforeUnmount: true }),
+        onVnodeMounted: () => {
+          runCallbacks({ mounted: true })
+        },
+        onVnodeUpdated: () => {
+          runCallbacks({ updated: true })
+        },
+        onVnodeBeforeUnmount: () => {
+          runCallbacks({ beforeUnmount: true })
+        },
       })
   },
 })

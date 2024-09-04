@@ -4,7 +4,6 @@ import VPCodeGroup from '@theme/VPCodeGroup.vue'
 import { hasGlobalComponent } from '@vuepress/helper/client'
 import { h } from 'vue'
 import { defineClientConfig } from 'vuepress/client'
-import type { ClientConfig } from 'vuepress/client'
 import Badge from './components/VPBadge.vue'
 import { Content } from './components/VPMarkdownContent.js'
 import {
@@ -20,7 +19,7 @@ export default defineClientConfig({
     // Warning: provide onContentUpdated hook ⚠️⚠️⚠️
     // Maybe a better way to do it, Maybe rewrite it or remove it
     delete app._context.components.Content
-    // eslint-disable-next-line vue/no-reserved-component-names
+
     app.component('Content', Content)
     if (!hasGlobalComponent('Badge')) app.component('Badge', Badge)
     if (!hasGlobalComponent('VPCodeGroup'))
@@ -29,7 +28,7 @@ export default defineClientConfig({
     // compat with @vuepress/plugin-docsearch and @vuepress/plugin-search
     app.component('NavbarSearch', () => {
       const SearchComponent =
-        app.component('Docsearch') || app.component('SearchBox')
+        app.component('Docsearch') ?? app.component('SearchBox')
       if (SearchComponent) {
         return h(SearchComponent)
       }
@@ -53,4 +52,4 @@ export default defineClientConfig({
     Layout,
     NotFound,
   },
-}) as ClientConfig
+})

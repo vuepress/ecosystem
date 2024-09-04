@@ -40,6 +40,7 @@ const getSidebarChildrenInfo = (
   children: StructureInfo[],
 ): SidebarInfo[] =>
   children
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     .map((item) => getSidebarInfoFromStructure({ pages, scope, sorters }, item))
     .filter((item): item is SidebarInfo => item !== null)
     // sort items
@@ -90,6 +91,7 @@ const getSidebarInfoFromStructure = (
     startsWith(filePathRelative, `${scope}${info.path}/`),
   )
   const READMEFile = info.children.find(
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     (info) =>
       info.type === 'file' && info.filename.toLowerCase() === 'readme.md',
   )

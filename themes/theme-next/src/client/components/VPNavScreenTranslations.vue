@@ -17,7 +17,7 @@ const toggle = (): void => {
     class="vp-nav-screen-translations"
     :class="{ open: isOpen }"
   >
-    <button class="title" @click="toggle">
+    <button class="title" type="button" @click="toggle">
       <span class="vpi-languages icon lang" />
       {{ currentLang.label }}
       <span class="vpi-chevron-down icon chevron" />

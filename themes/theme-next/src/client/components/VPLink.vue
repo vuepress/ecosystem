@@ -2,14 +2,32 @@
 import { isLinkExternal } from '@vuepress/helper/client'
 import { computed } from 'vue'
 import { resolveRouteFullPath, useRouter, withBase } from 'vuepress/client'
+import type { Slot } from '../types.js'
 
 const props = defineProps<{
+  /**
+   * element tag
+   */
   tag?: string
+  /**
+   * link
+   */
   href?: string
+  /**
+   * whether to remove the icon
+   */
   noIcon?: boolean
+  /**
+   * link target
+   */
   target?: string
+  /**
+   * link rel
+   */
   rel?: string
 }>()
+
+defineSlots<{ default?: Slot }>()
 
 const router = useRouter()
 

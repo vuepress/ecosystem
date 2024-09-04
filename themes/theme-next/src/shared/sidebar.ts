@@ -6,13 +6,13 @@ import type {
   DefaultThemePageData,
 } from './page.js'
 
-export type Sidebar = 'structure' | (string | SidebarItem)[] | SidebarMulti
+export type Sidebar = (SidebarItem | string)[] | SidebarMulti | 'structure'
 
 export type SidebarMulti = Record<
   string,
+  | (SidebarItem | string)[]
   | 'structure'
-  | (string | SidebarItem)[]
-  | { items: 'structure' | (string | SidebarItem)[]; prefix?: string }
+  | { items: (SidebarItem | string)[] | 'structure'; prefix?: string }
 >
 
 export interface SidebarItem {
@@ -29,14 +29,14 @@ export interface SidebarItem {
   /**
    * The children of the item.
    */
-  items?: 'structure' | (string | SidebarItem)[]
+  items?: (SidebarItem | string)[] | 'structure'
 
   /**
    * The children of the item.
    *
    * @deprecated Use `items` instead
    */
-  children?: (string | SidebarItem)[]
+  children?: (SidebarItem | string)[]
 
   /**
    * If not specified, group is not collapsible.
@@ -91,14 +91,14 @@ export interface SidebarDirInfo {
   pageData: DefaultThemePageData | null
 }
 
-export type SidebarInfo = SidebarFileInfo | SidebarDirInfo
+export type SidebarInfo = SidebarDirInfo | SidebarFileInfo
 
 export type SidebarSorterKeyword =
-  | 'readme'
-  | 'order'
-  | 'date'
   | 'date-desc'
+  | 'date'
   | 'filename'
+  | 'order'
+  | 'readme'
   | 'title'
 
 export type SidebarSorterFunction = (

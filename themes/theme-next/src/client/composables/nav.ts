@@ -1,5 +1,5 @@
-import { computed, ref, watch } from 'vue'
 import type { Ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
 import type { NavItem } from '../../shared/index.js'
 import type {
@@ -8,12 +8,6 @@ import type {
 } from '../../shared/resolved/navbar.js'
 import { getNavLink, normalizeLink } from '../utils/index.js'
 import { useData } from './data.js'
-
-export const useNavbarData = (): Ref<ResolvedNavItem[]> => {
-  const { theme } = useData()
-
-  return computed(() => resolveNavbar(theme.value.navbar || []))
-}
 
 const resolveNavbar = (navbar: NavItem[], _prefix = ''): ResolvedNavItem[] => {
   const resolved: ResolvedNavItem[] = []
@@ -39,6 +33,12 @@ const resolveNavbar = (navbar: NavItem[], _prefix = ''): ResolvedNavItem[] => {
   return resolved
 }
 
+export const useNavbarData = (): Ref<ResolvedNavItem[]> => {
+  const { theme } = useData()
+
+  return computed(() => resolveNavbar(theme.value.navbar ?? []))
+}
+
 export interface UseNavReturn {
   isScreenOpen: Ref<boolean>
   openScreen: () => void
@@ -48,6 +48,14 @@ export interface UseNavReturn {
 
 export const useNav = (): UseNavReturn => {
   const isScreenOpen = ref(false)
+
+  /**
+   * Close screen when the user resizes the window wider than tablet size.
+   */
+  const closeScreenOnTabletWindow = (): void => {
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    if (window.outerWidth >= 768) closeScreen()
+  }
 
   const openScreen = (): void => {
     isScreenOpen.value = true
@@ -60,14 +68,11 @@ export const useNav = (): UseNavReturn => {
   }
 
   const toggleScreen = (): void => {
-    isScreenOpen.value ? closeScreen() : openScreen()
-  }
-
-  /**
-   * Close screen when the user resizes the window wider than tablet size.
-   */
-  const closeScreenOnTabletWindow = (): void => {
-    window.outerWidth >= 768 && closeScreen()
+    if (isScreenOpen.value) {
+      closeScreen()
+    } else {
+      openScreen()
+    }
   }
 
   const route = useRoute()

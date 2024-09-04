@@ -3,8 +3,17 @@ import { computed } from 'vue'
 import type { SocialLinkIcon } from '../../shared/index.js'
 
 const props = defineProps<{
+  /**
+   * Icon
+   */
   icon: SocialLinkIcon
+  /**
+   * Link
+   */
   link: string
+  /**
+   * Aria label
+   */
   ariaLabel?: string
 }>()
 
@@ -20,7 +29,7 @@ const svg = computed(() => {
     :href="link"
     :aria-label="ariaLabel ?? (typeof icon === 'string' ? icon : '')"
     target="_blank"
-    rel="noopener"
+    rel="noopener noreferrer"
     v-html="svg"
   ></a>
 </template>

@@ -11,7 +11,7 @@ import { resolvePageHead } from './config/index.js'
 import { githubAlertsPlugin } from './markdown/index.js'
 import { getPlugins } from './plugins/index.js'
 import { prepareSidebarData } from './prepare/index.js'
-import { logger, THEME_NAME } from './utils/index.js'
+import { THEME_NAME, logger } from './utils/index.js'
 
 const __dirname = getDirname(import.meta.url)
 
@@ -38,13 +38,14 @@ export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
   sidebarSorter?: SidebarSorter
 }
 
-export const defaultTheme = ({
-  hostname,
-  themePlugins = {},
-  sidebarSorter,
-  ...localeOptions
-}: DefaultThemeOptions): Theme => {
-  return (app) => {
+export const defaultTheme =
+  ({
+    hostname,
+    themePlugins = {},
+    sidebarSorter,
+    ...localeOptions
+  }: DefaultThemeOptions): Theme =>
+  (app) => {
     if (app.env.isDebug) {
       logger.info('Plugin Options:', themePlugins)
     }
@@ -71,28 +72,28 @@ export const defaultTheme = ({
 
       plugins: getPlugins(app, { hostname, themePlugins, localeOptions }),
 
-      onPrepared: (app) =>
-        prepareSidebarData(app, localeOptions, sidebarSorter),
+      onPrepared: (_app) =>
+        prepareSidebarData(_app, localeOptions, sidebarSorter),
 
-      onWatched: (app, watchers) => {
+      onWatched: (_app, watchers) => {
         const watcher = watch(
           // This ensures the page is generated or updated
           'pages/**/*.vue',
           {
-            cwd: app.dir.temp(),
+            cwd: _app.dir.temp(),
             ignoreInitial: true,
           },
         )
 
-        watcher.on('add', () =>
-          prepareSidebarData(app, localeOptions, sidebarSorter),
-        )
-        watcher.on('change', () =>
-          prepareSidebarData(app, localeOptions, sidebarSorter),
-        )
-        watcher.on('unlink', () =>
-          prepareSidebarData(app, localeOptions, sidebarSorter),
-        )
+        watcher.on('add', () => {
+          void prepareSidebarData(app, localeOptions, sidebarSorter)
+        })
+        watcher.on('change', () => {
+          void prepareSidebarData(app, localeOptions, sidebarSorter)
+        })
+        watcher.on('unlink', () => {
+          void prepareSidebarData(app, localeOptions, sidebarSorter)
+        })
 
         watchers.push(watcher)
       },
@@ -106,9 +107,8 @@ export const defaultTheme = ({
         resolvePageHead(page, localeOptions)
       },
 
-      extendsMarkdown: (md, app) => {
-        githubAlertsPlugin(md, app, localeOptions)
+      extendsMarkdown: (md, _app) => {
+        githubAlertsPlugin(md, _app, localeOptions)
       },
     }
   }
-}

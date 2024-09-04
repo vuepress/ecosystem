@@ -1,8 +1,15 @@
+<!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
 import VPMenuLink from '@theme/VPMenuLink.vue'
 
 defineProps<{
+  /**
+   * Menu group
+   */
   text?: string
+  /**
+   * Menu items
+   */
   items: any[]
 }>()
 </script>

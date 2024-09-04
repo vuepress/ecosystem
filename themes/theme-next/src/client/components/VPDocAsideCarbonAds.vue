@@ -4,6 +4,9 @@ import type { CarbonAdsOptions } from '../../shared/index.js'
 import { useData } from '../composables/data.js'
 
 defineProps<{
+  /**
+   * Carbon Ads options
+   */
   carbonAds: CarbonAdsOptions
 }>()
 

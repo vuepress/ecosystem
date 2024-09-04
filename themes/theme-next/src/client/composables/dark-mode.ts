@@ -1,6 +1,6 @@
 import { useDark } from '@vueuse/core'
-import { inject, provide, ref } from 'vue'
 import type { InjectionKey, Ref } from 'vue'
+import { inject, provide, ref } from 'vue'
 import { useThemeData } from './theme-data.js'
 
 type DarkModeRef = Ref<boolean>
@@ -12,7 +12,7 @@ export const darkModeSymbol: InjectionKey<DarkModeRef> = Symbol(
 export const setupDarkMode = (): void => {
   const themeLocale = useThemeData()
 
-  const appearance = themeLocale.value.appearance
+  const { appearance } = themeLocale.value
   const isDark =
     appearance === 'force-dark'
       ? ref(true)

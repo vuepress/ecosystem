@@ -226,10 +226,10 @@
 
   -webkit-mask-image: var(--vp-custom-block-icon);
   mask-image: var(--vp-custom-block-icon);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 
 .custom-block.info .custom-block-title {

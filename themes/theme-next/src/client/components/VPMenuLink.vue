@@ -6,6 +6,9 @@ import { useData } from '../composables/data.js'
 import { isActive } from '../utils/index.js'
 
 defineProps<{
+  /**
+   * Menu item
+   */
   item: ResolvedNavItemWithLink
 }>()
 

@@ -1,8 +1,8 @@
-import { computed, shallowRef } from 'vue'
 import type { ComputedRef, ShallowRef } from 'vue'
+import { computed, shallowRef } from 'vue'
 import { onContentUpdated } from '../composables/content-update.js'
-import { getHeaders } from '../composables/outline.js'
 import type { MenuItem } from '../composables/outline.js'
+import { getHeaders } from '../composables/outline.js'
 import { useData } from './data.js'
 
 /**
@@ -12,7 +12,7 @@ export interface DocLocalNav {
   /**
    * The outline headers of the current page.
    */
-  headers: ShallowRef<any>
+  headers: ShallowRef
 
   /**
    * Whether the current page has a local nav. Local nav is shown when the
@@ -27,9 +27,7 @@ export const useLocalNav = (): DocLocalNav => {
 
   const headers = shallowRef<MenuItem[]>([])
 
-  const hasLocalNav = computed(() => {
-    return headers.value.length > 0
-  })
+  const hasLocalNav = computed(() => headers.value.length > 0)
 
   onContentUpdated(() => {
     headers.value = getHeaders(frontmatter.value.outline ?? theme.value.outline)

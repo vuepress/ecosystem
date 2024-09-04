@@ -3,12 +3,12 @@ import VPDocOutlineItem from '@theme/VPDocOutlineItem.vue'
 import { ref, shallowRef } from 'vue'
 import { onContentUpdated } from '../composables/content-update.js'
 import { useData } from '../composables/data.js'
+import type { MenuItem } from '../composables/outline.js'
 import {
   getHeaders,
   resolveTitle,
   useActiveAnchor,
 } from '../composables/outline.js'
-import type { MenuItem } from '../composables/outline.js'
 
 const { frontmatter, theme } = useData()
 
@@ -18,8 +18,8 @@ onContentUpdated(() => {
   headers.value = getHeaders(frontmatter.value.outline ?? theme.value.outline)
 })
 
-const container = ref()
-const marker = ref()
+const container = ref<HTMLElement>()
+const marker = ref<HTMLElement>()
 
 useActiveAnchor(container, marker)
 </script>

@@ -4,6 +4,19 @@ import VPNav from '@theme/VPNav.vue'
 import VPSkipLink from '@theme/VPSkipLink.vue'
 import { useRouteLocale, withBase } from 'vuepress/client'
 import { useThemeLocaleData } from '../composables/index.js'
+import type { Slot } from '../types.js'
+
+defineSlots<{
+  'layout-top'?: Slot
+  'layout-bottom'?: Slot
+  'not-found'?: Slot
+  'nav-bar-title-before'?: Slot
+  'nav-bar-title-after'?: Slot
+  'nav-bar-content-before'?: Slot
+  'nav-bar-content-after'?: Slot
+  'nav-screen-content-before'?: Slot
+  'nav-screen-content-after'?: Slot
+}>()
 
 const root = useRouteLocale()
 const theme = useThemeLocaleData()

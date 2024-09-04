@@ -4,7 +4,13 @@ import { computed } from 'vue'
 import type { TeamMember } from '../../shared/index.js'
 
 interface Props {
-  size?: 'small' | 'medium'
+  /**
+   * Member size
+   */
+  size?: 'medium' | 'small'
+  /**
+   * Team members
+   */
   members: TeamMember[]
 }
 

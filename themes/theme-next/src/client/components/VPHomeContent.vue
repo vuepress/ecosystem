@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { useWindowSize } from '@vueuse/core'
+import type { Slot } from '../types.js'
+
+defineSlots<{ default?: Slot }>()
 
 const { width: vw } = useWindowSize({
   initialWidth: 0,

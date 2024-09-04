@@ -5,6 +5,21 @@ import { computed, nextTick, ref, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
 import { useData } from '../composables/data.js'
 import { useSidebar } from '../composables/sidebar.js'
+import type { Slot } from '../types.js'
+
+defineSlots<{
+  'doc-top'?: Slot
+  'doc-bottom'?: Slot
+  'doc-footer-before'?: Slot
+  'doc-before'?: Slot
+  'doc-after'?: Slot
+  'aside-top'?: Slot
+  'aside-bottom'?: Slot
+  'aside-outline-before'?: Slot
+  'aside-outline-after'?: Slot
+  'aside-ads-before'?: Slot
+  'aside-ads-after'?: Slot
+}>()
 
 const { theme, frontmatter } = useData()
 
@@ -87,8 +102,8 @@ watch(
           <slot name="doc-before" />
           <main class="main">
             <Content
+              class="vp-doc"
               :class="[
-                'vp-doc',
                 pageName,
                 enabledExternalLinkIcon && 'external-link-icon-enabled',
               ]"

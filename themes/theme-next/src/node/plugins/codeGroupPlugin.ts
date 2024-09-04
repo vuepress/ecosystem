@@ -2,8 +2,25 @@ import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
 import { nanoid } from 'nanoid'
 import type { Plugin } from 'vuepress'
 
-export const createCodeGroupPlugin = (): Plugin => {
-  return markdownContainerPlugin({
+const extractLang = (info: string): string =>
+  info
+    .trim()
+    .replace(/=(\d*)/, '')
+    .replace(/:(no-)?line-numbers({| |$|=\d*).*/, '')
+    .replace(/:(no-)?v-pre/, '')
+    .replace(/^ansi$/, '')
+
+const extractTitle = (info: string, html = false): string => {
+  if (html) {
+    return (
+      info.replace(/<!--[^]*?-->/g, '').match(/data-title="(.*?)"/)?.[1] || ''
+    )
+  }
+  return info.match(/\[(.*)\]/)?.[1] || extractLang(info) || 'txt'
+}
+
+export const createCodeGroupPlugin = (): Plugin =>
+  markdownContainerPlugin({
     type: 'code-group',
     render: (tokens, idx) => {
       if (tokens[idx].nesting === 1) {
@@ -36,7 +53,7 @@ export const createCodeGroupPlugin = (): Plugin => {
               const id = nanoid(7)
               tabs += `<input type="radio" name="group-${name}" id="tab-${id}" ${i === first ? '{{checked}}' : ''} ${active ? checked : ''}><label for="tab-${id}">${title}</label>`
 
-              active && (checked = '')
+              if (active) checked = ''
             }
           }
         }
@@ -48,22 +65,3 @@ export const createCodeGroupPlugin = (): Plugin => {
       return `</div></VPCodeGroup>`
     },
   })
-}
-
-const extractTitle = (info: string, html = false): string => {
-  if (html) {
-    return (
-      info.replace(/<!--[^]*?-->/g, '').match(/data-title="(.*?)"/)?.[1] || ''
-    )
-  }
-  return info.match(/\[(.*)\]/)?.[1] || extractLang(info) || 'txt'
-}
-
-const extractLang = (info: string): string => {
-  return info
-    .trim()
-    .replace(/=(\d*)/, '')
-    .replace(/:(no-)?line-numbers({| |$|=\d*).*/, '')
-    .replace(/:(no-)?v-pre/, '')
-    .replace(/^ansi$/, '')
-}

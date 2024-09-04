@@ -1,4 +1,4 @@
-export type NavItem = string | NavItemWithLink | NavItemWithChildren
+export type NavItem = NavItemWithChildren | NavItemWithLink | string
 
 export interface NavItemWithLink {
   text: string
@@ -47,14 +47,14 @@ export interface NavItemChildren {
    *
    * 导航栏下拉菜单
    */
-  items: (string | NavItemWithLink)[]
+  items: (NavItemWithLink | string)[]
 
   /**
    * @deprecated Use `items` instead
    *
    * @deprecated 使用 `items` 替换
    *  */
-  children?: (string | NavItemWithLink)[]
+  children?: (NavItemWithLink | string)[]
 }
 
 export interface NavItemWithChildren {
@@ -71,14 +71,14 @@ export interface NavItemWithChildren {
    *
    * 导航栏下拉菜单
    */
-  items: (string | NavItemChildren | NavItemWithLink)[]
+  items: (NavItemChildren | NavItemWithLink | string)[]
 
   /**
    * @deprecated Use `items` instead
    *
    * @deprecated 使用 `items` 替换
    *  */
-  children?: (string | NavItemChildren | NavItemWithLink)[]
+  children?: (NavItemChildren | NavItemWithLink | string)[]
 
   /**
    * `activeMatch` is expected to be a regex string. We can't use actual

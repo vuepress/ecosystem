@@ -1,14 +1,31 @@
+<!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
 import VPMenu from '@theme/VPMenu.vue'
 import { ref } from 'vue'
 import { useFlyout } from '../composables/flyout.js'
+import type { Slot } from '../types.js'
 
 defineProps<{
+  /**
+   * Flyout icon
+   */
   icon?: string
+  /**
+   * Flyout button
+   */
   button?: string
+  /**
+   * Flyout label
+   */
   label?: string
+
+  /**
+   * Flyout items
+   */
   items?: any[]
 }>()
+
+defineSlots<{ default?: Slot }>()
 
 const open = ref(false)
 const el = ref<HTMLElement>()
@@ -36,7 +53,7 @@ useFlyout({ el, onBlur })
       @click="open = !open"
     >
       <span v-if="button || icon" class="text">
-        <span v-if="icon" :class="[icon, 'option-icon']" />
+        <span v-if="icon" class="option-icon" :class="[icon]" />
         <span v-if="button" v-html="button"></span>
         <span class="vpi-chevron-down text-icon" />
       </span>

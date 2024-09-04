@@ -10,14 +10,14 @@ export const resolvePageHead = (
 ): void => {
   page.frontmatter.head ??= []
 
-  if (options?.appearance ?? true) {
+  if (options.appearance ?? true) {
     // if appearance mode set to light or dark, default to the defined mode
     // in case the user didn't specify a preference - otherwise, default to auto
     const fallbackPreference =
-      typeof options?.appearance === 'string'
-        ? options?.appearance
-        : typeof options?.appearance === 'object'
-          ? options.appearance.initialValue ?? 'auto'
+      typeof options.appearance === 'string'
+        ? options.appearance
+        : typeof options.appearance === 'object'
+          ? (options.appearance.initialValue ?? 'auto')
           : 'auto'
 
     page.frontmatter.head.push([
@@ -34,7 +34,7 @@ export const resolvePageHead = (
     ])
   }
 
-  page.frontmatter.head?.push([
+  page.frontmatter.head.push([
     'script',
     { id: 'check-mac-os' },
     `;document.documentElement.classList.toggle('mac', /Mac|iPhone|iPod|iPad/i.test(navigator.platform))`,

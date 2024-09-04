@@ -3,11 +3,11 @@ import { ref, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
 
 const route = useRoute()
-const backToTop = ref()
+const backToTop = ref<HTMLElement>()
 
 watch(
   () => route.path,
-  () => backToTop.value.focus(),
+  () => backToTop.value?.focus(),
 )
 
 const focusOnTargetAnchor = ({ target }: Event): void => {
@@ -59,10 +59,10 @@ const focusOnTargetAnchor = ({ target }: Event): void => {
 }
 
 .vp-skip-link:focus {
+  clip-path: none;
   clip: auto;
   width: auto;
   height: auto;
-  clip-path: none;
 }
 
 @media (min-width: 1280px) {

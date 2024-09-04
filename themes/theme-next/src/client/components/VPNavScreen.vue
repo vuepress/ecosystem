@@ -5,10 +5,19 @@ import VPNavScreenSocialLinks from '@theme/VPNavScreenSocialLinks.vue'
 import VPNavScreenTranslations from '@theme/VPNavScreenTranslations.vue'
 import { useScrollLock } from '@vueuse/core'
 import { ref } from 'vue'
+import type { Slot } from '../types.js'
 import { inBrowser } from '../utils/index.js'
 
 defineProps<{
+  /**
+   * Whether the screen is open
+   */
   open: boolean
+}>()
+
+defineSlots<{
+  'nav-screen-content-before'?: Slot
+  'nav-screen-content-after'?: Slot
 }>()
 
 const screen = ref<HTMLElement | null>(null)

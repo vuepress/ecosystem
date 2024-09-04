@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
+import type { Slot } from '../types.js'
+
+defineSlots<{ default?: Slot }>()
 
 const container = ref<HTMLElement | null>(null)
 
@@ -23,12 +26,13 @@ const toggleCodeGroupItem = (e: MouseEvent): void => {
     if (!current) return
 
     const next = blocks.children[i]
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!next || current === next) return
 
     current.classList.remove('active')
     next.classList.add('active')
 
-    const label = group?.querySelector(`label[for="${el.id}"]`)
+    const label = group.querySelector(`label[for="${el.id}"]`)
     label?.scrollIntoView({ block: 'nearest' })
   }
 }
@@ -38,9 +42,9 @@ onMounted(() => {
 
   container.value.addEventListener('click', toggleCodeGroupItem)
 
-  const tabs = Array.from(
+  const tabs: HTMLInputElement[] = Array.from(
     container.value.querySelectorAll('.tabs input'),
-  ) as HTMLInputElement[]
+  )
   const blocks = container.value.querySelector('.blocks')
   const children = blocks?.children
   tabs.forEach((tab, index) => {

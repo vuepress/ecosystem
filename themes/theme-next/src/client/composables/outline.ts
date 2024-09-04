@@ -4,8 +4,8 @@
  *         but VuePress directly globally configures them in Markdown, which leads to conflicts.
  *         To achieve page-level configuration, the solution of parsing the DOM was chosen.
  */
-import { onMounted, onUnmounted, onUpdated } from 'vue'
 import type { Ref } from 'vue'
+import { onMounted, onUnmounted, onUpdated } from 'vue'
 import type { DefaultThemeLocaleData } from '../../shared/index.js'
 import { getScrollOffset, throttleAndDebounce } from '../utils/index.js'
 import { useAside } from './aside.js'
@@ -43,32 +43,9 @@ export interface Header {
 // cached list of anchor elements from resolveHeaders
 const resolvedHeaders: { element: HTMLHeadElement; link: string }[] = []
 
-export type MenuItem = Omit<Header, 'slug' | 'children'> & {
+export type MenuItem = Omit<Header, 'children' | 'slug'> & {
   element: HTMLHeadElement
   children?: MenuItem[]
-}
-
-export const resolveTitle = (theme: DefaultThemeLocaleData): string => {
-  return theme.outlineTitle || 'On this page'
-}
-
-export const getHeaders = (
-  range: DefaultThemeLocaleData['outline'],
-): MenuItem[] => {
-  const headers = Array.from(
-    document.querySelectorAll('.vp-doc-container :where(h1,h2,h3,h4,h5,h6)'),
-  )
-    .filter((el) => el.id && el.hasChildNodes())
-    .map((el) => {
-      const level = Number(el.tagName[1])
-      return {
-        element: el as HTMLHeadElement,
-        title: serializeHeader(el),
-        link: '#' + el.id,
-        level,
-      }
-    })
-  return resolveHeaders(headers, range)
 }
 
 const serializeHeader = (h: Element): string => {
@@ -84,21 +61,24 @@ const serializeHeader = (h: Element): string => {
       ) {
         continue
       }
-      ret += node.textContent
+      ret += node.textContent || ''
     } else if (node.nodeType === 3) {
-      ret += node.textContent
+      ret += node.textContent || ''
     }
   }
   // maybe `<hx><a href="#"></a><a href="xxx"></a</hx>` or more
   let next = anchor?.nextSibling
   while (next) {
     if (next.nodeType === 1 || next.nodeType === 3) {
-      ret += next.textContent
+      ret += next.textContent || ''
     }
     next = next.nextSibling
   }
   return ret.trim()
 }
+
+export const resolveTitle = (theme: DefaultThemeLocaleData): string =>
+  theme.outlineTitle || 'On this page'
 
 export const resolveHeaders = (
   headers: MenuItem[],
@@ -117,6 +97,7 @@ export const resolveHeaders = (
         ? [2, 6]
         : levelsRange
 
+  // eslint-disable-next-line no-param-reassign
   headers = headers.filter((h) => h.level >= high && h.level <= low)
   // clear previous caches
   resolvedHeaders.length = 0
@@ -126,7 +107,8 @@ export const resolveHeaders = (
   }
 
   const ret: MenuItem[] = []
-  // eslint-disable-next-line no-labels
+
+  // eslint-disable-next-line no-restricted-syntax
   outer: for (let i = 0; i < headers.length; i++) {
     const cur = headers[i]
     if (i === 0) {
@@ -135,8 +117,9 @@ export const resolveHeaders = (
       for (let j = i - 1; j >= 0; j--) {
         const prev = headers[j]
         if (prev.level < cur.level) {
-          ;(prev.children || (prev.children = [])).push(cur)
-          // eslint-disable-next-line no-labels
+          if (!prev.children) prev.children = []
+          prev.children.push(cur)
+
           continue outer
         }
       }
@@ -147,23 +130,84 @@ export const resolveHeaders = (
   return ret
 }
 
+export const getHeaders = (
+  range: DefaultThemeLocaleData['outline'],
+): MenuItem[] => {
+  const headers = Array.from(
+    document.querySelectorAll('.vp-doc-container :where(h1,h2,h3,h4,h5,h6)'),
+  )
+    .filter((el) => el.id && el.hasChildNodes())
+    .map((el) => {
+      const level = Number(el.tagName[1])
+      return {
+        element: el as HTMLHeadElement,
+        title: serializeHeader(el),
+        link: `#${el.id}`,
+        level,
+      }
+    })
+  return resolveHeaders(headers, range)
+}
+
+const getAbsoluteTop = (element: HTMLElement | null): number => {
+  let offsetTop = 0
+  let el = element
+  while (el !== document.body) {
+    if (el === null) {
+      // child element is:
+      // - not attached to the DOM (display: none)
+      // - set to fixed position (not scrollable)
+      // - body or html element (null offsetParent)
+      return NaN
+    }
+    offsetTop += el.offsetTop
+    el = el.offsetParent as HTMLElement
+  }
+  return offsetTop
+}
+
 export const useActiveAnchor = (
-  container: Ref<HTMLElement>,
-  marker: Ref<HTMLElement>,
+  container: Ref<HTMLElement | undefined>,
+  marker: Ref<HTMLElement | undefined>,
 ): void => {
   const { isAsideEnabled } = useAside()
   const { theme } = useData()
 
   let prevActiveLink: HTMLAnchorElement | null = null
 
+  const activateLink = (hash: string | null): void => {
+    if (prevActiveLink) {
+      prevActiveLink.classList.remove('active')
+    }
+
+    if (hash == null) {
+      prevActiveLink = null
+    } else {
+      prevActiveLink = container.value!.querySelector(
+        `a[href="${decodeURIComponent(hash)}"]`,
+      )
+    }
+
+    const activeLink = prevActiveLink
+
+    if (activeLink) {
+      activeLink.classList.add('active')
+      marker.value!.style.top = `${activeLink.offsetTop + 39}px`
+      marker.value!.style.opacity = '1'
+    } else {
+      marker.value!.style.top = '33px'
+      marker.value!.style.opacity = '0'
+    }
+  }
+
   const setActiveLink = (): void => {
     if (!isAsideEnabled.value) {
       return
     }
 
-    const scrollY = window.scrollY
-    const innerHeight = window.innerHeight
-    const offsetHeight = document.body.offsetHeight
+    const { scrollY } = window
+    const { innerHeight } = window
+    const { offsetHeight } = document.body
     const isBottom = Math.abs(scrollY + innerHeight - offsetHeight) < 1
 
     // resolvedHeaders may be repositioned, hidden or fix positioned
@@ -204,31 +248,6 @@ export const useActiveAnchor = (
     activateLink(activeLink)
   }
 
-  const activateLink = (hash: string | null): void => {
-    if (prevActiveLink) {
-      prevActiveLink.classList.remove('active')
-    }
-
-    if (hash == null) {
-      prevActiveLink = null
-    } else {
-      prevActiveLink = container.value.querySelector(
-        `a[href="${decodeURIComponent(hash)}"]`,
-      )
-    }
-
-    const activeLink = prevActiveLink
-
-    if (activeLink) {
-      activeLink.classList.add('active')
-      marker.value.style.top = activeLink.offsetTop + 39 + 'px'
-      marker.value.style.opacity = '1'
-    } else {
-      marker.value.style.top = '33px'
-      marker.value.style.opacity = '0'
-    }
-  }
-
   const onScroll = throttleAndDebounce(setActiveLink, 100)
 
   onMounted(() => {
@@ -238,26 +257,10 @@ export const useActiveAnchor = (
 
   onUpdated(() => {
     // sidebar update means a route change
-    activateLink(location.hash)
+    activateLink(window.location.hash)
   })
 
   onUnmounted(() => {
     window.removeEventListener('scroll', onScroll)
   })
-}
-
-const getAbsoluteTop = (element: HTMLElement): number => {
-  let offsetTop = 0
-  while (element !== document.body) {
-    if (element === null) {
-      // child element is:
-      // - not attached to the DOM (display: none)
-      // - set to fixed position (not scrollable)
-      // - body or html element (null offsetParent)
-      return NaN
-    }
-    offsetTop += element.offsetTop
-    element = element.offsetParent as HTMLElement
-  }
-  return offsetTop
 }

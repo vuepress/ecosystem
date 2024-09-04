@@ -12,12 +12,12 @@ export const resolveContainerLocales = (
 ): Record<string, ContainerOptions> => {
   const root = getRootLangPath(app)
   const containerLocales: Record<string, ContainerOptions> = {
-    '/': localeOptions.container || LOCALES_OPTIONS[root].container || {},
+    '/': localeOptions.container ?? LOCALES_OPTIONS[root].container ?? {},
   }
   getLocalePaths(app).forEach((localePath) => {
     containerLocales[localePath] = {
       ...LOCALES_OPTIONS[localePath === '/' ? root : localePath].container,
-      ...(localeOptions.locales?.[localePath]?.container ||
+      ...(localeOptions.locales?.[localePath]?.container ??
         localeOptions.locales?.['/']?.container),
     }
   })

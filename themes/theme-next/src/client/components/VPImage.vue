@@ -2,12 +2,18 @@
 import { withBase } from 'vuepress/client'
 import type { DefaultThemeImage } from '../../shared/index.js'
 
+defineOptions({ inheritAttrs: false })
+
 defineProps<{
+  /**
+   * Image
+   */
   image: DefaultThemeImage
+  /**
+   * Image alt
+   */
   alt?: string
 }>()
-
-defineOptions({ inheritAttrs: false })
 </script>
 
 <template>

@@ -58,9 +58,7 @@ export const sidebarDateSorter = (
 ): number => {
   if (infoA.frontmatter?.date instanceof Date) {
     if (infoB.frontmatter?.date instanceof Date)
-      return (
-        infoA.frontmatter?.date.getTime() - infoB.frontmatter.date.getTime()
-      )
+      return infoA.frontmatter.date.getTime() - infoB.frontmatter.date.getTime()
 
     return -1
   }
@@ -140,10 +138,10 @@ export const getSidebarSorter = (
 
   if (isArray(sorter)) {
     const result = sorter
-      .map((item) => (isString(item) ? sortKeyMap[item] : item))
+      .map((item: unknown) => (isString(item) ? sortKeyMap[item] : item))
       .filter((item) => isFunction(item))
 
-    if (result.length) return result
+    if (result.length) return result as SidebarSorterFunction[]
   }
 
   return [

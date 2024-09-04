@@ -1,10 +1,17 @@
+<!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
 import VPMenuGroup from '@theme/VPMenuGroup.vue'
 import VPMenuLink from '@theme/VPMenuLink.vue'
+import type { Slot } from '../types.js'
 
 defineProps<{
+  /**
+   * Menu items
+   */
   items?: any[]
 }>()
+
+defineSlots<{ default?: Slot }>()
 </script>
 
 <template>

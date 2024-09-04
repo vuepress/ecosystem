@@ -2,18 +2,41 @@
 import VPButton from '@theme/VPButton.vue'
 import VPImage from '@theme/VPImage.vue'
 import { inject } from 'vue'
-import type { Ref } from 'vue'
 import type { DefaultThemeImage, HeroAction } from '../../shared/index.js'
+import type { Slot } from '../types.js'
 
 defineProps<{
+  /**
+   * Hero name
+   */
   name?: string
+  /**
+   * Hero text
+   */
   text?: string
+  /**
+   * Hero tagline
+   */
   tagline?: string
+  /**
+   * Hero image
+   */
   image?: DefaultThemeImage
+  /**
+   * Hero actions
+   */
   actions?: HeroAction[]
 }>()
 
-const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
+defineSlots<{
+  'home-hero-info-before'?: Slot
+  'home-hero-info'?: Slot
+  'home-hero-info-after'?: Slot
+  'home-hero-actions-after'?: Slot
+  'home-hero-image'?: Slot
+}>()
+
+const heroImageSlotExists = inject('hero-image-slot-exists')!
 </script>
 
 <template>
@@ -156,6 +179,7 @@ const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
 }
 
 @media (min-width: 640px) {
+  /* stylelint-disable-next-line rule-empty-line-before */
   .name,
   .text {
     max-width: 576px;
@@ -165,6 +189,7 @@ const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
 }
 
 @media (min-width: 960px) {
+  /* stylelint-disable-next-line rule-empty-line-before */
   .name,
   .text {
     font-size: 56px;

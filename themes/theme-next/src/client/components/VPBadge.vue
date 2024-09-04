@@ -1,12 +1,22 @@
 <script setup lang="ts">
+import type { Slot } from '../types.js'
+
 interface Props {
+  /**
+   * Badge text
+   */
   text?: string
-  type?: 'info' | 'tip' | 'warning' | 'danger'
+  /**
+   * Badge type
+   */
+  type?: 'danger' | 'info' | 'tip' | 'warning'
 }
 withDefaults(defineProps<Props>(), {
   type: 'tip',
   text: '',
 })
+
+defineSlots<{ default?: Slot }>()
 </script>
 
 <template>

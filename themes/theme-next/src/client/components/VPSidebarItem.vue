@@ -5,7 +5,13 @@ import type { ResolvedSidebarItem } from '../../shared/resolved/sidebar.js'
 import { useSidebarControl } from '../composables/sidebar.js'
 
 const props = defineProps<{
+  /**
+   * Sidebar item
+   */
   item: ResolvedSidebarItem
+  /**
+   * Sidebar depth
+   */
   depth: number
 }>()
 
@@ -23,13 +29,13 @@ const sectionTag = computed(() => (hasChildren.value ? 'section' : `div`))
 
 const linkTag = computed(() => (isLink.value ? 'a' : 'div'))
 
-const textTag = computed(() => {
-  return !hasChildren.value
+const textTag = computed(() =>
+  !hasChildren.value
     ? 'p'
     : props.depth + 2 === 7
       ? 'p'
-      : `h${props.depth + 2}`
-})
+      : `h${props.depth + 2}`,
+)
 
 const itemRole = computed(() => (isLink.value ? undefined : 'button'))
 
@@ -42,18 +48,19 @@ const classes = computed(() => [
   { 'has-active': hasActiveLink.value },
 ])
 
-const onItemInteraction = (e: MouseEvent | Event): void => {
+const onItemInteraction = (e: Event | MouseEvent): void => {
   if ('key' in e && e.key !== 'Enter') {
     return
   }
-  !props.item.link && toggle()
+  if (!props.item.link) toggle()
 }
 
 const onCaretClick = (): void => {
-  props.item.link && toggle()
+  if (props.item.link) toggle()
 }
 </script>
 
+<!-- eslint-disable vue/no-v-text-v-html-on-component -->
 <template>
   <component :is="sectionTag" class="vp-sidebar-item" :class="classes">
     <div

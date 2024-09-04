@@ -6,6 +6,9 @@ import { useData } from '../composables/data.js'
 import { isActive } from '../utils/index.js'
 
 defineProps<{
+  /**
+   * Menu item
+   */
   item: ResolvedNavItemWithLink
 }>()
 
@@ -14,9 +17,9 @@ const { page } = useData()
 
 <template>
   <VPLink
+    class="vp-navbar-menu-link"
     :class="{
-      'vp-navbar-menu-link': true,
-      'active': isActive(
+      active: isActive(
         page.path,
         item.activeMatch || resolveRouteFullPath(item.link),
         !!item.activeMatch,

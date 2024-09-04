@@ -5,8 +5,8 @@ import { linksCheckPlugin } from '@vuepress/plugin-links-check'
 import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
 import { seoPlugin } from '@vuepress/plugin-seo'
-import { shikiPlugin } from '@vuepress/plugin-shiki'
 import type { ShikiPluginOptions } from '@vuepress/plugin-shiki'
+import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import type { App, PluginConfig } from 'vuepress/core'
@@ -112,6 +112,7 @@ export const getPlugins = (
       themes: { light: 'github-light', dark: 'github-dark' },
     }
     if ('theme' in shikiOptions) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
       delete (defaultOptions as any).themes
     }
     plugins.push(shikiPlugin({ ...defaultOptions, ...shikiOptions }))

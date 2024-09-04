@@ -5,15 +5,22 @@ import type { GridSize } from '../composables/sponsor-grid.js'
 import { useSponsorsGrid } from '../composables/sponsor-grid.js'
 
 interface Props {
+  /**
+   * Sponsor size
+   */
   size?: GridSize
+  /**
+   * Sponsor data
+   */
   data: Sponsor[]
 }
 const props = withDefaults(defineProps<Props>(), {
   size: 'medium',
 })
 
-const el = ref(null)
+const el = ref<HTMLElement | null>(null)
 
+// eslint-disable-next-line vue/no-setup-props-reactivity-loss
 useSponsorsGrid({ el, size: props.size })
 </script>
 
@@ -28,7 +35,7 @@ useSponsorsGrid({ el, size: props.size })
         class="vp-sponsor-grid-link"
         :href="sponsor.url"
         target="_blank"
-        rel="sponsored noopener"
+        rel="sponsored noopener noreferrer"
       >
         <article class="vp-sponsor-grid-box">
           <h4 class="visually-hidden">{{ sponsor.name }}</h4>

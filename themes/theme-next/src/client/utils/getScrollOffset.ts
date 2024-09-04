@@ -1,5 +1,13 @@
 import type { DefaultThemeLocaleData } from '../../shared'
 
+const tryOffsetSelector = (selector: string, padding: number): number => {
+  const el = document.querySelector(selector)
+  if (!el) return 0
+  const bot = el.getBoundingClientRect().bottom
+  if (bot < 0) return 0
+  return bot + padding
+}
+
 export const getScrollOffset = (
   scrollOffset?: DefaultThemeLocaleData['scrollOffset'],
 ): number => {
@@ -7,6 +15,7 @@ export const getScrollOffset = (
   let padding = 24
   if (typeof scrollOffset === 'object' && 'padding' in scrollOffset) {
     padding = scrollOffset.padding
+    // eslint-disable-next-line no-param-reassign
     scrollOffset = scrollOffset.selector
   }
   if (typeof scrollOffset === 'number') {
@@ -24,12 +33,4 @@ export const getScrollOffset = (
   }
 
   return offset
-}
-
-const tryOffsetSelector = (selector: string, padding: number): number => {
-  const el = document.querySelector(selector)
-  if (!el) return 0
-  const bot = el.getBoundingClientRect().bottom
-  if (bot < 0) return 0
-  return bot + padding
 }

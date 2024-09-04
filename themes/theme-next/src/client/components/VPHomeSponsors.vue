@@ -4,9 +4,21 @@ import VPSponsors from '@theme/VPSponsors.vue'
 import type { Sponsors } from '../../shared/index.js'
 
 interface Props {
+  /**
+   * Sponsor message
+   */
   message?: string
+  /**
+   * Sponsor action
+   */
   actionText?: string
+  /**
+   * Sponsor action
+   */
   actionLink?: string
+  /**
+   * Sponsor data
+   */
   data: Sponsors[]
 }
 

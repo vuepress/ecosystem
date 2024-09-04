@@ -1,6 +1,6 @@
 import type { ThemeLocaleDataRef } from '@vuepress/plugin-theme-data/client'
-import { usePageData, usePageFrontmatter } from 'vuepress/client'
 import type { PageDataRef, PageFrontmatterRef } from 'vuepress/client'
+import { usePageData, usePageFrontmatter } from 'vuepress/client'
 import type {
   DefaultThemeData,
   DefaultThemeNormalPageFrontmatter,

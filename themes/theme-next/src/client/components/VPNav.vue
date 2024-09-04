@@ -4,14 +4,22 @@ import VPNavScreen from '@theme/VPNavScreen.vue'
 import { computed, provide, watchEffect } from 'vue'
 import { useData } from '../composables/data.js'
 import { useNav } from '../composables/nav.js'
+import type { Slot } from '../types.js'
 import { inBrowser } from '../utils/index.js'
+
+defineSlots<{
+  'nav-bar-title-before'?: Slot
+  'nav-bar-title-after'?: Slot
+  'nav-bar-content-before'?: Slot
+  'nav-bar-content-after'?: Slot
+  'nav-screen-content-before'?: Slot
+  'nav-screen-content-after'?: Slot
+}>()
 
 const { isScreenOpen, closeScreen, toggleScreen } = useNav()
 const { frontmatter } = useData()
 
-const hasNavbar = computed(() => {
-  return frontmatter.value.navbar !== false
-})
+const hasNavbar = computed(() => frontmatter.value.navbar !== false)
 
 provide('close-screen', closeScreen)
 

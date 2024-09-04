@@ -42,7 +42,7 @@ export const prepareSidebarData = async (
 ): Promise<void> => {
   const locales: Record<string, Sidebar | undefined> = {}
 
-  entries(localesOptions.locales || {}).forEach(([localePath, locale]) => {
+  entries(localesOptions.locales ?? {}).forEach(([localePath, locale]) => {
     locales[localePath] = locale.sidebar
   })
 
@@ -50,6 +50,7 @@ export const prepareSidebarData = async (
     locales['/'] = localesOptions.sidebar
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
   const sidebarData = getSidebarData(app, locales, sorters)
 
   let content = `\
@@ -77,29 +78,36 @@ export const getSidebarData = (
     if (!sidebar) return
 
     if (isArray(sidebar)) {
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       structureDir.push(...findStructureList(sidebar, localePath))
     } else if (isPlainObject(sidebar)) {
       entries(sidebar).forEach(([dirname, config]) => {
         const prefix = normalizeLink(localePath, dirname)
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         config === 'structure'
           ? structureDir.push(prefix)
           : isArray(config)
-            ? structureDir.push(...findStructureList(config, prefix))
+            ? // eslint-disable-next-line @typescript-eslint/no-use-before-define
+              structureDir.push(...findStructureList(config, prefix))
             : config.items === 'structure'
               ? structureDir.push(normalizeLink(prefix, config.prefix))
               : structureDir.push(
+                  // eslint-disable-next-line @typescript-eslint/no-use-before-define
                   ...findStructureList(
-                    config.items || [],
+                    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+                    config.items ?? [],
                     normalizeLink(prefix, config.prefix),
                   ),
                 )
       })
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     } else if (sidebar === 'structure') {
       structureDir.push(localePath)
     }
   })
 
   structureDir.forEach((dirname) => {
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     resolved[dirname] = getSidebarItemsFromStructure(app, sorters, dirname)
   })
 
@@ -107,7 +115,7 @@ export const getSidebarData = (
 }
 
 const findStructureList = (
-  sidebar: (string | SidebarItem)[],
+  sidebar: (SidebarItem | string)[],
   prefix = '',
 ): string[] => {
   const list: string[] = []
@@ -119,6 +127,7 @@ const findStructureList = (
       if (item.items === 'structure') {
         list.push(nextPrefix)
       } else {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         item.items?.length &&
           list.push(...findStructureList(item.items, nextPrefix))
       }
@@ -138,13 +147,14 @@ const getSidebarItemsFromStructure = (
     sorters,
     scope: removeLeadingSlash(ensureEndingSlash(dirname)),
   })
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
   return getSidebarItemsFromInfos(infos)
 }
 
 const getSidebarItemsFromInfos = (
   infos: SidebarInfo[],
-): ResolvedSidebarItem[] => {
-  return infos.map((info) => {
+): ResolvedSidebarItem[] =>
+  infos.map((info) => {
     if (info.type === 'file') {
       return {
         link:
@@ -158,4 +168,3 @@ const getSidebarItemsFromInfos = (
       items: getSidebarItemsFromInfos(info.children),
     }
   })
-}

@@ -4,11 +4,17 @@ import { onKeyStroke } from '@vueuse/core'
 import { nextTick, ref, watch } from 'vue'
 import { onContentUpdated } from '../composables/content-update.js'
 import { useData } from '../composables/data.js'
-import { resolveTitle } from '../composables/outline.js'
 import type { MenuItem } from '../composables/outline.js'
+import { resolveTitle } from '../composables/outline.js'
 
 const props = defineProps<{
+  /**
+   * Outline headers
+   */
   headers: MenuItem[]
+  /**
+   * Nav height
+   */
   navHeight: number
 }>()
 
@@ -45,15 +51,14 @@ const toggle = (): void => {
   vh.value = window.innerHeight + Math.min(window.scrollY - props.navHeight, 0)
 }
 
-const onItemClick = (e: Event): void => {
+const onItemClick = async (e: Event): Promise<void> => {
   if ((e.target as HTMLElement).classList.contains('outline-link')) {
     // disable animation on hash navigation when page jumps
     if (items.value) {
       items.value.style.transition = 'none'
     }
-    nextTick(() => {
-      open.value = false
-    })
+    await nextTick()
+    open.value = false
   }
 }
 
@@ -67,13 +72,18 @@ const scrollToTop = (): void => {
   <div
     ref="main"
     class="vp-local-nav-outline-dropdown"
-    :style="{ '--vp-vh': vh + 'px' }"
+    :style="{ '--vp-vh': `${vh}px` }"
   >
-    <button v-if="headers.length > 0" :class="{ open }" @click="toggle">
+    <button
+      v-if="headers.length > 0"
+      type="button"
+      :class="{ open }"
+      @click="toggle"
+    >
       <span class="menu-text">{{ resolveTitle(theme) }}</span>
       <span class="vpi-chevron-right icon" />
     </button>
-    <button v-else @click="scrollToTop">
+    <button v-else type="button" @click="scrollToTop">
       {{ theme.returnToTopLabel || 'Return to top' }}
     </button>
     <Transition name="flyout">
@@ -134,6 +144,7 @@ const scrollToTop = (): void => {
   font-size: 14px;
 
   transition: transform 0.25s;
+
   transform: rotate(0deg);
 }
 

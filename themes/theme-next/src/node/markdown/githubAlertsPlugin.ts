@@ -2,7 +2,10 @@ import { alert } from '@mdit/plugin-alert'
 import type { App } from 'vuepress'
 import type { Markdown, MarkdownEnv } from 'vuepress/markdown'
 import { ensureLeadingSlash, resolveLocalePath } from 'vuepress/shared'
-import type { DefaultThemeLocaleOptions } from '../../shared/index.js'
+import type {
+  ContainerOptions,
+  DefaultThemeLocaleOptions,
+} from '../../shared/index.js'
 import { resolveContainerLocales } from '../config/index.js'
 
 export const githubAlertsPlugin = (
@@ -33,7 +36,8 @@ export const githubAlertsPlugin = (
       const relativePath = ensureLeadingSlash(filePathRelative ?? '')
       const localePath = resolveLocalePath(locales, relativePath)
       const defaultTitle =
-        locales[localePath]?.[`${type}Label`] || type.toUpperCase()
+        locales[localePath][`${type}Label` as keyof ContainerOptions] ||
+        type.toUpperCase()
 
       return `<p class="custom-block-title">${title || defaultTitle}</p>`
     },

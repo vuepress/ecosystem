@@ -5,25 +5,28 @@ import type { CarbonAdsOptions } from '../../shared/index.js'
 import { useAside } from '../composables/aside.js'
 
 const props = defineProps<{
-  carbonAds: CarbonAdsOptions
+  /**
+   * Carbon Ads options
+   */
+  carbonAds?: CarbonAdsOptions
 }>()
+
 const routePath = useRoutePath()
 
-const carbonOptions = props.carbonAds
-
 const { isAsideEnabled } = useAside()
-const container = ref()
+const container = ref<HTMLElement>()
 
 let isInitialized = false
 
 const init = (): void => {
+  const carbonOptions = props.carbonAds!
   if (!isInitialized) {
     isInitialized = true
     const s = document.createElement('script')
     s.id = '_carbonads_js'
     s.src = `//cdn.carbonads.com/carbon.js?serve=${carbonOptions.code}&placement=${carbonOptions.placement}`
     s.async = true
-    container.value.appendChild(s)
+    container.value?.appendChild(s)
   }
 }
 
@@ -31,6 +34,7 @@ watch(
   () => routePath.value,
   () => {
     if (isInitialized && isAsideEnabled.value) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
       ;(window as any)._carbonads?.refresh()
     }
   },
@@ -38,7 +42,7 @@ watch(
 
 // no need to account for option changes during dev, we can just
 // refresh the page
-if (carbonOptions) {
+if (props.carbonAds) {
   onMounted(() => {
     // if the page is loaded when aside is active, load carbon directly.
     // otherwise, only load it if the page resizes to wide enough. this avoids
@@ -46,7 +50,9 @@ if (carbonOptions) {
     if (isAsideEnabled.value) {
       init()
     } else {
-      watch(isAsideEnabled, (wide) => wide && init())
+      watch(isAsideEnabled, (wide) => {
+        if (wide) init()
+      })
     }
   })
 }

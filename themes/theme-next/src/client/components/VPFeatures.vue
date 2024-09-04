@@ -4,21 +4,28 @@ import { computed } from 'vue'
 import type { Feature } from '../../shared/index.js'
 
 const props = defineProps<{
+  /**
+   * The list of features
+   */
   features: Feature[]
 }>()
 
 const grid = computed(() => {
-  const length = props.features.length
+  const { length } = props.features
 
   if (!length) {
     return ''
-  } else if (length === 2) {
+  }
+  if (length === 2) {
     return 'grid-2'
-  } else if (length === 3) {
+  }
+  if (length === 3) {
     return 'grid-3'
-  } else if (length % 3 === 0) {
+  }
+  if (length % 3 === 0) {
     return 'grid-6'
-  } else if (length > 3) {
+  }
+  if (length > 3) {
     return 'grid-4'
   }
   return ''
@@ -85,6 +92,7 @@ const grid = computed(() => {
 }
 
 @media (min-width: 640px) {
+  /* stylelint-disable-next-line rule-empty-line-before */
   .item.grid-2,
   .item.grid-4,
   .item.grid-6 {
@@ -93,6 +101,7 @@ const grid = computed(() => {
 }
 
 @media (min-width: 768px) {
+  /* stylelint-disable-next-line rule-empty-line-before */
   .item.grid-2,
   .item.grid-4 {
     width: calc(100% / 2);

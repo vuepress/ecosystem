@@ -3,9 +3,18 @@ import VPSponsors from '@theme/VPSponsors.vue'
 import type { Sponsor, Sponsors } from '../../shared/index.js'
 
 defineProps<{
+  /**
+   * Sponsor tier
+   */
   tier?: string
-  size?: 'xmini' | 'mini' | 'small'
-  data: Sponsors[] | Sponsor[]
+  /**
+   * Sponsor size
+   */
+  size?: 'mini' | 'small' | 'xmini'
+  /**
+   * Sponsor data
+   */
+  data: Sponsor[] | Sponsors[]
 }>()
 </script>
 

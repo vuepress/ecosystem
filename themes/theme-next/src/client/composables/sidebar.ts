@@ -6,6 +6,7 @@ import {
   isString,
 } from '@vuepress/helper/client'
 import { useMediaQuery } from '@vueuse/core'
+import type { ComputedRef, InjectionKey, Ref } from 'vue'
 import {
   computed,
   inject,
@@ -17,7 +18,6 @@ import {
   watchEffect,
   watchPostEffect,
 } from 'vue'
-import type { ComputedRef, InjectionKey, Ref } from 'vue'
 import { resolveRouteFullPath, useRoute, useRouteLocale } from 'vuepress/client'
 import type { Sidebar, SidebarItem } from '../../shared/index.js'
 import type { ResolvedSidebarItem } from '../../shared/resolved/sidebar.js'
@@ -50,11 +50,12 @@ export const setupSidebarData = (): void => {
       frontmatter.value.pageLayout !== 'home',
   )
 
-  const sidebar = computed(() => {
-    return hasSidebar.value
-      ? getSidebar(theme.value.sidebar, page.value.path, routeLocale.value)
-      : []
-  })
+  const sidebar = computed(() =>
+    hasSidebar.value
+      ? // eslint-disable-next-line @typescript-eslint/no-use-before-define
+        getSidebar(theme.value.sidebar, page.value.path, routeLocale.value)
+      : [],
+  )
 
   provide(sidebarSymbol, sidebar)
 }
@@ -109,7 +110,7 @@ export interface SidebarControl {
   isActiveLink: Ref<boolean>
   hasActiveLink: ComputedRef<boolean>
   hasChildren: ComputedRef<boolean>
-  toggle(): void
+  toggle: () => void
 }
 
 export interface UseSidebarReturn {
@@ -135,12 +136,18 @@ export const useSidebar = (): UseSidebarReturn => {
 
   const sidebar = useSidebarData()
 
-  const hasSidebar = computed(() => {
-    return (
+  const hasSidebar = computed(
+    () =>
       frontmatter.value.sidebar !== false &&
       sidebar.value.length > 0 &&
-      frontmatter.value.pageLayout !== 'home'
-    )
+      frontmatter.value.pageLayout !== 'home',
+  )
+
+  const hasAside = computed(() => {
+    if (frontmatter.value.pageLayout === 'home' || frontmatter.value.home)
+      return false
+    if (frontmatter.value.aside != null) return !!frontmatter.value.aside
+    return theme.value.aside !== false
   })
 
   const leftAside = computed(() => {
@@ -151,18 +158,12 @@ export const useSidebar = (): UseSidebarReturn => {
     return false
   })
 
-  const hasAside = computed(() => {
-    if (frontmatter.value.pageLayout === 'home' || frontmatter.value.home)
-      return false
-    if (frontmatter.value.aside != null) return !!frontmatter.value.aside
-    return theme.value.aside !== false
-  })
-
   const isSidebarEnabled = computed(() => hasSidebar.value && is960.value)
 
-  const sidebarGroups = computed(() => {
-    return hasSidebar.value ? getSidebarGroups(sidebar.value) : []
-  })
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
+  const sidebarGroups = computed(() =>
+    hasSidebar.value ? getSidebarGroups(sidebar.value) : [],
+  )
 
   const open = (): void => {
     isOpen.value = true
@@ -173,7 +174,11 @@ export const useSidebar = (): UseSidebarReturn => {
   }
 
   const toggle = (): void => {
-    isOpen.value ? close() : open()
+    if (isOpen.value) {
+      close()
+    } else {
+      open()
+    }
   }
 
   return {
@@ -206,6 +211,13 @@ export const useCloseSidebarOnEscape = (
       : undefined
   })
 
+  const onEscape = (e: KeyboardEvent): void => {
+    if (e.key === 'Escape' && isOpen.value) {
+      close()
+      triggerElement?.focus()
+    }
+  }
+
   onMounted(() => {
     window.addEventListener('keyup', onEscape)
   })
@@ -213,13 +225,6 @@ export const useCloseSidebarOnEscape = (
   onUnmounted(() => {
     window.removeEventListener('keyup', onEscape)
   })
-
-  const onEscape = (e: KeyboardEvent): void => {
-    if (e.key === 'Escape' && isOpen.value) {
-      close()
-      triggerElement?.focus()
-    }
-  }
 }
 
 export const useSidebarControl = (
@@ -230,13 +235,9 @@ export const useSidebarControl = (
 
   const collapsed = ref(false)
 
-  const collapsible = computed(() => {
-    return item.value.collapsed != null
-  })
+  const collapsible = computed(() => item.value.collapsed != null)
 
-  const isLink = computed(() => {
-    return !!item.value.link
-  })
+  const isLink = computed(() => !!item.value.link)
 
   const isActiveLink = ref(false)
   const updateIsActiveLink = (): void => {
@@ -249,6 +250,7 @@ export const useSidebarControl = (
   watch([page, item, () => route.hash], updateIsActiveLink)
   onMounted(updateIsActiveLink)
 
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   const hasActiveLink = computed(() => {
     if (isActiveLink.value) {
       return true
@@ -259,16 +261,14 @@ export const useSidebarControl = (
       : false
   })
 
-  const hasChildren = computed(() => {
-    return !!(item.value.items && item.value.items.length)
-  })
+  const hasChildren = computed(() => !!item.value.items?.length)
 
   watchEffect(() => {
     collapsed.value = !!(collapsible.value && item.value.collapsed)
   })
 
   watchPostEffect(() => {
-    ;(isActiveLink.value || hasActiveLink.value) && (collapsed.value = false)
+    if (isActiveLink.value || hasActiveLink.value) collapsed.value = false
   })
 
   const toggle = (): void => {
@@ -288,53 +288,8 @@ export const useSidebarControl = (
   }
 }
 
-/**
- * Get the `Sidebar` from sidebar option. This method will ensure to get correct
- * sidebar config from `MultiSideBarConfig` with various path combinations such
- * as matching `guide/` and `/guide/`. If no matching config was found, it will
- * return empty array.
- */
-export const getSidebar = (
-  _sidebar: Sidebar | undefined,
-  routePath: string,
-  routeLocal: string,
-): ResolvedSidebarItem[] => {
-  if (_sidebar === 'structure') {
-    return resolveSidebarItems(structureSidebarData.value[routeLocal])
-  } else if (isArray(_sidebar)) {
-    return resolveSidebarItems(_sidebar, routeLocal)
-  } else if (isPlainObject(_sidebar)) {
-    const dir =
-      Object.keys(_sidebar)
-        .sort((a, b) => b.split('/').length - a.split('/').length)
-        .find((dir) => {
-          // make sure the multi sidebar key starts with slash too
-          return routePath.startsWith(ensureLeadingSlash(dir))
-        }) || ''
-    const sidebar = dir ? _sidebar[dir] : undefined
-
-    if (sidebar === 'structure') {
-      return resolveSidebarItems(
-        dir ? structureSidebarData.value[dir] : [],
-        routeLocal,
-      )
-    } else if (isArray(sidebar)) {
-      return resolveSidebarItems(sidebar, dir)
-    } else if (isPlainObject(sidebar)) {
-      const prefix = normalizePrefix(dir, sidebar.prefix)
-      return resolveSidebarItems(
-        sidebar.items === 'structure'
-          ? structureSidebarData.value[prefix]
-          : sidebar.items,
-        prefix,
-      )
-    }
-  }
-  return []
-}
-
 const resolveSidebarItems = (
-  sidebarItems: (string | SidebarItem)[],
+  sidebarItems: (SidebarItem | string)[],
   _prefix = '',
 ): ResolvedSidebarItem[] => {
   const resolved: ResolvedSidebarItem[] = []
@@ -362,6 +317,56 @@ const resolveSidebarItems = (
 }
 
 /**
+ * Get the `Sidebar` from sidebar option. This method will ensure to get correct
+ * sidebar config from `MultiSideBarConfig` with various path combinations such
+ * as matching `guide/` and `/guide/`. If no matching config was found, it will
+ * return empty array.
+ */
+export const getSidebar = (
+  _sidebar: Sidebar | undefined,
+  routePath: string,
+  routeLocal: string,
+): ResolvedSidebarItem[] => {
+  if (_sidebar === 'structure') {
+    return resolveSidebarItems(structureSidebarData.value[routeLocal])
+  }
+  if (isArray(_sidebar)) {
+    return resolveSidebarItems(_sidebar, routeLocal)
+  }
+  if (isPlainObject(_sidebar)) {
+    const dir =
+      Object.keys(_sidebar)
+        .sort((a, b) => b.split('/').length - a.split('/').length)
+        // eslint-disable-next-line @typescript-eslint/no-shadow
+        .find((dir) =>
+          // make sure the multi sidebar key starts with slash too
+          routePath.startsWith(ensureLeadingSlash(dir)),
+        ) || ''
+    const sidebar = dir ? _sidebar[dir] : undefined
+
+    if (sidebar === 'structure') {
+      return resolveSidebarItems(
+        dir ? structureSidebarData.value[dir] : [],
+        routeLocal,
+      )
+    }
+    if (isArray(sidebar)) {
+      return resolveSidebarItems(sidebar, dir)
+    }
+    if (isPlainObject(sidebar)) {
+      const prefix = normalizePrefix(dir, sidebar.prefix)
+      return resolveSidebarItems(
+        sidebar.items === 'structure'
+          ? structureSidebarData.value[prefix]
+          : sidebar.items,
+        prefix,
+      )
+    }
+  }
+  return []
+}
+
+/**
  * Get or generate sidebar group from the given sidebar items.
  */
 export const getSidebarGroups = (
@@ -371,9 +376,7 @@ export const getSidebarGroups = (
 
   let lastGroupIndex = 0
 
-  for (const index in sidebar) {
-    const item = sidebar[index]
-
+  for (const item of sidebar) {
     if (item.items) {
       lastGroupIndex = groups.push(item)
       continue
@@ -383,7 +386,7 @@ export const getSidebarGroups = (
       groups.push({ items: [] })
     }
 
-    groups[lastGroupIndex]!.items!.push(item)
+    groups[lastGroupIndex].items!.push(item)
   }
 
   return groups

@@ -1,10 +1,11 @@
-import type { GitPluginPageData } from '@vuepress/plugin-git'
+import type { GitData } from '@vuepress/plugin-git'
 import type { NavItemWithLink } from './navbar.js'
 import type { Outline } from './options/index.js'
 import type { DefaultThemeImage, Feature, HeroAction } from './shared.js'
 
-export interface DefaultThemePageData extends GitPluginPageData {
+export interface DefaultThemePageData {
   filePathRelative: string | null
+  git?: GitData
 }
 
 export interface DefaultThemePageFrontmatter {
@@ -28,7 +29,7 @@ export interface DefaultThemePageFrontmatter {
    * @type { 'doc' | 'page' | 'home' }
    * @default 'doc'
    */
-  pageLayout?: false | string
+  pageLayout?: string | false
   /**
    * Whether show navbar
    *
@@ -167,7 +168,7 @@ export interface DefaultThemeNormalPageFrontmatter
    *
    * @default true
    */
-  prev: boolean | string | NavItemWithLink
+  prev: NavItemWithLink | boolean | string
   /**
    * Whether show Next link, or define the Next link
    *
@@ -175,7 +176,7 @@ export interface DefaultThemeNormalPageFrontmatter
    *
    * @default true
    */
-  next: boolean | string | NavItemWithLink
+  next: NavItemWithLink | boolean | string
   /**
    * Whether index current page
    *

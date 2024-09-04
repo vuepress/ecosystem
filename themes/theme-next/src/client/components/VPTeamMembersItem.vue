@@ -4,7 +4,13 @@ import VPSocialLinks from '@theme/VPSocialLinks.vue'
 import type { TeamMember } from '../../shared/index.js'
 
 interface Props {
-  size?: 'small' | 'medium'
+  /**
+   * display size
+   */
+  size?: 'medium' | 'small'
+  /**
+   * Member
+   */
   member: TeamMember
 }
 

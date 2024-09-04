@@ -4,12 +4,35 @@ import { computed } from 'vue'
 import { resolveRouteFullPath, useRouter, withBase } from 'vuepress/client'
 
 interface Props {
+  /**
+   * The tag of the button
+   */
   tag?: string
-  size?: 'medium' | 'big'
-  theme?: 'brand' | 'alt' | 'sponsor'
+  /**
+   * The size of the button
+   * @default 'medium'
+   */
+  size?: 'big' | 'medium'
+  /**
+   * The theme of the button
+   * @default 'brand'
+   */
+  theme?: 'alt' | 'brand' | 'sponsor'
+  /**
+   * The text of the button
+   */
   text: string
+  /**
+   * The link of the button
+   */
   href?: string
+  /**
+   * The target of the button
+   */
   target?: string
+  /**
+   * The rel of the button
+   */
   rel?: string
 }
 const props = withDefaults(defineProps<Props>(), {
@@ -27,9 +50,7 @@ const isExternal = computed(
   () => (props.href && isLinkExternal(props.href)) || props.target === '_blank',
 )
 
-const component = computed(() => {
-  return props.tag || props.href ? 'a' : 'button'
-})
+const component = computed(() => (props.tag || props.href ? 'a' : 'button'))
 
 const link = computed(() => {
   if (!props.href) return undefined

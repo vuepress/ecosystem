@@ -1,6 +1,6 @@
 export type ResolvedNavItem =
-  | ResolvedNavItemWithLink
   | ResolvedNavItemWithChildren
+  | ResolvedNavItemWithLink
 
 export interface ResolvedNavItemWithLink {
   text: string

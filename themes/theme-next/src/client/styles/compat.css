@@ -73,9 +73,9 @@
 
   color: var(--vp-c-text-1);
 
-  fill: currentcolor;
-
   transition: color 0.5s ease;
+
+  fill: currentcolor;
 }
 
 .DocSearch-Button:hover .DocSearch-Search-Icon {

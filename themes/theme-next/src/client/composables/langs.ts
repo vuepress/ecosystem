@@ -1,5 +1,5 @@
-import { computed } from 'vue'
 import type { ComputedRef, Ref } from 'vue'
+import { computed } from 'vue'
 import { useRoute, useRouteLocale, useSiteData } from 'vuepress/client'
 import { useThemeData } from './theme-data.js'
 
@@ -17,14 +17,14 @@ export const useLangs = ({ removeCurrent = true } = {}): {
     return {
       label:
         theme.value.locales?.[link]?.selectLanguageName ||
-        site.value.locales[link]?.lang ||
+        site.value.locales[link].lang ||
         '',
       link,
     }
   })
 
   const localeLinks = computed(() =>
-    Object.keys(site.value.locales || {}).flatMap((localePath) => {
+    Object.keys(site.value.locales).flatMap((localePath) => {
       const locale = theme.value.locales?.[localePath]
       return removeCurrent &&
         currentLang.value.label === locale?.selectLanguageName

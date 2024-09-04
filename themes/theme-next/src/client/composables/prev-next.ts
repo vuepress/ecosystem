@@ -1,5 +1,5 @@
-import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
+import { computed } from 'vue'
 import { resolveRouteFullPath } from 'vuepress/client'
 import type { NavItemWithLink } from '../../shared/index.js'
 import { isActive } from '../utils/index.js'
@@ -9,6 +9,14 @@ import { getFlatSideBarLinks, useSidebarData } from './sidebar.js'
 export interface PrevNext {
   prev?: Partial<NavItemWithLink>
   next?: Partial<NavItemWithLink>
+}
+
+const uniqBy = <T>(array: T[], keyFn: (item: T) => unknown): T[] => {
+  const seen = new Set()
+  return array.filter((item) => {
+    const k = keyFn(item)
+    return seen.has(k) ? false : seen.add(k)
+  })
 }
 
 export const usePrevNext = (): ComputedRef<PrevNext> => {
@@ -21,9 +29,9 @@ export const usePrevNext = (): ComputedRef<PrevNext> => {
     // ignore inner-page links with hashes
     const candidates = uniqBy(links, (link) => link.link.replace(/[?#].*$/, ''))
 
-    const index = candidates.findIndex((link) => {
-      return isActive(page.value.path, resolveRouteFullPath(link.link))
-    })
+    const index = candidates.findIndex((link) =>
+      isActive(page.value.path, resolveRouteFullPath(link.link)),
+    )
 
     const hidePrev =
       (theme.value.docFooter?.prev === false && !frontmatter.value.prev) ||
@@ -70,13 +78,5 @@ export const usePrevNext = (): ComputedRef<PrevNext> => {
       prev?: { text?: string; link?: string }
       next?: { text?: string; link?: string }
     }
-  })
-}
-
-const uniqBy = <T>(array: T[], keyFn: (item: T) => any): T[] => {
-  const seen = new Set()
-  return array.filter((item) => {
-    const k = keyFn(item)
-    return seen.has(k) ? false : seen.add(k)
   })
 }

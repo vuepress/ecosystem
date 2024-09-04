@@ -6,6 +6,12 @@ import { useSiteLocaleData } from 'vuepress/client'
 import { useData } from '../composables/data.js'
 import { useLangs } from '../composables/langs.js'
 import { useSidebar } from '../composables/sidebar.js'
+import type { Slot } from '../types.js'
+
+defineSlots<{
+  'nav-bar-title-before'?: Slot
+  'nav-bar-title-after'?: Slot
+}>()
 
 const site = useSiteLocaleData()
 const { theme } = useData()
