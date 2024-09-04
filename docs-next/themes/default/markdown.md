@@ -354,8 +354,8 @@ Adding the `// [!code warning]` or `// [!code error]` comments on a line will co
 export default {
   data () {
     return {
-      msg: 'Error', // [!!code error]
-      msg: 'Warning' // [!!code warning]
+      msg1: 'Error', // [!!code error]
+      msg2: 'Warning' // [!!code warning]
     }
   }
 
@@ -368,8 +368,8 @@ export default {
 export default {
   data() {
     return {
-      msg: 'Error', // [!code error]
-      msg: 'Warning', // [!code warning]
+      msg1: 'Error', // [!code error]
+      msg2: 'Warning', // [!code warning]
     }
   },
 }
