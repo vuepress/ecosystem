@@ -1,6 +1,6 @@
 import { useLocaleConfig } from '@vuepress/helper/client'
 import type { PropType, SlotsType, VNode } from 'vue'
-import { defineComponent, h, onMounted, ref, Transition } from 'vue'
+import { Transition, defineComponent, h, onMounted, ref } from 'vue'
 import type { PwaPluginLocaleConfig } from '../../shared/index.js'
 import { usePwaEvent } from '../composables/index.js'
 import { UpdateIcon } from './icons.js'
@@ -22,7 +22,7 @@ export const PwaFoundPopup = defineComponent({
     default?: (props: {
       found: boolean
       refresh: () => void
-    }) => VNode[] | VNode | null
+    }) => VNode | VNode[] | null
   }>,
 
   setup(props, { slots }) {
@@ -42,9 +42,9 @@ export const PwaFoundPopup = defineComponent({
       const event = usePwaEvent()
 
       event.on('updatefound', () => {
-        navigator.serviceWorker.getRegistration().then((registration) => {
+        void navigator.serviceWorker.getRegistration().then((registration) => {
           // Check whether a valid service worker is active
-          if (registration && registration.active) found.value = true
+          if (registration?.active) found.value = true
         })
       })
 
@@ -61,7 +61,7 @@ export const PwaFoundPopup = defineComponent({
           slots.default?.({
             found: found.value,
             refresh,
-          }) ||
+          }) ??
           (found.value
             ? h(
                 'button',
@@ -69,7 +69,9 @@ export const PwaFoundPopup = defineComponent({
                   type: 'button',
                   class: 'sw-hint-popup',
                   tabindex: 0,
-                  onClick: () => refresh(),
+                  onClick: () => {
+                    refresh()
+                  },
                 },
                 [
                   locale.value.hint,

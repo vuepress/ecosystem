@@ -14,10 +14,8 @@ export interface RTLPluginOptions {
    *
    * @default { 'html': { dir: 'rtl' } }
    */
-  // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
   selector?: {
-    // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
-    [element: string]: {
+    [cssSelector: string]: {
       [attr: string]: string
     }
   }
@@ -25,12 +23,12 @@ export interface RTLPluginOptions {
 
 const __dirname = getDirname(import.meta.url)
 
-export const rltPlugin = (options: RTLPluginOptions = {}): PluginObject => ({
+export const rtlPlugin = (options: RTLPluginOptions = {}): PluginObject => ({
   name: '@vuepress/plugin-rtl',
 
   define: {
     __RTL_LOCALES__: Array.isArray(options.locales) ? options.locales : ['/'],
-    __RTL_SELECTOR__: options.selector || { html: { dir: 'rtl' } },
+    __RTL_SELECTOR__: options.selector ?? { html: { dir: 'rtl' } },
   },
 
   clientConfigFile: path.join(__dirname, '../client/config.js'),

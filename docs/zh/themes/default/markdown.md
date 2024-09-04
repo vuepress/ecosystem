@@ -2,27 +2,7 @@
 
 <NpmBadge package="@vuepress/theme-default" />
 
-## 自定义容器
-
-- 使用：
-
-  ```md
-  ::: <type> [title]
-  [content]
-  :::
-  ```
-
-  `type` 是必需的， `title` 和 `content` 是可选的。
-
-  支持的 `type` 有：
-
-  - `tip`
-  - `warning`
-  - `danger`
-  - `details`
-  - [CodeGroup](./components.md#codegroup) 和 [CodeGroupItem](./components.md#codegroupitem) 的别名：
-    - `code-group`
-    - `code-group-item`
+## 提示容器
 
 - 示例 1 （默认标题）：
 
@@ -96,7 +76,25 @@ console.log('你好，VuePress！')
 
 :::
 
-- 示例 3 （Code Group 别名）：
+## 自定义容器
+
+- 使用：
+
+  ```md
+  ::: <type> [title]
+  [content]
+  :::
+  ```
+
+  `type` 是必需的， `title` 和 `content` 是可选的。
+
+  支持的 `type` 有：
+
+  - [CodeGroup](./components.md#codegroup) 和 [CodeGroupItem](./components.md#codegroupitem) 的别名：
+    - `code-group`
+    - `code-group-item`
+
+- 示例：
 
 **输入**
 

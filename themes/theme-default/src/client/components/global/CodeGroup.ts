@@ -9,6 +9,7 @@ import {
   ref,
   watch,
 } from 'vue'
+import { useDarkMode } from '../../composables/useDarkMode.js'
 
 import '../../styles/code-group.scss'
 
@@ -16,7 +17,7 @@ export const CodeGroup = defineComponent({
   name: 'CodeGroup',
 
   slots: Object as SlotsType<{
-    default: () => VNode[]
+    default?: () => VNode[]
   }>,
 
   setup(_, { slots }) {
@@ -30,6 +31,37 @@ export const CodeGroup = defineComponent({
         tabRefs.value = []
       })
     }
+    const isDark = useDarkMode()
+    const groupRef = ref<HTMLDivElement>()
+    // shiki highlighter color & background
+    onMounted(() => {
+      if (!groupRef.value) return
+
+      const codeBlock = groupRef.value.querySelector<HTMLDivElement>(
+        'div[class*="language-"]',
+      )
+
+      if (codeBlock && codeBlock.dataset.highlighter === 'shiki') {
+        const lightColor = codeBlock.style.getPropertyValue('--shiki-light')
+        const darkColor = codeBlock.style.getPropertyValue('--shiki-dark')
+        const lightBg = codeBlock.style.getPropertyValue('--shiki-light-bg')
+        const darkBg = codeBlock.style.getPropertyValue('--shiki-dark-bg')
+        watch(
+          isDark,
+          (val) => {
+            groupRef.value!.style.setProperty(
+              '--vp-c-code-tab-bg',
+              val ? darkBg : lightBg,
+            )
+            groupRef.value!.style.setProperty(
+              '--vp-c-code-tab-title',
+              val ? darkColor : lightColor,
+            )
+          },
+          { immediate: true },
+        )
+      }
+    })
 
     // index of current active item
     const activeIndex = ref(-1)
@@ -93,13 +125,13 @@ export const CodeGroup = defineComponent({
 
     return () => {
       // get children code-group-item from default slots
-      const items = (slots.default?.() || [])
-        .filter((vnode) => (vnode.type as Component).name === 'CodeGroupItem')
-        .map((vnode) => {
-          if (vnode.props === null) {
-            vnode.props = {}
+      const items = (slots.default?.() ?? [])
+        .filter((vNode) => (vNode.type as Component).name === 'CodeGroupItem')
+        .map((vNode) => {
+          if (vNode.props === null) {
+            vNode.props = {}
           }
-          return vnode as VNode & { props: Exclude<VNode['props'], null> }
+          return vNode as VNode & { props: Exclude<VNode['props'], null> }
         })
 
       // do not render anything if there is no code-group-item
@@ -127,7 +159,7 @@ export const CodeGroup = defineComponent({
         })
       }
 
-      return h('div', { class: 'code-group' }, [
+      return h('div', { class: 'code-group', ref: groupRef }, [
         h(
           'div',
           { class: 'code-group-nav', role: 'tablist' },
@@ -147,10 +179,14 @@ export const CodeGroup = defineComponent({
                 },
                 role: 'tab',
                 ariaSelected: isActive,
-                onClick: () => (activeIndex.value = i),
-                onKeydown: (e) => keyboardHandler(e, i),
+                onClick: () => {
+                  activeIndex.value = i
+                },
+                onKeydown: (e) => {
+                  keyboardHandler(e, i)
+                },
               },
-              vnode.props.title,
+              vnode.props.title as string,
             )
           }),
         ),

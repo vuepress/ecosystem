@@ -1,27 +1,30 @@
 <script setup lang="ts">
-import { useScrollPromise } from '@theme/useScrollPromise'
-import { useSidebarItems } from '@theme/useSidebarItems'
-import { useThemeLocaleData } from '@theme/useThemeData'
 import VPHome from '@theme/VPHome.vue'
 import VPNavbar from '@theme/VPNavbar.vue'
 import VPPage from '@theme/VPPage.vue'
 import VPSidebar from '@theme/VPSidebar.vue'
+import { useScrollPromise } from '@theme/useScrollPromise'
+import { useSidebarItems } from '@theme/useSidebarItems'
+import { useThemeLocaleData } from '@theme/useThemeData'
+import type { VNode } from 'vue'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { usePageData, usePageFrontmatter, useRouter } from 'vuepress/client'
 import type { DefaultThemePageFrontmatter } from '../../shared/index.js'
 
 defineSlots<{
-  'navbar'?: (props: Record<never, never>) => any
-  'navbar-before'?: (props: Record<never, never>) => any
-  'navbar-after'?: (props: Record<never, never>) => any
-  'sidebar'?: (props: Record<never, never>) => any
-  'sidebar-top'?: (props: Record<never, never>) => any
-  'sidebar-bottom'?: (props: Record<never, never>) => any
-  'page'?: (props: Record<never, never>) => any
-  'page-top'?: (props: Record<never, never>) => any
-  'page-bottom'?: (props: Record<never, never>) => any
-  'page-content-top'?: (props: Record<never, never>) => any
-  'page-content-bottom'?: (props: Record<never, never>) => any
+  'navbar'?: (props: Record<never, never>) => VNode | VNode[] | null
+  'navbar-before'?: (props: Record<never, never>) => VNode | VNode[] | null
+  'navbar-after'?: (props: Record<never, never>) => VNode | VNode[] | null
+  'sidebar'?: (props: Record<never, never>) => VNode | VNode[] | null
+  'sidebar-top'?: (props: Record<never, never>) => VNode | VNode[] | null
+  'sidebar-bottom'?: (props: Record<never, never>) => VNode | VNode[] | null
+  'page'?: (props: Record<never, never>) => VNode | VNode[] | null
+  'page-top'?: (props: Record<never, never>) => VNode | VNode[] | null
+  'page-bottom'?: (props: Record<never, never>) => VNode | VNode[] | null
+  'page-content-top'?: (props: Record<never, never>) => VNode | VNode[] | null
+  'page-content-bottom'?: (
+    props: Record<never, never>,
+  ) => VNode | VNode[] | null
 }>()
 
 const page = usePageData()
@@ -41,11 +44,11 @@ const toggleSidebar = (to?: boolean): void => {
   isSidebarOpen.value = typeof to === 'boolean' ? to : !isSidebarOpen.value
 }
 const touchStart = { x: 0, y: 0 }
-const onTouchStart = (e): void => {
+const onTouchStart = (e: TouchEvent): void => {
   touchStart.x = e.changedTouches[0].clientX
   touchStart.y = e.changedTouches[0].clientY
 }
-const onTouchEnd = (e): void => {
+const onTouchEnd = (e: TouchEvent): void => {
   const dx = e.changedTouches[0].clientX - touchStart.x
   const dy = e.changedTouches[0].clientY - touchStart.y
   if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
@@ -77,7 +80,7 @@ const containerClass = computed(() => [
 ])
 
 // close sidebar after navigation
-let unregisterRouterHook
+let unregisterRouterHook: () => void
 onMounted(() => {
   const router = useRouter()
   unregisterRouterHook = router.afterEach(() => {
@@ -98,6 +101,7 @@ const onBeforeLeave = scrollPromise.pending
   <div
     class="vp-theme-container"
     :class="containerClass"
+    vp-container
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >

@@ -4,8 +4,8 @@ declare global {
   interface Window {
     umami: {
       track: {
-        (payload?: Record<any, any>): void
-        (name: string, data?: Record<any, any>): void
+        (payload?: Record<string, unknown>): void
+        (name: string, data?: Record<string, unknown>): void
       }
     }
   }
@@ -27,7 +27,7 @@ export const useUmamiAnalytics = ({
   hostUrl,
 }: UmamiOptions): void => {
   // avoid duplicated import
-  if (window.umami) return
+  if ('umami' in window) return
 
   const script = document.createElement('script')
   script.src = link!

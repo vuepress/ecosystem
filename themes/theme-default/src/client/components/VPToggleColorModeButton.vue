@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useDarkMode } from '@theme/useDarkMode'
-import { useThemeLocaleData } from '@theme/useThemeData'
 import VPDarkIcon from '@theme/VPDarkIcon.vue'
 import VPLightIcon from '@theme/VPLightIcon.vue'
+import { useDarkMode } from '@theme/useDarkMode'
+import { useThemeLocaleData } from '@theme/useThemeData'
 
 const themeLocale = useThemeLocaleData()
 const isDarkMode = useDarkMode()
@@ -14,6 +14,7 @@ const toggleColorMode = (): void => {
 
 <template>
   <button
+    type="button"
     class="vp-toggle-color-mode-button"
     :title="themeLocale.toggleColorMode"
     @click="toggleColorMode"
@@ -32,7 +33,7 @@ const toggleColorMode = (): void => {
   border: 0;
 
   background: none;
-  color: var(--c-text);
+  color: var(--vp-c-text);
 
   opacity: 0.8;
   cursor: pointer;

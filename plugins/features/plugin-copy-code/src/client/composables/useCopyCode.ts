@@ -5,6 +5,7 @@ import { usePageData } from 'vuepress/client'
 import type { CopyCodePluginLocaleConfig } from '../../shared/index.js'
 
 import '../styles/copy-code.css'
+import '../styles/vars.css'
 
 export interface UseCopyCodeOptions {
   locales: CopyCodePluginLocaleConfig
@@ -65,7 +66,7 @@ export const useCopyCode = ({
   const page = usePageData()
 
   const insertCopyButton = (codeBlockElement: HTMLElement): void => {
-    if (codeBlockElement.hasAttribute('copy-code-registered')) return
+    if (codeBlockElement.hasAttribute('copy-code')) return
 
     const copyElement = document.createElement('button')
 
@@ -75,11 +76,11 @@ export const useCopyCode = ({
     copyElement.setAttribute('data-copied', locale.value.copied)
 
     codeBlockElement.parentElement?.insertBefore(copyElement, codeBlockElement)
-    codeBlockElement.setAttribute('copy-code-registered', '')
+    codeBlockElement.setAttribute('copy-code', '')
   }
 
   const appendCopyButton = async (): Promise<void> => {
-    document.body.classList.toggle('copy-code-disabled', !enabled.value)
+    document.body.classList.toggle('no-copy-code', !enabled.value)
     if (!enabled.value) return
 
     await nextTick()
@@ -96,17 +97,17 @@ export const useCopyCode = ({
   const { copy } = useClipboard({ legacy: true })
   const timeoutIdMap = new WeakMap<HTMLElement, ReturnType<typeof setTimeout>>()
 
-  const copyContent = (
+  const copyContent = async (
     codeContainer: HTMLDivElement,
     codeContent: HTMLPreElement,
     button: HTMLButtonElement,
-  ): void => {
+  ): Promise<void> => {
     const clone = codeContent.cloneNode(true) as HTMLPreElement
 
     if (ignoreSelector.length) {
-      clone
-        .querySelectorAll(ignoreSelector.join(','))
-        .forEach((node) => node.remove())
+      clone.querySelectorAll(ignoreSelector.join(',')).forEach((node) => {
+        node.remove()
+      })
     }
 
     if (transform) transform(clone)
@@ -116,18 +117,18 @@ export const useCopyCode = ({
     if (SHELL_RE.test(codeContainer.className))
       text = text.replace(/^ *(\$|>) /gm, '')
 
-    copy(text).then(() => {
-      if (duration <= 0) return
+    await copy(text)
 
-      button.classList.add('copied')
-      clearTimeout(timeoutIdMap.get(button))
-      const timeoutId = setTimeout(() => {
-        button.classList.remove('copied')
-        button.blur()
-        timeoutIdMap.delete(button)
-      }, duration)
-      timeoutIdMap.set(button, timeoutId)
-    })
+    if (duration <= 0) return
+
+    button.classList.add('copied')
+    clearTimeout(timeoutIdMap.get(button))
+    const timeoutId = setTimeout(() => {
+      button.classList.remove('copied')
+      button.blur()
+      timeoutIdMap.delete(button)
+    }, duration)
+    timeoutIdMap.set(button, timeoutId)
   }
 
   useEventListener('click', (event) => {
@@ -137,12 +138,12 @@ export const useCopyCode = ({
       enabled.value &&
       el.matches('div[class*="language-"] > button.vp-copy-code-button')
     ) {
-      const codeContainer = el.parentElement as HTMLDivElement
+      const codeContainer = el.parentElement as HTMLDivElement | null
       const preBlock = el.nextElementSibling as HTMLPreElement | null
 
       if (!codeContainer || !preBlock) return
 
-      copyContent(codeContainer, preBlock, el as HTMLButtonElement)
+      void copyContent(codeContainer, preBlock, el as HTMLButtonElement)
     }
   })
 }

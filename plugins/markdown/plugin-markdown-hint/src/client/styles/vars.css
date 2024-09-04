@@ -1,0 +1,44 @@
+:root {
+  /* important */
+  --important-c-accent: #a371f7;
+  --important-c-light: #f4eefe;
+  --important-c-dark: #230555;
+  --important-c-soft: rgb(163 113 247 / 10%);
+
+  /* info */
+  --info-c-accent: #4cb3d4;
+  --info-c-light: #eef9fd;
+  --info-c-dark: #193c47;
+  --info-c-soft: rgb(76 179 212 / 10%);
+
+  /* note */
+  --note-c-accent: #ccc;
+  --note-c-light: #fdfdfe;
+  --note-c-dark: #474748;
+  --note-c-soft: rgb(212 213 216 / 20%);
+
+  /* tip */
+  --tip-c-accent: #009400;
+  --tip-c-light: #e6f6e6;
+  --tip-c-dark: #003100;
+  --tip-c-soft: rgb(0 148 0 / 15%);
+
+  /* warning */
+  --warning-c-accent: #e6a700;
+  --warning-c-light: #fff8e6;
+  --warning-c-dark: #4d3800;
+  --warning-c-soft: rgb(230 167 0 / 15%);
+
+  /* caution */
+  --caution-c-accent: #e13238;
+  --caution-c-light: #ffebec;
+  --caution-c-dark: #4b1113;
+  --caution-c-soft: rgb(225 50 56 / 15%);
+
+  /* detail */
+  --detail-c-light: #eee;
+  --detail-c-dark: #333;
+  --detail-c-icon-light: #ccc;
+  --detail-c-icon-dark: #555;
+  --detail-c-soft: rgb(127 127 127 / 15%);
+}

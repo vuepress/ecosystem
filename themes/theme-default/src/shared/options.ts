@@ -1,6 +1,7 @@
 import type { BackToTopPluginOptions } from '@vuepress/plugin-back-to-top'
 import type { CopyCodePluginOptions } from '@vuepress/plugin-copy-code'
 import type { LinksCheckPluginOptions } from '@vuepress/plugin-links-check'
+import type { MarkdownHintPluginOptions } from '@vuepress/plugin-markdown-hint'
 import type { PrismjsPluginOptions } from '@vuepress/plugin-prismjs'
 import type { SeoPluginOptions } from '@vuepress/plugin-seo'
 import type { SitemapPluginOptions } from '@vuepress/plugin-sitemap'
@@ -24,10 +25,6 @@ export interface DefaultThemePluginsOptions {
    * Enable @vuepress/plugin-markdown-container or not
    */
   container?: {
-    tip?: boolean
-    warning?: boolean
-    danger?: boolean
-    details?: boolean
     codeGroup?: boolean
     codeGroupItem?: boolean
   }
@@ -41,6 +38,8 @@ export interface DefaultThemePluginsOptions {
    * Enable @vuepress/plugin-git or not
    */
   git?: boolean
+
+  hint?: MarkdownHintPluginOptions | boolean
 
   /**
    * Enable @vuepress/plugin-links-check or not
@@ -60,7 +59,7 @@ export interface DefaultThemePluginsOptions {
   /**
    * Enable @vuepress/plugin-prismjs or not
    */
-  prismjs?: boolean | PrismjsPluginOptions
+  prismjs?: PrismjsPluginOptions | boolean
 
   /**
    * Enable @vuepress/plugin-seo or not
@@ -111,31 +110,31 @@ export interface DefaultThemeLocaleData extends LocaleData {
    *
    * Set to `false` to disable navbar in current locale
    */
-  navbar?: false | NavbarOptions
+  navbar?: NavbarOptions | false
 
   /**
    * Navbar label used for screen readers using the `aria-label` attribute
    */
-  navbarLabel?: null | string
+  navbarLabel?: string | null
 
   /**
    * Page navbar label used for screen readers using the `aria-label` attribute
    */
-  pageNavbarLabel?: null | string
+  pageNavbarLabel?: string | null
 
   /**
    * Navbar logo config
    *
    * Logo to display in navbar
    */
-  logo?: null | string
+  logo?: string | null
 
   /**
    * Navbar logo config for dark mode
    *
    * Logo to display in navbar in dark mode
    */
-  logoDark?: null | string
+  logoDark?: string | null
 
   /**
    * The alt text of navbar logo.
@@ -143,14 +142,14 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * If the value is the same as the site title, the site title rendered in the navbar will be
    * hidden from screen readers to avoid duplication.
    */
-  logoAlt?: null | string
+  logoAlt?: string | null
 
   /**
    * Navbar repository config
    *
    * Used for the repository link of navbar
    */
-  repo?: null | string
+  repo?: string | null
 
   /**
    * Navbar repository config
@@ -187,7 +186,7 @@ export interface DefaultThemeLocaleData extends LocaleData {
    *
    * Set to `false` to disable sidebar in current locale
    */
-  sidebar?: false | SidebarOptions
+  sidebar?: SidebarOptions | false
 
   /**
    * Sidebar depth
@@ -299,6 +298,20 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Default title of DANGER custom block
    */
   danger?: string
+
+  /**
+   * Custom block config
+   *
+   * Default title of IMPORTANT custom block
+   */
+  important?: string
+
+  /**
+   * Custom block config
+   *
+   * Default title of NOTE custom block
+   */
+  note?: string
 
   /**
    * 404 page config

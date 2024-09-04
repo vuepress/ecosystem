@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.42](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.41...v2.0.0-rc.42) (2024-08-22)
+
+### Bug Fixes
+
+- **copy-code:** ignoreSelector dose not work ([#233](https://github.com/vuepress/ecosystem/issues/233)) ([df7f5b9](https://github.com/vuepress/ecosystem/commit/df7f5b95a78fdcb1ce6b75fd8d5f775d6812480c))
+
+### Features
+
+- init guidelines ([#198](https://github.com/vuepress/ecosystem/issues/198)) ([e8258c1](https://github.com/vuepress/ecosystem/commit/e8258c1b663ad218b1607a2619c02fccaf7d9831))
+
+# [2.0.0-rc.41](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.40...v2.0.0-rc.41) (2024-08-14)
+
+### Bug Fixes
+
+- improve code highlight style, close [#222](https://github.com/vuepress/ecosystem/issues/222), [#223](https://github.com/vuepress/ecosystem/issues/223) ([#226](https://github.com/vuepress/ecosystem/issues/226)) ([2a4768d](https://github.com/vuepress/ecosystem/commit/2a4768d1391b22570190d39a0a1a7730fc752e58))
+
+# [2.0.0-rc.40](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.39...v2.0.0-rc.40) (2024-07-24)
+
+### Bug Fixes
+
+- **plugin-shiki:** refine css variables and allow overriding default code block color ([201db1d](https://github.com/vuepress/ecosystem/commit/201db1d4b8a057bba9e774a276a3eec2323c3675))
+
+# [2.0.0-rc.39](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.38...v2.0.0-rc.39) (2024-07-19)
+
+### Features
+
+- make styles built-in for highlighter plugins ([#217](https://github.com/vuepress/ecosystem/issues/217)) ([25e1ea2](https://github.com/vuepress/ecosystem/commit/25e1ea2c755bb7858b397a93982d6b92ec8d18c5))
+
+# [2.0.0-rc.38](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.37...v2.0.0-rc.38) (2024-07-13)
+
+**Note:** Version bump only for package @vuepress/plugin-copy-code
+
 # [2.0.0-rc.37](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.36...v2.0.0-rc.37) (2024-06-21)
 
 **Note:** Version bump only for package @vuepress/plugin-copy-code

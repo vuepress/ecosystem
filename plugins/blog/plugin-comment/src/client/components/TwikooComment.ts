@@ -37,7 +37,7 @@ export default defineComponent({
     const initTwikoo = async (): Promise<void> => {
       const [{ init }] = await Promise.all([
         import(/* webpackChunkName: "twikoo" */ 'twikoo'),
-        wait(twikooOptions.value.delay || 800),
+        wait(twikooOptions.value.delay ?? 800),
       ])
 
       loaded.value = true

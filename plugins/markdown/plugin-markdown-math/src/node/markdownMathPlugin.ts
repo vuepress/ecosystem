@@ -4,8 +4,8 @@ import { addCustomElement, getInstalledStatus } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import { colors, logger } from 'vuepress/utils'
 import type {
-  MarkdownMathjaxPluginOptions,
   MarkdownMathPluginOptions,
+  MarkdownMathjaxPluginOptions,
 } from './options.js'
 import {
   prepareClientConfigFile,
@@ -66,10 +66,10 @@ export const markdownMathPlugin = ({
       if (mathRenderer === 'mathjax') {
         md.use(mathjax, mathjaxInstance!)
         // Reset mathjax style in each render
-        md.use((md) => {
-          const originalRender = md.render.bind(md)
+        md.use((mdIt) => {
+          const originalRender = mdIt.render.bind(mdIt)
 
-          md.render = (src: string, env: unknown): string => {
+          mdIt.render = (src: string, env: unknown): string => {
             const result = originalRender(src, env)
 
             mathjaxInstance!.reset()
@@ -79,7 +79,14 @@ export const markdownMathPlugin = ({
         })
       } else {
         md.use(katex, {
-          logger: (errorCode, errorMsg, token, { filePathRelative }) => {
+          logger: (
+            errorCode,
+            errorMsg,
+            token: Record<string, unknown> & { text: string },
+            {
+              filePathRelative,
+            }: Record<string, unknown> & { filePathRelative?: string | null },
+          ) => {
             // Ignore this error
             if (errorCode === 'newLineInDisplayMode') return
 

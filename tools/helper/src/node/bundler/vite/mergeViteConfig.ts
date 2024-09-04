@@ -1,3 +1,7 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
 Types from https://github.com/rollup/plugins/blob/master/packages/alias/types/index.d.ts
 Inlined because the plugin is bundled.
@@ -50,7 +54,7 @@ SOFTWARE.
 import { endsWith, isArray, isString, keys } from '../../../shared/index.js'
 
 interface Alias {
-  find: string | RegExp
+  find: RegExp | string
   replacement: string
   /**
    * Instructs the plugin to use an alternative resolving algorithm,
@@ -67,7 +71,7 @@ interface ResolverObject {
   resolveId: ResolverFunction
 }
 
-type AliasOptions = readonly Alias[] | Record<string, string>
+type AliasOptions = Record<string, string> | readonly Alias[]
 
 const isObject = (value: unknown): value is Record<string, any> =>
   Object.prototype.toString.call(value) === '[object Object]'

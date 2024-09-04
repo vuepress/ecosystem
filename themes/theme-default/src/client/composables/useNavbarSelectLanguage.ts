@@ -1,7 +1,7 @@
 import { useThemeData, useThemeLocaleData } from '@theme/useThemeData'
 import { useRoutePaths } from '@vuepress/helper/client'
-import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
+import { computed } from 'vue'
 import {
   useRoute,
   useRouteLocale,
@@ -39,6 +39,7 @@ export const useNavbarSelectLanguage = (): ComputedRef<NavbarItem[]> => {
       }`,
       children: localePaths.map((targetLocalePath) => {
         // target locale config of this language link
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         const targetSiteLocale = site.value.locales?.[targetLocalePath] ?? {}
         const targetThemeLocale = theme.value.locales?.[targetLocalePath] ?? {}
         const targetLang = `${targetSiteLocale.lang}`
@@ -68,7 +69,7 @@ export const useNavbarSelectLanguage = (): ComputedRef<NavbarItem[]> => {
           // try to keep current hash and params across languages
           link: routePaths.value.some((item) => item === targetLocalePage)
             ? currentFullPath.replace(currentPath, targetLocalePage)
-            : targetThemeLocale.home ?? targetLocalePath,
+            : (targetThemeLocale.home ?? targetLocalePath),
         }
       }),
     }

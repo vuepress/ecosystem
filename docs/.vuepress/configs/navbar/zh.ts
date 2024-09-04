@@ -1,10 +1,14 @@
-import type { NavbarConfig } from '@vuepress/theme-classic'
+import type { NavbarOptions } from '@vuepress/theme-classic'
 
-export const navbarZh: NavbarConfig = [
+export const navbarZh: NavbarOptions = [
   {
     text: '主题',
     prefix: '/zh/themes/',
     children: [
+      {
+        text: '主题指南',
+        link: 'guidelines',
+      },
       {
         text: '默认主题',
         link: 'default/',

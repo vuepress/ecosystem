@@ -20,13 +20,13 @@ declare const __COPYRIGHT_OPTIONS__: Required<
   Pick<
     CopyrightPluginOptions,
     | 'author'
-    | 'license'
     | 'canonical'
-    | 'global'
     | 'disableCopy'
     | 'disableSelection'
-    | 'triggerLength'
+    | 'global'
+    | 'license'
     | 'maxLength'
+    | 'triggerLength'
   >
 >
 
@@ -56,13 +56,14 @@ export const setupCopyright = (): void => {
 
   const disableSelection = computed(() =>
     enabled.value
-      ? copyOptions.value?.disableSelection ?? copyrightOptions.disableSelection
+      ? (copyOptions.value?.disableSelection ??
+        copyrightOptions.disableSelection)
       : false,
   )
 
   const maxLength = computed(() =>
     enabled.value
-      ? copyOptions.value?.maxLength ?? copyrightOptions.maxLength
+      ? (copyOptions.value?.maxLength ?? copyrightOptions.maxLength)
       : 0,
   )
 
@@ -96,7 +97,7 @@ export const setupCopyright = (): void => {
     if (isString(page.value.copyright))
       return page.value.copyright.replace(':link', getLink())
 
-    const { author, license } = page.value.copyright || {}
+    const { author, license } = page.value.copyright ?? {}
 
     return getCopyrightContent(
       author ?? copyrightOptions.author,
@@ -116,8 +117,10 @@ export const setupCopyright = (): void => {
         if (
           disableCopy.value ||
           (maxLength.value && textLength > maxLength.value)
-        )
-          return event.preventDefault()
+        ) {
+          event.preventDefault()
+          return
+        }
 
         if (textLength >= triggerLength.value) {
           event.preventDefault()

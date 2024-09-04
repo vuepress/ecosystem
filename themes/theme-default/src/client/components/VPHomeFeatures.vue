@@ -8,6 +8,7 @@ const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
 const features = computed(() => frontmatter.value.features ?? [])
 </script>
 
+<!-- eslint-disable-next-line vue/no-root-v-if -->
 <template>
   <div v-if="features.length" class="vp-features">
     <div v-for="feature in features" :key="feature.title" class="vp-feature">
@@ -23,14 +24,14 @@ const features = computed(() => frontmatter.value.features ?? [])
 .vp-features {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
   place-content: stretch space-between;
+  align-items: flex-start;
 
   margin-top: 2.5rem;
   padding: 1.2rem 0;
-  border-top: 1px solid var(--c-border);
+  border-top: 1px solid var(--vp-c-gutter);
 
-  transition: border-color var(--t-color);
+  transition: border-color var(--vp-t-color);
 
   @media (max-width: $MQMobile) {
     flex-direction: column;
@@ -50,9 +51,6 @@ const features = computed(() => frontmatter.value.features ?? [])
   h2 {
     padding-bottom: 0;
     border-bottom: none;
-
-    color: var(--c-text-light);
-
     font-weight: 500;
     font-size: 1.4rem;
 
@@ -62,7 +60,7 @@ const features = computed(() => frontmatter.value.features ?? [])
   }
 
   p {
-    color: var(--c-text-lighter);
+    color: var(--vp-c-text-mute);
   }
 }
 </style>

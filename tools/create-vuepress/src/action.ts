@@ -1,8 +1,9 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 import { existsSync, readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
+import { confirm, select } from '@inquirer/prompts'
 import { execaCommand, execaCommandSync } from 'execa'
-import inquirer from 'inquirer'
 import { KNOWN_THEME_COMMANDS } from './config/index.js'
 import { createPackageJson, generateTemplate } from './flow/index.js'
 import { getLanguage } from './i18n/index.js'
@@ -13,19 +14,21 @@ import {
   normalizeThemeName,
 } from './utils/index.js'
 
+type Bundler = 'vite' | 'webpack'
+type Preset = 'blog' | 'docs'
+
 interface CreateOptions {
-  bundler?: 'vite' | 'webpack' | null
-  preset?: 'docs' | 'blog' | null
+  bundler?: Bundler
+  preset?: Preset
   theme?: string
 }
 
+const bundlers: Bundler[] = ['vite', 'webpack']
+const presets: Preset[] = ['blog', 'docs']
+
 export const mainAction = async (
   targetDir: string,
-  {
-    bundler = null,
-    preset = null,
-    theme = '@vuepress/theme-default',
-  }: CreateOptions,
+  { bundler, preset, theme = '@vuepress/theme-default' }: CreateOptions,
 ): Promise<void> => {
   // get language
   const { lang, locale } = await getLanguage()
@@ -37,7 +40,7 @@ export const mainAction = async (
   const themePackageName = normalizeThemeName(theme)
 
   if (KNOWN_THEME_COMMANDS[themePackageName]) {
-    await execaCommandSync(
+    execaCommandSync(
       `${packageManager} ${KNOWN_THEME_COMMANDS[themePackageName]} ${targetDir}`,
       { stdio: 'inherit' },
     )
@@ -48,50 +51,54 @@ export const mainAction = async (
   if (theme !== '@vuepress/theme-default') console.warn(locale.error.theme)
 
   // check bundler
-  if (bundler && !['vite', 'webpack'].includes(bundler))
-    return console.log(locale.error.bundler)
+  if (bundler && !['vite', 'webpack'].includes(bundler)) {
+    console.error(locale.error.bundler)
+    return
+  }
 
   // check presets
-  if (preset && !['docs', 'blog'].includes(preset))
-    return console.log(locale.error.preset)
+  if (preset && !['docs', 'blog'].includes(preset)) {
+    console.error(locale.error.preset)
+    return
+  }
 
   // check if the user is a noob and warn him
-  if (!targetDir || (targetDir.startsWith('[') && targetDir.endsWith(']')))
-    return console.log(locale.error.dirMissing(packageManager))
+  if (!targetDir || (targetDir.startsWith('[') && targetDir.endsWith(']'))) {
+    console.error(locale.error.dirMissing(packageManager))
+    return
+  }
 
   const targetDirPath = resolve(process.cwd(), targetDir)
 
   // check if the user is trying to cover his files
-  if (existsSync(targetDirPath) && readdirSync(targetDirPath).length)
-    return console.error(locale.error.dirNotEmpty(targetDir))
+  if (existsSync(targetDirPath) && readdirSync(targetDirPath).length) {
+    console.error(locale.error.dirNotEmpty(targetDir))
+    return
+  }
 
   ensureDirExistSync(targetDirPath)
 
   // complete bundler
   if (!bundler)
-    bundler = (
-      await inquirer.prompt<{ bundler: 'vite' | 'webpack' }>([
-        {
-          name: 'bundler',
-          type: 'list',
-          message: locale.question.bundler,
-          choices: ['vite', 'webpack'],
-        },
-      ])
-    ).bundler
+    // eslint-disable-next-line no-param-reassign
+    bundler = await select<Bundler>({
+      message: locale.question.bundler,
+      choices: bundlers.map((item) => ({
+        name: item,
+        value: item,
+      })),
+    })
 
   // complete preset
   if (!preset)
-    preset = (
-      await inquirer.prompt<{ preset: 'blog' | 'docs' }>([
-        {
-          name: 'preset',
-          type: 'list',
-          message: locale.question.preset,
-          choices: ['blog', 'docs'],
-        },
-      ])
-    ).preset
+    // eslint-disable-next-line no-param-reassign
+    preset = await select<Preset>({
+      message: locale.question.preset,
+      choices: presets.map((item) => ({
+        name: item,
+        value: item,
+      })),
+    })
 
   /*
    * Generate template
@@ -132,16 +139,12 @@ export const mainAction = async (
   /*
    * Open dev server
    */
-  const { devServer } = await inquirer.prompt<{ devServer: boolean }>([
-    {
-      name: 'devServer',
-      type: 'confirm',
+  if (
+    await confirm({
       message: locale.question.devServer,
       default: true,
-    },
-  ])
-
-  if (devServer) {
+    })
+  ) {
     console.log(locale.flow.devServer)
 
     await execaCommand(`${packageManager} run docs:dev`, {

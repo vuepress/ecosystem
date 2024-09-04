@@ -1,5 +1,5 @@
 declare module '@temp/blog/type' {
-  import type { TypesMap } from './shared/index.js'
+  import type { TypesMap } from '@vuepress/plugin-blog'
 
   export const typesMap: TypesMap
 }

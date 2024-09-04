@@ -3,8 +3,8 @@ import { computed } from 'vue'
 import { defineClientConfig, usePageFrontmatter } from 'vuepress/client'
 import type { WatermarkPluginFrontmatter } from '../shared/options.js'
 import { setupWatermark } from './composables/index.js'
-import { injectWatermarkConfig, useWatermarkOptions } from './helper/index.js'
 import type { WatermarkOptions } from './helper/index.js'
+import { injectWatermarkConfig, useWatermarkOptions } from './helper/index.js'
 
 declare const __WM_DELAY__: number
 declare const __WM_GLOBAL__: boolean
@@ -21,15 +21,15 @@ export default defineClientConfig({
     const frontmatter = usePageFrontmatter<WatermarkPluginFrontmatter>()
     const watermarkOptions = useWatermarkOptions(
       computed(() => {
-        const watermark = frontmatter.value.watermark
+        const { watermark } = frontmatter.value
         return isPlainObject(watermark) ? {} : __WM_OPTIONS__
       }),
     )
 
     const enabled = computed(() => {
-      const watermark = frontmatter.value.watermark
+      const { watermark } = frontmatter.value
 
-      return Boolean(watermark ?? __WM_GLOBAL__ ?? false)
+      return Boolean(watermark ?? __WM_GLOBAL__)
     })
 
     setupWatermark(watermarkOptions, enabled, __WM_DELAY__)

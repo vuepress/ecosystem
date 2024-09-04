@@ -1,7 +1,7 @@
 import { useSidebarItems } from '@theme/useSidebarItems'
 import { useThemeLocaleData } from '@theme/useThemeData'
-import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
+import { computed } from 'vue'
 import { resolveRoute, usePageFrontmatter, useRoute } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
 import type {
@@ -14,7 +14,7 @@ import { getAutoLink } from '../utils/index.js'
 const resolveFromFrontmatterConfig = (
   config: unknown,
   currentPath: string,
-): null | false | AutoLinkOptions => {
+): AutoLinkOptions | false | null => {
   if (config === false) {
     return false
   }
@@ -39,11 +39,13 @@ const resolveFromSidebarItems = (
   sidebarItems: SidebarItem[],
   currentPath: string,
   offset: number,
-): null | AutoLinkOptions => {
+): AutoLinkOptions | null => {
   const linkIndex = sidebarItems.findIndex((item) => item.link === currentPath)
 
   if (linkIndex !== -1) {
-    const targetItem = sidebarItems[linkIndex + offset]
+    const targetItem = sidebarItems[linkIndex + offset] as
+      | SidebarItem
+      | undefined
 
     if (!targetItem) return null
 
@@ -77,7 +79,9 @@ const resolveFromSidebarItems = (
   )
 
   if (prefixIndex !== -1) {
-    const targetItem = sidebarItems[prefixIndex + offset]
+    const targetItem = sidebarItems[prefixIndex + offset] as
+      | SidebarItem
+      | undefined
 
     if (!targetItem) return null
 
@@ -114,10 +118,10 @@ export const useRelatedLinks = (): RelatedLinks => {
 
     return prevConfig === false
       ? null
-      : prevConfig ??
+      : (prevConfig ??
           (themeLocale.value.prev === false
             ? null
-            : resolveFromSidebarItems(sidebarItems.value, route.path, -1))
+            : resolveFromSidebarItems(sidebarItems.value, route.path, -1)))
   })
 
   const nextLink = computed(() => {
@@ -128,10 +132,10 @@ export const useRelatedLinks = (): RelatedLinks => {
 
     return nextConfig === false
       ? null
-      : nextConfig ??
+      : (nextConfig ??
           (themeLocale.value.next === false
             ? null
-            : resolveFromSidebarItems(sidebarItems.value, route.path, 1))
+            : resolveFromSidebarItems(sidebarItems.value, route.path, 1)))
   })
 
   return {

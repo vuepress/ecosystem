@@ -11,13 +11,13 @@ export const getAlternatePaths = (
   { pages, siteData }: App,
 ): AlternatePath[] =>
   entries(siteData.locales)
-    .map(([localePath, { lang }]) => ({
+    .map(([localePath, { lang: siteLang }]) => ({
       path: `${localePath}${path.replace(pathLocale, '')}`,
-      lang,
+      lang: siteLang,
     }))
     .filter(
       (item): item is AlternatePath =>
         isString(item.lang) &&
         item.lang !== lang &&
-        pages.some(({ path }) => path === item.path),
+        pages.some(({ path: pagePath }) => pagePath === item.path),
     )

@@ -8,7 +8,7 @@
 
 我们在示例中省略了它。 实际代码应该是这样的：
 
-```ts
+```js
 // 导入你需要的函数
 import { addCustomElement } from '@vuepress/helper'
 
@@ -50,8 +50,8 @@ getBundleName(app) === 'webpack' // true
 
 ```ts
 interface CustomElementCommonOptions {
-  app: App;
-  config: unknown;
+  app: App
+  config: unknown
 }
 /**
  * Add tags as customElement
@@ -60,11 +60,11 @@ interface CustomElementCommonOptions {
  * @param app VuePress Node App
  * @param customElements tags recognized as custom element
  */
-export const addCustomElement = (
+export const addCustomElement: (
   bundlerOptions: unknown,
   app: App,
-  customElement: string[] | string | RegExp
-) => void;
+  customElement: RegExp | string[] | string,
+) => void
 ```
 
 ::: details 示例
@@ -92,16 +92,16 @@ export interface DevServerOptions {
   /**
    * Path to be responded
    */
-  path: string;
+  path: string
   /**
    * Respond function
    */
-  response: (request?: IncomingMessage) => Promise<string | Buffer>;
+  response: (request?: IncomingMessage) => Promise<Buffer | string>
 
   /**
    * error msg
    */
-  errMsg?: string;
+  errMsg?: string
 }
 
 /**
@@ -117,11 +117,11 @@ export const customizeDevServer: (
   bundlerOptions: unknown,
   app: App,
   {
-    errMsg:"The server encountered an error",
-    response: responseHandler,
+    errMsg = 'The server encountered an error',
+    response,
     path,
-  }: CustomServerOptions
-) => void;
+  }: CustomServerOptions,
+) => void
 ```
 
 ::: details 示例
@@ -186,7 +186,7 @@ useCustomDevServer(bundlerOptions, app, {
   export const addViteOptimizeDepsInclude: (
     bundlerOptions: unknown,
     app: App,
-    module: string | string[],
+    module: string[] | string,
   ) => void
 
   /**
@@ -195,7 +195,7 @@ useCustomDevServer(bundlerOptions, app, {
   export const addViteOptimizeDepsExclude: (
     bundlerOptions: unknown,
     app: App,
-    module: string | string[],
+    module: string[] | string,
   ) => void
 
   /**
@@ -204,7 +204,7 @@ useCustomDevServer(bundlerOptions, app, {
   export const addViteSsrExternal: (
     bundlerOptions: unknown,
     app: App,
-    module: string | string[],
+    module: string[] | string,
   ) => void
 
   /**
@@ -213,7 +213,7 @@ useCustomDevServer(bundlerOptions, app, {
   export const addViteSsrNoExternal: (
     bundlerOptions: unknown,
     app: App,
-    module: string | string[],
+    module: string[] | string,
   ) => void
   ```
 
@@ -221,8 +221,8 @@ useCustomDevServer(bundlerOptions, app, {
 
   ```ts
   import {
-    addViteOptimizeDepsInclude,
     addViteOptimizeDepsExclude,
+    addViteOptimizeDepsInclude,
     addViteSsrExternal,
     addViteSsrNoExternal,
   } from '@vuepress/helper'
@@ -281,13 +281,13 @@ useCustomDevServer(bundlerOptions, app, {
   ::: details 示例
 
   ```ts
-  import { mergeViteConfig } from "@vuepress/helper";
+  import { mergeViteConfig } from '@vuepress/helper'
 
-  config.viteOptions mergeViteConfig(config.viteOptions, {
+  config.viteOptions = mergeViteConfig(config.viteOptions, {
     build: {
-      charset: "utf8",
+      charset: 'utf8',
     },
-  });
+  })
   ```
 
   :::

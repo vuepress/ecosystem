@@ -1,4 +1,4 @@
-import inquirer from 'inquirer'
+import { select } from '@inquirer/prompts'
 import { en } from './en.js'
 import type { CreateLocaleOptions, Lang } from './typings.js'
 import { zh } from './zh.js'
@@ -6,8 +6,8 @@ import { zh } from './zh.js'
 export * from './typings.js'
 
 const i18n: Record<Lang, CreateLocaleOptions> = {
-  'english (US)': en,
-  '简体中文': zh,
+  en,
+  zh,
 }
 
 interface LanguageResult {
@@ -16,14 +16,13 @@ interface LanguageResult {
 }
 
 export const getLanguage = async (): Promise<LanguageResult> => {
-  const { language } = await inquirer.prompt<{ language: Lang }>([
-    {
-      name: 'language',
-      type: 'list',
-      message: 'Select a language to display / 选择显示语言',
-      choices: ['english (US)', '简体中文'],
-    },
-  ])
+  const language = await select<Lang>({
+    message: 'Select a language to display / 选择显示语言',
+    choices: [
+      { name: 'english (US)', value: 'en' },
+      { name: '简体中文', value: 'zh' },
+    ],
+  })
 
   return {
     lang: language,

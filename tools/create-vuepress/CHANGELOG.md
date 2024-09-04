@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.42](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.41...v2.0.0-rc.42) (2024-08-22)
+
+### Features
+
+- init guidelines ([#198](https://github.com/vuepress/ecosystem/issues/198)) ([e8258c1](https://github.com/vuepress/ecosystem/commit/e8258c1b663ad218b1607a2619c02fccaf7d9831))
+
+# [2.0.0-rc.41](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.40...v2.0.0-rc.41) (2024-08-14)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.40](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.39...v2.0.0-rc.40) (2024-07-24)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.39](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.38...v2.0.0-rc.39) (2024-07-19)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.38](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.37...v2.0.0-rc.38) (2024-07-13)
+
+### Features
+
+- **create-vuepress:** use @inquirer/prompts ([984b53a](https://github.com/vuepress/ecosystem/commit/984b53ab97bd5936f09f488a97dc79f590a45fde))
+
 # [2.0.0-rc.37](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.36...v2.0.0-rc.37) (2024-06-21)
 
 **Note:** Version bump only for package create-vuepress

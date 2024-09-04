@@ -1,0 +1,17 @@
+@use 'sass:color';
+
+@mixin color($code-text-color, $code-bg-color) {
+  // base
+  --code-c-text: #{$code-text-color};
+  --code-c-bg: #{$code-bg-color};
+
+  // highlight
+  --code-c-highlight-bg: #{color.scale(
+      $code-bg-color,
+      $saturation: if(color.whiteness($code-bg-color) < 50%, 5%, 10%),
+      $lightness: if(color.whiteness($code-bg-color) < 50%, 5%, -5%)
+    )};
+
+  // line-number
+  --code-c-line-number: #{color.scale($code-text-color, $alpha: -33%)};
+}

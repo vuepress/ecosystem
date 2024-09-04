@@ -19,7 +19,7 @@ export const applyHighlighter = async (
   {
     langs = bundledLanguageNames,
     langAlias = {},
-    defaultLang = 'plain',
+    defaultLang,
     transformers: userTransformers = [],
     ...options
   }: ShikiHighlightOptions = {},
@@ -42,8 +42,8 @@ export const applyHighlighter = async (
   const transformers = getTransformers(options)
   const loadedLanguages = highlighter.getLoadedLanguages()
 
-  md.options.highlight = (str, language, attrs) =>
-    handleMustache(str, (str) =>
+  md.options.highlight = (content, language, attrs) =>
+    handleMustache(content, (str) =>
       highlighter.codeToHtml(str, {
         lang: getLanguage(
           language,
@@ -61,7 +61,7 @@ export const applyHighlighter = async (
         },
         transformers: [
           ...transformers,
-          ...(options.highlightLines ?? true
+          ...((options.highlightLines ?? true)
             ? [transformerCompactLineOptions(attrsToLines(attrs))]
             : []),
           ...whitespaceTransformer(attrs, options.whitespace),

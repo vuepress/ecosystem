@@ -1,8 +1,6 @@
 html,
 body {
-  margin: 0;
-  padding: 0;
-  background: #fff;
+  background: var(--vp-c-bg);
 }
 
 html {
@@ -13,19 +11,29 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
+  text-size-adjust: none;
 
   @media print {
     font-size: 12pt;
+  }
+
+  &[data-theme='dark'] {
+    color-scheme: dark;
   }
 }
 
 body {
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
+
   color: #2c3e50;
+
+  font-synthesis: style;
 }
 
 a {
-  color: #3eaf7c;
+  color: var(--vp-c-accent);
   font-weight: 500;
   text-decoration: none;
   overflow-wrap: break-word;
@@ -40,7 +48,7 @@ kbd {
   border: 1px solid #eee;
   border-radius: 0.25em;
 
-  box-shadow: 1px 1px 4px 0 rgb(0 0 0 / 15%);
+  box-shadow: 1px 1px 4px 0 var(--vp-c-shadow);
 
   line-height: 1;
   letter-spacing: -0.1em;
@@ -48,21 +56,23 @@ kbd {
 }
 
 code {
-  margin: 0;
-  padding: 3px 6px;
-  border-radius: 4px;
+  :not(pre) > & {
+    margin: 0;
+    padding: 3px 6px;
+    border-radius: 4px;
 
-  background: rgb(127 127 127 / 12%);
+    background: rgb(127 127 127 / 12%);
 
-  font-size: 0.875em;
-  overflow-wrap: break-word;
+    font-size: 0.875em;
+    overflow-wrap: break-word;
+  }
 
   table & {
     padding: 0.1rem 0.4rem;
   }
 
   p a & {
-    color: #3eaf7c;
+    color: var(--vp-c-accent);
     font-weight: 400;
   }
 }
@@ -125,7 +135,7 @@ a.header-anchor {
       top: 0.4167em;
       left: -0.75em;
 
-      color: var(--c-brand);
+      color: var(--vp-c-accent);
 
       font-size: 0.75em;
     }
@@ -140,7 +150,7 @@ a.header-anchor {
       position: absolute;
       left: -0.75em;
 
-      color: var(--c-brand);
+      color: var(--vp-c-accent);
       outline: auto;
     }
   }
@@ -201,6 +211,7 @@ td {
 
 pre {
   text-align: left;
+  direction: ltr;
   white-space: pre;
   word-spacing: normal;
   word-wrap: normal;
@@ -208,8 +219,6 @@ pre {
   overflow-wrap: unset;
   tab-size: 4;
   hyphens: none;
-
-  direction: ltr;
 
   @media print {
     white-space: pre-wrap;
@@ -289,5 +298,22 @@ pre {
   tr,
   canvas {
     page-break-inside: avoid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    background-attachment: initial !important;
+
+    scroll-behavior: auto !important;
+
+    transition-delay: 0s !important;
+    transition-duration: 0s !important;
+
+    animation-duration: 1ms !important;
+    animation-delay: -1ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

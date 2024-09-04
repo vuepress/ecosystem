@@ -3,7 +3,7 @@ import { js2xml } from 'xml-js'
 import type { FeedCategory, FeedEnclosure } from '../../../typings/index.js'
 import type { FeedItem } from '../../feed/item.js'
 import type { FeedStore } from '../../feed/store.js'
-import { encodeXML, FEED_GENERATOR } from '../../utils/index.js'
+import { FEED_GENERATOR, encodeXML } from '../../utils/index.js'
 import type {
   RSSCategory,
   RSSContent,
@@ -51,7 +51,7 @@ const getRSSEnclosure = (enclosure: FeedEnclosure): RSSEnclosure => ({
  */
 export const getRssFeed = (feedStore: FeedStore): string => {
   const { channel, links } = feedStore
-  let hasContent = false
+  let hasContent = false as boolean
 
   const content: RSSContent = {
     _declaration: { _attributes: { version: '1.0', encoding: 'utf-8' } },
@@ -141,14 +141,14 @@ export const getRssFeed = (feedStore: FeedStore): string => {
     /**
      * Item Author
      */
-    if (entry.author) {
-      const author = entry.author.find((author) => author.email && author.name)
+    const author = entry.author.find(
+      (authorItem) => authorItem.email && authorItem.name,
+    )
 
-      if (author)
-        item.author = {
-          _text: `${author.email!} (${author.name!})`,
-        }
-    }
+    if (author)
+      item.author = {
+        _text: `${author.email!} (${author.name!})`,
+      }
 
     /**
      * Item Category

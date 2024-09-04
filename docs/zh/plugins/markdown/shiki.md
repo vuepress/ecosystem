@@ -192,16 +192,6 @@ export default defineUserConfig({
 })
 ```
 
-:::: tip
-
-以下功能需要额外的样式才能正常工作，这应该由主题或用户来处理。
-
-::: details 查看样式示例
-@[code](@vuepress/theme-default/src/client/styles/content/code-notation.scss)
-:::
-
-::::
-
 ### notationDiff
 
 - 类型：`boolean`
@@ -401,71 +391,79 @@ export default defineUserConfig({
   **输入：**
 
   ````md
-  ```ts :whitespace
-  // 渲染所有空白符
-  function block() {
-    space()
-    tab()
-  }
+  ```md :whitespace
+  <!-- 渲染所有空白符 -->
+
+  具有尾随空格  
+  的文字
+
+      缩进文字
   ```
 
-  ```ts :whitespace=boundary
-  // 渲染行首行尾的空白符
-  function block() {
-    space()
-    tab()
-  }
+  ```md :whitespace=boundary
+  <!-- 渲染行首行尾的空白符 -->
+
+  具有尾随空格  
+  的文字
+
+      缩进文字
   ```
 
-  ```ts :whitespace=trailing
-  // 渲染行尾的空白符
-  function block() {
-    space()
-    tab()
-  }
+  ```md :whitespace=trailing
+  <!-- 渲染行尾的空白符 -->
+
+  具有尾随空格  
+  的文字
+
+      缩进文字
   ```
 
-  ```ts :no-whitespace
-  // 禁用空白符
-  function block() {
-    space()
-    tab()
-  }
+  ```md :no-whitespace
+  <!-- 禁用空白符 -->
+
+  A text
+  with line break
+
+      code block
   ```
   ````
 
   **输出：**
 
-  ```ts :whitespace data-title="ts :whitespace"
-  // 渲染所有空白符
-  function block() {
-    space()
-    tab()
-  }
+  ```md :whitespace
+  <!-- 渲染所有空白符 -->
+
+  具有尾随空格  
+  的文字
+
+      缩进文字
   ```
 
-  ```ts :whitespace=boundary data-title="ts :whitespace=boundary"
-  // 渲染行首行尾的空白符
-  function block() {
-    space()
-    tab()
-  }
+  ```md :whitespace=boundary
+  <!-- 渲染行首行尾的空白符 -->
+
+  具有尾随空格  
+  的文字
+
+      缩进文字
   ```
 
-  ```ts :whitespace=trailing data-title="ts :whitespace=trailing"
-  // 渲染行尾的空白符
-  function block() {
-    space()
-    tab()
-  }
+  ```md :whitespace=trailing
+  <!-- 渲染行尾的空白符 -->
+
+  具有尾随空格  
+  的文字
+
+      缩进文字
   ```
 
-  ```ts :no-whitespace data-title="ts :no-whitespace"
-  // 禁用空白符
-  function block() {
-    space()
-    tab()
-  }
+  ```md :no-whitespace
+  <!-- 禁用空白符 -->
+
+  A text
+  with line break
+
+      code block
   ```
 
 - 参考：
@@ -477,7 +475,7 @@ export default defineUserConfig({
 
 - 类型：`string`
 
-- 默认值：`'plain'`
+- 默认值：`''`
 
 - 详情：指定的语言不可用时所使用的备选语言。
 

@@ -1,15 +1,17 @@
 <script setup lang="ts">
+import type { VNode } from 'vue'
+
 defineSlots<{
-  default?: (props: Record<never, never>) => any
+  default?: (props: Record<never, never>) => VNode | VNode[] | null
 }>()
 
-const setHeight = (items): void => {
+const setHeight = (item: Element): void => {
   // explicitly set height so that it can be transitioned
-  items.style.height = items.scrollHeight + 'px'
+  ;(item as HTMLElement).style.height = `${item.scrollHeight}px`
 }
 
-const unsetHeight = (items): void => {
-  items.style.height = ''
+const unsetHeight = (item: Element): void => {
+  ;(item as HTMLElement).style.height = ''
 }
 </script>
 

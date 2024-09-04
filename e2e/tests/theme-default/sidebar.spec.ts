@@ -15,14 +15,14 @@ test.describe('has heading sidebar', () => {
     await page.goto('sidebar/heading/1.html')
 
     const sidebarHeadings = page.locator('.vp-sidebar-item.level-1')
-    const pageTitle = page.locator('.vp-content h1')
+    const pageTitle = page.locator('[vp-content] h1')
 
     const pageTitleText = (await pageTitle.innerText()).replace('#', '')
 
     await expect(pageTitle).not.toBeEmpty()
     await expect(sidebarHeadings.first()).toContainText(pageTitleText)
 
-    const h2 = page.locator('.vp-content h2').first()
+    const h2 = page.locator('[vp-content] h2').first()
 
     await expect(h2).not.toBeEmpty()
   })

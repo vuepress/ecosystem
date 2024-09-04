@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useSidebarItems } from '@theme/useSidebarItems'
 import VPSidebarItem from '@theme/VPSidebarItem.vue'
+import { useSidebarItems } from '@theme/useSidebarItems'
 import { onMounted, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
 
@@ -46,6 +46,7 @@ onMounted(() => {
 })
 </script>
 
+<!-- eslint-disable-next-line vue/no-root-v-if -->
 <template>
   <ul v-if="sidebarItems.length" class="vp-sidebar-items">
     <VPSidebarItem

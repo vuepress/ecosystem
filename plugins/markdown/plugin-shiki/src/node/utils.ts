@@ -35,17 +35,19 @@ export const resolveAttr = (info: string, attr: string): string | null => {
  *    [{ line: number, classes: string[] }]
  */
 export const attrsToLines = (attrs: string): TransformerCompactLineOption[] => {
-  attrs = attrs.replace(/^(?:\[.*?\])?.*?([\d,-]+).*/, '$1').trim()
+  const attrsContent = attrs.replace(/^(?:\[.*?\])?.*?([\d,-]+).*/, '$1').trim()
 
   const result: number[] = []
 
-  if (!attrs) {
+  if (!attrsContent) {
     return []
   }
 
-  attrs
+  attrsContent
     .split(',')
-    .map((v) => v.split('-').map((v) => parseInt(v, 10)))
+    .map((lineNumberConfig) =>
+      lineNumberConfig.split('-').map((lineNumber) => parseInt(lineNumber, 10)),
+    )
     .forEach(([start, end]) => {
       if (start && end) {
         result.push(

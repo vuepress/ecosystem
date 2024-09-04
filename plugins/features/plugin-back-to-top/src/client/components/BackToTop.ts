@@ -1,12 +1,12 @@
 import { useLocaleConfig } from '@vuepress/helper/client'
 import { useElementSize, useWindowScroll, useWindowSize } from '@vueuse/core'
 import {
+  Transition,
   computed,
   defineComponent,
   h,
   onMounted,
   shallowRef,
-  Transition,
 } from 'vue'
 import { usePageFrontmatter } from 'vuepress/client'
 import type { BackToTopPluginLocaleConfig } from '../../shared/index.js'

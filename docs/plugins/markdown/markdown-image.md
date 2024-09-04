@@ -147,18 +147,6 @@ If the image is standalone in a line, wrapped or not wrapped by link, it will be
 - Type: `boolean`
 - Details: Whether enable Obsidian image size support.
 
-### lightmodeSelector
-
-- Type: `string`
-- Default: `'html:not(.dark)'`
-- Details: The selector to detect light mode.
-
-### darkmodeSelector
-
-- Type: `string`
-- Default: `'html.dark'`
-- Details: The selector to detect dark mode.
-
 <script setup>
 import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'
 </script>

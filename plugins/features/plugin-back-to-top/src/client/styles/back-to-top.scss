@@ -1,7 +1,7 @@
 .vp-back-to-top-button {
   position: fixed !important;
-  bottom: 4rem;
   inset-inline-end: 1rem;
+  bottom: 4rem;
   z-index: 100;
 
   width: 48px;
@@ -10,9 +10,9 @@
   border-width: 0;
   border-radius: 50%;
 
-  background: var(--back-to-top-bg-color);
-  color: var(--back-to-top-color);
-  box-shadow: 2px 2px 10px 4px var(--back-to-top-shadow);
+  background: var(--back-to-top-c-bg);
+  color: var(--back-to-top-c-accent);
+  box-shadow: 2px 2px 10px 4px var(--back-to-top-c-shadow);
 
   cursor: pointer;
 
@@ -26,7 +26,7 @@
   }
 
   &:hover {
-    color: var(--back-to-top-color-hover);
+    color: var(--back-to-top-c-accent-hover);
   }
 
   .back-to-top-icon {
@@ -36,7 +36,7 @@
     height: 24px;
     margin: 0 auto;
 
-    background: var(--back-to-top-icon-color);
+    background: var(--back-to-top-c-icon);
 
     -webkit-mask-image: var(--back-to-top-icon);
     mask-image: var(--back-to-top-icon);

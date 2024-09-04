@@ -4,7 +4,7 @@ test.describe('plugin-feed', () => {
   test('have atom feed', async ({ request }) => {
     const response = await request.get('atom.xml')
 
-    expect(response).toBeOK()
+    await expect(response).toBeOK()
 
     const content = await response.text()
 
@@ -15,7 +15,7 @@ test.describe('plugin-feed', () => {
   test('have atom feed style file', async ({ request }) => {
     const response = await request.get('atom.xsl')
 
-    expect(response).toBeOK()
+    await expect(response).toBeOK()
 
     const content = await response.text()
 
@@ -25,9 +25,9 @@ test.describe('plugin-feed', () => {
   test('have json feed', async ({ request }) => {
     const response = await request.get('feed.json')
 
-    expect(response).toBeOK()
+    await expect(response).toBeOK()
 
-    const content = await response.json()
+    const content = (await response.json()) as Record<string, unknown>
 
     expect(content).toHaveProperty(
       'version',
@@ -41,7 +41,7 @@ test.describe('plugin-feed', () => {
   test('have rss feed', async ({ request }) => {
     const response = await request.get('rss.xml')
 
-    expect(response).toBeOK()
+    await expect(response).toBeOK()
 
     const content = await response.text()
 
@@ -52,7 +52,7 @@ test.describe('plugin-feed', () => {
   test('have rss feed style file', async ({ request }) => {
     const response = await request.get('rss.xsl')
 
-    expect(response).toBeOK()
+    await expect(response).toBeOK()
 
     const content = await response.text()
 
@@ -62,7 +62,7 @@ test.describe('plugin-feed', () => {
   test('customize feed', async ({ request }) => {
     const atomResponse = await request.get('atom.xml')
 
-    expect(atomResponse).toBeOK()
+    await expect(atomResponse).toBeOK()
 
     const atomContent = await atomResponse.text()
 
@@ -71,7 +71,7 @@ test.describe('plugin-feed', () => {
 
     const jsonResponse = await request.get('feed.json')
 
-    expect(jsonResponse).toBeOK()
+    await expect(jsonResponse).toBeOK()
 
     const jsonContent = await jsonResponse.text()
 
@@ -81,7 +81,7 @@ test.describe('plugin-feed', () => {
 
     const rssResponse = await request.get('rss.xml')
 
-    expect(rssResponse).toBeOK()
+    await expect(rssResponse).toBeOK()
 
     const rssContent = await rssResponse.text()
 
@@ -93,7 +93,7 @@ test.describe('plugin-feed', () => {
   test('exclude feed', async ({ request }) => {
     const atomResponse = await request.get('atom.xml')
 
-    expect(atomResponse).toBeOK()
+    await expect(atomResponse).toBeOK()
 
     const atomContent = await atomResponse.text()
 
@@ -101,7 +101,7 @@ test.describe('plugin-feed', () => {
 
     const jsonResponse = await request.get('feed.json')
 
-    expect(jsonResponse).toBeOK()
+    await expect(jsonResponse).toBeOK()
 
     const jsonContent = await jsonResponse.text()
 
@@ -109,7 +109,7 @@ test.describe('plugin-feed', () => {
 
     const rssResponse = await request.get('rss.xml')
 
-    expect(rssResponse).toBeOK()
+    await expect(rssResponse).toBeOK()
 
     const rssContent = await rssResponse.text()
 

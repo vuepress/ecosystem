@@ -30,5 +30,5 @@ export type NavbarGroupOptions = NavGroup<
 >
 // types for navbar options
 export type NavbarOptions =
-  | (NavbarLinkOptions | NavbarGroupOptions | string)[]
+  | (NavbarGroupOptions | NavbarLinkOptions | string)[]
   | false

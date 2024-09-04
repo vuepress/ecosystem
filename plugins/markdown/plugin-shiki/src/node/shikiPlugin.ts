@@ -7,6 +7,7 @@ import {
   preWrapperPlugin,
 } from './markdown/index.js'
 import type { ShikiPluginOptions } from './options.js'
+import { prepareConfigFile } from './prepareConfigFile.js'
 
 export const shikiPlugin = ({
   preWrapper = true,
@@ -16,6 +17,7 @@ export const shikiPlugin = ({
   name: '@vuepress/plugin-shiki',
 
   extendsMarkdown: async (md, app) => {
+    // FIXME: Remove in stable version
     const { code } = app.options.markdown
 
     await applyHighlighter(md, app, {
@@ -29,4 +31,6 @@ export const shikiPlugin = ({
       md.use(lineNumbersPlugin, { lineNumbers })
     }
   },
+
+  clientConfigFile: (app) => prepareConfigFile(app, options),
 })

@@ -22,7 +22,7 @@ export interface DevServerOptions {
   response: (
     request: IncomingMessage,
     response: ServerResponse,
-  ) => Promise<string | Buffer>
+  ) => Promise<Buffer | string>
 
   /**
    * error msg
@@ -79,7 +79,7 @@ export const customizeDevServer = (
       }
 
       viteBundlerOptions.viteOptions = mergeViteConfig(
-        viteBundlerOptions.viteOptions || {},
+        viteBundlerOptions.viteOptions ?? {},
         { plugins: [viteMockRequestPlugin] },
       )
     }

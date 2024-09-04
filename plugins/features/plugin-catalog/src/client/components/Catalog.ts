@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import {
   endsWith,
   ensureEndingSlash,
@@ -218,148 +219,142 @@ export default defineComponent({
     return (): VNode => {
       const isDeep = catalogData.value.some((item) => item.children)
 
-      return h(
-        'div',
-        { class: ['vp-catalog-wrapper', { index: props.index }] },
-        [
-          props.hideHeading
-            ? null
-            : h('h2', { class: 'vp-catalog-main-title' }, locale.value.title),
-          catalogData.value.length
-            ? h(
-                props.index ? 'ol' : 'ul',
-                { class: ['vp-catalogs', { deep: isDeep }] },
-                catalogData.value.map(
-                  ({ children = [], title, path, content }) => {
-                    const childLink = h(
-                      RouteLink,
-                      { class: 'vp-catalog-title', to: path },
-                      () => (content ? h(content) : title),
-                    )
+      return h('div', { class: ['vp-catalog', { index: props.index }] }, [
+        props.hideHeading
+          ? null
+          : h('h2', { class: 'vp-catalog-main-title' }, locale.value.title),
+        catalogData.value.length
+          ? h(
+              props.index ? 'ol' : 'ul',
+              { class: ['vp-catalog-list', { deep: isDeep }] },
+              catalogData.value.map(
+                ({ children = [], title, path, content }) => {
+                  const childLink = h(
+                    RouteLink,
+                    { class: 'vp-catalog-title', to: path },
+                    () => (content ? h(content) : title),
+                  )
 
-                    return h(
-                      'li',
-                      { class: 'vp-catalog' },
-                      isDeep
-                        ? [
-                            h(
-                              'h3',
-                              {
-                                id: title,
-                                class: [
-                                  'vp-catalog-child-title',
-                                  { 'has-children': children.length },
-                                ],
-                              },
-                              [
-                                h(
-                                  'a',
-                                  {
-                                    'href': `#${title}`,
-                                    'class': 'vp-catalog-header-anchor',
-                                    'aria-hidden': true,
-                                  },
-                                  '#',
-                                ),
-                                childLink,
+                  return h(
+                    'li',
+                    { class: 'vp-catalog-item' },
+                    isDeep
+                      ? [
+                          h(
+                            'h3',
+                            {
+                              id: title,
+                              class: [
+                                'vp-catalog-child-title',
+                                { 'has-children': children.length },
                               ],
-                            ),
-                            children.length
-                              ? h(
-                                  props.index ? 'ol' : 'ul',
-                                  { class: 'vp-child-catalogs' },
-                                  children.map(
-                                    ({ children = [], content, path, title }) =>
-                                      h('li', { class: 'vp-child-catalog' }, [
-                                        h(
-                                          'div',
-                                          {
-                                            class: [
-                                              'vp-catalog-sub-title',
-                                              {
-                                                'has-children': children.length,
-                                              },
-                                            ],
-                                          },
-                                          [
-                                            h(
-                                              'a',
-                                              {
-                                                href: `#${title}`,
-                                                class:
-                                                  'vp-catalog-header-anchor',
-                                              },
-                                              '#',
-                                            ),
-                                            h(
-                                              RouteLink,
-                                              {
-                                                class: 'vp-catalog-title',
-                                                to: path,
-                                              },
-                                              () =>
-                                                content ? h(content) : title,
-                                            ),
+                            },
+                            [
+                              h(
+                                'a',
+                                {
+                                  'href': `#${title}`,
+                                  'class': 'vp-catalog-header-anchor',
+                                  'aria-hidden': true,
+                                },
+                                '#',
+                              ),
+                              childLink,
+                            ],
+                          ),
+                          children.length
+                            ? h(
+                                props.index ? 'ol' : 'ul',
+                                { class: 'vp-child-catalogs' },
+                                children.map(
+                                  ({ children = [], content, path, title }) =>
+                                    h('li', { class: 'vp-child-catalog' }, [
+                                      h(
+                                        'div',
+                                        {
+                                          class: [
+                                            'vp-catalog-sub-title',
+                                            {
+                                              'has-children': children.length,
+                                            },
                                           ],
-                                        ),
-                                        children.length
-                                          ? h(
-                                              props.index ? 'ol' : 'div',
-                                              {
-                                                class: props.index
-                                                  ? 'vp-sub-catalogs'
-                                                  : 'vp-sub-catalogs-wrapper',
-                                              },
-                                              children.map(
-                                                ({ content, path, title }) =>
-                                                  props.index
-                                                    ? h(
-                                                        'li',
-                                                        {
-                                                          class:
-                                                            'vp-sub-catalog',
-                                                        },
-                                                        h(
-                                                          RouteLink,
-                                                          { to: path },
-                                                          () =>
-                                                            content
-                                                              ? h(content)
-                                                              : title,
-                                                        ),
-                                                      )
-                                                    : h(
+                                        },
+                                        [
+                                          h(
+                                            'a',
+                                            {
+                                              href: `#${title}`,
+                                              class: 'vp-catalog-header-anchor',
+                                            },
+                                            '#',
+                                          ),
+                                          h(
+                                            RouteLink,
+                                            {
+                                              class: 'vp-catalog-title',
+                                              to: path,
+                                            },
+                                            () =>
+                                              content ? h(content) : title,
+                                          ),
+                                        ],
+                                      ),
+                                      children.length
+                                        ? h(
+                                            props.index ? 'ol' : 'div',
+                                            {
+                                              class: props.index
+                                                ? 'vp-sub-catalogs'
+                                                : 'vp-sub-catalogs-wrapper',
+                                            },
+                                            children.map(
+                                              ({ content, path, title }) =>
+                                                props.index
+                                                  ? h(
+                                                      'li',
+                                                      {
+                                                        class: 'vp-sub-catalog',
+                                                      },
+                                                      h(
                                                         RouteLink,
-                                                        {
-                                                          class:
-                                                            'vp-sub-catalog-link',
-                                                          to: path,
-                                                        },
+                                                        { to: path },
                                                         () =>
                                                           content
                                                             ? h(content)
                                                             : title,
                                                       ),
-                                              ),
-                                            )
-                                          : null,
-                                      ]),
-                                  ),
-                                )
-                              : null,
-                          ]
-                        : h(
-                            'div',
-                            { class: 'vp-catalog-child-title' },
-                            childLink,
-                          ),
-                    )
-                  },
-                ),
-              )
-            : h('p', { class: 'vp-empty-catalog' }, locale.value.empty),
-        ],
-      )
+                                                    )
+                                                  : h(
+                                                      RouteLink,
+                                                      {
+                                                        class:
+                                                          'vp-sub-catalog-link',
+                                                        to: path,
+                                                      },
+                                                      () =>
+                                                        content
+                                                          ? h(content)
+                                                          : title,
+                                                    ),
+                                            ),
+                                          )
+                                        : null,
+                                    ]),
+                                ),
+                              )
+                            : null,
+                        ]
+                      : h(
+                          'div',
+                          { class: 'vp-catalog-child-title' },
+                          childLink,
+                        ),
+                  )
+                },
+              ),
+            )
+          : h('p', { class: 'vp-empty-catalog' }, locale.value.empty),
+      ])
     }
   },
 })

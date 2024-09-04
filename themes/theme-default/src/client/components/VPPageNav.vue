@@ -11,10 +11,9 @@ const navigate = useNavigate()
 
 const { prevLink, nextLink } = useRelatedLinks()
 
-const navbarLabel = computed(() => {
-  const themeLocale = useThemeLocaleData()
-  return themeLocale.value.pageNavbarLabel ?? 'page navigation'
-})
+const navbarLabel = computed(
+  () => themeLocale.value.pageNavbarLabel ?? 'page navigation',
+)
 
 useEventListener('keydown', (event): void => {
   if (event.altKey) {
@@ -33,6 +32,7 @@ useEventListener('keydown', (event): void => {
 })
 </script>
 
+<!-- eslint-disable-next-line vue/no-root-v-if -->
 <template>
   <nav
     v-if="prevLink || nextLink"
@@ -74,9 +74,9 @@ useEventListener('keydown', (event): void => {
   margin-right: auto;
   margin-left: auto;
   padding: 1rem 2rem 0;
-  border-top: 1px solid var(--c-border);
+  border-top: 1px solid var(--vp-c-gutter);
 
-  transition: border-top var(--t-color);
+  transition: border-top var(--vp-t-color);
 
   @media (max-width: $MQNarrow) {
     padding-right: 1rem;
@@ -93,15 +93,15 @@ useEventListener('keydown', (event): void => {
 
     margin: 0.25rem;
     padding: 0.25rem 0.5rem;
-    border: 1px solid var(--c-border);
+    border: 1px solid var(--vp-c-gutter);
     border-radius: 0.25rem;
 
     &:hover {
-      background: var(--c-bg-light);
+      background: var(--c-bg-soft);
     }
 
     .hint {
-      color: var(--c-text-quote);
+      color: var(--vp-c-text-mute);
       font-size: 0.875rem;
       line-height: 2;
     }

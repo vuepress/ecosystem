@@ -1,0 +1,23 @@
+:root {
+  // base color
+  --code-c-text: #9e9e9e;
+
+  // highlight
+  --code-c-highlight-bg: rgba(142 150 170 / 14%);
+}
+
+.shiki span {
+  color: var(--shiki-light, inherit);
+
+  [data-theme='dark'] & {
+    color: var(--shiki-dark, inherit);
+  }
+}
+
+div[data-highlighter='shiki'] {
+  background-color: var(--code-c-bg, var(--shiki-light-bg));
+
+  [data-theme='dark'] & {
+    background-color: var(--code-c-bg, var(--shiki-dark-bg));
+  }
+}

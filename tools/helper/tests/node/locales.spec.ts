@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import type { Bundler } from 'vuepress/core'
 import { createBaseApp } from 'vuepress/core'
 import { path } from 'vuepress/utils'
 import {
@@ -63,7 +64,7 @@ describe('getRootLang() should get root locale lang', () => {
         '/id/': { lang: 'id-ID' },
       },
       source: path.resolve(__dirname, './__fixtures__/src'),
-      bundler: {} as any,
+      bundler: {} as Bundler,
       theme: emptyTheme,
     })
 
@@ -76,7 +77,7 @@ describe('getRootLang() should get root locale lang', () => {
         '/nl/': { lang: 'nl-NL' },
       },
       source: path.resolve(__dirname, './__fixtures__/src'),
-      bundler: {} as any,
+      bundler: {} as Bundler,
       theme: emptyTheme,
     })
 
@@ -94,7 +95,7 @@ describe('getRootLang() should get root locale lang', () => {
         '/nl/': { lang: 'nl-NL' },
       },
       source: path.resolve(__dirname, './__fixtures__/src'),
-      bundler: {} as any,
+      bundler: {} as Bundler,
       theme: emptyTheme,
     })
 
@@ -111,7 +112,7 @@ describe('getRootLang() should get root locale lang', () => {
         '/nl/': { lang: 'nl-NL' },
       },
       source: path.resolve(__dirname, './__fixtures__/src'),
-      bundler: {} as any,
+      bundler: {} as Bundler,
       theme: emptyTheme,
     })
 
@@ -130,7 +131,7 @@ describe('getLocaleConfig() should generate locale', () => {
         '/id/': { lang: 'id-ID' },
       },
       source: path.resolve(__dirname, './__fixtures__/src'),
-      bundler: {} as any,
+      bundler: {} as Bundler,
       theme: emptyTheme,
     })
 
@@ -168,7 +169,7 @@ describe('getLocaleConfig() should generate locale', () => {
         '/nl/': { lang: 'nl-NL' },
       },
       source: path.resolve(__dirname, './__fixtures__/src'),
-      bundler: {} as any,
+      bundler: {} as Bundler,
       theme: emptyTheme,
     })
 
@@ -206,7 +207,7 @@ describe('getLocaleConfig() should generate locale', () => {
         '/nl/': { lang: 'nl-NL' },
       },
       source: path.resolve(__dirname, './__fixtures__/src'),
-      bundler: {} as any,
+      bundler: {} as Bundler,
       theme: emptyTheme,
     })
 
@@ -259,7 +260,7 @@ describe('getLocaleConfig() should generate locale', () => {
           '/unknown/': { lang: 'unknown-Language' },
         },
         source: path.resolve(__dirname, './__fixtures__/src'),
-        bundler: {} as any,
+        bundler: {} as Bundler,
         theme: emptyTheme,
       })
 
@@ -304,7 +305,7 @@ describe('getLocaleConfig() should generate locale', () => {
           '/unknown/': { lang: 'unknown-Language' },
         },
         source: path.resolve(__dirname, './__fixtures__/src'),
-        bundler: {} as any,
+        bundler: {} as Bundler,
         theme: emptyTheme,
       })
 
@@ -355,7 +356,7 @@ describe('getLocaleConfig() should generate locale', () => {
           '/test/': { lang: 'test-Language' },
         },
         source: path.resolve(__dirname, './__fixtures__/src'),
-        bundler: {} as any,
+        bundler: {} as Bundler,
         theme: emptyTheme,
       })
 
@@ -400,7 +401,7 @@ describe('getLocaleConfig() should generate locale', () => {
           '/unknown/': { lang: 'unknown-Language' },
         },
         source: path.resolve(__dirname, './__fixtures__/src'),
-        bundler: {} as any,
+        bundler: {} as Bundler,
         theme: emptyTheme,
       })
 

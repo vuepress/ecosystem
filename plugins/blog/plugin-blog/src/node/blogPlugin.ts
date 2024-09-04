@@ -14,9 +14,9 @@ import {
   prepareCategoriesMap,
 } from './category/index.js'
 import { getPageMap } from './getPagesMap.js'
-import { logger, PLUGIN_NAME } from './logger.js'
+import { PLUGIN_NAME, logger } from './logger.js'
 import type { BlogPluginOptions } from './options.js'
-import { prepareStore, Store } from './store.js'
+import { Store, prepareStore } from './store.js'
 import { getType, getTypeOptions, prepareTypesMap } from './type/index.js'
 
 export const blogPlugin =
@@ -57,7 +57,7 @@ export const blogPlugin =
         __BLOG_META_SCOPE__: metaScope,
       }),
 
-      extendsBundlerOptions: (bundlerOptions: unknown, app): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown): void => {
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
 
@@ -89,7 +89,7 @@ export const blogPlugin =
           }
       },
 
-      onInitialized: async (app): Promise<void> => {
+      onInitialized: async (): Promise<void> => {
         const pageMap = getPageMap(app, filter)
 
         const categoryResult = getCategory(
@@ -118,11 +118,15 @@ export const blogPlugin =
               if (index !== -1) {
                 logger.warn('Overriding existing page:', pageOptions.path)
 
-                const index = app.pages.findIndex(
+                const existingIndex = app.pages.findIndex(
                   (page) => page.path === pageOptions.path,
                 )
 
-                app.pages.splice(index, 1, await createPage(app, pageOptions))
+                app.pages.splice(
+                  existingIndex,
+                  1,
+                  await createPage(app, pageOptions),
+                )
               }
 
               app.pages.push(await createPage(app, pageOptions))
@@ -139,7 +143,7 @@ export const blogPlugin =
         typesMap = typeResult.typesMap
       },
 
-      onPrepared: async (app): Promise<void> => {
+      onPrepared: async (): Promise<void> => {
         // Prepare store
         await prepareStore(app, store)
         // Prepare category
@@ -150,7 +154,7 @@ export const blogPlugin =
         if (app.env.isDebug) logger.info('temp file generated')
       },
 
-      onWatched: (app, watchers): void => {
+      onWatched: (_, watchers): void => {
         const hotReload =
           'hotReload' in options ? options.hotReload : app.env.isDebug
 
@@ -239,13 +243,13 @@ export const blogPlugin =
           }
 
           pageDataWatcher.on('add', () => {
-            updateBlog()
+            void updateBlog()
           })
           pageDataWatcher.on('change', () => {
-            updateBlog()
+            void updateBlog()
           })
           pageDataWatcher.on('unlink', () => {
-            updateBlog()
+            void updateBlog()
           })
 
           watchers.push(pageDataWatcher)

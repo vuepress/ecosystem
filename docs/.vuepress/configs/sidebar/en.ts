@@ -1,6 +1,6 @@
-import type { SidebarConfig } from '@vuepress/theme-classic'
+import type { SidebarOptions } from '@vuepress/theme-classic'
 
-export const sidebarEn: SidebarConfig = {
+export const sidebarEn: SidebarOptions = {
   '/plugins/': [
     {
       text: 'Common Features',
@@ -100,6 +100,7 @@ export const sidebarEn: SidebarConfig = {
     'append-date',
     'markdown-container',
     'markdown-image',
+    'markdown-hint',
     'markdown-math',
     'links-check',
     'prismjs',
@@ -116,7 +117,12 @@ export const sidebarEn: SidebarConfig = {
     '/plugins/pwa/remove-pwa',
   ],
 
-  '/plugins/tools/': ['google-tag-manager', 'redirect', 'register-components'],
+  '/plugins/tools/': [
+    'cache',
+    'google-tag-manager',
+    'redirect',
+    'register-components',
+  ],
 
   '/plugins/search/': ['docsearch', 'search'],
 
@@ -136,6 +142,7 @@ export const sidebarEn: SidebarConfig = {
   ],
 
   '/themes/': [
+    'guidelines',
     {
       text: 'Default Theme',
       prefix: 'default/',

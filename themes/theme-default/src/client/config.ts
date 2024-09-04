@@ -8,6 +8,7 @@ import { Badge, CodeGroup, CodeGroupItem } from './components/global/index.js'
 import Layout from './layouts/Layout.vue'
 import NotFound from './layouts/NotFound.vue'
 
+import '@vuepress/helper/colors.css'
 import '@vuepress/helper/normalize.css'
 import './styles/index.scss'
 
@@ -21,7 +22,7 @@ export default defineClientConfig({
     // compat with @vuepress/plugin-docsearch and @vuepress/plugin-search
     app.component('VPSearch', () => {
       const SearchComponent =
-        app.component('Docsearch') || app.component('SearchBox')
+        app.component('Docsearch') ?? app.component('SearchBox')
       if (SearchComponent) {
         return h(SearchComponent)
       }

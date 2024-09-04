@@ -5,9 +5,9 @@ test.describe('plugin-pwa', () => {
   test('have manifest', async ({ request }) => {
     const response = await request.get('manifest.webmanifest')
 
-    expect(response).toBeOK()
+    await expect(response).toBeOK()
 
-    const content = await response.json()
+    const content = (await response.json()) as Record<string, unknown>
 
     expect(typeof content).toBe('object')
     expect(content).toHaveProperty('name', 'VuePress Ecosystem E2E')

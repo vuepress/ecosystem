@@ -6,9 +6,9 @@ test.describe('plugin-theme-data', () => {
 
     const themeData = JSON.parse(
       (await page.locator('#theme-data').textContent()) ?? '{}',
-    )
+    ) as Record<string, unknown>
 
-    await expect(themeData).toEqual({
+    expect(themeData).toEqual({
       appearance: true,
       outline: [2, 3],
       aside: true,
@@ -157,12 +157,12 @@ test.describe('plugin-theme-data', () => {
 
     const themeLocaleData = JSON.parse(
       (await page.locator('#theme-locale-data').textContent()) ?? '{}',
-    )
+    ) as Record<string, unknown>
 
     expect(themeLocaleData).toHaveProperty('navbar', ['/zh/'])
     expect(themeLocaleData).not.toHaveProperty('locales')
 
-    await page.locator('.vp-content .route-link').click()
+    await page.locator('[vp-content] .route-link').click()
 
     await page.waitForURL('zh/test.html')
 

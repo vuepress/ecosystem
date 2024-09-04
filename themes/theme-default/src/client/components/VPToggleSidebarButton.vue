@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useThemeLocaleData } from '@theme/useThemeData'
 
-defineEmits<(e: 'toggle') => void>()
+defineEmits<{ toggle: [] }>()
 
 const themeLocale = useThemeLocaleData()
 </script>
@@ -60,9 +60,9 @@ const themeLocale = useThemeLocaleData()
       height: 2px;
       border-radius: 2px;
 
-      background-color: var(--c-text);
+      background-color: var(--vp-c-text);
 
-      transition: transform var(--t-transform);
+      transition: transform var(--vp-t-transform);
 
       &:nth-child(2) {
         margin: 6px 0;

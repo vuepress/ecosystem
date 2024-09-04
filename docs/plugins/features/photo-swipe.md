@@ -43,7 +43,7 @@ In preview mode, you can:
 ### selector
 
 - Type: `string | string[]`
-- Default: `".theme-default-content :not(a) > img:not([no-view])"`
+- Default: `"[vp-content] :not(a) > img:not([no-view])"`
 - Details: Image selector
 
 ### download
@@ -130,8 +130,8 @@ In preview mode, you can:
 - Example:
 
   ```ts
-  import { defineUserConfig } from 'vuepress'
   import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
+  import { defineUserConfig } from 'vuepress'
 
   export default defineUserConfig({
     locales: {
@@ -219,28 +219,28 @@ You can also call photoswipe with apis.
 
 ```vue
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue';
-import { createPhotoSwipe } from "@vuepress/plugin-photo-swipe/client";
+import { createPhotoSwipe } from '@vuepress/plugin-photo-swipe/client'
+import { onMounted, onUnmounted } from 'vue'
 
-let state: PhotoSwipeState | null = null;
+let state: PhotoSwipeState | null = null
 
-const openPhotoSwipe = (index: number) => {
-  state?.open(index - 1);
-};
+const openPhotoSwipe = (index: number): void => {
+  state?.open(index - 1)
+}
 
 onMounted(async () => {
   // create a new photoswipe instance with image links
-  state=  await createPhotoSwipe(
+  state = await createPhotoSwipe(
     [
-      'https://exmaple.com/image1.png'
-      'https://exmaple.com/image2.png'
-      'https://exmaple.com/image3.png'
+      'https://exmaple.com/image1.png',
+      'https://exmaple.com/image2.png',
+      'https://exmaple.com/image3.png',
     ],
     {
       // photoswipe options
-    }
-  );
-});
+    },
+  )
+})
 
 onUnmounted(() => {
   state?.destroy()
@@ -248,7 +248,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <button v-for="i in 3" @click="openPhotoSwipe(i)">open photo {{ i }}</button>
+  <button v-for="i in 3" :key="i" type="button" @click="openPhotoSwipe(i)">
+    open photo {{ i }}
+  </button>
 </template>
 ```
 
@@ -256,10 +258,10 @@ onUnmounted(() => {
 
 ```vue
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
 import { registerPhotoSwipe } from '@vuepress/plugin-photo-swipe/client'
+import { onMounted, onUnmounted } from 'vue'
 
-let destroy: () => void | null = null
+let destroy: () => null | void = null
 
 onMounted(async () => {
   await nextTick()
@@ -267,7 +269,7 @@ onMounted(async () => {
   const images = Array.from(document.querySelectorAll('img'))
 
   // create a new photoswipe instance on image elements
-  state = await registerPhotoSwipe(images, {
+  destroy = await registerPhotoSwipe(images, {
     // photoswipe options
   })
 })

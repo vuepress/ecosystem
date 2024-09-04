@@ -330,7 +330,7 @@ export interface BaseFeedPluginOptions {
    *
    * 需要保留的的自定义组件或元素
    */
-  preservedElements?: (string | RegExp)[] | ((tagName: string) => boolean)
+  preservedElements?: (RegExp | string)[] | ((tagName: string) => boolean)
 
   /**
    * A custom filter function, used to filter feed items.

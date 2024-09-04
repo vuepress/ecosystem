@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useDarkMode } from '@theme/useDarkMode'
 import { useThemeLocaleData } from '@theme/useThemeData'
-import { computed, h } from 'vue'
 import type { FunctionalComponent } from 'vue'
+import { computed, h } from 'vue'
 import {
   ClientOnly,
   RouteLink,
@@ -76,7 +76,7 @@ const NavbarBrandLogo: FunctionalComponent = () => {
 
 .vp-site-name {
   position: relative;
-  color: var(--c-text);
+  color: var(--vp-c-text);
   font-weight: 600;
   font-size: 1.3rem;
 

@@ -190,16 +190,6 @@ export default defineUserConfig({
 })
 ```
 
-:::: tip
-
-The following features requires additional style to work, which should be handled by themes or users.
-
-::: details View Styles Example
-@[code](@vuepress/theme-default/src/client/styles/content/code-notation.scss)
-:::
-
-::::
-
 ### notationDiff
 
 - Type: `boolean`
@@ -399,71 +389,79 @@ The following features requires additional style to work, which should be handle
   **Input:**
 
   ````md
-  ```ts :whitespace
-  // render all whitespace
-  function block() {
-    space()
-    tab()
-  }
+  ```md :whitespace
+  <!-- render all whitespace -->
+
+  A text  
+  with trailing spaces
+
+      indented text
   ```
 
-  ```ts :whitespace=boundary
-  // render leading and trailing whitespace of the line
-  function block() {
-    space()
-    tab()
-  }
+  ```md :whitespace=boundary
+  <!-- render leading and trailing whitespace of the line -->
+
+  A text  
+  with trailing spaces
+
+      indented text
   ```
 
-  ```ts :whitespace=trailing
-  // render trailing whitespace of the line
-  function block() {
-    space()
-    tab()
-  }
+  ```md :whitespace=trailing
+  <!-- render trailing whitespace of the line -->
+
+  A text  
+  with trailing spaces
+
+      indented text
   ```
 
-  ```ts :no-whitespace
-  // disable render whitespace
-  function block() {
-    space()
-    tab()
-  }
+  ```md :no-whitespace
+  <!-- disable render whitespace -->
+
+  A text  
+  with trailing spaces
+
+      indented text
   ```
   ````
 
   **Output:**
 
-  ```ts :whitespace data-title="ts :whitespace"
-  // render all whitespace
-  function block() {
-    space()
-    tab()
-  }
+  ```md :whitespace
+  <!-- render all whitespace -->
+
+  A text  
+  with trailing spaces
+
+      indented text
   ```
 
-  ```ts :whitespace=boundary data-title="ts :whitespace=boundary"
-  // render leading and trailing whitespace of the line
-  function block() {
-    space()
-    tab()
-  }
+  ```md :whitespace=boundary
+  <!-- render leading and trailing whitespace of the line -->
+
+  A text  
+  with trailing spaces
+
+      indented text
   ```
 
-  ```ts :whitespace=trailing data-title="ts :whitespace=trailing"
-  // render trailing whitespace of the line
-  function block() {
-    space()
-    tab()
-  }
+  ```md :whitespace=trailing
+  <!-- render trailing whitespace of the line -->
+
+  A text  
+  with trailing spaces
+
+      indented text
   ```
 
-  ```ts :no-whitespace data-title="ts :no-whitespace"
-  // disable render whitespace
-  function block() {
-    space()
-    tab()
-  }
+  ```md :no-whitespace
+  <!-- disable render whitespace -->
+
+  A text  
+  with trailing spaces
+
+      indented text
   ```
 
 - Also see：
@@ -475,7 +473,7 @@ The following features requires additional style to work, which should be handle
 
 - Type: `string`
 
-- Default: `'plain'`
+- Default: `''`
 
 - Details: Fallback language when the specified language is not available.
 

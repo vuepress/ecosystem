@@ -63,10 +63,10 @@ export const registerComponentsPlugin = ({
           ignoreInitial: true,
         })
         componentsWatcher.on('add', () => {
-          prepareClientConfigFile(app, options, optionsHash)
+          void prepareClientConfigFile(app, options, optionsHash)
         })
         componentsWatcher.on('unlink', () => {
-          prepareClientConfigFile(app, options, optionsHash)
+          void prepareClientConfigFile(app, options, optionsHash)
         })
         watchers.push(componentsWatcher)
       }

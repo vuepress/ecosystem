@@ -5,6 +5,7 @@ import { AutoLink, useRoute } from 'vuepress/client'
 import type { AutoLinkOptions, NavGroup } from '../../shared/index.js'
 
 const props = defineProps<{
+  /** dropdown items */
   item: NavGroup<AutoLinkOptions | NavGroup<AutoLinkOptions>>
 }>()
 
@@ -17,8 +18,8 @@ const dropdownAriaLabel = computed(
   () => item.value.ariaLabel || item.value.text,
 )
 
-const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
-  arr[arr.length - 1] === item
+const isLastItemOfArray = (arrayItem: unknown, array: unknown[]): boolean =>
+  array[array.length - 1] === arrayItem
 
 /**
  * Open the dropdown when user tab and click from keyboard.
@@ -28,7 +29,7 @@ const isLastItemOfArray = (item: unknown, arr: unknown[]): boolean =>
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail
  */
-const handleDropdown = (e): void => {
+const handleDropdown = (e: UIEvent): void => {
   const isTriggerByTab = e.detail === 0
 
   open.value = isTriggerByTab ? !open.value : false
@@ -153,6 +154,7 @@ watch(
     display: none;
 
     overflow-y: auto;
+
     box-sizing: border-box;
 
     // Avoid height shake by clicking
@@ -160,11 +162,10 @@ watch(
     max-height: calc(100vh - 2.7rem);
     margin: 0;
     padding: 0.6rem 0;
-    border: 1px solid var(--c-border);
-    border-bottom-color: var(--c-border-dark);
+    border: 1px solid var(--vp-c-border);
     border-radius: 0.25rem;
 
-    background-color: var(--c-bg-navbar);
+    background-color: var(--vp-navbar-c-bg);
 
     text-align: left;
     white-space: nowrap;
@@ -178,7 +179,7 @@ watch(
   border: none;
 
   background: transparent;
-  color: var(--c-text);
+  color: var(--vp-c-text);
 
   font-weight: 500;
   font-size: 0.9rem;
@@ -203,7 +204,7 @@ watch(
   border: none;
 
   background: transparent;
-  color: var(--c-text);
+  color: var(--vp-c-text);
 
   font-weight: 600;
   font-size: inherit;
@@ -217,7 +218,7 @@ watch(
   }
 
   &:hover {
-    color: var(--c-text-accent);
+    color: var(--vp-c-accent);
   }
 }
 
@@ -238,11 +239,11 @@ watch(
     line-height: 1.7rem;
 
     &:hover {
-      color: var(--c-text-accent);
+      color: var(--vp-c-accent);
     }
 
     &.route-link-active {
-      color: var(--c-text-accent);
+      color: var(--vp-c-accent);
 
       &::after {
         content: '';
@@ -255,7 +256,7 @@ watch(
         height: 0;
         border-top: 3px solid transparent;
         border-bottom: 3px solid transparent;
-        border-left: 5px solid var(--c-text-accent);
+        border-left: 5px solid var(--vp-c-accent);
       }
     }
   }
@@ -269,7 +270,7 @@ watch(
 .vp-navbar-dropdown-subtitle {
   margin: 0.45rem 0 0;
   padding: 1rem 0 0.45rem;
-  border-top: 1px solid var(--c-border);
+  border-top: 1px solid var(--vp-c-gutter);
   font-size: 0.9rem;
 
   .vp-navbar-dropdown-wrapper.mobile & {

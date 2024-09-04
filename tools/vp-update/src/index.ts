@@ -1,9 +1,10 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 import { spawnSync } from 'node:child_process'
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { cac } from 'cac'
-import { version } from './config/index.js'
+import { VERSION } from './config/index.js'
 import {
   checkTaobaoRegistry,
   getPackageManager,
@@ -18,7 +19,8 @@ cli
     'pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]',
   )
   .example('docs')
-  .action(async (targetDir = ''): Promise<Error | void> => {
+  // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+  .action(async (targetDir: string = ''): Promise<Error | void> => {
     console.log('Bumping deps...')
     const dir = resolve(process.cwd(), targetDir)
     const packageJSON = resolve(dir, 'package.json')
@@ -32,7 +34,13 @@ cli
 
     const content = readFileSync(packageJSON, { encoding: 'utf-8' })
 
-    const packageJSONContent = JSON.parse(content)
+    const packageJSONContent = JSON.parse(content) as Record<
+      string,
+      unknown
+    > & {
+      dependencies?: Record<string, string>
+      devDependencies?: Record<string, string>
+    }
 
     await Promise.all([
       packageJSONContent.dependencies
@@ -48,14 +56,14 @@ cli
       `${JSON.stringify(packageJSONContent, null, 2)}\n`,
     )
 
-    console.log('Install deps...')
+    console.info('Install deps...')
 
     spawnSync(`${packageManager} install`, {
       shell: true,
       stdio: 'inherit',
     })
 
-    console.log('Upgrading deps...')
+    console.info('Upgrading deps...')
 
     spawnSync(
       packageManager === 'pnpm'
@@ -82,6 +90,6 @@ cli.help(() => [
   },
 ])
 
-cli.version(version)
+cli.version(VERSION)
 
 cli.parse()

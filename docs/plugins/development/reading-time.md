@@ -37,7 +37,7 @@ page.data.readingTime // { minutes: 3.2, words: 934 }
 
 You can access it for further processing in the `extendsPage` lifecycle and other lifecycle:
 
-```ts
+```js
 export default {
   // ...
   extendsPage: (page) => {
@@ -45,7 +45,7 @@ export default {
   },
 
   onInitialized: (app) => {
-    app.pages.map((page) => {
+    app.pages.forEach((page) => {
       page.data.readingTime // { minutes: 3.2, words: 934 }
     })
   },
@@ -174,7 +174,7 @@ const useReadingTimeLocale: () => ComputedRef<ReadingTimeLocale>
 
 This plugin is targeting plugin and theme developers mostly, so we provide a "Use API":
 
-```ts title="your plugin or theme entry"
+```js title="your plugin or theme entry"
 import { useReadingTimePlugin } from '@vuepress/plugin-reading-time'
 
 export default (options) => (app) => {
@@ -197,7 +197,7 @@ export default (options) => (app) => {
 
 We also provides a `removeReadingTimePlugin` api to remove the plugin.You can use this to ensure your call take effect or clear the plugin:
 
-```ts title="your plugin or theme entry"
+```js title="your plugin or theme entry"
 import { useReadingTimePlugin } from '@vuepress/plugin-reading-time'
 
 export default (options) => (app) => {

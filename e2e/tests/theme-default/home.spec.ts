@@ -56,7 +56,7 @@ test.describe('homepage', () => {
   })
 
   test('has content', async ({ page }) => {
-    await expect(page.locator('.vp-doc')).toHaveText('HomePage Content')
+    await expect(page.locator('[vp-content]')).toHaveText('HomePage Content')
   })
 
   // test('has footer', async ({ page }) => {

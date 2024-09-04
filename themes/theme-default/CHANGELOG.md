@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.42](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.41...v2.0.0-rc.42) (2024-08-22)
+
+### Features
+
+- add plugin-markdown-hint ([#239](https://github.com/vuepress/ecosystem/issues/239)) ([ed9d06f](https://github.com/vuepress/ecosystem/commit/ed9d06fe4700b522c0522132050ec50648ff8c5c))
+- init guidelines ([#198](https://github.com/vuepress/ecosystem/issues/198)) ([e8258c1](https://github.com/vuepress/ecosystem/commit/e8258c1b663ad218b1607a2619c02fccaf7d9831))
+
+# [2.0.0-rc.41](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.40...v2.0.0-rc.41) (2024-08-14)
+
+### Bug Fixes
+
+- improve code highlight style, close [#222](https://github.com/vuepress/ecosystem/issues/222), [#223](https://github.com/vuepress/ecosystem/issues/223) ([#226](https://github.com/vuepress/ecosystem/issues/226)) ([2a4768d](https://github.com/vuepress/ecosystem/commit/2a4768d1391b22570190d39a0a1a7730fc752e58))
+
+# [2.0.0-rc.40](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.39...v2.0.0-rc.40) (2024-07-24)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.39](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.38...v2.0.0-rc.39) (2024-07-19)
+
+### Bug Fixes
+
+- **theme-default:** fix code highlight color ([c9a5fc2](https://github.com/vuepress/ecosystem/commit/c9a5fc20f505ad90fcef33a2d316534e1267feff))
+- **theme-default:** hide mixed-decls warnings for vite ([37211b2](https://github.com/vuepress/ecosystem/commit/37211b2892bf90f96d9a258de9722e91a15c4679))
+
+### Features
+
+- make styles built-in for highlighter plugins ([#217](https://github.com/vuepress/ecosystem/issues/217)) ([25e1ea2](https://github.com/vuepress/ecosystem/commit/25e1ea2c755bb7858b397a93982d6b92ec8d18c5))
+
+# [2.0.0-rc.38](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.37...v2.0.0-rc.38) (2024-07-13)
+
+### Bug Fixes
+
+- **theme-default:** disable sass deprecations for webpack ([28e1110](https://github.com/vuepress/ecosystem/commit/28e1110066bbafe568d3b9cc09098cbb158c210d))
+- **theme-default:** fix incorrect 404 page layout, close [#207](https://github.com/vuepress/ecosystem/issues/207) ([#213](https://github.com/vuepress/ecosystem/issues/213)) ([c7c9a72](https://github.com/vuepress/ecosystem/commit/c7c9a72e65a3f492a9d799836695ce2173a1566b))
+- **theme-default:** fix incorrect code notation diff layout, close [#212](https://github.com/vuepress/ecosystem/issues/212) ([#214](https://github.com/vuepress/ecosystem/issues/214)) ([983ad4a](https://github.com/vuepress/ecosystem/commit/983ad4aa04e47131cee4d898a939a2af880b2050))
+
 # [2.0.0-rc.37](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.36...v2.0.0-rc.37) (2024-06-21)
 
 **Note:** Version bump only for package @vuepress/theme-default

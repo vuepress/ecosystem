@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-const props = defineProps({
-  package: {
-    type: String,
-    required: true,
+const props = withDefaults(
+  defineProps<{
+    /** package name */
+    package: string
+    /** dist tag */
+    distTag?: string
+  }>(),
+  {
+    distTag: 'next',
   },
-  distTag: {
-    type: String,
-    default: 'next',
-  },
-})
+)
 
 const badgeLink = computed(
   () => `https://www.npmjs.com/package/${props.package}/v/next`,

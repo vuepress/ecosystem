@@ -6,19 +6,21 @@ import { getRegistry } from './registry.js'
 export const getVersion = async (
   packageManager: PackageManager,
   packageName: string,
-  tag: 'latest' | 'next' | 'auto' = 'auto',
+  tag: 'auto' | 'latest' | 'next' = 'auto',
   retries = 3,
 ): Promise<string> => {
   const registry = getRegistry(packageManager)
   const infoUrl = `${registry}-/package/${packageName}/dist-tags`
 
-  const getVersionInfo = (): Promise<Record<string, string>> =>
+  const getVersionInfo = async (): Promise<Record<string, string>> =>
     new Promise((resolve, reject) => {
       get(infoUrl, (res) => {
         if (res.statusCode === 200) {
           let body = ''
 
-          res.on('data', (data) => (body += data))
+          res.on('data', (data: string) => {
+            body += data
+          })
           res.on('end', () => {
             resolve(JSON.parse(body) as Record<string, string>)
           })
@@ -28,10 +30,9 @@ export const getVersion = async (
       }).on('error', reject)
     })
 
-  let times = 1
-
-  do {
+  for (let times = 1; times <= retries; times++) {
     const versionInfo = await getVersionInfo().catch(() => {
+      // eslint-disable-next-line no-console
       console.log(`Get ${packageName} version failed, [${times}/${retries}]`)
     })
 
@@ -46,9 +47,7 @@ export const getVersion = async (
             ? next
             : latest
     }
-
-    times++
-  } while (times <= retries)
+  }
 
   throw new Error(
     `Failed to get ${packageName} version!\n Can not get version info from ${infoUrl}`,

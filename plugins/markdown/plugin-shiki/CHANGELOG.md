@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.42](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.41...v2.0.0-rc.42) (2024-08-22)
+
+**Note:** Version bump only for package @vuepress/plugin-shiki
+
+# [2.0.0-rc.41](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.40...v2.0.0-rc.41) (2024-08-14)
+
+### Bug Fixes
+
+- improve code highlight style, close [#222](https://github.com/vuepress/ecosystem/issues/222), [#223](https://github.com/vuepress/ecosystem/issues/223) ([#226](https://github.com/vuepress/ecosystem/issues/226)) ([2a4768d](https://github.com/vuepress/ecosystem/commit/2a4768d1391b22570190d39a0a1a7730fc752e58))
+
+# [2.0.0-rc.40](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.39...v2.0.0-rc.40) (2024-07-24)
+
+### Bug Fixes
+
+- fix lineNumbers style not working ([61e8df9](https://github.com/vuepress/ecosystem/commit/61e8df943604759dd299c3192095e8b52a40eb06))
+- **plugin-shiki:** refine css variables and allow overriding default code block color ([201db1d](https://github.com/vuepress/ecosystem/commit/201db1d4b8a057bba9e774a276a3eec2323c3675))
+
+# [2.0.0-rc.39](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.38...v2.0.0-rc.39) (2024-07-19)
+
+### Features
+
+- make styles built-in for highlighter plugins ([#217](https://github.com/vuepress/ecosystem/issues/217)) ([25e1ea2](https://github.com/vuepress/ecosystem/commit/25e1ea2c755bb7858b397a93982d6b92ec8d18c5))
+
+# [2.0.0-rc.38](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.37...v2.0.0-rc.38) (2024-07-13)
+
+### Features
+
+- **plugin-shiki:** rename `getHighlighter` to `createHighlighter` ([#208](https://github.com/vuepress/ecosystem/issues/208)) ([bb739df](https://github.com/vuepress/ecosystem/commit/bb739dfa0893bc8a46d9e40000f43eef28be856b))
+
+### Performance Improvements
+
+- **plugin-shiki:** improve logging when language is not available ([#215](https://github.com/vuepress/ecosystem/issues/215)) ([b84ce08](https://github.com/vuepress/ecosystem/commit/b84ce08df9c72dc56fabb8790afc192bc45abfda))
+
 # [2.0.0-rc.37](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.36...v2.0.0-rc.37) (2024-06-21)
 
 **Note:** Version bump only for package @vuepress/plugin-shiki

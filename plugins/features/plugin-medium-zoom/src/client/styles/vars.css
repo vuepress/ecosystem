@@ -1,5 +1,5 @@
 :root {
   --medium-zoom-z-index: 100;
-  --medium-zoom-bg-color: #fff;
+  --medium-zoom-c-bg: var(--vp-c-bg-elv, #fff);
   --medium-zoom-opacity: 1;
 }

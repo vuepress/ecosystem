@@ -1,7 +1,7 @@
 import { spawnSync } from 'node:child_process'
 import { fs, path } from 'vuepress/utils'
 
-export type PackageManager = 'npm' | 'yarn' | 'pnpm' | 'bun'
+export type PackageManager = 'bun' | 'npm' | 'pnpm' | 'yarn'
 
 const globalCache = new Map<string, boolean>()
 const localCache = new Map<string, PackageManager>()
@@ -18,7 +18,7 @@ const isInstalled = (packageManager: PackageManager): boolean => {
       spawnSync(`${packageManager} --version`, { shell: true, stdio: 'ignore' })
         .status === 0
     )
-  } catch (e) {
+  } catch {
     return false
   }
 }

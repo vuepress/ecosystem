@@ -16,9 +16,9 @@ import type {
 export interface ResolvedFeedOptions
   extends Omit<
       BaseFeedPluginOptions,
-      'sorter' | 'filter' | 'preservedElements'
+      'filter' | 'preservedElements' | 'sorter'
     >,
-    Required<Pick<BaseFeedPluginOptions, 'sorter' | 'filter'>> {
+    Required<Pick<BaseFeedPluginOptions, 'filter' | 'sorter'>> {
   hostname: string
   isPreservedElement: (tagName: string) => boolean
 }
@@ -36,7 +36,7 @@ export const getFeedOptions = (
       ...siteData.locales,
     }).map((localePath) => {
       const preservedElements =
-        options.locales?.[localePath]?.preservedElements ||
+        options.locales?.[localePath]?.preservedElements ??
         options.preservedElements
       const { hostname, devServer, locales, ...rest } = options
 
@@ -57,10 +57,10 @@ export const getFeedOptions = (
           ): number =>
             dateSorter(
               pageA.data.git?.createdTime
-                ? new Date(pageA.data.git?.createdTime)
+                ? new Date(pageA.data.git.createdTime)
                 : pageA.frontmatter.date,
               pageB.data.git?.createdTime
-                ? new Date(pageB.data.git?.createdTime)
+                ? new Date(pageB.data.git.createdTime)
                 : pageB.frontmatter.date,
             ),
 

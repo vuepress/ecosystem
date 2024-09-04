@@ -20,7 +20,7 @@ const SVGWrapper: FunctionalComponent<
       'fill': color,
       'aria-label': `${name} icon`,
     },
-    slots.default?.(),
+    slots.default(),
   )
 
 SVGWrapper.displayName = 'SVGWrapper'

@@ -12,7 +12,6 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { watermarkPlugin } from '@vuepress/plugin-watermark'
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress/cli'
-import type { UserConfig } from 'vuepress/cli'
 import { getDirname, path } from 'vuepress/utils'
 
 const __dirname = getDirname(import.meta.url)
@@ -106,15 +105,15 @@ export default defineUserConfig({
       // Getting article info
       getInfo: ({ frontmatter, title, data }) => ({
         title,
-        author: frontmatter.author || '',
+        author: frontmatter.author ?? '',
         date: frontmatter.date || null,
-        category: frontmatter.category || [],
-        tag: frontmatter.tag || [],
+        category: frontmatter.category ?? [],
+        tag: frontmatter.tag ?? [],
         excerpt:
           // Support manually set excerpt through frontmatter
           typeof frontmatter.excerpt === 'string'
             ? frontmatter.excerpt
-            : data?.excerpt || '',
+            : data.excerpt || '',
       }),
 
       // Generate excerpt for all pages excerpt those users choose to disable
@@ -127,7 +126,7 @@ export default defineUserConfig({
         {
           key: 'category',
           getter: (page): string[] =>
-            (page.frontmatter.category as string[]) || [],
+            (page.frontmatter.category as string[] | undefined) ?? [],
           layout: 'Category',
           itemLayout: 'Category',
           frontmatter: (): Record<string, unknown> => ({
@@ -141,7 +140,8 @@ export default defineUserConfig({
         },
         {
           key: 'tag',
-          getter: (page): string[] => (page.frontmatter.tag as string[]) || [],
+          getter: (page): string[] =>
+            (page.frontmatter.tag as string[] | undefined) ?? [],
           layout: 'Tag',
           itemLayout: 'Tag',
           frontmatter: (): Record<string, unknown> => ({
@@ -289,4 +289,4 @@ export default defineUserConfig({
       },
     }),
   ],
-}) as UserConfig
+})

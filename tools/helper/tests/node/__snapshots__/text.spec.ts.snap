@@ -439,8 +439,8 @@ Block code:
 Sample text here...
 
 Syntax highlighting:
-var foo = function (bar) {
-  return bar++
+function foo(bar) {
+  return \`Hello \${bar}\`
 }
 
 console.log(foo(5))

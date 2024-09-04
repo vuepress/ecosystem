@@ -74,7 +74,7 @@ export interface HighlightOptions {
    *
    * @see https://shiki.style/packages/transformers#transformernotationwordhighlight
    */
-  notationWordHighLight?: boolean
+  notationWordHighlight?: boolean
 
   /**
    * Enable render whitespace
@@ -92,5 +92,5 @@ export interface HighlightOptions {
    *
    * @see https://shiki.style/packages/transformers#transformerrenderwhitespace
    */
-  whitespace?: boolean | WhitespacePosition
+  whitespace?: WhitespacePosition | boolean
 }

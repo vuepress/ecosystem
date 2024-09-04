@@ -1,10 +1,16 @@
-import { addViteOptimizeDepsExclude } from '@vuepress/helper'
+/* eslint-disable no-console */
+import {
+  addViteConfig,
+  addViteOptimizeDepsExclude,
+  chainWebpack,
+} from '@vuepress/helper'
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
 import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 import { gitPlugin } from '@vuepress/plugin-git'
 import { linksCheckPlugin } from '@vuepress/plugin-links-check'
 import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
+import { markdownHintPlugin } from '@vuepress/plugin-markdown-hint'
 import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { palettePlugin } from '@vuepress/plugin-palette'
@@ -22,7 +28,7 @@ import type {
 } from '../shared/index.js'
 import {
   assignDefaultLocaleOptions,
-  resolveMarkdownContainerPluginOptions,
+  resolveMarkdownHintLocales,
 } from './utils/index.js'
 
 const __dirname = getDirname(import.meta.url)
@@ -78,6 +84,50 @@ export const defaultTheme = ({
     clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
     extendsBundlerOptions: (bundlerOptions, app) => {
+      // FIXME: hide sass deprecation warning for mixed-decls
+      addViteConfig(bundlerOptions, app, {
+        css: {
+          preprocessorOptions: {
+            sass: {
+              logger: {
+                warn: (message, { deprecation, deprecationType }) => {
+                  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                  if (deprecation && deprecationType.id === 'mixed-decls')
+                    return
+
+                  console.warn(message)
+                },
+              },
+            },
+            scss: {
+              logger: {
+                warn: (message, { deprecation, deprecationType }) => {
+                  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                  if (deprecation && deprecationType.id === 'mixed-decls')
+                    return
+
+                  console.warn(message)
+                },
+              },
+            },
+          },
+        },
+      })
+      chainWebpack(bundlerOptions, app, (config) => {
+        config.module
+          .rule('scss')
+          .use('sass-loader')
+          .tap((options) => ({
+            ...options,
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            sassOptions: {
+              silenceDeprecations: ['mixed-decls'],
+              ...options.sassOptions,
+            },
+          }))
+      })
+
+      // ensure theme alias is not optimized by Vite
       addViteOptimizeDepsExclude(bundlerOptions, app, '@theme')
     },
 
@@ -116,31 +166,13 @@ export const defaultTheme = ({
         : [],
 
       // @vuepress/plugin-markdown-container
-      themePlugins.container?.tip !== false
-        ? markdownContainerPlugin(
-            resolveMarkdownContainerPluginOptions(localeOptions, 'tip'),
-          )
-        : [],
-      themePlugins.container?.warning !== false
-        ? markdownContainerPlugin(
-            resolveMarkdownContainerPluginOptions(localeOptions, 'warning'),
-          )
-        : [],
-      themePlugins.container?.danger !== false
-        ? markdownContainerPlugin(
-            resolveMarkdownContainerPluginOptions(localeOptions, 'danger'),
-          )
-        : [],
-      themePlugins.container?.details !== false
-        ? markdownContainerPlugin({
-            type: 'details',
-            before: (info) =>
-              `<details class="custom-container details">${
-                info ? `<summary>${info}</summary>` : ''
-              }\n`,
-            after: () => '</details>\n',
+      themePlugins.hint !== false
+        ? markdownHintPlugin({
+            locales: resolveMarkdownHintLocales(localeOptions),
+            ...(isPlainObject(themePlugins.hint) ? themePlugins.hint : {}),
           })
         : [],
+
       themePlugins.container?.codeGroup !== false
         ? markdownContainerPlugin({
             type: 'code-group',
@@ -177,9 +209,6 @@ export const defaultTheme = ({
       // @vuepress/plugin-medium-zoom
       themePlugins.mediumZoom !== false
         ? mediumZoomPlugin({
-            selector:
-              '.theme-default-content > img, .theme-default-content :not(a) > img',
-            zoomOptions: {},
             // should greater than page transition duration
             delay: 300,
           })

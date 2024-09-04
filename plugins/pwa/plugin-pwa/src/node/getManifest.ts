@@ -25,10 +25,13 @@ export const getManifest = async (
   ) as AppManifest
 
   const manifest: AppManifest = {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     name: siteData.title || siteData.locales['/']?.title || 'Site',
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     short_name: siteData.title || siteData.locales['/']?.title || 'Site',
     description:
       siteData.description ||
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       siteData.locales['/']?.description ||
       'A site built with vuepress',
     lang: getRootLang(app),

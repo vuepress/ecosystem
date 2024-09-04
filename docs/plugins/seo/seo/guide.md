@@ -85,7 +85,7 @@ You can use the plugin options `ogp` to pass in a function to modify the default
 ```ts
 function ogp(
   /** OGP Object inferred by plugin */
-  ogp: SeoContent,
+  ogpInfo: SeoContent,
   /** Page Object */
   page: Page,
   /** VuePress App */

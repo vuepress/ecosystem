@@ -1,0 +1,46 @@
+:root {
+  --code-diff-remove-color: rgb(244 63 94 / 16%);
+  --code-diff-remove-symbol-color: #e0575b;
+  --code-diff-add-color: rgb(16 185 129 / 16%);
+  --code-diff-add-symbol-color: #298459;
+}
+
+// notation diff line
+// - class="diff add": `// [\!code ++]` or `// [\!code ++:3]`
+// - class="diff remove":  `// [\!code --]` or `// [\!code --:3]`
+div[class*='language-'] {
+  .line.diff {
+    display: inline-block;
+    width: 100%;
+    margin: 0 calc(-1 * var(--code-padding-x));
+    padding: 0 var(--code-padding-x);
+
+    &::before {
+      position: absolute;
+      left: 10px;
+    }
+
+    &.remove {
+      background-color: var(--code-diff-remove-color);
+      opacity: 0.7;
+
+      &::before {
+        content: '-';
+        color: var(--code-diff-remove-symbol-color);
+      }
+    }
+
+    &.add {
+      background-color: var(--code-diff-add-color);
+
+      &::before {
+        content: '+';
+        color: var(--code-diff-add-symbol-color);
+      }
+    }
+  }
+
+  &.line-numbers-mode .line.diff::before {
+    left: 4px;
+  }
+}

@@ -1,0 +1,21 @@
+// render whitespace characters
+div[class*='language-'] {
+  .tab,
+  .space {
+    position: relative;
+  }
+
+  .tab::before,
+  .space::before {
+    position: absolute;
+    opacity: 0.3;
+  }
+
+  .tab::before {
+    content: '⇥';
+  }
+
+  .space::before {
+    content: '·';
+  }
+}

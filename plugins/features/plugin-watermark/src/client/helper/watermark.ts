@@ -1,5 +1,4 @@
 import { isFunction, isPlainObject } from '@vuepress/helper/client'
-import { computed, inject, isRef, ref, toValue, watch } from 'vue'
 import type {
   App,
   ComputedRef,
@@ -8,6 +7,7 @@ import type {
   MaybeRefOrGetter,
   Ref,
 } from 'vue'
+import { computed, inject, isRef, ref, toValue, watch } from 'vue'
 import { usePageFrontmatter } from 'vuepress/client'
 import type { WatermarkOptions as WatermarkRawOptions } from 'watermark-js-plus'
 import type { WatermarkPluginFrontmatter } from '../../shared/index.js'

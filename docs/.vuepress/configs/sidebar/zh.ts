@@ -1,6 +1,6 @@
-import type { SidebarConfig } from '@vuepress/theme-classic'
+import type { SidebarOptions } from '@vuepress/theme-classic'
 
-export const sidebarZh: SidebarConfig = {
+export const sidebarZh: SidebarOptions = {
   '/zh/plugins/': [
     {
       text: '常用功能',
@@ -100,6 +100,7 @@ export const sidebarZh: SidebarConfig = {
     'append-date',
     'markdown-container',
     'markdown-image',
+    'markdown-hint',
     'markdown-math',
     'links-check',
     'prismjs',
@@ -117,6 +118,7 @@ export const sidebarZh: SidebarConfig = {
   ],
 
   '/zh/plugins/tools/': [
+    'cache',
     'google-tag-manager',
     'redirect',
     'register-components',
@@ -140,6 +142,7 @@ export const sidebarZh: SidebarConfig = {
   ],
 
   '/zh/themes/': [
+    'guidelines',
     {
       text: '默认主题',
       prefix: 'default/',

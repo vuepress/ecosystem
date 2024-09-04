@@ -13,12 +13,12 @@
     width: var(--search-input-width);
     height: 2rem;
     padding: 0 0.5rem 0 2rem;
-    border: 1px solid var(--search-border-color);
+    border: 1px solid var(--search-c-border);
     border-radius: 2rem;
 
-    background: var(--search-bg-color) url('search.svg') 0.6rem 0.5rem no-repeat;
+    background: var(--search-c-bg) url('search.svg') 0.6rem 0.5rem no-repeat;
     background-size: 1rem;
-    color: var(--search-text-color);
+    color: var(--search-c-text);
     outline: none;
 
     font-size: 0.9rem;
@@ -26,10 +26,9 @@
 
     cursor: text;
 
-    transition: all ease 0.3s;
-
-    -webkit-appearance: none;
     appearance: none;
+
+    transition: all ease 0.3s;
 
     @media (max-width: 719px) {
       position: relative;
@@ -39,7 +38,7 @@
     }
 
     &:focus {
-      border-color: var(--search-accent-color);
+      border-color: var(--search-c-accent);
       cursor: auto;
 
       @media (max-width: 719px) {
@@ -61,10 +60,10 @@
 
     width: var(--search-result-width);
     padding: 0.4rem;
-    border: 1px solid var(--search-border-color);
+    border: 1px solid var(--search-c-border);
     border-radius: 6px;
 
-    background: var(--search-bg-color);
+    background: var(--search-c-bg);
     list-style-type: none;
 
     @media (max-width: 419px) {
@@ -80,15 +79,15 @@
     cursor: pointer;
 
     a {
-      color: var(--search-item-text-color);
+      color: var(--search-c-item-text);
       white-space: normal;
     }
 
     &.focus {
-      background-color: var(--search-item-focus-bg-color);
+      background-color: var(--search-c-item-focus);
 
       a {
-        color: var(--search-accent-color);
+        color: var(--search-c-accent);
       }
     }
 

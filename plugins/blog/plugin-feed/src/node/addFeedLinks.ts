@@ -30,13 +30,11 @@ export const addFeedLinks = (
         type,
         href: getUrl(hostname, base, fileName),
         title: `${
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           siteData.title || siteData.locales['/']?.title || ''
         } ${name} Feed`,
       },
     ]
-
-    // ensure head exists
-    siteData.head ??= []
 
     // add atom link
     if (atom)
@@ -77,8 +75,10 @@ export const addFeedLinks = (
             type,
             href: getUrl(localeOptions.hostname, base, fileName),
             title: `${
+              // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
               siteData.locales[pathLocale]?.title ||
               siteData.title ||
+              // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
               siteData.locales['/']?.title ||
               ''
             } ${name} Feed`,

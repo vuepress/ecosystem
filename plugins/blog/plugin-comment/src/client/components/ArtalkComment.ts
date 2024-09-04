@@ -19,7 +19,6 @@ import { LoadingIcon } from './LoadingIcon.js'
 import 'artalk/dist/Artalk.css'
 
 export default defineComponent({
-  // eslint-disable-next-line vue/multi-word-component-names
   name: 'ArtalkComment',
 
   props: {
@@ -54,7 +53,7 @@ export default defineComponent({
     const initArtalk = async (): Promise<void> => {
       const [{ default: Artalk }] = await Promise.all([
         import(/* webpackChunkName: "artalk" */ 'artalk/dist/Artalk.mjs'),
-        wait(artalkOptions.value.delay || 800),
+        wait(artalkOptions.value.delay ?? 800),
       ])
 
       loaded.value = true
@@ -90,7 +89,7 @@ export default defineComponent({
         () => artalkOptions.value,
         () => {
           artalk?.destroy()
-          initArtalk()
+          void initArtalk()
         },
         { immediate: true },
       )
@@ -98,7 +97,10 @@ export default defineComponent({
       watch(
         () => props.identifier,
         () => {
-          if (artalk) nextTick().then(() => updateArtalk())
+          if (artalk)
+            void nextTick().then(() => {
+              updateArtalk()
+            })
         },
       )
 

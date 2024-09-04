@@ -8,7 +8,13 @@ import { isActiveLinkItem } from '../utils/index.js'
 
 const props = withDefaults(
   defineProps<{
+    /**
+     * The sidebar item to be rendered
+     */
     item: SidebarItem
+    /**
+     * The depth of the current sidebar item
+     */
     depth?: number
   }>(),
   { depth: 0 },
@@ -32,6 +38,7 @@ const itemClass = computed(() => ({
 const isOpenDefault = computed(() =>
   collapsible.value ? isActive.value : true,
 )
+// eslint-disable-next-line vue/no-ref-object-reactivity-loss
 const [isOpen, toggleIsOpen] = useToggle(isOpenDefault.value)
 const onClick = (e: Event): void => {
   if (collapsible.value) {
@@ -42,8 +49,8 @@ const onClick = (e: Event): void => {
 }
 
 // reset open status after navigation
-const unregisterRouterHook = router.afterEach((to) => {
-  nextTick(() => {
+const unregisterRouterHook = router.afterEach(() => {
+  void nextTick(() => {
     isOpen.value = isOpenDefault.value
   })
 })
@@ -89,7 +96,7 @@ onBeforeUnmount(() => {
 
 .vp-sidebar-item {
   border-left: 0.25rem solid transparent;
-  color: var(--c-text);
+  color: var(--vp-c-text);
   cursor: default;
 
   &:focus-visible {
@@ -99,7 +106,6 @@ onBeforeUnmount(() => {
 
   &.vp-sidebar-heading {
     box-sizing: border-box;
-
     width: 100%;
     margin: 0;
     padding: 0.35rem 1.5rem 0.35rem 1.25rem;
@@ -124,7 +130,6 @@ onBeforeUnmount(() => {
     display: inline-block;
 
     box-sizing: border-box;
-
     width: 100%;
     margin: 0;
     padding: 0.35rem 1rem 0.35rem 2rem;
@@ -153,8 +158,8 @@ onBeforeUnmount(() => {
   }
 
   &.active:not(p.vp-sidebar-heading) {
-    border-left-color: var(--c-text-accent);
-    color: var(--c-text-accent);
+    border-left-color: var(--vp-c-accent);
+    color: var(--vp-c-accent);
     font-weight: 600;
   }
 }
@@ -163,7 +168,7 @@ a.vp-sidebar-item {
   cursor: pointer;
 
   &:hover {
-    color: var(--c-text-accent);
+    color: var(--vp-c-accent);
   }
 }
 </style>
