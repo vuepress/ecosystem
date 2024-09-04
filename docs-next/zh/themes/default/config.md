@@ -133,7 +133,7 @@ export default {
       // NavItem
       { text: 'Foo', link: '/foo/' },
       { text: 'Bar', link: '/bar/' },
-      //...
+      // ...
     ],
   }),
 }

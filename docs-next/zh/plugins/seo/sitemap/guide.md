@@ -42,9 +42,9 @@
 
 ```ts
 // 基于文件最后修改时间
-({
+;({
   modifyTimeGetter: (page, app) =>
-    fs.statSync(app.dir.source(page.filePathRelative)).mtime.toISOString();
+    fs.statSync(app.dir.source(page.filePathRelative)).mtime.toISOString(),
 })
 ```
 

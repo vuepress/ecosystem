@@ -322,8 +322,8 @@ Adding the `// [!code --]` or `// [!code ++]` comments on a line will create a d
 export default {
   data () {
     return {
-      msg: 'Removed', // [!!code --]
-      msg: 'Added', // [!!code ++]
+      msg1: 'Removed', // [!!code --]
+      msg2: 'Added', // [!!code ++]
     }
   }
 }
@@ -336,8 +336,8 @@ export default {
 export default {
   data() {
     return {
-      msg: 'Removed', // [!code --]
-      msg: 'Added', // [!code ++]
+      msg1: 'Removed', // [!code --]
+      msg2: 'Added', // [!code ++]
     }
   },
 }

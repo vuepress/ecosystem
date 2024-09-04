@@ -27,11 +27,10 @@ const hasContributors = computed(
 
 const showFooter = computed(
   () =>
-    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-    hasEditLink.value ||
-    hasLastUpdated.value ||
-    hasContributors.value ||
-    control.value.prev ||
+    hasEditLink.value ??
+    hasLastUpdated.value ??
+    hasContributors.value ??
+    control.value.prev ??
     control.value.next,
 )
 </script>

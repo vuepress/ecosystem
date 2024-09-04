@@ -159,7 +159,7 @@ export default {
         text: 'Section Title A',
         collapsed: false,
         items: [
-          //...
+          // ...
         ],
       },
     ],

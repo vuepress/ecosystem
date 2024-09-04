@@ -64,8 +64,8 @@ export default {
 ```ts
 type DefaultThemeImage =
   | string
-  | { src: string; alt?: string; [prop: string]: any }
-  | { light: string; dark: string; alt?: string; [prop: string]: any }
+  | { light: string; dark: string; alt?: string; [prop: string]: unknown }
+  | { src: string; alt?: string; [prop: string]: unknown }
 ```
 
 - Also see:
@@ -119,7 +119,7 @@ export default {
       // NavItem
       { text: 'Foo', link: '/foo/' },
       { text: 'Bar', link: '/bar/' },
-      //...
+      // ...
     ],
   }),
 }
@@ -203,10 +203,10 @@ export default {
         items: [
           { text: 'Introduction', link: '/introduction' },
           { text: 'Getting Started', link: '/getting-started' },
-          ...
-        ]
-      }
-    ]
+          // ...
+        ],
+      },
+    ],
   }),
 }
 ```
@@ -218,7 +218,7 @@ export interface SidebarMulti {
   [path: string]: SidebarItem[] | { items: SidebarItem[]; base: string }
 }
 
-export type SidebarItem = {
+export interface SidebarItem {
   /**
    * The text label of the item.
    */
