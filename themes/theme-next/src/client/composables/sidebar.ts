@@ -160,8 +160,8 @@ export const useSidebar = (): UseSidebarReturn => {
 
   const isSidebarEnabled = computed(() => hasSidebar.value && is960.value)
 
-  // eslint-disable-next-line @typescript-eslint/no-use-before-define
   const sidebarGroups = computed(() =>
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     hasSidebar.value ? getSidebarGroups(sidebar.value) : [],
   )
 

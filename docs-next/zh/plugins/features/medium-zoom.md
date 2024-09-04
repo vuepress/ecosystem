@@ -30,7 +30,7 @@ export default {
 
 - 类型： `string`
 
-- 默认值： `':not(a) > img'`
+- 默认值： `'[vp-content] > img, [vp-content] :not(a) > img'`
 
 - 详情：
 
@@ -82,11 +82,11 @@ export default {
 - 示例：
 
 ```ts
-import { nextTick } from 'vue'
 import { useMediumZoom } from '@vuepress/plugin-medium-zoom/client'
+import { nextTick } from 'vue'
 
 export default {
-  setup() {
+  setup(): void {
     const zoom = useMediumZoom()
 
     // ... 进行了一些操作，在当前页面添加了新的图片

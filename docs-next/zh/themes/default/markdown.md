@@ -322,8 +322,8 @@ export default {
 export default {
   data () {
     return {
-      msg: 'Removed' // [!!code --]
-      msg: 'Added' // [!!code ++]
+      msg: 'Removed', // [!!code --]
+      msg: 'Added', // [!!code ++]
     }
   }
 }
@@ -334,12 +334,12 @@ export default {
 
 ```js
 export default {
-  data () {
+  data() {
     return {
-      msg: 'Removed' // [!code --]
-      msg: 'Added' // [!code ++]
+      msg: 'Removed', // [!code --]
+      msg: 'Added', // [!code ++]
     }
-  }
+  },
 }
 ```
 

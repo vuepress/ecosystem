@@ -30,7 +30,7 @@ export default {
 
 - Type: `string`
 
-- Default: `':not(a) > img'`
+- Default: `'[vp-content] > img, [vp-content] :not(a) > img'`
 
 - Details:
 
@@ -82,11 +82,11 @@ You can customize most of the zoom styles via [zoomOptions](#zoomoptions), while
 - Example:
 
 ```ts
-import { nextTick } from 'vue'
 import { useMediumZoom } from '@vuepress/plugin-medium-zoom/client'
+import { nextTick } from 'vue'
 
 export default {
-  setup() {
+  setup(): void {
     const zoom = useMediumZoom()
 
     // ... do something to add new images in current page

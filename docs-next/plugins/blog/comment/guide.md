@@ -29,13 +29,13 @@ export default {
 ### With Client Config File
 
 ```ts title=".vuepress/client.ts"
-import { defineClientConfig } from 'vuepress/client'
 import {
   defineArtalkConfig,
   // defineGiscusConfig,
   // defineTwikooConfig,
   // defineWalineConfig,
 } from '@vuepress/plugin-comment/client'
+import { defineClientConfig } from 'vuepress/client'
 
 defineArtalkConfig({
   // 选项

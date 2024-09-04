@@ -11,11 +11,11 @@ export default {
         items: [
           { text: 'Introduction', link: '/introduction' },
           { text: 'Getting Started', link: '/getting-started' },
-          ...
-        ]
-      }
-    ]
-  })
+          // ...
+        ],
+      },
+    ],
+  }),
 }
 ```
 
@@ -32,19 +32,19 @@ export default {
         items: [
           { text: 'Item A', link: '/item-a' },
           { text: 'Item B', link: '/item-b' },
-          ...
-        ]
+          // ...
+        ],
       },
       {
         text: 'Section Title B',
         items: [
           { text: 'Item C', link: '/item-c' },
           { text: 'Item D', link: '/item-d' },
-          ...
-        ]
-      }
-    ]
-  })
+          // ...
+        ],
+      },
+    ],
+  }),
 }
 ```
 
@@ -81,15 +81,15 @@ export default {
               {
                 text: 'Level 3',
                 items: [
-                  ...
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  })
+                  // ...
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  }),
 }
 ```
 
@@ -158,10 +158,12 @@ export default {
       {
         text: 'Section Title A',
         collapsed: false,
-        items: [...]
-      }
-    ]
-  })
+        items: [
+          // ...
+        ],
+      },
+    ],
+  }),
 }
 ```
 
@@ -174,10 +176,12 @@ export default {
       {
         text: 'Section Title A',
         collapsed: true,
-        items: [...]
-      }
-    ]
-  })
+        items: [
+          // ...
+        ],
+      },
+    ],
+  }),
 }
 ```
 

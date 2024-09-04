@@ -144,4 +144,10 @@ export default vuepress(
       'no-console': 'off',
     },
   },
+  {
+    files: ['**/*.md/*.ts'],
+    rules: {
+      'no-dupe-keys': 'off',
+    },
+  },
 )

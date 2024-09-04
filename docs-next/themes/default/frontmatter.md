@@ -169,7 +169,7 @@ hero:
 
 ```ts
 interface HeroAction {
-  theme?: 'brand' | 'alt'
+  theme?: 'alt' | 'brand'
   text: string
   link: string
   target?: string
@@ -213,15 +213,15 @@ interface Feature {
 export type FeatureIcon =
   | string
   | {
-      src: string
+      light: string
+      dark: string
       alt?: string
       width?: string
       height?: string
       wrap?: boolean
     }
   | {
-      light: string
-      dark: string
+      src: string
       alt?: string
       width?: string
       height?: string

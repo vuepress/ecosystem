@@ -76,9 +76,9 @@ export default {
 ```ts
 type DefaultThemeImage =
   | string
-  | { src: string; alt?: string; [prop: string]: any }
   // 使用 `light` 和 `dark` 指定 浅色/深色 模式下的 图片 访问路径
-  | { light: string; dark: string; alt?: string; [prop: string]: any }
+  | { light: string; dark: string; alt?: string; [prop: string]: unknown }
+  | { src: string; alt?: string; [prop: string]: unknown }
 ```
 
 - 参考:

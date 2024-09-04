@@ -1,7 +1,6 @@
 import { defineGiscusConfig } from '@vuepress/plugin-comment/client'
 import { defineDocSearchConfig } from '@vuepress/plugin-docsearch/client'
 import { defineClientConfig } from 'vuepress/client'
-import type { ClientConfig } from 'vuepress/client'
 import CommentPage from './layouts/CommentPage.vue'
 
 import './styles/index.scss'
@@ -62,10 +61,9 @@ defineDocSearchConfig({
   },
 })
 
-// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
 export default defineClientConfig({
   layouts: {
     // We override the default layout to provide comment service
     CommentPage,
   },
-}) as ClientConfig
+})

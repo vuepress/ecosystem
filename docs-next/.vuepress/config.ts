@@ -12,7 +12,6 @@ import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { defineUserConfig } from 'vuepress'
-import type { UserConfig } from 'vuepress'
 import { /* getDirname, */ path } from 'vuepress/utils'
 import { head } from './configs/index.js'
 import theme from './theme.js'
@@ -24,7 +23,8 @@ import theme from './theme.js'
 
 export default defineUserConfig({
   // set site base to default value
-  base: (process.env.BASE as `/${string}/` | '/') || '/',
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  base: (process.env.BASE as '/' | `/${string}/`) || '/',
   lang: 'en-US',
 
   // extra tags in `<head>`
@@ -97,4 +97,4 @@ export default defineUserConfig({
 
   // configure default theme
   theme,
-}) as UserConfig
+})

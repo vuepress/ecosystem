@@ -66,15 +66,15 @@
 
   ```ts
   type GiscusTheme =
-    | 'light'
-    | 'light_high_contrast'
-    | 'light_protanopia'
-    | 'dark'
+    | 'dark_dimmed'
     | 'dark_high_contrast'
     | 'dark_protanopia'
-    | 'dark_dimmed'
-    | 'transparent_dark'
+    | 'dark'
+    | 'light_high_contrast'
+    | 'light_protanopia'
+    | 'light'
     | 'preferred_color_scheme'
+    | 'transparent_dark'
     | `https://${string}`
   ```
 
@@ -91,15 +91,15 @@
 
   ```ts
   type GiscusTheme =
-    | 'light'
-    | 'light_high_contrast'
-    | 'light_protanopia'
-    | 'dark'
+    | 'dark_dimmed'
     | 'dark_high_contrast'
     | 'dark_protanopia'
-    | 'dark_dimmed'
-    | 'transparent_dark'
+    | 'dark'
+    | 'light_high_contrast'
+    | 'light_protanopia'
+    | 'light'
     | 'preferred_color_scheme'
+    | 'transparent_dark'
     | `https://${string}`
   ```
 
@@ -115,8 +115,8 @@
 You can directly configure serializable options in the plugin options:
 
 ```ts title=".vuepress/config.ts"
-import { defineUserConfig } from 'vuepress'
 import { commentPlugin } from '@vuepress/plugin-comment'
+import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
   plugins: [
@@ -134,8 +134,8 @@ export default defineUserConfig({
 You can use the `defineGiscusConfig` function to customize Giscus:
 
 ```ts title=".vuepress/client.ts"
-import { defineClientConfig } from 'vuepress/client'
 import { defineGiscusConfig } from '@vuepress/plugin-comment/client'
+import { defineClientConfig } from 'vuepress/client'
 
 defineGiscusConfig({
   // Giscus config

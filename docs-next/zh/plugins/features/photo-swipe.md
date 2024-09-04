@@ -43,8 +43,20 @@ export default {
 ### selector
 
 - 类型：`string | string[]`
-- 默认值：`".theme-default-content :not(a) > img:not([no-view])"`
+- 默认值：`"[vp-content] :not(a) > img:not([no-view])"`
 - 详情：图片选择器
+
+### download
+
+- 类型：`boolean`
+- 默认值：`true`
+- 详情：是否显示下载按钮。
+
+### fullscreen
+
+- 类型：`boolean`
+- 默认值：`true`
+- 详情：是否显示全屏按钮。
 
 ### scrollToClose
 
@@ -118,8 +130,8 @@ export default {
 - 示例：
 
   ```ts
-  import { defineUserConfig } from 'vuepress'
   import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
+  import { defineUserConfig } from 'vuepress'
 
   export default defineUserConfig({
     locales: {
@@ -207,28 +219,28 @@ export default {}
 
 ```vue
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue';
-import { createPhotoSwipe } from "@vuepress/plugin-photo-swipe/client";
+import { createPhotoSwipe } from '@vuepress/plugin-photo-swipe/client'
+import { onMounted, onUnmounted } from 'vue'
 
-let state: PhotoSwipeState | null = null;
+let state: PhotoSwipeState | null = null
 
-const openPhotoSwipe = (index: number) => {
-  state?.open(index - 1);
-};
+const openPhotoSwipe = (index: number): void => {
+  state?.open(index - 1)
+}
 
 onMounted(async () => {
   // 通过图片链接创建一个新的 photoswipe 实例
-  state=  await createPhotoSwipe(
+  state = await createPhotoSwipe(
     [
-      'https://exmaple.com/image1.png'
-      'https://exmaple.com/image2.png'
-      'https://exmaple.com/image3.png'
+      'https://exmaple.com/image1.png',
+      'https://exmaple.com/image2.png',
+      'https://exmaple.com/image3.png',
     ],
     {
       // photoswipe 选项
-    }
-  );
-});
+    },
+  )
+})
 
 onUnmounted(() => {
   state?.destroy()
@@ -236,7 +248,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <button v-for="i in 3" @click="openPhotoSwipe(i)">open photo {{ i }}</button>
+  <button v-for="i in 3" :key="i" type="button" @click="openPhotoSwipe(i)">
+    open photo {{ i }}
+  </button>
 </template>
 ```
 
@@ -244,10 +258,10 @@ onUnmounted(() => {
 
 ```vue
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
 import { registerPhotoSwipe } from '@vuepress/plugin-photo-swipe/client'
+import { onMounted, onUnmounted } from 'vue'
 
-let destroy: () => void | null = null
+let destroy: () => null | void = null
 
 onMounted(async () => {
   await nextTick()
@@ -255,7 +269,7 @@ onMounted(async () => {
   const images = Array.from(document.querySelectorAll('img'))
 
   // 通过图片元素创建一个新的 photoswipe 实例
-  state = await registerPhotoSwipe(images, {
+  destroy = await registerPhotoSwipe(images, {
     // photoswipe 选项
   })
 })

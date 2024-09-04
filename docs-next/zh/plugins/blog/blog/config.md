@@ -189,7 +189,7 @@ interface BlogCategoryOptions {
    *
    * @default `/:key/:name/`
    */
-  itemPath?: string | ((name: string) => string) | false
+  itemPath?: string | false | ((name: string) => string)
 
   /**
    * 项目页面布局组件名称

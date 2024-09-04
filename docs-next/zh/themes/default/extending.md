@@ -98,8 +98,8 @@ import { Layout } from '@vuepress/theme-default/client'
 
 ```ts
 import { defaultTheme } from '@vuepress/theme-default'
-import { getDirname, path } from 'vuepress/utils'
 import { defineUserConfig } from 'vuepress'
+import { getDirname, path } from 'vuepress/utils'
 
 const __dirname = getDirname(import.meta.url)
 
@@ -119,28 +119,27 @@ export default defineUserConfig({
 除了在 `.vuepress/config.ts` 和 `.vuepress/client.ts` 中直接扩展默认主题以外，你可以通过继承默认主题来开发一个你自己的主题：
 
 ```ts
-import { defaultTheme, type DefaultThemeOptions } from '@vuepress/theme-default'
+import type { DefaultThemeOptions } from '@vuepress/theme-default'
+import { defaultTheme } from '@vuepress/theme-default'
 import type { Theme } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 
 const __dirname = getDirname(import.meta.url)
 
-export const childTheme = (options: DefaultThemeOptions): Theme => {
-  return {
-    name: 'vuepress-theme-child',
-    extends: defaultTheme(options),
+export const childTheme = (options: DefaultThemeOptions): Theme => ({
+  name: 'vuepress-theme-child',
+  extends: defaultTheme(options),
 
-    // 在子主题的客户端配置文件中覆盖布局
-    // 注意，你在发布到 NPM 之前会将 TS 构建为 JS ，因此这里需要设置为 JS 文件的路径
-    clientConfigFile: path.resolve(__dirname, './client.js'),
+  // 在子主题的客户端配置文件中覆盖布局
+  // 注意，你在发布到 NPM 之前会将 TS 构建为 JS ，因此这里需要设置为 JS 文件的路径
+  clientConfigFile: path.resolve(__dirname, './client.js'),
 
-    // 覆盖组件别名
-    alias: {
-      '@theme/HomeFooter.vue': path.resolve(
-        __dirname,
-        './components/MyHomeFooter.vue',
-      ),
-    },
-  }
-}
+  // 覆盖组件别名
+  alias: {
+    '@theme/VPHomeFooter.vue': path.resolve(
+      __dirname,
+      './components/MyHomeFooter.vue',
+    ),
+  },
+})
 ```
