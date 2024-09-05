@@ -4,10 +4,10 @@
 
 /* plugin-docsearch */
 .DocSearch {
-  --docsearch-primary-color: var(--vp-c-brand-1);
+  --docsearch-primary-color: var(--vp-c-accent);
   --docsearch-highlight-color: var(--docsearch-primary-color);
-  --docsearch-text-color: var(--vp-c-text-1);
-  --docsearch-muted-color: var(--vp-c-text-2);
+  --docsearch-text-color: var(--vp-c-text);
+  --docsearch-muted-color: var(--vp-c-text-mute);
   --docsearch-searchbox-shadow: none;
   --docsearch-searchbox-background: var(--vp-c-default-soft);
   --docsearch-searchbox-focus-background: var(--vp-c-default-3);
@@ -20,9 +20,9 @@
 [data-theme='dark'] .DocSearch {
   --docsearch-modal-shadow: none;
   --docsearch-footer-shadow: none;
-  --docsearch-logo-color: var(--vp-c-text-2);
+  --docsearch-logo-color: var(--vp-c-text-mute);
   --docsearch-hit-background: var(--vp-c-default-soft);
-  --docsearch-hit-color: var(--vp-c-text-2);
+  --docsearch-hit-color: var(--vp-c-text-mute);
   --docsearch-hit-shadow: none;
 }
 
@@ -71,7 +71,7 @@
   width: 16px;
   height: 16px;
 
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 
   transition: color 0.5s ease;
 
@@ -79,7 +79,7 @@
 }
 
 .DocSearch-Button:hover .DocSearch-Search-Icon {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 }
 
 .DocSearch-Button .DocSearch-Button-Placeholder {
@@ -88,7 +88,7 @@
   margin-top: 2px;
   padding: 0 16px 0 0;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 500;
   font-size: 13px;
@@ -97,7 +97,7 @@
 }
 
 .DocSearch-Button:hover .DocSearch-Button-Placeholder {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 }
 
 .DocSearch-Button .DocSearch-Button-Keys {
@@ -172,7 +172,7 @@
 }
 
 .DocSearch-Form {
-  border: 1px solid var(--vp-c-brand-1);
+  border: 1px solid var(--vp-c-accent);
   background-color: var(--vp-c-white);
 }
 
@@ -194,7 +194,7 @@
   }
 
   .vp-navbar-search .DocSearch-Button:hover {
-    border-color: var(--vp-c-brand-1);
+    border-color: var(--vp-c-accent);
     background: var(--docsearch-searchbox-focus-background);
   }
 }
@@ -207,7 +207,7 @@
     height: 14px;
     margin-right: 8px;
 
-    color: var(--vp-c-text-2);
+    color: var(--vp-c-text-mute);
   }
 }
 
@@ -230,10 +230,10 @@
 
 .vp-navbar-search {
   --search-bg-color: var(--vp-c-bg);
-  --search-accent-color: var(--vp-c-brand-1);
-  --search-text-color: var(--vp-c-text-1);
+  --search-accent-color: var(--vp-c-accent);
+  --search-text-color: var(--vp-c-text);
   --search-border-color: var(--vp-c-divider);
-  --search-item-text-color: var(--vp-c-text-2);
+  --search-item-text-color: var(--vp-c-text-mute);
   --search-item-focus-bg-color: var(--vp-c-bg-soft);
 }
 

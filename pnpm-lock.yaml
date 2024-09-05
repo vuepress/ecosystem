@@ -230,6 +230,9 @@ importers:
       '@vuepress/plugin-photo-swipe':
         specifier: workspace:*
         version: link:../plugins/features/plugin-photo-swipe
+      '@vuepress/plugin-prismjs':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-prismjs
       '@vuepress/plugin-pwa':
         specifier: workspace:*
         version: link:../plugins/pwa/plugin-pwa
@@ -242,9 +245,6 @@ importers:
       '@vuepress/plugin-search':
         specifier: workspace:*
         version: link:../plugins/search/plugin-search
-      '@vuepress/plugin-shiki':
-        specifier: workspace:*
-        version: link:../plugins/markdown/plugin-shiki
       '@vuepress/theme-default':
         specifier: workspace:*
         version: link:../themes/theme-next

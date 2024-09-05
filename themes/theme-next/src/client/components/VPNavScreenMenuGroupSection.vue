@@ -31,7 +31,7 @@ defineProps<{
 }
 
 .title {
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 700;
   font-size: 13px;

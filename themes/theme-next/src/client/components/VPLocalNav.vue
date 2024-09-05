@@ -133,7 +133,7 @@ const classes = computed(() => ({
 
   padding: 12px 24px 11px;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 500;
   font-size: 12px;
@@ -143,7 +143,7 @@ const classes = computed(() => ({
 }
 
 .menu:hover {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
   transition: color 0.25s;
 }
 

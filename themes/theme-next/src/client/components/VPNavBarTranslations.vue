@@ -40,7 +40,7 @@ const { localeLinks, currentLang } = useLangs()
 .title {
   padding: 0 24px 0 12px;
 
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 
   font-weight: 700;
   font-size: 14px;

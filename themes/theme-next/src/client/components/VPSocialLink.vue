@@ -43,13 +43,13 @@ const svg = computed(() => {
   width: 36px;
   height: 36px;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   transition: color 0.5s;
 }
 
 .vp-social-link:hover {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
   transition: color 0.25s;
 }
 

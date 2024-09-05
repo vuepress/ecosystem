@@ -117,7 +117,7 @@ const scrollToTop = (): void => {
 
   display: block;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 500;
   font-size: 12px;
@@ -127,12 +127,12 @@ const scrollToTop = (): void => {
 }
 
 .vp-local-nav-outline-dropdown button:hover {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
   transition: color 0.25s;
 }
 
 .vp-local-nav-outline-dropdown button.open {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 }
 
 .icon {
@@ -198,7 +198,7 @@ const scrollToTop = (): void => {
 
   padding: 0 16px;
 
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 
   font-weight: 500;
   font-size: 14px;

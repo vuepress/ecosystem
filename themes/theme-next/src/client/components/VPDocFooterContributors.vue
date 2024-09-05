@@ -34,14 +34,14 @@ const contributors = useContributors()
 
 <style scoped>
 .vp-contributors {
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
 }
 
 .vp-contributors .contributor {
-  color: var(--vp-c-text-3);
+  color: var(--vp-c-text-subtle);
 }
 
 @media (min-width: 640px) {

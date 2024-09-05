@@ -129,7 +129,7 @@ const showFooter = computed(
 
   border: 0;
 
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 
   font-weight: 500;
   font-size: 14px;
@@ -139,7 +139,7 @@ const showFooter = computed(
 }
 
 .edit-link-button:hover {
-  color: var(--vp-c-brand-2);
+  color: var(--vp-c-accent-hover);
 }
 
 .edit-link-icon {
@@ -173,7 +173,7 @@ const showFooter = computed(
 }
 
 .pager-link:hover {
-  border-color: var(--vp-c-brand-1);
+  border-color: var(--vp-c-accent);
 }
 
 .pager-link.next {
@@ -184,7 +184,7 @@ const showFooter = computed(
 .desc {
   display: block;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 500;
   font-size: 12px;
@@ -194,7 +194,7 @@ const showFooter = computed(
 .title {
   display: block;
 
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 
   font-weight: 500;
   font-size: 14px;

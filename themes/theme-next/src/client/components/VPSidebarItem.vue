@@ -149,7 +149,7 @@ const onCaretClick = (): void => {
 .vp-sidebar-item.level-3.is-active > .item > .indicator,
 .vp-sidebar-item.level-4.is-active > .item > .indicator,
 .vp-sidebar-item.level-5.is-active > .item > .indicator {
-  background-color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-accent);
 }
 
 .link {
@@ -170,7 +170,7 @@ const onCaretClick = (): void => {
 }
 
 .vp-sidebar-item.level-0 .text {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
   font-weight: 700;
 }
 
@@ -179,7 +179,7 @@ const onCaretClick = (): void => {
 .vp-sidebar-item.level-3 .text,
 .vp-sidebar-item.level-4 .text,
 .vp-sidebar-item.level-5 .text {
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
   font-weight: 500;
 }
 
@@ -189,7 +189,7 @@ const onCaretClick = (): void => {
 .vp-sidebar-item.level-3.is-link > .item > .link:hover .text,
 .vp-sidebar-item.level-4.is-link > .item > .link:hover .text,
 .vp-sidebar-item.level-5.is-link > .item > .link:hover .text {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 }
 
 .vp-sidebar-item.level-0.has-active > .item > .text,
@@ -204,7 +204,7 @@ const onCaretClick = (): void => {
 .vp-sidebar-item.level-3.has-active > .item > .link > .text,
 .vp-sidebar-item.level-4.has-active > .item > .link > .text,
 .vp-sidebar-item.level-5.has-active > .item > .link > .text {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 }
 
 .vp-sidebar-item.level-0.is-active > .item .link > .text,
@@ -213,7 +213,7 @@ const onCaretClick = (): void => {
 .vp-sidebar-item.level-3.is-active > .item .link > .text,
 .vp-sidebar-item.level-4.is-active > .item .link > .text,
 .vp-sidebar-item.level-5.is-active > .item .link > .text {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 }
 
 .caret {
@@ -226,7 +226,7 @@ const onCaretClick = (): void => {
   height: 32px;
   margin-right: -7px;
 
-  color: var(--vp-c-text-3);
+  color: var(--vp-c-text-subtle);
 
   cursor: pointer;
 
@@ -234,11 +234,11 @@ const onCaretClick = (): void => {
 }
 
 .item:hover .caret {
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 }
 
 .item:hover .caret:hover {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 }
 
 .caret-icon {

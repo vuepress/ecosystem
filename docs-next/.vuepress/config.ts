@@ -1,4 +1,3 @@
-// import { createRequire } from 'node:module'
 import process from 'node:process'
 import { footnote } from '@mdit/plugin-footnote'
 import { viteBundler } from '@vuepress/bundler-vite'
@@ -11,16 +10,16 @@ import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
+import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { defineUserConfig } from 'vuepress'
-import { /* getDirname, */ path } from 'vuepress/utils'
+import { getDirname, path } from 'vuepress/utils'
 import { head } from './configs/index.js'
 import theme from './theme.js'
 
-// const __dirname = getDirname(import.meta.url)
-// const require = createRequire(import.meta.url)
+const __dirname = getDirname(import.meta.url)
 
-// const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === 'production'
 
 export default defineUserConfig({
   // set site base to default value
@@ -93,6 +92,20 @@ export default defineUserConfig({
       json: true,
       rss: true,
     }),
+
+    process.env.HIGHLIGHTER === 'prismjs'
+      ? prismjsPlugin({
+          themes: { light: 'one-light', dark: 'one-dark' },
+          lineNumbers: 10,
+          notationDiff: true,
+          notationErrorLevel: true,
+          notationFocus: true,
+          notationHighlight: true,
+          notationWordHighlight: true,
+          whitespace: true,
+        })
+      : [],
+
     cachePlugin(),
   ],
 

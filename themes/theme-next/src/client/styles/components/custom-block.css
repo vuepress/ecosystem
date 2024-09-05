@@ -3,7 +3,7 @@
   border: 1px solid transparent;
   border-radius: 8px;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-size: var(--vp-custom-block-font-size);
   line-height: 24px;
@@ -17,12 +17,12 @@
 
 .hint-container.info a,
 .hint-container.info code {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 }
 
 .hint-container.info a:hover,
 .hint-container.info a:hover > code {
-  color: var(--vp-c-brand-2);
+  color: var(--vp-c-accent-hover);
 }
 
 .hint-container.info code {
@@ -37,12 +37,12 @@
 
 .hint-container.note a,
 .hint-container.note code {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 }
 
 .hint-container.note a:hover,
 .hint-container.note a:hover > code {
-  color: var(--vp-c-brand-2);
+  color: var(--vp-c-accent-hover);
 }
 
 .hint-container.note code {
@@ -156,12 +156,12 @@
 }
 
 .hint-container.details a {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 }
 
 .hint-container.details a:hover,
 .hint-container.details a:hover > code {
-  color: var(--vp-c-brand-2);
+  color: var(--vp-c-accent-hover);
 }
 
 .hint-container.details code {

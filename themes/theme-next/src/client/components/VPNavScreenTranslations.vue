@@ -45,7 +45,7 @@ const toggle = (): void => {
   display: flex;
   align-items: center;
 
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 
   font-weight: 500;
   font-size: 14px;
@@ -68,7 +68,7 @@ const toggle = (): void => {
 }
 
 .link {
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
   font-size: 13px;
   line-height: 32px;
 }

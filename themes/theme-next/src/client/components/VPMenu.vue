@@ -70,7 +70,7 @@ defineSlots<{ default?: Slot }>()
 .vp-menu :deep(.label) {
   flex-grow: 1;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 500;
   font-size: 12px;

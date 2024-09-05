@@ -31,7 +31,7 @@ const closeScreen = inject('close-screen')!
 
   margin-left: 12px;
 
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 
   font-weight: 400;
   font-size: 14px;
@@ -41,6 +41,6 @@ const closeScreen = inject('close-screen')!
 }
 
 .vp-nav-screen-menu-group:hover {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 }
 </style>

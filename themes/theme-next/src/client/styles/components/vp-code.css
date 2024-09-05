@@ -50,7 +50,7 @@ html:not([data-theme='dark']) .vp-code span {
 
   margin: 16px -24px;
 
-  background-color: var(--vp-code-block-bg) !important;
+  background-color: var(--vp-code-block-bg);
 
   transition: background-color 0.5s;
 }
@@ -133,7 +133,7 @@ html:not([data-theme='dark']) .vp-code span {
   transition: color 0.5s;
 }
 
-.vp-doc [class*='language-'] code .highlighted {
+.vp-doc [class*='language-'] code .line.highlighted {
   display: inline-block;
 
   width: calc(100% + 2 * 24px);
@@ -145,15 +145,15 @@ html:not([data-theme='dark']) .vp-code span {
   transition: background-color 0.5s;
 }
 
-.vp-doc [class*='language-'] code .highlighted.error {
+.vp-doc [class*='language-'] code .line.highlighted.error {
   background-color: var(--vp-code-line-error-color);
 }
 
-.vp-doc [class*='language-'] code .highlighted.warning {
+.vp-doc [class*='language-'] code .line.highlighted.warning {
   background-color: var(--vp-code-line-warning-color);
 }
 
-.vp-doc [class*='language-'] code .diff {
+.vp-doc [class*='language-'] code .line.diff {
   display: inline-block;
 
   width: calc(100% + 2 * 24px);
@@ -163,7 +163,7 @@ html:not([data-theme='dark']) .vp-code span {
   transition: background-color 0.5s;
 }
 
-.vp-doc [class*='language-'] code .diff::before {
+.vp-doc [class*='language-'] code .line.diff::before {
   position: absolute;
   left: 10px;
 }
@@ -181,21 +181,21 @@ html:not([data-theme='dark']) .vp-code span {
   filter: blur(0);
 }
 
-.vp-doc [class*='language-'] code .diff.remove {
+.vp-doc [class*='language-'] code .line.diff.remove {
   background-color: var(--vp-code-line-diff-remove-color);
   opacity: 0.7;
 }
 
-.vp-doc [class*='language-'] code .diff.remove::before {
+.vp-doc [class*='language-'] code .line.diff.remove::before {
   content: '-';
   color: var(--vp-code-line-diff-remove-symbol-color);
 }
 
-.vp-doc [class*='language-'] code .diff.add {
+.vp-doc [class*='language-'] code .line.diff.add {
   background-color: var(--vp-code-line-diff-add-color);
 }
 
-.vp-doc [class*='language-'] code .diff.add::before {
+.vp-doc [class*='language-'] code .line.diff.add::before {
   content: '+';
   color: var(--vp-code-line-diff-add-symbol-color);
 }

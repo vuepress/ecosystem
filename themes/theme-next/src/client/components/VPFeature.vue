@@ -60,7 +60,7 @@ defineProps<Feature>()
 }
 
 .vp-feature.link:hover {
-  border-color: var(--vp-c-brand-1);
+  border-color: var(--vp-c-accent);
 }
 
 .box {
@@ -102,7 +102,7 @@ defineProps<Feature>()
 
   padding-top: 8px;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 500;
   font-size: 14px;
@@ -117,7 +117,7 @@ defineProps<Feature>()
   display: flex;
   align-items: center;
 
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 
   font-weight: 500;
   font-size: 14px;

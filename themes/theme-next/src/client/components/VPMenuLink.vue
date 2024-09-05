@@ -47,7 +47,7 @@ const { page } = useData()
   padding: 0 12px;
   border-radius: 6px;
 
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 
   font-weight: 500;
   font-size: 14px;
@@ -61,10 +61,10 @@ const { page } = useData()
 
 .link:hover {
   background-color: var(--vp-c-default-soft);
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 }
 
 .link.active {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 }
 </style>

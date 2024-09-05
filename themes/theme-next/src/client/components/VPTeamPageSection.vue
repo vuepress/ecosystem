@@ -38,7 +38,7 @@
   max-width: 1152px;
   margin: 0 auto;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   text-align: center;
 }
@@ -74,7 +74,7 @@
   margin: 0 auto;
   padding-top: 12px;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 500;
   font-size: 16px;

@@ -52,7 +52,7 @@
   position: absolute;
   left: -0.75em;
 
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 
   font-size: 0.8em;
 
@@ -79,7 +79,7 @@
   position: absolute;
   left: -0.75em;
 
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
   outline: auto;
 }
 
@@ -113,13 +113,13 @@
 
 .vp-doc blockquote > p {
   margin: 0;
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
   font-size: 16px;
   transition: color 0.5s;
 }
 
 .vp-doc a {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 
   font-weight: 500;
   text-decoration: underline;
@@ -132,7 +132,7 @@
 }
 
 .vp-doc a:hover {
-  color: var(--vp-c-brand-2);
+  color: var(--vp-c-accent-hover);
 }
 
 .vp-doc strong {
@@ -199,7 +199,7 @@
 
 .vp-doc th {
   background-color: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 600;
   font-size: 14px;
@@ -291,7 +291,7 @@
   margin-left: 4px;
 
   background: currentcolor;
-  color: var(--vp-c-text-3);
+  color: var(--vp-c-text-subtle);
 
   -webkit-mask-image: var(--icon);
   mask-image: var(--icon);

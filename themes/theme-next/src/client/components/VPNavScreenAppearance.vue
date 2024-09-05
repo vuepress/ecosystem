@@ -30,7 +30,7 @@ const { theme } = useData()
 }
 
 .text {
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
   font-weight: 500;
   font-size: 12px;
   line-height: 24px;

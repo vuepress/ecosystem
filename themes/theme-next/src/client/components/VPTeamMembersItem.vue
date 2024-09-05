@@ -181,17 +181,17 @@ withDefaults(defineProps<Props>(), {
 
 .affiliation {
   margin: 0;
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
   font-weight: 500;
 }
 
 .org.link {
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
   transition: color 0.25s;
 }
 
 .org.link:hover {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 }
 
 .desc {
@@ -199,7 +199,7 @@ withDefaults(defineProps<Props>(), {
 }
 
 .desc :deep(a) {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
   font-weight: 500;
   transition: color 0.25s;
   text-decoration-style: dotted;

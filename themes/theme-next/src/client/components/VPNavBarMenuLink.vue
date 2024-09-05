@@ -42,7 +42,7 @@ const { page } = useData()
 
   padding: 0 12px;
 
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 
   font-weight: 500;
   font-size: 14px;
@@ -51,10 +51,10 @@ const { page } = useData()
 }
 
 .vp-navbar-menu-link.active {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 }
 
 .vp-navbar-menu-link:hover {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 }
 </style>

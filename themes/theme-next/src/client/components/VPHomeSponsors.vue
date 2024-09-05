@@ -84,7 +84,7 @@ withDefaults(defineProps<Props>(), {
 .love {
   width: fit-content;
   margin: 0 auto;
-  color: var(--vp-c-text-3);
+  color: var(--vp-c-text-subtle);
   font-size: 28px;
 }
 
@@ -97,7 +97,7 @@ withDefaults(defineProps<Props>(), {
   margin: 0 auto;
   padding-top: 10px;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 500;
   font-size: 16px;

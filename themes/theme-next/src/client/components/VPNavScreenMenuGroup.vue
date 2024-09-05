@@ -76,7 +76,7 @@ const toggle = (): void => {
 
 .vp-nav-screen-menu-group.open .button {
   padding-bottom: 6px;
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 }
 
 .vp-nav-screen-menu-group.open .button-icon {
@@ -92,7 +92,7 @@ const toggle = (): void => {
   width: 100%;
   padding: 12px 4px 11px 0;
 
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 
   font-weight: 500;
   font-size: 14px;
@@ -102,7 +102,7 @@ const toggle = (): void => {
 }
 
 .button:hover {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 }
 
 .button-icon {

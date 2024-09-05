@@ -67,7 +67,7 @@ const target = computed(() =>
   height: var(--vp-nav-height);
   border-bottom: 1px solid transparent;
 
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 
   font-weight: 600;
   font-size: 16px;

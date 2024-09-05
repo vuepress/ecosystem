@@ -1,6 +1,8 @@
 import { defaultTheme } from '@vuepress/theme-default'
 import { navbarEn, navbarZh, sidebarEn, sidebarZh } from './configs/index.js'
 
+const IS_PROD = process.env.NODE_ENV === 'production'
+
 export default defaultTheme({
   logo: '/images/logo.png',
 
@@ -26,5 +28,9 @@ export default defaultTheme({
   footer: {
     message: 'Released under the MIT License.',
     copyright: 'Copyright © 2022-PRESENT VuePress',
+  },
+  themePlugins: {
+    git: IS_PROD,
+    shiki: process.env.HIGHLIGHTER !== 'shiki',
   },
 })

@@ -50,7 +50,7 @@ const focusOnTargetAnchor = ({ target }: Event): void => {
   border-radius: 8px;
 
   background-color: var(--vp-c-bg);
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
   box-shadow: var(--vp-shadow-3);
 
   font-weight: bold;

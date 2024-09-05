@@ -75,24 +75,24 @@ useFlyout({ el, onBlur })
 }
 
 .vp-feature:hover {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
   transition: color 0.25s;
 }
 
 .vp-feature:hover .text {
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 }
 
 .vp-feature:hover .icon {
-  fill: var(--vp-c-text-2);
+  fill: var(--vp-c-text-mute);
 }
 
 .vp-feature.active .text {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 }
 
 .vp-feature.active:hover .text {
-  color: var(--vp-c-brand-2);
+  color: var(--vp-c-accent-hover);
 }
 
 .vp-feature:hover .menu,
@@ -114,7 +114,7 @@ useFlyout({ el, onBlur })
 
   padding: 8px 12px;
 
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 
   transition: color 0.5s;
 }
@@ -123,7 +123,7 @@ useFlyout({ el, onBlur })
   display: flex;
   align-items: center;
 
-  color: var(--vp-c-text-1);
+  color: var(--vp-c-text);
 
   font-weight: 500;
   font-size: 14px;

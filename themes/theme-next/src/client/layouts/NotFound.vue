@@ -135,7 +135,7 @@ const theme = useThemeLocaleData()
   max-width: 256px;
   margin: 0 auto;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 500;
   font-size: 14px;
@@ -149,10 +149,10 @@ const theme = useThemeLocaleData()
   display: inline-block;
 
   padding: 3px 16px;
-  border: 1px solid var(--vp-c-brand-1);
+  border: 1px solid var(--vp-c-accent);
   border-radius: 16px;
 
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-accent);
 
   font-weight: 500;
   font-size: 14px;
@@ -163,7 +163,7 @@ const theme = useThemeLocaleData()
 }
 
 .link:hover {
-  border-color: var(--vp-c-brand-2);
-  color: var(--vp-c-brand-2);
+  border-color: var(--vp-c-accent-hover);
+  color: var(--vp-c-accent-hover);
 }
 </style>

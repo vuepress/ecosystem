@@ -206,7 +206,7 @@ const heroImageSlotExists = inject('hero-image-slot-exists')!
   max-width: 392px;
   padding-top: 8px;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 500;
   font-size: 18px;

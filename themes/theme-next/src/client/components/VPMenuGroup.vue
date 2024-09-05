@@ -45,7 +45,7 @@ defineProps<{
 .title {
   padding: 0 12px;
 
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-mute);
 
   font-weight: 600;
   font-size: 14px;
