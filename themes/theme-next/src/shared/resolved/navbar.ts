@@ -10,6 +10,9 @@ export interface ResolvedNavItemWithLink {
   /**
    * `activeMatch` is expected to be a regex string. We can't use actual
    * RegExp object here because it isn't serializable
+   *
+   * `activeMatch` 应为正则表达式字符串。我们不能在此使用实际的
+   * RegExp 对象，因为它不可序列化。
    */
   activeMatch?: string
   rel?: string
@@ -29,6 +32,9 @@ export interface ResolvedNavItemWithChildren {
   /**
    * `activeMatch` is expected to be a regex string. We can't use actual
    * RegExp object here because it isn't serializable
+   *
+   * `activeMatch` 应为正则表达式字符串。我们不能在此使用实际的
+   * RegExp 对象，因为它不可序列化。
    */
   activeMatch?: string
 }

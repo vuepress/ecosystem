@@ -1,3 +1,3 @@
 # New Feature Plugins
 
-<Catalog />
+<Catalog :level="1" />

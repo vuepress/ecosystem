@@ -3,10 +3,15 @@ import type { NavItem } from '@vuepress/theme-default'
 export const navbarEn: NavItem[] = [
   {
     text: 'Themes',
+    prefix: '/themes/',
     items: [
       {
+        text: 'Theme Guidelines',
+        link: 'guidelines',
+      },
+      {
         text: 'Default Theme',
-        link: '/themes/default/',
+        link: 'default/',
       },
       {
         text: 'Hope Theme',
@@ -16,57 +21,63 @@ export const navbarEn: NavItem[] = [
         text: 'Plume Theme',
         link: 'https://theme-plume.vuejs.press',
       },
+      {
+        text: 'Reco Theme',
+        link: 'https://theme-reco.vuejs.press/en',
+      },
     ],
   },
   {
     text: 'Plugins',
+    prefix: '/plugins/',
     activeMatch: '^/plugins/',
     items: [
       {
         text: 'Common Features',
-        link: '/plugins/features/',
+        link: 'features/',
       },
       {
         text: 'Markdown',
-        link: '/plugins/markdown/',
+        link: 'markdown/',
       },
       {
         text: 'Search',
-        link: '/plugins/search/',
+        link: 'search/',
       },
       {
         text: 'Blogging',
-        link: '/plugins/blog/',
+        link: 'blog/',
       },
       {
         text: 'PWA',
-        link: '/plugins/pwa/',
+        link: 'pwa/',
       },
       {
         text: 'Analytics',
-        link: '/plugins/analytics/',
+        link: 'analytics/',
       },
       {
         text: 'SEO',
-        link: '/plugins/seo/',
+        link: 'seo/',
       },
       {
         text: 'Theme Development',
-        link: '/plugins/development/',
+        link: 'development/',
       },
       {
         text: 'Tools',
-        link: '/plugins/tools/',
+        link: 'tools/',
       },
     ],
   },
   {
     text: 'Tools',
+    prefix: '/tools/',
     activeMatch: '^/tools/',
     items: [
       {
         text: 'helper',
-        link: '/tools/helper/',
+        link: 'helper/',
       },
     ],
   },

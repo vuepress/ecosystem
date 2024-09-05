@@ -1,3 +1,3 @@
 # Tool Plugins
 
-<Catalog />
+<Catalog :level="1" />

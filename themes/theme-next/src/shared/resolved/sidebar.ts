@@ -29,11 +29,19 @@ export interface ResolvedSidebarItem {
    * If `true`, group is collapsible and collapsed by default
    *
    * If `false`, group is collapsible but expanded by default
+   *
+   * 若未指定，分组不可折叠。
+   *
+   * 若为 `true`，分组可折叠且默认折叠
+   *
+   * 若为 `false`，分组可折叠但默认展开
    */
   collapsed?: boolean
 
   /**
    * Customize text that appears on the footer of previous/next page.
+   *
+   * 自定义上一页/下一页页脚显示的文本。
    */
   docFooterText?: string
 

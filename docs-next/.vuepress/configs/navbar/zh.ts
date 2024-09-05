@@ -3,10 +3,15 @@ import type { NavItem } from '@vuepress/theme-default'
 export const navbarZh: NavItem[] = [
   {
     text: '主题',
+    prefix: '/zh/themes/',
     items: [
       {
+        text: '主题指南',
+        link: 'guidelines',
+      },
+      {
         text: '默认主题',
-        link: '/zh/themes/default/',
+        link: 'default/',
       },
       {
         text: 'Hope 主题',
@@ -16,57 +21,63 @@ export const navbarZh: NavItem[] = [
         text: 'Plume 主题',
         link: 'https://theme-plume.vuejs.press',
       },
+      {
+        text: 'Reco 主题',
+        link: 'https://theme-reco.vuejs.press',
+      },
     ],
   },
   {
     text: '插件',
+    prefix: '/zh/plugins/',
     activeMatch: '^/zh/plugins/',
     items: [
       {
         text: '常用功能',
-        link: '/zh/plugins/features/',
+        link: 'features/',
       },
       {
         text: 'Markdown',
-        link: '/zh/plugins/markdown/',
+        link: 'markdown/',
       },
       {
         text: '搜索',
-        link: '/zh/plugins/search/',
+        link: 'search/',
       },
       {
         text: '博客',
-        link: '/zh/plugins/blog/',
+        link: 'blog/',
       },
       {
         text: 'PWA',
-        link: '/zh/plugins/pwa/',
+        link: 'pwa/',
       },
       {
         text: '统计分析',
-        link: '/zh/plugins/analytics/',
+        link: 'analytics/',
       },
       {
         text: '搜索引擎增强',
-        link: '/zh/plugins/seo/',
+        link: 'seo/',
       },
       {
         text: '主题开发',
-        link: '/zh/plugins/development/',
+        link: 'development/',
       },
       {
         text: '工具',
-        link: '/zh/plugins/tools/',
+        link: 'tools/',
       },
     ],
   },
   {
     text: '工具',
+    prefix: '/zh/tools/',
     activeMatch: '^/zh/tools/',
     items: [
       {
         text: 'helper',
-        link: '/zh/tools/helper/',
+        link: 'helper/',
       },
     ],
   },

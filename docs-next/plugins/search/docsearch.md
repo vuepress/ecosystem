@@ -74,16 +74,16 @@ new Crawler({
         return helpers.docsearch({
           recordProps: {
             lvl0: {
-              selectors: '.sidebar-heading.active',
+              selectors: '.vp-sidebar-heading.active',
               defaultValue: 'Documentation',
             },
-            lvl1: '.theme-default-content h1',
-            lvl2: '.theme-default-content h2',
-            lvl3: '.theme-default-content h3',
-            lvl4: '.theme-default-content h4',
-            lvl5: '.theme-default-content h5',
-            lvl6: '.theme-default-content h6',
-            content: '.theme-default-content p, .theme-default-content li',
+            lvl1: '[vp-content] h1',
+            lvl2: '[vp-content] h2',
+            lvl3: '[vp-content] h3',
+            lvl4: '[vp-content] h4',
+            lvl5: '[vp-content] h5',
+            lvl6: '[vp-content] h6',
+            content: '[vp-content] p, [vp-content] li',
           },
           indexHeadings: true,
         })
