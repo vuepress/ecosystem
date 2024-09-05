@@ -278,13 +278,6 @@ export interface DefaultThemeLocaleData extends LocaleData {
   footer?: Footer
 
   /**
-   * The container configuration.
-   *
-   * 提示容器标题
-   */
-  container?: ContainerOptions
-
-  /**
    * Local Nav config
    *
    * Local Nav 配置
@@ -336,6 +329,51 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * @default true
    */
   externalLinkIcon?: boolean
+
+  /**
+   * Custom block config
+   *
+   * Default title of TIP custom block
+   *
+   * TIP 自定义块的默认标题
+   */
+  tip?: string
+
+  /**
+   * Custom block config
+   *
+   * Default title of WARNING custom block
+   *
+   * WARNING 自定义块的默认标题
+   */
+  warning?: string
+
+  /**
+   * Custom block config
+   *
+   * Default title of DANGER custom block
+   *
+   * DANGER 自定义块的默认标题
+   */
+  danger?: string
+
+  /**
+   * Custom block config
+   *
+   * Default title of IMPORTANT custom block
+   *
+   * IMPORTANT 自定义块的默认标题
+   */
+  important?: string
+
+  /**
+   * Custom block config
+   *
+   * Default title of NOTE custom block
+   *
+   * NOTE 自定义块的默认标题
+   */
+  note?: string
 
   /**
    * Customize text of 404 page.
@@ -443,18 +481,4 @@ export interface NotFoundOptions {
    * @default '404'
    */
   code?: string
-}
-
-/**
- * Container options
- */
-export interface ContainerOptions {
-  infoLabel?: string
-  noteLabel?: string
-  tipLabel?: string
-  warningLabel?: string
-  dangerLabel?: string
-  detailsLabel?: string
-  importantLabel?: string
-  cautionLabel?: string
 }

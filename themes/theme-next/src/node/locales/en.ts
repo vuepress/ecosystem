@@ -32,16 +32,4 @@ export const en: DefaultThemeLocaleData = {
     linkText: 'Take me home',
     code: '404',
   },
-
-  // container
-  container: {
-    infoLabel: 'INFO',
-    noteLabel: 'NOTE',
-    tipLabel: 'TIP',
-    warningLabel: 'WARNING',
-    dangerLabel: 'DANGER',
-    detailsLabel: 'DETAILS',
-    importantLabel: 'IMPORTANT',
-    cautionLabel: 'CAUTION',
-  },
 }

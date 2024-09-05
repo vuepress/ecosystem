@@ -2,6 +2,7 @@ import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 import { gitPlugin } from '@vuepress/plugin-git'
 import { linksCheckPlugin } from '@vuepress/plugin-links-check'
+import { markdownHintPlugin } from '@vuepress/plugin-markdown-hint'
 import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
 import { seoPlugin } from '@vuepress/plugin-seo'
@@ -15,9 +16,11 @@ import type {
   DefaultThemeLocaleOptions,
   DefaultThemePluginsOptions,
 } from '../../shared/index.js'
-import { resolveContainerLocales, resolveThemeData } from '../config/index.js'
+import {
+  resolveMarkdownHintLocales,
+  resolveThemeData,
+} from '../config/index.js'
 import { createCodeGroupPlugin } from './codeGroupPlugin.js'
-import { createContainerPlugin } from './createContainerPlugin.js'
 
 interface PluginsOptions {
   hostname?: string
@@ -29,24 +32,10 @@ export const getPlugins = (
   app: App,
   { hostname, themePlugins, localeOptions }: PluginsOptions,
 ): PluginConfig => {
-  const plugins: PluginConfig = []
-
-  // ------------------ containers -----------------------------------
-
-  const containerLocales = resolveContainerLocales(app, localeOptions)
-  plugins.push(
-    ...[
-      createContainerPlugin('tip', containerLocales),
-      createContainerPlugin('info', containerLocales),
-      createContainerPlugin('warning', containerLocales),
-      createContainerPlugin('danger', containerLocales),
-      createContainerPlugin('caution', containerLocales),
-      createContainerPlugin('important', containerLocales),
-      createContainerPlugin('details', containerLocales),
-      // code-group
-      createCodeGroupPlugin(),
-    ],
-  )
+  const plugins: PluginConfig = [
+    // code-group
+    createCodeGroupPlugin(),
+  ]
 
   if (themePlugins.activeHeaderLinks !== false) {
     plugins.push(
@@ -64,6 +53,17 @@ export const getPlugins = (
       copyCodePlugin({
         selector: '.vp-content div[class*="language-"] pre',
         ...(isPlainObject(themePlugins.copyCode) ? themePlugins.copyCode : {}),
+      }),
+    )
+  }
+
+  if (themePlugins.hint !== false) {
+    plugins.push(
+      markdownHintPlugin({
+        hint: true,
+        alert: true,
+        locales: resolveMarkdownHintLocales(localeOptions),
+        ...(isPlainObject(themePlugins.hint) ? themePlugins.hint : {}),
       }),
     )
   }

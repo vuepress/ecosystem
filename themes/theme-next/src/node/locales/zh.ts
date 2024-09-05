@@ -31,16 +31,4 @@ export const zh: DefaultThemeLocaleData = {
     linkText: '回到首页',
     code: '404',
   },
-
-  // container
-  container: {
-    infoLabel: '信息',
-    noteLabel: '注意',
-    tipLabel: '提示',
-    warningLabel: '警告',
-    dangerLabel: '危险',
-    detailsLabel: '详情',
-    importantLabel: '重要',
-    cautionLabel: '危险',
-  },
 }

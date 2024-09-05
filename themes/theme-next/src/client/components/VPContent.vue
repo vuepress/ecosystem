@@ -39,7 +39,6 @@ const { hasSidebar } = useSidebar()
 <template>
   <div
     id="VPContent"
-    vp-content
     class="vp-content"
     :class="{
       'has-sidebar': hasSidebar,

@@ -108,6 +108,7 @@ watch(
           <main class="main">
             <Content
               class="vp-doc"
+              vp-content
               :class="[
                 pageName,
                 enabledExternalLinkIcon && 'external-link-icon-enabled',

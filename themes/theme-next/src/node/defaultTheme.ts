@@ -8,7 +8,6 @@ import type {
   SidebarSorter,
 } from '../shared/index.js'
 import { resolvePageHead } from './config/index.js'
-import { githubAlertsPlugin } from './markdown/index.js'
 import { getPlugins } from './plugins/index.js'
 import { prepareSidebarData } from './prepare/index.js'
 import { THEME_NAME, logger } from './utils/index.js'
@@ -105,10 +104,6 @@ export const defaultTheme =
         page.routeMeta.title = page.title
 
         resolvePageHead(page, localeOptions)
-      },
-
-      extendsMarkdown: (md, _app) => {
-        githubAlertsPlugin(md, _app, localeOptions)
       },
     }
   }

@@ -1,5 +1,6 @@
 import type { CopyCodePluginOptions } from '@vuepress/plugin-copy-code'
 import type { LinksCheckPluginOptions } from '@vuepress/plugin-links-check'
+import type { MarkdownHintPluginOptions } from '@vuepress/plugin-markdown-hint'
 import type { SeoPluginOptions } from '@vuepress/plugin-seo'
 import type { ShikiPluginOptions } from '@vuepress/plugin-shiki'
 import type { SitemapPluginOptions } from '@vuepress/plugin-sitemap'
@@ -20,6 +21,11 @@ export interface DefaultThemePluginsOptions {
    * Enable @vuepress/plugin-git or not
    */
   git?: boolean
+
+  /**
+   * Enable @vuepress/plugin-markdown-hint or not
+   */
+  hint?: MarkdownHintPluginOptions | boolean
 
   /**
    * Enable @vuepress/plugin-links-check or not
