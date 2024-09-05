@@ -17,7 +17,7 @@
   --docsearch-footer-background: var(--vp-c-bg);
 }
 
-.dark .DocSearch {
+[data-theme='dark'] .DocSearch {
   --docsearch-modal-shadow: none;
   --docsearch-footer-shadow: none;
   --docsearch-logo-color: var(--vp-c-text-2);
@@ -167,7 +167,7 @@
   display: none;
 }
 
-.dark .DocSearch-Footer {
+[data-theme='dark'] .DocSearch-Footer {
   border-top: 1px solid var(--vp-c-divider);
 }
 
@@ -176,7 +176,7 @@
   background-color: var(--vp-c-white);
 }
 
-.dark .DocSearch-Form {
+[data-theme='dark'] .DocSearch-Form {
   background-color: var(--vp-c-bg-soft);
 }
 

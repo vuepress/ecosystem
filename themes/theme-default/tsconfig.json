@@ -6,5 +6,6 @@
     "paths": {
       "@theme/*": ["./src/client/components/*", "./src/client/composables/*.js"]
     }
-  }
+  },
+  "include": ["./src"]
 }

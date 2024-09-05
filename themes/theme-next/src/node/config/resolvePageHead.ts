@@ -24,12 +24,12 @@ export const resolvePageHead = (
       'script',
       { id: 'check-dark-mode' },
       fallbackPreference === 'force-dark'
-        ? `;document.documentElement.classList.add('dark')`
+        ? `;document.documentElement.dataset.theme = 'dark'`
         : `;(() => {
     const preference = localStorage.getItem('vuepress-color-scheme') || '${fallbackPreference}'
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    if (!preference || preference === 'auto' ? prefersDark : preference === 'dark')
-      document.documentElement.classList.add('dark')
+    const isDark = !preference || preference === 'auto' ? prefersDark : preference === 'dark'
+    document.documentElement.dataset.theme = isDark ? 'dark' : 'light'
   })()`,
     ])
   }

@@ -132,11 +132,11 @@
   background-color: var(--vp-c-bg-soft);
 }
 
-.dark .vp-sponsor-grid-item:hover {
+[data-theme='dark'] .vp-sponsor-grid-item:hover {
   background-color: var(--vp-c-white);
 }
 
-.dark .vp-sponsor-grid-item.empty:hover {
+[data-theme='dark'] .vp-sponsor-grid-item.empty:hover {
   background-color: var(--vp-c-bg-soft);
 }
 
@@ -157,6 +157,6 @@
   transition: filter 0.25s;
 }
 
-.dark .vp-sponsor-grid-image {
+[data-theme='dark'] .vp-sponsor-grid-image {
   filter: grayscale(1) invert(1);
 }

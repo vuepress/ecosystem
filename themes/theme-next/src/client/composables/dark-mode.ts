@@ -19,6 +19,9 @@ export const setupDarkMode = (): void => {
       : appearance
         ? useDark({
             storageKey: 'vuepress-color-scheme',
+            attribute: 'data-theme',
+            valueLight: 'light',
+            valueDark: 'dark',
             initialValue: () =>
               typeof appearance === 'string' ? appearance : 'auto',
             ...(typeof appearance === 'object' ? appearance : {}),

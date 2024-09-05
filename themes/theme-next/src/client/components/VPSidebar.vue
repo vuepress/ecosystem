@@ -121,7 +121,7 @@ onMounted(() => {
   transform: translateX(0);
 }
 
-.dark .vp-sidebar {
+[data-theme='dark'] .vp-sidebar {
   box-shadow: var(--vp-shadow-1);
 }
 

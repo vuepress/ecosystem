@@ -41,7 +41,7 @@ html {
   }
 }
 
-html.dark {
+html[data-theme='dark'] {
   color-scheme: dark;
 }
 
