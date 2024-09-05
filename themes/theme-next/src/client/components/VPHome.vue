@@ -50,7 +50,7 @@ const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
     <VPHomeContent v-if="frontmatter.markdownStyles !== false">
       <Content />
     </VPHomeContent>
-    <Content v-else />
+    <Content v-else vp-content />
   </div>
 </template>
 

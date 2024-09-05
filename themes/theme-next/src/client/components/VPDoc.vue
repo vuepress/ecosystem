@@ -102,13 +102,12 @@ watch(
         </div>
       </div>
 
-      <div class="content">
+      <div class="content" vp-content>
         <div class="content-container">
           <slot name="doc-before" />
           <main class="main">
             <Content
               class="vp-doc"
-              vp-content
               :class="[
                 pageName,
                 enabledExternalLinkIcon && 'external-link-icon-enabled',

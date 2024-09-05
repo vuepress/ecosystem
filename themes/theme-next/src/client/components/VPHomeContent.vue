@@ -13,6 +13,7 @@ const { width: vw } = useWindowSize({
 <template>
   <div
     class="vp-doc container"
+    vp-content
     :style="vw ? { '--vp-offset': `calc(50% - ${vw / 2}px)` } : {}"
   >
     <slot />

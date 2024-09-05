@@ -64,16 +64,6 @@ test.describe('plugin-theme-data', () => {
             linkText: '回到首页',
             code: '404',
           },
-          container: {
-            infoLabel: '信息',
-            noteLabel: '注意',
-            tipLabel: '提示',
-            warningLabel: '警告',
-            dangerLabel: '危险',
-            detailsLabel: '详情',
-            importantLabel: '重要',
-            cautionLabel: '危险',
-          },
           logo: 'https://v2.vuepress.vuejs.org/images/hero.png',
           navbar: ['/zh/'],
           sidebar: {
@@ -111,16 +101,6 @@ test.describe('plugin-theme-data', () => {
             linkLabel: 'go to home',
             linkText: 'Take me home',
             code: '404',
-          },
-          container: {
-            infoLabel: 'INFO',
-            noteLabel: 'NOTE',
-            tipLabel: 'TIP',
-            warningLabel: 'WARNING',
-            dangerLabel: 'DANGER',
-            detailsLabel: 'DETAILS',
-            importantLabel: 'IMPORTANT',
-            cautionLabel: 'CAUTION',
           },
           logo: 'https://v2.vuepress.vuejs.org/images/hero.png',
           navbar: [

@@ -193,7 +193,7 @@ provide('hero-image-slot-exists', heroImageSlotExists)
     <slot name="layout-bottom" />
   </div>
 
-  <Content v-else />
+  <Content v-else vp-content />
 </template>
 
 <style scoped>
