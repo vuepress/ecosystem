@@ -75,6 +75,7 @@ provide('hero-image-slot-exists', heroImageSlotExists)
 <template>
   <div
     v-if="frontmatter.pageLayout !== false"
+    vp-container
     class="vp-layout"
     :class="frontmatter.pageClass"
   >

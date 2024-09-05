@@ -197,6 +197,9 @@ importers:
       '@vuepress/plugin-back-to-top':
         specifier: workspace:*
         version: link:../plugins/features/plugin-back-to-top
+      '@vuepress/plugin-cache':
+        specifier: workspace:*
+        version: link:../plugins/tools/plugin-cache
       '@vuepress/plugin-catalog':
         specifier: workspace:*
         version: link:../plugins/features/plugin-catalog

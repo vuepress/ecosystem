@@ -23,7 +23,7 @@ const theme = useThemeLocaleData()
 </script>
 
 <template>
-  <div class="vp-layout">
+  <div class="vp-layout" vp-container>
     <slot name="layout-top" />
     <VPSkipLink />
 

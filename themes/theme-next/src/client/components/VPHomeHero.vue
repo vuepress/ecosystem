@@ -16,7 +16,12 @@ const fm = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
 </script>
 
 <template>
-  <VPHero v-if="fm.hero" class="vp-home-hero" v-bind="fm.hero">
+  <VPHero
+    v-if="fm.hero"
+    class="vp-home-hero"
+    v-bind="fm.hero"
+    :actions="fm.actions"
+  >
     <template #home-hero-info-before>
       <slot name="home-hero-info-before" />
     </template>

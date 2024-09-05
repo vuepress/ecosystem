@@ -4,6 +4,7 @@ import { footnote } from '@mdit/plugin-footnote'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { getRealPath } from '@vuepress/helper'
+import { cachePlugin } from '@vuepress/plugin-cache'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { commentPlugin } from '@vuepress/plugin-comment'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
@@ -23,8 +24,7 @@ import theme from './theme.js'
 
 export default defineUserConfig({
   // set site base to default value
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  base: (process.env.BASE as '/' | `/${string}/`) || '/',
+  base: (process.env.BASE as '/' | `/${string}/` | undefined) || '/',
   lang: 'en-US',
 
   // extra tags in `<head>`
@@ -93,6 +93,7 @@ export default defineUserConfig({
       json: true,
       rss: true,
     }),
+    cachePlugin(),
   ],
 
   // configure default theme

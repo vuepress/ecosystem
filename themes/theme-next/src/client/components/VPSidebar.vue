@@ -56,6 +56,7 @@ onMounted(() => {
   <aside
     v-if="hasSidebar"
     ref="navEl"
+    vp-sidebar
     class="vp-sidebar"
     :class="{ open }"
     @click.stop

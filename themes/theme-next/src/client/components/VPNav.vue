@@ -31,7 +31,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <header v-if="hasNavbar" class="vp-nav">
+  <header v-if="hasNavbar" vp-navbar class="vp-nav">
     <VPNavBar :is-screen-open="isScreenOpen" @toggle-screen="toggleScreen">
       <template #nav-bar-title-before>
         <slot name="nav-bar-title-before" />
