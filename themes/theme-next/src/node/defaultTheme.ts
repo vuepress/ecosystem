@@ -1,3 +1,10 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable no-console */
+import {
+  addViteConfig,
+  addViteOptimizeDepsExclude,
+  chainWebpack,
+} from '@vuepress/helper'
 import { watch } from 'chokidar'
 import type { Page, Theme } from 'vuepress/core'
 import { fs, getDirname, path } from 'vuepress/utils'
@@ -104,6 +111,53 @@ export const defaultTheme =
         page.routeMeta.title = page.title
 
         resolvePageHead(page, localeOptions)
+      },
+
+      extendsBundlerOptions: (bundlerOptions, app): void => {
+        // FIXME: hide sass deprecation warning for mixed-decls
+        addViteConfig(bundlerOptions, app, {
+          css: {
+            preprocessorOptions: {
+              sass: {
+                logger: {
+                  warn: (message, { deprecation, deprecationType }) => {
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                    if (deprecation && deprecationType.id === 'mixed-decls')
+                      return
+
+                    console.warn(message)
+                  },
+                },
+              },
+              scss: {
+                logger: {
+                  warn: (message, { deprecation, deprecationType }) => {
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                    if (deprecation && deprecationType.id === 'mixed-decls')
+                      return
+
+                    console.warn(message)
+                  },
+                },
+              },
+            },
+          },
+        })
+        chainWebpack(bundlerOptions, app, (config) => {
+          config.module
+            .rule('scss')
+            .use('sass-loader')
+            .tap((options) => ({
+              ...options,
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+              sassOptions: {
+                silenceDeprecations: ['mixed-decls'],
+                ...options.sassOptions,
+              },
+            }))
+        })
+        // ensure theme alias is not optimized by Vite
+        addViteOptimizeDepsExclude(bundlerOptions, app, '@theme')
       },
     }
   }
