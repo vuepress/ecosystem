@@ -4,8 +4,7 @@ export { isFunction, isString, isPlainObject } from 'vuepress/shared'
 
 /* Type helper */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const isDef = <T = any>(val?: T | undefined): val is T =>
-  typeof val !== 'undefined'
+export const isDef = <T = any>(val?: T): val is T => typeof val !== 'undefined'
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
 export const isBoolean = (val: any): val is boolean => typeof val === 'boolean'
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
