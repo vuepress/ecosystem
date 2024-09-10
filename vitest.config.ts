@@ -40,5 +40,8 @@ export default defineConfig({
       'themes/**/tests/**/*.spec.ts',
       'tools/**/tests/**/*.spec.ts',
     ],
+    typecheck: {
+      enabled: true,
+    },
   },
 })
