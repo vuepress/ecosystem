@@ -54,7 +54,7 @@ export default defineUserConfig({
       '/',
       {
         text: 'Dropdown',
-        children: [
+        items: [
           {
             text: 'item',
             link: '/dropdown/',
@@ -64,12 +64,12 @@ export default defineUserConfig({
     ],
 
     sidebar: {
-      '/sidebar/heading/': 'heading',
+      '/sidebar/heading/': 'structure',
       '/sidebar/config/': [
         {
           text: 'Sidebar',
           link: '',
-          children: [
+          items: [
             { text: 'sidebar 1', link: '1.html' },
             { text: 'sidebar 2', link: '2.html' },
           ],
@@ -81,7 +81,7 @@ export default defineUserConfig({
     locales: {
       '/zh/': {
         navbar: ['/zh/'],
-        sidebar: false,
+        // sidebar: false,
       },
     },
 

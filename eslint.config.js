@@ -25,7 +25,7 @@ const TOOLS_DIRS = fs
 
 export default vuepress(
   {
-    ignores: ['**/lib/**', '**/template/**'],
+    ignores: ['**/lib/**', '**/template/**', '**/node_modules/**'],
     imports: {
       packageDir: [
         ROOT,
@@ -132,6 +132,8 @@ export default vuepress(
           { ignores: ['Badge', 'Layout'] },
         ],
         'vue/static-class-names-order': 'off',
+        'vue/no-v-html': 'off',
+        'vue/no-root-v-if': 'off',
       },
     },
   },

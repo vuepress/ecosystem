@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 interface Article {
   path: string
   info: {
@@ -59,7 +59,7 @@ defineProps<{
 </template>
 
 <style lang="scss">
-@use '@vuepress/theme-default/styles/mixins';
+@use '../styles/mixins.scss';
 
 .article-wrapper {
   @include mixins.content-wrapper;
