@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import {
   addViteConfig,
   addViteOptimizeDepsExclude,
@@ -89,26 +88,12 @@ export const defaultTheme = ({
         css: {
           preprocessorOptions: {
             sass: {
-              logger: {
-                warn: (message, { deprecation, deprecationType }) => {
-                  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                  if (deprecation && deprecationType.id === 'mixed-decls')
-                    return
-
-                  console.warn(message)
-                },
-              },
+              api: 'modern-compiler',
+              silenceDeprecations: ['mixed-decls'],
             },
             scss: {
-              logger: {
-                warn: (message, { deprecation, deprecationType }) => {
-                  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                  if (deprecation && deprecationType.id === 'mixed-decls')
-                    return
-
-                  console.warn(message)
-                },
-              },
+              api: 'modern-compiler',
+              silenceDeprecations: ['mixed-decls'],
             },
           },
         },
@@ -121,6 +106,7 @@ export const defaultTheme = ({
             ...options,
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             sassOptions: {
+              api: 'modern-compiler',
               silenceDeprecations: ['mixed-decls'],
               ...options.sassOptions,
             },
