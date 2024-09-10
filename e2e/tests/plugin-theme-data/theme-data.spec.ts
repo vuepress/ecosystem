@@ -17,7 +17,18 @@ test.describe('plugin-theme-data', () => {
           children: [
             {
               text: 'item',
-              link: '/dropdown/',
+              link: '/navbar/',
+            },
+            {
+              text: 'Nested',
+              prefix: '/navbar/',
+              children: [
+                {
+                  text: 'Nested foo',
+                  link: '/navbar/foo.html',
+                },
+                'bar.md',
+              ],
             },
           ],
         },
