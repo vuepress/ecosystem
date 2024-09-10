@@ -28,12 +28,12 @@
     "@vuepress/plugin-theme-data": "workspace:*",
     "@vuepress/plugin-watermark": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
-    "sass": "^1.77.8",
+    "sass": "^1.78.0",
     "sass-loader": "^16.0.1",
-    "vue": "^3.4.38",
+    "vue": "^3.5.3",
     "vuepress": "2.0.0-rc.15"
   },
   "devDependencies": {
-    "@playwright/test": "^1.46.1"
+    "@playwright/test": "^1.47.0"
   }
 }

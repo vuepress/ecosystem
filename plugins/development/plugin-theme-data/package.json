@@ -36,8 +36,8 @@
     "copy": "cpx \"src/**/*.d.ts\" lib"
   },
   "dependencies": {
-    "@vue/devtools-api": "^6.6.3",
-    "vue": "^3.4.38"
+    "@vue/devtools-api": "^6.6.4",
+    "vue": "^3.5.3"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.15"

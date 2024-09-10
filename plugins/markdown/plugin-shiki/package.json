@@ -37,11 +37,11 @@
     "style": "sass src:lib --no-source-map"
   },
   "dependencies": {
-    "@shikijs/transformers": "^1.14.1",
+    "@shikijs/transformers": "^1.16.3",
     "@vuepress/helper": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
     "nanoid": "^5.0.7",
-    "shiki": "^1.14.1"
+    "shiki": "^1.16.3"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.15"
