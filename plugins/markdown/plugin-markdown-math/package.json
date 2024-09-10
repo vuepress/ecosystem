@@ -40,11 +40,11 @@
     "style": "sass src:lib --no-source-map"
   },
   "dependencies": {
-    "@mdit/plugin-katex-slim": "^0.13.0",
-    "@mdit/plugin-mathjax-slim": "^0.13.0",
+    "@mdit/plugin-katex-slim": "^0.13.1",
+    "@mdit/plugin-mathjax-slim": "^0.13.1",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
-    "vue": "^3.4.38"
+    "vue": "^3.5.4"
   },
   "peerDependencies": {
     "katex": "^0.16.10",

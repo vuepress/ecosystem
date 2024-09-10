@@ -14,7 +14,7 @@ declare const __COMMENT_OPTIONS__: CommentOptions
 
 const commentOptions = __COMMENT_OPTIONS__
 
-const comment: Ref<CommentOptions> = ref(commentOptions)
+const comment = ref(commentOptions)
 
 const commentSymbol = Symbol(__VUEPRESS_DEV__ ? 'comment' : '')
 

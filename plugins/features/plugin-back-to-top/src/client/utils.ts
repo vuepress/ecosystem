@@ -1,5 +1,5 @@
 export const getScrollTop = (): number =>
-  window.pageYOffset ||
+  window.scrollY ||
   document.documentElement.scrollTop ||
   document.body.scrollTop ||
   0
