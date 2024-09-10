@@ -46,11 +46,11 @@
     "style": "sass src:lib --no-source-map"
   },
   "dependencies": {
-    "@vue/shared": "^3.5.3",
+    "@vue/shared": "^3.5.4",
     "cheerio": "1.0.0",
     "fflate": "^0.8.2",
     "gray-matter": "^4.0.3",
-    "vue": "^3.5.3"
+    "vue": "^3.5.4"
   },
   "devDependencies": {
     "@types/connect": "3.4.38",
