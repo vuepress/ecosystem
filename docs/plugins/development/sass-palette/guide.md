@@ -97,20 +97,6 @@ We are using `additionalData` options to let `${id}-config` module available in 
 
 If the Scss file is not imported directly, but is imported through `@use` or `@import` api, the module won't be available. So that in this case, you should manually import the module with `@use "@sass-palette/${id}-config";`.
 
-### Preserved Variables
-
-`$dark-selector` is preserved for darkmode selector. You are expected to set this variable if you want your plugin or theme support darkmode. This variable will be used later in palette files.
-
-::: tip
-
-- If you are developing a plugin, you may set `$dark-selector: [data-theme="dark"] !default;` in default config files, as our guideline is asking this.
-
-  Your plugin will work with most of theme, and users are still allowed to change this selector in config file if they are using a third-party theme with different dark selector.
-
-- If you are developing a theme, you may set `$dark-selector` in default config files with your darkmode selector without `!default`, to insure users cannot override it.
-
-:::
-
 ## Palette
 
 Palette files are used for CSS variable injection, where each variable will be injected in to root with kebab-name of variable name.
@@ -158,7 +144,7 @@ Then the below CSS variables will be available under root selector:
 
 Since the default theme is providing darkmode, so you probably want different colors under lightmode and darkmode.
 
-To achieve that, you should set color variables with a map containing `light` and `dark` keys. Later, the plugin will read `$dark-selector` in your config and generate different colors for you.
+To achieve that, you should set color variables with a map containing `light` and `dark` keys. Later, the plugin will generate different colors for you.
 
 ::: details An example
 
@@ -180,7 +166,7 @@ $bg-color: (
 ) !default;
 ```
 
-Then if `$dark-selector` has a value `"[data-theme="dark"]"` in config file, you will get:
+Then you will get:
 
 ```scss
 :root {

@@ -27,10 +27,7 @@ export const sassPalettePlugin =
         '../../styles/default/config.scss',
       ),
       palette = `.vuepress/styles/${getIdPrefix(id)}palette.scss`,
-      defaultPalette = path.resolve(
-        __dirname,
-        '../../styles/default/palette.scss',
-      ),
+      defaultPalette,
       generator = EMPTY_FILE,
       style = '',
     } = options

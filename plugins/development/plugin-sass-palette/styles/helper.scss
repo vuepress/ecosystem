@@ -66,7 +66,7 @@
   @return get-color($color, $is-dark: true);
 }
 
-@function get-variables($variables, $dark-selector: '') {
+@function get-variables($variables) {
   $root-variables: ();
   $dark-variables: ();
 
@@ -77,18 +77,15 @@
       $root-variables: map.set($root-variables, $key, $value);
     } @else if color-is-legal($value) {
       $light-color: get-color($value, false);
+      $dark-color: get-color($value, true);
       $root-variables: map.set($root-variables, $key, $light-color);
 
-      @if $dark-selector {
-        $dark-color: get-color($value, true);
-
-        @if $light-color != $dark-color {
-          $dark-variables: map.set(
-            $dark-variables,
-            $key,
-            get-color($value, true)
-          );
-        }
+      @if $light-color != $dark-color {
+        $dark-variables: map.set(
+          $dark-variables,
+          $key,
+          get-color($value, true)
+        );
       }
     }
   }
@@ -96,7 +93,7 @@
   @return ('root': $root-variables, 'dark': $dark-variables);
 }
 
-@mixin inject-color($key, $config, $dark-selector: '') {
+@mixin inject-color($key, $config) {
   @if meta.type-of($config) == color {
     :root {
       #{$key}: #{$config};
@@ -110,8 +107,8 @@
         #{$key}: #{$light-color};
       }
 
-      @if $light-color != $dark-color and $dark-selector {
-        #{$dark-selector} {
+      @if $light-color != $dark-color {
+        [data-theme='dark'] {
           #{$key}: #{$dark-color};
         }
       }
@@ -119,21 +116,19 @@
   }
 }
 
-@mixin inject($variables, $dark-selector: '') {
-  $result: get-variables($variables, $dark-selector);
+@mixin inject($variables) {
+  $result: get-variables($variables);
   $root-variables: map.get($result, 'root');
   $dark-variables: map.get($result, 'dark');
 
-  @if $dark-selector {
-    #{$dark-selector} {
-      @each $key, $value in $dark-variables {
-        #{$key}: #{$value};
-      }
+  :root {
+    @each $key, $value in $root-variables {
+      #{$key}: #{$value};
     }
   }
 
-  :root {
-    @each $key, $value in $root-variables {
+  [data-theme='dark'] {
+    @each $key, $value in $dark-variables {
       #{$key}: #{$value};
     }
   }

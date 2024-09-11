@@ -20,10 +20,6 @@ ${
     : ''
 }
 
-@if meta.global-variable-exists("dark-selector", $module: "${getIdPrefix(id)}config") {
-  @include helper.inject($palette-variables, ${getIdPrefix(id)}config.$dark-selector);
-} @else {
-  @include helper.inject($palette-variables);
-}
+@include helper.inject($palette-variables);
 `,
   )

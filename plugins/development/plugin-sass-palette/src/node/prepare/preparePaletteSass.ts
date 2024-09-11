@@ -3,7 +3,7 @@ import { getIdPrefix, getPath } from '../utils.js'
 
 export interface PreparePaletteOptions {
   id: string
-  defaultPalette: string
+  defaultPalette?: string
   generator: string
   userPalette: string
 }
@@ -15,7 +15,7 @@ export const preparePaletteSass = (
   app.writeTemp(
     `sass-palette/${getIdPrefix(id)}palette.scss`,
     `\
-@import "file:///${getPath(defaultPalette)}";
+${defaultPalette ? `@import "file:///${getPath(defaultPalette)}";` : ''}
 @import "file:///${getPath(userPalette)}";
 @import "file:///${getPath(generator)}";
 `,
