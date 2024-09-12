@@ -356,19 +356,22 @@ export default {
 ### defineDocSearchConfig
 
 ```ts
-type DocSearchClientLocaleOptions = Omit<
-  DocSearchProps,
-  'hitComponent' | 'navigator' | 'transformSearchClient'
->
-
-interface DocSearchClientOptions extends DocSearchClientLocaleOptions {
-  locales?: Record<string, DocSearchClientLocaleOptions>
+interface DocSearchClientOptions extends DocSearchProps {
+  locales?: Record<string, DocSearchProps>
 }
 
 const defineDocSearchConfig: (options: DocSearchClientOptions) => void
 ```
 
 自定义 DocSearch 选项。
+
+::: warning
+
+为了支持 VuePress 的路由与其他优化，`transformItems`, `hitComponent` `navigator` 和 `transformSearchClient` 选项已被内部配置。直接覆盖它们可能会导致非预期行为。
+
+如果你需要自定义它们，你可能需要先理解 [VuePress 的适配](https://github.com/vuepress/ecosystem/blob/main/plugins/search/plugin-docsearch/src/client/composables/useDocSearchSlim.ts) 并确保不破坏它们。
+
+:::
 
 ## 样式
 

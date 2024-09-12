@@ -368,6 +368,12 @@ Customize DocSearch options.
 
 ::: warning
 
+To support VuePress's routing and other optimizations, the `transformItems`, `hitComponent` `navigator` and `transformSearchClient` options have been configured internally. Overriding them directly may lead to unexpected behavior.
+
+If you need to customize them, you may need to first understand [VuePress's adaptation](https://github.com/vuepress/ecosystem/blob/main/plugins/search/plugin-docsearch/src/client/composables/useDocSearchSlim.ts) and make sure not to break them.
+
+:::
+
 ## Styles
 
 You can customize styles via CSS variables that provided by [@docsearch/css](https://docsearch.algolia.com/docs/styling):
