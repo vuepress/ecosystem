@@ -25,10 +25,13 @@ a {
 }
 
 code {
-  background-color: var(--vp-c-bg-alt);
-  color: var(--vp-c-text-mute);
   font-family: var(--code-font-family);
-  transition: background-color var(--vp-t-color);
+
+  :not(pre) > & {
+    background-color: var(--vp-c-grey-soft);
+    color: var(--vp-c-text-mute);
+    transition: background-color var(--vp-t-color);
+  }
 
   p a & {
     color: var(--vp-c-accent);
@@ -55,15 +58,9 @@ table {
   transition: border-color var(--vp-t-color);
 }
 
-tr {
-  &:nth-child(odd) {
-    background-color: var(--vp-c-bg-alt);
-    transition: background-color var(--vp-t-color);
-
-    code {
-      background-color: var(--vp-c-gutter);
-    }
-  }
+tbody tr:nth-child(odd) {
+  background-color: var(--vp-c-bg-alt);
+  transition: background-color var(--vp-t-color);
 }
 
 th,

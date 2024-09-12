@@ -199,7 +199,7 @@ table {
   border-collapse: collapse;
 }
 
-tr:nth-child(odd) {
+tbody tr:nth-child(odd) {
   background: #f6f8fa;
 }
 
