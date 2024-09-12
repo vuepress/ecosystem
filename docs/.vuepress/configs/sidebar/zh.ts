@@ -124,7 +124,7 @@ export const sidebarZh: SidebarOptions = {
     'register-components',
   ],
 
-  '/zh/plugins/search/': ['docsearch', 'search'],
+  '/zh/plugins/search/': ['guidelines', 'docsearch', 'search'],
 
   '/zh/plugins/seo/': [
     {

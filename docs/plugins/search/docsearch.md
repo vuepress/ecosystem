@@ -4,12 +4,6 @@
 
 Integrate [Algolia DocSearch](https://docsearch.algolia.com/) into VuePress, which can provide search to your documentation site.
 
-::: tip
-Default theme will add DocSearch to the navbar once you configure this plugin correctly.
-
-This plugin may not be used directly in other themes, so you'd better refer to the documentation of your theme for more details.
-:::
-
 ## Usage
 
 ```bash

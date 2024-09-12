@@ -4,12 +4,6 @@
 
 将 [Algolia DocSearch](https://docsearch.algolia.com/) 集成到 VuePress 中，为你的文档网站提供搜索功能。
 
-::: tip
-当你正确配置该插件后，默认主题会把 DocSearch 按钮添加到导航栏。
-
-该插件不一定能在其他主题中直接使用，因此你应参考主题本身的文档来获取更多信息。
-:::
-
 ## 使用方法
 
 ```bash

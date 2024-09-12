@@ -24,6 +24,10 @@ A theme must:
 
 If it only have one color scheme, it still needs to set `data-theme` to `light` or `dark` to indicate the default color scheme.
 
+## Components
+
+To support search plugins, a theme shall check whether `<SearchBox />` is globally registered and render it in it's own navbar or sidebar if it is available.
+
 ## Color Variables
 
 A theme must implement the following color variables:
