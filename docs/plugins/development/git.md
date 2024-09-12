@@ -68,6 +68,18 @@ This plugin will significantly slow down the speed of data preparation, especial
 
   Whether to collect page contributors or not.
 
+### transformContributors
+
+- Type: `(contributors: GitContributor[]) => GitContributor[]`
+
+- Details:
+
+  A function to transform the contributors.
+
+  The input is the contributors collected by this plugin, and the output should be the transformed contributors.
+
+  You can use it to filter out some contributors, or to sort contributors.
+
 ## Frontmatter
 
 ### gitInclude

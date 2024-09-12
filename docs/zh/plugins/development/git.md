@@ -68,6 +68,18 @@ export default {
 
   是否收集页面的贡献者。
 
+### transformContributors
+
+- 类型： `(contributors: GitContributor[]) => GitContributor[]`
+
+- 详情：
+
+  贡献者信息的转换函数。
+
+  该函数接收一个贡献者信息数组，返回一个新的贡献者信息数组。
+
+  你可以使用该函数来过滤贡献者或排序贡献者。
+
 ## Frontmatter
 
 ### gitInclude

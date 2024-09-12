@@ -1,6 +1,10 @@
 import type { Page, Plugin } from 'vuepress/core'
 import { path } from 'vuepress/utils'
-import type { GitPluginFrontmatter, GitPluginPageData } from './types.js'
+import type {
+  GitContributor,
+  GitPluginFrontmatter,
+  GitPluginPageData,
+} from './types.js'
 import {
   checkGitRepo,
   getContributors,
@@ -26,10 +30,20 @@ export interface GitPluginOptions {
    * Whether to get the contributors of a page
    */
   contributors?: boolean
+
+  /**
+   * Functions to transform contributors, e.g. remove duplicates ones and sort them
+   */
+  transformContributors?: (contributors: GitContributor[]) => GitContributor[]
 }
 
 export const gitPlugin =
-  ({ createdTime, updatedTime, contributors }: GitPluginOptions = {}): Plugin =>
+  ({
+    createdTime,
+    updatedTime,
+    contributors,
+    transformContributors,
+  }: GitPluginOptions = {}): Plugin =>
   (app) => {
     const cwd = app.dir.source()
     const isGitRepoValid = checkGitRepo(cwd)
@@ -62,7 +76,9 @@ export const gitPlugin =
         }
 
         if (contributors !== false) {
-          page.data.git.contributors = await getContributors(filePaths, cwd)
+          const result = await getContributors(filePaths, cwd)
+
+          page.data.git.contributors = transformContributors?.(result) ?? result
         }
       },
 
