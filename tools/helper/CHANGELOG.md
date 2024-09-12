@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.43](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.42...v2.0.0-rc.43) (2024-09-12)
+
+### Bug Fixes
+
+- fix code and table color normalize, close [#243](https://github.com/vuepress/ecosystem/issues/243) ([bbd69e0](https://github.com/vuepress/ecosystem/commit/bbd69e053c15cda1b14837ad64ac6da4e827ff8d))
+
 # [2.0.0-rc.42](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.41...v2.0.0-rc.42) (2024-08-22)
 
 ### Features

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.43](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.42...v2.0.0-rc.43) (2024-09-12)
+
+### Bug Fixes
+
+- fix code and table color normalize, close [#243](https://github.com/vuepress/ecosystem/issues/243) ([bbd69e0](https://github.com/vuepress/ecosystem/commit/bbd69e053c15cda1b14837ad64ac6da4e827ff8d))
+- **theme-default:** fix darkmode text color ([a469300](https://github.com/vuepress/ecosystem/commit/a469300ea68d90ff8b4613c8b144210b7d731e5b))
+- **theme-default:** fix types of navbar link ([#242](https://github.com/vuepress/ecosystem/issues/242)) ([f98101d](https://github.com/vuepress/ecosystem/commit/f98101d62a0e8e352b16d808280c2b7a793ef692))
+
+### Features
+
+- improve palette defaults ([76a28d5](https://github.com/vuepress/ecosystem/commit/76a28d5cb5c8c6b41930c33463002506583685f9))
+- make sass optional and support sass-embedded ([#231](https://github.com/vuepress/ecosystem/issues/231)) ([cce614b](https://github.com/vuepress/ecosystem/commit/cce614b8ce45662aa96d38ab09ca0e8fbbd30f4b))
+- **plugin-docsearch:** make palette built-in ([0e8e50e](https://github.com/vuepress/ecosystem/commit/0e8e50e94f121e9ecd8d60f9f7fe48bccd95ac40))
+
 # [2.0.0-rc.42](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.41...v2.0.0-rc.42) (2024-08-22)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.43](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.42...v2.0.0-rc.43) (2024-09-12)
+
+### Features
+
+- **plugin-markdown-image:** remove lightmodeSelector and darkmodeSelector ([16dfaa2](https://github.com/vuepress/ecosystem/commit/16dfaa2fbb7fbc0e4728434267e427a87bf54b7a))
+
 # [2.0.0-rc.42](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.41...v2.0.0-rc.42) (2024-08-22)
 
 ### Features

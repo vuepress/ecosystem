@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.43](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.42...v2.0.0-rc.43) (2024-09-12)
+
+### Features
+
+- **plugin-docsearch:** make palette built-in ([0e8e50e](https://github.com/vuepress/ecosystem/commit/0e8e50e94f121e9ecd8d60f9f7fe48bccd95ac40))
+
 # [2.0.0-rc.42](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.41...v2.0.0-rc.42) (2024-08-22)
 
 **Note:** Version bump only for package @vuepress/plugin-docsearch

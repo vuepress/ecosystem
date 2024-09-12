@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.43](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.42...v2.0.0-rc.43) (2024-09-12)
+
+### Bug Fixes
+
+- **create-vuepress:** bump deps ([8e22450](https://github.com/vuepress/ecosystem/commit/8e224509d14cdbd137eeb4bfe626b3cee8e69b9b))
+
+### Features
+
+- improve palette defaults ([76a28d5](https://github.com/vuepress/ecosystem/commit/76a28d5cb5c8c6b41930c33463002506583685f9))
+
 # [2.0.0-rc.42](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.41...v2.0.0-rc.42) (2024-08-22)
 
 ### Features
