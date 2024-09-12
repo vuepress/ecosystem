@@ -15,7 +15,7 @@ const isSpecialClick = (event: MouseEvent): boolean =>
 /**
  * Get docsearch options to be compatible with VuePress
  */
-export const useDocsearchShim = (): Partial<DocSearchProps> => {
+export const useDocSearchShim = (): Partial<DocSearchProps> => {
   const router = useRouter()
 
   return {

@@ -19,16 +19,6 @@ export default defineClientConfig({
     if (!hasGlobalComponent('CodeGroupItem'))
       app.component('CodeGroupItem', CodeGroupItem)
 
-    // compat with @vuepress/plugin-docsearch and @vuepress/plugin-search
-    app.component('VPSearch', () => {
-      const SearchComponent =
-        app.component('Docsearch') ?? app.component('SearchBox')
-      if (SearchComponent) {
-        return h(SearchComponent)
-      }
-      return null
-    })
-
     // handle scrollBehavior with transition
     const scrollBehavior = router.options.scrollBehavior!
     router.options.scrollBehavior = async (...args) => {

@@ -3,10 +3,10 @@ import { deepAssign, isFunction } from '@vuepress/helper/client'
 import type { App, ComputedRef, InjectionKey, MaybeRefOrGetter, Ref } from 'vue'
 import { computed, inject, isRef, ref, watch } from 'vue'
 import { useRouteLocale } from 'vuepress/client'
-import type { DocsearchOptions } from '../../shared/index.js'
+import type { DocSearchOptions } from '../../shared/index.js'
 
 declare const __VUEPRESS_DEV__: boolean
-declare const __DOCSEARCH_OPTIONS__: DocsearchOptions
+declare const __DOCSEARCH_OPTIONS__: DocSearchOptions
 
 const docSearchOptions: Partial<DocSearchProps> = __DOCSEARCH_OPTIONS__
 
@@ -20,9 +20,7 @@ const docsearchSymbol: InjectionKey<
   >
 > = Symbol(__VUEPRESS_DEV__ ? 'docsearch' : '')
 
-export type DocSearchClientLocaleOptions = Partial<
-  Omit<DocSearchProps, 'hitComponent' | 'navigator' | 'transformSearchClient'>
->
+export type DocSearchClientLocaleOptions = Partial<DocSearchProps>
 
 export interface DocSearchClientOptions extends DocSearchClientLocaleOptions {
   locales?: Record<string, DocSearchClientLocaleOptions>

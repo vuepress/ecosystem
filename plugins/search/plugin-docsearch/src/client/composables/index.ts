@@ -1,2 +1,2 @@
-export * from './useDocsearchHotkeyListener.js'
-export * from './useDocsearchShim.js'
+export * from './useDocSearchHotkeyListener.js'
+export * from './useDocSearchSlim.js'

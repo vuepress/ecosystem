@@ -9,7 +9,7 @@ export const prepareClientConfig = (
   app.writeTemp(
     'docsearch/config.js',
     `
-import { Docsearch, injectDocSearchConfig } from "${getRealPath(`${PLUGIN_NAME}/client`, import.meta.url)}"
+import { DocSearch, injectDocSearchConfig } from "${getRealPath(`${PLUGIN_NAME}/client`, import.meta.url)}"
 ${
   injectStyles
     ? `\
@@ -23,7 +23,7 @@ import '${getRealPath(`${PLUGIN_NAME}/client/styles/vars.css`, import.meta.url)}
 export default {
   enhance({ app }) {
     injectDocSearchConfig(app)
-    app.component('Docsearch', Docsearch)
+    app.component('SearchBox', DocSearch)
   },
 }
 `,

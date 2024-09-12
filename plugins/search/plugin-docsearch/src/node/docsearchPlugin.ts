@@ -1,12 +1,12 @@
 import type { Plugin } from 'vuepress/core'
-import type { DocsearchOptions } from '../shared/index.js'
+import type { DocSearchOptions } from '../shared/index.js'
 import { prepareClientConfig } from './prepareClientConfig.js'
 import { PLUGIN_NAME } from './utils.js'
 
 /**
  * Options for @vuepress/plugin-docsearch
  */
-export interface DocsearchPluginOptions extends DocsearchOptions {
+export interface DocSearchPluginOptions extends DocSearchOptions {
   /**
    * Base path of the search index
    */
@@ -22,7 +22,7 @@ export const docsearchPlugin = ({
   injectStyles = true,
   indexBase,
   ...options
-}: DocsearchPluginOptions = {}): Plugin => ({
+}: DocSearchPluginOptions = {}): Plugin => ({
   name: PLUGIN_NAME,
 
   define: (app) => ({

@@ -1,7 +1,7 @@
-import type { DocsearchOptions } from '../../shared/index.js'
+import type { DocSearchOptions } from '../../shared/index.js'
 
 type FacetFilters =
-  Required<DocsearchOptions>['searchParameters']['facetFilters']
+  Required<DocSearchOptions>['searchParameters']['facetFilters']
 
 /**
  * Get facet filters for current lang

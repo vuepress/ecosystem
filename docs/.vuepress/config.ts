@@ -12,7 +12,6 @@ import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
-import { searchPlugin } from '@vuepress/plugin-search'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { defineUserConfig } from 'vuepress'
 import { getDirname, path } from 'vuepress/utils'
@@ -100,7 +99,6 @@ export default defineUserConfig({
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, './components'),
     }),
-    searchPlugin(),
     // only enable shiki plugin in production mode
     IS_PROD
       ? shikiPlugin({

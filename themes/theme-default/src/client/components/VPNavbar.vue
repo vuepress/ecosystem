@@ -5,8 +5,9 @@ import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'
 import VPToggleSidebarButton from '@theme/VPToggleSidebarButton.vue'
 import { useThemeLocaleData } from '@theme/useThemeData'
 import { DeviceType, useUpdateDeviceStatus } from '@theme/useUpdateDeviceStatus'
+import { hasGlobalComponent } from '@vuepress/helper/client'
 import type { VNode } from 'vue'
-import { computed, ref } from 'vue'
+import { computed, ref, resolveComponent } from 'vue'
 
 defineEmits<{
   toggleSidebar: []
@@ -16,6 +17,10 @@ defineSlots<{
   before?: (props: Record<never, never>) => VNode | VNode[] | null
   after?: (props: Record<never, never>) => VNode | VNode[] | null
 }>()
+
+const SearchBox = hasGlobalComponent('SearchBox')
+  ? resolveComponent('SearchBox')
+  : null
 
 const themeLocale = useThemeLocaleData()
 
@@ -75,7 +80,7 @@ useUpdateDeviceStatus(
       <VPNavbarItems class="vp-hide-mobile" />
       <slot name="after" />
       <VPToggleColorModeButton v-if="themeLocale.colorModeSwitch" />
-      <VPSearch />
+      <SearchBox />
     </div>
   </header>
 </template>

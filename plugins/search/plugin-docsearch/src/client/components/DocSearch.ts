@@ -1,21 +1,21 @@
 import type { PropType } from 'vue'
 import { computed, defineComponent, h, onMounted, ref, watch } from 'vue'
 import { usePageLang, useRouteLocale } from 'vuepress/client'
-import type { DocsearchOptions } from '../../shared/index.js'
+import type { DocSearchOptions } from '../../shared/index.js'
 import {
-  useDocsearchHotkeyListener,
-  useDocsearchShim,
+  useDocSearchHotkeyListener,
+  useDocSearchShim,
 } from '../composables/index.js'
 import { useDocSearchOptions } from '../helpers/index.js'
 import {
   getFacetFilters,
   getSearchButtonTemplate,
-  pollToOpenDocsearch,
+  pollToOpenDocSearch,
   preconnectToAlgolia,
 } from '../utils/index.js'
 
-export const Docsearch = defineComponent({
-  name: 'Docsearch',
+export const DocSearch = defineComponent({
+  name: 'DocSearch',
 
   props: {
     containerId: {
@@ -23,14 +23,14 @@ export const Docsearch = defineComponent({
       default: 'docsearch-container',
     },
     options: {
-      type: Object as PropType<DocsearchOptions>,
+      type: Object as PropType<DocSearchOptions>,
       default: () => ({}),
     },
   },
 
   setup(props) {
     const docSearchOptions = useDocSearchOptions()
-    const docsearchShim = useDocsearchShim()
+    const docsearchShim = useDocSearchShim()
     const lang = usePageLang()
     const routeLocale = useRouteLocale()
 
@@ -78,13 +78,13 @@ export const Docsearch = defineComponent({
       hasTriggered.value = true
       // initialize and open
       void initialize()
-      pollToOpenDocsearch()
+      pollToOpenDocSearch()
       // re-initialize when route locale changes
       watch(routeLocale, initialize)
     }
 
     // trigger when hotkey is pressed
-    useDocsearchHotkeyListener(trigger)
+    useDocSearchHotkeyListener(trigger)
 
     // preconnect to algolia
     onMounted(() => {
