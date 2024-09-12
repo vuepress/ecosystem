@@ -1,9 +1,11 @@
 // === colors ===
 :root {
   // accent colors
-  --vp-c-accent: #3eaf7c;
+  --vp-c-accent: #299764;
+  --vp-c-accent-bg: #3eaf7c;
   --vp-c-accent-hover: #4abf8a;
   --vp-c-accent-text: var(--vp-c-white);
+  --vp-c-accent-soft: rgb(16 185 129 / 14%);
 
   // background colors
   --vp-c-bg: #fff;
@@ -16,19 +18,17 @@
   --vp-c-text-subtle: rgb(60 60 67 / 56%);
 
   // border colors
-  --vp-c-border: #d7d9da;
   --vp-c-gutter: #eaecef;
+  --vp-c-border: #d7d9da;
   --vp-c-border-hard: #d1d4d7;
 
   // shadow colors
   --vp-c-shadow: rgb(0 0 0 / 15%);
-  --vp-c-shadow-hard: #f1f3f5;
 
   // control colors
-  --vp-c-control: #f8f9fa;
+  --vp-c-control: #f9fafb;
   --vp-c-control-hover: #f1f3f5;
-  --vp-c-control-active: #e9ecef;
-  --vp-c-control-disabled: #ccc;
+  --vp-c-control-disabled: #eaeaea;
 
   // layout colors
   --vp-navbar-c-bg: var(--vp-c-bg);
@@ -40,11 +40,12 @@
   --vp-c-code-tab-active: var(--vp-c-accent);
 
   // badge colors
-  --c-badge-tip: var(--c-tip);
-  --c-badge-warning: #ecc808;
-  --c-badge-warning-text: var(--vp-c-bg);
-  --c-badge-danger: #dc2626;
-  --c-badge-danger-text: var(--vp-c-bg);
+  --c-badge-tip: var(--vp-c-green-soft);
+  --c-badge-tip-text: var(--vp-c-green-text);
+  --c-badge-warning: var(--vp-c-yellow-soft);
+  --c-badge-warning-text: var(--vp-c-yellow-text);
+  --c-badge-danger: var(--vp-c-red-soft);
+  --c-badge-danger-text: var(--vp-c-red-text);
 
   // font vars
   --font-family: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', roboto, oxygen,
@@ -77,9 +78,9 @@
   --docsearch-muted-color: var(--vp-c-text-mute);
   --docsearch-container-background: rgb(9 10 17 / 80%);
   --docsearch-modal-background: var(--vp-c-bg-alt);
-  --docsearch-searchbox-background: var(--vp-c-gutter);
+  --docsearch-searchbox-background: var(--vp-c-bg-alt);
   --docsearch-searchbox-focus-background: var(--vp-c-bg);
-  --docsearch-searchbox-shadow: inset 0 0 0 2px var(--vp-c-accent);
+  --docsearch-searchbox-shadow: inset 0 0 0 2px var(--vp-c-accent-soft);
   --docsearch-hit-color: var(--vp-c-text-mute);
   --docsearch-hit-active-color: var(--vp-c-bg);
   --docsearch-hit-background: var(--vp-c-bg);

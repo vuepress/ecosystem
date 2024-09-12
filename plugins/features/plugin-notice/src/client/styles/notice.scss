@@ -51,7 +51,7 @@
   margin: 0;
   padding: 8px 12px;
 
-  background: var(--notice-c-accent);
+  background: var(--notice-c-accent-bg);
   color: var(--notice-c-accent-text);
 
   font-weight: 500;
@@ -107,7 +107,7 @@
   }
 
   &.primary {
-    background-color: var(--notice-c-accent);
+    background-color: var(--notice-c-accent-bg);
     color: var(--notice-c-accent-text);
 
     &:hover {

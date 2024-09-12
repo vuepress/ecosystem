@@ -42,8 +42,7 @@
 
 ### 阴影
 
-- `--vp-c-shadow`：正常阴影颜色
-- `--vp-c-shadow-hard`：用于硬阴影的阴影颜色，例如“对话框”。
+- `--vp-c-shadow`：阴影颜色
 
 ### 强调
 
@@ -67,10 +66,13 @@
 
 - `--vp-c-control`：用于交互控件（例如按钮或复选框）的背景颜色。
 - `--vp-c-control-hover`：用于交互控件悬停状态的背景颜色。
-- `--vp-c-control-active`：用于交互控件的活动或焦点状态的背景颜色。
 - `--vp-c-control-disabled`：用于交互控件禁用状态的颜色。
 
 ## 过渡时间
 
 - `--vp-t-color`：颜色过渡时间。
 - `--vp-t-transform`：变换过渡时间。
+
+## 案例
+
+<PaletteDisplay />

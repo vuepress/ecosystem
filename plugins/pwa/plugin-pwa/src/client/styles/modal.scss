@@ -40,7 +40,7 @@
   border-width: 0;
   border-radius: 1.2rem;
 
-  background: var(--pwa-c-accent);
+  background: var(--pwa-c-accent-bg);
   color: var(--pwa-c-accent-text);
   outline: none;
 
@@ -398,7 +398,7 @@
   }
 
   .install-button {
-    background: var(--pwa-c-accent);
+    background: var(--pwa-c-accent-bg);
     color: var(--pwa-c-accent-text);
     transition: color 0.3s;
 

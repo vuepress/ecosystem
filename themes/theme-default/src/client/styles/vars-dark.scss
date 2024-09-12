@@ -1,12 +1,14 @@
 [data-theme='dark'] {
   // brand colors
-  --vp-c-accent: #3aa675;
+  --vp-c-accent: #3dd68c;
+  --vp-c-accent-bg: #3aa675;
   --vp-c-accent-hover: #349469;
+  --vp-c-accent-soft: rgb(16 185 129 / 16%);
 
   // background colors
-  --vp-c-bg: #22272e;
-  --vp-c-bg-alt: #343b44;
-  --vp-c-bg-elv: #22272e;
+  --vp-c-bg: #1b1b1f;
+  --vp-c-bg-alt: #161618;
+  --vp-c-bg-elv: #202127;
 
   // text colors
   --vp-c-text: rgb(235 235 245 / 86%);
@@ -14,25 +16,17 @@
   --vp-c-text-subtle: rgb(235 235 245 / 38%);
 
   // border colors
-  --vp-c-border: #3e4c5a;
   --vp-c-gutter: #373f4c;
+  --vp-c-border: #3e4c5a;
   --vp-c-border-hard: #405064;
 
   // shadow color
   --vp-c-shadow: rgb(0 0 0 / 30%);
-  --vp-c-shadow-hard: #2f3841;
 
   // control colors
-  --vp-c-control: #2d333b;
-  --vp-c-control-hover: #2f3841;
-  --vp-c-control-active: #333a44;
-  --vp-c-control-disabled: #3e4c5a;
-
-  // badge component colors
-  --c-badge-warning: var(--c-warning);
-  --c-badge-warning-text: #3c2e05;
-  --c-badge-danger: var(--c-danger);
-  --c-badge-danger-text: #401416;
+  --vp-c-control: #2d3135;
+  --vp-c-control-hover: #303640;
+  --vp-c-control-disabled: #363636;
 
   // plugin-docsearch
   /* stylelint-disable-next-line selector-class-pattern */

@@ -94,7 +94,7 @@ defineProps({
       width: 100%;
       height: 2px;
 
-      background: var(--vp-c-accent);
+      background: var(--vp-c-accent-bg);
 
       visibility: hidden;
 

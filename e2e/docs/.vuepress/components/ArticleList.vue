@@ -1,14 +1,16 @@
 <script lang="ts" setup>
+export interface ArticleInfo extends Record<string, unknown> {
+  title: string
+  author?: string
+  date: string
+  category?: string[]
+  tag?: string[]
+  excerpt?: string
+}
+
 interface Article {
   path: string
-  info: {
-    title: string
-    author?: string
-    date: string
-    category?: string[]
-    tag?: string[]
-    excerpt?: string
-  }
+  info: ArticleInfo
 }
 
 defineProps<{
@@ -104,7 +106,7 @@ defineProps<{
       width: 100%;
       height: 2px;
 
-      background: var(--vp-c-accent);
+      background: var(--vp-c-accent-bg);
 
       visibility: hidden;
 

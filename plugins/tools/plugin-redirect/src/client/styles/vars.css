@@ -2,7 +2,7 @@
   --redirect-z-index: 1499;
   --redirect-c-bg: var(--vp-c-bg-elv);
   --redirect-c-text: var(--vp-c-text);
-  --redirect-c-accent: var(--vp-c-accent);
+  --redirect-c-accent-bg: var(--vp-c-accent-bg);
   --redirect-c-accent-hover: var(--vp-c-accent-hover);
   --redirect-c-accent-text: var(--vp-c-accent-text);
   --redirect-c-control: var(--vp-c-control);

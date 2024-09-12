@@ -162,10 +162,10 @@ watch(
     max-height: calc(100vh - 2.7rem);
     margin: 0;
     padding: 0.6rem 0;
-    border: 1px solid var(--vp-c-border);
-    border-radius: 0.25rem;
+    border: 1px solid var(--vp-c-gutter);
+    border-radius: 0.5rem;
 
-    background-color: var(--vp-navbar-c-bg);
+    background-color: var(--vp-c-bg-elv);
 
     text-align: left;
     white-space: nowrap;

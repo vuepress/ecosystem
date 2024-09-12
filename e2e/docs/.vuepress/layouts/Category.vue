@@ -3,10 +3,11 @@
 import { useBlogCategory } from '@vuepress/plugin-blog/client'
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 import { RouteLink, useRoute } from 'vuepress/client'
+import type { ArticleInfo } from '../components/ArticleList.vue'
 import ArticleList from '../components/ArticleList.vue'
 
 const route = useRoute()
-const categoryMap = useBlogCategory('category')
+const categoryMap = useBlogCategory<ArticleInfo>('category')
 </script>
 
 <template>
@@ -83,7 +84,7 @@ const categoryMap = useBlogCategory('category')
     }
 
     &.route-link-active {
-      background: var(--vp-c-accent);
+      background: var(--vp-c-accent-bg);
       color: var(--vp-c-accent-text);
 
       .category-num {

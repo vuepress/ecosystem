@@ -61,6 +61,7 @@ defineSlots<{
 
   &.tip {
     background-color: var(--c-badge-tip);
+    color: var(--c-badge-tip-text);
   }
 
   &.warning {

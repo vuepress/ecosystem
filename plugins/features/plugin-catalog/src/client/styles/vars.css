@@ -1,6 +1,5 @@
 :root {
   --catalog-c-accent: var(--vp-c-accent);
-  --catalog-c-accent-hover: var(--vp-c-accent-hover);
   --catalog-c-accent-text: var(--vp-c-accent-text);
   --catalog-c-control: var(--vp-c-bg-alt);
   --catalog-c-control-hover: var(--vp-c-bg-alt);
