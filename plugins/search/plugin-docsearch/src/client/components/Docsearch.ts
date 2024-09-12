@@ -14,13 +14,6 @@ import {
   preconnectToAlgolia,
 } from '../utils/index.js'
 
-declare const __DOCSEARCH_INJECT_STYLES__: boolean
-
-if (__DOCSEARCH_INJECT_STYLES__) {
-  void import('@docsearch/css')
-  void import('../styles/docsearch.css')
-}
-
 export const Docsearch = defineComponent({
   name: 'Docsearch',
 
