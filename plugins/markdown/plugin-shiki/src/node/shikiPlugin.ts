@@ -1,4 +1,7 @@
-import { lineNumbers as lineNumbersPlugin } from '@vuepress/highlighter-helper'
+import {
+  collapsedLines as collapsedLinesPlugin,
+  lineNumbers as lineNumbersPlugin,
+} from '@vuepress/highlighter-helper'
 import type { Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import {
@@ -12,13 +15,13 @@ import { prepareConfigFile } from './prepareConfigFile.js'
 export const shikiPlugin = ({
   preWrapper = true,
   lineNumbers = true,
+  collapsedLines = false,
   ...options
 }: ShikiPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-shiki',
 
   extendsMarkdown: async (md, app) => {
     // FIXME: Remove in stable version
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { code } = app.options.markdown
 
     await applyHighlighter(md, app, {
@@ -30,6 +33,7 @@ export const shikiPlugin = ({
     md.use(preWrapperPlugin, { preWrapper })
     if (preWrapper) {
       md.use(lineNumbersPlugin, { lineNumbers })
+      md.use(collapsedLinesPlugin, { collapsedLines })
     }
   },
 

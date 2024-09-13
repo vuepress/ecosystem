@@ -25,6 +25,7 @@
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
+    "./composables/*": "./lib/client/composables/*",
     "./styles/*": "./lib/client/styles/*",
     "./package.json": "./package.json"
   },

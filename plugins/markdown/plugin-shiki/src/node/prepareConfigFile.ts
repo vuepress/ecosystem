@@ -22,6 +22,8 @@ export const prepareConfigFile = (
     `import "${getRealPath(`${PLUGIN_NAME}/styles/shiki.css`, import.meta.url)}"`,
   ]
 
+  const setups: string[] = []
+
   if (lineNumbers) {
     imports.push(
       `import "${getRealPath('@vuepress/highlighter-helper/styles/line-numbers.css', url)}"`,
@@ -64,5 +66,22 @@ export const prepareConfigFile = (
     )
   }
 
-  return app.writeTemp('shiki/config.js', imports.join('\n'))
+  imports.push(
+    `import "${getRealPath('@vuepress/highlighter-helper/styles/collapsed-lines.css', url)}"`,
+    `import { setupCollapsedLines } from "${getRealPath('@vuepress/highlighter-helper/composables/collapsedLines.js', url)}"`,
+  )
+  setups.push('setupCollapsedLines()')
+
+  let code = imports.join('\n')
+
+  if (setups.length) {
+    code += `\n
+export default {
+  setup() {
+    ${setups.join('\n    ')}
+  }
+}\n`
+  }
+
+  return app.writeTemp('shiki/config.js', code)
 }

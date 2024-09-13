@@ -1,4 +1,7 @@
-import { lineNumbers as lineNumbersPlugin } from '@vuepress/highlighter-helper'
+import {
+  collapsedLines as collapsedLinesPlugin,
+  lineNumbers as lineNumbersPlugin,
+} from '@vuepress/highlighter-helper'
 import type { Plugin } from 'vuepress/core'
 import { loadLanguages } from './loadLanguages.js'
 import { highlightPlugin, preWrapperPlugin } from './markdown/index.js'
@@ -11,6 +14,7 @@ export const prismjsPlugin = ({
   preloadLanguages = ['markdown', 'jsdoc', 'yaml'],
   preWrapper = true,
   lineNumbers = true,
+  collapsedLines = false,
   ...options
 }: PrismjsPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-prismjs',
@@ -29,6 +33,7 @@ export const prismjsPlugin = ({
     md.use<PreWrapperOptions>(preWrapperPlugin, { preWrapper })
     if (preWrapper) {
       md.use(lineNumbersPlugin, { lineNumbers, removeLastLine: true })
+      md.use(collapsedLinesPlugin, { collapsedLines })
     }
   },
 
