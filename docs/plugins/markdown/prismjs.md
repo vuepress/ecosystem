@@ -194,6 +194,206 @@ export default defineUserConfig({
 })
 ```
 
+### collapsedLines
+
+- Type: `boolean | number`
+
+- Default: `false`
+
+- Details: Whether to enable code block collapsing.
+
+  - `number`: collapse the code block starting from line `number`, for example, `12` means collapsing the code block starting from line 12.
+  - `true`: Equivalent to `15`, collapsing the code block starting from line 15.
+  - `false`: Disable code block collapsing.
+
+  You can add the `:collapsed-lines` / `:no-collapsed-lines` marker to the code block to override the settings in the configuration item. You can also add `=` after `:collapsed-lines` to customize the starting collapsed line number, for example, `:collapsed-lines=12` means collapsing the code block starting from line 12.
+
+**Input:**
+
+````md
+<!-- Collapsed by default starting from line 15 -->
+
+```css :collapsed-lines
+html {
+  margin: 0;
+  background: black;
+  height: 100%;
+}
+/* ... more code */
+```
+
+<!-- Disabled collapsed -->
+
+```css :no-collapsed-lines
+html {
+  margin: 0;
+  background: black;
+  height: 100%;
+}
+/* ... more code */
+```
+
+<!-- Collapsed starting from line 10 -->
+
+```css :collapsed-lines=10
+html {
+  margin: 0;
+  background: black;
+  height: 100%;
+}
+/* ... more code */
+```
+````
+
+**Output:**
+
+<!-- Collapsed by default starting from line 15 -->
+
+```css :collapsed-lines
+html {
+  margin: 0;
+  background: black;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: inherit;
+}
+
+/* the three main rows going down the page */
+
+body > div {
+  height: 25%;
+}
+
+.thumb {
+  float: left;
+  width: 25%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main {
+  display: none;
+}
+
+.blowup {
+  display: block;
+  position: absolute;
+  object-fit: contain;
+  object-position: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+}
+
+.darken {
+  opacity: 0.4;
+}
+```
+
+<!-- Disabled collapsed -->
+
+```css :no-collapsed-lines
+html {
+  margin: 0;
+  background: black;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: inherit;
+}
+
+/* the three main rows going down the page */
+
+body > div {
+  height: 25%;
+}
+
+.thumb {
+  float: left;
+  width: 25%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main {
+  display: none;
+}
+
+.blowup {
+  display: block;
+  position: absolute;
+  object-fit: contain;
+  object-position: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+}
+
+.darken {
+  opacity: 0.4;
+}
+```
+
+<!-- Collapsed starting from line 10 -->
+
+```css :collapsed-lines=10
+html {
+  margin: 0;
+  background: black;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: inherit;
+}
+
+/* the three main rows going down the page */
+
+body > div {
+  height: 25%;
+}
+
+.thumb {
+  float: left;
+  width: 25%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main {
+  display: none;
+}
+
+.blowup {
+  display: block;
+  position: absolute;
+  object-fit: contain;
+  object-position: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+}
+
+.darken {
+  opacity: 0.4;
+}
+```
+
 ::: tip
 
 In the new version, some functionalities similar to [shiki](https://shiki.style/packages/transformers) have been implemented, allowing you to style code blocks using the same syntax.

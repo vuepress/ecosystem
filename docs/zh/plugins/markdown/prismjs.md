@@ -194,6 +194,206 @@ export default defineUserConfig({
 })
 ```
 
+### collapsedLines
+
+- 类型：`boolean | number`
+
+- 默认值：`false`
+
+- 详情：是否启用代码块折叠。
+
+  - `number`: 从第 `number` 行开始折叠代码块，例如，`12` 表示从第 12 行开始折叠代码块。
+  - `true`: 等同于 `15`, 从第 15 行开始折叠代码块。
+  - `false`: 禁用代码块折叠。
+
+  你可以在代码块添加 `:collapsed-lines` / `:no-collapsed-lines` 标记来覆盖配置项中的设置。还可以在 `:collapsed-lines` 之后添加 `=` 来自定义起始折叠行号，例如 `:collapsed-lines=12` 表示代码块从第 12 行开始折叠。
+
+**输入：**
+
+````md
+<!-- 默认从第 15 行开始折叠 -->
+
+```css :collapsed-lines
+html {
+  margin: 0;
+  background: black;
+  height: 100%;
+}
+/* ... 更多代码 */
+```
+
+<!-- 禁用折叠 -->
+
+```css :no-collapsed-lines
+html {
+  margin: 0;
+  background: black;
+  height: 100%;
+}
+/* ... 更多代码 */
+```
+
+<!-- 从第 10 行开始折叠 -->
+
+```css :collapsed-lines=10
+html {
+  margin: 0;
+  background: black;
+  height: 100%;
+}
+/* ... 更多代码 */
+```
+````
+
+**输出：**
+
+<!-- 默认从第 15 行开始折叠 -->
+
+```css :collapsed-lines
+html {
+  margin: 0;
+  background: black;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: inherit;
+}
+
+/* the three main rows going down the page */
+
+body > div {
+  height: 25%;
+}
+
+.thumb {
+  float: left;
+  width: 25%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main {
+  display: none;
+}
+
+.blowup {
+  display: block;
+  position: absolute;
+  object-fit: contain;
+  object-position: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+}
+
+.darken {
+  opacity: 0.4;
+}
+```
+
+<!-- 禁用折叠 -->
+
+```css :no-collapsed-lines
+html {
+  margin: 0;
+  background: black;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: inherit;
+}
+
+/* the three main rows going down the page */
+
+body > div {
+  height: 25%;
+}
+
+.thumb {
+  float: left;
+  width: 25%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main {
+  display: none;
+}
+
+.blowup {
+  display: block;
+  position: absolute;
+  object-fit: contain;
+  object-position: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+}
+
+.darken {
+  opacity: 0.4;
+}
+```
+
+<!-- 从第 10 行开始折叠 -->
+
+```css :collapsed-lines=10
+html {
+  margin: 0;
+  background: black;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: inherit;
+}
+
+/* the three main rows going down the page */
+
+body > div {
+  height: 25%;
+}
+
+.thumb {
+  float: left;
+  width: 25%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main {
+  display: none;
+}
+
+.blowup {
+  display: block;
+  position: absolute;
+  object-fit: contain;
+  object-position: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+}
+
+.darken {
+  opacity: 0.4;
+}
+```
+
 ::: tip
 
 在新的版本中，实现了类似于 [shiki](https://shiki.style/packages/transformers) 的部分功能，
