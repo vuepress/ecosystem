@@ -23,7 +23,7 @@ div[class*='language-'] {
       border-right: 1px solid var(--code-c-highlight-bg, var(--code-c-text));
       border-radius: var(--code-border-radius) 0 0 var(--code-border-radius);
 
-      transition: border var(--t-color);
+      transition: border var(--vp-t-color);
     }
 
     pre {

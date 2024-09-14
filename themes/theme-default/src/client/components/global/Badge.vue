@@ -60,18 +60,18 @@ defineSlots<{
     background-color var(--vp-t-color);
 
   &.tip {
-    background-color: var(--c-badge-tip);
-    color: var(--c-badge-tip-text);
+    background-color: var(--badge-c-tip);
+    color: var(--badge-c-tip-text);
   }
 
   &.warning {
-    background-color: var(--c-badge-warning);
-    color: var(--c-badge-warning-text);
+    background-color: var(--badge-c-warning);
+    color: var(--badge-c-warning-text);
   }
 
   &.danger {
-    background-color: var(--c-badge-danger);
-    color: var(--c-badge-danger-text);
+    background-color: var(--badge-c-danger);
+    color: var(--badge-c-danger-text);
   }
 
   // update the vertical align for the badge in toc
