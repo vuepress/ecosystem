@@ -40,7 +40,13 @@
     "style": "sass src:lib --no-source-map"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.15"
+    "vuepress": "2.0.0-rc.15",
+    "@vueuse/core": "^11.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@vueuse/core": {
+      "optional": true
+    }
   },
   "publishConfig": {
     "access": "public"

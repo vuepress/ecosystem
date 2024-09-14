@@ -1,8 +1,9 @@
+import { useEventListener } from '@vueuse/core'
+
 export const setupCollapsedLines = ({
   selector = 'div[class*="language-"].has-collapsed-lines > .collapsed-lines',
 }: { selector?: string } = {}): void => {
-  if (__VUEPRESS_SSR__) return
-  window.addEventListener('click', (e) => {
+  useEventListener('click', (e) => {
     const target = e.target as HTMLElement
     if (target.matches(selector)) {
       const parent = target.parentElement

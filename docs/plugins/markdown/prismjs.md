@@ -701,7 +701,7 @@ In the new version, some functionalities similar to [shiki](https://shiki.style/
 
   Adds extra wrapper outside `<pre>` tag or not.
 
-  The wrapper is required by the `lineNumbers`. That means, if you disable `preWrapper`, the line line numbers will also be disabled.
+  The wrapper is required by the `lineNumbers` and `collapsedLines`. That means, if you disable `preWrapper`, the line line numbers and collapsed lines will also be disabled.
 
   ::: tip
 

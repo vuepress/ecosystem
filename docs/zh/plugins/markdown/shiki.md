@@ -703,7 +703,7 @@ body > div {
 
   是否在 `<pre>` 标签外添加包裹容器。
 
-  `lineNumbers` 依赖于这个额外的包裹层。这换句话说，如果你禁用了 `preWrapper` ，那么行号也会被同时禁用。
+  `lineNumbers` 和 `collapsedLines` 依赖于这个额外的包裹层。这换句话说，如果你禁用了 `preWrapper` ，那么行号和折叠代码块也会被同时禁用。
 
 ### shikiSetup
 
