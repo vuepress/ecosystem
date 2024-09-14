@@ -50,7 +50,7 @@ export type PrismjsTheme = PrismjsDarkTheme | PrismjsLightTheme
  */
 export interface PrismjsPluginOptions
   extends Pick<MarkdownItLineNumbersOptions, 'lineNumbers'>,
-    MarkdownItCollapsedLinesOptions,
+    Pick<MarkdownItCollapsedLinesOptions, 'collapsedLines'>,
     PreWrapperOptions,
     HighlightOptions {
   /**

@@ -33,7 +33,7 @@ export const prismjsPlugin = ({
     md.use<PreWrapperOptions>(preWrapperPlugin, { preWrapper })
     if (preWrapper) {
       md.use(lineNumbersPlugin, { lineNumbers, removeLastLine: true })
-      md.use(collapsedLinesPlugin, { collapsedLines })
+      md.use(collapsedLinesPlugin, { collapsedLines, removeLastLine: true })
     }
   },
 

@@ -8,4 +8,9 @@ export interface MarkdownItCollapsedLinesOptions {
    * @default false
    */
   collapsedLines?: boolean | number
+
+  /**
+   * @default false
+   */
+  removeLastLine?: boolean
 }

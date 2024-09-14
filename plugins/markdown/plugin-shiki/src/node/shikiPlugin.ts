@@ -22,6 +22,7 @@ export const shikiPlugin = ({
 
   extendsMarkdown: async (md, app) => {
     // FIXME: Remove in stable version
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { code } = app.options.markdown
 
     await applyHighlighter(md, app, {

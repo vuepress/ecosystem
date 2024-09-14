@@ -6,6 +6,7 @@ export const collapsedLines = (
   md: Markdown,
   {
     collapsedLines: collapsedLinesOptions = false,
+    removeLastLine,
   }: MarkdownItCollapsedLinesOptions = {},
 ): void => {
   const rawFence = md.renderer.rules.fence!
@@ -25,19 +26,27 @@ export const collapsedLines = (
       return code
     }
 
+    const lines =
+      code.slice(code.indexOf('<code>'), code.indexOf('</code>')).split('\n')
+        .length - (removeLastLine ? 1 : 0)
     const startLines =
       typeof collapsedLinesInfo === 'number' ? collapsedLinesInfo : 15
-    const collapsedLinesCode = `<div class="collapsed-lines" aria-hidden="true"></div>`
+
+    if (lines < startLines) {
+      return code
+    }
+
+    const collapsedLinesCode = `<div class="collapsed-lines"></div>`
+    const styles = `--vp-collapsed-lines:${startLines};`
 
     const finalCode = code
       .replace(/<\/div>$/, `${collapsedLinesCode}</div>`)
       .replace(/"(language-[^"]*?)"/, '"$1 has-collapsed-lines collapsed"')
       .replace(/^<div[^>]*>/, (match) => {
-        const vars = `--vp-collapsed-lines:${startLines};`
         if (!match.includes('style=')) {
-          return `${match.slice(0, -1)} style="${vars}">`
+          return `${match.slice(0, -1)} style="${styles}">`
         }
-        return match.replace(/(style=")/, `$1${vars}`)
+        return match.replace(/(style=")/, `$1${styles}`)
       })
 
     return finalCode
