@@ -200,11 +200,11 @@ export default defineUserConfig({
 
 - 默认值：`'disabled`
 
-- 详情：是否启用代码块折叠。
+- 详情：代码块折叠的默认行为。
 
   - `number`: 从第 `number` 行开始折叠代码块，例如，`12` 表示从第 12 行开始折叠代码块。
   - `true`: 等同于 `15`, 从第 15 行开始折叠代码块。
-  - `false`: 不启用代码块折叠，但仍然可以添加 `:collapsed-lines` 标记为单个代码块折叠。
+  - `false`: 添加代码块折叠支持，但全局禁用此功能。
   - `'disabled'`: 完全禁用代码块折叠， `:collapsed-lines` 标记不会生效。
 
   你可以在代码块添加 `:collapsed-lines` / `:no-collapsed-lines` 标记来覆盖配置项中的设置。还可以在 `:collapsed-lines` 之后添加 `=` 来自定义起始折叠行号，例如 `:collapsed-lines=12` 表示代码块从第 12 行开始折叠。
