@@ -11,6 +11,7 @@ export const prepareConfigFile = (
     theme,
     themes,
     lineNumbers = true,
+    collapsedLines,
     notationDiff,
     notationErrorLevel,
     notationFocus,
@@ -80,11 +81,13 @@ export const prepareConfigFile = (
     )
   }
 
-  imports.push(
-    `import "${getRealPath('@vuepress/highlighter-helper/styles/collapsed-lines.css', url)}"`,
-    `import { setupCollapsedLines } from "${getRealPath('@vuepress/highlighter-helper/composables/collapsedLines.js', url)}"`,
-  )
-  setups.push('setupCollapsedLines()')
+  if (collapsedLines !== 'disabled') {
+    imports.push(
+      `import "${getRealPath('@vuepress/highlighter-helper/styles/collapsed-lines.css', url)}"`,
+      `import { setupCollapsedLines } from "${getRealPath('@vuepress/highlighter-helper/composables/collapsedLines.js', url)}"`,
+    )
+    setups.push('setupCollapsedLines()')
+  }
 
   let code = imports.join('\n')
 

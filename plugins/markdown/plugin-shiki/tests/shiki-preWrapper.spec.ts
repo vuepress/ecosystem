@@ -36,7 +36,8 @@ const createMarkdown = async ({
   md.use(preWrapperPlugin, { preWrapper })
   if (preWrapper) {
     md.use(lineNumbersPlugin, { lineNumbers })
-    md.use(collapsedLinesPlugin, { collapsedLines })
+    if (collapsedLines !== 'disabled')
+      md.use(collapsedLinesPlugin, { collapsedLines })
   }
   return md
 }
@@ -144,7 +145,7 @@ ${codeFence}{{ inlineCode }}${codeFence}
         preWrapper: false,
       })
       const mdWithoutCollapsedLines = await createMarkdown({
-        collapsedLines: false,
+        collapsedLines: 'disabled',
         preWrapper: false,
       })
 

@@ -8,34 +8,40 @@ import { highlightPlugin, preWrapperPlugin } from './markdown/index.js'
 import type { PrismjsPluginOptions } from './options.js'
 import { prepareConfigFile } from './prepareConfigFile.js'
 import { resolveHighlighter } from './resolveHighlighter.js'
-import type { HighlightOptions, PreWrapperOptions } from './types.js'
 
-export const prismjsPlugin = ({
-  preloadLanguages = ['markdown', 'jsdoc', 'yaml'],
-  preWrapper = true,
-  lineNumbers = true,
-  collapsedLines = false,
-  ...options
-}: PrismjsPluginOptions = {}): Plugin => ({
-  name: '@vuepress/plugin-prismjs',
+export const prismjsPlugin = (options: PrismjsPluginOptions = {}): Plugin => {
+  const opt: PrismjsPluginOptions = {
+    preloadLanguages: ['markdown', 'jsdoc', 'yaml'],
+    preWrapper: true,
+    lineNumbers: true,
+    collapsedLines: false,
+    ...options,
+  }
 
-  extendsMarkdown(md) {
-    if (preloadLanguages.length !== 0) {
-      loadLanguages(preloadLanguages)
-    }
+  return {
+    name: '@vuepress/plugin-prismjs',
 
-    md.options.highlight = (code, lang) => {
-      const highlighter = resolveHighlighter(lang)
-      return highlighter?.(code) || ''
-    }
+    extendsMarkdown(md) {
+      const { preloadLanguages, preWrapper, lineNumbers, collapsedLines } = opt
 
-    md.use<HighlightOptions>(highlightPlugin, options)
-    md.use<PreWrapperOptions>(preWrapperPlugin, { preWrapper })
-    if (preWrapper) {
-      md.use(lineNumbersPlugin, { lineNumbers, removeLastLine: true })
-      md.use(collapsedLinesPlugin, { collapsedLines, removeLastLine: true })
-    }
-  },
+      if (preloadLanguages?.length) {
+        loadLanguages(preloadLanguages)
+      }
 
-  clientConfigFile: (app) => prepareConfigFile(app, options),
-})
+      md.options.highlight = (code, lang) => {
+        const highlighter = resolveHighlighter(lang)
+        return highlighter?.(code) || ''
+      }
+
+      md.use(highlightPlugin, opt)
+      md.use(preWrapperPlugin, { preWrapper })
+      if (preWrapper) {
+        md.use(lineNumbersPlugin, { lineNumbers, removeLastLine: true })
+        if (collapsedLines !== 'disabled')
+          md.use(collapsedLinesPlugin, { collapsedLines, removeLastLine: true })
+      }
+    },
+
+    clientConfigFile: (app) => prepareConfigFile(app, opt),
+  }
+}

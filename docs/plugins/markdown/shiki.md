@@ -192,15 +192,16 @@ export default defineUserConfig({
 
 ### collapsedLines
 
-- Type: `boolean | number`
+- Type: `boolean | number | 'disabled'`
 
-- Default: `false`
+- Default: `'disabled'`
 
 - Details: Whether to enable code block collapsing.
 
   - `number`: collapse the code block starting from line `number`, for example, `12` means collapsing the code block starting from line 12.
   - `true`: Equivalent to `15`, collapsing the code block starting from line 15.
-  - `false`: Disable code block collapsing.
+  - `false`: Disable code block collapsed, but `:collapsed-lines` can still be added to collapse individual code blocks.
+  - `'disabled'`: Completely disable code block collapsed, `:collapsed-lines` will not take effect.
 
   You can add the `:collapsed-lines` / `:no-collapsed-lines` marker to the code block to override the settings in the configuration item. You can also add `=` after `:collapsed-lines` to customize the starting collapsed line number, for example, `:collapsed-lines=12` means collapsing the code block starting from line 12.
 
