@@ -4,6 +4,7 @@
   --code-padding-y: 1rem;
   --code-border-radius: 6px;
   --code-line-height: 1.6;
+  --code-font-size: 14px;
   --code-font-family: consolas, monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
@@ -31,10 +32,10 @@ div[class*='language-'] {
 
     overflow-x: auto;
 
-    margin: 0.75rem 0;
+    margin: 0;
     border-radius: var(--code-border-radius);
 
-    font-size: 14px;
+    font-size: var(--code-font-size);
     font-family: var(--code-font-family);
     line-height: var(--code-line-height);
 

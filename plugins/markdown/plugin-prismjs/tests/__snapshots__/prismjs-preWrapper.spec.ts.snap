@@ -1,5 +1,302 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines / :no-collapsed-lines / :collapsed-lines=[number] > should work properly if \`collapsedLines\` is disabled by default 1`] = `
+"<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="ts"><pre><code><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
+<span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
+<span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
+<span class="line"><span class="token keyword">const</span> line5 <span class="token operator">=</span> 'line <span class="token number">5</span></span>
+<span class="line"><span class="token keyword">const</span> line6 <span class="token operator">=</span> 'line <span class="token number">6</span></span>
+<span class="line"><span class="token keyword">const</span> line7 <span class="token operator">=</span> 'line <span class="token number">7</span></span>
+<span class="line"><span class="token keyword">const</span> line8 <span class="token operator">=</span> 'line <span class="token number">8</span></span>
+<span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
+<span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="ts"><pre><code><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
+<span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
+<span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
+<span class="line"><span class="token keyword">const</span> line5 <span class="token operator">=</span> 'line <span class="token number">5</span></span>
+<span class="line"><span class="token keyword">const</span> line6 <span class="token operator">=</span> 'line <span class="token number">6</span></span>
+<span class="line"><span class="token keyword">const</span> line7 <span class="token operator">=</span> 'line <span class="token number">7</span></span>
+<span class="line"><span class="token keyword">const</span> line8 <span class="token operator">=</span> 'line <span class="token number">8</span></span>
+<span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
+<span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
+<span class="line"><span class="token keyword">const</span> line11 <span class="token operator">=</span> 'line <span class="token number">11</span></span>
+<span class="line"><span class="token keyword">const</span> line12 <span class="token operator">=</span> 'line <span class="token number">12</span></span>
+<span class="line"><span class="token keyword">const</span> line13 <span class="token operator">=</span> 'line <span class="token number">13</span></span>
+<span class="line"><span class="token keyword">const</span> line14 <span class="token operator">=</span> 'line <span class="token number">14</span></span>
+<span class="line"><span class="token keyword">const</span> line15 <span class="token operator">=</span> 'line <span class="token number">15</span></span>
+<span class="line"><span class="token keyword">const</span> line16 <span class="token operator">=</span> 'line <span class="token number">16</span></span>
+<span class="line"><span class="token keyword">const</span> line17 <span class="token operator">=</span> 'line <span class="token number">17</span></span>
+<span class="line"><span class="token keyword">const</span> line18 <span class="token operator">=</span> 'line <span class="token number">18</span></span>
+<span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
+<span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode has-collapsed-lines collapsed" data-highlighter="prismjs" data-ext="ts" data-title="ts" style="--vp-collapsed-lines:15;"><pre><code><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
+<span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
+<span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
+<span class="line"><span class="token keyword">const</span> line5 <span class="token operator">=</span> 'line <span class="token number">5</span></span>
+<span class="line"><span class="token keyword">const</span> line6 <span class="token operator">=</span> 'line <span class="token number">6</span></span>
+<span class="line"><span class="token keyword">const</span> line7 <span class="token operator">=</span> 'line <span class="token number">7</span></span>
+<span class="line"><span class="token keyword">const</span> line8 <span class="token operator">=</span> 'line <span class="token number">8</span></span>
+<span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
+<span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
+<span class="line"><span class="token keyword">const</span> line11 <span class="token operator">=</span> 'line <span class="token number">11</span></span>
+<span class="line"><span class="token keyword">const</span> line12 <span class="token operator">=</span> 'line <span class="token number">12</span></span>
+<span class="line"><span class="token keyword">const</span> line13 <span class="token operator">=</span> 'line <span class="token number">13</span></span>
+<span class="line"><span class="token keyword">const</span> line14 <span class="token operator">=</span> 'line <span class="token number">14</span></span>
+<span class="line"><span class="token keyword">const</span> line15 <span class="token operator">=</span> 'line <span class="token number">15</span></span>
+<span class="line"><span class="token keyword">const</span> line16 <span class="token operator">=</span> 'line <span class="token number">16</span></span>
+<span class="line"><span class="token keyword">const</span> line17 <span class="token operator">=</span> 'line <span class="token number">17</span></span>
+<span class="line"><span class="token keyword">const</span> line18 <span class="token operator">=</span> 'line <span class="token number">18</span></span>
+<span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
+<span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div><div class="collapsed-lines"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="ts"><pre><code><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
+<span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
+<span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
+<span class="line"><span class="token keyword">const</span> line5 <span class="token operator">=</span> 'line <span class="token number">5</span></span>
+<span class="line"><span class="token keyword">const</span> line6 <span class="token operator">=</span> 'line <span class="token number">6</span></span>
+<span class="line"><span class="token keyword">const</span> line7 <span class="token operator">=</span> 'line <span class="token number">7</span></span>
+<span class="line"><span class="token keyword">const</span> line8 <span class="token operator">=</span> 'line <span class="token number">8</span></span>
+<span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
+<span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
+<span class="line"><span class="token keyword">const</span> line11 <span class="token operator">=</span> 'line <span class="token number">11</span></span>
+<span class="line"><span class="token keyword">const</span> line12 <span class="token operator">=</span> 'line <span class="token number">12</span></span>
+<span class="line"><span class="token keyword">const</span> line13 <span class="token operator">=</span> 'line <span class="token number">13</span></span>
+<span class="line"><span class="token keyword">const</span> line14 <span class="token operator">=</span> 'line <span class="token number">14</span></span>
+<span class="line"><span class="token keyword">const</span> line15 <span class="token operator">=</span> 'line <span class="token number">15</span></span>
+<span class="line"><span class="token keyword">const</span> line16 <span class="token operator">=</span> 'line <span class="token number">16</span></span>
+<span class="line"><span class="token keyword">const</span> line17 <span class="token operator">=</span> 'line <span class="token number">17</span></span>
+<span class="line"><span class="token keyword">const</span> line18 <span class="token operator">=</span> 'line <span class="token number">18</span></span>
+<span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
+<span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="ts"><pre><code><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
+<span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
+<span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
+<span class="line"><span class="token keyword">const</span> line5 <span class="token operator">=</span> 'line <span class="token number">5</span></span>
+<span class="line"><span class="token keyword">const</span> line6 <span class="token operator">=</span> 'line <span class="token number">6</span></span>
+<span class="line"><span class="token keyword">const</span> line7 <span class="token operator">=</span> 'line <span class="token number">7</span></span>
+<span class="line"><span class="token keyword">const</span> line8 <span class="token operator">=</span> 'line <span class="token number">8</span></span>
+<span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
+<span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
+<span class="line"><span class="token keyword">const</span> line11 <span class="token operator">=</span> 'line <span class="token number">11</span></span>
+<span class="line"><span class="token keyword">const</span> line12 <span class="token operator">=</span> 'line <span class="token number">12</span></span>
+<span class="line"><span class="token keyword">const</span> line13 <span class="token operator">=</span> 'line <span class="token number">13</span></span>
+<span class="line"><span class="token keyword">const</span> line14 <span class="token operator">=</span> 'line <span class="token number">14</span></span>
+<span class="line"><span class="token keyword">const</span> line15 <span class="token operator">=</span> 'line <span class="token number">15</span></span>
+<span class="line"><span class="token keyword">const</span> line16 <span class="token operator">=</span> 'line <span class="token number">16</span></span>
+<span class="line"><span class="token keyword">const</span> line17 <span class="token operator">=</span> 'line <span class="token number">17</span></span>
+<span class="line"><span class="token keyword">const</span> line18 <span class="token operator">=</span> 'line <span class="token number">18</span></span>
+<span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
+<span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
+`;
+
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines / :no-collapsed-lines / :collapsed-lines=[number] > should work properly if \`collapsedLines\` is enabled 1`] = `
+"<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="ts"><pre><code><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
+<span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
+<span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
+<span class="line"><span class="token keyword">const</span> line5 <span class="token operator">=</span> 'line <span class="token number">5</span></span>
+<span class="line"><span class="token keyword">const</span> line6 <span class="token operator">=</span> 'line <span class="token number">6</span></span>
+<span class="line"><span class="token keyword">const</span> line7 <span class="token operator">=</span> 'line <span class="token number">7</span></span>
+<span class="line"><span class="token keyword">const</span> line8 <span class="token operator">=</span> 'line <span class="token number">8</span></span>
+<span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
+<span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode has-collapsed-lines collapsed" data-highlighter="prismjs" data-ext="ts" data-title="ts" style="--vp-collapsed-lines:15;"><pre><code><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
+<span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
+<span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
+<span class="line"><span class="token keyword">const</span> line5 <span class="token operator">=</span> 'line <span class="token number">5</span></span>
+<span class="line"><span class="token keyword">const</span> line6 <span class="token operator">=</span> 'line <span class="token number">6</span></span>
+<span class="line"><span class="token keyword">const</span> line7 <span class="token operator">=</span> 'line <span class="token number">7</span></span>
+<span class="line"><span class="token keyword">const</span> line8 <span class="token operator">=</span> 'line <span class="token number">8</span></span>
+<span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
+<span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
+<span class="line"><span class="token keyword">const</span> line11 <span class="token operator">=</span> 'line <span class="token number">11</span></span>
+<span class="line"><span class="token keyword">const</span> line12 <span class="token operator">=</span> 'line <span class="token number">12</span></span>
+<span class="line"><span class="token keyword">const</span> line13 <span class="token operator">=</span> 'line <span class="token number">13</span></span>
+<span class="line"><span class="token keyword">const</span> line14 <span class="token operator">=</span> 'line <span class="token number">14</span></span>
+<span class="line"><span class="token keyword">const</span> line15 <span class="token operator">=</span> 'line <span class="token number">15</span></span>
+<span class="line"><span class="token keyword">const</span> line16 <span class="token operator">=</span> 'line <span class="token number">16</span></span>
+<span class="line"><span class="token keyword">const</span> line17 <span class="token operator">=</span> 'line <span class="token number">17</span></span>
+<span class="line"><span class="token keyword">const</span> line18 <span class="token operator">=</span> 'line <span class="token number">18</span></span>
+<span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
+<span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div><div class="collapsed-lines"></div></div><div class="language-typescript line-numbers-mode has-collapsed-lines collapsed" data-highlighter="prismjs" data-ext="ts" data-title="ts" style="--vp-collapsed-lines:15;"><pre><code><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
+<span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
+<span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
+<span class="line"><span class="token keyword">const</span> line5 <span class="token operator">=</span> 'line <span class="token number">5</span></span>
+<span class="line"><span class="token keyword">const</span> line6 <span class="token operator">=</span> 'line <span class="token number">6</span></span>
+<span class="line"><span class="token keyword">const</span> line7 <span class="token operator">=</span> 'line <span class="token number">7</span></span>
+<span class="line"><span class="token keyword">const</span> line8 <span class="token operator">=</span> 'line <span class="token number">8</span></span>
+<span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
+<span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
+<span class="line"><span class="token keyword">const</span> line11 <span class="token operator">=</span> 'line <span class="token number">11</span></span>
+<span class="line"><span class="token keyword">const</span> line12 <span class="token operator">=</span> 'line <span class="token number">12</span></span>
+<span class="line"><span class="token keyword">const</span> line13 <span class="token operator">=</span> 'line <span class="token number">13</span></span>
+<span class="line"><span class="token keyword">const</span> line14 <span class="token operator">=</span> 'line <span class="token number">14</span></span>
+<span class="line"><span class="token keyword">const</span> line15 <span class="token operator">=</span> 'line <span class="token number">15</span></span>
+<span class="line"><span class="token keyword">const</span> line16 <span class="token operator">=</span> 'line <span class="token number">16</span></span>
+<span class="line"><span class="token keyword">const</span> line17 <span class="token operator">=</span> 'line <span class="token number">17</span></span>
+<span class="line"><span class="token keyword">const</span> line18 <span class="token operator">=</span> 'line <span class="token number">18</span></span>
+<span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
+<span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div><div class="collapsed-lines"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="ts"><pre><code><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
+<span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
+<span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
+<span class="line"><span class="token keyword">const</span> line5 <span class="token operator">=</span> 'line <span class="token number">5</span></span>
+<span class="line"><span class="token keyword">const</span> line6 <span class="token operator">=</span> 'line <span class="token number">6</span></span>
+<span class="line"><span class="token keyword">const</span> line7 <span class="token operator">=</span> 'line <span class="token number">7</span></span>
+<span class="line"><span class="token keyword">const</span> line8 <span class="token operator">=</span> 'line <span class="token number">8</span></span>
+<span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
+<span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
+<span class="line"><span class="token keyword">const</span> line11 <span class="token operator">=</span> 'line <span class="token number">11</span></span>
+<span class="line"><span class="token keyword">const</span> line12 <span class="token operator">=</span> 'line <span class="token number">12</span></span>
+<span class="line"><span class="token keyword">const</span> line13 <span class="token operator">=</span> 'line <span class="token number">13</span></span>
+<span class="line"><span class="token keyword">const</span> line14 <span class="token operator">=</span> 'line <span class="token number">14</span></span>
+<span class="line"><span class="token keyword">const</span> line15 <span class="token operator">=</span> 'line <span class="token number">15</span></span>
+<span class="line"><span class="token keyword">const</span> line16 <span class="token operator">=</span> 'line <span class="token number">16</span></span>
+<span class="line"><span class="token keyword">const</span> line17 <span class="token operator">=</span> 'line <span class="token number">17</span></span>
+<span class="line"><span class="token keyword">const</span> line18 <span class="token operator">=</span> 'line <span class="token number">18</span></span>
+<span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
+<span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="ts"><pre><code><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
+<span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
+<span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
+<span class="line"><span class="token keyword">const</span> line5 <span class="token operator">=</span> 'line <span class="token number">5</span></span>
+<span class="line"><span class="token keyword">const</span> line6 <span class="token operator">=</span> 'line <span class="token number">6</span></span>
+<span class="line"><span class="token keyword">const</span> line7 <span class="token operator">=</span> 'line <span class="token number">7</span></span>
+<span class="line"><span class="token keyword">const</span> line8 <span class="token operator">=</span> 'line <span class="token number">8</span></span>
+<span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
+<span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
+<span class="line"><span class="token keyword">const</span> line11 <span class="token operator">=</span> 'line <span class="token number">11</span></span>
+<span class="line"><span class="token keyword">const</span> line12 <span class="token operator">=</span> 'line <span class="token number">12</span></span>
+<span class="line"><span class="token keyword">const</span> line13 <span class="token operator">=</span> 'line <span class="token number">13</span></span>
+<span class="line"><span class="token keyword">const</span> line14 <span class="token operator">=</span> 'line <span class="token number">14</span></span>
+<span class="line"><span class="token keyword">const</span> line15 <span class="token operator">=</span> 'line <span class="token number">15</span></span>
+<span class="line"><span class="token keyword">const</span> line16 <span class="token operator">=</span> 'line <span class="token number">16</span></span>
+<span class="line"><span class="token keyword">const</span> line17 <span class="token operator">=</span> 'line <span class="token number">17</span></span>
+<span class="line"><span class="token keyword">const</span> line18 <span class="token operator">=</span> 'line <span class="token number">18</span></span>
+<span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
+<span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
+`;
+
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines / :no-collapsed-lines / :collapsed-lines=[number] > should work properly if \`collapsedLines\` is set to a number 1`] = `
+"<div class="language-typescript line-numbers-mode has-collapsed-lines collapsed" data-highlighter="prismjs" data-ext="ts" data-title="ts" style="--vp-collapsed-lines:10;"><pre><code><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
+<span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
+<span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
+<span class="line"><span class="token keyword">const</span> line5 <span class="token operator">=</span> 'line <span class="token number">5</span></span>
+<span class="line"><span class="token keyword">const</span> line6 <span class="token operator">=</span> 'line <span class="token number">6</span></span>
+<span class="line"><span class="token keyword">const</span> line7 <span class="token operator">=</span> 'line <span class="token number">7</span></span>
+<span class="line"><span class="token keyword">const</span> line8 <span class="token operator">=</span> 'line <span class="token number">8</span></span>
+<span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
+<span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div><div class="collapsed-lines"></div></div><div class="language-typescript line-numbers-mode has-collapsed-lines collapsed" data-highlighter="prismjs" data-ext="ts" data-title="ts" style="--vp-collapsed-lines:10;"><pre><code><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
+<span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
+<span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
+<span class="line"><span class="token keyword">const</span> line5 <span class="token operator">=</span> 'line <span class="token number">5</span></span>
+<span class="line"><span class="token keyword">const</span> line6 <span class="token operator">=</span> 'line <span class="token number">6</span></span>
+<span class="line"><span class="token keyword">const</span> line7 <span class="token operator">=</span> 'line <span class="token number">7</span></span>
+<span class="line"><span class="token keyword">const</span> line8 <span class="token operator">=</span> 'line <span class="token number">8</span></span>
+<span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
+<span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
+<span class="line"><span class="token keyword">const</span> line11 <span class="token operator">=</span> 'line <span class="token number">11</span></span>
+<span class="line"><span class="token keyword">const</span> line12 <span class="token operator">=</span> 'line <span class="token number">12</span></span>
+<span class="line"><span class="token keyword">const</span> line13 <span class="token operator">=</span> 'line <span class="token number">13</span></span>
+<span class="line"><span class="token keyword">const</span> line14 <span class="token operator">=</span> 'line <span class="token number">14</span></span>
+<span class="line"><span class="token keyword">const</span> line15 <span class="token operator">=</span> 'line <span class="token number">15</span></span>
+<span class="line"><span class="token keyword">const</span> line16 <span class="token operator">=</span> 'line <span class="token number">16</span></span>
+<span class="line"><span class="token keyword">const</span> line17 <span class="token operator">=</span> 'line <span class="token number">17</span></span>
+<span class="line"><span class="token keyword">const</span> line18 <span class="token operator">=</span> 'line <span class="token number">18</span></span>
+<span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
+<span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div><div class="collapsed-lines"></div></div><div class="language-typescript line-numbers-mode has-collapsed-lines collapsed" data-highlighter="prismjs" data-ext="ts" data-title="ts" style="--vp-collapsed-lines:15;"><pre><code><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
+<span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
+<span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
+<span class="line"><span class="token keyword">const</span> line5 <span class="token operator">=</span> 'line <span class="token number">5</span></span>
+<span class="line"><span class="token keyword">const</span> line6 <span class="token operator">=</span> 'line <span class="token number">6</span></span>
+<span class="line"><span class="token keyword">const</span> line7 <span class="token operator">=</span> 'line <span class="token number">7</span></span>
+<span class="line"><span class="token keyword">const</span> line8 <span class="token operator">=</span> 'line <span class="token number">8</span></span>
+<span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
+<span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
+<span class="line"><span class="token keyword">const</span> line11 <span class="token operator">=</span> 'line <span class="token number">11</span></span>
+<span class="line"><span class="token keyword">const</span> line12 <span class="token operator">=</span> 'line <span class="token number">12</span></span>
+<span class="line"><span class="token keyword">const</span> line13 <span class="token operator">=</span> 'line <span class="token number">13</span></span>
+<span class="line"><span class="token keyword">const</span> line14 <span class="token operator">=</span> 'line <span class="token number">14</span></span>
+<span class="line"><span class="token keyword">const</span> line15 <span class="token operator">=</span> 'line <span class="token number">15</span></span>
+<span class="line"><span class="token keyword">const</span> line16 <span class="token operator">=</span> 'line <span class="token number">16</span></span>
+<span class="line"><span class="token keyword">const</span> line17 <span class="token operator">=</span> 'line <span class="token number">17</span></span>
+<span class="line"><span class="token keyword">const</span> line18 <span class="token operator">=</span> 'line <span class="token number">18</span></span>
+<span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
+<span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div><div class="collapsed-lines"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="ts"><pre><code><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
+<span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
+<span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
+<span class="line"><span class="token keyword">const</span> line5 <span class="token operator">=</span> 'line <span class="token number">5</span></span>
+<span class="line"><span class="token keyword">const</span> line6 <span class="token operator">=</span> 'line <span class="token number">6</span></span>
+<span class="line"><span class="token keyword">const</span> line7 <span class="token operator">=</span> 'line <span class="token number">7</span></span>
+<span class="line"><span class="token keyword">const</span> line8 <span class="token operator">=</span> 'line <span class="token number">8</span></span>
+<span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
+<span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
+<span class="line"><span class="token keyword">const</span> line11 <span class="token operator">=</span> 'line <span class="token number">11</span></span>
+<span class="line"><span class="token keyword">const</span> line12 <span class="token operator">=</span> 'line <span class="token number">12</span></span>
+<span class="line"><span class="token keyword">const</span> line13 <span class="token operator">=</span> 'line <span class="token number">13</span></span>
+<span class="line"><span class="token keyword">const</span> line14 <span class="token operator">=</span> 'line <span class="token number">14</span></span>
+<span class="line"><span class="token keyword">const</span> line15 <span class="token operator">=</span> 'line <span class="token number">15</span></span>
+<span class="line"><span class="token keyword">const</span> line16 <span class="token operator">=</span> 'line <span class="token number">16</span></span>
+<span class="line"><span class="token keyword">const</span> line17 <span class="token operator">=</span> 'line <span class="token number">17</span></span>
+<span class="line"><span class="token keyword">const</span> line18 <span class="token operator">=</span> 'line <span class="token number">18</span></span>
+<span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
+<span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="ts"><pre><code><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
+<span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
+<span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
+<span class="line"><span class="token keyword">const</span> line5 <span class="token operator">=</span> 'line <span class="token number">5</span></span>
+<span class="line"><span class="token keyword">const</span> line6 <span class="token operator">=</span> 'line <span class="token number">6</span></span>
+<span class="line"><span class="token keyword">const</span> line7 <span class="token operator">=</span> 'line <span class="token number">7</span></span>
+<span class="line"><span class="token keyword">const</span> line8 <span class="token operator">=</span> 'line <span class="token number">8</span></span>
+<span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
+<span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
+<span class="line"><span class="token keyword">const</span> line11 <span class="token operator">=</span> 'line <span class="token number">11</span></span>
+<span class="line"><span class="token keyword">const</span> line12 <span class="token operator">=</span> 'line <span class="token number">12</span></span>
+<span class="line"><span class="token keyword">const</span> line13 <span class="token operator">=</span> 'line <span class="token number">13</span></span>
+<span class="line"><span class="token keyword">const</span> line14 <span class="token operator">=</span> 'line <span class="token number">14</span></span>
+<span class="line"><span class="token keyword">const</span> line15 <span class="token operator">=</span> 'line <span class="token number">15</span></span>
+<span class="line"><span class="token keyword">const</span> line16 <span class="token operator">=</span> 'line <span class="token number">16</span></span>
+<span class="line"><span class="token keyword">const</span> line17 <span class="token operator">=</span> 'line <span class="token number">17</span></span>
+<span class="line"><span class="token keyword">const</span> line18 <span class="token operator">=</span> 'line <span class="token number">18</span></span>
+<span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
+<span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
+`;
+
 exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :line-numbers / :no-line-numbers > should work properly if \`lineNumbers\` is disabled by default 1`] = `
 "<div class="language-text" data-highlighter="prismjs" data-ext="text" data-title="text"><pre><code><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
