@@ -1,4 +1,4 @@
-import chokidar from 'chokidar'
+import { watch } from 'chokidar'
 import type { Plugin } from 'vuepress/core'
 import { preparePaletteFile } from './preparePaletteFile.js'
 import { prepareStyleFile } from './prepareStyleFile.js'
@@ -72,7 +72,7 @@ export const palettePlugin = ({
   },
 
   onWatched: (app, watchers) => {
-    const paletteWatcher = chokidar.watch(userPaletteFile, {
+    const paletteWatcher = watch(userPaletteFile, {
       cwd: app.dir.source(),
       ignoreInitial: true,
     })
@@ -92,7 +92,7 @@ export const palettePlugin = ({
     })
     watchers.push(paletteWatcher)
 
-    const styleWatcher = chokidar.watch(userStyleFile, {
+    const styleWatcher = watch(userStyleFile, {
       cwd: app.dir.source(),
       ignoreInitial: true,
     })
