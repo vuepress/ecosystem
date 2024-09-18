@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-append-date",
-  "version": "2.0.0-rc.43",
+  "version": "2.0.0-rc.44",
   "description": "VuePress plugin - append date",
   "keywords": [
     "vuepress-plugin",

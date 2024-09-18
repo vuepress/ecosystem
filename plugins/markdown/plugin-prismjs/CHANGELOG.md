@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.44](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.43...v2.0.0-rc.44) (2024-09-18)
+
+### Features
+
+- add disable option for highlighter line-number option and unify words ([158f7ca](https://github.com/vuepress/ecosystem/commit/158f7cae213439ba970af3ce409a7a52c72af5af))
+- add support `collapsed-lines` for code highlighters ([#246](https://github.com/vuepress/ecosystem/issues/246)) ([c0f70e4](https://github.com/vuepress/ecosystem/commit/c0f70e43e0fd76db5fe2f1e8b17713db0110ca72))
+
 # [2.0.0-rc.43](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.42...v2.0.0-rc.43) (2024-09-12)
 
 **Note:** Version bump only for package @vuepress/plugin-prismjs
