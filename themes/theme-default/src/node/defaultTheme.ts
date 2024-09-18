@@ -86,13 +86,14 @@ export const defaultTheme = ({
       // FIXME: hide sass deprecation warning for mixed-decls
       addViteConfig(bundlerOptions, app, {
         css: {
+          // switch to modern api
           preprocessorOptions: {
             sass: {
-              api: 'modern-compiler',
+              api: 'modern',
               silenceDeprecations: ['mixed-decls'],
             },
             scss: {
-              api: 'modern-compiler',
+              api: 'modern',
               silenceDeprecations: ['mixed-decls'],
             },
           },
@@ -106,7 +107,6 @@ export const defaultTheme = ({
             ...options,
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             sassOptions: {
-              api: 'modern-compiler',
               silenceDeprecations: ['mixed-decls'],
               ...options.sassOptions,
             },

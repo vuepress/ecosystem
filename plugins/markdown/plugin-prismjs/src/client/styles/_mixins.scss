@@ -8,8 +8,18 @@
   // highlight
   --code-c-highlight-bg: #{color.scale(
       $code-bg-color,
-      $saturation: if(color.whiteness($code-bg-color) < 50%, 5%, 10%),
-      $lightness: if(color.whiteness($code-bg-color) < 50%, 5%, -5%)
+      $saturation:
+        if(
+          color.channel(color.to-space($code-bg-color, hsl), 'lightness') < 50%,
+          5%,
+          10%
+        ),
+      $lightness:
+        if(
+          color.channel(color.to-space($code-bg-color, hsl), 'lightness') < 50%,
+          5%,
+          -5%
+        )
     )};
 
   // line-number
