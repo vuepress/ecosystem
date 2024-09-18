@@ -57,12 +57,12 @@
     "@vuepress/plugin-seo": "workspace:*",
     "@vuepress/plugin-sitemap": "workspace:*",
     "@vuepress/plugin-theme-data": "workspace:*",
-    "@vueuse/core": "^11.0.3",
-    "vue": "^3.5.4"
+    "@vueuse/core": "^11.1.0",
+    "vue": "^3.5.6"
   },
   "peerDependencies": {
-    "sass": "^1.78.0",
-    "sass-embedded": "^1.78.0",
+    "sass": "^1.79.0",
+    "sass-embedded": "^1.79.0",
     "sass-loader": "^16.0.1",
     "vuepress": "2.0.0-rc.15"
   },
