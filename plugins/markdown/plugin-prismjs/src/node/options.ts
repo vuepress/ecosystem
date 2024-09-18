@@ -1,8 +1,9 @@
+import type { MarkdownItCollapsedLinesOptions } from '@vuepress/highlighter-helper'
 import type {
-  MarkdownItCollapsedLinesOptions,
-  MarkdownItLineNumbersOptions,
-} from '@vuepress/highlighter-helper'
-import type { HighlightOptions, PreWrapperOptions } from './types.js'
+  HighlightOptions,
+  LineNumbersOptions,
+  PreWrapperOptions,
+} from './types.js'
 
 export type PrismjsLightTheme =
   | 'ateliersulphurpool-light'
@@ -49,9 +50,9 @@ export type PrismjsTheme = PrismjsDarkTheme | PrismjsLightTheme
  * Options of @vuepress/plugin-prismjs
  */
 export interface PrismjsPluginOptions
-  extends Pick<MarkdownItLineNumbersOptions, 'lineNumbers'>,
-    Pick<MarkdownItCollapsedLinesOptions, 'collapsedLines'>,
+  extends Pick<MarkdownItCollapsedLinesOptions, 'collapsedLines'>,
     PreWrapperOptions,
+    LineNumbersOptions,
     HighlightOptions {
   /**
    * Single theme

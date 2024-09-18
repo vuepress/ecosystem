@@ -36,8 +36,9 @@ export const prismjsPlugin = (options: PrismjsPluginOptions = {}): Plugin => {
       md.use(highlightPlugin, opt)
       md.use(preWrapperPlugin, { preWrapper })
       if (preWrapper) {
-        md.use(lineNumbersPlugin, { lineNumbers, removeLastLine: true })
-        if (collapsedLines !== 'disabled')
+        if (lineNumbers !== 'disable')
+          md.use(lineNumbersPlugin, { lineNumbers, removeLastLine: true })
+        if (collapsedLines !== 'disable')
           md.use(collapsedLinesPlugin, { collapsedLines, removeLastLine: true })
       }
     },

@@ -16,7 +16,7 @@ export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => {
   const opt: ShikiPluginOptions = {
     preWrapper: true,
     lineNumbers: true,
-    collapsedLines: 'disabled',
+    collapsedLines: 'disable',
     ...options,
   }
 
@@ -38,8 +38,9 @@ export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => {
       md.use(highlightLinesPlugin)
       md.use(preWrapperPlugin, { preWrapper })
       if (preWrapper) {
-        md.use(lineNumbersPlugin, { lineNumbers })
-        if (collapsedLines !== 'disabled')
+        if (lineNumbers !== 'disable')
+          md.use(lineNumbersPlugin, { lineNumbers })
+        if (collapsedLines !== 'disable')
           md.use(collapsedLinesPlugin, { collapsedLines })
       }
     },

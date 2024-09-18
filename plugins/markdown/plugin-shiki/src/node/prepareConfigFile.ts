@@ -25,7 +25,7 @@ export const prepareConfigFile = (
 
   const setups: string[] = []
 
-  if (lineNumbers) {
+  if (lineNumbers !== 'disable') {
     imports.push(
       `import "${getRealPath('@vuepress/highlighter-helper/styles/line-numbers.css', url)}"`,
     )
@@ -67,7 +67,7 @@ export const prepareConfigFile = (
     )
   }
 
-  if (collapsedLines !== 'disabled') {
+  if (collapsedLines !== 'disable') {
     imports.push(
       `import "${getRealPath('@vuepress/highlighter-helper/styles/collapsed-lines.css', url)}"`,
       `import { setupCollapsedLines } from "${getRealPath('@vuepress/highlighter-helper/composables/collapsedLines.js', url)}"`,

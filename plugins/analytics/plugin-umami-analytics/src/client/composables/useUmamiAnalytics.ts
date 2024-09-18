@@ -18,7 +18,6 @@ declare global {
  * @see https://umami.is/docs/tracker-functions
  */
 export const useUmamiAnalytics = ({
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   link = 'https://us.umami.is/script.js',
   id,
   domains,

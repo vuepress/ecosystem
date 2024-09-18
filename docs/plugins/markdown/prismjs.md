@@ -93,16 +93,17 @@ export default {
 
 ### lineNumbers
 
-- Type: `boolean | number`
+- Type: `boolean | number | 'disable'`
 
 - Default: `true`
 
 - Details:
 
-  - `true`: enable line numbers.
-  - `false`: disabled line numbers.
   - `number`: the minimum number of lines to enable line numbers.
     For example, if you set it to 4, line numbers will only be enabled when your code block has at least 4 lines of code.
+  - `true`: enable line numbers globally.
+  - `false`: disable line numbers globally.
+  - `'disable'`: Completely disable line numbers, `:line-numbers` will not take effect.
 
   You can add `:line-numbers` / `:no-line-numbers` mark in your fenced code blocks to override the value set in config, and customize the beginning number by adding `=` after `:line-numbers`. For example, `:line-numbers=2` means the line numbers in code blocks will start from `2`.
 
@@ -196,16 +197,16 @@ export default defineUserConfig({
 
 ### collapsedLines
 
-- Type: `boolean | number | 'disabled'`
+- Type: `boolean | number | 'disable'`
 
-- Default: `'disabled'`
+- Default: `'disable'`
 
 - Details: Default behavior of code block collapsing.
 
   - `number`: collapse the code block starting from line `number` by default, for example, `12` means collapsing the code block starting from line 12.
   - `true`: Equivalent to `15`, collapsing the code block starting from line 15 by default.
   - `false`: Add support for code block collapsing, but disable it globally
-  - `'disabled'`: Completely disable code block collapsing, `:collapsed-lines` will not take effect.
+  - `'disable'`: Completely disable code block collapsing, `:collapsed-lines` will not take effect.
 
   To override global settings, you can add the `:collapsed-lines` / `:no-collapsed-lines` marker to the code block. You can also add `=` after `:collapsed-lines` to customize the starting line number being collapsed, for example, `:collapsed-lines=12` means collapsing the code block starting from line 12.
 

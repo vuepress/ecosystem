@@ -5,11 +5,11 @@ import { resolveCollapsedLines } from './resolveCollapsedLine.js'
 export const collapsedLines = (
   md: Markdown,
   {
-    collapsedLines: collapsedLinesOptions = 'disabled',
+    collapsedLines: collapsedLinesOptions = 'disable',
     removeLastLine,
   }: MarkdownItCollapsedLinesOptions = {},
 ): void => {
-  if (collapsedLinesOptions === 'disabled') return
+  if (collapsedLinesOptions === 'disable') return
 
   const rawFence = md.renderer.rules.fence!
 
