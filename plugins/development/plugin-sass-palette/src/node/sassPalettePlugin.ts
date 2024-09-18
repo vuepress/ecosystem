@@ -1,3 +1,4 @@
+import { addViteConfig } from '@vuepress/helper'
 import { watch } from 'chokidar'
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
@@ -67,6 +68,19 @@ export const sassPalettePlugin =
       },
 
       extendsBundlerOptions: (bundlerOptions: unknown): void => {
+        // switch to modern api for vite
+        addViteConfig(bundlerOptions, app, {
+          css: {
+            preprocessorOptions: {
+              sass: {
+                api: 'modern',
+              },
+              scss: {
+                api: 'modern',
+              },
+            },
+          },
+        })
         injectScssConfigModule(bundlerOptions, app, id)
       },
 

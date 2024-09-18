@@ -86,14 +86,11 @@ export const defaultTheme = ({
       // FIXME: hide sass deprecation warning for mixed-decls
       addViteConfig(bundlerOptions, app, {
         css: {
-          // switch to modern api
           preprocessorOptions: {
             sass: {
-              api: 'modern',
               silenceDeprecations: ['mixed-decls'],
             },
             scss: {
-              api: 'modern',
               silenceDeprecations: ['mixed-decls'],
             },
           },

@@ -1,3 +1,4 @@
+import { addViteConfig } from '@vuepress/helper'
 import { watch } from 'chokidar'
 import type { Plugin } from 'vuepress/core'
 import { preparePaletteFile } from './preparePaletteFile.js'
@@ -55,6 +56,22 @@ export const palettePlugin = ({
     '@vuepress/plugin-palette/palette': app.dir.temp(tempPaletteFile),
     '@vuepress/plugin-palette/style': app.dir.temp(tempStyleFile),
   }),
+
+  extendsBundlerOptions: (bundlerOptions: unknown, app): void => {
+    // switch to modern api for vite
+    addViteConfig(bundlerOptions, app, {
+      css: {
+        preprocessorOptions: {
+          sass: {
+            api: 'modern',
+          },
+          scss: {
+            api: 'modern',
+          },
+        },
+      },
+    })
+  },
 
   onPrepared: async (app) => {
     await Promise.all([
