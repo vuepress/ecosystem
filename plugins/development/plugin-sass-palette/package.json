@@ -47,15 +47,15 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "chokidar": "^3.6.0"
+    "chokidar": "^4.0.0"
   },
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.15",
     "@vuepress/bundler-webpack": "2.0.0-rc.15"
   },
   "peerDependencies": {
-    "sass": "^1.78.0",
-    "sass-embedded": "^1.78.0",
+    "sass": "^1.79.0",
+    "sass-embedded": "^1.79.0",
     "sass-loader": "^16.0.1",
     "vuepress": "2.0.0-rc.15"
   },
