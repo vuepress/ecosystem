@@ -10,13 +10,13 @@
       $code-bg-color,
       $saturation:
         if(
-          color.channel(color.to-space($code-bg-color, hsl), 'lightness') < 50%,
+          color.channel($code-bg-color, 'whiteness', $space: hwb) < 50%,
           5%,
           10%
         ),
       $lightness:
         if(
-          color.channel(color.to-space($code-bg-color, hsl), 'lightness') < 50%,
+          color.channel($code-bg-color, 'whiteness', $space: hwb) < 50%,
           5%,
           -5%
         )
