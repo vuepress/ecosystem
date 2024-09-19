@@ -1,4 +1,4 @@
-import { compileString } from 'sass'
+import { compileString } from 'sass-embedded'
 import { fs, getDirname, path } from 'vuepress/utils'
 
 const __dirname = getDirname(import.meta.url)
@@ -46,14 +46,17 @@ themeFiles.forEach((file) => {
 
   const themeCss = compileString(themeContent, {
     loadPaths: [styleDir],
+    style: 'compressed',
   }).css
 
   const lightThemeCss = compileString(lightThemeContent, {
     loadPaths: [styleDir],
+    style: 'compressed',
   }).css
 
   const darkThemeCss = compileString(darkThemeContent, {
     loadPaths: [styleDir],
+    style: 'compressed',
   }).css
 
   fs.writeFileSync(path.resolve(outputDir, `${filename}.css`), themeCss)

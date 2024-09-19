@@ -43,7 +43,7 @@
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "style": "sass src:lib --no-source-map"
+    "style": "sass src:lib --embed-sources --style=compressed"
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
