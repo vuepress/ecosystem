@@ -21,6 +21,14 @@ This is a warning
 This is a dangerous warning
 :::
 
+::: important
+This is an important message
+:::
+
+::: note
+This is a note
+:::
+
 ::: details
 This is a details block
 :::
@@ -38,6 +46,14 @@ This is a warning
 
 ::: danger
 This is a dangerous warning
+:::
+
+::: important
+This is an important message
+:::
+
+::: note
+This is a note
 :::
 
 ::: details
