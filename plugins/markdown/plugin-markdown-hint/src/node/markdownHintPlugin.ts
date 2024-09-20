@@ -34,6 +34,9 @@ export const markdownHintPlugin = (
       if (options.hint !== false) md.use(hint, locale)
     },
 
-    clientConfigFile: path.resolve(__dirname, '../client/config.js'),
+    clientConfigFile:
+      options.injectStyles === false
+        ? undefined
+        : path.resolve(__dirname, '../client/config.js'),
   }
 }

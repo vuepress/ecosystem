@@ -94,6 +94,13 @@ export interface MarkdownHintPluginOptions {
   hint?: boolean
 
   /**
+   * Whether to inject default styles
+   *
+   * @default true
+   */
+  injectStyles?: boolean
+
+  /**
    * Locale config
    *
    * 国际化配置选项

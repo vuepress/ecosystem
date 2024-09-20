@@ -108,6 +108,12 @@ const a = 1
 - 类型：`boolean`
 - 详情：是否启用 GFM 警告支持。
 
+### injectStyles
+
+- 类型：`boolean`
+- 默认值：`true`
+- 详情：是否注入默认样式。
+
 ### locales
 
 - 类型：`MarkdownHintPluginLocaleOptions`

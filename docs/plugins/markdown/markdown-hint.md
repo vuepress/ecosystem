@@ -108,6 +108,12 @@ The plugin also provides an `alert` option to support gfm alerts:
 - Type: `boolean`
 - Details: Whether enable gfm alert support.
 
+### injectStyles
+
+- Type: `boolean`
+- Default: `true`
+- Details: Whether to inject default styles.
+
 ### locales
 
 - Type: `MarkdownHintPluginLocaleOptions`
