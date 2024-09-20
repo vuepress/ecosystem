@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.46](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.45...v2.0.0-rc.46) (2024-09-20)
+
+### Bug Fixes
+
+- apply code font color, close [#248](https://github.com/vuepress/ecosystem/issues/248) ([7cc5746](https://github.com/vuepress/ecosystem/commit/7cc574699fe14592a46cc555dcf6cd7eac581274))
+
 # [2.0.0-rc.45](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.44...v2.0.0-rc.45) (2024-09-20)
 
 **Note:** Version bump only for package @vuepress/highlighter-helper

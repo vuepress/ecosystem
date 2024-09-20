@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.46](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.45...v2.0.0-rc.46) (2024-09-20)
+
+### Bug Fixes
+
+- apply code font color, close [#248](https://github.com/vuepress/ecosystem/issues/248) ([7cc5746](https://github.com/vuepress/ecosystem/commit/7cc574699fe14592a46cc555dcf6cd7eac581274))
+- **plugin-markdown-math:** correct client config file path ([b7ab87b](https://github.com/vuepress/ecosystem/commit/b7ab87b954d40036b3ceae05f645191a4dc571d1))
+- **plugin-shiki:** correctly fallback code font color, close [#248](https://github.com/vuepress/ecosystem/issues/248) ([65f048a](https://github.com/vuepress/ecosystem/commit/65f048abad917798d8cd9b53e67ab5894077b08b))
+- **theme-default:** fix invalid component ([ea29e2d](https://github.com/vuepress/ecosystem/commit/ea29e2d6c24fcabc5c887a0f344c85da1d5fc05d))
+
+### Features
+
+- **helper:** add LoadingIcon and useDarkmode ([06584ba](https://github.com/vuepress/ecosystem/commit/06584bacd6566d1109bdc1fe19afe4948ba2ba86))
+- **helper:** improve normalize ([5c7a902](https://github.com/vuepress/ecosystem/commit/5c7a9028a52d61d58f346c3f9857bd2bd7be9432))
+- **plugin-comment:** import LoadingIcon from helper ([4476698](https://github.com/vuepress/ecosystem/commit/447669834e94df1710e589b7af93f56dac226508))
+- **theme-default:** improve palette ([36db48e](https://github.com/vuepress/ecosystem/commit/36db48ec46312c2777edb32785ed0a29ef3fc704))
+
 # [2.0.0-rc.45](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.44...v2.0.0-rc.45) (2024-09-20)
 
 ### Bug Fixes

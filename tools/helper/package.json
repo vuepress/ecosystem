@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/helper",
-  "version": "2.0.0-rc.45",
+  "version": "2.0.0-rc.46",
   "description": "VuePress helper",
   "keywords": [
     "vuepress",
@@ -46,8 +46,8 @@
     "style": "sass src:lib --embed-sources --style=compressed"
   },
   "dependencies": {
-    "@vueuse/core": "^11.1.0",
     "@vue/shared": "^3.5.7",
+    "@vueuse/core": "^11.1.0",
     "cheerio": "1.0.0",
     "fflate": "^0.8.2",
     "gray-matter": "^4.0.3",
