@@ -20,7 +20,7 @@ defineSlots<{
 
 const SearchBox = hasGlobalComponent('SearchBox')
   ? resolveComponent('SearchBox')
-  : null
+  : (): null => null
 
 const themeLocale = useThemeLocaleData()
 
