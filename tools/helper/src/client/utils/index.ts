@@ -1,4 +1,5 @@
 export * from './data.js'
+export * from './getDarkmode.js'
+export * from './getHeaders.js'
 export * from './hasGlobalComponent.js'
 export * from './wait.js'
-export * from './getHeaders.js'
