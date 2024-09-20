@@ -7,7 +7,7 @@
 - Props:
 
   - type
-    - Type: `'tip' | 'warning' | 'danger'`
+    - 类型： `'tip' | 'warning' | 'danger' | 'important' | 'info' | 'note'`
     - Default: `'tip'`
   - text
     - Type: `string`
@@ -24,6 +24,9 @@
 - VuePress - <Badge type="tip" text="v2" vertical="top" />
 - VuePress - <Badge type="warning" text="v2" vertical="middle" />
 - VuePress - <Badge type="danger" text="v2" vertical="bottom" />
+- VuePress - <Badge type="important" text="v2" vertical="middle" />
+- VuePress - <Badge type="info" text="v2" vertical="middle" />
+- VuePress - <Badge type="note" text="v2" vertical="middle" />
 ```
 
 **Output**
@@ -31,6 +34,9 @@
 - VuePress - <Badge type="tip" text="v2" vertical="top" />
 - VuePress - <Badge type="warning" text="v2" vertical="middle" />
 - VuePress - <Badge type="danger" text="v2" vertical="bottom" />
+- VuePress - <Badge type="important" text="v2" vertical="middle" />
+- VuePress - <Badge type="info" text="v2" vertical="middle" />
+- VuePress - <Badge type="note" text="v2" vertical="middle" />
 
 ## CodeGroup
 

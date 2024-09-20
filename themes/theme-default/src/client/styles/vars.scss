@@ -40,12 +40,18 @@
   --vp-c-code-tab-active: var(--vp-c-accent);
 
   // badge colors
-  --badge-c-tip: var(--vp-c-green-soft);
   --badge-c-tip-text: var(--vp-c-green-text);
-  --badge-c-warning: var(--vp-c-yellow-soft);
+  --badge-c-tip-bg: var(--vp-c-green-soft);
   --badge-c-warning-text: var(--vp-c-yellow-text);
-  --badge-c-danger: var(--vp-c-red-soft);
+  --badge-c-warning-bg: var(--vp-c-yellow-soft);
   --badge-c-danger-text: var(--vp-c-red-text);
+  --badge-c-danger-bg: var(--vp-c-red-soft);
+  --badge-c-important-text: var(--vp-c-purple-text);
+  --badge-c-important-bg: var(--vp-c-purple-soft);
+  --badge-c-info-text: var(--vp-c-indigo-text);
+  --badge-c-info-bg: var(--vp-c-indigo-soft);
+  --badge-c-note-text: var(--vp-c-grey-text);
+  --badge-c-note-bg: var(--vp-c-grey-soft);
 
   // font vars
   --font-family: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', roboto, oxygen,
