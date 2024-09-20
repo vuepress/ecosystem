@@ -1,3 +1,4 @@
+import { LoadingIcon } from '@vuepress/helper/client'
 import type { VNode } from 'vue'
 import { computed, defineComponent, h, onMounted, ref } from 'vue'
 import { usePageLang } from 'vuepress/client'
@@ -8,7 +9,6 @@ import type {
   GiscusTheme,
 } from '../../shared/index.js'
 import { useGiscusOptions } from '../helpers/index.js'
-import { LoadingIcon } from './LoadingIcon.js'
 
 import '../styles/giscus.css'
 

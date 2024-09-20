@@ -1,4 +1,4 @@
-import { useLocaleConfig, wait } from '@vuepress/helper/client'
+import { LoadingIcon, useLocaleConfig, wait } from '@vuepress/helper/client'
 import { pageviewCount } from '@waline/client/pageview'
 import type { VNode } from 'vue'
 import {
@@ -16,7 +16,6 @@ import type {
   WalineLocaleConfig,
 } from '../../shared/index.js'
 import { useWalineOptions } from '../helpers/index.js'
-import { LoadingIcon } from './LoadingIcon.js'
 
 import '@waline/client/waline.css'
 
