@@ -37,7 +37,7 @@ The plugin will enable image lazyload using native HTML5 features, so only it's 
 
 ### Image Mark
 
-When you set `mark: true` in plugin options, you can mark pictures by `#light` and `#dark` suffix to let them be displayed under certain color mode. We support both GitHub's markup and the easy markup .
+When you set `mark: true` in plugin options, you can mark pictures by `#light` and `#dark` suffix to let them be displayed under certain color mode.
 
 <VPToggleColorModeButton /> (Try to toggle theme mode)
 
