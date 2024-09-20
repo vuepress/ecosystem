@@ -21,6 +21,10 @@ This is a warning
 This is a dangerous warning
 :::
 
+::: info
+This is an information.
+:::
+
 ::: important
 This is an important message
 :::
@@ -46,6 +50,10 @@ This is a warning
 
 ::: danger
 This is a dangerous warning
+:::
+
+::: info
+This is an information.
 :::
 
 ::: important
