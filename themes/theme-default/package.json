@@ -61,8 +61,8 @@
     "vue": "^3.5.6"
   },
   "peerDependencies": {
-    "sass": "^1.79.0",
-    "sass-embedded": "^1.79.0",
+    "sass": "^1.79.2",
+    "sass-embedded": "^1.79.2",
     "sass-loader": "^16.0.1",
     "vuepress": "2.0.0-rc.15"
   },
