@@ -39,7 +39,7 @@
     "conventional-changelog-cli": "^5.0.0",
     "cpx2": "^7.0.1",
     "cross-env": "^7.0.3",
-    "eslint": "^9.10.0",
+    "eslint": "^9.11.0",
     "eslint-config-vuepress": "^5.2.0",
     "http-server": "^14.1.1",
     "husky": "^9.1.6",
@@ -60,7 +60,7 @@
     "vitest": "^2.1.1",
     "vuepress": "2.0.0-rc.15"
   },
-  "packageManager": "pnpm@9.10.0",
+  "packageManager": "pnpm@9.11.0",
   "engines": {
     "node": ">=18.19.0"
   }
