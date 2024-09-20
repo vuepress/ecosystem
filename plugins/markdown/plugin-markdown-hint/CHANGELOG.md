@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.45](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.44...v2.0.0-rc.45) (2024-09-20)
+
+### Features
+
+- **plugin-markdown-hint:** add injectStyles option ([0e833ee](https://github.com/vuepress/ecosystem/commit/0e833ee17a4f574a9f695202d878bff5dfadbc98))
+- **plugin-markdown-hint:** rebuild styles ([3b08611](https://github.com/vuepress/ecosystem/commit/3b08611963bf63e21fafa6721557d95f3e4f8ed2))
+
 # [2.0.0-rc.44](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.43...v2.0.0-rc.44) (2024-09-18)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-hint

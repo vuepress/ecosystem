@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.45](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.44...v2.0.0-rc.45) (2024-09-20)
+
+### Bug Fixes
+
+- fix style injection in highlighter ([45074ab](https://github.com/vuepress/ecosystem/commit/45074ab869bb3534c626e42b1508ad96e540b9e4))
+- **helper:** fix grey text color ([f804b9b](https://github.com/vuepress/ecosystem/commit/f804b9b2cdf7e9ba1b86928973f52e8923b69963))
+- **helper:** fix table style normalize ([7bf684d](https://github.com/vuepress/ecosystem/commit/7bf684dd46fc9052e1af018b5f7924fc4e3c308f))
+- **helper:** improve code text contrast ([bbddb62](https://github.com/vuepress/ecosystem/commit/bbddb62e98899d2857e2ee3e1cac33dc533775f0))
+- **plugin-prismjs:** fix color converting ([7215129](https://github.com/vuepress/ecosystem/commit/72151298b52e6465cf6bb30391d8b03a6c6deb23))
+- **theme-default:** fix build template color ([4a22f47](https://github.com/vuepress/ecosystem/commit/4a22f471d4674fee73d02c13d529e6b537e96d65))
+
+### Features
+
+- **plugin-markdown-hint:** add injectStyles option ([0e833ee](https://github.com/vuepress/ecosystem/commit/0e833ee17a4f574a9f695202d878bff5dfadbc98))
+- **plugin-markdown-hint:** rebuild styles ([3b08611](https://github.com/vuepress/ecosystem/commit/3b08611963bf63e21fafa6721557d95f3e4f8ed2))
+- **theme-default:** improve badge appearance ([37b13ad](https://github.com/vuepress/ecosystem/commit/37b13adcb716a12e9b488c5e42439940f9a33c1f))
+- **theme-default:** improve page nav hover color ([b067739](https://github.com/vuepress/ecosystem/commit/b06773932a72c657d52aa46d4c56b93916851660))
+
 # [2.0.0-rc.44](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.43...v2.0.0-rc.44) (2024-09-18)
 
 ### Bug Fixes
