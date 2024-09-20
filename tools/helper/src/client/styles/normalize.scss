@@ -211,14 +211,9 @@ kbd {
 
 table {
   display: block;
-
   overflow-x: auto;
-
   margin: 1rem 0;
-  border: 1px solid var(--vp-c-border-hard, #d1d4d7);
   border-collapse: collapse;
-
-  transition: border-color var(--vp-t-color);
 }
 
 tbody tr:nth-child(odd) {
