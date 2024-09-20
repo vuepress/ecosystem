@@ -9,7 +9,8 @@ export const prepareConfigFile = (
   app: App,
   {
     lineNumbers = true,
-    collapsedLines,
+    highlightLines = true,
+    collapsedLines = 'disable',
     notationDiff,
     notationErrorLevel,
     notationFocus,
@@ -28,6 +29,12 @@ export const prepareConfigFile = (
   if (lineNumbers !== 'disable') {
     imports.push(
       `import "${getRealPath('@vuepress/highlighter-helper/styles/line-numbers.css', url)}"`,
+    )
+  }
+
+  if (highlightLines || notationHighlight) {
+    imports.push(
+      `import "${getRealPath('@vuepress/highlighter-helper/styles/notation-highlight.css', url)}"`,
     )
   }
 

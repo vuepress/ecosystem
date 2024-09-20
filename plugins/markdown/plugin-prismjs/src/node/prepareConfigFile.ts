@@ -11,7 +11,8 @@ export const prepareConfigFile = (
     theme,
     themes,
     lineNumbers = true,
-    collapsedLines,
+    highlightLines = true,
+    collapsedLines = 'disable',
     notationDiff,
     notationErrorLevel,
     notationFocus,
@@ -45,6 +46,12 @@ export const prepareConfigFile = (
     )
   }
 
+  if (highlightLines || notationHighlight) {
+    imports.push(
+      `import "${getRealPath('@vuepress/highlighter-helper/styles/notation-highlight.css', url)}"`,
+    )
+  }
+
   if (notationDiff) {
     imports.push(
       `import "${getRealPath('@vuepress/highlighter-helper/styles/notation-diff.css', url)}"`,
@@ -60,12 +67,6 @@ export const prepareConfigFile = (
   if (notationFocus) {
     imports.push(
       `import "${getRealPath('@vuepress/highlighter-helper/styles/notation-focus.css', url)}"`,
-    )
-  }
-
-  if (notationHighlight) {
-    imports.push(
-      `import "${getRealPath('@vuepress/highlighter-helper/styles/notation-highlight.css', url)}"`,
     )
   }
 
