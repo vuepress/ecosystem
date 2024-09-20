@@ -97,7 +97,7 @@ useEventListener('keydown', (event): void => {
     border-radius: 0.25rem;
 
     &:hover {
-      background: var(--vp-c-control-hover);
+      background: var(--vp-c-control);
     }
 
     .hint {
