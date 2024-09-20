@@ -48,6 +48,7 @@ div[class*='language-'] {
       padding: var(--code-padding-y) var(--code-padding-x);
 
       background-color: transparent !important;
+      color: var(--code-c-text);
 
       overflow-wrap: unset;
 

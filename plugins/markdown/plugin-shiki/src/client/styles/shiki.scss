@@ -7,10 +7,10 @@
 }
 
 .shiki span {
-  color: var(--shiki-light, var(--code-c-text));
+  color: var(--shiki-light, inherit);
 
   [data-theme='dark'] & {
-    color: var(--shiki-dark, var(--code-c-text));
+    color: var(--shiki-dark, inherit);
   }
 }
 
