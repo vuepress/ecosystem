@@ -60,6 +60,9 @@
   --content-width: 740px;
   --homepage-width: 960px;
 
+  // header offset
+  --header-offset: var(--navbar-height);
+
   // transition vars
   --vp-t-color: 0.3s ease;
   --vp-t-transform: 0.3s ease;
