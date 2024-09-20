@@ -56,7 +56,7 @@ export type MarkdownHintPluginLocaleConfig =
   ExactLocaleConfig<MarkdownHintPluginLocaleData>
 
 /**
- * md-enhance plugin configuration
+ * markdown hint plugin configuration
  */
 export interface MarkdownHintPluginOptions {
   /**

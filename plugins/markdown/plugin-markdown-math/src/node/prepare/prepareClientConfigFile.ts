@@ -38,5 +38,5 @@ import './mathjax.css';
 `
   }
 
-  return app.writeTemp(`md-enhance/config.js`, content)
+  return app.writeTemp(`markdown-math/config.js`, content)
 }
