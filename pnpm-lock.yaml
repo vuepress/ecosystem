@@ -140,6 +140,9 @@ importers:
       '@vuepress/plugin-markdown-math':
         specifier: workspace:*
         version: link:../plugins/markdown/plugin-markdown-math
+      '@vuepress/plugin-markdown-tab':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-tab
       '@vuepress/plugin-medium-zoom':
         specifier: workspace:*
         version: link:../plugins/features/plugin-medium-zoom
@@ -667,6 +670,31 @@ importers:
       mathjax-full:
         specifier: ^3.2.2
         version: 3.2.2
+      vue:
+        specifier: ^3.5.7
+        version: 3.5.7(typescript@5.6.2)
+      vuepress:
+        specifier: 2.0.0-rc.15
+        version: 2.0.0-rc.15(@vuepress/bundler-vite@2.0.0-rc.15(@types/node@22.5.5)(jiti@1.21.6)(lightningcss@1.27.0)(sass-embedded@1.79.2)(sass@1.79.2)(terser@5.33.0)(tsx@4.19.1)(typescript@5.6.2)(yaml@2.4.5))(@vuepress/bundler-webpack@2.0.0-rc.15(typescript@5.6.2))(typescript@5.6.2)(vue@3.5.7(typescript@5.6.2))
+    devDependencies:
+      markdown-it:
+        specifier: ^14.1.0
+        version: 14.1.0
+
+  plugins/markdown/plugin-markdown-tab:
+    dependencies:
+      '@mdit/plugin-tab':
+        specifier: ^0.13.1
+        version: 0.13.1(markdown-it@14.1.0)
+      '@types/markdown-it':
+        specifier: ^14.1.2
+        version: 14.1.2
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../../tools/helper
+      '@vueuse/core':
+        specifier: ^11.1.0
+        version: 11.1.0(vue@3.5.7(typescript@5.6.2))
       vue:
         specifier: ^3.5.7
         version: 3.5.7(typescript@5.6.2)
@@ -2419,6 +2447,14 @@ packages:
       markdown-it:
         optional: true
       mathjax-full:
+        optional: true
+
+  '@mdit/plugin-tab@0.13.1':
+    resolution: {integrity: sha512-485YgrkrSkY7t/kgCPnCMlk5gWkXiosdZs9aq4rRDytyvRVa8NQs+4cqMUtxAdYzwnZgsvju+/wmcXfUYAG/EA==}
+    peerDependencies:
+      markdown-it: ^14.1.0
+    peerDependenciesMeta:
+      markdown-it:
         optional: true
 
   '@mdit/plugin-tex@0.13.1':
@@ -9649,6 +9685,12 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.1.0
       mathjax-full: 3.2.2
+
+  '@mdit/plugin-tab@0.13.1(markdown-it@14.1.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 14.1.0
 
   '@mdit/plugin-tex@0.13.1(markdown-it@14.1.0)':
     dependencies:
