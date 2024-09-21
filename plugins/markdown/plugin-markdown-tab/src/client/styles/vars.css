@@ -4,6 +4,6 @@
   --code-tabs-c-hover: var(--code-c-bg);
   --tab-c-bg: var(--vp-c-bg);
   --tab-c-nav: var(--vp-c-text);
-  --tab-c-bg-nav: var(--vp-c-control);
+  --tab-c-bg-nav: var(--vp-c-grey-bg);
   --tab-c-bg-nav-hover: var(--vp-c-control-hover);
 }

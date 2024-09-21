@@ -140,6 +140,9 @@ importers:
       '@vuepress/plugin-markdown-math':
         specifier: workspace:*
         version: link:../plugins/markdown/plugin-markdown-math
+      '@vuepress/plugin-markdown-tab':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-tab
       '@vuepress/plugin-medium-zoom':
         specifier: workspace:*
         version: link:../plugins/features/plugin-medium-zoom
