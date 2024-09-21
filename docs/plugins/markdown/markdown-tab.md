@@ -87,11 +87,9 @@ By default, the title will be used as value of tab, but you can override it usin
 
 You can use Vue syntax and components in each tab, and you can access `value` and `isActive`, indicating the tab's binding value and whether the tab is active.
 
-:::: info Switching together and persisting choice
+### Switching together and persisting choice
 
-If you want to make some tab groups switch together, you can use same tab id to bind them.
-
-Also, your choice with that tab id will be stored and persisted.
+If you want to make some tab groups switch together, you can use tab ids to bind them. Also, each tab id's choice will be stored and persisted.
 
 Here is an example:
 
@@ -130,13 +128,52 @@ pnpm add -D vuepress
 
 :::
 
+::: details Code
+
+````md
+Choose a package manager:
+
+::: tabs#shell
+
+@tab npm
+
+npm should be installed with Node.js.
+
+@tab pnpm
+
+```bash
+corepack enable
+corepack use pnpm@latest
+```
+
+:::
+
+Install `vuepress`:
+
+::: tabs#shell
+
+@tab Using npm#npm
+
+```bash
+npm i -D vuepress
+```
+
+@tab Using pnpm#pnpm
+
+```bash
+pnpm add -D vuepress
+```
+
+:::
+````
+
 ::::
 
 ## Code Tabs Guide
 
 This is the same as [tabs](#tabs-guide), but it's special built for code blocks.
 
-Only code fence after `@tab` marker is allowed inside code tabs, other Markdown content will be ignored.
+Only the first code fence after `@tab` marker is rendered inside code tabs, other Markdown content will be ignored.
 
 ## Demo
 

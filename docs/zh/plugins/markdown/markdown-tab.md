@@ -87,13 +87,11 @@ export default {
 
 你可以在每个选项卡中使用 Vue 语法和组件，并且你可以访问 `value` 和 `isActive`，表示选项卡的绑定值和选项卡是否处于激活状态。
 
-:::: info 一起切换并保持选择
+### 同步切换并保持选择
 
-如果你想让一些选项卡组一起切换，你可以使用相同的选项卡 ID 来绑定它们。
+如果你想让一些选项卡组一起切换，你可以使用相同的选项卡 ID 来绑定它们。针对每个选项卡 ID 的选择会被存储并进行持久化。
 
-针对每个选项卡 ID 的选择会被存储并进行持久化。
-
-下方是一个案例。
+这是一个案例：
 
 选择包管理器:
 
@@ -130,15 +128,54 @@ pnpm add -D vuepress
 
 :::
 
+:::: details 代码
+
+````md
+选择包管理器:
+
+::: tabs#shell
+
+@tab npm
+
+npm 应该与 Node.js 被一同安装。
+
+@tab pnpm
+
+```bash
+corepack enable
+corepack use pnpm@latest
+```
+
+:::
+
+安装 `vuepress`:
+
+::: tabs#shell
+
+@tab 使用 npm#npm
+
+```bash
+npm i -D vuepress
+```
+
+@tab 使用 pnpm#pnpm
+
+```bash
+pnpm add -D vuepress
+```
+
+:::
+````
+
 ::::
 
-## Code Tabs
+## 代码选项卡指南
 
 此功能和 [选项卡](#选项卡指南) 相同，但它是专门为代码块构建的。
 
-代码选项卡只会渲染 `@tab` 标记后的代码块，其他 Markdown 内容将被忽略。
+代码选项卡只会渲染 `@tab` 标记后的第一个代码块，其他 Markdown 内容将被忽略。
 
-## Demo
+## 案例
 
 一个水果选项卡列表:
 
