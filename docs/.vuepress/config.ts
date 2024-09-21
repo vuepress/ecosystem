@@ -54,15 +54,18 @@ export default defineUserConfig({
         // handle @vuepress packages import path
         if (importPath.startsWith('@vuepress/')) {
           const packageName = importPath.match(/^(@vuepress\/[^/]*)/)![1]
-          return importPath
-            .replace(
-              packageName,
-              path.dirname(
-                getRealPath(`${packageName}/package.json`, import.meta.url),
-              ),
-            )
-            .replace('/src/', '/lib/')
-            .replace(/hotKey\.ts$/, 'hotKey.d.ts')
+          const realPath = importPath.replace(
+            packageName,
+            path.dirname(
+              getRealPath(`${packageName}/package.json`, import.meta.url),
+            ),
+          )
+
+          return realPath.endsWith('vars.css')
+            ? realPath
+            : realPath
+                .replace('/src/', '/lib/')
+                .replace(/hotKey\.ts$/, 'hotKey.d.ts')
         }
         return importPath
       },
