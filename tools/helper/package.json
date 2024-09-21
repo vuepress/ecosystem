@@ -59,7 +59,7 @@
     "@vuepress/bundler-webpack": "2.0.0-rc.15",
     "@vuepress/plugin-git": "workspace:*",
     "domhandler": "5.0.3",
-    "vite": "~5.4.6"
+    "vite": "~5.4.7"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.15"
