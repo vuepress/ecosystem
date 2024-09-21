@@ -159,8 +159,11 @@ const HomeHeroImage: FunctionalComponent = () => {
 
   box-sizing: border-box;
   padding: 0.8rem 1.6rem;
-  border: 2px solid var(--vp-c-accent);
+  border: 2px solid var(--vp-c-accent-bg);
   border-radius: 4px;
+
+  background-color: var(--vp-c-bg);
+  color: var(--vp-c-accent);
 
   font-size: 1.2rem;
 
@@ -171,23 +174,18 @@ const HomeHeroImage: FunctionalComponent = () => {
     font-size: 1rem;
   }
 
-  &.primary {
-    background-color: var(--vp-c-accent);
+  &:hover {
     color: var(--vp-c-accent-text);
   }
 
-  &.secondary {
-    background-color: var(--vp-c-bg);
-    color: var(--vp-c-accent);
+  &.primary {
+    background-color: var(--vp-c-accent-bg);
+    color: var(--vp-c-accent-text);
 
     &:hover {
-      color: var(--vp-c-accent-text);
+      border-color: var(--vp-c-accent-hover);
+      background-color: var(--vp-c-accent-hover);
     }
-  }
-
-  &:hover {
-    border-color: var(--vp-c-accent-hover);
-    background-color: var(--vp-c-accent-hover);
   }
 }
 </style>
