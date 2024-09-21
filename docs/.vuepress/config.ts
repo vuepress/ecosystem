@@ -12,6 +12,7 @@ import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
+import { revealJsPlugin } from '@vuepress/plugin-revealjs'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { defineUserConfig } from 'vuepress'
 import { getDirname, path } from 'vuepress/utils'
@@ -99,6 +100,7 @@ export default defineUserConfig({
     redirectPlugin({
       switchLocale: 'modal',
     }),
+    revealJsPlugin(),
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, './components'),
     }),

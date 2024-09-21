@@ -104,6 +104,12 @@ export const sidebarZh: SidebarOptions = {
     'markdown-math',
     'links-check',
     'prismjs',
+    {
+      text: 'revealjs',
+      prefix: 'revealjs/',
+      link: 'revealjs/',
+      children: ['', 'demo', 'themes'],
+    },
     'shiki',
   ],
 

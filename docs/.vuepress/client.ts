@@ -1,5 +1,6 @@
 import { defineGiscusConfig } from '@vuepress/plugin-comment/client'
 import { defineDocSearchConfig } from '@vuepress/plugin-docsearch/client'
+import { SlidePage } from '@vuepress/plugin-revealjs/client'
 import { defineClientConfig } from 'vuepress/client'
 import CommentPage from './layouts/CommentPage.vue'
 
@@ -61,7 +62,7 @@ defineDocSearchConfig({
 
 export default defineClientConfig({
   layouts: {
-    // We override the default layout to provide comment service
     CommentPage,
+    SlidePage,
   },
 })

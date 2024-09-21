@@ -1,0 +1,6 @@
+:root {
+  --reveal-c-accent: var(--vp-c-accent);
+  --reveal-c-control: var(--vp-c-control);
+  --reveal-c-control-hover: var(--vp-c-control-hover);
+  --reveal-c-shadow: var(--vp-c-shadow);
+}
