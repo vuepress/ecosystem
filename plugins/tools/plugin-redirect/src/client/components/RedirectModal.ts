@@ -69,8 +69,8 @@ export default defineComponent({
       if (info.value) {
         const { lang, localePath } = info.value
         const locales = [
-          redirectLocales[routeLocale.value],
           redirectLocales[localePath],
+          redirectLocales[routeLocale.value],
         ]
 
         return {
