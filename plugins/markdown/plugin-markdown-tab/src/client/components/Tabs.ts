@@ -13,7 +13,6 @@ const TAB_STORE_NAME = 'VUEPRESS_TAB_STORE'
 const tabStore = useStorage<Record<string, string>>(TAB_STORE_NAME, {})
 
 export default defineComponent({
-  // eslint-disable-next-line vue/multi-word-component-names
   name: 'Tabs',
 
   props: {
@@ -162,8 +161,9 @@ export default defineComponent({
                       activeIndex.value = index
                       updateStore()
                     },
-                    'onKeydown': (event: KeyboardEvent) =>
-                      keyboardHandler(event, index),
+                    'onKeydown': (event: KeyboardEvent) => {
+                      keyboardHandler(event, index)
+                    },
                   },
                   slots[`title${index}`]({ value: id, isActive }),
                 )

@@ -11,8 +11,8 @@ export const codeTabs: PluginSimple = (md) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const { meta } = tokens[index]
       const titles = data.map(({ title }) => md.renderInline(title))
-      const tabsData = data.map((item, index) => {
-        const { id = titles[index] } = item
+      const tabsData = data.map((item, dataIndex) => {
+        const { id = titles[dataIndex] } = item
 
         return { id }
       })
@@ -25,8 +25,8 @@ export const codeTabs: PluginSimple = (md) => {
       }>
 ${titles
   .map(
-    (title, index) => `\
-<template #title${index}="{ value, isActive }">${title}</template>
+    (title, titleIndex) => `\
+<template #title${titleIndex}="{ value, isActive }">${title}</template>
 `,
   )
   .join('')}\

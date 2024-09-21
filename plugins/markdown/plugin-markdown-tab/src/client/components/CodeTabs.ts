@@ -160,8 +160,9 @@ export default defineComponent({
                       activeIndex.value = index
                       updateStore()
                     },
-                    'onKeydown': (event: KeyboardEvent) =>
-                      keyboardHandler(event, index),
+                    'onKeydown': (event: KeyboardEvent) => {
+                      keyboardHandler(event, index)
+                    },
                   },
                   slots[`title${index}`]({ value: id, isActive }),
                 )

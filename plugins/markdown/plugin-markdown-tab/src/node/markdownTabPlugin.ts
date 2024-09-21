@@ -1,9 +1,9 @@
 import type { Plugin } from 'vuepress/core'
 
-import type { MarkdownTabPluginOptions } from './options.js'
 import { codeTabs } from './codeTabs.js'
-import { tabs } from './tabs.js'
+import type { MarkdownTabPluginOptions } from './options.js'
 import { prepareConfigFile } from './prepareConfigFile.js'
+import { tabs } from './tabs.js'
 
 const PLUGIN_NAME = '@vuepress/plugin-markdown-tab'
 
