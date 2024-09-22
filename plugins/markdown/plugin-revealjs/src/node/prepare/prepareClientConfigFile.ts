@@ -1,3 +1,4 @@
+import { getRealPath } from '@vuepress/helper'
 import type { App } from 'vuepress'
 import type { RevealJsTheme } from '../../shared/index.js'
 import { CLIENT_FOLDER } from '../utils.js'
@@ -42,7 +43,7 @@ import RevealJs from "${CLIENT_FOLDER}components/RevealJs.js";
 import { injectRevealJsConfig } from "${CLIENT_FOLDER}helpers/index.js";
 ${layout ? `import Layout from "${CLIENT_FOLDER}layouts/SlidePage.js";\n` : ''}\
 
-import "reveal.js/dist/reveal.css";
+import "${getRealPath('reveal.js/dist/reveal.css', import.meta.url)}";
 import "${CLIENT_FOLDER}/styles/base.css";
 import "${CLIENT_FOLDER}/styles/vars.css";
 ${Array.from(fonts)

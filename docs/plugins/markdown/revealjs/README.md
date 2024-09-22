@@ -18,8 +18,7 @@ import { revealJsPlugin } from '@vuepress/plugin-revealjs'
 export default {
   plugins: [
     revealJsPlugin({
-      // Enable reveal.js
-      revealJs: true,
+      // plugin options
     }),
   ],
 }
@@ -46,6 +45,52 @@ export default {
 @slideend
 ```
 
+::: details A basic demo
+
+@slidestart
+
+## Slide Title
+
+A paragraph with some text and a [link](https://mister-hope.com)
+
+---
+
+## Highlight
+
+```js [2-4|1-5]
+const add = (a, b) => {
+  if (typeof b === 'undefined') return a + 1
+
+  return a + b
+}
+```
+
+@slideend
+
+````md
+@slidestart
+
+## Slide Title
+
+A paragraph with some text and a [link](https://mister-hope.com)
+
+---
+
+## Highlight
+
+```js [2-4|1-5]
+const add = (a, b) => {
+  if (typeof b === 'undefined') return a + 1
+
+  return a + b
+}
+```
+
+@slideend
+````
+
+:::
+
 By default, we use `auto` theme to render the presentation, but you can also use other themes with `@slidestart THEME_NAME`.
 
 You can enable the following themes in reveal.js via `themes` in plugin options:
@@ -67,7 +112,21 @@ For the appearance of each theme, see [Themes demo](themes.md).
 
 ## Slide Layout
 
-By default, the plugin registers a global component `SlidePage` to render slides. In pages using this layout, you should only include a single slide syntax and no other contents to avoid rendering problems.
+By default, the plugin registers a global component `SlidePage` to render slides.
+
+In pages using this layout, you should only include a single slide syntax and no other contents to avoid rendering problems.
+
+```md
+---
+layout: SlidePage
+---
+
+@slidestart
+
+<!-- slide content here -->
+
+@slideend
+```
 
 If you do not need this layout or want to use another name, customize `layout` in plugin options.
 

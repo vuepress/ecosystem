@@ -18,8 +18,7 @@ import { revealJsPlugin } from '@vuepress/plugin-revealjs'
 export default {
   plugins: [
     revealJsPlugin({
-      // 启用幻灯片
-      revealJs: true,
+      // 插件选项
     }),
   ],
 }
@@ -46,6 +45,52 @@ export default {
 @slideend
 ```
 
+::: details 示例
+
+@slidestart
+
+## 幻灯片标题
+
+一个拥有文字和 [链接](https://mister-hope.com) 的段落
+
+---
+
+## 代码高亮
+
+```js [2-4|1-5]
+const add = (a, b) => {
+  if (typeof b === 'undefined') return a + 1
+
+  return a + b
+}
+```
+
+@slideend
+
+````md
+@slidestart
+
+## 幻灯片标题
+
+一个拥有文字和 [链接](https://mister-hope.com) 的段落
+
+---
+
+## 代码高亮
+
+```js [2-4|1-5]
+const add = (a, b) => {
+  if (typeof b === 'undefined') return a + 1
+
+  return a + b
+}
+```
+
+@slideend
+````
+
+:::
+
 默认情况下，我们使用 `auto` 主题来渲染幻灯片，你也可以通过 `@slidestart 主题名称` 使用其他主题。
 
 你可以通过插件选项中的 `themes` 启用以下主题:
@@ -67,7 +112,21 @@ export default {
 
 ## 幻灯片布局
 
-默认情况下，插件会注册一个全局组件 `SlidePage` 来渲染幻灯片。在使用此布局的页面中，你应该只包含单个幻灯片语法，不包含其他内容，以避免渲染问题。
+默认情况下，插件会注册一个全局组件 `SlidePage` 来渲染幻灯片。
+
+在使用此布局的页面中，你应该只包含单个幻灯片语法，不包含其他内容，以避免渲染问题:
+
+```md
+---
+layout: SlidePage
+---
+
+@slidestart
+
+<!-- 此处是幻灯片内容 -->
+
+@slideend
+```
 
 如果你不需要此布局或想使用其他名称，请自定义插件选项中的 `layout`。
 
