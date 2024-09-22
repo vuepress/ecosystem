@@ -1,13 +1,15 @@
 import {
   addViteOptimizeDepsExclude,
   addViteSsrExternal,
-  getRealPath,
 } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import type { RevealJsPluginOptions } from './options.js'
-import { prepareRevealJsEntry, prepareRevealJsStyles } from './prepare/index.js'
+import {
+  prepareClientConfigFile,
+  prepareRevealJsEntry,
+} from './prepare/index.js'
 import { revealJs } from './revealJs.js'
-import { CLIENT_FOLDER, PLUGIN_NAME } from './utils.js'
+import { PLUGIN_NAME } from './utils.js'
 
 export const revealJsPlugin = ({
   plugins = [],
@@ -18,15 +20,8 @@ export const revealJsPlugin = ({
   return {
     name: PLUGIN_NAME,
 
-    alias: {
-      '@revealjs/layout': layout
-        ? `${CLIENT_FOLDER}layouts/SlidePage.js`
-        : getRealPath('@vuepress/helper/noopComponent', import.meta.url),
-    },
-
     define: {
       REVEAL_DELAY: delay,
-      REVEAL_LAYOUT: layout,
     },
 
     extendsBundlerOptions: (bundlerOptions, app) => {
@@ -45,13 +40,8 @@ export const revealJsPlugin = ({
       md.use(revealJs)
     },
 
-    onPrepared: async (app) => {
-      await Promise.all([
-        prepareRevealJsEntry(app, plugins),
-        prepareRevealJsStyles(app, themes),
-      ])
-    },
+    onPrepared: async (app) => prepareRevealJsEntry(app, plugins),
 
-    clientConfigFile: `${CLIENT_FOLDER}/config.js`,
+    clientConfigFile: (app) => prepareClientConfigFile(app, themes, layout),
   }
 }

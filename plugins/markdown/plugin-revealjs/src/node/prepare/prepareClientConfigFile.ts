@@ -1,5 +1,4 @@
-import type { App } from 'vuepress/core'
-
+import type { App } from 'vuepress'
 import type { RevealJsTheme } from '../../shared/index.js'
 import { CLIENT_FOLDER } from '../utils.js'
 
@@ -17,11 +16,11 @@ const REVEAL_THEME_CONFIG: [name: RevealJsTheme, fonts?: string[]][] = [
   ['solarized', ['lato']],
   ['white'],
 ]
-
-export const prepareRevealJsStyles = async (
+export const prepareClientConfigFile = async (
   app: App,
   revealThemes: RevealJsTheme[],
-): Promise<void> => {
+  layout: string | false,
+): Promise<string> => {
   const fonts = new Set<string>(['league-gothic', 'source-sans-pro'])
   const themes = new Set<string>()
 
@@ -36,15 +35,30 @@ export const prepareRevealJsStyles = async (
     }
   })
 
-  await app.writeTemp(
-    'revealjs/themes.js',
+  return app.writeTemp(
+    'revealjs/config.js',
     `\
+import RevealJs from "${CLIENT_FOLDER}components/RevealJs.js";
+import { injectRevealJsConfig } from "${CLIENT_FOLDER}helpers/index.js";
+${layout ? `import Layout from "${CLIENT_FOLDER}layouts/SlidePage.js";\n` : ''}\
+
+import "reveal.js/dist/reveal.css";
+import "${CLIENT_FOLDER}/styles/base.css";
+import "${CLIENT_FOLDER}/styles/vars.css";
 ${Array.from(fonts)
   .map((name) => `import "${CLIENT_FOLDER}styles/fonts/${name}.css";`)
   .join('\n')}
 ${Array.from(themes)
   .map((name) => `import "${CLIENT_FOLDER}styles/themes/${name}.css";`)
   .join('\n')}
+
+export default {
+  enhance: ({ app }) => {
+    injectRevealJsConfig(app)
+    app.component("RevealJs", RevealJs)
+  },
+${layout ? `  layouts: { "${layout}": Layout },\n` : ''}\
+};
 `,
   )
 }

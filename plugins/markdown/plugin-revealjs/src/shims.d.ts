@@ -15,18 +15,6 @@ declare module '@temp/revealjs/index.js' {
   ]
 }
 
-declare module '@temp/revealjs/themes.js' {
-  export {}
-}
-
-declare module '@revealjs/layout' {
-  import type { ComponentOptions } from 'vue'
-
-  const component: ComponentOptions
-
-  export default component
-}
-
 declare module '*.css' {
   export {}
 }

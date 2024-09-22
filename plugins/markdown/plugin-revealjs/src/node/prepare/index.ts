@@ -1,2 +1,2 @@
+export * from './prepareClientConfigFile.js'
 export * from './prepareRevealJsEntry.js'
-export * from './prepareRevealJsStyles.js'
