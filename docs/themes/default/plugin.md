@@ -152,3 +152,17 @@ export default {
   Enable [@vuepress/plugin-sitemap](../../plugins/seo/sitemap/README.md) or not.
 
   Object value is supported as plugin options.
+
+## themePlugins.tab
+
+- Type: `MarkdownTabPluginOptions | boolean`
+
+- Default: `true`
+
+- Details:
+
+  Enable [@vuepress/plugin-markdown-tab](../../plugins/markdown/markdown-tab.md) or not.
+
+- Also see:
+  - [Default Theme > Markdown > Code Tabs](./markdown.md#code-tabs)
+  - [Default Theme > Markdown > Tabs](./markdown.md#tabs)
