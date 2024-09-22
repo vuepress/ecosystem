@@ -128,6 +128,10 @@ layout: SlidePage
 @slideend
 ```
 
+You can customize this behavior via `layout` in plugin options with `false` to disable it or another layout name.
+
+你可以
+
 如果你不需要此布局或想使用其他名称，请自定义插件选项中的 `layout`。
 
 ## 演示
@@ -157,7 +161,7 @@ layout: SlidePage
 你也可以在[客户端配置文件][client-config]中导入并调用 `defineRevealJsConfig` 来自定义 reveal.js:
 
 ```ts title=".vuepress/client.ts"
-import { defineRevealJsConfig } from 'vuepress-plugin-md-enhance/client'
+import { defineRevealJsConfig } from '@vuepress/plugin-revealjs/client'
 
 defineRevealJsConfig({
   // 在此设置 reveal.js 选项

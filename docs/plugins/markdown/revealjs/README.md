@@ -128,7 +128,7 @@ layout: SlidePage
 @slideend
 ```
 
-If you do not need this layout or want to use another name, customize `layout` in plugin options.
+You can customize this behavior via `layout` in plugin options with `false` to disable it or another layout name.
 
 ## Demo
 
@@ -157,7 +157,7 @@ You can enable built-in plugins in reveal.js via `plugins` in plugin options. It
 You can also import and call `defineRevealJsConfig` in [client config file][client-config] to customize reveal.js:
 
 ```js title=".vuepress/client.js"
-import { defineRevealJsConfig } from 'vuepress-plugin-md-enhance/client'
+import { defineRevealJsConfig } from '@vuepress/plugin-revealjs/client'
 
 defineRevealJsConfig({
   // reveal.js options here
