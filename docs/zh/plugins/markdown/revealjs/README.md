@@ -130,9 +130,7 @@ layout: SlidePage
 
 You can customize this behavior via `layout` in plugin options with `false` to disable it or another layout name.
 
-你可以
-
-如果你不需要此布局或想使用其他名称，请自定义插件选项中的 `layout`。
+你可以通过插件选项中的 `layout` 来自定义此行为，比如使用 `false` 来禁用它或填入其他布局名称。
 
 ## 演示
 
