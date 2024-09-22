@@ -759,7 +759,7 @@ importers:
         version: 3.5.7(typescript@5.6.2)
       vuepress:
         specifier: 2.0.0-rc.15
-        version: 2.0.0-rc.15(@vuepress/bundler-vite@2.0.0-rc.15(@types/node@22.5.5)(jiti@1.21.6)(lightningcss@1.27.0)(sass-embedded@1.79.2)(sass@1.79.2)(terser@5.33.0)(tsx@4.19.1)(typescript@5.6.2)(yaml@2.4.5))(@vuepress/bundler-webpack@2.0.0-rc.15(typescript@5.6.2))(typescript@5.6.2)(vue@3.5.7(typescript@5.6.2))
+        version: 2.0.0-rc.15(@vuepress/bundler-vite@2.0.0-rc.15(@types/node@22.5.5)(jiti@1.21.6)(lightningcss@1.27.0)(sass-embedded@1.79.3)(sass@1.79.3)(terser@5.33.0)(tsx@4.19.1)(typescript@5.6.2)(yaml@2.4.5))(@vuepress/bundler-webpack@2.0.0-rc.15(typescript@5.6.2))(typescript@5.6.2)(vue@3.5.7(typescript@5.6.2))
     devDependencies:
       markdown-it:
         specifier: ^14.1.0
