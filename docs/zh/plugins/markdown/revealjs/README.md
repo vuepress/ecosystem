@@ -128,8 +128,6 @@ layout: SlidePage
 @slideend
 ```
 
-You can customize this behavior via `layout` in plugin options with `false` to disable it or another layout name.
-
 你可以通过插件选项中的 `layout` 来自定义此行为，比如使用 `false` 来禁用它或填入其他布局名称。
 
 ## 演示
