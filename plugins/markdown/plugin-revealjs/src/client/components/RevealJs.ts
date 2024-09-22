@@ -77,8 +77,8 @@ export default defineComponent({
         hash: isSlidePage,
         mouseWheel: isSlidePage,
         ...frontmatter.value.revealJs,
-        embedded: isSlidePage,
-        keyboardCondition: isSlidePage ? 'focused' : null,
+        embedded: !isSlidePage,
+        keyboardCondition: isSlidePage ? null : 'focused',
         markdown: {
           separator: '^\r?\\n---\r?\n$',
           verticalSeparator: '^\r?\n--\r?\n$',
