@@ -10,9 +10,9 @@ import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
-import { markdownTabPlugin } from '@vuepress/plugin-markdown-tab'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
+import { revealJsPlugin } from '@vuepress/plugin-revealjs'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { defineUserConfig } from 'vuepress'
 import { getDirname, path } from 'vuepress/utils'
@@ -97,12 +97,25 @@ export default defineUserConfig({
       size: true,
     }),
     markdownMathPlugin(),
-    markdownTabPlugin({
-      codeTabs: true,
-      tabs: true,
-    }),
     redirectPlugin({
       switchLocale: 'modal',
+    }),
+    revealJsPlugin({
+      plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
+      themes: [
+        'auto',
+        'beige',
+        'black',
+        'blood',
+        'league',
+        'moon',
+        'night',
+        'serif',
+        'simple',
+        'sky',
+        'solarized',
+        'white',
+      ],
     }),
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, './components'),

@@ -53,6 +53,7 @@
     {
       "path": "./plugins/markdown/plugin-prismjs/tsconfig.build.json"
     },
+    { "path": "./plugins/markdown/plugin-revealjs/tsconfig.build.json" },
     { "path": "./plugins/markdown/plugin-shiki/tsconfig.build.json" },
 
     // features

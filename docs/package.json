@@ -28,6 +28,7 @@
     "@vuepress/plugin-pwa": "workspace:*",
     "@vuepress/plugin-redirect": "workspace:*",
     "@vuepress/plugin-register-components": "workspace:*",
+    "@vuepress/plugin-revealjs": "workspace:*",
     "@vuepress/plugin-search": "workspace:*",
     "@vuepress/plugin-shiki": "workspace:*",
     "@vuepress/plugin-cache": "workspace:*",
