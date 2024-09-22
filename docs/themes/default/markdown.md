@@ -100,64 +100,96 @@ console.log('Hello, VuePress!')
 
 :::
 
-## Custom Containers
-
-- Usage:
-
-  ```md
-  ::: <type> [title]
-  [content]
-  :::
-  ```
-
-  The `type` is required, and the `title` and `content` are optional.
-
-  Supported `type` :
-
-  - Alias of [CodeGroup](./components.md#codegroup) and [CodeGroupItem](./components.md#codegroupitem):
-    - `code-group`
-    - `code-group-item`
-
-- Example:
+## Code Tabs
 
 **Input**
 
 ````md
-:::: code-group
-::: code-group-item FOO
+::: code-tabs
+
+@tab JavaScript
+
+```js
+const name = 'VuePress'
+console.log(`Hello, ${name}!`)
+```
+
+@tab TypeScript
 
 ```ts
-const foo = 'foo'
+const name: string = 'VuePress'
+
+console.log(`Hello, ${name}!`)
 ```
 
 :::
-
-::: code-group-item BAR
-
-```ts
-const bar = 'bar'
-```
-
-:::
-::::
 ````
 
 **Output**
 
-:::: code-group
-::: code-group-item FOO
+::: code-tabs
+
+@tab JavaScript
+
+```js
+const name = 'VuePress'
+console.log(`Hello, ${name}!`)
+```
+
+@tab TypeScript
 
 ```ts
-const foo = 'foo'
+const name: string = 'VuePress'
+
+console.log(`Hello, ${name}!`)
 ```
 
 :::
 
-::: code-group-item BAR
+## Tabs
 
-```ts
-const bar = 'bar'
+**Input**
+
+````md
+::: tabs
+
+@tab Tab1
+
+This is the content of Tab1.
+
+```js
+console.log('Hello, VuePress!')
 ```
 
+@tab Tab2
+
+This is the content of Tab2.
+
+- List item 1
+- List item 2
+- List item 3
+
 :::
-::::
+````
+
+**Output**
+
+::: tabs
+
+@tab Tab1
+
+This is the content of Tab1.
+
+```js
+console.log('Hello, VuePress!')
+```
+
+@tab Tab2
+
+This is the content of Tab2.
+
+- List item 1
+- List item 2
+- List item 3
+
+:::

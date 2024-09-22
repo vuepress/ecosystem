@@ -3,7 +3,7 @@ import { useScrollPromise } from '@theme/useScrollPromise'
 import { setupSidebarItems } from '@theme/useSidebarItems'
 import { hasGlobalComponent } from '@vuepress/helper/client'
 import { defineClientConfig } from 'vuepress/client'
-import { Badge, CodeGroup, CodeGroupItem } from './components/global/index.js'
+import { Badge } from './components/global/index.js'
 import Layout from './layouts/Layout.vue'
 import NotFound from './layouts/NotFound.vue'
 
@@ -14,9 +14,6 @@ import './styles/index.scss'
 export default defineClientConfig({
   enhance({ app, router }) {
     if (!hasGlobalComponent('Badge')) app.component('Badge', Badge)
-    if (!hasGlobalComponent('CodeGroup')) app.component('CodeGroup', CodeGroup)
-    if (!hasGlobalComponent('CodeGroupItem'))
-      app.component('CodeGroupItem', CodeGroupItem)
 
     // handle scrollBehavior with transition
     const scrollBehavior = router.options.scrollBehavior!

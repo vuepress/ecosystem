@@ -8,8 +8,8 @@ import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
 import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 import { gitPlugin } from '@vuepress/plugin-git'
 import { linksCheckPlugin } from '@vuepress/plugin-links-check'
-import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
 import { markdownHintPlugin } from '@vuepress/plugin-markdown-hint'
+import { markdownTabPlugin } from '@vuepress/plugin-markdown-tab'
 import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { palettePlugin } from '@vuepress/plugin-palette'
@@ -156,21 +156,6 @@ export const defaultTheme = ({
           })
         : [],
 
-      themePlugins.container?.codeGroup !== false
-        ? markdownContainerPlugin({
-            type: 'code-group',
-            before: () => `<CodeGroup>\n`,
-            after: () => '</CodeGroup>\n',
-          })
-        : [],
-      themePlugins.container?.codeGroupItem !== false
-        ? markdownContainerPlugin({
-            type: 'code-group-item',
-            before: (info) => `<CodeGroupItem title="${info}">\n`,
-            after: () => '</CodeGroupItem>\n',
-          })
-        : [],
-
       // @vuepress/plugin-git
       themePlugins.git !== false
         ? gitPlugin({
@@ -226,6 +211,15 @@ export const defaultTheme = ({
               ? themePlugins.sitemap
               : {}),
           })
+        : [],
+
+      // @vuepress/plugin-markdown-tab
+      themePlugins.tab !== false
+        ? markdownTabPlugin(
+            isPlainObject(themePlugins.tab)
+              ? themePlugins.tab
+              : { codeTabs: true, tabs: true },
+          )
         : [],
 
       // @vuepress/plugin-theme-data
