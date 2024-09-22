@@ -25,6 +25,15 @@ export interface RevealJsPluginOptions {
   themes?: RevealJsTheme[]
 
   /**
+   * Slide layout name
+   *
+   * 幻灯片布局名称
+   *
+   * @default 'SlidePage'
+   */
+  layout?: string | false
+
+  /**
    * The delay of operating dom, in ms
    *
    * If the theme you are using has a switching animation, it is recommended to configure this option to `Switch animation duration + 200`
