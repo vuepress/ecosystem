@@ -377,9 +377,9 @@ By enabling `highlight` plugin, you can highlight code blocks.
 You can use `[a-b|c-d]` syntax to highlight lines by steps.
 
 ```js [1-2|3|4]
-let a = 1
-let b = 2
-let c = (x) => 1 + 2 + x
+const a = 1
+const b = 2
+const c = (x) => 1 + 2 + x
 c(3)
 ```
 
