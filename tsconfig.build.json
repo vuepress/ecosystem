@@ -49,6 +49,7 @@
     },
     { "path": "./plugins/markdown/plugin-markdown-image/tsconfig.build.json" },
     { "path": "./plugins/markdown/plugin-markdown-math/tsconfig.build.json" },
+    { "path": "./plugins/markdown/plugin-markdown-tab/tsconfig.build.json" },
     {
       "path": "./plugins/markdown/plugin-prismjs/tsconfig.build.json"
     },

@@ -102,6 +102,7 @@ export const sidebarZh: SidebarOptions = {
     'markdown-image',
     'markdown-hint',
     'markdown-math',
+    'markdown-tab',
     'links-check',
     'prismjs',
     {

@@ -10,6 +10,7 @@ import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
+import { markdownTabPlugin } from '@vuepress/plugin-markdown-tab'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { revealJsPlugin } from '@vuepress/plugin-revealjs'
@@ -97,6 +98,10 @@ export default defineUserConfig({
       size: true,
     }),
     markdownMathPlugin(),
+    markdownTabPlugin({
+      codeTabs: true,
+      tabs: true,
+    }),
     redirectPlugin({
       switchLocale: 'modal',
     }),

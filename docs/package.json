@@ -21,6 +21,7 @@
     "@vuepress/plugin-feed": "workspace:*",
     "@vuepress/plugin-markdown-image": "workspace:*",
     "@vuepress/plugin-markdown-math": "workspace:*",
+    "@vuepress/plugin-markdown-tab": "workspace:*",
     "@vuepress/plugin-medium-zoom": "workspace:*",
     "@vuepress/plugin-nprogress": "workspace:*",
     "@vuepress/plugin-photo-swipe": "workspace:*",
@@ -33,7 +34,7 @@
     "@vuepress/plugin-cache": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
     "mathjax-full": "3.2.2",
-    "sass-embedded": "1.79.2",
+    "sass-embedded": "1.79.3",
     "sass-loader": "^16.0.2",
     "vue": "^3.5.7",
     "vuepress": "2.0.0-rc.15"
