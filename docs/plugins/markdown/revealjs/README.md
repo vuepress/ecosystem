@@ -25,41 +25,6 @@ export default {
 }
 ```
 
-## Built-in Plugins
-
-You can enable built-in plugins in reveal.js via `plugins` in plugin options. It accepts an array of the following plugin names:
-
-- `highlight`
-- `math`
-- `search`
-- `notes`
-- `zoom`
-
-::: note
-
-`markdown` plugin is enabled anyway to support markdown grammar.
-
-:::
-
-## Reveal.js Themes
-
-You can enable the following themes in reveal.js via `themes` in plugin options:
-
-- `auto` (Default)
-- `black`
-- `white`
-- `league`
-- `beige`
-- `sky`
-- `night`
-- `serif`
-- `simple`
-- `solarized`
-- `blood`
-- `moon`
-
-By default, only auto theme is enabled.
-
 ## Slide Syntax
 
 - Use `---` to split slides
@@ -83,13 +48,52 @@ By default, only auto theme is enabled.
 
 By default, we use `auto` theme to render the presentation, but you can also use other themes with `@slidestart THEME_NAME`.
 
+You can enable the following themes in reveal.js via `themes` in plugin options:
+
+- `auto` (Default)
+- `black`
+- `white`
+- `league`
+- `beige`
+- `sky`
+- `night`
+- `serif`
+- `simple`
+- `solarized`
+- `blood`
+- `moon`
+
 For the appearance of each theme, see [Themes demo](themes.md).
+
+## Slide Layout
+
+By default, the plugin registers a global component `SlidePage` to render slides. In pages using this layout, you should only include a single slide syntax and no other contents to avoid rendering problems.
+
+If you do not need this layout or want to use another name, customize `layout` in plugin options.
 
 ## Demo
 
 Please see [Slides Demo](demo.md)
 
 ## Customize Reveal.js
+
+### Built-in Plugins
+
+You can enable built-in plugins in reveal.js via `plugins` in plugin options. It accepts an array of the following plugin names:
+
+- `highlight`
+- `math`
+- `search`
+- `notes`
+- `zoom`
+
+::: note
+
+`markdown` plugin is enabled anyway to support markdown grammar.
+
+:::
+
+### Advanced Configuration
 
 You can also import and call `defineRevealJsConfig` in [client config file][client-config] to customize reveal.js:
 
@@ -107,8 +111,45 @@ Reveal.js also provides [more plugins](https://github.com/hakimel/reveal.js/wiki
 
 :::
 
+### Per Page Configuration
+
 You can also set `revealJs` to pass options to reveal.js per page in frontmatter.
 
 For reveal.js options, see [reveal.js config](https://revealjs.com/config/). For reveal.js usage, see [reveal.js documentation](https://revealjs.com/)
+
+## Options
+
+### plugins
+
+- Type: `RevealJsPlugin[]`
+- Details: Built-in reveal plugins to enable
+
+  Available values: `highlight`, `math`, `search`, `notes`, `zoom`
+
+### themes
+
+- Type: `RevealJsTheme[]`
+- Default: `['auto']`
+- Details: Themes to enable
+
+  Available values: `auto`, `black`, `white`, `league`, `beige`, `sky`, `night`, `serif`, `simple`, `solarized`, `blood`, `moon`
+
+### layout
+
+- Type: `string | false`
+- Default: `'SlidePage'`
+- Details: Layout component name to render slides
+
+### delay
+
+- Type: `number`
+- Default: `800`
+- Details: Delay time to render slides
+
+## Styles
+
+You can customize the style via CSS variables:
+
+@[code css](@vuepress/plugin-revealjs/src/client/styles/vars.css)
 
 [client-config]: https://vuejs.press/guide/configuration.html#client-config-file
