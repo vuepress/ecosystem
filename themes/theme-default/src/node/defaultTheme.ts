@@ -23,8 +23,8 @@ import { fs, getDirname, path } from 'vuepress/utils'
 import type {
   DefaultThemeLocaleOptions,
   DefaultThemePageData,
-  DefaultThemePluginsOptions,
 } from '../shared/index.js'
+import type { DefaultThemePluginsOptions } from './typings.js'
 import {
   assignDefaultLocaleOptions,
   resolveMarkdownHintLocales,
