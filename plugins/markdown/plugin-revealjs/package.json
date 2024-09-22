@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-revealjs",
-  "version": "2.0.0-rc.47",
+  "version": "2.0.0-rc.48",
   "description": "VuePress plugin - markdown reveals",
   "keywords": [
     "vuepress-plugin",
