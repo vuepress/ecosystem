@@ -1,76 +1,7 @@
-import type { BackToTopPluginOptions } from '@vuepress/plugin-back-to-top'
-import type { CopyCodePluginOptions } from '@vuepress/plugin-copy-code'
-import type { LinksCheckPluginOptions } from '@vuepress/plugin-links-check'
-import type { MarkdownHintPluginOptions } from '@vuepress/plugin-markdown-hint'
-import type { PrismjsPluginOptions } from '@vuepress/plugin-prismjs'
-import type { SeoPluginOptions } from '@vuepress/plugin-seo'
-import type { SitemapPluginOptions } from '@vuepress/plugin-sitemap'
 import type { ThemeData } from '@vuepress/plugin-theme-data'
 import type { LocaleData } from 'vuepress/shared'
 import type { NavbarOptions } from './navbar.js'
 import type { SidebarOptions } from './sidebar.js'
-
-export interface DefaultThemePluginsOptions {
-  /**
-   * Enable @vuepress/plugin-active-header-links or not
-   */
-  activeHeaderLinks?: boolean
-
-  /**
-   * Enable @vuepress/plugin-back-to-top or not
-   */
-  backToTop?: BackToTopPluginOptions | boolean
-
-  /**
-   * Enable @vuepress/plugin-markdown-container or not
-   */
-  container?: {
-    codeGroup?: boolean
-    codeGroupItem?: boolean
-  }
-
-  /**
-   * Enable @vuepress/plugin-copy-code or not
-   */
-  copyCode?: CopyCodePluginOptions | boolean
-
-  /**
-   * Enable @vuepress/plugin-git or not
-   */
-  git?: boolean
-
-  hint?: MarkdownHintPluginOptions | boolean
-
-  /**
-   * Enable @vuepress/plugin-links-check or not
-   */
-  linksCheck?: LinksCheckPluginOptions | boolean
-
-  /**
-   * Enable @vuepress/plugin-medium-zoom or not
-   */
-  mediumZoom?: boolean
-
-  /**
-   * Enable @vuepress/plugin-nprogress or not
-   */
-  nprogress?: boolean
-
-  /**
-   * Enable @vuepress/plugin-prismjs or not
-   */
-  prismjs?: PrismjsPluginOptions | boolean
-
-  /**
-   * Enable @vuepress/plugin-seo or not
-   */
-  seo?: Partial<SeoPluginOptions> | boolean
-
-  /**
-   * Enable @vuepress/plugin-sitemap or not
-   */
-  sitemap?: Partial<SitemapPluginOptions> | boolean
-}
 
 export type DefaultThemeLocaleOptions = DefaultThemeData
 
