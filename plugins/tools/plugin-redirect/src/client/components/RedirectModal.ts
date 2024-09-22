@@ -1,7 +1,7 @@
 import {
   usePreferredLanguages,
   useScrollLock,
-  useSessionStorage,
+  useLocalStorage,
 } from '@vueuse/core'
 import type { VNode } from 'vue'
 import {
@@ -31,7 +31,7 @@ interface LocaleInfo {
   localePath: string
 }
 
-const redirectStatusStorage = useSessionStorage<Record<string, boolean>>(
+const redirectStatusStorage = useLocalStorage<Record<string, boolean>>(
   'VUEPRESS_REDIRECT_LOCALES',
   {},
 )
