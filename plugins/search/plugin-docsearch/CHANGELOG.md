@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.47](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.46...v2.0.0-rc.47) (2024-09-22)
+
+### Features
+
+- **plugin-docsearch:** improve search box appearance ([5282d3b](https://github.com/vuepress/ecosystem/commit/5282d3b3c5ca63170d2c915e76054cb326c00e11))
+
 # [2.0.0-rc.46](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.45...v2.0.0-rc.46) (2024-09-20)
 
 **Note:** Version bump only for package @vuepress/plugin-docsearch

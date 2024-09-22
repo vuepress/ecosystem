@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.47](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.46...v2.0.0-rc.47) (2024-09-22)
+
+### Bug Fixes
+
+- **plugin-comment:** avoid resolving issues in pnpm ([2e319fe](https://github.com/vuepress/ecosystem/commit/2e319fe75f67419321372c1931419030fa227e1c))
+- **theme-default:** fix hero action button color ([12a8d5d](https://github.com/vuepress/ecosystem/commit/12a8d5dc44198f58999c6ad88c750c775aba4950))
+
+### Features
+
+- add plugin-markdown-tab ([#250](https://github.com/vuepress/ecosystem/issues/250)) ([49ea97c](https://github.com/vuepress/ecosystem/commit/49ea97cf10f07ad3e20b2528d17efc3b6576ac7a))
+- add plugin-revealjs ([#251](https://github.com/vuepress/ecosystem/issues/251)) ([253b959](https://github.com/vuepress/ecosystem/commit/253b959cca19fd8ef9eff5d90f21a147c916899a))
+- **plugin-docsearch:** improve search box appearance ([5282d3b](https://github.com/vuepress/ecosystem/commit/5282d3b3c5ca63170d2c915e76054cb326c00e11))
+- **plugin-markdown-hint:** toggle all details block open before print ([4cb99de](https://github.com/vuepress/ecosystem/commit/4cb99dee940441d030d23d92bf9c6749678e3cd6))
+- **plugin-redirect:** appear target language first ([4ca960a](https://github.com/vuepress/ecosystem/commit/4ca960a90de9dce54c2b45038eec11e3fe9e5d7e))
+
 # [2.0.0-rc.46](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.45...v2.0.0-rc.46) (2024-09-20)
 
 ### Bug Fixes
