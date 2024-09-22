@@ -105,7 +105,23 @@ export default defineUserConfig({
     redirectPlugin({
       switchLocale: 'modal',
     }),
-    revealJsPlugin(),
+    revealJsPlugin({
+      plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
+      themes: [
+        'auto',
+        'beige',
+        'black',
+        'blood',
+        'league',
+        'moon',
+        'night',
+        'serif',
+        'simple',
+        'sky',
+        'solarized',
+        'white',
+      ],
+    }),
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, './components'),
     }),

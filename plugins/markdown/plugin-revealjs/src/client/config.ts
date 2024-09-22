@@ -3,9 +3,10 @@ import { defineClientConfig } from 'vuepress/client'
 import RevealJs from './components/RevealJs.js'
 import { injectRevealJsConfig } from './helpers/index.js'
 
-import '@temp/revealjs/themes.js'
 import 'reveal.js/dist/reveal.css'
+import './styles/base.css'
 import './styles/vars.css'
+import '@temp/revealjs/themes.js'
 
 declare const REVEAL_LAYOUT: string | null
 
