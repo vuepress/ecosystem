@@ -44,7 +44,7 @@
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "^11.1.0",
-    "vue": "^3.5.7"
+    "vue": "^3.5.8"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.15"
