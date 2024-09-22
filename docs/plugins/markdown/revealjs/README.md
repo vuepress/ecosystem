@@ -112,7 +112,7 @@ For the appearance of each theme, see [Themes demo](themes.md).
 
 ## Slide Layout
 
-By default, the plugin registers a global component `SlidePage` to render slides.
+By default, the plugin registers a layout named `SlidePage` for you to render "a slides page".
 
 In pages using this layout, you should only include a single slide syntax and no other contents to avoid rendering problems.
 
