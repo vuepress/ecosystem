@@ -100,64 +100,96 @@ console.log('你好，VuePress！')
 
 :::
 
-## 自定义容器
-
-- 使用：
-
-  ```md
-  ::: <type> [title]
-  [content]
-  :::
-  ```
-
-  `type` 是必需的， `title` 和 `content` 是可选的。
-
-  支持的 `type` 有：
-
-  - [CodeGroup](./components.md#codegroup) 和 [CodeGroupItem](./components.md#codegroupitem) 的别名：
-    - `code-group`
-    - `code-group-item`
-
-- 示例：
+## 代码选项卡
 
 **输入**
 
 ````md
-:::: code-group
-::: code-group-item FOO
+::: code-tabs
+
+@tab JavaScript
+
+```js
+const name = 'VuePress'
+console.log(`你好，${name}！`)
+```
+
+@tab TypeScript
 
 ```ts
-const foo = 'foo'
+const name: string = 'VuePress'
+
+console.log(`你好，${name}！`)
 ```
 
 :::
-
-::: code-group-item BAR
-
-```ts
-const bar = 'bar'
-```
-
-:::
-::::
 ````
 
 **输出**
 
-:::: code-group
-::: code-group-item FOO
+::: code-tabs
+
+@tab JavaScript
+
+```js
+const name = 'VuePress'
+console.log(`你好，${name}！`)
+```
+
+@tab TypeScript
 
 ```ts
-const foo = 'foo'
+const name: string = 'VuePress'
+
+console.log(`你好，${name}！`)
 ```
 
 :::
 
-::: code-group-item BAR
+## 选项卡
 
-```ts
-const bar = 'bar'
+**输入**
+
+````md
+::: tabs
+
+@tab 选项卡 1
+
+这是选项卡 1 的内容。
+
+```js
+console.log('你好，VuePress!')
 ```
 
+@tab 选项卡 2
+
+这是选项卡 2 的内容。
+
+- 列表项 1
+- 列表项 2
+- 列表项 3
+
 :::
-::::
+````
+
+**输出**
+
+::: tabs
+
+@tab 选项卡 1
+
+这是选项卡 1 的内容。
+
+```js
+console.log('你好，VuePress!')
+```
+
+@tab 选项卡 2
+
+这是选项卡 2 的内容。
+
+- 列表项 1
+- 列表项 2
+- 列表项 3
+
+:::
