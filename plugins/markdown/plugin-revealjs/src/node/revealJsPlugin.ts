@@ -22,6 +22,7 @@ export const revealJsPlugin = ({
 
     define: {
       REVEAL_DELAY: delay,
+      REVEAL_LAYOUT: layout,
     },
 
     extendsBundlerOptions: (bundlerOptions, app) => {

@@ -11,7 +11,7 @@ import {
   ref,
   shallowRef,
 } from 'vue'
-import { usePageFrontmatter } from 'vuepress/client'
+import { usePageFrontmatter, usePageLayout } from 'vuepress/client'
 
 import type { RevealJsTheme } from '../../shared/index.js'
 import { useRevealJsConfig } from '../helpers/index.js'
@@ -49,6 +49,8 @@ export default defineComponent({
   setup(props) {
     const revealOptions = useRevealJsConfig()
     const frontmatter = usePageFrontmatter<{ revealJs: Reveal.Options }>()
+    const layout = usePageLayout()
+
     const code = ref('')
     const loading = ref(true)
     const presentationContainer = shallowRef<HTMLElement>()
@@ -65,15 +67,18 @@ export default defineComponent({
 
       const [, { default: RevealJs }, ...plugins] = await Promise.all(promises)
 
+      const isSlidePage = layout.value.name === 'SlidePage'
+
       const instance = new RevealJs(container, {
         backgroundTransition: 'slide',
-        hash: frontmatter.value.layout === 'Slide',
-        mouseWheel: frontmatter.value.layout === 'Slide',
         transition: 'slide',
         slideNumber: true,
         ...revealOptions,
+        hash: isSlidePage,
+        mouseWheel: isSlidePage,
         ...frontmatter.value.revealJs,
-        embedded: frontmatter.value.layout !== 'Slide',
+        embedded: isSlidePage,
+        keyboardCondition: isSlidePage ? 'focused' : null,
         markdown: {
           separator: '^\r?\\n---\r?\n$',
           verticalSeparator: '^\r?\n--\r?\n$',
