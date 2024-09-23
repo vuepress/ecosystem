@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.51](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.50...v2.0.0-rc.51) (2024-09-23)
+
+### Features
+
+- **plugin-redirect:** add remember my choice, close [#253](https://github.com/vuepress/ecosystem/issues/253) ([#259](https://github.com/vuepress/ecosystem/issues/259)) ([8805d9c](https://github.com/vuepress/ecosystem/commit/8805d9c95611facabc3c02cb50d6ee9dafdac852))
+- **plugin-sass-palette:** remove variables staring with underscore in generator ([f329800](https://github.com/vuepress/ecosystem/commit/f329800e357e5a27eb1107252977dd98b29affed))
+
 # [2.0.0-rc.50](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.49...v2.0.0-rc.50) (2024-09-23)
 
 **Note:** Version bump only for package @vuepress/ecosystem
