@@ -57,19 +57,30 @@ export const injectScssConfigModule = (
                 source: string,
                 file: string,
               ): Promise<string> => {
-                const originalContent = isString(originalAdditionalData)
+                let originalContent = isString(originalAdditionalData)
                   ? `${originalAdditionalData}${source}`
                   : isFunction(originalAdditionalData)
                     ? await originalAdditionalData(source, file)
                     : source
 
-                return originalContent.match(
-                  new RegExp(
-                    `@use\\s+["']@sass-palette\\/${getIdPrefix(id)}config["'];`,
-                  ),
+                if (
+                  !originalContent.match(
+                    new RegExp(
+                      `@use\\s+(["'])@sass-palette\\/${getIdPrefix(id)}config\\1;`,
+                    ),
+                  )
                 )
-                  ? originalContent
-                  : `@use "@sass-palette/${getIdPrefix(id)}config";\n${originalContent}`
+                  originalContent = `@use "@sass-palette/${getIdPrefix(id)}config";\n${originalContent}`
+                if (
+                  !originalContent.match(
+                    new RegExp(
+                      `@use\\s+(["'])@sass-palette\\/${getIdPrefix(id)}palette\\1;`,
+                    ),
+                  )
+                )
+                  originalContent = `@use "@sass-palette/${getIdPrefix(id)}palette";\n${originalContent}`
+
+                return originalContent
               },
             },
           },
@@ -90,19 +101,31 @@ export const injectScssConfigModule = (
       content: string,
       loaderContext: SassLoaderContext,
     ): string => {
-      const originalContent = isString(additionalData)
+      let originalContent = isString(additionalData)
         ? `${additionalData}${content}`
         : isFunction(additionalData)
           ? additionalData(content, loaderContext)
           : content
 
-      return originalContent.match(
-        new RegExp(
-          `@use\\s+(["'])@sass-palette\\/${getIdPrefix(id)}config\\1;`,
-        ),
+      if (
+        !originalContent.match(
+          new RegExp(
+            `@use\\s+(["'])@sass-palette\\/${getIdPrefix(id)}config\\1;`,
+          ),
+        )
       )
-        ? originalContent
-        : `@use "@sass-palette/${getIdPrefix(id)}config";\n${originalContent}`
+        originalContent = `@use "@sass-palette/${getIdPrefix(id)}config";\n${originalContent}`
+
+      if (
+        !originalContent.match(
+          new RegExp(
+            `@use\\s+(["'])@sass-palette\\/${getIdPrefix(id)}palette\\1;`,
+          ),
+        )
+      )
+        originalContent = `@use "@sass-palette/${getIdPrefix(id)}palette";\n${originalContent}`
+
+      return originalContent
     }
 
     webpackBundlerConfig.scss.additionalData = additionalDataHandler

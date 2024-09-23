@@ -86,25 +86,15 @@ export const sassPalettePlugin =
 
       onInitialized: (): Promise<void> =>
         Promise.all([
+          prepareConfigSass(app, id, defaultConfig, userConfig),
           prepareInjectSass(app, id),
-
-          prepareConfigSass(app, {
-            id,
-            defaultConfig,
-            defaultPalette,
-            generator,
-            userConfig,
-            userPalette,
-          }),
-
           preparePaletteSass(app, {
             id,
             defaultPalette,
             generator,
             userPalette,
           }),
-
-          prepareStyleSass(app, { id, userStyle }),
+          prepareStyleSass(app, id, userStyle),
         ]).then(() => {
           if (app.env.isDebug) logger.info(`Style file for ${id} generated`)
         }),
@@ -116,14 +106,7 @@ export const sassPalettePlugin =
         })
 
         const updateConfig = (): Promise<void> =>
-          prepareConfigSass(app, {
-            id,
-            defaultConfig,
-            defaultPalette,
-            generator,
-            userConfig,
-            userPalette,
-          }).then(() => {
+          prepareConfigSass(app, id, defaultConfig, userConfig).then(() => {
             if (app.env.isDebug) logger.info(`Style file for ${id} updated`)
           })
 
@@ -143,15 +126,7 @@ export const sassPalettePlugin =
 
         const updatePalette = (): Promise<void> =>
           Promise.all([
-            prepareConfigSass(app, {
-              id,
-              defaultConfig,
-              defaultPalette,
-              generator,
-              userConfig,
-              userPalette,
-            }),
-
+            prepareConfigSass(app, id, defaultConfig, userConfig),
             preparePaletteSass(app, {
               id,
               defaultPalette,
@@ -178,7 +153,7 @@ export const sassPalettePlugin =
           })
 
           const updateStyle = (): Promise<void> =>
-            prepareStyleSass(app, { id, userStyle }).then(() => {
+            prepareStyleSass(app, id, userStyle).then(() => {
               if (app.env.isDebug) logger.info(`Style file for ${id} updated`)
             })
 

@@ -30,11 +30,11 @@ This will allow you to:
 
 - With different ID, plugins and theme won't affect others. We recommend you to set the `id` variable with your plugin name.
 
-  With the default settings, users will set your plugin style under `.vuepress/styles` directory with Sass files starting with your ID prefix. And you can access the variables you need with `${id}-config`.
+  With the default settings, users will set your plugin style under `.vuepress/styles` directory with Sass files starting with your ID prefix. And you can access the variables you need with `${id}-config` and `${id}-paleete`.
 
   ::: tip Example
 
-  `vuepress-theme-hope` is using ID `"hope"`, and just imagine a `vuepress-plugin-abc` is using `"abc"`. They can get their own variables with module name `hope-config` and `abc-config`.
+  `vuepress-theme-hope` is using ID `"hope"`, and just imagine a `vuepress-plugin-abc` is using `"abc"`. They can get their own variables with module name `hope-config` `hope-palette` and `abc-config` `abc-palette`.
 
   :::
 
@@ -48,7 +48,7 @@ This will allow you to:
 
 ## Config
 
-Config file is used for Sass variable only. It holds Sass variables which can be used in other files later.
+Config file is used for Sass variable only. It holds Sass variables which can be used via `${id}-config` in other files later.
 
 You can specify a file (probably in `.vuepress/styles/` directory) as user config file. So you can get the module containing every variable later in Sass files. Also, you are able to provide a default config files where you can place fallback values for variables with `!default`.
 
@@ -101,8 +101,6 @@ If the Scss file is not imported directly, but is imported through `@use` or `@i
 
 Palette files are used for CSS variable injection, where each variable will be injected in to root with kebab-name of variable name.
 
-Same as config file, any variables in palette will be injected into `${id}-config` module, just in case you want to use them in Sass files.
-
 You can specify a file (probably in `.vuepress/styles/` directory) as user palette file, and the default filename is `${id}-palette.scss`. Also, you are able to provide a default palette files where you can place fallback values for variables with `!default`.
 
 ::: details An example
@@ -139,6 +137,8 @@ Then the below CSS variables will be available under root selector:
 ```
 
 :::
+
+Like config file, palette file provides a module named `${$id}-palette` (also including generator values), and it is also limited by `additionalData` option, so you should import the module manually if you want to use it in other Sass files.
 
 ### Color Settings
 
@@ -218,7 +218,7 @@ You can use this helper with `@sass-palette/helper` alias and call its function 
 
 ## Generator
 
-Generator file is facing developers to generate derivative values with config or palette file variables.
+A generator file is facing developers to generate derived values based on configuration or palette file variables. You can directly get palette variables in this file, and also get configuration file variables with `config` prefix.
 
 Generator variables will be also injected as CSS variables like palette, and also they are available in config module.
 
@@ -228,14 +228,21 @@ You may want a `$theme-color-light` based on `$theme-color`. So you can write a 
 
 ```scss
 @use 'sass:color';
-@use 'sass:list';
-@use 'sass:map';
 @use '@sass-palette/helper';
 
 $theme-color-light: (
   light: color.scale(helper.get-color($theme-color), $lightness: 10%),
   dark: color.scale(helper.get-dark-color($theme-color), $lightness: 10%),
 ) !default;
+```
+
+You can also generate values based on variables provided by config files:
+
+```scss
+@use 'sass:color';
+@use '@sass-palette/helper';
+
+$code-c-bg: config.$highlighter == 'shiki'? #fff: #f8f8f8;
 ```
 
 :::

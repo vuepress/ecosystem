@@ -221,6 +221,9 @@ importers:
       '@vuepress/plugin-register-components':
         specifier: workspace:*
         version: link:../plugins/tools/plugin-register-components
+      '@vuepress/plugin-sass-palette':
+        specifier: workspace:*
+        version: link:../plugins/development/plugin-sass-palette
       '@vuepress/plugin-theme-data':
         specifier: workspace:*
         version: link:../plugins/development/plugin-theme-data

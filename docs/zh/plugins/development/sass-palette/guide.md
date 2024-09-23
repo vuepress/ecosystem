@@ -28,11 +28,11 @@
 
 - 设置不同的 ID 时，插件们和主题之间互相完全独立。我们建议你使用你的插件名称设置 `id` 变量。
 
-  使用默认设置，用户将在 `.vuepress/styles` 文件夹下设置你的插件样式，其中 Sass 文件以你的 ID 前缀开头。你可以使用 `${id}-config` 访问所需的变量。
+  使用默认设置，用户将在 `.vuepress/styles` 文件夹下设置你的插件样式，其中 Sass 文件以你的 ID 前缀开头。你可以使用 `${id}-config` 和 `${id}-palette` 访问所需的变量。
 
   ::: tip 示例
 
-  `vuepress-theme-hope` 正在使用 ID `"hope"`，而假设 `vuepress-plugin-abc` 正在使用 `"abc"`。他们可以分别使用 `hope-config` 和 `abc-config` 模块名称获取自己的变量。
+  `vuepress-theme-hope` 正在使用 ID `"hope"`，而假设 `vuepress-plugin-abc` 正在使用 `"abc"`。他们可以分别使用 `hope-config` `hope-palette` 和 `abc-config` `abc-palette` 模块名称获取自己的变量。
 
   :::
 
@@ -46,7 +46,7 @@
 
 ## 配置
 
-配置文件仅用于提供 Sass 变量。它所包含 Sass 变量可以在其他文件中使用。
+配置文件仅用于提供 Sass 变量。它所包含 Sass 变量可以在其他文件中通过 `${id}-config` 使用。
 
 你可以指定一个文件作为用户配置文件。这样你可以稍后在插件 Sass 文件中访问包含每个变量的模块。此外，你还可以提供默认配置文件，你可以在其中使用 `!default` 为变量设置默认值。
 
@@ -99,8 +99,6 @@ $sidebar-width: 18rem !default;
 
 调色板文件用于 CSS 变量注入，其中每个变量将被注入到 root 中，变量名称转换为 kebab-name 格式。
 
-与配置文件相同，调色板中的任何变量都将被注入到 `${id}-config` 模块中，以防万一你想在 SASS 文件中使用它们。
-
 你可以指定一个文件作为用户调色板文件，默认文件名是 `${id}-palette.scss`。 此外，你还可以提供一个默认的调色板文件，你可以在其中使用 `!default` 为变量设置默认值。
 
 ::: details 一个例子
@@ -137,6 +135,8 @@ $color-b: green !default;
 ```
 
 :::
+
+和配置文件一样，调色板文件提供了一个 `${$id}-palette` 模块 (也包含生成器的值)，它也受 `additionalData` 选项的限制，因此如果你想在其他 Sass 文件中使用它，你应该手动导入模块。
 
 ### 颜色设置
 
@@ -216,7 +216,7 @@ $moveTransition: 'width 0.3s ease';
 
 ## 生成器
 
-生成器文件面向开发人员使用配置或调色板文件变量生成衍生值。
+生成器文件面向开发人员使用配置或调色板文件变量生成衍生值。你可以在此文件中直接获取调色板的变量值，也可以通过 `config` 前缀获取配置文件的变量值。
 
 生成器变量也将像调色板一样作为 CSS 变量注入，它们也可以在配置模块中使用。
 
@@ -226,14 +226,21 @@ $moveTransition: 'width 0.3s ease';
 
 ```scss
 @use 'sass:color';
-@use 'sass:list';
-@use 'sass:map';
 @use '@sass-palette/helper';
 
 $theme-color-light: (
   light: color.scale(helper.get-color($theme-color), $lightness: 10%),
   dark: color.scale(helper.get-dark-color($theme-color), $lightness: 10%),
 ) !default;
+```
+
+你也可以基于配置文件提供的变量生成值:
+
+```scss
+@use 'sass:color';
+@use '@sass-palette/helper';
+
+$code-c-bg: config.$highlighter == 'shiki'? #fff: #f8f8f8;
 ```
 
 :::

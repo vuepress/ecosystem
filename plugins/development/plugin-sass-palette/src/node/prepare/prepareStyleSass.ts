@@ -8,7 +8,8 @@ export interface PrepareStyleOptions {
 
 export const prepareStyleSass = (
   app: App,
-  { id, userStyle }: PrepareStyleOptions,
+  id: string,
+  userStyle: string | null,
 ): Promise<string | null> =>
   userStyle
     ? app.writeTemp(
