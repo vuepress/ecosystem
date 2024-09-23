@@ -105,6 +105,7 @@ export const markdownMathPlugin = ({
                 }`,
               )
           },
+          macros: {},
           ...options,
           transformer: (content: string) =>
             content.replace(/^(<[a-z]+ )/g, '$1v-pre '),
