@@ -1,14 +1,23 @@
 // markdown-it plugin for generating line numbers.
 // v-pre block logic is in `../highlight.ts`
 import type { Markdown } from 'vuepress/markdown'
-import type { PreWrapperOptions } from '../types.js'
 import { resolveAttr, resolveLanguage } from '../utils.js'
 
 const PRE_ATTRS_REGEXP = /<pre([\s\S]*?)style="([^"]*)"([^>]*)>/
 
+export interface MarkdownItPreWrapperOptions {
+  /**
+   * Wrap the `<pre>` tag with an extra `<div>` or not. Do not disable it unless you
+   * understand what's it for
+   *
+   * - Required for line numbers, title display and code block collapsing
+   */
+  preWrapper?: boolean
+}
+
 export const preWrapperPlugin = (
   md: Markdown,
-  { preWrapper = true }: PreWrapperOptions = {},
+  { preWrapper = true }: MarkdownItPreWrapperOptions = {},
 ): void => {
   const rawFence = md.renderer.rules.fence!
 

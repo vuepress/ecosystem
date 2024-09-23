@@ -1,9 +1,12 @@
+import type { MarkdownItKatexOptions } from '@mdit/plugin-katex-slim'
 import { katex } from '@mdit/plugin-katex-slim'
+import type { MathjaxInstance } from '@mdit/plugin-mathjax-slim'
 import { createMathjaxInstance, mathjax } from '@mdit/plugin-mathjax-slim'
 import { addCustomElement, getInstalledStatus } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import { colors, logger } from 'vuepress/utils'
 import type {
+  MarkdownKatexPluginOptions,
   MarkdownMathPluginOptions,
   MarkdownMathjaxPluginOptions,
 } from './options.js'
@@ -64,7 +67,7 @@ export const markdownMathPlugin = ({
 
     extendsMarkdown: (md) => {
       if (mathRenderer === 'mathjax') {
-        md.use(mathjax, mathjaxInstance!)
+        md.use<MathjaxInstance>(mathjax, mathjaxInstance!)
         // Reset mathjax style in each render
         md.use((mdIt) => {
           const originalRender = mdIt.render.bind(mdIt)
@@ -78,15 +81,12 @@ export const markdownMathPlugin = ({
           }
         })
       } else {
-        md.use(katex, {
-          logger: (
-            errorCode,
-            errorMsg,
-            token: Record<string, unknown> & { text: string },
-            {
-              filePathRelative,
-            }: Record<string, unknown> & { filePathRelative?: string | null },
-          ) => {
+        md.use<MarkdownItKatexOptions>(katex, {
+          logger: (errorCode, errorMsg, token, env) => {
+            const { filePathRelative } = env as {
+              filePathRelative?: string | null
+            }
+
             // Ignore this error
             if (errorCode === 'newLineInDisplayMode') return
 
@@ -106,9 +106,8 @@ export const markdownMathPlugin = ({
               )
           },
           macros: {},
-          ...options,
-          transformer: (content: string) =>
-            content.replace(/^(<[a-z]+ )/g, '$1v-pre '),
+          ...(options as Omit<MarkdownKatexPluginOptions, 'type'>),
+          transformer: (content) => content.replace(/^(<[a-z]+ )/g, '$1v-pre '),
         })
       }
     },

@@ -156,14 +156,3 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
    */
   logLevel?: 'debug' | 'silent' | 'warn'
 }
-
-export interface PreWrapperOptions {
-  /**
-   * Wrap the `<pre>` tag with an extra `<div>` or not. Do not disable it unless you
-   * understand what's it for
-   *
-   * - Required for `lineNumbers`
-   * - Required for title display of default theme
-   */
-  preWrapper?: boolean
-}

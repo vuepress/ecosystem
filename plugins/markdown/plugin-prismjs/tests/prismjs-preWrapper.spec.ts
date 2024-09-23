@@ -1,3 +1,7 @@
+import type {
+  MarkdownItCollapsedLinesOptions,
+  MarkdownItLineNumbersOptions,
+} from '@vuepress/highlighter-helper'
 import {
   collapsedLines as collapsedLinesPlugin,
   lineNumbers as lineNumbersPlugin,
@@ -5,8 +9,8 @@ import {
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it, vi } from 'vitest'
 import type {
-  HighlightOptions,
-  PreWrapperOptions,
+  MarkdownItPreWrapperOptions,
+  MarkdownItPrismjsHighlightOptions,
   PrismjsPluginOptions,
 } from '../src/node/index.js'
 import { highlightPlugin, preWrapperPlugin } from '../src/node/index.js'
@@ -26,11 +30,17 @@ const createMarkdown = ({
     const highlighter = resolveHighlighter(lang)
     return highlighter?.(code) || ''
   }
-  md.use<HighlightOptions>(highlightPlugin, options)
-  md.use<PreWrapperOptions>(preWrapperPlugin, { preWrapper })
+  md.use<MarkdownItPrismjsHighlightOptions>(highlightPlugin, options)
+  md.use<MarkdownItPreWrapperOptions>(preWrapperPlugin, { preWrapper })
   if (preWrapper) {
-    md.use(lineNumbersPlugin, { lineNumbers, removeLastLine: true })
-    md.use(collapsedLinesPlugin, { collapsedLines, removeLastLine: true })
+    md.use<MarkdownItLineNumbersOptions>(lineNumbersPlugin, {
+      lineNumbers,
+      removeLastLine: true,
+    })
+    md.use<MarkdownItCollapsedLinesOptions>(collapsedLinesPlugin, {
+      collapsedLines,
+      removeLastLine: true,
+    })
   }
   return md
 }

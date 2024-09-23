@@ -9,35 +9,33 @@ import {
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 import type { App } from 'vuepress'
+import type { MarkdownItPreWrapperOptions } from '../src/node/markdown/index.js'
 import {
   applyHighlighter,
   highlightLinesPlugin,
   preWrapperPlugin,
 } from '../src/node/markdown/index.js'
-import type {
-  PreWrapperOptions,
-  ShikiHighlightOptions,
-} from '../src/node/types.js'
+import type { ShikiPluginOptions } from '../src/node/options.js'
 
 const createMarkdown = async ({
   preWrapper = true,
   lineNumbers = true,
   collapsedLines = false,
   ...options
-}: MarkdownItCollapsedLinesOptions &
-  MarkdownItLineNumbersOptions &
-  PreWrapperOptions &
-  ShikiHighlightOptions = {}): Promise<MarkdownIt> => {
+}: ShikiPluginOptions = {}): Promise<MarkdownIt> => {
   const md = MarkdownIt()
 
   await applyHighlighter(md, { env: { isDebug: false } } as App, options)
 
   md.use(highlightLinesPlugin)
-  md.use(preWrapperPlugin, { preWrapper })
+  md.use<MarkdownItPreWrapperOptions>(preWrapperPlugin, { preWrapper })
   if (preWrapper) {
-    md.use(lineNumbersPlugin, { lineNumbers })
-    if (collapsedLines !== 'disable')
-      md.use(collapsedLinesPlugin, { collapsedLines })
+    md.use<MarkdownItLineNumbersOptions>(lineNumbersPlugin, {
+      lineNumbers,
+    })
+    md.use<MarkdownItCollapsedLinesOptions>(collapsedLinesPlugin, {
+      collapsedLines,
+    })
   }
   return md
 }

@@ -1,4 +1,5 @@
-import type { PrismjsPluginOptions, PrismjsTheme } from './options.js'
+import type { PrismjsPluginOptions } from './options.js'
+import type { PrismjsTheme } from './types.js'
 
 const PRISMJS_THEMES: PrismjsTheme[] = [
   'ateliersulphurpool-light',

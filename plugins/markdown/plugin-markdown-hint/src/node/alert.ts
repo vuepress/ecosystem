@@ -1,3 +1,4 @@
+import type { MarkdownItAlertOptions as _MarkdownItAlertOptions } from '@mdit/plugin-alert'
 import { alert as _alert } from '@mdit/plugin-alert'
 import type { ExactLocaleConfig } from '@vuepress/helper'
 import { ensureLeadingSlash } from '@vuepress/helper'
@@ -14,9 +15,9 @@ export const alert: PluginWithOptions<MarkdownItAlertOptions> = (
   md,
   options = {},
 ) => {
-  md.use(_alert, {
+  md.use<_MarkdownItAlertOptions>(_alert, {
     alertNames: ['important', 'note', 'tip', 'warning', 'caution', 'info'],
-    openRender: (tokens, index): string =>
+    openRender: (tokens, index) =>
       `<div class="hint-container ${tokens[index].markup}">\n`,
     titleRender: (tokens, index, _options, env: MarkdownEnv) => {
       const type = tokens[index].markup
