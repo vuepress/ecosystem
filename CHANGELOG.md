@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.49](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.48...v2.0.0-rc.49) (2024-09-23)
+
+### Bug Fixes
+
+- **plugin-markdown-math:** incorrect import css path ([#256](https://github.com/vuepress/ecosystem/issues/256)) ([4e61424](https://github.com/vuepress/ecosystem/commit/4e6142496e2e80472d377d58cfbf538e5a51a981))
+
+### Features
+
+- **plugin-prismjs:** improve highlight color generation ([492cd27](https://github.com/vuepress/ecosystem/commit/492cd2746821e1e3554f8a46de14042c107bb68b))
+
 # [2.0.0-rc.48](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.47...v2.0.0-rc.48) (2024-09-22)
 
 ### Bug Fixes
