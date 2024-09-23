@@ -5,7 +5,7 @@ test.describe('plugin-sass-palette', () => {
     await page.goto('sass-palette/')
 
     await expect(page.locator('#length')).toHaveText('1rem')
-    await expect(page.locator('#complex')).toHaveText('0.1s ease')
+    await expect(page.locator('#complex')).toHaveText('1s ease')
   })
 
   test('default palette', async ({ page }) => {
