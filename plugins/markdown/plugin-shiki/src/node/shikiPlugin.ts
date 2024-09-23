@@ -1,9 +1,14 @@
+import type {
+  MarkdownItCollapsedLinesOptions,
+  MarkdownItLineNumbersOptions,
+} from '@vuepress/highlighter-helper'
 import {
   collapsedLines as collapsedLinesPlugin,
   lineNumbers as lineNumbersPlugin,
 } from '@vuepress/highlighter-helper'
 import type { Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
+import type { MarkdownItPreWrapperOptions } from './markdown/index.js'
 import {
   applyHighlighter,
   highlightLinesPlugin,
@@ -36,12 +41,14 @@ export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => {
       const { preWrapper, lineNumbers, collapsedLines } = opt
 
       md.use(highlightLinesPlugin)
-      md.use(preWrapperPlugin, { preWrapper })
+      md.use<MarkdownItPreWrapperOptions>(preWrapperPlugin, { preWrapper })
       if (preWrapper) {
-        if (lineNumbers !== 'disable')
-          md.use(lineNumbersPlugin, { lineNumbers })
-        if (collapsedLines !== 'disable')
-          md.use(collapsedLinesPlugin, { collapsedLines })
+        md.use<MarkdownItLineNumbersOptions>(lineNumbersPlugin, {
+          lineNumbers,
+        })
+        md.use<MarkdownItCollapsedLinesOptions>(collapsedLinesPlugin, {
+          collapsedLines,
+        })
       }
     },
 

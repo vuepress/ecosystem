@@ -4,8 +4,8 @@ export interface MarkdownItCollapsedLinesOptions {
    *
    * - If `number`, collapse starts from line `number`.
    * - If `true`, collapse starts from line 15 by default.
-   * - If `false`, do not enable `collapsedLines` globally, but you can enable it for individual code blocks using `:collapsed-lines`
-   * - If `'disable'`, Completely disable `collapsedLines`
+   * - If `false`, do not enable code block collapsing globally, but you can enable it for individual code blocks using `:collapsed-lines`
+   * - If `'disable'`, Completely disable code block collapsing
    * @default 'disable'
    */
   collapsedLines?: boolean | number | 'disable'
