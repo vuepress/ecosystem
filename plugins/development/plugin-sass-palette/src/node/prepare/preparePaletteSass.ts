@@ -15,7 +15,6 @@ export const preparePaletteSass = (
   app.writeTemp(
     `sass-palette/${getIdPrefix(id)}palette.scss`,
     `\
-@use "@sass-palette/${getIdPrefix(id)}config" as config;
 ${defaultPalette ? `@import "file:///${getPath(defaultPalette)}";` : ''}
 @import "file:///${getPath(userPalette)}";
 @import "file:///${getPath(generator)}";

@@ -19,9 +19,20 @@
 
   @for $i from 1 through $length {
     $char: string.slice($string, $i, $i);
-    $property: '#{$property}#{if(is-upper-case($char), '-#{string.to-lower-case(
-        $char
-      )}',$char)}';
+
+    @if is-upper-case($char) {
+      $lower-char: string.to-lower-case($char);
+
+      @if $i != 1 {
+        $property: '#{$property}-#{$lower-char}';
+      } @else {
+        $property: '#{$property}#{$lower-char}';
+      }
+    } @else if $char == '_' {
+      $property: '#{$property}-';
+    } @else {
+      $property: '#{$property}#{$char}';
+    }
   }
 
   @return $property;
@@ -73,19 +84,21 @@
   @each $name, $value in $variables {
     $key: camel-to-kebab($name);
 
-    @if meta.type-of($value) == number or meta.type-of($value) == string {
-      $root-variables: map.set($root-variables, $key, $value);
-    } @else if color-is-legal($value) {
-      $light-color: get-color($value, false);
-      $dark-color: get-color($value, true);
-      $root-variables: map.set($root-variables, $key, $light-color);
+    @if string.slice($name, 1, 1) != '_' {
+      @if meta.type-of($value) == number or meta.type-of($value) == string {
+        $root-variables: map.set($root-variables, $key, $value);
+      } @else if color-is-legal($value) {
+        $light-color: get-color($value, false);
+        $dark-color: get-color($value, true);
+        $root-variables: map.set($root-variables, $key, $light-color);
 
-      @if $light-color != $dark-color {
-        $dark-variables: map.set(
-          $dark-variables,
-          $key,
-          get-color($value, true)
-        );
+        @if $light-color != $dark-color {
+          $dark-variables: map.set(
+            $dark-variables,
+            $key,
+            get-color($value, true)
+          );
+        }
       }
     }
   }

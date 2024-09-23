@@ -1,4 +1,14 @@
-/* stylelint-disable scss/dollar-variable-pattern */
-$colorA: $color1 !default;
-$colorB: $color2 !default;
-$color3: '#{config.$colors}';
+/* stylelint-disable */
+@use 'sass:color';
+@use 'sass:list';
+@use 'sass:map';
+@use '@sass-palette/helper';
+@use '@sass-palette/test-config';
+
+$color-default: $kebab-color !default;
+$color-user: $color !default;
+$color-generator: #0ff !default;
+
+$config_colors: '#{test-config.$colors}';
+$_count: list.length(test-config.$colors);
+$color-count: $_count;

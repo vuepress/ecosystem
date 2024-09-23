@@ -218,9 +218,11 @@ You can use this helper with `@sass-palette/helper` alias and call its function 
 
 ## Generator
 
-A generator file is facing developers to generate derived values based on configuration or palette file variables. You can directly get palette variables in this file, and also get configuration file variables with `config` prefix.
+A generator file is facing developers to generate derived values based on palette file variables.
 
-Generator variables will be also injected as CSS variables like palette, and also they are available in config module.
+You can access variables from palette file directly in this file and generate new values based on them.
+
+Variables in generator file will be also injected as CSS variables like palette, and they will be available in palette module.
 
 ::: details Example
 
@@ -236,13 +238,15 @@ $theme-color-light: (
 ) !default;
 ```
 
-You can also generate values based on variables provided by config files:
+You can also generate values based on variables provided by config files by importing it:
 
 ```scss
+// generator with id "abc"
 @use 'sass:color';
+@use '@sass-palette/abc-config';
 @use '@sass-palette/helper';
 
-$code-c-bg: config.$highlighter == 'shiki'? #fff: #f8f8f8;
+$code-c-bg: abc-config.$highlighter == 'shiki'? #fff: #f8f8f8;
 ```
 
 :::

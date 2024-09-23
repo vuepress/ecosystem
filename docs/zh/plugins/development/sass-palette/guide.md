@@ -216,9 +216,11 @@ $moveTransition: 'width 0.3s ease';
 
 ## 生成器
 
-生成器文件面向开发人员使用配置或调色板文件变量生成衍生值。你可以在此文件中直接获取调色板的变量值，也可以通过 `config` 前缀获取配置文件的变量值。
+生成器文件面向开发人员使用配置或调色板文件变量生成衍生值。
 
-生成器变量也将像调色板一样作为 CSS 变量注入，它们也可以在配置模块中使用。
+你可以在此文件中直接获取调色板的变量值，并生成基于它们的新值。
+
+生成器变量也将像调色板一样作为 CSS 变量注入，它们也在调色板模块中可用。
 
 ::: details 示例
 
@@ -234,13 +236,15 @@ $theme-color-light: (
 ) !default;
 ```
 
-你也可以基于配置文件提供的变量生成值:
+你也可以通过导入配置文件来基于配置文件提供的变量生成值:
 
 ```scss
+// id 为 "abc" 的生成器
 @use 'sass:color';
+@use '@sass-palette/abc-config';
 @use '@sass-palette/helper';
 
-$code-c-bg: config.$highlighter == 'shiki'? #fff: #f8f8f8;
+$code-c-bg: abc-config.$highlighter == 'shiki'? #fff: #f8f8f8;
 ```
 
 :::
