@@ -3,6 +3,8 @@ import type { ExactLocaleConfig } from '@vuepress/helper/shared'
 export interface RedirectPluginLocaleData {
   /**
    * Language name
+   *
+   * 语言名称
    */
   name: string
 
@@ -15,6 +17,8 @@ export interface RedirectPluginLocaleData {
 
   /**
    * Switch button text
+   *
+   * 切换按钮文字
    */
   switch: string
 
@@ -24,6 +28,13 @@ export interface RedirectPluginLocaleData {
    * 取消按钮文字
    */
   cancel: string
+
+  /**
+   * remember hint text
+   *
+   * 记住提示文本
+   */
+  remember: string
 }
 
 export type RedirectPluginLocaleConfig =
