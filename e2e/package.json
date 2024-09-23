@@ -25,6 +25,7 @@
     "@vuepress/plugin-pwa": "workspace:*",
     "@vuepress/plugin-redirect": "workspace:*",
     "@vuepress/plugin-register-components": "workspace:*",
+    "@vuepress/plugin-sass-palette": "workspace:*",
     "@vuepress/plugin-theme-data": "workspace:*",
     "@vuepress/plugin-watermark": "workspace:*",
     "@vuepress/theme-default": "workspace:*",

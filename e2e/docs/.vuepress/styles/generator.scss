@@ -1,0 +1,4 @@
+/* stylelint-disable scss/dollar-variable-pattern */
+$colorA: $color1 !default;
+$colorB: $color2 !default;
+$color3: '#{config.$colors}';
