@@ -1,4 +1,5 @@
 import {
+  useLocalStorage,
   usePreferredLanguages,
   useScrollLock,
   useSessionStorage,
@@ -31,8 +32,14 @@ interface LocaleInfo {
   localePath: string
 }
 
-const redirectStatusStorage = useSessionStorage<Record<string, boolean>>(
-  'VUEPRESS_REDIRECT_LOCALES',
+const REDIRECT_STORAGE_KEY = 'VUEPRESS_REDIRECT_STATUS'
+
+const redirectStatusSessionStorage = useSessionStorage<Record<string, boolean>>(
+  REDIRECT_STORAGE_KEY,
+  {},
+)
+const redirectStatusLocalStorage = useLocalStorage<Record<string, boolean>>(
+  REDIRECT_STORAGE_KEY,
   {},
 )
 
@@ -48,6 +55,7 @@ export default defineComponent({
     const body = ref<HTMLElement>()
     // lock body scroll when modal is displayed
     const showModal = useScrollLock(body)
+    const shouldRemember = ref(false)
 
     const info = computed<LocaleInfo | null>(() => {
       if (redirectLocaleEntries.some(([key]) => routeLocale.value === key))
@@ -79,6 +87,7 @@ export default defineComponent({
             .map(({ switch: switchText }) => switchText.replace('$1', lang))
             .join(' / '),
           cancel: locales.map(({ cancel }) => cancel).join(' / '),
+          remember: locales.map(({ remember }) => remember).join(' / '),
         }
       }
 
@@ -100,9 +109,16 @@ export default defineComponent({
 
       await nextTick()
 
-      if (!redirectStatusStorage.value[routeLocale.value] && info.value) {
+      if (
+        !redirectStatusSessionStorage.value[routeLocale.value] &&
+        info.value
+      ) {
         if (switchLocale === 'direct') redirect()
-        else if (switchLocale === 'modal') showModal.value = true
+        else if (
+          switchLocale === 'modal' &&
+          !redirectStatusLocalStorage.value[routeLocale.value]
+        )
+          showModal.value = true
       }
     })
 
@@ -128,13 +144,33 @@ export default defineComponent({
                     { class: 'redirect-modal-content' },
                     locale.value?.hint.map((text) => h('p', text)),
                   ),
+                  h('div', { class: 'redirect-modal-hint' }, [
+                    h('input', {
+                      id: 'remember-redirect',
+                      type: 'checkbox',
+                      value: shouldRemember.value,
+                      onChange: () => {
+                        shouldRemember.value = !shouldRemember.value
+                      },
+                    }),
+                    h(
+                      'label',
+                      { for: 'remember-redirect' },
+                      locale.value?.remember,
+                    ),
+                  ]),
                   h(
                     'button',
                     {
                       type: 'button',
                       class: 'redirect-modal-action primary',
                       onClick: () => {
-                        redirectStatusStorage.value[routeLocale.value] = true
+                        redirectStatusSessionStorage.value[routeLocale.value] =
+                          true
+                        if (shouldRemember.value) {
+                          redirectStatusLocalStorage.value[routeLocale.value] =
+                            true
+                        }
                         showModal.value = false
                         redirect()
                       },
@@ -147,7 +183,12 @@ export default defineComponent({
                       type: 'button',
                       class: 'redirect-modal-action',
                       onClick: () => {
-                        redirectStatusStorage.value[routeLocale.value] = true
+                        redirectStatusSessionStorage.value[routeLocale.value] =
+                          true
+                        if (shouldRemember.value) {
+                          redirectStatusLocalStorage.value[routeLocale.value] =
+                            true
+                        }
                         showModal.value = false
                       },
                     },
