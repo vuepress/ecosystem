@@ -1,4 +1,6 @@
 :root {
+  --hint-font-size: 0.9rem;
+
   /* important */
   --important-c-accent: var(--vp-c-purple-bg);
   --important-c-text: var(--vp-c-purple-text);
