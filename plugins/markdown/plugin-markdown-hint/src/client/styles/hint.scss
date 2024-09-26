@@ -8,7 +8,6 @@
   background: var(--hint-c-soft);
   transition:
     background var(--vp-t-color),
-    border-color var(--vp-t-color),
     color var(--vp-t-color);
 
   @media print {
@@ -36,20 +35,21 @@
   &.tip,
   &.warning,
   &.caution {
-    margin: 0.85rem 0;
-    padding: 0.25rem 1rem;
-    border-inline-start-width: 0.3rem;
-    border-inline-start-style: solid;
-    border-radius: 0.5rem;
+    margin-block: 0.75rem;
+    padding: 0.25em 1em;
+    border-radius: 0.5em;
 
     color: inherit;
 
-    @media (max-width: 419px) {
-      margin-inline: -0.75rem;
+    font-size: var(--hint-font-size);
+
+    @media print {
+      border-inline-start-width: 0.25em;
+      border-inline-start-style: solid;
     }
 
     .hint-container-title {
-      padding-inline-start: 1.75rem;
+      padding-inline-start: 1.75em;
 
       @media print {
         padding-inline-start: 0;
@@ -147,8 +147,8 @@
 
     display: block;
 
-    margin: 1rem 0;
-    padding: 1.5rem;
+    margin-block: 0.75rem;
+    padding: 1.25rem 1rem;
     border-radius: 0.5rem;
 
     background: var(--detail-c-bg);
@@ -156,10 +156,6 @@
     transition:
       background var(--vp-t-transform),
       color var(--vp-t-transform);
-
-    @media (max-width: 419px) {
-      margin-inline: -0.75rem;
-    }
 
     h4 {
       margin-top: 0;
@@ -184,11 +180,13 @@
     summary {
       position: relative;
 
-      margin: -1.5rem;
-      padding-block: 1.5rem;
-      padding-inline: 4rem 1.5rem;
+      margin: -1rem;
+      padding-block: 1em;
+      padding-inline: 3em 1.5em;
 
       list-style: none;
+
+      font-size: var(--hint-font-size);
 
       cursor: pointer;
 
@@ -202,32 +200,26 @@
         font-size: 0;
       }
 
-      &::before,
-      &::after {
+      &::before {
+        @include svg.mask-svg(icons.$detail-icon);
+
         content: ' ';
 
         position: absolute;
-        inset-inline-start: 1.5rem;
-        top: calc(50% - 0.75rem);
+        inset-inline-start: 0.8em;
+        top: calc(50% - 0.5em);
 
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 1em;
+        height: 1em;
 
-        font-size: 1.5rem;
-      }
-
-      &::before {
-        border-radius: 50%;
-        background: var(--detail-c-icon);
-        transition:
-          background var(--vp-t-color),
-          transform var(--vp-t-transform);
-      }
-
-      &::after {
-        @include svg.mask-svg(icons.$detail-icon);
+        font-size: 1.25rem;
         line-height: normal;
-        transition: transform var(--vp-t-transform);
+
+        transition:
+          color,
+          var(--vp-t-color),
+          transform var(--vp-t-transform);
+
         transform: rotate(90deg);
       }
     }
@@ -235,7 +227,7 @@
     &[open] > summary {
       margin-bottom: 0.5em;
 
-      &::after {
+      &::before {
         transform: rotate(180deg);
       }
     }
