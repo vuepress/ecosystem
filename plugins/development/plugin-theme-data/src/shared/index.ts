@@ -1,1 +1,1 @@
-export * from './themeData.js'
+export type * from './themeData.js'

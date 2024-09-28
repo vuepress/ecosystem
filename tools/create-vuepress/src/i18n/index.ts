@@ -3,7 +3,7 @@ import { en } from './en.js'
 import type { CreateLocaleOptions, Lang } from './typings.js'
 import { zh } from './zh.js'
 
-export * from './typings.js'
+export type * from './typings.js'
 
 const i18n: Record<Lang, CreateLocaleOptions> = {
   en,

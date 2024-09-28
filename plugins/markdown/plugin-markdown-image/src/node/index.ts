@@ -1,2 +1,2 @@
 export * from './markdownImagePlugin.js'
-export * from './options.js'
+export type * from './options.js'

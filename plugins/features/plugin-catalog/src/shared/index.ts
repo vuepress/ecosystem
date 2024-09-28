@@ -1,1 +1,1 @@
-export * from './locales.js'
+export type * from './locales.js'

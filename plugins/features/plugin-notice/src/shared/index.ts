@@ -1,1 +1,1 @@
-export * from './notice.js'
+export type * from './notice.js'

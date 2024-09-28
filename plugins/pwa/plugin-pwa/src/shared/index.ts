@@ -1,2 +1,2 @@
-export * from './locales.js'
-export * from './manifest.js'
+export type * from './locales.js'
+export type * from './manifest.js'

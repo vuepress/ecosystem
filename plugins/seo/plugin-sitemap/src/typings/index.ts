@@ -1,3 +1,3 @@
-export * from './frontmatter.js'
-export * from './options.js'
-export * from './sitemap.js'
+export type * from './frontmatter.js'
+export type * from './options.js'
+export type * from './sitemap.js'

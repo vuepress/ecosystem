@@ -1,1 +1,1 @@
-export * from './theme.js'
+export type * from './theme.js'

@@ -1,2 +1,2 @@
 export * from './appendDatePlugin.js'
-export * from './options.js'
+export type * from './options.js'
