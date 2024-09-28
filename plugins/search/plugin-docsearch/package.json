@@ -39,13 +39,13 @@
     "copy": "cpx \"src/**/*.css\" lib"
   },
   "dependencies": {
-    "@docsearch/css": "^3.6.1",
-    "@docsearch/js": "^3.6.1",
-    "@docsearch/react": "^3.6.1",
+    "@docsearch/css": "^3.6.2",
+    "@docsearch/js": "^3.6.2",
+    "@docsearch/react": "^3.6.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "^11.1.0",
     "ts-debounce": "^4.0.0",
-    "vue": "^3.5.8"
+    "vue": "^3.5.10"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.15"
