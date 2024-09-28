@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "chokidar": "^4.0.0"
+    "chokidar": "^4.0.1"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.15"

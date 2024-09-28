@@ -1,7 +1,7 @@
 import { defaultTheme } from './defaultTheme.js'
 
 export * from './defaultTheme.js'
-export * from './typings.js'
+export type * from './typings.js'
 export * from './utils/index.js'
 export type * from '../shared/index.js'
 /** @deprecated Use named export instead */

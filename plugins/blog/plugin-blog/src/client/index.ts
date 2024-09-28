@@ -1,3 +1,3 @@
 export * from './composables/index.js'
-export * from './typings.js'
-export * from '../shared/index.js'
+export type * from './typings.js'
+export type * from '../shared/index.js'
