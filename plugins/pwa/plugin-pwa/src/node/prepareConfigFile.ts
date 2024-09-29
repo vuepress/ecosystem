@@ -1,8 +1,9 @@
 import { getRealPath } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
+import { getDirname, path } from 'vuepress/utils'
 import type { PwaPluginOptions } from './options.js'
 
-const CLIENT_ENTRY = getRealPath('@vuepress/plugin-pwa/client', import.meta.url)
+const __dirname = getDirname(import.meta.url)
 
 export const prepareConfigFile = (
   app: App,
@@ -13,7 +14,7 @@ export const prepareConfigFile = (
 
   if (options.showInstall) {
     configImport += `\
-import { PwaInstall as _PwaInstall } from "${CLIENT_ENTRY}";
+import { PwaInstall as _PwaInstall } from "${path.join(__dirname, '../client/components/PwaInstall.js')}";
 `
 
     rootComponents.push('PwaInstall')
@@ -22,7 +23,8 @@ import { PwaInstall as _PwaInstall } from "${CLIENT_ENTRY}";
   if (options.update === 'hint') {
     configImport += `\
 import { PwaFoundPopup as _PwaFoundPopup } from "${
-      options.foundComponent || CLIENT_ENTRY
+      options.foundComponent ||
+      path.join(__dirname, '../client/components/PwaFoundPopup.js')
     }";
 `
 
@@ -30,7 +32,8 @@ import { PwaFoundPopup as _PwaFoundPopup } from "${
   } else if (options.update !== 'disable' && options.update !== 'force') {
     configImport += `\
 import { PwaReadyPopup as _PwaReadyPopup } from "${
-      options.readyComponent || CLIENT_ENTRY
+      options.readyComponent ||
+      path.join(__dirname, '../client/components/PwaReadyPopup.js')
     }";
 `
 
@@ -42,7 +45,7 @@ import { PwaReadyPopup as _PwaReadyPopup } from "${
     `\
 import { h }  from "vue";
 import { defineClientConfig } from "vuepress/client";
-import { setupPwa, setupViewPoint } from "${CLIENT_ENTRY}";
+import { setupPwa, setupViewPoint } from "${path.join(__dirname, '../client/composables/index.js')}";
 ${configImport}
 import "${getRealPath('@vuepress/plugin-pwa/styles/vars.css', import.meta.url)}";
 
