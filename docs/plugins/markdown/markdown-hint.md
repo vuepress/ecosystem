@@ -4,6 +4,8 @@
 
 Add gfm alerts and hint containers to your VuePress site.
 
+This plugin has been integrated into the default theme.
+
 ## Usage
 
 ```bash

@@ -4,6 +4,8 @@
 
 Add tabs and code tabs to your VuePress site.
 
+This plugin has been integrated into the default theme.
+
 ## Usage
 
 ```bash
