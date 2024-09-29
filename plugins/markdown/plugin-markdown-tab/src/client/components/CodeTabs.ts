@@ -10,7 +10,7 @@ const CODE_TAB_STORE_NAME = 'VUEPRESS_CODE_TAB_STORE'
 
 const codeTabStore = useStorage<Record<string, string>>(CODE_TAB_STORE_NAME, {})
 
-export default defineComponent({
+export const CodeTabs = defineComponent({
   name: 'CodeTabs',
 
   props: {

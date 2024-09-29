@@ -18,13 +18,13 @@ export const prepareConfigFile = (
 
   if (codeTabs) {
     imports.add(
-      `import CodeTabs from "${CLIENT_FOLDER}components/CodeTabs.js";`,
+      `import { CodeTabs } from "${CLIENT_FOLDER}components/CodeTabs.js";`,
     )
     enhances.add(`app.component("CodeTabs", CodeTabs);`)
   }
 
   if (tabs) {
-    imports.add(`import Tabs from "${CLIENT_FOLDER}components/Tabs.js";`)
+    imports.add(`import { Tabs } from "${CLIENT_FOLDER}components/Tabs.js";`)
     enhances.add(`app.component("Tabs", Tabs);`)
   }
 

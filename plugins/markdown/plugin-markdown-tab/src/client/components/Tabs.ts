@@ -12,7 +12,7 @@ const TAB_STORE_NAME = 'VUEPRESS_TAB_STORE'
 
 const tabStore = useStorage<Record<string, string>>(TAB_STORE_NAME, {})
 
-export default defineComponent({
+export const Tabs = defineComponent({
   name: 'Tabs',
 
   props: {
