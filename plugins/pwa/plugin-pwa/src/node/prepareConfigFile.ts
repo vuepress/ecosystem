@@ -1,6 +1,8 @@
-import { getRealPath } from '@vuepress/helper'
+import { getLocaleConfig, getRealPath } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
+import { pwaLocales } from './locales.js'
+import { PLUGIN_NAME } from './logger.js'
 import type { PwaPluginOptions } from './options.js'
 
 const __dirname = getDirname(import.meta.url)
@@ -49,11 +51,18 @@ import { setupPwa, setupViewPoint } from "${path.join(__dirname, '../client/comp
 ${configImport}
 import "${getRealPath('@vuepress/plugin-pwa/styles/vars.css', import.meta.url)}";
 
-const locales = __PWA_LOCALES__;
+const locales = ${JSON.stringify(
+      getLocaleConfig({
+        app,
+        name: PLUGIN_NAME,
+        default: pwaLocales,
+        config: options.locales,
+      }),
+    )};
 
 export default defineClientConfig({
   setup: () => {
-    setupPwa(__SW_PATH__, __SW_FORCE_UPDATE__);
+    setupPwa(${options.serviceWorkerFilename ?? 'service-worker.js'}, ${options.update === 'force'});
     setupViewPoint();
   },
   rootComponents: [
