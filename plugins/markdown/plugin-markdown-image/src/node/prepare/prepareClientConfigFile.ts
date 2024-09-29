@@ -11,13 +11,13 @@ export const prepareClientConfigFile = async (
 
   if (figure) {
     content += `\
-import "${getRealPath(`${PLUGIN_NAME}/client/styles/figure.css`, import.meta.url)}"
+import "${getRealPath(`${PLUGIN_NAME}/figure.css`, import.meta.url)}"
 `
   }
 
   if (mark) {
     content += `\
-import "${getRealPath(`${PLUGIN_NAME}/client/styles/mark.css`, import.meta.url)}"
+import "${getRealPath(`${PLUGIN_NAME}/mark.css`, import.meta.url)}"
 `
   }
 

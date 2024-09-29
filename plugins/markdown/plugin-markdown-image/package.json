@@ -31,7 +31,8 @@
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
-    "./client/*": "./lib/client/*",
+    "./figure.css": "./lib/client/styles/figure.css",
+    "./mark.css": "./lib/client/styles/mark.css",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
