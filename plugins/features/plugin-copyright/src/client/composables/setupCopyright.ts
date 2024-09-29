@@ -1,77 +1,63 @@
-import type { ExactLocaleConfig } from '@vuepress/helper/client'
 import {
   isLinkHttp,
   isPlainObject,
   isString,
   removeEndingSlash,
   useLocaleConfig,
+  type ExactLocaleConfig,
 } from '@vuepress/helper/client'
 import { useEventListener } from '@vueuse/core'
 import { computed, onMounted, watchEffect } from 'vue'
 import { usePageData, usePageFrontmatter } from 'vuepress/client'
-import type { CopyrightPluginOptions } from '../../node/options.js'
 import type {
   CopyrightPluginFrontmatter,
   CopyrightPluginLocaleData,
   CopyrightPluginPageData,
 } from '../../shared/index.js'
+import type { CopyrightPluginClientOptions } from '../typings.js'
 
-declare const __COPYRIGHT_OPTIONS__: Required<
-  Pick<
-    CopyrightPluginOptions,
-    | 'author'
-    | 'canonical'
-    | 'disableCopy'
-    | 'disableSelection'
-    | 'global'
-    | 'license'
-    | 'maxLength'
-    | 'triggerLength'
-  >
->
-
-declare const __COPYRIGHT_LOCALES__: ExactLocaleConfig<CopyrightPluginLocaleData>
-
-const copyrightOptions = __COPYRIGHT_OPTIONS__
-const { canonical } = copyrightOptions
-
-export const setupCopyright = (): void => {
+export const setupCopyright = (
+  options: CopyrightPluginClientOptions,
+  locales: ExactLocaleConfig<CopyrightPluginLocaleData>,
+): void => {
+  const locale = useLocaleConfig(locales)
   const frontmatter = usePageFrontmatter<CopyrightPluginFrontmatter>()
-  const locale = useLocaleConfig(__COPYRIGHT_LOCALES__)
   const page = usePageData<CopyrightPluginPageData>()
 
   const enabled = computed(
     () =>
       Boolean(frontmatter.value.copy) ||
-      (frontmatter.value.copy !== false && copyrightOptions.global),
+      (frontmatter.value.copy !== false && options.global),
   )
 
-  const copyOptions = computed(() =>
+  const frontmatterOptions = computed(() =>
     isPlainObject(frontmatter.value.copy) ? frontmatter.value.copy : null,
   )
 
   const disableCopy = computed(
-    () => copyOptions.value?.disableCopy ?? copyrightOptions.disableCopy,
+    () => frontmatterOptions.value?.disableCopy ?? options.disableCopy ?? false,
   )
 
   const disableSelection = computed(() =>
     enabled.value
-      ? (copyOptions.value?.disableSelection ??
-        copyrightOptions.disableSelection)
+      ? (frontmatterOptions.value?.disableSelection ??
+        options.disableSelection ??
+        false)
       : false,
   )
 
   const maxLength = computed(() =>
     enabled.value
-      ? (copyOptions.value?.maxLength ?? copyrightOptions.maxLength)
+      ? (frontmatterOptions.value?.maxLength ?? options.maxLength ?? 0)
       : 0,
   )
 
   const triggerLength = computed(
-    () => copyOptions.value?.triggerLength ?? copyrightOptions.triggerLength,
+    () =>
+      frontmatterOptions.value?.triggerLength ?? options.triggerLength ?? 100,
   )
 
-  const getLink = (): string =>
+  const getLink = (canonical?: string): string =>
     canonical
       ? `${removeEndingSlash(
           isLinkHttp(canonical) ? canonical : `https://${canonical}`,
@@ -79,15 +65,15 @@ export const setupCopyright = (): void => {
       : window.location.href
 
   const getCopyrightContent = (
-    authorInfo: string,
-    licenseInfo: string,
+    authorInfo?: string,
+    licenseInfo?: string,
   ): string => {
     const { author, license, link } = locale.value
 
     return [
       authorInfo ? author.replace(':author', authorInfo) : '',
       licenseInfo ? license.replace(':license', licenseInfo) : '',
-      link.replace(':link', getLink()),
+      link.replace(':link', getLink(options.canonical)),
     ]
       .filter((item) => item)
       .join('\n')
@@ -100,8 +86,8 @@ export const setupCopyright = (): void => {
     const { author, license } = page.value.copyright ?? {}
 
     return getCopyrightContent(
-      author ?? copyrightOptions.author,
-      license ?? copyrightOptions.license,
+      author ?? options.author,
+      license ?? options.license,
     )
   }
 
