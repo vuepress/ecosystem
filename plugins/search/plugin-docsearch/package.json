@@ -25,7 +25,7 @@
   "exports": {
     ".": "./lib/node/index.js",
     "./client": "./lib/client/index.js",
-    "./client/styles/*": "./lib/client/styles/*",
+    "./styles/*": "./lib/client/styles/*",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",

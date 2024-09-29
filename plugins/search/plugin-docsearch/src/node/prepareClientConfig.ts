@@ -14,8 +14,8 @@ ${
   injectStyles
     ? `\
 import '${getRealPath('@docsearch/css', import.meta.url)}'
-import '${getRealPath(`${PLUGIN_NAME}/client/styles/docsearch.css`, import.meta.url)}'
-import '${getRealPath(`${PLUGIN_NAME}/client/styles/vars.css`, import.meta.url)}'
+import '${getRealPath(`${PLUGIN_NAME}/styles/docsearch.css`, import.meta.url)}'
+import '${getRealPath(`${PLUGIN_NAME}/styles/vars.css`, import.meta.url)}'
 `
     : ''
 }\
