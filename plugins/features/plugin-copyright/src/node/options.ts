@@ -1,7 +1,9 @@
 import type { Page } from 'vuepress/core'
 import type { LocaleConfig } from 'vuepress/shared'
-import type { CopyrightPluginLocaleData } from '../shared/locales.js'
-import type { CopyrightPluginSharedOptions } from '../shared/index.js'
+import type {
+  CopyrightPluginLocaleData,
+  CopyrightPluginSharedOptions,
+} from '../shared/index.js'
 
 export interface CopyrightPluginOptions extends CopyrightPluginSharedOptions {
   /**

@@ -1,10 +1,10 @@
+import type { ExactLocaleConfig } from '@vuepress/helper/client'
 import {
   isLinkHttp,
   isPlainObject,
   isString,
   removeEndingSlash,
   useLocaleConfig,
-  type ExactLocaleConfig,
 } from '@vuepress/helper/client'
 import { useEventListener } from '@vueuse/core'
 import { computed, onMounted, watchEffect } from 'vue'
