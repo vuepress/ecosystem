@@ -382,6 +382,9 @@ importers:
 
   plugins/development/plugin-rtl:
     dependencies:
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../../tools/helper
       vue:
         specifier: ^3.5.10
         version: 3.5.10(typescript@5.6.2)

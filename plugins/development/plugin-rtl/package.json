@@ -26,6 +26,7 @@
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
+    "./client": "./lib/client/index.js",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
@@ -38,6 +39,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
+    "@vuepress/helper": "workspace:*",
     "vue": "^3.5.10"
   },
   "peerDependencies": {
