@@ -1,8 +1,8 @@
+import { getRealPath } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
-import { getDirname, path } from 'vuepress/utils'
 import type { PwaPluginOptions } from './options.js'
 
-const __dirname = getDirname(import.meta.url)
+const CLIENT_ENTRY = getRealPath('@vuepress/plugin-pwa/client', import.meta.url)
 
 export const prepareConfigFile = (
   app: App,
@@ -13,7 +13,7 @@ export const prepareConfigFile = (
 
   if (options.showInstall) {
     configImport += `\
-import { PwaInstall as _PwaInstall } from "${path.join(__dirname, '../client/components/PwaInstall.js')}";
+import { PwaInstall as _PwaInstall } from "${CLIENT_ENTRY}";
 `
 
     rootComponents.push('PwaInstall')
@@ -22,8 +22,7 @@ import { PwaInstall as _PwaInstall } from "${path.join(__dirname, '../client/com
   if (options.update === 'hint') {
     configImport += `\
 import { PwaFoundPopup as _PwaFoundPopup } from "${
-      options.foundComponent ||
-      path.join(__dirname, '../client/components/PwaFoundPopup.js')
+      options.foundComponent || CLIENT_ENTRY
     }";
 `
 
@@ -31,8 +30,7 @@ import { PwaFoundPopup as _PwaFoundPopup } from "${
   } else if (options.update !== 'disable' && options.update !== 'force') {
     configImport += `\
 import { PwaReadyPopup as _PwaReadyPopup } from "${
-      options.readyComponent ||
-      path.join(__dirname, '../client/components/PwaReadyPopup.js')
+      options.readyComponent || CLIENT_ENTRY
     }";
 `
 
@@ -44,14 +42,11 @@ import { PwaReadyPopup as _PwaReadyPopup } from "${
     `\
 import { h }  from "vue";
 import { defineClientConfig } from "vuepress/client";
-import { setupPwa } from "${path.join(__dirname, '../client/composables/setupPwa.js')}";
-import { setupViewPoint } from "${path.join(__dirname, '../client/composables/setupViewPoint.js')}";
+import { setupPwa, setupViewPoint } from "${CLIENT_ENTRY}";
 ${configImport}
-import "${path.join(__dirname, '../client/styles/vars.css')}";
+import "${getRealPath('@vuepress/plugin-pwa/styles/vars.css', import.meta.url)}";
 
 const locales = __PWA_LOCALES__;
-
-${rootComponents.map((item) => `const ${item} = () => h(_${item}, { locales })`).join('\n')}
 
 export default defineClientConfig({
   setup: () => {
@@ -59,7 +54,7 @@ export default defineClientConfig({
     setupViewPoint();
   },
   rootComponents: [
-${rootComponents.map((item) => `    ${item},`).join('\n')}
+${rootComponents.map((item) => `    () => h(_${item}, { locales }),`).join('\n')}
   ],
 });
 `,
