@@ -18,9 +18,9 @@ import { useRevealJsConfig } from '../helpers/index.js'
 
 import '../styles/reveal-js.css'
 
-declare const REVEAL_DELAY: number
+declare const __REVEAL_DELAY__: number
 
-export default defineComponent({
+export const RevealJs = defineComponent({
   name: 'RevealJs',
 
   props: {
@@ -61,15 +61,15 @@ export default defineComponent({
       container: HTMLElement,
     ): Promise<Reveal.Api> => {
       const promises: [Promise<void>, ...ReturnType<typeof useRevealJs>] = [
-        wait(REVEAL_DELAY),
+        wait(__REVEAL_DELAY__),
         ...useRevealJs(),
       ]
 
-      const [, { default: RevealJs }, ...plugins] = await Promise.all(promises)
+      const [, { default: Reveal }, ...plugins] = await Promise.all(promises)
 
       const isSlidePage = layout.value.name === 'SlidePage'
 
-      const instance = new RevealJs(container, {
+      const instance = new Reveal(container, {
         backgroundTransition: 'slide',
         transition: 'slide',
         slideNumber: true,

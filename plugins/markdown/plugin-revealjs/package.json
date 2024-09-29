@@ -28,6 +28,8 @@
   "exports": {
     ".": "./lib/node/index.js",
     "./client": "./lib/client/index.js",
+    "./layouts": "./lib/client/layouts/index.js",
+    "./styles/*": "./lib/client/styles/*",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",

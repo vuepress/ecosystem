@@ -1,7 +1,9 @@
 import { getRealPath } from '@vuepress/helper'
 import type { App } from 'vuepress'
 import type { RevealJsTheme } from '../../shared/index.js'
-import { CLIENT_FOLDER } from '../utils.js'
+import { PLUGIN_NAME } from '../utils.js'
+
+const CLIENT_ENTRY = getRealPath(`${PLUGIN_NAME}/client`, import.meta.url)
 
 const REVEAL_THEME_CONFIG: [name: RevealJsTheme, fonts?: string[]][] = [
   ['auto'],
@@ -17,6 +19,7 @@ const REVEAL_THEME_CONFIG: [name: RevealJsTheme, fonts?: string[]][] = [
   ['solarized', ['lato']],
   ['white'],
 ]
+
 export const prepareClientConfigFile = async (
   app: App,
   revealThemes: RevealJsTheme[],
@@ -39,18 +42,23 @@ export const prepareClientConfigFile = async (
   return app.writeTemp(
     'revealjs/config.js',
     `\
-import RevealJs from "${CLIENT_FOLDER}components/RevealJs.js";
-import { injectRevealJsConfig } from "${CLIENT_FOLDER}helpers/index.js";
-${layout ? `import Layout from "${CLIENT_FOLDER}layouts/SlidePage.js";\n` : ''}\
+import { RevealJs, injectRevealJsConfig } from "${CLIENT_ENTRY}";
+${layout ? `import { SlidePage } from "${getRealPath(`${PLUGIN_NAME}/layouts`, import.meta.url)}";\n` : ''}\
 
 import "${getRealPath('reveal.js/dist/reveal.css', import.meta.url)}";
-import "${CLIENT_FOLDER}/styles/base.css";
-import "${CLIENT_FOLDER}/styles/vars.css";
+import "${getRealPath(`${PLUGIN_NAME}/styles/base.css`, import.meta.url)}";
+import "${getRealPath(`${PLUGIN_NAME}/styles/vars.css`, import.meta.url)}";
 ${Array.from(fonts)
-  .map((name) => `import "${CLIENT_FOLDER}styles/fonts/${name}.css";`)
+  .map(
+    (name) =>
+      `import "${getRealPath(`${PLUGIN_NAME}/styles/fonts/${name}.css`, import.meta.url)}";`,
+  )
   .join('\n')}
 ${Array.from(themes)
-  .map((name) => `import "${CLIENT_FOLDER}styles/themes/${name}.css";`)
+  .map(
+    (name) =>
+      `import "${getRealPath(`${PLUGIN_NAME}/styles/themes/${name}.css`, import.meta.url)}";`,
+  )
   .join('\n')}
 
 export default {
@@ -58,7 +66,7 @@ export default {
     injectRevealJsConfig(app)
     app.component("RevealJs", RevealJs)
   },
-${layout ? `  layouts: { "${layout}": Layout },\n` : ''}\
+${layout ? `  layouts: { "${layout}": SlidePage },\n` : ''}\
 };
 `,
   )
