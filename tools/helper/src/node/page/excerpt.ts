@@ -9,59 +9,6 @@ import { isArray, isLinkAbsolute, startsWith } from '../../shared/index.js'
 
 const HEADING_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
 
-export interface PageExcerptOptions {
-  /**
-   * Excerpt separator
-   *
-   * 摘要分隔符
-   *
-   * @default "<!-- more -->"
-   */
-  separator?: string
-
-  /**
-   * Length of excerpt
-   *
-   * @description Excerpt length will be the minimal possible length reaching this value
-   *
-   * 摘要的长度
-   *
-   * @description 摘要的长度会尽可能的接近这个值
-   *
-   * @default 300
-   */
-  length?: number
-
-  /**
-   * Tags which is considered as custom elements
-   *
-   * @description This is used to determine whether a tag is a custom element since all unknown tags are removed in excerpt.
-   *
-   * 被认为是自定义元素的标签
-   *
-   * @description 用于判断一个标签是否是自定义元素，因为在摘要中，所有的未知标签都会被移除。
-   */
-  isCustomElement?: (tagName: string) => boolean
-
-  /**
-   * Whether keep page title (first h1) in excerpt
-   *
-   * 是否保留页面标题 (第一个 h1)
-   *
-   * @default false
-   */
-  keepPageTitle?: boolean
-
-  /**
-   * Whether preserve tags like line numbers and highlight lines for code blocks
-   *
-   * 是否保留代码块的标签，诸如行号和高亮行
-   *
-   * @default false
-   */
-  keepFenceDom?: boolean
-}
-
 interface NodeOptions
   extends Required<
     Pick<PageExcerptOptions, 'isCustomElement' | 'keepFenceDom'>
@@ -198,6 +145,13 @@ const $ = load('')
 const isH1Tag = (node: AnyNode): boolean =>
   node.type === 'tag' && node.tagName === 'h1'
 
+/**
+ * Get raw content of excerpt from page content
+ *
+ * @param content raw content of page
+ * @param separator excerpt separator
+ * @returns raw content of excerpt
+ */
 export const getPageExcerptContent = (
   content: string,
   separator = '<!-- more -->',
@@ -207,6 +161,70 @@ export const getPageExcerptContent = (
     excerpt_separator: separator,
   }).excerpt
 
+/**
+ * Options for `getPageExcerpt`
+ */
+export interface PageExcerptOptions {
+  /**
+   * Excerpt separator
+   *
+   * 摘要分隔符
+   *
+   * @default "<!-- more -->"
+   */
+  separator?: string
+
+  /**
+   * Length of excerpt
+   *
+   * @description Excerpt length will be the minimal possible length reaching this value
+   *
+   * 摘要的长度
+   *
+   * @description 摘要的长度会尽可能的接近这个值
+   *
+   * @default 300
+   */
+  length?: number
+
+  /**
+   * Tags which is considered as custom elements
+   *
+   * @description This is used to determine whether a tag is a custom element since all unknown tags are removed in excerpt.
+   *
+   * 被认为是自定义元素的标签
+   *
+   * @description 用于判断一个标签是否是自定义元素，因为在摘要中，所有的未知标签都会被移除。
+   */
+  isCustomElement?: (tagName: string) => boolean
+
+  /**
+   * Whether keep page title (first h1) in excerpt
+   *
+   * 是否保留页面标题 (第一个 h1)
+   *
+   * @default false
+   */
+  keepPageTitle?: boolean
+
+  /**
+   * Whether preserve tags like line numbers and highlight lines for code blocks
+   *
+   * 是否保留代码块的标签，诸如行号和高亮行
+   *
+   * @default false
+   */
+  keepFenceDom?: boolean
+}
+
+/**
+ * Get excerpt content of a page
+ *
+ * @param app VuePress App
+ * @param page VuePress Page
+ * @param excerptOptions excerpt behavior options
+ * @returns page excerpt
+ */
 export const getPageExcerpt = (
   { markdown, options: { base } }: App,
   { content, contentRendered, filePath, filePathRelative, frontmatter }: Page,

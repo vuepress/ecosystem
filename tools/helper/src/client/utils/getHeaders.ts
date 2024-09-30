@@ -125,6 +125,9 @@ export interface GetHeadersOptions {
   levels?: HeaderLevels
 }
 
+/**
+ * Get headers of current page.
+ */
 export const getHeaders = ({
   selector = [...new Array<undefined>(6)]
     .map((_, i) => `[vp-content] h${i + 1}`)
