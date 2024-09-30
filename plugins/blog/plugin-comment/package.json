@@ -54,7 +54,7 @@
     "@waline/client": "^3.3.1",
     "artalk": "^2.9.0",
     "twikoo": "^1.6.39",
-    "vuepress": "2.0.0-rc.15"
+    "vuepress": "2.0.0-rc.16"
   },
   "peerDependenciesMeta": {
     "@waline/client": {
