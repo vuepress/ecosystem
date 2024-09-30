@@ -1,4 +1,4 @@
-import { entries } from '@vuepress/helper'
+import { entries } from '@vuepress/helper/client'
 import { onMounted, watch } from 'vue'
 import { useRouteLocale } from 'vuepress/client'
 import { getElement } from '../utils/index.js'
