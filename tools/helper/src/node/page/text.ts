@@ -135,8 +135,15 @@ export interface PageTextOptions {
   removedTags?: string[]
 }
 
+/**
+ * Get plain text from html content
+ *
+ * @param html html content
+ * @param base base url of site
+ * @param options options for getting text
+ */
 export const getText = (
-  content: string,
+  html: string,
   base: string,
   {
     length = 300,
@@ -145,7 +152,7 @@ export const getText = (
   }: PageTextOptions = {},
 ): string => {
   let result = ''
-  const rootNodes = content ? $.parseHTML(content) : []
+  const rootNodes = html ? $.parseHTML(html) : []
 
   for (const node of rootNodes) {
     const text = handleNode(node, { base, removedTags })
@@ -160,6 +167,14 @@ export const getText = (
   ).trim()
 }
 
+/**
+ * Get plain text of page content
+ *
+ * @param app VuePress App
+ * @param page VuePress Page
+ * @param options options for getting text
+ * @returns plain text of page content
+ */
 export const getPageText = (
   { options: { base } }: App,
   {

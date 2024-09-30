@@ -4,19 +4,19 @@ You can take full control of feed items generation by setting `getter` in the pl
 
 ## getter.title
 
-- Type: `(page: Page) => string`
+- Type: `(page: Page, app: App) => string`
 
 Item title getter
 
 ## getter.link
 
-- Type: `(page: Page) => string`
+- Type: `(page: Page, app: App) => string`
 
 Item link getter
 
 ## getter.description
 
-- Type: `(page: Page) => string | undefined`
+- Type: `(page: Page, app: App) => string | undefined`
 
 Item description getter
 
@@ -28,13 +28,13 @@ Due to Atom support HTML in summary, so you can return HTML content here if poss
 
 ## getter.content
 
-- Type: `(page: Page) => string`
+- Type: `(page: Page, app: App) => string`
 
 Item content getter
 
 ## getter.author
 
-- Type: `(page: Page) => FeedAuthor[]`
+- Type: `(page: Page, app: App) => FeedAuthor[]`
 
 Item author getter.
 
@@ -76,7 +76,7 @@ interface FeedAuthor {
 
 ## getter.category
 
-- Type: `(page: Page) => FeedCategory[] | undefined`
+- Type: `(page: Page, app: App) => FeedCategory[] | undefined`
 
 Item category getter.
 
@@ -109,7 +109,7 @@ interface FeedCategory {
 
 ## getter.enclosure
 
-- Type: `(page: Page) => FeedEnclosure | undefined`
+- Type: `(page: Page, app: App) => FeedEnclosure | undefined`
 
 Item enclosure getter.
 
@@ -142,19 +142,19 @@ interface FeedEnclosure {
 
 ## getter.publishDate
 
-- Type: `(page: Page) => Date | undefined`
+- Type: `(page: Page, app: App) => Date | undefined`
 
 Item release date getter
 
 ## getter.lastUpdateDate
 
-- Type: `(page: Page) => Date`
+- Type: `(page: Page, app: App) => Date`
 
 Item last update date getter
 
 ## getter.image
 
-- Type: `(page: Page) => string`
+- Type: `(page: Page, app: App) => string`
 
 Item Image Getter
 
@@ -164,7 +164,7 @@ Item Image Getter
 
 ## getter.contributor
 
-- Type: `(page: Page) => FeedContributor[]`
+- Type: `(page: Page, app: App) => FeedContributor[]`
 
 Item Contributor Getter
 
@@ -206,6 +206,6 @@ interface FeedContributor {
 
 ## getter.copyright
 
-- Type: `(page: Page) => string | undefined`
+- Type: `(page: Page, app: App) => string | undefined`
 
 Item copyright getter

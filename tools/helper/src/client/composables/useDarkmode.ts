@@ -28,6 +28,11 @@ const _useDarkmode = (): Readonly<Ref<boolean>> => {
   return readonly(isDarkmode)
 }
 
+/**
+ * Get darkmode status
+ *
+ * @returns readonly darkmode ref
+ */
 // eslint-disable-next-line no-return-assign
 export const useDarkmode = (): Readonly<Ref<boolean>> =>
   (darkmode ??= _useDarkmode())

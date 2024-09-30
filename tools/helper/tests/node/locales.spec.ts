@@ -5,8 +5,8 @@ import { path } from 'vuepress/utils'
 import {
   getLocaleConfig,
   getRootLang,
-  lang2Path,
-  path2Lang,
+  inferLocalePath,
+  inferLocaleLang,
 } from '../../src/node/locales/helpers.js'
 import { emptyTheme } from '../__fixtures__/theme/empty.js'
 
@@ -38,19 +38,19 @@ const defaultLocaleConfig = {
 }
 
 it('lang2Path() should convert lang to path', () => {
-  expect(lang2Path('en-US')).toEqual('/en/')
-  expect(lang2Path('zh-CN')).toEqual('/zh/')
-  expect(lang2Path('ja-JP')).toEqual('/ja/')
-  expect(lang2Path('id-ID')).toEqual('/id/')
-  expect(lang2Path('nl-NL')).toEqual('/nl/')
+  expect(inferLocalePath('en-US')).toEqual('/en/')
+  expect(inferLocalePath('zh-CN')).toEqual('/zh/')
+  expect(inferLocalePath('ja-JP')).toEqual('/ja/')
+  expect(inferLocalePath('id-ID')).toEqual('/id/')
+  expect(inferLocalePath('nl-NL')).toEqual('/nl/')
 })
 
 it('path2lang() should convert path to lang', () => {
-  expect(path2Lang('/en/')).toEqual('en-US')
-  expect(path2Lang('/zh/')).toEqual('zh-CN')
-  expect(path2Lang('/ja/')).toEqual('ja-JP')
-  expect(path2Lang('/id/')).toEqual('id-ID')
-  expect(path2Lang('/nl/')).toEqual('nl-NL')
+  expect(inferLocaleLang('/en/')).toEqual('en-US')
+  expect(inferLocaleLang('/zh/')).toEqual('zh-CN')
+  expect(inferLocaleLang('/ja/')).toEqual('ja-JP')
+  expect(inferLocaleLang('/id/')).toEqual('id-ID')
+  expect(inferLocaleLang('/nl/')).toEqual('nl-NL')
 })
 
 describe('getRootLang() should get root locale lang', () => {
