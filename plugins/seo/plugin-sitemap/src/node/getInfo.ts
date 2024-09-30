@@ -58,7 +58,12 @@ export const getSitemapInfos = (
   const sitemapInfos: [path: string, info: SitemapInfo][] = []
 
   app.pages.forEach(
-    (page: Page<{ git?: GitData }, SitemapPluginFrontmatter>) => {
+    (
+      page: Page<
+        Record<string, unknown> & { git?: GitData },
+        SitemapPluginFrontmatter
+      >,
+    ) => {
       const pageOptions = page.frontmatter.sitemap
 
       if (pageOptions === false) return

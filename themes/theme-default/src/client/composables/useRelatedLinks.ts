@@ -12,7 +12,7 @@ import type { SidebarItem } from '../typings.js'
 import { getAutoLink } from '../utils/index.js'
 
 const resolveFromFrontmatterConfig = (
-  config: unknown,
+  config: AutoLinkOptions | string | false | undefined,
   currentPath: string,
 ): AutoLinkOptions | false | null => {
   if (config === false) {
@@ -23,7 +23,7 @@ const resolveFromFrontmatterConfig = (
     return getAutoLink(config, currentPath)
   }
 
-  if (isPlainObject<AutoLinkOptions>(config)) {
+  if (isPlainObject(config)) {
     return {
       ...config,
       link: getAutoLink(config.link, currentPath).link,

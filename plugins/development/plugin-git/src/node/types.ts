@@ -1,8 +1,10 @@
-export interface GitPluginFrontmatter {
+import type { PageFrontmatter } from 'vuepress'
+
+export interface GitPluginFrontmatter extends PageFrontmatter {
   gitInclude?: string[]
 }
 
-export interface GitPluginPageData {
+export interface GitPluginPageData extends Record<string, unknown> {
   git: GitData
 }
 

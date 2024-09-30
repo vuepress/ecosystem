@@ -5,8 +5,8 @@ import { path } from 'vuepress/utils'
 import {
   getLocaleConfig,
   getRootLang,
-  inferLocalePath,
   inferLocaleLang,
+  inferLocalePath,
 } from '../../src/node/locales/helpers.js'
 import { emptyTheme } from '../__fixtures__/theme/empty.js'
 

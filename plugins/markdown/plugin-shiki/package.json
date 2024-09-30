@@ -38,14 +38,14 @@
     "style": "sass src:lib --embed-sources --style=compressed"
   },
   "dependencies": {
-    "@shikijs/transformers": "^1.20.0",
+    "@shikijs/transformers": "^1.21.0",
     "@vuepress/helper": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
     "nanoid": "^5.0.7",
-    "shiki": "^1.20.0"
+    "shiki": "^1.21.0"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.15"
+    "vuepress": "2.0.0-rc.16"
   },
   "publishConfig": {
     "access": "public"

@@ -1,8 +1,7 @@
 import { entries, fromEntries } from '@vuepress/helper'
-import type { GitData } from '@vuepress/plugin-git'
-import type { App, Page } from 'vuepress/core'
+import type { App } from 'vuepress/core'
 import { colors } from 'vuepress/utils'
-import type { FeedConfig, FeedPluginFrontmatter } from '../typings/index.js'
+import type { FeedConfig, FeedPage } from '../typings/index.js'
 import { FeedItem, FeedStore } from './feed/index.js'
 import { getAtomFeed } from './generator/atom/index.js'
 import { getJSONFeed } from './generator/json/index.js'
@@ -49,7 +48,7 @@ export const getFeedFiles = (
           const feedItem = new FeedItem(
             app,
             localeOptions,
-            page as Page<{ git?: GitData }, FeedPluginFrontmatter>,
+            page as FeedPage,
             hostname,
           )
 

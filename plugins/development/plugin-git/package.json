@@ -38,7 +38,7 @@
     "execa": "^9.4.0"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.15"
+    "vuepress": "2.0.0-rc.16"
   },
   "publishConfig": {
     "access": "public"

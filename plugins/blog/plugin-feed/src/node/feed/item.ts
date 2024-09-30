@@ -7,8 +7,7 @@ import {
   isLinkWithProtocol,
   isPlainObject,
 } from '@vuepress/helper'
-import type { GitData } from '@vuepress/plugin-git'
-import type { App, Page } from 'vuepress/core'
+import type { App } from 'vuepress/core'
 import type { PageFrontmatter } from 'vuepress/shared'
 import { isString } from 'vuepress/shared'
 import type {
@@ -19,6 +18,7 @@ import type {
   FeedEnclosure,
   FeedFrontmatterOption,
   FeedGetter,
+  FeedPage,
   FeedPluginFrontmatter,
 } from '../../typings/index.js'
 import type { ResolvedFeedOptions } from '../getFeedOptions.js'
@@ -38,10 +38,7 @@ export class FeedItem {
   public constructor(
     private readonly app: App,
     private readonly options: ResolvedFeedOptions,
-    private readonly page: Page<
-      { excerpt?: string; git?: GitData },
-      FeedPluginFrontmatter
-    >,
+    private readonly page: FeedPage,
     private readonly hostname: string,
   ) {
     this.base = this.app.options.base
