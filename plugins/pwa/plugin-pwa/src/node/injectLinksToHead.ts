@@ -1,6 +1,6 @@
 import type { HeadConfig } from 'vuepress/core'
-import type { PwaPluginOptions } from './options.js'
 import { isPlainObject } from 'vuepress/shared'
+import type { PwaPluginOptions } from './options.js'
 
 export const injectLinksToHead = (
   {
