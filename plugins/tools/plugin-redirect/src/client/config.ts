@@ -19,7 +19,7 @@ export const config = __REDIRECT_CONFIG__
 export default defineClientConfig({
   setup() {
     if (__REDIRECT_DIRECT__) setupRedirect(config)
-    if (__VUEPRESS_DEV__) setupDevServerRedirect()
+    if (__VUEPRESS_DEV__) setupDevServerRedirect(config)
   },
   ...(__REDIRECT_MODAL__
     ? {
