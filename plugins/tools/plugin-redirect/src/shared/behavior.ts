@@ -1,5 +1,14 @@
 export interface RedirectBehaviorOptions {
   /**
+   * Whether enable locales redirection
+   *
+   * 是否启用语言重定向
+   *
+   * @default false
+   */
+  autoLocale?: boolean
+
+  /**
    * Whether fallback to other locales user defined
    *
    * 是否回退到用户定义的其他语言

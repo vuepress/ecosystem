@@ -3,17 +3,17 @@ import { entries, isLinkHttp } from '@vuepress/helper/client'
 import { usePreferredLanguages } from '@vueuse/core'
 import { computed, watch } from 'vue'
 import { useRoute, useRouteLocale, useRouter } from 'vuepress/client'
+import type { RedirectBehaviorConfig } from '../../shared/index.js'
 import { normalizePath } from '../../shared/index.js'
-import { redirectLocaleConfig, redirectLocaleEntries } from '../define.js'
 
-const {
+export const setupDevServerRedirect = ({
   autoLocale,
+  config,
   defaultBehavior,
   defaultLocale: defaultLocalePath,
   localeFallback,
-} = redirectLocaleConfig
-
-export const setupDevServerRedirect = (): void => {
+}: RedirectBehaviorConfig): void => {
+  const localeEntries = Object.entries(config)
   const languages = usePreferredLanguages()
   const route = useRoute()
   const router = useRouter()
@@ -40,7 +40,7 @@ export const setupDevServerRedirect = (): void => {
     // get matched locale
     // eslint-disable-next-line no-restricted-syntax
     findLanguage: for (const lang of languages.value)
-      for (const [localePath, langs] of redirectLocaleEntries)
+      for (const [localePath, langs] of localeEntries)
         if (langs.includes(lang)) {
           if (
             localeFallback &&

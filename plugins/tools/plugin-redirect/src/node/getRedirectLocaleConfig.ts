@@ -50,6 +50,7 @@ export const getRedirectBehaviorConfig = (
 
   return {
     config,
+    autoLocale: options.autoLocale ?? false,
     defaultLocale: options.defaultLocale || keys(config).pop()!,
     localeFallback: options.localeFallback ?? true,
     defaultBehavior:

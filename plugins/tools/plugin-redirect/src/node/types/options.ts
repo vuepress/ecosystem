@@ -13,15 +13,6 @@ export interface RedirectPluginOptions extends RedirectBehaviorOptions {
   config?: Record<string, string> | ((app: App) => Record<string, string>)
 
   /**
-   * Whether enable locales redirection
-   *
-   * 是否启用语言重定向
-   *
-   * @default false
-   */
-  autoLocale?: boolean
-
-  /**
    * Whether switch locales
    *
    * 是否启用重定向语言
