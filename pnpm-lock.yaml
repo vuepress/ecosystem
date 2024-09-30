@@ -173,6 +173,9 @@ importers:
       '@vuepress/theme-default':
         specifier: workspace:*
         version: link:../themes/theme-default
+      katex:
+        specifier: 0.16.11
+        version: 0.16.11
       mathjax-full:
         specifier: 3.2.2
         version: 3.2.2

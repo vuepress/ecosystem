@@ -96,7 +96,9 @@ export default defineUserConfig({
       mark: true,
       size: true,
     }),
-    markdownMathPlugin(),
+    markdownMathPlugin({
+      type: 'katex',
+    }),
     redirectPlugin({
       switchLocale: 'modal',
     }),
