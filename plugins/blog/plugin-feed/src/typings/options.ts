@@ -1,4 +1,4 @@
-import type { Page } from 'vuepress/core'
+import type { App, Page } from 'vuepress/core'
 import type {
   FeedAuthor,
   FeedCategory,
@@ -27,6 +27,7 @@ export interface FeedGetter {
       ExtraPageFrontmatter & FeedPluginFrontmatter,
       ExtraPageFields
     >,
+    app: App,
   ) => string
 
   /**
@@ -47,6 +48,7 @@ export interface FeedGetter {
       ExtraPageFrontmatter & FeedPluginFrontmatter,
       ExtraPageFields
     >,
+    app: App,
   ) => string
 
   /**
@@ -67,6 +69,7 @@ export interface FeedGetter {
       ExtraPageFrontmatter & FeedPluginFrontmatter,
       ExtraPageFields
     >,
+    app: App,
   ) => string | null
 
   /**
@@ -87,6 +90,7 @@ export interface FeedGetter {
       ExtraPageFrontmatter & FeedPluginFrontmatter,
       ExtraPageFields
     >,
+    app: App,
   ) => string | null
 
   /**
@@ -107,6 +111,7 @@ export interface FeedGetter {
       ExtraPageFrontmatter & FeedPluginFrontmatter,
       ExtraPageFields
     >,
+    app: App,
   ) => string
 
   /**
@@ -131,6 +136,7 @@ export interface FeedGetter {
       ExtraPageFrontmatter & FeedPluginFrontmatter,
       ExtraPageFields
     >,
+    app: App,
   ) => FeedAuthor[]
 
   /**
@@ -151,6 +157,7 @@ export interface FeedGetter {
       ExtraPageFrontmatter & FeedPluginFrontmatter,
       ExtraPageFields
     >,
+    app: App,
   ) => FeedCategory[] | null
 
   /**
@@ -171,6 +178,7 @@ export interface FeedGetter {
       ExtraPageFrontmatter & FeedPluginFrontmatter,
       ExtraPageFields
     >,
+    app: App,
   ) => FeedEnclosure | null
 
   /**
@@ -191,6 +199,7 @@ export interface FeedGetter {
       ExtraPageFrontmatter & FeedPluginFrontmatter,
       ExtraPageFields
     >,
+    app: App,
   ) => Date | null
 
   /**
@@ -211,6 +220,7 @@ export interface FeedGetter {
       ExtraPageFrontmatter & FeedPluginFrontmatter,
       ExtraPageFields
     >,
+    app: App,
   ) => Date
 
   /**
@@ -231,6 +241,7 @@ export interface FeedGetter {
       ExtraPageFrontmatter & FeedPluginFrontmatter,
       ExtraPageFields
     >,
+    app: App,
   ) => string
 
   /**
@@ -251,6 +262,7 @@ export interface FeedGetter {
       ExtraPageFrontmatter & FeedPluginFrontmatter,
       ExtraPageFields
     >,
+    app: App,
   ) => FeedContributor[]
 
   /**
@@ -271,6 +283,7 @@ export interface FeedGetter {
       ExtraPageFrontmatter & FeedPluginFrontmatter,
       ExtraPageFields
     >,
+    app: App,
   ) => string | null
 }
 
