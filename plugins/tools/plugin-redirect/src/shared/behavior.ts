@@ -1,29 +1,4 @@
-export interface RedirectLocaleConfig {
-  /**
-   * Whether enable locales redirection
-   *
-   * 是否启用语言重定向
-   *
-   * @default false
-   */
-  autoLocale: boolean
-
-  /**
-   * Whether switch locales
-   *
-   * 是否启用重定向语言
-   *
-   * @default false
-   */
-  switchLocale: 'direct' | 'modal' | false
-
-  /**
-   * Locale language config
-   *
-   * 多语言语言配置
-   */
-  localeConfig: Record<string, string[]>
-
+export interface RedirectBehaviorOptions {
   /**
    * Whether fallback to other locales user defined
    *
@@ -31,7 +6,7 @@ export interface RedirectLocaleConfig {
    *
    * @default true
    */
-  localeFallback: boolean
+  localeFallback?: boolean
 
   /**
    * Behavior when a locale version is not available for current link
@@ -44,7 +19,7 @@ export interface RedirectLocaleConfig {
    *
    * @default "defaultLocale"
    */
-  defaultBehavior: '404' | 'defaultLocale' | 'homepage'
+  defaultBehavior?: '404' | 'defaultLocale' | 'homepage'
 
   /**
    * Default locale path
@@ -55,5 +30,15 @@ export interface RedirectLocaleConfig {
    *
    * @description 如果缺失，则使用第一个语言
    */
-  defaultLocale: string
+  defaultLocale?: string
+}
+
+export interface RedirectBehaviorConfig
+  extends Required<RedirectBehaviorOptions> {
+  /**
+   * Locale language config
+   *
+   * 多语言语言配置
+   */
+  config: Record<string, string[]>
 }

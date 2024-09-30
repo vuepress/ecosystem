@@ -1,4 +1,8 @@
-import { addViteSsrNoExternal, getLocaleConfig } from '@vuepress/helper'
+import {
+  addViteSsrNoExternal,
+  getLocaleConfig,
+  getRealPath,
+} from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 import { ensureRootHomePage } from './ensureRootHomePage.js'
@@ -6,29 +10,38 @@ import {
   generateAutoLocaleRedirectFiles,
   generateRedirectFiles,
 } from './generate/index.js'
-import { getRedirectLocaleConfig } from './getRedirectLocaleConfig.js'
+import { getRedirectBehaviorConfig } from './getRedirectLocaleConfig.js'
 import { getRedirectMap } from './getRedirectMap.js'
 import { handleRedirectTo } from './handleRedirectTo.js'
 import { redirectLocales } from './locales.js'
 import { PLUGIN_NAME, logger } from './logger.js'
 import type { RedirectPluginOptions } from './types/index.js'
 
-const __dirname = getDirname(import.meta.url)
+const { url } = import.meta
+const __dirname = getDirname(url)
 
 export const redirectPlugin =
   (options: RedirectPluginOptions = {}): PluginFunction =>
   (app) => {
     if (app.env.isDebug) logger.info('Options:', options)
 
-    const redirectLocaleConfig = getRedirectLocaleConfig(app, options)
-    let redirectMap: Record<string, string>
+    const behaviorConfig = getRedirectBehaviorConfig(app, options)
+    let redirectMap: Record<string, string> | null = null
 
     return {
       name: PLUGIN_NAME,
 
+      alias: {
+        '@vuepress/plugin-redirect/modal':
+          options.switchLocale === 'modal'
+            ? path.resolve(__dirname, '../client/components/RedirectModal.vue')
+            : getRealPath('@vuepress/helper/noopComponent', url),
+      },
+
       define: {
-        __REDIRECT_LOCALE_CONFIG__: redirectLocaleConfig,
-        __REDIRECT_LOCALE_SWITCH__: Boolean(redirectLocaleConfig.switchLocale),
+        __REDIRECT_CONFIG__: behaviorConfig,
+        __REDIRECT_DIRECT__: options.switchLocale === 'direct',
+        __REDIRECT_MODAL__: options.switchLocale === 'modal',
         __REDIRECT_LOCALES__: getLocaleConfig({
           app,
           name: 'redirect',
@@ -50,8 +63,7 @@ export const redirectPlugin =
 
         if (app.env.isDebug) logger.info('Redirect Map:', redirectMap)
 
-        if (redirectLocaleConfig.autoLocale && app.env.isDebug)
-          await ensureRootHomePage(app)
+        if (options.autoLocale && app.env.isDebug) await ensureRootHomePage(app)
       },
 
       onPrepared: async (): Promise<void> => {
@@ -63,12 +75,14 @@ export const redirectMap = ${
           };
 `,
         )
+        // clean redirectMap reference in dev server
+        if (app.env.isDev) redirectMap = null
       },
 
       onGenerated: async (): Promise<void> => {
-        await generateRedirectFiles(app, redirectMap)
-        if (redirectLocaleConfig.autoLocale)
-          await generateAutoLocaleRedirectFiles(app, redirectLocaleConfig)
+        await generateRedirectFiles(app, redirectMap!)
+        if (options.autoLocale)
+          await generateAutoLocaleRedirectFiles(app, behaviorConfig)
       },
 
       clientConfigFile: path.join(__dirname, '../client/config.js'),
