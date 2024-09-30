@@ -8,19 +8,19 @@ import {
 } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { colors } from 'vuepress/utils'
-import type { RedirectLocaleConfig } from '../shared/index.js'
+import type { RedirectBehaviorConfig } from '../shared/index.js'
 import { logger } from './logger.js'
 import type { RedirectPluginOptions } from './types/index.js'
 
 const AVAILABLE_FALLBACK = ['defaultLocale', 'homepage', '404'] as const
 
-export const getRedirectLocaleConfig = (
+export const getRedirectBehaviorConfig = (
   app: App,
   options: RedirectPluginOptions,
-): RedirectLocaleConfig => {
+): RedirectBehaviorConfig => {
   const { locales } = app.options
 
-  const localeConfig = deepAssign(
+  const config = deepAssign(
     fromEntries(
       entries(locales)
         .filter(([key, { lang }]) => {
@@ -47,13 +47,11 @@ export const getRedirectLocaleConfig = (
         )
       : {},
   )
-  const defaultLocale = options.defaultLocale || keys(localeConfig).pop()!
 
   return {
+    config,
     autoLocale: options.autoLocale ?? false,
-    switchLocale: options.switchLocale ?? false,
-    localeConfig,
-    defaultLocale,
+    defaultLocale: options.defaultLocale || keys(config).pop()!,
     localeFallback: options.localeFallback ?? true,
     defaultBehavior:
       options.defaultBehavior &&

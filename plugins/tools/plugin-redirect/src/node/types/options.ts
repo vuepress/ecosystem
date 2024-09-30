@@ -1,17 +1,23 @@
 import type { App, LocaleConfig } from 'vuepress/core'
 import type {
-  RedirectLocaleConfig,
+  RedirectBehaviorOptions,
   RedirectPluginLocaleData,
 } from '../../shared/index.js'
 
-export interface RedirectPluginOptions
-  extends Partial<Omit<RedirectLocaleConfig, 'localeConfig'>> {
+export interface RedirectPluginOptions extends RedirectBehaviorOptions {
   /**
    * Redirect mapping
    *
    * 重定向映射
    */
   config?: Record<string, string> | ((app: App) => Record<string, string>)
+
+  /**
+   * Whether switch locales
+   *
+   * 是否启用重定向语言
+   */
+  switchLocale?: 'direct' | 'modal'
 
   /**
    * Locale language config

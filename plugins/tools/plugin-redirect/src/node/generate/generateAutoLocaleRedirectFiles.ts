@@ -1,13 +1,13 @@
 import { entries, removeLeadingSlash } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { fs, path } from 'vuepress/utils'
-import type { RedirectLocaleConfig } from '../../shared/index.js'
+import type { RedirectBehaviorConfig } from '../../shared/index.js'
 import { logger } from '../logger.js'
 import { getLocaleRedirectHTML } from './getLocaleRedirectHTML.js'
 
 export const generateAutoLocaleRedirectFiles = async (
   { dir, options, pages }: App,
-  localeOptions: RedirectLocaleConfig,
+  localeOptions: RedirectBehaviorConfig,
 ): Promise<void> => {
   const rootPaths = pages
     .filter(({ pathLocale }) => pathLocale === '/')

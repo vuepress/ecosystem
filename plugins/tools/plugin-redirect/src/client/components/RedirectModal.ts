@@ -1,10 +1,5 @@
-import {
-  useLocalStorage,
-  usePreferredLanguages,
-  useScrollLock,
-  useSessionStorage,
-} from '@vueuse/core'
-import type { VNode } from 'vue'
+import { useScrollLock } from '@vueuse/core'
+import type { PropType, VNode } from 'vue'
 import {
   TransitionGroup,
   computed,
@@ -17,87 +12,66 @@ import {
   watch,
 } from 'vue'
 import { useRouteLocale, useRoutePath, useRouter } from 'vuepress/client'
-import type { RedirectPluginLocaleConfig } from '../../shared/locales.js'
-import { redirectLocaleConfig, redirectLocaleEntries } from '../define.js'
+import type {
+  RedirectBehaviorConfig,
+  RedirectPluginLocaleConfig,
+} from '../../shared/index.js'
+import { useRedirectInfo } from '../composables/index.js'
+import { statusLocalStorage, statusSessionStorage } from '../utils/index.js'
 
 import '../styles/redirect-modal.css'
-
-declare const __REDIRECT_LOCALES__: RedirectPluginLocaleConfig
-
-const redirectLocales = __REDIRECT_LOCALES__
-const { switchLocale } = redirectLocaleConfig
-
-interface LocaleInfo {
-  lang: string
-  localePath: string
-}
-
-const REDIRECT_STORAGE_KEY = 'VUEPRESS_REDIRECT_STATUS'
-
-const redirectStatusSessionStorage = useSessionStorage<Record<string, boolean>>(
-  REDIRECT_STORAGE_KEY,
-  {},
-)
-const redirectStatusLocalStorage = useLocalStorage<Record<string, boolean>>(
-  REDIRECT_STORAGE_KEY,
-  {},
-)
 
 export default defineComponent({
   name: 'RedirectModal',
 
-  setup() {
-    const languages = usePreferredLanguages()
+  props: {
+    config: {
+      type: Object as PropType<RedirectBehaviorConfig>,
+      required: true,
+    },
+
+    locales: {
+      type: Object as PropType<RedirectPluginLocaleConfig>,
+      required: true,
+    },
+  },
+
+  setup(props) {
     const router = useRouter()
     const routePath = useRoutePath()
     const routeLocale = useRouteLocale()
+    const redirectInfo = useRedirectInfo(props.config)
 
     const body = ref<HTMLElement>()
     // lock body scroll when modal is displayed
     const showModal = useScrollLock(body)
     const shouldRemember = ref(false)
 
-    const info = computed<LocaleInfo | null>(() => {
-      if (redirectLocaleEntries.some(([key]) => routeLocale.value === key))
-        for (const language of languages.value)
-          for (const [localePath, langs] of redirectLocaleEntries)
-            if (langs.includes(language)) {
-              if (localePath === routeLocale.value) return null
-
-              return {
-                lang: language,
-                localePath,
-              }
-            }
-
-      return null
-    })
-
     const locale = computed(() => {
-      if (info.value) {
-        const { lang, localePath } = info.value
-        const locales = [
-          redirectLocales[localePath],
-          redirectLocales[routeLocale.value],
-        ]
+      if (!redirectInfo.value) return null
 
-        return {
-          hint: locales.map(({ hint }) => hint.replace('$1', lang)),
-          switch: locales
-            .map(({ switch: switchText }) => switchText.replace('$1', lang))
-            .join(' / '),
-          cancel: locales.map(({ cancel }) => cancel).join(' / '),
-          remember: locales.map(({ remember }) => remember).join(' / '),
-        }
+      const { lang, localePath } = redirectInfo.value
+      const locales = [
+        props.locales[localePath],
+        props.locales[routeLocale.value],
+      ]
+
+      return {
+        hint: locales.map(({ hint }) => hint.replace('$1', lang)),
+        switch: locales
+          .map(({ switch: switchText }) => switchText.replace('$1', lang))
+          .join(' / '),
+        cancel: locales.map(({ cancel }) => cancel).join(' / '),
+        remember: locales.map(({ remember }) => remember).join(' / '),
       }
-
-      return null
     })
 
-    const redirect = (): void => {
-      router.replace(
-        routePath.value.replace(routeLocale.value, info.value!.localePath),
-      )
+    const updateState = (): void => {
+      statusSessionStorage.value[routeLocale.value] = true
+      if (shouldRemember.value) {
+        statusLocalStorage.value[routeLocale.value] = true
+      }
+      showModal.value = false
     }
 
     watch(routePath, () => {
@@ -110,15 +84,11 @@ export default defineComponent({
       await nextTick()
 
       if (
-        !redirectStatusSessionStorage.value[routeLocale.value] &&
-        info.value
+        redirectInfo.value &&
+        !statusSessionStorage.value[routeLocale.value] &&
+        !statusLocalStorage.value[routeLocale.value]
       ) {
-        if (switchLocale === 'direct') redirect()
-        else if (
-          switchLocale === 'modal' &&
-          !redirectStatusLocalStorage.value[routeLocale.value]
-        )
-          showModal.value = true
+        showModal.value = true
       }
     })
 
@@ -165,14 +135,13 @@ export default defineComponent({
                       type: 'button',
                       class: 'redirect-modal-action primary',
                       onClick: () => {
-                        redirectStatusSessionStorage.value[routeLocale.value] =
-                          true
-                        if (shouldRemember.value) {
-                          redirectStatusLocalStorage.value[routeLocale.value] =
-                            true
-                        }
-                        showModal.value = false
-                        redirect()
+                        updateState()
+                        router.replace(
+                          routePath.value.replace(
+                            routeLocale.value,
+                            redirectInfo.value!.localePath,
+                          ),
+                        )
                       },
                     },
                     locale.value?.switch,
@@ -183,13 +152,7 @@ export default defineComponent({
                       type: 'button',
                       class: 'redirect-modal-action',
                       onClick: () => {
-                        redirectStatusSessionStorage.value[routeLocale.value] =
-                          true
-                        if (shouldRemember.value) {
-                          redirectStatusLocalStorage.value[routeLocale.value] =
-                            true
-                        }
-                        showModal.value = false
+                        updateState()
                       },
                     },
                     locale.value?.cancel,
