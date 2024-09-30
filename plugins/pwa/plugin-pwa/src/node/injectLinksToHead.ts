@@ -1,5 +1,6 @@
 import type { HeadConfig } from 'vuepress/core'
 import type { PwaPluginOptions } from './options.js'
+import { isPlainObject } from 'vuepress/shared'
 
 export const injectLinksToHead = (
   {
@@ -60,7 +61,7 @@ export const injectLinksToHead = (
   })
   setMeta('theme-color', themeColor || '#46bd87')
 
-  if (typeof apple === 'object' && (apple.icon || fallBackIcon)) {
+  if (isPlainObject(apple) && (apple.icon || fallBackIcon)) {
     setLink('apple-touch-icon', apple.icon || fallBackIcon)
     setMeta('apple-mobile-web-app-capable', 'yes')
     setMeta(
@@ -77,7 +78,7 @@ export const injectLinksToHead = (
     setMeta('apple-mobile-web-app-status-bar-style', 'black')
   }
 
-  if (typeof msTile === 'object' && (msTile.image || fallBackIcon)) {
+  if (isPlainObject(msTile) && (msTile.image || fallBackIcon)) {
     setMeta('msapplication-TileImage', msTile.image || fallBackIcon)
     setMeta('msapplication-TileColor', msTile.color || themeColor || '#46bd87')
   } else if (msTile !== false && fallBackIcon) {

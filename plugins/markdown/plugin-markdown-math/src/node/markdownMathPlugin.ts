@@ -4,6 +4,7 @@ import type { MathjaxInstance } from '@mdit/plugin-mathjax-slim'
 import { createMathjaxInstance, mathjax } from '@mdit/plugin-mathjax-slim'
 import { addCustomElement, getInstalledStatus } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
+import type { MarkdownEnv } from 'vuepress/markdown'
 import { colors, logger } from 'vuepress/utils'
 import type {
   MarkdownKatexPluginOptions,
@@ -81,12 +82,8 @@ export const markdownMathPlugin = ({
           }
         })
       } else {
-        md.use<MarkdownItKatexOptions>(katex, {
-          logger: (errorCode, errorMsg, token, env) => {
-            const { filePathRelative } = env as {
-              filePathRelative?: string | null
-            }
-
+        md.use<MarkdownItKatexOptions<MarkdownEnv>>(katex, {
+          logger: (errorCode, errorMsg, token, { filePathRelative }) => {
             // Ignore this error
             if (errorCode === 'newLineInDisplayMode') return
 

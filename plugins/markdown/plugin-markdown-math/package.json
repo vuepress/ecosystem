@@ -50,7 +50,7 @@
   "peerDependencies": {
     "katex": "^0.16.10",
     "mathjax-full": "^3.2.2",
-    "vuepress": "2.0.0-rc.16"
+    "vuepress": "2.0.0-rc.17"
   },
   "peerDependenciesMeta": {
     "katex": {
