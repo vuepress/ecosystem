@@ -55,7 +55,8 @@ export class FeedItem {
    * Feed item title
    */
   public get title(): string {
-    if (isFunction(this.getter.title)) return this.getter.title(this.page)
+    if (isFunction(this.getter.title))
+      return this.getter.title(this.page, this.app)
 
     return this.pageOptions.title || this.page.title
   }
@@ -64,7 +65,8 @@ export class FeedItem {
    * The URL of the item.
    */
   public get link(): string {
-    if (isFunction(this.getter.link)) return this.getter.link(this.page)
+    if (isFunction(this.getter.link))
+      return this.getter.link(this.page, this.app)
 
     return getUrl(this.hostname, this.base, this.page.path)
   }
@@ -74,7 +76,7 @@ export class FeedItem {
    */
   public get description(): string | null {
     if (isFunction(this.getter.description))
-      return this.getter.description(this.page)
+      return this.getter.description(this.page, this.app)
 
     if (this.pageOptions.description) return this.pageOptions.description
 
@@ -96,7 +98,8 @@ export class FeedItem {
    * Authors of feed item.
    */
   public get author(): FeedAuthor[] {
-    if (isFunction(this.getter.author)) return this.getter.author(this.page)
+    if (isFunction(this.getter.author))
+      return this.getter.author(this.page, this.app)
 
     if (isArray(this.pageOptions.author)) return this.pageOptions.author
 
@@ -113,7 +116,8 @@ export class FeedItem {
    * Categories of feed item.
    */
   public get category(): FeedCategory[] | null {
-    if (isFunction(this.getter.category)) return this.getter.category(this.page)
+    if (isFunction(this.getter.category))
+      return this.getter.category(this.page, this.app)
 
     if (isArray(this.pageOptions.category)) return this.pageOptions.category
 
@@ -132,7 +136,7 @@ export class FeedItem {
    */
   public get enclosure(): FeedEnclosure | null {
     if (isFunction(this.getter.enclosure))
-      return this.getter.enclosure(this.page)
+      return this.getter.enclosure(this.page, this.app)
 
     if (this.image)
       return {
@@ -148,7 +152,7 @@ export class FeedItem {
    */
   public get pubDate(): Date | null {
     if (isFunction(this.getter.publishDate))
-      return this.getter.publishDate(this.page)
+      return this.getter.publishDate(this.page, this.app)
 
     const { time, date = time } = this.page.frontmatter
 
@@ -166,7 +170,7 @@ export class FeedItem {
    */
   public get lastUpdated(): Date | null {
     if (isFunction(this.getter.lastUpdateDate))
-      return this.getter.lastUpdateDate(this.page)
+      return this.getter.lastUpdateDate(this.page, this.app)
 
     const { updatedTime } = this.page.data.git ?? {}
 
@@ -177,7 +181,8 @@ export class FeedItem {
    * Feed item summary
    */
   public get summary(): string | null {
-    if (isFunction(this.getter.excerpt)) return this.getter.excerpt(this.page)
+    if (isFunction(this.getter.excerpt))
+      return this.getter.excerpt(this.page, this.app)
 
     if (this.pageOptions.summary) return this.pageOptions.summary
 
@@ -191,7 +196,8 @@ export class FeedItem {
    */
 
   public get content(): string {
-    if (isFunction(this.getter.content)) return this.getter.content(this.page)
+    if (isFunction(this.getter.content))
+      return this.getter.content(this.page, this.app)
 
     if (this.pageOptions.content) return this.pageOptions.content
 
@@ -208,7 +214,8 @@ export class FeedItem {
    * @description json format only
    */
   public get image(): string | null {
-    if (isFunction(this.getter.image)) return this.getter.image(this.page)
+    if (isFunction(this.getter.image))
+      return this.getter.image(this.page, this.app)
 
     const { hostname, base } = this
     const { banner, cover } = this.frontmatter
@@ -243,7 +250,7 @@ export class FeedItem {
    */
   public get contributor(): FeedContributor[] {
     if (isFunction(this.getter.contributor))
-      return this.getter.contributor(this.page)
+      return this.getter.contributor(this.page, this.app)
 
     if (isArray(this.pageOptions.contributor))
       return this.pageOptions.contributor
@@ -261,7 +268,7 @@ export class FeedItem {
    */
   public get copyright(): string | null {
     if (isFunction(this.getter.copyright))
-      return this.getter.copyright(this.page)
+      return this.getter.copyright(this.page, this.app)
 
     if (isString(this.frontmatter.copyright)) return this.frontmatter.copyright
     const firstAuthor = this.author[0]

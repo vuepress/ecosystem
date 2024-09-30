@@ -4,7 +4,7 @@ import type { App } from 'vuepress/core'
 // Prevent mathjax breaking mobile layout
 const MATHJAX_STYLE_PATCH = `\
 mjx-container {
-  overflow-x: auto;
+  overflow: auto hidden;
 }
 `
 
