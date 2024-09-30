@@ -28,7 +28,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build Project
-        run: pnpm build
+        run: pnpm bundle
 
       - name: Update npmrc
         run: |
