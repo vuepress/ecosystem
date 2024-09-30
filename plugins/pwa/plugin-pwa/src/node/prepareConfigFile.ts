@@ -62,7 +62,7 @@ const locales = ${JSON.stringify(
 
 export default defineClientConfig({
   setup: () => {
-    setupPwa(${options.serviceWorkerFilename ?? 'service-worker.js'}, ${options.update === 'force'});
+    setupPwa(${JSON.stringify(options.serviceWorkerFilename ?? 'service-worker.js')}, ${options.update === 'force'});
     setupViewPoint();
   },
   rootComponents: [
