@@ -34,7 +34,7 @@ export const redirectPlugin =
       alias: {
         '@vuepress/plugin-redirect/modal':
           options.switchLocale === 'modal'
-            ? path.resolve(__dirname, '../client/components/RedirectModal.vue')
+            ? path.resolve(__dirname, '../client/components/RedirectModal.js')
             : getRealPath('@vuepress/helper/noopComponent', url),
       },
 
