@@ -1,6 +1,9 @@
 import type { FunctionalComponent, VNode } from 'vue'
 import { h } from 'vue'
 
+/**
+ * Loading icon
+ */
 export const LoadingIcon: FunctionalComponent<{
   size?: number
   stroke?: number

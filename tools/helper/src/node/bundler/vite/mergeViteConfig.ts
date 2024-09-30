@@ -94,22 +94,24 @@ const normalizeSingleAlias = ({
     replacement,
   }
 
-  if (customResolver) alias.customResolver = customResolver
+  if (customResolver) {
+    alias.customResolver = customResolver
+  }
 
   return alias
 }
 
-const normalizeAlias = (aliasOption: AliasOptions): Alias[] =>
+const normalizeAlias = (aliasOption: AliasOptions = []): Alias[] =>
   isArray(aliasOption)
     ? aliasOption.map(normalizeSingleAlias)
     : keys(aliasOption).map((find) =>
         normalizeSingleAlias({
           find,
-          replacement: (aliasOption as Record<string, string>)[find],
+          replacement: aliasOption[find],
         }),
       )
 
-export const mergeAlias = (
+const mergeAlias = (
   defaults?: AliasOptions,
   overrides?: AliasOptions,
 ): AliasOptions | undefined => {
@@ -124,17 +126,30 @@ export const mergeAlias = (
   return [...normalizeAlias(overrides), ...normalizeAlias(defaults)]
 }
 
+const backwardCompatibleWorkerPlugins = (plugins: any): any[] => {
+  if (Array.isArray(plugins)) {
+    return plugins
+  }
+
+  if (typeof plugins === 'function') {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    return plugins() as any[]
+  }
+
+  return []
+}
+
 const mergeConfigRecursively = (
-  defaults: Record<string, any>,
+  { ...merged }: Record<string, any>,
   overrides: Record<string, any>,
   rootPath: string,
 ): Record<string, any> => {
-  const merged: Record<string, any> = { ...defaults }
-
   for (const key in overrides) {
     const value = overrides[key]
 
-    if (value == null) continue
+    if (value == null) {
+      continue
+    }
 
     const existing = merged[key]
 
@@ -152,10 +167,20 @@ const mergeConfigRecursively = (
       continue
     } else if (
       key === 'noExternal' &&
-      rootPath === 'ssr' &&
+      (rootPath === 'ssr' || rootPath === 'resolve') &&
       (existing === true || value === true)
     ) {
       merged[key] = true
+      continue
+    } else if (key === 'plugins' && rootPath === 'worker') {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+      merged[key] = () => [
+        ...backwardCompatibleWorkerPlugins(existing),
+        ...backwardCompatibleWorkerPlugins(value),
+      ]
+      continue
+    } else if (key === 'server' && rootPath === 'server.hmr') {
+      merged[key] = value
       continue
     }
 
@@ -163,6 +188,7 @@ const mergeConfigRecursively = (
       merged[key] = [...arraify(existing), ...arraify(value)]
       continue
     }
+
     if (isObject(existing) && isObject(value)) {
       merged[key] = mergeConfigRecursively(
         existing,

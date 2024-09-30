@@ -1,1 +1,4 @@
+/**
+ * Noop module
+ */
 export default {}

@@ -6,21 +6,24 @@ import { Logger } from '../utils/index.js'
 import { lang2PathConfig, path2langConfig } from './config.js'
 import type { KnownLangCode } from './types.js'
 
-/** Get language from path */
-export const path2Lang = (path = '', debug = false): KnownLangCode => {
-  if (path in path2langConfig) return path2langConfig[path]
+/** Infer language from locale path */
+export const inferLocaleLang = (
+  localePath = '',
+  debug = false,
+): KnownLangCode => {
+  if (localePath in path2langConfig) return path2langConfig[localePath]
 
   if (debug)
     // eslint-disable-next-line no-console
     console.warn(
-      `${path} isn’t assign with a lang, and will return "en-US" instead.`,
+      `${localePath} isn’t assign with a lang, and will return "en-US" instead.`,
     )
 
   return 'en-US'
 }
 
-/** Get path from language */
-export const lang2Path = (lang = '', debug = false): string => {
+/** Infer locale path from language */
+export const inferLocalePath = (lang = '', debug = false): string => {
   if (lang in lang2PathConfig) return lang2PathConfig[lang as KnownLangCode]
 
   if (debug)
@@ -47,13 +50,13 @@ export const getRootLang = (app: App): string => {
 }
 
 /**
- * Get the infer language path from root directory language
+ * Infer language path from root directory language
  *
  * @param app VuePress Node App
- * @returns infer language
+ * @returns inferred locale path of root directory
  */
 export const getRootLangPath = (app: App): string =>
-  lang2Path(getRootLang(app), app.env.isDebug)
+  inferLocalePath(getRootLang(app), app.env.isDebug)
 
 /**
  * Get locale paths
@@ -96,10 +99,10 @@ export const getLocaleConfig = <T extends LocaleData>({
         const defaultLocaleData =
           // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           defaultLocalesConfig[localePath] ||
-          (lang2Path(app.options.locales[localePath].lang) === '/'
+          (inferLocalePath(app.options.locales[localePath].lang) === '/'
             ? null
             : defaultLocalesConfig[
-                lang2Path(app.options.locales[localePath].lang)
+                inferLocalePath(app.options.locales[localePath].lang)
               ])
 
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition

@@ -11,13 +11,16 @@ import { removeLeadingSlash } from 'vuepress/shared'
 import { getBundlerName } from './getBundlerName.js'
 import { mergeViteConfig } from './vite/index.js'
 
+/**
+ * Options for customizing VuePress Dev Server
+ */
 export interface DevServerOptions {
   /**
    * Path to be responded
    */
   path: string
   /**
-   * Respond function
+   * Respond handler
    */
   response: (
     request: IncomingMessage,
@@ -33,7 +36,7 @@ export interface DevServerOptions {
 /**
  * Handle specific path when running VuePress Dev Server
  *
- * @param config VuePress Bundler config
+ * @param bundlerOptions VuePress Bundler config
  * @param app VuePress Node App
  * @param path Path to be responded
  * @param response respond function

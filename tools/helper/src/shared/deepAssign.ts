@@ -3,7 +3,9 @@ import { entries, isArray, isPlainObject } from './helper.js'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type IAnyObject = Record<string, any>
 
-/** Deep merge objects to the first one */
+/**
+ * Deep merge objects to the first one
+ */
 export const deepAssign = <
   T extends IAnyObject,
   U extends IAnyObject = T,
