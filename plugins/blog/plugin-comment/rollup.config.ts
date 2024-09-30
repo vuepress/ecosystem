@@ -9,6 +9,9 @@ export default [
       base: 'client',
       files: [
         ...COMMENT_PROVIDERS.map((name) => `components/${name}Comment`),
+        'pageview/artalk',
+        'pageview/noop',
+        'pageview/waline',
         'config',
         'index',
       ],
