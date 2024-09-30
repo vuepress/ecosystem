@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.52](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.51...v2.0.0-rc.52) (2024-09-30)
+
+### Bug Fixes
+
+- **plugin-markdown-math:** improve font-size in katex ([4add5f1](https://github.com/vuepress/ecosystem/commit/4add5f14a18a83d352419cd2d3863beb5434fb97))
+- **plugin-markdown-math:** prevent scrollbar with mathjax ([c73b86f](https://github.com/vuepress/ecosystem/commit/c73b86f684605fede21b0879c4826baaf2d37bbb))
+
+### Features
+
+- **plugin-markdown-math:** add macros option for katex by default, close [#261](https://github.com/vuepress/ecosystem/issues/261) ([c5568ca](https://github.com/vuepress/ecosystem/commit/c5568ca84ed82e05407a38423b900c7782769073))
+- use rollup to bundle files ([#267](https://github.com/vuepress/ecosystem/issues/267)) ([164252d](https://github.com/vuepress/ecosystem/commit/164252d350b73a9d6d7cbe0e713be4ee2be47c08))
+
 # [2.0.0-rc.49](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.48...v2.0.0-rc.49) (2024-09-23)
 
 ### Bug Fixes

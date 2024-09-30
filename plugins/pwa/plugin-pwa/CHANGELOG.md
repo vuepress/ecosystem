@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.52](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.51...v2.0.0-rc.52) (2024-09-30)
+
+### Bug Fixes
+
+- **plugin-pwa:** fix config file ([4295c5d](https://github.com/vuepress/ecosystem/commit/4295c5d2bd8e64a51916909337eb9597ef9befb3))
+
+### Features
+
+- **plugin-pwa:** improve style tree shaking ([aed3060](https://github.com/vuepress/ecosystem/commit/aed3060c104b872cd6f337202abd36090648faac))
+- **plugin-pwa:** prevent defining variables ([ec0d8d0](https://github.com/vuepress/ecosystem/commit/ec0d8d0cc5223b90b53c337079a1a1c5d5dbbf2b))
+- use rollup to bundle files ([#267](https://github.com/vuepress/ecosystem/issues/267)) ([164252d](https://github.com/vuepress/ecosystem/commit/164252d350b73a9d6d7cbe0e713be4ee2be47c08))
+
 # [2.0.0-rc.47](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.46...v2.0.0-rc.47) (2024-09-22)
 
 **Note:** Version bump only for package @vuepress/plugin-pwa

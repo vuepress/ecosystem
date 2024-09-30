@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.52](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.51...v2.0.0-rc.52) (2024-09-30)
+
+### Features
+
+- **helper:** improve header anchor normalize ([ef2c444](https://github.com/vuepress/ecosystem/commit/ef2c444dd432b89dd49655e11bd678f3d73400bd))
+- **helper:** sync mergeViteConfig with vite ([6e17c80](https://github.com/vuepress/ecosystem/commit/6e17c809daf6cd5f633051fbd29b1988e14e82df))
+- use rollup to bundle files ([#267](https://github.com/vuepress/ecosystem/issues/267)) ([164252d](https://github.com/vuepress/ecosystem/commit/164252d350b73a9d6d7cbe0e713be4ee2be47c08))
+
 # [2.0.0-rc.47](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.46...v2.0.0-rc.47) (2024-09-22)
 
 **Note:** Version bump only for package @vuepress/helper

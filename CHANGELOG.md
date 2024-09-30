@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.52](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.51...v2.0.0-rc.52) (2024-09-30)
+
+### Bug Fixes
+
+- **plugin-comment:** add missing style import for Waline ([f976a5c](https://github.com/vuepress/ecosystem/commit/f976a5ca619f0e870e40f7ef87b0b83d199b3e20))
+- **plugin-markdown-math:** improve font-size in katex ([4add5f1](https://github.com/vuepress/ecosystem/commit/4add5f14a18a83d352419cd2d3863beb5434fb97))
+- **plugin-markdown-math:** prevent scrollbar with mathjax ([c73b86f](https://github.com/vuepress/ecosystem/commit/c73b86f684605fede21b0879c4826baaf2d37bbb))
+- **plugin-pwa:** fix config file ([4295c5d](https://github.com/vuepress/ecosystem/commit/4295c5d2bd8e64a51916909337eb9597ef9befb3))
+- **plugin-redirect:** respect config option from command line ([790731a](https://github.com/vuepress/ecosystem/commit/790731aafa31a4aa68b720632d2f33453e18bfab))
+- **plugin-rtl:** add missing client entry ([da8be48](https://github.com/vuepress/ecosystem/commit/da8be487d81b8b0c5c4e7c5ed455c63667efe369))
+- **plugin-rtl:** fix client imports ([39b43f1](https://github.com/vuepress/ecosystem/commit/39b43f10cdef760708575e360ed643fda6a9ba95))
+
+### Features
+
+- **helper:** improve header anchor normalize ([ef2c444](https://github.com/vuepress/ecosystem/commit/ef2c444dd432b89dd49655e11bd678f3d73400bd))
+- **helper:** sync mergeViteConfig with vite ([6e17c80](https://github.com/vuepress/ecosystem/commit/6e17c809daf6cd5f633051fbd29b1988e14e82df))
+- **plugin-copyright:** provide composables ([a9b6e98](https://github.com/vuepress/ecosystem/commit/a9b6e98ac9300c9a485cb317afb050b0a3e4d9eb))
+- **plugin-feed:** add app as second argument in getter ([08dbf87](https://github.com/vuepress/ecosystem/commit/08dbf87df02cd9764bfe09d9316dba9872411254))
+- **plugin-markdown-hint:** improve hint container outlook ([#264](https://github.com/vuepress/ecosystem/issues/264)) ([340fff5](https://github.com/vuepress/ecosystem/commit/340fff5ced3f720f2d6204a230ed320031f9faa9))
+- **plugin-markdown-math:** add macros option for katex by default, close [#261](https://github.com/vuepress/ecosystem/issues/261) ([c5568ca](https://github.com/vuepress/ecosystem/commit/c5568ca84ed82e05407a38423b900c7782769073))
+- **plugin-markdown-tab:** provide client entry ([a1ed50b](https://github.com/vuepress/ecosystem/commit/a1ed50bb738bb8b510a1471c797ffc5d8731f683))
+- **plugin-pwa:** improve style tree shaking ([aed3060](https://github.com/vuepress/ecosystem/commit/aed3060c104b872cd6f337202abd36090648faac))
+- **plugin-pwa:** prevent defining variables ([ec0d8d0](https://github.com/vuepress/ecosystem/commit/ec0d8d0cc5223b90b53c337079a1a1c5d5dbbf2b))
+- **plugin-redirect:** reduce runtime size ([#268](https://github.com/vuepress/ecosystem/issues/268)) ([1adfab9](https://github.com/vuepress/ecosystem/commit/1adfab9dcf5589dd391c387aa46930b836941941))
+- **plugin-rtl:** provide composables ([3d0e4a1](https://github.com/vuepress/ecosystem/commit/3d0e4a18263a9daa0a2b49b1d40fccc219357997))
+- use rollup to bundle files ([#267](https://github.com/vuepress/ecosystem/issues/267)) ([164252d](https://github.com/vuepress/ecosystem/commit/164252d350b73a9d6d7cbe0e713be4ee2be47c08))
+
 # [2.0.0-rc.51](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.50...v2.0.0-rc.51) (2024-09-23)
 
 ### Features
