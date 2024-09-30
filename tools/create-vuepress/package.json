@@ -38,6 +38,7 @@
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
+    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
