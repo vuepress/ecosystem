@@ -1,4 +1,6 @@
-export interface CopyrightPluginFrontmatter {
+import type { PageFrontmatter } from 'vuepress/shared'
+
+export interface CopyrightPluginFrontmatter extends PageFrontmatter {
   copy?:
     | boolean
     | {

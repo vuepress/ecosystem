@@ -162,6 +162,9 @@ export const getText = (
 
 export const getPageText = (
   { options: { base } }: App,
-  { contentRendered }: Page,
+  {
+    contentRendered,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  }: Page<Record<string, any>, Record<string, any>, Record<string, any>>,
   options: PageTextOptions = {},
 ): string => getText(contentRendered, base, options)

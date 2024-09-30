@@ -1,3 +1,4 @@
+import type { PageFrontmatter } from 'vuepress/shared'
 import type { WatermarkOptions as _WatermarkRawOptions } from 'watermark-js-plus'
 
 export type WatermarkPureOptions = Omit<
@@ -19,6 +20,6 @@ export type WatermarkPureOptions = Omit<
   parent?: 'body' | (string & { __z_ignore?: never })
 }
 
-export interface WatermarkPluginFrontmatter {
+export interface WatermarkPluginFrontmatter extends PageFrontmatter {
   watermark?: WatermarkPureOptions | boolean
 }
