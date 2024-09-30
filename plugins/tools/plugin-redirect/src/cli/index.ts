@@ -7,6 +7,7 @@ import {
   resolveAppConfig,
   resolveCliAppConfig,
   resolveUserConfigConventionalPath,
+  resolveUserConfigPath,
   transformUserConfigToPlugin,
 } from 'vuepress/cli'
 import { createBuildApp } from 'vuepress/core'
@@ -62,9 +63,9 @@ cli
     const cliAppConfig = resolveCliAppConfig(sourceDir, {})
 
     // resolve user config file
-    const userConfigPath = resolveUserConfigConventionalPath(
-      cliAppConfig.source,
-    )
+    const userConfigPath = commandOptions.config
+      ? resolveUserConfigPath(commandOptions.config)
+      : resolveUserConfigConventionalPath(cliAppConfig.source)
 
     const { userConfig } = await loadUserConfig(userConfigPath)
 
@@ -103,13 +104,12 @@ cli
     // initialize vuepress app to get pages
     logger.info('Initializing VuePress and preparing data...')
 
+    // initialize vuepress app to get pages
     await app.init()
 
-    // redirect all pages
-
-    // initialize vuepress app to get pages
     logger.info('Generating redirect pages...')
 
+    // redirect all pages
     await Promise.all(
       app.pages.map((page) => {
         const redirectUrl = `${removeEndingSlash(commandOptions.hostname)}${
