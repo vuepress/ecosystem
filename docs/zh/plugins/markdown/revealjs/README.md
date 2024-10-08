@@ -9,7 +9,7 @@
 ## 使用
 
 ```bash
-npm i -D @vuepress/plugin-prismjs@next
+npm i -D @vuepress/plugin-revealjs@next
 ```
 
 ```js {7} title=".vuepress/config.js"
