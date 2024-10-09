@@ -42,7 +42,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@inquirer/prompts": "^6.0.1",
+    "@inquirer/prompts": "^7.0.0",
     "cac": "^6.7.14",
     "execa": "^9.4.0"
   },
