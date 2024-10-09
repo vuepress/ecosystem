@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "vue": "^3.5.10"
+    "vue": "^3.5.11"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.17"
