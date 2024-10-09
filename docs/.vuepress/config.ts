@@ -8,6 +8,7 @@ import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { commentPlugin } from '@vuepress/plugin-comment'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
+import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
@@ -90,6 +91,14 @@ export default defineUserConfig({
       atom: true,
       json: true,
       rss: true,
+    }),
+    markdownChartPlugin({
+      chartjs: true,
+      echarts: true,
+      flowchart: true,
+      markmap: true,
+      mermaid: true,
+      plantuml: true,
     }),
     markdownImagePlugin({
       figure: true,
