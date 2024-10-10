@@ -40,7 +40,7 @@
     "markdown-it-container": "^4.0.0"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.17"
+    "vuepress": "2.0.0-rc.18"
   },
   "devDependencies": {
     "markdown-it": "^14.1.0"
