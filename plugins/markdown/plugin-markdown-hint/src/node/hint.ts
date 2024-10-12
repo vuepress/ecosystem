@@ -43,11 +43,11 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
 
           // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           info = options[localePath]?.[name]
+        } else {
+          info = md.renderInline(info)
         }
 
-        return `<div class="hint-container ${name}">\n<p class="hint-container-title">${
-          info || name
-        }</p>\n`
+        return `<div class="hint-container ${name}">\n<p class="hint-container-title">${info || name}</p>\n`
       },
       closeRender: () => '</div>\n',
     })
@@ -70,6 +70,8 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
 
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         info = options[localePath]?.caution
+      } else {
+        info = md.renderInline(info)
       }
 
       return `<div class="hint-container caution">\n<p class="hint-container-title">${
@@ -101,6 +103,8 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
 
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         info = options[localePath]?.details
+      } else {
+        info = md.renderInline(info)
       }
 
       return `<details class="hint-container details"><summary>${
