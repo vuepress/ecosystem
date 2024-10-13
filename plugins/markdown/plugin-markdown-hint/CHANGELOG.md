@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.55](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.54...v2.0.0-rc.55) (2024-10-13)
+
+### Features
+
+- **plugin-markdown-hint:** add inline rendering support for title ([#274](https://github.com/vuepress/ecosystem/issues/274)) ([7ea981f](https://github.com/vuepress/ecosystem/commit/7ea981f6f2d57efcaca9445ea008c08fdce66280))
+
 # [2.0.0-rc.54](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.53...v2.0.0-rc.54) (2024-10-10)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-hint
