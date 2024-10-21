@@ -125,7 +125,7 @@ export default defineUserConfig({
     // only enable shiki plugin in production mode
     IS_PROD
       ? shikiPlugin({
-          langs: ['bash', 'diff', 'json', 'md', 'ts', 'vue'],
+          langs: ['bash', 'diff', 'json', 'md', 'scss', 'ts', 'vue'],
           themes: {
             light: 'one-light',
             dark: 'one-dark-pro',
