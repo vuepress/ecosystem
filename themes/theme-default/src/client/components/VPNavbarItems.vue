@@ -45,7 +45,7 @@ useUpdateDeviceStatus(
       <VPNavbarDropdown
         v-if="'children' in item"
         :class="{ mobile: isMobile }"
-        :item="item"
+        :config="item"
       />
       <AutoLink v-else :config="item" />
     </div>
