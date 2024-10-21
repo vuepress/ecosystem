@@ -41,9 +41,11 @@ const categoryMap = useBlogCategory<ArticleInfo>('category')
 .category-wrapper {
   @include mixins.content-wrapper;
 
-  padding-top: 1rem !important;
-  padding-bottom: 0 !important;
-  font-size: 14px;
+  & {
+    padding-top: 1rem !important;
+    padding-bottom: 0 !important;
+    font-size: 14px;
+  }
 
   a {
     color: inherit;

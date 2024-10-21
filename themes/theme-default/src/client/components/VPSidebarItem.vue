@@ -92,7 +92,7 @@ onBeforeUnmount(() => {
 
 <style lang="scss">
 @use '../styles/mixins';
-@import '../styles/variables';
+@use '../styles/variables' as *;
 
 .vp-sidebar-item {
   border-left: 0.25rem solid transparent;

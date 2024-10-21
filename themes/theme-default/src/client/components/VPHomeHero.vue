@@ -100,7 +100,7 @@ const HomeHeroImage: FunctionalComponent = () => {
 </template>
 
 <style lang="scss">
-@import '../styles//variables';
+@use '../styles/variables' as *;
 
 .vp-hero {
   text-align: center;

@@ -86,7 +86,7 @@ useUpdateDeviceStatus(
 </template>
 
 <style lang="scss">
-@import '../styles/variables';
+@use '../styles/variables' as *;
 
 .vp-navbar {
   --navbar-line-height: calc(

@@ -62,7 +62,7 @@ useEventListener('keydown', (event): void => {
 </template>
 
 <style lang="scss">
-@import '../styles/variables';
+@use '../styles/variables' as *;
 
 .vp-page-nav {
   display: flex;

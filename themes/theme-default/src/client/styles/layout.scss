@@ -1,4 +1,4 @@
-@import 'variables';
+@use 'variables' as *;
 
 .vp-hide-mobile {
   @media screen and (max-width: $MQMobile) {

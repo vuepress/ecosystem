@@ -44,7 +44,7 @@
   "dependencies": {
     "@inquirer/prompts": "^7.0.0",
     "cac": "^6.7.14",
-    "execa": "^9.4.0"
+    "execa": "^9.4.1"
   },
   "peerDependencies": {
     "@vuepress/plugin-blog": "workspace:*",

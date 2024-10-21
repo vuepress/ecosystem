@@ -58,19 +58,21 @@ export const palettePlugin = ({
   }),
 
   extendsBundlerOptions: (bundlerOptions: unknown, app): void => {
-    // switch to modern api for vite
-    addViteConfig(bundlerOptions, app, {
-      css: {
-        preprocessorOptions: {
-          sass: {
-            api: 'modern',
-          },
-          scss: {
-            api: 'modern',
+    if (preset === 'sass') {
+      // switch to modern api for vite
+      addViteConfig(bundlerOptions, app, {
+        css: {
+          preprocessorOptions: {
+            sass: {
+              api: 'modern',
+            },
+            scss: {
+              api: 'modern',
+            },
           },
         },
-      },
-    })
+      })
+    }
   },
 
   onPrepared: async (app) => {

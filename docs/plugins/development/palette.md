@@ -56,7 +56,7 @@ Import the plugin's palette file where your theme needs to use the corresponding
 
 <style lang="scss">
 /* import variables from the plugin's palette file */
-@import '@vuepress/plugin-palette/palette';
+@use '@vuepress/plugin-palette/palette' as *;
 
 /* set default value for variables */
 $color: red !default;

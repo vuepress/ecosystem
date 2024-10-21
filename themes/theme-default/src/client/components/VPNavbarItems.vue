@@ -45,7 +45,7 @@ useUpdateDeviceStatus(
       <VPNavbarDropdown
         v-if="'children' in item"
         :class="{ mobile: isMobile }"
-        :item="item"
+        :config="item"
       />
       <AutoLink v-else :config="item" />
     </div>
@@ -53,7 +53,7 @@ useUpdateDeviceStatus(
 </template>
 
 <style lang="scss">
-@import '../styles/variables';
+@use '../styles/variables' as *;
 
 .vp-navbar-items {
   display: inline-block;
