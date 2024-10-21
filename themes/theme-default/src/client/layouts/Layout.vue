@@ -159,7 +159,7 @@ const onBeforeLeave = scrollPromise.pending
 </template>
 
 <style lang="scss">
-@import '../styles/variables';
+@use '../styles/variables' as *;
 
 .vp-sidebar-mask {
   position: fixed;

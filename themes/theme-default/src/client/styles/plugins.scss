@@ -1,5 +1,5 @@
 @use 'mixins';
-@import 'variables';
+@use 'variables' as *;
 
 // plugin-comment
 .vp-comment {

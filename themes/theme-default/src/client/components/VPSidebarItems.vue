@@ -58,7 +58,7 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
-@import '../styles/variables';
+@use '../styles/variables' as *;
 
 .vp-sidebar-items {
   margin: 0;

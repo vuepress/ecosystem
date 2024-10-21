@@ -1,8 +1,4 @@
-import {
-  addViteConfig,
-  addViteOptimizeDepsExclude,
-  chainWebpack,
-} from '@vuepress/helper'
+import { addViteOptimizeDepsExclude } from '@vuepress/helper'
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
 import { copyCodePlugin } from '@vuepress/plugin-copy-code'
@@ -83,33 +79,6 @@ export const defaultTheme = ({
     clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
     extendsBundlerOptions: (bundlerOptions, app) => {
-      // FIXME: hide sass deprecation warning for mixed-decls
-      addViteConfig(bundlerOptions, app, {
-        css: {
-          preprocessorOptions: {
-            sass: {
-              silenceDeprecations: ['mixed-decls'],
-            },
-            scss: {
-              silenceDeprecations: ['mixed-decls'],
-            },
-          },
-        },
-      })
-      chainWebpack(bundlerOptions, app, (config) => {
-        config.module
-          .rule('scss')
-          .use('sass-loader')
-          .tap((options) => ({
-            ...options,
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            sassOptions: {
-              silenceDeprecations: ['mixed-decls'],
-              ...options.sassOptions,
-            },
-          }))
-      })
-
       // ensure theme alias is not optimized by Vite
       addViteOptimizeDepsExclude(bundlerOptions, app, '@theme')
     },

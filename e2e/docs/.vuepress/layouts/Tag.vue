@@ -41,9 +41,11 @@ const tagMap = useBlogCategory<ArticleInfo>('tag')
 .tag-wrapper {
   @include mixins.content-wrapper;
 
-  padding-top: 1rem !important;
-  padding-bottom: 0 !important;
-  font-size: 14px;
+  & {
+    padding-top: 1rem !important;
+    padding-bottom: 0 !important;
+    font-size: 14px;
+  }
 
   a {
     color: inherit;

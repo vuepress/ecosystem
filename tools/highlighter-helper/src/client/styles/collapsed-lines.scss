@@ -43,6 +43,7 @@ div[class*='language-'].has-collapsed-lines {
   &[data-highlighter='shiki'] .collapsed-lines {
     --vp-collapsed-lines-bg: var(--code-c-bg, var(--shiki-light-bg));
 
+    /* stylelint-disable-next-line selector-max-attribute */
     [data-theme='dark'] & {
       --vp-collapsed-lines-bg: var(--code-c-bg, var(--shiki-dark-bg));
     }

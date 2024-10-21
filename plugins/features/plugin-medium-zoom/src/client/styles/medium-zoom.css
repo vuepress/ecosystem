@@ -9,6 +9,7 @@
   z-index: calc(var(--medium-zoom-z-index) + 1);
 }
 
+/* stylelint-disable-next-line selector-class-pattern */
 .medium-zoom--opened .medium-zoom-overlay {
   opacity: var(--medium-zoom-opacity);
 }

@@ -66,7 +66,7 @@ const NavbarBrandLogo: FunctionalComponent = () => {
 </template>
 
 <style lang="scss">
-@import '../styles/variables';
+@use '../styles/variables' as *;
 
 .vp-site-logo {
   vertical-align: top;

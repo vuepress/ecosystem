@@ -38,11 +38,8 @@
 
     background: var(--back-to-top-c-icon);
 
-    -webkit-mask-image: var(--back-to-top-icon);
     mask-image: var(--back-to-top-icon);
-    -webkit-mask-position: 50%;
     mask-position: 50%;
-    -webkit-mask-size: cover;
     mask-size: cover;
   }
 }

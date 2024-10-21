@@ -36,13 +36,9 @@
 
     font-size: 1.25rem;
 
-    -webkit-mask-image: var(--code-copy-icon);
     mask-image: var(--code-copy-icon);
-    -webkit-mask-position: 50%;
     mask-position: 50%;
-    -webkit-mask-size: 1em;
     mask-size: 1em;
-    -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
   }
 
@@ -58,7 +54,6 @@
 
   &.copied {
     &::before {
-      -webkit-mask-image: var(--code-copied-icon);
       mask-image: var(--code-copied-icon);
     }
 

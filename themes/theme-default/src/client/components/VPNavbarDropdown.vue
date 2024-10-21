@@ -121,7 +121,7 @@ watch(
 
 <style lang="scss">
 @use '../styles/mixins';
-@import '../styles/variables';
+@use '../styles/variables' as *;
 
 .vp-navbar-dropdown-wrapper {
   cursor: pointer;
