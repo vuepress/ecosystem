@@ -8,6 +8,7 @@ import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { commentPlugin } from '@vuepress/plugin-comment'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
+import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
@@ -90,6 +91,11 @@ export default defineUserConfig({
       atom: true,
       json: true,
       rss: true,
+    }),
+    markdownExtPlugin({
+      gfm: true,
+      component: true,
+      vPre: true,
     }),
     markdownImagePlugin({
       figure: true,
