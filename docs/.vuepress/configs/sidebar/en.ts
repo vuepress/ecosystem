@@ -99,6 +99,7 @@ export const sidebarEn: SidebarOptions = {
   '/plugins/markdown/': [
     'append-date',
     'markdown-container',
+    'markdown-ext',
     'markdown-image',
     'markdown-hint',
     'markdown-math',

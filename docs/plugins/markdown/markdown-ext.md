@@ -32,7 +32,7 @@ export default {
 
 - If there are multiple paragraphs in footnote, the paragraph show be double indented
 
-::: details demo
+::: details Demo
 
 Footnote 1 link[^first].
 
@@ -105,7 +105,7 @@ You can use component fence block to add a component into your markdown content.
   ```
   ````
 
-::: demo Details
+::: details Demo
 
 ```component Badge
 text: Mr.Hope
@@ -139,7 +139,7 @@ type: tip
 
 You can use any mustache syntax as raw text in `v-pre` container:
 
-:::: details Detail
+::: details Demo
 
 ::: v-pre
 

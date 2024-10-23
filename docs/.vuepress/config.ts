@@ -1,5 +1,4 @@
 import process from 'node:process'
-import { footnote } from '@mdit/plugin-footnote'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { getRealPath } from '@vuepress/helper'
@@ -72,10 +71,6 @@ export default defineUserConfig({
         return importPath
       },
     },
-  },
-
-  extendsMarkdown: (md) => {
-    md.use(footnote)
   },
 
   // configure default theme

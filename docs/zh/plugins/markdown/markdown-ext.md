@@ -32,7 +32,7 @@ export default {
 
 - 如果脚注包含多个段落，其后的段落应当保持双层缩进。
 
-::: demo 例子
+::: details 示例
 
 脚注 1 链接[^链接1]。
 
@@ -105,7 +105,7 @@ export default {
   ```
   ````
 
-::: demo 详情
+::: details 示例
 
 ```component Badge
 text: Mr.Hope
@@ -137,7 +137,7 @@ type: tip
 
 你可以使用 `v-pre` 容器来渲染将任何 mustache 语法作为纯文本渲染。
 
-:::: details 详情
+::: details 示例
 
 ::: v-pre
 

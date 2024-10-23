@@ -99,6 +99,7 @@ export const sidebarZh: SidebarOptions = {
   '/zh/plugins/markdown/': [
     'append-date',
     'markdown-container',
+    'markdown-ext',
     'markdown-image',
     'markdown-hint',
     'markdown-math',
