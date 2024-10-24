@@ -30,7 +30,7 @@ This will allow you to:
 
 - With different ID, plugins and theme won't affect others. We recommend you to set the `id` variable with your plugin name.
 
-  With the default settings, users will set your plugin style under `.vuepress/styles` directory with Sass files starting with your ID prefix. And you can access the variables you need with `${id}-config` and `${id}-paleete`.
+  With the default settings, users will set your plugin style under `.vuepress/styles` directory with Sass files starting with your ID prefix. And you can access the variables you need with `${id}-config` and `${id}-palette`.
 
   ::: tip Example
 
