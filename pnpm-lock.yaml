@@ -745,6 +745,43 @@ importers:
         specifier: ^14.1.0
         version: 14.1.0
 
+  plugins/markdown/plugin-markdown-stylize:
+    dependencies:
+      '@mdit/plugin-align':
+        specifier: ^0.13.1
+        version: 0.13.1(markdown-it@14.1.0)
+      '@mdit/plugin-attrs':
+        specifier: ^0.13.1
+        version: 0.13.1(markdown-it@14.1.0)
+      '@mdit/plugin-mark':
+        specifier: ^0.13.1
+        version: 0.13.1(markdown-it@14.1.0)
+      '@mdit/plugin-spoiler':
+        specifier: ^0.13.1
+        version: 0.13.1(markdown-it@14.1.0)
+      '@mdit/plugin-stylize':
+        specifier: ^0.13.1
+        version: 0.13.1(markdown-it@14.1.0)
+      '@mdit/plugin-sub':
+        specifier: ^0.13.1
+        version: 0.13.1(markdown-it@14.1.0)
+      '@mdit/plugin-sup':
+        specifier: ^0.13.1
+        version: 0.13.1(markdown-it@14.1.0)
+      '@types/markdown-it':
+        specifier: ^14.1.2
+        version: 14.1.2
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../../tools/helper
+      vuepress:
+        specifier: 2.0.0-rc.18
+        version: 2.0.0-rc.18(@vuepress/bundler-vite@2.0.0-rc.18(@types/node@22.7.7)(jiti@1.21.6)(lightningcss@1.27.0)(sass-embedded@1.80.3)(sass@1.80.3)(terser@5.36.0)(tsx@4.19.1)(typescript@5.6.3)(yaml@2.4.5))(@vuepress/bundler-webpack@2.0.0-rc.18(esbuild@0.23.1)(typescript@5.6.3))(typescript@5.6.3)(vue@3.5.12(typescript@5.6.3))
+    devDependencies:
+      markdown-it:
+        specifier: ^14.1.0
+        version: 14.1.0
+
   plugins/markdown/plugin-markdown-tab:
     dependencies:
       '@mdit/plugin-tab':
@@ -2390,6 +2427,24 @@ packages:
       markdown-it:
         optional: true
 
+  '@mdit/plugin-align@0.13.1':
+    resolution: {integrity: sha512-g8je53oEpYNHEudhtB5ViSiAaiMcca+hvoGbInhLl979tWuvEosOs0oWH2X3GM4f6goTGx8gLwzA10Z5C4FxIQ==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      markdown-it: ^14.1.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-attrs@0.13.1':
+    resolution: {integrity: sha512-3saBw5W2y3T0QNbui+uk7nfD36FOoBWNQImk+pbMGpKRqunjouiYP4ZtnttT/AiieGbZBVaOqhM4e01Uyua8VA==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      markdown-it: ^14.1.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
   '@mdit/plugin-container@0.13.1':
     resolution: {integrity: sha512-mFfm7YViyLHo8uORVa9oLi9+acZZoSVdPf3WPqzC/yLZAJbF27rfJgWZ9Kylt+tyaAYng8L4DiSeVcSNUIHF1A==}
     engines: {node: '>= 18'}
@@ -2453,6 +2508,15 @@ packages:
       markdown-it:
         optional: true
 
+  '@mdit/plugin-mark@0.13.1':
+    resolution: {integrity: sha512-UV+7cSY8iQXlfnrIJ/gEpgwiL2SSVzVLtaWMOV0J4tRSsdtN8ZXnJn/gC547SxBaOLIkt+0ObSskXaCH/UzuIA==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      markdown-it: ^14.1.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
   '@mdit/plugin-mathjax-slim@0.13.1':
     resolution: {integrity: sha512-ZFtKG2BtLAk1BarJZei9HP4aK0vNU7YvDb+R+nApK7MRmLQ53xHe7upu3qlfNBoOZWHXsdRmcz0G4xL3oxzlqA==}
     engines: {node: '>= 18'}
@@ -2463,6 +2527,42 @@ packages:
       markdown-it:
         optional: true
       mathjax-full:
+        optional: true
+
+  '@mdit/plugin-spoiler@0.13.1':
+    resolution: {integrity: sha512-6aOD+kjGavkn+Ta0Iq8AUfBG3UsKsL5e0pxi0Eng13lIEp8DrDw36W+E6fLOFtX8Te3ays6eTkTc1I5WzHO0Gw==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      markdown-it: ^14.1.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-stylize@0.13.1':
+    resolution: {integrity: sha512-1v+3H1nMMvXsbu6iyV1pQ7WccrRNkuHovkIAp04Vj0FtbjnKrBHlmzFZace5OaD2RcZ0fn6qRpyR+/AIMjUvtQ==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      markdown-it: ^14.1.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-sub@0.13.1':
+    resolution: {integrity: sha512-2rIvEl6pXUoXIm3JMO5ZOQ+vWIeFXmLkqxcmTZB2yOIfhYdLwIcSyquRwtI2AX8zCuvaTdiQ/aypvIE4tDoURw==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      markdown-it: ^14.1.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-sup@0.13.1':
+    resolution: {integrity: sha512-vkNif2Rbj7/gtk4/HJt5hnb+Dcbnek/V4HtLdtqUUnq9bIbzFBpYw5jZ1ZKKZeetDtRvOUPH5oy5d7iXAHorUg==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      markdown-it: ^14.1.0
+    peerDependenciesMeta:
+      markdown-it:
         optional: true
 
   '@mdit/plugin-tab@0.13.2':
@@ -9765,6 +9865,19 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.1.0
 
+  '@mdit/plugin-align@0.13.1(markdown-it@14.1.0)':
+    dependencies:
+      '@mdit/plugin-container': 0.13.1(markdown-it@14.1.0)
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 14.1.0
+
+  '@mdit/plugin-attrs@0.13.1(markdown-it@14.1.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 14.1.0
+
   '@mdit/plugin-container@0.13.1(markdown-it@14.1.0)':
     dependencies:
       '@types/markdown-it': 14.1.2
@@ -9809,6 +9922,12 @@ snapshots:
       katex: 0.16.11
       markdown-it: 14.1.0
 
+  '@mdit/plugin-mark@0.13.1(markdown-it@14.1.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 14.1.0
+
   '@mdit/plugin-mathjax-slim@0.13.1(markdown-it@14.1.0)(mathjax-full@3.2.2)':
     dependencies:
       '@mdit/plugin-tex': 0.13.1(markdown-it@14.1.0)
@@ -9817,6 +9936,30 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.1.0
       mathjax-full: 3.2.2
+
+  '@mdit/plugin-spoiler@0.13.1(markdown-it@14.1.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 14.1.0
+
+  '@mdit/plugin-stylize@0.13.1(markdown-it@14.1.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 14.1.0
+
+  '@mdit/plugin-sub@0.13.1(markdown-it@14.1.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 14.1.0
+
+  '@mdit/plugin-sup@0.13.1(markdown-it@14.1.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 14.1.0
 
   '@mdit/plugin-tab@0.13.2(markdown-it@14.1.0)':
     dependencies:
