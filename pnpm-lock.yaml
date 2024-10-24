@@ -717,6 +717,21 @@ importers:
         specifier: 2.0.0-rc.18
         version: 2.0.0-rc.18(@vuepress/bundler-vite@2.0.0-rc.18(@types/node@22.7.9)(jiti@1.21.6)(lightningcss@1.27.0)(sass-embedded@1.80.4)(sass@1.80.4)(terser@5.36.0)(tsx@4.19.1)(typescript@5.6.3)(yaml@2.4.5))(@vuepress/bundler-webpack@2.0.0-rc.18(esbuild@0.23.1)(typescript@5.6.3))(typescript@5.6.3)(vue@3.5.12(typescript@5.6.3))
 
+  plugins/markdown/plugin-markdown-include:
+    dependencies:
+      '@mdit/plugin-include':
+        specifier: ^0.13.1
+        version: 0.13.1(markdown-it@14.1.0)
+      '@types/markdown-it':
+        specifier: ^14.1.2
+        version: 14.1.2
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../../tools/helper
+      vuepress:
+        specifier: 2.0.0-rc.18
+        version: 2.0.0-rc.18(@vuepress/bundler-vite@2.0.0-rc.18(@types/node@22.7.9)(jiti@1.21.6)(lightningcss@1.27.0)(sass-embedded@1.80.4)(sass@1.80.4)(terser@5.36.0)(tsx@4.19.1)(typescript@5.6.3)(yaml@2.4.5))(@vuepress/bundler-webpack@2.0.0-rc.18(esbuild@0.23.1)(typescript@5.6.3))(typescript@5.6.3)(vue@3.5.12(typescript@5.6.3))
+
   plugins/markdown/plugin-markdown-math:
     dependencies:
       '@mdit/plugin-katex-slim':
@@ -2493,6 +2508,14 @@ packages:
   '@mdit/plugin-img-size@0.13.1':
     resolution: {integrity: sha512-cgihl72BNzij7GXjrqcKhl2eOqAlqWHiImOgblJPghDFNFKnnynty/Bf9nwbj8hTnhVWznFeuwawzXBfKYNbkg==}
     engines: {node: '>= 18'}
+    peerDependencies:
+      markdown-it: ^14.1.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-include@0.13.1':
+    resolution: {integrity: sha512-rWGJ3/L2Ocv+8KDNoXPb6H1f+aLqx0FzJKcNqJl+0HOAEScuyKS1GC4OxeWefVMQ87QoG/mYqoCbpDsJeiDbLQ==}
     peerDependencies:
       markdown-it: ^14.1.0
     peerDependenciesMeta:
@@ -9908,6 +9931,13 @@ snapshots:
   '@mdit/plugin-img-size@0.13.1(markdown-it@14.1.0)':
     dependencies:
       '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 14.1.0
+
+  '@mdit/plugin-include@0.13.1(markdown-it@14.1.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+      upath: 2.0.1
     optionalDependencies:
       markdown-it: 14.1.0
 
