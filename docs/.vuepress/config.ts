@@ -10,6 +10,7 @@ import { feedPlugin } from '@vuepress/plugin-feed'
 import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
+import { markdownStylizePlugin } from '@vuepress/plugin-markdown-stylize'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { revealJsPlugin } from '@vuepress/plugin-revealjs'
@@ -99,6 +100,29 @@ export default defineUserConfig({
     }),
     markdownMathPlugin({
       type: 'katex',
+    }),
+    markdownStylizePlugin({
+      align: true,
+      attrs: true,
+      mark: true,
+      spoiler: true,
+      sub: true,
+      sup: true,
+      custom: [
+        {
+          matcher: 'Recommended',
+          replacer: ({ tag }) => {
+            if (tag === 'em')
+              return {
+                tag: 'Badge',
+                attrs: { type: 'tip' },
+                content: 'Recommended',
+              }
+
+            return null
+          },
+        },
+      ],
     }),
     redirectPlugin({
       switchLocale: 'modal',

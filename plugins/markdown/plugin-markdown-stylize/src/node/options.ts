@@ -57,9 +57,9 @@ export interface MarkdownStylizePluginOptions {
   spoiler?: boolean
 
   /**
-   * Keyword enhancement
+   * Customizing token stylize
    *
-   * 关键词显示增强选项
+   * 自定义标记样式
    */
-  stylize?: MarkdownItStylizeConfig
+  custom?: MarkdownItStylizeConfig[]
 }

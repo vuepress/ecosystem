@@ -3,10 +3,13 @@ import type { App } from 'vuepress'
 
 const { url } = import.meta
 
-export const prepareConfigFile = (app: App): Promise<string> =>
+export const prepareConfigFile = (
+  app: App,
+  { spoiler }: Record<string, unknown>,
+): Promise<string> =>
   app.writeTemp(
     `markdown-ext/config.js`,
     `\
-import "${getRealPath('@mdit/plugin-spoiler/style', url)}";
+${spoiler ? `import "${getRealPath('@mdit/plugin-spoiler/style', url)}"\n` : ''}\n
 `,
   )

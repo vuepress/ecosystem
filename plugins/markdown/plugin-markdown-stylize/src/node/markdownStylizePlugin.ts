@@ -14,30 +14,30 @@ import { prepareConfigFile } from './prepareConfigFile.js'
 export const markdownStylizePlugin = ({
   attrs,
   align,
+  custom,
   mark,
   spoiler,
   sup,
   sub,
-  stylize,
 }: MarkdownStylizePluginOptions): Plugin => {
   return {
     name: '@vuepress/plugin-markdown-stylize',
 
     extendsMarkdown: (md) => {
+      if (custom)
+        md.use(stylizePlugin, {
+          config: custom,
+          localConfigGetter: (env: MarkdownEnv) =>
+            env.frontmatter?.stylize || null,
+        })
       if (attrs) md.use(attrsPlugin, isPlainObject(attrs) ? attrs : {})
       if (align) md.use(alignPlugin)
       if (mark) md.use(markPlugin)
       if (spoiler) md.use(spoilerPlugin)
       if (sub) md.use(subPlugin)
       if (sup) md.use(supPlugin)
-      if (stylize)
-        md.use(stylizePlugin, {
-          config: stylize,
-          localConfigGetter: (env: MarkdownEnv) =>
-            env.frontmatter?.stylize || null,
-        })
     },
 
-    clientConfigFile: spoiler ? (app) => prepareConfigFile(app) : undefined,
+    clientConfigFile: (app) => prepareConfigFile(app, { spoiler }),
   }
 }
