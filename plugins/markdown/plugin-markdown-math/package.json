@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-math",
-  "version": "2.0.0-rc.56",
+  "version": "2.0.0-rc.57",
   "description": "VuePress plugin - markdown math",
   "keywords": [
     "vuepress-plugin",

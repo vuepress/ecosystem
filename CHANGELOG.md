@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.57](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.56...v2.0.0-rc.57) (2024-10-24)
+
+### Bug Fixes
+
+- **plugin-sass-palette:** avoid using [@import](https://github.com/import) ([#281](https://github.com/vuepress/ecosystem/issues/281)) ([cc66ae1](https://github.com/vuepress/ecosystem/commit/cc66ae189a5a9d50bb1b1db619730ec692989e52))
+
+### Features
+
+- add plugin-markdown-ext ([#278](https://github.com/vuepress/ecosystem/issues/278)) ([9734a37](https://github.com/vuepress/ecosystem/commit/9734a373f5eb159164369577e78668d0e928f403))
+- add plugin-markdown-include ([#280](https://github.com/vuepress/ecosystem/issues/280)) ([c9534f2](https://github.com/vuepress/ecosystem/commit/c9534f27a77b826c1db83284c578301012e6ac90))
+- add plugin-markdown-stylize ([#279](https://github.com/vuepress/ecosystem/issues/279)) ([6c24c50](https://github.com/vuepress/ecosystem/commit/6c24c50f1306a06000fab28575814715aa1b50e1))
+- **plugin-markdown-ext:** add styles for footnote and tasklist ([4171e82](https://github.com/vuepress/ecosystem/commit/4171e82a806049ef0667794311a395889aebd716))
+
 # [2.0.0-rc.56](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.55...v2.0.0-rc.56) (2024-10-21)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.57](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.56...v2.0.0-rc.57) (2024-10-24)
+
+### Bug Fixes
+
+- **plugin-sass-palette:** avoid using [@import](https://github.com/import) ([#281](https://github.com/vuepress/ecosystem/issues/281)) ([cc66ae1](https://github.com/vuepress/ecosystem/commit/cc66ae189a5a9d50bb1b1db619730ec692989e52))
+
 # [2.0.0-rc.56](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.55...v2.0.0-rc.56) (2024-10-21)
 
 ### Features
