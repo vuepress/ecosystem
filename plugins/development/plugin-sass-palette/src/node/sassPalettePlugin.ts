@@ -1,4 +1,4 @@
-import { addViteConfig, chainWebpack } from '@vuepress/helper'
+import { addViteConfig } from '@vuepress/helper'
 import { watch } from 'chokidar'
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
