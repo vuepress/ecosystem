@@ -101,6 +101,7 @@ export const sidebarEn: SidebarOptions = {
     'markdown-container',
     'markdown-ext',
     'markdown-image',
+    'markdown-include',
     'markdown-hint',
     'markdown-math',
     'markdown-stylize',

@@ -155,6 +155,9 @@ importers:
       '@vuepress/plugin-markdown-image':
         specifier: workspace:*
         version: link:../plugins/markdown/plugin-markdown-image
+      '@vuepress/plugin-markdown-include':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-include
       '@vuepress/plugin-markdown-math':
         specifier: workspace:*
         version: link:../plugins/markdown/plugin-markdown-math

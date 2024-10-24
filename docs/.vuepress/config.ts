@@ -9,6 +9,7 @@ import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
 import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
+import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 import { markdownStylizePlugin } from '@vuepress/plugin-markdown-stylize'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
@@ -98,6 +99,9 @@ export default defineUserConfig({
       mark: true,
       size: true,
     }),
+    markdownIncludePlugin({
+      deep: true,
+    }),
     markdownMathPlugin({
       type: 'katex',
     }),
@@ -167,4 +171,6 @@ export default defineUserConfig({
       : [],
     cachePlugin(),
   ],
+
+  pagePatterns: ['**/*.md', '!**/*.snippet.md', '!.vuepress', '!node_modules'],
 })
