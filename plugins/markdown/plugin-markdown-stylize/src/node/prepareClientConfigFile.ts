@@ -3,7 +3,7 @@ import type { App } from 'vuepress'
 
 const { url } = import.meta
 
-export const prepareConfigFile = (
+export const prepareClientConfigFile = (
   app: App,
   { spoiler }: Record<string, unknown>,
 ): Promise<string> =>

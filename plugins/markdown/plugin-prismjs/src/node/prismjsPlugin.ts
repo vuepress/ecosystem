@@ -6,7 +6,7 @@ import type { Plugin } from 'vuepress/core'
 import { loadLanguages } from './loadLanguages.js'
 import { highlightPlugin, preWrapperPlugin } from './markdown/index.js'
 import type { PrismjsPluginOptions } from './options.js'
-import { prepareConfigFile } from './prepareConfigFile.js'
+import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 import { resolveHighlighter } from './resolveHighlighter.js'
 
 export const prismjsPlugin = (options: PrismjsPluginOptions = {}): Plugin => {
@@ -43,6 +43,6 @@ export const prismjsPlugin = (options: PrismjsPluginOptions = {}): Plugin => {
       }
     },
 
-    clientConfigFile: (app) => prepareConfigFile(app, opt),
+    clientConfigFile: (app) => prepareClientConfigFile(app, opt),
   }
 }

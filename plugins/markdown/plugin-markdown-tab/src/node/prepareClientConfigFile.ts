@@ -9,7 +9,7 @@ const __dirname = getDirname(url)
 
 const CLIENT_FOLDER = ensureEndingSlash(path.resolve(__dirname, '../client'))
 
-export const prepareConfigFile = (
+export const prepareClientConfigFile = (
   app: App,
   { codeTabs, tabs }: MarkdownTabPluginOptions,
 ): Promise<string> => {

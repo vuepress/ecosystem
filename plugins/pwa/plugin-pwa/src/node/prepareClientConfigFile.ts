@@ -7,7 +7,7 @@ import type { PwaPluginOptions } from './options.js'
 
 const __dirname = getDirname(import.meta.url)
 
-export const prepareConfigFile = (
+export const prepareClientConfigFile = (
   app: App,
   options: PwaPluginOptions,
 ): Promise<string> => {

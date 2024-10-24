@@ -9,7 +9,7 @@ import type { Plugin } from 'vuepress/core'
 import type { MarkdownEnv } from 'vuepress/markdown'
 import { isPlainObject } from 'vuepress/shared'
 import type { MarkdownStylizePluginOptions } from './options.js'
-import { prepareConfigFile } from './prepareConfigFile.js'
+import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 
 export const markdownStylizePlugin = ({
   attrs,
@@ -38,6 +38,6 @@ export const markdownStylizePlugin = ({
       if (sup) md.use(supPlugin)
     },
 
-    clientConfigFile: (app) => prepareConfigFile(app, { spoiler }),
+    clientConfigFile: (app) => prepareClientConfigFile(app, { spoiler }),
   }
 }

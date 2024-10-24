@@ -11,7 +11,7 @@ import { appendBase } from './helper.js'
 import { injectLinksToHead } from './injectLinksToHead.js'
 import { PLUGIN_NAME, logger } from './logger.js'
 import type { PwaPluginOptions } from './options.js'
-import { prepareConfigFile } from './prepareConfigFile.js'
+import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 
 export const pwaPlugin =
   (options: PwaPluginOptions = {}): PluginFunction =>
@@ -55,6 +55,6 @@ export const pwaPlugin =
         await generateServiceWorker(app, options)
       },
 
-      clientConfigFile: () => prepareConfigFile(app, options),
+      clientConfigFile: () => prepareClientConfigFile(app, options),
     }
   }

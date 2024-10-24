@@ -2,7 +2,7 @@ import type { Plugin } from 'vuepress/core'
 
 import { codeTabs } from './codeTabs.js'
 import type { MarkdownTabPluginOptions } from './options.js'
-import { prepareConfigFile } from './prepareConfigFile.js'
+import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 import { tabs } from './tabs.js'
 
 const PLUGIN_NAME = '@vuepress/plugin-markdown-tab'
@@ -23,6 +23,6 @@ export const markdownTabPlugin = (
       if (options.tabs) md.use(tabs)
     },
 
-    clientConfigFile: (app) => prepareConfigFile(app, options),
+    clientConfigFile: (app) => prepareClientConfigFile(app, options),
   }
 }

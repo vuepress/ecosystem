@@ -15,7 +15,7 @@ import {
   preWrapperPlugin,
 } from './markdown/index.js'
 import type { ShikiPluginOptions } from './options.js'
-import { prepareConfigFile } from './prepareConfigFile.js'
+import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 
 export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => {
   const opt: ShikiPluginOptions = {
@@ -52,6 +52,6 @@ export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => {
       }
     },
 
-    clientConfigFile: (app) => prepareConfigFile(app, opt),
+    clientConfigFile: (app) => prepareClientConfigFile(app, opt),
   }
 }

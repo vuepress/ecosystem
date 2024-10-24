@@ -1,15 +1,13 @@
 import { getRealPath } from '@vuepress/helper'
 import type { App } from 'vuepress'
-import { getTheme } from './getTheme.js'
-import type { PrismjsPluginOptions } from './options.js'
+import type { ShikiPluginOptions } from './options.js'
+import { PLUGIN_NAME } from './utils.js'
 
 const { url } = import.meta
 
-export const prepareConfigFile = (
+export const prepareClientConfigFile = (
   app: App,
   {
-    theme,
-    themes,
     lineNumbers = true,
     highlightLines = true,
     collapsedLines = 'disable',
@@ -19,26 +17,14 @@ export const prepareConfigFile = (
     notationHighlight,
     notationWordHighlight,
     whitespace,
-  }: PrismjsPluginOptions,
+  }: ShikiPluginOptions,
 ): Promise<string> => {
-  const { light, dark } = getTheme({ theme, themes })
-
   const imports: string[] = [
     `import "${getRealPath('@vuepress/highlighter-helper/styles/base.css', url)}"`,
+    `import "${getRealPath(`${PLUGIN_NAME}/styles/shiki.css`, import.meta.url)}"`,
   ]
 
   const setups: string[] = []
-
-  if (light === dark) {
-    imports.push(
-      `import "${getRealPath(`@vuepress/plugin-prismjs/styles/${light}.css`, url)}"`,
-    )
-  } else {
-    imports.push(
-      `import "${getRealPath(`@vuepress/plugin-prismjs/styles/${light}.light.css`, url)}"`,
-      `import "${getRealPath(`@vuepress/plugin-prismjs/styles/${dark}.dark.css`, url)}"`,
-    )
-  }
 
   if (lineNumbers !== 'disable') {
     imports.push(
@@ -67,6 +53,12 @@ export const prepareConfigFile = (
   if (notationFocus) {
     imports.push(
       `import "${getRealPath('@vuepress/highlighter-helper/styles/notation-focus.css', url)}"`,
+    )
+  }
+
+  if (notationHighlight) {
+    imports.push(
+      `import "${getRealPath('@vuepress/highlighter-helper/styles/notation-highlight.css', url)}"`,
     )
   }
 
@@ -101,5 +93,5 @@ export default {
 }\n`
   }
 
-  return app.writeTemp('prismjs/config.js', code)
+  return app.writeTemp('shiki/config.js', code)
 }
