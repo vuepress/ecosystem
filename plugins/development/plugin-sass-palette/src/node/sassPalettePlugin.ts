@@ -68,38 +68,18 @@ export const sassPalettePlugin =
       },
 
       extendsBundlerOptions: (bundlerOptions: unknown): void => {
-        // switch to modern api and silent import deprecation for vite
+        // switch to modern api for vite
         addViteConfig(bundlerOptions, app, {
           css: {
             preprocessorOptions: {
               sass: {
                 api: 'modern',
-                silenceDeprecations: ['import'],
               },
               scss: {
                 api: 'modern',
-                silenceDeprecations: ['import'],
               },
             },
           },
-        })
-        // silent import deprecation for webpack
-        chainWebpack(bundlerOptions, app, (webpackOptions) => {
-          webpackOptions.module
-            .rule('scss')
-            .use('sass-loader')
-            .tap((loaderOptions) => ({
-              ...loaderOptions,
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-              sassOptions: {
-                ...loaderOptions.sassOptions,
-                silenceDeprecations: [
-                  'import',
-                  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-                  ...(loaderOptions.sassOptions?.silenceDeprecations ?? []),
-                ],
-              },
-            }))
         })
         injectScssConfigModule(bundlerOptions, app, id)
       },
