@@ -103,6 +103,7 @@ export const sidebarEn: SidebarOptions = {
     'markdown-image',
     'markdown-hint',
     'markdown-math',
+    'markdown-stylize',
     'markdown-tab',
     'links-check',
     'prismjs',

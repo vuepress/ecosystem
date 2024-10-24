@@ -46,6 +46,7 @@
     "prefetch",
     "preload",
     "prismjs",
+    "revealjs",
     "shiki",
     "shikijs",
     "slugify",
