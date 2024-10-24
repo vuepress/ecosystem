@@ -1,16 +1,19 @@
 import type { App } from 'vuepress/core'
-import { getIdPrefix, getPath } from '../utils.js'
+import { getFileContent, getIdPrefix } from '../utils.js'
 
-export const prepareConfigSass = (
+export const prepareConfigSass = async (
   app: App,
   id: string,
   defaultConfig: string,
   userConfig: string,
-): Promise<string> =>
-  app.writeTemp(
+): Promise<string> => {
+  const contents = await Promise.all([
+    getFileContent(defaultConfig),
+    getFileContent(userConfig),
+  ])
+
+  return app.writeTemp(
     `sass-palette/${getIdPrefix(id)}config.scss`,
-    `\
-@import "file:///${getPath(defaultConfig)}";
-@import "file:///${getPath(userConfig)}";
-`,
+    `${contents.join('\n')}\n`,
   )
+}
