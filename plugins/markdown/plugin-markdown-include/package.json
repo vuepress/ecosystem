@@ -1,0 +1,55 @@
+{
+  "name": "@vuepress/plugin-markdown-include",
+  "version": "2.0.0-rc.56",
+  "description": "VuePress plugin - markdown include",
+  "keywords": [
+    "vuepress-plugin",
+    "vuepress",
+    "plugin",
+    "markdown",
+    "include"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/plugins/markdown/markdown-include.html",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/markdown/plugin-markdown-include"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mr.Hope",
+    "email": "mister-hope@outlook.com",
+    "url": "https://mister-hope.com"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./lib/node/index.js",
+    "./figure.css": "./lib/client/styles/figure.css",
+    "./mark.css": "./lib/client/styles/mark.css",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
+  },
+  "dependencies": {
+    "@mdit/plugin-include": "^0.13.1",
+    "@types/markdown-it": "^14.1.2",
+    "@vuepress/helper": "workspace:*"
+  },
+  "peerDependencies": {
+    "vuepress": "2.0.0-rc.18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
