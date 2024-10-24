@@ -139,7 +139,7 @@ type: tip
 
 You can use any mustache syntax as raw text in `v-pre` container:
 
-::: details Demo
+:::: details Demo
 
 ::: v-pre
 

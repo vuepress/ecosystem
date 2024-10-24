@@ -133,11 +133,13 @@ type: tip
 ```
 ````
 
+:::
+
 ### v-pre
 
 你可以使用 `v-pre` 容器来渲染将任何 mustache 语法作为纯文本渲染。
 
-::: details 示例
+:::: details 示例
 
 ::: v-pre
 
