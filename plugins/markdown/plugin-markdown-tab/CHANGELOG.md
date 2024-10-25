@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.58](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.57...v2.0.0-rc.58) (2024-10-25)
+
+### Features
+
+- **plugin-markdown-tab:** improve fallback color when using shiki ([f6dec37](https://github.com/vuepress/ecosystem/commit/f6dec372f992d5f31cfb615b32b7ce3a53bca00d))
+
 # [2.0.0-rc.57](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.56...v2.0.0-rc.57) (2024-10-24)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-tab

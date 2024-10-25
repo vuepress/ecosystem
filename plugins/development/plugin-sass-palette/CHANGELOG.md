@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.58](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.57...v2.0.0-rc.58) (2024-10-25)
+
+### Reverts
+
+- "fix(plugin-sass-palette): avoid using [@import](https://github.com/import) ([#281](https://github.com/vuepress/ecosystem/issues/281))" ([129bee7](https://github.com/vuepress/ecosystem/commit/129bee7159badaefdb3d5627db247a55d3d20403))
+
 # [2.0.0-rc.57](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.56...v2.0.0-rc.57) (2024-10-24)
 
 ### Bug Fixes
