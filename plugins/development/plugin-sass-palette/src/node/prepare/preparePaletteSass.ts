@@ -1,5 +1,5 @@
 import type { App } from 'vuepress/core'
-import { getFileContent, getIdPrefix } from '../utils.js'
+import { getIdPrefix, getPath } from '../utils.js'
 
 export interface PreparePaletteOptions {
   id: string
@@ -8,18 +8,15 @@ export interface PreparePaletteOptions {
   userPalette: string
 }
 
-export const preparePaletteSass = async (
+export const preparePaletteSass = (
   app: App,
   { id, defaultPalette, generator, userPalette }: PreparePaletteOptions,
-): Promise<string> => {
-  const contents = await Promise.all([
-    defaultPalette ? getFileContent(defaultPalette) : '',
-    getFileContent(userPalette),
-    getFileContent(generator),
-  ])
-
-  return app.writeTemp(
+): Promise<string> =>
+  app.writeTemp(
     `sass-palette/${getIdPrefix(id)}palette.scss`,
-    `${contents.join('\n')}\n`,
+    `\
+${defaultPalette ? `@import "file:///${getPath(defaultPalette)}";` : ''}
+@import "file:///${getPath(userPalette)}";
+@import "file:///${getPath(generator)}";
+`,
   )
-}
