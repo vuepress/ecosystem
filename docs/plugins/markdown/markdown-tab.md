@@ -130,7 +130,7 @@ pnpm add -D vuepress
 
 :::
 
-::: details Code
+:::: details Code
 
 ````md
 Choose a package manager:

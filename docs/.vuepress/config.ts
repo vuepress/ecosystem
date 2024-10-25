@@ -64,11 +64,7 @@ export default defineUserConfig({
             ),
           )
 
-          return realPath.endsWith('vars.css')
-            ? realPath
-            : realPath
-                .replace('/src/', '/lib/')
-                .replace(/hotKey\.ts$/, 'hotKey.d.ts')
+          return realPath
         }
         return importPath
       },
@@ -154,7 +150,22 @@ export default defineUserConfig({
     // only enable shiki plugin in production mode
     IS_PROD
       ? shikiPlugin({
-          langs: ['bash', 'diff', 'json', 'md', 'scss', 'ts', 'vue'],
+          langs: [
+            'bash',
+            'diff',
+            'json',
+            'md',
+            'scss',
+            'ts',
+            'vue',
+            'less',
+            'java',
+            'py',
+            'vb',
+            'bat',
+            'cs',
+            'cpp',
+          ],
           themes: {
             light: 'one-light',
             dark: 'one-dark-pro',
