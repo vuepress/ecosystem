@@ -69,7 +69,7 @@
   }
 
   &.active {
-    background: var(--code-c-bg);
+    background: var(--code-c-bg, var(--vp-c-bg-alt));
 
     &::before {
       background: radial-gradient(
