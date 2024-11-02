@@ -101,8 +101,12 @@ export const resolveChangelogs = (
     if (pattern.issue && repo) {
       resolved.message = resolved.message.replace(
         RE_ISSUE,
-        (_, issue: string) =>
-          pattern.issue!.replace(':issue', issue).replace(':repo', repo),
+        (matched, issue: string) => {
+          const url = pattern
+            .issue!.replace(':issue', issue)
+            .replace(':repo', repo)
+          return `<a href="${url}" target="_blank" rel="noopener noreferrer">${matched}</a>`
+        },
       )
     }
 
