@@ -58,6 +58,15 @@ export interface ContributorsOptions {
    * 贡献者配置
    */
   list?: ContributorConfig[]
+
+  /**
+   * Whether to add avatar in contributor information
+   *
+   * 是否在贡献者信息中添加头像
+   *
+   * @default false
+   */
+  avatar?: boolean
 }
 
 export interface ContributorConfig {

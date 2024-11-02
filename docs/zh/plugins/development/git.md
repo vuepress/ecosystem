@@ -76,6 +76,12 @@ export default {
      * 贡献者配置
      */
     list?: ContributorConfig[]
+
+    /**
+     * 是否在贡献者信息中添加头像
+     * @default false
+     */
+    avatar?: boolean
   }
 
   interface ContributorConfig {
@@ -306,3 +312,9 @@ interface GitChangelog {
   tagUrl?: string
 }
 ```
+
+- 详情：
+
+  页面的变更历史记录。
+
+  该属性将会包含 [gitInclude](#gitinclude) 所列文件的变更历史记录。

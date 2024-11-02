@@ -40,7 +40,7 @@ export const getContributorWithConfig = (
 
 export const getRawContributors = (
   commits: MergedRawCommit[],
-  list: ContributorConfig[] = [],
+  options: ContributorsOptions,
 ): GitContributor[] => {
   const contributors = new Map<string, GitContributor>()
 
@@ -49,7 +49,7 @@ export const getRawContributors = (
     const { email } = commit
 
     author = getAuthorNameWithNoreplyEmail(email) ?? author
-    const config = getContributorWithConfig(list, author)
+    const config = getContributorWithConfig(options.list ?? [], author)
 
     if (config) author = config.username
 
@@ -63,7 +63,7 @@ export const getRawContributors = (
         commits: 1,
       }
 
-      if (config?.avatar) item.avatar = config.avatar
+      if (config?.avatar && options.avatar) item.avatar = config.avatar
       if (config?.url) item.url = config.url
 
       contributors.set(author + email, item)
@@ -89,15 +89,15 @@ export const getRawContributors = (
 
 export const resolveContributors = async (
   commits: MergedRawCommit[],
-  { transform, list }: ContributorsOptions = {},
+  options: ContributorsOptions = {},
   gitType: GitType | null = null,
   extraContributors?: string[],
 ): Promise<GitContributor[]> => {
-  let contributors = getRawContributors(commits, list)
+  let contributors = getRawContributors(commits, options)
 
-  if (list?.length && extraContributors?.length) {
+  if (options.list?.length && extraContributors?.length) {
     for (const extraContributor of extraContributors) {
-      const config = getContributorWithConfig(list, extraContributor)
+      const config = getContributorWithConfig(options.list, extraContributor)
       if (
         config &&
         !contributors.some((item) => item.name === extraContributor)
@@ -113,13 +113,14 @@ export const resolveContributors = async (
     }
   }
 
-  if (transform) contributors = await transform(contributors)
+  if (options.transform) contributors = await options.transform(contributors)
 
   for (const contributor of contributors) {
     if (gitType === 'github') {
       contributor.url ??= `https://github.com/${contributor.name}`
-      contributor.avatar ??= `https://avatars.githubusercontent.com/${contributor.name}?v=4`
-    } else {
+      if (options.avatar)
+        contributor.avatar ??= `https://avatars.githubusercontent.com/${contributor.name}?v=4`
+    } else if (options.avatar) {
       contributor.avatar ??= `https://gravatar.com/avatar/${await digestSHA256(contributor.email || contributor.name)}?d=retro`
     }
   }

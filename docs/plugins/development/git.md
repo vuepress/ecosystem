@@ -76,6 +76,12 @@ This plugin will significantly slow down the speed of data preparation, especial
      * List of contributors configurations
      */
     list?: ContributorConfig[]
+
+    /**
+     * Whether to add avatar in contributor information
+     * @default false
+     */
+    avatar?: boolean
   }
 
   interface ContributorConfig {
@@ -312,3 +318,9 @@ interface GitChangelog {
   tagUrl?: string
 }
 ```
+
+- Details:
+
+  The changelogs of the page.
+
+  This attribute would also include contributors to the files listed in [gitInclude](#gitinclude).
