@@ -29,8 +29,18 @@ export const digestSHA256 = async (message: string): Promise<string> => {
     .join('')
 }
 
+export const getContributorWithConfig = (
+  list: ContributorConfig[],
+  name: string,
+): ContributorConfig | undefined => {
+  return list.find(
+    (item) => item.username === name || toArray(item.alias).includes(name),
+  )
+}
+
 export const getRawContributors = (
   commits: MergedRawCommit[],
+  list: ContributorConfig[] = [],
 ): GitContributor[] => {
   const contributors = new Map<string, GitContributor>()
 
@@ -39,16 +49,24 @@ export const getRawContributors = (
     const { email } = commit
 
     author = getAuthorNameWithNoreplyEmail(email) ?? author
+    const config = getContributorWithConfig(list, author)
+
+    if (config) author = config.username
 
     const contributor = contributors.get(author + email)
     if (contributor) {
       contributor.commits++
     } else {
-      contributors.set(author + email, {
+      const item: GitContributor = {
         name: author,
         email,
         commits: 1,
-      })
+      }
+
+      if (config?.avatar) item.avatar = config.avatar
+      if (config?.url) item.url = config.url
+
+      contributors.set(author + email, item)
     }
   }
 
@@ -69,48 +87,28 @@ export const getRawContributors = (
   })
 }
 
-export const getContributorWithConfig = (
-  list: ContributorConfig[],
-  name: string,
-): ContributorConfig | undefined => {
-  return list.find(
-    (item) => item.username === name || toArray(item.alias).includes(name),
-  )
-}
-
 export const resolveContributors = async (
   commits: MergedRawCommit[],
   { transform, list }: ContributorsOptions = {},
   gitType: GitType | null = null,
   extraContributors?: string[],
 ): Promise<GitContributor[]> => {
-  let contributors = getRawContributors(commits)
+  let contributors = getRawContributors(commits, list)
 
-  if (list?.length) {
-    for (const contributor of contributors) {
-      const config = getContributorWithConfig(list, contributor.name)
-      if (config) {
-        contributor.name = config.username
-        contributor.url = config.url
-        contributor.avatar = config.avatar
-      }
-    }
-
-    if (extraContributors?.length) {
-      for (const extraContributor of extraContributors) {
-        const config = getContributorWithConfig(list, extraContributor)
-        if (
-          config &&
-          !contributors.some((item) => item.name === extraContributor)
-        ) {
-          contributors.push({
-            name: config.username,
-            email: '',
-            commits: 0,
-            url: config.url,
-            avatar: config.avatar,
-          })
-        }
+  if (list?.length && extraContributors?.length) {
+    for (const extraContributor of extraContributors) {
+      const config = getContributorWithConfig(list, extraContributor)
+      if (
+        config &&
+        !contributors.some((item) => item.name === extraContributor)
+      ) {
+        contributors.push({
+          name: config.username,
+          email: '',
+          commits: 0,
+          url: config.url,
+          avatar: config.avatar,
+        })
       }
     }
   }
