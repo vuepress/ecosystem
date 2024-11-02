@@ -1,52 +1,33 @@
 import type { Page, Plugin } from 'vuepress/core'
+import { isPlainObject } from 'vuepress/shared'
 import { path } from 'vuepress/utils'
 import type {
-  GitContributor,
   GitPluginFrontmatter,
+  GitPluginOptions,
   GitPluginPageData,
 } from './types.js'
 import {
   checkGitRepo,
-  getContributors,
-  getCreatedTime,
-  getUpdatedTime,
+  checkGitRepoType,
+  getCommits,
+  resolveChangelogs,
+  resolveContributors,
 } from './utils/index.js'
-
-/**
- * Options of @vuepress/plugin-git
- */
-export interface GitPluginOptions {
-  /**
-   * Whether to get the created time of a page
-   */
-  createdTime?: boolean
-
-  /**
-   * Whether to get the updated time of a page
-   */
-  updatedTime?: boolean
-
-  /**
-   * Whether to get the contributors of a page
-   */
-  contributors?: boolean
-
-  /**
-   * Functions to transform contributors, e.g. remove duplicates ones and sort them
-   */
-  transformContributors?: (contributors: GitContributor[]) => GitContributor[]
-}
 
 export const gitPlugin =
   ({
     createdTime,
     updatedTime,
     contributors,
+    changelogs = false,
+    enabled = true,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     transformContributors,
   }: GitPluginOptions = {}): Plugin =>
   (app) => {
     const cwd = app.dir.source()
     const isGitRepoValid = checkGitRepo(cwd)
+    const gitType = isGitRepoValid ? checkGitRepoType(cwd) : null
 
     return {
       name: '@vuepress/plugin-git',
@@ -56,7 +37,24 @@ export const gitPlugin =
       ) => {
         page.data.git = {}
 
-        if (!isGitRepoValid || page.filePathRelative === null) {
+        if (
+          !isGitRepoValid ||
+          page.filePathRelative === null ||
+          enabled === false
+        ) {
+          return
+        }
+
+        if (typeof enabled === 'function' && !enabled(page)) return
+
+        const { frontmatter } = page
+
+        if (
+          !(frontmatter.changelogs ?? contributors) &&
+          !(frontmatter.contributors ?? changelogs) &&
+          !createdTime &&
+          !updatedTime
+        ) {
           return
         }
 
@@ -67,18 +65,43 @@ export const gitPlugin =
           ),
         ]
 
+        const commits = await getCommits(filePaths, cwd)
+
+        if (commits.length === 0) return
+
         if (createdTime !== false) {
-          page.data.git.createdTime = await getCreatedTime(filePaths, cwd)
+          page.data.git.createdTime = commits[commits.length - 1].date
         }
 
         if (updatedTime !== false) {
-          page.data.git.updatedTime = await getUpdatedTime(filePaths, cwd)
+          page.data.git.updatedTime = commits[0].date
         }
 
-        if (contributors !== false) {
-          const result = await getContributors(filePaths, cwd)
+        if ((frontmatter.contributors ?? contributors) !== false) {
+          const options = isPlainObject(contributors) ? contributors : {}
+          options.transform ??= transformContributors
+          page.data.git.contributors = await resolveContributors(
+            commits,
+            options,
+            gitType,
+            Array.isArray(frontmatter.contributors)
+              ? frontmatter.contributors
+              : [],
+          )
+        }
 
-          page.data.git.contributors = transformContributors?.(result) ?? result
+        if ((frontmatter.changelogs ?? changelogs) !== false) {
+          const changelogsOptions = isPlainObject(changelogs) ? changelogs : {}
+          const contributorsOptions = isPlainObject(contributors)
+            ? contributors
+            : {}
+          page.data.git.changelogs = resolveChangelogs(
+            app,
+            commits,
+            changelogsOptions,
+            gitType,
+            contributorsOptions.list ?? [],
+          )
         }
       },
 
