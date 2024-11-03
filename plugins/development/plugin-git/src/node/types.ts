@@ -2,11 +2,11 @@ import type { Page, PageFrontmatter } from 'vuepress'
 
 export interface GitPluginOptions {
   /**
-   * Whether to enable the plugin, If the value is `function`, it will be used to control which pages generate git information.
+   * Page filter, if it returns `true`, the page will collect git information.
    *
-   * 是否启用插件，如果值为`function`，将用于控制哪些页面生成git信息。
+   * 页面过滤器，如果返回 `true` ，该页面将收集 git 信息
    */
-  enabled?: boolean | ((page: Page) => boolean)
+  filter?: (page: Page) => boolean
   /**
    * Whether to get the created time of a page
    *
@@ -76,6 +76,14 @@ export interface ContributorConfig {
    * 贡献者在 git 托管服务中的用户名
    */
   username: string
+
+  /**
+   * Contributor name displayed on the page, default is `username`
+   *
+   * 贡献者显示在页面上的名字， 默认为 `username`
+   */
+  name?: string
+
   /**
    * The alias of the contributor,
    * Since contributors may have different usernames saved in their local git configuration
@@ -125,37 +133,36 @@ export interface ChangelogOptions {
 
   /**
    * Commit url pattern
-   * Default: ':repo/commit/:hash'
    *
    * - `:repo` - The url of the git repository
    * - `:hash` - Hash of the commit record
    *
    * 提交记录访问地址模式
-   * 默认值：':repo/commit/:hash'
    *
    * - `:repo` - git 仓库的访问地址
    * - `:hash` - 提交记录的 hash
+   *
+   * @default ':repo/commit/:hash'
    */
   commitUrlPattern?: string
 
   /**
    * Issue url pattern
-   * Default: ':repo/issues/:issue'
    *
    * - `:repo` - The url of the git repository
    * - `:issue` - Id of the issue
    *
    * issue 访问地址模式
-   * 默认值：':repo/issues/:issue'
    *
    * - `:repo` - git 仓库的访问地址
    * - `:issue` - issue 的 id
+   *
+   * @default ':repo/issues/:issue'
    */
   issueUrlPattern?: string
 
   /**
    * Tag url pattern
-   * Default: ':repo/releases/tag/:tag'
    *
    * - `:repo` - The url of the git repository
    * - `:tag` - Name of the tag
@@ -165,6 +172,8 @@ export interface ChangelogOptions {
    *
    * - `:repo` - git 仓库的访问地址
    * - `:tag` - tag 的名称
+   *
+   * @default ':repo/releases/tag/:tag'
    */
   tagUrlPattern?: string
 }
@@ -264,6 +273,10 @@ export interface GitChangelog
    * The url of the commit
    */
   commitUrl?: string
+  /**
+   * release tag
+   */
+  tag?: string
   /**
    * The url of the release tag
    */

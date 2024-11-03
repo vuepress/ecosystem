@@ -20,7 +20,7 @@ export const gitPlugin =
     updatedTime,
     contributors,
     changelogs = false,
-    enabled = true,
+    filter,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     transformContributors,
   }: GitPluginOptions = {}): Plugin =>
@@ -37,15 +37,11 @@ export const gitPlugin =
       ) => {
         page.data.git = {}
 
-        if (
-          !isGitRepoValid ||
-          page.filePathRelative === null ||
-          enabled === false
-        ) {
+        if (!isGitRepoValid || page.filePathRelative === null) {
           return
         }
 
-        if (typeof enabled === 'function' && !enabled(page)) return
+        if (filter && !filter(page)) return
 
         const { frontmatter } = page
 

@@ -39,8 +39,8 @@ export const getRawCommits = async (
 export const parseRawCommits = (
   rawCommits: string[],
   filepath: string,
-): RawCommit[] => {
-  return rawCommits
+): RawCommit[] =>
+  rawCommits
     .filter((commit) => !!commit)
     .map((raw) => {
       const [hash, author, email, date, message, refs, body] = raw
@@ -57,7 +57,6 @@ export const parseRawCommits = (
         email,
       }
     })
-}
 
 export const mergeRawCommits = (commits: RawCommit[]): MergedRawCommit[] => {
   const commitMap = new Map<string, MergedRawCommit>()

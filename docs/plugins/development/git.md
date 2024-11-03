@@ -90,6 +90,10 @@ This plugin will significantly slow down the speed of data preparation, especial
      */
     username: string
     /**
+     * Contributor name displayed on the page, default is `username`
+     */
+    name?: string
+    /**
      * The alias of the contributor,
      * Since contributors may have different usernames saved in their local git configuration
      * compared to their usernames on the hosting service, In this case, aliases can be used to
@@ -170,19 +174,13 @@ This plugin will significantly slow down the speed of data preparation, especial
 
   Whether to collect page changelogs or not.
 
-### enabled
+### filter
 
-- Type: `boolean | (page: Page) => boolean`
-
-- Default: `true`
+- Type: `(page: Page) => boolean`
 
 - Details:
 
-  Whether to enable this plugin or not.
-
-  - `true` - Enable the plugin
-  - `false` - Disable the plugin
-  - `(page: Page) => boolean` - if `true` is returned, git information will be collected for that page.
+  Page filter, if it returns `true`, the page will collect git information.
 
 ## Frontmatter
 

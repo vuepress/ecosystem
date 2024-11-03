@@ -7,7 +7,7 @@ import type {
   MergedRawCommit,
 } from '../types.js'
 
-export const getAuthorNameWithNoreplyEmail = (
+export const getUserNameWithNoreplyEmail = (
   email: string,
 ): string | undefined => {
   if (email.endsWith('@users.noreply.github.com')) {
@@ -38,35 +38,46 @@ export const getContributorWithConfig = (
   )
 }
 
-export const getRawContributors = (
+export const getRawContributors = async (
   commits: MergedRawCommit[],
   options: ContributorsOptions,
-): GitContributor[] => {
+  gitType: GitType | null = null,
+): Promise<GitContributor[]> => {
   const contributors = new Map<string, GitContributor>()
 
   for (const commit of commits) {
-    let { author } = commit
-    const { email } = commit
+    const { author, email } = commit
+    const config = getContributorWithConfig(
+      options.list ?? [],
+      getUserNameWithNoreplyEmail(email) ?? author,
+    )
+    const username = config?.username ?? author
+    const name = config?.name ?? username
 
-    author = getAuthorNameWithNoreplyEmail(email) ?? author
-    const config = getContributorWithConfig(options.list ?? [], author)
-
-    if (config) author = config.username
-
-    const contributor = contributors.get(author + email)
+    const contributor = contributors.get(name + email)
     if (contributor) {
       contributor.commits++
     } else {
       const item: GitContributor = {
-        name: author,
+        name,
         email,
         commits: 1,
       }
 
-      if (config?.avatar && options.avatar) item.avatar = config.avatar
-      if (config?.url) item.url = config.url
+      if (options.avatar)
+        item.avatar =
+          config?.avatar ??
+          (gitType === 'github'
+            ? `https://avatars.githubusercontent.com/${username}?v=4`
+            : `https://gravatar.com/avatar/${await digestSHA256(email || username)}?d=retro`)
 
-      contributors.set(author + email, item)
+      const url =
+        (config?.url ?? gitType === 'github')
+          ? `https://github.com/${username}`
+          : undefined
+      if (url) item.url = url
+
+      contributors.set(name + email, item)
     }
   }
 
@@ -93,37 +104,39 @@ export const resolveContributors = async (
   gitType: GitType | null = null,
   extraContributors?: string[],
 ): Promise<GitContributor[]> => {
-  let contributors = getRawContributors(commits, options)
+  let contributors = await getRawContributors(commits, options, gitType)
 
   if (options.list?.length && extraContributors?.length) {
     for (const extraContributor of extraContributors) {
-      const config = getContributorWithConfig(options.list, extraContributor)
-      if (
-        config &&
-        !contributors.some((item) => item.name === extraContributor)
-      ) {
-        contributors.push({
-          name: config.username,
+      if (!contributors.some((item) => item.name === extraContributor)) {
+        const config = getContributorWithConfig(options.list, extraContributor)
+        if (!config) continue
+
+        const item: GitContributor = {
+          name: config.name ?? extraContributor,
           email: '',
           commits: 0,
-          url: config.url,
-          avatar: config.avatar,
-        })
+        }
+
+        if (options.avatar)
+          item.avatar =
+            config.avatar ??
+            (gitType === 'github'
+              ? `https://avatars.githubusercontent.com/${config.username}?v=4`
+              : `https://gravatar.com/avatar/${await digestSHA256(config.username)}?d=retro`)
+
+        const url =
+          (config.url ?? gitType === 'github')
+            ? `https://github.com/${config.username}`
+            : undefined
+        if (url) item.url = url
+
+        contributors.push(item)
       }
     }
   }
 
   if (options.transform) contributors = await options.transform(contributors)
-
-  for (const contributor of contributors) {
-    if (gitType === 'github') {
-      contributor.url ??= `https://github.com/${contributor.name}`
-      if (options.avatar)
-        contributor.avatar ??= `https://avatars.githubusercontent.com/${contributor.name}?v=4`
-    } else if (options.avatar) {
-      contributor.avatar ??= `https://gravatar.com/avatar/${await digestSHA256(contributor.email || contributor.name)}?d=retro`
-    }
-  }
 
   return contributors
 }

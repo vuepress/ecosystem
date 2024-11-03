@@ -90,6 +90,10 @@ export default {
      */
     username: string
     /**
+     * 贡献者显示在页面上的名字， 默认为 `username`
+     */
+    name?: string
+    /**
      * 贡献者别名， 由于贡献者可能在本地 git 配置中保存的 用户名与 git 托管服务用户名不一致，
      * 这时候可以通过别名映射到真实的用户名
      */
@@ -164,19 +168,13 @@ export default {
 
   是否收集页面变更历史记录。
 
-### enabled
+### filter
 
-- 类型： `boolean | (page: Page) => boolean`
-
-- 默认值： `true`
+- 类型： `(page: Page) => boolean`
 
 - 详情：
 
-  是否启用该插件。
-
-  - `true` - 启用该插件
-  - `false` - 禁用该插件
-  - `(page: Page) => boolean` - 返回 `true` 时该页面会收集 git 信息
+  页面过滤器，如果返回 `true` ，该页面将收集 git 信息
 
 ## Frontmatter
 

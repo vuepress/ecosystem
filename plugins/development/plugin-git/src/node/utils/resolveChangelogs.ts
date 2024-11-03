@@ -7,8 +7,8 @@ import type {
   MergedRawCommit,
 } from '../types.js'
 import {
-  getAuthorNameWithNoreplyEmail,
   getContributorWithConfig,
+  getUserNameWithNoreplyEmail,
 } from './resolveContributors.js'
 
 interface Pattern {
@@ -85,16 +85,15 @@ export const resolveChangelogs = (
   for (const commit of sliceCommits) {
     const { hash, message, date, author, email, refs } = commit
     const tag = parseTagName(refs)
-
+    const contributor = getContributorWithConfig(
+      contributors,
+      getUserNameWithNoreplyEmail(email) ?? author,
+    )
     const resolved: GitChangelog = {
       hash,
       date,
       email,
-      author:
-        getContributorWithConfig(
-          contributors,
-          getAuthorNameWithNoreplyEmail(email) ?? author,
-        )?.username ?? author,
+      author: contributor?.name ?? contributor?.username ?? author,
       message: app.markdown.renderInline(message),
     }
 
@@ -114,6 +113,8 @@ export const resolveChangelogs = (
       resolved.commitUrl = pattern.commit
         .replace(':hash', hash)
         .replace(':repo', repo)
+
+    if (tag) resolved.tag = tag
 
     if (pattern.tag && repo && tag)
       resolved.tagUrl = pattern.tag.replace(':tag', tag).replace(':repo', repo)
