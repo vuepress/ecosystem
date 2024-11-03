@@ -33,7 +33,7 @@ export interface GitPluginOptions {
    *
    * 是否收集页面的变更历史记录
    */
-  changelogs?: ChangelogOptions | false
+  changelog?: ChangelogOptions | false
 
   /**
    * @deprecated use `contributors.transform` instead
@@ -118,7 +118,7 @@ export interface ContributorConfig {
 
 export interface ChangelogOptions {
   /**
-   * Maximum number of changelogs
+   * Maximum number of changelog
    *
    * 最大变更记录条数
    */
@@ -190,9 +190,9 @@ export interface GitPluginFrontmatter extends PageFrontmatter {
   contributors?: string[] | boolean
 
   /**
-   * Whether to get the changelogs of a page
+   * Whether to get the changelog of a page
    */
-  changelogs?: boolean
+  changelog?: boolean
 }
 
 export interface GitPluginPageData extends Record<string, unknown> {
@@ -216,9 +216,9 @@ export interface GitData {
   contributors?: GitContributor[]
 
   /**
-   * Changelogs of a page
+   * Changelog of a page
    */
-  changelogs?: GitChangelog[]
+  changelog?: GitChangelog[]
 }
 
 export interface GitContributor {
@@ -229,7 +229,7 @@ export interface GitContributor {
   url?: string
 }
 
-export type GitType = 'bitbucket' | 'gitee' | 'github' | 'gitlab'
+export type KnownGitProvider = 'bitbucket' | 'gitee' | 'github' | 'gitlab'
 
 export interface RawCommit {
   filepath: string

@@ -3,7 +3,7 @@ import type {
   ChangelogOptions,
   ContributorConfig,
   GitChangelog,
-  GitType,
+  KnownGitProvider,
   MergedRawCommit,
 } from '../types.js'
 import {
@@ -20,7 +20,7 @@ interface Pattern {
 const RE_ISSUE = /#(\d+)/g
 const RE_CLEAN_REFS = /[()]/g
 
-const patterns: Record<GitType, Pattern> = {
+const patterns: Record<KnownGitProvider, Pattern> = {
   github: {
     issue: ':repo/issues/:issue',
     tag: ':repo/releases/tag/:tag',
@@ -45,9 +45,9 @@ const patterns: Record<GitType, Pattern> = {
 
 const getPattern = (
   { commitUrlPattern, issueUrlPattern, tagUrlPattern }: ChangelogOptions,
-  type: GitType | null,
+  provider: KnownGitProvider | null,
 ): Pattern => {
-  const fallback = type ? patterns[type] : {}
+  const fallback = provider ? patterns[provider] : {}
 
   return {
     commit: commitUrlPattern ?? fallback.commit,
@@ -67,14 +67,14 @@ const parseTagName = (refs: string): string | undefined => {
   return tags[0]?.replace('tag:', '').trim()
 }
 
-export const resolveChangelogs = (
+export const resolveChangelog = (
   app: App,
   commits: MergedRawCommit[],
   options: ChangelogOptions,
-  type: GitType | null,
+  gitProvider: KnownGitProvider | null,
   contributors: ContributorConfig[],
 ): GitChangelog[] => {
-  const pattern = getPattern(options, type)
+  const pattern = getPattern(options, gitProvider)
   const repo = options.repoUrl
   const result: GitChangelog[] = []
 

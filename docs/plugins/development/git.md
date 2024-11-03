@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/plugin-git" />
 
-This plugin will collect git information of your pages, including the created and updated time, the contributors, the changelogs, etc.
+This plugin will collect git information of your pages, including the created and updated time, the contributors, the changelog, etc.
 
 The [lastUpdated](../../themes/default/config.md#lastupdated) and [contributors](../../themes/default/config.md#contributors) of default theme is powered by this plugin.
 
@@ -123,14 +123,14 @@ This plugin will significantly slow down the speed of data preparation, especial
 
   Whether to collect page contributors or not.
 
-### changelogs
+### changelog
 
 - Type: `false | ChangelogOptions`
 
   ```ts
   interface ChangelogOptions {
     /**
-     * Maximum number of changelogs
+     * Maximum number of changelog
      */
     maxCount?: number
 
@@ -172,7 +172,7 @@ This plugin will significantly slow down the speed of data preparation, especial
 
 - Details:
 
-  Whether to collect page changelogs or not.
+  Whether to collect page changelog or not.
 
 ### filter
 
@@ -214,13 +214,13 @@ gitInclude:
   - `false` - Do not collect contributor information
   - `string[]` - List of additional contributors, sometimes there are additional contributors on the page, and this configuration item can be used to specify the list of additional contributors to obtain contributor information
 
-### changelogs
+### changelog
 
 - Type: `boolean`
 
 - Details:
 
-  Whether to collect the change history for the current page, this value will override the [changelogs](#changelogs) configuration item.
+  Whether to collect the change history for the current page, this value will override the [changelog](#changelog) configuration item.
 
 ## Page Data
 
@@ -280,7 +280,7 @@ interface GitContributor {
 
   This attribute would also include contributors to the files listed in [gitInclude](#gitinclude).
 
-### git.changelogs
+### git.changelog
 
 - 类型： `GitChangelog[]`
 
@@ -319,6 +319,6 @@ interface GitChangelog {
 
 - Details:
 
-  The changelogs of the page.
+  The changelog of the page.
 
   This attribute would also include contributors to the files listed in [gitInclude](#gitinclude).

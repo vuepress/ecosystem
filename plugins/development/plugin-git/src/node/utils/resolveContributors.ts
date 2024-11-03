@@ -3,7 +3,7 @@ import type {
   ContributorConfig,
   ContributorsOptions,
   GitContributor,
-  GitType,
+  KnownGitProvider,
   MergedRawCommit,
 } from '../types.js'
 
@@ -41,7 +41,7 @@ export const getContributorWithConfig = (
 export const getRawContributors = async (
   commits: MergedRawCommit[],
   options: ContributorsOptions,
-  gitType: GitType | null = null,
+  gitProvider: KnownGitProvider | null = null,
 ): Promise<GitContributor[]> => {
   const contributors = new Map<string, GitContributor>()
 
@@ -67,12 +67,12 @@ export const getRawContributors = async (
       if (options.avatar)
         item.avatar =
           config?.avatar ??
-          (gitType === 'github'
+          (gitProvider === 'github'
             ? `https://avatars.githubusercontent.com/${username}?v=4`
             : `https://gravatar.com/avatar/${await digestSHA256(email || username)}?d=retro`)
 
       const url =
-        (config?.url ?? gitType === 'github')
+        (config?.url ?? gitProvider === 'github')
           ? `https://github.com/${username}`
           : undefined
       if (url) item.url = url
@@ -101,10 +101,10 @@ export const getRawContributors = async (
 export const resolveContributors = async (
   commits: MergedRawCommit[],
   options: ContributorsOptions = {},
-  gitType: GitType | null = null,
+  gitProvider: KnownGitProvider | null = null,
   extraContributors?: string[],
 ): Promise<GitContributor[]> => {
-  let contributors = await getRawContributors(commits, options, gitType)
+  let contributors = await getRawContributors(commits, options, gitProvider)
 
   if (options.list?.length && extraContributors?.length) {
     for (const extraContributor of extraContributors) {
@@ -121,12 +121,12 @@ export const resolveContributors = async (
         if (options.avatar)
           item.avatar =
             config.avatar ??
-            (gitType === 'github'
+            (gitProvider === 'github'
               ? `https://avatars.githubusercontent.com/${config.username}?v=4`
               : `https://gravatar.com/avatar/${await digestSHA256(config.username)}?d=retro`)
 
         const url =
-          (config.url ?? gitType === 'github')
+          (config.url ?? gitProvider === 'github')
             ? `https://github.com/${config.username}`
             : undefined
         if (url) item.url = url

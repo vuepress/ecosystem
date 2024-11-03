@@ -1,5 +1,5 @@
 import { execaCommandSync } from 'execa'
-import type { GitType } from '../types.js'
+import type { KnownGitProvider } from '../types.js'
 
 /**
  * Check if the git repo is valid
@@ -13,9 +13,9 @@ export const checkGitRepo = (cwd: string): boolean => {
   }
 }
 
-export const checkGitRepoType = (cwd: string): GitType | null => {
+export const referGitProvider = (cwd: string): KnownGitProvider | null => {
   try {
-    const { stdout } = execaCommandSync('git config --get remote.origin.url', {
+    const { stdout } = execaCommandSync('git remote get-url origin', {
       cwd,
     })
     if (stdout.includes('github.com')) {

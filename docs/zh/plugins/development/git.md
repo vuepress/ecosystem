@@ -117,7 +117,7 @@ export default {
 
   是否收集页面的贡献者。
 
-### changelogs
+### changelog
 
 - 类型： `false | ChangelogOptions`
 
@@ -208,13 +208,13 @@ gitInclude:
   - `false` - 不获取贡献者信息
   - `string[]` - 额外的贡献者名单，有时候页面存在额外的贡献者，可以通过这个配置项来指定额外的贡献者名单来获取贡献者信息
 
-### changelogs
+### changelog
 
 - 类型： `boolean`
 
 - 详情：
 
-  当前页面是否获取变更历史记录，该值会覆盖 [changelogs](#changelogs) 配置项。
+  当前页面是否获取变更历史记录，该值会覆盖 [changelog](#changelog) 配置项。
 
 ## 页面数据
 
@@ -274,7 +274,7 @@ interface GitContributor {
 
   该属性将会包含 [gitInclude](#gitinclude) 所列文件的贡献者。
 
-### git.changelogs
+### git.changelog
 
 - 类型： `GitChangelog[]`
 

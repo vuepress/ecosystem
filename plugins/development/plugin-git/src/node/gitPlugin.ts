@@ -8,9 +8,9 @@ import type {
 } from './types.js'
 import {
   checkGitRepo,
-  checkGitRepoType,
   getCommits,
-  resolveChangelogs,
+  referGitProvider,
+  resolveChangelog,
   resolveContributors,
 } from './utils/index.js'
 
@@ -19,7 +19,7 @@ export const gitPlugin =
     createdTime,
     updatedTime,
     contributors,
-    changelogs = false,
+    changelog = false,
     filter,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     transformContributors,
@@ -27,7 +27,7 @@ export const gitPlugin =
   (app) => {
     const cwd = app.dir.source()
     const isGitRepoValid = checkGitRepo(cwd)
-    const gitType = isGitRepoValid ? checkGitRepoType(cwd) : null
+    const gitProvider = isGitRepoValid ? referGitProvider(cwd) : null
 
     return {
       name: '@vuepress/plugin-git',
@@ -45,11 +45,12 @@ export const gitPlugin =
 
         const { frontmatter } = page
 
+        // skip if all features are disabled
         if (
-          !(frontmatter.changelogs ?? contributors) &&
-          !(frontmatter.contributors ?? changelogs) &&
-          !createdTime &&
-          !updatedTime
+          !(frontmatter.contributors ?? contributors ?? true) &&
+          !(frontmatter.changelog ?? changelog) &&
+          createdTime === false &&
+          updatedTime === false
         ) {
           return
         }
@@ -79,23 +80,23 @@ export const gitPlugin =
           page.data.git.contributors = await resolveContributors(
             commits,
             options,
-            gitType,
+            gitProvider,
             Array.isArray(frontmatter.contributors)
               ? frontmatter.contributors
               : [],
           )
         }
 
-        if (frontmatter.changelogs ?? changelogs ?? true) {
-          const changelogsOptions = isPlainObject(changelogs) ? changelogs : {}
+        if (frontmatter.changelog ?? changelog) {
+          const changelogOptions = isPlainObject(changelog) ? changelog : {}
           const contributorsOptions = isPlainObject(contributors)
             ? contributors
             : {}
-          page.data.git.changelogs = resolveChangelogs(
+          page.data.git.changelog = resolveChangelog(
             app,
             commits,
-            changelogsOptions,
-            gitType,
+            changelogOptions,
+            gitProvider,
             contributorsOptions.list ?? [],
           )
         }
