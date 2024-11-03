@@ -38,22 +38,18 @@ const getRemoteUrl = (cwd: string): string => {
 }
 
 export const referGitProvider = (cwd: string): KnownGitProvider | null => {
-  try {
-    const remoteUrl = getRemoteUrl(cwd)
-    if (remoteUrl.includes('github.com')) {
-      return 'github'
-    }
-    if (remoteUrl.includes('gitlab.com')) {
-      return 'gitlab'
-    }
-    if (remoteUrl.includes('gitee.com')) {
-      return 'gitee'
-    }
-    if (remoteUrl.includes('bitbucket.org')) {
-      return 'bitbucket'
-    }
-    return null
-  } catch {
-    return null
+  const remoteUrl = getRemoteUrl(cwd)
+  if (remoteUrl.includes('github.com')) {
+    return 'github'
   }
+  if (remoteUrl.includes('gitlab.com')) {
+    return 'gitlab'
+  }
+  if (remoteUrl.includes('gitee.com')) {
+    return 'gitee'
+  }
+  if (remoteUrl.includes('bitbucket.org')) {
+    return 'bitbucket'
+  }
+  return null
 }
