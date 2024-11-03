@@ -11,13 +11,18 @@ npm i -D @vuepress/plugin-umami-analytics@next
 ```
 
 ```ts
-import { umamiAnalyticsPlugin } from '@vuepress/plugin-umami-analytics'
+import { umamiAnalyticsPlugin } from '@vuepress/plugin-umami-analytics';
+let isProd = process.env.NODE_ENV === 'production';
 
 export default {
   plugins: [
-    umamiAnalyticsPlugin({
-      // 配置项
-    }),
+   ...(isProd ? {
+      umami: {
+        id: 'xxxxxxx',
+        scriptUrl: 'https://cloud.umami.is/script.js', // Use scriptUrl
+      }
+    } : {}),
+
   ],
 }
 ```
