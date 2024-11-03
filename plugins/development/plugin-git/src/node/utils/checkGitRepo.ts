@@ -37,7 +37,7 @@ const getRemoteUrl = (cwd: string): string => {
   }
 }
 
-export const referGitProvider = (cwd: string): KnownGitProvider | null => {
+export const inferGitProvider = (cwd: string): KnownGitProvider | null => {
   const remoteUrl = getRemoteUrl(cwd)
   if (remoteUrl.includes('github.com')) {
     return 'github'

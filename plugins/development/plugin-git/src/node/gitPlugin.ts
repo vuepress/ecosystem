@@ -9,7 +9,7 @@ import type {
 import {
   checkGitRepo,
   getCommits,
-  referGitProvider,
+  inferGitProvider,
   resolveChangelog,
   resolveContributors,
 } from './utils/index.js'
@@ -27,7 +27,7 @@ export const gitPlugin =
   (app) => {
     const cwd = app.dir.source()
     const isGitRepoValid = checkGitRepo(cwd)
-    const gitProvider = isGitRepoValid ? referGitProvider(cwd) : null
+    const gitProvider = isGitRepoValid ? inferGitProvider(cwd) : null
 
     return {
       name: '@vuepress/plugin-git',
