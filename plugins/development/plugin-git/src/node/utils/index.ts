@@ -1,4 +1,4 @@
 export * from './checkGitRepo.js'
-export * from './getContributors.js'
-export * from './getCreatedTime.js'
-export * from './getUpdatedTime.js'
+export * from './getCommits.js'
+export * from './resolveContributors.js'
+export * from './resolveChangelog.js'

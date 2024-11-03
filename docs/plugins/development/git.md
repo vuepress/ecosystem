@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/plugin-git" />
 
-This plugin will collect git information of your pages, including the created and updated time, the contributors, etc.
+This plugin will collect git information of your pages, including the created and updated time, the contributors, the changelog, etc.
 
 The [lastUpdated](../../themes/default/config.md#lastupdated) and [contributors](../../themes/default/config.md#contributors) of default theme is powered by this plugin.
 
@@ -60,7 +60,62 @@ This plugin will significantly slow down the speed of data preparation, especial
 
 ### contributors
 
-- Type: `boolean`
+- Type: `boolean | ContributorsOptions`
+
+  ```ts
+  interface ContributorsOptions {
+    /**
+     * Functions to transform contributors, e.g. remove duplicates ones and sort them.
+     * The input is the contributors collected by this plugin, and the output should be the transformed contributors.
+     */
+    transform?: (
+      contributors: GitContributor[],
+    ) => GitContributor[] | Promise<GitContributor[]>
+
+    /**
+     * List of contributors configurations
+     */
+    list?: ContributorConfig[]
+
+    /**
+     * Whether to add avatar in contributor information
+     * @default false
+     */
+    avatar?: boolean
+  }
+
+  interface ContributorConfig {
+    /**
+     * Contributor's username on the git hosting service
+     */
+    username: string
+    /**
+     * Contributor name displayed on the page, default is `username`
+     */
+    name?: string
+    /**
+     * The alias of the contributor,
+     * Since contributors may have different usernames saved in their local git configuration
+     * compared to their usernames on the hosting service, In this case, aliases can be used to
+     * map to the actual usernames.
+     */
+    alias?: string[] | string
+    /**
+     * The avatar url of the contributor.
+     *
+     * If the git hosting service is `github`, it can be ignored and left blank,
+     * as the plugin will automatically fill it in.
+     */
+    avatar?: string
+    /**
+     * The url of the contributor
+     *
+     * If the git hosting service is `github`, it can be ignored and left blank,
+     * as the plugin will automatically fill it in.
+     */
+    url?: string
+  }
+  ```
 
 - Default: `true`
 
@@ -68,17 +123,64 @@ This plugin will significantly slow down the speed of data preparation, especial
 
   Whether to collect page contributors or not.
 
-### transformContributors
+### changelog
 
-- Type: `(contributors: GitContributor[]) => GitContributor[]`
+- Type: `false | ChangelogOptions`
+
+  ```ts
+  interface ChangelogOptions {
+    /**
+     * Maximum number of changelog
+     */
+    maxCount?: number
+
+    /**
+     * The url of the git repository, e.g: https://github.com/vuepress/ecosystem
+     */
+    repoUrl?: string
+
+    /**
+     * Commit url pattern
+     * Default: ':repo/commit/:hash'
+     *
+     * - `:repo` - The url of the git repository
+     * - `:hash` - Hash of the commit record
+     */
+    commitUrlPattern?: string
+
+    /**
+     * Issue url pattern
+     * Default: ':repo/issues/:issue'
+     *
+     * - `:repo` - The url of the git repository
+     * - `:issue` - Id of the issue
+     */
+    issueUrlPattern?: string
+
+    /**
+     * Tag url pattern
+     * Default: ':repo/releases/tag/:tag'
+     *
+     * - `:repo` - The url of the git repository
+     * - `:tag` - Name of the tag
+     */
+    tagUrlPattern?: string
+  }
+  ```
+
+- Default: `false`
 
 - Details:
 
-  A function to transform the contributors.
+  Whether to collect page changelog or not.
 
-  The input is the contributors collected by this plugin, and the output should be the transformed contributors.
+### filter
 
-  You can use it to filter out some contributors, or to sort contributors.
+- Type: `(page: Page) => boolean`
+
+- Details:
+
+  Page filter, if it returns `true`, the page will collect git information.
 
 ## Frontmatter
 
@@ -99,6 +201,26 @@ gitInclude:
   - relative/path/to/file2
 ---
 ```
+
+### contributors
+
+- Type: `boolean | string[]`
+
+- Details:
+
+  Whether to collect contributor information for the current page, this value will override the [contributors](#contributors) configuration item.
+
+  - `true` - Collect contributor information
+  - `false` - Do not collect contributor information
+  - `string[]` - List of additional contributors, sometimes there are additional contributors on the page, and this configuration item can be used to specify the list of additional contributors to obtain contributor information
+
+### changelog
+
+- Type: `boolean`
+
+- Details:
+
+  Whether to collect the change history for the current page, this value will override the [changelog](#changelog) configuration item.
 
 ## Page Data
 
@@ -147,11 +269,56 @@ interface GitContributor {
   name: string
   email: string
   commits: number
+  avatar?: string
+  url?: string
 }
 ```
 
 - Details:
 
   The contributors information of the page.
+
+  This attribute would also include contributors to the files listed in [gitInclude](#gitinclude).
+
+### git.changelog
+
+- 类型： `GitChangelog[]`
+
+```ts
+interface GitChangelog {
+  /**
+   * Commit hash
+   */
+  hash: string
+  /**
+   * Unix timestamp in milliseconds
+   */
+  date: number
+  /**
+   * Commit message
+   */
+  message: string
+  /**
+   * Commit author name
+   */
+  author: string
+  /**
+   * Commit author email
+   */
+  email: string
+  /**
+   * The url of the commit
+   */
+  commitUrl?: string
+  /**
+   * The url of the release tag
+   */
+  tagUrl?: string
+}
+```
+
+- Details:
+
+  The changelog of the page.
 
   This attribute would also include contributors to the files listed in [gitInclude](#gitinclude).
