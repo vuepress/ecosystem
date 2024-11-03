@@ -73,7 +73,7 @@ export interface ContributorConfig {
   /**
    * Contributor's username on the git hosting service
    *
-   * 贡献者在 git 托管服务中的用户名
+   * 贡献者在 Git 托管服务中的用户名
    */
   username: string
 

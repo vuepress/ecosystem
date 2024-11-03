@@ -86,7 +86,7 @@ export const gitPlugin =
           )
         }
 
-        if ((frontmatter.changelogs ?? changelogs) !== false) {
+        if (frontmatter.changelogs ?? changelogs ?? true) {
           const changelogsOptions = isPlainObject(changelogs) ? changelogs : {}
           const contributorsOptions = isPlainObject(contributors)
             ? contributors
