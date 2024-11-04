@@ -314,6 +314,14 @@ interface GitChangelog {
    * The url of the release tag
    */
   tagUrl?: string
+
+  /**
+   * The list of co-authors
+   */
+  coAuthors?: {
+    name: string
+    email: string
+  }[]
 }
 ```
 

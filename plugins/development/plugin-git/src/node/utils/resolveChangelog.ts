@@ -83,7 +83,7 @@ export const resolveChangelog = (
     : commits
 
   for (const commit of sliceCommits) {
-    const { hash, message, date, author, email, refs } = commit
+    const { hash, message, date, author, email, refs, coAuthors } = commit
     const tag = parseTagName(refs)
     const contributor = getContributorWithConfig(
       contributors,
@@ -96,6 +96,8 @@ export const resolveChangelog = (
       author: contributor?.name ?? contributor?.username ?? author,
       message: app.markdown.renderInline(message),
     }
+
+    if (coAuthors) resolved.coAuthors = coAuthors
 
     if (pattern.issue && repo) {
       resolved.message = resolved.message.replace(

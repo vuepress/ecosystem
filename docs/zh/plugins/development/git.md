@@ -308,6 +308,13 @@ interface GitChangelog {
    * tag 访问地址
    */
   tagUrl?: string
+  /**
+   * 协同作者列表
+   */
+  coAuthors?: {
+    name: string
+    email: string
+  }[]
 }
 ```
 
