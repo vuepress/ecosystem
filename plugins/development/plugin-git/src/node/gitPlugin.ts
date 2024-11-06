@@ -6,13 +6,9 @@ import type {
   GitPluginOptions,
   GitPluginPageData,
 } from './options.js'
-import {
-  checkGitRepo,
-  getCommits,
-  inferGitProvider,
-  resolveChangelog,
-  resolveContributors,
-} from './utils/index.js'
+import { resolveChangelog } from './resolveChangelog.js'
+import { resolveContributors } from './resolveContributors.js'
+import { checkGitRepo, getCommits, inferGitProvider } from './utils/index.js'
 
 export const gitPlugin =
   ({
