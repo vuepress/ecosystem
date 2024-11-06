@@ -63,28 +63,7 @@ This plugin will significantly slow down the speed of data preparation, especial
 - Type: `boolean | ContributorsOptions`
 
   ```ts
-  interface ContributorsOptions {
-    /**
-     * Functions to transform contributors, e.g. remove duplicates ones and sort them.
-     * The input is the contributors collected by this plugin, and the output should be the transformed contributors.
-     */
-    transform?: (
-      contributors: GitContributor[],
-    ) => GitContributor[] | Promise<GitContributor[]>
-
-    /**
-     * List of contributors configurations
-     */
-    list?: ContributorConfig[]
-
-    /**
-     * Whether to add avatar in contributor information
-     * @default false
-     */
-    avatar?: boolean
-  }
-
-  interface ContributorConfig {
+  interface ContributorInfo {
     /**
      * Contributor's username on the git hosting service
      */
@@ -114,6 +93,25 @@ This plugin will significantly slow down the speed of data preparation, especial
      * as the plugin will automatically fill it in.
      */
     url?: string
+  }
+
+  interface ContributorsOptions {
+    /**
+     * Contributor information
+     */
+    info?: ContributorInfo[]
+
+    /**
+     * Whether to add avatar in contributor information
+     * @default false
+     */
+    avatar?: boolean
+
+    /**
+     * Functions to transform contributors, e.g. remove duplicates ones and sort them.
+     * The input is the contributors collected by this plugin, and the output should be the transformed contributors.
+     */
+    transform?: (contributors: GitContributor[]) => GitContributor[]
   }
   ```
 

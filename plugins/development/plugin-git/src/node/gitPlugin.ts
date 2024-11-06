@@ -5,14 +5,10 @@ import type {
   GitPluginFrontmatter,
   GitPluginOptions,
   GitPluginPageData,
-} from './types.js'
-import {
-  checkGitRepo,
-  getCommits,
-  inferGitProvider,
-  resolveChangelog,
-  resolveContributors,
-} from './utils/index.js'
+} from './options.js'
+import { resolveChangelog } from './resolveChangelog.js'
+import { resolveContributors } from './resolveContributors.js'
+import { checkGitRepo, getCommits, inferGitProvider } from './utils/index.js'
 
 export const gitPlugin =
   ({
@@ -74,13 +70,16 @@ export const gitPlugin =
           page.data.git.updatedTime = commits[0].date
         }
 
+        const contributorsOptions = isPlainObject(contributors)
+          ? contributors
+          : {}
+
         if ((frontmatter.contributors ?? contributors) !== false) {
-          const options = isPlainObject(contributors) ? contributors : {}
-          options.transform ??= transformContributors
-          page.data.git.contributors = await resolveContributors(
+          contributorsOptions.transform ??= transformContributors
+          page.data.git.contributors = resolveContributors(
             commits,
-            options,
             gitProvider,
+            contributorsOptions,
             Array.isArray(frontmatter.contributors)
               ? frontmatter.contributors
               : [],
@@ -89,15 +88,13 @@ export const gitPlugin =
 
         if (frontmatter.changelog ?? changelog) {
           const changelogOptions = isPlainObject(changelog) ? changelog : {}
-          const contributorsOptions = isPlainObject(contributors)
-            ? contributors
-            : {}
+
           page.data.git.changelog = resolveChangelog(
             app,
             commits,
             changelogOptions,
             gitProvider,
-            contributorsOptions.list ?? [],
+            contributorsOptions.info ?? [],
           )
         }
       },

@@ -1,75 +1,10 @@
 import type { Page, PageFrontmatter } from 'vuepress'
+import type { GitChangelog, GitContributor } from './typings.js'
 
-export interface GitPluginOptions {
-  /**
-   * Page filter, if it returns `true`, the page will collect git information.
-   *
-   * 页面过滤器，如果返回 `true` ，该页面将收集 git 信息
-   */
-  filter?: (page: Page) => boolean
-  /**
-   * Whether to get the created time of a page
-   *
-   * 是否收集页面创建时间
-   */
-  createdTime?: boolean
-
-  /**
-   * Whether to get the updated time of a page
-   *
-   * 是否收集页面更新时间
-   */
-  updatedTime?: boolean
-
-  /**
-   * Whether to get the contributors of a page
-   *
-   * 是否收集页面的贡献者
-   */
-  contributors?: ContributorsOptions | boolean
-
-  /**
-   * Whether to get the changelog of a page
-   *
-   * 是否收集页面的变更历史记录
-   */
-  changelog?: ChangelogOptions | false
-
-  /**
-   * @deprecated use `contributors.transform` instead
-   * Functions to transform contributors, e.g. remove duplicates ones and sort them
-   */
-  transformContributors?: (contributors: GitContributor[]) => GitContributor[]
-}
-
-export interface ContributorsOptions {
-  /**
-   * Functions to transform contributors, e.g. remove duplicates ones and sort them
-   *
-   * 贡献者转换函数，例如去重和排序
-   */
-  transform?: (
-    contributors: GitContributor[],
-  ) => GitContributor[] | Promise<GitContributor[]>
-
-  /**
-   * The list of contributors configurations
-   *
-   * 贡献者配置
-   */
-  list?: ContributorConfig[]
-
-  /**
-   * Whether to add avatar in contributor information
-   *
-   * 是否在贡献者信息中添加头像
-   *
-   * @default false
-   */
-  avatar?: boolean
-}
-
-export interface ContributorConfig {
+/**
+ * Contributor information
+ */
+export interface ContributorInfo {
   /**
    * Contributor's username on the git hosting service
    *
@@ -94,6 +29,7 @@ export interface ContributorConfig {
    * 这时候可以通过别名映射到真实的用户名
    */
   alias?: string[] | string
+
   /**
    * The avatar url of the contributor.
    *
@@ -104,6 +40,7 @@ export interface ContributorConfig {
    * 如果 git 托管服务为 `github`，则可以忽略不填，由插件自动填充
    */
   avatar?: string
+
   /**
    * The url of the contributor
    *
@@ -114,6 +51,31 @@ export interface ContributorConfig {
    * 如果 git 托管服务为 `github`，则可以忽略不填，由插件自动填充
    */
   url?: string
+}
+
+export interface ContributorsOptions {
+  /**
+   * Contributors Information
+   *
+   * 贡献者信息
+   */
+  info?: ContributorInfo[]
+
+  /**
+   * Whether to add avatar in contributor information
+   *
+   * 是否在贡献者信息中添加头像
+   *
+   * @default false
+   */
+  avatar?: boolean
+
+  /**
+   * Functions to transform contributors, e.g. remove duplicates ones and sort them
+   *
+   * 贡献者转换函数，例如去重和排序
+   */
+  transform?: (contributors: GitContributor[]) => GitContributor[]
 }
 
 export interface ChangelogOptions {
@@ -178,6 +140,48 @@ export interface ChangelogOptions {
   tagUrlPattern?: string
 }
 
+export interface GitPluginOptions {
+  /**
+   * Page filter, if it returns `true`, the page will collect git information.
+   *
+   * 页面过滤器，如果返回 `true` ，该页面将收集 git 信息
+   */
+  filter?: (page: Page) => boolean
+  /**
+   * Whether to get the created time of a page
+   *
+   * 是否收集页面创建时间
+   */
+  createdTime?: boolean
+
+  /**
+   * Whether to get the updated time of a page
+   *
+   * 是否收集页面更新时间
+   */
+  updatedTime?: boolean
+
+  /**
+   * Whether to get the contributors of a page
+   *
+   * 是否收集页面的贡献者
+   */
+  contributors?: ContributorsOptions | boolean
+
+  /**
+   * Whether to get the changelog of a page
+   *
+   * 是否收集页面的变更历史记录
+   */
+  changelog?: ChangelogOptions | false
+
+  /**
+   * @deprecated use `contributors.transform` instead
+   * Functions to transform contributors, e.g. remove duplicates ones and sort them
+   */
+  transformContributors?: (contributors: GitContributor[]) => GitContributor[]
+}
+
 export interface GitPluginFrontmatter extends PageFrontmatter {
   gitInclude?: string[]
 
@@ -219,71 +223,4 @@ export interface GitData {
    * Changelog of a page
    */
   changelog?: GitChangelog[]
-}
-
-export interface GitContributor {
-  name: string
-  email: string
-  commits: number
-  avatar?: string
-  url?: string
-}
-
-export type KnownGitProvider = 'bitbucket' | 'gitee' | 'github' | 'gitlab'
-
-export interface RawCommit {
-  filepath: string
-  /**
-   * Commit hash
-   */
-  hash: string
-  /**
-   * Unix timestamp in milliseconds
-   */
-  date: number
-  /**
-   * Commit message
-   */
-  message: string
-  /**
-   * Commit message body
-   */
-  body: string
-  /**
-   * Commit refs
-   */
-  refs: string
-  /**
-   * Commit author name
-   */
-  author: string
-  /**
-   * Commit author email
-   */
-  email: string
-
-  /**
-   * The co-authors of the commit
-   */
-  coAuthors?: Pick<GitContributor, 'email' | 'name'>[]
-}
-
-export interface MergedRawCommit extends Omit<RawCommit, 'filepath'> {
-  filepaths: string[]
-}
-
-export interface GitChangelog
-  extends Omit<MergedRawCommit, 'body' | 'filepaths' | 'refs'> {
-  /**
-   * The url of the commit
-   */
-  commitUrl?: string
-  /**
-   * release tag
-   */
-  tag?: string
-  /**
-   * The url of the release tag
-   */
-  tagUrl?: string
 }

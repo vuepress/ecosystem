@@ -1,5 +1,5 @@
 import { execa } from 'execa'
-import type { GitContributor, MergedRawCommit, RawCommit } from '../types.js'
+import type { GitContributor, MergedRawCommit, RawCommit } from '../typings.js'
 
 const FORMAT = '%H|%an|%ae|%ad|%s|%d|%b'
 const SPLIT_CHAR = '[GIT_LOG_COMMIT_END]'
@@ -30,7 +30,7 @@ const getCoAuthors = (
 export const getRawCommits = async (
   filepath: string,
   cwd: string,
-): Promise<string[]> => {
+): Promise<RawCommit[]> => {
   try {
     const { stdout } = await execa(
       'git',
@@ -45,34 +45,31 @@ export const getRawCommits = async (
       ],
       { cwd },
     )
-    return stdout.replace(RE_SPLIT, '').split(`${SPLIT_CHAR}\n`)
+
+    return stdout
+      .replace(RE_SPLIT, '')
+      .split(`${SPLIT_CHAR}\n`)
+      .filter(Boolean)
+      .map((rawString) => {
+        const [hash, author, email, date, message, refs, body] = rawString
+          .split('|')
+          .map((v) => v.trim())
+        return {
+          filepath,
+          hash,
+          date: Number.parseInt(date, 10) * 1000,
+          message,
+          body,
+          refs,
+          author,
+          email,
+          coAuthors: getCoAuthors(body),
+        }
+      })
   } catch {
     return []
   }
 }
-
-export const parseRawCommits = (
-  rawCommits: string[],
-  filepath: string,
-): RawCommit[] =>
-  rawCommits
-    .filter((commit) => !!commit)
-    .map((raw) => {
-      const [hash, author, email, date, message, refs, body] = raw
-        .split('|')
-        .map((v) => v.trim())
-      return {
-        filepath,
-        hash,
-        date: Number.parseInt(date, 10) * 1000,
-        message,
-        body,
-        refs,
-        author,
-        email,
-        coAuthors: getCoAuthors(body),
-      }
-    })
 
 export const mergeRawCommits = (commits: RawCommit[]): MergedRawCommit[] => {
   const commitMap = new Map<string, MergedRawCommit>()
@@ -91,13 +88,11 @@ export const getCommits = async (
   filepaths: string[],
   cwd: string,
 ): Promise<MergedRawCommit[]> => {
-  const commits = await Promise.all(
-    filepaths.map(async (filepath) => {
-      const rawCommits = await getRawCommits(filepath, cwd)
-      return parseRawCommits(rawCommits, filepath)
-    }),
+  const rawCommits = await Promise.all(
+    filepaths.map((filepath) => getRawCommits(filepath, cwd)),
   )
-  return mergeRawCommits(commits.flat()).sort((a, b) =>
+
+  return mergeRawCommits(rawCommits.flat()).sort((a, b) =>
     b.date - a.date > 0 ? 1 : -1,
   )
 }
