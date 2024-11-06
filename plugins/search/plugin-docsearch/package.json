@@ -40,9 +40,9 @@
     "copy": "cpx \"src/**/*.css\" lib"
   },
   "dependencies": {
-    "@docsearch/css": "^3.6.3",
-    "@docsearch/js": "^3.6.3",
-    "@docsearch/react": "^3.6.3",
+    "@docsearch/css": "^3.7.0",
+    "@docsearch/js": "^3.7.0",
+    "@docsearch/react": "^3.7.0",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "^11.2.0",
     "ts-debounce": "^4.0.0",

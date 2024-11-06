@@ -10,7 +10,7 @@ declare const __DOCSEARCH_OPTIONS__: DocSearchOptions
 
 const docSearchOptions: Partial<DocSearchProps> = __DOCSEARCH_OPTIONS__
 
-const docsearch: Ref<DocSearchProps> = ref(docSearchOptions as DocSearchProps)
+const docsearch = ref(docSearchOptions as DocSearchProps)
 
 const docsearchSymbol: InjectionKey<
   Ref<
