@@ -63,28 +63,7 @@ export default {
 - 类型： `boolean | ContributorsOptions`
 
   ```ts
-  interface ContributorsOptions {
-    /**
-     * 贡献者转换函数，例如去重和排序
-     * 该函数接收一个贡献者信息数组，返回一个新的贡献者信息数组。
-     */
-    transform?: (
-      contributors: GitContributor[],
-    ) => GitContributor[] | Promise<GitContributor[]>
-
-    /**
-     * 贡献者配置
-     */
-    list?: ContributorConfig[]
-
-    /**
-     * 是否在贡献者信息中添加头像
-     * @default false
-     */
-    avatar?: boolean
-  }
-
-  interface ContributorConfig {
+  interface ContributorInfo {
     /**
      * 贡献者在 git 托管服务中的用户名
      */
@@ -108,6 +87,25 @@ export default {
      * 如果 git 托管服务为 `github`，则可以忽略不填，由插件自动填充
      */
     url?: string
+  }
+
+  interface ContributorsOptions {
+    /**
+     * 贡献者信息
+     */
+    info?: ContributorInfo[]
+
+    /**
+     * 是否在贡献者信息中添加头像
+     * @default false
+     */
+    avatar?: boolean
+
+    /**
+     * 贡献者转换函数，例如去重和排序
+     * 该函数接收一个贡献者信息数组，返回一个新的贡献者信息数组。
+     */
+    transform?: (contributors: GitContributor[]) => GitContributor[]
   }
   ```
 

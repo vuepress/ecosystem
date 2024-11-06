@@ -1,15 +1,14 @@
 import type { App } from 'vuepress'
+import type { ChangelogOptions, ContributorInfo } from './options.js'
 import type {
-  ChangelogOptions,
-  ContributorConfig,
   GitChangelog,
   KnownGitProvider,
   MergedRawCommit,
-} from '../types.js'
+} from './typings.js'
 import {
-  getContributorWithConfig,
+  getContributorInfo,
   getUserNameWithNoreplyEmail,
-} from './resolveContributors.js'
+} from './utils/index.js'
 
 interface Pattern {
   issue?: string
@@ -72,7 +71,7 @@ export const resolveChangelog = (
   commits: MergedRawCommit[],
   options: ChangelogOptions,
   gitProvider: KnownGitProvider | null,
-  contributors: ContributorConfig[],
+  contributors: ContributorInfo[],
 ): GitChangelog[] => {
   const pattern = getPattern(options, gitProvider)
   const repo = options.repoUrl
@@ -85,9 +84,9 @@ export const resolveChangelog = (
   for (const commit of sliceCommits) {
     const { hash, message, date, author, email, refs, coAuthors } = commit
     const tag = parseTagName(refs)
-    const contributor = getContributorWithConfig(
-      contributors,
+    const contributor = getContributorInfo(
       getUserNameWithNoreplyEmail(email) ?? author,
+      contributors,
     )
     const resolved: GitChangelog = {
       hash,
@@ -97,7 +96,7 @@ export const resolveChangelog = (
       message: app.markdown.renderInline(message),
     }
 
-    if (coAuthors) resolved.coAuthors = coAuthors
+    if (coAuthors.length) resolved.coAuthors = coAuthors
 
     if (pattern.issue && repo) {
       resolved.message = resolved.message.replace(
