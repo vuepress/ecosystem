@@ -1,14 +1,4 @@
----
-title: nprogress
----
-
-<!-- `# nprogress` will be rendered as `<h1 id="nprogress">`, and the id will conflict with the nprogress bar (stupid) -->
-
-<!-- so we add a 'plugin' suffix in the h1 title, and use title frontmatter to set the page title -->
-
-<!-- TODO: Remove this hack once we have attr feature -->
-
-# nprogress Plugin
+# nprogress {#nprogress-plugin}
 
 <NpmBadge package="@vuepress/plugin-nprogress" />
 
