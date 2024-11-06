@@ -25,6 +25,7 @@ export const getAlias = (
 })
 
 export const getProviderPackage = (provider?: string): string | null => {
+  // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
   switch (provider) {
     case 'Artalk':
       return 'artalk'
