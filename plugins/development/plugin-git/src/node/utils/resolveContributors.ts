@@ -16,7 +16,7 @@ export const getUserNameWithNoreplyEmail = (
   return undefined
 }
 
-const toArray = (value?: string[] | string): string[] => {
+const toArray = <T = unknown>(value?: T | T[]): T[] => {
   if (!value) return []
   return Array.isArray(value) ? value : [value]
 }
@@ -46,38 +46,43 @@ export const getRawContributors = async (
   const contributors = new Map<string, GitContributor>()
 
   for (const commit of commits) {
-    const { author, email } = commit
-    const config = getContributorWithConfig(
-      options.list ?? [],
-      getUserNameWithNoreplyEmail(email) ?? author,
-    )
-    const username = config?.username ?? author
-    const name = config?.name ?? username
+    const authors = [
+      { name: commit.author, email: commit.email },
+      ...toArray(commit.coAuthors),
+    ]
+    for (const { name: author, email } of authors) {
+      const config = getContributorWithConfig(
+        options.list ?? [],
+        getUserNameWithNoreplyEmail(email) ?? author,
+      )
+      const username = config?.username ?? author
+      const name = config?.name ?? username
 
-    const contributor = contributors.get(name + email)
-    if (contributor) {
-      contributor.commits++
-    } else {
-      const item: GitContributor = {
-        name,
-        email,
-        commits: 1,
+      const contributor = contributors.get(name + email)
+      if (contributor) {
+        contributor.commits++
+      } else {
+        const item: GitContributor = {
+          name,
+          email,
+          commits: 1,
+        }
+
+        if (options.avatar)
+          item.avatar =
+            config?.avatar ??
+            (gitProvider === 'github'
+              ? `https://avatars.githubusercontent.com/${username}?v=4`
+              : `https://gravatar.com/avatar/${await digestSHA256(email || username)}?d=retro`)
+
+        const url =
+          (config?.url ?? gitProvider === 'github')
+            ? `https://github.com/${username}`
+            : undefined
+        if (url) item.url = url
+
+        contributors.set(name + email, item)
       }
-
-      if (options.avatar)
-        item.avatar =
-          config?.avatar ??
-          (gitProvider === 'github'
-            ? `https://avatars.githubusercontent.com/${username}?v=4`
-            : `https://gravatar.com/avatar/${await digestSHA256(email || username)}?d=retro`)
-
-      const url =
-        (config?.url ?? gitProvider === 'github')
-          ? `https://github.com/${username}`
-          : undefined
-      if (url) item.url = url
-
-      contributors.set(name + email, item)
     }
   }
 

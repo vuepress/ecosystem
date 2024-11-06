@@ -1,9 +1,24 @@
 import { execa } from 'execa'
-import type { MergedRawCommit, RawCommit } from '../types.js'
+import type { GitContributor, MergedRawCommit, RawCommit } from '../types.js'
 
 const FORMAT = '%H|%an|%ae|%ad|%s|%d|%b'
 const SPLIT_CHAR = '[GIT_LOG_COMMIT_END]'
 const RE_SPLIT = /\[GIT_LOG_COMMIT_END\]$/
+
+const RE_CO_AUTHOR = /^ *Co-authored-by: ?([^<]*)<([^>]*)> */gim
+
+const getCoAuthors = (
+  body: string,
+): Pick<GitContributor, 'email' | 'name'>[] => {
+  if (!body) return []
+
+  return [...body.matchAll(RE_CO_AUTHOR)]
+    .map(([, name, email]) => ({
+      name: name.trim(),
+      email: email.trim(),
+    }))
+    .filter(Boolean)
+}
 
 /**
  * Get raw commits
@@ -55,6 +70,7 @@ export const parseRawCommits = (
         refs,
         author,
         email,
+        coAuthors: getCoAuthors(body),
       }
     })
 

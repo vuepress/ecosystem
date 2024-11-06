@@ -261,6 +261,11 @@ export interface RawCommit {
    * Commit author email
    */
   email: string
+
+  /**
+   * The co-authors of the commit
+   */
+  coAuthors?: Pick<GitContributor, 'email' | 'name'>[]
 }
 
 export interface MergedRawCommit extends Omit<RawCommit, 'filepath'> {
