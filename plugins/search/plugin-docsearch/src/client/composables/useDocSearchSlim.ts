@@ -1,7 +1,7 @@
-import type { DocSearchProps } from '@docsearch/react'
 import { debounce } from 'ts-debounce'
 import { useRouter } from 'vuepress/client'
 import { removeLeadingSlash, resolveRoutePathFromUrl } from 'vuepress/shared'
+import type { DocSearchProps } from '../../shared/index.js'
 
 declare const __DOCSEARCH_INDEX_BASE__: string
 
@@ -65,10 +65,11 @@ export const useDocSearchShim = (): Partial<DocSearchProps> => {
     // add search debounce
     transformSearchClient: (searchClient) => {
       const searchWithDebounce = debounce(searchClient.search, 500)
+
       return {
         ...searchClient,
         search: async (...args) => searchWithDebounce(...args),
       }
     },
-  } as Partial<DocSearchProps>
+  }
 }
