@@ -51,6 +51,9 @@
   "peerDependencies": {
     "vuepress": "2.0.0-rc.18"
   },
+  "devDependencies": {
+    "algoliasearch": "5.12.0"
+  },
   "publishConfig": {
     "access": "public"
   }
