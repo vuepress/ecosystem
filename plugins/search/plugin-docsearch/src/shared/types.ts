@@ -1,5 +1,11 @@
-import type { DocSearchProps } from '@docsearch/react'
+import type docsearch from '@docsearch/js'
 import type { LocaleConfig } from 'vuepress/shared'
+
+export type DocSearchProps = typeof docsearch extends (
+  options: infer T,
+) => unknown
+  ? T
+  : never
 
 export type DocSearchLocaleOptions = Partial<
   Pick<

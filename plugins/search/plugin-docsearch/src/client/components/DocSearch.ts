@@ -1,3 +1,4 @@
+import type { SearchParamsObject } from 'algoliasearch'
 import type { PropType } from 'vue'
 import { computed, defineComponent, h, onMounted, ref, watch } from 'vue'
 import { usePageLang, useRouteLocale } from 'vuepress/client'
@@ -53,15 +54,19 @@ export const DocSearch = defineComponent({
      */
     const initialize = async (): Promise<void> => {
       const { default: docsearch } = await import('@docsearch/js')
+
+      const { indexName, searchParameters } = options.value
+
       docsearch({
         ...docsearchShim,
         ...options.value,
         container: `#${props.containerId}`,
         searchParameters: {
-          ...options.value.searchParameters,
+          ...searchParameters,
+          indexName,
           facetFilters: getFacetFilters(
             lang.value,
-            options.value.searchParameters?.facetFilters,
+            (searchParameters as SearchParamsObject | undefined)?.facetFilters,
           ),
         },
       })
