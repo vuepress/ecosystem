@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.60](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.58...v2.0.0-rc.60) (2024-11-06)
+
+### Features
+
+- **plugin-git:** add collect of co-authors ([#285](https://github.com/vuepress/ecosystem/issues/285)) ([448d845](https://github.com/vuepress/ecosystem/commit/448d845bc17fefc8943be7103cca653c256fb7fb))
+- **plugin-git:** improve performance and tweaks options ([#287](https://github.com/vuepress/ecosystem/issues/287)) ([51b793b](https://github.com/vuepress/ecosystem/commit/51b793bd38007a806c25a4261d09f36985b16aa7))
+- **plugin-git:** support changelog and improve performance ([#283](https://github.com/vuepress/ecosystem/issues/283)) ([b526b8c](https://github.com/vuepress/ecosystem/commit/b526b8c330e77589d688758cf03d8ded6d9b1d29))
+
 # [2.0.0-rc.56](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.55...v2.0.0-rc.56) (2024-10-21)
 
 ### Features

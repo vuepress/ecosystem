@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.60](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.58...v2.0.0-rc.60) (2024-11-06)
+
+**Note:** Version bump only for package create-vuepress
+
 # [2.0.0-rc.58](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.57...v2.0.0-rc.58) (2024-10-25)
 
 **Note:** Version bump only for package create-vuepress

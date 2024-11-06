@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-photo-swipe",
-  "version": "2.0.0-rc.57",
+  "version": "2.0.0-rc.60",
   "description": "VuePress plugin - photo-swipe",
   "keywords": [
     "vuepress-plugin",
