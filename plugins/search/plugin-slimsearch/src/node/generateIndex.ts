@@ -17,7 +17,7 @@ import type {
   SlimSearchCustomFieldOptions,
   SlimSearchPluginOptions,
 } from './options.js'
-import type { Store } from './utils.js'
+import type { IDStore } from './utils.js'
 
 /**
  * These tags are valid HTML tags which can contain content.
@@ -70,7 +70,7 @@ const renderHeader = (node: Element): string => {
 
 export const generatePageIndex = (
   page: Page<{ excerpt?: string }>,
-  store: Store,
+  store: IDStore,
   customFieldsGetter: SlimSearchCustomFieldOptions[] = [],
   indexContent = false,
 ): IndexItem[] => {
@@ -190,7 +190,7 @@ export const getSearchIndexStore = async (
     indexOptions,
     indexLocaleOptions,
   }: SlimSearchPluginOptions,
-  store: Store,
+  store: IDStore,
 ): Promise<SearchIndexStore> => {
   const indexesByLocale: LocaleIndex = {}
 

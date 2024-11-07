@@ -1,8 +1,8 @@
 import type { App } from 'vuepress/core'
 
-import type { Store } from '../utils.js'
+import type { IDStore } from '../utils.js'
 
-export const prepareStore = async (app: App, store: Store): Promise<void> => {
+export const prepareStore = async (app: App, store: IDStore): Promise<void> => {
   await app.writeTemp(
     `search-pro/store.js`,
     `\

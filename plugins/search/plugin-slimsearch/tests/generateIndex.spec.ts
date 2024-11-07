@@ -5,7 +5,7 @@ import { createBaseApp } from 'vuepress/core'
 import { path } from 'vuepress/utils'
 
 import { generatePageIndex } from '../src/node/generateIndex.js'
-import { Store } from '../src/node/utils.js'
+import { IDStore } from '../src/node/utils.js'
 import { emptyTheme } from './__fixtures__/theme/empty.js'
 
 const app = createBaseApp({
@@ -18,7 +18,7 @@ await app.init()
 
 describe('generateIndex', () => {
   it('Should generate index', () => {
-    const store = new Store()
+    const store = new IDStore()
 
     app.pages.forEach((page) => {
       page.data.excerpt = getPageExcerpt(app, page, {
@@ -30,7 +30,7 @@ describe('generateIndex', () => {
   })
 
   it('Should generate full index', () => {
-    const store = new Store()
+    const store = new IDStore()
 
     app.pages.forEach((page) => {
       page.data.excerpt = getPageExcerpt(app, page, {
@@ -42,7 +42,7 @@ describe('generateIndex', () => {
   })
 
   it('Should support customFields', () => {
-    const store = new Store()
+    const store = new IDStore()
 
     app.pages.forEach((page) => {
       page.data.excerpt = getPageExcerpt(app, page, {
@@ -61,7 +61,7 @@ describe('generateIndex', () => {
   })
 
   it('Should support customFields with full index', () => {
-    const store = new Store()
+    const store = new IDStore()
 
     app.pages.forEach((page) => {
       expect(

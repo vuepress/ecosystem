@@ -8,11 +8,11 @@ import { getResults } from '../client/worker/result.js'
 import { getSuggestions } from '../client/worker/suggestion.js'
 import type { IndexItem, SearchIndexStore } from '../shared/index.js'
 
-declare const SLIMSEARCH_INDEX: string
+declare const __SLIMSEARCH_INDEX__: string
 
 const searchIndex: SearchIndexStore = fromEntries(
   entries(
-    JSON.parse(SLIMSEARCH_INDEX) as Record<string, IndexObject<IndexItem>>,
+    JSON.parse(__SLIMSEARCH_INDEX__) as Record<string, IndexObject<IndexItem>>,
   ).map(([localePath, index]) => [
     localePath,
     loadIndex<string, IndexItem, IndexItem>(index, {

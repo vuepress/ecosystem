@@ -16,7 +16,13 @@ export const logger = new Logger(PLUGIN_NAME)
 export const getLocaleChunkName = (locale: string): string =>
   locale.replace(/\//g, '') || 'root'
 
-export class Store {
+export const inferFilePath = (vuePath: string): string =>
+  vuePath
+    .replace(/^pages\//, '')
+    .replace(/\/index\.html\.vue/, '/README.md')
+    .replace(/\.html\.vue/, '.md')
+
+export class IDStore {
   private store: string[]
 
   public constructor() {
@@ -43,6 +49,10 @@ export class Store {
     const index = this.store.indexOf(item)
 
     if (index !== -1) this.store[index] = ''
+  }
+
+  public clear(): void {
+    this.store = []
   }
 
   public toJSON(): string {

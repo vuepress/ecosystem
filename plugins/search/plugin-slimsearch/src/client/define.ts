@@ -9,9 +9,9 @@ type SlimSearchClientCustomFiledConfig = Record<
   SlimSearchCustomFieldFormatter
 >
 
-declare const SLIMSEARCH_ENABLE_AUTO_SUGGESTIONS: boolean
-declare const SLIMSEARCH_CUSTOM_FIELDS: SlimSearchClientCustomFiledConfig
-declare const SLIMSEARCH_OPTIONS: {
+declare const __SLIMSEARCH_AUTO_SUGGESTIONS__: boolean
+declare const __SLIMSEARCH_CUSTOM_FIELDS__: SlimSearchClientCustomFiledConfig
+declare const __SLIMSEARCH_OPTIONS__: {
   searchDelay: number
   suggestDelay: number
   queryHistoryCount: number
@@ -19,11 +19,11 @@ declare const SLIMSEARCH_OPTIONS: {
   hotKeys: SlimSearchKeyOptions[]
   worker: string
 }
-declare const SLIMSEARCH_LOCALES: SlimSearchLocaleConfig
+declare const __SLIMSEARCH_LOCALES__: SlimSearchLocaleConfig
 
-export const searchProOptions = SLIMSEARCH_OPTIONS
+export const searchProOptions = __SLIMSEARCH_OPTIONS__
 
-export const enableAutoSuggestions = SLIMSEARCH_ENABLE_AUTO_SUGGESTIONS
-export const searchProClientCustomFiledConfig = SLIMSEARCH_CUSTOM_FIELDS
+export const enableAutoSuggestions = __SLIMSEARCH_AUTO_SUGGESTIONS__
+export const searchProClientCustomFiledConfig = __SLIMSEARCH_CUSTOM_FIELDS__
 export const searchProHotKeys = searchProOptions.hotKeys
-export const searchProLocales = SLIMSEARCH_LOCALES
+export const searchProLocales = __SLIMSEARCH_LOCALES__

@@ -19,9 +19,9 @@ export const generateWorker = async (
   await fs.writeFile(
     workerFilePath,
     workerFileContent
-      .replace('SLIMSEARCH_INDEX', () => JSON.stringify(searchIndexContent))
+      .replace('__SLIMSEARCH_INDEX__', () => JSON.stringify(searchIndexContent))
       .replace(
-        'SLIMSEARCH_SORT_STRATEGY',
+        '__SLIMSEARCH_SORT_STRATEGY__',
         JSON.stringify(options.sortStrategy ?? 'max'),
       ),
   )

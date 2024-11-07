@@ -5,8 +5,8 @@ import type { App } from 'vuepress/core'
 import type { PageIndexId, SearchIndexStore } from '../../shared/index.js'
 import { generatePageIndex } from '../generateIndex.js'
 import type { SlimSearchPluginOptions } from '../options.js'
-import type { Store } from '../utils.js'
-import { getLocaleChunkName } from '../utils.js'
+import type { IDStore } from '../utils.js'
+import { getLocaleChunkName, inferFilePath } from '../utils.js'
 
 export const prepareSearchIndex = async (
   app: App,
@@ -38,13 +38,10 @@ export const updateSearchIndex = async (
   app: App,
   options: SlimSearchPluginOptions,
   searchIndexStore: SearchIndexStore,
-  store: Store,
+  store: IDStore,
   path: string,
 ): Promise<void> => {
-  const filePath = path
-    .replace(/^pages\//, '')
-    .replace(/\/index\.html\.vue/, '/README.md')
-    .replace(/\.html\.vue/, '.md')
+  const filePath = inferFilePath(path)
 
   const page = app.pages.find(
     ({ filePathRelative }) =>
@@ -89,13 +86,10 @@ export default ${JSON.stringify(JSON.stringify(localeSearchIndex))}
 export const removeSearchIndex = async (
   app: App,
   searchIndexStore: SearchIndexStore,
-  store: Store,
+  store: IDStore,
   path: string,
 ): Promise<void> => {
-  const filePath = path
-    .replace(/^pages\//, '')
-    .replace(/\/index\.html\.vue/, '/README.md')
-    .replace(/\.html\.vue/, '.md')
+  const filePath = inferFilePath(path)
 
   const page = app.pages.find(
     ({ filePathRelative }) =>

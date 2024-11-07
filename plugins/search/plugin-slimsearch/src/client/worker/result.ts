@@ -17,7 +17,7 @@ import type {
 } from '../typings/index.js'
 import { getMatchedContent } from './matchContent.js'
 
-declare const SLIMSEARCH_SORT_STRATEGY: 'max' | 'total'
+declare const __SLIMSEARCH_SORT_STRATEGY__: 'max' | 'total'
 
 export type MiniSearchResult = IndexItem & {
   terms: string[]
@@ -131,7 +131,7 @@ export const getResults = (
 
   return entries(resultMap)
     .sort(([, valueA], [, valueB]) =>
-      SLIMSEARCH_SORT_STRATEGY === 'total'
+      __SLIMSEARCH_SORT_STRATEGY__ === 'total'
         ? sortWithTotal(valueA, valueB)
         : sortWithMax(valueA, valueB),
     )

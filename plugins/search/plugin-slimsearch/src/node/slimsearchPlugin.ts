@@ -19,35 +19,35 @@ import {
   updateSearchIndex,
 } from './prepare/index.js'
 import { setPagesExcerpt } from './setPagesExcerpt.js'
-import { CLIENT_FOLDER, PLUGIN_NAME, Store, logger } from './utils.js'
+import { CLIENT_FOLDER, IDStore, PLUGIN_NAME, logger } from './utils.js'
 
 export const slimsearchPlugin =
   (options: SlimSearchPluginOptions): PluginFunction =>
   (app) => {
     if (app.env.isDebug) logger.info('Options:', options)
 
-    const store = new Store()
+    const store = new IDStore()
     let searchIndexStore: SearchIndexStore | null = null
 
     return {
       name: PLUGIN_NAME,
 
       define: {
-        SLIMSEARCH_ENABLE_AUTO_SUGGESTIONS: options.autoSuggestions ?? true,
-        SLIMSEARCH_CUSTOM_FIELDS: fromEntries(
+        __SLIMSEARCH_AUTO_SUGGESTIONS__: options.autoSuggestions ?? true,
+        __SLIMSEARCH_CUSTOM_FIELDS__: fromEntries(
           options.customFields
             ?.map(({ formatter }, index) =>
               formatter ? [index.toString(), formatter] : null,
             )
             .filter((item): item is [string, string] => item !== null) ?? [],
         ),
-        SLIMSEARCH_LOCALES: getLocaleConfig({
+        __SLIMSEARCH_LOCALES__: getLocaleConfig({
           app,
           name: PLUGIN_NAME,
           config: options.locales,
           default: searchProLocales,
         }),
-        SLIMSEARCH_OPTIONS: {
+        __SLIMSEARCH_OPTIONS__: {
           searchDelay: options.searchDelay ?? 150,
           suggestDelay: options.suggestDelay ?? 0,
           queryHistoryCount: options.queryHistoryCount ?? 5,
@@ -58,7 +58,9 @@ export const slimsearchPlugin =
           ],
           worker: options.worker ?? 'slimsearch.worker.js',
         },
-        SLIMSEARCH_SORT_STRATEGY: JSON.stringify(options.sortStrategy ?? 'max'),
+        __SLIMSEARCH_SORT_STRATEGY__: JSON.stringify(
+          options.sortStrategy ?? 'max',
+        ),
       },
 
       clientConfigFile: `${CLIENT_FOLDER}config.js`,
@@ -80,6 +82,8 @@ export const slimsearchPlugin =
       onPrepared: async (): Promise<void> => {
         if (app.env.isDev) await prepareSearchIndex(app, searchIndexStore!)
         await prepareStore(app, store)
+        // clean store in build to save memory
+        if (app.env.isBuild) store.clear()
       },
 
       onWatched: (_, watchers): void => {
