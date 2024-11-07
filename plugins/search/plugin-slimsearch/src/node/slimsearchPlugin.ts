@@ -12,21 +12,22 @@ import { getSearchIndexStore } from './generateIndex.js'
 import { generateWorker } from './generateWorker.js'
 import { searchProLocales } from './locales.js'
 import type { SlimSearchPluginOptions } from './options.js'
+import { PathStore } from './pathStore.js'
 import {
   prepareSearchIndex,
   prepareStore,
   removeSearchIndex,
   updateSearchIndex,
-} from './prepare/index.js'
+} from './prepare.js'
 import { setPagesExcerpt } from './setPagesExcerpt.js'
-import { CLIENT_FOLDER, IDStore, PLUGIN_NAME, logger } from './utils.js'
+import { CLIENT_FOLDER, PLUGIN_NAME, logger } from './utils.js'
 
 export const slimsearchPlugin =
   (options: SlimSearchPluginOptions): PluginFunction =>
   (app) => {
     if (app.env.isDebug) logger.info('Options:', options)
 
-    const store = new IDStore()
+    const store = new PathStore()
     let searchIndexStore: SearchIndexStore | null = null
 
     return {

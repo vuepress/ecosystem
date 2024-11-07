@@ -17,7 +17,7 @@ import type {
   SlimSearchCustomFieldOptions,
   SlimSearchPluginOptions,
 } from './options.js'
-import type { IDStore } from './utils.js'
+import type { PathStore } from './pathStore.js'
 
 /**
  * These tags are valid HTML tags which can contain content.
@@ -70,12 +70,12 @@ const renderHeader = (node: Element): string => {
 
 export const generatePageIndex = (
   page: Page<{ excerpt?: string }>,
-  store: IDStore,
+  store: PathStore,
   customFieldsGetter: SlimSearchCustomFieldOptions[] = [],
   indexContent = false,
 ): IndexItem[] => {
   const { contentRendered, data, title } = page
-  const pageId = store.addItem(page.path).toString() as PageIndexId
+  const pageId = store.addPath(page.path).toString() as PageIndexId
   const hasExcerpt = Boolean(data.excerpt?.length)
 
   const pageIndex: PageIndexItem = { id: pageId, h: title }
@@ -190,7 +190,7 @@ export const getSearchIndexStore = async (
     indexOptions,
     indexLocaleOptions,
   }: SlimSearchPluginOptions,
-  store: IDStore,
+  store: PathStore,
 ): Promise<SearchIndexStore> => {
   const indexesByLocale: LocaleIndex = {}
 
