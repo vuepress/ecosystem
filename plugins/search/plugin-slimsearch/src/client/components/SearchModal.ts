@@ -46,7 +46,7 @@ import '../styles/search-modal.scss'
 
 const SearchResult = defineAsyncComponent({
   loader: () =>
-    import(/* webpackChunkName: "search-pro-result" */ './SearchResult.js'),
+    import(/* webpackChunkName: "slimserach-result" */ './SearchResult.js'),
   loadingComponent: () => {
     const localeConfig = useLocaleConfig(searchProLocales)
 
@@ -130,16 +130,16 @@ export default defineComponent({
 
     return (): VNode | null =>
       isActive.value
-        ? h('div', { class: 'search-pro-modal-wrapper' }, [
+        ? h('div', { class: 'slimserach-modal-wrapper' }, [
             h('div', {
-              class: 'search-pro-mask',
+              class: 'slimserach-mask',
               onClick: () => {
                 isActive.value = false
                 input.value = ''
               },
             }),
-            h('div', { class: 'search-pro-modal' }, [
-              h('div', { class: 'search-pro-box' }, [
+            h('div', { class: 'slimserach-modal' }, [
+              h('div', { class: 'slimserach-box' }, [
                 h('form', [
                   h(
                     'label',
@@ -149,7 +149,7 @@ export default defineComponent({
                   h('input', {
                     'ref': inputElement,
                     'type': 'search',
-                    'class': 'search-pro-input',
+                    'class': 'slimserach-input',
                     'id': 'search-pro',
                     'placeholder': locale.value.placeholder,
                     'spellcheck': 'false',
@@ -158,7 +158,7 @@ export default defineComponent({
                     'autocorrect': 'off',
                     'name': `${siteLocale.value.title}-search`,
                     'value': input.value,
-                    'aria-controls': 'search-pro-results',
+                    'aria-controls': 'slimserach-results',
                     'onKeydown': (event: KeyboardEvent): void => {
                       const { key } = event
 
@@ -183,7 +183,7 @@ export default defineComponent({
                   input.value
                     ? h('button', {
                         type: 'reset',
-                        class: 'search-pro-clear-button',
+                        class: 'slimserach-clear-button',
                         innerHTML: CLOSE_ICON,
                         onClick: () => {
                           input.value = ''
@@ -196,7 +196,7 @@ export default defineComponent({
                     ? h(
                         'ul',
                         {
-                          class: 'search-pro-suggestions',
+                          class: 'slimserach-suggestions',
                           ref: suggestionsElement,
                         },
                         suggestions.value.map((suggestion, index) =>
@@ -204,7 +204,7 @@ export default defineComponent({
                             'li',
                             {
                               class: [
-                                'search-pro-suggestion',
+                                'slimserach-suggestion',
                                 {
                                   active: index === activeSuggestionIndex.value,
                                 },
@@ -217,7 +217,7 @@ export default defineComponent({
                               h(
                                 'kbd',
                                 {
-                                  class: 'search-pro-auto-complete',
+                                  class: 'slimserach-auto-complete',
                                   title: `Tab ${locale.value.autocomplete}`,
                                 },
                                 'Tab',
@@ -233,7 +233,7 @@ export default defineComponent({
                   'button',
                   {
                     type: 'button',
-                    class: 'search-pro-close-button',
+                    class: 'slimserach-close-button',
                     onClick: () => {
                       isActive.value = false
                       input.value = ''
@@ -257,17 +257,17 @@ export default defineComponent({
               // Key hints should only appears in PC
               isMobile.value
                 ? null
-                : h('div', { class: 'search-pro-hints' }, [
-                    h('span', { class: 'search-pro-hint' }, [
+                : h('div', { class: 'slimserach-hints' }, [
+                    h('span', { class: 'slimserach-hint' }, [
                       h('kbd', { innerHTML: ENTER_KEY_ICON }),
                       locale.value.select,
                     ]),
-                    h('span', { class: 'search-pro-hint' }, [
+                    h('span', { class: 'slimserach-hint' }, [
                       h('kbd', { innerHTML: UP_KEY_ICON }),
                       h('kbd', { innerHTML: DOWN_KEY_ICON }),
                       locale.value.navigate,
                     ]),
-                    h('span', { class: 'search-pro-hint' }, [
+                    h('span', { class: 'slimserach-hint' }, [
                       h('kbd', { innerHTML: ESC_KEY_ICON }),
                       locale.value.exit,
                     ]),

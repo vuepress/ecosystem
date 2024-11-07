@@ -1,6 +1,6 @@
 @use 'vuepress-shared/styles/reset';
 
-.search-pro-button {
+.slimserach-button {
   @include reset.button;
   display: inline-flex;
   align-items: center;
@@ -45,7 +45,7 @@
   }
 }
 
-.search-pro-placeholder {
+.slimserach-placeholder {
   margin-inline: 0.25rem;
   font-size: 1rem;
 
@@ -54,7 +54,7 @@
   }
 }
 
-.search-pro-key-hints {
+.slimserach-key-hints {
   font-size: 0.75rem;
 
   @media (max-width: hope-config.$pad) {
@@ -62,7 +62,7 @@
   }
 }
 
-.search-pro-key {
+.slimserach-key {
   display: inline-block;
 
   min-width: 1em;

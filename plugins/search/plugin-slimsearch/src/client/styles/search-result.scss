@@ -1,6 +1,6 @@
 @use 'vuepress-shared/styles/reset';
 
-.search-pro-result-wrapper {
+.slimserach-result-wrapper {
   scrollbar-color: var(--vp-c-accent) var(--vp-c-border);
   scrollbar-width: thin;
 
@@ -33,17 +33,17 @@
   }
 }
 
-.search-pro-result-list {
+.slimserach-result-list {
   margin: 0;
   padding: 0;
 }
 
-.search-pro-result-list-item {
+.slimserach-result-list-item {
   display: block;
   list-style: none;
 }
 
-.search-pro-result-title {
+.slimserach-result-title {
   position: sticky;
   top: -2px;
   z-index: 10;
@@ -60,12 +60,12 @@
   line-height: 2rem;
   text-indent: 0.5em;
 
-  .search-pro-result-item.active & {
+  .slimserach-result-item.active & {
     color: var(--vp-c-accent);
   }
 }
 
-.search-pro-result-type {
+.slimserach-result-type {
   display: block;
 
   width: 1rem;
@@ -76,7 +76,7 @@
   color: var(--vp-c-accent);
 }
 
-.search-pro-remove-icon {
+.slimserach-remove-icon {
   @include reset.button;
   box-sizing: content-box;
   height: 1.5rem;
@@ -97,7 +97,7 @@
   }
 }
 
-.search-pro-result-content {
+.slimserach-result-content {
   display: flex;
   flex-flow: column;
   flex-grow: 1;
@@ -113,7 +113,7 @@
   }
 }
 
-.search-pro-result-item {
+.slimserach-result-item {
   display: flex;
   align-items: center;
 
@@ -139,8 +139,8 @@
     color: var(--vp-c-white);
     cursor: pointer;
 
-    .search-pro-result-type,
-    .search-pro-remove-icon,
+    .slimserach-result-type,
+    .slimserach-remove-icon,
     strong {
       color: var(--vp-c-white);
     }

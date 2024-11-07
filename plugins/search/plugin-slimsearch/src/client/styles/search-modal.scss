@@ -1,6 +1,6 @@
 @use 'vuepress-shared/styles/reset';
 
-@keyframes search-pro-fade-in {
+@keyframes slimserach-fade-in {
   from {
     opacity: 0.2;
   }
@@ -10,7 +10,7 @@
   }
 }
 
-.search-pro-modal-wrapper {
+.slimserach-modal-wrapper {
   position: fixed;
   inset: 0;
   z-index: 997;
@@ -24,17 +24,17 @@
   cursor: default;
 }
 
-.search-pro-mask {
+.slimserach-mask {
   position: fixed;
   inset: 0;
   z-index: 998;
 
   backdrop-filter: blur(10px);
 
-  animation: 0.25s search-pro-fade-in;
+  animation: 0.25s slimserach-fade-in;
 }
 
-.search-pro-modal {
+.slimserach-modal {
   position: absolute;
   z-index: 999;
 
@@ -67,7 +67,7 @@
   }
 }
 
-.search-pro-box {
+.slimserach-box {
   display: flex;
   margin: 1rem;
 
@@ -90,7 +90,7 @@
   }
 }
 
-.search-pro-clear-button {
+.slimserach-clear-button {
   @include reset.button;
   position: absolute;
   inset-inline-end: 0.75rem;
@@ -106,7 +106,7 @@
   }
 }
 
-.search-pro-close-button {
+.slimserach-close-button {
   @include reset.button;
   display: none;
 
@@ -122,7 +122,7 @@
   }
 }
 
-.search-pro-input {
+.slimserach-input {
   flex: 1;
 
   width: 0;
@@ -147,7 +147,7 @@
   }
 }
 
-.search-pro-suggestions {
+.slimserach-suggestions {
   position: absolute;
   inset: calc(100% + 4px) 0 auto;
   z-index: 20;
@@ -167,7 +167,7 @@
   line-height: 1.5;
 }
 
-.search-pro-suggestion {
+.slimserach-suggestion {
   padding: 0.25rem 1rem;
   border-top: 1px solid var(--vp-c-border);
   cursor: pointer;
@@ -182,7 +182,7 @@
   }
 }
 
-.search-pro-auto-complete {
+.slimserach-auto-complete {
   display: none;
   float: right;
 
@@ -196,12 +196,12 @@
   font-size: 12px;
   line-height: 1;
 
-  .search-pro-suggestion.active & {
+  .slimserach-suggestion.active & {
     display: block;
   }
 }
 
-.search-pro-result-wrapper {
+.slimserach-result-wrapper {
   flex-grow: 1;
 
   overflow-y: auto;
@@ -229,14 +229,14 @@
   }
 }
 
-.search-pro-hints {
+.slimserach-hints {
   margin-top: 1rem;
   padding: 0.75rem 0.5rem;
   box-shadow: 0 -1px 4px 0 var(--vp-c-shadow);
   line-height: 1;
 }
 
-.search-pro-hint {
+.slimserach-hint {
   display: inline-flex;
   align-items: center;
   margin: 0 0.5rem;

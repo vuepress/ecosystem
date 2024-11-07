@@ -67,7 +67,7 @@ export default defineComponent({
         'button',
         {
           'type': 'button',
-          'class': 'search-pro-button',
+          'class': 'slimserach-button',
           'aria-label': locale.value.search,
           'onClick': () => {
             isActive.value = true
@@ -75,13 +75,13 @@ export default defineComponent({
         },
         [
           h(SearchIcon),
-          h('div', { class: 'search-pro-placeholder' }, locale.value.search),
+          h('div', { class: 'slimserach-placeholder' }, locale.value.search),
           controlKeys.value
             ? h(
                 'div',
-                { class: 'search-pro-key-hints' },
+                { class: 'slimserach-key-hints' },
                 controlKeys.value.map((key) =>
-                  h('kbd', { class: 'search-pro-key' }, key),
+                  h('kbd', { class: 'slimserach-key' }, key),
                 ),
               )
             : null,
