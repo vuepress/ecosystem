@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-enum-comparison */
 import { entries, fromEntries, isArray, keys } from '@vuepress/helper'
 import { load } from 'cheerio'
 import type { AnyNode, Element } from 'domhandler'
@@ -60,7 +61,7 @@ const renderHeader = (node: Element): string => {
     node.children = (node.children[0].children[0] as Element).children
 
   return node.children
-    .map((node) => (node.type === 'text' ? node.data : null))
+    .map((childNode) => (childNode.type === 'text' ? childNode.data : null))
     .filter(Boolean)
     .join(' ')
     .replace(/\s+/gu, ' ')
@@ -75,22 +76,23 @@ export const generatePageIndex = (
 ): IndexItem[] => {
   const { contentRendered, data, title } = page
   const pageId = store.addItem(page.path).toString() as PageIndexId
-  const hasExcerpt = 'excerpt' in data && data.excerpt.length
+  const hasExcerpt = Boolean(data.excerpt?.length)
 
   const pageIndex: PageIndexItem = { id: pageId, h: title }
   const results: IndexItem[] = [pageIndex]
 
   // Here are some variables holding the current state of the parser
   let shouldIndexContent = hasExcerpt || indexContent
-  let currentSectionIndex: PageIndexItem | SectionIndexItem | null = null
-  let currentContent = ''
-  let isContentBeforeFirstHeader = true
+  let sectionIndex: PageIndexItem | SectionIndexItem | null = null
+  let indexedText = ''
+  let foundFirstHeader = false
 
-  const addContentToText = (): void => {
-    if (currentContent && shouldIndexContent) {
-      ;((isContentBeforeFirstHeader ? pageIndex : currentSectionIndex!).t ??=
-        []).push(currentContent.replace(/[\n\s]+/gu, ' '))
-      currentContent = ''
+  const addTextToIndex = (): void => {
+    if (indexedText && shouldIndexContent) {
+      ;((foundFirstHeader ? sectionIndex! : pageIndex).t ??= []).push(
+        indexedText.replace(/[\n\s]+/gu, ' '),
+      )
+      indexedText = ''
     }
   }
 
@@ -100,22 +102,22 @@ export const generatePageIndex = (
         const { id } = node.attribs
         const header = renderHeader(node)
 
-        addContentToText()
+        addTextToIndex()
 
         // Update current section index only if it has an id
         if (id) {
-          if (isContentBeforeFirstHeader) isContentBeforeFirstHeader = false
-          else results.push(currentSectionIndex!)
+          if (!foundFirstHeader) foundFirstHeader = true
+          else results.push(sectionIndex!)
 
-          currentSectionIndex = {
+          sectionIndex = {
             id: `${pageId}#${id}`,
             h: header,
           }
         } else if (header) {
-          ;((currentSectionIndex ?? pageIndex).t ??= []).push(header)
+          ;((sectionIndex ?? pageIndex).t ??= []).push(header)
         }
       } else if (CONTENT_BLOCK_TAGS.includes(node.name)) {
-        addContentToText()
+        addTextToIndex()
         node.childNodes.forEach((item) => {
           render(item, preserveSpace || node.name === 'pre')
         })
@@ -125,7 +127,7 @@ export const generatePageIndex = (
         })
       }
     } else if (node.type === 'text') {
-      currentContent += preserveSpace || node.data.trim() ? node.data : ''
+      indexedText += preserveSpace || node.data.trim() ? node.data : ''
     } else if (
       // We are expecting to stop at excerpt marker if content is not indexed
       hasExcerpt &&
@@ -154,18 +156,19 @@ export const generatePageIndex = (
   )
 
   // No content in page and no customFields
-  if (!nodes?.length && !keys(customFields).length) return []
+  if (!nodes.length && !keys(customFields).length) return []
 
   // Walk through nodes and extract indexes
-  nodes?.forEach((node) => {
+  nodes.forEach((node) => {
     render(node)
   })
 
   // Push contents in last block tags
-  addContentToText()
+  addTextToIndex()
 
   // Push last section
-  if (currentSectionIndex) results.push(currentSectionIndex)
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  if (sectionIndex) results.push(sectionIndex)
 
   // Add custom fields
   entries(customFields).forEach(([customField, values]) => {

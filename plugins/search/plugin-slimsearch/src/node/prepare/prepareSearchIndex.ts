@@ -41,15 +41,15 @@ export const updateSearchIndex = async (
   store: Store,
   path: string,
 ): Promise<void> => {
-  const actualPath = path
+  const filePath = path
     .replace(/^pages\//, '')
     .replace(/\/index\.html\.vue/, '/README.md')
     .replace(/\.html\.vue/, '.md')
 
   const page = app.pages.find(
     ({ filePathRelative }) =>
-      filePathRelative?.toLowerCase() === actualPath.toLowerCase(),
-  )!
+      filePathRelative?.toLowerCase() === filePath.toLowerCase(),
+  )
 
   if (page) {
     const pageIndexes = generatePageIndex(
@@ -63,28 +63,26 @@ export const updateSearchIndex = async (
     const localeSearchIndex = searchIndexStore[pathLocale]
 
     // Update index
-    if (pageIndexes) {
-      // Remove previous index
-      Array.from(localeSearchIndex._documentIds.values())
-        .filter((id) => id.startsWith(pageId))
-        .forEach((id) => {
-          discard(localeSearchIndex, id)
-        })
+    // Remove previous index
+    Array.from(localeSearchIndex._documentIds.values())
+      .filter((id) => id.startsWith(pageId))
+      .forEach((id) => {
+        discard(localeSearchIndex, id)
+      })
 
-      addAll(localeSearchIndex, pageIndexes)
+    addAll(localeSearchIndex, pageIndexes)
 
-      await vacuum(localeSearchIndex)
+    await vacuum(localeSearchIndex)
 
-      // Search index file content
-      const content = `\
+    // Search index file content
+    const content = `\
 export default ${JSON.stringify(JSON.stringify(localeSearchIndex))}
 `
 
-      await app.writeTemp(
-        `slimsearch/${getLocaleChunkName(pathLocale)}.js`,
-        content,
-      )
-    }
+    await app.writeTemp(
+      `slimsearch/${getLocaleChunkName(pathLocale)}.js`,
+      content,
+    )
   }
 }
 
@@ -94,15 +92,15 @@ export const removeSearchIndex = async (
   store: Store,
   path: string,
 ): Promise<void> => {
-  const actualPath = path
+  const filePath = path
     .replace(/^pages\//, '')
-    .replace(/\/index\.html\.vue/, '/readme.md')
+    .replace(/\/index\.html\.vue/, '/README.md')
     .replace(/\.html\.vue/, '.md')
 
   const page = app.pages.find(
     ({ filePathRelative }) =>
-      filePathRelative?.toLowerCase() === actualPath.toLowerCase(),
-  )!
+      filePathRelative?.toLowerCase() === filePath.toLowerCase(),
+  )
 
   if (page) {
     const { pathLocale } = page

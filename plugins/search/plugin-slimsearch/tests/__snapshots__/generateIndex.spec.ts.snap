@@ -7,7 +7,7 @@ exports[`generateIndex > Should generate full index 1`] = `
     "id": "0",
     "t": [
       "Here is article excerpt.",
-      "const a = 1; ",
+      "const a = 1 ",
     ],
   },
   {
@@ -18,7 +18,7 @@ exports[`generateIndex > Should generate full index 1`] = `
       "A",
       "B",
       "C",
-      "const a = 1; ",
+      "const a = 1 ",
     ],
   },
   {
@@ -168,7 +168,7 @@ exports[`generateIndex > Should generate full index 2`] = `
       "Block code:",
       "Sample text here... ",
       "Syntax highlighting:",
-      "var foo = function (bar) { return bar++; }; console.log(foo(5)); ",
+      "const foo = function (bar) { return bar++ } console.log(foo(5)) ",
     ],
   },
 ]
@@ -588,7 +588,7 @@ exports[`generateIndex > Should support customFields with full index 1`] = `
     "id": "0",
     "t": [
       "Here is article excerpt.",
-      "const a = 1; ",
+      "const a = 1 ",
     ],
   },
   {
@@ -599,7 +599,7 @@ exports[`generateIndex > Should support customFields with full index 1`] = `
       "A",
       "B",
       "C",
-      "const a = 1; ",
+      "const a = 1 ",
     ],
   },
   {
@@ -755,7 +755,7 @@ exports[`generateIndex > Should support customFields with full index 2`] = `
       "Block code:",
       "Sample text here... ",
       "Syntax highlighting:",
-      "var foo = function (bar) { return bar++; }; console.log(foo(5)); ",
+      "const foo = function (bar) { return bar++ } console.log(foo(5)) ",
     ],
   },
 ]
