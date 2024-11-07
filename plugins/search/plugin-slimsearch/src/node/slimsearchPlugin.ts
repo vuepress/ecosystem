@@ -18,7 +18,7 @@ import {
   removeSearchIndex,
   updateSearchIndex,
 } from './prepare/index.js'
-import { setPageExcerpt } from './setPageExcerpt.js'
+import { setPagesExcerpt } from './setPagesExcerpt.js'
 import { CLIENT_FOLDER, PLUGIN_NAME, Store, logger } from './utils.js'
 
 export const slimsearchPlugin =
@@ -73,7 +73,7 @@ export const slimsearchPlugin =
       },
 
       onInitialized: async (): Promise<void> => {
-        setPageExcerpt(app)
+        setPagesExcerpt(app)
         searchIndexStore = await getSearchIndexStore(app, options, store)
       },
 
