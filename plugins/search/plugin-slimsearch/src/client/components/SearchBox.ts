@@ -9,9 +9,9 @@ import { searchProHotKeys, searchProLocales } from '../define.js'
 import { isFocusingTextControl, isKeyMatched } from '../utils/index.js'
 import { SearchIcon } from './icons.js'
 
-import '../styles/search-box.scss'
+import '../styles/search-box.css'
 
-const primaryKey = searchProHotKeys[0]
+const primaryHotKey = searchProHotKeys[0]
 
 export default defineComponent({
   name: 'SearchBox',
@@ -22,16 +22,18 @@ export default defineComponent({
     const isMacOS = ref(false)
 
     const controlKeys = computed(() =>
-      primaryKey
+      primaryHotKey
         ? [
             ...(isMacOS.value
               ? ['⌃', '⇧', '⌥', '⌘']
               : ['Ctrl', 'Shift', 'Alt', 'Win']
             ).filter(
               (_, index) =>
-                primaryKey[(['ctrl', 'shift', 'alt', 'meta'] as const)[index]],
+                primaryHotKey[
+                  (['ctrl', 'shift', 'alt', 'meta'] as const)[index]
+                ],
             ),
-            primaryKey.key.toUpperCase(),
+            primaryHotKey.key.toUpperCase(),
           ]
         : null,
     )
@@ -67,7 +69,7 @@ export default defineComponent({
         'button',
         {
           'type': 'button',
-          'class': 'slimserach-button',
+          'class': 'slimsearch-button',
           'aria-label': locale.value.search,
           'onClick': () => {
             isActive.value = true
@@ -75,13 +77,13 @@ export default defineComponent({
         },
         [
           h(SearchIcon),
-          h('div', { class: 'slimserach-placeholder' }, locale.value.search),
+          h('div', { class: 'slimsearch-placeholder' }, locale.value.search),
           controlKeys.value
             ? h(
                 'div',
-                { class: 'slimserach-key-hints' },
+                { class: 'slimsearch-key-hints' },
                 controlKeys.value.map((key) =>
-                  h('kbd', { class: 'slimserach-key' }, key),
+                  h('kbd', { class: 'slimsearch-key' }, key),
                 ),
               )
             : null,

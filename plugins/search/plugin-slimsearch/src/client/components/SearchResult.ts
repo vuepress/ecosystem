@@ -175,11 +175,11 @@ export default defineComponent({
       enableQueryHistory
         ? h(
             'ul',
-            { class: 'slimserach-result-list' },
-            h('li', { class: 'slimserach-result-list-item' }, [
+            { class: 'slimsearch-result-list' },
+            h('li', { class: 'slimsearch-result-list-item' }, [
               h(
                 'div',
-                { class: 'slimserach-result-title' },
+                { class: 'slimsearch-result-title' },
                 locale.value.queryHistory,
               ),
               queryHistory.value.map((item, historyIndex) =>
@@ -187,7 +187,7 @@ export default defineComponent({
                   'div',
                   {
                     class: [
-                      'slimserach-result-item',
+                      'slimsearch-result-item',
                       {
                         active:
                           activatedHistoryStatus.isQuery &&
@@ -200,11 +200,11 @@ export default defineComponent({
                   },
                   [
                     h(HistoryIcon, {
-                      class: 'slimserach-result-type',
+                      class: 'slimsearch-result-type',
                     }),
-                    h('div', { class: 'slimserach-result-content' }, item),
+                    h('div', { class: 'slimsearch-result-content' }, item),
                     h('button', {
-                      class: 'slimserach-remove-icon',
+                      class: 'slimsearch-remove-icon',
                       innerHTML: CLOSE_ICON,
                       onClick: (event: Event) => {
                         event.preventDefault()
@@ -223,11 +223,11 @@ export default defineComponent({
       enableResultHistory
         ? h(
             'ul',
-            { class: 'slimserach-result-list' },
-            h('li', { class: 'slimserach-result-list-item' }, [
+            { class: 'slimsearch-result-list' },
+            h('li', { class: 'slimsearch-result-list-item' }, [
               h(
                 'div',
-                { class: 'slimserach-result-title' },
+                { class: 'slimsearch-result-title' },
                 locale.value.resultHistory,
               ),
 
@@ -237,7 +237,7 @@ export default defineComponent({
                   {
                     to: item.link,
                     class: [
-                      'slimserach-result-item',
+                      'slimsearch-result-item',
                       {
                         active:
                           !activatedHistoryStatus.isQuery &&
@@ -250,9 +250,9 @@ export default defineComponent({
                   },
                   () => [
                     h(HistoryIcon, {
-                      class: 'slimserach-result-type',
+                      class: 'slimsearch-result-type',
                     }),
-                    h('div', { class: 'slimserach-result-content' }, [
+                    h('div', { class: 'slimsearch-result-content' }, [
                       item.header
                         ? h('div', { class: 'content-header' }, item.header)
                         : null,
@@ -264,7 +264,7 @@ export default defineComponent({
                       ),
                     ]),
                     h('button', {
-                      class: 'slimserach-remove-icon',
+                      class: 'slimsearch-remove-icon',
                       innerHTML: CLOSE_ICON,
                       onClick: (event: Event) => {
                         event.preventDefault()
@@ -320,7 +320,7 @@ export default defineComponent({
       () => {
         document
           .querySelector(
-            '.slimserach-result-list-item.active .slimserach-result-item.active',
+            '.slimsearch-result-list-item.active .slimsearch-result-item.active',
           )
           ?.scrollIntoView(false)
       },
@@ -332,14 +332,14 @@ export default defineComponent({
         'div',
         {
           class: [
-            'slimserach-result-wrapper',
+            'slimsearch-result-wrapper',
             {
               empty: props.queries.length
                 ? !hasResults.value
                 : !hasHistory.value,
             },
           ],
-          id: 'slimserach-results',
+          id: 'slimsearch-results',
         },
         props.queries.length
           ? isSearching.value
@@ -347,7 +347,7 @@ export default defineComponent({
             : hasResults.value
               ? h(
                   'ul',
-                  { class: 'slimserach-result-list' },
+                  { class: 'slimsearch-result-list' },
                   results.value.map(({ title, contents }, index) => {
                     const isCurrentResultActive =
                       activatedResultIndex.value === index
@@ -356,14 +356,14 @@ export default defineComponent({
                       'li',
                       {
                         class: [
-                          'slimserach-result-list-item',
+                          'slimsearch-result-list-item',
                           { active: isCurrentResultActive },
                         ],
                       },
                       [
                         h(
                           'div',
-                          { class: 'slimserach-result-title' },
+                          { class: 'slimsearch-result-title' },
                           title || locale.value.defaultTitle,
                         ),
                         contents.map((item, contentIndex) => {
@@ -376,7 +376,7 @@ export default defineComponent({
                             {
                               to: getPath(item),
                               class: [
-                                'slimserach-result-item',
+                                'slimsearch-result-item',
                                 {
                                   'active': isCurrentContentActive,
                                   'aria-selected': isCurrentContentActive,
@@ -397,9 +397,9 @@ export default defineComponent({
                                       : item.type === 'heading'
                                         ? HeadingIcon
                                         : HeartIcon,
-                                    { class: 'slimserach-result-type' },
+                                    { class: 'slimsearch-result-type' },
                                   ),
-                              h('div', { class: 'slimserach-result-content' }, [
+                              h('div', { class: 'slimsearch-result-content' }, [
                                 item.type === 'text' && item.header
                                   ? h(
                                       'div',
