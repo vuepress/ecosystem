@@ -23,22 +23,12 @@ import { useSiteLocaleData } from 'vuepress/client'
 import {
   searchModalSymbol,
   useArrayCycle,
-  useMobile,
   useSearchSuggestions,
 } from '../composables/index.js'
-import {
-  enableAutoSuggestions,
-  searchProLocales,
-  searchProOptions,
-} from '../define.js'
+import { enableAutoSuggestions, locales, options } from '../define.js'
 import { useSearchOptions } from '../helpers/index.js'
-import {
-  CLOSE_ICON,
-  DOWN_KEY_ICON,
-  ENTER_KEY_ICON,
-  ESC_KEY_ICON,
-  UP_KEY_ICON,
-} from '../utils/index.js'
+import { CLOSE_ICON } from '../utils/index.js'
+import SearchKeyHints from './SearchKeyHints.js'
 import { SearchLoading } from './SearchLoading.js'
 import { SearchIcon } from './icons.js'
 
@@ -48,7 +38,7 @@ const SearchResult = defineAsyncComponent({
   loader: () =>
     import(/* webpackChunkName: "slimsearch-result" */ './SearchResult.js'),
   loadingComponent: () => {
-    const localeConfig = useLocaleConfig(searchProLocales)
+    const localeConfig = useLocaleConfig(locales)
 
     return h(SearchLoading, { hint: localeConfig.value.loading })
   },
@@ -60,8 +50,7 @@ export default defineComponent({
   setup() {
     const isActive = inject(searchModalSymbol)!
     const siteLocale = useSiteLocaleData()
-    const isMobile = useMobile()
-    const locale = useLocaleConfig(searchProLocales)
+    const locale = useLocaleConfig(locales)
     const searchOptions = useSearchOptions()
 
     const input = ref('')
@@ -103,7 +92,7 @@ export default defineComponent({
           queries.value = result
         })
       },
-      Math.min(searchProOptions.searchDelay, searchProOptions.suggestDelay),
+      Math.min(options.searchDelay, options.suggestDelay),
     )
 
     watch(input, updateQueries, { immediate: true })
@@ -254,24 +243,7 @@ export default defineComponent({
                 },
               }),
 
-              // Key hints should only appears in PC
-              isMobile.value
-                ? null
-                : h('div', { class: 'slimsearch-hints' }, [
-                    h('span', { class: 'slimsearch-hint' }, [
-                      h('kbd', { innerHTML: ENTER_KEY_ICON }),
-                      locale.value.select,
-                    ]),
-                    h('span', { class: 'slimsearch-hint' }, [
-                      h('kbd', { innerHTML: UP_KEY_ICON }),
-                      h('kbd', { innerHTML: DOWN_KEY_ICON }),
-                      locale.value.navigate,
-                    ]),
-                    h('span', { class: 'slimsearch-hint' }, [
-                      h('kbd', { innerHTML: ESC_KEY_ICON }),
-                      locale.value.exit,
-                    ]),
-                  ]),
+              h(SearchKeyHints),
             ]),
           ])
         : null

@@ -1,7 +1,7 @@
-import { searchProHotKeys } from '../define.js'
+import { hotKeysConfig } from '../define.js'
 
 export const isKeyMatched = (event: KeyboardEvent): boolean =>
-  searchProHotKeys.some((item) => {
+  hotKeysConfig.some((item) => {
     const { key, ctrl = false, shift = false, alt = false, meta = false } = item
 
     return (

@@ -4,7 +4,7 @@ import { computed, onMounted, onUnmounted, ref, shallowRef, watch } from 'vue'
 import { usePageData, useRouteLocale } from 'vuepress/client'
 
 import { createSearchWorker } from '../createSearchWorker.js'
-import { searchProOptions } from '../define.js'
+import { options } from '../define.js'
 import { useSearchOptions } from '../helpers/index.js'
 import type { SearchResult } from '../typings/index.js'
 
@@ -56,7 +56,7 @@ export const useSearchResult = (queries: Ref<string[]>): SearchRef => {
       } else {
         results.value = []
       }
-    }, searchProOptions.searchDelay - searchProOptions.suggestDelay)
+    }, options.searchDelay - options.suggestDelay)
 
     watch([queries, routeLocale], ([queries]) => performSearch(queries), {
       immediate: true,

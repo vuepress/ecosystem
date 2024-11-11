@@ -21,9 +21,8 @@ declare const __SLIMSEARCH_OPTIONS__: {
 }
 declare const __SLIMSEARCH_LOCALES__: SlimSearchLocaleConfig
 
-export const searchProOptions = __SLIMSEARCH_OPTIONS__
-
+export const customFieldConfig = __SLIMSEARCH_CUSTOM_FIELDS__
 export const enableAutoSuggestions = __SLIMSEARCH_AUTO_SUGGESTIONS__
-export const searchProClientCustomFiledConfig = __SLIMSEARCH_CUSTOM_FIELDS__
-export const searchProHotKeys = searchProOptions.hotKeys
-export const searchProLocales = __SLIMSEARCH_LOCALES__
+export const options = __SLIMSEARCH_OPTIONS__
+export const hotKeysConfig = options.hotKeys
+export const locales = __SLIMSEARCH_LOCALES__

@@ -1,7 +1,7 @@
 import type { SlimSearchLocaleConfig } from '../shared/index.js'
 
 /** Multi language config for slimsearch popup */
-export const searchProLocales: SlimSearchLocaleConfig = {
+export const locales: SlimSearchLocaleConfig = {
   '/en/': {
     cancel: 'Cancel',
     placeholder: 'Search',

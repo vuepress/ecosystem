@@ -1,7 +1,7 @@
 import { useLocalStorage } from '@vueuse/core'
 import type { Ref } from 'vue'
 
-import { searchProOptions } from '../define.js'
+import { options } from '../define.js'
 import type { MatchedItem, Word } from '../typings/index.js'
 import { getPath } from '../utils/index.js'
 
@@ -20,7 +20,7 @@ export interface SearchResultHistory {
   removeResultHistory: (index: number) => void
 }
 
-const { resultHistoryCount } = searchProOptions
+const { resultHistoryCount } = options
 
 const searchProResultStorage = useLocalStorage<SearchResult[]>(
   SLIMSEARCH_HISTORY_RESULT_STORAGE,

@@ -13,10 +13,7 @@ import {
   useSearchResult,
   useSearchResultHistory,
 } from '../composables/index.js'
-import {
-  searchProClientCustomFiledConfig,
-  searchProLocales,
-} from '../define.js'
+import { customFieldConfig, locales } from '../define.js'
 import type { MatchedItem, Word } from '../typings/index.js'
 import { CLOSE_ICON, getPath } from '../utils/index.js'
 import { SearchLoading } from './SearchLoading.js'
@@ -51,7 +48,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const router = useRouter()
     const routeLocale = useRouteLocale()
-    const locale = useLocaleConfig(searchProLocales)
+    const locale = useLocaleConfig(locales)
     const {
       enabled: enableQueryHistory,
       addQueryHistory,
@@ -150,7 +147,7 @@ export default defineComponent({
     const getDisplay = (matchedItem: MatchedItem): (VNode | string)[] => {
       if (matchedItem.type === 'customField') {
         const formatterConfig =
-          searchProClientCustomFiledConfig[matchedItem.index] || '$content'
+          customFieldConfig[matchedItem.index] || '$content'
 
         const [prefix, suffix = ''] = isPlainObject(formatterConfig)
           ? formatterConfig[routeLocale.value].split('$content')

@@ -2,7 +2,7 @@ import { values } from '@vuepress/helper/client'
 import type { SearchOptions } from 'slimsearch'
 
 import type { IndexItem } from '../shared/index.js'
-import { searchProOptions } from './define.js'
+import { options } from './define.js'
 import type { QueryResult, SearchResult } from './typings/index.js'
 
 declare const __VUEPRESS_BASE__: string
@@ -75,7 +75,7 @@ export const createSearchWorker = (): SearchWorker => {
   const worker = new Worker(
     __VUEPRESS_DEV__
       ? new URL('./worker/index.js', import.meta.url)
-      : `${__VUEPRESS_BASE__}${searchProOptions.worker}`,
+      : `${__VUEPRESS_BASE__}${options.worker}`,
     __VUEPRESS_DEV__ ? { type: 'module' } : {},
   )
 

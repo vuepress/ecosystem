@@ -10,7 +10,7 @@ import type { PluginFunction } from 'vuepress/core'
 import type { SearchIndexStore } from '../shared/index.js'
 import { getSearchIndexStore } from './generateIndex.js'
 import { generateWorker } from './generateWorker.js'
-import { searchProLocales } from './locales.js'
+import { locales } from './locales.js'
 import type { SlimSearchPluginOptions } from './options.js'
 import { PathStore } from './pathStore.js'
 import {
@@ -46,7 +46,7 @@ export const slimsearchPlugin =
           app,
           name: PLUGIN_NAME,
           config: options.locales,
-          default: searchProLocales,
+          default: locales,
         }),
         __SLIMSEARCH_OPTIONS__: {
           searchDelay: options.searchDelay ?? 150,

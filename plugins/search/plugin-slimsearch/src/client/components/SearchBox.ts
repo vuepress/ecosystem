@@ -9,19 +9,19 @@ import type { VNode } from 'vue'
 import { computed, defineComponent, h, inject, onMounted, ref } from 'vue'
 
 import { searchModalSymbol } from '../composables/index.js'
-import { searchProHotKeys, searchProLocales } from '../define.js'
+import { hotKeysConfig, locales } from '../define.js'
 import { isFocusingTextControl, isKeyMatched } from '../utils/index.js'
 import { SearchIcon } from './icons.js'
 
 import '../styles/search-box.css'
 
-const primaryHotKey = searchProHotKeys[0]
+const primaryHotKey = hotKeysConfig[0]
 
 export default defineComponent({
   name: 'SearchBox',
 
   setup() {
-    const locale = useLocaleConfig(searchProLocales)
+    const locale = useLocaleConfig(locales)
     const isActive = inject(searchModalSymbol)!
     const isMacOS = ref(false)
 

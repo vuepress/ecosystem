@@ -1,7 +1,7 @@
 import { useLocalStorage } from '@vueuse/core'
 import type { Ref } from 'vue'
 
-import { searchProOptions } from '../define.js'
+import { options } from '../define.js'
 
 const SLIMSEARCH_HISTORY_QUERY_STORAGE = 'SLIMSEARCH_QUERY_HISTORY'
 
@@ -18,7 +18,7 @@ const searchProQueryStorage = useLocalStorage<string[]>(
 )
 
 export const useSearchQueryHistory = (): SearchQueryHistory => {
-  const { queryHistoryCount } = searchProOptions
+  const { queryHistoryCount } = options
   const enabled = queryHistoryCount > 0
 
   const addQueryHistory = (item: string): void => {
