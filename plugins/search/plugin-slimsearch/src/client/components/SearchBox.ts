@@ -1,8 +1,12 @@
-import { useLocaleConfig } from '@vuepress/helper/client'
+import {
+  checkIsIOS,
+  checkIsMacOS,
+  checkIsiPad,
+  useLocaleConfig,
+} from '@vuepress/helper/client'
 import { useEventListener } from '@vueuse/core'
 import type { VNode } from 'vue'
 import { computed, defineComponent, h, inject, onMounted, ref } from 'vue'
-import { checkIsIOS, checkIsMacOS, checkIsiPad } from '@vuepress/helper/client'
 
 import { searchModalSymbol } from '../composables/index.js'
 import { searchProHotKeys, searchProLocales } from '../define.js'
@@ -22,6 +26,7 @@ export default defineComponent({
     const isMacOS = ref(false)
 
     const controlKeys = computed(() =>
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       primaryHotKey
         ? [
             ...(isMacOS.value

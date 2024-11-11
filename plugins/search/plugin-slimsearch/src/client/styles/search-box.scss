@@ -1,7 +1,4 @@
-@use 'vuepress-shared/styles/reset';
-
 .slimsearch-button {
-  @include reset.button;
   display: inline-flex;
   align-items: center;
 
@@ -13,8 +10,10 @@
   padding: 0.5rem;
   border: 0;
   border: 1px solid var(--vp-c-border);
+  border-width: 0;
   border-radius: 1rem;
 
+  background: transparent;
   background: var(--vp-c-control);
   color: var(--vp-c-text);
 
@@ -30,7 +29,7 @@
     display: none;
   }
 
-  @media (max-width: hope-config.$pad) {
+  @media (max-width: 959px) {
     border-radius: 50%;
   }
 
@@ -49,7 +48,7 @@
   margin-inline: 0.25rem;
   font-size: 1rem;
 
-  @media (max-width: hope-config.$pad) {
+  @media (max-width: 959px) {
     display: none;
   }
 }
@@ -57,7 +56,7 @@
 .slimsearch-key-hints {
   font-size: 0.75rem;
 
-  @media (max-width: hope-config.$pad) {
+  @media (max-width: 959px) {
     display: none;
   }
 }

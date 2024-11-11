@@ -19,11 +19,11 @@ import {
   watch,
 } from 'vue'
 import { useSiteLocaleData } from 'vuepress/client'
-import { useIsMobile } from 'vuepress-shared/client'
 
 import {
   searchModalSymbol,
   useArrayCycle,
+  useMobile,
   useSearchSuggestions,
 } from '../composables/index.js'
 import {
@@ -60,7 +60,7 @@ export default defineComponent({
   setup() {
     const isActive = inject(searchModalSymbol)!
     const siteLocale = useSiteLocaleData()
-    const isMobile = useIsMobile()
+    const isMobile = useMobile()
     const locale = useLocaleConfig(searchProLocales)
     const searchOptions = useSearchOptions()
 

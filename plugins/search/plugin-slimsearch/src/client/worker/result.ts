@@ -49,8 +49,11 @@ export const getResults = (
 
   const results = search(localeIndex, query, {
     boost: {
+      // eslint-disable-next-line no-useless-computed-key
       [/** Heading */ 'h']: 2,
+      // eslint-disable-next-line no-useless-computed-key
       [/** Text */ 't']: 1,
+      // eslint-disable-next-line no-useless-computed-key
       [/** CustomFields */ 'c']: 4,
     },
     prefix: true,
@@ -70,6 +73,7 @@ export const getResults = (
         terms.slice(index + 1).every((term) => !term.includes(item)),
       )
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, no-multi-assign
     const { contents } = (resultMap[pageId] ??= {
       title: '',
       contents: [],
@@ -109,7 +113,7 @@ export const getResults = (
           score,
         ])
 
-      if (/** Text */ 't' in result)
+      if (/** Text */ 't' in result && result.t)
         for (const text of result.t) {
           const matchedContent = displayTerms
             .map((term) => getMatchedContent(text, term))
@@ -138,11 +142,11 @@ export const getResults = (
     .map(([id, { title, contents }]) => {
       // Search to get title
       if (!title) {
-        const pageIndex = getStoredFields(
-          localeIndex,
-          id,
-        ) as unknown as PageIndexItem
+        const pageIndex = getStoredFields(localeIndex, id) as unknown as
+          | PageIndexItem
+          | undefined
 
+        // eslint-disable-next-line no-param-reassign
         if (pageIndex) title = pageIndex.h
       }
 

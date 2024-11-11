@@ -1,10 +1,8 @@
-@use 'vuepress-shared/styles/reset';
-
 .slimsearch-result-wrapper {
   scrollbar-color: var(--vp-c-accent) var(--vp-c-border);
   scrollbar-width: thin;
 
-  @media (max-width: hope-config.$mobile) {
+  @media (max-width: 419px) {
     font-size: 14px;
   }
 
@@ -77,15 +75,18 @@
 }
 
 .slimsearch-remove-icon {
-  @include reset.button;
   box-sizing: content-box;
   height: 1.5rem;
   padding: 0;
+  border-width: 0;
   border-radius: 50%;
 
+  background: transparent;
   color: var(--vp-c-accent);
 
   font-size: 1rem;
+
+  cursor: pointer;
 
   svg {
     width: 1.5rem;
