@@ -21,11 +21,13 @@ export interface BundleOptions {
   inlineDynamicImports?: boolean
   moduleSideEffects?: ModuleSideEffectsOption
   preserveShebang?: boolean
+  define?: Record<string, string>
 }
 
 export const rollupBundle = (
   filePath: FileInfo | string,
   {
+    define,
     dts: enableDts = typeof filePath === 'object'
       ? !filePath.base.startsWith('cli/') && filePath.base !== 'cli'
       : !filePath.startsWith('cli/'),
@@ -75,6 +77,7 @@ export const rollupBundle = (
         charset: 'utf8',
         minify: true,
         target: 'node18.19.0',
+        define,
       }),
     ],
 

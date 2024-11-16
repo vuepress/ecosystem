@@ -19,7 +19,7 @@ import { CLOSE_ICON, getPath } from '../utils/index.js'
 import { SearchLoading } from './SearchLoading.js'
 import { HeadingIcon, HeartIcon, HistoryIcon, TitleIcon } from './icons.js'
 
-import '../styles/search-result.scss'
+import '../styles/search-result.css'
 
 export default defineComponent({
   name: 'SearchResult',

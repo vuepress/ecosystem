@@ -2,16 +2,24 @@ import { rollupBundle } from '../../../scripts/rollup.js'
 
 export default [
   ...rollupBundle('node/index', {
-    external: ['chokidar'],
+    external: ['cheerio', 'chokidar', 'slimsearch'],
     dtsExternal: ['vuepress/core'],
   }),
   ...rollupBundle(
     {
       base: 'client',
-      files: ['config', 'index'],
+      files: ['components/SearchResult', 'config', 'index', 'worker/index'],
     },
     {
-      external: ['@internal/searchIndex'],
+      external: ['@internal/pagesComponents', 'slimsearch'],
     },
   ),
+  ...rollupBundle('worker/index', {
+    resolve: true,
+    dts: false,
+    external: [/^@internal\//],
+    define: {
+      __VUEPRESS_SSR__: 'false',
+    },
+  }),
 ]

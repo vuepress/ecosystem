@@ -138,7 +138,9 @@ export const generatePageIndex = (
     }
   }
 
-  const nodes = $.parseHTML(contentRendered)
+  // The types are not correct, null is returned if contentRendered is empty
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  const nodes = $.parseHTML(contentRendered) ?? []
 
   // Get custom fields
   const customFields = fromEntries(

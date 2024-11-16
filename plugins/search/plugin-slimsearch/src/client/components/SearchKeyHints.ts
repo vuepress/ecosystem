@@ -11,8 +11,6 @@ import {
   UP_KEY_ICON,
 } from '../utils/index.js'
 
-import '../styles/search-modal.scss'
-
 export default defineComponent({
   name: 'SearchKeyHints',
 
