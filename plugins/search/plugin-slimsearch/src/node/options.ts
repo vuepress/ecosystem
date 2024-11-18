@@ -21,7 +21,7 @@ export interface SlimSearchIndexOptions {
   processTerm?: (term: string) => string[] | string | false | null | undefined
 }
 
-export interface SlimSearchCustomFieldOptions {
+export interface CustomFieldOptions {
   /**
    * Custom field getter
    *
@@ -122,7 +122,7 @@ export interface SlimSearchPluginOptions {
   /**
    * Custom field for search
    */
-  customFields?: SlimSearchCustomFieldOptions[]
+  customFields?: CustomFieldOptions[]
 
   /**
    * Specify the [event.key](http://keycode.info/) of the hotkeys

@@ -3,7 +3,6 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./lib",
-    "baseUrl": ".",
     "paths": {
       "@internal/themeData": ["./src/client/themeData.d.ts"]
     },

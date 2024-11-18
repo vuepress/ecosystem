@@ -13,10 +13,7 @@ import type {
   SearchIndexStore,
   SectionIndexItem,
 } from '../shared/index.js'
-import type {
-  SlimSearchCustomFieldOptions,
-  SlimSearchPluginOptions,
-} from './options.js'
+import type { CustomFieldOptions, SlimSearchPluginOptions } from './options.js'
 import type { PathStore } from './pathStore.js'
 
 /**
@@ -71,7 +68,7 @@ const renderHeader = (node: Element): string => {
 export const generatePageIndex = (
   page: Page<{ excerpt?: string }>,
   store: PathStore,
-  customFieldsGetter: SlimSearchCustomFieldOptions[] = [],
+  customFieldsGetter: CustomFieldOptions[] = [],
   indexContent = false,
 ): IndexItem[] => {
   const { contentRendered, data, title } = page

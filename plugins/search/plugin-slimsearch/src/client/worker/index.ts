@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import database from '@temp/slimsearch/index.js'
 import { loadJSONIndex } from 'slimsearch'
 

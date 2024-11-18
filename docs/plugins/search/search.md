@@ -147,14 +147,4 @@ You can customize the style of the search box via CSS variables:
 
 ## Components
 
-### SearchBox
-
-- Details:
-
-  This plugin will register a `<SearchBox />` component globally, and you can use it without any props.
-
-  Put this component to where you want to place the search box. For example, default theme puts this component to the end of the navbar.
-
-::: tip
-This component is mainly used for theme development. You don't need to use it directly in most cases.
-:::
+- SearchBox

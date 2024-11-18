@@ -428,10 +428,4 @@ You can customize styles via CSS variables that provided by [@docsearch/css](htt
 
 ## Components
 
-### SearchBox
-
-- Details:
-
-  This plugin will register a `<SearchBox />` component globally, and you can use it without any props.
-
-  Put this component to where you want to place the DocSearch button. For example, default theme puts this component to the end of the navbar.
+- SearchBox

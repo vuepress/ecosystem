@@ -103,7 +103,7 @@ export const createSearchWorker = (): SearchWorker => {
 
   worker.addEventListener('error', (err) => {
     // eslint-disable-next-line no-console
-    console.error('Search Worker error:', err)
+    console.warn('Search Worker error:', err)
   })
 
   return {

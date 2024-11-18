@@ -9,7 +9,7 @@ import {
   ENTER_KEY_ICON,
   ESC_KEY_ICON,
   UP_KEY_ICON,
-} from '../utils/index.js'
+} from '../icons/index.js'
 
 export default defineComponent({
   name: 'SearchKeyHints',
