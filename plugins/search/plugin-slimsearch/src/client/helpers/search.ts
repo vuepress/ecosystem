@@ -8,19 +8,24 @@ import type { SearchResult, WorkerSearchOptions } from '../typings/index.js'
 declare const __VUEPRESS_DEV__: boolean
 
 export interface SearchLocaleOptions extends WorkerSearchOptions {
+  /** A function to split words */
+  querySplitter?: (query: string) => Promise<string[]>
+
+  /** A function to filter suggestions */
   suggestionsFilter?: (
     suggestions: string[],
     query: string,
     locale: string,
     pageData: PageData,
   ) => string[]
-  searchFilter?: (
+
+  /** A function to filter search results */
+  resultsFilter?: (
     results: SearchResult[],
     query: string,
     locale: string,
     pageData: PageData,
   ) => SearchResult[]
-  splitWord?: (query: string) => Promise<string[]>
 }
 
 export interface SearchOptions extends SearchLocaleOptions {

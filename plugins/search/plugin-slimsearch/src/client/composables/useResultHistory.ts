@@ -3,44 +3,44 @@ import type { Ref } from 'vue'
 
 import { options } from '../define.js'
 import type { MatchedItem, Word } from '../typings/index.js'
-import { getPath } from '../utils/index.js'
+import { getResultPath } from '../utils/index.js'
 
-const SLIMSEARCH_HISTORY_RESULT_STORAGE = 'SLIMSEARCH_RESULT_HISTORY'
+const SLIMSEARCH_RESULT_HISTORY_STORAGE = 'SLIMSEARCH_RESULT_HISTORY'
 
-export interface SearchResult {
+export interface ResultHistoryItem {
   header?: string
   link: string
   display: Word[][]
 }
 
-export interface SearchResultHistory {
+export interface ResultHistory {
   enabled: boolean
-  resultHistory: Ref<SearchResult[]>
+  resultHistories: Ref<ResultHistoryItem[]>
   addResultHistory: (item: MatchedItem) => void
   removeResultHistory: (index: number) => void
 }
 
 const { resultHistoryCount } = options
 
-const searchProResultStorage = useLocalStorage<SearchResult[]>(
-  SLIMSEARCH_HISTORY_RESULT_STORAGE,
+const searchProResultStorage = useLocalStorage<ResultHistoryItem[]>(
+  SLIMSEARCH_RESULT_HISTORY_STORAGE,
   [],
 )
 
-export const useSearchResultHistory = (): SearchResultHistory => {
+export const useResultHistory = (): ResultHistory => {
   const enabled = resultHistoryCount > 0
 
   const addResultHistory = (item: MatchedItem): void => {
     if (enabled) {
-      const result: SearchResult = {
-        link: getPath(item),
+      const resultHistory: ResultHistoryItem = {
+        link: getResultPath(item),
         display: item.display,
       }
 
-      if ('header' in item) result.header = item.header
+      if ('header' in item) resultHistory.header = item.header
 
       searchProResultStorage.value = [
-        result,
+        resultHistory,
         ...searchProResultStorage.value.slice(0, resultHistoryCount - 1),
       ]
     }
@@ -55,7 +55,7 @@ export const useSearchResultHistory = (): SearchResultHistory => {
 
   return {
     enabled,
-    resultHistory: searchProResultStorage,
+    resultHistories: searchProResultStorage,
     addResultHistory,
     removeResultHistory,
   }

@@ -23,11 +23,11 @@ import { useSiteLocaleData } from 'vuepress/client'
 import {
   searchModalSymbol,
   useArrayCycle,
-  useSearchSuggestions,
+  useSuggestions,
 } from '../composables/index.js'
 import { enableAutoSuggestions, locales, options } from '../define.js'
 import { useSearchOptions } from '../helpers/index.js'
-import { CLOSE_ICON } from '../utils/index.js'
+import { CLOSE_ICON } from '../icons/index.js'
 import SearchKeyHints from './SearchKeyHints.js'
 import { SearchLoading } from './SearchLoading.js'
 import { SearchIcon } from './icons.js'
@@ -55,7 +55,7 @@ export default defineComponent({
 
     const input = ref('')
     const queries = ref<string[]>([])
-    const { suggestions } = useSearchSuggestions(queries)
+    const { suggestions } = useSuggestions(queries)
     const displaySuggestion = ref(false)
 
     const {
@@ -86,7 +86,7 @@ export default defineComponent({
     const updateQueries = useDebounceFn(
       (): void => {
         void (
-          searchOptions.value.splitWord?.(input.value) ??
+          searchOptions.value.querySplitter?.(input.value) ??
           Promise.resolve(input.value.split(' '))
         ).then((result) => {
           queries.value = result

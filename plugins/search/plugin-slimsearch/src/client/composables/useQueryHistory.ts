@@ -5,9 +5,9 @@ import { options } from '../define.js'
 
 const SLIMSEARCH_HISTORY_QUERY_STORAGE = 'SLIMSEARCH_QUERY_HISTORY'
 
-export interface SearchQueryHistory {
+export interface QueryHistory {
   enabled: boolean
-  queryHistory: Ref<string[]>
+  queryHistories: Ref<string[]>
   addQueryHistory: (item: string) => void
   removeQueryHistory: (index: number) => void
 }
@@ -17,7 +17,7 @@ const searchProQueryStorage = useLocalStorage<string[]>(
   [],
 )
 
-export const useSearchQueryHistory = (): SearchQueryHistory => {
+export const useQueryHistory = (): QueryHistory => {
   const { queryHistoryCount } = options
   const enabled = queryHistoryCount > 0
 
@@ -40,7 +40,7 @@ export const useSearchQueryHistory = (): SearchQueryHistory => {
 
   return {
     enabled,
-    queryHistory: searchProQueryStorage,
+    queryHistories: searchProQueryStorage,
     addQueryHistory,
     removeQueryHistory,
   }

@@ -9,13 +9,14 @@ import { computed, defineComponent, h, reactive, ref, toRef, watch } from 'vue'
 import { RouteLink, useRouteLocale, useRouter } from 'vuepress/client'
 
 import {
-  useSearchQueryHistory,
-  useSearchResult,
-  useSearchResultHistory,
+  useQueryHistory,
+  useResultHistory,
+  useResults,
 } from '../composables/index.js'
 import { customFieldConfig, locales } from '../define.js'
+import { CLOSE_ICON } from '../icons/index.js'
 import type { MatchedItem, Word } from '../typings/index.js'
-import { CLOSE_ICON, getPath } from '../utils/index.js'
+import { getResultPath } from '../utils/index.js'
 import { SearchLoading } from './SearchLoading.js'
 import { HeadingIcon, HeartIcon, HistoryIcon, TitleIcon } from './icons.js'
 
@@ -52,19 +53,19 @@ export default defineComponent({
     const {
       enabled: enableQueryHistory,
       addQueryHistory,
-      queryHistory,
+      queryHistories,
       removeQueryHistory,
-    } = useSearchQueryHistory()
+    } = useQueryHistory()
     const {
       enabled: enableResultHistory,
-      resultHistory,
+      resultHistories,
       addResultHistory,
       removeResultHistory,
-    } = useSearchResultHistory()
+    } = useResultHistory()
     const enableHistory = enableQueryHistory || enableResultHistory
 
     const queries = toRef(props, 'queries')
-    const { results, isSearching } = useSearchResult(queries)
+    const { results, isSearching } = useResults(queries)
 
     const activatedHistoryStatus = reactive({ isQuery: true, index: 0 })
     const activatedResultIndex = ref(0)
@@ -73,7 +74,7 @@ export default defineComponent({
     const hasHistory = computed(
       () =>
         enableHistory &&
-        (queryHistory.value.length > 0 || resultHistory.value.length > 0),
+        (queryHistories.value.length > 0 || resultHistories.value.length > 0),
     )
     const hasResults = computed(() => results.value.length > 0)
     const activatedResult = computed(
@@ -86,8 +87,8 @@ export default defineComponent({
       if (index === 0) {
         activatedHistoryStatus.isQuery = !isQuery
         activatedHistoryStatus.index = isQuery
-          ? resultHistory.value.length - 1
-          : queryHistory.value.length - 1
+          ? resultHistories.value.length - 1
+          : queryHistories.value.length - 1
       } else {
         activatedHistoryStatus.index = index - 1
       }
@@ -99,8 +100,8 @@ export default defineComponent({
       if (
         index ===
         (isQuery
-          ? queryHistory.value.length - 1
-          : resultHistory.value.length - 1)
+          ? queryHistories.value.length - 1
+          : resultHistories.value.length - 1)
       ) {
         activatedHistoryStatus.isQuery = !isQuery
         activatedHistoryStatus.index = 0
@@ -179,7 +180,7 @@ export default defineComponent({
                 { class: 'slimsearch-result-title' },
                 locale.value.queryHistory,
               ),
-              queryHistory.value.map((item, historyIndex) =>
+              queryHistories.value.map((item, historyIndex) =>
                 h(
                   'div',
                   {
@@ -228,7 +229,7 @@ export default defineComponent({
                 locale.value.resultHistory,
               ),
 
-              resultHistory.value.map((item, historyIndex) =>
+              resultHistories.value.map((item, historyIndex) =>
                 h(
                   RouteLink,
                   {
@@ -290,7 +291,7 @@ export default defineComponent({
 
           addQueryHistory(props.queries.join(' '))
           addResultHistory(item)
-          void router.push(getPath(item))
+          void router.push(getResultPath(item))
           resetSearchResult()
         }
       } else if (enableResultHistory) {
@@ -302,10 +303,10 @@ export default defineComponent({
           const { index } = activatedHistoryStatus
 
           if (activatedHistoryStatus.isQuery) {
-            emit('updateQuery', queryHistory.value[index])
+            emit('updateQuery', queryHistories.value[index])
             event.preventDefault()
           } else {
-            void router.push(resultHistory.value[index].link)
+            void router.push(resultHistories.value[index].link)
             resetSearchResult()
           }
         }
@@ -371,7 +372,7 @@ export default defineComponent({
                           return h(
                             RouteLink,
                             {
-                              to: getPath(item),
+                              to: getResultPath(item),
                               class: [
                                 'slimsearch-result-item',
                                 {

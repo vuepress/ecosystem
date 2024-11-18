@@ -1,9 +1,9 @@
 import { values } from '@vuepress/helper/client'
 import type { SearchOptions } from 'slimsearch'
 
-import type { IndexItem } from '../shared/index.js'
-import { options } from './define.js'
-import type { QueryResult, SearchResult } from './typings/index.js'
+import type { IndexItem } from '../../shared/index.js'
+import { options } from '../define.js'
+import type { QueryResult, SearchResult } from '../typings/index.js'
 
 declare const __VUEPRESS_BASE__: string
 declare const __VUEPRESS_DEV__: boolean
@@ -38,7 +38,7 @@ export interface SearchWorker {
    *
    * @param query - search query 搜索词
    * @param localePath - locale path 语言路径
-   * @param options - search options 搜索选项
+   * @param searchOptions - search options 搜索选项
    */
   suggest: (
     query: string,
@@ -53,7 +53,7 @@ export interface SearchWorker {
    *
    * @param query - search query 搜索词
    * @param localePath - locale path 语言路径
-   * @param options - search options 搜索选项
+   * @param searchOptions - search options 搜索选项
    */
   search: (
     query: string,
@@ -110,41 +110,59 @@ export const createSearchWorker = (): SearchWorker => {
     suggest: (
       query: string,
       locale?: string,
-      options?: SearchOptions<string, IndexItem>,
+      searchOptions?: SearchOptions<string, IndexItem>,
     ): Promise<string[]> =>
       new Promise((resolve, reject) => {
         states.suggest?.reject(new Error(ERR_MSG))
         const id = Date.now()
 
-        worker.postMessage({ type: 'suggest', id, query, locale, options })
+        worker.postMessage({
+          type: 'suggest',
+          id,
+          query,
+          locale,
+          options: searchOptions,
+        })
         states.suggest = { id, resolve, reject }
       }),
 
     search: (
       query: string,
       locale?: string,
-      options?: SearchOptions<string, IndexItem>,
+      searchOptions?: SearchOptions<string, IndexItem>,
     ): Promise<SearchResult[]> =>
       new Promise<SearchResult[]>((resolve, reject) => {
         states.search?.reject(new Error(ERR_MSG))
 
         const id = Date.now()
 
-        worker.postMessage({ type: 'search', id, query, locale, options })
+        worker.postMessage({
+          type: 'search',
+          id,
+          query,
+          locale,
+          options: searchOptions,
+        })
         states.search = { id, resolve, reject }
       }),
 
     all: (
       query: string,
       locale?: string,
-      options?: SearchOptions<string, IndexItem>,
+      searchOptions?: SearchOptions<string, IndexItem>,
     ): Promise<QueryResult> =>
       new Promise<QueryResult>((resolve, reject) => {
         states.all?.reject(new Error(ERR_MSG))
 
         const id = Date.now()
 
-        worker.postMessage({ type: 'all', id, query, locale, options })
+        worker.postMessage({
+          type: 'all',
+          id,
+          query,
+          locale,
+          options: searchOptions,
+        })
         states.all = { id, resolve, reject }
       }),
 
