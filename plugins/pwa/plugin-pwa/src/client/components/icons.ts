@@ -1,7 +1,7 @@
 import type { FunctionalComponent, VNode } from 'vue'
 import { h } from 'vue'
 
-export interface SVGWrapperProps {
+interface SVGWrapperProps {
   name?: string
   color?: string
 }
