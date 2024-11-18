@@ -45,7 +45,7 @@
     "@mdit/plugin-mathjax-slim": "^0.13.1",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
-    "vue": "^3.5.12"
+    "vue": "^3.5.13"
   },
   "peerDependencies": {
     "katex": "^0.16.10",
