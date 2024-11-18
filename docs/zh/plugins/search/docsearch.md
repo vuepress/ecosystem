@@ -427,10 +427,4 @@ const defineDocSearchConfig: (options: DocSearchClientOptions) => void
 
 ## 组件
 
-### SearchBox
-
-- 详情：
-
-  该插件会全局注册一个 `<SearchBox />` 组件，你可以不传入任何 Props 来使用它。
-
-  将该组件放置在你想要显示 DocSearch 按钮的地方。例如，默认主题将这个组件放在了导航栏的末尾。
+- SearchBox
