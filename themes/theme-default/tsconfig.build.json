@@ -3,11 +3,10 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./lib",
-    "baseUrl": ".",
     "paths": {
       "@theme/*": ["./src/client/components/*", "./src/client/composables/*.js"]
     },
-    "types": ["vuepress/client-types"]
+    "types": ["vuepress/client-types", "vite/client", "webpack-env"]
   },
   "include": ["./src"],
   "references": [

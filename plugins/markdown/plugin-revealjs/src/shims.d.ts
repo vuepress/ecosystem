@@ -14,7 +14,3 @@ declare module '@temp/revealjs/index.js' {
     ...Promise<{ default: PluginFunction }>[],
   ]
 }
-
-declare module '*.css' {
-  export {}
-}
