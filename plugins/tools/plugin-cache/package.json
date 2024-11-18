@@ -41,7 +41,7 @@
     "access": "public"
   },
   "dependencies": {
-    "ci-info": "^4.0.0",
+    "ci-info": "^4.1.0",
     "lru-cache": "^10.4.3"
   }
 }
