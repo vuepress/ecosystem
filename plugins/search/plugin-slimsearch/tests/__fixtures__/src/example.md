@@ -106,8 +106,8 @@ Sample text here...
 Syntax highlighting:
 
 ```js
-const foo = function (bar) {
-  return bar++
+function foo(bar) {
+  return `foo${bar}`
 }
 
 console.log(foo(5))

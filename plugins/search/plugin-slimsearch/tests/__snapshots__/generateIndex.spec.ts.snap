@@ -168,7 +168,7 @@ exports[`generateIndex > Should generate full index 2`] = `
       "Block code:",
       "Sample text here... ",
       "Syntax highlighting:",
-      "const foo = function (bar) { return bar++ } console.log(foo(5)) ",
+      "function foo(bar) { return \`foo\${bar}\` } console.log(foo(5)) ",
     ],
   },
 ]
@@ -755,7 +755,7 @@ exports[`generateIndex > Should support customFields with full index 2`] = `
       "Block code:",
       "Sample text here... ",
       "Syntax highlighting:",
-      "const foo = function (bar) { return bar++ } console.log(foo(5)) ",
+      "function foo(bar) { return \`foo\${bar}\` } console.log(foo(5)) ",
     ],
   },
 ]

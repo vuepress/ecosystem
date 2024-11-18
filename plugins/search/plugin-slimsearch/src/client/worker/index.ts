@@ -8,9 +8,9 @@ import { getResults } from './result.js'
 import { getSuggestions } from './suggestion.js'
 
 self.onmessage = async ({
-  data: { type = 'all', query, locale, options, id },
+  data: { type = 'all', query, locale = '/', options, id },
 }: MessageEvent<MessageData>): Promise<void> => {
-  const { default: localeIndex } = await database[locale ?? '/']()
+  const { default: localeIndex } = await database[locale]()
 
   const searchLocaleIndex = loadJSONIndex<string, IndexItem, IndexItem>(
     localeIndex,

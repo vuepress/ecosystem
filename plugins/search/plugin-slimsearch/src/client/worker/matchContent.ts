@@ -14,33 +14,29 @@ export const getMatchedContent = (
   let startIndex = 0
   let contentLength = 0
 
-  const addResult = (content: string, isEnd = false): void => {
-    let text = ''
+  const addResult = (text: string, isEnd = false): void => {
+    let display: string
 
     // A beginning of a long string
     if (contentLength === 0)
-      text =
-        content.length > SUFFIX_LENGTH
-          ? `… ${content.slice(-SUFFIX_LENGTH)}`
-          : content
+      display =
+        text.length > SUFFIX_LENGTH ? `… ${text.slice(-SUFFIX_LENGTH)}` : text
     // Already the last text
     else if (isEnd)
-      text =
+      display =
         // If the string will be longer than maxLength
-        content.length + contentLength > MAX_LENGTH
-          ? `${content.slice(0, MAX_LENGTH - contentLength)}… `
-          : content
+        text.length + contentLength > MAX_LENGTH
+          ? `${text.slice(0, MAX_LENGTH - contentLength)}… `
+          : text
     // Text is at the middle
     else
-      text =
-        content.length > SUFFIX_LENGTH
-          ? `${content.slice(0, SUFFIX_LENGTH)} … ${content.slice(
-              -SUFFIX_LENGTH,
-            )}`
-          : content
+      display =
+        text.length > SUFFIX_LENGTH
+          ? `${text.slice(0, SUFFIX_LENGTH)} … ${text.slice(-SUFFIX_LENGTH)}`
+          : text
 
-    if (text) result.push(text)
-    contentLength += text.length
+    if (display) result.push(display)
+    contentLength += display.length
 
     if (!isEnd) {
       result.push(['mark', queryString])
