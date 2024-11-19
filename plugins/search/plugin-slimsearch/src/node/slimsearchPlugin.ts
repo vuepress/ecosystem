@@ -23,7 +23,7 @@ import { setPagesExcerpt } from './setPagesExcerpt.js'
 import { CLIENT_FOLDER, PLUGIN_NAME, logger } from './utils.js'
 
 export const slimsearchPlugin =
-  (options: SlimSearchPluginOptions): PluginFunction =>
+  (options: SlimSearchPluginOptions = {}): PluginFunction =>
   (app) => {
     if (app.env.isDebug) logger.info('Options:', options)
 
