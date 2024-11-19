@@ -1,10 +1,11 @@
 import type { FunctionalComponent } from 'vue'
 import { h } from 'vue'
 
-export const SearchLoading: FunctionalComponent<{ hint: string }> = ({
-  hint,
-}) =>
-  h('div', { class: 'slimsearch-result-wrapper loading' }, [
+export const SearchLoading: FunctionalComponent<{
+  hint: string
+  class?: string
+}> = ({ class: className, hint }) =>
+  h('div', { class: [className, 'loading'] }, [
     h(
       'svg',
       {

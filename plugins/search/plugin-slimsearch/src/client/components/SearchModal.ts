@@ -40,7 +40,10 @@ const SearchResult = defineAsyncComponent({
   loadingComponent: () => {
     const localeConfig = useLocaleConfig(locales)
 
-    return h(SearchLoading, { hint: localeConfig.value.loading })
+    return h(SearchLoading, {
+      class: 'slimsearch-result-wrapper',
+      hint: localeConfig.value.loading,
+    })
   },
 })
 
