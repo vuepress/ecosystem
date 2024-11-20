@@ -1,3 +1,4 @@
+import type { MarkdownItContainerOptions } from '@mdit/plugin-container'
 import { container } from '@mdit/plugin-container'
 import type { ExactLocaleConfig } from '@vuepress/helper'
 import { ensureLeadingSlash } from '@vuepress/helper'
@@ -26,9 +27,9 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
   ]
 
   containers.forEach((name) => {
-    md.use(container, {
+    md.use<MarkdownItContainerOptions>(container, {
       name,
-      openRender: (tokens, index, _options, env: MarkdownEnv): string => {
+      openRender: (tokens, index, _options, env: MarkdownEnv) => {
         const token = tokens[index]
 
         // Resolve info (title)
@@ -42,20 +43,20 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
 
           // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           info = options[localePath]?.[name]
+        } else {
+          info = md.renderInline(info)
         }
 
-        return `<div class="hint-container ${name}">\n<p class="hint-container-title">${
-          info || name
-        }</p>\n`
+        return `<div class="hint-container ${name}">\n<p class="hint-container-title">${info || name}</p>\n`
       },
       closeRender: () => '</div>\n',
     })
   })
 
   // Compact with @vuepress/theme-default
-  md.use(container, {
+  md.use<MarkdownItContainerOptions>(container, {
     name: 'danger',
-    openRender: (tokens, index, _options, env: MarkdownEnv): string => {
+    openRender: (tokens, index, _options, env: MarkdownEnv) => {
       const token = tokens[index]
 
       // Resolve info (title)
@@ -69,6 +70,8 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
 
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         info = options[localePath]?.caution
+      } else {
+        info = md.renderInline(info)
       }
 
       return `<div class="hint-container caution">\n<p class="hint-container-title">${
@@ -78,9 +81,9 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
     closeRender: () => '</div>\n',
   })
 
-  md.use(container, {
+  md.use<MarkdownItContainerOptions>(container, {
     name: 'details',
-    openRender: (tokens, index, _options, env: MarkdownEnv): string => {
+    openRender: (tokens, index, _options, env: MarkdownEnv) => {
       const token = tokens[index]
 
       // Resolve info (title)
@@ -100,6 +103,8 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
 
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         info = options[localePath]?.details
+      } else {
+        info = md.renderInline(info)
       }
 
       return `<details class="hint-container details"><summary>${

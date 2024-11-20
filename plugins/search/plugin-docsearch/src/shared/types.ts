@@ -1,7 +1,13 @@
-import type { DocSearchProps } from '@docsearch/react'
+import type docsearch from '@docsearch/js'
 import type { LocaleConfig } from 'vuepress/shared'
 
-export type DocsearchLocaleOptions = Partial<
+export type DocSearchProps = typeof docsearch extends (
+  options: infer T,
+) => unknown
+  ? T
+  : never
+
+export type DocSearchLocaleOptions = Partial<
   Pick<
     DocSearchProps,
     | 'apiKey'
@@ -16,6 +22,6 @@ export type DocsearchLocaleOptions = Partial<
   >
 >
 
-export interface DocsearchOptions extends DocsearchLocaleOptions {
-  locales?: LocaleConfig<DocsearchLocaleOptions>
+export interface DocSearchOptions extends DocSearchLocaleOptions {
+  locales?: LocaleConfig<DocSearchLocaleOptions>
 }

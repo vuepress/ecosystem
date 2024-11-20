@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.60](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.58...v2.0.0-rc.60) (2024-11-06)
+
+### Features
+
+- **plugin-git:** add collect of co-authors ([#285](https://github.com/vuepress/ecosystem/issues/285)) ([448d845](https://github.com/vuepress/ecosystem/commit/448d845bc17fefc8943be7103cca653c256fb7fb))
+- **plugin-git:** improve performance and tweaks options ([#287](https://github.com/vuepress/ecosystem/issues/287)) ([51b793b](https://github.com/vuepress/ecosystem/commit/51b793bd38007a806c25a4261d09f36985b16aa7))
+- **plugin-git:** support changelog and improve performance ([#283](https://github.com/vuepress/ecosystem/issues/283)) ([b526b8c](https://github.com/vuepress/ecosystem/commit/b526b8c330e77589d688758cf03d8ded6d9b1d29))
+
+# [2.0.0-rc.56](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.55...v2.0.0-rc.56) (2024-10-21)
+
+### Features
+
+- bump deps and avoid using [@import](https://github.com/import) ([#276](https://github.com/vuepress/ecosystem/issues/276)) ([1e57813](https://github.com/vuepress/ecosystem/commit/1e57813485998670eb2e0c8ba6edb8775475bc51))
+
+# [2.0.0-rc.54](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.53...v2.0.0-rc.54) (2024-10-10)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
+# [2.0.0-rc.52](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.51...v2.0.0-rc.52) (2024-09-30)
+
+### Features
+
+- use rollup to bundle files ([#267](https://github.com/vuepress/ecosystem/issues/267)) ([164252d](https://github.com/vuepress/ecosystem/commit/164252d350b73a9d6d7cbe0e713be4ee2be47c08))
+
+# [2.0.0-rc.44](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.43...v2.0.0-rc.44) (2024-09-18)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
+# [2.0.0-rc.43](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.42...v2.0.0-rc.43) (2024-09-12)
+
+### Features
+
+- **plugin-git:** add `transformContributors` options ([d431dc4](https://github.com/vuepress/ecosystem/commit/d431dc460df18b386dbff9edff27374618edf150))
+
 # [2.0.0-rc.42](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.41...v2.0.0-rc.42) (2024-08-22)
 
 **Note:** Version bump only for package @vuepress/plugin-git

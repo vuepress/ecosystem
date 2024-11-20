@@ -5,7 +5,7 @@ import { execaCommandSync } from 'execa'
  */
 export const checkGitRepo = (cwd: string): boolean => {
   try {
-    execaCommandSync('git log', { cwd })
+    execaCommandSync('git status', { cwd })
     return true
   } catch {
     return false

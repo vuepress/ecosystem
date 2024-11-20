@@ -1,12 +1,13 @@
 import type { GitPluginPageData } from '@vuepress/plugin-git'
-import type { AutoLinkConfig } from 'vuepress/client'
+import type { PageFrontmatter } from 'vuepress/shared'
+import type { AutoLinkOptions } from './nav.js'
 import type { SidebarArrayOptions } from './sidebar.js'
 
 export interface DefaultThemePageData extends Partial<GitPluginPageData> {
   filePathRelative: string | null
 }
 
-export interface DefaultThemePageFrontmatter {
+export interface DefaultThemePageFrontmatter extends PageFrontmatter {
   home?: boolean
   navbar?: boolean
   pageClass?: string
@@ -44,6 +45,6 @@ export interface DefaultThemeNormalPageFrontmatter
   contributors?: boolean
   sidebar?: SidebarArrayOptions | 'heading' | false
   sidebarDepth?: number
-  prev?: AutoLinkConfig | string
-  next?: AutoLinkConfig | string
+  prev?: AutoLinkOptions | string
+  next?: AutoLinkOptions | string
 }

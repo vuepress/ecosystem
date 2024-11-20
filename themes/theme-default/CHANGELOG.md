@@ -3,6 +3,96 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.60](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.58...v2.0.0-rc.60) (2024-11-06)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.58](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.57...v2.0.0-rc.58) (2024-10-25)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.57](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.56...v2.0.0-rc.57) (2024-10-24)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.56](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.55...v2.0.0-rc.56) (2024-10-21)
+
+### Features
+
+- bump deps and avoid using [@import](https://github.com/import) ([#276](https://github.com/vuepress/ecosystem/issues/276)) ([1e57813](https://github.com/vuepress/ecosystem/commit/1e57813485998670eb2e0c8ba6edb8775475bc51))
+
+# [2.0.0-rc.55](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.54...v2.0.0-rc.55) (2024-10-13)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.54](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.53...v2.0.0-rc.54) (2024-10-10)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.52](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.51...v2.0.0-rc.52) (2024-09-30)
+
+### Features
+
+- **plugin-markdown-hint:** improve hint container outlook ([#264](https://github.com/vuepress/ecosystem/issues/264)) ([340fff5](https://github.com/vuepress/ecosystem/commit/340fff5ced3f720f2d6204a230ed320031f9faa9))
+- use rollup to bundle files ([#267](https://github.com/vuepress/ecosystem/issues/267)) ([164252d](https://github.com/vuepress/ecosystem/commit/164252d350b73a9d6d7cbe0e713be4ee2be47c08))
+
+# [2.0.0-rc.49](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.48...v2.0.0-rc.49) (2024-09-23)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.47](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.46...v2.0.0-rc.47) (2024-09-22)
+
+### Bug Fixes
+
+- **theme-default:** fix hero action button color ([12a8d5d](https://github.com/vuepress/ecosystem/commit/12a8d5dc44198f58999c6ad88c750c775aba4950))
+
+# [2.0.0-rc.46](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.45...v2.0.0-rc.46) (2024-09-20)
+
+### Bug Fixes
+
+- **theme-default:** fix invalid component ([ea29e2d](https://github.com/vuepress/ecosystem/commit/ea29e2d6c24fcabc5c887a0f344c85da1d5fc05d))
+
+### Features
+
+- **theme-default:** improve palette ([36db48e](https://github.com/vuepress/ecosystem/commit/36db48ec46312c2777edb32785ed0a29ef3fc704))
+
+# [2.0.0-rc.45](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.44...v2.0.0-rc.45) (2024-09-20)
+
+### Bug Fixes
+
+- **theme-default:** fix build template color ([4a22f47](https://github.com/vuepress/ecosystem/commit/4a22f471d4674fee73d02c13d529e6b537e96d65))
+
+### Features
+
+- **theme-default:** improve badge appearance ([37b13ad](https://github.com/vuepress/ecosystem/commit/37b13adcb716a12e9b488c5e42439940f9a33c1f))
+- **theme-default:** improve page nav hover color ([b067739](https://github.com/vuepress/ecosystem/commit/b06773932a72c657d52aa46d4c56b93916851660))
+
+# [2.0.0-rc.44](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.43...v2.0.0-rc.44) (2024-09-18)
+
+### Bug Fixes
+
+- fix css variables ([07bdc57](https://github.com/vuepress/ecosystem/commit/07bdc57f834b3677f34ec59a5585dd47f5112c9f))
+- **theme-default:** improve control colors ([89d95d2](https://github.com/vuepress/ecosystem/commit/89d95d2b98c8c3ad062be0d2d61b2e2b319b2577))
+- use modern api by default for vite bundler ([7c2e8e9](https://github.com/vuepress/ecosystem/commit/7c2e8e9557c562d521cc21661271fdea6ee0e206))
+
+### Features
+
+- improve default normalize with guideline ([f239706](https://github.com/vuepress/ecosystem/commit/f2397065a50508a05fc28a94500c301111999ee5))
+
+# [2.0.0-rc.43](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.42...v2.0.0-rc.43) (2024-09-12)
+
+### Bug Fixes
+
+- fix code and table color normalize, close [#243](https://github.com/vuepress/ecosystem/issues/243) ([bbd69e0](https://github.com/vuepress/ecosystem/commit/bbd69e053c15cda1b14837ad64ac6da4e827ff8d))
+- **theme-default:** fix darkmode text color ([a469300](https://github.com/vuepress/ecosystem/commit/a469300ea68d90ff8b4613c8b144210b7d731e5b))
+- **theme-default:** fix types of navbar link ([#242](https://github.com/vuepress/ecosystem/issues/242)) ([f98101d](https://github.com/vuepress/ecosystem/commit/f98101d62a0e8e352b16d808280c2b7a793ef692))
+
+### Features
+
+- improve palette defaults ([76a28d5](https://github.com/vuepress/ecosystem/commit/76a28d5cb5c8c6b41930c33463002506583685f9))
+- make sass optional and support sass-embedded ([#231](https://github.com/vuepress/ecosystem/issues/231)) ([cce614b](https://github.com/vuepress/ecosystem/commit/cce614b8ce45662aa96d38ab09ca0e8fbbd30f4b))
+- **plugin-docsearch:** make palette built-in ([0e8e50e](https://github.com/vuepress/ecosystem/commit/0e8e50e94f121e9ecd8d60f9f7fe48bccd95ac40))
+
 # [2.0.0-rc.42](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.41...v2.0.0-rc.42) (2024-08-22)
 
 ### Features

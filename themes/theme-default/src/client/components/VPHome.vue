@@ -17,7 +17,7 @@ import { Content } from 'vuepress/client'
 </template>
 
 <style lang="scss">
-@import '../styles//variables';
+@use '../styles/variables' as *;
 
 .vp-home {
   display: block;

@@ -1,1 +1,1 @@
-export * from './Docsearch.js'
+export * from './DocSearch.js'

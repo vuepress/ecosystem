@@ -1,5 +1,4 @@
 import process from 'node:process'
-import { footnote } from '@mdit/plugin-footnote'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { getRealPath } from '@vuepress/helper'
@@ -8,11 +7,14 @@ import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { commentPlugin } from '@vuepress/plugin-comment'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
+import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
+import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
+import { markdownStylizePlugin } from '@vuepress/plugin-markdown-stylize'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
-import { searchPlugin } from '@vuepress/plugin-search'
+import { revealJsPlugin } from '@vuepress/plugin-revealjs'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { defineUserConfig } from 'vuepress'
 import { getDirname, path } from 'vuepress/utils'
@@ -55,23 +57,18 @@ export default defineUserConfig({
         // handle @vuepress packages import path
         if (importPath.startsWith('@vuepress/')) {
           const packageName = importPath.match(/^(@vuepress\/[^/]*)/)![1]
-          return importPath
-            .replace(
-              packageName,
-              path.dirname(
-                getRealPath(`${packageName}/package.json`, import.meta.url),
-              ),
-            )
-            .replace('/src/', '/lib/')
-            .replace(/hotKey\.ts$/, 'hotKey.d.ts')
+          const realPath = importPath.replace(
+            packageName,
+            path.dirname(
+              getRealPath(`${packageName}/package.json`, import.meta.url),
+            ),
+          )
+
+          return realPath
         }
         return importPath
       },
     },
-  },
-
-  extendsMarkdown: (md) => {
-    md.use(footnote)
   },
 
   // configure default theme
@@ -88,23 +85,87 @@ export default defineUserConfig({
       json: true,
       rss: true,
     }),
+    markdownExtPlugin({
+      gfm: true,
+      component: true,
+      vPre: true,
+    }),
     markdownImagePlugin({
       figure: true,
       mark: true,
       size: true,
     }),
-    markdownMathPlugin(),
+    markdownIncludePlugin({
+      deep: true,
+    }),
+    markdownMathPlugin({
+      type: 'katex',
+    }),
+    markdownStylizePlugin({
+      align: true,
+      attrs: true,
+      mark: true,
+      spoiler: true,
+      sub: true,
+      sup: true,
+      custom: [
+        {
+          matcher: 'Recommended',
+          replacer: ({ tag }) => {
+            if (tag === 'em')
+              return {
+                tag: 'Badge',
+                attrs: { type: 'tip' },
+                content: 'Recommended',
+              }
+
+            return null
+          },
+        },
+      ],
+    }),
     redirectPlugin({
       switchLocale: 'modal',
+    }),
+    revealJsPlugin({
+      plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
+      themes: [
+        'auto',
+        'beige',
+        'black',
+        'blood',
+        'league',
+        'moon',
+        'night',
+        'serif',
+        'simple',
+        'sky',
+        'solarized',
+        'white',
+      ],
     }),
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, './components'),
     }),
-    searchPlugin(),
     // only enable shiki plugin in production mode
     IS_PROD
       ? shikiPlugin({
-          langs: ['bash', 'diff', 'json', 'md', 'ts', 'vue'],
+          langs: [
+            'bash',
+            'diff',
+            'json',
+            'md',
+            'scss',
+            'ts',
+            'vue',
+            'less',
+            'java',
+            'py',
+            'vb',
+            'bat',
+            'cs',
+            'cpp',
+          ],
           themes: {
             light: 'one-light',
             dark: 'one-dark-pro',
@@ -116,8 +177,11 @@ export default defineUserConfig({
           notationHighlight: true,
           notationWordHighlight: true,
           whitespace: true,
+          collapsedLines: false,
         })
       : [],
     cachePlugin(),
   ],
+
+  pagePatterns: ['**/*.md', '!**/*.snippet.md', '!.vuepress', '!node_modules'],
 })

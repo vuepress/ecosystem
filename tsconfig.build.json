@@ -45,13 +45,24 @@
       "path": "./plugins/markdown/plugin-markdown-container/tsconfig.build.json"
     },
     {
+      "path": "./plugins/markdown/plugin-markdown-ext/tsconfig.build.json"
+    },
+    {
       "path": "./plugins/markdown/plugin-markdown-hint/tsconfig.build.json"
     },
     { "path": "./plugins/markdown/plugin-markdown-image/tsconfig.build.json" },
+    {
+      "path": "./plugins/markdown/plugin-markdown-include/tsconfig.build.json"
+    },
     { "path": "./plugins/markdown/plugin-markdown-math/tsconfig.build.json" },
+    {
+      "path": "./plugins/markdown/plugin-markdown-stylize/tsconfig.build.json"
+    },
+    { "path": "./plugins/markdown/plugin-markdown-tab/tsconfig.build.json" },
     {
       "path": "./plugins/markdown/plugin-prismjs/tsconfig.build.json"
     },
+    { "path": "./plugins/markdown/plugin-revealjs/tsconfig.build.json" },
     { "path": "./plugins/markdown/plugin-shiki/tsconfig.build.json" },
 
     // features

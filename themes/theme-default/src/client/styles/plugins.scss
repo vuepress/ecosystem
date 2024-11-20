@@ -1,4 +1,5 @@
 @use 'mixins';
+@use 'variables' as *;
 
 // plugin-comment
 .vp-comment {
@@ -16,5 +17,12 @@
   .search-box {
     vertical-align: top;
     flex: 0 0 auto;
+  }
+}
+
+// plugin-markdown-hint
+.hint-container {
+  @media screen and (max-width: $MQMobile) {
+    margin-inline: -0.75rem;
   }
 }

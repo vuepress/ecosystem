@@ -2,65 +2,9 @@
   margin-top: 8px;
   margin-bottom: 8px;
 
-  &.index {
-    ol {
-      padding-inline-start: 0;
-    }
-
-    li {
-      list-style-type: none;
-    }
-
-    .vp-catalog-list {
-      padding-inline-start: 0;
-    }
-
-    .vp-catalog-item {
-      list-style-type: none;
-    }
-
-    .vp-catalog-title::before {
-      content: '§' counter(catalog-item, upper-roman) ' ';
-    }
-
-    .vp-child-catalogs {
-      counter-reset: child-catalog;
-    }
-
-    .vp-child-catalog {
-      counter-increment: child-catalog;
-
-      .vp-catalog-title::before {
-        content: counter(catalog-item) '.' counter(child-catalog) ' ';
-      }
-    }
-
-    .vp-sub-catalogs {
-      padding-inline-start: 0.5rem;
-    }
+  &-item {
+    counter-increment: catalog-item;
   }
-}
-
-.vp-catalog-list {
-  counter-reset: catalog-item;
-  margin: 0;
-
-  &.deep {
-    padding-inline-start: 0;
-
-    .vp-catalog-item {
-      list-style-type: none;
-    }
-  }
-
-  .font-icon {
-    vertical-align: baseline;
-    margin-inline-end: 0.25rem;
-  }
-}
-
-.vp-catalog-item {
-  counter-increment: catalog-item;
 
   &-main-title {
     margin-top: calc(1rem - var(--catalog-header-offset));
@@ -123,6 +67,62 @@
       color: var(--catalog-c-accent);
     }
   }
+
+  &.index {
+    ol {
+      padding-inline-start: 0;
+    }
+
+    li {
+      list-style-type: none;
+    }
+
+    .vp-catalog-list {
+      padding-inline-start: 0;
+    }
+
+    .vp-catalog-item {
+      list-style-type: none;
+    }
+
+    .vp-catalog-title::before {
+      content: '§' counter(catalog-item, upper-roman) ' ';
+    }
+
+    .vp-child-catalogs {
+      counter-reset: child-catalog;
+    }
+
+    .vp-child-catalog {
+      counter-increment: child-catalog;
+
+      .vp-catalog-title::before {
+        content: counter(catalog-item) '.' counter(child-catalog) ' ';
+      }
+    }
+
+    .vp-sub-catalogs {
+      padding-inline-start: 0.5rem;
+    }
+  }
+}
+
+.vp-catalog-list {
+  counter-reset: catalog-item;
+  margin: 0;
+
+  &.deep {
+    padding-inline-start: 0;
+
+    .vp-catalog-item {
+      list-style-type: none;
+    }
+  }
+
+  .font-icon {
+    vertical-align: baseline;
+    margin-inline-end: 0.25rem;
+  }
 }
 
 .vp-child-catalogs {
@@ -175,8 +175,6 @@
 }
 
 .vp-catalog-header-anchor {
-  content: '¶';
-
   float: left;
 
   margin-top: 0.125em;

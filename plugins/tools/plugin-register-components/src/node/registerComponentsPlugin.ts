@@ -1,4 +1,4 @@
-import chokidar from 'chokidar'
+import { watch } from 'chokidar'
 import type { Plugin } from 'vuepress/core'
 import { hash, path } from 'vuepress/utils'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
@@ -58,7 +58,7 @@ export const registerComponentsPlugin = ({
 
     onWatched: (app, watchers) => {
       if (componentsDir) {
-        const componentsWatcher = chokidar.watch(componentsPatterns, {
+        const componentsWatcher = watch(componentsPatterns, {
           cwd: componentsDir,
           ignoreInitial: true,
         })

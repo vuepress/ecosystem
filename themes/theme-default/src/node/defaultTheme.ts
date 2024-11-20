@@ -1,16 +1,11 @@
-/* eslint-disable no-console */
-import {
-  addViteConfig,
-  addViteOptimizeDepsExclude,
-  chainWebpack,
-} from '@vuepress/helper'
+import { addViteOptimizeDepsExclude } from '@vuepress/helper'
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
 import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 import { gitPlugin } from '@vuepress/plugin-git'
 import { linksCheckPlugin } from '@vuepress/plugin-links-check'
-import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
 import { markdownHintPlugin } from '@vuepress/plugin-markdown-hint'
+import { markdownTabPlugin } from '@vuepress/plugin-markdown-tab'
 import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { palettePlugin } from '@vuepress/plugin-palette'
@@ -24,8 +19,8 @@ import { fs, getDirname, path } from 'vuepress/utils'
 import type {
   DefaultThemeLocaleOptions,
   DefaultThemePageData,
-  DefaultThemePluginsOptions,
 } from '../shared/index.js'
+import type { DefaultThemePluginsOptions } from './typings.js'
 import {
   assignDefaultLocaleOptions,
   resolveMarkdownHintLocales,
@@ -84,49 +79,6 @@ export const defaultTheme = ({
     clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
     extendsBundlerOptions: (bundlerOptions, app) => {
-      // FIXME: hide sass deprecation warning for mixed-decls
-      addViteConfig(bundlerOptions, app, {
-        css: {
-          preprocessorOptions: {
-            sass: {
-              logger: {
-                warn: (message, { deprecation, deprecationType }) => {
-                  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                  if (deprecation && deprecationType.id === 'mixed-decls')
-                    return
-
-                  console.warn(message)
-                },
-              },
-            },
-            scss: {
-              logger: {
-                warn: (message, { deprecation, deprecationType }) => {
-                  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                  if (deprecation && deprecationType.id === 'mixed-decls')
-                    return
-
-                  console.warn(message)
-                },
-              },
-            },
-          },
-        },
-      })
-      chainWebpack(bundlerOptions, app, (config) => {
-        config.module
-          .rule('scss')
-          .use('sass-loader')
-          .tap((options) => ({
-            ...options,
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            sassOptions: {
-              silenceDeprecations: ['mixed-decls'],
-              ...options.sassOptions,
-            },
-          }))
-      })
-
       // ensure theme alias is not optimized by Vite
       addViteOptimizeDepsExclude(bundlerOptions, app, '@theme')
     },
@@ -142,8 +94,6 @@ export const defaultTheme = ({
       // @vuepress/plugin-active-header-link
       themePlugins.activeHeaderLinks !== false
         ? activeHeaderLinksPlugin({
-            headerLinkSelector: 'a.vp-sidebar-item',
-            headerAnchorSelector: '.header-anchor',
             // should greater than page transition duration
             delay: 300,
           })
@@ -170,21 +120,6 @@ export const defaultTheme = ({
         ? markdownHintPlugin({
             locales: resolveMarkdownHintLocales(localeOptions),
             ...(isPlainObject(themePlugins.hint) ? themePlugins.hint : {}),
-          })
-        : [],
-
-      themePlugins.container?.codeGroup !== false
-        ? markdownContainerPlugin({
-            type: 'code-group',
-            before: () => `<CodeGroup>\n`,
-            after: () => '</CodeGroup>\n',
-          })
-        : [],
-      themePlugins.container?.codeGroupItem !== false
-        ? markdownContainerPlugin({
-            type: 'code-group-item',
-            before: (info) => `<CodeGroupItem title="${info}">\n`,
-            after: () => '</CodeGroupItem>\n',
           })
         : [],
 
@@ -243,6 +178,15 @@ export const defaultTheme = ({
               ? themePlugins.sitemap
               : {}),
           })
+        : [],
+
+      // @vuepress/plugin-markdown-tab
+      themePlugins.tab !== false
+        ? markdownTabPlugin(
+            isPlainObject(themePlugins.tab)
+              ? themePlugins.tab
+              : { codeTabs: true, tabs: true },
+          )
         : [],
 
       // @vuepress/plugin-theme-data

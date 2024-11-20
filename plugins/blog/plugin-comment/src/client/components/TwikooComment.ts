@@ -1,4 +1,4 @@
-import { wait } from '@vuepress/helper/client'
+import { LoadingIcon, wait } from '@vuepress/helper/client'
 import type { VNode } from 'vue'
 import {
   computed,
@@ -11,7 +11,6 @@ import {
 } from 'vue'
 import { usePageLang } from 'vuepress/client'
 import { useTwikooOptions } from '../helpers/index.js'
-import { LoadingIcon } from './LoadingIcon.js'
 
 export default defineComponent({
   name: 'TwikooComment',

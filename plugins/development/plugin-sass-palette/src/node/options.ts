@@ -53,8 +53,6 @@ export interface SassPalettePluginOptions {
    * 默认的调色板文件路径，应为绝对路径。
    *
    * @description 这是你应该通过 `!default` 来提供默认调色板值的文件。所有的变量会被转换为连字符格式然后被注入。
-   *
-   * @default "@vuepress/plugin-sass-palette/styles/default/palette.scss"
    */
 
   defaultPalette?: string

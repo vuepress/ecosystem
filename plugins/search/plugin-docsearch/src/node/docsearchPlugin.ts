@@ -1,13 +1,12 @@
 import type { Plugin } from 'vuepress/core'
-import { getDirname, path } from 'vuepress/utils'
-import type { DocsearchOptions } from '../shared/index.js'
-
-const __dirname = getDirname(import.meta.url)
+import type { DocSearchOptions } from '../shared/index.js'
+import { prepareClientConfig } from './prepareClientConfig.js'
+import { PLUGIN_NAME } from './utils.js'
 
 /**
  * Options for @vuepress/plugin-docsearch
  */
-export interface DocsearchPluginOptions extends DocsearchOptions {
+export interface DocSearchPluginOptions extends DocSearchOptions {
   /**
    * Base path of the search index
    */
@@ -23,14 +22,13 @@ export const docsearchPlugin = ({
   injectStyles = true,
   indexBase,
   ...options
-}: DocsearchPluginOptions = {}): Plugin => ({
-  name: '@vuepress/plugin-docsearch',
-
-  clientConfigFile: path.resolve(__dirname, '../client/config.js'),
+}: DocSearchPluginOptions = {}): Plugin => ({
+  name: PLUGIN_NAME,
 
   define: (app) => ({
-    __DOCSEARCH_INJECT_STYLES__: injectStyles,
     __DOCSEARCH_INDEX_BASE__: indexBase || app.options.base,
     __DOCSEARCH_OPTIONS__: options,
   }),
+
+  clientConfigFile: (app) => prepareClientConfig(app, injectStyles),
 })

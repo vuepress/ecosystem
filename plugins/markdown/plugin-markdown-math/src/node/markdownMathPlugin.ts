@@ -1,9 +1,13 @@
+import type { MarkdownItKatexOptions } from '@mdit/plugin-katex-slim'
 import { katex } from '@mdit/plugin-katex-slim'
+import type { MathjaxInstance } from '@mdit/plugin-mathjax-slim'
 import { createMathjaxInstance, mathjax } from '@mdit/plugin-mathjax-slim'
 import { addCustomElement, getInstalledStatus } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
+import type { MarkdownEnv } from 'vuepress/markdown'
 import { colors, logger } from 'vuepress/utils'
 import type {
+  MarkdownKatexPluginOptions,
   MarkdownMathPluginOptions,
   MarkdownMathjaxPluginOptions,
 } from './options.js'
@@ -64,7 +68,7 @@ export const markdownMathPlugin = ({
 
     extendsMarkdown: (md) => {
       if (mathRenderer === 'mathjax') {
-        md.use(mathjax, mathjaxInstance!)
+        md.use<MathjaxInstance>(mathjax, mathjaxInstance!)
         // Reset mathjax style in each render
         md.use((mdIt) => {
           const originalRender = mdIt.render.bind(mdIt)
@@ -78,15 +82,8 @@ export const markdownMathPlugin = ({
           }
         })
       } else {
-        md.use(katex, {
-          logger: (
-            errorCode,
-            errorMsg,
-            token: Record<string, unknown> & { text: string },
-            {
-              filePathRelative,
-            }: Record<string, unknown> & { filePathRelative?: string | null },
-          ) => {
+        md.use<MarkdownItKatexOptions<MarkdownEnv>>(katex, {
+          logger: (errorCode, errorMsg, token, { filePathRelative }) => {
             // Ignore this error
             if (errorCode === 'newLineInDisplayMode') return
 
@@ -105,9 +102,9 @@ export const markdownMathPlugin = ({
                 }`,
               )
           },
-          ...options,
-          transformer: (content: string) =>
-            content.replace(/^(<[a-z]+ )/g, '$1v-pre '),
+          macros: {},
+          ...(options as Omit<MarkdownKatexPluginOptions, 'type'>),
+          transformer: (content) => content.replace(/^(<[a-z]+ )/g, '$1v-pre '),
         })
       }
     },

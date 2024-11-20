@@ -82,7 +82,7 @@ const tagMap = useBlogCategory('tag')
     }
 
     &.route-link-active {
-      background: var(--vp-c-accent);
+      background: var(--vp-c-accent-bg);
       color: var(--vp-c-accent-text);
 
       .tag-num {

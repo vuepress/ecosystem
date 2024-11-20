@@ -19,7 +19,7 @@ defineSlots<{
 </template>
 
 <style lang="scss">
-@import '../styles/variables';
+@use '../styles/variables' as *;
 
 .vp-sidebar {
   position: fixed;
@@ -46,7 +46,7 @@ defineSlots<{
     background-color var(--vp-t-color),
     border-color var(--vp-t-color);
 
-  scrollbar-color: var(--vp-c-accent) var(--vp-c-gutter);
+  scrollbar-color: var(--vp-c-accent-bg) var(--vp-c-gutter);
   scrollbar-width: thin;
 
   // narrow desktop / iPad
@@ -73,7 +73,7 @@ defineSlots<{
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--vp-c-accent);
+    background-color: var(--vp-c-accent-bg);
   }
 
   // override styles

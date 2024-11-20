@@ -1,4 +1,4 @@
-@import 'variables';
+@use 'variables' as *;
 
 /**
  * code-group
@@ -16,7 +16,7 @@
 
   background-color: var(--vp-c-code-tab-bg);
 
-  transition: background-color var(--t-color);
+  transition: background-color var(--vp-t-color);
 
   @media (max-width: $MQMobileNarrow) {
     margin-right: -1.5rem;

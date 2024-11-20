@@ -1,6 +1,6 @@
 {
   "name": "create-vuepress",
-  "version": "2.0.0-rc.42",
+  "version": "2.0.0-rc.60",
   "description": "VuePress template helper",
   "keywords": [
     "vuepress",
@@ -38,12 +38,13 @@
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
+    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@inquirer/prompts": "^5.3.8",
+    "@inquirer/prompts": "^7.1.0",
     "cac": "^6.7.14",
-    "execa": "^9.3.1"
+    "execa": "^9.5.1"
   },
   "peerDependencies": {
     "@vuepress/plugin-blog": "workspace:*",
@@ -58,12 +59,11 @@
     }
   },
   "devDependencies": {
-    "@types/inquirer": "9.0.7",
     "@vuepress/plugin-blog": "workspace:*",
     "@vuepress/theme-default": "workspace:*"
   },
   "engines": {
-    "node": ">=18.16.0",
+    "node": ">=18.19.0",
     "npm": ">=8",
     "pnpm": ">=7",
     "yarn": ">=2"

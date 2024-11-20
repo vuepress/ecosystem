@@ -24,6 +24,10 @@ A theme must:
 
 If it only have one color scheme, it still needs to set `data-theme` to `light` or `dark` to indicate the default color scheme.
 
+## Components
+
+To support search plugins, a theme shall check whether `<SearchBox />` is globally registered and render it in it's own navbar or sidebar if it is available.
+
 ## Color Variables
 
 A theme must implement the following color variables:
@@ -42,8 +46,7 @@ A theme must implement the following color variables:
 
 ### Shadow
 
-- `--vp-c-shadow`: The normal shadow color
-- `--vp-c-shadow-hard`: The shadow color used for hard shadow, such as "dialog".
+- `--vp-c-shadow`: Shadow color
 
 ### Accent
 
@@ -67,10 +70,13 @@ Accent color and brand colors which used for interactive components.
 
 - `--vp-c-control`: Background color for interactive controls, such as buttons or checkboxes.
 - `--vp-c-control-hover`: Background color for hover state of interactive controls.
-- `--vp-c-control-active`: Background color for active or focus state of interactive controls.
 - `--vp-c-control-disabled`: Color for disabled state of interactive controls.
 
 ## Transition timing
 
 - `--vp-t-color`: Color transition timing.
 - `--vp-t-transform`: Transform transition timing.
+
+## Demo
+
+<PaletteDisplay />

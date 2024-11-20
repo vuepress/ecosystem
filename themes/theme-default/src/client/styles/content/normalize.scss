@@ -1,4 +1,4 @@
-@import '../variables';
+@use '../variables' as *;
 
 .theme-default-content {
   h1,
@@ -7,9 +7,9 @@
   h4,
   h5,
   h6 {
-    margin-top: calc(0.5rem - var(--navbar-height));
+    margin-top: calc(0.5rem - var(--header-offset));
     margin-bottom: 0;
-    padding-top: calc(1rem + var(--navbar-height));
+    padding-top: calc(1rem + var(--header-offset));
 
     &:first-child {
       margin-bottom: 1rem;

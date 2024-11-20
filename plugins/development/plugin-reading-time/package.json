@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-reading-time",
-  "version": "2.0.0-rc.42",
+  "version": "2.0.0-rc.60",
   "description": "VuePress plugin - reading-time",
   "keywords": [
     "vuepress-plugin",
@@ -37,14 +37,15 @@
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
+    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "vue": "^3.4.38"
+    "vue": "^3.5.13"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.15"
+    "vuepress": "2.0.0-rc.18"
   },
   "publishConfig": {
     "access": "public"

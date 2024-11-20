@@ -1,3 +1,3 @@
-export * from './localeConfig.js'
-export * from './locales.js'
+export type * from './behavior.js'
+export type * from './locales.js'
 export * from './normalizePath.js'

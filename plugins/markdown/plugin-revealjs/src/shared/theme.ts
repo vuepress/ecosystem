@@ -1,0 +1,13 @@
+export type RevealJsTheme =
+  | 'auto'
+  | 'beige'
+  | 'black'
+  | 'blood'
+  | 'league'
+  | 'moon'
+  | 'night'
+  | 'serif'
+  | 'simple'
+  | 'sky'
+  | 'solarized'
+  | 'white'

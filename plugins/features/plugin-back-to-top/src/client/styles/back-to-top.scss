@@ -11,7 +11,7 @@
   border-radius: 50%;
 
   background: var(--back-to-top-c-bg);
-  color: var(--back-to-top-c-accent);
+  color: var(--back-to-top-c-accent-bg);
   box-shadow: 2px 2px 10px 4px var(--back-to-top-c-shadow);
 
   cursor: pointer;
@@ -38,11 +38,8 @@
 
     background: var(--back-to-top-c-icon);
 
-    -webkit-mask-image: var(--back-to-top-icon);
     mask-image: var(--back-to-top-icon);
-    -webkit-mask-position: 50%;
     mask-position: 50%;
-    -webkit-mask-size: cover;
     mask-size: cover;
   }
 }

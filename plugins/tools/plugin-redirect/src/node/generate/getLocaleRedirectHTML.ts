@@ -1,13 +1,13 @@
 import { removeEndingSlash } from '@vuepress/helper'
-import type { RedirectLocaleConfig } from '../../shared/index.js'
+import type { RedirectBehaviorConfig } from '../../shared/index.js'
 
 export const getLocaleRedirectHTML = (
   {
-    localeConfig,
+    config,
     defaultBehavior,
     defaultLocale,
     localeFallback,
-  }: RedirectLocaleConfig,
+  }: RedirectBehaviorConfig,
   availableLocales: string[],
   base: string,
 ): string => `<!doctype html>
@@ -22,7 +22,7 @@ export const getLocaleRedirectHTML = (
     const { languages } = window.navigator;
     const anchor = hash.substring(1);
 
-    const localeConfig = ${JSON.stringify(localeConfig)};
+    const config = ${JSON.stringify(config)};
     const availableLocales = ${JSON.stringify(availableLocales)};
     const defaultLocale = ${
       availableLocales.includes(defaultLocale)
@@ -36,7 +36,7 @@ export const getLocaleRedirectHTML = (
     // get matched locale
     findLanguage:
       for (const lang of languages)
-        for (const [localePath, langs] of Object.entries(localeConfig))
+        for (const [localePath, langs] of Object.entries(config))
           if (langs.includes(lang)) {
 ${
   localeFallback

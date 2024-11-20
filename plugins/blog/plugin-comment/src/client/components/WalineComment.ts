@@ -1,4 +1,4 @@
-import { useLocaleConfig, wait } from '@vuepress/helper/client'
+import { LoadingIcon, useLocaleConfig, wait } from '@vuepress/helper/client'
 import { pageviewCount } from '@waline/client/pageview'
 import type { VNode } from 'vue'
 import {
@@ -16,9 +16,9 @@ import type {
   WalineLocaleConfig,
 } from '../../shared/index.js'
 import { useWalineOptions } from '../helpers/index.js'
-import { LoadingIcon } from './LoadingIcon.js'
 
 import '@waline/client/waline.css'
+import '../styles/waline.css'
 
 declare const WALINE_META: boolean
 declare const WALINE_LOCALES: WalineLocaleConfig
@@ -79,20 +79,19 @@ export default defineComponent({
           walineOptions.value.delay,
           enablePageViews.value,
         ],
-        () => {
+        async () => {
           abort?.()
+          abort = null
 
-          if (enablePageViews.value)
-            void nextTick()
-              .then(() => wait(walineOptions.value.delay ?? 800))
-              .then(() => {
-                setTimeout(() => {
-                  abort = pageviewCount({
-                    serverURL: walineOptions.value.serverURL,
-                    path: props.identifier,
-                  })
-                })
-              })
+          if (enablePageViews.value) {
+            await nextTick()
+            await wait(walineOptions.value.delay ?? 800)
+
+            abort = pageviewCount({
+              serverURL: walineOptions.value.serverURL,
+              path: props.identifier,
+            })
+          }
         },
         { immediate: true },
       )

@@ -18,7 +18,7 @@ export const prepareClientConfigFile = async (
   if (mathRenderer === 'katex') {
     content += `\
 import "${getRealPath('katex/dist/katex.min.css', url)}";
-import "${CLIENT_FOLDER}styles/katex.scss";
+import "${CLIENT_FOLDER}styles/katex.css";
 ${
   (options as MarkdownKatexPluginOptions).copy
     ? `\
@@ -38,5 +38,5 @@ import './mathjax.css';
 `
   }
 
-  return app.writeTemp(`md-enhance/config.js`, content)
+  return app.writeTemp(`markdown-math/config.js`, content)
 }

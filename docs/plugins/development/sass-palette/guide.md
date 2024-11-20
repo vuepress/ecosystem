@@ -30,11 +30,11 @@ This will allow you to:
 
 - With different ID, plugins and theme won't affect others. We recommend you to set the `id` variable with your plugin name.
 
-  With the default settings, users will set your plugin style under `.vuepress/styles` directory with Sass files starting with your ID prefix. And you can access the variables you need with `${id}-config`.
+  With the default settings, users will set your plugin style under `.vuepress/styles` directory with Sass files starting with your ID prefix. And you can access the variables you need with `${id}-config` and `${id}-palette`.
 
   ::: tip Example
 
-  `vuepress-theme-hope` is using ID `"hope"`, and just imagine a `vuepress-plugin-abc` is using `"abc"`. They can get their own variables with module name `hope-config` and `abc-config`.
+  `vuepress-theme-hope` is using ID `"hope"`, and just imagine a `vuepress-plugin-abc` is using `"abc"`. They can get their own variables with module name `hope-config` `hope-palette` and `abc-config` `abc-palette`.
 
   :::
 
@@ -48,7 +48,7 @@ This will allow you to:
 
 ## Config
 
-Config file is used for Sass variable only. It holds Sass variables which can be used in other files later.
+Config file is used for Sass variable only. It holds Sass variables which can be used via `${id}-config` in other files later.
 
 You can specify a file (probably in `.vuepress/styles/` directory) as user config file. So you can get the module containing every variable later in Sass files. Also, you are able to provide a default config files where you can place fallback values for variables with `!default`.
 
@@ -97,25 +97,9 @@ We are using `additionalData` options to let `${id}-config` module available in 
 
 If the Scss file is not imported directly, but is imported through `@use` or `@import` api, the module won't be available. So that in this case, you should manually import the module with `@use "@sass-palette/${id}-config";`.
 
-### Preserved Variables
-
-`$dark-selector` is preserved for darkmode selector. You are expected to set this variable if you want your plugin or theme support darkmode. This variable will be used later in palette files.
-
-::: tip
-
-- If you are developing a plugin, you may set `$dark-selector: [data-theme="dark"] !default;` in default config files, as our guideline is asking this.
-
-  Your plugin will work with most of theme, and users are still allowed to change this selector in config file if they are using a third-party theme with different dark selector.
-
-- If you are developing a theme, you may set `$dark-selector` in default config files with your darkmode selector without `!default`, to insure users cannot override it.
-
-:::
-
 ## Palette
 
 Palette files are used for CSS variable injection, where each variable will be injected in to root with kebab-name of variable name.
-
-Same as config file, any variables in palette will be injected into `${id}-config` module, just in case you want to use them in Sass files.
 
 You can specify a file (probably in `.vuepress/styles/` directory) as user palette file, and the default filename is `${id}-palette.scss`. Also, you are able to provide a default palette files where you can place fallback values for variables with `!default`.
 
@@ -154,11 +138,13 @@ Then the below CSS variables will be available under root selector:
 
 :::
 
+Like config file, palette file provides a module named `${$id}-palette` (also including generator values), and it is also limited by `additionalData` option, so you should import the module manually if you want to use it in other Sass files.
+
 ### Color Settings
 
 Since the default theme is providing darkmode, so you probably want different colors under lightmode and darkmode.
 
-To achieve that, you should set color variables with a map containing `light` and `dark` keys. Later, the plugin will read `$dark-selector` in your config and generate different colors for you.
+To achieve that, you should set color variables with a map containing `light` and `dark` keys. Later, the plugin will generate different colors for you.
 
 ::: details An example
 
@@ -180,7 +166,7 @@ $bg-color: (
 ) !default;
 ```
 
-Then if `$dark-selector` has a value `"[data-theme="dark"]"` in config file, you will get:
+Then you will get:
 
 ```scss
 :root {
@@ -232,9 +218,11 @@ You can use this helper with `@sass-palette/helper` alias and call its function 
 
 ## Generator
 
-Generator file is facing developers to generate derivative values with config or palette file variables.
+A generator file is facing developers to generate derived values based on palette file variables.
 
-Generator variables will be also injected as CSS variables like palette, and also they are available in config module.
+You can access variables from palette file directly in this file and generate new values based on them.
+
+Variables in generator file will be also injected as CSS variables like palette, and they will be available in palette module.
 
 ::: details Example
 
@@ -242,14 +230,23 @@ You may want a `$theme-color-light` based on `$theme-color`. So you can write a 
 
 ```scss
 @use 'sass:color';
-@use 'sass:list';
-@use 'sass:map';
 @use '@sass-palette/helper';
 
 $theme-color-light: (
   light: color.scale(helper.get-color($theme-color), $lightness: 10%),
   dark: color.scale(helper.get-dark-color($theme-color), $lightness: 10%),
 ) !default;
+```
+
+You can also generate values based on variables provided by config files by importing it:
+
+```scss
+// generator with id "abc"
+@use 'sass:color';
+@use '@sass-palette/abc-config';
+@use '@sass-palette/helper';
+
+$code-c-bg: abc-config.$highlighter == 'shiki'? #fff: #f8f8f8;
 ```
 
 :::

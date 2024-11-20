@@ -1,21 +1,22 @@
 <script setup lang="ts">
 import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
-import { computed, ref, toRefs, watch } from 'vue'
+import { useToggle } from '@vueuse/core'
+import { computed, toRefs, watch } from 'vue'
 import { AutoLink, useRoute } from 'vuepress/client'
 import type { AutoLinkOptions, NavGroup } from '../../shared/index.js'
 
 const props = defineProps<{
-  /** dropdown items */
-  item: NavGroup<AutoLinkOptions | NavGroup<AutoLinkOptions>>
+  /** dropdown config */
+  config: NavGroup<AutoLinkOptions | NavGroup<AutoLinkOptions>>
 }>()
 
-const { item } = toRefs(props)
+const { config } = toRefs(props)
 const route = useRoute()
 
-const open = ref(false)
+const [open, toggleOpen] = useToggle(false)
 
 const dropdownAriaLabel = computed(
-  () => item.value.ariaLabel || item.value.text,
+  () => config.value.ariaLabel || config.value.text,
 )
 
 const isLastItemOfArray = (arrayItem: unknown, array: unknown[]): boolean =>
@@ -30,15 +31,14 @@ const isLastItemOfArray = (arrayItem: unknown, array: unknown[]): boolean =>
  * @see https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail
  */
 const handleDropdown = (e: UIEvent): void => {
-  const isTriggerByTab = e.detail === 0
-
-  open.value = isTriggerByTab ? !open.value : false
+  if (e.detail === 0) toggleOpen()
+  else toggleOpen(false)
 }
 
 watch(
   () => route.path,
   () => {
-    open.value = false
+    toggleOpen(false)
   },
 )
 </script>
@@ -51,7 +51,7 @@ watch(
       :aria-label="dropdownAriaLabel"
       @click="handleDropdown"
     >
-      <span class="title">{{ item.text }}</span>
+      <span class="title">{{ config.text }}</span>
       <span class="arrow down" />
     </button>
 
@@ -59,16 +59,16 @@ watch(
       class="vp-navbar-dropdown-title-mobile"
       type="button"
       :aria-label="dropdownAriaLabel"
-      @click="open = !open"
+      @click="() => toggleOpen()"
     >
-      <span class="title">{{ item.text }}</span>
+      <span class="title">{{ config.text }}</span>
       <span class="arrow" :class="open ? 'down' : 'right'" />
     </button>
 
     <VPDropdownTransition>
       <ul v-show="open" class="vp-navbar-dropdown">
         <li
-          v-for="child in item.children"
+          v-for="child in config.children"
           :key="child.text"
           class="vp-navbar-dropdown-item"
         >
@@ -78,9 +78,14 @@ watch(
                 v-if="child.link"
                 :config="child"
                 @focusout="
-                  isLastItemOfArray(child, item.children) &&
-                    child.children.length === 0 &&
-                    (open = false)
+                  () => {
+                    if (
+                      isLastItemOfArray(child, config.children) &&
+                      child.children.length === 0
+                    ) {
+                      open = false
+                    }
+                  }
                 "
               />
 
@@ -96,9 +101,14 @@ watch(
                 <AutoLink
                   :config="grandchild"
                   @focusout="
-                    isLastItemOfArray(grandchild, child.children) &&
-                      isLastItemOfArray(child, item.children) &&
-                      (open = false)
+                    () => {
+                      if (
+                        isLastItemOfArray(grandchild, child.children) &&
+                        isLastItemOfArray(child, config.children)
+                      ) {
+                        toggleOpen(false)
+                      }
+                    }
                   "
                 />
               </li>
@@ -109,7 +119,11 @@ watch(
             <AutoLink
               :config="child"
               @focusout="
-                isLastItemOfArray(child, item.children) && (open = false)
+                () => {
+                  if (isLastItemOfArray(child, config.children)) {
+                    toggleOpen(false)
+                  }
+                }
               "
             />
           </template>
@@ -121,7 +135,7 @@ watch(
 
 <style lang="scss">
 @use '../styles/mixins';
-@import '../styles/variables';
+@use '../styles/variables' as *;
 
 .vp-navbar-dropdown-wrapper {
   cursor: pointer;
@@ -162,10 +176,10 @@ watch(
     max-height: calc(100vh - 2.7rem);
     margin: 0;
     padding: 0.6rem 0;
-    border: 1px solid var(--vp-c-border);
-    border-radius: 0.25rem;
+    border: 1px solid var(--vp-c-gutter);
+    border-radius: 0.5rem;
 
-    background-color: var(--vp-navbar-c-bg);
+    background-color: var(--vp-c-bg-elv);
 
     text-align: left;
     white-space: nowrap;

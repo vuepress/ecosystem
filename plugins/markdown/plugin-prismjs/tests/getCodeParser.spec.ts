@@ -538,7 +538,7 @@ console.log('hello world)\t
 \t\tconsole.log('hello world')
 console.log('hello world)\t
 }`)
-    it('disabled global', () => {
+    it('disable global', () => {
       const parser = getCodeParser(code)
       metaWhitespace(parser, 'js', false)
       const result = parser.stringify()
@@ -548,7 +548,7 @@ console.log('hello world)\t
       expect(result).toMatchSnapshot()
     })
 
-    it('disabled global and :whitespace', () => {
+    it('disable global and :whitespace', () => {
       const parser = getCodeParser(code)
       metaWhitespace(parser, 'js :whitespace', false)
       const result = parser.stringify()

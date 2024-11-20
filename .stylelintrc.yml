@@ -26,6 +26,8 @@ rules:
     - true
     - ignorePseudoElements:
         - input-placeholder
+  # workaround for mixed-declarations
+  no-duplicate-selectors: null
 
 overrides:
   - files:

@@ -56,7 +56,7 @@ export type MarkdownHintPluginLocaleConfig =
   ExactLocaleConfig<MarkdownHintPluginLocaleData>
 
 /**
- * md-enhance plugin configuration
+ * markdown hint plugin configuration
  */
 export interface MarkdownHintPluginOptions {
   /**
@@ -92,6 +92,13 @@ export interface MarkdownHintPluginOptions {
    * @default true
    */
   hint?: boolean
+
+  /**
+   * Whether to inject default styles
+   *
+   * @default true
+   */
+  injectStyles?: boolean
 
   /**
    * Locale config

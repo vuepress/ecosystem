@@ -152,3 +152,17 @@ export default {
   是否启用 [@vuepress/plugin-sitemap](../../plugins/seo/sitemap/README.md) 。
 
   支持对象格式以作为插件选项。
+
+## themePlugins.tab
+
+- 类型： `MarkdownTabPluginOptions | boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否启用 [@vuepress/plugin-markdown-tab](../../plugins/markdown/markdown-tab.md)。
+
+- 参考：
+  - [默认主题 > Markdown > 代码选项卡](./markdown.md#代码选项卡)
+  - [默认主题 > Markdown > 选项卡](./markdown.md#选项卡)

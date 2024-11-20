@@ -4,12 +4,6 @@
 
 Integrate [Algolia DocSearch](https://docsearch.algolia.com/) into VuePress, which can provide search to your documentation site.
 
-::: tip
-Default theme will add DocSearch to the navbar once you configure this plugin correctly.
-
-This plugin may not be used directly in other themes, so you'd better refer to the documentation of your theme for more details.
-:::
-
 ## Usage
 
 ```bash
@@ -287,7 +281,7 @@ If you are not using default theme, or you meet any problems when using docsearc
 
 ### locales
 
-- Type: `Record<string, DocsearchPluginOptions>`
+- Type: `Record<string, DocSearchPluginOptions>`
 
 - Details:
 
@@ -340,7 +334,7 @@ export default {
 
   The base path of the search index.
 
-  If you are deploying your site to multiple domains, you don't need to submit all of them to DocSearch and generate search index separately. You could choose one of the domains as the _index domain_, and only submit the _index domain_ to Docsearch for crawling search index. Then, you could reuse the search index across all deployments.
+  If you are deploying your site to multiple domains, you don't need to submit all of them to DocSearch and generate search index separately. You could choose one of the domains as the _index domain_, and only submit the _index domain_ to DocSearch for crawling search index. Then, you could reuse the search index across all deployments.
 
   However, if the [base](https://vuejs.press/reference/config.html#base) of your deployments are different for different domains, you need to set the option to the [base](https://vuejs.press/reference/config.html#base) of your _index domain_, so that other deployments could reuse the search index correctly.
 
@@ -363,19 +357,22 @@ export default {
 ### defineDocSearchConfig
 
 ```ts
-type DocSearchClientLocaleOptions = Omit<
-  DocSearchProps,
-  'hitComponent' | 'navigator' | 'transformSearchClient'
->
-
-interface DocSearchClientOptions extends DocSearchClientLocaleOptions {
-  locales?: Record<string, DocSearchClientLocaleOptions>
+interface DocSearchClientOptions extends DocSearchProps {
+  locales?: Record<string, DocSearchProps>
 }
 
 const defineDocSearchConfig: (options: DocSearchClientOptions) => void
 ```
 
 Customize DocSearch options.
+
+::: warning
+
+To support VuePress's routing and other optimizations, the `transformItems`, `hitComponent` `navigator` and `transformSearchClient` options have been configured internally. Overriding them directly may lead to unexpected behavior.
+
+If you need to customize them, you may need to first understand [VuePress's adaptation](https://github.com/vuepress/ecosystem/blob/main/plugins/search/plugin-docsearch/src/client/composables/useDocSearchSlim.ts) and make sure not to break them.
+
+:::
 
 ## Styles
 
@@ -431,16 +428,4 @@ You can customize styles via CSS variables that provided by [@docsearch/css](htt
 
 ## Components
 
-### Docsearch
-
-- Details:
-
-  This plugin will register a `<Docsearch />` component globally, and you can use it without any props.
-
-  Put this component to where you want to place the docsearch button. For example, default theme puts this component to the end of the navbar.
-
-::: tip
-
-This component is mainly used for theme development. You don't need to use it directly in most cases.
-
-:::
+- SearchBox

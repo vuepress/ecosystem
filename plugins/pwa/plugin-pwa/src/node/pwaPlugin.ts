@@ -2,7 +2,6 @@ import {
   addViteOptimizeDepsExclude,
   addViteSsrNoExternal,
   customizeDevServer,
-  getLocaleConfig,
 } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { generateManifest } from './generateManifest.js'
@@ -10,10 +9,9 @@ import { generateServiceWorker } from './generateServiceWorker.js'
 import { getManifest } from './getManifest.js'
 import { appendBase } from './helper.js'
 import { injectLinksToHead } from './injectLinksToHead.js'
-import { pwaLocales } from './locales.js'
 import { PLUGIN_NAME, logger } from './logger.js'
 import type { PwaPluginOptions } from './options.js'
-import { prepareConfigFile } from './prepareConfigFile.js'
+import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 
 export const pwaPlugin =
   (options: PwaPluginOptions = {}): PluginFunction =>
@@ -33,17 +31,6 @@ export const pwaPlugin =
 
     return {
       name: PLUGIN_NAME,
-
-      define: () => ({
-        __PWA_LOCALES__: getLocaleConfig({
-          app,
-          name: PLUGIN_NAME,
-          default: pwaLocales,
-          config: options.locales,
-        }),
-        __SW_FORCE_UPDATE__: options.update === 'force',
-        __SW_PATH__: options.serviceWorkerFilename || 'service-worker.js',
-      }),
 
       extendsBundlerOptions: (bundlerOptions: unknown): void => {
         addViteOptimizeDepsExclude(bundlerOptions, app, [
@@ -68,6 +55,6 @@ export const pwaPlugin =
         await generateServiceWorker(app, options)
       },
 
-      clientConfigFile: () => prepareConfigFile(app, options),
+      clientConfigFile: () => prepareClientConfigFile(app, options),
     }
   }

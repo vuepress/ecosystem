@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test'
 
 test.describe('plugin-watermark', () => {
-  test('enabled watermark', async ({ page }) => {
+  test('watermark enabled', async ({ page }) => {
     await page.goto('watermark/')
 
     expect(
@@ -13,7 +13,7 @@ test.describe('plugin-watermark', () => {
     ).toContain('background-image: url("data:image/png;base64,')
   })
 
-  test('disabled watermark', async ({ page }) => {
+  test('watermark disabled', async ({ page }) => {
     await page.goto('watermark/disabled.html')
 
     await expect(page.locator('//html/body/div[2]')).not.toBeVisible()

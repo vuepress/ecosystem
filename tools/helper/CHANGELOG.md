@@ -3,6 +3,73 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.60](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.58...v2.0.0-rc.60) (2024-11-06)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.57](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.56...v2.0.0-rc.57) (2024-10-24)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.56](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.55...v2.0.0-rc.56) (2024-10-21)
+
+### Features
+
+- bump deps and avoid using [@import](https://github.com/import) ([#276](https://github.com/vuepress/ecosystem/issues/276)) ([1e57813](https://github.com/vuepress/ecosystem/commit/1e57813485998670eb2e0c8ba6edb8775475bc51))
+
+# [2.0.0-rc.55](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.54...v2.0.0-rc.55) (2024-10-13)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.54](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.53...v2.0.0-rc.54) (2024-10-10)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.52](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.51...v2.0.0-rc.52) (2024-09-30)
+
+### Features
+
+- **helper:** improve header anchor normalize ([ef2c444](https://github.com/vuepress/ecosystem/commit/ef2c444dd432b89dd49655e11bd678f3d73400bd))
+- **helper:** sync mergeViteConfig with vite ([6e17c80](https://github.com/vuepress/ecosystem/commit/6e17c809daf6cd5f633051fbd29b1988e14e82df))
+- use rollup to bundle files ([#267](https://github.com/vuepress/ecosystem/issues/267)) ([164252d](https://github.com/vuepress/ecosystem/commit/164252d350b73a9d6d7cbe0e713be4ee2be47c08))
+
+# [2.0.0-rc.47](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.46...v2.0.0-rc.47) (2024-09-22)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.46](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.45...v2.0.0-rc.46) (2024-09-20)
+
+### Features
+
+- **helper:** add LoadingIcon and useDarkmode ([06584ba](https://github.com/vuepress/ecosystem/commit/06584bacd6566d1109bdc1fe19afe4948ba2ba86))
+- **helper:** improve normalize ([5c7a902](https://github.com/vuepress/ecosystem/commit/5c7a9028a52d61d58f346c3f9857bd2bd7be9432))
+- **theme-default:** improve palette ([36db48e](https://github.com/vuepress/ecosystem/commit/36db48ec46312c2777edb32785ed0a29ef3fc704))
+
+# [2.0.0-rc.45](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.44...v2.0.0-rc.45) (2024-09-20)
+
+### Bug Fixes
+
+- **helper:** fix grey text color ([f804b9b](https://github.com/vuepress/ecosystem/commit/f804b9b2cdf7e9ba1b86928973f52e8923b69963))
+- **helper:** fix table style normalize ([7bf684d](https://github.com/vuepress/ecosystem/commit/7bf684dd46fc9052e1af018b5f7924fc4e3c308f))
+- **helper:** improve code text contrast ([bbddb62](https://github.com/vuepress/ecosystem/commit/bbddb62e98899d2857e2ee3e1cac33dc533775f0))
+
+### Features
+
+- **plugin-markdown-hint:** rebuild styles ([3b08611](https://github.com/vuepress/ecosystem/commit/3b08611963bf63e21fafa6721557d95f3e4f8ed2))
+- **theme-default:** improve badge appearance ([37b13ad](https://github.com/vuepress/ecosystem/commit/37b13adcb716a12e9b488c5e42439940f9a33c1f))
+
+# [2.0.0-rc.44](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.43...v2.0.0-rc.44) (2024-09-18)
+
+### Features
+
+- improve default normalize with guideline ([f239706](https://github.com/vuepress/ecosystem/commit/f2397065a50508a05fc28a94500c301111999ee5))
+
+# [2.0.0-rc.43](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.42...v2.0.0-rc.43) (2024-09-12)
+
+### Bug Fixes
+
+- fix code and table color normalize, close [#243](https://github.com/vuepress/ecosystem/issues/243) ([bbd69e0](https://github.com/vuepress/ecosystem/commit/bbd69e053c15cda1b14837ad64ac6da4e827ff8d))
+
 # [2.0.0-rc.42](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.41...v2.0.0-rc.42) (2024-08-22)
 
 ### Features

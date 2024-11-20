@@ -30,7 +30,7 @@ export default {
 
 - Type: `string`
 
-- Default: `'a.sidebar-item'`
+- Default: `'a.vp-sidebar-item'`
 
 - Details:
 

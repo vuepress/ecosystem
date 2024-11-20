@@ -62,7 +62,7 @@ useEventListener('keydown', (event): void => {
 </template>
 
 <style lang="scss">
-@import '../styles/variables';
+@use '../styles/variables' as *;
 
 .vp-page-nav {
   display: flex;
@@ -97,7 +97,7 @@ useEventListener('keydown', (event): void => {
     border-radius: 0.25rem;
 
     &:hover {
-      background: var(--c-bg-soft);
+      background: var(--vp-c-control);
     }
 
     .hint {

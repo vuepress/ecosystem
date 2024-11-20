@@ -1,3 +1,4 @@
+import { addViteConfig, chainWebpack } from '@vuepress/helper'
 import { watch } from 'chokidar'
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
@@ -27,10 +28,7 @@ export const sassPalettePlugin =
         '../../styles/default/config.scss',
       ),
       palette = `.vuepress/styles/${getIdPrefix(id)}palette.scss`,
-      defaultPalette = path.resolve(
-        __dirname,
-        '../../styles/default/palette.scss',
-      ),
+      defaultPalette,
       generator = EMPTY_FILE,
       style = '',
     } = options
@@ -70,30 +68,53 @@ export const sassPalettePlugin =
       },
 
       extendsBundlerOptions: (bundlerOptions: unknown): void => {
+        // switch to modern api and silent import deprecation for vite
+        addViteConfig(bundlerOptions, app, {
+          css: {
+            preprocessorOptions: {
+              sass: {
+                api: 'modern',
+                silenceDeprecations: ['import'],
+              },
+              scss: {
+                api: 'modern',
+                silenceDeprecations: ['import'],
+              },
+            },
+          },
+        })
+        // silent import deprecation for webpack
+        chainWebpack(bundlerOptions, app, (webpackOptions) => {
+          webpackOptions.module
+            .rule('scss')
+            .use('sass-loader')
+            .tap((loaderOptions) => ({
+              ...loaderOptions,
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+              sassOptions: {
+                ...loaderOptions.sassOptions,
+                silenceDeprecations: [
+                  'import',
+                  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+                  ...(loaderOptions.sassOptions?.silenceDeprecations ?? []),
+                ],
+              },
+            }))
+        })
         injectScssConfigModule(bundlerOptions, app, id)
       },
 
       onInitialized: (): Promise<void> =>
         Promise.all([
+          prepareConfigSass(app, id, defaultConfig, userConfig),
           prepareInjectSass(app, id),
-
-          prepareConfigSass(app, {
-            id,
-            defaultConfig,
-            defaultPalette,
-            generator,
-            userConfig,
-            userPalette,
-          }),
-
           preparePaletteSass(app, {
             id,
             defaultPalette,
             generator,
             userPalette,
           }),
-
-          prepareStyleSass(app, { id, userStyle }),
+          prepareStyleSass(app, id, userStyle),
         ]).then(() => {
           if (app.env.isDebug) logger.info(`Style file for ${id} generated`)
         }),
@@ -105,14 +126,7 @@ export const sassPalettePlugin =
         })
 
         const updateConfig = (): Promise<void> =>
-          prepareConfigSass(app, {
-            id,
-            defaultConfig,
-            defaultPalette,
-            generator,
-            userConfig,
-            userPalette,
-          }).then(() => {
+          prepareConfigSass(app, id, defaultConfig, userConfig).then(() => {
             if (app.env.isDebug) logger.info(`Style file for ${id} updated`)
           })
 
@@ -132,15 +146,7 @@ export const sassPalettePlugin =
 
         const updatePalette = (): Promise<void> =>
           Promise.all([
-            prepareConfigSass(app, {
-              id,
-              defaultConfig,
-              defaultPalette,
-              generator,
-              userConfig,
-              userPalette,
-            }),
-
+            prepareConfigSass(app, id, defaultConfig, userConfig),
             preparePaletteSass(app, {
               id,
               defaultPalette,
@@ -167,7 +173,7 @@ export const sassPalettePlugin =
           })
 
           const updateStyle = (): Promise<void> =>
-            prepareStyleSass(app, { id, userStyle }).then(() => {
+            prepareStyleSass(app, id, userStyle).then(() => {
               if (app.env.isDebug) logger.info(`Style file for ${id} updated`)
             })
 

@@ -3,6 +3,9 @@ import { strFromU8, strToU8, unzlibSync, zlibSync } from 'fflate/browser'
 
 declare const __VUEPRESS_SSR__: boolean
 
+/**
+ * Encode and compress data
+ */
 export const encodeData = (
   data: string,
   level: DeflateOptions['level'] = 6,
@@ -17,6 +20,9 @@ export const encodeData = (
     : btoa(binary)
 }
 
+/**
+ * Decode and unzip data
+ */
 export const decodeData = (base64: string): string => {
   const binary = __VUEPRESS_SSR__
     ? Buffer.from(base64, 'base64').toString('binary')

@@ -1,4 +1,4 @@
-import { compileString } from 'sass'
+import { compileStringAsync } from 'sass-embedded'
 import { fs, getDirname, path } from 'vuepress/utils'
 
 const __dirname = getDirname(import.meta.url)
@@ -11,9 +11,10 @@ const themeFiles = fs.readdirSync(themeDir)
 
 fs.ensureDirSync(outputDir)
 
-themeFiles.forEach((file) => {
-  const filename = path.basename(file, '.scss')
-  const themeContent = `
+await Promise.all(
+  themeFiles.map(async (file) => {
+    const filename = path.basename(file, '.scss')
+    const themeContent = `
 @use 'mixins';
 @use 'themes/${filename}';
 
@@ -24,7 +25,7 @@ themeFiles.forEach((file) => {
 @include ${filename}.style;
 `
 
-  const lightThemeContent = `
+    const lightThemeContent = `
 @use 'mixins';
 @use 'themes/${filename}';
 
@@ -34,7 +35,7 @@ themeFiles.forEach((file) => {
 }
 `
 
-  const darkThemeContent = `
+    const darkThemeContent = `
 @use 'mixins';
 @use 'themes/${filename}';
 
@@ -44,26 +45,25 @@ themeFiles.forEach((file) => {
 }
 `
 
-  const themeCss = compileString(themeContent, {
-    loadPaths: [styleDir],
-  }).css
-
-  const lightThemeCss = compileString(lightThemeContent, {
-    loadPaths: [styleDir],
-  }).css
-
-  const darkThemeCss = compileString(darkThemeContent, {
-    loadPaths: [styleDir],
-  }).css
-
-  fs.writeFileSync(path.resolve(outputDir, `${filename}.css`), themeCss)
-  fs.writeFileSync(
-    path.resolve(outputDir, `${filename}.light.css`),
-    lightThemeCss,
-  )
-
-  fs.writeFileSync(
-    path.resolve(outputDir, `${filename}.dark.css`),
-    darkThemeCss,
-  )
-})
+    await Promise.all([
+      compileStringAsync(themeContent, {
+        loadPaths: [styleDir],
+        style: 'compressed',
+      }).then(({ css }) => {
+        fs.writeFileSync(path.resolve(outputDir, `${filename}.css`), css)
+      }),
+      compileStringAsync(lightThemeContent, {
+        loadPaths: [styleDir],
+        style: 'compressed',
+      }).then(({ css }) => {
+        fs.writeFileSync(path.resolve(outputDir, `${filename}.light.css`), css)
+      }),
+      compileStringAsync(darkThemeContent, {
+        loadPaths: [styleDir],
+        style: 'compressed',
+      }).then(({ css }) => {
+        fs.writeFileSync(path.resolve(outputDir, `${filename}.dark.css`), css)
+      }),
+    ])
+  }),
+)

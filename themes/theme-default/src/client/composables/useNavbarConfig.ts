@@ -3,7 +3,6 @@ import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import { isString } from 'vuepress/shared'
 import type {
-  NavGroup,
   NavbarGroupOptions,
   NavbarLinkOptions,
 } from '../../shared/navbar.js'
@@ -11,7 +10,7 @@ import type { NavbarItem } from '../typings.js'
 import { getAutoLink, isLinkInternal, resolvePrefix } from '../utils/index.js'
 
 const resolveNavbarItem = (
-  item: NavbarGroupOptions | NavbarLinkOptions | string,
+  item: NavbarGroupOptions | NavbarLinkOptions,
   prefix = '',
 ): NavbarItem => {
   if (isString(item)) {
@@ -21,12 +20,8 @@ const resolveNavbarItem = (
   if ('children' in item) {
     return {
       ...item,
-      children: item.children.map(
-        (child) =>
-          resolveNavbarItem(
-            child,
-            resolvePrefix(prefix, item.prefix),
-          ) as NavGroup<NavbarLinkOptions>,
+      children: item.children.map((child) =>
+        resolveNavbarItem(child, resolvePrefix(prefix, item.prefix)),
       ),
     }
   }

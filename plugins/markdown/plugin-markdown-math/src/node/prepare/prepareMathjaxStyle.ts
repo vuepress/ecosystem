@@ -4,7 +4,7 @@ import type { App } from 'vuepress/core'
 // Prevent mathjax breaking mobile layout
 const MATHJAX_STYLE_PATCH = `\
 mjx-container {
-  overflow-x: auto;
+  overflow: auto hidden;
 }
 `
 
@@ -13,7 +13,7 @@ export const prepareMathjaxStyle = async (
   mathjaxInstance: MathjaxInstance,
 ): Promise<void> => {
   await app.writeTemp(
-    'md-enhance/mathjax.css',
+    'markdown-math/mathjax.css',
     `${mathjaxInstance.outputStyle()}\n${MATHJAX_STYLE_PATCH}`,
   )
 }

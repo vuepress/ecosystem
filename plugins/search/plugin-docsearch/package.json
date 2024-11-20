@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-docsearch",
-  "version": "2.0.0-rc.42",
+  "version": "2.0.0-rc.60",
   "description": "VuePress plugin - docsearch",
   "keywords": [
     "vuepress-plugin",
@@ -25,6 +25,7 @@
   "exports": {
     ".": "./lib/node/index.js",
     "./client": "./lib/client/index.js",
+    "./styles/*": "./lib/client/styles/*",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
@@ -34,20 +35,23 @@
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
+    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
     "copy": "cpx \"src/**/*.css\" lib"
   },
   "dependencies": {
-    "@docsearch/css": "^3.6.1",
-    "@docsearch/js": "^3.6.1",
-    "@docsearch/react": "^3.6.1",
+    "@docsearch/css": "^3.8.0",
+    "@docsearch/js": "^3.8.0",
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^11.0.1",
+    "@vueuse/core": "^11.2.0",
     "ts-debounce": "^4.0.0",
-    "vue": "^3.4.38"
+    "vue": "^3.5.13"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.15"
+    "vuepress": "2.0.0-rc.18"
+  },
+  "devDependencies": {
+    "algoliasearch": "5.14.2"
   },
   "publishConfig": {
     "access": "public"

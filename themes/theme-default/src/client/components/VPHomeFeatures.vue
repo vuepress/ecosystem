@@ -19,7 +19,7 @@ const features = computed(() => frontmatter.value.features ?? [])
 </template>
 
 <style lang="scss">
-@import '../styles/variables';
+@use '../styles/variables' as *;
 
 .vp-features {
   display: flex;

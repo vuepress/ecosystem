@@ -21,14 +21,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
 
       - name: Install deps
         run: pnpm install --frozen-lockfile
 
       - name: Build Project
-        run: pnpm build
+        run: pnpm bundle
 
       - name: Update npmrc
         run: |
@@ -63,7 +63,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
 
       - name: Install deps

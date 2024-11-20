@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.60](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.58...v2.0.0-rc.60) (2024-11-06)
+
+**Note:** Version bump only for package @vuepress/plugin-shiki
+
+# [2.0.0-rc.57](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.56...v2.0.0-rc.57) (2024-10-24)
+
+**Note:** Version bump only for package @vuepress/plugin-shiki
+
+# [2.0.0-rc.56](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.55...v2.0.0-rc.56) (2024-10-21)
+
+**Note:** Version bump only for package @vuepress/plugin-shiki
+
+# [2.0.0-rc.55](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.54...v2.0.0-rc.55) (2024-10-13)
+
+**Note:** Version bump only for package @vuepress/plugin-shiki
+
+# [2.0.0-rc.54](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.53...v2.0.0-rc.54) (2024-10-10)
+
+**Note:** Version bump only for package @vuepress/plugin-shiki
+
+# [2.0.0-rc.52](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.51...v2.0.0-rc.52) (2024-09-30)
+
+### Features
+
+- use rollup to bundle files ([#267](https://github.com/vuepress/ecosystem/issues/267)) ([164252d](https://github.com/vuepress/ecosystem/commit/164252d350b73a9d6d7cbe0e713be4ee2be47c08))
+
+# [2.0.0-rc.47](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.46...v2.0.0-rc.47) (2024-09-22)
+
+**Note:** Version bump only for package @vuepress/plugin-shiki
+
+# [2.0.0-rc.46](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.45...v2.0.0-rc.46) (2024-09-20)
+
+### Bug Fixes
+
+- apply code font color, close [#248](https://github.com/vuepress/ecosystem/issues/248) ([7cc5746](https://github.com/vuepress/ecosystem/commit/7cc574699fe14592a46cc555dcf6cd7eac581274))
+- **plugin-shiki:** correctly fallback code font color, close [#248](https://github.com/vuepress/ecosystem/issues/248) ([65f048a](https://github.com/vuepress/ecosystem/commit/65f048abad917798d8cd9b53e67ab5894077b08b))
+
+# [2.0.0-rc.45](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.44...v2.0.0-rc.45) (2024-09-20)
+
+### Bug Fixes
+
+- fix style injection in highlighter ([45074ab](https://github.com/vuepress/ecosystem/commit/45074ab869bb3534c626e42b1508ad96e540b9e4))
+
+# [2.0.0-rc.44](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.43...v2.0.0-rc.44) (2024-09-18)
+
+### Features
+
+- add disable option for highlighter line-number option and unify words ([158f7ca](https://github.com/vuepress/ecosystem/commit/158f7cae213439ba970af3ce409a7a52c72af5af))
+- add support `collapsed-lines` for code highlighters ([#246](https://github.com/vuepress/ecosystem/issues/246)) ([c0f70e4](https://github.com/vuepress/ecosystem/commit/c0f70e43e0fd76db5fe2f1e8b17713db0110ca72))
+
+# [2.0.0-rc.43](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.42...v2.0.0-rc.43) (2024-09-12)
+
+**Note:** Version bump only for package @vuepress/plugin-shiki
+
 # [2.0.0-rc.42](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.41...v2.0.0-rc.42) (2024-08-22)
 
 **Note:** Version bump only for package @vuepress/plugin-shiki

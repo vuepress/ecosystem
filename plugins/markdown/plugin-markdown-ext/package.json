@@ -1,0 +1,61 @@
+{
+  "name": "@vuepress/plugin-markdown-ext",
+  "version": "2.0.0-rc.60",
+  "description": "VuePress plugin - markdown extension",
+  "keywords": [
+    "vuepress-plugin",
+    "vuepress",
+    "plugin",
+    "markdown",
+    "extension"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/plugins/markdown/markdown-ext.html",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/markdown/plugin-markdown-ext"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mr.Hope",
+    "email": "mister-hope@outlook.com",
+    "url": "https://mister-hope.com"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./lib/node/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
+    "style": "sass src:lib --embed-sources --style=compressed"
+  },
+  "dependencies": {
+    "@mdit/plugin-container": "^0.13.1",
+    "@mdit/plugin-footnote": "^0.13.1",
+    "@mdit/plugin-tasklist": "^0.13.1",
+    "@types/markdown-it": "^14.1.2",
+    "@vuepress/helper": "workspace:*",
+    "js-yaml": "^4.1.0"
+  },
+  "peerDependencies": {
+    "vuepress": "2.0.0-rc.18"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "4.0.9",
+    "markdown-it": "^14.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

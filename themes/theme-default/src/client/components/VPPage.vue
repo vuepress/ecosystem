@@ -37,7 +37,7 @@ setupHeaders()
 
 <style lang="scss">
 @use '../styles/mixins';
-@import '../styles/variables';
+@use '../styles/variables' as *;
 
 .vp-page {
   display: block;
@@ -64,7 +64,9 @@ setupHeaders()
   .theme-default-content {
     @include mixins.content-wrapper;
 
-    padding-top: 0;
+    & {
+      padding-top: 0;
+    }
   }
 }
 </style>

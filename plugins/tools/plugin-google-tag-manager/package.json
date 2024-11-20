@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-google-tag-manager",
-  "version": "2.0.0-rc.42",
+  "version": "2.0.0-rc.54",
   "description": "VuePress plugin - google-tag-manager",
   "keywords": [
     "vuepress-plugin",
@@ -32,10 +32,11 @@
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
+    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.15"
+    "vuepress": "2.0.0-rc.18"
   },
   "publishConfig": {
     "access": "public"

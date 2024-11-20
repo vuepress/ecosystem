@@ -1,14 +1,11 @@
 import type {
   AutoLinkOptions,
   NavGroup,
-  NavbarLinkOptions,
   SidebarGroupOptions,
   SidebarLinkOptions,
 } from '../shared/index.js'
 
-export type NavbarItem =
-  | NavbarLinkOptions
-  | NavGroup<AutoLinkOptions | NavGroup<AutoLinkOptions>>
+export type NavbarItem = AutoLinkOptions | NavGroup<NavbarItem>
 
 export type SidebarLinkItem = SidebarLinkOptions
 

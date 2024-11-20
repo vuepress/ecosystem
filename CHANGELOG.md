@@ -3,6 +3,198 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.60](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.58...v2.0.0-rc.60) (2024-11-06)
+
+### Features
+
+- **plugin-git:** add collect of co-authors ([#285](https://github.com/vuepress/ecosystem/issues/285)) ([448d845](https://github.com/vuepress/ecosystem/commit/448d845bc17fefc8943be7103cca653c256fb7fb))
+- **plugin-git:** improve performance and tweaks options ([#287](https://github.com/vuepress/ecosystem/issues/287)) ([51b793b](https://github.com/vuepress/ecosystem/commit/51b793bd38007a806c25a4261d09f36985b16aa7))
+- **plugin-git:** support changelog and improve performance ([#283](https://github.com/vuepress/ecosystem/issues/283)) ([b526b8c](https://github.com/vuepress/ecosystem/commit/b526b8c330e77589d688758cf03d8ded6d9b1d29))
+
+# [2.0.0-rc.58](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.57...v2.0.0-rc.58) (2024-10-25)
+
+### Features
+
+- **plugin-markdown-tab:** improve fallback color when using shiki ([f6dec37](https://github.com/vuepress/ecosystem/commit/f6dec372f992d5f31cfb615b32b7ce3a53bca00d))
+
+### Reverts
+
+- "fix(plugin-sass-palette): avoid using [@import](https://github.com/import) ([#281](https://github.com/vuepress/ecosystem/issues/281))" ([129bee7](https://github.com/vuepress/ecosystem/commit/129bee7159badaefdb3d5627db247a55d3d20403))
+
+# [2.0.0-rc.57](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.56...v2.0.0-rc.57) (2024-10-24)
+
+### Bug Fixes
+
+- **plugin-sass-palette:** avoid using [@import](https://github.com/import) ([#281](https://github.com/vuepress/ecosystem/issues/281)) ([cc66ae1](https://github.com/vuepress/ecosystem/commit/cc66ae189a5a9d50bb1b1db619730ec692989e52))
+
+### Features
+
+- add plugin-markdown-ext ([#278](https://github.com/vuepress/ecosystem/issues/278)) ([9734a37](https://github.com/vuepress/ecosystem/commit/9734a373f5eb159164369577e78668d0e928f403))
+- add plugin-markdown-include ([#280](https://github.com/vuepress/ecosystem/issues/280)) ([c9534f2](https://github.com/vuepress/ecosystem/commit/c9534f27a77b826c1db83284c578301012e6ac90))
+- add plugin-markdown-stylize ([#279](https://github.com/vuepress/ecosystem/issues/279)) ([6c24c50](https://github.com/vuepress/ecosystem/commit/6c24c50f1306a06000fab28575814715aa1b50e1))
+- **plugin-markdown-ext:** add styles for footnote and tasklist ([4171e82](https://github.com/vuepress/ecosystem/commit/4171e82a806049ef0667794311a395889aebd716))
+
+# [2.0.0-rc.56](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.55...v2.0.0-rc.56) (2024-10-21)
+
+### Features
+
+- bump deps and avoid using [@import](https://github.com/import) ([#276](https://github.com/vuepress/ecosystem/issues/276)) ([1e57813](https://github.com/vuepress/ecosystem/commit/1e57813485998670eb2e0c8ba6edb8775475bc51))
+- **plugin-markdown-hint:** improve hint outlook ([2feb22a](https://github.com/vuepress/ecosystem/commit/2feb22aed742f5a09ab24a059b200db083b1fc7e))
+
+# [2.0.0-rc.55](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.54...v2.0.0-rc.55) (2024-10-13)
+
+### Features
+
+- **plugin-markdown-hint:** add inline rendering support for title ([#274](https://github.com/vuepress/ecosystem/issues/274)) ([7ea981f](https://github.com/vuepress/ecosystem/commit/7ea981f6f2d57efcaca9445ea008c08fdce66280))
+
+# [2.0.0-rc.54](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.53...v2.0.0-rc.54) (2024-10-10)
+
+### Bug Fixes
+
+- **create-vuepress:** add missing peer, close [#272](https://github.com/vuepress/ecosystem/issues/272) ([94f1071](https://github.com/vuepress/ecosystem/commit/94f107170803dc1d1c3a525ab21df615c70a5d5e))
+
+# [2.0.0-rc.53](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.52...v2.0.0-rc.53) (2024-09-30)
+
+### Bug Fixes
+
+- **plugin-comment:** fix rollup config ([7ba0244](https://github.com/vuepress/ecosystem/commit/7ba0244ba39ab3abcf0eaf01bd2b98e3a7c3ca57))
+
+# [2.0.0-rc.52](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.51...v2.0.0-rc.52) (2024-09-30)
+
+### Bug Fixes
+
+- **plugin-comment:** add missing style import for Waline ([f976a5c](https://github.com/vuepress/ecosystem/commit/f976a5ca619f0e870e40f7ef87b0b83d199b3e20))
+- **plugin-markdown-math:** improve font-size in katex ([4add5f1](https://github.com/vuepress/ecosystem/commit/4add5f14a18a83d352419cd2d3863beb5434fb97))
+- **plugin-markdown-math:** prevent scrollbar with mathjax ([c73b86f](https://github.com/vuepress/ecosystem/commit/c73b86f684605fede21b0879c4826baaf2d37bbb))
+- **plugin-pwa:** fix config file ([4295c5d](https://github.com/vuepress/ecosystem/commit/4295c5d2bd8e64a51916909337eb9597ef9befb3))
+- **plugin-redirect:** respect config option from command line ([790731a](https://github.com/vuepress/ecosystem/commit/790731aafa31a4aa68b720632d2f33453e18bfab))
+- **plugin-rtl:** add missing client entry ([da8be48](https://github.com/vuepress/ecosystem/commit/da8be487d81b8b0c5c4e7c5ed455c63667efe369))
+- **plugin-rtl:** fix client imports ([39b43f1](https://github.com/vuepress/ecosystem/commit/39b43f10cdef760708575e360ed643fda6a9ba95))
+
+### Features
+
+- **helper:** improve header anchor normalize ([ef2c444](https://github.com/vuepress/ecosystem/commit/ef2c444dd432b89dd49655e11bd678f3d73400bd))
+- **helper:** sync mergeViteConfig with vite ([6e17c80](https://github.com/vuepress/ecosystem/commit/6e17c809daf6cd5f633051fbd29b1988e14e82df))
+- **plugin-copyright:** provide composables ([a9b6e98](https://github.com/vuepress/ecosystem/commit/a9b6e98ac9300c9a485cb317afb050b0a3e4d9eb))
+- **plugin-feed:** add app as second argument in getter ([08dbf87](https://github.com/vuepress/ecosystem/commit/08dbf87df02cd9764bfe09d9316dba9872411254))
+- **plugin-markdown-hint:** improve hint container outlook ([#264](https://github.com/vuepress/ecosystem/issues/264)) ([340fff5](https://github.com/vuepress/ecosystem/commit/340fff5ced3f720f2d6204a230ed320031f9faa9))
+- **plugin-markdown-math:** add macros option for katex by default, close [#261](https://github.com/vuepress/ecosystem/issues/261) ([c5568ca](https://github.com/vuepress/ecosystem/commit/c5568ca84ed82e05407a38423b900c7782769073))
+- **plugin-markdown-tab:** provide client entry ([a1ed50b](https://github.com/vuepress/ecosystem/commit/a1ed50bb738bb8b510a1471c797ffc5d8731f683))
+- **plugin-pwa:** improve style tree shaking ([aed3060](https://github.com/vuepress/ecosystem/commit/aed3060c104b872cd6f337202abd36090648faac))
+- **plugin-pwa:** prevent defining variables ([ec0d8d0](https://github.com/vuepress/ecosystem/commit/ec0d8d0cc5223b90b53c337079a1a1c5d5dbbf2b))
+- **plugin-redirect:** reduce runtime size ([#268](https://github.com/vuepress/ecosystem/issues/268)) ([1adfab9](https://github.com/vuepress/ecosystem/commit/1adfab9dcf5589dd391c387aa46930b836941941))
+- **plugin-rtl:** provide composables ([3d0e4a1](https://github.com/vuepress/ecosystem/commit/3d0e4a18263a9daa0a2b49b1d40fccc219357997))
+- use rollup to bundle files ([#267](https://github.com/vuepress/ecosystem/issues/267)) ([164252d](https://github.com/vuepress/ecosystem/commit/164252d350b73a9d6d7cbe0e713be4ee2be47c08))
+
+# [2.0.0-rc.51](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.50...v2.0.0-rc.51) (2024-09-23)
+
+### Features
+
+- **plugin-redirect:** add remember my choice, close [#253](https://github.com/vuepress/ecosystem/issues/253) ([#259](https://github.com/vuepress/ecosystem/issues/259)) ([8805d9c](https://github.com/vuepress/ecosystem/commit/8805d9c95611facabc3c02cb50d6ee9dafdac852))
+- **plugin-sass-palette:** remove variables staring with underscore in generator ([f329800](https://github.com/vuepress/ecosystem/commit/f329800e357e5a27eb1107252977dd98b29affed))
+
+# [2.0.0-rc.50](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.49...v2.0.0-rc.50) (2024-09-23)
+
+**Note:** Version bump only for package @vuepress/ecosystem
+
+# [2.0.0-rc.49](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.48...v2.0.0-rc.49) (2024-09-23)
+
+### Bug Fixes
+
+- **plugin-markdown-math:** incorrect import css path ([#256](https://github.com/vuepress/ecosystem/issues/256)) ([4e61424](https://github.com/vuepress/ecosystem/commit/4e6142496e2e80472d377d58cfbf538e5a51a981))
+
+### Features
+
+- **plugin-prismjs:** improve highlight color generation ([492cd27](https://github.com/vuepress/ecosystem/commit/492cd2746821e1e3554f8a46de14042c107bb68b))
+
+# [2.0.0-rc.48](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.47...v2.0.0-rc.48) (2024-09-22)
+
+### Bug Fixes
+
+- **plugin-revealjs:** fix embed mode and keyboard events ([5d98506](https://github.com/vuepress/ecosystem/commit/5d985061c232037dc48329e3b8ce28ba15f75e1d))
+
+# [2.0.0-rc.47](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.46...v2.0.0-rc.47) (2024-09-22)
+
+### Bug Fixes
+
+- **plugin-comment:** avoid resolving issues in pnpm ([2e319fe](https://github.com/vuepress/ecosystem/commit/2e319fe75f67419321372c1931419030fa227e1c))
+- **theme-default:** fix hero action button color ([12a8d5d](https://github.com/vuepress/ecosystem/commit/12a8d5dc44198f58999c6ad88c750c775aba4950))
+
+### Features
+
+- add plugin-markdown-tab ([#250](https://github.com/vuepress/ecosystem/issues/250)) ([49ea97c](https://github.com/vuepress/ecosystem/commit/49ea97cf10f07ad3e20b2528d17efc3b6576ac7a))
+- add plugin-revealjs ([#251](https://github.com/vuepress/ecosystem/issues/251)) ([253b959](https://github.com/vuepress/ecosystem/commit/253b959cca19fd8ef9eff5d90f21a147c916899a))
+- **plugin-docsearch:** improve search box appearance ([5282d3b](https://github.com/vuepress/ecosystem/commit/5282d3b3c5ca63170d2c915e76054cb326c00e11))
+- **plugin-markdown-hint:** toggle all details block open before print ([4cb99de](https://github.com/vuepress/ecosystem/commit/4cb99dee940441d030d23d92bf9c6749678e3cd6))
+- **plugin-redirect:** appear target language first ([4ca960a](https://github.com/vuepress/ecosystem/commit/4ca960a90de9dce54c2b45038eec11e3fe9e5d7e))
+
+# [2.0.0-rc.46](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.45...v2.0.0-rc.46) (2024-09-20)
+
+### Bug Fixes
+
+- apply code font color, close [#248](https://github.com/vuepress/ecosystem/issues/248) ([7cc5746](https://github.com/vuepress/ecosystem/commit/7cc574699fe14592a46cc555dcf6cd7eac581274))
+- **plugin-markdown-math:** correct client config file path ([b7ab87b](https://github.com/vuepress/ecosystem/commit/b7ab87b954d40036b3ceae05f645191a4dc571d1))
+- **plugin-shiki:** correctly fallback code font color, close [#248](https://github.com/vuepress/ecosystem/issues/248) ([65f048a](https://github.com/vuepress/ecosystem/commit/65f048abad917798d8cd9b53e67ab5894077b08b))
+- **theme-default:** fix invalid component ([ea29e2d](https://github.com/vuepress/ecosystem/commit/ea29e2d6c24fcabc5c887a0f344c85da1d5fc05d))
+
+### Features
+
+- **helper:** add LoadingIcon and useDarkmode ([06584ba](https://github.com/vuepress/ecosystem/commit/06584bacd6566d1109bdc1fe19afe4948ba2ba86))
+- **helper:** improve normalize ([5c7a902](https://github.com/vuepress/ecosystem/commit/5c7a9028a52d61d58f346c3f9857bd2bd7be9432))
+- **plugin-comment:** import LoadingIcon from helper ([4476698](https://github.com/vuepress/ecosystem/commit/447669834e94df1710e589b7af93f56dac226508))
+- **theme-default:** improve palette ([36db48e](https://github.com/vuepress/ecosystem/commit/36db48ec46312c2777edb32785ed0a29ef3fc704))
+
+# [2.0.0-rc.45](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.44...v2.0.0-rc.45) (2024-09-20)
+
+### Bug Fixes
+
+- fix style injection in highlighter ([45074ab](https://github.com/vuepress/ecosystem/commit/45074ab869bb3534c626e42b1508ad96e540b9e4))
+- **helper:** fix grey text color ([f804b9b](https://github.com/vuepress/ecosystem/commit/f804b9b2cdf7e9ba1b86928973f52e8923b69963))
+- **helper:** fix table style normalize ([7bf684d](https://github.com/vuepress/ecosystem/commit/7bf684dd46fc9052e1af018b5f7924fc4e3c308f))
+- **helper:** improve code text contrast ([bbddb62](https://github.com/vuepress/ecosystem/commit/bbddb62e98899d2857e2ee3e1cac33dc533775f0))
+- **plugin-prismjs:** fix color converting ([7215129](https://github.com/vuepress/ecosystem/commit/72151298b52e6465cf6bb30391d8b03a6c6deb23))
+- **theme-default:** fix build template color ([4a22f47](https://github.com/vuepress/ecosystem/commit/4a22f471d4674fee73d02c13d529e6b537e96d65))
+
+### Features
+
+- **plugin-markdown-hint:** add injectStyles option ([0e833ee](https://github.com/vuepress/ecosystem/commit/0e833ee17a4f574a9f695202d878bff5dfadbc98))
+- **plugin-markdown-hint:** rebuild styles ([3b08611](https://github.com/vuepress/ecosystem/commit/3b08611963bf63e21fafa6721557d95f3e4f8ed2))
+- **theme-default:** improve badge appearance ([37b13ad](https://github.com/vuepress/ecosystem/commit/37b13adcb716a12e9b488c5e42439940f9a33c1f))
+- **theme-default:** improve page nav hover color ([b067739](https://github.com/vuepress/ecosystem/commit/b06773932a72c657d52aa46d4c56b93916851660))
+
+# [2.0.0-rc.44](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.43...v2.0.0-rc.44) (2024-09-18)
+
+### Bug Fixes
+
+- fix css variables ([07bdc57](https://github.com/vuepress/ecosystem/commit/07bdc57f834b3677f34ec59a5585dd47f5112c9f))
+- **theme-default:** improve control colors ([89d95d2](https://github.com/vuepress/ecosystem/commit/89d95d2b98c8c3ad062be0d2d61b2e2b319b2577))
+- use modern api by default for vite bundler ([7c2e8e9](https://github.com/vuepress/ecosystem/commit/7c2e8e9557c562d521cc21661271fdea6ee0e206))
+
+### Features
+
+- add disable option for highlighter line-number option and unify words ([158f7ca](https://github.com/vuepress/ecosystem/commit/158f7cae213439ba970af3ce409a7a52c72af5af))
+- add support `collapsed-lines` for code highlighters ([#246](https://github.com/vuepress/ecosystem/issues/246)) ([c0f70e4](https://github.com/vuepress/ecosystem/commit/c0f70e43e0fd76db5fe2f1e8b17713db0110ca72))
+- improve default normalize with guideline ([f239706](https://github.com/vuepress/ecosystem/commit/f2397065a50508a05fc28a94500c301111999ee5))
+
+# [2.0.0-rc.43](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.42...v2.0.0-rc.43) (2024-09-12)
+
+### Bug Fixes
+
+- **create-vuepress:** bump deps ([8e22450](https://github.com/vuepress/ecosystem/commit/8e224509d14cdbd137eeb4bfe626b3cee8e69b9b))
+- fix code and table color normalize, close [#243](https://github.com/vuepress/ecosystem/issues/243) ([bbd69e0](https://github.com/vuepress/ecosystem/commit/bbd69e053c15cda1b14837ad64ac6da4e827ff8d))
+- **plugin-catalog:** fix catalog style ([8411b00](https://github.com/vuepress/ecosystem/commit/8411b009c69922913ad287e87395e880ace17ed5))
+- **plugin-sass-palette:** remove dark-selector config ([bce3404](https://github.com/vuepress/ecosystem/commit/bce34041cbffce8ddaebbb9e7338b5513dee3359))
+- **theme-default:** fix darkmode text color ([a469300](https://github.com/vuepress/ecosystem/commit/a469300ea68d90ff8b4613c8b144210b7d731e5b))
+- **theme-default:** fix types of navbar link ([#242](https://github.com/vuepress/ecosystem/issues/242)) ([f98101d](https://github.com/vuepress/ecosystem/commit/f98101d62a0e8e352b16d808280c2b7a793ef692))
+
+### Features
+
+- improve palette defaults ([76a28d5](https://github.com/vuepress/ecosystem/commit/76a28d5cb5c8c6b41930c33463002506583685f9))
+- make sass optional and support sass-embedded ([#231](https://github.com/vuepress/ecosystem/issues/231)) ([cce614b](https://github.com/vuepress/ecosystem/commit/cce614b8ce45662aa96d38ab09ca0e8fbbd30f4b))
+- **plugin-docsearch:** make palette built-in ([0e8e50e](https://github.com/vuepress/ecosystem/commit/0e8e50e94f121e9ecd8d60f9f7fe48bccd95ac40))
+- **plugin-git:** add `transformContributors` options ([d431dc4](https://github.com/vuepress/ecosystem/commit/d431dc460df18b386dbff9edff27374618edf150))
+- **plugin-markdown-image:** remove lightmodeSelector and darkmodeSelector ([16dfaa2](https://github.com/vuepress/ecosystem/commit/16dfaa2fbb7fbc0e4728434267e427a87bf54b7a))
+
 # [2.0.0-rc.42](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.41...v2.0.0-rc.42) (2024-08-22)
 
 ### Bug Fixes

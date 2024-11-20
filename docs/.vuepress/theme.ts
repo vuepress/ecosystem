@@ -81,6 +81,7 @@ export default defaultTheme({
           notationHighlight: true,
           notationWordHighlight: true,
           whitespace: true,
+          collapsedLines: false,
         },
   },
 })

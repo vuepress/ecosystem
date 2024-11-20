@@ -1,7 +1,11 @@
 // katex fix
 .katex {
-  font-size: 1.05em;
   direction: ltr;
+
+  /* stylelint-disable-next-line selector-class-pattern */
+  .cjk_fallback {
+    font-size: 0.83em;
+  }
 }
 
 .katex-display {
@@ -16,10 +20,6 @@
 
   &::-webkit-scrollbar {
     height: 3px;
-  }
-
-  .katex {
-    font-size: 1.21em;
   }
 }
 

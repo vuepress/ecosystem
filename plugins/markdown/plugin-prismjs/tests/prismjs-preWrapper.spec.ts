@@ -1,9 +1,16 @@
-import { lineNumbers as lineNumbersPlugin } from '@vuepress/highlighter-helper'
+import type {
+  MarkdownItCollapsedLinesOptions,
+  MarkdownItLineNumbersOptions,
+} from '@vuepress/highlighter-helper'
+import {
+  collapsedLines as collapsedLinesPlugin,
+  lineNumbers as lineNumbersPlugin,
+} from '@vuepress/highlighter-helper'
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it, vi } from 'vitest'
 import type {
-  HighlightOptions,
-  PreWrapperOptions,
+  MarkdownItPreWrapperOptions,
+  MarkdownItPrismjsHighlightOptions,
   PrismjsPluginOptions,
 } from '../src/node/index.js'
 import { highlightPlugin, preWrapperPlugin } from '../src/node/index.js'
@@ -14,6 +21,7 @@ const codeFence = '```'
 const createMarkdown = ({
   preWrapper = true,
   lineNumbers = true,
+  collapsedLines = false,
   ...options
 }: PrismjsPluginOptions = {}): MarkdownIt => {
   const md = MarkdownIt()
@@ -22,11 +30,15 @@ const createMarkdown = ({
     const highlighter = resolveHighlighter(lang)
     return highlighter?.(code) || ''
   }
-  md.use<HighlightOptions>(highlightPlugin, options)
-  md.use<PreWrapperOptions>(preWrapperPlugin, { preWrapper })
+  md.use<MarkdownItPrismjsHighlightOptions>(highlightPlugin, options)
+  md.use<MarkdownItPreWrapperOptions>(preWrapperPlugin, { preWrapper })
   if (preWrapper) {
-    md.use(lineNumbersPlugin, {
+    md.use<MarkdownItLineNumbersOptions>(lineNumbersPlugin, {
       lineNumbers,
+      removeLastLine: true,
+    })
+    md.use<MarkdownItCollapsedLinesOptions>(collapsedLinesPlugin, {
+      collapsedLines,
       removeLastLine: true,
     })
   }
@@ -121,6 +133,21 @@ ${codeFence}{{ inlineCode }}${codeFence}
 
       expect(mdWithLineNumbers.render(source)).toBe(
         mdWithoutLineNumbers.render(source),
+      )
+    })
+
+    it('should always disable `collapsedLines` if `preWrapper` is disabled', () => {
+      const mdWithCollapsedLines = createMarkdown({
+        collapsedLines: 3,
+        preWrapper: false,
+      })
+      const mdWithoutCollapsedLines = createMarkdown({
+        collapsedLines: false,
+        preWrapper: false,
+      })
+
+      expect(mdWithCollapsedLines.render(source)).toBe(
+        mdWithoutCollapsedLines.render(source),
       )
     })
   })
@@ -389,6 +416,49 @@ function foo () {
 
     it('should work whitespace with `false` option', () => {
       const md = createMarkdown({ whitespace: false })
+      expect(md.render(source)).toMatchSnapshot()
+    })
+  })
+
+  describe(':collapsed-lines / :no-collapsed-lines / :collapsed-lines=[number]', () => {
+    const genLines = (length: number): string =>
+      Array.from({ length })
+        .map((_, i) => `const line${i + 1} = 'line ${i + 1}`)
+        .join('\n')
+
+    const source = `\
+${codeFence}ts
+${genLines(10)}
+${codeFence}
+
+${codeFence}ts
+${genLines(20)}
+${codeFence}
+
+${codeFence}ts :collapsed-lines
+${genLines(20)}
+${codeFence}
+
+${codeFence}ts :no-collapsed-lines
+${genLines(20)}
+${codeFence}
+
+${codeFence}ts :no-collapsed-lines=12
+${genLines(20)}
+${codeFence}
+`
+    it('should work properly if `collapsedLines` is disabled by default', () => {
+      const md = createMarkdown({ collapsedLines: false })
+      expect(md.render(source)).toMatchSnapshot()
+    })
+
+    it('should work properly if `collapsedLines` is enabled', () => {
+      const md = createMarkdown({ collapsedLines: true })
+      expect(md.render(source)).toMatchSnapshot()
+    })
+
+    it('should work properly if `collapsedLines` is set to a number', () => {
+      const md = createMarkdown({ collapsedLines: 10 })
       expect(md.render(source)).toMatchSnapshot()
     })
   })

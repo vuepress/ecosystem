@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/theme-classic",
-  "version": "2.0.0-rc.42",
+  "version": "2.0.0-rc.60",
   "description": "Default theme of VuePress",
   "keywords": [
     "vuepress-theme",
@@ -38,6 +38,7 @@
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
+    "bundle": "tsc -b tsconfig.build.json",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
     "copy": "cpx \"src/**/*.{d.ts,vue,scss}\" lib"
   },
@@ -48,8 +49,8 @@
     "@vuepress/plugin-copy-code": "workspace:*",
     "@vuepress/plugin-git": "workspace:*",
     "@vuepress/plugin-links-check": "workspace:*",
-    "@vuepress/plugin-markdown-container": "workspace:*",
     "@vuepress/plugin-markdown-hint": "workspace:*",
+    "@vuepress/plugin-markdown-tab": "workspace:*",
     "@vuepress/plugin-medium-zoom": "workspace:*",
     "@vuepress/plugin-nprogress": "workspace:*",
     "@vuepress/plugin-palette": "workspace:*",
@@ -57,15 +58,22 @@
     "@vuepress/plugin-seo": "workspace:*",
     "@vuepress/plugin-sitemap": "workspace:*",
     "@vuepress/plugin-theme-data": "workspace:*",
-    "@vueuse/core": "^11.0.1",
-    "sass": "^1.77.8",
-    "vue": "^3.4.38"
+    "@vueuse/core": "^11.2.0",
+    "vue": "^3.5.13"
   },
   "peerDependencies": {
-    "sass-loader": "^16.0.0",
-    "vuepress": "2.0.0-rc.15"
+    "sass": "^1.80.3",
+    "sass-embedded": "^1.80.3",
+    "sass-loader": "^16.0.2",
+    "vuepress": "2.0.0-rc.18"
   },
   "peerDependenciesMeta": {
+    "sass": {
+      "optional": true
+    },
+    "sass-embedded": {
+      "optional": true
+    },
     "sass-loader": {
       "optional": true
     }

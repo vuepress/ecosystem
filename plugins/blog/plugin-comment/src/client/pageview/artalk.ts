@@ -1,4 +1,4 @@
-import Artalk from 'artalk'
+import Artalk from 'artalk/dist/Artalk.mjs'
 import { useArtalkOptions } from '../helpers/index.js'
 import type { UpdatePageview } from './typings.js'
 

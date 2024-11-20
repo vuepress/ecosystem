@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-active-header-links",
-  "version": "2.0.0-rc.42",
+  "version": "2.0.0-rc.60",
   "description": "VuePress plugin - active header links",
   "keywords": [
     "vuepress-plugin",
@@ -33,14 +33,15 @@
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
+    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@vueuse/core": "^11.0.1",
-    "vue": "^3.4.38"
+    "@vueuse/core": "^11.2.0",
+    "vue": "^3.5.13"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.15"
+    "vuepress": "2.0.0-rc.18"
   },
   "publishConfig": {
     "access": "public"

@@ -100,7 +100,7 @@ const HomeHeroImage: FunctionalComponent = () => {
 </template>
 
 <style lang="scss">
-@import '../styles//variables';
+@use '../styles/variables' as *;
 
 .vp-hero {
   text-align: center;
@@ -159,37 +159,32 @@ const HomeHeroImage: FunctionalComponent = () => {
 
   box-sizing: border-box;
   padding: 0.8rem 1.6rem;
-  border-width: 2px;
-  border-style: solid;
+  border: 2px solid var(--vp-c-accent-bg);
   border-radius: 4px;
+
+  background-color: var(--vp-c-bg);
+  color: var(--vp-c-accent);
 
   font-size: 1.2rem;
 
-  transition: background-color var(--vp-t-color);
+  transition: background-color border-color color var(--vp-t-color);
 
   @media (max-width: $MQMobileNarrow) {
     padding: 0.6rem 1.2rem;
     font-size: 1rem;
   }
 
+  &:hover {
+    color: var(--vp-c-accent-text);
+  }
+
   &.primary {
-    border-color: var(--vp-c-accent);
-    background-color: var(--vp-c-accent);
+    background-color: var(--vp-c-accent-bg);
     color: var(--vp-c-accent-text);
 
     &:hover {
+      border-color: var(--vp-c-accent-hover);
       background-color: var(--vp-c-accent-hover);
-    }
-  }
-
-  &.secondary {
-    border-color: var(--vp-c-accent);
-    background-color: var(--vp-c-bg);
-    color: var(--vp-c-accent);
-
-    &:hover {
-      background-color: var(--vp-c-accent-hover);
-      color: var(--vp-c-accent-text);
     }
   }
 }

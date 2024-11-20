@@ -49,38 +49,53 @@ defineSlots<{
   padding: 0 6px;
   border-radius: 3px;
 
-  color: var(--vp-c-accent-text);
+  background: var(--vp-c-accent-soft);
+  color: var(--vp-c-accent);
 
-  font-weight: 600;
   font-size: 14px;
   line-height: 18px;
 
   transition:
-    color var(--vp-t-color),
-    background-color var(--vp-t-color);
+    background var(--vp-t-color),
+    color var(--vp-t-color);
+
+  & + & {
+    margin-inline-start: 5px;
+  }
 
   &.tip {
-    background-color: var(--c-badge-tip);
+    background: var(--badge-c-tip-bg);
+    color: var(--badge-c-tip-text);
   }
 
   &.warning {
-    background-color: var(--c-badge-warning);
-    color: var(--c-badge-warning-text);
+    background: var(--badge-c-warning-bg);
+    color: var(--badge-c-warning-text);
   }
 
   &.danger {
-    background-color: var(--c-badge-danger);
-    color: var(--c-badge-danger-text);
+    background: var(--badge-c-danger-bg);
+    color: var(--badge-c-danger-text);
+  }
+
+  &.important {
+    background: var(--badge-c-important-bg);
+    color: var(--badge-c-important-text);
+  }
+
+  &.info {
+    background: var(--badge-c-info-bg);
+    color: var(--badge-c-info-text);
+  }
+
+  &.note {
+    background: var(--badge-c-note-bg);
+    color: var(--badge-c-note-text);
   }
 
   // update the vertical align for the badge in toc
   .table-of-contents & {
     vertical-align: middle;
-  }
-
-  // avoid extra space between badges
-  & + & {
-    margin-left: 5px;
   }
 }
 </style>

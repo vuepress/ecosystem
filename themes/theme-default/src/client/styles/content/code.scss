@@ -1,4 +1,4 @@
-@import '../variables';
+@use '../variables' as *;
 
 // code block additional styles
 div[class*='language-'] {

@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.60](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.58...v2.0.0-rc.60) (2024-11-06)
+
+**Note:** Version bump only for package @vuepress/plugin-rtl
+
+# [2.0.0-rc.57](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.56...v2.0.0-rc.57) (2024-10-24)
+
+**Note:** Version bump only for package @vuepress/plugin-rtl
+
+# [2.0.0-rc.56](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.55...v2.0.0-rc.56) (2024-10-21)
+
+**Note:** Version bump only for package @vuepress/plugin-rtl
+
+# [2.0.0-rc.55](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.54...v2.0.0-rc.55) (2024-10-13)
+
+**Note:** Version bump only for package @vuepress/plugin-rtl
+
+# [2.0.0-rc.54](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.53...v2.0.0-rc.54) (2024-10-10)
+
+**Note:** Version bump only for package @vuepress/plugin-rtl
+
+# [2.0.0-rc.52](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.51...v2.0.0-rc.52) (2024-09-30)
+
+### Bug Fixes
+
+- **plugin-rtl:** add missing client entry ([da8be48](https://github.com/vuepress/ecosystem/commit/da8be487d81b8b0c5c4e7c5ed455c63667efe369))
+- **plugin-rtl:** fix client imports ([39b43f1](https://github.com/vuepress/ecosystem/commit/39b43f10cdef760708575e360ed643fda6a9ba95))
+
+### Features
+
+- **plugin-rtl:** provide composables ([3d0e4a1](https://github.com/vuepress/ecosystem/commit/3d0e4a18263a9daa0a2b49b1d40fccc219357997))
+- use rollup to bundle files ([#267](https://github.com/vuepress/ecosystem/issues/267)) ([164252d](https://github.com/vuepress/ecosystem/commit/164252d350b73a9d6d7cbe0e713be4ee2be47c08))
+
+# [2.0.0-rc.47](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.46...v2.0.0-rc.47) (2024-09-22)
+
+**Note:** Version bump only for package @vuepress/plugin-rtl
+
+# [2.0.0-rc.46](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.45...v2.0.0-rc.46) (2024-09-20)
+
+**Note:** Version bump only for package @vuepress/plugin-rtl
+
+# [2.0.0-rc.44](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.43...v2.0.0-rc.44) (2024-09-18)
+
+**Note:** Version bump only for package @vuepress/plugin-rtl
+
+# [2.0.0-rc.43](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.42...v2.0.0-rc.43) (2024-09-12)
+
+**Note:** Version bump only for package @vuepress/plugin-rtl
+
 # [2.0.0-rc.42](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.41...v2.0.0-rc.42) (2024-08-22)
 
 **Note:** Version bump only for package @vuepress/plugin-rtl

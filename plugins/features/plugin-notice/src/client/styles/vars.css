@@ -4,7 +4,7 @@
   --notice-c-text: var(--vp-c-text);
   --notice-c-bg: var(--vp-c-bg-elv);
   --notice-c-shadow: var(--vp-c-shadow);
-  --notice-c-accent: var(--vp-c-accent);
+  --notice-c-accent-bg: var(--vp-c-accent-bg);
   --notice-c-accent-hover: var(--vp-c-accent-hover);
   --notice-c-accent-text: var(--vp-c-accent-text);
   --notice-c-control: var(--vp-c-control);

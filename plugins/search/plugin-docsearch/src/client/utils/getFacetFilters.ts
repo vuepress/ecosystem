@@ -1,7 +1,4 @@
-import type { DocsearchOptions } from '../../shared/index.js'
-
-type FacetFilters =
-  Required<DocsearchOptions>['searchParameters']['facetFilters']
+import type { FacetFilters } from 'algoliasearch'
 
 /**
  * Get facet filters for current lang

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-redirect",
-  "version": "2.0.0-rc.42",
+  "version": "2.0.0-rc.60",
   "description": "VuePress plugin - redirect",
   "keywords": [
     "vuepress-plugin",
@@ -26,6 +26,7 @@
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
+    "./client": "./lib/client/index.js",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
@@ -38,17 +39,18 @@
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
+    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "style": "sass src:lib --no-source-map"
+    "style": "sass src:lib --embed-sources --style=compressed"
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^11.0.1",
+    "@vueuse/core": "^11.2.0",
     "cac": "^6.7.14",
-    "vue": "^3.4.38"
+    "vue": "^3.5.13"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.15"
+    "vuepress": "2.0.0-rc.18"
   },
   "publishConfig": {
     "access": "public"

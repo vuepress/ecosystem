@@ -1,4 +1,4 @@
-import { isString, wait } from '@vuepress/helper/client'
+import { LoadingIcon, isString, wait } from '@vuepress/helper/client'
 import type Artalk from 'artalk'
 import type { VNode } from 'vue'
 import {
@@ -14,7 +14,6 @@ import {
 } from 'vue'
 import { usePageData, useSiteData } from 'vuepress/client'
 import { useArtalkOptions } from '../helpers/index.js'
-import { LoadingIcon } from './LoadingIcon.js'
 
 import 'artalk/dist/Artalk.css'
 

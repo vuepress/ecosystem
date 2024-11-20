@@ -1,33 +1,41 @@
-import type { MarkdownItLineNumbersOptions } from '@vuepress/highlighter-helper'
-import { lineNumbers as lineNumbersPlugin } from '@vuepress/highlighter-helper'
+import type {
+  MarkdownItCollapsedLinesOptions,
+  MarkdownItLineNumbersOptions,
+} from '@vuepress/highlighter-helper'
+import {
+  collapsedLines as collapsedLinesPlugin,
+  lineNumbers as lineNumbersPlugin,
+} from '@vuepress/highlighter-helper'
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 import type { App } from 'vuepress'
+import type { MarkdownItPreWrapperOptions } from '../src/node/markdown/index.js'
 import {
   applyHighlighter,
   highlightLinesPlugin,
   preWrapperPlugin,
 } from '../src/node/markdown/index.js'
-import type {
-  PreWrapperOptions,
-  ShikiHighlightOptions,
-} from '../src/node/types.js'
+import type { ShikiPluginOptions } from '../src/node/options.js'
 
 const createMarkdown = async ({
   preWrapper = true,
   lineNumbers = true,
+  collapsedLines = false,
   ...options
-}: MarkdownItLineNumbersOptions &
-  PreWrapperOptions &
-  ShikiHighlightOptions = {}): Promise<MarkdownIt> => {
+}: ShikiPluginOptions = {}): Promise<MarkdownIt> => {
   const md = MarkdownIt()
 
   await applyHighlighter(md, { env: { isDebug: false } } as App, options)
 
   md.use(highlightLinesPlugin)
-  md.use<PreWrapperOptions>(preWrapperPlugin, { preWrapper })
+  md.use<MarkdownItPreWrapperOptions>(preWrapperPlugin, { preWrapper })
   if (preWrapper) {
-    md.use<MarkdownItLineNumbersOptions>(lineNumbersPlugin, { lineNumbers })
+    md.use<MarkdownItLineNumbersOptions>(lineNumbersPlugin, {
+      lineNumbers,
+    })
+    md.use<MarkdownItCollapsedLinesOptions>(collapsedLinesPlugin, {
+      collapsedLines,
+    })
   }
   return md
 }
@@ -126,6 +134,21 @@ ${codeFence}{{ inlineCode }}${codeFence}
 
       expect(mdWithLineNumbers.render(source)).toBe(
         mdWithoutLineNumbers.render(source),
+      )
+    })
+
+    it('should always disable `collapsedLines` if `preWrapper` is disabled', async () => {
+      const mdWithCollapsedLines = await createMarkdown({
+        collapsedLines: 3,
+        preWrapper: false,
+      })
+      const mdWithoutCollapsedLines = await createMarkdown({
+        collapsedLines: 'disable',
+        preWrapper: false,
+      })
+
+      expect(mdWithCollapsedLines.render(source)).toBe(
+        mdWithoutCollapsedLines.render(source),
       )
     })
   })
@@ -353,6 +376,49 @@ function foo () {
 
     it('should work whitespace with `false` option', async () => {
       const md = await createMarkdown({ whitespace: false })
+      expect(md.render(source)).toMatchSnapshot()
+    })
+  })
+
+  describe(':collapsed-lines / :no-collapsed-lines / :collapsed-lines=[number]', () => {
+    const genLines = (length: number): string =>
+      Array.from({ length })
+        .map((_, i) => `const line${i + 1} = 'line ${i + 1}`)
+        .join('\n')
+
+    const source = `\
+${codeFence}ts
+${genLines(10)}
+${codeFence}
+
+${codeFence}ts
+${genLines(20)}
+${codeFence}
+
+${codeFence}ts :collapsed-lines
+${genLines(20)}
+${codeFence}
+
+${codeFence}ts :no-collapsed-lines
+${genLines(20)}
+${codeFence}
+
+${codeFence}ts :no-collapsed-lines=12
+${genLines(20)}
+${codeFence}
+`
+    it('should work properly if `collapsedLines` is disabled by default', async () => {
+      const md = await createMarkdown({ collapsedLines: false })
+      expect(md.render(source)).toMatchSnapshot()
+    })
+
+    it('should work properly if `collapsedLines` is enabled', async () => {
+      const md = await createMarkdown({ collapsedLines: true })
+      expect(md.render(source)).toMatchSnapshot()
+    })
+
+    it('should work properly if `collapsedLines` is set to a number', async () => {
+      const md = await createMarkdown({ collapsedLines: 10 })
       expect(md.render(source)).toMatchSnapshot()
     })
   })

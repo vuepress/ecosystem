@@ -4,12 +4,6 @@
 
 将 [Algolia DocSearch](https://docsearch.algolia.com/) 集成到 VuePress 中，为你的文档网站提供搜索功能。
 
-::: tip
-当你正确配置该插件后，默认主题会把 DocSearch 按钮添加到导航栏。
-
-该插件不一定能在其他主题中直接使用，因此你应参考主题本身的文档来获取更多信息。
-:::
-
 ## 使用方法
 
 ```bash
@@ -167,7 +161,7 @@ new Crawler({
 :::
 
 ::: tip
-如果你使用的不是默认主题，或者在使用 Docsearch 的时候遇到了任何问题，你也可以检查上述的爬虫配置示例，然后前往 [Algolia Crawler](https://crawler.algolia.com/admin/crawlers/) 仓库，在你项目侧边栏中的 Editor 页面中修改你的配置。
+如果你使用的不是默认主题，或者在使用 DocSearch 的时候遇到了任何问题，你也可以检查上述的爬虫配置示例，然后前往 [Algolia Crawler](https://crawler.algolia.com/admin/crawlers/) 仓库，在你项目侧边栏中的 Editor 页面中修改你的配置。
 :::
 
 ## 配置项
@@ -286,7 +280,7 @@ new Crawler({
 
 ### locales
 
-- 类型： `Record<string, DocsearchPluginOptions>`
+- 类型： `Record<string, DocSearchPluginOptions>`
 
 - 详情：
 
@@ -339,7 +333,7 @@ export default {
 
   搜索索引基础路径。
 
-  如果你需要把你的站点部署到不同的域名上，你不需要把它们全都提交到 Docsearch 上来分别生成搜索索引。你可以选择其中一个域名作为 _索引域名_ ，并且仅将 _索引域名_ 提交到 DocSearch 上来爬去搜索索引。然后，你就可以在不同的部署域名下复用索引。
+  如果你需要把你的站点部署到不同的域名上，你不需要把它们全都提交到 DocSearch 上来分别生成搜索索引。你可以选择其中一个域名作为 _索引域名_ ，并且仅将 _索引域名_ 提交到 DocSearch 上来爬去搜索索引。然后，你就可以在不同的部署域名下复用索引。
 
   如果你不同部署域名下的 [base](https://vuejs.press/zh/reference/config.html#base) 是不一样的，你就需要将这个配置设置成 _索引域名_ 的 [base](https://vuejs.press/zh/reference/config.html#base) ，这样其他的部署域名就可以正确复用索引了。
 
@@ -362,19 +356,22 @@ export default {
 ### defineDocSearchConfig
 
 ```ts
-type DocSearchClientLocaleOptions = Omit<
-  DocSearchProps,
-  'hitComponent' | 'navigator' | 'transformSearchClient'
->
-
-interface DocSearchClientOptions extends DocSearchClientLocaleOptions {
-  locales?: Record<string, DocSearchClientLocaleOptions>
+interface DocSearchClientOptions extends DocSearchProps {
+  locales?: Record<string, DocSearchProps>
 }
 
 const defineDocSearchConfig: (options: DocSearchClientOptions) => void
 ```
 
 自定义 DocSearch 选项。
+
+::: warning
+
+为了支持 VuePress 的路由与其他优化，`transformItems`, `hitComponent` `navigator` 和 `transformSearchClient` 选项已被内部配置。直接覆盖它们可能会导致非预期行为。
+
+如果你需要自定义它们，你可能需要先理解 [VuePress 的适配](https://github.com/vuepress/ecosystem/blob/main/plugins/search/plugin-docsearch/src/client/composables/useDocSearchSlim.ts) 并确保不破坏它们。
+
+:::
 
 ## 样式
 
@@ -430,14 +427,4 @@ const defineDocSearchConfig: (options: DocSearchClientOptions) => void
 
 ## 组件
 
-### Docsearch
-
-- 详情：
-
-  该插件会全局注册一个 `<Docsearch />` 组件，你可以不传入任何 Props 来使用它。
-
-  将该组件放置在你想要显示 docsearch 按钮的地方。例如，默认主题将这个组件放在了导航栏的末尾。
-
-::: tip
-该组件主要用于主题开发。在大多数情况下你不需要直接使用该组件。
-:::
+- SearchBox

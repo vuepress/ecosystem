@@ -52,19 +52,21 @@ const contributors = useContributors()
 
 <style lang="scss">
 @use '../styles/mixins';
-@import '../styles/variables';
+@use '../styles/variables' as *;
 
 .vp-page-meta {
   @include mixins.content-wrapper;
 
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  & {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
-  overflow: auto;
+    overflow: auto;
 
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
 
   @media print {
     margin: 0 !important;

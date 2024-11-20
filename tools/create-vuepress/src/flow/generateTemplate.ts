@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           # ${
@@ -54,31 +54,23 @@ ${
     ? `\
       - name: ${lang === 'zh' ? '安装 pnpm' : 'Install pnpm'}
         uses: pnpm/action-setup@v4
-        with:
-          run_install: true
-          version: 8
 `
     : ''
 }
 
       - name: ${lang === 'zh' ? '设置 Node.js' : 'Setup Node.js'}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: ${packageManager}
 
-${
-  packageManager !== 'pnpm'
-    ? `\
       - name: ${lang === 'zh' ? '安装依赖' : 'Install Deps'}
         run: ${
           packageManager === 'npm'
             ? 'npm ci'
             : `${packageManager} install --frozen-lockfile`
         }
-`
-    : ''
-}
+
       - name: ${lang === 'zh' ? '构建文档' : 'Build Docs'}
         env:
           NODE_OPTIONS: --max_old_space_size=8192

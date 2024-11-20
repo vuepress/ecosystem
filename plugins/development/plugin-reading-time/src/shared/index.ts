@@ -1,2 +1,2 @@
-export * from './data.js'
-export * from './locales.js'
+export type * from './data.js'
+export type * from './locales.js'

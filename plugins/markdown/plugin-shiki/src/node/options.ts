@@ -1,12 +1,14 @@
-import type { MarkdownItLineNumbersOptions } from '@vuepress/highlighter-helper'
-import type { PreWrapperOptions, ShikiHighlightOptions } from './types.js'
+import type {
+  MarkdownItCollapsedLinesOptions,
+  MarkdownItLineNumbersOptions,
+} from '@vuepress/highlighter-helper'
+import type { MarkdownItPreWrapperOptions } from './markdown/index.js'
+import type { ShikiHighlightOptions } from './types.js'
 
 /**
  * Options of @vuepress/plugin-shiki
  */
-export type ShikiPluginOptions = Pick<
-  MarkdownItLineNumbersOptions,
-  'lineNumbers'
-> &
-  PreWrapperOptions &
+export type ShikiPluginOptions = MarkdownItLineNumbersOptions &
+  MarkdownItPreWrapperOptions &
+  Pick<MarkdownItCollapsedLinesOptions, 'collapsedLines'> &
   ShikiHighlightOptions
