@@ -219,14 +219,14 @@ importers:
   docs-next:
     dependencies:
       '@mdit/plugin-footnote':
-        specifier: 0.13.0
-        version: 0.13.0(markdown-it@14.1.0)
+        specifier: 0.13.1
+        version: 0.13.1(markdown-it@14.1.0)
       '@vuepress/bundler-vite':
-        specifier: 2.0.0-rc.15
-        version: 2.0.0-rc.15(@types/node@22.5.0)(jiti@1.21.6)(lightningcss@1.26.0)(sass@1.77.8)(terser@5.31.6)(tsx@4.17.0)(typescript@5.5.4)(yaml@2.4.5)
+        specifier: 2.0.0-rc.18
+        version: 2.0.0-rc.18(@types/node@22.9.0)(jiti@1.21.6)(lightningcss@1.28.1)(sass-embedded@1.81.0)(sass@1.81.0)(terser@5.36.0)(tsx@4.19.2)(typescript@5.6.3)(yaml@2.4.5)
       '@vuepress/bundler-webpack':
-        specifier: 2.0.0-rc.15
-        version: 2.0.0-rc.15(typescript@5.5.4)
+        specifier: 2.0.0-rc.18
+        version: 2.0.0-rc.18(esbuild@0.23.1)(typescript@5.6.3)
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../tools/helper
@@ -287,15 +287,18 @@ importers:
       mathjax-full:
         specifier: 3.2.2
         version: 3.2.2
+      sass-embedded:
+        specifier: 1.81.0
+        version: 1.81.0
       sass-loader:
-        specifier: ^16.0.1
-        version: 16.0.1(sass@1.77.8)(webpack@5.93.0)
+        specifier: ^16.0.3
+        version: 16.0.3(sass-embedded@1.81.0)(sass@1.81.0)(webpack@5.96.1(esbuild@0.23.1))
       vue:
-        specifier: ^3.4.38
-        version: 3.4.38(typescript@5.5.4)
+        specifier: ^3.5.13
+        version: 3.5.13(typescript@5.6.3)
       vuepress:
-        specifier: 2.0.0-rc.15
-        version: 2.0.0-rc.15(@vuepress/bundler-vite@2.0.0-rc.15(@types/node@22.5.0)(jiti@1.21.6)(lightningcss@1.26.0)(sass@1.77.8)(terser@5.31.6)(tsx@4.17.0)(typescript@5.5.4)(yaml@2.4.5))(@vuepress/bundler-webpack@2.0.0-rc.15(typescript@5.5.4))(typescript@5.5.4)(vue@3.4.38(typescript@5.5.4))
+        specifier: 2.0.0-rc.18
+        version: 2.0.0-rc.18(@vuepress/bundler-vite@2.0.0-rc.18(@types/node@22.9.0)(jiti@1.21.6)(lightningcss@1.28.1)(sass-embedded@1.81.0)(sass@1.81.0)(terser@5.36.0)(tsx@4.19.2)(typescript@5.6.3)(yaml@2.4.5))(@vuepress/bundler-webpack@2.0.0-rc.18(esbuild@0.23.1)(typescript@5.6.3))(typescript@5.6.3)(vue@3.5.13(typescript@5.6.3))
 
   e2e:
     dependencies:
@@ -1252,20 +1255,20 @@ importers:
         specifier: workspace:*
         version: link:../../plugins/development/plugin-theme-data
       '@vueuse/core':
-        specifier: ^11.0.1
-        version: 11.0.1(vue@3.4.38(typescript@5.5.4))
+        specifier: ^11.2.0
+        version: 11.2.0(vue@3.5.13(typescript@5.6.3))
       chokidar:
         specifier: ^3.6.0
         version: 3.6.0
       nanoid:
-        specifier: ^5.0.7
-        version: 5.0.7
+        specifier: ^5.0.8
+        version: 5.0.8
       vue:
-        specifier: ^3.4.38
-        version: 3.4.38(typescript@5.5.4)
+        specifier: ^3.5.13
+        version: 3.5.13(typescript@5.6.3)
       vuepress:
-        specifier: 2.0.0-rc.15
-        version: 2.0.0-rc.15(@vuepress/bundler-vite@2.0.0-rc.15(@types/node@22.5.0)(jiti@1.21.6)(lightningcss@1.26.0)(sass@1.77.8)(terser@5.31.6)(tsx@4.17.0)(typescript@5.5.4)(yaml@2.4.5))(@vuepress/bundler-webpack@2.0.0-rc.15(typescript@5.5.4))(typescript@5.5.4)(vue@3.4.38(typescript@5.5.4))
+        specifier: 2.0.0-rc.18
+        version: 2.0.0-rc.18(@vuepress/bundler-vite@2.0.0-rc.18(@types/node@22.9.0)(jiti@1.21.6)(lightningcss@1.28.1)(sass-embedded@1.81.0)(sass@1.81.0)(terser@5.36.0)(tsx@4.19.2)(typescript@5.6.3)(yaml@2.4.5))(@vuepress/bundler-webpack@2.0.0-rc.18(esbuild@0.23.1)(typescript@5.6.3))(typescript@5.6.3)(vue@3.5.13(typescript@5.6.3))
 
   tools/create-vuepress:
     dependencies:
@@ -2980,42 +2983,36 @@ packages:
     engines: {node: '>= 10.0.0'}
     cpu: [arm]
     os: [linux]
-    libc: [glibc]
 
   '@parcel/watcher-linux-arm-musl@2.5.0':
     resolution: {integrity: sha512-6uHywSIzz8+vi2lAzFeltnYbdHsDm3iIB57d4g5oaB9vKwjb6N6dRIgZMujw4nm5r6v9/BQH0noq6DzHrqr2pA==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm]
     os: [linux]
-    libc: [musl]
 
   '@parcel/watcher-linux-arm64-glibc@2.5.0':
     resolution: {integrity: sha512-BfNjXwZKxBy4WibDb/LDCriWSKLz+jJRL3cM/DllnHH5QUyoiUNEp3GmL80ZqxeumoADfCCP19+qiYiC8gUBjA==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm64]
     os: [linux]
-    libc: [glibc]
 
   '@parcel/watcher-linux-arm64-musl@2.5.0':
     resolution: {integrity: sha512-S1qARKOphxfiBEkwLUbHjCY9BWPdWnW9j7f7Hb2jPplu8UZ3nes7zpPOW9bkLbHRvWM0WDTsjdOTUgW0xLBN1Q==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm64]
     os: [linux]
-    libc: [musl]
 
   '@parcel/watcher-linux-x64-glibc@2.5.0':
     resolution: {integrity: sha512-d9AOkusyXARkFD66S6zlGXyzx5RvY+chTP9Jp0ypSTC9d4lzyRs9ovGf/80VCxjKddcUvnsGwCHWuF2EoPgWjw==}
     engines: {node: '>= 10.0.0'}
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
 
   '@parcel/watcher-linux-x64-musl@2.5.0':
     resolution: {integrity: sha512-iqOC+GoTDoFyk/VYSFHwjHhYrk8bljW6zOhPuhi5t9ulqiYq1togGJB5e3PwYVFFfeVgc6pbz3JdQyDoBszVaA==}
     engines: {node: '>= 10.0.0'}
     cpu: [x64]
     os: [linux]
-    libc: [musl]
 
   '@parcel/watcher-win32-arm64@2.5.0':
     resolution: {integrity: sha512-twtft1d+JRNkM5YbmexfcH/N4znDtjgysFaV9zvZmmJezQsKpkfLYJ+JFV3uygugK6AtIM2oADPkB2AdhBrNig==}
@@ -4254,7 +4251,7 @@ packages:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
 
   cookie-signature@1.0.6:
-    resolution: {integrity: sha1-4wOogrNCzD7oylE6eZmXNNqzriw=}
+    resolution: {integrity: sha512-QADzlaHc8icV8I7vbaJXJwod9HWYp8uCqf1xa4OfNu1T7JVxQIrUgOWtHdNDtPiywmFbiS12VjotIXLrKM3orQ==}
 
   cookie@0.7.1:
     resolution: {integrity: sha512-6DnInpx7SJ2AK3+CTUE/ZM0vWTUboZCegxhC2xiIydHR9jNuTAASBrfEpHhiGOZw/nX51bHt6YQl8jsGo4y/0w==}
@@ -6085,7 +6082,7 @@ packages:
     resolution: {integrity: sha512-Lf+9+2r+Tdp5wXDXC4PcIBjTDtq4UKjCPMQhKIuzpJNW0b96kVqSwW0bT7FhRSfmAiFYgP+SCRvdrDozfh0U5w==}
 
   media-typer@0.3.0:
-    resolution: {integrity: sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=}
+    resolution: {integrity: sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==}
     engines: {node: '>= 0.6'}
 
   medium-zoom@1.1.0:
