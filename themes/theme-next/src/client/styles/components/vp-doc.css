@@ -293,7 +293,6 @@
   background: currentcolor;
   color: var(--vp-c-text-subtle);
 
-  -webkit-mask-image: var(--icon);
   mask-image: var(--icon);
 }
 

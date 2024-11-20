@@ -173,7 +173,6 @@ const heroImageSlotExists = inject('hero-image-slot-exists')!
 
 .clip {
   background: var(--vp-home-hero-name-background);
-  -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: var(--vp-home-hero-name-color);
 }

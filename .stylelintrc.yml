@@ -14,9 +14,9 @@ rules:
   declaration-block-no-redundant-longhand-properties: true
   media-feature-range-notation: prefix
   no-descending-specificity: null
-  scss/operator-no-newline-after: null
   custom-property-empty-line-before: null
-
+  selector-max-class: null
+  selector-max-attribute: null
   selector-pseudo-class-no-unknown:
     - true
     - ignorePseudoClasses:
@@ -62,6 +62,7 @@ overrides:
             - v-slotted
 
       declaration-block-no-redundant-longhand-properties: null
+      scss/operator-no-newline-after: null
 
   - files:
       - 'themes/theme-next/src/client/styles/vars.css'

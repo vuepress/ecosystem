@@ -17,10 +17,7 @@
 .vp-icon:not(.bg) {
   background-color: currentcolor;
   color: inherit;
-
-  -webkit-mask: var(--icon) no-repeat;
   mask: var(--icon) no-repeat;
-  -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
 }
 
