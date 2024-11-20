@@ -1,3 +1,3 @@
 export * from './defaultTheme.js'
 export * from './utils/index.js'
-export * from '../shared/index.js'
+export type * from '../shared/index.js'

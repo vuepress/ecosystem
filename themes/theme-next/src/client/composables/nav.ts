@@ -15,6 +15,7 @@ const resolveNavbar = (navbar: NavItem[], _prefix = ''): ResolvedNavItem[] => {
     if (typeof item === 'string') {
       resolved.push(getNavLink(normalizeLink(_prefix, item)))
     } else {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const { items, children, prefix, ...args } = item
       const list = items?.length ? items : children
       const res = { ...args } as ResolvedNavItem

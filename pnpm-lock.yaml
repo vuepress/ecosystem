@@ -1212,9 +1212,6 @@ importers:
 
   themes/theme-next:
     dependencies:
-      '@mdit/plugin-alert':
-        specifier: ^0.13.1
-        version: 0.13.1(markdown-it@14.1.0)
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../../tools/helper

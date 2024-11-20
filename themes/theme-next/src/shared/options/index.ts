@@ -1,2 +1,2 @@
-export * from './plugins.js'
-export * from './locales.js'
+export type * from './plugins.js'
+export type * from './locales.js'
