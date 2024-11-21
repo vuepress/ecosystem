@@ -22,7 +22,7 @@ test.describe('plugin-theme-data', () => {
         '/',
         {
           text: 'Dropdown',
-          children: [
+          items: [
             {
               text: 'item',
               link: '/navbar/',
@@ -30,7 +30,7 @@ test.describe('plugin-theme-data', () => {
             {
               text: 'Nested',
               prefix: '/navbar/',
-              children: [
+              items: [
                 {
                   text: 'Nested foo',
                   link: '/navbar/foo.html',
@@ -124,7 +124,26 @@ test.describe('plugin-theme-data', () => {
           logo: 'https://v2.vuepress.vuejs.org/images/hero.png',
           navbar: [
             '/',
-            { text: 'Dropdown', items: [{ text: 'item', link: '/dropdown/' }] },
+            {
+              text: 'Dropdown',
+              items: [
+                {
+                  text: 'item',
+                  link: '/navbar/',
+                },
+                {
+                  text: 'Nested',
+                  prefix: '/navbar/',
+                  items: [
+                    {
+                      text: 'Nested foo',
+                      link: '/navbar/foo.html',
+                    },
+                    'bar.md',
+                  ],
+                },
+              ],
+            },
           ],
           sidebar: {
             '/sidebar/heading/': 'structure',

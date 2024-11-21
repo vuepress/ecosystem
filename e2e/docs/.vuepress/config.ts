@@ -63,7 +63,7 @@ export default defineUserConfig({
           {
             text: 'Nested',
             prefix: '/navbar/',
-            children: [
+            items: [
               {
                 text: 'Nested foo',
                 link: '/navbar/foo.html',
