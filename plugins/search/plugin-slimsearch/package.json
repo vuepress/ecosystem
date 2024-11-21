@@ -1,0 +1,62 @@
+{
+  "name": "@vuepress/plugin-slimsearch",
+  "version": "2.0.0-rc.55",
+  "description": "VuePress plugin - built-in slimsearch",
+  "keywords": [
+    "vuepress-plugin",
+    "vuepress",
+    "plugin",
+    "slimsearch"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/plugins/search/slimsearch.html",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/search/plugin-slimsearch"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mr.Hope",
+    "email": "mister-hope@outlook.com",
+    "url": "https://mister-hope.com"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./lib/node/index.js",
+    "./client": "./lib/client/index.js",
+    "./client/*": "./lib/client/*",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
+    "copy": "cpx \"src/**/*.{d.ts,svg}\" lib",
+    "style": "sass src:lib --embed-sources --style=compressed"
+  },
+  "dependencies": {
+    "@vuepress/helper": "workspace:*",
+    "@vueuse/core": "^11.3.0",
+    "cheerio": "^1.0.0",
+    "chokidar": "^3.6.0",
+    "slimsearch": "^2.2.1",
+    "vue": "^3.5.13"
+  },
+  "peerDependencies": {
+    "vuepress": "2.0.0-rc.18"
+  },
+  "devDependencies": {
+    "domhandler": "5.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

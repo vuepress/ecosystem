@@ -1,0 +1,149 @@
+.slimsearch-result-wrapper {
+  scrollbar-color: var(--vp-c-accent) var(--vp-c-border);
+  scrollbar-width: thin;
+
+  @media (max-width: 419px) {
+    font-size: 14px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track-piece {
+    border-radius: 6px;
+    background: rgb(0 0 0 / 10%);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background: var(--vp-c-accent-bg);
+
+    &:active {
+      background: var(--vp-c-accent-hover);
+    }
+  }
+
+  mark {
+    border-radius: 0.25em;
+    line-height: 1;
+  }
+}
+
+.slimsearch-result-list {
+  margin: 0;
+  padding: 0;
+}
+
+.slimsearch-result-list-item {
+  display: block;
+  list-style: none;
+}
+
+.slimsearch-result-title {
+  position: sticky;
+  top: -2px;
+  z-index: 10;
+
+  margin: -4px;
+  margin-bottom: 0.25rem;
+  padding: 4px;
+
+  background: var(--vp-c-bg);
+  color: var(--vp-c-accent);
+
+  font-weight: 600;
+  font-size: 0.875em;
+  line-height: 2rem;
+  text-indent: 0.5em;
+
+  .slimsearch-result-item.active & {
+    color: var(--vp-c-accent);
+  }
+}
+
+.slimsearch-result-type {
+  display: block;
+
+  width: 1rem;
+  height: 1rem;
+  margin-inline-start: -0.5rem;
+  padding: 0.5rem;
+
+  color: var(--vp-c-accent);
+}
+
+.slimsearch-remove-icon {
+  box-sizing: content-box;
+  height: 1.5rem;
+  padding: 0;
+  border-width: 0;
+  border-radius: 50%;
+
+  background: transparent;
+  color: var(--vp-c-accent);
+
+  font-size: 1rem;
+
+  cursor: pointer;
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  &:hover {
+    background: rgb(128 128 128 / 30%);
+  }
+}
+
+.slimsearch-result-content {
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1;
+  align-items: stretch;
+  justify-content: center;
+
+  line-height: 1.5;
+
+  .content-header {
+    margin-bottom: 0.25rem;
+    border-bottom: 1px solid var(--vp-c-border-hard);
+    font-size: 0.9em;
+  }
+}
+
+.slimsearch-result-item {
+  display: flex;
+  align-items: center;
+
+  margin: 0.5rem 0;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+
+  background: var(--vp-c-bg-alt);
+  color: inherit;
+  box-shadow: 0 1px 3px 0 var(--vp-c-shadow);
+
+  font-weight: normal;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+
+  strong {
+    color: var(--vp-c-accent);
+  }
+
+  &:hover,
+  &.active {
+    background-color: var(--vp-c-accent-hover);
+    color: var(--vp-c-white);
+    cursor: pointer;
+
+    .slimsearch-result-type,
+    .slimsearch-remove-icon,
+    strong {
+      color: var(--vp-c-white);
+    }
+  }
+}

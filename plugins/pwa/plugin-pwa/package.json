@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^11.2.0",
+    "@vueuse/core": "^11.3.0",
     "mitt": "^3.0.1",
     "register-service-worker": "^1.7.2",
     "vue": "^3.5.13",
@@ -56,6 +56,6 @@
     "access": "public"
   },
   "devDependencies": {
-    "rollup": "^4.27.2"
+    "rollup": "^4.27.3"
   }
 }
