@@ -3,12 +3,12 @@ import type { NavItemWithLink } from './navbar.js'
 import type { Outline } from './options/index.js'
 import type { DefaultThemeImage, Feature, HeroAction } from './shared.js'
 
-export interface DefaultThemePageData {
+export interface DefaultThemePageData extends Record<string, unknown> {
   filePathRelative: string | null
   git?: GitData
 }
 
-export interface DefaultThemePageFrontmatter {
+export interface DefaultThemePageFrontmatter extends Record<string, unknown> {
   /**
    * Whether is homepage
    *
