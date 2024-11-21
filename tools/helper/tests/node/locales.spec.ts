@@ -249,6 +249,46 @@ describe('getLocaleConfig() should generate locale', () => {
   })
 
   describe('handle unknown locale', () => {
+    it('unknown root language should fallback to first language in default config', () => {
+      const app = createBaseApp({
+        locales: {
+          '/': { lang: 'unknown-Language' },
+          '/en/': { lang: 'en-US' },
+          '/ja/': { lang: 'ja-JP' },
+          '/id/': { lang: 'id-ID' },
+          '/nl/': { lang: 'nl-NL' },
+        },
+        source: path.resolve(__dirname, './__fixtures__/src'),
+        bundler: {} as Bundler,
+        theme: emptyTheme,
+      })
+
+      const locales = getLocaleConfig({ app, default: defaultLocaleConfig })
+
+      expect(locales).toEqual({
+        '/': {
+          text: 'English',
+          fallback: 'English',
+        },
+        '/en/': {
+          text: 'English',
+          fallback: 'English',
+        },
+        '/ja/': {
+          text: '日本',
+          fallback: '日本',
+        },
+        '/id/': {
+          text: 'Indonesia',
+          fallback: 'Indonesia',
+        },
+        '/nl/': {
+          text: 'Dutch',
+          fallback: 'Dutch',
+        },
+      })
+    })
+
     it('fallback to root language if exists', () => {
       const app = createBaseApp({
         locales: {
