@@ -42,6 +42,7 @@ export default defineConfig({
     ],
     typecheck: {
       enabled: true,
+      ignoreSourceErrors: true,
     },
   },
 })

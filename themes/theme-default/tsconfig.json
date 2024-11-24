@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "jsx": "preserve",
     "paths": {
-      "@theme/*": ["./src/client/components/*", "./src/client/composables/*.js"]
+      "@theme/*": ["./src/client/components/*", "./src/client/composables/*"]
     }
   },
   "include": ["./src"]
