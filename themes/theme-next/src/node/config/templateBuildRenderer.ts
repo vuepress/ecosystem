@@ -7,6 +7,12 @@ export const templateBuildRenderer = (
   context: TemplateRendererContext,
   options: DefaultThemeData,
 ): Promise<string> | string => {
+  // eslint-disable-next-line no-useless-assignment
+  let temp = template.replace(
+    '<!--vuepress-theme-check-mac-os-->',
+    `<script id="check-mac-os">document.documentElement.classList.toggle('mac', /Mac|iPhone|iPod|iPad/i.test(navigator.platform))</script>`,
+  )
+
   if (options.appearance ?? true) {
     const appearance =
       typeof options.appearance === 'string' ? options.appearance : 'auto'
@@ -19,16 +25,13 @@ export const templateBuildRenderer = (
     const isDark = !preference || preference === 'auto' ? prefersDark : preference === 'dark'
     document.documentElement.dataset.theme = isDark ? 'dark' : 'light'
   })();`
-
-    // eslint-disable-next-line no-param-reassign
-    template = template.replace(
+    temp = template.replace(
       '<!--vuepress-theme-appearance-->',
       `<script id="check-dark-mode">${script}</script>`,
     )
   } else {
-    // eslint-disable-next-line no-param-reassign
-    template = template.replace('<!--vuepress-theme-appearance-->', '')
+    temp = template.replace('<!--vuepress-theme-appearance-->', '')
   }
 
-  return templateRenderer(template, context)
+  return templateRenderer(temp, context)
 }
