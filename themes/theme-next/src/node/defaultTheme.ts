@@ -1,10 +1,3 @@
-/* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable no-console */
-import {
-  addViteConfig,
-  addViteOptimizeDepsExclude,
-  chainWebpack,
-} from '@vuepress/helper'
 import { watch } from 'chokidar'
 import type { Page, Theme } from 'vuepress/core'
 import { fs, getDirname, path } from 'vuepress/utils'
@@ -14,7 +7,7 @@ import type {
   DefaultThemePluginsOptions,
   SidebarSorter,
 } from '../shared/index.js'
-import { resolvePageHead } from './config/index.js'
+import { extendsBundlerOptions, templateBuildRenderer } from './config/index.js'
 import { getPlugins } from './plugins/index.js'
 import { prepareSidebarData } from './prepare/index.js'
 import { THEME_NAME, logger } from './utils/index.js'
@@ -60,6 +53,8 @@ export const defaultTheme =
       name: THEME_NAME,
 
       templateBuild: path.resolve(__dirname, '../../templates/build.html'),
+      templateBuildRenderer: (bundleOptions, _app) =>
+        templateBuildRenderer(bundleOptions, _app, localeOptions),
 
       alias: {
         // use alias to make all components replaceable
@@ -109,55 +104,8 @@ export const defaultTheme =
         page.data.filePathRelative = page.filePathRelative
         // save title into route meta to generate navbar and sidebar
         page.routeMeta.title = page.title
-
-        resolvePageHead(page, localeOptions)
       },
 
-      extendsBundlerOptions: (bundlerOptions, app): void => {
-        // FIXME: hide sass deprecation warning for mixed-decls
-        addViteConfig(bundlerOptions, app, {
-          css: {
-            preprocessorOptions: {
-              sass: {
-                logger: {
-                  warn: (message, { deprecation, deprecationType }) => {
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                    if (deprecation && deprecationType.id === 'mixed-decls')
-                      return
-
-                    console.warn(message)
-                  },
-                },
-              },
-              scss: {
-                logger: {
-                  warn: (message, { deprecation, deprecationType }) => {
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                    if (deprecation && deprecationType.id === 'mixed-decls')
-                      return
-
-                    console.warn(message)
-                  },
-                },
-              },
-            },
-          },
-        })
-        chainWebpack(bundlerOptions, app, (config) => {
-          config.module
-            .rule('scss')
-            .use('sass-loader')
-            .tap((options) => ({
-              ...options,
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-              sassOptions: {
-                silenceDeprecations: ['mixed-decls'],
-                ...options.sassOptions,
-              },
-            }))
-        })
-        // ensure theme alias is not optimized by Vite
-        addViteOptimizeDepsExclude(bundlerOptions, app, '@theme')
-      },
+      extendsBundlerOptions,
     }
   }

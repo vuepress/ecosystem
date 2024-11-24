@@ -4,6 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="generator" content="VuePress {{ version }}" />
+    <script id="check-mac-os">
+      document.documentElement.classList.toggle(
+        'mac',
+        /Mac|iPhone|iPod|iPad/i.test(navigator.platform),
+      )
+    </script>
+    <!--vuepress-theme-appearance-->
     <!--vuepress-ssr-head-->
     <!--vuepress-ssr-styles-->
     <!--vuepress-ssr-preload-->
