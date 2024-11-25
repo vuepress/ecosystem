@@ -3,6 +3,7 @@ import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 import { gitPlugin } from '@vuepress/plugin-git'
 import { linksCheckPlugin } from '@vuepress/plugin-links-check'
 import { markdownHintPlugin } from '@vuepress/plugin-markdown-hint'
+import { markdownTabPlugin } from '@vuepress/plugin-markdown-tab'
 import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
 import { seoPlugin } from '@vuepress/plugin-seo'
@@ -20,7 +21,6 @@ import {
   resolveMarkdownHintLocales,
   resolveThemeData,
 } from '../config/index.js'
-import { createCodeGroupPlugin } from './codeGroupPlugin.js'
 
 interface PluginsOptions {
   hostname?: string
@@ -32,10 +32,7 @@ export const getPlugins = (
   app: App,
   { hostname, themePlugins, localeOptions }: PluginsOptions,
 ): PluginConfig => {
-  const plugins: PluginConfig = [
-    // code-group
-    createCodeGroupPlugin(),
-  ]
+  const plugins: PluginConfig = []
 
   if (themePlugins.activeHeaderLinks !== false) {
     plugins.push(
@@ -44,6 +41,16 @@ export const getPlugins = (
         headerAnchorSelector: '.header-anchor',
         // should greater than page transition duration
         delay: 300,
+      }),
+    )
+  }
+
+  if (themePlugins.tab !== false) {
+    plugins.push(
+      markdownTabPlugin({
+        ...(isPlainObject(themePlugins.tab)
+          ? themePlugins.tab
+          : { tabs: true, codeTabs: true }),
       }),
     )
   }

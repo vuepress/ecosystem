@@ -1273,6 +1273,9 @@ importers:
       '@vuepress/plugin-markdown-hint':
         specifier: workspace:*
         version: link:../../plugins/markdown/plugin-markdown-hint
+      '@vuepress/plugin-markdown-tab':
+        specifier: workspace:*
+        version: link:../../plugins/markdown/plugin-markdown-tab
       '@vuepress/plugin-nprogress':
         specifier: workspace:*
         version: link:../../plugins/features/plugin-nprogress

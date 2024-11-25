@@ -15,6 +15,10 @@
   color: var(--vp-custom-block-info-text);
 }
 
+.hint-container.info .hint-container-title::before {
+  color: var(--vp-custom-block-info-icon-color);
+}
+
 .hint-container.info a,
 .hint-container.info code {
   color: var(--vp-c-accent);
@@ -33,6 +37,10 @@
   border-color: var(--vp-custom-block-note-border);
   background-color: var(--vp-custom-block-note-bg);
   color: var(--vp-custom-block-note-text);
+}
+
+.hint-container.note .hint-container-title::before {
+  color: var(--vp-custom-block-note-icon-color);
 }
 
 .hint-container.note a,
@@ -55,6 +63,10 @@
   color: var(--vp-custom-block-tip-text);
 }
 
+.hint-container.tip .hint-container-title::before {
+  color: var(--vp-custom-block-tip-icon-color);
+}
+
 .hint-container.tip a,
 .hint-container.tip code {
   color: var(--vp-c-tip-1);
@@ -73,6 +85,10 @@
   border-color: var(--vp-custom-block-important-border);
   background-color: var(--vp-custom-block-important-bg);
   color: var(--vp-custom-block-important-text);
+}
+
+.hint-container.important .hint-container-title::before {
+  color: var(--vp-custom-block-important-icon-color);
 }
 
 .hint-container.important a,
@@ -95,6 +111,10 @@
   color: var(--vp-custom-block-warning-text);
 }
 
+.hint-container.warning .hint-container-title::before {
+  color: var(--vp-custom-block-warning-icon-color);
+}
+
 .hint-container.warning a,
 .hint-container.warning code {
   color: var(--vp-c-warning-1);
@@ -115,6 +135,10 @@
   color: var(--vp-custom-block-danger-text);
 }
 
+.hint-container.danger .hint-container-title::before {
+  color: var(--vp-custom-block-danger-icon-color);
+}
+
 .hint-container.danger a,
 .hint-container.danger code {
   color: var(--vp-c-danger-1);
@@ -133,6 +157,10 @@
   border-color: var(--vp-custom-block-caution-border);
   background-color: var(--vp-custom-block-caution-bg);
   color: var(--vp-custom-block-caution-text);
+}
+
+.hint-container.caution .hint-container-title::before {
+  color: var(--vp-custom-block-caution-icon-color);
 }
 
 .hint-container.caution a,
@@ -207,6 +235,6 @@
   font-size: var(--vp-custom-block-font-size);
 }
 
-.hint-container-title {
+.hint-container > .hint-container-title {
   font-weight: 600;
 }

@@ -375,20 +375,24 @@ export default {
 }
 ```
 
-## Code Groups
+## Code Tabs
 
 You can group multiple code blocks like this:
 
 **Input:**
 
 ````md
-::: code-group
+::: code-tabs
 
-```ts [FOO]
+@tab Foo
+
+```ts
 const foo = 'foo'
 ```
 
-```ts [BAR]
+@tab Bar
+
+```ts
 const bar = 'bar'
 ```
 
@@ -397,30 +401,38 @@ const bar = 'bar'
 
 **Output:**
 
-::: code-group
+::: code-tabs
 
-```ts [FOO]
+@tab Foo
+
+```ts
 const foo = 'foo'
 ```
 
-```ts [BAR]
+@tab Bar
+
+```ts
 const bar = 'bar'
 ```
 
 :::
 
-You can also add the `active` option to display the code block by default.
+You can also add the `:active` option to display the code block by default.
 
 **Input:**
 
 ````md
-::: code-group
+::: code-tabs
 
-```ts [FOO]
+@tab Foo
+
+```ts
 const foo = 'foo'
 ```
 
-```ts [BAR] active
+@tab:active Bar
+
+```ts
 const bar = 'bar'
 ```
 
@@ -429,13 +441,17 @@ const bar = 'bar'
 
 **Output:**
 
-::: code-group
+::: code-tabs
 
-```ts [FOO]
+@tab Foo
+
+```ts
 const foo = 'foo'
 ```
 
-```ts [BAR] active
+@tab:active Bar
+
+```ts
 const bar = 'bar'
 ```
 

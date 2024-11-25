@@ -1,8 +1,8 @@
-.vp-code-group {
+.vp-code-tabs {
   margin-top: 16px;
 }
 
-.vp-code-group .tabs {
+.vp-code-tabs .vp-code-tabs-nav {
   position: relative;
 
   display: flex;
@@ -10,6 +10,7 @@
   overflow: auto hidden;
 
   margin-right: -24px;
+  margin-bottom: -16px;
   margin-left: -24px;
   padding: 0 12px;
 
@@ -18,20 +19,14 @@
 }
 
 @media (min-width: 640px) {
-  .vp-code-group .tabs {
+  .vp-code-tabs .vp-code-tabs-nav {
     margin-right: 0;
     margin-left: 0;
     border-radius: 8px 8px 0 0;
   }
 }
 
-.vp-code-group .tabs input {
-  position: fixed;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.vp-code-group .tabs label {
+.vp-code-tabs .vp-code-tabs-nav .vp-code-tab-nav {
   position: relative;
 
   display: inline-block;
@@ -39,6 +34,7 @@
   padding: 0 12px;
   border-bottom: 1px solid transparent;
 
+  background: none;
   color: var(--vp-code-tab-text-color);
 
   font-weight: 500;
@@ -51,7 +47,7 @@
   transition: color 0.25s;
 }
 
-.vp-code-group .tabs label::after {
+.vp-code-tabs .vp-code-tabs-nav .vp-code-tab-nav::after {
   content: '';
 
   position: absolute;
@@ -60,39 +56,37 @@
   left: 8px;
   z-index: 1;
 
+  width: unset;
   height: 2px;
   border-radius: 2px;
 
+  background: none;
   background-color: transparent;
 
   transition: background-color 0.25s;
 }
 
-.vp-code-group label:hover {
+.vp-code-tabs .vp-code-tab-nav:hover {
   color: var(--vp-code-tab-hover-text-color);
 }
 
-.vp-code-group input:checked + label {
+.vp-code-tabs .vp-code-tab-nav.active {
   color: var(--vp-code-tab-active-text-color);
 }
 
-.vp-code-group input:checked + label::after {
+.vp-code-tabs .vp-code-tab-nav.active::after {
   background-color: var(--vp-code-tab-active-bar-color);
 }
 
-.vp-code-group div[class*='language-'],
-.vp-block {
+.vp-code-tabs .vp-code-tab-nav::before {
   display: none;
-  margin-top: 0 !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-}
-
-.vp-code-group div[class*='language-'].active,
-.vp-block.active {
-  display: block;
 }
 
 .vp-block {
   padding: 20px 24px;
+}
+
+.vp-doc .vp-code-tabs [class*='language-'] {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }

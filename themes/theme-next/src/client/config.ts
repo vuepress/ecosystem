@@ -1,6 +1,5 @@
 import './styles/index.css'
 
-import VPCodeGroup from '@theme/VPCodeGroup.vue'
 import { hasGlobalComponent } from '@vuepress/helper/client'
 import { h } from 'vue'
 import { defineClientConfig } from 'vuepress/client'
@@ -22,8 +21,6 @@ export default defineClientConfig({
 
     app.component('Content', Content)
     if (!hasGlobalComponent('Badge')) app.component('Badge', Badge)
-    if (!hasGlobalComponent('VPCodeGroup'))
-      app.component('VPCodeGroup', VPCodeGroup)
 
     // compat with @vuepress/plugin-docsearch and @vuepress/plugin-search
     app.component('NavbarSearch', () => {

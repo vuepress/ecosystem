@@ -2,7 +2,9 @@
  ** The style here is designed to accommodate the differences in plugins between new and old themes.
  */
 
-/* plugin-docsearch */
+/**
+ * plugin-docsearch
+ * ----------------------------------------------------------------- */
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-accent);
   --docsearch-highlight-color: var(--docsearch-primary-color);
@@ -224,9 +226,9 @@
   }
 }
 
-/* plugin-docsearch */
-
-/* plugin-search */
+/**
+ * plugin-search
+ * ----------------------------------------------------------------- */
 
 .vp-navbar-search {
   --search-bg-color: var(--vp-c-bg);
@@ -261,4 +263,19 @@
   }
 }
 
-/* plugin-search */
+/**
+ * plugin-markdown-tab
+ * ----------------------------------------------------------------- */
+.vp-tabs .vp-code-tabs .vp-code-tabs-nav,
+.vp-tabs div[class*='language-'] {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.vp-tabs .vp-tab > *:nth-child(2) {
+  margin-top: 0;
+}
+
+.vp-tabs .vp-tab > *:last-child {
+  margin-bottom: 0;
+}

@@ -3,8 +3,6 @@ import { defineDocSearchConfig } from '@vuepress/plugin-docsearch/client'
 import { defineClientConfig } from 'vuepress/client'
 import CommentPage from './layouts/CommentPage.vue'
 
-import './styles/index.scss'
-
 defineGiscusConfig({
   repo: 'vuepress/ecosystem',
   repoId: 'R_kgDOKPxScA',

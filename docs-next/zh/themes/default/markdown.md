@@ -382,13 +382,17 @@ export default {
 **输入：**
 
 ````md
-::: code-group
+::: code-tabs
 
-```ts [FOO]
+@tab Foo
+
+```ts
 const foo = 'foo'
 ```
 
-```ts [BAR]
+@tab Bar
+
+```ts
 const bar = 'bar'
 ```
 
@@ -397,30 +401,38 @@ const bar = 'bar'
 
 **输出：**
 
-::: code-group
+::: code-tabs
 
-```ts [FOO]
+@tab Foo
+
+```ts
 const foo = 'foo'
 ```
 
-```ts [BAR]
+@tab Bar
+
+```ts
 const bar = 'bar'
 ```
 
 :::
 
-还可以添加`active`选项以默认显示代码块。
+还可以添加`:active`选项以默认显示代码块。
 
 **输入：**
 
 ````md
-::: code-group
+::: code-tabs
 
-```ts [FOO]
+@tab Foo
+
+```ts
 const foo = 'foo'
 ```
 
-```ts [BAR] active
+@tab:active Bar
+
+```ts
 const bar = 'bar'
 ```
 
@@ -429,13 +441,17 @@ const bar = 'bar'
 
 **输出：**
 
-::: code-group
+::: code-tabs
 
-```ts [FOO]
+@tab Foo
+
+```ts
 const foo = 'foo'
 ```
 
-```ts [BAR] active
+@tab:active Bar
+
+```ts
 const bar = 'bar'
 ```
 

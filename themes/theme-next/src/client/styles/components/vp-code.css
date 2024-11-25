@@ -49,6 +49,7 @@ html:not([data-theme='dark']) .vp-code span {
   overflow-x: auto;
 
   margin: 16px -24px;
+  border-radius: 0;
 
   background-color: var(--vp-code-block-bg);
 
@@ -100,7 +101,7 @@ html:not([data-theme='dark']) .vp-code span {
 
   margin: 0;
   padding: 20px 0;
-  border-radius: none;
+  border-radius: 0;
 
   background: transparent;
 

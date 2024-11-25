@@ -51,6 +51,7 @@ export default defaultTheme({
               'bat',
               'cs',
               'cpp',
+              'yaml',
             ],
             themes: {
               light: 'one-light',
