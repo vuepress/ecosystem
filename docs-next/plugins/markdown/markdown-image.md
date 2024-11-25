@@ -37,7 +37,7 @@ The plugin will enable image lazyload using native HTML5 features, so only it's 
 
 ### Image Mark
 
-When you set `mark: true` in plugin options, you can mark pictures by `#light` and `#dark` suffix to let them be displayed under certain color mode. We support both GitHub's markup and the easy markup .
+When you set `mark: true` in plugin options, you can mark pictures by `#light` and `#dark` suffix to let them be displayed under certain color mode.
 
 <VPSwitchAppearance /> (Try to toggle theme mode)
 
@@ -148,5 +148,5 @@ If the image is standalone in a line, wrapped or not wrapped by link, it will be
 - Details: Whether enable Obsidian image size support.
 
 <script setup>
-import VPSwitchAppearance from '@vuepress/theme-default/components/VPSwitchAppearance.vue'
+import VPSwitchAppearance from '@theme/VPSwitchAppearance.vue'
 </script>

@@ -5,7 +5,9 @@ const IS_PROD = process.env.NODE_ENV === 'production'
 
 export default defaultTheme({
   logo: '/images/logo.png',
+  hostname: 'https://ecosystem.vuejs.press',
 
+  // theme-level locales config
   locales: {
     '/': {
       navbar: navbarEn,
@@ -31,6 +33,38 @@ export default defaultTheme({
   },
   themePlugins: {
     git: IS_PROD,
-    shiki: process.env.HIGHLIGHTER !== 'shiki',
+    shiki:
+      process.env.HIGHLIGHTER !== 'prismjs'
+        ? {
+            langs: [
+              'bash',
+              'diff',
+              'json',
+              'md',
+              'scss',
+              'ts',
+              'vue',
+              'less',
+              'java',
+              'py',
+              'vb',
+              'bat',
+              'cs',
+              'cpp',
+            ],
+            themes: {
+              light: 'one-light',
+              dark: 'one-dark-pro',
+            },
+            lineNumbers: 10,
+            notationDiff: true,
+            notationErrorLevel: true,
+            notationFocus: true,
+            notationHighlight: true,
+            notationWordHighlight: true,
+            whitespace: true,
+            collapsedLines: false,
+          }
+        : false,
   },
 })

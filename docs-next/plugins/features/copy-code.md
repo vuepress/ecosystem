@@ -4,7 +4,7 @@
 
 This plugin will automatically add a copy button to the top right corner of each code block on PC devices.
 
-The default selector matches `@vuepress/theme-default`, so you might need to change it when integrating your own theme.
+This plugin has been integrated into the default theme.
 
 ## Usage
 

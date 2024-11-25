@@ -99,11 +99,21 @@ export const sidebarZh: Sidebar = {
   '/zh/plugins/markdown/': [
     'append-date',
     'markdown-container',
+    'markdown-ext',
     'markdown-image',
+    'markdown-include',
     'markdown-hint',
     'markdown-math',
+    'markdown-stylize',
+    'markdown-tab',
     'links-check',
     'prismjs',
+    {
+      text: 'revealjs',
+      prefix: 'revealjs/',
+      link: 'revealjs/',
+      items: ['', 'demo', 'themes'],
+    },
     'shiki',
   ],
 
@@ -124,7 +134,7 @@ export const sidebarZh: Sidebar = {
     'register-components',
   ],
 
-  '/zh/plugins/search/': ['docsearch', 'search'],
+  '/zh/plugins/search/': ['guidelines', 'docsearch', 'search', 'slimsearch'],
 
   '/zh/plugins/seo/': [
     {

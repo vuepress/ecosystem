@@ -147,5 +147,5 @@ interface ImageMarkOptions {
 - 详情：是否启用 Obsidian 图片尺寸支持。
 
 <script setup>
-import VPSwitchAppearance from '@vuepress/theme-default/components/VPSwitchAppearance.vue'
+import VPSwitchAppearance from '@theme/VPSwitchAppearance.vue'
 </script>

@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/plugin-git" />
 
-该插件会收集你的页面的 Git 信息，包括创建和更新时间、贡献者等。
+该插件会收集你的页面的 Git 信息，包括创建和更新时间、贡献者、变更历史记录等。
 
 默认主题的 [lastUpdated](../../themes/default/config.md#lastupdated) 和 [contributors](../../themes/default/config.md#contributors) 就是由该插件支持的。
 
@@ -60,13 +60,119 @@ export default {
 
 ### contributors
 
-- 类型： `boolean`
+- 类型： `boolean | ContributorsOptions`
+
+  ```ts
+  interface ContributorInfo {
+    /**
+     * 贡献者在 git 托管服务中的用户名
+     */
+    username: string
+    /**
+     * 贡献者显示在页面上的名字， 默认为 `username`
+     */
+    name?: string
+    /**
+     * 贡献者别名， 由于贡献者可能在本地 git 配置中保存的 用户名与 git 托管服务用户名不一致，
+     * 这时候可以通过别名映射到真实的用户名
+     */
+    alias?: string[] | string
+    /**
+     * 贡献者头像地址
+     * 如果 git 托管服务为 `github`，则可以忽略不填，由插件自动填充
+     */
+    avatar?: string
+    /**
+     * 贡献者访问地址
+     * 如果 git 托管服务为 `github`，则可以忽略不填，由插件自动填充
+     */
+    url?: string
+  }
+
+  interface ContributorsOptions {
+    /**
+     * 贡献者信息
+     */
+    info?: ContributorInfo[]
+
+    /**
+     * 是否在贡献者信息中添加头像
+     * @default false
+     */
+    avatar?: boolean
+
+    /**
+     * 贡献者转换函数，例如去重和排序
+     * 该函数接收一个贡献者信息数组，返回一个新的贡献者信息数组。
+     */
+    transform?: (contributors: GitContributor[]) => GitContributor[]
+  }
+  ```
 
 - 默认值： `true`
 
 - 详情：
 
   是否收集页面的贡献者。
+
+### changelog
+
+- 类型： `false | ChangelogOptions`
+
+  ```ts
+  interface ChangelogOptions {
+    /**
+     * 最大变更记录条数
+     */
+    maxCount?: number
+
+    /**
+     * git 仓库的访问地址，例如：https://github.com/vuepress/ecosystem
+     */
+    repoUrl?: string
+
+    /**
+     * 提交记录访问地址模式
+     * 默认值：':repo/commit/:hash'
+     *
+     * - `:repo` - git 仓库的访问地址
+     * - `:hash` - 提交记录的 hash
+     */
+    commitUrlPattern?: string
+
+    /**
+     * issue 访问地址模式
+     * 默认值：':repo/issues/:issue'
+     *
+     * - `:repo` - git 仓库的访问地址
+     * - `:issue` - issue 的 id
+     */
+    issueUrlPattern?: string
+
+    /**
+     * tag 访问地址模式,
+     * 默认值：':repo/releases/tag/:tag'
+     *
+     * - `:repo` - git 仓库的访问地址
+     * - `:tag` - tag 的名称
+     */
+    tagUrlPattern?: string
+  }
+  ```
+
+- 默认值： `false`
+
+- 详情：
+
+  是否收集页面变更历史记录。
+
+### filter
+
+- 类型： `(page: Page) => boolean`
+
+- 详情：
+
+  页面过滤器，如果返回 `true` ，该页面将收集 git 信息
 
 ## Frontmatter
 
@@ -87,6 +193,26 @@ gitInclude:
   - relative/path/to/file2
 ---
 ```
+
+### contributors
+
+- 类型: `boolean | string[]`
+
+- 详情：
+
+  当前页面是否获取贡献者信息，该值会覆盖 [contributors](#contributors) 配置项。
+
+  - `true` - 获取贡献者信息
+  - `false` - 不获取贡献者信息
+  - `string[]` - 额外的贡献者名单，有时候页面存在额外的贡献者，可以通过这个配置项来指定额外的贡献者名单来获取贡献者信息
+
+### changelog
+
+- 类型： `boolean`
+
+- 详情：
+
+  当前页面是否获取变更历史记录，该值会覆盖 [changelog](#changelog) 配置项。
 
 ## 页面数据
 
@@ -135,6 +261,8 @@ interface GitContributor {
   name: string
   email: string
   commits: number
+  avatar?: string
+  url?: string
 }
 ```
 
@@ -143,3 +271,53 @@ interface GitContributor {
   页面的贡献者信息。
 
   该属性将会包含 [gitInclude](#gitinclude) 所列文件的贡献者。
+
+### git.changelog
+
+- 类型： `GitChangelog[]`
+
+```ts
+interface GitChangelog {
+  /**
+   * 提交 hash
+   */
+  hash: string
+  /**
+   * Unix 时间戳，单位毫秒，提交时间
+   */
+  date: number
+  /**
+   * 提交信息
+   */
+  message: string
+  /**
+   * 提交者名称
+   */
+  author: string
+  /**
+   * 提交者邮箱
+   */
+  email: string
+  /**
+   * 提交访问地址
+   */
+  commitUrl?: string
+  /**
+   * tag 访问地址
+   */
+  tagUrl?: string
+  /**
+   * 协同作者列表
+   */
+  coAuthors?: {
+    name: string
+    email: string
+  }[]
+}
+```
+
+- 详情：
+
+  页面的变更历史记录。
+
+  该属性将会包含 [gitInclude](#gitinclude) 所列文件的变更历史记录。

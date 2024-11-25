@@ -7,5 +7,5 @@
       "@theme/*": ["./src/client/components/*", "./src/client/composables/*"]
     }
   },
-  "include": ["./src"]
+  "include": ["./src", "./tests"]
 }

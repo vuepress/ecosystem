@@ -104,12 +104,12 @@
 
 ### update
 
-- Type: `"disabled" | "available" | "hint" | "force"`
+- Type: `"disable" | "available" | "hint" | "force"`
 - Default: `"available"`
 - Details:
   Control logic when new content is found.
 
-  - `"disabled"`: Do nothing even when new service worker is available. After new service work succeeds installing and starts waiting, it will control page and provide new content in next visit.
+  - `"disable"`: Do nothing even when new service worker is available. After new service work succeeds installing and starts waiting, it will control page and provide new content in next visit.
 
   - `"available"`: Only display update popup when the new service worker is available
 

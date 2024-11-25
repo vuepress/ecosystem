@@ -4,6 +4,8 @@
 
 Add gfm alerts and hint containers to your VuePress site.
 
+This plugin has been integrated into the default theme.
+
 ## Usage
 
 ```bash
@@ -107,6 +109,12 @@ The plugin also provides an `alert` option to support gfm alerts:
 
 - Type: `boolean`
 - Details: Whether enable gfm alert support.
+
+### injectStyles
+
+- Type: `boolean`
+- Default: `true`
+- Details: Whether to inject default styles.
 
 ### locales
 

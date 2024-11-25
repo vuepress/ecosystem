@@ -93,16 +93,17 @@ export default {
 
 ### lineNumbers
 
-- Type: `boolean | number`
+- Type: `boolean | number | 'disable'`
 
 - Default: `true`
 
 - Details:
 
-  - `true`: enable line numbers.
-  - `false`: disabled line numbers.
   - `number`: the minimum number of lines to enable line numbers.
     For example, if you set it to 4, line numbers will only be enabled when your code block has at least 4 lines of code.
+  - `true`: enable line numbers globally.
+  - `false`: disable line numbers globally.
+  - `'disable'`: Completely disable line numbers, `:line-numbers` will not take effect.
 
   You can add `:line-numbers` / `:no-line-numbers` mark in your fenced code blocks to override the value set in config, and customize the beginning number by adding `=` after `:line-numbers`. For example, `:line-numbers=2` means the line numbers in code blocks will start from `2`.
 
@@ -192,6 +193,207 @@ export default defineUserConfig({
     logo: 'https://vuejs.org/images/logo.png',
   }),
 })
+```
+
+### collapsedLines
+
+- Type: `boolean | number | 'disable'`
+
+- Default: `'disable'`
+
+- Details: Default behavior of code block collapsing.
+
+  - `number`: collapse the code block starting from line `number` by default, for example, `12` means collapsing the code block starting from line 12.
+  - `true`: Equivalent to `15`, collapsing the code block starting from line 15 by default.
+  - `false`: Add support for code block collapsing, but disable it globally
+  - `'disable'`: Completely disable code block collapsing, `:collapsed-lines` will not take effect.
+
+  To override global settings, you can add the `:collapsed-lines` / `:no-collapsed-lines` marker to the code block. You can also add `=` after `:collapsed-lines` to customize the starting line number being collapsed, for example, `:collapsed-lines=12` means collapsing the code block starting from line 12.
+
+**Input:**
+
+````md
+<!-- Collapsed by default starting from line 15 -->
+
+```css :collapsed-lines
+html {
+  margin: 0;
+  background: black;
+  height: 100%;
+}
+/* ... more code */
+```
+
+<!-- Disabled collapsed -->
+
+```css :no-collapsed-lines
+html {
+  margin: 0;
+  background: black;
+  height: 100%;
+}
+/* ... more code */
+```
+
+<!-- Collapsed starting from line 10 -->
+
+```css :collapsed-lines=10
+html {
+  margin: 0;
+  background: black;
+  height: 100%;
+}
+/* ... more code */
+```
+````
+
+**Output:**
+
+<!-- Collapsed by default starting from line 15 -->
+
+```css :collapsed-lines
+html {
+  margin: 0;
+  background: black;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: inherit;
+}
+
+/* the three main rows going down the page */
+
+body > div {
+  height: 25%;
+}
+
+.thumb {
+  float: left;
+  width: 25%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main {
+  display: none;
+}
+
+.blowup {
+  display: block;
+  position: absolute;
+  object-fit: contain;
+  object-position: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+}
+
+.darken {
+  opacity: 0.4;
+}
+```
+
+<!-- Disabled collapsed -->
+
+```css :no-collapsed-lines
+html {
+  margin: 0;
+  background: black;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: inherit;
+}
+
+/* the three main rows going down the page */
+
+body > div {
+  height: 25%;
+}
+
+.thumb {
+  float: left;
+  width: 25%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main {
+  display: none;
+}
+
+.blowup {
+  display: block;
+  position: absolute;
+  object-fit: contain;
+  object-position: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+}
+
+.darken {
+  opacity: 0.4;
+}
+```
+
+<!-- Collapsed starting from line 10 -->
+
+```css :collapsed-lines=10
+html {
+  margin: 0;
+  background: black;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: inherit;
+}
+
+/* the three main rows going down the page */
+
+body > div {
+  height: 25%;
+}
+
+.thumb {
+  float: left;
+  width: 25%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main {
+  display: none;
+}
+
+.blowup {
+  display: block;
+  position: absolute;
+  object-fit: contain;
+  object-position: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+}
+
+.darken {
+  opacity: 0.4;
+}
 ```
 
 ::: tip
@@ -501,7 +703,7 @@ In the new version, some functionalities similar to [shiki](https://shiki.style/
 
   Adds extra wrapper outside `<pre>` tag or not.
 
-  The wrapper is required by the `lineNumbers`. That means, if you disable `preWrapper`, the line line numbers will also be disabled.
+  The wrapper is required by the `lineNumbers` and `collapsedLines`. That means, if you disable `preWrapper`, the line line numbers and collapsed lines will also be disabled.
 
   ::: tip
 

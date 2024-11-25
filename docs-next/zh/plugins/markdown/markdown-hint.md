@@ -4,6 +4,8 @@
 
 向你的 VuePress 站点添加 GFM 警告和提示容器。
 
+该插件已经集成到默认主题中。
+
 ## 使用方法
 
 ```bash
@@ -107,6 +109,12 @@ const a = 1
 
 - 类型：`boolean`
 - 详情：是否启用 GFM 警告支持。
+
+### injectStyles
+
+- 类型：`boolean`
+- 默认值：`true`
+- 详情：是否注入默认样式。
 
 ### locales
 

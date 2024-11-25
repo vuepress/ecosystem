@@ -56,7 +56,7 @@ export default {
 
 <style lang="scss">
 /* 从该插件的调色板中引入变量 */
-@import '@vuepress/plugin-palette/palette';
+@use '@vuepress/plugin-palette/palette' as *;
 
 /* 设置变量的默认值 */
 $color: red !default;

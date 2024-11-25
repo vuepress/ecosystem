@@ -218,9 +218,6 @@ importers:
 
   docs-next:
     dependencies:
-      '@mdit/plugin-footnote':
-        specifier: 0.13.1
-        version: 0.13.1(markdown-it@14.1.0)
       '@vuepress/bundler-vite':
         specifier: 2.0.0-rc.18
         version: 2.0.0-rc.18(@types/node@22.9.1)(jiti@1.21.6)(lightningcss@1.28.1)(sass-embedded@1.81.0)(sass@1.81.0)(terser@5.36.0)(tsx@4.19.2)(typescript@5.6.3)(yaml@2.4.5)
@@ -251,12 +248,21 @@ importers:
       '@vuepress/plugin-feed':
         specifier: workspace:*
         version: link:../plugins/blog/plugin-feed
+      '@vuepress/plugin-markdown-ext':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-ext
       '@vuepress/plugin-markdown-image':
         specifier: workspace:*
         version: link:../plugins/markdown/plugin-markdown-image
+      '@vuepress/plugin-markdown-include':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-include
       '@vuepress/plugin-markdown-math':
         specifier: workspace:*
         version: link:../plugins/markdown/plugin-markdown-math
+      '@vuepress/plugin-markdown-stylize':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-stylize
       '@vuepress/plugin-medium-zoom':
         specifier: workspace:*
         version: link:../plugins/features/plugin-medium-zoom
@@ -278,12 +284,18 @@ importers:
       '@vuepress/plugin-register-components':
         specifier: workspace:*
         version: link:../plugins/tools/plugin-register-components
+      '@vuepress/plugin-revealjs':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-revealjs
       '@vuepress/plugin-search':
         specifier: workspace:*
         version: link:../plugins/search/plugin-search
       '@vuepress/theme-default':
         specifier: workspace:*
         version: link:../themes/theme-next
+      katex:
+        specifier: 0.16.11
+        version: 0.16.11
       mathjax-full:
         specifier: 3.2.2
         version: 3.2.2

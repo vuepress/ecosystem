@@ -9,7 +9,6 @@
     "docs:serve": "http-server -a localhost .vuepress/dist"
   },
   "dependencies": {
-    "@mdit/plugin-footnote": "0.13.1",
     "@vuepress/bundler-vite": "2.0.0-rc.18",
     "@vuepress/bundler-webpack": "2.0.0-rc.18",
     "@vuepress/helper": "workspace:*",
@@ -21,6 +20,10 @@
     "@vuepress/plugin-register-components": "workspace:*",
     "@vuepress/plugin-pwa": "workspace:*",
     "@vuepress/plugin-search": "workspace:*",
+    "@vuepress/plugin-markdown-ext": "workspace:*",
+    "@vuepress/plugin-markdown-include": "workspace:*",
+    "@vuepress/plugin-markdown-stylize": "workspace:*",
+    "@vuepress/plugin-revealjs": "workspace:*",
     "@vuepress/plugin-back-to-top": "workspace:*",
     "@vuepress/plugin-copy-code": "workspace:*",
     "@vuepress/plugin-markdown-image": "workspace:*",
@@ -31,6 +34,7 @@
     "@vuepress/plugin-prismjs": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
     "@vuepress/plugin-cache": "workspace:*",
+    "katex": "0.16.11",
     "mathjax-full": "3.2.2",
     "sass-embedded": "1.81.0",
     "sass-loader": "^16.0.3",
