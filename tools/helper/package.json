@@ -32,6 +32,7 @@
     "./noopModule": "./lib/client/noopModule.js",
     "./colors.css": "./lib/client/styles/colors.css",
     "./normalize.css": "./lib/client/styles/normalize.css",
+    "./sr-only.css": "./lib/client/styles/sr-only.css",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
