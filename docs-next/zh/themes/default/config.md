@@ -103,14 +103,14 @@ type DefaultThemeImage =
 
 - 详情：
 
-  是否启用深色模式 (通过将 `.dark` 类添加到 `<html>` 元素)。
+  是否启用深色模式 (通过将 `data-theme="dark` 属性添加到 `<html>` 元素)。
 
   - 如果该选项设置为 `true`，则默认主题将由用户的首选配色方案决定。
   - 如果该选项设置为 `dark`，则默认情况下主题将是深色的，除非用户手动切换它。
   - 如果该选项设置为 `false`，用户将无法切换主题。
 
   此选项注入一个内联脚本，使用 `vuepress-color-scheme` key 从本地存储恢复用户设置。
-  这确保在呈现页面之前应用 `.dark` 类以避免闪烁。
+  这确保在呈现页面之前应用 `data-theme="dark` 属性，以避免闪烁。
 
   `appearance.initialValue` 只能是 `'dark' | undefined` 。
 
@@ -131,8 +131,8 @@ export default {
   theme: defaultTheme({
     navbar: [
       // NavItem
-      { text: 'Foo', link: '/foo/' },
-      { text: 'Bar', link: '/bar/' },
+      { text: 'Foo', link: '/foo' },
+      { text: 'Bar', link: '/bar' },
       // ...
     ],
   }),
@@ -164,7 +164,7 @@ export default {
 
 请注意，下拉菜单标题 (上例中的 `Dropdown Menu`) 不能具有 `link` 属性，因为它是打开下拉对话框的按钮。
 
-还可以通过传入更多嵌套项来进一步向下拉菜单项添加“sections”。
+还可以通过传入更多嵌套项来进一步向下拉菜单项添加 “sections”。
 
 ```ts
 export default {
@@ -271,52 +271,53 @@ export default {
 ```
 
 ```ts
-export type Sidebar = SidebarItem[] | SidebarMulti
+export type Sidebar = (SidebarItem | string)[] | SidebarMulti | 'structure'
 
-export interface SidebarMulti {
-  [path: string]: SidebarItem[]
+export type SidebarMulti = Record<
+  string,
+  | (SidebarItem | string)[]
+  | 'structure'
+  | { items: (SidebarItem | string)[] | 'structure'; prefix?: string }
+>
+
+export interface SidebarItem {
+  /**
+   * 侧边栏项目文本
+   */
+  text?: string
+
+  /**
+   * 侧边栏项目链接
+   */
+  link?: string
+
+  /**
+   * 侧边栏子项目列表
+   */
+  items?: SidebarItem[]
+
+  /**
+   * 当前子项目列表是否可折叠
+   *
+   * - 如果未指定，分组不可折叠
+   * - 如果为 `true`，分组可折叠且默认折叠
+   * - 如果为 `false`，分组可折叠且默认展开
+   */
+  collapsed?: boolean
+
+  /**
+   * 子项目的路径前缀
+   */
+  prefix?: string
+
+  /**
+   * 自定义上一页/下一页页脚显示的文本。
+   */
+  docFooterText?: string
+
+  rel?: string
+  target?: string
 }
-
-export type SidebarItem =
-  | string
-  | {
-      /**
-       * The text label of the item.
-       */
-      text?: string
-
-      /**
-       * The link of the item.
-       */
-      link?: string
-
-      /**
-       * The children of the item.
-       */
-      items?: SidebarItem[]
-
-      /**
-       * If not specified, group is not collapsible.
-       *
-       * If `true`, group is collapsible and collapsed by default
-       *
-       * If `false`, group is collapsible but expanded by default
-       */
-      collapsed?: boolean
-
-      /**
-       * Base path for the children items.
-       */
-      base?: string
-
-      /**
-       * Customize text that appears on the footer of previous/next page.
-       */
-      docFooterText?: string
-
-      rel?: string
-      target?: string
-    }
 ```
 
 ### aside
@@ -325,13 +326,15 @@ export type SidebarItem =
 
 - 默认值： `true`
 
+- 详情：
+
+  是否在 `doc` 布局中启用页内侧边栏
+
   - 将此值设置为 `false` 可禁用 aside 容器。
   - 将此值设置为 `true` 将在页面右侧渲染。
   - 将此值设置为 `left` 将在页面左侧渲染。
 
-如果想对所有页面禁用它，应该使用 `outline: false` 。
-
-您可以通过页面的[aside](./frontmatter.md#aside) frontmatter 覆盖这个全局选项。
+您可以通过页面的 [aside](./frontmatter.md#aside) frontmatter 覆盖这个全局选项。
 
 ### outline
 
@@ -342,6 +345,11 @@ export type SidebarItem =
 - 详情：
 
   在侧边栏中自定义大纲的标题级别。
+
+  - `false` 会禁用大纲。
+  - `number` 单个数字表示只显示该级别的标题。
+  - `[number, number]` 表示如果传递的是一个元组，第一个数字是最小级别，第二个数字是最大级别。
+  - `'deep'` 等同于 `[2, 6]`，表示显示从 `<h2>` 到 `<h6>` 的所有标题。
 
   您可以通过页面中的 [outline](./frontmatter.md#outline) frontmatter 覆盖此全局选项。
 
@@ -526,33 +534,6 @@ export default {
   是否启用 _贡献者列表_ 。
 
   你可以通过页面的 [contributors](./frontmatter.md#contributors) frontmatter 来覆盖这个全局配置。要注意的是，如果你已经将该选项设为了 `false` ，那么这个功能会被完全禁用，并且无法在 locales 或页面 frontmatter 中启用。
-
-### docFooter
-
-- 类型： `DocFooter`
-
-- 详情：
-
-  可用于自定义出现在上一页和下一页链接上方的文本。
-  如果不是用英语编写文档，则非常有帮助。还可以用于全局禁用上一页/下一页链接。
-
-```ts
-export default {
-  theme: defaultTheme({
-    docFooter: {
-      prev: 'Previous page',
-      next: 'Next page',
-    },
-  }),
-}
-```
-
-```ts
-export interface DocFooter {
-  prev?: string | false
-  next?: string | false
-}
-```
 
 ### externalLinkIcon
 

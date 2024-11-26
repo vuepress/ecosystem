@@ -90,13 +90,13 @@ type DefaultThemeImage =
 
 - Details:
 
-  Whether to enable dark mode (by adding the `.dark` class to the `<html>` element).
+  Whether to enable dark mode (by adding the `data-theme="dark` attribute to the `<html>` element).
 
   - If the option is set to `true`, the default theme will be determined by the user's preferred color scheme.
   - If the option is set to `'dark'`, the theme will be dark by default, unless the user manually toggles it.
   - If the option is set to `false`, users will not be able to toggle the theme.
 
-  This option injects an inline script that restores users settings from local storage using the `vuepress-color-scheme` key. This ensures the `.dark` class is applied before the page is rendered to avoid flickering.
+  This option injects an inline script that restores users settings from local storage using the `vuepress-color-scheme` key. This ensures the `data-theme="dark"` attribute is applied before the page is rendered to avoid flickering.
 
   `appearance.initialValue` can only be `'dark' | undefined`.
 
@@ -117,8 +117,8 @@ export default {
   theme: defaultTheme({
     navbar: [
       // NavItem
-      { text: 'Foo', link: '/foo/' },
-      { text: 'Bar', link: '/bar/' },
+      { text: 'Foo', link: '/foo' },
+      { text: 'Bar', link: '/bar' },
       // ...
     ],
   }),
@@ -212,11 +212,14 @@ export default {
 ```
 
 ```ts
-export type Sidebar = SidebarItem[] | SidebarMulti
+export type Sidebar = (SidebarItem | string)[] | SidebarMulti | 'structure'
 
-export interface SidebarMulti {
-  [path: string]: SidebarItem[] | { items: SidebarItem[]; base: string }
-}
+export type SidebarMulti = Record<
+  string,
+  | (SidebarItem | string)[]
+  | 'structure'
+  | { items: (SidebarItem | string)[] | 'structure'; prefix?: string }
+>
 
 export interface SidebarItem {
   /**
@@ -235,18 +238,17 @@ export interface SidebarItem {
   items?: SidebarItem[]
 
   /**
-   * If not specified, group is not collapsible.
-   *
-   * If `true`, group is collapsible and collapsed by default
-   *
-   * If `false`, group is collapsible but expanded by default
+   * Whether the current group is collapsible
+   * - If not specified, group is not collapsible.
+   * - If `true`, group is collapsible and collapsed by default
+   * - If `false`, group is collapsible but expanded by default
    */
   collapsed?: boolean
 
   /**
-   * Base path for the children items.
+   * prefix path for the children items.
    */
-  base?: string
+  prefix?: string
 
   /**
    * Customize text that appears on the footer of previous/next page.
@@ -264,11 +266,13 @@ export interface SidebarItem {
 
 - Default: `true`
 
+- Details:
+
+  Whether to enable page internal aside in `doc` layout.
+
   - Setting this value to `false` prevents rendering of aside container.
   - Setting this value to `true` renders the aside to the right.
   - Setting this value to `'left'` renders the aside to the left.
-
-  If you want to disable it for all viewports, you should use `outline: false` instead.
 
   You can override this global option via [aside](./frontmatter.md#aside) frontmatter in your pages.
 
@@ -280,7 +284,12 @@ export interface SidebarItem {
 
 - Details:
 
-  Custom header levels of outline in the aside component.
+  Customize the heading levels of the outline in the aside.
+
+  - `false` will disable the outline.
+  - `number` A single number indicates that only headings at that level will be displayed.
+  - `[number, number]` Indicates that if a tuple is passed, the first number is the minimum level and the second number is the maximum level.
+  - `'deep'` is equivalent to `[2, 6]`, indicating that all headings from `<h2>` to `<h6>` will be displayed.
 
   You can override this global option via [outline](./frontmatter.md#outline) frontmatter in your pages.
 
@@ -465,42 +474,6 @@ The generated link will look like `'https://gitlab.com/owner/name/-/edit/master/
   Enable the _contributors list_ or not.
 
   You can override this global option via [contributors](./frontmatter.md#contributors) frontmatter in your pages. Notice that if you have already set this option to `false`, this feature will be disabled totally and could not be enabled in locales nor page frontmatter.
-
-### docFooter
-
-- Type: `DocFooter`
-
-- Details:
-
-  Can be used to customize text appearing above previous and next links. Helpful if not writing docs in English. Also can be used to disable prev/next links globally.
-
-```ts
-export default {
-  theme: defaultTheme({
-    docFooter: {
-      prev: 'Previous page',
-      next: 'Next page',
-    },
-  }),
-}
-```
-
-```ts
-export interface DocFooter {
-  prev?: string | false
-  next?: string | false
-}
-```
-
-### returnToTop
-
-- Type: `boolean`
-
-- Default: `true`
-
-- Details:
-
-  Enable the _return to top_ button or not.
 
 ### externalLinkIcon
 

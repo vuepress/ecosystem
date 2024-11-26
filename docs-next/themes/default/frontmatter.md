@@ -388,3 +388,61 @@ prev: ../../guide/getting-started.md
   If you don't set this frontmatter, the link will be inferred from the sidebar config.
 
   The type is the same as [prev](#prev) frontmatter.
+
+### dir
+
+Sidebar group information used for structure sidebar.
+
+#### dir.text
+
+- Type: `string`
+
+- Default: title of `README.md`
+
+- Details:
+
+  Group title.
+
+#### dir.collapsible
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Whether group is collapsible
+
+#### dir.link
+
+- Type: `boolean`
+
+- Default: `false`
+
+- Details:
+
+- Whether Dir is clickable.
+
+  :::info Setting to `true` means setting group link to link of `README.md`.
+  :::
+
+#### dir.index
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Whether index current dir
+
+#### dir.order
+
+- Type: `number`
+
+- Details:
+
+  Group order in sidebar.
+
+  - By filling in a positive number, the page will appear in the front, while the smaller number comes to the front.
+  - By filling in a negative number, the page will appear in the end, while the greater number comes to the front. (e.g. -1 is after -2)

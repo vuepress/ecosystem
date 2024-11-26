@@ -161,6 +161,7 @@ export const sidebarEn: Sidebar = {
         'config',
         'plugin',
         'locale',
+        'sidebar',
         'frontmatter',
         'components',
         'markdown',

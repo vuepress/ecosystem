@@ -161,6 +161,7 @@ export const sidebarZh: Sidebar = {
         'config',
         'plugin',
         'locale',
+        'sidebar',
         'frontmatter',
         'components',
         'markdown',

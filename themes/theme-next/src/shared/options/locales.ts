@@ -11,6 +11,14 @@ export type DefaultThemeData = ThemeData<DefaultThemeLocaleData>
 
 export interface DefaultThemeLocaleData extends LocaleData {
   /**
+   * Custom site title in navbar. If the value is undefined,
+   * `userConfig.title` will be used.
+   *
+   * 自定义导航栏中的站点标题。如果值为 `undefined`，将使用 `userConfig.title`
+   */
+  siteTitle?: string | false
+
+  /**
    * The logo file of the site.
    *
    * 站点 Logo
@@ -27,12 +35,49 @@ export interface DefaultThemeLocaleData extends LocaleData {
   logoLink?: string | { link?: string; rel?: string; target?: string }
 
   /**
-   * Custom site title in navbar. If the value is undefined,
-   * `userConfig.title` will be used.
+   * Appearance color mode
    *
-   * 自定义导航栏中的站点标题。如果值为 `undefined`，将使用 `userConfig.title`
+   * 是否开启 浅色/深色模式
+   *
+   * @default true
    */
-  siteTitle?: string | false
+  appearance?:
+    | boolean
+    | 'dark'
+    | 'force-dark'
+    | (Omit<
+        UseDarkOptions,
+        'initialValue' | 'onChanged' | 'storage' | 'storageKey' | 'storageRef'
+      > & { initialValue?: 'dark' })
+
+  /**
+   * The navbar items.
+   *
+   * 导航栏
+   */
+  navbar?: NavItem[]
+
+  /**
+   * The sidebar items.
+   *
+   * 侧边栏
+   */
+  sidebar?: Sidebar
+
+  /**
+   * Whether to enable page internal aside in `doc` layout.
+   * - Set to `false` to prevent rendering of aside container.
+   * - Set to `true` to render the aside to the right.
+   * - Set to `left` to render the aside to the left.
+   *
+   * 是否在 `doc` 布局中启用页内侧边栏
+   * - 将此值设置为 `false` 可禁用 aside 容器。
+   * - 将此值设置为 `true` 将在页面右侧渲染。
+   * - 将此值设置为 `left` 将在页面左侧渲染。
+   *
+   * @default true
+   */
+  aside?: boolean | 'left'
 
   /**
    * Custom header levels of outline in the aside component.
@@ -53,80 +98,26 @@ export interface DefaultThemeLocaleData extends LocaleData {
   outlineTitle?: string
 
   /**
-   * The navbar items.
+   * The social links to be displayed at the end of the nav bar. Perfect for
+   * placing links to social services such as GitHub, Twitter, Facebook, etc.
    *
-   * 导航栏
+   * 在导航栏中显示的社交链接， 适合放置与 GitHub， Twitter， Facebook 等社交服务相关的链接
    */
-  navbar?: NavItem[]
+  socialLinks?: SocialLink[]
 
   /**
-   * The sidebar items.
+   * The footer configuration.
    *
-   * 侧边栏
+   * 页脚
    */
-  sidebar?: Sidebar
+  footer?: Footer
 
   /**
-   * The sidebar menu label
+   * Customize text of 404 page.
    *
-   * 侧边栏 菜单标签
-   *
-   * @default 'Menu'
+   * 定制404页面的文本。
    */
-  sidebarMenuLabel?: string
-
-  /**
-   * Set to `false` to prevent rendering of aside container.
-   *
-   * Set to `true` to render the aside to the right.
-   *
-   * Set to `left` to render the aside to the left.
-   *
-   * 将此值设置为 `false` 可禁用 aside 容器。
-   *
-   * 将此值设置为 `true` 将在页面右侧渲染。
-   *
-   * 将此值设置为 `left` 将在页面左侧渲染。
-   *
-   * @default true
-   */
-  aside?: boolean | 'left'
-
-  /**
-   * Appearance color mode
-   *
-   * 是否开启 浅色/深色模式
-   *
-   * @default true
-   */
-  appearance?:
-    | boolean
-    | 'dark'
-    | 'force-dark'
-    | (Omit<
-        UseDarkOptions,
-        'initialValue' | 'onChanged' | 'storage' | 'storageKey' | 'storageRef'
-      > & { initialValue?: 'dark' })
-
-  /**
-   * Can be used to customize the dark mode switch label.
-   * This label is only displayed in the mobile view.
-   *
-   * 用于自定义深色模式开关标签，该标签仅在移动端视图中显示。
-   *
-   * @default 'Appearance'
-   */
-  darkModeSwitchLabel?: string
-
-  /**
-   * @default 'Switch to light theme'
-   */
-  lightModeSwitchTitle?: string
-
-  /**
-   * @default 'Switch to dark theme'
-   */
-  darkModeSwitchTitle?: string
+  notFound?: NotFoundOptions
 
   /**
    * Page meta - edit link config
@@ -263,19 +254,33 @@ export interface DefaultThemeLocaleData extends LocaleData {
   docFooter?: DocFooter
 
   /**
-   * The social links to be displayed at the end of the nav bar. Perfect for
-   * placing links to social services such as GitHub, Twitter, Facebook, etc.
+   * The sidebar menu label
    *
-   * 在导航栏中显示的社交链接， 适合放置与 GitHub， Twitter， Facebook 等社交服务相关的链接
+   * 侧边栏 菜单标签
+   *
+   * @default 'Menu'
    */
-  socialLinks?: SocialLink[]
+  sidebarMenuLabel?: string
 
   /**
-   * The footer configuration.
+   * Can be used to customize the dark mode switch label.
+   * This label is only displayed in the mobile view.
    *
-   * 页脚
+   * 用于自定义深色模式开关标签，该标签仅在移动端视图中显示。
+   *
+   * @default 'Appearance'
    */
-  footer?: Footer
+  darkModeSwitchLabel?: string
+
+  /**
+   * @default 'Switch to light theme'
+   */
+  lightModeSwitchTitle?: string
+
+  /**
+   * @default 'Switch to dark theme'
+   */
+  darkModeSwitchTitle?: string
 
   /**
    * Local Nav config
@@ -295,7 +300,7 @@ export interface DefaultThemeLocaleData extends LocaleData {
    *
    * 语言选择下拉菜单的文本
    *
-   * @default 'Language'
+   * @default 'Languages'
    */
   selectLanguageText?: string
 
@@ -329,58 +334,6 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * @default true
    */
   externalLinkIcon?: boolean
-
-  /**
-   * Custom block config
-   *
-   * Default title of TIP custom block
-   *
-   * TIP 自定义块的默认标题
-   */
-  tip?: string
-
-  /**
-   * Custom block config
-   *
-   * Default title of WARNING custom block
-   *
-   * WARNING 自定义块的默认标题
-   */
-  warning?: string
-
-  /**
-   * Custom block config
-   *
-   * Default title of DANGER custom block
-   *
-   * DANGER 自定义块的默认标题
-   */
-  danger?: string
-
-  /**
-   * Custom block config
-   *
-   * Default title of IMPORTANT custom block
-   *
-   * IMPORTANT 自定义块的默认标题
-   */
-  important?: string
-
-  /**
-   * Custom block config
-   *
-   * Default title of NOTE custom block
-   *
-   * NOTE 自定义块的默认标题
-   */
-  note?: string
-
-  /**
-   * Customize text of 404 page.
-   *
-   * 定制404页面的文本。
-   */
-  notFound?: NotFoundOptions
 
   /**
    * Configure the scroll offset when the theme has a sticky header.

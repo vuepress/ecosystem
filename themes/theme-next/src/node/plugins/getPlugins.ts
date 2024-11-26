@@ -6,9 +6,11 @@ import { markdownHintPlugin } from '@vuepress/plugin-markdown-hint'
 import { markdownTabPlugin } from '@vuepress/plugin-markdown-tab'
 import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
+import type { SeoPluginOptions } from '@vuepress/plugin-seo'
 import { seoPlugin } from '@vuepress/plugin-seo'
 import type { ShikiPluginOptions } from '@vuepress/plugin-shiki'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
+import type { SitemapPluginOptions } from '@vuepress/plugin-sitemap'
 import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import type { App, PluginConfig } from 'vuepress/core'
@@ -17,10 +19,7 @@ import type {
   DefaultThemeLocaleOptions,
   DefaultThemePluginsOptions,
 } from '../../shared/index.js'
-import {
-  resolveMarkdownHintLocales,
-  resolveThemeData,
-} from '../config/index.js'
+import { resolveThemeData } from '../config/index.js'
 
 interface PluginsOptions {
   hostname?: string
@@ -33,6 +32,7 @@ export const getPlugins = (
   { hostname, themePlugins, localeOptions }: PluginsOptions,
 ): PluginConfig => {
   const plugins: PluginConfig = []
+  const isProd = app.env.isBuild
 
   if (themePlugins.activeHeaderLinks !== false) {
     plugins.push(
@@ -69,7 +69,6 @@ export const getPlugins = (
       markdownHintPlugin({
         hint: true,
         alert: true,
-        locales: resolveMarkdownHintLocales(localeOptions),
         ...(isPlainObject(themePlugins.hint) ? themePlugins.hint : {}),
       }),
     )
@@ -125,22 +124,20 @@ export const getPlugins = (
     plugins.push(shikiPlugin({ ...defaultOptions, ...shikiOptions }))
   }
 
-  if (hostname && themePlugins.seo !== false) {
-    plugins.push(
-      seoPlugin({
-        hostname,
-        ...(isPlainObject(themePlugins.seo) ? themePlugins.seo : {}),
-      }),
-    )
+  if ((themePlugins.seo ?? isProd) !== false) {
+    const seoOptions = isPlainObject(themePlugins.seo) ? themePlugins.seo : {}
+    seoOptions.hostname ||= hostname
+    if (seoOptions.hostname)
+      plugins.push(seoPlugin(seoOptions as SeoPluginOptions))
   }
 
-  if (hostname && themePlugins.sitemap !== false) {
-    plugins.push(
-      sitemapPlugin({
-        hostname,
-        ...(isPlainObject(themePlugins.sitemap) ? themePlugins.sitemap : {}),
-      }),
-    )
+  if ((themePlugins.sitemap ?? isProd) !== false) {
+    const sitemapOptions = isPlainObject(themePlugins.sitemap)
+      ? themePlugins.sitemap
+      : {}
+    sitemapOptions.hostname ||= hostname
+    if (sitemapOptions.hostname)
+      plugins.push(sitemapPlugin(sitemapOptions as SitemapPluginOptions))
   }
 
   // @vuepress/plugin-theme-data

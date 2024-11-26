@@ -48,6 +48,26 @@ export default {
 
   是否启用 [@vuepress/plugin-git](../../plugins/development/git.md)。
 
+## themePlugins.hint
+
+- 类型： `MarkdownHintPluginOptions | boolean`
+
+- 默认值： `{ alert: true, hint: true }`
+
+- 详情：
+
+  是否启用 [@vuepress/plugin-markdown-hint](../../plugins/markdown/markdown-hint.md)。
+
+## themePlugins.tab
+
+- 类型： `MarkdownTabPluginOptions | boolean`
+
+- 默认值： `{ codeTabs: true, tabs: true }`
+
+- 详情：
+
+  是否启用 [@vuepress/plugin-markdown-tab](../../plugins/markdown/markdown-tab.md)。
+
 ## themePlugins.linksCheck
 
 - 类型： `LinksCheckPluginOptions | boolean`

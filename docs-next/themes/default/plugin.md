@@ -48,6 +48,26 @@ export default {
 
   Enable [@vuepress/plugin-git](../../plugins/development/git.md) or not.
 
+## themePlugins.hint
+
+- Type: `MarkdownHintPluginOptions | boolean`
+
+- Default: `{ alert: true, hint: true }`
+
+- Details:
+
+  Enable [@vuepress/plugin-markdown-hint](../../plugins/markdown/markdown-hint.md) or not.
+
+## themePlugins.tab
+
+- Type: `MarkdownTabPluginOptions | boolean`
+
+- Default: `{ codeTabs: true, tabs: true }`
+
+- Details:
+
+  Enable [@vuepress/plugin-markdown-tab](../../plugins/markdown/markdown-tab.md) or not.
+
 ## themePlugins.linksCheck
 
 - Type: `LinksCheckPluginOptions | boolean`
