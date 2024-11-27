@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/theme-default",
-  "version": "2.0.0-rc.60",
+  "version": "2.0.0-rc.61",
   "description": "Default theme of VuePress",
   "keywords": [
     "vuepress-theme",
@@ -63,7 +63,6 @@
     "@vuepress/plugin-theme-data": "workspace:*",
     "@vueuse/core": "^11.3.0",
     "chokidar": "^3.6.0",
-    "nanoid": "^5.0.8",
     "vue": "^3.5.13"
   },
   "peerDependencies": {
