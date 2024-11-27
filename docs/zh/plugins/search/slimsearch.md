@@ -137,7 +137,7 @@ export default defineUserConfig({
 
 :::
 
-### autoSuggestions
+### suggestion
 
 - 类型: `boolean`
 - 默认值: `false`

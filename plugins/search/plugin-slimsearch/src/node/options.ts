@@ -73,7 +73,7 @@ export interface SlimSearchPluginOptions {
    *
    * @default true
    */
-  autoSuggestions?: boolean
+  suggestion?: boolean
 
   /**
    * Max stored query history count

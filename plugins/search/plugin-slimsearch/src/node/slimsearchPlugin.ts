@@ -34,7 +34,7 @@ export const slimsearchPlugin =
       name: PLUGIN_NAME,
 
       define: {
-        __SLIMSEARCH_AUTO_SUGGESTIONS__: options.autoSuggestions ?? true,
+        __SLIMSEARCH_SUGGESTION__: options.suggestion ?? true,
         __SLIMSEARCH_CUSTOM_FIELDS__: fromEntries(
           options.customFields
             ?.map(({ formatter }, index) =>

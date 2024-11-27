@@ -3,9 +3,10 @@ import type { Ref } from 'vue'
 import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { usePageData, useRouteLocale } from 'vuepress/client'
 
-import { enableAutoSuggestions } from '../define.js'
 import { useSearchOptions } from '../helpers/index.js'
 import { createSearchWorker } from '../utils/index.js'
+
+declare const __SLIMSEARCH_SUGGESTION__: boolean
 
 export interface SuggestionsRef {
   suggestions: Ref<string[]>
@@ -14,7 +15,7 @@ export interface SuggestionsRef {
 export const useSuggestions = (queries: Ref<string[]>): SuggestionsRef => {
   const suggestions = ref<string[]>([])
 
-  if (enableAutoSuggestions) {
+  if (__SLIMSEARCH_SUGGESTION__) {
     const searchOptions = useSearchOptions()
     const pageData = usePageData()
     const routeLocale = useRouteLocale()
