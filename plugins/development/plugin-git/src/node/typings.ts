@@ -57,13 +57,18 @@ export interface MergedRawCommit extends Omit<RawCommit, 'filepath'> {
 
 export interface GitContributor {
   /**
-   * Contributor name
+   * Contributor display name
    */
   name: string
   /**
    * Contributor email
    */
   email: string
+
+  /**
+   * Contributor username on the git hosting service
+   */
+  username: string
   /**
    * Number of commits
    */

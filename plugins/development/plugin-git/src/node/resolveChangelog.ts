@@ -63,7 +63,7 @@ const parseTagName = (refs: string): string | undefined => {
     .split(',')
     .map((tag) => tag.trim())
 
-  return tags[0]?.replace('tag:', '').trim()
+  return tags[0]?.includes('tag:') ? tags[0].replace('tag:', '').trim() : ''
 }
 
 export const resolveChangelog = (
