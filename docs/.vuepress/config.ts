@@ -5,6 +5,7 @@ import { getRealPath } from '@vuepress/helper'
 import { cachePlugin } from '@vuepress/plugin-cache'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { commentPlugin } from '@vuepress/plugin-comment'
+import { demoPlugin } from '@vuepress/plugin-demo'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
 import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
@@ -78,6 +79,12 @@ export default defineUserConfig({
   plugins: [
     catalogPlugin(),
     commentPlugin({ provider: 'Giscus' }),
+    demoPlugin({
+      markdown: true,
+      normal: true,
+      vue: true,
+      react: true,
+    }),
     docsearchPlugin(),
     feedPlugin({
       hostname: 'https://ecosystem.vuejs.press',
