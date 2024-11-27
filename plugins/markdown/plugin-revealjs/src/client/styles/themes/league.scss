@@ -12,8 +12,10 @@
 @include helper.theme(
   'league',
   (
-    viewport-color:
-      helper.circle-gradient(rgb(28, 30, 32, 1), rgb(85, 90, 95, 1)),
+    viewport-color: helper.circle-gradient(
+        rgb(28, 30, 32, 1),
+        rgb(85, 90, 95, 1)
+      ),
     heading-text-shadow: 0 0 6px rgb(0 0 0 / 20%),
     heading1-text-shadow: (
       0 1px 0 #ccc,
