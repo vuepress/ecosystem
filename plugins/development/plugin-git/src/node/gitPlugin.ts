@@ -58,7 +58,10 @@ export const gitPlugin =
           ),
         ]
 
-        const commits = await getCommits(filePaths, cwd)
+        const commits = await getCommits(filePaths, cwd, {
+          contributors: (frontmatter.contributors ?? contributors) !== false,
+          changelog: frontmatter.changelog ?? changelog,
+        })
 
         if (commits.length === 0) return
 

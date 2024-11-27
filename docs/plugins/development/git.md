@@ -108,6 +108,14 @@ This plugin will significantly slow down the speed of data preparation, especial
     avatar?: boolean
 
     /**
+     * Avatar url pattern
+     * - `:username` - Contributor's username
+     *
+     * @example 'https://github.com/:username'
+     */
+    avatarPattern?: string
+
+    /**
      * Functions to transform contributors, e.g. remove duplicates ones and sort them.
      * The input is the contributors collected by this plugin, and the output should be the transformed contributors.
      */
@@ -123,7 +131,7 @@ This plugin will significantly slow down the speed of data preparation, especial
 
 ### changelog
 
-- Type: `false | ChangelogOptions`
+- Type: `boolean | ChangelogOptions`
 
   ```ts
   interface ChangelogOptions {
@@ -264,8 +272,11 @@ export default {
 
 ```ts
 interface GitContributor {
+  // display name
   name: string
   email: string
+  // username on the git hosting service
+  username: string
   commits: number
   avatar?: string
   url?: string

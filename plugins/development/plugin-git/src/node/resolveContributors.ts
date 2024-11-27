@@ -38,6 +38,7 @@ export const getRawContributors = (
       } else {
         const item: GitContributor = {
           name,
+          username,
           email,
           commits: 1,
         }
@@ -45,6 +46,7 @@ export const getRawContributors = (
         if (options.avatar)
           item.avatar =
             config?.avatar ??
+            options.avatarPattern?.replace(':username', username) ??
             (gitProvider === 'github'
               ? `https://avatars.githubusercontent.com/${username}?v=4`
               : `https://gravatar.com/avatar/${digestSHA256(email || username)}?d=retro`)
@@ -97,6 +99,7 @@ export const resolveContributors = (
 
         const result: GitContributor = {
           name: contributorInfo.name ?? extraContributor,
+          username: contributorInfo.name ?? extraContributor,
           email: '',
           commits: 0,
         }
@@ -110,6 +113,10 @@ export const resolveContributors = (
         if (options.avatar)
           result.avatar =
             contributorInfo.avatar ??
+            options.avatarPattern?.replace(
+              ':username',
+              contributorInfo.username,
+            ) ??
             (gitProvider === 'github'
               ? `https://avatars.githubusercontent.com/${contributorInfo.username}?v=4`
               : `https://gravatar.com/avatar/${digestSHA256(contributorInfo.username)}?d=retro`)

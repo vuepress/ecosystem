@@ -1,7 +1,7 @@
 import { execa } from 'execa'
+import type { GitPluginOptions } from '../options.js'
 import type { GitContributor, MergedRawCommit, RawCommit } from '../typings.js'
 
-const FORMAT = '%H|%an|%ae|%ad|%s|%d|%b'
 const SPLIT_CHAR = '[GIT_LOG_COMMIT_END]'
 const RE_SPLIT = /\[GIT_LOG_COMMIT_END\]$/
 
@@ -20,6 +20,15 @@ const getCoAuthors = (
     .filter(Boolean)
 }
 
+const getFormat = ({ contributors, changelog }: GitPluginOptions): string => {
+  // hash | _ | _ | author_date | _ | _ | _
+  if (!contributors && !changelog) return '%H|||%ad|||'
+  // hash | author_name | author_email | author_date | _ | _ | body
+  if (contributors && !changelog) return '%H|%an|%ae|%ad|||%b'
+  // hash | author_name | author_email | author_date | subject | ref | body
+  return '%H|%an|%ae|%ad|%s|%d|%b'
+}
+
 /**
  * Get raw commits
  *
@@ -30,14 +39,16 @@ const getCoAuthors = (
 export const getRawCommits = async (
   filepath: string,
   cwd: string,
+  options: GitPluginOptions,
 ): Promise<RawCommit[]> => {
+  const format = getFormat(options)
   try {
     const { stdout } = await execa(
       'git',
       [
         'log',
         '--max-count=-1',
-        `--format=${FORMAT}${SPLIT_CHAR}`,
+        `--format=${format}${SPLIT_CHAR}`,
         '--date=unix',
         '--follow',
         '--',
@@ -87,9 +98,10 @@ export const mergeRawCommits = (commits: RawCommit[]): MergedRawCommit[] => {
 export const getCommits = async (
   filepaths: string[],
   cwd: string,
+  options: GitPluginOptions,
 ): Promise<MergedRawCommit[]> => {
   const rawCommits = await Promise.all(
-    filepaths.map((filepath) => getRawCommits(filepath, cwd)),
+    filepaths.map((filepath) => getRawCommits(filepath, cwd, options)),
   )
 
   return mergeRawCommits(rawCommits.flat()).sort((a, b) =>
