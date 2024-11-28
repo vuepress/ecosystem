@@ -16,30 +16,14 @@ import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import type { Page, Theme } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import { fs, getDirname, path } from 'vuepress/utils'
-import type {
-  DefaultThemeLocaleOptions,
-  DefaultThemePageData,
-} from '../shared/index.js'
-import type { DefaultThemePluginsOptions } from './typings.js'
+import type { DefaultThemePageData } from '../shared/index.js'
+import type { DefaultThemeOptions } from './options.js'
 import {
   assignDefaultLocaleOptions,
   resolveMarkdownHintLocales,
 } from './utils/index.js'
 
 const __dirname = getDirname(import.meta.url)
-
-export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
-  /**
-   * deployed hostname
-   */
-  hostname?: string
-
-  /**
-   * To avoid confusion with the root `plugins` option,
-   * we use `themePlugins`
-   */
-  themePlugins?: DefaultThemePluginsOptions
-}
 
 export const defaultTheme = ({
   hostname,

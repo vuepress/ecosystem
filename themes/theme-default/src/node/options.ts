@@ -6,6 +6,7 @@ import type { MarkdownTabPluginOptions } from '@vuepress/plugin-markdown-tab'
 import type { PrismjsPluginOptions } from '@vuepress/plugin-prismjs'
 import type { SeoPluginOptions } from '@vuepress/plugin-seo'
 import type { SitemapPluginOptions } from '@vuepress/plugin-sitemap'
+import type { DefaultThemeLocaleOptions } from '../shared/index.js'
 
 export interface DefaultThemePluginsOptions {
   /**
@@ -67,4 +68,17 @@ export interface DefaultThemePluginsOptions {
    * Enable @vuepress/plugin-markdown-tab or not
    */
   tab?: MarkdownTabPluginOptions | boolean
+}
+
+export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
+  /**
+   * deployed hostname
+   */
+  hostname?: string
+
+  /**
+   * To avoid confusion with the root `plugins` option,
+   * we use `themePlugins`
+   */
+  themePlugins?: DefaultThemePluginsOptions
 }
