@@ -44,7 +44,7 @@
     "style": "sass src:lib --embed-sources --style=compressed"
   },
   "dependencies": {
-    "@mdit/plugin-uml": "^0.13.1",
+    "@mdit/plugin-uml": "^0.14.0",
     "@types/markdown-it": "^14.1.2",
     "@types/reveal.js": "^5.0.4",
     "@vuepress/helper": "workspace:*",
