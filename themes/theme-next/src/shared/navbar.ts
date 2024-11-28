@@ -16,11 +16,13 @@ export interface NavItemWithLink {
   children?: never
 
   /**
-   * `activeMatch` is expected to be a regex string. We can't use actual
-   * RegExp object here because it isn't serializable
+   * A Regexp string, matching path will be active
    *
-   * `activeMatch` 应为正则表达式字符串，但必须将其定义为字符串。
-   * 我们不能在这里使用实际的 RegExp 对象，因为它在构建期间不可序列化。
+   * It's expected to be a regex string as RegExp object isn't serializable
+   *
+   * 正则表达式字符串，匹配的路径将被激活
+   *
+   * 由于 RegExp 对象不可序列化，因此我们需要将其定义为字符串。
    */
   activeMatch?: string
 
@@ -81,11 +83,13 @@ export interface NavItemWithChildren {
   children?: (NavItemChildren | NavItemWithLink | string)[]
 
   /**
-   * `activeMatch` is expected to be a regex string. We can't use actual
-   * RegExp object here because it isn't serializable
+   * A Regexp string, matching path will be active
    *
-   * `activeMatch` 应为正则表达式字符串，但必须将其定义为字符串。
-   * 我们不能在这里使用实际的 RegExp 对象，因为它在构建期间不可序列化。
+   * It's expected to be a regex string as RegExp object isn't serializable
+   *
+   * 正则表达式字符串，匹配的路径将被激活
+   *
+   * 由于 RegExp 对象不可序列化，因此我们需要将其定义为字符串。
    */
   activeMatch?: string
 }
