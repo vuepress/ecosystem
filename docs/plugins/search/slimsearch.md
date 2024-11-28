@@ -139,7 +139,7 @@ By default, only headings and excerpt of the page will be indexed along with you
 
 :::
 
-### autoSuggestions
+### suggestion
 
 - Type: `boolean`
 - Default: `true`

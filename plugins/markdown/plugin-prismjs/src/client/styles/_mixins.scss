@@ -8,14 +8,12 @@
   // highlight
   --code-c-highlight-bg: #{color.scale(
       $code-bg-color,
-      $saturation:
-        if(
+      $saturation: if(
           color.channel($code-bg-color, 'lightness', $space: hsl) < 50%,
           5%,
           10%
         ),
-      $lightness:
-        if(
+      $lightness: if(
           color.channel($code-bg-color, 'lightness', $space: hsl) < 50%,
           5%,
           -5%

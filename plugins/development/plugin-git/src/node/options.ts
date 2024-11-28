@@ -71,6 +71,17 @@ export interface ContributorsOptions {
   avatar?: boolean
 
   /**
+   * Avatar url pattern
+   * - `:username` - Contributor's username
+   *
+   * 头像访问地址模式
+   * - `:username` - 贡献者的用户名
+   *
+   * @example 'https://github.com/:username'
+   */
+  avatarPattern?: string
+
+  /**
    * Functions to transform contributors, e.g. remove duplicates ones and sort them
    *
    * 贡献者转换函数，例如去重和排序
@@ -173,7 +184,7 @@ export interface GitPluginOptions {
    *
    * 是否收集页面的变更历史记录
    */
-  changelog?: ChangelogOptions | false
+  changelog?: ChangelogOptions | boolean
 
   /**
    * @deprecated use `contributors.transform` instead

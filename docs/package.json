@@ -11,8 +11,9 @@
   "dependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.18",
     "@vuepress/bundler-webpack": "2.0.0-rc.18",
-    "@vuepress/plugin-back-to-top": "workspace:*",
     "@vuepress/helper": "workspace:*",
+    "@vuepress/plugin-back-to-top": "workspace:*",
+    "@vuepress/plugin-cache": "workspace:*",
     "@vuepress/plugin-catalog": "workspace:*",
     "@vuepress/plugin-comment": "workspace:*",
     "@vuepress/plugin-copy-code": "workspace:*",
@@ -34,7 +35,6 @@
     "@vuepress/plugin-search": "workspace:*",
     "@vuepress/plugin-shiki": "workspace:*",
     "@vuepress/theme-classic": "workspace:*",
-    "@vuepress/plugin-cache": "workspace:*",
     "katex": "0.16.11",
     "mathjax-full": "3.2.2",
     "sass-embedded": "1.81.0",

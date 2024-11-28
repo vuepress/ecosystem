@@ -25,7 +25,7 @@ import {
   useArrayCycle,
   useSuggestions,
 } from '../composables/index.js'
-import { enableAutoSuggestions, locales, options } from '../define.js'
+import { locales, options } from '../define.js'
 import { useSearchOptions } from '../helpers/index.js'
 import { CLOSE_ICON } from '../icons/index.js'
 import SearchKeyHints from './SearchKeyHints.js'
@@ -33,6 +33,8 @@ import { SearchLoading } from './SearchLoading.js'
 import { SearchIcon } from './icons.js'
 
 import '../styles/search-modal.css'
+
+declare const __SLIMSEARCH_SUGGESTION__: boolean
 
 const SearchResult = defineAsyncComponent({
   loader: () =>
@@ -182,7 +184,7 @@ export default defineComponent({
                         },
                       })
                     : null,
-                  enableAutoSuggestions &&
+                  __SLIMSEARCH_SUGGESTION__ &&
                   displaySuggestion.value &&
                   suggestions.value.length
                     ? h(
