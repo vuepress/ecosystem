@@ -17,6 +17,13 @@ export interface NavItemWithLink {
 
   rel?: string
   target?: string
+
+  /**
+   * Whether to display external link icon.
+   * If the navigation link is an external link, the external link icon will be displayed by default. Setting it to `true` will disable the external link icon.
+   *
+   * 是否显示外部链接图标，如果导航链接是外部链接，默认将显示外部链接图标，设置为 `true` 可以关闭外部链接图标
+   */
   noIcon?: boolean
 
   prefix?: never

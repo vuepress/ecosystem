@@ -15,11 +15,9 @@ import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import type { App, PluginConfig } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
-import type {
-  DefaultThemeLocaleOptions,
-  DefaultThemePluginsOptions,
-} from '../../shared/index.js'
+import type { DefaultThemeLocaleOptions } from '../../shared/index.js'
 import { resolveThemeData } from '../config/index.js'
+import type { DefaultThemePluginsOptions } from '../options.js'
 
 interface PluginsOptions {
   hostname?: string

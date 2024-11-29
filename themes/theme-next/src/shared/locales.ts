@@ -1,9 +1,9 @@
 import type { ThemeData } from '@vuepress/plugin-theme-data'
 import type { UseDarkOptions } from '@vueuse/core'
 import type { LocaleData } from 'vuepress/shared'
-import type { NavItem } from '../navbar.js'
-import type { DefaultThemeImage, SocialLink } from '../shared.js'
-import type { Sidebar } from '../sidebar.js'
+import type { NavItem } from './navbar.js'
+import type { DefaultThemeImage, SocialLink } from './shared.js'
+import type { Sidebar } from './sidebar.js'
 
 export type DefaultThemeLocaleOptions = DefaultThemeData
 

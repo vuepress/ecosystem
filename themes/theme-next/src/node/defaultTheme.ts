@@ -1,41 +1,14 @@
 import { watch } from 'chokidar'
 import type { Page, Theme } from 'vuepress/core'
 import { fs, getDirname, path } from 'vuepress/utils'
-import type {
-  DefaultThemeLocaleOptions,
-  DefaultThemePageData,
-  DefaultThemePluginsOptions,
-  SidebarSorter,
-} from '../shared/index.js'
+import type { DefaultThemePageData } from '../shared/index.js'
 import { extendsBundlerOptions, templateBuildRenderer } from './config/index.js'
+import type { DefaultThemeOptions } from './options.js'
 import { getPlugins } from './plugins/index.js'
 import { prepareSidebarData } from './prepare/index.js'
 import { THEME_NAME, logger } from './utils/index.js'
 
 const __dirname = getDirname(import.meta.url)
-
-export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
-  /**
-   * deployed hostname
-   */
-  hostname?: string
-
-  /**
-   * To avoid confusion with the root `plugins` option,
-   * we use `themePlugins`
-   *
-   * 为避免与根`plugins`选项混淆，我们使用`themePlugins`。
-   */
-  themePlugins?: DefaultThemePluginsOptions
-
-  /**
-   * The sidebar sorters. only `'structure'` optional
-   *
-   * 侧边栏排序。仅支持 `'structure'`
-   *
-   */
-  sidebarSorter?: SidebarSorter
-}
 
 export const defaultTheme =
   ({

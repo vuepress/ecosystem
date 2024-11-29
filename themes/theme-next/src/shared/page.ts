@@ -1,6 +1,6 @@
 import type { GitData } from '@vuepress/plugin-git'
+import type { Outline } from './locales.js'
 import type { NavItemWithLink } from './navbar.js'
-import type { Outline } from './options/index.js'
 import type { DefaultThemeImage, Feature, HeroAction } from './shared.js'
 
 export interface DefaultThemePageData extends Record<string, unknown> {
