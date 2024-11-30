@@ -1,21 +1,21 @@
 {
-  "name": "@vuepress/helper",
+  "name": "@vuepress/theme-helper",
   "version": "2.0.0-rc.61",
-  "description": "VuePress helper",
+  "description": "VuePress Theme Helper",
   "keywords": [
     "vuepress",
     "helper",
     "bundler-helper",
     "excerpt"
   ],
-  "homepage": "https://ecosystem.vuejs.press/tools/helper/",
+  "homepage": "https://ecosystem.vuejs.press/tools/theme-helper/",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/ecosystem.git",
-    "directory": "tools/helper"
+    "directory": "tools/theme-helper"
   },
   "license": "MIT",
   "author": {
@@ -28,10 +28,7 @@
     ".": "./lib/node/index.js",
     "./client": "./lib/client/index.js",
     "./shared": "./lib/shared/index.js",
-    "./noopComponent": "./lib/client/noopComponent.js",
-    "./noopModule": "./lib/client/noopModule.js",
-    "./colors.css": "./lib/client/styles/colors.css",
-    "./sr-only.css": "./lib/client/styles/sr-only.css",
+    "./normalize.css": "./lib/client/styles/normalize.css",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
@@ -46,20 +43,8 @@
     "style": "sass src:lib --embed-sources --style=compressed"
   },
   "dependencies": {
-    "@vue/shared": "^3.5.13",
     "@vueuse/core": "^12.0.0",
-    "cheerio": "1.0.0",
-    "fflate": "^0.8.2",
-    "gray-matter": "^4.0.3",
     "vue": "^3.5.13"
-  },
-  "devDependencies": {
-    "@types/connect": "3.4.38",
-    "@vuepress/bundler-vite": "2.0.0-rc.18",
-    "@vuepress/bundler-webpack": "2.0.0-rc.18",
-    "@vuepress/plugin-git": "workspace:*",
-    "domhandler": "5.0.3",
-    "vite": "~5.4.11"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.18"

@@ -1231,6 +1231,9 @@ importers:
       '@vuepress/plugin-theme-data':
         specifier: workspace:*
         version: link:../../plugins/development/plugin-theme-data
+      '@vuepress/theme-helper':
+        specifier: workspace:*
+        version: link:../../tools/theme-helper
       '@vueuse/core':
         specifier: ^12.0.0
         version: 12.0.0(typescript@5.7.2)
@@ -1294,6 +1297,9 @@ importers:
       '@vuepress/plugin-theme-data':
         specifier: workspace:*
         version: link:../../plugins/development/plugin-theme-data
+      '@vuepress/theme-helper':
+        specifier: workspace:*
+        version: link:../../tools/theme-helper
       '@vueuse/core':
         specifier: ^11.3.0
         version: 11.3.0(vue@3.5.13(typescript@5.7.2))
@@ -1374,6 +1380,18 @@ importers:
       '@vueuse/core':
         specifier: ^11.1.0
         version: 11.3.0(vue@3.5.13(typescript@5.7.2))
+      vuepress:
+        specifier: 2.0.0-rc.18
+        version: 2.0.0-rc.18(@vuepress/bundler-vite@2.0.0-rc.18(@types/node@22.10.1)(jiti@1.21.6)(lightningcss@1.28.2)(sass-embedded@1.81.0)(sass@1.81.0)(terser@5.36.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.4.5))(@vuepress/bundler-webpack@2.0.0-rc.18(esbuild@0.23.1)(typescript@5.7.2))(typescript@5.7.2)(vue@3.5.13(typescript@5.7.2))
+
+  tools/theme-helper:
+    dependencies:
+      '@vueuse/core':
+        specifier: ^12.0.0
+        version: 12.0.0(typescript@5.7.2)
+      vue:
+        specifier: ^3.5.13
+        version: 3.5.13(typescript@5.7.2)
       vuepress:
         specifier: 2.0.0-rc.18
         version: 2.0.0-rc.18(@vuepress/bundler-vite@2.0.0-rc.18(@types/node@22.10.1)(jiti@1.21.6)(lightningcss@1.28.2)(sass-embedded@1.81.0)(sass@1.81.0)(terser@5.36.0)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.4.5))(@vuepress/bundler-webpack@2.0.0-rc.18(esbuild@0.23.1)(typescript@5.7.2))(typescript@5.7.2)(vue@3.5.13(typescript@5.7.2))

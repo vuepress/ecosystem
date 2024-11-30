@@ -6,7 +6,7 @@ import {
 import type { RepoType } from './resolveRepoType.js'
 import { resolveRepoType } from './resolveRepoType.js'
 
-export const editLinkPatterns: Record<Exclude<RepoType, null>, string> = {
+export const EDIT_LINK_PATTENS: Record<Exclude<RepoType, null>, string> = {
   GitHub: ':repo/edit/:branch/:path',
   GitLab: ':repo/-/edit/:branch/:path',
   Gitee: ':repo/edit/:branch/:path',
@@ -21,12 +21,13 @@ const resolveEditLinkPatterns = ({
   docsRepo: string
   editLinkPattern?: string
 }): string | null => {
-  if (editLinkPattern) return editLinkPattern
+  if (editLinkPattern) {
+    return editLinkPattern
+  }
 
   const repoType = resolveRepoType(docsRepo)
-  if (repoType !== null) return editLinkPatterns[repoType]
 
-  return null
+  return repoType ? EDIT_LINK_PATTENS[repoType] : null
 }
 
 export const resolveEditLink = ({
