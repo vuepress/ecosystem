@@ -37,7 +37,7 @@
     "copy": "cpx \"src/**/*.d.ts\" lib"
   },
   "dependencies": {
-    "@vue/devtools-api": "^7.6.6",
+    "@vue/devtools-api": "^7.6.7",
     "vue": "^3.5.13"
   },
   "peerDependencies": {
