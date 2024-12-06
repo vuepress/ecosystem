@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.62](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.61...v2.0.0-rc.62) (2024-12-06)
+
+### Features
+
+- **plugin-git:** improve commits parsing and optimize plugins ([#292](https://github.com/vuepress/ecosystem/issues/292)) ([a0241c4](https://github.com/vuepress/ecosystem/commit/a0241c4292fc7580c2a5a755d44d7f5df0050e54))
+
 # [2.0.0-rc.60](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.58...v2.0.0-rc.60) (2024-11-06)
 
 ### Features

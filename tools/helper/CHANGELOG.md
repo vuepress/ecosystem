@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.62](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.61...v2.0.0-rc.62) (2024-12-06)
+
+### Features
+
+- **helper:** add sr-only style ([04b856d](https://github.com/vuepress/ecosystem/commit/04b856deffe8beb3e1b6d42e2a760013eafeea55))
+
 # [2.0.0-rc.61](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.60...v2.0.0-rc.61) (2024-11-23)
 
 ### Features
