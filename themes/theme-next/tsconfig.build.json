@@ -37,6 +37,7 @@
     },
 
     { "path": "../../plugins/seo/plugin-seo/tsconfig.build.json" },
-    { "path": "../../plugins/seo/plugin-sitemap/tsconfig.build.json" }
+    { "path": "../../plugins/seo/plugin-sitemap/tsconfig.build.json" },
+    { "path": "../../tools/theme-helper/tsconfig.build.json" }
   ]
 }
