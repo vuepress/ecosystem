@@ -78,6 +78,9 @@ export const rollupBundle = (
         minify: true,
         target: 'node18.19.0',
         define,
+        loaders: {
+          '.json': 'json',
+        },
       }),
     ],
 

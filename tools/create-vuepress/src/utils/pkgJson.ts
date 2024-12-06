@@ -1,4 +1,4 @@
-import pkg from 'create-vuepress/package.json' with { type: 'json' }
+import pkg from '../../package.json' with { type: 'json' }
 
 const { peerDependencies, version } = pkg
 
