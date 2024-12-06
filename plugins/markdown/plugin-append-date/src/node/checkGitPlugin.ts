@@ -2,8 +2,6 @@ import type { App } from 'vuepress/core'
 import { colors } from 'vuepress/utils'
 import { logger } from './logger.js'
 
-const require = import.meta.resolve(import.meta.url)
-
 const GIT_PLUGIN_NAME = '@vuepress/plugin-git'
 
 export const isGitPluginEnabled = (app: App): boolean => {

@@ -11,9 +11,8 @@ import {
 } from 'vuepress/cli'
 import { createBuildApp } from 'vuepress/core'
 import { fs, logger, path } from 'vuepress/utils'
-import { getRedirectHTML } from '../node/generate/getRedirectHTML.js'
-
 import pkg from '../../package.json' with { type: 'json' }
+import { getRedirectHTML } from '../node/generate/getRedirectHTML.js'
 
 interface RedirectCommandOptions {
   hostname: string

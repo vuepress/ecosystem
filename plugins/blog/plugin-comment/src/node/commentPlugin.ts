@@ -4,8 +4,8 @@ import {
   addViteOptimizeDepsInclude,
   addViteSsrExternal,
   addViteSsrNoExternal,
-  isModuleAvailable,
   getLocaleConfig,
+  isModuleAvailable,
 } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getAlias, getProviderPackage } from './getProvider.js'
