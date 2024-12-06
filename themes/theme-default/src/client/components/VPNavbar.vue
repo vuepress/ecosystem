@@ -7,7 +7,7 @@ import { useThemeLocaleData } from '@theme/useThemeData'
 import { DeviceType, useUpdateDeviceStatus } from '@theme/useUpdateDeviceStatus'
 import { hasGlobalComponent } from '@vuepress/helper/client'
 import type { VNode } from 'vue'
-import { computed, ref, useTemplateRef, resolveComponent } from 'vue'
+import { computed, ref, resolveComponent, useTemplateRef } from 'vue'
 
 defineEmits<{
   toggleSidebar: []
