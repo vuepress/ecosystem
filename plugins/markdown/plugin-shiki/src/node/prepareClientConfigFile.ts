@@ -77,7 +77,7 @@ export const prepareClientConfigFile = (
   if (collapsedLines !== 'disable') {
     imports.push(
       `import "${getRealPath('@vuepress/highlighter-helper/styles/collapsed-lines.css', url)}"`,
-      `import { setupCollapsedLines } from "${getRealPath('@vuepress/highlighter-helper/composables/collapsedLines.js', url)}"`,
+      `import { setupCollapsedLines } from "${getRealPath('@vuepress/highlighter-helper/client', url)}"`,
     )
     setups.push('setupCollapsedLines()')
   }
