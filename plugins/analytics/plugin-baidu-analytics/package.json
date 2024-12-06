@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-baidu-analytics",
-  "version": "2.0.0-rc.62",
+  "version": "2.0.0-rc.63",
   "description": "VuePress plugin - baidu-analytics",
   "keywords": [
     "vuepress-plugin",
