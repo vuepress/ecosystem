@@ -1,12 +1,12 @@
-import { getRealPath } from '@vuepress/helper'
+import { getModulePath } from '@vuepress/helper'
 import { removeLeadingSlash } from 'vuepress/shared'
 import { fs } from 'vuepress/utils'
 import type { SitemapPluginOptions } from '../typings/index.js'
 import { PLUGIN_NAME } from './logger.js'
 
-const DEFAULT_TEMPLATE_PATH = getRealPath(
+const DEFAULT_TEMPLATE_PATH = getModulePath(
   `${PLUGIN_NAME}/templates/sitemap.xsl`,
-  import.meta.url,
+  import.meta,
 )
 
 export const getSiteMapTemplate = (

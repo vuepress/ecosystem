@@ -72,7 +72,7 @@ import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 import { getDirname, path } from 'vuepress/utils'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export default defineUserConfig({
   theme: defaultTheme(),
@@ -101,7 +101,7 @@ import { defaultTheme } from '@vuepress/theme-default'
 import type { Theme } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export const childTheme = (options: DefaultThemeOptions): Theme => ({
   name: 'vuepress-theme-child',

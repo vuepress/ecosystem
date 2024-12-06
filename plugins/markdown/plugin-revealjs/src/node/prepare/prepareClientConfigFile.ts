@@ -1,9 +1,9 @@
-import { getRealPath } from '@vuepress/helper'
+import { getModulePath } from '@vuepress/helper'
 import type { App } from 'vuepress'
 import type { RevealJsTheme } from '../../shared/index.js'
 import { PLUGIN_NAME } from '../utils.js'
 
-const CLIENT_ENTRY = getRealPath(`${PLUGIN_NAME}/client`, import.meta.url)
+const CLIENT_ENTRY = getModulePath(`${PLUGIN_NAME}/client`, import.meta)
 
 const REVEAL_THEME_CONFIG: [name: RevealJsTheme, fonts?: string[]][] = [
   ['auto'],
@@ -43,21 +43,21 @@ export const prepareClientConfigFile = async (
     'revealjs/config.js',
     `\
 import { RevealJs, injectRevealJsConfig } from "${CLIENT_ENTRY}";
-${layout ? `import { SlidePage } from "${getRealPath(`${PLUGIN_NAME}/layouts`, import.meta.url)}";\n` : ''}\
+${layout ? `import { SlidePage } from "${getModulePath(`${PLUGIN_NAME}/layouts`, import.meta)}";\n` : ''}\
 
-import "${getRealPath('reveal.js/dist/reveal.css', import.meta.url)}";
-import "${getRealPath(`${PLUGIN_NAME}/styles/base.css`, import.meta.url)}";
-import "${getRealPath(`${PLUGIN_NAME}/styles/vars.css`, import.meta.url)}";
+import "${getModulePath('reveal.js/dist/reveal.css', import.meta)}";
+import "${getModulePath(`${PLUGIN_NAME}/styles/base.css`, import.meta)}";
+import "${getModulePath(`${PLUGIN_NAME}/styles/vars.css`, import.meta)}";
 ${Array.from(fonts)
   .map(
     (name) =>
-      `import "${getRealPath(`${PLUGIN_NAME}/styles/fonts/${name}.css`, import.meta.url)}";`,
+      `import "${getModulePath(`${PLUGIN_NAME}/styles/fonts/${name}.css`, import.meta)}";`,
   )
   .join('\n')}
 ${Array.from(themes)
   .map(
     (name) =>
-      `import "${getRealPath(`${PLUGIN_NAME}/styles/themes/${name}.css`, import.meta.url)}";`,
+      `import "${getModulePath(`${PLUGIN_NAME}/styles/themes/${name}.css`, import.meta)}";`,
   )
   .join('\n')}
 

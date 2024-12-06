@@ -12,7 +12,7 @@ const PLUGIN_NAME = '@vuepress/plugin-copyright'
 
 export const logger = new Logger(PLUGIN_NAME)
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export const copyrightPlugin =
   (options: CopyrightPluginOptions = {}): PluginFunction =>

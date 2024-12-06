@@ -1,10 +1,5 @@
-import { createRequire } from 'node:module'
+import pkg from 'create-vuepress/package.json' with { type: 'json' }
 
-const { peerDependencies, version } = createRequire(import.meta.url)(
-  'create-vuepress/package.json',
-) as {
-  version: string
-  peerDependencies: Record<string, string>
-}
+const { peerDependencies, version } = pkg
 
 export { peerDependencies, version }

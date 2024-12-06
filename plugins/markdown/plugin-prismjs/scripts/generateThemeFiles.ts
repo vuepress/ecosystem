@@ -1,7 +1,7 @@
 import { compileStringAsync } from 'sass-embedded'
 import { fs, getDirname, path } from 'vuepress/utils'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 const styleDir = path.resolve(__dirname, '../src/client/styles')
 const themeDir = path.resolve(styleDir, 'themes')

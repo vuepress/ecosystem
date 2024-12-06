@@ -26,7 +26,7 @@ import {
   resolveMarkdownHintLocales,
 } from './utils/index.js'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
   /**

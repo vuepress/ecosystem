@@ -13,7 +13,7 @@ import {
 } from './prepare/index.js'
 import { EMPTY_FILE, PLUGIN_NAME, getIdPrefix, logger } from './utils.js'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export const sassPalettePlugin =
   (options: SassPalettePluginOptions): PluginFunction =>

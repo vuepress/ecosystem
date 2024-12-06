@@ -1,9 +1,7 @@
-import { getRealPath } from '@vuepress/helper'
+import { getModulePath } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 
 import type { RevealJsPlugin } from '../options.js'
-
-const { url } = import.meta
 
 export const prepareRevealJsEntry = async (
   app: App,
@@ -13,20 +11,20 @@ export const prepareRevealJsEntry = async (
     'revealjs/index.js',
     `\
 export const useRevealJs = () => [
-  import(/* webpackChunkName: "reveal" */ "${getRealPath(
+  import(/* webpackChunkName: "reveal" */ "${getModulePath(
     'reveal.js/dist/reveal.esm.js',
-    url,
+    import.meta,
   )}"),
-  import(/* webpackChunkName: "reveal" */ "${getRealPath(
+  import(/* webpackChunkName: "reveal" */ "${getModulePath(
     'reveal.js/plugin/markdown/markdown.esm.js',
-    url,
+    import.meta,
   )}"),
 ${revealPlugins
   .map(
     (plugin) =>
-      `  import(/* webpackChunkName: "reveal" */ "${getRealPath(
+      `  import(/* webpackChunkName: "reveal" */ "${getModulePath(
         `reveal.js/plugin/${plugin}/${plugin}.esm.js`,
-        url,
+        import.meta,
       )}")`,
   )
   .join(',\n')}

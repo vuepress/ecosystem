@@ -1,9 +1,7 @@
-import { getRealPath } from '@vuepress/helper'
+import { getModulePath } from '@vuepress/helper'
 import type { App } from 'vuepress'
 import { getTheme } from './getTheme.js'
 import type { PrismjsPluginOptions } from './options.js'
-
-const { url } = import.meta
 
 export const prepareClientConfigFile = (
   app: App,
@@ -24,68 +22,68 @@ export const prepareClientConfigFile = (
   const { light, dark } = getTheme({ theme, themes })
 
   const imports: string[] = [
-    `import "${getRealPath('@vuepress/highlighter-helper/styles/base.css', url)}"`,
+    `import "${getModulePath('@vuepress/highlighter-helper/styles/base.css', import.meta)}"`,
   ]
 
   const setups: string[] = []
 
   if (light === dark) {
     imports.push(
-      `import "${getRealPath(`@vuepress/plugin-prismjs/styles/${light}.css`, url)}"`,
+      `import "${getModulePath(`@vuepress/plugin-prismjs/styles/${light}.css`, import.meta)}"`,
     )
   } else {
     imports.push(
-      `import "${getRealPath(`@vuepress/plugin-prismjs/styles/${light}.light.css`, url)}"`,
-      `import "${getRealPath(`@vuepress/plugin-prismjs/styles/${dark}.dark.css`, url)}"`,
+      `import "${getModulePath(`@vuepress/plugin-prismjs/styles/${light}.light.css`, import.meta)}"`,
+      `import "${getModulePath(`@vuepress/plugin-prismjs/styles/${dark}.dark.css`, import.meta)}"`,
     )
   }
 
   if (lineNumbers !== 'disable') {
     imports.push(
-      `import "${getRealPath('@vuepress/highlighter-helper/styles/line-numbers.css', url)}"`,
+      `import "${getModulePath('@vuepress/highlighter-helper/styles/line-numbers.css', import.meta)}"`,
     )
   }
 
   if (highlightLines || notationHighlight) {
     imports.push(
-      `import "${getRealPath('@vuepress/highlighter-helper/styles/notation-highlight.css', url)}"`,
+      `import "${getModulePath('@vuepress/highlighter-helper/styles/notation-highlight.css', import.meta)}"`,
     )
   }
 
   if (notationDiff) {
     imports.push(
-      `import "${getRealPath('@vuepress/highlighter-helper/styles/notation-diff.css', url)}"`,
+      `import "${getModulePath('@vuepress/highlighter-helper/styles/notation-diff.css', import.meta)}"`,
     )
   }
 
   if (notationErrorLevel) {
     imports.push(
-      `import "${getRealPath('@vuepress/highlighter-helper/styles/notation-error-level.css', url)}"`,
+      `import "${getModulePath('@vuepress/highlighter-helper/styles/notation-error-level.css', import.meta)}"`,
     )
   }
 
   if (notationFocus) {
     imports.push(
-      `import "${getRealPath('@vuepress/highlighter-helper/styles/notation-focus.css', url)}"`,
+      `import "${getModulePath('@vuepress/highlighter-helper/styles/notation-focus.css', import.meta)}"`,
     )
   }
 
   if (notationWordHighlight) {
     imports.push(
-      `import "${getRealPath('@vuepress/highlighter-helper/styles/notation-word-highlight.css', url)}"`,
+      `import "${getModulePath('@vuepress/highlighter-helper/styles/notation-word-highlight.css', import.meta)}"`,
     )
   }
 
   if (whitespace) {
     imports.push(
-      `import "${getRealPath('@vuepress/highlighter-helper/styles/whitespace.css', url)}"`,
+      `import "${getModulePath('@vuepress/highlighter-helper/styles/whitespace.css', import.meta)}"`,
     )
   }
 
   if (collapsedLines !== 'disable') {
     imports.push(
-      `import "${getRealPath('@vuepress/highlighter-helper/styles/collapsed-lines.css', url)}"`,
-      `import { setupCollapsedLines } from "${getRealPath('@vuepress/highlighter-helper/client', url)}"`,
+      `import "${getModulePath('@vuepress/highlighter-helper/styles/collapsed-lines.css', import.meta)}"`,
+      `import { setupCollapsedLines } from "${getModulePath('@vuepress/highlighter-helper/client', import.meta)}"`,
     )
     setups.push('setupCollapsedLines()')
   }

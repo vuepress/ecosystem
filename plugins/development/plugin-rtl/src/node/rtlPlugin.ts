@@ -21,7 +21,7 @@ export interface RTLPluginOptions {
   }
 }
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export const rtlPlugin = (options: RTLPluginOptions = {}): PluginObject => ({
   name: '@vuepress/plugin-rtl',

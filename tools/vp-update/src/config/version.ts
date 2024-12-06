@@ -1,7 +1,3 @@
-import { createRequire } from 'node:module'
+import pkg from 'vp-update/package.json' with { type: 'json' }
 
-export const VERSION = (
-  createRequire(import.meta.url)('vp-update/package.json') as {
-    version: string
-  }
-).version
+export const VERSION = pkg.version

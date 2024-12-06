@@ -1,7 +1,7 @@
 import { Logger } from '@vuepress/helper'
 import { fs, getDirname, path } from 'vuepress/utils'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export const EMPTY_FILE = path.resolve(__dirname, '../../styles/empty.scss')
 

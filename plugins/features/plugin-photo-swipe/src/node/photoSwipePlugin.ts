@@ -11,7 +11,7 @@ import { photoSwipeLocales } from './locales.js'
 import { PLUGIN_NAME, logger } from './logger.js'
 import type { PhotoSwipePluginOptions } from './options.js'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export const photoSwipePlugin =
   (options: PhotoSwipePluginOptions = {}): PluginFunction =>

@@ -1,12 +1,10 @@
-import { getRealPath } from '@vuepress/helper'
+import { getModulePath } from '@vuepress/helper'
 import type { App } from 'vuepress'
 import type {
   MarkdownKatexPluginOptions,
   MarkdownMathPluginOptions,
 } from '../options.js'
 import { CLIENT_FOLDER } from '../utils.js'
-
-const { url } = import.meta
 
 export const prepareClientConfigFile = async (
   app: App,
@@ -17,7 +15,7 @@ export const prepareClientConfigFile = async (
 
   if (mathRenderer === 'katex') {
     content += `\
-import "${getRealPath('katex/dist/katex.min.css', url)}";
+import "${getModulePath('katex/dist/katex.min.css', import.meta)}";
 import "${CLIENT_FOLDER}styles/katex.css";
 ${
   (options as MarkdownKatexPluginOptions).copy
