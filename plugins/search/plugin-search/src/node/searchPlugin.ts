@@ -5,7 +5,7 @@ import { getDirname, path } from 'vuepress/utils'
 import type { HotKeyOptions } from '../shared/index.js'
 import { prepareSearchIndex } from './prepareSearchIndex.js'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 /**
  * Options for @vuepress/plugin-search

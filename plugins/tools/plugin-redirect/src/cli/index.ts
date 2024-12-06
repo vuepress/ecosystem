@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { createRequire } from 'node:module'
 import { removeEndingSlash, removeLeadingSlash } from '@vuepress/helper'
 import { cac } from 'cac'
 import {
@@ -12,6 +11,7 @@ import {
 } from 'vuepress/cli'
 import { createBuildApp } from 'vuepress/core'
 import { fs, logger, path } from 'vuepress/utils'
+import pkg from '../../package.json' with { type: 'json' }
 import { getRedirectHTML } from '../node/generate/getRedirectHTML.js'
 
 interface RedirectCommandOptions {
@@ -24,12 +24,7 @@ interface RedirectCommandOptions {
   cleanTemp?: boolean
 }
 
-const require = createRequire(import.meta.url)
-
 const cli = cac('vp-redirect')
-const { version } = require('@vuepress/plugin-redirect/package.json') as {
-  version: string
-}
 
 cli
   .command(
@@ -132,6 +127,6 @@ cli.command('').action(() => {
 })
 
 cli.help()
-cli.version(version)
+cli.version(pkg.version)
 
 cli.parse()

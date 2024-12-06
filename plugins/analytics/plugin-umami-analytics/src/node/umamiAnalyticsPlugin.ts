@@ -3,7 +3,7 @@ import type { Plugin, PluginObject } from 'vuepress/core'
 import { colors, getDirname, path } from 'vuepress/utils'
 import type { UmamiOptions } from '../shared/index.js'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 const PLUGIN_NAME = '@vuepress/plugin-umami-analytics'
 

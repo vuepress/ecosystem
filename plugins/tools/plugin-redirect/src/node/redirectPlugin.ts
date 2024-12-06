@@ -1,7 +1,7 @@
 import {
   addViteSsrNoExternal,
   getLocaleConfig,
-  getRealPath,
+  getModulePath,
 } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
@@ -35,7 +35,7 @@ export const redirectPlugin =
         '@vuepress/plugin-redirect/modal':
           options.switchLocale === 'modal'
             ? path.resolve(__dirname, '../client/components/RedirectModal.js')
-            : getRealPath('@vuepress/helper/noopComponent', url),
+            : getModulePath('@vuepress/helper/noopComponent', import.meta),
       },
 
       define: {

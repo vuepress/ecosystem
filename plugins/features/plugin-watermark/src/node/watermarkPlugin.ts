@@ -4,7 +4,7 @@ import { getDirname, path } from 'vuepress/utils'
 import { PLUGIN_NAME, logger } from './logger.js'
 import type { WatermarkPluginOptions } from './options.js'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export const watermarkPlugin =
   ({ enabled = true, ...options }: WatermarkPluginOptions = {}): Plugin =>

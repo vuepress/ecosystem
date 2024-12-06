@@ -2,7 +2,7 @@ import type { Plugin } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 import type { TocPropsOptions } from '../shared/index.js'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 /**
  * Options for @vuepress/plugin-toc

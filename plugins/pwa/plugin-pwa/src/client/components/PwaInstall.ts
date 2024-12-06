@@ -49,7 +49,7 @@ export const PwaInstall = defineComponent({
       () => (hasRelatedApps.value && canInstall.value) || useHint.value,
     )
 
-    const getInstalledStatus = (): boolean => {
+    const getInstallStatus = (): boolean => {
       if ((navigator as SafariNavigator).standalone)
         return (navigator as SafariNavigator).standalone
 
@@ -64,7 +64,7 @@ export const PwaInstall = defineComponent({
     }
 
     onMounted(() => {
-      if (getInstalledStatus()) {
+      if (getInstallStatus()) {
         const { userAgent } = navigator
 
         // handle iOS specifically

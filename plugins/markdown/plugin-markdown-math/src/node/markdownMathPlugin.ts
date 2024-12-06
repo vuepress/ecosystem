@@ -2,7 +2,7 @@ import type { MarkdownItKatexOptions } from '@mdit/plugin-katex-slim'
 import { katex } from '@mdit/plugin-katex-slim'
 import type { MathjaxInstance } from '@mdit/plugin-mathjax-slim'
 import { createMathjaxInstance, mathjax } from '@mdit/plugin-mathjax-slim'
-import { addCustomElement, getInstalledStatus } from '@vuepress/helper'
+import { addCustomElement, isModuleAvailable } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import type { MarkdownEnv } from 'vuepress/markdown'
 import { colors, logger } from 'vuepress/utils'
@@ -21,8 +21,8 @@ export const markdownMathPlugin = ({
   type,
   ...options
 }: MarkdownMathPluginOptions = {}): Plugin => {
-  const isMathjaxInstalled = getInstalledStatus('mathjax-full', import.meta.url)
-  const isKatexInstalled = getInstalledStatus('katex', import.meta.url)
+  const isMathjaxInstalled = isModuleAvailable('mathjax-full', import.meta)
+  const isKatexInstalled = isModuleAvailable('katex', import.meta)
 
   const mathRenderer =
     type === 'katex' && isKatexInstalled

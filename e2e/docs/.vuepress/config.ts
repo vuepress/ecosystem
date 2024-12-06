@@ -15,7 +15,7 @@ import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress/cli'
 import { getDirname, path } from 'vuepress/utils'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 const E2E_BASE = (process.env.E2E_BASE ?? '/') as '/' | `/${string}/`
 const E2E_BUNDLER = process.env.E2E_BUNDLER ?? 'vite'
