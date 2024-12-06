@@ -2,6 +2,8 @@
 
 The following functions are available on both Node.js and Client.
 
+These functions are available in `@vuepress/helper`, `@vuepress/helper/client`, and `@vuepress/helper/shared`.
+
 ## Data Related
 
 Encode/decode and zip/unzip data.

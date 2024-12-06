@@ -2,6 +2,8 @@
 
 以下函数在 Node.js 和客户端上均可用。
 
+这些函数在 `@vuepress/helper` `@vuepress/helper/client` 和 `@vuepress/helper/shared` 中都可用。
+
 ## 数据相关
 
 此方法在 MarkdownIt 插件中很有用。有些时候你可能需要在 Markdown 插件中生成组件，并将复杂的数据写入到组件属性中，一个通常做法是使用 `JSON.stringify` + `encodeURIComponent`，并在客户端 `decodeURIComponent` + `JSON.parse`。但如果内容包含很多特殊字符，转换结果会很长。
