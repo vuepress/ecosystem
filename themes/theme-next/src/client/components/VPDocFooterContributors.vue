@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useContributors } from '../composables/contributors.js'
+import { useContributors } from '@vuepress/theme-helper/client'
 import { useData } from '../composables/data.js'
 
 defineProps<{

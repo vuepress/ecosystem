@@ -1,4 +1,5 @@
 import type { GitPluginPageData } from '@vuepress/plugin-git'
+import type { ContributorFrontmatter } from '@vuepress/theme-helper/shared'
 import type { PageFrontmatter } from 'vuepress/shared'
 import type { AutoLinkOptions } from './nav.js'
 import type { SidebarArrayOptions } from './sidebar.js'
@@ -37,12 +38,12 @@ export interface DefaultThemeHomePageFrontmatter
 }
 
 export interface DefaultThemeNormalPageFrontmatter
-  extends DefaultThemePageFrontmatter {
+  extends DefaultThemePageFrontmatter,
+    ContributorFrontmatter {
   home?: false
   editLink?: boolean
   editLinkPattern?: string
   lastUpdated?: boolean
-  contributors?: boolean
   sidebar?: SidebarArrayOptions | 'heading' | false
   sidebarDepth?: number
   prev?: AutoLinkOptions | string

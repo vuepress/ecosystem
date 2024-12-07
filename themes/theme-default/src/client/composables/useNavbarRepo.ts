@@ -1,9 +1,9 @@
 import { useThemeLocaleData } from '@theme/useThemeData'
+import { resolveRepoType } from '@vuepress/theme-helper/client'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import { isLinkHttp } from 'vuepress/shared'
 import type { NavbarItem } from '../typings.js'
-import { resolveRepoType } from '../utils/index.js'
 
 /**
  * Get navbar config of repository link

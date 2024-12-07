@@ -1,4 +1,5 @@
 import type { GitData } from '@vuepress/plugin-git'
+import type { ContributorFrontmatter } from '@vuepress/theme-helper/shared'
 import type { Outline } from './locales.js'
 import type { NavItemWithLink } from './navbar.js'
 import type { DefaultThemeImage, Feature, HeroAction } from './shared.js'
@@ -110,7 +111,8 @@ export interface DefaultThemeHomePageFrontmatter
 }
 
 export interface DefaultThemeNormalPageFrontmatter
-  extends DefaultThemePageFrontmatter {
+  extends DefaultThemePageFrontmatter,
+    ContributorFrontmatter {
   /**
    * Whether show sidebar
    *
@@ -147,14 +149,6 @@ export interface DefaultThemeNormalPageFrontmatter
    * @default true
    */
   lastUpdated?: boolean
-  /**
-   * Whether show contributors
-   *
-   * 是否显示贡献者
-   *
-   * @default true
-   */
-  contributors?: boolean
   /**
    * 大纲中显示的标题级别。
    *

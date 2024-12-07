@@ -1,4 +1,5 @@
 import type { ThemeData } from '@vuepress/plugin-theme-data'
+import type { ContributorThemeData } from '@vuepress/theme-helper/shared'
 import type { LocaleData } from 'vuepress/shared'
 import type { NavbarOptions } from './navbar.js'
 import type { SidebarOptions } from './sidebar.js'
@@ -7,7 +8,9 @@ export type DefaultThemeLocaleOptions = DefaultThemeData
 
 export type DefaultThemeData = ThemeData<DefaultThemeLocaleData>
 
-export interface DefaultThemeLocaleData extends LocaleData {
+export interface DefaultThemeLocaleData
+  extends LocaleData,
+    ContributorThemeData {
   /**
    * Default color mode
    *
@@ -194,13 +197,6 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * The text to replace the default "Last Updated"
    */
   lastUpdatedText?: string
-
-  /**
-   * Page meta - contributors config
-   *
-   * Whether to show "Contributors" or not
-   */
-  contributors?: boolean
 
   /**
    * Page meta - contributors config

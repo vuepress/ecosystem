@@ -1,4 +1,5 @@
 import type { ThemeData } from '@vuepress/plugin-theme-data'
+import type { ContributorThemeData } from '@vuepress/theme-helper/shared'
 import type { UseDarkOptions } from '@vueuse/core'
 import type { LocaleData } from 'vuepress/shared'
 import type { NavItem } from './navbar.js'
@@ -9,7 +10,9 @@ export type DefaultThemeLocaleOptions = DefaultThemeData
 
 export type DefaultThemeData = ThemeData<DefaultThemeLocaleData>
 
-export interface DefaultThemeLocaleData extends LocaleData {
+export interface DefaultThemeLocaleData
+  extends LocaleData,
+    ContributorThemeData {
   /**
    * Custom site title in navbar. If the value is undefined,
    * `userConfig.title` will be used.
@@ -223,17 +226,6 @@ export interface DefaultThemeLocaleData extends LocaleData {
   lastUpdatedFormatOptions?: Intl.DateTimeFormatOptions & {
     forceLocale?: boolean
   }
-
-  /**
-   * Page meta - contributors config
-   *
-   * Whether to show "Contributors" or not
-   *
-   * 页面元数据 - 贡献者
-   *
-   * 是否显示 "贡献者数据"
-   */
-  contributors?: boolean
 
   /**
    * Page meta - contributors config

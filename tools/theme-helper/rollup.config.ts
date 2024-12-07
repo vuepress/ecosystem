@@ -10,7 +10,8 @@ export default [
       files: ['index'],
     },
     {
-      external: [],
+      external: ['@vuepress/plugin-theme-data/client'],
     },
   ),
+  ...rollupBundle('shared/index'),
 ]

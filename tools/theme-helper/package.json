@@ -43,6 +43,8 @@
     "style": "sass src:lib --embed-sources --style=compressed"
   },
   "dependencies": {
+    "@vuepress/plugin-git": "workspace:*",
+    "@vuepress/plugin-theme-data": "workspace:*",
     "@vueuse/core": "^12.0.0",
     "vue": "^3.5.13"
   },

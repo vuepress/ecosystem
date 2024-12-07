@@ -1,4 +1,3 @@
-export * from './useContributors.js'
 export * from './useDarkMode.js'
 export * from './useEditLink.js'
 export * from './useLastUpdated.js'
