@@ -14,7 +14,7 @@ const docsearch = ref(docSearchOptions as DocSearchProps)
 
 const docsearchSymbol: InjectionKey<
   Ref<
-    DocSearchProps & {
+    Partial<DocSearchProps> & {
       locales?: Record<string, DocSearchProps>
     }
   >
@@ -51,7 +51,7 @@ export const useDocSearchOptions = (): ComputedRef<DocSearchProps> => {
   const routeLocale = useRouteLocale()
 
   return computed(() => ({
-    ...options.value,
+    ...(options.value as DocSearchProps),
     ...options.value.locales?.[routeLocale.value],
   }))
 }

@@ -9,7 +9,7 @@ const articles = useBlogType('article')
 
 <template>
   <ParentLayout>
-    <template #page>
+    <template #custom-content>
       <main class="page">
         <ArticleList :items="articles.items" />
       </main>

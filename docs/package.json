@@ -34,7 +34,7 @@
     "@vuepress/plugin-revealjs": "workspace:*",
     "@vuepress/plugin-search": "workspace:*",
     "@vuepress/plugin-shiki": "workspace:*",
-    "@vuepress/theme-default": "workspace:*",
+    "@vuepress/theme-classic": "workspace:*",
     "katex": "0.16.11",
     "mathjax-full": "3.2.2",
     "sass-embedded": "1.82.0",

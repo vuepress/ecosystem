@@ -68,7 +68,7 @@
     "vitest": "^2.1.8",
     "vuepress": "2.0.0-rc.18"
   },
-  "packageManager": "pnpm@9.14.4",
+  "packageManager": "pnpm@9.15.0",
   "engines": {
     "node": ">=18.19.0"
   }

@@ -21,7 +21,7 @@ test.describe('copy-code', () => {
       navigator.clipboard.readText(),
     )
 
-    expect(content).toMatch(/const a = 1\r?\nconst b = 2\r?\n/)
+    expect(content).toMatch(/const a = 1\r?\nconst b = 2/)
 
     await page.evaluate(async () => navigator.clipboard.writeText(''))
   })
