@@ -1,9 +1,11 @@
 import type { ComputedRef, InjectionKey } from 'vue'
 import { inject } from 'vue'
 import type { RouteLocale } from 'vuepress/client'
+import type { LocaleData } from 'vuepress/shared'
 import type { ThemeData } from '../../shared/index.js'
 
-export type ThemeLocaleDataRef<T extends ThemeData = ThemeData> = ComputedRef<T>
+export type ThemeLocaleDataRef<T extends LocaleData = LocaleData> =
+  ComputedRef<T>
 
 export const themeLocaleDataSymbol: InjectionKey<ThemeLocaleDataRef> = Symbol(
   __VUEPRESS_DEV__ ? 'themeLocaleData' : '',
