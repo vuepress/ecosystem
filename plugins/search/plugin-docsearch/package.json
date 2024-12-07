@@ -42,6 +42,7 @@
   "dependencies": {
     "@docsearch/css": "^3.8.0",
     "@docsearch/js": "^3.8.0",
+    "@docsearch/react": "^3.8.0",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "^12.0.0",
     "ts-debounce": "^4.0.0",

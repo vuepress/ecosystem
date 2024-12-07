@@ -1,4 +1,4 @@
-import type { DocSearchProps } from '../../shared/index.js'
+import type { DocSearchProps } from '@docsearch/react'
 
 type DocSearchTranslation = Exclude<DocSearchProps['translations'], undefined>
 
