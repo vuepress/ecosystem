@@ -1,7 +1,7 @@
 import type { ThemeData } from '@vuepress/plugin-theme-data'
 import type {
   ContributorThemeData,
-  EditLinkFrontmatter,
+  EditLinkThemeData,
 } from '@vuepress/theme-helper/shared'
 import type { LocaleData } from 'vuepress/shared'
 import type { NavbarOptions } from './navbar.js'
@@ -14,7 +14,7 @@ export type DefaultThemeData = ThemeData<DefaultThemeLocaleData>
 export interface DefaultThemeLocaleData
   extends LocaleData,
     ContributorThemeData,
-    EditLinkFrontmatter {
+    EditLinkThemeData {
   /**
    * Default color mode
    *
