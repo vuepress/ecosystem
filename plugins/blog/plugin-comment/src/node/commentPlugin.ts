@@ -4,8 +4,8 @@ import {
   addViteOptimizeDepsInclude,
   addViteSsrExternal,
   addViteSsrNoExternal,
-  getInstalledStatus,
   getLocaleConfig,
+  isModuleAvailable,
 } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getAlias, getProviderPackage } from './getProvider.js'
@@ -21,7 +21,7 @@ export const commentPlugin =
 
     const pkg = getProviderPackage(options.provider)
 
-    if (pkg && !getInstalledStatus(pkg, import.meta.url)) {
+    if (pkg && !isModuleAvailable(pkg, import.meta)) {
       logger.error(
         `Package ${pkg} is not installed, please install it manually!`,
       )

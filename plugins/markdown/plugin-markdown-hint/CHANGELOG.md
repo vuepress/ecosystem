@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.63](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.62...v2.0.0-rc.63) (2024-12-06)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.62](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.61...v2.0.0-rc.62) (2024-12-06)
+
+### Features
+
+- **plugin-markdown-hint:** add plugin exports ([8e2aafe](https://github.com/vuepress/ecosystem/commit/8e2aafe6a2fdd8eec6bd16e50e2b8b41bba62d4c))
+
 # [2.0.0-rc.61](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.60...v2.0.0-rc.61) (2024-11-23)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-hint

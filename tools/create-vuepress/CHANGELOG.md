@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.64](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.63...v2.0.0-rc.64) (2024-12-07)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.63](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.62...v2.0.0-rc.63) (2024-12-06)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.62](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.61...v2.0.0-rc.62) (2024-12-06)
+
+### Bug Fixes
+
+- **create-vuepress:** prevent navbar overlap in blog template ([#294](https://github.com/vuepress/ecosystem/issues/294)) ([c806fb8](https://github.com/vuepress/ecosystem/commit/c806fb8ecaf582c030a9c8f90de298473495c4a0))
+
 # [2.0.0-rc.61](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.60...v2.0.0-rc.61) (2024-11-23)
 
 **Note:** Version bump only for package create-vuepress

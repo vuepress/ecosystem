@@ -5,7 +5,7 @@ import type { FeedConfig } from '../typings/index.js'
 import { getFeedFilenames } from './getFeedFilenames.js'
 import type { ResolvedFeedOptionsMap } from './getFeedOptions.js'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 const TEMPLATE_FOLDER = ensureEndingSlash(
   path.resolve(__dirname, '../../templates'),

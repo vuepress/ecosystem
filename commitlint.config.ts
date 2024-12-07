@@ -1,8 +1,8 @@
 import { readdirSync, statSync } from 'node:fs'
-import { dirname, join } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { join } from 'node:path'
+import { getDirname } from 'vuepress/utils'
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const __dirname = getDirname(import.meta.url)
 
 const getSubDirectories = (dir: string): string[] =>
   readdirSync(dir).filter((item) => statSync(join(dir, item)).isDirectory())

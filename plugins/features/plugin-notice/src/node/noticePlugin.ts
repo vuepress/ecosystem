@@ -4,7 +4,7 @@ import { getNoticeOptions } from './getNoticeOptions.js'
 import { PLUGIN_NAME } from './logger.js'
 import type { NoticePluginOptions } from './options.js'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export const noticePlugin =
   (options: NoticePluginOptions): Plugin =>

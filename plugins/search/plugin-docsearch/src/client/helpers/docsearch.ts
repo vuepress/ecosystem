@@ -1,8 +1,9 @@
+import type { DocSearchProps } from '@docsearch/react'
 import { deepAssign, isFunction } from '@vuepress/helper/client'
 import type { App, ComputedRef, InjectionKey, MaybeRefOrGetter, Ref } from 'vue'
 import { computed, inject, isRef, ref, watch } from 'vue'
 import { useRouteLocale } from 'vuepress/client'
-import type { DocSearchOptions, DocSearchProps } from '../../shared/index.js'
+import type { DocSearchOptions } from '../../shared/index.js'
 
 declare const __VUEPRESS_DEV__: boolean
 declare const __DOCSEARCH_OPTIONS__: DocSearchOptions

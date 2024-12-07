@@ -1,11 +1,11 @@
-import { getLocaleConfig, getRealPath } from '@vuepress/helper'
+import { getLocaleConfig, getModulePath } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 import { pwaLocales } from './locales.js'
 import { PLUGIN_NAME } from './logger.js'
 import type { PwaPluginOptions } from './options.js'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export const prepareClientConfigFile = (
   app: App,
@@ -49,7 +49,7 @@ import { h }  from "vue";
 import { defineClientConfig } from "vuepress/client";
 import { setupPwa, setupViewPoint } from "${path.join(__dirname, '../client/composables/index.js')}";
 ${configImport}
-import "${getRealPath('@vuepress/plugin-pwa/styles/vars.css', import.meta.url)}";
+import "${getModulePath('@vuepress/plugin-pwa/styles/vars.css', import.meta)}";
 
 const locales = ${JSON.stringify(
       getLocaleConfig({

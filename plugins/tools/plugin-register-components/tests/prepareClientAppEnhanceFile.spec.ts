@@ -4,7 +4,7 @@ import { createBaseApp } from 'vuepress/core'
 import { fs, getDirname, path } from 'vuepress/utils'
 import { prepareClientConfigFile } from '../src/node/index.js'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),

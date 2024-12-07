@@ -7,7 +7,7 @@ import { useThemeLocaleData } from '@theme/useThemeData'
 import { DeviceType, useUpdateDeviceStatus } from '@theme/useUpdateDeviceStatus'
 import { hasGlobalComponent } from '@vuepress/helper/client'
 import type { VNode } from 'vue'
-import { computed, ref, resolveComponent } from 'vue'
+import { computed, ref, resolveComponent, useTemplateRef } from 'vue'
 
 defineEmits<{
   toggleSidebar: []
@@ -24,8 +24,8 @@ const SearchBox = hasGlobalComponent('SearchBox')
 
 const themeLocale = useThemeLocaleData()
 
-const navbar = ref<HTMLElement | null>(null)
-const navbarBrand = ref<HTMLElement | null>(null)
+const navbar = useTemplateRef<HTMLElement | null>('navbar')
+const navbarBrand = useTemplateRef<HTMLElement | null>('navbar-brand')
 
 const linksWrapperMaxWidth = ref(0)
 const linksWrapperStyle = computed(() => {
@@ -71,7 +71,7 @@ useUpdateDeviceStatus(
   <header ref="navbar" class="vp-navbar" vp-navbar>
     <VPToggleSidebarButton @toggle="$emit('toggleSidebar')" />
 
-    <span ref="navbarBrand">
+    <span ref="navbar-brand">
       <VPNavbarBrand />
     </span>
 

@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import { readFileSync, writeFileSync } from 'node:fs'
-import { createRequire } from 'node:module'
 import { dirname, join } from 'node:path'
 import { confirm } from '@inquirer/prompts'
 import type { CreateLocaleOptions, Lang } from '../i18n/index.js'
@@ -8,9 +7,7 @@ import type { PackageManager } from '../utils/index.js'
 import { copy, ensureDirExistSync } from '../utils/index.js'
 
 const templateFolder = join(
-  dirname(
-    createRequire(import.meta.url).resolve('create-vuepress/package.json'),
-  ),
+  dirname(import.meta.resolve('create-vuepress/package.json')),
   './template',
 )
 

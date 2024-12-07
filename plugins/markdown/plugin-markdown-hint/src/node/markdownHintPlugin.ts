@@ -9,7 +9,7 @@ import type { MarkdownHintPluginOptions } from './options.js'
 
 const PLUGIN_NAME = '@vuepress/plugin-markdown-hint'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export const markdownHintPlugin = (
   options: MarkdownHintPluginOptions,

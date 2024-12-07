@@ -21,7 +21,7 @@ const timelines = useBlogType('timeline')
 
 <style lang="scss">
 .timeline-title {
-  padding: 0;
+  padding-top: calc(var(--navbar-height) + 1rem) !important;
   text-align: center;
 }
 </style>

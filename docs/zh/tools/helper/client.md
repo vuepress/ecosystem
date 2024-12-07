@@ -1,5 +1,7 @@
 # 客户端相关
 
+这些函数仅在 `@vuepress/helper/client` 中可用。
+
 ## 可组合 API
 
 ### hasGlobalComponent

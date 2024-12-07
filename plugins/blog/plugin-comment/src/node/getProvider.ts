@@ -1,4 +1,4 @@
-import { getRealPath } from '@vuepress/helper'
+import { getModulePath } from '@vuepress/helper'
 import type { CommentPluginOptions } from './options.js'
 import { CLIENT_FOLDER, PLUGIN_NAME, logger } from './utils.js'
 
@@ -11,7 +11,7 @@ export const getServiceComponent = (provider = 'None'): string => {
 
   if (provider !== 'None') logger.error(`Invalid provider: ${provider}`)
 
-  return getRealPath('@vuepress/helper/noopModule', import.meta.url)
+  return getModulePath('@vuepress/helper/noopModule', import.meta)
 }
 
 export const getPageviewChunk = (provider = 'None'): string =>

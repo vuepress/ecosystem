@@ -3,7 +3,7 @@ import { getDirname, path } from 'vuepress/utils'
 import type { ThemeData } from '../shared/index.js'
 import { prepareThemeData } from './prepareThemeData.js'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 /**
  * Options of @vuepress/plugin-theme-data

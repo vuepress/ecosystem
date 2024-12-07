@@ -67,6 +67,7 @@ defineProps<{
   @include mixins.content-wrapper;
 
   & {
+    padding-top: calc(var(--navbar-height) + 1rem) !important;
     text-align: center;
   }
 }

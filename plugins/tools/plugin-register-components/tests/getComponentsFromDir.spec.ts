@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { getDirname, path } from 'vuepress/utils'
 import { getComponentsFromDir } from '../src/node/index.js'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 describe('plugin-register-components > node > getComponentsFromDir', () => {
   it('should get empty object if `componentsDir` is `null`', async () => {

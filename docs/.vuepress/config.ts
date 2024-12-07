@@ -1,7 +1,7 @@
 import process from 'node:process'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
-import { getRealPath } from '@vuepress/helper'
+import { getModulePath } from '@vuepress/helper'
 import { cachePlugin } from '@vuepress/plugin-cache'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { commentPlugin } from '@vuepress/plugin-comment'
@@ -21,7 +21,7 @@ import { getDirname, path } from 'vuepress/utils'
 import { head } from './configs/index.js'
 import theme from './theme.js'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 const IS_PROD = process.env.NODE_ENV === 'production'
 
@@ -60,7 +60,7 @@ export default defineUserConfig({
           const realPath = importPath.replace(
             packageName,
             path.dirname(
-              getRealPath(`${packageName}/package.json`, import.meta.url),
+              getModulePath(`${packageName}/package.json`, import.meta),
             ),
           )
 

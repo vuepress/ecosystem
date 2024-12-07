@@ -42,7 +42,7 @@ const categoryMap = useBlogCategory<ArticleInfo>('category')
   @include mixins.content-wrapper;
 
   & {
-    padding-top: 1rem !important;
+    padding-top: calc(var(--navbar-height) + 1rem) !important;
     padding-bottom: 0 !important;
     font-size: 14px;
   }

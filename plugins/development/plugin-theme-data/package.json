@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-theme-data",
-  "version": "2.0.0-rc.61",
+  "version": "2.0.0-rc.64",
   "description": "VuePress plugin - theme data",
   "keywords": [
     "vuepress-plugin",
@@ -37,7 +37,7 @@
     "copy": "cpx \"src/**/*.d.ts\" lib"
   },
   "dependencies": {
-    "@vue/devtools-api": "^7.6.6",
+    "@vue/devtools-api": "^7.6.7",
     "vue": "^3.5.13"
   },
   "peerDependencies": {
