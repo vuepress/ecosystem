@@ -1,5 +1,8 @@
 import type { ThemeData } from '@vuepress/plugin-theme-data'
-import type { ContributorThemeData } from '@vuepress/theme-helper/shared'
+import type {
+  ContributorThemeData,
+  EditLinkThemeData,
+} from '@vuepress/theme-helper/shared'
 import type { UseDarkOptions } from '@vueuse/core'
 import type { LocaleData } from 'vuepress/shared'
 import type { NavItem } from './navbar.js'
@@ -12,7 +15,8 @@ export type DefaultThemeData = ThemeData<DefaultThemeLocaleData>
 
 export interface DefaultThemeLocaleData
   extends LocaleData,
-    ContributorThemeData {
+    ContributorThemeData,
+    EditLinkThemeData {
   /**
    * Custom site title in navbar. If the value is undefined,
    * `userConfig.title` will be used.
@@ -121,78 +125,6 @@ export interface DefaultThemeLocaleData
    * 定制404页面的文本。
    */
   notFound?: NotFoundOptions
-
-  /**
-   * Page meta - edit link config
-   *
-   * Whether to show "Edit this page" or not
-   *
-   * 页面元数据 - 编辑链接
-   *
-   * 是否显示 "编辑此页"
-   *
-   * @default true
-   */
-  editLink?: boolean
-
-  /**
-   * Page meta - edit link config
-   *
-   * The text to replace the default "Edit this page"
-   *
-   * 页面元数据 - 编辑链接
-   *
-   * 编辑此页的文本
-   *
-   * @default 'Edit this page'
-   */
-  editLinkText?: string
-
-  /**
-   * Page meta - edit link config
-   *
-   * Pattern of edit link
-   *
-   * 编辑链接的模式匹配
-   *
-   * `:repo` {@link docsRepo} | `:branch` {@link docsBranch} |  `:path` {@link docsDir}
-   *
-   * @example ':repo/edit/:branch/:path'
-   */
-  editLinkPattern?: string
-
-  /**
-   * Page meta - edit link config
-   *
-   * Set this config if your docs is placed in a different repo
-   *
-   * 页面元数据 - 编辑链接
-   *
-   * 如果你的文档位于不同的仓库， 设置此配置
-   */
-  docsRepo?: string
-
-  /**
-   * Page meta - edit link config
-   *
-   * Set this config if the branch of your docs is not 'main'
-   *
-   * 页面元数据 - 编辑链接
-   *
-   * 如果你的文档分支不是 'main'
-   */
-  docsBranch?: string
-
-  /**
-   * Page meta - edit link config
-   *
-   * Set this config if your docs is placed in sub dir of your `docsRepo`
-   *
-   * 页面元数据 - 编辑链接
-   *
-   * 如果你的文档位于 `docsRepo` 下的子目录
-   */
-  docsDir?: string
 
   /**
    * Page meta - last updated config

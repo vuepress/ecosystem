@@ -1,3 +1,4 @@
+import { extendsEditLinkPage } from '@vuepress/theme-helper'
 import { watch } from 'chokidar'
 import type { Page, Theme } from 'vuepress/core'
 import { fs, getDirname, path } from 'vuepress/utils'
@@ -83,8 +84,7 @@ export const defaultTheme =
       },
 
       extendsPage: (page: Page<Partial<DefaultThemePageData>>) => {
-        // save relative file path into page data to generate edit link
-        page.data.filePathRelative = page.filePathRelative
+        extendsEditLinkPage(page)
         // save title into route meta to generate navbar and sidebar
         page.routeMeta.title = page.title
       },

@@ -1,5 +1,8 @@
 import type { GitData } from '@vuepress/plugin-git'
-import type { ContributorFrontmatter } from '@vuepress/theme-helper/shared'
+import type {
+  ContributorFrontmatter,
+  EditLinkFrontmatter,
+} from '@vuepress/theme-helper/shared'
 import type { Outline } from './locales.js'
 import type { NavItemWithLink } from './navbar.js'
 import type { DefaultThemeImage, Feature, HeroAction } from './shared.js'
@@ -112,7 +115,8 @@ export interface DefaultThemeHomePageFrontmatter
 
 export interface DefaultThemeNormalPageFrontmatter
   extends DefaultThemePageFrontmatter,
-    ContributorFrontmatter {
+    ContributorFrontmatter,
+    EditLinkFrontmatter {
   /**
    * Whether show sidebar
    *
@@ -127,20 +131,6 @@ export interface DefaultThemeNormalPageFrontmatter
    * @default true
    */
   aside?: boolean | 'left'
-  /**
-   * Whether show edit link
-   *
-   * 是否显示编辑链接
-   *
-   * @default true
-   */
-  editLink?: boolean
-  /**
-   * Edit link pattern
-   *
-   * 页面 编辑链接 的 pattern
-   */
-  editLinkPattern?: string
   /**
    * Whether show last updated time
    *

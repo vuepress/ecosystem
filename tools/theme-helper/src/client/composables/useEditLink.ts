@@ -1,25 +1,40 @@
 import { resolveEditLink } from '@vuepress/theme-helper/client'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
-import type { NavItemWithLink } from '../../shared/index.js'
-import { useData } from './data.js'
+import type { AutoLinkConfig } from 'vuepress/client'
+import type {
+  EditLinkFrontmatter,
+  EditLinkPageData,
+  EditLinkThemeData,
+} from '../../shared/index.js'
+import { useData } from './useData.js'
 
-export const useEditLink = (): ComputedRef<NavItemWithLink | null> => {
-  const { theme, page, frontmatter } = useData()
+export const useEditLink = (): ComputedRef<AutoLinkConfig | null> => {
+  const { page, frontmatter, theme } = useData<
+    EditLinkThemeData,
+    EditLinkFrontmatter,
+    EditLinkPageData
+  >()
 
   return computed(() => {
     const showEditLink =
       frontmatter.value.editLink ?? theme.value.editLink ?? true
-    if (!showEditLink) return null
+
+    if (!showEditLink) {
+      return null
+    }
 
     const {
-      docsRepo,
+      repo,
+      docsRepo = repo,
       docsBranch = 'main',
       docsDir = '',
       editLinkText,
     } = theme.value
 
-    if (!docsRepo) return null
+    if (!docsRepo) {
+      return null
+    }
 
     const editLink = resolveEditLink({
       docsRepo,

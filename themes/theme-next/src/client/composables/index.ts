@@ -12,7 +12,6 @@ export * from './flyout.js'
 export * from './nav.js'
 export * from './langs.js'
 
-export * from './edit-link.js'
 export * from './prev-next.js'
 export * from './last-updated.js'
 
