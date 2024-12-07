@@ -7,6 +7,7 @@ import {
 } from '@vueuse/core'
 import type { VNode } from 'vue'
 import {
+  computed,
   defineAsyncComponent,
   defineComponent,
   h,
@@ -34,8 +35,6 @@ import { SearchIcon } from './icons.js'
 
 import '../styles/search-modal.css'
 
-declare const __SLIMSEARCH_SUGGESTION__: boolean
-
 const SearchResult = defineAsyncComponent({
   loader: () =>
     import(/* webpackChunkName: "slimsearch-result" */ './SearchResult.js'),
@@ -49,6 +48,8 @@ const SearchResult = defineAsyncComponent({
   },
 })
 
+const SUGGESTIONS_KEYCODE = ['ArrowDown', 'ArrowUp', 'Escape', 'Tab', 'Enter']
+
 export default defineComponent({
   name: 'SearchModal',
 
@@ -60,8 +61,8 @@ export default defineComponent({
 
     const input = ref('')
     const queries = ref<string[]>([])
-    const { suggestions } = useSuggestions(queries)
-    const displaySuggestion = ref(false)
+    const { enabled: enabledSuggestions, suggestions } = useSuggestions(queries)
+    const showSuggestion = ref(false)
 
     const {
       index: activeSuggestionIndex,
@@ -72,18 +73,27 @@ export default defineComponent({
     const inputElement = shallowRef<HTMLInputElement>()
     const suggestionsElement = shallowRef<HTMLDivElement>()
 
+    const hasSuggestions = computed(
+      () =>
+        enabledSuggestions && showSuggestion.value && suggestions.value.length,
+    )
+
     const applySuggestion = (index = activeSuggestionIndex.value): void => {
       input.value = suggestions.value[index]
-      displaySuggestion.value = false
+      showSuggestion.value = false
     }
 
     useEventListener('keydown', (event: KeyboardEvent) => {
-      if (displaySuggestion.value) {
+      // handle suggestion keys
+      if (hasSuggestions.value) {
         if (event.key === 'ArrowUp') activePreviousSuggestion()
         else if (event.key === 'ArrowDown') activeNextSuggestion()
-        else if (event.key === 'Enter') applySuggestion()
-        else if (event.key === 'Escape') displaySuggestion.value = false
-      } else if (event.key === 'Escape') {
+        else if (event.key === 'Tab') applySuggestion()
+        else if (event.key === 'Enter' || event.key === 'Escape')
+          showSuggestion.value = false
+      }
+      // hide the modal when pressing the escape key
+      else if (event.key === 'Escape') {
         isActive.value = false
       }
     })
@@ -114,7 +124,7 @@ export default defineComponent({
       })
 
       onClickOutside(suggestionsElement, () => {
-        displaySuggestion.value = false
+        showSuggestion.value = false
       })
 
       onUnmounted(() => {
@@ -154,23 +164,17 @@ export default defineComponent({
                     'value': input.value,
                     'aria-controls': 'slimsearch-results',
                     'onKeydown': (event: KeyboardEvent): void => {
-                      const { key } = event
-
-                      if (suggestions.value.length)
-                        if (key === 'Tab') {
-                          applySuggestion()
-                          event.preventDefault()
-                        } else if (
-                          key === 'ArrowDown' ||
-                          key === 'ArrowUp' ||
-                          key === 'Escape'
-                        ) {
-                          event.preventDefault()
-                        }
+                      if (
+                        hasSuggestions.value &&
+                        // These keys are handled by the suggestion list
+                        SUGGESTIONS_KEYCODE.includes(event.key)
+                      ) {
+                        event.preventDefault()
+                      }
                     },
                     'onInput': ({ target }: InputEvent) => {
                       input.value = (target as HTMLInputElement).value
-                      displaySuggestion.value = true
+                      showSuggestion.value = true
                       activeSuggestionIndex.value = 0
                     },
                   }),
@@ -184,9 +188,7 @@ export default defineComponent({
                         },
                       })
                     : null,
-                  __SLIMSEARCH_SUGGESTION__ &&
-                  displaySuggestion.value &&
-                  suggestions.value.length
+                  hasSuggestions.value
                     ? h(
                         'ul',
                         {
@@ -239,7 +241,7 @@ export default defineComponent({
 
               h(SearchResult, {
                 queries: queries.value,
-                isFocusing: !displaySuggestion.value,
+                isFocusing: !hasSuggestions.value,
                 onClose: () => {
                   isActive.value = false
                 },

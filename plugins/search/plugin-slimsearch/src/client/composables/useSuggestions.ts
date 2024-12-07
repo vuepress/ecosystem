@@ -9,6 +9,7 @@ import { createSearchWorker } from '../utils/index.js'
 declare const __SLIMSEARCH_SUGGESTION__: boolean
 
 export interface SuggestionsRef {
+  enabled: boolean
   suggestions: Ref<string[]>
 }
 
@@ -71,6 +72,7 @@ export const useSuggestions = (queries: Ref<string[]>): SuggestionsRef => {
   }
 
   return {
+    enabled: __SLIMSEARCH_SUGGESTION__,
     suggestions,
   }
 }
