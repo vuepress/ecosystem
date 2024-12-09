@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.65](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.64...v2.0.0-rc.65) (2024-12-09)
+
+### Bug Fixes
+
+- **helper:** `.sr-only` clip ([#297](https://github.com/vuepress/ecosystem/issues/297)) ([0c79df6](https://github.com/vuepress/ecosystem/commit/0c79df69d29644e78438e2e92cc17773f915b081))
+
 # [2.0.0-rc.63](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.62...v2.0.0-rc.63) (2024-12-06)
 
 **Note:** Version bump only for package @vuepress/helper

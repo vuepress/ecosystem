@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.65](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.64...v2.0.0-rc.65) (2024-12-09)
+
+### Bug Fixes
+
+- **helper:** `.sr-only` clip ([#297](https://github.com/vuepress/ecosystem/issues/297)) ([0c79df6](https://github.com/vuepress/ecosystem/commit/0c79df69d29644e78438e2e92cc17773f915b081))
+- **plugin-slimsearch:** fix hotkey without suggestions, close [#298](https://github.com/vuepress/ecosystem/issues/298) ([51373fd](https://github.com/vuepress/ecosystem/commit/51373fd00c05b404ec1da09b6f8046680d0c2317))
+
 # [2.0.0-rc.64](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.63...v2.0.0-rc.64) (2024-12-07)
 
 ### Bug Fixes
