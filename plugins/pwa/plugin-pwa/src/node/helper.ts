@@ -46,9 +46,6 @@ export const appendBase = (base: string, options: PwaPluginOptions): void => {
       options.apple.maskIcon = appendBaseToLink(base, options.apple.maskIcon)
   }
 
-  if (options.msTile && options.msTile.image)
-    options.msTile.image = appendBaseToLink(base, options.msTile.image)
-
   if (options.manifest)
     options.manifest = appendBaseToManifest(base, options.manifest)
 }
