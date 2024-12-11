@@ -1,0 +1,253 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Test head function > should generate PWA tags because they do not exist 1`] = `
+[
+  [
+    "meta",
+    {
+      "content": "VuePress",
+      "name": "application-name",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "yes",
+      "name": "mobile-web-app-capable",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "#46bd87",
+      "name": "theme-color",
+    },
+  ],
+  [
+    "link",
+    {
+      "href": "/favicon.ico",
+      "rel": "icon",
+    },
+  ],
+  [
+    "link",
+    {
+      "crossorigin": "use-credentials",
+      "href": "/manifest.webmanifest",
+      "rel": "manifest",
+    },
+  ],
+  [
+    "link",
+    {
+      "href": "/assets/icon/chrome-192.png",
+      "rel": "icon",
+      "sizes": "192x192",
+    },
+  ],
+  [
+    "link",
+    {
+      "href": "/assets/icon/chrome-512.png",
+      "rel": "icon",
+      "sizes": "512x512",
+    },
+  ],
+  [
+    "link",
+    {
+      "href": "/assets/icon/chrome-mask-192.png",
+      "rel": "icon",
+      "sizes": "192x192",
+      "type": "image/png",
+    },
+  ],
+  [
+    "link",
+    {
+      "href": "/assets/icon/chrome-mask-512.png",
+      "rel": "icon",
+      "sizes": "512x512",
+      "type": "image/png",
+    },
+  ],
+  [
+    "link",
+    {
+      "href": "/img/icon/appleIcon152.png",
+      "rel": "apple-touch-icon",
+    },
+  ],
+  [
+    "link",
+    {
+      "color": "#46bd87",
+      "href": "/icons/safari-pinned-tab.svg",
+      "rel": "mask-icon",
+    },
+  ],
+]
+`;
+
+exports[`Test head function > should not generate tags if them exist 1`] = `
+[
+  [
+    "link",
+    {
+      "href": "/icon.ico",
+      "rel": "icon",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "#ffffff",
+      "name": "theme-color",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "VuePress",
+      "name": "application-name",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "yes",
+      "name": "mobile-web-app-capable",
+    },
+  ],
+  [
+    "link",
+    {
+      "crossorigin": "use-credentials",
+      "href": "/manifest.webmanifest",
+      "rel": "manifest",
+    },
+  ],
+  [
+    "link",
+    {
+      "href": "/img/icon/appleIcon152.png",
+      "rel": "apple-touch-icon",
+    },
+  ],
+  [
+    "link",
+    {
+      "color": "#46bd87",
+      "href": "/icons/safari-pinned-tab.svg",
+      "rel": "mask-icon",
+    },
+  ],
+]
+`;
+
+exports[`Test head function > should not generate tags if they exist 1`] = `
+[
+  [
+    "link",
+    {
+      "href": "/icon.ico",
+      "rel": "icon",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "#ffffff",
+      "name": "theme-color",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "VuePress",
+      "name": "application-name",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "yes",
+      "name": "mobile-web-app-capable",
+    },
+  ],
+  [
+    "link",
+    {
+      "crossorigin": "use-credentials",
+      "href": "/manifest.webmanifest",
+      "rel": "manifest",
+    },
+  ],
+  [
+    "link",
+    {
+      "href": "/img/icon/appleIcon152.png",
+      "rel": "apple-touch-icon",
+    },
+  ],
+  [
+    "link",
+    {
+      "color": "#46bd87",
+      "href": "/icons/safari-pinned-tab.svg",
+      "rel": "mask-icon",
+    },
+  ],
+]
+`;
+
+exports[`Test head function > should read manifest 1`] = `
+[
+  [
+    "meta",
+    {
+      "content": "VuePress",
+      "name": "application-name",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "yes",
+      "name": "mobile-web-app-capable",
+    },
+  ],
+  [
+    "meta",
+    {
+      "content": "#46bd87",
+      "name": "theme-color",
+    },
+  ],
+  [
+    "link",
+    {
+      "crossorigin": "use-credentials",
+      "href": "/manifest.webmanifest",
+      "rel": "manifest",
+    },
+  ],
+  [
+    "link",
+    {
+      "href": "/assets/icon/chrome-192.png",
+      "rel": "icon",
+      "sizes": "192x192",
+      "type": "image/png",
+    },
+  ],
+  [
+    "link",
+    {
+      "href": "/assets/icon/chrome-192.png",
+      "rel": "apple-touch-icon",
+    },
+  ],
+]
+`;

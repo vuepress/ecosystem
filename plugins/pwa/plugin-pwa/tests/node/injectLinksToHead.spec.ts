@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import type { HeadConfig } from 'vuepress/core'
+import { createBaseApp } from 'vuepress/core'
 import type { PwaPluginOptions } from '../../src/node/index.js'
 import { injectLinksToHead } from '../../src/node/injectLinksToHead.js'
 
@@ -48,181 +48,57 @@ const options: PwaPluginOptions = {
   themeColor: '#46bd87',
   apple: {
     icon: '/img/icon/appleIcon152.png',
-    statusBarColor: 'white',
     maskIcon: '/icons/safari-pinned-tab.svg',
-  },
-  msTile: {
-    image: '/img/icon/msIcon144.png',
-    color: '#ffffff',
-  },
-}
-
-const options2: PwaPluginOptions = {
-  manifest: {
-    icons: [
-      {
-        src: '/assets/icon/chrome-192.png',
-        sizes: '192x192',
-        type: 'image/png',
-      },
-    ],
   },
 }
 
 describe('Test head function', () => {
   it('should generate PWA tags because they do not exist', () => {
-    expect(injectLinksToHead(options)).toEqual([
-      ['link', { rel: 'icon', href: '/favicon.ico' }],
-      [
-        'link',
-        {
-          rel: 'icon',
-          href: '/assets/icon/chrome-192.png',
-          sizes: '192x192',
-        },
-      ],
-      [
-        'link',
-        {
-          rel: 'icon',
-          href: '/assets/icon/chrome-512.png',
-          sizes: '512x512',
-        },
-      ],
-      [
-        'link',
-        {
-          rel: 'icon',
-          href: '/assets/icon/chrome-mask-192.png',
-          sizes: '192x192',
-          type: 'image/png',
-        },
-      ],
-      [
-        'link',
-        {
-          rel: 'icon',
-          href: '/assets/icon/chrome-mask-512.png',
-          sizes: '512x512',
-          type: 'image/png',
-        },
-      ],
+    // @ts-expect-error: Fake app
+    const app = createBaseApp({
+      base: '/',
+      title: 'VuePress',
+      source: '',
+    })
 
-      [
-        'link',
-        {
-          rel: 'manifest',
-          href: '/manifest.webmanifest',
-          crossorigin: 'use-credentials',
-        },
-      ],
-      ['meta', { name: 'theme-color', content: '#46bd87' }],
-      ['link', { rel: 'apple-touch-icon', href: '/img/icon/appleIcon152.png' }],
-      ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-      [
-        'meta',
-        { name: 'apple-mobile-web-app-status-bar-style', content: 'white' },
-      ],
-      [
-        'link',
-        {
-          rel: 'mask-icon',
-          href: '/icons/safari-pinned-tab.svg',
-          color: '#46bd87',
-        },
-      ],
-      [
-        'meta',
-        {
-          name: 'msapplication-TileImage',
-          content: '/img/icon/msIcon144.png',
-        },
-      ],
-      ['meta', { name: 'msapplication-TileColor', content: '#ffffff' }],
-    ])
+    expect(injectLinksToHead(app, options)).toMatchSnapshot()
   })
 
-  it('should not generate tags if them exist', () => {
-    const headList: HeadConfig[] = [
-      ['link', { rel: 'icon', href: '/icon.ico' }],
-      ['meta', { name: 'theme-color', content: '#ffffff' }],
-      ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
-    ]
+  it('should read manifest', () => {
+    // @ts-expect-error: Fake app
+    const app = createBaseApp({
+      base: '/',
+      title: 'VuePress',
+      source: '',
+    })
 
-    expect(injectLinksToHead(options, '/', headList)).toEqual([
-      ['link', { rel: 'icon', href: '/icon.ico' }],
+    const optionsWithManifest: PwaPluginOptions = {
+      manifest: {
+        icons: [
+          {
+            src: '/assets/icon/chrome-192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+        ],
+      },
+    }
 
-      ['meta', { name: 'theme-color', content: '#ffffff' }],
-      ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
-      [
-        'link',
-        {
-          rel: 'manifest',
-          href: '/manifest.webmanifest',
-          crossorigin: 'use-credentials',
-        },
-      ],
-      ['link', { rel: 'apple-touch-icon', href: '/img/icon/appleIcon152.png' }],
-      ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-      [
-        'meta',
-        { name: 'apple-mobile-web-app-status-bar-style', content: 'white' },
-      ],
-      [
-        'link',
-        {
-          rel: 'mask-icon',
-          href: '/icons/safari-pinned-tab.svg',
-          color: '#46bd87',
-        },
-      ],
-      [
-        'meta',
-        {
-          name: 'msapplication-TileImage',
-          content: '/img/icon/msIcon144.png',
-        },
-      ],
-    ])
+    expect(injectLinksToHead(app, optionsWithManifest)).toMatchSnapshot()
   })
 
-  it('should generate some simple tags', () => {
-    expect(injectLinksToHead(options2)).toEqual([
-      [
-        'link',
-        {
-          rel: 'icon',
-          href: '/assets/icon/chrome-192.png',
-          sizes: '192x192',
-          type: 'image/png',
-        },
+  it('should not generate tags if they exist', () => {
+    // @ts-expect-error: Fake app
+    const app = createBaseApp({
+      base: '/',
+      title: 'VuePress',
+      head: [
+        ['link', { rel: 'icon', href: '/icon.ico' }],
+        ['meta', { name: 'theme-color', content: '#ffffff' }],
       ],
-      [
-        'link',
-        {
-          rel: 'manifest',
-          href: '/manifest.webmanifest',
-          crossorigin: 'use-credentials',
-        },
-      ],
-      ['meta', { name: 'theme-color', content: '#46bd87' }],
-      [
-        'link',
-        { rel: 'apple-touch-icon', href: '/assets/icon/chrome-192.png' },
-      ],
-      ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-      [
-        'meta',
-        { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
-      ],
-      [
-        'meta',
-        {
-          name: 'msapplication-TileImage',
-          content: '/assets/icon/chrome-192.png',
-        },
-      ],
-      ['meta', { name: 'msapplication-TileColor', content: '#46bd87' }],
-    ])
+      source: '',
+    })
+
+    expect(injectLinksToHead(app, options)).toMatchSnapshot()
   })
 })

@@ -146,31 +146,15 @@ Special settings for better supporting Safari, ignoring these options are safe.
 - Type: `string`
 - Details: Icon link used by Safari.
 
-#### apple.statusBarColor
-
-- Type: `"black" | "white"`
-- Default: `"black"`
-- Details: Status bar color for Safari
-
 #### apple.maskIcon
 
 - Type: `string`
 - Details: Safari mask icon
 
-### msTile
+#### apple.statusBarColor
 
-Special settings for Microsoft tiles, ignoring these options are safe.
-
-#### msTile.image
-
-- Type: `string`
-- Details: Tile image
-
-#### msTile.color
-
-- Type: `string`
-- Default value: `themeColor`
-- Details: Tile color
+- Type: `'black-translucent' | 'black' | 'default`
+- Details: Status bar color for Safari
 
 ### foundComponent
 

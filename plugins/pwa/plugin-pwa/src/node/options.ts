@@ -15,40 +15,22 @@ interface ApplePwaOptions {
   icon?: string
 
   /**
-   * Color of status bar
-   *
-   * 状态栏的颜色
-   *
-   * @default "black"
-   */
-  statusBarColor?: 'black' | 'white'
-
-  /**
    * Safari mask icon
    *
    * Safari 图标
    */
   maskIcon?: string
-}
-
-interface MicrosoftPwaOptions {
-  /**
-   * Microsoft tile image
-   *
-   * 144×144 transparent recommended
-   *
-   * 微软磁贴图片
-   *
-   * 推荐 144×144，透明
-   */
-  image?: string
 
   /**
-   * Tile color
+   * @deprecated Related tag is unstandardized so you should avoid declaring it.
    *
-   * 磁贴颜色
+   * Color of status bar
+   *
+   * 状态栏的颜色
+   *
+   * @default "default"
    */
-  color?: string
+  statusBarColor?: 'black-translucent' | 'black' | 'default'
 }
 
 export interface PwaPluginOptions {
@@ -135,13 +117,6 @@ export interface PwaPluginOptions {
    * 苹果设置
    */
   apple?: ApplePwaOptions | false
-
-  /**
-   * Settings for Microsoft
-   *
-   * 微软设置
-   */
-  msTile?: MicrosoftPwaOptions | false
 
   /**
    * Update logic

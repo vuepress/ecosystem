@@ -144,31 +144,15 @@
 - 类型：`string`
 - 详情：填入苹果使用的图标地址，推荐 152×152 大小
 
-#### apple.statusBarColor
-
-- 类型：`"black" | "white"`
-- 默认值：`"black"`
-- 详情：Safari 状态栏颜色
-
 #### apple.maskIcon
 
 - 类型：`string`
 - 详情：Safari 图标
 
-### msTile
+#### apple.statusBarColor
 
-针对微软磁贴的特殊设置，忽略它们是安全的。
-
-#### msTile.image
-
-- 类型：`string`
-- 详情：磁贴图标
-
-#### msTile.color
-
-- 类型：`string`
-- 默认值：`themeColor`
-- 详情：磁贴颜色。
+- 类型：`'black-translucent' | 'black' | 'default`
+- 详情：Safari 状态栏颜色
 
 ### foundComponent
 

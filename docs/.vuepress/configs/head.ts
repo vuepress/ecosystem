@@ -21,8 +21,6 @@ export const head: HeadConfig[] = [
   ],
   ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
   ['meta', { name: 'application-name', content: 'VuePress' }],
-  ['meta', { name: 'apple-mobile-web-app-title', content: 'VuePress' }],
-  ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
   [
     'link',
     { rel: 'apple-touch-icon', href: `/images/icons/apple-touch-icon.png` },
@@ -35,6 +33,5 @@ export const head: HeadConfig[] = [
       color: '#3eaf7c',
     },
   ],
-  ['meta', { name: 'msapplication-TileColor', content: '#3eaf7c' }],
   ['meta', { name: 'theme-color', content: '#3eaf7c' }],
 ]
