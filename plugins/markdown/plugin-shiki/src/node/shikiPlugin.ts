@@ -8,50 +8,60 @@ import {
 } from '@vuepress/highlighter-helper'
 import type { Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
+import { createMarkdownFilePathGetter } from './markdown/highlighter/createMarkdownFilePathGetter.js'
 import type { MarkdownItPreWrapperOptions } from './markdown/index.js'
 import {
-  applyHighlighter,
+  createShikiHighlighter,
+  getHighLightFunction,
   highlightLinesPlugin,
   preWrapperPlugin,
 } from './markdown/index.js'
 import type { ShikiPluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 
-export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => {
-  const opt: ShikiPluginOptions = {
-    preWrapper: true,
-    lineNumbers: true,
-    collapsedLines: 'disable',
-    ...options,
-  }
+export const shikiPlugin = (_options: ShikiPluginOptions = {}): Plugin => {
+  return (app) => {
+    // FIXME: Remove in stable version
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    const { code } = app.options.markdown
+    const options = {
+      ...(isPlainObject(code) ? code : {}),
+      ..._options,
+    }
 
-  return {
-    name: '@vuepress/plugin-shiki',
+    options.logLevel ??= app.env.isDebug ? 'debug' : 'warn'
+    options.preWrapper ??= true
+    options.lineNumbers ??= true
+    options.collapsedLines ??= 'disable'
 
-    extendsMarkdown: async (md, app) => {
-      // FIXME: Remove in stable version
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      const { code } = app.options.markdown
+    return {
+      name: '@vuepress/plugin-shiki',
 
-      await applyHighlighter(md, app, {
-        ...(isPlainObject(code) ? code : {}),
-        ...options,
-      })
+      extendsMarkdown: async (md) => {
+        const { preWrapper, lineNumbers, collapsedLines } = options
 
-      const { preWrapper, lineNumbers, collapsedLines } = opt
+        const markdownFilePathGetter = createMarkdownFilePathGetter(md)
+        const shikiHighlighter = await createShikiHighlighter(options)
 
-      md.use(highlightLinesPlugin)
-      md.use<MarkdownItPreWrapperOptions>(preWrapperPlugin, { preWrapper })
-      if (preWrapper) {
-        md.use<MarkdownItLineNumbersOptions>(lineNumbersPlugin, {
-          lineNumbers,
-        })
-        md.use<MarkdownItCollapsedLinesOptions>(collapsedLinesPlugin, {
-          collapsedLines,
-        })
-      }
-    },
+        md.options.highlight = getHighLightFunction(
+          shikiHighlighter,
+          options,
+          markdownFilePathGetter,
+        )
 
-    clientConfigFile: (app) => prepareClientConfigFile(app, opt),
+        md.use(highlightLinesPlugin)
+        md.use<MarkdownItPreWrapperOptions>(preWrapperPlugin, { preWrapper })
+        if (preWrapper) {
+          md.use<MarkdownItLineNumbersOptions>(lineNumbersPlugin, {
+            lineNumbers,
+          })
+          md.use<MarkdownItCollapsedLinesOptions>(collapsedLinesPlugin, {
+            collapsedLines,
+          })
+        }
+      },
+
+      clientConfigFile: (app) => prepareClientConfigFile(app, opt),
+    }
   }
 }
