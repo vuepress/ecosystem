@@ -39,7 +39,7 @@
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@types/node": "^22.10.2",
     "@types/webpack-env": "^1.18.5",
-    "@vitest/coverage-istanbul": "^2.1.8",
+    "@vitest/coverage-istanbul": "3.0.0-beta.2",
     "conventional-changelog-cli": "^5.0.0",
     "cpx2": "^8.0.0",
     "cross-env": "^7.0.3",
@@ -71,5 +71,16 @@
   "packageManager": "pnpm@9.15.0",
   "engines": {
     "node": ">=18.19.0"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "artalk>marked": "^15.0.0"
+      }
+    },
+    "overrides": {
+      "@vitest/mocker>vite": "^6.0.0",
+      "tsx>esbuild": "^0.24.0"
+    }
   }
 }
