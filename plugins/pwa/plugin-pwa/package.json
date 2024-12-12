@@ -50,7 +50,7 @@
     "workbox-build": "^7.3.0"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.18"
+    "vuepress": "2.0.0-rc.19"
   },
   "publishConfig": {
     "access": "public"
