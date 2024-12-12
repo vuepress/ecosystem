@@ -1,14 +1,14 @@
 import { getPageExcerpt } from '@vuepress/helper'
 import { describe, expect, it } from 'vitest'
 import type { Bundler, Page } from 'vuepress/core'
-import { createBaseApp } from 'vuepress/core'
+import { createBuildApp } from 'vuepress/core'
 import { path } from 'vuepress/utils'
 
 import { generatePageIndex } from '../src/node/generateIndex.js'
 import { PathStore } from '../src/node/pathStore.js'
 import { emptyTheme } from './__fixtures__/theme/empty.js'
 
-const app = createBaseApp({
+const app = createBuildApp({
   bundler: {} as Bundler,
   source: path.resolve(__dirname, './__fixtures__/src'),
   theme: emptyTheme,

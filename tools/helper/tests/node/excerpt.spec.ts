@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest'
 import type { Bundler } from 'vuepress/core'
-import { createBaseApp } from 'vuepress/core'
+import { createBuildApp } from 'vuepress/core'
 import { path } from 'vuepress/utils'
 import type { PageExcerptOptions } from '../../src/node/page/excerpt.js'
 import { getPageExcerpt } from '../../src/node/page/excerpt.js'
 import { emptyTheme } from '../__fixtures__/theme/empty.js'
 
 describe('getPageExcerpt', async () => {
-  const app = createBaseApp({
+  const app = createBuildApp({
     bundler: {} as Bundler,
     source: path.resolve(__dirname, '../__fixtures__/src'),
     theme: emptyTheme,

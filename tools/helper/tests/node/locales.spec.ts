@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { Bundler } from 'vuepress/core'
-import { createBaseApp } from 'vuepress/core'
+import { createBuildApp } from 'vuepress/core'
 import { path } from 'vuepress/utils'
 import {
   getLocaleConfig,
@@ -55,7 +55,7 @@ it('path2lang() should convert path to lang', () => {
 
 describe('getRootLang() should get root locale lang', () => {
   it('should get actual root lang', () => {
-    const app1 = createBaseApp({
+    const app1 = createBuildApp({
       locales: {
         '/': { lang: 'zh-CN' },
         '/en/': { lang: 'en-US' },
@@ -68,7 +68,7 @@ describe('getRootLang() should get root locale lang', () => {
       theme: emptyTheme,
     })
 
-    const app2 = createBaseApp({
+    const app2 = createBuildApp({
       locales: {
         '/': { lang: 'en-US' },
         '/zh/': { lang: 'zh-CN' },
@@ -86,7 +86,7 @@ describe('getRootLang() should get root locale lang', () => {
   })
 
   it('Should fallback to en-US if root locale is absent', () => {
-    const app = createBaseApp({
+    const app = createBuildApp({
       locales: {
         '/en/': { lang: 'en-US' },
         '/zh/': { lang: 'zh-CN' },
@@ -103,7 +103,7 @@ describe('getRootLang() should get root locale lang', () => {
   })
 
   it('Should fallback to en-US if root language is absent', () => {
-    const app = createBaseApp({
+    const app = createBuildApp({
       locales: {
         '/': {},
         '/zh/': { lang: 'zh-CN' },
@@ -122,7 +122,7 @@ describe('getRootLang() should get root locale lang', () => {
 
 describe('getLocaleConfig() should generate locale', () => {
   it('set default value for known language', () => {
-    const app = createBaseApp({
+    const app = createBuildApp({
       locales: {
         '/': { lang: 'zh-CN' },
         '/en/': { lang: 'en-US' },
@@ -160,7 +160,7 @@ describe('getLocaleConfig() should generate locale', () => {
   })
 
   it('Detect known language with different path', () => {
-    const app = createBaseApp({
+    const app = createBuildApp({
       locales: {
         '/': { lang: 'zh-CN' },
         '/en-us/': { lang: 'en-US' },
@@ -198,7 +198,7 @@ describe('getLocaleConfig() should generate locale', () => {
   })
 
   it('use user config if exists', () => {
-    const app = createBaseApp({
+    const app = createBuildApp({
       locales: {
         '/': { lang: 'zh-CN' },
         '/en/': { lang: 'en-US' },
@@ -250,7 +250,7 @@ describe('getLocaleConfig() should generate locale', () => {
 
   describe('handle unknown locale', () => {
     it('unknown root language should fallback to first language in default config', () => {
-      const app = createBaseApp({
+      const app = createBuildApp({
         locales: {
           '/': { lang: 'unknown-Language' },
           '/en/': { lang: 'en-US' },
@@ -290,7 +290,7 @@ describe('getLocaleConfig() should generate locale', () => {
     })
 
     it('fallback to root language if exists', () => {
-      const app = createBaseApp({
+      const app = createBuildApp({
         locales: {
           '/': { lang: 'zh-CN' },
           '/en/': { lang: 'en-US' },
@@ -335,7 +335,7 @@ describe('getLocaleConfig() should generate locale', () => {
     })
 
     it('fallback to en-US without root language', () => {
-      const app = createBaseApp({
+      const app = createBuildApp({
         locales: {
           '/en/': { lang: 'en-US' },
           '/zh/': { lang: 'zh-CN' },
@@ -386,7 +386,7 @@ describe('getLocaleConfig() should generate locale', () => {
 
   describe('handle new locale', () => {
     it('with default locale', () => {
-      const app = createBaseApp({
+      const app = createBuildApp({
         locales: {
           '/': { lang: 'zh-CN' },
           '/en/': { lang: 'en-US' },
@@ -431,7 +431,7 @@ describe('getLocaleConfig() should generate locale', () => {
     })
 
     it('without default', () => {
-      const app = createBaseApp({
+      const app = createBuildApp({
         locales: {
           '/': { lang: 'zh-CN' },
           '/en/': { lang: 'en-US' },
