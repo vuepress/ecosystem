@@ -61,7 +61,7 @@ export const shikiPlugin = (_options: ShikiPluginOptions = {}): Plugin => {
         }
       },
 
-      clientConfigFile: (app) => prepareClientConfigFile(app, opt),
+      clientConfigFile: (app) => prepareClientConfigFile(app, options),
     }
   }
 }
