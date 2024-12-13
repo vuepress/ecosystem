@@ -1,56 +1,37 @@
 import { transformerCompactLineOptions } from '@shikijs/transformers'
-import type MarkdownIt from 'markdown-it'
-import { createHighlighter } from 'shiki'
-import type { App } from 'vuepress'
-import { bundledLanguageNames } from '../../shiki.js'
+import type { BundledLanguage, BundledTheme, HighlighterGeneric } from 'shiki'
 import {
   getTransformers,
   whitespaceTransformer,
 } from '../../transformers/getTransformers.js'
 import type { ShikiHighlightOptions } from '../../types.js'
 import { attrsToLines } from '../../utils.js'
-import { createMarkdownFilePathGetter } from './createMarkdownFilePathGetter.js'
+import type { MarkdownFilePathGetter } from './createMarkdownFilePathGetter.js'
 import { getLanguage } from './getLanguage.js'
 import { handleMustache } from './handleMustache.js'
 
-export const applyHighlighter = async (
-  md: MarkdownIt,
-  app: App,
-  {
-    langs = bundledLanguageNames,
-    langAlias = {},
-    defaultLang,
-    transformers: userTransformers = [],
-    ...options
-  }: ShikiHighlightOptions = {},
-): Promise<void> => {
-  const logLevel = options.logLevel ?? (app.env.isDebug ? 'debug' : 'warn')
-  const getMarkdownFilePath =
-    logLevel === 'debug' ? createMarkdownFilePathGetter(md) : null
+type MarkdownItHighlight = (
+  content: string,
+  language: string,
+  attrs: string,
+) => string
 
-  const highlighter = await createHighlighter({
-    langs,
-    langAlias,
-    themes:
-      'themes' in options
-        ? Object.values(options.themes)
-        : [options.theme ?? 'nord'],
-  })
-
-  await options.shikiSetup?.(highlighter)
-
+export const getHighLightFunction = (
+  highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>,
+  options: ShikiHighlightOptions,
+  markdownFilePathGetter: MarkdownFilePathGetter,
+): MarkdownItHighlight => {
   const transformers = getTransformers(options)
   const loadedLanguages = highlighter.getLoadedLanguages()
 
-  md.options.highlight = (content, language, attrs) =>
+  return (content, language, attrs) =>
     handleMustache(content, (str) =>
       highlighter.codeToHtml(str, {
         lang: getLanguage(
           language,
           loadedLanguages,
-          defaultLang,
-          logLevel,
-          getMarkdownFilePath!,
+          options,
+          markdownFilePathGetter,
         ),
         meta: {
           /**
@@ -65,7 +46,7 @@ export const applyHighlighter = async (
             ? [transformerCompactLineOptions(attrsToLines(attrs))]
             : []),
           ...whitespaceTransformer(attrs, options.whitespace),
-          ...userTransformers,
+          ...(options.transformers ?? []),
         ],
         ...('themes' in options
           ? {
