@@ -34,33 +34,33 @@ export const usePhotoSwipe = ({
 
   let destroy: (() => void) | null = null
 
-  const setupPhotoSwipe = (): void => {
+  const setupPhotoSwipe = async (): Promise<void> => {
     const { photoSwipe } = frontmatter.value
 
-    if (photoSwipe !== false)
-      void nextTick()
-        .then(() => wait(delay))
-        .then(async () => {
-          const imageSelector = isString(photoSwipe) ? photoSwipe : selector
+    if (photoSwipe !== false) {
+      await nextTick()
+      await wait(delay)
 
-          destroy = await registerPhotoSwipe(getImages(imageSelector), {
-            ...photoSwipeOptions.value,
-            ...locale.value,
-            download,
-            fullscreen,
-            scrollToClose,
-          })
-        })
+      const imageSelector = isString(photoSwipe) ? photoSwipe : selector
+
+      destroy = await registerPhotoSwipe(getImages(imageSelector), {
+        ...photoSwipeOptions.value,
+        ...locale.value,
+        download,
+        fullscreen,
+        scrollToClose,
+      })
+    }
   }
 
   onMounted(() => {
-    setupPhotoSwipe()
+    void setupPhotoSwipe()
 
     watch(
       () => [page.value.path, photoSwipeOptions.value],
       () => {
         destroy?.()
-        setupPhotoSwipe()
+        void setupPhotoSwipe()
       },
     )
   })

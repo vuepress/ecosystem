@@ -1,14 +1,12 @@
-import { isString } from '@vuepress/helper/client'
+import { isArray } from '@vuepress/helper/client'
 import type { SlideData } from 'photoswipe'
 
 export const getImages = (selector: string[] | string): HTMLImageElement[] =>
-  isString(selector)
-    ? Array.from(document.querySelectorAll<HTMLImageElement>(selector))
-    : selector
-        .map((item) =>
-          Array.from(document.querySelectorAll<HTMLImageElement>(item)),
-        )
-        .flat()
+  Array.from(
+    document.querySelectorAll<HTMLImageElement>(
+      isArray(selector) ? selector.join(', ') : selector,
+    ),
+  )
 
 export const getImageElementInfo = (
   image: HTMLImageElement,

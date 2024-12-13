@@ -1,4 +1,4 @@
 export * from './createPhotoSwipe.js'
 export * from './images.js'
-export * from './usePhotoSwipe.js'
+export * from './registerPhotoSwipe.js'
 export type * from './typings.js'
