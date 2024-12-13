@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import type { Bundler } from 'vuepress/core'
-import { createBaseApp } from 'vuepress/core'
+import { createBuildApp } from 'vuepress/core'
 import { fs, getDirname, path } from 'vuepress/utils'
 import { prepareClientConfigFile } from '../src/node/index.js'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
-const app = createBaseApp({
+const app = createBuildApp({
   source: path.resolve(__dirname, 'fake-source'),
   theme: { name: 'test' },
   bundler: {} as Bundler,

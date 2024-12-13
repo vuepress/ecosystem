@@ -34,17 +34,24 @@ export const injectScssConfigModule = (
 ): void => {
   const bundlerName = getBundlerName(app)
 
+  const configModuleName = `${getIdPrefix(id)}config`
+  const configImport = `@use "@sass-palette/${getIdPrefix(id)}config";`
+  const configRegExp = new RegExp(
+    `@use\\s+(["'])@sass-palette\\/${getIdPrefix(id)}config\\1;`,
+  )
+  const paletteModuleName = `${getIdPrefix(id)}palette`
+  const paletteImport = `@use "@sass-palette/${getIdPrefix(id)}palette";`
+  const paletteRegExp = new RegExp(
+    `@use\\s+(["'])@sass-palette\\/${getIdPrefix(id)}palette\\1;`,
+  )
+
   // For vite
   if (bundlerName === 'vite') {
     const viteBundlerConfig = config as ViteBundlerOptions
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const originalAdditionalData:
-      | string
-      | ((source: string, file: string) => Promise<string> | string)
-      | undefined =
+    const originalAdditionalData =
       viteBundlerConfig.viteOptions?.css?.preprocessorOptions?.scss
-        .additionalData // eslint-disable-line @typescript-eslint/no-unsafe-member-access
+        ?.additionalData
 
     viteBundlerConfig.viteOptions = mergeViteConfig(
       viteBundlerConfig.viteOptions ?? {},
@@ -57,30 +64,29 @@ export const injectScssConfigModule = (
                 source: string,
                 file: string,
               ): Promise<string> => {
-                let originalContent = isString(originalAdditionalData)
-                  ? `${originalAdditionalData}${source}`
-                  : isFunction(originalAdditionalData)
-                    ? await originalAdditionalData(source, file)
-                    : source
+                let originalResult = source
+
+                if (isFunction(originalAdditionalData)) {
+                  const result = await originalAdditionalData(source, file)
+
+                  originalResult = isString(result) ? result : result.content
+                } else if (isString(originalAdditionalData))
+                  originalResult = `${originalAdditionalData}${source}`
 
                 if (
-                  !originalContent.match(
-                    new RegExp(
-                      `@use\\s+(["'])@sass-palette\\/${getIdPrefix(id)}config\\1;`,
-                    ),
-                  )
+                  originalResult.includes(configModuleName) &&
+                  !originalResult.match(configRegExp)
                 )
-                  originalContent = `@use "@sass-palette/${getIdPrefix(id)}config";\n${originalContent}`
+                  originalResult = `${configImport}\n${originalResult}`
                 if (
-                  !originalContent.match(
-                    new RegExp(
-                      `@use\\s+(["'])@sass-palette\\/${getIdPrefix(id)}palette\\1;`,
-                    ),
-                  )
+                  originalResult.includes(paletteModuleName) &&
+                  !originalResult.match(paletteRegExp)
                 )
-                  originalContent = `@use "@sass-palette/${getIdPrefix(id)}palette";\n${originalContent}`
+                  originalResult = `${paletteImport}\n${originalResult}`
 
-                return originalContent
+                console.log(originalResult)
+
+                return originalResult
               },
             },
           },
@@ -93,11 +99,11 @@ export const injectScssConfigModule = (
   else if (bundlerName === 'webpack') {
     const webpackBundlerConfig = config as WebpackBundlerOptions
 
-    if (!webpackBundlerConfig.scss) webpackBundlerConfig.scss = {}
+    webpackBundlerConfig.scss ??= {}
 
     const { additionalData } = webpackBundlerConfig.scss
 
-    const additionalDataHandler = (
+    webpackBundlerConfig.scss.additionalData = (
       content: string,
       loaderContext: SassLoaderContext,
     ): string => {
@@ -108,26 +114,18 @@ export const injectScssConfigModule = (
           : content
 
       if (
-        !originalContent.match(
-          new RegExp(
-            `@use\\s+(["'])@sass-palette\\/${getIdPrefix(id)}config\\1;`,
-          ),
-        )
+        originalContent.includes(configModuleName) &&
+        !originalContent.match(configRegExp)
       )
-        originalContent = `@use "@sass-palette/${getIdPrefix(id)}config";\n${originalContent}`
+        originalContent = `${configImport}\n${originalContent}`
 
       if (
-        !originalContent.match(
-          new RegExp(
-            `@use\\s+(["'])@sass-palette\\/${getIdPrefix(id)}palette\\1;`,
-          ),
-        )
+        originalContent.includes(paletteModuleName) &&
+        !originalContent.match(paletteRegExp)
       )
-        originalContent = `@use "@sass-palette/${getIdPrefix(id)}palette";\n${originalContent}`
+        originalContent = `${paletteImport}\n${originalContent}`
 
       return originalContent
     }
-
-    webpackBundlerConfig.scss.additionalData = additionalDataHandler
   }
 }

@@ -35,10 +35,10 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "execa": "^9.5.1"
+    "execa": "^9.5.2"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.18"
+    "vuepress": "2.0.0-rc.19"
   },
   "publishConfig": {
     "access": "public"

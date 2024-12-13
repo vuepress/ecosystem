@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest'
 import type { Bundler } from 'vuepress/core'
-import { createBaseApp } from 'vuepress/core'
+import { createBuildApp } from 'vuepress/core'
 import { fs, path } from 'vuepress/utils'
 import type { PalettePluginOptions } from '../../src/node/index.js'
 import { prepareStyleFile, presetOptions } from '../../src/node/index.js'
 
-const app = createBaseApp({
+const app = createBuildApp({
   source: path.resolve(__dirname, 'fake-source'),
   theme: { name: 'test' },
   bundler: {} as Bundler,

@@ -49,10 +49,10 @@
     "vue": "^3.5.13"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.18"
+    "vuepress": "2.0.0-rc.19"
   },
   "devDependencies": {
-    "algoliasearch": "5.15.0"
+    "algoliasearch": "5.17.0"
   },
   "publishConfig": {
     "access": "public"
