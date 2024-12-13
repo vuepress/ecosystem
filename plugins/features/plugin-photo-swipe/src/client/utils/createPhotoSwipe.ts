@@ -2,10 +2,10 @@ import { useEventListener } from '@vueuse/core'
 import type PhotoSwipe from 'photoswipe'
 import type { SlideData } from 'photoswipe'
 import type { PhotoSwipeOptions } from '../helpers/index.js'
-import { LOADING_ICON } from './loadingIcon.js'
+import type { PhotoSwipeBehaviorOptions } from '../typings.js'
 import { resolveImageInfoFromLink } from './images.js'
+import { LOADING_ICON } from './loadingIcon.js'
 import { setupPhotoSwipe } from './setupPhotoSwipe.js'
-import type { PhotoSwipeBehaviorOptions } from './typings.js'
 
 export interface PhotoSwipeState {
   open: (index: number) => void

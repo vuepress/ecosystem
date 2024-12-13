@@ -6,7 +6,7 @@ import { computed, onMounted, onUnmounted } from 'vue'
 import { usePageFrontmatter } from 'vuepress/client'
 import type { PhotoSwipePluginLocaleData } from '../../shared/index.js'
 import { usePhotoSwipeOptions } from '../helpers/index.js'
-import type { PhotoSwipeBehaviorOptions } from '../utils/index.js'
+import type { PhotoSwipeBehaviorOptions } from '../typings.js'
 import {
   LOADING_ICON,
   resolveImageInfoFromElement,
