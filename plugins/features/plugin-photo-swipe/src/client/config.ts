@@ -6,7 +6,6 @@ import { injectPhotoSwipeConfig } from './helpers/index.js'
 import './styles/vars.css'
 
 declare const __PS_SELECTOR__: string[] | string
-declare const __PS_DELAY__: number
 declare const __PS_LOCALES__: Record<
   string,
   Record<`${keyof PhotoSwipePluginLocaleData}Title`, string>
@@ -17,7 +16,6 @@ declare const __PS_SCROLL_TO_CLOSE__: boolean
 
 const selector = __PS_SELECTOR__
 const locales = __PS_LOCALES__
-const delay = __PS_DELAY__
 const download = __PS_DOWNLOAD__
 const fullscreen = __PS_FULLSCREEN__
 const scrollToClose = __PS_SCROLL_TO_CLOSE__
@@ -29,7 +27,6 @@ export default defineClientConfig({
   setup: () => {
     usePhotoSwipe({
       selector,
-      delay,
       locales,
       download,
       fullscreen,

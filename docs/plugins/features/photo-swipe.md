@@ -64,20 +64,6 @@ In preview mode, you can:
 - Default: `true`
 - Details: Whether close the current image when scrolling.
 
-### delay
-
-- Type: `number`
-- Default: `800`
-- Details:
-
-  The delay of operating dom, in ms.
-
-  ::: tip
-
-  If the theme you are using has a switching animation, it is recommended to configure this option to `Switch animation duration + 200`.
-
-  :::
-
 ### locales
 
 - Type: `PhotoSwipePluginLocaleConfig`

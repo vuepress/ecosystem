@@ -243,6 +243,9 @@ importers:
       '@vuepress/plugin-notice':
         specifier: workspace:*
         version: link:../plugins/features/plugin-notice
+      '@vuepress/plugin-photo-swipe':
+        specifier: workspace:*
+        version: link:../plugins/features/plugin-photo-swipe
       '@vuepress/plugin-pwa':
         specifier: workspace:*
         version: link:../plugins/pwa/plugin-pwa
