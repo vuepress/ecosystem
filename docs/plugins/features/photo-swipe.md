@@ -240,32 +240,6 @@ onUnmounted(() => {
 </template>
 ```
 
-`registerPhotoSwipe` allows you to register photoswipe for the given image elements:
-
-```vue
-<script setup lang="ts">
-import { registerPhotoSwipe } from '@vuepress/plugin-photo-swipe/client'
-import { onMounted, onUnmounted } from 'vue'
-
-let destroy: () => null | void = null
-
-onMounted(async () => {
-  await nextTick()
-
-  const images = Array.from(document.querySelectorAll('img'))
-
-  // create a new photoswipe instance on image elements
-  destroy = await registerPhotoSwipe(images, {
-    // photoswipe options
-  })
-})
-
-onUnmounted(() => {
-  destroy?.()
-})
-</script>
-```
-
 ## Styles
 
 You can customize the style via CSS variables:

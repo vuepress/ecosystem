@@ -240,32 +240,6 @@ onUnmounted(() => {
 </template>
 ```
 
-`registerPhotoSwipe` 允许你为给定的图片元素注册 photoswipe:
-
-```vue
-<script setup lang="ts">
-import { registerPhotoSwipe } from '@vuepress/plugin-photo-swipe/client'
-import { onMounted, onUnmounted } from 'vue'
-
-let destroy: () => null | void = null
-
-onMounted(async () => {
-  await nextTick()
-
-  const images = Array.from(document.querySelectorAll('img'))
-
-  // 通过图片元素创建一个新的 photoswipe 实例
-  destroy = await registerPhotoSwipe(images, {
-    // photoswipe 选项
-  })
-})
-
-onUnmounted(() => {
-  destroy?.()
-})
-</script>
-```
-
 ## 样式
 
 你可以通过 CSS 变量来自定义部分样式：
