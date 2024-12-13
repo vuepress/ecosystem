@@ -64,26 +64,27 @@ export const injectScssConfigModule = (
                 source: string,
                 file: string,
               ): Promise<string> => {
-                let originalResult = ''
+                let originalResult = source
 
-                if (isString(originalAdditionalData))
-                  originalResult = `${originalAdditionalData}${source}`
-                else if (isFunction(originalAdditionalData)) {
+                if (isFunction(originalAdditionalData)) {
                   const result = await originalAdditionalData(source, file)
 
                   originalResult = isString(result) ? result : result.content
-                }
+                } else if (isString(originalAdditionalData))
+                  originalResult = `${originalAdditionalData}${source}`
 
                 if (
-                  !originalResult.includes(configModuleName) &&
+                  originalResult.includes(configModuleName) &&
                   !originalResult.match(configRegExp)
                 )
                   originalResult = `${configImport}\n${originalResult}`
                 if (
-                  !originalResult.includes(paletteModuleName) &&
+                  originalResult.includes(paletteModuleName) &&
                   !originalResult.match(paletteRegExp)
                 )
                   originalResult = `${paletteImport}\n${originalResult}`
+
+                console.log(originalResult)
 
                 return originalResult
               },
@@ -113,13 +114,13 @@ export const injectScssConfigModule = (
           : content
 
       if (
-        !originalContent.includes(configModuleName) &&
+        originalContent.includes(configModuleName) &&
         !originalContent.match(configRegExp)
       )
         originalContent = `${configImport}\n${originalContent}`
 
       if (
-        !originalContent.includes(paletteModuleName) &&
+        originalContent.includes(paletteModuleName) &&
         !originalContent.match(paletteRegExp)
       )
         originalContent = `${paletteImport}\n${originalContent}`
