@@ -84,8 +84,6 @@ export const injectScssConfigModule = (
                 )
                   originalResult = `${paletteImport}\n${originalResult}`
 
-                console.log(originalResult)
-
                 return originalResult
               },
             },
