@@ -27,7 +27,7 @@ export const pwaPlugin =
         'The plugin will register service worker to handle assets, so we recommend you to set "shouldPrefetch: false" in VuePress config file.',
       )
 
-    app.options.head = injectLinksToHead(options, base, app.options.head)
+    app.options.head = injectLinksToHead(app, options)
 
     return {
       name: PLUGIN_NAME,

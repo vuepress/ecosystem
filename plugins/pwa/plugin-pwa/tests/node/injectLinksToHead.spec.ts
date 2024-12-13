@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import type { HeadConfig } from 'vuepress/core'
+import { createBuildApp } from 'vuepress/core'
 import type { PwaPluginOptions } from '../../src/node/index.js'
 import { injectLinksToHead } from '../../src/node/injectLinksToHead.js'
 
@@ -48,52 +48,80 @@ const options: PwaPluginOptions = {
   themeColor: '#46bd87',
   apple: {
     icon: '/img/icon/appleIcon152.png',
-    statusBarColor: 'white',
     maskIcon: '/icons/safari-pinned-tab.svg',
-  },
-  msTile: {
-    image: '/img/icon/msIcon144.png',
-    color: '#ffffff',
-  },
-}
-
-const options2: PwaPluginOptions = {
-  manifest: {
-    icons: [
-      {
-        src: '/assets/icon/chrome-192.png',
-        sizes: '192x192',
-        type: 'image/png',
-      },
-    ],
   },
 }
 
 describe('Test head function', () => {
   it('should generate PWA tags because they do not exist', () => {
-    expect(injectLinksToHead(options)).toEqual([
-      ['link', { rel: 'icon', href: '/favicon.ico' }],
+    // @ts-expect-error: Fake app
+    const app = createBuildApp({
+      base: '/',
+      title: 'VuePress',
+      source: '',
+      theme: {
+        name: '@vuepress/theme-fake',
+      },
+    })
+
+    expect(injectLinksToHead(app, options)).toEqual([
+      [
+        'meta',
+        {
+          content: 'VuePress',
+          name: 'application-name',
+        },
+      ],
+      [
+        'meta',
+        {
+          content: 'yes',
+          name: 'mobile-web-app-capable',
+        },
+      ],
+      [
+        'meta',
+        {
+          content: '#46bd87',
+          name: 'theme-color',
+        },
+      ],
       [
         'link',
         {
+          href: '/favicon.ico',
           rel: 'icon',
+        },
+      ],
+      [
+        'link',
+        {
+          crossorigin: 'use-credentials',
+          href: '/manifest.webmanifest',
+          rel: 'manifest',
+        },
+      ],
+      [
+        'link',
+        {
           href: '/assets/icon/chrome-192.png',
+          rel: 'icon',
           sizes: '192x192',
         },
       ],
       [
         'link',
         {
-          rel: 'icon',
           href: '/assets/icon/chrome-512.png',
+          rel: 'icon',
           sizes: '512x512',
         },
       ],
       [
         'link',
         {
-          rel: 'icon',
           href: '/assets/icon/chrome-mask-192.png',
+          rel: 'icon',
           sizes: '192x192',
           type: 'image/png',
         },
@@ -101,98 +129,88 @@ describe('Test head function', () => {
       [
         'link',
         {
-          rel: 'icon',
           href: '/assets/icon/chrome-mask-512.png',
+          rel: 'icon',
           sizes: '512x512',
           type: 'image/png',
         },
       ],
-
       [
         'link',
         {
-          rel: 'manifest',
-          href: '/manifest.webmanifest',
-          crossorigin: 'use-credentials',
+          href: '/img/icon/appleIcon152.png',
+          rel: 'apple-touch-icon',
         },
       ],
-      ['meta', { name: 'theme-color', content: '#46bd87' }],
-      ['link', { rel: 'apple-touch-icon', href: '/img/icon/appleIcon152.png' }],
-      ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-      [
-        'meta',
-        { name: 'apple-mobile-web-app-status-bar-style', content: 'white' },
-      ],
       [
         'link',
         {
-          rel: 'mask-icon',
-          href: '/icons/safari-pinned-tab.svg',
           color: '#46bd87',
-        },
-      ],
-      [
-        'meta',
-        {
-          name: 'msapplication-TileImage',
-          content: '/img/icon/msIcon144.png',
-        },
-      ],
-      ['meta', { name: 'msapplication-TileColor', content: '#ffffff' }],
-    ])
-  })
-
-  it('should not generate tags if them exist', () => {
-    const headList: HeadConfig[] = [
-      ['link', { rel: 'icon', href: '/icon.ico' }],
-      ['meta', { name: 'theme-color', content: '#ffffff' }],
-      ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
-    ]
-
-    expect(injectLinksToHead(options, '/', headList)).toEqual([
-      ['link', { rel: 'icon', href: '/icon.ico' }],
-
-      ['meta', { name: 'theme-color', content: '#ffffff' }],
-      ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
-      [
-        'link',
-        {
-          rel: 'manifest',
-          href: '/manifest.webmanifest',
-          crossorigin: 'use-credentials',
-        },
-      ],
-      ['link', { rel: 'apple-touch-icon', href: '/img/icon/appleIcon152.png' }],
-      ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-      [
-        'meta',
-        { name: 'apple-mobile-web-app-status-bar-style', content: 'white' },
-      ],
-      [
-        'link',
-        {
-          rel: 'mask-icon',
           href: '/icons/safari-pinned-tab.svg',
-          color: '#46bd87',
-        },
-      ],
-      [
-        'meta',
-        {
-          name: 'msapplication-TileImage',
-          content: '/img/icon/msIcon144.png',
+          rel: 'mask-icon',
         },
       ],
     ])
   })
 
-  it('should generate some simple tags', () => {
-    expect(injectLinksToHead(options2)).toEqual([
+  it('should read manifest', () => {
+    // @ts-expect-error: Fake app
+    const app = createBuildApp({
+      base: '/',
+      title: 'VuePress',
+      source: '',
+      theme: {
+        name: '@vuepress/theme-fake',
+      },
+    })
+
+    const optionsWithManifest: PwaPluginOptions = {
+      manifest: {
+        icons: [
+          {
+            src: '/assets/icon/chrome-192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+        ],
+      },
+    }
+
+    expect(injectLinksToHead(app, optionsWithManifest)).toEqual([
+      [
+        'meta',
+        {
+          content: 'VuePress',
+          name: 'application-name',
+        },
+      ],
+      [
+        'meta',
+        {
+          content: 'yes',
+          name: 'mobile-web-app-capable',
+        },
+      ],
+      [
+        'meta',
+        {
+          content: '#46bd87',
+          name: 'theme-color',
+        },
+      ],
       [
         'link',
         {
-          rel: 'icon',
+          crossorigin: 'use-credentials',
+          href: '/manifest.webmanifest',
+          rel: 'manifest',
+        },
+      ],
+      [
+        'link',
+        {
           href: '/assets/icon/chrome-192.png',
+          rel: 'icon',
           sizes: '192x192',
           type: 'image/png',
         },
@@ -200,29 +218,80 @@ describe('Test head function', () => {
       [
         'link',
         {
-          rel: 'manifest',
-          href: '/manifest.webmanifest',
-          crossorigin: 'use-credentials',
+          href: '/assets/icon/chrome-192.png',
+          rel: 'apple-touch-icon',
         },
       ],
-      ['meta', { name: 'theme-color', content: '#46bd87' }],
+    ])
+  })
+
+  it('should not generate tags if they exist', () => {
+    // @ts-expect-error: Fake app
+    const app = createBuildApp({
+      base: '/',
+      title: 'VuePress',
+      head: [
+        ['link', { rel: 'icon', href: '/icon.ico' }],
+        ['meta', { name: 'theme-color', content: '#ffffff' }],
+      ],
+      source: '',
+      theme: {
+        name: '@vuepress/theme-fake',
+      },
+    })
+
+    expect(injectLinksToHead(app, options)).toEqual([
       [
         'link',
-        { rel: 'apple-touch-icon', href: '/assets/icon/chrome-192.png' },
-      ],
-      ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-      [
-        'meta',
-        { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
+        {
+          href: '/icon.ico',
+          rel: 'icon',
+        },
       ],
       [
         'meta',
         {
-          name: 'msapplication-TileImage',
-          content: '/assets/icon/chrome-192.png',
+          content: '#ffffff',
+          name: 'theme-color',
         },
       ],
-      ['meta', { name: 'msapplication-TileColor', content: '#46bd87' }],
+      [
+        'meta',
+        {
+          content: 'VuePress',
+          name: 'application-name',
+        },
+      ],
+      [
+        'meta',
+        {
+          content: 'yes',
+          name: 'mobile-web-app-capable',
+        },
+      ],
+      [
+        'link',
+        {
+          crossorigin: 'use-credentials',
+          href: '/manifest.webmanifest',
+          rel: 'manifest',
+        },
+      ],
+      [
+        'link',
+        {
+          href: '/img/icon/appleIcon152.png',
+          rel: 'apple-touch-icon',
+        },
+      ],
+      [
+        'link',
+        {
+          color: '#46bd87',
+          href: '/icons/safari-pinned-tab.svg',
+          rel: 'mask-icon',
+        },
+      ],
     ])
   })
 })
