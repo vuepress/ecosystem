@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.66](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.65...v2.0.0-rc.66) (2024-12-13)
+
+### Bug Fixes
+
+- **plugin-sass-palette:** fix module injecting ([356e1a2](https://github.com/vuepress/ecosystem/commit/356e1a2b59ee58c8217792cdad2800fc8bfce167))
+
+### Features
+
+- **plugin-pwa:** improve pwa support ([#301](https://github.com/vuepress/ecosystem/issues/301)) ([487d8c4](https://github.com/vuepress/ecosystem/commit/487d8c45a965dee9234e581d95bcc98c1a8cca86))
+- **plugin-sass-palette:** support vite6 ([5a081ff](https://github.com/vuepress/ecosystem/commit/5a081fff1d98e137b8ec6f81354d14589950308b))
+
 # [2.0.0-rc.65](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.64...v2.0.0-rc.65) (2024-12-09)
 
 ### Bug Fixes
