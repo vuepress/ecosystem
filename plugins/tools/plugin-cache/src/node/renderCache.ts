@@ -63,7 +63,7 @@ export const renderCacheWithMemory = async (
 
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const rawRender = md.render
-  md.render = (input, env: MarkdownEnv) => {
+  md.render = (input, env: MarkdownEnv = {}) => {
     const filepath = env.filePathRelative
 
     if (!filepath) {
@@ -120,7 +120,7 @@ export const renderCacheWithFilesystem = async (
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const rawRender = md.render
 
-  md.render = (input, env: MarkdownEnv) => {
+  md.render = (input, env: MarkdownEnv = {}) => {
     const filepath = env.filePathRelative
 
     if (!filepath) {
