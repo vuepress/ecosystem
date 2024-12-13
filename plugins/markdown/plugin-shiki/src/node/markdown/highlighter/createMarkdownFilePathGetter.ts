@@ -11,7 +11,7 @@ export const createMarkdownFilePathGetter = (
   const rawRender = md.render.bind(md)
 
   // we need to store file path before each render
-  md.render = (src, env: MarkdownEnv) => {
+  md.render = (src, env: MarkdownEnv = {}) => {
     store.path = env.filePathRelative
 
     return rawRender(src, env)

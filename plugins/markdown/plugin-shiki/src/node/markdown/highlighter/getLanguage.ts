@@ -1,5 +1,6 @@
 import { isSpecialLang } from 'shiki'
 import { colors } from 'vuepress/utils'
+import type { ShikiHighlightOptions } from '../../types.js'
 import { logger, resolveLanguage } from '../../utils.js'
 import type { MarkdownFilePathGetter } from './createMarkdownFilePathGetter.js'
 
@@ -8,9 +9,8 @@ const WARNED_LANGS = new Set<string>()
 export const getLanguage = (
   lang: string,
   loadedLanguages: string[],
-  defaultLang: string | undefined,
-  logLevel: string,
-  getMarkdownFilePath: MarkdownFilePathGetter,
+  { defaultLang, logLevel }: ShikiHighlightOptions,
+  markdownFilePathGetter: MarkdownFilePathGetter,
 ): string => {
   let result = resolveLanguage(lang)
 
@@ -26,7 +26,7 @@ export const getLanguage = (
     // log file path if unknown language is found
     if (logLevel === 'debug') {
       logger.info(
-        `Unknown language ${colors.cyan(result)} found in ${colors.cyan(getMarkdownFilePath())}`,
+        `Unknown language ${colors.cyan(result)} found in ${colors.cyan(markdownFilePathGetter())}`,
       )
     }
 
