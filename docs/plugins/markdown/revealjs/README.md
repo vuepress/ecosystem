@@ -162,12 +162,27 @@ You can enable built-in plugins in reveal.js via `plugins` in plugin options. It
 
 You can also import and call `defineRevealJsConfig` in [client config file][client-config] to customize reveal.js:
 
+The `defineRevealJsConfig` function accepts a ref, getter or plain object as reveal.js options:
+
 ```js title=".vuepress/client.js"
 import { defineRevealJsConfig } from '@vuepress/plugin-revealjs/client'
 
-defineRevealJsConfig({
-  // reveal.js options here
+// plain object
+const options1 = {
+  // options
+}
+
+// or getter
+const options2 = () => ({
+  // options
 })
+
+// or ref
+const options3 = ref({
+  // options
+})
+
+defineRevealJsConfig(options1or2or3)
 ```
 
 ::: note

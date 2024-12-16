@@ -357,11 +357,15 @@ export default {
 ### defineDocSearchConfig
 
 ```ts
-interface DocSearchClientOptions extends DocSearchProps {
-  locales?: Record<string, DocSearchProps>
+type DocSearchClientLocaleOptions = Partial<DocSearchProps>
+
+interface DocSearchClientOptions extends DocSearchClientLocaleOptions {
+  locales?: Record<string, DocSearchClientLocaleOptions>
 }
 
-const defineDocSearchConfig: (options: DocSearchClientOptions) => void
+const defineDocSearchConfig: (
+  options: MaybeRefOrGetter<DocSearchClientOptions>,
+) => void
 ```
 
 Customize DocSearch options.
