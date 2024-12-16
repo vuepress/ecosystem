@@ -1,3 +1,4 @@
+import { watchImmediate } from '@vueuse/core'
 import type { App, ComputedRef, InjectionKey, MaybeRefOrGetter, Ref } from 'vue'
 import { computed, inject, isRef, readonly, ref, watch } from 'vue'
 import type { PageData } from 'vuepress/client'
@@ -46,15 +47,14 @@ export const defineSearchConfig = (
   options: MaybeRefOrGetter<SearchOptions>,
 ): void => {
   if (isRef(options)) {
-    watch(
+    watchImmediate(
       () => options.value,
       (value) => {
         searchOptions.value = value
       },
-      { immediate: true },
     )
   } else if (isFunction(options)) {
-    watch(computed(options), (value) => {
+    watchImmediate(computed(options), (value) => {
       searchOptions.value = value
     })
   } else {

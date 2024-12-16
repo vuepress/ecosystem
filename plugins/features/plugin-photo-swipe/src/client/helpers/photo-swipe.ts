@@ -1,7 +1,8 @@
 import { isFunction } from '@vuepress/helper/client'
+import { watchImmediate } from '@vueuse/core'
 import type { PhotoSwipeOptions as OriginalPhotoSwipeOptions } from 'photoswipe'
 import type { App, InjectionKey, MaybeRefOrGetter, Ref } from 'vue'
-import { computed, inject, isRef, ref, watch } from 'vue'
+import { computed, inject, isRef, ref } from 'vue'
 
 export type PhotoSwipeOptions = Omit<
   OriginalPhotoSwipeOptions,
@@ -23,15 +24,14 @@ export const definePhotoSwipeConfig = (
   options: MaybeRefOrGetter<PhotoSwipeOptions>,
 ): void => {
   if (isRef(options)) {
-    watch(
+    watchImmediate(
       () => options.value,
       (value) => {
         photoswipeOptions.value = value
       },
-      { immediate: true },
     )
   } else if (isFunction(options)) {
-    watch(computed(options), (value) => {
+    watchImmediate(computed(options), (value) => {
       photoswipeOptions.value = value
     })
   } else {

@@ -1,4 +1,5 @@
 import { LoadingIcon, useLocaleConfig, wait } from '@vuepress/helper/client'
+import { watchImmediate } from '@vueuse/core'
 import { pageviewCount } from '@waline/client/pageview'
 import type { VNode } from 'vue'
 import {
@@ -8,7 +9,6 @@ import {
   h,
   nextTick,
   onMounted,
-  watch,
 } from 'vue'
 import { usePageFrontmatter, usePageLang } from 'vuepress/client'
 import type {
@@ -72,7 +72,7 @@ export default defineComponent({
     }))
 
     onMounted(() => {
-      watch(
+      watchImmediate(
         () => [
           props.identifier,
           walineOptions.value.serverURL,
@@ -93,7 +93,6 @@ export default defineComponent({
             })
           }
         },
-        { immediate: true },
       )
     })
 

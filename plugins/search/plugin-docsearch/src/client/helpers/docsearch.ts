@@ -1,7 +1,8 @@
 import type { DocSearchProps } from '@docsearch/react'
 import { deepAssign, isFunction } from '@vuepress/helper/client'
+import { watchImmediate } from '@vueuse/core'
 import type { App, ComputedRef, InjectionKey, MaybeRefOrGetter, Ref } from 'vue'
-import { computed, inject, isRef, readonly, ref, watch } from 'vue'
+import { computed, inject, isRef, readonly, ref } from 'vue'
 import { useRouteLocale } from 'vuepress/client'
 import type { DocSearchOptions } from '../../shared/index.js'
 
@@ -30,15 +31,15 @@ export const defineDocSearchConfig = (
   options: MaybeRefOrGetter<DocSearchClientOptions>,
 ): void => {
   if (isRef(options)) {
-    watch(
+    watchImmediate(
       () => options.value,
       (value) => {
         docsearchOptions.value = deepAssign({}, docSearchDefineOptions, value)
       },
-      { immediate: true },
     )
   } else if (isFunction(options)) {
-    watch(computed(options), (value) => {
+    watchImmediate(computed(options), (value) => {
+      // @ts-expect-error: Types loop back
       docsearchOptions.value = deepAssign({}, docSearchDefineOptions, value)
     })
   } else {

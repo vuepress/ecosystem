@@ -1,7 +1,7 @@
 import { redirectMap } from '@temp/redirect/map.js'
 import { entries, isLinkHttp } from '@vuepress/helper/client'
-import { usePreferredLanguages } from '@vueuse/core'
-import { computed, watch } from 'vue'
+import { usePreferredLanguages, watchImmediate } from '@vueuse/core'
+import { computed } from 'vue'
 import { useRoute, useRouteLocale, useRouter } from 'vuepress/client'
 import type { RedirectBehaviorConfig } from '../../shared/index.js'
 import { normalizePath } from '../../shared/index.js'
@@ -88,7 +88,7 @@ export const setupDevServerRedirect = ({
     }
   }
 
-  watch(
+  watchImmediate(
     () => route.path,
     (path) => {
       // handle redirects
@@ -102,6 +102,5 @@ export const setupDevServerRedirect = ({
 
       if (autoLocale && isRootLocale.value) handleLocaleRedirect()
     },
-    { immediate: true },
   )
 }

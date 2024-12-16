@@ -32,5 +32,6 @@ export const useBaiduAnalytics = (id: string): void => {
     (newLocation) => {
       window._hmt!.push(['_trackPageview', newLocation])
     },
+    { flush: 'post' },
   )
 }
