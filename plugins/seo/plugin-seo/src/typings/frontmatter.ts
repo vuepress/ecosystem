@@ -45,12 +45,12 @@ export interface SEOPluginFrontmatter extends PageFrontmatter {
    *
    * 页面封面
    */
-  cover?: string
+  cover?: Record<string, unknown> | string
 
   /**
    * Page Banner
    *
    * 页面 Banner 图
    */
-  banner?: string
+  banner?: Record<string, unknown> | string
 }
