@@ -1,6 +1,6 @@
 import { watchImmediate } from '@vueuse/core'
 import type { App, ComputedRef, InjectionKey, MaybeRefOrGetter, Ref } from 'vue'
-import { computed, inject, isRef, readonly, ref, watch } from 'vue'
+import { computed, inject, isRef, readonly, ref } from 'vue'
 import type { PageData } from 'vuepress/client'
 import { useRouteLocale } from 'vuepress/client'
 
