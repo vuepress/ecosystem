@@ -551,7 +551,7 @@ In particular, [DocSearch](https://docsearch.algolia.com/) is a free search serv
 
 ### defineSearchConfig
 
-Customize [search options](https://mister-hope.github.io/slimsearch/interfaces/SearchOptions.html).
+Customize [search options](https://mister-hope.github.io/slimsearch/interfaces/SearchOptions.html), accepts plain object, ref or getter functions as parameters.
 
 Since searching is done in a Web Worker, setting function-typed options for `slimsearch` is not supported.
 
@@ -587,6 +587,10 @@ interface SearchOptions extends SearchLocaleOptions {
   /** Setting different options per locale */
   locales?: Record<string, SearchLocaleOptions>
 }
+
+export const defineSearchConfig: (
+  options: MaybeRefOrGetter<SearchOptions>,
+) => void
 ```
 
 ```ts title=".vuepress/client.ts"

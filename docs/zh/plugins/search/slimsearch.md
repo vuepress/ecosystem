@@ -554,7 +554,7 @@ terminate()
 
 ### defineSearchConfig
 
-自定义 [搜索选项](https://mister-hope.github.io/slimsearch/interfaces/SearchOptions.html)。
+自定义 [搜索选项](https://mister-hope.github.io/slimsearch/interfaces/SearchOptions.html)，接受普通对象，Ref 或 Getter。
 
 由于搜索是在 Web Worker 中完成的，因此不支持 `slimsearch` 中需要被设置为函数的选项。
 
@@ -590,6 +590,10 @@ interface SearchOptions extends SearchLocaleOptions {
   /** 基于每个语言来设置选项 */
   locales?: Record<string, SearchLocaleOptions>
 }
+
+export const defineSearchConfig: (
+  options: MaybeRefOrGetter<SearchOptions>,
+) => void
 ```
 
 ```ts title=".vuepress/client.ts"
