@@ -39,7 +39,6 @@ export const defineDocSearchConfig = (
     )
   } else if (isFunction(options)) {
     watchImmediate(computed(options), (value) => {
-      // @ts-expect-error: Types loop back
       docsearchOptions.value = deepAssign({}, docSearchDefineOptions, value)
     })
   } else {
