@@ -1,16 +1,16 @@
 import type { DocSearchProps } from '@docsearch/react'
 import { deepAssign, isFunction } from '@vuepress/helper/client'
 import type { App, ComputedRef, InjectionKey, MaybeRefOrGetter, Ref } from 'vue'
-import { computed, inject, isRef, ref, watch } from 'vue'
+import { computed, inject, isRef, readonly, ref, watch } from 'vue'
 import { useRouteLocale } from 'vuepress/client'
 import type { DocSearchOptions } from '../../shared/index.js'
 
 declare const __VUEPRESS_DEV__: boolean
 declare const __DOCSEARCH_OPTIONS__: DocSearchOptions
 
-const docSearchOptions: Partial<DocSearchProps> = __DOCSEARCH_OPTIONS__
+const docSearchDefineOptions: Partial<DocSearchProps> = __DOCSEARCH_OPTIONS__
 
-const docsearch = ref(docSearchOptions as DocSearchProps)
+const docsearchOptions = ref(docSearchDefineOptions as DocSearchProps)
 
 const docsearchSymbol: InjectionKey<
   Ref<
@@ -33,17 +33,17 @@ export const defineDocSearchConfig = (
     watch(
       () => options.value,
       (value) => {
-        docsearch.value = deepAssign({}, docSearchOptions, value)
+        docsearchOptions.value = deepAssign({}, docSearchDefineOptions, value)
       },
       { immediate: true },
     )
   } else if (isFunction(options)) {
     watch(computed(options), (value) => {
-      docsearch.value = deepAssign({}, docSearchOptions, value)
+      docsearchOptions.value = deepAssign({}, docSearchDefineOptions, value)
     })
   } else {
     // @ts-expect-error: Types loop back
-    docsearch.value = deepAssign({}, docSearchOptions, options)
+    docsearchOptions.value = deepAssign({}, docSearchDefineOptions, options)
   }
 }
 
@@ -58,5 +58,5 @@ export const useDocSearchOptions = (): ComputedRef<DocSearchProps> => {
 }
 
 export const injectDocSearchConfig = (app: App): void => {
-  app.provide(docsearchSymbol, docsearch)
+  app.provide(docsearchSymbol, readonly(docsearchOptions))
 }

@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-rename-default
 import type Reveal from 'reveal.js'
-import type { App, MaybeRefOrGetter, Ref } from 'vue'
+import type { App, InjectionKey, MaybeRefOrGetter, Ref } from 'vue'
 import { computed, inject, isRef, ref, watch } from 'vue'
 import { isFunction } from 'vuepress/shared'
 
@@ -8,9 +8,13 @@ declare const __VUEPRESS_DEV__: boolean
 
 export type RevealJsOptions = Partial<Omit<Reveal.Options, 'embedded'>>
 
-const revealOptions: Ref<RevealJsOptions> = ref({})
+export type RevealJsOptionsRef = Ref<RevealJsOptions>
 
-const revealJsSymbol = Symbol(__VUEPRESS_DEV__ ? 'revealjs' : '')
+const revealOptions: RevealJsOptionsRef = ref({})
+
+const revealJsSymbol: InjectionKey<RevealJsOptionsRef> = Symbol(
+  __VUEPRESS_DEV__ ? 'revealjs' : '',
+)
 
 export const defineRevealJsConfig = (
   options: MaybeRefOrGetter<RevealJsOptions>,
@@ -32,7 +36,7 @@ export const defineRevealJsConfig = (
   }
 }
 
-export const useRevealJsConfig = (): Ref<RevealJsOptions> =>
+export const useRevealJsConfig = (): RevealJsOptionsRef =>
   inject(revealJsSymbol)!
 
 export const injectRevealJsConfig = (app: App): void => {
