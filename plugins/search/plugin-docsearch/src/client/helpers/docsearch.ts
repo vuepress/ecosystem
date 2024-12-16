@@ -35,9 +35,10 @@ export const defineDocSearchConfig = (
       (value) => {
         docsearch.value = deepAssign({}, docSearchOptions, value)
       },
+      { immediate: true },
     )
   } else if (isFunction(options)) {
-    watch(options, (value) => {
+    watch(computed(options), (value) => {
       docsearch.value = deepAssign({}, docSearchOptions, value)
     })
   } else {

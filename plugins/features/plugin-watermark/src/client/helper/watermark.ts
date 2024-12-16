@@ -65,7 +65,7 @@ export const defineWatermarkConfig = (
       { immediate: true },
     )
   } else if (isFunction(userConfig)) {
-    watch(userConfig, (value) => {
+    watch(computed(userConfig), (value) => {
       watermarkOptions.value = value
     })
   } else {

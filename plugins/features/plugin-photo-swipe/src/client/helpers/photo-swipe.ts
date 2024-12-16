@@ -1,7 +1,7 @@
 import { isFunction } from '@vuepress/helper/client'
 import type { PhotoSwipeOptions as OriginalPhotoSwipeOptions } from 'photoswipe'
 import type { App, MaybeRefOrGetter, Ref } from 'vue'
-import { inject, isRef, ref, watch } from 'vue'
+import { computed, inject, isRef, ref, watch } from 'vue'
 
 export type PhotoSwipeOptions = Omit<
   OriginalPhotoSwipeOptions,
@@ -24,9 +24,10 @@ export const definePhotoSwipeConfig = (
       (value) => {
         photoswipeOptions.value = value
       },
+      { immediate: true },
     )
   } else if (isFunction(options)) {
-    watch(options, (value) => {
+    watch(computed(options), (value) => {
       photoswipeOptions.value = value
     })
   } else {
