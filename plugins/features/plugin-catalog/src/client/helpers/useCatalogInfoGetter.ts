@@ -1,5 +1,5 @@
 import { isString } from '@vuepress/helper/client'
-import type { App, Component } from 'vue'
+import type { App, Component, InjectionKey } from 'vue'
 import { inject } from 'vue'
 
 export interface CatalogInfo {
@@ -30,7 +30,9 @@ export type CatalogInfoGetter = (
 let catalogGetter: CatalogInfoGetter = (meta) =>
   isString(meta.title) ? { title: meta.title } : null
 
-const catalogInfoSymbol = Symbol(__VUEPRESS_DEV__ ? 'catalog-info-getter' : '')
+const catalogInfoSymbol: InjectionKey<CatalogInfoGetter> = Symbol(
+  __VUEPRESS_DEV__ ? 'catalog-info-getter' : '',
+)
 
 export const defineCatalogInfoGetter = (getter: CatalogInfoGetter): void => {
   catalogGetter = getter

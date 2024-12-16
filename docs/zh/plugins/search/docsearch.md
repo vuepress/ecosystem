@@ -356,14 +356,18 @@ export default {
 ### defineDocSearchConfig
 
 ```ts
-interface DocSearchClientOptions extends DocSearchProps {
-  locales?: Record<string, DocSearchProps>
+type DocSearchClientLocaleOptions = Partial<DocSearchProps>
+
+interface DocSearchClientOptions extends DocSearchClientLocaleOptions {
+  locales?: Record<string, DocSearchClientLocaleOptions>
 }
 
-const defineDocSearchConfig: (options: DocSearchClientOptions) => void
+const defineDocSearchConfig: (
+  options: MaybeRefOrGetter<DocSearchClientOptions>,
+) => void
 ```
 
-自定义 DocSearch 选项。
+自定义 DocSearch 选项，支持普通对象，Ref 者 Getter。
 
 ::: warning
 

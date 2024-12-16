@@ -73,7 +73,7 @@ export const RevealJs = defineComponent({
         backgroundTransition: 'slide',
         transition: 'slide',
         slideNumber: true,
-        ...revealOptions,
+        ...revealOptions.value,
         hash: isSlidePage,
         mouseWheel: isSlidePage,
         ...frontmatter.value.revealJs,
@@ -87,7 +87,7 @@ export const RevealJs = defineComponent({
         plugins: [
           plugins.map(({ default: plugin }) => plugin),
 
-          revealOptions.plugins ?? [],
+          revealOptions.value.plugins ?? [],
         ].flat(),
       })
 
