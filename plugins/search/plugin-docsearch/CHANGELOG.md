@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.67](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.66...v2.0.0-rc.67) (2024-12-16)
+
+### Bug Fixes
+
+- fix define getter ([#304](https://github.com/vuepress/ecosystem/issues/304)) ([a11237c](https://github.com/vuepress/ecosystem/commit/a11237cdc2fdfd286e408e43b0e31251f602b1a6))
+
 # [2.0.0-rc.66](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.65...v2.0.0-rc.66) (2024-12-13)
 
 **Note:** Version bump only for package @vuepress/plugin-docsearch
