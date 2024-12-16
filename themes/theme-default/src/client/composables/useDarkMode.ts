@@ -1,7 +1,7 @@
 import { useThemeLocaleData } from '@theme/useThemeData'
-import { usePreferredDark, useStorage } from '@vueuse/core'
+import { usePreferredDark, useStorage, watchImmediate } from '@vueuse/core'
 import type { InjectionKey, WritableComputedRef } from 'vue'
-import { computed, inject, onMounted, onUnmounted, provide, watch } from 'vue'
+import { computed, inject, onMounted, onUnmounted, provide } from 'vue'
 
 export type DarkModeRef = WritableComputedRef<boolean>
 
@@ -19,7 +19,7 @@ const applyDarkmodeToHTML = (isDarkMode: DarkModeRef): void => {
   }
 
   onMounted(() => {
-    watch(isDarkMode, update, { immediate: true })
+    watchImmediate(isDarkMode, update)
   })
 
   onUnmounted(() => {

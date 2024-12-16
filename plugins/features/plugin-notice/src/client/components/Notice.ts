@@ -1,4 +1,5 @@
 import { isLinkAbsolute, isLinkHttp, startsWith } from '@vuepress/helper/client'
+import { watchImmediate } from '@vueuse/core'
 import type { PropType } from 'vue'
 import {
   TransitionGroup,
@@ -7,7 +8,6 @@ import {
   h,
   onMounted,
   ref,
-  watch,
 } from 'vue'
 import { useRoutePath, useRouter } from 'vuepress/client'
 import type { NoticeItemOptions } from '../../shared/index.js'
@@ -86,19 +86,15 @@ export const Notice = defineComponent({
     }
 
     onMounted(() => {
-      watch(
-        matchedConfig,
-        () => {
-          if (matchedConfig.value) {
-            const hasBeenClosed = (
-              matchedConfig.value.showOnce ? localStorage : sessionStorage
-            ).getItem(matchedConfig.value.key)
+      watchImmediate(matchedConfig, () => {
+        if (matchedConfig.value) {
+          const hasBeenClosed = (
+            matchedConfig.value.showOnce ? localStorage : sessionStorage
+          ).getItem(matchedConfig.value.key)
 
-            isVisible.value = !hasBeenClosed
-          }
-        },
-        { immediate: true },
-      )
+          isVisible.value = !hasBeenClosed
+        }
+      })
     })
 
     return () =>

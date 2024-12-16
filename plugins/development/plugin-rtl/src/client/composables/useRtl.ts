@@ -1,5 +1,6 @@
 import { entries } from '@vuepress/helper/client'
-import { onMounted, watch } from 'vue'
+import { watchImmediate } from '@vueuse/core'
+import { onMounted } from 'vue'
 import { useRouteLocale } from 'vuepress/client'
 import { getElement } from '../utils/index.js'
 
@@ -46,6 +47,6 @@ export const useRtl = (
   }
 
   onMounted(() => {
-    watch(routeLocale, toggleRTL, { immediate: true })
+    watchImmediate(routeLocale, toggleRTL)
   })
 }

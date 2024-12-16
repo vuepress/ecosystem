@@ -1,6 +1,7 @@
 import { wait } from '@vuepress/helper/client'
+import { watchImmediate } from '@vueuse/core'
 import type { MaybeRef, Ref } from 'vue'
-import { isRef, nextTick, onMounted, toValue, watch } from 'vue'
+import { isRef, onMounted, toValue, watch } from 'vue'
 import { useRoutePath, useSiteLocaleData, withBase } from 'vuepress/client'
 import { Watermark } from 'watermark-js-plus'
 import type { WatermarkOptions } from '../helper/index.js'
@@ -36,19 +37,17 @@ export const setupWatermark = (
       }
     }
 
-    watch(
+    watchImmediate(
       [enabled, routePath],
-      () =>
-        nextTick(() => {
-          if (enabled.value) {
-            void wait(delay).then(() => {
-              updateWaterMark(toValue(options))
-            })
-          } else {
-            watermark.destroy()
-          }
-        }),
-      { immediate: true },
+      async () => {
+        if (enabled.value) {
+          await wait(delay)
+          updateWaterMark(toValue(options))
+        } else {
+          watermark.destroy()
+        }
+      },
+      { flush: 'post' },
     )
 
     if (isRef(options)) watch(options, updateWaterMark)

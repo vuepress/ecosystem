@@ -1,6 +1,7 @@
 import { isFunction } from '@vuepress/helper/client'
+import { watchImmediate } from '@vueuse/core'
 import type { App, MaybeRefOrGetter, Ref } from 'vue'
-import { computed, inject, isRef, readonly, ref, watch } from 'vue'
+import { computed, inject, isRef, readonly, ref } from 'vue'
 import type {
   ArtalkOptions,
   CommentOptions,
@@ -22,15 +23,11 @@ const defineCommentConfig = <T extends CommentOptions>(
   options: MaybeRefOrGetter<T>,
 ): void => {
   if (isRef(options)) {
-    watch(
-      () => options.value,
-      (value) => {
-        comment.value = { ...commentOptions, ...value }
-      },
-      { immediate: true },
-    )
+    watchImmediate(options, (value) => {
+      comment.value = { ...commentOptions, ...value }
+    })
   } else if (isFunction(options)) {
-    watch(computed(options), (value) => {
+    watchImmediate(computed(options), (value) => {
       comment.value = { ...commentOptions, ...value }
     })
   } else {
