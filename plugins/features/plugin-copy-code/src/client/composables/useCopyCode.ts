@@ -1,6 +1,11 @@
 import { useLocaleConfig, wait } from '@vuepress/helper/client'
-import { useClipboard, useEventListener, useMediaQuery } from '@vueuse/core'
-import { computed, nextTick, watch } from 'vue'
+import {
+  useClipboard,
+  useEventListener,
+  useMediaQuery,
+  watchImmediate,
+} from '@vueuse/core'
+import { computed, nextTick } from 'vue'
 import { usePageData } from 'vuepress/client'
 import type { CopyCodePluginLocaleConfig } from '../../shared/index.js'
 
@@ -90,9 +95,7 @@ export const useCopyCode = ({
       .forEach(insertCopyButton)
   }
 
-  watch(() => [page.value.path, enabled.value], appendCopyButton, {
-    immediate: true,
-  })
+  watchImmediate(() => [page.value.path, enabled.value], appendCopyButton)
 
   const { copy } = useClipboard({ legacy: true })
   const timeoutIdMap = new WeakMap<HTMLElement, ReturnType<typeof setTimeout>>()

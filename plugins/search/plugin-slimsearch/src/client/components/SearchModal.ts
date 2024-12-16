@@ -4,6 +4,7 @@ import {
   useDebounceFn,
   useEventListener,
   useScrollLock,
+  watchImmediate,
 } from '@vueuse/core'
 import type { VNode } from 'vue'
 import {
@@ -110,7 +111,7 @@ export default defineComponent({
       Math.min(options.searchDelay, options.suggestDelay),
     )
 
-    watch(input, updateQueries, { immediate: true })
+    watchImmediate(input, updateQueries)
 
     onMounted(() => {
       const isLocked = useScrollLock(document.body)
