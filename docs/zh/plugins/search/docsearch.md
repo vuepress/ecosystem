@@ -367,7 +367,7 @@ const defineDocSearchConfig: (
 ) => void
 ```
 
-自定义 DocSearch 选项。
+自定义 DocSearch 选项，支持普通对象，Ref 者 Getter。
 
 ::: warning
 

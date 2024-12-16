@@ -368,7 +368,7 @@ const defineDocSearchConfig: (
 ) => void
 ```
 
-Customize DocSearch options.
+Customize DocSearch options, support plain object, ref or getter.
 
 ::: warning
 
