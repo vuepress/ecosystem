@@ -17,7 +17,7 @@ export const getRawContributors = (
 ): GitContributor[] => {
   const contributors = new Map<string, GitContributor>()
 
-  for (const commit of commits) {
+  for (const commit of commits.reverse()) {
     const authors = [
       { name: commit.author, email: commit.email },
       ...commit.coAuthors,
