@@ -6,7 +6,11 @@ import { Logger } from '../utils/index.js'
 import { lang2PathConfig, path2langConfig } from './config.js'
 import type { KnownLangCode } from './types.js'
 
-/** Infer language from locale path */
+/**
+ * @deprecated
+ *
+ * Infer language from locale path
+ */
 export const inferLocaleLang = (
   localePath = '',
   debug = false,
@@ -22,7 +26,11 @@ export const inferLocaleLang = (
   return 'en-US'
 }
 
-/** Infer locale path from language */
+/**
+ * @deprecated
+ *
+ * Infer locale path from language
+ */
 export const inferLocalePath = (lang = '', debug = false): string => {
   if (lang in lang2PathConfig) return lang2PathConfig[lang as KnownLangCode]
 
@@ -34,6 +42,8 @@ export const inferLocalePath = (lang = '', debug = false): string => {
 }
 
 /**
+ * @deprecated
+ *
  * Get language of root directory
  *
  * @param app VuePress Node App
@@ -50,15 +60,20 @@ export const getRootLang = (app: App): string => {
 }
 
 /**
+ * @deprecated
+ *
  * Infer locale path from root directory language
  *
  * @param app VuePress Node App
  * @returns inferred locale path of root directory
  */
 export const inferRootLocalePath = (app: App): string =>
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   inferLocalePath(getRootLang(app), app.env.isDebug)
 
 /**
+ * @deprecated
+ *
  * Get locale paths
  *
  * @param app VuePress Node app
@@ -67,6 +82,7 @@ export const inferRootLocalePath = (app: App): string =>
 export const getLocalePaths = (app: App): string[] =>
   Array.from(new Set(keys(app.siteData.locales)))
 
+/** @deprecated */
 export interface LocaleConfigOptions<T extends LocaleData> {
   /** VuePress Node app */
   app: App
@@ -79,6 +95,8 @@ export interface LocaleConfigOptions<T extends LocaleData> {
 }
 
 /**
+ * @deprecated
+ *
  * Get final locale config for client
  *
  * @returns final locale config
@@ -88,7 +106,9 @@ export const getLocaleConfig = <T extends LocaleData>({
   name,
   default: defaultLocalesConfig,
   config: userLocalesConfig = {},
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
 }: LocaleConfigOptions<T>): ExactLocaleConfig<T> => {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const rootLocalePath = inferRootLocalePath(app)
   const logger = new Logger(name)
 
@@ -99,14 +119,17 @@ export const getLocaleConfig = <T extends LocaleData>({
     Object.values(defaultLocalesConfig).shift()
 
   return fromEntries([
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     ...getLocalePaths(app)
       .filter((localePath) => localePath !== '/')
       .map<[string, T]>((localePath) => {
         const defaultLocaleData =
           (defaultLocalesConfig[localePath] as T | undefined) ??
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           (inferLocalePath(app.options.locales[localePath].lang) === '/'
             ? null
             : defaultLocalesConfig[
+                // eslint-disable-next-line @typescript-eslint/no-deprecated
                 inferLocalePath(app.options.locales[localePath].lang)
               ])
 
