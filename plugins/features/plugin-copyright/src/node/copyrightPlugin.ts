@@ -1,11 +1,15 @@
-import { Logger, addViteSsrNoExternal, getLocaleConfig } from '@vuepress/helper'
+import {
+  Logger,
+  addViteSsrNoExternal,
+  getFullLocaleConfig,
+} from '@vuepress/helper'
 import type { Page, PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 import type {
   CopyrightInfoData,
   CopyrightPluginPageData,
 } from '../shared/index.js'
-import { copyrightLocales } from './locales.js'
+import { copyrightLocaleInfo } from './locales.js'
 import type { CopyrightPluginOptions } from './options.js'
 
 const PLUGIN_NAME = '@vuepress/plugin-copyright'
@@ -33,10 +37,10 @@ export const copyrightPlugin =
       maxLength = 0,
     } = options
 
-    const locales = getLocaleConfig({
+    const locales = getFullLocaleConfig({
       app,
       name: PLUGIN_NAME,
-      default: copyrightLocales,
+      default: copyrightLocaleInfo,
       config: options.locales,
     })
 

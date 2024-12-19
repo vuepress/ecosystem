@@ -1,12 +1,12 @@
 import {
   addViteSsrNoExternal,
-  getLocaleConfig,
+  getFullLocaleConfig,
   isArray,
   isString,
 } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
-import { copyCodeLocales } from './locales.js'
+import { copyCodeLocaleInfo } from './locales.js'
 import { PLUGIN_NAME, logger } from './logger.js'
 import type { CopyCodePluginOptions } from './options.js'
 
@@ -24,10 +24,10 @@ export const copyCodePlugin =
         __CC_DELAY__: options.delay ?? 500,
         __CC_DURATION__: options.duration ?? 2000,
         __CC_IGNORE_SELECTOR__: options.ignoreSelector ?? [],
-        __CC_LOCALES__: getLocaleConfig({
+        __CC_LOCALES__: getFullLocaleConfig({
           app,
           name: PLUGIN_NAME,
-          default: copyCodeLocales,
+          default: copyCodeLocaleInfo,
           config: options.locales,
         }),
         __CC_SELECTOR__: isArray(options.selector)

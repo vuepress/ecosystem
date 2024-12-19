@@ -1,8 +1,8 @@
-import { addViteSsrNoExternal, getLocaleConfig } from '@vuepress/helper'
+import { addViteSsrNoExternal, getFullLocaleConfig } from '@vuepress/helper'
 import type { Page, PluginFunction } from 'vuepress/core'
 import type { ReadingTime } from '../shared/index.js'
 import { getReadingTime } from './getReadingTime.js'
-import { readingTimeLocales } from './locales.js'
+import { readingTimeLocaleInfo } from './locales.js'
 import { PLUGIN_NAME, logger } from './logger.js'
 import type { ReadingTimePluginOptions } from './options.js'
 
@@ -16,10 +16,10 @@ export const readingTimePlugin =
       name: PLUGIN_NAME,
 
       define: (): Record<string, unknown> => ({
-        __READING_TIME_LOCALES__: getLocaleConfig({
+        __READING_TIME_LOCALES__: getFullLocaleConfig({
           app,
           name: PLUGIN_NAME,
-          default: readingTimeLocales,
+          default: readingTimeLocaleInfo,
           config: options.locales,
         }),
       }),

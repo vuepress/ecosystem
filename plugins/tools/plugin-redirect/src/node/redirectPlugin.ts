@@ -1,6 +1,6 @@
 import {
   addViteSsrNoExternal,
-  getLocaleConfig,
+  getFullLocaleConfig,
   getModulePath,
 } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
@@ -13,7 +13,7 @@ import {
 import { getRedirectBehaviorConfig } from './getRedirectLocaleConfig.js'
 import { getRedirectMap } from './getRedirectMap.js'
 import { handleRedirectTo } from './handleRedirectTo.js'
-import { redirectLocales } from './locales.js'
+import { redirectLocaleInfo } from './locales.js'
 import { PLUGIN_NAME, logger } from './logger.js'
 import type { RedirectPluginOptions } from './types/index.js'
 
@@ -42,11 +42,11 @@ export const redirectPlugin =
         __REDIRECT_CONFIG__: behaviorConfig,
         __REDIRECT_DIRECT__: options.switchLocale === 'direct',
         __REDIRECT_MODAL__: options.switchLocale === 'modal',
-        __REDIRECT_LOCALES__: getLocaleConfig({
+        __REDIRECT_LOCALES__: getFullLocaleConfig({
           app,
           name: 'redirect',
           config: options.locales,
-          default: redirectLocales,
+          default: redirectLocaleInfo,
         }),
       },
 
