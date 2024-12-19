@@ -2,7 +2,7 @@ import type { DefaultLocaleInfo } from '@vuepress/helper'
 import type { WalineLocaleData } from '../shared/index.js'
 
 /**
- * Default locale config for Waline
+ * Default locale info for Waline
  */
 export const walineLocalesInfo: DefaultLocaleInfo<WalineLocaleData> = [
   [
@@ -13,10 +13,13 @@ export const walineLocalesInfo: DefaultLocaleInfo<WalineLocaleData> = [
     },
   ],
   [
-    ['zh', 'zh-CN'],
+    ['zh', 'zh-CN', 'zh-Hans'],
     { placeholder: '请留言。(填写邮箱可在被回复时收到邮件提醒)' },
   ],
-  [['zh-TW'], { placeholder: '請留言。(填寫信箱可在被回覆時收到郵件提醒)' }],
+  [
+    ['zh-TW', 'zh-Hant'],
+    { placeholder: '請留言。(填寫信箱可在被回覆時收到郵件提醒)' },
+  ],
   [
     ['de', 'de-DE'],
     {
@@ -88,42 +91,42 @@ export const walineLocalesInfo: DefaultLocaleInfo<WalineLocaleData> = [
     },
   ],
   [
-    ['ja', 'ja-jP'],
+    ['ja', 'ja-JP'],
     {
       placeholder:
         '伝言をどうぞ (メールアドレスを入力すると、返信があった際にメールでお知らせします。)',
     },
   ],
   [
-    ['tr'],
+    ['tr', 'tr-TR'],
     {
       placeholder:
         'Buraya bir yorum yazın (Yanıtlandığında bir e-posta bildirimi almak için e-posta adresinizi girin)',
     },
   ],
   [
-    ['ko'],
+    ['ko', 'ko-KO'],
     {
       placeholder:
         '댓글을 남겨주세요 (답글이 달렸을 때 이메일로 알림을 받으려면 이메일 주소를 입력하세요)',
     },
   ],
   [
-    ['fi'],
+    ['fi', 'fi-FI'],
     {
       placeholder:
         'Kirjoita kommentti tähän (täytä sähköpostiosoite saadaksesi sähköposti-ilmoituksen vastauksesta)',
     },
   ],
   [
-    ['hu'],
+    ['hu', 'hu-HU'],
     {
       placeholder:
         'Írj kommentet itt! (Töltsd ki az email címet, hogy értesítést kapj, amikor válaszolnak.)',
     },
   ],
   [
-    ['id'],
+    ['id', 'id-ID'],
     {
       placeholder:
         'Tulis komentar di sini (Isi alamat email untuk menerima notifikasi jika komentar kamu telah dibalas orang lain)',

@@ -2,7 +2,7 @@ import {
   addViteOptimizeDepsInclude,
   addViteSsrNoExternal,
   fromEntries,
-  getLocaleConfig,
+  getFullLocaleConfig,
 } from '@vuepress/helper'
 import { watch } from 'chokidar'
 import type { PluginFunction } from 'vuepress/core'
@@ -10,7 +10,7 @@ import type { PluginFunction } from 'vuepress/core'
 import type { SearchIndexStore } from '../shared/index.js'
 import { getSearchIndexStore } from './generateIndex.js'
 import { generateWorker } from './generateWorker.js'
-import { locales } from './locales.js'
+import { slimsearchLocaleInfo } from './locales.js'
 import type { SlimSearchPluginOptions } from './options.js'
 import { PathStore } from './pathStore.js'
 import {
@@ -42,11 +42,11 @@ export const slimsearchPlugin =
             )
             .filter((item): item is [string, string] => item !== null) ?? [],
         ),
-        __SLIMSEARCH_LOCALES__: getLocaleConfig({
+        __SLIMSEARCH_LOCALES__: getFullLocaleConfig({
           app,
           name: PLUGIN_NAME,
           config: options.locales,
-          default: locales,
+          default: slimsearchLocaleInfo,
         }),
         __SLIMSEARCH_OPTIONS__: {
           searchDelay: options.searchDelay ?? 150,
