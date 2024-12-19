@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-deprecated */
 import type { App } from 'vuepress/core'
 import type { LocaleConfig, LocaleData } from 'vuepress/shared'
 import type { ExactLocaleConfig } from '../../shared/index.js'
@@ -68,7 +69,6 @@ export const getRootLang = (app: App): string => {
  * @returns inferred locale path of root directory
  */
 export const inferRootLocalePath = (app: App): string =>
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   inferLocalePath(getRootLang(app), app.env.isDebug)
 
 /**
@@ -106,9 +106,7 @@ export const getLocaleConfig = <T extends LocaleData>({
   name,
   default: defaultLocalesConfig,
   config: userLocalesConfig = {},
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
 }: LocaleConfigOptions<T>): ExactLocaleConfig<T> => {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const rootLocalePath = inferRootLocalePath(app)
   const logger = new Logger(name)
 
@@ -119,17 +117,14 @@ export const getLocaleConfig = <T extends LocaleData>({
     Object.values(defaultLocalesConfig).shift()
 
   return fromEntries([
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
     ...getLocalePaths(app)
       .filter((localePath) => localePath !== '/')
       .map<[string, T]>((localePath) => {
         const defaultLocaleData =
           (defaultLocalesConfig[localePath] as T | undefined) ??
-          // eslint-disable-next-line @typescript-eslint/no-deprecated
           (inferLocalePath(app.options.locales[localePath].lang) === '/'
             ? null
             : defaultLocalesConfig[
-                // eslint-disable-next-line @typescript-eslint/no-deprecated
                 inferLocalePath(app.options.locales[localePath].lang)
               ])
 
