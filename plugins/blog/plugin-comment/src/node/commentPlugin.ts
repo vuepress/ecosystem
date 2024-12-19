@@ -4,12 +4,12 @@ import {
   addViteOptimizeDepsInclude,
   addViteSsrExternal,
   addViteSsrNoExternal,
-  getLocaleConfig,
+  getFullLocaleConfig,
   isModuleAvailable,
 } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getAlias, getProviderPackage } from './getProvider.js'
-import { walineLocales } from './locales.js'
+import { walineLocalesInfo } from './locales.js'
 import type { CommentPluginOptions } from './options.js'
 import { CLIENT_FOLDER, PLUGIN_NAME, logger } from './utils.js'
 
@@ -41,10 +41,10 @@ export const commentPlugin =
       define: () => {
         const userWalineLocales =
           options.provider === 'Waline'
-            ? getLocaleConfig({
+            ? getFullLocaleConfig({
                 app,
                 name: 'waline',
-                default: walineLocales,
+                default: walineLocalesInfo,
                 config: options.locales,
               })
             : {}
