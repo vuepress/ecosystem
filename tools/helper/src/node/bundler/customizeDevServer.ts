@@ -51,7 +51,7 @@ export const customizeDevServer = (
     path,
   }: DevServerOptions,
 ): void => {
-  const { base } = app.options
+  const { base } = app.siteData
   const bundlerName = getBundlerName(app)
 
   // in dev

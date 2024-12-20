@@ -26,7 +26,7 @@ export const docsearchPlugin = ({
   name: PLUGIN_NAME,
 
   define: (app) => ({
-    __DOCSEARCH_INDEX_BASE__: indexBase || app.options.base,
+    __DOCSEARCH_INDEX_BASE__: indexBase || app.siteData.base,
     __DOCSEARCH_OPTIONS__: options,
   }),
 

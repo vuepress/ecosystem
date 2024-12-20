@@ -13,7 +13,7 @@ export const generateDescription = (
       ? (page.data.excerpt ?? page.contentRendered)
       : page.contentRendered
 
-    const pageText = getText(content, app.options.base, {
+    const pageText = getText(content, app.siteData.base, {
       length: 180,
       singleLine: true,
     })

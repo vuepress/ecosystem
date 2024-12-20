@@ -41,7 +41,7 @@ export class FeedItem {
     private readonly page: FeedPage,
     private readonly hostname: string,
   ) {
-    this.base = this.app.options.base
+    this.base = this.app.siteData.base
     this.frontmatter = page.frontmatter
     this.getter = options.getter ?? {}
     // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing

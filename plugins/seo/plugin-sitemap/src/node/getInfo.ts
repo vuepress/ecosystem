@@ -51,7 +51,7 @@ export const getSitemapInfos = (
         ? new Date(page.data.git.updatedTime).toISOString()
         : '',
   } = options
-  const { base, locales } = app.options
+  const { base, locales } = app.siteData
 
   const pageLocalesMap = getPagesLocaleMap(app)
 
