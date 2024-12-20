@@ -8,8 +8,7 @@ export const getManifest = async (
   app: App,
   options: PwaPluginOptions,
 ): Promise<AppManifest> => {
-  const { siteData } = app
-  const { base } = app.options
+  const { base, title, description, locales } = app.siteData
 
   const userManifestPath = app.dir.source(
     '.vuepress/public/manifest.webmanifest',
@@ -26,14 +25,12 @@ export const getManifest = async (
 
   const manifest: AppManifest = {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    name: siteData.title || siteData.locales['/']?.title || 'Site',
+    name: title || locales['/']?.title || 'Site',
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    short_name: siteData.title || siteData.locales['/']?.title || 'Site',
+    short_name: title || locales['/']?.title || 'Site',
     description:
-      siteData.description ||
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      siteData.locales['/']?.description ||
-      'A site built with vuepress',
+      description || locales['/']?.description || 'A site built with vuepress',
     lang: getRootLang(app),
     start_url: base,
     scope: base,

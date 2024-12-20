@@ -104,10 +104,10 @@ export const getLocaleConfig = <T extends LocaleData>({
       .map<[string, T]>((localePath) => {
         const defaultLocaleData =
           (defaultLocalesConfig[localePath] as T | undefined) ??
-          (inferLocalePath(app.options.locales[localePath].lang) === '/'
+          (inferLocalePath(app.siteData.locales[localePath].lang) === '/'
             ? null
             : defaultLocalesConfig[
-                inferLocalePath(app.options.locales[localePath].lang)
+                inferLocalePath(app.siteData.locales[localePath].lang)
               ])
 
         if (!defaultLocaleData)

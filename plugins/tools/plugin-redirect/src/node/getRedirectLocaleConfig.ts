@@ -18,7 +18,7 @@ export const getRedirectBehaviorConfig = (
   app: App,
   options: RedirectPluginOptions,
 ): RedirectBehaviorConfig => {
-  const { locales } = app.options
+  const { locales } = app.siteData
 
   const config = deepAssign(
     fromEntries(

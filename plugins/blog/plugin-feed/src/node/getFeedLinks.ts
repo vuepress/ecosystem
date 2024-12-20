@@ -17,7 +17,7 @@ export const getFeedLinks = (
   options: ResolvedFeedOptions,
   localePath: string,
 ): FeedLinks => {
-  const { base } = app.options
+  const { base } = app.siteData
   const { hostname } = options
   const {
     atomOutputFilename,

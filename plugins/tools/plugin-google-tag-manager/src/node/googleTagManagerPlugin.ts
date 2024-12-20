@@ -29,7 +29,7 @@ export const googleTagManagerPlugin =
         ...plugin,
 
         onInitialized: () => {
-          app.options.head.push([
+          app.siteData.head.push([
             'script',
             {},
             `\

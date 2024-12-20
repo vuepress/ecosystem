@@ -23,5 +23,5 @@ export const getAlternateLinks = (
 ): { lang: string; path: string }[] =>
   getAlternatePaths(page, app).map(({ lang, path }) => ({
     lang,
-    path: getUrl(hostname, app.options.base, path),
+    path: getUrl(hostname, app.siteData.base, path),
   }))
