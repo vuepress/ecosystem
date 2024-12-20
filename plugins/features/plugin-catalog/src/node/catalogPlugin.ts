@@ -1,8 +1,8 @@
-import { addViteSsrNoExternal, getLocaleConfig } from '@vuepress/helper'
+import { addViteSsrNoExternal, getFullLocaleConfig } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 import { generateCatalogPage } from './generateCatalogPage.js'
-import { catalogLocales as defaultLocales } from './locales.js'
+import { catalogLocaleInfo } from './locales.js'
 import { PLUGIN_NAME, logger } from './logger.js'
 import type { CatalogPluginOptions } from './options.js'
 
@@ -19,10 +19,10 @@ export const catalogPlugin =
       name: PLUGIN_NAME,
 
       define: (): Record<string, unknown> => ({
-        __CATALOG_LOCALES__: getLocaleConfig({
+        __CATALOG_LOCALES__: getFullLocaleConfig({
           app,
           name: PLUGIN_NAME,
-          default: defaultLocales,
+          default: catalogLocaleInfo,
           config: locales,
         }),
       }),

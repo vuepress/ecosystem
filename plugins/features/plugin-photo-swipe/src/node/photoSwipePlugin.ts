@@ -3,11 +3,11 @@ import {
   addViteSsrNoExternal,
   entries,
   fromEntries,
-  getLocaleConfig,
+  getFullLocaleConfig,
 } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
-import { photoSwipeLocales } from './locales.js'
+import { photoSwipeLocaleInfo } from './locales.js'
 import { PLUGIN_NAME, logger } from './logger.js'
 import type { PhotoSwipePluginOptions } from './options.js'
 
@@ -29,10 +29,10 @@ export const photoSwipePlugin =
         __PS_SCROLL_TO_CLOSE__: options.scrollToClose ?? true,
         __PS_LOCALES__: fromEntries(
           entries(
-            getLocaleConfig({
+            getFullLocaleConfig({
               app,
               name: PLUGIN_NAME,
-              default: photoSwipeLocales,
+              default: photoSwipeLocaleInfo,
               config: options.locales,
             }),
           ).map(([localePath, localeOptions]) => [

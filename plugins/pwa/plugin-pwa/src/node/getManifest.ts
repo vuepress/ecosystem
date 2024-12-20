@@ -1,4 +1,3 @@
-import { getRootLang } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { fs } from 'vuepress/utils'
 import type { AppManifest } from '../shared/index.js'
@@ -34,7 +33,8 @@ export const getManifest = async (
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       siteData.locales['/']?.description ||
       'A site built with vuepress',
-    lang: getRootLang(app),
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    lang: app.siteData.locales['/']?.lang ?? app.siteData.lang,
     start_url: base,
     scope: base,
 
