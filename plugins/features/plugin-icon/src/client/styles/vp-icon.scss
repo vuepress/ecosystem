@@ -1,0 +1,7 @@
+.vp-icon {
+  display: inline-block;
+
+  [vp-content] & {
+    vertical-align: middle;
+  }
+}
