@@ -55,70 +55,84 @@ export const usePhotoSwipe = ({
     scrollToClose,
   }))
 
+  let photoSwipeLoader: Promise<typeof PhotoSwipe> | null = null
   let photoSwipeId = 0
   let photoSwipe: PhotoSwipe | null = null
 
-  const handlePhotoSwipe = async (event: MouseEvent): Promise<void> => {
+  const initPhotoSwipe = async (event: MouseEvent): Promise<void> => {
     const el = event.target as HTMLImageElement
 
-    if (imageSelector.value && el.matches(imageSelector.value)) {
-      photoSwipe?.destroy()
+    if (
+      // not enabled
+      !imageSelector.value ||
+      // Photoswipe is not being loaded
+      !photoSwipeLoader ||
+      // not an matched element
+      !el.matches(imageSelector.value)
+    )
+      return
 
-      const { default: PhotoSwipe } = await import(
-        /* webpackChunkName: "photo-swipe" */ 'photoswipe'
-      )
+    // there is an active instance
+    if (photoSwipeId !== 0) photoSwipe!.destroy()
 
-      const images = Array.from(
-        document.querySelectorAll<HTMLImageElement>(imageSelector.value),
-      )
-      const currentIndex = images.findIndex((image) => image === el)
+    const id = Date.now()
+    const PhotoSwipeConstructor = await photoSwipeLoader
 
-      const dataSource = images.map<SlideData>((image) => ({
-        html: LOADING_ICON,
-        element: image,
-        msrc: image.src,
-      }))
+    const images = Array.from(
+      document.querySelectorAll<HTMLImageElement>(imageSelector.value),
+    )
+    const dataSource = images.map<SlideData>((image) => ({
+      html: LOADING_ICON,
+      element: image,
+      msrc: image.src,
+    }))
 
-      dataSource.splice(currentIndex, 1, await resolveImageInfoFromElement(el))
+    const index = images.findIndex((image) => image === el)
 
-      const id = Date.now()
+    photoSwipe = new PhotoSwipeConstructor({
+      preloaderDelay: 0,
+      showHideAnimationType: 'zoom',
+      ...options,
+      dataSource,
+      index,
+      ...(scrollToClose
+        ? { closeOnVerticalDrag: true, wheelToZoom: false }
+        : {}),
+    })
+    photoSwipeId = id
 
-      photoSwipeId = id
-      photoSwipe = new PhotoSwipe({
-        preloaderDelay: 0,
-        showHideAnimationType: 'zoom',
-        ...options,
-        dataSource,
-        index: currentIndex,
-        ...(scrollToClose
-          ? { closeOnVerticalDrag: true, wheelToZoom: false }
-          : {}),
-      })
+    setupPhotoSwipe(photoSwipe, { download, fullscreen })
 
-      setupPhotoSwipe(photoSwipe, { download, fullscreen })
+    photoSwipe.init()
 
-      photoSwipe.init()
+    photoSwipe.on('destroy', () => {
+      photoSwipe = null
+      photoSwipeId = 0
+    })
 
-      photoSwipe.on('destroy', () => {
-        photoSwipe = null
-        photoSwipeId = 0
-      })
-
-      images.forEach((image, index) => {
-        if (index === currentIndex || photoSwipeId !== id) return
-
-        void resolveImageInfoFromElement(image).then((data) => {
-          dataSource.splice(index, 1, data)
-          photoSwipe?.refreshSlideContent(index)
-        })
-      })
-    }
+    void images.map((image, imageIndex) =>
+      resolveImageInfoFromElement(image).then((data) => {
+        if (photoSwipeId !== id) return
+        dataSource.splice(imageIndex, 1, data)
+        photoSwipe?.refreshSlideContent(imageIndex)
+      }),
+    )
   }
 
   onMounted(() => {
-    useEventListener('click', handlePhotoSwipe)
+    const rIC =
+      'requestIdleCallback' in window ? window.requestIdleCallback : setTimeout
+
+    useEventListener('click', initPhotoSwipe)
     useEventListener('wheel', () => {
       if (options.value.scrollToClose) photoSwipe?.close()
+    })
+    rIC(() => {
+      photoSwipeLoader = import(
+        /* webpackChunkName: "photo-swipe" */ 'photoswipe'
+      ).then(({ default: _PhotoSwipe }) => {
+        return _PhotoSwipe
+      })
     })
   })
 
