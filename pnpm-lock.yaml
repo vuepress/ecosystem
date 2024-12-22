@@ -153,6 +153,9 @@ importers:
       '@vuepress/plugin-feed':
         specifier: workspace:*
         version: link:../plugins/blog/plugin-feed
+      '@vuepress/plugin-icon':
+        specifier: workspace:*
+        version: link:../plugins/features/plugin-icon
       '@vuepress/plugin-markdown-ext':
         specifier: workspace:*
         version: link:../plugins/markdown/plugin-markdown-ext

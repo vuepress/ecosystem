@@ -5,8 +5,10 @@ import type { IconPluginOptions } from './options.js'
 import { prepareConfigFile } from './prepareConfigFile.js'
 import { PLUGIN_NAME, getIconInfo } from './utils.js'
 
-export const iconPlugin = (options: IconPluginOptions): Plugin => {
-  const { assets, prefix } = options
+export const iconPlugin = ({
+  assets = 'iconify',
+  prefix,
+}: IconPluginOptions = {}): Plugin => {
   const { iconType, iconPrefix } = getIconInfo(assets, prefix)
 
   return {

@@ -3,7 +3,7 @@ import type { App } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 
 import type { IconType } from '../shared/index.js'
-import type { FontIconAssets } from './options.js'
+import type { IconAsset } from './options.js'
 import { getIconLinks } from './utils.js'
 
 const __dirname = getDirname(import.meta.url)
@@ -16,7 +16,7 @@ export const prepareConfigFile = (
   app: App,
   iconType: IconType,
   iconPrefix: string,
-  assets?: FontIconAssets,
+  assets: IconAsset,
 ): Promise<string> => {
   const linksInfo = getIconLinks(assets)
 

@@ -1,15 +1,12 @@
-type Link =
+export type BuiltInIcon = 'fontawesome-with-brands' | 'fontawesome' | 'iconify'
+
+export type IconLink =
   | `//${string}`
   | `/${string}`
   | `http://${string}`
   | `https://${string}`
 
-export type BuiltInFontIcon =
-  | 'fontawesome-with-brands'
-  | 'fontawesome'
-  | 'iconify'
-
-export type FontIconAssets = (BuiltInFontIcon | Link)[] | BuiltInFontIcon | Link
+export type IconAsset = (BuiltInIcon | IconLink)[] | BuiltInIcon | IconLink
 
 export interface IconPluginOptions {
   /**
@@ -18,8 +15,10 @@ export interface IconPluginOptions {
    * 字体图标资源链接
    *
    * @description `"iconify"`, `"fontawesome"` and `"fontawesome-with-brands"` keywords are supported
+   *
+   * @default "iconify"
    */
-  assets?: FontIconAssets
+  assets?: IconAsset
 
   /**
    * Class prefix of font icon

@@ -10,7 +10,7 @@ import {
 import { getDirname, path } from 'vuepress/utils'
 
 import type { IconType } from '../shared/index.js'
-import type { FontIconAssets } from './options.js'
+import type { IconAsset } from './options.js'
 
 const __dirname = getDirname(import.meta.url)
 
@@ -41,43 +41,41 @@ const isFontAwesomeLink = (link: string): boolean =>
 const isIconFontLink = (link: string): boolean =>
   /^(?:https:)?\/\/at\.alicdn\.com\/t\//.test(link)
 
-export const isFontAwesomeAssets = (assets: FontIconAssets): boolean =>
+export const isFontAwesomeAssets = (assets: IconAsset): boolean =>
   isArray(assets)
     ? assets.every(isFontAwesomeLink)
     : assets === 'fontawesome' ||
       assets === 'fontawesome-with-brands' ||
       isFontAwesomeLink(assets)
 
-export const isIconFontAssets = (assets: FontIconAssets): boolean =>
+export const isIconFontAssets = (assets: IconAsset): boolean =>
   isArray(assets) ? assets.every(isIconFontLink) : isIconFontLink(assets)
 
-export const isIconifyAssets = (assets: FontIconAssets): boolean =>
+export const isIconifyAssets = (assets: IconAsset): boolean =>
   isString(assets) && (isIconifyLink(assets) || assets === 'iconify')
 
 export const getIconInfo = (
-  assets?: FontIconAssets,
+  assets: IconAsset,
   prefix?: string,
 ): {
   iconType: IconType
   iconPrefix: string
 } => {
-  if (assets) {
-    if (isFontAwesomeAssets(assets))
-      return {
-        iconType: 'fontawesome',
-        iconPrefix: prefix ?? FONT_AWESOME_PREFIX,
-      }
-    if (isIconFontAssets(assets))
-      return { iconType: 'iconfont', iconPrefix: prefix ?? ICON_FONT_PREFIX }
-    if (isIconifyAssets(assets))
-      return { iconType: 'iconify', iconPrefix: prefix ?? '' }
-  }
+  if (isFontAwesomeAssets(assets))
+    return {
+      iconType: 'fontawesome',
+      iconPrefix: prefix ?? FONT_AWESOME_PREFIX,
+    }
+  if (isIconFontAssets(assets))
+    return { iconType: 'iconfont', iconPrefix: prefix ?? ICON_FONT_PREFIX }
+  if (isIconifyAssets(assets))
+    return { iconType: 'iconify', iconPrefix: prefix ?? '' }
 
   return { iconType: 'custom', iconPrefix: prefix ?? '' }
 }
 
-const getFontAwesomeCDNLink = (item: string): string =>
-  `https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/js/${item}.min.js`
+const getFontAwesomeCDNLink = (type: string): string =>
+  `https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/js/${type}.min.js`
 
 const getFontAwesomeLink = (link: string): LinkInfo => ({
   type: 'script',
@@ -148,7 +146,7 @@ useScriptTag(\`${actualLink}\`);\
   return []
 }
 
-export const getIconLinks = (iconAssets?: FontIconAssets): LinkInfo[] =>
+export const getIconLinks = (iconAssets?: IconAsset): LinkInfo[] =>
   (isArray(iconAssets) ? iconAssets : [iconAssets])
     .map((asset) => getIconLink(asset))
     .flat()
