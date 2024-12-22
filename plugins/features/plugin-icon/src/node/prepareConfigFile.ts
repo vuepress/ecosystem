@@ -3,8 +3,9 @@ import type { App } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 
 import type { IconType } from '../shared/index.js'
-import type { IconAsset } from './options.js'
-import { getIconLinks } from './utils.js'
+import { getIconLinks } from './getIconLinks.js'
+import { getIconPrefix } from './getIconPrefix.js'
+import type { IconPluginOptions } from './options.js'
 
 const __dirname = getDirname(import.meta.url)
 
@@ -14,11 +15,11 @@ export const CLIENT_FOLDER = ensureEndingSlash(
 
 export const prepareConfigFile = (
   app: App,
+  { assets, prefix, component = 'VPIcon' }: IconPluginOptions,
   iconType: IconType,
-  iconPrefix: string,
-  assets: IconAsset,
 ): Promise<string> => {
   const linksInfo = getIconLinks(assets)
+  const iconPrefix = getIconPrefix(iconType, prefix)
 
   return app.writeTemp(
     `icon/config.js`,
@@ -45,13 +46,13 @@ import { VPIcon } from "${CLIENT_FOLDER}index.js"
 
 export default {
   enhance: ({ app }) => {
-    if(!hasGlobalComponent("VPIcon")) {
+    if(!hasGlobalComponent("${component}")) {
       app.component(
-        "VPIcon",
+        "${component}",
         (props) =>
           h(VPIcon, {
-            prefix: "${iconPrefix}",
             type: "${iconType}",
+            prefix: "${iconPrefix}",
             ...props,
           })
       )

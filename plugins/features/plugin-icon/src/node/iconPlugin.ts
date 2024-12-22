@@ -1,15 +1,13 @@
 import { addCustomElement, addViteSsrNoExternal } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 
+import { getAssetsType } from './getAssetsType.js'
 import type { IconPluginOptions } from './options.js'
 import { prepareConfigFile } from './prepareConfigFile.js'
-import { PLUGIN_NAME, getIconInfo } from './utils.js'
+import { PLUGIN_NAME } from './utils.js'
 
-export const iconPlugin = ({
-  assets = 'iconify',
-  prefix,
-}: IconPluginOptions = {}): Plugin => {
-  const { iconType, iconPrefix } = getIconInfo(assets, prefix)
+export const iconPlugin = (options: IconPluginOptions = {}): Plugin => {
+  const iconType = options.type ?? getAssetsType(options)
 
   return {
     name: PLUGIN_NAME,
@@ -21,7 +19,6 @@ export const iconPlugin = ({
         addCustomElement(bundlerOptions, app, 'iconify-icon')
     },
 
-    clientConfigFile: (app) =>
-      prepareConfigFile(app, iconType, iconPrefix, assets),
+    clientConfigFile: (app) => prepareConfigFile(app, options, iconType),
   }
 }

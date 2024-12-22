@@ -64,18 +64,16 @@ export const VPIcon = defineComponent({
     const defaultIconClass = computed(() => `${props.prefix}${props.icon}`)
 
     const classNames = computed(() => {
-      const classList = ['vp-icon icon']
-
       if (props.type === 'fontawesome') {
-        classList.push('fa-fw fa-sm')
-        classList.push(
+        return [
+          'fa-fw fa-sm',
           props.icon.includes(' ') ? props.icon : defaultIconClass.value,
-        )
-      } else if (!isIconify.value) {
-        classList.push(defaultIconClass.value)
+        ]
       }
 
-      return classList
+      if (isIconify.value) return []
+
+      return defaultIconClass.value
     })
 
     const style = computed(() => {
@@ -96,15 +94,12 @@ export const VPIcon = defineComponent({
       props.icon
         ? h(isIconify.value ? 'iconify-icon' : 'span', {
             key: props.icon,
-            class: classNames.value,
+            class: ['vp-icon icon', ...classNames.value],
             style: style.value,
             ...(isIconify.value
               ? {
-                  mode: 'style',
-                  inline: '',
                   icon: defaultIconClass.value,
-                  width: '1em',
-                  height: '1em',
+                  inline: '',
                 }
               : {}),
           })

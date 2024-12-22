@@ -1,3 +1,5 @@
+import type { IconType } from '../shared/index.js'
+
 export type BuiltInIcon = 'fontawesome-with-brands' | 'fontawesome' | 'iconify'
 
 export type IconLink =
@@ -28,4 +30,20 @@ export interface IconPluginOptions {
    * @default ""
    */
   prefix?: string
+
+  /**
+   * Icon type, inferred from `assets` by default
+   *
+   * 图标类型，默认从 `assets` 推断
+   */
+  type?: IconType
+
+  /**
+   * Component name of icon
+   *
+   * 图标的组件名称
+   *
+   * @default "VPIcon"
+   */
+  component?: string
 }
