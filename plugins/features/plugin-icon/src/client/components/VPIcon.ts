@@ -1,6 +1,7 @@
-import { keys } from '@vuepress/helper/client'
+import { isLinkAbsolute, isLinkHttp, keys } from '@vuepress/helper/client'
 import type { CSSProperties, PropType, VNode } from 'vue'
 import { computed, defineComponent, h } from 'vue'
+import { withBase } from 'vuepress/client'
 
 import type { IconType } from '../../shared/index.js'
 import '../styles/vp-icon.css'
@@ -60,22 +61,6 @@ export const VPIcon = defineComponent({
   },
 
   setup(props) {
-    const isIconify = computed(() => props.type === 'iconify')
-    const defaultIconClass = computed(() => `${props.prefix}${props.icon}`)
-
-    const classNames = computed(() => {
-      if (props.type === 'fontawesome') {
-        return [
-          'fa-fw fa-sm',
-          props.icon.includes(' ') ? props.icon : defaultIconClass.value,
-        ]
-      }
-
-      if (isIconify.value) return []
-
-      return defaultIconClass.value
-    })
-
     const style = computed(() => {
       const styleObject: CSSProperties = {}
 
@@ -90,19 +75,49 @@ export const VPIcon = defineComponent({
       return keys(styleObject).length ? styleObject : null
     })
 
-    return (): VNode | null =>
-      props.icon
-        ? h(isIconify.value ? 'iconify-icon' : 'span', {
-            key: props.icon,
-            class: ['vp-icon icon', ...classNames.value],
-            style: style.value,
-            ...(isIconify.value
-              ? {
-                  icon: defaultIconClass.value,
+    return (): VNode | null => {
+      const { type, icon, prefix } = props
+      // if multiple classes are provided, do not add prefix
+      const iconName = icon.includes(' ') ? icon : `${prefix}${icon}`
+
+      return icon
+        ? isLinkHttp(icon)
+          ? h('img', {
+              'class': 'icon',
+              'src': icon,
+              'alt': '',
+              'aria-hidden': '',
+              'no-view': '',
+              'style': style.value,
+            })
+          : isLinkAbsolute(icon)
+            ? h('img', {
+                'class': 'icon',
+                'src': withBase(icon),
+                'alt': '',
+                'aria-hidden': '',
+                'no-view': '',
+                'style': style.value,
+              })
+            : type === 'iconify'
+              ? h('iconify-icon', {
+                  key: icon,
+                  class: 'vp-icon icon',
+                  icon: iconName,
                   inline: '',
-                }
-              : {}),
-          })
+                  style: style.value,
+                })
+              : h('span', {
+                  key: icon,
+                  class: [
+                    'vp-icon icon',
+                    type === 'fontawesome'
+                      ? `fa-fw fa-sm ${iconName}`
+                      : iconName,
+                  ],
+                  style: style.value,
+                })
         : null
+    }
   },
 })
