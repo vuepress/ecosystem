@@ -86,6 +86,4 @@ useStyleTag(\`\\
 }
 
 export const getIconLinks = (assets: IconAsset = 'iconify'): LinkInfo[] =>
-  (isArray(assets) ? assets : [assets])
-    .map((asset) => getIconLink(asset))
-    .flat()
+  (isArray(assets) ? assets : [assets]).map(getIconLink).flat()
