@@ -39,7 +39,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

@@ -41,11 +41,11 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "chokidar": "^3.6.0",
-    "vue": "^3.5.13"
+    "chokidar": "catalog:",
+    "vue": "catalog:"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

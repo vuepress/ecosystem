@@ -44,12 +44,12 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^12.0.0",
+    "@vueuse/core": "catalog:",
     "photoswipe": "^5.4.4",
-    "vue": "^3.5.13"
+    "vue": "catalog:"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

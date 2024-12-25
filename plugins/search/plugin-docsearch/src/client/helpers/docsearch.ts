@@ -11,15 +11,20 @@ declare const __DOCSEARCH_OPTIONS__: DocSearchOptions
 
 const docSearchDefineOptions: Partial<DocSearchProps> = __DOCSEARCH_OPTIONS__
 
-const docsearchOptions = ref(docSearchDefineOptions as DocSearchProps)
+type DocSearchRef = Ref<
+  DocSearchProps & {
+    locales?: Record<string, DocSearchProps>
+  }
+>
 
-const docsearchSymbol: InjectionKey<
-  Ref<
-    DocSearchProps & {
-      locales?: Record<string, DocSearchProps>
-    }
-  >
-> = Symbol(__VUEPRESS_DEV__ ? 'docsearch' : '')
+// @ts-expect-error: Types loop back
+const docsearchOptions: DocSearchRef = ref(
+  docSearchDefineOptions as DocSearchProps,
+)
+
+const docsearchSymbol: InjectionKey<Readonly<DocSearchRef>> = Symbol(
+  __VUEPRESS_DEV__ ? 'docsearch' : '',
+)
 
 export type DocSearchClientLocaleOptions = Partial<DocSearchProps>
 
@@ -42,7 +47,6 @@ export const defineDocSearchConfig = (
       docsearchOptions.value = deepAssign({}, docSearchDefineOptions, value)
     })
   } else {
-    // @ts-expect-error: Types loop back
     docsearchOptions.value = deepAssign({}, docSearchDefineOptions, options)
   }
 }
@@ -58,5 +62,6 @@ export const useDocSearchOptions = (): ComputedRef<DocSearchProps> => {
 }
 
 export const injectDocSearchConfig = (app: App): void => {
+  // @ts-expect-error: Types loop back
   app.provide(docsearchSymbol, readonly(docsearchOptions))
 }
