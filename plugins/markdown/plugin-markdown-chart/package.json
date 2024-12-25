@@ -1,0 +1,97 @@
+{
+  "name": "@vuepress/plugin-markdown-chart",
+  "version": "2.0.0-rc.56",
+  "description": "VuePress plugin - markdown chart",
+  "keywords": [
+    "vuepress-plugin",
+    "vuepress",
+    "plugin",
+    "markdown",
+    "chart",
+    "chartjs",
+    "echarts",
+    "flowchart",
+    "markmap",
+    "mermaid"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/plugins/markdown/markdown-chart.html",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/markdown/plugin-markdown-chart"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mr.Hope",
+    "email": "mister-hope@outlook.com",
+    "url": "https://mister-hope.com"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./lib/node/index.js",
+    "./client/*": "./lib/client/*",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
+    "style": "sass src:lib --embed-sources --style=compressed"
+  },
+  "dependencies": {
+    "@mdit/plugin-container": "^0.13.1",
+    "@mdit/plugin-plantuml": "^0.13.1",
+    "@vuepress/helper": "workspace:*",
+    "@vueuse/core": "^12.0.0",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "markdown-it": "^14.1.0",
+    "markmap-common": "^0.17.1"
+  },
+  "peerDependencies": {
+    "chart.js": "^4.4.5",
+    "echarts": "^5.5.1",
+    "flowchart.ts": "^3.0.1",
+    "markmap-lib": "^0.17.2",
+    "markmap-toolbar": "^0.17.2",
+    "markmap-view": "^0.17.2",
+    "mermaid": "^11.3.0",
+    "vuepress": "2.0.0-rc.19"
+  },
+  "peerDependenciesMeta": {
+    "chart.js": {
+      "optional": true
+    },
+    "echarts": {
+      "optional": true
+    },
+    "flowchart.ts": {
+      "optional": true
+    },
+    "markmap-lib": {
+      "optional": true
+    },
+    "markmap-toolbar": {
+      "optional": true
+    },
+    "markmap-view": {
+      "optional": true
+    },
+    "mermaid": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
