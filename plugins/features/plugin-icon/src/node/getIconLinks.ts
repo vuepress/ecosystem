@@ -31,14 +31,12 @@ useScriptTag(
 const getIconLink = (asset?: string): LinkInfo[] => {
   if (isString(asset)) {
     if (asset === 'fontawesome')
-      return ['solid', 'fontawesome']
+      return ['solid', 'regular', 'fontawesome']
         .map(getFontAwesomeCDNLink)
         .map(getFontAwesomeLink)
 
     if (asset === 'fontawesome-with-brands')
-      return ['brands', 'solid', 'fontawesome']
-        .map(getFontAwesomeCDNLink)
-        .map(getFontAwesomeLink)
+      return ['all'].map(getFontAwesomeCDNLink).map(getFontAwesomeLink)
 
     if (asset === 'iconify')
       return [

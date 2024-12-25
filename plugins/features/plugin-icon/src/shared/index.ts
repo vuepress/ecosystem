@@ -1,1 +1,1 @@
-export type IconType = 'custom' | 'fontawesome' | 'iconfont' | 'iconify'
+export type IconType = 'fontawesome' | 'iconfont' | 'iconify' | 'unknown'

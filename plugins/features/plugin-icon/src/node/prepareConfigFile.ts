@@ -42,10 +42,14 @@ import { useStyleTag } from "${getModulePath('@vueuse/core/index.mjs', import.me
 `
     : ''
 }\
+import { h } from "vue";
 import { VPIcon } from "${CLIENT_FOLDER}index.js"
 
 export default {
   enhance: ({ app }) => {
+${
+  component
+    ? `\
     if(!hasGlobalComponent("${component}")) {
       app.component(
         "${component}",
@@ -57,6 +61,9 @@ export default {
           })
       )
     }
+`
+    : ''
+}\
   },
   setup: () => {
 ${linksInfo.map(({ content }) => `    ${content}`).join('\n')}

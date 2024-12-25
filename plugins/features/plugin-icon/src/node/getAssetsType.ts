@@ -32,5 +32,5 @@ export const getAssetsType = ({
   if (isIconFontAssets(assets)) return 'iconfont'
   if (isIconifyAssets(assets)) return 'iconify'
 
-  return 'custom'
+  return 'unknown'
 }

@@ -15,7 +15,7 @@ export const VPIcon = defineComponent({
      */
     type: {
       type: String as PropType<IconType>,
-      default: 'custom',
+      default: 'unknown',
     },
 
     /**
@@ -75,49 +75,77 @@ export const VPIcon = defineComponent({
       return keys(styleObject).length ? styleObject : null
     })
 
+    const appendFontawesomePrefix = (icon: string): string =>
+      icon.includes('fa-') || /^fa.$/.test(icon) ? icon : `fa-${icon}`
+
     return (): VNode | null => {
       const { type, icon, prefix } = props
-      // if multiple classes are provided, do not add prefix
-      const iconName = icon.includes(' ') ? icon : `${prefix}${icon}`
 
-      return icon
-        ? isLinkHttp(icon)
-          ? h('img', {
-              'class': 'icon',
-              'src': icon,
-              'alt': '',
-              'aria-hidden': '',
-              'no-view': '',
-              'style': style.value,
-            })
-          : isLinkAbsolute(icon)
-            ? h('img', {
-                'class': 'icon',
-                'src': withBase(icon),
-                'alt': '',
-                'aria-hidden': '',
-                'no-view': '',
-                'style': style.value,
-              })
-            : type === 'iconify'
-              ? h('iconify-icon', {
-                  key: icon,
-                  class: 'vp-icon icon',
-                  icon: iconName,
-                  inline: '',
-                  style: style.value,
-                })
-              : h('span', {
-                  key: icon,
-                  class: [
-                    'vp-icon icon',
-                    type === 'fontawesome'
-                      ? `fa-fw fa-sm ${iconName}`
-                      : iconName,
-                  ],
-                  style: style.value,
-                })
-        : null
+      if (!icon) return null
+
+      if (isLinkHttp(icon)) {
+        return h('img', {
+          'class': 'vp-icon',
+          'src': icon,
+          'alt': '',
+          'aria-hidden': '',
+          'no-view': '',
+          'style': style.value,
+        })
+      }
+
+      if (isLinkAbsolute(icon)) {
+        return h('img', {
+          'class': 'vp-icon',
+          'src': withBase(icon),
+          'alt': '',
+          'aria-hidden': '',
+          'no-view': '',
+          'style': style.value,
+        })
+      }
+
+      if (type === 'iconify') {
+        return h('iconify-icon', {
+          key: icon,
+          class: 'vp-icon',
+          // if a icon set is provided, do not add prefix
+          icon: icon.includes(':') ? icon : `${prefix}${icon}`,
+          inline: '',
+          style: style.value,
+        })
+      }
+
+      if (type === 'fontawesome') {
+        const [iconType, rest] = icon.includes(':')
+          ? icon.split(':', 2)
+          : ['fas', icon]
+
+        return h('i', {
+          key: icon,
+          class: [
+            'vp-icon',
+
+            // declare icon type
+            iconType.length === 1
+              ? `fa${iconType}`
+              : appendFontawesomePrefix(iconType),
+
+            ...rest.split(' ').map(appendFontawesomePrefix),
+          ],
+          style: style.value,
+        })
+      }
+
+      return h('span', {
+        key: icon,
+        class: [
+          'vp-icon',
+          // if multiple classes are provided, do not add prefix
+          icon.includes(' ') ? icon : `${prefix}${icon}`,
+        ],
+        style: style.value,
+      })
     }
   },
 })
