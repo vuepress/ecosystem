@@ -44,14 +44,14 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^12.0.0",
+    "@vueuse/core": "catalog:",
     "cheerio": "^1.0.0",
-    "chokidar": "^3.6.0",
+    "chokidar": "catalog:",
     "slimsearch": "^2.2.2",
-    "vue": "^3.5.13"
+    "vue": "catalog:"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "devDependencies": {
     "domhandler": "5.0.3"
