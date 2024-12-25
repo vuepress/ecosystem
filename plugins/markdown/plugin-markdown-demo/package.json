@@ -1,0 +1,62 @@
+{
+  "name": "@vuepress/plugin-markdown-demo",
+  "version": "2.0.0-rc.66",
+  "description": "VuePress plugin - demo",
+  "keywords": [
+    "vuepress-plugin",
+    "vuepress",
+    "plugin",
+    "markdown",
+    "demo"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/plugins/markdown/demo.html",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/markdown/plugin-markdown-demo"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mr.Hope",
+    "email": "mister-hope@outlook.com",
+    "url": "https://mister-hope.com"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./lib/node/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
+    "style": "sass src:lib --embed-sources --style=compressed"
+  },
+  "dependencies": {
+    "@mdit/plugin-container": "^0.14.0",
+    "@mdit/plugin-demo": "^0.14.0",
+    "@types/markdown-it": "^14.1.2",
+    "@vuepress/helper": "workspace:*",
+    "@vueuse/core": "^12.0.0",
+    "balloon-css": "^1.2.0",
+    "vue": "^3.5.13"
+  },
+  "peerDependencies": {
+    "vuepress": "2.0.0-rc.19"
+  },
+  "devDependencies": {
+    "@types/babel__core": "7.20.5",
+    "markdown-it": "^14.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

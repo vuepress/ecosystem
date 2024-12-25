@@ -1,0 +1,12 @@
+:root {
+  --demo-c-accent: var(--vp-c-accent-bg);
+  --demo-c-bg-header: #eee;
+  --demo-c-bg-button: #ccc;
+  --demo-c-bg-button-hover: #aaa;
+}
+
+[data-theme='dark'] {
+  --demo-c-bg-header: #333;
+  --demo-c-bg-button: #555;
+  --demo-c-bg-button-hover: #777;
+}
