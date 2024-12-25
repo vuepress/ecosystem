@@ -55,7 +55,7 @@ export const DocSearch = defineComponent({
     const initialize = async (): Promise<void> => {
       const { default: docsearch } = await import('@docsearch/js')
 
-      const { indexName, searchParameters } = options.value
+      const { searchParameters } = options.value
 
       docsearch({
         ...docsearchShim,
@@ -63,7 +63,6 @@ export const DocSearch = defineComponent({
         container: `#${props.containerId}`,
         searchParameters: {
           ...searchParameters,
-          indexName,
           facetFilters: getFacetFilters(
             lang.value,
             (searchParameters as SearchParamsObject | undefined)?.facetFilters,
