@@ -9,7 +9,7 @@ import { Content } from 'vuepress/client'
   <main class="vp-home">
     <VPHomeHero />
     <VPHomeFeatures />
-    <div class="theme-default-content" vp-content>
+    <div vp-content>
       <Content />
     </div>
     <VPHomeFooter />
@@ -30,7 +30,7 @@ import { Content } from 'vuepress/client'
     padding-left: 1.5rem;
   }
 
-  .theme-default-content {
+  [vp-content] {
     margin: 0;
     padding: 0;
   }

@@ -189,7 +189,7 @@ const onBeforeLeave = scrollPromise.pending
     }
 
     // adjust heading margin and padding;
-    .theme-default-content {
+    [vp-content] {
       h1,
       h2,
       h3,
