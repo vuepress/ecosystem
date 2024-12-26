@@ -89,6 +89,7 @@ export const sidebarEn: SidebarOptions = {
     'catalog',
     'copy-code',
     'copyright',
+    'icon',
     'medium-zoom',
     'notice',
     'nprogress',
