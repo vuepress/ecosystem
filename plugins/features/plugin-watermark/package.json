@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-watermark",
-  "version": "2.0.0-rc.67",
+  "version": "2.0.0-rc.68",
   "description": "VuePress plugin - watermark",
   "keywords": [
     "vuepress-plugin",
@@ -36,8 +36,8 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@vueuse/core": "^12.2.0",
     "@vuepress/helper": "workspace:*",
+    "@vueuse/core": "^12.2.0",
     "vue": "^3.5.13",
     "watermark-js-plus": "^1.5.7"
   },

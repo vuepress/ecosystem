@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.68](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.67...v2.0.0-rc.68) (2024-12-27)
+
+### Bug Fixes
+
+- **plugin-photo-swipe:** avoid loading multiple instances at startup ([#317](https://github.com/vuepress/ecosystem/issues/317)) ([dae01ac](https://github.com/vuepress/ecosystem/commit/dae01ac99d5804b74158cc0ca69e6cec9686654b))
+
+### Features
+
+- rebuild built-in locale data ([#315](https://github.com/vuepress/ecosystem/issues/315)) ([5308fb4](https://github.com/vuepress/ecosystem/commit/5308fb48310d3f0c6af4adc1a98f2e6747c85f33))
+
 # [2.0.0-rc.67](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.66...v2.0.0-rc.67) (2024-12-16)
 
 ### Bug Fixes
