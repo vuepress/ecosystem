@@ -39,7 +39,7 @@
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@types/node": "^22.10.2",
     "@types/webpack-env": "^1.18.5",
-    "@vitest/coverage-istanbul": "3.0.0-beta.2",
+    "@vitest/coverage-istanbul": "3.0.0-beta.3",
     "conventional-changelog-cli": "^5.0.0",
     "cpx2": "^8.0.0",
     "cross-env": "^7.0.3",
@@ -64,8 +64,8 @@
     "tsconfig-vuepress": "^5.2.1",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
-    "vite": "~6.0.5",
-    "vitest": "3.0.0-beta.2",
+    "vite": "~6.0.6",
+    "vitest": "3.0.0-beta.3",
     "vuepress": "2.0.0-rc.19"
   },
   "packageManager": "pnpm@9.15.1",
@@ -79,8 +79,9 @@
       }
     },
     "overrides": {
-      "@vitest/mocker>vite": "^6.0.0",
-      "tsx>esbuild": "^0.24.0"
+      "@vuepress/cli>esbuild": "^0.24.2",
+      "esbuild-loader>esbuild": "^0.24.2",
+      "tsx>esbuild": "^0.24.2"
     }
   }
 }
