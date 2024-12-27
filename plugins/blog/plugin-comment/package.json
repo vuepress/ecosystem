@@ -48,15 +48,15 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "catalog:",
+    "@vueuse/core": "^12.2.0",
     "giscus": "^1.5.0",
-    "vue": "catalog:"
+    "vue": "^3.5.13"
   },
   "peerDependencies": {
     "@waline/client": "^3.4.1",
     "artalk": "^2.9.0",
     "twikoo": "^1.6.39",
-    "vuepress": "catalog:"
+    "vuepress": "2.0.0-rc.19"
   },
   "peerDependenciesMeta": {
     "@waline/client": {

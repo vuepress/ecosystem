@@ -38,11 +38,11 @@
     "style": "sass src:lib --embed-sources --style=compressed"
   },
   "dependencies": {
-    "chokidar": "catalog:",
-    "vue": "catalog:"
+    "chokidar": "^3.6.0",
+    "vue": "^3.5.13"
   },
   "peerDependencies": {
-    "vuepress": "catalog:"
+    "vuepress": "2.0.0-rc.19"
   },
   "publishConfig": {
     "access": "public"

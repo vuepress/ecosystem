@@ -36,13 +36,13 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@vueuse/core": "catalog:",
+    "@vueuse/core": "^12.2.0",
     "@vuepress/helper": "workspace:*",
-    "vue": "catalog:",
+    "vue": "^3.5.13",
     "watermark-js-plus": "^1.5.7"
   },
   "peerDependencies": {
-    "vuepress": "catalog:"
+    "vuepress": "2.0.0-rc.19"
   },
   "publishConfig": {
     "access": "public"

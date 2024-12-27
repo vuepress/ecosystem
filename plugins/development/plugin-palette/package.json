@@ -41,10 +41,10 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "chokidar": "catalog:"
+    "chokidar": "^3.6.0"
   },
   "peerDependencies": {
-    "vuepress": "catalog:"
+    "vuepress": "2.0.0-rc.19"
   },
   "publishConfig": {
     "access": "public"

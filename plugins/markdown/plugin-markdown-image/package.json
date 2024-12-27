@@ -55,7 +55,7 @@
     "@vuepress/helper": "workspace:*"
   },
   "peerDependencies": {
-    "vuepress": "catalog:"
+    "vuepress": "2.0.0-rc.19"
   },
   "publishConfig": {
     "access": "public"

@@ -41,8 +41,8 @@
     "style": "sass src:lib --embed-sources --style=compressed"
   },
   "peerDependencies": {
-    "@vueuse/core": "catalog:",
-    "vuepress": "catalog:"
+    "@vueuse/core": "^12.2.0",
+    "vuepress": "2.0.0-rc.19"
   },
   "peerDependenciesMeta": {
     "@vueuse/core": {

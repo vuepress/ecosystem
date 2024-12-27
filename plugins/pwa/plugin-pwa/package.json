@@ -43,19 +43,19 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "catalog:",
+    "@vueuse/core": "^12.2.0",
     "mitt": "^3.0.1",
     "register-service-worker": "^1.7.2",
-    "vue": "catalog:",
+    "vue": "^3.5.13",
     "workbox-build": "^7.3.0"
   },
   "peerDependencies": {
-    "vuepress": "catalog:"
+    "vuepress": "2.0.0-rc.19"
   },
   "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
-    "rollup": "catalog:"
+    "rollup": "^4.29.1"
   }
 }
