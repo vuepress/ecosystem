@@ -146,7 +146,7 @@ So copyright message triggered on another site also points to your preferred sit
   }
 
   interface CopyrightPluginLocaleConfig {
-    [localePath: string]: CopyrightPluginLocaleData
+    [localePath: string]: Partial<CopyrightPluginLocaleData>
   }
   ```
 

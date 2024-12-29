@@ -1,11 +1,9 @@
 import RedirectModal from '@vuepress/plugin-redirect/modal'
 import { h } from 'vue'
 import { defineClientConfig } from 'vuepress/client'
-import type {
-  RedirectBehaviorConfig,
-  RedirectPluginLocaleConfig,
-} from '../shared/index.js'
+import type { RedirectBehaviorConfig } from '../shared/index.js'
 import { setupDevServerRedirect, setupRedirect } from './composables/index.js'
+import type { RedirectPluginLocaleConfig } from './types.js'
 
 import './styles/vars.css'
 

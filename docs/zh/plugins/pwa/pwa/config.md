@@ -241,7 +241,7 @@
   }
 
   interface PwaPluginLocaleConfig {
-    [localePath: string]: PwaPluginLocaleData
+    [localePath: string]: Partial<PwaPluginLocaleData>
   }
   ```
 

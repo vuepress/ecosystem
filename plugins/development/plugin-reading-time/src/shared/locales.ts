@@ -1,5 +1,3 @@
-import type { ExactLocaleConfig } from '@vuepress/helper/shared'
-
 /**
  * Multi language config for `@vuepress/plugin-reading-time` plugin
  *
@@ -27,6 +25,3 @@ export interface ReadingTimePluginLocaleData {
    */
   time: string
 }
-
-export type ReadingTimePluginLocaleConfig =
-  ExactLocaleConfig<ReadingTimePluginLocaleData>

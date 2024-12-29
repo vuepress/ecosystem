@@ -1,5 +1,3 @@
-import type { ExactLocaleConfig } from '@vuepress/helper/shared'
-
 export interface CopyCodePluginLocaleData {
   /**
    * Copy text
@@ -15,6 +13,3 @@ export interface CopyCodePluginLocaleData {
    */
   copied: string
 }
-
-export type CopyCodePluginLocaleConfig =
-  ExactLocaleConfig<CopyCodePluginLocaleData>

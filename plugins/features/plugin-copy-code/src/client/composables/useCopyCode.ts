@@ -7,7 +7,7 @@ import {
 } from '@vueuse/core'
 import { computed, nextTick } from 'vue'
 import { usePageData } from 'vuepress/client'
-import type { CopyCodePluginLocaleConfig } from '../../shared/index.js'
+import type { CopyCodePluginLocaleConfig } from '../types.js'
 
 import '../styles/copy-code.css'
 import '../styles/vars.css'

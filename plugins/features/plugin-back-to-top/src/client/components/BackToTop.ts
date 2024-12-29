@@ -1,3 +1,4 @@
+import type { ExactLocaleConfig } from '@vuepress/helper/client'
 import { useLocaleConfig } from '@vuepress/helper/client'
 import { useElementSize, useWindowScroll, useWindowSize } from '@vueuse/core'
 import {
@@ -9,11 +10,11 @@ import {
   shallowRef,
 } from 'vue'
 import { usePageFrontmatter } from 'vuepress/client'
-import type { BackToTopPluginLocaleConfig } from '../../shared/index.js'
+import type { BackToTopPluginLocaleData } from '../../shared/index.js'
 
 import '../styles/back-to-top.css'
 
-declare const __BACK_TO_TOP_LOCALES__: BackToTopPluginLocaleConfig
+declare const __BACK_TO_TOP_LOCALES__: ExactLocaleConfig<BackToTopPluginLocaleData>
 declare const __BACK_TO_TOP_PROGRESS__: boolean
 declare const __BACK_TO_TOP_THRESHOLD__: number
 

@@ -1,10 +1,7 @@
-import type { ExactLocaleConfig } from '@vuepress/helper'
 import type { WalineInitOptions, WalineLocale } from '@waline/client'
 import type { BaseCommentPluginOptions } from './base.js'
 
 export type WalineLocaleData = Partial<WalineLocale>
-
-export type WalineLocaleConfig = ExactLocaleConfig<WalineLocaleData>
 
 export interface WalineOptions
   extends BaseCommentPluginOptions,

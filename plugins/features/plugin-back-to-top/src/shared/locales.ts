@@ -1,5 +1,3 @@
-import type { ExactLocaleConfig } from '@vuepress/helper/shared'
-
 export interface BackToTopPluginLocaleData {
   /**
    * Back to top button label text
@@ -8,6 +6,3 @@ export interface BackToTopPluginLocaleData {
    */
   backToTop: string
 }
-
-export type BackToTopPluginLocaleConfig =
-  ExactLocaleConfig<BackToTopPluginLocaleData>

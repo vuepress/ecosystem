@@ -4,7 +4,8 @@ import { useEventListener } from '@vueuse/core'
 import type { PropType, VNode } from 'vue'
 import { defineComponent, h, onMounted, shallowRef } from 'vue'
 import { withBase } from 'vuepress/client'
-import type { AppManifest, PwaPluginLocaleConfig } from '../../shared/index.js'
+import type { AppManifest } from '../../shared/index.js'
+import type { PwaPluginLocaleConfig } from '../types.js'
 import { ArrowLeftIcon, ArrowRightIcon, CloseIcon } from './icons.js'
 
 interface InstallPromptEvent extends Event {
