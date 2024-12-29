@@ -1,4 +1,4 @@
-import { getFullLocaleConfig } from 'tools/helper/lib/node/index.js'
+import { getFullLocaleConfig } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import type { DocSearchOptions } from '../shared/index.js'
 import { docSearchLocaleInfo } from './locales.js'
