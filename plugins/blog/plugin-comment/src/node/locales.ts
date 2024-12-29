@@ -28,13 +28,6 @@ export const walineLocalesInfo: DefaultLocaleInfo<WalineLocaleData> = [
     },
   ],
   [
-    ['de-AT'],
-    {
-      placeholder:
-        'Schreibe ein Kommentar (Geben Sie die E-Mail-Adresse ein, um eine E-Mail-Benachrichtigung zu erhalten, wenn Sie eine Antwort erhalten)',
-    },
-  ],
-  [
     ['vi', 'vi-VN'],
     {
       placeholder:
