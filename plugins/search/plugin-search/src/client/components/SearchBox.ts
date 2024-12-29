@@ -1,7 +1,6 @@
 import type { PropType } from 'vue'
 import { computed, defineComponent, h, ref, toRefs } from 'vue'
 import { useRouteLocale, useRouter } from 'vuepress/client'
-import type { LocaleConfig } from 'vuepress/shared'
 import type { HotKeyOptions } from '../../shared/index.js'
 import type { SearchSuggestion } from '../composables/index.js'
 import {
@@ -10,17 +9,14 @@ import {
   useSearchSuggestions,
   useSuggestionsFocus,
 } from '../composables/index.js'
-
-export type SearchBoxLocales = LocaleConfig<{
-  placeholder: string
-}>
+import type { SearchPluginLocaleConfig } from '../types.js'
 
 export const SearchBox = defineComponent({
   name: 'SearchBox',
 
   props: {
     locales: {
-      type: Object as PropType<SearchBoxLocales>,
+      type: Object as PropType<SearchPluginLocaleConfig>,
       default: () => ({}),
     },
 

@@ -1014,6 +1014,9 @@ importers:
 
   plugins/search/plugin-search:
     dependencies:
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../../tools/helper
       chokidar:
         specifier: ^3.6.0
         version: 3.6.0
