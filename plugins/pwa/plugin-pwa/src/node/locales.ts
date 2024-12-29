@@ -40,7 +40,7 @@ export const pwaLocaleInfo: DefaultLocaleInfo<PwaPluginLocaleData> = [
     },
   ],
   [
-    ['zh', 'zh-TW', 'zh-Hant'],
+    ['zh-TW', 'zh-Hant'],
     {
       install: '安裝',
       iOSInstall: '點擊分享按鈕然後點擊“添加到主畫面”',

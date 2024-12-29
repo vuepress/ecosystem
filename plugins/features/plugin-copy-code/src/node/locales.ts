@@ -7,7 +7,7 @@ import type { CopyCodePluginLocaleData } from '../shared/index.js'
 export const copyCodeLocaleInfo: DefaultLocaleInfo<CopyCodePluginLocaleData> = [
   [['en', 'en-US'], { copy: 'Copy code', copied: 'Copied' }],
   [['zh', 'zh-CN', 'zh-Hans'], { copy: '复制代码', copied: '已复制' }],
-  [['zh', 'zh-TW', 'zh-Hant'], { copy: '複製代碼', copied: '已複製' }],
+  [['zh-TW', 'zh-Hant'], { copy: '複製代碼', copied: '已複製' }],
   [['de', 'de-DE'], { copy: 'Kopiere den Code.', copied: 'Kopiert' }],
   [['de-AT'], { copy: 'Kopiere den Code.', copied: 'Kopierter' }],
   [['vi', 'vi-VN'], { copy: 'Sao chép code', copied: 'Đã sao chép' }],

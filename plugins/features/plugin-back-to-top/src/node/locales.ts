@@ -8,7 +8,7 @@ export const backToTopLocaleInfo: DefaultLocaleInfo<BackToTopPluginLocaleData> =
   [
     [['en', 'en-US'], { backToTop: 'Back to top' }],
     [['zh', 'zh-CN', 'zh-Hans'], { backToTop: '返回顶部' }],
-    [['zh', 'zh-TW', 'zh-Hant'], { backToTop: '返回頂部' }],
+    [['zh-TW', 'zh-Hant'], { backToTop: '返回頂部' }],
     [['de', 'de-DE'], { backToTop: 'Zurück nach oben.' }],
     [['de-AT'], { backToTop: 'Zurück nach oben.' }],
     [['vi', 'vi-VN'], { backToTop: 'Trở lại đầu trang' }],

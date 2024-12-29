@@ -27,7 +27,7 @@ export const hintLocaleInfo: DefaultLocaleInfo<MarkdownHintPluginLocaleData> = [
     },
   ],
   [
-    ['zh', 'zh-TW', 'zh-Hant'],
+    ['zh-TW', 'zh-Hant'],
     {
       important: '重要',
       info: '相關信息',

@@ -29,7 +29,7 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
       },
     ],
     [
-      ['zh', 'zh-TW', 'zh-Hant'],
+      ['zh-TW', 'zh-Hant'],
       {
         close: '關閉',
         download: '下載圖片',

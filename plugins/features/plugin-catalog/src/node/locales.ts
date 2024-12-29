@@ -7,7 +7,7 @@ import type { CatalogPluginLocaleData } from '../shared/index.js'
 export const catalogLocaleInfo: DefaultLocaleInfo<CatalogPluginLocaleData> = [
   [['en', 'en-US'], { title: 'Catalog', empty: 'No catalog' }],
   [['zh', 'zh-CN', 'zh-Hans'], { title: '目录', empty: '暂无目录' }],
-  [['zh', 'zh-TW', 'zh-Hant'], { title: '目錄', empty: '暫無目錄' }],
+  [['zh-TW', 'zh-Hant'], { title: '目錄', empty: '暫無目錄' }],
   [['de', 'de-DE'], { title: 'Katalog', empty: 'Kein Katalog' }],
   [['de-AT'], { title: 'Katalog', empty: 'Kein Katalog' }],
   [['vi', 'vi-VN'], { title: 'Danh mục', empty: 'Không có danh mục' }],

@@ -44,7 +44,7 @@ export const slimsearchLocaleInfo: DefaultLocaleInfo<SlimSearchLocaleData> = [
     },
   ],
   [
-    ['zh', 'zh-TW', 'zh-Hant'],
+    ['zh-TW', 'zh-Hant'],
     {
       cancel: '取消',
       placeholder: '搜索',
@@ -351,7 +351,7 @@ export const slimsearchLocaleInfo: DefaultLocaleInfo<SlimSearchLocaleData> = [
     ['id', 'id-ID'],
     {
       cancel: 'Batal',
-      placeholder: 'Cari sesuatu 🔎',
+      placeholder: 'Cari sesuatu',
       search: 'Cari',
       searching: 'Sedang mencari',
       defaultTitle: 'Dokumentasi',

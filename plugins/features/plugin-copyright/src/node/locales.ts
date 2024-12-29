@@ -23,7 +23,7 @@ export const copyrightLocaleInfo: DefaultLocaleInfo<CopyrightPluginLocaleData> =
       },
     ],
     [
-      ['zh', 'zh-TW', 'zh-Hant'],
+      ['zh-TW', 'zh-Hant'],
       {
         author: '著作權歸:author所有',
         license: '基於:license協議',
