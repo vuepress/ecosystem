@@ -107,7 +107,7 @@ In preview mode, you can:
   }
 
   interface PhotoSwipePluginLocaleConfig {
-    [localePath: string]: PhotoSwipePluginLocaleData
+    [localePath: string]: Partial<PhotoSwipePluginLocaleData>
   }
   ```
 

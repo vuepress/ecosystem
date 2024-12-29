@@ -152,7 +152,7 @@ order -1 的项目
   }
 
   interface CatalogPluginLocaleConfig {
-    [localePath: string]: CatalogPluginLocaleData
+    [localePath: string]: Partial<CatalogPluginLocaleData>
   }
   ```
 

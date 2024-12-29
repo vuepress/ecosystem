@@ -1,8 +1,8 @@
 import { useLocaleConfig } from '@vuepress/helper/client'
 import type { PropType, SlotsType, VNode } from 'vue'
 import { Transition, defineComponent, h, onMounted, ref } from 'vue'
-import type { PwaPluginLocaleConfig } from '../../shared/index.js'
 import { usePwaEvent } from '../composables/index.js'
+import type { PwaPluginLocaleConfig } from '../types.js'
 import { UpdateIcon } from './icons.js'
 
 import '../styles/popup.css'

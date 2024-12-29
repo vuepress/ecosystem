@@ -254,7 +254,7 @@ By default, the plugin will output to `.vuepress/redirect` directory under sourc
   }
 
   interface RedirectPluginLocaleConfig {
-    [localePath: string]: RedirectPluginLocaleData
+    [localePath: string]: Partial<RedirectPluginLocaleData>
   }
   ```
 

@@ -107,7 +107,7 @@ export default {
   }
 
   interface PhotoSwipePluginLocaleConfig {
-    [localePath: string]: PhotoSwipePluginLocaleData
+    [localePath: string]: Partial<PhotoSwipePluginLocaleData>
   }
   ```
 

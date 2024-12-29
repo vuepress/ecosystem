@@ -243,7 +243,7 @@ Special settings for better supporting Safari, ignoring these options are safe.
   }
 
   interface PwaPluginLocaleConfig {
-    [localePath: string]: PwaPluginLocaleData
+    [localePath: string]: Partial<PwaPluginLocaleData>
   }
   ```
 

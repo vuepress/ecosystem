@@ -1,3 +1,4 @@
+import type { ExactLocaleConfig } from '@vuepress/helper/client'
 import { LoadingIcon, useLocaleConfig, wait } from '@vuepress/helper/client'
 import { watchImmediate } from '@vueuse/core'
 import { pageviewCount } from '@waline/client/pageview'
@@ -13,7 +14,7 @@ import {
 import { usePageFrontmatter, usePageLang } from 'vuepress/client'
 import type {
   CommentPluginFrontmatter,
-  WalineLocaleConfig,
+  WalineLocaleData,
 } from '../../shared/index.js'
 import { useWalineOptions } from '../helpers/index.js'
 
@@ -21,7 +22,7 @@ import '@waline/client/waline.css'
 import '../styles/waline.css'
 
 declare const WALINE_META: boolean
-declare const WALINE_LOCALES: WalineLocaleConfig
+declare const WALINE_LOCALES: ExactLocaleConfig<WalineLocaleData>
 
 const walineLocales = WALINE_LOCALES
 

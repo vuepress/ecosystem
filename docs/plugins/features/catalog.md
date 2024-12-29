@@ -154,7 +154,7 @@ Project with order -1
   }
 
   interface CatalogPluginLocaleConfig {
-    [localePath: string]: CatalogPluginLocaleData
+    [localePath: string]: Partial<CatalogPluginLocaleData>
   }
   ```
 

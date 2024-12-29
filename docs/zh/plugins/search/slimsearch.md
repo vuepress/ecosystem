@@ -386,7 +386,7 @@ export default defineUserConfig({
   }
 
   interface SlimSearchLocaleConfig {
-    [localePath: string]: SlimSearchLocaleData
+    [localePath: string]: Partial<SlimSearchLocaleData>
   }
   ```
 

@@ -1,5 +1,3 @@
-import type { ExactLocaleConfig } from '@vuepress/helper'
-
 export interface PhotoSwipePluginLocaleData {
   /**
    * Close button label text
@@ -43,6 +41,3 @@ export interface PhotoSwipePluginLocaleData {
    */
   arrowNext: string
 }
-
-export type PhotoSwipePluginLocaleConfig =
-  ExactLocaleConfig<PhotoSwipePluginLocaleData>

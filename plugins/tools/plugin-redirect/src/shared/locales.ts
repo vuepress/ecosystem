@@ -1,5 +1,3 @@
-import type { ExactLocaleConfig } from '@vuepress/helper/shared'
-
 export interface RedirectPluginLocaleData {
   /**
    * Language name
@@ -36,6 +34,3 @@ export interface RedirectPluginLocaleData {
    */
   remember: string
 }
-
-export type RedirectPluginLocaleConfig =
-  ExactLocaleConfig<RedirectPluginLocaleData>

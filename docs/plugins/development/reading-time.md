@@ -100,7 +100,7 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "
   }
 
   interface ReadingTimePluginLocaleConfig {
-    [localePath: string]: ReadingTimePluginLocaleData
+    [localePath: string]: Partial<ReadingTimePluginLocaleData>
   }
   ```
 

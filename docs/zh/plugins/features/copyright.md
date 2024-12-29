@@ -148,7 +148,7 @@ export default {
   }
 
   interface CopyrightPluginLocaleConfig {
-    [localePath: string]: CopyrightPluginLocaleData
+    [localePath: string]: Partial<CopyrightPluginLocaleData>
   }
   ```
 
