@@ -82,25 +82,6 @@ export const slimsearchLocaleInfo: DefaultLocaleInfo<SlimSearchLocaleData> = [
     },
   ],
   [
-    ['de-AT'],
-    {
-      cancel: 'Abbrechen',
-      placeholder: 'Suche',
-      search: 'Suche',
-      searching: 'Suche',
-      defaultTitle: 'Dokumentation',
-      select: 'auswählen',
-      navigate: 'wechseln',
-      autocomplete: 'automatisch vervollständigen',
-      exit: 'schließen',
-      queryHistory: 'Suchverlauf',
-      resultHistory: 'Ergebnisverlauf',
-      emptyHistory: 'Suchverlauf leeren',
-      emptyResult: 'Keine Ergebnisse gefunden',
-      loading: 'Suchindex wird geladen...',
-    },
-  ],
-  [
     ['vi', 'vi-VN'],
     {
       cancel: 'Hủy',

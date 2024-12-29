@@ -9,7 +9,6 @@ export const catalogLocaleInfo: DefaultLocaleInfo<CatalogPluginLocaleData> = [
   [['zh', 'zh-CN', 'zh-Hans'], { title: '目录', empty: '暂无目录' }],
   [['zh-TW', 'zh-Hant'], { title: '目錄', empty: '暫無目錄' }],
   [['de', 'de-DE'], { title: 'Katalog', empty: 'Kein Katalog' }],
-  [['de-AT'], { title: 'Katalog', empty: 'Kein Katalog' }],
   [['vi', 'vi-VN'], { title: 'Danh mục', empty: 'Không có danh mục' }],
   [['uk'], { title: 'Каталог', empty: 'Немає каталогу' }],
   [['ru', 'ru-RU'], { title: 'Каталог', empty: 'Нет каталога' }],

@@ -39,14 +39,6 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       },
     ],
     [
-      ['de-AT'],
-      {
-        word: 'Um die $word Wörter',
-        less1Minute: 'Weniger als eine Minute',
-        time: 'Ungefähr $time min',
-      },
-    ],
-    [
       ['vi', 'vi-VN'],
       {
         word: 'Khoảng $word từ',

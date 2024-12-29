@@ -51,17 +51,6 @@ export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData>
       },
     ],
     [
-      ['de-AT'],
-      {
-        close: 'Schließen',
-        download: 'Download',
-        fullscreen: 'Toggle fullscreen',
-        zoom: 'Rein / rauszoomen',
-        arrowPrev: 'Zurück (Pfeil links)',
-        arrowNext: 'Weiter (Pfeil rechts)',
-      },
-    ],
-    [
       ['vi', 'vi-VN'],
       {
         close: 'Đóng',

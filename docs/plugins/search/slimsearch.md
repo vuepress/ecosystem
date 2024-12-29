@@ -402,7 +402,6 @@ Multilingual configuration of the search plugin.
 - **Traditional Chinese** (zh-TW)
 - **English (United States)** (en-US)
 - **German** (de-DE)
-- **German (Australia)** (de-AT)
 - **Russian** (ru-RU)
 - **Ukrainian** (uk-UA)
 - **Vietnamese** (vi-VN)

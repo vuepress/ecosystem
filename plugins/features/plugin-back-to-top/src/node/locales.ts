@@ -10,7 +10,6 @@ export const backToTopLocaleInfo: DefaultLocaleInfo<BackToTopPluginLocaleData> =
     [['zh', 'zh-CN', 'zh-Hans'], { backToTop: '返回顶部' }],
     [['zh-TW', 'zh-Hant'], { backToTop: '返回頂部' }],
     [['de', 'de-DE'], { backToTop: 'Zurück nach oben.' }],
-    [['de-AT'], { backToTop: 'Zurück nach oben.' }],
     [['vi', 'vi-VN'], { backToTop: 'Trở lại đầu trang' }],
     [['uk'], { backToTop: 'Повернутися до початку' }],
     [['ru', 'ru-RU'], { backToTop: 'Вернуться к началу' }],

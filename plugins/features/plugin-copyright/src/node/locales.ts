@@ -111,14 +111,6 @@ export const copyrightLocaleInfo: DefaultLocaleInfo<CopyrightPluginLocaleData> =
       },
     ],
     [
-      ['de-AT'],
-      {
-        author: 'Copyright by :author',
-        license: 'Lizenziert unter :license',
-        link: ':link',
-      },
-    ],
-    [
       ['hu', 'hu-HU'],
       {
         author: 'Szerzői jog :author',
