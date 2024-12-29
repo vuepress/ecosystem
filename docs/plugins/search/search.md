@@ -32,13 +32,11 @@ However, when your site has a large number of pages, the size of search index fi
 
 ### locales
 
-- Type: `Record<string, { placeholder: string }>`
+- Type: `Record<string, { placeholder?: string }>`
 
 - Details:
 
   The text of the search box in different locales.
-
-  If this option is not specified, it will fallback to default text.
 
 - Example:
 
