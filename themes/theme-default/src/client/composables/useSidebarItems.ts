@@ -28,16 +28,15 @@ export type HeadersRef = Ref<MenuItem[]>
 export const headersRef: HeadersRef = ref([])
 
 onMounted(() => {
-  const router = useRouter();
+  const router = useRouter()
   router.beforeEach((to, from) => {
     if (to.path !== from.path) {
-      headersRef.value = [];
+      headersRef.value = []
     }
-  });
-});
+  })
+})
 
 export const setupHeaders = (): void => {
-  const router = useRouter()
   const themeLocale = useThemeLocaleData()
   const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
   const levels = computed(
