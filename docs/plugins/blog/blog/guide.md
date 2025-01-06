@@ -167,7 +167,7 @@ So with node side settings above, you can get information about "tag" and "star"
 
 ```vue
 <script setup lang="ts">
-import { useBlogCategory } from '@vuepress/plugin-blog'
+import { useBlogCategory } from '@vuepress/plugin-blog/client'
 import { RouteLink } from 'vuepress/client'
 
 const categoryMap = useBlogCategory('tag')
@@ -194,7 +194,7 @@ const categoryMap = useBlogCategory('tag')
 
 ```vue
 <script setup lang="ts">
-import { useBlogCategory } from '@vuepress/plugin-blog'
+import { useBlogCategory } from '@vuepress/plugin-blog/client'
 
 const categoryMap = useBlogCategory('tag')
 </script>
