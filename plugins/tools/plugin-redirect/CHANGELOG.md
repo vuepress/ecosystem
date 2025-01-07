@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.69](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.68...v2.0.0-rc.69) (2025-01-07)
+
+### Bug Fixes
+
+- fix zh-TW locale ([764a18c](https://github.com/vuepress/ecosystem/commit/764a18cf07638d77d932e8d43cf854f540ecb2ca))
+
 # [2.0.0-rc.68](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.67...v2.0.0-rc.68) (2024-12-27)
 
 ### Features

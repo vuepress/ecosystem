@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.69](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.68...v2.0.0-rc.69) (2025-01-07)
+
+### Bug Fixes
+
+- fix zh-TW locale ([764a18c](https://github.com/vuepress/ecosystem/commit/764a18cf07638d77d932e8d43cf854f540ecb2ca))
+
+### Features
+
+- **plugin-docsearch:** add built-in locale ([#323](https://github.com/vuepress/ecosystem/issues/323)) ([cc734fb](https://github.com/vuepress/ecosystem/commit/cc734fba5adcd3f003db84d71723066695c501cf))
+- **plugin-search:** add built-in locale data ([#325](https://github.com/vuepress/ecosystem/issues/325)) ([bdb9902](https://github.com/vuepress/ecosystem/commit/bdb9902d815cb0f5cb95c3e18469444cebe11b89))
+- remove de-AT if possible ([#324](https://github.com/vuepress/ecosystem/issues/324)) ([3c44f45](https://github.com/vuepress/ecosystem/commit/3c44f4500713fb309324fa50ebd7a5ddf6ce3eb9))
+
 # [2.0.0-rc.68](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.67...v2.0.0-rc.68) (2024-12-27)
 
 ### Bug Fixes
