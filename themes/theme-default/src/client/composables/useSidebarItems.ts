@@ -1,3 +1,6 @@
+import { isLinkInternal } from '@theme/isLinkInternal'
+import { resolveAutoLink } from '@theme/resolveAutoLink'
+import { resolvePrefix } from '@theme/resolvePrefix'
 import { useThemeLocaleData } from '@theme/useThemeData'
 import type { MenuItem } from '@vuepress/helper/client'
 import { getHeaders, keys, startsWith } from '@vuepress/helper/client'
@@ -21,7 +24,6 @@ import type {
   SidebarOptions,
 } from '../../shared/index.js'
 import type { SidebarHeaderItem, SidebarItem } from '../typings.js'
-import { getAutoLink, isLinkInternal, resolvePrefix } from '../utils/index.js'
 
 export type HeadersRef = Ref<MenuItem[]>
 
@@ -104,12 +106,12 @@ export const resolveArraySidebarItems = (
     pathPrefix: string,
   ): SidebarItem => {
     const childItem: SidebarItemOptions = isString(item)
-      ? getAutoLink(resolvePrefix(pathPrefix, item))
+      ? resolveAutoLink(resolvePrefix(pathPrefix, item))
       : isString(item.link)
         ? {
             ...item,
             link: isLinkInternal(item.link)
-              ? getAutoLink(resolvePrefix(pathPrefix, item.link)).link
+              ? resolveAutoLink(resolvePrefix(pathPrefix, item.link)).link
               : item.link,
           }
         : item

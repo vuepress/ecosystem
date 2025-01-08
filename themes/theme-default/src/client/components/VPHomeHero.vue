@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import VPAutoLink from '@theme/VPAutoLink.vue'
 import { useDarkMode } from '@theme/useDarkMode'
 import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
 import {
-  AutoLink,
   ClientOnly,
   usePageFrontmatter,
   useSiteLocaleData,
@@ -48,10 +48,9 @@ const actions = computed(() => {
     return []
   }
 
-  return frontmatter.value.actions.map(({ text, link, type = 'primary' }) => ({
-    text,
-    link,
+  return frontmatter.value.actions.map(({ type = 'primary', ...rest }) => ({
     type,
+    ...rest,
   }))
 })
 
@@ -88,7 +87,7 @@ const HomeHeroImage: FunctionalComponent = () => {
     </p>
 
     <p v-if="actions.length" class="vp-hero-actions">
-      <AutoLink
+      <VPAutoLink
         v-for="action in actions"
         :key="action.text"
         class="vp-hero-action-button"

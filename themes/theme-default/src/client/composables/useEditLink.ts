@@ -1,3 +1,4 @@
+import { resolveEditLink } from '@theme/resolveEditLink'
 import { useThemeLocaleData } from '@theme/useThemeData'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
@@ -7,7 +8,6 @@ import type {
   DefaultThemeNormalPageFrontmatter,
   DefaultThemePageData,
 } from '../../shared/index.js'
-import { resolveEditLink } from '../utils/index.js'
 
 export const useEditLink = (): ComputedRef<AutoLinkConfig | null> => {
   const themeLocale = useThemeLocaleData()

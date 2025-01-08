@@ -1,5 +1,5 @@
 import { resolveRoute } from 'vuepress/client'
-import type { AutoLinkOptions } from '../../shared'
+import type { AutoLinkOptions } from '../../shared/index.js'
 
 /**
  * Resolve AutoLink props from string
@@ -8,7 +8,7 @@ import type { AutoLinkOptions } from '../../shared'
  * - Input: '/README.md'
  * - Output: { text: 'Home', link: '/' }
  */
-export const getAutoLink = (
+export const resolveAutoLink = (
   config: string,
   currentPath?: string,
 ): AutoLinkOptions => {

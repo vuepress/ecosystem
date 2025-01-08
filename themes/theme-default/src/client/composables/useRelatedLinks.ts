@@ -1,3 +1,4 @@
+import { resolveAutoLink } from '@theme/resolveAutoLink'
 import { useSidebarItems } from '@theme/useSidebarItems'
 import { useThemeLocaleData } from '@theme/useThemeData'
 import type { ComputedRef } from 'vue'
@@ -9,7 +10,6 @@ import type {
   DefaultThemeNormalPageFrontmatter,
 } from '../../shared/index.js'
 import type { SidebarItem } from '../typings.js'
-import { getAutoLink } from '../utils/index.js'
 
 const resolveFromFrontmatterConfig = (
   config: AutoLinkOptions | string | false | undefined,
@@ -20,13 +20,13 @@ const resolveFromFrontmatterConfig = (
   }
 
   if (isString(config)) {
-    return getAutoLink(config, currentPath)
+    return resolveAutoLink(config, currentPath)
   }
 
   if (isPlainObject(config)) {
     return {
       ...config,
-      link: getAutoLink(config.link, currentPath).link,
+      link: resolveAutoLink(config.link, currentPath).link,
     }
   }
 
