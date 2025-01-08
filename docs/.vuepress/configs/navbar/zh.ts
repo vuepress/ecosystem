@@ -4,6 +4,7 @@ export const navbarZh: NavbarOptions = [
   {
     text: '主题',
     prefix: '/zh/themes/',
+    icon: 'palette',
     children: [
       {
         text: '主题指南',
@@ -29,6 +30,7 @@ export const navbarZh: NavbarOptions = [
   },
   {
     text: '插件',
+    icon: 'unplug',
     prefix: '/zh/plugins/',
     children: [
       {

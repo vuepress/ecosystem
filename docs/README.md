@@ -1,13 +1,16 @@
 ---
 home: true
 title: Home
+icon: home
 heroImage: /images/hero.png
 actions:
   - text: Themes
+    icon: palette
     link: ./themes/
     type: primary
 
   - text: Plugins
+    icon: unplug
     link: ./plugins/
     type: primary
 

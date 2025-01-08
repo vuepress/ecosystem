@@ -2,10 +2,10 @@
 import VPAutoLink from '@theme/VPAutoLink.vue'
 import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
 import { isActiveSidebarItem } from '@theme/isActiveSidebarItem'
+import type { SidebarItem } from '@vuepress/theme-default/client'
 import { useToggle } from '@vueuse/core'
 import { computed, nextTick, onBeforeUnmount, toRefs } from 'vue'
 import { useRoute, useRouter } from 'vuepress/client'
-import type { SidebarItem } from '../typings.js'
 
 const props = withDefaults(
   defineProps<{
@@ -70,6 +70,7 @@ onBeforeUnmount(() => {
       @click="onClick"
       @keydown.enter="onClick"
     >
+      <VPIcon v-if="item.icon" :icon="item.icon" />
       {{ item.text }}
       <span
         v-if="collapsible"
@@ -92,8 +93,8 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="scss">
-@use '../styles/mixins';
-@use '../styles/variables' as *;
+@use '@vuepress/theme-default/styles/mixins';
+@use '@vuepress/theme-default/styles/variables' as *;
 
 .vp-sidebar-item {
   border-left: 0.25rem solid transparent;
@@ -162,6 +163,10 @@ onBeforeUnmount(() => {
     border-left-color: var(--vp-c-accent);
     color: var(--vp-c-accent);
     font-weight: 600;
+  }
+
+  .vp-icon {
+    margin-inline-end: 0.25em;
   }
 }
 

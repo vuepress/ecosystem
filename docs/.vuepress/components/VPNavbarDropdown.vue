@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import VPAutoLink from '@theme/VPAutoLink.vue'
 import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
+import type { AutoLinkOptions, NavGroup } from '@vuepress/theme-default/client'
 import { useToggle } from '@vueuse/core'
 import { computed, toRefs, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
-import type { AutoLinkOptions, NavGroup } from '../../shared/index.js'
 
 const props = defineProps<{
   /** dropdown config */
@@ -52,6 +52,7 @@ watch(
       :aria-label="dropdownAriaLabel"
       @click="handleDropdown"
     >
+      <VPIcon v-if="config.icon" :icon="config.icon" />
       <span class="title">{{ config.text }}</span>
       <span class="arrow down" />
     </button>
@@ -62,6 +63,7 @@ watch(
       :aria-label="dropdownAriaLabel"
       @click="() => toggleOpen()"
     >
+      <VPIcon v-if="config.icon" :icon="config.icon" />
       <span class="title">{{ config.text }}</span>
       <span class="arrow" :class="open ? 'down' : 'right'" />
     </button>
@@ -90,7 +92,11 @@ watch(
                 "
               />
 
-              <span v-else>{{ child.text }}</span>
+              <span v-else
+                ><VPIcon v-if="config.icon" :icon="config.icon" />{{
+                  child.text
+                }}</span
+              >
             </h4>
 
             <ul class="vp-navbar-dropdown-subitem-wrapper">
@@ -135,8 +141,8 @@ watch(
 </template>
 
 <style lang="scss">
-@use '../styles/mixins';
-@use '../styles/variables' as *;
+@use '@vuepress/theme-default/styles/mixins';
+@use '@vuepress/theme-default/styles/variables' as *;
 
 .vp-navbar-dropdown-wrapper {
   cursor: pointer;
@@ -210,6 +216,10 @@ watch(
   &:hover {
     border-color: transparent;
   }
+
+  .vp-icon {
+    margin-inline-end: 0.25em;
+  }
 }
 
 .vp-navbar-dropdown-title-mobile {
@@ -234,6 +244,10 @@ watch(
 
   &:hover {
     color: var(--vp-c-accent);
+  }
+
+  .vp-icon {
+    margin-inline-end: 0.25em;
   }
 }
 

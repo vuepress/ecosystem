@@ -4,6 +4,7 @@ export const navbarEn: NavbarOptions = [
   {
     text: 'Themes',
     prefix: '/themes/',
+    icon: 'palette',
     children: [
       {
         text: 'Theme Guidelines',
@@ -29,6 +30,7 @@ export const navbarEn: NavbarOptions = [
   },
   {
     text: 'Plugins',
+    icon: 'unplug',
     prefix: '/plugins/',
     children: [
       {

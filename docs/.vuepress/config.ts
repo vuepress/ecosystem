@@ -17,6 +17,8 @@ import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { revealJsPlugin } from '@vuepress/plugin-revealjs'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
+import type { DefaultThemePageData } from '@vuepress/theme-default/lib/shared/page.js'
+import type { Page } from 'vuepress'
 import { defineUserConfig } from 'vuepress'
 import { getDirname, path } from 'vuepress/utils'
 import { head } from './configs/index.js'
@@ -86,7 +88,9 @@ export default defineUserConfig({
       json: true,
       rss: true,
     }),
-    iconPlugin(),
+    iconPlugin({
+      prefix: 'lucide:',
+    }),
     markdownExtPlugin({
       gfm: true,
       component: true,
@@ -186,4 +190,32 @@ export default defineUserConfig({
   ],
 
   pagePatterns: ['**/*.md', '!**/*.snippet.md', '!.vuepress', '!node_modules'],
+
+  alias: {
+    '@theme/VPAutoLink.vue': path.resolve(
+      __dirname,
+      './components/VPAutoLink.vue',
+    ),
+    '@theme/VPNavbarDropdown.vue': path.resolve(
+      __dirname,
+      './components/VPNavbarDropdown.vue',
+    ),
+    '@theme/VPSidebarItem.vue': path.resolve(
+      __dirname,
+      './components/VPSidebarItem.vue',
+    ),
+    '@theme/resolveAutoLink': path.resolve(
+      __dirname,
+      './utils/resolveAutoLink.ts',
+    ),
+  },
+
+  extendsPage: (page: Page<Partial<DefaultThemePageData>>) => {
+    const { icon } = page.frontmatter
+
+    // save icon into route meta
+    if (icon) {
+      page.routeMeta.icon = icon
+    }
+  },
 })
