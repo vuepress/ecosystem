@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/helper",
-  "version": "2.0.0-rc.66",
+  "version": "2.0.0-rc.69",
   "description": "VuePress helper",
   "keywords": [
     "vuepress",
@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "@vue/shared": "^3.5.13",
-    "@vueuse/core": "^12.0.0",
+    "@vueuse/core": "^12.3.0",
     "cheerio": "1.0.0",
     "fflate": "^0.8.2",
     "gray-matter": "^4.0.3",
@@ -60,7 +60,7 @@
     "@vuepress/bundler-webpack": "2.0.0-rc.19",
     "@vuepress/plugin-git": "workspace:*",
     "domhandler": "5.0.3",
-    "vite": "~6.0.3"
+    "vite": "~6.0.7"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.19"

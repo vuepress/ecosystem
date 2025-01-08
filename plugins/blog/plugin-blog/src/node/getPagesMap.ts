@@ -3,12 +3,17 @@ import type { App, Page } from 'vuepress/core'
 export type PagesMap = Record<string, Page[]>
 
 export const getPageMap = (
-  { pages }: App,
+  app: App,
   filter: (page: Page) => boolean,
 ): PagesMap => {
-  const pagesMap: PagesMap = {}
+  const pagesMap: PagesMap = {
+    '/': [],
+    ...Object.fromEntries(
+      Object.keys(app.siteData.locales).map((localePath) => [localePath, []]),
+    ),
+  }
 
-  pages
+  app.pages
     .filter(
       (page) =>
         filter(page) &&
@@ -16,7 +21,7 @@ export const getPageMap = (
         page.path.substring(page.pathLocale.length - 1) !== '/404.html',
     )
     .forEach((page) => {
-      ;(pagesMap[page.pathLocale] ??= []).push(page)
+      pagesMap[page.pathLocale].push(page)
     })
 
   return pagesMap

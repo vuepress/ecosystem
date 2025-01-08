@@ -9,8 +9,7 @@ export const getFeedChannelOptions = (
   options: FeedPluginOptions,
   localePath = '',
 ): FeedChannelOptions => {
-  const { base } = app.options
-  const { title, description, lang, locales } = app.siteData
+  const { base, title, description, lang, locales } = app.siteData
   const {
     channel: { icon: channelIcon, image: channelImage, ...channel } = {},
     hostname,

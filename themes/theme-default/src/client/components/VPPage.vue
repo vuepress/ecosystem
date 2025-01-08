@@ -19,7 +19,7 @@ setupHeaders()
   <main class="vp-page">
     <slot name="top" />
 
-    <div class="theme-default-content" vp-content>
+    <div vp-content>
       <slot name="content-top" />
 
       <Content />
@@ -61,7 +61,7 @@ setupHeaders()
     padding-left: 0;
   }
 
-  .theme-default-content {
+  [vp-content] {
     @include mixins.content-wrapper;
 
     & {

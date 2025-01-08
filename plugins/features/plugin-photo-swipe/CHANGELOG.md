@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.69](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.68...v2.0.0-rc.69) (2025-01-07)
+
+### Bug Fixes
+
+- fix zh-TW locale ([764a18c](https://github.com/vuepress/ecosystem/commit/764a18cf07638d77d932e8d43cf854f540ecb2ca))
+
+### Features
+
+- remove de-AT if possible ([#324](https://github.com/vuepress/ecosystem/issues/324)) ([3c44f45](https://github.com/vuepress/ecosystem/commit/3c44f4500713fb309324fa50ebd7a5ddf6ce3eb9))
+
+# [2.0.0-rc.68](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.67...v2.0.0-rc.68) (2024-12-27)
+
+### Bug Fixes
+
+- **plugin-photo-swipe:** avoid loading multiple instances at startup ([#317](https://github.com/vuepress/ecosystem/issues/317)) ([dae01ac](https://github.com/vuepress/ecosystem/commit/dae01ac99d5804b74158cc0ca69e6cec9686654b))
+
+### Features
+
+- rebuild built-in locale data ([#315](https://github.com/vuepress/ecosystem/issues/315)) ([5308fb4](https://github.com/vuepress/ecosystem/commit/5308fb48310d3f0c6af4adc1a98f2e6747c85f33))
+
 # [2.0.0-rc.67](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.66...v2.0.0-rc.67) (2024-12-16)
 
 ### Bug Fixes

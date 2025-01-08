@@ -1,7 +1,8 @@
+import { watchImmediate } from '@vueuse/core'
 // eslint-disable-next-line import/no-rename-default
 import type Reveal from 'reveal.js'
 import type { App, InjectionKey, MaybeRefOrGetter, Ref } from 'vue'
-import { computed, inject, isRef, ref, watch } from 'vue'
+import { computed, inject, isRef, ref } from 'vue'
 import { isFunction } from 'vuepress/shared'
 
 declare const __VUEPRESS_DEV__: boolean
@@ -20,15 +21,14 @@ export const defineRevealJsConfig = (
   options: MaybeRefOrGetter<RevealJsOptions>,
 ): void => {
   if (isRef(options)) {
-    watch(
+    watchImmediate(
       () => options.value,
       (value) => {
         revealOptions.value = value
       },
-      { immediate: true },
     )
   } else if (isFunction(options)) {
-    watch(computed(options), (value) => {
+    watchImmediate(computed(options), (value) => {
       revealOptions.value = value
     })
   } else {

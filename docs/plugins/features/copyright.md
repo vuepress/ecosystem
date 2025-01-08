@@ -146,7 +146,7 @@ So copyright message triggered on another site also points to your preferred sit
   }
 
   interface CopyrightPluginLocaleConfig {
-    [localePath: string]: CopyrightPluginLocaleData
+    [localePath: string]: Partial<CopyrightPluginLocaleData>
   }
   ```
 
@@ -192,7 +192,6 @@ So copyright message triggered on another site also points to your preferred sit
 - **Traditional Chinese** (zh-TW)
 - **English (United States)** (en-US)
 - **German** (de-DE)
-- **German (Australia)** (de-AT)
 - **Russian** (ru-RU)
 - **Ukrainian** (uk-UA)
 - **Vietnamese** (vi-VN)

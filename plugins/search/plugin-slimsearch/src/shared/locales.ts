@@ -1,5 +1,3 @@
-import type { ExactLocaleConfig } from '@vuepress/helper'
-
 /**
  * Multi language config for `@vuepress/plugin-slimsearch`
  *
@@ -104,5 +102,3 @@ export interface SlimSearchLocaleData {
    */
   emptyResult: string
 }
-
-export type SlimSearchLocaleConfig = ExactLocaleConfig<SlimSearchLocaleData>

@@ -1,6 +1,6 @@
-import { useDebounceFn } from '@vueuse/core'
+import { useDebounceFn, watchImmediate } from '@vueuse/core'
 import type { Ref } from 'vue'
-import { computed, onMounted, onUnmounted, ref, shallowRef, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref, shallowRef } from 'vue'
 import { usePageData, useRouteLocale } from 'vuepress/client'
 
 import { options } from '../define.js'
@@ -59,12 +59,8 @@ export const useResults = (queries: Ref<string[]>): Results => {
       { maxWait: 5000 },
     )
 
-    watch(
-      [queries, routeLocale],
-      ([newQueries]) => {
-        void performSearch(newQueries.join(' '))
-      },
-      { immediate: true },
+    watchImmediate([queries, routeLocale], ([newQueries]) =>
+      performSearch(newQueries.join(' ')),
     )
 
     onUnmounted(() => {

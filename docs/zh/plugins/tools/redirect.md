@@ -262,7 +262,7 @@ Options:
   }
 
   interface RedirectPluginLocaleConfig {
-    [localePath: string]: RedirectPluginLocaleData
+    [localePath: string]: Partial<RedirectPluginLocaleData>
   }
   ```
 

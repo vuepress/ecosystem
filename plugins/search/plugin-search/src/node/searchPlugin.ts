@@ -1,8 +1,10 @@
+import { getFullLocaleConfig } from '@vuepress/helper'
 import { watch } from 'chokidar'
 import type { Page, Plugin } from 'vuepress/core'
 import type { LocaleConfig } from 'vuepress/shared'
 import { getDirname, path } from 'vuepress/utils'
-import type { HotKeyOptions } from '../shared/index.js'
+import type { HotKeyOptions, SearchPluginLocaleData } from '../shared/index.js'
+import { searchLocaleInfo } from './locales.js'
 import { prepareSearchIndex } from './prepareSearchIndex.js'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
@@ -14,9 +16,7 @@ export interface SearchPluginOptions {
   /**
    * Locales config for search box
    */
-  locales?: LocaleConfig<{
-    placeholder: string
-  }>
+  locales?: LocaleConfig<SearchPluginLocaleData>
 
   /**
    * Specify the [event.key](http://keycode.info/) of the hotkeys
@@ -47,6 +47,8 @@ export interface SearchPluginOptions {
   getExtraFields?: (page: Page) => string[]
 }
 
+const PLUGIN_NAME = '@vuepress/plugin-search'
+
 export const searchPlugin = ({
   locales = {},
   hotKeys = ['s', '/'],
@@ -54,15 +56,20 @@ export const searchPlugin = ({
   isSearchable = () => true,
   getExtraFields = () => [],
 }: SearchPluginOptions = {}): Plugin => ({
-  name: '@vuepress/plugin-search',
+  name: PLUGIN_NAME,
 
   clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
-  define: {
-    __SEARCH_LOCALES__: locales,
+  define: (app) => ({
     __SEARCH_HOT_KEYS__: hotKeys,
+    __SEARCH_LOCALES__: getFullLocaleConfig({
+      app,
+      name: PLUGIN_NAME,
+      default: searchLocaleInfo,
+      config: locales,
+    }),
     __SEARCH_MAX_SUGGESTIONS__: maxSuggestions,
-  },
+  }),
 
   onPrepared: async (app) => {
     await prepareSearchIndex({ app, isSearchable, getExtraFields })

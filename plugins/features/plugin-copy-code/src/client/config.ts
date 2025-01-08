@@ -1,6 +1,6 @@
 import { defineClientConfig } from 'vuepress/client'
-import type { CopyCodePluginLocaleConfig } from '../shared/index.js'
 import { useCopyCode } from './composables/index.js'
+import type { CopyCodePluginLocaleConfig } from './types.js'
 
 declare const __CC_DELAY__: number
 declare const __CC_DURATION__: number

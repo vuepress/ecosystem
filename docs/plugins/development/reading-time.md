@@ -100,7 +100,7 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "
   }
 
   interface ReadingTimePluginLocaleConfig {
-    [localePath: string]: ReadingTimePluginLocaleData
+    [localePath: string]: Partial<ReadingTimePluginLocaleData>
   }
   ```
 
@@ -116,7 +116,6 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "
 - **Traditional Chinese** (zh-TW)
 - **English (United States)** (en-US)
 - **German** (de-DE)
-- **German (Australia)** (de-AT)
 - **Russian** (ru-RU)
 - **Ukrainian** (uk-UA)
 - **Vietnamese** (vi-VN)

@@ -241,7 +241,7 @@
   }
 
   interface PwaPluginLocaleConfig {
-    [localePath: string]: PwaPluginLocaleData
+    [localePath: string]: Partial<PwaPluginLocaleData>
   }
   ```
 
@@ -255,7 +255,6 @@
 - **繁体中文** (zh-TW)
 - **英文(美国)** (en-US)
 - **德语** (de-DE)
-- **德语(澳大利亚)** (de-AT)
 - **俄语** (ru-RU)
 - **乌克兰语** (uk-UA)
 - **越南语** (vi-VN)

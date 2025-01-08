@@ -1,4 +1,3 @@
-import { getRootLang } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { fs } from 'vuepress/utils'
 import type { AppManifest } from '../shared/index.js'
@@ -8,8 +7,9 @@ export const getManifest = async (
   app: App,
   options: PwaPluginOptions,
 ): Promise<AppManifest> => {
-  const { siteData } = app
-  const { base } = app.options
+  const { base, title, description, lang, locales } = app.siteData
+
+  const rootLocale = locales['/'] ?? {}
 
   const userManifestPath = app.dir.source(
     '.vuepress/public/manifest.webmanifest',
@@ -25,16 +25,11 @@ export const getManifest = async (
   ) as AppManifest
 
   const manifest: AppManifest = {
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    name: siteData.title || siteData.locales['/']?.title || 'Site',
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    short_name: siteData.title || siteData.locales['/']?.title || 'Site',
+    name: title || rootLocale.title || 'Site',
+    short_name: title || rootLocale.title || 'Site',
     description:
-      siteData.description ||
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      siteData.locales['/']?.description ||
-      'A site built with vuepress',
-    lang: getRootLang(app),
+      description || rootLocale.description || 'A site built with vuepress',
+    lang: rootLocale.lang ?? lang,
     start_url: base,
     scope: base,
 

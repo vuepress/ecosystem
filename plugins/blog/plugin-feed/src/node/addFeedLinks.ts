@@ -9,8 +9,7 @@ export const addFeedLinks = (
   app: App,
   options: ResolvedFeedOptionsMap,
 ): void => {
-  const { base } = app.options
-  const { siteData } = app
+  const { base, title, locales, head } = app.siteData
   const localePaths = keys(options)
 
   // there is only one language, so we append it to siteData
@@ -31,28 +30,22 @@ export const addFeedLinks = (
         href: getUrl(hostname, base, fileName),
         title: `${
           // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-          siteData.title || siteData.locales['/']?.title || ''
+          title || locales['/']?.title || ''
         } ${name} Feed`,
       },
     ]
 
     // add atom link
     if (atom)
-      siteData.head.push(
-        getHeadItem('Atom', atomOutputFilename, 'application/atom+xml'),
-      )
+      head.push(getHeadItem('Atom', atomOutputFilename, 'application/atom+xml'))
 
     // add json link
     if (json)
-      siteData.head.push(
-        getHeadItem('JSON', jsonOutputFilename, 'application/json'),
-      )
+      head.push(getHeadItem('JSON', jsonOutputFilename, 'application/json'))
 
     // add rss link
     if (rss)
-      siteData.head.push(
-        getHeadItem('RSS', rssOutputFilename, 'application/rss+xml'),
-      )
+      head.push(getHeadItem('RSS', rssOutputFilename, 'application/rss+xml'))
   }
   // there are multiple languages, so we should append to page
   else {
@@ -76,10 +69,10 @@ export const addFeedLinks = (
             href: getUrl(localeOptions.hostname, base, fileName),
             title: `${
               // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-              siteData.locales[pathLocale]?.title ||
-              siteData.title ||
+              locales[pathLocale]?.title ||
+              title ||
               // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-              siteData.locales['/']?.title ||
+              locales['/']?.title ||
               ''
             } ${name} Feed`,
           },

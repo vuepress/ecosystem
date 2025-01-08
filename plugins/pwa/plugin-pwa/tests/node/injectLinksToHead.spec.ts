@@ -64,7 +64,9 @@ describe('Test head function', () => {
       },
     })
 
-    expect(injectLinksToHead(app, options)).toEqual([
+    injectLinksToHead(app, options)
+
+    expect(app.siteData.head).toEqual([
       [
         'meta',
         {
@@ -176,7 +178,9 @@ describe('Test head function', () => {
       },
     }
 
-    expect(injectLinksToHead(app, optionsWithManifest)).toEqual([
+    injectLinksToHead(app, optionsWithManifest)
+
+    expect(app.siteData.head).toEqual([
       [
         'meta',
         {
@@ -240,7 +244,8 @@ describe('Test head function', () => {
       },
     })
 
-    expect(injectLinksToHead(app, options)).toEqual([
+    injectLinksToHead(app, options)
+    expect(app.siteData.head).toEqual([
       [
         'link',
         {

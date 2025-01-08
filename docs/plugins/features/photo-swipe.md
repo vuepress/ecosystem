@@ -107,7 +107,7 @@ In preview mode, you can:
   }
 
   interface PhotoSwipePluginLocaleConfig {
-    [localePath: string]: PhotoSwipePluginLocaleData
+    [localePath: string]: Partial<PhotoSwipePluginLocaleData>
   }
   ```
 
@@ -154,7 +154,6 @@ In preview mode, you can:
 - **Traditional Chinese** (zh-TW)
 - **English (United States)** (en-US)
 - **German** (de-DE)
-- **German (Australia)** (de-AT)
 - **Russian** (ru-RU)
 - **Ukrainian** (uk-UA)
 - **Vietnamese** (vi-VN)

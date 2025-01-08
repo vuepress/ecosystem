@@ -1,10 +1,10 @@
-import { getLocaleConfig } from '@vuepress/helper'
+import { getFullLocaleConfig } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 
 import { alert } from './alert.js'
 import { hint } from './hint.js'
-import { markdownHintPluginLocales } from './locales.js'
+import { hintLocaleInfo } from './locales.js'
 import type { MarkdownHintPluginOptions } from './options.js'
 
 const PLUGIN_NAME = '@vuepress/plugin-markdown-hint'
@@ -23,10 +23,10 @@ export const markdownHintPlugin = (
     name: PLUGIN_NAME,
 
     extendsMarkdown: (md, app) => {
-      const locale = getLocaleConfig({
+      const locale = getFullLocaleConfig({
         app,
         name: PLUGIN_NAME,
-        default: markdownHintPluginLocales,
+        default: hintLocaleInfo,
         config: options.locales,
       })
 

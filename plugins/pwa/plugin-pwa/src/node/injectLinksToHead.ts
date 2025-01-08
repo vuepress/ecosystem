@@ -1,12 +1,12 @@
-import type { App, HeadConfig } from 'vuepress/core'
+import type { App } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import type { PwaPluginOptions } from './options.js'
 
 export const injectLinksToHead = (
   app: App,
   { favicon, manifest, themeColor = '#46bd87', apple }: PwaPluginOptions,
-): HeadConfig[] => {
-  const { base, head } = app.options
+): void => {
+  const { base, head } = app.siteData
   const metaKeys: string[] = []
   const linkKeys: string[] = []
 
@@ -75,6 +75,4 @@ export const injectLinksToHead = (
   } else if (apple !== false && fallBackIcon) {
     setLink('apple-touch-icon', fallBackIcon)
   }
-
-  return head
 }

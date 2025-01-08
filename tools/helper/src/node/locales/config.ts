@@ -27,6 +27,7 @@ export const lang2PathConfig = {
 export const SUPPORTED_LANGS = keys(lang2PathConfig)
 
 export const path2langConfig = fromEntries(
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   (SUPPORTED_LANGS as KnownLangCode[]).map((lang) => [
     lang2PathConfig[lang],
     lang,

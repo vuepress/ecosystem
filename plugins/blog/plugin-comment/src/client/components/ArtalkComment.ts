@@ -1,4 +1,5 @@
 import { LoadingIcon, isString, wait } from '@vuepress/helper/client'
+import { watchImmediate } from '@vueuse/core'
 import type Artalk from 'artalk'
 import type { VNode } from 'vue'
 import {
@@ -74,33 +75,26 @@ export default defineComponent({
         })
     }
 
-    const updateArtalk = (): void => {
-      artalk!.update({
-        site: site.value.title,
-        pageTitle: page.value.title,
-        pageKey: props.identifier,
-      })
-      artalk!.reload()
-    }
-
     onMounted(() => {
-      watch(
+      watchImmediate(
         () => artalkOptions.value,
         () => {
           artalk?.destroy()
           void initArtalk()
         },
-        { immediate: true },
       )
 
       watch(
         () => props.identifier,
         () => {
-          if (artalk)
-            void nextTick().then(() => {
-              updateArtalk()
-            })
+          artalk?.update({
+            site: site.value.title,
+            pageTitle: page.value.title,
+            pageKey: props.identifier,
+          })
+          artalk?.reload()
         },
+        { flush: 'post' },
       )
 
       watch(
@@ -108,6 +102,7 @@ export default defineComponent({
         (value) => {
           artalk?.setDarkMode(value)
         },
+        { flush: 'post' },
       )
     })
 

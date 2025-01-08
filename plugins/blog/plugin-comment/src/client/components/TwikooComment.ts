@@ -1,14 +1,7 @@
 import { LoadingIcon, wait } from '@vuepress/helper/client'
+import { watchImmediate } from '@vueuse/core'
 import type { VNode } from 'vue'
-import {
-  computed,
-  defineComponent,
-  h,
-  nextTick,
-  onMounted,
-  ref,
-  watch,
-} from 'vue'
+import { computed, defineComponent, h, nextTick, onMounted, ref } from 'vue'
 import { usePageLang } from 'vuepress/client'
 import { useTwikooOptions } from '../helpers/index.js'
 
@@ -52,10 +45,9 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      watch(
+      watchImmediate(
         () => [props.identifier, twikooOptions.value],
         () => initTwikoo(),
-        { immediate: true },
       )
     })
 

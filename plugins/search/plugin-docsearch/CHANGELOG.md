@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.69](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.68...v2.0.0-rc.69) (2025-01-07)
+
+### Features
+
+- **plugin-docsearch:** add built-in locale ([#323](https://github.com/vuepress/ecosystem/issues/323)) ([cc734fb](https://github.com/vuepress/ecosystem/commit/cc734fba5adcd3f003db84d71723066695c501cf))
+
+# [2.0.0-rc.68](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.67...v2.0.0-rc.68) (2024-12-27)
+
+**Note:** Version bump only for package @vuepress/plugin-docsearch
+
 # [2.0.0-rc.67](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.66...v2.0.0-rc.67) (2024-12-16)
 
 ### Bug Fixes

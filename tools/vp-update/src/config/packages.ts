@@ -37,3 +37,5 @@ export const DEPRECATED_PACKAGES = [
 export const THIRD_PARTY_PLUGINS = /^(@.*\/)?vuepress-plugin-/
 
 export const THIRD_PARTY_THEMES = /^(@.*\/)?vuepress-theme-/
+
+export const COMMON_PEERS = ['sass', 'sass-embedded', 'sass-loader']

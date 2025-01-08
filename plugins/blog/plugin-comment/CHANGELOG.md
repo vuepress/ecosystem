@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.69](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.68...v2.0.0-rc.69) (2025-01-07)
+
+### Features
+
+- remove de-AT if possible ([#324](https://github.com/vuepress/ecosystem/issues/324)) ([3c44f45](https://github.com/vuepress/ecosystem/commit/3c44f4500713fb309324fa50ebd7a5ddf6ce3eb9))
+
+# [2.0.0-rc.68](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.67...v2.0.0-rc.68) (2024-12-27)
+
+### Features
+
+- **plugin-comment:** improve type ([375645f](https://github.com/vuepress/ecosystem/commit/375645fd9dbd0e7f628caca4d2fa0bd5f7e495d5))
+- rebuild built-in locale data ([#315](https://github.com/vuepress/ecosystem/issues/315)) ([5308fb4](https://github.com/vuepress/ecosystem/commit/5308fb48310d3f0c6af4adc1a98f2e6747c85f33))
+
 # [2.0.0-rc.67](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.66...v2.0.0-rc.67) (2024-12-16)
 
 ### Bug Fixes

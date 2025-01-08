@@ -13,20 +13,20 @@ export type MarkdownItHintOptions =
 
 export type MarkdownHintContainerName = keyof MarkdownHintPluginLocaleData
 
+const CONTAINERS: MarkdownHintContainerName[] = [
+  'info',
+  'note',
+  'tip',
+  'warning',
+  'caution',
+  'important',
+]
+
 export const hint: PluginWithOptions<MarkdownItHintOptions> = (
   md,
   options = {},
 ) => {
-  const containers: MarkdownHintContainerName[] = [
-    'info',
-    'note',
-    'tip',
-    'warning',
-    'caution',
-    'important',
-  ]
-
-  containers.forEach((name) => {
+  CONTAINERS.forEach((name) => {
     md.use<MarkdownItContainerOptions>(container, {
       name,
       openRender: (tokens, index, _options, env: MarkdownEnv) => {

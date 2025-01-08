@@ -108,7 +108,7 @@ cli
     await Promise.all(
       app.pages.map((page) => {
         const redirectUrl = `${removeEndingSlash(commandOptions.hostname)}${
-          app.options.base
+          app.siteData.base
         }${removeLeadingSlash(page.path)}`
         const destLocation = path.join(
           outputFolder,

@@ -114,7 +114,7 @@ export default {
   }
 
   interface CopyCodePluginLocaleConfig {
-    [localePath: string]: CopyCodePluginLocaleData
+    [localePath: string]: Partial<CopyCodePluginLocaleData>
   }
   ```
 

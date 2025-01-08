@@ -8,8 +8,8 @@ import {
   onMounted,
   shallowRef,
 } from 'vue'
-import type { PwaPluginLocaleConfig } from '../../shared/index.js'
 import { usePwaEvent } from '../composables/index.js'
+import type { PwaPluginLocaleConfig } from '../types.js'
 import { skipWaiting } from '../utils/index.js'
 import { UpdateIcon } from './icons.js'
 

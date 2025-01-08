@@ -154,7 +154,7 @@ Project with order -1
   }
 
   interface CatalogPluginLocaleConfig {
-    [localePath: string]: CatalogPluginLocaleData
+    [localePath: string]: Partial<CatalogPluginLocaleData>
   }
   ```
 
@@ -168,7 +168,6 @@ Project with order -1
 - **Traditional Chinese** (zh-TW)
 - **English (United States)** (en-US)
 - **German** (de-DE)
-- **German (Australia)** (de-AT)
 - **Russian** (ru-RU)
 - **Ukrainian** (uk-UA)
 - **Vietnamese** (vi-VN)

@@ -1,6 +1,7 @@
 import { startsWith } from '@vuepress/helper/client'
+import { watchImmediate } from '@vueuse/core'
 import type { Ref } from 'vue'
-import { onMounted, onUnmounted, ref, watch } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import { usePageData, useRouteLocale } from 'vuepress/client'
 
 import { useSearchOptions } from '../helpers/index.js'
@@ -57,13 +58,9 @@ export const useSuggestions = (queries: Ref<string[]>): SuggestionsRef => {
         else suggestions.value = []
       }
 
-      watch(
-        [queries, routeLocale],
-        ([newQueries]) => {
-          performSuggestion(newQueries.join(' '))
-        },
-        { immediate: true },
-      )
+      watchImmediate([queries, routeLocale], ([newQueries]) => {
+        performSuggestion(newQueries.join(' '))
+      })
 
       onUnmounted(() => {
         terminate()

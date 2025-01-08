@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-shiki",
-  "version": "2.0.0-rc.66",
+  "version": "2.0.0-rc.69",
   "description": "VuePress plugin - shiki",
   "keywords": [
     "vuepress-plugin",
@@ -38,11 +38,11 @@
     "style": "sass src:lib --embed-sources --style=compressed"
   },
   "dependencies": {
-    "@shikijs/transformers": "^1.24.2",
+    "@shikijs/transformers": "^1.26.1",
     "@vuepress/helper": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
     "nanoid": "^5.0.9",
-    "shiki": "^1.24.2"
+    "shiki": "^1.26.1"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.19"

@@ -1,0 +1,9 @@
+.vp-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+
+  &:not(iconify-icon, i) {
+    vertical-align: -0.125em;
+  }
+}
