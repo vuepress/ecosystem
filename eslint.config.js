@@ -36,6 +36,11 @@ export default vuepress(
         ...TOOLS_DIRS,
       ],
     },
+    markdown: {
+      overrides: {
+        'vue/component-api-style': 'off',
+      },
+    },
     typescript: {
       overrides: {
         '@typescript-eslint/consistent-indexed-object-style': 'off',
