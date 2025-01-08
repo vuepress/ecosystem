@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import VPAutoLink from '@theme/VPAutoLink.vue'
 import VPNavbarDropdown from '@theme/VPNavbarDropdown.vue'
 import { useNavbarConfig } from '@theme/useNavbarConfig'
 import { useNavbarRepo } from '@theme/useNavbarRepo'
@@ -6,7 +7,6 @@ import { useNavbarSelectLanguage } from '@theme/useNavbarSelectLanguage'
 import { useThemeLocaleData } from '@theme/useThemeData'
 import { DeviceType, useUpdateDeviceStatus } from '@theme/useUpdateDeviceStatus'
 import { computed, ref } from 'vue'
-import { AutoLink } from 'vuepress/client'
 
 const navbarConfig = useNavbarConfig()
 const navbarSelectLanguage = useNavbarSelectLanguage()
@@ -47,7 +47,7 @@ useUpdateDeviceStatus(
         :class="{ mobile: isMobile }"
         :config="item"
       />
-      <AutoLink v-else :config="item" />
+      <VPAutoLink v-else :config="item" />
     </div>
   </nav>
 </template>

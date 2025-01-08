@@ -1,3 +1,6 @@
+import { isLinkInternal } from '@theme/isLinkInternal'
+import { resolveAutoLink } from '@theme/resolveAutoLink'
+import { resolvePrefix } from '@theme/resolvePrefix'
 import { useThemeLocaleData } from '@theme/useThemeData'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
@@ -7,14 +10,13 @@ import type {
   NavbarLinkOptions,
 } from '../../shared/navbar.js'
 import type { NavbarItem } from '../typings.js'
-import { getAutoLink, isLinkInternal, resolvePrefix } from '../utils/index.js'
 
 const resolveNavbarItem = (
   item: NavbarGroupOptions | NavbarLinkOptions,
   prefix = '',
 ): NavbarItem => {
   if (isString(item)) {
-    return getAutoLink(resolvePrefix(prefix, item))
+    return resolveAutoLink(resolvePrefix(prefix, item))
   }
 
   if ('children' in item) {
@@ -29,7 +31,7 @@ const resolveNavbarItem = (
   return {
     ...item,
     link: isLinkInternal(item.link)
-      ? getAutoLink(resolvePrefix(prefix, item.link)).link
+      ? resolveAutoLink(resolvePrefix(prefix, item.link)).link
       : item.link,
   }
 }

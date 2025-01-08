@@ -74,6 +74,16 @@ export const defaultTheme = ({
             path.resolve(__dirname, '../client/composables', file),
           ]),
       ),
+      // use alias to make all utils replaceable
+      ...Object.fromEntries(
+        fs
+          .readdirSync(path.resolve(__dirname, '../client/utils'))
+          .filter((file) => file.endsWith('.js'))
+          .map((file) => [
+            `@theme/${file.substring(0, file.length - 3)}`,
+            path.resolve(__dirname, '../client/utils', file),
+          ]),
+      ),
     },
 
     clientConfigFile: path.resolve(__dirname, '../client/config.js'),

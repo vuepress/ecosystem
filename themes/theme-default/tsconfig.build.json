@@ -4,7 +4,11 @@
     "rootDir": "./src",
     "outDir": "./lib",
     "paths": {
-      "@theme/*": ["./src/client/components/*", "./src/client/composables/*.js"]
+      "@theme/*": [
+        "./src/client/components/*",
+        "./src/client/composables/*.js",
+        "./src/client/utils/*.js"
+      ]
     },
     "types": ["vuepress/client-types", "vite/client", "webpack-env"]
   },

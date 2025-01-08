@@ -1,12 +1,12 @@
+import type { RepoType } from '@theme/resolveRepoType'
+import { resolveRepoType } from '@theme/resolveRepoType'
 import {
   isLinkHttp,
   removeEndingSlash,
   removeLeadingSlash,
 } from 'vuepress/shared'
-import type { RepoType } from './resolveRepoType.js'
-import { resolveRepoType } from './resolveRepoType.js'
 
-export const editLinkPatterns: Record<Exclude<RepoType, null>, string> = {
+export const EDIT_LINK_PATTERNS: Record<Exclude<RepoType, null>, string> = {
   GitHub: ':repo/edit/:branch/:path',
   GitLab: ':repo/-/edit/:branch/:path',
   Gitee: ':repo/edit/:branch/:path',
@@ -27,7 +27,7 @@ const resolveEditLinkPatterns = ({
 
   const repoType = resolveRepoType(docsRepo)
   if (repoType !== null) {
-    return editLinkPatterns[repoType]
+    return EDIT_LINK_PATTERNS[repoType]
   }
 
   return null
