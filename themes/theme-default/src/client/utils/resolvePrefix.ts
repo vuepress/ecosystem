@@ -1,4 +1,10 @@
-import { ensureEndingSlash, isLinkRelative } from '@vuepress/helper/client'
+import {
+  ensureEndingSlash,
+  isLinkAbsolute,
+  isLinkWithProtocol,
+} from '@vuepress/helper/client'
 
 export const resolvePrefix = (prefix = '', path = ''): string =>
-  isLinkRelative(path) ? `${ensureEndingSlash(prefix)}${path}` : path
+  isLinkAbsolute(path) || isLinkWithProtocol(path)
+    ? path
+    : `${ensureEndingSlash(prefix)}${path}`
