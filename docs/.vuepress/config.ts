@@ -204,6 +204,14 @@ export default defineUserConfig({
       __dirname,
       './components/VPSidebarItem.vue',
     ),
+    '@theme/useNavbarRepo': path.resolve(
+      __dirname,
+      './composables/useNavbarRepo.ts',
+    ),
+    '@theme/useNavbarSelectLanguage': path.resolve(
+      __dirname,
+      './composables/useNavbarSelectLanguage.ts',
+    ),
     '@theme/resolveAutoLink': path.resolve(
       __dirname,
       './utils/resolveAutoLink.ts',
