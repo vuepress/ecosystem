@@ -1,3 +1,7 @@
+---
+icon: captions
+---
+
 # Frontmatter
 
 <NpmBadge package="@vuepress/theme-default" />

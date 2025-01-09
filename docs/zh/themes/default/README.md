@@ -1,3 +1,7 @@
+---
+icon: palette
+---
+
 # 默认主题
 
 <NpmBadge package="@vuepress/theme-default" />

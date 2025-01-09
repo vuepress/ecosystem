@@ -1,3 +1,7 @@
+---
+icon: calendar
+---
+
 # append-date
 
 <NpmBadge package="@vuepress/plugin-append-date" />

@@ -1,3 +1,7 @@
+---
+icon: trash-2
+---
+
 # remove-pwa
 
 <NpmBadge package="@vuepress/plugin-remove-pwa" />

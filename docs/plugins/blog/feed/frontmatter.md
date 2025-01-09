@@ -1,3 +1,7 @@
+---
+icon: captions
+---
+
 # Frontmatter Config
 
 You can control each feed item generation by setting page frontmatter.

@@ -1,3 +1,7 @@
+---
+icon: presentation
+---
+
 # revealjs
 
 <NpmBadge package="@vuepress/plugin-revealjs" />

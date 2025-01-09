@@ -1,3 +1,7 @@
+---
+icon: split
+---
+
 # markdown-ext
 
 <NpmBadge package="@vuepress/plugin-markdown-ext" />

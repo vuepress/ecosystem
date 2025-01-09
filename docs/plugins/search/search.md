@@ -1,3 +1,7 @@
+---
+icon: search
+---
+
 # search
 
 <NpmBadge package="@vuepress/plugin-search" />

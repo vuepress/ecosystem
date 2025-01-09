@@ -50,18 +50,21 @@ export const sidebarZh: SidebarOptions = {
   '/zh/plugins/blog/': [
     {
       text: '博客',
+      icon: 'la:blog',
       prefix: 'blog/',
       link: 'blog/',
       children: ['guide', 'config'],
     },
     {
       text: '评论',
+      icon: 'message-circle-more',
       prefix: 'comment/',
       link: 'comment/',
       children: ['guide', 'giscus/', 'waline/', 'artalk/', 'twikoo/'],
     },
     {
       text: 'Feed',
+      icon: 'rss',
       prefix: 'feed/',
       link: 'feed/',
       children: ['guide', 'config', 'frontmatter', 'channel', 'getter'],
@@ -111,6 +114,7 @@ export const sidebarZh: SidebarOptions = {
     'prismjs',
     {
       text: 'revealjs',
+      icon: 'presentation',
       prefix: 'revealjs/',
       link: 'revealjs/',
       children: ['', 'demo', 'themes'],
@@ -156,6 +160,7 @@ export const sidebarZh: SidebarOptions = {
     'guidelines',
     {
       text: '默认主题',
+      icon: 'palette',
       prefix: 'default/',
       link: 'default/',
       children: [
@@ -168,6 +173,21 @@ export const sidebarZh: SidebarOptions = {
         'styles',
         'extending',
       ],
+    },
+    {
+      text: 'Hope 主题',
+      icon: 'https://theme-hope-assets.vuejs.press/logo.svg',
+      link: 'https://theme-hope.vuejs.press/zh/',
+    },
+    {
+      text: 'Plume 主题',
+      icon: 'https://theme-plume.vuejs.press/favicon.ico',
+      link: 'https://theme-plume.vuejs.press',
+    },
+    {
+      text: 'Reco 主题',
+      icon: 'https://theme-reco.vuejs.press/favicon.ico',
+      link: 'https://theme-reco.vuejs.press',
     },
   ],
 

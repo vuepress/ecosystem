@@ -1,3 +1,7 @@
+---
+icon: clipboard-copy
+---
+
 # copy-code
 
 <NpmBadge package="@vuepress/plugin-copy-code" />

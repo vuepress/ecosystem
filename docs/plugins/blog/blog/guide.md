@@ -1,7 +1,8 @@
 ---
-title: Guide
 icon: lightbulb
 ---
+
+# Guide
 
 With `@vuepress/plugin-blog`, you can easily bring blog feature into your theme.
 

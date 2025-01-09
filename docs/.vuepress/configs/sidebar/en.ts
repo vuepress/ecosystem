@@ -50,18 +50,21 @@ export const sidebarEn: SidebarOptions = {
   '/plugins/blog/': [
     {
       text: 'Blog',
+      icon: 'la:blog',
       prefix: 'blog/',
       link: 'blog/',
       children: ['guide', 'config'],
     },
     {
       text: 'Comment',
+      icon: 'message-circle-more',
       prefix: 'comment/',
       link: 'comment/',
       children: ['guide', 'giscus/', 'waline/', 'artalk/', 'twikoo/'],
     },
     {
       text: 'Feed',
+      icon: 'rss',
       prefix: 'feed/',
       link: 'feed/',
       children: ['guide', 'config', 'frontmatter', 'channel', 'getter'],
@@ -111,6 +114,7 @@ export const sidebarEn: SidebarOptions = {
     'prismjs',
     {
       text: 'revealjs',
+      icon: 'presentation',
       prefix: 'revealjs/',
       link: 'revealjs/',
       children: ['', 'demo', 'themes'],
@@ -156,6 +160,7 @@ export const sidebarEn: SidebarOptions = {
     'guidelines',
     {
       text: 'Default Theme',
+      icon: 'palette',
       prefix: 'default/',
       link: 'default/',
       children: [
@@ -168,6 +173,21 @@ export const sidebarEn: SidebarOptions = {
         'styles',
         'extending',
       ],
+    },
+    {
+      text: 'Hope Theme',
+      icon: 'https://theme-hope-assets.vuejs.press/logo.svg',
+      link: 'https://theme-hope.vuejs.press',
+    },
+    {
+      text: 'Plume Theme',
+      icon: 'https://theme-plume.vuejs.press/favicon.ico',
+      link: 'https://theme-plume.vuejs.press',
+    },
+    {
+      text: 'Reco Theme',
+      icon: 'https://theme-reco.vuejs.press/favicon.ico',
+      link: 'https://theme-reco.vuejs.press/en',
     },
   ],
 

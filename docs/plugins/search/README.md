@@ -1,7 +1,7 @@
 ---
-icon: palette
+icon: search
 ---
 
-# 主题
+# Search Plugins
 
 <Catalog :level="1" />

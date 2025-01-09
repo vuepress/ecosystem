@@ -1,3 +1,7 @@
+---
+icon: image
+---
+
 # markdown-image
 
 <NpmBadge package="@vuepress/plugin-markdown-image" />

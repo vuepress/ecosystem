@@ -1,13 +1,16 @@
 ---
 home: true
 title: 首页
+icon: home
 heroImage: /images/hero.png
 actions:
   - text: 主题
+    icon: palette
     link: ./themes/
     type: primary
 
   - text: 插件
+    icon: unplug
     link: ./plugins/
     type: primary
 

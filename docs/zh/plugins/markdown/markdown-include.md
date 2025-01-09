@@ -1,3 +1,7 @@
+---
+icon: between-horizontal-end
+---
+
 # markdown-include
 
 <NpmBadge package="@vuepress/plugin-markdown-include" />

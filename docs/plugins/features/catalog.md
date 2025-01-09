@@ -1,3 +1,7 @@
+---
+icon: list-tree
+---
+
 # catalog
 
 <NpmBadge package="@vuepress/plugin-catalog" />

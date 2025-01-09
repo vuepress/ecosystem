@@ -1,3 +1,7 @@
+---
+icon: siren
+---
+
 # markdown-hint
 
 <NpmBadge package="@vuepress/plugin-markdown-hint" />

@@ -1,3 +1,7 @@
+---
+icon: palette
+---
+
 # theme-default
 
 <NpmBadge package="@vuepress/theme-default" />

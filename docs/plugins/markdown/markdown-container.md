@@ -1,3 +1,7 @@
+---
+icon: package
+---
+
 # markdown-container
 
 <NpmBadge package="@vuepress/plugin-markdown-container" />

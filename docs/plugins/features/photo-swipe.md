@@ -1,3 +1,7 @@
+---
+icon: image-play
+---
+
 # photo-swipe
 
 <NpmBadge package="@vuepress/plugin-photo-swipe" />
