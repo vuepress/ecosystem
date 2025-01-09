@@ -52,7 +52,7 @@
     "vuepress": "2.0.0-rc.19"
   },
   "devDependencies": {
-    "algoliasearch": "5.18.0"
+    "algoliasearch": "5.19.0"
   },
   "publishConfig": {
     "access": "public"
