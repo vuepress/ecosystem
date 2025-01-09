@@ -1,7 +1,7 @@
-import { isLinkInternal } from '@theme/isLinkInternal'
 import { resolveAutoLink } from '@theme/resolveAutoLink'
 import { resolvePrefix } from '@theme/resolvePrefix'
 import { useThemeLocaleData } from '@theme/useThemeData'
+import { isLinkRelative } from '@vuepress/helper/client'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import { isString } from 'vuepress/shared'
@@ -30,7 +30,7 @@ const resolveNavbarItem = (
 
   return {
     ...item,
-    link: isLinkInternal(item.link)
+    link: isLinkRelative(item.link)
       ? resolveAutoLink(resolvePrefix(prefix, item.link)).link
       : item.link,
   }
