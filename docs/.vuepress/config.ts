@@ -8,6 +8,7 @@ import { commentPlugin } from '@vuepress/plugin-comment'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
 import { iconPlugin } from '@vuepress/plugin-icon'
+import { markdownDemoPlugin } from '@vuepress/plugin-markdown-demo'
 import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
@@ -79,6 +80,11 @@ export default defineUserConfig({
   plugins: [
     catalogPlugin(),
     commentPlugin({ provider: 'Giscus' }),
+    markdownDemoPlugin({
+      html: true,
+      vue: true,
+      react: true,
+    }),
     docsearchPlugin(),
     feedPlugin({
       hostname: 'https://ecosystem.vuejs.press',
