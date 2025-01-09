@@ -190,6 +190,7 @@ Return `false` if `a` is not a string.
 - `isLinkWithProtocol(x)`: Check if `x` is a valid URL with protocol.
 - `isLinkExternal(x)`: Check if `x` is a valid external URL.
 - `isLinkAbsolute(x)`: Check if `x` is a valid absolute URL.
+- `isLinkRelative(x)`: Check if `x` is not absolute or external URL.
 - `ensureEndingSlash(x)`: Ensure `x` ends with a slash.
 - `ensureLeadingSlash(x)`: Ensure `x` starts with a slash.
 - `removeEndingSlash(x)`: Ensure `x` does not end with a slash.

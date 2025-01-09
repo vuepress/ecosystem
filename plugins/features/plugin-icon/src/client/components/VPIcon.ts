@@ -137,7 +137,7 @@ export const VPIcon = defineComponent({
         })
       }
 
-      return h('span', {
+      return h('i', {
         key: icon,
         class: [
           'vp-icon',

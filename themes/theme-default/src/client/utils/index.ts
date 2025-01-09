@@ -1,5 +1,4 @@
 export * from './isActiveSidebarItem.js'
-export * from './isLinkInternal.js'
 export * from './resolveAutoLink.js'
 export * from './resolveEditLink.js'
 export * from './resolvePrefix.js'

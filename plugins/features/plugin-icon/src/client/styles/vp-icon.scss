@@ -3,6 +3,11 @@
   width: 1em;
   height: 1em;
 
+  &:is(i) {
+    font-size: 1em;
+    line-height: 1;
+  }
+
   &:not(iconify-icon, i) {
     vertical-align: -0.125em;
   }

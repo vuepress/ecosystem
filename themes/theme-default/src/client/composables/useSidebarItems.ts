@@ -1,9 +1,13 @@
-import { isLinkInternal } from '@theme/isLinkInternal'
 import { resolveAutoLink } from '@theme/resolveAutoLink'
 import { resolvePrefix } from '@theme/resolvePrefix'
 import { useThemeLocaleData } from '@theme/useThemeData'
 import type { MenuItem } from '@vuepress/helper/client'
-import { getHeaders, keys, startsWith } from '@vuepress/helper/client'
+import {
+  getHeaders,
+  isLinkRelative,
+  keys,
+  startsWith,
+} from '@vuepress/helper/client'
 import type { ComputedRef, InjectionKey, Ref } from 'vue'
 import { computed, inject, onMounted, provide, ref, watch } from 'vue'
 import type { PageData } from 'vuepress/client'
@@ -110,7 +114,7 @@ export const resolveArraySidebarItems = (
       : isString(item.link)
         ? {
             ...item,
-            link: isLinkInternal(item.link)
+            link: isLinkRelative(item.link)
               ? resolveAutoLink(resolvePrefix(pathPrefix, item.link)).link
               : item.link,
           }
