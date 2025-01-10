@@ -1,5 +1,5 @@
 ---
-icon: split
+icon: expand
 ---
 
 # markdown-ext
