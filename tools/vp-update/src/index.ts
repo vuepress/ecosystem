@@ -3,7 +3,7 @@
 import { spawnSync } from 'node:child_process'
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
-import { cac } from 'cac'
+import { createCommand } from 'commander'
 import { VERSION } from './config/index.js'
 import {
   checkTaobaoRegistry,
@@ -11,21 +11,26 @@ import {
   updatePackages,
 } from './utils/index.js'
 
-const cli = cac('vp-update')
+const program = createCommand('vp-update')
 
-cli
-  .command('[dir]', 'Update VuePress project')
+program
+  .summary('Update VuePress project')
+  .argument('[dir]', 'Dir of VuePress project', '')
   .usage(
-    'pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]',
+    `
+pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]\
+`,
   )
-  .example('docs')
-  .action(async (targetDir: string = ''): Promise<Error | void> => {
+  .action(async (targetDir: string = ''): Promise<void> => {
     console.log('Bumping deps...')
+
     const dir = resolve(process.cwd(), targetDir)
     const packageJSON = resolve(dir, 'package.json')
 
     if (!existsSync(packageJSON))
-      return new Error(`No package.json found in ${targetDir || 'current dir'}`)
+      return program.error(
+        `No package.json found in ${targetDir || 'current dir'}`,
+      )
 
     const packageManager = getPackageManager()
 
@@ -81,14 +86,7 @@ cli
     )
   })
 
-cli.help(() => [
-  {
-    title:
-      'pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]',
-    body: 'Update VuePress project in [dir]',
-  },
-])
+program.version(VERSION)
+program.showHelpAfterError('add --help for additional information')
 
-cli.version(VERSION)
-
-cli.parse()
+await program.parseAsync()
