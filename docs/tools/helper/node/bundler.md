@@ -1,3 +1,7 @@
+---
+icon: package
+---
+
 # Bundler Related
 
 Bundler functions for appending or modifying bundler options in theme and plugins.

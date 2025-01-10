@@ -1,5 +1,5 @@
 ---
-icon: git-compare
+icon: la:git-alt
 ---
 
 # git

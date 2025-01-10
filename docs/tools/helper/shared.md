@@ -1,3 +1,7 @@
+---
+icon: split
+---
+
 # Shared Methods
 
 The following functions are available on both Node.js and Client.

@@ -1,3 +1,7 @@
+---
+icon: chrome
+---
+
 # Client Related
 
 These functions are only available in `@vuepress/helper/client`.

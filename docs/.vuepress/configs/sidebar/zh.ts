@@ -204,6 +204,7 @@ export const sidebarZh: SidebarOptions = {
       children: [
         {
           text: 'Node',
+          icon: 'nonicons:node-16',
           prefix: 'node/',
           children: ['bundler', 'locales', 'page'],
         },

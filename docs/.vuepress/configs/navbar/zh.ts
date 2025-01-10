@@ -45,11 +45,6 @@ export const navbarZh: NavbarOptions = [
     text: '工具',
     icon: 'hammer',
     prefix: '/zh/tools/',
-    children: [
-      {
-        text: 'helper',
-        link: 'helper/',
-      },
-    ],
+    children: ['helper/'],
   },
 ]

@@ -1,3 +1,7 @@
+---
+icon: paintbrush-vertical
+---
+
 # 样式
 
 提供了如下样式文件。
