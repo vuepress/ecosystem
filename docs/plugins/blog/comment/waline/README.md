@@ -1,3 +1,7 @@
+---
+icon: https://waline.js.org/favicon.ico
+---
+
 # Waline
 
 A safe comment system with backend.
