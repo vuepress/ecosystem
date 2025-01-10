@@ -1,3 +1,7 @@
+---
+icon: highlighter
+---
+
 # shiki
 
 <NpmBadge package="@vuepress/plugin-shiki" />

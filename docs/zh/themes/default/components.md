@@ -1,3 +1,7 @@
+---
+icon: puzzle
+---
+
 # 内置组件
 
 <NpmBadge package="@vuepress/theme-default" />

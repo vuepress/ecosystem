@@ -1,3 +1,7 @@
+---
+icon: chrome
+---
+
 # 客户端相关
 
 这些函数仅在 `@vuepress/helper/client` 中可用。

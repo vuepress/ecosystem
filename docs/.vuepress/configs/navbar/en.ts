@@ -4,79 +4,47 @@ export const navbarEn: NavbarOptions = [
   {
     text: 'Themes',
     prefix: '/themes/',
+    icon: 'palette',
     children: [
-      {
-        text: 'Theme Guidelines',
-        link: 'guidelines',
-      },
-      {
-        text: 'Default Theme',
-        link: 'default/',
-      },
+      'guidelines',
+      'default/',
       {
         text: 'Hope Theme',
+        icon: 'https://theme-hope-assets.vuejs.press/logo.svg',
         link: 'https://theme-hope.vuejs.press',
       },
       {
         text: 'Plume Theme',
+        icon: 'https://theme-plume.vuejs.press/favicon.ico',
         link: 'https://theme-plume.vuejs.press',
       },
       {
         text: 'Reco Theme',
+        icon: 'https://theme-reco.vuejs.press/favicon.ico',
         link: 'https://theme-reco.vuejs.press/en',
       },
     ],
   },
   {
     text: 'Plugins',
+    icon: 'unplug',
     prefix: '/plugins/',
     children: [
-      {
-        text: 'Common Features',
-        link: 'features/',
-      },
-      {
-        text: 'Markdown',
-        link: 'markdown/',
-      },
-      {
-        text: 'Search',
-        link: 'search/',
-      },
-      {
-        text: 'Blogging',
-        link: 'blog/',
-      },
-      {
-        text: 'PWA',
-        link: 'pwa/',
-      },
-      {
-        text: 'Analytics',
-        link: 'analytics/',
-      },
-      {
-        text: 'SEO',
-        link: 'seo/',
-      },
-      {
-        text: 'Theme Development',
-        link: 'development/',
-      },
-      {
-        text: 'Tools',
-        link: 'tools/',
-      },
+      'features/',
+      'markdown/',
+      'search/',
+      'blog/',
+      'pwa/',
+      'analytics/',
+      'seo/',
+      'development/',
+      'tools/',
     ],
   },
   {
     text: 'Tools',
+    icon: 'hammer',
     prefix: '/tools/',
-    children: [
-      {
-        text: 'helper',
-        link: 'helper/',
-      },
-    ],
+    children: ['helper/'],
   },
 ]

@@ -1,3 +1,7 @@
+---
+icon: search
+---
+
 # docsearch
 
 <NpmBadge package="@vuepress/plugin-docsearch" />

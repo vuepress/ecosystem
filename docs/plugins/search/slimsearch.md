@@ -1,3 +1,7 @@
+---
+icon: search
+---
+
 # slimsearch
 
 <NpmBadge package="@vuepress/plugin-slimsearch" />

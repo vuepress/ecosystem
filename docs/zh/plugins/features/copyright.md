@@ -1,3 +1,7 @@
+---
+icon: fa-regular:copyright
+---
+
 # copyright
 
 <NpmBadge package="@vuepress/plugin-copyright" />

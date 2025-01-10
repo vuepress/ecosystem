@@ -1,3 +1,7 @@
+---
+icon: forward
+---
+
 # redirect
 
 <NpmBadge package="@vuepress/plugin-redirect" />

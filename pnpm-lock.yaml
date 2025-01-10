@@ -205,6 +205,9 @@ importers:
       '@vuepress/theme-default':
         specifier: workspace:*
         version: link:../themes/theme-default
+      '@vueuse/core':
+        specifier: ^12.4.0
+        version: 12.4.0(typescript@5.7.3)
       katex:
         specifier: 0.16.19
         version: 0.16.19

@@ -1,3 +1,7 @@
+---
+icon: languages
+---
+
 # 多语言相关
 
 这些函数仅在 `@vuepress/helper` 中可用。

@@ -1,3 +1,7 @@
+---
+icon: octicon:markdown-16
+---
+
 # Markdown
 
 <NpmBadge package="@vuepress/theme-default" />

@@ -1,3 +1,7 @@
+---
+icon: languages
+---
+
 # Locale Config
 
 These options configure locale-related texts.

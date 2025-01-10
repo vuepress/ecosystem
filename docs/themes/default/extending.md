@@ -1,3 +1,7 @@
+---
+icon: cable
+---
+
 # Extending
 
 VuePress default theme is widely used by users, so it is designed to be extendable, allowing users to make their own customization with ease.

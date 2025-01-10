@@ -1,3 +1,7 @@
+---
+icon: database
+---
+
 # theme-data
 
 <NpmBadge package="@vuepress/plugin-theme-data" />

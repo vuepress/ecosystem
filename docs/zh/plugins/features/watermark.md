@@ -1,3 +1,7 @@
+---
+icon: droplet
+---
+
 # watermark
 
 <NpmBadge package="@vuepress/plugin-watermark" />

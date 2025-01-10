@@ -1,3 +1,7 @@
+---
+icon: database-zap
+---
+
 # cache
 
 <NpmBadge package="@vuepress/plugin-cache" />

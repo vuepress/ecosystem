@@ -1,3 +1,7 @@
+---
+icon: paint-bucket
+---
+
 # markdown-stylize
 
 <NpmBadge package="@vuepress/plugin-markdown-stylize" />

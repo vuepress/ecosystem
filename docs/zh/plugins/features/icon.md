@@ -1,3 +1,7 @@
+---
+icon: fa6-solid:icons
+---
+
 # icon
 
 <NpmBadge package="@vuepress/plugin-icon" />

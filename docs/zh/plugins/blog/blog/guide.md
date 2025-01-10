@@ -1,7 +1,8 @@
 ---
-title: 指南
 icon: lightbulb
 ---
+
+# 指南
 
 使用 `@vuepress/plugin-blog`，你可以轻松地将博客功能引入主题。
 

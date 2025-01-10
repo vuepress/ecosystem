@@ -1,3 +1,7 @@
+---
+icon: split
+---
+
 # Shared Methods
 
 The following functions are available on both Node.js and Client.
@@ -141,7 +145,7 @@ Return `false` if `a` is not a string.
 
 ## Date Related
 
-- `getDate(x)`: Convert input `x` to a date. It can support `Date`, timestamp, and date string. The support degree of date string depends on the `Date.parse` support degree of the environment. Return `null` when it cannot be converted to a date.
+- `getDate(x)`: Convert input `x` to a date. It can support `Date`, timestamp, and date string. The support range of date string depends on the `Date.parse` support range of the environment. Return `null` when it cannot be converted to a date.
 
   ::: details Example
 

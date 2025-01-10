@@ -1,3 +1,7 @@
+---
+icon: bell
+---
+
 # notice
 
 <NpmBadge package="@vuepress/plugin-notice" />

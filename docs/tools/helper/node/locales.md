@@ -1,3 +1,7 @@
+---
+icon: languages
+---
+
 # Locales Related
 
 These functions are only available in `@vuepress/helper`.

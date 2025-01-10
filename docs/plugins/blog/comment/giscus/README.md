@@ -1,3 +1,7 @@
+---
+icon: github
+---
+
 # Giscus
 
 Giscus is a commenting system based on GitHub Discussion that is easy to start.

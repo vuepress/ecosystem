@@ -1,3 +1,7 @@
+---
+icon: settings-2
+---
+
 # 选项
 
 ## hostname

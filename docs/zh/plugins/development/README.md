@@ -1,3 +1,7 @@
-# 主题开发插件
+---
+icon: server-cog
+---
+
+# 开发插件
 
 <Catalog :level="1" />

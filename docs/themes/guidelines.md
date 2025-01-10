@@ -1,3 +1,7 @@
+---
+icon: signpost
+---
+
 # Theme Guidelines
 
 To avoid theme developers and users setting unneeded options, we have a set of guidelines that should be followed when creating a theme.

@@ -1,3 +1,7 @@
+---
+icon: pajamas:progress
+---
+
 # nprogress {#nprogress-plugin}
 
 <NpmBadge package="@vuepress/plugin-nprogress" />

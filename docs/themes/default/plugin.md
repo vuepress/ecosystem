@@ -1,3 +1,7 @@
+---
+icon: unplug
+---
+
 # Plugins Config
 
 You can configure the plugins that used by default theme with `themePlugins`.

@@ -1,3 +1,7 @@
+---
+icon: chart-no-axes-combined
+---
+
 # umami-analytics
 
 <NpmBadge package="@vuepress/plugin-umami-analytics" />
