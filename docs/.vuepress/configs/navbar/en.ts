@@ -43,6 +43,7 @@ export const navbarEn: NavbarOptions = [
   },
   {
     text: 'Tools',
+    icon: 'hammer',
     prefix: '/tools/',
     children: [
       {

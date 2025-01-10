@@ -125,6 +125,7 @@ export const sidebarEn: SidebarOptions = {
   '/plugins/pwa/': [
     {
       text: 'PWA',
+      icon: 'layout-grid',
       prefix: 'pwa/',
       link: 'pwa/',
       children: ['guide', 'config'],
@@ -144,12 +145,14 @@ export const sidebarEn: SidebarOptions = {
   '/plugins/seo/': [
     {
       text: 'SEO',
+      icon: 'scan-search',
       prefix: 'seo/',
       link: 'seo/',
       children: ['guide', 'config'],
     },
     {
       text: 'Sitemap',
+      icon: 'network',
       prefix: 'sitemap/',
       link: 'sitemap/',
       children: ['guide', 'config', 'frontmatter'],
@@ -194,9 +197,19 @@ export const sidebarEn: SidebarOptions = {
   '/tools/': [
     {
       text: '@vuepress/helper',
+      icon: 'hammer',
       prefix: 'helper/',
       link: 'helper/',
-      children: ['node/bundler', 'node/page', 'client', 'shared', 'style'],
+      children: [
+        {
+          text: 'Node',
+          prefix: 'node/',
+          children: ['bundler', 'locales', 'page'],
+        },
+        'client',
+        'shared',
+        'style',
+      ],
     },
   ],
 }

@@ -1,3 +1,7 @@
+---
+icon: network
+---
+
 # sitemap
 
 <NpmBadge package="@vuepress/plugin-sitemap" />

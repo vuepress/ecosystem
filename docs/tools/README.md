@@ -1,7 +1,7 @@
 ---
-icon: scan-search
+icon: hammer
 ---
 
-# SEO Plugins
+# Tool Packages
 
 <Catalog :level="1" />
