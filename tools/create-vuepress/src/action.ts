@@ -3,6 +3,7 @@
 import { existsSync, readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { confirm, select } from '@inquirer/prompts'
+import type { Command } from 'commander'
 import { execaCommand, execaCommandSync } from 'execa'
 import { KNOWN_THEME_COMMANDS } from './config/index.js'
 import { createPackageJson, generateTemplate } from './flow/index.js'
@@ -26,10 +27,11 @@ interface CreateOptions {
 const bundlers: Bundler[] = ['vite', 'webpack']
 const presets: Preset[] = ['blog', 'docs']
 
-export const mainAction = async (
+export async function mainAction(
+  this: Command,
   targetDir: string,
   { bundler, preset, theme = '@vuepress/theme-default' }: CreateOptions,
-): Promise<void> => {
+): Promise<void> {
   // get language
   const { lang, locale } = await getLanguage()
 
@@ -52,28 +54,24 @@ export const mainAction = async (
 
   // check bundler
   if (bundler && !['vite', 'webpack'].includes(bundler)) {
-    console.error(locale.error.bundler)
-    return
+    this.error(locale.error.bundler)
   }
 
   // check presets
   if (preset && !['docs', 'blog'].includes(preset)) {
-    console.error(locale.error.preset)
-    return
+    this.error(locale.error.preset)
   }
 
   // check if the user is a noob and warn him
   if (!targetDir || (targetDir.startsWith('[') && targetDir.endsWith(']'))) {
-    console.error(locale.error.dirMissing(packageManager))
-    return
+    this.error(locale.error.dirMissing(packageManager))
   }
 
   const targetDirPath = resolve(process.cwd(), targetDir)
 
   // check if the user is trying to cover his files
   if (existsSync(targetDirPath) && readdirSync(targetDirPath).length) {
-    console.error(locale.error.dirNotEmpty(targetDir))
-    return
+    this.error(locale.error.dirNotEmpty(targetDir))
   }
 
   ensureDirExistSync(targetDirPath)
