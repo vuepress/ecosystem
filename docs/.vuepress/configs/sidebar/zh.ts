@@ -79,6 +79,7 @@ export const sidebarZh: SidebarOptions = {
     'rtl',
     {
       text: 'Sass Palette',
+      icon: 'palette',
       prefix: 'sass-palette/',
       link: 'sass-palette/',
       children: ['guide', 'config'],

@@ -1,3 +1,7 @@
+---
+icon: git-compare
+---
+
 # git
 
 <NpmBadge package="@vuepress/plugin-git" />

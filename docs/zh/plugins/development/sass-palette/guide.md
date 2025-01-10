@@ -1,3 +1,7 @@
+---
+icon: lightbulb
+---
+
 # 指南
 
 相比于 [`@vuepress/plugin-palette`](../palette.md) 插件，本插件允许你:

@@ -1,3 +1,7 @@
+---
+icon: book-open-text
+---
+
 # reading-time
 
 <NpmBadge package="@vuepress/plugin-reading-time" />
