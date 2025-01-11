@@ -41,9 +41,9 @@
     "style": "sass src:lib --embed-sources --style=compressed"
   },
   "dependencies": {
-    "@mdit/plugin-container": "^0.14.0",
-    "@mdit/plugin-footnote": "^0.14.0",
-    "@mdit/plugin-tasklist": "^0.14.0",
+    "@mdit/plugin-container": "^0.15.0",
+    "@mdit/plugin-footnote": "^0.15.0",
+    "@mdit/plugin-tasklist": "^0.15.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
     "js-yaml": "^4.1.0"
