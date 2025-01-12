@@ -82,12 +82,7 @@ export const markdownMathPlugin = ({
         })
       } else {
         md.use<MarkdownItKatexOptions<MarkdownEnv>>(katex, {
-          logger: (
-            errorCode,
-            errorMsg,
-            token,
-            { filePathRelative },
-          ): undefined => {
+          logger: (errorCode, errorMsg, token, { filePathRelative }) => {
             // Ignore this error
             if (errorCode === 'newLineInDisplayMode') return
 
