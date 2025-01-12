@@ -776,8 +776,8 @@ importers:
   plugins/markdown/plugin-markdown-math:
     dependencies:
       '@mdit/plugin-katex-slim':
-        specifier: ^0.16.0
-        version: 0.16.0(katex@0.16.19)(markdown-it@14.1.0)
+        specifier: ^0.16.1
+        version: 0.16.1(katex@0.16.19)(markdown-it@14.1.0)
       '@mdit/plugin-mathjax-slim':
         specifier: ^0.16.0
         version: 0.16.0(markdown-it@14.1.0)(mathjax-full@3.2.2)
@@ -810,8 +810,8 @@ importers:
         specifier: ^0.16.0
         version: 0.16.0(markdown-it@14.1.0)
       '@mdit/plugin-attrs':
-        specifier: ^0.16.0
-        version: 0.16.0(markdown-it@14.1.0)
+        specifier: ^0.16.1
+        version: 0.16.1(markdown-it@14.1.0)
       '@mdit/plugin-mark':
         specifier: ^0.16.0
         version: 0.16.0(markdown-it@14.1.0)
@@ -2434,8 +2434,8 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-attrs@0.16.0':
-    resolution: {integrity: sha512-ujl0cnTqaYwX+6s5iD9wBWGck0MfxsIOryQdjv0skDtnyG2cfgPWYHjgIvUxs1sOSD6jkYfLlHay9Tr3N8B3Rg==}
+  '@mdit/plugin-attrs@0.16.1':
+    resolution: {integrity: sha512-FqJcgaKh8+fg7CsoM+wDwGXzueCl+HZOoNXdq/YYcwx2fsuBLu3qrrabvcHxfRWyOP6cnC5H7S+H3bpsxFcgfw==}
     engines: {node: '>= 18'}
     peerDependencies:
       markdown-it: ^14.1.0
@@ -2502,8 +2502,8 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-katex-slim@0.16.0':
-    resolution: {integrity: sha512-XMF6nRjt+QJZN0aykpbn/3rpHmGjBzQLd+58Qf+aDHx6ZjZ5XVRF3hy1ZcWTLVkD/kZqI5PV48db9ZkqHNKeOw==}
+  '@mdit/plugin-katex-slim@0.16.1':
+    resolution: {integrity: sha512-3c2/E+ISJ6U+SmEnxnZ2gLxhz2kYbJKfMgBWXQ2NZ92YSVHchVnmvqNsMDp2aPoDovTF3uWMeJiHtBn1snJsTQ==}
     engines: {node: '>= 18'}
     peerDependencies:
       katex: ^0.16.9
@@ -9924,7 +9924,7 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.1.0
 
-  '@mdit/plugin-attrs@0.16.0(markdown-it@14.1.0)':
+  '@mdit/plugin-attrs@0.16.1(markdown-it@14.1.0)':
     dependencies:
       '@mdit/helper': 0.16.0(markdown-it@14.1.0)
       '@types/markdown-it': 14.1.2
@@ -9974,7 +9974,7 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.1.0
 
-  '@mdit/plugin-katex-slim@0.16.0(katex@0.16.19)(markdown-it@14.1.0)':
+  '@mdit/plugin-katex-slim@0.16.1(katex@0.16.19)(markdown-it@14.1.0)':
     dependencies:
       '@mdit/helper': 0.16.0(markdown-it@14.1.0)
       '@mdit/plugin-tex': 0.16.0(markdown-it@14.1.0)
