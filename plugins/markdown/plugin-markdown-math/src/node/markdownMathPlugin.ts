@@ -1,6 +1,5 @@
 import type { MarkdownItKatexOptions } from '@mdit/plugin-katex-slim'
 import { katex } from '@mdit/plugin-katex-slim'
-import type { MathjaxInstance } from '@mdit/plugin-mathjax-slim'
 import { createMathjaxInstance, mathjax } from '@mdit/plugin-mathjax-slim'
 import { addCustomElement, isModuleAvailable } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
@@ -68,7 +67,7 @@ export const markdownMathPlugin = ({
 
     extendsMarkdown: (md) => {
       if (mathRenderer === 'mathjax') {
-        md.use<MathjaxInstance>(mathjax, mathjaxInstance!)
+        md.use(mathjax, mathjaxInstance)
         // Reset mathjax style in each render
         md.use((mdIt) => {
           const originalRender = mdIt.render.bind(mdIt)
