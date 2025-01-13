@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.70](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.69...v2.0.0-rc.70) (2025-01-13)
+
+### Bug Fixes
+
+- **plugin-blog:** ensure all locale exists ([57bf3dd](https://github.com/vuepress/ecosystem/commit/57bf3dd6f43e2a531d339e795a48301cccf7c46c))
+- **plugin-icon:** fix iconfont style ([f1e0fe8](https://github.com/vuepress/ecosystem/commit/f1e0fe898b08c45f4e639fc847659b0642b39e03))
+- **plugin-theme-data:** fix devtools plugin ([42a3474](https://github.com/vuepress/ecosystem/commit/42a34748176ac1aae907221de07e6289f6ecadad))
+- **theme-default:** fix resolvePrefix ([5a292eb](https://github.com/vuepress/ecosystem/commit/5a292eb4cb11628defd77761c779de02f96bf1b8))
+- **theme-default:** improve navbar sidebar links style ([#339](https://github.com/vuepress/ecosystem/issues/339)) ([f315804](https://github.com/vuepress/ecosystem/commit/f31580402a5a2017f86f2824ef37a839f147c115))
+
+### Features
+
+- **helper:** add isLinkRelative ([0568a46](https://github.com/vuepress/ecosystem/commit/0568a46c98c536fca8ff53a5d8451e96ab98e3c9))
+- **highlighter-helper:** improve collapsed lines styles ([#330](https://github.com/vuepress/ecosystem/issues/330)) ([6c4332f](https://github.com/vuepress/ecosystem/commit/6c4332f8cbfdb41f8c7febc74840f79b3b384ed8))
+- **plugin-icon:** support markdown syntax ([#338](https://github.com/vuepress/ecosystem/issues/338)) ([ba0dac3](https://github.com/vuepress/ecosystem/commit/ba0dac37f8c77c93caefd7c64c059c92ac59bdd3))
+- replace cac with commander ([#334](https://github.com/vuepress/ecosystem/issues/334)) ([f14cb3d](https://github.com/vuepress/ecosystem/commit/f14cb3d5acb8a776afe42d7d55b671440571eda9))
+- **theme-default:** improve theme extending ([#331](https://github.com/vuepress/ecosystem/issues/331)) ([6bcdd30](https://github.com/vuepress/ecosystem/commit/6bcdd30e9b665ea69c0bee744c0b300106e26ff9))
+
 # [2.0.0-rc.69](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.68...v2.0.0-rc.69) (2025-01-07)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.70](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.69...v2.0.0-rc.70) (2025-01-13)
+
+### Bug Fixes
+
+- **plugin-blog:** ensure all locale exists ([57bf3dd](https://github.com/vuepress/ecosystem/commit/57bf3dd6f43e2a531d339e795a48301cccf7c46c))
+
 # [2.0.0-rc.69](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.68...v2.0.0-rc.69) (2025-01-07)
 
 **Note:** Version bump only for package @vuepress/plugin-blog
