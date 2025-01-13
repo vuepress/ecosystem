@@ -87,7 +87,7 @@ useEventListener('keydown', (event): void => {
     display: none;
   }
 
-  .route-link {
+  .auto-link {
     display: inline-block;
     flex-grow: 1;
 

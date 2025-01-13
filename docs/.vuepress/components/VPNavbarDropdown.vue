@@ -255,13 +255,13 @@ watch(
   color: inherit;
   line-height: 1.7rem;
 
-  a {
+  .auto-link {
     position: relative;
 
     display: block;
 
     margin-bottom: 0;
-    padding: 0 1.5rem 0 1.25rem;
+    padding: 0 1.25rem;
     border-bottom: none;
 
     font-weight: 400;
@@ -271,7 +271,7 @@ watch(
       color: var(--vp-c-accent);
     }
 
-    &.route-link-active {
+    &.auto-link-active {
       color: var(--vp-c-accent);
 
       &::after {
@@ -322,10 +322,10 @@ watch(
     padding: 0 1.5rem 0 1.25rem;
   }
 
-  > a {
+  > .auto-link {
     font-weight: inherit;
 
-    &.route-link-active {
+    &.auto-link-active {
       &::after {
         display: none;
       }

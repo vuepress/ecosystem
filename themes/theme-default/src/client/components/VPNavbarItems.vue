@@ -62,13 +62,12 @@ useUpdateDeviceStatus(
     display: none;
   }
 
-  a {
-    display: inline-block;
+  .auto-link {
     color: inherit;
     line-height: 1.4rem;
 
     &:hover,
-    &.route-link-active {
+    &.auto-link-active {
       color: var(--vp-c-text);
     }
   }
@@ -88,16 +87,18 @@ useUpdateDeviceStatus(
     margin-left: 0;
   }
 
-  a {
+  .auto-link {
     &:hover,
-    &.route-link-active {
+    &.auto-link-active {
       color: var(--vp-c-accent);
     }
   }
 
-  > a {
+  > .auto-link {
+    display: inline-block;
+
     &:hover,
-    &.route-link-active {
+    &.auto-link-active {
       margin-bottom: -2px;
       border-bottom: 2px solid var(--vp-c-accent);
 

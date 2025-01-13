@@ -165,16 +165,17 @@ onBeforeUnmount(() => {
     font-weight: 600;
   }
 
-  .vp-icon {
-    margin-inline-end: 0.25em;
+  .auto-link {
+    display: block;
   }
-}
 
-a.vp-sidebar-item {
-  cursor: pointer;
+  &.auto-link {
+    display: block;
+    cursor: pointer;
 
-  &:hover {
-    color: var(--vp-c-accent);
+    &:hover {
+      color: var(--vp-c-accent);
+    }
   }
 }
 </style>

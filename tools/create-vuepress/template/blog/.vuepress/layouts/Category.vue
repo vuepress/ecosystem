@@ -43,7 +43,7 @@ const categoryMap = useBlogCategory('category')
   padding-bottom: 0 !important;
   font-size: 14px;
 
-  a {
+  .route-link {
     color: inherit;
   }
 

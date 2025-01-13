@@ -86,7 +86,7 @@ defineSlots<{
     @media (max-width: $MQMobile) {
       display: block;
 
-      .vp-navbar-dropdown-item a.route-link-active::after {
+      .vp-navbar-dropdown-item .route-link-active::after {
         top: calc(1rem - 2px);
       }
     }
@@ -97,7 +97,7 @@ defineSlots<{
       list-style-type: none;
     }
 
-    a {
+    .auto-link {
       font-weight: 600;
     }
   }

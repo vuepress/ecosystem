@@ -163,13 +163,18 @@ onBeforeUnmount(() => {
     color: var(--vp-c-accent);
     font-weight: 600;
   }
-}
 
-a.vp-sidebar-item {
-  cursor: pointer;
+  .auto-link {
+    display: block;
+  }
 
-  &:hover {
-    color: var(--vp-c-accent);
+  &.auto-link {
+    display: block;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--vp-c-accent);
+    }
   }
 }
 </style>
