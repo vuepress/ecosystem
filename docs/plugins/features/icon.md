@@ -26,15 +26,42 @@ export default {
 }
 ```
 
-We support multiple types of icons as well:
+We support multiple types of icons:
 
 - `iconify` (default)
 - `fontawesome`
 - `iconfont`
 
-Also, images links are supported with any icon types (relative links are NOT supported).
+Also, you can use images links with any icon types (relative links are NOT supported).
 
 If you want a new type of icon, please open an issue or submit a PR.
+
+In markdown, you can use `::icon decorators... =size /color key=value complex-key="complex value"...::` to insert custom icons.
+
+- A string starting with `=` will be treated as a size definition.
+- A string starting with `/` will be treated as a color definition.
+- Any string which itself is a valid html attribute will parsed, standardized and added to the icon element.
+- The rest part will be treated as the icon name.
+
+```md
+::icon =16 /red:: <!-- <VPIcon class="icon" color="red" size="16px" -->
+
+::icon rotate vertical-align=middle:: <!-- <VPIcon icon="icon rotate" vertical-align="middle" -->
+```
+
+::: info Demo
+
+::mdi:home /blue::
+::mdi:apple =2rem vertical-align=text-bottom::
+
+```md
+::mdi:home /blue::
+::mdi:apple =2rem vertical-align=text-bottom::
+```
+
+:::
+
+## Icon Types
 
 ### Iconify
 
@@ -50,8 +77,8 @@ Additionally, iconify support the following props:
 If you use 1 icon set mostly, you can set the prefix to the icon set name (E.g.: `mdi:`), Then you can use the icon name without the prefix. Manually declaring a full icon name will override the prefix:
 
 ```md
-<VPIcon icon="home" /> <!-- mdi:home -->
-<VPIcon icon="svg-spinners:180-ring" /> <!-- svg-spinners:180-ring -->
+::home:: <!-- mdi:home -->
+::svg-spinners:180-ring:: <!-- svg-spinners:180-ring -->
 ```
 
 ### Font Awesome
@@ -63,26 +90,26 @@ The `fontawesome` keyword only includes the free solid and regular icons. If you
 Solid icons can be used directly. if you want to use regular or brand icons, you need to add the `regular:` or `brands:` prefix to the icon name:
 
 ```md
-<VPIcon icon="home" /> <!-- fas fa-home (solid is default) -->
-<VPIcon icon="solid:home" /> <!-- fas fa-home -->
-<VPIcon icon="regular:heart" /> <!-- far fa-heart -->
-<VPIcon icon="brands:apple" /> <!-- fab fa-apple -->
+::home:: <!-- fas fa-home (solid is default) -->
+::solid:home:: <!-- fas fa-home -->
+::regular:heart:: <!-- far fa-heart -->
+::brands:apple:: <!-- fab fa-apple -->
 ```
 
 Besides, a three letter prefix, first letter or full class name are also supported:
 
 ```md
-<VPIcon icon="s:home" /> <!-- fas fa-home -->
-<VPIcon icon="fas:home" /> <!-- fas fa-home -->
-<VPIcon icon="fa-solid:home" /> <!-- fa-solid fa-home -->
+::s:home:: <!-- fas fa-home -->
+::fas:home:: <!-- fas fa-home -->
+::fa-solid:home:: <!-- fa-solid fa-home -->
 
-<VPIcon icon="b:apple" /> <!-- fab fa-apple -->
-<VPIcon icon="fab:apple" /> <!-- fab fa-apple -->
-<VPIcon icon="fa-brands:apple" /> <!-- fa-brands fa-apple -->
+::b:apple:: <!-- fab fa-apple -->
+::fab:apple:: <!-- fab fa-apple -->
+::fa-brands:apple:: <!-- fa-brands fa-apple -->
 
-<VPIcon icon="r:heart" /> <!-- far fa-heart -->
-<VPIcon icon="far:heart" /> <!-- far fa-heart -->
-<VPIcon icon="fa-regular:heart" /> <!-- fa-regular fa-heart -->
+::r:heart:: <!-- far fa-heart -->
+::far:heart:: <!-- far fa-heart -->
+::fa-regular:heart:: <!-- fa-regular fa-heart -->
 ```
 
 You can add other classes that fontawesome supports after the icon name and split them with a space, where `fa-` prefix is optional:
@@ -90,11 +117,11 @@ You can add other classes that fontawesome supports after the icon name and spli
 ```md
 <!-- a small size icon -->
 
-<VPIcon icon="home fa-sm" /> <!-- fas fa-home fa-sm -->
+::home fa-sm:: <!-- fas fa-home fa-sm -->
 
 <!-- rotate 180deg -->
 
-<VPIcon icon="home rotate-180" /> <!-- fas fa-home fa-rotate-180 -->
+::home rotate-180:: <!-- fas fa-home fa-rotate-180 -->
 ```
 
 See <https://docs.fontawesome.com/web/style/styling> for all available classes.
@@ -166,16 +193,13 @@ Images links are supported with any icon types (relative links are NOT supported
 
 ```md
 <!-- A full link -->
-<VPIcon icon="https://example.com/icon.png" />
+
+::https://example.com/icon.png::
 
 <!-- icon.png should be placed in .vuepress/public folder -->
-<VPIcon icon="/icon.png" />
+
+<VPIcon icon="/icon.png" /> <!-- ::/icon.png:: is NOT supported as it will be parsed as color -->
 ```
-
-## Demo
-
-- <VPIcon icon="mdi:home" color="blue" />: home icon
-- <VPIcon icon="mdi:apple" size="2rem" vertical-align="text-bottom" />: apple icon
 
 ## Options
 
@@ -248,9 +272,17 @@ Images links are supported with any icon types (relative links are NOT supported
 
   Name of the icon component. If set to `null`, the plugin will not register the icon component globally.
 
+### markdown
+
+- Type: `boolean`
+- Default: `true`
+- Details:
+
+  Whether to enable icon syntax (`::icon::`) in markdown.
+
 ## Component Props
 
-### icon
+### icon {#icon-prop}
 
 - Type: `string`
 - Required: Yes

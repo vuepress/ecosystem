@@ -46,4 +46,13 @@ export interface IconPluginOptions {
    * @default "VPIcon"
    */
   component?: string
+
+  /**
+   * Enable markdown syntax
+   *
+   * 启用 Markdown 语法
+   *
+   * @default true
+   */
+  markdown?: boolean
 }
