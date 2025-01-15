@@ -44,9 +44,10 @@ export default {
         return true
       },
 
-      getInfo: ({ frontmatter, git = {}, data = {} }) => {
+      getInfo: ({ frontmatter, title, git = {}, data = {} }) => {
         // getting page info
         const info: Record<string, unknown> = {
+          title,
           author: frontmatter.author || '',
           categories: frontmatter.categories || [],
           date: frontmatter.date || git.createdTime || null,
