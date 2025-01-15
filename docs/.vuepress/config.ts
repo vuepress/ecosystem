@@ -151,7 +151,9 @@ export default defineUserConfig({
       ],
     }),
     registerComponentsPlugin({
-      componentsDir: path.resolve(__dirname, './components'),
+      components: {
+        NpmBadge: path.resolve(__dirname, './components/NpmBadge.vue'),
+      },
     }),
     // only enable shiki plugin in production mode
     IS_PROD
