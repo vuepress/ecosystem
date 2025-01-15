@@ -24,7 +24,7 @@ export const prepareCategoriesMap = async (
   await app.writeTemp(
     `blog/category.js`,
     `\
-export const categoriesMap = ${JSON.stringify(categoriesMap)};
+export const categoriesMap = JSON.parse(${JSON.stringify(JSON.stringify(categoriesMap))});
 ${app.env.isDev ? HMR_CODE : ''}
 `,
   )
