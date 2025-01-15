@@ -1,22 +1,17 @@
 import { resolveAutoLink } from '@theme/resolveAutoLink'
 import { resolvePrefix } from '@theme/resolvePrefix'
+import { useHeaders } from '@theme/useHeaders'
 import { useThemeLocaleData } from '@theme/useThemeData'
 import type { MenuItem } from '@vuepress/helper/client'
-import {
-  getHeaders,
-  isLinkRelative,
-  keys,
-  startsWith,
-} from '@vuepress/helper/client'
-import type { ComputedRef, InjectionKey, Ref } from 'vue'
-import { computed, inject, onMounted, provide, ref, watch } from 'vue'
+import { isLinkRelative, keys, startsWith } from '@vuepress/helper/client'
+import type { ComputedRef, InjectionKey } from 'vue'
+import { computed, inject, provide } from 'vue'
 import type { PageData } from 'vuepress/client'
 import {
   usePageData,
   usePageFrontmatter,
   useRoute,
   useRouteLocale,
-  useRouter,
 } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
 import type {
@@ -28,43 +23,6 @@ import type {
   SidebarOptions,
 } from '../../shared/index.js'
 import type { SidebarHeaderItem, SidebarItem } from '../typings.js'
-
-export type HeadersRef = Ref<MenuItem[]>
-
-export const headersRef: HeadersRef = ref([])
-
-export const setupHeaders = (): void => {
-  const router = useRouter()
-  const themeLocale = useThemeLocaleData()
-  const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
-  const levels = computed(
-    () => frontmatter.value.sidebarDepth ?? themeLocale.value.sidebarDepth ?? 2,
-  )
-
-  router.beforeEach((to, from) => {
-    if (to.path !== from.path) {
-      headersRef.value = []
-    }
-  })
-
-  const updateHeaders = (): void => {
-    if (levels.value <= 0) {
-      headersRef.value = []
-      return
-    }
-
-    headersRef.value = getHeaders({
-      levels: [2, levels.value + 1],
-      ignore: ['.vp-badge'],
-    })
-  }
-
-  watch(levels, updateHeaders)
-
-  onMounted(updateHeaders)
-}
-
-export const useHeaders = (): HeadersRef => headersRef
 
 /**
  * Util to transform page header to sidebar item
