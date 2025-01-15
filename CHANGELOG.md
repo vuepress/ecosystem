@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.71](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.70...v2.0.0-rc.71) (2025-01-15)
+
+### Bug Fixes
+
+- **plugin-comment:** wrap waline with ClientOnly ([fa70272](https://github.com/vuepress/ecosystem/commit/fa702722a128f3292dadf942894b8e28ab59d007))
+- **theme-default:** fix header provide ([2ee49d3](https://github.com/vuepress/ecosystem/commit/2ee49d3fc106b14d33331d23b06c2e3e074b6e77))
+- **theme-default:** fix setupHeaders, close [#326](https://github.com/vuepress/ecosystem/issues/326) ([f80d7e2](https://github.com/vuepress/ecosystem/commit/f80d7e26a468f92a8bae4ebd7dc746fd0ffe919f))
+
+### Features
+
+- **helper:** rebuild loading icon ([0321a54](https://github.com/vuepress/ecosystem/commit/0321a546ac59125affd7e61f8870a7675eaceb9f))
+- **plugin-icon:** add sizing prop for component ([f851b6a](https://github.com/vuepress/ecosystem/commit/f851b6a44cfcf62ee0b105e736d3713e0c390b7b))
+
+### Performance Improvements
+
+- **plugin-blog:** improve performance ([#341](https://github.com/vuepress/ecosystem/issues/341)) ([aab502f](https://github.com/vuepress/ecosystem/commit/aab502f49388573c0cd28a336fd6886a80dd4305))
+
 # [2.0.0-rc.70](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.69...v2.0.0-rc.70) (2025-01-13)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.71](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.70...v2.0.0-rc.71) (2025-01-15)
+
+### Features
+
+- **helper:** rebuild loading icon ([0321a54](https://github.com/vuepress/ecosystem/commit/0321a546ac59125affd7e61f8870a7675eaceb9f))
+
 # [2.0.0-rc.70](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.69...v2.0.0-rc.70) (2025-01-13)
 
 ### Features

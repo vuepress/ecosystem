@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.71](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.70...v2.0.0-rc.71) (2025-01-15)
+
+### Performance Improvements
+
+- **plugin-blog:** improve performance ([#341](https://github.com/vuepress/ecosystem/issues/341)) ([aab502f](https://github.com/vuepress/ecosystem/commit/aab502f49388573c0cd28a336fd6886a80dd4305))
+
 # [2.0.0-rc.70](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.69...v2.0.0-rc.70) (2025-01-13)
 
 ### Bug Fixes

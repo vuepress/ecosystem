@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.71](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.70...v2.0.0-rc.71) (2025-01-15)
+
+### Bug Fixes
+
+- **theme-default:** fix header provide ([2ee49d3](https://github.com/vuepress/ecosystem/commit/2ee49d3fc106b14d33331d23b06c2e3e074b6e77))
+- **theme-default:** fix setupHeaders, close [#326](https://github.com/vuepress/ecosystem/issues/326) ([f80d7e2](https://github.com/vuepress/ecosystem/commit/f80d7e26a468f92a8bae4ebd7dc746fd0ffe919f))
+
 # [2.0.0-rc.70](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.69...v2.0.0-rc.70) (2025-01-13)
 
 ### Bug Fixes

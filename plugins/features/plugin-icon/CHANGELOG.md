@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.71](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.70...v2.0.0-rc.71) (2025-01-15)
+
+### Features
+
+- **plugin-icon:** add sizing prop for component ([f851b6a](https://github.com/vuepress/ecosystem/commit/f851b6a44cfcf62ee0b105e736d3713e0c390b7b))
+
 # [2.0.0-rc.70](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.69...v2.0.0-rc.70) (2025-01-13)
 
 ### Bug Fixes
