@@ -33,18 +33,22 @@
     "./colors.css": "./lib/client/styles/colors.css",
     "./normalize.css": "./lib/client/styles/normalize.css",
     "./sr-only.css": "./lib/client/styles/sr-only.css",
+    "./scss/*.scss": {
+      "sass": "./scss/*.scss"
+    },
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
   "types": "./lib/node/index.d.ts",
   "files": [
-    "lib"
+    "lib",
+    "sass"
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "style": "sass src:lib --embed-sources --style=compressed"
+    "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
     "@vue/shared": "^3.5.13",
