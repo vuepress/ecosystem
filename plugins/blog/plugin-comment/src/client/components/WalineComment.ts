@@ -11,7 +11,7 @@ import {
   nextTick,
   onMounted,
 } from 'vue'
-import { usePageFrontmatter, usePageLang } from 'vuepress/client'
+import { ClientOnly, usePageFrontmatter, usePageLang } from 'vuepress/client'
 import type {
   CommentPluginFrontmatter,
   WalineLocaleData,
@@ -104,15 +104,15 @@ export default defineComponent({
             { id: 'comment', class: 'waline-wrapper' },
             h(
               defineAsyncComponent({
-                loader: async () =>
-                  (
-                    await import(
-                      /* webpackChunkName: "waline" */ '@waline/client/component'
-                    )
-                  ).Waline,
+                loader: async () => {
+                  const { Waline } = await import(
+                    /* webpackChunkName: "waline" */ '@waline/client/component'
+                  )
+
+                  return () => h(ClientOnly, () => h(Waline, walineProps.value))
+                },
                 loadingComponent: LoadingIcon,
               }),
-              walineProps.value,
             ),
           )
         : null
