@@ -38,7 +38,7 @@ export const prepareStore = async (app: App, store: Store): Promise<void> => {
   await app.writeTemp(
     `blog/store.js`,
     `\
-export const store = ${store.toJSON()};
+export const store = JSON.parse(${JSON.stringify(store.toJSON())});
 `,
   )
 }
