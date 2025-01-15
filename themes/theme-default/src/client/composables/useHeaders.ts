@@ -1,9 +1,9 @@
 import { useThemeLocaleData } from '@theme/useThemeData'
 import type { MenuItem } from '@vuepress/helper/client'
 import { getHeaders } from '@vuepress/helper/client'
-import { watchImmediate } from '@vueuse/core'
+import { injectLocal, provideLocal, watchImmediate } from '@vueuse/core'
 import type { InjectionKey, Ref } from 'vue'
-import { computed, inject, onMounted, provide, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { usePageFrontmatter, useRoutePath } from 'vuepress/client'
 import type { DefaultThemeNormalPageFrontmatter } from '../../shared/index.js'
 
@@ -15,7 +15,7 @@ export const headersSymbol: InjectionKey<HeadersRef> = Symbol('headers')
  * Inject headers
  */
 export const useHeaders = (): HeadersRef => {
-  const headers = inject(headersSymbol)
+  const headers = injectLocal(headersSymbol)
 
   if (!headers) {
     throw new Error('useHeaders() is called without provider.')
@@ -45,7 +45,7 @@ export const setupHeaders = (): void => {
     })
   }
 
-  provide(headersSymbol, headersRef)
+  provideLocal(headersSymbol, headersRef)
 
   onMounted(() => {
     watchImmediate([levels, routePath], updateHeaders)
