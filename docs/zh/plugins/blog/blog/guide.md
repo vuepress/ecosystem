@@ -40,9 +40,10 @@ export default {
         return true
       },
 
-      getInfo: ({ frontmatter, git = {}, data = {} }) => {
+      getInfo: ({ frontmatter, title, git = {}, data = {} }) => {
         // 获取页面信息
         const info: Record<string, unknown> = {
+          title,
           author: frontmatter.author || '',
           categories: frontmatter.categories || [],
           date: frontmatter.date || git.createdTime || null,
