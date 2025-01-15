@@ -27,15 +27,6 @@ export type HeadersRef = Ref<MenuItem[]>
 
 export const headersRef: HeadersRef = ref([])
 
-onMounted(() => {
-  const router = useRouter()
-  router.beforeEach((to, from) => {
-    if (to.path !== from.path) {
-      headersRef.value = []
-    }
-  })
-})
-
 export const setupHeaders = (): void => {
   const themeLocale = useThemeLocaleData()
   const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
@@ -231,6 +222,7 @@ export const setupSidebarItems = (): void => {
   >()
   const page = usePageData()
   const route = useRoute()
+  const router = useRouter()
   const routeLocale = useRouteLocale()
   const headers = useHeaders()
 
@@ -252,4 +244,10 @@ export const setupSidebarItems = (): void => {
     ),
   )
   provide(sidebarItemsSymbol, sidebarItems)
+
+  router.beforeEach((to, from) => {
+    if (to.path !== from.path) {
+      headersRef.value = []
+    }
+  })
 }
