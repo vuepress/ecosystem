@@ -58,50 +58,67 @@ export const VPIcon = defineComponent({
       type: String,
       default: '',
     },
+
+    /**
+     * Icon sizing
+     *
+     * 图标尺寸
+     *
+     * @default 'height' in main content, and 'both' in others
+     */
+    sizing: {
+      type: String as PropType<'both' | 'height' | 'width' | undefined>,
+      default: 'height',
+    },
   },
 
   setup(props) {
-    const style = computed(() => {
+    const imageLink = computed(() =>
+      isLinkHttp(props.icon)
+        ? props.icon
+        : isLinkAbsolute(props.icon)
+          ? withBase(props.icon)
+          : null,
+    )
+
+    const attrs = computed(() => {
+      const attrsObject: Record<string, unknown> = {}
       const styleObject: CSSProperties = {}
+      const { type, verticalAlign, size, sizing } = props
 
-      if (props.color) styleObject.color = props.color
+      if (size)
+        styleObject['--icon-size'] = Number.isNaN(Number(size))
+          ? (size as string)
+          : `${size}px`
+      if (verticalAlign) styleObject['--icon-vertical-align'] = verticalAlign
 
-      if (props.size)
-        styleObject.fontSize = Number.isNaN(Number(props.size))
-          ? (props.size as string)
-          : `${props.size}px`
-      if (props.verticalAlign) styleObject.verticalAlign = props.verticalAlign
+      if (type === 'iconify') {
+        if (sizing !== 'height') attrsObject.width = props.size || '1em'
+        if (sizing !== 'width') attrsObject.height = props.size || '1em'
+      }
 
-      return keys(styleObject).length ? styleObject : null
+      if (props.sizing) attrsObject.sizing = props.sizing
+      if (keys(styleObject).length) attrsObject.style = styleObject
+
+      return attrsObject
     })
 
     const appendFontawesomePrefix = (icon: string): string =>
       icon.includes('fa-') || /^fa.$/.test(icon) ? icon : `fa-${icon}`
 
     return (): VNode | null => {
-      const { type, icon, prefix } = props
+      const { type, icon, prefix, sizing } = props
 
       if (!icon) return null
 
-      if (isLinkHttp(icon)) {
+      if (imageLink.value) {
         return h('img', {
           'class': 'vp-icon',
-          'src': icon,
+          'src': imageLink.value,
           'alt': '',
           'aria-hidden': '',
           'no-view': '',
-          'style': style.value,
-        })
-      }
-
-      if (isLinkAbsolute(icon)) {
-        return h('img', {
-          'class': 'vp-icon',
-          'src': withBase(icon),
-          'alt': '',
-          'aria-hidden': '',
-          'no-view': '',
-          'style': style.value,
+          ...attrs.value,
         })
       }
 
@@ -111,8 +128,7 @@ export const VPIcon = defineComponent({
           class: 'vp-icon',
           // if a icon set is provided, do not add prefix
           icon: icon.includes(':') ? icon : `${prefix}${icon}`,
-          inline: '',
-          style: style.value,
+          ...attrs.value,
         })
       }
 
@@ -125,15 +141,14 @@ export const VPIcon = defineComponent({
           key: icon,
           class: [
             'vp-icon',
-
             // declare icon type
             iconType.length === 1
               ? `fa${iconType}`
               : appendFontawesomePrefix(iconType),
-
             ...rest.split(' ').map(appendFontawesomePrefix),
+            sizing === 'height' ? '' : 'fa-fw',
           ],
-          style: style.value,
+          ...attrs.value,
         })
       }
 
@@ -144,7 +159,7 @@ export const VPIcon = defineComponent({
           // if multiple classes are provided, do not add prefix
           icon.includes(' ') ? icon : `${prefix}${icon}`,
         ],
-        style: style.value,
+        ...attrs.value,
       })
     }
   },

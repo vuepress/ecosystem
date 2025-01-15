@@ -296,3 +296,13 @@ export default {
 - 类型：`string`
 - 默认值：`-0.125em`
 - 详情： 图标垂直对齐方式
+
+### sizing
+
+- 类型：`'width' | 'height' | 'both'`
+- 默认值：`'height'`
+- 详情： 图标尺寸调整方式
+
+  - `width`：仅设置宽度
+  - `height`：仅设置高度
+  - `both`：设置宽度和高度

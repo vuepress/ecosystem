@@ -305,3 +305,13 @@ Images links are supported with any icon types (relative links are NOT supported
 - Type: `string`
 - Default: `-0.125em`
 - Details: Vertical alignment of the icon.
+
+### sizing
+
+- Type: `'width' | 'height' | 'both'`
+- Default: `'height'`
+- Details: Icon size adjustment method.
+
+  - `width`: Set width only
+  - `height`: Set height only
+  - `both`: Set width and height
