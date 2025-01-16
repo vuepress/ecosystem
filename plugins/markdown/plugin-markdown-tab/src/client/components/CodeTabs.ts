@@ -49,10 +49,7 @@ export const CodeTabs = defineComponent({
      *
      * 标签页 id
      */
-    tabId: {
-      type: String,
-      default: '',
-    },
+    tabId: String,
   },
 
   slots: Object as SlotsType<{
@@ -111,7 +108,7 @@ export const CodeTabs = defineComponent({
     const getInitialIndex = (): number => {
       if (props.tabId) {
         const valueIndex = props.data.findIndex(
-          ({ id }) => codeTabStore.value[props.tabId] === id,
+          ({ id }) => codeTabStore.value[props.tabId!] === id,
         )
 
         if (valueIndex !== -1) return valueIndex
@@ -124,7 +121,7 @@ export const CodeTabs = defineComponent({
       activeIndex.value = getInitialIndex()
 
       watch(
-        () => codeTabStore.value[props.tabId],
+        () => props.tabId && codeTabStore.value[props.tabId],
         (newValue, oldValue) => {
           if (props.tabId && newValue !== oldValue) {
             const index = props.data.findIndex(({ id }) => id === newValue)

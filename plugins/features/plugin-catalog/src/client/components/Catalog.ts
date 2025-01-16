@@ -46,10 +46,7 @@ export default defineComponent({
      *
      * @default current route base
      */
-    base: {
-      type: String,
-      default: '',
-    },
+    base: String,
 
     /**
      * Max level of catalog

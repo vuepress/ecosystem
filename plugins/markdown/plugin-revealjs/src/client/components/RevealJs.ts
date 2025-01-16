@@ -29,21 +29,30 @@ export const RevealJs = defineComponent({
      *
      * 幻灯片 id
      */
-    id: { type: String, required: true },
+    id: {
+      type: String,
+      required: true,
+    },
 
     /**
      * Presentation code
      *
      * 幻灯片代码
      */
-    code: { type: String, required: true },
+    code: {
+      type: String,
+      required: true,
+    },
 
     /**
      * Presentation theme
      *
      * 幻灯片主题
      */
-    theme: { type: String as PropType<RevealJsTheme>, default: 'auto' },
+    theme: {
+      type: String as PropType<RevealJsTheme>,
+      default: 'auto',
+    },
   },
 
   setup(props) {

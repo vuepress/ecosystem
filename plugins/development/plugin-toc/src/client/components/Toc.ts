@@ -104,10 +104,7 @@ export const Toc = defineComponent({
   name: 'Toc',
 
   props: {
-    headers: {
-      type: Array as PropType<TocPropsHeaders | undefined>,
-      default: undefined,
-    },
+    headers: Array as PropType<TocPropsHeaders | undefined>,
 
     options: {
       type: Object as PropType<Partial<TocPropsOptions>>,
