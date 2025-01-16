@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.73](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.72...v2.0.0-rc.73) (2025-01-16)
+
+### Bug Fixes
+
+- **helper:** fix getHeaders function ([#342](https://github.com/vuepress/ecosystem/issues/342)) ([df653e7](https://github.com/vuepress/ecosystem/commit/df653e780c101150c114c47b3269a4b2af7cbe45))
+
 # [2.0.0-rc.71](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.70...v2.0.0-rc.71) (2025-01-15)
 
 ### Features
