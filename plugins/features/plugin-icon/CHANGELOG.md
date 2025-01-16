@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.72](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.71...v2.0.0-rc.72) (2025-01-16)
+
+### Bug Fixes
+
+- **plugin-icon:** fix fontawesome icon width ([f6cd0cd](https://github.com/vuepress/ecosystem/commit/f6cd0cd84e66200cd0c23a395f93b7f8c9198272))
+
 # [2.0.0-rc.71](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.70...v2.0.0-rc.71) (2025-01-15)
 
 ### Features
