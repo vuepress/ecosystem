@@ -1,5 +1,5 @@
 import { useThemeLocaleData } from '@theme/useThemeData'
-import type { MenuItem } from '@vuepress/helper/client'
+import type { HeaderItem } from '@vuepress/helper/client'
 import { getHeaders } from '@vuepress/helper/client'
 import { injectLocal, provideLocal, watchImmediate } from '@vueuse/core'
 import type { InjectionKey, Ref } from 'vue'
@@ -7,7 +7,7 @@ import { computed, onMounted, ref } from 'vue'
 import { usePageFrontmatter, useRoutePath } from 'vuepress/client'
 import type { DefaultThemeNormalPageFrontmatter } from '../../shared/index.js'
 
-export type HeadersRef = Ref<MenuItem[]>
+export type HeadersRef = Ref<HeaderItem[]>
 
 export const headersSymbol: InjectionKey<HeadersRef> = Symbol('headers')
 

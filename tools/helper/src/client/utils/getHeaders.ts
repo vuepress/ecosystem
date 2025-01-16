@@ -3,7 +3,7 @@ import type { PageHeader } from 'vuepress/shared'
 export type HeaderLevels = number | 'deep' | false | [number, number]
 
 export type HeaderItem = Omit<PageHeader, 'children'> & {
-  element: HTMLHeadElement
+  element: HTMLHeadingElement
   children?: HeaderItem[]
 }
 
