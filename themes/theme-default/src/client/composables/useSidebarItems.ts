@@ -2,7 +2,7 @@ import { resolveAutoLink } from '@theme/resolveAutoLink'
 import { resolvePrefix } from '@theme/resolvePrefix'
 import { useHeaders } from '@theme/useHeaders'
 import { useThemeLocaleData } from '@theme/useThemeData'
-import type { MenuItem } from '@vuepress/helper/client'
+import type { HeaderItem } from '@vuepress/helper/client'
 import { isLinkRelative, keys, startsWith } from '@vuepress/helper/client'
 import type { ComputedRef, InjectionKey } from 'vue'
 import { computed, inject, provide } from 'vue'
@@ -28,7 +28,7 @@ import type { SidebarHeaderItem, SidebarItem } from '../typings.js'
  * Util to transform page header to sidebar item
  */
 export const resolveSidebarHeaderItem = (
-  header: MenuItem,
+  header: HeaderItem,
 ): SidebarHeaderItem => ({
   text: header.title,
   link: header.link,
@@ -37,7 +37,7 @@ export const resolveSidebarHeaderItem = (
 })
 
 export const resolveSidebarHeaderItems = (
-  headers?: MenuItem[],
+  headers?: HeaderItem[],
 ): SidebarHeaderItem[] =>
   headers ? headers.map((header) => resolveSidebarHeaderItem(header)) : []
 
@@ -46,7 +46,7 @@ export const resolveSidebarHeaderItems = (
  */
 export const resolveSidebarHeadingItem = (
   page: PageData,
-  headers: MenuItem[],
+  headers: HeaderItem[],
 ): SidebarItem[] => [
   {
     text: page.title,
@@ -59,7 +59,7 @@ export const resolveSidebarHeadingItem = (
  */
 export const resolveArraySidebarItems = (
   sidebarConfig: SidebarArrayOptions,
-  headers: MenuItem[],
+  headers: HeaderItem[],
   path: string,
   prefix = '',
 ): SidebarItem[] => {
@@ -112,7 +112,7 @@ export const resolveArraySidebarItems = (
 export const resolveMultiSidebarItems = (
   sidebarConfig: SidebarObjectOptions,
   page: PageData,
-  headers: MenuItem[],
+  headers: HeaderItem[],
   path: string,
 ): SidebarItem[] => {
   const sidebarRoutes = keys(sidebarConfig).sort((x, y) => y.length - x.length)
@@ -161,7 +161,7 @@ export const resolveSidebarItems = (
   page: PageData,
   path: string,
   routeLocale: string,
-  headers: MenuItem[],
+  headers: HeaderItem[],
 ): SidebarItem[] => {
   // resolve sidebar items according to the config
   if (sidebarConfig === false) {
