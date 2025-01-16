@@ -21,43 +21,35 @@ export const VPIcon = defineComponent({
     /**
      * Icon prefix
      */
-    prefix: {
-      type: String,
-      default: '',
-    },
+    prefix: String,
 
     /**
      * Icon class
      *
      * 图标类名
      */
-    icon: { type: String, default: '' },
+    icon: String,
+
     /**
      * Icon color
      *
      * 图标颜色
      */
-    color: { type: String, default: '' },
+    color: String,
 
     /**
      * Icon size
      *
      * 图标大小
      */
-    size: {
-      type: [String, Number],
-      default: '',
-    },
+    size: [String, Number],
 
     /**
      * Icon vertical align
      *
      * 图标垂直对齐方式
      */
-    verticalAlign: {
-      type: String,
-      default: '',
-    },
+    verticalAlign: String,
 
     /**
      * Icon sizing
@@ -74,11 +66,13 @@ export const VPIcon = defineComponent({
 
   setup(props) {
     const imageLink = computed(() =>
-      isLinkHttp(props.icon)
-        ? props.icon
-        : isLinkAbsolute(props.icon)
-          ? withBase(props.icon)
-          : null,
+      props.icon
+        ? isLinkHttp(props.icon)
+          ? props.icon
+          : isLinkAbsolute(props.icon)
+            ? withBase(props.icon)
+            : null
+        : null,
     )
 
     const attrs = computed(() => {
@@ -86,6 +80,7 @@ export const VPIcon = defineComponent({
       const styleObject: CSSProperties = {}
       const { type, verticalAlign, size, sizing } = props
 
+      if (props.color) styleObject.color = props.color
       if (size)
         styleObject['--icon-size'] = Number.isNaN(Number(size))
           ? (size as string)
@@ -107,7 +102,7 @@ export const VPIcon = defineComponent({
       icon.includes('fa-') || /^fa.$/.test(icon) ? icon : `fa-${icon}`
 
     return (): VNode | null => {
-      const { type, icon, prefix, sizing } = props
+      const { type, icon, prefix = '', sizing } = props
 
       if (!icon) return null
 
