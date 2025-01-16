@@ -22,7 +22,7 @@ export const resolveHeaders = (
         ? [2, 6]
         : levels
   const allowedHeaders = headers.filter(
-    (h) => h.level >= high && h.level <= low,
+    (header) => header.level >= high && header.level <= low,
   )
 
   const result: HeaderItem[] = []
