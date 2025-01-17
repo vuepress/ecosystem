@@ -3,7 +3,8 @@ import { setupHeaders } from '@theme/useHeaders'
 import { useScrollPromise } from '@theme/useScrollPromise'
 import { setupSidebarItems } from '@theme/useSidebarItems'
 import { hasGlobalComponent } from '@vuepress/helper/client'
-import { defineClientConfig } from 'vuepress/client'
+import { watchImmediate } from '@vueuse/core'
+import { defineClientConfig, useRoutePath } from 'vuepress/client'
 import { Badge } from './components/global/index.js'
 import Layout from './layouts/Layout.vue'
 import NotFound from './layouts/NotFound.vue'
@@ -28,6 +29,17 @@ export default defineClientConfig({
     setupDarkMode()
     setupHeaders()
     setupSidebarItems()
+
+    watchImmediate(useRoutePath(), () => {
+      console.log('root route path changed')
+    })
+    watchImmediate(
+      useRoutePath(),
+      () => {
+        console.log('root route path changed post')
+      },
+      { flush: 'post' },
+    )
   },
 
   layouts: {

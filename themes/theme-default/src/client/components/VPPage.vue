@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import VPPageMeta from '@theme/VPPageMeta.vue'
 import VPPageNav from '@theme/VPPageNav.vue'
+import { watchImmediate } from '@vueuse/core'
 import type { VNode } from 'vue'
-import { Content } from 'vuepress/client'
+import { h } from 'vue'
+import { Content, useRoutePath } from 'vuepress/client'
 
 defineSlots<{
   'top'?: (props: Record<never, never>) => VNode | VNode[] | null
@@ -10,6 +12,23 @@ defineSlots<{
   'content-top'?: (props: Record<never, never>) => VNode | VNode[] | null
   'content-bottom'?: (props: Record<never, never>) => VNode | VNode[] | null
 }>()
+
+watchImmediate(useRoutePath(), () => {
+  console.log('page route path changed')
+})
+watchImmediate(
+  useRoutePath(),
+  () => {
+    console.log('page route path changed post')
+  },
+  { flush: 'post' },
+)
+
+const MarkdownContent = () => {
+  console.log('render')
+
+  return h(Content)
+}
 </script>
 
 <template>
@@ -19,7 +38,7 @@ defineSlots<{
     <div vp-content>
       <slot name="content-top" />
 
-      <Content />
+      <MarkdownContent />
 
       <slot name="content-bottom" />
     </div>

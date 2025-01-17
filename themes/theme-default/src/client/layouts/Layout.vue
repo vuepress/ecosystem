@@ -6,9 +6,15 @@ import VPSidebar from '@theme/VPSidebar.vue'
 import { useScrollPromise } from '@theme/useScrollPromise'
 import { useSidebarItems } from '@theme/useSidebarItems'
 import { useThemeLocaleData } from '@theme/useThemeData'
+import { watchImmediate } from '@vueuse/core'
 import type { VNode } from 'vue'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
-import { usePageData, usePageFrontmatter, useRouter } from 'vuepress/client'
+import {
+  usePageData,
+  usePageFrontmatter,
+  useRoutePath,
+  useRouter,
+} from 'vuepress/client'
 import type { DefaultThemePageFrontmatter } from '../../shared/index.js'
 
 defineSlots<{
@@ -90,6 +96,17 @@ onMounted(() => {
 onUnmounted(() => {
   unregisterRouterHook()
 })
+
+watchImmediate(useRoutePath(), () => {
+  console.log('layout route path changed')
+})
+watchImmediate(
+  useRoutePath(),
+  () => {
+    console.log('layout route path changed post')
+  },
+  { flush: 'post' },
+)
 
 // handle scrollBehavior with transition
 const scrollPromise = useScrollPromise()
