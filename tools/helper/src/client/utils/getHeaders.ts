@@ -1,5 +1,9 @@
 import type { PageHeader } from 'vuepress/shared'
 
+const DEFAULT_HEADER_SELECTOR = [...new Array<undefined>(6)]
+  .map((_, i) => `[vp-content] h${i + 1}`)
+  .join(',')
+
 export type HeaderLevels = number | 'deep' | false | [number, number]
 
 export type HeaderItem = Omit<PageHeader, 'children'> & {
@@ -67,8 +71,8 @@ const serializeHeader = (h: Element, ignore: string[] = []): string => {
 }
 
 export const getHeadersFromDom = (
-  selector: string,
-  ignore: string[],
+  selector = DEFAULT_HEADER_SELECTOR,
+  ignore: string[] = [],
 ): HeaderItem[] =>
   Array.from(document.querySelectorAll(selector))
     .filter((el) => el.id && el.hasChildNodes())
@@ -117,9 +121,7 @@ export interface GetHeadersOptions {
  * Get headers of current page.
  */
 export const getHeaders = ({
-  selector = [...new Array<undefined>(6)]
-    .map((_, i) => `[vp-content] h${i + 1}`)
-    .join(','),
+  selector = DEFAULT_HEADER_SELECTOR,
   levels = 2,
   ignore = [],
 }: GetHeadersOptions = {}): HeaderItem[] =>
