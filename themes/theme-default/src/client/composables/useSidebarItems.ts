@@ -1,12 +1,10 @@
 import { resolveAutoLink } from '@theme/resolveAutoLink'
 import { resolvePrefix } from '@theme/resolvePrefix'
-import { useHeaders } from '@theme/useHeaders'
 import { useThemeLocaleData } from '@theme/useThemeData'
-import type { HeaderItem } from '@vuepress/helper/client'
 import { isLinkRelative, keys, startsWith } from '@vuepress/helper/client'
 import type { ComputedRef, InjectionKey } from 'vue'
 import { computed, inject, provide } from 'vue'
-import type { PageData } from 'vuepress/client'
+import type { PageData, PageHeader } from 'vuepress/client'
 import {
   usePageData,
   usePageFrontmatter,
@@ -27,30 +25,30 @@ import type { SidebarHeaderItem, SidebarItem } from '../typings.js'
 /**
  * Util to transform page header to sidebar item
  */
-export const resolveSidebarHeaderItem = (
-  header: HeaderItem,
+export const resolveSidebarPageHeader = (
+  header: PageHeader,
 ): SidebarHeaderItem => ({
   text: header.title,
   link: header.link,
   // eslint-disable-next-line @typescript-eslint/no-use-before-define
-  children: resolveSidebarHeaderItems(header.children),
+  children: resolveSidebarPageHeaders(header.children),
 })
 
-export const resolveSidebarHeaderItems = (
-  headers?: HeaderItem[],
+export const resolveSidebarPageHeaders = (
+  headers?: PageHeader[],
 ): SidebarHeaderItem[] =>
-  headers ? headers.map((header) => resolveSidebarHeaderItem(header)) : []
+  headers ? headers.map((header) => resolveSidebarPageHeader(header)) : []
 
 /**
  * Resolve current page and its header to sidebar items if the config is `heading`
  */
 export const resolveSidebarHeadingItem = (
   page: PageData,
-  headers: HeaderItem[],
+  headers: PageHeader[],
 ): SidebarItem[] => [
   {
     text: page.title,
-    children: resolveSidebarHeaderItems(headers),
+    children: resolveSidebarPageHeaders(headers),
   },
 ]
 
@@ -59,7 +57,7 @@ export const resolveSidebarHeadingItem = (
  */
 export const resolveArraySidebarItems = (
   sidebarConfig: SidebarArrayOptions,
-  headers: HeaderItem[],
+  headers: PageHeader[],
   path: string,
   prefix = '',
 ): SidebarItem[] => {
@@ -96,7 +94,7 @@ export const resolveArraySidebarItems = (
 
       return {
         ...childItem,
-        children: resolveSidebarHeaderItems(currentHeaders),
+        children: resolveSidebarPageHeaders(currentHeaders),
       }
     }
 
@@ -112,7 +110,7 @@ export const resolveArraySidebarItems = (
 export const resolveMultiSidebarItems = (
   sidebarConfig: SidebarObjectOptions,
   page: PageData,
-  headers: HeaderItem[],
+  headers: PageHeader[],
   path: string,
 ): SidebarItem[] => {
   const sidebarRoutes = keys(sidebarConfig).sort((x, y) => y.length - x.length)
@@ -161,7 +159,7 @@ export const resolveSidebarItems = (
   page: PageData,
   path: string,
   routeLocale: string,
-  headers: HeaderItem[],
+  headers: PageHeader[],
 ): SidebarItem[] => {
   // resolve sidebar items according to the config
   if (sidebarConfig === false) {
@@ -194,7 +192,6 @@ export const setupSidebarItems = (): void => {
   const page = usePageData()
   const route = useRoute()
   const routeLocale = useRouteLocale()
-  const headers = useHeaders()
 
   const sidebarConfig = computed<SidebarOptions | false>(() =>
     frontmatter.value.home
@@ -210,7 +207,7 @@ export const setupSidebarItems = (): void => {
       page.value,
       route.path,
       routeLocale.value,
-      headers.value,
+      page.value.headers,
     ),
   )
   provide(sidebarItemsSymbol, sidebarItems)

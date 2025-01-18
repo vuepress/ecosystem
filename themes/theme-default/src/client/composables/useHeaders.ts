@@ -48,6 +48,6 @@ export const setupHeaders = (): void => {
   provideLocal(headersSymbol, headersRef)
 
   onMounted(() => {
-    watchImmediate(() => [levels, routePath], updateHeaders)
+    watchImmediate([levels, routePath], updateHeaders)
   })
 }
