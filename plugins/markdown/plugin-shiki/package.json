@@ -38,11 +38,11 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@shikijs/transformers": "^1.27.2",
+    "@shikijs/transformers": "^1.29.1",
     "@vuepress/helper": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
     "nanoid": "^5.0.9",
-    "shiki": "^1.27.2"
+    "shiki": "^1.29.1"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.19"
