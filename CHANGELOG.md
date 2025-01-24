@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.75](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.74...v2.0.0-rc.75) (2025-01-24)
+
+### Bug Fixes
+
+- **plugin-markdown-stylize:** fix config file path ([4f5300c](https://github.com/vuepress/ecosystem/commit/4f5300c19665a6bf3e85b70fbd53a3decd0586aa))
+
 # [2.0.0-rc.74](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.73...v2.0.0-rc.74) (2025-01-24)
 
 ### Bug Fixes
