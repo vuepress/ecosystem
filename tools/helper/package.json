@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "@vue/shared": "^3.5.13",
-    "@vueuse/core": "^12.4.0",
+    "@vueuse/core": "^12.5.0",
     "cheerio": "1.0.0",
     "fflate": "^0.8.2",
     "gray-matter": "^4.0.3",

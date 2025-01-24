@@ -36,6 +36,6 @@
     "vuepress": "2.0.0-rc.19"
   },
   "devDependencies": {
-    "@playwright/test": "^1.49.1"
+    "@playwright/test": "^1.50.0"
   }
 }
