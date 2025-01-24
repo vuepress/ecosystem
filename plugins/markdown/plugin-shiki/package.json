@@ -23,6 +23,7 @@
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
+    "./resolveLang": "./lib/node/resolveLang.js",
     "./styles/*": "./lib/client/styles/*",
     "./package.json": "./package.json"
   },
@@ -42,7 +43,8 @@
     "@vuepress/helper": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
     "nanoid": "^5.0.9",
-    "shiki": "^2.1.0"
+    "shiki": "^2.1.0",
+    "synckit": "^0.9.2"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.19"
