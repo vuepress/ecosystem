@@ -9,6 +9,7 @@ import { createHighlighter, isSpecialLang } from 'shiki'
 import { createSyncFn } from 'synckit'
 import type { ShikiResolveLang } from '../../resolveLang.js'
 import type { ShikiHighlightOptions } from '../../types.js'
+import { resolveLanguage } from '../../utils.js'
 
 const require = createRequire(import.meta.url)
 
@@ -26,7 +27,7 @@ export const createShikiHighlighter = async ({
   ...options
 }: ShikiHighlightOptions = {}): Promise<{
   highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>
-  loadLang: (lang: LanguageRegistration | string) => boolean
+  loadLang: (lang: string) => boolean
 }> => {
   const highlighter = await createHighlighter({
     langs: [...langs, ...Object.values(langAlias)],
@@ -37,21 +38,19 @@ export const createShikiHighlighter = async ({
         : [options.theme ?? 'nord'],
   })
 
-  const loadLang = (langConfig: LanguageRegistration | string): boolean => {
-    const lang = typeof langConfig === 'string' ? langConfig : langConfig.name
+  const loadLang = (lang: string): boolean => {
+    if (isSpecialLang(lang)) return true
 
-    if (
-      !isSpecialLang(lang) &&
-      !highlighter.getLoadedLanguages().includes(lang)
-    ) {
+    const loadedLangs = highlighter.getLoadedLanguages()
+
+    if (!loadedLangs.includes(lang)) {
       const resolvedLang = resolveLangSync(lang)
 
       if (!resolvedLang.length) return false
 
-      console.log('loading lang', lang)
-
       highlighter.loadLanguageSync(resolvedLang)
     }
+
     return true
   }
 
@@ -59,7 +58,9 @@ export const createShikiHighlighter = async ({
   const rawGetLanguage = highlighter.getLanguage
 
   highlighter.getLanguage = (name) => {
-    loadLang(name)
+    const lang = typeof name === 'string' ? name : name.name
+
+    loadLang(resolveLanguage(lang))
 
     return rawGetLanguage.call(highlighter, name)
   }

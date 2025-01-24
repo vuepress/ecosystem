@@ -14,7 +14,7 @@ export const getLanguage = (
 ): string => {
   let result = resolveLanguage(lang)
 
-  if (result && !loadLang(lang)) {
+  if (result && !loadLang(result)) {
     // warn for unknown languages only once
     if (logLevel !== 'silent' && !WARNED_LANGS.has(result)) {
       logger.warn(
