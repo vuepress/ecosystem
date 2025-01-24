@@ -15,6 +15,7 @@ export const prepareClientConfigFile = (
     notationHighlight,
     notationWordHighlight,
     whitespace,
+    twoslash,
   }: ShikiPluginOptions,
 ): Promise<string> => {
   const imports: string[] = [
@@ -78,6 +79,13 @@ export const prepareClientConfigFile = (
       `import { setupCollapsedLines } from "${getModulePath('@vuepress/highlighter-helper/client', import.meta)}"`,
     )
     setups.push('setupCollapsedLines()')
+  }
+
+  if (twoslash) {
+    imports.push(
+      `import "${getModulePath('@shikijs/twoslash/style-rich.css', import.meta)}"`,
+      `import "${getModulePath(`${PLUGIN_NAME}/styles/twoslash.css`, import.meta)}"`,
+    )
   }
 
   let code = imports.join('\n')

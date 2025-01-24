@@ -671,6 +671,44 @@ body > div {
 - Also see：
   - [Shiki > Render Whitespace](https://shiki.style/packages/transformers#transformerrenderwhitespace)
 
+### twoslash
+
+- Type: `boolean`
+
+- Default: `false`
+
+- Details: Whether enable [twoslash](https://github.com/twoslashes/twoslash).
+
+  ::: tip
+
+  For size reasons, the plugin does not include the `@shiki/twoslash` package by default. If you want to use it, you need to install it manually.
+
+  :::
+
+- Also see:
+
+  - [Shiki > Twosplash](https://shiki.style/packages/twoslash)
+
+- Example:
+
+  **Input:**
+
+  ````md
+  ```ts twoslash
+  const a = 1
+  const b = 2
+  console.log(a + b)
+  ```
+  ````
+
+  **Output:**
+
+  ```ts twoslash
+  const a = 1
+  const b = 2
+  console.log(a + b)
+  ```
+
 ## Advanced Options
 
 ### defaultLang

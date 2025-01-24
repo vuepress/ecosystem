@@ -7,10 +7,13 @@ import {
   transformerNotationWordHighlight,
   transformerRenderWhitespace,
 } from '@shikijs/transformers'
+import type { TransformerTwoslashIndexOptions } from '@shikijs/twoslash'
 import type { WhitespacePosition } from '@vuepress/highlighter-helper'
 import { resolveWhitespacePosition } from '@vuepress/highlighter-helper'
 import type { ShikiTransformer } from 'shiki'
+import { colors } from 'vuepress/utils'
 import type { ShikiHighlightOptions } from '../types.js'
+import { logger } from '../utils.js'
 import {
   addClassTransformer,
   cleanupTransformer,
@@ -18,8 +21,20 @@ import {
   removeEscapeTransformer,
 } from './vuepressTransformers.js'
 
+let transformerTwoslash:
+  | ((options?: TransformerTwoslashIndexOptions) => ShikiTransformer)
+  | null
+
+try {
+  ;({ transformerTwoslash } = await import('@shikijs/twoslash'))
+} catch {
+  transformerTwoslash = null
+}
+
 export const getTransformers = (
-  options: ShikiHighlightOptions,
+  options: ShikiHighlightOptions & {
+    twoslash?: boolean
+  },
 ): ShikiTransformer[] => {
   const transformers: ShikiTransformer[] = []
 
@@ -64,6 +79,20 @@ export const getTransformers = (
       }),
     )
     transformers.push(transformerMetaWordHighlight())
+  }
+
+  if (options.twoslash) {
+    if (transformerTwoslash)
+      transformers.push(
+        transformerTwoslash({
+          explicitTrigger: true,
+        }),
+      )
+    else {
+      logger.error(
+        `${colors.cyan('twoslash')} is enabled, but ${colors.magenta('@shikijs/twoslash')} is not installed, please install it manually`,
+      )
+    }
   }
 
   transformers.push(

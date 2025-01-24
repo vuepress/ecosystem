@@ -1,0 +1,9 @@
+div[data-highlighter='shiki'] {
+  pre.twoslash {
+    --twoslash-popup-bg: var(--code-c-bg, var(--shiki-light-bg));
+
+    [data-theme='dark'] & {
+      --twoslash-popup-bg: var(--code-c-bg, var(--shiki-dark-bg));
+    }
+  }
+}

@@ -11,4 +11,13 @@ import type { ShikiHighlightOptions } from './types.js'
 export type ShikiPluginOptions = MarkdownItLineNumbersOptions &
   MarkdownItPreWrapperOptions &
   Pick<MarkdownItCollapsedLinesOptions, 'collapsedLines'> &
-  ShikiHighlightOptions
+  ShikiHighlightOptions & {
+    /**
+     * Enable twoslash
+     *
+     * @description You should install `@shikijs/twoslash` manually.
+     *
+     * @default false
+     */
+    twoslash?: boolean
+  }

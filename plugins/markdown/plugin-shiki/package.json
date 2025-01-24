@@ -47,7 +47,13 @@
     "synckit": "^0.9.2"
   },
   "peerDependencies": {
+    "@shikijs/twoslash": "^2.1.0",
     "vuepress": "2.0.0-rc.19"
+  },
+  "peerDependenciesMeta": {
+    "@shikijs/twoslash": {
+      "optional": true
+    }
   },
   "publishConfig": {
     "access": "public"

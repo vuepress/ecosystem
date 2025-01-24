@@ -1,4 +1,5 @@
 import process from 'node:process'
+import { transformerTwoslash } from '@shikijs/twoslash'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { getModulePath } from '@vuepress/helper'
@@ -155,39 +156,21 @@ export default defineUserConfig({
         NpmBadge: path.resolve(__dirname, './components/NpmBadge.vue'),
       },
     }),
-    // only enable shiki plugin in production mode
-    IS_PROD
-      ? shikiPlugin({
-          langs: [
-            'bash',
-            'diff',
-            'json',
-            'md',
-            'scss',
-            'ts',
-            'vue',
-            'less',
-            'java',
-            'py',
-            'vb',
-            'bat',
-            'cs',
-            'cpp',
-          ],
-          themes: {
-            light: 'one-light',
-            dark: 'one-dark-pro',
-          },
-          lineNumbers: 10,
-          notationDiff: true,
-          notationErrorLevel: true,
-          notationFocus: true,
-          notationHighlight: true,
-          notationWordHighlight: true,
-          whitespace: true,
-          collapsedLines: false,
-        })
-      : [],
+    shikiPlugin({
+      themes: {
+        light: 'one-light',
+        dark: 'one-dark-pro',
+      },
+      lineNumbers: 10,
+      notationDiff: true,
+      notationErrorLevel: true,
+      notationFocus: true,
+      notationHighlight: true,
+      notationWordHighlight: true,
+      whitespace: true,
+      collapsedLines: false,
+      twoslash: true,
+    }),
     cachePlugin(),
   ],
 
