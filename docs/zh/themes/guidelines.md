@@ -84,3 +84,7 @@ icon: signpost
 ## 案例
 
 <PaletteDisplay />
+
+<script setup>
+import PaletteDisplay from '@source/.vuepress/components/PaletteDisplay.vue'
+</script>

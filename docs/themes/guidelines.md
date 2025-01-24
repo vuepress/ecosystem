@@ -84,3 +84,7 @@ Accent color and brand colors which used for interactive components.
 ## Demo
 
 <PaletteDisplay />
+
+<script setup>
+import PaletteDisplay from '@source/.vuepress/components/PaletteDisplay.vue'
+</script>
