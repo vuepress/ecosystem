@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.74](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.73...v2.0.0-rc.74) (2025-01-24)
+
+### Bug Fixes
+
+- **theme-default:** revert to page data header because of vuepress/core[#1627](https://github.com/vuepress/ecosystem/issues/1627) ([9975ad4](https://github.com/vuepress/ecosystem/commit/9975ad48d09b297831d57653399328184c739afc))
+
 # [2.0.0-rc.73](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.72...v2.0.0-rc.73) (2025-01-16)
 
 ### Bug Fixes

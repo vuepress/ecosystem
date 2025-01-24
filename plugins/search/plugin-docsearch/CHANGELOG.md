@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.74](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.73...v2.0.0-rc.74) (2025-01-24)
+
+### Bug Fixes
+
+- **plugin-docsearch:** fix search items display ([108c888](https://github.com/vuepress/ecosystem/commit/108c88832636e94cabadf73dd3757080b48a3d96))
+
 # [2.0.0-rc.73](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.72...v2.0.0-rc.73) (2025-01-16)
 
 **Note:** Version bump only for package @vuepress/plugin-docsearch
