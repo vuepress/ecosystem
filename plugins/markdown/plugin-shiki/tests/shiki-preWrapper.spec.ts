@@ -18,7 +18,7 @@ import {
 } from '../src/node/markdown/index.js'
 import type { ShikiPluginOptions } from '../src/node/options.js'
 
-const shikiHighlighter = await createShikiHighlighter()
+const { highlighter, loadLang } = await createShikiHighlighter()
 
 const createMarkdown = ({
   preWrapper = true,
@@ -26,13 +26,14 @@ const createMarkdown = ({
   collapsedLines = false,
   ...options
 }: ShikiPluginOptions = {}): MarkdownIt => {
-  const md = MarkdownIt()
+  const md = new MarkdownIt()
 
   const markdownFilePathGetter = createMarkdownFilePathGetter(md)
 
   md.options.highlight = getHighLightFunction(
-    shikiHighlighter,
+    highlighter,
     options,
+    loadLang,
     markdownFilePathGetter,
   )
 

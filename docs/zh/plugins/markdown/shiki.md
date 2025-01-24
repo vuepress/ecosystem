@@ -41,13 +41,11 @@ export default {
 
 - 详情：
 
-  Shiki 要解析的代码块的语言。
+  被 Shiki 解析的额外语言。
 
-  该配置项会被传递到 Shiki 的 `createHighlighter()` 方法中。
+  ::: tip
 
-  ::: warning
-
-  我们建议明确传入所有你使用的语言列表，否则 Shiki 会加载所有语言，并可能影响性能。
+  插件现在会自动加载你的 markdown 文件中使用的语言，所以你不需要手动指定它们。
 
   :::
 

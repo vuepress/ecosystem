@@ -41,13 +41,11 @@ export default {
 
 - Details:
 
-  Languages of code blocks to be parsed by Shiki.
+  Additional languages to be parsed by Shiki.
 
-  This option will be forwarded to `createHighlighter()` method of Shiki.
+  ::: tip
 
-  ::: warning
-
-  We recommend you to provide the languages list you are using explicitly, otherwise Shiki will load all languages and can affect performance.
+  The plugin now automatically loads the languages used in your markdown files, so you don't need to specify them manually.
 
   :::
 
