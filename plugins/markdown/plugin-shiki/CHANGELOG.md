@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.74](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.73...v2.0.0-rc.74) (2025-01-24)
+
+### Features
+
+- **plugin-shiki:** use matchAlgorithm: v3 ([44f1e72](https://github.com/vuepress/ecosystem/commit/44f1e72098963e4a012aadbf13e9cfcb4acb678f))
+- **plugin-shiki:** use shiki v2 ([#346](https://github.com/vuepress/ecosystem/issues/346)) ([c5e7d4b](https://github.com/vuepress/ecosystem/commit/c5e7d4b81483b6b5e781066dab498f5cf721c18b))
+
+### Performance Improvements
+
+- **plugin-shiki:** lazy load languages ([#347](https://github.com/vuepress/ecosystem/issues/347)) ([d926209](https://github.com/vuepress/ecosystem/commit/d926209cfd73686428cb2803ba23d91629e7bd28))
+
 # [2.0.0-rc.73](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.72...v2.0.0-rc.73) (2025-01-16)
 
 **Note:** Version bump only for package @vuepress/plugin-shiki
