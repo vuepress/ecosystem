@@ -1,13 +1,12 @@
+import { checkIsMobile } from '@vuepress/helper/client'
 // eslint-disable-next-line import/no-rename-default
 import FloatingVue, { recomputeAllPoppers } from 'floating-vue'
 import type { App } from 'vue'
 import 'floating-vue/dist/style.css'
 
-const isMobile =
-  typeof navigator !== 'undefined' &&
-  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent,
-  )
+const isMobile = checkIsMobile(
+  typeof navigator !== 'undefined' ? navigator.userAgent : '',
+)
 
 export const enhanceTwoslash = (app: App): void => {
   if (typeof window !== 'undefined') {

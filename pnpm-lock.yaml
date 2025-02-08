@@ -1286,6 +1286,9 @@ importers:
       '@shikijs/twoslash':
         specifier: ^2.3.2
         version: 2.3.2(typescript@5.7.3)
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../helper
       floating-vue:
         specifier: ^5.2.2
         version: 5.2.2(vue@3.5.13(typescript@5.7.3))
