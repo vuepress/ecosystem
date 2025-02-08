@@ -1,6 +1,3 @@
-/* stylelint-disable selector-class-pattern */
-/* stylelint-disable no-descending-specificity */
-
 /* ===== Basic ===== */
 :root {
   --twoslash-underline-color: var(--vp-c-border-hard);
@@ -215,27 +212,29 @@
 }
 
 /* ========== floating vue ================== */
-.v-popper--theme-twoslash {
+$popper: v-popper;
+
+.#{$popper}--theme-twoslash {
   z-index: var(--twoslash-z-index);
-}
 
-.v-popper--theme-twoslash .v-popper__inner {
-  border-color: var(--twoslash-border-color);
-  background: var(--twoslash-popup-bg);
-  color: var(--twoslash-popup-color);
-  transition:
-    background-color var(--vp-t-color),
-    border-color var(--vp-t-color);
-}
+  .#{$popper}__inner {
+    border-color: var(--twoslash-border-color);
+    background: var(--twoslash-popup-bg);
+    color: var(--twoslash-popup-color);
+    transition:
+      background-color var(--vp-t-color),
+      border-color var(--vp-t-color);
+  }
 
-.v-popper--theme-twoslash .v-popper__arrow-outer {
-  border-color: var(--twoslash-border-color);
-  transition: border-color var(--vp-t-color);
-}
+  .#{$popper}__arrow-outer {
+    border-color: var(--twoslash-border-color);
+    transition: border-color var(--vp-t-color);
+  }
 
-.v-popper--theme-twoslash .v-popper__arrow-inner {
-  border-color: var(--twoslash-popup-bg);
-  transition: border-color var(--vp-t-color);
+  .#{$popper}__arrow-inner {
+    border-color: var(--twoslash-popup-bg);
+    transition: border-color var(--vp-t-color);
+  }
 }
 
 .twoslash-popup-container {
@@ -319,22 +318,19 @@
   text-wrap: balance;
 }
 
-/* stylelint-disable-next-line selector-max-compound-selectors */
-.twoslash-floating
-  .twoslash-popup-docs
-  pre
-  .twoslash-floating
-  .twoslash-popup-error
-  pre {
-  overflow-x: auto;
+.twoslash-floating .twoslash-popup-docs pre {
+  /* stylelint-disable-next-line selector-max-compound-selectors */
+  .twoslash-floating .twoslash-popup-error pre {
+    overflow-x: auto;
 
-  margin: 6px -2px;
-  padding: 12px;
-  border-radius: 8px;
+    margin: 6px -2px;
+    padding: 12px;
+    border-radius: 8px;
 
-  background-color: var(--code-c-bg);
+    background-color: var(--code-c-bg);
 
-  transition: background-color var(--vp-t-color);
+    transition: background-color var(--vp-t-color);
+  }
 }
 
 .twoslash-floating .twoslash-popup-docs-tags {
@@ -363,7 +359,7 @@
   transition: background-color var(--vp-t-color);
 }
 
-.twoslash-floating.twoslash-completion .v-popper__arrow-container {
+.twoslash-floating.twoslash-completion .#{$popper}__arrow-container {
   display: none;
 }
 
