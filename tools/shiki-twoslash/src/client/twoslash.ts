@@ -1,4 +1,5 @@
-import Gt, { recomputeAllPoppers } from 'floating-vue'
+// eslint-disable-next-line import/no-rename-default
+import FloatingVue, { recomputeAllPoppers } from 'floating-vue'
 import type { App } from 'vue'
 import 'floating-vue/dist/style.css'
 
@@ -27,7 +28,7 @@ export const enhanceTwoslash = (app: App): void => {
     )
   }
 
-  app.use(Gt, {
+  app.use(FloatingVue, {
     themes: {
       'twoslash': {
         $extend: 'dropdown',
