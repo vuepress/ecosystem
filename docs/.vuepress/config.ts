@@ -1,5 +1,4 @@
 import process from 'node:process'
-import { transformerTwoslash } from '@shikijs/twoslash'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { getModulePath } from '@vuepress/helper'
@@ -27,7 +26,7 @@ import theme from './theme.js'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
-const IS_PROD = process.env.NODE_ENV === 'production'
+// const IS_PROD = process.env.NODE_ENV === 'production'
 
 export default defineUserConfig({
   // set site base to default value
