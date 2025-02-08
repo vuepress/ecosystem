@@ -23,7 +23,7 @@ export const getHighLightFunction = (
   options: ShikiHighlightOptions,
   loadLang: ShikiLoadLang,
   markdownFilePathGetter: MarkdownFilePathGetter,
-  twoslashTransformer: TwoslashTransformer,
+  twoslashTransformer: TwoslashTransformer = () => [],
 ): MarkdownItHighlight => {
   const transformers = getTransformers(options)
 
