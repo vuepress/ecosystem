@@ -95,12 +95,16 @@ export const prepareClientConfigFile = (
   let code = imports.join('\n')
 
   if (setups.length || enhances.length) {
-    code += '\nexport default {\n'
+    code += '\nexport default {'
     if (setups.length) {
-      code += `  setup() {\n    ${setups.join('\n    ')}\n  },`
+      code += `\n  setup() {
+    ${setups.join('\n    ')}
+  },`
     }
     if (enhances.length) {
-      code += `\n  enhance({ app }) {\n    ${enhances.join('\n    ')}\n  },`
+      code += `\n  enhance({ app }) {
+    ${enhances.join('\n    ')}
+  },`
     }
     code += '\n}\n'
   }
