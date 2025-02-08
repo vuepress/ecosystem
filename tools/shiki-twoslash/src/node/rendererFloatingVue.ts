@@ -1,13 +1,11 @@
 import type { TwoslashRenderer } from '@shikijs/twoslash'
-import { defaultHoverInfoProcessor, rendererRich } from '@shikijs/twoslash'
+import { rendererRich } from '@shikijs/twoslash'
 import type { Element, ElementContent, Text } from 'hast'
 import { fromMarkdown } from 'mdast-util-from-markdown'
 import { gfmFromMarkdown } from 'mdast-util-gfm'
 import { defaultHandlers, toHast } from 'mdast-util-to-hast'
 import type { ShikiTransformerContextCommon } from 'shiki'
 import type { TwoslashFloatingVueRendererOptions } from './types.js'
-
-export { defaultHoverInfoProcessor }
 
 const vPre = <T extends ElementContent>(el: T): T => {
   if (el.type === 'element') {

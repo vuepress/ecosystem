@@ -51,16 +51,11 @@
   },
   "devDependencies": {
     "@types/hast": "^3.0.4",
+    "shiki": "^2.3.2",
     "vue": "^3.5.13"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19",
-    "shiki": "^2.3.2"
-  },
-  "peerDependenciesMeta": {
-    "shiki": {
-      "optional": true
-    }
+    "vuepress": "2.0.0-rc.19"
   },
   "publishConfig": {
     "access": "public"

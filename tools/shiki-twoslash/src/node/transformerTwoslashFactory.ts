@@ -13,9 +13,9 @@ import { resolveTsPaths } from './resolveTsPaths.js'
 import type { VuePressTwoslashOptions } from './types.js'
 
 /**
- * Create a Shiki transformer for VitePress to enable twoslash integration
+ * Create a Shiki transformer for VuePress to enable twoslash integration
  */
-export const transformerTwoslash = async (
+export const transformerTwoslashFactory = async (
   options: VuePressTwoslashOptions = {},
 ): Promise<ShikiTransformer> => {
   const { explicitTrigger = true } = options

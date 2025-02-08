@@ -1298,9 +1298,6 @@ importers:
       mdast-util-to-hast:
         specifier: ^13.2.0
         version: 13.2.0
-      shiki:
-        specifier: ^2.3.2
-        version: 2.3.2
       twoslash:
         specifier: ^0.2.12
         version: 0.2.12(typescript@5.7.3)
@@ -1314,6 +1311,9 @@ importers:
       '@types/hast':
         specifier: ^3.0.4
         version: 3.0.4
+      shiki:
+        specifier: ^2.3.2
+        version: 2.3.2
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.3)

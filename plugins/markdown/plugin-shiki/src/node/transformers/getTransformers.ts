@@ -16,7 +16,6 @@ import {
   cleanupTransformer,
   emptyLineTransformer,
   removeEscapeTransformer,
-  vPreTransformer,
 } from './vuepressTransformers.js'
 
 export const getTransformers = (
@@ -88,16 +87,4 @@ export const whitespaceTransformer = (
   if (position === false) return []
 
   return [transformerRenderWhitespace({ position })]
-}
-
-const TWOSLASH_REGEXP = /\btwoslash\b/
-export const twoslashTransformer = (
-  meta: string,
-  transformer: ShikiTransformer | null,
-): ShikiTransformer[] => {
-  if (transformer) {
-    if (TWOSLASH_REGEXP.test(meta)) return [transformer]
-    return [vPreTransformer]
-  }
-  return []
 }
