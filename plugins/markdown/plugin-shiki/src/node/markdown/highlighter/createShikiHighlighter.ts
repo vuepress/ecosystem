@@ -1,9 +1,15 @@
 import { createRequire } from 'node:module'
-import type { BundledLanguage, BundledTheme, HighlighterGeneric } from 'shiki'
+import type {
+  BundledLanguage,
+  BundledTheme,
+  HighlighterGeneric,
+  ShikiTransformer,
+} from 'shiki'
 import { createHighlighter, isSpecialLang } from 'shiki'
 import { createSyncFn } from 'synckit'
+import { isPlainObject } from 'vuepress/shared'
+import type { ShikiPluginOptions } from '../../options.js'
 import type { ShikiResolveLang } from '../../resolveLang.js'
-import type { ShikiHighlightOptions } from '../../types.js'
 import { resolveLanguage } from '../../utils.js'
 
 const require = createRequire(import.meta.url)
@@ -20,9 +26,10 @@ export const createShikiHighlighter = async ({
   defaultLang,
   shikiSetup,
   ...options
-}: ShikiHighlightOptions = {}): Promise<{
+}: ShikiPluginOptions = {}): Promise<{
   highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>
   loadLang: ShikiLoadLang
+  transformerTwoslash: ShikiTransformer | null
 }> => {
   const highlighter = await createHighlighter({
     langs: [...langs, ...Object.values(langAlias)],
@@ -60,7 +67,19 @@ export const createShikiHighlighter = async ({
     return rawGetLanguage.call(highlighter, name)
   }
 
-  await shikiSetup?.(highlighter)
+  let transformerTwoslash: ShikiTransformer | null = null
 
-  return { highlighter, loadLang }
+  if (options.twoslash) {
+    const { transformerTwoslash: transformer } = await import(
+      '@vuepress/shiki-twoslash'
+    )
+
+    transformerTwoslash = await transformer({
+      twoslashOptions: isPlainObject(options.twoslash) ? options.twoslash : {},
+    })
+
+    await shikiSetup?.(highlighter)
+  }
+
+  return { highlighter, loadLang, transformerTwoslash }
 }

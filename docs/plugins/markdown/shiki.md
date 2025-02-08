@@ -673,7 +673,7 @@ body > div {
 
 ### twoslash
 
-- Type: `boolean`
+- Type: `boolean | TwoslashOptions`
 
 - Default: `false`
 
@@ -681,13 +681,14 @@ body > div {
 
   ::: tip
 
-  For size reasons, the plugin does not include the `@shiki/twoslash` package by default. If you want to use it, you need to install it manually.
+  For size reasons, the plugin does not include the `@vuepress/shiki-twoslash` package by default. If you want to use it, you need to install it manually.
 
   :::
 
 - Also see:
 
-  - [Shiki > Twosplash](https://shiki.style/packages/twoslash)
+  - [Shiki > Twoslash](https://shiki.style/packages/twoslash)
+  - [Twoslash > TwoslashOptions](https://github.com/twoslashes/twoslash/blob/main/packages/twoslash/src/types/options.ts#L18)
 
 - Example:
 
@@ -705,7 +706,7 @@ body > div {
 
   ```ts twoslash
   const a = 1
-  const b = 2
+  const b = 23
   console.log(a + b)
   ```
 

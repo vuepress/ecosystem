@@ -1,7 +1,13 @@
 import { transformerCompactLineOptions } from '@shikijs/transformers'
-import type { BundledLanguage, BundledTheme, HighlighterGeneric } from 'shiki'
+import type {
+  BundledLanguage,
+  BundledTheme,
+  HighlighterGeneric,
+  ShikiTransformer,
+} from 'shiki'
 import {
   getTransformers,
+  twoslashTransformer,
   whitespaceTransformer,
 } from '../../transformers/getTransformers.js'
 import type { ShikiHighlightOptions } from '../../types.js'
@@ -22,6 +28,7 @@ export const getHighLightFunction = (
   options: ShikiHighlightOptions,
   loadLang: ShikiLoadLang,
   markdownFilePathGetter: MarkdownFilePathGetter,
+  transformerTwoslash: ShikiTransformer | null,
 ): MarkdownItHighlight => {
   const transformers = getTransformers(options)
 
@@ -42,6 +49,7 @@ export const getHighLightFunction = (
             ? [transformerCompactLineOptions(attrsToLines(attrs))]
             : []),
           ...whitespaceTransformer(attrs, options.whitespace),
+          ...twoslashTransformer(attrs, transformerTwoslash),
           ...(options.transformers ?? []),
         ],
         ...('themes' in options

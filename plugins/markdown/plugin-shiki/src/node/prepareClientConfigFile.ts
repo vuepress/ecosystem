@@ -24,6 +24,7 @@ export const prepareClientConfigFile = (
   ]
 
   const setups: string[] = []
+  const enhances: string[] = []
 
   if (lineNumbers !== 'disable') {
     imports.push(
@@ -83,20 +84,25 @@ export const prepareClientConfigFile = (
 
   if (twoslash) {
     imports.push(
-      `import "${getModulePath('@shikijs/twoslash/style-rich.css', import.meta)}"`,
-      `import "${getModulePath(`${PLUGIN_NAME}/styles/twoslash.css`, import.meta)}"`,
+      `import { enhanceTwoslash } from "${getModulePath('@vuepress/shiki-twoslash/client', import.meta)}"`,
     )
+    imports.push(
+      `import "${getModulePath('@vuepress/shiki-twoslash/styles/twoslash.css', import.meta)}"`,
+    )
+    enhances.push('enhanceTwoslash(app)')
   }
 
   let code = imports.join('\n')
 
-  if (setups.length) {
-    code += `\n
-export default {
-  setup() {
-    ${setups.join('\n    ')}
-  }
-}\n`
+  if (setups.length || enhances.length) {
+    code += '\nexport default {\n'
+    if (setups.length) {
+      code += `  setup() {\n    ${setups.join('\n    ')}\n  },`
+    }
+    if (enhances.length) {
+      code += `\n  enhance({ app }) {\n    ${enhances.join('\n    ')}\n  },`
+    }
+    code += '\n}\n'
   }
 
   return app.writeTemp('shiki/config.js', code)

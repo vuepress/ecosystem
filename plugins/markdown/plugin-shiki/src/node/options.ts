@@ -2,6 +2,7 @@ import type {
   MarkdownItCollapsedLinesOptions,
   MarkdownItLineNumbersOptions,
 } from '@vuepress/highlighter-helper'
+import type { TwoslashOptions } from '@vuepress/shiki-twoslash'
 import type { MarkdownItPreWrapperOptions } from './markdown/index.js'
 import type { ShikiHighlightOptions } from './types.js'
 
@@ -19,5 +20,5 @@ export type ShikiPluginOptions = MarkdownItLineNumbersOptions &
      *
      * @default false
      */
-    twoslash?: boolean
+    twoslash?: TwoslashOptions | boolean
   }

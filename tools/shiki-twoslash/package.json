@@ -1,29 +1,31 @@
 {
-  "name": "@vuepress/plugin-shiki",
+  "name": "@vuepress/shiki-twoslash",
   "version": "2.0.0-rc.74",
-  "description": "VuePress plugin - shiki",
+  "description": "VuePress shiki twoslash",
   "keywords": [
-    "vuepress-plugin",
     "vuepress",
-    "plugin",
     "shiki",
-    "highlight"
+    "twoslash"
   ],
-  "homepage": "https://ecosystem.vuejs.press/plugins/markdown/shiki.html",
+  "homepage": "https://ecosystem.vuejs.press/tools/shiki-twoslash/",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/ecosystem.git",
-    "directory": "plugins/markdown/plugin-shiki"
+    "directory": "tools/tools/shiki-twoslash"
   },
   "license": "MIT",
-  "author": "meteorlxy",
+  "author": {
+    "name": "pengzhanbo",
+    "email": "volodymyr@foxmail.com",
+    "url": "https://github.com/pengzhanbo"
+  },
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
-    "./resolveLang": "./lib/node/resolveLang.js",
+    "./client": "./lib/client/index.js",
     "./styles/*": "./lib/client/styles/*",
     "./package.json": "./package.json"
   },
@@ -39,27 +41,28 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@shikijs/transformers": "^2.3.2",
-    "@vuepress/helper": "workspace:*",
-    "@vuepress/highlighter-helper": "workspace:*",
-    "nanoid": "^5.0.9",
-    "shiki": "^2.3.2",
-    "synckit": "^0.9.2"
+    "@shikijs/twoslash": "^2.3.2",
+    "floating-vue": "^5.2.2",
+    "mdast-util-from-markdown": "^2.0.2",
+    "mdast-util-gfm": "^3.0.0",
+    "mdast-util-to-hast": "^13.2.0",
+    "twoslash": "^0.2.12",
+    "twoslash-vue": "^0.2.12"
+  },
+  "devDependencies": {
+    "@types/hast": "^3.0.4",
+    "vue": "^3.5.13"
   },
   "peerDependencies": {
-    "@vuepress/shiki-twoslash": "workspace:*",
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "2.0.0-rc.19",
+    "shiki": "^2.3.2"
   },
   "peerDependenciesMeta": {
-    "@vuepress/shiki-twoslash": {
+    "shiki": {
       "optional": true
     }
   },
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {
-    "@types/markdown-it": "^14.1.2",
-    "markdown-it": "^14.1.0"
   }
 }
