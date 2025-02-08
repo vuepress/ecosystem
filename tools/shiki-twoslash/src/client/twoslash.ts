@@ -1,4 +1,4 @@
-import FloatingVue, { recomputeAllPoppers } from 'floating-vue'
+import Gt, { recomputeAllPoppers } from 'floating-vue'
 import type { App } from 'vue'
 import 'floating-vue/dist/style.css'
 
@@ -15,9 +15,9 @@ export const enhanceTwoslash = (app: App): void => {
       'click',
       (e) => {
         const path = e.composedPath()
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (
           path.some((el) =>
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             (el as HTMLElement)?.classList?.contains('vp-code-tab'),
           )
         )
@@ -27,7 +27,7 @@ export const enhanceTwoslash = (app: App): void => {
     )
   }
 
-  app.use(FloatingVue, {
+  app.use(Gt, {
     themes: {
       'twoslash': {
         $extend: 'dropdown',
