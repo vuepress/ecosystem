@@ -686,9 +686,8 @@ body > div {
     /**
      * twoslash options
      */
-    twoslashOptions?:
-      | TransformerTwoslashOptions['twoslashOptions']
-      | VueSpecificOptions
+    twoslashOptions?: TransformerTwoslashOptions['twoslashOptions'] &
+      VueSpecificOptions
   }
   ```
 
