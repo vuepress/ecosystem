@@ -63,16 +63,16 @@ export const createShikiHighlighter = async ({
     return rawGetLanguage.call(highlighter, name)
   }
 
-  let twoslashTransformer: TwoslashTransformer = () => []
+  let twoslashTransformer: TwoslashTransformer = []
 
   if (options.twoslash) {
     const { createTwoslashTransformer } = await import(
       '@vuepress/shiki-twoslash'
     )
 
-    twoslashTransformer = await createTwoslashTransformer({
-      twoslashOptions: isPlainObject(options.twoslash) ? options.twoslash : {},
-    })
+    twoslashTransformer = await createTwoslashTransformer(
+      isPlainObject(options.twoslash) ? options.twoslash : {},
+    )
   }
 
   await shikiSetup?.(highlighter)

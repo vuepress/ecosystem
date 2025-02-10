@@ -113,6 +113,7 @@ export const rendererFloatingVue = (
     classCopyIgnore = 'vp-copy-ignore',
     classFloatingPanel = 'twoslash-floating',
     classCode = 'vp-code',
+    classMarkdown = '',
     attrMarkdown = 'vp-content',
     floatingVueTheme = 'twoslash',
     floatingVueThemeQuery = 'twoslash-query',
@@ -153,19 +154,19 @@ export const rendererFloatingVue = (
       },
       queryCompose: compose,
       popupDocs: {
-        class: 'twoslash-popup-docs',
+        class: `twoslash-popup-docs ${classMarkdown}`,
         properties: {
           [attrMarkdown]: '',
         },
       },
       popupDocsTags: {
-        class: 'twoslash-popup-docs twoslash-popup-docs-tags',
+        class: `twoslash-popup-docs twoslash-popup-docs-tags ${classMarkdown}`,
         properties: {
           [attrMarkdown]: '',
         },
       },
       popupError: {
-        class: 'twoslash-popup-error',
+        class: `twoslash-popup-error ${classMarkdown}`,
         properties: {
           [attrMarkdown]: '',
         },

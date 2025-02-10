@@ -10,13 +10,13 @@ import { createTwoslasher } from 'twoslash-vue'
 import { logger } from 'vuepress/utils'
 import { rendererFloatingVue } from './rendererFloatingVue.js'
 import { resolveTsPaths } from './resolveTsPaths.js'
-import type { VuePressTwoslashOptions } from './types.js'
+import type { ShikiTwoslashOptions } from './types.js'
 
 /**
  * Create a Shiki transformer for VuePress to enable twoslash integration
  */
 export const transformerTwoslashFactory = async (
-  options: VuePressTwoslashOptions = {},
+  options: ShikiTwoslashOptions = {},
 ): Promise<ShikiTransformer> => {
   const { explicitTrigger = true } = options
 

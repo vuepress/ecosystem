@@ -673,7 +673,23 @@ body > div {
 
 ### twoslash
 
-- Type: `boolean | TwoslashOptions`
+- Type: `boolean | ShikiTwoslashOptions`
+
+  ```ts
+  interface ShikiTwoslashOptions extends TransformerTwoslashOptions {
+    /**
+     * Requires adding `twoslash` to the code block explicitly to run twoslash
+     * @default true
+     */
+    explicitTrigger?: RegExp | boolean
+
+    /**
+     * twoslash options
+     */
+    twoslashOptions?: TransformerTwoslashOptions['twoslashOptions'] &
+      VueSpecificOptions
+  }
+  ```
 
 - Default: `false`
 
@@ -688,7 +704,8 @@ body > div {
 - Also see:
 
   - [Shiki > Twoslash](https://shiki.style/packages/twoslash)
-  - [Twoslash > TwoslashOptions](https://github.com/twoslashes/twoslash/blob/main/packages/twoslash/src/types/options.ts#L18)
+  - [Twoslash > TransformerTwoslashOptions](https://github.com/shikijs/shiki/blob/main/packages/twoslash/src/types.ts#L30)
+  - [Twoslash > VueSpecificOptions](https://github.com/twoslashes/twoslash/blob/main/packages/twoslash-vue/src/index.ts#L36)
 
 - Example:
 
