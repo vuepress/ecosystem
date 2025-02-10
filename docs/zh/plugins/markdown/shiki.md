@@ -683,7 +683,7 @@ body > div {
      * 是否需要显式地将 `twoslash` 添加到代码块中以运行 twoslash
      * @default true
      */
-    explicitTrigger?: boolean | RegExp
+    explicitTrigger?: RegExp | boolean
 
     /**
      * twoslash 配置

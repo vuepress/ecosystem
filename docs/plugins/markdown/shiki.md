@@ -681,7 +681,7 @@ body > div {
      * Requires adding `twoslash` to the code block explicitly to run twoslash
      * @default true
      */
-    explicitTrigger?: boolean | RegExp
+    explicitTrigger?: RegExp | boolean
 
     /**
      * twoslash options
