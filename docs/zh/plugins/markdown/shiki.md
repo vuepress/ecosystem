@@ -673,6 +673,45 @@ body > div {
 - 参考：
   - [Shiki > 空白符渲染](https://shiki.tmrs.site/packages/transformers#transformerrenderwhitespace)
 
+### twoslash
+
+- 类型： `boolean | TwoslashOptions`
+
+- 默认值： `false`
+
+- 详情： 是否启用 [twoslash](https://github.com/twoslashes/twoslash).
+
+  ::: tip
+
+  出于体积考虑，该插件默认不包含`@vuepress/shiki-twoslash`包。如需使用，需手动安装。
+
+  :::
+
+- 参考：
+
+  - [Shiki > Twoslash](https://shiki.style/packages/twoslash)
+  - [Twoslash > TwoslashOptions](https://github.com/twoslashes/twoslash/blob/main/packages/twoslash/src/types/options.ts#L18)
+
+- 示例：
+
+  **输入：**
+
+  ````md
+  ```ts twoslash
+  const a = 1
+  const b = 2
+  console.log(a + b)
+  ```
+  ````
+
+  **输出：**
+
+  ```ts twoslash
+  const a = 1
+  const b = 23
+  console.log(a + b)
+  ```
+
 ## 高级选项
 
 ### defaultLang

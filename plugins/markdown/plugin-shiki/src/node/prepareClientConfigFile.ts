@@ -15,6 +15,7 @@ export const prepareClientConfigFile = (
     notationHighlight,
     notationWordHighlight,
     whitespace,
+    twoslash,
   }: ShikiPluginOptions,
 ): Promise<string> => {
   const imports: string[] = [
@@ -22,6 +23,7 @@ export const prepareClientConfigFile = (
     `import "${getModulePath(`${PLUGIN_NAME}/styles/shiki.css`, import.meta)}"`,
   ]
 
+  const enhances: string[] = []
   const setups: string[] = []
 
   if (lineNumbers !== 'disable') {
@@ -80,15 +82,42 @@ export const prepareClientConfigFile = (
     setups.push('setupCollapsedLines()')
   }
 
+  if (twoslash) {
+    imports.push(
+      `import { enhanceTwoslash } from "${getModulePath('@vuepress/shiki-twoslash/client', import.meta)}"`,
+    )
+    imports.push(
+      `import "${getModulePath('@vuepress/shiki-twoslash/styles/twoslash.css', import.meta)}"`,
+    )
+    enhances.push('enhanceTwoslash(app)')
+  }
+
   let code = imports.join('\n')
 
-  if (setups.length) {
-    code += `\n
+  if (setups.length || enhances.length) {
+    code += `
 export default {
+`
+
+    if (enhances.length) {
+      code += `\
+  enhance({ app }) {
+    ${enhances.join('\n    ')}
+  },
+`
+    }
+
+    if (setups.length) {
+      code += `\
   setup() {
     ${setups.join('\n    ')}
-  }
-}\n`
+  },
+`
+    }
+
+    code += `\
+}
+`
   }
 
   return app.writeTemp('shiki/config.js', code)

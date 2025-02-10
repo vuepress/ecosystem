@@ -19,7 +19,9 @@ import {
 } from './vuepressTransformers.js'
 
 export const getTransformers = (
-  options: ShikiHighlightOptions,
+  options: ShikiHighlightOptions & {
+    twoslash?: boolean
+  },
 ): ShikiTransformer[] => {
   const transformers: ShikiTransformer[] = []
 

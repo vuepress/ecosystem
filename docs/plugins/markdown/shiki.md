@@ -671,6 +671,45 @@ body > div {
 - Also see：
   - [Shiki > Render Whitespace](https://shiki.style/packages/transformers#transformerrenderwhitespace)
 
+### twoslash
+
+- Type: `boolean | TwoslashOptions`
+
+- Default: `false`
+
+- Details: Whether enable [twoslash](https://github.com/twoslashes/twoslash).
+
+  ::: tip
+
+  For size reasons, the plugin does not include the `@vuepress/shiki-twoslash` package by default. If you want to use it, you need to install it manually.
+
+  :::
+
+- Also see:
+
+  - [Shiki > Twoslash](https://shiki.style/packages/twoslash)
+  - [Twoslash > TwoslashOptions](https://github.com/twoslashes/twoslash/blob/main/packages/twoslash/src/types/options.ts#L18)
+
+- Example:
+
+  **Input:**
+
+  ````md
+  ```ts twoslash
+  const a = 1
+  const b = 2
+  console.log(a + b)
+  ```
+  ````
+
+  **Output:**
+
+  ```ts twoslash
+  const a = 1
+  const b = 23
+  console.log(a + b)
+  ```
+
 ## Advanced Options
 
 ### defaultLang

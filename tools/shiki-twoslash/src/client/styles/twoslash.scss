@@ -1,0 +1,373 @@
+/* ===== Basic ===== */
+:root {
+  --twoslash-underline-color: var(--vp-c-border-hard);
+  --twoslash-border-color: var(--vp-c-border);
+  --twoslash-cursor-color: var(--vp-c-accent);
+  --twoslash-matched-color: var(--vp-c-accent);
+  --twoslash-unmatched-color: var(--vp-c-text-mute);
+  --twoslash-error-color: var(--vp-c-red-text);
+  --twoslash-error-bg: var(--vp-c-red-soft);
+  --twoslash-tag-color: var(--vp-c-green-text);
+  --twoslash-tag-bg: var(--vp-c-green-soft);
+  --twoslash-tag-warn-color: var(--vp-c-yellow-text);
+  --twoslash-tag-warn-bg: var(--vp-c-yellow-soft);
+  --twoslash-tag-annotate-color: var(--vp-c-blue-text);
+  --twoslash-tag-annotate-bg: var(--vp-c-blue-soft);
+  --twoslash-highlighted-bg: var(--vp-c-gray-soft);
+  --twoslash-highlighted-border: var(--vp-c-border);
+  --twoslash-popup-bg: var(--vp-c-bg, inherit);
+  --twoslash-popup-color: var(--vp-c-text);
+  --twoslash-popup-shadow: var(--vp-c-shadow);
+  --twoslash-docs-color: var(--vp-c-text);
+  --twoslash-docs-font: var(--font-family);
+  --twoslash-jsdoc-color: var(--vp-c-text-mute);
+  --twoslash-code-font: var(--code-font-family);
+  --twoslash-code-size: var(--code-font-size);
+  --twoslash-code-line-height: var(--code-line-height);
+  --twoslash-z-index: 10;
+}
+
+/* Respect people's wishes to not have animations */
+.twoslash * {
+  @media (prefers-reduced-motion: reduce) {
+    transition: none !important;
+  }
+}
+
+/* ===== Hover Info ===== */
+.twoslash:hover .twoslash-hover {
+  border-color: var(--twoslash-underline-color);
+}
+
+.twoslash .twoslash-hover {
+  position: relative;
+  border-bottom: 1px dotted transparent;
+  transition: border-color var(--vp-t-color);
+  transition-timing-function: ease;
+}
+
+/* ===== Error Line ===== */
+.twoslash .twoslash-error-line {
+  position: relative;
+
+  margin: 0.2em 0;
+  padding: 6px;
+  border-left: 3px solid var(--twoslash-error-color);
+
+  background-color: var(--twoslash-error-bg);
+  color: var(--twoslash-error-color);
+
+  transition:
+    background-color var(--vp-t-color),
+    border-color var(--vp-t-color);
+}
+
+.twoslash .twoslash-error {
+  padding-bottom: 2px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 3' enable-background='new 0 0 6 3' height='3' width='6'%3E%3Cg fill='%23c94824'%3E%3Cpolygon points='5.5,0 2.5,3 1.1,3 4.1,0'/%3E%3Cpolygon points='4,0 6,2 6,0.6 5.4,0'/%3E%3Cpolygon points='0,2 1,3 2.4,3 0,0.6'/%3E%3C/g%3E%3C/svg%3E")
+    repeat-x bottom left;
+}
+
+/* ===== Completions ===== */
+.twoslash .twoslash-completion-cursor {
+  position: relative;
+
+  .twoslash-completion-list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 8;
+
+    display: inline-block;
+
+    margin: 3px 0 0 -1px;
+    border: 1px solid var(--twoslash-border-color);
+
+    background: var(--twoslash-popup-bg);
+    box-shadow: var(--twoslash-popup-shadow);
+
+    user-select: none;
+
+    transition:
+      background-color var(--vp-t-color),
+      border-color var(--vp-t-color);
+
+    transform: translate(0, 1.2em);
+  }
+}
+
+.twoslash-completion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  width: 240px;
+  padding: 4px;
+
+  font-size: 0.8rem;
+
+  &:hover {
+    user-select: auto;
+  }
+
+  &::before {
+    content: ' ';
+
+    position: absolute;
+    top: -1.6em;
+    left: -1px;
+
+    width: 2px;
+    height: 1.4em;
+
+    background-color: var(--twoslash-cursor-color);
+  }
+
+  li {
+    display: flex;
+    gap: 0.25em;
+    align-items: center;
+
+    overflow: hidden;
+
+    line-height: 1em;
+
+    span.twoslash-completions-unmatched {
+      color: var(--twoslash-unmatched-color);
+    }
+
+    span.twoslash-completions-matched {
+      color: var(--twoslash-matched-color);
+    }
+  }
+
+  .deprecated {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+}
+
+/* Highlights */
+.twoslash-highlighted {
+  margin: -1px -3px;
+  padding: 1px 2px;
+  border: 1px solid var(--twoslash-highlighted-border);
+  border-radius: 4px;
+
+  background-color: var(--twoslash-highlighted-bg);
+
+  transition:
+    background-color var(--vp-t-color),
+    border-color var(--vp-t-color);
+}
+
+/* Icons */
+.twoslash-completion-list .twoslash-completions-icon {
+  flex: none;
+  width: 1em;
+  color: var(--twoslash-unmatched-color);
+}
+
+/* Custom Tags */
+.twoslash .twoslash-tag-line {
+  position: relative;
+
+  display: flex;
+  gap: 0.3em;
+  align-items: center;
+
+  margin: 0.2em 0;
+  padding: 6px 10px;
+  border-left: 3px solid var(--twoslash-tag-color);
+
+  background-color: var(--twoslash-tag-bg);
+  color: var(--twoslash-tag-color);
+
+  transition:
+    background-color var(--vp-t-color),
+    border-color var(--vp-t-color);
+
+  .twoslash-tag-icon {
+    width: 1.1em;
+    color: inherit;
+  }
+
+  &.twoslash-tag-error-line {
+    border-left: 3px solid var(--twoslash-error-color);
+    background-color: var(--twoslash-error-bg);
+    color: var(--twoslash-error-color);
+  }
+
+  &.twoslash-tag-warn-line {
+    border-left: 3px solid var(--twoslash-tag-warn-color);
+    background-color: var(--twoslash-tag-warn-bg);
+    color: var(--twoslash-tag-warn-color);
+  }
+
+  &.twoslash-tag-annotate-line {
+    border-left: 3px solid var(--twoslash-tag-annotate-color);
+    background-color: var(--twoslash-tag-annotate-bg);
+    color: var(--twoslash-tag-annotate-color);
+  }
+}
+
+/* ========== floating vue ================== */
+$popper: v-popper;
+
+.twoslash .#{$popper} {
+  display: inline-block;
+}
+
+.#{$popper}--theme-twoslash {
+  z-index: var(--twoslash-z-index);
+
+  .#{$popper}__inner {
+    border-color: var(--twoslash-border-color);
+    background: var(--twoslash-popup-bg);
+    color: var(--twoslash-popup-color);
+    transition:
+      background-color var(--vp-t-color),
+      border-color var(--vp-t-color);
+  }
+
+  .#{$popper}__arrow-outer {
+    border-color: var(--twoslash-border-color);
+    transition: border-color var(--vp-t-color);
+  }
+
+  .#{$popper}__arrow-inner {
+    border-color: var(--twoslash-popup-bg);
+    transition: border-color var(--vp-t-color);
+  }
+}
+
+.twoslash-popup-container {
+  transform: translateY(1.5em);
+
+  .twoslash-query-presisted & {
+    transform: translateY(1.8em);
+  }
+}
+
+.twoslash-completion-list .twoslash-completions-icon {
+  color: var(--twoslash-unmatched-color) !important;
+}
+
+.twoslash-floating {
+  .twoslash-popup-code {
+    display: block;
+
+    box-sizing: border-box;
+    width: fit-content;
+    min-width: 100%;
+    max-width: 600px;
+    padding: 6px 12px;
+    border-radius: 0;
+
+    font-size: var(--twoslash-code-size);
+    line-height: var(--twoslash-code-line-height);
+    white-space: pre-wrap;
+  }
+
+  .twoslash-popup-code,
+  .twoslash-popup-docs {
+    background-color: var(--twoslash-popup-bg);
+    transition:
+      background-color var(--vp-t-color),
+      border-color var(--vp-t-color);
+  }
+
+  .twoslash-popup-docs,
+  .twoslash-popup-error {
+    overflow: hidden auto;
+
+    max-width: 700px;
+    max-height: 500px;
+    padding: 12px !important;
+
+    font-size: 0.9em;
+    font-family: var(--twoslash-docs-font);
+    text-wrap: balance;
+
+    p {
+      margin: 6px 0;
+      text-wrap: balance;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .twoslash-popup-docs {
+    border-top: 1px solid var(--twoslash-border-color);
+    color: var(--twoslash-docs-color);
+  }
+
+  .twoslash-popup-error {
+    color: var(--twoslash-error-color);
+
+    &.twoslash-error-level-warning {
+      color: var(--twoslash-warn-color);
+    }
+  }
+
+  /* stylelint-disable-next-line selector-max-compound-selectors */
+  .twoslash-popup-docs pre .twoslash-floating .twoslash-popup-error pre {
+    overflow-x: auto;
+
+    margin: 6px -2px;
+    padding: 12px;
+    border-radius: 8px;
+
+    background-color: var(--code-c-bg);
+
+    transition: background-color var(--vp-t-color);
+  }
+
+  .twoslash-popup-docs-tags {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px !important;
+
+    .twoslash-popup-docs-tag-name {
+      margin-right: 0.5em;
+      color: var(--twoslash-unmatched-color);
+      font-family: var(--twoslash-code-font);
+    }
+  }
+}
+
+.twoslash-completion-cursor {
+  display: inline-block;
+
+  width: 2px;
+  height: 1.2em;
+  margin-bottom: -0.2em;
+
+  background: var(--twoslash-cursor-color);
+
+  user-select: none;
+
+  transition: background-color var(--vp-t-color);
+}
+
+.twoslash-floating.twoslash-completion {
+  .#{$popper}__arrow-container {
+    display: none;
+  }
+
+  .twoslash-completion-list {
+    padding: 6px;
+    font-size: var(--twoslash-code-size) !important;
+    font-family: var(--twoslash-code-font);
+
+    li {
+      padding: 3px 0;
+    }
+  }
+}
