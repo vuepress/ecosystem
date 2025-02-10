@@ -677,6 +677,23 @@ body > div {
 
 - 类型： `boolean | ShikiTwoslashOptions`
 
+  ```ts
+  interface ShikiTwoslashOptions extends TransformerTwoslashOptions {
+    /**
+     * 是否需要显式地将 `twoslash` 添加到代码块中以运行 twoslash
+     * @default true
+     */
+    explicitTrigger?: boolean | RegExp
+
+    /**
+     * twoslash 配置
+     */
+    twoslashOptions?:
+      | TransformerTwoslashOptions['twoslashOptions']
+      | VueSpecificOptions
+  }
+  ```
+
 - 默认值： `false`
 
 - 详情： 是否启用 [twoslash](https://github.com/twoslashes/twoslash).
@@ -690,7 +707,8 @@ body > div {
 - 参考：
 
   - [Shiki > Twoslash](https://shiki.style/packages/twoslash)
-  - [Twoslash > TwoslashOptions](https://github.com/twoslashes/twoslash/blob/main/packages/twoslash/src/types/options.ts#L18)
+  - [Twoslash > TransformerTwoslashOptions](https://github.com/shikijs/shiki/blob/main/packages/twoslash/src/types.ts#L30)
+  - [Twoslash > VueSpecificOptions](https://github.com/twoslashes/twoslash/blob/main/packages/twoslash-vue/src/index.ts#L36)
 
 - 示例：
 

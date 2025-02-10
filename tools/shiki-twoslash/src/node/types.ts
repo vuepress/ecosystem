@@ -6,6 +6,7 @@ export interface TwoslashFloatingVueOptions {
   classCopyIgnore?: string
   classFloatingPanel?: string
   classCode?: string
+  classMarkdown?: string
   attrMarkdown?: string
 
   floatingVueTheme?: string
