@@ -31,8 +31,10 @@ export interface VuePressTwoslashOptions
    * Twoslash options
    */
   twoslashOptions?: TwoslashOptions
+
   /**
    * Requires adding `twoslash` to the code block explicitly to run twoslash
+   *
    * @default true
    */
   explicitTrigger?: TransformerTwoslashOptions['explicitTrigger']

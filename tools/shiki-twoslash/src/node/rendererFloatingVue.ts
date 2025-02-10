@@ -63,6 +63,7 @@ function renderMarkdown(
             lang,
             structure: _node.value.trim().includes('\n') ? 'classic' : 'inline',
           })
+
           if (lang) {
             return {
               type: 'element',

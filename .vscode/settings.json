@@ -50,6 +50,7 @@
     "lightmode",
     "linkify",
     "mathjax",
+    "mdast",
     "mdit",
     "meteorlxy",
     "mhchem",

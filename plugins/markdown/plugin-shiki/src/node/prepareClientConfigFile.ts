@@ -23,8 +23,8 @@ export const prepareClientConfigFile = (
     `import "${getModulePath(`${PLUGIN_NAME}/styles/shiki.css`, import.meta)}"`,
   ]
 
-  const setups: string[] = []
   const enhances: string[] = []
+  const setups: string[] = []
 
   if (lineNumbers !== 'disable') {
     imports.push(
@@ -95,18 +95,29 @@ export const prepareClientConfigFile = (
   let code = imports.join('\n')
 
   if (setups.length || enhances.length) {
-    code += '\nexport default {'
-    if (setups.length) {
-      code += `\n  setup() {
-    ${setups.join('\n    ')}
-  },`
-    }
+    code += `
+export default {
+`
+
     if (enhances.length) {
-      code += `\n  enhance({ app }) {
+      code += `\
+  enhance({ app }) {
     ${enhances.join('\n    ')}
-  },`
+  },
+`
     }
-    code += '\n}\n'
+
+    if (setups.length) {
+      code += `\
+  setup() {
+    ${setups.join('\n    ')}
+  },
+`
+    }
+
+    code += `\
+}
+`
   }
 
   return app.writeTemp('shiki/config.js', code)
