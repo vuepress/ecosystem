@@ -1,8 +1,8 @@
 import type { ShikiTransformer } from 'shiki'
 import { transformerTwoslashFactory } from './transformerTwoslashFactory.js'
-import type { VuePressTwoslashOptions } from './types.js'
+import type { ShikiTwoslashOptions } from './types.js'
 
-const TWOSLASH_REGEXP = /\btwoslash\b/
+// const TWOSLASH_REGEXP = /\btwoslash\b/
 
 const vPreTransformer: ShikiTransformer = {
   name: 'vuepress:v-pre',
@@ -11,15 +11,17 @@ const vPreTransformer: ShikiTransformer = {
   },
 }
 
-export type TwoslashTransformer = (meta: string) => ShikiTransformer[]
+export type TwoslashTransformer = ShikiTransformer[]
 
 export const createTwoslashTransformer = async (
-  options: VuePressTwoslashOptions = {},
+  options: ShikiTwoslashOptions = {},
 ): Promise<TwoslashTransformer> => {
   const transformer = await transformerTwoslashFactory(options)
 
-  return (meta = ''): ShikiTransformer[] => {
-    if (TWOSLASH_REGEXP.test(meta)) return [transformer]
-    return [vPreTransformer]
-  }
+  return [vPreTransformer, transformer]
+
+  // return (meta = ''): ShikiTransformer[] => {
+  //   if (TWOSLASH_REGEXP.test(meta)) return [transformer]
+  //   return [vPreTransformer]
+  // }
 }

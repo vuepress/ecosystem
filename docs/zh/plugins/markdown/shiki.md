@@ -675,7 +675,7 @@ body > div {
 
 ### twoslash
 
-- 类型： `boolean | TwoslashOptions`
+- 类型： `boolean | ShikiTwoslashOptions`
 
 - 默认值： `false`
 

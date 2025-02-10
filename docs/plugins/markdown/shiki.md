@@ -673,7 +673,7 @@ body > div {
 
 ### twoslash
 
-- Type: `boolean | TwoslashOptions`
+- Type: `boolean | ShikiTwoslashOptions`
 
 - Default: `false`
 

@@ -21,17 +21,14 @@ export interface TwoslashFloatingVueRendererOptions
   floatingVue?: TwoslashFloatingVueOptions
 }
 
-export type TwoslashOptions = TransformerTwoslashOptions['twoslashOptions'] &
-  VueSpecificOptions
-
-export interface VuePressTwoslashOptions
+export interface ShikiTwoslashOptions
   extends TransformerTwoslashOptions,
     TwoslashFloatingVueRendererOptions {
   /**
    * Twoslash options
    */
-  twoslashOptions?: TwoslashOptions
-
+  twoslashOptions?: TransformerTwoslashOptions['twoslashOptions'] &
+    VueSpecificOptions
   /**
    * Requires adding `twoslash` to the code block explicitly to run twoslash
    *
