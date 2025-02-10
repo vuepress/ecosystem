@@ -26,8 +26,6 @@ import theme from './theme.js'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
-const IS_PROD = process.env.NODE_ENV === 'production'
-
 export default defineUserConfig({
   // set site base to default value
   base: (process.env.BASE as '/' | `/${string}/` | undefined) || '/',
@@ -155,39 +153,21 @@ export default defineUserConfig({
         NpmBadge: path.resolve(__dirname, './components/NpmBadge.vue'),
       },
     }),
-    // only enable shiki plugin in production mode
-    IS_PROD
-      ? shikiPlugin({
-          langs: [
-            'bash',
-            'diff',
-            'json',
-            'md',
-            'scss',
-            'ts',
-            'vue',
-            'less',
-            'java',
-            'py',
-            'vb',
-            'bat',
-            'cs',
-            'cpp',
-          ],
-          themes: {
-            light: 'one-light',
-            dark: 'one-dark-pro',
-          },
-          lineNumbers: 10,
-          notationDiff: true,
-          notationErrorLevel: true,
-          notationFocus: true,
-          notationHighlight: true,
-          notationWordHighlight: true,
-          whitespace: true,
-          collapsedLines: false,
-        })
-      : [],
+    shikiPlugin({
+      themes: {
+        light: 'one-light',
+        dark: 'one-dark-pro',
+      },
+      lineNumbers: 10,
+      notationDiff: true,
+      notationErrorLevel: true,
+      notationFocus: true,
+      notationHighlight: true,
+      notationWordHighlight: true,
+      whitespace: true,
+      collapsedLines: false,
+      twoslash: true,
+    }),
     cachePlugin(),
   ],
 
