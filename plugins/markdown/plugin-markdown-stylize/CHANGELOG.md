@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.76](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.75...v2.0.0-rc.76) (2025-02-10)
+
+### Bug Fixes
+
+- **plugin-markdown-math:** fix mhchem for katex ([87af20a](https://github.com/vuepress/ecosystem/commit/87af20ac7ba0e9968f0edbb00f564ac9b86b36fc))
+
 # [2.0.0-rc.75](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.74...v2.0.0-rc.75) (2025-01-24)
 
 ### Bug Fixes

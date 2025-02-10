@@ -937,9 +937,6 @@ importers:
       '@vuepress/highlighter-helper':
         specifier: workspace:*
         version: link:../../../tools/highlighter-helper
-      '@vuepress/shiki-twoslash':
-        specifier: workspace:*
-        version: link:../../../tools/shiki-twoslash
       nanoid:
         specifier: ^5.0.9
         version: 5.0.9
@@ -956,6 +953,9 @@ importers:
       '@types/markdown-it':
         specifier: ^14.1.2
         version: 14.1.2
+      '@vuepress/shiki-twoslash':
+        specifier: workspace:*
+        version: link:../../../tools/shiki-twoslash
       markdown-it:
         specifier: ^14.1.0
         version: 14.1.0

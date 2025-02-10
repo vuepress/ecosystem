@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-shiki",
-  "version": "2.0.0-rc.74",
+  "version": "2.0.0-rc.76",
   "description": "VuePress plugin - shiki",
   "keywords": [
     "vuepress-plugin",
@@ -60,6 +60,7 @@
   },
   "devDependencies": {
     "@types/markdown-it": "^14.1.2",
+    "@vuepress/shiki-twoslash": "workspace:*",
     "markdown-it": "^14.1.0"
   }
 }
