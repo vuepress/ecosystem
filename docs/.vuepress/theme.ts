@@ -66,7 +66,7 @@ export default defaultTheme({
     hint: {
       alert: true,
     },
-    // use shiki plugin in production mode instead
+    // use shiki plugin instead
     prismjs: false,
   },
 })

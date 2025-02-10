@@ -26,8 +26,6 @@ import theme from './theme.js'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
-// const IS_PROD = process.env.NODE_ENV === 'production'
-
 export default defineUserConfig({
   // set site base to default value
   base: (process.env.BASE as '/' | `/${string}/` | undefined) || '/',
