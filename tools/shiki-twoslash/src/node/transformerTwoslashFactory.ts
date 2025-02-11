@@ -38,10 +38,8 @@ export const transformerTwoslashFactory = async (
   const shouldThrow =
     // respect user option
     options.throws ??
-    // ci env
-    process.env.CI ??
-    // production env
-    process.env.NODE_ENV === 'production'
+    // in CI or production mode
+    (process.env.CI || process.env.NODE_ENV === 'production')
 
   const onError = (error: unknown, code: string): string => {
     logger.error(
