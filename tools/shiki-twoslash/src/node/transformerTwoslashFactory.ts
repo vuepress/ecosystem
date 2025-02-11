@@ -1,16 +1,15 @@
 import process from 'node:process'
 import {
   createTransformerFactory,
-  defaultHoverInfoProcessor,
   defaultTwoslashOptions,
 } from '@shikijs/twoslash/core'
 import type { ShikiTransformer } from 'shiki'
 import { removeTwoslashNotations } from 'twoslash'
 import { createTwoslasher } from 'twoslash-vue'
 import { logger } from 'vuepress/utils'
+import type { ShikiTwoslashOptions } from './options.js'
 import { rendererFloatingVue } from './rendererFloatingVue.js'
-import { resolveTsPaths } from './resolveTsPaths.js'
-import type { ShikiTwoslashOptions } from './types.js'
+import { resolveTypeScriptPaths } from './resolveTypeScriptPaths.js'
 
 /**
  * Create a Shiki transformer for VuePress to enable twoslash integration
@@ -18,80 +17,93 @@ import type { ShikiTwoslashOptions } from './types.js'
 export const transformerTwoslashFactory = async (
   options: ShikiTwoslashOptions = {},
 ): Promise<ShikiTransformer> => {
-  const { explicitTrigger = true } = options
+  // eslint-disable-next-line no-multi-assign
+  const explicitTrigger = (options.explicitTrigger ??= true)
+  // eslint-disable-next-line no-multi-assign
+  const _twoslashOptions = (options.twoslashOptions ??= {})
+  const { compilerOptions = {} } = _twoslashOptions
+
+  const twoslashOptions = {
+    ...defaultTwoslashOptions(),
+    ..._twoslashOptions,
+    compilerOptions: {
+      baseUrl: process.cwd(),
+      ...compilerOptions,
+      path: {
+        ...compilerOptions.paths,
+        ...(await resolveTypeScriptPaths()),
+      },
+    },
+  }
+  const shouldThrow =
+    // respect user option
+    options.throws ??
+    // ci env
+    process.env.CI ??
+    // production env
+    process.env.NODE_ENV === 'production'
 
   const onError = (error: unknown, code: string): string => {
-    const isCI = process.env.CI
-    const isDev =
-      typeof process !== 'undefined' && process.env.NODE_ENV === 'development'
-    const shouldThrow =
-      (options.throws ?? isCI ?? !isDev) && options.throws !== false
     logger.error(
       `\n\n--------\nTwoslash error in code:\n--------\n${code.split(/\n/g).slice(0, 15).join('\n').trim()}\n--------\n`,
     )
+
     if (shouldThrow) {
       throw error
     } else {
       logger.error(error)
     }
+
     return removeTwoslashNotations(code)
   }
-  options.processHoverInfo ??= defaultHoverInfoProcessor
 
-  const paths = await resolveTsPaths()
-  const { compilerOptions = {}, ...twoslashOptions } =
-    options.twoslashOptions ?? {}
-  if (paths) {
-    compilerOptions.paths = {
-      ...compilerOptions.paths,
-      ...paths,
-    }
-  }
-  options.twoslashOptions = {
-    ...defaultTwoslashOptions(),
-    ...twoslashOptions,
-    compilerOptions: {
-      baseUrl: process.cwd(),
-      ...compilerOptions,
-    },
-  }
-
-  const twoslash = createTransformerFactory(
-    createTwoslasher(options.twoslashOptions),
-  )({
+  const twoslashInstance = createTwoslasher(twoslashOptions)
+  const twoslashTransformer = createTransformerFactory(twoslashInstance)({
     langs: ['ts', 'tsx', 'js', 'jsx', 'json', 'vue'],
     renderer: rendererFloatingVue(options),
-    onTwoslashError: onError,
     onShikiError: onError,
+    onTwoslashError: onError,
     ...options,
     explicitTrigger,
+    twoslashOptions,
   })
 
-  const trigger =
+  const triggerRegExp =
     explicitTrigger instanceof RegExp ? explicitTrigger : /\btwoslash\b/
 
   return {
-    ...twoslash,
-    name: '@shiki/vuepress-twoslash',
-    preprocess(code, opt) {
-      const cleanup = opt.transformers?.find(
-        (i) => i.name === 'vuepress:clean-up',
-      )
-      if (cleanup)
-        opt.transformers?.splice(opt.transformers.indexOf(cleanup), 1)
+    name: 'vuepress:twoslash',
 
-      // Disable v-pre for twoslash, because we need render it with FloatingVue
-      if (!explicitTrigger || opt.meta?.__raw?.match(trigger)) {
-        const vPre = opt.transformers?.find((i) => i.name === 'vuepress:v-pre')
-        if (vPre) opt.transformers?.splice(opt.transformers.indexOf(vPre), 1)
+    ...twoslashTransformer,
+
+    preprocess(code, preprocessOptions) {
+      const { transformers } = preprocessOptions
+
+      if (transformers) {
+        const cleanupIndex = transformers.findIndex(
+          ({ name }) => name === 'vuepress:clean-up',
+        )
+
+        if (cleanupIndex >= 0) transformers.splice(cleanupIndex, 1)
+
+        // Disable v-pre for twoslash, because we need render it with FloatingVue
+        if (
+          !explicitTrigger ||
+          preprocessOptions.meta?.__raw?.match(triggerRegExp)
+        ) {
+          const vPreIndex = transformers.findIndex(
+            ({ name }) => name === 'vuepress:v-pre',
+          )
+
+          if (vPreIndex >= 0) transformers.splice(vPreIndex, 1)
+        }
       }
 
-      return twoslash.preprocess!.call(this, code, opt)
+      return twoslashTransformer.preprocess!.call(this, code, preprocessOptions)
     },
-    postprocess(html) {
-      if (this.meta.twoslash) return html.replace(/\{/g, '&#123;')
 
-      return html
+    postprocess(html) {
+      return this.meta.twoslash ? html.replace(/\{/g, '&#123;') : html
     },
   }
 }

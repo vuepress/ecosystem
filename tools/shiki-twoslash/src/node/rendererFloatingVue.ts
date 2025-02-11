@@ -5,13 +5,12 @@ import { fromMarkdown } from 'mdast-util-from-markdown'
 import { gfmFromMarkdown } from 'mdast-util-gfm'
 import { defaultHandlers, toHast } from 'mdast-util-to-hast'
 import type { ShikiTransformerContextCommon } from 'shiki'
-import type { TwoslashFloatingVueRendererOptions } from './types.js'
+import type { TwoslashFloatingVueRendererOptions } from './options.js'
 
-const vPre = <T extends ElementContent>(el: T): T => {
+const addVPre = <T extends ElementContent>(el: T): T => {
   if (el.type === 'element') {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    el.properties ??= {}
-    el.properties['v-pre'] = ''
+    ;(el.properties ??= {})['v-pre'] = ''
   }
   return el
 }
@@ -35,7 +34,7 @@ const compose = (parts: {
       },
       content: {
         type: 'root',
-        children: [vPre(parts.popup)],
+        children: [addVPre(parts.popup)],
       },
       children: [],
     },
@@ -133,7 +132,7 @@ export const rendererFloatingVue = (
     'theme': floatingVueTheme,
   }
 
-  const rich = rendererRich({
+  const richRenderer = rendererRich({
     classExtra: classCopyIgnore,
     ...options,
     renderMarkdown,
@@ -206,7 +205,7 @@ export const rendererFloatingVue = (
                 },
                 content: {
                   type: 'root',
-                  children: [vPre(popup)],
+                  children: [addVPre(popup)],
                 },
               },
             ],
@@ -216,5 +215,5 @@ export const rendererFloatingVue = (
     },
   })
 
-  return rich
+  return richRenderer
 }

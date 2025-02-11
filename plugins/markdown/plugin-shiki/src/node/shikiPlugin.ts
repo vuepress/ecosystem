@@ -54,15 +54,15 @@ export const shikiPlugin = (_options: ShikiPluginOptions = {}): Plugin => {
         const { preWrapper, lineNumbers, collapsedLines } = options
 
         const markdownFilePathGetter = createMarkdownFilePathGetter(md)
-        const { highlighter, loadLang, twoslashTransformer } =
+        const { highlighter, loadLang, extraTransformers } =
           await createShikiHighlighter(options)
 
         md.options.highlight = getHighLightFunction(
           highlighter,
           options,
+          extraTransformers,
           loadLang,
           markdownFilePathGetter,
-          twoslashTransformer,
         )
 
         md.use(highlightLinesPlugin)

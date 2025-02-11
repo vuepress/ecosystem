@@ -1,6 +1,10 @@
 import { transformerCompactLineOptions } from '@shikijs/transformers'
-import type { TwoslashTransformer } from '@vuepress/shiki-twoslash'
-import type { BundledLanguage, BundledTheme, HighlighterGeneric } from 'shiki'
+import type {
+  BundledLanguage,
+  BundledTheme,
+  HighlighterGeneric,
+  ShikiTransformer,
+} from 'shiki'
 import {
   getTransformers,
   whitespaceTransformer,
@@ -21,9 +25,9 @@ type MarkdownItHighlight = (
 export const getHighLightFunction = (
   highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>,
   options: ShikiHighlightOptions,
+  extraTransformers: ShikiTransformer[] | undefined,
   loadLang: ShikiLoadLang,
   markdownFilePathGetter: MarkdownFilePathGetter,
-  twoslashTransformer: TwoslashTransformer = [],
 ): MarkdownItHighlight => {
   const transformers = getTransformers(options)
 
@@ -44,7 +48,7 @@ export const getHighLightFunction = (
             ? [transformerCompactLineOptions(attrsToLines(attrs))]
             : []),
           ...whitespaceTransformer(attrs, options.whitespace),
-          ...twoslashTransformer,
+          ...(extraTransformers ?? []),
           ...(options.transformers ?? []),
         ],
         ...('themes' in options
