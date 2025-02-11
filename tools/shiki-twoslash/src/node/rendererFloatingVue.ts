@@ -92,16 +92,17 @@ function renderMarkdownInline(
   md: string,
   context?: string,
 ): ElementContent[] {
-  let str = md
-  if (context === 'tag:param') str = md.replace(/^([\w$-]+)/, '`$1` ')
-
+  const str = context === 'tag:param' ? md.replace(/^([\w$-]+)/, '`$1` ') : md
   const children = renderMarkdown.call(this, str)
+
+  // return the children (content) of the first paragraph if it's the only one
   if (
     children.length === 1 &&
     children[0].type === 'element' &&
     children[0].tagName === 'p'
   )
     return children[0].children
+
   return children
 }
 
