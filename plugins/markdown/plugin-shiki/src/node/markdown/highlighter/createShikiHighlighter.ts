@@ -7,9 +7,11 @@ import type {
 } from 'shiki'
 import { createHighlighter, isSpecialLang } from 'shiki'
 import { createSyncFn } from 'synckit'
+import type { App } from 'vuepress'
 import { isPlainObject } from 'vuepress/shared'
 import type { ShikiPluginOptions } from '../../options.js'
 import type { ShikiResolveLang } from '../../resolveLang.js'
+import { vPreTransformer } from '../../transformers/vuepressTransformers.js'
 import { resolveLanguage } from '../../utils.js'
 
 const require = createRequire(import.meta.url)
@@ -20,13 +22,17 @@ const resolveLangSync = createSyncFn<ShikiResolveLang>(
 
 export type ShikiLoadLang = (lang: string) => boolean
 
-export const createShikiHighlighter = async ({
-  langs = [],
-  langAlias = {},
-  defaultLang,
-  shikiSetup,
-  ...options
-}: ShikiPluginOptions = {}): Promise<{
+export const createShikiHighlighter = async (
+  app: App,
+  {
+    langs = [],
+    langAlias = {},
+    defaultLang,
+    shikiSetup,
+    ...options
+  }: ShikiPluginOptions = {},
+  enableVPre = true,
+): Promise<{
   highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>
   loadLang: ShikiLoadLang
   extraTransformers: ShikiTransformer[]
@@ -69,15 +75,25 @@ export const createShikiHighlighter = async ({
 
   const extraTransformers: ShikiTransformer[] = []
 
-  if (options.twoslash) {
-    const { createTwoslashTransformers } = await import(
-      '@vuepress/shiki-twoslash'
-    )
+  if (enableVPre) extraTransformers.push(vPreTransformer)
 
+  if (options.twoslash) {
+    const { createTwoslashTransformer, createFileSystemTypesCache } =
+      await import('@vuepress/shiki-twoslash')
+
+    const { typesCache, ...twoslashOptions } = isPlainObject(options.twoslash)
+      ? options.twoslash
+      : {}
     extraTransformers.push(
-      ...(await createTwoslashTransformers(
-        isPlainObject(options.twoslash) ? options.twoslash : {},
-      )),
+      await createTwoslashTransformer({
+        ...twoslashOptions,
+        typesCache:
+          typesCache === true || typeof typesCache === 'undefined'
+            ? createFileSystemTypesCache({
+                dir: app.dir.cache('markdown/twoslash'),
+              })
+            : typesCache,
+      }),
     )
   }
 

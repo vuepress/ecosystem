@@ -688,6 +688,12 @@ body > div {
      */
     twoslashOptions?: TransformerTwoslashOptions['twoslashOptions'] &
       VueSpecificOptions
+
+    /**
+     * The options for caching resolved types
+     * @default true
+     */
+    typesCache?: TwoslashTypesCache | boolean
   }
   ```
 
@@ -706,6 +712,7 @@ body > div {
   - [Shiki > Twoslash](https://shiki.style/packages/twoslash)
   - [Twoslash > TransformerTwoslashOptions](https://github.com/shikijs/shiki/blob/main/packages/twoslash/src/types.ts#L30)
   - [Twoslash > VueSpecificOptions](https://github.com/twoslashes/twoslash/blob/main/packages/twoslash-vue/src/index.ts#L36)
+  - [TwoslashTypesCache](https://github.com/vuepress/ecosystem/blob/main/tools/shiki-twoslash/src/node/options.ts#L47)
 
 - Example:
 

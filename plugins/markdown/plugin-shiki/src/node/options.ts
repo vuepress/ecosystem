@@ -20,5 +20,13 @@ export type ShikiPluginOptions = MarkdownItLineNumbersOptions &
      *
      * @default false
      */
-    twoslash?: ShikiTwoslashOptions | boolean
+    twoslash?:
+      | boolean
+      | (ShikiTwoslashOptions & {
+          /**
+           * The options for caching resolved types
+           * @default true
+           */
+          typesCache?: ShikiTwoslashOptions['typesCache'] | true
+        })
   }

@@ -70,6 +70,7 @@ function renderMarkdown(
               properties: {
                 'class': `language-${lang}`,
                 'data-ext': lang,
+                'data-title': lang,
                 'data-highlighter': 'shiki',
                 'style':
                   children[0]?.type === 'element' &&

@@ -1,5 +1,6 @@
 import type { RendererRichOptions } from '@shikijs/twoslash'
 import type { TransformerTwoslashOptions } from '@shikijs/twoslash/core'
+import type { TwoslashReturn } from 'twoslash'
 import type { VueSpecificOptions } from 'twoslash-vue'
 
 export interface TwoslashFloatingVueOptions {
@@ -36,4 +37,31 @@ export interface ShikiTwoslashOptions
    * @default true
    */
   explicitTrigger?: TransformerTwoslashOptions['explicitTrigger']
+
+  /**
+   * The options for caching resolved types
+   */
+  typesCache?: TwoslashTypesCache | false
+}
+
+export interface TwoslashTypesCache {
+  /**
+   * Read cached result
+   *
+   * @param code Source code
+   */
+  read: (code: string) => TwoslashReturn | null
+
+  /**
+   * Save result to cache
+   *
+   * @param code Source code
+   * @param data Twoslash data
+   */
+  write: (code: string, data: TwoslashReturn) => void
+
+  /**
+   * On initialization
+   */
+  init?: () => void
 }

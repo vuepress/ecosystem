@@ -4,6 +4,7 @@ import {
   defaultTwoslashOptions,
 } from '@shikijs/twoslash/core'
 import type { ShikiTransformer } from 'shiki'
+import type { TwoslashExecuteOptions, TwoslashReturn } from 'twoslash'
 import { removeTwoslashNotations } from 'twoslash'
 import { createTwoslasher } from 'twoslash-vue'
 import { logger } from 'vuepress/utils'
@@ -14,13 +15,14 @@ import { resolveTypeScriptPaths } from './resolveTypeScriptPaths.js'
 /**
  * Create a Shiki transformer for VuePress to enable twoslash integration
  */
-export const transformerTwoslashFactory = async (
+export const createTwoslashTransformer = async (
   options: ShikiTwoslashOptions = {},
 ): Promise<ShikiTransformer> => {
   // eslint-disable-next-line no-multi-assign
   const explicitTrigger = (options.explicitTrigger ??= true)
   // eslint-disable-next-line no-multi-assign
   const _twoslashOptions = (options.twoslashOptions ??= {})
+
   const { compilerOptions = {} } = _twoslashOptions
 
   const twoslashOptions = {
@@ -55,7 +57,27 @@ export const transformerTwoslashFactory = async (
     return removeTwoslashNotations(code)
   }
 
-  const twoslashInstance = createTwoslasher(twoslashOptions)
+  const defaultTwoslashInstance = createTwoslasher(twoslashOptions)
+  const { typesCache } = options
+  let twoslashInstance = defaultTwoslashInstance
+  if (typesCache) {
+    twoslashInstance = ((
+      code: string,
+      extension?: string,
+      opt?: TwoslashExecuteOptions,
+    ): TwoslashReturn => {
+      const cached = typesCache.read(code) // Restore cache
+      if (cached) return cached
+
+      const twoslashResult = defaultTwoslashInstance(code, extension, opt)
+      typesCache.write(code, twoslashResult)
+      return twoslashResult
+    }) as typeof defaultTwoslashInstance
+    twoslashInstance.getCacheMap = defaultTwoslashInstance.getCacheMap
+
+    typesCache.init?.()
+  }
+
   const twoslashTransformer = createTransformerFactory(twoslashInstance)({
     langs: ['ts', 'tsx', 'js', 'jsx', 'json', 'vue'],
     renderer: rendererFloatingVue(options),
