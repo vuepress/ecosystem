@@ -33,6 +33,7 @@ const createMarkdown = ({
   md.options.highlight = getHighLightFunction(
     highlighter,
     options,
+    [],
     loadLang,
     markdownFilePathGetter,
   )
