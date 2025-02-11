@@ -7,7 +7,7 @@ import { defaultHandlers, toHast } from 'mdast-util-to-hast'
 import type { ShikiTransformerContextCommon } from 'shiki'
 import type { TwoslashFloatingVueRendererOptions } from './options.js'
 
-const addVPre = <T extends ElementContent>(el: T): T => {
+const addVPreProp = <T extends ElementContent>(el: T): T => {
   if (el.type === 'element') {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     ;(el.properties ??= {})['v-pre'] = ''
@@ -34,7 +34,7 @@ const compose = (parts: {
       },
       content: {
         type: 'root',
-        children: [addVPre(parts.popup)],
+        children: [addVPreProp(parts.popup)],
       },
       children: [],
     },
@@ -205,7 +205,7 @@ export const rendererFloatingVue = (
                 },
                 content: {
                   type: 'root',
-                  children: [addVPre(popup)],
+                  children: [addVPreProp(popup)],
                 },
               },
             ],
