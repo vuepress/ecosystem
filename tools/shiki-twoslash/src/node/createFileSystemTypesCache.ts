@@ -11,28 +11,26 @@ export interface FileSystemTypeResultCacheOptions {
   dir: string
 }
 
-export function createFileSystemTypesCache({
+export const createFileSystemTypesCache = ({
   dir,
-}: FileSystemTypeResultCacheOptions): TwoslashTypesCache {
-  return {
-    init() {
-      mkdirSync(dir, { recursive: true })
-    },
-    read(code) {
-      const hash = createHash(code)
-      const filePath = join(dir, `${hash}.json`)
-      if (!existsSync(filePath)) {
-        return null
-      }
-      return JSON.parse(
-        readFileSync(filePath, { encoding: 'utf-8' }),
-      ) as TwoslashReturn
-    },
-    write(code, data) {
-      const hash = createHash(code)
-      const filePath = join(dir, `${hash}.json`)
-      const json = JSON.stringify(data)
-      writeFileSync(filePath, json, { encoding: 'utf-8' })
-    },
-  }
-}
+}: FileSystemTypeResultCacheOptions): TwoslashTypesCache => ({
+  init() {
+    mkdirSync(dir, { recursive: true })
+  },
+  read(code) {
+    const hash = createHash(code)
+    const filePath = join(dir, `${hash}.json`)
+    if (!existsSync(filePath)) {
+      return null
+    }
+    return JSON.parse(
+      readFileSync(filePath, { encoding: 'utf-8' }),
+    ) as TwoslashReturn
+  },
+  write(code, data) {
+    const hash = createHash(code)
+    const filePath = join(dir, `${hash}.json`)
+    const json = JSON.stringify(data)
+    writeFileSync(filePath, json, { encoding: 'utf-8' })
+  },
+})
