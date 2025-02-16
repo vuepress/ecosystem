@@ -46,7 +46,7 @@
     "@mdit/plugin-container": "^0.16.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^12.5.0"
+    "@vueuse/core": "^12.7.0"
   },
   "peerDependencies": {
     "vuepress": "2.0.0-rc.19"
