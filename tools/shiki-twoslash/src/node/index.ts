@@ -1,5 +1,5 @@
 export * from './rendererFloatingVue.js'
-export * from './transformerTwoslashFactory.js'
+export * from './resolveTypeScriptPaths.js'
 export * from './createTwoslashTransformer.js'
-export * from './resolveTsPaths.js'
-export type * from './types.js'
+export * from './createFileSystemTypesCache.js'
+export type * from './options.js'

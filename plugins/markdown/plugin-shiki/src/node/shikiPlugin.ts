@@ -47,22 +47,43 @@ export const shikiPlugin = (_options: ShikiPluginOptions = {}): Plugin => {
       options.twoslash = false
     }
 
+    /**
+     * Whether to enable the `v-pre` configuration of the code block
+     */
+    let enableVPre = true
+
     return {
       name: '@vuepress/plugin-shiki',
+
+      extendsMarkdownOptions: (opts) => {
+        /**
+         * Turn off the `v-pre` configuration of the code block.
+         */
+        if (opts.vPre !== false) {
+          const vPre = isPlainObject(opts.vPre) ? opts.vPre : { block: true }
+          if (vPre.block) {
+            opts.vPre ??= {}
+            opts.vPre.block = false
+          }
+          enableVPre = vPre.block ?? true
+        } else {
+          enableVPre = false
+        }
+      },
 
       extendsMarkdown: async (md) => {
         const { preWrapper, lineNumbers, collapsedLines } = options
 
         const markdownFilePathGetter = createMarkdownFilePathGetter(md)
-        const { highlighter, loadLang, twoslashTransformer } =
-          await createShikiHighlighter(options)
+        const { highlighter, loadLang, extraTransformers } =
+          await createShikiHighlighter(app, options, enableVPre)
 
         md.options.highlight = getHighLightFunction(
           highlighter,
           options,
+          extraTransformers,
           loadLang,
           markdownFilePathGetter,
-          twoslashTransformer,
         )
 
         md.use(highlightLinesPlugin)
@@ -74,20 +95,6 @@ export const shikiPlugin = (_options: ShikiPluginOptions = {}): Plugin => {
           md.use<MarkdownItCollapsedLinesOptions>(collapsedLinesPlugin, {
             collapsedLines,
           })
-        }
-      },
-
-      extendsMarkdownOptions: (opts) => {
-        /**
-         * After injecting twoslash & floating-vue,
-         * it is necessary to turn off the `v-pre` configuration of the code block.
-         */
-        if (options.twoslash && opts.vPre !== false) {
-          const vPre = isPlainObject(opts.vPre) ? opts.vPre : { block: true }
-          if (vPre.block) {
-            opts.vPre ??= {}
-            opts.vPre.block = false
-          }
         }
       },
 

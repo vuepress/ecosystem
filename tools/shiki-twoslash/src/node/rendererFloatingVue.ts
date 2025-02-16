@@ -5,13 +5,12 @@ import { fromMarkdown } from 'mdast-util-from-markdown'
 import { gfmFromMarkdown } from 'mdast-util-gfm'
 import { defaultHandlers, toHast } from 'mdast-util-to-hast'
 import type { ShikiTransformerContextCommon } from 'shiki'
-import type { TwoslashFloatingVueRendererOptions } from './types.js'
+import type { TwoslashFloatingVueRendererOptions } from './options.js'
 
-const vPre = <T extends ElementContent>(el: T): T => {
+const addVPreProp = <T extends ElementContent>(el: T): T => {
   if (el.type === 'element') {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    el.properties ??= {}
-    el.properties['v-pre'] = ''
+    ;(el.properties ??= {})['v-pre'] = ''
   }
   return el
 }
@@ -35,7 +34,7 @@ const compose = (parts: {
       },
       content: {
         type: 'root',
-        children: [vPre(parts.popup)],
+        children: [addVPreProp(parts.popup)],
       },
       children: [],
     },
@@ -71,6 +70,7 @@ function renderMarkdown(
               properties: {
                 'class': `language-${lang}`,
                 'data-ext': lang,
+                'data-title': lang,
                 'data-highlighter': 'shiki',
                 'style':
                   children[0]?.type === 'element' &&
@@ -93,16 +93,17 @@ function renderMarkdownInline(
   md: string,
   context?: string,
 ): ElementContent[] {
-  let str = md
-  if (context === 'tag:param') str = md.replace(/^([\w$-]+)/, '`$1` ')
-
+  const str = context === 'tag:param' ? md.replace(/^([\w$-]+)/, '`$1` ') : md
   const children = renderMarkdown.call(this, str)
+
+  // return the children (content) of the first paragraph if it's the only one
   if (
     children.length === 1 &&
     children[0].type === 'element' &&
     children[0].tagName === 'p'
   )
     return children[0].children
+
   return children
 }
 
@@ -113,6 +114,7 @@ export const rendererFloatingVue = (
     classCopyIgnore = 'vp-copy-ignore',
     classFloatingPanel = 'twoslash-floating',
     classCode = 'vp-code',
+    classMarkdown = '',
     attrMarkdown = 'vp-content',
     floatingVueTheme = 'twoslash',
     floatingVueThemeQuery = 'twoslash-query',
@@ -132,7 +134,7 @@ export const rendererFloatingVue = (
     'theme': floatingVueTheme,
   }
 
-  const rich = rendererRich({
+  const richRenderer = rendererRich({
     classExtra: classCopyIgnore,
     ...options,
     renderMarkdown,
@@ -153,19 +155,19 @@ export const rendererFloatingVue = (
       },
       queryCompose: compose,
       popupDocs: {
-        class: 'twoslash-popup-docs',
+        class: `twoslash-popup-docs ${classMarkdown}`,
         properties: {
           [attrMarkdown]: '',
         },
       },
       popupDocsTags: {
-        class: 'twoslash-popup-docs twoslash-popup-docs-tags',
+        class: `twoslash-popup-docs twoslash-popup-docs-tags ${classMarkdown}`,
         properties: {
           [attrMarkdown]: '',
         },
       },
       popupError: {
-        class: 'twoslash-popup-error',
+        class: `twoslash-popup-error ${classMarkdown}`,
         properties: {
           [attrMarkdown]: '',
         },
@@ -205,7 +207,7 @@ export const rendererFloatingVue = (
                 },
                 content: {
                   type: 'root',
-                  children: [vPre(popup)],
+                  children: [addVPreProp(popup)],
                 },
               },
             ],
@@ -215,5 +217,5 @@ export const rendererFloatingVue = (
     },
   })
 
-  return rich
+  return richRenderer
 }

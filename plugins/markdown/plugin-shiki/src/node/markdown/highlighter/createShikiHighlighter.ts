@@ -1,11 +1,17 @@
 import { createRequire } from 'node:module'
-import type { TwoslashTransformer } from '@vuepress/shiki-twoslash'
-import type { BundledLanguage, BundledTheme, HighlighterGeneric } from 'shiki'
+import type {
+  BundledLanguage,
+  BundledTheme,
+  HighlighterGeneric,
+  ShikiTransformer,
+} from 'shiki'
 import { createHighlighter, isSpecialLang } from 'shiki'
 import { createSyncFn } from 'synckit'
+import type { App } from 'vuepress'
 import { isPlainObject } from 'vuepress/shared'
 import type { ShikiPluginOptions } from '../../options.js'
 import type { ShikiResolveLang } from '../../resolveLang.js'
+import { vPreTransformer } from '../../transformers/vuepressTransformers.js'
 import { resolveLanguage } from '../../utils.js'
 
 const require = createRequire(import.meta.url)
@@ -16,16 +22,20 @@ const resolveLangSync = createSyncFn<ShikiResolveLang>(
 
 export type ShikiLoadLang = (lang: string) => boolean
 
-export const createShikiHighlighter = async ({
-  langs = [],
-  langAlias = {},
-  defaultLang,
-  shikiSetup,
-  ...options
-}: ShikiPluginOptions = {}): Promise<{
+export const createShikiHighlighter = async (
+  app: App,
+  {
+    langs = [],
+    langAlias = {},
+    defaultLang,
+    shikiSetup,
+    ...options
+  }: ShikiPluginOptions = {},
+  enableVPre = true,
+): Promise<{
   highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>
   loadLang: ShikiLoadLang
-  twoslashTransformer: TwoslashTransformer
+  extraTransformers: ShikiTransformer[]
 }> => {
   const highlighter = await createHighlighter({
     langs: [...langs, ...Object.values(langAlias)],
@@ -63,19 +73,31 @@ export const createShikiHighlighter = async ({
     return rawGetLanguage.call(highlighter, name)
   }
 
-  let twoslashTransformer: TwoslashTransformer = () => []
+  const extraTransformers: ShikiTransformer[] = []
+
+  if (enableVPre) extraTransformers.push(vPreTransformer)
 
   if (options.twoslash) {
-    const { createTwoslashTransformer } = await import(
-      '@vuepress/shiki-twoslash'
-    )
+    const { createTwoslashTransformer, createFileSystemTypesCache } =
+      await import('@vuepress/shiki-twoslash')
 
-    twoslashTransformer = await createTwoslashTransformer({
-      twoslashOptions: isPlainObject(options.twoslash) ? options.twoslash : {},
-    })
+    const { typesCache, ...twoslashOptions } = isPlainObject(options.twoslash)
+      ? options.twoslash
+      : {}
+    extraTransformers.push(
+      await createTwoslashTransformer({
+        ...twoslashOptions,
+        typesCache:
+          typesCache === true || typeof typesCache === 'undefined'
+            ? createFileSystemTypesCache({
+                dir: app.dir.cache('markdown/twoslash'),
+              })
+            : typesCache,
+      }),
+    )
   }
 
   await shikiSetup?.(highlighter)
 
-  return { highlighter, loadLang, twoslashTransformer }
+  return { highlighter, loadLang, extraTransformers }
 }

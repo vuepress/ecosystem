@@ -673,7 +673,29 @@ body > div {
 
 ### twoslash
 
-- Type: `boolean | TwoslashOptions`
+- Type: `boolean | ShikiTwoslashOptions`
+
+  ```ts
+  interface ShikiTwoslashOptions extends TransformerTwoslashOptions {
+    /**
+     * Requires adding `twoslash` to the code block explicitly to run twoslash
+     * @default true
+     */
+    explicitTrigger?: RegExp | boolean
+
+    /**
+     * twoslash options
+     */
+    twoslashOptions?: TransformerTwoslashOptions['twoslashOptions'] &
+      VueSpecificOptions
+
+    /**
+     * The options for caching resolved types
+     * @default true
+     */
+    typesCache?: TwoslashTypesCache | boolean
+  }
+  ```
 
 - Default: `false`
 
@@ -688,7 +710,9 @@ body > div {
 - Also see:
 
   - [Shiki > Twoslash](https://shiki.style/packages/twoslash)
-  - [Twoslash > TwoslashOptions](https://github.com/twoslashes/twoslash/blob/main/packages/twoslash/src/types/options.ts#L18)
+  - [Twoslash > TransformerTwoslashOptions](https://github.com/shikijs/shiki/blob/main/packages/twoslash/src/types.ts#L30)
+  - [Twoslash > VueSpecificOptions](https://github.com/twoslashes/twoslash/blob/main/packages/twoslash-vue/src/index.ts#L36)
+  - [TwoslashTypesCache](https://github.com/vuepress/ecosystem/blob/main/tools/shiki-twoslash/src/node/options.ts#L47)
 
 - Example:
 
