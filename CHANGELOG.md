@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.77](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.76...v2.0.0-rc.77) (2025-02-16)
+
+### Features
+
+- **plugin-comment:** support more Giscus built-in themes in types ([#351](https://github.com/vuepress/ecosystem/issues/351)) ([7f224df](https://github.com/vuepress/ecosystem/commit/7f224df314817ca7513eb052b5357f44c0da5d87))
+- **plugin-comment:** support more Giscus locales ([#352](https://github.com/vuepress/ecosystem/issues/352)) ([f994d2c](https://github.com/vuepress/ecosystem/commit/f994d2cb17fa91a691db051fe8f763beb2c6a55a))
+
+### Performance Improvements
+
+- improve shiki twoslash options ([#350](https://github.com/vuepress/ecosystem/issues/350)) ([d5aa2e3](https://github.com/vuepress/ecosystem/commit/d5aa2e345a69b7bd5855a85b25dc88cd0dbb3bcc))
+
 # [2.0.0-rc.76](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.75...v2.0.0-rc.76) (2025-02-10)
 
 ### Bug Fixes
