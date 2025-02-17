@@ -12,11 +12,9 @@ import {
   watch,
 } from 'vue'
 import { useRouteLocale, useRoutePath, useRouter } from 'vuepress/client'
-import type {
-  RedirectBehaviorConfig,
-  RedirectPluginLocaleConfig,
-} from '../../shared/index.js'
+import type { RedirectBehaviorConfig } from '../../shared/index.js'
 import { useRedirectInfo } from '../composables/index.js'
+import type { RedirectPluginLocaleConfig } from '../types.js'
 import { statusLocalStorage, statusSessionStorage } from '../utils/index.js'
 
 import '../styles/redirect-modal.css'

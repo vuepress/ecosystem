@@ -1,3 +1,7 @@
+---
+icon: la:git-alt
+---
+
 # git
 
 <NpmBadge package="@vuepress/plugin-git" />

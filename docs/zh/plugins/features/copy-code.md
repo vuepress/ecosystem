@@ -1,3 +1,7 @@
+---
+icon: clipboard-copy
+---
+
 # copy-code
 
 <NpmBadge package="@vuepress/plugin-copy-code" />
@@ -114,7 +118,7 @@ export default {
   }
 
   interface CopyCodePluginLocaleConfig {
-    [localePath: string]: CopyCodePluginLocaleData
+    [localePath: string]: Partial<CopyCodePluginLocaleData>
   }
   ```
 

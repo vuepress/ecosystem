@@ -119,6 +119,7 @@ const mergeAlias = (
   if (!overrides) return defaults
 
   if (isObject(defaults) && isObject(overrides))
+    // eslint-disable-next-line @typescript-eslint/no-misused-spread
     return { ...defaults, ...overrides }
 
   // the order is flipped because the alias is resolved from top-down,

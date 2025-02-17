@@ -1,3 +1,7 @@
+---
+icon: https://waline.js.org/favicon.ico
+---
+
 # Waline
 
 一个有后端的安全评论系统。

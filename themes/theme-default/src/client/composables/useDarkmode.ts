@@ -1,16 +1,16 @@
 import { useThemeLocaleData } from '@theme/useThemeData'
-import { usePreferredDark, useStorage } from '@vueuse/core'
+import { usePreferredDark, useStorage, watchImmediate } from '@vueuse/core'
 import type { InjectionKey, WritableComputedRef } from 'vue'
-import { computed, inject, onMounted, onUnmounted, provide, watch } from 'vue'
+import { computed, inject, onMounted, onUnmounted, provide } from 'vue'
 
-export type DarkModeRef = WritableComputedRef<boolean>
+export type DarkmodeRef = WritableComputedRef<boolean>
 
-export const darkModeSymbol: InjectionKey<DarkModeRef> = Symbol(
+export const darkModeSymbol: InjectionKey<DarkmodeRef> = Symbol(
   __VUEPRESS_DEV__ ? 'darkMode' : '',
 )
 
-const applyDarkmodeToHTML = (isDarkMode: DarkModeRef): void => {
-  const update = (value = isDarkMode.value): void => {
+const applyDarkmodeToHTML = (isDarkmode: DarkmodeRef): void => {
+  const update = (value = isDarkmode.value): void => {
     // set `class="dark"` on `<html>` element
     const el = window.document.documentElement
 
@@ -19,7 +19,7 @@ const applyDarkmodeToHTML = (isDarkMode: DarkModeRef): void => {
   }
 
   onMounted(() => {
-    watch(isDarkMode, update, { immediate: true })
+    watchImmediate(isDarkmode, update)
   })
 
   onUnmounted(() => {
@@ -30,18 +30,18 @@ const applyDarkmodeToHTML = (isDarkMode: DarkModeRef): void => {
 /**
  * Inject dark mode global computed
  */
-export const useDarkMode = (): DarkModeRef => {
-  const isDarkMode = inject(darkModeSymbol)
-  if (!isDarkMode) {
-    throw new Error('useDarkMode() is called without provider.')
+export const useDarkmode = (): DarkmodeRef => {
+  const isDarkmode = inject(darkModeSymbol)
+  if (!isDarkmode) {
+    throw new Error('useDarkmode() is called without provider.')
   }
-  return isDarkMode
+  return isDarkmode
 }
 
 /**
  * Create dark mode ref and provide as global computed in setup
  */
-export const setupDarkMode = (): void => {
+export const setupDarkmode = (): void => {
   const themeLocale = useThemeLocaleData()
   const isDarkPreferred = usePreferredDark()
   const darkStorage = useStorage(
@@ -49,7 +49,7 @@ export const setupDarkMode = (): void => {
     themeLocale.value.colorMode,
   )
 
-  const isDarkMode = computed<boolean>({
+  const isDarkmode = computed<boolean>({
     get() {
       // disable color mode switching
       if (!themeLocale.value.colorModeSwitch) {
@@ -70,7 +70,7 @@ export const setupDarkMode = (): void => {
       }
     },
   })
-  provide(darkModeSymbol, isDarkMode)
+  provide(darkModeSymbol, isDarkmode)
 
-  applyDarkmodeToHTML(isDarkMode)
+  applyDarkmodeToHTML(isDarkmode)
 }

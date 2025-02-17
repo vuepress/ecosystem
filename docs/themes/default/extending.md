@@ -1,3 +1,7 @@
+---
+icon: cable
+---
+
 # Extending
 
 VuePress default theme is widely used by users, so it is designed to be extendable, allowing users to make their own customization with ease.
@@ -87,7 +91,7 @@ export default defineUserConfig({
 
 ## Modifying Behavior
 
-Most of the core behaviors of the default theme have been extracted into a composable API, and also provide [aliases](https://v2.vuepress.vuejs.org/zh/reference/plugin-api.html#alias) with the `@theme` prefix.
+Most of the core behaviors of the default theme have been extracted into a composable API or util function, and also provide [aliases](https://v2.vuepress.vuejs.org/zh/reference/plugin-api.html#alias) with the `@theme` prefix.
 
 For example, if you want to add some default values ​​to the theme data of the default theme, you can override the `useThemeData` function of `@theme/useThemeData`.
 

@@ -1,3 +1,7 @@
+---
+icon: list-checks
+---
+
 # links-check
 
 <NpmBadge package="@vuepress/plugin-links-check" />

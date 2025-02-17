@@ -47,7 +47,7 @@ const tagMap = useBlogCategory<ArticleInfo>('tag')
     font-size: 14px;
   }
 
-  a {
+  .route-link {
     color: inherit;
   }
 

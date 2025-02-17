@@ -4,79 +4,47 @@ export const navbarZh: NavbarOptions = [
   {
     text: '主题',
     prefix: '/zh/themes/',
+    icon: 'palette',
     children: [
-      {
-        text: '主题指南',
-        link: 'guidelines',
-      },
-      {
-        text: '默认主题',
-        link: 'default/',
-      },
+      'guidelines',
+      'default/',
       {
         text: 'Hope 主题',
+        icon: 'https://theme-hope-assets.vuejs.press/logo.svg',
         link: 'https://theme-hope.vuejs.press/zh/',
       },
       {
         text: 'Plume 主题',
+        icon: 'https://theme-plume.vuejs.press/favicon.ico',
         link: 'https://theme-plume.vuejs.press',
       },
       {
         text: 'Reco 主题',
+        icon: 'https://theme-reco.vuejs.press/favicon.ico',
         link: 'https://theme-reco.vuejs.press',
       },
     ],
   },
   {
     text: '插件',
+    icon: 'unplug',
     prefix: '/zh/plugins/',
     children: [
-      {
-        text: '常用功能',
-        link: 'features/',
-      },
-      {
-        text: 'Markdown',
-        link: 'markdown/',
-      },
-      {
-        text: '搜索',
-        link: 'search/',
-      },
-      {
-        text: '博客',
-        link: 'blog/',
-      },
-      {
-        text: 'PWA',
-        link: 'pwa/',
-      },
-      {
-        text: '统计分析',
-        link: 'analytics/',
-      },
-      {
-        text: '搜索引擎增强',
-        link: 'seo/',
-      },
-      {
-        text: '主题开发',
-        link: 'development/',
-      },
-      {
-        text: '工具',
-        link: 'tools/',
-      },
+      'features/',
+      'markdown/',
+      'search/',
+      'blog/',
+      'pwa/',
+      'analytics/',
+      'seo/',
+      'development/',
+      'tools/',
     ],
   },
   {
     text: '工具',
+    icon: 'hammer',
     prefix: '/zh/tools/',
-    children: [
-      {
-        text: 'helper',
-        link: 'helper/',
-      },
-    ],
+    children: ['helper/'],
   },
 ]

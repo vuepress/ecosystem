@@ -1,3 +1,7 @@
+---
+icon: highlighter
+---
+
 # shiki
 
 <NpmBadge package="@vuepress/plugin-shiki" />
@@ -37,13 +41,11 @@ export default {
 
 - Details:
 
-  Languages of code blocks to be parsed by Shiki.
+  Additional languages to be parsed by Shiki.
 
-  This option will be forwarded to `createHighlighter()` method of Shiki.
+  ::: tip
 
-  ::: warning
-
-  We recommend you to provide the languages list you are using explicitly, otherwise Shiki will load all languages and can affect performance.
+  The plugin now automatically loads the languages used in your markdown files, so you don't need to specify them manually.
 
   :::
 
@@ -668,6 +670,69 @@ body > div {
 
 - Also see：
   - [Shiki > Render Whitespace](https://shiki.style/packages/transformers#transformerrenderwhitespace)
+
+### twoslash
+
+- Type: `boolean | ShikiTwoslashOptions`
+
+  ```ts
+  interface ShikiTwoslashOptions extends TransformerTwoslashOptions {
+    /**
+     * Requires adding `twoslash` to the code block explicitly to run twoslash
+     * @default true
+     */
+    explicitTrigger?: RegExp | boolean
+
+    /**
+     * twoslash options
+     */
+    twoslashOptions?: TransformerTwoslashOptions['twoslashOptions'] &
+      VueSpecificOptions
+
+    /**
+     * The options for caching resolved types
+     * @default true
+     */
+    typesCache?: TwoslashTypesCache | boolean
+  }
+  ```
+
+- Default: `false`
+
+- Details: Whether enable [twoslash](https://github.com/twoslashes/twoslash).
+
+  ::: tip
+
+  For size reasons, the plugin does not include the `@vuepress/shiki-twoslash` package by default. If you want to use it, you need to install it manually.
+
+  :::
+
+- Also see:
+
+  - [Shiki > Twoslash](https://shiki.style/packages/twoslash)
+  - [Twoslash > TransformerTwoslashOptions](https://github.com/shikijs/shiki/blob/main/packages/twoslash/src/types.ts#L30)
+  - [Twoslash > VueSpecificOptions](https://github.com/twoslashes/twoslash/blob/main/packages/twoslash-vue/src/index.ts#L36)
+  - [TwoslashTypesCache](https://github.com/vuepress/ecosystem/blob/main/tools/shiki-twoslash/src/node/options.ts#L47)
+
+- Example:
+
+  **Input:**
+
+  ````md
+  ```ts twoslash
+  const a = 1
+  const b = 2
+  console.log(a + b)
+  ```
+  ````
+
+  **Output:**
+
+  ```ts twoslash
+  const a = 1
+  const b = 23
+  console.log(a + b)
+  ```
 
 ## Advanced Options
 

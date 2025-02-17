@@ -1,6 +1,7 @@
 import { isFunction } from '@vuepress/helper/client'
+import { watchImmediate } from '@vueuse/core'
 import type { App, MaybeRefOrGetter, Ref } from 'vue'
-import { inject, isRef, ref, watch } from 'vue'
+import { computed, inject, isRef, readonly, ref } from 'vue'
 import type {
   ArtalkOptions,
   CommentOptions,
@@ -22,14 +23,11 @@ const defineCommentConfig = <T extends CommentOptions>(
   options: MaybeRefOrGetter<T>,
 ): void => {
   if (isRef(options)) {
-    watch(
-      () => options.value,
-      (value) => {
-        comment.value = { ...commentOptions, ...value }
-      },
-    )
+    watchImmediate(options, (value) => {
+      comment.value = { ...commentOptions, ...value }
+    })
   } else if (isFunction(options)) {
-    watch(options, (value) => {
+    watchImmediate(computed(options), (value) => {
       comment.value = { ...commentOptions, ...value }
     })
   } else {
@@ -57,5 +55,5 @@ export const defineWalineConfig = defineCommentConfig<WalineOptions>
 export const useWalineOptions = useCommentOptions<WalineOptions>
 
 export const injectCommentConfig = (app: App): void => {
-  app.provide(commentSymbol, comment)
+  app.provide(commentSymbol, readonly(comment))
 }

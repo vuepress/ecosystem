@@ -1,3 +1,7 @@
+---
+icon: la:blog
+---
+
 # blog
 
 <NpmBadge package="@vuepress/plugin-blog" />

@@ -3,6 +3,153 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.77](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.76...v2.0.0-rc.77) (2025-02-16)
+
+### Features
+
+- **plugin-comment:** support more Giscus built-in themes in types ([#351](https://github.com/vuepress/ecosystem/issues/351)) ([7f224df](https://github.com/vuepress/ecosystem/commit/7f224df314817ca7513eb052b5357f44c0da5d87))
+- **plugin-comment:** support more Giscus locales ([#352](https://github.com/vuepress/ecosystem/issues/352)) ([f994d2c](https://github.com/vuepress/ecosystem/commit/f994d2cb17fa91a691db051fe8f763beb2c6a55a))
+
+### Performance Improvements
+
+- improve shiki twoslash options ([#350](https://github.com/vuepress/ecosystem/issues/350)) ([d5aa2e3](https://github.com/vuepress/ecosystem/commit/d5aa2e345a69b7bd5855a85b25dc88cd0dbb3bcc))
+
+# [2.0.0-rc.76](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.75...v2.0.0-rc.76) (2025-02-10)
+
+### Bug Fixes
+
+- **plugin-markdown-math:** fix mhchem for katex ([87af20a](https://github.com/vuepress/ecosystem/commit/87af20ac7ba0e9968f0edbb00f564ac9b86b36fc))
+
+### Features
+
+- **plugin-shiki:** add built-in twoslash support ([#348](https://github.com/vuepress/ecosystem/issues/348)) ([e6f4c7c](https://github.com/vuepress/ecosystem/commit/e6f4c7cc90f49627836e3f9407c4e88d84e281de))
+
+# [2.0.0-rc.75](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.74...v2.0.0-rc.75) (2025-01-24)
+
+### Bug Fixes
+
+- **plugin-markdown-stylize:** fix config file path ([4f5300c](https://github.com/vuepress/ecosystem/commit/4f5300c19665a6bf3e85b70fbd53a3decd0586aa))
+
+# [2.0.0-rc.74](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.73...v2.0.0-rc.74) (2025-01-24)
+
+### Bug Fixes
+
+- **plugin-docsearch:** fix search items display ([108c888](https://github.com/vuepress/ecosystem/commit/108c88832636e94cabadf73dd3757080b48a3d96))
+- **plugin-icon:** fix color prop not working ([1da0e31](https://github.com/vuepress/ecosystem/commit/1da0e31c4d306493fb7e7410ec9d63eb3a8980e5))
+- **theme-default:** revert to page data header because of vuepress/core[#1627](https://github.com/vuepress/ecosystem/issues/1627) ([9975ad4](https://github.com/vuepress/ecosystem/commit/9975ad48d09b297831d57653399328184c739afc))
+
+### Features
+
+- **plugin-shiki:** use matchAlgorithm: v3 ([44f1e72](https://github.com/vuepress/ecosystem/commit/44f1e72098963e4a012aadbf13e9cfcb4acb678f))
+- **plugin-shiki:** use shiki v2 ([#346](https://github.com/vuepress/ecosystem/issues/346)) ([c5e7d4b](https://github.com/vuepress/ecosystem/commit/c5e7d4b81483b6b5e781066dab498f5cf721c18b))
+
+### Performance Improvements
+
+- **plugin-shiki:** lazy load languages ([#347](https://github.com/vuepress/ecosystem/issues/347)) ([d926209](https://github.com/vuepress/ecosystem/commit/d926209cfd73686428cb2803ba23d91629e7bd28))
+
+# [2.0.0-rc.73](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.72...v2.0.0-rc.73) (2025-01-16)
+
+### Bug Fixes
+
+- **helper:** fix getHeaders function ([#342](https://github.com/vuepress/ecosystem/issues/342)) ([df653e7](https://github.com/vuepress/ecosystem/commit/df653e780c101150c114c47b3269a4b2af7cbe45))
+
+# [2.0.0-rc.72](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.71...v2.0.0-rc.72) (2025-01-16)
+
+### Bug Fixes
+
+- **plugin-icon:** fix fontawesome icon width ([f6cd0cd](https://github.com/vuepress/ecosystem/commit/f6cd0cd84e66200cd0c23a395f93b7f8c9198272))
+- **theme-default:** fix header update ([b689f52](https://github.com/vuepress/ecosystem/commit/b689f52f25b0bf58ed585405fb5b923786bf0324))
+
+# [2.0.0-rc.71](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.70...v2.0.0-rc.71) (2025-01-15)
+
+### Bug Fixes
+
+- **plugin-comment:** wrap waline with ClientOnly ([fa70272](https://github.com/vuepress/ecosystem/commit/fa702722a128f3292dadf942894b8e28ab59d007))
+- **theme-default:** fix header provide ([2ee49d3](https://github.com/vuepress/ecosystem/commit/2ee49d3fc106b14d33331d23b06c2e3e074b6e77))
+- **theme-default:** fix setupHeaders, close [#326](https://github.com/vuepress/ecosystem/issues/326) ([f80d7e2](https://github.com/vuepress/ecosystem/commit/f80d7e26a468f92a8bae4ebd7dc746fd0ffe919f))
+
+### Features
+
+- **helper:** rebuild loading icon ([0321a54](https://github.com/vuepress/ecosystem/commit/0321a546ac59125affd7e61f8870a7675eaceb9f))
+- **plugin-icon:** add sizing prop for component ([f851b6a](https://github.com/vuepress/ecosystem/commit/f851b6a44cfcf62ee0b105e736d3713e0c390b7b))
+
+### Performance Improvements
+
+- **plugin-blog:** improve performance ([#341](https://github.com/vuepress/ecosystem/issues/341)) ([aab502f](https://github.com/vuepress/ecosystem/commit/aab502f49388573c0cd28a336fd6886a80dd4305))
+
+# [2.0.0-rc.70](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.69...v2.0.0-rc.70) (2025-01-13)
+
+### Bug Fixes
+
+- **plugin-blog:** ensure all locale exists ([57bf3dd](https://github.com/vuepress/ecosystem/commit/57bf3dd6f43e2a531d339e795a48301cccf7c46c))
+- **plugin-icon:** fix iconfont style ([f1e0fe8](https://github.com/vuepress/ecosystem/commit/f1e0fe898b08c45f4e639fc847659b0642b39e03))
+- **plugin-theme-data:** fix devtools plugin ([42a3474](https://github.com/vuepress/ecosystem/commit/42a34748176ac1aae907221de07e6289f6ecadad))
+- **theme-default:** fix resolvePrefix ([5a292eb](https://github.com/vuepress/ecosystem/commit/5a292eb4cb11628defd77761c779de02f96bf1b8))
+- **theme-default:** improve navbar sidebar links style ([#339](https://github.com/vuepress/ecosystem/issues/339)) ([f315804](https://github.com/vuepress/ecosystem/commit/f31580402a5a2017f86f2824ef37a839f147c115))
+
+### Features
+
+- **helper:** add isLinkRelative ([0568a46](https://github.com/vuepress/ecosystem/commit/0568a46c98c536fca8ff53a5d8451e96ab98e3c9))
+- **highlighter-helper:** improve collapsed lines styles ([#330](https://github.com/vuepress/ecosystem/issues/330)) ([6c4332f](https://github.com/vuepress/ecosystem/commit/6c4332f8cbfdb41f8c7febc74840f79b3b384ed8))
+- **plugin-icon:** support markdown syntax ([#338](https://github.com/vuepress/ecosystem/issues/338)) ([ba0dac3](https://github.com/vuepress/ecosystem/commit/ba0dac37f8c77c93caefd7c64c059c92ac59bdd3))
+- replace cac with commander ([#334](https://github.com/vuepress/ecosystem/issues/334)) ([f14cb3d](https://github.com/vuepress/ecosystem/commit/f14cb3d5acb8a776afe42d7d55b671440571eda9))
+- **theme-default:** improve theme extending ([#331](https://github.com/vuepress/ecosystem/issues/331)) ([6bcdd30](https://github.com/vuepress/ecosystem/commit/6bcdd30e9b665ea69c0bee744c0b300106e26ff9))
+
+# [2.0.0-rc.69](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.68...v2.0.0-rc.69) (2025-01-07)
+
+### Bug Fixes
+
+- fix zh-TW locale ([764a18c](https://github.com/vuepress/ecosystem/commit/764a18cf07638d77d932e8d43cf854f540ecb2ca))
+
+### Features
+
+- **plugin-docsearch:** add built-in locale ([#323](https://github.com/vuepress/ecosystem/issues/323)) ([cc734fb](https://github.com/vuepress/ecosystem/commit/cc734fba5adcd3f003db84d71723066695c501cf))
+- **plugin-search:** add built-in locale data ([#325](https://github.com/vuepress/ecosystem/issues/325)) ([bdb9902](https://github.com/vuepress/ecosystem/commit/bdb9902d815cb0f5cb95c3e18469444cebe11b89))
+- remove de-AT if possible ([#324](https://github.com/vuepress/ecosystem/issues/324)) ([3c44f45](https://github.com/vuepress/ecosystem/commit/3c44f4500713fb309324fa50ebd7a5ddf6ce3eb9))
+
+# [2.0.0-rc.68](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.67...v2.0.0-rc.68) (2024-12-27)
+
+### Bug Fixes
+
+- **create-vuepress:** wrong registry command ([#312](https://github.com/vuepress/ecosystem/issues/312)) ([3e9cd96](https://github.com/vuepress/ecosystem/commit/3e9cd968e5d0bf9679d24c0e7cf61ab97d7c6a4a))
+- **plugin-photo-swipe:** avoid loading multiple instances at startup ([#317](https://github.com/vuepress/ecosystem/issues/317)) ([dae01ac](https://github.com/vuepress/ecosystem/commit/dae01ac99d5804b74158cc0ca69e6cec9686654b))
+
+### Features
+
+- add plugin-icon ([#319](https://github.com/vuepress/ecosystem/issues/319)) ([09fec63](https://github.com/vuepress/ecosystem/commit/09fec63550331388137fabf95bc0d8f8525814fc))
+- **plugin-comment:** improve type ([375645f](https://github.com/vuepress/ecosystem/commit/375645fd9dbd0e7f628caca4d2fa0bd5f7e495d5))
+- **plugin-git:** improve contributors sorting ([#309](https://github.com/vuepress/ecosystem/issues/309)) ([4fdde2c](https://github.com/vuepress/ecosystem/commit/4fdde2cca2c89344d692ebad7a806a48959a3d46))
+- rebuild built-in locale data ([#315](https://github.com/vuepress/ecosystem/issues/315)) ([5308fb4](https://github.com/vuepress/ecosystem/commit/5308fb48310d3f0c6af4adc1a98f2e6747c85f33))
+- **vp-update:** bump sass related packages ([52557d7](https://github.com/vuepress/ecosystem/commit/52557d7d4c412e7e7e367d5a26f794148c85249b))
+
+# [2.0.0-rc.67](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.66...v2.0.0-rc.67) (2024-12-16)
+
+### Bug Fixes
+
+- fix define getter ([#304](https://github.com/vuepress/ecosystem/issues/304)) ([a11237c](https://github.com/vuepress/ecosystem/commit/a11237cdc2fdfd286e408e43b0e31251f602b1a6))
+
+### Features
+
+- **plugin-slimsearch:** improve default querySplitter, close [#299](https://github.com/vuepress/ecosystem/issues/299) ([715dde1](https://github.com/vuepress/ecosystem/commit/715dde192c94bad49c5e3b0d5a75743b74f5d097))
+
+# [2.0.0-rc.66](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.65...v2.0.0-rc.66) (2024-12-13)
+
+### Bug Fixes
+
+- **plugin-sass-palette:** fix module injecting ([356e1a2](https://github.com/vuepress/ecosystem/commit/356e1a2b59ee58c8217792cdad2800fc8bfce167))
+
+### Features
+
+- **plugin-pwa:** improve pwa support ([#301](https://github.com/vuepress/ecosystem/issues/301)) ([487d8c4](https://github.com/vuepress/ecosystem/commit/487d8c45a965dee9234e581d95bcc98c1a8cca86))
+- **plugin-sass-palette:** support vite6 ([5a081ff](https://github.com/vuepress/ecosystem/commit/5a081fff1d98e137b8ec6f81354d14589950308b))
+
+# [2.0.0-rc.65](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.64...v2.0.0-rc.65) (2024-12-09)
+
+### Bug Fixes
+
+- **helper:** `.sr-only` clip ([#297](https://github.com/vuepress/ecosystem/issues/297)) ([0c79df6](https://github.com/vuepress/ecosystem/commit/0c79df69d29644e78438e2e92cc17773f915b081))
+- **plugin-slimsearch:** fix hotkey without suggestions, close [#298](https://github.com/vuepress/ecosystem/issues/298) ([51373fd](https://github.com/vuepress/ecosystem/commit/51373fd00c05b404ec1da09b6f8046680d0c2317))
+
 # [2.0.0-rc.64](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.63...v2.0.0-rc.64) (2024-12-07)
 
 ### Bug Fixes

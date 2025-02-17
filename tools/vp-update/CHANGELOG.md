@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.76](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.75...v2.0.0-rc.76) (2025-02-10)
+
+**Note:** Version bump only for package vp-update
+
+# [2.0.0-rc.74](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.73...v2.0.0-rc.74) (2025-01-24)
+
+**Note:** Version bump only for package vp-update
+
+# [2.0.0-rc.71](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.70...v2.0.0-rc.71) (2025-01-15)
+
+**Note:** Version bump only for package vp-update
+
+# [2.0.0-rc.70](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.69...v2.0.0-rc.70) (2025-01-13)
+
+### Features
+
+- replace cac with commander ([#334](https://github.com/vuepress/ecosystem/issues/334)) ([f14cb3d](https://github.com/vuepress/ecosystem/commit/f14cb3d5acb8a776afe42d7d55b671440571eda9))
+
+# [2.0.0-rc.68](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.67...v2.0.0-rc.68) (2024-12-27)
+
+### Features
+
+- **vp-update:** bump sass related packages ([52557d7](https://github.com/vuepress/ecosystem/commit/52557d7d4c412e7e7e367d5a26f794148c85249b))
+
 # [2.0.0-rc.63](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.62...v2.0.0-rc.63) (2024-12-06)
 
 **Note:** Version bump only for package vp-update

@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import VPAutoLink from '@theme/VPAutoLink.vue'
 import { useNavigate } from '@theme/useNavigate'
 import { useRelatedLinks } from '@theme/useRelatedLinks'
 import { useThemeLocaleData } from '@theme/useThemeData'
 import { useEventListener } from '@vueuse/core'
 import { computed } from 'vue'
-import { AutoLink } from 'vuepress/client'
 
 const themeLocale = useThemeLocaleData()
 const navigate = useNavigate()
@@ -39,7 +39,7 @@ useEventListener('keydown', (event): void => {
     class="vp-page-nav"
     :aria-label="navbarLabel"
   >
-    <AutoLink v-if="prevLink" class="prev" :config="prevLink">
+    <VPAutoLink v-if="prevLink" class="prev" :config="prevLink">
       <div class="hint">
         <span class="arrow left" />
         {{ themeLocale.prev ?? 'Prev' }}
@@ -47,9 +47,9 @@ useEventListener('keydown', (event): void => {
       <div class="link">
         <span>{{ prevLink.text }}</span>
       </div>
-    </AutoLink>
+    </VPAutoLink>
 
-    <AutoLink v-if="nextLink" class="next" :config="nextLink">
+    <VPAutoLink v-if="nextLink" class="next" :config="nextLink">
       <div class="hint">
         {{ themeLocale.next ?? 'Next' }}
         <span class="arrow right" />
@@ -57,7 +57,7 @@ useEventListener('keydown', (event): void => {
       <div class="link">
         <span>{{ nextLink.text }}</span>
       </div>
-    </AutoLink>
+    </VPAutoLink>
   </nav>
 </template>
 
@@ -87,7 +87,7 @@ useEventListener('keydown', (event): void => {
     display: none;
   }
 
-  .route-link {
+  .auto-link {
     display: inline-block;
     flex-grow: 1;
 

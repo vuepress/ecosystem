@@ -1,7 +1,8 @@
 ---
-title: 指南
 icon: lightbulb
 ---
+
+# 指南
 
 使用 `@vuepress/plugin-blog`，你可以轻松地将博客功能引入主题。
 
@@ -39,9 +40,10 @@ export default {
         return true
       },
 
-      getInfo: ({ frontmatter, git = {}, data = {} }) => {
+      getInfo: ({ frontmatter, title, git = {}, data = {} }) => {
         // 获取页面信息
         const info: Record<string, unknown> = {
+          title,
           author: frontmatter.author || '',
           categories: frontmatter.categories || [],
           date: frontmatter.date || git.createdTime || null,

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-notice",
-  "version": "2.0.0-rc.63",
+  "version": "2.0.0-rc.77",
   "description": "VuePress plugin - back to top",
   "keywords": [
     "vuepress-plugin",
@@ -35,15 +35,15 @@
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
     "copy": "cpx \"src/**/*.svg\" lib",
-    "style": "sass src:lib --embed-sources --style=compressed"
+    "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^12.0.0",
+    "@vueuse/core": "^12.7.0",
     "vue": "^3.5.13"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.18"
+    "vuepress": "2.0.0-rc.19"
   },
   "publishConfig": {
     "access": "public"

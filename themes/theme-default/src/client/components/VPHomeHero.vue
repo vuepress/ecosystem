@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useDarkMode } from '@theme/useDarkMode'
+import VPAutoLink from '@theme/VPAutoLink.vue'
+import { useDarkmode } from '@theme/useDarkmode'
 import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
 import {
-  AutoLink,
   ClientOnly,
   usePageFrontmatter,
   useSiteLocaleData,
@@ -13,7 +13,7 @@ import type { DefaultThemeHomePageFrontmatter } from '../../shared/index.js'
 
 const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
 const siteLocale = useSiteLocaleData()
-const isDarkMode = useDarkMode()
+const isDarkmode = useDarkmode()
 
 const heroText = computed(() => {
   if (frontmatter.value.heroText === null) {
@@ -33,7 +33,7 @@ const tagline = computed(() => {
   )
 })
 const heroImage = computed(() => {
-  if (isDarkMode.value && frontmatter.value.heroImageDark !== undefined) {
+  if (isDarkmode.value && frontmatter.value.heroImageDark !== undefined) {
     return frontmatter.value.heroImageDark
   }
   return frontmatter.value.heroImage
@@ -48,10 +48,9 @@ const actions = computed(() => {
     return []
   }
 
-  return frontmatter.value.actions.map(({ text, link, type = 'primary' }) => ({
-    text,
-    link,
+  return frontmatter.value.actions.map(({ type = 'primary', ...rest }) => ({
     type,
+    ...rest,
   }))
 })
 
@@ -88,7 +87,7 @@ const HomeHeroImage: FunctionalComponent = () => {
     </p>
 
     <p v-if="actions.length" class="vp-hero-actions">
-      <AutoLink
+      <VPAutoLink
         v-for="action in actions"
         :key="action.text"
         class="vp-hero-action-button"

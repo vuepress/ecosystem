@@ -7,7 +7,7 @@ import type {
   EditLinkPageData,
   EditLinkThemeData,
 } from '../../shared/index.js'
-import { useData } from './useData.js'
+import { resolveEditLink } from '../utils/index.js'
 
 export const useEditLink = (): ComputedRef<AutoLinkConfig | null> => {
   const { page, frontmatter, theme } = useData<

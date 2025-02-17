@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.68](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.67...v2.0.0-rc.68) (2024-12-27)
+
+### Features
+
+- **plugin-git:** improve contributors sorting ([#309](https://github.com/vuepress/ecosystem/issues/309)) ([4fdde2c](https://github.com/vuepress/ecosystem/commit/4fdde2cca2c89344d692ebad7a806a48959a3d46))
+
+# [2.0.0-rc.66](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.65...v2.0.0-rc.66) (2024-12-13)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
 # [2.0.0-rc.62](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.61...v2.0.0-rc.62) (2024-12-06)
 
 ### Features

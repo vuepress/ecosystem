@@ -1,3 +1,7 @@
+---
+icon: signpost
+---
+
 # 主题指南
 
 为了避免主题开发者和用户设置不必要的选项，我们制定了一套主题创建时应遵循的指南。
@@ -80,3 +84,7 @@
 ## 案例
 
 <PaletteDisplay />
+
+<script setup>
+import PaletteDisplay from '@source/.vuepress/components/PaletteDisplay.vue'
+</script>

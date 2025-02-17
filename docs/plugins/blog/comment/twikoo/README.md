@@ -1,3 +1,7 @@
+---
+icon: https://twikoo.js.org/twikoo-logo-mini.png
+---
+
 # Twikoo
 
 A concise, safe and free static site commenting system, based on [Tencent Cloud Development](https://curl.qcloud.com/KnnJtUom).

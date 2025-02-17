@@ -1,0 +1,64 @@
+{
+  "name": "@vuepress/shiki-twoslash",
+  "version": "2.0.0-rc.77",
+  "description": "VuePress shiki twoslash",
+  "keywords": [
+    "vuepress",
+    "shiki",
+    "twoslash"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/tools/shiki-twoslash/",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "tools/tools/shiki-twoslash"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "pengzhanbo",
+    "email": "volodymyr@foxmail.com",
+    "url": "https://github.com/pengzhanbo"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./lib/node/index.js",
+    "./client": "./lib/client/index.js",
+    "./styles/*": "./lib/client/styles/*",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
+    "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
+  },
+  "dependencies": {
+    "@shikijs/twoslash": "^2.4.1",
+    "@vuepress/helper": "workspace:*",
+    "floating-vue": "^5.2.2",
+    "mdast-util-from-markdown": "^2.0.2",
+    "mdast-util-gfm": "^3.1.0",
+    "mdast-util-to-hast": "^13.2.0",
+    "twoslash": "^0.2.12",
+    "twoslash-vue": "^0.2.12"
+  },
+  "devDependencies": {
+    "@types/hast": "^3.0.4",
+    "shiki": "^2.4.1",
+    "vue": "^3.5.13"
+  },
+  "peerDependencies": {
+    "vuepress": "2.0.0-rc.19"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import VPAutoLink from '@theme/VPAutoLink.vue'
 import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
 import { useToggle } from '@vueuse/core'
 import { computed, toRefs, watch } from 'vue'
-import { AutoLink, useRoute } from 'vuepress/client'
+import { useRoute } from 'vuepress/client'
 import type { AutoLinkOptions, NavGroup } from '../../shared/index.js'
 
 const props = defineProps<{
@@ -74,7 +75,7 @@ watch(
         >
           <template v-if="'children' in child">
             <h4 class="vp-navbar-dropdown-subtitle">
-              <AutoLink
+              <VPAutoLink
                 v-if="child.link"
                 :config="child"
                 @focusout="
@@ -98,7 +99,7 @@ watch(
                 :key="grandchild.link"
                 class="vp-navbar-dropdown-subitem"
               >
-                <AutoLink
+                <VPAutoLink
                   :config="grandchild"
                   @focusout="
                     () => {
@@ -116,7 +117,7 @@ watch(
           </template>
 
           <template v-else>
-            <AutoLink
+            <VPAutoLink
               :config="child"
               @focusout="
                 () => {
@@ -240,13 +241,13 @@ watch(
   color: inherit;
   line-height: 1.7rem;
 
-  a {
+  .auto-link {
     position: relative;
 
     display: block;
 
     margin-bottom: 0;
-    padding: 0 1.5rem 0 1.25rem;
+    padding: 0 1.25rem;
     border-bottom: none;
 
     font-weight: 400;
@@ -256,7 +257,7 @@ watch(
       color: var(--vp-c-accent);
     }
 
-    &.route-link-active {
+    &.auto-link-active {
       color: var(--vp-c-accent);
 
       &::after {
@@ -307,10 +308,10 @@ watch(
     padding: 0 1.5rem 0 1.25rem;
   }
 
-  > a {
+  > .auto-link {
     font-weight: inherit;
 
-    &.route-link-active {
+    &.auto-link-active {
       &::after {
         display: none;
       }

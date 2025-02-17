@@ -1,0 +1,35 @@
+.vp-icon {
+  --fa-fw-width: 1em;
+
+  display: inline-block;
+
+  width: var(--icon-width, auto);
+  height: var(--icon-height, auto);
+
+  font-size: var(--icon-size, 1em);
+  line-height: 1;
+
+  // sizing=width
+  &[sizing='width'] {
+    --icon-width: 1em;
+  }
+
+  // sizing=height
+  &[sizing='height'] {
+    --icon-height: 1em;
+  }
+
+  // sizing=both
+  &[sizing='both'] {
+    --icon-width: 1em;
+    --icon-height: 1em;
+  }
+
+  &:is(i) {
+    vertical-align: var(--icon-vertical-align);
+  }
+
+  &:not(i) {
+    vertical-align: var(--icon-vertical-align, -0.125em);
+  }
+}

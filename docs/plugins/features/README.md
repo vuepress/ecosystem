@@ -1,3 +1,7 @@
-# New Feature Plugins
+---
+icon: sparkles
+---
+
+# Feature Plugins
 
 <Catalog :level="1" />

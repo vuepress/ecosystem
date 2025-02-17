@@ -1,6 +1,6 @@
 {
   "name": "vp-update",
-  "version": "2.0.0-rc.63",
+  "version": "2.0.0-rc.76",
   "description": "Update helper for VuePress2",
   "keywords": [
     "vuepress",
@@ -38,8 +38,8 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "cac": "^6.7.14",
-    "semver": "^7.6.3"
+    "commander": "^13.1.0",
+    "semver": "^7.7.1"
   },
   "devDependencies": {
     "@types/semver": "7.5.8"

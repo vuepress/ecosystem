@@ -66,22 +66,7 @@ export default defaultTheme({
     hint: {
       alert: true,
     },
-    // use shiki plugin in production mode instead
-    prismjs: IS_PROD
-      ? false
-      : {
-          themes: {
-            light: 'one-light',
-            dark: 'one-dark',
-          },
-          lineNumbers: 10,
-          notationDiff: true,
-          notationErrorLevel: true,
-          notationFocus: true,
-          notationHighlight: true,
-          notationWordHighlight: true,
-          whitespace: true,
-          collapsedLines: false,
-        },
+    // use shiki plugin instead
+    prismjs: false,
   },
 })

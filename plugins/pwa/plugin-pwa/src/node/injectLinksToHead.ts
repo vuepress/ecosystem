@@ -1,18 +1,12 @@
-import type { HeadConfig } from 'vuepress/core'
+import type { App } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import type { PwaPluginOptions } from './options.js'
 
 export const injectLinksToHead = (
-  {
-    favicon,
-    manifest,
-    themeColor = '#46bd87',
-    apple,
-    msTile,
-  }: PwaPluginOptions,
-  base = '/',
-  head: HeadConfig[] = [],
-): HeadConfig[] => {
+  app: App,
+  { favicon, manifest, themeColor = '#46bd87', apple }: PwaPluginOptions,
+): void => {
+  const { base, head } = app.siteData
   const metaKeys: string[] = []
   const linkKeys: string[] = []
 
@@ -22,7 +16,9 @@ export const injectLinksToHead = (
     else if (item[0] === 'link') linkKeys.push(item[1].rel as string)
   })
 
+  const appTitle = manifest?.name ?? app.siteData.title
   let fallBackIcon = ''
+
   const setLink = (
     rel: string,
     href: string,
@@ -40,7 +36,21 @@ export const injectLinksToHead = (
       head.push(['meta', { name, content, ...more }])
   }
 
+  if (appTitle) setMeta('application-name', appTitle)
+
+  setMeta('mobile-web-app-capable', 'yes')
+  setMeta('theme-color', themeColor || '#46bd87')
+
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  if (isPlainObject(apple) && apple.statusBarColor)
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    setMeta('apple-mobile-web-app-status-bar-style', apple.statusBarColor)
+
   if (favicon) setLink('icon', favicon)
+
+  setLink('manifest', `${base}manifest.webmanifest`, {
+    crossorigin: 'use-credentials',
+  })
 
   if (manifest?.icons) {
     const { icons } = manifest
@@ -56,35 +66,13 @@ export const injectLinksToHead = (
     }
   }
 
-  setLink('manifest', `${base}manifest.webmanifest`, {
-    crossorigin: 'use-credentials',
-  })
-  setMeta('theme-color', themeColor || '#46bd87')
-
   if (isPlainObject(apple) && (apple.icon || fallBackIcon)) {
     setLink('apple-touch-icon', apple.icon || fallBackIcon)
-    setMeta('apple-mobile-web-app-capable', 'yes')
-    setMeta(
-      'apple-mobile-web-app-status-bar-style',
-      apple.statusBarColor || 'black',
-    )
     if (apple.maskIcon)
       setLink('mask-icon', apple.maskIcon, {
         color: themeColor || '#46bd87',
       })
   } else if (apple !== false && fallBackIcon) {
     setLink('apple-touch-icon', fallBackIcon)
-    setMeta('apple-mobile-web-app-capable', 'yes')
-    setMeta('apple-mobile-web-app-status-bar-style', 'black')
   }
-
-  if (isPlainObject(msTile) && (msTile.image || fallBackIcon)) {
-    setMeta('msapplication-TileImage', msTile.image || fallBackIcon)
-    setMeta('msapplication-TileColor', msTile.color || themeColor || '#46bd87')
-  } else if (msTile !== false && fallBackIcon) {
-    setMeta('msapplication-TileImage', fallBackIcon)
-    setMeta('msapplication-TileColor', themeColor || '#46bd87')
-  }
-
-  return head
 }

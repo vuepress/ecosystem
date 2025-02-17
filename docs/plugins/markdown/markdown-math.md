@@ -1,3 +1,7 @@
+---
+icon: sigma
+---
+
 # markdown-math
 
 <NpmBadge package="@vuepress/plugin-markdown-math" />

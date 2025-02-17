@@ -1,3 +1,7 @@
+---
+icon: puzzle
+---
+
 # register-components
 
 <NpmBadge package="@vuepress/plugin-register-components" />

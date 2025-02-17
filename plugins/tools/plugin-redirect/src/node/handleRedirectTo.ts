@@ -4,8 +4,7 @@ import { normalizePath } from '../shared/normalizePath.js'
 import type { RedirectPluginFrontmatter } from './types/index.js'
 
 export const handleRedirectTo = ({ frontmatter }: Page, app: App): void => {
-  const { base } = app.options
-
+  const { base } = app.siteData
   const { redirectTo } = frontmatter as RedirectPluginFrontmatter
 
   if (redirectTo) {

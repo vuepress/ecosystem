@@ -1,3 +1,7 @@
+---
+icon: https://artalk.js.org/favicon.png
+---
+
 # Artalk
 
 Artalk is a neat self-hosted commenting system that you can easily deploy on your server and put into your front-end page.

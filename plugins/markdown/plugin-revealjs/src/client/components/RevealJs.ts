@@ -29,21 +29,30 @@ export const RevealJs = defineComponent({
      *
      * 幻灯片 id
      */
-    id: { type: String, required: true },
+    id: {
+      type: String,
+      required: true,
+    },
 
     /**
      * Presentation code
      *
      * 幻灯片代码
      */
-    code: { type: String, required: true },
+    code: {
+      type: String,
+      required: true,
+    },
 
     /**
      * Presentation theme
      *
      * 幻灯片主题
      */
-    theme: { type: String as PropType<RevealJsTheme>, default: 'auto' },
+    theme: {
+      type: String as PropType<RevealJsTheme>,
+      default: 'auto',
+    },
   },
 
   setup(props) {
@@ -73,7 +82,7 @@ export const RevealJs = defineComponent({
         backgroundTransition: 'slide',
         transition: 'slide',
         slideNumber: true,
-        ...revealOptions,
+        ...revealOptions.value,
         hash: isSlidePage,
         mouseWheel: isSlidePage,
         ...frontmatter.value.revealJs,
@@ -87,7 +96,7 @@ export const RevealJs = defineComponent({
         plugins: [
           plugins.map(({ default: plugin }) => plugin),
 
-          revealOptions.plugins ?? [],
+          revealOptions.value.plugins ?? [],
         ].flat(),
       })
 

@@ -1,3 +1,7 @@
+---
+icon: list-tree
+---
+
 # catalog
 
 <NpmBadge package="@vuepress/plugin-catalog" />
@@ -152,7 +156,7 @@ order -1 的项目
   }
 
   interface CatalogPluginLocaleConfig {
-    [localePath: string]: CatalogPluginLocaleData
+    [localePath: string]: Partial<CatalogPluginLocaleData>
   }
   ```
 
@@ -166,7 +170,6 @@ order -1 的项目
 - **繁体中文** (zh-TW)
 - **英文(美国)** (en-US)
 - **德语** (de-DE)
-- **德语(澳大利亚)** (de-AT)
 - **俄语** (ru-RU)
 - **乌克兰语** (uk-UA)
 - **越南语** (vi-VN)

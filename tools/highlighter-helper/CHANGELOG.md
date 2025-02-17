@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.71](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.70...v2.0.0-rc.71) (2025-01-15)
+
+**Note:** Version bump only for package @vuepress/highlighter-helper
+
+# [2.0.0-rc.70](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.69...v2.0.0-rc.70) (2025-01-13)
+
+### Features
+
+- **highlighter-helper:** improve collapsed lines styles ([#330](https://github.com/vuepress/ecosystem/issues/330)) ([6c4332f](https://github.com/vuepress/ecosystem/commit/6c4332f8cbfdb41f8c7febc74840f79b3b384ed8))
+
+# [2.0.0-rc.68](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.67...v2.0.0-rc.68) (2024-12-27)
+
+**Note:** Version bump only for package @vuepress/highlighter-helper
+
+# [2.0.0-rc.66](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.65...v2.0.0-rc.66) (2024-12-13)
+
+**Note:** Version bump only for package @vuepress/highlighter-helper
+
 # [2.0.0-rc.62](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.61...v2.0.0-rc.62) (2024-12-06)
 
 **Note:** Version bump only for package @vuepress/highlighter-helper

@@ -1,7 +1,8 @@
 import { isFunction } from '@vuepress/helper/client'
+import { watchImmediate } from '@vueuse/core'
 import type { PhotoSwipeOptions as OriginalPhotoSwipeOptions } from 'photoswipe'
-import type { App, MaybeRefOrGetter, Ref } from 'vue'
-import { inject, isRef, ref, watch } from 'vue'
+import type { App, InjectionKey, MaybeRefOrGetter, Ref } from 'vue'
+import { computed, inject, isRef, ref } from 'vue'
 
 export type PhotoSwipeOptions = Omit<
   OriginalPhotoSwipeOptions,
@@ -9,24 +10,28 @@ export type PhotoSwipeOptions = Omit<
   'dataSource' | 'index'
 >
 
+export type PhotoSwipeOptionsRef = Ref<PhotoSwipeOptions>
+
 declare const __VUEPRESS_DEV__: boolean
 
-const photoswipeOptions: Ref<PhotoSwipeOptions> = ref({})
+const photoswipeOptions: PhotoSwipeOptionsRef = ref({})
 
-const photoswipeSymbol = Symbol(__VUEPRESS_DEV__ ? 'photoswipe' : '')
+const photoswipeSymbol: InjectionKey<PhotoSwipeOptionsRef> = Symbol(
+  __VUEPRESS_DEV__ ? 'photoswipe' : '',
+)
 
 export const definePhotoSwipeConfig = (
   options: MaybeRefOrGetter<PhotoSwipeOptions>,
 ): void => {
   if (isRef(options)) {
-    watch(
+    watchImmediate(
       () => options.value,
       (value) => {
         photoswipeOptions.value = value
       },
     )
   } else if (isFunction(options)) {
-    watch(options, (value) => {
+    watchImmediate(computed(options), (value) => {
       photoswipeOptions.value = value
     })
   } else {
@@ -34,7 +39,7 @@ export const definePhotoSwipeConfig = (
   }
 }
 
-export const usePhotoSwipeOptions = (): Ref<PhotoSwipeOptions> =>
+export const usePhotoSwipeOptions = (): PhotoSwipeOptionsRef =>
   inject(photoswipeSymbol)!
 
 export const injectPhotoSwipeConfig = (app: App): void => {

@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.77](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.76...v2.0.0-rc.77) (2025-02-16)
+
+**Note:** Version bump only for package @vuepress/plugin-sass-palette
+
+# [2.0.0-rc.74](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.73...v2.0.0-rc.74) (2025-01-24)
+
+**Note:** Version bump only for package @vuepress/plugin-sass-palette
+
+# [2.0.0-rc.73](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.72...v2.0.0-rc.73) (2025-01-16)
+
+**Note:** Version bump only for package @vuepress/plugin-sass-palette
+
+# [2.0.0-rc.71](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.70...v2.0.0-rc.71) (2025-01-15)
+
+**Note:** Version bump only for package @vuepress/plugin-sass-palette
+
+# [2.0.0-rc.70](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.69...v2.0.0-rc.70) (2025-01-13)
+
+**Note:** Version bump only for package @vuepress/plugin-sass-palette
+
+# [2.0.0-rc.69](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.68...v2.0.0-rc.69) (2025-01-07)
+
+**Note:** Version bump only for package @vuepress/plugin-sass-palette
+
+# [2.0.0-rc.68](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.67...v2.0.0-rc.68) (2024-12-27)
+
+**Note:** Version bump only for package @vuepress/plugin-sass-palette
+
+# [2.0.0-rc.66](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.65...v2.0.0-rc.66) (2024-12-13)
+
+### Bug Fixes
+
+- **plugin-sass-palette:** fix module injecting ([356e1a2](https://github.com/vuepress/ecosystem/commit/356e1a2b59ee58c8217792cdad2800fc8bfce167))
+
+### Features
+
+- **plugin-sass-palette:** support vite6 ([5a081ff](https://github.com/vuepress/ecosystem/commit/5a081fff1d98e137b8ec6f81354d14589950308b))
+
+# [2.0.0-rc.65](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.64...v2.0.0-rc.65) (2024-12-09)
+
+**Note:** Version bump only for package @vuepress/plugin-sass-palette
+
 # [2.0.0-rc.63](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.62...v2.0.0-rc.63) (2024-12-06)
 
 **Note:** Version bump only for package @vuepress/plugin-sass-palette

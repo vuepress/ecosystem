@@ -1,3 +1,7 @@
+---
+icon: book-open-text
+---
+
 # reading-time
 
 <NpmBadge package="@vuepress/plugin-reading-time" />
@@ -100,7 +104,7 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 分钟", words: "
   }
 
   interface ReadingTimePluginLocaleConfig {
-    [localePath: string]: ReadingTimePluginLocaleData
+    [localePath: string]: Partial<ReadingTimePluginLocaleData>
   }
   ```
 
@@ -116,7 +120,6 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 分钟", words: "
 - **繁体中文** (zh-TW)
 - **英文(美国)** (en-US)
 - **德语** (de-DE)
-- **德语(澳大利亚)** (de-AT)
 - **俄语** (ru-RU)
 - **乌克兰语** (uk-UA)
 - **越南语** (vi-VN)

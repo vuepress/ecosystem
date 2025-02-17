@@ -1,6 +1,6 @@
-import type { UpdatePageview } from './typings'
+import type { UpdatePageview } from './typings.js'
 
-export const isSupported = false
+export const isSupported: boolean = false
 
 export const usePageview = (): UpdatePageview => () => {
   // do nothing

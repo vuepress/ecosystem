@@ -1,5 +1,6 @@
 ---
 title: 幻灯片演示
+icon: presentation
 layout: SlidePage
 ---
 

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-search",
-  "version": "2.0.0-rc.63",
+  "version": "2.0.0-rc.77",
   "description": "VuePress plugin - built-in search",
   "keywords": [
     "vuepress-plugin",
@@ -35,14 +35,15 @@
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
     "copy": "cpx \"src/**/*.{d.ts,svg}\" lib",
-    "style": "sass src:lib --embed-sources --style=compressed"
+    "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
+    "@vuepress/helper": "workspace:*",
     "chokidar": "^3.6.0",
     "vue": "^3.5.13"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.18"
+    "vuepress": "2.0.0-rc.19"
   },
   "publishConfig": {
     "access": "public"

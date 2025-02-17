@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-shadow */
+import type { ExactLocaleConfig } from '@vuepress/helper/client'
 import {
   endsWith,
   ensureEndingSlash,
@@ -14,13 +15,13 @@ import {
 import type { VNode } from 'vue'
 import { computed, defineComponent, h, shallowRef } from 'vue'
 import { RouteLink, usePageData, useRoutes, useSiteData } from 'vuepress/client'
-import type { CatalogPluginLocaleConfig } from '../../shared/index.js'
+import type { CatalogPluginLocaleData } from '../../shared/index.js'
 import type { CatalogInfo } from '../helpers/index.js'
 import { useCatalogInfoGetter } from '../helpers/index.js'
 
 import '../styles/catalog.css'
 
-declare const __CATALOG_LOCALES__: CatalogPluginLocaleConfig
+declare const __CATALOG_LOCALES__: ExactLocaleConfig<CatalogPluginLocaleData>
 
 export interface CatalogProps {
   base?: string
@@ -45,10 +46,7 @@ export default defineComponent({
      *
      * @default current route base
      */
-    base: {
-      type: String,
-      default: '',
-    },
+    base: String,
 
     /**
      * Max level of catalog

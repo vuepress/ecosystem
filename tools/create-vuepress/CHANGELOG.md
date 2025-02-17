@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.77](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.76...v2.0.0-rc.77) (2025-02-16)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.76](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.75...v2.0.0-rc.76) (2025-02-10)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.74](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.73...v2.0.0-rc.74) (2025-01-24)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.73](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.72...v2.0.0-rc.73) (2025-01-16)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.72](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.71...v2.0.0-rc.72) (2025-01-16)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.71](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.70...v2.0.0-rc.71) (2025-01-15)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.70](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.69...v2.0.0-rc.70) (2025-01-13)
+
+### Bug Fixes
+
+- **theme-default:** improve navbar sidebar links style ([#339](https://github.com/vuepress/ecosystem/issues/339)) ([f315804](https://github.com/vuepress/ecosystem/commit/f31580402a5a2017f86f2824ef37a839f147c115))
+
+### Features
+
+- replace cac with commander ([#334](https://github.com/vuepress/ecosystem/issues/334)) ([f14cb3d](https://github.com/vuepress/ecosystem/commit/f14cb3d5acb8a776afe42d7d55b671440571eda9))
+
+# [2.0.0-rc.69](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.68...v2.0.0-rc.69) (2025-01-07)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.68](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.67...v2.0.0-rc.68) (2024-12-27)
+
+### Bug Fixes
+
+- **create-vuepress:** wrong registry command ([#312](https://github.com/vuepress/ecosystem/issues/312)) ([3e9cd96](https://github.com/vuepress/ecosystem/commit/3e9cd968e5d0bf9679d24c0e7cf61ab97d7c6a4a))
+
+# [2.0.0-rc.66](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.65...v2.0.0-rc.66) (2024-12-13)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.65](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.64...v2.0.0-rc.65) (2024-12-09)
+
+**Note:** Version bump only for package create-vuepress
+
 # [2.0.0-rc.64](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.63...v2.0.0-rc.64) (2024-12-07)
 
 **Note:** Version bump only for package create-vuepress

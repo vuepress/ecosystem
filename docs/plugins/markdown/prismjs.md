@@ -1,3 +1,7 @@
+---
+icon: pyramid
+---
+
 # prismjs
 
 <NpmBadge package="@vuepress/plugin-prismjs" />

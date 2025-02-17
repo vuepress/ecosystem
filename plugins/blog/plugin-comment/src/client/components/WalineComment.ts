@@ -1,4 +1,6 @@
+import type { ExactLocaleConfig } from '@vuepress/helper/client'
 import { LoadingIcon, useLocaleConfig, wait } from '@vuepress/helper/client'
+import { watchImmediate } from '@vueuse/core'
 import { pageviewCount } from '@waline/client/pageview'
 import type { VNode } from 'vue'
 import {
@@ -8,12 +10,11 @@ import {
   h,
   nextTick,
   onMounted,
-  watch,
 } from 'vue'
-import { usePageFrontmatter, usePageLang } from 'vuepress/client'
+import { ClientOnly, usePageFrontmatter, usePageLang } from 'vuepress/client'
 import type {
   CommentPluginFrontmatter,
-  WalineLocaleConfig,
+  WalineLocaleData,
 } from '../../shared/index.js'
 import { useWalineOptions } from '../helpers/index.js'
 
@@ -21,7 +22,7 @@ import '@waline/client/waline.css'
 import '../styles/waline.css'
 
 declare const WALINE_META: boolean
-declare const WALINE_LOCALES: WalineLocaleConfig
+declare const WALINE_LOCALES: ExactLocaleConfig<WalineLocaleData>
 
 const walineLocales = WALINE_LOCALES
 
@@ -72,7 +73,7 @@ export default defineComponent({
     }))
 
     onMounted(() => {
-      watch(
+      watchImmediate(
         () => [
           props.identifier,
           walineOptions.value.serverURL,
@@ -93,7 +94,6 @@ export default defineComponent({
             })
           }
         },
-        { immediate: true },
       )
     })
 
@@ -104,15 +104,15 @@ export default defineComponent({
             { id: 'comment', class: 'waline-wrapper' },
             h(
               defineAsyncComponent({
-                loader: async () =>
-                  (
-                    await import(
-                      /* webpackChunkName: "waline" */ '@waline/client/component'
-                    )
-                  ).Waline,
+                loader: async () => {
+                  const { Waline } = await import(
+                    /* webpackChunkName: "waline" */ '@waline/client/component'
+                  )
+
+                  return () => h(ClientOnly, () => h(Waline, walineProps.value))
+                },
                 loadingComponent: LoadingIcon,
               }),
-              walineProps.value,
             ),
           )
         : null

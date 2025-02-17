@@ -3,6 +3,67 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.77](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.76...v2.0.0-rc.77) (2025-02-16)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.76](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.75...v2.0.0-rc.76) (2025-02-10)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.74](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.73...v2.0.0-rc.74) (2025-01-24)
+
+### Bug Fixes
+
+- **theme-default:** revert to page data header because of vuepress/core[#1627](https://github.com/vuepress/ecosystem/issues/1627) ([9975ad4](https://github.com/vuepress/ecosystem/commit/9975ad48d09b297831d57653399328184c739afc))
+
+# [2.0.0-rc.73](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.72...v2.0.0-rc.73) (2025-01-16)
+
+### Bug Fixes
+
+- **helper:** fix getHeaders function ([#342](https://github.com/vuepress/ecosystem/issues/342)) ([df653e7](https://github.com/vuepress/ecosystem/commit/df653e780c101150c114c47b3269a4b2af7cbe45))
+
+# [2.0.0-rc.72](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.71...v2.0.0-rc.72) (2025-01-16)
+
+### Bug Fixes
+
+- **theme-default:** fix header update ([b689f52](https://github.com/vuepress/ecosystem/commit/b689f52f25b0bf58ed585405fb5b923786bf0324))
+
+# [2.0.0-rc.71](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.70...v2.0.0-rc.71) (2025-01-15)
+
+### Bug Fixes
+
+- **theme-default:** fix header provide ([2ee49d3](https://github.com/vuepress/ecosystem/commit/2ee49d3fc106b14d33331d23b06c2e3e074b6e77))
+- **theme-default:** fix setupHeaders, close [#326](https://github.com/vuepress/ecosystem/issues/326) ([f80d7e2](https://github.com/vuepress/ecosystem/commit/f80d7e26a468f92a8bae4ebd7dc746fd0ffe919f))
+
+# [2.0.0-rc.70](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.69...v2.0.0-rc.70) (2025-01-13)
+
+### Bug Fixes
+
+- **theme-default:** fix resolvePrefix ([5a292eb](https://github.com/vuepress/ecosystem/commit/5a292eb4cb11628defd77761c779de02f96bf1b8))
+- **theme-default:** improve navbar sidebar links style ([#339](https://github.com/vuepress/ecosystem/issues/339)) ([f315804](https://github.com/vuepress/ecosystem/commit/f31580402a5a2017f86f2824ef37a839f147c115))
+
+### Features
+
+- **helper:** add isLinkRelative ([0568a46](https://github.com/vuepress/ecosystem/commit/0568a46c98c536fca8ff53a5d8451e96ab98e3c9))
+- **theme-default:** improve theme extending ([#331](https://github.com/vuepress/ecosystem/issues/331)) ([6bcdd30](https://github.com/vuepress/ecosystem/commit/6bcdd30e9b665ea69c0bee744c0b300106e26ff9))
+
+# [2.0.0-rc.69](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.68...v2.0.0-rc.69) (2025-01-07)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.68](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.67...v2.0.0-rc.68) (2024-12-27)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.66](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.65...v2.0.0-rc.66) (2024-12-13)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.65](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.64...v2.0.0-rc.65) (2024-12-09)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
 # [2.0.0-rc.64](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.63...v2.0.0-rc.64) (2024-12-07)
 
 **Note:** Version bump only for package @vuepress/theme-default

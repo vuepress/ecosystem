@@ -1,3 +1,7 @@
+---
+icon: palette
+---
+
 # palette
 
 <NpmBadge package="@vuepress/plugin-palette" />

@@ -11,21 +11,33 @@ import { describe, expect, it } from 'vitest'
 import type { App } from 'vuepress'
 import type { MarkdownItPreWrapperOptions } from '../src/node/markdown/index.js'
 import {
-  applyHighlighter,
+  createMarkdownFilePathGetter,
+  createShikiHighlighter,
+  getHighLightFunction,
   highlightLinesPlugin,
   preWrapperPlugin,
 } from '../src/node/markdown/index.js'
 import type { ShikiPluginOptions } from '../src/node/options.js'
 
-const createMarkdown = async ({
+const { highlighter, loadLang } = await createShikiHighlighter({} as App)
+
+const createMarkdown = ({
   preWrapper = true,
   lineNumbers = true,
   collapsedLines = false,
   ...options
-}: ShikiPluginOptions = {}): Promise<MarkdownIt> => {
-  const md = MarkdownIt()
+}: ShikiPluginOptions = {}): MarkdownIt => {
+  const md = new MarkdownIt()
 
-  await applyHighlighter(md, { env: { isDebug: false } } as App, options)
+  const markdownFilePathGetter = createMarkdownFilePathGetter(md)
+
+  md.options.highlight = getHighLightFunction(
+    highlighter,
+    options,
+    [],
+    loadLang,
+    markdownFilePathGetter,
+  )
 
   md.use(highlightLinesPlugin)
   md.use<MarkdownItPreWrapperOptions>(preWrapperPlugin, { preWrapper })
@@ -84,50 +96,50 @@ ${codeFence}
 ${codeFence}{{ inlineCode }}${codeFence}
 `
 
-    it('should process code fences with default options', async () => {
-      const md = await createMarkdown()
+    it('should process code fences with default options', () => {
+      const md = createMarkdown()
 
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should disable `highlightLines`', async () => {
-      const md = await createMarkdown({
+    it('should disable `highlightLines`', () => {
+      const md = createMarkdown({
         highlightLines: false,
       })
 
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should disable `lineNumbers`', async () => {
-      const md = await createMarkdown({
+    it('should disable `lineNumbers`', () => {
+      const md = createMarkdown({
         lineNumbers: false,
       })
 
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should enable `lineNumbers` according to number of code lines', async () => {
-      const md = await createMarkdown({
+    it('should enable `lineNumbers` according to number of code lines', () => {
+      const md = createMarkdown({
         lineNumbers: 4,
       })
 
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should disable `preWrapper`', async () => {
-      const md = await createMarkdown({
+    it('should disable `preWrapper`', () => {
+      const md = createMarkdown({
         preWrapper: false,
       })
 
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should always disable `lineNumbers` if `preWrapper` is disabled', async () => {
-      const mdWithLineNumbers = await createMarkdown({
+    it('should always disable `lineNumbers` if `preWrapper` is disabled', () => {
+      const mdWithLineNumbers = createMarkdown({
         lineNumbers: true,
         preWrapper: false,
       })
-      const mdWithoutLineNumbers = await createMarkdown({
+      const mdWithoutLineNumbers = createMarkdown({
         lineNumbers: false,
         preWrapper: false,
       })
@@ -137,12 +149,12 @@ ${codeFence}{{ inlineCode }}${codeFence}
       )
     })
 
-    it('should always disable `collapsedLines` if `preWrapper` is disabled', async () => {
-      const mdWithCollapsedLines = await createMarkdown({
+    it('should always disable `collapsedLines` if `preWrapper` is disabled', () => {
+      const mdWithCollapsedLines = createMarkdown({
         collapsedLines: 3,
         preWrapper: false,
       })
-      const mdWithoutCollapsedLines = await createMarkdown({
+      const mdWithoutCollapsedLines = createMarkdown({
         collapsedLines: 'disable',
         preWrapper: false,
       })
@@ -216,24 +228,24 @@ function bar () {
 ${codeFence}
 `
 
-    it('should work properly if `lineNumbers` is enabled by default', async () => {
-      const md = await createMarkdown({
+    it('should work properly if `lineNumbers` is enabled by default', () => {
+      const md = createMarkdown({
         lineNumbers: true,
       })
 
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should work properly if `lineNumbers` is disabled by default', async () => {
-      const md = await createMarkdown({
+    it('should work properly if `lineNumbers` is disabled by default', () => {
+      const md = createMarkdown({
         lineNumbers: false,
       })
 
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should work properly if `lineNumbers` is set to a number by default', async () => {
-      const md = await createMarkdown({
+    it('should work properly if `lineNumbers` is set to a number by default', () => {
+      const md = createMarkdown({
         lineNumbers: 4,
       })
 
@@ -259,24 +271,24 @@ const line10 = 'line 10'
 const line11 = 'line 11'
 ${codeFence}
 `
-    it('should work properly if `lineNumbers` is enabled by default', async () => {
-      const md = await createMarkdown({
+    it('should work properly if `lineNumbers` is enabled by default', () => {
+      const md = createMarkdown({
         lineNumbers: true,
       })
 
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should work properly if `lineNumbers` is disabled by default', async () => {
-      const md = await createMarkdown({
+    it('should work properly if `lineNumbers` is disabled by default', () => {
+      const md = createMarkdown({
         lineNumbers: false,
       })
 
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should work properly if `lineNumbers` is set to a number by default', async () => {
-      const md = await createMarkdown({
+    it('should work properly if `lineNumbers` is set to a number by default', () => {
+      const md = createMarkdown({
         lineNumbers: 4,
       })
 
@@ -313,8 +325,8 @@ console.log(msg)
 console.log(msg) // prints Hello World
 ${codeFence}
 `
-    it('should work notation enabled', async () => {
-      const md = await createMarkdown({
+    it('should work notation enabled', () => {
+      const md = createMarkdown({
         notationDiff: true,
         notationErrorLevel: true,
         notationFocus: true,
@@ -354,28 +366,28 @@ function foo () {
   const foo = 'foo'  \n  return 'foo'
 }
 `
-    it('should work whitespace with default options', async () => {
-      const md = await createMarkdown()
+    it('should work whitespace with default options', () => {
+      const md = createMarkdown()
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should work whitespace with `all` option', async () => {
-      const md = await createMarkdown({ whitespace: 'all' })
+    it('should work whitespace with `all` option', () => {
+      const md = createMarkdown({ whitespace: 'all' })
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should work whitespace with `boundary` option', async () => {
-      const md = await createMarkdown({ whitespace: 'boundary' })
+    it('should work whitespace with `boundary` option', () => {
+      const md = createMarkdown({ whitespace: 'boundary' })
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should work whitespace with `trailing` option', async () => {
-      const md = await createMarkdown({ whitespace: 'trailing' })
+    it('should work whitespace with `trailing` option', () => {
+      const md = createMarkdown({ whitespace: 'trailing' })
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should work whitespace with `false` option', async () => {
-      const md = await createMarkdown({ whitespace: false })
+    it('should work whitespace with `false` option', () => {
+      const md = createMarkdown({ whitespace: false })
       expect(md.render(source)).toMatchSnapshot()
     })
   })
@@ -407,18 +419,18 @@ ${codeFence}ts :no-collapsed-lines=12
 ${genLines(20)}
 ${codeFence}
 `
-    it('should work properly if `collapsedLines` is disabled by default', async () => {
-      const md = await createMarkdown({ collapsedLines: false })
+    it('should work properly if `collapsedLines` is disabled by default', () => {
+      const md = createMarkdown({ collapsedLines: false })
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should work properly if `collapsedLines` is enabled', async () => {
-      const md = await createMarkdown({ collapsedLines: true })
+    it('should work properly if `collapsedLines` is enabled', () => {
+      const md = createMarkdown({ collapsedLines: true })
       expect(md.render(source)).toMatchSnapshot()
     })
 
-    it('should work properly if `collapsedLines` is set to a number', async () => {
-      const md = await createMarkdown({ collapsedLines: 10 })
+    it('should work properly if `collapsedLines` is set to a number', () => {
+      const md = createMarkdown({ collapsedLines: 10 })
       expect(md.render(source)).toMatchSnapshot()
     })
   })

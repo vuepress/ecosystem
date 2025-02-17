@@ -6,7 +6,7 @@ export const prepareClientConfigFile = (
   { spoiler }: Record<string, unknown>,
 ): Promise<string> =>
   app.writeTemp(
-    `markdown-ext/config.js`,
+    `markdown-stylize/config.js`,
     `\
 ${spoiler ? `import "${getModulePath('@mdit/plugin-spoiler/style', import.meta)}"\n` : ''}\n
 `,

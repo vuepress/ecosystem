@@ -1,3 +1,7 @@
+---
+icon: unplug
+---
+
 # 插件配置
 
 你可以通过 `themePlugins` 设置默认主题使用的插件。

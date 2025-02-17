@@ -1,82 +1,28 @@
-import type { BackToTopPluginLocaleConfig } from '../shared/index.js'
+import type { DefaultLocaleInfo } from '@vuepress/helper'
+import type { BackToTopPluginLocaleData } from '../shared/index.js'
 
-export const backToTopLocales: BackToTopPluginLocaleConfig = {
-  '/en/': {
-    backToTop: 'Back to top',
-  },
-
-  '/zh/': {
-    backToTop: '返回顶部',
-  },
-
-  '/zh-tw/': {
-    backToTop: '返回頂部',
-  },
-
-  '/de/': {
-    backToTop: 'Zurück nach oben.',
-  },
-
-  '/de-at/': {
-    backToTop: 'Zurück nach oben.',
-  },
-
-  '/vi/': {
-    backToTop: 'Trở lại đầu trang',
-  },
-
-  '/uk/': {
-    backToTop: 'Повернутися до початку',
-  },
-
-  '/ru/': {
-    backToTop: 'Вернуться к началу',
-  },
-
-  '/br/': {
-    backToTop: 'Volta ao topo',
-  },
-
-  '/pl/': {
-    backToTop: 'Wróć na górę',
-  },
-
-  '/sk/': {
-    backToTop: 'Back to top',
-  },
-
-  '/fr/': {
-    backToTop: 'Retour en haut',
-  },
-
-  '/es/': {
-    backToTop: 'Volver arriba',
-  },
-
-  '/ja/': {
-    backToTop: 'このページのトップへ戻る',
-  },
-
-  '/tr/': {
-    backToTop: 'En başa dön',
-  },
-
-  '/ko/': {
-    backToTop: '맨 위로',
-  },
-
-  '/fi/': {
-    backToTop: 'Takaisin ylös',
-  },
-  '/hu/': {
-    backToTop: 'Vissza a tetejére',
-  },
-
-  '/id/': {
-    backToTop: 'Kembali ke atas',
-  },
-
-  '/nl/': {
-    backToTop: 'Ga terug naar boven',
-  },
-}
+/**
+ * Default locale info for `@vuepress/plugin-back-to-top`
+ */
+export const backToTopLocaleInfo: DefaultLocaleInfo<BackToTopPluginLocaleData> =
+  [
+    [['en', 'en-US'], { backToTop: 'Back to top' }],
+    [['zh', 'zh-CN', 'zh-Hans'], { backToTop: '返回顶部' }],
+    [['zh-TW', 'zh-Hant'], { backToTop: '返回頂部' }],
+    [['de', 'de-DE'], { backToTop: 'Zurück nach oben.' }],
+    [['vi', 'vi-VN'], { backToTop: 'Trở lại đầu trang' }],
+    [['uk'], { backToTop: 'Повернутися до початку' }],
+    [['ru', 'ru-RU'], { backToTop: 'Вернуться к началу' }],
+    [['br'], { backToTop: 'Volta ao topo' }],
+    [['pl', 'pl-PL'], { backToTop: 'Wróć na górę' }],
+    [['sk', 'sk-SK'], { backToTop: 'Back to top' }],
+    [['fr', 'fr-FR'], { backToTop: 'Retour en haut' }],
+    [['es', 'es-ES'], { backToTop: 'Volver arriba' }],
+    [['ja', 'ja-JP'], { backToTop: 'このページのトップへ戻る' }],
+    [['tr', 'tr-TR'], { backToTop: 'En başa dön' }],
+    [['ko', 'ko-KO'], { backToTop: '맨 위로' }],
+    [['fi', 'fi-FI'], { backToTop: 'Takaisin ylös' }],
+    [['hu', 'hu-HU'], { backToTop: 'Vissza a tetejére' }],
+    [['id', 'id-ID'], { backToTop: 'Kembali ke atas' }],
+    [['nl', 'nl-NL'], { backToTop: 'Ga terug naar boven' }],
+  ]

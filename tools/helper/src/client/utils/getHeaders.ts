@@ -1,43 +1,20 @@
-export interface Header {
-  /**
-   * The level of the header
-   *
-   * `1` to `6` for `<h1>` to `<h6>`
-   */
-  level: number
-  /**
-   * The title of the header
-   */
-  title: string
-  /**
-   * The slug of the header
-   *
-   * Typically the `id` attr of the header anchor
-   */
-  slug: string
-  /**
-   * Link of the header
-   *
-   * Typically using `#${slug}` as the anchor hash
-   */
-  link: string
-  /**
-   * The children of the header
-   */
-  children: Header[]
-}
+import type { PageHeader } from 'vuepress/shared'
+
+const DEFAULT_HEADER_SELECTOR = [...new Array<undefined>(6)]
+  .map((_, i) => `[vp-content] h${i + 1}`)
+  .join(',')
 
 export type HeaderLevels = number | 'deep' | false | [number, number]
 
-export type MenuItem = Omit<Header, 'children' | 'slug'> & {
-  element: HTMLHeadElement
-  children?: MenuItem[]
+export type HeaderItem = Omit<PageHeader, 'children'> & {
+  element: HTMLHeadingElement
+  children?: HeaderItem[]
 }
 
 export const resolveHeaders = (
-  headers: MenuItem[],
+  headers: HeaderItem[],
   levels: HeaderLevels = 2,
-): MenuItem[] => {
+): HeaderItem[] => {
   if (levels === false) {
     return []
   }
@@ -49,29 +26,30 @@ export const resolveHeaders = (
         ? [2, 6]
         : levels
   const allowedHeaders = headers.filter(
-    (h) => h.level >= high && h.level <= low,
+    (header) => header.level >= high && header.level <= low,
   )
 
-  const res: MenuItem[] = []
+  const result: HeaderItem[] = []
 
   // eslint-disable-next-line no-restricted-syntax
   outer: for (let i = 0; i < allowedHeaders.length; i++) {
-    const cur = allowedHeaders[i]
+    const current = allowedHeaders[i]
+
     if (i === 0) {
-      res.push(cur)
+      result.push(current)
     } else {
       for (let j = i - 1; j >= 0; j--) {
         const prev = allowedHeaders[j]
-        if (prev.level < cur.level) {
-          ;(prev.children ??= []).push(cur)
+        if (prev.level < current.level) {
+          ;(prev.children ??= []).push(current)
           continue outer
         }
       }
-      res.push(cur)
+      result.push(current)
     }
   }
 
-  return res
+  return result
 }
 
 const serializeHeader = (h: Element, ignore: string[] = []): string => {
@@ -91,6 +69,20 @@ const serializeHeader = (h: Element, ignore: string[] = []): string => {
 
   return text.trim()
 }
+
+export const getHeadersFromDom = (
+  selector = DEFAULT_HEADER_SELECTOR,
+  ignore: string[] = [],
+): HeaderItem[] =>
+  Array.from(document.querySelectorAll(selector))
+    .filter((el) => el.id && el.hasChildNodes())
+    .map((el) => ({
+      element: el as HTMLHeadingElement,
+      title: serializeHeader(el, ignore),
+      link: `#${el.id}`,
+      slug: el.id,
+      level: Number(el.tagName[1]),
+    }))
 
 export interface GetHeadersOptions {
   /**
@@ -129,23 +121,8 @@ export interface GetHeadersOptions {
  * Get headers of current page.
  */
 export const getHeaders = ({
-  selector = [...new Array<undefined>(6)]
-    .map((_, i) => `[vp-content] h${i + 1}`)
-    .join(','),
+  selector = DEFAULT_HEADER_SELECTOR,
   levels = 2,
   ignore = [],
-}: GetHeadersOptions = {}): MenuItem[] => {
-  const headers = Array.from(document.querySelectorAll(selector))
-    .filter((el) => el.id && el.hasChildNodes())
-    .map((el) => {
-      const level = Number(el.tagName[1])
-      return {
-        element: el as HTMLHeadElement,
-        title: serializeHeader(el, ignore),
-        link: `#${el.id}`,
-        slug: el.id,
-        level,
-      }
-    })
-  return resolveHeaders(headers, levels)
-}
+}: GetHeadersOptions = {}): HeaderItem[] =>
+  resolveHeaders(getHeadersFromDom(selector, ignore), levels)

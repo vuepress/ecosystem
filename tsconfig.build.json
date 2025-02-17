@@ -70,6 +70,7 @@
     { "path": "./plugins/features/plugin-catalog/tsconfig.build.json" },
     { "path": "./plugins/features/plugin-copy-code/tsconfig.build.json" },
     { "path": "./plugins/features/plugin-copyright/tsconfig.build.json" },
+    { "path": "./plugins/features/plugin-icon/tsconfig.build.json" },
     { "path": "./plugins/features/plugin-medium-zoom/tsconfig.build.json" },
     { "path": "./plugins/features/plugin-notice/tsconfig.build.json" },
     { "path": "./plugins/features/plugin-nprogress/tsconfig.build.json" },
@@ -109,6 +110,7 @@
     { "path": "./tools/create-vuepress/tsconfig.build.json" },
     { "path": "./tools/helper/tsconfig.build.json" },
     { "path": "./tools/highlighter-helper/tsconfig.build.json" },
+    { "path": "./tools/shiki-twoslash/tsconfig.build.json" },
     { "path": "./tools/theme-helper/tsconfig.build.json" },
     { "path": "./tools/vp-update/tsconfig.build.json" }
   ],

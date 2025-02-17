@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import VPAutoLink from '@theme/VPAutoLink.vue'
 import VPEditIcon from '@theme/VPEditIcon.vue'
 import { useLastUpdated } from '@theme/useLastUpdated'
 import { useThemeLocaleData } from '@theme/useThemeData'
@@ -14,11 +15,11 @@ const contributors = useContributors()
 <template>
   <footer class="vp-page-meta">
     <div v-if="editLink" class="vp-meta-item edit-link">
-      <AutoLink class="label" :config="editLink">
+      <VPAutoLink class="label" :config="editLink">
         <template #before>
           <VPEditIcon />
         </template>
-      </AutoLink>
+      </VPAutoLink>
     </div>
 
     <div class="vp-meta-item git-info">

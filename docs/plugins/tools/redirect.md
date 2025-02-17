@@ -1,3 +1,7 @@
+---
+icon: forward
+---
+
 # redirect
 
 <NpmBadge package="@vuepress/plugin-redirect" />
@@ -127,19 +131,24 @@ Sometimes you may change `base` or use new domain for your site, so you may want
 
 To solve this, the plugin provide `vp-redirect` cli.
 
-```shell
-Usage:
-  $ vp-redirect generate [sourceDir]
+```plain
+Usage: vp-redirect [options] <source> [output]
+
+Generate redirect site for current VuePress project
+
+Arguments:
+  source                 Source directory of VuePress project
+  output                 Output folder (default: .vuepress/redirect relative to source folder)
 
 Options:
-  --hostname <hostname>  Hostname to redirect to (E.g.: https://new.example.com/) (default: /)
-  -c, --config <config>  Set path to config file
-  -o, --output <output>  Set the output directory (default: .vuepress/redirect)
-  --cache <cache>        Set the directory of the cache files
-  -t, --temp <temp>      Set the directory of the temporary files
+  --hostname <hostname>  Hostname to redirect to (E.g.: https://new.example.com/) (default: "/")
+  -c, --config [config]  Set path to config file
+  --cache [cache]        Set the directory of the cache files
+  --temp [temp]          Set the directory of the temporary files
   --clean-cache          Clean the cache files before generation
   --clean-temp           Clean the temporary files before generation
-  -h, --help             Display this message
+  -V, --version          output the version number
+  -h, --help             display help for command
 ```
 
 You need to pass in VuePress project source dir and also set the `hostname` option. The redirect helper cli will initialize your VuePress project to get pages, then generate and output the redirect html files to the output directory.
@@ -254,7 +263,7 @@ By default, the plugin will output to `.vuepress/redirect` directory under sourc
   }
 
   interface RedirectPluginLocaleConfig {
-    [localePath: string]: RedirectPluginLocaleData
+    [localePath: string]: Partial<RedirectPluginLocaleData>
   }
   ```
 

@@ -18,7 +18,7 @@ const isActiveLink = (
   return currentPath === targetPath
 }
 
-export const isActiveLinkItem = (
+export const isActiveSidebarItem = (
   item: SidebarItem,
   route: RouteLocationNormalizedLoaded,
 ): boolean => {
@@ -27,7 +27,7 @@ export const isActiveLinkItem = (
   }
 
   if ('children' in item) {
-    return item.children.some((child) => isActiveLinkItem(child, route))
+    return item.children.some((child) => isActiveSidebarItem(child, route))
   }
 
   return false

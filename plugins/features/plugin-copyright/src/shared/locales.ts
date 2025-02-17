@@ -1,5 +1,3 @@
-import type { ExactLocaleConfig } from '@vuepress/helper'
-
 export interface CopyrightPluginLocaleData {
   /**
    * Author text
@@ -34,6 +32,3 @@ export interface CopyrightPluginLocaleData {
    */
   link: string
 }
-
-export type CopyrightPluginLocaleConfig =
-  ExactLocaleConfig<CopyrightPluginLocaleData>

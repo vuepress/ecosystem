@@ -15,7 +15,7 @@ const homeText = themeLocale.value.backToHome ?? 'Back to home'
 <template>
   <div class="vp-theme-container" vp-container>
     <main class="page">
-      <div class="theme-default-content" vp-content>
+      <div vp-content>
         <h1>404</h1>
 
         <blockquote>{{ getMsg() }}</blockquote>

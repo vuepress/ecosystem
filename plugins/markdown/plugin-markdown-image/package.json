@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-image",
-  "version": "2.0.0-rc.63",
+  "version": "2.0.0-rc.77",
   "description": "VuePress plugin - markdown image",
   "keywords": [
     "vuepress-plugin",
@@ -44,18 +44,18 @@
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "style": "sass src:lib --embed-sources --style=compressed"
+    "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@mdit/plugin-figure": "^0.14.0",
-    "@mdit/plugin-img-lazyload": "^0.14.0",
-    "@mdit/plugin-img-mark": "^0.14.0",
-    "@mdit/plugin-img-size": "^0.14.0",
+    "@mdit/plugin-figure": "^0.16.0",
+    "@mdit/plugin-img-lazyload": "^0.16.0",
+    "@mdit/plugin-img-mark": "^0.16.0",
+    "@mdit/plugin-img-size": "^0.16.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.18"
+    "vuepress": "2.0.0-rc.19"
   },
   "publishConfig": {
     "access": "public"

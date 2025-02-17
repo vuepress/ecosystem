@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import VPAutoLink from '@theme/VPAutoLink.vue'
 import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
+import { isActiveSidebarItem } from '@theme/isActiveSidebarItem'
 import { useToggle } from '@vueuse/core'
 import { computed, nextTick, onBeforeUnmount, toRefs } from 'vue'
-import { AutoLink, useRoute, useRouter } from 'vuepress/client'
+import { useRoute, useRouter } from 'vuepress/client'
 import type { SidebarItem } from '../typings.js'
-import { isActiveLinkItem } from '../utils/index.js'
 
 const props = withDefaults(
   defineProps<{
@@ -27,7 +28,7 @@ const router = useRouter()
 const collapsible = computed(
   () => 'collapsible' in item.value && item.value.collapsible,
 )
-const isActive = computed(() => isActiveLinkItem(item.value, route))
+const isActive = computed(() => isActiveSidebarItem(item.value, route))
 const itemClass = computed(() => ({
   'vp-sidebar-item': true,
   'vp-sidebar-heading': depth.value === 0,
@@ -61,7 +62,7 @@ onBeforeUnmount(() => {
 
 <template>
   <li>
-    <AutoLink v-if="item.link" :class="itemClass" :config="item" />
+    <VPAutoLink v-if="item.link" :class="itemClass" :config="item" />
     <p
       v-else
       tabindex="0"
@@ -162,13 +163,18 @@ onBeforeUnmount(() => {
     color: var(--vp-c-accent);
     font-weight: 600;
   }
-}
 
-a.vp-sidebar-item {
-  cursor: pointer;
+  .auto-link {
+    display: block;
+  }
 
-  &:hover {
-    color: var(--vp-c-accent);
+  &.auto-link {
+    display: block;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--vp-c-accent);
+    }
   }
 }
 </style>

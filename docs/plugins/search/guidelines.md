@@ -1,3 +1,7 @@
+---
+icon: signpost
+---
+
 # Search Plugin Guidelines
 
 To make VuePress theme support search plugins out of box, we have a set of guidelines that should be followed when creating a search plugin.

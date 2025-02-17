@@ -1,3 +1,7 @@
+---
+icon: chart-no-axes-combined
+---
+
 # google-analytics
 
 <NpmBadge package="@vuepress/plugin-google-analytics" />

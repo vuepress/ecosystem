@@ -1,3 +1,7 @@
+---
+icon: pilcrow-left
+---
+
 # rtl
 
 <NpmBadge package="@vuepress/plugin-rtl" />

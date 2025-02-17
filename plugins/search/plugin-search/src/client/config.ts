@@ -1,12 +1,12 @@
 import { h } from 'vue'
 import { defineClientConfig } from 'vuepress/client'
-import type { SearchBoxLocales } from './components/index.js'
 import { SearchBox } from './components/index.js'
+import type { SearchPluginLocaleConfig } from './types.js'
 
 import './styles/vars.css'
 import './styles/search.css'
 
-declare const __SEARCH_LOCALES__: SearchBoxLocales
+declare const __SEARCH_LOCALES__: SearchPluginLocaleConfig
 declare const __SEARCH_HOT_KEYS__: string[]
 declare const __SEARCH_MAX_SUGGESTIONS__: number
 
@@ -20,7 +20,7 @@ export default defineClientConfig({
     app.component(
       'SearchBox',
       (props: {
-        locales?: SearchBoxLocales
+        locales?: SearchPluginLocaleConfig
         hotKeys?: string[]
         maxSuggestions?: number
       }) =>

@@ -1,7 +1,7 @@
 import { useFullscreen } from '@vueuse/core'
 import type PhotoSwipe from 'photoswipe'
 
-export const initPhotoSwipe = (
+export const setupPhotoSwipe = (
   photoSwipe: PhotoSwipe,
   {
     download = true,

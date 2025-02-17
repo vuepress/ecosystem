@@ -1,3 +1,7 @@
+---
+icon: arrow-up-to-line
+---
+
 # back-to-top
 
 <NpmBadge package="@vuepress/plugin-back-to-top" />

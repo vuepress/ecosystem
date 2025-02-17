@@ -1,3 +1,4 @@
+import { isModuleAvailable } from '@vuepress/helper'
 import type {
   MarkdownItCollapsedLinesOptions,
   MarkdownItLineNumbersOptions,
@@ -8,50 +9,96 @@ import {
 } from '@vuepress/highlighter-helper'
 import type { Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
+import { colors } from 'vuepress/utils'
+import { createMarkdownFilePathGetter } from './markdown/highlighter/createMarkdownFilePathGetter.js'
 import type { MarkdownItPreWrapperOptions } from './markdown/index.js'
 import {
-  applyHighlighter,
+  createShikiHighlighter,
+  getHighLightFunction,
   highlightLinesPlugin,
   preWrapperPlugin,
 } from './markdown/index.js'
 import type { ShikiPluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
+import { logger } from './utils.js'
 
-export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => {
-  const opt: ShikiPluginOptions = {
-    preWrapper: true,
-    lineNumbers: true,
-    collapsedLines: 'disable',
-    ...options,
-  }
+export const shikiPlugin = (_options: ShikiPluginOptions = {}): Plugin => {
+  return (app) => {
+    // FIXME: Remove in stable version
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    const { code } = app.options.markdown
+    const options = {
+      ...(isPlainObject(code) ? code : {}),
+      ..._options,
+    }
 
-  return {
-    name: '@vuepress/plugin-shiki',
+    options.logLevel ??= app.env.isDebug ? 'debug' : 'warn'
+    options.preWrapper ??= true
+    options.lineNumbers ??= true
+    options.collapsedLines ??= 'disable'
 
-    extendsMarkdown: async (md, app) => {
-      // FIXME: Remove in stable version
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      const { code } = app.options.markdown
+    if (
+      options.twoslash &&
+      !isModuleAvailable('@vuepress/shiki-twoslash', import.meta)
+    ) {
+      logger.error(
+        `${colors.cyan('twoslash')} is enabled, but ${colors.magenta('@vuepress/shiki-twoslash')} is not installed, please install it manually`,
+      )
+      options.twoslash = false
+    }
 
-      await applyHighlighter(md, app, {
-        ...(isPlainObject(code) ? code : {}),
-        ...options,
-      })
+    /**
+     * Whether to enable the `v-pre` configuration of the code block
+     */
+    let enableVPre = true
 
-      const { preWrapper, lineNumbers, collapsedLines } = opt
+    return {
+      name: '@vuepress/plugin-shiki',
 
-      md.use(highlightLinesPlugin)
-      md.use<MarkdownItPreWrapperOptions>(preWrapperPlugin, { preWrapper })
-      if (preWrapper) {
-        md.use<MarkdownItLineNumbersOptions>(lineNumbersPlugin, {
-          lineNumbers,
-        })
-        md.use<MarkdownItCollapsedLinesOptions>(collapsedLinesPlugin, {
-          collapsedLines,
-        })
-      }
-    },
+      extendsMarkdownOptions: (opts) => {
+        /**
+         * Turn off the `v-pre` configuration of the code block.
+         */
+        if (opts.vPre !== false) {
+          const vPre = isPlainObject(opts.vPre) ? opts.vPre : { block: true }
+          if (vPre.block) {
+            opts.vPre ??= {}
+            opts.vPre.block = false
+          }
+          enableVPre = vPre.block ?? true
+        } else {
+          enableVPre = false
+        }
+      },
 
-    clientConfigFile: (app) => prepareClientConfigFile(app, opt),
+      extendsMarkdown: async (md) => {
+        const { preWrapper, lineNumbers, collapsedLines } = options
+
+        const markdownFilePathGetter = createMarkdownFilePathGetter(md)
+        const { highlighter, loadLang, extraTransformers } =
+          await createShikiHighlighter(app, options, enableVPre)
+
+        md.options.highlight = getHighLightFunction(
+          highlighter,
+          options,
+          extraTransformers,
+          loadLang,
+          markdownFilePathGetter,
+        )
+
+        md.use(highlightLinesPlugin)
+        md.use<MarkdownItPreWrapperOptions>(preWrapperPlugin, { preWrapper })
+        if (preWrapper) {
+          md.use<MarkdownItLineNumbersOptions>(lineNumbersPlugin, {
+            lineNumbers,
+          })
+          md.use<MarkdownItCollapsedLinesOptions>(collapsedLinesPlugin, {
+            collapsedLines,
+          })
+        }
+      },
+
+      clientConfigFile: () => prepareClientConfigFile(app, options),
+    }
   }
 }

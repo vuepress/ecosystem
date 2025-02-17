@@ -2,10 +2,10 @@ import { useEventListener } from '@vueuse/core'
 import type PhotoSwipe from 'photoswipe'
 import type { SlideData } from 'photoswipe'
 import type { PhotoSwipeOptions } from '../helpers/index.js'
-import { LOADING_ICON } from './icon.js'
-import { getImageUrlInfo } from './images.js'
-import { initPhotoSwipe } from './initPhotoSwipe.js'
-import type { PhotoSwipeBehaviorOptions } from './typings.js'
+import type { PhotoSwipeBehaviorOptions } from '../typings.js'
+import { resolveImageInfoFromLink } from './images.js'
+import { LOADING_ICON } from './loadingIcon.js'
+import { setupPhotoSwipe } from './setupPhotoSwipe.js'
 
 export interface PhotoSwipeState {
   open: (index: number) => void
@@ -13,7 +13,26 @@ export interface PhotoSwipeState {
   destroy: () => void
 }
 
-export const createPhotoSwipe = (
+const getDataSource = (
+  imageLinks: string[],
+  photoswipe: PhotoSwipe | null = null,
+): SlideData[] => {
+  const dataSource = imageLinks.map<SlideData>((link) => ({
+    html: LOADING_ICON,
+    msrc: link,
+  }))
+
+  imageLinks.forEach((link, index) => {
+    void resolveImageInfoFromLink(link).then((data) => {
+      dataSource.splice(index, 1, data)
+      photoswipe?.refreshSlideContent(index)
+    })
+  })
+
+  return dataSource
+}
+
+export const createPhotoSwipe = async (
   images: string[],
   {
     scrollToClose = true,
@@ -21,51 +40,41 @@ export const createPhotoSwipe = (
     fullscreen = true,
     ...photoSwipeOptions
   }: PhotoSwipeBehaviorOptions & PhotoSwipeOptions,
-): Promise<PhotoSwipeState> =>
-  import(/* webpackChunkName: "photo-swipe" */ 'photoswipe').then(
-    ({ default: PhotoSwipe }) => {
-      let currentPhotoSwipe: PhotoSwipe | null = null
-
-      const dataSource = images.map<SlideData>((image) => ({
-        html: LOADING_ICON,
-        msrc: image,
-      }))
-
-      images.forEach((image, index) => {
-        void getImageUrlInfo(image).then((data) => {
-          dataSource.splice(index, 1, data)
-          currentPhotoSwipe?.refreshSlideContent(index)
-        })
-      })
-
-      const destroy = useEventListener('wheel', () => {
-        currentPhotoSwipe?.close()
-      })
-
-      return {
-        open: (index: number): void => {
-          currentPhotoSwipe?.close()
-
-          currentPhotoSwipe = new PhotoSwipe({
-            preloaderDelay: 0,
-            showHideAnimationType: 'zoom',
-            ...photoSwipeOptions,
-            dataSource,
-            index,
-            ...(scrollToClose
-              ? { closeOnVerticalDrag: true, wheelToZoom: false }
-              : {}),
-          })
-
-          initPhotoSwipe(currentPhotoSwipe, { download, fullscreen })
-
-          currentPhotoSwipe.addFilter('placeholderSrc', () => images[index])
-          currentPhotoSwipe.init()
-        },
-        close: (): void => {
-          currentPhotoSwipe?.close()
-        },
-        destroy,
-      }
-    },
+): Promise<PhotoSwipeState> => {
+  const { default: PhotoSwipe } = await import(
+    /* webpackChunkName: "photo-swipe" */ 'photoswipe'
   )
+  let currentPhotoSwipe: PhotoSwipe | null = null
+
+  return {
+    open: (index: number): void => {
+      currentPhotoSwipe = new PhotoSwipe({
+        preloaderDelay: 0,
+        showHideAnimationType: 'zoom',
+        ...photoSwipeOptions,
+        index,
+        ...(scrollToClose
+          ? { closeOnVerticalDrag: true, wheelToZoom: false }
+          : {}),
+      })
+
+      setupPhotoSwipe(currentPhotoSwipe, { download, fullscreen })
+
+      currentPhotoSwipe.options.dataSource = getDataSource(
+        images,
+        currentPhotoSwipe,
+      )
+
+      // photoSwipe.addFilter('placeholderSrc', () => images[index])
+      currentPhotoSwipe.init()
+    },
+
+    close: (): void => {
+      currentPhotoSwipe?.close()
+    },
+
+    destroy: useEventListener('wheel', () => {
+      currentPhotoSwipe?.close()
+    }),
+  }
+}

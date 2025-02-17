@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.77](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.76...v2.0.0-rc.77) (2025-02-16)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.74](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.73...v2.0.0-rc.74) (2025-01-24)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.73](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.72...v2.0.0-rc.73) (2025-01-16)
+
+### Bug Fixes
+
+- **helper:** fix getHeaders function ([#342](https://github.com/vuepress/ecosystem/issues/342)) ([df653e7](https://github.com/vuepress/ecosystem/commit/df653e780c101150c114c47b3269a4b2af7cbe45))
+
+# [2.0.0-rc.71](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.70...v2.0.0-rc.71) (2025-01-15)
+
+### Features
+
+- **helper:** rebuild loading icon ([0321a54](https://github.com/vuepress/ecosystem/commit/0321a546ac59125affd7e61f8870a7675eaceb9f))
+
+# [2.0.0-rc.70](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.69...v2.0.0-rc.70) (2025-01-13)
+
+### Features
+
+- **helper:** add isLinkRelative ([0568a46](https://github.com/vuepress/ecosystem/commit/0568a46c98c536fca8ff53a5d8451e96ab98e3c9))
+
+# [2.0.0-rc.69](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.68...v2.0.0-rc.69) (2025-01-07)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.68](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.67...v2.0.0-rc.68) (2024-12-27)
+
+### Features
+
+- rebuild built-in locale data ([#315](https://github.com/vuepress/ecosystem/issues/315)) ([5308fb4](https://github.com/vuepress/ecosystem/commit/5308fb48310d3f0c6af4adc1a98f2e6747c85f33))
+
+# [2.0.0-rc.66](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.65...v2.0.0-rc.66) (2024-12-13)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.65](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.64...v2.0.0-rc.65) (2024-12-09)
+
+### Bug Fixes
+
+- **helper:** `.sr-only` clip ([#297](https://github.com/vuepress/ecosystem/issues/297)) ([0c79df6](https://github.com/vuepress/ecosystem/commit/0c79df69d29644e78438e2e92cc17773f915b081))
+
 # [2.0.0-rc.63](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.62...v2.0.0-rc.63) (2024-12-06)
 
 **Note:** Version bump only for package @vuepress/helper

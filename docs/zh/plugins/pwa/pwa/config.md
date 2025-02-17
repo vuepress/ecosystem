@@ -1,3 +1,7 @@
+---
+icon: settings-2
+---
+
 # 配置
 
 ## 选项
@@ -144,31 +148,15 @@
 - 类型：`string`
 - 详情：填入苹果使用的图标地址，推荐 152×152 大小
 
-#### apple.statusBarColor
-
-- 类型：`"black" | "white"`
-- 默认值：`"black"`
-- 详情：Safari 状态栏颜色
-
 #### apple.maskIcon
 
 - 类型：`string`
 - 详情：Safari 图标
 
-### msTile
+#### apple.statusBarColor
 
-针对微软磁贴的特殊设置，忽略它们是安全的。
-
-#### msTile.image
-
-- 类型：`string`
-- 详情：磁贴图标
-
-#### msTile.color
-
-- 类型：`string`
-- 默认值：`themeColor`
-- 详情：磁贴颜色。
+- 类型：`'black-translucent' | 'black' | 'default`
+- 详情：Safari 状态栏颜色
 
 ### foundComponent
 
@@ -257,7 +245,7 @@
   }
 
   interface PwaPluginLocaleConfig {
-    [localePath: string]: PwaPluginLocaleData
+    [localePath: string]: Partial<PwaPluginLocaleData>
   }
   ```
 
@@ -271,7 +259,6 @@
 - **繁体中文** (zh-TW)
 - **英文(美国)** (en-US)
 - **德语** (de-DE)
-- **德语(澳大利亚)** (de-AT)
 - **俄语** (ru-RU)
 - **乌克兰语** (uk-UA)
 - **越南语** (vi-VN)

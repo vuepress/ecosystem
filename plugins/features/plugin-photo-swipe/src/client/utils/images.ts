@@ -1,46 +1,38 @@
-import { isString } from '@vuepress/helper/client'
 import type { SlideData } from 'photoswipe'
 
-export const getImages = (selector: string[] | string): HTMLImageElement[] =>
-  isString(selector)
-    ? Array.from(document.querySelectorAll<HTMLImageElement>(selector))
-    : selector
-        .map((item) =>
-          Array.from(document.querySelectorAll<HTMLImageElement>(item)),
-        )
-        .flat()
-
-export const getImageElementInfo = (
-  image: HTMLImageElement,
+export const resolveImageInfoFromElement = (
+  imageElement: HTMLImageElement,
 ): Promise<SlideData> =>
   new Promise<SlideData>((resolve, reject) => {
-    if (image.complete) {
+    if (imageElement.complete) {
       resolve({
         type: 'image',
-        element: image,
-        src: image.src,
-        width: image.naturalWidth,
-        height: image.naturalHeight,
-        alt: image.alt,
-        msrc: image.src,
+        element: imageElement,
+        src: imageElement.src,
+        width: imageElement.naturalWidth,
+        height: imageElement.naturalHeight,
+        alt: imageElement.alt,
+        msrc: imageElement.src,
       })
     } else {
-      image.onload = (): void => {
-        resolve(getImageElementInfo(image))
+      imageElement.onload = (): void => {
+        resolve(resolveImageInfoFromElement(imageElement))
       }
-      image.onerror = (): void => {
+      imageElement.onerror = (): void => {
         reject()
       }
     }
   })
 
-export const getImageUrlInfo = (image: string): Promise<SlideData> =>
+export const resolveImageInfoFromLink = (
+  imageLink: string,
+): Promise<SlideData> =>
   new Promise<SlideData>((resolve, reject) => {
     const el = new Image()
 
-    el.src = image
+    el.src = imageLink
     el.onload = (): void => {
-      resolve(getImageElementInfo(el))
+      resolve(resolveImageInfoFromElement(el))
     }
     el.onerror = (): void => {
       reject()

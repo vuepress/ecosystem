@@ -1,3 +1,7 @@
+---
+icon: image-play
+---
+
 # photo-swipe
 
 <NpmBadge package="@vuepress/plugin-photo-swipe" />
@@ -64,20 +68,6 @@ In preview mode, you can:
 - Default: `true`
 - Details: Whether close the current image when scrolling.
 
-### delay
-
-- Type: `number`
-- Default: `800`
-- Details:
-
-  The delay of operating dom, in ms.
-
-  ::: tip
-
-  If the theme you are using has a switching animation, it is recommended to configure this option to `Switch animation duration + 200`.
-
-  :::
-
 ### locales
 
 - Type: `PhotoSwipePluginLocaleConfig`
@@ -121,7 +111,7 @@ In preview mode, you can:
   }
 
   interface PhotoSwipePluginLocaleConfig {
-    [localePath: string]: PhotoSwipePluginLocaleData
+    [localePath: string]: Partial<PhotoSwipePluginLocaleData>
   }
   ```
 
@@ -168,7 +158,6 @@ In preview mode, you can:
 - **Traditional Chinese** (zh-TW)
 - **English (United States)** (en-US)
 - **German** (de-DE)
-- **German (Australia)** (de-AT)
 - **Russian** (ru-RU)
 - **Ukrainian** (uk-UA)
 - **Vietnamese** (vi-VN)
@@ -252,32 +241,6 @@ onUnmounted(() => {
     open photo {{ i }}
   </button>
 </template>
-```
-
-`registerPhotoSwipe` allows you to register photoswipe for the given image elements:
-
-```vue
-<script setup lang="ts">
-import { registerPhotoSwipe } from '@vuepress/plugin-photo-swipe/client'
-import { onMounted, onUnmounted } from 'vue'
-
-let destroy: () => null | void = null
-
-onMounted(async () => {
-  await nextTick()
-
-  const images = Array.from(document.querySelectorAll('img'))
-
-  // create a new photoswipe instance on image elements
-  destroy = await registerPhotoSwipe(images, {
-    // photoswipe options
-  })
-})
-
-onUnmounted(() => {
-  destroy?.()
-})
-</script>
 ```
 
 ## Styles

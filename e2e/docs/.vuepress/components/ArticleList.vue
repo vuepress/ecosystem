@@ -119,15 +119,9 @@ defineProps<{
       transform: scaleX(0);
     }
 
-    &:hover {
-      &::after {
-        visibility: visible;
-        transform: scaleX(1);
-      }
-    }
-
-    a {
-      color: inherit;
+    &:hover::after {
+      visibility: visible;
+      transform: scaleX(1);
     }
   }
 

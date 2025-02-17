@@ -1,7 +1,7 @@
-import { getLocaleConfig, getModulePath } from '@vuepress/helper'
+import { getFullLocaleConfig, getModulePath } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
-import { pwaLocales } from './locales.js'
+import { pwaLocaleInfo } from './locales.js'
 import { PLUGIN_NAME } from './logger.js'
 import type { PwaPluginOptions } from './options.js'
 
@@ -52,10 +52,10 @@ ${configImport}
 import "${getModulePath('@vuepress/plugin-pwa/styles/vars.css', import.meta)}";
 
 const locales = ${JSON.stringify(
-      getLocaleConfig({
+      getFullLocaleConfig({
         app,
         name: PLUGIN_NAME,
-        default: pwaLocales,
+        default: pwaLocaleInfo,
         config: options.locales,
       }),
     )};

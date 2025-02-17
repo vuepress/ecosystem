@@ -18,7 +18,8 @@ export const pwaPlugin =
   (app) => {
     if (app.env.isDebug) logger.info('Options:', options)
 
-    const { base, shouldPrefetch = true } = app.options
+    const { shouldPrefetch = true } = app.options
+    const { base } = app.siteData
 
     if (options.appendBase) appendBase(base, options)
 
@@ -27,7 +28,7 @@ export const pwaPlugin =
         'The plugin will register service worker to handle assets, so we recommend you to set "shouldPrefetch: false" in VuePress config file.',
       )
 
-    app.options.head = injectLinksToHead(options, base, app.options.head)
+    injectLinksToHead(app, options)
 
     return {
       name: PLUGIN_NAME,

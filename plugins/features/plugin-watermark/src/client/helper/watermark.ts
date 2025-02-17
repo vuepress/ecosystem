@@ -1,4 +1,5 @@
 import { isFunction, isPlainObject } from '@vuepress/helper/client'
+import { watchImmediate } from '@vueuse/core'
 import type {
   App,
   ComputedRef,
@@ -7,7 +8,7 @@ import type {
   MaybeRefOrGetter,
   Ref,
 } from 'vue'
-import { computed, inject, isRef, ref, toValue, watch } from 'vue'
+import { computed, inject, isRef, ref, toValue } from 'vue'
 import { usePageFrontmatter } from 'vuepress/client'
 import type { WatermarkOptions as WatermarkRawOptions } from 'watermark-js-plus'
 import type { WatermarkPluginFrontmatter } from '../../shared/index.js'
@@ -36,9 +37,10 @@ const watermarkOptions = ref<WatermarkOptions>({})
  *
  * @example
  * ```ts
+ * import { useDarkmode } from '@vuepress/helper/client'
  * import { computed } from 'vue'
  *
- * const isDark = useDarkMode()
+ * const isDark = useDarkmode()
  *
  * const watermarkConfig = computed(() => ({
  *   fontColor: isDark.value ? '#fff' : '#000',
@@ -57,15 +59,11 @@ export const defineWatermarkConfig = (
   userConfig: MaybeRefOrGetter<WatermarkOptions>,
 ): void => {
   if (isRef(userConfig)) {
-    watch(
-      userConfig,
-      (value) => {
-        watermarkOptions.value = value
-      },
-      { immediate: true },
-    )
+    watchImmediate(userConfig, (value) => {
+      watermarkOptions.value = value
+    })
   } else if (isFunction(userConfig)) {
-    watch(userConfig, (value) => {
+    watchImmediate(computed(userConfig), (value) => {
       watermarkOptions.value = value
     })
   } else {

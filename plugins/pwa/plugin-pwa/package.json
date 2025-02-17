@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-pwa",
-  "version": "2.0.0-rc.64",
+  "version": "2.0.0-rc.77",
   "description": "VuePress plugin - progressive web application",
   "keywords": [
     "vuepress-plugin",
@@ -39,23 +39,23 @@
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "style": "sass src:lib --embed-sources --style=compressed"
+    "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^12.0.0",
+    "@vueuse/core": "^12.7.0",
     "mitt": "^3.0.1",
     "register-service-worker": "^1.7.2",
     "vue": "^3.5.13",
     "workbox-build": "^7.3.0"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.18"
+    "vuepress": "2.0.0-rc.19"
   },
   "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
-    "rollup": "^4.28.1"
+    "rollup": "^4.34.7"
   }
 }

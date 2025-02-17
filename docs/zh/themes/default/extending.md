@@ -1,3 +1,7 @@
+---
+icon: cable
+---
+
 # 继承
 
 VuePress 默认主题有着大量的用户，因此我们对它进行了一些便于继承的设计，以便用户轻松进行定制化。
@@ -87,7 +91,7 @@ export default defineUserConfig({
 
 ## 修改行为
 
-默认主题的核心行为大多都被抽离成可组合式 API，并同样提供了 `@theme` 前缀的 [alias](https://v2.vuepress.vuejs.org/zh/reference/plugin-api.html#alias)。
+默认主题的核心行为大多都被抽离成可组合式 API 或工具函数，并同样提供了 `@theme` 前缀的 [alias](https://v2.vuepress.vuejs.org/zh/reference/plugin-api.html#alias)。
 
 比如，如果你想为默认主题的主题数据添加一些默认值，你可以通过覆盖 `@theme/useThemeData` 的 `useThemeData` 函数来实现。
 

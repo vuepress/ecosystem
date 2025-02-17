@@ -1,3 +1,7 @@
+---
+icon: chrome
+---
+
 # 客户端相关
 
 这些函数仅在 `@vuepress/helper/client` 中可用。
@@ -67,7 +71,7 @@ locale.value // '标题'
 获取当前页面指定的 标题列表。
 
 ```ts
-export const getHeaders: (options: GetHeadersOptions) => MenuItem[]
+export const getHeaders: (options: GetHeadersOptions) => HeaderItem[]
 ```
 
 **参数:**
@@ -108,7 +112,7 @@ export interface GetHeadersOptions {
 **返回结果:**
 
 ```ts
-export interface Header {
+interface PageHeader {
   /**
    * 当前标题的层级
    *
@@ -139,9 +143,9 @@ export interface Header {
 
 export type HeaderLevels = number | 'deep' | false | [number, number]
 
-export type MenuItem = Omit<Header, 'children' | 'slug'> & {
-  element: HTMLHeadElement
-  children?: MenuItem[]
+export type HeaderItem = Omit<PageHeader, 'children'> & {
+  element: HTMLHeadingElement
+  children?: HeaderItem[]
 }
 ```
 

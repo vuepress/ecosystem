@@ -1,9 +1,12 @@
-import type { App, ComputedRef, InjectionKey } from 'vue'
-import { computed, inject } from 'vue'
+import { watchImmediate } from '@vueuse/core'
+import type { App, ComputedRef, InjectionKey, MaybeRefOrGetter, Ref } from 'vue'
+import { computed, inject, isRef, readonly, ref } from 'vue'
 import type { PageData } from 'vuepress/client'
 import { useRouteLocale } from 'vuepress/client'
 
+import { isFunction } from 'vuepress/shared'
 import type { SearchResult, WorkerSearchOptions } from '../typings/index.js'
+import { defaultQuerySplitter } from '../utils/index.js'
 
 declare const __VUEPRESS_DEV__: boolean
 
@@ -32,26 +35,47 @@ export interface SearchOptions extends SearchLocaleOptions {
   locales?: Record<string, SearchLocaleOptions>
 }
 
-let searchOptions: SearchOptions = {}
+const searchOptions: Ref<SearchOptions> = ref({
+  querySplitter: (query) => Promise.resolve(defaultQuerySplitter(query)),
+})
 
-const slimsearchSymbol: InjectionKey<SearchOptions> = Symbol(
+const slimsearchSymbol: InjectionKey<Ref<SearchOptions>> = Symbol(
   __VUEPRESS_DEV__ ? 'slimsearch' : '',
 )
 
-export const defineSearchConfig = (options: SearchOptions): void => {
-  searchOptions = options as unknown as SearchOptions
+export const defineSearchConfig = (
+  options: MaybeRefOrGetter<SearchOptions>,
+): void => {
+  if (isRef(options)) {
+    watchImmediate(
+      () => options.value,
+      (value) => {
+        searchOptions.value = value
+      },
+    )
+  } else if (isFunction(options)) {
+    watchImmediate(computed(options), (value) => {
+      searchOptions.value = value
+    })
+  } else {
+    searchOptions.value = options
+  }
 }
 
 export const useSearchOptions = (): ComputedRef<SearchLocaleOptions> => {
   const routeLocale = useRouteLocale()
-  const { locales = {}, ...options } = inject(slimsearchSymbol)!
+  const options = inject(slimsearchSymbol)!
 
-  return computed(() => ({
-    ...options,
-    ...locales[routeLocale.value],
-  }))
+  return computed(() => {
+    const { locales = {}, ...rest } = options.value
+
+    return {
+      ...rest,
+      ...locales[routeLocale.value],
+    }
+  })
 }
 
 export const injectSearchConfig = (app: App): void => {
-  app.provide(slimsearchSymbol, searchOptions)
+  app.provide(slimsearchSymbol, readonly(searchOptions))
 }
