@@ -3,5 +3,5 @@
  *
  * @returns darkmode status
  */
-export const getDarkmode = (): boolean =>
+export const getDarkMode = (): boolean =>
   document.documentElement.getAttribute('data-theme') === 'dark'

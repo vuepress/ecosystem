@@ -37,10 +37,10 @@ const watermarkOptions = ref<WatermarkOptions>({})
  *
  * @example
  * ```ts
- * import { useDarkmode } from '@vuepress/helper/client'
+ * import { useDarkMode } from '@vuepress/helper/client'
  * import { computed } from 'vue'
  *
- * const isDark = useDarkmode()
+ * const isDark = useDarkMode()
  *
  * const watermarkConfig = computed(() => ({
  *   fontColor: isDark.value ? '#fff' : '#000',

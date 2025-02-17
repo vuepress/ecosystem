@@ -1,4 +1,4 @@
-export * from './useDarkmode.js'
+export * from './useDarkMode.js'
 export * from './useLastUpdated.js'
 export * from './useNavigate.js'
 export * from './useNavbarConfig.js'

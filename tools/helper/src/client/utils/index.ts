@@ -1,6 +1,6 @@
 export * from './data.js'
 export * from './env.js'
-export * from './getDarkmode.js'
+export * from './getDarkMode.js'
 export * from './getHeaders.js'
 export * from './hasGlobalComponent.js'
 export * from './wait.js'

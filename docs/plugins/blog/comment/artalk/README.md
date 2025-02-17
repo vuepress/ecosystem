@@ -32,6 +32,6 @@ The plugin retains the `el` option and inserts Artalk itself on the page. At the
 
 :::
 
-## Darkmode
+## Dark Mode
 
 To let Artalk apply the correct theme, you need to pass a boolean value to `<CommentService />` through `darkmode` prop, representing whether the dark mode is currently enabled.
