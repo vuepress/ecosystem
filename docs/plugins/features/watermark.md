@@ -118,12 +118,12 @@ it may be necessary to control different watermark opacities, font colors,
 etc., in **dark/light mode** , or to pass in callbacks such as `onSuccess`, `extraDrawFunc`, and so on.
 
 ```ts
-import { useDarkmode } from '@vuepress/helper/client'
+import { useDarkMode } from '@vuepress/helper/client'
 import { computed } from 'vue'
 
 export default defineClientConfig({
   setup() {
-    const isDark = useDarkmode()
+    const isDark = useDarkMode()
 
     const watermarkConfig = computed(() => ({
       fontColor: isDark.value ? '#fff' : '#000',

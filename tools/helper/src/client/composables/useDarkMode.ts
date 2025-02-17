@@ -2,21 +2,21 @@ import { useMutationObserver } from '@vueuse/core'
 import type { Ref } from 'vue'
 import { onMounted, readonly, ref } from 'vue'
 
-import { getDarkmode } from '../utils/index.js'
+import { getDarkMode } from '../utils/index.js'
 
 let darkmode: Readonly<Ref<boolean>> | null = null
 
-const _useDarkmode = (): Readonly<Ref<boolean>> => {
-  const isDarkmode = ref(false)
+const _useDarkMode = (): Readonly<Ref<boolean>> => {
+  const isDarkMode = ref(false)
 
   onMounted(() => {
-    isDarkmode.value = getDarkmode()
+    isDarkMode.value = getDarkMode()
 
     // Watch darkmode change
     useMutationObserver(
       document.documentElement,
       () => {
-        isDarkmode.value = getDarkmode()
+        isDarkMode.value = getDarkMode()
       },
       {
         attributeFilter: ['data-theme'],
@@ -25,7 +25,7 @@ const _useDarkmode = (): Readonly<Ref<boolean>> => {
     )
   })
 
-  return readonly(isDarkmode)
+  return readonly(isDarkMode)
 }
 
 /**
@@ -34,5 +34,5 @@ const _useDarkmode = (): Readonly<Ref<boolean>> => {
  * @returns readonly darkmode ref
  */
 // eslint-disable-next-line no-return-assign
-export const useDarkmode = (): Readonly<Ref<boolean>> =>
-  (darkmode ??= _useDarkmode())
+export const useDarkMode = (): Readonly<Ref<boolean>> =>
+  (darkmode ??= _useDarkMode())
