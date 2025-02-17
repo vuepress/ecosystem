@@ -1,5 +1,5 @@
 export * from './useContributors.js'
-export * from './useDarkMode.js'
+export * from './useDarkmode.js'
 export * from './useEditLink.js'
 export * from './useLastUpdated.js'
 export * from './useNavigate.js'

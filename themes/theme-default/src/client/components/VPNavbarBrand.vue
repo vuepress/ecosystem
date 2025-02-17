@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDarkMode } from '@theme/useDarkMode'
+import { useDarkmode } from '@theme/useDarkmode'
 import { useThemeLocaleData } from '@theme/useThemeData'
 import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
@@ -14,14 +14,14 @@ import {
 const routeLocale = useRouteLocale()
 const siteLocale = useSiteLocaleData()
 const themeLocale = useThemeLocaleData()
-const isDarkMode = useDarkMode()
+const isDarkmode = useDarkmode()
 
 const navbarBrandLink = computed(
   () => themeLocale.value.home || routeLocale.value,
 )
 const navbarBrandTitle = computed(() => siteLocale.value.title)
 const navbarBrandLogo = computed(() => {
-  if (isDarkMode.value && themeLocale.value.logoDark !== undefined) {
+  if (isDarkmode.value && themeLocale.value.logoDark !== undefined) {
     return themeLocale.value.logoDark
   }
   return themeLocale.value.logo

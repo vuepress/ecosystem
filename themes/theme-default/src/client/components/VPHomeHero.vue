@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import VPAutoLink from '@theme/VPAutoLink.vue'
-import { useDarkMode } from '@theme/useDarkMode'
+import { useDarkmode } from '@theme/useDarkmode'
 import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
 import {
@@ -13,7 +13,7 @@ import type { DefaultThemeHomePageFrontmatter } from '../../shared/index.js'
 
 const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
 const siteLocale = useSiteLocaleData()
-const isDarkMode = useDarkMode()
+const isDarkmode = useDarkmode()
 
 const heroText = computed(() => {
   if (frontmatter.value.heroText === null) {
@@ -33,7 +33,7 @@ const tagline = computed(() => {
   )
 })
 const heroImage = computed(() => {
-  if (isDarkMode.value && frontmatter.value.heroImageDark !== undefined) {
+  if (isDarkmode.value && frontmatter.value.heroImageDark !== undefined) {
     return frontmatter.value.heroImageDark
   }
   return frontmatter.value.heroImage
