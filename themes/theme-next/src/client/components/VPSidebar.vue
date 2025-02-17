@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import VPSidebarItem from '@theme/VPSidebarItem.vue'
 import { useScrollLock } from '@vueuse/core'
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, useTemplateRef, watch } from 'vue'
 import { useRoutePath } from 'vuepress/client'
 import { useSidebar } from '../composables/sidebar.js'
 import type { Slot } from '../types.js'
@@ -23,15 +23,15 @@ const { sidebarGroups, hasSidebar } = useSidebar()
 const routePath = useRoutePath()
 
 // a11y: focus Nav element when menu has opened
-const navEl = ref<HTMLElement | null>(null)
+const sidebar = useTemplateRef<HTMLElement | null>('sidebar')
 const isLocked = useScrollLock(inBrowser ? document.body : null)
 
 watch(
-  [props, navEl],
+  [props, sidebar],
   () => {
     if (props.open) {
       isLocked.value = true
-      navEl.value?.focus()
+      sidebar.value?.focus()
     } else isLocked.value = false
   },
   { immediate: true, flush: 'post' },
@@ -41,9 +41,10 @@ onMounted(() => {
   const activeItem = document.querySelector(
     `.vp-sidebar .vp-link[href*="${routePath.value}"]`,
   )
-  if (!activeItem || !navEl.value) return
+  if (!activeItem || !sidebar.value) return
 
-  const { top: navTop, height: navHeight } = navEl.value.getBoundingClientRect()
+  const { top: navTop, height: navHeight } =
+    sidebar.value.getBoundingClientRect()
   const { top: activeTop, height: activeHeight } =
     activeItem.getBoundingClientRect()
 
@@ -55,7 +56,7 @@ onMounted(() => {
 <template>
   <aside
     v-if="hasSidebar"
-    ref="navEl"
+    ref="sidebar"
     vp-sidebar
     class="vp-sidebar"
     :class="{ open }"
@@ -144,8 +145,8 @@ onMounted(() => {
 @media (min-width: 1440px) {
   .vp-sidebar {
     width: calc(
-      (100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) -
-        32px
+      (100% - (var(--vp-layout-max-width) - 64px)) / 2 +
+        var(--vp-sidebar-width) - 32px
     );
     padding-left: max(
       32px,

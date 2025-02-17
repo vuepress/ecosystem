@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import VPDocAside from '@theme/VPDocAside.vue'
 import VPDocFooter from '@theme/VPDocFooter.vue'
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed, nextTick, useTemplateRef, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
 import { useData } from '../composables/data.js'
 import { useSidebar } from '../composables/sidebar.js'
@@ -35,7 +35,7 @@ const enabledExternalLinkIcon = computed(
     frontmatter.value.externalLinkIcon !== false,
 )
 
-const asideEl = ref<HTMLElement>()
+const asideEl = useTemplateRef<HTMLDivElement>('asideContainer')
 
 watch(
   () => route.hash,
@@ -76,7 +76,7 @@ watch(
         :class="{ 'left-aside': leftAside }"
       >
         <div class="aside-curtain" />
-        <div ref="asideEl" class="aside-container">
+        <div ref="asideContainer" class="aside-container">
           <div class="aside-content">
             <VPDocAside>
               <template #aside-top>

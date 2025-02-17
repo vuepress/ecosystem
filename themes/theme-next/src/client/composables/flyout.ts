@@ -1,9 +1,9 @@
-import type { Ref } from 'vue'
+import type { Ref, ShallowRef } from 'vue'
 import { onUnmounted, readonly, ref, watch } from 'vue'
 import { inBrowser } from '../utils/index.js'
 
 interface UseFlyoutOptions {
-  el: Ref<HTMLElement | undefined>
+  el: Readonly<ShallowRef<HTMLElement | null>>
   onFocus?: () => void
   onBlur?: () => void
 }

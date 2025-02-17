@@ -4,7 +4,7 @@
  *         but VuePress directly globally configures them in Markdown, which leads to conflicts.
  *         To achieve page-level configuration, the solution of parsing the DOM was chosen.
  */
-import type { Ref } from 'vue'
+import type { ShallowRef } from 'vue'
 import { onMounted, onUnmounted, onUpdated } from 'vue'
 import type { DefaultThemeLocaleData } from '../../shared/index.js'
 import { getScrollOffset, throttleAndDebounce } from '../utils/index.js'
@@ -167,8 +167,8 @@ const getAbsoluteTop = (element: HTMLElement | null): number => {
 }
 
 export const useActiveAnchor = (
-  container: Ref<HTMLElement | undefined>,
-  marker: Ref<HTMLElement | undefined>,
+  container: Readonly<ShallowRef<HTMLElement | null>>,
+  marker: Readonly<ShallowRef<HTMLElement | null>>,
 ): void => {
   const { isAsideEnabled } = useAside()
   const { theme } = useData()

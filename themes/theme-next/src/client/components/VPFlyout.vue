@@ -1,7 +1,7 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
 import VPMenu from '@theme/VPMenu.vue'
-import { ref } from 'vue'
+import { ref, useTemplateRef } from 'vue'
 import { useFlyout } from '../composables/flyout.js'
 import type { Slot } from '../types.js'
 
@@ -28,7 +28,7 @@ defineProps<{
 defineSlots<{ default?: Slot }>()
 
 const open = ref(false)
-const el = ref<HTMLElement>()
+const el = useTemplateRef<HTMLDivElement>('feature')
 
 const onBlur = (): void => {
   open.value = false
@@ -39,7 +39,7 @@ useFlyout({ el, onBlur })
 
 <template>
   <div
-    ref="el"
+    ref="feature"
     class="vp-feature"
     @mouseenter="open = true"
     @mouseleave="open = false"

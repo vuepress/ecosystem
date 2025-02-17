@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import VPDocOutlineItem from '@theme/VPDocOutlineItem.vue'
-import { ref, shallowRef } from 'vue'
+import { shallowRef, useTemplateRef } from 'vue'
 import { onContentUpdated } from '../composables/content-update.js'
 import { useData } from '../composables/data.js'
 import type { MenuItem } from '../composables/outline.js'
@@ -18,15 +18,15 @@ onContentUpdated(() => {
   headers.value = getHeaders(frontmatter.value.outline ?? theme.value.outline)
 })
 
-const container = ref<HTMLElement>()
-const marker = ref<HTMLElement>()
+const container = useTemplateRef<HTMLElement>('docOutline')
+const marker = useTemplateRef<HTMLElement>('marker')
 
 useActiveAnchor(container, marker)
 </script>
 
 <template>
   <nav
-    ref="container"
+    ref="docOutline"
     aria-labelledby="doc-outline-aria-label"
     class="vp-doc-aside-outline"
     :class="{ 'has-outline': headers.length > 0 }"

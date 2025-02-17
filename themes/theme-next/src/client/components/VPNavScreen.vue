@@ -4,7 +4,6 @@ import VPNavScreenMenu from '@theme/VPNavScreenMenu.vue'
 import VPNavScreenSocialLinks from '@theme/VPNavScreenSocialLinks.vue'
 import VPNavScreenTranslations from '@theme/VPNavScreenTranslations.vue'
 import { useScrollLock } from '@vueuse/core'
-import { ref } from 'vue'
 import type { Slot } from '../types.js'
 import { inBrowser } from '../utils/index.js'
 
@@ -20,7 +19,6 @@ defineSlots<{
   'nav-screen-content-after'?: Slot
 }>()
 
-const screen = ref<HTMLElement | null>(null)
 const isLocked = useScrollLock(inBrowser ? document.body : null)
 </script>
 
@@ -30,7 +28,7 @@ const isLocked = useScrollLock(inBrowser ? document.body : null)
     @enter="isLocked = true"
     @after-leave="isLocked = false"
   >
-    <div v-if="open" id="VPNavScreen" ref="screen" class="vp-nav-screen">
+    <div v-if="open" id="VPNavScreen" class="vp-nav-screen">
       <div class="container">
         <slot name="nav-screen-content-before" />
         <VPNavScreenMenu class="menu" />

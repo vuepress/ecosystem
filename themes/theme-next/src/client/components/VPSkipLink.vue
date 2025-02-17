@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { useTemplateRef, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
 
 const route = useRoute()
-const backToTop = ref<HTMLElement>()
+const backToTop = useTemplateRef<HTMLSpanElement>('backToTop')
 
 watch(
   () => route.path,

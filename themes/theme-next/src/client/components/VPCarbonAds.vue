@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, useTemplateRef, watch } from 'vue'
 import { useRoutePath } from 'vuepress/client'
 import type { CarbonAdsOptions } from '../../shared/index.js'
 import { useAside } from '../composables/aside.js'
@@ -14,19 +14,20 @@ const props = defineProps<{
 const routePath = useRoutePath()
 
 const { isAsideEnabled } = useAside()
-const container = ref<HTMLElement>()
+const container = useTemplateRef<HTMLDivElement>('carbonAds')
 
 let isInitialized = false
 
 const init = (): void => {
   const carbonOptions = props.carbonAds!
+
   if (!isInitialized) {
     isInitialized = true
     const s = document.createElement('script')
     s.id = '_carbonads_js'
     s.src = `//cdn.carbonads.com/carbon.js?serve=${carbonOptions.code}&placement=${carbonOptions.placement}`
     s.async = true
-    container.value?.appendChild(s)
+    container.value!.appendChild(s)
   }
 }
 
@@ -59,7 +60,7 @@ if (props.carbonAds) {
 </script>
 
 <template>
-  <div ref="container" class="vp-carbon-ads" />
+  <div ref="carbonAds" class="vp-carbon-ads" />
 </template>
 
 <style scoped>

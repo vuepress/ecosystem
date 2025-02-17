@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { useTemplateRef } from 'vue'
 import type { Sponsor } from '../../shared/index.js'
 import type { GridSize } from '../composables/sponsor-grid.js'
 import { useSponsorsGrid } from '../composables/sponsor-grid.js'
@@ -18,14 +18,14 @@ const props = withDefaults(defineProps<Props>(), {
   size: 'medium',
 })
 
-const el = ref<HTMLElement | null>(null)
+const el = useTemplateRef('sponsorGrid')
 
 // eslint-disable-next-line vue/no-setup-props-reactivity-loss
 useSponsorsGrid({ el, size: props.size })
 </script>
 
 <template>
-  <div ref="el" class="vp-sponsor-grid" :class="[size]">
+  <div ref="sponsorGrid" class="vp-sponsor-grid" :class="[size]">
     <div
       v-for="sponsor in data"
       :key="sponsor.name"

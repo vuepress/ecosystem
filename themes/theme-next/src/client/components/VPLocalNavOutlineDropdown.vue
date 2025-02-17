@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import VPDocOutlineItem from '@theme/VPDocOutlineItem.vue'
 import { onKeyStroke } from '@vueuse/core'
-import { nextTick, ref, watch } from 'vue'
+import { nextTick, ref, useTemplateRef, watch } from 'vue'
 import { onContentUpdated } from '../composables/content-update.js'
 import { useData } from '../composables/data.js'
 import type { MenuItem } from '../composables/outline.js'
@@ -21,8 +21,8 @@ const props = defineProps<{
 const { theme } = useData()
 const open = ref(false)
 const vh = ref(0)
-const main = ref<HTMLDivElement>()
-const items = ref<HTMLDivElement>()
+const main = useTemplateRef<HTMLDivElement>('main')
+const items = useTemplateRef<HTMLDivElement>('items')
 
 const closeOnClickOutside = (e: Event): void => {
   if (!main.value?.contains(e.target as Node)) {

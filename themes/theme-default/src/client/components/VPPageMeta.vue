@@ -4,7 +4,6 @@ import VPEditIcon from '@theme/VPEditIcon.vue'
 import { useLastUpdated } from '@theme/useLastUpdated'
 import { useThemeLocaleData } from '@theme/useThemeData'
 import { useContributors, useEditLink } from '@vuepress/theme-helper/client'
-import { AutoLink } from 'vuepress/client'
 
 const themeLocale = useThemeLocaleData()
 const editLink = useEditLink()

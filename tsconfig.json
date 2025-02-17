@@ -12,7 +12,8 @@
       ],
       "@theme/*": [
         "./themes/theme-next/src/client/components/*",
-        "./themes/theme-next/src/client/composables/*"
+        "./themes/theme-next/src/client/composables/*.js",
+        "./themes/theme-next/src/client/utils/*.js"
       ]
     },
     "types": ["vuepress/client-types", "webpack-env", "vite/client"]
