@@ -6,7 +6,6 @@ const IS_PROD = process.env.NODE_ENV === 'production'
 export default defaultTheme({
   logo: '/images/logo.png',
   repo: 'vuepress/ecosystem',
-  docsDir: 'docs',
   hostname: 'https://ecosystem.vuejs.press',
 
   // theme-level locales config
@@ -52,6 +51,7 @@ export default defaultTheme({
       notationWordHighlight: true,
       whitespace: true,
       collapsedLines: false,
+      twoslash: true,
     },
   },
 })

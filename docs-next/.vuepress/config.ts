@@ -16,7 +16,6 @@ import { markdownStylizePlugin } from '@vuepress/plugin-markdown-stylize'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { revealJsPlugin } from '@vuepress/plugin-revealjs'
-import { shikiPlugin } from '@vuepress/plugin-shiki'
 import type { DefaultThemePageData } from '@vuepress/theme-default/lib/shared/page.js'
 import type { Page } from 'vuepress'
 import { defineUserConfig } from 'vuepress'
@@ -153,51 +152,36 @@ export default defineUserConfig({
         NpmBadge: path.resolve(__dirname, './components/NpmBadge.vue'),
       },
     }),
-    shikiPlugin({
-      themes: {
-        light: 'one-light',
-        dark: 'one-dark-pro',
-      },
-      lineNumbers: 10,
-      notationDiff: true,
-      notationErrorLevel: true,
-      notationFocus: true,
-      notationHighlight: true,
-      notationWordHighlight: true,
-      whitespace: true,
-      collapsedLines: false,
-      twoslash: true,
-    }),
     cachePlugin(),
   ],
 
   pagePatterns: ['**/*.md', '!**/*.snippet.md', '!.vuepress', '!node_modules'],
 
   alias: {
-    '@theme/VPAutoLink.vue': path.resolve(
-      __dirname,
-      './components/VPAutoLink.vue',
-    ),
-    '@theme/VPNavbarDropdown.vue': path.resolve(
-      __dirname,
-      './components/VPNavbarDropdown.vue',
-    ),
-    '@theme/VPSidebarItem.vue': path.resolve(
-      __dirname,
-      './components/VPSidebarItem.vue',
-    ),
-    '@theme/useNavbarRepo': path.resolve(
-      __dirname,
-      './composables/useNavbarRepo.ts',
-    ),
-    '@theme/useNavbarSelectLanguage': path.resolve(
-      __dirname,
-      './composables/useNavbarSelectLanguage.ts',
-    ),
-    '@theme/resolveAutoLink': path.resolve(
-      __dirname,
-      './utils/resolveAutoLink.ts',
-    ),
+    // '@theme/VPAutoLink.vue': path.resolve(
+    //   __dirname,
+    //   './components/VPAutoLink.vue',
+    // ),
+    // '@theme/VPNavbarDropdown.vue': path.resolve(
+    //   __dirname,
+    //   './components/VPNavbarDropdown.vue',
+    // ),
+    // '@theme/VPSidebarItem.vue': path.resolve(
+    //   __dirname,
+    //   './components/VPSidebarItem.vue',
+    // ),
+    // '@theme/useNavbarRepo': path.resolve(
+    //   __dirname,
+    //   './composables/useNavbarRepo.ts',
+    // ),
+    // '@theme/useNavbarSelectLanguage': path.resolve(
+    //   __dirname,
+    //   './composables/useNavbarSelectLanguage.ts',
+    // ),
+    // '@theme/resolveAutoLink': path.resolve(
+    //   __dirname,
+    //   './utils/resolveAutoLink.ts',
+    // ),
   },
 
   extendsPage: (page: Page<Partial<DefaultThemePageData>>) => {
