@@ -1282,6 +1282,9 @@ importers:
       '@vuepress/plugin-theme-data':
         specifier: workspace:*
         version: link:../../plugins/development/plugin-theme-data
+      '@vuepress/theme-helper':
+        specifier: workspace:*
+        version: link:../../tools/theme-helper
       '@vueuse/core':
         specifier: ^12.7.0
         version: 12.7.0(typescript@5.7.3)

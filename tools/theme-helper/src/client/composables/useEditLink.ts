@@ -1,4 +1,3 @@
-import { resolveEditLink } from '@vuepress/theme-helper/client'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import type { AutoLinkConfig } from 'vuepress/client'
@@ -8,6 +7,7 @@ import type {
   EditLinkThemeData,
 } from '../../shared/index.js'
 import { resolveEditLink } from '../utils/index.js'
+import { useData } from './useData.js'
 
 export const useEditLink = (): ComputedRef<AutoLinkConfig | null> => {
   const { page, frontmatter, theme } = useData<

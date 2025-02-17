@@ -1,10 +1,10 @@
-import type { RepoType } from '@theme/resolveRepoType'
-import { resolveRepoType } from '@theme/resolveRepoType'
 import {
   isLinkHttp,
   removeEndingSlash,
   removeLeadingSlash,
 } from 'vuepress/shared'
+import type { RepoType } from '../utils/resolveRepoType.js'
+import { resolveRepoType } from '../utils/resolveRepoType.js'
 
 export const EDIT_LINK_PATTENS: Record<Exclude<RepoType, null>, string> = {
   GitHub: ':repo/edit/:branch/:path',
@@ -26,9 +26,6 @@ const resolveEditLinkPatterns = ({
   }
 
   const repoType = resolveRepoType(docsRepo)
-  if (repoType !== null) {
-    return editLinkPatterns[repoType]
-  }
 
   return repoType ? EDIT_LINK_PATTENS[repoType] : null
 }

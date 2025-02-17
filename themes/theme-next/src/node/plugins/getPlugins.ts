@@ -94,8 +94,6 @@ export const getPlugins = (
     plugins.push(
       photoSwipePlugin({
         selector: '.vp-content > img, .vp-content :not(a) > img',
-        // should greater than page transition duration
-        delay: 300,
       }),
     )
   }
