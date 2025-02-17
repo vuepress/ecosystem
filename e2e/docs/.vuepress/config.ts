@@ -6,7 +6,6 @@ import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { copyrightPlugin } from '@vuepress/plugin-copyright'
 import { feedPlugin } from '@vuepress/plugin-feed'
 import { noticePlugin } from '@vuepress/plugin-notice'
-import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
 import { pwaPlugin } from '@vuepress/plugin-pwa'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
@@ -99,7 +98,7 @@ export default defineUserConfig({
     },
 
     themePlugins: {
-      mediumZoom: false,
+      seo: true,
       sitemap: {
         devServer: true,
         devHostname: 'https://ecosystem-e2e-test.com',
@@ -258,7 +257,6 @@ export default defineUserConfig({
         },
       ],
     }),
-    photoSwipePlugin(),
     pwaPlugin({
       manifest: {
         icons: [
