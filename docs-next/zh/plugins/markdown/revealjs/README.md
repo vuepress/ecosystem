@@ -1,3 +1,7 @@
+---
+icon: presentation
+---
+
 # revealjs
 
 <NpmBadge package="@vuepress/plugin-revealjs" />
@@ -110,6 +114,12 @@ const add = (a, b) => {
 
 各主题的外观，详见 [幻灯片主题](themes.md)
 
+::: important 资源路径
+
+由于 `@slidestart` 和 `@slideend` 之间的 Markdown 内容由 Reveal.js 在浏览器中处理，因此你只能在幻灯片中使用绝对路径的资源，这些资源必须可以直接在浏览器中访问，不支持相对路径或别名。
+
+:::
+
 ## 幻灯片布局
 
 默认情况下，插件会注册一个 `SlidePage` 布局来供你渲染“幻灯片页”。
@@ -156,12 +166,27 @@ layout: SlidePage
 
 你也可以在[客户端配置文件][client-config]中导入并调用 `defineRevealJsConfig` 来自定义 reveal.js:
 
+`defineRevealJsConfig` 函数接受一个 ref、getter 或普通对象作为 reveal.js 选项:
+
 ```ts title=".vuepress/client.ts"
 import { defineRevealJsConfig } from '@vuepress/plugin-revealjs/client'
 
-defineRevealJsConfig({
-  // 在此设置 reveal.js 选项
+// 普通对象
+const options1 = {
+  // 选项
+}
+
+// 或 getter
+const options2 = () => ({
+  // 选项
 })
+
+// 或 ref
+const options3 = ref({
+  // 选项
+})
+
+defineRevealJsConfig(options1or2or3)
 ```
 
 ::: note
@@ -212,3 +237,7 @@ Reveal.js 选项，请参见[reveal.js config](https://revealjs.com/config/)，R
 @[code css](@vuepress/plugin-revealjs/src/client/styles/vars.css)
 
 [client-config]: https://vuejs.press/zh/guide/configuration.html#%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6
+
+```
+
+```

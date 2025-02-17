@@ -1,8 +1,12 @@
-# Theme Default
+---
+icon: palette
+---
 
-## Usage
+# theme-default
 
 <NpmBadge package="@vuepress/theme-default" />
+
+## Usage
 
 Install `@vuepress/theme-default` :
 

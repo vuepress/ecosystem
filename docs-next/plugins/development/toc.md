@@ -1,3 +1,7 @@
+---
+icon: heading
+---
+
 # toc
 
 <NpmBadge package="@vuepress/plugin-toc" />

@@ -1,3 +1,7 @@
+---
+icon: paintbrush-vertical
+---
+
 # Styles
 
 The following styles are provided.

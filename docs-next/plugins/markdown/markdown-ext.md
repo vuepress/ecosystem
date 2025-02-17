@@ -1,3 +1,7 @@
+---
+icon: expand
+---
+
 # markdown-ext
 
 <NpmBadge package="@vuepress/plugin-markdown-ext" />
@@ -174,7 +178,7 @@ You can use any mustache syntax as raw text in `v-pre` container:
   - Footnote
   - Task list
 
-  Note, all behavior is not exactly the same as GitHub Flavored Markdown.
+  Note: Not all behavior is exactly the same as GitHub Flavored Markdown.
 
 ### footnote
 
@@ -185,10 +189,10 @@ You can use any mustache syntax as raw text in `v-pre` container:
 
 ### tasklist
 
-- Type: `TaskListOptions | boolean`
+- Type: `MarkdownItTaskListOptions | boolean`
 
   ```ts
-  interface TaskListOptions {
+  interface MarkdownItTaskListOptions {
     /**
      * Whether disable checkbox
      *

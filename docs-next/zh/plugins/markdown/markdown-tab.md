@@ -1,3 +1,7 @@
+---
+icon: columns-2
+---
+
 # markdown-tab
 
 <NpmBadge package="@vuepress/plugin-markdown-tab" />

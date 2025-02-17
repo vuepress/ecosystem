@@ -1,3 +1,7 @@
+---
+icon: image-play
+---
+
 # photo-swipe
 
 <NpmBadge package="@vuepress/plugin-photo-swipe" />
@@ -64,20 +68,6 @@ export default {
 - 默认值：`true`
 - 详情：是否在滚动时关闭当前图片。
 
-### delay
-
-- 类型：`number`
-- 默认值：`800`
-- 详情：
-
-  操作页面 DOM 的延时，单位 ms。
-
-  ::: tip
-
-  如果你使用的主题有切换动画，建议配置此选项为 `切换动画时长 + 200`。
-
-  :::
-
 ### locales
 
 - 类型：`PhotoSwipePluginLocaleConfig`
@@ -121,7 +111,7 @@ export default {
   }
 
   interface PhotoSwipePluginLocaleConfig {
-    [localePath: string]: PhotoSwipePluginLocaleData
+    [localePath: string]: Partial<PhotoSwipePluginLocaleData>
   }
   ```
 
@@ -168,7 +158,6 @@ export default {
 - **繁体中文** (zh-TW)
 - **英文(美国)** (en-US)
 - **德语** (de-DE)
-- **德语(澳大利亚)** (de-AT)
 - **俄语** (ru-RU)
 - **乌克兰语** (uk-UA)
 - **越南语** (vi-VN)
@@ -252,32 +241,6 @@ onUnmounted(() => {
     open photo {{ i }}
   </button>
 </template>
-```
-
-`registerPhotoSwipe` 允许你为给定的图片元素注册 photoswipe:
-
-```vue
-<script setup lang="ts">
-import { registerPhotoSwipe } from '@vuepress/plugin-photo-swipe/client'
-import { onMounted, onUnmounted } from 'vue'
-
-let destroy: () => null | void = null
-
-onMounted(async () => {
-  await nextTick()
-
-  const images = Array.from(document.querySelectorAll('img'))
-
-  // 通过图片元素创建一个新的 photoswipe 实例
-  destroy = await registerPhotoSwipe(images, {
-    // photoswipe 选项
-  })
-})
-
-onUnmounted(() => {
-  destroy?.()
-})
-</script>
 ```
 
 ## 样式

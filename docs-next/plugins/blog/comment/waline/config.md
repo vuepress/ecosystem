@@ -265,7 +265,7 @@
 
   ```ts
   interface WalineLocales {
-    [localePath: string]: WalineLocale
+    [localePath: string]: Partial<WalineLocale>
   }
   ```
 

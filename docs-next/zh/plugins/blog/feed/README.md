@@ -1,3 +1,7 @@
+---
+icon: rss
+---
+
 # feed
 
 <NpmBadge package="@vuepress/plugin-feed" />

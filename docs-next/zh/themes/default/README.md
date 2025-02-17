@@ -1,18 +1,22 @@
-# 默认主题
+---
+icon: palette
+---
 
-## 使用
+# 默认主题
 
 <NpmBadge package="@vuepress/theme-default" />
 
-安装默认主题 `@vuepress/theme-default` :
+## 使用方法
+
+安装默认主题：
 
 ```bash
-npm install @vuepress/theme-default@next
+npm i -D @vuepress/theme-default@next
 ```
 
 在配置文件中指定主题：
 
-```ts
+```ts title=".vuepress/config.ts"
 import { defaultTheme } from '@vuepress/theme-default'
 
 export default {

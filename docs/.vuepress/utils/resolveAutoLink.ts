@@ -1,4 +1,4 @@
-import type { AutoLinkOptions } from '@vuepress/theme-default/client'
+import type { AutoLinkOptions } from '@vuepress/theme-classic/client'
 import { resolveRoute } from 'vuepress/client'
 
 /**

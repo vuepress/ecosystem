@@ -1,3 +1,7 @@
+---
+icon: logos:google-marketing-platform
+---
+
 # google-tag-manager
 
 <NpmBadge package="@vuepress/plugin-google-tag-manager" />

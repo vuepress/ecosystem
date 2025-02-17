@@ -1,10 +1,16 @@
+---
+icon: package
+---
+
 # Bundler Related
 
-Bundler function is for appending or modifying bundler options in theme and plugins.
+Bundler functions for appending or modifying bundler options in theme and plugins.
 
-All functions should be called in `extendsBundlerOptions` lifecycle hook.
+These functions are only available via `@vuepress/helper`.
 
 ::: tip
+
+All functions should be called in `extendsBundlerOptions` lifecycle hook.
 
 We are omitting that in examples. The actual code should be like this:
 

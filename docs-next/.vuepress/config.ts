@@ -1,33 +1,34 @@
 import process from 'node:process'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
-import { getRealPath } from '@vuepress/helper'
+import { getModulePath } from '@vuepress/helper'
 import { cachePlugin } from '@vuepress/plugin-cache'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { commentPlugin } from '@vuepress/plugin-comment'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
+import { iconPlugin } from '@vuepress/plugin-icon'
 import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 import { markdownStylizePlugin } from '@vuepress/plugin-markdown-stylize'
-import { prismjsPlugin } from '@vuepress/plugin-prismjs'
+import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { revealJsPlugin } from '@vuepress/plugin-revealjs'
+import { shikiPlugin } from '@vuepress/plugin-shiki'
+import type { DefaultThemePageData } from '@vuepress/theme-default/lib/shared/page.js'
+import type { Page } from 'vuepress'
 import { defineUserConfig } from 'vuepress'
 import { getDirname, path } from 'vuepress/utils'
 import { head } from './configs/index.js'
 import theme from './theme.js'
 
-const __dirname = getDirname(import.meta.url)
-
-// const isProd = process.env.NODE_ENV === 'production'
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export default defineUserConfig({
   // set site base to default value
   base: (process.env.BASE as '/' | `/${string}/` | undefined) || '/',
-  lang: 'en-US',
 
   // extra tags in `<head>`
   head,
@@ -60,7 +61,7 @@ export default defineUserConfig({
           const realPath = importPath.replace(
             packageName,
             path.dirname(
-              getRealPath(`${packageName}/package.json`, import.meta.url),
+              getModulePath(`${packageName}/package.json`, import.meta),
             ),
           )
 
@@ -71,10 +72,23 @@ export default defineUserConfig({
     },
   },
 
+  // configure default theme
+  theme,
+
+  // use plugins
   plugins: [
     catalogPlugin(),
-    docsearchPlugin(),
     commentPlugin({ provider: 'Giscus' }),
+    docsearchPlugin(),
+    feedPlugin({
+      hostname: 'https://ecosystem.vuejs.press',
+      atom: true,
+      json: true,
+      rss: true,
+    }),
+    iconPlugin({
+      prefix: 'lucide:',
+    }),
     markdownExtPlugin({
       gfm: true,
       component: true,
@@ -88,15 +102,8 @@ export default defineUserConfig({
     markdownIncludePlugin({
       deep: true,
     }),
-    markdownMathPlugin(),
-    registerComponentsPlugin({
-      componentsDir: path.resolve(__dirname, './components'),
-    }),
-    feedPlugin({
-      hostname: 'https://ecosystem.vuejs.press',
-      atom: true,
-      json: true,
-      rss: true,
+    markdownMathPlugin({
+      type: 'katex',
     }),
     markdownStylizePlugin({
       align: true,
@@ -121,7 +128,9 @@ export default defineUserConfig({
         },
       ],
     }),
-
+    redirectPlugin({
+      switchLocale: 'modal',
+    }),
     revealJsPlugin({
       plugins: ['highlight', 'math', 'search', 'notes', 'zoom'],
       themes: [
@@ -139,23 +148,64 @@ export default defineUserConfig({
         'white',
       ],
     }),
-
-    process.env.HIGHLIGHTER === 'prismjs'
-      ? prismjsPlugin({
-          themes: { light: 'one-light', dark: 'one-dark' },
-          lineNumbers: 10,
-          notationDiff: true,
-          notationErrorLevel: true,
-          notationFocus: true,
-          notationHighlight: true,
-          notationWordHighlight: true,
-          whitespace: true,
-        })
-      : [],
-
+    registerComponentsPlugin({
+      components: {
+        NpmBadge: path.resolve(__dirname, './components/NpmBadge.vue'),
+      },
+    }),
+    shikiPlugin({
+      themes: {
+        light: 'one-light',
+        dark: 'one-dark-pro',
+      },
+      lineNumbers: 10,
+      notationDiff: true,
+      notationErrorLevel: true,
+      notationFocus: true,
+      notationHighlight: true,
+      notationWordHighlight: true,
+      whitespace: true,
+      collapsedLines: false,
+      twoslash: true,
+    }),
     cachePlugin(),
   ],
 
-  // configure default theme
-  theme,
+  pagePatterns: ['**/*.md', '!**/*.snippet.md', '!.vuepress', '!node_modules'],
+
+  alias: {
+    '@theme/VPAutoLink.vue': path.resolve(
+      __dirname,
+      './components/VPAutoLink.vue',
+    ),
+    '@theme/VPNavbarDropdown.vue': path.resolve(
+      __dirname,
+      './components/VPNavbarDropdown.vue',
+    ),
+    '@theme/VPSidebarItem.vue': path.resolve(
+      __dirname,
+      './components/VPSidebarItem.vue',
+    ),
+    '@theme/useNavbarRepo': path.resolve(
+      __dirname,
+      './composables/useNavbarRepo.ts',
+    ),
+    '@theme/useNavbarSelectLanguage': path.resolve(
+      __dirname,
+      './composables/useNavbarSelectLanguage.ts',
+    ),
+    '@theme/resolveAutoLink': path.resolve(
+      __dirname,
+      './utils/resolveAutoLink.ts',
+    ),
+  },
+
+  extendsPage: (page: Page<Partial<DefaultThemePageData>>) => {
+    const { icon } = page.frontmatter
+
+    // save icon into route meta
+    if (icon) {
+      page.routeMeta.icon = icon
+    }
+  },
 })

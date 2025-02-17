@@ -1,3 +1,7 @@
+---
+icon: search
+---
+
 # slimsearch
 
 <NpmBadge package="@vuepress/plugin-slimsearch" />
@@ -139,7 +143,7 @@ By default, only headings and excerpt of the page will be indexed along with you
 
 :::
 
-### autoSuggestions
+### suggestion
 
 - Type: `boolean`
 - Default: `true`
@@ -402,7 +406,6 @@ Multilingual configuration of the search plugin.
 - **Traditional Chinese** (zh-TW)
 - **English (United States)** (en-US)
 - **German** (de-DE)
-- **German (Australia)** (de-AT)
 - **Russian** (ru-RU)
 - **Ukrainian** (uk-UA)
 - **Vietnamese** (vi-VN)
@@ -551,7 +554,7 @@ In particular, [DocSearch](https://docsearch.algolia.com/) is a free search serv
 
 ### defineSearchConfig
 
-Customize [search options](https://mister-hope.github.io/slimsearch/interfaces/SearchOptions.html).
+Customize [search options](https://mister-hope.github.io/slimsearch/interfaces/SearchOptions.html), accepts plain object, ref or getter functions as parameters.
 
 Since searching is done in a Web Worker, setting function-typed options for `slimsearch` is not supported.
 
@@ -587,6 +590,10 @@ interface SearchOptions extends SearchLocaleOptions {
   /** Setting different options per locale */
   locales?: Record<string, SearchLocaleOptions>
 }
+
+export const defineSearchConfig: (
+  options: MaybeRefOrGetter<SearchOptions>,
+) => void
 ```
 
 ```ts title=".vuepress/client.ts"

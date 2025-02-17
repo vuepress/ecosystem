@@ -20,6 +20,7 @@ export const useContributors = (): ComputedRef<GitContributor[] | null> => {
 
     if (!showContributors) return null
 
-    return page.value.git.contributors ?? null
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    return page.value.git?.contributors ?? null
   })
 }

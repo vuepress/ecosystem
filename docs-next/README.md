@@ -1,20 +1,28 @@
 ---
 home: true
 title: Home
+icon: home
 hero:
   image: /images/hero.png
   name: VuePress Ecosystem
   text: VuePress official themes and plugins
 actions:
   - text: Themes
-    link: /themes/default/
-    theme: brand
+    icon: palette
+    link: ./themes/
+    type: primary
+
   - text: Plugins
+    icon: unplug
     link: ./plugins/
-    theme: brand
+    type: primary
+
   - text: GitHub →
+    icon: github
     link: https://github.com/vuepress/ecosystem
     theme: alt
+
+footer: MIT Licensed | Copyright © 2018-present VuePress Community
 ---
 
 <style>

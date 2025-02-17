@@ -1,3 +1,7 @@
+---
+icon: fullscreen
+---
+
 # medium-zoom
 
 <NpmBadge package="@vuepress/plugin-medium-zoom" />

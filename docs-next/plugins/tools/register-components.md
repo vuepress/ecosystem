@@ -1,3 +1,7 @@
+---
+icon: puzzle
+---
+
 # register-components
 
 <NpmBadge package="@vuepress/plugin-register-components" />
@@ -43,7 +47,7 @@ export default {
 ```ts
 import { getDirname, path } from 'vuepress/utils'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export default {
   plugins: [
@@ -73,7 +77,7 @@ export default {
 ```ts
 import { getDirname, path } from 'vuepress/utils'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export default {
   plugins: [

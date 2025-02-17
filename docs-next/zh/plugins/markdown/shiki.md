@@ -1,3 +1,7 @@
+---
+icon: highlighter
+---
+
 # shiki
 
 <NpmBadge package="@vuepress/plugin-shiki" />
@@ -37,13 +41,11 @@ export default {
 
 - 详情：
 
-  Shiki 要解析的代码块的语言。
+  被 Shiki 解析的额外语言。
 
-  该配置项会被传递到 Shiki 的 `createHighlighter()` 方法中。
+  ::: tip
 
-  ::: warning
-
-  我们建议明确传入所有你使用的语言列表，否则 Shiki 会加载所有语言，并可能影响性能。
+  插件现在会自动加载你的 markdown 文件中使用的语言，所以你不需要手动指定它们。
 
   :::
 
@@ -670,6 +672,69 @@ body > div {
 
 - 参考：
   - [Shiki > 空白符渲染](https://shiki.tmrs.site/packages/transformers#transformerrenderwhitespace)
+
+### twoslash
+
+- 类型： `boolean | ShikiTwoslashOptions`
+
+  ```ts
+  interface ShikiTwoslashOptions extends TransformerTwoslashOptions {
+    /**
+     * 是否需要显式地将 `twoslash` 添加到代码块中以运行 twoslash
+     * @default true
+     */
+    explicitTrigger?: RegExp | boolean
+
+    /**
+     * twoslash 配置
+     */
+    twoslashOptions?: TransformerTwoslashOptions['twoslashOptions'] &
+      VueSpecificOptions
+
+    /**
+     * 缓存解析后类型
+     * @default true
+     */
+    typesCache?: TwoslashTypesCache | boolean
+  }
+  ```
+
+- 默认值： `false`
+
+- 详情： 是否启用 [twoslash](https://github.com/twoslashes/twoslash).
+
+  ::: tip
+
+  出于体积考虑，该插件默认不包含`@vuepress/shiki-twoslash`包。如需使用，需手动安装。
+
+  :::
+
+- 参考：
+
+  - [Shiki > Twoslash](https://shiki.style/packages/twoslash)
+  - [Twoslash > TransformerTwoslashOptions](https://github.com/shikijs/shiki/blob/main/packages/twoslash/src/types.ts#L30)
+  - [Twoslash > VueSpecificOptions](https://github.com/twoslashes/twoslash/blob/main/packages/twoslash-vue/src/index.ts#L36)
+  - [TwoslashTypesCache](https://github.com/vuepress/ecosystem/blob/main/tools/shiki-twoslash/src/node/options.ts#L47)
+
+- 示例：
+
+  **输入：**
+
+  ````md
+  ```ts twoslash
+  const a = 1
+  const b = 2
+  console.log(a + b)
+  ```
+  ````
+
+  **输出：**
+
+  ```ts twoslash
+  const a = 1
+  const b = 23
+  console.log(a + b)
+  ```
 
 ## 高级选项
 

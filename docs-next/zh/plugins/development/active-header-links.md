@@ -1,3 +1,7 @@
+---
+icon: link-2
+---
+
 # active-header-links
 
 <NpmBadge package="@vuepress/plugin-active-header-links" />

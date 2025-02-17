@@ -1,3 +1,7 @@
+---
+icon: expand
+---
+
 # markdown-ext
 
 <NpmBadge package="@vuepress/plugin-markdown-ext" />
@@ -174,7 +178,7 @@ type: tip
   - 脚注
   - 任务列表
 
-  请注意，所有行为并不完全与 GitHub Flavored Markdown 相同。
+  请注意，一些行为可能和 GitHub Flavored Markdown 不同。
 
 ### footnote
 
@@ -185,10 +189,10 @@ type: tip
 
 ### tasklist
 
-- 类型：`TaskListOptions | boolean`
+- 类型：`MarkdownItTaskListOptions | boolean`
 
   ```ts
-  interface TaskListOptions {
+  interface MarkdownItTaskListOptions {
     /**
      * 是否禁用 checkbox
      *

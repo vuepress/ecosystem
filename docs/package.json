@@ -37,6 +37,7 @@
     "@vuepress/plugin-search": "workspace:*",
     "@vuepress/plugin-shiki": "workspace:*",
     "@vuepress/theme-classic": "workspace:*",
+    "@vueuse/core": "^12.7.0",
     "katex": "0.16.21",
     "mathjax-full": "3.2.2",
     "sass-embedded": "^1.85.0",

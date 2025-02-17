@@ -1,3 +1,7 @@
+---
+icon: tv
+---
+
 # Channel Config
 
 The channel plugin option is used to config the feed channel.

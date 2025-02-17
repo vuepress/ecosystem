@@ -1,4 +1,10 @@
+---
+icon: chrome
+---
+
 # Client Related
+
+These functions are only available in `@vuepress/helper/client`.
 
 ## Composables APIs
 
@@ -65,7 +71,7 @@ locale.value // '标题'
 Get headers from current page.
 
 ```ts
-export const getHeaders: (options: GetHeadersOptions) => MenuItem[]
+export const getHeaders: (options: GetHeadersOptions) => HeaderItem[]
 ```
 
 **Params:**
@@ -106,7 +112,7 @@ export interface GetHeadersOptions {
 **Result:**
 
 ```ts
-export interface Header {
+interface PageHeader {
   /**
    * The level of the header
    *
@@ -132,14 +138,14 @@ export interface Header {
   /**
    * The children of the header
    */
-  children: Header[]
+  children: MarkdownItHeader[]
 }
 
 export type HeaderLevels = number | 'deep' | false | [number, number]
 
-export type MenuItem = Omit<Header, 'children' | 'slug'> & {
-  element: HTMLHeadElement
-  children?: MenuItem[]
+export type HeaderItem = Omit<PageHeader, 'children'> & {
+  element: HTMLHeadingElement
+  children?: HeaderItem[]
 }
 ```
 

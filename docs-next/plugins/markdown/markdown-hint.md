@@ -1,3 +1,7 @@
+---
+icon: siren
+---
+
 # markdown-hint
 
 <NpmBadge package="@vuepress/plugin-markdown-hint" />
@@ -118,11 +122,11 @@ The plugin also provides an `alert` option to support gfm alerts:
 
 ### locales
 
-- Type: `MarkdownHintPluginLocaleOptions`
+- Type: `MarkdownHintPluginLocaleConfig`
 
   ```ts
-  interface MarkdownHintPluginLocaleOptions {
-    [localePath: string]: MarkdownHintPluginLocaleData
+  interface MarkdownHintPluginLocaleConfig {
+    [localePath: string]: Partial<MarkdownHintPluginLocaleData>
   }
 
   interface MarkdownHintPluginLocaleData {

@@ -1,5 +1,6 @@
 ---
 title: Slide Demo
+icon: presentation
 layout: SlidePage
 ---
 

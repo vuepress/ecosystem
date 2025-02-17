@@ -1,3 +1,7 @@
+---
+icon: image
+---
+
 # markdown-image
 
 <NpmBadge package="@vuepress/plugin-markdown-image" />
@@ -39,7 +43,7 @@ export default {
 
 当你在插件选项中设置 `mark: true` 时，你可以通过 `#light` 和 `#dark` 标记图片，使得图片只在特定的模式显示。
 
-<VPSwitchAppearance /> (尝试切换主题)
+<VPToggleColorModeButton /> (尝试切换主题)
 
 ![GitHub Light](/images/icon/github-light.svg#dark)
 ![GitHub Dark](/images/icon/github-dark.svg#light)
@@ -147,5 +151,5 @@ interface ImageMarkOptions {
 - 详情：是否启用 Obsidian 图片尺寸支持。
 
 <script setup>
-import VPSwitchAppearance from '@theme/VPSwitchAppearance.vue'
+import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'
 </script>

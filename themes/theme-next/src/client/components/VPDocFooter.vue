@@ -2,9 +2,9 @@
 import VPDocFooterContributors from '@theme/VPDocFooterContributors.vue'
 import VPDocFooterLastUpdated from '@theme/VPDocFooterLastUpdated.vue'
 import VPLink from '@theme/VPLink.vue'
+import { useEditLink } from '@vuepress/theme-helper/client'
 import { computed } from 'vue'
 import { useData } from '../composables/data.js'
-import { useEditLink } from '@vuepress/theme-helper/client'
 import { usePrevNext } from '../composables/prev-next.js'
 import type { Slot } from '../types.js'
 

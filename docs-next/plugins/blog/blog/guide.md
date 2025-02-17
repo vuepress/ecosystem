@@ -1,7 +1,8 @@
 ---
-title: Guide
 icon: lightbulb
 ---
+
+# Guide
 
 With `@vuepress/plugin-blog`, you can easily bring blog feature into your theme.
 
@@ -43,9 +44,10 @@ export default {
         return true
       },
 
-      getInfo: ({ frontmatter, git = {}, data = {} }) => {
+      getInfo: ({ frontmatter, title, git = {}, data = {} }) => {
         // getting page info
         const info: Record<string, unknown> = {
+          title,
           author: frontmatter.author || '',
           categories: frontmatter.categories || [],
           date: frontmatter.date || git.createdTime || null,
@@ -167,7 +169,7 @@ So with node side settings above, you can get information about "tag" and "star"
 
 ```vue
 <script setup lang="ts">
-import { useBlogCategory } from '@vuepress/plugin-blog'
+import { useBlogCategory } from '@vuepress/plugin-blog/client'
 import { RouteLink } from 'vuepress/client'
 
 const categoryMap = useBlogCategory('tag')
@@ -194,7 +196,7 @@ const categoryMap = useBlogCategory('tag')
 
 ```vue
 <script setup lang="ts">
-import { useBlogCategory } from '@vuepress/plugin-blog'
+import { useBlogCategory } from '@vuepress/plugin-blog/client'
 
 const categoryMap = useBlogCategory('tag')
 </script>

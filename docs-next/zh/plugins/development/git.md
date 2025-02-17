@@ -1,3 +1,7 @@
+---
+icon: la:git-alt
+---
+
 # git
 
 <NpmBadge package="@vuepress/plugin-git" />
@@ -83,6 +87,13 @@ export default {
      */
     avatar?: string
     /**
+     * 头像访问地址模式
+     * - `:username` - 贡献者的用户名
+     *
+     * @example 'https://github.com/:username'
+     */
+    avatarPattern?: string
+    /**
      * 贡献者访问地址
      * 如果 git 托管服务为 `github`，则可以忽略不填，由插件自动填充
      */
@@ -117,7 +128,7 @@ export default {
 
 ### changelog
 
-- 类型： `false | ChangelogOptions`
+- 类型： `boolean | ChangelogOptions`
 
   ```ts
   interface ChangelogOptions {
@@ -258,8 +269,11 @@ export default {
 
 ```ts
 interface GitContributor {
+  // 在页面中显示的贡献者名称
   name: string
   email: string
+  // 在 git 托管服务中的用户名
+  username: string
   commits: number
   avatar?: string
   url?: string

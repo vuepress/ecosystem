@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { Layout, useDarkMode } from '@vuepress/theme-default/client'
+import { useDarkmode } from '@vuepress/theme-classic/client'
+import ParentLayout from '@vuepress/theme-classic/layouts/Layout.vue'
 
-const isDarkMode = useDarkMode()
+const isDarkmode = useDarkmode()
 </script>
 
 <template>
-  <Layout>
-    <template #doc-after>
+  <ParentLayout>
+    <template #page-bottom>
       <!-- eslint-disable-next-line vue/no-undef-components -->
-      <CommentService class="vp-doc-comment" :darkmode="isDarkMode" />
+      <CommentService class="vp-doc-comment" :darkmode="isDarkmode" />
     </template>
-  </Layout>
+  </ParentLayout>
 </template>
 
 <style scoped>

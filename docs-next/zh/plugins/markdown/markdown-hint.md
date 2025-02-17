@@ -1,3 +1,7 @@
+---
+icon: siren
+---
+
 # markdown-hint
 
 <NpmBadge package="@vuepress/plugin-markdown-hint" />
@@ -118,11 +122,11 @@ const a = 1
 
 ### locales
 
-- 类型：`MarkdownHintPluginLocaleOptions`
+- 类型：`MarkdownHintPluginLocaleConfig`
 
   ```ts
-  interface MarkdownHintPluginLocaleOptions {
-    [localePath: string]: MarkdownHintPluginLocaleData
+  interface MarkdownHintPluginLocaleConfig {
+    [localePath: string]: Partial<MarkdownHintPluginLocaleData>
   }
 
   interface MarkdownHintPluginLocaleData {

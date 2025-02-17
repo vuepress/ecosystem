@@ -50,18 +50,21 @@ export const sidebarEn: Sidebar = {
   '/plugins/blog/': [
     {
       text: 'Blog',
+      icon: 'la:blog',
       prefix: 'blog/',
       link: 'blog/',
       items: ['guide', 'config'],
     },
     {
       text: 'Comment',
+      icon: 'message-circle-more',
       prefix: 'comment/',
       link: 'comment/',
       items: ['guide', 'giscus/', 'waline/', 'artalk/', 'twikoo/'],
     },
     {
       text: 'Feed',
+      icon: 'rss',
       prefix: 'feed/',
       link: 'feed/',
       items: ['guide', 'config', 'frontmatter', 'channel', 'getter'],
@@ -76,6 +79,7 @@ export const sidebarEn: Sidebar = {
     'rtl',
     {
       text: 'Sass Palette',
+      icon: 'palette',
       prefix: 'sass-palette/',
       link: 'sass-palette/',
       items: ['guide', 'config'],
@@ -89,6 +93,7 @@ export const sidebarEn: Sidebar = {
     'catalog',
     'copy-code',
     'copyright',
+    'icon',
     'medium-zoom',
     'notice',
     'nprogress',
@@ -110,9 +115,10 @@ export const sidebarEn: Sidebar = {
     'prismjs',
     {
       text: 'revealjs',
+      icon: 'presentation',
       prefix: 'revealjs/',
       link: 'revealjs/',
-      children: ['', 'demo', 'themes'],
+      items: ['', 'demo', 'themes'],
     },
     'shiki',
   ],
@@ -120,6 +126,7 @@ export const sidebarEn: Sidebar = {
   '/plugins/pwa/': [
     {
       text: 'PWA',
+      icon: 'layout-grid',
       prefix: 'pwa/',
       link: 'pwa/',
       items: ['guide', 'config'],
@@ -139,12 +146,14 @@ export const sidebarEn: Sidebar = {
   '/plugins/seo/': [
     {
       text: 'SEO',
+      icon: 'scan-search',
       prefix: 'seo/',
       link: 'seo/',
       items: ['guide', 'config'],
     },
     {
       text: 'Sitemap',
+      icon: 'network',
       prefix: 'sitemap/',
       link: 'sitemap/',
       items: ['guide', 'config', 'frontmatter'],
@@ -155,13 +164,13 @@ export const sidebarEn: Sidebar = {
     'guidelines',
     {
       text: 'Default Theme',
+      icon: 'palette',
       prefix: 'default/',
       link: 'default/',
       items: [
         'config',
         'plugin',
         'locale',
-        'sidebar',
         'frontmatter',
         'components',
         'markdown',
@@ -169,14 +178,40 @@ export const sidebarEn: Sidebar = {
         'extending',
       ],
     },
+    {
+      text: 'Hope Theme',
+      icon: 'https://theme-hope-assets.vuejs.press/logo.svg',
+      link: 'https://theme-hope.vuejs.press',
+    },
+    {
+      text: 'Plume Theme',
+      icon: 'https://theme-plume.vuejs.press/favicon.ico',
+      link: 'https://theme-plume.vuejs.press',
+    },
+    {
+      text: 'Reco Theme',
+      icon: 'https://theme-reco.vuejs.press/favicon.ico',
+      link: 'https://theme-reco.vuejs.press/en',
+    },
   ],
 
   '/tools/': [
     {
       text: '@vuepress/helper',
+      icon: 'hammer',
       prefix: 'helper/',
       link: 'helper/',
-      items: ['node/bundler', 'node/page', 'client', 'shared', 'style'],
+      items: [
+        {
+          text: 'Node',
+          icon: 'nonicons:node-16',
+          prefix: 'node/',
+          items: ['bundler', 'locales', 'page'],
+        },
+        'client',
+        'shared',
+        'style',
+      ],
     },
   ],
 }

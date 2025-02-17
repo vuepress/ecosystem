@@ -1,3 +1,7 @@
+---
+icon: palette
+---
+
 # sass-palette
 
 <NpmBadge package="@vuepress/plugin-sass-palette" />

@@ -1,3 +1,7 @@
+---
+icon: presentation
+---
+
 # revealjs
 
 <NpmBadge package="@vuepress/plugin-revealjs" />
@@ -110,6 +114,12 @@ You can enable the following themes in reveal.js via `themes` in plugin options:
 
 For the appearance of each theme, see [Themes demo](themes.md).
 
+::: important Assets Path
+
+Since markdown contents between `@slidestart` and `@slideend` are handled by Reveal.js at browser, so you can only use absolute paths for assets in slides, which must be accessible directly in browser, relative paths or alias are not supported.
+
+:::
+
 ## Slide Layout
 
 By default, the plugin registers a layout named `SlidePage` for you to render "a slides page".
@@ -156,12 +166,27 @@ You can enable built-in plugins in reveal.js via `plugins` in plugin options. It
 
 You can also import and call `defineRevealJsConfig` in [client config file][client-config] to customize reveal.js:
 
+The `defineRevealJsConfig` function accepts a ref, getter or plain object as reveal.js options:
+
 ```js title=".vuepress/client.js"
 import { defineRevealJsConfig } from '@vuepress/plugin-revealjs/client'
 
-defineRevealJsConfig({
-  // reveal.js options here
+// plain object
+const options1 = {
+  // options
+}
+
+// or getter
+const options2 = () => ({
+  // options
 })
+
+// or ref
+const options3 = ref({
+  // options
+})
+
+defineRevealJsConfig(options1or2or3)
 ```
 
 ::: note

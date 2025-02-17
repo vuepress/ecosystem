@@ -1,4 +1,5 @@
 ---
+icon: puzzle
 outline: 2
 ---
 

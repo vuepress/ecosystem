@@ -1,10 +1,16 @@
+---
+icon: package
+---
+
 # 打包器相关
 
 打包器函数用于在主题和插件中追加或修改打包器选项。
 
-所有函数都应在 `extendsBundlerOptions` 生命周期挂钩中调用。
+这些函数仅在 `@vuepress/helper` 中可用。
 
 ::: tip
+
+所有函数都应在 `extendsBundlerOptions` 生命周期挂钩中调用。
 
 我们在示例中省略了它。 实际代码应该是这样的：
 

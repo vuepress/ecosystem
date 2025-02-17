@@ -1,6 +1,10 @@
+---
+icon: panel-top
+---
+
 # Page Related
 
-These functions generate common information for your pages.
+Common information generator for pages.
 
 ## getPageExcerpt
 

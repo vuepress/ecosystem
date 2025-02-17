@@ -1,3 +1,7 @@
+---
+icon: forward
+---
+
 # redirect
 
 <NpmBadge package="@vuepress/plugin-rtl" />
@@ -125,19 +129,26 @@ redirect({
 
 为了解决这个问题，插件提供了 `vp-redirect` 脚手架。
 
-```shell
-使用:
-  $ vp-redirect generate [源文件夹]
+```plain
+使用: vp-redirect [选项] <源文件夹> [输出文件夹]
 
-Options:
+为当前 VuePress 项目生成重定向站点
+
+Generate redirect site for current VuePress project
+
+参数：
+  源文件夹                 VuePress 项目的源文件夹
+  输出文件夹               输出文件夹 (默认: .vuepress/redirect 相对于源文件夹)
+
+选项：
   --hostname <hostname>  重定向到的域名 (例如: https://new.example.com/) (默认: /)
-  -c, --config <config>  设置配置文件路径
-  -o, --output <output>  设置输出目录 (默认: .vuepress/redirect)
-  --cache <cache>        设置缓存文件的目录
-  -t, --temp <temp>      设置临时文件的目录
+  -c, --config [config]  设置配置文件路径
+  --cache [cache]        设置缓存文件的目录
+  --temp [temp]          设置临时文件的目录
   --clean-cache          生成前清理缓存文件
   --clean-temp           生成前清理临时文件
-  -h, --help             显示此消息
+  -V, --version          输出版本号
+  -h, --help             显示帮助信息
 ```
 
 你需要传入 VuePress 项目源目录并设置 `hostname` 选项。重定向助手脚手架将初始化你的 VuePress 项目以获取页面，然后在输出目录生成重定向 html 文件。
@@ -262,7 +273,7 @@ Options:
   }
 
   interface RedirectPluginLocaleConfig {
-    [localePath: string]: RedirectPluginLocaleData
+    [localePath: string]: Partial<RedirectPluginLocaleData>
   }
   ```
 

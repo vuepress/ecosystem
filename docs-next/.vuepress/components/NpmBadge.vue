@@ -3,14 +3,9 @@ import { computed } from 'vue'
 
 const props = withDefaults(
   defineProps<{
-    /**
-     * Package name
-     */
+    /** package name */
     package: string
-    /**
-     * Package dist tag
-     * @default 'next'
-     */
+    /** dist tag */
     distTag?: string
   }>(),
   {
@@ -29,28 +24,30 @@ const badgeLabel = computed(() => {
 })
 const badgeImg = computed(
   () =>
-    `https://img.shields.io/npm/v/${props.package}/${
+    `https://badgen.net/npm/v/${props.package}/${
       props.distTag
-    }?label=${encodeURIComponent(badgeLabel.value)}&labelColor=2a2f45&color=5672cd`,
+    }?label=${encodeURIComponent(badgeLabel.value)}`,
 )
 </script>
 
 <template>
-  <p>
-    <a
-      class="npm-badge no-icon"
-      :href="badgeLink"
-      :title="package"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <img :src="badgeImg" :alt="package" />
-    </a>
-  </p>
+  <a
+    class="npm-badge"
+    :href="badgeLink"
+    :title="package"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img :src="badgeImg" :alt="package" />
+  </a>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .npm-badge {
   margin-right: 0.5rem;
+
+  &::after {
+    display: none !important;
+  }
 }
 </style>

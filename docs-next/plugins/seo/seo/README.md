@@ -1,3 +1,7 @@
+---
+icon: scan-search
+---
+
 # seo
 
 <NpmBadge package="@vuepress/plugin-seo" />

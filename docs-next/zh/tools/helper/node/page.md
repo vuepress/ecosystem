@@ -1,6 +1,12 @@
+---
+icon: panel-top
+---
+
 # 页面相关
 
-这些函数为你的页面生成常见信息。
+页面常见信息生成器。
+
+这些函数仅在 `@vuepress/helper` 中可用。
 
 ## getPageExcerpt
 

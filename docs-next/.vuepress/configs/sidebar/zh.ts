@@ -50,18 +50,21 @@ export const sidebarZh: Sidebar = {
   '/zh/plugins/blog/': [
     {
       text: '博客',
+      icon: 'la:blog',
       prefix: 'blog/',
       link: 'blog/',
       items: ['guide', 'config'],
     },
     {
       text: '评论',
+      icon: 'message-circle-more',
       prefix: 'comment/',
       link: 'comment/',
       items: ['guide', 'giscus/', 'waline/', 'artalk/', 'twikoo/'],
     },
     {
       text: 'Feed',
+      icon: 'rss',
       prefix: 'feed/',
       link: 'feed/',
       items: ['guide', 'config', 'frontmatter', 'channel', 'getter'],
@@ -76,6 +79,7 @@ export const sidebarZh: Sidebar = {
     'rtl',
     {
       text: 'Sass Palette',
+      icon: 'palette',
       prefix: 'sass-palette/',
       link: 'sass-palette/',
       items: ['guide', 'config'],
@@ -89,6 +93,7 @@ export const sidebarZh: Sidebar = {
     'catalog',
     'copy-code',
     'copyright',
+    'icon',
     'medium-zoom',
     'notice',
     'nprogress',
@@ -110,6 +115,7 @@ export const sidebarZh: Sidebar = {
     'prismjs',
     {
       text: 'revealjs',
+      icon: 'presentation',
       prefix: 'revealjs/',
       link: 'revealjs/',
       items: ['', 'demo', 'themes'],
@@ -120,6 +126,7 @@ export const sidebarZh: Sidebar = {
   '/zh/plugins/pwa/': [
     {
       text: 'PWA',
+      icon: 'layout-grid',
       prefix: 'pwa/',
       link: 'pwa/',
       items: ['guide', 'config'],
@@ -139,12 +146,14 @@ export const sidebarZh: Sidebar = {
   '/zh/plugins/seo/': [
     {
       text: '搜索引擎增强',
+      icon: 'scan-search',
       prefix: 'seo/',
       link: 'seo/',
       items: ['guide', 'config'],
     },
     {
       text: '站点地图',
+      icon: 'network',
       prefix: 'sitemap/',
       link: 'sitemap/',
       items: ['guide', 'config', 'frontmatter'],
@@ -155,13 +164,13 @@ export const sidebarZh: Sidebar = {
     'guidelines',
     {
       text: '默认主题',
+      icon: 'palette',
       prefix: 'default/',
       link: 'default/',
       items: [
         'config',
         'plugin',
         'locale',
-        'sidebar',
         'frontmatter',
         'components',
         'markdown',
@@ -169,14 +178,40 @@ export const sidebarZh: Sidebar = {
         'extending',
       ],
     },
+    {
+      text: 'Hope 主题',
+      icon: 'https://theme-hope-assets.vuejs.press/logo.svg',
+      link: 'https://theme-hope.vuejs.press/zh/',
+    },
+    {
+      text: 'Plume 主题',
+      icon: 'https://theme-plume.vuejs.press/favicon.ico',
+      link: 'https://theme-plume.vuejs.press',
+    },
+    {
+      text: 'Reco 主题',
+      icon: 'https://theme-reco.vuejs.press/favicon.ico',
+      link: 'https://theme-reco.vuejs.press',
+    },
   ],
 
   '/zh/tools/': [
     {
       text: '@vuepress/helper',
+      icon: 'hammer',
       prefix: 'helper/',
       link: 'helper/',
-      items: ['node/bundler', 'node/page', 'client', 'shared', 'style'],
+      items: [
+        {
+          text: 'Node',
+          icon: 'nonicons:node-16',
+          prefix: 'node/',
+          items: ['bundler', 'locales', 'page'],
+        },
+        'client',
+        'shared',
+        'style',
+      ],
     },
   ],
 }
