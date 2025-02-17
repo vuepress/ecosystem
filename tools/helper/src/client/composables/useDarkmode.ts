@@ -9,20 +9,20 @@ let darkmode: Readonly<Ref<boolean>> | null = null
 const _useDarkmode = (): Readonly<Ref<boolean>> => {
   const isDarkmode = ref(false)
 
-  // Watch darkmode change
-  useMutationObserver(
-    document.documentElement,
-    () => {
-      isDarkmode.value = getDarkmode()
-    },
-    {
-      attributeFilter: ['data-theme'],
-      attributes: true,
-    },
-  )
-
   onMounted(() => {
     isDarkmode.value = getDarkmode()
+
+    // Watch darkmode change
+    useMutationObserver(
+      document.documentElement,
+      () => {
+        isDarkmode.value = getDarkmode()
+      },
+      {
+        attributeFilter: ['data-theme'],
+        attributes: true,
+      },
+    )
   })
 
   return readonly(isDarkmode)
