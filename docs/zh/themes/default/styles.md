@@ -17,7 +17,7 @@ Palette 文件的路径是 `.vuepress/styles/palette.scss` 。
 你可以利用它来覆盖默认主题的预定义 SASS 变量。
 
 ::: details 点击查看 SASS 变量
-@[code{3-} scss](@vuepress/theme-default/src/client/styles/_variables.scss)
+@[code{3-} scss](@vuepress/theme-classic/src/client/styles/_variables.scss)
 :::
 
 ## Style 文件
@@ -35,9 +35,9 @@ Style 文件的路径是 `.vuepress/styles/index.scss` 。
 你也可以利用它来覆盖默认主题的预定义 CSS 变量。
 
 ::: details 点击查看 CSS 变量
-@[code scss](@vuepress/theme-default/src/client/styles/vars.scss)
+@[code scss](@vuepress/theme-classic/src/client/styles/vars.scss)
 :::
 
 ::: details 点击查看暗黑模式 CSS 变量
-@[code scss](@vuepress/theme-default/src/client/styles/vars-dark.scss)
+@[code scss](@vuepress/theme-classic/src/client/styles/vars-dark.scss)
 :::

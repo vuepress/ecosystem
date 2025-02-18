@@ -26,7 +26,9 @@ export interface AutoLinkOptions extends NavItemOptions {
   target?: string
 
   /**
-   * Regexp mode to be active
+   * A Regexp string, matching path will be active
+   *
+   * It's expected to be a regex string as RegExp object isn't serializable
    */
   activeMatch?: string
 

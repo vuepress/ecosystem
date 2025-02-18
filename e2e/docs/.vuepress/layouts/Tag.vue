@@ -12,7 +12,7 @@ const tagMap = useBlogCategory<ArticleInfo>('tag')
 
 <template>
   <ParentLayout>
-    <template #page>
+    <template #custom-content>
       <main class="page">
         <div class="tag-wrapper">
           <RouteLink
@@ -36,7 +36,7 @@ const tagMap = useBlogCategory<ArticleInfo>('tag')
 </template>
 
 <style lang="scss">
-@use '@vuepress/theme-default/styles/mixins';
+@use '../styles/mixins.scss';
 
 .tag-wrapper {
   @include mixins.content-wrapper;

@@ -203,9 +203,117 @@ importers:
       '@vuepress/shiki-twoslash':
         specifier: workspace:*
         version: link:../tools/shiki-twoslash
-      '@vuepress/theme-default':
+      '@vuepress/theme-classic':
         specifier: workspace:*
         version: link:../themes/theme-default
+      '@vueuse/core':
+        specifier: ^12.7.0
+        version: 12.7.0(typescript@5.7.3)
+      katex:
+        specifier: 0.16.21
+        version: 0.16.21
+      mathjax-full:
+        specifier: 3.2.2
+        version: 3.2.2
+      sass-embedded:
+        specifier: ^1.85.0
+        version: 1.85.0
+      sass-loader:
+        specifier: ^16.0.5
+        version: 16.0.5(sass-embedded@1.85.0)(sass@1.85.0)(webpack@5.98.0(esbuild@0.25.0))
+      vue:
+        specifier: ^3.5.13
+        version: 3.5.13(typescript@5.7.3)
+      vuepress:
+        specifier: 2.0.0-rc.19
+        version: 2.0.0-rc.19(@vuepress/bundler-vite@2.0.0-rc.19(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(sass-embedded@1.85.0)(sass@1.85.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))(@vuepress/bundler-webpack@2.0.0-rc.19(esbuild@0.25.0)(typescript@5.7.3))(typescript@5.7.3)(vue@3.5.13(typescript@5.7.3))
+
+  docs-next:
+    dependencies:
+      '@vuepress/bundler-vite':
+        specifier: 2.0.0-rc.19
+        version: 2.0.0-rc.19(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(sass-embedded@1.85.0)(sass@1.85.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      '@vuepress/bundler-webpack':
+        specifier: 2.0.0-rc.19
+        version: 2.0.0-rc.19(esbuild@0.25.0)(typescript@5.7.3)
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../tools/helper
+      '@vuepress/plugin-back-to-top':
+        specifier: workspace:*
+        version: link:../plugins/features/plugin-back-to-top
+      '@vuepress/plugin-cache':
+        specifier: workspace:*
+        version: link:../plugins/tools/plugin-cache
+      '@vuepress/plugin-catalog':
+        specifier: workspace:*
+        version: link:../plugins/features/plugin-catalog
+      '@vuepress/plugin-comment':
+        specifier: workspace:*
+        version: link:../plugins/blog/plugin-comment
+      '@vuepress/plugin-copy-code':
+        specifier: workspace:*
+        version: link:../plugins/features/plugin-copy-code
+      '@vuepress/plugin-docsearch':
+        specifier: workspace:*
+        version: link:../plugins/search/plugin-docsearch
+      '@vuepress/plugin-feed':
+        specifier: workspace:*
+        version: link:../plugins/blog/plugin-feed
+      '@vuepress/plugin-icon':
+        specifier: workspace:*
+        version: link:../plugins/features/plugin-icon
+      '@vuepress/plugin-markdown-ext':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-ext
+      '@vuepress/plugin-markdown-image':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-image
+      '@vuepress/plugin-markdown-include':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-include
+      '@vuepress/plugin-markdown-math':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-math
+      '@vuepress/plugin-markdown-stylize':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-stylize
+      '@vuepress/plugin-markdown-tab':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-tab
+      '@vuepress/plugin-medium-zoom':
+        specifier: workspace:*
+        version: link:../plugins/features/plugin-medium-zoom
+      '@vuepress/plugin-nprogress':
+        specifier: workspace:*
+        version: link:../plugins/features/plugin-nprogress
+      '@vuepress/plugin-photo-swipe':
+        specifier: workspace:*
+        version: link:../plugins/features/plugin-photo-swipe
+      '@vuepress/plugin-pwa':
+        specifier: workspace:*
+        version: link:../plugins/pwa/plugin-pwa
+      '@vuepress/plugin-redirect':
+        specifier: workspace:*
+        version: link:../plugins/tools/plugin-redirect
+      '@vuepress/plugin-register-components':
+        specifier: workspace:*
+        version: link:../plugins/tools/plugin-register-components
+      '@vuepress/plugin-revealjs':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-revealjs
+      '@vuepress/plugin-search':
+        specifier: workspace:*
+        version: link:../plugins/search/plugin-search
+      '@vuepress/plugin-shiki':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-shiki
+      '@vuepress/shiki-twoslash':
+        specifier: workspace:*
+        version: link:../tools/shiki-twoslash
+      '@vuepress/theme-default':
+        specifier: workspace:*
+        version: link:../themes/theme-next
       '@vueuse/core':
         specifier: ^12.7.0
         version: 12.7.0(typescript@5.7.3)
@@ -274,7 +382,7 @@ importers:
         version: link:../plugins/features/plugin-watermark
       '@vuepress/theme-default':
         specifier: workspace:*
-        version: link:../themes/theme-default
+        version: link:../themes/theme-next
       sass-embedded:
         specifier: ^1.85.0
         version: 1.85.0
@@ -347,7 +455,7 @@ importers:
         version: 12.7.0(typescript@5.7.3)
       '@waline/client':
         specifier: ^3.5.0
-        version: 3.5.1(typescript@5.7.3)
+        version: 3.5.2(typescript@5.7.3)
       artalk:
         specifier: ^2.9.0
         version: 2.9.1(marked@15.0.7)
@@ -1189,6 +1297,9 @@ importers:
       '@vuepress/plugin-theme-data':
         specifier: workspace:*
         version: link:../../plugins/development/plugin-theme-data
+      '@vuepress/theme-helper':
+        specifier: workspace:*
+        version: link:../../tools/theme-helper
       '@vueuse/core':
         specifier: ^12.7.0
         version: 12.7.0(typescript@5.7.3)
@@ -1201,6 +1312,66 @@ importers:
       sass-loader:
         specifier: ^16.0.2
         version: 16.0.5(sass-embedded@1.85.0)(sass@1.85.0)(webpack@5.98.0(esbuild@0.25.0))
+      vue:
+        specifier: ^3.5.13
+        version: 3.5.13(typescript@5.7.3)
+      vuepress:
+        specifier: 2.0.0-rc.19
+        version: 2.0.0-rc.19(@vuepress/bundler-vite@2.0.0-rc.19(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(sass-embedded@1.85.0)(sass@1.85.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))(@vuepress/bundler-webpack@2.0.0-rc.19(esbuild@0.25.0)(typescript@5.7.3))(typescript@5.7.3)(vue@3.5.13(typescript@5.7.3))
+
+  themes/theme-next:
+    dependencies:
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../tools/helper
+      '@vuepress/plugin-active-header-links':
+        specifier: workspace:*
+        version: link:../../plugins/development/plugin-active-header-links
+      '@vuepress/plugin-copy-code':
+        specifier: workspace:*
+        version: link:../../plugins/features/plugin-copy-code
+      '@vuepress/plugin-git':
+        specifier: workspace:*
+        version: link:../../plugins/development/plugin-git
+      '@vuepress/plugin-links-check':
+        specifier: workspace:*
+        version: link:../../plugins/markdown/plugin-links-check
+      '@vuepress/plugin-markdown-container':
+        specifier: workspace:*
+        version: link:../../plugins/markdown/plugin-markdown-container
+      '@vuepress/plugin-markdown-hint':
+        specifier: workspace:*
+        version: link:../../plugins/markdown/plugin-markdown-hint
+      '@vuepress/plugin-markdown-tab':
+        specifier: workspace:*
+        version: link:../../plugins/markdown/plugin-markdown-tab
+      '@vuepress/plugin-nprogress':
+        specifier: workspace:*
+        version: link:../../plugins/features/plugin-nprogress
+      '@vuepress/plugin-photo-swipe':
+        specifier: workspace:*
+        version: link:../../plugins/features/plugin-photo-swipe
+      '@vuepress/plugin-seo':
+        specifier: workspace:*
+        version: link:../../plugins/seo/plugin-seo
+      '@vuepress/plugin-shiki':
+        specifier: workspace:*
+        version: link:../../plugins/markdown/plugin-shiki
+      '@vuepress/plugin-sitemap':
+        specifier: workspace:*
+        version: link:../../plugins/seo/plugin-sitemap
+      '@vuepress/plugin-theme-data':
+        specifier: workspace:*
+        version: link:../../plugins/development/plugin-theme-data
+      '@vuepress/theme-helper':
+        specifier: workspace:*
+        version: link:../../tools/theme-helper
+      '@vueuse/core':
+        specifier: ^12.7.0
+        version: 12.7.0(typescript@5.7.3)
+      chokidar:
+        specifier: ^3.6.0
+        version: 3.6.0
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.3)
@@ -1225,7 +1396,7 @@ importers:
         version: link:../../plugins/blog/plugin-blog
       '@vuepress/theme-default':
         specifier: workspace:*
-        version: link:../../themes/theme-default
+        version: link:../../themes/theme-next
 
   tools/helper:
     dependencies:
@@ -1318,6 +1489,24 @@ importers:
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.3)
+
+  tools/theme-helper:
+    dependencies:
+      '@vuepress/plugin-git':
+        specifier: workspace:*
+        version: link:../../plugins/development/plugin-git
+      '@vuepress/plugin-theme-data':
+        specifier: workspace:*
+        version: link:../../plugins/development/plugin-theme-data
+      '@vueuse/core':
+        specifier: ^12.7.0
+        version: 12.7.0(typescript@5.7.3)
+      vue:
+        specifier: ^3.5.13
+        version: 3.5.13(typescript@5.7.3)
+      vuepress:
+        specifier: 2.0.0-rc.19
+        version: 2.0.0-rc.19(@vuepress/bundler-vite@2.0.0-rc.19(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(sass-embedded@1.85.0)(sass@1.85.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))(@vuepress/bundler-webpack@2.0.0-rc.19(esbuild@0.25.0)(typescript@5.7.3))(typescript@5.7.3)(vue@3.5.13(typescript@5.7.3))
 
   tools/vp-update:
     dependencies:
@@ -3587,12 +3776,12 @@ packages:
   '@vueuse/shared@12.7.0':
     resolution: {integrity: sha512-coLlUw2HHKsm7rPN6WqHJQr18WymN4wkA/3ThFaJ4v4gWGWAQQGK+MJxLuJTBs4mojQiazlVWAKNJNpUWGRkNw==}
 
-  '@waline/api@1.0.0-alpha.8':
-    resolution: {integrity: sha512-S6pgUUfv+gcXU3hiW3PNUwiUvPy7bXmmLB/bwdU3hN5YVT5Q7CxyVSLA3oJkrNO5lcisKK1GBPv0H2W1uB0eGA==}
+  '@waline/api@1.0.0':
+    resolution: {integrity: sha512-o0lWjt+/oZH1/4q3DJxTf5kdkgNbSmoLRXIiGznW225A6hq9/9IkOO1DiAijIsxGYJS6psFC+58+IzkD1EerBA==}
     engines: {node: '>=18'}
 
-  '@waline/client@3.5.1':
-    resolution: {integrity: sha512-vwXPC5F1RA+Tcx+oNXW9HQ5cgPpzC19OriiO6yVDHXNb29Rs4/vSws/TD6AJQa1RgYKikFP05OLEtsHmNnTUJA==}
+  '@waline/client@3.5.2':
+    resolution: {integrity: sha512-7WWv+1Jbh9NTb5u5cSGDeXN+Ik0kHJH4LIFvgvnVyO/ZI5jHCUW83/aJ+5+RyZOUtBFnbpQpYt06OHGjdTF+9A==}
     engines: {node: '>=18'}
 
   '@webassemblyjs/ast@1.14.1':
@@ -3945,8 +4134,8 @@ packages:
   caniuse-api@3.0.0:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
 
-  caniuse-lite@1.0.30001699:
-    resolution: {integrity: sha512-b+uH5BakXZ9Do9iK+CkDmctUSEqZl+SP056vc5usa0PL+ev5OHw003rZXcnjNDv3L8P5j6rwT6C0BPKSikW08w==}
+  caniuse-lite@1.0.30001700:
+    resolution: {integrity: sha512-2S6XIXwaE7K7erT8dY+kLQcpa5ms63XlRkMkReXjle+kf6c5g38vyMl+Z5y8dSxOFDhcFe+nxnn261PLxBSQsQ==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -4216,8 +4405,8 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  conventional-changelog-writer@8.0.0:
-    resolution: {integrity: sha512-TQcoYGRatlAnT2qEWDON/XSfnVG38JzA7E0wcGScu7RElQBkg9WWgZd1peCWFcWDh1xfb2CfsrcvOn1bbSzztA==}
+  conventional-changelog-writer@8.0.1:
+    resolution: {integrity: sha512-hlqcy3xHred2gyYg/zXSMXraY2mjAYYo0msUCpK+BGyaVJMFCKWVXPIHiaacGO2GGp13kvHWXFhYmxT4QQqW3Q==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -4238,8 +4427,8 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  conventional-commits-parser@6.0.0:
-    resolution: {integrity: sha512-TbsINLp48XeMXR8EvGjTnKGsZqBemisPoyWESlpRyR8lif0lcwzqz+NMtYSj1ooF/WYjSuu7wX0CtdeeMEQAmA==}
+  conventional-commits-parser@6.1.0:
+    resolution: {integrity: sha512-5nxDo7TwKB5InYBl4ZC//1g9GRwB/F3TXOGR9hgUjMGfvSP4Vu5NkpNro2+1+TIEy1vwxApl5ircECr2ri5JIw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -7081,8 +7270,8 @@ packages:
     resolution: {integrity: sha512-MjOadfU3Ys9KYoX0AdkBlFEF1Vx37uCCeN4ZHnmwm9FfpbsGWMZeBLMmmpY+6Ocqod7mkdZ0DT31OlbsFrLlkA==}
     engines: {node: ^10 || ^12 || >=14}
 
-  preact@10.25.4:
-    resolution: {integrity: sha512-jLdZDb+Q+odkHJ+MpW/9U5cODzqnB+fy2EiHSZES7ldV5LK7yjlVzTp7R8Xy6W6y75kfK8iWYtFVH7lvjwrCMA==}
+  preact@10.26.0:
+    resolution: {integrity: sha512-6ugi/Mb7lyV5RA6KlnijFyDLMU253i7L0RRiObIzDoqj59KT9iTeNJbA/YGw6M7jP4vxaab0DOA8DgodTOA6EQ==}
 
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
@@ -9633,13 +9822,13 @@ snapshots:
       '@types/conventional-commits-parser': 5.0.1
       chalk: 5.4.1
 
-  '@conventional-changelog/git-client@1.0.1(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.0.0)':
+  '@conventional-changelog/git-client@1.0.1(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.1.0)':
     dependencies:
       '@types/semver': 7.5.8
       semver: 7.7.1
     optionalDependencies:
       conventional-commits-filter: 5.0.0
-      conventional-commits-parser: 6.0.0
+      conventional-commits-parser: 6.1.0
 
   '@csstools/css-parser-algorithms@3.0.4(@csstools/css-tokenizer@3.0.3)':
     dependencies:
@@ -9661,7 +9850,7 @@ snapshots:
   '@docsearch/js@3.8.3(@algolia/client-search@5.20.2)(search-insights@2.17.3)':
     dependencies:
       '@docsearch/react': 3.8.3(@algolia/client-search@5.20.2)(search-insights@2.17.3)
-      preact: 10.25.4
+      preact: 10.26.0
     transitivePeerDependencies:
       - '@algolia/client-search'
       - '@types/react'
@@ -11544,12 +11733,12 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@waline/api@1.0.0-alpha.8': {}
+  '@waline/api@1.0.0': {}
 
-  '@waline/client@3.5.1(typescript@5.7.3)':
+  '@waline/client@3.5.2(typescript@5.7.3)':
     dependencies:
       '@vueuse/core': 12.7.0(typescript@5.7.3)
-      '@waline/api': 1.0.0-alpha.8
+      '@waline/api': 1.0.0
       autosize: 6.0.1
       marked: 15.0.7
       marked-highlight: 2.2.1(marked@15.0.7)
@@ -11783,7 +11972,7 @@ snapshots:
   autoprefixer@10.4.20(postcss@8.5.2):
     dependencies:
       browserslist: 4.24.4
-      caniuse-lite: 1.0.30001699
+      caniuse-lite: 1.0.30001700
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.1.1
@@ -11886,7 +12075,7 @@ snapshots:
 
   browserslist@4.24.4:
     dependencies:
-      caniuse-lite: 1.0.30001699
+      caniuse-lite: 1.0.30001700
       electron-to-chromium: 1.5.101
       node-releases: 2.0.19
       update-browserslist-db: 1.1.2(browserslist@4.24.4)
@@ -11957,11 +12146,11 @@ snapshots:
   caniuse-api@3.0.0:
     dependencies:
       browserslist: 4.24.4
-      caniuse-lite: 1.0.30001699
+      caniuse-lite: 1.0.30001700
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
 
-  caniuse-lite@1.0.30001699: {}
+  caniuse-lite@1.0.30001700: {}
 
   ccount@2.0.1: {}
 
@@ -12196,10 +12385,10 @@ snapshots:
     dependencies:
       '@hutson/parse-repository-url': 5.0.0
       add-stream: 1.0.0
-      conventional-changelog-writer: 8.0.0
-      conventional-commits-parser: 6.0.0
-      git-raw-commits: 5.0.0(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.0.0)
-      git-semver-tags: 8.0.0(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.0.0)
+      conventional-changelog-writer: 8.0.1
+      conventional-commits-parser: 6.1.0
+      git-raw-commits: 5.0.0(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.1.0)
+      git-semver-tags: 8.0.0(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.1.0)
       hosted-git-info: 7.0.2
       normalize-package-data: 6.0.2
       read-package-up: 11.0.0
@@ -12232,9 +12421,8 @@ snapshots:
       semver: 7.7.1
       split2: 4.2.0
 
-  conventional-changelog-writer@8.0.0:
+  conventional-changelog-writer@8.0.1:
     dependencies:
-      '@types/semver': 7.5.8
       conventional-commits-filter: 5.0.0
       handlebars: 4.7.8
       meow: 13.2.0
@@ -12267,7 +12455,7 @@ snapshots:
       meow: 12.1.1
       split2: 4.2.0
 
-  conventional-commits-parser@6.0.0:
+  conventional-commits-parser@6.1.0:
     dependencies:
       meow: 13.2.0
 
@@ -13308,9 +13496,9 @@ snapshots:
       meow: 12.1.1
       split2: 4.2.0
 
-  git-raw-commits@5.0.0(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.0.0):
+  git-raw-commits@5.0.0(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.1.0):
     dependencies:
-      '@conventional-changelog/git-client': 1.0.1(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.0.0)
+      '@conventional-changelog/git-client': 1.0.1(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.1.0)
       meow: 13.2.0
     transitivePeerDependencies:
       - conventional-commits-filter
@@ -13321,9 +13509,9 @@ snapshots:
       meow: 12.1.1
       semver: 7.7.1
 
-  git-semver-tags@8.0.0(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.0.0):
+  git-semver-tags@8.0.0(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.1.0):
     dependencies:
-      '@conventional-changelog/git-client': 1.0.1(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.0.0)
+      '@conventional-changelog/git-client': 1.0.1(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.1.0)
       meow: 13.2.0
     transitivePeerDependencies:
       - conventional-commits-filter
@@ -15382,7 +15570,7 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  preact@10.25.4: {}
+  preact@10.26.0: {}
 
   prelude-ls@1.2.1: {}
 
