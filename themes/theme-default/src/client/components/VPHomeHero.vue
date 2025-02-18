@@ -1,54 +1,50 @@
 <script setup lang="ts">
 import VPAutoLink from '@theme/VPAutoLink.vue'
 import { useDarkMode } from '@theme/useDarkMode'
+import { useData } from '@theme/useData'
 import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
-import {
-  ClientOnly,
-  usePageFrontmatter,
-  useSiteLocaleData,
-  withBase,
-} from 'vuepress/client'
+import { ClientOnly, withBase } from 'vuepress/client'
 import type { DefaultThemeHomePageFrontmatter } from '../../shared/index.js'
 
-const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
-const siteLocale = useSiteLocaleData()
+const { pageFrontmatter, siteLocaleData } =
+  useData<DefaultThemeHomePageFrontmatter>()
 const isDarkMode = useDarkMode()
 
 const heroText = computed(() => {
-  if (frontmatter.value.heroText === null) {
+  if (pageFrontmatter.value.heroText === null) {
     return null
   }
-  return frontmatter.value.heroText || siteLocale.value.title || 'Hello'
+  return pageFrontmatter.value.heroText || siteLocaleData.value.title || 'Hello'
 })
 const tagline = computed(() => {
-  if (frontmatter.value.tagline === null) {
+  if (pageFrontmatter.value.tagline === null) {
     return null
   }
 
   return (
-    frontmatter.value.tagline ||
-    siteLocale.value.description ||
+    pageFrontmatter.value.tagline ||
+    siteLocaleData.value.description ||
     'Welcome to your VuePress site'
   )
 })
 const heroImage = computed(() => {
-  if (isDarkMode.value && frontmatter.value.heroImageDark !== undefined) {
-    return frontmatter.value.heroImageDark
+  if (isDarkMode.value && pageFrontmatter.value.heroImageDark !== undefined) {
+    return pageFrontmatter.value.heroImageDark
   }
-  return frontmatter.value.heroImage
+  return pageFrontmatter.value.heroImage
 })
 const heroAlt = computed(
-  () => frontmatter.value.heroAlt || heroText.value || 'hero',
+  () => pageFrontmatter.value.heroAlt || heroText.value || 'hero',
 )
-const heroHeight = computed(() => frontmatter.value.heroHeight ?? 280)
+const heroHeight = computed(() => pageFrontmatter.value.heroHeight ?? 280)
 
 const actions = computed(() => {
-  if (!Array.isArray(frontmatter.value.actions)) {
+  if (!Array.isArray(pageFrontmatter.value.actions)) {
     return []
   }
 
-  return frontmatter.value.actions.map(({ type = 'primary', ...rest }) => ({
+  return pageFrontmatter.value.actions.map(({ type = 'primary', ...rest }) => ({
     type,
     ...rest,
   }))
@@ -64,7 +60,7 @@ const HomeHeroImage: FunctionalComponent = () => {
     height: heroHeight.value,
   })
 
-  if (frontmatter.value.heroImageDark === undefined) {
+  if (pageFrontmatter.value.heroImageDark === undefined) {
     return img
   }
 

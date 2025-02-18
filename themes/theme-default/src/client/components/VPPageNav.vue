@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import VPAutoLink from '@theme/VPAutoLink.vue'
+import { useData } from '@theme/useData'
 import { useNavigate } from '@theme/useNavigate'
 import { useRelatedLinks } from '@theme/useRelatedLinks'
-import { useThemeLocaleData } from '@theme/useThemeData'
 import { useEventListener } from '@vueuse/core'
 import { computed } from 'vue'
 
-const themeLocale = useThemeLocaleData()
+const { themeLocaleData } = useData()
 const navigate = useNavigate()
 
 const { prevLink, nextLink } = useRelatedLinks()
 
 const navbarLabel = computed(
-  () => themeLocale.value.pageNavbarLabel ?? 'page navigation',
+  () => themeLocaleData.value.pageNavbarLabel ?? 'page navigation',
 )
 
 useEventListener('keydown', (event): void => {
@@ -42,7 +42,7 @@ useEventListener('keydown', (event): void => {
     <VPAutoLink v-if="prevLink" class="prev" :config="prevLink">
       <div class="hint">
         <span class="arrow left" />
-        {{ themeLocale.prev ?? 'Prev' }}
+        {{ themeLocaleData.prev ?? 'Prev' }}
       </div>
       <div class="link">
         <span>{{ prevLink.text }}</span>
@@ -51,7 +51,7 @@ useEventListener('keydown', (event): void => {
 
     <VPAutoLink v-if="nextLink" class="next" :config="nextLink">
       <div class="hint">
-        {{ themeLocale.next ?? 'Next' }}
+        {{ themeLocaleData.next ?? 'Next' }}
         <span class="arrow right" />
       </div>
       <div class="link">

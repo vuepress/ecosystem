@@ -2,9 +2,9 @@
 import VPDarkIcon from '@theme/VPDarkIcon.vue'
 import VPLightIcon from '@theme/VPLightIcon.vue'
 import { useDarkMode } from '@theme/useDarkMode'
-import { useThemeLocaleData } from '@theme/useThemeData'
+import { useData } from '@theme/useData'
 
-const themeLocale = useThemeLocaleData()
+const { themeLocaleData } = useData()
 const isDarkMode = useDarkMode()
 
 const toggleColorMode = (): void => {
@@ -16,7 +16,7 @@ const toggleColorMode = (): void => {
   <button
     type="button"
     class="vp-toggle-color-mode-button"
-    :title="themeLocale.toggleColorMode"
+    :title="themeLocaleData.toggleColorMode"
     @click="toggleColorMode"
   >
     <VPLightIcon v-show="!isDarkMode" />
