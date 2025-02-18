@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.78](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.77...v2.0.0-rc.78) (2025-02-17)
+
+### Bug Fixes
+
+- **helper:** fix useDarkmode in SSG ([7122dd3](https://github.com/vuepress/ecosystem/commit/7122dd3dbc8436c78f7b44f4879b35c9da87f407))
+
 # [2.0.0-rc.77](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.76...v2.0.0-rc.77) (2025-02-16)
 
 ### Features

@@ -31,11 +31,11 @@ export const createPackageJson = async ({
 }: CreatePackageJsonOptions): Promise<void> => {
   const packageJsonPath = join(targetDir, 'package.json')
   const devDependencies = {
-    [`@vuepress/bundler-${bundler}`]: '2.0.0-rc.18',
+    [`@vuepress/bundler-${bundler}`]: '2.0.0-rc.19',
     '@vuepress/theme-default': peerDependencies['@vuepress/theme-default'],
-    'sass-embedded': '^1.79.5',
+    'sass-embedded': '^1.85.0',
     'vue': '^3.5.12',
-    'vuepress': '2.0.0-rc.18',
+    'vuepress': '2.0.0-rc.19',
   }
 
   if (preset === 'blog') {
