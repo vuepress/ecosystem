@@ -95,7 +95,7 @@ export const SearchBox = defineComponent({
           h('input', {
             ref: input,
             type: 'search',
-            placeholder: locale.value.placeholder ?? 'search',
+            placeholder: locale.value.placeholder,
             autocomplete: 'off',
             spellcheck: false,
             value: query.value,
