@@ -92,10 +92,9 @@ export const shikiPlugin = (_options: ShikiPluginOptions = {}): Plugin => {
           md.use<MarkdownItLineNumbersOptions>(lineNumbersPlugin, {
             lineNumbers,
             resolveLineNumbers(info) {
-              if (options.twoslash) {
-                return TWOSLASH_RE.test(info) ? false : undefined
-              }
-              return undefined
+              return options.twoslash && TWOSLASH_RE.test(info)
+                ? false
+                : undefined
             },
           })
           md.use<MarkdownItCollapsedLinesOptions>(collapsedLinesPlugin, {
