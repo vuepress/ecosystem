@@ -20,7 +20,7 @@ import {
 } from './markdown/index.js'
 import type { ShikiPluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
-import { logger } from './utils.js'
+import { TWOSLASH_RE, logger } from './utils.js'
 
 export const shikiPlugin = (_options: ShikiPluginOptions = {}): Plugin => {
   return (app) => {
@@ -91,6 +91,12 @@ export const shikiPlugin = (_options: ShikiPluginOptions = {}): Plugin => {
         if (preWrapper) {
           md.use<MarkdownItLineNumbersOptions>(lineNumbersPlugin, {
             lineNumbers,
+            resolveLineNumbers(info) {
+              if (options.twoslash) {
+                return TWOSLASH_RE.test(info) ? false : undefined
+              }
+              return undefined
+            },
           })
           md.use<MarkdownItCollapsedLinesOptions>(collapsedLinesPlugin, {
             collapsedLines,
