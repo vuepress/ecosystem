@@ -56,7 +56,7 @@ export const useDocSearchOptions = (): ComputedRef<DocSearchProps> => {
   const routeLocale = useRouteLocale()
 
   return computed(() => ({
-    ...(options.value as DocSearchProps),
+    ...options.value,
     ...options.value.locales?.[routeLocale.value],
   }))
 }
