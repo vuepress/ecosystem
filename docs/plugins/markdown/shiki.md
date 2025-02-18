@@ -734,6 +734,16 @@ body > div {
   console.log(a + b)
   ```
 
+  ::: warning
+
+  For code blocks that have `twoslash` enabled:
+
+  - Do not add the `:v-pre` marker in the code block, as this will cause `twoslash` to fail to run properly.
+
+  - To avoid layout conflicts, code blocks will no longer display line numbers.
+
+  :::
+
 ## Advanced Options
 
 ### defaultLang
