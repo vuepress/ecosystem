@@ -45,7 +45,7 @@ useEventListener('keydown', (event): void => {
         {{ themeLocale.prev ?? 'Prev' }}
       </div>
       <div class="link">
-        <span>{{ prevLink.text }}</span>
+        <span class="external-link">{{ prevLink.text }}</span>
       </div>
     </VPAutoLink>
 
@@ -55,7 +55,7 @@ useEventListener('keydown', (event): void => {
         <span class="arrow right" />
       </div>
       <div class="link">
-        <span>{{ nextLink.text }}</span>
+        <span class="external-link">{{ nextLink.text }}</span>
       </div>
     </VPAutoLink>
   </nav>
@@ -98,6 +98,14 @@ useEventListener('keydown', (event): void => {
 
     &:hover {
       background: var(--vp-c-control);
+    }
+
+    &.external-link::after {
+      display: none;
+    }
+
+    &:not(.external-link) .external-link::after {
+      display: none;
     }
 
     .hint {
