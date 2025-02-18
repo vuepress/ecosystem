@@ -1,9 +1,10 @@
+import type { KeyOptions } from '@vuepress/helper'
 import { getFullLocaleConfig } from '@vuepress/helper'
 import { watch } from 'chokidar'
 import type { Page, Plugin } from 'vuepress/core'
 import type { LocaleConfig } from 'vuepress/shared'
 import { getDirname, path } from 'vuepress/utils'
-import type { HotKeyOptions, SearchPluginLocaleData } from '../shared/index.js'
+import type { SearchPluginLocaleData } from '../shared/index.js'
 import { searchLocaleInfo } from './locales.js'
 import { prepareSearchIndex } from './prepareSearchIndex.js'
 
@@ -27,7 +28,7 @@ export interface SearchPluginOptions {
    *
    * @default ['s', '/']
    */
-  hotKeys?: (HotKeyOptions | string)[]
+  hotKeys?: (KeyOptions | string)[]
 
   /**
    * Specify the maximum number of search results

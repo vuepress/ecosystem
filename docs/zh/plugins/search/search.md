@@ -66,9 +66,9 @@ export default {
 
 ### hotKeys
 
-- 类型： `(string | HotKeyOptions)[]`
+- 类型： `(string | KeyOptions)[]`
 
-@[code ts](@vuepress/plugin-search/src/shared/hotKey.ts)
+  @[code ts](@vuepress/helper/src/shared/key.ts)
 
 - 默认值： `['s', '/']`
 

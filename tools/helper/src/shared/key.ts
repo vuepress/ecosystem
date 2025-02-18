@@ -1,4 +1,4 @@
-export interface SlimSearchKeyOptions {
+export interface KeyOptions {
   /**
    * Value of `event.key` to trigger the hot key
    *

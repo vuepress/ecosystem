@@ -1,8 +1,8 @@
+import type { KeyOptions } from '@vuepress/helper'
 import type { LocaleConfig, Page } from 'vuepress/core'
 
 import type {
   SlimSearchCustomFieldFormatter,
-  SlimSearchKeyOptions,
   SlimSearchLocaleData,
 } from '../shared/index.js'
 
@@ -138,7 +138,7 @@ export interface SlimSearchPluginOptions {
    *   { key: "/", ctrl: true },
    *  ]
    */
-  hotKeys?: SlimSearchKeyOptions[]
+  hotKeys?: (KeyOptions | string)[]
 
   /**
    * Output worker filename

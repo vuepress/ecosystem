@@ -1,16 +1,15 @@
 import { isString } from 'vuepress/shared'
-import type { HotKeyOptions } from '../../shared/index.js'
+import type { KeyOptions } from '../../shared/index.js'
 
 export const isKeyMatched = (
   event: KeyboardEvent,
-  hotKeys: (HotKeyOptions | string)[],
+  hotKeys: (KeyOptions | string)[],
 ): boolean =>
   hotKeys.some((item) => {
-    if (isString(item)) {
-      return item === event.key
-    }
+    if (isString(item)) return item === event.key
 
     const { key, ctrl = false, shift = false, alt = false } = item
+
     return (
       key === event.key &&
       ctrl === event.ctrlKey &&
