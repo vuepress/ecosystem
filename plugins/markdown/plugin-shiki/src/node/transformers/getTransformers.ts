@@ -26,11 +26,7 @@ export const getTransformers = (
   const transformers: ShikiTransformer[] = []
 
   if (options.notationDiff) {
-    transformers.push(
-      transformerNotationDiff({
-        matchAlgorithm: 'v3',
-      }),
-    )
+    transformers.push(transformerNotationDiff())
   }
 
   if (options.notationFocus) {
@@ -38,33 +34,20 @@ export const getTransformers = (
       transformerNotationFocus({
         classActiveLine: 'has-focus',
         classActivePre: 'has-focused-lines',
-        matchAlgorithm: 'v3',
       }),
     )
   }
 
   if (options.notationHighlight) {
-    transformers.push(
-      transformerNotationHighlight({
-        matchAlgorithm: 'v3',
-      }),
-    )
+    transformers.push(transformerNotationHighlight())
   }
 
   if (options.notationErrorLevel) {
-    transformers.push(
-      transformerNotationErrorLevel({
-        matchAlgorithm: 'v3',
-      }),
-    )
+    transformers.push(transformerNotationErrorLevel())
   }
 
   if (options.notationWordHighlight) {
-    transformers.push(
-      transformerNotationWordHighlight({
-        matchAlgorithm: 'v3',
-      }),
-    )
+    transformers.push(transformerNotationWordHighlight())
     transformers.push(transformerMetaWordHighlight())
   }
 
