@@ -8,7 +8,6 @@ const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
 const features = computed(() => frontmatter.value.features ?? [])
 </script>
 
-<!-- eslint-disable-next-line vue/no-root-v-if -->
 <template>
   <div v-if="features.length" class="vp-features">
     <div v-for="feature in features" :key="feature.title" class="vp-feature">

@@ -32,7 +32,6 @@ useEventListener('keydown', (event): void => {
 })
 </script>
 
-<!-- eslint-disable-next-line vue/no-root-v-if -->
 <template>
   <nav
     v-if="prevLink || nextLink"

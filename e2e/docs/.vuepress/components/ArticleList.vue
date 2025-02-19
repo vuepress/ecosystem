@@ -54,7 +54,6 @@ defineProps<{
         <span v-if="info.tag" class="tag">Tag: {{ info.tag.join(', ') }}</span>
       </div>
 
-      <!-- eslint-disable-next-line vue/no-v-html -->
       <div v-if="info.excerpt" class="excerpt" v-html="info.excerpt" />
     </article>
   </div>

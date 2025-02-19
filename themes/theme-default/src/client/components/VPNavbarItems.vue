@@ -34,7 +34,6 @@ useUpdateDeviceStatus(
 )
 </script>
 
-<!-- eslint-disable-next-line vue/no-root-v-if -->
 <template>
   <nav
     v-if="navbarLinks.length"
