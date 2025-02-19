@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import { useData } from '@theme/useData'
 import { computed } from 'vue'
-import { usePageFrontmatter } from 'vuepress/client'
 import type { DefaultThemeHomePageFrontmatter } from '../../shared/index.js'
 
-const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
+const { pageFrontmatter } = useData<DefaultThemeHomePageFrontmatter>()
 
-const features = computed(() => frontmatter.value.features ?? [])
+const features = computed(() => pageFrontmatter.value.features ?? [])
 </script>
 
 <template>

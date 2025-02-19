@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { useThemeLocaleData } from '@theme/useThemeData'
+import { useData } from '@theme/useData'
 
 defineEmits<{ toggle: [] }>()
 
-const themeLocale = useThemeLocaleData()
+const { themeLocaleData } = useData()
 </script>
 
 <template>
   <div
     class="vp-toggle-sidebar-button"
-    :title="themeLocale.toggleSidebar"
+    :title="themeLocaleData.toggleSidebar"
     aria-expanded="false"
     role="button"
     tabindex="0"

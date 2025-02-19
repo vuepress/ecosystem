@@ -1,14 +1,11 @@
 import { resolveAutoLink } from '@theme/resolveAutoLink'
+import { useData } from '@theme/useData'
 import { useSidebarItems } from '@theme/useSidebarItems'
-import { useThemeLocaleData } from '@theme/useThemeData'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
-import { resolveRoute, usePageFrontmatter, useRoute } from 'vuepress/client'
+import { resolveRoute, useRoute } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
-import type {
-  AutoLinkOptions,
-  DefaultThemeNormalPageFrontmatter,
-} from '../../shared/index.js'
+import type { AutoLinkOptions } from '../../shared/index.js'
 import type { SidebarItem } from '../typings.js'
 
 const resolveFromFrontmatterConfig = (
@@ -105,35 +102,34 @@ interface RelatedLinks {
 }
 
 export const useRelatedLinks = (): RelatedLinks => {
-  const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
-  const themeLocale = useThemeLocaleData()
+  const { pageFrontmatter, themeLocaleData } = useData()
   const sidebarItems = useSidebarItems()
   const route = useRoute()
 
   const prevLink = computed(() => {
     const prevConfig = resolveFromFrontmatterConfig(
-      frontmatter.value.prev,
+      pageFrontmatter.value.prev,
       route.path,
     )
 
     return prevConfig === false
       ? null
       : (prevConfig ??
-          (themeLocale.value.prev === false
+          (themeLocaleData.value.prev === false
             ? null
             : resolveFromSidebarItems(sidebarItems.value, route.path, -1)))
   })
 
   const nextLink = computed(() => {
     const nextConfig = resolveFromFrontmatterConfig(
-      frontmatter.value.next,
+      pageFrontmatter.value.next,
       route.path,
     )
 
     return nextConfig === false
       ? null
       : (nextConfig ??
-          (themeLocale.value.next === false
+          (themeLocaleData.value.next === false
             ? null
             : resolveFromSidebarItems(sidebarItems.value, route.path, 1)))
   })

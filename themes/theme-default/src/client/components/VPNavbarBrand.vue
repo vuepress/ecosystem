@@ -1,33 +1,25 @@
 <script setup lang="ts">
 import { useDarkMode } from '@theme/useDarkMode'
-import { useThemeLocaleData } from '@theme/useThemeData'
+import { useData } from '@theme/useData'
 import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
-import {
-  ClientOnly,
-  RouteLink,
-  useRouteLocale,
-  useSiteLocaleData,
-  withBase,
-} from 'vuepress/client'
+import { ClientOnly, RouteLink, withBase } from 'vuepress/client'
 
-const routeLocale = useRouteLocale()
-const siteLocale = useSiteLocaleData()
-const themeLocale = useThemeLocaleData()
+const { routeLocale, siteLocaleData, themeLocaleData } = useData()
 const isDarkMode = useDarkMode()
 
 const navbarBrandLink = computed(
-  () => themeLocale.value.home || routeLocale.value,
+  () => themeLocaleData.value.home || routeLocale.value,
 )
-const navbarBrandTitle = computed(() => siteLocale.value.title)
+const navbarBrandTitle = computed(() => siteLocaleData.value.title)
 const navbarBrandLogo = computed(() => {
-  if (isDarkMode.value && themeLocale.value.logoDark !== undefined) {
-    return themeLocale.value.logoDark
+  if (isDarkMode.value && themeLocaleData.value.logoDark !== undefined) {
+    return themeLocaleData.value.logoDark
   }
-  return themeLocale.value.logo
+  return themeLocaleData.value.logo
 })
 const navbarBrandLogoAlt = computed(
-  () => themeLocale.value.logoAlt ?? navbarBrandTitle.value,
+  () => themeLocaleData.value.logoAlt ?? navbarBrandTitle.value,
 )
 const navBarLogoAltMatchesTitle = computed(
   () =>
@@ -41,7 +33,7 @@ const NavbarBrandLogo: FunctionalComponent = () => {
     src: withBase(navbarBrandLogo.value),
     alt: navbarBrandLogoAlt.value,
   })
-  if (themeLocale.value.logoDark === undefined) {
+  if (themeLocaleData.value.logoDark === undefined) {
     return img
   }
   // wrap brand logo with <ClientOnly> to avoid ssr-mismatch

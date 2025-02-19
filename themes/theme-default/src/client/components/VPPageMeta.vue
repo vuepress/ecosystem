@@ -2,11 +2,11 @@
 import VPAutoLink from '@theme/VPAutoLink.vue'
 import VPEditIcon from '@theme/VPEditIcon.vue'
 import { useContributors } from '@theme/useContributors'
+import { useData } from '@theme/useData'
 import { useEditLink } from '@theme/useEditLink'
 import { useLastUpdated } from '@theme/useLastUpdated'
-import { useThemeLocaleData } from '@theme/useThemeData'
 
-const themeLocale = useThemeLocaleData()
+const { themeLocaleData } = useData()
 const editLink = useEditLink()
 const lastUpdated = useLastUpdated()
 const contributors = useContributors()
@@ -24,7 +24,9 @@ const contributors = useContributors()
 
     <div class="vp-meta-item git-info">
       <div v-if="lastUpdated" class="vp-meta-item last-updated">
-        <span class="meta-item-label">{{ themeLocale.lastUpdatedText }}: </span>
+        <span class="meta-item-label"
+          >{{ themeLocaleData.lastUpdatedText }}:
+        </span>
         <ClientOnly>
           <span class="meta-item-info">{{ lastUpdated }}</span>
         </ClientOnly>
@@ -35,7 +37,7 @@ const contributors = useContributors()
         class="vp-meta-item contributors"
       >
         <span class="meta-item-label"
-          >{{ themeLocale.contributorsText }}:
+          >{{ themeLocaleData.contributorsText }}:
         </span>
         <span class="meta-item-info">
           <template v-for="(contributor, index) in contributors" :key="index">
