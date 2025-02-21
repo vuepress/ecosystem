@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { useThemeLocaleData } from '@theme/useThemeData'
-import { RouteLink, useRouteLocale } from 'vuepress/client'
+import { useData } from '@theme/useData'
+import { computed } from 'vue'
+import { RouteLink } from 'vuepress/client'
 
-const routeLocale = useRouteLocale()
-const themeLocale = useThemeLocaleData()
+const { routeLocale, themeLocale } = useData()
 
-const messages = themeLocale.value.notFound ?? ['Not Found']
+const messages = computed(() => themeLocale.value.notFound ?? ['Not Found'])
+
 const getMsg = (): string =>
-  messages[Math.floor(Math.random() * messages.length)]
-const homeLink = themeLocale.value.home ?? routeLocale.value
-const homeText = themeLocale.value.backToHome ?? 'Back to home'
+  messages.value[Math.floor(Math.random() * messages.value.length)]
+
+const homeLink = computed(() => themeLocale.value.home ?? routeLocale.value)
+const homeText = computed(() => themeLocale.value.backToHome ?? 'Back to home')
 </script>
 
 <template>

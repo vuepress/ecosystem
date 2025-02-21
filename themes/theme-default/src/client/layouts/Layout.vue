@@ -3,13 +3,12 @@ import VPHome from '@theme/VPHome.vue'
 import VPNavbar from '@theme/VPNavbar.vue'
 import VPPage from '@theme/VPPage.vue'
 import VPSidebar from '@theme/VPSidebar.vue'
+import { useData } from '@theme/useData'
 import { useScrollPromise } from '@theme/useScrollPromise'
 import { useSidebarItems } from '@theme/useSidebarItems'
-import { useThemeLocaleData } from '@theme/useThemeData'
 import type { VNode } from 'vue'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
-import { usePageData, usePageFrontmatter, useRouter } from 'vuepress/client'
-import type { DefaultThemePageFrontmatter } from '../../shared/index.js'
+import { useRouter } from 'vuepress/client'
 
 defineSlots<{
   'navbar'?: (props: Record<never, never>) => VNode | VNode[] | null
@@ -27,9 +26,8 @@ defineSlots<{
   ) => VNode | VNode[] | null
 }>()
 
-const page = usePageData()
-const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>()
-const themeLocale = useThemeLocaleData()
+const { frontmatter, page, themeLocale } = useData()
+const router = useRouter()
 
 // navbar
 const shouldShowNavbar = computed(
@@ -81,8 +79,8 @@ const containerClass = computed(() => [
 
 // close sidebar after navigation
 let unregisterRouterHook: () => void
+
 onMounted(() => {
-  const router = useRouter()
   unregisterRouterHook = router.afterEach(() => {
     toggleSidebar(false)
   })

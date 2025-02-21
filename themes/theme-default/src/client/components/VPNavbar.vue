@@ -3,7 +3,7 @@ import VPNavbarBrand from '@theme/VPNavbarBrand.vue'
 import VPNavbarItems from '@theme/VPNavbarItems.vue'
 import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'
 import VPToggleSidebarButton from '@theme/VPToggleSidebarButton.vue'
-import { useThemeLocaleData } from '@theme/useThemeData'
+import { useData } from '@theme/useData'
 import { DeviceType, useUpdateDeviceStatus } from '@theme/useUpdateDeviceStatus'
 import { hasGlobalComponent } from '@vuepress/helper/client'
 import type { VNode } from 'vue'
@@ -22,7 +22,7 @@ const SearchBox = hasGlobalComponent('SearchBox')
   ? resolveComponent('SearchBox')
   : (): null => null
 
-const themeLocale = useThemeLocaleData()
+const { themeLocale } = useData()
 
 const navbar = useTemplateRef<HTMLElement | null>('navbar')
 const navbarBrand = useTemplateRef<HTMLElement | null>('navbar-brand')
