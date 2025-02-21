@@ -1,6 +1,6 @@
 import { resolveAutoLink } from '@theme/resolveAutoLink'
 import { resolvePrefix } from '@theme/resolvePrefix'
-import { useThemeLocaleData } from '@theme/useThemeData'
+import { useData } from '@theme/useData'
 import { isLinkRelative } from '@vuepress/helper/client'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
@@ -37,7 +37,7 @@ const resolveNavbarItem = (
 }
 
 export const useNavbarConfig = (): ComputedRef<NavbarItem[]> => {
-  const themeLocale = useThemeLocaleData()
+  const { themeLocale } = useData()
 
   return computed(() =>
     // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing

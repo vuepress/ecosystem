@@ -1,18 +1,13 @@
 <script setup lang="ts">
 import VPAutoLink from '@theme/VPAutoLink.vue'
 import { useDarkMode } from '@theme/useDarkMode'
+import { useData } from '@theme/useData'
 import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
-import {
-  ClientOnly,
-  usePageFrontmatter,
-  useSiteLocaleData,
-  withBase,
-} from 'vuepress/client'
+import { ClientOnly, withBase } from 'vuepress/client'
 import type { DefaultThemeHomePageFrontmatter } from '../../shared/index.js'
 
-const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
-const siteLocale = useSiteLocaleData()
+const { frontmatter, siteLocale } = useData<DefaultThemeHomePageFrontmatter>()
 const isDarkMode = useDarkMode()
 
 const heroText = computed(() => {

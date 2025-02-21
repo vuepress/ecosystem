@@ -1,19 +1,11 @@
 <script setup lang="ts">
 import { useDarkMode } from '@theme/useDarkMode'
-import { useThemeLocaleData } from '@theme/useThemeData'
+import { useData } from '@theme/useData'
 import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
-import {
-  ClientOnly,
-  RouteLink,
-  useRouteLocale,
-  useSiteLocaleData,
-  withBase,
-} from 'vuepress/client'
+import { ClientOnly, RouteLink, withBase } from 'vuepress/client'
 
-const routeLocale = useRouteLocale()
-const siteLocale = useSiteLocaleData()
-const themeLocale = useThemeLocaleData()
+const { routeLocale, siteLocale, themeLocale } = useData()
 const isDarkMode = useDarkMode()
 
 const navbarBrandLink = computed(

@@ -1,16 +1,9 @@
-import { useThemeLocaleData } from '@theme/useThemeData'
+import { useData } from '@theme/useData'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
-import { usePageData, usePageFrontmatter } from 'vuepress/client'
-import type {
-  DefaultThemeNormalPageFrontmatter,
-  DefaultThemePageData,
-} from '../../shared/index.js'
 
 export const useLastUpdated = (): ComputedRef<string | null> => {
-  const themeLocale = useThemeLocaleData()
-  const page = usePageData<DefaultThemePageData>()
-  const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
+  const { frontmatter, page, themeLocale } = useData()
 
   return computed(() => {
     const showLastUpdated =

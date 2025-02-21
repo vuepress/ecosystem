@@ -2,11 +2,11 @@
 import VPAutoLink from '@theme/VPAutoLink.vue'
 import VPEditIcon from '@theme/VPEditIcon.vue'
 import { useContributors } from '@theme/useContributors'
+import { useData } from '@theme/useData'
 import { useEditLink } from '@theme/useEditLink'
 import { useLastUpdated } from '@theme/useLastUpdated'
-import { useThemeLocaleData } from '@theme/useThemeData'
 
-const themeLocale = useThemeLocaleData()
+const { themeLocale } = useData()
 const editLink = useEditLink()
 const lastUpdated = useLastUpdated()
 const contributors = useContributors()

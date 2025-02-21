@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useThemeLocaleData } from '@theme/useThemeData'
+import { useData } from '@theme/useData'
 
 defineEmits<{ toggle: [] }>()
 
-const themeLocale = useThemeLocaleData()
+const { themeLocale } = useData()
 </script>
 
 <template>

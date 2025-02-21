@@ -1,11 +1,9 @@
-import { useThemeLocaleData } from '@theme/useThemeData'
+import { useData } from '@theme/useData'
 import type { HeaderItem } from '@vuepress/helper/client'
 import { getHeaders } from '@vuepress/helper/client'
 import { injectLocal, provideLocal, watchImmediate } from '@vueuse/core'
 import type { InjectionKey, Ref } from 'vue'
 import { computed, onMounted, ref } from 'vue'
-import { usePageFrontmatter, useRoutePath } from 'vuepress/client'
-import type { DefaultThemeNormalPageFrontmatter } from '../../shared/index.js'
 
 export type HeadersRef = Ref<HeaderItem[]>
 
@@ -24,11 +22,9 @@ export const useHeaders = (): HeadersRef => {
 }
 
 export const setupHeaders = (): void => {
-  const headersRef: HeadersRef = ref([])
+  const { frontmatter, routePath, themeLocale } = useData()
 
-  const routePath = useRoutePath()
-  const themeLocale = useThemeLocaleData()
-  const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
+  const headersRef: HeadersRef = ref([])
   const levels = computed(
     () => frontmatter.value.sidebarDepth ?? themeLocale.value.sidebarDepth ?? 2,
   )

@@ -1,16 +1,11 @@
 import { resolveAutoLink } from '@theme/resolveAutoLink'
 import { resolvePrefix } from '@theme/resolvePrefix'
-import { useThemeLocaleData } from '@theme/useThemeData'
+import { useData } from '@theme/useData'
 import { isLinkRelative, keys, startsWith } from '@vuepress/helper/client'
 import type { ComputedRef, InjectionKey } from 'vue'
 import { computed, inject, provide } from 'vue'
 import type { PageData, PageHeader } from 'vuepress/client'
-import {
-  usePageData,
-  usePageFrontmatter,
-  useRoute,
-  useRouteLocale,
-} from 'vuepress/client'
+import { useRoute } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
 import type {
   DefaultThemeHomePageFrontmatter,
@@ -185,13 +180,10 @@ export const resolveSidebarItems = (
  * Create sidebar items ref and provide as global computed in setup
  */
 export const setupSidebarItems = (): void => {
-  const themeLocale = useThemeLocaleData()
-  const frontmatter = usePageFrontmatter<
+  const { frontmatter, page, routeLocale, themeLocale } = useData<
     DefaultThemeHomePageFrontmatter | DefaultThemeNormalPageFrontmatter
   >()
-  const page = usePageData()
   const route = useRoute()
-  const routeLocale = useRouteLocale()
 
   const sidebarConfig = computed<SidebarOptions | false>(() =>
     frontmatter.value.home
