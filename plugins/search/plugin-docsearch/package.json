@@ -40,16 +40,16 @@
     "copy": "cpx \"src/**/*.css\" lib"
   },
   "dependencies": {
-    "@docsearch/css": "^3.8.3",
-    "@docsearch/js": "^3.8.3",
-    "@docsearch/react": "^3.8.3",
+    "@docsearch/css": "^3.9.0",
+    "@docsearch/js": "^3.9.0",
+    "@docsearch/react": "^3.9.0",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "^12.7.0",
     "ts-debounce": "^4.0.0",
     "vue": "^3.5.13"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "devDependencies": {
     "algoliasearch": "5.20.3"

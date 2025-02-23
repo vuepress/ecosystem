@@ -48,7 +48,7 @@
     "markdown-it": "^14.1.0"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

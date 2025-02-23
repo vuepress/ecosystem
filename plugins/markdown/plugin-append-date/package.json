@@ -43,7 +43,7 @@
   },
   "peerDependencies": {
     "@vuepress/plugin-git": "workspace:*",
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

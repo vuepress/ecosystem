@@ -62,12 +62,12 @@ export const useData = <
     siteData,
     siteLocaleData,
     ...rest
-  } = useClientData()
+  } = useClientData<PageFrontmatter, PageData>()
 
   return {
     ...rest,
-    page: pageData as PageDataRef<PageData>,
-    frontmatter: pageFrontmatter as PageFrontmatterRef<PageFrontmatter>,
+    page: pageData,
+    frontmatter: pageFrontmatter,
     lang: pageLang,
     site: siteData,
     siteLocale: siteLocaleData,

@@ -42,7 +42,7 @@
     "watermark-js-plus": "^1.5.8"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"
