@@ -1,6 +1,7 @@
 import type { ExactLocaleConfig } from '@vuepress/helper/client'
 import { LoadingIcon, useLocaleConfig, wait } from '@vuepress/helper/client'
 import { watchImmediate } from '@vueuse/core'
+import type { WalineProps } from '@waline/client'
 import { pageviewCount } from '@waline/client/pageview'
 import type { VNode } from 'vue'
 import {
@@ -109,7 +110,10 @@ export default defineComponent({
                     /* webpackChunkName: "waline" */ '@waline/client/component'
                   )
 
-                  return () => h(ClientOnly, () => h(Waline, walineProps.value))
+                  return () =>
+                    h(ClientOnly, () =>
+                      h(Waline, walineProps.value as WalineProps),
+                    )
                 },
                 loadingComponent: LoadingIcon,
               }),
