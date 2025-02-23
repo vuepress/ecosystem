@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
+
+### Bug Fixes
+
+- **create-vuepress:** bump version ([62a9c70](https://github.com/vuepress/ecosystem/commit/62a9c70de1d53ace7cec7c688e0d10ab2dd8e170))
+- **plugin-pwa:** add missing type export ([519a4e6](https://github.com/vuepress/ecosystem/commit/519a4e63c14710c1bf521aee9ce3d60297e84029))
+- **theme-default:** fix PageNav external icon, close [#357](https://github.com/vuepress/ecosystem/issues/357) ([#358](https://github.com/vuepress/ecosystem/issues/358)) ([c4f539f](https://github.com/vuepress/ecosystem/commit/c4f539f008f1abdac82fd0bdcbd67b15bfbc988d))
+
+### Features
+
+- **helper:** support ref in useLocaleConfig ([97a0975](https://github.com/vuepress/ecosystem/commit/97a0975f7c2ec0bea09b11407a8631d06e0dc293))
+- **plugin-comment:** add identifier for CommentService ([59f44f4](https://github.com/vuepress/ecosystem/commit/59f44f4453483fcc3664b7d211db33075ce1f848))
+- **plugin-shiki:** disable `line-numbers` within `twoslash` code block ([#354](https://github.com/vuepress/ecosystem/issues/354)) ([17ff2ba](https://github.com/vuepress/ecosystem/commit/17ff2ba94f961acdcc7dc464f87f1df1258cfc72))
+
 # [2.0.0-rc.78](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.77...v2.0.0-rc.78) (2025-02-17)
 
 ### Bug Fixes

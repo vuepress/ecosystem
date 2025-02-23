@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
+
+### Features
+
+- **plugin-comment:** add identifier for CommentService ([59f44f4](https://github.com/vuepress/ecosystem/commit/59f44f4453483fcc3664b7d211db33075ce1f848))
+
 # [2.0.0-rc.78](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.77...v2.0.0-rc.78) (2025-02-17)
 
 **Note:** Version bump only for package @vuepress/plugin-comment
