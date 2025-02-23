@@ -34,7 +34,9 @@ export default defineComponent({
 
   props: {
     /**
-     * The path of the comment
+     * The identifier of the comment
+     *
+     * 评论标识符
      */
     identifier: {
       type: String,
