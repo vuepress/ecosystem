@@ -49,7 +49,7 @@
     "@vueuse/core": "^12.7.0"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "devDependencies": {
     "markdown-it": "^14.1.0"

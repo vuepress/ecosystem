@@ -42,13 +42,13 @@
     "@shikijs/transformers": "^3.0.0",
     "@vuepress/helper": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
-    "nanoid": "^5.1.0",
+    "nanoid": "^5.1.2",
     "shiki": "^3.0.0",
     "synckit": "^0.9.2"
   },
   "peerDependencies": {
     "@vuepress/shiki-twoslash": "workspace:*",
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "peerDependenciesMeta": {
     "@vuepress/shiki-twoslash": {

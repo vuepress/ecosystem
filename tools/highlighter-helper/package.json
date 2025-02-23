@@ -42,7 +42,7 @@
   },
   "peerDependencies": {
     "@vueuse/core": "^12.7.0",
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "peerDependenciesMeta": {
     "@vueuse/core": {
