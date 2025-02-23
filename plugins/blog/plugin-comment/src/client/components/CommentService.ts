@@ -10,6 +10,13 @@ export default defineComponent({
 
   props: {
     /**
+     * The identifier of the comment
+     *
+     * 评论标识符
+     */
+    identifier: String,
+
+    /**
      * Whether the component is in darkmode
      *
      * 组件是否处于夜间模式
@@ -30,7 +37,8 @@ export default defineComponent({
       h(CommentProvider, {
         'class': 'vp-comment',
         'vp-comment': '',
-        'identifier': frontmatter.value.commentID ?? page.value.path,
+        'identifier':
+          props.identifier ?? frontmatter.value.commentID ?? page.value.path,
         'darkmode': props.darkmode,
         'style': { display: enabled.value ? 'block' : 'none' },
       })

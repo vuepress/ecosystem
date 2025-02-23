@@ -1,14 +1,11 @@
 import { resolveAutoLink } from '@theme/resolveAutoLink'
+import { useData } from '@theme/useData'
 import { useSidebarItems } from '@theme/useSidebarItems'
-import { useThemeLocaleData } from '@theme/useThemeData'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
-import { resolveRoute, usePageFrontmatter, useRoute } from 'vuepress/client'
+import { resolveRoute, useRoute } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
-import type {
-  AutoLinkOptions,
-  DefaultThemeNormalPageFrontmatter,
-} from '../../shared/index.js'
+import type { AutoLinkOptions } from '../../shared/index.js'
 import type { SidebarItem } from '../typings.js'
 
 const resolveFromFrontmatterConfig = (
@@ -105,8 +102,7 @@ interface RelatedLinks {
 }
 
 export const useRelatedLinks = (): RelatedLinks => {
-  const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
-  const themeLocale = useThemeLocaleData()
+  const { frontmatter, themeLocale } = useData()
   const sidebarItems = useSidebarItems()
   const route = useRoute()
 
