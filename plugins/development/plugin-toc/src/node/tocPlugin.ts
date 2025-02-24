@@ -1,3 +1,4 @@
+import type { GetHeadersOptions } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 import type { TocPropsOptions } from '../shared/index.js'
@@ -16,14 +17,28 @@ export interface TocPluginOptions {
   componentName?: string
 
   /**
-   * Override the default values of the `options` prop of the TOC component
+   * Default header options
+   */
+  headerOptions?: GetHeadersOptions
+
+  /**
+   * Default props options
+   */
+  propsOptions?: Partial<TocPropsOptions>
+
+  // FIXME: Remove in stable
+  /**
+   * @deprecated use `propsOptions` instead
    */
   defaultPropsOptions?: Partial<TocPropsOptions>
 }
 
 export const tocPlugin = ({
   componentName = 'Toc',
+  headerOptions = {},
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   defaultPropsOptions = {},
+  propsOptions = defaultPropsOptions,
 }: TocPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-toc',
 
@@ -31,6 +46,7 @@ export const tocPlugin = ({
 
   define: {
     __TOC_COMPONENT_NAME__: componentName,
-    __TOC_DEFAULT_PROPS_OPTIONS__: defaultPropsOptions,
+    __TOC_HEADERS_OPTIONS__: headerOptions,
+    __TOC_PROPS_OPTIONS__: propsOptions,
   },
 })

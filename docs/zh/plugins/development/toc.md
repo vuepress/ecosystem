@@ -61,7 +61,17 @@ Markdown 语法 `[[toc]]` 仅能在 Markdown 文件中使用。它是由 markdow
 
   指定目录组件的名称。
 
-### defaultPropsOptions
+### headerOptions
+
+- 类型： `Partial<GetHeadersOptions>`
+
+- 默认值： `{}`
+
+- 详情：
+
+  覆盖组件 [headerOptions](#headeroptions-1) Prop 的默认值。
+
+### propsOptions
 
 - 类型： `Partial<TocPropsOptions>`
 
@@ -69,7 +79,7 @@ Markdown 语法 `[[toc]]` 仅能在 Markdown 文件中使用。它是由 markdow
 
 - 详情：
 
-  覆盖组件 [options](#options) Prop 的默认值。
+  覆盖组件 [propsOptions](#propsoptions-1) Prop 的默认值。
 
 ## 组件 Props
 
@@ -100,7 +110,21 @@ interface PageHeader {
 
   如果该 Prop 没有被设置，默认会使用当前页面的标题。
 
-### options
+### headerOptions
+
+- 类型： `Partial<GetHeadersOptions>`
+
+  详见 [GetHeadersOptions](../../tools/helper/client.md#getheaders)
+
+- 默认值：
+
+  详见 [GetHeadersOptions](../../tools/helper/client.md#getheaders)，可以通过插件选项中的 [headerOptions](#headeroptions) 来覆盖。
+
+- 详情：
+
+  覆盖 [getHeaders](../../tools/helper/client.md#getheaders) 函数的默认值。
+
+### propsOptions
 
 - 类型： `Partial<TocPropsOptions>`
 
@@ -119,7 +143,7 @@ interface TocPropsOptions {
 
 - 默认值：
 
-  下列默认值可以用过 [defaultPropsOptions](#defaultpropsoptions) 来覆盖：
+  下列默认值可以用过插件选项中的 [propsOptions](#propsoptions) 来覆盖：
 
 ```ts
 const defaultOptions = {
@@ -136,7 +160,7 @@ const defaultOptions = {
 
 - 详情：
 
-  自定义目录组件。
+  自定义目录组件渲染行为。
 
   如果 `containerTag` 设置为空字符串 `''` ，那么最外层的 `<nav>` Container 会被完全移除。
 

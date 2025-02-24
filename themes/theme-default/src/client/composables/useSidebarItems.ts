@@ -1,6 +1,7 @@
 import { resolveAutoLink } from '@theme/resolveAutoLink'
 import { resolvePrefix } from '@theme/resolvePrefix'
 import { useData } from '@theme/useData'
+import { useHeaders } from '@theme/useHeaders'
 import { isLinkRelative, keys, startsWith } from '@vuepress/helper/client'
 import type { ComputedRef, InjectionKey } from 'vue'
 import { computed, inject, provide } from 'vue'
@@ -183,6 +184,7 @@ export const setupSidebarItems = (): void => {
   const { frontmatter, page, routeLocale, themeLocale } = useData<
     DefaultThemeHomePageFrontmatter | DefaultThemeNormalPageFrontmatter
   >()
+  const headers = useHeaders()
   const route = useRoute()
 
   const sidebarConfig = computed<SidebarOptions | false>(() =>
@@ -199,7 +201,7 @@ export const setupSidebarItems = (): void => {
       page.value,
       route.path,
       routeLocale.value,
-      page.value.headers,
+      headers.value,
     ),
   )
   provide(sidebarItemsSymbol, sidebarItems)
