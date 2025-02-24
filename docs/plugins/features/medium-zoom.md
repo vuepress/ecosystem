@@ -42,18 +42,6 @@ export default {
 
   By default this plugin will make all images zoomable except those inside `<a>` tags.
 
-### delay
-
-- Type: `number`
-
-- Default: `500`
-
-- Details:
-
-  Delay in milliseconds.
-
-  After navigating to a new page, this plugin will make images zoomable with a delay.
-
 ### zoomOptions
 
 - Type: `Object`
