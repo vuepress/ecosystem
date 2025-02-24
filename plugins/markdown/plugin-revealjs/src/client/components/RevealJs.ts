@@ -1,24 +1,28 @@
 import { useRevealJs } from '@temp/revealjs/index.js'
-import { LoadingIcon, decodeData, wait } from '@vuepress/helper/client'
+import { LoadingIcon, decodeData } from '@vuepress/helper/client'
 // eslint-disable-next-line import/no-rename-default
 import type Reveal from 'reveal.js/dist/reveal.esm.js'
 import type { PropType, VNode } from 'vue'
 import {
+  computed,
   defineComponent,
   h,
   onMounted,
   onUnmounted,
   ref,
   shallowRef,
+  watch,
 } from 'vue'
-import { usePageFrontmatter, usePageLayout } from 'vuepress/client'
+import {
+  onContentUpdated,
+  usePageFrontmatter,
+  usePageLayout,
+} from 'vuepress/client'
 
 import type { RevealJsTheme } from '../../shared/index.js'
 import { useRevealJsConfig } from '../helpers/index.js'
 
 import '../styles/reveal-js.css'
-
-declare const __REVEAL_DELAY__: number
 
 export const RevealJs = defineComponent({
   name: 'RevealJs',
@@ -60,21 +64,17 @@ export const RevealJs = defineComponent({
     const frontmatter = usePageFrontmatter<{ revealJs: Reveal.Options }>()
     const layout = usePageLayout()
 
-    const code = ref('')
     const loading = ref(true)
     const presentationContainer = shallowRef<HTMLElement>()
 
+    const code = computed(() => decodeData(props.code))
+
     let reveal: Reveal.Api | null = null
 
-    const initRevealJs = async (
+    const renderRevealJs = async (
       container: HTMLElement,
     ): Promise<Reveal.Api> => {
-      const promises: [Promise<void>, ...ReturnType<typeof useRevealJs>] = [
-        wait(__REVEAL_DELAY__),
-        ...useRevealJs(),
-      ]
-
-      const [, { default: Reveal }, ...plugins] = await Promise.all(promises)
+      const [Reveal, ...plugins] = await useRevealJs()
 
       const isSlidePage = layout.value.name === 'SlidePage'
 
@@ -93,11 +93,7 @@ export const RevealJs = defineComponent({
           verticalSeparator: '^\r?\n--\r?\n$',
         },
 
-        plugins: [
-          plugins.map(({ default: plugin }) => plugin),
-
-          revealOptions.value.plugins ?? [],
-        ].flat(),
+        plugins: [plugins, revealOptions.value.plugins ?? []].flat(),
       })
 
       await instance.initialize()
@@ -105,19 +101,27 @@ export const RevealJs = defineComponent({
       return instance
     }
 
-    onMounted(async () => {
+    const initRevealJs = async (): Promise<void> => {
       const container = presentationContainer.value
 
       if (container) {
-        code.value = decodeData(props.code)
-
         container.setAttribute('id', props.id)
         container.setAttribute('data-theme', props.theme)
 
-        reveal = await initRevealJs(container)
+        loading.value = true
+
+        reveal = await renderRevealJs(container)
 
         loading.value = false
       }
+    }
+
+    onContentUpdated(async (reason) => {
+      if (reason === 'mounted') await initRevealJs()
+    })
+
+    onMounted(() => {
+      watch(code, initRevealJs, { flush: 'post' })
     })
 
     onUnmounted(() => {
