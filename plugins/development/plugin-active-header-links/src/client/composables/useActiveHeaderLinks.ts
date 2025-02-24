@@ -29,6 +29,8 @@ export const useActiveHeaderLinks = ({
   delay,
   offset = 5,
 }: UseActiveHeaderLinksOptions): void => {
+  if (__VUEPRESS_SSR__) return
+
   const router = useRouter()
 
   const setActiveRouteHash = (): void => {
