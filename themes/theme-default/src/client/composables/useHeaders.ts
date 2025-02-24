@@ -44,5 +44,8 @@ export const setupHeaders = (): void => {
 
   provideLocal(headersSymbol, headersRef)
 
-  onContentUpdated(updateHeaders)
+  onContentUpdated((reason) => {
+    if (reason === 'beforeUnmount') headersRef.value = []
+    else updateHeaders()
+  })
 }
