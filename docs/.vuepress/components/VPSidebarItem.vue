@@ -62,7 +62,15 @@ onBeforeUnmount(() => {
 
 <template>
   <li>
-    <VPAutoLink v-if="item.link" :class="itemClass" :config="item" />
+    <VPAutoLink v-if="item.link" :class="itemClass" :config="item">
+      <template #after>
+        <span
+          v-if="collapsible"
+          class="arrow"
+          :class="isOpen ? 'down' : 'right'"
+        />
+      </template>
+    </VPAutoLink>
     <p
       v-else
       tabindex="0"
@@ -79,8 +87,11 @@ onBeforeUnmount(() => {
       />
     </p>
 
-    <VPDropdownTransition v-if="'children' in item && item.children.length">
-      <ul v-show="isOpen" class="vp-sidebar-children">
+    <VPDropdownTransition>
+      <ul
+        v-if="'children' in item && item.children.length && isOpen"
+        class="vp-sidebar-children"
+      >
         <VPSidebarItem
           v-for="child in item.children"
           :key="`${depth}${child.text}${child.link}`"
