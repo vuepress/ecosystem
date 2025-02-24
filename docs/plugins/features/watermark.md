@@ -60,18 +60,6 @@ export default {
 
   By default, it is inserted into the body, but you can specify inserting it into a specific element on the page.
 
-### delay
-
-- Type: `number`
-
-- Default: `500`
-
-- Details: Delay for adding watermarks. In milliseconds.
-
-  The delay time depends on the duration of the page transition animation and can be adjusted according to the actual situation.
-
-  If the parent element of the watermark is re-rendered when switching pages, the delay time should be slightly longer than the page transition time.
-
 ## Frontmatter
 
 ### watermark

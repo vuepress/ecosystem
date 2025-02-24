@@ -50,6 +50,7 @@ export default defineComponent({
       watchImmediate(
         () => [props.identifier, twikooOptions.value],
         () => initTwikoo(),
+        { flush: 'post' },
       )
     })
 
