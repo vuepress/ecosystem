@@ -15,14 +15,9 @@ export const revealJsPlugin = ({
   plugins = [],
   themes = ['auto'],
   layout = 'SlidePage',
-  delay = 800,
 }: RevealJsPluginOptions = {}): Plugin => {
   return {
     name: PLUGIN_NAME,
-
-    define: {
-      __REVEAL_DELAY__: delay,
-    },
 
     extendsBundlerOptions: (bundlerOptions, app) => {
       addViteOptimizeDepsExclude(bundlerOptions, app, [
