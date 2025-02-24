@@ -6,13 +6,10 @@ import VPLocalNav from '@theme/VPLocalNav.vue'
 import VPNav from '@theme/VPNav.vue'
 import VPSidebar from '@theme/VPSidebar.vue'
 import VPSkipLink from '@theme/VPSkipLink.vue'
-import { computed, provide, useSlots, watch } from 'vue'
-import { useRoute } from 'vuepress/client'
-import {
-  useCloseSidebarOnEscape,
-  useData,
-  useSidebar,
-} from '../composables/index.js'
+import { useEventListener } from '@vueuse/core'
+import { computed, provide, useSlots, watch, watchEffect } from 'vue'
+import { useRoutePath } from 'vuepress/client'
+import { useData, useSidebar } from '../composables/index.js'
 import type { Slot } from '../types.js'
 
 defineSlots<{
@@ -52,7 +49,7 @@ defineSlots<{
   'sidebar-nav-after'?: Slot
 }>()
 
-const route = useRoute()
+const routePath = useRoutePath()
 
 const {
   isOpen: isSidebarOpen,
@@ -60,16 +57,36 @@ const {
   close: closeSidebar,
 } = useSidebar()
 
-watch(() => route.path, closeSidebar)
-
-useCloseSidebarOnEscape(isSidebarOpen, closeSidebar)
+watch(routePath, closeSidebar)
 
 const { frontmatter } = useData()
 
 const slots = useSlots()
-const heroImageSlotExists = computed(() => !!slots['home-hero-image'])
+
+// FIXME: slots is not reactive
+const heroImageSlotExists = computed(() => Boolean(slots['home-hero-image']))
 
 provide('hero-image-slot-exists', heroImageSlotExists)
+
+/**
+ * a11y: cache the element that opened the Sidebar (the menu button) then
+ * focus that button again when Menu is closed with Escape key.
+ */
+
+let triggerElement: HTMLButtonElement | null
+
+watchEffect(() => {
+  triggerElement = isSidebarOpen.value
+    ? (document.activeElement as HTMLButtonElement)
+    : null
+})
+
+useEventListener('keydown', ({ key }): void => {
+  if (key === 'Escape' && isSidebarOpen.value) {
+    closeSidebar()
+    triggerElement?.focus()
+  }
+})
 </script>
 
 <template>

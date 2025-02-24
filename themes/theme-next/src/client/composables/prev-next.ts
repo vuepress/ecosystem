@@ -11,23 +11,27 @@ export interface PrevNext {
   next?: Partial<NavItemWithLink>
 }
 
-const uniqBy = <T>(array: T[], keyFn: (item: T) => unknown): T[] => {
+const uniqueBy = <T>(array: T[], keyGetter: (item: T) => unknown): T[] => {
   const seen = new Set()
+
   return array.filter((item) => {
-    const k = keyFn(item)
-    return seen.has(k) ? false : seen.add(k)
+    const key = keyGetter(item)
+
+    return seen.has(key) ? false : seen.add(key)
   })
 }
 
 export const usePrevNext = (): ComputedRef<PrevNext> => {
-  const { theme, page, frontmatter } = useData()
+  const { frontmatter, page, theme } = useData()
   const sidebar = useSidebarData()
 
   return computed(() => {
     const links = getFlatSideBarLinks(sidebar.value)
 
     // ignore inner-page links with hashes
-    const candidates = uniqBy(links, (link) => link.link.replace(/[?#].*$/, ''))
+    const candidates = uniqueBy(links, (link) =>
+      link.link.replace(/[?#].*$/, ''),
+    )
 
     const index = candidates.findIndex((link) =>
       isActive(page.value.path, resolveRouteFullPath(link.link)),

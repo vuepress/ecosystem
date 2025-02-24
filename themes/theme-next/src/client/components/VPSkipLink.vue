@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import { useTemplateRef, watch } from 'vue'
-import { useRoute } from 'vuepress/client'
+import { useRoutePath } from 'vuepress/client'
 
-const route = useRoute()
+const routePath = useRoutePath()
 const backToTop = useTemplateRef<HTMLSpanElement>('backToTop')
 
-watch(
-  () => route.path,
-  () => backToTop.value?.focus(),
-)
+watch(routePath, () => backToTop.value?.focus())
 
 const focusOnTargetAnchor = ({ target }: Event): void => {
   const el = document.getElementById(

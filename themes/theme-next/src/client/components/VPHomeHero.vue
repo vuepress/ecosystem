@@ -12,15 +12,15 @@ defineSlots<{
   'home-hero-image'?: Slot
 }>()
 
-const fm = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
+const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
 </script>
 
 <template>
   <VPHero
-    v-if="fm.hero"
+    v-if="frontmatter.hero"
     class="vp-home-hero"
-    v-bind="fm.hero"
-    :actions="fm.actions"
+    v-bind="frontmatter.hero"
+    :actions="frontmatter.actions"
   >
     <template #home-hero-info-before>
       <slot name="home-hero-info-before" />

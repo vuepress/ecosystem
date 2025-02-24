@@ -3,13 +3,13 @@ import VPFeatures from '@theme/VPFeatures.vue'
 import { usePageFrontmatter } from 'vuepress/client'
 import type { DefaultThemeHomePageFrontmatter } from '../../shared/index.js'
 
-const fm = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
+const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
 </script>
 
 <template>
   <VPFeatures
-    v-if="fm.features"
+    v-if="frontmatter.features"
     class="vp-home-features"
-    :features="fm.features"
+    :features="frontmatter.features"
   />
 </template>

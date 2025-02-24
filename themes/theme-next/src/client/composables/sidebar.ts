@@ -11,7 +11,6 @@ import {
   computed,
   inject,
   onMounted,
-  onUnmounted,
   provide,
   ref,
   watch,
@@ -40,7 +39,7 @@ const sidebarSymbol: InjectionKey<Ref<ResolvedSidebarItem[]>> = Symbol(
 )
 
 export const setupSidebarData = (): void => {
-  const { theme, page, frontmatter } = useData()
+  const { frontmatter, page, theme } = useData()
   const routeLocale = useRouteLocale()
 
   const hasSidebar = computed(
@@ -193,38 +192,6 @@ export const useSidebar = (): UseSidebarReturn => {
     close,
     toggle,
   }
-}
-
-/**
- * a11y: cache the element that opened the Sidebar (the menu button) then
- * focus that button again when Menu is closed with Escape key.
- */
-export const useCloseSidebarOnEscape = (
-  isOpen: Ref<boolean>,
-  close: () => void,
-): void => {
-  let triggerElement: HTMLButtonElement | undefined
-
-  watchEffect(() => {
-    triggerElement = isOpen.value
-      ? (document.activeElement as HTMLButtonElement)
-      : undefined
-  })
-
-  const onEscape = (e: KeyboardEvent): void => {
-    if (e.key === 'Escape' && isOpen.value) {
-      close()
-      triggerElement?.focus()
-    }
-  }
-
-  onMounted(() => {
-    window.addEventListener('keyup', onEscape)
-  })
-
-  onUnmounted(() => {
-    window.removeEventListener('keyup', onEscape)
-  })
 }
 
 export const useSidebarControl = (

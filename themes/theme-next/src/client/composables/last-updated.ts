@@ -8,7 +8,7 @@ export const useLastUpdated = (): {
   lastUpdatedText: ComputedRef<string | undefined>
   isoDatetime: ComputedRef<string | undefined>
 } => {
-  const { theme, page, frontmatter } = useData()
+  const { frontmatter, page, theme } = useData()
   const lang = usePageLang()
 
   const date = computed(() =>
