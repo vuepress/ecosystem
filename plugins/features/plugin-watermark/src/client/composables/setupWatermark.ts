@@ -1,6 +1,6 @@
 import { watchImmediate } from '@vueuse/core'
 import type { MaybeRef, Ref } from 'vue'
-import { isRef, onMounted, toValue } from 'vue'
+import { isRef, toValue } from 'vue'
 import { useSiteLocaleData, withBase } from 'vuepress/client'
 import { Watermark } from 'watermark-js-plus'
 import type { WatermarkOptions } from '../helper/index.js'
@@ -37,11 +37,7 @@ export const setupWatermark = (
     }
   }
 
-  onMounted(() => {
-    watchImmediate(
-      [enabled, isRef(options) ? options : null],
-      updateWaterMark,
-      { flush: 'post' },
-    )
+  watchImmediate([enabled, isRef(options) ? options : null], updateWaterMark, {
+    flush: 'post',
   })
 }
