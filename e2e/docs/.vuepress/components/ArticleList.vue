@@ -60,7 +60,7 @@ defineProps<{
 </template>
 
 <style lang="scss">
-@use '@vuepress/theme-default/styles/mixins';
+@use '../styles/mixins';
 
 .article-wrapper {
   @include mixins.content-wrapper;
