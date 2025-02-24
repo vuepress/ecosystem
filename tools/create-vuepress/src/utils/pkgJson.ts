@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url'
 
 interface PackageJson extends Record<string, unknown> {
   version: string
-  devDependencies: Record<string, string>
+  peerDependencies: Record<string, string>
 }
 
 const pkg = JSON.parse(
