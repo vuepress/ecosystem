@@ -5,7 +5,7 @@ import { isActiveSidebarItem } from '@theme/isActiveSidebarItem'
 import { useToggle } from '@vueuse/core'
 import { computed, nextTick, onBeforeUnmount, toRefs } from 'vue'
 import { useRoute, useRouter } from 'vuepress/client'
-import type { SidebarItem } from '../typings.js'
+import type { SidebarGroupItem, SidebarItem } from '../typings.js'
 
 const props = withDefaults(
   defineProps<{
@@ -25,9 +25,7 @@ const { item, depth } = toRefs(props)
 const route = useRoute()
 const router = useRouter()
 
-const collapsible = computed(
-  () => 'collapsible' in item.value && item.value.collapsible,
-)
+const collapsible = computed(() => (item.value as SidebarGroupItem).collapsible)
 const isActive = computed(() => isActiveSidebarItem(item.value, route))
 const itemClass = computed(() => ({
   'vp-sidebar-item': true,
@@ -62,7 +60,15 @@ onBeforeUnmount(() => {
 
 <template>
   <li>
-    <VPAutoLink v-if="item.link" :class="itemClass" :config="item" />
+    <VPAutoLink v-if="item.link" :class="itemClass" :config="item">
+      <template #after>
+        <span
+          v-if="collapsible"
+          class="arrow"
+          :class="isOpen ? 'down' : 'right'"
+        />
+      </template>
+    </VPAutoLink>
     <p
       v-else
       tabindex="0"
