@@ -494,6 +494,9 @@ importers:
 
   plugins/development/plugin-toc:
     dependencies:
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../../tools/helper
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.3)

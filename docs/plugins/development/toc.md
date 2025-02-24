@@ -61,7 +61,17 @@ Therefore, this plugin is more useful for theme developers.
 
   Specify the name of the TOC component.
 
-### defaultPropsOptions
+### headersOptions
+
+- Type: `Partial<GetHeadersOptions>`
+
+- Default: `{}`
+
+- Details:
+
+  Override the default values of the component [headersOptions](#headersoptions-1) prop.
+
+### propsOptions
 
 - Type: `Partial<TocPropsOptions>`
 
@@ -69,7 +79,7 @@ Therefore, this plugin is more useful for theme developers.
 
 - Details:
 
-  Override the default values of the component [options](#options-1) prop.
+  Override the default values of the component [propsOptions](#propsoptions-1) prop.
 
 ## Component Props
 
@@ -100,7 +110,21 @@ interface PageHeader {
 
   If this prop is not specified, the headers of current page will be used.
 
-### options
+### headersOptions
+
+- Type: `Partial<GetHeadersOptions>`
+
+  See [GetHeadersOptions](../../tools/helper/client.md#getheaders)
+
+- Default:
+
+  See [GetHeadersOptions](../../tools/helper/client.md#getheaders), it can be overridden by [headersOptions](#headaersoptions) in plugin options.
+
+- Details:
+
+  Customize header extracting behavior.
+
+### propsOptions
 
 - Type: `Partial<TocPropsOptions>`
 
@@ -119,7 +143,7 @@ interface TocPropsOptions {
 
 - Default:
 
-  Following default values can be overridden by [defaultPropsOptions](#defaultpropsoptions).
+  Following default values can be overridden by [propsOptions](#propsoptions) in plugin options.
 
 ```ts
 const defaultOptions = {
@@ -136,7 +160,7 @@ const defaultOptions = {
 
 - Details:
 
-  Customize the TOC component.
+  Customize TOC component render behavior.
 
   If the `containerTag` is set to an empty string `''`, the `<nav>` container will be removed totally.
 
