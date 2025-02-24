@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.80](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.79...v2.0.0-rc.80) (2025-02-24)
+
+### Bug Fixes
+
+- **theme-default:** fix collapsible sidebar link arrow ([5d4ced4](https://github.com/vuepress/ecosystem/commit/5d4ced429dd06ca83cd55b96f4fc43433d851e16))
+- **theme-default:** fix navigate with query and hash ([#368](https://github.com/vuepress/ecosystem/issues/368)) ([2d0a120](https://github.com/vuepress/ecosystem/commit/2d0a120a730501f158068c19ea7656ffa1824b98))
+
+### Features
+
+- **theme-default:** add VPFadeSlideYTransition ([0f845c6](https://github.com/vuepress/ecosystem/commit/0f845c6f780f00a1152aaac1c5073ce6ff255ee4))
+- **theme-default:** enable smooth scroll ([e5677c6](https://github.com/vuepress/ecosystem/commit/e5677c65ba2c581fd3bd59c154ca3c26fb3eeb2a))
+- **theme-default:** prefer useHeaders ([fc04be5](https://github.com/vuepress/ecosystem/commit/fc04be5d9788f1da7c78bc535b1d498521a38a21))
+
 # [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
 
 ### Bug Fixes

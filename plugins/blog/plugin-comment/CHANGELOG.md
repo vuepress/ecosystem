@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.80](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.79...v2.0.0-rc.80) (2025-02-24)
+
+### Bug Fixes
+
+- **plugin-comment:** use `flush: post` for watchers ([#364](https://github.com/vuepress/ecosystem/issues/364)) ([1474aaa](https://github.com/vuepress/ecosystem/commit/1474aaa755e9ad126e9ce19cb9a32df7478d9a85))
+
 # [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
 
 ### Features

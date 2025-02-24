@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.80](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.79...v2.0.0-rc.80) (2025-02-24)
+
+### Features
+
+- **helper:** add useHeaders composables and improve header type ([3470520](https://github.com/vuepress/ecosystem/commit/3470520aa7d17324768d197a8ba81b847313bd01))
+
 # [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
 
 ### Features

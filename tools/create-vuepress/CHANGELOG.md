@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.80](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.79...v2.0.0-rc.80) (2025-02-24)
+
+### Bug Fixes
+
+- **create-vuepress:** fix package.json reading ([5fa4203](https://github.com/vuepress/ecosystem/commit/5fa4203b82614d1e27d8e1818c3093d1db1567c5))
+- **create-vuepress:** fix types ([1724e9a](https://github.com/vuepress/ecosystem/commit/1724e9a37eb3f4cf55aeba07777c63b77013be8e))
+- fix engine requirement ([372268f](https://github.com/vuepress/ecosystem/commit/372268f96a9f87dcfdd5bfe3020fd1b160e203a4))
+
 # [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
 
 ### Bug Fixes

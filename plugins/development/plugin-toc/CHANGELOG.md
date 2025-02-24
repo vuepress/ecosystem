@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.80](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.79...v2.0.0-rc.80) (2025-02-24)
+
+### Features
+
+- **plugin-toc:** extract headers from dom and add headerOptions ([224d3fc](https://github.com/vuepress/ecosystem/commit/224d3fc28eec7df20795c796a15b4ab51e851c84))
+
 # [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
 
 **Note:** Version bump only for package @vuepress/plugin-toc

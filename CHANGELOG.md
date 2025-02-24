@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.80](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.79...v2.0.0-rc.80) (2025-02-24)
+
+### Bug Fixes
+
+- **create-vuepress:** fix package.json reading ([5fa4203](https://github.com/vuepress/ecosystem/commit/5fa4203b82614d1e27d8e1818c3093d1db1567c5))
+- **create-vuepress:** fix types ([1724e9a](https://github.com/vuepress/ecosystem/commit/1724e9a37eb3f4cf55aeba07777c63b77013be8e))
+- fix engine requirement ([372268f](https://github.com/vuepress/ecosystem/commit/372268f96a9f87dcfdd5bfe3020fd1b160e203a4))
+- **plugin-comment:** use `flush: post` for watchers ([#364](https://github.com/vuepress/ecosystem/issues/364)) ([1474aaa](https://github.com/vuepress/ecosystem/commit/1474aaa755e9ad126e9ce19cb9a32df7478d9a85))
+- **theme-default:** fix collapsible sidebar link arrow ([5d4ced4](https://github.com/vuepress/ecosystem/commit/5d4ced429dd06ca83cd55b96f4fc43433d851e16))
+- **theme-default:** fix navigate with query and hash ([#368](https://github.com/vuepress/ecosystem/issues/368)) ([2d0a120](https://github.com/vuepress/ecosystem/commit/2d0a120a730501f158068c19ea7656ffa1824b98))
+
+### Features
+
+- **helper:** add useHeaders composables and improve header type ([3470520](https://github.com/vuepress/ecosystem/commit/3470520aa7d17324768d197a8ba81b847313bd01))
+- **plugin-toc:** extract headers from dom and add headerOptions ([224d3fc](https://github.com/vuepress/ecosystem/commit/224d3fc28eec7df20795c796a15b4ab51e851c84))
+- **theme-default:** add VPFadeSlideYTransition ([0f845c6](https://github.com/vuepress/ecosystem/commit/0f845c6f780f00a1152aaac1c5073ce6ff255ee4))
+- **theme-default:** enable smooth scroll ([e5677c6](https://github.com/vuepress/ecosystem/commit/e5677c65ba2c581fd3bd59c154ca3c26fb3eeb2a))
+- **theme-default:** prefer useHeaders ([fc04be5](https://github.com/vuepress/ecosystem/commit/fc04be5d9788f1da7c78bc535b1d498521a38a21))
+
 # [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
 
 ### Bug Fixes
