@@ -15,8 +15,9 @@ export const useHeaders = (
 ): HeadersRef => {
   const headersRef: HeadersRef = ref([])
 
-  onContentUpdated(() => {
-    headersRef.value = getHeaders(toValue(options))
+  onContentUpdated((reason) => {
+    headersRef.value =
+      reason === 'beforeUnmount' ? [] : getHeaders(toValue(options))
   })
 
   return headersRef
