@@ -28,7 +28,7 @@ export const useBaiduAnalytics = (id: string): void => {
   document.head.appendChild(script)
 
   watch(
-    () => routePath,
+    routePath,
     (newLocation) => {
       window._hmt!.push(['_trackPageview', newLocation])
     },
