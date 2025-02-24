@@ -34,17 +34,6 @@ export interface CopyCodePluginOptions {
   showInMobile?: boolean
 
   /**
-   * The delay of registering copy code buttons, in ms.
-   * If the theme you are using has a switching animation causing the dom not available just after routing, then you might need it.
-   *
-   * 注册复制按钮的延时，单位 ms。
-   * 如果你使用的主题有切换动画，导致路由后瞬间 dom 不可用，你可能需要它。
-   *
-   * @default 500
-   */
-  delay?: number
-
-  /**
    * When copying code, selecting to ignore nodes in the code block will result in the text content of the selected nodes not being copied.
    *
    * 复制代码时，选择忽略代码块中的节点，被选中的节点文本内容将不会被复制
