@@ -15,6 +15,7 @@ declare global {
  */
 export const useBaiduAnalytics = (id: string): void => {
   if (__VUEPRESS_SSR__) return
+
   const router = useRouter()
 
   // avoid duplicated import
