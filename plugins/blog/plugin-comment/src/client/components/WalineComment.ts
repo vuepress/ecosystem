@@ -97,6 +97,7 @@ export default defineComponent({
             })
           }
         },
+        { flush: 'post' },
       )
     })
 
