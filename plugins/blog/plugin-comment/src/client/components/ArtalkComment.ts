@@ -84,6 +84,7 @@ export default defineComponent({
           artalk?.destroy()
           void initArtalk()
         },
+        { flush: 'post' },
       )
 
       watch(
