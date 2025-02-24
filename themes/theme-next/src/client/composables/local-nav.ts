@@ -1,6 +1,6 @@
 import type { ComputedRef, ShallowRef } from 'vue'
 import { computed, shallowRef } from 'vue'
-import { onContentUpdated } from '../composables/content-update.js'
+import { onContentUpdated } from 'vuepress/client'
 import type { MenuItem } from '../composables/outline.js'
 import { getHeaders } from '../composables/outline.js'
 import { useData } from './data.js'
@@ -29,8 +29,11 @@ export const useLocalNav = (): DocLocalNav => {
 
   const hasLocalNav = computed(() => headers.value.length > 0)
 
-  onContentUpdated(() => {
-    headers.value = getHeaders(frontmatter.value.outline ?? theme.value.outline)
+  onContentUpdated((reason) => {
+    headers.value =
+      reason === 'beforeUnmount'
+        ? []
+        : getHeaders(frontmatter.value.outline ?? theme.value.outline)
   })
 
   return {

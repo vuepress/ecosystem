@@ -4,7 +4,6 @@ export * from './theme-data.js'
 export * from './dark-mode.js'
 
 export * from './scroll-promise.js'
-export * from './content-update.js'
 
 export * from './aside.js'
 export * from './sidebar.js'

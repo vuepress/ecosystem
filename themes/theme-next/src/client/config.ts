@@ -4,7 +4,6 @@ import { hasGlobalComponent } from '@vuepress/helper/client'
 import { h } from 'vue'
 import { defineClientConfig } from 'vuepress/client'
 import Badge from './components/VPBadge.vue'
-import { Content } from './components/VPMarkdownContent.js'
 import {
   setupDarkMode,
   setupSidebarData,
@@ -15,11 +14,6 @@ import NotFound from './layouts/NotFound.vue'
 
 export default defineClientConfig({
   enhance({ app, router }) {
-    // Warning: provide onContentUpdated hook ⚠️⚠️⚠️
-    // Maybe a better way to do it, Maybe rewrite it or remove it
-    delete app._context.components.Content
-
-    app.component('Content', Content)
     if (!hasGlobalComponent('Badge')) app.component('Badge', Badge)
 
     // compat with @vuepress/plugin-docsearch and @vuepress/plugin-search

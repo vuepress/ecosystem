@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import VPDocOutlineItem from '@theme/VPDocOutlineItem.vue'
 import { shallowRef, useTemplateRef } from 'vue'
-import { onContentUpdated } from '../composables/content-update.js'
+import { onContentUpdated } from 'vuepress/client'
 import { useData } from '../composables/data.js'
 import type { MenuItem } from '../composables/outline.js'
 import {
@@ -14,8 +14,11 @@ const { frontmatter, theme } = useData()
 
 const headers = shallowRef<MenuItem[]>([])
 
-onContentUpdated(() => {
-  headers.value = getHeaders(frontmatter.value.outline ?? theme.value.outline)
+onContentUpdated((reason) => {
+  headers.value =
+    reason === 'beforeUnmount'
+      ? []
+      : getHeaders(frontmatter.value.outline ?? theme.value.outline)
 })
 
 const container = useTemplateRef<HTMLElement>('docOutline')

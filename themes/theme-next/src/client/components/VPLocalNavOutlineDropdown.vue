@@ -2,7 +2,7 @@
 import VPDocOutlineItem from '@theme/VPDocOutlineItem.vue'
 import { onKeyStroke } from '@vueuse/core'
 import { nextTick, ref, useTemplateRef, watch } from 'vue'
-import { onContentUpdated } from '../composables/content-update.js'
+import { onContentUpdated } from 'vuepress/client'
 import { useData } from '../composables/data.js'
 import type { MenuItem } from '../composables/outline.js'
 import { resolveTitle } from '../composables/outline.js'
