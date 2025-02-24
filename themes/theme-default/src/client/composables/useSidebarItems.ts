@@ -5,7 +5,7 @@ import { isLinkRelative, keys, startsWith } from '@vuepress/helper/client'
 import type { ComputedRef, InjectionKey } from 'vue'
 import { computed, inject, provide } from 'vue'
 import type { PageData, PageHeader } from 'vuepress/client'
-import { useRoute } from 'vuepress/client'
+import { useRoutePath } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
 import type {
   DefaultThemeHomePageFrontmatter,
@@ -183,7 +183,7 @@ export const setupSidebarItems = (): void => {
   const { frontmatter, page, routeLocale, themeLocale } = useData<
     DefaultThemeHomePageFrontmatter | DefaultThemeNormalPageFrontmatter
   >()
-  const route = useRoute()
+  const routePath = useRoutePath()
 
   const sidebarConfig = computed<SidebarOptions | false>(() =>
     frontmatter.value.home
@@ -197,7 +197,7 @@ export const setupSidebarItems = (): void => {
     resolveSidebarItems(
       sidebarConfig.value,
       page.value,
-      route.path,
+      routePath.value,
       routeLocale.value,
       page.value.headers,
     ),
