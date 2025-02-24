@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import VPFadeSlideYTransition from '@theme/VPFadeSlideYTransition.vue'
 import VPHome from '@theme/VPHome.vue'
 import VPNavbar from '@theme/VPNavbar.vue'
 import VPPage from '@theme/VPPage.vue'
@@ -120,16 +121,12 @@ const onBeforeLeave = scrollPromise.pending
     </slot>
 
     <slot name="page">
-      <VPHome v-if="frontmatter.home" />
-
-      <Transition
-        v-else
-        name="fade-slide-y"
-        mode="out-in"
+      <VPFadeSlideYTransition
         @before-enter="onBeforeEnter"
         @before-leave="onBeforeLeave"
       >
-        <VPPage :key="page.path">
+        <VPHome v-if="frontmatter.home" />
+        <VPPage v-else :key="page.path">
           <template #top>
             <slot name="page-top" />
           </template>
@@ -143,7 +140,7 @@ const onBeforeLeave = scrollPromise.pending
             <slot name="page-bottom" />
           </template>
         </VPPage>
-      </Transition>
+      </VPFadeSlideYTransition>
     </slot>
   </div>
 </template>
@@ -220,25 +217,6 @@ const onBeforeLeave = scrollPromise.pending
         display: block;
       }
     }
-  }
-}
-
-/**
- * fade-slide-y transition
- */
-.fade-slide-y {
-  &-enter-active {
-    transition: all 0.2s ease;
-  }
-
-  &-leave-active {
-    transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
-  }
-
-  &-enter-from,
-  &-leave-to {
-    opacity: 0;
-    transform: translateY(10px);
   }
 }
 </style>
