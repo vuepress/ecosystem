@@ -7,8 +7,8 @@ import { useData } from '@theme/useData'
 import { useScrollPromise } from '@theme/useScrollPromise'
 import { useSidebarItems } from '@theme/useSidebarItems'
 import type { VNode } from 'vue'
-import { computed, onMounted, onUnmounted, ref } from 'vue'
-import { useRouter } from 'vuepress/client'
+import { computed, ref } from 'vue'
+import { onContentUpdated } from 'vuepress/client'
 
 defineSlots<{
   'navbar'?: (props: Record<never, never>) => VNode | VNode[] | null
@@ -27,7 +27,6 @@ defineSlots<{
 }>()
 
 const { frontmatter, page, themeLocale } = useData()
-const router = useRouter()
 
 // navbar
 const shouldShowNavbar = computed(
@@ -77,16 +76,9 @@ const containerClass = computed(() => [
   frontmatter.value.pageClass,
 ])
 
-// close sidebar after navigation
-let unregisterRouterHook: () => void
-
-onMounted(() => {
-  unregisterRouterHook = router.afterEach(() => {
-    toggleSidebar(false)
-  })
-})
-onUnmounted(() => {
-  unregisterRouterHook()
+// close sidebar when content changes
+onContentUpdated(() => {
+  toggleSidebar(false)
 })
 
 // handle scrollBehavior with transition
