@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
+
+### Features
+
+- **helper:** support ref in useLocaleConfig ([97a0975](https://github.com/vuepress/ecosystem/commit/97a0975f7c2ec0bea09b11407a8631d06e0dc293))
+
 # [2.0.0-rc.78](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.77...v2.0.0-rc.78) (2025-02-17)
 
 ### Bug Fixes

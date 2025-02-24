@@ -1,5 +1,5 @@
-import type { ComputedRef } from 'vue'
-import { computed } from 'vue'
+import type { ComputedRef, MaybeRef } from 'vue'
+import { computed, toValue } from 'vue'
 import { useRouteLocale } from 'vuepress/client'
 import type { LocaleData } from 'vuepress/shared'
 import type { ExactLocaleConfig } from '../../shared/index.js'
@@ -11,9 +11,9 @@ import type { ExactLocaleConfig } from '../../shared/index.js'
  * @returns current locale config
  */
 export const useLocaleConfig = <T extends LocaleData>(
-  localesConfig: ExactLocaleConfig<T>,
+  localesConfig: MaybeRef<ExactLocaleConfig<T>>,
 ): ComputedRef<T> => {
   const routeLocale = useRouteLocale()
 
-  return computed(() => localesConfig[routeLocale.value] ?? {})
+  return computed(() => toValue(localesConfig)[routeLocale.value] ?? {})
 }

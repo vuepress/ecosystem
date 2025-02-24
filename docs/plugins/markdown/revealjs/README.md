@@ -224,12 +224,6 @@ For reveal.js options, see [reveal.js config](https://revealjs.com/config/). For
 - Default: `'SlidePage'`
 - Details: Layout component name to render slides
 
-### delay
-
-- Type: `number`
-- Default: `800`
-- Details: Delay time to render slides
-
 ## Styles
 
 You can customize the style via CSS variables:

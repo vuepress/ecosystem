@@ -736,6 +736,15 @@ body > div {
   console.log(a + b)
   ```
 
+  ::: warning
+
+  对于启用了 `twoslash` 的代码块：
+
+  - 不要在代码块中添加 `:v-pre` 标记, 这会导致 `twoslash` 无法正常运行。
+  - 为避免布局上的冲突，代码块不再显示 **行数** 。
+
+  :::
+
 ## 高级选项
 
 ### defaultLang

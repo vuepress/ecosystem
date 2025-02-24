@@ -14,4 +14,12 @@ export interface MarkdownItLineNumbersOptions {
    * @default false
    */
   removeLastLine?: boolean
+
+  /**
+   * Custom resolving function that whether to enable line numbers for a single code block
+   * @returns `boolean | undefined`
+   *  - `boolean` - Whether to enable line numbers
+   *  - `undefined` - built-in resolving
+   */
+  resolveLineNumbers?: (info: string) => boolean | undefined
 }

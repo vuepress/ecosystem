@@ -46,7 +46,6 @@ onMounted(() => {
 })
 </script>
 
-<!-- eslint-disable-next-line vue/no-root-v-if -->
 <template>
   <ul v-if="sidebarItems.length" class="vp-sidebar-items">
     <VPSidebarItem

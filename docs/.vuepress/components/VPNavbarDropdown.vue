@@ -3,8 +3,8 @@ import VPAutoLink from '@theme/VPAutoLink.vue'
 import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
 import type { AutoLinkOptions, NavGroup } from '@vuepress/theme-classic/client'
 import { useToggle } from '@vueuse/core'
-import { computed, toRefs, watch } from 'vue'
-import { useRoute } from 'vuepress/client'
+import { computed, toRefs } from 'vue'
+import { onContentUpdated } from 'vuepress/client'
 
 const props = defineProps<{
   /** dropdown config */
@@ -12,7 +12,6 @@ const props = defineProps<{
 }>()
 
 const { config } = toRefs(props)
-const route = useRoute()
 
 const [open, toggleOpen] = useToggle(false)
 
@@ -36,12 +35,9 @@ const handleDropdown = (e: UIEvent): void => {
   else toggleOpen(false)
 }
 
-watch(
-  () => route.path,
-  () => {
-    toggleOpen(false)
-  },
-)
+onContentUpdated(() => {
+  toggleOpen(false)
+})
 </script>
 
 <template>

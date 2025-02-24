@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-hint",
-  "version": "2.0.0-rc.78",
+  "version": "2.0.0-rc.79",
   "description": "VuePress plugin - markdown hint",
   "keywords": [
     "vuepress-plugin",
@@ -49,7 +49,7 @@
     "@vueuse/core": "^12.7.0"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "devDependencies": {
     "markdown-it": "^14.1.0"

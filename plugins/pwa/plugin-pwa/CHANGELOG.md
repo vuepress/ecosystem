@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
+
+### Bug Fixes
+
+- **plugin-pwa:** add missing type export ([519a4e6](https://github.com/vuepress/ecosystem/commit/519a4e63c14710c1bf521aee9ce3d60297e84029))
+
 # [2.0.0-rc.78](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.77...v2.0.0-rc.78) (2025-02-17)
 
 **Note:** Version bump only for package @vuepress/plugin-pwa

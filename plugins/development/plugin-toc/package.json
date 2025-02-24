@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-toc",
-  "version": "2.0.0-rc.74",
+  "version": "2.0.0-rc.79",
   "description": "VuePress plugin - toc",
   "keywords": [
     "vuepress-plugin",
@@ -40,7 +40,7 @@
     "vue-router": "^4.5.0"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

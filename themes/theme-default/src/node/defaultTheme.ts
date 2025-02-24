@@ -136,12 +136,7 @@ export const defaultTheme = ({
         : [],
 
       // @vuepress/plugin-medium-zoom
-      themePlugins.mediumZoom !== false
-        ? mediumZoomPlugin({
-            // should greater than page transition duration
-            delay: 300,
-          })
-        : [],
+      themePlugins.mediumZoom !== false ? mediumZoomPlugin() : [],
 
       // @vuepress/plugin-nprogress
       themePlugins.nprogress !== false ? nprogressPlugin() : [],

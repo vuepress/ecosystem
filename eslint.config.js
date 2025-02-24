@@ -125,7 +125,7 @@ export default vuepress(
     },
     vue: {
       overrides: {
-        // TODO: false positive in vue sfc
+        // FIXME: false positive in vue sfc
         'no-useless-assignment': 'off',
         'vue/multi-word-component-names': [
           'error',

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-register-components",
-  "version": "2.0.0-rc.66",
+  "version": "2.0.0-rc.79",
   "description": "VuePress plugin - register-components",
   "keywords": [
     "vuepress-plugin",
@@ -39,7 +39,7 @@
     "chokidar": "^3.6.0"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

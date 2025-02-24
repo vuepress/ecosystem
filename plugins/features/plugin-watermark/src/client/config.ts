@@ -6,7 +6,6 @@ import { setupWatermark } from './composables/index.js'
 import type { WatermarkOptions } from './helper/index.js'
 import { injectWatermarkConfig, useWatermarkOptions } from './helper/index.js'
 
-declare const __WM_DELAY__: number
 declare const __WM_GLOBAL__: boolean
 declare const __WM_OPTIONS__: WatermarkOptions
 
@@ -16,8 +15,6 @@ export default defineClientConfig({
   },
 
   setup() {
-    if (__VUEPRESS_SSR__) return
-
     const frontmatter = usePageFrontmatter<WatermarkPluginFrontmatter>()
     const watermarkOptions = useWatermarkOptions(
       computed(() => {
@@ -32,6 +29,6 @@ export default defineClientConfig({
       return Boolean(watermark ?? __WM_GLOBAL__)
     })
 
-    setupWatermark(watermarkOptions, enabled, __WM_DELAY__)
+    setupWatermark(watermarkOptions, enabled)
   },
 })

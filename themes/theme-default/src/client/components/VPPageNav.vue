@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import VPAutoLink from '@theme/VPAutoLink.vue'
+import { useData } from '@theme/useData'
 import { useNavigate } from '@theme/useNavigate'
 import { useRelatedLinks } from '@theme/useRelatedLinks'
-import { useThemeLocaleData } from '@theme/useThemeData'
 import { useEventListener } from '@vueuse/core'
 import { computed } from 'vue'
 
-const themeLocale = useThemeLocaleData()
+const { themeLocale } = useData()
 const navigate = useNavigate()
 
 const { prevLink, nextLink } = useRelatedLinks()
@@ -32,7 +32,6 @@ useEventListener('keydown', (event): void => {
 })
 </script>
 
-<!-- eslint-disable-next-line vue/no-root-v-if -->
 <template>
   <nav
     v-if="prevLink || nextLink"
@@ -45,7 +44,7 @@ useEventListener('keydown', (event): void => {
         {{ themeLocale.prev ?? 'Prev' }}
       </div>
       <div class="link">
-        <span>{{ prevLink.text }}</span>
+        <span class="external-link">{{ prevLink.text }}</span>
       </div>
     </VPAutoLink>
 
@@ -55,7 +54,7 @@ useEventListener('keydown', (event): void => {
         <span class="arrow right" />
       </div>
       <div class="link">
-        <span>{{ nextLink.text }}</span>
+        <span class="external-link">{{ nextLink.text }}</span>
       </div>
     </VPAutoLink>
   </nav>
@@ -98,6 +97,14 @@ useEventListener('keydown', (event): void => {
 
     &:hover {
       background: var(--vp-c-control);
+    }
+
+    &.external-link::after {
+      display: none;
+    }
+
+    &:not(.external-link) .external-link::after {
+      display: none;
     }
 
     .hint {

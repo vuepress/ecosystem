@@ -2,7 +2,12 @@ import { redirectMap } from '@temp/redirect/map.js'
 import { entries, isLinkHttp } from '@vuepress/helper/client'
 import { usePreferredLanguages, watchImmediate } from '@vueuse/core'
 import { computed } from 'vue'
-import { useRoute, useRouteLocale, useRouter } from 'vuepress/client'
+import {
+  useRoute,
+  useRouteLocale,
+  useRoutePath,
+  useRouter,
+} from 'vuepress/client'
 import type { RedirectBehaviorConfig } from '../../shared/index.js'
 import { normalizePath } from '../../shared/index.js'
 
@@ -18,21 +23,23 @@ export const setupDevServerRedirect = ({
   const route = useRoute()
   const router = useRouter()
   const routeLocale = useRouteLocale()
+  const routePath = useRoutePath()
 
   const isRootLocale = computed(() => routeLocale.value === '/')
 
   const handleLocaleRedirect = (): void => {
+    const routePathValue = routePath.value
     const routes = router.getRoutes()
     const defaultLocale =
       defaultLocalePath &&
       routes.some(
-        ({ path }) => path === route.path.replace('/', defaultLocalePath),
+        ({ path }) => path === routePathValue.replace('/', defaultLocalePath),
       )
         ? defaultLocalePath
         : routes.find(
             ({ path }) =>
-              route.path.split('/').length >= 3 &&
-              path === route.path.replace(/^\/[^/]+\//, '/'),
+              routePathValue.split('/').length >= 3 &&
+              path === routePathValue.replace(/^\/[^/]+\//, '/'),
           )?.path
 
     let matchedLocalePath: string | null = null
@@ -44,7 +51,9 @@ export const setupDevServerRedirect = ({
         if (langs.includes(lang)) {
           if (
             localeFallback &&
-            routes.every(({ path }) => path !== route.path.replace('/', path))
+            routes.every(
+              ({ path }) => path !== routePathValue.replace('/', path),
+            )
           )
             continue
 
@@ -60,11 +69,11 @@ export const setupDevServerRedirect = ({
     // a locale matches
     if (matchedLocalePath) {
       const hasLocalePage = routes.some(
-        ({ path }) => route.path.replace('/', matchedLocalePath) === path,
+        ({ path }) => routePathValue.replace('/', matchedLocalePath) === path,
       )
       const localeRoute = route.fullPath.replace('/', matchedLocalePath)
 
-      const routePath =
+      const redirectPath =
         // the locale page exists
         hasLocalePage
           ? localeRoute
@@ -78,29 +87,26 @@ export const setupDevServerRedirect = ({
               : // as is to get a 404 page of that locale
                 localeRoute
 
-      router.replace(routePath)
+      router.replace(redirectPath)
     }
     // we have a default page
     else if (defaultRoute) {
       router.replace(defaultRoute)
-    } else if (route.path !== '/404.html') {
+    } else if (routePath.value !== '/404.html') {
       router.replace('/404.html')
     }
   }
 
-  watchImmediate(
-    () => route.path,
-    (path) => {
-      // handle redirects
-      for (const [from, to] of entries(redirectMap))
-        if (normalizePath(path.toLowerCase()) === from.toLowerCase()) {
-          if (isLinkHttp(to)) window.open(to)
-          else router.replace(to)
+  watchImmediate(routePath, (path) => {
+    // handle redirects
+    for (const [from, to] of entries(redirectMap))
+      if (normalizePath(path.toLowerCase()) === from.toLowerCase()) {
+        if (isLinkHttp(to)) window.open(to)
+        else router.replace(to)
 
-          return
-        }
+        return
+      }
 
-      if (autoLocale && isRootLocale.value) handleLocaleRedirect()
-    },
-  )
+    if (autoLocale && isRootLocale.value) handleLocaleRedirect()
+  })
 }

@@ -1,12 +1,12 @@
-import { useLocaleConfig, wait } from '@vuepress/helper/client'
+import { useLocaleConfig } from '@vuepress/helper/client'
 import {
   useClipboard,
   useEventListener,
   useMediaQuery,
   watchImmediate,
 } from '@vueuse/core'
-import { computed, nextTick } from 'vue'
-import { usePageData } from 'vuepress/client'
+import { computed } from 'vue'
+import { onContentUpdated } from 'vuepress/client'
 import type { CopyCodePluginLocaleConfig } from '../types.js'
 
 import '../styles/copy-code.css'
@@ -15,9 +15,6 @@ import '../styles/vars.css'
 export interface UseCopyCodeOptions {
   locales: CopyCodePluginLocaleConfig
   selector: string[]
-
-  /** @default 500 */
-  delay: number
   /** @default 2000 */
   duration: number
   /** @default false */
@@ -50,7 +47,6 @@ export interface UseCopyCodeOptions {
 const SHELL_RE = /language-(shellscript|shell|bash|sh|zsh)/
 
 export const useCopyCode = ({
-  delay = 500,
   duration = 2000,
   locales,
   selector,
@@ -64,11 +60,10 @@ export const useCopyCode = ({
    * On small-screen devices, the copy button is not displayed by default in order to prevent
    * it from obstructing content, as the `:hover` effect can be triggered by `touch` events.
    */
-  const is419 = useMediaQuery('(max-width: 419px)')
-  const enabled = computed(() => !is419.value || showInMobile)
+  const isMobile = useMediaQuery('(max-width: 419px)')
+  const enabled = computed(() => !isMobile.value || showInMobile)
 
   const locale = useLocaleConfig(locales)
-  const page = usePageData()
 
   const insertCopyButton = (codeBlockElement: HTMLElement): void => {
     if (codeBlockElement.hasAttribute('copy-code')) return
@@ -84,18 +79,22 @@ export const useCopyCode = ({
     codeBlockElement.setAttribute('copy-code', '')
   }
 
-  const appendCopyButton = async (): Promise<void> => {
+  const appendCopyButton = (): void => {
     document.body.classList.toggle('no-copy-code', !enabled.value)
     if (!enabled.value) return
 
-    await nextTick()
-    await wait(delay)
     document
       .querySelectorAll<HTMLElement>(selector.join(','))
       .forEach(insertCopyButton)
   }
 
-  watchImmediate(() => [page.value.path, enabled.value], appendCopyButton)
+  watchImmediate(enabled, appendCopyButton, {
+    flush: 'post',
+  })
+
+  onContentUpdated((reason) => {
+    if (reason !== 'beforeUnmount') appendCopyButton()
+  })
 
   const { copy } = useClipboard({ legacy: true })
   const timeoutIdMap = new WeakMap<HTMLElement, ReturnType<typeof setTimeout>>()

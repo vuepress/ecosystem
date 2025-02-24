@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/shiki-twoslash",
-  "version": "2.0.0-rc.78",
+  "version": "2.0.0-rc.79",
   "description": "VuePress shiki twoslash",
   "keywords": [
     "vuepress",
@@ -41,7 +41,7 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@shikijs/twoslash": "^2.4.1",
+    "@shikijs/twoslash": "^3.0.0",
     "@vuepress/helper": "workspace:*",
     "floating-vue": "^5.2.2",
     "mdast-util-from-markdown": "^2.0.2",
@@ -52,11 +52,11 @@
   },
   "devDependencies": {
     "@types/hast": "^3.0.4",
-    "shiki": "^2.4.1",
+    "shiki": "^3.0.0",
     "vue": "^3.5.13"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

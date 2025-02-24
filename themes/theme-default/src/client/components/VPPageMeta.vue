@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import VPAutoLink from '@theme/VPAutoLink.vue'
 import VPEditIcon from '@theme/VPEditIcon.vue'
+import { useData } from '@theme/useData'
 import { useLastUpdated } from '@theme/useLastUpdated'
 import { useThemeLocaleData } from '@theme/useThemeData'
 import { useContributors, useEditLink } from '@vuepress/theme-helper/client'
 
-const themeLocale = useThemeLocaleData()
+const { themeLocale } = useData()
 const editLink = useEditLink()
 const lastUpdated = useLastUpdated()
 const contributors = useContributors()

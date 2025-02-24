@@ -10,25 +10,25 @@ export const prepareRevealJsEntry = async (
   await app.writeTemp(
     'revealjs/index.js',
     `\
-export const useRevealJs = () => [
+export const useRevealJs = () => Promise.all([
   import(/* webpackChunkName: "reveal" */ "${getModulePath(
     'reveal.js/dist/reveal.esm.js',
     import.meta,
-  )}"),
+  )}").then(({ default: RevealJs }) => RevealJs),
   import(/* webpackChunkName: "reveal" */ "${getModulePath(
     'reveal.js/plugin/markdown/markdown.esm.js',
     import.meta,
-  )}"),
+  )}").then(({ default: plugin }) => plugin),
 ${revealPlugins
   .map(
     (plugin) =>
       `  import(/* webpackChunkName: "reveal" */ "${getModulePath(
         `reveal.js/plugin/${plugin}/${plugin}.esm.js`,
         import.meta,
-      )}")`,
+      )}").then(({ default: plugin }) => plugin)`,
   )
   .join(',\n')}
-];
+]);
 `,
   )
 }

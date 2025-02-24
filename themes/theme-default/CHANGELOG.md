@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
+
+### Bug Fixes
+
+- **theme-default:** fix PageNav external icon, close [#357](https://github.com/vuepress/ecosystem/issues/357) ([#358](https://github.com/vuepress/ecosystem/issues/358)) ([c4f539f](https://github.com/vuepress/ecosystem/commit/c4f539f008f1abdac82fd0bdcbd67b15bfbc988d))
+
 # [2.0.0-rc.78](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.77...v2.0.0-rc.78) (2025-02-17)
 
 **Note:** Version bump only for package @vuepress/theme-default

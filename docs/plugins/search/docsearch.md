@@ -1,5 +1,5 @@
 ---
-icon: search
+icon: https://docsearch.algolia.com/img/favicon.ico
 ---
 
 # docsearch

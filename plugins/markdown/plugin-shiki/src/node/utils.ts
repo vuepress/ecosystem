@@ -4,6 +4,8 @@ import { customAlphabet } from 'nanoid'
 
 const VUE_RE = /-vue$/
 
+export const TWOSLASH_RE = /\btwoslash\b/
+
 export const PLUGIN_NAME = '@vuepress/plugin-shiki'
 
 export const logger = new Logger(PLUGIN_NAME)

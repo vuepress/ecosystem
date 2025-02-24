@@ -2,12 +2,12 @@
 <script setup lang="ts">
 import { useBlogCategory } from '@vuepress/plugin-blog/client'
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
-import { RouteLink, useRoute } from 'vuepress/client'
+import { RouteLink, useRoutePath } from 'vuepress/client'
 import type { ArticleInfo } from '../components/ArticleList.vue'
 import ArticleList from '../components/ArticleList.vue'
 
-const route = useRoute()
 const categoryMap = useBlogCategory<ArticleInfo>('category')
+const routePath = useRoutePath()
 </script>
 
 <template>
@@ -19,7 +19,7 @@ const categoryMap = useBlogCategory<ArticleInfo>('category')
             v-for="({ items, path }, name) in categoryMap.map"
             :key="name"
             :to="path"
-            :active="route.path === path"
+            :active="routePath === path"
             class="category"
           >
             {{ name }}

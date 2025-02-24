@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-revealjs",
-  "version": "2.0.0-rc.78",
+  "version": "2.0.0-rc.79",
   "description": "VuePress plugin - markdown reveals",
   "keywords": [
     "vuepress-plugin",
@@ -53,7 +53,7 @@
     "vue": "^3.5.13"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "devDependencies": {
     "markdown-it": "^14.1.0"

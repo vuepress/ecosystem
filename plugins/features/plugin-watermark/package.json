@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-watermark",
-  "version": "2.0.0-rc.78",
+  "version": "2.0.0-rc.79",
   "description": "VuePress plugin - watermark",
   "keywords": [
     "vuepress-plugin",
@@ -42,7 +42,7 @@
     "watermark-js-plus": "^1.5.8"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

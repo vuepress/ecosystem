@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import VPAutoLink from '@theme/VPAutoLink.vue'
 import VPNavbarDropdown from '@theme/VPNavbarDropdown.vue'
+import { useData } from '@theme/useData'
 import { useNavbarConfig } from '@theme/useNavbarConfig'
 import { useNavbarRepo } from '@theme/useNavbarRepo'
 import { useNavbarSelectLanguage } from '@theme/useNavbarSelectLanguage'
-import { useThemeLocaleData } from '@theme/useThemeData'
 import { DeviceType, useUpdateDeviceStatus } from '@theme/useUpdateDeviceStatus'
 import { computed, ref } from 'vue'
 
+const { themeLocale } = useData()
 const navbarConfig = useNavbarConfig()
 const navbarSelectLanguage = useNavbarSelectLanguage()
 const navbarRepo = useNavbarRepo()
@@ -15,7 +16,6 @@ const navbarRepo = useNavbarRepo()
 const isMobile = ref(false)
 
 const navbarLabel = computed(() => {
-  const themeLocale = useThemeLocaleData()
   return themeLocale.value.navbarLabel ?? 'site navigation'
 })
 
@@ -34,7 +34,6 @@ useUpdateDeviceStatus(
 )
 </script>
 
-<!-- eslint-disable-next-line vue/no-root-v-if -->
 <template>
   <nav
     v-if="navbarLinks.length"

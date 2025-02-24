@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
+
+### Features
+
+- **plugin-shiki:** disable `line-numbers` within `twoslash` code block ([#354](https://github.com/vuepress/ecosystem/issues/354)) ([17ff2ba](https://github.com/vuepress/ecosystem/commit/17ff2ba94f961acdcc7dc464f87f1df1258cfc72))
+
 # [2.0.0-rc.78](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.77...v2.0.0-rc.78) (2025-02-17)
 
 **Note:** Version bump only for package @vuepress/plugin-shiki
