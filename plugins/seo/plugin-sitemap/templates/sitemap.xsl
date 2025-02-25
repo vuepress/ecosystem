@@ -37,10 +37,6 @@
             background: var(--bg-color);
           }
 
-          html {
-            font-size: 14px;
-          }
-
           body {
             min-height: 100vh;
             color: var(--text-color);
@@ -91,12 +87,12 @@
             color: var(--bg-color);
 
             font-weight: bold;
-            font-size: 16px;
+            font-size: 1rem;
           }
 
           @media (max-width: 719px) {
             th {
-              font-size: 14px;
+              font-size: 0.875rem;
             }
           }
 
@@ -124,7 +120,7 @@
 
           @media (max-width: 719px) {
             td {
-              font-size: 12px;
+              font-size: 0.75rem;
             }
           }
 
@@ -133,12 +129,12 @@
           }
 
           footer {
-            margin-top: 10px;
-            padding: 4px;
+            margin-top: 0.75rem;
+            padding: 0.25rem;
 
             color: #888;
 
-            font-size: 12px;
+            font-size: 0.75rem;
             text-align: center;
           }
         </style>
