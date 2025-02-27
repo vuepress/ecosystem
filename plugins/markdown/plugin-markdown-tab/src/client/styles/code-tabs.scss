@@ -1,16 +1,19 @@
 .vp-code-tabs-nav {
-  overflow-x: auto;
+  overflow: auto hidden;
 
-  margin: 0.75rem 0 -0.75rem;
-  padding: 0;
+  margin: 0.75rem 0 0;
+  padding: 0 0.75rem;
   border-radius: 6px 6px 0 0;
 
   background: var(--code-tabs-c-bg);
+  box-shadow: inset 0 -1px var(--code-tabs-c-divider);
   list-style: none;
 
   white-space: nowrap;
 
-  transition: background var(--vp-t-color);
+  transition:
+    background var(--vp-t-color),
+    box-shadow var(--vp-t-color);
 
   @media print {
     display: none;
@@ -27,80 +30,57 @@
 
   min-width: 3rem;
   margin: 0;
-  padding: 6px 12px;
+  padding: 0 12px;
   border-width: 0;
-  border-radius: 6px 6px 0 0;
+  border-bottom: 1px solid transparent;
 
-  background: transparent;
+  background-color: transparent;
   color: var(--code-tabs-c-text);
 
   font-weight: 600;
   font-size: 0.875em;
-  line-height: 1.4;
+  line-height: 48px;
+  white-space: nowrap;
 
   cursor: pointer;
 
   transition:
-    background var(--vp-t-color),
-    color var(--vp-t-color);
+    color var(--vp-t-color),
+    border-color var(--vp-t-color);
 
   &:hover {
-    background: var(--code-tabs-c-hover);
+    color: var(--code-tabs-c-hover-text);
   }
 
-  &::before,
   &::after {
-    content: ' ';
+    content: '';
 
     position: absolute;
-    bottom: 0;
+    right: 8px;
+    bottom: -1px;
+    left: 8px;
     z-index: 1;
 
-    width: 6px;
-    height: 6px;
+    display: block;
+
+    width: auto;
+    height: 2px;
+    border-radius: 2px;
+
+    background: transparent;
+
+    transition: background var(--vp-t-color);
   }
 
-  &::before {
-    right: 100%;
-  }
-
-  &::after {
-    left: 100%;
+  &:focus-visible {
+    outline: none;
   }
 
   &.active {
-    background: var(--code-c-bg, var(--vp-c-bg-alt));
-
-    &::before {
-      background: radial-gradient(
-        12px at left top,
-        transparent 50%,
-        var(--code-c-bg) 50%
-      );
-    }
+    color: var(--code-tabs-c-active-text);
 
     &::after {
-      background: radial-gradient(
-        12px at right top,
-        transparent 50%,
-        var(--code-c-bg) 50%
-      );
-    }
-  }
-
-  &:first-child {
-    &::before {
-      display: none;
-    }
-
-    [dir='rtl'] & {
-      &::before {
-        display: block;
-      }
-
-      &::after {
-        display: none;
-      }
+      background: var(--code-tabs-c-active-divider);
     }
   }
 }
@@ -117,11 +97,12 @@
   }
 
   div[class*='language-'] {
+    margin-top: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 
     @media (max-width: 419px) {
-      margin: 0.75rem -1.5rem;
+      margin: 0 -1.5rem 0.75rem;
       border-radius: 0;
     }
 
