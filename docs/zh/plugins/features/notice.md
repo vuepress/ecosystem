@@ -54,7 +54,7 @@ export default {
 这是一个例子:
 
 ```ts
-import path from 'node:path'
+import { path } from 'vuepress/utils'
 import { noticePlugin } from '@vuepress/plugin-notice'
 
 export default {
