@@ -55,8 +55,8 @@ A notice configuration item includes:
 Here is an example:
 
 ```ts
-import { path } from 'vuepress/utils'
 import { noticePlugin } from '@vuepress/plugin-notice'
+import { path } from 'vuepress/utils'
 
 export default {
   plugins: [
