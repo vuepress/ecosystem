@@ -256,6 +256,19 @@ export default defineUserConfig({
           ],
           fullscreen: true,
         },
+        {
+          match: /^\/notice\/file\.html$/,
+          title: 'Notice Title',
+          contentFile: path.resolve(__dirname, './notice.md'),
+          actions: [
+            {
+              text: 'Primary Action',
+              link: 'https://example.com/',
+              type: 'primary',
+            },
+            { text: 'Default Action' },
+          ],
+        },
       ],
     }),
     photoSwipePlugin(),
