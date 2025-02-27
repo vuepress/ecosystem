@@ -1,7 +1,21 @@
+/**
+ * Code-Tabs
+ * -------------------------------------------------------------------
+ */
 :root {
-  --code-tabs-c-text: var(--code-c-text);
+  --code-tabs-c-text: var(--vp-c-text-mute);
+  --code-tabs-c-hover-text: var(--vp-c-text);
+  --code-tabs-c-active-text: var(--vp-c-text);
   --code-tabs-c-bg: var(--code-c-highlight-bg);
-  --code-tabs-c-hover: var(--code-c-bg, var(--vp-c-bg-alt));
+  --code-tabs-c-divider: var(--vp-c-gutter);
+  --code-tabs-c-active-divider: var(--vp-c-accent);
+}
+
+/**
+ * Tabs
+ * -------------------------------------------------------------------
+ */
+:root {
   --tab-c-bg: var(--vp-c-bg);
   --tab-c-nav: var(--vp-c-text);
   --tab-c-bg-nav: var(--vp-c-grey-bg);
