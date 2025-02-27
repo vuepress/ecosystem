@@ -273,7 +273,6 @@ onContentUpdated(() => {
   }
 
   .vp-navbar-dropdown-wrapper.mobile & > a {
-    font-size: 15px;
     line-height: 2rem;
   }
 }
@@ -290,7 +289,6 @@ onContentUpdated(() => {
     padding-bottom: 0;
     border-top: 0;
 
-    font-size: 15px;
     line-height: 2rem;
   }
 
@@ -325,7 +323,6 @@ onContentUpdated(() => {
 
   .vp-navbar-dropdown-wrapper.mobile & {
     padding-left: 1rem;
-    font-size: 14px;
   }
 }
 </style>

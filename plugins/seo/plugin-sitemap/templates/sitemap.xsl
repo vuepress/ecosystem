@@ -67,7 +67,7 @@
 
           table {
             width: 100%;
-            border-radius: 8px;
+            border-radius: 0.5rem;
             border-collapse: collapse;
             text-align: center;
             overflow: hidden;
@@ -80,7 +80,7 @@
           }
 
           th {
-            min-width: 56px;
+            min-width: 3.5em;
             padding: 0.6em 1em;
 
             background-color: var(--brand-color);

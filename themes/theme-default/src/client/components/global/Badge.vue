@@ -45,15 +45,15 @@ defineSlots<{
   display: inline-block;
   vertical-align: top;
 
-  height: 18px;
+  height: 1.3em;
   padding: 0 6px;
   border-radius: 3px;
 
   background: var(--vp-c-accent-soft);
   color: var(--vp-c-accent);
 
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 0.875em;
+  line-height: 1.3;
 
   transition:
     background var(--vp-t-color),
