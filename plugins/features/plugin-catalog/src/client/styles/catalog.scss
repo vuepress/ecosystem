@@ -1,6 +1,6 @@
 .vp-catalog {
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 
   &-item {
     counter-increment: catalog-item;
@@ -154,9 +154,9 @@
 .vp-sub-catalog-link {
   display: inline-block;
 
-  margin: 4px 8px;
-  padding: 4px 8px;
-  border-radius: 6px;
+  margin: 0.25rem 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
 
   background-color: var(--catalog-c-control);
 
