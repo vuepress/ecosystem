@@ -1,5 +1,6 @@
 import type { BackToTopPluginOptions } from '@vuepress/plugin-back-to-top'
 import type { CopyCodePluginOptions } from '@vuepress/plugin-copy-code'
+import type { GitPluginOptions } from '@vuepress/plugin-git'
 import type { LinksCheckPluginOptions } from '@vuepress/plugin-links-check'
 import type { MarkdownHintPluginOptions } from '@vuepress/plugin-markdown-hint'
 import type { MarkdownTabPluginOptions } from '@vuepress/plugin-markdown-tab'
@@ -26,7 +27,7 @@ export interface DefaultThemePluginsOptions {
   /**
    * Enable @vuepress/plugin-git or not
    */
-  git?: boolean
+  git?: GitPluginOptions | boolean
 
   /**
    * Enable @vuepress/plugin-markdown-hint or not

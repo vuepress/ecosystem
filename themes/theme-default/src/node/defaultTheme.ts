@@ -138,7 +138,8 @@ export const defaultTheme = ({
         ? gitPlugin({
             createdTime: false,
             updatedTime: localeOptions.lastUpdated !== false,
-            contributors: localeOptions.contributors !== false,
+            changelog: { repoUrl: localeOptions.repo || '' },
+            ...(isPlainObject(themePlugins.git) ? themePlugins.git : {}),
           })
         : [],
 

@@ -1,10 +1,7 @@
 import type { App } from 'vuepress'
+import type { GitChangelog } from '../shared/index.js'
 import type { ChangelogOptions, ContributorInfo } from './options.js'
-import type {
-  GitChangelog,
-  KnownGitProvider,
-  MergedRawCommit,
-} from './typings.js'
+import type { KnownGitProvider, MergedRawCommit } from './typings.js'
 import {
   getContributorInfo,
   getUserNameWithNoreplyEmail,
