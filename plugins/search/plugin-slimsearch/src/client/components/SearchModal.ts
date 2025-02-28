@@ -12,7 +12,6 @@ import {
   defineAsyncComponent,
   defineComponent,
   h,
-  inject,
   onMounted,
   onUnmounted,
   ref,
