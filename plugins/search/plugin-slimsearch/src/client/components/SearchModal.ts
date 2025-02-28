@@ -13,7 +13,6 @@ import {
   defineComponent,
   h,
   inject,
-  nextTick,
   onMounted,
   onUnmounted,
   ref,
@@ -73,6 +72,8 @@ export default defineComponent({
 
     const inputElement = shallowRef<HTMLInputElement>()
     const suggestionsElement = shallowRef<HTMLDivElement>()
+    const body = shallowRef<HTMLElement>()
+    const isLocked = useScrollLock(body.value)
 
     const hasSuggestions = computed(
       () =>
@@ -99,38 +100,38 @@ export default defineComponent({
       }
     })
 
-    const updateQueries = useDebounceFn(
-      (): void => {
-        void (
-          searchOptions.value.querySplitter?.(input.value) ??
-          Promise.resolve(input.value.split(' '))
-        ).then((result) => {
-          queries.value = result
-        })
-      },
-      Math.min(options.searchDelay, options.suggestDelay),
+    onClickOutside(suggestionsElement, () => {
+      showSuggestion.value = false
+    })
+
+    watchImmediate(
+      input,
+      useDebounceFn(
+        () =>
+          (
+            searchOptions.value.querySplitter?.(input.value) ??
+            Promise.resolve(input.value.split(' '))
+          ).then((result) => {
+            queries.value = result
+          }),
+        Math.min(options.searchDelay, options.suggestDelay),
+      ),
     )
 
-    watchImmediate(input, updateQueries)
-
     onMounted(() => {
-      const isLocked = useScrollLock(document.body)
+      body.value = document.body
 
-      watch(isActive, async (value) => {
-        isLocked.value = value
-        if (value) {
-          await nextTick()
-          inputElement.value?.focus()
-        }
-      })
+      watch(
+        isActive,
+        (value) => {
+          if (value) inputElement.value?.focus()
+        },
+        { flush: 'post' },
+      )
+    })
 
-      onClickOutside(suggestionsElement, () => {
-        showSuggestion.value = false
-      })
-
-      onUnmounted(() => {
-        isLocked.value = false
-      })
+    onUnmounted(() => {
+      isLocked.value = false
     })
 
     return (): VNode | null =>
