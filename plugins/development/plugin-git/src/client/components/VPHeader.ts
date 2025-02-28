@@ -1,31 +1,19 @@
-import { defineComponent, h } from 'vue'
+import type { FunctionalComponent } from 'vue'
+import { h } from 'vue'
 
-export const VPHeader = defineComponent({
-  name: 'VPHeader',
-  props: {
-    level: {
-      type: Number,
-      default: 2,
-    },
-    title: {
-      type: String,
-      require: true,
-    },
-    anchor: {
-      type: String,
-      require: true,
-    },
-  },
-  setup(props) {
-    return () =>
-      h(
-        `h${props.level || 2}`,
-        { id: props.anchor, tabindex: '-1' },
-        h(
-          'a',
-          { href: `#${props.anchor}`, class: 'header-anchor' },
-          h('span', props.title),
-        ),
-      )
-  },
-})
+interface VPHeaderProps {
+  level?: number
+  title: string
+  anchor: string
+}
+
+export const VPHeader: FunctionalComponent<VPHeaderProps> = ({
+  level = 2,
+  title,
+  anchor,
+}) =>
+  h(
+    `h${level || 2}`,
+    { id: anchor, tabindex: '-1' },
+    h('a', { href: `#${anchor}`, class: 'header-anchor' }, h('span', title)),
+  )

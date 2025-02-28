@@ -1,5 +1,6 @@
-import type { VNode } from 'vue'
-import { computed, defineComponent, h, ref } from 'vue'
+import { useToggle } from '@vueuse/core'
+import type { FunctionalComponent } from 'vue'
+import { computed, defineComponent, h } from 'vue'
 import { usePageData, usePageFrontmatter, usePageLang } from 'vuepress/client'
 import type {
   GitChangelog,
@@ -21,10 +22,7 @@ export const Changelog = defineComponent({
       type: Number,
       default: 2,
     },
-    title: {
-      type: String,
-      default: '',
-    },
+    title: String,
   },
   setup(props) {
     const page = usePageData<GitPluginPageData>()
@@ -59,13 +57,9 @@ export const Changelog = defineComponent({
       return formatter.format(latest.date)
     })
 
-    const active = ref(false)
+    const [active, toggle] = useToggle()
 
-    const toggle = (): void => {
-      active.value = !active.value
-    }
-
-    const ChangelogHeader = (): VNode =>
+    const ChangelogHeader: FunctionalComponent = () =>
       h('div', { class: 'changelog-header', onClick: toggle }, [
         h('div', { class: 'latest-updated' }, [
           h('span', { class: 'vpi-changelog' }),
@@ -78,7 +72,9 @@ export const Changelog = defineComponent({
         ]),
       ])
 
-    const ReleaseTag = ({ item }: { item: ResolvedChangelog }): VNode =>
+    const ReleaseTag: FunctionalComponent<{ item: ResolvedChangelog }> = ({
+      item,
+    }) =>
       h(
         'li',
         { class: 'changelog release-tag' },
@@ -92,7 +88,9 @@ export const Changelog = defineComponent({
         ]),
       )
 
-    const Commit = ({ item }: { item: ResolvedChangelog }): VNode =>
+    const Commit: FunctionalComponent<{ item: ResolvedChangelog }> = ({
+      item,
+    }) =>
       h('li', { class: 'changelog commit' }, [
         h(
           item.commitUrl ? 'a' : 'span',

@@ -1,6 +1,6 @@
 .vp-changelog {
-  margin: 2rem 0 1rem;
-  padding: 0 1rem;
+  margin-block: 2rem 1rem;
+  padding-inline: 0 1rem;
   border-radius: 8px;
 
   background-color: var(--changelog-bg);
@@ -24,7 +24,7 @@
     align-items: center;
     justify-content: space-between;
 
-    padding: 1rem 0;
+    padding-block: 1rem;
 
     font-weight: bold;
 
@@ -41,7 +41,7 @@
 
       width: 1.2em;
       height: 1.2em;
-      margin-right: 4px;
+      margin-inline-end: 4px;
 
       background-color: currentcolor;
       color: var(--vp-c-text-mute);
@@ -65,16 +65,17 @@
 
   .changelog-list {
     display: none;
-    margin: 0.5rem 0;
-    padding-left: 0;
+    margin-block: 0.5rem;
+    padding-inline-start: 0;
     list-style: none;
   }
 
   &.active {
-    padding: 0 1rem 0.5rem;
+    padding-block: 0 0.5rem;
+    padding-inline: 1rem;
 
     .changelog-header {
-      padding-bottom: 0.5rem;
+      padding-block-end: 0.5rem;
     }
 
     .changelog-list {
@@ -84,11 +85,11 @@
 
   .changelog {
     position: relative;
-    margin-top: 8px;
-    padding-left: 20px;
+    margin-block-start: 8px;
+    padding-inline-start: 20px;
 
     &:first-child {
-      margin-top: 0;
+      margin-block-start: 0;
     }
 
     &::before {
@@ -113,15 +114,15 @@
     }
 
     &.commit::before {
-      --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m3-9v6m0 6v6'/%3E%3C/svg%3E");
+      --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m3-9v6m0 6v6'/%3E%3C/svg%3E");
     }
 
     &.release-tag::before {
-      --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M6.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3Cpath d='M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592-5.592a2.41 2.41 0 0 0 0-3.408l-7.71-7.71A2 2 0 0 0 11.172 3H6a3 3 0 0 0-3 3'/%3E%3C/g%3E%3C/svg%3E");
+      --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M6.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3Cpath d='M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592-5.592a2.41 2.41 0 0 0 0-3.408l-7.71-7.71A2 2 0 0 0 11.172 3H6a3 3 0 0 0-3 3'/%3E%3C/g%3E%3C/svg%3E");
     }
 
     .release-tag {
-      margin-right: 4px;
+      margin-inline-end: 4px;
       text-decoration: none;
     }
 
@@ -131,16 +132,16 @@
     }
 
     .hash {
-      margin-right: 4px;
+      margin-inline-end: 4px;
       text-decoration: none;
     }
 
     .divider {
-      margin-right: 8px;
+      margin-inline-end: 8px;
     }
 
     .message {
-      margin-right: 8px;
+      margin-inline-end: 8px;
       line-height: 1.7;
     }
 

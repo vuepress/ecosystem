@@ -18,10 +18,7 @@ export const Contributors = defineComponent({
       type: Number,
       default: 2,
     },
-    title: {
-      type: String,
-      default: '',
-    },
+    title: String,
   },
   setup(props) {
     const page = usePageData<GitPluginPageData>()
