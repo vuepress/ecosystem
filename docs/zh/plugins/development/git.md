@@ -376,7 +376,7 @@ interface GitChangelog {
 组件通过以下方式导入：
 
 ```ts
-import { Contributors, Changelog } from '@vuepress/plugin-git/client'
+import { Changelog, Contributors } from '@vuepress/plugin-git/client'
 ```
 
 ### Contributors

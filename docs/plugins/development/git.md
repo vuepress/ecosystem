@@ -384,7 +384,7 @@ The plugin provides components related to Git information, which can be used in 
 The components are imported as follows:
 
 ```ts
-import { Contributors, Changelog } from '@vuepress/plugin-git/client'
+import { Changelog, Contributors } from '@vuepress/plugin-git/client'
 ```
 
 ### Contributors
