@@ -5,7 +5,7 @@ const IS_PROD = process.env.NODE_ENV === 'production'
 
 export default defaultTheme({
   logo: '/images/hero.png',
-  repo: 'vuepress/ecosystem',
+  repo: 'https://github.com/vuepress/ecosystem',
   docsDir: 'docs',
   hostname: 'https://ecosystem.vuejs.press',
 

@@ -1,6 +1,7 @@
 import { execa } from 'execa'
+import type { GitContributor } from '../../shared/index.js'
 import type { GitPluginOptions } from '../options.js'
-import type { GitContributor, MergedRawCommit, RawCommit } from '../typings.js'
+import type { MergedRawCommit, RawCommit } from '../typings.js'
 
 const SPLIT_CHAR = '[GIT_LOG_COMMIT_END]'
 const RE_SPLIT = /\[GIT_LOG_COMMIT_END\]$/

@@ -185,6 +185,39 @@ export default {
 
   页面过滤器，如果返回 `true` ，该页面将收集 git 信息
 
+### locales
+
+- 类型： `Record<string, GitLocaleData>`
+
+  ```ts
+  export interface GitLocaleData extends LocaleData {
+    /**
+     * 贡献者 标题
+     */
+    contributors: string
+    /**
+     * 更新日志 标题
+     */
+    changelog: string
+    /**
+     * 更新 `于` 文本
+     */
+    changelogOn: string
+    /**
+     * 查看更新日志 文本
+     */
+    changelogButton: string
+    /**
+     * 最近更新 文本
+     */
+    latestUpdated: string
+  }
+  ```
+
+- 详情：
+
+  多语言配置，在 [Git 组件](#component) 中使用。
+
 ## Frontmatter
 
 ### gitInclude
@@ -335,3 +368,55 @@ interface GitChangelog {
   页面的变更历史记录。
 
   该属性将会包含 [gitInclude](#gitinclude) 所列文件的变更历史记录。
+
+## Git 组件{#component}
+
+插件提供了与 Git 信息相关的组件，可以在主题中使用。
+
+组件通过以下方式导入：
+
+```ts
+import { Contributors, Changelog } from '@vuepress/plugin-git/client'
+```
+
+### Contributors
+
+列出当前页面的贡献者信息。
+
+```vue{8}
+<script setup>
+import { Contributors } from '@vuepress/plugin-git/client'
+</script>
+
+<template>
+  <div vp-content>
+    <Content />
+    <Contributors />
+  </div>
+</template>
+```
+
+**效果预览：**
+
+![contributors](/images/git/contributor-zh.png)
+
+### Changelog
+
+列出当前页面的变更历史记录。
+
+```vue{8}
+<script setup>
+import { Changelog } from '@vuepress/plugin-git/client'
+</script>
+
+<template>
+  <div vp-content>
+    <Content />
+    <Changelog />
+  </div>
+</template>
+```
+
+**效果预览：**
+
+![changelog](/images/git/changelog-zh.png)
