@@ -1,0 +1,10 @@
+:root {
+  --code-c-bg: #fafafa;
+  --code-tabs-c-text: var(--vp-c-text);
+  --code-tabs-c-bg: rgba(0 0 0 / 10%);
+}
+
+[data-theme='dark'] {
+  --code-c-bg: #282c34;
+  --code-tabs-c-bg: #181819;
+}

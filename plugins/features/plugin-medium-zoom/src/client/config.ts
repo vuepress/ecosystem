@@ -1,7 +1,7 @@
 import type { ZoomOptions } from 'medium-zoom'
 import mediumZoom from 'medium-zoom'
 import { defineClientConfig, onContentUpdated } from 'vuepress/client'
-import { mediumZoomSymbol } from './composables/index.js'
+import { mediumZoomSymbol, useMediumZoom } from './composables/index.js'
 
 import './styles/vars.css'
 import './styles/medium-zoom.css'
@@ -23,9 +23,13 @@ export default defineClientConfig({
       zoom.attach(sel)
     }
     app.provide(mediumZoomSymbol, zoom)
+  },
+
+  setup() {
+    const zoom = useMediumZoom()
 
     onContentUpdated((reason) => {
-      if (reason !== 'beforeUnmount') zoom.refresh()
+      if (reason !== 'beforeUnmount') zoom!.refresh()
     })
   },
 })

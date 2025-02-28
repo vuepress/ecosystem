@@ -31,7 +31,7 @@ export const PwaInstall = defineComponent({
 
   setup(props) {
     const locale = useLocaleConfig(props.locales)
-    const [isOpen, toggleIsOpen] = useToggle(false)
+    const [isOpen, toggleIsOpen] = useToggle()
 
     const canInstall = ref(false)
     const hasRelatedApps = ref(false)

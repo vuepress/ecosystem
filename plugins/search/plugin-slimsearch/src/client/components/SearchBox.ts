@@ -6,9 +6,9 @@ import {
   useLocaleConfig,
 } from '@vuepress/helper/client'
 import type { VNode } from 'vue'
-import { computed, defineComponent, h, inject, onMounted, ref } from 'vue'
+import { computed, defineComponent, h, onMounted, ref } from 'vue'
 
-import { searchModalSymbol } from '../composables/index.js'
+import { useActiveState } from '../composables/index.js'
 import { locales, options } from '../define.js'
 import { SearchIcon } from './icons.js'
 
@@ -21,11 +21,11 @@ export default defineComponent({
 
   setup() {
     const locale = useLocaleConfig(locales)
-    const isActive = inject(searchModalSymbol)!
+    const [isActive, toggleActive] = useActiveState()
     const isMacOS = ref(false)
 
     useKeys(options.hotKeys, () => {
-      if (!isActive.value) isActive.value = true
+      if (!isActive.value) toggleActive()
     })
 
     const controlKeys = computed(() =>

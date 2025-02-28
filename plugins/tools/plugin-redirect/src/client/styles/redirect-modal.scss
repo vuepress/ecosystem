@@ -32,7 +32,7 @@
 
   max-width: 80vw;
   padding: 1rem 2rem;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 
   background: var(--redirect-c-bg);
   box-shadow: 0 2px 6px 0 var(--redirect-c-shadow);
@@ -41,7 +41,7 @@
 .redirect-modal-hint {
   margin-top: 0.5rem;
   color: var(--vp-c-text-mute);
-  font-size: 14px;
+  font-size: 0.875rem;
   text-align: start;
 
   input[type='checkbox'] {
@@ -51,6 +51,8 @@
 
     height: 1em;
     margin-inline-end: 18px;
+
+    font-size: inherit;
 
     cursor: pointer;
 
@@ -115,7 +117,7 @@
   margin: 1rem 0;
   padding: 0.5rem 0.75rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 
   background-color: var(--redirect-c-control);
   color: inherit;

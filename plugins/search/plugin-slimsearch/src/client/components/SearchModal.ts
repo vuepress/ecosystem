@@ -12,8 +12,6 @@ import {
   defineAsyncComponent,
   defineComponent,
   h,
-  inject,
-  nextTick,
   onMounted,
   onUnmounted,
   ref,
@@ -23,7 +21,7 @@ import {
 import { useSiteLocaleData } from 'vuepress/client'
 
 import {
-  searchModalSymbol,
+  useActiveState,
   useArrayCycle,
   useSuggestions,
 } from '../composables/index.js'
@@ -55,7 +53,7 @@ export default defineComponent({
   name: 'SearchModal',
 
   setup() {
-    const isActive = inject(searchModalSymbol)!
+    const [isActive, toggleActive] = useActiveState()
     const siteLocale = useSiteLocaleData()
     const locale = useLocaleConfig(locales)
     const searchOptions = useSearchOptions()
@@ -73,6 +71,8 @@ export default defineComponent({
 
     const inputElement = shallowRef<HTMLInputElement>()
     const suggestionsElement = shallowRef<HTMLDivElement>()
+    const body = shallowRef<HTMLElement>()
+    const isLocked = useScrollLock(body.value)
 
     const hasSuggestions = computed(
       () =>
@@ -95,42 +95,42 @@ export default defineComponent({
       }
       // hide the modal when pressing the escape key
       else if (event.key === 'Escape') {
-        isActive.value = false
+        toggleActive(false)
       }
     })
 
-    const updateQueries = useDebounceFn(
-      (): void => {
-        void (
-          searchOptions.value.querySplitter?.(input.value) ??
-          Promise.resolve(input.value.split(' '))
-        ).then((result) => {
-          queries.value = result
-        })
-      },
-      Math.min(options.searchDelay, options.suggestDelay),
+    onClickOutside(suggestionsElement, () => {
+      showSuggestion.value = false
+    })
+
+    watchImmediate(
+      input,
+      useDebounceFn(
+        () =>
+          (
+            searchOptions.value.querySplitter?.(input.value) ??
+            Promise.resolve(input.value.split(' '))
+          ).then((result) => {
+            queries.value = result
+          }),
+        Math.min(options.searchDelay, options.suggestDelay),
+      ),
     )
 
-    watchImmediate(input, updateQueries)
-
     onMounted(() => {
-      const isLocked = useScrollLock(document.body)
+      body.value = document.body
 
-      watch(isActive, async (value) => {
-        isLocked.value = value
-        if (value) {
-          await nextTick()
-          inputElement.value?.focus()
-        }
-      })
+      watch(
+        isActive,
+        (value) => {
+          if (value) inputElement.value?.focus()
+        },
+        { flush: 'post' },
+      )
+    })
 
-      onClickOutside(suggestionsElement, () => {
-        showSuggestion.value = false
-      })
-
-      onUnmounted(() => {
-        isLocked.value = false
-      })
+    onUnmounted(() => {
+      isLocked.value = false
     })
 
     return (): VNode | null =>
@@ -139,7 +139,7 @@ export default defineComponent({
             h('div', {
               class: 'slimsearch-mask',
               onClick: () => {
-                isActive.value = false
+                toggleActive(false)
                 input.value = ''
               },
             }),
@@ -232,7 +232,7 @@ export default defineComponent({
                     type: 'button',
                     class: 'slimsearch-close-button',
                     onClick: () => {
-                      isActive.value = false
+                      toggleActive(false)
                       input.value = ''
                     },
                   },
@@ -244,7 +244,7 @@ export default defineComponent({
                 queries: queries.value,
                 isFocusing: !hasSuggestions.value,
                 onClose: () => {
-                  isActive.value = false
+                  toggleActive(false)
                 },
                 onUpdateQuery: (query: string) => {
                   input.value = query

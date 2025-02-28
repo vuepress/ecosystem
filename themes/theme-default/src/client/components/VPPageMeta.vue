@@ -103,7 +103,7 @@ const contributors = useContributors()
     margin-top: 0.25rem;
     margin-right: 0.5rem;
     margin-bottom: 0.25rem;
-    font-size: 14px;
+    font-size: 0.875em;
 
     @media print {
       display: none;
@@ -123,10 +123,10 @@ const contributors = useContributors()
   .contributors {
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
-    font-size: 14px;
+    font-size: 0.875em;
 
     @media (max-width: $MQMobile) {
-      font-size: 13px;
+      font-size: 0.825em;
       text-align: start;
     }
   }

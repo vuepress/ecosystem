@@ -39,7 +39,7 @@ defineSlots<{
 
   background-color: var(--vp-sidebar-c-bg);
 
-  font-size: 16px;
+  font-size: 1rem;
 
   transition:
     transform var(--vp-t-transform),
@@ -52,7 +52,7 @@ defineSlots<{
   // narrow desktop / iPad
   @media (max-width: $MQNarrow) {
     width: var(--sidebar-width-mobile);
-    font-size: 15px;
+    font-size: 0.9rem;
   }
 
   // wide mobile

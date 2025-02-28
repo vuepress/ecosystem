@@ -33,7 +33,12 @@ Each notice options needs to contain a `path` or `match` option, which is used t
 A notice configuration item includes:
 
 - `title`: Notice title, support both text and HTMLString
-- `content`: Notice content, support both text and HTMLString
+- `content`: Notice content, support both text, HTMLString and Markdown
+
+  - When using `Markdown` as content, the `contentType` should be set to `markdown`.
+
+  - You can also use `contentFile` to specify the absolute path of a file, with the file format being `.md` or `.html`, to read the notice content from the file.
+
 - `actions`: Notice actions
 
   Should be an array of objects containing:
@@ -51,6 +56,7 @@ Here is an example:
 
 ```ts
 import { noticePlugin } from '@vuepress/plugin-notice'
+import { path } from 'vuepress/utils'
 
 export default {
   plugins: [
@@ -72,7 +78,21 @@ export default {
         {
           path: '/zh/',
           title: 'Notice Title',
-          content: 'Notice Content',
+          contentType: 'markdown',
+          content: '**Notice Content** [link](https://example.com)',
+          actions: [
+            {
+              text: 'Primary Action',
+              link: 'https://theme-hope.vuejs.press/',
+              type: 'primary',
+            },
+            { text: 'Default Action' },
+          ],
+        },
+        {
+          path: '/example/',
+          title: 'Notice Title',
+          contentFile: path.resolve(__dirname, 'notice.md'),
           actions: [
             {
               text: 'Primary Action',
@@ -132,7 +152,20 @@ However, if you want users to confirm the notice, you can set `confirm: true`, s
     /**
      * Notice content
      */
-    content: string
+    content?: string
+
+    /**
+     * Notice content type
+     * @default 'html'
+     */
+    contentType?: 'html' | 'markdown'
+
+    /**
+     * Notice content file absolute path, file format should be `.md` or `.html`.
+     * Prioritize using the file content as `content`.
+     * @example '/path/to/notice.md'
+     */
+    contentFile?: string
 
     /**
      * Notice key
