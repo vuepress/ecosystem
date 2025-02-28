@@ -22,7 +22,7 @@ import {
 import { useSiteLocaleData } from 'vuepress/client'
 
 import {
-  searchModalSymbol,
+  useActiveState,
   useArrayCycle,
   useSuggestions,
 } from '../composables/index.js'
@@ -54,7 +54,7 @@ export default defineComponent({
   name: 'SearchModal',
 
   setup() {
-    const isActive = inject(searchModalSymbol)!
+    const [isActive, toggleActive] = useActiveState()
     const siteLocale = useSiteLocaleData()
     const locale = useLocaleConfig(locales)
     const searchOptions = useSearchOptions()
@@ -96,7 +96,7 @@ export default defineComponent({
       }
       // hide the modal when pressing the escape key
       else if (event.key === 'Escape') {
-        isActive.value = false
+        toggleActive(false)
       }
     })
 
@@ -140,7 +140,7 @@ export default defineComponent({
             h('div', {
               class: 'slimsearch-mask',
               onClick: () => {
-                isActive.value = false
+                toggleActive(false)
                 input.value = ''
               },
             }),
@@ -233,7 +233,7 @@ export default defineComponent({
                     type: 'button',
                     class: 'slimsearch-close-button',
                     onClick: () => {
-                      isActive.value = false
+                      toggleActive(false)
                       input.value = ''
                     },
                   },
@@ -245,7 +245,7 @@ export default defineComponent({
                 queries: queries.value,
                 isFocusing: !hasSuggestions.value,
                 onClose: () => {
-                  isActive.value = false
+                  toggleActive(false)
                 },
                 onUpdateQuery: (query: string) => {
                   input.value = query

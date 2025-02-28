@@ -1,4 +1,4 @@
-export * from './setup.js'
+export * from './useActiveState.js'
 export * from './useArrayCycle.js'
 export * from './useMobile.js'
 export * from './useQueryHistory.js'
