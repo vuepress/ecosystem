@@ -13,7 +13,7 @@ const props = defineProps<{
 
 const { config } = toRefs(props)
 
-const [open, toggleOpen] = useToggle(false)
+const [open, toggleOpen] = useToggle()
 
 const dropdownAriaLabel = computed(
   () => config.value.ariaLabel || config.value.text,
