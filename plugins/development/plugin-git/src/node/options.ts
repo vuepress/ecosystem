@@ -1,5 +1,5 @@
-import type { Page, PageFrontmatter } from 'vuepress'
-import type { GitChangelog, GitContributor } from './typings.js'
+import type { LocaleConfig, Page } from 'vuepress'
+import type { GitContributor, GitLocaleData } from '../shared/index.js'
 
 /**
  * Contributor information
@@ -191,47 +191,11 @@ export interface GitPluginOptions {
    * Functions to transform contributors, e.g. remove duplicates ones and sort them
    */
   transformContributors?: (contributors: GitContributor[]) => GitContributor[]
-}
-
-export interface GitPluginFrontmatter extends PageFrontmatter {
-  gitInclude?: string[]
 
   /**
-   * Whether to get the contributors of a page
+   * Localization config
    *
-   * - If the value is `false`, it will be ignored
-   * - If the value is `string[]`, it will be used as the list of extra contributors
+   * 本地化配置
    */
-  contributors?: string[] | boolean
-
-  /**
-   * Whether to get the changelog of a page
-   */
-  changelog?: boolean
-}
-
-export interface GitPluginPageData extends Record<string, unknown> {
-  git: GitData
-}
-
-export interface GitData {
-  /**
-   * Unix timestamp in milliseconds of the first commit
-   */
-  createdTime?: number
-
-  /**
-   * Unix timestamp in milliseconds of the last commit
-   */
-  updatedTime?: number
-
-  /**
-   * Contributors of all commits
-   */
-  contributors?: GitContributor[]
-
-  /**
-   * Changelog of a page
-   */
-  changelog?: GitChangelog[]
+  locales?: LocaleConfig<GitLocaleData>
 }

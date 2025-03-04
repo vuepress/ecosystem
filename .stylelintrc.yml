@@ -14,8 +14,6 @@ rules:
   declaration-block-no-redundant-longhand-properties: true
   media-feature-range-notation: prefix
   no-descending-specificity: null
-  # workaround for mixed-declarations
-  no-duplicate-selectors: null
 
 overrides:
   - files:

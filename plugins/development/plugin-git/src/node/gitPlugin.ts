@@ -1,11 +1,13 @@
+import { getFullLocaleConfig } from '@vuepress/helper'
 import type { Page, Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import { path } from 'vuepress/utils'
 import type {
   GitPluginFrontmatter,
-  GitPluginOptions,
   GitPluginPageData,
-} from './options.js'
+} from '../shared/index.js'
+import { gitLocaleInfo } from './locales.js'
+import type { GitPluginOptions } from './options.js'
 import { resolveChangelog } from './resolveChangelog.js'
 import { resolveContributors } from './resolveContributors.js'
 import { checkGitRepo, getCommits, inferGitProvider } from './utils/index.js'
@@ -19,14 +21,24 @@ export const gitPlugin =
     filter,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     transformContributors,
+    locales = {},
   }: GitPluginOptions = {}): Plugin =>
   (app) => {
+    const name = '@vuepress/plugin-git'
     const cwd = app.dir.source()
     const isGitRepoValid = checkGitRepo(cwd)
     const gitProvider = isGitRepoValid ? inferGitProvider(cwd) : null
-
     return {
-      name: '@vuepress/plugin-git',
+      name,
+
+      define: {
+        __GIT_LOCALES__: getFullLocaleConfig({
+          app,
+          name,
+          default: gitLocaleInfo,
+          config: locales,
+        }),
+      },
 
       extendsPage: async (
         page: Page<GitPluginPageData, GitPluginFrontmatter>,

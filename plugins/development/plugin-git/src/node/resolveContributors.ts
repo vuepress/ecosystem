@@ -1,9 +1,6 @@
+import type { GitContributor } from '../shared/index.js'
 import type { ContributorsOptions } from './options.js'
-import type {
-  GitContributor,
-  KnownGitProvider,
-  MergedRawCommit,
-} from './typings.js'
+import type { KnownGitProvider, MergedRawCommit } from './typings.js'
 import {
   digestSHA256,
   getContributorInfo,
@@ -17,7 +14,8 @@ export const getRawContributors = (
 ): GitContributor[] => {
   const contributors = new Map<string, GitContributor>()
 
-  for (const commit of commits.reverse()) {
+  // copy and reverse commits
+  for (const commit of [...commits].reverse()) {
     const authors = [
       { name: commit.author, email: commit.email },
       ...commit.coAuthors,

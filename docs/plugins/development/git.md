@@ -192,6 +192,43 @@ This plugin will significantly slow down the speed of data preparation, especial
 
   Page filter, if it returns `true`, the page will collect git information.
 
+### locales
+
+- Type: `Record<string, GitLocaleData>`
+
+  ```ts
+  export interface GitLocaleData {
+    /**
+     * Contributors title
+     */
+    contributors: string
+
+    /**
+     * Changelog title
+     */
+    changelog: string
+
+    /**
+     * Word to represent a commit "on" a time
+     */
+    timeOn: string
+
+    /**
+     * Changelog button
+     */
+    viewChangelog: string
+
+    /**
+     * Latest updated
+     */
+    latestUpdateAt: string
+  }
+  ```
+
+- Details:
+
+  Locales configuration, used in the [Git Component](#component).
+
 ## Frontmatter
 
 ### gitInclude
@@ -343,3 +380,55 @@ interface GitChangelog {
   The changelog of the page.
 
   This attribute would also include contributors to the files listed in [gitInclude](#gitinclude).
+
+## Git Component{#component}
+
+The plugin provides components related to Git information, which can be used in themes.
+
+The components are imported as follows:
+
+```ts
+import { Changelog, Contributors } from '@vuepress/plugin-git/client'
+```
+
+### Contributors
+
+List the contributor information for the current page.
+
+```vue{8}
+<script setup>
+import { Contributors } from '@vuepress/plugin-git/client'
+</script>
+
+<template>
+  <div vp-content>
+    <Content />
+    <Contributors />
+  </div>
+</template>
+```
+
+**Effect Preview:**
+
+![contributors](/images/git/contributor-en.png)
+
+### Changelog
+
+List the changelog of the current page.
+
+```vue{8}
+<script setup>
+import { Changelog } from '@vuepress/plugin-git/client'
+</script>
+
+<template>
+  <div vp-content>
+    <Content />
+    <Changelog />
+  </div>
+</template>
+```
+
+**Effect Preview:**
+
+![changelog](/images/git/changelog-en.png)
