@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.81](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.80...v2.0.0-rc.81) (2025-03-04)
+
+### Bug Fixes
+
+- **helper:** fix a11y issue with normalize ([81d451b](https://github.com/vuepress/ecosystem/commit/81d451bdbe297397e082499b432e39e74d7e61ba))
+- **highlighter-helper:** fix a11y issue ([a320057](https://github.com/vuepress/ecosystem/commit/a3200570d4396d209c5dde2e7d6e545fcb239d80))
+- **plugin-markdown-hint:** fix missing `env` in title inline rendering, close [#380](https://github.com/vuepress/ecosystem/issues/380) ([#381](https://github.com/vuepress/ecosystem/issues/381)) ([4270cd9](https://github.com/vuepress/ecosystem/commit/4270cd9e7759eb13ab66a8ad71f6f4a685eae1cf))
+- **plugin-medium-zoom:** fix onContentUpdate usage ([7b753df](https://github.com/vuepress/ecosystem/commit/7b753df386bd39f3a0c3122abcb01ee1365e7c24))
+- **plugin-redirect:** fix checkbox size ([adb8407](https://github.com/vuepress/ecosystem/commit/adb8407c77ae3aaaa29933cb7912ae16993e8474))
+- **plugin-revealjs:** improve a11y ([9e917b7](https://github.com/vuepress/ecosystem/commit/9e917b76d1f7edfd98e29a5fa52e0c998fb9e94c))
+
+### Features
+
+- add `codeBlockTitle` option support for highlighter, close [#379](https://github.com/vuepress/ecosystem/issues/379) ([#386](https://github.com/vuepress/ecosystem/issues/386)) ([7535e36](https://github.com/vuepress/ecosystem/commit/7535e36a6289891a004445873c34d0a9531636f0))
+- improve rtl support ([#388](https://github.com/vuepress/ecosystem/issues/388)) ([c2a95d4](https://github.com/vuepress/ecosystem/commit/c2a95d4840571996fc9b5504a91dfbecaede4a71))
+- **plugin-catalog:** prefer rem unit ([cb18654](https://github.com/vuepress/ecosystem/commit/cb18654673b51994a9dae253a6a9070797ea1faa))
+- **plugin-git:** add built-in component `<Contributors/>` `<Changelog/>`, close [#375](https://github.com/vuepress/ecosystem/issues/375) ([#384](https://github.com/vuepress/ecosystem/issues/384)) ([56cece7](https://github.com/vuepress/ecosystem/commit/56cece7f085b761724a3a338a0237a22dde92bb4))
+- **plugin-notice:** add markdown format support for notice content, close [#376](https://github.com/vuepress/ecosystem/issues/376) ([#382](https://github.com/vuepress/ecosystem/issues/382)) ([7b7068e](https://github.com/vuepress/ecosystem/commit/7b7068e1c344fe39183208f52fb339cb3b9be946))
+- **plugin-sitemap:** respect rem in template ([3958f58](https://github.com/vuepress/ecosystem/commit/3958f58c82432777f83f3c7f73086e77c17f73e3))
+- prefer rem unit ([869e08c](https://github.com/vuepress/ecosystem/commit/869e08cdd9a31924663be1000048358e8110b92b))
+
 # [2.0.0-rc.80](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.79...v2.0.0-rc.80) (2025-02-24)
 
 ### Bug Fixes

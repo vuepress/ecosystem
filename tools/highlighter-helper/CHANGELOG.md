@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.81](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.80...v2.0.0-rc.81) (2025-03-04)
+
+### Bug Fixes
+
+- **highlighter-helper:** fix a11y issue ([a320057](https://github.com/vuepress/ecosystem/commit/a3200570d4396d209c5dde2e7d6e545fcb239d80))
+
+### Features
+
+- add `codeBlockTitle` option support for highlighter, close [#379](https://github.com/vuepress/ecosystem/issues/379) ([#386](https://github.com/vuepress/ecosystem/issues/386)) ([7535e36](https://github.com/vuepress/ecosystem/commit/7535e36a6289891a004445873c34d0a9531636f0))
+- improve rtl support ([#388](https://github.com/vuepress/ecosystem/issues/388)) ([c2a95d4](https://github.com/vuepress/ecosystem/commit/c2a95d4840571996fc9b5504a91dfbecaede4a71))
+
 # [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
 
 ### Features
