@@ -1,8 +1,10 @@
 import type {
+  MarkdownItCodeBlockTitleOptions,
   MarkdownItCollapsedLinesOptions,
   MarkdownItLineNumbersOptions,
 } from '@vuepress/highlighter-helper'
 import {
+  codeBlockTitle as codeBlockTitlePlugin,
   collapsedLines as collapsedLinesPlugin,
   lineNumbers as lineNumbersPlugin,
 } from '@vuepress/highlighter-helper'
@@ -25,6 +27,7 @@ const createMarkdown = ({
   preWrapper = true,
   lineNumbers = true,
   collapsedLines = false,
+  codeBlockTitle = true,
   ...options
 }: ShikiPluginOptions = {}): MarkdownIt => {
   const md = new MarkdownIt()
@@ -47,6 +50,9 @@ const createMarkdown = ({
     })
     md.use<MarkdownItCollapsedLinesOptions>(collapsedLinesPlugin, {
       collapsedLines,
+    })
+    md.use<MarkdownItCodeBlockTitleOptions>(codeBlockTitlePlugin, {
+      codeBlockTitle,
     })
   }
   return md

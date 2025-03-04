@@ -14,7 +14,7 @@ div[class*='language-'] {
   background-color: var(--code-c-bg);
 
   &::before {
-    content: attr(data-title);
+    content: attr(data-ext);
 
     position: absolute;
     top: 0.8em;
