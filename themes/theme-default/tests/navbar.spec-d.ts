@@ -75,11 +75,11 @@ it('navbar options', () => {
     },
   ]
 
-  expectTypeOf(navbarOptions1).toMatchTypeOf<NavbarOptions>()
-  expectTypeOf(navbarOptions2).toMatchTypeOf<NavbarOptions>()
-  expectTypeOf(navbarOptions3).toMatchTypeOf<NavbarOptions>()
-  expectTypeOf(navbarOptions4).toMatchTypeOf<NavbarOptions>()
-  expectTypeOf(navbarOptions5).toMatchTypeOf<NavbarOptions>()
+  expectTypeOf(navbarOptions1).toExtend<NavbarOptions>()
+  expectTypeOf(navbarOptions2).toExtend<NavbarOptions>()
+  expectTypeOf(navbarOptions3).toExtend<NavbarOptions>()
+  expectTypeOf(navbarOptions4).toExtend<NavbarOptions>()
+  expectTypeOf(navbarOptions5).toExtend<NavbarOptions>()
   // @ts-expect-error: navbar can only support 3 level nesting
   assertType<NavbarOptions>(navbarOptions6)
 })
