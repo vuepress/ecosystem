@@ -179,7 +179,6 @@
 
   margin-top: 0.125em;
   margin-left: -1em;
-  padding-right: 0;
 
   font-size: 0.85em;
   text-decoration: none;
@@ -189,6 +188,12 @@
 
   @media print {
     display: none;
+  }
+
+  [dir='rtl'] & {
+    float: right;
+    margin-right: -1em;
+    margin-left: 0;
   }
 
   h2:hover &,

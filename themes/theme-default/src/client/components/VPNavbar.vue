@@ -113,20 +113,20 @@ useUpdateDeviceStatus(
     border-color var(--vp-t-color);
 
   @media screen and (max-width: $MQMobile) {
-    padding-left: 4rem;
+    padding-inline-start: 4rem;
   }
 }
 
 .vp-navbar-items-wrapper {
   position: absolute;
+  inset-inline-end: var(--navbar-padding-h);
   top: var(--navbar-padding-v);
-  right: var(--navbar-padding-h);
 
   display: flex;
 
   box-sizing: border-box;
   height: var(--navbar-line-height);
-  padding-left: var(--navbar-padding-h);
+  padding-inline-start: var(--navbar-padding-h);
 
   font-size: 0.9rem;
   white-space: nowrap;

@@ -44,18 +44,18 @@ defineSlots<{
   padding-bottom: 2rem;
 
   // leave space for sidebar
-  padding-left: var(--sidebar-width);
+  padding-inline-start: var(--sidebar-width);
 
   // narrow desktop / iPad
   @media (max-width: $MQNarrow) {
     // leave space for sidebar
-    padding-left: var(--sidebar-width-mobile);
+    padding-inline-start: var(--sidebar-width-mobile);
   }
 
   // wide mobile
   @media (max-width: $MQMobile) {
     // sidebar is collapsed
-    padding-left: 0;
+    padding-inline-start: 0;
   }
 
   [vp-content] {

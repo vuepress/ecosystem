@@ -26,8 +26,7 @@ import { Content } from 'vuepress/client'
   padding: var(--navbar-height) 2rem 0;
 
   @media (max-width: $MQMobileNarrow) {
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+    padding-inline: 1.5rem;
   }
 
   [vp-content] {

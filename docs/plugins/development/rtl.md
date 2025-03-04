@@ -27,6 +27,10 @@ export default {
 }
 ```
 
+## Demo
+
+<ToggleRTLButton />
+
 ## Options
 
 ### locales
@@ -55,3 +59,7 @@ export default {
   Selector to enable rtl.
 
   The default settings mean that the `dir` attribute of the `html` element will be set to `rtl` in rtl locales.
+
+<script setup>
+import ToggleRTLButton from '@source/.vuepress/components/ToggleRTLButton.vue'
+</script>
