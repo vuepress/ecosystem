@@ -405,7 +405,7 @@ body > div {
 - Type: `boolean | CodeBlockTitleRender`
 
   ```ts
-  type CodeBlockTitleRender = (title: string) => string
+  type CodeBlockTitleRender = (title: string, code: string) => string
   ```
 
 - Default: `true`
@@ -419,14 +419,14 @@ body > div {
   **Input:**
 
   ````md {1}
-  ```ts title="Code Block Title"
+  ```ts title="foo/baz.js"
   console.log('hello')
   ```
   ````
 
   **Output:**
 
-  ```ts title="Code Block Title"
+  ```ts title="foo/baz.js"
   console.log('hello')
   ```
 

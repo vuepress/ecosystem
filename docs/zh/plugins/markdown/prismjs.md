@@ -405,7 +405,7 @@ body > div {
 - 类型：`boolean | CodeBlockTitleRender`
 
   ```ts
-  type CodeBlockTitleRender = (title: string) => string
+  type CodeBlockTitleRender = (title: string, code: string) => string
   ```
 
 - 默认值：`true`
@@ -419,14 +419,14 @@ body > div {
   **输入：**
 
   ````md {1}
-  ```ts title="代码块标题"
+  ```ts title="foo/baz.js"
   console.log('hello')
   ```
   ````
 
   **输出：**
 
-  ```ts title="代码块标题"
+  ```ts title="foo/baz.js"
   console.log('hello')
   ```
 

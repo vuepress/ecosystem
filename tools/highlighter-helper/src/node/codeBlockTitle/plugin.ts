@@ -5,8 +5,13 @@ import type {
   MarkdownItCodeBlockTitleOptions,
 } from './options.js'
 
-const defaultTitleRender: CodeBlockTitleRender = (title: string) =>
-  `<div class="code-block-title-bar"><span class="title">${title}</span></div>`
+const defaultTitleRender: CodeBlockTitleRender = (title, code) =>
+  `<div class="code-block-title">
+  <div class="code-block-title-bar">
+    <span class="title" data-title="${title}">${title}</span>
+  </div>
+  ${code}
+</div>`
 
 export const codeBlockTitle = (
   md: Markdown,
@@ -31,6 +36,6 @@ export const codeBlockTitle = (
 
     if (!title) return rawCode
 
-    return `<div class="code-block-title">${titleRender(title)}${rawCode}</div>`
+    return titleRender(title, rawCode)
   }
 }

@@ -1,4 +1,4 @@
-export type CodeBlockTitleRender = (title: string) => string
+export type CodeBlockTitleRender = (title: string, code: string) => string
 
 export interface MarkdownItCodeBlockTitleOptions {
   /**
