@@ -394,6 +394,36 @@ body > div {
 }
 ```
 
+### codeBlockTitle
+
+- Type: `boolean | CodeBlockTitleRender`
+
+  ```ts
+  type CodeBlockTitleRender = (title: string, code: string) => string
+  ```
+
+- Default: `true`
+
+- Details: Whether to enable code block title rendering. Add `title="Title"` after the code block <code>\`\`\`</code> to set the title.
+
+  Pass `CodeBlockTitleRender` to customize the title rendering.
+
+- Example:
+
+  **Input:**
+
+  ````md {1}
+  ```ts title="foo/baz.js"
+  console.log('hello')
+  ```
+  ````
+
+  **Output:**
+
+  ```ts title="foo/baz.js"
+  console.log('hello')
+  ```
+
 ### notationDiff
 
 - Type: `boolean`

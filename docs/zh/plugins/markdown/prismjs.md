@@ -400,6 +400,36 @@ body > div {
 }
 ```
 
+### codeBlockTitle
+
+- 类型：`boolean | CodeBlockTitleRender`
+
+  ```ts
+  type CodeBlockTitleRender = (title: string, code: string) => string
+  ```
+
+- 默认值：`true`
+
+- 详情：是否启用代码块标题渲染。在代码块 <code>\`\`\`</code> 后面添加 `title="标题"` 来设置标题。
+
+  传入 `CodeBlockTitleRender` 以自定义标题渲染。
+
+- 示例：
+
+  **输入：**
+
+  ````md {1}
+  ```ts title="foo/baz.js"
+  console.log('hello')
+  ```
+  ````
+
+  **输出：**
+
+  ```ts title="foo/baz.js"
+  console.log('hello')
+  ```
+
 ::: tip
 
 在新的版本中，实现了类似于 [shiki](https://shiki.style/packages/transformers) 的部分功能，

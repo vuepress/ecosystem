@@ -11,6 +11,7 @@ export const prepareClientConfigFile = (
     lineNumbers = true,
     highlightLines = true,
     collapsedLines = 'disable',
+    codeBlockTitle = true,
     notationDiff,
     notationErrorLevel,
     notationFocus,
@@ -86,6 +87,12 @@ export const prepareClientConfigFile = (
       `import { setupCollapsedLines } from "${getModulePath('@vuepress/highlighter-helper/client', import.meta)}"`,
     )
     setups.push('setupCollapsedLines()')
+  }
+
+  if (codeBlockTitle) {
+    imports.push(
+      `import "${getModulePath('@vuepress/highlighter-helper/styles/code-block-title.css', import.meta)}"`,
+    )
   }
 
   let code = imports.join('\n')
