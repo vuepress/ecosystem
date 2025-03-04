@@ -1,15 +1,15 @@
 import type { DefaultLocaleInfo } from '@vuepress/helper'
 import type { GitLocaleData } from '../shared/index.js'
 
-export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
+export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
   [
     ['en', 'en-US'],
     {
       contributors: 'Contributors',
       changelog: 'Changelog',
-      changelogOn: 'on',
-      changelogButton: 'View All Changelog',
-      latestUpdated: 'Last Updated:',
+      timeOn: 'on',
+      viewChangelog: 'View All Changelog',
+      latestUpdateAt: 'Last Updated:',
     },
   ],
   [
@@ -17,9 +17,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: '贡献者',
       changelog: '更新日志',
-      changelogOn: '于',
-      changelogButton: '查看所有更新日志',
-      latestUpdated: '最近更新：',
+      timeOn: '于',
+      viewChangelog: '查看所有更新日志',
+      latestUpdateAt: '最近更新：',
     },
   ],
   [
@@ -27,9 +27,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: '貢獻者',
       changelog: '更新日誌',
-      changelogOn: '於',
-      changelogButton: '查看所有更新日誌',
-      latestUpdated: '最近更新：',
+      timeOn: '於',
+      viewChangelog: '查看所有更新日誌',
+      latestUpdateAt: '最近更新：',
     },
   ],
   [
@@ -37,9 +37,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: 'Mitwirkende',
       changelog: 'Aenderungen',
-      changelogOn: 'am',
-      changelogButton: 'Alle Aenderungen anzeigen',
-      latestUpdated: 'Zuletzt aktualisiert:',
+      timeOn: 'am',
+      viewChangelog: 'Alle Aenderungen anzeigen',
+      latestUpdateAt: 'Zuletzt aktualisiert:',
     },
   ],
   [
@@ -47,9 +47,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: 'Mitwirkende',
       changelog: 'Aenderungen',
-      changelogOn: 'am',
-      changelogButton: 'Alle Aenderungen anzeigen',
-      latestUpdated: 'Zuletzt aktualisiert:',
+      timeOn: 'am',
+      viewChangelog: 'Alle Aenderungen anzeigen',
+      latestUpdateAt: 'Zuletzt aktualisiert:',
     },
   ],
   [
@@ -57,9 +57,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: 'Người tham gia',
       changelog: 'Lịch sử thay đổi',
-      changelogOn: 'vào',
-      changelogButton: 'Xem tất cả lịch sử thay đổi',
-      latestUpdated: 'Cập nhật gần nhất:',
+      timeOn: 'vào',
+      viewChangelog: 'Xem tất cả lịch sử thay đổi',
+      latestUpdateAt: 'Cập nhật gần nhất:',
     },
   ],
   [
@@ -67,9 +67,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: 'Учасники',
       changelog: 'Історія змін',
-      changelogOn: 'в',
-      changelogButton: 'Показати всю історію змін',
-      latestUpdated: 'Останнє оновлення:',
+      timeOn: 'в',
+      viewChangelog: 'Показати всю історію змін',
+      latestUpdateAt: 'Останнє оновлення:',
     },
   ],
   [
@@ -77,9 +77,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: 'Участники',
       changelog: 'История изменений',
-      changelogOn: 'в',
-      changelogButton: 'Показать всю историю изменений',
-      latestUpdated: 'Последнее обновление:',
+      timeOn: 'в',
+      viewChangelog: 'Показать всю историю изменений',
+      latestUpdateAt: 'Последнее обновление:',
     },
   ],
   [
@@ -87,9 +87,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: 'Colaboradores',
       changelog: 'Log de Alterações',
-      changelogOn: 'em',
-      changelogButton: 'Ver todas as Alterações',
-      latestUpdated: 'Atualizado em:',
+      timeOn: 'em',
+      viewChangelog: 'Ver todas as Alterações',
+      latestUpdateAt: 'Atualizado em:',
     },
   ],
   [
@@ -97,9 +97,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: 'Współpracownicy',
       changelog: 'Zmiany',
-      changelogOn: 'w',
-      changelogButton: 'Zobacz wszystkie zmiany',
-      latestUpdated: 'Ostatnio zaktualizowano:',
+      timeOn: 'w',
+      viewChangelog: 'Zobacz wszystkie zmiany',
+      latestUpdateAt: 'Ostatnio zaktualizowano:',
     },
   ],
   [
@@ -107,9 +107,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: 'Pracovnici',
       changelog: 'Zmeny',
-      changelogOn: 'na',
-      changelogButton: 'Zobrazit vsetky zmeny',
-      latestUpdated: 'Poslednou aktualizaciu:',
+      timeOn: 'na',
+      viewChangelog: 'Zobrazit vsetky zmeny',
+      latestUpdateAt: 'Poslednou aktualizaciu:',
     },
   ],
   [
@@ -117,9 +117,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: 'Contribueurs',
       changelog: 'Historique des modifications',
-      changelogOn: 'le',
-      changelogButton: "Voir l'historique des modifications",
-      latestUpdated: 'Dernière mise à jour:',
+      timeOn: 'le',
+      viewChangelog: "Voir l'historique des modifications",
+      latestUpdateAt: 'Dernière mise à jour:',
     },
   ],
   [
@@ -127,9 +127,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: 'Colaboradores',
       changelog: 'Historial de cambios',
-      changelogOn: 'el',
-      changelogButton: 'Ver el historial de cambios',
-      latestUpdated: 'Actualizado el:',
+      timeOn: 'el',
+      viewChangelog: 'Ver el historial de cambios',
+      latestUpdateAt: 'Actualizado el:',
     },
   ],
   [
@@ -137,9 +137,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: '貢献者',
       changelog: '変更履歴',
-      changelogOn: '日',
-      changelogButton: '全ての変更履歴を表示',
-      latestUpdated: '最終更新:',
+      timeOn: '日',
+      viewChangelog: '全ての変更履歴を表示',
+      latestUpdateAt: '最終更新:',
     },
   ],
   [
@@ -147,9 +147,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: 'Katkıda bulunanlar',
       changelog: 'Düzenleme Girişimleri',
-      changelogOn: 'de',
-      changelogButton: 'Tüm düzenleme girişimlerini göster',
-      latestUpdated: 'Son günceleme:',
+      timeOn: 'de',
+      viewChangelog: 'Tüm düzenleme girişimlerini göster',
+      latestUpdateAt: 'Son günceleme:',
     },
   ],
   [
@@ -157,9 +157,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: '기업자',
       changelog: '변경 기록',
-      changelogOn: '에서',
-      changelogButton: '변경 기록 별 상세 내용 바보기',
-      latestUpdated: '최근 수정:',
+      timeOn: '에서',
+      viewChangelog: '변경 기록 별 상세 내용 바보기',
+      latestUpdateAt: '최근 수정:',
     },
   ],
   [
@@ -167,9 +167,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: 'Osallistujat',
       changelog: 'Muutokset',
-      changelogOn: 'kun',
-      changelogButton: 'Näytä kaikki muutokset',
-      latestUpdated: 'Viimeksi paivittynyt:',
+      timeOn: 'kun',
+      viewChangelog: 'Näytä kaikki muutokset',
+      latestUpdateAt: 'Viimeksi paivittynyt:',
     },
   ],
   [
@@ -177,9 +177,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: 'Szerkesztők',
       changelog: 'Modosítások',
-      changelogOn: 'ben',
-      changelogButton: 'Minden modosítás megtekintése',
-      latestUpdated: 'Legutóbb frissítés:',
+      timeOn: 'ben',
+      viewChangelog: 'Minden modosítás megtekintése',
+      latestUpdateAt: 'Legutóbb frissítés:',
     },
   ],
   [
@@ -187,9 +187,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: 'Pembuat',
       changelog: 'Perubahan',
-      changelogOn: 'pada',
-      changelogButton: 'Lihat semua perubahan',
-      latestUpdated: 'Diperbarui terakhir:',
+      timeOn: 'pada',
+      viewChangelog: 'Lihat semua perubahan',
+      latestUpdateAt: 'Diperbarui terakhir:',
     },
   ],
   [
@@ -197,9 +197,9 @@ export const DEFAULT_LOCALES: DefaultLocaleInfo<GitLocaleData> = [
     {
       contributors: 'Bijdragers',
       changelog: 'Wijzigingen',
-      changelogOn: 'op',
-      changelogButton: 'Bekijk alle wijzigingen',
-      latestUpdated: 'Laatst bijgewerkt:',
+      timeOn: 'op',
+      viewChangelog: 'Bekijk alle wijzigingen',
+      latestUpdateAt: 'Laatst bijgewerkt:',
     },
   ],
 ]

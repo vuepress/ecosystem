@@ -197,27 +197,31 @@ This plugin will significantly slow down the speed of data preparation, especial
 - Type: `Record<string, GitLocaleData>`
 
   ```ts
-  export interface GitLocaleData extends LocaleData {
+  export interface GitLocaleData {
     /**
      * Contributors title
      */
     contributors: string
+
     /**
      * Changelog title
      */
     changelog: string
+
     /**
-     * Changelog on time
+     * Word to represent a commit "on" a time
      */
-    changelogOn: string
+    timeOn: string
+
     /**
      * Changelog button
      */
-    changelogButton: string
+    viewChangelog: string
+
     /**
      * Latest updated
      */
-    latestUpdated: string
+    latestUpdateAt: string
   }
   ```
 

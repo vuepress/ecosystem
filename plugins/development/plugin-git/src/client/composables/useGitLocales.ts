@@ -1,10 +1,11 @@
+import type { ExactLocaleConfig } from '@vuepress/helper/client'
 import { useLocaleConfig } from '@vuepress/helper/client'
 import type { ComputedRef } from 'vue'
-import type { GitLocaleData, GitLocales } from '../../shared/index.js'
+import type { GitLocaleData } from '../../shared/index.js'
 
-declare const __GIT_LOCALES__: GitLocales
+declare const __GIT_LOCALES__: ExactLocaleConfig<GitLocaleData>
 
 export const locales = __GIT_LOCALES__
 
-export const useGitLocales = (): ComputedRef<Partial<GitLocaleData>> =>
+export const useGitLocaleConfig = (): ComputedRef<GitLocaleData> =>
   useLocaleConfig(locales)

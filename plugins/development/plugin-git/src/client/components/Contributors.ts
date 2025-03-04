@@ -6,7 +6,7 @@ import type {
   GitPluginFrontmatter,
   GitPluginPageData,
 } from '../../shared/index.js'
-import { useGitLocales } from '../composables/index.js'
+import { useGitLocaleConfig } from '../composables/index.js'
 import { VPHeader } from './VPHeader.js'
 
 import '../styles/contributors.css'
@@ -14,16 +14,19 @@ import '../styles/contributors.css'
 export const Contributors = defineComponent({
   name: 'Contributors',
   props: {
+    /** Contributor title */
+    title: String,
+
+    /** header level of contributor title */
     headerLevel: {
       type: Number,
       default: 2,
     },
-    title: String,
   },
   setup(props) {
-    const page = usePageData<GitPluginPageData>()
+    const locale = useGitLocaleConfig()
     const frontmatter = usePageFrontmatter<GitPluginFrontmatter>()
-    const locale = useGitLocales()
+    const page = usePageData<GitPluginPageData>()
 
     const contributors = computed(() => {
       if (frontmatter.value.contributors === false) return []
@@ -56,7 +59,7 @@ export const Contributors = defineComponent({
             h(VPHeader, {
               level: props.headerLevel,
               anchor: 'doc-contributors',
-              title: props.title || locale.value.contributors || 'Contributors',
+              text: props.title || locale.value.contributors,
             }),
             h(
               'div',

@@ -1,5 +1,5 @@
-import type { Page } from 'vuepress'
-import type { GitContributor, GitLocales } from '../shared/index.js'
+import type { LocaleConfig, Page } from 'vuepress'
+import type { GitContributor, GitLocaleData } from '../shared/index.js'
 
 /**
  * Contributor information
@@ -197,5 +197,5 @@ export interface GitPluginOptions {
    *
    * 本地化配置
    */
-  locales?: GitLocales
+  locales?: LocaleConfig<GitLocaleData>
 }

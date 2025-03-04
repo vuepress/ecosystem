@@ -190,7 +190,7 @@ export default {
 - 类型： `Record<string, GitLocaleData>`
 
   ```ts
-  export interface GitLocaleData extends LocaleData {
+  export interface GitLocaleData {
     /**
      * 贡献者 标题
      */
@@ -202,15 +202,15 @@ export default {
     /**
      * 更新 `于` 文本
      */
-    changelogOn: string
+    timeOn: string
     /**
      * 查看更新日志 文本
      */
-    changelogButton: string
+    viewChangelog: string
     /**
      * 最近更新 文本
      */
-    latestUpdated: string
+    latestUpdateAt: string
   }
   ```
 

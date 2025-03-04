@@ -7,7 +7,7 @@ import type {
   GitPluginFrontmatter,
   GitPluginPageData,
 } from '../../shared/index.js'
-import { useGitLocales } from '../composables/index.js'
+import { useGitLocaleConfig } from '../composables/index.js'
 import { VPHeader } from './VPHeader.js'
 
 import '../styles/vars.css'
@@ -17,18 +17,23 @@ type ResolvedChangelog = Omit<GitChangelog, 'date'> & { datetime: string }
 
 export const Changelog = defineComponent({
   name: 'Changelog',
+
   props: {
+    /** Title of changelog */
+    title: String,
+
+    /** header level of changelog */
     headerLevel: {
       type: Number,
       default: 2,
     },
-    title: String,
   },
+
   setup(props) {
+    const locale = useGitLocaleConfig()
+    const frontmatter = usePageFrontmatter<GitPluginFrontmatter>()
     const page = usePageData<GitPluginPageData>()
     const lang = usePageLang()
-    const frontmatter = usePageFrontmatter<GitPluginFrontmatter>()
-    const locale = useGitLocales()
 
     const list = computed<ResolvedChangelog[]>(() => {
       if (frontmatter.value.changelog === false) return []
@@ -36,6 +41,7 @@ export const Changelog = defineComponent({
       const formatter = new Intl.DateTimeFormat(lang.value, {
         dateStyle: 'short',
       })
+
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       return (page.value.git?.changelog ?? []).map(({ date, ...item }) => {
         const datetime = formatter.format(date)
@@ -63,12 +69,12 @@ export const Changelog = defineComponent({
       h('div', { class: 'changelog-header', onClick: toggle }, [
         h('div', { class: 'latest-updated' }, [
           h('span', { class: 'vpi-changelog' }),
-          h('span', [locale.value.latestUpdated || 'Latest updated:', ' ']),
-          h('span', { 'data-allow-mismatch': true }, latestUpdated.value),
+          h('span', [locale.value.latestUpdateAt, ' ']),
+          h('span', { 'data-allow-mismatch': '' }, latestUpdated.value),
         ]),
         h('div', [
           h('span', { class: 'vpi-changelog-menu' }),
-          h('span', locale.value.changelogButton || 'View All Changelog'),
+          h('span', locale.value.viewChangelog),
         ]),
       ])
 
@@ -80,8 +86,8 @@ export const Changelog = defineComponent({
         { class: 'changelog release-tag' },
         h('div', [
           h('a', { class: 'link release-tag' }, h('code', item.tag)),
-          h('span', { 'class': 'datetime', 'data-allow-mismatch': true }, [
-            locale.value.changelogOn || 'on',
+          h('span', { 'class': 'datetime', 'data-allow-mismatch': '' }, [
+            locale.value.timeOn,
             ' ',
             item.datetime,
           ]),
@@ -104,8 +110,8 @@ export const Changelog = defineComponent({
         ),
         h('span', { class: 'divider' }, '-'),
         h('span', { class: 'message', innerHTML: item.message }),
-        h('span', { 'class': 'datetime', 'data-allow-mismatch': true }, [
-          locale.value.changelogOn || 'on',
+        h('span', { 'class': 'datetime', 'data-allow-mismatch': '' }, [
+          locale.value.timeOn || 'on',
           ' ',
           item.datetime,
         ]),
@@ -117,7 +123,7 @@ export const Changelog = defineComponent({
             h(VPHeader, {
               level: props.headerLevel,
               anchor: 'doc-changelog',
-              title: props.title || locale.value.changelog || 'Changelog',
+              text: props.title || locale.value.changelog,
             }),
 
             h('div', { class: ['vp-changelog', { active: active.value }] }, [

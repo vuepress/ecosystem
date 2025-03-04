@@ -6,7 +6,7 @@ import type {
   GitPluginFrontmatter,
   GitPluginPageData,
 } from '../shared/index.js'
-import { DEFAULT_LOCALES } from './locales.js'
+import { gitLocaleInfo } from './locales.js'
 import type { GitPluginOptions } from './options.js'
 import { resolveChangelog } from './resolveChangelog.js'
 import { resolveContributors } from './resolveContributors.js'
@@ -35,7 +35,7 @@ export const gitPlugin =
         __GIT_LOCALES__: getFullLocaleConfig({
           app,
           name,
-          default: DEFAULT_LOCALES,
+          default: gitLocaleInfo,
           config: locales,
         }),
       },

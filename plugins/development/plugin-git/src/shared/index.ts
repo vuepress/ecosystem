@@ -1,4 +1,4 @@
-import type { LocaleConfig, LocaleData, PageFrontmatter } from 'vuepress'
+import type { PageFrontmatter } from 'vuepress/shared'
 
 /**
  * Co-author information
@@ -119,36 +119,29 @@ export interface GitData {
   changelog?: GitChangelog[]
 }
 
-export type GitLocales = LocaleConfig<GitLocaleData>
-
-export interface GitLocaleData extends LocaleData {
+export interface GitLocaleData {
   /**
    * Contributors title
-   * @default 'Contributors'
    */
   contributors: string
 
   /**
    * Changelog title
-   * @default 'Changelog'
    */
   changelog: string
 
   /**
-   * Changelog on time
-   * @default 'on'
+   * Word to represent a commit "on" a time
    */
-  changelogOn: string
+  timeOn: string
 
   /**
    * Changelog button
-   * @default 'View All Changelog'
    */
-  changelogButton: string
+  viewChangelog: string
 
   /**
    * Latest updated
-   * @default 'Latest updated:'
    */
-  latestUpdated: string
+  latestUpdateAt: string
 }
