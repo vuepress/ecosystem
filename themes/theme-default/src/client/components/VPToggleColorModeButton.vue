@@ -29,7 +29,7 @@ const toggleColorMode = (): void => {
   display: flex;
 
   margin: auto;
-  margin-left: 1rem;
+  margin-inline-start: 1rem;
   border: 0;
 
   background: none;

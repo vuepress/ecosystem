@@ -69,17 +69,15 @@ useEventListener('keydown', (event): void => {
 
   max-width: var(--content-width, 740px);
   min-height: 2rem;
+  margin-inline: auto;
   margin-top: 0;
-  margin-right: auto;
-  margin-left: auto;
   padding: 1rem 2rem 0;
   border-top: 1px solid var(--vp-c-gutter);
 
   transition: border-top var(--vp-t-color);
 
   @media (max-width: $MQNarrow) {
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding-inline: 1rem;
   }
 
   @media print {

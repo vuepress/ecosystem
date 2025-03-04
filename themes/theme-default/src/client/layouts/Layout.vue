@@ -201,7 +201,7 @@ const onBeforeLeave = scrollPromise.pending
     }
 
     .vp-page {
-      padding-left: 0;
+      padding-inline-start: 0;
     }
   }
 

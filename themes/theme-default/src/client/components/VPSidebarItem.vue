@@ -102,7 +102,7 @@ onBeforeUnmount(() => {
 @use '../styles/variables' as *;
 
 .vp-sidebar-item {
-  border-left: 0.25rem solid transparent;
+  border-inline-start: 0.25rem solid transparent;
   color: var(--vp-c-text);
   cursor: default;
 
@@ -115,7 +115,8 @@ onBeforeUnmount(() => {
     box-sizing: border-box;
     width: 100%;
     margin: 0;
-    padding: 0.35rem 1.5rem 0.35rem 1.25rem;
+    padding-block: 0.35rem;
+    padding-inline: 1.25rem 1.5rem;
 
     font-weight: bold;
     font-size: 1.1em;
@@ -139,33 +140,35 @@ onBeforeUnmount(() => {
     box-sizing: border-box;
     width: 100%;
     margin: 0;
-    padding: 0.35rem 1rem 0.35rem 2rem;
+    padding-block: 0.35rem;
+    padding-inline: 2rem 1rem;
 
     font-weight: 400;
     font-size: 1em;
     line-height: 1.4;
 
     + .vp-sidebar-children {
-      padding-left: 1rem;
+      padding-inline-start: 1rem;
       font-size: 0.95em;
     }
 
     .vp-sidebar-children .vp-sidebar-children & {
-      padding: 0.25rem 1rem 0.25rem 1.75rem;
+      padding-block: 0.25rem;
+      padding-inline: 1.75rem 1rem;
 
       &.active {
-        border-left-color: transparent;
+        border-inline-start-color: transparent;
         font-weight: 500;
       }
     }
 
     a.vp-sidebar-heading + .vp-sidebar-children &.active {
-      border-left-color: transparent;
+      border-inline-start-color: transparent;
     }
   }
 
   &.active:not(p.vp-sidebar-heading) {
-    border-left-color: var(--vp-c-accent);
+    border-inline-start-color: var(--vp-c-accent);
     color: var(--vp-c-accent);
     font-weight: 600;
   }

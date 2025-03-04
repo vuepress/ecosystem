@@ -29,8 +29,8 @@ const { themeLocale } = useData()
 
 .vp-toggle-sidebar-button {
   position: absolute;
+  inset-inline-start: 1rem;
   top: 0.6rem;
-  left: 1rem;
 
   display: none;
 

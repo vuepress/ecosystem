@@ -72,6 +72,10 @@
 
     cursor: pointer;
 
+    [dir='rtl'] & {
+      float: left;
+    }
+
     &:hover {
       background-color: rgb(0 0 0 / 30%);
     }
