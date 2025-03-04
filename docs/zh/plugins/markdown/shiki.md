@@ -396,6 +396,36 @@ body > div {
 }
 ```
 
+### codeBlockTitle
+
+- 类型：`boolean | CodeBlockTitleRender`
+
+  ```ts
+  type CodeBlockTitleRender = (title: string) => string
+  ```
+
+- 默认值：`true`
+
+- 详情：是否启用代码块标题渲染。在代码块 <code>\`\`\`</code> 后面添加 `title="标题"` 来设置标题。
+
+  传入 `CodeBlockTitleRender` 以自定义标题渲染。
+
+- 示例：
+
+  **输入：**
+
+  ````md {1}
+  ```ts title="代码块标题"
+  console.log('hello')
+  ```
+  ````
+
+  **输出：**
+
+  ```ts title="代码块标题"
+  console.log('hello')
+  ```
+
 ### notationDiff
 
 - 类型：`boolean`

@@ -1,7 +1,7 @@
 // markdown-it plugin for generating line numbers.
 // v-pre block logic is in `../highlight.ts`
 import type { Markdown } from 'vuepress/markdown'
-import { resolveAttr, resolveLanguage } from '../utils.js'
+import { resolveLanguage } from '../utils.js'
 
 const PRE_ATTRS_REGEXP = /<pre([\s\S]*?)style="([^"]*)"([^>]*)>/
 
@@ -55,8 +55,6 @@ export const preWrapperPlugin = (
       result = `<pre class="${languageClass}"${result.slice('<pre'.length)}`
       return result
     }
-
-    const title = resolveAttr(info, 'title') || lang
     let styles = ''
 
     // before: maybe `v-pre class="shiki *"`
@@ -73,6 +71,6 @@ export const preWrapperPlugin = (
     /**
      * Add information to dataset for current code block.
      */
-    return `<div class="${languageClass}" data-highlighter="shiki" data-ext="${lang}" data-title="${title}" style="${styles}">${result}</div>`
+    return `<div class="${languageClass}" data-highlighter="shiki" data-ext="${lang}" style="${styles}">${result}</div>`
   }
 }

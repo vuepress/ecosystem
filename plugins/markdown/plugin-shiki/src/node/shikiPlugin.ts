@@ -1,9 +1,11 @@
 import { isModuleAvailable } from '@vuepress/helper'
 import type {
+  MarkdownItCodeBlockTitleOptions,
   MarkdownItCollapsedLinesOptions,
   MarkdownItLineNumbersOptions,
 } from '@vuepress/highlighter-helper'
 import {
+  codeBlockTitle as codeBlockTitlePlugin,
   collapsedLines as collapsedLinesPlugin,
   lineNumbers as lineNumbersPlugin,
 } from '@vuepress/highlighter-helper'
@@ -36,6 +38,7 @@ export const shikiPlugin = (_options: ShikiPluginOptions = {}): Plugin => {
     options.preWrapper ??= true
     options.lineNumbers ??= true
     options.collapsedLines ??= 'disable'
+    options.codeBlockTitle ??= true
 
     if (
       options.twoslash &&
@@ -72,7 +75,8 @@ export const shikiPlugin = (_options: ShikiPluginOptions = {}): Plugin => {
       },
 
       extendsMarkdown: async (md) => {
-        const { preWrapper, lineNumbers, collapsedLines } = options
+        const { preWrapper, lineNumbers, collapsedLines, codeBlockTitle } =
+          options
 
         const markdownFilePathGetter = createMarkdownFilePathGetter(md)
         const { highlighter, loadLang, extraTransformers } =
@@ -99,6 +103,9 @@ export const shikiPlugin = (_options: ShikiPluginOptions = {}): Plugin => {
           })
           md.use<MarkdownItCollapsedLinesOptions>(collapsedLinesPlugin, {
             collapsedLines,
+          })
+          md.use<MarkdownItCodeBlockTitleOptions>(codeBlockTitlePlugin, {
+            codeBlockTitle,
           })
         }
       },

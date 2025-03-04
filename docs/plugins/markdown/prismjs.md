@@ -400,6 +400,36 @@ body > div {
 }
 ```
 
+### codeBlockTitle
+
+- Type: `boolean | CodeBlockTitleRender`
+
+  ```ts
+  type CodeBlockTitleRender = (title: string) => string
+  ```
+
+- Default: `true`
+
+- Details: Whether to enable code block title rendering. Add `title="Title"` after the code block <code>\`\`\`</code> to set the title.
+
+  Pass `CodeBlockTitleRender` to customize the title rendering.
+
+- Example:
+
+  **Input:**
+
+  ````md {1}
+  ```ts title="Code Block Title"
+  console.log('hello')
+  ```
+  ````
+
+  **Output:**
+
+  ```ts title="Code Block Title"
+  console.log('hello')
+  ```
+
 ::: tip
 
 In the new version, some functionalities similar to [shiki](https://shiki.style/packages/transformers) have been implemented, allowing you to style code blocks using the same syntax.

@@ -1,4 +1,5 @@
 import {
+  codeBlockTitle as codeBlockTitlePlugin,
   collapsedLines as collapsedLinesPlugin,
   lineNumbers as lineNumbersPlugin,
 } from '@vuepress/highlighter-helper'
@@ -15,6 +16,7 @@ export const prismjsPlugin = (options: PrismjsPluginOptions = {}): Plugin => {
     preWrapper: true,
     lineNumbers: true,
     collapsedLines: false,
+    codeBlockTitle: true,
     ...options,
   }
 
@@ -22,7 +24,13 @@ export const prismjsPlugin = (options: PrismjsPluginOptions = {}): Plugin => {
     name: '@vuepress/plugin-prismjs',
 
     extendsMarkdown(md) {
-      const { preloadLanguages, preWrapper, lineNumbers, collapsedLines } = opt
+      const {
+        preloadLanguages,
+        preWrapper,
+        lineNumbers,
+        collapsedLines,
+        codeBlockTitle,
+      } = opt
 
       if (preloadLanguages?.length) {
         loadLanguages(preloadLanguages)
@@ -40,6 +48,8 @@ export const prismjsPlugin = (options: PrismjsPluginOptions = {}): Plugin => {
           md.use(lineNumbersPlugin, { lineNumbers, removeLastLine: true })
         if (collapsedLines !== 'disable')
           md.use(collapsedLinesPlugin, { collapsedLines, removeLastLine: true })
+
+        md.use(codeBlockTitlePlugin, { codeBlockTitle })
       }
     },
 
