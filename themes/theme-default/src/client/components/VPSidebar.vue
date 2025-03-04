@@ -23,11 +23,11 @@ defineSlots<{
 
 .vp-sidebar {
   position: fixed;
+  inset-inline-start: 0;
 
   // leave space for navbar
   top: var(--navbar-height);
   bottom: 0;
-  left: 0;
   z-index: 10;
 
   overflow-y: auto;
@@ -35,7 +35,7 @@ defineSlots<{
   box-sizing: border-box;
   width: var(--sidebar-width);
   margin: 0;
-  border-right: 1px solid var(--vp-c-border);
+  border-inline-end: 1px solid var(--vp-c-border);
 
   background-color: var(--vp-sidebar-c-bg);
 
@@ -62,6 +62,10 @@ defineSlots<{
     // leave space for navbar
     padding-top: var(--navbar-height);
     transform: translateX(-100%);
+
+    [dir='rtl'] & {
+      transform: translateX(100%);
+    }
   }
 
   &::-webkit-scrollbar {
@@ -105,7 +109,10 @@ defineSlots<{
   // override styles
   .vp-navbar-item {
     display: block;
-    padding: 0.5rem 0 0.5rem 1.5rem;
+
+    padding-block: 0.5rem;
+    padding-inline: 1.5rem 0;
+
     font-size: 1.1em;
     line-height: 1.25rem;
   }

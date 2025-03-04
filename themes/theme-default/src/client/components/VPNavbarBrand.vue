@@ -63,7 +63,7 @@ const NavbarBrandLogo: FunctionalComponent = () => {
 .vp-site-logo {
   vertical-align: top;
   height: var(--navbar-line-height);
-  margin-right: var(--navbar-padding-v);
+  margin-inline-end: var(--navbar-padding-v);
 }
 
 .vp-site-name {

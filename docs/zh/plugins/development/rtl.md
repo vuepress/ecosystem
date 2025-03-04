@@ -27,6 +27,10 @@ export default {
 }
 ```
 
+## 示例
+
+<ToggleRTLButton />
+
 ## 选项
 
 ### locales
@@ -55,3 +59,7 @@ export default {
   开启 RTL 的选择器。
 
   默认设置意味着在 RTL 多语言中，`html` 元素的 `dir` 属性将被设置为 `rtl`。
+
+<script setup>
+import ToggleRTLButton from '@source/.vuepress/components/ToggleRTLButton.vue'
+</script>
