@@ -1,18 +1,17 @@
 import { getFullLocaleConfig } from '@vuepress/helper'
 import type { Page, Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 import type {
   GitPluginFrontmatter,
   GitPluginPageData,
 } from '../shared/index.js'
 import { gitLocaleInfo } from './locales.js'
 import type { GitPluginOptions } from './options.js'
+import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 import { resolveChangelog } from './resolveChangelog.js'
 import { resolveContributors } from './resolveContributors.js'
 import { checkGitRepo, getCommits, inferGitProvider } from './utils/index.js'
-
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export const gitPlugin =
   ({
@@ -122,6 +121,8 @@ export const gitPlugin =
           delete page.frontmatter.gitInclude
         })
       },
-      clientConfigFile: path.resolve(__dirname, '../client/config.js'),
+
+      clientConfigFile: () =>
+        prepareClientConfigFile(app, { changelog, contributors }),
     }
   }
