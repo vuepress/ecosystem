@@ -1,5 +1,6 @@
 import type { IncludeEnv } from '@mdit/plugin-include'
 import { include } from '@mdit/plugin-include'
+import type { RuleCore } from 'markdown-it/lib/parser_core.mjs'
 import type { Plugin } from 'vuepress/core'
 import type { MarkdownEnv } from 'vuepress/markdown'
 import { path } from 'vuepress/utils'
@@ -18,23 +19,44 @@ export const markdownIncludePlugin =
           currentPath: (env: MarkdownEnv) => env.filePath,
           ...options,
         })
+
+        // @ts-expect-error: __rules__ is private
+        const coreRules = md.core.ruler.__rules__ as {
+          name: string
+          enabled: boolean
+          fn: RuleCore
+          alt: string[]
+        }[]
+
+        const originalImportRule = coreRules.find(
+          (rule) => rule.name === 'md_import',
+        )!.fn
+
+        // replace the original import rule to add included files as page deps
+        md.core.ruler.at('md_import', (state) => {
+          originalImportRule(state)
+
+          const env = state.env as IncludeEnv & MarkdownEnv
+          const { includedFiles = [], filePathRelative } = env
+
+          if (includedFiles.length) {
+            ;(((env.frontmatter ??= {}).gitInclude as string[] | undefined) ??=
+              []).push(
+              ...includedFiles.map((file) =>
+                path.relative(
+                  path.resolve(source, filePathRelative, '..'),
+                  path.resolve(source, filePathRelative, file),
+                ),
+              ),
+            )
+          }
+        })
       },
-      extendsPage: (page): void => {
-        const { markdownEnv, frontmatter, filePathRelative } = page
+      extendsPage: ({ deps, markdownEnv }): void => {
         const { includedFiles = [] } = markdownEnv as IncludeEnv
 
         // mark included files as page deps
-        page.deps.push(...includedFiles)
-
-        // add included files as git deps
-        ;((frontmatter.gitInclude as string[] | undefined) ??= []).push(
-          ...includedFiles.map((file) =>
-            path.relative(
-              path.resolve(source, filePathRelative, '..'),
-              path.resolve(source, filePathRelative, file),
-            ),
-          ),
-        )
+        deps.push(...includedFiles)
       },
     }
   }
