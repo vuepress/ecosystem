@@ -4,5 +4,13 @@ export default [
   ...rollupBundle('node/index', {
     external: ['execa'],
   }),
-  ...rollupBundle('client/index'),
+  ...rollupBundle(
+    {
+      base: 'client',
+      files: ['config', 'index'],
+    },
+    {
+      dtsExternal: ['@vuepress/helper/client'],
+    },
+  ),
 ]

@@ -371,27 +371,17 @@ interface GitChangelog {
 
 ## Git 组件{#component}
 
-插件提供了与 Git 信息相关的组件，可以在主题中使用。
+插件提供了与 Git 信息相关的全局组件，可以在主题中使用。
 
-组件通过以下方式导入：
-
-```ts
-import { Changelog, Contributors } from '@vuepress/plugin-git/client'
-```
-
-### Contributors
+### GitContributors
 
 列出当前页面的贡献者信息。
 
-```vue{8}
-<script setup>
-import { Contributors } from '@vuepress/plugin-git/client'
-</script>
-
+```vue{4}
 <template>
   <div vp-content>
     <Content />
-    <Contributors />
+    <GitContributors />
   </div>
 </template>
 ```
@@ -400,15 +390,11 @@ import { Contributors } from '@vuepress/plugin-git/client'
 
 ![contributors](/images/git/contributor-zh.png)
 
-### Changelog
+### GitChangelog
 
 列出当前页面的变更历史记录。
 
-```vue{8}
-<script setup>
-import { Changelog } from '@vuepress/plugin-git/client'
-</script>
-
+```vue{4}
 <template>
   <div vp-content>
     <Content />
