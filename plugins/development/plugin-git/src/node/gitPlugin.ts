@@ -8,6 +8,7 @@ import type {
 } from '../shared/index.js'
 import { gitLocaleInfo } from './locales.js'
 import type { GitPluginOptions } from './options.js'
+import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 import { resolveChangelog } from './resolveChangelog.js'
 import { resolveContributors } from './resolveContributors.js'
 import { checkGitRepo, getCommits, inferGitProvider } from './utils/index.js'
@@ -120,5 +121,8 @@ export const gitPlugin =
           delete page.frontmatter.gitInclude
         })
       },
+
+      clientConfigFile: () =>
+        prepareClientConfigFile(app, { changelog, contributors }),
     }
   }
