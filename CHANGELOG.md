@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.82](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.81...v2.0.0-rc.82) (2025-03-06)
+
+### Bug Fixes
+
+- **plugin-markdown-hint:** fix `env.title` being incorrectly overwritten in `renderInline` ([#390](https://github.com/vuepress/ecosystem/issues/390)) ([41a0493](https://github.com/vuepress/ecosystem/commit/41a04933fbf0f0ee789522a1e6e251f76c939a20))
+- **plugin-markdown-include:** fix interact with git plugin ([d6bc5fa](https://github.com/vuepress/ecosystem/commit/d6bc5fac607b39a6bd9bd700a4fb4d93101ebaf9))
+
+### Features
+
+- **plugin-git:** export global component, close [#389](https://github.com/vuepress/ecosystem/issues/389) ([#391](https://github.com/vuepress/ecosystem/issues/391)) ([acd1493](https://github.com/vuepress/ecosystem/commit/acd1493fa0fb6088a191d1713289b6ec9f3d818f))
+
 # [2.0.0-rc.81](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.80...v2.0.0-rc.81) (2025-03-04)
 
 ### Bug Fixes

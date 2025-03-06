@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.82](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.81...v2.0.0-rc.82) (2025-03-06)
+
+### Bug Fixes
+
+- **plugin-markdown-include:** fix interact with git plugin ([d6bc5fa](https://github.com/vuepress/ecosystem/commit/d6bc5fac607b39a6bd9bd700a4fb4d93101ebaf9))
+
 # [2.0.0-rc.81](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.80...v2.0.0-rc.81) (2025-03-04)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-include

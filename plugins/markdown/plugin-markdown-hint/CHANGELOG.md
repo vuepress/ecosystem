@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.82](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.81...v2.0.0-rc.82) (2025-03-06)
+
+### Bug Fixes
+
+- **plugin-markdown-hint:** fix `env.title` being incorrectly overwritten in `renderInline` ([#390](https://github.com/vuepress/ecosystem/issues/390)) ([41a0493](https://github.com/vuepress/ecosystem/commit/41a04933fbf0f0ee789522a1e6e251f76c939a20))
+
 # [2.0.0-rc.81](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.80...v2.0.0-rc.81) (2025-03-04)
 
 ### Bug Fixes
