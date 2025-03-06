@@ -31,12 +31,12 @@ export const markdownHintPlugin = (
       })
 
       if (options.alert) md.use(alert, locale)
-      if (options.hint !== false) md.use(hint, locale)
+      if (options.hint ?? true) md.use(hint, locale)
     },
 
     clientConfigFile:
-      options.injectStyles === false
-        ? undefined
-        : path.resolve(__dirname, '../client/config.js'),
+      (options.injectStyles ?? true)
+        ? path.resolve(__dirname, '../client/config.js')
+        : undefined,
   }
 }

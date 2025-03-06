@@ -35,7 +35,7 @@ export const appendSEO = (
     appendCanonical(head, canonicalLink)
     appendAlternate(head, alternateLinks)
 
-    if (page.frontmatter.seo !== false) {
+    if (page.frontmatter.seo ?? true) {
       const defaultOGP = getOGPInfo(page, app, {
         isArticle,
         fallBackImage,

@@ -162,6 +162,8 @@ export interface GitPluginOptions {
    * Whether to get the created time of a page
    *
    * 是否收集页面创建时间
+   *
+   * @default true
    */
   createdTime?: boolean
 
@@ -169,6 +171,8 @@ export interface GitPluginOptions {
    * Whether to get the updated time of a page
    *
    * 是否收集页面更新时间
+   *
+   * @default true
    */
   updatedTime?: boolean
 
@@ -176,6 +180,8 @@ export interface GitPluginOptions {
    * Whether to get the contributors of a page
    *
    * 是否收集页面的贡献者
+   *
+   * @default true
    */
   contributors?: ContributorsOptions | boolean
 
@@ -183,6 +189,8 @@ export interface GitPluginOptions {
    * Whether to get the changelog of a page
    *
    * 是否收集页面的变更历史记录
+   *
+   * @default false
    */
   changelog?: ChangelogOptions | boolean
 

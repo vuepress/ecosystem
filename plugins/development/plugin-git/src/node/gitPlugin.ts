@@ -15,9 +15,9 @@ import { checkGitRepo, getCommits, inferGitProvider } from './utils/index.js'
 
 export const gitPlugin =
   ({
-    createdTime,
-    updatedTime,
-    contributors,
+    createdTime = true,
+    updatedTime = true,
+    contributors = true,
     changelog = false,
     filter,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
@@ -56,10 +56,10 @@ export const gitPlugin =
 
         // skip if all features are disabled
         if (
-          !(frontmatter.contributors ?? contributors ?? true) &&
+          !(frontmatter.contributors ?? contributors) &&
           !(frontmatter.changelog ?? changelog) &&
-          createdTime === false &&
-          updatedTime === false
+          !createdTime &&
+          !updatedTime
         ) {
           return
         }
@@ -78,11 +78,11 @@ export const gitPlugin =
 
         if (commits.length === 0) return
 
-        if (createdTime !== false) {
+        if (createdTime) {
           page.data.git.createdTime = commits[commits.length - 1].date
         }
 
-        if (updatedTime !== false) {
+        if (updatedTime) {
           page.data.git.updatedTime = commits[0].date
         }
 
@@ -90,7 +90,7 @@ export const gitPlugin =
           ? contributors
           : {}
 
-        if ((frontmatter.contributors ?? contributors) !== false) {
+        if (frontmatter.contributors ?? contributors) {
           contributorsOptions.transform ??= transformContributors
           page.data.git.contributors = resolveContributors(
             commits,

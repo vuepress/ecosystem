@@ -54,18 +54,11 @@ export default defineComponent({
     let abort: (() => void) | null = null
     const enableWaline = computed(() => Boolean(walineOptions.value.serverURL))
 
-    const enablePageViews = computed(() => {
-      if (!enableWaline.value) return false
-      const pluginConfig = walineOptions.value.pageview !== false
-      const pageConfig = frontmatter.value.pageview
-
-      return (
-        // Enable in page
-        Boolean(pageConfig) ||
-        // Not disabled in anywhere
-        (pluginConfig && pageConfig !== false)
-      )
-    })
+    const enablePageViews = computed(
+      () =>
+        enableWaline.value &&
+        (frontmatter.value.pageview ?? walineOptions.value.pageview ?? true),
+    )
 
     const walineProps = computed(() => ({
       lang: lang.value === 'zh-CN' ? 'zh-CN' : 'en',

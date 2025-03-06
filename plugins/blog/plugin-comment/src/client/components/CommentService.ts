@@ -30,7 +30,7 @@ export default defineComponent({
     const frontmatter = usePageFrontmatter<CommentPluginFrontmatter>()
 
     const enabled = computed(
-      () => frontmatter.value.comment ?? commentOptions.value.comment !== false,
+      () => frontmatter.value.comment ?? commentOptions.value.comment ?? true,
     )
 
     return (): VNode | null =>

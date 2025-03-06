@@ -31,8 +31,7 @@ const { frontmatter, page, themeLocale } = useData()
 
 // navbar
 const shouldShowNavbar = computed(
-  () =>
-    frontmatter.value.navbar !== false && themeLocale.value.navbar !== false,
+  () => frontmatter.value.navbar ?? themeLocale.value.navbar ?? true,
 )
 
 // sidebar

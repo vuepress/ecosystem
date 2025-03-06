@@ -34,7 +34,7 @@ export const BackToTop = defineComponent({
     /** Whether to display button */
     const show = computed(
       () =>
-        pageFrontmatter.value.backToTop !== false &&
+        (pageFrontmatter.value.backToTop ?? true) &&
         y.value > __BACK_TO_TOP_THRESHOLD__,
     )
 
