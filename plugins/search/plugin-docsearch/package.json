@@ -44,7 +44,7 @@
     "@docsearch/js": "^3.9.0",
     "@docsearch/react": "^3.9.0",
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^12.7.0",
+    "@vueuse/core": "^12.8.2",
     "ts-debounce": "^4.0.0",
     "vue": "^3.5.13"
   },
@@ -52,7 +52,7 @@
     "vuepress": "catalog:"
   },
   "devDependencies": {
-    "algoliasearch": "5.20.3"
+    "algoliasearch": "5.20.4"
   },
   "publishConfig": {
     "access": "public"

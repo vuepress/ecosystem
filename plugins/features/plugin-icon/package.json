@@ -43,7 +43,7 @@
   "dependencies": {
     "@mdit/plugin-icon": "^0.16.5",
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^12.7.0",
+    "@vueuse/core": "^12.8.2",
     "vue": "^3.5.13"
   },
   "peerDependencies": {
