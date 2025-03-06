@@ -1,4 +1,5 @@
 import type { Markdown } from 'vuepress/markdown'
+import { isFunction } from 'vuepress/shared'
 import { resolveAttr } from '../utils/index.js'
 import type {
   CodeBlockTitleRender,
@@ -16,13 +17,14 @@ const defaultTitleRender: CodeBlockTitleRender = (title, code) =>
 export const codeBlockTitle = (
   md: Markdown,
   {
-    codeBlockTitle: titleEnabledOrRender = true,
+    codeBlockTitle: codeBlockTitleOptions = true,
   }: MarkdownItCodeBlockTitleOptions = {},
 ): void => {
-  if (titleEnabledOrRender === false) return
+  if (codeBlockTitleOptions === false) return
 
-  const titleRender: CodeBlockTitleRender =
-    titleEnabledOrRender === true ? defaultTitleRender : titleEnabledOrRender
+  const titleRender: CodeBlockTitleRender = isFunction(codeBlockTitleOptions)
+    ? codeBlockTitleOptions
+    : defaultTitleRender
 
   const rawFence = md.renderer.rules.fence!
 
