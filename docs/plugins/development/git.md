@@ -383,27 +383,17 @@ interface GitChangelog {
 
 ## Git Component{#component}
 
-The plugin provides components related to Git information, which can be used in themes.
+The plugin provides global components related to Git information, which can be used in themes.
 
-The components are imported as follows:
-
-```ts
-import { Changelog, Contributors } from '@vuepress/plugin-git/client'
-```
-
-### Contributors
+### GitContributors
 
 List the contributor information for the current page.
 
-```vue{8}
-<script setup>
-import { Contributors } from '@vuepress/plugin-git/client'
-</script>
-
+```vue{4}
 <template>
   <div vp-content>
     <Content />
-    <Contributors />
+    <GitContributors />
   </div>
 </template>
 ```
@@ -412,19 +402,15 @@ import { Contributors } from '@vuepress/plugin-git/client'
 
 ![contributors](/images/git/contributor-en.png)
 
-### Changelog
+### GitChangelog
 
 List the changelog of the current page.
 
-```vue{8}
-<script setup>
-import { Changelog } from '@vuepress/plugin-git/client'
-</script>
-
+```vue{4}
 <template>
   <div vp-content>
     <Content />
-    <Changelog />
+    <GitChangelog />
   </div>
 </template>
 ```
