@@ -6,4 +6,7 @@ export type ActiveState = [
   toggleActive: (value?: boolean) => void,
 ]
 
-export const useActiveState = (): ActiveState => useToggle()
+let activeState: ActiveState | null = null
+
+// eslint-disable-next-line no-return-assign
+export const useActiveState = (): ActiveState => (activeState ??= useToggle())
