@@ -5,6 +5,7 @@ import { ensureLeadingSlash } from '@vuepress/helper'
 import type { PluginWithOptions } from 'markdown-it'
 import type { MarkdownEnv } from 'vuepress/markdown'
 import { resolveLocalePath } from 'vuepress/shared'
+import { cleanMarkdownEnv } from './cleanMarkdownEnv.js'
 
 import type { MarkdownHintPluginLocaleData } from './options.js'
 
@@ -44,7 +45,8 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
           // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           info = options[localePath]?.[name]
         } else {
-          info = md.renderInline(info, { ...env })
+          console.log('\nenv: ', env)
+          info = md.renderInline(info, cleanMarkdownEnv(env))
         }
 
         return `<div class="hint-container ${name}">\n<p class="hint-container-title">${info || name}</p>\n`
@@ -71,7 +73,7 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         info = options[localePath]?.caution
       } else {
-        info = md.renderInline(info, { ...env })
+        info = md.renderInline(info, cleanMarkdownEnv(env))
       }
 
       return `<div class="hint-container caution">\n<p class="hint-container-title">${
@@ -104,7 +106,7 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         info = options[localePath]?.details
       } else {
-        info = md.renderInline(info, { ...env })
+        info = md.renderInline(info, cleanMarkdownEnv(env))
       }
 
       return `<details class="hint-container details"><summary>${
