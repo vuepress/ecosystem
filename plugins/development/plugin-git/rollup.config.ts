@@ -7,7 +7,7 @@ export default [
   ...rollupBundle(
     {
       base: 'client',
-      files: ['components/Changelog', 'components/Contributors', 'index'],
+      files: ['components/GitChangelog', 'components/GitContributors', 'index'],
     },
     {
       dtsExternal: ['@vuepress/helper/client'],
