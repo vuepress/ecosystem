@@ -63,10 +63,10 @@ export const Changelog = defineComponent({
       return formatter.format(latest.date)
     })
 
-    const [active, toggle] = useToggle()
+    const [active, toggleActive] = useToggle()
 
     const ChangelogHeader: FunctionalComponent = () =>
-      h('div', { class: 'changelog-header', onClick: toggle }, [
+      h('div', { class: 'changelog-header', onClick: () => toggleActive() }, [
         h('div', { class: 'latest-updated' }, [
           h('span', { class: 'vpi-changelog' }),
           h('span', [locale.value.latestUpdateAt, ' ']),
