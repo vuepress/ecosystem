@@ -1,5 +1,5 @@
 import { execa } from 'execa'
-import type { GitContributor } from '../../shared/index.js'
+import type { GitContributorInfo } from '../../shared/index.js'
 import type { GitPluginOptions } from '../options.js'
 import type { MergedRawCommit, RawCommit } from '../typings.js'
 
@@ -10,7 +10,7 @@ const RE_CO_AUTHOR = /^ *Co-authored-by: ?([^<]*)<([^>]*)> */gim
 
 const getCoAuthors = (
   body: string,
-): Pick<GitContributor, 'email' | 'name'>[] => {
+): Pick<GitContributorInfo, 'email' | 'name'>[] => {
   if (!body) return []
 
   return [...body.matchAll(RE_CO_AUTHOR)]
@@ -63,13 +63,13 @@ export const getRawCommits = async (
       .split(`${SPLIT_CHAR}\n`)
       .filter(Boolean)
       .map((rawString) => {
-        const [hash, author, email, date, message, refs, body] = rawString
+        const [hash, author, email, time, message, refs, body] = rawString
           .split('|')
           .map((v) => v.trim())
         return {
           filepath,
           hash,
-          date: Number.parseInt(date, 10) * 1000,
+          time: Number.parseInt(time, 10) * 1000,
           message,
           body,
           refs,
@@ -106,6 +106,6 @@ export const getCommits = async (
   )
 
   return mergeRawCommits(rawCommits.flat()).sort((a, b) =>
-    b.date - a.date > 0 ? 1 : -1,
+    b.time - a.time > 0 ? 1 : -1,
   )
 }

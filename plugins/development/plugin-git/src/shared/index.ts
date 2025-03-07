@@ -8,7 +8,7 @@ export interface CoAuthorInfo {
   email: string
 }
 
-export interface GitContributor {
+export interface GitContributorInfo {
   /**
    * Contributor display name
    */
@@ -36,7 +36,7 @@ export interface GitContributor {
   url?: string
 }
 
-export interface GitChangelog {
+export interface GitChangelogInfo {
   /**
    * Commit hash
    */
@@ -44,7 +44,7 @@ export interface GitChangelog {
   /**
    * Unix timestamp in milliseconds
    */
-  date: number
+  time: number
   /**
    * Commit message
    */
@@ -111,12 +111,12 @@ export interface GitData {
   /**
    * Contributors of all commits
    */
-  contributors?: GitContributor[]
+  contributors?: GitContributorInfo[]
 
   /**
    * Changelog of a page
    */
-  changelog?: GitChangelog[]
+  changelog?: GitChangelogInfo[]
 }
 
 export interface GitLocaleData {

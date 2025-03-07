@@ -79,11 +79,11 @@ export const gitPlugin =
         if (commits.length === 0) return
 
         if (createdTime) {
-          page.data.git.createdTime = commits[commits.length - 1].date
+          page.data.git.createdTime = commits[commits.length - 1].time
         }
 
         if (updatedTime) {
-          page.data.git.updatedTime = commits[0].date
+          page.data.git.updatedTime = commits[0].time
         }
 
         const contributorsOptions = isPlainObject(contributors)

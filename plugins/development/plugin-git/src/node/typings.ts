@@ -16,7 +16,7 @@ export interface RawCommit {
   /**
    * Unix timestamp in milliseconds
    */
-  date: number
+  time: number
   /**
    * Commit message
    */

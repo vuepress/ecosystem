@@ -1,22 +1,19 @@
 import { useToggle } from '@vueuse/core'
 import type { FunctionalComponent } from 'vue'
-import { computed, defineComponent, h } from 'vue'
-import { usePageData, usePageFrontmatter, usePageLang } from 'vuepress/client'
-import type {
-  GitChangelog,
-  GitPluginFrontmatter,
-  GitPluginPageData,
-} from '../../shared/index.js'
-import { useGitLocaleConfig } from '../composables/index.js'
+import { defineComponent, h } from 'vue'
+import type { GitChangelogItem } from '../composables/index.js'
+import {
+  useChangelog,
+  useGitLocaleConfig,
+  useLastUpdated,
+} from '../composables/index.js'
 import { VPHeader } from './VPHeader.js'
 
 import '../styles/vars.css'
 import '../styles/changelog.css'
 
-type ResolvedChangelog = Omit<GitChangelog, 'date'> & { datetime: string }
-
-export const Changelog = defineComponent({
-  name: 'Changelog',
+export const GitChangelog = defineComponent({
+  name: 'GitChangelog',
 
   props: {
     /** Title of changelog */
@@ -30,38 +27,9 @@ export const Changelog = defineComponent({
   },
 
   setup(props) {
+    const changelog = useChangelog()
     const locale = useGitLocaleConfig()
-    const frontmatter = usePageFrontmatter<GitPluginFrontmatter>()
-    const page = usePageData<GitPluginPageData>()
-    const lang = usePageLang()
-
-    const list = computed<ResolvedChangelog[]>(() => {
-      if (frontmatter.value.changelog === false) return []
-
-      const formatter = new Intl.DateTimeFormat(lang.value, {
-        dateStyle: 'short',
-      })
-
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      return (page.value.git?.changelog ?? []).map(({ date, ...item }) => {
-        const datetime = formatter.format(date)
-        return { datetime, ...item }
-      })
-    })
-
-    const latestUpdated = computed(() => {
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      const latest = (page.value.git?.changelog ?? [])[0]
-
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      if (!latest) return ''
-
-      const formatter = new Intl.DateTimeFormat(lang.value, {
-        dateStyle: 'short',
-        timeStyle: 'short',
-      })
-      return formatter.format(latest.date)
-    })
+    const latestUpdated = useLastUpdated()
 
     const [active, toggleActive] = useToggle()
 
@@ -69,8 +37,7 @@ export const Changelog = defineComponent({
       h('div', { class: 'changelog-header', onClick: () => toggleActive() }, [
         h('div', { class: 'latest-updated' }, [
           h('span', { class: 'vpi-changelog' }),
-          h('span', [locale.value.latestUpdateAt, ' ']),
-          h('span', { 'data-allow-mismatch': '' }, latestUpdated.value),
+          h('span', { 'data-allow-mismatch': '' }, latestUpdated.value!.text),
         ]),
         h('div', [
           h('span', { class: 'vpi-changelog-menu' }),
@@ -78,7 +45,7 @@ export const Changelog = defineComponent({
         ]),
       ])
 
-    const ReleaseTag: FunctionalComponent<{ item: ResolvedChangelog }> = ({
+    const ReleaseTag: FunctionalComponent<{ item: GitChangelogItem }> = ({
       item,
     }) =>
       h(
@@ -89,12 +56,12 @@ export const Changelog = defineComponent({
           h('span', { 'class': 'datetime', 'data-allow-mismatch': '' }, [
             locale.value.timeOn,
             ' ',
-            item.datetime,
+            item.date,
           ]),
         ]),
       )
 
-    const Commit: FunctionalComponent<{ item: ResolvedChangelog }> = ({
+    const Commit: FunctionalComponent<{ item: GitChangelogItem }> = ({
       item,
     }) =>
       h('li', { class: 'changelog commit' }, [
@@ -113,12 +80,12 @@ export const Changelog = defineComponent({
         h('span', { 'class': 'datetime', 'data-allow-mismatch': '' }, [
           locale.value.timeOn || 'on',
           ' ',
-          item.datetime,
+          item.date,
         ]),
       ])
 
     return () =>
-      list.value.length
+      changelog.value.length
         ? [
             h(VPHeader, {
               level: props.headerLevel,
@@ -130,7 +97,7 @@ export const Changelog = defineComponent({
               h(ChangelogHeader),
 
               h('ul', { class: 'changelog-list' }, [
-                list.value.map((item) =>
+                changelog.value.map((item) =>
                   item.tag
                     ? h(ReleaseTag, { item, key: item.tag })
                     : h(Commit, { item, key: item.hash }),

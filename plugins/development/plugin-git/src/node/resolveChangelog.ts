@@ -1,5 +1,5 @@
 import type { App } from 'vuepress'
-import type { GitChangelog } from '../shared/index.js'
+import type { GitChangelogInfo } from '../shared/index.js'
 import type { ChangelogOptions, ContributorInfo } from './options.js'
 import type { KnownGitProvider, MergedRawCommit } from './typings.js'
 import {
@@ -69,25 +69,25 @@ export const resolveChangelog = (
   options: ChangelogOptions,
   gitProvider: KnownGitProvider | null,
   contributors: ContributorInfo[],
-): GitChangelog[] => {
+): GitChangelogInfo[] => {
   const pattern = getPattern(options, gitProvider)
   const repo = options.repoUrl
-  const result: GitChangelog[] = []
+  const result: GitChangelogInfo[] = []
 
   const sliceCommits = options.maxCount
     ? commits.slice(0, options.maxCount)
     : commits
 
   for (const commit of sliceCommits) {
-    const { hash, message, date, author, email, refs, coAuthors } = commit
+    const { hash, message, time, author, email, refs, coAuthors } = commit
     const tag = parseTagName(refs)
     const contributor = getContributorInfo(
       getUserNameWithNoreplyEmail(email) ?? author,
       contributors,
     )
-    const resolved: GitChangelog = {
+    const resolved: GitChangelogInfo = {
       hash,
-      date,
+      time,
       email,
       author: contributor?.name ?? contributor?.username ?? author,
       message: app.markdown.renderInline(message),
