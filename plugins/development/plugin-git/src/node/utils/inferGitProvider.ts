@@ -1,5 +1,5 @@
 import { execaCommandSync } from 'execa'
-import type { KnownGitProvider } from '../typings.js'
+import type { KnownGitProvider } from '../../shared/index.js'
 
 export const getRemoteUrl = (cwd: string): string => {
   try {

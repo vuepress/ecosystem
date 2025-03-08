@@ -1,8 +1,4 @@
 import type { CoAuthorInfo } from '../shared/index.js'
-/**
- * Git provider
- */
-export type KnownGitProvider = 'bitbucket' | 'gitee' | 'github' | 'gitlab'
 
 export interface RawCommit {
   /**

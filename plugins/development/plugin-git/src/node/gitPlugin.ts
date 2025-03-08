@@ -11,7 +11,12 @@ import type { GitPluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 import { resolveChangelog } from './resolveChangelog.js'
 import { resolveContributors } from './resolveContributors.js'
-import { checkGitRepo, getCommits, inferGitProvider } from './utils/index.js'
+import {
+  checkGitRepo,
+  getCommits,
+  inferGitProvider,
+  injectGitOptions,
+} from './utils/index.js'
 
 export const gitPlugin =
   ({
@@ -39,6 +44,7 @@ export const gitPlugin =
           default: gitLocaleInfo,
           config: locales,
         }),
+        __GIT_OPTIONS__: injectGitOptions(gitProvider, changelog),
       },
 
       extendsPage: async (
@@ -109,7 +115,6 @@ export const gitPlugin =
             app,
             commits,
             changelogOptions,
-            gitProvider,
             contributorsOptions.info ?? [],
           )
         }

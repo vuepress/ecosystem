@@ -1,6 +1,6 @@
-import type { GitContributorInfo } from '../shared/index.js'
+import type { GitContributorInfo, KnownGitProvider } from '../shared/index.js'
 import type { ContributorsOptions } from './options.js'
-import type { KnownGitProvider, MergedRawCommit } from './typings.js'
+import type { MergedRawCommit } from './typings.js'
 import {
   digestSHA256,
   getContributorInfo,

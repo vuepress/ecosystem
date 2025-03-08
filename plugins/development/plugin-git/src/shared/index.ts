@@ -1,6 +1,11 @@
 import type { PageFrontmatter } from 'vuepress/shared'
 
 /**
+ * Git provider
+ */
+export type KnownGitProvider = 'bitbucket' | 'gitee' | 'github' | 'gitlab'
+
+/**
  * Co-author information
  */
 export interface CoAuthorInfo {
@@ -144,4 +149,18 @@ export interface GitLocaleData {
    * Latest updated
    */
   latestUpdateAt: string
+}
+
+/* @internal */
+export interface GitUrlPattern {
+  issue?: string
+  tag?: string
+  commit?: string
+}
+
+/* @internal */
+export interface GitInjectOptions {
+  provider?: KnownGitProvider | null
+  repo?: string
+  pattern?: GitUrlPattern
 }
