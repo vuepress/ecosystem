@@ -151,14 +151,12 @@ export interface GitLocaleData {
   latestUpdateAt: string
 }
 
-/* @internal */
 export interface GitUrlPattern {
   issue?: string
   tag?: string
   commit?: string
 }
 
-/* @internal */
 export interface GitInjectOptions {
   provider?: KnownGitProvider | null
   repo?: string
