@@ -2,6 +2,7 @@ import type { GitContributorInfo, KnownGitProvider } from '../shared/index.js'
 import type { ContributorsOptions } from './options.js'
 import type { MergedRawCommit } from './typings.js'
 import {
+  checkGithubUsername,
   digestSHA256,
   getContributorInfo,
   getUserNameWithNoreplyEmail,
@@ -21,22 +22,27 @@ export const getRawContributors = (
       ...commit.coAuthors,
     ]
 
-    for (const { name: author, email } of authors) {
+    for (const { name, email } of authors) {
+      const usernameWithNoreplyEmail = getUserNameWithNoreplyEmail(email)
       const config = getContributorInfo(
-        getUserNameWithNoreplyEmail(email) ?? author,
+        usernameWithNoreplyEmail ?? name,
         options.info,
       )
-      const username = config?.username ?? author
-      const name = config?.name ?? username
 
-      const contributor = contributors.get(name + email)
+      // Only trust the username from `info` and `noreply email`.
+      const username = config?.username ?? usernameWithNoreplyEmail
+
+      const contributor = contributors.get(username ?? name)
 
       if (contributor) {
         contributor.commits++
       } else {
         const item: GitContributorInfo = {
-          name,
-          username,
+          name: config?.name ?? username ?? name,
+          // if `username` not found, check if `name` is a valid github username
+          username:
+            username ??
+            (gitProvider === 'github' && checkGithubUsername(name) ? name : ''),
           email,
           commits: 1,
         }
@@ -44,18 +50,20 @@ export const getRawContributors = (
         if (options.avatar)
           item.avatar =
             config?.avatar ??
-            options.avatarPattern?.replace(':username', username) ??
-            (gitProvider === 'github'
-              ? `https://avatars.githubusercontent.com/${username}?v=4`
-              : `https://gravatar.com/avatar/${digestSHA256(email || username)}?d=retro`)
+            (item.username
+              ? options.avatarPattern?.replace(':username', item.username)
+              : null) ??
+            (item.username
+              ? `https://avatars.githubusercontent.com/${item.username}?v=4`
+              : `https://gravatar.com/avatar/${digestSHA256(email)}?d=retro`)
 
         const url =
-          (config?.url ?? gitProvider === 'github')
-            ? `https://github.com/${username}`
-            : undefined
+          config?.url ??
+          (item.username ? `https://github.com/${item.username}` : undefined)
+
         if (url) item.url = url
 
-        contributors.set(name + email, item)
+        contributors.set(username ?? name, item)
       }
     }
   }
@@ -87,7 +95,13 @@ export const resolveContributors = (
 
   if (options.info?.length && extraContributors.length) {
     for (const extraContributor of extraContributors) {
-      if (contributors.every((item) => item.name !== extraContributor)) {
+      if (
+        contributors.every(
+          (item) =>
+            item.username !== extraContributor &&
+            item.name !== extraContributor,
+        )
+      ) {
         const contributorInfo = getContributorInfo(
           extraContributor,
           options.info,
@@ -97,7 +111,7 @@ export const resolveContributors = (
 
         const result: GitContributorInfo = {
           name: contributorInfo.name ?? extraContributor,
-          username: contributorInfo.name ?? extraContributor,
+          username: contributorInfo.username,
           email: '',
           commits: 0,
         }
