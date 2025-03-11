@@ -45,7 +45,6 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
           // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           info = options[localePath]?.[name]
         } else {
-          console.log('\nenv: ', env)
           info = md.renderInline(info, cleanMarkdownEnv(env))
         }
 
