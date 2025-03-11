@@ -34,37 +34,41 @@ export const GitChangelog = defineComponent({
     const [active, toggleActive] = useToggle()
 
     const ChangelogHeader: FunctionalComponent = () =>
-      h('div', { class: 'changelog-header', onClick: () => toggleActive() }, [
-        h('div', { class: 'latest-updated' }, [
-          h('span', { class: 'vpi-changelog' }),
-          h('span', { 'data-allow-mismatch': '' }, latestUpdated.value!.text),
-        ]),
-        h('div', [
-          h('span', { class: 'vpi-changelog-menu' }),
-          h('span', locale.value.viewChangelog),
-        ]),
-      ])
+      h(
+        'div',
+        { class: 'vp-changelog-header', onClick: () => toggleActive() },
+        [
+          h('div', { class: 'vp-latest-updated' }, [
+            h('span', { class: 'vp-changelog-icon' }),
+            h('span', { 'data-allow-mismatch': '' }, latestUpdated.value!.text),
+          ]),
+          h('div', [
+            h('span', { class: 'vp-changelog-menu-icon' }),
+            h('span', locale.value.viewChangelog),
+          ]),
+        ],
+      )
 
     const ReleaseTag: FunctionalComponent<{ item: GitChangelogItem }> = ({
       item,
     }) =>
       h(
         'li',
-        { class: 'changelog release-tag' },
+        { class: 'vp-changelog-item-tag' },
         h('div', [
-          h('a', { class: 'link release-tag' }, h('code', item.tag)),
-          h('span', { 'class': 'datetime', 'data-allow-mismatch': '' }, [
-            locale.value.timeOn,
-            ' ',
-            item.date,
-          ]),
+          h('a', { class: 'vp-changelog-tag' }, h('code', item.tag)),
+          h(
+            'span',
+            { 'class': 'vp-changelog-date', 'data-allow-mismatch': '' },
+            [locale.value.timeOn, ' ', item.date],
+          ),
         ]),
       )
 
     const Commit: FunctionalComponent<{ item: GitChangelogItem }> = ({
       item,
     }) =>
-      h('li', { class: 'changelog commit' }, [
+      h('li', { class: 'vp-changelog-item-commit' }, [
         h(
           item.commitUrl ? 'a' : 'span',
           {
@@ -77,7 +81,7 @@ export const GitChangelog = defineComponent({
         ),
         h('span', { class: 'divider' }, '-'),
         h('span', { class: 'message', innerHTML: item.message }),
-        h('span', { 'class': 'datetime', 'data-allow-mismatch': '' }, [
+        h('span', { 'class': 'vp-changelog-date', 'data-allow-mismatch': '' }, [
           locale.value.timeOn || 'on',
           ' ',
           item.date,
@@ -93,17 +97,21 @@ export const GitChangelog = defineComponent({
               text: props.title || locale.value.changelog,
             }),
 
-            h('div', { class: ['vp-changelog', { active: active.value }] }, [
-              h(ChangelogHeader),
+            h(
+              'div',
+              { class: ['vp-changelog-wrapper', { active: active.value }] },
+              [
+                h(ChangelogHeader),
 
-              h('ul', { class: 'changelog-list' }, [
-                changelog.value.map((item) =>
-                  item.tag
-                    ? h(ReleaseTag, { item, key: item.tag })
-                    : h(Commit, { item, key: item.hash }),
-                ),
-              ]),
-            ]),
+                h('ul', { class: 'vp-changelog-list' }, [
+                  changelog.value.map((item) =>
+                    item.tag
+                      ? h(ReleaseTag, { item, key: item.tag })
+                      : h(Commit, { item, key: item.hash }),
+                  ),
+                ]),
+              ],
+            ),
           ]
         : null
   },
