@@ -6,25 +6,25 @@
   justify-content: flex-start;
 
   margin: 2rem 0 1rem;
+}
 
-  .contributor {
-    display: flex;
-    gap: 0.25rem;
-    align-items: center;
+.vp-contributor {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
 
-    &::after {
-      display: none !important;
-    }
-
-    .avatar {
-      object-fit: contain;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-    }
+  &::after {
+    display: none !important;
   }
 
-  a.contributor {
-    text-decoration: none !important;
+  &-avatar {
+    object-fit: contain;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
   }
+}
+
+a.vp-contributor {
+  text-decoration: none !important;
 }

@@ -18,16 +18,16 @@ export const prepareClientConfigFile = (
 
   if (contributors ?? true) {
     imports.add(
-      `import { Contributors } from "${CLIENT_FOLDER}components/Contributors.js";`,
+      `import { GitContributors } from "${CLIENT_FOLDER}components/GitContributors.js";`,
     )
-    enhances.add(`app.component("GitContributors", Contributors);`)
+    enhances.add(`app.component("GitContributors", GitContributors);`)
   }
 
   if (changelog) {
     imports.add(
-      `import { Changelog } from "${CLIENT_FOLDER}components/Changelog.js";`,
+      `import { GitChangelog } from "${CLIENT_FOLDER}components/GitChangelog.js";`,
     )
-    enhances.add(`app.component("GitChangelog", Changelog);`)
+    enhances.add(`app.component("GitChangelog", GitChangelog);`)
   }
 
   return app.writeTemp(

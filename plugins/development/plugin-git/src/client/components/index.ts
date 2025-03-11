@@ -1,3 +1,3 @@
-export * from './Contributors.js'
-export * from './Changelog.js'
+export * from './GitContributors.js'
+export * from './GitChangelog.js'
 export * from './VPHeader.js'

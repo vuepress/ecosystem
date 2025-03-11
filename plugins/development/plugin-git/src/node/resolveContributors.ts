@@ -1,6 +1,6 @@
-import type { GitContributor } from '../shared/index.js'
+import type { GitContributorInfo, KnownGitProvider } from '../shared/index.js'
 import type { ContributorsOptions } from './options.js'
-import type { KnownGitProvider, MergedRawCommit } from './typings.js'
+import type { MergedRawCommit } from './typings.js'
 import {
   digestSHA256,
   getContributorInfo,
@@ -11,8 +11,8 @@ export const getRawContributors = (
   commits: MergedRawCommit[],
   options: ContributorsOptions,
   gitProvider: KnownGitProvider | null,
-): GitContributor[] => {
-  const contributors = new Map<string, GitContributor>()
+): GitContributorInfo[] => {
+  const contributors = new Map<string, GitContributorInfo>()
 
   // copy and reverse commits
   for (const commit of [...commits].reverse()) {
@@ -34,7 +34,7 @@ export const getRawContributors = (
       if (contributor) {
         contributor.commits++
       } else {
-        const item: GitContributor = {
+        const item: GitContributorInfo = {
           name,
           username,
           email,
@@ -82,7 +82,7 @@ export const resolveContributors = (
   gitProvider: KnownGitProvider | null,
   options: ContributorsOptions,
   extraContributors: string[] = [],
-): GitContributor[] => {
+): GitContributorInfo[] => {
   const contributors = getRawContributors(commits, options, gitProvider)
 
   if (options.info?.length && extraContributors.length) {
@@ -95,7 +95,7 @@ export const resolveContributors = (
 
         if (!contributorInfo) continue
 
-        const result: GitContributor = {
+        const result: GitContributorInfo = {
           name: contributorInfo.name ?? extraContributor,
           username: contributorInfo.name ?? extraContributor,
           email: '',

@@ -1,5 +1,5 @@
 import type { LocaleConfig, Page } from 'vuepress'
-import type { GitContributor, GitLocaleData } from '../shared/index.js'
+import type { GitContributorInfo, GitLocaleData } from '../shared/index.js'
 
 /**
  * Contributor information
@@ -86,7 +86,7 @@ export interface ContributorsOptions {
    *
    * 贡献者转换函数，例如去重和排序
    */
-  transform?: (contributors: GitContributor[]) => GitContributor[]
+  transform?: (contributors: GitContributorInfo[]) => GitContributorInfo[]
 }
 
 export interface ChangelogOptions {
@@ -198,7 +198,9 @@ export interface GitPluginOptions {
    * @deprecated use `contributors.transform` instead
    * Functions to transform contributors, e.g. remove duplicates ones and sort them
    */
-  transformContributors?: (contributors: GitContributor[]) => GitContributor[]
+  transformContributors?: (
+    contributors: GitContributorInfo[],
+  ) => GitContributorInfo[]
 
   /**
    * Localization config

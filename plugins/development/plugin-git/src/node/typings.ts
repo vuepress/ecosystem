@@ -1,8 +1,4 @@
 import type { CoAuthorInfo } from '../shared/index.js'
-/**
- * Git provider
- */
-export type KnownGitProvider = 'bitbucket' | 'gitee' | 'github' | 'gitlab'
 
 export interface RawCommit {
   /**
@@ -16,7 +12,7 @@ export interface RawCommit {
   /**
    * Unix timestamp in milliseconds
    */
-  date: number
+  time: number
   /**
    * Commit message
    */

@@ -1,6 +1,11 @@
 import type { PageFrontmatter } from 'vuepress/shared'
 
 /**
+ * Git provider
+ */
+export type KnownGitProvider = 'bitbucket' | 'gitee' | 'github' | 'gitlab'
+
+/**
  * Co-author information
  */
 export interface CoAuthorInfo {
@@ -8,7 +13,7 @@ export interface CoAuthorInfo {
   email: string
 }
 
-export interface GitContributor {
+export interface GitContributorInfo {
   /**
    * Contributor display name
    */
@@ -36,7 +41,7 @@ export interface GitContributor {
   url?: string
 }
 
-export interface GitChangelog {
+export interface GitChangelogInfo {
   /**
    * Commit hash
    */
@@ -44,7 +49,7 @@ export interface GitChangelog {
   /**
    * Unix timestamp in milliseconds
    */
-  date: number
+  time: number
   /**
    * Commit message
    */
@@ -111,12 +116,12 @@ export interface GitData {
   /**
    * Contributors of all commits
    */
-  contributors?: GitContributor[]
+  contributors?: GitContributorInfo[]
 
   /**
    * Changelog of a page
    */
-  changelog?: GitChangelog[]
+  changelog?: GitChangelogInfo[]
 }
 
 export interface GitLocaleData {
@@ -144,4 +149,16 @@ export interface GitLocaleData {
    * Latest updated
    */
   latestUpdateAt: string
+}
+
+export interface GitUrlPattern {
+  issue?: string
+  tag?: string
+  commit?: string
+}
+
+export interface GitInjectOptions {
+  provider?: KnownGitProvider | null
+  repo?: string
+  pattern?: GitUrlPattern
 }
