@@ -44,7 +44,7 @@
     "@docsearch/js": "^3.9.0",
     "@docsearch/react": "^3.9.0",
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^12.8.2",
+    "@vueuse/core": "^13.0.0",
     "ts-debounce": "^4.0.0",
     "vue": "^3.5.13"
   },
