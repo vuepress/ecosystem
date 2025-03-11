@@ -60,7 +60,15 @@ export const GitChangelog = defineComponent({
           h(
             'span',
             { 'class': 'vp-changelog-date', 'data-allow-mismatch': '' },
-            [locale.value.timeOn, ' ', item.date],
+            [
+              locale.value.timeOn,
+              ' ',
+              h(
+                'time',
+                { datetime: new Date(item.time).toISOString() },
+                item.date,
+              ),
+            ],
           ),
         ]),
       )
@@ -84,7 +92,7 @@ export const GitChangelog = defineComponent({
         h('span', { 'class': 'vp-changelog-date', 'data-allow-mismatch': '' }, [
           locale.value.timeOn || 'on',
           ' ',
-          item.date,
+          h('time', { datetime: new Date(item.time).toISOString() }, item.date),
         ]),
       ])
 
