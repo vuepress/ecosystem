@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.84](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.83...v2.0.0-rc.84) (2025-03-11)
+
+### Bug Fixes
+
+- **plugin-markdown-hint:** remove debug logger ([605857a](https://github.com/vuepress/ecosystem/commit/605857a8c7a2f8acb51e3be157e90938c21f4e87))
+
+### Features
+
+- **plugin-catalog:** improve anchor rendering ([163f643](https://github.com/vuepress/ecosystem/commit/163f64342099c8051a7977cda4183e0a20ef4d15))
+- **plugin-git:** prefer `<time>` tag with time ([#404](https://github.com/vuepress/ecosystem/issues/404)) ([adbf7d1](https://github.com/vuepress/ecosystem/commit/adbf7d14f0875a281ddaecae4206cd04b40fe9ed))
+
 # [2.0.0-rc.83](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.82...v2.0.0-rc.83) (2025-03-11)
 
 ### Bug Fixes
