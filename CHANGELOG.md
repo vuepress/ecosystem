@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.83](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.82...v2.0.0-rc.83) (2025-03-11)
+
+### Bug Fixes
+
+- **plugin-git:** fix changelog toggle ([5332efe](https://github.com/vuepress/ecosystem/commit/5332efe7e139656b825a0f10bba4dee63c9f0a11))
+- **plugin-markdown-hint:** cleanup the `env` passed into `renderInline` ([#397](https://github.com/vuepress/ecosystem/issues/397)) ([f89aa8f](https://github.com/vuepress/ecosystem/commit/f89aa8ff03cdca6345d7ace43a5ef82d7077f1d6))
+- **plugin-slimsearch:** fix active state, close [#395](https://github.com/vuepress/ecosystem/issues/395) ([3990e39](https://github.com/vuepress/ecosystem/commit/3990e39dfdf78d95be537094007d9402566bb886))
+
+### Features
+
+- **plugin-git:** add composables ([#398](https://github.com/vuepress/ecosystem/issues/398)) ([9928363](https://github.com/vuepress/ecosystem/commit/9928363f66f421cef24c4cbe9054286ef8ab3c43))
+
 # [2.0.0-rc.82](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.81...v2.0.0-rc.82) (2025-03-06)
 
 ### Bug Fixes

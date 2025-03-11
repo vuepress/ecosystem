@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.83](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.82...v2.0.0-rc.83) (2025-03-11)
+
+### Bug Fixes
+
+- **plugin-slimsearch:** fix active state, close [#395](https://github.com/vuepress/ecosystem/issues/395) ([3990e39](https://github.com/vuepress/ecosystem/commit/3990e39dfdf78d95be537094007d9402566bb886))
+
 # [2.0.0-rc.82](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.81...v2.0.0-rc.82) (2025-03-06)
 
 **Note:** Version bump only for package @vuepress/plugin-slimsearch
