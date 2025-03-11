@@ -248,15 +248,11 @@ export default defineComponent({
                               ],
                             },
                             [
-                              h(
-                                'a',
-                                {
-                                  'href': `#${title}`,
-                                  'class': 'vp-catalog-header-anchor',
-                                  'aria-hidden': true,
-                                },
-                                '#',
-                              ),
+                              h('a', {
+                                'href': `#${title}`,
+                                'class': 'vp-catalog-header-anchor',
+                                'aria-hidden': true,
+                              }),
                               childLink,
                             ],
                           ),
@@ -278,14 +274,10 @@ export default defineComponent({
                                           ],
                                         },
                                         [
-                                          h(
-                                            'a',
-                                            {
-                                              href: `#${title}`,
-                                              class: 'vp-catalog-header-anchor',
-                                            },
-                                            '#',
-                                          ),
+                                          h('a', {
+                                            href: `#${title}`,
+                                            class: 'vp-catalog-header-anchor',
+                                          }),
                                           h(
                                             RouteLink,
                                             {
