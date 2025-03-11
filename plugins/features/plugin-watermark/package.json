@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^13.0.0",
+    "@vueuse/core": "catalog:",
     "vue": "^3.5.13",
     "watermark-js-plus": "^1.5.8"
   },
