@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-watermark",
-  "version": "2.0.0-rc.83",
+  "version": "2.0.0-rc.85",
   "description": "VuePress plugin - watermark",
   "keywords": [
     "vuepress-plugin",

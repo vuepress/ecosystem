@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.85](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.84...v2.0.0-rc.85) (2025-03-17)
+
+### Features
+
+- **plugin-git:** improve contributors info parsing ([#405](https://github.com/vuepress/ecosystem/issues/405)) ([25fc2c3](https://github.com/vuepress/ecosystem/commit/25fc2c37fa767925ac57e41fa6ac2247d3da152d))
+
 # [2.0.0-rc.84](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.83...v2.0.0-rc.84) (2025-03-11)
 
 ### Bug Fixes

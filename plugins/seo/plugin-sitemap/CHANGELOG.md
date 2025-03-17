@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.85](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.84...v2.0.0-rc.85) (2025-03-17)
+
+**Note:** Version bump only for package @vuepress/plugin-sitemap
+
 # [2.0.0-rc.84](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.83...v2.0.0-rc.84) (2025-03-11)
 
 **Note:** Version bump only for package @vuepress/plugin-sitemap
