@@ -38,6 +38,8 @@ export const gitPlugin =
       name,
 
       define: {
+        __GIT_CHANGELOG__: changelog,
+        __GIT_CONTRIBUTORS__: contributors,
         __GIT_LOCALES__: getFullLocaleConfig({
           app,
           name,
