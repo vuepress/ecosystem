@@ -63,7 +63,7 @@ export default defineComponent({
           'class': 'slimsearch-button',
           'aria-label': locale.value.search,
           'onClick': () => {
-            toggleActive(false)
+            toggleActive(true)
           },
         },
         [
