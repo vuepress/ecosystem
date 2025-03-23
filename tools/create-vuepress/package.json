@@ -46,21 +46,13 @@
     "commander": "^13.1.0",
     "execa": "^9.5.2"
   },
-  "peerDependencies": {
-    "@vuepress/plugin-blog": "workspace:*",
-    "@vuepress/theme-default": "workspace:*"
-  },
-  "peerDependenciesMeta": {
-    "@vuepress/plugin-blog": {
-      "optional": true
-    },
-    "@vuepress/theme-default": {
-      "optional": true
-    }
-  },
   "devDependencies": {
     "@vuepress/plugin-blog": "workspace:*",
-    "@vuepress/theme-default": "workspace:*"
+    "@vuepress/theme-default": "workspace:*",
+    "sass-embedded": "catalog:",
+    "sass-loader": "catalog:",
+    "vue": "catalog:",
+    "vuepress": "catalog:"
   },
   "engines": {
     "node": "^18.19.0 || >= 20.6.0",

@@ -46,7 +46,7 @@
     "@vueuse/core": "catalog:",
     "mitt": "^3.0.1",
     "register-service-worker": "^1.7.2",
-    "vue": "^3.5.13",
+    "vue": "catalog:",
     "workbox-build": "^7.3.0"
   },
   "peerDependencies": {

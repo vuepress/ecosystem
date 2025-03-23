@@ -15,6 +15,18 @@ catalogs:
     '@vueuse/core':
       specifier: ^13.0.0
       version: 13.0.0
+    sass:
+      specifier: ^1.86.0
+      version: 1.86.0
+    sass-embedded:
+      specifier: ^1.86.0
+      version: 1.86.0
+    sass-loader:
+      specifier: ^16.0.5
+      version: 16.0.5
+    vue:
+      specifier: ^3.5.13
+      version: 3.5.13
     vuepress:
       specifier: 2.0.0-rc.20
       version: 2.0.0-rc.20
@@ -102,7 +114,7 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1(rollup@4.36.0)
       sass-embedded:
-        specifier: ^1.86.0
+        specifier: 'catalog:'
         version: 1.86.0
       sort-package-json:
         specifier: ^3.0.0
@@ -231,13 +243,13 @@ importers:
         specifier: 3.2.2
         version: 3.2.2
       sass-embedded:
-        specifier: ^1.86.0
+        specifier: 'catalog:'
         version: 1.86.0
       sass-loader:
-        specifier: ^16.0.5
+        specifier: 'catalog:'
         version: 16.0.5(sass-embedded@1.86.0)(sass@1.86.0)(webpack@5.98.0(esbuild@0.25.1))
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -291,13 +303,13 @@ importers:
         specifier: workspace:*
         version: link:../themes/theme-default
       sass-embedded:
-        specifier: ^1.86.0
+        specifier: 'catalog:'
         version: 1.86.0
       sass-loader:
-        specifier: ^16.0.5
+        specifier: 'catalog:'
         version: 16.0.5(sass-embedded@1.86.0)(sass@1.86.0)(webpack@5.98.0(esbuild@0.25.1))
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -313,7 +325,7 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/helper
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -331,7 +343,7 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/helper
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -346,7 +358,7 @@ importers:
         specifier: ^3.6.0
         version: 3.6.0
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -373,7 +385,7 @@ importers:
         specifier: ^1.6.41
         version: 1.6.41
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -401,7 +413,7 @@ importers:
         specifier: 'catalog:'
         version: 13.0.0(vue@3.5.13(typescript@5.8.2))
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -419,7 +431,7 @@ importers:
         specifier: ^9.5.2
         version: 9.5.2
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -443,7 +455,7 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/helper
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -458,7 +470,7 @@ importers:
         specifier: 'catalog:'
         version: 13.0.0(vue@3.5.13(typescript@5.8.2))
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -473,13 +485,13 @@ importers:
         specifier: ^4.0.3
         version: 4.0.3
       sass:
-        specifier: ^1.85.0
+        specifier: 'catalog:'
         version: 1.86.0
       sass-embedded:
-        specifier: ^1.85.0
+        specifier: 'catalog:'
         version: 1.86.0
       sass-loader:
-        specifier: ^16.0.5
+        specifier: 'catalog:'
         version: 16.0.5(sass-embedded@1.86.0)(sass@1.86.0)(webpack@5.98.0(esbuild@0.25.1))
       vuepress:
         specifier: 'catalog:'
@@ -498,7 +510,7 @@ importers:
         specifier: ^7.7.2
         version: 7.7.2
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -510,7 +522,7 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/helper
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vue-router:
         specifier: ^4.5.0
@@ -528,7 +540,7 @@ importers:
         specifier: 'catalog:'
         version: 13.0.0(vue@3.5.13(typescript@5.8.2))
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -540,7 +552,7 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/helper
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -555,7 +567,7 @@ importers:
         specifier: 'catalog:'
         version: 13.0.0(vue@3.5.13(typescript@5.8.2))
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -570,7 +582,7 @@ importers:
         specifier: 'catalog:'
         version: 13.0.0(vue@3.5.13(typescript@5.8.2))
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -588,7 +600,7 @@ importers:
         specifier: 'catalog:'
         version: 13.0.0(vue@3.5.13(typescript@5.8.2))
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -603,7 +615,7 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -621,7 +633,7 @@ importers:
         specifier: ^3.6.0
         version: 3.6.0
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -633,7 +645,7 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/helper
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -651,7 +663,7 @@ importers:
         specifier: ^5.4.4
         version: 5.4.4
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -666,7 +678,7 @@ importers:
         specifier: 'catalog:'
         version: 13.0.0(vue@3.5.13(typescript@5.8.2))
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -828,7 +840,7 @@ importers:
         specifier: ^3.2.2
         version: 3.2.2
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -890,7 +902,7 @@ importers:
         specifier: 'catalog:'
         version: 13.0.0(vue@3.5.13(typescript@5.8.2))
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -946,7 +958,7 @@ importers:
         specifier: ^5.2.0
         version: 5.2.0
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -1005,7 +1017,7 @@ importers:
         specifier: ^1.7.2
         version: 1.7.2
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -1045,7 +1057,7 @@ importers:
         specifier: ^4.0.0
         version: 4.0.0
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -1064,7 +1076,7 @@ importers:
         specifier: ^3.6.0
         version: 3.6.0
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -1088,7 +1100,7 @@ importers:
         specifier: ^2.2.2
         version: 2.2.2
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -1157,7 +1169,7 @@ importers:
         specifier: ^13.1.0
         version: 13.1.0
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -1223,16 +1235,16 @@ importers:
         specifier: 'catalog:'
         version: 13.0.0(vue@3.5.13(typescript@5.8.2))
       sass:
-        specifier: ^1.85.0
+        specifier: 'catalog:'
         version: 1.86.0
       sass-embedded:
-        specifier: ^1.85.0
+        specifier: 'catalog:'
         version: 1.86.0
       sass-loader:
-        specifier: ^16.0.5
+        specifier: 'catalog:'
         version: 16.0.5(sass-embedded@1.86.0)(sass@1.86.0)(webpack@5.98.0(esbuild@0.25.1))
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -1256,6 +1268,18 @@ importers:
       '@vuepress/theme-default':
         specifier: workspace:*
         version: link:../../themes/theme-default
+      sass-embedded:
+        specifier: 'catalog:'
+        version: 1.86.0
+      sass-loader:
+        specifier: 'catalog:'
+        version: 16.0.5(sass-embedded@1.86.0)(sass@1.86.0)(webpack@5.98.0(esbuild@0.25.1))
+      vue:
+        specifier: 'catalog:'
+        version: 3.5.13(typescript@5.8.2)
+      vuepress:
+        specifier: 'catalog:'
+        version: 2.0.0-rc.20(@vuepress/bundler-vite@2.0.0-rc.20(@types/node@22.13.11)(jiti@2.4.2)(lightningcss@1.29.3)(sass-embedded@1.86.0)(sass@1.86.0)(terser@5.39.0)(tsx@4.19.3)(typescript@5.8.2)(yaml@2.7.0))(@vuepress/bundler-webpack@2.0.0-rc.20(esbuild@0.25.1)(typescript@5.8.2))(typescript@5.8.2)(vue@3.5.13(typescript@5.8.2))
 
   tools/helper:
     dependencies:
@@ -1275,7 +1299,7 @@ importers:
         specifier: ^4.0.3
         version: 4.0.3
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
       vuepress:
         specifier: 'catalog:'
@@ -1343,7 +1367,7 @@ importers:
         specifier: ^3.2.1
         version: 3.2.1
       vue:
-        specifier: ^3.5.13
+        specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
 
   tools/vp-update:

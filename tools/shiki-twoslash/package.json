@@ -53,7 +53,7 @@
   "devDependencies": {
     "@types/hast": "^3.0.4",
     "shiki": "^3.2.1",
-    "vue": "^3.5.13"
+    "vue": "catalog:"
   },
   "peerDependencies": {
     "vuepress": "catalog:"
