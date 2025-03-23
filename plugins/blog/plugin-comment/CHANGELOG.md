@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.86](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.85...v2.0.0-rc.86) (2025-03-23)
+
+### Features
+
+- **create-vuepress:** handle versions automatically, close [#407](https://github.com/vuepress/ecosystem/issues/407) ([dd02f6b](https://github.com/vuepress/ecosystem/commit/dd02f6b650742f9597d533af2658483d8f5905ed))
+
 # [2.0.0-rc.85](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.84...v2.0.0-rc.85) (2025-03-17)
 
 **Note:** Version bump only for package @vuepress/plugin-comment
