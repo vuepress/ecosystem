@@ -1,5 +1,5 @@
-import type { ComputedRef } from 'vue'
-import { computed } from 'vue'
+import type { ComputedRef, MaybeRefOrGetter } from 'vue'
+import { computed, toValue } from 'vue'
 import { usePageData, usePageFrontmatter, usePageLang } from 'vuepress/client'
 import type {
   GitChangelogInfo,
@@ -19,7 +19,9 @@ const RE_ISSUE = /#(\d+)/g
 
 export const useChangelog =
   typeof __GIT_CHANGELOG__ === 'boolean' && __GIT_CHANGELOG__
-    ? (): ComputedRef<GitChangelogItem[]> => {
+    ? (
+        enabled: MaybeRefOrGetter<boolean> = true,
+      ): ComputedRef<GitChangelogItem[]> => {
         const frontmatter = usePageFrontmatter<GitPluginFrontmatter>()
         const lang = usePageLang()
         const page = usePageData<GitPluginPageData>()
@@ -28,7 +30,8 @@ export const useChangelog =
         const repo = resolveRepoLink(gitOptions.repo, provider)
 
         return computed(() => {
-          if (frontmatter.value.changelog === false) return []
+          if (frontmatter.value.changelog === false || !toValue(enabled))
+            return []
 
           const formatter = new Intl.DateTimeFormat(lang.value, {
             dateStyle: 'short',

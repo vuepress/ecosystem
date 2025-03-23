@@ -258,6 +258,131 @@ gitInclude:
 
   当前页面是否获取变更历史记录，该值会覆盖 [changelog](#changelog) 配置项。
 
+## 可组合式 API
+
+你可以从 `@vuepress/plugin-git/client` 中导入以下可组合式 API。
+
+### useChangelog
+
+获取当前页面的变更历史记录。
+
+```ts
+export interface GitChangelogItem {
+  /**
+   * Commit hash
+   */
+  hash: string
+  /**
+   * Unix timestamp in milliseconds
+   */
+  time: number
+  /**
+   * Commit message
+   */
+  message: string
+  /**
+   * The url of the commit
+   */
+  commitUrl?: string
+  /**
+   * release tag
+   */
+  tag?: string
+  /**
+   * The url of the release tag
+   */
+  tagUrl?: string
+  /**
+   * Commit author name
+   */
+  author: string
+  /**
+   * Commit author email
+   */
+  email: string
+
+  /**
+   * The co-authors of the commit
+   */
+  coAuthors?: CoAuthorInfo[]
+  /**
+   * Date text of the commit
+   */
+  date: string
+}
+
+export const useChangelog: (
+  enabled?: MaybeRefOrGetter<boolean>,
+) => ComputedRef<GitChangelogItem[]>
+```
+
+### useContributors
+
+获取当前页面的贡献者信息。
+
+```ts
+export interface GitContributorInfo {
+  /**
+   * Contributor display name
+   */
+  name: string
+  /**
+   * Contributor email
+   */
+  email: string
+
+  /**
+   * Contributor username on the git hosting service
+   */
+  username: string
+  /**
+   * Number of commits
+   */
+  commits: number
+  /**
+   * Contributor avatar
+   */
+  avatar?: string
+  /**
+   * The url of the contributor
+   */
+  url?: string
+}
+
+export const useContributors: (
+  enabled?: MaybeRefOrGetter<boolean>,
+) => ComputedRef<GitContributorInfo[]>
+```
+
+### useLastUpdated
+
+获取当前页面的最后更新时间。
+
+```ts
+export interface LastUpdated {
+  /**
+   * The date object of the last updated time
+   */
+  date: Date
+  /**
+   * The ISO string of the last updated time
+   */
+  iso: string
+  /**
+   * The formatted text of the last updated time
+   */
+  text: string
+  /**
+   * The locale of the last updated time
+   */
+  locale: string
+}
+
+export const useLastUpdated: (
+  enabled?: MaybeRefOrGetter<boolean>,
+) => ComputedRef<LastUpdated | null>
+```
+
 ## 页面数据
 
 该插件会向页面数据中添加一个 `git` 字段。

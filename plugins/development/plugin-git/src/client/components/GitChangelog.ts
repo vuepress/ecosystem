@@ -29,7 +29,7 @@ export const GitChangelog = defineComponent({
   setup(props) {
     const changelog = useChangelog()
     const locale = useGitLocaleConfig()
-    const latestUpdated = useLastUpdated()
+    const lastUpdated = useLastUpdated()
 
     const [active, toggleActive] = useToggle()
 
@@ -40,7 +40,7 @@ export const GitChangelog = defineComponent({
         [
           h('div', { class: 'vp-latest-updated' }, [
             h('span', { class: 'vp-changelog-icon' }),
-            h('span', { 'data-allow-mismatch': '' }, latestUpdated.value!.text),
+            h('span', { 'data-allow-mismatch': '' }, lastUpdated.value!.text),
           ]),
           h('div', [
             h('span', { class: 'vp-changelog-menu-icon' }),
