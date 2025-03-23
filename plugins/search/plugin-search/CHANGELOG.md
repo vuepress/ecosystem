@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.87](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.86...v2.0.0-rc.87) (2025-03-23)
+
+### Bug Fixes
+
+- **plugin-search:** fix search box appearance ([c367b1d](https://github.com/vuepress/ecosystem/commit/c367b1de7cfc04def25d770577e95ab217103319))
+
 # [2.0.0-rc.86](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.85...v2.0.0-rc.86) (2025-03-23)
 
 ### Features

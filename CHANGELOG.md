@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.87](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.86...v2.0.0-rc.87) (2025-03-23)
+
+### Bug Fixes
+
+- **plugin-git:** fix define options ([d8f7441](https://github.com/vuepress/ecosystem/commit/d8f7441af649ab79be3f24838c58d225f2d3f42d))
+- **plugin-search:** fix search box appearance ([c367b1d](https://github.com/vuepress/ecosystem/commit/c367b1de7cfc04def25d770577e95ab217103319))
+
+### Features
+
+- **plugin-git:** improve composables and add docs ([#409](https://github.com/vuepress/ecosystem/issues/409)) ([63eb850](https://github.com/vuepress/ecosystem/commit/63eb85083e49e3b4521241c808763ad9cbf0e30d))
+
 # [2.0.0-rc.86](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.85...v2.0.0-rc.86) (2025-03-23)
 
 ### Bug Fixes
