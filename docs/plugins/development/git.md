@@ -269,6 +269,131 @@ gitInclude:
 
   Whether to collect the change history for the current page, this value will override the [changelog](#changelog) configuration item.
 
+## Composables
+
+You can import the following composables from `@vuepress/plugin-git/client`.
+
+### useChangelog
+
+Get the changelog of the current page.
+
+```ts
+export interface GitChangelogItem {
+  /**
+   * Commit hash
+   */
+  hash: string
+  /**
+   * Unix timestamp in milliseconds
+   */
+  time: number
+  /**
+   * Commit message
+   */
+  message: string
+  /**
+   * The url of the commit
+   */
+  commitUrl?: string
+  /**
+   * release tag
+   */
+  tag?: string
+  /**
+   * The url of the release tag
+   */
+  tagUrl?: string
+  /**
+   * Commit author name
+   */
+  author: string
+  /**
+   * Commit author email
+   */
+  email: string
+
+  /**
+   * The co-authors of the commit
+   */
+  coAuthors?: CoAuthorInfo[]
+  /**
+   * Date text of the commit
+   */
+  date: string
+}
+
+export const useChangelog: (
+  enabled?: MaybeRefOrGetter<boolean>,
+) => ComputedRef<GitChangelogItem[]>
+```
+
+### useContributors
+
+Get the contributors of the current page.
+
+```ts
+export interface GitContributorInfo {
+  /**
+   * Contributor display name
+   */
+  name: string
+  /**
+   * Contributor email
+   */
+  email: string
+
+  /**
+   * Contributor username on the git hosting service
+   */
+  username: string
+  /**
+   * Number of commits
+   */
+  commits: number
+  /**
+   * Contributor avatar
+   */
+  avatar?: string
+  /**
+   * The url of the contributor
+   */
+  url?: string
+}
+
+export const useContributors: (
+  enabled?: MaybeRefOrGetter<boolean>,
+) => ComputedRef<GitContributorInfo[]>
+```
+
+### useLastUpdated
+
+Get the last updated time of the current page.
+
+```ts
+export interface LastUpdated {
+  /**
+   * The date object of the last updated time
+   */
+  date: Date
+  /**
+   * The ISO string of the last updated time
+   */
+  iso: string
+  /**
+   * The formatted text of the last updated time
+   */
+  text: string
+  /**
+   * The locale of the last updated time
+   */
+  locale: string
+}
+
+export const useLastUpdated: (
+  enabled?: MaybeRefOrGetter<boolean>,
+) => ComputedRef<LastUpdated | null>
+```
+
 ## Page Data
 
 This plugin will add a `git` field to page data.

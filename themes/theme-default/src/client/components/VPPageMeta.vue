@@ -1,15 +1,19 @@
 <script setup lang="ts">
 import VPAutoLink from '@theme/VPAutoLink.vue'
 import VPEditIcon from '@theme/VPEditIcon.vue'
-import { useContributors } from '@theme/useContributors'
 import { useData } from '@theme/useData'
 import { useEditLink } from '@theme/useEditLink'
-import { useLastUpdated } from '@theme/useLastUpdated'
+import { useContributors, useLastUpdated } from '@vuepress/plugin-git/client'
 
-const { themeLocale } = useData()
+const { frontmatter, themeLocale } = useData()
+const contributors = useContributors(
+  () =>
+    frontmatter.value.contributors ?? themeLocale.value.contributors ?? true,
+)
 const editLink = useEditLink()
-const lastUpdated = useLastUpdated()
-const contributors = useContributors()
+const lastUpdated = useLastUpdated(
+  () => frontmatter.value.lastUpdated ?? themeLocale.value.lastUpdated ?? true,
+)
 </script>
 
 <template>
@@ -24,16 +28,18 @@ const contributors = useContributors()
 
     <div class="vp-meta-item git-info">
       <div v-if="lastUpdated" class="vp-meta-item last-updated">
-        <span class="meta-item-label">{{ themeLocale.lastUpdatedText }}: </span>
-        <ClientOnly>
-          <span class="meta-item-info">{{ lastUpdated }}</span>
-        </ClientOnly>
+        <span class="meta-item-label"
+          >{{ themeLocale.lastUpdatedText ?? lastUpdated.locale }}:
+        </span>
+        <time
+          class="meta-item-info"
+          :datetime="lastUpdated.iso"
+          data-allow-mismatch
+          >{{ lastUpdated.text }}</time
+        >
       </div>
 
-      <div
-        v-if="contributors && contributors.length"
-        class="vp-meta-item contributors"
-      >
+      <div v-if="contributors.length" class="vp-meta-item contributors">
         <span class="meta-item-label"
           >{{ themeLocale.contributorsText }}:
         </span>
