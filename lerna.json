@@ -12,7 +12,7 @@
     },
     "publish": {
       "graphType": "all",
-      "removePackageFields": ["devDependencies", "scripts"]
+      "removePackageFields": ["scripts"]
     }
   },
   "packages": ["plugins/*/*", "themes/*", "tools/*"],
