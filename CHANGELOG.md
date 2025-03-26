@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.89](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.88...v2.0.0-rc.89) (2025-03-26)
+
+### Bug Fixes
+
+- **create-vuepress:** fix templateFolder path ([9255913](https://github.com/vuepress/ecosystem/commit/9255913d2de54b379016279308d22eff991aaac8))
+
 # [2.0.0-rc.88](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.87...v2.0.0-rc.88) (2025-03-26)
 
 ### Bug Fixes
