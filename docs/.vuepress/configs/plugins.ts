@@ -13,6 +13,7 @@ import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { revealJsPlugin } from '@vuepress/plugin-revealjs'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
+import type { Page } from 'vuepress'
 import { getDirname, path } from 'vuepress/utils'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
@@ -120,4 +121,12 @@ export const plugins = [
     collapsedLines: false,
     twoslash: true,
   }),
+  {
+    name: 'virtual:git',
+    extendsPage: (page: Page): void => {
+      if (!page.path.endsWith('/git.html')) {
+        delete page.data.changelog
+      }
+    },
+  },
 ]

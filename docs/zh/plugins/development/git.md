@@ -513,7 +513,7 @@ interface GitChangelog {
 
 **效果预览：**
 
-![contributors](/images/git/contributor-zh.png)
+<GitContributors :header-level="4" />
 
 ### GitChangelog
 
@@ -530,4 +530,4 @@ interface GitChangelog {
 
 **效果预览：**
 
-![changelog](/images/git/changelog-zh.png)
+<GitChangelog :header-level="4" />

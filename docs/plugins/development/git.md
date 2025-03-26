@@ -525,7 +525,7 @@ List the contributor information for the current page.
 
 **Effect Preview:**
 
-![contributors](/images/git/contributor-en.png)
+<GitContributors :header-level="4" />
 
 ### GitChangelog
 
@@ -542,4 +542,4 @@ List the changelog of the current page.
 
 **Effect Preview:**
 
-![changelog](/images/git/changelog-en.png)
+<GitChangelog :header-level="4" />

@@ -1,8 +1,6 @@
 import { defaultTheme } from '@vuepress/theme-default'
 import { navbarEn, navbarZh, sidebarEn, sidebarZh } from './configs/index.js'
 
-const IS_PROD = process.env.NODE_ENV === 'production'
-
 export default defaultTheme({
   logo: '/images/hero.png',
   repo: 'vuepress/ecosystem',
@@ -61,8 +59,18 @@ export default defaultTheme({
   },
 
   themePlugins: {
-    // only enable git plugin in production mode
-    git: IS_PROD,
+    git: {
+      contributors: {
+        avatar: true,
+        info: [
+          {
+            username: 'Mister-Hope',
+            alias: ['Mr.Hope'],
+          },
+        ],
+      },
+      changelog: true,
+    },
     hint: {
       alert: true,
     },
