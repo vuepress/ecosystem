@@ -5,7 +5,9 @@
     "docs:build": "vuepress build . --clean-cache --clean-temp",
     "docs:build-webpack": "DOCS_BUNDLER=webpack pnpm docs:build",
     "docs:dev": "vuepress dev .",
+    "docs:clean-dev": "vuepress dev . --clean-cache --clean-temp",
     "docs:dev-webpack": "DOCS_BUNDLER=webpack pnpm docs:dev",
+    "docs:clean-dev-webpack": "DOCS_BUNDLER=webpack pnpm docs:clean-dev",
     "docs:serve": "http-server -a localhost .vuepress/dist"
   },
   "dependencies": {
