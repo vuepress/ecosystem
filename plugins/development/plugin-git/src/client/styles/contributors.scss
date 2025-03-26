@@ -1,17 +1,18 @@
 .vp-contributors {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem 1.5rem;
+  gap: 1rem;
   align-items: center;
   justify-content: flex-start;
 
-  margin: 2rem 0 1rem;
+  margin: 1rem 0;
 }
 
 .vp-contributor {
   display: flex;
   gap: 0.25rem;
   align-items: center;
+  color: inherit;
 
   &::after {
     display: none !important;
@@ -19,8 +20,8 @@
 
   &-avatar {
     object-fit: contain;
-    width: 36px;
-    height: 36px;
+    width: 1.5rem;
+    height: 1.5rem;
     border-radius: 50%;
   }
 }

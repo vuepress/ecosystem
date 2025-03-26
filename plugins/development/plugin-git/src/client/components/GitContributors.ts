@@ -21,7 +21,7 @@ export const GitContributor: FunctionalComponent<GitContributorInfo> = ({
     },
     [
       avatar
-        ? h('img', { src: avatar, alt: name, class: 'vp-contributor-avatar' })
+        ? h('img', { src: avatar, alt: '', class: 'vp-contributor-avatar' })
         : null,
       h('span', { class: 'vp-contributor-name' }, name),
     ],
