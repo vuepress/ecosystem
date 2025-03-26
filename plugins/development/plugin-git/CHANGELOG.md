@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.88](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.87...v2.0.0-rc.88) (2025-03-26)
+
+### Features
+
+- **plugin-git:** improve contributor a11y and styles ([f7ef750](https://github.com/vuepress/ecosystem/commit/f7ef7501e3d0d44db91694c34e8d5365e6485010))
+
 # [2.0.0-rc.87](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.86...v2.0.0-rc.87) (2025-03-23)
 
 ### Bug Fixes

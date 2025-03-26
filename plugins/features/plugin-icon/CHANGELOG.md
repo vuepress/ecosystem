@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.88](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.87...v2.0.0-rc.88) (2025-03-26)
+
+### Bug Fixes
+
+- **plugin-icon:** fix iconfont icon size ([8a4625e](https://github.com/vuepress/ecosystem/commit/8a4625eefd4d0636fded567143382fdc65cc4a27))
+
 # [2.0.0-rc.86](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.85...v2.0.0-rc.86) (2025-03-23)
 
 ### Features
