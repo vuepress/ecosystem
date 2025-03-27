@@ -84,6 +84,15 @@ This plugin will significantly slow down the speed of data preparation, especial
      */
     alias?: string[] | string
     /**
+     * The primary email of the contributor
+     */
+    email?: string
+    /**
+     * The alternative emails of the contributor on the Git hosting service,
+     * or emails they have used in the past.
+     */
+    emailAlias?: string[] | string
+    /**
      * The avatar url of the contributor.
      *
      * If the git hosting service is `github`, it can be ignored and left blank,
