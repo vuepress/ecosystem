@@ -36,13 +36,13 @@ export const resolveChangelog = (
     const { hash, message, time, author, email, refs, coAuthors } = commit
     const tag = parseTagName(refs)
     const contributor = getContributorInfo(
-      getUserNameWithNoreplyEmail(email) ?? author,
+      { name: getUserNameWithNoreplyEmail(email) ?? author, email },
       contributors,
     )
     const resolved: GitChangelogInfo = {
       hash,
       time,
-      email,
+      email: contributor?.email || email,
       author: contributor?.name ?? contributor?.username ?? author,
       message: app.markdown.renderInline(message),
     }
