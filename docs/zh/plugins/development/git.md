@@ -531,7 +531,7 @@ interface GitChangelog {
 <template>
   <div vp-content>
     <Content />
-    <GitContributors />
+    <GitChangelog />
   </div>
 </template>
 ```
