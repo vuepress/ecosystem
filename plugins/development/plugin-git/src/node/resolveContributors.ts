@@ -25,7 +25,7 @@ export const getRawContributors = (
     for (const { name, email } of authors) {
       const usernameWithNoreplyEmail = getUserNameWithNoreplyEmail(email)
       const config = getContributorInfo(
-        usernameWithNoreplyEmail ?? name,
+        { name: usernameWithNoreplyEmail ?? name, email },
         options.info,
       )
 
@@ -36,6 +36,10 @@ export const getRawContributors = (
 
       if (contributor) {
         contributor.commits++
+        // try to rewrite the no-reply email to a genuine email
+        if (contributor.email.includes('@users.noreply.github.com')) {
+          contributor.email = config?.email ?? email
+        }
       } else {
         const item: GitContributorInfo = {
           name: config?.name ?? username ?? name,
@@ -43,7 +47,7 @@ export const getRawContributors = (
           username:
             username ??
             (gitProvider === 'github' && checkGithubUsername(name) ? name : ''),
-          email,
+          email: config?.email || email,
           commits: 1,
         }
 
@@ -103,7 +107,7 @@ export const resolveContributors = (
         )
       ) {
         const contributorInfo = getContributorInfo(
-          extraContributor,
+          { name: extraContributor },
           options.info,
         )
 
@@ -112,7 +116,7 @@ export const resolveContributors = (
         const result: GitContributorInfo = {
           name: contributorInfo.name ?? extraContributor,
           username: contributorInfo.username,
-          email: '',
+          email: contributorInfo.email ?? '',
           commits: 0,
         }
 

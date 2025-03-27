@@ -82,6 +82,14 @@ export default {
      */
     alias?: string[] | string
     /**
+     * 贡献者在 Git 托管服务中的主邮箱
+     */
+    email?: string
+    /**
+     * 贡献者在 Git 托管服务中的备用邮箱，或者曾经使用过的邮箱
+     */
+    emailAlias?: string[] | string
+    /**
      * 贡献者头像地址
      * 如果 git 托管服务为 `github`，则可以忽略不填，由插件自动填充
      */
@@ -523,7 +531,7 @@ interface GitChangelog {
 <template>
   <div vp-content>
     <Content />
-    <Changelog />
+    <GitContributors />
   </div>
 </template>
 ```
