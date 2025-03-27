@@ -86,6 +86,13 @@ export const createPackageJson = async ({
           }
         : {}),
     },
+    ...(packageManager === 'pnpm'
+      ? {
+          pnpm: {
+            onlyBuiltDependencies: ['esbuild'],
+          },
+        }
+      : {}),
   }
 
   writeFileSync(
