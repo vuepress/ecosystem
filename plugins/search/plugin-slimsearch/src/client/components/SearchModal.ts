@@ -181,10 +181,12 @@ export default defineComponent({
                   }),
                   input.value
                     ? h('button', {
-                        type: 'reset',
-                        class: 'slimsearch-clear-button',
-                        innerHTML: CLOSE_ICON,
-                        onClick: () => {
+                        'type': 'reset',
+                        'class': 'slimsearch-clear-button',
+                        'title': locale.value.clear,
+                        'aria-label': locale.value.clear,
+                        'innerHTML': CLOSE_ICON,
+                        'onClick': () => {
                           input.value = ''
                         },
                       })

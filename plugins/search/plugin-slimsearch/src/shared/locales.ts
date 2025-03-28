@@ -19,6 +19,13 @@ export interface SlimSearchLocaleData {
   search: string
 
   /**
+   * Clear search text
+   *
+   * 清除搜索文字
+   */
+  clear: string
+
+  /**
    * Searching text
    *
    * 搜索中文字
