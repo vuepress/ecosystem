@@ -13,28 +13,32 @@
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 
-    opacity: 0;
+    opacity: 0 !important;
   }
 
   &-leave-active {
     overflow: hidden;
     transition:
-      max-height var(--transition-duration) var(--transition-ease-in-out),
-      opacity var(--transition-duration) var(--transition-ease-out),
-      margin-top var(--transition-duration) var(--transition-ease-in-out),
-      margin-bottom var(--transition-duration) var(--transition-ease-in-out),
-      padding-top var(--transition-duration) var(--transition-ease-in-out),
-      padding-bottom var(--transition-duration) var(--transition-ease-in-out);
+      max-height var(--transition-slow-duration) var(--transition-ease-in-out),
+      opacity var(--transition-leave-duration) var(--transition-ease-out),
+      margin-top var(--transition-slow-duration) var(--transition-ease-in-out),
+      margin-bottom var(--transition-slow-duration)
+        var(--transition-ease-in-out),
+      padding-top var(--transition-slow-duration) var(--transition-ease-in-out),
+      padding-bottom var(--transition-slow-duration)
+        var(--transition-ease-in-out) !important;
   }
 
   &-enter-active {
     overflow: hidden;
     transition:
-      max-height var(--transition-duration) var(--transition-ease-in-out),
-      opacity var(--transition-duration) var(--transition-ease-in),
-      margin-top var(--transition-duration) var(--transition-ease-in-out),
-      margin-bottom var(--transition-duration) var(--transition-ease-in-out),
-      padding-top var(--transition-duration) var(--transition-ease-in-out),
-      padding-bottom var(--transition-duration) var(--transition-ease-in-out);
+      max-height var(--transition-slow-duration) var(--transition-ease-in-out),
+      opacity var(--transition-enter-duration) var(--transition-ease-in),
+      margin-top var(--transition-slow-duration) var(--transition-ease-in-out),
+      margin-bottom var(--transition-slow-duration)
+        var(--transition-ease-in-out),
+      padding-top var(--transition-slow-duration) var(--transition-ease-in-out),
+      padding-bottom var(--transition-slow-duration)
+        var(--transition-ease-in-out) !important;
   }
 }
