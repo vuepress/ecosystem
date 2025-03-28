@@ -20,7 +20,11 @@ export class Message {
     return containerElement
   }
 
-  public pop(html: string, duration = 2000): number {
+  public getElement(messageId: number): HTMLDivElement {
+    return this.elements[messageId]
+  }
+
+  public pop(html: string, duration = 2000, clickToClose = true): number {
     const messageElement = document.createElement('div')
     const messageId = Date.now()
 
@@ -28,6 +32,11 @@ export class Message {
     messageElement.innerHTML = html
     Message.containerElement.appendChild(messageElement)
     this.elements[messageId] = messageElement
+
+    if (clickToClose)
+      messageElement.addEventListener('click', () => {
+        this.close(messageId)
+      })
 
     if (duration > 0)
       setTimeout(() => {
