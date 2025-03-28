@@ -31,6 +31,7 @@
     "./noopComponent": "./lib/client/noopComponent.js",
     "./noopModule": "./lib/client/noopModule.js",
     "./colors.css": "./lib/client/styles/colors.css",
+    "./message.css": "./lib/client/styles/message.css",
     "./normalize.css": "./lib/client/styles/normalize.css",
     "./sr-only.css": "./lib/client/styles/sr-only.css",
     "./transition/*.css": "./lib/client/styles/transition/*.css",

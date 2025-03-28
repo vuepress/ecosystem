@@ -101,7 +101,7 @@ export default vuepress(
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-empty-function': [
           'error',
-          { allow: ['private-constructors'] },
+          { allow: ['protected-constructors'] },
         ],
         '@typescript-eslint/no-floating-promises': [
           'error',
