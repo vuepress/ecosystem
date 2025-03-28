@@ -5,7 +5,7 @@ const containerId = 'message-container'
 export class Message {
   private elements: Record<number, HTMLDivElement> = {}
 
-  private constructor() {}
+  protected constructor() {}
 
   public static get containerElement(): HTMLElement {
     let containerElement = document.getElementById(containerId)
