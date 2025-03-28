@@ -33,7 +33,7 @@ const features = computed(() => frontmatter.value.features ?? [])
   transition: border-color var(--vp-t-color);
 
   @media (max-width: $MQMobile) {
-    flex-direction: column;
+    flex-flow: column;
   }
 }
 

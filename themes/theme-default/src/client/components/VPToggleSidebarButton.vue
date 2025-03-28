@@ -44,7 +44,7 @@ const { themeLocale } = useData()
 
   .icon {
     display: flex;
-    flex-direction: column;
+    flex-flow: column;
     align-items: center;
     justify-content: center;
 
