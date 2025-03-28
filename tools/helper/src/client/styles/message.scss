@@ -1,7 +1,13 @@
+:root {
+  --message-offset: calc(var(--vp-header-offset, 3.6rem) + 1rem);
+  --message-timing-duration: 0.3s;
+  --message-timing-function: ease-in-out;
+}
+
 @keyframes message-move-in {
   0% {
     opacity: 0;
-    transform: translateY(-100%);
+    transform: translateY(-10px);
   }
 
   100% {
@@ -24,8 +30,14 @@
 
 #message-container {
   position: fixed;
-  inset: calc(var(--message-offset, 3.6rem) + 1rem) 0 auto;
+  inset: var(--message-offset) 0 auto;
   z-index: 75;
+
+  display: flex;
+  flex-flow: column;
+  gap: 0.5rem;
+  align-items: center;
+
   text-align: center;
 }
 
@@ -42,11 +54,13 @@
   font-size: 14px;
 
   &.move-in {
-    animation: message-move-in 0.3s ease-in-out;
+    animation: message-move-in var(--message-timing-duration)
+      var(--message-timing-function);
   }
 
   &.move-out {
-    animation: message-move-out 0.3s ease-in-out;
+    animation: message-move-out var(--message-timing-duration)
+      var(--message-timing-function);
     animation-fill-mode: forwards;
   }
 
