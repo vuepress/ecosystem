@@ -56,7 +56,7 @@ export default {
 
 ### ignoreSelector
 
-- 类型：`string[]`
+- 类型：`string[] | string`
 - 详情:
 
   代码块中的元素选择器，用于在复制时忽略相关元素。
