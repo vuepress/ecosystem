@@ -172,46 +172,52 @@ export default defineComponent({
     const renderSearchQueryHistory = (): VNode | null =>
       enableQueryHistory
         ? h(
-            'ul',
-            { class: 'slimsearch-result-list' },
-            h('li', { class: 'slimsearch-result-list-item' }, [
+            'div',
+            { class: 'slimsearch-records' },
+            h('div', { class: 'slimsearch-record' }, [
               h(
                 'div',
-                { class: 'slimsearch-result-title' },
+                { class: 'slimsearch-record-title' },
                 locale.value.queryHistory,
               ),
-              queryHistories.value.map((item, historyIndex) =>
-                h(
-                  'div',
-                  {
-                    class: [
-                      'slimsearch-result-item',
-                      {
-                        active:
-                          activatedHistoryStatus.isQuery &&
-                          activatedHistoryStatus.index === historyIndex,
+              h(
+                'ul',
+                { class: 'slimsearch-record-contents', role: 'listbox' },
+                queryHistories.value.map((item, historyIndex) => {
+                  const active =
+                    activatedHistoryStatus.isQuery &&
+                    activatedHistoryStatus.index === historyIndex
+
+                  return h(
+                    'li',
+                    {
+                      'class': ['slimsearch-record-matches', { active }],
+                      'role': 'option',
+                      'aria-selected': active,
+                      'onClick': () => {
+                        emit('updateQuery', item)
                       },
-                    ],
-                    onClick: () => {
-                      emit('updateQuery', item)
                     },
-                  },
-                  [
-                    h(HistoryIcon, {
-                      class: 'slimsearch-result-type',
-                    }),
-                    h('div', { class: 'slimsearch-result-content' }, item),
-                    h('button', {
-                      class: 'slimsearch-remove-icon',
-                      innerHTML: CLOSE_ICON,
-                      onClick: (event: Event) => {
-                        event.preventDefault()
-                        event.stopPropagation()
-                        removeQueryHistory(historyIndex)
-                      },
-                    }),
-                  ],
-                ),
+                    h('div', [
+                      h(HistoryIcon, {
+                        class: 'slimsearch-record-type',
+                      }),
+                      h('div', { class: 'slimsearch-record-content' }, item),
+                      h('button', {
+                        'type': 'button',
+                        'class': 'slimsearch-remove-icon',
+                        'title': locale.value.remove,
+                        'aria-label': locale.value.remove,
+                        'innerHTML': CLOSE_ICON,
+                        'onClick': (event: Event) => {
+                          event.preventDefault()
+                          event.stopPropagation()
+                          removeQueryHistory(historyIndex)
+                        },
+                      }),
+                    ]),
+                  )
+                }),
               ),
             ]),
           )
@@ -221,57 +227,71 @@ export default defineComponent({
       enableResultHistory
         ? h(
             'ul',
-            { class: 'slimsearch-result-list' },
-            h('li', { class: 'slimsearch-result-list-item' }, [
+            { class: 'slimsearch-records' },
+            h('li', { class: 'slimsearch-record' }, [
               h(
                 'div',
-                { class: 'slimsearch-result-title' },
+                { class: 'slimsearch-record-title' },
                 locale.value.resultHistory,
               ),
+              h(
+                'ul',
+                { class: 'slimsearch-record-contents', role: 'listbox' },
+                resultHistories.value.map((item, historyIndex) => {
+                  const active =
+                    !activatedHistoryStatus.isQuery &&
+                    activatedHistoryStatus.index === historyIndex
 
-              resultHistories.value.map((item, historyIndex) =>
-                h(
-                  RouteLink,
-                  {
-                    to: item.link,
-                    class: [
-                      'slimsearch-result-item',
-                      {
-                        active:
-                          !activatedHistoryStatus.isQuery &&
-                          activatedHistoryStatus.index === historyIndex,
-                      },
-                    ],
-                    onClick: () => {
-                      resetSearchResult()
+                  return h(
+                    'li',
+                    {
+                      'class': ['slimsearch-record-matches', { active }],
+                      'role': 'option',
+                      'aria-selected': active,
                     },
-                  },
-                  () => [
-                    h(HistoryIcon, {
-                      class: 'slimsearch-result-type',
-                    }),
-                    h('div', { class: 'slimsearch-result-content' }, [
-                      item.header
-                        ? h('div', { class: 'content-header' }, item.header)
-                        : null,
-                      h(
-                        'div',
-                        item.display
-                          .map((display) => getVNodes(display))
-                          .flat(),
-                      ),
-                    ]),
-                    h('button', {
-                      class: 'slimsearch-remove-icon',
-                      innerHTML: CLOSE_ICON,
-                      onClick: (event: Event) => {
-                        event.preventDefault()
-                        event.stopPropagation()
-                        removeResultHistory(historyIndex)
+                    h(
+                      RouteLink,
+                      {
+                        to: item.link,
+                        onClick: () => {
+                          resetSearchResult()
+                        },
                       },
-                    }),
-                  ],
-                ),
+                      () => [
+                        h(HistoryIcon, {
+                          class: 'slimsearch-record-type',
+                        }),
+                        h('div', { class: 'slimsearch-record-content' }, [
+                          item.header
+                            ? h(
+                                'div',
+                                { class: 'slimsearch-record-content-header' },
+                                item.header,
+                              )
+                            : null,
+                          h(
+                            'div',
+                            item.display
+                              .map((display) => getVNodes(display))
+                              .flat(),
+                          ),
+                        ]),
+                        h('button', {
+                          'type': 'button',
+                          'class': 'slimsearch-remove-icon',
+                          'title': locale.value.remove,
+                          'aria-label': locale.value.remove,
+                          'innerHTML': CLOSE_ICON,
+                          'onClick': (event: Event) => {
+                            event.preventDefault()
+                            event.stopPropagation()
+                            removeResultHistory(historyIndex)
+                          },
+                        }),
+                      ],
+                    ),
+                  )
+                }),
               ),
             ]),
           )
@@ -318,7 +338,7 @@ export default defineComponent({
       () => {
         document
           .querySelector(
-            '.slimsearch-result-list-item.active .slimsearch-result-item.active',
+            '.slimsearch-record.active .slimsearch-record-matches.active',
           )
           ?.scrollIntoView(false)
       },
@@ -329,6 +349,7 @@ export default defineComponent({
       h(
         'div',
         {
+          id: 'slimsearch-results',
           class: [
             'slimsearch-result-wrapper',
             {
@@ -337,79 +358,99 @@ export default defineComponent({
                 : !hasHistory.value,
             },
           ],
-          id: 'slimsearch-results',
         },
         props.queries.length
           ? isSearching.value
             ? h(SearchLoading, { hint: locale.value.searching })
             : hasResults.value
               ? h(
-                  'ul',
-                  { class: 'slimsearch-result-list' },
+                  'div',
+                  {
+                    'class': 'slimsearch-records',
+                    'role': 'listbox',
+                    'aria-labeledby': 'slimsearch-label',
+                  },
                   results.value.map(({ title, contents }, index) => {
                     const isCurrentResultActive =
                       activatedResultIndex.value === index
 
                     return h(
-                      'li',
+                      'div',
                       {
-                        class: [
-                          'slimsearch-result-list-item',
+                        'class': [
+                          'slimsearch-record',
                           { active: isCurrentResultActive },
                         ],
+                        'role': 'group',
+                        'aria-selected': isCurrentResultActive,
                       },
                       [
                         h(
                           'div',
-                          { class: 'slimsearch-result-title' },
+                          { class: 'slimsearch-record-title' },
                           title || locale.value.defaultTitle,
                         ),
-                        contents.map((item, contentIndex) => {
-                          const isCurrentContentActive =
-                            isCurrentResultActive &&
-                            activatedResultContentIndex.value === contentIndex
+                        h(
+                          'ul',
+                          { class: 'slimsearch-record-contents' },
+                          contents.map((item, contentIndex) => {
+                            const isCurrentContentActive =
+                              isCurrentResultActive &&
+                              activatedResultContentIndex.value === contentIndex
 
-                          return h(
-                            RouteLink,
-                            {
-                              to: getResultPath(item),
-                              class: [
-                                'slimsearch-result-item',
-                                {
-                                  'active': isCurrentContentActive,
-                                  'aria-selected': isCurrentContentActive,
-                                },
-                              ],
-                              onClick: () => {
-                                addQueryHistory(props.queries.join(' '))
-                                addResultHistory(item)
-                                resetSearchResult()
+                            return h(
+                              'li',
+                              {
+                                'class': [
+                                  'slimsearch-record-matches',
+                                  { active: isCurrentContentActive },
+                                ],
+                                'role': 'option',
+                                'aria-selected': isCurrentContentActive,
                               },
-                            },
-                            () => [
-                              item.type === 'text'
-                                ? null
-                                : h(
-                                    item.type === 'title'
-                                      ? TitleIcon
-                                      : item.type === 'heading'
-                                        ? HeadingIcon
-                                        : HeartIcon,
-                                    { class: 'slimsearch-result-type' },
+                              h(
+                                RouteLink,
+                                {
+                                  to: getResultPath(item),
+                                  onClick: () => {
+                                    addQueryHistory(props.queries.join(' '))
+                                    addResultHistory(item)
+                                    resetSearchResult()
+                                  },
+                                },
+                                () => [
+                                  item.type === 'text'
+                                    ? null
+                                    : h(
+                                        item.type === 'title'
+                                          ? TitleIcon
+                                          : item.type === 'heading'
+                                            ? HeadingIcon
+                                            : HeartIcon,
+                                        { class: 'slimsearch-record-type' },
+                                      ),
+                                  h(
+                                    'div',
+                                    { class: 'slimsearch-record-content' },
+                                    [
+                                      item.type === 'text' && item.header
+                                        ? h(
+                                            'div',
+                                            {
+                                              class:
+                                                'slimsearch-record-content-header',
+                                            },
+                                            item.header,
+                                          )
+                                        : null,
+                                      h('div', getDisplay(item)),
+                                    ],
                                   ),
-                              h('div', { class: 'slimsearch-result-content' }, [
-                                item.type === 'text' && item.header
-                                  ? h(
-                                      'div',
-                                      { class: 'content-header' },
-                                      item.header,
-                                    )
-                                  : null,
-                                h('div', getDisplay(item)),
-                              ]),
-                            ],
-                          )
-                        }),
+                                ],
+                              ),
+                            )
+                          }),
+                        ),
                       ],
                     )
                   }),

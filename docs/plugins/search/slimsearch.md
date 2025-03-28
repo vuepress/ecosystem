@@ -296,6 +296,16 @@ Options used to create index per locale, the object keys should be the locale pa
     search: string
 
     /**
+     * Clear search text
+     */
+    clear: string
+
+    /**
+     * Remove current item
+     */
+    remove: string
+
+    /**
      * Searching text
      */
     searching: string
