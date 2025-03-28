@@ -211,6 +211,7 @@ interface FadeInExpandTransitionProps {
 
 ```vue
 <script setup lang="ts">
+import { ref } from 'vue'
 import { FadeInExpandTransition } from '@vuepress/helper/client'
 
 import '@vuepress/helper/transition/fade-in-height-expand.css'
@@ -220,7 +221,7 @@ const expand = ref(false)
 </script>
 
 <template>
-  <button @click="expand = !expand">
+  <button type="button" @click="expand = !expand">
     {{ expand ? 'Collapse' : 'Expand' }}
   </button>
 
