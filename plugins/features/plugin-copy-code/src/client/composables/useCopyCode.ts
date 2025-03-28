@@ -151,12 +151,11 @@ export const useCopyCode = ({
     }
   })
 
-  if (inlineSelector)
+  if (inlineSelector) {
     useEventListener('dblclick', (event) => {
       const el = event.target as HTMLElement
 
       if (enabled.value && el.matches(inlineSelector)) {
-        event.preventDefault()
         void copy(el.textContent || '')
         ;(message ??= new Message()).pop(
           `${CHECK_ICON}<span>${locale.value.copied} 🎉</span>`,
@@ -164,4 +163,17 @@ export const useCopyCode = ({
         )
       }
     })
+    useEventListener('selectstart', (event) => {
+      const el = event.target as HTMLElement | Text
+
+      if (
+        enabled.value &&
+        (el instanceof HTMLElement
+          ? el.matches(inlineSelector)
+          : el.parentElement?.matches(inlineSelector))
+      ) {
+        event.preventDefault()
+      }
+    })
+  }
 }
