@@ -1,0 +1,39 @@
+@import './vars.css';
+
+:root {
+  --transition-fade-in-scale-up-scale: 0.9;
+  --transition-fade-in-scale-up-duration: 0.2s;
+  --transition-fade-in-scale-up-origin: inherit;
+}
+
+.fade-in-scale-up {
+  &-leave-active {
+    transition:
+      opacity var(--transition-fade-in-scale-up-duration)
+        var(--transition-ease-in),
+      transform var(--transition-fade-in-scale-up-duration)
+        var(--transition-ease-in);
+    transform-origin: var(--transition-fade-in-scale-up-origin);
+  }
+
+  &-enter-active {
+    transition:
+      opacity var(--transition-fade-in-scale-up-duration)
+        var(--transition-ease-out),
+      transform var(--transition-fade-in-scale-up-duration)
+        var(--transition-ease-out);
+    transform-origin: var(--transition-fade-in-scale-up-origin);
+  }
+
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+    transform: scale(var(--transition-fade-in-scale-up-scale));
+  }
+
+  &-leave-from,
+  &-enter-to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

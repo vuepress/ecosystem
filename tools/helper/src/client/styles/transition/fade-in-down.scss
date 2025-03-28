@@ -1,0 +1,26 @@
+@import './vars.css';
+
+:root {
+  --transition-fade-in-down-offset: -10px;
+}
+
+.fade-in-down {
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+    transform: translateY(var(--transition-fade-in-down-offset));
+  }
+
+  &-enter-to,
+  &-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &-leave-active,
+  &-enter-active {
+    transition:
+      opacity var(--transition-duration) var(--transition-ease-in-out),
+      transform var(--transition-duration) var(--transition-ease-in-out);
+  }
+}

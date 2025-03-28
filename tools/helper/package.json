@@ -33,6 +33,7 @@
     "./colors.css": "./lib/client/styles/colors.css",
     "./normalize.css": "./lib/client/styles/normalize.css",
     "./sr-only.css": "./lib/client/styles/sr-only.css",
+    "./transition/*.css": "./lib/client/styles/transition/*.css",
     "./scss/*.scss": {
       "sass": "./scss/*.scss"
     },

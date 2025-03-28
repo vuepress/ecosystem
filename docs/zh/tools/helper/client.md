@@ -163,3 +163,58 @@ onMounted(() => {
 ```
 
 :::
+
+## 组件{#component}
+
+### FadeInExpandTransition
+
+为块级元素的展开提供淡入淡出过渡效果，支持 `height` 或 `width` 属性。
+
+**Props:**
+
+```ts
+interface FadeInExpandTransitionProps {
+  /**
+   * 是否分组过渡
+   */
+  group?: boolean
+  /**
+   * 过渡模式
+   */
+  mode?: 'default' | 'in-out' | 'out-in'
+
+  /**
+   * 是否切换为 `width` 的过渡
+   *
+   * @default false
+   */
+  width?: boolean
+
+  appear?: boolean
+  onLeave?: () => void
+  onAfterEnter?: () => void
+  onAfterLeave?: () => void
+}
+```
+
+**Usage:**
+
+```vue
+<script setup lang="ts">
+import { FadeInExpandTransition } from '@vuepress/helper/client'
+
+const expand = ref(false)
+</script>
+
+<template>
+  <button @click="expand = !expand">
+    {{ expand ? 'Collapse' : 'Expand' }}
+  </button>
+
+  <FadeInExpandTransition>
+    <div v-show="expand">
+      <p>Content</p>
+    </div>
+  </FadeInExpandTransition>
+</template>
+```

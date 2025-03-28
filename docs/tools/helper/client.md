@@ -163,3 +163,58 @@ onMounted(() => {
 ```
 
 :::
+
+## Component
+
+### FadeInExpandTransition
+
+Provides fade-in transition effects when block-level elements expand, supporting both `height` or `width` properties.
+
+**Props:**
+
+```ts
+interface FadeInExpandTransitionProps {
+  /**
+   * Whether to group transitions
+   */
+  group?: boolean
+  /**
+   * Transition mode
+   */
+  mode?: 'default' | 'in-out' | 'out-in'
+
+  /**
+   * Whether to switch to the transition of `width`
+   *
+   * @default false
+   */
+  width?: boolean
+
+  appear?: boolean
+  onLeave?: () => void
+  onAfterEnter?: () => void
+  onAfterLeave?: () => void
+}
+```
+
+**Usage:**
+
+```vue
+<script setup lang="ts">
+import { FadeInExpandTransition } from '@vuepress/helper/client'
+
+const expand = ref(false)
+</script>
+
+<template>
+  <button @click="expand = !expand">
+    {{ expand ? 'Collapse' : 'Expand' }}
+  </button>
+
+  <FadeInExpandTransition>
+    <div v-show="expand">
+      <p>Content</p>
+    </div>
+  </FadeInExpandTransition>
+</template>
+```
