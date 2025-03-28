@@ -2,6 +2,7 @@
   --message-offset: calc(var(--vp-header-offset, 3.6rem) + 1rem);
   --message-timing-duration: 0.3s;
   --message-timing-function: ease-in-out;
+  --message-gap: 0.5rem;
 }
 
 @keyframes message-move-in {
@@ -35,7 +36,7 @@
 
   display: flex;
   flex-flow: column;
-  gap: 0.5rem;
+  gap: var(--message-gap);
   align-items: center;
 
   text-align: center;
