@@ -15,7 +15,6 @@ export class Message {
     if (containerElement) return containerElement
 
     containerElement = document.createElement('div')
-
     containerElement.id = containerId
     document.body.appendChild(containerElement)
 
@@ -27,9 +26,8 @@ export class Message {
   }
 
   public pop(html: string, duration = 2000, clickToClose = true): number {
-    const messageElement = document.createElement('div')
     const messageId = Date.now()
-
+    const messageElement = document.createElement('div')
     messageElement.className = 'message-item move-in'
     messageElement.innerHTML = html
     Message.containerElement.appendChild(messageElement)
@@ -67,7 +65,6 @@ export class Message {
 
   public destroy(): void {
     const containerElement = document.getElementById(containerId)
-
     if (containerElement) document.body.removeChild(containerElement)
     this.elements = {}
   }
