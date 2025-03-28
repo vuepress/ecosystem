@@ -2,7 +2,7 @@
 
 :root {
   --transition-fade-in-scale-up-scale: 0.9;
-  --transition-fade-in-scale-up-duration: 0.2s;
+  --transition-fade-in-scale-up-duration: var(--transition-duration);
   --transition-fade-in-scale-up-origin: inherit;
 }
 
@@ -12,7 +12,7 @@
       opacity var(--transition-fade-in-scale-up-duration)
         var(--transition-ease-in),
       transform var(--transition-fade-in-scale-up-duration)
-        var(--transition-ease-in);
+        var(--transition-ease-in) !important;
     transform-origin: var(--transition-fade-in-scale-up-origin);
   }
 
@@ -21,7 +21,7 @@
       opacity var(--transition-fade-in-scale-up-duration)
         var(--transition-ease-out),
       transform var(--transition-fade-in-scale-up-duration)
-        var(--transition-ease-out);
+        var(--transition-ease-out) !important;
     transform-origin: var(--transition-fade-in-scale-up-origin);
   }
 
