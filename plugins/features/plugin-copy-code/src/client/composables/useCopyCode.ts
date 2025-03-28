@@ -3,7 +3,6 @@ import {
   useClipboard,
   useEventListener,
   useMediaQuery,
-  useStyleTag,
   watchImmediate,
 } from '@vueuse/core'
 import { computed } from 'vue'
@@ -157,6 +156,16 @@ export const useCopyCode = ({
       const el = event.target as HTMLElement
 
       if (enabled.value && el.matches(inlineSelector)) {
+        const selection = window.getSelection()
+
+        if (
+          selection &&
+          (el.contains(selection.anchorNode) ||
+            el.contains(selection.focusNode))
+        ) {
+          selection.removeAllRanges()
+        }
+
         void copy(el.textContent || '')
         ;(message ??= new Message()).pop(
           `${CHECK_ICON}<span>${locale.value.copied} </span>`,
@@ -164,6 +173,5 @@ export const useCopyCode = ({
         )
       }
     })
-    useStyleTag(`${inlineSelector}{cursor:copy;user-select:none;}`)
   }
 }
