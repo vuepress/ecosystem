@@ -10,7 +10,7 @@ export default [
       files: ['config', 'index'],
     },
     {
-      dtsExternal: ['@vuepress/helper/shared'],
+      dtsExternal: ['@vuepress/helper/client', '@vuepress/helper/shared'],
     },
   ),
 ]

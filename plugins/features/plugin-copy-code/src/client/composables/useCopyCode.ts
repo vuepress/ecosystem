@@ -3,6 +3,7 @@ import {
   useClipboard,
   useEventListener,
   useMediaQuery,
+  useStyleTag,
   watchImmediate,
 } from '@vueuse/core'
 import { computed } from 'vue'
@@ -163,17 +164,6 @@ export const useCopyCode = ({
         )
       }
     })
-    useEventListener('selectstart', (event) => {
-      const el = event.target as HTMLElement | Text
-
-      if (
-        enabled.value &&
-        (el instanceof HTMLElement
-          ? el.matches(inlineSelector)
-          : el.parentElement?.matches(inlineSelector))
-      ) {
-        event.preventDefault()
-      }
-    })
+    useStyleTag(`${inlineSelector}{cursor:copy;user-select:none;}`)
   }
 }
