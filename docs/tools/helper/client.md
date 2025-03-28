@@ -197,11 +197,26 @@ interface FadeInExpandTransitionProps {
 }
 ```
 
+**Import Styles:**
+
+Transition animations require importing the following CSS files as needed:
+
+- `@vuepress/helper/transition/fade-in-height-expand.css` - `height` transition animation
+
+- `@vuepress/helper/transition/fade-in-width-expand.css` - `width` transition animation
+
+::: tip Only one CSS file needs to be imported
+
+:::
+
 **Usage:**
 
 ```vue
 <script setup lang="ts">
 import { FadeInExpandTransition } from '@vuepress/helper/client'
+
+import '@vuepress/helper/transition/fade-in-height-expand.css'
+// import '@vuepress/helper/transition/fade-in-width-expand.css'
 
 const expand = ref(false)
 </script>

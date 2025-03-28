@@ -38,39 +38,3 @@
       padding-bottom var(--transition-duration) var(--transition-ease-in-out);
   }
 }
-
-.fade-in-width-expand {
-  &-leave-from,
-  &-enter-to {
-    opacity: 1;
-  }
-
-  &-leave-to,
-  &-enter-from {
-    margin-right: 0 !important;
-    margin-left: 0 !important;
-    opacity: 0 !important;
-  }
-
-  &-leave-active {
-    overflow: hidden;
-    transition:
-      max-width var(--transition-duration) var(--transition-ease-in-out)
-        var(--transition-delay),
-      opacity var(--transition-duration) var(--transition-ease-in-out),
-      margin-right var(--transition-duration) var(--transition-ease-in-out)
-        var(--transition-delay),
-      margin-left var(--transition-duration) var(--transition-ease-in-out)
-        var(--transition-delay);
-  }
-
-  &-enter-active {
-    overflow: hidden;
-    transition:
-      max-width var(--transition-duration) var(--transition-ease-in-out),
-      opacity var(--transition-duration) var(--transition-ease-in-out)
-        var(--transition-delay),
-      margin-right var(--transition-duration) var(--transition-ease-in-out),
-      margin-left var(--transition-duration) var(--transition-ease-in-out);
-  }
-}

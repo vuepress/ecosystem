@@ -1,8 +1,6 @@
 import type { Component, PropType } from 'vue'
 import { Transition, TransitionGroup, defineComponent, h } from 'vue'
 
-import '../../styles/transition/fade-in-expand.css'
-
 export const FadeInExpandTransition = defineComponent({
   name: 'FadeInExpandTransition',
   props: {

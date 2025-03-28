@@ -197,11 +197,24 @@ interface FadeInExpandTransitionProps {
 }
 ```
 
+**导入样式：**
+
+过渡动画需要按需引入以下 CSS 文件：
+
+- `@vuepress/helper/transition/fade-in-height-expand.css` - `height` 过渡动画
+- `@vuepress/helper/transition/fade-in-width-expand.css` - `width` 过渡动画
+
+::: tip 只需要引入其中一个 CSS 文件
+:::
+
 **Usage:**
 
 ```vue
 <script setup lang="ts">
 import { FadeInExpandTransition } from '@vuepress/helper/client'
+
+import '@vuepress/helper/transition/fade-in-height-expand.css'
+// import '@vuepress/helper/transition/fade-in-width-expand.css'
 
 const expand = ref(false)
 </script>
