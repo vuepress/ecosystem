@@ -28,6 +28,7 @@ import {
 import { locales, options } from '../define.js'
 import { useSearchOptions } from '../helpers/index.js'
 import { CLOSE_ICON } from '../icons/index.js'
+import { defaultQuerySplitter } from '../utils/index.js'
 import SearchKeyHints from './SearchKeyHints.js'
 import { SearchLoading } from './SearchLoading.js'
 import { SearchIcon } from './icons.js'
@@ -109,9 +110,9 @@ export default defineComponent({
         () =>
           (
             searchOptions.value.querySplitter?.(input.value) ??
-            Promise.resolve(input.value.split(' '))
+            Promise.resolve(defaultQuerySplitter(input.value))
           ).then((result) => {
-            queries.value = result
+            queries.value = result.filter((item) => item.length)
           }),
         Math.min(options.searchDelay, options.suggestDelay),
       ),
@@ -148,14 +149,18 @@ export default defineComponent({
                 h('form', [
                   h(
                     'label',
-                    { 'for': 'search-pro', 'aria-label': locale.value.search },
+                    {
+                      'id': 'slimsearch-label',
+                      'for': 'slimsearch-input',
+                      'aria-label': locale.value.search,
+                    },
                     h(SearchIcon),
                   ),
                   h('input', {
                     'ref': inputElement,
                     'type': 'search',
                     'class': 'slimsearch-input',
-                    'id': 'search-pro',
+                    'id': 'slimsearch-input',
                     'placeholder': locale.value.placeholder,
                     'spellcheck': 'false',
                     'autocapitalize': 'off',

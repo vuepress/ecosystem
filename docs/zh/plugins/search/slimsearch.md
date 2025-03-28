@@ -294,6 +294,16 @@ export default defineUserConfig({
     search: string
 
     /**
+     * 清除搜索文字
+     */
+    clear: string
+
+    /**
+     * 删除当前项目
+     */
+    remove: string
+
+    /**
      * 搜索中文字
      */
     searching: string
@@ -470,7 +480,7 @@ export default defineUserConfig({
 如果你想要访问搜索 API，你可以从 `@vuepress/plugin-slimsearch/client` 中导入 `createSearchWorker` 来获取搜索结果:
 
 ```ts
-import { createSearchWorker } from 'vuepress-plugin-search-pro/client'
+import { createSearchWorker } from '@vuepress/plugin-slimsearch/client'
 
 const { all, suggest, search, terminate } = createSearchWorker()
 

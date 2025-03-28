@@ -26,6 +26,13 @@ export interface SlimSearchLocaleData {
   clear: string
 
   /**
+   * Remove current item
+   *
+   * 删除当前项目
+   */
+  remove: string
+
+  /**
    * Searching text
    *
    * 搜索中文字
