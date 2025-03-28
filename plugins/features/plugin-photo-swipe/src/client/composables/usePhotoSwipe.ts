@@ -123,7 +123,7 @@ export const usePhotoSwipe = ({
     const rIC =
       'requestIdleCallback' in window ? window.requestIdleCallback : setTimeout
 
-    useEventListener('click', initPhotoSwipe)
+    useEventListener('click', initPhotoSwipe, { passive: true })
     useEventListener('wheel', () => {
       if (options.value.scrollToClose) photoSwipe?.close()
     })

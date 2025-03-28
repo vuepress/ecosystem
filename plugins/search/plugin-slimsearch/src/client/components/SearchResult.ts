@@ -323,8 +323,8 @@ export default defineComponent({
           const { index } = activatedHistoryStatus
 
           if (activatedHistoryStatus.isQuery) {
-            emit('updateQuery', queryHistories.value[index])
             event.preventDefault()
+            emit('updateQuery', queryHistories.value[index])
           } else {
             void router.push(resultHistories.value[index].link)
             resetSearchResult()

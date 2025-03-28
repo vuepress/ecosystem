@@ -85,20 +85,24 @@ export default defineComponent({
       showSuggestion.value = false
     }
 
-    useEventListener('keydown', (event: KeyboardEvent) => {
-      // handle suggestion keys
-      if (hasSuggestions.value) {
-        if (event.key === 'ArrowUp') activePreviousSuggestion()
-        else if (event.key === 'ArrowDown') activeNextSuggestion()
-        else if (event.key === 'Tab') applySuggestion()
-        else if (event.key === 'Enter' || event.key === 'Escape')
-          showSuggestion.value = false
-      }
-      // hide the modal when pressing the escape key
-      else if (event.key === 'Escape') {
-        toggleActive(false)
-      }
-    })
+    useEventListener(
+      'keydown',
+      (event: KeyboardEvent) => {
+        // handle suggestion keys
+        if (hasSuggestions.value) {
+          if (event.key === 'ArrowUp') activePreviousSuggestion()
+          else if (event.key === 'ArrowDown') activeNextSuggestion()
+          else if (event.key === 'Tab') applySuggestion()
+          else if (event.key === 'Enter' || event.key === 'Escape')
+            showSuggestion.value = false
+        }
+        // hide the modal when pressing the escape key
+        else if (event.key === 'Escape') {
+          toggleActive(false)
+        }
+      },
+      { passive: true },
+    )
 
     onClickOutside(suggestionsElement, () => {
       showSuggestion.value = false

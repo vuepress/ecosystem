@@ -135,43 +135,51 @@ export const useCopyCode = ({
     timeoutIdMap.set(button, timeoutId)
   }
 
-  useEventListener('click', (event) => {
-    const el = event.target as HTMLElement
-
-    if (
-      enabled.value &&
-      el.matches('div[class*="language-"] > button.vp-copy-code-button')
-    ) {
-      const codeContainer = el.parentElement as HTMLDivElement | null
-      const preBlock = el.nextElementSibling as HTMLPreElement | null
-
-      if (!codeContainer || !preBlock) return
-
-      void copyContent(codeContainer, preBlock, el as HTMLButtonElement)
-    }
-  })
-
-  if (inlineSelector) {
-    useEventListener('dblclick', (event) => {
+  useEventListener(
+    'click',
+    (event) => {
       const el = event.target as HTMLElement
 
-      if (enabled.value && el.matches(inlineSelector)) {
-        const selection = window.getSelection()
+      if (
+        enabled.value &&
+        el.matches('div[class*="language-"] > button.vp-copy-code-button')
+      ) {
+        const codeContainer = el.parentElement as HTMLDivElement | null
+        const preBlock = el.nextElementSibling as HTMLPreElement | null
 
-        if (
-          selection &&
-          (el.contains(selection.anchorNode) ||
-            el.contains(selection.focusNode))
-        ) {
-          selection.removeAllRanges()
-        }
+        if (!codeContainer || !preBlock) return
 
-        void copy(el.textContent || '')
-        ;(message ??= new Message()).pop(
-          `${CHECK_ICON}<span>${locale.value.copied} </span>`,
-          duration,
-        )
+        void copyContent(codeContainer, preBlock, el as HTMLButtonElement)
       }
-    })
+    },
+    { passive: true },
+  )
+
+  if (inlineSelector) {
+    useEventListener(
+      'dblclick',
+      (event) => {
+        const el = event.target as HTMLElement
+
+        if (enabled.value && el.matches(inlineSelector)) {
+          const selection = window.getSelection()
+
+          if (
+            selection &&
+            (el.contains(selection.anchorNode) ||
+              el.contains(selection.focusNode))
+          ) {
+            selection.removeAllRanges()
+          }
+
+          void copy(el.textContent || '')
+          ;(message ??= new Message()).pop(
+            `${CHECK_ICON}<span>${locale.value.copied} </span>`,
+            duration,
+          )
+        }
+      },
+      { passive: true },
+    )
   }
 }

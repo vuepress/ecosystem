@@ -118,9 +118,13 @@ export const PwaInstallModal = defineComponent({
           event.preventDefault()
         })
 
-        useEventListener('keyup', (event): void => {
-          if (event.key === 'Escape') emit('close', false)
-        })
+        useEventListener(
+          'keyup',
+          (event): void => {
+            if (event.key === 'Escape') emit('close', false)
+          },
+          { passive: true },
+        )
 
         void getManifest()
       }
