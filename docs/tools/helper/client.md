@@ -213,8 +213,8 @@ Transition animations require importing the following CSS files as needed:
 
 ```vue
 <script setup lang="ts">
-import { ref } from 'vue'
 import { FadeInExpandTransition } from '@vuepress/helper/client'
+import { ref } from 'vue'
 
 import '@vuepress/helper/transition/fade-in-height-expand.css'
 // import '@vuepress/helper/transition/fade-in-width-expand.css'

@@ -211,8 +211,8 @@ interface FadeInExpandTransitionProps {
 
 ```vue
 <script setup lang="ts">
-import { ref } from 'vue'
 import { FadeInExpandTransition } from '@vuepress/helper/client'
+import { ref } from 'vue'
 
 import '@vuepress/helper/transition/fade-in-height-expand.css'
 // import '@vuepress/helper/transition/fade-in-width-expand.css'
