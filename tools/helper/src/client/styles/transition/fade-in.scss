@@ -1,0 +1,18 @@
+@import './vars.css';
+
+.fade-in {
+  &-enter-active,
+  &-leave-active {
+    transition: all var(--transition-duration) var(--transition-ease-in-out) !important;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+  }
+
+  &-leave-from,
+  &-enter-to {
+    opacity: 1;
+  }
+}
