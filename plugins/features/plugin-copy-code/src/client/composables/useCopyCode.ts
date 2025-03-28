@@ -158,7 +158,7 @@ export const useCopyCode = ({
       if (enabled.value && el.matches(inlineSelector)) {
         void copy(el.textContent || '')
         ;(message ??= new Message()).pop(
-          `${CHECK_ICON}<span>${locale.value.copied} 🎉</span>`,
+          `${CHECK_ICON}<span>${locale.value.copied} </span>`,
           duration,
         )
       }
