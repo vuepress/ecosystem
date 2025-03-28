@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.90](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.89...v2.0.0-rc.90) (2025-03-28)
+
+**Note:** Version bump only for package @vuepress/plugin-seo
+
 # [2.0.0-rc.88](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.87...v2.0.0-rc.88) (2025-03-26)
 
 **Note:** Version bump only for package @vuepress/plugin-seo

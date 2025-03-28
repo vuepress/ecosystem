@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.90](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.89...v2.0.0-rc.90) (2025-03-28)
+
+### Features
+
+- **plugin-git:** add support to find git contributor by email ([#412](https://github.com/vuepress/ecosystem/issues/412)) ([7dd5351](https://github.com/vuepress/ecosystem/commit/7dd53519ac5c0653c50a836219d633c5da14a931))
+- **plugin-git:** improve plugin style ([bfe9a20](https://github.com/vuepress/ecosystem/commit/bfe9a204c4175413007ae5620a46d8be36093e87))
+
 # [2.0.0-rc.88](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.87...v2.0.0-rc.88) (2025-03-26)
 
 ### Features

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.90](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.89...v2.0.0-rc.90) (2025-03-28)
+
+### Features
+
+- **plugin-slimsearch:** add title and label for reset button ([a34a44b](https://github.com/vuepress/ecosystem/commit/a34a44b1c7693f55bb9667059adc5eb579f72796))
+- **plugin-slimsearch:** improve a11y, close [#411](https://github.com/vuepress/ecosystem/issues/411) ([#415](https://github.com/vuepress/ecosystem/issues/415)) ([ffda2e6](https://github.com/vuepress/ecosystem/commit/ffda2e63f6e7a16a929f49e7e19b3a625fe41dca))
+
 # [2.0.0-rc.86](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.85...v2.0.0-rc.86) (2025-03-23)
 
 ### Bug Fixes

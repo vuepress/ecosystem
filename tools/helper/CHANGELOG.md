@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.90](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.89...v2.0.0-rc.90) (2025-03-28)
+
+### Features
+
+- **helper:** add Message class to handle message ([#417](https://github.com/vuepress/ecosystem/issues/417)) ([48aa1c4](https://github.com/vuepress/ecosystem/commit/48aa1c46034a63b501cc83ae5b51df707cdf4e78))
+- **helper:** add transition helpers with components and styles ([#413](https://github.com/vuepress/ecosystem/issues/413)) ([73b05ea](https://github.com/vuepress/ecosystem/commit/73b05ea3ae6a26626eea5d1fada7ae5d69ac610a))
+
 # [2.0.0-rc.86](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.85...v2.0.0-rc.86) (2025-03-23)
 
 ### Features

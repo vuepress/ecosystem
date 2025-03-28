@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.90](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.89...v2.0.0-rc.90) (2025-03-28)
+
+### Features
+
+- **create-vuepress:** support pnpm10 ([77f4ae6](https://github.com/vuepress/ecosystem/commit/77f4ae6f1ad28b5ba0c3a13a00b364a38c841306))
+- **helper:** add Message class to handle message ([#417](https://github.com/vuepress/ecosystem/issues/417)) ([48aa1c4](https://github.com/vuepress/ecosystem/commit/48aa1c46034a63b501cc83ae5b51df707cdf4e78))
+- **helper:** add transition helpers with components and styles ([#413](https://github.com/vuepress/ecosystem/issues/413)) ([73b05ea](https://github.com/vuepress/ecosystem/commit/73b05ea3ae6a26626eea5d1fada7ae5d69ac610a))
+- **plugin-copy-code:** add inlineSelector option ([#416](https://github.com/vuepress/ecosystem/issues/416)) ([e9117f8](https://github.com/vuepress/ecosystem/commit/e9117f8992a848305340358acc034500524eefa9))
+- **plugin-git:** add support to find git contributor by email ([#412](https://github.com/vuepress/ecosystem/issues/412)) ([7dd5351](https://github.com/vuepress/ecosystem/commit/7dd53519ac5c0653c50a836219d633c5da14a931))
+- **plugin-git:** improve plugin style ([bfe9a20](https://github.com/vuepress/ecosystem/commit/bfe9a204c4175413007ae5620a46d8be36093e87))
+- **plugin-slimsearch:** add title and label for reset button ([a34a44b](https://github.com/vuepress/ecosystem/commit/a34a44b1c7693f55bb9667059adc5eb579f72796))
+- **plugin-slimsearch:** improve a11y, close [#411](https://github.com/vuepress/ecosystem/issues/411) ([#415](https://github.com/vuepress/ecosystem/issues/415)) ([ffda2e6](https://github.com/vuepress/ecosystem/commit/ffda2e63f6e7a16a929f49e7e19b3a625fe41dca))
+
 # [2.0.0-rc.89](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.88...v2.0.0-rc.89) (2025-03-26)
 
 ### Bug Fixes

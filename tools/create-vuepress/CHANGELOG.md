@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.90](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.89...v2.0.0-rc.90) (2025-03-28)
+
+### Features
+
+- **create-vuepress:** support pnpm10 ([77f4ae6](https://github.com/vuepress/ecosystem/commit/77f4ae6f1ad28b5ba0c3a13a00b364a38c841306))
+
 # [2.0.0-rc.89](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.88...v2.0.0-rc.89) (2025-03-26)
 
 ### Bug Fixes
