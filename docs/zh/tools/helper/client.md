@@ -163,3 +163,72 @@ onMounted(() => {
 ```
 
 :::
+
+## 组件{#component}
+
+### FadeInExpandTransition
+
+为块级元素的展开提供淡入淡出过渡效果，支持 `height` 或 `width` 属性。
+
+**Props:**
+
+```ts
+interface FadeInExpandTransitionProps {
+  /**
+   * 是否分组过渡
+   */
+  group?: boolean
+  /**
+   * 过渡模式
+   */
+  mode?: 'default' | 'in-out' | 'out-in'
+
+  /**
+   * 是否切换为 `width` 的过渡
+   *
+   * @default false
+   */
+  width?: boolean
+
+  appear?: boolean
+  onLeave?: () => void
+  onAfterEnter?: () => void
+  onAfterLeave?: () => void
+}
+```
+
+**导入样式：**
+
+过渡动画需要按需引入以下 CSS 文件：
+
+- `@vuepress/helper/transition/fade-in-height-expand.css` - `height` 过渡动画
+- `@vuepress/helper/transition/fade-in-width-expand.css` - `width` 过渡动画
+
+::: tip 只需要引入其中一个 CSS 文件
+:::
+
+**Usage:**
+
+```vue
+<script setup lang="ts">
+import { FadeInExpandTransition } from '@vuepress/helper/client'
+import { ref } from 'vue'
+
+import '@vuepress/helper/transition/fade-in-height-expand.css'
+// import '@vuepress/helper/transition/fade-in-width-expand.css'
+
+const expand = ref(false)
+</script>
+
+<template>
+  <button type="button" @click="expand = !expand">
+    {{ expand ? 'Collapse' : 'Expand' }}
+  </button>
+
+  <FadeInExpandTransition>
+    <div v-show="expand">
+      <p>Content</p>
+    </div>
+  </FadeInExpandTransition>
+</template>
+```

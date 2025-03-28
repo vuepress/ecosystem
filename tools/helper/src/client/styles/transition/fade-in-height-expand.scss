@@ -1,0 +1,40 @@
+@import './vars.css';
+
+.fade-in-height-expand {
+  &-leave-from,
+  &-enter-to {
+    opacity: 1;
+  }
+
+  &-leave-to,
+  &-enter-from {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+
+    opacity: 0;
+  }
+
+  &-leave-active {
+    overflow: hidden;
+    transition:
+      max-height var(--transition-duration) var(--transition-ease-in-out),
+      opacity var(--transition-duration) var(--transition-ease-out),
+      margin-top var(--transition-duration) var(--transition-ease-in-out),
+      margin-bottom var(--transition-duration) var(--transition-ease-in-out),
+      padding-top var(--transition-duration) var(--transition-ease-in-out),
+      padding-bottom var(--transition-duration) var(--transition-ease-in-out);
+  }
+
+  &-enter-active {
+    overflow: hidden;
+    transition:
+      max-height var(--transition-duration) var(--transition-ease-in-out),
+      opacity var(--transition-duration) var(--transition-ease-in),
+      margin-top var(--transition-duration) var(--transition-ease-in-out),
+      margin-bottom var(--transition-duration) var(--transition-ease-in-out),
+      padding-top var(--transition-duration) var(--transition-ease-in-out),
+      padding-bottom var(--transition-duration) var(--transition-ease-in-out);
+  }
+}
