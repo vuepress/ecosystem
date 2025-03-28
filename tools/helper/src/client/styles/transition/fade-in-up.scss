@@ -17,10 +17,15 @@
     transform: translateY(0);
   }
 
-  &-leave-active,
+  &-leave-active {
+    transition:
+      opacity var(--transition-leave-duration) var(--transition-ease-in-out),
+      transform var(--transition-leave-duration) var(--transition-ease-in-out) !important;
+  }
+
   &-enter-active {
     transition:
-      opacity var(--transition-duration) var(--transition-ease-in-out),
-      transform var(--transition-duration) var(--transition-ease-in-out);
+      opacity var(--transition-enter-duration) var(--transition-ease-in-out),
+      transform var(--transition-enter-duration) var(--transition-ease-in-out) !important;
   }
 }

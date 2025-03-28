@@ -7,12 +7,12 @@
 .slide-in-down {
   &-leave-active {
     transition: transform var(--transition-leave-duration)
-      var(--transition-ease-in);
+      var(--transition-ease-in) !important;
   }
 
   &-enter-active {
     transition: transform var(--transition-enter-duration)
-      var(--transition-ease-out);
+      var(--transition-ease-out) !important;
   }
 
   &-enter-to,
