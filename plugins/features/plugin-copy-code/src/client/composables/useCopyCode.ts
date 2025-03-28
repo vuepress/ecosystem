@@ -156,6 +156,7 @@ export const useCopyCode = ({
       const el = event.target as HTMLElement
 
       if (enabled.value && el.matches(inlineSelector)) {
+        event.preventDefault()
         void copy(el.textContent || '')
         ;(message ??= new Message()).pop(
           `${CHECK_ICON}<span>${locale.value.copied} 🎉</span>`,
