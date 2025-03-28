@@ -59,6 +59,9 @@ export default defaultTheme({
   },
 
   themePlugins: {
+    copyCode: {
+      inline: true,
+    },
     git: {
       contributors: {
         avatar: true,
