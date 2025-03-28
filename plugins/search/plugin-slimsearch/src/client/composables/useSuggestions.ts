@@ -33,7 +33,7 @@ export const useSuggestions = (queries: Ref<string[]>): SuggestionsRef => {
           ...options
         } = searchOptions.value
 
-        if (query)
+        if (query.length >= 3)
           suggest(query, routeLocale.value, options)
             .then((items) =>
               suggestionsFilter(
