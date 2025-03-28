@@ -63,6 +63,17 @@ export default {
 
   例如: `['.token.comment']` 将忽略代码块中类名为 `.token.comment` 的节点 （这会在 `prismjs` 中忽略注释）。
 
+### inlineSelector
+
+- 类型：`string[] | string | boolean`
+- 默认值：`false`
+- 详情:
+
+  是否在双击时复制行内代码内容。
+
+  - `boolean`: 是否在双击时复制行内代码内容。
+  - `string[] | string`: 选择器，表示需要复制的行内代码内容。
+
 ### transform <Badge type="tip" text="仅限组合式 API" />
 
 - 类型：`(preElement: HTMLPreElement) => void`

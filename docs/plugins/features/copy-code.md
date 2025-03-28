@@ -56,12 +56,22 @@ export default {
 
 ### ignoreSelector
 
-- Type: `string[]`
+- Type: `string[] | string`
 - Details:
 
   Elements selector in code blocks, used to ignore related elements when copying.
 
   For example, `['.token.comment']` will ignore nodes with the class name `.token.comment` in code blocks (which in `prismjs` refers to ignoring comments).
+
+### inlineSelector
+
+- Type: `string[] | string | boolean`
+- Default: `false`
+
+  Whether to copy inline code content when double click.
+
+  - `boolean`: Whether to copy inline code content when double click.
+  - `string | string[]`: The selector of inline code.
 
 ### transform <Badge type="tip" text="Composables API Only" />
 

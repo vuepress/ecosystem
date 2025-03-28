@@ -14,14 +14,13 @@ import '../styles/vars.css'
 
 export interface UseCopyCodeOptions {
   locales: CopyCodePluginLocaleConfig
-  selector: string[]
+  selector: string
+  ignoreSelector?: string
+  inlineSelector?: string
   /** @default 2000 */
   duration: number
   /** @default false */
   showInMobile?: boolean
-  /** @default [] */
-  ignoreSelector?: string[]
-
   /**
    * Transform pre element before copy
    *
@@ -47,11 +46,12 @@ export interface UseCopyCodeOptions {
 const SHELL_RE = /language-(shellscript|shell|bash|sh|zsh)/
 
 export const useCopyCode = ({
+  selector,
+  ignoreSelector,
+  inlineSelector,
   duration = 2000,
   locales,
-  selector,
   showInMobile,
-  ignoreSelector = [],
   transform,
 }: UseCopyCodeOptions): void => {
   if (__VUEPRESS_SSR__) return
@@ -83,9 +83,7 @@ export const useCopyCode = ({
     document.body.classList.toggle('no-copy-code', !enabled.value)
     if (!enabled.value) return
 
-    document
-      .querySelectorAll<HTMLElement>(selector.join(','))
-      .forEach(insertCopyButton)
+    document.querySelectorAll<HTMLElement>(selector).forEach(insertCopyButton)
   }
 
   watchImmediate(enabled, appendCopyButton, {
@@ -106,8 +104,8 @@ export const useCopyCode = ({
   ): Promise<void> => {
     const clone = codeContent.cloneNode(true) as HTMLPreElement
 
-    if (ignoreSelector.length) {
-      clone.querySelectorAll(ignoreSelector.join(',')).forEach((node) => {
+    if (ignoreSelector) {
+      clone.querySelectorAll(ignoreSelector).forEach((node) => {
         node.remove()
       })
     }
@@ -148,4 +146,12 @@ export const useCopyCode = ({
       void copyContent(codeContainer, preBlock, el as HTMLButtonElement)
     }
   })
+
+  if (inlineSelector)
+    useEventListener('dblclick', (event) => {
+      const el = event.target as HTMLElement
+
+      if (enabled.value && el.matches(inlineSelector))
+        void copy(el.textContent || '')
+    })
 }
