@@ -3,9 +3,11 @@ import { keys } from '../../shared/index.js'
 const containerId = 'message-container'
 
 export class Message {
-  private elements: Record<number, HTMLDivElement> = {}
+  private elements: Record<number, HTMLDivElement>
 
-  protected constructor() {}
+  public constructor() {
+    this.elements = {}
+  }
 
   public static get containerElement(): HTMLElement {
     let containerElement = document.getElementById(containerId)
