@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import VPAutoLink from '@theme/VPAutoLink.vue'
-import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
+import { FadeInExpandTransition } from '@vuepress/helper/client'
 import type { AutoLinkOptions, NavGroup } from '@vuepress/theme-default/client'
 import { useToggle } from '@vueuse/core'
 import { computed, toRefs } from 'vue'
+import type { AutoLinkConfig } from 'vuepress/client'
 import { onContentUpdated } from 'vuepress/client'
+
+import '@vuepress/helper/transition/fade-in-height-expand.css'
 
 const props = defineProps<{
   /** dropdown config */
@@ -64,7 +67,7 @@ onContentUpdated(() => {
       <span class="arrow" :class="open ? 'down' : 'right'" />
     </button>
 
-    <VPDropdownTransition>
+    <FadeInExpandTransition>
       <ul v-show="open" class="vp-navbar-dropdown">
         <li
           v-for="child in config.children"
@@ -75,7 +78,7 @@ onContentUpdated(() => {
             <h4 class="vp-navbar-dropdown-subtitle">
               <VPAutoLink
                 v-if="child.link"
-                :config="child"
+                :config="child as AutoLinkConfig"
                 @focusout="
                   () => {
                     if (
@@ -88,11 +91,11 @@ onContentUpdated(() => {
                 "
               />
 
-              <span v-else
-                ><VPIcon v-if="config.icon" :icon="config.icon" />{{
+              <span v-else>
+                <VPIcon v-if="config.icon" :icon="config.icon" />{{
                   child.text
-                }}</span
-              >
+                }}
+              </span>
             </h4>
 
             <ul class="vp-navbar-dropdown-subitem-wrapper">
@@ -132,7 +135,7 @@ onContentUpdated(() => {
           </template>
         </li>
       </ul>
-    </VPDropdownTransition>
+    </FadeInExpandTransition>
   </div>
 </template>
 
