@@ -17,7 +17,7 @@ export interface RedirectPluginOptions extends RedirectBehaviorOptions {
    *
    * 是否启用重定向语言
    */
-  switchLocale?: 'direct' | 'modal'
+  switchLocale?: 'direct' | 'modal' | false
 
   /**
    * Locale language config
