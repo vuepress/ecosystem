@@ -17,6 +17,7 @@ import { useRedirectInfo } from '../composables/index.js'
 import type { RedirectPluginLocaleConfig } from '../types.js'
 import { statusLocalStorage, statusSessionStorage } from '../utils/index.js'
 
+import '@vuepress/helper/transition/fade-in-scale-up.css'
 import '../styles/redirect-modal.css'
 
 export default defineComponent({
@@ -95,7 +96,7 @@ export default defineComponent({
     })
 
     return (): VNode | null =>
-      h(TransitionGroup, { name: 'redirect-modal-fade' }, () =>
+      h(TransitionGroup, { name: 'fade-in-scale-up' }, () =>
         showModal.value
           ? h(
               'div',

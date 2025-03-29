@@ -12,19 +12,6 @@
   }
 }
 
-.popup-enter-active,
-.popup-leave-active {
-  transition:
-    opacity 0.3s,
-    transform 0.3s;
-}
-
-.popup-enter-from,
-.popup-leave-to {
-  opacity: 0;
-  transform: translate(0, 50%) scale(0.5);
-}
-
 .sw-hint-popup,
 .sw-update-popup {
   position: fixed;

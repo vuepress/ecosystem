@@ -63,13 +63,3 @@
     transform-origin: 50% 50%;
   }
 }
-
-.back-to-top-enter-active,
-.back-to-top-leave-active {
-  transition: opacity 0.3s;
-}
-
-.back-to-top-enter-from,
-.back-to-top-leave-to {
-  opacity: 0;
-}
