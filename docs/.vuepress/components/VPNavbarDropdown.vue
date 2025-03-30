@@ -91,11 +91,11 @@ onContentUpdated(() => {
                 "
               />
 
-              <span v-else>
-                <VPIcon v-if="config.icon" :icon="config.icon" />{{
+              <span v-else
+                ><VPIcon v-if="config.icon" :icon="config.icon" />{{
                   child.text
-                }}
-              </span>
+                }}</span
+              >
             </h4>
 
             <ul class="vp-navbar-dropdown-subitem-wrapper">
