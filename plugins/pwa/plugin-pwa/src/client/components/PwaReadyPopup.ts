@@ -13,6 +13,7 @@ import type { PwaPluginLocaleConfig } from '../types.js'
 import { skipWaiting } from '../utils/index.js'
 import { UpdateIcon } from './icons.js'
 
+import '@vuepress/helper/transition/fade-in-scale-up.css'
 import '../styles/popup.css'
 
 export const PwaReadyPopup = defineComponent({
@@ -57,7 +58,7 @@ export const PwaReadyPopup = defineComponent({
     return (): VNode =>
       h(
         Transition,
-        { name: 'popup' },
+        { name: 'fade-in-scale-up' },
         () =>
           slots.default?.({
             isReady: isReady.value,

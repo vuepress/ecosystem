@@ -1,13 +1,3 @@
-.notice-fade-enter-active,
-.notice-fade-leave-active {
-  transition: opacity 0.5s;
-}
-
-.notice-fade-enter,
-.notice-fade-leave-to {
-  opacity: 0;
-}
-
 .vp-notice-mask {
   position: fixed;
   inset: 0;

@@ -12,6 +12,7 @@ import { useRoutePath, useRouter } from 'vuepress/client'
 import { useNoticeOptions } from '../composables/index.js'
 import { CloseIcon } from './CloseIcon.js'
 
+import '@vuepress/helper/transition/fade-in-up.css'
 import '../styles/notice.css'
 
 export const Notice = defineComponent({
@@ -82,7 +83,7 @@ export const Notice = defineComponent({
     })
 
     return () =>
-      h(TransitionGroup, { name: 'notice-fade' }, () =>
+      h(TransitionGroup, { name: 'fade-in-up' }, () =>
         matchedConfig.value && isVisible.value
           ? [
               matchedConfig.value.fullscreen

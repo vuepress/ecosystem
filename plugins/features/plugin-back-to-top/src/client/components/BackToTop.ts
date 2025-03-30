@@ -12,6 +12,7 @@ import {
 import { usePageFrontmatter } from 'vuepress/client'
 import type { BackToTopPluginLocaleData } from '../../shared/index.js'
 
+import '@vuepress/helper/transition/fade-in.css'
 import '../styles/back-to-top.css'
 
 declare const __BACK_TO_TOP_LOCALES__: ExactLocaleConfig<BackToTopPluginLocaleData>
@@ -47,7 +48,7 @@ export const BackToTop = defineComponent({
     })
 
     return () =>
-      h(Transition, { name: 'back-to-top' }, () =>
+      h(Transition, { name: 'fade-in' }, () =>
         show.value
           ? h(
               'button',
