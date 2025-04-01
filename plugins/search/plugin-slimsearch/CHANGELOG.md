@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.91](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.90...v2.0.0-rc.91) (2025-04-01)
+
+### Bug Fixes
+
+- **plugin-slimsearch:** fix worker bundle ([83796f7](https://github.com/vuepress/ecosystem/commit/83796f7695575c9f908a45f5d021bf5b1fccf99c))
+
 # [2.0.0-rc.90](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.89...v2.0.0-rc.90) (2025-03-28)
 
 ### Features
