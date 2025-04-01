@@ -1,4 +1,3 @@
-import { docsearch } from 'meilisearch-docsearch'
 import type { PropType } from 'vue'
 import { defineComponent, h, onMounted } from 'vue'
 
@@ -16,7 +15,9 @@ export const MeiliSearch = defineComponent({
   },
 
   setup(props) {
-    onMounted(() => {
+    onMounted(async () => {
+      const { docsearch } = await import('meilisearch-docsearch')
+
       docsearch({
         container: '#docsearch',
         ...props.options,
