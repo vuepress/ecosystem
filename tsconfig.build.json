@@ -85,9 +85,9 @@
 
     // search
     { "path": "./plugins/search/plugin-docsearch/tsconfig.build.json" },
+    { "path": "./plugins/search/plugin-meilisearch/tsconfig.build.json" },
     { "path": "./plugins/search/plugin-search/tsconfig.build.json" },
     { "path": "./plugins/search/plugin-slimsearch/tsconfig.build.json" },
-    { "path": "./plugins/search/plugin-meilisearch/tsconfig.build.json" },
 
     // seo
     { "path": "./plugins/seo/plugin-seo/tsconfig.build.json" },
