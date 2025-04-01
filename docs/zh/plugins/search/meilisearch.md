@@ -1,5 +1,5 @@
 ---
-icon: https://docsearch.algolia.com/img/favicon.ico
+icon: https://www.meilisearch.com/favicon.ico
 ---
 
 # meilisearch

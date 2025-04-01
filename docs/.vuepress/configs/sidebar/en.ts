@@ -141,7 +141,13 @@ export const sidebarEn: SidebarOptions = {
     'register-components',
   ],
 
-  '/plugins/search/': ['guidelines', 'docsearch', 'search', 'slimsearch'],
+  '/plugins/search/': [
+    'guidelines',
+    'docsearch',
+    'meilisearch',
+    'search',
+    'slimsearch',
+  ],
 
   '/plugins/seo/': [
     {
