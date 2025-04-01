@@ -1,15 +1,9 @@
 {
   "extends": "../../../tsconfig.build.json",
   "compilerOptions": {
-    "lib": ["DOM", "ES2022"],
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "skipLibCheck": true,
-    "target": "ES2022",
-    "types": ["vuepress/client-types"],
-    "verbatimModuleSyntax": true,
-    "noEmit": true,
-    "allowImportingTsExtensions": true
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "types": ["vuepress/client-types", "vite/client", "webpack-env"]
   },
-  "include": ["./src/**/*"]
+  "include": ["./src"]
 }
