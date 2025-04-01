@@ -7,6 +7,7 @@ import 'meilisearch-docsearch/css'
 
 export const MeiliSearch = defineComponent({
   name: 'MeiliSearch',
+
   props: {
     options: {
       type: Object as PropType<MeiliSearchDocSearchOptions>,
