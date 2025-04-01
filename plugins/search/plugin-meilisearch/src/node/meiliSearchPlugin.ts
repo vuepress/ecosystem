@@ -1,12 +1,12 @@
 import type { Plugin } from 'vuepress'
 import { getDirname, path } from 'vuepress/utils'
 
-import type { MeiliSearchDocSearchOptions } from '../shared'
+import type { MeiliSearchPluginOptions } from './option.js'
 
 const __dirname = getDirname(import.meta.url)
 
 export const meiliSearchPlugin = (
-  options: MeiliSearchDocSearchOptions,
+  options: MeiliSearchPluginOptions,
 ): Plugin => ({
   name: '@vuepress/plugin-meilisearch',
 
