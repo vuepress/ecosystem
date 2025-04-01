@@ -19,7 +19,8 @@ export default [
     dts: false,
     external: [/^@internal\//],
     define: {
-      __VUEPRESS_SSR__: 'false',
+      '__VUEPRESS_SSR__': 'false',
+      'process.env.NODE_ENV': JSON.stringify('production'),
     },
   }),
 ]
