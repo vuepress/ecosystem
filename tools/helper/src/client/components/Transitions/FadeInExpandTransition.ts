@@ -76,12 +76,12 @@ export const FadeInExpandTransition = defineComponent({
         {
           name: props.width ? 'fade-in-width-expand' : 'fade-in-height-expand',
           appear: props.appear,
-          mode: props.mode,
           onEnter: handleEnter,
           onAfterEnter: handleAfterEnter,
           onBeforeLeave: handleBeforeLeave,
           onLeave: handleLeave,
           onAfterLeave: handleAfterLeave,
+          ...(props.group ? undefined : { mode: props.mode }),
         },
         slots,
       )
