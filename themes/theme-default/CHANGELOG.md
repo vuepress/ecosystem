@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.91](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.90...v2.0.0-rc.91) (2025-04-01)
+
+### Features
+
+- **theme-default:** improve theme transition animation ([#421](https://github.com/vuepress/ecosystem/issues/421)) ([e984480](https://github.com/vuepress/ecosystem/commit/e98448025e96581b2e2fda51e51dc413c8a0f9d4))
+
 # [2.0.0-rc.90](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.89...v2.0.0-rc.90) (2025-03-28)
 
 **Note:** Version bump only for package @vuepress/theme-default

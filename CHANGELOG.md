@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.91](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.90...v2.0.0-rc.91) (2025-04-01)
+
+### Bug Fixes
+
+- **helper:** conditionally apply `mode` prop in `FadeInExpandTransition` ([#423](https://github.com/vuepress/ecosystem/issues/423)) ([36a4d71](https://github.com/vuepress/ecosystem/commit/36a4d7113b2f40e0a20e4b7ce95d47366b15141b))
+- **plugin-redirect:** fix option types ([04d6bbb](https://github.com/vuepress/ecosystem/commit/04d6bbb6e5972dde16bc9d8606fda8c78e6a9f54))
+- **plugin-slimsearch:** fix worker bundle ([83796f7](https://github.com/vuepress/ecosystem/commit/83796f7695575c9f908a45f5d021bf5b1fccf99c))
+
+### Features
+
+- **helper:** add `!important` to transition ([#419](https://github.com/vuepress/ecosystem/issues/419)) ([212345d](https://github.com/vuepress/ecosystem/commit/212345de6281ee74f229bd4e95db0054c6d797ba))
+- **theme-default:** improve theme transition animation ([#421](https://github.com/vuepress/ecosystem/issues/421)) ([e984480](https://github.com/vuepress/ecosystem/commit/e98448025e96581b2e2fda51e51dc413c8a0f9d4))
+
 # [2.0.0-rc.90](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.89...v2.0.0-rc.90) (2025-03-28)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.91](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.90...v2.0.0-rc.91) (2025-04-01)
+
+### Bug Fixes
+
+- **plugin-redirect:** fix option types ([04d6bbb](https://github.com/vuepress/ecosystem/commit/04d6bbb6e5972dde16bc9d8606fda8c78e6a9f54))
+
 # [2.0.0-rc.90](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.89...v2.0.0-rc.90) (2025-03-28)
 
 **Note:** Version bump only for package @vuepress/plugin-redirect

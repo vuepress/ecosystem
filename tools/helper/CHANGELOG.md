@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.91](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.90...v2.0.0-rc.91) (2025-04-01)
+
+### Bug Fixes
+
+- **helper:** conditionally apply `mode` prop in `FadeInExpandTransition` ([#423](https://github.com/vuepress/ecosystem/issues/423)) ([36a4d71](https://github.com/vuepress/ecosystem/commit/36a4d7113b2f40e0a20e4b7ce95d47366b15141b))
+
+### Features
+
+- **helper:** add `!important` to transition ([#419](https://github.com/vuepress/ecosystem/issues/419)) ([212345d](https://github.com/vuepress/ecosystem/commit/212345de6281ee74f229bd4e95db0054c6d797ba))
+
 # [2.0.0-rc.90](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.89...v2.0.0-rc.90) (2025-03-28)
 
 ### Features

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-pwa",
-  "version": "2.0.0-rc.90",
+  "version": "2.0.0-rc.91",
   "description": "VuePress plugin - progressive web application",
   "keywords": [
     "vuepress-plugin",
@@ -56,6 +56,6 @@
     "access": "public"
   },
   "devDependencies": {
-    "rollup": "^4.37.0"
+    "rollup": "^4.38.0"
   }
 }

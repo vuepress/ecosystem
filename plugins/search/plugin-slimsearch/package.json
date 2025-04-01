@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-slimsearch",
-  "version": "2.0.0-rc.90",
+  "version": "2.0.0-rc.91",
   "description": "VuePress plugin - built-in slimsearch",
   "keywords": [
     "vuepress-plugin",
