@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import VPAutoLink from '@theme/VPAutoLink.vue'
-import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
+import { FadeInExpandTransition } from '@vuepress/helper/client'
 import { useToggle } from '@vueuse/core'
 import { computed, toRefs } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
 import type { AutoLinkOptions, NavGroup } from '../../shared/index.js'
+
+import '@vuepress/helper/transition/fade-in-height-expand.css'
 
 const props = defineProps<{
   /** dropdown config */
@@ -62,7 +64,7 @@ onContentUpdated(() => {
       <span class="arrow" :class="open ? 'down' : 'right'" />
     </button>
 
-    <VPDropdownTransition>
+    <FadeInExpandTransition>
       <ul v-show="open" class="vp-navbar-dropdown">
         <li
           v-for="child in config.children"
@@ -126,7 +128,7 @@ onContentUpdated(() => {
           </template>
         </li>
       </ul>
-    </VPDropdownTransition>
+    </FadeInExpandTransition>
   </div>
 </template>
 
