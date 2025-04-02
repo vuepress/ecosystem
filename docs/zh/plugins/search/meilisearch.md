@@ -31,7 +31,7 @@ export default {
 
 ## Self-hosting MeiliSearch
 
-MeiliSearch 提供了一个服务器程序，支持使用云服务器的用户的自部署选项。为了简化在服务器端运行 MeiliSearch 的过程，您可以使用 Docker 进行安装和管理。
+MeiliSearch 提供了一个服务器程序，支持使用云服务器的用户的自部署选项。为了简化在服务器端运行 MeiliSearch 的过程，你可以使用 Docker 进行安装和管理。
 
 ```sh
 docker pull getmeili/meilisearch:latest
@@ -77,7 +77,7 @@ curl \
 }
 ```
 
-该密钥可以根据需要在外部公开和使用，填入到你的插件选项中
+该密钥可以根据需要在外部公开和使用，填入到你的插件选项中：
 
 ```ts
 meilisearchPlugin({
@@ -97,7 +97,7 @@ meilisearchPlugin({
 
 - 详情：
 
-  提供 MeiliSearch API 的 HTTP 地址
+  提供 MeiliSearch API 的 HTTP 地址。
 
 ### apiKey
 
@@ -107,7 +107,7 @@ meilisearchPlugin({
 
 - 详情：
 
-  MeiliSearch 生成的 API 密钥
+  MeiliSearch 生成的 API 密钥。
 
 ### indexUid
 
@@ -117,7 +117,7 @@ meilisearchPlugin({
 
 - 详情：
 
-  指定用于搜索的索引名称
+  指定用于搜索的索引名称。
 
 ### translations
 
@@ -125,7 +125,7 @@ meilisearchPlugin({
 
 - 详情：
 
-  允许您替换 DocSearch 按钮和弹出框中的默认文本
+  允许你替换 DocSearch 按钮和弹出框中的默认文本。
 
 ### hotKeys
 
@@ -135,7 +135,7 @@ meilisearchPlugin({
 
 - 详情：
 
-  触发搜索框的热键数组, 当设置 `false` 时无法用任何快捷键触发搜索框
+  触发搜索框的热键数组, 当设置 `false` 时无法用任何快捷键触发搜索框。
 
 ### debounceDuration
 
@@ -145,7 +145,7 @@ meilisearchPlugin({
 
 - 详情：
 
-  在按键之间等待的毫秒数，以确定是否应该进行搜索。设置 `0` 或者 `false` 逻辑上是等效的
+  在按键之间等待的毫秒数，以确定是否应该进行搜索。设置 `0` 或者 `false` 逻辑上是等效的。
 
 ### searchParams
 
@@ -153,7 +153,7 @@ meilisearchPlugin({
 
 - 详情：
 
-  - [more](https://www.meilisearch.com/docs/reference/api/search#search-parameters)
+  - [更多](https://www.meilisearch.com/docs/reference/api/search#search-parameters)
 
 ## 组件
 
