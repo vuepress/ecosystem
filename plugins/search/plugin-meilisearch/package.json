@@ -37,6 +37,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
+    "@vuepress/helper": "workspace:*",
     "meilisearch": "0.49.0",
     "meilisearch-docsearch": "^0.7.1",
     "vue": "^3.5.13"

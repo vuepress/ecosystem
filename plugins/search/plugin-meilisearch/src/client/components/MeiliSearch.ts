@@ -1,29 +1,54 @@
+import { useLocaleConfig } from '@vuepress/helper/client'
 import type { PropType } from 'vue'
-import { defineComponent, h, onMounted, ref } from 'vue'
+import { computed, defineComponent, h, onMounted, ref } from 'vue'
+import { useRouteLocale } from 'vuepress/client'
+import type { LocaleConfig } from 'vuepress/shared'
 
-import type { MeiliSearchDocSearchOptions } from '../../shared/index.js'
+import type {
+  MeiliSearchLocaleData,
+  MeiliSearchOptions,
+} from '../../shared/index.js'
 
 import 'meilisearch-docsearch/css'
+import { getSearchButtonTemplate } from '../utils/getSearchButtonTemplate.js'
 
 export const MeiliSearch = defineComponent({
   name: 'MeiliSearch',
 
   props: {
     options: {
-      type: Object as PropType<MeiliSearchDocSearchOptions>,
+      type: Object as PropType<MeiliSearchOptions>,
       required: true,
+    },
+
+    locales: {
+      type: Object as PropType<LocaleConfig<MeiliSearchLocaleData>>,
+      default: () => ({}),
     },
   },
 
   setup(props) {
+    const locale = useLocaleConfig(props.locales)
+    const routeLocale = useRouteLocale()
+
+    const meiliSearchOptions = computed(() => {
+      const { locales = {}, ...rest } = props.options
+
+      return {
+        ...locale.value,
+        ...locales[routeLocale.value],
+        ...rest,
+      }
+    })
+
     const hasInitialized = ref(false)
 
     const initialize = async (): Promise<void> => {
       const { docsearch } = await import('meilisearch-docsearch')
 
       docsearch({
+        ...meiliSearchOptions.value,
         container: '#docsearch',
-        ...props.options,
       })
 
       hasInitialized.value = true
@@ -41,8 +66,7 @@ export const MeiliSearch = defineComponent({
       hasInitialized.value
         ? null
         : h('div', {
-            innerHTML:
-              '<button type="button" class="docsearch-btn" aria-label="Search"><span class="docsearch-btn-icon-container"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="docsearch-modal-btn-icon"><path fill="currentColor" d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z"></path></svg></span><span class="docsearch-btn-placeholder"> Search<!----> </span><span class="docsearch-btn-keys"><kbd class="docsearch-btn-key">Ctrl</kbd><kbd class="docsearch-btn-key">K</kbd></span></button>',
+            innerHTML: getSearchButtonTemplate(locale.value.button),
           }),
     ]
   },
