@@ -15,6 +15,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
         },
         modal: {
           searchBox: {
+            searchInputLabel: '搜索',
             resetButtonTitle: '清除查询条件',
             resetButtonAriaLabel: '清除查询条件',
             cancelButtonText: '取消',
@@ -34,8 +35,12 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           },
           footer: {
             selectText: '选择',
+            selectKeyAriaLabel: '选择一个结果',
             navigateText: '切换',
+            navigateUpKeyAriaLabel: '上箭头',
+            navigateDownKeyAriaLabel: '下箭头',
             closeText: '关闭',
+            closeKeyAriaLabel: 'ESC 键',
             searchByText: '搜索提供者',
           },
           noResultsScreen: {
@@ -59,6 +64,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
         },
         modal: {
           searchBox: {
+            searchInputLabel: '搜尋',
             resetButtonTitle: '清除查詢條件',
             resetButtonAriaLabel: '清除查詢條件',
             cancelButtonText: '取消',
@@ -78,8 +84,12 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           },
           footer: {
             selectText: '選擇',
+            selectKeyAriaLabel: '選擇一個結果',
             navigateText: '切換',
+            navigateUpKeyAriaLabel: '上箭頭',
+            navigateDownKeyAriaLabel: '下箭頭',
             closeText: '關閉',
+            closeKeyAriaLabel: 'ESC 鍵',
             searchByText: '搜尋提供者',
           },
           noResultsScreen: {
@@ -103,11 +113,11 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
         },
         modal: {
           searchBox: {
+            searchInputLabel: 'Suche',
             resetButtonTitle: 'Suchkriterien zurücksetzen',
             resetButtonAriaLabel: 'Suchkriterien zurücksetzen',
             cancelButtonText: 'Abbrechen',
             cancelButtonAriaLabel: 'Abbrechen',
-            searchInputLabel: 'Suche',
           },
           startScreen: {
             recentSearchesTitle: 'Letzte Suchen',
@@ -123,8 +133,12 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           },
           footer: {
             selectText: 'Auswählen',
+            selectKeyAriaLabel: 'Ein Ergebnis auswählen',
             navigateText: 'Navigieren',
+            navigateUpKeyAriaLabel: 'Nach oben Pfeil',
+            navigateDownKeyAriaLabel: 'Nach unten Pfeil',
             closeText: 'Schließen',
+            closeKeyAriaLabel: 'ESC-Taste',
             searchByText: 'Suchanbieter',
           },
           noResultsScreen: {
@@ -149,6 +163,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
         },
         modal: {
           searchBox: {
+            searchInputLabel: 'Tìm kiếm',
             resetButtonTitle: 'Xóa điều kiện tìm kiếm',
             resetButtonAriaLabel: 'Xóa điều kiện tìm kiếm',
             cancelButtonText: 'Hủy',
@@ -168,8 +183,12 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           },
           footer: {
             selectText: 'Chọn',
+            selectKeyAriaLabel: 'Chọn một kết quả',
             navigateText: 'Chuyển đến',
+            navigateUpKeyAriaLabel: 'Mũi tên lên',
+            navigateDownKeyAriaLabel: 'Mũi tên xuống',
             closeText: 'Đóng',
+            closeKeyAriaLabel: 'Phím ESC',
             searchByText: 'Nhà cung cấp tìm kiếm',
           },
           noResultsScreen: {
@@ -193,6 +212,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
         },
         modal: {
           searchBox: {
+            searchInputLabel: 'Пошук',
             resetButtonTitle: 'Скинути умови пошуку',
             resetButtonAriaLabel: 'Скинути умови пошуку',
             cancelButtonText: 'Скасувати',
@@ -212,8 +232,12 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           },
           footer: {
             selectText: 'Вибрати',
+            selectKeyAriaLabel: 'Вибрати результат',
             navigateText: 'Перейти',
+            navigateUpKeyAriaLabel: 'Стрілка вгору',
+            navigateDownKeyAriaLabel: 'Стрілка вниз',
             closeText: 'Закрити',
+            closeKeyAriaLabel: 'ESC',
             searchByText: 'Постачальник пошуку',
           },
           noResultsScreen: {
@@ -237,6 +261,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
         },
         modal: {
           searchBox: {
+            searchInputLabel: 'Поиск',
             resetButtonTitle: 'Сбросить условия поиска',
             resetButtonAriaLabel: 'Сбросить условия поиска',
             cancelButtonText: 'Отмена',
@@ -256,8 +281,12 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           },
           footer: {
             selectText: 'Выбрать',
+            selectKeyAriaLabel: 'Выбрать результат',
             navigateText: 'Перейти',
+            navigateUpKeyAriaLabel: 'Стрелка вверх',
+            navigateDownKeyAriaLabel: 'Стрелка вниз',
             closeText: 'Закрыть',
+            closeKeyAriaLabel: 'ESC',
             searchByText: 'Поставщик поиска',
           },
           noResultsScreen: {
@@ -281,6 +310,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
         },
         modal: {
           searchBox: {
+            searchInputLabel: 'Pesquisar',
             resetButtonTitle: 'Limpar critérios de pesquisa',
             resetButtonAriaLabel: 'Limpar critérios de pesquisa',
             cancelButtonText: 'Cancelar',
@@ -300,8 +330,12 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           },
           footer: {
             selectText: 'Selecionar',
+            selectKeyAriaLabel: 'Selecionar um resultado',
             navigateText: 'Navegar',
+            navigateUpKeyAriaLabel: 'Seta para cima',
+            navigateDownKeyAriaLabel: 'Seta para baixo',
             closeText: 'Fechar',
+            closeKeyAriaLabel: 'Tecla ESC',
             searchByText: 'Provedor de pesquisa',
           },
           noResultsScreen: {
@@ -325,6 +359,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
         },
         modal: {
           searchBox: {
+            searchInputLabel: 'Szukaj',
             resetButtonTitle: 'Wyczyść kryteria wyszukiwania',
             resetButtonAriaLabel: 'Wyczyść kryteria wyszukiwania',
             cancelButtonText: 'Anuluj',
@@ -344,8 +379,12 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           },
           footer: {
             selectText: 'Wybierz',
+            selectKeyAriaLabel: 'Wybierz wynik',
             navigateText: 'Przejdź',
+            navigateUpKeyAriaLabel: 'Strzałka w górę',
+            navigateDownKeyAriaLabel: 'Strzałka w dół',
             closeText: 'Zamknij',
+            closeKeyAriaLabel: 'Klucz ESC',
             searchByText: 'Dostawca wyszukiwania',
           },
           noResultsScreen: {
@@ -369,6 +408,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
         },
         modal: {
           searchBox: {
+            searchInputLabel: 'Hľadať',
             resetButtonTitle: 'Vymazať kritériá vyhľadávania',
             resetButtonAriaLabel: 'Vymazať kritériá vyhľadávania',
             cancelButtonText: 'Zrušiť',
@@ -388,8 +428,12 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           },
           footer: {
             selectText: 'Vybrať',
+            selectKeyAriaLabel: 'Vybrať výsledok',
             navigateText: 'Prejsť',
+            navigateUpKeyAriaLabel: 'Šípka nahor',
+            navigateDownKeyAriaLabel: 'Šípka nadol',
             closeText: 'Zavrieť',
+            closeKeyAriaLabel: 'Kláves ESC',
             searchByText: 'Poskytovateľ vyhľadávania',
           },
           noResultsScreen: {
@@ -413,6 +457,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
         },
         modal: {
           searchBox: {
+            searchInputLabel: 'Rechercher',
             resetButtonTitle: 'Réinitialiser les critères de recherche',
             resetButtonAriaLabel: 'Réinitialiser les critères de recherche',
             cancelButtonText: 'Annuler',
@@ -433,8 +478,12 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           },
           footer: {
             selectText: 'Sélectionner',
+            selectKeyAriaLabel: 'Sélectionner un résultat',
             navigateText: 'Naviguer',
+            navigateUpKeyAriaLabel: 'Flèche vers le haut',
+            navigateDownKeyAriaLabel: 'Flèche vers le bas',
             closeText: 'Fermer',
+            closeKeyAriaLabel: 'Touche ÉCHAP',
             searchByText: 'Fournisseur de recherche',
           },
           noResultsScreen: {
@@ -459,6 +508,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
         },
         modal: {
           searchBox: {
+            searchInputLabel: 'Buscar',
             resetButtonTitle: 'Restablecer criterios de búsqueda',
             resetButtonAriaLabel: 'Restablecer criterios de búsqueda',
             cancelButtonText: 'Cancelar',
@@ -478,8 +528,12 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           },
           footer: {
             selectText: 'Seleccionar',
+            selectKeyAriaLabel: 'Seleccionar un resultado',
             navigateText: 'Navegar',
+            navigateUpKeyAriaLabel: 'Flecha hacia arriba',
+            navigateDownKeyAriaLabel: 'Flecha hacia abajo',
             closeText: 'Cerrar',
+            closeKeyAriaLabel: 'Tecla ESC',
             searchByText: 'Proveedor de búsqueda',
           },
           noResultsScreen: {
@@ -503,6 +557,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
         },
         modal: {
           searchBox: {
+            searchInputLabel: '検索',
             resetButtonTitle: '検索条件をリセット',
             resetButtonAriaLabel: '検索条件をリセット',
             cancelButtonText: 'キャンセル',
@@ -522,8 +577,12 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           },
           footer: {
             selectText: '選択',
+            selectKeyAriaLabel: '結果を選択',
             navigateText: '移動',
+            navigateUpKeyAriaLabel: '上矢印',
+            navigateDownKeyAriaLabel: '下矢印',
             closeText: '閉じる',
+            closeKeyAriaLabel: 'ESCキー',
             searchByText: '検索プロバイダ',
           },
           noResultsScreen: {
@@ -547,6 +606,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
         },
         modal: {
           searchBox: {
+            searchInputLabel: 'Ara',
             resetButtonTitle: 'Arama kriterlerini sıfırla',
             resetButtonAriaLabel: 'Arama kriterlerini sıfırla',
             cancelButtonText: 'İptal',
@@ -566,8 +626,12 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           },
           footer: {
             selectText: 'Seç',
+            selectKeyAriaLabel: 'Bir sonucu seç',
             navigateText: 'Gezin',
+            navigateUpKeyAriaLabel: 'Yukarı ok',
+            navigateDownKeyAriaLabel: 'Aşağı ok',
             closeText: 'Kapat',
+            closeKeyAriaLabel: 'ESC tuşu',
             searchByText: 'Arama sağlayıcısı',
           },
           noResultsScreen: {
@@ -592,6 +656,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
         },
         modal: {
           searchBox: {
+            searchInputLabel: '검색',
             resetButtonTitle: '검색 조건 초기화',
             resetButtonAriaLabel: '검색 조건 초기화',
             cancelButtonText: '취소',
@@ -611,8 +676,12 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           },
           footer: {
             selectText: '선택',
+            selectKeyAriaLabel: '결과 선택',
             navigateText: '이동',
+            navigateUpKeyAriaLabel: '위쪽 화살표',
+            navigateDownKeyAriaLabel: '아래쪽 화살표',
             closeText: '닫기',
+            closeKeyAriaLabel: 'ESC 키',
             searchByText: '검색 제공업체',
           },
           noResultsScreen: {
@@ -636,6 +705,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
         },
         modal: {
           searchBox: {
+            searchInputLabel: 'Hae',
             resetButtonTitle: 'Nollaa hakuehdot',
             resetButtonAriaLabel: 'Nollaa hakuehdot',
             cancelButtonText: 'Peruuta',
@@ -655,8 +725,12 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           },
           footer: {
             selectText: 'Valitse',
+            selectKeyAriaLabel: 'Valitse tulos',
             navigateText: 'Siirry',
+            navigateUpKeyAriaLabel: 'Ylös nuoli',
+            navigateDownKeyAriaLabel: 'Alas nuoli',
             closeText: 'Sulje',
+            closeKeyAriaLabel: 'ESC-näppäin',
             searchByText: 'Hakupalveluntarjoaja',
           },
           noResultsScreen: {
@@ -680,6 +754,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
         },
         modal: {
           searchBox: {
+            searchInputLabel: 'Keresés',
             resetButtonTitle: 'Keresési feltételek visszaállítása',
             resetButtonAriaLabel: 'Keresési feltételek visszaállítása',
             cancelButtonText: 'Mégse',
@@ -700,8 +775,12 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           },
           footer: {
             selectText: 'Kiválasztás',
+            selectKeyAriaLabel: 'Találat kiválasztása',
             navigateText: 'Ugrás',
+            navigateUpKeyAriaLabel: 'Felfelé mutató nyíl',
+            navigateDownKeyAriaLabel: 'Lefelé mutató nyíl',
             closeText: 'Bezárás',
+            closeKeyAriaLabel: 'ESC gomb',
             searchByText: 'Keresési szolgáltató',
           },
           noResultsScreen: {
@@ -726,6 +805,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
         },
         modal: {
           searchBox: {
+            searchInputLabel: 'Cari',
             resetButtonTitle: 'Atur ulang kriteria pencarian',
             resetButtonAriaLabel: 'Atur ulang kriteria pencarian',
             cancelButtonText: 'Batal',
@@ -745,8 +825,12 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           },
           footer: {
             selectText: 'Pilih',
+            selectKeyAriaLabel: 'Pilih hasil',
             navigateText: 'Navigasi',
+            navigateUpKeyAriaLabel: 'Panah atas',
+            navigateDownKeyAriaLabel: 'Panah bawah',
             closeText: 'Tutup',
+            closeKeyAriaLabel: 'Tombol ESC',
             searchByText: 'Penyedia pencarian',
           },
           noResultsScreen: {
@@ -770,6 +854,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
         },
         modal: {
           searchBox: {
+            searchInputLabel: 'Zoeken',
             resetButtonTitle: 'Zoekcriteria resetten',
             resetButtonAriaLabel: 'Zoekcriteria resetten',
             cancelButtonText: 'Annuleren',
@@ -790,8 +875,12 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           },
           footer: {
             selectText: 'Selecteren',
+            selectKeyAriaLabel: 'Selecteer een resultaat',
             navigateText: 'Navigeren',
+            navigateUpKeyAriaLabel: 'Omhoog pijltje',
+            navigateDownKeyAriaLabel: 'Omlaag pijltje',
             closeText: 'Sluiten',
+            closeKeyAriaLabel: 'ESC-toets',
             searchByText: 'Zoekprovider',
           },
           noResultsScreen: {
