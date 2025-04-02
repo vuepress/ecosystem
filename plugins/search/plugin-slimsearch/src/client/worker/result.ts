@@ -1,4 +1,4 @@
-import { entries } from '@vuepress/helper/client'
+import { entries } from '@vuepress/helper/shared'
 import type { MatchInfo, SearchIndex } from 'slimsearch'
 import { getStoredFields, search } from 'slimsearch'
 
