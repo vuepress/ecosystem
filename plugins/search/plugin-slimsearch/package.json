@@ -18,7 +18,11 @@
     "directory": "plugins/search/plugin-slimsearch"
   },
   "license": "MIT",
-  "author": "Mr.Hope,JQiue",
+  "author": {
+    "name": "Mr.Hope",
+    "email": "mister-hope@outlook.com",
+    "url": "https://mister-hope.com"
+  },
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
