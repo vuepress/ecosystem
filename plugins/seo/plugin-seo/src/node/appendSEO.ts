@@ -32,8 +32,8 @@ export const appendSEO = (
     const canonicalLink = getCanonicalLink(page, canonical)
     const alternateLinks = getAlternateLinks(app, page, hostname)
 
-    appendCanonical(head, canonicalLink)
     appendAlternate(head, alternateLinks)
+    appendCanonical(head, canonicalLink)
 
     if (page.frontmatter.seo ?? true) {
       const defaultOGP = getOGPInfo(page, app, {
