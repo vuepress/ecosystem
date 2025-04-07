@@ -46,6 +46,8 @@ docker run -it --rm \
   getmeili/meilisearch:latest
 ```
 
+> 参考 <https://www.meilisearch.com/docs/guides/misc/docker>
+
 ## 抓取网站
 
 MeiliSearch 提供了一个 Docker 爬虫来抓取文档。在此之前，保证 MeiliSearch 已经运行。
@@ -74,18 +76,20 @@ MeiliSearch 提供了一个 Docker 爬虫来抓取文档。在此之前，保证
 }
 ```
 
-开始抓取文档，`<MASTER_KEY>`替换为你的主密钥,`<absolute-path-to-your-config-file>`是抓取配置文件的绝对路径：
+开始抓取文档，`MEILISEARCH_HOST_URL`是运行 MeiliSearch 的主机地址,`<MASTER_KEY>`是主密钥,`<absolute-path-to-your-config-file>`是抓取配置文件的绝对路径：
 
 ```sh
 docker run -t --rm \
   --network=host \
-  -e MEILISEARCH_HOST_URL='http://localhost:7700' \
+  -e MEILISEARCH_HOST_URL='<MEILISEARCH_HOST_URL>' \
   -e MEILISEARCH_API_KEY='<MASTER_KEY>' \
   -v <absolute-path-to-your-config-file>:/docs-scraper/config.json \
   getmeili/docs-scraper:latest pipenv run ./docs_scraper config.json
 ```
 
 抓取完成后，MeiliSearch 将在指定的索引中存储抓取到的文档。
+
+> 看 <https://www.meilisearch.com/docs/guides/front_end/search_bar_for_docs#scrape-your-content>
 
 ## 获取搜索索引和 apikey
 

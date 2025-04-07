@@ -46,6 +46,8 @@ docker run -it --rm \
   getmeili/meilisearch:latest
 ```
 
+> See <https://www.meilisearch.com/docs/guides/misc/docker>
+
 ## Crawling the website
 
 MeiliSearch provides a Docker crawler to crawl documents. Until then, make sure MeiliSearch is running.
@@ -74,18 +76,20 @@ Here is a sample configuration for grabbing the official VuePress documentation,
 }
 ```
 
-to start grabbing the document, `<MASTER_KEY>` is replaced with your master key, and `<absolute-path-to-your-config-file>` is the absolute path to grab the configuration file:
+Start scraping the document, `MEILISEARCH_HOST_URL` is the address of the host running MeiliSearch, `<MASTER_KEY>` is the master key, `<absolute-path-to-your-config-file>` is the absolute path to fetch the configuration file:
 
 ```sh
 docker run -t --rm \
   --network=host \
-  -e MEILISEARCH_HOST_URL='http://localhost:7700' \
+  -e MEILISEARCH_HOST_URL='<MEILISEARCH_HOST_URL>' \
   -e MEILISEARCH_API_KEY='<MASTER_KEY>' \
   -v <absolute-path-to-your-config-file>:/docs-scraper/config.json \
   getmeili/docs-scraper:latest pipenv run ./docs_scraper config.json
 ```
 
 When the crawl is complete, MeiliSearch stores the crawled document in the specified index.
+
+> See <https://www.meilisearch.com/docs/guides/front_end/search_bar_for_docs#scrape-your-content>
 
 ## Get search index and api key
 
