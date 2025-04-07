@@ -1,14 +1,15 @@
+import type { ExactLocaleConfig } from '@vuepress/helper/client'
 import { h } from 'vue'
 import { defineClientConfig } from 'vuepress/client'
 
 import type {
-  MeiliSearchDocSearchLocaleOptions,
+  MeiliSearchLocaleData,
   MeiliSearchOptions,
 } from '../shared/index.js'
 import { MeiliSearch } from './components/index.js'
 
 declare const __ML_SEARCH_OPTIONS__: MeiliSearchOptions
-declare const __ML_SEARCH_LOCALES__: MeiliSearchDocSearchLocaleOptions
+declare const __ML_SEARCH_LOCALES__: ExactLocaleConfig<MeiliSearchLocaleData>
 
 export default defineClientConfig({
   enhance({ app }) {
