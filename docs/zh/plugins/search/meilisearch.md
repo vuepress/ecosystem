@@ -29,7 +29,7 @@ export default {
 }
 ```
 
-## Self-hosting MeiliSearch
+## 在服务器上运行 MeiliSearch
 
 MeiliSearch 提供了一个服务器程序，支持使用云服务器的用户的自部署选项。为了简化在服务器端运行 MeiliSearch 的过程，你可以使用 Docker 进行安装和管理。
 
@@ -37,14 +37,57 @@ MeiliSearch 提供了一个服务器程序，支持使用云服务器的用户�
 docker pull getmeili/meilisearch:latest
 ```
 
-在第一次启动时，默认情况下将生成一个主密钥。**不要暴露此密钥**；它应该只用于内部服务器访问，因为它拥有完全的操作权限。
+在第一次启动时，默认情况下将生成一个主密钥（MASTER_KEY）。**不要暴露此密钥**；它应该只用于内部服务器访问，因为它拥有完全的操作权限。
 
 ```sh
 docker run -it --rm \
   -p 7700:7700 \
   -v $(pwd)/meili_data:/meili_data \
-  getmeili/meilisearch:v1.11
+  getmeili/meilisearch:latest
 ```
+
+## 抓取网站
+
+MeiliSearch 提供了一个 Docker 爬虫来抓取文档。在此之前，保证 MeiliSearch 已经运行。
+
+这是抓取 VuePress 官方文档的示例配置，保存在本地：
+
+```json
+{
+  "index_uid": "YOUR_INDEX_NAME",
+  "start_urls": ["https://YOUR_WEBSITE_URL/"],
+  "sitemap_urls": ["https://YOUR_WEBSITE_URL/sitemap.xml"],
+  "selectors": {
+    "lvl0": {
+      "selector": ".vp-sidebar-heading.active",
+      "global": true,
+      "default_value": "Documentation"
+    },
+    "lvl1": "[vp-content] h1",
+    "lvl2": "[vp-content] h2",
+    "lvl3": "[vp-content] h3",
+    "lvl4": "[vp-content] h4",
+    "lvl5": "[vp-content] h5",
+    "lvl6": "[vp-content] h6",
+    "content": "[vp-content] p, [vp-content] li"
+  }
+}
+```
+
+开始抓取文档，`<MASTER_KEY>`替换为你的主密钥,`<absolute-path-to-your-config-file>`是抓取配置文件的绝对路径：
+
+```sh
+docker run -t --rm \
+  --network=host \
+  -e MEILISEARCH_HOST_URL='http://localhost:7700' \
+  -e MEILISEARCH_API_KEY='<MASTER_KEY>' \
+  -v <absolute-path-to-your-config-file>:/docs-scraper/config.json \
+  getmeili/docs-scraper:latest pipenv run ./docs_scraper config.json
+```
+
+抓取完成后，MeiliSearch 将在指定的索引中存储抓取到的文档。
+
+## 获取搜索索引和 apikey
 
 要创建只允许搜索操作的访问密钥，请使用以下请求。`indexes`数组指定该密钥可以访问哪些索引，`expiresAt`设置密钥的过期时间。
 
@@ -52,7 +95,7 @@ docker run -it --rm \
 curl \
   -X POST 'http://localhost:7700/keys' \
   -H 'Content-Type: application/json' \
-  -H 'Authorization: Bearer MASTER_KEY' \
+  -H 'Authorization: Bearer <MASTER_KEY>' \
   --data-binary '{
     "description": "Search records key",
     "actions": ["search"],
