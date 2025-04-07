@@ -1,4 +1,4 @@
-import { startsWith } from '@vuepress/helper'
+import { keys, startsWith } from '@vuepress/helper'
 import type { HeadConfig } from 'vuepress/core'
 import type {
   ArticleSchema,
@@ -28,31 +28,34 @@ const appendMetaToHead = (
 }
 
 export const addOGP = (head: HeadConfig[], content: SeoContent): void => {
-  for (const property in content)
-    switch (property) {
-      case 'article:tag':
-        ;(content as ArticleSeoContent)['article:tag']!.forEach(
-          (tag: string) => {
-            appendMetaToHead(head, { name: 'article:tag', content: tag })
-          },
-        )
-        break
-      case 'og:locale:alternate':
-        content['og:locale:alternate'].forEach((locale: string) => {
-          if (locale !== content['og:locale'])
-            appendMetaToHead(head, {
-              name: 'og:locale:alternate',
-              content: locale,
-            })
-        })
-        break
-      default:
-        if (content[property as keyof SeoContent] as string)
-          appendMetaToHead(head, {
-            name: property,
-            content: content[property as keyof SeoContent] as string,
+  keys(content)
+    .reverse()
+    .forEach((property) => {
+      switch (property) {
+        case 'article:tag':
+          ;(content as ArticleSeoContent)['article:tag']!.forEach(
+            (tag: string) => {
+              appendMetaToHead(head, { name: 'article:tag', content: tag })
+            },
+          )
+          break
+        case 'og:locale:alternate':
+          content['og:locale:alternate'].forEach((locale: string) => {
+            if (locale !== content['og:locale'])
+              appendMetaToHead(head, {
+                name: 'og:locale:alternate',
+                content: locale,
+              })
           })
-    }
+          break
+        default:
+          if (content[property as keyof SeoContent] as string)
+            appendMetaToHead(head, {
+              name: property,
+              content: content[property as keyof SeoContent] as string,
+            })
+      }
+    })
 }
 
 export const appendJSONLD = (
