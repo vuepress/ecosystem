@@ -15,11 +15,11 @@ npm i -D @vuepress/plugin-meilisearch@next
 ```
 
 ```ts
-import { meilisearchPlugin } from '@vuepress/plugin-meilisearch'
+import { meiliSearchPlugin } from '@vuepress/plugin-meilisearch'
 
 export default {
   plugins: [
-    meilisearchPlugin({
+    meiliSearchPlugin({
       // 配置项
       host: '',
       apiKey: '',
@@ -80,7 +80,7 @@ curl \
 该密钥可以根据需要在外部公开和使用，填入到你的插件选项中：
 
 ```ts
-meilisearchPlugin({
+meiliSearchPlugin({
   host: 'YOUR_HOST',
   apiKey: 'adaf72e2a6d6f428ec465bc786ec41de868bbd53121997e89ba2299e9566c88213',
   indexUid: 'YOUR_INDEX_NAME',
