@@ -24,7 +24,7 @@ const appendMetaToHead = (
       : 'name',
   }: MetaOptions,
 ): void => {
-  if (content) head.push(['meta', { [attribute]: name, content }])
+  if (content) head.unshift(['meta', { [attribute]: name, content }])
 }
 
 export const addOGP = (head: HeadConfig[], content: SeoContent): void => {
@@ -59,7 +59,7 @@ export const appendJSONLD = (
   head: HeadConfig[],
   content: ArticleSchema | BlogPostingSchema | WebPageSchema,
 ): void => {
-  head.push([
+  head.unshift([
     'script',
     { type: 'application/ld+json' },
     JSON.stringify(content),
@@ -70,7 +70,7 @@ export const appendCanonical = (
   head: HeadConfig[],
   url?: string | null,
 ): void => {
-  if (url) head.push(['link', { rel: 'canonical', href: url }])
+  if (url) head.unshift(['link', { rel: 'canonical', href: url }])
 }
 
 export const appendAlternate = (
@@ -78,7 +78,7 @@ export const appendAlternate = (
   urls: { lang: string; path: string }[],
 ): void => {
   urls.forEach(({ lang, path }) => {
-    head.push([
+    head.unshift([
       'link',
       { rel: 'alternate', hreflang: lang.toLowerCase(), href: path },
     ])
