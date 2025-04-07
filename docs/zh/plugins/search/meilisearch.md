@@ -76,7 +76,7 @@ MeiliSearch 提供了一个 Docker 爬虫来抓取文档。在此之前，保证
 }
 ```
 
-开始抓取文档，`MEILISEARCH_HOST_URL`是运行 MeiliSearch 的主机地址,`<MASTER_KEY>`是主密钥,`<absolute-path-to-your-config-file>`是抓取配置文件的绝对路径：
+开始抓取文档，`MEILISEARCH_HOST_URL`是运行 MeiliSearch 的主机地址，`<MASTER_KEY>`是主密钥，`<absolute-path-to-your-config-file>`是抓取配置文件的绝对路径：
 
 ```sh
 docker run -t --rm \
@@ -89,7 +89,7 @@ docker run -t --rm \
 
 抓取完成后，MeiliSearch 将在指定的索引中存储抓取到的文档。
 
-> 看 <https://www.meilisearch.com/docs/guides/front_end/search_bar_for_docs#scrape-your-content>
+> 参考 <https://www.meilisearch.com/docs/guides/front_end/search_bar_for_docs#scrape-your-content>
 
 ## 获取搜索索引和 apikey
 
