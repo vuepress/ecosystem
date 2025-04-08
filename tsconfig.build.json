@@ -71,6 +71,7 @@
     { "path": "./plugins/features/plugin-copy-code/tsconfig.build.json" },
     { "path": "./plugins/features/plugin-copyright/tsconfig.build.json" },
     { "path": "./plugins/features/plugin-icon/tsconfig.build.json" },
+    { "path": "./plugins/features/plugin-media/tsconfig.build.json" },
     { "path": "./plugins/features/plugin-medium-zoom/tsconfig.build.json" },
     { "path": "./plugins/features/plugin-notice/tsconfig.build.json" },
     { "path": "./plugins/features/plugin-nprogress/tsconfig.build.json" },
