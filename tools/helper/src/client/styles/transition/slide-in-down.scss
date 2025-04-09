@@ -17,11 +17,11 @@
 
   &-enter-to,
   &-leave-from {
-    transform: translateY(0);
+    transform: translateY(0) !important;
   }
 
   &-enter-from,
   &-leave-to {
-    transform: translateY(var(--transition-slide-in-down-offset));
+    transform: translateY(var(--transition-slide-in-down-offset)) !important;
   }
 }
