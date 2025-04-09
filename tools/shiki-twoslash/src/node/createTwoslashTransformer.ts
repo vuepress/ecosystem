@@ -25,13 +25,13 @@ export const createTwoslashTransformer = async (
 
   const { compilerOptions = {} } = _twoslashOptions
 
-  const twoslashOptions = {
+  const twoslashOptions: ShikiTwoslashOptions['twoslashOptions'] = {
     ...defaultTwoslashOptions(),
     ..._twoslashOptions,
     compilerOptions: {
       baseUrl: process.cwd(),
       ...compilerOptions,
-      path: {
+      paths: {
         ...compilerOptions.paths,
         ...(await resolveTypeScriptPaths()),
       },
