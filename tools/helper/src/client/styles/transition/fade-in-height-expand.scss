@@ -17,7 +17,7 @@
   }
 
   &-leave-active {
-    overflow: hidden;
+    overflow: hidden !important;
     transition:
       max-height var(--transition-slow-duration) var(--transition-ease-in-out),
       opacity var(--transition-leave-duration) var(--transition-ease-out),
@@ -30,7 +30,7 @@
   }
 
   &-enter-active {
-    overflow: hidden;
+    overflow: hidden !important;
     transition:
       max-height var(--transition-slow-duration) var(--transition-ease-in-out),
       opacity var(--transition-enter-duration) var(--transition-ease-in),

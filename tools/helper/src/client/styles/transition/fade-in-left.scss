@@ -7,14 +7,14 @@
 .fade-in-left {
   &-enter-from,
   &-leave-to {
-    opacity: 0;
-    transform: translateX(var(--transition-fade-in-left-offset));
+    opacity: 0 !important;
+    transform: translateX(var(--transition-fade-in-left-offset)) !important;
   }
 
   &-enter-to,
   &-leave-from {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) !important;
   }
 
   &-leave-active {

@@ -13,7 +13,7 @@
         var(--transition-ease-in),
       transform var(--transition-fade-in-scale-up-duration)
         var(--transition-ease-in) !important;
-    transform-origin: var(--transition-fade-in-scale-up-origin);
+    transform-origin: var(--transition-fade-in-scale-up-origin) !important;
   }
 
   &-enter-active {
@@ -22,18 +22,18 @@
         var(--transition-ease-out),
       transform var(--transition-fade-in-scale-up-duration)
         var(--transition-ease-out) !important;
-    transform-origin: var(--transition-fade-in-scale-up-origin);
+    transform-origin: var(--transition-fade-in-scale-up-origin) !important;
   }
 
   &-enter-from,
   &-leave-to {
-    opacity: 0;
-    transform: scale(var(--transition-fade-in-scale-up-scale));
+    opacity: 0 !important;
+    transform: scale(var(--transition-fade-in-scale-up-scale)) !important;
   }
 
   &-leave-from,
   &-enter-to {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) !important;
   }
 }

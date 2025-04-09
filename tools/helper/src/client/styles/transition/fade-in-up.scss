@@ -7,14 +7,14 @@
 .fade-in-up {
   &-enter-from,
   &-leave-to {
-    opacity: 0;
-    transform: translateY(var(--transition-fade-in-up-offset));
+    opacity: 0 !important;
+    transform: translateY(var(--transition-fade-in-up-offset)) !important;
   }
 
   &-enter-to,
   &-leave-from {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) !important;
   }
 
   &-leave-active {
