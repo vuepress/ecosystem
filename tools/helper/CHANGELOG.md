@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.92](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.91...v2.0.0-rc.92) (2025-04-09)
+
+### Features
+
+- **helper:** add `!important` into transition properties ([#427](https://github.com/vuepress/ecosystem/issues/427)) ([8cfb4ac](https://github.com/vuepress/ecosystem/commit/8cfb4ac7054abce3e79d1230c36d71c730764264))
+- **helper:** add DeepRequired type helper ([3e78f08](https://github.com/vuepress/ecosystem/commit/3e78f081f4e236370db506f4200f5041e0b7e3d9))
+
 # [2.0.0-rc.91](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.90...v2.0.0-rc.91) (2025-04-01)
 
 ### Bug Fixes

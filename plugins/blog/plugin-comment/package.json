@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-comment",
-  "version": "2.0.0-rc.91",
+  "version": "2.0.0-rc.92",
   "description": "VuePress plugin - comment",
   "keywords": [
     "vuepress-plugin",
