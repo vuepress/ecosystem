@@ -3,6 +3,7 @@ import { Transition, TransitionGroup, defineComponent, h } from 'vue'
 
 export const FadeInExpandTransition = defineComponent({
   name: 'FadeInExpandTransition',
+
   props: {
     /* Whether to group transitions */
     group: Boolean,
@@ -14,32 +15,21 @@ export const FadeInExpandTransition = defineComponent({
     onAfterLeave: Function,
     onAfterEnter: Function,
   },
+
   setup(props, { slots }) {
     const handleBeforeLeave = (el: HTMLElement): void => {
-      if (props.width) {
-        el.style.maxWidth = `${el.offsetWidth}px`
-      } else {
-        el.style.maxHeight = `${el.offsetHeight}px`
-      }
+      el.style[props.width ? 'maxWidth' : 'maxHeight'] = `${el.offsetHeight}px`
       void el.offsetWidth
     }
 
     const handleLeave = (el: HTMLElement): void => {
-      if (props.width) {
-        el.style.maxWidth = '0'
-      } else {
-        el.style.maxHeight = '0'
-      }
+      el.style[props.width ? 'maxWidth' : 'maxHeight'] = '0'
       void el.offsetWidth
       props.onLeave?.()
     }
 
     const handleAfterLeave = (el: HTMLElement): void => {
-      if (props.width) {
-        el.style.maxWidth = ''
-      } else {
-        el.style.maxHeight = ''
-      }
+      el.style[props.width ? 'maxWidth' : 'maxHeight'] = ''
       props.onAfterLeave?.()
     }
 
@@ -62,11 +52,7 @@ export const FadeInExpandTransition = defineComponent({
     }
 
     const handleAfterEnter = (el: HTMLElement): void => {
-      if (props.width) {
-        el.style.maxWidth = ''
-      } else {
-        el.style.maxHeight = ''
-      }
+      el.style[props.width ? 'maxWidth' : 'maxHeight'] = ''
       props.onAfterEnter?.()
     }
 
