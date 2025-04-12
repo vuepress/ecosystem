@@ -53,6 +53,8 @@ export const MeiliSearch = defineComponent({
     let destroy: () => void
 
     const initialize = async (): Promise<void> => {
+      if (__VUEPRESS_SSR__) return
+
       const { docsearch } = await import('meilisearch-docsearch')
 
       destroy = docsearch({
