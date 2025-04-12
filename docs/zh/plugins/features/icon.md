@@ -14,7 +14,7 @@ icon: fa6-solid:icons
 npm i -D @vuepress/plugin-icon@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { iconPlugin } from '@vuepress/plugin-icon'
 
 export default {

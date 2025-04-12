@@ -14,7 +14,7 @@ Register Vue components from component files or directory automatically.
 npm i -D @vuepress/plugin-register-components@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 
 export default {
@@ -44,7 +44,7 @@ export default {
 
 - Example:
 
-```ts
+```ts title=".vuepress/config.ts"
 import { getDirname, path } from 'vuepress/utils'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
@@ -74,7 +74,7 @@ export default {
 
 - Example:
 
-```ts
+```ts title=".vuepress/config.ts"
 import { getDirname, path } from 'vuepress/utils'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)

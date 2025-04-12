@@ -18,7 +18,7 @@ Notice that this plugin would only tokenize the code fence without adding styles
 npm i -D @vuepress/plugin-prismjs@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 
 export default {

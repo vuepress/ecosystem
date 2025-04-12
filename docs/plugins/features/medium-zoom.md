@@ -16,7 +16,7 @@ This plugin has been integrated into the default theme.
 npm i -D @vuepress/plugin-medium-zoom@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 
 export default {

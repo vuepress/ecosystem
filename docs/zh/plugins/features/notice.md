@@ -14,7 +14,7 @@ icon: bell
 npm i -D @vuepress/plugin-notice@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { noticePlugin } from '@vuepress/plugin-notice'
 
 export default {
@@ -53,7 +53,7 @@ export default {
 
 这是一个例子:
 
-```ts
+```ts title=".vuepress/config.ts"
 import { noticePlugin } from '@vuepress/plugin-notice'
 import { path } from 'vuepress/utils'
 

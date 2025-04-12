@@ -14,7 +14,7 @@ icon: paint-bucket
 npm i -D @vuepress/plugin-markdown-stylize@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { markdownStylizePlugin } from '@vuepress/plugin-markdown-stylize'
 
 export default {

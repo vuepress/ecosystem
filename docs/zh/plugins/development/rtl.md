@@ -14,7 +14,7 @@ icon: pilcrow-left
 npm i -D @vuepress/plugin-rtl@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { rtlPlugin } from '@vuepress/plugin-rtl'
 
 export default {

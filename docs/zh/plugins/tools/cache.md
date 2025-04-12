@@ -23,7 +23,7 @@ npm i -D @vuepress/plugin-cache@next
 
 :::
 
-```ts
+```ts title=".vuepress/config.ts"
 import { cachePlugin } from '@vuepress/plugin-cache'
 
 export default {

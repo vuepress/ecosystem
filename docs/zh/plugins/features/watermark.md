@@ -16,7 +16,7 @@ icon: droplet
 npm i -D @vuepress/plugin-watermark@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { watermarkPlugin } from '@vuepress/plugin-watermark'
 
 export default {
@@ -92,7 +92,7 @@ watermark:
 
 传递给 [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/zh/config/) 的额外配置。
 
-```ts
+```ts title=".vuepress/client.ts"
 import { defineWatermarkConfig } from '@vuepress/plugin-watermark/client'
 
 defineWatermarkConfig({
@@ -104,7 +104,7 @@ defineWatermarkConfig({
 比如需要在 **深色/浅色 模式** 下控制不同的 水印 透明度、字体颜色等，
 或者需要传入如 `onSuccess`、`extraDrawFunc` 等回调函数。
 
-```ts
+```ts title=".vuepress/client.ts"
 import { useDarkMode } from '@vuepress/helper/client'
 import { computed } from 'vue'
 

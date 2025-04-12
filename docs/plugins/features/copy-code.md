@@ -16,7 +16,7 @@ This plugin has been integrated into the default theme.
 npm i -D @vuepress/plugin-copy-code@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 
 export default {
@@ -83,7 +83,7 @@ export default {
 
 - Example:
 
-  ```ts
+  ```ts title=".vuepress/client.ts"
   import { useCopyCode } from '@vuepress/plugin-copy-code/client'
 
   export default {
@@ -131,7 +131,7 @@ export default {
 
 - Example:
 
-  ```ts
+  ```ts title=".vuepress/config.ts"
   import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 
   export default {

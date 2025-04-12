@@ -20,7 +20,7 @@ icon: highlighter
 npm i -D @vuepress/plugin-shiki@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 
 export default {

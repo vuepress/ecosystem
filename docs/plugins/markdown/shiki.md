@@ -20,7 +20,7 @@ This plugin will enable syntax highlighting for markdown code fence with [Shiki]
 npm i -D @vuepress/plugin-shiki@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 
 export default {

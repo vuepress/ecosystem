@@ -14,7 +14,7 @@ icon: heading
 npm i -D @vuepress/plugin-toc@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { tocPlugin } from '@vuepress/plugin-toc'
 
 export default {
