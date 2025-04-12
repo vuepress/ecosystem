@@ -66,7 +66,7 @@ useUpdateDeviceStatus(
     line-height: 1.4rem;
 
     &:hover,
-    &.auto-link-active {
+    &.route-link-active {
       color: var(--vp-c-text);
     }
   }
@@ -88,7 +88,7 @@ useUpdateDeviceStatus(
 
   .auto-link {
     &:hover,
-    &.auto-link-active {
+    &.route-link-active {
       color: var(--vp-c-accent);
     }
   }
@@ -97,7 +97,7 @@ useUpdateDeviceStatus(
     display: inline-block;
 
     &:hover,
-    &.auto-link-active {
+    &.route-link-active {
       margin-bottom: -2px;
       border-bottom: 2px solid var(--vp-c-accent);
 

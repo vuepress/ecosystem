@@ -255,7 +255,7 @@ onContentUpdated(() => {
       color: var(--vp-c-accent);
     }
 
-    &.auto-link-active {
+    &.route-link-active {
       color: var(--vp-c-accent);
 
       &::after {
@@ -307,7 +307,7 @@ onContentUpdated(() => {
   > .auto-link {
     font-weight: inherit;
 
-    &.auto-link-active {
+    &.route-link-active {
       &::after {
         display: none;
       }
