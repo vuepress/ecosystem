@@ -9,8 +9,9 @@ import type {
   MeiliSearchOptions,
 } from '../../shared/index.js'
 
-import 'meilisearch-docsearch/css'
 import { getSearchButtonTemplate } from '../utils/getSearchButtonTemplate.js'
+
+import 'meilisearch-docsearch/css'
 
 export const MeiliSearch = defineComponent({
   name: 'MeiliSearch',
