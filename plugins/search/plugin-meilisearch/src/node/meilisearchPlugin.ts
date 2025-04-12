@@ -1,6 +1,5 @@
 import {
   addViteSsrExternal,
-  addViteSsrNoExternal,
   entries,
   fromEntries,
   getFullLocaleConfig,
