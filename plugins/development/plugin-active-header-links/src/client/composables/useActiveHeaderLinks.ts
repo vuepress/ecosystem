@@ -41,7 +41,7 @@ export const useActiveHeaderLinks = ({
       document.body.scrollTop,
     )
     // check if we are at page top
-    const isAtPageTop = Math.abs(scrollTop - 0) < offset
+    const isAtPageTop = Math.abs(scrollTop) < offset
 
     // replace current route hash with empty string when scrolling back to the top
     if (isAtPageTop) {
