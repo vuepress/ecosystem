@@ -40,7 +40,7 @@
     "@vuepress/plugin-shiki": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
     "@vueuse/core": "catalog:",
-    "katex": "0.16.21",
+    "katex": "0.16.22",
     "mathjax-full": "3.2.2",
     "sass-embedded": "catalog:",
     "sass-loader": "catalog:",

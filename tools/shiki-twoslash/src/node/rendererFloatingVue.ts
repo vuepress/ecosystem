@@ -1,5 +1,5 @@
-import type { TwoslashRenderer } from '@shikijs/twoslash'
-import { rendererRich } from '@shikijs/twoslash'
+import type { TwoslashRenderer } from '@shikijs/twoslash/core'
+import { rendererRich } from '@shikijs/twoslash/core'
 import type { Element, ElementContent, Text } from 'hast'
 import { fromMarkdown } from 'mdast-util-from-markdown'
 import { gfmFromMarkdown } from 'mdast-util-gfm'
