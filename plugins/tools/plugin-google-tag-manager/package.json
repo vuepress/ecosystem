@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-google-tag-manager",
-  "version": "2.0.0-rc.79",
+  "version": "2.0.0-rc.94",
   "description": "VuePress plugin - google-tag-manager",
   "keywords": [
     "vuepress-plugin",
