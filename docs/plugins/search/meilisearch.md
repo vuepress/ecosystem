@@ -205,7 +205,7 @@ meilisearchPlugin({
   Parameters of MeiliSearch API.
 
 - Also see:
-  - [more](https://www.meilisearch.com/docs/reference/api/search#search-parameters)
+  - [Meilisearch API docs](https://www.meilisearch.com/docs/reference/api/search#search-parameters)
 
 ## Components
 

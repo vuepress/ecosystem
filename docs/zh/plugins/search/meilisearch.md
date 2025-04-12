@@ -200,7 +200,7 @@ meilisearchPlugin({
 
 - 详情：
 
-  - [更多](https://www.meilisearch.com/docs/reference/api/search#search-parameters)
+  - [Meilisearch API 文档](https://www.meilisearch.com/docs/reference/api/search#search-parameters)
 
 ## 组件
 
