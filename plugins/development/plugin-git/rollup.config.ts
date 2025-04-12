@@ -9,8 +9,6 @@ export default [
       base: 'client',
       files: ['components/GitChangelog', 'components/GitContributors', 'index'],
     },
-    {
-      dtsExternal: ['@vuepress/helper/client'],
-    },
+    {},
   ),
 ]
