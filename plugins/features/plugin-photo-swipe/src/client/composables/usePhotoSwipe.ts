@@ -92,7 +92,7 @@ export const usePhotoSwipe = ({
     photoSwipe = new PhotoSwipeConstructor({
       preloaderDelay: 0,
       showHideAnimationType: 'zoom',
-      ...options,
+      ...options.value,
       dataSource,
       index,
       ...(scrollToClose
