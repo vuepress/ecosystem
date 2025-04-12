@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.93](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.92...v2.0.0-rc.93) (2025-04-12)
+
+### Features
+
+- **helper:** add RenderDefault component ([ad9d080](https://github.com/vuepress/ecosystem/commit/ad9d080c198c7080a3e5ec9ff2289b996b63f692))
+
 # [2.0.0-rc.92](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.91...v2.0.0-rc.92) (2025-04-09)
 
 ### Features
