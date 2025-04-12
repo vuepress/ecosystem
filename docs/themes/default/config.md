@@ -215,7 +215,7 @@ export default {
     // public file path
     logo: '/hero.png',
     // url
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 }
 ```

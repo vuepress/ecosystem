@@ -216,7 +216,7 @@ export default {
     // Public 文件路径
     logo: '/images/hero.png',
     // URL
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 }
 ```
