@@ -7,6 +7,8 @@ export default [
     {
       external: ['meilisearch-docsearch', 'meilisearch-docsearch/css'],
       dtsExternal: ['meilisearch-docsearch/css'],
+      moduleSideEffects: (id) =>
+        id.endsWith('.css') || id === 'meilisearch-docsearch/css',
     },
   ),
 ]
