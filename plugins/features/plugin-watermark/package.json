@@ -39,7 +39,7 @@
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vue": "catalog:",
-    "watermark-js-plus": "^1.5.8"
+    "watermark-js-plus": "^1.5.9"
   },
   "peerDependencies": {
     "vuepress": "catalog:"
