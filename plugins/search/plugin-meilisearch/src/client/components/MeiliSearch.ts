@@ -1,6 +1,14 @@
 import { useLocaleConfig } from '@vuepress/helper/client'
 import type { PropType } from 'vue'
-import { computed, defineComponent, h, onMounted, ref } from 'vue'
+import {
+  computed,
+  defineComponent,
+  h,
+  onMounted,
+  onUnmounted,
+  ref,
+  watch,
+} from 'vue'
 import { useRouteLocale } from 'vuepress/client'
 import type { LocaleConfig } from 'vuepress/shared'
 
@@ -43,11 +51,13 @@ export const MeiliSearch = defineComponent({
     })
 
     const hasInitialized = ref(false)
+    let currentInitialization: Promise<void>
+    let destroy: () => void
 
     const initialize = async (): Promise<void> => {
       const { docsearch } = await import('meilisearch-docsearch')
 
-      docsearch({
+      destroy = docsearch({
         ...meilisearchOptions.value,
         container: '#docsearch',
       })
@@ -56,7 +66,21 @@ export const MeiliSearch = defineComponent({
     }
 
     onMounted(() => {
-      void initialize()
+      currentInitialization = initialize()
+
+      // reinitialize when locale changes
+      watch(routeLocale, async () => {
+        await currentInitialization
+
+        destroy()
+        hasInitialized.value = false
+        currentInitialization = initialize()
+      })
+    })
+
+    onUnmounted(() => {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      destroy?.()
     })
 
     return () => [
