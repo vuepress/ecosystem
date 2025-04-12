@@ -1,2 +1,2 @@
 export * from './locales.js'
-export * from './meiliSearchPlugin.js'
+export * from './meilisearchPlugin.js'

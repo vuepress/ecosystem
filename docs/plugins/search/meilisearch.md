@@ -19,7 +19,7 @@ import { MeiliSearchPlugin } from '@vuepress/plugin-meilisearch'
 
 export default {
   plugins: [
-    meiliSearchPlugin({
+    meilisearchPlugin({
       // Configuration options
       host: '',
       apiKey: '',
@@ -127,7 +127,7 @@ If successful, the response would look like this:
 This key can be exposed and used externally as needed. Enter it in your plugin options.
 
 ```ts
-meiliSearchPlugin({
+meilisearchPlugin({
   host: 'YOUR_HOST',
   apiKey: 'adaf72e2a6d6f428ec465bc786ec41de868bbd53121997e89ba2299e9566c88213',
   indexUid: 'YOUR_INDEX_NAME',

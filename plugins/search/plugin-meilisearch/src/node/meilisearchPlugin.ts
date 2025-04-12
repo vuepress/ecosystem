@@ -10,7 +10,7 @@ const __dirname = getDirname(import.meta.url)
 
 const PLUGIN_NAME = '@vuepress/plugin-meilisearch'
 
-export const meiliSearchPlugin =
+export const meilisearchPlugin =
   ({
     locales = {},
     translations: rootTranslations,

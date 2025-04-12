@@ -31,7 +31,7 @@ export const MeiliSearch = defineComponent({
     const locale = useLocaleConfig(props.locales)
     const routeLocale = useRouteLocale()
 
-    const meiliSearchOptions = computed(() => {
+    const meilisearchOptions = computed(() => {
       const { locales = {}, ...rest } = props.options
 
       return {
@@ -47,7 +47,7 @@ export const MeiliSearch = defineComponent({
       const { docsearch } = await import('meilisearch-docsearch')
 
       docsearch({
-        ...meiliSearchOptions.value,
+        ...meilisearchOptions.value,
         container: '#docsearch',
       })
 
