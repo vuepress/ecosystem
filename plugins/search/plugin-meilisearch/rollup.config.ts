@@ -5,10 +5,17 @@ export default [
   ...rollupBundle(
     { base: 'client', files: ['components/MeiliSearch', 'config'] },
     {
-      external: ['meilisearch-docsearch', 'meilisearch-docsearch/css'],
-      dtsExternal: ['meilisearch-docsearch/css'],
+      external: [
+        'meilisearch-docsearch',
+        'meilisearch-docsearch/css/button',
+        'meilisearch-docsearch/css/modal',
+      ],
+      dtsExternal: [
+        'meilisearch-docsearch/css/button',
+        'meilisearch-docsearch/css/modal',
+      ],
       moduleSideEffects: (id) =>
-        id.endsWith('.css') || id === 'meilisearch-docsearch/css',
+        id.endsWith('.css') || id.startsWith('meilisearch-docsearch/css'),
     },
   ),
 ]

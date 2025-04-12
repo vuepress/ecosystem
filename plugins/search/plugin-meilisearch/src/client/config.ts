@@ -8,6 +8,10 @@ import type {
 } from '../shared/index.js'
 import { MeiliSearch } from './components/index.js'
 
+import 'meilisearch-docsearch/css/button'
+import 'meilisearch-docsearch/css/modal'
+import './styles/vars.css'
+
 declare const __ML_SEARCH_OPTIONS__: MeiliSearchOptions
 declare const __ML_SEARCH_LOCALES__: ExactLocaleConfig<MeiliSearchLocaleData>
 

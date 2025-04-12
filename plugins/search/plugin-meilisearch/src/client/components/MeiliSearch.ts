@@ -19,8 +19,6 @@ import type {
 
 import { getSearchButtonTemplate } from '../utils/getSearchButtonTemplate.js'
 
-import 'meilisearch-docsearch/css'
-
 export const MeiliSearch = defineComponent({
   name: 'MeiliSearch',
 
@@ -44,7 +42,7 @@ export const MeiliSearch = defineComponent({
       const { locales = {}, ...rest } = props.options
 
       return {
-        ...locale.value,
+        translations: locale.value,
         ...locales[routeLocale.value],
         ...rest,
       }

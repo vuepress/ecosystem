@@ -1,3 +1,7 @@
-declare module 'meilisearch-docsearch/css' {
+declare module 'meilisearch-docsearch/css/button' {
+  export {}
+}
+
+declare module 'meilisearch-docsearch/css/modal' {
   export {}
 }
