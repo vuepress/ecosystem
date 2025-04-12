@@ -1,4 +1,10 @@
-import { entries, fromEntries, getFullLocaleConfig } from '@vuepress/helper'
+import {
+  addViteSsrExternal,
+  addViteSsrNoExternal,
+  entries,
+  fromEntries,
+  getFullLocaleConfig,
+} from '@vuepress/helper'
 import type { Plugin } from 'vuepress'
 import { getDirname, path } from 'vuepress/utils'
 import type { MeiliSearchOptions } from '../shared/index.js'
@@ -32,6 +38,10 @@ export const meilisearchPlugin =
         ),
       }),
       __ML_SEARCH_OPTIONS__: options,
+    },
+
+    extendsBundlerOptions: (bundlerOptions) => {
+      addViteSsrExternal(bundlerOptions, app, 'meilisearch-docsearch')
     },
 
     clientConfigFile: path.resolve(__dirname, '../client/config.js'),
