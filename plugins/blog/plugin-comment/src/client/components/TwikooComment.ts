@@ -29,6 +29,8 @@ export default defineComponent({
     const enableTwikoo = computed(() => Boolean(twikooOptions.value.envId))
 
     const initTwikoo = async (): Promise<void> => {
+      if (__VUEPRESS_SSR__) return
+
       const [{ init }] = await Promise.all([
         import(/* webpackChunkName: "twikoo" */ 'twikoo'),
         wait(twikooOptions.value.delay ?? 800),

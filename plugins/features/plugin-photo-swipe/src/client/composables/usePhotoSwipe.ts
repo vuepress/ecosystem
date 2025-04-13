@@ -119,14 +119,17 @@ export const usePhotoSwipe = ({
     )
   }
 
+  useEventListener('click', initPhotoSwipe, { passive: true })
+  useEventListener('wheel', () => {
+    if (options.value.scrollToClose) photoSwipe?.close()
+  })
+
   onMounted(() => {
+    if (__VUEPRESS_SSR__) return
+
     const rIC =
       'requestIdleCallback' in window ? window.requestIdleCallback : setTimeout
 
-    useEventListener('click', initPhotoSwipe, { passive: true })
-    useEventListener('wheel', () => {
-      if (options.value.scrollToClose) photoSwipe?.close()
-    })
     rIC(() => {
       photoSwipeLoader = import(
         /* webpackChunkName: "photo-swipe" */ 'photoswipe'
