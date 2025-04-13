@@ -18,7 +18,7 @@ This plugin is mainly used to develop themes. You won't need to use it directly 
 npm i -D @vuepress/plugin-git@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { gitPlugin } from '@vuepress/plugin-git'
 
 export default {

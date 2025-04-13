@@ -8,3 +8,21 @@
   --code-c-bg: #282c34;
   --code-tabs-c-bg: #181819;
 }
+
+.code-block-title-bar[data-title^='.vuepress/config.ts'] {
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: ' ';
+
+    display: inline-block;
+
+    width: 1.5em;
+    height: 1.5em;
+    margin-inline-end: 0.5em;
+
+    background: url('https://ecosystem.vuejs.press/images/hero.png') no-repeat
+      center / contain;
+  }
+}

@@ -52,7 +52,7 @@ If your site is served in a different language besides English, you should set t
 
 - Example:
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   locales: {
     '/': {

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.94](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.93...v2.0.0-rc.94) (2025-04-12)
+
+### Features
+
+- **highlighter-helper:** hide ext when title exists ([7458ff1](https://github.com/vuepress/ecosystem/commit/7458ff1cdfd8b1f2fb9dc3009d54ff208290054b))
+
+# [2.0.0-rc.93](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.92...v2.0.0-rc.93) (2025-04-12)
+
+### Bug Fixes
+
+- **theme-default:** fix navbar active state, close [#428](https://github.com/vuepress/ecosystem/issues/428) ([a7c7fae](https://github.com/vuepress/ecosystem/commit/a7c7faea52f8ab2bd3fb6b3fd648c2ea3f08d799))
+
+### Features
+
+- **helper:** add RenderDefault component ([ad9d080](https://github.com/vuepress/ecosystem/commit/ad9d080c198c7080a3e5ec9ff2289b996b63f692))
+
 # [2.0.0-rc.92](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.91...v2.0.0-rc.92) (2025-04-09)
 
 ### Bug Fixes

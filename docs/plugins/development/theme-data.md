@@ -18,7 +18,7 @@ For theme authors, this plugin will help you to use the same i18n mechanism as V
 npm i -D @vuepress/plugin-theme-data@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 
 export default {
@@ -46,7 +46,7 @@ export default {
 
 - Example:
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     themeDataPlugin({

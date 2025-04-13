@@ -53,6 +53,8 @@ export const DocSearch = defineComponent({
      * Import docsearch js and initialize
      */
     const initialize = async (): Promise<void> => {
+      if (__VUEPRESS_SSR__) return
+
       const { default: docsearch } = await import('@docsearch/js')
 
       const { searchParameters } = options.value

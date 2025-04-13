@@ -16,7 +16,7 @@ This plugin can add watermark to the pages, you can choose between add watermark
 npm i -D @vuepress/plugin-watermark@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { watermarkPlugin } from '@vuepress/plugin-watermark'
 
 export default {
@@ -92,7 +92,7 @@ watermark:
 
 Additional configuration passed to [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/en/config/).
 
-```ts
+```ts title=".vuepress/client.ts"
 import { defineWatermarkConfig } from '@vuepress/plugin-watermark/client'
 
 defineWatermarkConfig({

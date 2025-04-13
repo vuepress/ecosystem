@@ -14,7 +14,7 @@ icon: image
 npm i -D @vuepress/plugin-markdown-image@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 
 export default {

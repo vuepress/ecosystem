@@ -16,7 +16,7 @@ icon: list-checks
 npm i -D @vuepress/plugin-links-check@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { linksCheckPlugin } from '@vuepress/plugin-links-check'
 
 export default {
@@ -60,21 +60,27 @@ export default {
 
 - 示例：
 
-  ```ts
-  linksCheckPlugin({
-    exclude: [
-      // 通过字符串排除链接
-      '/exclude-link',
-      // 通过正则表达式排除链接
-      /\/exclude-link-regex/,
-    ],
+  ```ts title=".vuepress/config.ts"
+  import { linksCheckPlugin } from '@vuepress/plugin-links-check'
 
-    // 或者通过函数排除链接
-    exclude: (link, isDev) => {
-      if (isDev) {
-        return link.startsWith('/exclude-link-dev')
-      }
-      return link.startsWith('/exclude-link-build')
-    },
-  })
+  export default {
+    plugins: [
+      linksCheckPlugin({
+        exclude: [
+          // 通过字符串排除链接
+          '/exclude-link',
+          // 通过正则表达式排除链接
+          /\/exclude-link-regex/,
+        ],
+
+        // 或者通过函数排除链接
+        exclude: (link, isDev) => {
+          if (isDev) {
+            return link.startsWith('/exclude-link-dev')
+          }
+          return link.startsWith('/exclude-link-build')
+        },
+      }),
+    ],
+  }
   ```

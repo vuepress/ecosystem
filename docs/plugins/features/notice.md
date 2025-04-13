@@ -14,7 +14,7 @@ You can add notice popup with this plugin.
 npm i -D @vuepress/plugin-notice@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { noticePlugin } from '@vuepress/plugin-notice'
 
 export default {
@@ -54,7 +54,7 @@ A notice configuration item includes:
 
 Here is an example:
 
-```ts
+```ts title=".vuepress/config.ts"
 import { noticePlugin } from '@vuepress/plugin-notice'
 import { path } from 'vuepress/utils'
 

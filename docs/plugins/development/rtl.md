@@ -14,7 +14,7 @@ This plugin will set direction to rtl on configured locales.
 npm i -D @vuepress/plugin-rtl@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { rtlPlugin } from '@vuepress/plugin-rtl'
 
 export default {

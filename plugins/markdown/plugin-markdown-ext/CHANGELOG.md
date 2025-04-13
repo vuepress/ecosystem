@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.94](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.93...v2.0.0-rc.94) (2025-04-12)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-ext
+
+# [2.0.0-rc.93](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.92...v2.0.0-rc.93) (2025-04-12)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-ext
+
 # [2.0.0-rc.92](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.91...v2.0.0-rc.92) (2025-04-09)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-ext

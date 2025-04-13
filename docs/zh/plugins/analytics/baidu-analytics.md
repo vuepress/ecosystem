@@ -20,7 +20,7 @@ icon: chart-no-axes-combined
 npm i -D @vuepress/plugin-baidu-analytics@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { baiduAnalyticsPlugin } from '@vuepress/plugin-baidu-analytics'
 
 export default {

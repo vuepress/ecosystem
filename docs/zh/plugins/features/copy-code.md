@@ -16,7 +16,7 @@ icon: clipboard-copy
 npm i -D @vuepress/plugin-copy-code@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 
 export default {
@@ -130,7 +130,7 @@ export default {
 
 - 示例：
 
-  ```ts
+  ```ts title=".vuepress/config.ts"
   import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 
   export default {

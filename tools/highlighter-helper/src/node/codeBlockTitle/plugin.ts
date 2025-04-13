@@ -7,9 +7,10 @@ import type {
 } from './options.js'
 
 const defaultTitleRender: CodeBlockTitleRender = (title, code) =>
-  `<div class="code-block-title">
-  <div class="code-block-title-bar">
-    <span class="title" data-title="${title}">${title}</span>
+  `\
+<div class="code-block-with-title">
+  <div class="code-block-title-bar" data-title="${title}">
+    <span>${title}</span>
   </div>
   ${code}
 </div>`

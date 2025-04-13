@@ -14,7 +14,7 @@ A powerful client-side search plugin with custom indexing and full-text search s
 npm i -D @vuepress/plugin-slimsearch@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 
 export default {
@@ -67,11 +67,10 @@ Your Markdown content...
 
 You can add author information to the index by setting:
 
-```ts
+```ts title=".vuepress/config.ts"
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
-import { defineUserConfig } from 'vuepress'
 
-export default defineUserConfig({
+export default {
   plugins: [
     slimsearchPlugin({
       customFields: [
@@ -83,7 +82,7 @@ export default defineUserConfig({
       ],
     }),
   ],
-})
+}
 ```
 
 :::
@@ -94,7 +93,7 @@ Supposed you are using the `@vuepress/plugin-git` plugin and you are putting Chi
 
 Then you can set the following to index the update time:
 
-```ts
+```ts title=".vuepress/config.ts"
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 import { defineUserConfig } from 'vuepress'
 
@@ -417,7 +416,7 @@ If you are building a Chinese docs, you can use [nodejs-jieba](https://github.co
 
 If your docs only contain Chinese, you can tokenize the content like this:
 
-```ts
+```ts title=".vuepress/config.ts"
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 import { cut } from 'nodejs-jieba'
 import { defineUserConfig } from 'vuepress'
@@ -441,7 +440,7 @@ export default defineUserConfig({
 
 If you need word splitting in some locales, you can set `indexLocaleOptions`:
 
-```ts
+```ts title=".vuepress/config.ts"
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 import { cut } from 'nodejs-jieba'
 import { defineUserConfig } from 'vuepress'
@@ -583,8 +582,6 @@ defineSearchConfig({
     },
   },
 })
-
-export default {}
 ```
 
 ## Components

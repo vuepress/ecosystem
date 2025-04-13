@@ -18,7 +18,7 @@ Notice that this plugin would only tokenize the code fence without adding styles
 npm i -D @vuepress/plugin-prismjs@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 
 export default {
@@ -178,7 +178,7 @@ export default defineUserConfig({
   title: 'Hello, VuePress',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })
 ```
@@ -194,7 +194,7 @@ export default defineUserConfig({
   title: 'Hello, VuePress',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })
 ```

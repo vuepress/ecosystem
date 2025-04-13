@@ -18,7 +18,7 @@ icon: la:git-alt
 npm i -D @vuepress/plugin-git@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { gitPlugin } from '@vuepress/plugin-git'
 
 export default {

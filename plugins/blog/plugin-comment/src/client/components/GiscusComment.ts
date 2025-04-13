@@ -146,6 +146,8 @@ export default defineComponent({
     )
 
     onMounted(async () => {
+      if (__VUEPRESS_SSR__) return
+
       await import(/* webpackChunkName: "giscus" */ 'giscus')
       loaded.value = true
     })

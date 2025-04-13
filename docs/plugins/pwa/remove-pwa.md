@@ -27,7 +27,7 @@ To solve this problem:
 npm i -D @vuepress/plugin-remove-pwa@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { removePwaPlugin } from '@vuepress/plugin-remove-pwa'
 
 export default {

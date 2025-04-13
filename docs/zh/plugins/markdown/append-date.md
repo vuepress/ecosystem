@@ -14,7 +14,7 @@ icon: calendar
 npm i -D @vuepress/plugin-append-date@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { appendDatePlugin } from '@vuepress/plugin-append-date'
 
 export default {

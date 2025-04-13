@@ -18,7 +18,7 @@ icon: pyramid
 npm i -D @vuepress/plugin-prismjs@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 
 export default {
@@ -178,7 +178,7 @@ export default defineUserConfig({
   title: '你好， VuePress',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })
 ```
@@ -194,7 +194,7 @@ export default defineUserConfig({
   title: '你好， VuePress',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })
 ```
