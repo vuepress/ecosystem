@@ -53,6 +53,8 @@ export default defineComponent({
     const enableArtalk = computed(() => isString(artalkOptions.value.server))
 
     const initArtalk = async (): Promise<void> => {
+      if (__VUEPRESS_SSR__) return
+
       const [{ default: Artalk }] = await Promise.all([
         import(/* webpackChunkName: "artalk" */ 'artalk/dist/Artalk.mjs'),
         wait(artalkOptions.value.delay ?? 800),
