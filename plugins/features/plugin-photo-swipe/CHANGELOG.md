@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.95](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.94...v2.0.0-rc.95) (2025-04-14)
+
+### Bug Fixes
+
+- **plugin-photo-swipe:** fix photo-swipe options ([72dae75](https://github.com/vuepress/ecosystem/commit/72dae75eb90ac4593c6ac97986aadce2b17853f8))
+
+### Performance Improvements
+
+- improve webpack perf ([#431](https://github.com/vuepress/ecosystem/issues/431)) ([d51ba3e](https://github.com/vuepress/ecosystem/commit/d51ba3e57cecd8837e85246aec07590764066567))
+
 # [2.0.0-rc.94](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.93...v2.0.0-rc.94) (2025-04-12)
 
 **Note:** Version bump only for package @vuepress/plugin-photo-swipe

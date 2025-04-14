@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.95](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.94...v2.0.0-rc.95) (2025-04-14)
+
+### Bug Fixes
+
+- **plugin-git:** avoid innerHTML with unsafe commit message ([7141fac](https://github.com/vuepress/ecosystem/commit/7141fac80d9bf71f375a0ae8b628361aa4ef5351))
+- **plugin-photo-swipe:** fix photo-swipe options ([72dae75](https://github.com/vuepress/ecosystem/commit/72dae75eb90ac4593c6ac97986aadce2b17853f8))
+- **plugin-reading-time:** fix composables ([3ff7d98](https://github.com/vuepress/ecosystem/commit/3ff7d9816101569672b99a3c6587b96082e0527d))
+
+### Features
+
+- **plugin-meilisearch:** support meilisearch ([#422](https://github.com/vuepress/ecosystem/issues/422)) ([819fc11](https://github.com/vuepress/ecosystem/commit/819fc11953d242974a378c90c56826b17951c907))
+
+### Performance Improvements
+
+- improve webpack perf ([#431](https://github.com/vuepress/ecosystem/issues/431)) ([d51ba3e](https://github.com/vuepress/ecosystem/commit/d51ba3e57cecd8837e85246aec07590764066567))
+
 # [2.0.0-rc.94](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.93...v2.0.0-rc.94) (2025-04-12)
 
 ### Features

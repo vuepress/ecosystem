@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.95](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.94...v2.0.0-rc.95) (2025-04-14)
+
+### Bug Fixes
+
+- **plugin-git:** avoid innerHTML with unsafe commit message ([7141fac](https://github.com/vuepress/ecosystem/commit/7141fac80d9bf71f375a0ae8b628361aa4ef5351))
+
 # [2.0.0-rc.94](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.93...v2.0.0-rc.94) (2025-04-12)
 
 **Note:** Version bump only for package @vuepress/plugin-git
