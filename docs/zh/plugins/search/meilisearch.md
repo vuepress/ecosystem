@@ -54,7 +54,7 @@ MeiliSearch 提供了一个 Docker 爬虫来抓取文档。在此之前，保证
 
 这是抓取 VuePress 官方文档的示例配置，保存在本地：
 
-```json
+```json{18-68}
 {
   "index_uid": "YOUR_INDEX_NAME",
   "start_urls": ["https://YOUR_WEBSITE_URL/"],
@@ -71,10 +71,65 @@ MeiliSearch 提供了一个 Docker 爬虫来抓取文档。在此之前，保证
     "lvl4": "[vp-content] h4",
     "lvl5": "[vp-content] h5",
     "lvl6": "[vp-content] h6",
-    "content": "[vp-content] p, [vp-content] li"
+    "content": "[vp-content] p, [vp-content] li",
+    "lang": {
+      "selector": "/html/@lang",
+      "global": true,
+      "type": "xpath"
+    }
+  },
+  "custom_settings": {
+    "searchableAttributes": [
+      "hierarchy_radio_lvl0",
+      "hierarchy_radio_lvl1",
+      "hierarchy_radio_lvl2",
+      "hierarchy_radio_lvl3",
+      "hierarchy_radio_lvl4",
+      "hierarchy_radio_lvl5",
+      "hierarchy_lvl0",
+      "hierarchy_lvl1",
+      "hierarchy_lvl2",
+      "hierarchy_lvl3",
+      "hierarchy_lvl4",
+      "hierarchy_lvl5",
+      "hierarchy_lvl6",
+      "content",
+      "lang",
+      "objectID",
+      "page_rank",
+      "level",
+      "position"
+    ],
+    "displayedAttributes": [
+      "hierarchy_radio_lvl0",
+      "hierarchy_radio_lvl1",
+      "hierarchy_radio_lvl2",
+      "hierarchy_radio_lvl3",
+      "hierarchy_radio_lvl4",
+      "hierarchy_radio_lvl5",
+      "hierarchy_lvl0",
+      "hierarchy_lvl1",
+      "hierarchy_lvl2",
+      "hierarchy_lvl3",
+      "hierarchy_lvl4",
+      "hierarchy_lvl5",
+      "hierarchy_lvl6",
+      "anchor",
+      "url",
+      "lang",
+      "content",
+      "objectID"
+    ],
+    "filterableAttributes": ["lang"]
   }
 }
 ```
+
+::: info
+
+你可以根据你正在使用的主题修改它们。但是，18 到 68 行的配置不要更改，否则插件可能无法工作
+
+:::
 
 开始抓取文档，`MEILISEARCH_HOST_URL`是运行 MeiliSearch 的主机地址，`<MASTER_KEY>`是主密钥，`<absolute-path-to-your-config-file>`是抓取配置文件的绝对路径：
 

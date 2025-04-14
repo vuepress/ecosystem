@@ -54,7 +54,7 @@ MeiliSearch provides a Docker crawler to crawl documents. Until then, make sure 
 
 Here is a sample configuration for grabbing the official VuePress documentation, saved locally:
 
-```json
+```json{18-68}
 {
   "index_uid": "YOUR_INDEX_NAME",
   "start_urls": ["https://YOUR_WEBSITE_URL/"],
@@ -71,10 +71,63 @@ Here is a sample configuration for grabbing the official VuePress documentation,
     "lvl4": "[vp-content] h4",
     "lvl5": "[vp-content] h5",
     "lvl6": "[vp-content] h6",
-    "content": "[vp-content] p, [vp-content] li"
+    "content": "[vp-content] p, [vp-content] li",
+    "lang": {
+      "selector": "/html/@lang",
+      "global": true,
+      "type": "xpath"
+    }
+  },
+  "custom_settings": {
+    "searchableAttributes": [
+      "hierarchy_radio_lvl0",
+      "hierarchy_radio_lvl1",
+      "hierarchy_radio_lvl2",
+      "hierarchy_radio_lvl3",
+      "hierarchy_radio_lvl4",
+      "hierarchy_radio_lvl5",
+      "hierarchy_lvl0",
+      "hierarchy_lvl1",
+      "hierarchy_lvl2",
+      "hierarchy_lvl3",
+      "hierarchy_lvl4",
+      "hierarchy_lvl5",
+      "hierarchy_lvl6",
+      "content",
+      "lang",
+      "objectID",
+      "page_rank",
+      "level",
+      "position"
+    ],
+    "displayedAttributes": [
+      "hierarchy_radio_lvl0",
+      "hierarchy_radio_lvl1",
+      "hierarchy_radio_lvl2",
+      "hierarchy_radio_lvl3",
+      "hierarchy_radio_lvl4",
+      "hierarchy_radio_lvl5",
+      "hierarchy_lvl0",
+      "hierarchy_lvl1",
+      "hierarchy_lvl2",
+      "hierarchy_lvl3",
+      "hierarchy_lvl4",
+      "hierarchy_lvl5",
+      "hierarchy_lvl6",
+      "anchor",
+      "url",
+      "lang",
+      "content",
+      "objectID"
+    ],
+    "filterableAttributes": ["lang"]
   }
 }
 ```
+
+::: info
+You can modify them according to the theme you are using. However, do not change the configuration of lines 18 through 68, or the plugin may not work.
+:::
 
 Start scraping the document, `MEILISEARCH_HOST_URL` is the address of the host running MeiliSearch, `<MASTER_KEY>` is the master key, `<absolute-path-to-your-config-file>` is the absolute path to fetch the configuration file:
 
