@@ -126,7 +126,7 @@ Here is a sample configuration for grabbing the official VuePress documentation,
 ```
 
 ::: info
-You can modify them according to the theme you are using. However, do not change the configuration of lines 18 through 68, or the plugin may not work.
+You're welcome to customize the configuration settings for your theme. Just be sure to keep lines 18 through 68 as they are. You can add other fields to `filterableAttributes`, but the `lang` field is required; otherwise, the plugin may not work.
 :::
 
 Start scraping the document, `MEILISEARCH_HOST_URL` is the address of the host running MeiliSearch, `<MASTER_KEY>` is the master key, `<absolute-path-to-your-config-file>` is the absolute path to fetch the configuration file:
