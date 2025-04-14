@@ -54,7 +54,7 @@ MeiliSearch provides a Docker crawler to crawl documents. Until then, make sure 
 
 Here is a sample configuration for grabbing the official VuePress documentation, saved locally:
 
-```json{18-68}
+```json {18-68}
 {
   "index_uid": "YOUR_INDEX_NAME",
   "start_urls": ["https://YOUR_WEBSITE_URL/"],
@@ -126,7 +126,16 @@ Here is a sample configuration for grabbing the official VuePress documentation,
 ```
 
 ::: info
-You're welcome to customize the configuration settings for your theme. Just be sure to keep lines 18 through 68 as they are. You can add other fields to `filterableAttributes`, but the `lang` field is required; otherwise, the plugin may not work.
+
+`start_urls` and `sitemap_urls` (optional) shall be customized according to the website to be crawled.
+
+`selectors` field can be customized according to third-party theme DOM structure.
+
+To let the plugin work:
+
+- `lang` selector must be kept as is in `selectors` filed
+- All fields that are currently in `custom_settings` must not be removed.
+
 :::
 
 Start scraping the document, `MEILISEARCH_HOST_URL` is the address of the host running MeiliSearch, `<MASTER_KEY>` is the master key, `<absolute-path-to-your-config-file>` is the absolute path to fetch the configuration file:

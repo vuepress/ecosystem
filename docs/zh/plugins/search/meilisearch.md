@@ -54,7 +54,7 @@ MeiliSearch 提供了一个 Docker 爬虫来抓取文档。在此之前，保证
 
 这是抓取 VuePress 官方文档的示例配置，保存在本地：
 
-```json{18-68}
+```json {18-68}
 {
   "index_uid": "YOUR_INDEX_NAME",
   "start_urls": ["https://YOUR_WEBSITE_URL/"],
@@ -127,11 +127,18 @@ MeiliSearch 提供了一个 Docker 爬虫来抓取文档。在此之前，保证
 
 ::: info
 
-你可以根据你正在使用的主题修改它们。但是，18 到 68 行的配置不要更改，你可以添加其他字段到`filterableAttributes`中，但是必须包含`lang`字段，否则插件可能无法工作
+`start_urls` 和 `sitemap_urls`（可选）应根据要抓取的网站进行自定义。
+
+`selectors` 字段可以根据第三方 DOM 结构进行自定义。
+
+为了让插件工作：
+
+- `lang` 选择器必须在 `selectors` 字段中保持不变
+- `custom_settings` 中当前的所有字段都不能删除。
 
 :::
 
-开始抓取文档，`MEILISEARCH_HOST_URL`是运行 MeiliSearch 的主机地址，`<MASTER_KEY>`是主密钥，`<absolute-path-to-your-config-file>`是抓取配置文件的绝对路径：
+开始抓取文档，`MEILISEARCH_HOST_URL` 是运行 MeiliSearch 的主机地址，`<MASTER_KEY>` 是主密钥，`<absolute-path-to-your-config-file>` 是抓取配置文件的绝对路径：
 
 ```sh
 docker run -t --rm \
@@ -146,9 +153,9 @@ docker run -t --rm \
 
 > 参考 <https://www.meilisearch.com/docs/guides/front_end/search_bar_for_docs#scrape-your-content>
 
-## 获取搜索索引和 apikey
+## 获取搜索索引和 API 密钥
 
-要创建只允许搜索操作的访问密钥，请使用以下请求。`indexes`数组指定该密钥可以访问哪些索引，`expiresAt`设置密钥的过期时间。
+要创建只允许搜索操作的访问密钥，请使用以下请求。`indexes` 数组指定该密钥可以访问哪些索引，`expiresAt` 设置密钥的过期时间。
 
 ```sh
 curl \
