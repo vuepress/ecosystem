@@ -52,7 +52,7 @@ docker run -it --rm \
 
 MeiliSearch 提供了一个 Docker 爬虫来抓取文档。在此之前，保证 MeiliSearch 已经运行。
 
-这是抓取 VuePress 官方文档的示例配置，保存在本地：
+这是一个爬虫配置的示例，你应该保存、修改并传递给爬虫：
 
 ```json {18-68}
 {

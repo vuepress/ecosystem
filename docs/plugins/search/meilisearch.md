@@ -52,7 +52,7 @@ docker run -it --rm \
 
 MeiliSearch provides a Docker crawler to crawl documents. Until then, make sure MeiliSearch is running.
 
-Here is a sample configuration for grabbing the official VuePress documentation, saved locally:
+Here is a sample of crawler configuration, which you should save, modify and pass to the crawler:
 
 ```json {18-68}
 {
