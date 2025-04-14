@@ -27,7 +27,7 @@ export const meilisearchPlugin =
   (app) => {
     if (!options.host || !options.apiKey || !options.indexUid) {
       logger.error(
-        `${colors.cyan('host')}, ${colors.cyan('apiKey')} and${colors.cyan('indexUid')} options are required!`,
+        `${colors.cyan('host')}, ${colors.cyan('apiKey')} and ${colors.cyan('indexUid')} options are required!`,
       )
 
       return { name: PLUGIN_NAME }
