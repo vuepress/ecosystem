@@ -9,7 +9,7 @@ import {
   ref,
   watch,
 } from 'vue'
-import { useRouteLocale } from 'vuepress/client'
+import { usePageLang, useRouteLocale } from 'vuepress/client'
 import type { LocaleConfig } from 'vuepress/shared'
 
 import type {
@@ -37,6 +37,7 @@ export const MeiliSearch = defineComponent({
   setup(props) {
     const locale = useLocaleConfig(props.locales)
     const routeLocale = useRouteLocale()
+    const lang = usePageLang()
 
     const meilisearchOptions = computed(() => {
       const { locales = {}, ...rest } = props.options
@@ -59,6 +60,9 @@ export const MeiliSearch = defineComponent({
 
       destroy = docsearch({
         ...meilisearchOptions.value,
+        searchParams: {
+          filter: [`lang=${lang.value}`],
+        },
         container: '#docsearch',
       })
 
