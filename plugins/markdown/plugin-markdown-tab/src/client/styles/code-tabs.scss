@@ -116,6 +116,10 @@
     display: block;
   }
 
+  .code-block-title-bar {
+    border-radius: 0;
+  }
+
   div[class*='language-'] {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
