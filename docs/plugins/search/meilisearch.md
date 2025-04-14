@@ -54,7 +54,7 @@ MeiliSearch provides a Docker crawler to crawl documents. Until then, make sure 
 
 Here is a sample of crawler configuration, which you should save, modify and pass to the crawler:
 
-```json {18-68}
+```json
 {
   "index_uid": "YOUR_INDEX_NAME",
   "start_urls": ["https://YOUR_WEBSITE_URL/"],

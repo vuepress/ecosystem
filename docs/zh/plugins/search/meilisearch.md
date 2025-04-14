@@ -54,7 +54,7 @@ MeiliSearch 提供了一个 Docker 爬虫来抓取文档。在此之前，保证
 
 这是一个爬虫配置的示例，你应该保存、修改并传递给爬虫：
 
-```json {18-68}
+```json
 {
   "index_uid": "YOUR_INDEX_NAME",
   "start_urls": ["https://YOUR_WEBSITE_URL/"],
