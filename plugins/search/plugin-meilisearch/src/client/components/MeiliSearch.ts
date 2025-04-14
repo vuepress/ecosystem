@@ -57,11 +57,23 @@ export const MeiliSearch = defineComponent({
       if (__VUEPRESS_SSR__) return
 
       const { docsearch } = await import('meilisearch-docsearch')
+      const { searchParams } = meilisearchOptions.value
+      let rawFilter: (string[] | string)[] = []
+
+      if (searchParams?.filter) {
+        if (typeof searchParams.filter === 'string') {
+          rawFilter.push(searchParams.filter)
+        } else if (Array.isArray(searchParams.filter)) {
+          rawFilter = searchParams.filter
+        }
+      }
+      const filter = [`lang=${lang.value}`, ...rawFilter]
 
       destroy = docsearch({
         ...meilisearchOptions.value,
         searchParams: {
-          filter: [`lang=${lang.value}`],
+          ...meilisearchOptions.value.searchParams,
+          filter,
         },
         container: '#docsearch',
       })
