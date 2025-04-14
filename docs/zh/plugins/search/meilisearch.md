@@ -125,11 +125,11 @@ MeiliSearch 提供了一个 Docker 爬虫来抓取文档。在此之前，保证
 }
 ```
 
-::: info
+- `start_urls` 和 `sitemap_urls`（可选）应根据要抓取的网站进行自定义。
+- `selectors` 字段可以根据第三方 DOM 结构进行自定义。
+- 你可以根据需要向 `custom_settings` 添加新字段。
 
-`start_urls` 和 `sitemap_urls`（可选）应根据要抓取的网站进行自定义。
-
-`selectors` 字段可以根据第三方 DOM 结构进行自定义。
+::: important
 
 为了让插件工作：
 

@@ -125,11 +125,11 @@ Here is a sample of crawler configuration, which you should save, modify and pas
 }
 ```
 
-::: info
+- `start_urls` and `sitemap_urls` (optional) shall be customized according to the website to be crawled.
+- `selectors` field can be customized according to third-party theme DOM structure.
+- You can add new fields to `custom_settings` according to your needs.
 
-`start_urls` and `sitemap_urls` (optional) shall be customized according to the website to be crawled.
-
-`selectors` field can be customized according to third-party theme DOM structure.
+::: important
 
 To let the plugin work:
 
