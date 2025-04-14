@@ -155,7 +155,7 @@ When the crawl is complete, MeiliSearch stores the crawled document in the speci
 
 ### Using Github Action for Automatic Scraping
 
-In the Github repository, go to `Settings` -> `Secrets and variables` -> `Actions` -> `New repository secret` to set `MEILISEARCH_API_KEY`. And name your scraper configuration file `meilisearch_scraper.json` and place it in the root directory of your project.
+In the Github repository, go to `Settings` -> `Secrets and variables` -> `Actions` -> `New repository secret` to set `MEILISEARCH_API_KEY` and `MEILISEARCH_HOST_URL`. And name your scraper configuration file `meilisearch-scraper.json` and place it in the root directory of your project.
 
 ```yml
 name: Deploy and Scrape
@@ -165,20 +165,27 @@ on:
     branches:
       - main
 
-permissions:
-  contents: write
-
 jobs:
-  deploy-gh-pages:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       # ....
-      - name: Crawl the article content and rebuild the meilisearch index
-        run: |-
+  scrapy:
+    needs: deploy
+    runs-on: ubuntu-latest
+    name: scrape and push content on Meilisearch instance
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run scraper
+        env:
+          HOST_URL: ${{ secrets.MEILISEARCH_HOST_URL }}
+          API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
+          CONFIG_FILE_PATH: ${{ github.workspace }}/meilisearch-scraper.json
+        run: |
           docker run -t --rm \
-            -e MEILISEARCH_HOST_URL='https://meilisearch.example.com' \
-            -e MEILISEARCH_API_KEY='${{ secrets.MEILISEARCH_API_KEY }}' \
-            -v ${{ github.workspace }}/melisearch_scraper.json:/docs-scraper/config.json \
+            -e MEILISEARCH_HOST_URL=$HOST_URL \
+            -e MEILISEARCH_API_KEY=$API_KEY \
+            -v $CONFIG_FILE_PATH:/docs-scraper/config.json \
             getmeili/docs-scraper:latest pipenv run ./docs_scraper config.json
 ```
 

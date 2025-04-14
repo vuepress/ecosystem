@@ -155,7 +155,7 @@ docker run -t --rm \
 
 ### 使用 Github Action 自动抓取
 
-在 Github 仓库的`Settings` -> `Secrets and variables` -> `Actions` -> `New repository secret`设置`MEILISEARCH_API_KEY`，并将你的爬虫配置文件命名为 `melisearch_scraper.json` 放到项目根目录下。
+在 Github 仓库的`Settings` -> `Secrets and variables` -> `Actions` -> `New repository secret`设置`MEILISEARCH_API_KEY`和`MEILISEARCH_HOST_URL`，并将你的爬虫配置文件命名为 `melisearch_scraper.json` 放到项目根目录下。
 
 ```yml
 name: Deploy and Scrape
@@ -165,21 +165,27 @@ on:
     branches:
       - main
 
-permissions:
-  contents: write
-
 jobs:
-  deploy-gh-pages:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       # ....
-
-      - name: Crawl the article content and rebuild the meilisearch index
-        run: |-
+  scrapy:
+    needs: deploy
+    runs-on: ubuntu-latest
+    name: scrape and push content on Meilisearch instance
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run scraper
+        env:
+          HOST_URL: ${{ secrets.MEILISEARCH_HOST_URL }}
+          API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
+          CONFIG_FILE_PATH: ${{ github.workspace }}/meilisearch-scraper.json
+        run: |
           docker run -t --rm \
-            -e MEILISEARCH_HOST_URL='https://meilisearch.example.com' \
-            -e MEILISEARCH_API_KEY='${{ secrets.MEILISEARCH_API_KEY }}' \
-            -v ${{ github.workspace }}/melisearch_scraper.json:/docs-scraper/config.json \
+            -e MEILISEARCH_HOST_URL=$HOST_URL \
+            -e MEILISEARCH_API_KEY=$API_KEY \
+            -v $CONFIG_FILE_PATH:/docs-scraper/config.json \
             getmeili/docs-scraper:latest pipenv run ./docs_scraper config.json
 ```
 
