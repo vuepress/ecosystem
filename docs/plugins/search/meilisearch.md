@@ -153,6 +153,35 @@ When the crawl is complete, MeiliSearch stores the crawled document in the speci
 
 > See <https://www.meilisearch.com/docs/guides/front_end/search_bar_for_docs#scrape-your-content>
 
+### Using Github Action for Automatic Scraping
+
+In the Github repository, go to `Settings` -> `Secrets and variables` -> `Actions` -> `New repository secret` to set `MEILISEARCH_API_KEY`. And name your scraper configuration file `meilisearch_scraper.json` and place it in the root directory of your project.
+
+```yml
+name: Deploy and Scrape
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-gh-pages:
+    runs-on: ubuntu-latest
+    steps:
+      # ....
+      - name: Crawl the article content and rebuild the meilisearch index
+        run: |-
+          docker run -t --rm \
+            -e MEILISEARCH_HOST_URL='https://meilisearch.example.com' \
+            -e MEILISEARCH_API_KEY='${{ secrets.MEILISEARCH_API_KEY }}' \
+            -v ${{ github.workspace }}/melisearch_scraper.json:/docs-scraper/config.json \
+            getmeili/docs-scraper:latest pipenv run ./docs_scraper config.json
+```
+
 ## Get search index and api key
 
 To create an access key that only allows search operations, use the following request. The `indexes` array specifies which indexes this key can access, and `expiresAt` sets the key's expiration date.

@@ -153,6 +153,36 @@ docker run -t --rm \
 
 > 参考 <https://www.meilisearch.com/docs/guides/front_end/search_bar_for_docs#scrape-your-content>
 
+### 使用 Github Action 自动抓取
+
+在 Github 仓库的`Settings` -> `Secrets and variables` -> `Actions` -> `New repository secret`设置`MEILISEARCH_API_KEY`，并将你的爬虫配置文件命名为 `melisearch_scraper.json` 放到项目根目录下。
+
+```yml
+name: Deploy and Scrape
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-gh-pages:
+    runs-on: ubuntu-latest
+    steps:
+      # ....
+
+      - name: Crawl the article content and rebuild the meilisearch index
+        run: |-
+          docker run -t --rm \
+            -e MEILISEARCH_HOST_URL='https://meilisearch.example.com' \
+            -e MEILISEARCH_API_KEY='${{ secrets.MEILISEARCH_API_KEY }}' \
+            -v ${{ github.workspace }}/melisearch_scraper.json:/docs-scraper/config.json \
+            getmeili/docs-scraper:latest pipenv run ./docs_scraper config.json
+```
+
 ## 获取搜索索引和 API 密钥
 
 要创建只允许搜索操作的访问密钥，请使用以下请求。`indexes` 数组指定该密钥可以访问哪些索引，`expiresAt` 设置密钥的过期时间。
