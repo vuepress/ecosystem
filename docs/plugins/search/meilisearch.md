@@ -65,7 +65,7 @@ Your Master Key should only be used for internal server access (including scrapi
 
 :::
 
-## Setting up the Scraper
+### Setting up the Scraper
 
 ::: tip
 
