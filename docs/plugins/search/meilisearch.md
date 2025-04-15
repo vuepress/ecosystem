@@ -379,7 +379,3 @@ To secure your MeiliSearch instance, you can create a new key with limited permi
 ## Components
 
 - SearchBox
-
-```
-
-```
