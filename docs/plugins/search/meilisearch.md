@@ -225,7 +225,7 @@ If successful, the response would look like this:
   "uid": "b84d1be5-caa5-4752-b078-8f40be39051d",
   "actions": ["search"],
   "indexes": ["<YOUR_INDEX_NAME>"],
-  "expiresAt": "null",
+  "expiresAt": null,
   "createdAt": "2024-01-27T06:50:33.668329328Z",
   "updatedAt": "2024-01-27T06:50:33.668329328Z"
 }
