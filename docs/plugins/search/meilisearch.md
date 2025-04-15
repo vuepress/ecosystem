@@ -55,7 +55,7 @@ docker run -it --rm \
   getmeili/meilisearch:latest
 ```
 
-Here `<YOUR_MASTER_KEY>` is the master key for MeiliSearch, which is used to access the MeiliSearch API (required >= 16 bytes).
+Here `<YOUR_MASTER_KEY>` is the master key for MeiliSearch that you should set yourself (required >= 16 bytes), which is used to access the MeiliSearch API.
 
 ::: important Never expose Master Key
 
@@ -69,9 +69,9 @@ Your Master Key should only be used for internal server access (including scrapi
 
 ::: tip
 
-MeiliSearch provides a Docker Scraper image to scrape your documents. for details, see [meilisearch: scrape your content](https://www.meilisearch.com/docs/guides/front_end/search_bar_for_docs#scrape-your-content).
+MeiliSearch provides a Docker Scraper image to scrape your documents. for details, see [MeiliSearch: scrape your content](https://www.meilisearch.com/docs/guides/front_end/search_bar_for_docs#scrape-your-content).
 
-If you don't have docker installed, you can [run scraper from source code](https://github.com/meilisearch/docs-scraper?tab=readme-ov-file#from-source-code-).
+If you don't have Docker installed, you can [run scraper from source code](https://github.com/meilisearch/docs-scraper?tab=readme-ov-file#from-source-code-).
 
 :::
 
@@ -299,7 +299,7 @@ jobs:
 
 ::: tip Key for Scraper
 
-To secure your MeiliSearch instance, you can create a new key with limited permissions for the scraper. Similar to search key above, this key should only have access to the `index` and `documents` actions.
+To secure your MeiliSearch instance, you can create a new key with limited permissions for the scraper. Similar to search key above, this key should only have access to these actions: `["indexes.create","indexes.delete","settings.update","documents.add"]`
 
 :::
 
