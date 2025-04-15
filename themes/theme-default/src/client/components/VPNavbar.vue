@@ -115,6 +115,10 @@ useUpdateDeviceStatus(
   @media screen and (max-width: $MQMobile) {
     padding-inline-start: 4rem;
   }
+
+  @media print {
+    display: none;
+  }
 }
 
 .vp-navbar-items-wrapper {
