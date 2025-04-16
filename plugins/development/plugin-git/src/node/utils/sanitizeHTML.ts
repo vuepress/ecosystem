@@ -16,13 +16,9 @@ export const sanitizeHTML = (html: string): string => {
     .use(rehypeSanitize, {
       tagNames: ['a', 'em', 'strong', 'code'],
       attributes: {
-        a: [
-          // only allow absolute URLs
-          ['href', /^(https?:)?\/\/./],
-          'target',
-          'rel',
-        ],
+        a: [['href', /^https?:\/\//], 'target', 'rel'],
       },
+      strip: ['script', 'style'],
     })
     .use(rehypeStringify)
     .freeze() as unknown as Processor

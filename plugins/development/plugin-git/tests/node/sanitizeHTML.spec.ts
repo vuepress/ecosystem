@@ -20,6 +20,7 @@ describe('utils/sanitizeHTML', () => {
   it('should sanitize disallowed tags', () => {
     ;[
       ['<script>alert(1)</script>', ''],
+      ['<style>:root {}</style>', ''],
       ['<p>foo</p><script>alert(1)</script>', 'foo'],
       ['<span>foo</span><img src="foo.jpg>', 'foo'],
       [
@@ -35,8 +36,8 @@ describe('utils/sanitizeHTML', () => {
 
   it('should sanitize anchor href', () => {
     ;[
-      ['<a href="javascript:alert(1)">alert</a>', '<a>alert</a>'],
       ['<a href="/foo/">foo</a>', '<a>foo</a>'],
+      ['<a href="javascript:alert(1)">alert</a>', '<a>alert</a>'],
       ['<a href="mailto:xxx">email</a>', '<a>email</a>'],
       ['<a href="tel:xxx">phone</a>', '<a>phone</a>'],
     ].forEach(([html, expected]) => {
