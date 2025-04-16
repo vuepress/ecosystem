@@ -5,6 +5,7 @@ import type { MergedRawCommit } from './typings.js'
 import {
   getContributorInfo,
   getUserNameWithNoreplyEmail,
+  sanitizeHTML,
 } from './utils/index.js'
 
 const RE_CLEAN_REFS = /[()]/g
@@ -44,7 +45,7 @@ export const resolveChangelog = (
       time,
       email: contributor?.email || email,
       author: contributor?.name ?? contributor?.username ?? author,
-      message: app.markdown.renderInline(message),
+      message: sanitizeHTML(app.markdown.renderInline(message)),
     }
 
     if (coAuthors.length) resolved.coAuthors = coAuthors
