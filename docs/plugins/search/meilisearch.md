@@ -238,7 +238,7 @@ npm i -D @vuepress/plugin-meilisearch@next
 ```
 
 ```ts
-import { meiliSearchPlugin } from '@vuepress/plugin-meilisearch'
+import { meilisearchPlugin } from '@vuepress/plugin-meilisearch'
 
 export default {
   plugins: [
