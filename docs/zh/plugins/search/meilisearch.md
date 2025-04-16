@@ -200,7 +200,7 @@ curl \
   -H 'Authorization: Bearer <MASTER_KEY>' \
   # 描述 f
   --data-binary '{
-    "indexes": ["<YOUR_INDEX_NAME>"]，
+    "indexes": ["<YOUR_INDEX_NAME>"],
     "actions": ["search"],
     "expiresAt": null,
     "description": "Search key for <YOUR_INDEX_NAME>"

@@ -200,7 +200,7 @@ curl \
   -H 'Authorization: Bearer <MASTER_KEY>' \
   # description f
   --data-binary '{
-    "indexes": ["<YOUR_INDEX_NAME>"]，
+    "indexes": ["<YOUR_INDEX_NAME>"],
     "actions": ["search"],
     "expiresAt": null,
     "description": "Search key for <YOUR_INDEX_NAME>"
@@ -361,7 +361,7 @@ To secure your MeiliSearch instance, you can create a new key with limited permi
 
 - Details:
 
-  The number of milliseconds that wait between keystrokes to determine whether a search should be performed，Setting the value here to `0` or `false` is logically equivalent.
+  The number of milliseconds that wait between keystrokes to determine whether a search should be performed, Setting the value here to `0` or `false` is logically equivalent.
 
 ### searchParams
 
