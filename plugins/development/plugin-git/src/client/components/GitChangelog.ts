@@ -88,7 +88,7 @@ export const GitChangelog = defineComponent({
           [h('code', item.hash.slice(0, 5))],
         ),
         h('span', { class: 'vp-changelog-divider' }, '-'),
-        h('span', { class: 'vp-changelog-message' }, item.message),
+        h('span', { class: 'vp-changelog-message', innerHTML: item.message }),
         h('span', { 'class': 'vp-changelog-date', 'data-allow-mismatch': '' }, [
           locale.value.timeOn || 'on',
           ' ',

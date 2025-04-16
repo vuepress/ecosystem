@@ -40,6 +40,10 @@
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "execa": "^9.5.2",
+    "rehype-parse": "^9.0.1",
+    "rehype-sanitize": "^6.0.0",
+    "rehype-stringify": "^10.0.1",
+    "unified": "^11.0.5",
     "vue": "catalog:"
   },
   "peerDependencies": {
