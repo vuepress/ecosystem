@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.96](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.95...v2.0.0-rc.96) (2025-04-16)
+
+### Features
+
+- **plugin-meilisearch:** add pre-check when starting the plugin ([#433](https://github.com/vuepress/ecosystem/issues/433)) ([959edc9](https://github.com/vuepress/ecosystem/commit/959edc92b703fa98dbfc2b3b986c584158ab3ec4))
+
 # [2.0.0-rc.95](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.94...v2.0.0-rc.95) (2025-04-14)
 
 ### Features

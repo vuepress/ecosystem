@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.96](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.95...v2.0.0-rc.96) (2025-04-16)
+
+### Features
+
+- **theme-default:** hide navbar while printing ([585e65e](https://github.com/vuepress/ecosystem/commit/585e65ebcf10b2b34c516c5b8850b1f0d5f48d91))
+
 # [2.0.0-rc.95](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.94...v2.0.0-rc.95) (2025-04-14)
 
 **Note:** Version bump only for package @vuepress/theme-default

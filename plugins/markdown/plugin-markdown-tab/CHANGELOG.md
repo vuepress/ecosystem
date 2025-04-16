@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.96](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.95...v2.0.0-rc.96) (2025-04-16)
+
+### Bug Fixes
+
+- **plugin-markdown-tab:** fix code tab styles with code title ([5effefe](https://github.com/vuepress/ecosystem/commit/5effefef58065e3f09a23bf439e2fdebcc53b68a))
+
 # [2.0.0-rc.94](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.93...v2.0.0-rc.94) (2025-04-12)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-tab

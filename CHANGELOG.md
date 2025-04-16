@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.96](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.95...v2.0.0-rc.96) (2025-04-16)
+
+### Bug Fixes
+
+- **plugin-markdown-tab:** fix code tab styles with code title ([5effefe](https://github.com/vuepress/ecosystem/commit/5effefef58065e3f09a23bf439e2fdebcc53b68a))
+
+### Features
+
+- **plugin-git:** sanitize commit messages ([#436](https://github.com/vuepress/ecosystem/issues/436)) ([b00e290](https://github.com/vuepress/ecosystem/commit/b00e2902cdfbafc51530d2ac3025f38d081cb8cd))
+- **plugin-meilisearch:** add pre-check when starting the plugin ([#433](https://github.com/vuepress/ecosystem/issues/433)) ([959edc9](https://github.com/vuepress/ecosystem/commit/959edc92b703fa98dbfc2b3b986c584158ab3ec4))
+- **theme-default:** hide navbar while printing ([585e65e](https://github.com/vuepress/ecosystem/commit/585e65ebcf10b2b34c516c5b8850b1f0d5f48d91))
+
 # [2.0.0-rc.95](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.94...v2.0.0-rc.95) (2025-04-14)
 
 ### Bug Fixes

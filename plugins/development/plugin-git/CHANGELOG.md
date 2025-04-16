@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.96](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.95...v2.0.0-rc.96) (2025-04-16)
+
+### Features
+
+- **plugin-git:** sanitize commit messages ([#436](https://github.com/vuepress/ecosystem/issues/436)) ([b00e290](https://github.com/vuepress/ecosystem/commit/b00e2902cdfbafc51530d2ac3025f38d081cb8cd))
+
 # [2.0.0-rc.95](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.94...v2.0.0-rc.95) (2025-04-14)
 
 ### Bug Fixes
