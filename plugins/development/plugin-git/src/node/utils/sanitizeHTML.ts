@@ -1,5 +1,5 @@
 import rehypeParse from 'rehype-parse'
-import rehypeSanitize, { defaultSchema } from 'rehype-sanitize'
+import rehypeSanitize from 'rehype-sanitize'
 import rehypeStringify from 'rehype-stringify'
 import type { Processor } from 'unified'
 import { unified } from 'unified'
@@ -14,10 +14,14 @@ export const sanitizeHTML = (html: string): string => {
   rehypeInstance ??= unified()
     .use(rehypeParse, { fragment: true })
     .use(rehypeSanitize, {
-      ...defaultSchema,
+      tagNames: ['a', 'em', 'strong', 'code'],
       attributes: {
-        ...defaultSchema.attributes,
-        a: [...(defaultSchema.attributes?.a ?? []), 'target', 'rel'],
+        a: [
+          // only allow absolute URLs
+          ['href', /^(https?:)?\/\/./],
+          'target',
+          'rel',
+        ],
       },
     })
     .use(rehypeStringify)
