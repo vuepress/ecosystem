@@ -108,6 +108,7 @@ a {
   &.header-anchor {
     position: relative;
     color: inherit;
+    font-weight: inherit;
     text-decoration: none;
 
     &::before {
