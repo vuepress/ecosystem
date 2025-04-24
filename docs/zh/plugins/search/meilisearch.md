@@ -69,16 +69,14 @@ docker run -it --rm \
 
 ::: tip
 
-MeiliSearch 提供了一个 Docker 抓取器镜像来抓取你的文档。有关详细信息，请参阅 [MeiliSearch：抓取内容](https://www.meilisearch.com/docs/guides/front_end/search_bar_for_docs#scrape-your-content)。
-
-如果你没有安装 Docker，可以 [从源代码运行抓取器](https://github.com/meilisearch/docs-scraper?tab=readme-ov-file#from-source-code-)。
+如果你没有安装 Docker，可以 [从源代码运行抓取器](https://github.com/jqiue/docs-scraper?tab=readme-ov-file#from-source-code-)。
 
 :::
 
 首先，拉取最新的 MeiliSearch 抓取器镜像：
 
 ```sh
-docker pull getmeili/docs-scraper:latest
+docker pull jqiue/docs-scraper:latest
 ```
 
 然后为抓取器创建一个 **正确的配置文件**。这里提供了一个示例，你应将其保存在本地并根据需要进行修改：
@@ -108,47 +106,6 @@ docker pull getmeili/docs-scraper:latest
     }
   },
   "custom_settings": {
-    "searchableAttributes": [
-      "hierarchy_radio_lvl0",
-      "hierarchy_radio_lvl1",
-      "hierarchy_radio_lvl2",
-      "hierarchy_radio_lvl3",
-      "hierarchy_radio_lvl4",
-      "hierarchy_radio_lvl5",
-      "hierarchy_lvl0",
-      "hierarchy_lvl1",
-      "hierarchy_lvl2",
-      "hierarchy_lvl3",
-      "hierarchy_lvl4",
-      "hierarchy_lvl5",
-      "hierarchy_lvl6",
-      "content",
-      "lang",
-      "objectID",
-      "page_rank",
-      "level",
-      "position"
-    ],
-    "displayedAttributes": [
-      "hierarchy_radio_lvl0",
-      "hierarchy_radio_lvl1",
-      "hierarchy_radio_lvl2",
-      "hierarchy_radio_lvl3",
-      "hierarchy_radio_lvl4",
-      "hierarchy_radio_lvl5",
-      "hierarchy_lvl0",
-      "hierarchy_lvl1",
-      "hierarchy_lvl2",
-      "hierarchy_lvl3",
-      "hierarchy_lvl4",
-      "hierarchy_lvl5",
-      "hierarchy_lvl6",
-      "anchor",
-      "url",
-      "lang",
-      "content",
-      "objectID"
-    ],
     "filterableAttributes": ["lang"]
   }
 }
@@ -176,7 +133,7 @@ docker run -t --rm \
   -e MEILISEARCH_HOST_URL='<MEILISEARCH_HOST_URL>' \
   -e MEILISEARCH_API_KEY='<MEILISEARCH_MASTER_KEY>' \
   -v <absolute-path-to-your-config-file>:/docs-scraper/config.json \
-  getmeili/docs-scraper:latest pipenv run ./docs_scraper config.json
+  jqiue/docs-scraper:latest pipenv run ./docs_scraper config.json
 ```
 
 此处：
@@ -186,6 +143,26 @@ docker run -t --rm \
 - `<absolute-path-to-your-config-file>` 是你创建的配置文件的绝对路径。
 
 抓取完成后，MeiliSearch 将更新现有索引以包含最新的文档内容。
+
+抓取器每次都会将索引删除并重新创建，在这个过程中所有的文档都将被删除并重新添加，这对过多的文档来说可能会很慢，但我们只需要更新部分文档内容时就可以使用 `only_urls` 告诉抓取器只更新指定的 URL 而不必全部抓取一遍
+
+```json
+{
+  "only_urls": ["https://<YOUR_WEBSITE_URL>/specifies/"]
+}
+```
+
+在项目使用`npx gous <docsDir> <replaceUrl> <scraperPath>`可以为你的抓取器配置文件自动生成 `only_urls`
+
+::: tip 说明
+
+如果你的项目不是使用 Git 进行管理或者系统没有安装 Git 则无法运行
+
+- `docsDir` `.vuepress`的父目录，比如你的目录是`docs/.vuepress`，则该值为 `docs`
+- `replaceUrl` 网站的 URL
+- `scraperPath` 抓取器配置文件的路径
+
+:::
 
 ### 设置插件
 
@@ -294,12 +271,12 @@ jobs:
             -e MEILISEARCH_HOST_URL=$HOST_URL \
             -e MEILISEARCH_API_KEY=$API_KEY \
             -v $CONFIG_FILE_PATH:/docs-scraper/config.json \
-            getmeili/docs-scraper:latest pipenv run ./docs_scraper config.json
+            jqiue/docs-scraper:latest pipenv run ./docs_scraper config.json
 ```
 
 ::: tip 抓取器密钥
 
-为了保护你的 MeiliSearch 实例，你可以为抓取器创建一个具有有限权限的新密钥。与上面的搜索密钥类似，此密钥应仅对以下操作具有访问权限：`["indexes.create","indexes.delete","settings.update","documents.add"]`。
+为了保护你的 MeiliSearch 实例，你可以为抓取器创建一个具有有限权限的新密钥。与上面的搜索密钥类似，此密钥应仅对以下操作具有访问权限：`["search","indexes.create","indexes.delete","settings.update","documents.add"]`。
 
 :::
 
