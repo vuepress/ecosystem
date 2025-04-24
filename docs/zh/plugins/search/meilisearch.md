@@ -57,7 +57,7 @@ docker run -it --rm \
 
 此处 `<YOUR_MASTER_KEY>` 是你需要自行设置的 MeiliSearch 主密钥（需 >= 16 字节），用于访问 MeiliSearch API。
 
-::: 重要 不要暴露主密钥
+::: important 不要暴露主密钥
 
 搜索密钥可以生成供公共访问，仅允许执行搜索操作。
 
