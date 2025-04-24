@@ -69,16 +69,14 @@ Your Master Key should only be used for internal server access (including scrapi
 
 ::: tip
 
-MeiliSearch provides a Docker Scraper image to scrape your documents. for details, see [MeiliSearch: scrape your content](https://www.meilisearch.com/docs/guides/front_end/search_bar_for_docs#scrape-your-content).
-
-If you don't have Docker installed, you can [run scraper from source code](https://github.com/meilisearch/docs-scraper?tab=readme-ov-file#from-source-code-).
+If you don't have Docker installed, you can [run scraper from source code](https://github.com/jqiue/docs-scraper?tab=readme-ov-file#from-source-code-).
 
 :::
 
 First, pull the latest MeiliSearch Scraper image:
 
 ```sh
-docker pull getmeili/docs-scraper:latest
+docker pull jqiue/docs-scraper:latest
 ```
 
 Then, create a **correct configuration file** for the scraper. Here, we provide a sample, which you should save it locally and modify according to your needs:
@@ -108,47 +106,6 @@ Then, create a **correct configuration file** for the scraper. Here, we provide 
     }
   },
   "custom_settings": {
-    "searchableAttributes": [
-      "hierarchy_radio_lvl0",
-      "hierarchy_radio_lvl1",
-      "hierarchy_radio_lvl2",
-      "hierarchy_radio_lvl3",
-      "hierarchy_radio_lvl4",
-      "hierarchy_radio_lvl5",
-      "hierarchy_lvl0",
-      "hierarchy_lvl1",
-      "hierarchy_lvl2",
-      "hierarchy_lvl3",
-      "hierarchy_lvl4",
-      "hierarchy_lvl5",
-      "hierarchy_lvl6",
-      "content",
-      "lang",
-      "objectID",
-      "page_rank",
-      "level",
-      "position"
-    ],
-    "displayedAttributes": [
-      "hierarchy_radio_lvl0",
-      "hierarchy_radio_lvl1",
-      "hierarchy_radio_lvl2",
-      "hierarchy_radio_lvl3",
-      "hierarchy_radio_lvl4",
-      "hierarchy_radio_lvl5",
-      "hierarchy_lvl0",
-      "hierarchy_lvl1",
-      "hierarchy_lvl2",
-      "hierarchy_lvl3",
-      "hierarchy_lvl4",
-      "hierarchy_lvl5",
-      "hierarchy_lvl6",
-      "anchor",
-      "url",
-      "lang",
-      "content",
-      "objectID"
-    ],
     "filterableAttributes": ["lang"]
   }
 }
@@ -176,7 +133,7 @@ docker run -t --rm \
   -e MEILISEARCH_HOST_URL='<MEILISEARCH_HOST_URL>' \
   -e MEILISEARCH_API_KEY='<MEILISEARCH_MASTER_KEY>' \
   -v <absolute-path-to-your-config-file>:/docs-scraper/config.json \
-  getmeili/docs-scraper:latest pipenv run ./docs_scraper config.json
+  jqiue/docs-scraper:latest pipenv run ./docs_scraper config.json
 ```
 
 Here:
@@ -186,6 +143,26 @@ Here:
 - `<absolute-path-to-your-config-file>` is the absolute path to the configuration file you created above.
 
 When the scraper completes, MeiliSearch will update the existing index with latest document content.
+
+Each time the scraper deletes and recreates the index. During this process, all the documents will be deleted and re-added. This might be slow for too many documents. However, when we only need to update part of the document content, we can use `only_urls` to tell the scraper to update only the specified urls instead of crawling all of them once.
+
+```json
+{
+  "only_urls": ["https://<YOUR_WEBSITE_URL>/specifies/"]
+}
+```
+
+Using `npx gous <docsDir> <replaceUrl> <scraperPath>` in your project can automatically generate `only_urls` for your scraper configuration file.
+
+::: tip description
+
+If your project is not managed using Git or the os does not have Git installed, it cannot run.
+
+- `docsDir` The parent directory of `.vuepress`. For example, if your directory is `docs/.vuepress`, then this value is `docs`
+- `replaceUrl` The URL of your document.
+- `scraperPath` The path of the scraper configuration file
+
+:::
 
 ### Setting up the Plugin
 
@@ -294,12 +271,12 @@ jobs:
             -e MEILISEARCH_HOST_URL=$HOST_URL \
             -e MEILISEARCH_API_KEY=$API_KEY \
             -v $CONFIG_FILE_PATH:/docs-scraper/config.json \
-            getmeili/docs-scraper:latest pipenv run ./docs_scraper config.json
+            jqiue/docs-scraper:latest pipenv run ./docs_scraper config.json
 ```
 
 ::: tip Key for Scraper
 
-To secure your MeiliSearch instance, you can create a new key with limited permissions for the scraper. Similar to search key above, this key should only have access to these actions: `["indexes.create","indexes.delete","settings.update","documents.add"]`
+To secure your MeiliSearch instance, you can create a new key with limited permissions for the scraper. Similar to search key above, this key should only have access to these actions: `["search","indexes.create","indexes.delete","settings.update","documents.add"]`
 
 :::
 
