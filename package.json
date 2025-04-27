@@ -69,7 +69,7 @@
   },
   "packageManager": "pnpm@10.8.0",
   "engines": {
-    "node": "^18.19.0 || >= 20.6.0"
+    "node": ">= 20.6.0"
   },
   "pnpm": {
     "peerDependencyRules": {
