@@ -42,6 +42,6 @@
   },
   "dependencies": {
     "ci-info": "^4.2.0",
-    "lru-cache": "^10.4.3"
+    "lru-cache": "^11.1.0"
   }
 }
