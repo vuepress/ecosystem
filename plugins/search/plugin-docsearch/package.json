@@ -52,7 +52,7 @@
     "vuepress": "catalog:"
   },
   "devDependencies": {
-    "algoliasearch": "5.23.3"
+    "algoliasearch": "5.23.4"
   },
   "publishConfig": {
     "access": "public"

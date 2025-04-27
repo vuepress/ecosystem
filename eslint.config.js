@@ -148,4 +148,20 @@ export default vuepress(
       'no-console': 'off',
     },
   },
+  {
+    files: ['**/template/**'],
+    rules: {
+      'import/no-unresolved': 'off',
+      'vue/multi-word-component-names': [
+        'error',
+        { ignores: ['Article', 'Category', 'Tag', 'Timeline'] },
+      ],
+    },
+  },
+  {
+    files: ['**/*.js'],
+    rules: {
+      'import/named': 'off',
+    },
+  },
 )
