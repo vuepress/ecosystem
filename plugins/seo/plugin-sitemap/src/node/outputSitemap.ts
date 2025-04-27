@@ -25,23 +25,39 @@ export const outputSitemap = async (
 
   const robotTxtPath = dir.dest('robots.txt')
 
+  const { succeed } = logger.load(
+    `Appended sitemap path to ${colors.cyan('robots.txt')}`,
+  )
   if (fs.existsSync(robotTxtPath)) {
-    const { succeed } = logger.load(
-      `Appended sitemap path to ${colors.cyan('robots.txt')}`,
-    )
-
     const robotsTxt = await fs.readFile(robotTxtPath, 'utf-8')
 
-    const newRobotsTxtContent = `${robotsTxt.replace(
-      /^Sitemap: .*$/u,
-      '',
-    )}\nSitemap: ${hostname}${base}${sitemapPath}\n`
+    const includesSitmap = robotsTxt.includes('Sitemap')
 
-    await fs.writeFile(robotTxtPath, newRobotsTxtContent, {
+    if (includesSitmap) {
+      const newRobotsTxtContent = `${robotsTxt.replace(
+        /^Sitemap: .*$/u,
+        '',
+      )}\nSitemap: ${hostname}${base}${sitemapPath}\n`
+
+      await fs.writeFile(robotTxtPath, newRobotsTxtContent, {
+        encoding: 'utf-8',
+        flag: 'w',
+      })
+    } else {
+      const robotsSitemap = `\nSitemap: ${hostname}${base}${sitemapPath}\n`
+
+      await fs.writeFile(robotTxtPath, robotsSitemap, {
+        encoding: 'utf-8',
+        flag: 'a',
+      })
+    }
+  } else {
+    const robotsSitemap = `Sitemap: ${hostname}${base}${sitemapPath}\n`
+    await fs.writeFile(robotTxtPath, robotsSitemap, {
       encoding: 'utf-8',
       flag: 'w',
     })
-
-    succeed()
   }
+
+  succeed()
 }
