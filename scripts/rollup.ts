@@ -76,7 +76,7 @@ export const rollupBundle = (
       esbuild({
         charset: 'utf8',
         minify: true,
-        target: 'node18.19.0',
+        target: 'node20.6.0',
         define,
         loaders: {
           '.json': 'json',
