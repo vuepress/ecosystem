@@ -56,6 +56,6 @@
     "access": "public"
   },
   "devDependencies": {
-    "rollup": "^4.40.0"
+    "rollup": "^4.40.1"
   }
 }
