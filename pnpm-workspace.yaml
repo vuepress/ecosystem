@@ -15,6 +15,7 @@ peerDependencyRules:
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - esbuild
+  - unrs-resolver
 
 catalog:
   '@vuepress/bundler-vite': 2.0.0-rc.21
