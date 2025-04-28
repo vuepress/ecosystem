@@ -3,9 +3,11 @@ import { entries, fromEntries } from '@vuepress/helper/client'
 import type { IndexObject } from 'slimsearch'
 import { loadIndex } from 'slimsearch'
 
-import type { MessageData } from '../client/typings/index.js'
-import { getSearchResults } from '../client/worker/result.js'
-import { getSuggestions } from '../client/worker/suggestion.js'
+import type { WorkerMessageData } from '../client/typings/index.js'
+import {
+  getSearchResults,
+  getSuggestions,
+} from '../client/worker-utils/index.js'
 import type {
   IndexItem,
   SearchIndexStore,
@@ -33,7 +35,7 @@ const searchIndex: SearchIndexStore = fromEntries(
 
 self.onmessage = ({
   data: { type = 'all', query, locale, options, id },
-}: MessageEvent<MessageData>): void => {
+}: MessageEvent<WorkerMessageData>): void => {
   const searchLocaleIndex = searchIndex[locale]
 
   if (type === 'suggest')

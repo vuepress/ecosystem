@@ -15,7 +15,7 @@ import type {
   Word,
   WorkerSearchOptions,
 } from '../typings/index.js'
-import { getMatchedContent } from './matchContent.js'
+import { getMatchedContent } from './getMatchedContent.js'
 
 export type MiniSearchResult = IndexItem & {
   terms: string[]
@@ -30,11 +30,11 @@ interface PageResult {
 
 type ResultMap = Record<string, PageResult>
 
-const sortWithTotal = (valueA: PageResult, valueB: PageResult): number =>
+const sortResultByTotal = (valueA: PageResult, valueB: PageResult): number =>
   valueB.contents.reduce((total, [, score]) => total + score, 0) -
   valueA.contents.reduce((total, [, score]) => total + score, 0)
 
-const sortWithMax = (valueA: PageResult, valueB: PageResult): number =>
+const sortResultByMax = (valueA: PageResult, valueB: PageResult): number =>
   Math.max(...valueB.contents.map(([, score]) => score)) -
   Math.max(...valueA.contents.map(([, score]) => score))
 
@@ -134,7 +134,7 @@ export const getSearchResults = (
 
   return entries(resultMap)
     .sort(([, valueA], [, valueB]) =>
-      (sortStrategy ? sortWithTotal : sortWithMax)(valueA, valueB),
+      (sortStrategy ? sortResultByTotal : sortResultByMax)(valueA, valueB),
     )
     .map(([id, { title, contents }]) => {
       // Search to get title

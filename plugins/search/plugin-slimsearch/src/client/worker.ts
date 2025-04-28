@@ -3,14 +3,13 @@ import database from '@temp/slimsearch/index.js'
 import { sortStrategy } from '@temp/slimsearch/worker-options.js'
 import { loadJSONIndex } from 'slimsearch'
 
-import type { IndexItem } from '../../shared/index.js'
-import type { MessageData } from '../typings/index.js'
-import { getSearchResults } from './result.js'
-import { getSuggestions } from './suggestion.js'
+import type { IndexItem } from '../shared/index.js'
+import type { WorkerMessageData } from './typings/index.js'
+import { getSearchResults, getSuggestions } from './worker-utils/index.js'
 
 self.onmessage = async ({
   data: { type = 'all', query, locale = '/', options, id },
-}: MessageEvent<MessageData>): Promise<void> => {
+}: MessageEvent<WorkerMessageData>): Promise<void> => {
   const { default: localeIndex } = await database[locale]()
 
   const searchLocaleIndex = loadJSONIndex<string, IndexItem, IndexItem>(
