@@ -24,36 +24,29 @@ export const outputSitemap = async (
   logger.succeed(`Generating sitemap to ${colors.cyan(sitemapPath)}`)
 
   const robotTxtPath = dir.dest('robots.txt')
+  const sitemapDeclaration = `Sitemap: ${hostname}${base}${sitemapPath}\n`
 
   const { succeed } = logger.load(
     `Appended sitemap path to ${colors.cyan('robots.txt')}`,
   )
   if (fs.existsSync(robotTxtPath)) {
     const robotsTxt = await fs.readFile(robotTxtPath, 'utf-8')
+    const siteMapRegex = /^Sitemap: .*$/mu
 
-    const includesSitmap = robotsTxt.includes('Sitemap')
-
-    if (includesSitmap) {
-      const newRobotsTxtContent = `${robotsTxt.replace(
-        /^Sitemap: .*$/u,
-        '',
-      )}\nSitemap: ${hostname}${base}${sitemapPath}\n`
-
-      await fs.writeFile(robotTxtPath, newRobotsTxtContent, {
-        encoding: 'utf-8',
-        flag: 'w',
-      })
+    if (siteMapRegex.test(robotsTxt)) {
+      await fs.writeFile(
+        robotTxtPath,
+        robotsTxt.replace(siteMapRegex, sitemapDeclaration),
+        { encoding: 'utf-8', flag: 'w' },
+      )
     } else {
-      const robotsSitemap = `\nSitemap: ${hostname}${base}${sitemapPath}\n`
-
-      await fs.writeFile(robotTxtPath, robotsSitemap, {
+      await fs.writeFile(robotTxtPath, `\n${sitemapDeclaration}`, {
         encoding: 'utf-8',
         flag: 'a',
       })
     }
   } else {
-    const robotsSitemap = `Sitemap: ${hostname}${base}${sitemapPath}\n`
-    await fs.writeFile(robotTxtPath, robotsSitemap, {
+    await fs.writeFile(robotTxtPath, sitemapDeclaration, {
       encoding: 'utf-8',
       flag: 'w',
     })
