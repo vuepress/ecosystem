@@ -4,11 +4,16 @@ import type { IndexObject } from 'slimsearch'
 import { loadIndex } from 'slimsearch'
 
 import type { MessageData } from '../client/typings/index.js'
-import { getResults } from '../client/worker/result.js'
+import { getSearchResults } from '../client/worker/result.js'
 import { getSuggestions } from '../client/worker/suggestion.js'
-import type { IndexItem, SearchIndexStore } from '../shared/index.js'
+import type {
+  IndexItem,
+  SearchIndexStore,
+  SlimSearchSortStrategy,
+} from '../shared/index.js'
 
 declare const __SLIMSEARCH_INDEX__: string
+declare const __SLIMSEARCH_SORT_STRATEGY__: SlimSearchSortStrategy
 
 const searchIndex: SearchIndexStore = fromEntries(
   entries(
@@ -38,7 +43,16 @@ self.onmessage = ({
       getSuggestions(query, searchLocaleIndex, options),
     ])
   else if (type === 'search')
-    self.postMessage([type, id, getResults(query, searchLocaleIndex, options)])
+    self.postMessage([
+      type,
+      id,
+      getSearchResults(
+        query,
+        searchLocaleIndex,
+        options,
+        __SLIMSEARCH_SORT_STRATEGY__,
+      ),
+    ])
   else
     self.postMessage({
       suggestions: [
@@ -46,6 +60,15 @@ self.onmessage = ({
         id,
         getSuggestions(query, searchLocaleIndex, options),
       ],
-      results: [type, id, getResults(query, searchLocaleIndex, options)],
+      results: [
+        type,
+        id,
+        getSearchResults(
+          query,
+          searchLocaleIndex,
+          options,
+          __SLIMSEARCH_SORT_STRATEGY__,
+        ),
+      ],
     })
 }

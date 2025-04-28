@@ -17,8 +17,6 @@ import type {
 } from '../typings/index.js'
 import { getMatchedContent } from './matchContent.js'
 
-declare const __SLIMSEARCH_SORT_STRATEGY__: 'max' | 'total'
-
 export type MiniSearchResult = IndexItem & {
   terms: string[]
   score: number
@@ -40,10 +38,11 @@ const sortWithMax = (valueA: PageResult, valueB: PageResult): number =>
   Math.max(...valueB.contents.map(([, score]) => score)) -
   Math.max(...valueA.contents.map(([, score]) => score))
 
-export const getResults = (
+export const getSearchResults = (
   query: string,
   localeIndex: SearchIndex<string, IndexItem, IndexItem>,
   searchOptions: WorkerSearchOptions = {},
+  sortStrategy = 'max',
 ): SearchResult[] => {
   const resultMap: ResultMap = {}
 
@@ -135,9 +134,7 @@ export const getResults = (
 
   return entries(resultMap)
     .sort(([, valueA], [, valueB]) =>
-      __SLIMSEARCH_SORT_STRATEGY__ === 'total'
-        ? sortWithTotal(valueA, valueB)
-        : sortWithMax(valueA, valueB),
+      (sortStrategy ? sortWithTotal : sortWithMax)(valueA, valueB),
     )
     .map(([id, { title, contents }]) => {
       // Search to get title

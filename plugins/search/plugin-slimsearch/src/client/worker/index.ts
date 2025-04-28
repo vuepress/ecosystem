@@ -1,10 +1,11 @@
 /* eslint-disable no-restricted-globals */
 import database from '@temp/slimsearch/index.js'
+import { sortStrategy } from '@temp/slimsearch/worker-options.js'
 import { loadJSONIndex } from 'slimsearch'
 
 import type { IndexItem } from '../../shared/index.js'
 import type { MessageData } from '../typings/index.js'
-import { getResults } from './result.js'
+import { getSearchResults } from './result.js'
 import { getSuggestions } from './suggestion.js'
 
 self.onmessage = async ({
@@ -31,7 +32,11 @@ self.onmessage = async ({
       getSuggestions(query, searchLocaleIndex, options),
     ])
   else if (type === 'search')
-    self.postMessage([type, id, getResults(query, searchLocaleIndex, options)])
+    self.postMessage([
+      type,
+      id,
+      getSearchResults(query, searchLocaleIndex, options, sortStrategy),
+    ])
   else
     self.postMessage({
       suggestions: [
@@ -39,6 +44,10 @@ self.onmessage = async ({
         id,
         getSuggestions(query, searchLocaleIndex, options),
       ],
-      results: [type, id, getResults(query, searchLocaleIndex, options)],
+      results: [
+        type,
+        id,
+        getSearchResults(query, searchLocaleIndex, options, sortStrategy),
+      ],
     })
 }
