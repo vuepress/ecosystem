@@ -13,10 +13,9 @@ export const generateRobotsTxt = async (app: App): Promise<void> => {
   if (content && !content.includes('User-agent')) {
     fail('robots.txt seems invalid!')
   } else {
-    content += '\nUser-agent:*\nDisallow:\n'
-
+    content = '\nUser-agent:*\nDisallow:\n'
     await fs.writeFile(app.dir.dest('robots.txt'), content, {
-      flag: 'w',
+      flag: 'a',
     })
 
     succeed()
