@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.97](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.96...v2.0.0-rc.97) (2025-04-28)
+
+### Bug Fixes
+
+- **helper:** fix heading normalize style ([0242dcc](https://github.com/vuepress/ecosystem/commit/0242dccbe16c161d3b5a79a2936db188d26e290b))
+- **plugin-markdown-hint:** fix print style, close [#438](https://github.com/vuepress/ecosystem/issues/438) ([55f8473](https://github.com/vuepress/ecosystem/commit/55f8473dde174fadc94e33d4b794f52fe173774d))
+- **plugin-seo:** overlay issue when using with plugin-sitemap ([#442](https://github.com/vuepress/ecosystem/issues/442)) ([64894c5](https://github.com/vuepress/ecosystem/commit/64894c52759c0245d0f1da165ad4da56081f4b61))
+- **plugin-slimsearch:** fix dev server worker, close [#439](https://github.com/vuepress/ecosystem/issues/439) ([4c405cf](https://github.com/vuepress/ecosystem/commit/4c405cf8300278d75e81453137c7fa3f1601eb28))
+- **theme-default:** fix hero action button hover, close [#437](https://github.com/vuepress/ecosystem/issues/437) ([0b51977](https://github.com/vuepress/ecosystem/commit/0b519776c6971b8924715e9232a88189c1620db8))
+
+### Features
+
+- **plugin-sitemap:** sitemap is always written to robots ([#443](https://github.com/vuepress/ecosystem/issues/443)) ([9b2e3b9](https://github.com/vuepress/ecosystem/commit/9b2e3b9c81be344c509a9019f9e5ac70c041e322))
+
 # [2.0.0-rc.96](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.95...v2.0.0-rc.96) (2025-04-16)
 
 ### Bug Fixes

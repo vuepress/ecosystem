@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.97](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.96...v2.0.0-rc.97) (2025-04-28)
+
+### Bug Fixes
+
+- **theme-default:** fix hero action button hover, close [#437](https://github.com/vuepress/ecosystem/issues/437) ([0b51977](https://github.com/vuepress/ecosystem/commit/0b519776c6971b8924715e9232a88189c1620db8))
+
 # [2.0.0-rc.96](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.95...v2.0.0-rc.96) (2025-04-16)
 
 ### Features

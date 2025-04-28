@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.97](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.96...v2.0.0-rc.97) (2025-04-28)
+
+### Bug Fixes
+
+- **plugin-markdown-hint:** fix print style, close [#438](https://github.com/vuepress/ecosystem/issues/438) ([55f8473](https://github.com/vuepress/ecosystem/commit/55f8473dde174fadc94e33d4b794f52fe173774d))
+
 # [2.0.0-rc.94](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.93...v2.0.0-rc.94) (2025-04-12)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-hint

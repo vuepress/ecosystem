@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.97](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.96...v2.0.0-rc.97) (2025-04-28)
+
+### Bug Fixes
+
+- **helper:** fix heading normalize style ([0242dcc](https://github.com/vuepress/ecosystem/commit/0242dccbe16c161d3b5a79a2936db188d26e290b))
+
 # [2.0.0-rc.94](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.93...v2.0.0-rc.94) (2025-04-12)
 
 **Note:** Version bump only for package @vuepress/helper

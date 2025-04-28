@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.97](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.96...v2.0.0-rc.97) (2025-04-28)
+
+### Features
+
+- **plugin-sitemap:** sitemap is always written to robots ([#443](https://github.com/vuepress/ecosystem/issues/443)) ([9b2e3b9](https://github.com/vuepress/ecosystem/commit/9b2e3b9c81be344c509a9019f9e5ac70c041e322))
+
 # [2.0.0-rc.96](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.95...v2.0.0-rc.96) (2025-04-16)
 
 **Note:** Version bump only for package @vuepress/plugin-sitemap

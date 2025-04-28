@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.97](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.96...v2.0.0-rc.97) (2025-04-28)
+
+### Bug Fixes
+
+- **plugin-seo:** overlay issue when using with plugin-sitemap ([#442](https://github.com/vuepress/ecosystem/issues/442)) ([64894c5](https://github.com/vuepress/ecosystem/commit/64894c52759c0245d0f1da165ad4da56081f4b61))
+
 # [2.0.0-rc.96](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.95...v2.0.0-rc.96) (2025-04-16)
 
 **Note:** Version bump only for package @vuepress/plugin-seo
