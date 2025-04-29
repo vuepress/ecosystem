@@ -1,0 +1,30 @@
+{
+  "name": "@vuepress/meilisearch-only-urls-generator",
+  "version": "0.1.0",
+  "keywords": [
+    "vuepress"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/tools/meilisearch-only-urls-generator/",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "tools/meilisearch-only-urls-generator"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/index.js",
+  "bin": {
+    "gous": "./lib/index.js"
+  },
+  "author": "JQiue",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}

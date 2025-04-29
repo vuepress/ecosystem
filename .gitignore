@@ -32,3 +32,5 @@ tsconfig.vitest-temp.json
 
 # Webstorm
 .idea
+
+!tools/meilisearch-only-urls-generator/lib
