@@ -13,6 +13,8 @@
     "url": "git+https://github.com/vuepress/ecosystem.git",
     "directory": "tools/meilisearch-only-urls-generator"
   },
+  "license": "MIT",
+  "author": "JQiue, Mister-Hope",
   "type": "module",
   "exports": {
     ".": "./lib/index.js",
@@ -22,8 +24,11 @@
   "bin": {
     "gous": "./lib/index.js"
   },
-  "author": "JQiue, Mister-Hope",
-  "license": "MIT",
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
+  },
   "engines": {
     "node": ">=18"
   }
