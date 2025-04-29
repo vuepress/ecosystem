@@ -1,11 +1,11 @@
-import { execa } from 'execa'
+import { spawn } from 'node:child_process'
 import type { GitContributorInfo } from '../../shared/index.js'
 import type { GitPluginOptions } from '../options.js'
 import type { MergedRawCommit, RawCommit } from '../typings.js'
+import { logger } from './logger.js'
 
 const SPLIT_CHAR = '[GIT_LOG_COMMIT_END]'
 const RE_SPLIT = /\[GIT_LOG_COMMIT_END\]$/
-
 const RE_CO_AUTHOR = /^ *Co-authored-by: ?([^<]*)<([^>]*)> */gim
 
 const getCoAuthors = (
@@ -13,25 +13,66 @@ const getCoAuthors = (
 ): Pick<GitContributorInfo, 'email' | 'name'>[] => {
   if (!body) return []
 
-  return [...body.matchAll(RE_CO_AUTHOR)]
-    .map(([, name, email]) => ({
-      name: name.trim(),
-      email: email.trim(),
-    }))
-    .filter(Boolean)
+  return [...body.matchAll(RE_CO_AUTHOR)].map(([, name, email]) => ({
+    name: name.trim(),
+    email: email.trim(),
+  }))
 }
 
 const getFormat = ({ contributors, changelog }: GitPluginOptions): string => {
-  // hash | _ | _ | author_date | _ | _ | _
-  if (!contributors && !changelog) return '%H|||%ad|||'
-  // hash | author_name | author_email | author_date | _ | _ | body
-  if (contributors && !changelog) return '%H|%an|%ae|%ad|||%b'
+  if (!contributors && !changelog)
+    // hash | _ | _ | author_date | _ | _ | _
+    return '%H|||%ad|||'
+
+  if (contributors && !changelog)
+    // hash | author_name | author_email | author_date | _ | _ | body
+    return '%H|%an|%ae|%ad|||%b'
+
   // hash | author_name | author_email | author_date | subject | ref | body
   return '%H|%an|%ae|%ad|%s|%d|%b'
 }
 
 /**
- * Get raw commits
+ * Helper function to run git command using spawn and return stdout as a promise.
+ * Rejects if the git command exits with a non-zero code.
+ */
+const runGitLog = (args: string[], cwd: string): Promise<string> =>
+  new Promise((resolve, reject) => {
+    const gitProcess = spawn('git', ['log', ...args], {
+      cwd,
+      stdio: ['ignore', 'pipe', 'pipe'],
+    })
+
+    let stdoutData = ''
+    let stderrData = ''
+
+    gitProcess.stdout.on('data', (chunk: Buffer) => {
+      stdoutData += chunk.toString('utf8')
+    })
+
+    gitProcess.stderr.on('data', (chunk: Buffer) => {
+      stderrData += chunk.toString('utf8')
+    })
+
+    gitProcess.on('error', (error) => {
+      reject(new Error(`Failed to spawn 'git log': ${error.message}`))
+    })
+
+    gitProcess.on('close', (code) => {
+      if (code === 0) {
+        resolve(stdoutData)
+      } else {
+        reject(
+          new Error(
+            `'git log' failed with exit code ${code}: ${stderrData.trim()}`,
+          ),
+        )
+      }
+    })
+  })
+
+/**
+ * Get raw commits for a specific file
  *
  * ${commit_hash} ${author_name} ${author_email} ${author_date} ${subject} ${ref} ${body}
  *
@@ -43,11 +84,10 @@ export const getRawCommits = async (
   options: GitPluginOptions,
 ): Promise<RawCommit[]> => {
   const format = getFormat(options)
+
   try {
-    const { stdout } = await execa(
-      'git',
+    const stdout = await runGitLog(
       [
-        'log',
         '--max-count=-1',
         `--format=${format}${SPLIT_CHAR}`,
         '--date=unix',
@@ -55,7 +95,7 @@ export const getRawCommits = async (
         '--',
         filepath,
       ],
-      { cwd },
+      cwd,
     )
 
     return stdout
@@ -63,9 +103,18 @@ export const getRawCommits = async (
       .split(`${SPLIT_CHAR}\n`)
       .filter(Boolean)
       .map((rawString) => {
-        const [hash, author, email, time, message, refs, body] = rawString
-          .split('|')
-          .map((v) => v.trim())
+        const parts = rawString.split('|').map((v) => v.trim())
+        const [
+          hash = '',
+          author = '',
+          email = '',
+          time = '0',
+          message = '',
+          refs = '',
+        ] = parts
+        // ensure body containing `|` is not splitted
+        const body = parts.slice(6).join('|').trim()
+
         return {
           filepath,
           hash,
@@ -78,7 +127,9 @@ export const getRawCommits = async (
           coAuthors: getCoAuthors(body),
         }
       })
-  } catch {
+  } catch (error) {
+    logger.error(`Failed to get commits for ${filepath} in ${cwd}:`, error)
+
     return []
   }
 }
@@ -88,8 +139,9 @@ export const mergeRawCommits = (commits: RawCommit[]): MergedRawCommit[] => {
 
   commits.forEach(({ filepath, ...commit }) => {
     const _commit = commitMap.get(commit.hash)
+
     if (_commit) _commit.filepaths.push(filepath)
-    else commitMap.set(commit.hash, { filepaths: [filepath], ...commit })
+    else commitMap.set(commit.hash, { ...commit, filepaths: [filepath] })
   })
 
   const result = Array.from(commitMap.values())
@@ -101,11 +153,11 @@ export const getCommits = async (
   cwd: string,
   options: GitPluginOptions,
 ): Promise<MergedRawCommit[]> => {
-  const rawCommits = await Promise.all(
-    filepaths.map((filepath) => getRawCommits(filepath, cwd, options)),
-  )
+  const rawCommits = (
+    await Promise.all(
+      filepaths.map((filepath) => getRawCommits(filepath, cwd, options)),
+    )
+  ).flat()
 
-  return mergeRawCommits(rawCommits.flat()).sort((a, b) =>
-    b.time - a.time > 0 ? 1 : -1,
-  )
+  return mergeRawCommits(rawCommits).sort((a, b) => b.time - a.time)
 }
