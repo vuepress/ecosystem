@@ -48,11 +48,11 @@
     "ts-debounce": "^4.0.0",
     "vue": "catalog:"
   },
-  "peerDependencies": {
-    "vuepress": "catalog:"
-  },
   "devDependencies": {
     "algoliasearch": "5.23.4"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

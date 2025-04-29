@@ -4,14 +4,13 @@
   "scripts": {
     "docs:build": "vuepress build . --clean-cache --clean-temp",
     "docs:build-webpack": "DOCS_BUNDLER=webpack pnpm docs:build",
-    "docs:dev": "vuepress dev .",
     "docs:clean-dev": "vuepress dev . --clean-cache --clean-temp",
-    "docs:dev-webpack": "DOCS_BUNDLER=webpack pnpm docs:dev",
     "docs:clean-dev-webpack": "DOCS_BUNDLER=webpack pnpm docs:clean-dev",
+    "docs:dev": "vuepress dev .",
+    "docs:dev-webpack": "DOCS_BUNDLER=webpack pnpm docs:dev",
     "docs:serve": "http-server -a localhost .vuepress/dist"
   },
   "dependencies": {
-    "@vuepress/shiki-twoslash": "workspace:*",
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
     "@vuepress/helper": "workspace:*",
@@ -38,6 +37,7 @@
     "@vuepress/plugin-revealjs": "workspace:*",
     "@vuepress/plugin-search": "workspace:*",
     "@vuepress/plugin-shiki": "workspace:*",
+    "@vuepress/shiki-twoslash": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
     "@vueuse/core": "catalog:",
     "katex": "0.16.22",

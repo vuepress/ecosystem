@@ -48,11 +48,11 @@
     "@vueuse/core": "catalog:",
     "vue": "catalog:"
   },
-  "peerDependencies": {
-    "vuepress": "catalog:"
-  },
   "devDependencies": {
     "markdown-it": "^14.1.0"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

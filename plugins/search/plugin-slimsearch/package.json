@@ -50,11 +50,11 @@
     "slimsearch": "^2.2.2",
     "vue": "catalog:"
   },
-  "peerDependencies": {
-    "vuepress": "catalog:"
-  },
   "devDependencies": {
     "domhandler": "5.0.3"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

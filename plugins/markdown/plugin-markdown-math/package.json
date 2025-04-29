@@ -47,6 +47,9 @@
     "@vuepress/helper": "workspace:*",
     "vue": "catalog:"
   },
+  "devDependencies": {
+    "markdown-it": "^14.1.0"
+  },
   "peerDependencies": {
     "katex": "^0.16.21",
     "mathjax-full": "^3.2.2",
@@ -59,9 +62,6 @@
     "mathjax-full": {
       "optional": true
     }
-  },
-  "devDependencies": {
-    "markdown-it": "^14.1.0"
   },
   "publishConfig": {
     "access": "public"

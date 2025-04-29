@@ -39,11 +39,11 @@
     "@types/markdown-it": "^14.1.2",
     "markdown-it-container": "^4.0.0"
   },
-  "peerDependencies": {
-    "vuepress": "catalog:"
-  },
   "devDependencies": {
     "markdown-it": "^14.1.0"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"
