@@ -7,12 +7,10 @@ import { promisify } from 'node:util'
 
 const exec = promisify(childProcess.exec)
 
-const docsDir = process.argv[2]
-const replaceUrl = process.argv[3]
-const scraperPath = process.argv[4]
+const [, , docsDir, replaceUrl, scraperPath] = process.argv
 
-async function generateOnlyUrls(files) {
-  return files.map((file) => {
+const generateOnlyUrls = async (files) =>
+  files.map((file) => {
     let url
     if (/readme\.md/i.test(file)) {
       url = file.replace(/readme\.md/i, '').replace(docsDir, replaceUrl)
@@ -22,17 +20,17 @@ async function generateOnlyUrls(files) {
     console.log(`${file} -> ${url}`)
     return url
   })
-}
 
 async function generateScrapeJson(onlyUrls) {
-  let jsonData
+  let jsonData = {}
+
   try {
-    const buf = await readFile(scraperPath)
-    jsonData = JSON.parse(buf)
+    jsonData = JSON.parse(await readFile(scraperPath, { encoding: 'utf-8' }))
     jsonData.only_urls = onlyUrls
   } catch (error) {
     console.error('File reading error:', error)
   }
+
   return JSON.stringify(jsonData, null, 2)
 }
 
@@ -55,35 +53,40 @@ async function getFilesByDiff() {
 
 async function getFilesByStatus() {
   const { stdout, stderr } = await exec('git status -s')
+
   if (stderr) {
     console.error(`Git error output: ${stderr}`)
   }
-  const files = stdout
+
+  return stdout
     .split('\n')
     .filter(
       (line) =>
         line.includes('.md') && (line.includes('M') || line.includes('A')),
     )
     .map((line) => line.substring(3))
-  return files
 }
 
 async function main() {
   try {
     const { stdout, stderr } = await exec('git status')
+
     if (stderr) {
       console.error(`Git error output: ${stderr}`)
     }
     let files
+
     if (stdout.includes('nothing to commit, working tree clean')) {
       files = await getFilesByDiff()
     } else {
       files = await getFilesByStatus()
     }
+
     if (files.length === 0) {
       console.log('Nothing to do')
       return
     }
+
     const onlyUrls = await generateOnlyUrls(files)
     const content = await generateScrapeJson(onlyUrls)
     await writeScrapeFile(content)

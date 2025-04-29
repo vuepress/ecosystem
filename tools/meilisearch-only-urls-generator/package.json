@@ -22,7 +22,7 @@
   "bin": {
     "gous": "./lib/index.js"
   },
-  "author": "JQiue",
+  "author": "JQiue, Mister-Hope",
   "license": "MIT",
   "engines": {
     "node": ">=18"
