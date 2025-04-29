@@ -104,14 +104,7 @@ export const getRawCommits = async (
       .filter(Boolean)
       .map((rawString) => {
         const parts = rawString.split('|').map((v) => v.trim())
-        const [
-          hash = '',
-          author = '',
-          email = '',
-          time = '0',
-          message = '',
-          refs = '',
-        ] = parts
+        const [hash, author, email, time, message, refs] = parts
         // ensure body containing `|` is not splitted
         const body = parts.slice(6).join('|').trim()
 
