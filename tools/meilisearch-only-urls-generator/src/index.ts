@@ -32,12 +32,16 @@ const getFilesByDiff = (): string[] => {
   if (stderr) {
     console.error(`Git error output: ${stderr}`)
   }
-  const files = stdout.split('\n').filter((line) => line.includes('.md'))
-  return files
+
+  return stdout
+    .split('\n')
+    .filter((line) => line.includes('.md') && line.includes(docsDir))
 }
 
 const getFilesByStatus = (): string[] => {
-  const { stdout, stderr } = spawnSync('git status -s', { encoding: 'utf-8' })
+  const { stdout, stderr } = spawnSync('git status --porcelain', {
+    encoding: 'utf-8',
+  })
 
   if (stderr) {
     console.error(`Git error output: ${stderr}`)
@@ -45,11 +49,20 @@ const getFilesByStatus = (): string[] => {
 
   return stdout
     .split('\n')
-    .filter(
-      (line) =>
-        line.includes('.md') && (line.includes('M') || line.includes('A')),
-    )
-    .map((line) => line.substring(3))
+    .filter((line) => line.includes('.md') && line.includes(docsDir))
+    .map((line) => {
+      const statusX = line[0]
+      const statusY = line[1]
+      if (
+        statusX === 'R' ||
+        statusY === 'R' ||
+        statusX === 'C' ||
+        statusY === 'C'
+      ) {
+        return line.substring(3).split(' -> ')[1]
+      }
+      return line.substring(3)
+    })
 }
 
 const main = (): void => {

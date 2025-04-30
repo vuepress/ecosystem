@@ -5,7 +5,7 @@ export const checkWorkSpaceStatus = (): boolean => {
   let gitProcess: SpawnSyncReturns<string>
 
   try {
-    gitProcess = spawnSync('git', ['status', '-s'], {
+    gitProcess = spawnSync('git status --porcelain', {
       encoding: 'utf8',
     })
   } catch (spawnError) {
