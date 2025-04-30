@@ -20,7 +20,7 @@ export const markdownImagePlugin = (
     if (options.figure) md.use(figure)
     if (options.lazyload) md.use(imgLazyload)
     if (options.size) md.use(imgSize)
-    if (options.legacyImgSize) md.use(legacyImgSize)
+    if (options.legacySize) md.use(legacyImgSize)
     if (mark)
       md.use<MarkdownItImgMarkOptions>(imgMark, isPlainObject(mark) ? mark : {})
   },

@@ -28,8 +28,6 @@ export default {
       mark: true,
       // 启用图片大小
       size: true,
-      // 启用旧版图片大小 (不建议)
-      legacyImgSize: true,
     }),
   ],
 }
@@ -189,7 +187,7 @@ interface ImageMarkOptions {
 - 类型：`boolean`
 - 详情：是否启用图片尺寸支持。
 
-### legacyImgSize
+### legacySize
 
 - 类型：`boolean`
 - 详情：是否启用旧版图片尺寸支持。

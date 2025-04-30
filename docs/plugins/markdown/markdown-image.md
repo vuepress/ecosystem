@@ -28,8 +28,6 @@ export default {
       mark: true,
       // Enable image size
       size: true,
-      // Enable legacy image size (deprecated)
-      legacyImgSize: true,
     }),
   ],
 }
@@ -190,7 +188,7 @@ If the image is standalone in a line, wrapped or not wrapped by link, it will be
 - Details:
   Whether enable image size support.
 
-### legacyImgSize
+### legacySize
 
 - Type: `boolean`
 - Details: Whether enable legacy image size support.

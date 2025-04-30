@@ -45,5 +45,5 @@ export interface MarkdownImagePluginOptions {
    *
    * @default false
    */
-  legacyImgSize?: boolean
+  legacySize?: boolean
 }
