@@ -1,5 +1,5 @@
 import type { ExactLocaleConfig } from '@vuepress/helper/client'
-import { useLocaleConfig } from '@vuepress/helper/client'
+import { useLocale } from '@vuepress/helper/client'
 import { useElementSize, useWindowScroll, useWindowSize } from '@vueuse/core'
 import {
   Transition,
@@ -9,7 +9,7 @@ import {
   onMounted,
   shallowRef,
 } from 'vue'
-import { usePageFrontmatter } from 'vuepress/client'
+import { useFrontmatter } from 'vuepress/client'
 import type { BackToTopPluginLocaleData } from '../../shared/index.js'
 
 import '@vuepress/helper/transition/fade-in.css'
@@ -23,8 +23,8 @@ export const BackToTop = defineComponent({
   name: 'BackToTop',
 
   setup() {
-    const pageFrontmatter = usePageFrontmatter<{ backToTop?: boolean }>()
-    const locale = useLocaleConfig(__BACK_TO_TOP_LOCALES__)
+    const frontmatter = useFrontmatter<{ backToTop?: boolean }>()
+    const locale = useLocale(__BACK_TO_TOP_LOCALES__)
     const body = shallowRef<HTMLElement>()
     const { height: bodyHeight } = useElementSize(body)
     const { height: windowHeight } = useWindowSize()
@@ -35,7 +35,7 @@ export const BackToTop = defineComponent({
     /** Whether to display button */
     const show = computed(
       () =>
-        (pageFrontmatter.value.backToTop ?? true) &&
+        (frontmatter.value.backToTop ?? true) &&
         y.value > __BACK_TO_TOP_THRESHOLD__,
     )
 

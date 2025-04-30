@@ -1,4 +1,4 @@
-import { useLocaleConfig } from '@vuepress/helper/client'
+import { useLocale } from '@vuepress/helper/client'
 import type { PropType, SlotsType, VNode } from 'vue'
 import {
   Transition,
@@ -35,7 +35,7 @@ export const PwaReadyPopup = defineComponent({
   }>,
 
   setup(props, { slots }) {
-    const locale = useLocaleConfig(props.locales)
+    const locale = useLocale(props.locales)
     const registration = shallowRef<ServiceWorkerRegistration>()
 
     const isReady = computed(() => Boolean(registration.value))

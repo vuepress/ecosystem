@@ -1,8 +1,4 @@
-import {
-  isPlainObject,
-  isString,
-  useLocaleConfig,
-} from '@vuepress/helper/client'
+import { isPlainObject, isString, useLocale } from '@vuepress/helper/client'
 import { useEventListener } from '@vueuse/core'
 import type { PropType, VNode } from 'vue'
 import { computed, defineComponent, h, reactive, ref, toRef, watch } from 'vue'
@@ -49,7 +45,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const router = useRouter()
     const routeLocale = useRouteLocale()
-    const locale = useLocaleConfig(locales)
+    const locale = useLocale(locales)
     const {
       enabled: enableQueryHistory,
       addQueryHistory,

@@ -10,11 +10,11 @@ import {
   isString,
   keys,
   startsWith,
-  useLocaleConfig,
+  useLocale,
 } from '@vuepress/helper/client'
 import type { VNode } from 'vue'
 import { computed, defineComponent, h, shallowRef } from 'vue'
-import { RouteLink, usePageData, useRoutes, useSiteData } from 'vuepress/client'
+import { RouteLink, usePage, useRoutes, useSiteData } from 'vuepress/client'
 import type { CatalogPluginLocaleData } from '../../shared/index.js'
 import type { CatalogInfo } from '../helpers/index.js'
 import { useCatalogInfoGetter } from '../helpers/index.js'
@@ -83,8 +83,8 @@ export default defineComponent({
 
   setup(props) {
     const catalogInfoGetter = useCatalogInfoGetter()
-    const locale = useLocaleConfig(__CATALOG_LOCALES__)
-    const page = usePageData()
+    const locale = useLocale(__CATALOG_LOCALES__)
+    const page = usePage()
     const routes = useRoutes()
     const siteData = useSiteData()
 

@@ -1,5 +1,5 @@
 import type { ExactLocaleConfig } from '@vuepress/helper/client'
-import { useLocaleConfig } from '@vuepress/helper/client'
+import { useLocale } from '@vuepress/helper/client'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import type { ReadingTimePluginLocaleData } from '../../shared/index.js'
@@ -19,9 +19,7 @@ const readingTimeLocales =
 
 export const useReadingTimeLocaleConfig =
   (): ComputedRef<ReadingTimePluginLocaleData | null> =>
-    readingTimeLocales
-      ? useLocaleConfig(readingTimeLocales)
-      : computed(() => null)
+    readingTimeLocales ? useLocale(readingTimeLocales) : computed(() => null)
 
 export interface ReadingTimeLocale {
   /**
