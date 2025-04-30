@@ -28,6 +28,8 @@ export default {
       mark: true,
       // Enable image size
       size: true,
+      // Enable legacy image size (deprecated)
+      legacyImgSize: true,
     }),
   ],
 }
@@ -67,6 +69,48 @@ interface ImageMarkOptions {
 ```
 
 ### Image Size
+
+You can use `|widthxheight` to specify the image size at the end of image alt.
+
+Both `width` and `height` should be number which means size in pixels, and both of them are optional (set `0` to indicate ignore).
+
+If you want the same behavior as Obsidian, you can pass `{ strict: true }` in plugin options. Now both `width` and `height` are both required to be set (one of them can be `0` to scale with radio according to the other).
+
+```md
+![Logo|200x200](/example.png)
+
+![Logo|200x0](/example.jpg)
+![Logo|0x300](/example.bmp)
+
+<!-- These won't work when `strict: true` as obsidian does not support them -->
+
+![Logo|200](/example.jpg)
+![Logo|200x](/example.jpg)
+![Logo|x300](/example.bmp)
+```
+
+will be parsed as:
+
+```html
+<img src="/example.png" width="200" height="300" />
+
+<img src="/example.jpg" width="200" />
+<img src="/example.bmp" height="300" />
+
+<img src="/example.jpg" width="200" />
+<img src="/example.jpg" width="200" />
+<img src="/example.bmp" height="300" />
+```
+
+### Image Size (legacy)
+
+::: tip
+
+You shall prefer the new grammar, as it's not breaking backward compatibility.
+
+The legacy grammar will break image rendering in environment that doesn't support it, such as GitHub.
+
+:::
 
 You can use `=widthxheight` to specify the image size when setting `size: true` in plugin options.
 
@@ -146,10 +190,10 @@ If the image is standalone in a line, wrapped or not wrapped by link, it will be
 - Details:
   Whether enable image size support.
 
-### obsidianSize
+### legacyImgSize
 
 - Type: `boolean`
-- Details: Whether enable Obsidian image size support.
+- Details: Whether enable legacy image size support.
 
 <script setup>
 import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'
