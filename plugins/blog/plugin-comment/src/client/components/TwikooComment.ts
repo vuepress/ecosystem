@@ -2,7 +2,7 @@ import { LoadingIcon, wait } from '@vuepress/helper/client'
 import { watchImmediate } from '@vueuse/core'
 import type { VNode } from 'vue'
 import { computed, defineComponent, h, nextTick, onMounted, ref } from 'vue'
-import { usePageLang } from 'vuepress/client'
+import { useLang } from 'vuepress/client'
 import { useTwikooOptions } from '../helpers/index.js'
 
 export default defineComponent({
@@ -22,7 +22,7 @@ export default defineComponent({
 
   setup(props) {
     const twikooOptions = useTwikooOptions()
-    const lang = usePageLang()
+    const lang = useLang()
 
     const loaded = ref(false)
 

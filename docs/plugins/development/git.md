@@ -411,11 +411,11 @@ After using this plugin, you can get the collected git information in page data:
 
 ```ts
 import type { GitPluginPageData } from '@vuepress/plugin-git'
-import { usePageData } from 'vuepress/client'
+import { usePage } from 'vuepress/client'
 
 export default {
   setup(): void {
-    const page = usePageData<GitPluginPageData>()
+    const page = usePage<GitPluginPageData>()
     console.log(page.value.git)
   },
 }

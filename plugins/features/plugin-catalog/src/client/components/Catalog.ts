@@ -10,11 +10,11 @@ import {
   isString,
   keys,
   startsWith,
-  useLocaleConfig,
+  useLocale,
 } from '@vuepress/helper/client'
 import type { VNode } from 'vue'
 import { computed, defineComponent, h, shallowRef } from 'vue'
-import { RouteLink, usePageData, useRoutes, useSiteData } from 'vuepress/client'
+import { RouteLink, useData } from 'vuepress/client'
 import type { CatalogPluginLocaleData } from '../../shared/index.js'
 import type { CatalogInfo } from '../helpers/index.js'
 import { useCatalogInfoGetter } from '../helpers/index.js'
@@ -82,11 +82,9 @@ export default defineComponent({
   },
 
   setup(props) {
+    const { page, routes, site } = useData()
     const catalogInfoGetter = useCatalogInfoGetter()
-    const locale = useLocaleConfig(__CATALOG_LOCALES__)
-    const page = usePageData()
-    const routes = useRoutes()
-    const siteData = useSiteData()
+    const locale = useLocale(__CATALOG_LOCALES__)
 
     const getCatalogData = (): CatalogData[] =>
       entries(routes.value)
@@ -124,7 +122,7 @@ export default defineComponent({
           if (!startsWith(path, base) || path === base) return false
 
           if (base === '/') {
-            const otherLocales = keys(siteData.value.locales).filter(
+            const otherLocales = keys(site.value.locales).filter(
               (item) => item !== '/',
             )
 

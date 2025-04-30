@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { useLocaleConfig } from '@vuepress/helper/client'
+import { useLocale } from '@vuepress/helper/client'
 import { useEventListener } from '@vueuse/core'
 import type { PropType, VNode } from 'vue'
 import { defineComponent, h, onMounted, shallowRef } from 'vue'
@@ -35,7 +35,7 @@ export const PwaInstallModal = defineComponent({
   emits: ['canInstall', 'hint', 'close'],
 
   setup(props, { emit }) {
-    const locale = useLocaleConfig(props.locales)
+    const locale = useLocale(props.locales)
 
     const manifest = shallowRef<AppManifest>({})
     const deferredPrompt = shallowRef<InstallPromptEvent>()

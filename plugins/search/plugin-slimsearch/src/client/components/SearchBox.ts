@@ -3,7 +3,7 @@ import {
   checkIsMacOS,
   checkIsiPad,
   useKeys,
-  useLocaleConfig,
+  useLocale,
 } from '@vuepress/helper/client'
 import type { VNode } from 'vue'
 import { computed, defineComponent, h, onMounted, ref } from 'vue'
@@ -20,7 +20,7 @@ export default defineComponent({
   name: 'SearchBox',
 
   setup() {
-    const locale = useLocaleConfig(locales)
+    const locale = useLocale(locales)
     const [isActive, toggleActive] = useActiveState()
     const isMacOS = ref(false)
 
