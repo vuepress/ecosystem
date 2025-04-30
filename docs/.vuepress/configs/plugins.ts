@@ -51,7 +51,7 @@ export const plugins = [
     figure: true,
     mark: true,
     size: true,
-    legacyImgSize: true,
+    legacySize: true,
   }),
   markdownIncludePlugin({
     deep: true,
