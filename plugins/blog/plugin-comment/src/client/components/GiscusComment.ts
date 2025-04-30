@@ -1,7 +1,7 @@
 import { LoadingIcon } from '@vuepress/helper/client'
 import type { VNode } from 'vue'
 import { computed, defineComponent, h, onMounted, ref } from 'vue'
-import { usePageLang } from 'vuepress/client'
+import { useLang } from 'vuepress/client'
 import type {
   GiscusInputPosition,
   GiscusMapping,
@@ -98,7 +98,7 @@ export default defineComponent({
 
   setup(props) {
     const giscusOptions = useGiscusOptions()
-    const lang = usePageLang()
+    const lang = useLang()
 
     const enableGiscus = computed(() =>
       Boolean(

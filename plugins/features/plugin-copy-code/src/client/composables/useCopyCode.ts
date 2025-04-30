@@ -1,4 +1,4 @@
-import { Message, useLocaleConfig } from '@vuepress/helper/client'
+import { Message, useLocale } from '@vuepress/helper/client'
 import {
   useClipboard,
   useEventListener,
@@ -66,7 +66,7 @@ export const useCopyCode = ({
   const isMobile = useMediaQuery('(max-width: 419px)')
   const enabled = computed(() => !isMobile.value || showInMobile)
 
-  const locale = useLocaleConfig(locales)
+  const locale = useLocale(locales)
 
   const insertCopyButton = (codeBlockElement: HTMLElement): void => {
     if (codeBlockElement.hasAttribute('copy-code')) return

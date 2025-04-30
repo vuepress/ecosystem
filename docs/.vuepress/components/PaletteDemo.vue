@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useLocaleConfig } from '@vuepress/helper/client'
+import { useLocale } from '@vuepress/helper/client'
 
-const locale = useLocaleConfig({
+const locale = useLocale({
   '/': {
     text: 'Text Colors',
     accent: 'Accent Colors',

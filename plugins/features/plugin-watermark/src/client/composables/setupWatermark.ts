@@ -1,7 +1,7 @@
 import { watchImmediate } from '@vueuse/core'
 import type { MaybeRef, Ref } from 'vue'
 import { isRef, toValue } from 'vue'
-import { useSiteLocaleData, withBase } from 'vuepress/client'
+import { useSiteLocale, withBase } from 'vuepress/client'
 import { Watermark } from 'watermark-js-plus'
 import type { WatermarkOptions } from '../helper/index.js'
 
@@ -11,7 +11,7 @@ export const setupWatermark = (
 ): void => {
   if (__VUEPRESS_SSR__) return
 
-  const siteData = useSiteLocaleData()
+  const siteLocale = useSiteLocale()
 
   const watermark = new Watermark()
 
@@ -19,7 +19,7 @@ export const setupWatermark = (
     if (toValue(enabled)) {
       const watermarkOptions = {
         // set default text to site title
-        content: siteData.value.title,
+        content: siteLocale.value.title,
         // set font color to make it readable both lightmode and darkmode
         fontColor: '#76747f',
         // default alpha of blind mode is 0.005 while default mode is 0.165

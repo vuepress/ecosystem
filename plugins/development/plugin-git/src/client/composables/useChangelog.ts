@@ -1,6 +1,6 @@
 import type { ComputedRef, MaybeRefOrGetter } from 'vue'
 import { computed, toValue } from 'vue'
-import { usePageData, usePageFrontmatter, usePageLang } from 'vuepress/client'
+import { useData } from 'vuepress/client'
 import type {
   GitChangelogInfo,
   GitPluginFrontmatter,
@@ -22,9 +22,10 @@ export const useChangelog =
     ? (
         enabled: MaybeRefOrGetter<boolean> = true,
       ): ComputedRef<GitChangelogItem[]> => {
-        const frontmatter = usePageFrontmatter<GitPluginFrontmatter>()
-        const lang = usePageLang()
-        const page = usePageData<GitPluginPageData>()
+        const { frontmatter, lang, page } = useData<
+          GitPluginFrontmatter,
+          GitPluginPageData
+        >()
 
         const { pattern = {}, provider } = gitOptions
         const repo = resolveRepoLink(gitOptions.repo, provider)

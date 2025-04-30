@@ -13,7 +13,7 @@ import {
   shallowRef,
   watch,
 } from 'vue'
-import { usePageData, useSiteData } from 'vuepress/client'
+import { useData } from 'vuepress/client'
 import { useArtalkOptions } from '../helpers/index.js'
 
 import 'artalk/dist/Artalk.css'
@@ -41,9 +41,8 @@ export default defineComponent({
   },
 
   setup(props) {
+    const { page, site } = useData()
     const artalkOptions = useArtalkOptions()
-    const page = usePageData()
-    const site = useSiteData()
 
     const loaded = ref(false)
     const artalkContainer = shallowRef<HTMLDivElement>()

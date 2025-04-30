@@ -1,8 +1,11 @@
 import type { ComputedRef, MaybeRefOrGetter } from 'vue'
 import { computed, toValue } from 'vue'
-import { usePageData, usePageLang } from 'vuepress/client'
-import type { GitPluginPageData } from '../../shared/index.js'
-import { useGitLocaleConfig } from './useGitLocales.js'
+import { useData } from 'vuepress/client'
+import type {
+  GitPluginFrontmatter,
+  GitPluginPageData,
+} from '../../shared/index.js'
+import { useGitLocale } from './useGitLocales.js'
 
 export interface LastUpdated {
   /**
@@ -26,16 +29,14 @@ export interface LastUpdated {
 export const useLastUpdated = (
   enabled: MaybeRefOrGetter<boolean> = true,
 ): ComputedRef<LastUpdated | null> => {
-  const lang = usePageLang()
-  const locale = useGitLocaleConfig()
-  const page = usePageData<GitPluginPageData>()
+  const { lang, page } = useData<GitPluginFrontmatter, GitPluginPageData>()
+  const locale = useGitLocale()
 
   return computed(() => {
     if (!toValue(enabled)) return null
 
     const timeStamp =
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      page.value.git?.updatedTime ?? page.value.git?.changelog?.[0].time
+      page.value.git.updatedTime ?? page.value.git.changelog?.[0].time
 
     if (!timeStamp) return null
 

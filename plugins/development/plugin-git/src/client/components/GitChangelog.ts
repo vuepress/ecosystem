@@ -4,7 +4,7 @@ import { defineComponent, h } from 'vue'
 import type { GitChangelogItem } from '../composables/index.js'
 import {
   useChangelog,
-  useGitLocaleConfig,
+  useGitLocale,
   useLastUpdated,
 } from '../composables/index.js'
 import { VPHeader } from './VPHeader.js'
@@ -28,7 +28,7 @@ export const GitChangelog = defineComponent({
 
   setup(props) {
     const changelog = useChangelog()
-    const locale = useGitLocaleConfig()
+    const locale = useGitLocale()
     const lastUpdated = useLastUpdated()
 
     const [active, toggleActive] = useToggle()

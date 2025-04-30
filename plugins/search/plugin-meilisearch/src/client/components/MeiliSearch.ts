@@ -1,4 +1,4 @@
-import { useLocaleConfig } from '@vuepress/helper/client'
+import { useLocale } from '@vuepress/helper/client'
 import type { PropType } from 'vue'
 import {
   computed,
@@ -9,7 +9,7 @@ import {
   ref,
   watch,
 } from 'vue'
-import { usePageLang, useRouteLocale } from 'vuepress/client'
+import { useData } from 'vuepress/client'
 import type { LocaleConfig } from 'vuepress/shared'
 
 import type {
@@ -35,9 +35,8 @@ export const MeiliSearch = defineComponent({
   },
 
   setup(props) {
-    const locale = useLocaleConfig(props.locales)
-    const routeLocale = useRouteLocale()
-    const lang = usePageLang()
+    const { lang, routeLocale } = useData()
+    const locale = useLocale(props.locales)
 
     const meilisearchOptions = computed(() => {
       const { locales = {}, ...rest } = props.options
