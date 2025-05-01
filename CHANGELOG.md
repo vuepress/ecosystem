@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.99](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.98...v2.0.0-rc.99) (2025-05-01)
+
+### Bug Fixes
+
+- **plugin-git:** fix commit body parsing and remove execa ([#447](https://github.com/vuepress/ecosystem/issues/447)) ([df92ae2](https://github.com/vuepress/ecosystem/commit/df92ae25758e52502f86f121fac0d8226131c8fa))
+
+### Features
+
+- **create-vuepress:** remove execa ([91b5f4b](https://github.com/vuepress/ecosystem/commit/91b5f4b18e3c25210c83e7fb10f0bad0b0cc8978))
+
 # [2.0.0-rc.98](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.97...v2.0.0-rc.98) (2025-04-28)
 
 **Note:** Version bump only for package @vuepress/ecosystem
