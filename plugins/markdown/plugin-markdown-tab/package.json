@@ -42,7 +42,7 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@mdit/plugin-tab": "^0.16.0",
+    "@mdit/plugin-tab": "^0.17.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
