@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.100](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.99...v2.0.0-rc.100) (2025-05-01)
+
+### Features
+
+- **plugin-markdown-image:** allow 'strict' in size ([#451](https://github.com/vuepress/ecosystem/issues/451)) ([c1ea524](https://github.com/vuepress/ecosystem/commit/c1ea5249646790b71fdb3e71fd4c06a82138c56d))
+
 # [2.0.0-rc.99](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.98...v2.0.0-rc.99) (2025-05-01)
 
 ### Bug Fixes
