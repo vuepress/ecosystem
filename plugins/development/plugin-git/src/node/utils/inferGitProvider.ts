@@ -1,32 +1,50 @@
-import { execaCommandSync } from 'execa'
+import type { ExecSyncOptionsWithStringEncoding } from 'node:child_process' // Import native execSync
+import { execSync } from 'node:child_process'
 import type { KnownGitProvider } from '../../shared/index.js'
 
-export const getRemoteUrl = (cwd: string): string => {
+/**
+ * Gets the URL of a Git remote.
+ *
+ * @param cwd The directory where the git commands should be executed.
+ */
+export const getRemoteUrl = (cwd: string): string | null => {
+  const execOptions: ExecSyncOptionsWithStringEncoding = {
+    cwd,
+    encoding: 'utf8',
+    stdio: ['pipe', 'pipe', 'ignore'],
+    // prevent hanging
+    timeout: 5000,
+  }
+
   try {
-    const { stdout } = execaCommandSync('git remote get-url origin', { cwd })
-    return stdout
+    const originUrl = execSync('git remote get-url origin', execOptions)
+
+    return originUrl.trim()
   } catch {
     try {
-      const { stdout } = execaCommandSync('git remote', { cwd })
-      const remote = stdout.split('\n')[0]?.trim()
-      if (remote) {
-        const { stdout: remoteUrl } = execaCommandSync(
-          `git remote get-url ${remote}`,
-          {
-            cwd,
-          },
+      const remotesOutput = execSync('git remote', execOptions)
+      const firstRemote = remotesOutput.split('\n')[0]?.trim()
+
+      if (firstRemote) {
+        const remoteUrl = execSync(
+          `git remote get-url ${firstRemote}`,
+          execOptions,
         )
-        return remoteUrl
+
+        return remoteUrl.trim()
       }
-      return ''
+
+      return null
     } catch {
-      return ''
+      return null
     }
   }
 }
 
 export const inferGitProvider = (cwd: string): KnownGitProvider | null => {
   const remoteUrl = getRemoteUrl(cwd)
+
+  if (!remoteUrl) return null
 
   if (remoteUrl.includes('github.com')) {
     return 'github'

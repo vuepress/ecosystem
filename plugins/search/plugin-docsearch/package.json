@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-docsearch",
-  "version": "2.0.0-rc.98",
+  "version": "2.0.0-rc.99",
   "description": "VuePress plugin - docsearch",
   "keywords": [
     "vuepress-plugin",
@@ -48,11 +48,11 @@
     "ts-debounce": "^4.0.0",
     "vue": "catalog:"
   },
+  "devDependencies": {
+    "algoliasearch": "5.24.0"
+  },
   "peerDependencies": {
     "vuepress": "catalog:"
-  },
-  "devDependencies": {
-    "algoliasearch": "5.23.4"
   },
   "publishConfig": {
     "access": "public"

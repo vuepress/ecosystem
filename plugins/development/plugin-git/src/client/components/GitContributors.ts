@@ -1,7 +1,7 @@
 import type { FunctionalComponent } from 'vue'
 import { defineComponent, h } from 'vue'
 import type { GitContributorInfo } from '../../shared/index.js'
-import { useContributors, useGitLocaleConfig } from '../composables/index.js'
+import { useContributors, useGitLocale } from '../composables/index.js'
 import { VPHeader } from './VPHeader.js'
 
 import '../styles/contributors.css'
@@ -43,7 +43,7 @@ export const GitContributors = defineComponent({
 
   setup(props) {
     const contributors = useContributors()
-    const locale = useGitLocaleConfig()
+    const locale = useGitLocale()
 
     return () =>
       contributors.value.length

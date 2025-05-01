@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-shiki",
-  "version": "2.0.0-rc.98",
+  "version": "2.0.0-rc.99",
   "description": "VuePress plugin - shiki",
   "keywords": [
     "vuepress-plugin",
@@ -46,6 +46,11 @@
     "shiki": "^3.3.0",
     "synckit": "^0.11.4"
   },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@vuepress/shiki-twoslash": "workspace:*",
+    "markdown-it": "^14.1.0"
+  },
   "peerDependencies": {
     "@vuepress/shiki-twoslash": "workspace:*",
     "vuepress": "catalog:"
@@ -57,10 +62,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {
-    "@types/markdown-it": "^14.1.2",
-    "@vuepress/shiki-twoslash": "workspace:*",
-    "markdown-it": "^14.1.0"
   }
 }

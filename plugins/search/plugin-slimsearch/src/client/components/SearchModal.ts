@@ -1,4 +1,4 @@
-import { useLocaleConfig } from '@vuepress/helper/client'
+import { useLocale } from '@vuepress/helper/client'
 import {
   onClickOutside,
   useDebounceFn,
@@ -18,7 +18,7 @@ import {
   shallowRef,
   watch,
 } from 'vue'
-import { useSiteLocaleData } from 'vuepress/client'
+import { useSiteLocale } from 'vuepress/client'
 
 import {
   useActiveState,
@@ -39,7 +39,7 @@ const SearchResult = defineAsyncComponent({
   loader: () =>
     import(/* webpackChunkName: "slimsearch-result" */ './SearchResult.js'),
   loadingComponent: () => {
-    const localeConfig = useLocaleConfig(locales)
+    const localeConfig = useLocale(locales)
 
     return h(SearchLoading, {
       class: 'slimsearch-result-wrapper',
@@ -54,10 +54,10 @@ export default defineComponent({
   name: 'SearchModal',
 
   setup() {
-    const [isActive, toggleActive] = useActiveState()
-    const siteLocale = useSiteLocaleData()
-    const locale = useLocaleConfig(locales)
+    const locale = useLocale(locales)
+    const siteLocale = useSiteLocale()
     const searchOptions = useSearchOptions()
+    const [isActive, toggleActive] = useActiveState()
 
     const input = ref('')
     const queries = ref<string[]>([])

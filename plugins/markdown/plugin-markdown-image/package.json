@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-image",
-  "version": "2.0.0-rc.98",
+  "version": "2.0.0-rc.100",
   "description": "VuePress plugin - markdown image",
   "keywords": [
     "vuepress-plugin",
@@ -47,10 +47,10 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@mdit/plugin-figure": "^0.16.0",
-    "@mdit/plugin-img-lazyload": "^0.16.0",
-    "@mdit/plugin-img-mark": "^0.16.0",
-    "@mdit/plugin-img-size": "^0.16.0",
+    "@mdit/plugin-figure": "^0.17.0",
+    "@mdit/plugin-img-lazyload": "^0.17.0",
+    "@mdit/plugin-img-mark": "^0.17.0",
+    "@mdit/plugin-img-size": "^0.17.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*"
   },

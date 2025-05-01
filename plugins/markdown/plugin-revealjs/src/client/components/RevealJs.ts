@@ -15,7 +15,7 @@ import {
 } from 'vue'
 import {
   onContentUpdated,
-  usePageFrontmatter,
+  useFrontmatter,
   usePageLayout,
 } from 'vuepress/client'
 
@@ -61,7 +61,7 @@ export const RevealJs = defineComponent({
 
   setup(props) {
     const revealOptions = useRevealJsConfig()
-    const frontmatter = usePageFrontmatter<{ revealJs: Reveal.Options }>()
+    const frontmatter = useFrontmatter<{ revealJs: Reveal.Options }>()
     const layout = usePageLayout()
 
     const loading = ref(true)

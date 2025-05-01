@@ -1,4 +1,4 @@
-import { useLocaleConfig } from '@vuepress/helper/client'
+import { useLocale } from '@vuepress/helper/client'
 import { useToggle } from '@vueuse/core'
 import type { PropType, VNode } from 'vue'
 import { computed, defineComponent, h, onMounted, ref } from 'vue'
@@ -30,7 +30,7 @@ export const PwaInstall = defineComponent({
   },
 
   setup(props) {
-    const locale = useLocaleConfig(props.locales)
+    const locale = useLocale(props.locales)
     const [isOpen, toggleIsOpen] = useToggle()
 
     const canInstall = ref(false)

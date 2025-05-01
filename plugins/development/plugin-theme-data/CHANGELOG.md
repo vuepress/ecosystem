@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.99](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.98...v2.0.0-rc.99) (2025-05-01)
+
+**Note:** Version bump only for package @vuepress/plugin-theme-data
+
 # [2.0.0-rc.98](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.97...v2.0.0-rc.98) (2025-04-28)
 
 **Note:** Version bump only for package @vuepress/plugin-theme-data

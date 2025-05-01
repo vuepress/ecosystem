@@ -1,5 +1,5 @@
 import type { KeyOptions } from '@vuepress/helper/client'
-import { useKeys, useLocaleConfig } from '@vuepress/helper/client'
+import { useKeys, useLocale } from '@vuepress/helper/client'
 import type { PropType } from 'vue'
 import { computed, defineComponent, h, ref, toRefs } from 'vue'
 import { useRouteLocale, useRouter } from 'vuepress/client'
@@ -30,7 +30,7 @@ export const SearchBox = defineComponent({
 
   setup(props) {
     const { locales, hotKeys, maxSuggestions } = toRefs(props)
-    const locale = useLocaleConfig(locales)
+    const locale = useLocale(locales)
 
     const router = useRouter()
     const routeLocale = useRouteLocale()

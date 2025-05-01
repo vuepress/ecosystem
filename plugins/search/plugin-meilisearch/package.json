@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-meilisearch",
-  "version": "2.0.0-rc.98",
+  "version": "2.0.0-rc.99",
   "description": "VuePress plugin - built-in meilisearch",
   "keywords": [
     "vuepress-plugin",
@@ -40,7 +40,7 @@
   "dependencies": {
     "@vuepress/helper": "workspace:*",
     "meilisearch": "0.50.0",
-    "meilisearch-docsearch": "^0.7.2",
+    "meilisearch-docsearch": "^0.8.0",
     "vue": "^3.5.13"
   },
   "peerDependencies": {
