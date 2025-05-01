@@ -110,7 +110,7 @@ interface ImageMarkOptions {
 
 :::
 
-当你在插件选项中设置 `legacySize: true` 时，可以使用 `=widthxheight` 指定图像大小。
+当你在插件选项中设置 `legacySize: true` 时，可以在链接末尾使用 `=widthxheight` 指定图像大小。
 
 ```md
 ![Alt](/example.png =200x300)
