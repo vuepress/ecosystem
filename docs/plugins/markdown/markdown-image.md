@@ -110,7 +110,7 @@ The legacy grammar will break image rendering in environment that doesn't suppor
 
 :::
 
-You can use `=widthxheight` to specify the image size at the end of the link when setting `legacy: true` in plugin options.
+You can use `=widthxheight` to specify the image size at the end of the link when setting `legacySize: true` in plugin options.
 
 ```md
 ![Alt](/example.png =200x300)
