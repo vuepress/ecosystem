@@ -1,10 +1,13 @@
+import { spawnSync } from 'node:child_process'
 import { select } from '@inquirer/prompts'
-import { execaCommandSync } from 'execa'
 
 const checkPnpmInstalled = (): boolean => {
   try {
     return (
-      execaCommandSync('pnpm --version', { stdio: 'ignore' }).exitCode === 0
+      spawnSync('pnpm --version', [], {
+        stdio: 'ignore',
+        shell: true,
+      }).status === 0
     )
   } catch {
     return false
@@ -14,7 +17,10 @@ const checkPnpmInstalled = (): boolean => {
 const checkYarnInstalled = (): boolean => {
   try {
     return (
-      execaCommandSync('yarn --version', { stdio: 'ignore' }).exitCode === 0
+      spawnSync('yarn --version', [], {
+        stdio: 'ignore',
+        shell: true,
+      }).status === 0
     )
   } catch {
     return false
