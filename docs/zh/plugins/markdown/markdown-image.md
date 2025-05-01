@@ -68,6 +68,48 @@ interface ImageMarkOptions {
 
 ### 图片尺寸
 
+你可以在图片链接末尾使用 `|widthxheight` 来指定图片尺寸。
+
+`width` 和 `height` 都应该为数字并意味着像素单位的尺寸，并且它们两者都是可选的（设置 `0` 来表示忽略）。
+
+如果你想要与 Obsidian 相同的行为，你可以在插件选项中传递 `{ strict: true }`。现在 `width` 和 `height` 都必须被设置（其中一个可以是 `0` 来根据另一个按比例缩放）。
+
+```md
+![Logo|200x200](/example.png)
+
+![Logo|200x0](/example.jpg)
+![Logo|0x300](/example.bmp)
+
+<!-- These won't work when `strict: true` as obsidian does not support them -->
+
+![Logo|200](/example.jpg)
+![Logo|200x](/example.jpg)
+![Logo|x300](/example.bmp)
+```
+
+会被解析为:
+
+```html
+<img src="/example.png" width="200" height="300" />
+
+<img src="/example.jpg" width="200" />
+<img src="/example.bmp" height="300" />
+
+<img src="/example.jpg" width="200" />
+<img src="/example.jpg" width="200" />
+<img src="/example.bmp" height="300" />
+```
+
+### 图片尺寸 (旧版)
+
+::: tip
+
+你应该选择新语法，因为它不会破坏向后兼容性。
+
+旧语法会在不支持的环境中破坏图片渲染，例如 GitHub。
+
+:::
+
 当你在插件选项中设置 `size: true` 时，可以使用 `=widthxheight` 指定图像大小。
 
 ```md
@@ -145,10 +187,10 @@ interface ImageMarkOptions {
 - 类型：`boolean`
 - 详情：是否启用图片尺寸支持。
 
-### obsidianImgSize
+### legacySize
 
 - 类型：`boolean`
-- 详情：是否启用 Obsidian 图片尺寸支持。
+- 详情：是否启用旧版图片尺寸支持。
 
 <script setup>
 import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'

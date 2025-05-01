@@ -39,11 +39,11 @@ export interface MarkdownImagePluginOptions {
   size?: boolean
 
   /**
-   * Whether to enable obsidian image size mark support
+   * Whether to enable legacy image size mark support
    *
-   * 是否启用 obsidian 图片大小标记支持。
+   * 是否启用旧版图片大小标记支持。
    *
    * @default false
    */
-  obsidianSize?: boolean
+  legacySize?: boolean
 }
