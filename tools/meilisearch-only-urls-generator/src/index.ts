@@ -37,8 +37,6 @@ const getFilesByDiff = (): string[] => {
     console.error(`Git error output: ${stderr}`)
   }
 
-  console.log(stdout)
-
   return stdout
     .split('\n')
     .filter((line) => line.includes('.md') && line.includes(docsDir))
