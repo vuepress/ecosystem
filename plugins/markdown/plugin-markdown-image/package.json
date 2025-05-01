@@ -47,10 +47,10 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@mdit/plugin-figure": "^0.17.0",
-    "@mdit/plugin-img-lazyload": "^0.17.0",
-    "@mdit/plugin-img-mark": "^0.17.0",
-    "@mdit/plugin-img-size": "^0.17.0",
+    "@mdit/plugin-figure": "^0.18.0",
+    "@mdit/plugin-img-lazyload": "^0.18.0",
+    "@mdit/plugin-img-mark": "^0.18.0",
+    "@mdit/plugin-img-size": "^0.18.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*"
   },
