@@ -12,6 +12,7 @@ import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 import { resolveChangelog } from './resolveChangelog.js'
 import { resolveContributors } from './resolveContributors.js'
 import {
+  PLUGIN_NAME,
   checkGitRepo,
   getCommits,
   inferGitProvider,
@@ -30,19 +31,18 @@ export const gitPlugin =
     locales = {},
   }: GitPluginOptions = {}): Plugin =>
   (app) => {
-    const name = '@vuepress/plugin-git'
     const cwd = app.dir.source()
     const isGitRepoValid = checkGitRepo(cwd)
     const gitProvider = isGitRepoValid ? inferGitProvider(cwd) : null
     return {
-      name,
+      name: PLUGIN_NAME,
 
       define: {
         __GIT_CHANGELOG__: Boolean(changelog),
         __GIT_CONTRIBUTORS__: Boolean(contributors),
         __GIT_LOCALES__: getFullLocaleConfig({
           app,
-          name,
+          name: PLUGIN_NAME,
           default: gitLocaleInfo,
           config: locales,
         }),
