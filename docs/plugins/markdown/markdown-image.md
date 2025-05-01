@@ -68,11 +68,11 @@ interface ImageMarkOptions {
 
 ### Image Size
 
-You can use `|widthxheight` to specify the image size at the end of image alt.
+When you set `size: true` in plugin options, you can use `|widthxheight` to specify the image size at the end of image alt.
 
 Both `width` and `height` should be number which means size in pixels, and both of them are optional (set `0` to indicate ignore).
 
-If you want the same behavior as Obsidian, you can pass `{ strict: true }` in plugin options. Now both `width` and `height` are both required to be set (one of them can be `0` to scale with radio according to the other).
+If you want the same behavior as Obsidian, you can set `size: 'strict'` in plugin options, so `width` and `height` are both required to be set (one of them can be `0` to scale with radio according to the other).
 
 ```md
 ![Logo|200x200](/example.png)
@@ -110,7 +110,7 @@ The legacy grammar will break image rendering in environment that doesn't suppor
 
 :::
 
-You can use `=widthxheight` to specify the image size when setting `size: true` in plugin options.
+You can use `=widthxheight` to specify the image size at the end of the link when setting `legacy: true` in plugin options.
 
 ```md
 ![Alt](/example.png =200x300)
@@ -184,9 +184,8 @@ If the image is standalone in a line, wrapped or not wrapped by link, it will be
 
 ### size
 
-- Type: `boolean`
-- Details:
-  Whether enable image size support.
+- Type: `boolean | 'strict'`
+- Details: Whether enable image size support. `strict` requires implicit set with `0` to ignore width or height.
 
 ### legacySize
 
