@@ -167,7 +167,7 @@ interface ImageMarkOptions {
 - 类型：`boolean`
 - 详情：是否使用原生方式懒加载页面图片。
 
-### imgMark
+### mark
 
 - 类型：`ImageMarkOptions | boolean`
 
@@ -182,7 +182,7 @@ interface ImageMarkOptions {
 
 - 详情：是否启用图片标注支持
 
-### imgSize
+### size
 
 - 类型：`boolean`
 - 详情：是否启用图片尺寸支持。
