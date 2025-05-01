@@ -185,7 +185,7 @@ interface ImageMarkOptions {
 ### size
 
 - 类型：`boolean | 'strict'`
-- 详情：是否启用图片尺寸支持。`strict` 需要隐式设置 `0` 来忽略宽度或高度。
+- 详情：是否启用图片尺寸支持。`strict` 需要显式设置 `0` 来忽略宽度或高度。
 
 ### legacySize
 
