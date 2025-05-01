@@ -4,32 +4,34 @@ import type { GitPluginOptions } from '../options.js'
 import type { MergedRawCommit, RawCommit } from '../typings.js'
 import { logger } from './logger.js'
 
-const SPLIT_CHAR = '[GIT_LOG_COMMIT_END]'
-const RE_SPLIT = /\[GIT_LOG_COMMIT_END\]$/
+const INFO_SPLITTER = '[|]'
+const COMMIT_SPLITTER = '\\|/'
 const RE_CO_AUTHOR = /^ *Co-authored-by: ?([^<]*)<([^>]*)> */gim
 
-const getCoAuthors = (
+const getCoAuthorsFromCommitBody = (
   body: string,
-): Pick<GitContributorInfo, 'email' | 'name'>[] => {
-  if (!body) return []
+): Pick<GitContributorInfo, 'email' | 'name'>[] =>
+  body
+    ? Array.from(body.matchAll(RE_CO_AUTHOR)).map(([, name, email]) => ({
+        name: name.trim(),
+        email: email.trim(),
+      }))
+    : []
 
-  return [...body.matchAll(RE_CO_AUTHOR)].map(([, name, email]) => ({
-    name: name.trim(),
-    email: email.trim(),
-  }))
-}
-
-const getFormat = ({ contributors, changelog }: GitPluginOptions): string => {
+const getGitLogFormat = ({
+  contributors,
+  changelog,
+}: GitPluginOptions): string => {
   if (!contributors && !changelog)
-    // hash | _ | _ | author_date | _ | _ | _
-    return '%H|||%ad|||'
+    // hash | author_date
+    return ['%H', '%ad'].join(INFO_SPLITTER)
 
   if (contributors && !changelog)
-    // hash | author_name | author_email | author_date | _ | _ | body
-    return '%H|%an|%ae|%ad|||%b'
+    // hash | author_date | author_name | author_email | body
+    return ['%H', '%ad', '%an', '%ae', '%b'].join(INFO_SPLITTER)
 
-  // hash | author_name | author_email | author_date | subject | ref | body
-  return '%H|%an|%ae|%ad|%s|%d|%b'
+  // hash | author_date | author_name | author_email | body | subject | ref
+  return ['%H', '%ad', '%an', '%ae', '%b', '%s', '%d'].join(INFO_SPLITTER)
 }
 
 /**
@@ -83,13 +85,13 @@ export const getRawCommits = async (
   cwd: string,
   options: GitPluginOptions,
 ): Promise<RawCommit[]> => {
-  const format = getFormat(options)
+  const format = getGitLogFormat(options)
 
   try {
     const stdout = await runGitLog(
       [
         '--max-count=-1',
-        `--format=${format}${SPLIT_CHAR}`,
+        `--format=${format}${COMMIT_SPLITTER}`,
         '--date=unix',
         '--follow',
         '--',
@@ -99,14 +101,19 @@ export const getRawCommits = async (
     )
 
     return stdout
-      .replace(RE_SPLIT, '')
-      .split(`${SPLIT_CHAR}\n`)
+      .substring(0, stdout.length - COMMIT_SPLITTER.length - 1)
+      .split(`${COMMIT_SPLITTER}\n`)
       .filter(Boolean)
       .map((rawString) => {
-        const parts = rawString.split('|').map((v) => v.trim())
-        const [hash, author, email, time, message, refs] = parts
-        // ensure body containing `|` is not splitted
-        const body = parts.slice(6).join('|').trim()
+        const [
+          hash,
+          time,
+          author = '',
+          email = '',
+          body = '',
+          message = '',
+          refs = '',
+        ] = rawString.split(INFO_SPLITTER).map((v) => v.trim())
 
         return {
           filepath,
@@ -117,7 +124,7 @@ export const getRawCommits = async (
           refs,
           author,
           email,
-          coAuthors: getCoAuthors(body),
+          coAuthors: getCoAuthorsFromCommitBody(body),
         }
       })
   } catch (error) {
