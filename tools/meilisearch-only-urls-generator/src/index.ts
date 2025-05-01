@@ -25,13 +25,19 @@ const generateOnlyUrls = (markdownFilePaths: string[]): string[] =>
   })
 
 const getFilesByDiff = (): string[] => {
-  const { stdout, stderr } = spawnSync('git diff HEAD~1 HEAD --name-only', {
-    encoding: 'utf-8',
-  })
+  const { stdout, stderr } = spawnSync(
+    'git',
+    ['diff', 'HEAD~1', 'HEAD', '--name-only'],
+    {
+      encoding: 'utf-8',
+    },
+  )
 
   if (stderr) {
     console.error(`Git error output: ${stderr}`)
   }
+
+  console.log(stdout)
 
   return stdout
     .split('\n')
@@ -39,8 +45,8 @@ const getFilesByDiff = (): string[] => {
 }
 
 const getFilesByStatus = (): string[] => {
-  const { stdout, stderr } = spawnSync('git status --porcelain', {
-    encoding: 'utf-8',
+  const { stdout, stderr } = spawnSync('git', ['status', '--porcelain'], {
+    encoding: 'utf8',
   })
 
   if (stderr) {
