@@ -36,7 +36,7 @@ export interface MarkdownImagePluginOptions {
    *
    * @default false
    */
-  size?: boolean
+  size?: boolean | 'strict'
 
   /**
    * Whether to enable legacy image size mark support

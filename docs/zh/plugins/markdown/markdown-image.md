@@ -68,11 +68,11 @@ interface ImageMarkOptions {
 
 ### 图片尺寸
 
-你可以在图片链接末尾使用 `|widthxheight` 来指定图片尺寸。
+当你在插件选项中设置 `size: true` 时，你可以在图片链接末尾使用 `|widthxheight` 来指定图片尺寸。
 
 `width` 和 `height` 都应该为数字并意味着像素单位的尺寸，并且它们两者都是可选的（设置 `0` 来表示忽略）。
 
-如果你想要与 Obsidian 相同的行为，你可以在插件选项中传递 `{ strict: true }`。现在 `width` 和 `height` 都必须被设置（其中一个可以是 `0` 来根据另一个按比例缩放）。
+如果你想要与 Obsidian 相同的行为，你可以在插件选项中设置 `size: 'strict'`，这样 `width` 和 `height` 都必须被设置（其中一个可以是 `0` 来根据另一个按比例缩放）。
 
 ```md
 ![Logo|200x200](/example.png)
@@ -110,7 +110,7 @@ interface ImageMarkOptions {
 
 :::
 
-当你在插件选项中设置 `size: true` 时，可以使用 `=widthxheight` 指定图像大小。
+当你在插件选项中设置 `legacySize: true` 时，可以在链接末尾使用 `=widthxheight` 指定图像大小。
 
 ```md
 ![Alt](/example.png =200x300)
@@ -184,8 +184,8 @@ interface ImageMarkOptions {
 
 ### size
 
-- 类型：`boolean`
-- 详情：是否启用图片尺寸支持。
+- 类型：`boolean | 'strict'`
+- 详情：是否启用图片尺寸支持。`strict` 需要显式设置 `0` 来忽略宽度或高度。
 
 ### legacySize
 
