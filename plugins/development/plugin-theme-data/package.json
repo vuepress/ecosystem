@@ -19,6 +19,7 @@
   },
   "license": "MIT",
   "author": "meteorlxy",
+  "sideEffects": false,
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
