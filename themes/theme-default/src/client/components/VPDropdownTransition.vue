@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { VNode } from 'vue'
+import type { Slot } from '@vuepress/helper/client'
 
 defineSlots<{
-  default?: (props: Record<never, never>) => VNode | VNode[] | null
+  default?: Slot
 }>()
 
 const setHeight = (item: Element): void => {

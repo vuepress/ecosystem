@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { VNode } from 'vue'
+import type { Slot } from '@vuepress/helper/client'
 
 withDefaults(
   defineProps<{
@@ -24,7 +24,7 @@ withDefaults(
 )
 
 defineSlots<{
-  default?: () => VNode | VNode[] | string | null
+  default?: Slot
 }>()
 </script>
 

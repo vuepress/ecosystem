@@ -1,3 +1,4 @@
+import type { NonNullableSlotContent } from '@vuepress/helper/client'
 import { useStorage } from '@vueuse/core'
 import type { PropType, SlotsType, VNode } from 'vue'
 import { defineComponent, h, onMounted, ref, shallowRef, watch } from 'vue'
@@ -58,11 +59,11 @@ export const Tabs = defineComponent({
     [slot: `title${number}`]: (props: {
       value: string
       isActive: boolean
-    }) => VNode[]
+    }) => NonNullableSlotContent
     [slot: `tab${number}`]: (props: {
       value: string
       isActive: boolean
-    }) => VNode[]
+    }) => NonNullableSlotContent
   }>,
 
   setup(props, { slots }) {

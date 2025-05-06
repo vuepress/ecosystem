@@ -5,8 +5,8 @@ import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'
 import VPToggleSidebarButton from '@theme/VPToggleSidebarButton.vue'
 import { useData } from '@theme/useData'
 import { DeviceType, useUpdateDeviceStatus } from '@theme/useUpdateDeviceStatus'
+import type { Slot } from '@vuepress/helper/client'
 import { hasGlobalComponent } from '@vuepress/helper/client'
-import type { VNode } from 'vue'
 import { computed, ref, resolveComponent, useTemplateRef } from 'vue'
 
 defineEmits<{
@@ -14,8 +14,8 @@ defineEmits<{
 }>()
 
 defineSlots<{
-  before?: (props: Record<never, never>) => VNode | VNode[] | null
-  after?: (props: Record<never, never>) => VNode | VNode[] | null
+  before?: Slot
+  after?: Slot
 }>()
 
 const SearchBox = hasGlobalComponent('SearchBox')
