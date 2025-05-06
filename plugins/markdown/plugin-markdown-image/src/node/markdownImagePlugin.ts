@@ -2,7 +2,7 @@ import { figure } from '@mdit/plugin-figure'
 import { imgLazyload } from '@mdit/plugin-img-lazyload'
 import type { MarkdownItImgMarkOptions } from '@mdit/plugin-img-mark'
 import { imgMark } from '@mdit/plugin-img-mark'
-import { imgSize, legacyImgSize } from '@mdit/plugin-img-size'
+import { imgSize, legacyImgSize, obsidianImgSize } from '@mdit/plugin-img-size'
 import type { Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import type { MarkdownImagePluginOptions } from './options.js'
@@ -19,9 +19,10 @@ export const markdownImagePlugin = (
 
     if (options.figure) md.use(figure)
     if (options.lazyload) md.use(imgLazyload)
-    if (options.size)
-      md.use(imgSize, options.size === 'strict' ? { strict: true } : {})
+    if (options.size) md.use(imgSize)
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     if (options.legacySize) md.use(legacyImgSize)
+    if (options.obsidianSize) md.use(obsidianImgSize)
     if (mark)
       md.use<MarkdownItImgMarkOptions>(imgMark, isPlainObject(mark) ? mark : {})
   },

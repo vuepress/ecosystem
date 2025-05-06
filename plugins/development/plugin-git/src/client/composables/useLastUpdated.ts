@@ -29,14 +29,17 @@ export interface LastUpdated {
 export const useLastUpdated = (
   enabled: MaybeRefOrGetter<boolean> = true,
 ): ComputedRef<LastUpdated | null> => {
-  const { lang, page } = useData<GitPluginFrontmatter, GitPluginPageData>()
+  const { lang, page } = useData<
+    GitPluginFrontmatter,
+    Partial<GitPluginPageData>
+  >()
   const locale = useGitLocale()
 
   return computed(() => {
     if (!toValue(enabled)) return null
 
     const timeStamp =
-      page.value.git.updatedTime ?? page.value.git.changelog?.[0].time
+      page.value.git?.updatedTime ?? page.value.git?.changelog?.[0].time
 
     if (!timeStamp) return null
 

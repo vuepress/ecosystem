@@ -24,6 +24,7 @@
     "email": "mister-hope@outlook.com",
     "url": "https://mister-hope.com"
   },
+  "sideEffects": false,
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
