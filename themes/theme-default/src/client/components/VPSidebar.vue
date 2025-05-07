@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import VPNavbarItems from '@theme/VPNavbarItems.vue'
 import VPSidebarItems from '@theme/VPSidebarItems.vue'
-import type { VNode } from 'vue'
+import type { Slot } from '@vuepress/helper/client'
 
 defineSlots<{
-  top?: (props: Record<never, never>) => VNode | VNode[] | null
-  bottom?: (props: Record<never, never>) => VNode | VNode[] | null
+  top?: Slot
+  bottom?: Slot
 }>()
 </script>
 

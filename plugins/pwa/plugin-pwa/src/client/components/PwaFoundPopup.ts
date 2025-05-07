@@ -1,3 +1,4 @@
+import type { SlotContent } from '@vuepress/helper/client'
 import { useLocale } from '@vuepress/helper/client'
 import type { PropType, SlotsType, VNode } from 'vue'
 import { Transition, defineComponent, h, onMounted, ref } from 'vue'
@@ -20,10 +21,7 @@ export const PwaFoundPopup = defineComponent({
   },
 
   slots: Object as SlotsType<{
-    default?: (props: {
-      found: boolean
-      refresh: () => void
-    }) => VNode | VNode[] | null
+    default?: (props: { found: boolean; refresh: () => void }) => SlotContent
   }>,
 
   setup(props, { slots }) {

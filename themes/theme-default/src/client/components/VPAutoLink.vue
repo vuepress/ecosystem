@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import type { VNode } from 'vue'
+import type {
+  NonNullableSlotContent,
+  SlotContent,
+} from '@vuepress/helper/client'
 import type { AutoLinkConfig } from 'vuepress/client'
 import { AutoLink } from 'vuepress/client'
 
@@ -11,9 +14,9 @@ defineProps<{
 }>()
 
 defineSlots<{
-  default?: (config: AutoLinkConfig) => VNode | VNode[]
-  before?: (config: AutoLinkConfig) => VNode | VNode[] | null
-  after?: (config: AutoLinkConfig) => VNode | VNode[] | null
+  default?: (config: AutoLinkConfig) => NonNullableSlotContent
+  before?: (config: AutoLinkConfig) => SlotContent
+  after?: (config: AutoLinkConfig) => SlotContent
 }>()
 </script>
 
