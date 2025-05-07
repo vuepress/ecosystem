@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-sitemap",
-  "version": "2.0.0-rc.99",
+  "version": "2.0.0-rc.102",
   "description": "Sitemap plugin for vuepress",
   "keywords": [
     "vuepress",

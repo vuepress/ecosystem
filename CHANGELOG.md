@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.102](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.101...v2.0.0-rc.102) (2025-05-07)
+
+### Bug Fixes
+
+- **plugin-git:** fix issues where the plugin is not enabled ([97a54ce](https://github.com/vuepress/ecosystem/commit/97a54ce485a2553bfa68423470560fd2e8cba42c))
+
+### Features
+
+- **helper:** provide slot types ([#453](https://github.com/vuepress/ecosystem/issues/453)) ([618ad70](https://github.com/vuepress/ecosystem/commit/618ad70c165385978f2c163dce434c38abd8106c))
+- **plugin-redirect:** use `location.replace` to keep history records clean ([b4aa32c](https://github.com/vuepress/ecosystem/commit/b4aa32c9bf777e3edfc72a96f78ce2c844b35cdc))
+- **plugin-seo:** not add "\n" if the file does not exist ([#452](https://github.com/vuepress/ecosystem/issues/452)) ([b476bae](https://github.com/vuepress/ecosystem/commit/b476baeed377d4fdc3dd9c82c1a73a104162da09))
+
 # [2.0.0-rc.101](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.100...v2.0.0-rc.101) (2025-05-01)
 
 **Note:** Version bump only for package @vuepress/ecosystem

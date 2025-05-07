@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.102](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.101...v2.0.0-rc.102) (2025-05-07)
+
+### Features
+
+- **plugin-redirect:** use `location.replace` to keep history records clean ([b4aa32c](https://github.com/vuepress/ecosystem/commit/b4aa32c9bf777e3edfc72a96f78ce2c844b35cdc))
+
 # [2.0.0-rc.99](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.98...v2.0.0-rc.99) (2025-05-01)
 
 **Note:** Version bump only for package @vuepress/plugin-redirect

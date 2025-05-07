@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.102](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.101...v2.0.0-rc.102) (2025-05-07)
+
+### Features
+
+- **helper:** provide slot types ([#453](https://github.com/vuepress/ecosystem/issues/453)) ([618ad70](https://github.com/vuepress/ecosystem/commit/618ad70c165385978f2c163dce434c38abd8106c))
+
 # [2.0.0-rc.99](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.98...v2.0.0-rc.99) (2025-05-01)
 
 **Note:** Version bump only for package @vuepress/plugin-pwa
