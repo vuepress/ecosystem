@@ -74,16 +74,17 @@ export interface MarkdownItPrismjsHighlightOptions {
    * - 'all': render all whitespace
    * - 'boundary': render leading and trailing whitespace of each line.
    * - 'trailing': render trailing whitespace of each line
+   * - 'disable': disable whitespace completely
    *
    * you are able to use `:whitespace` or `:no-whitespace` or `:whitespace=position` to set single code block
    *
    * position: 'all' | 'boundary' | 'trailing'
    *
-   * @default false
+   * @default 'disable'
    *
    * @see https://shiki.style/packages/transformers#transformerrenderwhitespace
    */
-  whitespace?: WhitespacePosition | boolean
+  whitespace?: WhitespacePosition | boolean | 'disable'
 }
 
 export const highlightPlugin = (
@@ -137,7 +138,9 @@ export const highlightPlugin = (
       metaWordHighlight(parser, info)
     }
 
-    metaWhitespace(parser, info, whitespacePosition)
+    if (whitespacePosition !== 'disable') {
+      metaWhitespace(parser, info, whitespacePosition)
+    }
 
     parser.pre.classList.push(languageClass)
 

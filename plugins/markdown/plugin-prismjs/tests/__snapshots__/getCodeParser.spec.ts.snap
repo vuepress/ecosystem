@@ -212,16 +212,7 @@ exports[`@vuepress/plugin-prismjs > parser > should work \`metaWhitespace\` with
 <span class="line">}</code></pre></span>"
 `;
 
-exports[`@vuepress/plugin-prismjs > parser > should work \`metaWhitespace\` with \`false\` > disable global 1`] = `
-"<pre><code><span class="line">function foo(bar: string, baz: string) {</span>
-<span class="line">  console.log('hello world')  </span>
-<span class="line">  console.log('hello world')</span>
-<span class="line">		console.log('hello world')</span>
-<span class="line">console.log('hello world)	</span>
-<span class="line">}</code></pre></span>"
-`;
-
-exports[`@vuepress/plugin-prismjs > parser > should work \`metaWhitespace\` with \`false\` > disable global and :whitespace 1`] = `
+exports[`@vuepress/plugin-prismjs > parser > should work \`metaWhitespace\` with default \`false\` > :whitespace / :whitespace=all 1`] = `
 "<pre><code><span class="line">function<span class="space"> </span>foo(bar:<span class="space"> </span>string,<span class="space"> </span>baz:<span class="space"> </span>string)<span class="space"> </span>{</span>
 <span class="line"><span class="space"> </span><span class="space"> </span>console.log('hello<span class="space"> </span>world')<span class="space"> </span><span class="space"> </span></span>
 <span class="line"><span class="space"> </span><span class="space"> </span>console.log('hello<span class="space"> </span>world')</span>
@@ -230,16 +221,7 @@ exports[`@vuepress/plugin-prismjs > parser > should work \`metaWhitespace\` with
 <span class="line">}</code></pre></span>"
 `;
 
-exports[`@vuepress/plugin-prismjs > parser > should work \`metaWhitespace\` with default options > :whitespace / :whitespace=all 1`] = `
-"<pre><code><span class="line">function<span class="space"> </span>foo(bar:<span class="space"> </span>string,<span class="space"> </span>baz:<span class="space"> </span>string)<span class="space"> </span>{</span>
-<span class="line"><span class="space"> </span><span class="space"> </span>console.log('hello<span class="space"> </span>world')<span class="space"> </span><span class="space"> </span></span>
-<span class="line"><span class="space"> </span><span class="space"> </span>console.log('hello<span class="space"> </span>world')</span>
-<span class="line"><span class="tab">	</span><span class="tab">	</span>console.log('hello<span class="space"> </span>world')</span>
-<span class="line">console.log('hello<span class="space"> </span>world)<span class="tab">	</span></span>
-<span class="line">}</code></pre></span>"
-`;
-
-exports[`@vuepress/plugin-prismjs > parser > should work \`metaWhitespace\` with default options > :whitespace=boundary 1`] = `
+exports[`@vuepress/plugin-prismjs > parser > should work \`metaWhitespace\` with default \`false\` > :whitespace=boundary 1`] = `
 "<pre><code><span class="line">function foo(bar: string, baz: string) {</span>
 <span class="line"><span class="space"> </span><span class="space"> </span>console.log('hello world')<span class="space"> </span><span class="space"> </span></span>
 <span class="line"><span class="space"> </span><span class="space"> </span>console.log('hello world')</span>
@@ -248,7 +230,7 @@ exports[`@vuepress/plugin-prismjs > parser > should work \`metaWhitespace\` with
 <span class="line">}</code></pre></span>"
 `;
 
-exports[`@vuepress/plugin-prismjs > parser > should work \`metaWhitespace\` with default options > :whitespace=trailing 1`] = `
+exports[`@vuepress/plugin-prismjs > parser > should work \`metaWhitespace\` with default \`false\` > :whitespace=trailing 1`] = `
 "<pre><code><span class="line">function foo(bar: string, baz: string) {</span>
 <span class="line">  console.log('hello world')<span class="space"> </span><span class="space"> </span></span>
 <span class="line">  console.log('hello world')</span>
@@ -257,7 +239,7 @@ exports[`@vuepress/plugin-prismjs > parser > should work \`metaWhitespace\` with
 <span class="line">}</code></pre></span>"
 `;
 
-exports[`@vuepress/plugin-prismjs > parser > should work \`metaWhitespace\` with default options > no render whitespace without meta 1`] = `
+exports[`@vuepress/plugin-prismjs > parser > should work \`metaWhitespace\` with default \`false\` > no render whitespace without meta 1`] = `
 "<pre><code><span class="line">function foo(bar: string, baz: string) {</span>
 <span class="line">  console.log('hello world')  </span>
 <span class="line">  console.log('hello world')</span>

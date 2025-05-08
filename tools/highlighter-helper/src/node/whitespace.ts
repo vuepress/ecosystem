@@ -3,21 +3,33 @@ export const NO_WHITESPACE_REGEXP = /:no-whitespace\b/
 
 export type WhitespacePosition = 'all' | 'boundary' | 'trailing'
 
+const AVAILABLE_WHITESPACE_POSITIONS = ['all', 'boundary', 'trailing']
+
 export const resolveWhitespacePosition = (
   info: string,
-  defaultPosition?: WhitespacePosition | boolean,
+  defaultPosition: WhitespacePosition | boolean,
 ): WhitespacePosition | false => {
   if (NO_WHITESPACE_REGEXP.test(info)) {
     return false
   }
 
-  const position = defaultPosition === true ? undefined : defaultPosition
+  const position = AVAILABLE_WHITESPACE_POSITIONS.includes(
+    defaultPosition as WhitespacePosition,
+  )
+    ? (defaultPosition as WhitespacePosition)
+    : defaultPosition === false
+      ? false
+      : 'all'
 
   const match = info.match(WHITESPACE_REGEXP)
 
   if (match) {
-    return (match[1] as WhitespacePosition | undefined) || position || 'all'
+    if (AVAILABLE_WHITESPACE_POSITIONS.includes(match[1])) {
+      return match[1] as WhitespacePosition
+    }
+
+    return position || 'all'
   }
 
-  return position ?? false
+  return position
 }

@@ -47,7 +47,9 @@ export const getHighLightFunction = (
           ...((options.highlightLines ?? true)
             ? [transformerCompactLineOptions(attrsToLines(attrs))]
             : []),
-          ...whitespaceTransformer(attrs, options.whitespace),
+          ...(options.whitespace !== 'disable'
+            ? whitespaceTransformer(attrs, options.whitespace)
+            : []),
           ...(extraTransformers ?? []),
           ...(options.transformers ?? []),
         ],

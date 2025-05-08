@@ -136,6 +136,7 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
    * - 'all': render all whitespace
    * - 'boundary': render leading and trailing whitespace of each line.
    * - 'trailing': render trailing whitespace of each line
+   * - 'disable': disable whitespace completely
    *
    * you are able to use `:whitespace` or `:no-whitespace` or `:whitespace=position` to set single code block
    *
@@ -145,7 +146,7 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
    *
    * @see https://shiki.style/packages/transformers#transformerrenderwhitespace
    */
-  whitespace?: WhitespacePosition | boolean
+  whitespace?: WhitespacePosition | boolean | 'disable'
 
   /**
    * Log level Highlighter language detecter

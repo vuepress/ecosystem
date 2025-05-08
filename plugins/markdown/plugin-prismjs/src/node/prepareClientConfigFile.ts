@@ -75,7 +75,7 @@ export const prepareClientConfigFile = (
     )
   }
 
-  if (whitespace) {
+  if (whitespace !== 'disable') {
     imports.push(
       `import "${getModulePath('@vuepress/highlighter-helper/styles/whitespace.css', import.meta)}"`,
     )

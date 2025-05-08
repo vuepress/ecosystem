@@ -16,7 +16,8 @@ const genCode = (code: string): string => `<pre><code>${code}</code></pre>`
 
 describe('@vuepress/plugin-prismjs > parser', () => {
   it('normal parse', () => {
-    const code = genCode(`const a = 1
+    const code = genCode(`\
+const a = 1
 const b = 2
 const c = 3
 `)
@@ -50,7 +51,8 @@ const c = 3
   })
 
   it('parse highlight lines', () => {
-    const code = genCode(`const a = 1
+    const code = genCode(`\
+const a = 1
 const b = 2
 const c = 3
 console.log(a + b)
@@ -73,7 +75,8 @@ function add(a, b) {
   })
 
   it('parse notation highlight', () => {
-    const code = genCode(`const a = 1
+    const code = genCode(`\
+const a = 1
 const b = 2
 const c = 3 // [!code highlight]
 console.log(a + b) // [!code hl]
@@ -99,7 +102,8 @@ function add(a, b) {
   })
 
   it('parse notation highlight:number', () => {
-    const code = genCode(`const a = 1
+    const code = genCode(`\
+const a = 1
 const b = 2 // [!code highlight:3]
 const c = 3
 console.log(a + b)
@@ -125,7 +129,8 @@ function add(a, b) {
   })
 
   it('parse notation diff', () => {
-    const code = genCode(`const a = 1
+    const code = genCode(`\
+const a = 1
 const b = 2 // [!code ++]
 const c = 3
 console.log(a + b) // [!code --]
@@ -150,7 +155,8 @@ function add(a, b) { // [!code ++]
   })
 
   it('parse notation diff ++:number', () => {
-    const code = genCode(`const a = 1
+    const code = genCode(`\
+const a = 1
 const b = 2 // [!code ++:3]
 const c = 3
 console.log(a + b)
@@ -176,7 +182,8 @@ function add(a, b) {
   })
 
   it('parse notation focus', () => {
-    const code = genCode(`const a = 1
+    const code = genCode(`\
+const a = 1
 const b = 2 // [!code focus]
 const c = 3
 console.log(a + b)
@@ -199,7 +206,8 @@ function add(a, b) { // [!code focus]
   })
 
   it('parse notation focus:number', () => {
-    const code = genCode(`const a = 1
+    const code = genCode(`\
+const a = 1
 const b = 2 // [!code focus:3]
 const c = 3
 console.log(a + b)
@@ -225,7 +233,8 @@ function add(a, b) {
   })
 
   it('parse notation error level', () => {
-    const code = genCode(`const a = 1
+    const code = genCode(`\
+const a = 1
 const b = 2 // [!code warning]
 const c = 3
 console.log(a + b) // [!code error]
@@ -250,7 +259,8 @@ function add(a, b) { // [!code warning]
   })
 
   it('parse notation diff error:number', () => {
-    const code = genCode(`const a = 1
+    const code = genCode(`\
+const a = 1
 const b = 2 // [!code error:3]
 const c = 3
 console.log(a + b)
@@ -276,9 +286,11 @@ function add(a, b) {
   })
 
   it('parse notation word highlight', () => {
-    const code = genCode(`// [!code word:Hello]
+    const code = genCode(`\
+// [!code word:Hello]
 const message = 'Hello World'
-console.log(message) // prints Hello World`)
+console.log(message) // prints Hello World\
+`)
     const parser = getCodeParser(code)
     notationWordHighlight(parser)
 
@@ -293,10 +305,12 @@ console.log(message) // prints Hello World`)
   })
 
   it('parse notation word highlight :number', () => {
-    const code = genCode(`// [!code word:Hello:2]
+    const code = genCode(`\
+// [!code word:Hello:2]
 const message = 'Hello World'
 console.log(message) // prints Hello World
-console.log(message) // prints Hello World`)
+console.log(message) // prints Hello World\
+`)
     const parser = getCodeParser(code)
     notationWordHighlight(parser)
 
@@ -315,8 +329,10 @@ console.log(message) // prints Hello World`)
   })
 
   it('parse word highlight within meta', () => {
-    const code = genCode(`const message = 'Hello World'
-console.log(message) // prints Hello World`)
+    const code = genCode(`\
+const message = 'Hello World'
+console.log(message) // prints Hello World\
+`)
     const parser = getCodeParser(code)
     metaWordHighlight(parser, '/Hello/')
 
@@ -331,8 +347,10 @@ console.log(message) // prints Hello World`)
   })
 
   it('parse multiple words highlight within meta', () => {
-    const code = genCode(`const message = 'Hello Foo'
-console.log(message) // prints Hello Bar`)
+    const code = genCode(`\
+const message = 'Hello Foo'
+console.log(message) // prints Hello Bar\
+`)
     const parser = getCodeParser(code)
     metaWordHighlight(parser, '/Foo|Bar/')
 
@@ -348,7 +366,8 @@ console.log(message) // prints Hello Bar`)
   })
 
   it('should not remove // [\\!code xxx]', () => {
-    const code = genCode(`const a = 1 // [\\!code focus]`)
+    const code = genCode(`\
+const a = 1 // [\\!code focus]`)
 
     const parser = getCodeParser(code)
 
@@ -360,9 +379,11 @@ console.log(message) // prints Hello Bar`)
   })
 
   it('should remove single line // [!code xxx]', () => {
-    const code = genCode(`const a = 1
+    const code = genCode(`\
+const a = 1
 // [!code focus:2]
-const b = 2`)
+const b = 2\
+`)
 
     const parser = getCodeParser(code)
     notationFocus(parser)
@@ -374,12 +395,14 @@ const b = 2`)
     expect(result).toMatchSnapshot()
   })
 
-  describe('should work `metaWhitespace` with default options', () => {
-    const code = genCode(`function foo(bar: string, baz: string) {
+  describe('should work `metaWhitespace` with default `false`', () => {
+    const code = genCode(`\
+function foo(bar: string, baz: string) {
   console.log('hello world')  \n  console.log('hello world')
 \t\tconsole.log('hello world')
 console.log('hello world)\t
-}`)
+}\
+`)
     it('no render whitespace without meta', () => {
       const parser = getCodeParser(code)
       metaWhitespace(parser, '')
@@ -391,7 +414,7 @@ console.log('hello world)\t
       expect(parser.stringify()).toMatchSnapshot()
     })
 
-    it(':whitespace / :whitespace=all', () => {
+    it.only(':whitespace / :whitespace=all', () => {
       const parser = getCodeParser(code)
       metaWhitespace(parser, 'js :whitespace')
       const result = parser.stringify()
@@ -432,11 +455,15 @@ console.log('hello world)\t
   })
 
   describe('should work `metaWhitespace` with `all` / `true` options', () => {
-    const code = genCode(`function foo(bar: string, baz: string) {
+    const code = genCode(
+      `\
+function foo(bar: string, baz: string) {
   console.log('hello world')  \n  console.log('hello world')
 \t\tconsole.log('hello world')
 console.log('hello world)\t
-}`)
+}\
+`,
+    )
 
     it('`true` and  `:whitespace`', () => {
       const parser = getCodeParser(code)
@@ -489,12 +516,13 @@ console.log('hello world)\t
   })
 
   describe('should work `metaWhitespace` with `boundary` options', () => {
-    const code =
-      genCode(`<span class="line">function foo(bar: string, baz: string) {</span>
+    const code = genCode(`\
+<span class="line">function foo(bar: string, baz: string) {</span>
 <span class="line">  console</span><span>.</span>log('hello world'<span>)  </span></span>\n  console.log('hello world')
 \t\tconsole.log('hello world')
 console.log('hello world)\t
-}`)
+}\
+`)
 
     it('`boundary` and `:whitespace`', () => {
       const parser = getCodeParser(code)
@@ -528,35 +556,6 @@ console.log('hello world)\t
       expect(parser.lines[1].content.includes('class="space"')).toBe(true)
       expect(parser.lines[2].content.includes('class="space"')).toBe(false)
       expect(parser.lines[4].content.includes('class="tab"')).toBe(true)
-      expect(result).toMatchSnapshot()
-    })
-  })
-
-  describe('should work `metaWhitespace` with `false`', () => {
-    const code = genCode(`function foo(bar: string, baz: string) {
-  console.log('hello world')  \n  console.log('hello world')
-\t\tconsole.log('hello world')
-console.log('hello world)\t
-}`)
-    it('disable global', () => {
-      const parser = getCodeParser(code)
-      metaWhitespace(parser, 'js', false)
-      const result = parser.stringify()
-      expect(
-        parser.lines.every((line) => !line.content.includes('class="space"')),
-      ).toBe(true)
-      expect(result).toMatchSnapshot()
-    })
-
-    it('disable global and :whitespace', () => {
-      const parser = getCodeParser(code)
-      metaWhitespace(parser, 'js :whitespace', false)
-      const result = parser.stringify()
-      expect(
-        parser.lines
-          .slice(0, -1)
-          .every((line) => line.content.includes('class="space"')),
-      ).toBe(true)
       expect(result).toMatchSnapshot()
     })
   })

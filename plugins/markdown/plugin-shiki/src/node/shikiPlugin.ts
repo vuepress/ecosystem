@@ -39,6 +39,7 @@ export const shikiPlugin = (_options: ShikiPluginOptions = {}): Plugin => {
     options.lineNumbers ??= true
     options.collapsedLines ??= 'disable'
     options.codeBlockTitle ??= true
+    options.whitespace ??= 'disable'
 
     if (
       options.twoslash &&

@@ -26,8 +26,9 @@ const { highlighter, loadLang } = await createShikiHighlighter({} as App)
 const createMarkdown = ({
   preWrapper = true,
   lineNumbers = true,
-  collapsedLines = false,
+  collapsedLines = 'disable',
   codeBlockTitle = true,
+  whitespace = 'disable',
   ...options
 }: ShikiPluginOptions = {}): MarkdownIt => {
   const md = new MarkdownIt()
@@ -36,7 +37,7 @@ const createMarkdown = ({
 
   md.options.highlight = getHighLightFunction(
     highlighter,
-    options,
+    { ...options, whitespace },
     [],
     loadLang,
     markdownFilePathGetter,
@@ -372,29 +373,57 @@ function foo () {
   const foo = 'foo'  \n  return 'foo'
 }
 `
-    it('should work whitespace with default options', () => {
-      const md = createMarkdown()
-      expect(md.render(source)).toMatchSnapshot()
-    })
 
     it('should work whitespace with `all` option', () => {
       const md = createMarkdown({ whitespace: 'all' })
-      expect(md.render(source)).toMatchSnapshot()
+      const result = md.render(source)
+
+      // expect(result).toContain('class="tab"')
+      // expect(result).toContain('class="space"')
+      expect(result).toMatchSnapshot()
     })
 
     it('should work whitespace with `boundary` option', () => {
       const md = createMarkdown({ whitespace: 'boundary' })
-      expect(md.render(source)).toMatchSnapshot()
+      const result = md.render(source)
+
+      // expect(result).toContain('class="tab"')
+      // expect(result).toContain('class="space"')
+      expect(result).toMatchSnapshot()
     })
 
     it('should work whitespace with `trailing` option', () => {
       const md = createMarkdown({ whitespace: 'trailing' })
-      expect(md.render(source)).toMatchSnapshot()
+      const result = md.render(source)
+
+      // expect(result).toContain('class="tab"')
+      // expect(result).toContain('class="space"')
+      expect(result).toMatchSnapshot()
     })
 
     it('should work whitespace with `false` option', () => {
       const md = createMarkdown({ whitespace: false })
-      expect(md.render(source)).toMatchSnapshot()
+      const result = md.render(source)
+
+      // expect(result).toContain('class="tab"')
+      // expect(result).toContain('class="space"')
+      expect(result).toMatchSnapshot()
+    })
+
+    it('should work whitespace with `disable` option', () => {
+      const md = createMarkdown({ whitespace: 'disable' })
+      const result = md.render(source)
+
+      expect(result).not.toContain('class="tab"')
+      expect(result).not.toContain('class="space"')
+      expect(result).toMatchSnapshot()
+    })
+
+    it('should work whitespace with default options', () => {
+      const md1 = createMarkdown()
+      const md2 = createMarkdown({ whitespace: 'disable' })
+
+      expect(md1.render(source)).toEqual(md2.render(source))
     })
   })
 

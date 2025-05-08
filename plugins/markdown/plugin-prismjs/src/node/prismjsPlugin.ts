@@ -15,8 +15,9 @@ export const prismjsPlugin = (options: PrismjsPluginOptions = {}): Plugin => {
     preloadLanguages: ['markdown', 'jsdoc', 'yaml'],
     preWrapper: true,
     lineNumbers: true,
-    collapsedLines: false,
+    collapsedLines: 'disable',
     codeBlockTitle: true,
+    whitespace: 'disable',
     ...options,
   }
 

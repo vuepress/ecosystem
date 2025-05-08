@@ -604,7 +604,7 @@ body > div {
 
 ### whitespace
 
-- Type: `boolean | 'all' | 'boundary' | 'trailing'`
+- Type: `boolean | 'all' | 'boundary' | 'trailing'| 'disable'`
 
 - Default: `false`
 
@@ -615,6 +615,7 @@ body > div {
   - `'all'`: render all whitespace
   - `'boundary'`: render leading and trailing whitespace of the line
   - `'trailing'`: render trailing whitespace of the line
+  - `'disable'`: Completely disable render whitespace, `:whitespace` will not take effect.
 
   You can add `:whitespace / :no-whitespace` mark in your fenced code blocks to override the value set in config, and customize the render type by adding `=` after `:whitespace`. For example `:whitespace=boundary` will render leading and trailing whitespace of the line.
 
