@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.23" />
+    <style>
+      :root {
+        --vp-c-bg: #fff;
+      }
+
+      [data-theme='dark'] {
+        --vp-c-bg: #1b1b1f;
+      }
+
+      html,
+      body {
+        background-color: var(--vp-c-bg);
+      }
+    </style>
+    <script>
+      const useChoice = localStorage.getItem('vuepress-color-scheme')
+      const systemStatus =
+        'matchMedia' in window
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : false
+
+      if (useChoice === 'light') {
+        document.documentElement.dataset.theme = 'light'
+      } else if (useChoice === 'dark' || systemStatus) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"幻灯片演示","image":["https://theme-hope-assets.vuejs.press/logo.svg"],"dateModified":"2025-01-10T18:07:54.000Z","author":[]}</script><meta property="og:url" content="https://ecosystem.vuejs.press/zh/plugins/markdown/revealjs/demo.html"><meta property="og:site_name" content="VuePress 生态系统"><meta property="og:title" content="幻灯片演示"><meta property="og:type" content="article"><meta property="og:image" content="https://theme-hope-assets.vuejs.press/logo.svg"><meta property="og:locale" content="zh-CN"><meta property="og:locale:alternate" content="en-US"><meta property="og:updated_time" content="2025-01-10T18:07:54.000Z"><meta property="article:modified_time" content="2025-01-10T18:07:54.000Z"><link rel="alternate" hreflang="en-us" href="https://ecosystem.vuejs.press/plugins/markdown/revealjs/demo.html"><link rel="alternate" type="application/atom+xml" href="https://ecosystem.vuejs.press/zh/atom.xml" title="VuePress 生态系统 Atom Feed"><link rel="alternate" type="application/json" href="https://ecosystem.vuejs.press/zh/feed.json" title="VuePress 生态系统 JSON Feed"><link rel="alternate" type="application/rss+xml" href="https://ecosystem.vuejs.press/zh/rss.xml" title="VuePress 生态系统 RSS Feed"><link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="application-name" content="VuePress"><link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png"><link rel="mask-icon" href="/images/icons/safari-pinned-tab.svg" color="#3eaf7c"><meta name="theme-color" content="#3eaf7c"><title>幻灯片演示 | VuePress 生态系统</title><meta name="description" content="VuePress 官方主题和插件">
+    <link rel="preload" href="/assets/style-D46GUW9i.css" as="style"><link rel="stylesheet" href="/assets/style-D46GUW9i.css">
+    <link rel="modulepreload" href="/assets/app-Dg1JwZmu.js"><link rel="modulepreload" href="/assets/demo.html-CLGqqlQZ.js">
+    <link rel="prefetch" href="/assets/index.html-D9tmp1IS.js" as="script"><link rel="prefetch" href="/assets/index.html-QdSwNoH-.js" as="script"><link rel="prefetch" href="/assets/index.html-CvOgecAE.js" as="script"><link rel="prefetch" href="/assets/index.html-CG1djiYl.js" as="script"><link rel="prefetch" href="/assets/guidelines.html-VRARpzGh.js" as="script"><link rel="prefetch" href="/assets/index.html-ChoLI9ab.js" as="script"><link rel="prefetch" href="/assets/index.html-DXYOtz3a.js" as="script"><link rel="prefetch" href="/assets/baidu-analytics.html-9tHkBTzX.js" as="script"><link rel="prefetch" href="/assets/google-analytics.html-BFS1m3_V.js" as="script"><link rel="prefetch" href="/assets/umami-analytics.html-NNt0sHzW.js" as="script"><link rel="prefetch" href="/assets/index.html-DPPD-Ngy.js" as="script"><link rel="prefetch" href="/assets/index.html-Bbc9v8uX.js" as="script"><link rel="prefetch" href="/assets/active-header-links.html-3KVRD34o.js" as="script"><link rel="prefetch" href="/assets/git.html-dM-bpEMR.js" as="script"><link rel="prefetch" href="/assets/palette.html-9TMndgL8.js" as="script"><link rel="prefetch" href="/assets/reading-time.html-9UfJNR0r.js" as="script"><link rel="prefetch" href="/assets/rtl.html-Dk22I1RH.js" as="script"><link rel="prefetch" href="/assets/theme-data.html-CAWb75J7.js" as="script"><link rel="prefetch" href="/assets/toc.html-C6Nrn6RF.js" as="script"><link rel="prefetch" href="/assets/index.html-BSBVcAZj.js" as="script"><link rel="prefetch" href="/assets/back-to-top.html-DIxWpxe4.js" as="script"><link rel="prefetch" href="/assets/catalog.html-BlK0FAEO.js" as="script"><link rel="prefetch" href="/assets/copy-code.html-V9FjAnPI.js" as="script"><link rel="prefetch" href="/assets/copyright.html-CdrBivAP.js" as="script"><link rel="prefetch" href="/assets/icon.html-CUXqaCRT.js" as="script"><link rel="prefetch" href="/assets/medium-zoom.html-iNCwgCrk.js" as="script"><link rel="prefetch" href="/assets/notice.html-BXBS2YFX.js" as="script"><link rel="prefetch" href="/assets/nprogress.html-Cm7T9MoU.js" as="script"><link rel="prefetch" href="/assets/photo-swipe.html-BrHlgsdW.js" as="script"><link rel="prefetch" href="/assets/watermark.html-478YDP5L.js" as="script"><link rel="prefetch" href="/assets/index.html-BtfXy6q1.js" as="script"><link rel="prefetch" href="/assets/append-date.html-BAL9wtKl.js" as="script"><link rel="prefetch" href="/assets/links-check.html-6yZDHuGq.js" as="script"><link rel="prefetch" href="/assets/markdown-container.html-BuvmXG0p.js" as="script"><link rel="prefetch" href="/assets/markdown-ext.html-i9-cPLAX.js" as="script"><link rel="prefetch" href="/assets/markdown-hint.html-pncJFEhT.js" as="script"><link rel="prefetch" href="/assets/markdown-image.html-Bewwp_CH.js" as="script"><link rel="prefetch" href="/assets/markdown-include.html-D9PbJpZr.js" as="script"><link rel="prefetch" href="/assets/markdown-math.html-BB8Uujf0.js" as="script"><link rel="prefetch" href="/assets/markdown-stylize.html-CCBSNz9R.js" as="script"><link rel="prefetch" href="/assets/markdown-tab.html-BfHgHlzm.js" as="script"><link rel="prefetch" href="/assets/prismjs.html-B-cYSsv8.js" as="script"><link rel="prefetch" href="/assets/shiki.html-DZQ_h69j.js" as="script"><link rel="prefetch" href="/assets/index.html-BVwYohoC.js" as="script"><link rel="prefetch" href="/assets/remove-pwa.html-BRnqnh74.js" as="script"><link rel="prefetch" href="/assets/index.html-C_tx1eFB.js" as="script"><link rel="prefetch" href="/assets/docsearch.html-Cd_wdcl6.js" as="script"><link rel="prefetch" href="/assets/guidelines.html-D7PS_Lsh.js" as="script"><link rel="prefetch" href="/assets/meilisearch.html-Bx-qBmKV.js" as="script"><link rel="prefetch" href="/assets/search.html-7OOt0p-X.js" as="script"><link rel="prefetch" href="/assets/slimsearch.html-D7tp9RQB.js" as="script"><link rel="prefetch" href="/assets/index.html-3JqQwsNb.js" as="script"><link rel="prefetch" href="/assets/index.html-BSlpSn7l.js" as="script"><link rel="prefetch" href="/assets/cache.html-mjoDhKEB.js" as="script"><link rel="prefetch" href="/assets/google-tag-manager.html-BCA9CHQL.js" as="script"><link rel="prefetch" href="/assets/redirect.html-Bi-UFcmY.js" as="script"><link rel="prefetch" href="/assets/register-components.html-CLTjCLDX.js" as="script"><link rel="prefetch" href="/assets/index.html-C6uB3fsv.js" as="script"><link rel="prefetch" href="/assets/client.html-HKL51NiG.js" as="script"><link rel="prefetch" href="/assets/shared.html-B70voqgs.js" as="script"><link rel="prefetch" href="/assets/style.html-DNqxiUeJ.js" as="script"><link rel="prefetch" href="/assets/index.html-13ymPTvF.js" as="script"><link rel="prefetch" href="/assets/components.html-BCL-Chk9.js" as="script"><link rel="prefetch" href="/assets/config.html-DRo84vcB.js" as="script"><link rel="prefetch" href="/assets/extending.html-gJlRabj6.js" as="script"><link rel="prefetch" href="/assets/frontmatter.html-Drh-Tw_-.js" as="script"><link rel="prefetch" href="/assets/locale.html-TG9Hv84n.js" as="script"><link rel="prefetch" href="/assets/markdown.html-fbaKq237.js" as="script"><link rel="prefetch" href="/assets/plugin.html-BO_6ZORg.js" as="script"><link rel="prefetch" href="/assets/styles.html-D7fO3EKM.js" as="script"><link rel="prefetch" href="/assets/index.html-_AIDBu87.js" as="script"><link rel="prefetch" href="/assets/index.html-BZ0a0RJu.js" as="script"><link rel="prefetch" href="/assets/guidelines.html-BbzwPOHC.js" as="script"><link rel="prefetch" href="/assets/index.html-iS5hoaUt.js" as="script"><link rel="prefetch" href="/assets/index.html-DKcTNJ7x.js" as="script"><link rel="prefetch" href="/assets/config.html-V7S-HqvE.js" as="script"><link rel="prefetch" href="/assets/guide.html-DdVJ5van.js" as="script"><link rel="prefetch" href="/assets/index.html-DpEhpvg4.js" as="script"><link rel="prefetch" href="/assets/guide.html-DWG1bRhm.js" as="script"><link rel="prefetch" href="/assets/index.html-xhFp4nJr.js" as="script"><link rel="prefetch" href="/assets/channel.html-C0J3LCO3.js" as="script"><link rel="prefetch" href="/assets/config.html-lR_SwRQ3.js" as="script"><link rel="prefetch" href="/assets/frontmatter.html-r8WJGKEf.js" as="script"><link rel="prefetch" href="/assets/getter.html-BwCM3U2d.js" as="script"><link rel="prefetch" href="/assets/guide.html-CAKjgQE1.js" as="script"><link rel="prefetch" href="/assets/index.html-DGSjpgMx.js" as="script"><link rel="prefetch" href="/assets/config.html-Dr721WwD.js" as="script"><link rel="prefetch" href="/assets/guide.html-BTpQWGv9.js" as="script"><link rel="prefetch" href="/assets/index.html-pIjHusUs.js" as="script"><link rel="prefetch" href="/assets/demo.html-BLRz7rGZ.js" as="script"><link rel="prefetch" href="/assets/themes.html-DMklr2bj.js" as="script"><link rel="prefetch" href="/assets/index.html-BZI9EEzl.js" as="script"><link rel="prefetch" href="/assets/config.html-Ctja_Udg.js" as="script"><link rel="prefetch" href="/assets/guide.html-B6ScBX7f.js" as="script"><link rel="prefetch" href="/assets/index.html-NGqwM_XM.js" as="script"><link rel="prefetch" href="/assets/config.html-CJ6dpiHN.js" as="script"><link rel="prefetch" href="/assets/guide.html-B7jkZ-Lp.js" as="script"><link rel="prefetch" href="/assets/index.html-Cy1NZV2K.js" as="script"><link rel="prefetch" href="/assets/config.html-C6IUX53R.js" as="script"><link rel="prefetch" href="/assets/frontmatter.html-B1NMOMsw.js" as="script"><link rel="prefetch" href="/assets/guide.html-C1l0GtVG.js" as="script"><link rel="prefetch" href="/assets/bundler.html-DE1yjZBT.js" as="script"><link rel="prefetch" href="/assets/locales.html-AD2s5FQU.js" as="script"><link rel="prefetch" href="/assets/page.html-D25L5ZBl.js" as="script"><link rel="prefetch" href="/assets/index.html-BlVrE3EN.js" as="script"><link rel="prefetch" href="/assets/baidu-analytics.html-TAqFuwCL.js" as="script"><link rel="prefetch" href="/assets/google-analytics.html-DsRiwvek.js" as="script"><link rel="prefetch" href="/assets/umami-analytics.html-WOPzSHBd.js" as="script"><link rel="prefetch" href="/assets/index.html-CSPg7Kex.js" as="script"><link rel="prefetch" href="/assets/index.html-7Wt070Cm.js" as="script"><link rel="prefetch" href="/assets/active-header-links.html-2npYrOw4.js" as="script"><link rel="prefetch" href="/assets/git.html-DXuVgI2V.js" as="script"><link rel="prefetch" href="/assets/palette.html-DtnmtLZE.js" as="script"><link rel="prefetch" href="/assets/reading-time.html-B6EHHc0t.js" as="script"><link rel="prefetch" href="/assets/rtl.html-CjwN33u4.js" as="script"><link rel="prefetch" href="/assets/theme-data.html-Dywocis3.js" as="script"><link rel="prefetch" href="/assets/toc.html-n3pFZOEn.js" as="script"><link rel="prefetch" href="/assets/index.html-DMIXow68.js" as="script"><link rel="prefetch" href="/assets/back-to-top.html-BeSoFWqb.js" as="script"><link rel="prefetch" href="/assets/catalog.html-ld5OoVYI.js" as="script"><link rel="prefetch" href="/assets/copy-code.html-B_QU_PGG.js" as="script"><link rel="prefetch" href="/assets/copyright.html-5ZJ-s9i3.js" as="script"><link rel="prefetch" href="/assets/icon.html-BI349ucq.js" as="script"><link rel="prefetch" href="/assets/medium-zoom.html-D7dVymna.js" as="script"><link rel="prefetch" href="/assets/notice.html-DRLzJbSP.js" as="script"><link rel="prefetch" href="/assets/nprogress.html-1gKTZsM2.js" as="script"><link rel="prefetch" href="/assets/photo-swipe.html-D_IX2s-f.js" as="script"><link rel="prefetch" href="/assets/watermark.html-do0NLF-x.js" as="script"><link rel="prefetch" href="/assets/index.html-DQW49T4x.js" as="script"><link rel="prefetch" href="/assets/append-date.html-D5AAVFxg.js" as="script"><link rel="prefetch" href="/assets/links-check.html-I80HBiNo.js" as="script"><link rel="prefetch" href="/assets/markdown-container.html-B4CjM4yk.js" as="script"><link rel="prefetch" href="/assets/markdown-ext.html-CZCeggMX.js" as="script"><link rel="prefetch" href="/assets/markdown-hint.html-kr5SI7iI.js" as="script"><link rel="prefetch" href="/assets/markdown-image.html-Ccbp5iJy.js" as="script"><link rel="prefetch" href="/assets/markdown-include.html-CM2Q_4LW.js" as="script"><link rel="prefetch" href="/assets/markdown-math.html-YOPxw1aw.js" as="script"><link rel="prefetch" href="/assets/markdown-stylize.html-CSNbNbK9.js" as="script"><link rel="prefetch" href="/assets/markdown-tab.html-kKMz4_do.js" as="script"><link rel="prefetch" href="/assets/prismjs.html-DFy8FyBk.js" as="script"><link rel="prefetch" href="/assets/shiki.html-yS29vgkI.js" as="script"><link rel="prefetch" href="/assets/index.html-CKNGlk-E.js" as="script"><link rel="prefetch" href="/assets/remove-pwa.html-B_ax7858.js" as="script"><link rel="prefetch" href="/assets/index.html-DxOfvfLo.js" as="script"><link rel="prefetch" href="/assets/docsearch.html-BmOMZkGs.js" as="script"><link rel="prefetch" href="/assets/guidelines.html-DzDkMrEE.js" as="script"><link rel="prefetch" href="/assets/meilisearch.html-BYuvwxul.js" as="script"><link rel="prefetch" href="/assets/search.html-TV1nmPH_.js" as="script"><link rel="prefetch" href="/assets/slimsearch.html-L8pMuOjG.js" as="script"><link rel="prefetch" href="/assets/index.html-jhfkiVwj.js" as="script"><link rel="prefetch" href="/assets/index.html-Hd794bpX.js" as="script"><link rel="prefetch" href="/assets/cache.html-D1Rsn5dL.js" as="script"><link rel="prefetch" href="/assets/google-tag-manager.html-1qCqYXxB.js" as="script"><link rel="prefetch" href="/assets/redirect.html-DoGbC4Ze.js" as="script"><link rel="prefetch" href="/assets/register-components.html-DlQQKjDD.js" as="script"><link rel="prefetch" href="/assets/index.html-C_qcI9Tp.js" as="script"><link rel="prefetch" href="/assets/components.html-BugWjFTp.js" as="script"><link rel="prefetch" href="/assets/config.html-BbQfItgs.js" as="script"><link rel="prefetch" href="/assets/extending.html-Cfi_62uo.js" as="script"><link rel="prefetch" href="/assets/frontmatter.html-BQAwCcKT.js" as="script"><link rel="prefetch" href="/assets/locale.html-BJE3jCoX.js" as="script"><link rel="prefetch" href="/assets/markdown.html-CHoac2bQ.js" as="script"><link rel="prefetch" href="/assets/plugin.html-BH2HrfjX.js" as="script"><link rel="prefetch" href="/assets/styles.html-BtVCdCJU.js" as="script"><link rel="prefetch" href="/assets/index.html-B3-ubhr8.js" as="script"><link rel="prefetch" href="/assets/client.html-DC_D82--.js" as="script"><link rel="prefetch" href="/assets/shared.html-DPO-m6nG.js" as="script"><link rel="prefetch" href="/assets/style.html-CwLZz9Qd.js" as="script"><link rel="prefetch" href="/assets/index.html-DYwDD6iD.js" as="script"><link rel="prefetch" href="/assets/config.html-ByEbwsrp.js" as="script"><link rel="prefetch" href="/assets/index.html-EHbFKolC.js" as="script"><link rel="prefetch" href="/assets/config.html-D7mLpgGR.js" as="script"><link rel="prefetch" href="/assets/index.html-Bvi_xRJo.js" as="script"><link rel="prefetch" href="/assets/config.html-DIk9kgnQ.js" as="script"><link rel="prefetch" href="/assets/index.html-C1Azv8DO.js" as="script"><link rel="prefetch" href="/assets/config.html-50bM9YOx.js" as="script"><link rel="prefetch" href="/assets/index.html-eBIRp6Jx.js" as="script"><link rel="prefetch" href="/assets/config.html-PYrJm62n.js" as="script"><link rel="prefetch" href="/assets/guide.html-CPe0mkbP.js" as="script"><link rel="prefetch" href="/assets/index.html-DJyCtHbt.js" as="script"><link rel="prefetch" href="/assets/guide.html-2mZnSD8J.js" as="script"><link rel="prefetch" href="/assets/index.html-BOs_-JPD.js" as="script"><link rel="prefetch" href="/assets/channel.html-BFcMy1Ki.js" as="script"><link rel="prefetch" href="/assets/config.html-DIu6nNSW.js" as="script"><link rel="prefetch" href="/assets/frontmatter.html-CJRjIGsF.js" as="script"><link rel="prefetch" href="/assets/getter.html-CATDwRB_.js" as="script"><link rel="prefetch" href="/assets/guide.html-DXVu2dlw.js" as="script"><link rel="prefetch" href="/assets/index.html-DzAlLfML.js" as="script"><link rel="prefetch" href="/assets/config.html-DKg4r7Ro.js" as="script"><link rel="prefetch" href="/assets/guide.html-COSNRSCM.js" as="script"><link rel="prefetch" href="/assets/index.html-Bsd5T5xo.js" as="script"><link rel="prefetch" href="/assets/themes.html-DYmgAOws.js" as="script"><link rel="prefetch" href="/assets/index.html-PlYgU3Rg.js" as="script"><link rel="prefetch" href="/assets/config.html-B2X-7sJy.js" as="script"><link rel="prefetch" href="/assets/guide.html-BfHp2Wje.js" as="script"><link rel="prefetch" href="/assets/index.html-BtpDlbzQ.js" as="script"><link rel="prefetch" href="/assets/config.html-DnOGbmZe.js" as="script"><link rel="prefetch" href="/assets/guide.html-DmVMhZkp.js" as="script"><link rel="prefetch" href="/assets/index.html-kl2QUdQH.js" as="script"><link rel="prefetch" href="/assets/config.html-rQMP4503.js" as="script"><link rel="prefetch" href="/assets/frontmatter.html-Dx3Gu9p5.js" as="script"><link rel="prefetch" href="/assets/guide.html-CK1aVd8m.js" as="script"><link rel="prefetch" href="/assets/bundler.html-CGujCu3t.js" as="script"><link rel="prefetch" href="/assets/locales.html-7Ph2vDeI.js" as="script"><link rel="prefetch" href="/assets/page.html-BH7mm5Jt.js" as="script"><link rel="prefetch" href="/assets/index.html-DxVPQ9q2.js" as="script"><link rel="prefetch" href="/assets/config.html-DKqldxv5.js" as="script"><link rel="prefetch" href="/assets/index.html-CrwvxqZS.js" as="script"><link rel="prefetch" href="/assets/config.html-CrQ09J_-.js" as="script"><link rel="prefetch" href="/assets/index.html-yRl9o7xR.js" as="script"><link rel="prefetch" href="/assets/config.html-3y0sJspg.js" as="script"><link rel="prefetch" href="/assets/index.html-Cc-r0cnU.js" as="script"><link rel="prefetch" href="/assets/config.html-Db3n6Bkr.js" as="script"><link rel="prefetch" href="/assets/404.html-UjFN607Z.js" as="script"><link rel="prefetch" href="/assets/index.html-XealvT80.js" as="script"><link rel="prefetch" href="/assets/index.html-CUHH9pqk.js" as="script"><link rel="prefetch" href="/assets/giscus-1zs_z9NH.js" as="script"><link rel="prefetch" href="/assets/index-B-M8YVCw.js" as="script"><link rel="prefetch" href="/assets/NpmBadge-C-mpdmhe.js" as="script"><link rel="prefetch" href="/assets/reveal.esm-DaHoSpNm.js" as="script"><link rel="prefetch" href="/assets/markdown.esm-DotuGrRK.js" as="script"><link rel="prefetch" href="/assets/highlight.esm-UsqGfS9W.js" as="script"><link rel="prefetch" href="/assets/math.esm-DMnd_zjx.js" as="script"><link rel="prefetch" href="/assets/search.esm-BbDx6egk.js" as="script"><link rel="prefetch" href="/assets/notes.esm-Fu36f5_V.js" as="script"><link rel="prefetch" href="/assets/zoom.esm-CFEecXZN.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="vp-reveal-page"><div><div class="vp-reveal"><div class="reveal reveal-viewport"><div class="slides"><section data-markdown><script type="text/template">
+<!-- .slide: data-transition="slide" -->
+
+## 幻灯片演示
+
+<!-- .element: class="r-fit-text" -->
+
+一个简单的幻灯片演示与各种小贴士。
+
+<!-- .element: class="r-fit-text" -->
+
+> 作者 Mr.Hope. 请滚动鼠标滚轮进入下一页
+
+---
+
+## 标注幻灯片
+
+<!-- .element: class="r-fit-text" -->
+
+[👇](#/1/1)
+
+--
+
+## 标注幻灯片
+
+<!-- .element: class="r-fit-text" -->
+
+使用 `---` 标注水平幻灯片
+
+<!-- .element: class="fragment fade-in" -->
+
+在水平幻灯片中使用 `--` 分割垂直幻灯片
+
+<!-- .element: class="fragment fade-in" -->
+
+使用 `<!-- .slide: ... -->` 在幻灯片上添加属性
+
+<!-- .element: class="fragment fade-in" -->
+
+使用 `<!-- .element: ... -->` 在前一个 HTML 元素上添加属性
+
+<!-- .element: class="fragment fade-in" -->
+
+---
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## Markdown
+
+<!-- .element: class="r-fit-text" -->
+
+你可以在幻灯片中使用 Markdown 语法的各种标记.
+
+<!-- .element: class="r-fit-text" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Markdown
+
+你可以在幻灯片中使用 Markdown 语法的各种标记.
+
+### 这是一个 H3
+
+标题默认会自动转换为大写。
+
+这是一个有着 **粗体**, _斜体_, ~~删除线~~ 文字并包含 [一个链接](https://mister-hope.com) 的段落，并且它会自动换行。所以你无需担心它的长度。
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Markdown
+
+你可以在幻灯片中使用 Markdown 语法的各种标记.
+
+列表默认为 `inline-block`
+
+- 项目
+- 项目
+- 项目
+
+1. 项目 1
+1. 项目 2
+1. 项目 3
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Markdown
+
+你可以在幻灯片中使用 Markdown 语法的各种标记.
+
+在你启用 `highlight` 插件后，代码块会自动高亮。
+
+```js
+const a = 1
+```
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Markdown
+
+你可以在幻灯片中使用 Markdown 语法的各种标记.
+
+在你启用 `math` 插件后，你也可以使用 TEX 格式使用数学公式。
+
+$$
+J(\theta_0,\theta_1) = \sum_{i=0}
+$$
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Markdown
+
+你可以在幻灯片中使用 Markdown 语法的各种标记.
+
+⚠**请注意**: 表格和分割线，以及所有不在 Markdown 标准语法中的内容均不受支持。
+
+---
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## 布局
+
+<!-- .element: class="r-fit-text" -->
+
+--
+
+<!-- .slide: data-auto-animate  -->
+
+## 布局
+
+<!-- .element: class="r-fit-text" -->
+
+👆 `r-fit-text` class 会让文字在不超出幻灯片范围的情况下尽可能大。
+
+--
+
+<!-- .slide: data-auto-animate  -->
+
+## 布局
+
+![Logo](https://theme-hope-assets.vuejs.press/logo.svg)
+
+<!-- .element: class="r-stretch" -->
+
+👆 `r-stretch` class 帮助你控制注入图片或视频的大小，使它们填充满幻灯片垂直方向上的剩余空间。
+
+--
+
+<!-- .slide: data-auto-animate data-background-color="rgb(70, 70, 255)" -->
+
+## 布局
+
+### 背景
+
+你可以通过向特定幻灯片添加 `data-background` 属性自定义幻灯片背景.
+
+---
+
+<!-- .slide: data-auto-animate -->
+
+## 动画片段
+
+<!-- .element: class="r-fit-text" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 动画片段
+
+<!-- .element: class="r-fit-text" -->
+
+动画片段用于高亮或显隐幻灯片中的元素。
+
+你需要在元素上添加 `fragment` 和动画 class。
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 动画片段
+
+### 动画 class
+
+- `fade-in`
+<!-- .element: class="fragment fade-in" -->
+
+- `fade-out`
+<!-- .element: class="fragment fade-out" -->
+
+- `fade-up`
+<!-- .element: class="fragment fade-up" -->
+
+<!-- list break -->
+
+- `fade-down`
+<!-- .element: class="fragment fade-down" -->
+
+- `fade-left`
+<!-- .element: class="fragment fade-left" -->
+
+- `fade-right`
+<!-- .element: class="fragment fade-right" -->
+
+<!-- list break -->
+
+- `fade-in-then-out`
+<!-- .element: class="fragment fade-in-then-out" -->
+
+- `fade-in-then-semi-out`
+<!-- .element: class="fragment fade-in-then-semi-out" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 动画片段
+
+### 动画 class
+
+- `grow`
+<!-- .element: class="fragment grow" -->
+
+- `shrink`
+<!-- .element: class="fragment shrink" -->
+
+- `strike`
+<!-- .element: class="fragment strike" -->
+
+<!-- list break -->
+
+- `highlight-red`
+<!-- .element: class="fragment highlight-red" -->
+
+- `highlight-green`
+<!-- .element: class="fragment highlight-green" -->
+
+- `highlight-blue`
+<!-- .element: class="fragment highlight-blue" -->
+
+<!-- list break -->
+
+- `highlight-current-red`
+<!-- .element: class="fragment highlight-current-red" -->
+
+- `highlight-current-green`
+<!-- .element: class="fragment highlight-current-green" -->
+
+- `highlight-current-blue`
+<!-- .element: class="fragment highlight-current-blue" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 动画片段
+
+### 多个动画片段
+
+你可以按照顺序包裹一个 HTML 元素使其拥有多个动画片段
+
+<span class="fragment fade-in">
+  <span class="fragment highlight-red">
+    <span class="fragment fade-out">
+      渐入 > 变红 > 渐出
+    </span>
+  </span>
+</span>
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 动画片段
+
+### 顺序
+
+你可以使用 `data-fragment-index` 属性改变元素的动画顺序。
+
+不同元素可以有相同的动画顺序。
+
+- 最后显示
+<!-- .element: class="fragment" data-fragment-index="3"-->
+
+- 第二个显示
+<!-- .element: class="fragment" data-fragment-index="2"-->
+
+<!-- list break -->
+
+- 第一个显示
+<!-- .element: class="fragment" data-fragment-index="1"-->
+
+- 第二个显示
+<!-- .element: class="fragment" data-fragment-index="2"-->
+
+---
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## 渐变
+
+<!-- .element: class="r-fit-text" -->
+
+--
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## 渐变
+
+<!-- .element: class="r-fit-text" -->
+
+Transition 可以通过 reveal.js 中的 `transition` 选项全局设置，也可以通过在特定幻灯片添加 `data-transition` 属性局部设置.
+
+可能的值:
+
+- none
+- fade
+- slide
+
+<!-- list break -->
+
+- convex
+- concave
+- zoom
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 渐变
+
+<!-- .element: class="r-fit-text" -->
+
+### 过渡动画
+
+你可以在相邻的幻灯片上添加 `data-auto-animate` 使相同的 HTML 元素产生过渡动画效果。
+
+---
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## 功能
+
+<!-- .element: class="r-fit-text" -->
+
+--
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## 功能
+
+<!-- .element: class="r-fit-text" -->
+
+### 代码
+
+通过启用 `highlight` 插件，你可以对代码块进行高亮。
+
+你可以使用 `[a-b|c-d]` 语法来分布高亮特定行。
+
+```js [1-2|3|4]
+const a = 1
+const b = 2
+const c = (x) => 1 + 2 + x
+c(3)
+```
+
+--
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## 功能
+
+<!-- .element: class="r-fit-text" -->
+
+### 预览模式
+
+按下 `Esc` 或 `O` 即可在幻灯片获得焦点时进入预览模式。
+
+--
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## 功能
+
+<!-- .element: class="r-fit-text" -->
+
+### 全屏模式
+
+按下 `F` 或 `F11` 即可在幻灯片获得焦点时进入全屏模式。
+
+--
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## 功能
+
+<!-- .element: class="r-fit-text" -->
+
+### 缩放
+
+按下 `alt` (Linux 上使用 `ctrl`) 的同时点击幻灯片的任何元素，即可以向此元素进行放大。
+
+再次点击即可缩小。
+
+---
+
+<!-- .element: class="r-fit-text" -->
+
+## 结束
+</script></section></div></div><div style="display:flex;align-items:center;justify-content:center;height:400px;" class="reveal-loading"><span style="--loading-icon: url(&quot;data:image/svg+xml;utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; preserveAspectRatio=&#39;xMidYMid&#39; viewBox=&#39;25 25 50 50&#39;%3E%3CanimateTransform attributeName=&#39;transform&#39; type=&#39;rotate&#39; dur=&#39;2s&#39; keyTimes=&#39;0;1&#39; repeatCount=&#39;indefinite&#39; values=&#39;0;360&#39;%3E%3C/animateTransform%3E%3Ccircle cx=&#39;50&#39; cy=&#39;50&#39; r=&#39;20&#39; fill=&#39;none&#39; stroke=&#39;currentColor&#39; stroke-width=&#39;4&#39; stroke-linecap=&#39;round&#39;%3E%3Canimate attributeName=&#39;stroke-dasharray&#39; dur=&#39;1.5s&#39; keyTimes=&#39;0;0.5;1&#39; repeatCount=&#39;indefinite&#39; values=&#39;1,200;90,200;1,200&#39;%3E%3C/animate%3E%3Canimate attributeName=&#39;stroke-dashoffset&#39; dur=&#39;1.5s&#39; keyTimes=&#39;0;0.5;1&#39; repeatCount=&#39;indefinite&#39; values=&#39;0;-35px;-125px&#39;%3E%3C/animate%3E%3C/circle%3E%3C/svg%3E&quot;);--icon-size: 48px;display: inline-block;width: var(--icon-size);height: var(--icon-size);background-color: currentcolor;-webkit-mask-image: var(--loading-icon);mask-image: var(--loading-icon)"></span></div></div></div><div class="vp-reveal-menu"><button type="button" class="menu-button"><span class="icon"></span></button><button type="button" class="back-button"><svg xmlns="http://www.w3.org/2000/svg" class="back-icon" viewBox="0 0 1024 1024" fill="currentColor"><path d="M1014.749 449.156v125.688H260.626l345.64 345.64-89.239 89.237L19.307 512l497.72-497.721 89.238 89.238-345.64 345.64h754.124z"></path></svg></button><button type="button" class="home-button"><svg xmlns="http://www.w3.org/2000/svg" class="icon home-icon" viewBox="0 0 1024 1024" fill="currentColor"><path d="M780.106 420.978L506.994 147.866 233.882 420.978h.045v455.11H780.06v-455.11h.046zm90.977 90.976V876.09a91.022 91.022 0 01-91.023 91.022H233.927a91.022 91.022 0 01-91.022-91.022V511.954l-67.22 67.175-64.307-64.307 431.309-431.31c35.498-35.498 93.115-35.498 128.614 0l431.309 431.31-64.307 64.307L871.083 512z"></path></svg></button></div></div><!--[--><!----><!--[--><!--]--><!--]--><!--]--></div>
+    <script type="module" src="/assets/app-Dg1JwZmu.js" defer></script>
+  </body>
+</html>
