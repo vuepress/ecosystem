@@ -4,6 +4,7 @@ import { commentPlugin } from '@vuepress/plugin-comment'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
 import { iconPlugin } from '@vuepress/plugin-icon'
+import { llmstxtPlugin } from '@vuepress/plugin-llms'
 import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
@@ -19,7 +20,6 @@ import { getDirname, path } from 'vuepress/utils'
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export const plugins = [
-  cachePlugin(),
   catalogPlugin(),
   commentPlugin({
     provider: 'Giscus',
@@ -130,4 +130,6 @@ export const plugins = [
       }
     },
   },
+  cachePlugin(),
+  llmstxtPlugin(),
 ]
