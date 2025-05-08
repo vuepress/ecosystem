@@ -1,4 +1,4 @@
-import type { NonNullableSlotContent } from '@vuepress/helper/client'
+import type { RequiredSlot } from '@vuepress/helper/client'
 import { useStorage } from '@vueuse/core'
 import type { PropType, SlotsType, VNode } from 'vue'
 import { defineComponent, h, onMounted, ref, shallowRef, watch } from 'vue'
@@ -56,14 +56,14 @@ export const Tabs = defineComponent({
   },
 
   slots: Object as SlotsType<{
-    [slot: `title${number}`]: (props: {
+    [slot: `title${number}`]: RequiredSlot<{
       value: string
       isActive: boolean
-    }) => NonNullableSlotContent
-    [slot: `tab${number}`]: (props: {
+    }>
+    [slot: `tab${number}`]: RequiredSlot<{
       value: string
       isActive: boolean
-    }) => NonNullableSlotContent
+    }>
   }>,
 
   setup(props, { slots }) {

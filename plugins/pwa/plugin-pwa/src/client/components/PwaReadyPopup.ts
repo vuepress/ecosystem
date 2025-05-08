@@ -1,4 +1,4 @@
-import type { SlotContent } from '@vuepress/helper/client'
+import type { Slot } from '@vuepress/helper/client'
 import { useLocale } from '@vuepress/helper/client'
 import type { PropType, SlotsType, VNode } from 'vue'
 import {
@@ -29,7 +29,7 @@ export const PwaReadyPopup = defineComponent({
   },
 
   slots: Object as SlotsType<{
-    default?: (props: { isReady: boolean; reload: () => void }) => SlotContent
+    default?: Slot<{ isReady: boolean; reload: () => void }>
   }>,
 
   setup(props, { slots }) {
