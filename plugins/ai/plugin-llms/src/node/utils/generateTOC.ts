@@ -4,7 +4,6 @@ import type {
   PreparedPage,
 } from '../types.js'
 import { generateLink } from './generateLink.js'
-import { withBase } from './withBase.js'
 
 /**
  * Generates a Markdown-formatted table of contents (TOC) link for a given file.
@@ -21,10 +20,7 @@ export const generateTOCLink = (
   extension?: LinksExtension,
 ): string => {
   const description = page.frontmatter.description!
-  const path = withBase(
-    generateLink(page.path, domain, extension ?? '.md'),
-    base,
-  )
+  const path = generateLink(page.path, base, domain, extension ?? '.md')
   return `- [${page.title}](${path})${description ? `: ${description.trim()}` : ''}\n`
 }
 

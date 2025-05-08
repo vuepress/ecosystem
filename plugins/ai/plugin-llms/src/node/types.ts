@@ -1,4 +1,4 @@
-import type { PageFrontmatter } from 'vuepress'
+import type { Page, PageFrontmatter } from 'vuepress'
 
 /**
  * A literal type that supports custom further strings but preserves autocompletion in IDEs.
@@ -11,12 +11,16 @@ export type LiteralUnion<Union extends Base, Base = string> =
 
 /**
  * Represents the link extension options for generated links.
+ *
+ * 表示生成链接的链接扩展选项
  */
 export type LinksExtension = LiteralUnion<'.html' | '.md'>
 
 interface TemplateVariables {
   /**
-   * The title extracted from the frontmatter or the first h1 heading in the main document (`index.md`).
+   * The title extracted from the frontmatter or the first h1 heading in the main document (`README.md`).
+   *
+   * 从前言部分或主文档（`README.md`）中第一个h1标题提取的标题。
    *
    * @example 'Awesome tool'
    */
@@ -25,6 +29,8 @@ interface TemplateVariables {
   /**
    * The description.
    *
+   * 描述。
+   *
    * @example 'Blazing fast build tool'
    */
   description?: string
@@ -32,12 +38,16 @@ interface TemplateVariables {
   /**
    * The details.
    *
+   * 详情。
+   *
    * @example 'A multi-user version of the notebook designed for companies, classrooms and research labs'
    */
   details?: string
 
   /**
    * An automatically generated **T**able **O**f **C**ontents.
+   *
+   * 自动生成的**T**oc**O**c**C**nts。
    *
    * @example
    * ```markdown
@@ -61,6 +71,12 @@ export interface LlmstxtPluginOptions extends TemplateVariables {
    *
    * ℹ️ **Note**: Domain cannot end with `/`.
    *
+   * 将被附加到`llms.txt`中URL开头以及其他文件上下文中的域名
+   *
+   * 域名附件尚未达成一致（因为这取决于AI是否能解析当前存在的相对路径），但如果您愿意，可以添加它
+   *
+   * ℹ️ **注意**：域名不能以 `/` 结尾。
+   *
    * Without a {@link LlmstxtSettings.domain | `domain`}:
    * ```markdown
    * - [Title](/foo/bar.md)
@@ -73,13 +89,15 @@ export interface LlmstxtPluginOptions extends TemplateVariables {
    *
    * @example
    * ```typescript
-   * llmstxt({ domain: 'https://example.com' })
+   * llmstxtPlugin({ domain: 'https://example.com' })
    * ```
    */
   domain?: string
 
   /**
    * Indicates whether to generate the `llms.txt` file, which contains a list of sections with corresponding links.
+   *
+   * 是否生成包含章节及其链接列表的 `llms.txt` 文件。
    *
    * @default true
    */
@@ -88,6 +106,8 @@ export interface LlmstxtPluginOptions extends TemplateVariables {
   /**
    * Determines whether to generate the `llms-full.txt` which contains all the documentation in one file.
    *
+   * 是否生成包含所有文档的单一文件`llms-full.txt`。
+   *
    * @default true
    */
   generateLLMsFullTxt?: boolean
@@ -95,12 +115,16 @@ export interface LlmstxtPluginOptions extends TemplateVariables {
   /**
    * Determines whether to generate an LLM-friendly version of the documentation for each page on the website.
    *
+   * 是否为网站上的每个页面生成一个对LLM（大语言模型）友好的文档版本。
+   *
    * @default true
    */
   generateLLMFriendlyDocsForEachPage?: boolean
 
   /**
    * Whether to strip HTML tags from Markdown files
+   *
+   * 是否需要从Markdown文件中剥离HTML标签
    *
    * @default true
    */
@@ -110,6 +134,10 @@ export interface LlmstxtPluginOptions extends TemplateVariables {
    * The directory from which files will be processed.
    *
    * This is useful for configuring the plugin to generate documentation for LLMs in a specific language.
+   *
+   * 将要处理的文件所在的目录。
+   *
+   * 这有助于配置插件以生成特定语言的LLM文档。
    *
    * @example
    * ```typescript
@@ -124,24 +152,20 @@ export interface LlmstxtPluginOptions extends TemplateVariables {
   workDir?: string
 
   /**
-   * An array of file path patterns to be ignored during processing.
+   * Page filter, when returns `true`, the page will be included in `llms.txt`, otherwise it will be excluded.
    *
-   * This is useful for excluding certain files from LLMs, such as those not related to documentation (e.g., sponsors, team, etc.).
+   * 页面过滤器，当返回 `true` 时，页面将被包含在 `llms.txt` 中，否则将被排除在外。
    *
    * @example
    * ```typescript
    * llmstxtPlugin({
-   *     ignoreFiles: [
-   *         'about/team/*',
-   *         'sponsor/*'
-   *         // ...
-   *     ]
+   *     filter: (page) => page.filePath.startsWith('/en')
    * })
    * ```
    *
-   * @default []
+   * @default () => true
    */
-  ignoreFiles?: string[]
+  filter?: (page: Page) => boolean
 
   /**
    * A custom template for the `llms.txt` file, allowing for a personalized order of elements.
@@ -154,6 +178,17 @@ export interface LlmstxtPluginOptions extends TemplateVariables {
    * - `{toc}`: An automatically generated **T**able **O**f **C**ontents.
    *
    * You can also add custom variables using the {@link LlmstxtSettings.customTemplateVariables | `customTemplateVariables`} parameter
+   *
+   * `llms.txt` 文件的自定义模板，允许对元素进行个性化排序。
+   *
+   * 可用的模板元素包括：
+   *
+   * - `{title}`：从前言部分或主文档（`index.md`）中第一个 h1 标题提取的标题。
+   * - `{description}`：描述。
+   * - `{details}`：详细信息。
+   * - `{toc}`：自动生成的**目录**。
+   *
+   * 您还可以使用 {@link LlmstxtSettings.customTemplateVariables | `customTemplateVariables`} 参数添加自定义变量。
    *
    * @default
    * ```markdown
@@ -177,9 +212,15 @@ export interface LlmstxtPluginOptions extends TemplateVariables {
    *
    * You can change the title in `llms.txt` without having to change the template:
    *
+   * {@link LlmstxtSettings.customLLMsTxtTemplate | `customLLMsTxtTemplate`} 的自定义变量。
+   *
+   * 通过此选项，您可以编辑或向模板添加变量。
+   *
+   * 您无需更改模板即可修改 `llms.txt` 中的标题：
+   *
    * @example
    * ```typescript
-   * llmstxt({
+   * llmstxtPlugin({
    *     customTemplateVariables: {
    *         title: 'Very custom title',
    *     }
@@ -188,9 +229,11 @@ export interface LlmstxtPluginOptions extends TemplateVariables {
    *
    * You can also combine this with a custom template:
    *
+   * 还可以将其与自定义模板结合使用：
+   *
    * @example
    * ```typescript
-   * llmstxt({
+   * llmstxtPlugin({
    *     customLLMsTxtTemplate: '# {title}\n\n{foo}',
    *     customTemplateVariables: {
    *         foo: 'Very custom title',
@@ -203,24 +246,32 @@ export interface LlmstxtPluginOptions extends TemplateVariables {
 
 /**
  * Represents a prepared page, including its title and path.
+ *
+ * 表示一个已准备好的页面，包括其标题和路径。
  */
 export interface PreparedPage {
   /**
-   * The title of the file.
+   * The title of the page.
+   *
+   * 页面标题
    *
    * @example 'Guide'
    */
   title: string
 
   /**
-   * The absolute path to the file.
+   * The permalink path to the page.
    *
-   * @example 'guide/getting-started.md'
+   * 页面的永久访问地址
+   *
+   * @example '/guide/getting-started.html'
    */
   path: string
 
   /**
-   * The frontmatter of the file.
+   * The frontmatter of the page.
+   *
+   * 页面 frontmatter
    *
    * @example `{ title: 'Guide', description: 'A guide' }`
    */
@@ -228,6 +279,8 @@ export interface PreparedPage {
 
   /**
    * The content of the markdown file.
+   *
+   * 页面的 markdown 内容
    *
    * @example '# Guide\n\nA guide'
    */

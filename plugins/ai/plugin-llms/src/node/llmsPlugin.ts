@@ -21,7 +21,7 @@ export const llmstxtPlugin =
       generateLLMsTxt: enabledLLMsTxt = true,
       generateLLMsFullTxt: enabledLLMsFullTxt = true,
       generateLLMFriendlyDocsForEachPage: enabledEachPage = true,
-      ignoreFiles = [],
+      filter = () => true,
       stripHTML = true,
       domain,
       ...opts
@@ -37,7 +37,7 @@ export const llmstxtPlugin =
         const preparedPages = resolvePreparedPages(app, {
           workDir,
           stripHTML,
-          ignoreFiles,
+          filter,
         })
 
         if (enabledLLMsTxt) {

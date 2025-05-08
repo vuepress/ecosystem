@@ -6,7 +6,6 @@ export default [
       'byte-size',
       'gray-matter',
       'millify',
-      'minimatch',
       'remark',
       'tokenx',
       'unist-util-remove',

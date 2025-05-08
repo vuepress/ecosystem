@@ -29,6 +29,9 @@ interface GenerateLLMsTxtOptions {
   linksExtension?: LinksExtension
 }
 
+/**
+ * Generate `llms.txt`
+ */
 export const generateLLMsTxt = async (
   app: App,
   preparedPages: PreparedPage[],

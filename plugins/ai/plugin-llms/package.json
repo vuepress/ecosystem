@@ -40,7 +40,6 @@
     "byte-size": "^9.0.1",
     "gray-matter": "^4.0.3",
     "millify": "^6.1.0",
-    "minimatch": "^10.0.1",
     "remark": "^15.0.1",
     "tokenx": "^0.4.1",
     "unist-util-remove": "^4.0.0"

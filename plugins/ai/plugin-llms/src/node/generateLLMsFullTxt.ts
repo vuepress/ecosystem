@@ -14,7 +14,6 @@ import {
   generateLink,
   getSizeOf,
   logger,
-  withBase,
 } from './utils/index.js'
 
 interface GenerateLLMsFullTxtOptions {
@@ -25,6 +24,9 @@ interface GenerateLLMsFullTxtOptions {
   linksExtension?: LinksExtension
 }
 
+/**
+ * Generate `llms-full.txt`
+ */
 export const generateLLMsFullTxt = async (
   app: App,
   preparedPages: PreparedPage[],
@@ -34,9 +36,11 @@ export const generateLLMsFullTxt = async (
 
   const pageContents = preparedPages.map((page) => {
     const metadata: PageFrontmatter = {
-      url: withBase(
-        generateLink(page.path, domain, linksExtension ?? '.md'),
+      url: generateLink(
+        page.path,
         app.options.base,
+        domain,
+        linksExtension ?? '.md',
       ),
     }
 

@@ -1,9 +1,7 @@
 import matter from 'gray-matter'
-import { minimatch } from 'minimatch'
 import { remark } from 'remark'
 import { remove as unistRemove } from 'unist-util-remove'
 import type { App } from 'vuepress'
-import { path } from 'vuepress/utils'
 import type { LlmstxtPluginOptions, PreparedPage } from './types.js'
 
 /**
@@ -15,7 +13,7 @@ const cleanMarkdown = remark().use(() => (tree) => {
 })
 
 type ResolvePreparedPagesOptions = Required<
-  Pick<LlmstxtPluginOptions, 'ignoreFiles' | 'stripHTML' | 'workDir'>
+  Pick<LlmstxtPluginOptions, 'filter' | 'stripHTML' | 'workDir'>
 >
 
 /**
@@ -23,7 +21,7 @@ type ResolvePreparedPagesOptions = Required<
  */
 export const resolvePreparedPages = (
   app: App,
-  { workDir, stripHTML, ignoreFiles }: ResolvePreparedPagesOptions,
+  { workDir, stripHTML, filter }: ResolvePreparedPagesOptions,
 ): PreparedPage[] => {
   const preparedPages: PreparedPage[] = []
   for (const page of app.pages) {
@@ -31,11 +29,14 @@ export const resolvePreparedPages = (
     if (!page.filePath?.startsWith(workDir) || !page.filePath.endsWith('.md'))
       continue
 
-    // Ignore files
-    if (ignoreFiles.length) {
-      const relativePath = path.relative(workDir, page.filePath)
-      if (ignoreFiles.some((pattern) => minimatch(relativePath, pattern)))
-        continue
+    // Ignore disabled pages
+    if (page.frontmatter.llmstxt === false) {
+      continue
+    }
+
+    // page filter
+    if (!filter(page)) {
+      continue
     }
 
     const { content, data } = matter(page.content)

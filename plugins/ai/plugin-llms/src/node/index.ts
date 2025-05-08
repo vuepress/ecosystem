@@ -1,5 +1,7 @@
 export * from './constants.js'
 export * from './utils/index.js'
+export * from './generateLLMFriendlyDocsForEachPage.js'
+export * from './generateLLMsTxt.js'
+export * from './generateLLMsFullTxt.js'
 export * from './llmsPlugin.js'
-
 export type * from './types.js'
