@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.103](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.102...v2.0.0-rc.103) (2025-05-08)
+
+### Bug Fixes
+
+- fix code block related style ([#456](https://github.com/vuepress/ecosystem/issues/456)) ([e446824](https://github.com/vuepress/ecosystem/commit/e446824b64e4f5fab45d158fc8ba5c1d63093e32))
+- fix whitespace feature, close [#459](https://github.com/vuepress/ecosystem/issues/459) ([#462](https://github.com/vuepress/ecosystem/issues/462)) ([1ea93c1](https://github.com/vuepress/ecosystem/commit/1ea93c158aa6ce4e35951f4d4e70bef41aa9dd51))
+
+### Features
+
+- **helper:** add `RequiredSlot` type ([d504309](https://github.com/vuepress/ecosystem/commit/d5043095d4b8c4c3a4fa7a08f26d66e2c6d428fc))
+- **helper:** improve slot types ([a156c84](https://github.com/vuepress/ecosystem/commit/a156c84833b1c43296c0b24de8d2dea39f9ea19f))
+- **highlighter-helper:** helper to inject icons for code-title-bar ([#458](https://github.com/vuepress/ecosystem/issues/458)) ([4569d42](https://github.com/vuepress/ecosystem/commit/4569d42430b96d27c62770d38b683c4475f767c7))
+
 # [2.0.0-rc.102](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.101...v2.0.0-rc.102) (2025-05-07)
 
 ### Bug Fixes
