@@ -604,7 +604,7 @@ body > div {
 
 ### whitespace
 
-- Type: `boolean | 'all' | 'boundary' | 'trailing'| 'disable'`
+- Type: `boolean | 'all' | 'boundary' | 'trailing' | 'disable'`
 
 - Default: `false`
 
