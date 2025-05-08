@@ -63,9 +63,9 @@ export const getTransformers = (
 
 export const whitespaceTransformer = (
   meta: string,
-  defaultPosition: WhitespacePosition | true = true,
+  globalOption: WhitespacePosition | true = true,
 ): ShikiTransformer[] => {
-  const position = resolveWhitespacePosition(meta, defaultPosition)
+  const position = resolveWhitespacePosition(meta, globalOption)
 
   return position ? [transformerRenderWhitespace({ position })] : []
 }

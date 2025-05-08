@@ -92,9 +92,9 @@ export const renderWhitespaceInLine = (
 export const metaWhitespace = (
   parser: CodeParser,
   meta: string,
-  defaultPosition: WhitespacePosition | true = true,
+  globalOption: WhitespacePosition | true = true,
 ): void => {
-  const position = resolveWhitespacePosition(meta, defaultPosition)
+  const position = resolveWhitespacePosition(meta, globalOption)
 
   if (!position) return
 

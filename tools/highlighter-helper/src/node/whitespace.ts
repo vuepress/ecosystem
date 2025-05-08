@@ -7,16 +7,16 @@ const AVAILABLE_WHITESPACE_POSITIONS = ['all', 'boundary', 'trailing']
 
 export const resolveWhitespacePosition = (
   info: string,
-  defaultPosition: WhitespacePosition | true,
+  globalOption: WhitespacePosition | true,
 ): WhitespacePosition | false => {
   if (NO_WHITESPACE_REGEXP.test(info)) {
     return false
   }
 
-  const position = AVAILABLE_WHITESPACE_POSITIONS.includes(
-    defaultPosition as WhitespacePosition,
+  const defaultPosition = AVAILABLE_WHITESPACE_POSITIONS.includes(
+    globalOption as WhitespacePosition,
   )
-    ? (defaultPosition as WhitespacePosition)
+    ? (globalOption as WhitespacePosition)
     : false
 
   const match = info.match(WHITESPACE_REGEXP)
@@ -26,8 +26,8 @@ export const resolveWhitespacePosition = (
       return match[1] as WhitespacePosition
     }
 
-    return position || 'all'
+    return defaultPosition || 'all'
   }
 
-  return position
+  return defaultPosition
 }
