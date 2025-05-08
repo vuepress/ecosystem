@@ -414,7 +414,7 @@ console.log('hello world)\t
       expect(parser.stringify()).toMatchSnapshot()
     })
 
-    it.only(':whitespace / :whitespace=all', () => {
+    it(':whitespace / :whitespace=all', () => {
       const parser = getCodeParser(code)
       metaWhitespace(parser, 'js :whitespace')
       const result = parser.stringify()
