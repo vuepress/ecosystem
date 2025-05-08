@@ -27,12 +27,14 @@
     ".": "./lib/node/index.js",
     "./client": "./lib/client/index.js",
     "./styles/*": "./lib/client/styles/*",
+    "./scss/*": "./scss/*.scss",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
   "types": "./lib/node/index.d.ts",
   "files": [
-    "lib"
+    "lib",
+    "scss"
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
