@@ -26,7 +26,7 @@ const { highlighter, loadLang } = await createShikiHighlighter({} as App)
 const createMarkdown = ({
   preWrapper = true,
   lineNumbers = true,
-  collapsedLines = false,
+  collapsedLines = 'disable',
   codeBlockTitle = true,
   ...options
 }: ShikiPluginOptions = {}): MarkdownIt => {
@@ -372,6 +372,7 @@ function foo () {
   const foo = 'foo'  \n  return 'foo'
 }
 `
+
     it('should work whitespace with default options', () => {
       const md = createMarkdown()
       expect(md.render(source)).toMatchSnapshot()
