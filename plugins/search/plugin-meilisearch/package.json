@@ -19,7 +19,7 @@
     "directory": "plugins/search/plugin-meilisearch"
   },
   "license": "MIT",
-  "author": "JQiue",
+  "author": "JQiue, Mister-Hope",
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
