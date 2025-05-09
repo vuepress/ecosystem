@@ -42,6 +42,6 @@ export const generateLLMFriendlyDocsForEachPage = async (
   await Promise.all(promises)
 
   logger.succeed(
-    `Generated LLM friendly docs with ${preparedPages.length} links`,
+    `Generated LLM-friendly docs with ${preparedPages.length} documentation links`,
   )
 }

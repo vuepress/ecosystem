@@ -16,11 +16,31 @@ export type LiteralUnion<Union extends Base, Base = string> =
  */
 export type LinksExtension = LiteralUnion<'.html' | '.md'>
 
+/**
+ * Options for generating a Table of Contents (TOC).
+ */
+export interface GenerateTOCOptions {
+  /**
+   * Optional domain to prefix URLs with.
+   */
+  domain?: LlmstxtPluginOptions['domain']
+
+  /**
+   * Optional base URL to prefix URLs with.
+   */
+  base?: string
+
+  /**
+   * The link extension for generated links.
+   */
+  linksExtension?: LinksExtension
+}
+
 interface TemplateVariables {
   /**
    * The title extracted from the frontmatter or the first h1 heading in the main document (`README.md`).
    *
-   * 从前言部分或主文档（`README.md`）中第一个h1标题提取的标题。
+   * 从 frontmatter 部分或主文档（`README.md`）中第一个h1标题提取的标题。
    *
    * @example 'Awesome tool'
    */
@@ -73,7 +93,7 @@ export interface LlmstxtPluginOptions extends TemplateVariables {
    *
    * 将被附加到`llms.txt`中URL开头以及其他文件上下文中的域名
    *
-   * 域名附件尚未达成一致（因为这取决于AI是否能解析当前存在的相对路径），但如果您愿意，可以添加它
+   * 附加域名尚未达成一致（因为这取决于AI是否能解析当前存在的相对路径），但如果您愿意，可以添加它
    *
    * ℹ️ **注意**：域名不能以 `/` 结尾。
    *
@@ -183,7 +203,7 @@ export interface LlmstxtPluginOptions extends TemplateVariables {
    *
    * 可用的模板元素包括：
    *
-   * - `{title}`：从前言部分或主文档（`index.md`）中第一个 h1 标题提取的标题。
+   * - `{title}`：从 frontmatter 部分或主文档（`index.md`）中第一个 h1 标题提取的标题。
    * - `{description}`：描述。
    * - `{details}`：详细信息。
    * - `{toc}`：自动生成的**目录**。
@@ -242,6 +262,34 @@ export interface LlmstxtPluginOptions extends TemplateVariables {
    * ```
    */
   customTemplateVariables?: CustomTemplateVariables
+
+  /**
+   * Custom generates a Table of Contents (TOC) for the provided prepared pages.
+   *
+   * Each entry in the TOC is formatted as a markdown link to the corresponding
+   * text file.
+   *
+   * 自定义为提供的预备页面生成目录（TOC）。
+   *
+   * TOC中的每个条目格式化为指向相应文本文件的markdown链接。
+   *
+   * @param preparedPages - An array of prepared pages.
+   * @param options - Options for generating the TOC.
+   * @returns A string representing the formatted Table of Contents.
+   *
+   * @example
+   * ```typescript
+   * llmstxtPlugin({
+   *     customGenerateTOC: (pages, options) => {
+   *         return pages.map((page) => `- [${page.title}](${page.path})`).join('\n')
+   *     }
+   * })
+   * ```
+   */
+  customGenerateTOC?: (
+    pages: PreparedPage[],
+    options: GenerateTOCOptions,
+  ) => string
 }
 
 /**

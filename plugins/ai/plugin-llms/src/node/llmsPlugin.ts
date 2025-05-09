@@ -22,6 +22,7 @@ export const llmstxtPlugin =
       generateLLMsFullTxt: enabledLLMsFullTxt = true,
       generateLLMFriendlyDocsForEachPage: enabledEachPage = true,
       filter = () => true,
+      customGenerateTOC,
       stripHTML = true,
       domain,
       ...opts
@@ -53,6 +54,7 @@ export const llmstxtPlugin =
               opts.customLLMsTxtTemplate || DEFAULT_LLMSTXT_TEMPLATE,
             domain,
             linksExtension,
+            customGenerateTOC,
           })
         }
 

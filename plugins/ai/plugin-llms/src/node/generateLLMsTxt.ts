@@ -4,6 +4,7 @@ import type { App } from 'vuepress'
 import { colors, fs } from 'vuepress/utils'
 import { DEFAULT_LLMSTXT_TEMPLATE } from './constants.js'
 import type {
+  GenerateTOCOptions,
   LinksExtension,
   LlmstxtPluginOptions,
   PreparedPage,
@@ -27,6 +28,9 @@ interface GenerateLLMsTxtOptions {
 
   /** The link extension for generated links. */
   linksExtension?: LinksExtension
+
+  /** Custom generates a Table of Contents (TOC) for the provided prepared pages. */
+  customGenerateTOC?: LlmstxtPluginOptions['customGenerateTOC']
 }
 
 /**
@@ -40,6 +44,7 @@ export const generateLLMsTxt = async (
     templateVariables = {},
     domain,
     linksExtension,
+    customGenerateTOC,
   }: GenerateLLMsTxtOptions,
 ): Promise<void> => {
   logger.load('Generating llms.txt')
@@ -73,11 +78,14 @@ export const generateLLMsTxt = async (
       ? 'This file contains links to all documentation sections.'
       : '')
 
-  templateVariables.toc ??= generateTOC(preparedPages, {
+  const options: GenerateTOCOptions = {
     base: app.options.base,
     domain,
     linksExtension,
-  })
+  }
+  templateVariables.toc ??=
+    customGenerateTOC?.(preparedPages, options) ??
+    generateTOC(preparedPages, options)
 
   const llmsTxt = expandTemplate(LLMsTxtTemplate, templateVariables)
   await fs.promises.writeFile(app.dir.dest('llms.txt'), llmsTxt, 'utf-8')
