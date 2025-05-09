@@ -39,6 +39,10 @@ export const sidebarZh: SidebarOptions = {
       text: '工具',
       link: 'tools/',
     },
+    {
+      text: 'AI',
+      link: 'ai/',
+    },
   ],
 
   '/zh/plugins/analytics/': [
@@ -165,6 +169,8 @@ export const sidebarZh: SidebarOptions = {
       children: ['guide', 'config', 'frontmatter'],
     },
   ],
+
+  '/zh/plugins/ai/': ['llms'],
 
   '/zh/themes/': [
     'guidelines',

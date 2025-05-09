@@ -22,6 +22,7 @@
     "@vuepress/plugin-docsearch": "workspace:*",
     "@vuepress/plugin-feed": "workspace:*",
     "@vuepress/plugin-icon": "workspace:*",
+    "@vuepress/plugin-llms": "workspace:*",
     "@vuepress/plugin-markdown-ext": "workspace:*",
     "@vuepress/plugin-markdown-image": "workspace:*",
     "@vuepress/plugin-markdown-include": "workspace:*",

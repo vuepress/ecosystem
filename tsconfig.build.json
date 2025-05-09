@@ -4,6 +4,8 @@
     "composite": true
   },
   "references": [
+    // AI
+    { "path": "./plugins/ai/plugin-llms/tsconfig.build.json" },
     // analytics
     {
       "path": "./plugins/analytics/plugin-baidu-analytics/tsconfig.build.json"
