@@ -1,23 +1,43 @@
 @use '../variables' as *;
 
-// code block additional styles
-div[class*='language-'] {
-  margin: 0.75rem 0;
-  transition:
-    background-color var(--vp-t-color),
-    color var(--vp-t-color);
-
+#content {
   @media (max-width: $MQMobileNarrow) {
     --code-border-radius: 0;
+    --tab-border-radius: 0;
 
-    margin: 0.75rem -1.5rem;
-  }
+    // code block
+    > div[class*='language-'],
+    > .code-block-with-title > div[class*='language-'] {
+      margin-inline: -1.5rem;
+    }
 
-  // transitions for code notation highlighting
-  .line {
-    &.diff,
-    &.highlighted {
-      transition: background-color var(--vp-t-color);
+    // code block title bar
+    .code-block-title-bar {
+      margin-inline: -1.5rem;
+    }
+
+    // code tabs
+    > .vp-code-tabs {
+      .vp-code-tabs-nav {
+        margin-inline: -1.5rem;
+        border-radius: 0;
+      }
+
+      div[class*='language-'] {
+        margin-inline: -1.5rem;
+      }
+    }
+
+    // tabs
+    > .vp-tabs {
+      margin-inline: -1.5rem;
+      border-inline: none;
+    }
+
+    // reveal.js
+    .vp-reveal {
+      width: calc(100% + 3rem);
+      margin: 0 -1.5rem;
     }
   }
 }

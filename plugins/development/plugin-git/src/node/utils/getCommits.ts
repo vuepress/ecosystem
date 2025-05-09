@@ -101,7 +101,7 @@ export const getRawCommits = async (
     )
 
     return stdout
-      .substring(0, stdout.length - COMMIT_SPLITTER.length - 1)
+      .slice(0, -1 - COMMIT_SPLITTER.length)
       .split(`${COMMIT_SPLITTER}\n`)
       .filter(Boolean)
       .map((rawString) => {

@@ -610,8 +610,8 @@ body > div {
 
 - Details: Whether enable whitespace characters (Space and Tab).
 
-  - `true`: enable render whitespace, same of `all`
-  - `false`: disable render whitespace
+  - `true`: enable whitespace, but not render any whitespace by default
+  - `false`: completely disable render whitespace, `:whitespace` will not take effect.
   - `'all'`: render all whitespace
   - `'boundary'`: render leading and trailing whitespace of the line
   - `'trailing'`: render trailing whitespace of the line

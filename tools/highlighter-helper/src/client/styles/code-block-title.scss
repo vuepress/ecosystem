@@ -21,7 +21,7 @@
   margin: 0.75rem 0 -0.75rem;
   padding: 0.5rem 1rem;
   border-bottom: solid 1px var(--code-title-divider);
-  border-radius: 6px 6px 0 0;
+  border-radius: var(--code-border-radius) var(--code-border-radius) 0 0;
 
   background: var(--code-title-c-bg);
   color: var(--code-title-c-text);
@@ -36,7 +36,7 @@
     color var(--vp-t-color);
 
   @media (max-width: 419px) {
-    margin: 0.75rem -1.5rem -0.75rem;
+    margin-block: 0.75rem -0.75rem;
     border-radius: 0;
   }
 }

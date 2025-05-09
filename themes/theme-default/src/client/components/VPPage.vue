@@ -19,7 +19,7 @@ defineSlots<{
     <div vp-content>
       <slot name="content-top" />
 
-      <Content />
+      <Content id="content" />
 
       <slot name="content-bottom" />
     </div>

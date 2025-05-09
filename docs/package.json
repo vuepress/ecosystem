@@ -39,6 +39,7 @@
     "@vuepress/plugin-search": "workspace:*",
     "@vuepress/plugin-shiki": "workspace:*",
     "@vuepress/shiki-twoslash": "workspace:*",
+    "@vuepress/highlighter-helper": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
     "@vueuse/core": "catalog:",
     "katex": "0.16.22",
