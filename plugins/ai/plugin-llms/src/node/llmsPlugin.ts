@@ -7,6 +7,19 @@ import { resolvePreparedPages } from './preparedPages.js'
 import type { LlmstxtPluginOptions } from './types.js'
 import { logger } from './utils/index.js'
 
+/**
+ * llmstxt plugin
+ *
+ * @param options - LlmstxtPluginOptions
+ *
+ * @example
+ * ```typescript
+ * import { llmstxtPlugin } from '@vuepress/plugin-llms'
+ *
+ * export default defineUserConfig({
+ * })
+ * ```
+ */
 export const llmstxtPlugin =
   (options: LlmstxtPluginOptions = {}): Plugin =>
   (app) => {

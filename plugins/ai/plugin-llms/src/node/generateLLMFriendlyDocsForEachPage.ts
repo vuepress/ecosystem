@@ -3,7 +3,7 @@ import type { App, PageFrontmatter } from 'vuepress'
 import { removeLeadingSlash } from 'vuepress/shared'
 import { colors, fs, path } from 'vuepress/utils'
 import type { LlmstxtPluginOptions, PreparedPage } from './types.js'
-import { generateLink, logger } from './utils/index.js'
+import { generateLink, logger, stripExt } from './utils/index.js'
 
 /**
  * Generate llm friendly docs
@@ -14,7 +14,7 @@ export const generateLLMFriendlyDocsForEachPage = async (
   domain: LlmstxtPluginOptions['domain'],
 ): Promise<void> => {
   const promises = preparedPages.map(async (page) => {
-    const relativePath = removeLeadingSlash(path.join(`${page.path}.md`))
+    const relativePath = removeLeadingSlash(`${stripExt(page.path)}.md`)
     const outputPath = app.dir.dest(relativePath)
 
     const metadata: PageFrontmatter = {

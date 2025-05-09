@@ -86,7 +86,7 @@ export const customGenerateTOC = (
   // Plugins
   ;(sidebarConfig['/plugins/'] as AutoLinkOptions[]).forEach(
     ({ text, link }) => {
-      appendTOC(`Plugins of ${text}`, `/plugins/${link}`)
+      appendTOC(`${text} Plugins`, `/plugins/${link}`)
     },
   )
   // Tools

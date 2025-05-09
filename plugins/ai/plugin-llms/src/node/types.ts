@@ -89,13 +89,9 @@ export interface LlmstxtPluginOptions extends TemplateVariables {
    *
    * Domain attachment is not yet agreed upon (since it depends on the AI whether it can resolve the relative paths that are currently there), but if you want you can add it
    *
-   * ℹ️ **Note**: Domain cannot end with `/`.
-   *
    * 将被附加到`llms.txt`中URL开头以及其他文件上下文中的域名
    *
-   * 附加域名尚未达成一致（因为这取决于AI是否能解析当前存在的相对路径），但如果您愿意，可以添加它
-   *
-   * ℹ️ **注意**：域名不能以 `/` 结尾。
+   * 是否附加域名尚未达成一致（因为这取决于AI是否能解析当前存在的相对路径），但如果您愿意，可以添加它
    *
    * Without a {@link LlmstxtSettings.domain | `domain`}:
    * ```markdown
@@ -203,7 +199,7 @@ export interface LlmstxtPluginOptions extends TemplateVariables {
    *
    * 可用的模板元素包括：
    *
-   * - `{title}`：从 frontmatter 部分或主文档（`index.md`）中第一个 h1 标题提取的标题。
+   * - `{title}`：从 frontmatter 部分或主文档（`README.md`）中第一个 h1 标题提取的标题。
    * - `{description}`：描述。
    * - `{details}`：详细信息。
    * - `{toc}`：自动生成的**目录**。
@@ -266,12 +262,11 @@ export interface LlmstxtPluginOptions extends TemplateVariables {
   /**
    * Custom generates a Table of Contents (TOC) for the provided prepared pages.
    *
-   * Each entry in the TOC is formatted as a markdown link to the corresponding
-   * text file.
+   * By default, the plugin only generates a first-level TOC. You can customize it to generate a multi-level TOC using `customGenerateTOC`.
    *
    * 自定义为提供的预备页面生成目录（TOC）。
    *
-   * TOC中的每个条目格式化为指向相应文本文件的markdown链接。
+   * 插件默认仅生成一级目录，你可以通过 `customGenerateTOC` 自定义生成多级目录。
    *
    * @param preparedPages - An array of prepared pages.
    * @param options - Options for generating the TOC.
