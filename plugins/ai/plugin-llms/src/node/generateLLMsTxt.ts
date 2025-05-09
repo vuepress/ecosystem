@@ -3,10 +3,10 @@ import { approximateTokenSize } from 'tokenx'
 import type { App } from 'vuepress'
 import { colors, fs } from 'vuepress/utils'
 import { DEFAULT_LLMSTXT_TEMPLATE } from './constants.js'
+import type { LlmstxtPluginOptions } from './options.js'
 import type {
   GenerateTOCOptions,
   LinksExtension,
-  LlmstxtPluginOptions,
   PreparedPage,
 } from './types.js'
 import {
@@ -18,16 +18,16 @@ import {
 
 interface GenerateLLMsTxtOptions {
   /** Template to use for generating `llms.txt`. */
-  LLMsTxtTemplate?: LlmstxtPluginOptions['customLLMsTxtTemplate']
+  llmsTxtTemplate?: LlmstxtPluginOptions['llmsTxtTemplate']
 
-  /** Template variables for `customLLMsTxtTemplate`. */
-  templateVariables?: LlmstxtPluginOptions['customTemplateVariables']
+  /** Template variables for `customllmsTxtTemplate`. */
+  llmsTxtTemplateGetter?: LlmstxtPluginOptions['llmsTxtTemplateGetter']
 
   /** The base domain for the generated links. */
   domain?: LlmstxtPluginOptions['domain']
 
   /** The link extension for generated links. */
-  linksExtension?: LinksExtension
+  linkExtension?: LinksExtension
 
   /** Custom generates a Table of Contents (TOC) for the provided prepared pages. */
   customGenerateTOC?: LlmstxtPluginOptions['customGenerateTOC']
@@ -40,10 +40,10 @@ export const generateLLMsTxt = async (
   app: App,
   preparedPages: PreparedPage[],
   {
-    LLMsTxtTemplate = DEFAULT_LLMSTXT_TEMPLATE,
-    templateVariables = {},
+    llmsTxtTemplate = DEFAULT_LLMSTXT_TEMPLATE,
+    llmsTxtTemplateGetter = {},
     domain,
-    linksExtension,
+    linkExtension,
     customGenerateTOC,
   }: GenerateLLMsTxtOptions,
 ): Promise<void> => {
@@ -57,38 +57,38 @@ export const generateLLMsTxt = async (
 
   const homePage = app.pages.find((page) => page.path === rootPath)
 
-  templateVariables.title ??=
+  llmsTxtTemplateGetter.title ??=
     localeOptions.title ||
     app.options.title ||
     homePage?.frontmatter.title ||
     homePage?.title ||
     'LLMs Documentation'
 
-  templateVariables.description ??=
+  llmsTxtTemplateGetter.description ??=
     homePage?.frontmatter.description ||
     localeOptions.description ||
     app.options.description
 
-  if (templateVariables.description)
-    templateVariables.description = `> ${templateVariables.description}`
+  if (llmsTxtTemplateGetter.description)
+    llmsTxtTemplateGetter.description = `> ${llmsTxtTemplateGetter.description}`
 
-  templateVariables.details ??=
+  llmsTxtTemplateGetter.details ??=
     (homePage?.frontmatter.details as string) ||
-    (!templateVariables.description
+    (!llmsTxtTemplateGetter.description
       ? 'This file contains links to all documentation sections.'
       : '')
 
   const options: GenerateTOCOptions = {
     base: app.options.base,
     domain,
-    linksExtension,
+    linkExtension,
   }
-  templateVariables.toc ??=
+  llmsTxtTemplateGetter.toc ??=
     customGenerateTOC?.(preparedPages, options) ??
     generateTOC(preparedPages, options)
 
-  const llmsTxt = expandTemplate(LLMsTxtTemplate, templateVariables)
-  await fs.promises.writeFile(app.dir.dest('llms.txt'), llmsTxt, 'utf-8')
+  const llmsTxt = expandTemplate(llmsTxtTemplate, llmsTxtTemplateGetter)
+  await fs.writeFile(app.dir.dest('llms.txt'), llmsTxt, 'utf-8')
 
   logger.succeed(
     expandTemplate(

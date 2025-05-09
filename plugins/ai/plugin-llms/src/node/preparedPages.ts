@@ -2,7 +2,8 @@ import matter from 'gray-matter'
 import { remark } from 'remark'
 import { remove as unistRemove } from 'unist-util-remove'
 import type { App } from 'vuepress'
-import type { LlmstxtPluginOptions, PreparedPage } from './types.js'
+import type { LlmstxtPluginOptions } from './options.js'
+import type { PreparedPage } from './types.js'
 
 /**
  * Remove html from markdown
@@ -13,7 +14,7 @@ const cleanMarkdown = remark().use(() => (tree) => {
 })
 
 type ResolvePreparedPagesOptions = Required<
-  Pick<LlmstxtPluginOptions, 'filter' | 'stripHTML' | 'workDir'>
+  Pick<LlmstxtPluginOptions, 'filter' | 'stripHTML'>
 >
 
 /**
@@ -21,13 +22,12 @@ type ResolvePreparedPagesOptions = Required<
  */
 export const resolvePreparedPages = (
   app: App,
-  { workDir, stripHTML, filter }: ResolvePreparedPagesOptions,
+  { stripHTML, filter }: ResolvePreparedPagesOptions,
 ): PreparedPage[] => {
   const preparedPages: PreparedPage[] = []
   for (const page of app.pages) {
     // Ignore non-markdown pages
-    if (!page.filePath?.startsWith(workDir) || !page.filePath.endsWith('.md'))
-      continue
+    if (!page.filePath?.endsWith('.md')) continue
 
     // Ignore disabled pages
     if (page.frontmatter.llmstxt === false) {

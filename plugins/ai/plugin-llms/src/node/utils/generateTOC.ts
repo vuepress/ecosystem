@@ -10,10 +10,10 @@ import { generateLink } from './generateLink.js'
  */
 export const generateTOCLink = (
   page: PreparedPage,
-  { base = '/', domain, linksExtension }: GenerateTOCOptions,
+  { base = '/', domain, linkExtension }: GenerateTOCOptions,
 ): string => {
   const description = page.frontmatter.description!
-  const path = generateLink(page.path, base, domain, linksExtension ?? '.md')
+  const path = generateLink(page.path, base, domain, linkExtension ?? '.md')
   return `- [${page.title}](${path})${description ? `: ${description.trim()}` : ''}\n`
 }
 

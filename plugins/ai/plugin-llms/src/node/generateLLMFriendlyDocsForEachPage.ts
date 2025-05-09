@@ -2,7 +2,8 @@ import matter from 'gray-matter'
 import type { App, PageFrontmatter } from 'vuepress'
 import { removeLeadingSlash } from 'vuepress/shared'
 import { colors, fs, path } from 'vuepress/utils'
-import type { LlmstxtPluginOptions, PreparedPage } from './types.js'
+import type { LlmstxtPluginOptions } from './options.js'
+import type { PreparedPage } from './types.js'
 import { generateLink, logger, stripExt } from './utils/index.js'
 
 /**
@@ -26,7 +27,7 @@ export const generateLLMFriendlyDocsForEachPage = async (
     }
     try {
       await fs.mkdir(path.dirname(outputPath), { recursive: true })
-      await fs.promises.writeFile(
+      await fs.writeFile(
         outputPath,
         matter.stringify(page.content, metadata),
         'utf-8',

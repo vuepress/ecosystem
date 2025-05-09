@@ -3,11 +3,8 @@ import { millify } from 'millify'
 import { approximateTokenSize } from 'tokenx'
 import type { App, PageFrontmatter } from 'vuepress'
 import { colors, fs } from 'vuepress/utils'
-import type {
-  LinksExtension,
-  LlmstxtPluginOptions,
-  PreparedPage,
-} from './types.js'
+import type { LlmstxtPluginOptions } from './options.js'
+import type { LinksExtension, PreparedPage } from './types.js'
 import {
   expandTemplate,
   extractTitle,
@@ -21,7 +18,7 @@ interface GenerateLLMsFullTxtOptions {
   domain?: LlmstxtPluginOptions['domain']
 
   /** The link extension for generated links. */
-  linksExtension?: LinksExtension
+  linkExtension?: LinksExtension
 }
 
 /**
@@ -30,7 +27,7 @@ interface GenerateLLMsFullTxtOptions {
 export const generateLLMsFullTxt = async (
   app: App,
   preparedPages: PreparedPage[],
-  { domain, linksExtension }: GenerateLLMsFullTxtOptions,
+  { domain, linkExtension }: GenerateLLMsFullTxtOptions,
 ): Promise<void> => {
   logger.load('Generating llms-full.txt')
 
@@ -40,7 +37,7 @@ export const generateLLMsFullTxt = async (
         page.path,
         app.options.base,
         domain,
-        linksExtension ?? '.md',
+        linkExtension ?? '.md',
       ),
     }
 
@@ -57,11 +54,7 @@ export const generateLLMsFullTxt = async (
 
   const llmsFullTxt = pageContents.join('\n---\n\n')
 
-  await fs.promises.writeFile(
-    app.dir.dest('llms-full.txt'),
-    llmsFullTxt,
-    'utf-8',
-  )
+  await fs.writeFile(app.dir.dest('llms-full.txt'), llmsFullTxt, 'utf-8')
 
   logger.succeed(
     expandTemplate(
