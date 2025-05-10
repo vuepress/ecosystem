@@ -1,4 +1,4 @@
-import type { Page, PageFrontmatter } from 'vuepress'
+import type { PageFrontmatter } from 'vuepress'
 
 /**
  * A literal type that supports custom further strings but preserves autocompletion in IDEs.

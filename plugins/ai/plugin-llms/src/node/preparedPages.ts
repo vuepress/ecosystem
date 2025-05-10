@@ -25,17 +25,16 @@ export const resolvePreparedPages = (
   { stripHTML, filter }: ResolvePreparedPagesOptions,
 ): PreparedPage[] => {
   const preparedPages: PreparedPage[] = []
+
   for (const page of app.pages) {
-    // Ignore non-markdown pages
-    if (!page.filePath?.endsWith('.md')) continue
-
-    // Ignore disabled pages
-    if (page.frontmatter.llmstxt === false) {
-      continue
-    }
-
-    // page filter
-    if (!filter(page)) {
+    if (
+      // non-markdown pages
+      !page.filePath?.endsWith('.md') ||
+      // disabled
+      page.frontmatter.llmstxt === false ||
+      // filtered
+      !filter(page)
+    ) {
       continue
     }
 
