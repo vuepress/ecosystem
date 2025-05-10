@@ -16,7 +16,6 @@ import {
   createMarkdownFilePathGetter,
   createShikiHighlighter,
   getHighLightFunction,
-  highlightLinesPlugin,
   preWrapperPlugin,
 } from '../src/node/markdown/index.js'
 import type { ShikiPluginOptions } from '../src/node/options.js'
@@ -42,7 +41,6 @@ const createMarkdown = ({
     markdownFilePathGetter,
   )
 
-  md.use(highlightLinesPlugin)
   md.use<MarkdownItPreWrapperOptions>(preWrapperPlugin, { preWrapper })
   if (preWrapper) {
     md.use<MarkdownItLineNumbersOptions>(lineNumbersPlugin, {
