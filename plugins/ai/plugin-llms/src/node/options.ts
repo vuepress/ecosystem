@@ -77,40 +77,9 @@ export interface LlmstxtPluginOptions {
   llmsTxtTemplate?: string
 
   /**
-   * Custom variables for {@link LlmstxtSettings.customllmsTxtTemplate | `customllmsTxtTemplate`}.
+   * Custom variables for {@link LlmstxtPluginOptions.llmsTxtTemplate | `llmsTxtTemplate`}.
    *
-   * With this option you can edit or add variables to the template.
-   *
-   * You can change the title in `llms.txt` without having to change the template:
-   *
-   * {@link LlmstxtSettings.customllmsTxtTemplate | `customllmsTxtTemplate`} 的自定义变量。
-   *
-   * 通过此选项，您可以编辑或向模板添加变量。
-   *
-   * 您无需更改模板即可修改 `llms.txt` 中的标题：
-   *
-   * @example
-   * ```ts
-   * llmstxtPlugin({
-   *     customTemplateVariables: {
-   *         title: 'Very custom title',
-   *     }
-   * })
-   * ```
-   *
-   * You can also combine this with a custom template:
-   *
-   * 还可以将其与自定义模板结合使用：
-   *
-   * @example
-   * ```ts
-   * llmstxtPlugin({
-   *     customllmsTxtTemplate: '# {title}\n\n{foo}',
-   *     customTemplateVariables: {
-   *         foo: 'Very custom title',
-   *     }
-   * })
-   * ```
+   * {@link LlmstxtPluginOptions.llmsTxtTemplate | `llmsTxtTemplate`} 的自定义变量。
    */
   llmsTxtTemplateGetter?: TemplateGetter
 
