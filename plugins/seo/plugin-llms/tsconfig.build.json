@@ -1,0 +1,11 @@
+{
+  "extends": "../../../tsconfig.build.json",
+  "references": [{ "path": "../../../tools/helper/tsconfig.build.json" }],
+  "files": [],
+  "include": ["./src/**/*.ts", "./src/**/*.d.ts"],
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "esModuleInterop": true
+  }
+}

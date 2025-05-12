@@ -92,6 +92,7 @@
     // seo
     { "path": "./plugins/seo/plugin-seo/tsconfig.build.json" },
     { "path": "./plugins/seo/plugin-sitemap/tsconfig.build.json" },
+    { "path": "./plugins/seo/plugin-llms/tsconfig.build.json" },
 
     // tools
     {

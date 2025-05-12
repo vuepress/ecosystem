@@ -12,6 +12,7 @@ import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { sassPalettePlugin } from '@vuepress/plugin-sass-palette'
 import { watermarkPlugin } from '@vuepress/plugin-watermark'
+import { llmsPlugin } from '@vuepress/plugin-llms'
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress/cli'
 import { getDirname, path } from 'vuepress/utils'
@@ -321,6 +322,14 @@ export default defineUserConfig({
         width: 200,
         height: 200,
       },
+    }),
+    llmsPlugin({
+      generateLLMsTxt: true,
+      generateLLMsFullTxt: true,
+      stripHTML: true,
+      title: 'VuePress Ecosystem E2E',
+      description: 'VuePress Ecosystem E2E Test Site',
+      domain: 'https://ecosystem-e2e-test.com',
     }),
   ],
 })
