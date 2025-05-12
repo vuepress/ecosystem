@@ -1,27 +1,24 @@
 <script setup lang="ts">
 import type { Slot } from '@vuepress/helper/client'
 
-withDefaults(
-  defineProps<{
-    /**
-     * The type of the badge
-     */
-    type?: string
-    /**
-     * The text of the badge
-     */
-    text?: string
-    /**
-     * The vertical align of the badge
-     */
-    vertical?: string
-  }>(),
-  {
-    type: 'tip',
-    text: '',
-    vertical: undefined,
-  },
-)
+const {
+  type = 'tip',
+  text = '',
+  vertical = '',
+} = defineProps<{
+  /**
+   * The type of the badge
+   */
+  type?: string
+  /**
+   * The text of the badge
+   */
+  text?: string
+  /**
+   * The vertical align of the badge
+   */
+  vertical?: string
+}>()
 
 defineSlots<{
   default?: Slot
@@ -32,9 +29,7 @@ defineSlots<{
   <span
     class="vp-badge"
     :class="type"
-    :style="{
-      verticalAlign: vertical,
-    }"
+    :style="vertical ? { verticalAlign: vertical } : ''"
   >
     <slot>{{ text }}</slot>
   </span>
