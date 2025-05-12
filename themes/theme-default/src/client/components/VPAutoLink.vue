@@ -3,7 +3,7 @@ import type { RequiredSlot, Slot } from '@vuepress/helper/client'
 import type { AutoLinkConfig } from 'vuepress/client'
 import { AutoLink } from 'vuepress/client'
 
-defineProps<{
+const { config } = defineProps<{
   /**
    * The auto link config
    */

@@ -3,24 +3,20 @@ import VPAutoLink from '@theme/VPAutoLink.vue'
 import { FadeInExpandTransition } from '@vuepress/helper/client'
 import type { AutoLinkOptions, NavGroup } from '@vuepress/theme-default/client'
 import { useToggle } from '@vueuse/core'
-import { computed, toRefs } from 'vue'
+import { computed } from 'vue'
 import type { AutoLinkConfig } from 'vuepress/client'
 import { onContentUpdated } from 'vuepress/client'
 
 import '@vuepress/helper/transition/fade-in-height-expand.css'
 
-const props = defineProps<{
+const { config } = defineProps<{
   /** dropdown config */
   config: NavGroup<AutoLinkOptions | NavGroup<AutoLinkOptions>>
 }>()
 
-const { config } = toRefs(props)
-
 const [open, toggleOpen] = useToggle()
 
-const dropdownAriaLabel = computed(
-  () => config.value.ariaLabel || config.value.text,
-)
+const dropdownAriaLabel = computed(() => config.ariaLabel || config.text)
 
 const isLastItemOfArray = (arrayItem: unknown, array: unknown[]): boolean =>
   array[array.length - 1] === arrayItem
