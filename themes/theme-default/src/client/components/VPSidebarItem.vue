@@ -3,33 +3,29 @@ import VPAutoLink from '@theme/VPAutoLink.vue'
 import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
 import { isActiveSidebarItem } from '@theme/isActiveSidebarItem'
 import { useToggle } from '@vueuse/core'
-import { computed, nextTick, onBeforeUnmount, toRefs } from 'vue'
+import { computed, nextTick, onBeforeUnmount } from 'vue'
 import { useRoute, useRouter } from 'vuepress/client'
 import type { SidebarGroupItem, SidebarItem } from '../typings.js'
 
-const props = withDefaults(
-  defineProps<{
-    /**
-     * The sidebar item to be rendered
-     */
-    item: SidebarItem
-    /**
-     * The depth of the current sidebar item
-     */
-    depth?: number
-  }>(),
-  { depth: 0 },
-)
+const { item, depth = 0 } = defineProps<{
+  /**
+   * The sidebar item to be rendered
+   */
+  item: SidebarItem
+  /**
+   * The depth of the current sidebar item
+   */
+  depth?: number
+}>()
 
-const { item, depth } = toRefs(props)
 const route = useRoute()
 const router = useRouter()
 
-const collapsible = computed(() => (item.value as SidebarGroupItem).collapsible)
-const isActive = computed(() => isActiveSidebarItem(item.value, route))
+const collapsible = computed(() => (item as SidebarGroupItem).collapsible)
+const isActive = computed(() => isActiveSidebarItem(item, route))
 const itemClass = computed(() => ({
   'vp-sidebar-item': true,
-  'vp-sidebar-heading': depth.value === 0,
+  'vp-sidebar-heading': depth === 0,
   'active': isActive.value,
   'collapsible': collapsible.value,
 }))
