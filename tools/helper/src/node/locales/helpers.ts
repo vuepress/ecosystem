@@ -43,8 +43,6 @@ export const inferLocalePath = (lang = '', debug = false): string => {
 }
 
 /**
- * @deprecated
- *
  * Get language of root directory
  *
  * @param app VuePress Node App

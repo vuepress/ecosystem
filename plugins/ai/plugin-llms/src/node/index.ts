@@ -1,4 +1,5 @@
 export * from './constants.js'
+export * from './getter.js'
 export * from './utils/index.js'
 export * from './generateLLMFriendlyDocsForEachPage.js'
 export * from './generateLLMsTxt.js'

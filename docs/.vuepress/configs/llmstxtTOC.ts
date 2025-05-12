@@ -4,7 +4,7 @@
  * 根据 sidebar 配置，生成 llmstxt 的 TOC 。
  */
 
-import type { GenerateTOCOptions, PreparedPage } from '@vuepress/plugin-llms'
+import type { LLMPage, LLMState } from '@vuepress/plugin-llms'
 import { generateTOCLink as rawGenerateTOCLink } from '@vuepress/plugin-llms'
 import type {
   AutoLinkOptions,
@@ -48,12 +48,9 @@ const flattenSidebar = (
   return result
 }
 
-export const customGenerateTOC = (
-  preparedPages: PreparedPage[],
-  options: GenerateTOCOptions,
-): string => {
+export const tocGetter = (llmPages: LLMPage[], llmState: LLMState): string => {
   let tableOfContent = ''
-  const usagePages: PreparedPage[] = []
+  const usagePages: LLMPage[] = []
 
   const generateTOCLink = (path: string): string => {
     if (isLinkHttp(path)) {
@@ -61,10 +58,10 @@ export const customGenerateTOC = (
       return `- [${item.text}](${item.link})\n`
     }
     const link = path.endsWith('/') ? `${path}index.html` : `${path}.html`
-    const page = preparedPages.find((item) => item.path === link)
+    const page = llmPages.find((item) => item.path === link)
     if (page) {
       usagePages.push(page)
-      return rawGenerateTOCLink(page, options)
+      return rawGenerateTOCLink(page, llmState)
     }
     return ''
   }
@@ -92,13 +89,11 @@ export const customGenerateTOC = (
   // Tools
   appendTOC('Tools', '/tools/')
   // Others
-  const unUsagePages = preparedPages.filter(
-    (page) => !usagePages.includes(page),
-  )
+  const unUsagePages = llmPages.filter((page) => !usagePages.includes(page))
   if (unUsagePages.length) {
     tableOfContent += '### Others\n\n'
     tableOfContent += unUsagePages
-      .map((page) => rawGenerateTOCLink(page, options))
+      .map((page) => rawGenerateTOCLink(page, llmState))
       .join('')
   }
 

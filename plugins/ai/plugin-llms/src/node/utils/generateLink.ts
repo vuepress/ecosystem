@@ -1,4 +1,4 @@
-import { removeEndingSlash, removeLeadingSlash } from '@vuepress/helper'
+import { removeEndingSlash } from '@vuepress/helper'
 import type { LinksExtension } from '../types.js'
 import { stripExt } from './stripExt.js'
 import { withBase } from './withBase.js'
@@ -14,10 +14,11 @@ import { withBase } from './withBase.js'
  */
 export const generateLink = (
   path: string,
-  base = '',
+  base: string,
   domain = '',
   extension?: LinksExtension,
 ): string => {
   const pagePath = withBase(`${stripExt(path)}${extension ?? '.md'}`, base)
-  return `${removeEndingSlash(domain)}/${removeLeadingSlash(pagePath)}`
+
+  return `${removeEndingSlash(domain)}${pagePath}`
 }

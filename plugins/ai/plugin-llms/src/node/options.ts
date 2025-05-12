@@ -1,7 +1,7 @@
 import type { Page } from 'vuepress'
-import type { GenerateTOCOptions, PreparedPage, TemplateGetter } from './types'
+import type { TemplateGetterOptions } from './types'
 
-export interface LlmstxtPluginOptions {
+export interface LlmsPluginOptions {
   /**
    * The domain being appended in file links
    *
@@ -77,36 +77,9 @@ export interface LlmstxtPluginOptions {
   llmsTxtTemplate?: string
 
   /**
-   * Custom variables for {@link LlmstxtPluginOptions.llmsTxtTemplate | `llmsTxtTemplate`}.
+   * Custom variables for {@link LlmsPluginOptions.llmsTxtTemplate | `llmsTxtTemplate`}.
    *
-   * {@link LlmstxtPluginOptions.llmsTxtTemplate | `llmsTxtTemplate`} 的自定义变量。
+   * {@link LlmsPluginOptions.llmsTxtTemplate | `llmsTxtTemplate`} 的自定义变量。
    */
-  llmsTxtTemplateGetter?: TemplateGetter
-
-  /**
-   * Custom generates a Table of Contents (TOC) for the provided prepared pages.
-   *
-   * By default, the plugin only generates a first-level TOC. You can customize it to generate a multi-level TOC using `customGenerateTOC`.
-   *
-   * 自定义为提供的预备页面生成目录（TOC）。
-   *
-   * 插件默认仅生成一级目录，你可以通过 `customGenerateTOC` 自定义生成多级目录。
-   *
-   * @param preparedPages - An array of prepared pages.
-   * @param options - Options for generating the TOC.
-   * @returns A string representing the formatted Table of Contents.
-   *
-   * @example
-   * ```ts
-   * llmstxtPlugin({
-   *     customGenerateTOC: (pages, options) => {
-   *         return pages.map((page) => `- [${page.title}](${page.path})`).join('\n')
-   *     }
-   * })
-   * ```
-   */
-  customGenerateTOC?: (
-    pages: PreparedPage[],
-    options: GenerateTOCOptions,
-  ) => string
+  llmsTxtTemplateGetter?: TemplateGetterOptions
 }

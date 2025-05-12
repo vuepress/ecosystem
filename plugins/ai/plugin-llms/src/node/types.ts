@@ -1,4 +1,5 @@
-import type { PageFrontmatter } from 'vuepress'
+import type { App, Page } from 'vuepress/core'
+import type { SiteLocaleData } from 'vuepress/shared'
 
 /**
  * A literal type that supports custom further strings but preserves autocompletion in IDEs.
@@ -17,9 +18,41 @@ export type LiteralUnion<Union extends Base, Base = string> =
 export type LinksExtension = LiteralUnion<'.html' | '.md'>
 
 /**
+ * Represents a prepared page, including its title and path.
+ *
+ * 表示一个已准备好的页面，包括其标题和路径。
+ */
+export interface LLMPage extends Page {
+  /**
+   * The content of the markdown file.
+   *
+   * 页面的 markdown 内容
+   *
+   * @example '# Guide\n\nA guide'
+   */
+  markdown: string
+
+  /**
+   * The excerpt of the page.
+   *
+   * 页面的摘要
+   *
+   * @example 'Introduction to the guide'
+   */
+  excerpt: string
+}
+
+/**
  * Options for generating a Table of Contents (TOC).
  */
-export interface GenerateTOCOptions {
+export interface LLMState {
+  /**
+   * The VuePress app instance.
+   *
+   * VuePress 应用实例
+   */
+  app: App
+
   /**
    * Optional domain to prefix URLs with.
    */
@@ -34,9 +67,25 @@ export interface GenerateTOCOptions {
    * The link extension for generated links.
    */
   linkExtension?: LinksExtension
+
+  /**
+   * Current locale being processed.
+   *
+   * 当前正在处理的语言环境
+   */
+  currentLocale: string
+
+  /**
+   * Current locale being processed.
+   *
+   * 当前正在处理的语言环境
+   */
+  siteLocale: SiteLocaleData
 }
 
-export interface TemplateGetter {
+export type TemplateGetter = (pages: LLMPage[], state: LLMState) => string
+
+export interface TemplateGetterOptions {
   /**
    * The title
    *
@@ -48,7 +97,7 @@ export interface TemplateGetter {
    *
    * @example 'Awesome tool'
    */
-  title?: string
+  title?: TemplateGetter | string
 
   /**
    * Project description.
@@ -57,7 +106,7 @@ export interface TemplateGetter {
    *
    * @example 'Blazing fast build tool'
    */
-  description?: string
+  description?: TemplateGetter | string
 
   /**
    * The details.
@@ -66,7 +115,7 @@ export interface TemplateGetter {
    *
    * @example 'A multi-user version of the notebook designed for companies, classrooms and research labs'
    */
-  details?: string
+  details?: TemplateGetter | string
 
   /**
    * An automatically generated **T**able **O**f **C**ontents.
@@ -79,51 +128,8 @@ export interface TemplateGetter {
    * - [Title 2](/bar/baz.md): Cras vel nibh id ipsum pharetra efficitur.
    * ```
    */
-  toc?: string
+  toc?: TemplateGetter | string
 
   /** Any custom variable */
-  [key: string]: string | undefined
-}
-
-/**
- * Represents a prepared page, including its title and path.
- *
- * 表示一个已准备好的页面，包括其标题和路径。
- */
-export interface PreparedPage {
-  /**
-   * The title of the page.
-   *
-   * 页面标题
-   *
-   * @example 'Guide'
-   */
-  title: string
-
-  /**
-   * The permalink path to the page.
-   *
-   * 页面的永久访问地址
-   *
-   * @example '/guide/getting-started.html'
-   */
-  path: string
-
-  /**
-   * The frontmatter of the page.
-   *
-   * 页面 frontmatter
-   *
-   * @example `{ title: 'Guide', description: 'A guide' }`
-   */
-  frontmatter: PageFrontmatter
-
-  /**
-   * The content of the markdown file.
-   *
-   * 页面的 markdown 内容
-   *
-   * @example '# Guide\n\nA guide'
-   */
-  content: string
+  [key: string]: TemplateGetter | string | undefined
 }

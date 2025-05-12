@@ -16,7 +16,7 @@ import { revealJsPlugin } from '@vuepress/plugin-revealjs'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 import type { Page } from 'vuepress'
 import { getDirname, path } from 'vuepress/utils'
-import { customGenerateTOC } from './llmstxtTOC.js'
+import { tocGetter } from './llmstxtTOC.js'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
@@ -135,6 +135,8 @@ export const plugins = [
   llmstxtPlugin({
     // Only Generate with en-US pages
     filter: (page) => page.pathLocale === '/',
-    customGenerateTOC,
+    llmsTxtTemplateGetter: {
+      toc: tocGetter,
+    },
   }),
 ]

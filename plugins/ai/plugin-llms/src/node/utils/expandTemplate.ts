@@ -59,9 +59,8 @@ export const replaceTemplateVariable = (
 export const expandTemplate = (
   template: string,
   variables: Record<string, string | undefined>,
-): string => {
-  return Object.entries(variables).reduce(
+): string =>
+  Object.entries(variables).reduce(
     (result, [key, value]) => replaceTemplateVariable(result, key, value),
     template,
   )
-}

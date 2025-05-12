@@ -1,6 +1,7 @@
-import { removeEndingSlash } from 'vuepress/shared'
+import { ensureLeadingSlash, removeLeadingSlash } from 'vuepress/shared'
 
 export const withBase = (link: string, base?: string): string => {
-  if (!base) return link
-  return link.startsWith(base) ? link : `${removeEndingSlash(base)}${link}`
+  if (!base) return ensureLeadingSlash(link)
+
+  return link.startsWith(base) ? link : `${base}${removeLeadingSlash(link)}`
 }

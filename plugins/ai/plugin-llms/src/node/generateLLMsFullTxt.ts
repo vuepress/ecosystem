@@ -3,8 +3,8 @@ import { millify } from 'millify'
 import { approximateTokenSize } from 'tokenx'
 import type { App, PageFrontmatter } from 'vuepress'
 import { colors, fs } from 'vuepress/utils'
-import type { LlmstxtPluginOptions } from './options.js'
-import type { LinksExtension, PreparedPage } from './types.js'
+import type { LlmsPluginOptions } from './options.js'
+import type { LLMPage, LinksExtension } from './types.js'
 import {
   expandTemplate,
   extractTitle,
@@ -14,8 +14,10 @@ import {
 } from './utils/index.js'
 
 interface GenerateLLMsFullTxtOptions {
+  app: App
+
   /** The base domain for the generated links. */
-  domain?: LlmstxtPluginOptions['domain']
+  domain?: LlmsPluginOptions['domain']
 
   /** The link extension for generated links. */
   linkExtension?: LinksExtension
@@ -25,30 +27,30 @@ interface GenerateLLMsFullTxtOptions {
  * Generate `llms-full.txt`
  */
 export const generateLLMsFullTxt = async (
-  app: App,
-  preparedPages: PreparedPage[],
-  { domain, linkExtension }: GenerateLLMsFullTxtOptions,
+  llmPages: LLMPage[],
+  { app, domain, linkExtension }: GenerateLLMsFullTxtOptions,
 ): Promise<void> => {
   logger.load('Generating llms-full.txt')
 
-  const pageContents = preparedPages.map((page) => {
+  const pageContents = llmPages.map((page) => {
     const metadata: PageFrontmatter = {
       url: generateLink(
-        page.path,
+        page.htmlFilePathRelative,
         app.options.base,
         domain,
         linkExtension ?? '.md',
       ),
     }
 
-    if (page.frontmatter.description?.length) {
+    if (page.frontmatter.description && !page.frontmatter.autoDesc) {
       metadata.description = page.frontmatter.description
     }
 
     // completion title in markdown content
-    const content = extractTitle(page.content)
-      ? page.content
-      : `# ${page.title}\n${page.content}`
+    const content = extractTitle(page.markdown)
+      ? page.markdown
+      : `# ${page.title}\n${page.markdown}`
+
     return matter.stringify(content, metadata)
   })
 
@@ -63,7 +65,7 @@ export const generateLLMsFullTxt = async (
         file: colors.cyan('llms-full.txt'),
         tokens: colors.bold(millify(approximateTokenSize(llmsFullTxt))),
         size: colors.bold(getSizeOf(llmsFullTxt)),
-        pageCount: colors.bold(preparedPages.length),
+        pageCount: colors.bold(llmPages.length),
       },
     ),
   )
