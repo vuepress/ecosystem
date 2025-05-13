@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.104](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.103...v2.0.0-rc.104) (2025-05-13)
+
+### Bug Fixes
+
+- **plugin-shiki:** fix incorrect highlight lines parsing ([#463](https://github.com/vuepress/ecosystem/issues/463)) ([1205432](https://github.com/vuepress/ecosystem/commit/1205432dae10e4914fe17e3aacbb44c3b56410e2))
+- **theme-default:** fix navbar mismatch ([bca0562](https://github.com/vuepress/ecosystem/commit/bca0562e4914366898f348af9af8fbb606bfe0e2))
+- **theme-default:** fix NotFound mismatch ([#467](https://github.com/vuepress/ecosystem/issues/467)) ([1818e8b](https://github.com/vuepress/ecosystem/commit/1818e8ba0d8623a7ab72eee60386e94b094721b1))
+
+### Features
+
+- **helper:** improve slot type ([744b5a2](https://github.com/vuepress/ecosystem/commit/744b5a2213441bc32317307ac38f12b5f1d50423))
+
 # [2.0.0-rc.103](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.102...v2.0.0-rc.103) (2025-05-08)
 
 ### Bug Fixes
