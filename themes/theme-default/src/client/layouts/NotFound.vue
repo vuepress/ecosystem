@@ -1,17 +1,53 @@
 <script setup lang="ts">
 import { useData } from '@theme/useData'
-import { computed } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { RouteLink } from 'vuepress/client'
 
-const { routeLocale, themeLocale } = useData()
+const { routeLocale, theme, themeLocale } = useData()
 
-const messages = computed(() => themeLocale.value.notFound ?? ['Not Found'])
+const isMounted = ref(false)
 
-const getMsg = (): string =>
-  messages.value[Math.floor(Math.random() * messages.value.length)]
+// 404 page will fall back to root locale,
+// so we shall use the '/' to avoid SSR mismatch
+const expectedRouteLocale = computed(() =>
+  isMounted.value ? routeLocale.value : '/',
+)
 
-const homeLink = computed(() => themeLocale.value.home ?? routeLocale.value)
-const homeText = computed(() => themeLocale.value.backToHome ?? 'Back to home')
+// 404 page will fall back to root locale,
+// so we shall use the root theme locale to avoid SSR mismatch
+const expectedThemeLocale = computed(() => {
+  if (isMounted.value) return themeLocale.value
+
+  const { locales, ...baseOptions } = theme.value
+
+  return {
+    ...baseOptions,
+    ...locales?.['/'],
+  }
+})
+
+const homeLink = computed(
+  () => expectedThemeLocale.value.home ?? expectedRouteLocale.value,
+)
+const homeText = computed(
+  () => expectedThemeLocale.value.backToHome ?? 'Back to home',
+)
+
+const messages = computed(
+  () => expectedThemeLocale.value.notFound ?? ['Not Found'],
+)
+
+const notFoundMsg = computed(() => {
+  if (isMounted.value) {
+    return messages.value[Math.floor(Math.random() * messages.value.length)]
+  }
+
+  return messages.value[0]
+})
+
+onMounted(() => {
+  isMounted.value = true
+})
 </script>
 
 <template>
@@ -20,7 +56,7 @@ const homeText = computed(() => themeLocale.value.backToHome ?? 'Back to home')
       <div vp-content>
         <h1>404</h1>
 
-        <blockquote>{{ getMsg() }}</blockquote>
+        <blockquote>{{ notFoundMsg }}</blockquote>
 
         <RouteLink :to="homeLink">{{ homeText }}</RouteLink>
       </div>

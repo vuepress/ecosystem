@@ -27,8 +27,9 @@ export const resolveLanguage = (info: string): string =>
  *    [{ line: number, classes: string[] }]
  */
 export const attrsToLines = (attrs: string): TransformerCompactLineOption[] => {
-  const attrsContent = attrs.replace(/^(?:\[.*?\])?.*?([\d,-]+).*/, '$1').trim()
-
+  const attrsContent = attrs
+    .replace(/^(?:\[.*?\])?.*?\{([\d,-]+)\}.*/, '$1')
+    .trim()
   const result: number[] = []
 
   if (!attrsContent) {

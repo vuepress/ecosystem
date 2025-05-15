@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-docsearch",
-  "version": "2.0.0-rc.103",
+  "version": "2.0.0-rc.104",
   "description": "VuePress plugin - docsearch",
   "keywords": [
     "vuepress-plugin",
@@ -49,7 +49,7 @@
     "vue": "catalog:"
   },
   "devDependencies": {
-    "algoliasearch": "5.24.0"
+    "algoliasearch": "5.25.0"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

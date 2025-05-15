@@ -3,6 +3,6 @@
   --catalog-c-accent-text: var(--vp-c-accent-text);
   --catalog-c-control: var(--vp-c-bg-alt);
   --catalog-c-control-hover: var(--vp-c-bg-alt);
-  --catalog-c-gutter: var(--vp-c-gutter);
+  --catalog-c-divider: var(--vp-c-divider);
   --catalog-header-offset: var(--header-offset, 3.6rem);
 }
