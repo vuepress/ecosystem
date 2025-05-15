@@ -28,7 +28,7 @@ const features = computed(() => frontmatter.value.features ?? [])
 
   margin-top: 2.5rem;
   padding: 1.2rem 0;
-  border-top: 1px solid var(--vp-c-gutter);
+  border-top: 1px solid var(--vp-c-divider);
 
   transition: border-color var(--vp-t-color);
 

@@ -72,7 +72,7 @@ useEventListener('keydown', (event): void => {
   margin-inline: auto;
   margin-top: 0;
   padding: 1rem 2rem 0;
-  border-top: 1px solid var(--vp-c-gutter);
+  border-top: 1px solid var(--vp-c-divider);
 
   transition: border-top var(--vp-t-color);
 
@@ -90,7 +90,7 @@ useEventListener('keydown', (event): void => {
 
     margin: 0.25rem;
     padding: 0.25rem 0.5rem;
-    border: 1px solid var(--vp-c-gutter);
+    border: 1px solid var(--vp-c-divider);
     border-radius: 0.25rem;
 
     &:hover {
