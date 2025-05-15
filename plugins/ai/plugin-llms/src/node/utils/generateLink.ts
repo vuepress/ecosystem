@@ -1,7 +1,9 @@
-import { removeEndingSlash } from '@vuepress/helper'
-import type { LinksExtension } from '../types.js'
+import { removeLeadingSlash } from 'vuepress/shared'
+import type { LLMState } from '../types.js'
 import { stripExt } from './stripExt.js'
-import { withBase } from './withBase.js'
+
+export const withBase = (link: string, base: string): string =>
+  link.startsWith(base) ? link : `${base}${removeLeadingSlash(link)}`
 
 /**
  * Generates a complete link by combining a domain, path, and an optional extension.
@@ -14,11 +16,9 @@ import { withBase } from './withBase.js'
  */
 export const generateLink = (
   path: string,
-  base: string,
-  domain = '',
-  extension?: LinksExtension,
+  { base, domain, linkExtension }: LLMState,
 ): string => {
-  const pagePath = withBase(`${stripExt(path)}${extension ?? '.md'}`, base)
+  const pagePath = withBase(`${stripExt(path)}${linkExtension}`, base)
 
-  return `${removeEndingSlash(domain)}${pagePath}`
+  return `${domain ?? ''}${pagePath}`
 }

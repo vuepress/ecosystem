@@ -6,9 +6,12 @@ import { path } from 'vuepress/utils'
  * @param filepath - The path to the file.
  * @returns The filename without the extension.
  */
-export const stripExt = (url: string): string => {
-  const dir = path.dirname(url)
-  const name = path.basename(url)
+export const stripExt = (filepath: string): string => {
+  const ext = path.extname(filepath)
 
-  return path.join(dir, path.basename(name, path.extname(name)))
+  if (ext === '' || filepath.endsWith('/')) {
+    return filepath
+  }
+
+  return filepath.slice(0, -ext.length)
 }

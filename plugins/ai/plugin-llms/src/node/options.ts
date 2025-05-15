@@ -1,3 +1,4 @@
+import type { LiteralUnion } from '@vuepress/helper'
 import type { Page } from 'vuepress'
 import type { TemplateGetterOptions } from './types'
 
@@ -46,6 +47,19 @@ export interface LlmsPluginOptions {
    * @default true
    */
   stripHTML?: boolean
+
+  /**
+   * Locale to be processed, `'all'` for all locales
+   *
+   * If not set, the root locale will be used.
+   *
+   * 待处理的语言环境，`'all'` 表示所有语言环境
+   *
+   * 如果未设置，将使用根语言环境。
+   *
+   * @default '/'
+   */
+  locale?: LiteralUnion<'all'>
 
   /**
    * Page filter function

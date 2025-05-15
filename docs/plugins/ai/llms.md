@@ -8,13 +8,33 @@ icon: tabler:file-ai
 
 Add [llms.txt](https://llmstxt.org/) to your site to provide LLM-friendly content.
 
+## Usage
+
+```bash
+npm i -D @vuepress/plugin-llms@next
+```
+
+```ts title=".vuepress/config.ts"
+import { llmsPlugin } from '@vuepress/plugin-llms'
+
+export default {
+  plugins: [
+    llmsPlugin({
+      // options
+    }),
+  ],
+}
+```
+
+## Why llms.txt?
+
 Large language models increasingly rely on website information, but face a critical limitation: context windows are too small to handle most websites in their entirety. Converting complex HTML pages with navigation, ads, and JavaScript into LLM-friendly plain text is both difficult and imprecise.
 
 While websites serve both human readers and LLMs, the latter benefit from more concise, expert-level information gathered in a single, accessible location. This is particularly important for use cases like development environments, where LLMs need quick access to programming documentation and APIs.
 
-Add a `/llms.txt` Markdown file to the website to provide LLM-friendly content. This file includes brief background information, guidelines, and links to detailed markdown files.
+Add a `/llms.txt` Markdown file to the website to provide LLM-friendly content. This file includes brief background information, guidelines, and links to detailed Markdown files.
 
-## Introduction
+### Plugin Features
 
 The plugin retrieves all Markdown files from your document source directory and converts them into LLM-friendly plain text files.
 
@@ -38,7 +58,7 @@ The plugin only generates the `llms.txt` file, along with other LLM-friendly doc
 
 :::
 
-### Generate `llms.txt`
+### `llms.txt`
 
 The `llms.txt` file contains the **title**, **description**, **details (optional)**, and **Table Of Content(TOC)** for the site.
 
@@ -60,29 +80,41 @@ Details (Optional)
 
 - **Site Title**: Values are determined in the following order:
 
-  1. [Options > title](#title)
-  2. VuePress configuration [locales > title](https://v2.vuepress.vuejs.org/reference/config.html#locales)
-  3. VuePress configuration [title](https://v2.vuepress.vuejs.org/reference/config.html#title)
-  4. The first **h1** heading (single `#` heading) in the homepage (`README.md`)
-  5. The `frontmatter.title` in the homepage (`README.md`)
+  1. `llmTemplateGetter.title`
+  1. `heroText` in homepage frontmatter.
+  1. Current locale's [title](https://v2.vuepress.vuejs.org/reference/config.html#locales) in VuePress config file.
+  1. [title](https://v2.vuepress.vuejs.org/reference/config.html#title) in VuePress config file.
+  1. Page title of homepage (locale `README.md`)
 
 - **Site Description**: Values are determined in the following order:
 
-  1. [Options > description](#description)
-  2. VuePress configuration [locales > description](https://v2.vuepress.vuejs.org/reference/config.html#locales)
-  3. VuePress configuration [description](https://v2.vuepress.vuejs.org/reference/config.html#description)
-  4. The `frontmatter.description` in the homepage (`README.md`)
+  1. `llmTemplateGetter.description`
+  1. `tagline` in homepage frontmatter.
+  1. Current locale's [description](https://v2.vuepress.vuejs.org/reference/config.html#locales) in VuePress config file.
+  1. [description](https://v2.vuepress.vuejs.org/reference/config.html#description) in VuePress config file.
+  1. The `frontmatter.description` in the homepage (locale `README.md`)
 
 - **Site Details (Optional)**: Values are determined in the following order:
 
-  1. [Options > details](#details)
+  1. `llmTemplateGetter.details`
   2. The `frontmatter.details` in homepage (`README.md`).
 
 - **Table Of Content(TOC)**: Formatted as `- [title](url): description`, where `description` is taken from `frontmatter.description`. If it does not exist, only `- [title](url)` is displayed.
 
-### Generate `llms-full.txt`
+  By default the plugin only generates first-level TOC, and the default getter function is as follows:
 
-`llms-full.txt` contains **links**, **descriptions**, and **markdown-formatted content** for each page.
+  ```ts
+  import { generateTOCLink } from '@vuepress/plugin-llms'
+
+  const defaultTOCGetter = (pages, state) =>
+    pages.map((page) => generateTOCLink(page, state)).join('\n')
+  ```
+
+  You can customize it to generate a multi-level TOC by setting a customize function with the [`llmsTxtTemplateGetter`](#llmstxttemplategetter) option.
+
+### `llms-full.txt`
+
+`llms-full.txt` contains **links**, **descriptions**, and **Markdown-formatted content** for each page.
 
 Its format is as follows:
 
@@ -92,7 +124,7 @@ url: url
 description: optional description
 ---
 
-page's markdown-formatted content
+page's Markdown-formatted content
 
 ---
 
@@ -101,38 +133,20 @@ url: url
 description: optional description
 ---
 
-page's markdown-formatted content
+page's Markdown-formatted content
 
 …
 ```
 
-The plugin directly merges the content of the markdown files in the document source directory into `llms-full.txt` so that LLM can read and analyze it.
+The plugin directly merges the content of the Markdown files in the document source directory into `llms-full.txt` so that LLM can read and analyze it.
 
-### Generate Markdown Files for Each Page
+### Page Contents
 
 The plugin generates accessible Markdown files for each page in the format `${url}.md`. For example, `/guide/quick-start.html` will produce a corresponding `/guide/quick-start.md` file.
 
-## Usage
-
-```bash
-npm i -D @vuepress/plugin-llms@next
-```
-
-```ts title=".vuepress/config.ts"
-import { llmstxtPlugin } from '@vuepress/plugin-llms'
-
-export default {
-  plugins: [
-    llmstxtPlugin({
-      // options
-    }),
-  ],
-}
-```
-
 ## Options
 
-### generateLLMsTxt
+### llmsTxt
 
 - Types: `boolean`
 
@@ -140,7 +154,7 @@ export default {
 
 - Details: Indicates whether to generate the `llms.txt` file, which contains a list of sections with corresponding links.
 
-### generateLLMsFullTxt
+### llmsFullTxt
 
 - Types: `boolean`
 
@@ -148,7 +162,7 @@ export default {
 
 - Details: Determines whether to generate the `llms-full.txt` which contains all the documentation in one file.
 
-### generateLLMFriendlyDocsForEachPage
+### llmsPageTxt
 
 - Types: `boolean`
 
@@ -164,24 +178,6 @@ export default {
 
 - Details: Whether to strip HTML tags from Markdown files
 
-### workDir
-
-- Types: `string`
-
-- Default: `''` (relative to the vuepress source directory)
-
-- Details:
-
-  The directory from which files will be processed.
-  This is useful for configuring the plugin to generate documentation for LLMs in a specific language.
-
-  ```typescript
-  llmstxtPlugin({
-    // Generate documentation for LLMs from English documentation only
-    workDir: 'en',
-  })
-  ```
-
 ### filter
 
 - Types: `(page: Page) => boolean`
@@ -191,6 +187,8 @@ export default {
 - Details:
 
   Page filter, when returns `true`, the page will be included in `llms.txt`, otherwise it will be excluded.
+
+  Pages which is disabled by `frontmatter.llmstxt` or not generated from Markdown files will be excluded anyway.
 
 ### domain
 
@@ -209,41 +207,21 @@ export default {
   - [title](https://example.com/foo/bar.md) <!-- [!code ++] -->
   ```
 
-### title
+### locale
 
-- Types: `string`
+- Types: `string | 'all'`
 
-- Default: `''`
-
-- Details: The title in `llms.txt`.
-
-### description
-
-- Types: `string`
-
-- Default: `''`
-
-- Details: The description in `llms.txt`.
-
-### details
-
-- Types: `string`
-
-- Default: `''`
-
-- Details: The details in `llms.txt`.
-
-### toc
-
-- Types: `string`
-
-- Default: `''`
+- Default: `'/'`
 
 - Details:
 
-  The TOC in `llms.txt`, when not set, is also customized via [options > customGenerateTOC](#customgeneratetoc); otherwise, it is automatically generated by the plugin internally.
+  The generated locale of the site. If not set, the plugin will use the default locale of the VuePress site. If you set it to `all`, the plugin will generate `llms.txt` for all locales.
 
-### customLLMsTxtTemplate
+  This option is useful when you have multiple locales and want to generate `llms.txt` for a specific locale, which shall have the best documentation quality.
+
+  Also, if you have many self-defined concepts that LLMs cannot understand or translate correctly, you shall consider generating `llms.txt` for each locale to avoid confusion with different representations coming from LLMs' translation and the original documentation.
+
+### llmsTxtTemplate
 
 - Types: `string`
 
@@ -266,67 +244,122 @@ export default {
 
   A custom template for the `llms.txt` file, allowing for a personalized order of elements.
 
-  Available template elements include:
+  By default, `{title}`, `{description}`, `{details}`, and `{toc}` are available.
 
-  - `{title}`: [options > title](#title), or the title extracted from the frontmatter or the first h1 heading in the main document (`index.md`).
-  - `{description}`: [options > description](#description), or the description extracted from the frontmatter section or the main document (`README.md`).
-  - `{details}`: [options > details](#details), or the details extracted from the frontmatter section or the main document (`README.md`).
-  - `{toc}`: [options > toc](#toc), or [options > customGenerateToc](#customgeneratetoc), or the **Table of Contents** automatically generated within the plugin.
-  - [Options > customTemplateVariables](#customtemplatevariables) added custom template variables.
+### llmsTxtTemplateGetter
 
-### customTemplateVariables
+- Types: `TemplateGetterOptions`
 
-- Types: `Record<string, string>`
+  ```ts
+  /**
+   * Represents the link extension options for generated links.
+   */
+  export type LinksExtension = '.html' | '.md'
+
+  /**
+   * Represents a prepared page, including its title and path.
+   */
+  export interface LLMPage extends Page {
+    /**
+     * The content of the Markdown file.
+     *
+     * @example '# Guide\n\nA guide'
+     */
+    markdown: string
+
+    /**
+     * The excerpt of the page.
+     *
+     * @example 'Introduction to the guide'
+     */
+    excerpt: string
+  }
+
+  /**
+   * Options for generating a Table of Contents (TOC).
+   */
+  export interface LLMState {
+    /**
+     * The VuePress app instance.
+     */
+    app: App
+
+    /**
+     * Base URL
+     */
+    base: string
+
+    /**
+     * Optional domain to prefix URLs with.
+     */
+    domain?: string
+
+    /**
+     * The link extension for generated links.
+     */
+    linkExtension?: LinkExtension
+
+    /**
+     * The path of the current locale.
+     */
+    currentLocale: string
+
+    /**
+     * Current site locale data
+     */
+    siteLocale: SiteLocaleData
+
+    /**
+     * Whether to generate llms.txt files for all locales.
+     */
+    allLocales: boolean
+  }
+
+  export type TemplateGetter = (pages: LLMPage[], state: LLMState) => string
+
+  export interface TemplateGetterOptions {
+    /** Any custom variable */
+    [key: string]: TemplateGetter | string | undefined
+  }
+  ```
 
 - Default: `{}`
 
 - Details:
 
-  Custom variables for the [options > customLLMsTxtTemplate](#customllmstxttemplate).
-  With this option you can edit or add variables to the template.
-  You can change the title in `llms.txt` without having to change the template:
+  Custom variables for the [`llmsTxtTemplate`](#llmstxttemplate).
 
-  ```typescript
-  llmstxtPlugin({
-    customTemplateVariables: {
-      title: 'Very custom title',
-    },
-  })
-  ```
+  With this option you can add and override template variables.
 
-  You can also combine this with a custom template:
-
-  ```typescript
-  llmstxtPlugin({
-    customLLMsTxtTemplate: '# {title}\n\n{foo}',
-    customTemplateVariables: {
-      foo: 'Very custom title',
-    },
-  })
-  ```
-
-### customGenerateTOC
-
-- Types: `(pages: PreparedPage[], options: GenerateTOCOptions) => string`
-
-- Default: `undefined`
-
-- Details:
-
-  Custom generates a Table of Contents (TOC) for the provided prepared pages.
-
-  By default, the plugin only generates a first-level TOC. You can customize it to generate a multi-level TOC using `customGenerateTOC`.
-
-  You can refer to the [customGenerateTOC](https://github.com/vuepress/ecosystem/blob/main/docs/.vuepress/configs/llmstxtTOC.ts) of this documentation site to write a custom function for generating the table of contents.
-
-  The plugin provides the `generateTOCLink(page: PreparedPage, options: GenerateTOCOptions)` function for generating TOC entry links.
+  For example, setting a customized title for `llms.txt`:
 
   ```ts
-  import { generateTOCLink, llmstxtPlugin } from '@vuepress/plugin-llms'
+  llmsPlugin({
+    llmsTxtTemplateGetter: {
+      title: 'My title',
+    },
+  })
+  ```
 
-  llmstxtPlugin({
-    customGenerateTOC: (pages, options) => {
-      return pages.map((page) => generateTOCLink(page, options)).join('')
+  Or adding a custom variable `foo` to the template:
+
+  ```ts
+  llmsPlugin({
+    llmsTxtTemplate: '# {title}\n\n{foo}',
+    llmsTxtTemplateGetter: {
+      foo: 'My foo',
+    },
+  })
+  ```
+
+  You can also add getter functions to the template:
+
+  ```ts
+  llmsPlugin({
+    llmsTxtTemplate: '# {title}\n\n## Pages\n\n{titles}',
+    llmsTxtTemplateGetter: {
+      titles: (pages, state) =>
+        pages.map((page) => `- ${page.title}`).join('\n'),
     },
   })
   ```
@@ -338,9 +371,6 @@ The following `frontmatter` will be used in the plugin.
 ### title {#frontmatter-title}
 
 - Types: `string`
-
-- Default: `''`
-
 - Details:
 
   On the homepage (`README.md`), it serves as an alternative title for `llms.txt`.
@@ -350,24 +380,36 @@ The following `frontmatter` will be used in the plugin.
 ### description {#frontmatter-description}
 
 - Types: `string`
-
-- Default: `''`
-
 - Details:
 
   On the homepage (`README.md`), as an alternative description for `llms.txt`.
 
-  On other pages, as the page description. It is recommended to add concise and clear descriptions to the page, providing key information for the LLM to read the page.
+  On other pages, as the page description.
+
+  It is recommended to add concise and clear descriptions to the page, providing key information for LLMs to understand it.
+
+### heroText {#frontmatter-herotext}
+
+- Types: `string`
+
+- Details:
+
+  Being read from homepage (locale `README.md`) only, as title of `llms.txt`.
+
+### tagline {#frontmatter-tagline}
+
+- Types: `string`
+
+- Details:
+
+  Being read from homepage (locale `README.md`) only, as description of `llms.txt`.
 
 ### details {#frontmatter-details}
 
 - Types: `string`
-
-- Default: `''`
-
 - Details:
 
-  Only on the homepage (`README.md`), as an alternative for the details of `llms.txt`.
+  Being read from homepage (locale `README.md`) only, as details of `llms.txt`.
 
 ### llmstxt
 

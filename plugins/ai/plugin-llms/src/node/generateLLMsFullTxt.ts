@@ -1,10 +1,10 @@
 import matter from 'gray-matter'
 import { millify } from 'millify'
 import { approximateTokenSize } from 'tokenx'
-import type { App, PageFrontmatter } from 'vuepress'
-import { colors, fs } from 'vuepress/utils'
-import type { LlmsPluginOptions } from './options.js'
-import type { LLMPage, LinksExtension } from './types.js'
+import type { PageFrontmatter } from 'vuepress'
+import { removeLeadingSlash } from 'vuepress/shared'
+import { colors, fs, path } from 'vuepress/utils'
+import type { LLMPage, LLMState } from './types.js'
 import {
   expandTemplate,
   extractTitle,
@@ -13,33 +13,25 @@ import {
   logger,
 } from './utils/index.js'
 
-interface GenerateLLMsFullTxtOptions {
-  app: App
-
-  /** The base domain for the generated links. */
-  domain?: LlmsPluginOptions['domain']
-
-  /** The link extension for generated links. */
-  linkExtension?: LinksExtension
-}
+const PAGE_SEPARATOR = '\n---\n\n'
 
 /**
  * Generate `llms-full.txt`
  */
 export const generateLLMsFullTxt = async (
   llmPages: LLMPage[],
-  { app, domain, linkExtension }: GenerateLLMsFullTxtOptions,
+  state: LLMState,
 ): Promise<void> => {
-  logger.load('Generating llms-full.txt')
+  const { app, allLocales, currentLocale } = state
+  const llmsFullTxtRelativePath = allLocales
+    ? path.join(removeLeadingSlash(currentLocale), 'llms-full.txt')
+    : 'llms-full.txt'
+
+  logger.load(`Generating ${llmsFullTxtRelativePath}`)
 
   const pageContents = llmPages.map((page) => {
     const metadata: PageFrontmatter = {
-      url: generateLink(
-        page.htmlFilePathRelative,
-        app.options.base,
-        domain,
-        linkExtension ?? '.md',
-      ),
+      url: generateLink(page.htmlFilePathRelative, state),
     }
 
     if (page.frontmatter.description && !page.frontmatter.autoDesc) {
@@ -54,15 +46,19 @@ export const generateLLMsFullTxt = async (
     return matter.stringify(content, metadata)
   })
 
-  const llmsFullTxt = pageContents.join('\n---\n\n')
+  const llmsFullTxt = pageContents.join(PAGE_SEPARATOR)
 
-  await fs.writeFile(app.dir.dest('llms-full.txt'), llmsFullTxt, 'utf-8')
+  await fs.writeFile(
+    app.dir.dest(llmsFullTxtRelativePath),
+    llmsFullTxt,
+    'utf-8',
+  )
 
   logger.succeed(
     expandTemplate(
       'Generated {file} (~{tokens} tokens, {size}) with {pageCount} documentation links',
       {
-        file: colors.cyan('llms-full.txt'),
+        file: colors.cyan(llmsFullTxtRelativePath),
         tokens: colors.bold(millify(approximateTokenSize(llmsFullTxt))),
         size: colors.bold(getSizeOf(llmsFullTxt)),
         pageCount: colors.bold(llmPages.length),

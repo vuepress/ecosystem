@@ -51,6 +51,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@types/byte-size": "^8.1.2"
+    "@types/byte-size": "^8.1.2",
+    "unified": "^11.0.5"
   }
 }

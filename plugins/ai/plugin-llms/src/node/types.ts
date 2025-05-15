@@ -2,20 +2,11 @@ import type { App, Page } from 'vuepress/core'
 import type { SiteLocaleData } from 'vuepress/shared'
 
 /**
- * A literal type that supports custom further strings but preserves autocompletion in IDEs.
- *
- * @see {@link https://github.com/microsoft/TypeScript/issues/29729#issuecomment-471566609 | copied from issue}
- */
-export type LiteralUnion<Union extends Base, Base = string> =
-  | Union
-  | (Base & { IGNORE_ME?: never })
-
-/**
  * Represents the link extension options for generated links.
  *
  * 表示生成链接的链接扩展选项
  */
-export type LinksExtension = LiteralUnion<'.html' | '.md'>
+export type LinkExtension = '.html' | '.md'
 
 /**
  * Represents a prepared page, including its title and path.
@@ -43,7 +34,7 @@ export interface LLMPage extends Page {
 }
 
 /**
- * Options for generating a Table of Contents (TOC).
+ * LLM state
  */
 export interface LLMState {
   /**
@@ -54,33 +45,46 @@ export interface LLMState {
   app: App
 
   /**
-   * Optional domain to prefix URLs with.
-   */
-  domain?: string
-
-  /**
-   * Optional base URL to prefix URLs with.
+   * Base URL
+   *
+   * 基本 URL
    */
   base: string
 
   /**
-   * The link extension for generated links.
+   * Optional domain to prefix URLs with.
+   *
+   * 可选的域名，用于在 URL 前缀
    */
-  linkExtension?: LinksExtension
+  domain?: string
 
   /**
-   * Current locale being processed.
+   * The link extension for generated links.
    *
-   * 当前正在处理的语言环境
+   * 生成链接的链接扩展
+   */
+  linkExtension?: LinkExtension
+
+  /**
+   * The path of the current locale.
+   *
+   * 当前语言环境的路径
    */
   currentLocale: string
 
   /**
-   * Current locale being processed.
+   * Current site locale data
    *
-   * 当前正在处理的语言环境
+   * 当前站点语言环境数据
    */
   siteLocale: SiteLocaleData
+
+  /**
+   * Whether to generate llms.txt files for all locales.
+   *
+   * 是否为所有语言环境生成 llms.txt 文件
+   */
+  allLocales: boolean
 }
 
 export type TemplateGetter = (pages: LLMPage[], state: LLMState) => string
