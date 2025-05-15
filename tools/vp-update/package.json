@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "commander": "^13.1.0",
-    "semver": "^7.7.1"
+    "semver": "^7.7.2"
   },
   "devDependencies": {
     "@types/semver": "7.7.0"
