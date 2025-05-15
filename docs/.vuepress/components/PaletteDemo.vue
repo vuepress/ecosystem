@@ -30,7 +30,7 @@ const locale = useLocale({
   <div class="demo">
     <div class="border-display border">border</div>
     <div class="border-display border-hard">border hard</div>
-    <div class="border-display gutter">gutter</div>
+    <div class="border-display divider">divider</div>
   </div>
   <div class="header">{{ locale.accent }}</div>
   <div class="demo">
@@ -147,8 +147,8 @@ const locale = useLocale({
   border-color: var(--vp-c-border-hard);
 }
 
-.gutter {
-  border-color: var(--vp-c-gutter);
+.divider {
+  border-color: var(--vp-c-divider);
 }
 
 .shadow {

@@ -33,7 +33,7 @@
     &.has-children {
       margin-top: calc(1rem - var(--catalog-header-offset));
       padding-top: var(--catalog-header-offset);
-      border-bottom: 1px solid var(--catalog-c-gutter);
+      border-bottom: 1px solid var(--catalog-c-divider);
 
       font-weight: 500;
       font-size: 1.3rem;
