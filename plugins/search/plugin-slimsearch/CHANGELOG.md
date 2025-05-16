@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.105](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.104...v2.0.0-rc.105) (2025-05-16)
+
+**Note:** Version bump only for package @vuepress/plugin-slimsearch
+
 # [2.0.0-rc.104](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.103...v2.0.0-rc.104) (2025-05-13)
 
 **Note:** Version bump only for package @vuepress/plugin-slimsearch

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-docsearch",
-  "version": "2.0.0-rc.104",
+  "version": "2.0.0-rc.105",
   "description": "VuePress plugin - docsearch",
   "keywords": [
     "vuepress-plugin",

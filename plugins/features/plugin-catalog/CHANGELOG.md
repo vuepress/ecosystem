@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.105](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.104...v2.0.0-rc.105) (2025-05-16)
+
+### Features
+
+- improve style ([#469](https://github.com/vuepress/ecosystem/issues/469)) ([f89110e](https://github.com/vuepress/ecosystem/commit/f89110e9f363eb9d05e64b0524a9acd6e3bdf7ad))
+
 # [2.0.0-rc.104](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.103...v2.0.0-rc.104) (2025-05-13)
 
 **Note:** Version bump only for package @vuepress/plugin-catalog
