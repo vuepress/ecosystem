@@ -48,6 +48,8 @@
     "lazyload",
     "lightmode",
     "linkify",
+    "llms",
+    "llmstxt",
     "mathjax",
     "mdast",
     "mdit",
