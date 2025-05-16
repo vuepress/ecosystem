@@ -101,8 +101,6 @@ Details 详情 （可选）
 
 - **目录（TOC）**：格式为 `- [title](url): description`，其中 `description` 从 `frontmatter.description` 中取值，如果不存在则仅显示 `- [title](url)`。
 
-  By default the plugin only generates first-level TOC, and the default getter function is as follows:
-
   默认情况下，插件仅生成一级目录，默认的获取函数如下：
 
   ```ts
