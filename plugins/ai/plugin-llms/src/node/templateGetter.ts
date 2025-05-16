@@ -28,7 +28,7 @@ export const defaultDescriptionGetter: TemplateGetter = (
     (homePage?.frontmatter.tagline as string | undefined) ||
     // site locale description
     siteLocale.description ||
-    (homePage?.frontmatter.autoDesc ? '' : homePage?.frontmatter.description)
+    (homePage?.data.autoDesc ? '' : homePage?.frontmatter.description)
 
   return description ? `> ${description}` : ''
 }

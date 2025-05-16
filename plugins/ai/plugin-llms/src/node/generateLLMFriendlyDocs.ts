@@ -21,7 +21,7 @@ export const generateLLMFriendlyDocs = async (
       }),
     }
 
-    if (page.frontmatter.description && !page.frontmatter.autoDesc) {
+    if (page.frontmatter.description && !page.data.autoDesc) {
       metadata.description = page.frontmatter.description
     }
 

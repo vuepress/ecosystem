@@ -9,7 +9,8 @@ import { generateLink } from './generateLink.js'
  * @returns The formatted TOC entry as a Markdown list item.
  */
 export const generateTOCLink = (page: LLMPage, state: LLMState): string => {
-  const { description, autoDesc } = page.frontmatter
+  const { description } = page.frontmatter
+  const { autoDesc } = page.data
   const path = generateLink(page.htmlFilePathRelative, state)
 
   return `- [${page.title}](${path})${description && !autoDesc ? `: ${description.trim()}` : ''}\n`

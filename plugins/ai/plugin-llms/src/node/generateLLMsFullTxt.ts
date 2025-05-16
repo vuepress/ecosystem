@@ -34,7 +34,7 @@ export const generateLLMsFullTxt = async (
       url: generateLink(page.htmlFilePathRelative, state),
     }
 
-    if (page.frontmatter.description && !page.frontmatter.autoDesc) {
+    if (page.frontmatter.description && !page.data.autoDesc) {
       metadata.description = page.frontmatter.description
     }
 
