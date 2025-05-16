@@ -18,11 +18,7 @@ export const preWrapperPlugin = (
   const rawFence = md.renderer.rules.fence!
 
   md.renderer.rules.fence = (...args) => {
-    const result = rawFence(...args)
-
-    if (!preWrapper || !result.startsWith('<pre')) {
-      return result
-    }
+    let result = rawFence(...args)
 
     const [tokens, idx, { langPrefix }] = args
     const token = tokens[idx]
@@ -32,6 +28,11 @@ export const preWrapperPlugin = (
     // resolve language from token info
     const language = resolveLanguage(info)
     const languageClass = `${langPrefix}${language.name}`
+
+    result = result.replace(/<code[^]*?>/, `<code class="${languageClass}">`)
+    if (!preWrapper || !result.startsWith('<pre')) {
+      return result
+    }
 
     /**
      * Add information to dataset for current code block.
