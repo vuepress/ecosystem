@@ -1,7 +1,7 @@
 import {
-  checkIsIOS,
-  checkIsMacOS,
-  checkIsiPad,
+  isIOS,
+  isMacOS,
+  isiPad,
   useKeys,
   useLocale,
 } from '@vuepress/helper/client'
@@ -22,7 +22,7 @@ export default defineComponent({
   setup() {
     const locale = useLocale(locales)
     const [isActive, toggleActive] = useActiveState()
-    const isMacOS = ref(false)
+    const macOS = ref(false)
 
     useKeys(options.hotKeys, () => {
       if (!isActive.value) toggleActive()
@@ -32,7 +32,7 @@ export default defineComponent({
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       primaryHotKey
         ? [
-            ...(isMacOS.value
+            ...(macOS.value
               ? ['⌃', '⇧', '⌥', '⌘']
               : ['Ctrl', 'Shift', 'Alt', 'Win']
             ).filter(
@@ -49,10 +49,7 @@ export default defineComponent({
     onMounted(() => {
       const { userAgent } = navigator
 
-      isMacOS.value =
-        checkIsMacOS(userAgent) ||
-        checkIsIOS(userAgent) ||
-        checkIsiPad(userAgent)
+      macOS.value = isMacOS(userAgent) || isIOS(userAgent) || isiPad(userAgent)
     })
 
     return (): (VNode | null)[] => [

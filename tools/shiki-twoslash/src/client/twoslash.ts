@@ -1,10 +1,10 @@
-import { checkIsMobile } from '@vuepress/helper/client'
+import { isMobile } from '@vuepress/helper/client'
 // eslint-disable-next-line import/no-rename-default
 import FloatingVue, { recomputeAllPoppers } from 'floating-vue'
 import type { App } from 'vue'
 import 'floating-vue/dist/style.css'
 
-const isMobile = checkIsMobile(
+const mobile = isMobile(
   typeof navigator !== 'undefined' ? navigator.userAgent : '',
 )
 
@@ -31,8 +31,8 @@ export const enhanceTwoslash = (app: App): void => {
     themes: {
       'twoslash': {
         $extend: 'dropdown',
-        triggers: isMobile ? ['touch'] : ['hover', 'touch'],
-        popperTriggers: isMobile ? ['touch'] : ['hover', 'touch'],
+        triggers: mobile ? ['touch'] : ['hover', 'touch'],
+        popperTriggers: mobile ? ['touch'] : ['hover', 'touch'],
         placement: 'bottom-start',
         overflowPadding: 10,
         delay: 0,
