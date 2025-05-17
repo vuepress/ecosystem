@@ -19,7 +19,13 @@ const isVNodeChildrenEmpty = (children: VNode[]): boolean =>
     return false
   })
 
-export const isSlotResultEmpty = (
+/**
+ * Check whether a slot is currently empty.
+ *
+ * @param normalizedSlotContent The normalized slot content, which should be the results of the slot function.
+ * @returns true if the slot content is empty, false otherwise.
+ */
+export const isSlotContentEmpty = (
   normalizedSlotContent: SlotContent,
 ): boolean => {
   if (normalizedSlotContent == null) return true
