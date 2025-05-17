@@ -22,7 +22,7 @@ export default defineComponent({
   setup() {
     const locale = useLocale(locales)
     const [isActive, toggleActive] = useActiveState()
-    const macOS = ref(false)
+    const isMacOSDevice = ref(false)
 
     useKeys(options.hotKeys, () => {
       if (!isActive.value) toggleActive()
@@ -32,7 +32,7 @@ export default defineComponent({
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       primaryHotKey
         ? [
-            ...(macOS.value
+            ...(isMacOSDevice.value
               ? ['⌃', '⇧', '⌥', '⌘']
               : ['Ctrl', 'Shift', 'Alt', 'Win']
             ).filter(
@@ -49,7 +49,8 @@ export default defineComponent({
     onMounted(() => {
       const { userAgent } = navigator
 
-      macOS.value = isMacOS(userAgent) || isIOS(userAgent) || isiPad(userAgent)
+      isMacOSDevice.value =
+        isMacOS(userAgent) || isIOS(userAgent) || isiPad(userAgent)
     })
 
     return (): (VNode | null)[] => [

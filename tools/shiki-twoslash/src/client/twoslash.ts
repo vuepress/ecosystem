@@ -4,11 +4,10 @@ import FloatingVue, { recomputeAllPoppers } from 'floating-vue'
 import type { App } from 'vue'
 import 'floating-vue/dist/style.css'
 
-const mobile = isMobile(
-  typeof navigator !== 'undefined' ? navigator.userAgent : '',
-)
-
 export const enhanceTwoslash = (app: App): void => {
+  const isMobileDevice =
+    typeof navigator !== 'undefined' ? isMobile(navigator.userAgent) : false
+
   if (typeof window !== 'undefined') {
     // Recompute poppers when clicking on a tab
     window.addEventListener(
@@ -31,8 +30,8 @@ export const enhanceTwoslash = (app: App): void => {
     themes: {
       'twoslash': {
         $extend: 'dropdown',
-        triggers: mobile ? ['touch'] : ['hover', 'touch'],
-        popperTriggers: mobile ? ['touch'] : ['hover', 'touch'],
+        triggers: isMobileDevice ? ['touch'] : ['hover', 'touch'],
+        popperTriggers: isMobileDevice ? ['touch'] : ['hover', 'touch'],
         placement: 'bottom-start',
         overflowPadding: 10,
         delay: 0,
