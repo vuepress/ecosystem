@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import VPNavbarItems from '@theme/VPNavbarItems.vue'
 import VPSidebarItems from '@theme/VPSidebarItems.vue'
-import type { VNode } from 'vue'
+import type { Slot } from '@vuepress/helper/client'
 
 defineSlots<{
-  top?: (props: Record<never, never>) => VNode | VNode[] | null
-  bottom?: (props: Record<never, never>) => VNode | VNode[] | null
+  top?: Slot
+  bottom?: Slot
 }>()
 </script>
 
@@ -46,7 +46,7 @@ defineSlots<{
     background-color var(--vp-t-color),
     border-color var(--vp-t-color);
 
-  scrollbar-color: var(--vp-c-accent-bg) var(--vp-c-gutter);
+  scrollbar-color: var(--vp-c-accent-bg) var(--vp-c-divider);
   scrollbar-width: thin;
 
   // narrow desktop / iPad
@@ -73,7 +73,7 @@ defineSlots<{
   }
 
   &::-webkit-scrollbar-track {
-    background-color: var(--vp-c-gutter);
+    background-color: var(--vp-c-divider);
   }
 
   &::-webkit-scrollbar-thumb {
@@ -84,7 +84,7 @@ defineSlots<{
   .vp-navbar-items {
     display: none;
     padding: 0.5rem 0 0.75rem;
-    border-bottom: 1px solid var(--vp-c-gutter);
+    border-bottom: 1px solid var(--vp-c-divider);
     transition: border-color var(--vp-t-color);
 
     @media (max-width: $MQMobile) {

@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import VPPageMeta from '@theme/VPPageMeta.vue'
 import VPPageNav from '@theme/VPPageNav.vue'
-import type { VNode } from 'vue'
+import type { Slot } from '@vuepress/helper/client'
 import { Content } from 'vuepress/client'
 
 defineSlots<{
-  'top'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'bottom'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'content-top'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'content-bottom'?: (props: Record<never, never>) => VNode | VNode[] | null
+  'top'?: Slot
+  'bottom'?: Slot
+  'content-top'?: Slot
+  'content-bottom'?: Slot
 }>()
 </script>
 
@@ -19,7 +19,7 @@ defineSlots<{
     <div vp-content>
       <slot name="content-top" />
 
-      <Content />
+      <Content id="content" />
 
       <slot name="content-bottom" />
     </div>

@@ -1,6 +1,6 @@
 {
   "name": "vp-update",
-  "version": "2.0.0-rc.98",
+  "version": "2.0.0-rc.105",
   "description": "Update helper for VuePress2",
   "keywords": [
     "vuepress",
@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "commander": "^13.1.0",
-    "semver": "^7.7.1"
+    "semver": "^7.7.2"
   },
   "devDependencies": {
     "@types/semver": "7.7.0"

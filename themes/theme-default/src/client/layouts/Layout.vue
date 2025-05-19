@@ -7,24 +7,22 @@ import VPSidebar from '@theme/VPSidebar.vue'
 import { useData } from '@theme/useData'
 import { useScrollPromise } from '@theme/useScrollPromise'
 import { useSidebarItems } from '@theme/useSidebarItems'
-import type { VNode } from 'vue'
+import type { Slot } from '@vuepress/helper/client'
 import { computed, ref } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
 
 defineSlots<{
-  'navbar'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'navbar-before'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'navbar-after'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'sidebar'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'sidebar-top'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'sidebar-bottom'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'page'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'page-top'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'page-bottom'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'page-content-top'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'page-content-bottom'?: (
-    props: Record<never, never>,
-  ) => VNode | VNode[] | null
+  'navbar'?: Slot
+  'navbar-before'?: Slot
+  'navbar-after'?: Slot
+  'sidebar'?: Slot
+  'sidebar-top'?: Slot
+  'sidebar-bottom'?: Slot
+  'page'?: Slot
+  'page-top'?: Slot
+  'page-bottom'?: Slot
+  'page-content-top'?: Slot
+  'page-content-bottom'?: Slot
 }>()
 
 const { frontmatter, page, themeLocale } = useData()

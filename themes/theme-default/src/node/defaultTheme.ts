@@ -70,7 +70,7 @@ export const defaultTheme = ({
           .readdirSync(path.resolve(__dirname, '../client/composables'))
           .filter((file) => file.endsWith('.js'))
           .map((file) => [
-            `@theme/${file.substring(0, file.length - 3)}`,
+            `@theme/${file.slice(0, -3)}`,
             path.resolve(__dirname, '../client/composables', file),
           ]),
       ),
@@ -80,7 +80,7 @@ export const defaultTheme = ({
           .readdirSync(path.resolve(__dirname, '../client/utils'))
           .filter((file) => file.endsWith('.js'))
           .map((file) => [
-            `@theme/${file.substring(0, file.length - 3)}`,
+            `@theme/${file.slice(0, -3)}`,
             path.resolve(__dirname, '../client/utils', file),
           ]),
       ),

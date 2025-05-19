@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-pwa",
-  "version": "2.0.0-rc.99",
+  "version": "2.0.0-rc.105",
   "description": "VuePress plugin - progressive web application",
   "keywords": [
     "vuepress-plugin",
@@ -50,7 +50,7 @@
     "workbox-build": "^7.3.0"
   },
   "devDependencies": {
-    "rollup": "^4.40.1"
+    "rollup": "^4.40.2"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

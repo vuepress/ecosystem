@@ -16,7 +16,6 @@ import {
   createMarkdownFilePathGetter,
   createShikiHighlighter,
   getHighLightFunction,
-  highlightLinesPlugin,
   preWrapperPlugin,
 } from '../src/node/markdown/index.js'
 import type { ShikiPluginOptions } from '../src/node/options.js'
@@ -26,7 +25,7 @@ const { highlighter, loadLang } = await createShikiHighlighter({} as App)
 const createMarkdown = ({
   preWrapper = true,
   lineNumbers = true,
-  collapsedLines = false,
+  collapsedLines = 'disable',
   codeBlockTitle = true,
   ...options
 }: ShikiPluginOptions = {}): MarkdownIt => {
@@ -42,7 +41,6 @@ const createMarkdown = ({
     markdownFilePathGetter,
   )
 
-  md.use(highlightLinesPlugin)
   md.use<MarkdownItPreWrapperOptions>(preWrapperPlugin, { preWrapper })
   if (preWrapper) {
     md.use<MarkdownItLineNumbersOptions>(lineNumbersPlugin, {
@@ -372,6 +370,7 @@ function foo () {
   const foo = 'foo'  \n  return 'foo'
 }
 `
+
     it('should work whitespace with default options', () => {
       const md = createMarkdown()
       expect(md.render(source)).toMatchSnapshot()

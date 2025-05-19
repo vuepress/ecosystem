@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/helper",
-  "version": "2.0.0-rc.99",
+  "version": "2.0.0-rc.105",
   "description": "VuePress helper",
   "keywords": [
     "vuepress",
@@ -56,7 +56,7 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@vue/shared": "^3.5.13",
+    "@vue/shared": "^3.5.14",
     "@vueuse/core": "catalog:",
     "cheerio": "1.0.0",
     "fflate": "^0.8.2",
@@ -68,7 +68,7 @@
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
     "domhandler": "5.0.3",
-    "vite": "~6.3.4"
+    "vite": "~6.3.5"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

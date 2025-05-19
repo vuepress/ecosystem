@@ -2,24 +2,20 @@
 import VPAutoLink from '@theme/VPAutoLink.vue'
 import { FadeInExpandTransition } from '@vuepress/helper/client'
 import { useToggle } from '@vueuse/core'
-import { computed, toRefs } from 'vue'
+import { computed } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
 import type { AutoLinkOptions, NavGroup } from '../../shared/index.js'
 
 import '@vuepress/helper/transition/fade-in-height-expand.css'
 
-const props = defineProps<{
+const { config } = defineProps<{
   /** dropdown config */
   config: NavGroup<AutoLinkOptions | NavGroup<AutoLinkOptions>>
 }>()
 
-const { config } = toRefs(props)
-
 const [open, toggleOpen] = useToggle()
 
-const dropdownAriaLabel = computed(
-  () => config.value.ariaLabel || config.value.text,
-)
+const dropdownAriaLabel = computed(() => config.ariaLabel || config.text)
 
 const isLastItemOfArray = (arrayItem: unknown, array: unknown[]): boolean =>
   array[array.length - 1] === arrayItem
@@ -175,7 +171,7 @@ onContentUpdated(() => {
     max-height: calc(100vh - 2.7rem);
     margin: 0;
     padding: 0.6rem 0;
-    border: 1px solid var(--vp-c-gutter);
+    border: 1px solid var(--vp-c-divider);
     border-radius: 0.5rem;
 
     background-color: var(--vp-c-bg-elv);
@@ -249,7 +245,6 @@ onContentUpdated(() => {
     border-bottom: none;
 
     font-weight: 400;
-    line-height: 1.7rem;
 
     &:hover {
       color: var(--vp-c-accent);
@@ -274,7 +269,11 @@ onContentUpdated(() => {
     }
   }
 
-  .vp-navbar-dropdown-wrapper.mobile & > a {
+  .vp-navbar-items & .auto-link {
+    line-height: 1.7rem;
+  }
+
+  .vp-navbar-dropdown-wrapper.mobile & > .auto-link {
     line-height: 2rem;
   }
 }
@@ -282,7 +281,7 @@ onContentUpdated(() => {
 .vp-navbar-dropdown-subtitle {
   margin: 0.45rem 0 0;
   padding: 1rem 0 0.45rem;
-  border-top: 1px solid var(--vp-c-gutter);
+  border-top: 1px solid var(--vp-c-divider);
   font-size: 0.9rem;
 
   .vp-navbar-dropdown-wrapper.mobile & {
