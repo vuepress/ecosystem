@@ -68,7 +68,10 @@ program
 
       // resolve the final app config to use
       const appConfig = resolveAppConfig({
-        defaultAppConfig: {},
+        defaultAppConfig: {
+          cache: commandOptions.cache,
+          temp: commandOptions.temp,
+        },
         cliAppConfig,
         userConfig,
       })

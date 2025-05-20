@@ -37,8 +37,12 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
+  "bin": {
+    "vp-meilisearch-crawler": "./lib/cli/index.js"
+  },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
+    "commander": "^13.1.0",
     "meilisearch": "0.50.0",
     "meilisearch-docsearch": "^0.8.0",
     "vue": "catalog:"
