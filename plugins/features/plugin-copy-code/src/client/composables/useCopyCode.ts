@@ -82,20 +82,19 @@ export const useCopyCode = ({
     codeBlockElement.setAttribute('copy-code', '')
   }
 
-  const appendCopyButton = async (): Promise<void> => {
-    await nextTick()
+  const appendCopyButton = (): void => {
     document.body.classList.toggle('no-copy-code', !enabled.value)
     if (!enabled.value) return
 
     document.querySelectorAll<HTMLElement>(selector).forEach(insertCopyButton)
   }
 
-  watchImmediate(enabled, appendCopyButton, {
+  watchImmediate(enabled, () => nextTick(appendCopyButton), {
     flush: 'post',
   })
 
-  onContentUpdated(async (reason) => {
-    if (reason !== 'beforeUnmount') await appendCopyButton()
+  onContentUpdated((reason) => {
+    if (reason !== 'beforeUnmount') appendCopyButton()
   })
 
   const { copy } = useClipboard({ legacy: true })
