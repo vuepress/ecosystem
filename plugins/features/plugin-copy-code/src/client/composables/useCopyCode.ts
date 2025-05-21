@@ -5,7 +5,7 @@ import {
   useMediaQuery,
   watchImmediate,
 } from '@vueuse/core'
-import { computed } from 'vue'
+import { computed, nextTick } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
 import type { CopyCodePluginLocaleConfig } from '../types.js'
 
@@ -82,7 +82,8 @@ export const useCopyCode = ({
     codeBlockElement.setAttribute('copy-code', '')
   }
 
-  const appendCopyButton = (): void => {
+  const appendCopyButton = async (): Promise<void> => {
+    await nextTick()
     document.body.classList.toggle('no-copy-code', !enabled.value)
     if (!enabled.value) return
 
@@ -93,8 +94,8 @@ export const useCopyCode = ({
     flush: 'post',
   })
 
-  onContentUpdated((reason) => {
-    if (reason !== 'beforeUnmount') appendCopyButton()
+  onContentUpdated(async (reason) => {
+    if (reason !== 'beforeUnmount') await appendCopyButton()
   })
 
   const { copy } = useClipboard({ legacy: true })
