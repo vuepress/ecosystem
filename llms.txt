@@ -1,0 +1,155 @@
+# VuePress Ecosystem
+
+> VuePress official themes and pluginsThis file contains links to all documentation sections.
+
+## Table of Contents
+
+### Themes
+
+- [Theme Guidelines](/ecosystem/themes/guidelines.md)
+- [Config](/ecosystem/themes/default/config.md)
+- [Plugins Config](/ecosystem/themes/default/plugin.md)
+- [Locale Config](/ecosystem/themes/default/locale.md)
+- [Frontmatter](/ecosystem/themes/default/frontmatter.md)
+- [Built-in Components](/ecosystem/themes/default/components.md)
+- [Markdown](/ecosystem/themes/default/markdown.md)
+- [Styles](/ecosystem/themes/default/styles.md)
+- [Extending](/ecosystem/themes/default/extending.md)
+- [Hope Theme](https://theme-hope.vuejs.press)
+- [Plume Theme](https://theme-plume.vuejs.press)
+- [Reco Theme](https://theme-reco.vuejs.press/en)
+
+### Common Features Plugins
+
+- [back-to-top](/ecosystem/plugins/features/back-to-top.md)
+- [catalog](/ecosystem/plugins/features/catalog.md)
+- [copy-code](/ecosystem/plugins/features/copy-code.md)
+- [copyright](/ecosystem/plugins/features/copyright.md)
+- [icon](/ecosystem/plugins/features/icon.md)
+- [medium-zoom](/ecosystem/plugins/features/medium-zoom.md)
+- [notice](/ecosystem/plugins/features/notice.md)
+- [nprogress](/ecosystem/plugins/features/nprogress.md)
+- [photo-swipe](/ecosystem/plugins/features/photo-swipe.md)
+- [watermark](/ecosystem/plugins/features/watermark.md)
+
+### Markdown Plugins
+
+- [append-date](/ecosystem/plugins/markdown/append-date.md)
+- [markdown-container](/ecosystem/plugins/markdown/markdown-container.md)
+- [markdown-ext](/ecosystem/plugins/markdown/markdown-ext.md)
+- [markdown-image](/ecosystem/plugins/markdown/markdown-image.md)
+- [markdown-include](/ecosystem/plugins/markdown/markdown-include.md)
+- [markdown-hint](/ecosystem/plugins/markdown/markdown-hint.md)
+- [markdown-math](/ecosystem/plugins/markdown/markdown-math.md)
+- [markdown-stylize](/ecosystem/plugins/markdown/markdown-stylize.md)
+- [markdown-tab](/ecosystem/plugins/markdown/markdown-tab.md)
+- [links-check](/ecosystem/plugins/markdown/links-check.md)
+- [prismjs](/ecosystem/plugins/markdown/prismjs.md)
+- [Slide Demo](/ecosystem/plugins/markdown/revealjs/demo.md)
+- [Reveal.js Themes](/ecosystem/plugins/markdown/revealjs/themes.md)
+- [shiki](/ecosystem/plugins/markdown/shiki.md)
+
+### Content Search Plugins
+
+- [Search Plugin Guidelines](/ecosystem/plugins/search/guidelines.md)
+- [docsearch](/ecosystem/plugins/search/docsearch.md)
+- [meilisearch](/ecosystem/plugins/search/meilisearch.md)
+- [search](/ecosystem/plugins/search/search.md)
+- [slimsearch](/ecosystem/plugins/search/slimsearch.md)
+
+### Blogging Plugins
+
+- [Guide](/ecosystem/plugins/blog/blog/guide.md)
+- [Config](/ecosystem/plugins/blog/blog/config.md)
+- [Guide](/ecosystem/plugins/blog/comment/guide.md)
+- [Guide](/ecosystem/plugins/blog/feed/guide.md)
+- [Plugin Config](/ecosystem/plugins/blog/feed/config.md)
+- [Frontmatter Config](/ecosystem/plugins/blog/feed/frontmatter.md)
+- [Channel Config](/ecosystem/plugins/blog/feed/channel.md)
+- [Feed Getter](/ecosystem/plugins/blog/feed/getter.md)
+
+### Analytics Plugins
+
+- [baidu-analytics](/ecosystem/plugins/analytics/baidu-analytics.md)
+- [google-analytics](/ecosystem/plugins/analytics/google-analytics.md)
+- [umami-analytics](/ecosystem/plugins/analytics/umami-analytics.md)
+
+### SEO Plugins
+
+- [Guide](/ecosystem/plugins/seo/seo/guide.md)
+- [Config](/ecosystem/plugins/seo/seo/config.md)
+- [Guide](/ecosystem/plugins/seo/sitemap/guide.md)
+- [Config](/ecosystem/plugins/seo/sitemap/config.md)
+- [Frontmatter](/ecosystem/plugins/seo/sitemap/frontmatter.md)
+
+### PWA Plugins
+
+- [Guide](/ecosystem/plugins/pwa/pwa/guide.md)
+- [Config](/ecosystem/plugins/pwa/pwa/config.md)
+- [remove-pwa](/ecosystem/plugins/pwa/remove-pwa.md)
+
+### Theme Development Plugins
+
+- [active-header-links](/ecosystem/plugins/development/active-header-links.md)
+- [git](/ecosystem/plugins/development/git.md)
+- [palette](/ecosystem/plugins/development/palette.md)
+- [reading-time](/ecosystem/plugins/development/reading-time.md)
+- [rtl](/ecosystem/plugins/development/rtl.md)
+- [Guide](/ecosystem/plugins/development/sass-palette/guide.md)
+- [Config](/ecosystem/plugins/development/sass-palette/config.md)
+- [theme-data](/ecosystem/plugins/development/theme-data.md)
+- [toc](/ecosystem/plugins/development/toc.md)
+
+### Tools Plugins
+
+- [cache](/ecosystem/plugins/tools/cache.md)
+- [google-tag-manager](/ecosystem/plugins/tools/google-tag-manager.md)
+- [redirect](/ecosystem/plugins/tools/redirect.md)
+- [register-components](/ecosystem/plugins/tools/register-components.md)
+
+### AI Plugins
+
+- [plugin-llms](/ecosystem/plugins/ai/llms.md)
+
+### Tools
+
+- [Bundler Related](/ecosystem/tools/helper/node/bundler.md)
+- [Locales Related](/ecosystem/tools/helper/node/locales.md)
+- [Page Related](/ecosystem/tools/helper/node/page.md)
+- [Client Related](/ecosystem/tools/helper/client.md)
+- [Shared Methods](/ecosystem/tools/helper/shared.md)
+- [Styles](/ecosystem/tools/helper/style.md)
+
+### Others
+
+- [Plugins](/ecosystem/plugins/index.md)
+- [AI Plugins](/ecosystem/plugins/ai/index.md)
+- [Analytics Plugins](/ecosystem/plugins/analytics/index.md)
+- [Blog Plugins](/ecosystem/plugins/blog/index.md)
+- [blog](/ecosystem/plugins/blog/blog/index.md)
+- [comment](/ecosystem/plugins/blog/comment/index.md)
+- [Artalk](/ecosystem/plugins/blog/comment/artalk/index.md)
+- [Artalk Options](/ecosystem/plugins/blog/comment/artalk/config.md)
+- [Giscus](/ecosystem/plugins/blog/comment/giscus/index.md)
+- [Giscus Options](/ecosystem/plugins/blog/comment/giscus/config.md)
+- [Twikoo](/ecosystem/plugins/blog/comment/twikoo/index.md)
+- [Twikoo Options](/ecosystem/plugins/blog/comment/twikoo/config.md)
+- [Waline](/ecosystem/plugins/blog/comment/waline/index.md)
+- [Waline Config](/ecosystem/plugins/blog/comment/waline/config.md)
+- [feed](/ecosystem/plugins/blog/feed/index.md)
+- [Development Plugins](/ecosystem/plugins/development/index.md)
+- [sass-palette](/ecosystem/plugins/development/sass-palette/index.md)
+- [Feature Plugins](/ecosystem/plugins/features/index.md)
+- [Markdown Plugins](/ecosystem/plugins/markdown/index.md)
+- [revealjs](/ecosystem/plugins/markdown/revealjs/index.md)
+- [PWA Plugins](/ecosystem/plugins/pwa/index.md)
+- [pwa](/ecosystem/plugins/pwa/pwa/index.md)
+- [Search Plugins](/ecosystem/plugins/search/index.md)
+- [SEO Plugins](/ecosystem/plugins/seo/index.md)
+- [seo](/ecosystem/plugins/seo/seo/index.md)
+- [sitemap](/ecosystem/plugins/seo/sitemap/index.md)
+- [Tool Plugins](/ecosystem/plugins/tools/index.md)
+- [Themes](/ecosystem/themes/index.md)
+- [theme-default](/ecosystem/themes/default/index.md)
+- [Tool Packages](/ecosystem/tools/index.md)
+- [@vuepress/helper](/ecosystem/tools/helper/index.md)
