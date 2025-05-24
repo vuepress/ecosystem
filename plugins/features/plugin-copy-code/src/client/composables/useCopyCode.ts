@@ -5,7 +5,7 @@ import {
   useMediaQuery,
   watchImmediate,
 } from '@vueuse/core'
-import { computed } from 'vue'
+import { computed, nextTick } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
 import type { CopyCodePluginLocaleConfig } from '../types.js'
 
@@ -89,7 +89,7 @@ export const useCopyCode = ({
     document.querySelectorAll<HTMLElement>(selector).forEach(insertCopyButton)
   }
 
-  watchImmediate(enabled, appendCopyButton, {
+  watchImmediate(enabled, () => nextTick(appendCopyButton), {
     flush: 'post',
   })
 
