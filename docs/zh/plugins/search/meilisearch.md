@@ -146,7 +146,7 @@ docker run -t --rm \
 
 抓取器每次都会将索引删除并重新创建，在这个过程中所有的文档都将被删除并重新添加，这对过多的文档来说可能会很慢。所以我们的 `jqiue/docs-scraper` 允许你提供 `only_urls` 只抓取变更的文档内容时。
 
-你可以在 CI 或 Git Hooks 中使用 `vp-meilisearch-scrapper <docsDir> <scraperPath>` 为你的抓取器配置文件自动生成 `only_urls`。
+插件提供了一个 CLI 帮助程序来生成 `only_urls`，因此可以在 CI 或 Git Hooks 中添加 `vp-meilisearch-scrapper <docsDir> <scraperPath>` 来自动为你的抓取器配置文件生成 `only_urls`。
 
 ```sh
 使用: vp-meilisearch-crawler [options] <source> [scraper-path]
@@ -171,6 +171,7 @@ docker run -t --rm \
 
 - `vp-meilisearch-scrapper` 需要在 Git 项目中运行。
 - `scraper-path` 必须正确指向你的抓取器配置文件，这个文件应正确设置除了 `only_urls` 之外的所有必要字段。
+- 如果需要完整抓取，请在提交消息中添加 `[full-scrape]`，CLI 将移除 `only_urls` 字段以执行完整抓取。
 
 :::
 

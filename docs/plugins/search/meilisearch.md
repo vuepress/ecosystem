@@ -146,6 +146,8 @@ When the scraper completes, MeiliSearch will update the existing index with late
 
 Each time the scraper deletes and recreates the index, all documents will be deleted and re-added. This can be slow for a large number of documents. Therefore, our `jqiue/docs-scraper` allows you to provide `only_urls` to only scrape the changed document content.
 
+The plugin provides a cli helper to generate `only_urls`, so `vp-meilisearch-scrapper <docsDir> <scraperPath>` can be added in CI or Git Hooks to automatically generate `only_urls` for your scraper configuration file.
+
 ```sh
 Usage: vp-meilisearch-crawler [options] <source> [scraper-path]
 
@@ -165,12 +167,11 @@ Options:
   -h, --help             display help for command
 ```
 
-You can use `vp-meilisearch-scrapper <docsDir> <scraperPath>` in CI or Git Hooks to automatically generate `only_urls` for your scraper configuration file.
-
 ::: note
 
 - `vp-meilisearch-crawler` needs to be run in a Git project.
 - `scraper-path` must correctly point to your scraper configuration file, which should be properly set up with all necessary fields except for `only_urls`.
+- If a full scrape is required, add `[full-scrape]` in the commit msg, and the cli will remove `only_urls` from the config file to perform a full scrape.
 
 :::
 

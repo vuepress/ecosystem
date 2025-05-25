@@ -23,7 +23,7 @@ interface MeiliSearchCommandOptions {
 
 interface ScraperConfig extends Record<string, unknown> {
   start_urls: string[]
-  only_urls: string[]
+  only_urls?: string[]
 }
 
 const generateOnlyUrls = (
@@ -56,11 +56,6 @@ export const generateScraperConfig = async (
   output: string | undefined,
   commandOptions: MeiliSearchCommandOptions,
 ): Promise<void> => {
-  if (shouldRescrape()) {
-    logger.info('A full rescrape is needed, no need to generate only_urls')
-    return
-  }
-
   // ensure NODE_ENV is set
   process.env.NODE_ENV ??= 'production'
 
@@ -116,6 +111,13 @@ export const generateScraperConfig = async (
   }
 
   const scraperConfig = fs.readJSONSync(scraperPath, 'utf-8') as ScraperConfig
+
+  if (shouldRescrape()) {
+    logger.info('A full rescrape is needed, removing only_urls...')
+    delete scraperConfig.only_urls
+    fs.writeFileSync(scraperPath, JSON.stringify(scraperConfig, null, 2))
+    return
+  }
 
   const sourceRelativePath = getGitRelativePath(app.dir.source())
 
