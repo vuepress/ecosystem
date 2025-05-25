@@ -1,6 +1,55 @@
 import type { SpawnSyncReturns } from 'node:child_process'
 import { spawnSync } from 'node:child_process'
-import { logger } from 'vuepress/utils'
+
+/**
+ * Gets the relative path from git root to the current directory
+ *
+ * @param cwd Current working directory
+ * @returns Relative path from git root to cwd, or empty string if cwd is the git root
+ */
+export const getGitRelativePath = (cwd = process.cwd()): string => {
+  let gitProcess: SpawnSyncReturns<string>
+
+  try {
+    // Get the git root directory
+    gitProcess = spawnSync('git', ['rev-parse', '--show-toplevel'], {
+      cwd,
+      encoding: 'utf8',
+    })
+  } catch (spawnError) {
+    throw new Error(
+      `Failed to spawn 'git' process: ${(spawnError as Error).message}`,
+    )
+  }
+
+  const { error, status, stderr, stdout } = gitProcess
+
+  if (error) {
+    throw new Error(`Failed to start git process: ${error.message}`)
+  }
+
+  if (status !== 0) {
+    throw new Error(`Git command failed with exit code ${status}: ${stderr}`)
+  }
+
+  const gitRootPath = stdout.trim()
+
+  // If cwd is already the git root, return empty string
+  if (cwd === gitRootPath) {
+    return ''
+  }
+
+  // Calculate relative path from git root to cwd
+  if (cwd.startsWith(gitRootPath)) {
+    // Remove the git root path and the leading slash
+    const relativePath = cwd.slice(gitRootPath.length + 1)
+    return relativePath
+  }
+
+  throw new Error(
+    `Current directory ${cwd} is not within the git repository root ${gitRootPath}`,
+  )
+}
 
 export const getWorkspaceStatus = (cwd = process.cwd()): string => {
   let gitProcess: SpawnSyncReturns<string>
@@ -27,50 +76,6 @@ export const getWorkspaceStatus = (cwd = process.cwd()): string => {
   }
 
   return stdout.trim()
-}
-
-/**
- * Checks if a full rescrape is needed by examining the most recent commit
- * Returns true if workspace is clean and the most recent commit message contains [full-scrape]
- *
- * @param cwd Current working directory
- * @returns Whether a full rescrape should be performed
- */
-export const shouldRescrape = (cwd = process.cwd()): boolean => {
-  // First check if the workspace is clean
-  const status = getWorkspaceStatus(cwd)
-
-  if (status) {
-    // If there are changes in the workspace, no need for a full rescrape
-    return false
-  }
-
-  // Check the latest commit message
-  let gitProcess: SpawnSyncReturns<string>
-
-  try {
-    gitProcess = spawnSync('git', ['log', '-1', '--pretty=%B'], {
-      cwd,
-      encoding: 'utf-8',
-    })
-  } catch (spawnError) {
-    logger.warn(
-      `Failed to get commit message: ${(spawnError as Error).message}`,
-    )
-    return false
-  }
-
-  const { error, status: exitStatus, stderr, stdout } = gitProcess
-
-  if (error || exitStatus !== 0) {
-    logger.warn(`Failed to get commit message: ${error?.message || stderr}`)
-    return false
-  }
-
-  const commitMessage = stdout.trim()
-
-  // Check if the commit message contains the [full-scrape] marker
-  return commitMessage.includes('[full-scrape]')
 }
 
 /**
@@ -118,29 +123,21 @@ export const parseGitStatus = (status: string): string[] => {
     const statusX = line[0]
     const statusY = line[1]
 
-    // Check for unstaged changes
-    if (statusY !== ' ' && statusY !== '?' && statusX === ' ') {
+    // Check for unstaged changes or untracked files
+    if (
+      (statusY !== ' ' && statusY !== '?' && statusX === ' ') ||
+      line.startsWith('??')
+    ) {
       throw new Error(
-        'There are unstaged changes in the workspace. Please stage all changes before proceeding.',
+        'There are unstaged/untracked files in the workspace. Please stage or remove them before proceeding.',
       )
     }
 
-    // Check for untracked files and throw error
-    if (line.startsWith('??')) {
-      throw new Error(
-        'There are untracked files in the workspace. Please stage or remove them before proceeding.',
-      )
-    }
-
-    // Handle the file path
-    let filePath: string
-
-    if (statusX === 'R' || statusX === 'C') {
+    const filePath =
       // For renamed files, get the new path (after "->")
-      filePath = line.substring(3).split(' -> ')[1]
-    } else {
-      filePath = line.substring(3)
-    }
+      statusX === 'R' || statusX === 'C'
+        ? line.substring(3).split(' -> ')[1]
+        : line.substring(3)
 
     changedFiles.push(filePath)
   })
@@ -157,11 +154,5 @@ export const parseGitStatus = (status: string): string[] => {
 export const getChangedFiles = (cwd = process.cwd()): string[] => {
   const status = getWorkspaceStatus(cwd)
 
-  // If workspace is clean, return files from the last commit
-  if (!status) {
-    return getChangedFilesByDiff(cwd)
-  }
-
-  // Otherwise, parse the status output and ensure all changes are staged
-  return parseGitStatus(status)
+  return status ? parseGitStatus(status) : getChangedFilesByDiff(cwd)
 }

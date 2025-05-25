@@ -6,12 +6,12 @@ import {
   resolveUserConfigPath,
   transformUserConfigToPlugin,
 } from 'vuepress/cli'
+import type { App } from 'vuepress/core'
 import { createBuildApp } from 'vuepress/core'
 import { fs, logger, path } from 'vuepress/utils'
 
-import { getChangedFiles, shouldRescrape } from './utils.js'
-
-const README_REG_EXP = /README\.md$/i
+import { shouldRescrape } from './shouldRescrape.js'
+import { getChangedFiles, getGitRelativePath } from './utils.js'
 
 interface MeiliSearchCommandOptions {
   config?: string
@@ -21,21 +21,37 @@ interface MeiliSearchCommandOptions {
   cleanTemp?: boolean
 }
 
-const generateOnlyUrls = (
-  markdownFilePaths: string[],
-  source: string,
-  output: string,
-): string[] =>
-  markdownFilePaths.map((markdownFilePath) => {
-    const url = README_REG_EXP.test(markdownFilePath)
-      ? markdownFilePath.replace(README_REG_EXP, '').replace(source, output)
-      : markdownFilePath.replace('.md', '.html').replace(source, output)
+interface ScraperConfig extends Record<string, unknown> {
+  start_urls: string[]
+  only_urls: string[]
+}
 
-    return url
-  })
+const generateOnlyUrls = (
+  app: App,
+  changedMarkdownFilesPathRelative: string[],
+  scraperConfig: ScraperConfig,
+): string[] => {
+  const pagesMap = app.pages.reduce<Record<string, string>>(
+    (acc, { filePathRelative, path: pagePath }) => {
+      if (!filePathRelative) return acc
+
+      acc[filePathRelative] = pagePath
+
+      return acc
+    },
+    {},
+  )
+  const siteDestLocation =
+    new URL(scraperConfig.start_urls[0]).hostname + app.options.base
+
+  return changedMarkdownFilesPathRelative.map(
+    (markdownFilePathRelative) =>
+      siteDestLocation + pagesMap[markdownFilePathRelative],
+  )
+}
 
 export const generateScraperConfig = async (
-  sourceDir: string,
+  source: string,
   output: string | undefined,
   commandOptions: MeiliSearchCommandOptions,
 ): Promise<void> => {
@@ -48,7 +64,7 @@ export const generateScraperConfig = async (
   process.env.NODE_ENV ??= 'production'
 
   // resolve app config from cli options
-  const cliAppConfig = resolveCliAppConfig(sourceDir, {})
+  const cliAppConfig = resolveCliAppConfig(source, {})
 
   // resolve user config file
   const userConfigPath = commandOptions.config
@@ -80,19 +96,18 @@ export const generateScraperConfig = async (
     logger.info('Cleaning temp...')
     await fs.remove(app.dir.temp())
   }
+
   if (commandOptions.cleanCache === true) {
     logger.info('Cleaning cache...')
     await fs.remove(app.dir.cache())
   }
 
-  const sourceDirPath = path.join(process.cwd(), sourceDir)
-
   const outputPath = output
     ? path.join(process.cwd(), output)
     : path.join(app.dir.source(), '.vuepress', 'meilisearch-config.json')
 
-  if (!fs.existsSync(sourceDir)) {
-    throw new Error(`Source directory ${sourceDir} does not exist!`)
+  if (!fs.existsSync(source)) {
+    throw new Error(`Source directory ${source} does not exist!`)
   }
 
   const scraperPath = path.resolve(output)
@@ -101,24 +116,26 @@ export const generateScraperConfig = async (
     throw new Error(`Scraper file not found at ${scraperPath}`)
   }
 
-  const scraperConfig = fs.readJSONSync(outputPath, 'utf-8') as Record<
-    string,
-    unknown
-  >
+  const scraperConfig = fs.readJSONSync(outputPath, 'utf-8') as ScraperConfig
 
-  const changedMarkdownFiles = getChangedFiles().filter(
-    (line) => line.includes('.md') && line.includes(sourceDirPath),
-  )
+  const sourceRelativePath = getGitRelativePath(app.dir.source())
 
-  if (changedMarkdownFiles.length === 0) {
+  const changedMarkdownFilesPathRelative = getChangedFiles()
+    .filter(
+      (line) => line.startsWith(sourceRelativePath) && line.endsWith('.md'),
+    )
+
+    .map((line) => line.substring(sourceRelativePath.length + 1))
+
+  if (changedMarkdownFilesPathRelative.length === 0) {
     logger.info('No changed files found.')
     return
   }
 
   const onlyUrls = generateOnlyUrls(
-    changedMarkdownFiles,
-    sourceDirPath,
-    outputPath,
+    app,
+    changedMarkdownFilesPathRelative,
+    scraperConfig,
   )
 
   scraperConfig.only_urls = onlyUrls
