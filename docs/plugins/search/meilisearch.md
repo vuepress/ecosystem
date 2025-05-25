@@ -144,8 +144,6 @@ Here:
 
 When the scraper completes, MeiliSearch will update the existing index with latest document content.
 
-抓取器每次都会将索引删除并重新创建，在这个过程中所有的文档都将被删除并重新添加，这对过多的文档来说可能会很慢。所以我们的 `jqiue/docs-scraper` 允许你提供 `only_urls` 只抓取变更的文档内容时。
-
 Each time the scraper deletes and recreates the index, all documents will be deleted and re-added. This can be slow for a large number of documents. Therefore, our `jqiue/docs-scraper` allows you to provide `only_urls` to only scrape the changed document content.
 
 ```sh
