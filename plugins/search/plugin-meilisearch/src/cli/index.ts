@@ -2,8 +2,9 @@
 
 import { createCommand } from 'commander'
 
+import { logger } from 'vuepress/utils'
 import pkg from '../../package.json' with { type: 'json' }
-import { generateScraperConfig } from './generateScraperConfig'
+import { generateScraperConfig } from './generateScraperConfig.js'
 
 interface MeiliSearchCommandOptions {
   config?: string
@@ -25,8 +26,8 @@ program
   .option('--clean-temp', 'Clean the temporary files before generation')
   .argument('<source>', 'Source directory of VuePress project')
   .argument(
-    '[output]',
-    'Output folder (default: .vuepress/meilisearch-config.json relative to source folder)',
+    '[scraper-path]',
+    'Scrapper config file path (default: .vuepress/meilisearch-config.json relative to source folder)',
   )
   .action(
     async (
@@ -37,7 +38,8 @@ program
       try {
         await generateScraperConfig(sourceDir, output, commandOptions)
       } catch (error) {
-        program.error(`Command execution error: ${(error as Error).message}`)
+        logger.error(error)
+        program.error(`Command execution error.`)
       }
     },
   )

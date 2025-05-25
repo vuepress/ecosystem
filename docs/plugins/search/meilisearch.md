@@ -112,7 +112,7 @@ Then, create a **correct configuration file** for the scraper. Here, we provide 
 ```
 
 - `index_uid` should be a unique name for your index, which will be used to search.
-- `start_urls` and `sitemap_urls` (optional) shall be customized according to the website to be scraped.
+- `start_urls` and `sitemap_urls` (optional) shall be customized according to the website to be scraped. We recommend using it with [`@vuepress/plugin-sitemap`](../seo/sitemap/README.md) plugin and providing the corresponding `sitemap.xml` URL.
 - `selectors` field can be customized according to third-party theme DOM structure.
 - You can add new fields to `custom_settings` according to your needs.
 
@@ -144,23 +144,35 @@ Here:
 
 When the scraper completes, MeiliSearch will update the existing index with latest document content.
 
-Each time the scraper deletes and recreates the index. During this process, all the documents will be deleted and re-added. This might be slow for too many documents. However, when we only need to update part of the document content, we can use `only_urls` to tell the scraper to update only the specified urls instead of crawling all of them once.
+抓取器每次都会将索引删除并重新创建，在这个过程中所有的文档都将被删除并重新添加，这对过多的文档来说可能会很慢。所以我们的 `jqiue/docs-scraper` 允许你提供 `only_urls` 只抓取变更的文档内容时。
 
-```json
-{
-  "only_urls": ["https://<YOUR_WEBSITE_URL>/specifies/"]
-}
+Each time the scraper deletes and recreates the index, all documents will be deleted and re-added. This can be slow for a large number of documents. Therefore, our `jqiue/docs-scraper` allows you to provide `only_urls` to only scrape the changed document content.
+
+```sh
+Usage: vp-meilisearch-crawler [options] <source> [scraper-path]
+
+Generate crawler config for meilisearch
+
+Arguments:
+  source                 Source directory of VuePress project
+  scraper-path           Scrapper config file path (default: .vuepress/meilisearch-config.json relative to source folder)
+
+Options:
+  -c, --config [config]  Set path to config file
+  --cache [cache]        Set the directory of the cache files
+  --temp [temp]          Set the directory of the temporary files
+  --clean-cache          Clean the cache files before generation
+  --clean-temp           Clean the temporary files before generation
+  -V, --version          output the version number
+  -h, --help             display help for command
 ```
 
-Using `npx gous <docsDir> <replaceUrl> <scraperPath>` in your project can automatically generate `only_urls` for your scraper configuration file.
+You can use `vp-meilisearch-scrapper <docsDir> <scraperPath>` in CI or Git Hooks to automatically generate `only_urls` for your scraper configuration file.
 
-::: tip description
+::: note
 
-If your project is not managed using Git or the os does not have Git installed, it cannot run.
-
-- `docsDir` The parent directory of `.vuepress`. For example, if your directory is `docs/.vuepress`, then this value is `docs`
-- `replaceUrl` The URL of your document.
-- `scraperPath` The path of the scraper configuration file
+- `vp-meilisearch-crawler` needs to be run in a Git project.
+- `scraper-path` must correctly point to your scraper configuration file, which should be properly set up with all necessary fields except for `only_urls`.
 
 :::
 
@@ -258,6 +270,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # This is required for the helper to compare the current and previous commits
+          fetch-depth: 2
+
+      - name: Generate Only URLs
+        # You may need to cd to the directory where `@vuepress/plugin-meilisearch` is installed first
+        run: pnpm vp-meilisearch-scrapper <docsDir> <path/to/your/scraper/config.json>
 
       - name: Run scraper
         env:

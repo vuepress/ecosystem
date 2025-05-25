@@ -1,7 +1,7 @@
 import type { SpawnSyncReturns } from 'node:child_process'
 import { spawnSync } from 'node:child_process'
 import { logger } from 'vuepress/utils'
-import { getWorkspaceStatus } from './utils'
+import { getWorkspaceStatus } from './utils.js'
 
 /**
  * Checks if a full rescrape is needed by examining the most recent commit

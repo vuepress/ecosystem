@@ -41,8 +41,9 @@ const generateOnlyUrls = (
     },
     {},
   )
+
   const siteDestLocation =
-    new URL(scraperConfig.start_urls[0]).hostname + app.options.base
+    new URL(scraperConfig.start_urls[0]).origin + app.options.base.slice(0, -1)
 
   return changedMarkdownFilesPathRelative.map(
     (markdownFilePathRelative) =>
@@ -102,7 +103,7 @@ export const generateScraperConfig = async (
     await fs.remove(app.dir.cache())
   }
 
-  const outputPath = output
+  const scraperPath = output
     ? path.join(process.cwd(), output)
     : path.join(app.dir.source(), '.vuepress', 'meilisearch-config.json')
 
@@ -110,13 +111,11 @@ export const generateScraperConfig = async (
     throw new Error(`Source directory ${source} does not exist!`)
   }
 
-  const scraperPath = path.resolve(output)
-
-  if (!fs.existsSync(outputPath)) {
+  if (!fs.existsSync(scraperPath)) {
     throw new Error(`Scraper file not found at ${scraperPath}`)
   }
 
-  const scraperConfig = fs.readJSONSync(outputPath, 'utf-8') as ScraperConfig
+  const scraperConfig = fs.readJSONSync(scraperPath, 'utf-8') as ScraperConfig
 
   const sourceRelativePath = getGitRelativePath(app.dir.source())
 
@@ -131,6 +130,14 @@ export const generateScraperConfig = async (
     logger.info('No changed files found.')
     return
   }
+
+  // initialize vuepress app to get pages
+  logger.info('Initializing VuePress and preparing data...')
+
+  // initialize vuepress app to get pages
+  await app.init()
+
+  logger.info('Generating only_urls...')
 
   const onlyUrls = generateOnlyUrls(
     app,
