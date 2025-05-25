@@ -35,7 +35,7 @@
     }
   }
 
-  // FIXME: katex can not work with math plugin
+  // FIXME: Probably markmap bug
   .katex-html {
     display: none;
   }
@@ -70,6 +70,7 @@
   background: var(--vp-c-control);
 
   line-height: 1;
+  direction: ltr;
 
   user-select: none;
 
@@ -91,8 +92,7 @@
   }
 
   > span {
-    padding-right: 0.25rem;
-    padding-left: 0.25rem;
+    padding-inline: 0.25rem;
   }
 }
 
@@ -119,7 +119,7 @@
     background-color: var(--vp-c-accent-bg);
 
     > * {
-      color: var(--vp-c-control);
+      color: var(--vp-c-white);
     }
   }
 }

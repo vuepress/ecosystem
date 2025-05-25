@@ -13,10 +13,6 @@
   @media (max-width: 719px) {
     margin: 0 -1rem;
   }
-
-  @media print {
-    page-break-inside: avoid;
-  }
 }
 
 .echarts-container {
