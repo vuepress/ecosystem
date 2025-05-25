@@ -1,22 +1,15 @@
 import type { Plugin } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 
-import { preview } from './demo.js'
-import type { MarkdownPreviewPluginOptions } from './options.js'
+import { preview } from './preview.js'
 
-const PLUGIN_NAME = '@vuepress/plugin-markdown-demo'
+const PLUGIN_NAME = '@vuepress/plugin-markdown-preview'
 
 const __dirname = getDirname(import.meta.url)
 
-export const markdownPreviewPlugin = ({
-  delay = 500,
-}: MarkdownPreviewPluginOptions): Plugin => {
+export const markdownPreviewPlugin = (): Plugin => {
   return {
     name: PLUGIN_NAME,
-
-    define: {
-      __PREVIEW_DELAY__: delay,
-    },
 
     extendsMarkdown: (md) => {
       md.use(preview)
