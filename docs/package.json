@@ -42,7 +42,7 @@
     "@vuepress/shiki-twoslash": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
-    "@vueuse/core": "^13.2.0",
+    "@vueuse/core": "catalog:",
     "katex": "0.16.22",
     "mathjax-full": "3.2.2",
     "sass-embedded": "catalog:",
