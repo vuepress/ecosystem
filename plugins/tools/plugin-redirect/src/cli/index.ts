@@ -101,7 +101,6 @@ program
       // empty output directory
       await fs.emptyDir(outputFolder)
 
-      // initialize vuepress app to get pages
       logger.info('Initializing VuePress and preparing data...')
 
       // initialize vuepress app to get pages

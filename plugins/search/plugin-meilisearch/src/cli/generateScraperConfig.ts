@@ -133,7 +133,6 @@ export const generateScraperConfig = async (
     return
   }
 
-  // initialize vuepress app to get pages
   logger.info('Initializing VuePress and preparing data...')
 
   // initialize vuepress app to get pages
