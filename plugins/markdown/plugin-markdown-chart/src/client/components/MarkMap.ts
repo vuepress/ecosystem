@@ -1,19 +1,21 @@
-import { LoadingIcon, decodeData, wait } from '@vuepress/helper/client'
+import { LoadingIcon, decodeData } from '@vuepress/helper/client'
 import { useDebounceFn, useEventListener } from '@vueuse/core'
 import type { Markmap } from 'markmap-view'
 import type { VNode } from 'vue'
 import {
   defineComponent,
   h,
+  nextTick,
   onMounted,
   onUnmounted,
   ref,
   shallowRef,
+  toRefs,
+  watch,
 } from 'vue'
+import { onContentUpdated } from 'vuepress/client'
 
-import '../styles/markmap.css'
-
-declare const __MC_DELAY__: number
+import '../styles/markmap.scss'
 
 export default defineComponent({
   name: 'MarkMap',
@@ -41,9 +43,11 @@ export default defineComponent({
   },
 
   setup(props) {
-    const loading = ref(true)
+    const { content, id } = toRefs(props)
     const markupWrapper = shallowRef<HTMLElement>()
-    const markmapSvg = shallowRef<SVGElement>()
+    const markmapSVG = shallowRef<SVGElement>()
+
+    const loaded = ref(false)
 
     let markmap: Markmap | null = null
 
@@ -54,62 +58,82 @@ export default defineComponent({
       }, 100),
     )
 
+    const destroyMarkmap = (): void => {
+      markmap?.destroy()
+      markmap = null
+    }
+
+    const renderMarkmap = async (): Promise<void> => {
+      if (__VUEPRESS_SSR__) return
+
+      const [{ Transformer }, { Markmap, deriveOptions }, { Toolbar }] =
+        await Promise.all([
+          import(/* webpackChunkName: "markmap" */ 'markmap-lib'),
+          import(/* webpackChunkName: "markmap" */ 'markmap-view'),
+          import(/* webpackChunkName: "markmap" */ 'markmap-toolbar'),
+        ])
+
+      const transformer = new Transformer()
+      const { frontmatter, root } = transformer.transform(
+        decodeData(props.content),
+      )
+
+      markmap = Markmap.create(
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        markmapSVG.value!,
+        deriveOptions({
+          maxWidth: 240,
+          ...frontmatter?.markmap,
+        }),
+      )
+
+      const { el } = Toolbar.create(markmap)
+
+      await markmap.setData(root)
+      await markmap.fit()
+
+      el.style.position = 'absolute'
+      el.style.bottom = '0.5rem'
+      el.style.right = '0.5rem'
+
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      markupWrapper.value!.append(el)
+    }
+
+    onContentUpdated(async (reason) => {
+      if (reason === 'mounted') {
+        await renderMarkmap()
+        loaded.value = true
+      }
+    })
+
     onMounted(() => {
-      void Promise.all([
-        import(/* webpackChunkName: "markmap" */ 'markmap-lib'),
-        import(/* webpackChunkName: "markmap" */ 'markmap-view'),
-        import(/* webpackChunkName: "markmap" */ 'markmap-toolbar'),
-        wait(__MC_DELAY__),
-      ]).then(
-        async ([{ Transformer, builtInPlugins }, markmapView, { Toolbar }]) => {
-          const { Markmap, deriveOptions, loadCSS, loadJS } = markmapView
-          const transformer = new Transformer(builtInPlugins)
-          const { features, frontmatter, root } = transformer.transform(
-            decodeData(props.content),
-          )
-          const { styles, scripts } = transformer.getUsedAssets(features)
+      if (!__VUEPRESS_DEV__) return
 
-          if (styles) await loadCSS(styles)
-          if (scripts) await loadJS(scripts, { getMarkmap: () => markmapView })
-
-          markmap = Markmap.create(
-            markmapSvg.value!,
-            deriveOptions({
-              maxWidth: 240,
-              ...frontmatter?.markmap,
-            }),
-          )
-
-          const { el } = Toolbar.create(markmap)
-
-          await markmap.setData(root)
-          await markmap.fit()
-
-          el.style.position = 'absolute'
-          el.style.bottom = '0.5rem'
-          el.style.right = '0.5rem'
-
-          markupWrapper.value!.append(el)
-          loading.value = false
+      // config must be changed if type is changed, so no need to watch it
+      watch(
+        [content, id],
+        async () => {
+          destroyMarkmap()
+          await nextTick()
+          await renderMarkmap()
         },
+        { flush: 'post' },
       )
     })
 
-    onUnmounted(() => {
-      markmap?.destroy()
-      markmap = null
-    })
+    onUnmounted(destroyMarkmap)
 
     return (): VNode =>
       h('div', { class: 'markmap-wrapper', ref: markupWrapper }, [
         h('svg', {
-          ref: markmapSvg,
+          ref: markmapSVG,
           class: 'markmap-svg',
           id: props.id,
         }),
-        loading.value
-          ? h(LoadingIcon, { class: 'markmap-loading', height: 360 })
-          : null,
+        loaded.value
+          ? null
+          : h(LoadingIcon, { class: 'markmap-loading', height: 360 }),
       ])
   },
 })

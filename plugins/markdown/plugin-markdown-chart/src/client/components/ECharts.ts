@@ -1,20 +1,22 @@
-import { LoadingIcon, decodeData, wait } from '@vuepress/helper/client'
+import { LoadingIcon, decodeData } from '@vuepress/helper/client'
 import { useDebounceFn, useEventListener } from '@vueuse/core'
 import type { EChartsOption, EChartsType } from 'echarts'
 import type { PropType, VNode } from 'vue'
 import {
   defineComponent,
   h,
+  nextTick,
   onMounted,
   onUnmounted,
   ref,
   shallowRef,
+  toRefs,
+  watch,
 } from 'vue'
+import { onContentUpdated } from 'vuepress/client'
 
 import { useEChartsConfig } from '../helpers/index.js'
 import '../styles/echarts.css'
-
-declare const __MC_DELAY__: number
 
 interface EChartsConfig {
   width?: number
@@ -22,17 +24,18 @@ interface EChartsConfig {
   option: EChartsOption
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 const AsyncFunction = (async (): Promise<void> => {}).constructor
 
 const parseEChartsConfig = (
   config: string,
   type: 'js' | 'json',
-  myChart: EChartsType,
+  instance: EChartsType,
 ): Promise<EChartsConfig> => {
   if (type === 'js') {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
     const runner = AsyncFunction(
-      'myChart',
+      'echarts',
       `\
 let width,height,option,__echarts_config__;
 {
@@ -44,7 +47,7 @@ return __echarts_config__;
     )
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    return runner(myChart) as Promise<EChartsConfig>
+    return runner(instance) as Promise<EChartsConfig>
   }
 
   return Promise.resolve({ option: JSON.parse(config) as EChartsOption })
@@ -93,10 +96,11 @@ export default defineComponent({
   },
 
   setup(props) {
+    const { config, id } = toRefs(props)
     const echartsConfig = useEChartsConfig()
-
-    const loading = ref(true)
     const echartsContainer = shallowRef<HTMLElement>()
+
+    const loaded = ref(false)
 
     let instance: EChartsType | null = null
 
@@ -107,32 +111,53 @@ export default defineComponent({
       }, 100),
     )
 
-    onMounted(() => {
-      void Promise.all([
-        import(/* webpackChunkName: "echarts" */ 'echarts'),
-        // Delay
-        wait(__MC_DELAY__),
-      ]).then(async ([echarts]) => {
-        await echartsConfig.setup?.()
-
-        instance = echarts.init(echartsContainer.value)
-
-        const { option, ...size } = await parseEChartsConfig(
-          decodeData(props.config),
-          props.type,
-          instance,
-        )
-
-        instance.resize(size)
-        instance.setOption({ ...echartsConfig.option, ...option })
-
-        loading.value = false
-      })
-    })
-
-    onUnmounted(() => {
+    const destroyEcharts = (): void => {
       instance?.dispose()
+      instance = null
+    }
+
+    const renderEcharts = async (): Promise<void> => {
+      if (__VUEPRESS_SSR__) return
+
+      const echarts = await import(/* webpackChunkName: "echarts" */ 'echarts')
+
+      await echartsConfig.setup?.()
+
+      instance = echarts.init(echartsContainer.value)
+
+      const { option, ...size } = await parseEChartsConfig(
+        decodeData(props.config),
+        props.type,
+        instance,
+      )
+
+      instance.resize(size)
+      instance.setOption({ ...echartsConfig.option, ...option })
+    }
+
+    onContentUpdated(async (reason) => {
+      if (reason === 'mounted') {
+        await renderEcharts()
+        loaded.value = true
+      }
     })
+
+    onMounted(() => {
+      if (!__VUEPRESS_DEV__) return
+
+      // config must be changed if type is changed, so no need to watch it
+      watch(
+        [config, id],
+        async () => {
+          destroyEcharts()
+          await nextTick()
+          await renderEcharts()
+        },
+        { flush: 'post' },
+      )
+    })
+
+    onUnmounted(destroyEcharts)
 
     return (): (VNode | null)[] => [
       props.title
@@ -144,9 +169,9 @@ export default defineComponent({
           class: 'echarts-container',
           id: props.id,
         }),
-        loading.value
-          ? h(LoadingIcon, { class: 'echarts-loading', height: 360 })
-          : null,
+        loaded.value
+          ? null
+          : h(LoadingIcon, { class: 'echarts-loading', height: 360 }),
       ]),
     ]
   },
