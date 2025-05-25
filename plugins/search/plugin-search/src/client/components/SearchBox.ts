@@ -1,10 +1,10 @@
+import type { KeyOptions } from '@vuepress/helper/client'
+import { useKeys, useLocale } from '@vuepress/helper/client'
 import type { PropType } from 'vue'
 import { computed, defineComponent, h, ref, toRefs } from 'vue'
 import { useRouteLocale, useRouter } from 'vuepress/client'
-import type { HotKeyOptions } from '../../shared/index.js'
 import type { SearchSuggestion } from '../composables/index.js'
 import {
-  useHotKeys,
   useSearchIndex,
   useSearchSuggestions,
   useSuggestionsFocus,
@@ -20,10 +20,7 @@ export const SearchBox = defineComponent({
       default: () => ({}),
     },
 
-    hotKeys: {
-      type: Array as PropType<(HotKeyOptions | string)[]>,
-      default: () => [],
-    },
+    hotKeys: Array as PropType<(KeyOptions | string)[]>,
 
     maxSuggestions: {
       type: Number,
@@ -33,6 +30,7 @@ export const SearchBox = defineComponent({
 
   setup(props) {
     const { locales, hotKeys, maxSuggestions } = toRefs(props)
+    const locale = useLocale(locales)
 
     const router = useRouter()
     const routeLocale = useRouteLocale()
@@ -41,7 +39,6 @@ export const SearchBox = defineComponent({
     const input = ref<HTMLInputElement | null>(null)
     const isActive = ref(false)
     const query = ref('')
-    const locale = computed(() => locales.value[routeLocale.value] ?? {})
 
     const suggestions = useSearchSuggestions({
       searchIndex,
@@ -51,7 +48,10 @@ export const SearchBox = defineComponent({
     })
     const { focusIndex, focusNext, focusPrev } =
       useSuggestionsFocus(suggestions)
-    useHotKeys({ input, hotKeys })
+
+    useKeys(hotKeys, () => {
+      input.value?.focus()
+    })
 
     const showSuggestions = computed(
       () => isActive.value && !!suggestions.value.length,

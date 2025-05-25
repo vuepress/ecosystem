@@ -1,14 +1,13 @@
 <script setup lang="ts">
+import { useData } from '@theme/useData'
 import { computed } from 'vue'
-import { usePageFrontmatter } from 'vuepress/client'
 import type { DefaultThemeHomePageFrontmatter } from '../../shared/index.js'
 
-const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
+const { frontmatter } = useData<DefaultThemeHomePageFrontmatter>()
 
 const features = computed(() => frontmatter.value.features ?? [])
 </script>
 
-<!-- eslint-disable-next-line vue/no-root-v-if -->
 <template>
   <div v-if="features.length" class="vp-features">
     <div v-for="feature in features" :key="feature.title" class="vp-feature">
@@ -29,12 +28,12 @@ const features = computed(() => frontmatter.value.features ?? [])
 
   margin-top: 2.5rem;
   padding: 1.2rem 0;
-  border-top: 1px solid var(--vp-c-gutter);
+  border-top: 1px solid var(--vp-c-divider);
 
   transition: border-color var(--vp-t-color);
 
   @media (max-width: $MQMobile) {
-    flex-direction: column;
+    flex-flow: column;
   }
 }
 

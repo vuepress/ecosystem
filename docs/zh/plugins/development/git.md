@@ -1,3 +1,7 @@
+---
+icon: la:git-alt
+---
+
 # git
 
 <NpmBadge package="@vuepress/plugin-git" />
@@ -14,7 +18,7 @@
 npm i -D @vuepress/plugin-git@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { gitPlugin } from '@vuepress/plugin-git'
 
 export default {
@@ -77,6 +81,14 @@ export default {
      * 这时候可以通过别名映射到真实的用户名
      */
     alias?: string[] | string
+    /**
+     * 贡献者在 Git 托管服务中的主邮箱
+     */
+    email?: string
+    /**
+     * 贡献者在 Git 托管服务中的备用邮箱，或者曾经使用过的邮箱
+     */
+    emailAlias?: string[] | string
     /**
      * 贡献者头像地址
      * 如果 git 托管服务为 `github`，则可以忽略不填，由插件自动填充
@@ -181,6 +193,39 @@ export default {
 
   页面过滤器，如果返回 `true` ，该页面将收集 git 信息
 
+### locales
+
+- 类型： `Record<string, GitLocaleData>`
+
+  ```ts
+  export interface GitLocaleData {
+    /**
+     * 贡献者 标题
+     */
+    contributors: string
+    /**
+     * 更新日志 标题
+     */
+    changelog: string
+    /**
+     * 更新 `于` 文本
+     */
+    timeOn: string
+    /**
+     * 查看更新日志 文本
+     */
+    viewChangelog: string
+    /**
+     * 最近更新 文本
+     */
+    latestUpdateAt: string
+  }
+  ```
+
+- 详情：
+
+  多语言配置，在 [Git 组件](#component) 中使用。
+
 ## Frontmatter
 
 ### gitInclude
@@ -221,6 +266,131 @@ gitInclude:
 
   当前页面是否获取变更历史记录，该值会覆盖 [changelog](#changelog) 配置项。
 
+## 可组合式 API
+
+你可以从 `@vuepress/plugin-git/client` 中导入以下可组合式 API。
+
+### useChangelog
+
+获取当前页面的变更历史记录。
+
+```ts
+export interface GitChangelogItem {
+  /**
+   * Commit hash
+   */
+  hash: string
+  /**
+   * Unix timestamp in milliseconds
+   */
+  time: number
+  /**
+   * Commit message
+   */
+  message: string
+  /**
+   * The url of the commit
+   */
+  commitUrl?: string
+  /**
+   * release tag
+   */
+  tag?: string
+  /**
+   * The url of the release tag
+   */
+  tagUrl?: string
+  /**
+   * Commit author name
+   */
+  author: string
+  /**
+   * Commit author email
+   */
+  email: string
+
+  /**
+   * The co-authors of the commit
+   */
+  coAuthors?: CoAuthorInfo[]
+  /**
+   * Date text of the commit
+   */
+  date: string
+}
+
+export const useChangelog: (
+  enabled?: MaybeRefOrGetter<boolean>,
+) => ComputedRef<GitChangelogItem[]>
+```
+
+### useContributors
+
+获取当前页面的贡献者信息。
+
+```ts
+export interface GitContributorInfo {
+  /**
+   * Contributor display name
+   */
+  name: string
+  /**
+   * Contributor email
+   */
+  email: string
+
+  /**
+   * Contributor username on the git hosting service
+   */
+  username: string
+  /**
+   * Number of commits
+   */
+  commits: number
+  /**
+   * Contributor avatar
+   */
+  avatar?: string
+  /**
+   * The url of the contributor
+   */
+  url?: string
+}
+
+export const useContributors: (
+  enabled?: MaybeRefOrGetter<boolean>,
+) => ComputedRef<GitContributorInfo[]>
+```
+
+### useLastUpdated
+
+获取当前页面的最后更新时间。
+
+```ts
+export interface LastUpdated {
+  /**
+   * The date object of the last updated time
+   */
+  date: Date
+  /**
+   * The ISO string of the last updated time
+   */
+  iso: string
+  /**
+   * The formatted text of the last updated time
+   */
+  text: string
+  /**
+   * The locale of the last updated time
+   */
+  locale: string
+}
+
+export const useLastUpdated: (
+  enabled?: MaybeRefOrGetter<boolean>,
+) => ComputedRef<LastUpdated | null>
+```
+
 ## 页面数据
 
 该插件会向页面数据中添加一个 `git` 字段。
@@ -229,11 +399,11 @@ gitInclude:
 
 ```ts
 import type { GitPluginPageData } from '@vuepress/plugin-git'
-import { usePageData } from 'vuepress/client'
+import { usePage } from 'vuepress/client'
 
 export default {
   setup(): void {
-    const page = usePageData<GitPluginPageData>()
+    const page = usePage<GitPluginPageData>()
     console.log(page.value.git)
   },
 }
@@ -331,3 +501,41 @@ interface GitChangelog {
   页面的变更历史记录。
 
   该属性将会包含 [gitInclude](#gitinclude) 所列文件的变更历史记录。
+
+## Git 组件{#component}
+
+插件提供了与 Git 信息相关的全局组件，可以在主题中使用。
+
+### GitContributors
+
+列出当前页面的贡献者信息。
+
+```vue{4}
+<template>
+  <div vp-content>
+    <Content />
+    <GitContributors />
+  </div>
+</template>
+```
+
+**效果预览：**
+
+<GitContributors :header-level="4" />
+
+### GitChangelog
+
+列出当前页面的变更历史记录。
+
+```vue{4}
+<template>
+  <div vp-content>
+    <Content />
+    <GitChangelog />
+  </div>
+</template>
+```
+
+**效果预览：**
+
+<GitChangelog :header-level="4" />

@@ -1,3 +1,7 @@
+---
+icon: fullscreen
+---
+
 # medium-zoom
 
 <NpmBadge package="@vuepress/plugin-medium-zoom" />
@@ -12,7 +16,7 @@ This plugin has been integrated into the default theme.
 npm i -D @vuepress/plugin-medium-zoom@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 
 export default {
@@ -37,18 +41,6 @@ export default {
   Selector of zoomable images.
 
   By default this plugin will make all images zoomable except those inside `<a>` tags.
-
-### delay
-
-- Type: `number`
-
-- Default: `500`
-
-- Details:
-
-  Delay in milliseconds.
-
-  After navigating to a new page, this plugin will make images zoomable with a delay.
 
 ### zoomOptions
 

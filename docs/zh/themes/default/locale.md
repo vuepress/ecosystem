@@ -1,3 +1,7 @@
+---
+icon: languages
+---
+
 # 语言配置
 
 这些选项用于配置与语言相关的文本。
@@ -48,7 +52,7 @@
 
 - 示例：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   locales: {
     '/': {

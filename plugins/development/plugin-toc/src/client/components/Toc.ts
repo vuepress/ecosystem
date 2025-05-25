@@ -1,16 +1,19 @@
+import type { GetHeadersOptions } from '@vuepress/helper/client'
+import { useHeaders } from '@vuepress/helper/client'
 import type { PropType, VNode } from 'vue'
 import { computed, defineComponent, h, toRefs } from 'vue'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import { RouterLink } from 'vue-router'
 import type { PageHeader } from 'vuepress/client'
-import { RouteLink, usePageData, useRoute } from 'vuepress/client'
+import { RouteLink, useRoute } from 'vuepress/client'
 import type { TocPropsOptions } from '../../shared/index.js'
 
 export type TocPropsHeaders = PageHeader[]
 
 export interface TocProps {
   headers: TocPropsHeaders
-  options: TocPropsOptions
+  headersOptions: GetHeadersOptions
+  propsOptions: TocPropsOptions
 }
 
 const renderLink = (
@@ -104,30 +107,28 @@ export const Toc = defineComponent({
   name: 'Toc',
 
   props: {
-    headers: {
-      type: Array as PropType<TocPropsHeaders | undefined>,
-      default: undefined,
-    },
+    /**
+     * Headers to render the table of contents
+     */
+    headers: Array as PropType<TocPropsHeaders>,
 
-    options: {
-      type: Object as PropType<Partial<TocPropsOptions>>,
-      default: () => ({}),
-    },
+    /**
+     * Get headers options
+     */
+    headersOptions: Object as PropType<GetHeadersOptions>,
+
+    /**
+     * TOC prop options
+     */
+    propsOptions: Object as PropType<Partial<TocPropsOptions>>,
   },
 
   setup(props) {
-    const { headers: propsHeaders, options: propsOptions } = toRefs(props)
+    const { headers, headersOptions, propsOptions } = toRefs(props)
 
+    const pageHeaders = useHeaders(headersOptions)
     const route = useRoute()
-    const page = usePageData()
-    const headers = computed<TocPropsHeaders>(() => {
-      const headersToUse = propsHeaders.value ?? page.value.headers
 
-      // skip h1 header
-      return headersToUse[0]?.level === 1
-        ? headersToUse[0].children
-        : headersToUse
-    })
     const options = computed<TocPropsOptions>(() => ({
       containerTag: 'nav',
       containerClass: 'vuepress-toc',
@@ -141,7 +142,11 @@ export const Toc = defineComponent({
     }))
 
     return () => {
-      const renderedHeaders = renderHeaders(headers.value, options.value, route)
+      const renderedHeaders = renderHeaders(
+        headers.value ?? pageHeaders.value,
+        options.value,
+        route,
+      )
 
       if (options.value.containerTag) {
         return h(

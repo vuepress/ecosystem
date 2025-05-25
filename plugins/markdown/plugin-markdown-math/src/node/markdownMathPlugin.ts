@@ -1,6 +1,5 @@
 import type { MarkdownItKatexOptions } from '@mdit/plugin-katex-slim'
-import { katex } from '@mdit/plugin-katex-slim'
-import type { MathjaxInstance } from '@mdit/plugin-mathjax-slim'
+import { katex, loadMhchem } from '@mdit/plugin-katex-slim'
 import { createMathjaxInstance, mathjax } from '@mdit/plugin-mathjax-slim'
 import { addCustomElement, isModuleAvailable } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
@@ -66,9 +65,9 @@ export const markdownMathPlugin = ({
       }
     },
 
-    extendsMarkdown: (md) => {
+    extendsMarkdown: async (md) => {
       if (mathRenderer === 'mathjax') {
-        md.use<MathjaxInstance>(mathjax, mathjaxInstance!)
+        md.use(mathjax, mathjaxInstance)
         // Reset mathjax style in each render
         md.use((mdIt) => {
           const originalRender = mdIt.render.bind(mdIt)
@@ -82,6 +81,10 @@ export const markdownMathPlugin = ({
           }
         })
       } else {
+        if ((options as MarkdownKatexPluginOptions).mhchem) {
+          await loadMhchem()
+        }
+
         md.use<MarkdownItKatexOptions<MarkdownEnv>>(katex, {
           logger: (errorCode, errorMsg, token, { filePathRelative }) => {
             // Ignore this error
@@ -102,7 +105,6 @@ export const markdownMathPlugin = ({
                 }`,
               )
           },
-          macros: {},
           ...(options as Omit<MarkdownKatexPluginOptions, 'type'>),
           transformer: (content) => content.replace(/^(<[a-z]+ )/g, '$1v-pre '),
         })

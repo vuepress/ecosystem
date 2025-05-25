@@ -1,3 +1,7 @@
+---
+icon: highlighter
+---
+
 # shiki
 
 <NpmBadge package="@vuepress/plugin-shiki" />
@@ -16,7 +20,7 @@ This plugin will enable syntax highlighting for markdown code fence with [Shiki]
 npm i -D @vuepress/plugin-shiki@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 
 export default {
@@ -37,13 +41,11 @@ export default {
 
 - Details:
 
-  Languages of code blocks to be parsed by Shiki.
+  Additional languages to be parsed by Shiki.
 
-  This option will be forwarded to `createHighlighter()` method of Shiki.
+  ::: tip
 
-  ::: warning
-
-  We recommend you to provide the languages list you are using explicitly, otherwise Shiki will load all languages and can affect performance.
+  The plugin now automatically loads the languages used in your markdown files, so you don't need to specify them manually.
 
   :::
 
@@ -170,7 +172,7 @@ export default defineUserConfig({
   title: 'Hello, VuePress',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })
 ```
@@ -186,7 +188,7 @@ export default defineUserConfig({
   title: 'Hello, VuePress',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })
 ```
@@ -392,6 +394,36 @@ body > div {
 }
 ```
 
+### codeBlockTitle
+
+- Type: `boolean | CodeBlockTitleRender`
+
+  ```ts
+  type CodeBlockTitleRender = (title: string, code: string) => string
+  ```
+
+- Default: `true`
+
+- Details: Whether to enable code block title rendering. Add `title="Title"` after the code block <code>\`\`\`</code> to set the title.
+
+  Pass `CodeBlockTitleRender` to customize the title rendering.
+
+- Example:
+
+  **Input:**
+
+  ````md {1}
+  ```ts title="foo/baz.js"
+  console.log('hello')
+  ```
+  ````
+
+  **Output:**
+
+  ```ts title="foo/baz.js"
+  console.log('hello')
+  ```
+
 ### notationDiff
 
 - Type: `boolean`
@@ -578,8 +610,8 @@ body > div {
 
 - Details: Whether enable whitespace characters (Space and Tab).
 
-  - `true`: enable render whitespace, same of `all`
-  - `false`: disable render whitespace
+  - `true`: enable whitespace, but not render any whitespace by default
+  - `false`: completely disable render whitespace, `:whitespace` will not take effect.
   - `'all'`: render all whitespace
   - `'boundary'`: render leading and trailing whitespace of the line
   - `'trailing'`: render trailing whitespace of the line
@@ -668,6 +700,79 @@ body > div {
 
 - Also see：
   - [Shiki > Render Whitespace](https://shiki.style/packages/transformers#transformerrenderwhitespace)
+
+### twoslash
+
+- Type: `boolean | ShikiTwoslashOptions`
+
+  ```ts
+  interface ShikiTwoslashOptions extends TransformerTwoslashOptions {
+    /**
+     * Requires adding `twoslash` to the code block explicitly to run twoslash
+     * @default true
+     */
+    explicitTrigger?: RegExp | boolean
+
+    /**
+     * twoslash options
+     */
+    twoslashOptions?: TransformerTwoslashOptions['twoslashOptions'] &
+      VueSpecificOptions
+
+    /**
+     * The options for caching resolved types
+     * @default true
+     */
+    typesCache?: TwoslashTypesCache | boolean
+  }
+  ```
+
+- Default: `false`
+
+- Details: Whether enable [twoslash](https://github.com/twoslashes/twoslash).
+
+  ::: tip
+
+  For size reasons, the plugin does not include the `@vuepress/shiki-twoslash` package by default. If you want to use it, you need to install it manually.
+
+  :::
+
+- Also see:
+
+  - [Shiki > Twoslash](https://shiki.style/packages/twoslash)
+  - [Twoslash > TransformerTwoslashOptions](https://github.com/shikijs/shiki/blob/main/packages/twoslash/src/types.ts#L30)
+  - [Twoslash > VueSpecificOptions](https://github.com/twoslashes/twoslash/blob/main/packages/twoslash-vue/src/index.ts#L36)
+  - [TwoslashTypesCache](https://github.com/vuepress/ecosystem/blob/main/tools/shiki-twoslash/src/node/options.ts#L47)
+
+- Example:
+
+  **Input:**
+
+  ````md
+  ```ts twoslash
+  const a = 1
+  const b = 2
+  console.log(a + b)
+  ```
+  ````
+
+  **Output:**
+
+  ```ts twoslash
+  const a = 1
+  const b = 23
+  console.log(a + b)
+  ```
+
+  ::: warning
+
+  For code blocks that have `twoslash` enabled:
+
+  - Do not add the `:v-pre` marker in the code block, as this will cause `twoslash` to fail to run properly.
+
+  - To avoid layout conflicts, code blocks will no longer display line numbers.
+
+  :::
 
 ## Advanced Options
 

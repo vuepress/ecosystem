@@ -11,9 +11,12 @@
 div[class*='language-'] {
   .line.diff {
     display: inline-block;
+
     width: 100%;
     margin: 0 calc(-1 * var(--code-padding-x));
     padding: 0 var(--code-padding-x);
+
+    transition: background-color var(--vp-t-color);
 
     &::before {
       position: absolute;

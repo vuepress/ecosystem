@@ -1,3 +1,7 @@
+---
+icon: paintbrush-vertical
+---
+
 # 样式
 
 <NpmBadge package="@vuepress/theme-default" />

@@ -1,3 +1,7 @@
+---
+icon: cable
+---
+
 # Extending
 
 VuePress default theme is widely used by users, so it is designed to be extendable, allowing users to make their own customization with ease.
@@ -22,7 +26,7 @@ With the help of them, you can add or replace content easily. Here comes an exam
 
 Firstly, create a client config file `.vuepress/client.ts`:
 
-```ts
+```ts title=".vuepress/client.ts"
 import { defineClientConfig } from 'vuepress/client'
 import Layout from './layouts/Layout.vue'
 
@@ -67,7 +71,7 @@ Default theme has registered [alias](https://v2.vuepress.vuejs.org/plugin-api.ht
 
 Then, if you want to replace the `HomeFooter.vue` component, just override the alias in your config file `.vuepress/config.ts`:
 
-```ts
+```ts title=".vuepress/config.ts"
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 import { getDirname, path } from 'vuepress/utils'
@@ -87,7 +91,7 @@ export default defineUserConfig({
 
 ## Modifying Behavior
 
-Most of the core behaviors of the default theme have been extracted into a composable API, and also provide [aliases](https://v2.vuepress.vuejs.org/zh/reference/plugin-api.html#alias) with the `@theme` prefix.
+Most of the core behaviors of the default theme have been extracted into a composable API or util function, and also provide [aliases](https://v2.vuepress.vuejs.org/zh/reference/plugin-api.html#alias) with the `@theme` prefix.
 
 For example, if you want to add some default values ​​to the theme data of the default theme, you can override the `useThemeData` function of `@theme/useThemeData`.
 
@@ -95,7 +99,7 @@ For example, if you want to add some default values ​​to the theme data of t
 
 Instead of extending the default theme directly in `.vuepress/config.ts` and `.vuepress/client.ts`, you can also develop your own theme extending the default theme:
 
-```ts
+```ts title=".vuepress/config.ts"
 import type { DefaultThemeOptions } from '@vuepress/theme-default'
 import { defaultTheme } from '@vuepress/theme-default'
 import type { Theme } from 'vuepress/core'

@@ -4,6 +4,9 @@
     "baseUrl": ".",
     "jsx": "preserve",
     "paths": {
+      "@internal/noticeOptions": [
+        "./plugins/plugin-notice/src/client/noticeOptions.d.ts"
+      ],
       "@internal/searchIndex": [
         "./plugins/plugin-search/src/client/searchIndex.d.ts"
       ],
@@ -12,7 +15,8 @@
       ],
       "@theme/*": [
         "./themes/theme-default/src/client/components/*",
-        "./themes/theme-default/src/client/composables/*.js"
+        "./themes/theme-default/src/client/composables/*.js",
+        "./themes/theme-default/src/client/utils/*.js"
       ]
     },
     "types": ["vuepress/client-types", "webpack-env", "vite/client"]

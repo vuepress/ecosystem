@@ -1,4 +1,5 @@
 ---
+icon: lightbulb
 layout: CommentPage
 ---
 
@@ -10,7 +11,7 @@ You can both set options with plugin options on Node side and set options in [cl
 
 ### With Plugin Options
 
-```ts
+```ts title=".vuepress/config.ts"
 import { commentPlugin } from '@vuepress/plugin-comment'
 
 // .vuepress/config.ts

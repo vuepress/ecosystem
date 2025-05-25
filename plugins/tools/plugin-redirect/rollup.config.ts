@@ -2,11 +2,9 @@ import { rollupBundle } from '../../../scripts/rollup.js'
 
 export default [
   ...rollupBundle('cli/index', {
-    external: ['cac'],
+    external: ['commander'],
   }),
-  ...rollupBundle('node/index', {
-    dtsExternal: ['@vuepress/helper/shared'],
-  }),
+  ...rollupBundle('node/index'),
   ...rollupBundle(
     {
       base: 'client',
@@ -14,7 +12,6 @@ export default [
     },
     {
       external: ['@vuepress/plugin-redirect/modal'],
-      dtsExternal: ['@vuepress/helper/shared'],
     },
   ),
 ]

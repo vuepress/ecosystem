@@ -1,3 +1,7 @@
+---
+icon: chart-no-axes-combined
+---
+
 # umami-analytics
 
 <NpmBadge package="@vuepress/plugin-umami-analytics" />
@@ -10,7 +14,7 @@
 npm i -D @vuepress/plugin-umami-analytics@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { umamiAnalyticsPlugin } from '@vuepress/plugin-umami-analytics'
 
 export default {

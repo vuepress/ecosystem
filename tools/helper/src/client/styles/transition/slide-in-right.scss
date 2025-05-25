@@ -1,0 +1,27 @@
+@import './vars.css';
+
+:root {
+  --transition-slide-in-right-offset: -100%;
+}
+
+.slide-in-right {
+  &-leave-active {
+    transition: transform var(--transition-leave-duration)
+      var(--transition-ease-in) !important;
+  }
+
+  &-enter-active {
+    transition: transform var(--transition-enter-duration)
+      var(--transition-ease-out) !important;
+  }
+
+  &-enter-to,
+  &-leave-from {
+    transform: translateX(0) !important;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    transform: translateX(var(--transition-slide-in-right-offset)) !important;
+  }
+}

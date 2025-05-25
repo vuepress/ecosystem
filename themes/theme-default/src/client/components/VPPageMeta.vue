@@ -1,39 +1,45 @@
 <script setup lang="ts">
+import VPAutoLink from '@theme/VPAutoLink.vue'
 import VPEditIcon from '@theme/VPEditIcon.vue'
-import { useContributors } from '@theme/useContributors'
+import { useData } from '@theme/useData'
 import { useEditLink } from '@theme/useEditLink'
-import { useLastUpdated } from '@theme/useLastUpdated'
-import { useThemeLocaleData } from '@theme/useThemeData'
-import { AutoLink } from 'vuepress/client'
+import { useContributors, useLastUpdated } from '@vuepress/plugin-git/client'
 
-const themeLocale = useThemeLocaleData()
+const { frontmatter, themeLocale } = useData()
+const contributors = useContributors(
+  () =>
+    frontmatter.value.contributors ?? themeLocale.value.contributors ?? true,
+)
 const editLink = useEditLink()
-const lastUpdated = useLastUpdated()
-const contributors = useContributors()
+const lastUpdated = useLastUpdated(
+  () => frontmatter.value.lastUpdated ?? themeLocale.value.lastUpdated ?? true,
+)
 </script>
 
 <template>
   <footer class="vp-page-meta">
     <div v-if="editLink" class="vp-meta-item edit-link">
-      <AutoLink class="label" :config="editLink">
+      <VPAutoLink class="label" :config="editLink">
         <template #before>
           <VPEditIcon />
         </template>
-      </AutoLink>
+      </VPAutoLink>
     </div>
 
     <div class="vp-meta-item git-info">
       <div v-if="lastUpdated" class="vp-meta-item last-updated">
-        <span class="meta-item-label">{{ themeLocale.lastUpdatedText }}: </span>
-        <ClientOnly>
-          <span class="meta-item-info">{{ lastUpdated }}</span>
-        </ClientOnly>
+        <span class="meta-item-label"
+          >{{ themeLocale.lastUpdatedText ?? lastUpdated.locale }}:
+        </span>
+        <time
+          class="meta-item-info"
+          :datetime="lastUpdated.iso"
+          data-allow-mismatch
+          >{{ lastUpdated.text }}</time
+        >
       </div>
 
-      <div
-        v-if="contributors && contributors.length"
-        class="vp-meta-item contributors"
-      >
+      <div v-if="contributors.length" class="vp-meta-item contributors">
         <span class="meta-item-label"
           >{{ themeLocale.contributorsText }}:
         </span>
@@ -70,8 +76,7 @@ const contributors = useContributors()
 
   @media print {
     margin: 0 !important;
-    padding-right: 0 !important;
-    padding-left: 0 !important;
+    padding-inline: 0 !important;
   }
 
   @media (max-width: $MQMobile) {
@@ -101,9 +106,9 @@ const contributors = useContributors()
 
   .edit-link {
     margin-top: 0.25rem;
-    margin-right: 0.5rem;
     margin-bottom: 0.25rem;
-    font-size: 14px;
+    margin-inline-end: 0.5rem;
+    font-size: 0.875em;
 
     @media print {
       display: none;
@@ -115,7 +120,7 @@ const contributors = useContributors()
 
       width: 1em;
       height: 1em;
-      margin-right: 0.25em;
+      margin-inline-end: 0.25em;
     }
   }
 
@@ -123,10 +128,10 @@ const contributors = useContributors()
   .contributors {
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
-    font-size: 14px;
+    font-size: 0.875em;
 
     @media (max-width: $MQMobile) {
-      font-size: 13px;
+      font-size: 0.825em;
       text-align: start;
     }
   }

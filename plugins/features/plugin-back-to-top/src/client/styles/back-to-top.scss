@@ -46,7 +46,7 @@
 
 .vp-scroll-progress {
   position: absolute;
-  right: -2px;
+  inset-inline-end: -2px;
   bottom: -2px;
 
   width: 52px;
@@ -62,14 +62,4 @@
     transform: rotate(-90deg);
     transform-origin: 50% 50%;
   }
-}
-
-.back-to-top-enter-active,
-.back-to-top-leave-active {
-  transition: opacity 0.3s;
-}
-
-.back-to-top-enter-from,
-.back-to-top-leave-to {
-  opacity: 0;
 }

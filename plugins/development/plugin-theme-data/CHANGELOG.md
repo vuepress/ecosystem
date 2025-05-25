@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.105](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.104...v2.0.0-rc.105) (2025-05-16)
+
+**Note:** Version bump only for package @vuepress/plugin-theme-data
+
+# [2.0.0-rc.103](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.102...v2.0.0-rc.103) (2025-05-08)
+
+**Note:** Version bump only for package @vuepress/plugin-theme-data
+
+# [2.0.0-rc.102](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.101...v2.0.0-rc.102) (2025-05-07)
+
+**Note:** Version bump only for package @vuepress/plugin-theme-data
+
+# [2.0.0-rc.99](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.98...v2.0.0-rc.99) (2025-05-01)
+
+**Note:** Version bump only for package @vuepress/plugin-theme-data
+
+# [2.0.0-rc.98](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.97...v2.0.0-rc.98) (2025-04-28)
+
+**Note:** Version bump only for package @vuepress/plugin-theme-data
+
+# [2.0.0-rc.97](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.96...v2.0.0-rc.97) (2025-04-28)
+
+**Note:** Version bump only for package @vuepress/plugin-theme-data
+
+# [2.0.0-rc.94](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.93...v2.0.0-rc.94) (2025-04-12)
+
+**Note:** Version bump only for package @vuepress/plugin-theme-data
+
+# [2.0.0-rc.86](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.85...v2.0.0-rc.86) (2025-03-23)
+
+### Features
+
+- **create-vuepress:** handle versions automatically, close [#407](https://github.com/vuepress/ecosystem/issues/407) ([dd02f6b](https://github.com/vuepress/ecosystem/commit/dd02f6b650742f9597d533af2658483d8f5905ed))
+
+# [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
+
+**Note:** Version bump only for package @vuepress/plugin-theme-data
+
+# [2.0.0-rc.77](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.76...v2.0.0-rc.77) (2025-02-16)
+
+**Note:** Version bump only for package @vuepress/plugin-theme-data
+
+# [2.0.0-rc.74](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.73...v2.0.0-rc.74) (2025-01-24)
+
+**Note:** Version bump only for package @vuepress/plugin-theme-data
+
+# [2.0.0-rc.70](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.69...v2.0.0-rc.70) (2025-01-13)
+
+### Bug Fixes
+
+- **plugin-theme-data:** fix devtools plugin ([42a3474](https://github.com/vuepress/ecosystem/commit/42a34748176ac1aae907221de07e6289f6ecadad))
+
 # [2.0.0-rc.69](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.68...v2.0.0-rc.69) (2025-01-07)
 
 **Note:** Version bump only for package @vuepress/plugin-theme-data

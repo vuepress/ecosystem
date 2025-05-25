@@ -1,3 +1,7 @@
+---
+icon: image-play
+---
+
 # photo-swipe
 
 <NpmBadge package="@vuepress/plugin-photo-swipe" />
@@ -10,7 +14,7 @@ This plugin will make the pictures in the body of the page enter the preview mod
 npm i -D @vuepress/plugin-photo-swipe@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
 
 export default {
@@ -115,7 +119,7 @@ In preview mode, you can:
 
 - Example:
 
-  ```ts
+  ```ts title=".vuepress/config.ts"
   import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
   import { defineUserConfig } from 'vuepress'
 
@@ -192,8 +196,6 @@ import { definePhotoSwipeConfig } from '@vuepress/plugin-photo-swipe/client'
 definePhotoSwipeConfig({
   // set photoswipe options here
 })
-
-export default {}
 ```
 
 ## API

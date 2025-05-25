@@ -1,3 +1,7 @@
+---
+icon: fa6-solid:icons
+---
+
 # icon
 
 <NpmBadge package="@vuepress/plugin-icon" />
@@ -10,7 +14,7 @@
 npm i -D @vuepress/plugin-icon@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { iconPlugin } from '@vuepress/plugin-icon'
 
 export default {
@@ -22,15 +26,42 @@ export default {
 }
 ```
 
-我们还支持多种类型的图标：
+我们支持多种类型的图标：
 
 - `iconify`（默认）
 - `fontawesome`
 - `iconfont`
 
-另外，图标类型支持任何图像链接（不支持相对链接）。
+此外，你也可以使用任何图像链接作为图标（不支持相对链接）。
 
 如果你想要一个新的图标类型，请提交一个议题或提交 PR。
+
+在 Markdown 中，你可以使用 `::icon decorators... =size /color key=value complex-key="complex value"...::` 插入自定义图标。
+
+- 以 `=` 开头的字符串将被视为尺寸定义。
+- 以 `/` 开头的字符串将被视为颜色定义。
+- 任何本身是有效 html 属性的字符串将被解析、标准化并添加到图标元素中。
+- 其余部分将被视为图标名称。
+
+```md
+::icon =16 /red:: <!-- <VPIcon class="icon" color="red" size="16px" -->
+
+::icon rotate vertical-align=middle:: <!-- ::icon rotate" vertical-align="middle" -->
+```
+
+::: info 案例
+
+::mdi:home /blue::
+::mdi:apple =2rem vertical-align=text-bottom::
+
+```md
+::mdi:home /blue::
+::mdi:apple =2rem vertical-align=text-bottom::
+```
+
+:::
+
+## 图标类型
 
 ### Iconify
 
@@ -46,8 +77,8 @@ export default {
 如果你主要使用 1 个图标集，可以将前缀设置为图标集名称（例如：`mdi:`），然后你可以使用图标名称而无需前缀。手动声明完整图标名称将覆盖前缀：
 
 ```md
-<VPIcon icon="home" /> <!-- mdi:home -->
-<VPIcon icon="svg-spinners:180-ring" /> <!-- svg-spinners:180-ring -->
+::home:: <!-- mdi:home -->
+::svg-spinners:180-ring:: <!-- svg-spinners:180-ring -->
 ```
 
 ### Font Awesome
@@ -59,26 +90,26 @@ export default {
 实心图标可以直接使用。如果要使用常规或品牌图标，则需要在图标名称前添加 `regular:` 或 `brands:` 前缀：
 
 ```md
-<VPIcon icon="home" /> <!-- fas fa-home (实心是默认的) -->
-<VPIcon icon="solid:home" /> <!-- fas fa-home -->
-<VPIcon icon="regular:heart" /> <!-- far fa-heart -->
-<VPIcon icon="brands:apple" /> <!-- fab fa-apple -->
+::home:: <!-- fas fa-home (实心是默认的) -->
+::solid:home:: <!-- fas fa-home -->
+::regular:heart:: <!-- far fa-heart -->
+::brands:apple:: <!-- fab fa-apple -->
 ```
 
 此外，还支持三个字母前缀、第一个字母或完整类名：
 
 ```md
-<VPIcon icon="s:home" /> <!-- fas fa-home -->
-<VPIcon icon="fas:home" /> <!-- fas fa-home -->
-<VPIcon icon="fa-solid:home" /> <!-- fa-solid fa-home -->
+::s:home:: <!-- fas fa-home -->
+::fas:home:: <!-- fas fa-home -->
+::fa-solid:home:: <!-- fa-solid fa-home -->
 
-<VPIcon icon="b:apple" /> <!-- fab fa-apple -->
-<VPIcon icon="fab:apple" /> <!-- fab fa-apple -->
-<VPIcon icon="fa-brands:apple" /> <!-- fa-brands fa-apple -->
+::b:apple:: <!-- fab fa-apple -->
+::fab:apple:: <!-- fab fa-apple -->
+::fa-brands:apple:: <!-- fa-brands fa-apple -->
 
-<VPIcon icon="r:heart" /> <!-- far fa-heart -->
-<VPIcon icon="far:heart" /> <!-- far fa-heart -->
-<VPIcon icon="fa-regular:heart" /> <!-- fa-regular fa-heart -->
+::r:heart:: <!-- far fa-heart -->
+::far:heart:: <!-- far fa-heart -->
+::fa-regular:heart:: <!-- fa-regular fa-heart -->
 ```
 
 你可以在图标名称后添加其他 fontawesome 支持的类，并用空格分隔，其中 `fa-` 前缀是可选的：
@@ -86,11 +117,11 @@ export default {
 ```md
 <!-- 一个小尺寸 icon -->
 
-<VPIcon icon="home fa-sm" /> <!-- fas fa-home fa-sm -->
+::home fa-sm:: <!-- fas fa-home fa-sm -->
 
 <!-- 旋转 180° -->
 
-<VPIcon icon="home rotate-180" /> <!-- fas fa-home fa-rotate-180 -->
+::home rotate-180:: <!-- fas fa-home fa-rotate-180 -->
 ```
 
 有关所有可用类的详细信息，请参见 <https://docs.fontawesome.com/web/style/styling>。
@@ -162,16 +193,13 @@ export default {
 
 ```md
 <!-- 完整链接 -->
-<VPIcon icon="https://example.com/icon.png" />
+
+::https://example.com/icon.png::
 
 <!-- icon.png 应该放在 .vuepress/public 文件夹中 -->
-<VPIcon icon="/icon.png" />
+
+<VPIcon icon="/icon.png" /> <!-- ::/icon.png:: 是不被支持的，因为它会被解析为颜色 -->
 ```
-
-## 案例
-
-- <VPIcon icon="mdi:home" color="blue" />: 家图标
-- <VPIcon icon="mdi:apple" size="2rem" vertical-align="text-bottom" />: 苹果图标
 
 ## 选项
 
@@ -245,7 +273,7 @@ export default {
 
 ## 组件属性
 
-### icon
+### icon {#icon-prop}
 
 - 类型：`string`
 - 必填： 是
@@ -268,3 +296,13 @@ export default {
 - 类型：`string`
 - 默认值：`-0.125em`
 - 详情： 图标垂直对齐方式
+
+### sizing
+
+- 类型：`'width' | 'height' | 'both'`
+- 默认值：`'height'`
+- 详情： 图标尺寸调整方式
+
+  - `width`：仅设置宽度
+  - `height`：仅设置高度
+  - `both`：设置宽度和高度

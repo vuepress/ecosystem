@@ -1,3 +1,7 @@
+---
+icon: arrow-up-from-line
+---
+
 # Feed Getter
 
 You can take full control of feed items generation by setting `getter` in the plugin options.

@@ -1,7 +1,7 @@
 import type { SearchParamsObject } from 'algoliasearch'
 import type { PropType } from 'vue'
 import { computed, defineComponent, h, onMounted, ref, watch } from 'vue'
-import { usePageLang, useRouteLocale } from 'vuepress/client'
+import { useLang, useRouteLocale } from 'vuepress/client'
 import type { DocSearchOptions } from '../../shared/index.js'
 import {
   useDocSearchHotkeyListener,
@@ -32,7 +32,7 @@ export const DocSearch = defineComponent({
   setup(props) {
     const docSearchOptions = useDocSearchOptions()
     const docsearchShim = useDocSearchShim()
-    const lang = usePageLang()
+    const lang = useLang()
     const routeLocale = useRouteLocale()
 
     const hasInitialized = ref(false)
@@ -53,6 +53,8 @@ export const DocSearch = defineComponent({
      * Import docsearch js and initialize
      */
     const initialize = async (): Promise<void> => {
+      if (__VUEPRESS_SSR__) return
+
       const { default: docsearch } = await import('@docsearch/js')
 
       const { searchParameters } = options.value

@@ -1,7 +1,7 @@
 import { LoadingIcon } from '@vuepress/helper/client'
 import type { VNode } from 'vue'
 import { computed, defineComponent, h, onMounted, ref } from 'vue'
-import { usePageLang } from 'vuepress/client'
+import { useLang } from 'vuepress/client'
 import type {
   GiscusInputPosition,
   GiscusMapping,
@@ -15,18 +15,26 @@ import '../styles/giscus.css'
 // Note: Should be updated with https://github.com/giscus/giscus/tree/main/locales
 const SUPPORTED_LANGUAGES = [
   'ar',
+  'be',
+  'bg',
   'ca',
+  'cs',
   'da',
   'de',
   'en',
   'eo',
   'es',
+  'eu',
   'fa',
   'fr',
+  'gr',
+  'hbs',
   'he',
+  'hu',
   'id',
   'it',
   'ja',
+  'kh',
   'ko',
   'nl',
   'pl',
@@ -39,6 +47,7 @@ const SUPPORTED_LANGUAGES = [
   'uz',
   'vi',
   'zh-CN',
+  'zh-HK',
   'zh-TW',
 ] as const
 
@@ -70,7 +79,9 @@ export default defineComponent({
 
   props: {
     /**
-     * The path of the comment
+     * The identifier of the comment
+     *
+     * 评论标识符
      */
     identifier: {
       type: String,
@@ -87,7 +98,7 @@ export default defineComponent({
 
   setup(props) {
     const giscusOptions = useGiscusOptions()
-    const lang = usePageLang()
+    const lang = useLang()
 
     const enableGiscus = computed(() =>
       Boolean(
@@ -135,6 +146,8 @@ export default defineComponent({
     )
 
     onMounted(async () => {
+      if (__VUEPRESS_SSR__) return
+
       await import(/* webpackChunkName: "giscus" */ 'giscus')
       loaded.value = true
     })

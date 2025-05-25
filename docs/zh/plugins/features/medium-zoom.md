@@ -1,3 +1,7 @@
+---
+icon: fullscreen
+---
+
 # medium-zoom
 
 <NpmBadge package="@vuepress/plugin-medium-zoom" />
@@ -12,7 +16,7 @@
 npm i -D @vuepress/plugin-medium-zoom@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 
 export default {
@@ -37,18 +41,6 @@ export default {
   可缩放的图片的选择器。
 
   默认情况下，该插件会使 `<a>` 标签以外的所有图片都支持缩放。
-
-### delay
-
-- 类型： `number`
-
-- 默认值： `500`
-
-- 详情：
-
-  以毫秒为单位的延迟。
-
-  在切换路由进入一个新页面时，该插件会在一定延迟后才使页面内的图片支持缩放。
 
 ### zoomOptions
 

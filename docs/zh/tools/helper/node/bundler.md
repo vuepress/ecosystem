@@ -1,3 +1,7 @@
+---
+icon: package
+---
+
 # 打包器相关
 
 打包器函数用于在主题和插件中追加或修改打包器选项。
@@ -239,7 +243,7 @@ useCustomDevServer(bundlerOptions, app, {
 
 - addViteConfig
 
-  A function for you to add vite config
+  让你添加 Vite 配置的函数
 
   ```ts
   export const addViteConfig: (
@@ -249,7 +253,7 @@ useCustomDevServer(bundlerOptions, app, {
   ) => void
   ```
 
-  ::: details Example
+  ::: details 示例
 
   ```ts
   import { addViteConfig } from '@vuepress/helper'

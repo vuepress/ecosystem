@@ -15,8 +15,8 @@
     "e2e:dev-webpack": "cross-env E2E_COMMAND=dev E2E_BUNDLER=webpack playwright test"
   },
   "dependencies": {
-    "@vuepress/bundler-vite": "2.0.0-rc.19",
-    "@vuepress/bundler-webpack": "2.0.0-rc.19",
+    "@vuepress/bundler-vite": "catalog:",
+    "@vuepress/bundler-webpack": "catalog:",
     "@vuepress/plugin-blog": "workspace:*",
     "@vuepress/plugin-catalog": "workspace:*",
     "@vuepress/plugin-copyright": "workspace:*",
@@ -30,12 +30,12 @@
     "@vuepress/plugin-theme-data": "workspace:*",
     "@vuepress/plugin-watermark": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
-    "sass-embedded": "^1.83.1",
-    "sass-loader": "^16.0.4",
-    "vue": "^3.5.13",
-    "vuepress": "2.0.0-rc.19"
+    "sass-embedded": "catalog:",
+    "sass-loader": "catalog:",
+    "vue": "catalog:",
+    "vuepress": "catalog:"
   },
   "devDependencies": {
-    "@playwright/test": "^1.49.1"
+    "@playwright/test": "^1.52.0"
   }
 }

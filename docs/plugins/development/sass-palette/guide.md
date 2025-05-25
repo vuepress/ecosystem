@@ -1,3 +1,7 @@
+---
+icon: lightbulb
+---
+
 # Guide
 
 Comparing to [`@vuepress/plugin-palette`](../palette.md), this plugin allows you to:

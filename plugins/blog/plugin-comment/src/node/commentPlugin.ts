@@ -54,7 +54,7 @@ export const commentPlugin =
           ...(options.provider === 'Waline'
             ? {
                 WALINE_LOCALES: userWalineLocales,
-                WALINE_META: options.metaIcon !== false,
+                WALINE_META: options.metaIcon ?? true,
               }
             : {}),
         }

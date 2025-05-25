@@ -1,3 +1,7 @@
+---
+icon: palette
+---
+
 # Reveal.js Themes
 
 ## `auto`

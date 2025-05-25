@@ -1,3 +1,7 @@
+---
+icon: split
+---
+
 # 共享方法
 
 以下函数在 Node.js 和客户端上均可用。
@@ -186,6 +190,7 @@ encodeURIComponent(content) // '%0A%7B%0A%20%20%22type%22%3A%20%22bar%22%2C%0A%2
 - `isLinkWithProtocol(x)`: x 是否是有效的带有协议的 URL。
 - `isLinkExternal(x)`: x 是否是有效的外部 URL。
 - `isLinkAbsolute(x)`: x 是否是有效的绝对 URL。
+- `isLinkRelative(x)`: x 是否不是外部 URL 或绝对 URL。
 - `ensureEndingSlash(x)`: 确保 x 以斜杠结尾。
 - `ensureLeadingSlash(x)`: 确保 x 以斜杠开头。
 - `removeEndingSlash(x)`: 确保 x 不以斜杠结尾。

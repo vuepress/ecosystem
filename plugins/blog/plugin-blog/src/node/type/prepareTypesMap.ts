@@ -21,7 +21,7 @@ export const prepareTypesMap = async (
   await app.writeTemp(
     `blog/type.js`,
     `\
-export const typesMap = ${JSON.stringify(typesMapData)};
+export const typesMap = JSON.parse(${JSON.stringify(JSON.stringify(typesMapData))});
 ${app.env.isDev ? HMR_CODE : ''}
 `,
   )

@@ -1,3 +1,7 @@
+---
+icon: list-tree
+---
+
 # catalog
 
 <NpmBadge package="@vuepress/plugin-catalog" />
@@ -10,7 +14,7 @@ The plugin can automatically generate catalog pages and provide catalog componen
 npm i -D @vuepress/plugin-catalog@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 
 export default {
@@ -24,7 +28,7 @@ export default {
 
 First, you should set catalog info in routeMeta:
 
-```js title=".vuepress/config.js"
+```ts title=".vuepress/config.ts"
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 
 export default {
@@ -41,12 +45,10 @@ export default {
 
 You can then import `defineCatalogInfoGetter` from `@vuepress/plugin-catalog/client` and use it in [client config file][client-config] to extract catalog info from meta.
 
-```js title=".vuepress/client.js"
+```ts title=".vuepress/client.ts"
 import { defineCatalogInfoGetter } from '@vuepress/plugin-catalog/client'
 
 defineCatalogInfoGetter((meta) => (meta.title ? { title: meta.title } : null))
-
-export default {}
 ```
 
 Catalog info should contains:

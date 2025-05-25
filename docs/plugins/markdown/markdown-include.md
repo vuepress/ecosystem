@@ -1,3 +1,7 @@
+---
+icon: between-horizontal-end
+---
+
 # markdown-include
 
 <NpmBadge package="@vuepress/plugin-markdown-include" />
@@ -10,7 +14,7 @@ Add additional features to your markdown includes.
 npm i -D @vuepress/plugin-markdown-include@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
 
 export default {

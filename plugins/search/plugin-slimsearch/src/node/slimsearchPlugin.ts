@@ -16,6 +16,7 @@ import { PathStore } from './pathStore.js'
 import {
   prepareSearchIndex,
   prepareStore,
+  prepareWorkerOptions,
   removeSearchIndex,
   updateSearchIndex,
 } from './prepare.js'
@@ -59,9 +60,6 @@ export const slimsearchPlugin =
           ],
           worker: options.worker ?? 'slimsearch.worker.js',
         },
-        __SLIMSEARCH_SORT_STRATEGY__: JSON.stringify(
-          options.sortStrategy ?? 'max',
-        ),
       },
 
       clientConfigFile: `${CLIENT_FOLDER}config.js`,
@@ -81,10 +79,16 @@ export const slimsearchPlugin =
       },
 
       onPrepared: async (): Promise<void> => {
-        if (app.env.isDev) await prepareSearchIndex(app, searchIndexStore!)
-        await prepareStore(app, store)
+        const { isBuild, isDev } = app.env
+
+        await Promise.all([
+          isDev ? prepareSearchIndex(app, searchIndexStore!) : null,
+          prepareStore(app, store),
+          isDev ? prepareWorkerOptions(app, options) : null,
+        ])
+
         // clean store in build to save memory
-        if (app.env.isBuild) store.clear()
+        if (isBuild) store.clear()
       },
 
       onWatched: (_, watchers): void => {

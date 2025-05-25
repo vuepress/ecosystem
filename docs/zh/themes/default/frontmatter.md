@@ -1,3 +1,7 @@
+---
+icon: captions
+---
+
 # Frontmatter
 
 <NpmBadge package="@vuepress/theme-default" />
@@ -94,7 +98,7 @@ pageClass: custom-page-class
   # Public 文件路径
   heroImage: /images/hero.png
   # URL
-  heroImage: https://vuejs.org/images/logo.png
+  heroImage: https://vuepress.vuejs.org/images/hero.png
   ---
   ```
 

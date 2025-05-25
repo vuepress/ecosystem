@@ -1,3 +1,7 @@
+---
+icon: fa-regular:copyright
+---
+
 # copyright
 
 <NpmBadge package="@vuepress/plugin-copyright" />
@@ -10,7 +14,7 @@ This plugin can automatically append copyright information when visitors copy co
 npm i -D @vuepress/plugin-copyright@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { copyrightPlugin } from '@vuepress/plugin-copyright'
 
 export default {
@@ -154,7 +158,7 @@ So copyright message triggered on another site also points to your preferred sit
 
 - Example:
 
-  ```ts
+  ```ts title=".vuepress/config.ts"
   import { copyrightPlugin } from '@vuepress/plugin-copyright'
 
   export default {

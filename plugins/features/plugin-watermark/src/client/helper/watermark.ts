@@ -9,7 +9,7 @@ import type {
   Ref,
 } from 'vue'
 import { computed, inject, isRef, ref, toValue } from 'vue'
-import { usePageFrontmatter } from 'vuepress/client'
+import { useFrontmatter } from 'vuepress/client'
 import type { WatermarkOptions as WatermarkRawOptions } from 'watermark-js-plus'
 import type { WatermarkPluginFrontmatter } from '../../shared/index.js'
 
@@ -37,6 +37,7 @@ const watermarkOptions = ref<WatermarkOptions>({})
  *
  * @example
  * ```ts
+ * import { useDarkMode } from '@vuepress/helper/client'
  * import { computed } from 'vue'
  *
  * const isDark = useDarkMode()
@@ -74,7 +75,7 @@ export const useWatermarkOptions = (
   options: MaybeRef<WatermarkOptions>,
 ): ComputedRef<WatermarkOptions> => {
   const globalOptions = inject(watermarkSymbol)!
-  const frontmatter = usePageFrontmatter<WatermarkPluginFrontmatter>()
+  const frontmatter = useFrontmatter<WatermarkPluginFrontmatter>()
 
   return computed(() => {
     const { watermark } = frontmatter.value

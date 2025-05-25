@@ -1,3 +1,4 @@
+import { extractInfo, icon, stringifyAttrs } from '@mdit/plugin-icon'
 import { addCustomElement, addViteSsrNoExternal } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 
@@ -17,6 +18,23 @@ export const iconPlugin = (options: IconPluginOptions = {}): Plugin => {
 
       if (iconType === 'iconify')
         addCustomElement(bundlerOptions, app, 'iconify-icon')
+    },
+
+    extendsMarkdown: (md): void => {
+      if (options.markdown ?? true) {
+        md.use(icon, {
+          render: (raw) => {
+            const { attrs, content, color, size } = extractInfo({
+              content: raw,
+            })
+
+            if (color && !attrs.color) attrs.color = color
+            if (size && !attrs.size) attrs.size = size
+
+            return `<${options.component ?? 'VPIcon'} icon="${content}"${stringifyAttrs(attrs)} />`
+          },
+        })
+      }
     },
 
     clientConfigFile: (app) => prepareConfigFile(app, options, iconType),

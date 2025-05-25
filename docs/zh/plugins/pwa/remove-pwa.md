@@ -1,3 +1,7 @@
+---
+icon: trash-2
+---
+
 # remove-pwa
 
 <NpmBadge package="@vuepress/plugin-remove-pwa" />
@@ -24,7 +28,7 @@ PWA 插件，如 [`@vuepress/plugin-pwa`](./pwa/README.md) 将 Service Worker �
 npm i -D @vuepress/plugin-remove-pwa@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { removePwaPlugin } from '@vuepress/plugin-remove-pwa'
 
 export default {

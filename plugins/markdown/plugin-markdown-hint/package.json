@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-hint",
-  "version": "2.0.0-rc.69",
+  "version": "2.0.0-rc.105",
   "description": "VuePress plugin - markdown hint",
   "keywords": [
     "vuepress-plugin",
@@ -39,20 +39,20 @@
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "style": "sass src:lib --embed-sources --style=compressed"
+    "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@mdit/plugin-alert": "^0.14.0",
-    "@mdit/plugin-container": "^0.14.0",
+    "@mdit/plugin-alert": "^0.18.0",
+    "@mdit/plugin-container": "^0.18.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^12.3.0"
-  },
-  "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "@vueuse/core": "catalog:"
   },
   "devDependencies": {
     "markdown-it": "^14.1.0"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

@@ -18,8 +18,8 @@ export const handleRedirectTo = ({ frontmatter }: Page, app: App): void => {
       'script',
       {},
       `{\
-const anchor = window.location.hash.substring(1);\
-location.href=\`${redirectUrl}\${anchor? \`#\${anchor}\`: ""}\`;\
+const anchor = window.location.hash.slice(1);\
+window.location.replace(\`${redirectUrl}\${anchor? \`#\${anchor}\`: ""}\`);\
 }`,
     ])
   }

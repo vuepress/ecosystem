@@ -7,7 +7,7 @@ export type WorkerSearchOptions = Omit<
   'boostDocument' | 'fields' | 'filter' | 'processTerm' | 'tokenize'
 >
 
-export interface MessageData {
+export interface WorkerMessageData {
   /**
    * @default "all"
    */

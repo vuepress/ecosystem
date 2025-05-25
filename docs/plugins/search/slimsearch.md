@@ -1,3 +1,7 @@
+---
+icon: search
+---
+
 # slimsearch
 
 <NpmBadge package="@vuepress/plugin-slimsearch" />
@@ -10,7 +14,7 @@ A powerful client-side search plugin with custom indexing and full-text search s
 npm i -D @vuepress/plugin-slimsearch@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 
 export default {
@@ -63,11 +67,10 @@ Your Markdown content...
 
 You can add author information to the index by setting:
 
-```ts
+```ts title=".vuepress/config.ts"
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
-import { defineUserConfig } from 'vuepress'
 
-export default defineUserConfig({
+export default {
   plugins: [
     slimsearchPlugin({
       customFields: [
@@ -79,7 +82,7 @@ export default defineUserConfig({
       ],
     }),
   ],
-})
+}
 ```
 
 :::
@@ -90,7 +93,7 @@ Supposed you are using the `@vuepress/plugin-git` plugin and you are putting Chi
 
 Then you can set the following to index the update time:
 
-```ts
+```ts title=".vuepress/config.ts"
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 import { defineUserConfig } from 'vuepress'
 
@@ -174,44 +177,9 @@ Customize index fields.
 
 ### hotKeys
 
-- Type: `SearchProHotKeyOptions[]`
+- Type: `(KeyOptions | string)[]`
 
-  ```ts
-  interface SearchProHotKeyOptions {
-    /**
-     * Value of `event.key` to trigger the hot key
-     */
-    key: string
-
-    /**
-     * Whether to press `event.altKey` at the same time
-     *
-     * @default false
-     */
-    alt?: boolean
-
-    /**
-     * Whether to press `event.ctrlKey` at the same time
-     *
-     * @default false
-     */
-    ctrl?: boolean
-
-    /**
-     * Whether to press `event.shiftKey` at the same time
-     *
-     * @default false
-     */
-    shift?: boolean
-
-    /**
-     * Whether to press `event.metaKey` at the same time
-     *
-     * @default false
-     */
-    meta?: boolean
-  }
-  ```
+  @[code ts](@vuepress/helper/src/shared/key.ts)
 
 - Default: `[{ key: "k", ctrl: true }, { key: "/", ctrl: true }]`
 
@@ -327,6 +295,16 @@ Options used to create index per locale, the object keys should be the locale pa
     search: string
 
     /**
+     * Clear search text
+     */
+    clear: string
+
+    /**
+     * Remove current item
+     */
+    remove: string
+
+    /**
      * Searching text
      */
     searching: string
@@ -438,7 +416,7 @@ If you are building a Chinese docs, you can use [nodejs-jieba](https://github.co
 
 If your docs only contain Chinese, you can tokenize the content like this:
 
-```ts
+```ts title=".vuepress/config.ts"
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 import { cut } from 'nodejs-jieba'
 import { defineUserConfig } from 'vuepress'
@@ -462,7 +440,7 @@ export default defineUserConfig({
 
 If you need word splitting in some locales, you can set `indexLocaleOptions`:
 
-```ts
+```ts title=".vuepress/config.ts"
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 import { cut } from 'nodejs-jieba'
 import { defineUserConfig } from 'vuepress'
@@ -604,8 +582,6 @@ defineSearchConfig({
     },
   },
 })
-
-export default {}
 ```
 
 ## Components

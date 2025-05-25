@@ -1,3 +1,7 @@
+---
+icon: search
+---
+
 # search
 
 <NpmBadge package="@vuepress/plugin-search" />
@@ -10,7 +14,7 @@
 npm i -D @vuepress/plugin-search@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { searchPlugin } from '@vuepress/plugin-search'
 
 export default {
@@ -40,7 +44,7 @@ export default {
 
 - 示例：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     searchPlugin({
@@ -62,9 +66,9 @@ export default {
 
 ### hotKeys
 
-- 类型： `(string | HotKeyOptions)[]`
+- 类型： `(string | KeyOptions)[]`
 
-@[code ts](@vuepress/plugin-search/src/shared/hotKey.ts)
+  @[code ts](@vuepress/helper/src/shared/key.ts)
 
 - 默认值： `['s', '/']`
 
@@ -101,7 +105,7 @@ export default {
 
 - 示例：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     searchPlugin({
@@ -126,7 +130,7 @@ export default {
 
 - 示例：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     searchPlugin({

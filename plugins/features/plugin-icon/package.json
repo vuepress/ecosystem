@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-icon",
-  "version": "2.0.0-rc.69",
+  "version": "2.0.0-rc.105",
   "description": "VuePress plugin - icon",
   "keywords": [
     "vuepress-plugin",
@@ -38,15 +38,16 @@
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "style": "sass src:lib --embed-sources --style=compressed"
+    "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
+    "@mdit/plugin-icon": "^0.18.0",
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^12.3.0",
-    "vue": "^3.5.13"
+    "@vueuse/core": "catalog:",
+    "vue": "catalog:"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

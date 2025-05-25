@@ -1,3 +1,7 @@
+---
+icon: lightbulb
+---
+
 # Guide
 
 ## Intro

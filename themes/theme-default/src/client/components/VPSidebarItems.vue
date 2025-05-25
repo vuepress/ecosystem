@@ -17,7 +17,7 @@ onMounted(() => {
 
       // get the active sidebar item DOM, whose href equals to the current route
       const activeSidebarItem = document.querySelector(
-        `.vp-sidebar a.vp-sidebar-item[href="${route.path}${hash}"]`,
+        `.vp-sidebar .vp-sidebar-item.auto-link[href="${route.path}${hash}"]`,
       )
       if (!activeSidebarItem) return
 
@@ -46,7 +46,6 @@ onMounted(() => {
 })
 </script>
 
-<!-- eslint-disable-next-line vue/no-root-v-if -->
 <template>
   <ul v-if="sidebarItems.length" class="vp-sidebar-items">
     <VPSidebarItem
@@ -73,10 +72,6 @@ onMounted(() => {
     margin: 0;
     padding: 0;
     list-style-type: none;
-  }
-
-  a {
-    display: inline-block;
   }
 }
 </style>

@@ -3,6 +3,124 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.105](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.104...v2.0.0-rc.105) (2025-05-16)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.104](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.103...v2.0.0-rc.104) (2025-05-13)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.103](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.102...v2.0.0-rc.103) (2025-05-08)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.102](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.101...v2.0.0-rc.102) (2025-05-07)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.101](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.100...v2.0.0-rc.101) (2025-05-01)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.99](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.98...v2.0.0-rc.99) (2025-05-01)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.98](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.97...v2.0.0-rc.98) (2025-04-28)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.97](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.96...v2.0.0-rc.97) (2025-04-28)
+
+### Bug Fixes
+
+- **plugin-markdown-hint:** fix print style, close [#438](https://github.com/vuepress/ecosystem/issues/438) ([55f8473](https://github.com/vuepress/ecosystem/commit/55f8473dde174fadc94e33d4b794f52fe173774d))
+
+# [2.0.0-rc.94](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.93...v2.0.0-rc.94) (2025-04-12)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.93](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.92...v2.0.0-rc.93) (2025-04-12)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.92](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.91...v2.0.0-rc.92) (2025-04-09)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.91](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.90...v2.0.0-rc.91) (2025-04-01)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.90](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.89...v2.0.0-rc.90) (2025-03-28)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.86](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.85...v2.0.0-rc.86) (2025-03-23)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.85](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.84...v2.0.0-rc.85) (2025-03-17)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.84](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.83...v2.0.0-rc.84) (2025-03-11)
+
+### Bug Fixes
+
+- **plugin-markdown-hint:** remove debug logger ([605857a](https://github.com/vuepress/ecosystem/commit/605857a8c7a2f8acb51e3be157e90938c21f4e87))
+
+# [2.0.0-rc.83](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.82...v2.0.0-rc.83) (2025-03-11)
+
+### Bug Fixes
+
+- **plugin-markdown-hint:** cleanup the `env` passed into `renderInline` ([#397](https://github.com/vuepress/ecosystem/issues/397)) ([f89aa8f](https://github.com/vuepress/ecosystem/commit/f89aa8ff03cdca6345d7ace43a5ef82d7077f1d6))
+
+# [2.0.0-rc.82](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.81...v2.0.0-rc.82) (2025-03-06)
+
+### Bug Fixes
+
+- **plugin-markdown-hint:** fix `env.title` being incorrectly overwritten in `renderInline` ([#390](https://github.com/vuepress/ecosystem/issues/390)) ([41a0493](https://github.com/vuepress/ecosystem/commit/41a04933fbf0f0ee789522a1e6e251f76c939a20))
+
+# [2.0.0-rc.81](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.80...v2.0.0-rc.81) (2025-03-04)
+
+### Bug Fixes
+
+- **plugin-markdown-hint:** fix missing `env` in title inline rendering, close [#380](https://github.com/vuepress/ecosystem/issues/380) ([#381](https://github.com/vuepress/ecosystem/issues/381)) ([4270cd9](https://github.com/vuepress/ecosystem/commit/4270cd9e7759eb13ab66a8ad71f6f4a685eae1cf))
+
+# [2.0.0-rc.80](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.79...v2.0.0-rc.80) (2025-02-24)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.78](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.77...v2.0.0-rc.78) (2025-02-17)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.77](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.76...v2.0.0-rc.77) (2025-02-16)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.74](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.73...v2.0.0-rc.74) (2025-01-24)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.73](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.72...v2.0.0-rc.73) (2025-01-16)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.71](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.70...v2.0.0-rc.71) (2025-01-15)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
+# [2.0.0-rc.70](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.69...v2.0.0-rc.70) (2025-01-13)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-hint
+
 # [2.0.0-rc.69](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.68...v2.0.0-rc.69) (2025-01-07)
 
 ### Bug Fixes

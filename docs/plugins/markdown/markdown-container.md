@@ -1,3 +1,7 @@
+---
+icon: package
+---
+
 # markdown-container
 
 <NpmBadge package="@vuepress/plugin-markdown-container" />
@@ -14,7 +18,7 @@ The [Custom Containers](../../themes/default/markdown.md#custom-containers) of d
 npm i -D @vuepress/plugin-markdown-container@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
 
 export default {
@@ -66,7 +70,7 @@ This plugin can be used multiple times to support different types of containers.
 
 - Example:
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     markdownContainerPlugin({

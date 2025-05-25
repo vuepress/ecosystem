@@ -1,15 +1,15 @@
-import { useThemeLocaleData } from '@theme/useThemeData'
+import { resolveRepoType } from '@theme/resolveRepoType'
+import { useData } from '@theme/useData'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import { isLinkHttp } from 'vuepress/shared'
 import type { NavbarItem } from '../typings.js'
-import { resolveRepoType } from '../utils/index.js'
 
 /**
  * Get navbar config of repository link
  */
 export const useNavbarRepo = (): ComputedRef<NavbarItem[]> => {
-  const themeLocale = useThemeLocaleData()
+  const { themeLocale } = useData()
 
   const repo = computed(() => themeLocale.value.repo)
   const repoType = computed(() =>

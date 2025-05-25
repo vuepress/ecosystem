@@ -1,3 +1,7 @@
+---
+icon: droplet
+---
+
 # watermark
 
 <NpmBadge package="@vuepress/plugin-watermark" />
@@ -12,7 +16,7 @@
 npm i -D @vuepress/plugin-watermark@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { watermarkPlugin } from '@vuepress/plugin-watermark'
 
 export default {
@@ -56,18 +60,6 @@ export default {
 
   默认插入到 body 中，可以指定插入到页面的某个元素中。
 
-### delay
-
-- 类型： `number`
-
-- 默认值： `500`
-
-- 详情：添加水印的延时。以毫秒为单位。
-
-  延迟时间取决于页面过渡动画时间，可以根据实际情况调整。
-
-  如果水印的父元素在切换页面时被重新渲染，那么延迟时间应该比页面过渡时间长一些。
-
 ## Frontmatter
 
 ### watermark
@@ -100,7 +92,7 @@ watermark:
 
 传递给 [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/zh/config/) 的额外配置。
 
-```ts
+```ts title=".vuepress/client.ts"
 import { defineWatermarkConfig } from '@vuepress/plugin-watermark/client'
 
 defineWatermarkConfig({
@@ -112,7 +104,8 @@ defineWatermarkConfig({
 比如需要在 **深色/浅色 模式** 下控制不同的 水印 透明度、字体颜色等，
 或者需要传入如 `onSuccess`、`extraDrawFunc` 等回调函数。
 
-```ts
+```ts title=".vuepress/client.ts"
+import { useDarkMode } from '@vuepress/helper/client'
 import { computed } from 'vue'
 
 export default defineClientConfig({

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-include",
-  "version": "2.0.0-rc.69",
+  "version": "2.0.0-rc.105",
   "description": "VuePress plugin - markdown include",
   "keywords": [
     "vuepress-plugin",
@@ -42,12 +42,12 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@mdit/plugin-include": "^0.14.0",
+    "@mdit/plugin-include": "^0.18.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

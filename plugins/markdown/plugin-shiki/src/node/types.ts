@@ -131,8 +131,8 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
 
   /**
    * Enable whitespace
-   * - true: enable render whitespace, same of `all`
-   * - false: disable render whitespace
+   * - true: enable whitespace, but not render any whitespace by default
+   * - false: disable whitespace completely
    * - 'all': render all whitespace
    * - 'boundary': render leading and trailing whitespace of each line.
    * - 'trailing': render trailing whitespace of each line

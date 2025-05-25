@@ -1,3 +1,7 @@
+---
+icon: arrow-up-to-line
+---
+
 # back-to-top
 
 <NpmBadge package="@vuepress/plugin-back-to-top" />
@@ -12,7 +16,7 @@ This plugin has been integrated into the default theme.
 npm i -D @vuepress/plugin-back-to-top@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
 
 export default {

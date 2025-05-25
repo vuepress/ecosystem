@@ -1,0 +1,52 @@
+{
+  "name": "@vuepress/plugin-meilisearch",
+  "version": "2.0.0-rc.105",
+  "description": "VuePress plugin - built-in meilisearch",
+  "keywords": [
+    "vuepress-plugin",
+    "vuepress",
+    "plugin",
+    "search",
+    "meilisearch"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/plugins/search/meilisearch.html",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/search/plugin-meilisearch"
+  },
+  "license": "MIT",
+  "author": "JQiue",
+  "type": "module",
+  "exports": {
+    ".": "./lib/node/index.js",
+    "./client": "./lib/client/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
+    "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
+  },
+  "dependencies": {
+    "@vuepress/helper": "workspace:*",
+    "meilisearch": "0.50.0",
+    "meilisearch-docsearch": "^0.8.0",
+    "vue": "catalog:"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -11,6 +11,13 @@ export interface MarkdownKatexPluginOptions
    * @default false
    */
   copy?: boolean
+
+  /**
+   * Whether enable mhchem plugin
+   *
+   * @default false
+   */
+  mhchem?: boolean
 }
 
 export interface MarkdownMathjaxPluginOptions

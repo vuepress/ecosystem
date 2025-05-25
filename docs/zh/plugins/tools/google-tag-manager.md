@@ -1,3 +1,7 @@
+---
+icon: logos:google-marketing-platform
+---
+
 # google-tag-manager
 
 <NpmBadge package="@vuepress/plugin-google-tag-manager" />
@@ -12,7 +16,7 @@
 npm i -D @vuepress/plugin-google-tag-manager@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { googleTagManagerPlugin } from '@vuepress/plugin-google-tag-manager'
 
 export default {
@@ -57,7 +61,7 @@ export default {
 
 - 示例：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     googleTagManagerPlugin({

@@ -1,3 +1,7 @@
+---
+icon: settings-2
+---
+
 # Config
 
 ## Basic Config
@@ -107,7 +111,7 @@ Config of this section can be used as normal config, and can also be used in the
 
 - Example 1:
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   theme: defaultTheme({
     navbar: [
@@ -131,7 +135,7 @@ export default {
 
 - Example 2:
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   theme: defaultTheme({
     navbar: [
@@ -205,13 +209,13 @@ export default {
 
 - Example:
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   theme: defaultTheme({
     // public file path
     logo: '/hero.png',
     // url
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 }
 ```
@@ -255,12 +259,12 @@ export default {
 
   This will be used as the link of the _repository link_, which will be displayed as the last item of the navbar.
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   theme: defaultTheme({
     // If you set it in the form of `organization/repository`
     // we will take it as a GitHub repo
-    repo: 'vuejs/vuepress',
+    repo: 'vuepress/ecosystem',
     // You can also set it to a URL directly
     repo: 'https://gitlab.com/foo/bar',
   }),
@@ -295,7 +299,7 @@ export default {
 
 - Example 1:
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   theme: defaultTheme({
     // sidebar array
@@ -327,7 +331,7 @@ export default {
 
 - Example 2:
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   theme: defaultTheme({
     // sidebar object
@@ -351,7 +355,7 @@ export default {
 
 - Example 3:
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   theme: defaultTheme({
     // collapsible sidebar
@@ -427,7 +431,7 @@ export default {
 
 - Example:
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   theme: defaultTheme({
     docsRepo: 'https://gitlab.com/owner/name',

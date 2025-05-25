@@ -13,7 +13,7 @@ interface Article {
   info: ArticleInfo
 }
 
-defineProps<{
+const { items, isTimeline = false } = defineProps<{
   /** Article items */
   items: Article[]
   /** Whether is timeline or not */
@@ -54,7 +54,6 @@ defineProps<{
         <span v-if="info.tag" class="tag">Tag: {{ info.tag.join(', ') }}</span>
       </div>
 
-      <!-- eslint-disable-next-line vue/no-v-html -->
       <div v-if="info.excerpt" class="excerpt" v-html="info.excerpt" />
     </article>
   </div>
@@ -119,15 +118,9 @@ defineProps<{
       transform: scaleX(0);
     }
 
-    &:hover {
-      &::after {
-        visibility: visible;
-        transform: scaleX(1);
-      }
-    }
-
-    a {
-      color: inherit;
+    &:hover::after {
+      visibility: visible;
+      transform: scaleX(1);
     }
   }
 

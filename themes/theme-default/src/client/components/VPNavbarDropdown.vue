@@ -1,23 +1,21 @@
 <script setup lang="ts">
-import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
+import VPAutoLink from '@theme/VPAutoLink.vue'
+import { FadeInExpandTransition } from '@vuepress/helper/client'
 import { useToggle } from '@vueuse/core'
-import { computed, toRefs, watch } from 'vue'
-import { AutoLink, useRoute } from 'vuepress/client'
+import { computed } from 'vue'
+import { onContentUpdated } from 'vuepress/client'
 import type { AutoLinkOptions, NavGroup } from '../../shared/index.js'
 
-const props = defineProps<{
+import '@vuepress/helper/transition/fade-in-height-expand.css'
+
+const { config } = defineProps<{
   /** dropdown config */
   config: NavGroup<AutoLinkOptions | NavGroup<AutoLinkOptions>>
 }>()
 
-const { config } = toRefs(props)
-const route = useRoute()
+const [open, toggleOpen] = useToggle()
 
-const [open, toggleOpen] = useToggle(false)
-
-const dropdownAriaLabel = computed(
-  () => config.value.ariaLabel || config.value.text,
-)
+const dropdownAriaLabel = computed(() => config.ariaLabel || config.text)
 
 const isLastItemOfArray = (arrayItem: unknown, array: unknown[]): boolean =>
   array[array.length - 1] === arrayItem
@@ -35,12 +33,9 @@ const handleDropdown = (e: UIEvent): void => {
   else toggleOpen(false)
 }
 
-watch(
-  () => route.path,
-  () => {
-    toggleOpen(false)
-  },
-)
+onContentUpdated(() => {
+  toggleOpen(false)
+})
 </script>
 
 <template>
@@ -65,7 +60,7 @@ watch(
       <span class="arrow" :class="open ? 'down' : 'right'" />
     </button>
 
-    <VPDropdownTransition>
+    <FadeInExpandTransition>
       <ul v-show="open" class="vp-navbar-dropdown">
         <li
           v-for="child in config.children"
@@ -74,7 +69,7 @@ watch(
         >
           <template v-if="'children' in child">
             <h4 class="vp-navbar-dropdown-subtitle">
-              <AutoLink
+              <VPAutoLink
                 v-if="child.link"
                 :config="child"
                 @focusout="
@@ -98,7 +93,7 @@ watch(
                 :key="grandchild.link"
                 class="vp-navbar-dropdown-subitem"
               >
-                <AutoLink
+                <VPAutoLink
                   :config="grandchild"
                   @focusout="
                     () => {
@@ -116,7 +111,7 @@ watch(
           </template>
 
           <template v-else>
-            <AutoLink
+            <VPAutoLink
               :config="child"
               @focusout="
                 () => {
@@ -129,7 +124,7 @@ watch(
           </template>
         </li>
       </ul>
-    </VPDropdownTransition>
+    </FadeInExpandTransition>
   </div>
 </template>
 
@@ -162,8 +157,8 @@ watch(
 
   .vp-navbar-dropdown-wrapper:not(.mobile) & {
     position: absolute;
+    inset-inline-end: 0;
     top: 100%;
-    right: 0;
 
     display: none;
 
@@ -176,12 +171,12 @@ watch(
     max-height: calc(100vh - 2.7rem);
     margin: 0;
     padding: 0.6rem 0;
-    border: 1px solid var(--vp-c-gutter);
+    border: 1px solid var(--vp-c-divider);
     border-radius: 0.5rem;
 
     background-color: var(--vp-c-bg-elv);
 
-    text-align: left;
+    text-align: start;
     white-space: nowrap;
   }
 }
@@ -240,17 +235,16 @@ watch(
   color: inherit;
   line-height: 1.7rem;
 
-  a {
+  .auto-link {
     position: relative;
 
     display: block;
 
     margin-bottom: 0;
-    padding: 0 1.5rem 0 1.25rem;
+    padding: 0 1.25rem;
     border-bottom: none;
 
     font-weight: 400;
-    line-height: 1.7rem;
 
     &:hover {
       color: var(--vp-c-accent);
@@ -263,20 +257,23 @@ watch(
         content: '';
 
         position: absolute;
+        inset-inline-start: 9px;
         top: calc(50% - 2px);
-        left: 9px;
 
         width: 0;
         height: 0;
         border-top: 3px solid transparent;
         border-bottom: 3px solid transparent;
-        border-left: 5px solid var(--vp-c-accent);
+        border-inline-start: 5px solid var(--vp-c-accent);
       }
     }
   }
 
-  .vp-navbar-dropdown-wrapper.mobile & > a {
-    font-size: 15px;
+  .vp-navbar-items & .auto-link {
+    line-height: 1.7rem;
+  }
+
+  .vp-navbar-dropdown-wrapper.mobile & > .auto-link {
     line-height: 2rem;
   }
 }
@@ -284,7 +281,7 @@ watch(
 .vp-navbar-dropdown-subtitle {
   margin: 0.45rem 0 0;
   padding: 1rem 0 0.45rem;
-  border-top: 1px solid var(--vp-c-gutter);
+  border-top: 1px solid var(--vp-c-divider);
   font-size: 0.9rem;
 
   .vp-navbar-dropdown-wrapper.mobile & {
@@ -293,7 +290,6 @@ watch(
     padding-bottom: 0;
     border-top: 0;
 
-    font-size: 15px;
     line-height: 2rem;
   }
 
@@ -304,10 +300,10 @@ watch(
   }
 
   > span {
-    padding: 0 1.5rem 0 1.25rem;
+    padding-inline: 1.25rem 1.5rem;
   }
 
-  > a {
+  > .auto-link {
     font-weight: inherit;
 
     &.route-link-active {
@@ -327,8 +323,7 @@ watch(
   font-size: 0.9em;
 
   .vp-navbar-dropdown-wrapper.mobile & {
-    padding-left: 1rem;
-    font-size: 14px;
+    padding-inline-start: 1rem;
   }
 }
 </style>

@@ -58,7 +58,7 @@
 
 - Details:
 
-  Darkmode support
+  Dark mode support
 
   - Setting a boolean will set the dark mode according to its value.
   - Set it to `'auto'` will display darkmode due to device settings.
@@ -280,9 +280,8 @@ You can directly configure serializable options in the plugin options:
 
 ```ts title=".vuepress/config.ts"
 import { commentPlugin } from '@vuepress/plugin-comment'
-import { defineUserConfig } from 'vuepress'
 
-export default defineUserConfig({
+export default {
   plugins: [
     commentPlugin({
       provider: 'Waline',
@@ -290,7 +289,7 @@ export default defineUserConfig({
       // ...
     }),
   ],
-})
+}
 ```
 
 ## Client Config

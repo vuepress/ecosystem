@@ -1,3 +1,7 @@
+---
+icon: sigma
+---
+
 # markdown-math
 
 <NpmBadge package="@vuepress/plugin-markdown-math" />
@@ -16,7 +20,7 @@ npm i -D mathjax-full
 npm i -D katex
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 
 export default {

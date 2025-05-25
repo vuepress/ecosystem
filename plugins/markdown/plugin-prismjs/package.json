@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-prismjs",
-  "version": "2.0.0-rc.69",
+  "version": "2.0.0-rc.105",
   "description": "VuePress plugin - prismjs",
   "keywords": [
     "vuepress-plugin",
@@ -40,7 +40,7 @@
   "dependencies": {
     "@vuepress/helper": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
-    "prismjs": "^1.29.0"
+    "prismjs": "^1.30.0"
   },
   "devDependencies": {
     "@types/markdown-it": "^14.1.2",
@@ -48,7 +48,7 @@
     "markdown-it": "^14.1.0"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

@@ -3,6 +3,138 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.105](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.104...v2.0.0-rc.105) (2025-05-16)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
+# [2.0.0-rc.104](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.103...v2.0.0-rc.104) (2025-05-13)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
+# [2.0.0-rc.103](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.102...v2.0.0-rc.103) (2025-05-08)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
+# [2.0.0-rc.102](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.101...v2.0.0-rc.102) (2025-05-07)
+
+### Bug Fixes
+
+- **plugin-git:** fix issues where the plugin is not enabled ([97a54ce](https://github.com/vuepress/ecosystem/commit/97a54ce485a2553bfa68423470560fd2e8cba42c))
+
+# [2.0.0-rc.99](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.98...v2.0.0-rc.99) (2025-05-01)
+
+### Bug Fixes
+
+- **plugin-git:** fix commit body parsing and remove execa ([#447](https://github.com/vuepress/ecosystem/issues/447)) ([df92ae2](https://github.com/vuepress/ecosystem/commit/df92ae25758e52502f86f121fac0d8226131c8fa))
+
+# [2.0.0-rc.98](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.97...v2.0.0-rc.98) (2025-04-28)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
+# [2.0.0-rc.97](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.96...v2.0.0-rc.97) (2025-04-28)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
+# [2.0.0-rc.96](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.95...v2.0.0-rc.96) (2025-04-16)
+
+### Features
+
+- **plugin-git:** sanitize commit messages ([#436](https://github.com/vuepress/ecosystem/issues/436)) ([b00e290](https://github.com/vuepress/ecosystem/commit/b00e2902cdfbafc51530d2ac3025f38d081cb8cd))
+
+# [2.0.0-rc.95](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.94...v2.0.0-rc.95) (2025-04-14)
+
+### Bug Fixes
+
+- **plugin-git:** avoid innerHTML with unsafe commit message ([7141fac](https://github.com/vuepress/ecosystem/commit/7141fac80d9bf71f375a0ae8b628361aa4ef5351))
+
+# [2.0.0-rc.94](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.93...v2.0.0-rc.94) (2025-04-12)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
+# [2.0.0-rc.93](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.92...v2.0.0-rc.93) (2025-04-12)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
+# [2.0.0-rc.92](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.91...v2.0.0-rc.92) (2025-04-09)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
+# [2.0.0-rc.91](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.90...v2.0.0-rc.91) (2025-04-01)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
+# [2.0.0-rc.90](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.89...v2.0.0-rc.90) (2025-03-28)
+
+### Features
+
+- **plugin-git:** add support to find git contributor by email ([#412](https://github.com/vuepress/ecosystem/issues/412)) ([7dd5351](https://github.com/vuepress/ecosystem/commit/7dd53519ac5c0653c50a836219d633c5da14a931))
+- **plugin-git:** improve plugin style ([bfe9a20](https://github.com/vuepress/ecosystem/commit/bfe9a204c4175413007ae5620a46d8be36093e87))
+
+# [2.0.0-rc.88](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.87...v2.0.0-rc.88) (2025-03-26)
+
+### Features
+
+- **plugin-git:** improve contributor a11y and styles ([f7ef750](https://github.com/vuepress/ecosystem/commit/f7ef7501e3d0d44db91694c34e8d5365e6485010))
+
+# [2.0.0-rc.87](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.86...v2.0.0-rc.87) (2025-03-23)
+
+### Bug Fixes
+
+- **plugin-git:** fix define options ([d8f7441](https://github.com/vuepress/ecosystem/commit/d8f7441af649ab79be3f24838c58d225f2d3f42d))
+
+### Features
+
+- **plugin-git:** improve composables and add docs ([#409](https://github.com/vuepress/ecosystem/issues/409)) ([63eb850](https://github.com/vuepress/ecosystem/commit/63eb85083e49e3b4521241c808763ad9cbf0e30d))
+
+# [2.0.0-rc.86](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.85...v2.0.0-rc.86) (2025-03-23)
+
+### Bug Fixes
+
+- **plugin-git:** fix composable issues ([defe05a](https://github.com/vuepress/ecosystem/commit/defe05a9bca30c3141403408fe44d48eeeb39553))
+
+### Features
+
+- **create-vuepress:** handle versions automatically, close [#407](https://github.com/vuepress/ecosystem/issues/407) ([dd02f6b](https://github.com/vuepress/ecosystem/commit/dd02f6b650742f9597d533af2658483d8f5905ed))
+- **plugin-git:** improve tree shaking ([#406](https://github.com/vuepress/ecosystem/issues/406)) ([6d153d4](https://github.com/vuepress/ecosystem/commit/6d153d4c34ce48653d015833e81f51a75c8a5db1))
+
+# [2.0.0-rc.85](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.84...v2.0.0-rc.85) (2025-03-17)
+
+### Features
+
+- **plugin-git:** improve contributors info parsing ([#405](https://github.com/vuepress/ecosystem/issues/405)) ([25fc2c3](https://github.com/vuepress/ecosystem/commit/25fc2c37fa767925ac57e41fa6ac2247d3da152d))
+
+# [2.0.0-rc.84](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.83...v2.0.0-rc.84) (2025-03-11)
+
+### Features
+
+- **plugin-git:** prefer `<time>` tag with time ([#404](https://github.com/vuepress/ecosystem/issues/404)) ([adbf7d1](https://github.com/vuepress/ecosystem/commit/adbf7d14f0875a281ddaecae4206cd04b40fe9ed))
+
+# [2.0.0-rc.83](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.82...v2.0.0-rc.83) (2025-03-11)
+
+### Bug Fixes
+
+- **plugin-git:** fix changelog toggle ([5332efe](https://github.com/vuepress/ecosystem/commit/5332efe7e139656b825a0f10bba4dee63c9f0a11))
+
+### Features
+
+- **plugin-git:** add composables ([#398](https://github.com/vuepress/ecosystem/issues/398)) ([9928363](https://github.com/vuepress/ecosystem/commit/9928363f66f421cef24c4cbe9054286ef8ab3c43))
+
+# [2.0.0-rc.82](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.81...v2.0.0-rc.82) (2025-03-06)
+
+### Features
+
+- **plugin-git:** export global component, close [#389](https://github.com/vuepress/ecosystem/issues/389) ([#391](https://github.com/vuepress/ecosystem/issues/391)) ([acd1493](https://github.com/vuepress/ecosystem/commit/acd1493fa0fb6088a191d1713289b6ec9f3d818f))
+
+# [2.0.0-rc.81](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.80...v2.0.0-rc.81) (2025-03-04)
+
+### Features
+
+- **plugin-git:** add built-in component `<Contributors/>` `<Changelog/>`, close [#375](https://github.com/vuepress/ecosystem/issues/375) ([#384](https://github.com/vuepress/ecosystem/issues/384)) ([56cece7](https://github.com/vuepress/ecosystem/commit/56cece7f085b761724a3a338a0237a22dde92bb4))
+
+# [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
 # [2.0.0-rc.68](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.67...v2.0.0-rc.68) (2024-12-27)
 
 ### Features

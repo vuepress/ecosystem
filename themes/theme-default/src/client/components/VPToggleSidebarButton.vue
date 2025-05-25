@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useThemeLocaleData } from '@theme/useThemeData'
+import { useData } from '@theme/useData'
 
 defineEmits<{ toggle: [] }>()
 
-const themeLocale = useThemeLocaleData()
+const { themeLocale } = useData()
 </script>
 
 <template>
@@ -29,8 +29,8 @@ const themeLocale = useThemeLocaleData()
 
 .vp-toggle-sidebar-button {
   position: absolute;
+  inset-inline-start: 1rem;
   top: 0.6rem;
-  left: 1rem;
 
   display: none;
 
@@ -44,7 +44,7 @@ const themeLocale = useThemeLocaleData()
 
   .icon {
     display: flex;
-    flex-direction: column;
+    flex-flow: column;
     align-items: center;
     justify-content: center;
 

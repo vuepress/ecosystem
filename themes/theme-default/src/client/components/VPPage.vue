@@ -1,18 +1,15 @@
 <script setup lang="ts">
 import VPPageMeta from '@theme/VPPageMeta.vue'
 import VPPageNav from '@theme/VPPageNav.vue'
-import type { VNode } from 'vue'
+import type { Slot } from '@vuepress/helper/client'
 import { Content } from 'vuepress/client'
-import { setupHeaders } from '../composables/index.js'
 
 defineSlots<{
-  'top'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'bottom'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'content-top'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'content-bottom'?: (props: Record<never, never>) => VNode | VNode[] | null
+  'top'?: Slot
+  'bottom'?: Slot
+  'content-top'?: Slot
+  'content-bottom'?: Slot
 }>()
-
-setupHeaders()
 </script>
 
 <template>
@@ -22,7 +19,7 @@ setupHeaders()
     <div vp-content>
       <slot name="content-top" />
 
-      <Content />
+      <Content id="content" />
 
       <slot name="content-bottom" />
     </div>
@@ -47,18 +44,18 @@ setupHeaders()
   padding-bottom: 2rem;
 
   // leave space for sidebar
-  padding-left: var(--sidebar-width);
+  padding-inline-start: var(--sidebar-width);
 
   // narrow desktop / iPad
   @media (max-width: $MQNarrow) {
     // leave space for sidebar
-    padding-left: var(--sidebar-width-mobile);
+    padding-inline-start: var(--sidebar-width-mobile);
   }
 
   // wide mobile
   @media (max-width: $MQMobile) {
     // sidebar is collapsed
-    padding-left: 0;
+    padding-inline-start: 0;
   }
 
   [vp-content] {

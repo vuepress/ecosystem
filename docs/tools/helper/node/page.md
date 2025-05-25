@@ -1,3 +1,7 @@
+---
+icon: panel-top
+---
+
 # Page Related
 
 Common information generator for pages.

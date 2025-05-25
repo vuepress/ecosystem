@@ -1,3 +1,7 @@
+---
+icon: https://artalk.js.org/favicon.png
+---
+
 # Artalk
 
 Artalk 是一款简洁的自托管评论系统，你可以在服务器上轻松部署并置入前端页面中。

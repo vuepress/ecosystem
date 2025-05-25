@@ -1,3 +1,7 @@
+---
+icon: link-2
+---
+
 # active-header-links
 
 <NpmBadge package="@vuepress/plugin-active-header-links" />
@@ -12,7 +16,7 @@
 npm i -D @vuepress/plugin-active-header-links@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 
 export default {

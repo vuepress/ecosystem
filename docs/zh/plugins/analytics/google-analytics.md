@@ -1,3 +1,7 @@
+---
+icon: chart-no-axes-combined
+---
+
 # google-analytics
 
 <NpmBadge package="@vuepress/plugin-google-analytics" />
@@ -12,7 +16,7 @@
 npm i -D @vuepress/plugin-google-analytics@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 
 export default {
@@ -46,7 +50,7 @@ Google Analytics 会 [自动收集部分事件](https://support.google.com/analy
 
 - 示例：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     googleAnalyticsPlugin({
@@ -66,7 +70,7 @@ export default {
 
 - 示例：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     googleAnalyticsPlugin({

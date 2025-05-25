@@ -3,6 +3,153 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.105](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.104...v2.0.0-rc.105) (2025-05-16)
+
+### Features
+
+- add plugin-llms ([#466](https://github.com/vuepress/ecosystem/issues/466)) ([0de62e5](https://github.com/vuepress/ecosystem/commit/0de62e588f53d33a06c6ec9a3708c6b1b7a5be18))
+- improve style ([#469](https://github.com/vuepress/ecosystem/issues/469)) ([f89110e](https://github.com/vuepress/ecosystem/commit/f89110e9f363eb9d05e64b0524a9acd6e3bdf7ad))
+
+# [2.0.0-rc.104](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.103...v2.0.0-rc.104) (2025-05-13)
+
+### Features
+
+- **helper:** improve slot type ([744b5a2](https://github.com/vuepress/ecosystem/commit/744b5a2213441bc32317307ac38f12b5f1d50423))
+
+# [2.0.0-rc.103](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.102...v2.0.0-rc.103) (2025-05-08)
+
+### Features
+
+- **helper:** add `RequiredSlot` type ([d504309](https://github.com/vuepress/ecosystem/commit/d5043095d4b8c4c3a4fa7a08f26d66e2c6d428fc))
+- **helper:** improve slot types ([a156c84](https://github.com/vuepress/ecosystem/commit/a156c84833b1c43296c0b24de8d2dea39f9ea19f))
+
+# [2.0.0-rc.102](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.101...v2.0.0-rc.102) (2025-05-07)
+
+### Features
+
+- **helper:** provide slot types ([#453](https://github.com/vuepress/ecosystem/issues/453)) ([618ad70](https://github.com/vuepress/ecosystem/commit/618ad70c165385978f2c163dce434c38abd8106c))
+
+# [2.0.0-rc.99](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.98...v2.0.0-rc.99) (2025-05-01)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.98](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.97...v2.0.0-rc.98) (2025-04-28)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.97](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.96...v2.0.0-rc.97) (2025-04-28)
+
+### Bug Fixes
+
+- **helper:** fix heading normalize style ([0242dcc](https://github.com/vuepress/ecosystem/commit/0242dccbe16c161d3b5a79a2936db188d26e290b))
+
+# [2.0.0-rc.94](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.93...v2.0.0-rc.94) (2025-04-12)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.93](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.92...v2.0.0-rc.93) (2025-04-12)
+
+### Features
+
+- **helper:** add RenderDefault component ([ad9d080](https://github.com/vuepress/ecosystem/commit/ad9d080c198c7080a3e5ec9ff2289b996b63f692))
+
+# [2.0.0-rc.92](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.91...v2.0.0-rc.92) (2025-04-09)
+
+### Features
+
+- **helper:** add `!important` into transition properties ([#427](https://github.com/vuepress/ecosystem/issues/427)) ([8cfb4ac](https://github.com/vuepress/ecosystem/commit/8cfb4ac7054abce3e79d1230c36d71c730764264))
+- **helper:** add DeepRequired type helper ([3e78f08](https://github.com/vuepress/ecosystem/commit/3e78f081f4e236370db506f4200f5041e0b7e3d9))
+
+# [2.0.0-rc.91](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.90...v2.0.0-rc.91) (2025-04-01)
+
+### Bug Fixes
+
+- **helper:** conditionally apply `mode` prop in `FadeInExpandTransition` ([#423](https://github.com/vuepress/ecosystem/issues/423)) ([36a4d71](https://github.com/vuepress/ecosystem/commit/36a4d7113b2f40e0a20e4b7ce95d47366b15141b))
+
+### Features
+
+- **helper:** add `!important` to transition ([#419](https://github.com/vuepress/ecosystem/issues/419)) ([212345d](https://github.com/vuepress/ecosystem/commit/212345de6281ee74f229bd4e95db0054c6d797ba))
+
+# [2.0.0-rc.90](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.89...v2.0.0-rc.90) (2025-03-28)
+
+### Features
+
+- **helper:** add Message class to handle message ([#417](https://github.com/vuepress/ecosystem/issues/417)) ([48aa1c4](https://github.com/vuepress/ecosystem/commit/48aa1c46034a63b501cc83ae5b51df707cdf4e78))
+- **helper:** add transition helpers with components and styles ([#413](https://github.com/vuepress/ecosystem/issues/413)) ([73b05ea](https://github.com/vuepress/ecosystem/commit/73b05ea3ae6a26626eea5d1fada7ae5d69ac610a))
+
+# [2.0.0-rc.86](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.85...v2.0.0-rc.86) (2025-03-23)
+
+### Features
+
+- **create-vuepress:** handle versions automatically, close [#407](https://github.com/vuepress/ecosystem/issues/407) ([dd02f6b](https://github.com/vuepress/ecosystem/commit/dd02f6b650742f9597d533af2658483d8f5905ed))
+
+# [2.0.0-rc.85](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.84...v2.0.0-rc.85) (2025-03-17)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.83](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.82...v2.0.0-rc.83) (2025-03-11)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.82](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.81...v2.0.0-rc.82) (2025-03-06)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.81](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.80...v2.0.0-rc.81) (2025-03-04)
+
+### Bug Fixes
+
+- **helper:** fix a11y issue with normalize ([81d451b](https://github.com/vuepress/ecosystem/commit/81d451bdbe297397e082499b432e39e74d7e61ba))
+
+### Features
+
+- improve rtl support ([#388](https://github.com/vuepress/ecosystem/issues/388)) ([c2a95d4](https://github.com/vuepress/ecosystem/commit/c2a95d4840571996fc9b5504a91dfbecaede4a71))
+- **plugin-git:** add built-in component `<Contributors/>` `<Changelog/>`, close [#375](https://github.com/vuepress/ecosystem/issues/375) ([#384](https://github.com/vuepress/ecosystem/issues/384)) ([56cece7](https://github.com/vuepress/ecosystem/commit/56cece7f085b761724a3a338a0237a22dde92bb4))
+
+# [2.0.0-rc.80](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.79...v2.0.0-rc.80) (2025-02-24)
+
+### Features
+
+- **helper:** add useHeaders composables and improve header type ([3470520](https://github.com/vuepress/ecosystem/commit/3470520aa7d17324768d197a8ba81b847313bd01))
+
+# [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
+
+### Features
+
+- **helper:** support ref in useLocaleConfig ([97a0975](https://github.com/vuepress/ecosystem/commit/97a0975f7c2ec0bea09b11407a8631d06e0dc293))
+
+# [2.0.0-rc.78](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.77...v2.0.0-rc.78) (2025-02-17)
+
+### Bug Fixes
+
+- **helper:** fix useDarkmode in SSG ([7122dd3](https://github.com/vuepress/ecosystem/commit/7122dd3dbc8436c78f7b44f4879b35c9da87f407))
+
+# [2.0.0-rc.77](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.76...v2.0.0-rc.77) (2025-02-16)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.74](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.73...v2.0.0-rc.74) (2025-01-24)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.73](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.72...v2.0.0-rc.73) (2025-01-16)
+
+### Bug Fixes
+
+- **helper:** fix getHeaders function ([#342](https://github.com/vuepress/ecosystem/issues/342)) ([df653e7](https://github.com/vuepress/ecosystem/commit/df653e780c101150c114c47b3269a4b2af7cbe45))
+
+# [2.0.0-rc.71](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.70...v2.0.0-rc.71) (2025-01-15)
+
+### Features
+
+- **helper:** rebuild loading icon ([0321a54](https://github.com/vuepress/ecosystem/commit/0321a546ac59125affd7e61f8870a7675eaceb9f))
+
+# [2.0.0-rc.70](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.69...v2.0.0-rc.70) (2025-01-13)
+
+### Features
+
+- **helper:** add isLinkRelative ([0568a46](https://github.com/vuepress/ecosystem/commit/0568a46c98c536fca8ff53a5d8451e96ab98e3c9))
+
 # [2.0.0-rc.69](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.68...v2.0.0-rc.69) (2025-01-07)
 
 **Note:** Version bump only for package @vuepress/helper

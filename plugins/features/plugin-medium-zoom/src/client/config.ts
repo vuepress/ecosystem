@@ -1,22 +1,19 @@
-import { wait } from '@vuepress/helper/client'
 import type { ZoomOptions } from 'medium-zoom'
 import mediumZoom from 'medium-zoom'
-import { defineClientConfig } from 'vuepress/client'
-import { mediumZoomSymbol } from './composables/index.js'
+import { defineClientConfig, onContentUpdated } from 'vuepress/client'
+import { mediumZoomSymbol, useMediumZoom } from './composables/index.js'
 
 import './styles/vars.css'
 import './styles/medium-zoom.css'
 
 declare const __MZ_SELECTOR__: string
 declare const __MZ_ZOOM_OPTIONS__: ZoomOptions
-declare const __MZ_DELAY__: number
 
 const selector = __MZ_SELECTOR__
 const zoomOptions = __MZ_ZOOM_OPTIONS__
-const delay = __MZ_DELAY__
 
 export default defineClientConfig({
-  enhance({ app, router }) {
+  enhance({ app }) {
     if (__VUEPRESS_SSR__ || !selector) return
 
     // create zoom instance and provide it
@@ -26,11 +23,13 @@ export default defineClientConfig({
       zoom.attach(sel)
     }
     app.provide(mediumZoomSymbol, zoom)
+  },
 
-    router.afterEach(() => {
-      void wait(delay).then(() => {
-        zoom.refresh()
-      })
+  setup() {
+    const zoom = useMediumZoom()
+
+    onContentUpdated((reason) => {
+      if (reason !== 'beforeUnmount') zoom!.refresh()
     })
   },
 })

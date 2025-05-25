@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
+import { execSync, spawn } from 'node:child_process'
 import { existsSync, readdirSync } from 'node:fs'
-import { resolve } from 'node:path'
+import { resolve as pathResolve } from 'node:path'
 import { confirm, select } from '@inquirer/prompts'
-import { execaCommand, execaCommandSync } from 'execa'
+import type { Command } from 'commander'
 import { KNOWN_THEME_COMMANDS } from './config/index.js'
 import { createPackageJson, generateTemplate } from './flow/index.js'
 import { getLanguage } from './i18n/index.js'
@@ -26,10 +27,11 @@ interface CreateOptions {
 const bundlers: Bundler[] = ['vite', 'webpack']
 const presets: Preset[] = ['blog', 'docs']
 
-export const mainAction = async (
+export async function mainAction(
+  this: Command,
   targetDir: string,
   { bundler, preset, theme = '@vuepress/theme-default' }: CreateOptions,
-): Promise<void> => {
+): Promise<void> {
   // get language
   const { lang, locale } = await getLanguage()
 
@@ -40,9 +42,9 @@ export const mainAction = async (
   const themePackageName = normalizeThemeName(theme)
 
   if (KNOWN_THEME_COMMANDS[themePackageName]) {
-    execaCommandSync(
+    execSync(
       `${packageManager} ${KNOWN_THEME_COMMANDS[themePackageName]} ${targetDir}`,
-      { stdio: 'inherit' },
+      { stdio: 'inherit', encoding: 'utf8' },
     )
 
     return
@@ -52,28 +54,24 @@ export const mainAction = async (
 
   // check bundler
   if (bundler && !['vite', 'webpack'].includes(bundler)) {
-    console.error(locale.error.bundler)
-    return
+    this.error(locale.error.bundler)
   }
 
   // check presets
   if (preset && !['docs', 'blog'].includes(preset)) {
-    console.error(locale.error.preset)
-    return
+    this.error(locale.error.preset)
   }
 
   // check if the user is a noob and warn him
   if (!targetDir || (targetDir.startsWith('[') && targetDir.endsWith(']'))) {
-    console.error(locale.error.dirMissing(packageManager))
-    return
+    this.error(locale.error.dirMissing(packageManager))
   }
 
-  const targetDirPath = resolve(process.cwd(), targetDir)
+  const targetDirPath = pathResolve(process.cwd(), targetDir)
 
   // check if the user is trying to cover his files
   if (existsSync(targetDirPath) && readdirSync(targetDirPath).length) {
-    console.error(locale.error.dirNotEmpty(targetDir))
-    return
+    this.error(locale.error.dirNotEmpty(targetDir))
   }
 
   ensureDirExistSync(targetDirPath)
@@ -129,9 +127,9 @@ export const mainAction = async (
   console.log(locale.flow.install)
   console.warn(locale.hint.install)
 
-  execaCommandSync(
+  execSync(
     `${packageManager} install ${registry ? `--registry ${registry}` : ''}`,
-    { cwd: targetDirPath, stdout: 'inherit' },
+    { cwd: targetDirPath, stdio: 'inherit', encoding: 'utf8' },
   )
 
   console.log(locale.hint.finish)
@@ -147,9 +145,34 @@ export const mainAction = async (
   ) {
     console.log(locale.flow.devServer)
 
-    await execaCommand(`${packageManager} run docs:dev`, {
-      cwd: targetDir,
-      stdout: 'inherit',
+    // Wrap spawn in a Promise for async/await
+    await new Promise<void>((resolve, reject) => {
+      // When shell: true, pass the *entire* command string as the first argument.
+      // The 'args' array is typically ignored or handled differently by the shell itself.
+      const childProcess = spawn(`${packageManager} run docs:dev`, [], {
+        cwd: targetDir,
+        stdio: ['ignore', 'inherit', 'inherit'],
+        shell: true,
+        env: { ...process.env },
+      })
+
+      childProcess.on('error', (error) => {
+        reject(error)
+      })
+
+      childProcess.on('close', (code, signal) => {
+        // 'close' event fires after stdio streams are closed.
+        if (code === 0) {
+          // Success
+          resolve()
+        } else {
+          reject(
+            new Error(
+              `Command failed with exit code ${code ?? 'unknown'} (signal: ${signal ?? 'none'}, code: ${code})`,
+            ),
+          )
+        }
+      })
     })
   } else {
     console.log(locale.hint.devServer(packageManager))

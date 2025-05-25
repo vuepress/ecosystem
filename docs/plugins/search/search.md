@@ -1,3 +1,7 @@
+---
+icon: search
+---
+
 # search
 
 <NpmBadge package="@vuepress/plugin-search" />
@@ -10,7 +14,7 @@ Provide local search to your documentation site.
 npm i -D @vuepress/plugin-search@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { searchPlugin } from '@vuepress/plugin-search'
 
 export default {
@@ -40,7 +44,7 @@ However, when your site has a large number of pages, the size of search index fi
 
 - Example:
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     searchPlugin({
@@ -62,9 +66,9 @@ export default {
 
 ### hotKeys
 
-- Type: `(string | HotKeyOptions)[]`
+- Type: `(string | KeyOptions)[]`
 
-@[code ts](@vuepress/plugin-search/src/shared/hotKey.ts)
+  @[code ts](@vuepress/helper/src/shared/key.ts)
 
 - Default: `['s', '/']`
 
@@ -101,7 +105,7 @@ export default {
 
 - Example:
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     searchPlugin({
@@ -126,7 +130,7 @@ export default {
 
 - Example:
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     searchPlugin({

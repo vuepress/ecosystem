@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-palette",
-  "version": "2.0.0-rc.69",
+  "version": "2.0.0-rc.105",
   "description": "VuePress plugin - palette",
   "keywords": [
     "vuepress-plugin",
@@ -44,7 +44,7 @@
     "chokidar": "^3.6.0"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

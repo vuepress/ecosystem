@@ -1,3 +1,7 @@
+---
+icon: clipboard-copy
+---
+
 # copy-code
 
 <NpmBadge package="@vuepress/plugin-copy-code" />
@@ -12,7 +16,7 @@
 npm i -D @vuepress/plugin-copy-code@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 
 export default {
@@ -50,24 +54,25 @@ export default {
 
   提示消息显示时间，设置为 `0` 会禁用提示。
 
-### delay
-
-- 类型：`number`
-- 默认值：`800`
-- 详情:
-
-  注册复制按钮的延时，单位 ms。
-
-  如果你使用的主题有切换动画，建议配置此选项为 `切换动画时长 + 200`
-
 ### ignoreSelector
 
-- 类型：`string[]`
+- 类型：`string[] | string`
 - 详情:
 
   代码块中的元素选择器，用于在复制时忽略相关元素。
 
   例如: `['.token.comment']` 将忽略代码块中类名为 `.token.comment` 的节点 （这会在 `prismjs` 中忽略注释）。
+
+### inlineSelector
+
+- 类型：`string[] | string | boolean`
+- 默认值：`false`
+- 详情:
+
+  是否在双击时复制行内代码内容。
+
+  - `boolean`: 是否在双击时复制行内代码内容。
+  - `string[] | string`: 选择器，表示需要复制的行内代码内容。
 
 ### transform <Badge type="tip" text="仅限组合式 API" />
 
@@ -125,7 +130,7 @@ export default {
 
 - 示例：
 
-  ```ts
+  ```ts title=".vuepress/config.ts"
   import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 
   export default {

@@ -1,3 +1,7 @@
+---
+icon: chart-no-axes-combined
+---
+
 # baidu-analytics
 
 <NpmBadge package="@vuepress/plugin-baidu-analytics" />
@@ -16,7 +20,7 @@
 npm i -D @vuepress/plugin-baidu-analytics@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { baiduAnalyticsPlugin } from '@vuepress/plugin-baidu-analytics'
 
 export default {

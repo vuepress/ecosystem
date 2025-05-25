@@ -1,3 +1,7 @@
+---
+icon: presentation
+---
+
 # revealjs
 
 <NpmBadge package="@vuepress/plugin-revealjs" />
@@ -220,12 +224,6 @@ Reveal.js 选项，请参见[reveal.js config](https://revealjs.com/config/)，R
 - 默认值：`'SlidePage'`
 - 详情：用于渲染幻灯片的布局组件名称
 
-### delay
-
-- 类型： `number`
-- 默认值：`800`
-- 详情：渲染幻灯片的延迟时间
-
 ## 样式
 
 你可以通过 CSS 变量自定义样式：
@@ -233,7 +231,3 @@ Reveal.js 选项，请参见[reveal.js config](https://revealjs.com/config/)，R
 @[code css](@vuepress/plugin-revealjs/src/client/styles/vars.css)
 
 [client-config]: https://vuejs.press/zh/guide/configuration.html#%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6
-
-```
-
-```

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-comment",
-  "version": "2.0.0-rc.69",
+  "version": "2.0.0-rc.105",
   "description": "VuePress plugin - comment",
   "keywords": [
     "vuepress-plugin",
@@ -27,6 +27,9 @@
     "email": "mister-hope@outlook.com",
     "url": "https://mister-hope.com"
   },
+  "sideEffects": [
+    "./lib/styles/*.css"
+  ],
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
@@ -44,19 +47,19 @@
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "style": "sass src:lib --embed-sources --style=compressed"
+    "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^12.3.0",
+    "@vueuse/core": "catalog:",
     "giscus": "^1.6.0",
-    "vue": "^3.5.13"
+    "vue": "catalog:"
   },
   "peerDependencies": {
-    "@waline/client": "^3.4.3",
-    "artalk": "^2.9.0",
-    "twikoo": "^1.6.39",
-    "vuepress": "2.0.0-rc.19"
+    "@waline/client": "^3.5.5",
+    "artalk": "^2.9.1",
+    "twikoo": "^1.6.41",
+    "vuepress": "catalog:"
   },
   "peerDependenciesMeta": {
     "@waline/client": {

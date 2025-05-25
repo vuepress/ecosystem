@@ -2,7 +2,7 @@ import { LoadingIcon, wait } from '@vuepress/helper/client'
 import { watchImmediate } from '@vueuse/core'
 import type { VNode } from 'vue'
 import { computed, defineComponent, h, nextTick, onMounted, ref } from 'vue'
-import { usePageLang } from 'vuepress/client'
+import { useLang } from 'vuepress/client'
 import { useTwikooOptions } from '../helpers/index.js'
 
 export default defineComponent({
@@ -10,7 +10,9 @@ export default defineComponent({
 
   props: {
     /**
-     * The path of the comment
+     * The identifier of the comment
+     *
+     * 评论标识符
      */
     identifier: {
       type: String,
@@ -20,13 +22,15 @@ export default defineComponent({
 
   setup(props) {
     const twikooOptions = useTwikooOptions()
-    const lang = usePageLang()
+    const lang = useLang()
 
     const loaded = ref(false)
 
     const enableTwikoo = computed(() => Boolean(twikooOptions.value.envId))
 
     const initTwikoo = async (): Promise<void> => {
+      if (__VUEPRESS_SSR__) return
+
       const [{ init }] = await Promise.all([
         import(/* webpackChunkName: "twikoo" */ 'twikoo'),
         wait(twikooOptions.value.delay ?? 800),
@@ -48,6 +52,7 @@ export default defineComponent({
       watchImmediate(
         () => [props.identifier, twikooOptions.value],
         () => initTwikoo(),
+        { flush: 'post' },
       )
     })
 

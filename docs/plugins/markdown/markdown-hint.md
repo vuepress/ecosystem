@@ -1,3 +1,7 @@
+---
+icon: siren
+---
+
 # markdown-hint
 
 <NpmBadge package="@vuepress/plugin-markdown-hint" />
@@ -12,7 +16,7 @@ This plugin has been integrated into the default theme.
 npm i -D @vuepress/plugin-markdown-hint@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { markdownHintPlugin } from '@vuepress/plugin-markdown-hint'
 
 export default {

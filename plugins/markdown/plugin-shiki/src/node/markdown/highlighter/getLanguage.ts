@@ -1,20 +1,20 @@
-import { isSpecialLang } from 'shiki'
 import { colors } from 'vuepress/utils'
 import type { ShikiHighlightOptions } from '../../types.js'
 import { logger, resolveLanguage } from '../../utils.js'
 import type { MarkdownFilePathGetter } from './createMarkdownFilePathGetter.js'
+import type { ShikiLoadLang } from './createShikiHighlighter.js'
 
 const WARNED_LANGS = new Set<string>()
 
 export const getLanguage = (
   lang: string,
-  loadedLanguages: string[],
   { defaultLang, logLevel }: ShikiHighlightOptions,
+  loadLang: ShikiLoadLang,
   markdownFilePathGetter: MarkdownFilePathGetter,
 ): string => {
   let result = resolveLanguage(lang)
 
-  if (result && !loadedLanguages.includes(result) && !isSpecialLang(result)) {
+  if (result && !loadLang(result)) {
     // warn for unknown languages only once
     if (logLevel !== 'silent' && !WARNED_LANGS.has(result)) {
       logger.warn(

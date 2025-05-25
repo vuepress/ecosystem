@@ -1,3 +1,7 @@
+---
+icon: bell
+---
+
 # notice
 
 <NpmBadge package="@vuepress/plugin-notice" />
@@ -10,7 +14,7 @@
 npm i -D @vuepress/plugin-notice@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { noticePlugin } from '@vuepress/plugin-notice'
 
 export default {
@@ -29,7 +33,11 @@ export default {
 一个公告配置包括:
 
 - `title`: 通知标题，支持文本和 HTMLString
-- `content`: 通知内容，支持文本和 HTMLString
+- `content`: 通知内容，支持文本、HTMLString 和 Markdown
+
+  - 使用 `Markdown` 作为内容时，应设置 `contentType` 为 `markdown`
+  - 还可以使用 `contentFile` 指定文件绝对路径，文件格式为 `.md` 或 `.html`，从文件中读取通知内容。
+
 - `actions`: 通知操作
 
   应该是包含以下内容的对象数组:
@@ -45,8 +53,9 @@ export default {
 
 这是一个例子:
 
-```ts
+```ts title=".vuepress/config.ts"
 import { noticePlugin } from '@vuepress/plugin-notice'
+import { path } from 'vuepress/utils'
 
 export default {
   plugins: [
@@ -68,7 +77,21 @@ export default {
         {
           path: '/zh/',
           title: 'Notice Title',
-          content: 'Notice Content',
+          contentType: 'markdown',
+          content: '**Notice Content** [link](https://example.com)',
+          actions: [
+            {
+              text: 'Primary Action',
+              link: 'https://theme-hope.vuejs.press/',
+              type: 'primary',
+            },
+            { text: 'Default Action' },
+          ],
+        },
+        {
+          path: '/example/',
+          title: 'Notice Title',
+          contentFile: path.resolve(__dirname, 'notice.md'),
           actions: [
             {
               text: 'Primary Action',
@@ -129,6 +152,19 @@ export default {
      * 通知内容
      */
     content: string
+
+    /**
+     * 通知内容类型
+     * @default 'html'
+     */
+    contentType?: 'html' | 'markdown'
+
+    /**
+     * 通知内容文件绝对路径, 文件格式支持 `.md` 或 `.html`
+     * 优先使用文件内容作为 `content`
+     * @example '/path/to/notice.md'
+     */
+    contentFile?: string
 
     /**
      * Notice 的 key

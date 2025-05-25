@@ -1,3 +1,7 @@
+---
+icon: github
+---
+
 # Giscus
 
 Giscus is a commenting system based on GitHub Discussion that is easy to start.
@@ -22,7 +26,7 @@ For other options, see [Giscus Config](./config.md).
 
 By default, the theme of Giscus is `light` or `dark` (based on darkmode status).
 
-::: tip Darkmode
+::: tip Dark Mode
 
 To let Giscus apply the correct theme, you need to pass a boolean value to `<CommentService />` via `darkmode` property, indicating whether darkmode is currently enabled.
 

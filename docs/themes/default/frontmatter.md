@@ -1,3 +1,7 @@
+---
+icon: captions
+---
+
 # Frontmatter
 
 <NpmBadge package="@vuepress/theme-default" />
@@ -94,7 +98,7 @@ home: true
 # public file path
 heroImage: /images/hero.png
 # url
-heroImage: https://vuejs.org/images/logo.png
+heroImage: https://vuepress.vuejs.org/images/hero.png
 ---
 ```
 

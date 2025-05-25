@@ -1,3 +1,7 @@
+---
+icon: signpost
+---
+
 # Theme Guidelines
 
 To avoid theme developers and users setting unneeded options, we have a set of guidelines that should be followed when creating a theme.
@@ -80,3 +84,7 @@ Accent color and brand colors which used for interactive components.
 ## Demo
 
 <PaletteDisplay />
+
+<script setup>
+import PaletteDisplay from '@source/.vuepress/components/PaletteDisplay.vue'
+</script>

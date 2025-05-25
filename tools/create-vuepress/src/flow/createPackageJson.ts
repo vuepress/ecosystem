@@ -4,7 +4,7 @@ import { join } from 'node:path'
 import { input } from '@inquirer/prompts'
 import type { CreateLocaleOptions } from '../i18n/index.js'
 import type { PackageManager } from '../utils/index.js'
-import { peerDependencies } from '../utils/index.js'
+import { devDependencies } from '../utils/index.js'
 
 const PACKAGE_NAME_REG =
   /^(?:@[a-z0-9-*~][a-z0-9-*._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/u
@@ -30,18 +30,6 @@ export const createPackageJson = async ({
   bundler,
 }: CreatePackageJsonOptions): Promise<void> => {
   const packageJsonPath = join(targetDir, 'package.json')
-  const devDependencies = {
-    [`@vuepress/bundler-${bundler}`]: '2.0.0-rc.18',
-    '@vuepress/theme-default': peerDependencies['@vuepress/theme-default'],
-    'sass-embedded': '^1.79.5',
-    'vue': '^3.5.12',
-    'vuepress': '2.0.0-rc.18',
-  }
-
-  if (preset === 'blog') {
-    devDependencies['@vuepress/plugin-blog'] =
-      peerDependencies['@vuepress/plugin-blog']
-  }
 
   console.info(locale.flow.createPackage)
 
@@ -83,7 +71,28 @@ export const createPackageJson = async ({
         packageManager === 'npm' ? 'npx' : `${packageManager} dlx`
       } vp-update`,
     },
-    devDependencies,
+    devDependencies: {
+      [`@vuepress/bundler-${bundler}`]: devDependencies.vuepress,
+      '@vuepress/theme-default': devDependencies['@vuepress/theme-default'],
+      'sass-embedded': devDependencies['sass-embedded'],
+      ...(bundler === 'webpack'
+        ? { 'sass-loader': devDependencies['sass-loader'] }
+        : {}),
+      'vue': devDependencies.vue,
+      'vuepress': devDependencies.vuepress,
+      ...(preset === 'blog'
+        ? {
+            '@vuepress/plugin-blog': devDependencies['@vuepress/plugin-blog'],
+          }
+        : {}),
+    },
+    ...(packageManager === 'pnpm'
+      ? {
+          pnpm: {
+            onlyBuiltDependencies: ['esbuild'],
+          },
+        }
+      : {}),
   }
 
   writeFileSync(

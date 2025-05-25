@@ -1,3 +1,7 @@
+---
+icon: highlighter
+---
+
 # shiki
 
 <NpmBadge package="@vuepress/plugin-shiki" />
@@ -16,7 +20,7 @@
 npm i -D @vuepress/plugin-shiki@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 
 export default {
@@ -37,13 +41,11 @@ export default {
 
 - 详情：
 
-  Shiki 要解析的代码块的语言。
+  被 Shiki 解析的额外语言。
 
-  该配置项会被传递到 Shiki 的 `createHighlighter()` 方法中。
+  ::: tip
 
-  ::: warning
-
-  我们建议明确传入所有你使用的语言列表，否则 Shiki 会加载所有语言，并可能影响性能。
+  插件现在会自动加载你的 markdown 文件中使用的语言，所以你不需要手动指定它们。
 
   :::
 
@@ -172,7 +174,7 @@ export default defineUserConfig({
   title: '你好， VuePress',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })
 ```
@@ -188,7 +190,7 @@ export default defineUserConfig({
   title: '你好， VuePress',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })
 ```
@@ -394,6 +396,36 @@ body > div {
 }
 ```
 
+### codeBlockTitle
+
+- 类型：`boolean | CodeBlockTitleRender`
+
+  ```ts
+  type CodeBlockTitleRender = (title: string, code: string) => string
+  ```
+
+- 默认值：`true`
+
+- 详情：是否启用代码块标题渲染。在代码块 <code>\`\`\`</code> 后面添加 `title="标题"` 来设置标题。
+
+  传入 `CodeBlockTitleRender` 以自定义标题渲染。
+
+- 示例：
+
+  **输入：**
+
+  ````md {1}
+  ```ts title="foo/baz.js"
+  console.log('hello')
+  ```
+  ````
+
+  **输出：**
+
+  ```ts title="foo/baz.js"
+  console.log('hello')
+  ```
+
 ### notationDiff
 
 - 类型：`boolean`
@@ -580,8 +612,8 @@ body > div {
 
 - 详情：是否启用空白符（空格 和 Tab）渲染。
 
-  - `true`: 启用空白符渲染，等同于 `all`
-  - `false`: 禁用空白符渲染
+  - `true`: 启用空白符渲染，但默认不渲染任何空白符
+  - `false`: 完全禁用空白符渲染，`:whitespace` 标记不会生效。
   - `'all'`: 渲染所有空白符
   - `'boundary'`: 仅渲染行首行尾的空白符
   - `'trailing'`: 仅渲染行尾的空白符
@@ -670,6 +702,78 @@ body > div {
 
 - 参考：
   - [Shiki > 空白符渲染](https://shiki.tmrs.site/packages/transformers#transformerrenderwhitespace)
+
+### twoslash
+
+- 类型： `boolean | ShikiTwoslashOptions`
+
+  ```ts
+  interface ShikiTwoslashOptions extends TransformerTwoslashOptions {
+    /**
+     * 是否需要显式地将 `twoslash` 添加到代码块中以运行 twoslash
+     * @default true
+     */
+    explicitTrigger?: RegExp | boolean
+
+    /**
+     * twoslash 配置
+     */
+    twoslashOptions?: TransformerTwoslashOptions['twoslashOptions'] &
+      VueSpecificOptions
+
+    /**
+     * 缓存解析后类型
+     * @default true
+     */
+    typesCache?: TwoslashTypesCache | boolean
+  }
+  ```
+
+- 默认值： `false`
+
+- 详情： 是否启用 [twoslash](https://github.com/twoslashes/twoslash).
+
+  ::: tip
+
+  出于体积考虑，该插件默认不包含`@vuepress/shiki-twoslash`包。如需使用，需手动安装。
+
+  :::
+
+- 参考：
+
+  - [Shiki > Twoslash](https://shiki.style/packages/twoslash)
+  - [Twoslash > TransformerTwoslashOptions](https://github.com/shikijs/shiki/blob/main/packages/twoslash/src/types.ts#L30)
+  - [Twoslash > VueSpecificOptions](https://github.com/twoslashes/twoslash/blob/main/packages/twoslash-vue/src/index.ts#L36)
+  - [TwoslashTypesCache](https://github.com/vuepress/ecosystem/blob/main/tools/shiki-twoslash/src/node/options.ts#L47)
+
+- 示例：
+
+  **输入：**
+
+  ````md
+  ```ts twoslash
+  const a = 1
+  const b = 2
+  console.log(a + b)
+  ```
+  ````
+
+  **输出：**
+
+  ```ts twoslash
+  const a = 1
+  const b = 23
+  console.log(a + b)
+  ```
+
+  ::: warning
+
+  对于启用了 `twoslash` 的代码块：
+
+  - 不要在代码块中添加 `:v-pre` 标记, 这会导致 `twoslash` 无法正常运行。
+  - 为避免布局上的冲突，代码块不再显示 **行数** 。
+
+  :::
 
 ## 高级选项
 

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-ext",
-  "version": "2.0.0-rc.69",
+  "version": "2.0.0-rc.105",
   "description": "VuePress plugin - markdown extension",
   "keywords": [
     "vuepress-plugin",
@@ -38,22 +38,22 @@
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "style": "sass src:lib --embed-sources --style=compressed"
+    "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@mdit/plugin-container": "^0.14.0",
-    "@mdit/plugin-footnote": "^0.14.0",
-    "@mdit/plugin-tasklist": "^0.14.0",
+    "@mdit/plugin-container": "^0.18.0",
+    "@mdit/plugin-footnote": "^0.18.0",
+    "@mdit/plugin-tasklist": "^0.18.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
     "js-yaml": "^4.1.0"
   },
-  "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
-  },
   "devDependencies": {
     "@types/js-yaml": "4.0.9",
     "markdown-it": "^14.1.0"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

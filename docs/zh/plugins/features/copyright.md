@@ -1,3 +1,7 @@
+---
+icon: fa-regular:copyright
+---
+
 # copyright
 
 <NpmBadge package="@vuepress/plugin-copyright" />
@@ -10,7 +14,7 @@
 npm i -D @vuepress/plugin-copyright@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { copyrightPlugin } from '@vuepress/plugin-copyright'
 
 export default {
@@ -155,7 +159,7 @@ export default {
 - 详情：版权插件的国际化配置。
 - 示例：
 
-  ```ts
+  ```ts title=".vuepress/config.ts"
   import { copyrightPlugin } from '@vuepress/plugin-copyright'
 
   export default {

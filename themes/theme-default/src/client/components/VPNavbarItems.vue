@@ -1,13 +1,14 @@
 <script setup lang="ts">
+import VPAutoLink from '@theme/VPAutoLink.vue'
 import VPNavbarDropdown from '@theme/VPNavbarDropdown.vue'
+import { useData } from '@theme/useData'
 import { useNavbarConfig } from '@theme/useNavbarConfig'
 import { useNavbarRepo } from '@theme/useNavbarRepo'
 import { useNavbarSelectLanguage } from '@theme/useNavbarSelectLanguage'
-import { useThemeLocaleData } from '@theme/useThemeData'
 import { DeviceType, useUpdateDeviceStatus } from '@theme/useUpdateDeviceStatus'
 import { computed, ref } from 'vue'
-import { AutoLink } from 'vuepress/client'
 
+const { themeLocale } = useData()
 const navbarConfig = useNavbarConfig()
 const navbarSelectLanguage = useNavbarSelectLanguage()
 const navbarRepo = useNavbarRepo()
@@ -15,7 +16,6 @@ const navbarRepo = useNavbarRepo()
 const isMobile = ref(false)
 
 const navbarLabel = computed(() => {
-  const themeLocale = useThemeLocaleData()
   return themeLocale.value.navbarLabel ?? 'site navigation'
 })
 
@@ -34,7 +34,6 @@ useUpdateDeviceStatus(
 )
 </script>
 
-<!-- eslint-disable-next-line vue/no-root-v-if -->
 <template>
   <nav
     v-if="navbarLinks.length"
@@ -47,7 +46,7 @@ useUpdateDeviceStatus(
         :class="{ mobile: isMobile }"
         :config="item"
       />
-      <AutoLink v-else :config="item" />
+      <VPAutoLink v-else :config="item" />
     </div>
   </nav>
 </template>
@@ -62,8 +61,7 @@ useUpdateDeviceStatus(
     display: none;
   }
 
-  a {
-    display: inline-block;
+  .auto-link {
     color: inherit;
     line-height: 1.4rem;
 
@@ -77,25 +75,27 @@ useUpdateDeviceStatus(
 .vp-navbar-item {
   position: relative;
   display: inline-block;
-  margin-left: 1.5rem;
+  margin-inline-start: 1.5rem;
   line-height: var(--navbar-line-height);
 
   @media (max-width: $MQMobile) {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 
   &:first-child {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 
-  a {
+  .auto-link {
     &:hover,
     &.route-link-active {
       color: var(--vp-c-accent);
     }
   }
 
-  > a {
+  > .auto-link {
+    display: inline-block;
+
     &:hover,
     &.route-link-active {
       margin-bottom: -2px;

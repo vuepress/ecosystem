@@ -1,7 +1,7 @@
 .search-box {
   position: relative;
   display: inline-block;
-  margin-left: 1rem;
+  margin-inline-start: 1rem;
 
   @media print {
     display: none;
@@ -12,8 +12,9 @@
 
     width: var(--search-input-width);
     height: 2rem;
-    padding: 0 0.5rem 0 2rem;
-    border: 1px solid var(--search-c-border);
+    padding-block: 0;
+    padding-inline: 2rem 0.5rem;
+    border: 1px solid var(--search-c-divider);
     border-radius: 2rem;
 
     background: var(--search-c-bg) url('search.svg') 0.6rem 0.5rem no-repeat;
@@ -42,7 +43,7 @@
       cursor: auto;
 
       @media (max-width: 719px) {
-        left: 0;
+        inset-inline-start: 0;
         width: 10rem;
         cursor: text;
       }
@@ -55,19 +56,19 @@
 
   .suggestions {
     position: absolute;
+    inset-inline-end: 0;
     top: 2rem;
-    right: 0;
 
     width: var(--search-result-width);
     padding: 0.4rem;
-    border: 1px solid var(--search-c-border);
+    border: 1px solid var(--search-c-divider);
     border-radius: 6px;
 
     background: var(--search-c-bg);
     list-style-type: none;
 
     @media (max-width: 419px) {
-      right: -0.5rem;
+      inset-inline-end: -0.5rem;
       width: calc(100vw - 4rem);
     }
   }
@@ -96,7 +97,7 @@
     }
 
     .page-header {
-      margin-left: 0.25em;
+      margin-inline-start: 0.25em;
       font-size: 0.9em;
     }
   }

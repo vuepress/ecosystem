@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import VPAutoLink from '@theme/VPAutoLink.vue'
+import { useData } from '@theme/useData'
 import { useNavigate } from '@theme/useNavigate'
 import { useRelatedLinks } from '@theme/useRelatedLinks'
-import { useThemeLocaleData } from '@theme/useThemeData'
 import { useEventListener } from '@vueuse/core'
 import { computed } from 'vue'
-import { AutoLink } from 'vuepress/client'
 
-const themeLocale = useThemeLocaleData()
+const { themeLocale } = useData()
 const navigate = useNavigate()
 
 const { prevLink, nextLink } = useRelatedLinks()
@@ -32,32 +32,31 @@ useEventListener('keydown', (event): void => {
 })
 </script>
 
-<!-- eslint-disable-next-line vue/no-root-v-if -->
 <template>
   <nav
     v-if="prevLink || nextLink"
     class="vp-page-nav"
     :aria-label="navbarLabel"
   >
-    <AutoLink v-if="prevLink" class="prev" :config="prevLink">
+    <VPAutoLink v-if="prevLink" class="prev" :config="prevLink">
       <div class="hint">
         <span class="arrow left" />
         {{ themeLocale.prev ?? 'Prev' }}
       </div>
       <div class="link">
-        <span>{{ prevLink.text }}</span>
+        <span class="external-link">{{ prevLink.text }}</span>
       </div>
-    </AutoLink>
+    </VPAutoLink>
 
-    <AutoLink v-if="nextLink" class="next" :config="nextLink">
+    <VPAutoLink v-if="nextLink" class="next" :config="nextLink">
       <div class="hint">
         {{ themeLocale.next ?? 'Next' }}
         <span class="arrow right" />
       </div>
       <div class="link">
-        <span>{{ nextLink.text }}</span>
+        <span class="external-link">{{ nextLink.text }}</span>
       </div>
-    </AutoLink>
+    </VPAutoLink>
   </nav>
 </template>
 
@@ -70,34 +69,40 @@ useEventListener('keydown', (event): void => {
 
   max-width: var(--content-width, 740px);
   min-height: 2rem;
+  margin-inline: auto;
   margin-top: 0;
-  margin-right: auto;
-  margin-left: auto;
   padding: 1rem 2rem 0;
-  border-top: 1px solid var(--vp-c-gutter);
+  border-top: 1px solid var(--vp-c-divider);
 
   transition: border-top var(--vp-t-color);
 
   @media (max-width: $MQNarrow) {
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding-inline: 1rem;
   }
 
   @media print {
     display: none;
   }
 
-  .route-link {
+  .auto-link {
     display: inline-block;
     flex-grow: 1;
 
     margin: 0.25rem;
     padding: 0.25rem 0.5rem;
-    border: 1px solid var(--vp-c-gutter);
+    border: 1px solid var(--vp-c-divider);
     border-radius: 0.25rem;
 
     &:hover {
       background: var(--vp-c-control);
+    }
+
+    &.external-link::after {
+      display: none;
+    }
+
+    &:not(.external-link) .external-link::after {
+      display: none;
     }
 
     .hint {

@@ -1,25 +1,26 @@
 #!/usr/bin/env node
-import { cac } from 'cac'
+import { createCommand } from 'commander'
 import { mainAction } from './action.js'
 import { version } from './utils/index.js'
 
-const cli = cac('create-vuepress')
+const program = createCommand('create-vuepress')
 
-cli
-  .command('[dir]', 'Generate a new vuepress project in [dir]')
-  .option('-t, --theme <theme>', 'Theme to use')
-  .option('-p, --preset <preset>', 'Preset to use, can be docs or blog')
-  .usage(
+program
+  .argument('<dir>', 'Dir to create the template in')
+  .option('-t, --theme [theme]', 'Theme to use')
+  .option('-p, --preset [preset]', 'Preset to use, docs or blog only')
+  .description(
     `\
-[dir]
+Generate a new vuepress template
 
-Generate vuepress template in dir.`,
+· pnpm create vuepress <dir>
+· npm init vuepress@latest <dir>
+· yarn create vuepress <dir>
+`,
   )
-  .example('vuepress-project')
   .action(mainAction)
 
-cli.help()
+program.version(version)
+program.showHelpAfterError('add --help for additional information')
 
-cli.version(version)
-
-cli.parse()
+await program.parseAsync()

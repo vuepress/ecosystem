@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import VPNavbarItems from '@theme/VPNavbarItems.vue'
 import VPSidebarItems from '@theme/VPSidebarItems.vue'
-import type { VNode } from 'vue'
+import type { Slot } from '@vuepress/helper/client'
 
 defineSlots<{
-  top?: (props: Record<never, never>) => VNode | VNode[] | null
-  bottom?: (props: Record<never, never>) => VNode | VNode[] | null
+  top?: Slot
+  bottom?: Slot
 }>()
 </script>
 
@@ -23,11 +23,11 @@ defineSlots<{
 
 .vp-sidebar {
   position: fixed;
+  inset-inline-start: 0;
 
   // leave space for navbar
   top: var(--navbar-height);
   bottom: 0;
-  left: 0;
   z-index: 10;
 
   overflow-y: auto;
@@ -35,24 +35,24 @@ defineSlots<{
   box-sizing: border-box;
   width: var(--sidebar-width);
   margin: 0;
-  border-right: 1px solid var(--vp-c-border);
+  border-inline-end: 1px solid var(--vp-c-border);
 
   background-color: var(--vp-sidebar-c-bg);
 
-  font-size: 16px;
+  font-size: 1rem;
 
   transition:
     transform var(--vp-t-transform),
     background-color var(--vp-t-color),
     border-color var(--vp-t-color);
 
-  scrollbar-color: var(--vp-c-accent-bg) var(--vp-c-gutter);
+  scrollbar-color: var(--vp-c-accent-bg) var(--vp-c-divider);
   scrollbar-width: thin;
 
   // narrow desktop / iPad
   @media (max-width: $MQNarrow) {
     width: var(--sidebar-width-mobile);
-    font-size: 15px;
+    font-size: 0.9rem;
   }
 
   // wide mobile
@@ -62,6 +62,10 @@ defineSlots<{
     // leave space for navbar
     padding-top: var(--navbar-height);
     transform: translateX(-100%);
+
+    [dir='rtl'] & {
+      transform: translateX(100%);
+    }
   }
 
   &::-webkit-scrollbar {
@@ -69,7 +73,7 @@ defineSlots<{
   }
 
   &::-webkit-scrollbar-track {
-    background-color: var(--vp-c-gutter);
+    background-color: var(--vp-c-divider);
   }
 
   &::-webkit-scrollbar-thumb {
@@ -80,13 +84,13 @@ defineSlots<{
   .vp-navbar-items {
     display: none;
     padding: 0.5rem 0 0.75rem;
-    border-bottom: 1px solid var(--vp-c-gutter);
+    border-bottom: 1px solid var(--vp-c-divider);
     transition: border-color var(--vp-t-color);
 
     @media (max-width: $MQMobile) {
       display: block;
 
-      .vp-navbar-dropdown-item a.route-link-active::after {
+      .vp-navbar-dropdown-item .route-link-active::after {
         top: calc(1rem - 2px);
       }
     }
@@ -97,7 +101,7 @@ defineSlots<{
       list-style-type: none;
     }
 
-    a {
+    .auto-link {
       font-weight: 600;
     }
   }
@@ -105,7 +109,10 @@ defineSlots<{
   // override styles
   .vp-navbar-item {
     display: block;
-    padding: 0.5rem 0 0.5rem 1.5rem;
+
+    padding-block: 0.5rem;
+    padding-inline: 1.5rem 0;
+
     font-size: 1.1em;
     line-height: 1.25rem;
   }

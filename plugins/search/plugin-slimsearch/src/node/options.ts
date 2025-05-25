@@ -1,9 +1,10 @@
+import type { KeyOptions } from '@vuepress/helper'
 import type { LocaleConfig, Page } from 'vuepress/core'
 
 import type {
   SlimSearchCustomFieldFormatter,
-  SlimSearchKeyOptions,
   SlimSearchLocaleData,
+  SlimSearchSortStrategy,
 } from '../shared/index.js'
 
 export interface SlimSearchIndexOptions {
@@ -138,7 +139,7 @@ export interface SlimSearchPluginOptions {
    *   { key: "/", ctrl: true },
    *  ]
    */
-  hotKeys?: SlimSearchKeyOptions[]
+  hotKeys?: (KeyOptions | string)[]
 
   /**
    * Output worker filename
@@ -176,7 +177,7 @@ export interface SlimSearchPluginOptions {
    *
    * @default "max"
    */
-  sortStrategy?: 'max' | 'total'
+  sortStrategy?: SlimSearchSortStrategy
 
   /**
    * Create Index option

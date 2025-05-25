@@ -18,7 +18,7 @@
   --vp-c-text-subtle: rgb(60 60 67 / 56%);
 
   // border colors
-  --vp-c-gutter: #e2e2e3;
+  --vp-c-divider: #e2e2e3;
   --vp-c-border: #c2c2c4;
   --vp-c-border-hard: #b8b8ba;
 
@@ -54,9 +54,9 @@
   --badge-c-note-bg: var(--vp-c-grey-soft);
 
   // font vars
-  --font-family: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', roboto,
-    oxygen, ubuntu, cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  --font-family:
+    -apple-system, 'BlinkMacSystemFont', 'Segoe UI', roboto, oxygen, ubuntu,
+    cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 
   // layout vars
   --navbar-height: 3.6rem;

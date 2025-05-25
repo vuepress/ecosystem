@@ -1,8 +1,12 @@
+---
+icon: between-horizontal-end
+---
+
 # markdown-include
 
 <NpmBadge package="@vuepress/plugin-markdown-include" />
 
-向你的 Markdown 图像添加附加功能。
+向你的 VuePress 添加导入文件功能。
 
 ## 使用方法
 
@@ -10,7 +14,7 @@
 npm i -D @vuepress/plugin-markdown-include@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
 
 export default {

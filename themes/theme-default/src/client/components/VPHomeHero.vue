@@ -1,18 +1,13 @@
 <script setup lang="ts">
+import VPAutoLink from '@theme/VPAutoLink.vue'
 import { useDarkMode } from '@theme/useDarkMode'
+import { useData } from '@theme/useData'
 import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
-import {
-  AutoLink,
-  ClientOnly,
-  usePageFrontmatter,
-  useSiteLocaleData,
-  withBase,
-} from 'vuepress/client'
+import { ClientOnly, withBase } from 'vuepress/client'
 import type { DefaultThemeHomePageFrontmatter } from '../../shared/index.js'
 
-const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
-const siteLocale = useSiteLocaleData()
+const { frontmatter, siteLocale } = useData<DefaultThemeHomePageFrontmatter>()
 const isDarkMode = useDarkMode()
 
 const heroText = computed(() => {
@@ -48,10 +43,9 @@ const actions = computed(() => {
     return []
   }
 
-  return frontmatter.value.actions.map(({ text, link, type = 'primary' }) => ({
-    text,
-    link,
+  return frontmatter.value.actions.map(({ type = 'primary', ...rest }) => ({
     type,
+    ...rest,
   }))
 })
 
@@ -88,7 +82,7 @@ const HomeHeroImage: FunctionalComponent = () => {
     </p>
 
     <p v-if="actions.length" class="vp-hero-actions">
-      <AutoLink
+      <VPAutoLink
         v-for="action in actions"
         :key="action.text"
         class="vp-hero-action-button"
@@ -175,6 +169,7 @@ const HomeHeroImage: FunctionalComponent = () => {
   }
 
   &:hover {
+    background-color: var(--vp-c-accent-hover);
     color: var(--vp-c-accent-text);
   }
 

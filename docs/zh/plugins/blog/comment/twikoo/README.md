@@ -1,7 +1,8 @@
 ---
-title: Twikoo
-icon: t
+icon: https://twikoo.js.org/twikoo-logo-mini.png
 ---
+
+# Twikoo
 
 一个简洁、安全、免费的静态网站评论系统，基于 [腾讯云开发](https://curl.qcloud.com/KnnJtUom)。
 

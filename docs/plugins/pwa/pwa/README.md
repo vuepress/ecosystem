@@ -1,3 +1,7 @@
+---
+icon: layout-grid
+---
+
 # pwa
 
 <NpmBadge package="@vuepress/plugin-pwa" />

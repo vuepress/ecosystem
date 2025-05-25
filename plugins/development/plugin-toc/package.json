@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-toc",
-  "version": "2.0.0-rc.66",
+  "version": "2.0.0-rc.105",
   "description": "VuePress plugin - toc",
   "keywords": [
     "vuepress-plugin",
@@ -36,11 +36,12 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "@vuepress/helper": "workspace:*",
+    "vue": "catalog:",
+    "vue-router": "^4.5.1"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

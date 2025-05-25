@@ -1,3 +1,7 @@
+---
+icon: pajamas:progress
+---
+
 # nprogress {#nprogress-plugin}
 
 <NpmBadge package="@vuepress/plugin-nprogress" />
@@ -12,7 +16,7 @@ This plugin has been integrated into the default theme.
 npm i -D @vuepress/plugin-nprogress@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { nprogressPlugin } from '@vuepress/plugin-nprogress'
 
 export default {

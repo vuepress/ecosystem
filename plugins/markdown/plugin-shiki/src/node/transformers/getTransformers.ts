@@ -19,7 +19,9 @@ import {
 } from './vuepressTransformers.js'
 
 export const getTransformers = (
-  options: ShikiHighlightOptions,
+  options: ShikiHighlightOptions & {
+    twoslash?: boolean
+  },
 ): ShikiTransformer[] => {
   const transformers: ShikiTransformer[] = []
 
@@ -61,11 +63,9 @@ export const getTransformers = (
 
 export const whitespaceTransformer = (
   meta: string,
-  defaultPosition: WhitespacePosition | boolean = false,
+  globalOption: WhitespacePosition | true = true,
 ): ShikiTransformer[] => {
-  const position = resolveWhitespacePosition(meta, defaultPosition)
-  // disable current code block
-  if (position === false) return []
+  const position = resolveWhitespacePosition(meta, globalOption)
 
-  return [transformerRenderWhitespace({ position })]
+  return position ? [transformerRenderWhitespace({ position })] : []
 }
