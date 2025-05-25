@@ -144,7 +144,7 @@ docker run -t --rm \
 
 抓取完成后，MeiliSearch 将更新现有索引以包含最新的文档内容。
 
-抓取器每次都会将索引删除并重新创建，在这个过程中所有的文档都将被删除并重新添加，这对过多的文档来说可能会很慢。所以我们的 `jqiue/docs-scraper` 允许你提供 `only_urls` 只抓取变更的文档内容时。
+抓取器每次都会将索引删除并重新创建，在这个过程中所有的文档都将被删除并重新添加，这对过多的文档来说可能会很慢。所以我们的 `jqiue/docs-scraper` 允许你提供 `only_urls` 只抓取变更的文档内容。
 
 插件提供了一个 CLI 帮助程序来生成 `only_urls`，因此可以在 CI 或 Git Hooks 中添加 `vp-meilisearch-scrapper <docsDir> <scraperPath>` 来自动为你的抓取器配置文件生成 `only_urls`。
 
