@@ -18,9 +18,9 @@ export const getLocaleRedirectHTML = (
   <title>Redirecting...</title>
   <script>
     const { hash, origin, pathname } = window.location;
-    const routePath = pathname.substring(${base.length});
+    const routePath = pathname.slice(${base.length});
     const { languages } = window.navigator;
-    const anchor = hash.substring(1);
+    const anchor = hash.slice(1);
 
     const config = ${JSON.stringify(config)};
     const availableLocales = ${JSON.stringify(availableLocales)};

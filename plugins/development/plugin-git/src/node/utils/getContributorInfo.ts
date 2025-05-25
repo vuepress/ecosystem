@@ -4,10 +4,14 @@ const toArray = <T = unknown>(value?: T | T[]): T[] =>
   Array.isArray(value) ? value : value ? [value] : []
 
 export const getContributorInfo = (
-  contributorName: string,
+  contributor: { name: string; email?: string },
   infos: ContributorInfo[] = [],
 ): ContributorInfo | null =>
   infos.find(
-    ({ username, alias }) =>
-      username === contributorName || toArray(alias).includes(contributorName),
+    ({ username, alias, email, emailAlias }) =>
+      username === contributor.name ||
+      toArray(alias).includes(contributor.name) ||
+      (contributor.email &&
+        (contributor.email === email ||
+          toArray(emailAlias).includes(contributor.email))),
   ) ?? null

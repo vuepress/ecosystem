@@ -22,7 +22,7 @@ It is recommended to place `cachePlugin` as the last item in the `plugins` confi
 
 :::
 
-```ts
+```ts title=".vuepress/config.ts"
 import { cachePlugin } from '@vuepress/plugin-cache'
 
 export default {

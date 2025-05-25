@@ -1,14 +1,14 @@
 import {
-  checkIsIOS,
-  checkIsMacOS,
-  checkIsiPad,
+  isIOS,
+  isMacOS,
+  isiPad,
   useKeys,
-  useLocaleConfig,
+  useLocale,
 } from '@vuepress/helper/client'
 import type { VNode } from 'vue'
-import { computed, defineComponent, h, inject, onMounted, ref } from 'vue'
+import { computed, defineComponent, h, onMounted, ref } from 'vue'
 
-import { searchModalSymbol } from '../composables/index.js'
+import { useActiveState } from '../composables/index.js'
 import { locales, options } from '../define.js'
 import { SearchIcon } from './icons.js'
 
@@ -20,19 +20,19 @@ export default defineComponent({
   name: 'SearchBox',
 
   setup() {
-    const locale = useLocaleConfig(locales)
-    const isActive = inject(searchModalSymbol)!
-    const isMacOS = ref(false)
+    const locale = useLocale(locales)
+    const [isActive, toggleActive] = useActiveState()
+    const isMacOSDevice = ref(false)
 
     useKeys(options.hotKeys, () => {
-      if (!isActive.value) isActive.value = true
+      if (!isActive.value) toggleActive()
     })
 
     const controlKeys = computed(() =>
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       primaryHotKey
         ? [
-            ...(isMacOS.value
+            ...(isMacOSDevice.value
               ? ['⌃', '⇧', '⌥', '⌘']
               : ['Ctrl', 'Shift', 'Alt', 'Win']
             ).filter(
@@ -49,10 +49,8 @@ export default defineComponent({
     onMounted(() => {
       const { userAgent } = navigator
 
-      isMacOS.value =
-        checkIsMacOS(userAgent) ||
-        checkIsIOS(userAgent) ||
-        checkIsiPad(userAgent)
+      isMacOSDevice.value =
+        isMacOS(userAgent) || isIOS(userAgent) || isiPad(userAgent)
     })
 
     return (): (VNode | null)[] => [
@@ -63,7 +61,7 @@ export default defineComponent({
           'class': 'slimsearch-button',
           'aria-label': locale.value.search,
           'onClick': () => {
-            isActive.value = true
+            toggleActive(true)
           },
         },
         [

@@ -4,6 +4,9 @@
     "baseUrl": ".",
     "jsx": "preserve",
     "paths": {
+      "@internal/noticeOptions": [
+        "./plugins/plugin-notice/src/client/noticeOptions.d.ts"
+      ],
       "@internal/searchIndex": [
         "./plugins/plugin-search/src/client/searchIndex.d.ts"
       ],

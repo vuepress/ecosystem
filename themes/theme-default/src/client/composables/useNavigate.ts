@@ -9,7 +9,7 @@ export const useNavigate = (): ((url: string) => void) => {
     if (url)
       if (isLinkAbsolute(url)) {
         // Inner absolute path
-        if (route.path !== url) router.push(url)
+        if (route.fullPath !== url) router.push(url)
       } else if (isLinkWithProtocol(url)) {
         // external url
         window.open(url)

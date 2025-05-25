@@ -13,7 +13,7 @@ interface Article {
   info: ArticleInfo
 }
 
-defineProps<{
+const { items, isTimeline = false } = defineProps<{
   /** Article items */
   items: Article[]
   /** Whether is timeline or not */

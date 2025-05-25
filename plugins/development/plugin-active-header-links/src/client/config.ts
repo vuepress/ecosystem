@@ -13,8 +13,6 @@ const offset = __AHL_OFFSET__
 
 export default defineClientConfig({
   setup() {
-    if (__VUEPRESS_SSR__) return
-
     useActiveHeaderLinks({
       headerLinkSelector,
       headerAnchorSelector,

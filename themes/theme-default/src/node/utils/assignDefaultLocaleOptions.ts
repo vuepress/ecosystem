@@ -23,7 +23,6 @@ export const DEFAULT_LOCALE_OPTIONS: DefaultThemeLocaleOptions = {
   editLink: true,
   editLinkText: 'Edit this page',
   lastUpdated: true,
-  lastUpdatedText: 'Last Updated',
   contributors: true,
   contributorsText: 'Contributors',
 

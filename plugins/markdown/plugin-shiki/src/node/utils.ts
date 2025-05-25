@@ -18,16 +18,6 @@ export const resolveLanguage = (info: string): string =>
     ?.replace(VUE_RE, '')
     .toLowerCase() ?? ''
 
-export const resolveAttr = (info: string, attr: string): string | null => {
-  // try to match specified attr mark
-  const pattern = `\\b${attr}\\s*=\\s*(?<quote>['"])(?<content>.+?)\\k<quote>(\\s|$)`
-  const regex = new RegExp(pattern, 'i')
-  const match = info.match(regex)
-
-  // return content if matched, null if not specified
-  return match?.groups?.content ?? null
-}
-
 /**
  * 2 steps:
  *
@@ -37,8 +27,9 @@ export const resolveAttr = (info: string, attr: string): string | null => {
  *    [{ line: number, classes: string[] }]
  */
 export const attrsToLines = (attrs: string): TransformerCompactLineOption[] => {
-  const attrsContent = attrs.replace(/^(?:\[.*?\])?.*?([\d,-]+).*/, '$1').trim()
-
+  const attrsContent = attrs
+    .replace(/^(?:\[.*?\])?.*?\{([\d,-]+)\}.*/, '$1')
+    .trim()
   const result: number[] = []
 
   if (!attrsContent) {

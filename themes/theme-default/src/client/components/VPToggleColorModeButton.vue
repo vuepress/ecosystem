@@ -2,9 +2,9 @@
 import VPDarkIcon from '@theme/VPDarkIcon.vue'
 import VPLightIcon from '@theme/VPLightIcon.vue'
 import { useDarkMode } from '@theme/useDarkMode'
-import { useThemeLocaleData } from '@theme/useThemeData'
+import { useData } from '@theme/useData'
 
-const themeLocale = useThemeLocaleData()
+const { themeLocale } = useData()
 const isDarkMode = useDarkMode()
 
 const toggleColorMode = (): void => {
@@ -29,7 +29,7 @@ const toggleColorMode = (): void => {
   display: flex;
 
   margin: auto;
-  margin-left: 1rem;
+  margin-inline-start: 1rem;
   border: 0;
 
   background: none;

@@ -1,30 +1,27 @@
 <script setup lang="ts">
-import type { VNode } from 'vue'
+import type { Slot } from '@vuepress/helper/client'
 
-withDefaults(
-  defineProps<{
-    /**
-     * The type of the badge
-     */
-    type?: string
-    /**
-     * The text of the badge
-     */
-    text?: string
-    /**
-     * The vertical align of the badge
-     */
-    vertical?: string
-  }>(),
-  {
-    type: 'tip',
-    text: '',
-    vertical: undefined,
-  },
-)
+const {
+  type = 'tip',
+  text = '',
+  vertical = '',
+} = defineProps<{
+  /**
+   * The type of the badge
+   */
+  type?: string
+  /**
+   * The text of the badge
+   */
+  text?: string
+  /**
+   * The vertical align of the badge
+   */
+  vertical?: string
+}>()
 
 defineSlots<{
-  default?: () => VNode | VNode[] | string | null
+  default?: Slot
 }>()
 </script>
 
@@ -32,9 +29,7 @@ defineSlots<{
   <span
     class="vp-badge"
     :class="type"
-    :style="{
-      verticalAlign: vertical,
-    }"
+    :style="vertical ? { verticalAlign: vertical } : ''"
   >
     <slot>{{ text }}</slot>
   </span>
@@ -45,15 +40,15 @@ defineSlots<{
   display: inline-block;
   vertical-align: top;
 
-  height: 18px;
+  height: 1.3em;
   padding: 0 6px;
   border-radius: 3px;
 
   background: var(--vp-c-accent-soft);
   color: var(--vp-c-accent);
 
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 0.875em;
+  line-height: 1.3;
 
   transition:
     background var(--vp-t-color),

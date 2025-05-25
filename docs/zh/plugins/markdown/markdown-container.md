@@ -18,7 +18,7 @@ icon: package
 npm i -D @vuepress/plugin-markdown-container@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
 
 export default {
@@ -70,7 +70,7 @@ export default {
 
 - 示例：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     markdownContainerPlugin({

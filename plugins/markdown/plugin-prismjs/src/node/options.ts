@@ -1,4 +1,5 @@
 import type {
+  MarkdownItCodeBlockTitleOptions,
   MarkdownItCollapsedLinesOptions,
   MarkdownItLineNumbersOptions,
 } from '@vuepress/highlighter-helper'
@@ -11,7 +12,8 @@ import type { PrismjsHighlightOptions } from './types.js'
 /**
  * Options of @vuepress/plugin-prismjs
  */
-export type PrismjsPluginOptions = MarkdownItLineNumbersOptions &
+export type PrismjsPluginOptions = MarkdownItCodeBlockTitleOptions &
+  MarkdownItLineNumbersOptions &
   MarkdownItPreWrapperOptions &
   MarkdownItPrismjsHighlightOptions &
   Pick<MarkdownItCollapsedLinesOptions, 'collapsedLines'> &

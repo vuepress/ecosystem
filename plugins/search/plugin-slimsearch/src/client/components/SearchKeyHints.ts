@@ -1,4 +1,4 @@
-import { useLocaleConfig } from '@vuepress/helper/client'
+import { useLocale } from '@vuepress/helper/client'
 import type { VNode } from 'vue'
 import { defineComponent, h } from 'vue'
 
@@ -15,7 +15,7 @@ export default defineComponent({
   name: 'SearchKeyHints',
 
   setup() {
-    const locale = useLocaleConfig(locales)
+    const locale = useLocale(locales)
     const isMobile = useMobile()
 
     return (): VNode | null =>

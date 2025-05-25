@@ -1,4 +1,5 @@
 import { setupDarkMode } from '@theme/useDarkMode'
+import { setupHeaders } from '@theme/useHeaders'
 import { useScrollPromise } from '@theme/useScrollPromise'
 import { setupSidebarItems } from '@theme/useSidebarItems'
 import { hasGlobalComponent } from '@vuepress/helper/client'
@@ -25,6 +26,7 @@ export default defineClientConfig({
 
   setup() {
     setupDarkMode()
+    setupHeaders()
     setupSidebarItems()
   },
 

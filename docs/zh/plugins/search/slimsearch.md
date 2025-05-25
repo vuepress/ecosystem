@@ -14,7 +14,7 @@ icon: search
 npm i -D @vuepress/plugin-slimsearch@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 
 export default {
@@ -65,11 +65,10 @@ Markdown 内容...
 
 你可以通过如下配置将作者添加到索引中:
 
-```ts
+```ts title=".vuepress/config.ts"
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
-import { defineUserConfig } from 'vuepress'
 
-export default defineUserConfig({
+export default {
   plugins: [
     slimsearchPlugin({
       customFields: [
@@ -81,7 +80,7 @@ export default defineUserConfig({
       ],
     }),
   ],
-})
+}
 ```
 
 :::
@@ -92,7 +91,7 @@ export default defineUserConfig({
 
 你需要进行如下配置来索引更新时间：
 
-```ts
+```ts title=".vuepress/config.ts"
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 import { defineUserConfig } from 'vuepress'
 
@@ -294,6 +293,16 @@ export default defineUserConfig({
     search: string
 
     /**
+     * 清除搜索文字
+     */
+    clear: string
+
+    /**
+     * 删除当前项目
+     */
+    remove: string
+
+    /**
      * 搜索中文字
      */
     searching: string
@@ -405,7 +414,7 @@ export default defineUserConfig({
 
 如果你的文档只包含中文，你可以像这样对内容进行标记：
 
-```ts
+```ts title=".vuepress/config.ts"
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 import { cut } from 'nodejs-jieba'
 import { defineUserConfig } from 'vuepress'
@@ -429,7 +438,7 @@ export default defineUserConfig({
 
 如果你需要在某些语言环境中进行分词，你可以设置 `indexLocaleOptions`:
 
-```ts
+```ts title=".vuepress/config.ts"
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 import { cut } from 'nodejs-jieba'
 import { defineUserConfig } from 'vuepress'
@@ -470,7 +479,7 @@ export default defineUserConfig({
 如果你想要访问搜索 API，你可以从 `@vuepress/plugin-slimsearch/client` 中导入 `createSearchWorker` 来获取搜索结果:
 
 ```ts
-import { createSearchWorker } from 'vuepress-plugin-search-pro/client'
+import { createSearchWorker } from '@vuepress/plugin-slimsearch/client'
 
 const { all, suggest, search, terminate } = createSearchWorker()
 
@@ -576,8 +585,6 @@ defineSearchConfig({
     },
   },
 })
-
-export default {}
 ```
 
 ## 组件

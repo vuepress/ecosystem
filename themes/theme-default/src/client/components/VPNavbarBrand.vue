@@ -1,19 +1,11 @@
 <script setup lang="ts">
 import { useDarkMode } from '@theme/useDarkMode'
-import { useThemeLocaleData } from '@theme/useThemeData'
+import { useData } from '@theme/useData'
 import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
-import {
-  ClientOnly,
-  RouteLink,
-  useRouteLocale,
-  useSiteLocaleData,
-  withBase,
-} from 'vuepress/client'
+import { ClientOnly, RouteLink, withBase } from 'vuepress/client'
 
-const routeLocale = useRouteLocale()
-const siteLocale = useSiteLocaleData()
-const themeLocale = useThemeLocaleData()
+const { routeLocale, siteLocale, themeLocale } = useData()
 const isDarkMode = useDarkMode()
 
 const navbarBrandLink = computed(
@@ -71,7 +63,7 @@ const NavbarBrandLogo: FunctionalComponent = () => {
 .vp-site-logo {
   vertical-align: top;
   height: var(--navbar-line-height);
-  margin-right: var(--navbar-padding-v);
+  margin-inline-end: var(--navbar-padding-v);
 }
 
 .vp-site-name {

@@ -15,7 +15,6 @@ export const watermarkPlugin =
       name: PLUGIN_NAME,
 
       define: {
-        __WM_DELAY__: options.delay ?? 500,
         __WM_GLOBAL__: enabled === true,
         __WM_OPTIONS__: options.watermarkOptions ?? {},
       },

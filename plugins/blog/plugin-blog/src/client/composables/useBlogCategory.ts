@@ -2,12 +2,7 @@ import { categoriesMap } from '@temp/blog/category'
 import { store } from '@temp/blog/store'
 import type { ComputedRef } from 'vue'
 import { computed, readonly, shallowRef } from 'vue'
-import {
-  resolveRoute,
-  usePageData,
-  usePageFrontmatter,
-  useRouteLocale,
-} from 'vuepress/client'
+import { resolveRoute, useData } from 'vuepress/client'
 import type {
   BlogCategoryFrontmatterOptions,
   CategoriesMap,
@@ -25,11 +20,9 @@ export const useBlogCategory = <
 >(
   key?: string,
 ): ComputedRef<BlogCategoryData<T>> => {
-  const page = usePageData()
-  const frontmatter = usePageFrontmatter<{
+  const { frontmatter, page, routeLocale } = useData<{
     blog?: BlogCategoryFrontmatterOptions
   }>()
-  const routeLocale = useRouteLocale()
 
   return computed(() => {
     const mapKey = key ?? frontmatter.value.blog?.key ?? ''

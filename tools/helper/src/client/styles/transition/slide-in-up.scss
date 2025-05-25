@@ -1,0 +1,27 @@
+@import './vars.css';
+
+:root {
+  --transition-slide-in-up-offset: 100%;
+}
+
+.slide-in-up {
+  &-leave-active {
+    transition: transform var(--transition-leave-duration)
+      var(--transition-ease-in) !important;
+  }
+
+  &-enter-active {
+    transition: transform var(--transition-enter-duration)
+      var(--transition-ease-out) !important;
+  }
+
+  &-enter-to,
+  &-leave-from {
+    transform: translateY(0) !important;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    transform: translateY(var(--transition-slide-in-up-offset)) !important;
+  }
+}

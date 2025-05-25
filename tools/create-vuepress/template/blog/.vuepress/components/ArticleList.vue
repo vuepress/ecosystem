@@ -1,5 +1,5 @@
 <script setup>
-defineProps({
+const { items, isTimeline } = defineProps({
   /** Article items */
   items: {
     type: Array,

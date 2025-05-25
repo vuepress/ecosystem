@@ -28,7 +28,7 @@
   }
 
   .menu-button {
-    left: 2rem;
+    inset-inline-start: 2rem;
     z-index: 50;
     vertical-align: middle;
     transition: transform 0.2s ease-in-out;
@@ -63,26 +63,26 @@
   }
 
   .back-button {
-    left: 2rem;
+    inset-inline-start: 2rem;
     z-index: 49;
 
     opacity: 0;
 
     transition:
-      left 0.2s ease-out,
+      inset-inline-start 0.2s ease-out,
       opacity 0.2s ease-out;
 
     fill: var(--reveal-c-accent);
   }
 
   .home-button {
-    left: 2rem;
+    inset-inline-start: 2rem;
     z-index: 48;
 
     opacity: 0;
 
     transition:
-      left 0.2s ease-out,
+      inset-inline-start 0.2s ease-out,
       opacity 0.2s ease-out;
 
     fill: var(--reveal-c-accent);
@@ -104,12 +104,12 @@
     }
 
     .back-button {
-      left: 4.5rem;
+      inset-inline-start: 4.5rem;
       opacity: 1;
     }
 
     .home-button {
-      left: 7rem;
+      inset-inline-start: 7rem;
       opacity: 1;
     }
   }

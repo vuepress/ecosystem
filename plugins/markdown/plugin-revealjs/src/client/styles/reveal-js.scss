@@ -7,12 +7,6 @@
   @media print {
     page-break-inside: avoid;
   }
-
-  @media (max-width: 419px) {
-    width: calc(100% + 3rem);
-    min-height: 300px;
-    margin: 0 -1.5rem;
-  }
 }
 
 .reveal-loading {

@@ -14,7 +14,7 @@ icon: image-play
 npm i -D @vuepress/plugin-photo-swipe@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
 
 export default {
@@ -119,7 +119,7 @@ export default {
 
 - 示例：
 
-  ```ts
+  ```ts title=".vuepress/config.ts"
   import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
   import { defineUserConfig } from 'vuepress'
 
@@ -196,8 +196,6 @@ import { definePhotoSwipeConfig } from '@vuepress/plugin-photo-swipe/client'
 definePhotoSwipeConfig({
   // 在此设置 photoswipe 选项
 })
-
-export default {}
 ```
 
 ## API

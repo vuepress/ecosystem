@@ -8,7 +8,7 @@ icon: unplug
 
 默认主题使用了一些插件，如果你确实不需要该插件，你可以选择禁用它。在禁用插件之前，请确保你已了解它的用途。
 
-```ts
+```ts title=".vuepress/config.ts"
 import { defaultTheme } from '@vuepress/theme-default'
 
 export default {

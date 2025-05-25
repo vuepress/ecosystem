@@ -10,25 +10,29 @@ export const prepareRevealJsEntry = async (
   await app.writeTemp(
     'revealjs/index.js',
     `\
-export const useRevealJs = () => [
-  import(/* webpackChunkName: "reveal" */ "${getModulePath(
-    'reveal.js/dist/reveal.esm.js',
-    import.meta,
-  )}"),
-  import(/* webpackChunkName: "reveal" */ "${getModulePath(
-    'reveal.js/plugin/markdown/markdown.esm.js',
-    import.meta,
-  )}"),
-${revealPlugins
-  .map(
-    (plugin) =>
-      `  import(/* webpackChunkName: "reveal" */ "${getModulePath(
-        `reveal.js/plugin/${plugin}/${plugin}.esm.js`,
-        import.meta,
-      )}")`,
-  )
-  .join(',\n')}
-];
+export const useRevealJs = () => Promise.all(
+  __VUEPRESS_SSR__
+    ? []
+    : [
+        import(/* webpackChunkName: "reveal" */ "${getModulePath(
+          'reveal.js/dist/reveal.esm.js',
+          import.meta,
+        )}").then(({ default: RevealJs }) => RevealJs),
+        import(/* webpackChunkName: "reveal" */ "${getModulePath(
+          'reveal.js/plugin/markdown/markdown.esm.js',
+          import.meta,
+        )}").then(({ default: plugin }) => plugin),
+      ${revealPlugins
+        .map(
+          (plugin) =>
+            `  import(/* webpackChunkName: "reveal" */ "${getModulePath(
+              `reveal.js/plugin/${plugin}/${plugin}.esm.js`,
+              import.meta,
+            )}").then(({ default: plugin }) => plugin)`,
+        )
+        .join(',\n')}
+      ]
+  );
 `,
   )
 }

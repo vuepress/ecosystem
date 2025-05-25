@@ -76,7 +76,7 @@ export const rollupBundle = (
       esbuild({
         charset: 'utf8',
         minify: true,
-        target: 'node18.19.0',
+        target: 'node20.6.0',
         define,
         loaders: {
           '.json': 'json',
@@ -110,9 +110,10 @@ export const rollupBundle = (
               )
             ? [
                 /^node:/,
-                '@vuepress/highlighter-helper',
                 '@vuepress/helper',
                 '@vuepress/helper/shared',
+                '@vuepress/highlighter-helper',
+                '@vuepress/shiki-twoslash',
                 /^@vuepress\/plugin-/,
                 'vuepress/cli',
                 'vuepress/core',
@@ -168,7 +169,14 @@ export const rollupBundle = (
                       ? filePath.base.startsWith('client')
                       : filePath.startsWith('client/')
                   )
-                ? [/^@temp/, 'vuepress/client', 'vuepress/shared', /\.s?css$/]
+                ? [
+                    /^@temp/,
+                    '@vuepress/helper/client',
+                    '@vuepress/helper/shared',
+                    'vuepress/client',
+                    'vuepress/shared',
+                    /\.s?css$/,
+                  ]
                 : (
                       typeof filePath === 'object'
                         ? filePath.base.startsWith('node')
@@ -176,6 +184,8 @@ export const rollupBundle = (
                     )
                   ? [
                       /^node:/,
+                      '@vuepress/helper',
+                      '@vuepress/helper/shared',
                       'vuepress/cli',
                       'vuepress/core',
                       'vuepress/markdown',

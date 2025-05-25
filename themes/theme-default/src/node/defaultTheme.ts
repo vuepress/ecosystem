@@ -70,7 +70,7 @@ export const defaultTheme = ({
           .readdirSync(path.resolve(__dirname, '../client/composables'))
           .filter((file) => file.endsWith('.js'))
           .map((file) => [
-            `@theme/${file.substring(0, file.length - 3)}`,
+            `@theme/${file.slice(0, -3)}`,
             path.resolve(__dirname, '../client/composables', file),
           ]),
       ),
@@ -80,7 +80,7 @@ export const defaultTheme = ({
           .readdirSync(path.resolve(__dirname, '../client/utils'))
           .filter((file) => file.endsWith('.js'))
           .map((file) => [
-            `@theme/${file.substring(0, file.length - 3)}`,
+            `@theme/${file.slice(0, -3)}`,
             path.resolve(__dirname, '../client/utils', file),
           ]),
       ),
@@ -102,7 +102,7 @@ export const defaultTheme = ({
 
     plugins: [
       // @vuepress/plugin-active-header-link
-      themePlugins.activeHeaderLinks !== false
+      (themePlugins.activeHeaderLinks ?? true)
         ? activeHeaderLinksPlugin({
             // should greater than page transition duration
             delay: 300,
@@ -110,14 +110,14 @@ export const defaultTheme = ({
         : [],
 
       // @vuepress/plugin-back-to-top
-      themePlugins.backToTop !== false
+      (themePlugins.backToTop ?? true)
         ? backToTopPlugin(
             isPlainObject(themePlugins.backToTop) ? themePlugins.backToTop : {},
           )
         : [],
 
       // @vuepress/plugin-copy-code
-      themePlugins.copyCode !== false
+      (themePlugins.copyCode ?? true)
         ? copyCodePlugin({
             ...(isPlainObject(themePlugins.copyCode)
               ? themePlugins.copyCode
@@ -126,7 +126,7 @@ export const defaultTheme = ({
         : [],
 
       // @vuepress/plugin-markdown-container
-      themePlugins.hint !== false
+      (themePlugins.hint ?? true)
         ? markdownHintPlugin({
             locales: resolveMarkdownHintLocales(localeOptions),
             ...(isPlainObject(themePlugins.hint) ? themePlugins.hint : {}),
@@ -134,16 +134,17 @@ export const defaultTheme = ({
         : [],
 
       // @vuepress/plugin-git
-      themePlugins.git !== false
+      (themePlugins.git ?? true)
         ? gitPlugin({
             createdTime: false,
-            updatedTime: localeOptions.lastUpdated !== false,
-            contributors: localeOptions.contributors !== false,
+            updatedTime: localeOptions.lastUpdated ?? true,
+            changelog: { repoUrl: localeOptions.repo || '' },
+            ...(isPlainObject(themePlugins.git) ? themePlugins.git : {}),
           })
         : [],
 
       // @vuepress/plugin-links-check
-      themePlugins.linksCheck !== false
+      (themePlugins.linksCheck ?? true)
         ? linksCheckPlugin(
             isPlainObject(themePlugins.linksCheck)
               ? themePlugins.linksCheck
@@ -152,28 +153,23 @@ export const defaultTheme = ({
         : [],
 
       // @vuepress/plugin-medium-zoom
-      themePlugins.mediumZoom !== false
-        ? mediumZoomPlugin({
-            // should greater than page transition duration
-            delay: 300,
-          })
-        : [],
+      (themePlugins.mediumZoom ?? true) ? mediumZoomPlugin() : [],
 
       // @vuepress/plugin-nprogress
-      themePlugins.nprogress !== false ? nprogressPlugin() : [],
+      (themePlugins.nprogress ?? true) ? nprogressPlugin() : [],
 
       // @vuepress/plugin-palette
       palettePlugin({ preset: 'sass' }),
 
       // @vuepress/plugin-prismjs
-      themePlugins.prismjs !== false
+      (themePlugins.prismjs ?? true)
         ? prismjsPlugin(
             isPlainObject(themePlugins.prismjs) ? themePlugins.prismjs : {},
           )
         : [],
 
       // @vuepress/plugin-seo
-      hostname && themePlugins.seo !== false
+      hostname && (themePlugins.seo ?? true)
         ? seoPlugin({
             hostname,
             ...(isPlainObject(themePlugins.seo) ? themePlugins.seo : {}),
@@ -181,7 +177,7 @@ export const defaultTheme = ({
         : [],
 
       // @vuepress/plugin-sitemap
-      hostname && themePlugins.sitemap !== false
+      hostname && (themePlugins.sitemap ?? true)
         ? sitemapPlugin({
             hostname,
             ...(isPlainObject(themePlugins.sitemap)
@@ -191,7 +187,7 @@ export const defaultTheme = ({
         : [],
 
       // @vuepress/plugin-markdown-tab
-      themePlugins.tab !== false
+      (themePlugins.tab ?? true)
         ? markdownTabPlugin(
             isPlainObject(themePlugins.tab)
               ? themePlugins.tab

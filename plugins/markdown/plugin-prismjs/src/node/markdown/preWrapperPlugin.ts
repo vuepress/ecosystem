@@ -1,5 +1,5 @@
 import type { Markdown } from 'vuepress/markdown'
-import { resolveAttr, resolveLanguage } from '../utils/index.js'
+import { resolveLanguage } from '../utils/index.js'
 
 export interface MarkdownItPreWrapperOptions {
   /**
@@ -18,11 +18,7 @@ export const preWrapperPlugin = (
   const rawFence = md.renderer.rules.fence!
 
   md.renderer.rules.fence = (...args) => {
-    const result = rawFence(...args)
-
-    if (!preWrapper || !result.startsWith('<pre')) {
-      return result
-    }
+    let result = rawFence(...args)
 
     const [tokens, idx, { langPrefix }] = args
     const token = tokens[idx]
@@ -33,12 +29,14 @@ export const preWrapperPlugin = (
     const language = resolveLanguage(info)
     const languageClass = `${langPrefix}${language.name}`
 
-    // resolve title from token info
-    const title = resolveAttr(info, 'title') ?? language.ext
+    result = result.replace(/<code[^]*?>/, `<code class="${languageClass}">`)
+    if (!preWrapper || !result.startsWith('<pre')) {
+      return result
+    }
 
     /**
      * Add information to dataset for current code block.
      */
-    return `<div class="${languageClass}" data-highlighter="prismjs" data-ext="${language.ext}" data-title="${title}">${result.replace(` class="${languageClass}"`, '')}</div>`
+    return `<div class="${languageClass}" data-highlighter="prismjs" data-ext="${language.ext}">${result.replace(` class="${languageClass}"`, '')}</div>`
   }
 }

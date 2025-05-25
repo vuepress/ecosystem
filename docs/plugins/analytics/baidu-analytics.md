@@ -20,7 +20,7 @@ Do not enable [SPA mode in Baidu Analytics](https://tongji.baidu.com/web/help/ar
 npm i -D @vuepress/plugin-baidu-analytics@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { baiduAnalyticsPlugin } from '@vuepress/plugin-baidu-analytics'
 
 export default {

@@ -72,7 +72,7 @@ export const injectLinksToHead = (
       setLink('mask-icon', apple.maskIcon, {
         color: themeColor || '#46bd87',
       })
-  } else if (apple !== false && fallBackIcon) {
+  } else if ((apple ?? true) && fallBackIcon) {
     setLink('apple-touch-icon', fallBackIcon)
   }
 }

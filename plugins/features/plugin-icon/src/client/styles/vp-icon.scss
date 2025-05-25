@@ -32,4 +32,9 @@
   &:not(i) {
     vertical-align: var(--icon-vertical-align, -0.125em);
   }
+
+  // override iconfont style
+  &.iconfont {
+    font-size: var(--icon-size, 1em);
+  }
 }

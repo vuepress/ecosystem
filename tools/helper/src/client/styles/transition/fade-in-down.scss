@@ -1,0 +1,31 @@
+@import './vars.css';
+
+:root {
+  --transition-fade-in-down-offset: -10px;
+}
+
+.fade-in-down {
+  &-enter-from,
+  &-leave-to {
+    opacity: 0 !important;
+    transform: translateY(var(--transition-fade-in-down-offset)) !important;
+  }
+
+  &-enter-to,
+  &-leave-from {
+    opacity: 1;
+    transform: translateY(0) !important;
+  }
+
+  &-leave-active {
+    transition:
+      opacity var(--transition-leave-duration) var(--transition-ease-in-out),
+      transform var(--transition-leave-duration) var(--transition-ease-in-out) !important;
+  }
+
+  &-enter-active {
+    transition:
+      opacity var(--transition-enter-duration) var(--transition-ease-in-out),
+      transform var(--transition-enter-duration) var(--transition-ease-in-out) !important;
+  }
+}

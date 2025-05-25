@@ -1,0 +1,65 @@
+@use 'sass:list';
+@use 'sass:map';
+
+@function get-selector($title, $match) {
+  @if $match == 'equals' {
+    @return '[data-title="#{$title}"]';
+  } @else if $match == 'startsWith' {
+    @return '[data-title^="#{$title}"]';
+  } @else if $match == 'endsWith' {
+    @return '[data-title$="#{$title}"]';
+  } @else if $match == 'contains' {
+    @return '[data-title*="#{$title}"]';
+  } @else {
+    @warn "code-title-icon: Unknown match type '#{$match}' for title '#{$title}'.";
+    @return '';
+  }
+}
+
+/**
+  * each config shall be a map containing:
+  *
+  * - title: the title to match
+  * - match: one of 'startsWith' 'endsWith' 'contains' 'equals'
+  * - icon: the icon url
+  */
+@mixin style($configs...) {
+  $selectors: ();
+
+  @each $config in $configs {
+    $title: map.get($config, 'title');
+    $match: map.get($config, 'match');
+    $icon: map.get($config, 'icon');
+    $selector: get-selector($title, $match);
+
+    @if $selector != '' {
+      $selectors: list.append($selectors, '&#{$selector}', comma);
+
+      .code-block-title-bar#{$selector}::before {
+        background-image: url('#{$icon}');
+      }
+    }
+  }
+
+  /* stylelint-disable-next-line order/order */
+  .code-block-title-bar {
+    #{$selectors} {
+      display: flex;
+      align-items: center;
+
+      &::before {
+        content: ' ';
+
+        display: inline-block;
+
+        width: 1.5em;
+        height: 1.5em;
+        margin-inline-end: 0.5em;
+
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+}

@@ -3,19 +3,11 @@
 exports[`Should generate seo information > Should contain basic properties 1`] = `
 [
   [
-    "link",
+    "script",
     {
-      "href": "https://exmaple.com/",
-      "rel": "canonical",
+      "type": "application/ld+json",
     },
-  ],
-  [
-    "link",
-    {
-      "href": "https://exmaple.com/zh/",
-      "hreflang": "zh-cn",
-      "rel": "alternate",
-    },
+    "{"@context":"https://schema.org","@type":"WebPage","name":"","description":"This is a home page."}",
   ],
   [
     "meta",
@@ -53,11 +45,19 @@ exports[`Should generate seo information > Should contain basic properties 1`] =
     },
   ],
   [
-    "script",
+    "link",
     {
-      "type": "application/ld+json",
+      "href": "https://exmaple.com/",
+      "rel": "canonical",
     },
-    "{"@context":"https://schema.org","@type":"WebPage","name":"","description":"This is a home page."}",
+  ],
+  [
+    "link",
+    {
+      "href": "https://exmaple.com/zh/",
+      "hreflang": "zh-cn",
+      "rel": "alternate",
+    },
   ],
 ]
 `;
@@ -65,19 +65,11 @@ exports[`Should generate seo information > Should contain basic properties 1`] =
 exports[`Should generate seo information > Should contain basic properties 2`] = `
 [
   [
-    "link",
+    "script",
     {
-      "href": "https://exmaple.com/description.html",
-      "rel": "canonical",
+      "type": "application/ld+json",
     },
-  ],
-  [
-    "link",
-    {
-      "href": "https://exmaple.com/zh/description.html",
-      "hreflang": "zh-cn",
-      "rel": "alternate",
-    },
+    "{"@context":"https://schema.org","@type":"Article","headline":"Description Test","image":[""],"dateModified":null,"author":[]}",
   ],
   [
     "meta",
@@ -122,11 +114,19 @@ exports[`Should generate seo information > Should contain basic properties 2`] =
     },
   ],
   [
-    "script",
+    "link",
     {
-      "type": "application/ld+json",
+      "href": "https://exmaple.com/description.html",
+      "rel": "canonical",
     },
-    "{"@context":"https://schema.org","@type":"Article","headline":"Description Test","image":[""],"dateModified":null,"author":[]}",
+  ],
+  [
+    "link",
+    {
+      "href": "https://exmaple.com/zh/description.html",
+      "hreflang": "zh-cn",
+      "rel": "alternate",
+    },
   ],
 ]
 `;
@@ -134,19 +134,11 @@ exports[`Should generate seo information > Should contain basic properties 2`] =
 exports[`Should generate seo information > Should contain basic properties 3`] = `
 [
   [
-    "link",
+    "script",
     {
-      "href": "https://exmaple.com/example.html",
-      "rel": "canonical",
+      "type": "application/ld+json",
     },
-  ],
-  [
-    "link",
-    {
-      "href": "https://exmaple.com/zh/example.html",
-      "hreflang": "zh-cn",
-      "rel": "alternate",
-    },
+    "{"@context":"https://schema.org","@type":"Article","headline":"Heading 1","image":["https://exmaple.com/logo.png"],"dateModified":null,"author":[]}",
   ],
   [
     "meta",
@@ -198,11 +190,19 @@ exports[`Should generate seo information > Should contain basic properties 3`] =
     },
   ],
   [
-    "script",
+    "link",
     {
-      "type": "application/ld+json",
+      "href": "https://exmaple.com/example.html",
+      "rel": "canonical",
     },
-    "{"@context":"https://schema.org","@type":"Article","headline":"Heading 1","image":["https://exmaple.com/logo.png"],"dateModified":null,"author":[]}",
+  ],
+  [
+    "link",
+    {
+      "href": "https://exmaple.com/zh/example.html",
+      "hreflang": "zh-cn",
+      "rel": "alternate",
+    },
   ],
 ]
 `;
@@ -210,19 +210,11 @@ exports[`Should generate seo information > Should contain basic properties 3`] =
 exports[`Should generate seo information > Should contain basic properties 4`] = `
 [
   [
-    "link",
+    "script",
     {
-      "href": "https://exmaple.com/excerpt.html",
-      "rel": "canonical",
+      "type": "application/ld+json",
     },
-  ],
-  [
-    "link",
-    {
-      "href": "https://exmaple.com/zh/excerpt.html",
-      "hreflang": "zh-cn",
-      "rel": "alternate",
-    },
+    "{"@context":"https://schema.org","@type":"Article","headline":"Page Excerpt","image":[""],"dateModified":null,"author":[]}",
   ],
   [
     "meta",
@@ -267,11 +259,19 @@ exports[`Should generate seo information > Should contain basic properties 4`] =
     },
   ],
   [
-    "script",
+    "link",
     {
-      "type": "application/ld+json",
+      "href": "https://exmaple.com/excerpt.html",
+      "rel": "canonical",
     },
-    "{"@context":"https://schema.org","@type":"Article","headline":"Page Excerpt","image":[""],"dateModified":null,"author":[]}",
+  ],
+  [
+    "link",
+    {
+      "href": "https://exmaple.com/zh/excerpt.html",
+      "hreflang": "zh-cn",
+      "rel": "alternate",
+    },
   ],
 ]
 `;
@@ -279,19 +279,11 @@ exports[`Should generate seo information > Should contain basic properties 4`] =
 exports[`Should generate seo information > Should contain basic properties 5`] = `
 [
   [
-    "link",
+    "script",
     {
-      "href": "https://exmaple.com/zh/",
-      "rel": "canonical",
+      "type": "application/ld+json",
     },
-  ],
-  [
-    "link",
-    {
-      "href": "https://exmaple.com/",
-      "hreflang": "en-us",
-      "rel": "alternate",
-    },
+    "{"@context":"https://schema.org","@type":"WebPage","name":"","description":"这是一个主页。"}",
   ],
   [
     "meta",
@@ -329,11 +321,19 @@ exports[`Should generate seo information > Should contain basic properties 5`] =
     },
   ],
   [
-    "script",
+    "link",
     {
-      "type": "application/ld+json",
+      "href": "https://exmaple.com/zh/",
+      "rel": "canonical",
     },
-    "{"@context":"https://schema.org","@type":"WebPage","name":"","description":"这是一个主页。"}",
+  ],
+  [
+    "link",
+    {
+      "href": "https://exmaple.com/",
+      "hreflang": "en-us",
+      "rel": "alternate",
+    },
   ],
 ]
 `;
@@ -341,19 +341,11 @@ exports[`Should generate seo information > Should contain basic properties 5`] =
 exports[`Should generate seo information > Should contain basic properties 6`] = `
 [
   [
-    "link",
+    "script",
     {
-      "href": "https://exmaple.com/zh/description.html",
-      "rel": "canonical",
+      "type": "application/ld+json",
     },
-  ],
-  [
-    "link",
-    {
-      "href": "https://exmaple.com/description.html",
-      "hreflang": "en-us",
-      "rel": "alternate",
-    },
+    "{"@context":"https://schema.org","@type":"Article","headline":"描述测试","image":[""],"dateModified":null,"author":[]}",
   ],
   [
     "meta",
@@ -398,11 +390,19 @@ exports[`Should generate seo information > Should contain basic properties 6`] =
     },
   ],
   [
-    "script",
+    "link",
     {
-      "type": "application/ld+json",
+      "href": "https://exmaple.com/zh/description.html",
+      "rel": "canonical",
     },
-    "{"@context":"https://schema.org","@type":"Article","headline":"描述测试","image":[""],"dateModified":null,"author":[]}",
+  ],
+  [
+    "link",
+    {
+      "href": "https://exmaple.com/description.html",
+      "hreflang": "en-us",
+      "rel": "alternate",
+    },
   ],
 ]
 `;
@@ -410,19 +410,11 @@ exports[`Should generate seo information > Should contain basic properties 6`] =
 exports[`Should generate seo information > Should contain basic properties 7`] = `
 [
   [
-    "link",
+    "script",
     {
-      "href": "https://exmaple.com/zh/example.html",
-      "rel": "canonical",
+      "type": "application/ld+json",
     },
-  ],
-  [
-    "link",
-    {
-      "href": "https://exmaple.com/example.html",
-      "hreflang": "en-us",
-      "rel": "alternate",
-    },
+    "{"@context":"https://schema.org","@type":"Article","headline":"一级标题","image":["https://exmaple.com/logo.png"],"dateModified":null,"author":[]}",
   ],
   [
     "meta",
@@ -474,11 +466,19 @@ exports[`Should generate seo information > Should contain basic properties 7`] =
     },
   ],
   [
-    "script",
+    "link",
     {
-      "type": "application/ld+json",
+      "href": "https://exmaple.com/zh/example.html",
+      "rel": "canonical",
     },
-    "{"@context":"https://schema.org","@type":"Article","headline":"一级标题","image":["https://exmaple.com/logo.png"],"dateModified":null,"author":[]}",
+  ],
+  [
+    "link",
+    {
+      "href": "https://exmaple.com/example.html",
+      "hreflang": "en-us",
+      "rel": "alternate",
+    },
   ],
 ]
 `;
@@ -486,19 +486,11 @@ exports[`Should generate seo information > Should contain basic properties 7`] =
 exports[`Should generate seo information > Should contain basic properties 8`] = `
 [
   [
-    "link",
+    "script",
     {
-      "href": "https://exmaple.com/zh/excerpt.html",
-      "rel": "canonical",
+      "type": "application/ld+json",
     },
-  ],
-  [
-    "link",
-    {
-      "href": "https://exmaple.com/excerpt.html",
-      "hreflang": "en-us",
-      "rel": "alternate",
-    },
+    "{"@context":"https://schema.org","@type":"Article","headline":"页面摘要","image":[""],"dateModified":null,"author":[]}",
   ],
   [
     "meta",
@@ -543,11 +535,19 @@ exports[`Should generate seo information > Should contain basic properties 8`] =
     },
   ],
   [
-    "script",
+    "link",
     {
-      "type": "application/ld+json",
+      "href": "https://exmaple.com/zh/excerpt.html",
+      "rel": "canonical",
     },
-    "{"@context":"https://schema.org","@type":"Article","headline":"页面摘要","image":[""],"dateModified":null,"author":[]}",
+  ],
+  [
+    "link",
+    {
+      "href": "https://exmaple.com/excerpt.html",
+      "hreflang": "en-us",
+      "rel": "alternate",
+    },
   ],
 ]
 `;
@@ -555,11 +555,11 @@ exports[`Should generate seo information > Should contain basic properties 8`] =
 exports[`Should generate seo information > Should contain basic properties 9`] = `
 [
   [
-    "link",
+    "script",
     {
-      "href": "https://exmaple.com/404.html",
-      "rel": "canonical",
+      "type": "application/ld+json",
     },
+    "{"@context":"https://schema.org","@type":"WebPage","name":"","description":"404 Not Found"}",
   ],
   [
     "meta",
@@ -590,11 +590,11 @@ exports[`Should generate seo information > Should contain basic properties 9`] =
     },
   ],
   [
-    "script",
+    "link",
     {
-      "type": "application/ld+json",
+      "href": "https://exmaple.com/404.html",
+      "rel": "canonical",
     },
-    "{"@context":"https://schema.org","@type":"WebPage","name":"","description":"404 Not Found"}",
   ],
 ]
 `;

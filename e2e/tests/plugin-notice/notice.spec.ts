@@ -34,4 +34,19 @@ test.describe('notice', () => {
 
     await expect(page.locator('.vp-notice-wrapper')).toHaveCount(0)
   })
+
+  test('load notice content from markdown file', async ({ page }) => {
+    await page.goto('notice/file.html')
+
+    await expect(page.locator('.vp-notice-wrapper')).toHaveCount(1)
+
+    await expect(page.locator('.vp-notice-content strong')).toHaveText(
+      'Notice Content',
+    )
+
+    await expect(page.locator('.vp-notice-content a')).toHaveAttribute(
+      'href',
+      'https://example.com',
+    )
+  })
 })

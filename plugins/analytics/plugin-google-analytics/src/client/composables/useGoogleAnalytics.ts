@@ -22,10 +22,10 @@ declare global {
 export const useGoogleAnalytics = (
   options: GoogleAnalyticsPluginOptions,
 ): void => {
+  if (__VUEPRESS_SSR__) return
+
   // avoid duplicated import
-  if (window.dataLayer && window.gtag) {
-    return
-  }
+  if (window.dataLayer && window.gtag) return
 
   // insert gtag `<script>` tag
   const gtagScript = document.createElement('script')

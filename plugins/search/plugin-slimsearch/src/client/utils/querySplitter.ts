@@ -1,7 +1,7 @@
 const CJK_REGEXP =
   /[\u4e00-\u9fff\u3400-\u4dbf\u3040-\u309f\u30a0-\u30ff\uac00-\ud7af]/
 
-export const defaultQuerySplitter = (query: string): string[] =>
+export const defaultQuerySplitter = (query = ''): string[] =>
   query
     .split(/\s+/)
     .map((word) => {

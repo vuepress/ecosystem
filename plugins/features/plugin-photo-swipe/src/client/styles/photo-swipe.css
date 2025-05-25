@@ -13,7 +13,7 @@
   left: 50%;
 
   display: flex;
-  flex-direction: row;
+  flex-flow: row;
   align-items: center;
 
   transform: translate(-50%, 0);

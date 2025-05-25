@@ -14,7 +14,7 @@ icon: list-tree
 npm i -D @vuepress/plugin-catalog@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 
 export default {
@@ -49,8 +49,6 @@ export default {
 import { defineCatalogInfoGetter } from '@vuepress/plugin-catalog/client'
 
 defineCatalogInfoGetter((meta) => (meta.title ? { title: meta.title } : null))
-
-export default {}
 ```
 
 目录信息应包含:

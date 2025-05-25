@@ -14,7 +14,7 @@ Add additional features to your markdown includes.
 npm i -D @vuepress/plugin-markdown-include@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
 
 export default {

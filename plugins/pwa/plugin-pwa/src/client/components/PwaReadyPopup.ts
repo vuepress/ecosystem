@@ -1,4 +1,5 @@
-import { useLocaleConfig } from '@vuepress/helper/client'
+import type { Slot } from '@vuepress/helper/client'
+import { useLocale } from '@vuepress/helper/client'
 import type { PropType, SlotsType, VNode } from 'vue'
 import {
   Transition,
@@ -13,6 +14,7 @@ import type { PwaPluginLocaleConfig } from '../types.js'
 import { skipWaiting } from '../utils/index.js'
 import { UpdateIcon } from './icons.js'
 
+import '@vuepress/helper/transition/fade-in-scale-up.css'
 import '../styles/popup.css'
 
 export const PwaReadyPopup = defineComponent({
@@ -27,14 +29,11 @@ export const PwaReadyPopup = defineComponent({
   },
 
   slots: Object as SlotsType<{
-    default?: (props: {
-      isReady: boolean
-      reload: () => void
-    }) => VNode | VNode[] | null
+    default?: Slot<{ isReady: boolean; reload: () => void }>
   }>,
 
   setup(props, { slots }) {
-    const locale = useLocaleConfig(props.locales)
+    const locale = useLocale(props.locales)
     const registration = shallowRef<ServiceWorkerRegistration>()
 
     const isReady = computed(() => Boolean(registration.value))
@@ -57,7 +56,7 @@ export const PwaReadyPopup = defineComponent({
     return (): VNode =>
       h(
         Transition,
-        { name: 'popup' },
+        { name: 'fade-in-scale-up' },
         () =>
           slots.default?.({
             isReady: isReady.value,

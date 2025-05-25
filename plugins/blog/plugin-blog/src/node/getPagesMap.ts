@@ -18,7 +18,7 @@ export const getPageMap = (
       (page) =>
         filter(page) &&
         // filter 404
-        page.path.substring(page.pathLocale.length - 1) !== '/404.html',
+        page.path.slice(page.pathLocale.length - 1) !== '/404.html',
     )
     .forEach((page) => {
       pagesMap[page.pathLocale].push(page)

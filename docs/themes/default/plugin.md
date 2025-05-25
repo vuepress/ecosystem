@@ -8,7 +8,7 @@ You can configure the plugins that used by default theme with `themePlugins`.
 
 Default theme is using some plugins by default. You can disable a plugin if you really do not want to use it. Make sure you understand what the plugin is for before disabling it.
 
-```ts
+```ts title=".vuepress/config.ts"
 import { defaultTheme } from '@vuepress/theme-default'
 
 export default {

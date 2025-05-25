@@ -18,7 +18,7 @@ This plugin is mainly used to develop themes. You won't need to use it directly 
 npm i -D @vuepress/plugin-git@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { gitPlugin } from '@vuepress/plugin-git'
 
 export default {
@@ -83,6 +83,15 @@ This plugin will significantly slow down the speed of data preparation, especial
      * map to the actual usernames.
      */
     alias?: string[] | string
+    /**
+     * The primary email of the contributor
+     */
+    email?: string
+    /**
+     * The alternative emails of the contributor on the Git hosting service,
+     * or emails they have used in the past.
+     */
+    emailAlias?: string[] | string
     /**
      * The avatar url of the contributor.
      *
@@ -192,6 +201,43 @@ This plugin will significantly slow down the speed of data preparation, especial
 
   Page filter, if it returns `true`, the page will collect git information.
 
+### locales
+
+- Type: `Record<string, GitLocaleData>`
+
+  ```ts
+  export interface GitLocaleData {
+    /**
+     * Contributors title
+     */
+    contributors: string
+
+    /**
+     * Changelog title
+     */
+    changelog: string
+
+    /**
+     * Word to represent a commit "on" a time
+     */
+    timeOn: string
+
+    /**
+     * Changelog button
+     */
+    viewChangelog: string
+
+    /**
+     * Latest updated
+     */
+    latestUpdateAt: string
+  }
+  ```
+
+- Details:
+
+  Locales configuration, used in the [Git Component](#component).
+
 ## Frontmatter
 
 ### gitInclude
@@ -232,6 +278,131 @@ gitInclude:
 
   Whether to collect the change history for the current page, this value will override the [changelog](#changelog) configuration item.
 
+## Composables
+
+You can import the following composables from `@vuepress/plugin-git/client`.
+
+### useChangelog
+
+Get the changelog of the current page.
+
+```ts
+export interface GitChangelogItem {
+  /**
+   * Commit hash
+   */
+  hash: string
+  /**
+   * Unix timestamp in milliseconds
+   */
+  time: number
+  /**
+   * Commit message
+   */
+  message: string
+  /**
+   * The url of the commit
+   */
+  commitUrl?: string
+  /**
+   * release tag
+   */
+  tag?: string
+  /**
+   * The url of the release tag
+   */
+  tagUrl?: string
+  /**
+   * Commit author name
+   */
+  author: string
+  /**
+   * Commit author email
+   */
+  email: string
+
+  /**
+   * The co-authors of the commit
+   */
+  coAuthors?: CoAuthorInfo[]
+  /**
+   * Date text of the commit
+   */
+  date: string
+}
+
+export const useChangelog: (
+  enabled?: MaybeRefOrGetter<boolean>,
+) => ComputedRef<GitChangelogItem[]>
+```
+
+### useContributors
+
+Get the contributors of the current page.
+
+```ts
+export interface GitContributorInfo {
+  /**
+   * Contributor display name
+   */
+  name: string
+  /**
+   * Contributor email
+   */
+  email: string
+
+  /**
+   * Contributor username on the git hosting service
+   */
+  username: string
+  /**
+   * Number of commits
+   */
+  commits: number
+  /**
+   * Contributor avatar
+   */
+  avatar?: string
+  /**
+   * The url of the contributor
+   */
+  url?: string
+}
+
+export const useContributors: (
+  enabled?: MaybeRefOrGetter<boolean>,
+) => ComputedRef<GitContributorInfo[]>
+```
+
+### useLastUpdated
+
+Get the last updated time of the current page.
+
+```ts
+export interface LastUpdated {
+  /**
+   * The date object of the last updated time
+   */
+  date: Date
+  /**
+   * The ISO string of the last updated time
+   */
+  iso: string
+  /**
+   * The formatted text of the last updated time
+   */
+  text: string
+  /**
+   * The locale of the last updated time
+   */
+  locale: string
+}
+
+export const useLastUpdated: (
+  enabled?: MaybeRefOrGetter<boolean>,
+) => ComputedRef<LastUpdated | null>
+```
+
 ## Page Data
 
 This plugin will add a `git` field to page data.
@@ -240,11 +411,11 @@ After using this plugin, you can get the collected git information in page data:
 
 ```ts
 import type { GitPluginPageData } from '@vuepress/plugin-git'
-import { usePageData } from 'vuepress/client'
+import { usePage } from 'vuepress/client'
 
 export default {
   setup(): void {
-    const page = usePageData<GitPluginPageData>()
+    const page = usePage<GitPluginPageData>()
     console.log(page.value.git)
   },
 }
@@ -343,3 +514,41 @@ interface GitChangelog {
   The changelog of the page.
 
   This attribute would also include contributors to the files listed in [gitInclude](#gitinclude).
+
+## Git Component{#component}
+
+The plugin provides global components related to Git information, which can be used in themes.
+
+### GitContributors
+
+List the contributor information for the current page.
+
+```vue{4}
+<template>
+  <div vp-content>
+    <Content />
+    <GitContributors />
+  </div>
+</template>
+```
+
+**Effect Preview:**
+
+<GitContributors :header-level="4" />
+
+### GitChangelog
+
+List the changelog of the current page.
+
+```vue{4}
+<template>
+  <div vp-content>
+    <Content />
+    <GitChangelog />
+  </div>
+</template>
+```
+
+**Effect Preview:**
+
+<GitChangelog :header-level="4" />

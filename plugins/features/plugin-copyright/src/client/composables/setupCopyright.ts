@@ -4,11 +4,11 @@ import {
   isPlainObject,
   isString,
   removeEndingSlash,
-  useLocaleConfig,
+  useLocale,
 } from '@vuepress/helper/client'
 import { useEventListener } from '@vueuse/core'
 import { computed, onMounted, watchEffect } from 'vue'
-import { usePageData, usePageFrontmatter } from 'vuepress/client'
+import { useFrontmatter, usePage } from 'vuepress/client'
 import type {
   CopyrightPluginFrontmatter,
   CopyrightPluginLocaleData,
@@ -20,9 +20,9 @@ export const setupCopyright = (
   options: CopyrightPluginClientOptions,
   locales: ExactLocaleConfig<CopyrightPluginLocaleData>,
 ): void => {
-  const locale = useLocaleConfig(locales)
-  const frontmatter = usePageFrontmatter<CopyrightPluginFrontmatter>()
-  const page = usePageData<CopyrightPluginPageData>()
+  const locale = useLocale(locales)
+  const frontmatter = useFrontmatter<CopyrightPluginFrontmatter>()
+  const page = usePage<CopyrightPluginPageData>()
 
   const enabled = computed(
     () =>

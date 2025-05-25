@@ -32,7 +32,7 @@ export default defineUserConfig({
   title: 'Hello, VuePress',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })
 ```
@@ -47,7 +47,7 @@ export default defineUserConfig({
   title: 'Hello, VuePress',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })
 ```

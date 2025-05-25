@@ -1,5 +1,5 @@
-import type { Page, PageFrontmatter } from 'vuepress'
-import type { GitChangelog, GitContributor } from './typings.js'
+import type { LocaleConfig, Page } from 'vuepress'
+import type { GitContributorInfo, GitLocaleData } from '../shared/index.js'
 
 /**
  * Contributor information
@@ -29,6 +29,21 @@ export interface ContributorInfo {
    * 这时候可以通过别名映射到真实的用户名
    */
   alias?: string[] | string
+
+  /**
+   * The primary email of the contributor
+   *
+   * 贡献者在 Git 托管服务中的主邮箱
+   */
+  email?: string
+
+  /**
+   * The alternative emails of the contributor on the Git hosting service,
+   * or emails they have used in the past.
+   *
+   * 贡献者在 Git 托管服务中的备用邮箱，或者曾经使用过的邮箱
+   */
+  emailAlias?: string[] | string
 
   /**
    * The avatar url of the contributor.
@@ -86,7 +101,7 @@ export interface ContributorsOptions {
    *
    * 贡献者转换函数，例如去重和排序
    */
-  transform?: (contributors: GitContributor[]) => GitContributor[]
+  transform?: (contributors: GitContributorInfo[]) => GitContributorInfo[]
 }
 
 export interface ChangelogOptions {
@@ -162,6 +177,8 @@ export interface GitPluginOptions {
    * Whether to get the created time of a page
    *
    * 是否收集页面创建时间
+   *
+   * @default true
    */
   createdTime?: boolean
 
@@ -169,6 +186,8 @@ export interface GitPluginOptions {
    * Whether to get the updated time of a page
    *
    * 是否收集页面更新时间
+   *
+   * @default true
    */
   updatedTime?: boolean
 
@@ -176,6 +195,8 @@ export interface GitPluginOptions {
    * Whether to get the contributors of a page
    *
    * 是否收集页面的贡献者
+   *
+   * @default true
    */
   contributors?: ContributorsOptions | boolean
 
@@ -183,6 +204,8 @@ export interface GitPluginOptions {
    * Whether to get the changelog of a page
    *
    * 是否收集页面的变更历史记录
+   *
+   * @default false
    */
   changelog?: ChangelogOptions | boolean
 
@@ -190,48 +213,14 @@ export interface GitPluginOptions {
    * @deprecated use `contributors.transform` instead
    * Functions to transform contributors, e.g. remove duplicates ones and sort them
    */
-  transformContributors?: (contributors: GitContributor[]) => GitContributor[]
-}
-
-export interface GitPluginFrontmatter extends PageFrontmatter {
-  gitInclude?: string[]
+  transformContributors?: (
+    contributors: GitContributorInfo[],
+  ) => GitContributorInfo[]
 
   /**
-   * Whether to get the contributors of a page
+   * Localization config
    *
-   * - If the value is `false`, it will be ignored
-   * - If the value is `string[]`, it will be used as the list of extra contributors
+   * 本地化配置
    */
-  contributors?: string[] | boolean
-
-  /**
-   * Whether to get the changelog of a page
-   */
-  changelog?: boolean
-}
-
-export interface GitPluginPageData extends Record<string, unknown> {
-  git: GitData
-}
-
-export interface GitData {
-  /**
-   * Unix timestamp in milliseconds of the first commit
-   */
-  createdTime?: number
-
-  /**
-   * Unix timestamp in milliseconds of the last commit
-   */
-  updatedTime?: number
-
-  /**
-   * Contributors of all commits
-   */
-  contributors?: GitContributor[]
-
-  /**
-   * Changelog of a page
-   */
-  changelog?: GitChangelog[]
+  locales?: LocaleConfig<GitLocaleData>
 }

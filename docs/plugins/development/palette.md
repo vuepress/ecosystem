@@ -18,7 +18,7 @@ For theme authors, this plugin will help you to provide styles customization for
 npm i -D @vuepress/plugin-palette@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { palettePlugin } from '@vuepress/plugin-palette'
 
 export default {
@@ -43,9 +43,14 @@ The style file is used for overriding the default styles or adding extra styles,
 Use this plugin in your theme, assuming you are using SASS:
 
 ```ts
+import { palettePlugin } from '@vuepress/plugin-palette'
+
 export default {
   // ...
-  plugins: [palettePlugin({ preset: 'sass' })],
+  plugins: [
+    palettePlugin({ preset: 'sass' }),
+    // ...
+  ],
 }
 ```
 

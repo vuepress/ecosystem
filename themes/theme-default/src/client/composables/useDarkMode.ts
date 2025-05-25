@@ -1,4 +1,4 @@
-import { useThemeLocaleData } from '@theme/useThemeData'
+import { useData } from '@theme/useData'
 import { usePreferredDark, useStorage, watchImmediate } from '@vueuse/core'
 import type { InjectionKey, WritableComputedRef } from 'vue'
 import { computed, inject, onMounted, onUnmounted, provide } from 'vue'
@@ -42,7 +42,7 @@ export const useDarkMode = (): DarkModeRef => {
  * Create dark mode ref and provide as global computed in setup
  */
 export const setupDarkMode = (): void => {
-  const themeLocale = useThemeLocaleData()
+  const { themeLocale } = useData()
   const isDarkPreferred = usePreferredDark()
   const darkStorage = useStorage(
     'vuepress-color-scheme',

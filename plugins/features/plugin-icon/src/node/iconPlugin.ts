@@ -21,7 +21,7 @@ export const iconPlugin = (options: IconPluginOptions = {}): Plugin => {
     },
 
     extendsMarkdown: (md): void => {
-      if (options.markdown !== false) {
+      if (options.markdown ?? true) {
         md.use(icon, {
           render: (raw) => {
             const { attrs, content, color, size } = extractInfo({

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { VNode } from 'vue'
+import type { Slot } from '@vuepress/helper/client'
 
 defineSlots<{
-  default?: (props: Record<never, never>) => VNode | VNode[] | null
+  default?: Slot
 }>()
 
 const setHeight = (item: Element): void => {
@@ -31,6 +31,13 @@ const unsetHeight = (item: Element): void => {
   &-enter-from,
   &-leave-to {
     height: 0 !important;
+    opacity: 0;
+  }
+
+  &-enter-active {
+    transition:
+      height 0.3s ease-in-out,
+      opacity 0.6s ease-out;
   }
 }
 </style>

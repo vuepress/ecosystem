@@ -16,7 +16,7 @@ This plugin is mainly used to develop themes, and has been integrated into the d
 npm i -D @vuepress/plugin-active-header-links@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 
 export default {

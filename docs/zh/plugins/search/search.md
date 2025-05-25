@@ -14,7 +14,7 @@ icon: search
 npm i -D @vuepress/plugin-search@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { searchPlugin } from '@vuepress/plugin-search'
 
 export default {
@@ -44,7 +44,7 @@ export default {
 
 - 示例：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     searchPlugin({
@@ -105,7 +105,7 @@ export default {
 
 - 示例：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     searchPlugin({
@@ -130,7 +130,7 @@ export default {
 
 - 示例：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     searchPlugin({

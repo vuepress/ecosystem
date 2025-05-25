@@ -1,31 +1,26 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-const props = withDefaults(
-  defineProps<{
-    /** package name */
-    package: string
-    /** dist tag */
-    distTag?: string
-  }>(),
-  {
-    distTag: 'next',
-  },
-)
+const { package: pkg, distTag = 'next' } = defineProps<{
+  /** package name */
+  package: string
+  /** dist tag */
+  distTag?: string
+}>()
 
-const badgeLink = computed(
-  () => `https://www.npmjs.com/package/${props.package}/v/next`,
-)
+const badgeLink = computed(() => `https://www.npmjs.com/package/${pkg}/v/next`)
+
 const badgeLabel = computed(() => {
-  if (props.distTag) {
-    return `${props.package}@${props.distTag}`
+  if (distTag) {
+    return `${pkg}@${distTag}`
   }
-  return props.package
+  return pkg
 })
+
 const badgeImg = computed(
   () =>
-    `https://badgen.net/npm/v/${props.package}/${
-      props.distTag
+    `https://badgen.net/npm/v/${pkg}/${
+      distTag
     }?label=${encodeURIComponent(badgeLabel.value)}`,
 )
 </script>

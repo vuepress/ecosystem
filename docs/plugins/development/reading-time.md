@@ -14,7 +14,7 @@ This plugin will generate word count and estimated reading time for each page.
 npm i -D @vuepress/plugin-reading-time@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { readingTimePlugin } from '@vuepress/plugin-reading-time'
 
 export default {

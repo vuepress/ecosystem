@@ -16,7 +16,7 @@ icon: columns-2
 npm i -D @vuepress/plugin-markdown-tab@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { markdownTabPlugin } from '@vuepress/plugin-markdown-tab'
 
 export default {

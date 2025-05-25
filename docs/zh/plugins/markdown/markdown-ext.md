@@ -14,7 +14,7 @@ icon: expand
 npm i -D @vuepress/plugin-markdown-ext@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
 
 export default {

@@ -71,7 +71,6 @@ test.describe('plugin-theme-data', () => {
       editLink: true,
       editLinkText: 'Edit this page',
       lastUpdated: true,
-      lastUpdatedText: 'Last Updated',
       contributors: true,
       contributorsText: 'Contributors',
       notFound: [

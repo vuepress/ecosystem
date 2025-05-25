@@ -52,7 +52,7 @@ icon: languages
 
 - 示例：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   locales: {
     '/': {

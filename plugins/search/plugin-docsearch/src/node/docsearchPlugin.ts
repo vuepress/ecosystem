@@ -36,6 +36,7 @@ export const docsearchPlugin = ({
         app,
         default: docSearchLocaleInfo,
         name: PLUGIN_NAME,
+        // @ts-expect-error: outer object of deep locales can be optional in docsearch
         config: locales,
       }),
     },

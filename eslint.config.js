@@ -99,6 +99,10 @@ export default vuepress(
         ],
         '@typescript-eslint/no-dynamic-delete': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/no-empty-function': [
+          'error',
+          { allow: ['protected-constructors'] },
+        ],
         '@typescript-eslint/no-floating-promises': [
           'error',
           {
@@ -142,6 +146,22 @@ export default vuepress(
     rules: {
       'import/no-unresolved': 'off',
       'no-console': 'off',
+    },
+  },
+  {
+    files: ['**/template/**'],
+    rules: {
+      'import/no-unresolved': 'off',
+      'vue/multi-word-component-names': [
+        'error',
+        { ignores: ['Article', 'Category', 'Tag', 'Timeline'] },
+      ],
+    },
+  },
+  {
+    files: ['**/*.js'],
+    rules: {
+      'import/named': 'off',
     },
   },
 )

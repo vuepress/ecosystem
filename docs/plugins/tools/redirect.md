@@ -14,7 +14,7 @@ This plugin can automatically handle redirects for your site.
 npm i -D @vuepress/plugin-redirect@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 
 export default {

@@ -16,7 +16,7 @@ This plugin will import [Google Tag Manager](https://developers.google.com/tag-p
 npm i -D @vuepress/plugin-google-tag-manager@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { googleTagManagerPlugin } from '@vuepress/plugin-google-tag-manager'
 
 export default {
@@ -61,7 +61,7 @@ If you want Google Tag Manager to work properly when javascript is disabled, you
 
 - Example:
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     googleTagManagerPlugin({

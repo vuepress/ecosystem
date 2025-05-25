@@ -1,0 +1,31 @@
+@import './vars.css';
+
+:root {
+  --transition-fade-in-left-offset: 10px;
+}
+
+.fade-in-left {
+  &-enter-from,
+  &-leave-to {
+    opacity: 0 !important;
+    transform: translateX(var(--transition-fade-in-left-offset)) !important;
+  }
+
+  &-enter-to,
+  &-leave-from {
+    opacity: 1;
+    transform: translateX(0) !important;
+  }
+
+  &-leave-active {
+    transition:
+      opacity var(--transition-leave-duration) var(--transition-ease-in-out),
+      transform var(--transition-leave-duration) var(--transition-ease-in-out) !important;
+  }
+
+  &-enter-active {
+    transition:
+      opacity var(--transition-enter-duration) var(--transition-ease-in-out),
+      transform var(--transition-enter-duration) var(--transition-ease-in-out) !important;
+  }
+}

@@ -18,7 +18,7 @@ Notice that this plugin would only tokenize the code fence without adding styles
 npm i -D @vuepress/plugin-prismjs@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 
 export default {
@@ -178,7 +178,7 @@ export default defineUserConfig({
   title: 'Hello, VuePress',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })
 ```
@@ -194,7 +194,7 @@ export default defineUserConfig({
   title: 'Hello, VuePress',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })
 ```
@@ -400,6 +400,36 @@ body > div {
 }
 ```
 
+### codeBlockTitle
+
+- Type: `boolean | CodeBlockTitleRender`
+
+  ```ts
+  type CodeBlockTitleRender = (title: string, code: string) => string
+  ```
+
+- Default: `true`
+
+- Details: Whether to enable code block title rendering. Add `title="Title"` after the code block <code>\`\`\`</code> to set the title.
+
+  Pass `CodeBlockTitleRender` to customize the title rendering.
+
+- Example:
+
+  **Input:**
+
+  ````md {1}
+  ```ts title="foo/baz.js"
+  console.log('hello')
+  ```
+  ````
+
+  **Output:**
+
+  ```ts title="foo/baz.js"
+  console.log('hello')
+  ```
+
 ::: tip
 
 In the new version, some functionalities similar to [shiki](https://shiki.style/packages/transformers) have been implemented, allowing you to style code blocks using the same syntax.
@@ -592,8 +622,8 @@ In the new version, some functionalities similar to [shiki](https://shiki.style/
 
 - Details: Whether enable whitespace characters (Space and Tab).
 
-  - `true`: enable render whitespace, same of `all`
-  - `false`: disable render whitespace
+  - `true`: enable whitespace, but not render any whitespace by default
+  - `false`: completely disable render whitespace, `:whitespace` will not take effect.
   - `'all'`: render all whitespace
   - `'boundary'`: render leading and trailing whitespace of the line
   - `'trailing'`: render trailing whitespace of the line

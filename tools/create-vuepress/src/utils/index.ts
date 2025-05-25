@@ -1,3 +1,4 @@
+export * from './checkYarnClassic.js'
 export * from './file.js'
 export * from './getPackageManager.js'
 export * from './getRegistry.js'

@@ -6,6 +6,8 @@
 [![license](https://badgen.net/github/license/vuepress/ecosystem)](https://github.com/vuepress/ecosystem/blob/main/LICENSE)
 [![discord](https://badgen.net/discord/online-members/ptFjefy6H5?icon=discord&label=discord)](https://discord.gg/ptFjefy6H5)
 
+This repo contains 48 official plugins and 1 official theme.
+
 ## Documentation
 
 <https://ecosystem.vuejs.press>

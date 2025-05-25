@@ -14,7 +14,7 @@ Integrate [Umami Analytics](https://umami.is/) into VuePress.
 npm i -D @vuepress/plugin-umami-analytics@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { umamiAnalyticsPlugin } from '@vuepress/plugin-umami-analytics'
 
 export default {

@@ -1,4 +1,4 @@
-import { useLocaleConfig } from '@vuepress/helper/client'
+import { useLocale } from '@vuepress/helper/client'
 import {
   onClickOutside,
   useDebounceFn,
@@ -12,24 +12,23 @@ import {
   defineAsyncComponent,
   defineComponent,
   h,
-  inject,
-  nextTick,
   onMounted,
   onUnmounted,
   ref,
   shallowRef,
   watch,
 } from 'vue'
-import { useSiteLocaleData } from 'vuepress/client'
+import { useSiteLocale } from 'vuepress/client'
 
 import {
-  searchModalSymbol,
+  useActiveState,
   useArrayCycle,
   useSuggestions,
 } from '../composables/index.js'
 import { locales, options } from '../define.js'
 import { useSearchOptions } from '../helpers/index.js'
 import { CLOSE_ICON } from '../icons/index.js'
+import { defaultQuerySplitter } from '../utils/index.js'
 import SearchKeyHints from './SearchKeyHints.js'
 import { SearchLoading } from './SearchLoading.js'
 import { SearchIcon } from './icons.js'
@@ -40,7 +39,7 @@ const SearchResult = defineAsyncComponent({
   loader: () =>
     import(/* webpackChunkName: "slimsearch-result" */ './SearchResult.js'),
   loadingComponent: () => {
-    const localeConfig = useLocaleConfig(locales)
+    const localeConfig = useLocale(locales)
 
     return h(SearchLoading, {
       class: 'slimsearch-result-wrapper',
@@ -55,10 +54,10 @@ export default defineComponent({
   name: 'SearchModal',
 
   setup() {
-    const isActive = inject(searchModalSymbol)!
-    const siteLocale = useSiteLocaleData()
-    const locale = useLocaleConfig(locales)
+    const locale = useLocale(locales)
+    const siteLocale = useSiteLocale()
     const searchOptions = useSearchOptions()
+    const [isActive, toggleActive] = useActiveState()
 
     const input = ref('')
     const queries = ref<string[]>([])
@@ -73,6 +72,8 @@ export default defineComponent({
 
     const inputElement = shallowRef<HTMLInputElement>()
     const suggestionsElement = shallowRef<HTMLDivElement>()
+    const body = shallowRef<HTMLElement>()
+    const isLocked = useScrollLock(body.value)
 
     const hasSuggestions = computed(
       () =>
@@ -84,53 +85,57 @@ export default defineComponent({
       showSuggestion.value = false
     }
 
-    useEventListener('keydown', (event: KeyboardEvent) => {
-      // handle suggestion keys
-      if (hasSuggestions.value) {
-        if (event.key === 'ArrowUp') activePreviousSuggestion()
-        else if (event.key === 'ArrowDown') activeNextSuggestion()
-        else if (event.key === 'Tab') applySuggestion()
-        else if (event.key === 'Enter' || event.key === 'Escape')
-          showSuggestion.value = false
-      }
-      // hide the modal when pressing the escape key
-      else if (event.key === 'Escape') {
-        isActive.value = false
-      }
-    })
-
-    const updateQueries = useDebounceFn(
-      (): void => {
-        void (
-          searchOptions.value.querySplitter?.(input.value) ??
-          Promise.resolve(input.value.split(' '))
-        ).then((result) => {
-          queries.value = result
-        })
+    useEventListener(
+      'keydown',
+      (event: KeyboardEvent) => {
+        // handle suggestion keys
+        if (hasSuggestions.value) {
+          if (event.key === 'ArrowUp') activePreviousSuggestion()
+          else if (event.key === 'ArrowDown') activeNextSuggestion()
+          else if (event.key === 'Tab') applySuggestion()
+          else if (event.key === 'Enter' || event.key === 'Escape')
+            showSuggestion.value = false
+        }
+        // hide the modal when pressing the escape key
+        else if (event.key === 'Escape') {
+          toggleActive(false)
+        }
       },
-      Math.min(options.searchDelay, options.suggestDelay),
+      { passive: true },
     )
 
-    watchImmediate(input, updateQueries)
+    onClickOutside(suggestionsElement, () => {
+      showSuggestion.value = false
+    })
+
+    watchImmediate(
+      input,
+      useDebounceFn(
+        () =>
+          (
+            searchOptions.value.querySplitter?.(input.value) ??
+            Promise.resolve(defaultQuerySplitter(input.value))
+          ).then((result) => {
+            queries.value = result.filter((item) => item.length)
+          }),
+        Math.min(options.searchDelay, options.suggestDelay),
+      ),
+    )
 
     onMounted(() => {
-      const isLocked = useScrollLock(document.body)
+      body.value = document.body
 
-      watch(isActive, async (value) => {
-        isLocked.value = value
-        if (value) {
-          await nextTick()
-          inputElement.value?.focus()
-        }
-      })
+      watch(
+        isActive,
+        (value) => {
+          if (value) inputElement.value?.focus()
+        },
+        { flush: 'post' },
+      )
+    })
 
-      onClickOutside(suggestionsElement, () => {
-        showSuggestion.value = false
-      })
-
-      onUnmounted(() => {
-        isLocked.value = false
-      })
+    onUnmounted(() => {
+      isLocked.value = false
     })
 
     return (): VNode | null =>
@@ -139,7 +144,7 @@ export default defineComponent({
             h('div', {
               class: 'slimsearch-mask',
               onClick: () => {
-                isActive.value = false
+                toggleActive(false)
                 input.value = ''
               },
             }),
@@ -148,14 +153,18 @@ export default defineComponent({
                 h('form', [
                   h(
                     'label',
-                    { 'for': 'search-pro', 'aria-label': locale.value.search },
+                    {
+                      'id': 'slimsearch-label',
+                      'for': 'slimsearch-input',
+                      'aria-label': locale.value.search,
+                    },
                     h(SearchIcon),
                   ),
                   h('input', {
                     'ref': inputElement,
                     'type': 'search',
                     'class': 'slimsearch-input',
-                    'id': 'search-pro',
+                    'id': 'slimsearch-input',
                     'placeholder': locale.value.placeholder,
                     'spellcheck': 'false',
                     'autocapitalize': 'off',
@@ -181,10 +190,12 @@ export default defineComponent({
                   }),
                   input.value
                     ? h('button', {
-                        type: 'reset',
-                        class: 'slimsearch-clear-button',
-                        innerHTML: CLOSE_ICON,
-                        onClick: () => {
+                        'type': 'reset',
+                        'class': 'slimsearch-clear-button',
+                        'title': locale.value.clear,
+                        'aria-label': locale.value.clear,
+                        'innerHTML': CLOSE_ICON,
+                        'onClick': () => {
                           input.value = ''
                         },
                       })
@@ -232,7 +243,7 @@ export default defineComponent({
                     type: 'button',
                     class: 'slimsearch-close-button',
                     onClick: () => {
-                      isActive.value = false
+                      toggleActive(false)
                       input.value = ''
                     },
                   },
@@ -244,7 +255,7 @@ export default defineComponent({
                 queries: queries.value,
                 isFocusing: !hasSuggestions.value,
                 onClose: () => {
-                  isActive.value = false
+                  toggleActive(false)
                 },
                 onUpdateQuery: (query: string) => {
                   input.value = query

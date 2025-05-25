@@ -14,7 +14,7 @@ icon: https://docsearch.algolia.com/img/favicon.ico
 npm i -D @vuepress/plugin-docsearch@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 
 export default {
@@ -294,7 +294,7 @@ new Crawler({
 
 - 示例：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     docsearchPlugin({

@@ -68,7 +68,10 @@ program
 
       // resolve the final app config to use
       const appConfig = resolveAppConfig({
-        defaultAppConfig: {},
+        defaultAppConfig: {
+          cache: commandOptions.cache,
+          temp: commandOptions.temp,
+        },
         cliAppConfig,
         userConfig,
       })
@@ -98,7 +101,6 @@ program
       // empty output directory
       await fs.emptyDir(outputFolder)
 
-      // initialize vuepress app to get pages
       logger.info('Initializing VuePress and preparing data...')
 
       // initialize vuepress app to get pages

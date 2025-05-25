@@ -1,11 +1,10 @@
-import { useThemeLocaleData } from '@theme/useThemeData'
+import { useData } from '@theme/useData'
 import type { HeaderItem } from '@vuepress/helper/client'
 import { getHeaders } from '@vuepress/helper/client'
-import { injectLocal, provideLocal, watchImmediate } from '@vueuse/core'
+import { injectLocal, provideLocal } from '@vueuse/core'
 import type { InjectionKey, Ref } from 'vue'
-import { computed, onMounted, ref } from 'vue'
-import { usePageFrontmatter, useRoutePath } from 'vuepress/client'
-import type { DefaultThemeNormalPageFrontmatter } from '../../shared/index.js'
+import { computed, ref } from 'vue'
+import { onContentUpdated } from 'vuepress/client'
 
 export type HeadersRef = Ref<HeaderItem[]>
 
@@ -24,11 +23,9 @@ export const useHeaders = (): HeadersRef => {
 }
 
 export const setupHeaders = (): void => {
-  const headersRef: HeadersRef = ref([])
+  const { frontmatter, themeLocale } = useData()
 
-  const routePath = useRoutePath()
-  const themeLocale = useThemeLocaleData()
-  const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
+  const headersRef: HeadersRef = ref([])
   const levels = computed(
     () => frontmatter.value.sidebarDepth ?? themeLocale.value.sidebarDepth ?? 2,
   )
@@ -47,7 +44,8 @@ export const setupHeaders = (): void => {
 
   provideLocal(headersSymbol, headersRef)
 
-  onMounted(() => {
-    watchImmediate([levels, routePath], updateHeaders)
+  onContentUpdated((reason) => {
+    if (reason === 'beforeUnmount') headersRef.value = []
+    else updateHeaders()
   })
 }

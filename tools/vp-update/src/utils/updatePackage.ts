@@ -29,7 +29,7 @@ export const updatePackages = async (
 
       if (DEPRECATED_PACKAGES.includes(dependency)) {
         console.error(
-          `"${dependency}"is deprecated, please remove it from your dependencies and import "${dependency.substring(
+          `"${dependency}"is deprecated, please remove it from your dependencies and import "${dependency.slice(
             1,
           )}" directly.`,
         )

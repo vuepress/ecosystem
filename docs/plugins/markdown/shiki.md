@@ -20,7 +20,7 @@ This plugin will enable syntax highlighting for markdown code fence with [Shiki]
 npm i -D @vuepress/plugin-shiki@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 
 export default {
@@ -172,7 +172,7 @@ export default defineUserConfig({
   title: 'Hello, VuePress',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })
 ```
@@ -188,7 +188,7 @@ export default defineUserConfig({
   title: 'Hello, VuePress',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })
 ```
@@ -394,6 +394,36 @@ body > div {
 }
 ```
 
+### codeBlockTitle
+
+- Type: `boolean | CodeBlockTitleRender`
+
+  ```ts
+  type CodeBlockTitleRender = (title: string, code: string) => string
+  ```
+
+- Default: `true`
+
+- Details: Whether to enable code block title rendering. Add `title="Title"` after the code block <code>\`\`\`</code> to set the title.
+
+  Pass `CodeBlockTitleRender` to customize the title rendering.
+
+- Example:
+
+  **Input:**
+
+  ````md {1}
+  ```ts title="foo/baz.js"
+  console.log('hello')
+  ```
+  ````
+
+  **Output:**
+
+  ```ts title="foo/baz.js"
+  console.log('hello')
+  ```
+
 ### notationDiff
 
 - Type: `boolean`
@@ -580,8 +610,8 @@ body > div {
 
 - Details: Whether enable whitespace characters (Space and Tab).
 
-  - `true`: enable render whitespace, same of `all`
-  - `false`: disable render whitespace
+  - `true`: enable whitespace, but not render any whitespace by default
+  - `false`: completely disable render whitespace, `:whitespace` will not take effect.
   - `'all'`: render all whitespace
   - `'boundary'`: render leading and trailing whitespace of the line
   - `'trailing'`: render trailing whitespace of the line

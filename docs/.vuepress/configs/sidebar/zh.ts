@@ -39,6 +39,10 @@ export const sidebarZh: SidebarOptions = {
       text: '工具',
       link: 'tools/',
     },
+    {
+      text: 'AI',
+      link: 'ai/',
+    },
   ],
 
   '/zh/plugins/analytics/': [
@@ -141,7 +145,13 @@ export const sidebarZh: SidebarOptions = {
     'register-components',
   ],
 
-  '/zh/plugins/search/': ['guidelines', 'docsearch', 'search', 'slimsearch'],
+  '/zh/plugins/search/': [
+    'guidelines',
+    'docsearch',
+    'meilisearch',
+    'search',
+    'slimsearch',
+  ],
 
   '/zh/plugins/seo/': [
     {
@@ -159,6 +169,8 @@ export const sidebarZh: SidebarOptions = {
       children: ['guide', 'config', 'frontmatter'],
     },
   ],
+
+  '/zh/plugins/ai/': ['llms'],
 
   '/zh/themes/': [
     'guidelines',

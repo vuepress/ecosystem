@@ -1,5 +1,7 @@
-import type { RendererRichOptions } from '@shikijs/twoslash'
-import type { TransformerTwoslashOptions } from '@shikijs/twoslash/core'
+import type {
+  RendererRichOptions,
+  TransformerTwoslashOptions,
+} from '@shikijs/twoslash/core'
 import type { TwoslashReturn } from 'twoslash'
 import type { VueSpecificOptions } from 'twoslash-vue'
 

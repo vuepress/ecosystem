@@ -17,3 +17,8 @@ export const useLocaleConfig = <T extends LocaleData>(
 
   return computed(() => toValue(localesConfig)[routeLocale.value] ?? {})
 }
+
+/**
+ * Short alias of `useLocaleConfig`
+ */
+export const useLocale = useLocaleConfig

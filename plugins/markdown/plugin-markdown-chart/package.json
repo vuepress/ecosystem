@@ -47,11 +47,11 @@
     "style": "sass src:lib --embed-sources --style=compressed"
   },
   "dependencies": {
-    "@mdit/plugin-container": "^0.16.0",
-    "@mdit/plugin-plantuml": "^0.16.0",
+    "@mdit/plugin-container": "^0.18.0",
+    "@mdit/plugin-plantuml": "^0.18.0",
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^12.7.0",
-    "vue": "^3.5.13"
+    "@vueuse/core": "catalog:",
+    "vue": "catalog:"
   },
   "devDependencies": {
     "@types/markdown-it": "^14.1.2",
@@ -66,7 +66,7 @@
     "markmap-toolbar": "^0.18.10",
     "markmap-view": "^0.18.10",
     "mermaid": "^11.4.1",
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "peerDependenciesMeta": {
     "chart.js": {

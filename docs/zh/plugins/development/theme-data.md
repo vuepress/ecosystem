@@ -18,7 +18,7 @@ icon: database
 npm i -D @vuepress/plugin-theme-data@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 
 export default {
@@ -46,7 +46,7 @@ export default {
 
 - 示例：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     themeDataPlugin({

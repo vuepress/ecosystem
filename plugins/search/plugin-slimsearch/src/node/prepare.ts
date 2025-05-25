@@ -15,7 +15,7 @@ export const prepareStore = async (
   await app.writeTemp(
     `slimsearch/store.js`,
     `\
-export const store = ${store.toJSON()};
+export const store = ${store.toJSON()}
 `,
   )
 }
@@ -28,7 +28,7 @@ export const prepareSearchIndex = async (
     entries(searchIndexStore).map(([locale, documents]) =>
       app.writeTemp(
         `slimsearch/${getLocaleChunkName(locale)}.js`,
-        `export default ${JSON.stringify(JSON.stringify(documents))};`,
+        `export default ${JSON.stringify(JSON.stringify(documents))}`,
       ),
     ),
   )
@@ -43,6 +43,18 @@ export const prepareSearchIndex = async (
           )}.js')`,
       )
       .join(',')}}`,
+  )
+}
+
+export const prepareWorkerOptions = async (
+  app: App,
+  options: SlimSearchPluginOptions,
+): Promise<void> => {
+  await app.writeTemp(
+    `slimsearch/worker-options.js`,
+    `\
+export const sortStrategy = "${options.sortStrategy ?? 'max'}"
+`,
   )
 }
 

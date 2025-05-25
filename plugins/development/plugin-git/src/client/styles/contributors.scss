@@ -1,0 +1,36 @@
+.vp-contributors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+
+  margin: 1rem 0;
+}
+
+.vp-contributor {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+
+  color: inherit;
+
+  font-size: 1.125rem;
+
+  &::after {
+    display: none !important;
+  }
+
+  &-avatar {
+    object-fit: contain;
+
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-inline-end: 0.25rem;
+    border-radius: 50%;
+  }
+}
+
+a.vp-contributor {
+  text-decoration: none !important;
+}

@@ -2,11 +2,7 @@ import { store } from '@temp/blog/store'
 import { typesMap } from '@temp/blog/type'
 import type { ComputedRef } from 'vue'
 import { computed, readonly, shallowRef } from 'vue'
-import {
-  resolveRoute,
-  usePageFrontmatter,
-  useRouteLocale,
-} from 'vuepress/client'
+import { resolveRoute, useData } from 'vuepress/client'
 import type {
   BlogTypeFrontmatterOptions,
   TypesMap,
@@ -24,10 +20,9 @@ export const useBlogType = <
 >(
   key?: string,
 ): ComputedRef<BlogTypeData<T>> => {
-  const frontmatter = usePageFrontmatter<{
+  const { frontmatter, routeLocale } = useData<{
     blog?: BlogTypeFrontmatterOptions
   }>()
-  const routeLocale = useRouteLocale()
 
   return computed(() => {
     const mapKey = key ?? frontmatter.value.blog?.key ?? ''

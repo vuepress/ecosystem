@@ -6,7 +6,6 @@ import { useRouteLocale } from 'vuepress/client'
 
 import { isFunction } from 'vuepress/shared'
 import type { SearchResult, WorkerSearchOptions } from '../typings/index.js'
-import { defaultQuerySplitter } from '../utils/index.js'
 
 declare const __VUEPRESS_DEV__: boolean
 
@@ -35,9 +34,7 @@ export interface SearchOptions extends SearchLocaleOptions {
   locales?: Record<string, SearchLocaleOptions>
 }
 
-const searchOptions: Ref<SearchOptions> = ref({
-  querySplitter: (query) => Promise.resolve(defaultQuerySplitter(query)),
-})
+const searchOptions: Ref<SearchOptions> = ref({})
 
 const slimsearchSymbol: InjectionKey<Ref<SearchOptions>> = Symbol(
   __VUEPRESS_DEV__ ? 'slimsearch' : '',

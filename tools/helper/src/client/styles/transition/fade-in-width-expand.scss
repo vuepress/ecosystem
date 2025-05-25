@@ -1,0 +1,38 @@
+@import './vars.css';
+
+.fade-in-width-expand {
+  &-leave-from,
+  &-enter-to {
+    opacity: 1;
+  }
+
+  &-leave-to,
+  &-enter-from {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    opacity: 0 !important;
+  }
+
+  &-leave-active {
+    overflow: hidden !important;
+    transition:
+      max-width var(--transition-leave-duration) var(--transition-ease-in-out)
+        var(--transition-delay),
+      opacity var(--transition-leave-duration) var(--transition-ease-in-out),
+      margin-right var(--transition-leave-duration)
+        var(--transition-ease-in-out) var(--transition-delay),
+      margin-left var(--transition-duration) var(--transition-ease-in-out)
+        var(--transition-delay) !important;
+  }
+
+  &-enter-active {
+    overflow: hidden !important;
+    transition:
+      max-width var(--transition-enter-duration) var(--transition-ease-in-out),
+      opacity var(--transition-leave-duration) var(--transition-ease-in-out)
+        var(--transition-delay),
+      margin-right var(--transition-enter-duration)
+        var(--transition-ease-in-out),
+      margin-left var(--transition-enter-duration) var(--transition-ease-in-out) !important;
+  }
+}

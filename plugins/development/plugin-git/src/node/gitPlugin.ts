@@ -1,32 +1,53 @@
+import { getFullLocaleConfig } from '@vuepress/helper'
 import type { Page, Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import { path } from 'vuepress/utils'
 import type {
   GitPluginFrontmatter,
-  GitPluginOptions,
   GitPluginPageData,
-} from './options.js'
+} from '../shared/index.js'
+import { gitLocaleInfo } from './locales.js'
+import type { GitPluginOptions } from './options.js'
+import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 import { resolveChangelog } from './resolveChangelog.js'
 import { resolveContributors } from './resolveContributors.js'
-import { checkGitRepo, getCommits, inferGitProvider } from './utils/index.js'
+import {
+  PLUGIN_NAME,
+  checkGitRepo,
+  getCommits,
+  inferGitProvider,
+  injectGitOptions,
+} from './utils/index.js'
 
 export const gitPlugin =
   ({
-    createdTime,
-    updatedTime,
-    contributors,
+    createdTime = true,
+    updatedTime = true,
+    contributors = true,
     changelog = false,
     filter,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     transformContributors,
+    locales = {},
   }: GitPluginOptions = {}): Plugin =>
   (app) => {
     const cwd = app.dir.source()
     const isGitRepoValid = checkGitRepo(cwd)
     const gitProvider = isGitRepoValid ? inferGitProvider(cwd) : null
-
     return {
-      name: '@vuepress/plugin-git',
+      name: PLUGIN_NAME,
+
+      define: {
+        __GIT_CHANGELOG__: Boolean(changelog),
+        __GIT_CONTRIBUTORS__: Boolean(contributors),
+        __GIT_LOCALES__: getFullLocaleConfig({
+          app,
+          name: PLUGIN_NAME,
+          default: gitLocaleInfo,
+          config: locales,
+        }),
+        __GIT_OPTIONS__: injectGitOptions(gitProvider, changelog),
+      },
 
       extendsPage: async (
         page: Page<GitPluginPageData, GitPluginFrontmatter>,
@@ -43,10 +64,10 @@ export const gitPlugin =
 
         // skip if all features are disabled
         if (
-          !(frontmatter.contributors ?? contributors ?? true) &&
+          !(frontmatter.contributors ?? contributors) &&
           !(frontmatter.changelog ?? changelog) &&
-          createdTime === false &&
-          updatedTime === false
+          !createdTime &&
+          !updatedTime
         ) {
           return
         }
@@ -65,19 +86,19 @@ export const gitPlugin =
 
         if (commits.length === 0) return
 
-        if (createdTime !== false) {
-          page.data.git.createdTime = commits[commits.length - 1].date
+        if (createdTime) {
+          page.data.git.createdTime = commits[commits.length - 1].time
         }
 
-        if (updatedTime !== false) {
-          page.data.git.updatedTime = commits[0].date
+        if (updatedTime) {
+          page.data.git.updatedTime = commits[0].time
         }
 
         const contributorsOptions = isPlainObject(contributors)
           ? contributors
           : {}
 
-        if ((frontmatter.contributors ?? contributors) !== false) {
+        if (frontmatter.contributors ?? contributors) {
           contributorsOptions.transform ??= transformContributors
           page.data.git.contributors = resolveContributors(
             commits,
@@ -96,7 +117,6 @@ export const gitPlugin =
             app,
             commits,
             changelogOptions,
-            gitProvider,
             contributorsOptions.info ?? [],
           )
         }
@@ -108,5 +128,8 @@ export const gitPlugin =
           delete page.frontmatter.gitInclude
         })
       },
+
+      clientConfigFile: () =>
+        prepareClientConfigFile(app, { changelog, contributors }),
     }
   }

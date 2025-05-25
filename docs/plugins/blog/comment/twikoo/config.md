@@ -14,9 +14,8 @@ You can directly configure serializable options in the plugin options:
 
 ```ts title=".vuepress/config.ts"
 import { commentPlugin } from '@vuepress/plugin-comment'
-import { defineUserConfig } from 'vuepress'
 
-export default defineUserConfig({
+export default {
   plugins: [
     commentPlugin({
       provider: 'Twikoo',
@@ -24,7 +23,7 @@ export default defineUserConfig({
       // ...
     }),
   ],
-})
+}
 ```
 
 ## Client Config

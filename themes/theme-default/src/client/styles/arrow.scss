@@ -23,9 +23,17 @@
 
   &.right {
     transform: rotate(90deg);
+
+    [dir='rtl'] & {
+      transform: rotate(-90deg);
+    }
   }
 
   &.left {
     transform: rotate(-90deg);
+
+    [dir='rtl'] & {
+      transform: rotate(90deg);
+    }
   }
 }

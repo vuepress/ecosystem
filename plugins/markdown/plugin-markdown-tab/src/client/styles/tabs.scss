@@ -1,16 +1,11 @@
+:root {
+  --tab-border-radius: 0.5rem;
+}
+
 .vp-tabs {
   margin: 1.5rem 0;
   border: 1px solid var(--vp-c-border);
-  border-radius: 8px;
-
-  @media (max-width: 419px) {
-    [vp-content] > & {
-      margin-inline: -1.5rem;
-      border: none;
-      border-bottom: 1px solid var(--vp-c-border);
-      border-radius: 0;
-    }
-  }
+  border-radius: var(--tab-border-radius);
 }
 
 .vp-tabs-nav {
@@ -18,7 +13,7 @@
 
   margin: 0;
   padding: 0;
-  border-radius: 0.5rem 0.5rem 0 0;
+  border-radius: var(--tab-border-radius) var(--tab-border-radius) 0 0;
 
   background: var(--tab-c-bg-nav);
   list-style: none;
@@ -30,10 +25,6 @@
   @media print {
     display: none;
   }
-
-  @media (max-width: 419px) {
-    border-radius: 0;
-  }
 }
 
 .vp-tab-nav {
@@ -43,7 +34,7 @@
   margin: 0;
   padding: 0.5em 1em;
   border: none;
-  border-radius: 0.5rem 0.5rem 0 0;
+  border-radius: var(--tab-border-radius) var(--tab-border-radius) 0 0;
 
   background: transparent;
   color: var(--tab-c-nav);
@@ -113,7 +104,7 @@
   display: none;
 
   padding: 1rem 0.75rem;
-  border-radius: 0 0 0.5rem 0.5rem;
+  border-radius: 0 0 var(--tab-border-radius) var(--tab-border-radius);
 
   background: var(--tab-c-bg);
 

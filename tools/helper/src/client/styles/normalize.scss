@@ -14,8 +14,6 @@ body {
 }
 
 html {
-  font-size: 16px;
-
   font-display: optional;
 
   -webkit-font-smoothing: antialiased;
@@ -64,7 +62,7 @@ h1 {
 
 h2 {
   padding-bottom: 0.3rem;
-  border-bottom: 1px solid var(--vp-c-gutter, #e2e2e3);
+  border-bottom: 1px solid var(--vp-c-divider, #e2e2e3);
   font-size: 1.65rem;
   transition: border-color var(--vp-t-color);
 }
@@ -110,6 +108,7 @@ a {
   &.header-anchor {
     position: relative;
     color: inherit;
+    font-weight: inherit;
     text-decoration: none;
 
     &::before {
@@ -151,7 +150,8 @@ strong {
 
 blockquote {
   margin: 1rem 0;
-  padding: 0.25rem 0 0.25rem 1rem;
+  padding-block: 0.25rem;
+  padding-inline: 1rem 0;
   border-inline-start: 0.2rem solid var(--vp-c-border-hard, #b8b8ba);
 
   color: var(--vp-c-text-mute, rgb(60 60 67 / 78%));
@@ -170,7 +170,7 @@ blockquote {
 
 hr {
   border: 0;
-  border-bottom: 1px solid var(--vp-c-gutter, #e2e2e3);
+  border-bottom: 1px solid var(--vp-c-divider, #e2e2e3);
   transition: border-color var(--vp-t-color);
 }
 

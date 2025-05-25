@@ -30,20 +30,31 @@ export interface MarkdownImagePluginOptions {
   mark?: MarkdownItImgMarkOptions | boolean
 
   /**
-   * Whether to enable image size mark support
+   * Whether to enable image size support
    *
-   * 是否启用图片大小标记支持。
+   * 是否启用图片大小支持。
    *
    * @default false
    */
   size?: boolean
 
   /**
-   * Whether to enable obsidian image size mark support
+   * Whether to enable obsidian image size support
    *
-   * 是否启用 obsidian 图片大小标记支持。
+   * 是否启用 Obsidian 图片大小支持。
    *
    * @default false
    */
   obsidianSize?: boolean
+
+  /**
+   * @deprecated
+   *
+   * Whether to enable legacy image size support
+   *
+   * 是否启用旧版图片大小支持。
+   *
+   * @default false
+   */
+  legacySize?: boolean
 }

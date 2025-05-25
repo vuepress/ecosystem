@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-register-components",
-  "version": "2.0.0-rc.66",
+  "version": "2.0.0-rc.103",
   "description": "VuePress plugin - register-components",
   "keywords": [
     "vuepress-plugin",
@@ -32,14 +32,13 @@
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
-    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "copy": "cpx \"src/**/*.{css,svg}\" lib"
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "chokidar": "^3.6.0"
+    "chokidar": "^4.0.3"
   },
   "peerDependencies": {
-    "vuepress": "2.0.0-rc.19"
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

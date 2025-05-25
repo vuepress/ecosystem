@@ -1,6 +1,5 @@
 import { isLinkAbsolute, isLinkHttp, startsWith } from '@vuepress/helper/client'
 import { watchImmediate } from '@vueuse/core'
-import type { PropType } from 'vue'
 import {
   TransitionGroup,
   computed,
@@ -10,38 +9,24 @@ import {
   ref,
 } from 'vue'
 import { useRoutePath, useRouter } from 'vuepress/client'
-import type { NoticeItemOptions } from '../../shared/index.js'
+import { useNoticeOptions } from '../composables/index.js'
 import { CloseIcon } from './CloseIcon.js'
 
+import '@vuepress/helper/transition/fade-in-up.css'
 import '../styles/notice.css'
-
-type NoticeClientOption = Omit<NoticeItemOptions, 'key'> & {
-  noticeKey?: string
-} & ({ match: string } | { path: string })
 
 export const Notice = defineComponent({
   name: 'Notice',
 
-  props: {
-    /**
-     * Notice locales settings
-     *
-     * 通知的多语言设置
-     */
-    config: {
-      type: Array as PropType<NoticeClientOption[]>,
-      required: true,
-    },
-  },
-
-  setup(props) {
+  setup() {
     const router = useRouter()
     const routePath = useRoutePath()
+    const noticeOptions = useNoticeOptions()
 
     const isVisible = ref(false)
 
     const matchedConfig = computed(() => {
-      const option = props.config.find((item) =>
+      const option = noticeOptions.value.find((item) =>
         'match' in item
           ? new RegExp(item.match).test(routePath.value)
           : startsWith(routePath.value, item.path),
@@ -98,7 +83,7 @@ export const Notice = defineComponent({
     })
 
     return () =>
-      h(TransitionGroup, { name: 'notice-fade' }, () =>
+      h(TransitionGroup, { name: 'fade-in-up' }, () =>
         matchedConfig.value && isVisible.value
           ? [
               matchedConfig.value.fullscreen
