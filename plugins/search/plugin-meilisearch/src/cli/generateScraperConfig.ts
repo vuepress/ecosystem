@@ -31,24 +31,28 @@ const generateOnlyUrls = (
   changedMarkdownFilesPathRelative: string[],
   scraperConfig: ScraperConfig,
 ): string[] => {
-  const pagesMap = app.pages.reduce<Record<string, string>>(
+  const pagesMap = app.pages.reduce(
     (acc, { filePathRelative, path: pagePath }) => {
       if (!filePathRelative) return acc
 
-      acc[filePathRelative] = pagePath
+      acc.set(filePathRelative, pagePath)
 
       return acc
     },
-    {},
+    new Map<string, string>(),
   )
 
   const siteDestLocation =
     new URL(scraperConfig.start_urls[0]).origin + app.options.base.slice(0, -1)
 
-  return changedMarkdownFilesPathRelative.map(
-    (markdownFilePathRelative) =>
-      siteDestLocation + pagesMap[markdownFilePathRelative],
-  )
+  return changedMarkdownFilesPathRelative
+    .filter((markdownFilePathRelative) =>
+      pagesMap.has(markdownFilePathRelative),
+    )
+    .map(
+      (markdownFilePathRelative) =>
+        siteDestLocation + pagesMap.get(markdownFilePathRelative)!,
+    )
 }
 
 export const generateScraperConfig = async (
