@@ -3,7 +3,6 @@ import {
   decodeData,
   isFunction,
   useDarkMode,
-  wait,
 } from '@vuepress/helper/client'
 import { watchImmediate } from '@vueuse/core'
 import type { VNode } from 'vue'
@@ -11,10 +10,9 @@ import { computed, defineComponent, h, onMounted, ref, shallowRef } from 'vue'
 
 import { useMermaidOptions } from '../helpers/index.js'
 import type { MermaidThemeVariables } from '../typings/index.js'
+import { DOWNLOAD_ICON, PREVIEW_ICON, encodeSVG } from '../utils/index.js'
 
 import '../styles/mermaid.css'
-
-declare const __MC_DELAY__: number
 
 const DEFAULT_CHART_OPTIONS = { useMaxWidth: false }
 
@@ -111,15 +109,13 @@ export default defineComponent({
     const code = computed(() => decodeData(props.code))
 
     const svgCode = ref('')
-    let loaded = false
 
     const renderMermaid = async (): Promise<void> => {
-      const [{ default: mermaid }] = await Promise.all([
-        import(
-          /* webpackChunkName: "mermaid" */ 'mermaid/dist/mermaid.esm.min.mjs'
-        ),
-        loaded ? Promise.resolve() : ((loaded = true), wait(__MC_DELAY__)),
-      ])
+      if (__VUEPRESS_SSR__) return
+
+      const { default: mermaid } = await import(
+        /* webpackChunkName: "mermaid" */ 'mermaid/dist/mermaid.esm.min.mjs'
+      )
 
       mermaid.initialize({
         theme: 'base',
@@ -157,17 +153,7 @@ export default defineComponent({
     }
 
     const download = (): void => {
-      const dataURI = `data:image/svg+xml;charset=utf8,${svgCode.value
-        .replace(/<br>/g, '<br />')
-        .replace(/%/g, '%25')
-        .replace(/"/g, '%22')
-        .replace(/'/g, '%27')
-        .replace(/&/g, '%26')
-        .replace(/#/g, '%23')
-        .replace(/{/g, '%7B')
-        .replace(/}/g, '%7D')
-        .replace(/</g, '%3C')
-        .replace(/>/g, '%3E')}`
+      const dataURI = encodeSVG(svgCode.value)
 
       const a = document.createElement('a')
 
@@ -180,7 +166,7 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      watchImmediate(isDarkMode, () => renderMermaid(), {
+      watchImmediate(isDarkMode, renderMermaid, {
         flush: 'post',
       })
     })
@@ -189,21 +175,15 @@ export default defineComponent({
       h('div', { class: 'mermaid-actions' }, [
         h('button', {
           class: 'preview-button',
-          onClick: () => {
-            preview()
-          },
           title: 'preview',
-          innerHTML:
-            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1316 1024" fill="currentColor"><path d="M658.286 0C415.89 0 0 297.106 0 512c0 214.82 415.89 512 658.286 512 242.322 0 658.285-294.839 658.285-512S900.608 0 658.286 0zm0 877.714c-161.573 0-512-221.769-512-365.714 0-144.018 350.427-365.714 512-365.714 161.572 0 512 217.16 512 365.714s-350.428 365.714-512 365.714z"/><path d="M658.286 292.571a219.429 219.429 0 1 0 0 438.858 219.429 219.429 0 0 0 0-438.858zm0 292.572a73.143 73.143 0 1 1 0-146.286 73.143 73.143 0 0 1 0 146.286z"/></svg>',
+          innerHTML: PREVIEW_ICON,
+          onClick: preview,
         }),
         h('button', {
           class: 'download-button',
-          onClick: () => {
-            download()
-          },
           title: 'download',
-          innerHTML:
-            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="currentColor"><path d="M828.976 894.125H190.189c-70.55 0-127.754-57.185-127.754-127.753V606.674c0-17.634 14.31-31.933 31.933-31.933h63.889c17.634 0 31.932 14.299 31.932 31.933v95.822c0 35.282 28.596 63.877 63.877 63.877h511.033c35.281 0 63.877-28.595 63.877-63.877v-95.822c0-17.634 14.298-31.933 31.943-31.933h63.878c17.635 0 31.933 14.299 31.933 31.933v159.7c0 70.566-57.191 127.751-127.754 127.751zM249.939 267.51c12.921-12.92 33.885-12.92 46.807 0l148.97 148.972V94.893c0-17.634 14.302-31.947 31.934-31.947h63.876c17.638 0 31.946 14.313 31.946 31.947v321.589l148.97-148.972c12.922-12.92 33.876-12.92 46.797 0l46.814 46.818c12.922 12.922 12.922 33.874 0 46.807L552.261 624.93c-1.14 1.138-21.664 13.684-42.315 13.693-20.877.01-41.88-12.542-43.021-13.693L203.122 361.135c-12.923-12.934-12.923-33.885 0-46.807l46.817-46.818z"/></svg>',
+          innerHTML: DOWNLOAD_ICON,
+          onClick: download,
         }),
       ]),
       h(

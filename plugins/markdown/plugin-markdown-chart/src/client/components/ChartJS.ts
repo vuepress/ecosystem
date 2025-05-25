@@ -14,7 +14,7 @@ import {
 } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
 
-import '../styles/chartjs.css'
+import '../styles/chartjs.scss'
 
 const parseChartConfig = (
   config: string,
@@ -121,11 +121,11 @@ export default defineComponent({
     })
 
     onMounted(() => {
-      if (!__VUEPRESS_DEV__) return
-
-      // config must be changed if type is changed, so no need to watch it
       watch(
-        [config, id, isDarkMode],
+        __VUEPRESS_DEV__
+          ? // config must be changed if type is changed, so no need to watch type
+            [config, id, isDarkMode]
+          : isDarkMode,
         async () => {
           destroyChart()
           await nextTick()

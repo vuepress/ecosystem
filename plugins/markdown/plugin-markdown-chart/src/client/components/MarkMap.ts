@@ -79,7 +79,6 @@ export default defineComponent({
       )
 
       markmap = Markmap.create(
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         markmapSVG.value!,
         deriveOptions({
           maxWidth: 240,
@@ -96,7 +95,6 @@ export default defineComponent({
       el.style.bottom = '0.5rem'
       el.style.right = '0.5rem'
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       markupWrapper.value!.append(el)
     }
 
