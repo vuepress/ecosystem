@@ -112,7 +112,7 @@ docker pull jqiue/docs-scraper:latest
 ```
 
 - `index_uid` 应为你的索引分配一个唯一名称，用于搜索。
-- `start_urls` 和 `sitemap_urls`（可选）应根据要抓取的网站进行自定义。
+- `start_urls` 和 `sitemap_urls`（可选）应根据要抓取的网站进行自定义。我们建议与 [`@vuepress/plugin-sitemap`](../seo/sitemap/README.md) 插件一起使用并提供对应的 `sitemap.xml` URL。
 - `selectors` 字段可以根据第三方主题 DOM 结构进行自定义。
 - 你可以根据需要向 `custom_settings` 中添加新字段。
 
@@ -144,23 +144,34 @@ docker run -t --rm \
 
 抓取完成后，MeiliSearch 将更新现有索引以包含最新的文档内容。
 
-抓取器每次都会将索引删除并重新创建，在这个过程中所有的文档都将被删除并重新添加，这对过多的文档来说可能会很慢，但我们只需要更新部分文档内容时就可以使用 `only_urls` 告诉抓取器只更新指定的 URL 而不必全部抓取一遍
+抓取器每次都会将索引删除并重新创建，在这个过程中所有的文档都将被删除并重新添加，这对过多的文档来说可能会很慢。所以我们的 `jqiue/docs-scraper` 允许你提供 `only_urls` 只抓取变更的文档内容。
 
-```json
-{
-  "only_urls": ["https://<YOUR_WEBSITE_URL>/specifies/"]
-}
+插件提供了一个 CLI 帮助程序来生成 `only_urls`，因此可以在 CI 或 Git Hooks 中添加 `vp-meilisearch-scrapper <docsDir> <scraperPath>` 来自动为你的抓取器配置文件生成 `only_urls`。
+
+```sh
+使用: vp-meilisearch-crawler [options] <source> [scraper-path]
+
+生成 meilisearch 的抓取器配置文件
+
+参数:
+  source                 VuePress 项目的源目录
+  scraper-path           抓取器配置文件路径 (默认: .vuepress/meilisearch-config.json 相对于源文件夹)
+
+选项:
+  -c, --config [config]  设置配置文件路径
+  --cache [cache]        设置缓存文件目录
+  --temp [temp]          设置临时文件目录
+  --clean-cache          在生成之前清理缓存文件
+  --clean-temp           在生成之前清理临时文件
+  -V, --version          输出版本号
+  -h, --help             显示帮助信息
 ```
 
-在项目使用`npx gous <docsDir> <replaceUrl> <scraperPath>`可以为你的抓取器配置文件自动生成 `only_urls`
+::: note
 
-::: tip 说明
-
-如果你的项目不是使用 Git 进行管理或者系统没有安装 Git 则无法运行
-
-- `docsDir` `.vuepress`的父目录，比如你的目录是`docs/.vuepress`，则该值为 `docs`
-- `replaceUrl` 网站的 URL
-- `scraperPath` 抓取器配置文件的路径
+- `vp-meilisearch-scrapper` 需要在 Git 项目中运行。
+- `scraper-path` 必须正确指向你的抓取器配置文件，这个文件应正确设置除了 `only_urls` 之外的所有必要字段。
+- 如果需要完整抓取，请在提交消息中添加 `[full-scrape]`，CLI 将移除 `only_urls` 字段以执行完整抓取。
 
 :::
 
@@ -256,11 +267,18 @@ jobs:
     runs-on: ubuntu-latest
     name: 重新抓取 MeiliSearch 文档
     steps:
-      - 名称：Checkout
+      - name: 检出
         uses: actions/checkout@v4
+        with:
+          # 这是比较当前和上一个提交所必需的
+          fetch-depth: 2
 
-      - 名称：运行抓取器
-        env：
+      - name: Generate Only URLs
+        # 你可能需要先 cd 到安装 `@vuepress/plugin-meilisearch` 的目录
+        run: pnpm vp-meilisearch-scrapper <docsDir> <path/to/your/scraper/config.json>
+
+      - name: 运行抓取器
+        env:
           # 替换为你自己的 MeiliSearch 主机 URL
           HOST_URL: <YOUR_MEILISEARCH_HOST_URL>
           API_KEY: ${{ secrets.MEILISEARCH_MASTER_KEY }}
