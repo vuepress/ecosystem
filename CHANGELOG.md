@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.106](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.105...v2.0.0-rc.106) (2025-05-26)
+
+### Bug Fixes
+
+- **plugin-copy-code:** fix hydration mismatch ([#476](https://github.com/vuepress/ecosystem/issues/476)) ([7318f6a](https://github.com/vuepress/ecosystem/commit/7318f6a73e653cef9cd710021ae8ccb638e25cb0))
+- **plugin-redirect:** fix cache and temp option in cli ([d5f414a](https://github.com/vuepress/ecosystem/commit/d5f414a29c761eb342e11f59f978a4b6827ea125))
+
+### Features
+
+- add attribute `class="language-"` into `<code>` ([#473](https://github.com/vuepress/ecosystem/issues/473)) ([31f4309](https://github.com/vuepress/ecosystem/commit/31f43098a8a13e51510abffb012d14467e958298))
+- **helper:** add isSlotContentEmpty function ([#474](https://github.com/vuepress/ecosystem/issues/474)) ([6782d7e](https://github.com/vuepress/ecosystem/commit/6782d7ed15a7d70cc2e41b2cffcb2712dda2eb02))
+- **plugin-meilisearch:** add cli to generate only_urls ([#446](https://github.com/vuepress/ecosystem/issues/446)) ([22f13d1](https://github.com/vuepress/ecosystem/commit/22f13d13da80a64f44a211569d1504d5f2b282aa))
+
 # [2.0.0-rc.105](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.104...v2.0.0-rc.105) (2025-05-16)
 
 ### Features
