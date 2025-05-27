@@ -76,9 +76,11 @@ export const VPIcon = defineComponent({
     )
 
     const attrs = computed(() => {
-      const attrsObject: Record<string, unknown> = {}
       const styleObject: CSSProperties = {}
       const { type, verticalAlign, size, sizing } = props
+      const attrsObject: Record<string, unknown> = {
+        sizing,
+      }
 
       if (props.color) styleObject.color = props.color
       if (size)
@@ -92,7 +94,6 @@ export const VPIcon = defineComponent({
         if (sizing !== 'width') attrsObject.height = props.size || '1em'
       }
 
-      if (props.sizing) attrsObject.sizing = props.sizing
       if (keys(styleObject).length) attrsObject.style = styleObject
 
       return attrsObject
