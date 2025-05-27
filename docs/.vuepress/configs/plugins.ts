@@ -5,6 +5,7 @@ import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
 import { iconPlugin } from '@vuepress/plugin-icon'
 import { llmsPlugin } from '@vuepress/plugin-llms'
+import { markdownDemoPlugin } from '@vuepress/plugin-markdown-demo'
 import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
@@ -42,6 +43,11 @@ export const plugins = [
   }),
   iconPlugin({
     prefix: 'lucide:',
+  }),
+  markdownDemoPlugin({
+    html: true,
+    vue: true,
+    react: true,
   }),
   markdownExtPlugin({
     gfm: true,

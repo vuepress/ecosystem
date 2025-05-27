@@ -19,6 +19,7 @@
     "@vuepress/plugin-catalog": "workspace:*",
     "@vuepress/plugin-comment": "workspace:*",
     "@vuepress/plugin-copy-code": "workspace:*",
+    "@vuepress/plugin-markdown-demo": "workspace:*",
     "@vuepress/plugin-docsearch": "workspace:*",
     "@vuepress/plugin-feed": "workspace:*",
     "@vuepress/plugin-icon": "workspace:*",

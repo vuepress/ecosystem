@@ -1,0 +1,13 @@
+.vp-md-demo {
+  margin: 0.75rem -0.5rem;
+}
+
+.vp-md-demo-display {
+  position: relative;
+  overflow: auto;
+  padding: 8px;
+
+  @media print {
+    page-break-inside: avoid;
+  }
+}
