@@ -129,6 +129,41 @@ const dynamicHeaders = useHeaders(
 
 :::
 
+### useLocale
+
+`useLocaleConfig` 的简短别名，用于获取当前语言环境。
+
+### useMounted
+
+获取当前组件的挂载状态。
+
+```ts
+export const useMounted: () => Readonly<Ref<boolean>>
+```
+
+**返回值:**
+
+- `Readonly<Ref<boolean>>`: 只读响应式引用，指示组件是否已挂载
+
+**用法:**
+
+`useMounted` 组合式函数返回一个只读响应式引用，指示当前组件是否已挂载。它在组件的 `onMounted` 生命周期钩子中设置为 `true`，并在组件卸载时设置为 `false`。
+
+::: details 示例
+
+```vue
+<script setup lang="ts">
+import { useMounted } from '@vuepress/helper/client'
+import { onMounted } from 'vue'
+
+const isMounted = useMounted()
+</script>
+
+<template>
+  <div v-if="isMounted">此内容在挂载后可见</div>
+</template>
+```
+
 ### useRoutePaths
 
 获取当前 VuePress 应用程序中的所有可用路由路径。

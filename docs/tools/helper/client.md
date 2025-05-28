@@ -162,6 +162,37 @@ locale.value // '标题'
 
 Short alias for `useLocaleConfig` to get current locale.
 
+### useMounted
+
+Get a boolean ref indicating whether the component is mounted.
+
+```ts
+export const useMounted: () => Readonly<Ref<boolean>>
+```
+
+**Returns:**
+
+- `Readonly<Ref<boolean>>`: A readonly ref that is `true` when the component is mounted, and `false` otherwise
+
+**Usage:**
+
+This composable is useful for conditionally rendering content or executing logic that should only run after the component has been mounted to the DOM.
+
+::: details Example
+
+```vue
+<script setup lang="ts">
+import { useMounted } from '@vuepress/helper/client'
+import { onMounted } from 'vue'
+
+const isMounted = useMounted()
+</script>
+
+<template>
+  <div v-if="isMounted">This content is only visible after mount</div>
+</template>
+```
+
 ### useRoutePaths
 
 Get all available route paths in the current VuePress application.
