@@ -1,0 +1,15 @@
+:root {
+  --preview-c-accent: var(--vp-c-accent-bg);
+  --preview-c-border: var(--vp-c-border);
+  --preview-c-divider: var(--vp-c-divider);
+  --preview-c-bg-header: var(--vp-c-bg-alt);
+  --preview-c-bg-button: #ccc;
+  --preview-c-bg-button-hover: #aaa;
+  --preview-border-radius: 8px;
+}
+
+[data-theme='dark'] {
+  /* --preview-c-bg-header: #333; */
+  --preview-c-bg-button: #555;
+  --preview-c-bg-button-hover: #777;
+}

@@ -24,5 +24,5 @@ catalog:
   sass: ^1.89.0
   sass-embedded: ^1.89.0
   sass-loader: ^16.0.5
-  vue: ^3.5.14
+  vue: ^3.5.15
   vuepress: 2.0.0-rc.23
