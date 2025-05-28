@@ -8,6 +8,169 @@ icon: chrome
 
 ## 可组合 API
 
+### useDarkMode
+
+获取当前深色模式状态。
+
+```ts
+export const useDarkMode: () => Readonly<Ref<boolean>>
+```
+
+**返回值:**
+
+- `Readonly<Ref<boolean>>`: 指示当前是否启用深色模式的只读响应式引用
+
+**用法:**
+
+`useDarkMode` 组合式函数返回当前深色模式状态的响应式引用。它通过监视文档元素上的 `data-theme` 属性自动检测主题变化。
+
+::: details 示例
+
+```ts
+import { useDarkMode } from '@vuepress/helper/client'
+import { watch } from 'vue'
+
+const isDarkMode = useDarkMode()
+
+// 响应深色模式变化
+watch(isDarkMode, (isDark) => {
+  if (isDark) {
+    console.log('深色模式已启用')
+  } else {
+    console.log('浅色模式已启用')
+  }
+})
+```
+
+```vue
+<template>
+  <div :class="{ 'dark-theme': isDarkMode }">内容会适应主题</div>
+</template>
+```
+
+:::
+
+### useHeaders
+
+获取当前页面内容中的标题。
+
+```ts
+export const useHeaders: (
+  options?: MaybeRef<GetHeadersOptions | undefined>,
+) => HeadersRef
+```
+
+**参数:**
+
+- `options`: 标题检测的配置选项（可选）
+
+**返回值:**
+
+- `HeadersRef`: `HeaderItem` 对象数组的响应式引用
+
+**GetHeadersOptions 接口:**
+
+```ts
+interface GetHeadersOptions {
+  /**
+   * 标题选择器
+   *
+   * 它将作为 `document.querySelectorAll(selector)` 的参数，
+   * 所以你应该传入一个 `CSS 选择器` 字符串。
+   *
+   * @default '[vp-content] h1, [vp-content] h2, [vp-content] h3, [vp-content] h4, [vp-content] h5, [vp-content] h6'
+   */
+  selector?: string
+  /**
+   * 忽略标题内的特定元素。
+   *
+   * `CSS 选择器` 数组
+   *
+   * @default []
+   */
+  ignore?: string[]
+  /**
+   * 标题的层级
+   *
+   * - `false`: 不返回标题。
+   * - `number`: 只显示指定层级的标题。
+   * - `[number, number]: 标题层级元组，其中第一个数字应小于第二个数字，例如 `[2, 4]` 表示显示从 `<h2>` 到 `<h4>` 的所有标题。
+   * - `deep`: 与 `[2, 6]` 相同，表示显示从 `<h2>` 到 `<h6>` 的所有标题。
+   *
+   * @default 2
+   */
+  levels?: HeaderLevels
+}
+```
+
+::: details 示例
+
+```ts
+import { useHeaders } from '@vuepress/helper/client'
+import { onMounted } from 'vue'
+
+const headers = useHeaders({
+  levels: [2, 3], // 只有 h2 和 h3
+  ignore: ['.badge'], // 忽略标题内的徽章
+})
+
+// 在组件中使用标题
+onMounted(() => {
+  console.log('页面标题:', headers.value)
+})
+
+// 动态选项
+const dynamicHeaders = useHeaders(
+  computed(() => ({
+    levels: showAllHeaders.value ? 'deep' : 2,
+  })),
+)
+```
+
+:::
+
+### useRoutePaths
+
+获取当前 VuePress 应用程序中的所有可用路由路径。
+
+```ts
+export const useRoutePaths: () => ComputedRef<string[]>
+```
+
+**返回值:**
+
+- `ComputedRef<string[]>`: 所有路由路径数组的计算属性引用
+
+**用法:**
+
+此组合式函数提供对 VuePress 应用程序中所有可用路由的访问。它对于导航逻辑、路由验证或构建动态菜单很有用。
+
+::: details 示例
+
+```ts
+import { useRoutePaths } from '@vuepress/helper/client'
+import { computed } from 'vue'
+
+const routePaths = useRoutePaths()
+
+// 过滤导航路径
+const navPaths = computed(() =>
+  routePaths.value.filter(
+    (path) => !path.includes('/404') && !path.startsWith('/admin/'),
+  ),
+)
+
+// 检查路径是否存在
+const pathExists = (path: string) => routePaths.value.includes(path)
+
+// 获取所有博客文章路径
+const blogPaths = computed(() =>
+  routePaths.value.filter((path) => path.startsWith('/blog/')),
+)
+```
+
+:::
+
 ### hasGlobalComponent
 
 检查组件是否已全局注册。
@@ -63,6 +226,10 @@ locale.value // '标题'
 ```
 
 :::
+
+### useLocale
+
+`useLocaleConfig` 的简短别名，用于获取当前语言环境。
 
 ## 工具
 

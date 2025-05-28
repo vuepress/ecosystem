@@ -8,29 +8,123 @@ These functions are only available in `@vuepress/helper/client`.
 
 ## Composables APIs
 
-### hasGlobalComponent
+## useDarkMode
 
-Check if a global component with the given name exists.
+Get the current dark mode status.
 
 ```ts
-export const hasGlobalComponent: (name: string, app?: App) => boolean
+export const useDarkMode: () => Readonly<Ref<boolean>>
 ```
 
-::: tip
+**Returns:**
 
-1. Local import of the component does not affect the result.
-1. When calling outside `setup` scope, you need to pass the `app` instance as the second parameter.
+- `Readonly<Ref<boolean>>`: A readonly ref indicating whether dark mode is currently enabled
 
-:::
+**Usage:**
+
+The `useDarkMode` composable returns a reactive reference to the current dark mode status. It automatically detects changes to the theme by monitoring the `data-theme` attribute on the document element.
 
 ::: details Example
 
 ```ts
-// if you globally register `<my-component>`
-hasGlobalComponent('MyComponent') // true
-hasGlobalComponent('my-component') // true
+import { useDarkMode } from '@vuepress/helper/client'
+import { watch } from 'vue'
 
-hasGlobalComponent('MyComponent2') // false
+const isDarkMode = useDarkMode()
+
+// React to dark mode changes
+watch(isDarkMode, (isDark) => {
+  if (isDark) {
+    console.log('Dark mode is enabled')
+  } else {
+    console.log('Light mode is enabled')
+  }
+})
+```
+
+```vue
+<template>
+  <div :class="{ 'dark-theme': isDarkMode }">Content adapts to theme</div>
+</template>
+```
+
+:::
+
+### useHeaders
+
+Get headers from the current page content.
+
+```ts
+export const useHeaders: (
+  options?: MaybeRef<GetHeadersOptions | undefined>,
+) => HeadersRef
+```
+
+**Params:**
+
+- `options`: Configuration options for header detection (optional)
+
+**Returns:**
+
+- `HeadersRef`: A reactive reference to an array of `HeaderItem` objects
+
+**GetHeadersOptions Interface:**
+
+```ts
+interface GetHeadersOptions {
+  /**
+   * The selector of the headers.
+   *
+   * It will be passed as an argument to `document.querySelectorAll(selector)`,
+   * so you should pass a `CSS Selector` string.
+   *
+   * @default '[vp-content] h1, [vp-content] h2, [vp-content] h3, [vp-content] h4, [vp-content] h5, [vp-content] h6'
+   */
+  selector?: string
+  /**
+   * Ignore specific elements within the header.
+   *
+   * The Array of `CSS Selector`
+   *
+   * @default []
+   */
+  ignore?: string[]
+  /**
+   * The levels of the headers
+   *
+   * - `false`: No headers.
+   * - `number`: only headings of that level will be displayed.
+   * - `[number, number]: headings level tuple, where the first number should be less than the second number, for example, `[2, 4]` which means all headings from `<h2>` to `<h4>` will be displayed.
+   * - `deep`: same as `[2, 6]`, which means all headings from `<h2>` to `<h6>` will be displayed.
+   *
+   * @default 2
+   */
+  levels?: HeaderLevels
+}
+```
+
+::: details Example
+
+```ts
+import { useHeaders } from '@vuepress/helper/client'
+import { onMounted } from 'vue'
+
+const headers = useHeaders({
+  levels: [2, 3], // Only h2 and h3
+  ignore: ['.badge'], // Ignore badges within headers
+})
+
+// Use headers in component
+onMounted(() => {
+  console.log('Page headers:', headers.value)
+})
+
+// Dynamic options
+const dynamicHeaders = useHeaders(
+  computed(() => ({
+    levels: showAllHeaders.value ? 'deep' : 2,
+  })),
+)
 ```
 
 :::
@@ -60,6 +154,52 @@ locale.value // 'Title'
 
 // under `/zh/page`
 locale.value // '标题'
+```
+
+:::
+
+### useLocale
+
+Short alias for `useLocaleConfig` to get current locale.
+
+### useRoutePaths
+
+Get all available route paths in the current VuePress application.
+
+```ts
+export const useRoutePaths: () => ComputedRef<string[]>
+```
+
+**Returns:**
+
+- `ComputedRef<string[]>`: A computed reference to an array of all route paths
+
+**Usage:**
+
+This composable provides access to all available routes in the VuePress application. It's useful for navigation logic, route validation, or building dynamic menus.
+
+::: details Example
+
+```ts
+import { useRoutePaths } from '@vuepress/helper/client'
+import { computed } from 'vue'
+
+const routePaths = useRoutePaths()
+
+// Filter paths for navigation
+const navPaths = computed(() =>
+  routePaths.value.filter(
+    (path) => !path.includes('/404') && !path.startsWith('/admin/'),
+  ),
+)
+
+// Check if a path exists
+const pathExists = (path: string) => routePaths.value.includes(path)
+
+// Get all blog post paths
+const blogPaths = computed(() =>
+  routePaths.value.filter((path) => path.startsWith('/blog/')),
+)
 ```
 
 :::
@@ -208,6 +348,33 @@ onMounted(() => {
   })
   console.log(headers)
 })
+```
+
+:::
+
+### hasGlobalComponent
+
+Check if a global component with the given name exists.
+
+```ts
+export const hasGlobalComponent: (name: string, app?: App) => boolean
+```
+
+::: tip
+
+1. Local import of the component does not affect the result.
+1. When calling outside `setup` scope, you need to pass the `app` instance as the second parameter.
+
+:::
+
+::: details Example
+
+```ts
+// if you globally register `<my-component>`
+hasGlobalComponent('MyComponent') // true
+hasGlobalComponent('my-component') // true
+
+hasGlobalComponent('MyComponent2') // false
 ```
 
 :::
