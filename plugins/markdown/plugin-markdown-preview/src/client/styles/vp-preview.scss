@@ -35,7 +35,9 @@
 
 .vp-preview-toggle-button {
   display: block;
-  padding: 0 0.5rem;
+  padding: 0.5rem;
+  background: var(--vp-c-control);
+  text-align: center;
 }
 
 .vp-preview-code-wrapper {

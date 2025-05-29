@@ -1,9 +1,18 @@
 import type { RequiredSlot } from '@vuepress/helper/client'
-import { useEventListener, useResizeObserver, useToggle } from '@vueuse/core'
+import { useLocale } from '@vuepress/helper/client'
+import {
+  useEventListener,
+  useMounted,
+  useResizeObserver,
+  useToggle,
+} from '@vueuse/core'
 import type { SlotsType, VNode } from 'vue'
 import { defineComponent, h, ref, shallowRef } from 'vue'
+import type { MarkdownPreviewPluginLocaleConfig } from '../../shared/index.js'
 
 import '../styles/vp-preview.css'
+
+declare const __PREVIEW_LOCALES__: MarkdownPreviewPluginLocaleConfig
 
 let previewIdCounter = 0
 
@@ -25,6 +34,8 @@ export default defineComponent({
   }>,
 
   setup(props, { slots }) {
+    const locale = useLocale(__PREVIEW_LOCALES__)
+    const isMounted = useMounted()
     const [isExpanded, toggleIsExpand] = useToggle(false)
     const codeContainer = shallowRef<HTMLDivElement>()
     const height = ref('0')
@@ -67,25 +78,7 @@ export default defineComponent({
         h(
           'div',
           {
-            'title': 'toggle',
-            'class': 'vp-preview-toggle-button',
-            'aria-expanded': isExpanded.value,
-            'aria-controls': uniqueId,
-            'data-allow-mismatch': 'attribute',
-            'onClick': () => {
-              height.value = isExpanded.value
-                ? '0'
-                : `${codeContainer.value!.clientHeight + 14}px`
-              toggleIsExpand()
-            },
-          },
-          '☰',
-        ),
-
-        h(
-          'div',
-          {
-            'id': uniqueId,
+            'id': isMounted.value ? uniqueId : null,
             'class': 'vp-preview-code-wrapper',
             'style': { height: height.value },
             'data-allow-mismatch': 'attribute',
@@ -98,6 +91,23 @@ export default defineComponent({
             },
             slots.code(),
           ),
+        ),
+
+        h(
+          'div',
+          {
+            'title': 'toggle',
+            'class': 'vp-preview-toggle-button',
+            'aria-expanded': isExpanded.value,
+            'aria-controls': isMounted.value ? uniqueId : null,
+            'onClick': () => {
+              height.value = isExpanded.value
+                ? '0'
+                : `${codeContainer.value!.clientHeight + 14}px`
+              toggleIsExpand()
+            },
+          },
+          locale.value[isExpanded.value ? 'hide' : 'show'],
         ),
       ])
   },
