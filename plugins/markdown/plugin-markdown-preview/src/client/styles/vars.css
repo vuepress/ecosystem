@@ -3,12 +3,7 @@
   --preview-c-border: var(--vp-c-border);
   --preview-c-divider: var(--vp-c-divider);
   --preview-c-bg-header: var(--vp-c-bg-alt);
-  --preview-c-bg-button: #ccc;
-  --preview-c-bg-button-hover: #aaa;
+  --preview-c-bg-button: var(--vp-c-control);
+  --preview-c-bg-button-hover: var(--vp-c-control-hover);
   --preview-border-radius: 8px;
-}
-
-[data-theme='dark'] {
-  --preview-c-bg-button: #555;
-  --preview-c-bg-button-hover: #777;
 }

@@ -6,13 +6,11 @@ import {
   useResizeObserver,
   useToggle,
 } from '@vueuse/core'
-import type { SlotsType, VNode } from 'vue'
+import type { PropType, SlotsType, VNode } from 'vue'
 import { defineComponent, h, ref, shallowRef } from 'vue'
 import type { MarkdownPreviewPluginLocaleConfig } from '../../shared/index.js'
 
 import '../styles/vp-preview.css'
-
-declare const __PREVIEW_LOCALES__: MarkdownPreviewPluginLocaleConfig
 
 let previewIdCounter = 0
 
@@ -26,6 +24,11 @@ export default defineComponent({
      * Markdown preview 标题
      */
     title: String,
+
+    locales: {
+      type: Object as PropType<MarkdownPreviewPluginLocaleConfig>,
+      default: () => ({}),
+    },
   },
 
   slots: Object as SlotsType<{
@@ -34,7 +37,7 @@ export default defineComponent({
   }>,
 
   setup(props, { slots }) {
-    const locale = useLocale(__PREVIEW_LOCALES__)
+    const locale = useLocale(props.locales)
     const isMounted = useMounted()
     const [isExpanded, toggleIsExpand] = useToggle(false)
     const codeContainer = shallowRef<HTMLDivElement>()
