@@ -47,7 +47,7 @@ export const markdownMathPlugin = ({
     }
   }
 
-  const mathjaxInstance =
+  let mathjaxInstance =
     mathRenderer === 'mathjax'
       ? createMathjaxInstance({
           ...(options as MarkdownMathjaxPluginOptions),
@@ -114,6 +114,8 @@ export const markdownMathPlugin = ({
     onPrepared: async (app) => {
       if (mathRenderer === 'mathjax') {
         await prepareMathjaxStyle(app, mathjaxInstance!)
+        // release mathjaxInstance in build mode to reduce memory
+        if (app.env.isBuild) mathjaxInstance = null
       }
     },
 

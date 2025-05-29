@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.106](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.105...v2.0.0-rc.106) (2025-05-26)
+
+### Bug Fixes
+
+- **plugin-copy-code:** fix hydration mismatch ([#476](https://github.com/vuepress/ecosystem/issues/476)) ([7318f6a](https://github.com/vuepress/ecosystem/commit/7318f6a73e653cef9cd710021ae8ccb638e25cb0))
+
 # [2.0.0-rc.105](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.104...v2.0.0-rc.105) (2025-05-16)
 
 **Note:** Version bump only for package @vuepress/plugin-copy-code

@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { useData } from '@theme/useData'
-import { computed, onMounted, ref } from 'vue'
+import { useMounted } from '@vueuse/core'
+import { computed } from 'vue'
 import { RouteLink } from 'vuepress/client'
 
 const { routeLocale, theme, themeLocale } = useData()
 
-const isMounted = ref(false)
+const isMounted = useMounted()
 
 // 404 page will fall back to root locale,
 // so we shall use the '/' to avoid SSR mismatch
@@ -43,10 +44,6 @@ const notFoundMsg = computed(() => {
   }
 
   return messages.value[0]
-})
-
-onMounted(() => {
-  isMounted.value = true
 })
 </script>
 

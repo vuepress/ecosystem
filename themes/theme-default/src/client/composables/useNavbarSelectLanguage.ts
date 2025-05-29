@@ -1,7 +1,8 @@
 import { useData } from '@theme/useData'
 import { useRoutePaths } from '@vuepress/helper/client'
+import { useMounted } from '@vueuse/core'
 import type { ComputedRef } from 'vue'
-import { computed, onMounted, ref } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from 'vuepress/client'
 import type { NavbarItem } from '../typings.js'
 
@@ -13,11 +14,7 @@ export const useNavbarSelectLanguage = (): ComputedRef<NavbarItem[]> => {
   const routePaths = useRoutePaths()
   const { routeLocale, site, siteLocale, theme, themeLocale } = useData()
 
-  const isMounted = ref(false)
-
-  onMounted(() => {
-    isMounted.value = true
-  })
+  const isMounted = useMounted()
 
   return computed<NavbarItem[]>(() => {
     const localePaths = Object.keys(site.value.locales)

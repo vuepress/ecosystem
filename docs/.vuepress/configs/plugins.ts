@@ -10,6 +10,7 @@ import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
+import { markdownPreviewPlugin } from '@vuepress/plugin-markdown-preview'
 import { markdownStylizePlugin } from '@vuepress/plugin-markdown-stylize'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
@@ -52,6 +53,7 @@ export const plugins = [
     mermaid: true,
     plantuml: true,
   }),
+  markdownPreviewPlugin(),
   markdownExtPlugin({
     gfm: true,
     component: true,

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.106](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.105...v2.0.0-rc.106) (2025-05-26)
+
+### Features
+
+- **plugin-meilisearch:** add cli to generate only_urls ([#446](https://github.com/vuepress/ecosystem/issues/446)) ([22f13d1](https://github.com/vuepress/ecosystem/commit/22f13d13da80a64f44a211569d1504d5f2b282aa))
+
 # [2.0.0-rc.105](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.104...v2.0.0-rc.105) (2025-05-16)
 
 **Note:** Version bump only for package @vuepress/plugin-meilisearch

@@ -1,6 +1,15 @@
 import { rollupBundle } from '../../../scripts/rollup.js'
 
 export default [
+  ...rollupBundle(
+    {
+      base: 'cli',
+      files: ['index', 'generateScraperConfig'],
+    },
+    {
+      external: ['commander'],
+    },
+  ),
   ...rollupBundle('node/index', {}),
   ...rollupBundle('client/config', {
     external: [

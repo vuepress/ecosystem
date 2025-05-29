@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-meilisearch",
-  "version": "2.0.0-rc.105",
+  "version": "2.0.0-rc.106",
   "description": "VuePress plugin - built-in meilisearch",
   "keywords": [
     "vuepress-plugin",
@@ -19,10 +19,11 @@
     "directory": "plugins/search/plugin-meilisearch"
   },
   "license": "MIT",
-  "author": "JQiue",
+  "author": "JQiue, Mister-Hope",
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
+    "./cli": "./lib/cli/generateScraperConfig.js",
     "./client": "./lib/client/index.js",
     "./package.json": "./package.json"
   },
@@ -37,8 +38,12 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
+  "bin": {
+    "vp-meilisearch-scrapper": "./lib/cli/index.js"
+  },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
+    "commander": "^14.0.0",
     "meilisearch": "0.50.0",
     "meilisearch-docsearch": "^0.8.0",
     "vue": "catalog:"

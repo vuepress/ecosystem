@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.106](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.105...v2.0.0-rc.106) (2025-05-26)
+
+### Features
+
+- **helper:** add isSlotContentEmpty function ([#474](https://github.com/vuepress/ecosystem/issues/474)) ([6782d7e](https://github.com/vuepress/ecosystem/commit/6782d7ed15a7d70cc2e41b2cffcb2712dda2eb02))
+
 # [2.0.0-rc.105](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.104...v2.0.0-rc.105) (2025-05-16)
 
 ### Features
