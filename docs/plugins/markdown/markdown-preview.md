@@ -64,3 +64,20 @@ document.querySelector('body').innerText = 'Hello world!'
   </template>
 </VPPreview>
 ````
+
+<VPPreview title="Optional Title">
+  <template #content>
+    <!-- Your content here  -->
+
+    Hello world!
+
+  </template>
+  <template #code>
+    <!-- Your code here -->
+
+```js
+document.querySelector('body').innerText = 'Hello world!'
+```
+
+  </template>
+</VPPreview>
