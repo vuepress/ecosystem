@@ -56,7 +56,7 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@vue/shared": "^3.5.14",
+    "@vue/shared": "^3.5.16",
     "@vueuse/core": "catalog:",
     "cheerio": "1.0.0",
     "fflate": "^0.8.2",
