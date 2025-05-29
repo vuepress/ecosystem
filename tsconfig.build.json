@@ -43,6 +43,7 @@
     // markdown
     { "path": "./plugins/markdown/plugin-append-date/tsconfig.build.json" },
     { "path": "./plugins/markdown/plugin-links-check/tsconfig.build.json" },
+    { "path": "./plugins/markdown/plugin-markdown-chart/tsconfig.build.json" },
     {
       "path": "./plugins/markdown/plugin-markdown-container/tsconfig.build.json"
     },
@@ -57,6 +58,9 @@
       "path": "./plugins/markdown/plugin-markdown-include/tsconfig.build.json"
     },
     { "path": "./plugins/markdown/plugin-markdown-math/tsconfig.build.json" },
+    {
+      "path": "./plugins/markdown/plugin-markdown-preview/tsconfig.build.json"
+    },
     {
       "path": "./plugins/markdown/plugin-markdown-stylize/tsconfig.build.json"
     },
