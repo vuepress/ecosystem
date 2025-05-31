@@ -1,21 +1,22 @@
 {
-  "name": "@vuepress/plugin-icon",
+  "name": "@vuepress/plugin-markdown-preview",
   "version": "2.0.0-rc.106",
-  "description": "VuePress plugin - icon",
+  "description": "VuePress plugin - preview",
   "keywords": [
     "vuepress-plugin",
     "vuepress",
     "plugin",
-    "icon"
+    "markdown",
+    "preview"
   ],
-  "homepage": "https://ecosystem.vuejs.press/plugins/features/icon.html",
+  "homepage": "https://ecosystem.vuejs.press/plugins/markdown/preview.html",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/ecosystem.git",
-    "directory": "plugins/features/plugin-icon"
+    "directory": "plugins/markdown/plugin-markdown-preview"
   },
   "license": "MIT",
   "author": {
@@ -26,7 +27,6 @@
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
-    "./client": "./lib/client/index.js",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
@@ -38,16 +38,21 @@
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
+    "style": "sass src:lib --embed-sources --style=compressed"
   },
   "dependencies": {
-    "@mdit/plugin-icon": "^0.21.0",
+    "@mdit/helper": "^0.21.0",
+    "@mdit/plugin-demo": "^0.21.0",
+    "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vue": "catalog:"
   },
   "peerDependencies": {
     "vuepress": "catalog:"
+  },
+  "devDependencies": {
+    "markdown-it": "^14.1.0"
   },
   "publishConfig": {
     "access": "public"

@@ -113,6 +113,7 @@ export const sidebarZh: SidebarOptions = {
     'markdown-include',
     'markdown-hint',
     'markdown-math',
+    'markdown-preview',
     'markdown-stylize',
     'markdown-tab',
     'links-check',
