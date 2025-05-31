@@ -20,7 +20,7 @@ export const lineNumbers = (
     const rawCode = rawFence(...args)
 
     const code = rawCode.slice(
-      rawCode.indexOf('<code>'),
+      rawCode.indexOf('<code class="language-'),
       rawCode.indexOf('</code>'),
     )
 

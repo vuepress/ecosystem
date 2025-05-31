@@ -29,8 +29,9 @@ export const collapsedLines = (
     }
 
     const lines =
-      code.slice(code.indexOf('<code>'), code.indexOf('</code>')).split('\n')
-        .length - (removeLastLine ? 1 : 0)
+      code
+        .slice(code.indexOf('<code class="language-'), code.indexOf('</code>'))
+        .split('\n').length - (removeLastLine ? 1 : 0)
     const startLines =
       typeof collapsedLinesInfo === 'number' ? collapsedLinesInfo : 15
 

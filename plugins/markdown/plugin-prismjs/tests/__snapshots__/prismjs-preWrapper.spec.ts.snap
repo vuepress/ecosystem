@@ -12,7 +12,7 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines
 <span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
 <span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
 <span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
 <span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
 <span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
@@ -33,7 +33,7 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines
 <span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
 <span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode has-collapsed-lines collapsed" data-highlighter="prismjs" data-ext="ts" style="--vp-collapsed-lines:15;"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
 <span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
 <span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
 <span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
@@ -54,7 +54,7 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines
 <span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
 <span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div><div class="collapsed-lines"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
 <span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
 <span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
 <span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
@@ -75,7 +75,7 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines
 <span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
 <span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
 <span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
 <span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
 <span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
@@ -96,7 +96,7 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines
 <span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
 <span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div>"
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
 `;
 
 exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines / :no-collapsed-lines / :collapsed-lines=[number] > should work properly if \`collapsedLines\` is enabled 1`] = `
@@ -111,7 +111,7 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines
 <span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
 <span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode has-collapsed-lines collapsed" data-highlighter="prismjs" data-ext="ts" style="--vp-collapsed-lines:15;"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
 <span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
 <span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
 <span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
@@ -132,7 +132,7 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines
 <span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
 <span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div><div class="collapsed-lines"></div></div><div class="language-typescript line-numbers-mode has-collapsed-lines collapsed" data-highlighter="prismjs" data-ext="ts" style="--vp-collapsed-lines:15;"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
 <span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
 <span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
 <span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
@@ -153,7 +153,7 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines
 <span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
 <span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div><div class="collapsed-lines"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
 <span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
 <span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
 <span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
@@ -174,7 +174,7 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines
 <span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
 <span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
 <span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
 <span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
 <span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
@@ -195,11 +195,11 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines
 <span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
 <span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div>"
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
 `;
 
 exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines / :no-collapsed-lines / :collapsed-lines=[number] > should work properly if \`collapsedLines\` is set to a number 1`] = `
-"<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+"<div class="language-typescript line-numbers-mode has-collapsed-lines collapsed" data-highlighter="prismjs" data-ext="ts" style="--vp-collapsed-lines:10;"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
 <span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
 <span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
 <span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
@@ -210,28 +210,7 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines
 <span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
 <span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
-<span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
-<span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
-<span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
-<span class="line"><span class="token keyword">const</span> line5 <span class="token operator">=</span> 'line <span class="token number">5</span></span>
-<span class="line"><span class="token keyword">const</span> line6 <span class="token operator">=</span> 'line <span class="token number">6</span></span>
-<span class="line"><span class="token keyword">const</span> line7 <span class="token operator">=</span> 'line <span class="token number">7</span></span>
-<span class="line"><span class="token keyword">const</span> line8 <span class="token operator">=</span> 'line <span class="token number">8</span></span>
-<span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
-<span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
-<span class="line"><span class="token keyword">const</span> line11 <span class="token operator">=</span> 'line <span class="token number">11</span></span>
-<span class="line"><span class="token keyword">const</span> line12 <span class="token operator">=</span> 'line <span class="token number">12</span></span>
-<span class="line"><span class="token keyword">const</span> line13 <span class="token operator">=</span> 'line <span class="token number">13</span></span>
-<span class="line"><span class="token keyword">const</span> line14 <span class="token operator">=</span> 'line <span class="token number">14</span></span>
-<span class="line"><span class="token keyword">const</span> line15 <span class="token operator">=</span> 'line <span class="token number">15</span></span>
-<span class="line"><span class="token keyword">const</span> line16 <span class="token operator">=</span> 'line <span class="token number">16</span></span>
-<span class="line"><span class="token keyword">const</span> line17 <span class="token operator">=</span> 'line <span class="token number">17</span></span>
-<span class="line"><span class="token keyword">const</span> line18 <span class="token operator">=</span> 'line <span class="token number">18</span></span>
-<span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
-<span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
-<span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div><div class="collapsed-lines"></div></div><div class="language-typescript line-numbers-mode has-collapsed-lines collapsed" data-highlighter="prismjs" data-ext="ts" style="--vp-collapsed-lines:10;"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
 <span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
 <span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
 <span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
@@ -252,7 +231,7 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines
 <span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
 <span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div><div class="collapsed-lines"></div></div><div class="language-typescript line-numbers-mode has-collapsed-lines collapsed" data-highlighter="prismjs" data-ext="ts" style="--vp-collapsed-lines:15;"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
 <span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
 <span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
 <span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
@@ -273,7 +252,7 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines
 <span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
 <span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div><div class="collapsed-lines"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
 <span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
 <span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
 <span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
@@ -294,7 +273,28 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :collapsed-lines
 <span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
 <span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div>"
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line1 <span class="token operator">=</span> 'line <span class="token number">1</span></span>
+<span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> 'line <span class="token number">2</span></span>
+<span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> 'line <span class="token number">3</span></span>
+<span class="line"><span class="token keyword">const</span> line4 <span class="token operator">=</span> 'line <span class="token number">4</span></span>
+<span class="line"><span class="token keyword">const</span> line5 <span class="token operator">=</span> 'line <span class="token number">5</span></span>
+<span class="line"><span class="token keyword">const</span> line6 <span class="token operator">=</span> 'line <span class="token number">6</span></span>
+<span class="line"><span class="token keyword">const</span> line7 <span class="token operator">=</span> 'line <span class="token number">7</span></span>
+<span class="line"><span class="token keyword">const</span> line8 <span class="token operator">=</span> 'line <span class="token number">8</span></span>
+<span class="line"><span class="token keyword">const</span> line9 <span class="token operator">=</span> 'line <span class="token number">9</span></span>
+<span class="line"><span class="token keyword">const</span> line10 <span class="token operator">=</span> 'line <span class="token number">10</span></span>
+<span class="line"><span class="token keyword">const</span> line11 <span class="token operator">=</span> 'line <span class="token number">11</span></span>
+<span class="line"><span class="token keyword">const</span> line12 <span class="token operator">=</span> 'line <span class="token number">12</span></span>
+<span class="line"><span class="token keyword">const</span> line13 <span class="token operator">=</span> 'line <span class="token number">13</span></span>
+<span class="line"><span class="token keyword">const</span> line14 <span class="token operator">=</span> 'line <span class="token number">14</span></span>
+<span class="line"><span class="token keyword">const</span> line15 <span class="token operator">=</span> 'line <span class="token number">15</span></span>
+<span class="line"><span class="token keyword">const</span> line16 <span class="token operator">=</span> 'line <span class="token number">16</span></span>
+<span class="line"><span class="token keyword">const</span> line17 <span class="token operator">=</span> 'line <span class="token number">17</span></span>
+<span class="line"><span class="token keyword">const</span> line18 <span class="token operator">=</span> 'line <span class="token number">18</span></span>
+<span class="line"><span class="token keyword">const</span> line19 <span class="token operator">=</span> 'line <span class="token number">19</span></span>
+<span class="line"><span class="token keyword">const</span> line20 <span class="token operator">=</span> 'line <span class="token number">20</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
 `;
 
 exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :line-numbers / :no-line-numbers > should work properly if \`lineNumbers\` is disabled by default 1`] = `
@@ -302,7 +302,7 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :line-numbers / 
 <span class="line"></span></code></pre>
 </div><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-text" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">Raw text</span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><div class="language-text" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
 </div><div class="language-typescript" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
 <span class="line"></span>
@@ -316,7 +316,7 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :line-numbers / 
 <span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
@@ -334,7 +334,7 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :line-numbers / 
 <span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="code-block-with-title">
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="code-block-with-title">
   <div class="code-block-title-bar" data-title="config/foo.ts">
     <span>config/foo.ts</span>
   </div>
@@ -351,9 +351,9 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :line-numbers / 
 exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :line-numbers / :no-line-numbers > should work properly if \`lineNumbers\` is enabled by default 1`] = `
 "<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">Raw text</span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-text" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">Raw text</span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><div class="language-text" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
 </div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
 <span class="line"></span>
@@ -361,13 +361,13 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :line-numbers / 
 <span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
@@ -379,13 +379,13 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :line-numbers / 
 <span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line highlighted"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line highlighted"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
 <span class="line highlighted"></span>
 <span class="line"><span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="code-block-with-title">
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="code-block-with-title">
   <div class="code-block-title-bar" data-title="config/foo.ts">
     <span>config/foo.ts</span>
   </div>
@@ -404,13 +404,7 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :line-numbers / 
 <span class="line"></span></code></pre>
 </div><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-text" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">Raw text</span>
-<span class="line"></span></code></pre>
-</div><div class="language-typescript" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
-<span class="line"></span>
-<span class="line"><span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
-<span class="line"><span class="token punctuation">}</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><div class="language-text" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
 </div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
 <span class="line"></span>
@@ -418,14 +412,14 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :line-numbers / 
 <span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-</div><div class="language-typescript" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line highlighted"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
-<span class="line highlighted"></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
+<span class="line"></span>
 <span class="line"><span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
@@ -436,7 +430,13 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :line-numbers / 
 <span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="code-block-with-title">
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line highlighted"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
+<span class="line highlighted"></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="code-block-with-title">
   <div class="code-block-title-bar" data-title="config/foo.ts">
     <span>config/foo.ts</span>
   </div>
@@ -454,18 +454,18 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :line-numbers=nu
 "<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> <span class="token string">'line 2'</span></span>
 <span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> <span class="token string">'line 3'</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 1"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> <span class="token string">'line 3'</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 1"><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> <span class="token string">'line 3'</span></span>
 <span class="line highlighted"><span class="token keyword">const</span> line4 <span class="token operator">=</span> <span class="token string">'line 4'</span></span>
 <span class="line highlighted"><span class="token keyword">const</span> line5 <span class="token operator">=</span> <span class="token string">'line 5'</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 2"></div></div><div class="code-block-with-title">
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 2"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="code-block-with-title">
   <div class="code-block-title-bar" data-title="config/foo.ts">
     <span>config/foo.ts</span>
   </div>
   <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line highlighted"><span class="token keyword">const</span> line10 <span class="token operator">=</span> <span class="token string">'line 10'</span></span>
 <span class="line highlighted"><span class="token keyword">const</span> line11 <span class="token operator">=</span> <span class="token string">'line 11'</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 9"></div></div>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 9"><div class="line-number"></div><div class="line-number"></div></div></div>
 </div>"
 `;
 
@@ -473,18 +473,18 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :line-numbers=nu
 "<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> <span class="token string">'line 2'</span></span>
 <span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> <span class="token string">'line 3'</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 1"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> <span class="token string">'line 3'</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 1"><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> <span class="token string">'line 3'</span></span>
 <span class="line highlighted"><span class="token keyword">const</span> line4 <span class="token operator">=</span> <span class="token string">'line 4'</span></span>
 <span class="line highlighted"><span class="token keyword">const</span> line5 <span class="token operator">=</span> <span class="token string">'line 5'</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 2"></div></div><div class="code-block-with-title">
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 2"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="code-block-with-title">
   <div class="code-block-title-bar" data-title="config/foo.ts">
     <span>config/foo.ts</span>
   </div>
   <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line highlighted"><span class="token keyword">const</span> line10 <span class="token operator">=</span> <span class="token string">'line 10'</span></span>
 <span class="line highlighted"><span class="token keyword">const</span> line11 <span class="token operator">=</span> <span class="token string">'line 11'</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 9"></div></div>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 9"><div class="line-number"></div><div class="line-number"></div></div></div>
 </div>"
 `;
 
@@ -492,18 +492,18 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > :line-numbers=nu
 "<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line2 <span class="token operator">=</span> <span class="token string">'line 2'</span></span>
 <span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> <span class="token string">'line 3'</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 1"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> <span class="token string">'line 3'</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 1"><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> line3 <span class="token operator">=</span> <span class="token string">'line 3'</span></span>
 <span class="line highlighted"><span class="token keyword">const</span> line4 <span class="token operator">=</span> <span class="token string">'line 4'</span></span>
 <span class="line highlighted"><span class="token keyword">const</span> line5 <span class="token operator">=</span> <span class="token string">'line 5'</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 2"></div></div><div class="code-block-with-title">
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 2"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="code-block-with-title">
   <div class="code-block-title-bar" data-title="config/foo.ts">
     <span>config/foo.ts</span>
   </div>
   <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line highlighted"><span class="token keyword">const</span> line10 <span class="token operator">=</span> <span class="token string">'line 10'</span></span>
 <span class="line highlighted"><span class="token keyword">const</span> line11 <span class="token operator">=</span> <span class="token string">'line 11'</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 9"></div></div>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 9"><div class="line-number"></div><div class="line-number"></div></div></div>
 </div>"
 `;
 
@@ -516,25 +516,25 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > highlight notati
 <span class="line highlighted warning"><span class="token keyword">const</span> corge <span class="token operator">=</span> <span class="token string">'corge'</span> </span>
 <span class="line"><span class="token keyword">const</span> <span class="highlighted-word">grault</span> <span class="token operator">=</span> <span class="token string">'<span class="highlighted-word">foo</span>'</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div>"
 `;
 
 exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > plugin options > should disable \`highlightLines\` 1`] = `
 "<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="code-block-with-title">
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="code-block-with-title">
   <div class="code-block-title-bar" data-title="config/foo.ts">
     <span>config/foo.ts</span>
   </div>
@@ -548,7 +548,7 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > plugin options >
 <span class="line">  <span class="token keyword">return</span> <span class="token number">2048</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>
 </div><p><code>{{ inlineCode }}</code></p>
 "
 `;
@@ -619,53 +619,19 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > plugin options >
 exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > plugin options > should enable \`lineNumbers\` according to number of code lines 1`] = `
 "<div class="language-text" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">Raw text</span>
 <span class="line"></span></code></pre>
-</div><div class="language-typescript" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
+</div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
 <span class="line"></span>
 <span class="line"><span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-</div><div class="language-typescript" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line highlighted"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line highlighted"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
 <span class="line highlighted"></span>
 <span class="line"><span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-</div><div class="code-block-with-title">
-  <div class="code-block-title-bar" data-title="config/foo.ts">
-    <span>config/foo.ts</span>
-  </div>
-  <div class="language-typescript" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line highlighted"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
-<span class="line highlighted"></span>
-<span class="line highlighted"><span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line highlighted">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
-<span class="line highlighted"><span class="token punctuation">}</span></span>
-<span class="line"></span>
-<span class="line"><span class="token keyword">const</span> <span class="token function-variable function">baz</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
-<span class="line">  <span class="token keyword">return</span> <span class="token number">2048</span></span>
-<span class="line"><span class="token punctuation">}</span></span>
-<span class="line"></span></code></pre>
-</div>
-</div><p><code>{{ inlineCode }}</code></p>
-"
-`;
-
-exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > plugin options > should process code fences with default options 1`] = `
-"<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">Raw text</span>
-<span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
-<span class="line"></span>
-<span class="line"><span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
-<span class="line"><span class="token punctuation">}</span></span>
-<span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line highlighted"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
-<span class="line highlighted"></span>
-<span class="line"><span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
-<span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
-<span class="line"><span class="token punctuation">}</span></span>
-<span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="code-block-with-title">
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="code-block-with-title">
   <div class="code-block-title-bar" data-title="config/foo.ts">
     <span>config/foo.ts</span>
   </div>
@@ -679,7 +645,41 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > plugin options >
 <span class="line">  <span class="token keyword">return</span> <span class="token number">2048</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>
+</div><p><code>{{ inlineCode }}</code></p>
+"
+`;
+
+exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > plugin options > should process code fences with default options 1`] = `
+"<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">Raw text</span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line highlighted"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
+<span class="line highlighted"></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="code-block-with-title">
+  <div class="code-block-title-bar" data-title="config/foo.ts">
+    <span>config/foo.ts</span>
+  </div>
+  <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line highlighted"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
+<span class="line highlighted"></span>
+<span class="line highlighted"><span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line highlighted">  <span class="token keyword">return</span> <span class="token number">1024</span></span>
+<span class="line highlighted"><span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">const</span> <span class="token function-variable function">baz</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">return</span> <span class="token number">2048</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>
 </div><p><code>{{ inlineCode }}</code></p>
 "
 `;
@@ -688,7 +688,7 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > render whitespac
 "<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">function<span class="space"> </span>foo<span class="space"> </span>()<span class="space"> </span>{<span class="space"> </span><span class="space"> </span>return<span class="space"> </span>'foo'<span class="space"> </span><span class="space"> </span></span>
 <span class="line">}</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span><span class="space"> </span><span class="token function">foo</span><span class="space"> </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="space"> </span><span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span><span class="space"> </span><span class="token function">foo</span><span class="space"> </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="space"> </span><span class="token punctuation">{</span></span>
 <span class="line"><span class="tab">	</span><span class="token keyword">const</span><span class="space"> </span>foo<span class="space"> </span><span class="token operator">=</span><span class="space"> </span><span class="token string">'foo'</span></span>
 <span class="line"><span class="tab">	</span><span class="token keyword">if</span><span class="space"> </span><span class="token punctuation">(</span>foo<span class="space"> </span><span class="token operator">===</span><span class="space"> </span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="space"> </span><span class="token punctuation">{</span></span>
 <span class="line"><span class="tab">	</span><span class="tab">	</span><span class="token keyword">return</span><span class="space"> </span><span class="token string">'bar'</span></span>
@@ -696,30 +696,30 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > render whitespac
 <span class="line"><span class="tab">	</span><span class="token keyword">return</span><span class="space"> </span><span class="token string">'foo'</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line"><span class="space"> </span><span class="space"> </span><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span><span class="space"> </span><span class="space"> </span></span>
 <span class="line"><span class="space"> </span><span class="space"> </span><span class="token keyword">return</span> <span class="token string">'foo'</span><span class="space"> </span><span class="space"> </span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span><span class="space"> </span><span class="space"> </span></span>
 <span class="line">  <span class="token keyword">return</span> <span class="token string">'foo'</span><span class="space"> </span><span class="space"> </span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span><span class="space"> </span><span class="token function">foo</span><span class="space"> </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="space"> </span><span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span><span class="space"> </span><span class="token function">foo</span><span class="space"> </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="space"> </span><span class="token punctuation">{</span></span>
 <span class="line"><span class="space"> </span><span class="space"> </span><span class="token keyword">const</span><span class="space"> </span>foo<span class="space"> </span><span class="token operator">=</span><span class="space"> </span><span class="token string">'foo'</span><span class="space"> </span><span class="space"> </span></span>
 <span class="line"><span class="space"> </span><span class="space"> </span><span class="token keyword">return</span><span class="space"> </span><span class="token string">'foo'</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div>"
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
 `;
 
 exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > render whitespace > should work whitespace with \`boundary\` option 1`] = `
 "<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">function foo () {  return 'foo'<span class="space"> </span><span class="space"> </span></span>
 <span class="line">}</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line"><span class="tab">	</span><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
 <span class="line"><span class="tab">	</span><span class="token keyword">if</span> <span class="token punctuation">(</span>foo <span class="token operator">===</span> <span class="token string">'foo'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line"><span class="tab">	</span><span class="tab">	</span><span class="token keyword">return</span> <span class="token string">'bar'</span></span>
@@ -727,30 +727,30 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > render whitespac
 <span class="line"><span class="tab">	</span><span class="token keyword">return</span> <span class="token string">'foo'</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line"><span class="space"> </span><span class="space"> </span><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span><span class="space"> </span><span class="space"> </span></span>
 <span class="line"><span class="space"> </span><span class="space"> </span><span class="token keyword">return</span> <span class="token string">'foo'</span><span class="space"> </span><span class="space"> </span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span><span class="space"> </span><span class="space"> </span></span>
 <span class="line">  <span class="token keyword">return</span> <span class="token string">'foo'</span><span class="space"> </span><span class="space"> </span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span><span class="space"> </span><span class="token function">foo</span><span class="space"> </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="space"> </span><span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span><span class="space"> </span><span class="token function">foo</span><span class="space"> </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="space"> </span><span class="token punctuation">{</span></span>
 <span class="line"><span class="space"> </span><span class="space"> </span><span class="token keyword">const</span><span class="space"> </span>foo<span class="space"> </span><span class="token operator">=</span><span class="space"> </span><span class="token string">'foo'</span><span class="space"> </span><span class="space"> </span></span>
 <span class="line"><span class="space"> </span><span class="space"> </span><span class="token keyword">return</span><span class="space"> </span><span class="token string">'foo'</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div>"
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
 `;
 
 exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > render whitespace > should work whitespace with \`false\` option 1`] = `
 "<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">function foo () {  return 'foo'  </span>
 <span class="line">}</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">	<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
 <span class="line">	<span class="token keyword">if</span> <span class="token punctuation">(</span>foo <span class="token operator">===</span> <span class="token string">'foo'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">		<span class="token keyword">return</span> <span class="token string">'bar'</span></span>
@@ -758,30 +758,30 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > render whitespac
 <span class="line">	<span class="token keyword">return</span> <span class="token string">'foo'</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span>  </span>
 <span class="line">  <span class="token keyword">return</span> <span class="token string">'foo'</span>  </span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span>  </span>
 <span class="line">  <span class="token keyword">return</span> <span class="token string">'foo'</span>  </span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span>  </span>
 <span class="line">  <span class="token keyword">return</span> <span class="token string">'foo'</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div>"
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
 `;
 
 exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > render whitespace > should work whitespace with \`trailing\` option 1`] = `
 "<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">function foo () {  return 'foo'<span class="space"> </span><span class="space"> </span></span>
 <span class="line">}</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">	<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
 <span class="line">	<span class="token keyword">if</span> <span class="token punctuation">(</span>foo <span class="token operator">===</span> <span class="token string">'foo'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">		<span class="token keyword">return</span> <span class="token string">'bar'</span></span>
@@ -789,30 +789,30 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > render whitespac
 <span class="line">	<span class="token keyword">return</span> <span class="token string">'foo'</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line"><span class="space"> </span><span class="space"> </span><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span><span class="space"> </span><span class="space"> </span></span>
 <span class="line"><span class="space"> </span><span class="space"> </span><span class="token keyword">return</span> <span class="token string">'foo'</span><span class="space"> </span><span class="space"> </span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span><span class="space"> </span><span class="space"> </span></span>
 <span class="line">  <span class="token keyword">return</span> <span class="token string">'foo'</span><span class="space"> </span><span class="space"> </span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span><span class="space"> </span><span class="token function">foo</span><span class="space"> </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="space"> </span><span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span><span class="space"> </span><span class="token function">foo</span><span class="space"> </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="space"> </span><span class="token punctuation">{</span></span>
 <span class="line"><span class="space"> </span><span class="space"> </span><span class="token keyword">const</span><span class="space"> </span>foo<span class="space"> </span><span class="token operator">=</span><span class="space"> </span><span class="token string">'foo'</span><span class="space"> </span><span class="space"> </span></span>
 <span class="line"><span class="space"> </span><span class="space"> </span><span class="token keyword">return</span><span class="space"> </span><span class="token string">'foo'</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div>"
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
 `;
 
 exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > render whitespace > should work whitespace with default options 1`] = `
 "<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">function foo () {  return 'foo'  </span>
 <span class="line">}</span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">	<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span></span>
 <span class="line">	<span class="token keyword">if</span> <span class="token punctuation">(</span>foo <span class="token operator">===</span> <span class="token string">'foo'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">		<span class="token keyword">return</span> <span class="token string">'bar'</span></span>
@@ -820,71 +820,71 @@ exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > render whitespac
 <span class="line">	<span class="token keyword">return</span> <span class="token string">'foo'</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span>  </span>
 <span class="line">  <span class="token keyword">return</span> <span class="token string">'foo'</span>  </span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span>  </span>
 <span class="line">  <span class="token keyword">return</span> <span class="token string">'foo'</span>  </span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">function</span> <span class="token function">foo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span>  </span>
 <span class="line">  <span class="token keyword">return</span> <span class="token string">'foo'</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div>"
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
 `;
 
 exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > syntax highlighting > should work if highlighted code is not wrapped with \`<pre>\` 1`] = `
 "<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">highlighted code: Raw text</span>
 <span class="line">, lang: </span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line">highlighted code: const foo = 'foo'</span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line">highlighted code: const foo = 'foo'</span>
 <span class="line"></span>
 <span class="line">function bar () {</span>
 <span class="line">  return 1024</span>
 <span class="line">}</span>
 <span class="line">, lang: js</span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line">highlighted code: const foo: string = 'foo'</span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line">highlighted code: const foo: string = 'foo'</span>
 <span class="line"></span>
 <span class="line">function bar (): number {</span>
 <span class="line">  return 1024</span>
 <span class="line">}</span>
 <span class="line">, lang: ts</span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-vue-html line-numbers-mode" data-highlighter="prismjs" data-ext="vue-html"><pre><code class="language-vue-html"><span class="line">highlighted code: <template></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-vue-html line-numbers-mode" data-highlighter="prismjs" data-ext="vue-html"><pre><code class="language-vue-html"><span class="line">highlighted code: <template></span>
 <span class="line">  <div>msg: {{msg}}</div></span>
 <span class="line"></template></span>
 <span class="line"><script setup lang="ts"></span>
 <span class="line">const msg = 'hello world';</span>
 <span class="line"></script></span>
 <span class="line">, lang: vue-html</span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div>"
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
 `;
 
 exports[`@vuepress/plugin-prismjs > markdown fence preWrapper > syntax highlighting > should work if highlighted code is wrapped with \`<pre>\` 1`] = `
 "<div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">highlighted code: Raw text</span>
 <span class="line">, lang: </span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line">highlighted code: const foo = 'foo'</span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line">highlighted code: const foo = 'foo'</span>
 <span class="line"></span>
 <span class="line">function bar () {</span>
 <span class="line">  return 1024</span>
 <span class="line">}</span>
 <span class="line">, lang: js</span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line">highlighted code: const foo: string = 'foo'</span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts"><pre><code class="language-typescript"><span class="line">highlighted code: const foo: string = 'foo'</span>
 <span class="line"></span>
 <span class="line">function bar (): number {</span>
 <span class="line">  return 1024</span>
 <span class="line">}</span>
 <span class="line">, lang: ts</span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div><div class="language-vue-html line-numbers-mode" data-highlighter="prismjs" data-ext="vue-html"><pre><code class="language-vue-html"><span class="line">highlighted code: <template></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-vue-html line-numbers-mode" data-highlighter="prismjs" data-ext="vue-html"><pre><code class="language-vue-html"><span class="line">highlighted code: <template></span>
 <span class="line">  <div>msg: {{msg}}</div></span>
 <span class="line"></template></span>
 <span class="line"><script setup lang="ts"></span>
 <span class="line">const msg = 'hello world';</span>
 <span class="line"></script></span>
 <span class="line">, lang: vue-html</span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"></div></div>"
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>"
 `;
