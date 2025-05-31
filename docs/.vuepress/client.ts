@@ -4,6 +4,7 @@ import CommentPage from './layouts/CommentPage.vue'
 export default defineClientConfig({
   layouts: {
     // We override the default layout to provide comment service
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     CommentPage,
   },
 })
