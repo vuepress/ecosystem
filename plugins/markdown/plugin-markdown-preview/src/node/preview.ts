@@ -22,13 +22,11 @@ export const preview: PluginSimple = (md) => {
         )
         .join('\n')
 
-      return `<template #code>\n${self.rules.fence!(
-        tokens,
-        index,
-        options,
-        _env,
-        self,
-      )}</template>\n`
+      return `\
+<template #code>
+${self.rules.fence!(tokens, index, options, _env, self)}
+</template>
+`
     },
     contentOpenRender: () => `<template #content>\n`,
     contentCloseRender: () => `</template>\n`,

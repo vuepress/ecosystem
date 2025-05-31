@@ -14,6 +14,22 @@ import '../styles/vp-preview.css'
 
 let previewIdCounter = 0
 
+export interface VPPreviewProps {
+  /**
+   * Markdown preview title
+   *
+   * Markdown preview 标题
+   */
+  title?: string
+
+  /**
+   * Markdown preview locales
+   *
+   * Markdown preview 本地化配置
+   */
+  locales?: MarkdownPreviewPluginLocaleConfig
+}
+
 export default defineComponent({
   name: 'VPPreview',
 
@@ -25,6 +41,11 @@ export default defineComponent({
      */
     title: String,
 
+    /**
+     * Markdown preview locales
+     *
+     * Markdown preview 本地化配置
+     */
     locales: {
       type: Object as PropType<MarkdownPreviewPluginLocaleConfig>,
       default: () => ({}),

@@ -42,7 +42,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@mdit/plugin-include": "^0.20.0",
+    "@mdit/plugin-include": "^0.21.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*"
   },
