@@ -1,0 +1,75 @@
+{
+  "name": "@vuepress/theme-default",
+  "version": "2.0.0-rc.106",
+  "description": "Default theme of VuePress",
+  "keywords": [
+    "vuepress-theme",
+    "vuepress",
+    "theme",
+    "default"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/themes/default/",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "themes/theme-default"
+  },
+  "license": "MIT",
+  "author": "meteorlxy",
+  "contributors": [
+    "pengzhanbo (https://github.com/pengzhanbo)",
+    "Mister-Hope (https://github.com/mister-hope)"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/node/index.js",
+    "./client": "./lib/client/index.js",
+    "./components/*": "./lib/client/components/*",
+    "./layouts/*": "./lib/client/layouts/*",
+    "./styles/*": "./lib/client/styles/*",
+    "./templates/*": "./templates/*",
+    "./lib/*": "./lib/*",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
+  "files": [
+    "lib",
+    "templates"
+  ],
+  "scripts": {
+    "build": "tsc -b ./tsconfig.build.json",
+    "bundle": "tsc -b tsconfig.build.json",
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
+    "copy": "cpx \"src/**/*.{d.ts,vue,css,scss,jpg,png,woff2}\" lib"
+  },
+  "dependencies": {
+    "@vuepress/helper": "workspace:*",
+    "@vuepress/plugin-active-header-links": "workspace:*",
+    "@vuepress/plugin-copy-code": "workspace:*",
+    "@vuepress/plugin-git": "workspace:*",
+    "@vuepress/plugin-links-check": "workspace:*",
+    "@vuepress/plugin-markdown-container": "workspace:*",
+    "@vuepress/plugin-markdown-hint": "workspace:*",
+    "@vuepress/plugin-markdown-tab": "workspace:*",
+    "@vuepress/plugin-nprogress": "workspace:*",
+    "@vuepress/plugin-photo-swipe": "workspace:*",
+    "@vuepress/plugin-seo": "workspace:*",
+    "@vuepress/plugin-shiki": "workspace:*",
+    "@vuepress/plugin-sitemap": "workspace:*",
+    "@vuepress/plugin-theme-data": "workspace:*",
+    "@vuepress/theme-helper": "workspace:*",
+    "@vueuse/core": "^12.7.0",
+    "chokidar": "^3.6.0",
+    "vue": "^3.5.13"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

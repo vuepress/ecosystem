@@ -1,5 +1,5 @@
-import { resolveRepoType } from '@theme/resolveRepoType'
 import { useData } from '@theme/useData'
+import { resolveRepoType } from '@vuepress/theme-helper/client'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import { isLinkHttp } from 'vuepress/shared'

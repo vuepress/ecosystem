@@ -6,7 +6,6 @@ import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { copyrightPlugin } from '@vuepress/plugin-copyright'
 import { feedPlugin } from '@vuepress/plugin-feed'
 import { noticePlugin } from '@vuepress/plugin-notice'
-import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
 import { pwaPlugin } from '@vuepress/plugin-pwa'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
@@ -56,7 +55,7 @@ export default defineUserConfig({
       '/',
       {
         text: 'Dropdown',
-        children: [
+        items: [
           {
             text: 'item',
             link: '/navbar/',
@@ -64,7 +63,7 @@ export default defineUserConfig({
           {
             text: 'Nested',
             prefix: '/navbar/',
-            children: [
+            items: [
               {
                 text: 'Nested foo',
                 link: '/navbar/foo.html',
@@ -77,12 +76,12 @@ export default defineUserConfig({
     ],
 
     sidebar: {
-      '/sidebar/heading/': 'heading',
+      '/sidebar/heading/': 'structure',
       '/sidebar/config/': [
         {
           text: 'Sidebar',
           link: '',
-          children: [
+          items: [
             { text: 'sidebar 1', link: '1.html' },
             { text: 'sidebar 2', link: '2.html' },
           ],
@@ -94,12 +93,12 @@ export default defineUserConfig({
     locales: {
       '/zh/': {
         navbar: ['/zh/'],
-        sidebar: false,
+        // sidebar: false,
       },
     },
 
     themePlugins: {
-      mediumZoom: false,
+      seo: true,
       sitemap: {
         devServer: true,
         devHostname: 'https://ecosystem-e2e-test.com',
@@ -271,7 +270,6 @@ export default defineUserConfig({
         },
       ],
     }),
-    photoSwipePlugin(),
     pwaPlugin({
       manifest: {
         icons: [

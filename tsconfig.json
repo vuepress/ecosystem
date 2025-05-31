@@ -12,11 +12,6 @@
       ],
       "@internal/themeData": [
         "./plugins/plugin-theme-data/src/client/themeData.d.ts"
-      ],
-      "@theme/*": [
-        "./themes/theme-default/src/client/components/*",
-        "./themes/theme-default/src/client/composables/*.js",
-        "./themes/theme-default/src/client/utils/*.js"
       ]
     },
     "types": ["vuepress/client-types", "webpack-env", "vite/client"]

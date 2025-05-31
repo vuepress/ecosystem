@@ -5,7 +5,7 @@ import { isActiveSidebarItem } from '@theme/isActiveSidebarItem'
 import type {
   SidebarGroupItem,
   SidebarItem,
-} from '@vuepress/theme-default/client'
+} from '@vuepress/theme-classic/client'
 import { useToggle } from '@vueuse/core'
 import { computed, nextTick, onBeforeUnmount } from 'vue'
 import { useRoute, useRouter } from 'vuepress/client'
@@ -98,8 +98,8 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="scss">
-@use '@vuepress/theme-default/styles/mixins';
-@use '@vuepress/theme-default/styles/variables' as *;
+@use '@vuepress/theme-classic/styles/mixins';
+@use '@vuepress/theme-classic/styles/variables' as *;
 
 .vp-sidebar-item {
   border-inline-start: 0.25rem solid transparent;

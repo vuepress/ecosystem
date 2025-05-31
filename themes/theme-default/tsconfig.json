@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "paths": {
+      "@theme/*": [
+        "./src/client/components/*",
+        "./src/client/composables/*",
+        "./src/client/utils/*"
+      ]
+    }
+  },
+  "include": ["./src", "./tests"]
+}

@@ -9,7 +9,7 @@ import { generateTOCLink as rawGenerateTOCLink } from '@vuepress/plugin-llms'
 import type {
   AutoLinkOptions,
   SidebarItemOptions,
-} from '@vuepress/theme-default'
+} from '@vuepress/theme-classic'
 import { ensureEndingSlash, isLinkHttp } from 'vuepress/shared'
 import { sidebarEn as sidebarConfig } from './sidebar/en.js'
 
