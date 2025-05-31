@@ -3,7 +3,10 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./lib",
-    "types": ["vuepress/client-types", "vite/client", "webpack-env"]
+    "types": ["vuepress/client-types", "vite/client", "webpack-env"],
+    "paths": {
+      "@internal/noticeOptions": ["./src/client/noticeOptions.d.ts"]
+    }
   },
   "include": ["./src"],
   "references": [{ "path": "../../../tools/helper/tsconfig.build.json" }]

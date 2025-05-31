@@ -1,181 +1,275 @@
 <script setup lang="ts">
-import VPAutoLink from '@theme/VPAutoLink.vue'
-import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
-import { isActiveSidebarItem } from '@theme/isActiveSidebarItem'
-import type { SidebarItem } from '@vuepress/theme-default/client'
-import { useToggle } from '@vueuse/core'
-import { computed, nextTick, onBeforeUnmount, toRefs } from 'vue'
-import { useRoute, useRouter } from 'vuepress/client'
+import VPLink from '@theme/VPLink.vue'
+import { useSidebarControl } from '@theme/sidebar'
+import type { ResolvedSidebarItem } from '@vuepress/theme-default/client'
+import { computed } from 'vue'
 
-const props = withDefaults(
-  defineProps<{
-    /**
-     * The sidebar item to be rendered
-     */
-    item: SidebarItem
-    /**
-     * The depth of the current sidebar item
-     */
-    depth?: number
-  }>(),
-  { depth: 0 },
+const { item, depth } = defineProps<{
+  /**
+   * Sidebar item
+   */
+  item: ResolvedSidebarItem
+  /**
+   * Sidebar depth
+   */
+  depth: number
+}>()
+
+const {
+  collapsed,
+  collapsible,
+  isLink,
+  isActiveLink,
+  hasActiveLink,
+  hasChildren,
+  toggle,
+} = useSidebarControl(computed(() => item))
+
+const sectionTag = computed(() => (hasChildren.value ? 'section' : `div`))
+
+const linkTag = computed(() => (isLink.value ? 'a' : 'div'))
+
+const textTag = computed(() =>
+  !hasChildren.value ? 'p' : depth + 2 === 7 ? 'p' : `h${depth + 2}`,
 )
 
-const { item, depth } = toRefs(props)
-const route = useRoute()
-const router = useRouter()
+const itemRole = computed(() => (isLink.value ? undefined : 'button'))
 
-const collapsible = computed(
-  () => 'collapsible' in item.value && item.value.collapsible,
-)
-const isActive = computed(() => isActiveSidebarItem(item.value, route))
-const itemClass = computed(() => ({
-  'vp-sidebar-item': true,
-  'vp-sidebar-heading': depth.value === 0,
-  'active': isActive.value,
-  'collapsible': collapsible.value,
-}))
+const classes = computed(() => [
+  [`level-${depth}`],
+  { collapsible: collapsible.value },
+  { collapsed: collapsed.value },
+  { 'is-link': isLink.value },
+  { 'is-active': isActiveLink.value },
+  { 'has-active': hasActiveLink.value },
+])
 
-const isOpenDefault = computed(() =>
-  collapsible.value ? isActive.value : true,
-)
-// eslint-disable-next-line vue/no-ref-object-reactivity-loss
-const [isOpen, toggleIsOpen] = useToggle(isOpenDefault.value)
-const onClick = (e: Event): void => {
-  if (collapsible.value) {
-    e.preventDefault()
-    // toggle open status on click
-    toggleIsOpen()
+const onItemInteraction = (e: Event | MouseEvent): void => {
+  if ('key' in e && e.key !== 'Enter') {
+    return
   }
+  if (!item.link) toggle()
 }
 
-// reset open status after navigation
-const unregisterRouterHook = router.afterEach(() => {
-  void nextTick(() => {
-    isOpen.value = isOpenDefault.value
-  })
-})
-onBeforeUnmount(() => {
-  unregisterRouterHook()
-})
+const onCaretClick = (): void => {
+  if (item.link) toggle()
+}
 </script>
 
+<!-- eslint-disable vue/no-v-text-v-html-on-component -->
 <template>
-  <li>
-    <VPAutoLink v-if="item.link" :class="itemClass" :config="item" />
-    <p
-      v-else
-      tabindex="0"
-      :class="itemClass"
-      @click="onClick"
-      @keydown.enter="onClick"
+  <component :is="sectionTag" class="vp-sidebar-item" :class="classes">
+    <div
+      v-if="item.text"
+      class="item"
+      :role="itemRole"
+      :tabindex="item.items && 0"
+      v-on="
+        item.items
+          ? { click: onItemInteraction, keydown: onItemInteraction }
+          : {}
+      "
     >
-      <VPIcon v-if="item.icon" :icon="item.icon" />
-      {{ item.text }}
-      <span
-        v-if="collapsible"
-        class="arrow"
-        :class="isOpen ? 'down' : 'right'"
-      />
-    </p>
+      <div class="indicator" />
 
-    <VPDropdownTransition v-if="'children' in item && item.children.length">
-      <ul v-show="isOpen" class="vp-sidebar-children">
+      <VPIcon v-if="item.icon" :icon="item.icon" class="link-icon" />
+
+      <VPLink
+        v-if="item.link"
+        :tag="linkTag"
+        class="link"
+        :href="item.link"
+        :rel="item.rel"
+        :target="item.target"
+      >
+        <component :is="textTag" class="text" v-html="item.text" />
+      </VPLink>
+
+      <component :is="textTag" v-else class="text" v-html="item.text" />
+
+      <div
+        v-if="item.collapsed != null && item.items && item.items.length"
+        class="caret"
+        role="button"
+        aria-label="toggle section"
+        tabindex="0"
+        @click="onCaretClick"
+        @keydown.enter="onCaretClick"
+      >
+        <span class="vpi-chevron-right caret-icon" />
+      </div>
+    </div>
+
+    <div v-if="item.items && item.items.length" class="items">
+      <template v-if="depth < 5">
         <VPSidebarItem
-          v-for="child in item.children"
-          :key="`${depth}${child.text}${child.link}`"
-          :item="child"
+          v-for="i in item.items"
+          :key="i.text"
+          :item="i"
           :depth="depth + 1"
         />
-      </ul>
-    </VPDropdownTransition>
-  </li>
+      </template>
+    </div>
+  </component>
 </template>
 
-<style lang="scss">
-@use '@vuepress/theme-default/styles/mixins';
-@use '@vuepress/theme-default/styles/variables' as *;
+<style scoped>
+.vp-sidebar-item.level-0 {
+  padding-bottom: 24px;
+}
 
-.vp-sidebar-item {
-  border-left: 0.25rem solid transparent;
+.vp-sidebar-item.collapsed.level-0 {
+  padding-bottom: 10px;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.vp-sidebar-item.collapsible > .item {
+  cursor: pointer;
+}
+
+.link-icon {
+  align-self: center;
+  margin-inline-end: 0.25em;
+}
+
+.vp-sidebar-item.is-active > .item > .link-icon,
+.vp-sidebar-item:hover > .item > .link-icon {
+  color: var(--vp-c-accent);
+}
+
+.indicator {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: -17px;
+
+  width: 2px;
+  border-radius: 2px;
+
+  transition: background-color 0.25s;
+}
+
+.vp-sidebar-item.level-2.is-active > .item > .indicator,
+.vp-sidebar-item.level-3.is-active > .item > .indicator,
+.vp-sidebar-item.level-4.is-active > .item > .indicator,
+.vp-sidebar-item.level-5.is-active > .item > .indicator {
+  background-color: var(--vp-c-accent);
+}
+
+.link {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.text {
+  flex-grow: 1;
+
+  padding: 4px 0;
+
+  font-size: 14px;
+  line-height: 24px;
+
+  transition: color 0.25s;
+}
+
+.vp-sidebar-item.level-0 .text {
   color: var(--vp-c-text);
-  cursor: default;
+  font-weight: 700;
+}
 
-  &:focus-visible {
-    outline-width: 1px;
-    outline-offset: -1px;
-  }
+.vp-sidebar-item.level-1 .text,
+.vp-sidebar-item.level-2 .text,
+.vp-sidebar-item.level-3 .text,
+.vp-sidebar-item.level-4 .text,
+.vp-sidebar-item.level-5 .text {
+  color: var(--vp-c-text-mute);
+  font-weight: 500;
+}
 
-  &.vp-sidebar-heading {
-    box-sizing: border-box;
-    width: 100%;
-    margin: 0;
-    padding: 0.35rem 1.5rem 0.35rem 1.25rem;
+.vp-sidebar-item.level-0.is-link > .item > .link:hover .text,
+.vp-sidebar-item.level-1.is-link > .item > .link:hover .text,
+.vp-sidebar-item.level-2.is-link > .item > .link:hover .text,
+.vp-sidebar-item.level-3.is-link > .item > .link:hover .text,
+.vp-sidebar-item.level-4.is-link > .item > .link:hover .text,
+.vp-sidebar-item.level-5.is-link > .item > .link:hover .text {
+  color: var(--vp-c-accent);
+}
 
-    font-weight: bold;
-    font-size: 1.1em;
+.vp-sidebar-item.level-0.has-active > .item > .text,
+.vp-sidebar-item.level-1.has-active > .item > .text,
+.vp-sidebar-item.level-2.has-active > .item > .text,
+.vp-sidebar-item.level-3.has-active > .item > .text,
+.vp-sidebar-item.level-4.has-active > .item > .text,
+.vp-sidebar-item.level-5.has-active > .item > .text,
+.vp-sidebar-item.level-0.has-active > .item > .link > .text,
+.vp-sidebar-item.level-1.has-active > .item > .link > .text,
+.vp-sidebar-item.level-2.has-active > .item > .link > .text,
+.vp-sidebar-item.level-3.has-active > .item > .link > .text,
+.vp-sidebar-item.level-4.has-active > .item > .link > .text,
+.vp-sidebar-item.level-5.has-active > .item > .link > .text {
+  color: var(--vp-c-text);
+}
 
-    transition: color 0.15s ease;
+.vp-sidebar-item.level-0.is-active > .item .link > .text,
+.vp-sidebar-item.level-1.is-active > .item .link > .text,
+.vp-sidebar-item.level-2.is-active > .item .link > .text,
+.vp-sidebar-item.level-3.is-active > .item .link > .text,
+.vp-sidebar-item.level-4.is-active > .item .link > .text,
+.vp-sidebar-item.level-5.is-active > .item .link > .text {
+  color: var(--vp-c-accent);
+}
 
-    + .vp-sidebar-children {
-      @include mixins.dropdown-wrapper;
+.caret {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
 
-      margin-bottom: 0.75rem;
-    }
-  }
+  width: 32px;
+  height: 32px;
+  margin-right: -7px;
 
-  &.collapsible {
-    cursor: pointer;
-  }
+  color: var(--vp-c-text-subtle);
 
-  &:not(.vp-sidebar-heading) {
-    display: inline-block;
+  cursor: pointer;
 
-    box-sizing: border-box;
-    width: 100%;
-    margin: 0;
-    padding: 0.35rem 1rem 0.35rem 2rem;
+  transition: color 0.25s;
+}
 
-    font-weight: 400;
-    font-size: 1em;
-    line-height: 1.4;
+.item:hover .caret {
+  color: var(--vp-c-text-mute);
+}
 
-    + .vp-sidebar-children {
-      padding-left: 1rem;
-      font-size: 0.95em;
-    }
+.item:hover .caret:hover {
+  color: var(--vp-c-text);
+}
 
-    .vp-sidebar-children .vp-sidebar-children & {
-      padding: 0.25rem 1rem 0.25rem 1.75rem;
+.caret-icon {
+  font-size: 18px;
+  transition: transform 0.25s;
+  transform: rotate(90deg);
+}
 
-      &.active {
-        border-left-color: transparent;
-        font-weight: 500;
-      }
-    }
+.vp-sidebar-item.collapsed .caret-icon {
+  transform: rotate(0);
+}
 
-    a.vp-sidebar-heading + .vp-sidebar-children &.active {
-      border-left-color: transparent;
-    }
-  }
+.vp-sidebar-item.level-1 .items,
+.vp-sidebar-item.level-2 .items,
+.vp-sidebar-item.level-3 .items,
+.vp-sidebar-item.level-4 .items,
+.vp-sidebar-item.level-5 .items {
+  padding-left: 16px;
+  border-left: 1px solid var(--vp-c-divider);
+}
 
-  &.active:not(p.vp-sidebar-heading) {
-    border-left-color: var(--vp-c-accent);
-    color: var(--vp-c-accent);
-    font-weight: 600;
-  }
-
-  .auto-link {
-    display: block;
-  }
-
-  &.auto-link {
-    display: block;
-    cursor: pointer;
-
-    &:hover {
-      color: var(--vp-c-accent);
-    }
-  }
+.vp-sidebar-item.collapsed .items {
+  display: none;
 }
 </style>

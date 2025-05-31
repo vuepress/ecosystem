@@ -1,4 +1,4 @@
-import { entries, fromEntries, getLocaleConfig } from '@vuepress/helper'
+import { entries, fromEntries, getFullLocaleConfig } from '@vuepress/helper'
 import type { App } from 'vuepress'
 import type {
   DefaultThemeLocaleData,
@@ -35,7 +35,7 @@ export const resolveThemeData = (
   const themeData: DefaultThemeLocaleOptions = {
     ...FALLBACK_OPTIONS,
     ...resolved,
-    locales: getLocaleConfig({
+    locales: getFullLocaleConfig({
       app,
       name: THEME_NAME,
       default: LOCALES_OPTIONS,

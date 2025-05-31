@@ -1,4 +1,5 @@
 import type {
+  MarkdownItCodeBlockTitleOptions,
   MarkdownItCollapsedLinesOptions,
   MarkdownItLineNumbersOptions,
 } from '@vuepress/highlighter-helper'
@@ -9,7 +10,8 @@ import type { ShikiHighlightOptions } from './types.js'
 /**
  * Options of @vuepress/plugin-shiki
  */
-export type ShikiPluginOptions = MarkdownItLineNumbersOptions &
+export type ShikiPluginOptions = MarkdownItCodeBlockTitleOptions &
+  MarkdownItLineNumbersOptions &
   MarkdownItPreWrapperOptions &
   Pick<MarkdownItCollapsedLinesOptions, 'collapsedLines'> &
   ShikiHighlightOptions & {

@@ -1,4 +1,7 @@
-import type { GitContributor, GitPluginPageData } from '@vuepress/plugin-git'
+import type {
+  GitContributorInfo,
+  GitPluginPageData,
+} from '@vuepress/plugin-git'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import type {
@@ -7,7 +10,7 @@ import type {
 } from '../../shared/index.js'
 import { useData } from './useData.js'
 
-export const useContributors = (): ComputedRef<GitContributor[] | null> => {
+export const useContributors = (): ComputedRef<GitContributorInfo[] | null> => {
   const { page, frontmatter, theme } = useData<
     ContributorThemeData,
     ContributorFrontmatter,

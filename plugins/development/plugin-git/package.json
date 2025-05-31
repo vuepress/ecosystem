@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-git",
-  "version": "2.0.0-rc.79",
+  "version": "2.0.0-rc.106",
   "description": "VuePress plugin - git",
   "keywords": [
     "vuepress-plugin",
@@ -22,6 +22,7 @@
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
+    "./client": "./lib/client/index.js",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
@@ -32,10 +33,17 @@
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
-    "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
+    "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "execa": "^9.5.2"
+    "@vuepress/helper": "workspace:*",
+    "@vueuse/core": "catalog:",
+    "rehype-parse": "^9.0.1",
+    "rehype-sanitize": "^6.0.0",
+    "rehype-stringify": "^10.0.1",
+    "unified": "^11.0.5",
+    "vue": "catalog:"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

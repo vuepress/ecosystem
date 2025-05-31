@@ -16,7 +16,7 @@ This plugin has been integrated into the default theme.
 npm i -D @vuepress/plugin-links-check@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { linksCheckPlugin } from '@vuepress/plugin-links-check'
 
 export default {
@@ -60,21 +60,27 @@ export default {
 
 - Example:
 
-  ```ts
-  linksCheckPlugin({
-    exclude: [
-      // exclude links by string
-      '/exclude-link',
-      // exclude links by regex
-      /\/exclude-link-regex/,
-    ],
+  ```ts title=".vuepress/config.ts"
+  import { linksCheckPlugin } from '@vuepress/plugin-links-check'
 
-    // or exclude links by function
-    exclude: (link, isDev) => {
-      if (isDev) {
-        return link.startsWith('/exclude-link-dev')
-      }
-      return link.startsWith('/exclude-link-build')
-    },
-  })
+  export default {
+    plugins: [
+      linksCheckPlugin({
+        exclude: [
+          // exclude links by string
+          '/exclude-link',
+          // exclude links by regex
+          /\/exclude-link-regex/,
+        ],
+
+        // or exclude links by function
+        exclude: (link, isDev) => {
+          if (isDev) {
+            return link.startsWith('/exclude-link-dev')
+          }
+          return link.startsWith('/exclude-link-build')
+        },
+      }),
+    ],
+  }
   ```

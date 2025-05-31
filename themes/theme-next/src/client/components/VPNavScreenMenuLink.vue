@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import VPLink from '@theme/VPLink.vue'
 import { inject } from 'vue'
-import type { ResolvedNavItemWithLink } from '../../shared/resolved/navbar.js'
+import type { ResolvedNavItemWithLink } from '../../shared/index.js'
 
-defineProps<{
+const { item } = defineProps<{
   /**
    * Menu item
    */
   item: ResolvedNavItemWithLink
 }>()
 
-const closeScreen = inject('close-screen')!
+const closeScreen: () => void = inject('close-screen')!
 </script>
 
 <!-- eslint-disable vue/no-v-text-v-html-on-component -->

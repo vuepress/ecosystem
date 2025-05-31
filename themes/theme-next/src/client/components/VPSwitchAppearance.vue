@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import VPSwitch from '@theme/VPSwitch.vue'
+import { useDarkMode } from '@theme/dark-mode'
+import { useData } from '@theme/data'
 import { computed, inject } from 'vue'
-import { useDarkMode } from '../composables/dark-mode.js'
-import { useData } from '../composables/data.js'
 
-const { theme } = useData()
+const { themeLocale } = useData()
 const isDark = useDarkMode()
 
 const toggleAppearance = inject('toggle-appearance', () => {
@@ -13,8 +13,8 @@ const toggleAppearance = inject('toggle-appearance', () => {
 
 const switchTitle = computed(() =>
   isDark.value
-    ? theme.value.lightModeSwitchTitle || 'Switch to light theme'
-    : theme.value.darkModeSwitchTitle || 'Switch to dark theme',
+    ? themeLocale.value.lightModeSwitchTitle || 'Switch to light theme'
+    : themeLocale.value.darkModeSwitchTitle || 'Switch to dark theme',
 )
 </script>
 

@@ -3,11 +3,11 @@ import VPNavScreenAppearance from '@theme/VPNavScreenAppearance.vue'
 import VPNavScreenMenu from '@theme/VPNavScreenMenu.vue'
 import VPNavScreenSocialLinks from '@theme/VPNavScreenSocialLinks.vue'
 import VPNavScreenTranslations from '@theme/VPNavScreenTranslations.vue'
+import { inBrowser } from '@theme/constants'
 import { useScrollLock } from '@vueuse/core'
 import type { Slot } from '../types.js'
-import { inBrowser } from '../utils/index.js'
 
-defineProps<{
+const { open } = defineProps<{
   /**
    * Whether the screen is open
    */
@@ -44,7 +44,7 @@ const isLocked = useScrollLock(inBrowser ? document.body : null)
 <style scoped>
 .vp-nav-screen {
   position: fixed;
-  top: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 1px);
+  top: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px));
 
   /* rtl:ignore */
   right: 0;
@@ -62,17 +62,17 @@ const isLocked = useScrollLock(inBrowser ? document.body : null)
 
   pointer-events: auto;
 
-  transition: background-color 0.5s;
+  transition: background-color var(--vp-t-color);
 }
 
 .vp-nav-screen.fade-enter-active,
 .vp-nav-screen.fade-leave-active {
-  transition: opacity 0.25s;
+  transition: opacity var(--vp-t-color);
 }
 
 .vp-nav-screen.fade-enter-active .container,
 .vp-nav-screen.fade-leave-active .container {
-  transition: transform 0.25s ease;
+  transition: transform var(--vp-t-color);
 }
 
 .vp-nav-screen.fade-enter-from,

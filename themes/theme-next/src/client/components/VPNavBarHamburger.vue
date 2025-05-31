@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{
+const { active } = defineProps<{
   /**
    * Whether the navbar hamburger is active
    */

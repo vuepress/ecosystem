@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/named
 import { h } from 'vue'
 
 export default () =>

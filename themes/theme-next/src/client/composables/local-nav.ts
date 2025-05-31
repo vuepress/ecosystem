@@ -1,9 +1,9 @@
+import { useData } from '@theme/data'
+import type { MenuItem } from '@theme/outline'
+import { getHeaders } from '@theme/outline'
 import type { ComputedRef, ShallowRef } from 'vue'
 import { computed, shallowRef } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
-import type { MenuItem } from '../composables/outline.js'
-import { getHeaders } from '../composables/outline.js'
-import { useData } from './data.js'
 
 /**
  * ReturnType of `useLocalNav`.
@@ -23,7 +23,7 @@ export interface DocLocalNav {
 }
 
 export const useLocalNav = (): DocLocalNav => {
-  const { theme, frontmatter } = useData()
+  const { themeLocale, frontmatter } = useData()
 
   const headers = shallowRef<MenuItem[]>([])
 
@@ -33,7 +33,7 @@ export const useLocalNav = (): DocLocalNav => {
     headers.value =
       reason === 'beforeUnmount'
         ? []
-        : getHeaders(frontmatter.value.outline ?? theme.value.outline)
+        : getHeaders(frontmatter.value.outline ?? themeLocale.value.outline)
   })
 
   return {

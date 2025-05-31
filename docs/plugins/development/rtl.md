@@ -14,7 +14,7 @@ This plugin will set direction to rtl on configured locales.
 npm i -D @vuepress/plugin-rtl@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { rtlPlugin } from '@vuepress/plugin-rtl'
 
 export default {
@@ -26,6 +26,10 @@ export default {
   ],
 }
 ```
+
+## Demo
+
+<ToggleRTLButton />
 
 ## Options
 
@@ -55,3 +59,7 @@ export default {
   Selector to enable rtl.
 
   The default settings mean that the `dir` attribute of the `html` element will be set to `rtl` in rtl locales.
+
+<script setup>
+import ToggleRTLButton from '@source/.vuepress/components/ToggleRTLButton.vue'
+</script>

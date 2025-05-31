@@ -1,11 +1,16 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
 import VPMenu from '@theme/VPMenu.vue'
+import { useFlyout } from '@theme/flyout'
 import { ref, useTemplateRef } from 'vue'
-import { useFlyout } from '../composables/flyout.js'
 import type { Slot } from '../types.js'
 
-defineProps<{
+const {
+  icon = undefined,
+  button = undefined,
+  label = undefined,
+  items = undefined,
+} = defineProps<{
   /**
    * Flyout icon
    */

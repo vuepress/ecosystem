@@ -39,6 +39,7 @@ export const navbarZh: NavbarOptions = [
       'seo/',
       'development/',
       'tools/',
+      'ai/',
     ],
   },
   {

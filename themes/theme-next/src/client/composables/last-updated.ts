@@ -1,14 +1,14 @@
+import { useData } from '@theme/data'
 import type { ComputedRef, Ref } from 'vue'
 import { computed, onMounted, ref, watchEffect } from 'vue'
 import { usePageLang } from 'vuepress/client'
-import { useData } from './data.js'
 
 export const useLastUpdated = (): {
   datetime: Ref<string>
   lastUpdatedText: ComputedRef<string | undefined>
   isoDatetime: ComputedRef<string | undefined>
 } => {
-  const { frontmatter, page, theme } = useData()
+  const { frontmatter, page, themeLocale } = useData()
   const lang = usePageLang()
 
   const date = computed(() =>
@@ -19,8 +19,8 @@ export const useLastUpdated = (): {
   const datetime = ref('')
 
   const lastUpdatedText = computed(() => {
-    if (theme.value.lastUpdated === false) return
-    return theme.value.lastUpdatedText || 'Last updated'
+    if (themeLocale.value.lastUpdated === false) return
+    return themeLocale.value.lastUpdatedText || 'Last updated'
   })
 
   // set time on mounted hook to avoid hydration mismatch due to
@@ -29,16 +29,16 @@ export const useLastUpdated = (): {
     watchEffect(() => {
       if (
         frontmatter.value.lastUpdated === false ||
-        theme.value.lastUpdated === false
+        themeLocale.value.lastUpdated === false
       )
         return
 
       datetime.value = date.value
         ? new Intl.DateTimeFormat(
-            theme.value.lastUpdatedFormatOptions?.forceLocale
+            themeLocale.value.lastUpdatedFormatOptions?.forceLocale
               ? lang.value
               : undefined,
-            theme.value.lastUpdatedFormatOptions ?? {
+            themeLocale.value.lastUpdatedFormatOptions ?? {
               dateStyle: 'short',
               timeStyle: 'short',
             },

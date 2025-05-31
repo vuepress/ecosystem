@@ -66,7 +66,7 @@ useUpdateDeviceStatus(
     line-height: 1.4rem;
 
     &:hover,
-    &.auto-link-active {
+    &.route-link-active {
       color: var(--vp-c-text);
     }
   }
@@ -75,20 +75,20 @@ useUpdateDeviceStatus(
 .vp-navbar-item {
   position: relative;
   display: inline-block;
-  margin-left: 1.5rem;
+  margin-inline-start: 1.5rem;
   line-height: var(--navbar-line-height);
 
   @media (max-width: $MQMobile) {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 
   &:first-child {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 
   .auto-link {
     &:hover,
-    &.auto-link-active {
+    &.route-link-active {
       color: var(--vp-c-accent);
     }
   }
@@ -97,7 +97,7 @@ useUpdateDeviceStatus(
     display: inline-block;
 
     &:hover,
-    &.auto-link-active {
+    &.route-link-active {
       margin-bottom: -2px;
       border-bottom: 2px solid var(--vp-c-accent);
 

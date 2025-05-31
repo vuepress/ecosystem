@@ -1,9 +1,9 @@
-import { isArray, isString, useLocaleConfig } from '@vuepress/helper/client'
+import { isArray, isString, useLocale } from '@vuepress/helper/client'
 import { useEventListener } from '@vueuse/core'
 import type PhotoSwipe from 'photoswipe'
 import type { SlideData } from 'photoswipe'
 import { computed, onMounted, onUnmounted } from 'vue'
-import { usePageFrontmatter } from 'vuepress/client'
+import { useFrontmatter } from 'vuepress/client'
 import type { PhotoSwipePluginLocaleData } from '../../shared/index.js'
 import { usePhotoSwipeOptions } from '../helpers/index.js'
 import type { PhotoSwipeBehaviorOptions } from '../typings.js'
@@ -32,8 +32,8 @@ export const usePhotoSwipe = ({
   scrollToClose = true,
 }: UsePhotoSwipeOptions): void => {
   const photoSwipeOptions = usePhotoSwipeOptions()
-  const locale = useLocaleConfig(locales)
-  const frontmatter = usePageFrontmatter<{ photoSwipe: boolean | string }>()
+  const locale = useLocale(locales)
+  const frontmatter = useFrontmatter<{ photoSwipe: boolean | string }>()
 
   const imageSelector = computed(() => {
     const { photoSwipe } = frontmatter.value
@@ -92,7 +92,7 @@ export const usePhotoSwipe = ({
     photoSwipe = new PhotoSwipeConstructor({
       preloaderDelay: 0,
       showHideAnimationType: 'zoom',
-      ...options,
+      ...options.value,
       dataSource,
       index,
       ...(scrollToClose
@@ -119,14 +119,17 @@ export const usePhotoSwipe = ({
     )
   }
 
+  useEventListener('click', initPhotoSwipe, { passive: true })
+  useEventListener('wheel', () => {
+    if (options.value.scrollToClose) photoSwipe?.close()
+  })
+
   onMounted(() => {
+    if (__VUEPRESS_SSR__) return
+
     const rIC =
       'requestIdleCallback' in window ? window.requestIdleCallback : setTimeout
 
-    useEventListener('click', initPhotoSwipe)
-    useEventListener('wheel', () => {
-      if (options.value.scrollToClose) photoSwipe?.close()
-    })
     rIC(() => {
       photoSwipeLoader = import(
         /* webpackChunkName: "photo-swipe" */ 'photoswipe'

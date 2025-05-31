@@ -2,8 +2,8 @@
 import VPFooter from '@theme/VPFooter.vue'
 import VPNav from '@theme/VPNav.vue'
 import VPSkipLink from '@theme/VPSkipLink.vue'
+import { useThemeLocaleData } from '@theme/theme-data'
 import { useRouteLocale, withBase } from 'vuepress/client'
-import { useThemeLocaleData } from '../composables/index.js'
 import type { Slot } from '../types.js'
 
 defineSlots<{

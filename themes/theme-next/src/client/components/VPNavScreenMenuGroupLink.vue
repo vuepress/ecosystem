@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import VPLink from '@theme/VPLink.vue'
 import { inject } from 'vue'
-import type { ResolvedNavItemWithLink } from '../../shared/resolved/navbar.js'
+import type { ResolvedNavItemWithLink } from '../../shared/index.js'
 
-defineProps<{
+const { item } = defineProps<{
   /**
    * Menu item
    */
   item: ResolvedNavItemWithLink
 }>()
 
-const closeScreen = inject('close-screen')!
+const closeScreen: () => void = inject('close-screen')!
 </script>
 
 <template>
   <VPLink
-    class="vp-nav-screen-menu-group"
+    class="vp-nav-screen-menu-group-link"
     :href="item.link"
     :target="item.target"
     :rel="item.rel"
@@ -26,7 +26,7 @@ const closeScreen = inject('close-screen')!
 </template>
 
 <style scoped>
-.vp-nav-screen-menu-group {
+.vp-nav-screen-menu-group-link {
   display: block;
 
   margin-left: 12px;
@@ -37,10 +37,10 @@ const closeScreen = inject('close-screen')!
   font-size: 14px;
   line-height: 32px;
 
-  transition: color 0.25s;
+  transition: color var(--vp-t-color);
 }
 
-.vp-nav-screen-menu-group:hover {
+.vp-nav-screen-menu-group-link:hover {
   color: var(--vp-c-accent);
 }
 </style>

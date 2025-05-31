@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { useAside } from '@theme/aside'
 import { onMounted, useTemplateRef, watch } from 'vue'
 import { useRoutePath } from 'vuepress/client'
 import type { CarbonAdsOptions } from '../../shared/index.js'
-import { useAside } from '../composables/aside.js'
 
-const props = defineProps<{
+const { carbonAds = undefined } = defineProps<{
   /**
    * Carbon Ads options
    */
@@ -19,7 +19,7 @@ const container = useTemplateRef<HTMLDivElement>('carbonAds')
 let isInitialized = false
 
 const init = (): void => {
-  const carbonOptions = props.carbonAds!
+  const carbonOptions = carbonAds!
 
   if (!isInitialized) {
     isInitialized = true
@@ -43,7 +43,7 @@ watch(
 
 // no need to account for option changes during dev, we can just
 // refresh the page
-if (props.carbonAds) {
+if (carbonAds) {
   onMounted(() => {
     // if the page is loaded when aside is active, load carbon directly.
     // otherwise, only load it if the page resizes to wide enough. this avoids

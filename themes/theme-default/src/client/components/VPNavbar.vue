@@ -5,8 +5,8 @@ import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'
 import VPToggleSidebarButton from '@theme/VPToggleSidebarButton.vue'
 import { useData } from '@theme/useData'
 import { DeviceType, useUpdateDeviceStatus } from '@theme/useUpdateDeviceStatus'
+import type { Slot } from '@vuepress/helper/client'
 import { hasGlobalComponent } from '@vuepress/helper/client'
-import type { VNode } from 'vue'
 import { computed, ref, resolveComponent, useTemplateRef } from 'vue'
 
 defineEmits<{
@@ -14,8 +14,8 @@ defineEmits<{
 }>()
 
 defineSlots<{
-  before?: (props: Record<never, never>) => VNode | VNode[] | null
-  after?: (props: Record<never, never>) => VNode | VNode[] | null
+  before?: Slot
+  after?: Slot
 }>()
 
 const SearchBox = hasGlobalComponent('SearchBox')
@@ -113,20 +113,24 @@ useUpdateDeviceStatus(
     border-color var(--vp-t-color);
 
   @media screen and (max-width: $MQMobile) {
-    padding-left: 4rem;
+    padding-inline-start: 4rem;
+  }
+
+  @media print {
+    display: none;
   }
 }
 
 .vp-navbar-items-wrapper {
   position: absolute;
+  inset-inline-end: var(--navbar-padding-h);
   top: var(--navbar-padding-v);
-  right: var(--navbar-padding-h);
 
   display: flex;
 
   box-sizing: border-box;
   height: var(--navbar-line-height);
-  padding-left: var(--navbar-padding-h);
+  padding-inline-start: var(--navbar-padding-h);
 
   font-size: 0.9rem;
   white-space: nowrap;

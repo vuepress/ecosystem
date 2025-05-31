@@ -29,8 +29,8 @@ const { themeLocale } = useData()
 
 .vp-toggle-sidebar-button {
   position: absolute;
+  inset-inline-start: 1rem;
   top: 0.6rem;
-  left: 1rem;
 
   display: none;
 
@@ -44,7 +44,7 @@ const { themeLocale } = useData()
 
   .icon {
     display: flex;
-    flex-direction: column;
+    flex-flow: column;
     align-items: center;
     justify-content: center;
 

@@ -3,6 +3,144 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.106](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.105...v2.0.0-rc.106) (2025-05-26)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.105](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.104...v2.0.0-rc.105) (2025-05-16)
+
+### Features
+
+- improve style ([#469](https://github.com/vuepress/ecosystem/issues/469)) ([f89110e](https://github.com/vuepress/ecosystem/commit/f89110e9f363eb9d05e64b0524a9acd6e3bdf7ad))
+
+# [2.0.0-rc.104](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.103...v2.0.0-rc.104) (2025-05-13)
+
+### Bug Fixes
+
+- **theme-default:** fix navbar mismatch ([bca0562](https://github.com/vuepress/ecosystem/commit/bca0562e4914366898f348af9af8fbb606bfe0e2))
+- **theme-default:** fix NotFound mismatch ([#467](https://github.com/vuepress/ecosystem/issues/467)) ([1818e8b](https://github.com/vuepress/ecosystem/commit/1818e8ba0d8623a7ab72eee60386e94b094721b1))
+
+# [2.0.0-rc.103](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.102...v2.0.0-rc.103) (2025-05-08)
+
+### Bug Fixes
+
+- fix code block related style ([#456](https://github.com/vuepress/ecosystem/issues/456)) ([e446824](https://github.com/vuepress/ecosystem/commit/e446824b64e4f5fab45d158fc8ba5c1d63093e32))
+
+### Features
+
+- **helper:** improve slot types ([a156c84](https://github.com/vuepress/ecosystem/commit/a156c84833b1c43296c0b24de8d2dea39f9ea19f))
+
+# [2.0.0-rc.102](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.101...v2.0.0-rc.102) (2025-05-07)
+
+### Features
+
+- **helper:** provide slot types ([#453](https://github.com/vuepress/ecosystem/issues/453)) ([618ad70](https://github.com/vuepress/ecosystem/commit/618ad70c165385978f2c163dce434c38abd8106c))
+
+# [2.0.0-rc.101](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.100...v2.0.0-rc.101) (2025-05-01)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.99](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.98...v2.0.0-rc.99) (2025-05-01)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.98](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.97...v2.0.0-rc.98) (2025-04-28)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.97](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.96...v2.0.0-rc.97) (2025-04-28)
+
+### Bug Fixes
+
+- **theme-default:** fix hero action button hover, close [#437](https://github.com/vuepress/ecosystem/issues/437) ([0b51977](https://github.com/vuepress/ecosystem/commit/0b519776c6971b8924715e9232a88189c1620db8))
+
+# [2.0.0-rc.96](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.95...v2.0.0-rc.96) (2025-04-16)
+
+### Features
+
+- **theme-default:** hide navbar while printing ([585e65e](https://github.com/vuepress/ecosystem/commit/585e65ebcf10b2b34c516c5b8850b1f0d5f48d91))
+
+# [2.0.0-rc.95](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.94...v2.0.0-rc.95) (2025-04-14)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.94](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.93...v2.0.0-rc.94) (2025-04-12)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.93](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.92...v2.0.0-rc.93) (2025-04-12)
+
+### Bug Fixes
+
+- **theme-default:** fix navbar active state, close [#428](https://github.com/vuepress/ecosystem/issues/428) ([a7c7fae](https://github.com/vuepress/ecosystem/commit/a7c7faea52f8ab2bd3fb6b3fd648c2ea3f08d799))
+
+# [2.0.0-rc.92](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.91...v2.0.0-rc.92) (2025-04-09)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.91](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.90...v2.0.0-rc.91) (2025-04-01)
+
+### Features
+
+- **theme-default:** improve theme transition animation ([#421](https://github.com/vuepress/ecosystem/issues/421)) ([e984480](https://github.com/vuepress/ecosystem/commit/e98448025e96581b2e2fda51e51dc413c8a0f9d4))
+
+# [2.0.0-rc.90](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.89...v2.0.0-rc.90) (2025-03-28)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.88](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.87...v2.0.0-rc.88) (2025-03-26)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.87](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.86...v2.0.0-rc.87) (2025-03-23)
+
+### Features
+
+- **plugin-git:** improve composables and add docs ([#409](https://github.com/vuepress/ecosystem/issues/409)) ([63eb850](https://github.com/vuepress/ecosystem/commit/63eb85083e49e3b4521241c808763ad9cbf0e30d))
+
+# [2.0.0-rc.86](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.85...v2.0.0-rc.86) (2025-03-23)
+
+### Features
+
+- **create-vuepress:** handle versions automatically, close [#407](https://github.com/vuepress/ecosystem/issues/407) ([dd02f6b](https://github.com/vuepress/ecosystem/commit/dd02f6b650742f9597d533af2658483d8f5905ed))
+
+# [2.0.0-rc.85](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.84...v2.0.0-rc.85) (2025-03-17)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.84](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.83...v2.0.0-rc.84) (2025-03-11)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.83](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.82...v2.0.0-rc.83) (2025-03-11)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.82](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.81...v2.0.0-rc.82) (2025-03-06)
+
+**Note:** Version bump only for package @vuepress/theme-default
+
+# [2.0.0-rc.81](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.80...v2.0.0-rc.81) (2025-03-04)
+
+### Features
+
+- improve rtl support ([#388](https://github.com/vuepress/ecosystem/issues/388)) ([c2a95d4](https://github.com/vuepress/ecosystem/commit/c2a95d4840571996fc9b5504a91dfbecaede4a71))
+- **plugin-git:** add built-in component `<Contributors/>` `<Changelog/>`, close [#375](https://github.com/vuepress/ecosystem/issues/375) ([#384](https://github.com/vuepress/ecosystem/issues/384)) ([56cece7](https://github.com/vuepress/ecosystem/commit/56cece7f085b761724a3a338a0237a22dde92bb4))
+- prefer rem unit ([869e08c](https://github.com/vuepress/ecosystem/commit/869e08cdd9a31924663be1000048358e8110b92b))
+
+# [2.0.0-rc.80](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.79...v2.0.0-rc.80) (2025-02-24)
+
+### Bug Fixes
+
+- **theme-default:** fix collapsible sidebar link arrow ([5d4ced4](https://github.com/vuepress/ecosystem/commit/5d4ced429dd06ca83cd55b96f4fc43433d851e16))
+- **theme-default:** fix navigate with query and hash ([#368](https://github.com/vuepress/ecosystem/issues/368)) ([2d0a120](https://github.com/vuepress/ecosystem/commit/2d0a120a730501f158068c19ea7656ffa1824b98))
+
+### Features
+
+- **theme-default:** add VPFadeSlideYTransition ([0f845c6](https://github.com/vuepress/ecosystem/commit/0f845c6f780f00a1152aaac1c5073ce6ff255ee4))
+- **theme-default:** enable smooth scroll ([e5677c6](https://github.com/vuepress/ecosystem/commit/e5677c65ba2c581fd3bd59c154ca3c26fb3eeb2a))
+- **theme-default:** prefer useHeaders ([fc04be5](https://github.com/vuepress/ecosystem/commit/fc04be5d9788f1da7c78bc535b1d498521a38a21))
+
 # [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
 
 ### Bug Fixes

@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import VPMenuLink from '@theme/VPMenuLink.vue'
 
-defineProps<{
+const { text = '', items } = defineProps<{
   /**
    * Menu group
    */

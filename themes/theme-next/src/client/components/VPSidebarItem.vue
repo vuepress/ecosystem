@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import VPLink from '@theme/VPLink.vue'
+import { useSidebarControl } from '@theme/sidebar'
 import { computed } from 'vue'
-import type { ResolvedSidebarItem } from '../../shared/resolved/sidebar.js'
-import { useSidebarControl } from '../composables/sidebar.js'
+import type { ResolvedSidebarItem } from '../../shared/index.js'
 
-const props = defineProps<{
+const { item, depth } = defineProps<{
   /**
    * Sidebar item
    */
@@ -23,24 +23,20 @@ const {
   hasActiveLink,
   hasChildren,
   toggle,
-} = useSidebarControl(computed(() => props.item))
+} = useSidebarControl(computed(() => item))
 
 const sectionTag = computed(() => (hasChildren.value ? 'section' : `div`))
 
 const linkTag = computed(() => (isLink.value ? 'a' : 'div'))
 
 const textTag = computed(() =>
-  !hasChildren.value
-    ? 'p'
-    : props.depth + 2 === 7
-      ? 'p'
-      : `h${props.depth + 2}`,
+  !hasChildren.value ? 'p' : depth + 2 === 7 ? 'p' : `h${depth + 2}`,
 )
 
 const itemRole = computed(() => (isLink.value ? undefined : 'button'))
 
 const classes = computed(() => [
-  [`level-${props.depth}`],
+  [`level-${depth}`],
   { collapsible: collapsible.value },
   { collapsed: collapsed.value },
   { 'is-link': isLink.value },
@@ -52,11 +48,11 @@ const onItemInteraction = (e: Event | MouseEvent): void => {
   if ('key' in e && e.key !== 'Enter') {
     return
   }
-  if (!props.item.link) toggle()
+  if (!item.link) toggle()
 }
 
 const onCaretClick = (): void => {
-  if (props.item.link) toggle()
+  if (item.link) toggle()
 }
 </script>
 

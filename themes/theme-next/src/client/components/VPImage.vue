@@ -4,7 +4,7 @@ import type { DefaultThemeImage } from '../../shared/index.js'
 
 defineOptions({ inheritAttrs: false })
 
-defineProps<{
+const { image, alt = '' } = defineProps<{
   /**
    * Image
    */

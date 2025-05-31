@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import VPSponsorsGrid from '@theme/VPSponsorsGrid.vue'
+import type { GridSize } from '@theme/sponsor-grid'
 import { computed } from 'vue'
 import type { Sponsor, Sponsors } from '../../shared/index.js'
-import type { GridSize } from '../composables/sponsor-grid.js'
 
 interface Props {
   /**
@@ -22,22 +22,21 @@ interface Props {
    */
   data: Sponsor[] | Sponsors[]
 }
-const props = withDefaults(defineProps<Props>(), {
-  mode: 'normal',
-  tier: undefined,
-  size: undefined,
-})
+const {
+  mode = 'normal',
+  tier = undefined,
+  size = undefined,
+  data,
+} = defineProps<Props>()
 
 const sponsors = computed(() => {
-  const isSponsors = props.data.some((s) => 'items' in s)
+  const isSponsors = data.some((s: Sponsor | Sponsors) => 'items' in s)
 
   if (isSponsors) {
-    return props.data as Sponsors[]
+    return data as Sponsors[]
   }
 
-  return [
-    { tier: props.tier, size: props.size, items: props.data as Sponsor[] },
-  ]
+  return [{ tier, size, items: data as Sponsor[] }]
 })
 </script>
 

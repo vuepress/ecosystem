@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-comment",
-  "version": "2.0.0-rc.79",
+  "version": "2.0.0-rc.106",
   "description": "VuePress plugin - comment",
   "keywords": [
     "vuepress-plugin",
@@ -27,6 +27,9 @@
     "email": "mister-hope@outlook.com",
     "url": "https://mister-hope.com"
   },
+  "sideEffects": [
+    "./lib/styles/*.css"
+  ],
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
@@ -48,9 +51,9 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^12.7.0",
+    "@vueuse/core": "catalog:",
     "giscus": "^1.6.0",
-    "vue": "^3.5.13"
+    "vue": "catalog:"
   },
   "peerDependencies": {
     "@waline/client": "^3.5.5",

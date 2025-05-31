@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "paths": {
+      "@theme/*": [
+        "../themes/theme-next/src/client/components/*",
+        "../themes/theme-next/src/client/composables/*",
+        "../themes/theme-next/src/client/utils/*"
+      ]
+    }
+  },
+  "include": ["./.vuepress/**/*"]
+}

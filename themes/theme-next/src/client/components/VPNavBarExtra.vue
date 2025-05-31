@@ -3,18 +3,18 @@ import VPFlyout from '@theme/VPFlyout.vue'
 import VPMenuLink from '@theme/VPMenuLink.vue'
 import VPSocialLinks from '@theme/VPSocialLinks.vue'
 import VPSwitchAppearance from '@theme/VPSwitchAppearance.vue'
+import { useData } from '@theme/data'
+import { useLangs } from '@theme/langs'
 import { computed } from 'vue'
-import { useData } from '../composables/data.js'
-import { useLangs } from '../composables/langs.js'
 
-const { theme } = useData()
+const { themeLocale } = useData()
 const { localeLinks, currentLang } = useLangs()
 
 const hasExtraContent = computed(
   () =>
     (localeLinks.value.length && currentLang.value.label) ||
-    theme.value.appearance ||
-    theme.value.socialLinks,
+    themeLocale.value.appearance ||
+    themeLocale.value.socialLinks,
 )
 </script>
 
@@ -36,12 +36,12 @@ const hasExtraContent = computed(
     </div>
 
     <div
-      v-if="theme.appearance && theme.appearance !== 'force-dark'"
+      v-if="themeLocale.appearance && themeLocale.appearance !== 'force-dark'"
       class="group"
     >
       <div class="item appearance">
         <p class="label">
-          {{ theme.darkModeSwitchLabel || 'Appearance' }}
+          {{ themeLocale.darkModeSwitchLabel || 'Appearance' }}
         </p>
         <div class="appearance-action">
           <VPSwitchAppearance />
@@ -49,9 +49,12 @@ const hasExtraContent = computed(
       </div>
     </div>
 
-    <div v-if="theme.socialLinks" class="group">
+    <div v-if="themeLocale.socialLinks" class="group">
       <div class="item social-links">
-        <VPSocialLinks class="social-links-list" :links="theme.socialLinks" />
+        <VPSocialLinks
+          class="social-links-list"
+          :links="themeLocale.socialLinks"
+        />
       </div>
     </div>
   </VPFlyout>

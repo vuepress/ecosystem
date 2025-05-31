@@ -3,6 +3,124 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.106](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.105...v2.0.0-rc.106) (2025-05-26)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.105](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.104...v2.0.0-rc.105) (2025-05-16)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.104](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.103...v2.0.0-rc.104) (2025-05-13)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.103](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.102...v2.0.0-rc.103) (2025-05-08)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.102](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.101...v2.0.0-rc.102) (2025-05-07)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.101](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.100...v2.0.0-rc.101) (2025-05-01)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.99](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.98...v2.0.0-rc.99) (2025-05-01)
+
+### Features
+
+- **create-vuepress:** remove execa ([91b5f4b](https://github.com/vuepress/ecosystem/commit/91b5f4b18e3c25210c83e7fb10f0bad0b0cc8978))
+
+# [2.0.0-rc.98](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.97...v2.0.0-rc.98) (2025-04-28)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.97](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.96...v2.0.0-rc.97) (2025-04-28)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.96](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.95...v2.0.0-rc.96) (2025-04-16)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.95](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.94...v2.0.0-rc.95) (2025-04-14)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.94](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.93...v2.0.0-rc.94) (2025-04-12)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.93](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.92...v2.0.0-rc.93) (2025-04-12)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.92](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.91...v2.0.0-rc.92) (2025-04-09)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.91](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.90...v2.0.0-rc.91) (2025-04-01)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.90](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.89...v2.0.0-rc.90) (2025-03-28)
+
+### Features
+
+- **create-vuepress:** support pnpm10 ([77f4ae6](https://github.com/vuepress/ecosystem/commit/77f4ae6f1ad28b5ba0c3a13a00b364a38c841306))
+
+# [2.0.0-rc.89](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.88...v2.0.0-rc.89) (2025-03-26)
+
+### Bug Fixes
+
+- **create-vuepress:** fix templateFolder path ([9255913](https://github.com/vuepress/ecosystem/commit/9255913d2de54b379016279308d22eff991aaac8))
+
+# [2.0.0-rc.88](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.87...v2.0.0-rc.88) (2025-03-26)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.87](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.86...v2.0.0-rc.87) (2025-03-23)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.86](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.85...v2.0.0-rc.86) (2025-03-23)
+
+### Features
+
+- **create-vuepress:** handle versions automatically, close [#407](https://github.com/vuepress/ecosystem/issues/407) ([dd02f6b](https://github.com/vuepress/ecosystem/commit/dd02f6b650742f9597d533af2658483d8f5905ed))
+
+# [2.0.0-rc.85](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.84...v2.0.0-rc.85) (2025-03-17)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.84](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.83...v2.0.0-rc.84) (2025-03-11)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.83](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.82...v2.0.0-rc.83) (2025-03-11)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.82](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.81...v2.0.0-rc.82) (2025-03-06)
+
+**Note:** Version bump only for package create-vuepress
+
+# [2.0.0-rc.81](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.80...v2.0.0-rc.81) (2025-03-04)
+
+### Features
+
+- prefer rem unit ([869e08c](https://github.com/vuepress/ecosystem/commit/869e08cdd9a31924663be1000048358e8110b92b))
+
+# [2.0.0-rc.80](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.79...v2.0.0-rc.80) (2025-02-24)
+
+### Bug Fixes
+
+- **create-vuepress:** fix package.json reading ([5fa4203](https://github.com/vuepress/ecosystem/commit/5fa4203b82614d1e27d8e1818c3093d1db1567c5))
+- **create-vuepress:** fix types ([1724e9a](https://github.com/vuepress/ecosystem/commit/1724e9a37eb3f4cf55aeba07777c63b77013be8e))
+- fix engine requirement ([372268f](https://github.com/vuepress/ecosystem/commit/372268f96a9f87dcfdd5bfe3020fd1b160e203a4))
+
 # [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
 
 ### Bug Fixes

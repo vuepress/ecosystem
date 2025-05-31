@@ -111,7 +111,7 @@ icon: settings-2
 
 - 示例 1：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   theme: defaultTheme({
     navbar: [
@@ -135,7 +135,7 @@ export default {
 
 - 示例 2：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   theme: defaultTheme({
     navbar: [
@@ -210,13 +210,13 @@ export default {
 
 - 示例：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   theme: defaultTheme({
     // Public 文件路径
     logo: '/images/hero.png',
     // URL
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 }
 ```
@@ -260,12 +260,12 @@ export default {
 
   它将被用作 _仓库链接_ 的链接。_仓库链接_ 将会显示为导航栏的最后一个元素。
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   theme: defaultTheme({
     // 如果你按照 `organization/repository` 的格式设置它
     // 我们会将它作为一个 GitHub 仓库
-    repo: 'vuejs/vuepress',
+    repo: 'vuepress/core',
     // 你也可以直接将它设置为一个 URL
     repo: 'https://gitlab.com/foo/bar',
   }),
@@ -300,7 +300,7 @@ export default {
 
 - 示例 1：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   theme: defaultTheme({
     // 侧边栏数组
@@ -332,7 +332,7 @@ export default {
 
 - 示例 2：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   theme: defaultTheme({
     // 侧边栏对象
@@ -356,7 +356,7 @@ export default {
 
 - 示例 3：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   theme: defaultTheme({
     // 可折叠的侧边栏
@@ -432,7 +432,7 @@ export default {
 
 - 示例：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   theme: defaultTheme({
     docsRepo: 'https://gitlab.com/owner/name',

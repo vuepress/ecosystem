@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import VPFlyout from '@theme/VPFlyout.vue'
+import { useData } from '@theme/data'
+import { isActive } from '@theme/isActive'
 import { computed } from 'vue'
 import { resolveRouteFullPath } from 'vuepress/client'
 import type {
   ResolvedNavItem,
   ResolvedNavItemWithChildren,
-} from '../../shared/resolved/navbar.js'
-import { useData } from '../composables/data.js'
-import { isActive } from '../utils/index.js'
+} from '../../shared/index.js'
 
-const props = defineProps<{
+const { item } = defineProps<{
   /**
    * Menu item
    */
@@ -23,7 +23,7 @@ const isChildActive = (navItem: ResolvedNavItem): boolean => {
     return isActive(
       page.value.path,
       resolveRouteFullPath(navItem.link),
-      !!props.item.activeMatch,
+      !!item.activeMatch,
     )
   }
   return navItem.items.some(isChildActive)
@@ -31,11 +31,8 @@ const isChildActive = (navItem: ResolvedNavItem): boolean => {
 
 const active = computed(
   () =>
-    isActive(
-      page.value.path,
-      props.item.activeMatch,
-      !!props.item.activeMatch,
-    ) || isChildActive(props.item),
+    isActive(page.value.path, item.activeMatch, !!item.activeMatch) ||
+    isChildActive(item),
 )
 </script>
 

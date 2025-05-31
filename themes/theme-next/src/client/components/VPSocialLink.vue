@@ -2,7 +2,11 @@
 import { computed } from 'vue'
 import type { SocialLinkIcon } from '../../shared/index.js'
 
-const props = defineProps<{
+const {
+  icon,
+  link,
+  ariaLabel = '',
+} = defineProps<{
   /**
    * Icon
    */
@@ -18,8 +22,8 @@ const props = defineProps<{
 }>()
 
 const svg = computed(() => {
-  if (typeof props.icon === 'object') return props.icon.svg
-  return `<span class="vpi-social-${props.icon}" />`
+  if (typeof icon === 'object') return icon.svg
+  return `<span class="vpi-social-${icon}" />`
 })
 </script>
 

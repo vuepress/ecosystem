@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useLastUpdated } from '../composables/last-updated.js'
+import { useLastUpdated } from '@theme/last-updated'
 
 const { lastUpdatedText, isoDatetime, datetime } = useLastUpdated()
 </script>

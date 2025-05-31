@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import VPNavBar from '@theme/VPNavBar.vue'
 import VPNavScreen from '@theme/VPNavScreen.vue'
+import { inBrowser } from '@theme/constants'
+import { useData } from '@theme/data'
+import { useNav } from '@theme/nav'
 import { computed, provide, watchEffect } from 'vue'
-import { useData } from '../composables/data.js'
-import { useNav } from '../composables/nav.js'
 import type { Slot } from '../types.js'
-import { inBrowser } from '../utils/index.js'
 
 defineSlots<{
   'nav-bar-title-before'?: Slot

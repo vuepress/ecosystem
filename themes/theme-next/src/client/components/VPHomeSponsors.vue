@@ -22,11 +22,11 @@ interface Props {
   data: Sponsors[]
 }
 
-withDefaults(defineProps<Props>(), {
-  actionText: 'Become a sponsor',
-  message: undefined,
-  actionLink: undefined,
-})
+const {
+  actionText = 'Become a sponsor',
+  message = undefined,
+  actionLink = undefined,
+} = defineProps<Props>()
 </script>
 
 <template>

@@ -1,10 +1,10 @@
+import { useData } from '@theme/data'
+import { isActive } from '@theme/isActive'
+import { getFlatSideBarLinks, useSidebarData } from '@theme/sidebar'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import { resolveRouteFullPath } from 'vuepress/client'
 import type { NavItemWithLink } from '../../shared/index.js'
-import { isActive } from '../utils/index.js'
-import { useData } from './data.js'
-import { getFlatSideBarLinks, useSidebarData } from './sidebar.js'
 
 export interface PrevNext {
   prev?: Partial<NavItemWithLink>
@@ -22,7 +22,7 @@ const uniqueBy = <T>(array: T[], keyGetter: (item: T) => unknown): T[] => {
 }
 
 export const usePrevNext = (): ComputedRef<PrevNext> => {
-  const { frontmatter, page, theme } = useData()
+  const { frontmatter, page, themeLocale } = useData()
   const sidebar = useSidebarData()
 
   return computed(() => {
@@ -38,11 +38,13 @@ export const usePrevNext = (): ComputedRef<PrevNext> => {
     )
 
     const hidePrev =
-      (theme.value.docFooter?.prev === false && !frontmatter.value.prev) ||
+      (themeLocale.value.docFooter?.prev === false &&
+        !frontmatter.value.prev) ||
       frontmatter.value.prev === false
 
     const hideNext =
-      (theme.value.docFooter?.next === false && !frontmatter.value.next) ||
+      (themeLocale.value.docFooter?.next === false &&
+        !frontmatter.value.next) ||
       frontmatter.value.next === false
 
     return {

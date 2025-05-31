@@ -1,4 +1,4 @@
-import type { DefaultThemeLocaleData } from '../../shared'
+import type { DefaultThemeLocaleData } from '../../shared/index.js'
 
 const tryOffsetSelector = (selector: string, padding: number): number => {
   const el = document.querySelector(selector)

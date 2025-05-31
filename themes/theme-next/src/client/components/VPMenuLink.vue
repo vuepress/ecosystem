@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import VPLink from '@theme/VPLink.vue'
+import { useData } from '@theme/data'
+import { isActive } from '@theme/isActive'
 import { resolveRouteFullPath } from 'vuepress/client'
-import type { ResolvedNavItemWithLink } from '../../shared/resolved/navbar.js'
-import { useData } from '../composables/data.js'
-import { isActive } from '../utils/index.js'
+import type { ResolvedNavItemWithLink } from '../../shared/index.js'
 
-defineProps<{
+const { item } = defineProps<{
   /**
    * Menu item
    */

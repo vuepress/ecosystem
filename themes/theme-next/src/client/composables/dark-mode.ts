@@ -1,7 +1,7 @@
+import { useThemeData } from '@theme/theme-data'
 import { useDark } from '@vueuse/core'
 import type { InjectionKey, Ref } from 'vue'
 import { inject, provide, ref } from 'vue'
-import { useThemeData } from './theme-data.js'
 
 type DarkModeRef = Ref<boolean>
 

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/highlighter-helper",
-  "version": "2.0.0-rc.79",
+  "version": "2.0.0-rc.106",
   "description": "VuePress Highlighter helper",
   "keywords": [
     "vuepress",
@@ -27,12 +27,14 @@
     ".": "./lib/node/index.js",
     "./client": "./lib/client/index.js",
     "./styles/*": "./lib/client/styles/*",
+    "./scss/*": "./scss/*.scss",
     "./package.json": "./package.json"
   },
   "main": "./lib/node/index.js",
   "types": "./lib/node/index.d.ts",
   "files": [
-    "lib"
+    "lib",
+    "scss"
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
@@ -41,7 +43,7 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "peerDependencies": {
-    "@vueuse/core": "^12.7.0",
+    "@vueuse/core": "catalog:",
     "vuepress": "catalog:"
   },
   "peerDependenciesMeta": {

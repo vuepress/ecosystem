@@ -1,15 +1,15 @@
 <script setup lang="ts">
+import { useData } from '@theme/data'
 import { useContributors } from '@vuepress/theme-helper/client'
-import { useData } from '../composables/data.js'
 
-defineProps<{
+const { align } = defineProps<{
   /**
    * Contributors align
    */
   align: 'left' | 'right'
 }>()
 
-const { theme } = useData()
+const { themeLocale } = useData()
 const contributors = useContributors()
 </script>
 
@@ -19,7 +19,7 @@ const contributors = useContributors()
     class="vp-contributors"
     :style="{ '--vp-contributors-align': align }"
   >
-    {{ theme.contributorsText || 'Contributors' }}:
+    {{ themeLocale.contributorsText || 'Contributors' }}:
     <template
       v-for="(contributor, index) in contributors"
       :key="contributor.name + index"

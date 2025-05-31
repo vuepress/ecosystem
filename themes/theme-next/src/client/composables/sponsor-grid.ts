@@ -1,6 +1,6 @@
+import { throttleAndDebounce } from '@theme/throttleAndDebounce'
 import type { Ref } from 'vue'
 import { onMounted, onUnmounted } from 'vue'
-import { throttleAndDebounce } from '../utils/index.js'
 
 export type GridSetting = Record<string, [number, number][]>
 

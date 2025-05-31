@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-container",
-  "version": "2.0.0-rc.79",
+  "version": "2.0.0-rc.103",
   "description": "VuePress plugin - markdown container",
   "keywords": [
     "vuepress-plugin",
@@ -39,11 +39,11 @@
     "@types/markdown-it": "^14.1.2",
     "markdown-it-container": "^4.0.0"
   },
-  "peerDependencies": {
-    "vuepress": "catalog:"
-  },
   "devDependencies": {
     "markdown-it": "^14.1.0"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

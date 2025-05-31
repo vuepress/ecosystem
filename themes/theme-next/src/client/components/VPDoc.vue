@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import VPDocAside from '@theme/VPDocAside.vue'
 import VPDocFooter from '@theme/VPDocFooter.vue'
+import { useData } from '@theme/data'
+import { useSidebar } from '@theme/sidebar'
 import { computed, nextTick, useTemplateRef, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
-import { useData } from '../composables/data.js'
-import { useSidebar } from '../composables/sidebar.js'
 import type { Slot } from '../types.js'
 
 defineSlots<{
@@ -21,7 +21,7 @@ defineSlots<{
   'aside-ads-after'?: Slot
 }>()
 
-const { theme, frontmatter } = useData()
+const { themeLocale, frontmatter } = useData()
 
 const route = useRoute()
 const { hasSidebar, hasAside, leftAside } = useSidebar()
@@ -31,7 +31,7 @@ const pageName = computed(() =>
 )
 const enabledExternalLinkIcon = computed(
   () =>
-    theme.value.externalLinkIcon &&
+    themeLocale.value.externalLinkIcon &&
     frontmatter.value.externalLinkIcon !== false,
 )
 

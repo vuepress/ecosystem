@@ -14,7 +14,7 @@ Integrate [Algolia DocSearch](https://docsearch.algolia.com/) into VuePress, whi
 npm i -D @vuepress/plugin-docsearch@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 
 export default {
@@ -295,7 +295,7 @@ If you are not using default theme, or you meet any problems when using docsearc
 
 - Example:
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     docsearchPlugin({

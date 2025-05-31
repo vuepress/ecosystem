@@ -4,6 +4,8 @@
     "composite": true
   },
   "references": [
+    // AI
+    { "path": "./plugins/ai/plugin-llms/tsconfig.build.json" },
     // analytics
     {
       "path": "./plugins/analytics/plugin-baidu-analytics/tsconfig.build.json"
@@ -85,6 +87,7 @@
 
     // search
     { "path": "./plugins/search/plugin-docsearch/tsconfig.build.json" },
+    { "path": "./plugins/search/plugin-meilisearch/tsconfig.build.json" },
     { "path": "./plugins/search/plugin-search/tsconfig.build.json" },
     { "path": "./plugins/search/plugin-slimsearch/tsconfig.build.json" },
 

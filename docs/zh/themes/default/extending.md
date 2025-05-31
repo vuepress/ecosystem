@@ -26,7 +26,7 @@ VuePress 默认主题有着大量的用户，因此我们对它进行了一些�
 
 首先，创建一个客户端配置文件 `.vuepress/client.ts` ：
 
-```ts
+```ts title=".vuepress/client.ts"
 import { defineClientConfig } from 'vuepress/client'
 import Layout from './layouts/Layout.vue'
 
@@ -71,7 +71,7 @@ import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 
 接下来，如果你想要替换 `VPHomeFooter.vue` 组件，只需要在配置文件 `.vuepress/config.ts` 中覆盖这个别名即可：
 
-```ts
+```ts title=".vuepress/config.ts"
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 import { getDirname, path } from 'vuepress/utils'

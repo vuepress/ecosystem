@@ -2,7 +2,11 @@
 import VPSponsors from '@theme/VPSponsors.vue'
 import type { Sponsor, Sponsors } from '../../shared/index.js'
 
-defineProps<{
+const {
+  tier = undefined,
+  size = undefined,
+  data,
+} = defineProps<{
   /**
    * Sponsor tier
    */

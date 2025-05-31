@@ -4,7 +4,7 @@ import VPNavScreenMenuGroupLink from '@theme/VPNavScreenMenuGroupLink.vue'
 import VPNavScreenMenuGroupSection from '@theme/VPNavScreenMenuGroupSection.vue'
 import { computed, ref } from 'vue'
 
-const props = defineProps<{
+const { text, items } = defineProps<{
   /**
    * Group text
    */
@@ -18,7 +18,7 @@ const props = defineProps<{
 const isOpen = ref(false)
 
 const groupId = computed(
-  () => `NavScreenGroup-${props.text.replace(' ', '-').toLowerCase()}`,
+  () => `NavScreenGroup-${text.replace(' ', '-').toLowerCase()}`,
 )
 
 const toggle = (): void => {
@@ -58,7 +58,7 @@ const toggle = (): void => {
   overflow: hidden;
   height: 48px;
   border-bottom: 1px solid var(--vp-c-divider);
-  transition: border-color 0.5s;
+  transition: border-color var(--vp-t-color);
 }
 
 .vp-nav-screen-menu-group .items {
@@ -98,7 +98,7 @@ const toggle = (): void => {
   font-size: 14px;
   line-height: 24px;
 
-  transition: color 0.25s;
+  transition: color var(--vp-t-color);
 }
 
 .button:hover {
@@ -106,7 +106,7 @@ const toggle = (): void => {
 }
 
 .button-icon {
-  transition: transform 0.25s;
+  transition: transform var(--vp-t-color);
 }
 
 .group:first-child {

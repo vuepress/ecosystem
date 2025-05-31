@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-sass-palette",
-  "version": "2.0.0-rc.79",
+  "version": "2.0.0-rc.106",
   "description": "VuePress plugin - sass-palette",
   "keywords": [
     "vuepress-plugin",
@@ -55,9 +55,9 @@
     "@vuepress/bundler-webpack": "catalog:"
   },
   "peerDependencies": {
-    "sass": "^1.85.0",
-    "sass-embedded": "^1.85.0",
-    "sass-loader": "^16.0.5",
+    "sass": "catalog:",
+    "sass-embedded": "catalog:",
+    "sass-loader": "catalog:",
     "vuepress": "catalog:"
   },
   "peerDependenciesMeta": {

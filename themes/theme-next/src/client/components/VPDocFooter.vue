@@ -2,27 +2,29 @@
 import VPDocFooterContributors from '@theme/VPDocFooterContributors.vue'
 import VPDocFooterLastUpdated from '@theme/VPDocFooterLastUpdated.vue'
 import VPLink from '@theme/VPLink.vue'
+import { useData } from '@theme/data'
+import { usePrevNext } from '@theme/prev-next'
 import { useEditLink } from '@vuepress/theme-helper/client'
 import { computed } from 'vue'
-import { useData } from '../composables/data.js'
-import { usePrevNext } from '../composables/prev-next.js'
 import type { Slot } from '../types.js'
 
 defineSlots<{ 'doc-footer-before'?: Slot }>()
 
-const { theme, frontmatter } = useData()
+const { themeLocale, frontmatter } = useData()
 
 const editLink = useEditLink()
 const control = usePrevNext()
 
 const hasEditLink = computed(
-  () => theme.value.editLink && frontmatter.value.editLink !== false,
+  () => themeLocale.value.editLink && frontmatter.value.editLink !== false,
 )
 const hasLastUpdated = computed(
-  () => theme.value.lastUpdated && frontmatter.value.lastUpdated !== false,
+  () =>
+    themeLocale.value.lastUpdated && frontmatter.value.lastUpdated !== false,
 )
 const hasContributors = computed(
-  () => theme.value.contributors && frontmatter.value.contributors !== false,
+  () =>
+    themeLocale.value.contributors && frontmatter.value.contributors !== false,
 )
 
 const showFooter = computed(
@@ -73,7 +75,7 @@ const showFooter = computed(
         >
           <span
             class="desc"
-            v-html="theme.docFooter?.prev || 'Previous page'"
+            v-html="themeLocale.docFooter?.prev || 'Previous page'"
           ></span>
           <span class="title" v-html="control.prev.text"></span>
         </VPLink>
@@ -86,7 +88,7 @@ const showFooter = computed(
         >
           <span
             class="desc"
-            v-html="theme.docFooter?.next || 'Next page'"
+            v-html="themeLocale.docFooter?.next || 'Next page'"
           ></span>
           <span class="title" v-html="control.next.text"></span>
         </VPLink>

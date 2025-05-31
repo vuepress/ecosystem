@@ -35,7 +35,7 @@ export const appendDateToPage = async (
   await fs.writeFile(
     filePath,
     startsWith(markdownContent, '---\n')
-      ? `---\n${key}: ${text}\n${markdownContent.substring(4)}`
+      ? `---\n${key}: ${text}\n${markdownContent.slice(4)}`
       : `---\n${key}: ${text}\n---\n\n${markdownContent}`,
     'utf-8',
   )

@@ -4,7 +4,7 @@ import VPMenuGroup from '@theme/VPMenuGroup.vue'
 import VPMenuLink from '@theme/VPMenuLink.vue'
 import type { Slot } from '../types.js'
 
-defineProps<{
+const { items = undefined } = defineProps<{
   /**
    * Menu items
    */

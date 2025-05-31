@@ -1,4 +1,7 @@
 import { sidebarData as structureSidebarDataRaw } from '@internal/sidebar'
+import { useData } from '@theme/data'
+import { getNavLink, normalizeLink, normalizePrefix } from '@theme/getNavLink'
+import { isActive } from '@theme/isActive'
 import {
   ensureLeadingSlash,
   isArray,
@@ -18,15 +21,11 @@ import {
   watchPostEffect,
 } from 'vue'
 import { resolveRouteFullPath, useRoute, useRouteLocale } from 'vuepress/client'
-import type { Sidebar, SidebarItem } from '../../shared/index.js'
-import type { ResolvedSidebarItem } from '../../shared/resolved/sidebar.js'
-import {
-  getNavLink,
-  isActive,
-  normalizeLink,
-  normalizePrefix,
-} from '../utils/index.js'
-import { useData } from './data.js'
+import type {
+  ResolvedSidebarItem,
+  Sidebar,
+  SidebarItem,
+} from '../../shared/index.js'
 
 export type StructureSidebarDataRef = Ref<Record<string, ResolvedSidebarItem[]>>
 
@@ -39,7 +38,7 @@ const sidebarSymbol: InjectionKey<Ref<ResolvedSidebarItem[]>> = Symbol(
 )
 
 export const setupSidebarData = (): void => {
-  const { frontmatter, page, theme } = useData()
+  const { frontmatter, page, themeLocale } = useData()
   const routeLocale = useRouteLocale()
 
   const hasSidebar = computed(
@@ -52,7 +51,11 @@ export const setupSidebarData = (): void => {
   const sidebar = computed(() =>
     hasSidebar.value
       ? // eslint-disable-next-line @typescript-eslint/no-use-before-define
-        getSidebar(theme.value.sidebar, page.value.path, routeLocale.value)
+        getSidebar(
+          themeLocale.value.sidebar,
+          page.value.path,
+          routeLocale.value,
+        )
       : [],
   )
 
@@ -128,7 +131,7 @@ export interface UseSidebarReturn {
 const containsActiveLink = hasActiveLink
 
 export const useSidebar = (): UseSidebarReturn => {
-  const { theme, frontmatter } = useData()
+  const { themeLocale, frontmatter } = useData()
   const is960 = useMediaQuery('(min-width: 960px)')
 
   const isOpen = ref(false)
@@ -146,13 +149,13 @@ export const useSidebar = (): UseSidebarReturn => {
     if (frontmatter.value.pageLayout === 'home' || frontmatter.value.home)
       return false
     if (frontmatter.value.aside != null) return !!frontmatter.value.aside
-    return theme.value.aside !== false
+    return themeLocale.value.aside !== false
   })
 
   const leftAside = computed(() => {
     if (hasAside.value)
       return frontmatter.value.aside == null
-        ? theme.value.aside === 'left'
+        ? themeLocale.value.aside === 'left'
         : frontmatter.value.aside === 'left'
     return false
   })

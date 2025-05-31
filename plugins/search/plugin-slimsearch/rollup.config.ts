@@ -8,7 +8,7 @@ export default [
   ...rollupBundle(
     {
       base: 'client',
-      files: ['components/SearchResult', 'config', 'index', 'worker/index'],
+      files: ['components/SearchResult', 'config', 'index', 'worker'],
     },
     {
       external: ['@internal/pagesComponents', 'slimsearch'],
@@ -19,7 +19,8 @@ export default [
     dts: false,
     external: [/^@internal\//],
     define: {
-      __VUEPRESS_SSR__: 'false',
+      '__VUEPRESS_SSR__': 'false',
+      'process.env.NODE_ENV': JSON.stringify('production'),
     },
   }),
 ]

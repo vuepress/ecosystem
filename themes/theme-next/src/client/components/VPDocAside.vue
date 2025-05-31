@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import VPDocAsideCarbonAds from '@theme/VPDocAsideCarbonAds.vue'
 import VPDocAsideOutline from '@theme/VPDocAsideOutline.vue'
-import { useData } from '../composables/data.js'
+import { useData } from '@theme/data'
 import type { Slot } from '../types.js'
 
 defineSlots<{
@@ -13,7 +13,7 @@ defineSlots<{
   'aside-ads-after'?: Slot
 }>()
 
-const { theme } = useData()
+const { themeLocale } = useData()
 </script>
 
 <template>
@@ -27,7 +27,10 @@ const { theme } = useData()
     <div class="spacer" />
 
     <slot name="aside-ads-before" />
-    <VPDocAsideCarbonAds v-if="theme.carbonAds" :carbon-ads="theme.carbonAds" />
+    <VPDocAsideCarbonAds
+      v-if="themeLocale.carbonAds"
+      :carbon-ads="themeLocale.carbonAds"
+    />
     <slot name="aside-ads-after" />
 
     <slot name="aside-bottom" />

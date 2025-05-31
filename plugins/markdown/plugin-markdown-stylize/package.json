@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-stylize",
-  "version": "2.0.0-rc.79",
+  "version": "2.0.0-rc.106",
   "description": "VuePress plugin - markdown stylize",
   "keywords": [
     "vuepress-plugin",
@@ -40,21 +40,21 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@mdit/plugin-align": "^0.16.0",
-    "@mdit/plugin-attrs": "^0.16.7",
-    "@mdit/plugin-mark": "^0.16.0",
-    "@mdit/plugin-spoiler": "^0.16.0",
-    "@mdit/plugin-stylize": "^0.16.0",
-    "@mdit/plugin-sub": "^0.16.0",
-    "@mdit/plugin-sup": "^0.16.0",
+    "@mdit/plugin-align": "^0.20.0",
+    "@mdit/plugin-attrs": "^0.20.0",
+    "@mdit/plugin-mark": "^0.20.0",
+    "@mdit/plugin-spoiler": "^0.20.0",
+    "@mdit/plugin-stylize": "^0.20.0",
+    "@mdit/plugin-sub": "^0.20.0",
+    "@mdit/plugin-sup": "^0.20.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*"
   },
-  "peerDependencies": {
-    "vuepress": "catalog:"
-  },
   "devDependencies": {
     "markdown-it": "^14.1.0"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

@@ -1,4 +1,4 @@
-import { EXT_RE, HASH_RE, inBrowser } from './constants.js'
+import { EXT_RE, HASH_RE, inBrowser } from '@theme/constants'
 
 export const normalize = (path: string): string =>
   decodeURI(path).replace(HASH_RE, '').replace(EXT_RE, '')

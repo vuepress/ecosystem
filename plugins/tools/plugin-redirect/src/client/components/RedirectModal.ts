@@ -11,12 +11,13 @@ import {
   ref,
   watch,
 } from 'vue'
-import { useRouteLocale, useRoutePath, useRouter } from 'vuepress/client'
+import { useData, useRouter } from 'vuepress/client'
 import type { RedirectBehaviorConfig } from '../../shared/index.js'
 import { useRedirectInfo } from '../composables/index.js'
 import type { RedirectPluginLocaleConfig } from '../types.js'
 import { statusLocalStorage, statusSessionStorage } from '../utils/index.js'
 
+import '@vuepress/helper/transition/fade-in-scale-up.css'
 import '../styles/redirect-modal.css'
 
 export default defineComponent({
@@ -36,8 +37,7 @@ export default defineComponent({
 
   setup(props) {
     const router = useRouter()
-    const routePath = useRoutePath()
-    const routeLocale = useRouteLocale()
+    const { routeLocale, routePath } = useData()
     const redirectInfo = useRedirectInfo(props.config)
 
     const body = ref<HTMLElement>()
@@ -95,7 +95,7 @@ export default defineComponent({
     })
 
     return (): VNode | null =>
-      h(TransitionGroup, { name: 'redirect-modal-fade' }, () =>
+      h(TransitionGroup, { name: 'fade-in-scale-up' }, () =>
         showModal.value
           ? h(
               'div',

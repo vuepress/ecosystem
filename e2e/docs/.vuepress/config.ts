@@ -255,13 +255,26 @@ export default defineUserConfig({
           ],
           fullscreen: true,
         },
+        {
+          match: /^\/notice\/file\.html$/,
+          title: 'Notice Title',
+          contentFile: path.resolve(__dirname, './notice.md'),
+          actions: [
+            {
+              text: 'Primary Action',
+              link: 'https://example.com/',
+              type: 'primary',
+            },
+            { text: 'Default Action' },
+          ],
+        },
       ],
     }),
     pwaPlugin({
       manifest: {
         icons: [
           {
-            src: '/logo.png',
+            src: '/hero.png',
             sizes: '600x600',
             type: 'image/png',
           },

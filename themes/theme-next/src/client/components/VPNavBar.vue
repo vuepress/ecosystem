@@ -7,13 +7,13 @@ import VPNavBarSearch from '@theme/VPNavBarSearch.vue'
 import VPNavBarSocialLinks from '@theme/VPNavBarSocialLinks.vue'
 import VPNavBarTitle from '@theme/VPNavBarTitle.vue'
 import VPNavBarTranslations from '@theme/VPNavBarTranslations.vue'
+import { useData } from '@theme/data'
+import { useSidebar } from '@theme/sidebar'
 import { useWindowScroll } from '@vueuse/core'
 import { ref, watchPostEffect } from 'vue'
-import { useData } from '../composables/data.js'
-import { useSidebar } from '../composables/sidebar.js'
 import type { Slot } from '../types.ts'
 
-defineProps<{
+const { isScreenOpen } = defineProps<{
   /**
    * Whether the screen is open
    */
@@ -180,8 +180,8 @@ watchPostEffect(() => {
 @media (min-width: 1440px) {
   .vp-navbar.has-sidebar .title {
     width: calc(
-      (100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) -
-        32px
+      (100% - (var(--vp-layout-max-width) - 64px)) / 2 +
+        var(--vp-sidebar-width) - 32px
     );
     padding-left: max(
       32px,

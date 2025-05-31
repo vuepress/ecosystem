@@ -2,7 +2,7 @@ import { startsWith } from '@vuepress/helper/client'
 import { watchImmediate } from '@vueuse/core'
 import type { Ref } from 'vue'
 import { onMounted, onUnmounted, ref } from 'vue'
-import { usePageData, useRouteLocale } from 'vuepress/client'
+import { useData } from 'vuepress/client'
 
 import { useSearchOptions } from '../helpers/index.js'
 import { createSearchWorker } from '../utils/index.js'
@@ -18,9 +18,8 @@ export const useSuggestions = (queries: Ref<string[]>): SuggestionsRef => {
   const suggestions = ref<string[]>([])
 
   if (__SLIMSEARCH_SUGGESTION__) {
+    const { page, routeLocale } = useData()
     const searchOptions = useSearchOptions()
-    const pageData = usePageData()
-    const routeLocale = useRouteLocale()
 
     onMounted(() => {
       const { suggest, terminate } = createSearchWorker()
@@ -33,15 +32,10 @@ export const useSuggestions = (queries: Ref<string[]>): SuggestionsRef => {
           ...options
         } = searchOptions.value
 
-        if (query)
+        if (query.length >= 3)
           suggest(query, routeLocale.value, options)
             .then((items) =>
-              suggestionsFilter(
-                items,
-                query,
-                routeLocale.value,
-                pageData.value,
-              ),
+              suggestionsFilter(items, query, routeLocale.value, page.value),
             )
             .then((items) => {
               suggestions.value = items.length

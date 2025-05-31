@@ -1,8 +1,6 @@
 import { defaultTheme } from '@vuepress/theme-classic'
 import { navbarEn, navbarZh, sidebarEn, sidebarZh } from './configs/index.js'
 
-const IS_PROD = process.env.NODE_ENV === 'production'
-
 export default defaultTheme({
   logo: '/images/hero.png',
   repo: 'vuepress/ecosystem',
@@ -41,6 +39,9 @@ export default defaultTheme({
       editLinkText: '在 GitHub 上编辑此页',
       lastUpdatedText: '上次更新',
       contributorsText: '贡献者',
+      // page nav
+      prev: '上一页',
+      next: '下一页',
       // custom containers
       tip: '提示',
       warning: '注意',
@@ -61,8 +62,21 @@ export default defaultTheme({
   },
 
   themePlugins: {
-    // only enable git plugin in production mode
-    git: IS_PROD,
+    copyCode: {
+      inline: true,
+    },
+    git: {
+      contributors: {
+        avatar: true,
+        info: [
+          {
+            username: 'Mister-Hope',
+            alias: ['Mr.Hope'],
+          },
+        ],
+      },
+      changelog: true,
+    },
     hint: {
       alert: true,
     },

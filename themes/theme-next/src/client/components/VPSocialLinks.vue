@@ -2,7 +2,7 @@
 import VPSocialLink from '@theme/VPSocialLink.vue'
 import type { SocialLink } from '../../shared/index.js'
 
-defineProps<{
+const { links } = defineProps<{
   /**
    * Social links
    */

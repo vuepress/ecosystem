@@ -1,28 +1,28 @@
 <script setup lang="ts">
-import { useData } from '../composables/data.js'
-import { useSidebar } from '../composables/sidebar.js'
+import { useData } from '@theme/data'
+import { useSidebar } from '@theme/sidebar'
 
-const { theme, frontmatter } = useData()
+const { themeLocale, frontmatter } = useData()
 const { hasSidebar } = useSidebar()
 </script>
 
 <template>
   <footer
-    v-if="theme.footer && frontmatter.footer !== false"
+    v-if="themeLocale.footer && frontmatter.footer !== false"
     vp-footer
     class="vp-footer"
     :class="{ 'has-sidebar': hasSidebar }"
   >
     <div class="container">
       <p
-        v-if="theme.footer.message"
+        v-if="themeLocale.footer.message"
         class="message"
-        v-html="theme.footer.message"
+        v-html="themeLocale.footer.message"
       ></p>
       <p
-        v-if="theme.footer.copyright"
+        v-if="themeLocale.footer.copyright"
         class="copyright"
-        v-html="theme.footer.copyright"
+        v-html="themeLocale.footer.copyright"
       ></p>
     </div>
   </footer>

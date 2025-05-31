@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import VPSwitchAppearance from '@theme/VPSwitchAppearance.vue'
-import { useData } from '../composables/data.js'
+import { useData } from '@theme/data'
 
-const { theme } = useData()
+const { themeLocale } = useData()
 </script>
 
 <template>
   <div
-    v-if="theme.appearance && theme.appearance !== 'force-dark'"
+    v-if="themeLocale.appearance && themeLocale.appearance !== 'force-dark'"
     class="vp-navbar-appearance"
   >
     <VPSwitchAppearance />

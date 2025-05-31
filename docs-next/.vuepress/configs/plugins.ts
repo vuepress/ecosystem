@@ -17,7 +17,6 @@ import { getDirname, path } from 'vuepress/utils'
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export const plugins = [
-  cachePlugin(),
   catalogPlugin(),
   commentPlugin({
     provider: 'Giscus',
@@ -104,4 +103,5 @@ export const plugins = [
       'white',
     ],
   }),
+  cachePlugin(),
 ]

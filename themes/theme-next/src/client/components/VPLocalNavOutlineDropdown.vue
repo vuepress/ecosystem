@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import VPDocOutlineItem from '@theme/VPDocOutlineItem.vue'
+import { useData } from '@theme/data'
+import type { MenuItem } from '@theme/outline'
+import { resolveTitle } from '@theme/outline'
 import { onKeyStroke } from '@vueuse/core'
 import { nextTick, ref, useTemplateRef, watch } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
-import { useData } from '../composables/data.js'
-import type { MenuItem } from '../composables/outline.js'
-import { resolveTitle } from '../composables/outline.js'
 
-const props = defineProps<{
+const { headers, navHeight } = defineProps<{
   /**
    * Outline headers
    */
@@ -18,7 +18,7 @@ const props = defineProps<{
   navHeight: number
 }>()
 
-const { theme } = useData()
+const { themeLocale } = useData()
 const open = ref(false)
 const vh = ref(0)
 const main = useTemplateRef<HTMLDivElement>('main')
@@ -48,7 +48,7 @@ onContentUpdated(() => {
 
 const toggle = (): void => {
   open.value = !open.value
-  vh.value = window.innerHeight + Math.min(window.scrollY - props.navHeight, 0)
+  vh.value = window.innerHeight + Math.min(window.scrollY - navHeight, 0)
 }
 
 const onItemClick = async (e: Event): Promise<void> => {
@@ -80,17 +80,17 @@ const scrollToTop = (): void => {
       :class="{ open }"
       @click="toggle"
     >
-      <span class="menu-text">{{ resolveTitle(theme) }}</span>
+      <span class="menu-text">{{ resolveTitle(themeLocale) }}</span>
       <span class="vpi-chevron-right icon" />
     </button>
     <button v-else type="button" @click="scrollToTop">
-      {{ theme.returnToTopLabel || 'Return to top' }}
+      {{ themeLocale.returnToTopLabel || 'Return to top' }}
     </button>
     <Transition name="flyout">
       <div v-if="open" ref="items" class="items" @click="onItemClick">
         <div class="header">
           <a class="top-link" href="#" @click="scrollToTop">
-            {{ theme.returnToTopLabel || 'Return to top' }}
+            {{ themeLocale.returnToTopLabel || 'Return to top' }}
           </a>
         </div>
         <div class="outline">

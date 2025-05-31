@@ -14,7 +14,7 @@ Add basic GFM support to VuePress with useful features.
 npm i -D @vuepress/plugin-markdown-ext@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
 
 export default {

@@ -15,4 +15,6 @@ div[class*='language-'] .line.highlighted {
   padding: 0 var(--code-padding-x);
 
   background-color: var(--code-c-highlight-bg);
+
+  transition: background-color var(--vp-t-color);
 }

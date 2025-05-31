@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import VPSidebarItem from '@theme/VPSidebarItem.vue'
+import { inBrowser } from '@theme/constants'
+import { useSidebar } from '@theme/sidebar'
 import { useScrollLock } from '@vueuse/core'
 import { onMounted, useTemplateRef, watch } from 'vue'
 import { useRoutePath } from 'vuepress/client'
-import { useSidebar } from '../composables/sidebar.js'
 import type { Slot } from '../types.js'
-import { inBrowser } from '../utils/index.js'
 
-const props = defineProps<{
+const { open } = defineProps<{
   /**
    * Whether the sidebar is open
    */
@@ -27,9 +27,9 @@ const sidebar = useTemplateRef<HTMLElement | null>('sidebar')
 const isLocked = useScrollLock(inBrowser ? document.body : null)
 
 watch(
-  [props, sidebar],
+  [() => open, sidebar],
   () => {
-    if (props.open) {
+    if (open) {
       isLocked.value = true
       sidebar.value?.focus()
     } else isLocked.value = false

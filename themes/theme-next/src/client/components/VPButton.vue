@@ -35,27 +35,27 @@ interface Props {
    */
   rel?: string
 }
-const props = withDefaults(defineProps<Props>(), {
-  size: 'medium',
-  theme: 'brand',
-  href: undefined,
-  tag: undefined,
-  target: undefined,
-  rel: undefined,
-})
+const {
+  size = 'medium',
+  theme = 'brand',
+  href = undefined,
+  tag = undefined,
+  target = undefined,
+  rel = undefined,
+} = defineProps<Props>()
 
 const router = useRouter()
 
 const isExternal = computed(
-  () => (props.href && isLinkExternal(props.href)) || props.target === '_blank',
+  () => (href && isLinkExternal(href)) || target === '_blank',
 )
 
-const component = computed(() => (props.tag || props.href ? 'a' : 'button'))
+const component = computed(() => (tag || href ? 'a' : 'button'))
 
 const link = computed(() => {
-  if (!props.href) return undefined
-  if (isExternal.value) return props.href
-  return resolveRouteFullPath(props.href)
+  if (!href) return undefined
+  if (isExternal.value) return href
+  return resolveRouteFullPath(href)
 })
 
 const linkTo = (e: Event): void => {
@@ -72,8 +72,8 @@ const linkTo = (e: Event): void => {
     class="vp-button"
     :class="[size, theme]"
     :href="withBase(link || '')"
-    :target="props.target ?? (isExternal ? '_blank' : undefined)"
-    :rel="props.rel ?? (isExternal ? 'noreferrer' : undefined)"
+    :target="target ?? (isExternal ? '_blank' : undefined)"
+    :rel="rel ?? (isExternal ? 'noreferrer' : undefined)"
     @click="linkTo"
   >
     {{ text }}

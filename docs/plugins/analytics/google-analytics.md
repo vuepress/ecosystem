@@ -16,7 +16,7 @@ This plugin will import [gtag.js](https://developers.google.com/analytics/devgui
 npm i -D @vuepress/plugin-google-analytics@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 
 export default {
@@ -50,15 +50,15 @@ After using this plugin, the global `gtag()` function is available on the `windo
 
 - Example:
 
-```ts
-export default {
-  plugins: [
-    googleAnalyticsPlugin({
-      id: 'G-XXXXXXXXXX',
-    }),
-  ],
-}
-```
+  ```ts title=".vuepress/config.ts"
+  export default {
+    plugins: [
+      googleAnalyticsPlugin({
+        id: 'G-XXXXXXXXXX',
+      }),
+    ],
+  }
+  ```
 
 ### debug
 
@@ -70,13 +70,13 @@ export default {
 
 - Example:
 
-```ts
-export default {
-  plugins: [
-    googleAnalyticsPlugin({
-      id: 'G-XXXXXXXXXX',
-      debug: true,
-    }),
-  ],
-}
-```
+  ```ts title=".vuepress/config.ts"
+  export default {
+    plugins: [
+      googleAnalyticsPlugin({
+        id: 'G-XXXXXXXXXX',
+        debug: true,
+      }),
+    ],
+  }
+  ```

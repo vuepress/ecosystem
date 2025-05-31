@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.106](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.105...v2.0.0-rc.106) (2025-05-26)
+
+**Note:** Version bump only for package @vuepress/highlighter-helper
+
+# [2.0.0-rc.103](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.102...v2.0.0-rc.103) (2025-05-08)
+
+### Bug Fixes
+
+- fix code block related style ([#456](https://github.com/vuepress/ecosystem/issues/456)) ([e446824](https://github.com/vuepress/ecosystem/commit/e446824b64e4f5fab45d158fc8ba5c1d63093e32))
+- fix whitespace feature, close [#459](https://github.com/vuepress/ecosystem/issues/459) ([#462](https://github.com/vuepress/ecosystem/issues/462)) ([1ea93c1](https://github.com/vuepress/ecosystem/commit/1ea93c158aa6ce4e35951f4d4e70bef41aa9dd51))
+
+### Features
+
+- **highlighter-helper:** helper to inject icons for code-title-bar ([#458](https://github.com/vuepress/ecosystem/issues/458)) ([4569d42](https://github.com/vuepress/ecosystem/commit/4569d42430b96d27c62770d38b683c4475f767c7))
+
+# [2.0.0-rc.98](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.97...v2.0.0-rc.98) (2025-04-28)
+
+**Note:** Version bump only for package @vuepress/highlighter-helper
+
+# [2.0.0-rc.94](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.93...v2.0.0-rc.94) (2025-04-12)
+
+### Features
+
+- **highlighter-helper:** hide ext when title exists ([7458ff1](https://github.com/vuepress/ecosystem/commit/7458ff1cdfd8b1f2fb9dc3009d54ff208290054b))
+
+# [2.0.0-rc.90](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.89...v2.0.0-rc.90) (2025-03-28)
+
+**Note:** Version bump only for package @vuepress/highlighter-helper
+
+# [2.0.0-rc.85](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.84...v2.0.0-rc.85) (2025-03-17)
+
+**Note:** Version bump only for package @vuepress/highlighter-helper
+
+# [2.0.0-rc.83](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.82...v2.0.0-rc.83) (2025-03-11)
+
+**Note:** Version bump only for package @vuepress/highlighter-helper
+
+# [2.0.0-rc.81](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.80...v2.0.0-rc.81) (2025-03-04)
+
+### Bug Fixes
+
+- **highlighter-helper:** fix a11y issue ([a320057](https://github.com/vuepress/ecosystem/commit/a3200570d4396d209c5dde2e7d6e545fcb239d80))
+
+### Features
+
+- add `codeBlockTitle` option support for highlighter, close [#379](https://github.com/vuepress/ecosystem/issues/379) ([#386](https://github.com/vuepress/ecosystem/issues/386)) ([7535e36](https://github.com/vuepress/ecosystem/commit/7535e36a6289891a004445873c34d0a9531636f0))
+- improve rtl support ([#388](https://github.com/vuepress/ecosystem/issues/388)) ([c2a95d4](https://github.com/vuepress/ecosystem/commit/c2a95d4840571996fc9b5504a91dfbecaede4a71))
+
 # [2.0.0-rc.79](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.78...v2.0.0-rc.79) (2025-02-23)
 
 ### Features

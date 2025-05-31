@@ -14,9 +14,7 @@ interface Props {
   member: TeamMember
 }
 
-withDefaults(defineProps<Props>(), {
-  size: 'medium',
-})
+const { member, size = 'medium' } = defineProps<Props>()
 </script>
 
 <template>

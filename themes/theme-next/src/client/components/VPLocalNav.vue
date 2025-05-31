@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import VPLocalNavOutlineDropdown from '@theme/VPLocalNavOutlineDropdown.vue'
+import { useData } from '@theme/data'
+import { useLocalNav } from '@theme/local-nav'
+import { useSidebar } from '@theme/sidebar'
 import { useWindowScroll } from '@vueuse/core'
 import { computed, onMounted, ref } from 'vue'
-import { useData } from '../composables/data.js'
-import { useLocalNav } from '../composables/local-nav.js'
-import { useSidebar } from '../composables/sidebar.js'
 
-defineProps<{
+const { open } = defineProps<{
   /**
    * whether the local nav is open
    */
@@ -17,7 +17,7 @@ defineEmits<{
   openMenu: []
 }>()
 
-const { theme, frontmatter } = useData()
+const { themeLocale, frontmatter } = useData()
 const { hasSidebar } = useSidebar()
 const { headers, hasLocalNav } = useLocalNav()
 const { y } = useWindowScroll()
@@ -64,7 +64,7 @@ const classes = computed(() => ({
       >
         <span class="vpi-align-left menu-icon"></span>
         <span class="menu-text">
-          {{ theme.sidebarMenuLabel || 'Menu' }}
+          {{ themeLocale.sidebarMenuLabel || 'Menu' }}
         </span>
       </button>
 

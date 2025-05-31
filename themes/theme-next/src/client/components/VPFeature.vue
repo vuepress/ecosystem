@@ -3,7 +3,8 @@ import VPImage from '@theme/VPImage.vue'
 import VPLink from '@theme/VPLink.vue'
 import type { Feature } from '../../shared/index.js'
 
-defineProps<Feature>()
+const { icon, title, details, link, rel, target, linkText } =
+  defineProps<Feature>()
 </script>
 
 <template>

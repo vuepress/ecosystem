@@ -37,12 +37,12 @@
     "@vuepress/plugin-search": "workspace:*",
     "@vuepress/plugin-shiki": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
-    "@vueuse/core": "^12.7.0",
+    "@vueuse/core": "catalog:",
     "katex": "0.16.21",
     "mathjax-full": "3.2.2",
-    "sass-embedded": "^1.85.0",
-    "sass-loader": "^16.0.5",
-    "vue": "^3.5.13",
+    "sass-embedded": "catalog:",
+    "sass-loader": "catalog:",
+    "vue": "catalog:",
     "vuepress": "catalog:"
   }
 }

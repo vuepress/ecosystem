@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Slot } from '../types.js'
 
-interface Props {
+const { type = 'tip', text = '' } = defineProps<{
   /**
    * Badge text
    */
@@ -10,11 +10,7 @@ interface Props {
    * Badge type
    */
   type?: 'danger' | 'info' | 'tip' | 'warning'
-}
-withDefaults(defineProps<Props>(), {
-  type: 'tip',
-  text: '',
-})
+}>()
 
 defineSlots<{ default?: Slot }>()
 </script>

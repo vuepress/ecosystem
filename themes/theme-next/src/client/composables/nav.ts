@@ -1,13 +1,13 @@
+import { useData } from '@theme/data'
+import { getNavLink, normalizeLink } from '@theme/getNavLink'
 import type { Ref } from 'vue'
 import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
-import type { NavItem } from '../../shared/index.js'
 import type {
+  NavItem,
   ResolvedNavItem,
   ResolvedNavItemWithLink,
-} from '../../shared/resolved/navbar.js'
-import { getNavLink, normalizeLink } from '../utils/index.js'
-import { useData } from './data.js'
+} from '../../shared/index.js'
 
 const resolveNavbar = (navbar: NavItem[], _prefix = ''): ResolvedNavItem[] => {
   const resolved: ResolvedNavItem[] = []
@@ -35,9 +35,9 @@ const resolveNavbar = (navbar: NavItem[], _prefix = ''): ResolvedNavItem[] => {
 }
 
 export const useNavbarData = (): Ref<ResolvedNavItem[]> => {
-  const { theme } = useData()
+  const { themeLocale } = useData()
 
-  return computed(() => resolveNavbar(theme.value.navbar ?? []))
+  return computed(() => resolveNavbar(themeLocale.value.navbar ?? []))
 }
 
 export interface UseNavReturn {

@@ -1,16 +1,12 @@
 <script setup lang="ts">
 import VPDocOutlineItem from '@theme/VPDocOutlineItem.vue'
+import { useData } from '@theme/data'
+import type { MenuItem } from '@theme/outline'
+import { getHeaders, resolveTitle, useActiveAnchor } from '@theme/outline'
 import { shallowRef, useTemplateRef } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
-import { useData } from '../composables/data.js'
-import type { MenuItem } from '../composables/outline.js'
-import {
-  getHeaders,
-  resolveTitle,
-  useActiveAnchor,
-} from '../composables/outline.js'
 
-const { frontmatter, theme } = useData()
+const { frontmatter, themeLocale } = useData()
 
 const headers = shallowRef<MenuItem[]>([])
 
@@ -18,7 +14,7 @@ onContentUpdated((reason) => {
   headers.value =
     reason === 'beforeUnmount'
       ? []
-      : getHeaders(frontmatter.value.outline ?? theme.value.outline)
+      : getHeaders(frontmatter.value.outline ?? themeLocale.value.outline)
 })
 
 const container = useTemplateRef<HTMLElement>('docOutline')
@@ -44,7 +40,7 @@ useActiveAnchor(container, marker)
         class="outline-title"
         role="heading"
       >
-        {{ resolveTitle(theme) }}
+        {{ resolveTitle(themeLocale) }}
       </div>
 
       <VPDocOutlineItem :headers="headers" :root="true" />

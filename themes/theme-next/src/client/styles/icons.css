@@ -1,20 +1,20 @@
 [class^='vpi-'],
 [class*=' vpi-'],
 .vp-icon {
+  display: inline-block;
+  vertical-align: middle;
   width: 1em;
   height: 1em;
 }
 
 [class^='vpi-'].bg,
-[class*=' vpi-'].bg,
-.vp-icon.bg {
+[class*=' vpi-'].bg {
   background-color: transparent;
   background-size: 100% 100%;
 }
 
 [class^='vpi-']:not(.bg),
-[class*=' vpi-']:not(.bg),
-.vp-icon:not(.bg) {
+[class*=' vpi-']:not(.bg) {
   background-color: currentcolor;
   color: inherit;
   mask: var(--icon) no-repeat;

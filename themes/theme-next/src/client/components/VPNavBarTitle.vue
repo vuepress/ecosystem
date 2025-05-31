@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import VPImage from '@theme/VPImage.vue'
 import VPLink from '@theme/VPLink.vue'
+import { useData } from '@theme/data'
+import { useLangs } from '@theme/langs'
+import { useSidebar } from '@theme/sidebar'
 import { computed } from 'vue'
 import { useSiteLocaleData } from 'vuepress/client'
-import { useData } from '../composables/data.js'
-import { useLangs } from '../composables/langs.js'
-import { useSidebar } from '../composables/sidebar.js'
 import type { Slot } from '../types.js'
 
 defineSlots<{
@@ -14,26 +14,26 @@ defineSlots<{
 }>()
 
 const site = useSiteLocaleData()
-const { theme } = useData()
+const { themeLocale } = useData()
 const { hasSidebar } = useSidebar()
 const { currentLang } = useLangs()
 
 const link = computed(() =>
-  typeof theme.value.logoLink === 'string'
-    ? theme.value.logoLink
-    : theme.value.logoLink?.link,
+  typeof themeLocale.value.logoLink === 'string'
+    ? themeLocale.value.logoLink
+    : themeLocale.value.logoLink?.link,
 )
 
 const rel = computed(() =>
-  typeof theme.value.logoLink === 'string'
+  typeof themeLocale.value.logoLink === 'string'
     ? undefined
-    : theme.value.logoLink?.rel,
+    : themeLocale.value.logoLink?.rel,
 )
 
 const target = computed(() =>
-  typeof theme.value.logoLink === 'string'
+  typeof themeLocale.value.logoLink === 'string'
     ? undefined
-    : theme.value.logoLink?.target,
+    : themeLocale.value.logoLink?.target,
 )
 </script>
 
@@ -46,11 +46,11 @@ const target = computed(() =>
       :target="target"
     >
       <slot name="nav-bar-title-before" />
-      <VPImage v-if="theme.logo" class="logo" :image="theme.logo" />
-      <template v-if="theme.siteTitle">
-        <span>{{ theme.siteTitle }}</span>
+      <VPImage v-if="themeLocale.logo" class="logo" :image="themeLocale.logo" />
+      <template v-if="themeLocale.siteTitle">
+        <span>{{ themeLocale.siteTitle }}</span>
       </template>
-      <template v-else-if="theme.siteTitle === undefined">
+      <template v-else-if="themeLocale.siteTitle === undefined">
         <span>{{ site.title }}</span>
       </template>
       <slot name="nav-bar-title-after" />

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { MenuItem } from '../composables/outline.js'
 
-defineProps<{
+const { headers, root = false } = defineProps<{
   /**
    * Outline headers
    */

@@ -5,7 +5,7 @@ import {
   isLinkWithProtocol,
 } from '@vuepress/helper/client'
 import { resolveRoute } from 'vuepress/client'
-import type { ResolvedNavItemWithLink } from '../../shared/resolved/navbar.js'
+import type { ResolvedNavItemWithLink } from '../../shared/index.js'
 
 export const getNavLink = (filepath: string): ResolvedNavItemWithLink => {
   const { notFound, path, meta } = resolveRoute<{ title?: string }>(filepath)

@@ -3,7 +3,7 @@
 
   margin: 0.75rem 0 -0.75rem;
   padding: 0;
-  border-radius: 6px 6px 0 0;
+  border-radius: var(--code-border-radius) var(--code-border-radius) 0 0;
 
   background: var(--code-tabs-c-bg);
   list-style: none;
@@ -15,11 +15,6 @@
   @media print {
     display: none;
   }
-
-  @media (max-width: 419px) {
-    margin-inline: -1.5rem;
-    border-radius: 0;
-  }
 }
 
 .vp-code-tab-nav {
@@ -29,7 +24,7 @@
   margin: 0;
   padding: 6px 12px;
   border-width: 0;
-  border-radius: 6px 6px 0 0;
+  border-radius: var(--code-border-radius) var(--code-border-radius) 0 0;
 
   background: transparent;
   color: var(--code-tabs-c-text);
@@ -56,8 +51,8 @@
     bottom: 0;
     z-index: 1;
 
-    width: 6px;
-    height: 6px;
+    width: var(--code-border-radius);
+    height: var(--code-border-radius);
   }
 
   &::before {
@@ -114,35 +109,6 @@
 
   &.active {
     display: block;
-  }
-
-  div[class*='language-'] {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-
-    @media (max-width: 419px) {
-      margin: 0.75rem -1.5rem;
-      border-radius: 0;
-    }
-
-    &.line-numbers-mode::after {
-      border-top-left-radius: 0;
-    }
-
-    pre {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-
-      @media (max-width: 419px) {
-        border-radius: 0;
-      }
-    }
-
-    code {
-      @media print {
-        white-space: pre-wrap;
-      }
-    }
   }
 }
 

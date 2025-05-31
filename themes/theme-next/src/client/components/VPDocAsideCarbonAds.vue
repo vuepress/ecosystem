@@ -1,18 +1,18 @@
 <script setup lang="ts">
+import { useData } from '@theme/data'
 import { defineAsyncComponent } from 'vue'
 import type { CarbonAdsOptions } from '../../shared/index.js'
-import { useData } from '../composables/data.js'
 
-defineProps<{
+const { carbonAds } = defineProps<{
   /**
    * Carbon Ads options
    */
   carbonAds: CarbonAdsOptions
 }>()
 
-const { theme } = useData()
+const { themeLocale } = useData()
 
-const VPCarbonAds = theme.value.carbonAds
+const VPCarbonAds = themeLocale.value.carbonAds
   ? defineAsyncComponent(() => import('@theme/VPCarbonAds.vue'))
   : () => null
 </script>

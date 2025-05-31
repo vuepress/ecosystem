@@ -14,7 +14,7 @@ Install `@vuepress/theme-default` :
 npm install @vuepress/theme-default@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { defaultTheme } from '@vuepress/theme-default'
 
 export default {

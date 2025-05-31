@@ -16,7 +16,7 @@ icon: arrow-up-to-line
 npm i -D @vuepress/plugin-back-to-top@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
 
 export default {

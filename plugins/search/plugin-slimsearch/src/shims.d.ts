@@ -17,3 +17,7 @@ declare module '@temp/slimsearch/index.js' {
 declare module '@temp/slimsearch/store.js' {
   export const store: string[]
 }
+
+declare module '@temp/slimsearch/worker-options.js' {
+  export const sortStrategy: 'max' | 'total'
+}

@@ -1,5 +1,6 @@
 import { useData } from '@theme/useData'
 import { useRoutePaths } from '@vuepress/helper/client'
+import { useMounted } from '@vueuse/core'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import { useRoute } from 'vuepress/client'
@@ -12,6 +13,8 @@ export const useNavbarSelectLanguage = (): ComputedRef<NavbarItem[]> => {
   const route = useRoute()
   const routePaths = useRoutePaths()
   const { routeLocale, site, siteLocale, theme, themeLocale } = useData()
+
+  const isMounted = useMounted()
 
   return computed<NavbarItem[]>(() => {
     const localePaths = Object.keys(site.value.locales)
@@ -43,7 +46,7 @@ export const useNavbarSelectLanguage = (): ComputedRef<NavbarItem[]> => {
           return {
             text,
             activeMatch: '.',
-            link: route.fullPath,
+            link: isMounted.value ? currentFullPath : currentPath,
           }
         }
 
@@ -59,7 +62,9 @@ export const useNavbarSelectLanguage = (): ComputedRef<NavbarItem[]> => {
           text,
           // try to keep current hash and params across languages
           link: routePaths.value.some((item) => item === targetLocalePage)
-            ? currentFullPath.replace(currentPath, targetLocalePage)
+            ? isMounted.value
+              ? currentFullPath.replace(currentPath, targetLocalePage)
+              : targetLocalePage
             : (targetThemeLocale.home ?? targetLocalePath),
         }
       }),

@@ -6,10 +6,11 @@ import VPLocalNav from '@theme/VPLocalNav.vue'
 import VPNav from '@theme/VPNav.vue'
 import VPSidebar from '@theme/VPSidebar.vue'
 import VPSkipLink from '@theme/VPSkipLink.vue'
+import { useData } from '@theme/data'
+import { useSidebar } from '@theme/sidebar'
 import { useEventListener } from '@vueuse/core'
 import { computed, provide, useSlots, watch, watchEffect } from 'vue'
 import { useRoutePath } from 'vuepress/client'
-import { useData, useSidebar } from '../composables/index.js'
 import type { Slot } from '../types.js'
 
 defineSlots<{

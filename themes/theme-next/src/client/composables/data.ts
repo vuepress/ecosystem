@@ -1,3 +1,4 @@
+import { useThemeLocaleData } from '@theme/theme-data'
 import type { ThemeLocaleDataRef } from '@vuepress/plugin-theme-data/client'
 import type { PageDataRef, PageFrontmatterRef } from 'vuepress/client'
 import { usePageData, usePageFrontmatter } from 'vuepress/client'
@@ -6,16 +7,15 @@ import type {
   DefaultThemeNormalPageFrontmatter,
   DefaultThemePageData,
 } from '../../shared/index.js'
-import { useThemeLocaleData } from './theme-data.js'
 
 export const useData = (): {
   page: PageDataRef<DefaultThemePageData>
   frontmatter: PageFrontmatterRef<DefaultThemeNormalPageFrontmatter>
-  theme: ThemeLocaleDataRef<DefaultThemeData>
+  themeLocale: ThemeLocaleDataRef<DefaultThemeData>
 } => {
   const page = usePageData<DefaultThemePageData>()
   const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
-  const theme = useThemeLocaleData()
+  const themeLocale = useThemeLocaleData()
 
-  return { page, frontmatter, theme }
+  return { page, frontmatter, themeLocale }
 }

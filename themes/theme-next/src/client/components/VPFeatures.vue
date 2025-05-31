@@ -3,7 +3,7 @@ import VPFeature from '@theme/VPFeature.vue'
 import { computed } from 'vue'
 import type { Feature } from '../../shared/index.js'
 
-const props = defineProps<{
+const { features } = defineProps<{
   /**
    * The list of features
    */
@@ -11,7 +11,7 @@ const props = defineProps<{
 }>()
 
 const grid = computed(() => {
-  const { length } = props.features
+  const { length } = features
 
   if (!length) {
     return ''

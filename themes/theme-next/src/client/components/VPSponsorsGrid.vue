@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import type { GridSize } from '@theme/sponsor-grid'
+import { useSponsorsGrid } from '@theme/sponsor-grid'
 import { useTemplateRef } from 'vue'
 import type { Sponsor } from '../../shared/index.js'
-import type { GridSize } from '../composables/sponsor-grid.js'
-import { useSponsorsGrid } from '../composables/sponsor-grid.js'
 
 interface Props {
   /**
@@ -14,14 +14,12 @@ interface Props {
    */
   data: Sponsor[]
 }
-const props = withDefaults(defineProps<Props>(), {
-  size: 'medium',
-})
+const { size = 'medium', data } = defineProps<Props>()
 
 const el = useTemplateRef('sponsorGrid')
 
 // eslint-disable-next-line vue/no-setup-props-reactivity-loss
-useSponsorsGrid({ el, size: props.size })
+useSponsorsGrid({ el, size })
 </script>
 
 <template>

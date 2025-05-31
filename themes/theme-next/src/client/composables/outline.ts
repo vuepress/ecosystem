@@ -4,12 +4,13 @@
  *         but VuePress directly globally configures them in Markdown, which leads to conflicts.
  *         To achieve page-level configuration, the solution of parsing the DOM was chosen.
  */
+import { useAside } from '@theme/aside'
+import { useData } from '@theme/data'
+import { getScrollOffset } from '@theme/getScrollOffset'
+import { throttleAndDebounce } from '@theme/throttleAndDebounce'
 import type { ShallowRef } from 'vue'
 import { onMounted, onUnmounted, onUpdated } from 'vue'
 import type { DefaultThemeLocaleData } from '../../shared/index.js'
-import { getScrollOffset, throttleAndDebounce } from '../utils/index.js'
-import { useAside } from './aside.js'
-import { useData } from './data.js'
 
 export interface Header {
   /**
@@ -117,7 +118,7 @@ export const resolveHeaders = (
       for (let j = i - 1; j >= 0; j--) {
         const prev = headers[j]
         if (prev.level < cur.level) {
-          if (!prev.children) prev.children = []
+          prev.children ??= []
           prev.children.push(cur)
 
           continue outer
@@ -171,7 +172,7 @@ export const useActiveAnchor = (
   marker: Readonly<ShallowRef<HTMLElement | null>>,
 ): void => {
   const { isAsideEnabled } = useAside()
-  const { theme } = useData()
+  const { themeLocale } = useData()
 
   let prevActiveLink: HTMLAnchorElement | null = null
 
@@ -240,7 +241,7 @@ export const useActiveAnchor = (
     // find the last header above the top of viewport
     let activeLink: string | null = null
     for (const { link, top } of headers) {
-      if (top > scrollY + getScrollOffset(theme.value.scrollOffset) + 4) {
+      if (top > scrollY + getScrollOffset(themeLocale.value.scrollOffset) + 4) {
         break
       }
       activeLink = link

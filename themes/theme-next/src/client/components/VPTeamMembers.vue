@@ -14,11 +14,9 @@ interface Props {
   members: TeamMember[]
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  size: 'medium',
-})
+const { size = 'medium', members } = defineProps<Props>()
 
-const classes = computed(() => [props.size, `count-${props.members.length}`])
+const classes = computed(() => [size, `count-${members.length}`])
 </script>
 
 <template>

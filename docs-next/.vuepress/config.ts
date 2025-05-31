@@ -9,6 +9,21 @@ import { path } from 'vuepress/utils'
 import { head, plugins } from './configs/index.js'
 import theme from './theme.js'
 
+const resolveAlias = (
+  dir: string,
+  filenames: string[],
+): Record<string, string> => {
+  const alias: Record<string, string> = {}
+  filenames.forEach((filename) => {
+    alias[`@theme/${path.basename(filename, '.ts')}`] = path.resolve(
+      __dirname,
+      dir,
+      filename,
+    )
+  })
+  return alias
+}
+
 export default defineUserConfig({
   // set site base to default value
   base: (process.env.BASE as '/' | `/${string}/` | undefined) || '/',
@@ -64,30 +79,21 @@ export default defineUserConfig({
   pagePatterns: ['**/*.md', '!**/*.snippet.md', '!.vuepress', '!node_modules'],
 
   alias: {
-    // '@theme/VPAutoLink.vue': path.resolve(
-    //   __dirname,
-    //   './components/VPAutoLink.vue',
-    // ),
-    // '@theme/VPNavbarDropdown.vue': path.resolve(
-    //   __dirname,
-    //   './components/VPNavbarDropdown.vue',
-    // ),
-    // '@theme/VPSidebarItem.vue': path.resolve(
-    //   __dirname,
-    //   './components/VPSidebarItem.vue',
-    // ),
-    // '@theme/useNavbarRepo': path.resolve(
-    //   __dirname,
-    //   './composables/useNavbarRepo.ts',
-    // ),
-    // '@theme/useNavbarSelectLanguage': path.resolve(
-    //   __dirname,
-    //   './composables/useNavbarSelectLanguage.ts',
-    // ),
-    // '@theme/resolveAutoLink': path.resolve(
-    //   __dirname,
-    //   './utils/resolveAutoLink.ts',
-    // ),
+    ...resolveAlias('./components', [
+      'VPFlyout.vue',
+      'VPMenu.vue',
+      'VPMenuGroup.vue',
+      'VPMenuLink.vue',
+      'VPNavBarMenuGroup.vue',
+      'VPNavBarMenuLink.vue',
+      'VPNavScreenMenu.vue',
+      'VPNavScreenMenuGroup.vue',
+      'VPNavScreenMenuGroupLink.vue',
+      'VPNavScreenMenuGroupSection.vue',
+      'VPNavScreenMenuLink.vue',
+      'VPSidebarItem.vue',
+    ]),
+    ...resolveAlias('./utils', ['getNavLink.ts']),
   },
 
   extendsPage: (page: Page<Partial<DefaultThemePageData>>) => {

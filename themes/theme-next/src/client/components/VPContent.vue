@@ -2,8 +2,8 @@
 import VPDoc from '@theme/VPDoc.vue'
 import VPHome from '@theme/VPHome.vue'
 import VPPage from '@theme/VPPage.vue'
-import { useData } from '../composables/data.js'
-import { useSidebar } from '../composables/sidebar.js'
+import { useData } from '@theme/data'
+import { useSidebar } from '@theme/sidebar'
 import type { Slot } from '../types.js'
 
 defineSlots<{

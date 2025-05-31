@@ -5,7 +5,11 @@
     "outDir": "./lib",
     "baseUrl": ".",
     "paths": {
-      "@theme/*": ["./src/client/components/*", "./src/client/utils/*.js"]
+      "@theme/*": [
+        "./src/client/components/*",
+        "./src/client/composables/*",
+        "./src/client/utils/*"
+      ]
     },
     "types": ["vuepress/client-types", "vite/client", "webpack-env"]
   },
@@ -14,11 +18,12 @@
     {
       "path": "../../plugins/development/plugin-active-header-links/tsconfig.build.json"
     },
-    { "path": "../../plugins/development/plugin-git/tsconfig.build.json" },
+    {
+      "path": "../../plugins/development/plugin-git/tsconfig.build.json"
+    },
     {
       "path": "../../plugins/development/plugin-theme-data/tsconfig.build.json"
     },
-
     {
       "path": "../../plugins/features/plugin-copy-code/tsconfig.build.json"
     },
@@ -28,16 +33,20 @@
     {
       "path": "../../plugins/features/plugin-nprogress/tsconfig.build.json"
     },
-
     {
       "path": "../../plugins/markdown/plugin-links-check/tsconfig.build.json"
     },
     {
       "path": "../../plugins/markdown/plugin-shiki/tsconfig.build.json"
     },
-
-    { "path": "../../plugins/seo/plugin-seo/tsconfig.build.json" },
-    { "path": "../../plugins/seo/plugin-sitemap/tsconfig.build.json" },
-    { "path": "../../tools/theme-helper/tsconfig.build.json" }
+    {
+      "path": "../../plugins/seo/plugin-seo/tsconfig.build.json"
+    },
+    {
+      "path": "../../plugins/seo/plugin-sitemap/tsconfig.build.json"
+    },
+    {
+      "path": "../../tools/theme-helper/tsconfig.build.json"
+    }
   ]
 }

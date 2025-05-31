@@ -1,7 +1,7 @@
+import { useThemeData } from '@theme/theme-data'
 import type { ComputedRef, Ref } from 'vue'
 import { computed } from 'vue'
 import { useRoute, useRouteLocale, useSiteData } from 'vuepress/client'
-import { useThemeData } from './theme-data.js'
 
 export const useLangs = ({ removeCurrent = true } = {}): {
   currentLang: Ref<{ label: string; link: string }>

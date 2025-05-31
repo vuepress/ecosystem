@@ -1,10 +1,22 @@
 <script setup lang="ts">
+import { useData } from '@theme/data'
 import { isLinkExternal } from '@vuepress/helper/client'
 import { computed } from 'vue'
-import { resolveRouteFullPath, useRouter, withBase } from 'vuepress/client'
+import {
+  resolveRouteFullPath,
+  useRoute,
+  useRouter,
+  withBase,
+} from 'vuepress/client'
 import type { Slot } from '../types.js'
 
-const props = defineProps<{
+const {
+  tag = undefined,
+  href = undefined,
+  noIcon = false,
+  target = '',
+  rel = '',
+} = defineProps<{
   /**
    * element tag
    */
@@ -30,41 +42,56 @@ const props = defineProps<{
 defineSlots<{ default?: Slot }>()
 
 const router = useRouter()
+const route = useRoute()
+const { page } = useData()
 
-const tag = computed(() => props.tag ?? (props.href ? 'a' : 'span'))
+const tagName = computed(() => tag ?? (href ? 'a' : 'span'))
 
-const isExternal = computed(
-  () => (props.href && isLinkExternal(props.href)) || props.target === '_blank',
-)
+const isExternal = computed(() => {
+  if (!href) return false
+  if (target === '_blank' || isLinkExternal(href)) return true
+  const filename = href.split(/[#?]/)[0]?.split('/').pop() || ''
+  if (filename === '' || filename.endsWith('.html') || filename.endsWith('.md'))
+    return false
+  return filename.includes('.')
+})
+
 const link = computed(() => {
-  if (!props.href) return undefined
-  if (isExternal.value) return props.href
-  return resolveRouteFullPath(props.href)
+  if (!href) return undefined
+  if (isExternal.value) return href
+  const currentPath = page.value.filePathRelative
+    ? `/${page.value.filePathRelative}`
+    : undefined
+  const path = resolveRouteFullPath(href, currentPath)
+  if (path.includes('#')) {
+    if (path.slice(0, path.indexOf('#')) === route.path) {
+      return path.slice(path.indexOf('#'))
+    }
+  }
+  return path
 })
 
 const linkTo = (e: Event): void => {
-  if (!isExternal.value) {
+  if (!isExternal.value && link.value) {
     e.preventDefault()
-    if (link.value) {
-      router.push(link.value)
-    }
+    router.push(link.value)
   }
 }
 </script>
 
 <template>
   <Component
-    :is="tag"
+    :is="tagName"
     class="vp-link"
     :class="{
       'link': link,
       'vp-external-link-icon': isExternal,
       'no-icon': noIcon,
     }"
-    :href="withBase(link || '')"
+    :href="link ? withBase(link) : undefined"
     :target="target ?? (isExternal ? '_blank' : undefined)"
     :rel="rel ?? (isExternal ? 'noopener noreferrer' : undefined)"
-    @click="linkTo"
+    @click="linkTo($event)"
   >
     <slot />
   </Component>

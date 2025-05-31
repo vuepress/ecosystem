@@ -1,7 +1,7 @@
 {
   "name": "@vuepress/theme-classic",
-  "version": "2.0.0-rc.79",
-  "description": "Classic theme of VuePress",
+  "version": "2.0.0-rc.106",
+  "description": "Default theme of VuePress",
   "keywords": [
     "vuepress-theme",
     "vuepress",
@@ -19,6 +19,11 @@
   },
   "license": "MIT",
   "author": "meteorlxy",
+  "sideEffects": [
+    "./lib/client/components/**/*.vue",
+    "./lib/client/layouts/*.vue",
+    "./lib/client/styles/*.scss"
+  ],
   "type": "module",
   "exports": {
     ".": "./lib/node/index.js",
@@ -44,6 +49,7 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
+    "@vuepress/theme-helper": "workspace:*",
     "@vuepress/plugin-active-header-links": "workspace:*",
     "@vuepress/plugin-back-to-top": "workspace:*",
     "@vuepress/plugin-copy-code": "workspace:*",
@@ -58,14 +64,13 @@
     "@vuepress/plugin-seo": "workspace:*",
     "@vuepress/plugin-sitemap": "workspace:*",
     "@vuepress/plugin-theme-data": "workspace:*",
-    "@vuepress/theme-helper": "workspace:*",
-    "@vueuse/core": "^12.7.0",
-    "vue": "^3.5.13"
+    "@vueuse/core": "catalog:",
+    "vue": "catalog:"
   },
   "peerDependencies": {
-    "sass": "^1.85.0",
-    "sass-embedded": "^1.85.0",
-    "sass-loader": "^16.0.5",
+    "sass": "catalog:",
+    "sass-embedded": "catalog:",
+    "sass-loader": "catalog:",
     "vuepress": "catalog:"
   },
   "peerDependenciesMeta": {

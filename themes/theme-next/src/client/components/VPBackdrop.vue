@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{
+const { show } = defineProps<{
   /**
    * Whether the backdrop is shown
    */

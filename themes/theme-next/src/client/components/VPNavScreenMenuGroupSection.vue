@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import VPNavScreenMenuGroupLink from '@theme/VPNavScreenMenuGroupLink.vue'
-import type { ResolvedNavItemWithLink } from '../../shared/resolved/navbar.js'
+import type { ResolvedNavItemWithLink } from '../../shared/index.js'
 
-defineProps<{
+const { text = '', items } = defineProps<{
   /**
    * Group text
    */
@@ -37,6 +37,6 @@ defineProps<{
   font-size: 13px;
   line-height: 32px;
 
-  transition: color 0.25s;
+  transition: color var(--vp-t-color);
 }
 </style>

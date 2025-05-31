@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import VPSocialLinks from '@theme/VPSocialLinks.vue'
-import { useData } from '../composables/data.js'
+import { useData } from '@theme/data'
 
-const { theme } = useData()
+const { themeLocale } = useData()
 </script>
 
 <template>
   <VPSocialLinks
-    v-if="theme.socialLinks"
+    v-if="themeLocale.socialLinks"
     class="vp-nav-screen-social-links"
-    :links="theme.socialLinks"
+    :links="themeLocale.socialLinks"
   />
 </template>

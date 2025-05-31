@@ -68,22 +68,73 @@ interface ImageMarkOptions {
 
 ### Image Size
 
-You can use `=widthxheight` to specify the image size when setting `size: true` in plugin options.
+When you set `size: true` in plugin options, you can append `=widthxheight` to image alt text with spaces as separator.
+
+Both `width` and `height` should be numbers as pixels and are optional.
+
+```md
+![Alt =200x300](/example.png)
+![Alt =200x](/example.jpg 'Title')
+![Alt =x300](/example.bmp)
+```
+
+Renders as ↓
+
+```html
+<img src="/example.png" alt="Alt" width="200" height="300" />
+<img src="/example.jpg" alt="Alt" title="Title" width="200" />
+<img src="/example.bmp" alt="Alt" height="300" />
+```
+
+#### Obsidian Syntax
+
+When you set `obsidianSize: true` in plugin options, you can append `widthxheight` after image alt text and use `|` to separate.
+
+Both `width` and `height` should be numbers as pixels and are required. Setting one of them with `0` to scale by ratio with the other.
+
+```md
+![Alt|200x200](/example.png)
+![Alt|200x0](/example.jpg)
+![Alt|0x300](/example.bmp)
+```
+
+Renders as ↓
+
+```html
+<img src="/example.png" alt="Alt" width="200" height="300" />
+<img src="/example.jpg" alt="Alt" width="200" />
+<img src="/example.bmp" alt="Alt" height="300" />
+```
+
+#### Legacy Syntax (Deprecated)
+
+::: warning This may cause rendering issues on platforms like GitHub.
+:::
+
+When you set `legacySize: true` in plugin options, you can append `=widthxheight` at the end of image link section with spaces as separator.
+
+Both `width` and `height` should be numbers as pixels and are optional.
 
 ```md
 ![Alt](/example.png =200x300)
-
-![Alt](/example.jpg "Image title" =200x)
+![Alt](/example.jpg "Title" =200x)
 ![Alt](/example.bmp =x300)
 ```
 
-The above Markdown will be parsed as:
+Renders as ↓
 
 ```html
 <img src="/example.png" width="200" height="300" />
-<img src="/example.jpg" title="Image title" width="200" />
+<img src="/example.jpg" title="TTitle" width="200" />
 <img src="/example.bmp" height="300" />
 ```
+
+::: tip Choosing between 3 Grammars
+
+- The legacy grammar breaks image rendering in environments that don't support it (e.g.: GitHub)
+- Both the new grammar and the Obsidian grammar are compatible with the Markdown standard, but new grammar is more natural.
+
+:::
 
 ### Figure Display
 
@@ -143,13 +194,17 @@ If the image is standalone in a line, wrapped or not wrapped by link, it will be
 ### size
 
 - Type: `boolean`
-- Details:
-  Whether enable image size support.
+- Details: Whether enable image size support.
 
 ### obsidianSize
 
 - Type: `boolean`
-- Details: Whether enable Obsidian image size support.
+- Details: Whether enable obsidian image size support.
+
+### legacySize
+
+- Type: `boolean`
+- Details: Whether enable legacy image size support.
 
 <script setup>
 import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'

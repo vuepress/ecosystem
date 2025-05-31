@@ -6,15 +6,8 @@ import {
   useThemeData,
   useThemeLocaleData,
 } from '@vuepress/plugin-theme-data/client'
-import type {
-  ClientData,
-  PageDataRef,
-  PageFrontmatterRef,
-  PageLangRef,
-  SiteDataRef,
-  SiteLocaleDataRef,
-} from 'vuepress/client'
-import { useClientData } from 'vuepress/client'
+import type { ClientData } from 'vuepress/client'
+import { useData as _useData } from 'vuepress/client'
 import type {
   DefaultThemeData,
   DefaultThemeNormalPageFrontmatter,
@@ -28,22 +21,22 @@ export interface Data<
   > = DefaultThemeNormalPageFrontmatter,
   PageData extends Record<string, unknown> = DefaultThemePageData,
 > extends Pick<
-    ClientData,
+    ClientData<PageFrontmatter, PageData>,
+    | 'frontmatter'
+    | 'head'
+    | 'headTitle'
+    | 'lang'
     | 'layouts'
+    | 'page'
     | 'pageComponent'
-    | 'pageHead'
-    | 'pageHeadTitle'
     | 'pageLayout'
     | 'redirects'
     | 'routeLocale'
     | 'routePath'
     | 'routes'
+    | 'site'
+    | 'siteLocale'
   > {
-  page: PageDataRef<PageData>
-  frontmatter: PageFrontmatterRef<PageFrontmatter>
-  lang: PageLangRef
-  site: SiteDataRef
-  siteLocale: SiteLocaleDataRef
   theme: ThemeDataRef<DefaultThemeData>
   themeLocale: ThemeLocaleDataRef<DefaultThemeData>
 }
@@ -54,24 +47,8 @@ export const useData = <
     unknown
   > = DefaultThemeNormalPageFrontmatter,
   PageData extends Record<string, unknown> = DefaultThemePageData,
->(): Data<PageFrontmatter, PageData> => {
-  const {
-    pageData,
-    pageFrontmatter,
-    pageLang,
-    siteData,
-    siteLocaleData,
-    ...rest
-  } = useClientData<PageFrontmatter, PageData>()
-
-  return {
-    ...rest,
-    page: pageData,
-    frontmatter: pageFrontmatter,
-    lang: pageLang,
-    site: siteData,
-    siteLocale: siteLocaleData,
-    theme: useThemeData<DefaultThemeData>(),
-    themeLocale: useThemeLocaleData<DefaultThemeData>(),
-  }
-}
+>(): Data<PageFrontmatter, PageData> => ({
+  ..._useData<PageFrontmatter, PageData>(),
+  theme: useThemeData<DefaultThemeData>(),
+  themeLocale: useThemeLocaleData<DefaultThemeData>(),
+})

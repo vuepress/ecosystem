@@ -26,7 +26,7 @@ export const seoPlugin =
       ...plugin,
 
       extendsPage: (page: ExtendPage): void => {
-        if (page.frontmatter.seo !== false)
+        if (page.frontmatter.seo ?? true)
           generateDescription(app, page, autoDescription)
       },
 

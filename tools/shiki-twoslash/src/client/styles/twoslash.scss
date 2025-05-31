@@ -98,7 +98,7 @@
 
 .twoslash-completion-list {
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
   gap: 4px;
 
   width: 240px;
@@ -331,7 +331,7 @@ $popper: v-popper;
 
   .twoslash-popup-docs-tags {
     display: flex;
-    flex-direction: column;
+    flex-flow: column;
     padding: 8px 12px !important;
 
     .twoslash-popup-docs-tag-name {

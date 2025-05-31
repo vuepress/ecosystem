@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import VPFadeSlideYTransition from '@theme/VPFadeSlideYTransition.vue'
 import VPHome from '@theme/VPHome.vue'
 import VPNavbar from '@theme/VPNavbar.vue'
 import VPPage from '@theme/VPPage.vue'
@@ -6,32 +7,29 @@ import VPSidebar from '@theme/VPSidebar.vue'
 import { useData } from '@theme/useData'
 import { useScrollPromise } from '@theme/useScrollPromise'
 import { useSidebarItems } from '@theme/useSidebarItems'
-import type { VNode } from 'vue'
+import type { Slot } from '@vuepress/helper/client'
 import { computed, ref } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
 
 defineSlots<{
-  'navbar'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'navbar-before'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'navbar-after'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'sidebar'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'sidebar-top'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'sidebar-bottom'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'page'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'page-top'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'page-bottom'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'page-content-top'?: (props: Record<never, never>) => VNode | VNode[] | null
-  'page-content-bottom'?: (
-    props: Record<never, never>,
-  ) => VNode | VNode[] | null
+  'navbar'?: Slot
+  'navbar-before'?: Slot
+  'navbar-after'?: Slot
+  'sidebar'?: Slot
+  'sidebar-top'?: Slot
+  'sidebar-bottom'?: Slot
+  'page'?: Slot
+  'page-top'?: Slot
+  'page-bottom'?: Slot
+  'page-content-top'?: Slot
+  'page-content-bottom'?: Slot
 }>()
 
 const { frontmatter, page, themeLocale } = useData()
 
 // navbar
 const shouldShowNavbar = computed(
-  () =>
-    frontmatter.value.navbar !== false && themeLocale.value.navbar !== false,
+  () => frontmatter.value.navbar ?? themeLocale.value.navbar ?? true,
 )
 
 // sidebar
@@ -120,16 +118,12 @@ const onBeforeLeave = scrollPromise.pending
     </slot>
 
     <slot name="page">
-      <VPHome v-if="frontmatter.home" />
-
-      <Transition
-        v-else
-        name="fade-slide-y"
-        mode="out-in"
+      <VPFadeSlideYTransition
         @before-enter="onBeforeEnter"
         @before-leave="onBeforeLeave"
       >
-        <VPPage :key="page.path">
+        <VPHome v-if="frontmatter.home" />
+        <VPPage v-else :key="page.path">
           <template #top>
             <slot name="page-top" />
           </template>
@@ -143,7 +137,7 @@ const onBeforeLeave = scrollPromise.pending
             <slot name="page-bottom" />
           </template>
         </VPPage>
-      </Transition>
+      </VPFadeSlideYTransition>
     </slot>
   </div>
 </template>
@@ -204,7 +198,7 @@ const onBeforeLeave = scrollPromise.pending
     }
 
     .vp-page {
-      padding-left: 0;
+      padding-inline-start: 0;
     }
   }
 
@@ -220,25 +214,6 @@ const onBeforeLeave = scrollPromise.pending
         display: block;
       }
     }
-  }
-}
-
-/**
- * fade-slide-y transition
- */
-.fade-slide-y {
-  &-enter-active {
-    transition: all 0.2s ease;
-  }
-
-  &-leave-active {
-    transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
-  }
-
-  &-enter-from,
-  &-leave-to {
-    opacity: 0;
-    transform: translateY(10px);
   }
 }
 </style>

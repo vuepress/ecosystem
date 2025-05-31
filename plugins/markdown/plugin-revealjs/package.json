@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-revealjs",
-  "version": "2.0.0-rc.79",
+  "version": "2.0.0-rc.106",
   "description": "VuePress plugin - markdown reveals",
   "keywords": [
     "vuepress-plugin",
@@ -44,19 +44,19 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@mdit/plugin-uml": "^0.16.0",
+    "@mdit/plugin-uml": "^0.20.0",
     "@types/markdown-it": "^14.1.2",
     "@types/reveal.js": "^5.0.5",
     "@vuepress/helper": "workspace:*",
-    "@vueuse/core": "^12.7.0",
-    "reveal.js": "^5.1.0",
-    "vue": "^3.5.13"
-  },
-  "peerDependencies": {
-    "vuepress": "catalog:"
+    "@vueuse/core": "catalog:",
+    "reveal.js": "^5.2.1",
+    "vue": "catalog:"
   },
   "devDependencies": {
     "markdown-it": "^14.1.0"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"

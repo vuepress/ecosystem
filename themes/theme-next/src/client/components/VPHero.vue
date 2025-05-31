@@ -5,7 +5,13 @@ import { inject } from 'vue'
 import type { DefaultThemeImage, HeroAction } from '../../shared/index.js'
 import type { Slot } from '../types.js'
 
-defineProps<{
+const {
+  name = '',
+  text = '',
+  tagline = '',
+  image = '',
+  actions = undefined,
+} = defineProps<{
   /**
    * Hero name
    */

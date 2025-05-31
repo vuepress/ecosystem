@@ -4,12 +4,13 @@
   "scripts": {
     "docs:build": "vuepress build . --clean-cache --clean-temp",
     "docs:build-webpack": "DOCS_BUNDLER=webpack pnpm docs:build",
+    "docs:clean-dev": "vuepress dev . --clean-cache --clean-temp",
+    "docs:clean-dev-webpack": "DOCS_BUNDLER=webpack pnpm docs:clean-dev",
     "docs:dev": "vuepress dev .",
     "docs:dev-webpack": "DOCS_BUNDLER=webpack pnpm docs:dev",
     "docs:serve": "http-server -a localhost .vuepress/dist"
   },
   "dependencies": {
-    "@vuepress/shiki-twoslash": "workspace:*",
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
     "@vuepress/helper": "workspace:*",
@@ -21,6 +22,7 @@
     "@vuepress/plugin-docsearch": "workspace:*",
     "@vuepress/plugin-feed": "workspace:*",
     "@vuepress/plugin-icon": "workspace:*",
+    "@vuepress/plugin-llms": "workspace:*",
     "@vuepress/plugin-markdown-ext": "workspace:*",
     "@vuepress/plugin-markdown-image": "workspace:*",
     "@vuepress/plugin-markdown-include": "workspace:*",
@@ -36,13 +38,15 @@
     "@vuepress/plugin-revealjs": "workspace:*",
     "@vuepress/plugin-search": "workspace:*",
     "@vuepress/plugin-shiki": "workspace:*",
+    "@vuepress/shiki-twoslash": "workspace:*",
+    "@vuepress/highlighter-helper": "workspace:*",
     "@vuepress/theme-classic": "workspace:*",
-    "@vueuse/core": "^12.7.0",
-    "katex": "0.16.21",
+    "@vueuse/core": "catalog:",
+    "katex": "0.16.22",
     "mathjax-full": "3.2.2",
-    "sass-embedded": "^1.85.0",
-    "sass-loader": "^16.0.5",
-    "vue": "^3.5.13",
+    "sass-embedded": "catalog:",
+    "sass-loader": "catalog:",
+    "vue": "catalog:",
     "vuepress": "catalog:"
   }
 }

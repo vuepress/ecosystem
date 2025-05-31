@@ -1,16 +1,9 @@
 import { rollupBundle } from '../../../scripts/rollup.js'
 
 export default [
-  ...rollupBundle('node/index', {
-    dtsExternal: ['@vuepress/helper/shared'],
+  ...rollupBundle('node/index'),
+  ...rollupBundle({
+    base: 'client',
+    files: ['config', 'index'],
   }),
-  ...rollupBundle(
-    {
-      base: 'client',
-      files: ['config', 'index'],
-    },
-    {
-      dtsExternal: ['@vuepress/helper/shared'],
-    },
-  ),
 ]

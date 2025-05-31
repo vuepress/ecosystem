@@ -32,11 +32,31 @@ export interface NoticeItemOptions {
   title: string
 
   /**
+   * Notice content type
+   *
+   * 通知内容类型
+   *
+   * @default 'html'
+   */
+  contentType?: 'html' | 'markdown'
+
+  /**
+   * Notice content file absolute path, file format should be `.md` or `.html`.
+   * Prioritize using the file content as `content`.
+   *
+   * 通知内容文件绝对路径, 文件格式支持 `.md` 或 `.html`。
+   * 优先使用文件内容作为 `content`。
+   *
+   * @example '/path/to/notice.md'
+   */
+  contentFile?: string
+
+  /**
    * Notice content
    *
    * 通知内容
    */
-  content: string
+  content?: string
 
   /**
    * Notice key
@@ -104,10 +124,13 @@ export interface NoticeMatchOptions extends NoticeItemOptions {
 
 export type NoticeOptions = NoticeMatchOptions | NoticePathOptions
 export type NoticeAttrOptions =
-  | (Omit<NoticeMatchOptions, 'key' | 'match'> & {
+  | (Omit<
+      NoticeMatchOptions,
+      'contentFile' | 'contentType' | 'key' | 'match'
+    > & {
       noticeKey?: string
       match: string
     })
-  | (Omit<NoticePathOptions, 'key'> & {
+  | (Omit<NoticePathOptions, 'contentFile' | 'contentType' | 'key'> & {
       noticeKey?: string
     })

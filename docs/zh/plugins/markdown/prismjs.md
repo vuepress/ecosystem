@@ -18,7 +18,7 @@ icon: pyramid
 npm i -D @vuepress/plugin-prismjs@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 
 export default {
@@ -178,7 +178,7 @@ export default defineUserConfig({
   title: '你好， VuePress',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })
 ```
@@ -194,7 +194,7 @@ export default defineUserConfig({
   title: '你好， VuePress',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })
 ```
@@ -400,6 +400,36 @@ body > div {
 }
 ```
 
+### codeBlockTitle
+
+- 类型：`boolean | CodeBlockTitleRender`
+
+  ```ts
+  type CodeBlockTitleRender = (title: string, code: string) => string
+  ```
+
+- 默认值：`true`
+
+- 详情：是否启用代码块标题渲染。在代码块 <code>\`\`\`</code> 后面添加 `title="标题"` 来设置标题。
+
+  传入 `CodeBlockTitleRender` 以自定义标题渲染。
+
+- 示例：
+
+  **输入：**
+
+  ````md {1}
+  ```ts title="foo/baz.js"
+  console.log('hello')
+  ```
+  ````
+
+  **输出：**
+
+  ```ts title="foo/baz.js"
+  console.log('hello')
+  ```
+
 ::: tip
 
 在新的版本中，实现了类似于 [shiki](https://shiki.style/packages/transformers) 的部分功能，
@@ -593,8 +623,8 @@ body > div {
 
 - 详情：是否启用空白符（空格 和 Tab）渲染。
 
-  - `true`: 启用空白符渲染，等同于 `all`
-  - `false`: 禁用空白符渲染
+  - `true`: 启用空白符渲染，但默认不渲染任何空白符
+  - `false`: 完全禁用空白符渲染，`:whitespace` 标记不会生效。
   - `'all'`: 渲染所有空白符
   - `'boundary'`: 仅渲染行首行尾的空白符
   - `'trailing'`: 仅渲染行尾的空白符
