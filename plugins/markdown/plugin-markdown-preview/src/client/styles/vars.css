@@ -2,8 +2,9 @@
   --preview-c-accent: var(--vp-c-accent-bg);
   --preview-c-border: var(--vp-c-border);
   --preview-c-divider: var(--vp-c-divider);
-  --preview-c-bg-header: var(--vp-c-bg-alt);
+  --preview-c-toggle-button: var(--vp-c-text-mute);
+  --preview-c-bg-control: var(--vp-c-bg);
   --preview-c-bg-button: var(--vp-c-control);
-  --preview-c-bg-button-hover: var(--vp-c-control-hover);
+  --preview-c-bg-button-hover: var(--vp-c-accent);
   --preview-border-radius: 8px;
 }

@@ -7,12 +7,10 @@ import {
   useToggle,
 } from '@vueuse/core'
 import type { PropType, SlotsType, VNode } from 'vue'
-import { defineComponent, h, ref, shallowRef } from 'vue'
+import { defineComponent, h, ref, shallowRef, useId } from 'vue'
 import type { MarkdownPreviewPluginLocaleConfig } from '../../shared/index.js'
 
 import '../styles/vp-preview.css'
-
-let previewIdCounter = 0
 
 export interface VPPreviewProps {
   /**
@@ -65,9 +63,19 @@ export default defineComponent({
     const height = ref('0')
 
     // Generate unique ID for accessibility
-    const uniqueId = `vp-preview-${++previewIdCounter}`
+    const uniqueId = `vp-preview-${useId()}`
 
     let previousState: boolean | null = null
+
+    const toggle = (current?: boolean): void => {
+      isExpanded.value = current ?? !isExpanded.value
+
+      if (isExpanded.value) {
+        height.value = `${codeContainer.value!.clientHeight}px`
+      } else {
+        height.value = '0'
+      }
+    }
 
     useEventListener('beforeprint', () => {
       toggleIsExpand(true)
@@ -83,56 +91,50 @@ export default defineComponent({
 
     useResizeObserver(codeContainer, () => {
       if (isExpanded.value) {
-        height.value = `${codeContainer.value!.clientHeight + 14}px`
+        height.value = `${codeContainer.value!.clientHeight}px`
       }
     })
 
     return (): VNode =>
-      h('div', { class: 'vp-preview' }, [
-        props.title
-          ? h(
-              'div',
-              { class: 'vp-preview-header' },
-              decodeURIComponent(props.title),
-            )
-          : null,
+      h(
+        'div',
+        { class: { 'vp-preview': true, 'is-expanded': isExpanded.value } },
+        [
+          h('div', { class: 'vp-preview-showcase' }, slots.content()),
 
-        h('div', { class: 'vp-preview-display' }, slots.content()),
-
-        h(
-          'div',
-          {
-            'id': isMounted.value ? uniqueId : null,
-            'class': 'vp-preview-code-wrapper',
-            'style': { height: height.value },
-            'data-allow-mismatch': 'attribute',
-          },
+          h('div', { class: 'vp-preview-control' }, [
+            props.title
+              ? h(
+                  'div',
+                  { class: 'vp-preview-title' },
+                  decodeURIComponent(props.title),
+                )
+              : null,
+            h('span', {
+              'class': 'vp-preview-toggle-button',
+              'title': locale.value[isExpanded.value ? 'hide' : 'show'],
+              'aria-expanded': isExpanded.value,
+              'aria-controls': isMounted.value ? uniqueId : null,
+              'onClick': () => {
+                toggle()
+              },
+            }),
+          ]),
           h(
             'div',
             {
-              ref: codeContainer,
-              class: 'vp-preview-code',
+              'id': isMounted.value ? uniqueId : null,
+              'class': 'vp-preview-code-wrapper',
+              'style': { height: height.value },
+              'data-allow-mismatch': 'attribute',
             },
-            slots.code(),
+            h(
+              'div',
+              { class: 'vp-preview-code', ref: codeContainer },
+              slots.code(),
+            ),
           ),
-        ),
-
-        h(
-          'div',
-          {
-            'title': 'toggle',
-            'class': 'vp-preview-toggle-button',
-            'aria-expanded': isExpanded.value,
-            'aria-controls': isMounted.value ? uniqueId : null,
-            'onClick': () => {
-              height.value = isExpanded.value
-                ? '0'
-                : `${codeContainer.value!.clientHeight + 14}px`
-              toggleIsExpand()
-            },
-          },
-          locale.value[isExpanded.value ? 'hide' : 'show'],
-        ),
-      ])
+        ],
+      )
   },
 })
