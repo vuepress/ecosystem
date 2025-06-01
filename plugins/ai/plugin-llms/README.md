@@ -29,8 +29,8 @@ npm i -D @vuepress/plugin-llms@next
 Add the plugin to your VuePress configuration (.vuepress/config.ts):
 
 ```ts
-import { llmsPlugin } from '@vuepress/plugin-llms'
 import { defineUserConfig } from 'vuepress'
+import { llmsPlugin } from '@vuepress/plugin-llms'
 
 export default defineUserConfig({
   // ...
