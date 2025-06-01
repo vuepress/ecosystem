@@ -1,5 +1,5 @@
-import type { NavbarItem } from '@vuepress/theme-default/client'
-import { useNavbarSelectLanguage as _useNavbarSelectLanguage } from '@vuepress/theme-default/client'
+import type { NavbarItem } from '@vuepress/theme-classic/client'
+import { useNavbarSelectLanguage as _useNavbarSelectLanguage } from '@vuepress/theme-classic/client'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 

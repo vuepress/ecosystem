@@ -1,4 +1,4 @@
-import type { NavbarOptions } from '@vuepress/theme-default'
+import type { NavbarOptions } from '@vuepress/theme-classic'
 
 export const navbarEn: NavbarOptions = [
   {

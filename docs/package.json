@@ -40,7 +40,7 @@
     "@vuepress/plugin-shiki": "workspace:*",
     "@vuepress/shiki-twoslash": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
-    "@vuepress/theme-default": "workspace:*",
+    "@vuepress/theme-classic": "workspace:*",
     "@vueuse/core": "catalog:",
     "katex": "0.16.22",
     "mathjax-full": "3.2.2",

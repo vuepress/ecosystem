@@ -4,6 +4,7 @@ packages:
   - plugins/*/*
   - themes/*
   - tools/*
+  - docs-next/
 
 overrides:
   esbuild: ^0.25.4

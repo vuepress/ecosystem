@@ -1,21 +1,21 @@
 {
-  "name": "@vuepress/theme-default",
+  "name": "@vuepress/theme-classic",
   "version": "2.0.0-rc.106",
   "description": "Default theme of VuePress",
   "keywords": [
     "vuepress-theme",
     "vuepress",
     "theme",
-    "default"
+    "classic"
   ],
-  "homepage": "https://ecosystem.vuejs.press/themes/default/",
+  "homepage": "https://ecosystem.vuejs.press/themes/classic/",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/ecosystem.git",
-    "directory": "themes/theme-default"
+    "directory": "themes/theme-classic"
   },
   "license": "MIT",
   "author": "meteorlxy",
@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
+    "@vuepress/theme-helper": "workspace:*",
     "@vuepress/plugin-active-header-links": "workspace:*",
     "@vuepress/plugin-back-to-top": "workspace:*",
     "@vuepress/plugin-copy-code": "workspace:*",

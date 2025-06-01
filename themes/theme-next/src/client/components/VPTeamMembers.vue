@@ -1,0 +1,73 @@
+<script setup lang="ts">
+import VPTeamMembersItem from '@theme/VPTeamMembersItem.vue'
+import { computed } from 'vue'
+import type { TeamMember } from '../../shared/index.js'
+
+interface Props {
+  /**
+   * Member size
+   */
+  size?: 'medium' | 'small'
+  /**
+   * Team members
+   */
+  members: TeamMember[]
+}
+
+const { size = 'medium', members } = defineProps<Props>()
+
+const classes = computed(() => [size, `count-${members.length}`])
+</script>
+
+<template>
+  <div class="vp-team-members" :class="classes">
+    <div class="container">
+      <div v-for="member in members" :key="member.name" class="item">
+        <VPTeamMembersItem :size="size" :member="member" />
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.vp-team-members.small .container {
+  grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
+}
+
+.vp-team-members.small.count-1 .container {
+  max-width: 276px;
+}
+
+.vp-team-members.small.count-2 .container {
+  max-width: calc(276px * 2 + 24px);
+}
+
+.vp-team-members.small.count-3 .container {
+  max-width: calc(276px * 3 + 24px * 2);
+}
+
+.vp-team-members.medium .container {
+  grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+}
+
+@media (min-width: 375px) {
+  .vp-team-members.medium .container {
+    grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+  }
+}
+
+.vp-team-members.medium.count-1 .container {
+  max-width: 368px;
+}
+
+.vp-team-members.medium.count-2 .container {
+  max-width: calc(368px * 2 + 24px);
+}
+
+.container {
+  display: grid;
+  gap: 24px;
+  max-width: 1152px;
+  margin: 0 auto;
+}
+</style>

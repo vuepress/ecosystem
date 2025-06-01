@@ -1,0 +1,67 @@
+<script setup lang="ts">
+import VPHomeContent from '@theme/VPHomeContent.vue'
+import VPHomeFeatures from '@theme/VPHomeFeatures.vue'
+import VPHomeHero from '@theme/VPHomeHero.vue'
+import { usePageFrontmatter } from 'vuepress/client'
+import type { DefaultThemeHomePageFrontmatter } from '../../shared/index.js'
+import type { Slot } from '../types.js'
+
+defineSlots<{
+  'home-hero-before'?: Slot
+  'home-hero-info-before'?: Slot
+  'home-hero-info'?: Slot
+  'home-hero-info-after'?: Slot
+  'home-hero-actions-after'?: Slot
+  'home-hero-after'?: Slot
+  'home-hero-image'?: Slot
+  'home-features-before'?: Slot
+  'home-features-after'?: Slot
+}>()
+
+const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
+</script>
+
+<template>
+  <div class="vp-home">
+    <slot name="home-hero-before" />
+    <VPHomeHero>
+      <template #home-hero-info-before>
+        <slot name="home-hero-info-before" />
+      </template>
+      <template #home-hero-info>
+        <slot name="home-hero-info" />
+      </template>
+      <template #home-hero-info-after>
+        <slot name="home-hero-info-after" />
+      </template>
+      <template #home-hero-actions-after>
+        <slot name="home-hero-actions-after" />
+      </template>
+      <template #home-hero-image>
+        <slot name="home-hero-image" />
+      </template>
+    </VPHomeHero>
+    <slot name="home-hero-after" />
+
+    <slot name="home-features-before" />
+    <VPHomeFeatures />
+    <slot name="home-features-after" />
+
+    <VPHomeContent v-if="frontmatter.markdownStyles !== false">
+      <Content />
+    </VPHomeContent>
+    <Content v-else vp-content />
+  </div>
+</template>
+
+<style scoped>
+.vp-home {
+  margin-bottom: 96px;
+}
+
+@media (min-width: 768px) {
+  .vp-home {
+    margin-bottom: 128px;
+  }
+}
+</style>

@@ -13,33 +13,18 @@ import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import { seoPlugin } from '@vuepress/plugin-seo'
 import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
+import { extendsEditLinkPage } from '@vuepress/theme-helper'
 import type { Page, Theme } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import { fs, getDirname, path } from 'vuepress/utils'
-import type {
-  DefaultThemeLocaleOptions,
-  DefaultThemePageData,
-} from '../shared/index.js'
-import type { DefaultThemePluginsOptions } from './typings.js'
+import type { DefaultThemePageData } from '../shared/index.js'
+import type { DefaultThemeOptions } from './options.js'
 import {
   assignDefaultLocaleOptions,
   resolveMarkdownHintLocales,
 } from './utils/index.js'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
-
-export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
-  /**
-   * deployed hostname
-   */
-  hostname?: string
-
-  /**
-   * To avoid confusion with the root `plugins` option,
-   * we use `themePlugins`
-   */
-  themePlugins?: DefaultThemePluginsOptions
-}
 
 export const defaultTheme = ({
   hostname,
@@ -94,8 +79,7 @@ export const defaultTheme = ({
     },
 
     extendsPage: (page: Page<Partial<DefaultThemePageData>>) => {
-      // save relative file path into page data to generate edit link
-      page.data.filePathRelative = page.filePathRelative
+      extendsEditLinkPage(page)
       // save title into route meta to generate navbar and sidebar
       page.routeMeta.title = page.title
     },

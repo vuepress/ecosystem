@@ -14,6 +14,20 @@ rules:
   declaration-block-no-redundant-longhand-properties: true
   media-feature-range-notation: prefix
   no-descending-specificity: null
+  custom-property-empty-line-before: null
+  selector-max-class: null
+  selector-max-attribute: null
+  selector-pseudo-class-no-unknown:
+    - true
+    - ignorePseudoClasses:
+        - input-placeholder
+
+  selector-pseudo-element-no-unknown:
+    - true
+    - ignorePseudoElements:
+        - input-placeholder
+  # workaround for mixed-declarations
+  no-duplicate-selectors: null
 
 overrides:
   - files:
@@ -46,3 +60,18 @@ overrides:
             - v-deep
             - v-global
             - v-slotted
+
+      declaration-block-no-redundant-longhand-properties: null
+      scss/operator-no-newline-after: null
+
+  - files:
+      - 'themes/theme-next/src/client/styles/vars.css'
+
+    rules:
+      no-duplicate-selectors: null
+
+  - files:
+      - 'themes/theme-next/src/client/styles/compat.css'
+
+    rules:
+      selector-class-pattern: null

@@ -1,0 +1,129 @@
+<script setup lang="ts">
+import { useAside } from '@theme/aside'
+import { onMounted, useTemplateRef, watch } from 'vue'
+import { useRoutePath } from 'vuepress/client'
+import type { CarbonAdsOptions } from '../../shared/index.js'
+
+const { carbonAds = undefined } = defineProps<{
+  /**
+   * Carbon Ads options
+   */
+  carbonAds?: CarbonAdsOptions
+}>()
+
+const routePath = useRoutePath()
+
+const { isAsideEnabled } = useAside()
+const container = useTemplateRef<HTMLDivElement>('carbonAds')
+
+let isInitialized = false
+
+const init = (): void => {
+  const carbonOptions = carbonAds!
+
+  if (!isInitialized) {
+    isInitialized = true
+    const s = document.createElement('script')
+    s.id = '_carbonads_js'
+    s.src = `//cdn.carbonads.com/carbon.js?serve=${carbonOptions.code}&placement=${carbonOptions.placement}`
+    s.async = true
+    container.value!.appendChild(s)
+  }
+}
+
+watch(
+  () => routePath.value,
+  () => {
+    if (isInitialized && isAsideEnabled.value) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+      ;(window as any)._carbonads?.refresh()
+    }
+  },
+)
+
+// no need to account for option changes during dev, we can just
+// refresh the page
+if (carbonAds) {
+  onMounted(() => {
+    // if the page is loaded when aside is active, load carbon directly.
+    // otherwise, only load it if the page resizes to wide enough. this avoids
+    // loading carbon at all on mobile where it's never shown
+    if (isAsideEnabled.value) {
+      init()
+    } else {
+      watch(isAsideEnabled, (wide) => {
+        if (wide) init()
+      })
+    }
+  })
+}
+</script>
+
+<template>
+  <div ref="carbonAds" class="vp-carbon-ads" />
+</template>
+
+<style scoped>
+.vp-carbon-ads {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 256px;
+  padding: 24px;
+  border-radius: 12px;
+
+  background-color: var(--vp-carbon-ads-bg-color);
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.vp-carbon-ads :deep(img) {
+  margin: 0 auto;
+  border-radius: 6px;
+}
+
+.vp-carbon-ads :deep(.carbon-text) {
+  display: block;
+
+  margin: 0 auto;
+  padding-top: 12px;
+
+  color: var(--vp-carbon-ads-text-color);
+
+  transition: color 0.25s;
+}
+
+.vp-carbon-ads :deep(.carbon-text:hover) {
+  color: var(--vp-carbon-ads-hover-text-color);
+}
+
+.vp-carbon-ads :deep(.carbon-poweredby) {
+  display: block;
+
+  padding-top: 6px;
+
+  color: var(--vp-carbon-ads-poweredby-color);
+
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+
+  transition: color 0.25s;
+}
+
+.vp-carbon-ads :deep(.carbon-poweredby:hover) {
+  color: var(--vp-carbon-ads-hover-poweredby-color);
+}
+
+.vp-carbon-ads :deep(> div) {
+  display: none;
+}
+
+.vp-carbon-ads :deep(> div:first-of-type) {
+  display: block;
+}
+</style>

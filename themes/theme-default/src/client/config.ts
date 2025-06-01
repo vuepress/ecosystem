@@ -9,7 +9,7 @@ import Layout from './layouts/Layout.vue'
 import NotFound from './layouts/NotFound.vue'
 
 import '@vuepress/helper/colors.css'
-import '@vuepress/helper/normalize.css'
+import '@vuepress/theme-helper/normalize.css'
 import './styles/index.scss'
 
 export default defineClientConfig({

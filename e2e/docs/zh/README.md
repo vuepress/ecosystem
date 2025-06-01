@@ -1,15 +1,19 @@
 ---
 home: true
 title: 主页
-heroImage: https://v2.vuepress.vuejs.org/images/hero.png
+hero:
+  name: VuePress Ecosystem E2E
+  text: VuePress Ecosystem E2E
+  tagline: VuePress Ecosystem E2E Test Site
+  image: https://v2.vuepress.vuejs.org/images/hero.png
 actions:
   - text: 操作 1
     link: /action1.html
-    type: primary
+    theme: brand
 
   - text: 操作 2
     link: /action2.html
-    type: secondary
+    theme: alt
 
 features:
   - title: 特性 1

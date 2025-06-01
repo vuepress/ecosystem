@@ -1,0 +1,66 @@
+<script setup lang="ts">
+import { computed } from 'vue'
+import type { SocialLinkIcon } from '../../shared/index.js'
+
+const {
+  icon,
+  link,
+  ariaLabel = '',
+} = defineProps<{
+  /**
+   * Icon
+   */
+  icon: SocialLinkIcon
+  /**
+   * Link
+   */
+  link: string
+  /**
+   * Aria label
+   */
+  ariaLabel?: string
+}>()
+
+const svg = computed(() => {
+  if (typeof icon === 'object') return icon.svg
+  return `<span class="vpi-social-${icon}" />`
+})
+</script>
+
+<template>
+  <a
+    class="vp-social-link no-icon"
+    :href="link"
+    :aria-label="ariaLabel ?? (typeof icon === 'string' ? icon : '')"
+    target="_blank"
+    rel="noopener noreferrer"
+    v-html="svg"
+  ></a>
+</template>
+
+<style scoped>
+.vp-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  color: var(--vp-c-text-mute);
+
+  transition: color 0.5s;
+}
+
+.vp-social-link:hover {
+  color: var(--vp-c-text);
+  transition: color 0.25s;
+}
+
+.vp-social-link > :deep(svg),
+.vp-social-link > :deep([class^='vpi-social-']) {
+  width: 20px;
+  height: 20px;
+  fill: currentcolor;
+}
+</style>

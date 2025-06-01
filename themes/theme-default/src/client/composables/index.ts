@@ -1,6 +1,5 @@
 export * from './useDarkMode.js'
 export * from './useData.js'
-export * from './useEditLink.js'
 export * from './useNavigate.js'
 export * from './useNavbarConfig.js'
 export * from './useNavbarRepo.js'

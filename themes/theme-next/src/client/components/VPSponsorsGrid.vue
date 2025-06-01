@@ -1,0 +1,49 @@
+<script setup lang="ts">
+import type { GridSize } from '@theme/sponsor-grid'
+import { useSponsorsGrid } from '@theme/sponsor-grid'
+import { useTemplateRef } from 'vue'
+import type { Sponsor } from '../../shared/index.js'
+
+interface Props {
+  /**
+   * Sponsor size
+   */
+  size?: GridSize
+  /**
+   * Sponsor data
+   */
+  data: Sponsor[]
+}
+const { size = 'medium', data } = defineProps<Props>()
+
+const el = useTemplateRef('sponsorGrid')
+
+// eslint-disable-next-line vue/no-setup-props-reactivity-loss
+useSponsorsGrid({ el, size })
+</script>
+
+<template>
+  <div ref="sponsorGrid" class="vp-sponsor-grid" :class="[size]">
+    <div
+      v-for="sponsor in data"
+      :key="sponsor.name"
+      class="vp-sponsor-grid-item"
+    >
+      <a
+        class="vp-sponsor-grid-link"
+        :href="sponsor.url"
+        target="_blank"
+        rel="sponsored noopener noreferrer"
+      >
+        <article class="vp-sponsor-grid-box">
+          <h4 class="visually-hidden">{{ sponsor.name }}</h4>
+          <img
+            class="vp-sponsor-grid-image"
+            :src="sponsor.img"
+            :alt="sponsor.name"
+          />
+        </article>
+      </a>
+    </div>
+  </div>
+</template>

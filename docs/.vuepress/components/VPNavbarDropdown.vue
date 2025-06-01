@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import VPAutoLink from '@theme/VPAutoLink.vue'
 import { FadeInExpandTransition } from '@vuepress/helper/client'
-import type { AutoLinkOptions, NavGroup } from '@vuepress/theme-default/client'
+import type { AutoLinkOptions, NavGroup } from '@vuepress/theme-classic/client'
 import { useToggle } from '@vueuse/core'
 import { computed } from 'vue'
 import type { AutoLinkConfig } from 'vuepress/client'
@@ -87,11 +87,11 @@ onContentUpdated(() => {
                 "
               />
 
-              <span v-else
-                ><VPIcon v-if="config.icon" :icon="config.icon" />{{
+              <span v-else>
+                <VPIcon v-if="config.icon" :icon="config.icon" />{{
                   child.text
-                }}</span
-              >
+                }}
+              </span>
             </h4>
 
             <ul class="vp-navbar-dropdown-subitem-wrapper">
@@ -136,8 +136,8 @@ onContentUpdated(() => {
 </template>
 
 <style lang="scss">
-@use '@vuepress/theme-default/styles/mixins';
-@use '@vuepress/theme-default/styles/variables' as *;
+@use '@vuepress/theme-classic/styles/mixins';
+@use '@vuepress/theme-classic/styles/variables' as *;
 
 .vp-navbar-dropdown-wrapper {
   cursor: pointer;

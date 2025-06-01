@@ -107,12 +107,14 @@
 
     // themes
     { "path": "./themes/theme-default/tsconfig.build.json" },
+    { "path": "./themes/theme-next/tsconfig.build.json" },
 
     // tools
     { "path": "./tools/create-vuepress/tsconfig.build.json" },
     { "path": "./tools/helper/tsconfig.build.json" },
     { "path": "./tools/highlighter-helper/tsconfig.build.json" },
     { "path": "./tools/shiki-twoslash/tsconfig.build.json" },
+    { "path": "./tools/theme-helper/tsconfig.build.json" },
     { "path": "./tools/vp-update/tsconfig.build.json" }
   ],
   "files": []

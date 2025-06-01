@@ -1,0 +1,95 @@
+<script setup lang="ts">
+import VPDocOutlineItem from '@theme/VPDocOutlineItem.vue'
+import { useData } from '@theme/data'
+import type { MenuItem } from '@theme/outline'
+import { getHeaders, resolveTitle, useActiveAnchor } from '@theme/outline'
+import { shallowRef, useTemplateRef } from 'vue'
+import { onContentUpdated } from 'vuepress/client'
+
+const { frontmatter, themeLocale } = useData()
+
+const headers = shallowRef<MenuItem[]>([])
+
+onContentUpdated((reason) => {
+  headers.value =
+    reason === 'beforeUnmount'
+      ? []
+      : getHeaders(frontmatter.value.outline ?? themeLocale.value.outline)
+})
+
+const container = useTemplateRef<HTMLElement>('docOutline')
+const marker = useTemplateRef<HTMLElement>('marker')
+
+useActiveAnchor(container, marker)
+</script>
+
+<template>
+  <nav
+    ref="docOutline"
+    aria-labelledby="doc-outline-aria-label"
+    class="vp-doc-aside-outline"
+    :class="{ 'has-outline': headers.length > 0 }"
+    role="navigation"
+  >
+    <div class="content">
+      <div ref="marker" class="outline-marker" />
+
+      <div
+        id="doc-outline-aria-label"
+        aria-level="2"
+        class="outline-title"
+        role="heading"
+      >
+        {{ resolveTitle(themeLocale) }}
+      </div>
+
+      <VPDocOutlineItem :headers="headers" :root="true" />
+    </div>
+  </nav>
+</template>
+
+<style scoped>
+.vp-doc-aside-outline {
+  display: none;
+}
+
+.vp-doc-aside-outline.has-outline {
+  display: block;
+}
+
+.content {
+  position: relative;
+
+  padding-left: 16px;
+  border-left: 1px solid var(--vp-c-divider);
+
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.outline-marker {
+  position: absolute;
+  top: 32px;
+  left: -1px;
+  z-index: 0;
+
+  width: 2px;
+  height: 18px;
+  border-radius: 2px;
+
+  background-color: var(--vp-c-accent);
+
+  opacity: 0;
+
+  transition:
+    top 0.25s cubic-bezier(0, 1, 0.5, 1),
+    background-color 0.5s,
+    opacity 0.25s;
+}
+
+.outline-title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 32px;
+}
+</style>
