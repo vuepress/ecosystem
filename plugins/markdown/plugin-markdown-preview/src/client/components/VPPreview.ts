@@ -107,6 +107,7 @@ export default defineComponent({
                 'type': 'button',
                 'class': 'vp-preview-toggle-button',
                 'title': locale.value.toggle,
+                'aria-label': locale.value.toggle,
                 'aria-controls': codeID,
                 'aria-expanded': isExpanded.value,
                 'onClick': () => {
