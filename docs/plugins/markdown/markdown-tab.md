@@ -97,7 +97,7 @@ You can use Vue syntax and components in each tab, and you can access `value` an
 
 If you want to make some tab groups switch together, you can use tab ids to bind them. Also, each tab id's choice will be stored and persisted.
 
-Here is an example:
+:::: preview
 
 Choose a package manager:
 
@@ -133,45 +133,6 @@ pnpm add -D vuepress
 ```
 
 :::
-
-:::: details Code
-
-````md
-Choose a package manager:
-
-::: tabs#shell
-
-@tab npm
-
-npm should be installed with Node.js.
-
-@tab pnpm
-
-```bash
-corepack enable
-corepack use pnpm@latest
-```
-
-:::
-
-Install `vuepress`:
-
-::: tabs#shell
-
-@tab Using npm#npm
-
-```bash
-npm i -D vuepress
-```
-
-@tab Using pnpm#pnpm
-
-```bash
-pnpm add -D vuepress
-```
-
-:::
-````
 
 ::::
 
@@ -183,6 +144,8 @@ Only the first code fence after `@tab` marker is rendered inside code tabs, othe
 
 ## Demo
 
+:::: preview Tabs
+
 A tab of fruit:
 
 ::: tabs#fruit
@@ -232,63 +195,11 @@ Banana
 Orange
 
 :::
-
-:::: details Code
-
-```md
-A tab of fruit:
-
-::: tabs#fruit
-
-@tab apple#apple
-
-Apple
-
-@tab banana#banana
-
-Banana
-
-:::
-
-Another tab of fruit:
-
-::: tabs#fruit
-
-@tab apple
-
-Apple
-
-@tab banana
-
-Banana
-
-@tab orange
-
-Orange
-
-:::
-
-A tab of fruit without id:
-
-::: tabs
-
-@tab apple
-
-Apple
-
-@tab banana
-
-Banana
-
-@tab orange
-
-Orange
-
-:::
-```
 
 ::::
 
+:::: preview Code Tabs
+
 Install VuePress:
 
 ::: code-tabs#shell
@@ -336,58 +247,6 @@ npm i -D @vuepress/plugin-markdown-tab
 ```
 
 :::
-
-:::: details Code
-
-````md
-Install VuePress:
-
-::: code-tabs#shell
-
-@tab pnpm
-
-```bash
-pnpm add -D vuepress
-```
-
-@tab yarn
-
-```bash
-yarn add -D vuepress
-```
-
-@tab:active npm
-
-```bash
-npm i -D vuepress
-```
-
-:::
-
-Install VuePress Tabs Plugin:
-
-::: code-tabs#shell
-
-@tab pnpm
-
-```bash
-pnpm add -D @vuepress/plugin-markdown-tab
-```
-
-@tab yarn
-
-```bash
-yarn add -D @vuepress/plugin-markdown-tab
-```
-
-@tab:active npm
-
-```bash
-npm i -D @vuepress/plugin-markdown-tab
-```
-
-:::
-````
 
 ::::
 

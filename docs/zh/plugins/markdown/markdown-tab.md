@@ -97,7 +97,7 @@ export default {
 
 如果你想让一些选项卡组一起切换，你可以使用相同的选项卡 ID 来绑定它们。针对每个选项卡 ID 的选择会被存储并进行持久化。
 
-这是一个案例：
+:::: preview
 
 选择包管理器:
 
@@ -133,45 +133,6 @@ pnpm add -D vuepress
 ```
 
 :::
-
-:::: details 代码
-
-````md
-选择包管理器:
-
-::: tabs#shell
-
-@tab npm
-
-npm 应该与 Node.js 被一同安装。
-
-@tab pnpm
-
-```bash
-corepack enable
-corepack use pnpm@latest
-```
-
-:::
-
-安装 `vuepress`:
-
-::: tabs#shell
-
-@tab 使用 npm#npm
-
-```bash
-npm i -D vuepress
-```
-
-@tab 使用 pnpm#pnpm
-
-```bash
-pnpm add -D vuepress
-```
-
-:::
-````
 
 ::::
 
@@ -183,6 +144,8 @@ pnpm add -D vuepress
 
 ## 案例
 
+:::: preview 选项卡
+
 一个水果选项卡列表:
 
 ::: tabs#fruit
@@ -232,63 +195,11 @@ Banana
 Orange
 
 :::
-
-:::: details 代码
-
-```md
-一个水果选项卡列表:
-
-::: tabs#fruit
-
-@tab apple#apple
-
-Apple
-
-@tab banana#banana
-
-Banana
-
-:::
-
-另一个水果选项卡列表:
-
-::: tabs#fruit
-
-@tab apple
-
-Apple
-
-@tab banana
-
-Banana
-
-@tab orange
-
-Orange
-
-:::
-
-一个没有绑定 id 的水果选项卡列表:
-
-::: tabs
-
-@tab apple
-
-Apple
-
-@tab banana
-
-Banana
-
-@tab orange
-
-Orange
-
-:::
-```
 
 ::::
 
+:::: preview 代码选项卡
+
 安装 VuePress:
 
 ::: code-tabs#shell
@@ -336,58 +247,6 @@ npm i -D @vuepress/plugin-markdown-tab
 ```
 
 :::
-
-:::: details Code
-
-````md
-安装 VuePress:
-
-::: code-tabs#shell
-
-@tab pnpm
-
-```bash
-pnpm add -D vuepress
-```
-
-@tab yarn
-
-```bash
-yarn add -D vuepress
-```
-
-@tab:active npm
-
-```bash
-npm i -D vuepress
-```
-
-:::
-
-安装 VuePress 选项卡插件:
-
-::: code-tabs#shell
-
-@tab pnpm
-
-```bash
-pnpm add -D @vuepress/plugin-markdown-tab
-```
-
-@tab yarn
-
-```bash
-yarn add -D @vuepress/plugin-markdown-tab
-```
-
-@tab:active npm
-
-```bash
-npm i -D @vuepress/plugin-markdown-tab
-```
-
-:::
-````
 
 ::::
 

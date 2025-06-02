@@ -32,7 +32,7 @@ export default {
 
 你可以使用 `left` `center` `right` `justify` 来对齐文本。
 
-:::: details 示例
+:::: preview
 
 ::: left
 左对齐的内容
@@ -49,24 +49,6 @@ export default {
 ::: justify
 两端对齐的内容
 :::
-
-```md
-::: left
-左对齐的内容
-:::
-
-::: center
-居中的内容
-:::
-
-::: right
-右对齐的内容
-:::
-
-::: justify
-两端对齐的内容
-:::
-```
 
 ::::
 
@@ -106,13 +88,9 @@ export default {
 
 你可以使用 `== ==` 来通过 `<mark>` 标记内容。请注意标记两侧需要有空格。
 
-::: details 案例
+::: preview
 
 VuePress ==非常== 强大!
-
-```md
-VuePress ==非常== 强大!
-```
 
 :::
 
@@ -120,13 +98,9 @@ VuePress ==非常== 强大!
 
 你可以使用使用 `!! !!` 标记剧透文字。请注意标记两侧需要有空格。
 
-::: details 案例
+::: preview
 
 VuePress !!非常强大!!!
-
-```md
-VuePress !!非常强大!!!
-```
 
 :::
 
@@ -134,13 +108,9 @@ VuePress !!非常强大!!!
 
 你可以使用 `^` 来标记上标，`~` 来标记下标。
 
-::: details 案例
+::: preview
 
 H~2~O 是液体，2^10^ 是 1024.
-
-```md
-H~2~O 是液体，2^10^ 是 1024.
-```
 
 :::
 

@@ -32,7 +32,7 @@ export default {
 
 You can use `left` `center` `right` `justify` to align text.
 
-:::: details Demo
+:::: preview
 
 ::: left
 Contents to align left
@@ -49,24 +49,6 @@ Contents to align right
 ::: justify
 Contents to align justify
 :::
-
-```md
-::: left
-Contents to align left
-:::
-
-::: center
-Contents to align center
-:::
-
-::: right
-Contents to align right
-:::
-
-::: justify
-Contents to align justify
-:::
-```
 
 ::::
 
@@ -106,13 +88,9 @@ For all demos, see [@mdit/plugin-attrs](https://mdit-plugins.github.io/attrs.htm
 
 You can use `==` to mark text with `<mark>`.
 
-::: details Demo
+::: preview
 
 VuePress is ==powerful==!
-
-```md
-VuePress is ==powerful==!
-```
 
 :::
 
@@ -120,13 +98,9 @@ VuePress is ==powerful==!
 
 You can use `!! !!` to mark a content as spoiler.
 
-::: details Demo
+::: preview
 
 VuePress is !!powerful!!.
-
-```md
-VuePress is !!powerful!!.
-```
 
 :::
 
@@ -134,13 +108,9 @@ VuePress is !!powerful!!.
 
 You can use `^` for superscript and `~` for subscript.
 
-::: details Demo
+::: preview
 
 H~2~O is a liquid. 2^10^ is 1024.
-
-```md
-H~2~O is a liquid. 2^10^ is 1024.
-```
 
 :::
 

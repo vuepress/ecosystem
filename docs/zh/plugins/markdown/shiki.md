@@ -107,29 +107,7 @@ export default {
 
   你可以在代码块添加 `:line-numbers` / `:no-line-numbers` 标记来覆盖配置项中的设置，还可以在 `:line-numbers` 之后添加 `=` 来自定义起始行号，例如 `:line-numbers=2` 表示代码块中的行号从 `2` 开始。
 
-**输入：**
-
-````md
-```ts :line-numbers
-// 启用行号
-const line2 = 'This is line 2'
-const line3 = 'This is line 3'
-```
-
-```ts :no-line-numbers
-// 禁用行号
-const line2 = 'This is line 2'
-const line3 = 'This is line 3'
-```
-
-```ts :line-numbers=2
-// 行号已启用，并从 2 开始
-const line3 = 'This is line 3'
-const line4 = 'This is line 4'
-```
-````
-
-**输出：**
+::: preview
 
 ```ts :line-numbers
 // 启用行号
@@ -148,6 +126,8 @@ const line3 = 'This is line 3'
 const line3 = 'This is line 3'
 const line4 = 'This is line 4'
 ```
+
+:::
 
 ### highlightLines
 
@@ -165,22 +145,7 @@ const line4 = 'This is line 4'
 
 **输入：**
 
-````md
-```ts {1,7-9}
-import { defaultTheme } from '@vuepress/theme-default'
-import { defineUserConfig } from 'vuepress'
-
-export default defineUserConfig({
-  title: '你好， VuePress',
-
-  theme: defaultTheme({
-    logo: 'https://vuepress.vuejs.org/images/hero.png',
-  }),
-})
-```
-````
-
-**输出：**
+::: preview
 
 ```ts {1,7-9}
 import { defaultTheme } from '@vuepress/theme-default'
@@ -194,6 +159,8 @@ export default defineUserConfig({
   }),
 })
 ```
+
+:::
 
 ### collapsedLines
 
@@ -210,44 +177,7 @@ export default defineUserConfig({
 
   你可以在代码块添加 `:collapsed-lines` / `:no-collapsed-lines` 标记来覆盖配置项中的设置。还可以在 `:collapsed-lines` 之后添加 `=` 来自定义起始折叠行号，例如 `:collapsed-lines=12` 表示代码块从第 12 行开始折叠。
 
-**输入：**
-
-````md
-<!-- 默认从第 15 行开始折叠 -->
-
-```css :collapsed-lines
-html {
-  margin: 0;
-  background: black;
-  height: 100%;
-}
-/* ... 更多代码 */
-```
-
-<!-- 禁用折叠 -->
-
-```css :no-collapsed-lines
-html {
-  margin: 0;
-  background: black;
-  height: 100%;
-}
-/* ... 更多代码 */
-```
-
-<!-- 从第 10 行开始折叠 -->
-
-```css :collapsed-lines=10
-html {
-  margin: 0;
-  background: black;
-  height: 100%;
-}
-/* ... 更多代码 */
-```
-````
-
-**输出：**
+::: preview
 
 <!-- 默认从第 15 行开始折叠 -->
 
@@ -279,22 +209,6 @@ body > div {
 
 .main {
   display: none;
-}
-
-.blowup {
-  display: block;
-  position: absolute;
-  object-fit: contain;
-  object-position: center;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2000;
-}
-
-.darken {
-  opacity: 0.4;
 }
 ```
 
@@ -329,22 +243,6 @@ body > div {
 .main {
   display: none;
 }
-
-.blowup {
-  display: block;
-  position: absolute;
-  object-fit: contain;
-  object-position: center;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2000;
-}
-
-.darken {
-  opacity: 0.4;
-}
 ```
 
 <!-- 从第 10 行开始折叠 -->
@@ -378,23 +276,9 @@ body > div {
 .main {
   display: none;
 }
-
-.blowup {
-  display: block;
-  position: absolute;
-  object-fit: contain;
-  object-position: center;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2000;
-}
-
-.darken {
-  opacity: 0.4;
-}
 ```
+
+:::
 
 ### codeBlockTitle
 
@@ -412,19 +296,13 @@ body > div {
 
 - 示例：
 
-  **输入：**
-
-  ````md {1}
-  ```ts title="foo/baz.js"
-  console.log('hello')
-  ```
-  ````
-
-  **输出：**
+  ::: preview
 
   ```ts title="foo/baz.js"
   console.log('hello')
   ```
+
+  :::
 
 ### notationDiff
 
@@ -436,23 +314,28 @@ body > div {
 
 - 示例：
 
-  **输入：**
+  <VPPreview>
+  <template #code>
 
   ````md
   ```ts
-  console.log('hewwo') // [\!code --]
-  console.log('hello') // [\!code ++]
-  console.log('goodbye')
+  console.log('拟好') // [\!code --]
+  console.log('你好') // [\!code ++]
+  console.log('再见')
   ```
   ````
 
-  **输出：**
+  </template>
+  <template #content>
 
   ```ts
-  console.log('hewwo') // [!code --]
-  console.log('hello') // [!code ++]
-  console.log('goodbye')
+  console.log('拟好') // [!code --]
+  console.log('你好') // [!code ++]
+  console.log('再见')
   ```
+
+  </template>
+  </VPPreview>
 
 - 参考：
   - [Shiki > 差异标记](https://shiki.tmrs.site/packages/transformers#transformernotationdiff)
@@ -467,23 +350,28 @@ body > div {
 
 - 示例：
 
-  **输入：**
+  <VPPreview>
+  <template #code>
 
   ````md
   ```ts
-  console.log('Not focused')
-  console.log('Focused') // [\!code focus]
-  console.log('Not focused')
+  console.log('未聚焦')
+  console.log('聚焦') // [\!code focus]
+  console.log('未聚焦')
   ```
   ````
 
-  **输出：**
+  </template>
+  <template #content>
 
   ```ts
-  console.log('Not focused')
-  console.log('Focused') // [!code focus]
-  console.log('Not focused')
+  console.log('未聚焦')
+  console.log('聚焦') // [!code focus]
+  console.log('未聚焦')
   ```
+
+  </template>
+  </VPPreview>
 
 - 参考：
   - [Shiki > 聚焦标记](https://shiki.tmrs.site/packages/transformers#transformernotationfocus)
@@ -498,23 +386,28 @@ body > div {
 
 - 示例：
 
-  **输入：**
+  <VPPreview>
+  <template #code>
 
   ````md
   ```ts
-  console.log('Not highlighted')
-  console.log('Highlighted') // [\!code highlight]
-  console.log('Not highlighted')
+  console.log('未高亮')
+  console.log('高亮') // [\!code highlight]
+  console.log('未高亮')
   ```
   ````
 
-  **输出：**
+  </template>
+  <template #content>
 
   ```ts
-  console.log('Not highlighted')
-  console.log('Highlighted') // [!code highlight]
-  console.log('Not highlighted')
+  console.log('未高亮')
+  console.log('高亮') // [!code highlight]
+  console.log('未高亮')
   ```
+
+  </template>
+  </VPPreview>
 
 - 参考：
   - [Shiki > 高亮标记](https://shiki.tmrs.site/packages/transformers#transformernotationhighlight)
@@ -529,23 +422,28 @@ body > div {
 
 - 示例：
 
-  **输入：**
+  <VPPreview>
+  <template #code>
 
   ````md
   ```ts
-  console.log('No errors or warnings')
-  console.warn('Warning') // [\!code warning]
-  console.error('Error') // [\!code error]
+  console.log('无警告或错误')
+  console.warn('警告') // [\!code warning]
+  console.error('错误') // [\!code error]
   ```
   ````
 
-  **输出：**
+  </template>
+  <template #content>
 
   ```ts
-  console.log('No errors or warnings')
-  console.warn('Warning') // [!code warning]
-  console.error('Error') // [!code error]
+  console.log('无警告或错误')
+  console.warn('警告') // [!code warning]
+  console.error('错误') // [!code error]
   ```
+
+  </template>
+  </VPPreview>
 
 - 参考：
   - [Shiki > 错误级别标记](https://shiki.tmrs.site/packages/transformers#transformernotationerrorlevel)
@@ -562,43 +460,41 @@ body > div {
 
 - 示例：
 
-  **输入：**
+  根据注释中提供的字符串，高亮显示词。
+
+  <VPPreview>
+  <template #code>
 
   ````md
   ```ts
-  // [\!code word:Hello]
-  const message = 'Hello World'
-  console.log(message) // prints Hello World
+  // [\!code word:你好]
+  const message = '你好世界'
+  console.log(message) // prints 你好世界
   ```
   ````
 
-  **输出：**
+  </template>
+  <template #content>
 
   ```ts
-  // [!code word:Hello]
-  const message = 'Hello World'
-  console.log(message) // prints Hello World
+  // [!code word:你好]
+  const message = '你好世界'
+  console.log(message) // prints 你好世界
   ```
 
-- 示例：根据代码片段中提供的元字符串，高亮显示词
+  </template>
+  </VPPreview>
 
-  **输入：**
+  根据代码片段中提供的元字符串，高亮显示词
 
-  ````md
-  ```js /Hello/
-  const msg = 'Hello World'
-  console.log(msg)
-  console.log(msg) // 打印 Hello World
+  ::: preview
+
+  ```js /你好/
+  const msg = '你好世界'
+  console.log(msg) // 打印 你好世界
   ```
-  ````
 
-  **输出：**
-
-  ```js /Hello/
-  const msg = 'Hello World'
-  console.log(msg)
-  console.log(msg) // 打印 Hello World
-  ```
+  :::
 
 - 参考：
 
@@ -622,47 +518,7 @@ body > div {
 
 - 示例：
 
-  **输入：**
-
-  ````md
-  ```md :whitespace
-  <!-- 渲染所有空白符 -->
-
-  具有尾随空格  
-  的文字
-
-      缩进文字
-  ```
-
-  ```md :whitespace=boundary
-  <!-- 渲染行首行尾的空白符 -->
-
-  具有尾随空格  
-  的文字
-
-      缩进文字
-  ```
-
-  ```md :whitespace=trailing
-  <!-- 渲染行尾的空白符 -->
-
-  具有尾随空格  
-  的文字
-
-      缩进文字
-  ```
-
-  ```md :no-whitespace
-  <!-- 禁用空白符 -->
-
-  A text
-  with line break
-
-      code block
-  ```
-  ````
-
-  **输出：**
+  ::: preview
 
   ```md :whitespace
   <!-- 渲染所有空白符 -->
@@ -699,6 +555,8 @@ body > div {
 
       code block
   ```
+
+  :::
 
 - 参考：
   - [Shiki > 空白符渲染](https://shiki.tmrs.site/packages/transformers#transformerrenderwhitespace)
@@ -748,23 +606,15 @@ body > div {
 
 - 示例：
 
-  **输入：**
-
-  ````md
-  ```ts twoslash
-  const a = 1
-  const b = 2
-  console.log(a + b)
-  ```
-  ````
-
-  **输出：**
+  ::: preview
 
   ```ts twoslash
   const a = 1
   const b = 23
   console.log(a + b)
   ```
+
+  :::
 
   ::: warning
 

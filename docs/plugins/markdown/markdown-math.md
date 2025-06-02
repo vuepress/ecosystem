@@ -36,11 +36,11 @@ export default {
 
 - Inline mode: `$xxx$`
 
+  ::: preview
+
   Euler's identity $e^{i\pi}+1=0$ is a beautiful formula in $\mathbb{R}^2$.
 
-  ```md
-  Euler's identity $e^{i\pi}+1=0$ is a beautiful formula in $\mathbb{R}^2$.
-  ```
+  :::
 
 - Display mode:
 
@@ -52,29 +52,26 @@ export default {
   $$
   ```
 
+  ::: preview
+
   $$
   \frac {\partial^r} {\partial \omega^r} \left(\frac {y^{\omega}} {\omega}\right)
   = \left(\frac {y^{\omega}} {\omega}\right) \left\{(\log y)^r + \sum_{i=1}^r \frac {(-1)^ Ir \cdots (r-i+1) (\log y)^{ri}} {\omega^i} \right\}
   $$
 
-  ```md
-  $$
-  \frac {\partial^r} {\partial \omega^r} \left(\frac {y^{\omega}} {\omega}\right)
-  = \left(\frac {y^{\omega}} {\omega}\right) \left\{(\log y)^r + \sum_{i=1}^r \frac {(-1)^ Ir \cdots (r-i+1) (\log y)^{ri}} {\omega^i} \right\}
-  $$
-  ```
+  :::
 
-::: tip Escaping
+:::: tip Escaping
 
 Escaping can be done by using `\` before the `$` character, or adding space both before and after the `$` character.
 
-The $a=1$ is a TeX equation, while $ a=1 $ and \$a=1$ is not.
+::: preview
 
-```md
 The $a=1$ is a TeX equation, while $ a=1 $ and \$a=1$ is not.
-```
 
 :::
+
+::::
 
 ## Support List
 

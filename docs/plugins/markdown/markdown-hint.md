@@ -35,6 +35,8 @@ export default {
 
 By default, we support `important`, `info`, `note`, `tip`, `warning`, `danger`, `details` containers with markdown container:
 
+:::: preview
+
 ::: tip
 
 A custom tip container with `code`, [link](#demo).
@@ -45,43 +47,28 @@ const a = 1
 
 :::
 
-````md
-::: tip
-
-A custom tip container with `code`, [link](#demo).
-
-```js
-const a = 1
-```
-
-:::
-````
+::::
 
 To customize the title of the container, you can add the title after the named container:
 
+:::: preview
+
 ::: important Custom Title
 
 A important container with customized title.
 
 :::
 
-```md
-::: important Custom Title
-
-A important container with customized title.
-
-:::
-```
+::::
 
 The container can contain a title only:
 
+:::: preview
+
 ::: warning A warning text
 :::
 
-```md
-::: warning A warning text
-:::
-```
+::::
 
 The plugin also provides an `alert` option to support gfm alerts:
 

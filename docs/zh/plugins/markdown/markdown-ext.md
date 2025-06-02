@@ -36,7 +36,7 @@ export default {
 
 - 如果脚注包含多个段落，其后的段落应当保持双层缩进。
 
-::: details 示例
+::: preview
 
 脚注 1 链接[^链接1]。
 
@@ -51,22 +51,6 @@ export default {
     也可以由多个段落组成
 
 [^链接2]: 脚注文字。
-
-```md
-脚注 1 链接[^链接1]。
-
-脚注 2 链接[^链接2]。
-
-行内的脚注^[行内脚注文本] 定义。
-
-重复的页脚定义[^second]。
-
-[^链接1]: 脚注 **可以包含特殊标记**
-
-    也可以由多个段落组成
-
-[^链接2]: 脚注文字。
-```
 
 :::
 
@@ -75,15 +59,10 @@ export default {
 - 使用 `- [ ] 一些文字` 渲染一个未勾选的任务项
 - 使用 `- [x] 一些文字` 渲染一个勾选了的任务项 (我们也支持大写的 `X`)
 
-::: details 示例
+::: preview
 
 - [ ] 计划 A
 - [x] 计划 B
-
-```md
-- [ ] 计划 A
-- [x] 计划 B
-```
 
 :::
 
@@ -109,7 +88,7 @@ export default {
   ```
   ````
 
-::: details 示例
+::: preview
 
 ```component Badge
 text: Mr.Hope
@@ -122,20 +101,6 @@ type: tip
   "type": "tip"
 }
 ```
-
-````md
-```component Badge
-text: Mr.Hope
-type: tip
-```
-
-```component Badge
-{
-  "text": "Mr.Hope",
-  "type": "tip"
-}
-```
-````
 
 :::
 
@@ -143,21 +108,13 @@ type: tip
 
 你可以使用 `v-pre` 容器来渲染将任何 mustache 语法作为纯文本渲染。
 
-:::: details 示例
+:::: preview
 
 ::: v-pre
 
 {{ abc }}
 
 :::
-
-```md
-::: v-pre
-
-{{ abc }}
-
-:::
-```
 
 ::::
 

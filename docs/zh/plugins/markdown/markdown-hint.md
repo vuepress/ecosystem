@@ -35,6 +35,8 @@ export default {
 
 默认情况下，我们支持 `important`、`info`、`note`、`tip`、`warning`、`danger`、`details` 容器与 markdown 容器：
 
+:::: preview
+
 ::: tip
 
 一个带有 `code`、[链接](#demo) 的自定义提示容器。
@@ -45,43 +47,28 @@ const a = 1
 
 :::
 
-````md
-::: tip
-
-一个带有 `code`、[链接](#demo) 的自定义提示容器。
-
-```js
-const a = 1
-```
-
-:::
-````
+::::
 
 要自定义容器的标题，你可以在命名容器后添加标题：
 
+:::: preview
+
 ::: important 自定义标题
 
 一个带有自定义标题的重要容器。
 
 :::
 
-```md
-::: important 自定义标题
-
-一个带有自定义标题的重要容器。
-
-:::
-```
+::::
 
 容器可以只包含一个标题：
 
+:::: preview
+
 ::: warning 警告文字
 :::
 
-```md
-::: warning 警告文字
-:::
-```
+::::
 
 插件也提供了 `alert` 选项，以支持 GFM 警告：
 
