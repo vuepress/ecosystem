@@ -5,60 +5,56 @@
 ### repo
 
 - Type: `string`
-- Details: The name of repository to store discussions.
+- Required: Yes
+- Details: The name of repository to store discussions
 
 ### repoId
 
 - Type: `string`
-- Details:
-  The ID of repository to store discussions. Generate through [Giscus Page](https://giscus.app/)
+- Required: Yes
+- Details: The ID of repository to store discussions. Generate through [Giscus Page](https://giscus.app/)
 
 ### category
 
 - Type: `string`
-- Details:
-  The name of the discussion category.
+- Required: Yes
+- Details: The name of the discussion category
 
 ### categoryId
 
 - Type: `string`
-- Details:
-  The ID of the discussion category. Generate through [Giscus Page](https://giscus.app/)
+- Required: Yes
+- Details: The ID of the discussion category. Generate through [Giscus Page](https://giscus.app/)
 
 ### mapping
 
 - Type: `string`
 - Default: `"pathname"`
-- Details:
-  Page - Discussion mapping. For details see [Giscus Page](https://giscus.app/)
+- Details: Page - Discussion mapping. For details see [Giscus Page](https://giscus.app/)
 
 ### strict
 
 - Type: `boolean`
 - Default: `true`
-- Details:
-  Whether enable strict mapping or not
+- Details: Whether enable strict mapping
 
 ### lazyLoading
 
 - Type: `boolean`
 - Default: `true`
-- Details:
-  Whether enable lazy loading or not
+- Details: Whether enable lazy loading
 
 ### reactionsEnabled
 
 - Type: `boolean`
 - Default: `true`
-- Details:
-  Whether enable reactions or not
+- Details: Whether enable reactions
 
 ### inputPosition
 
 - Type: `"top" | "bottom"`
 - Default: `"top"`
-- Details:
-  Input position
+- Details: Input position
 
 ### lightTheme
 

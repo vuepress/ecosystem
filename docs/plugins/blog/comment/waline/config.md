@@ -6,7 +6,7 @@
 
 - Type: `string`
 - Required: Yes
-- Details: Waline server address url
+- Details: Waline server address URL
 
 ### emoji
 
@@ -46,43 +46,27 @@
 - Default: `['//unpkg.com/@waline/emojis@1.1.0/weibo']`
 - Reference:
   - [Guide → Emoji](https://waline.js.org/en/guide/features/emoji.html)
-- Details: Emoji settings.
+- Details: Emoji settings
 
 ### dark
 
 - Type: `string | boolean`
 - Default: `false`
 - Reference:
-
   - [Custom Style](https://waline.js.org/en/guide/features/style.html)
-
-- Details:
-
-  Dark mode support
-
-  - Setting a boolean will set the dark mode according to its value.
-  - Set it to `'auto'` will display darkmode due to device settings.
-  - Filling in a CSS selector will enable darkmode only when the selector match waline ancestor nodes.
+- Details: Dark mode support. Setting a boolean will set the dark mode according to its value. Set it to `'auto'` will display darkmode due to device settings. Filling in a CSS selector will enable darkmode only when the selector match waline ancestor nodes.
 
 ### commentSorting
 
 - Type: `WalineCommentSorting`
 - Default: `'latest'`
-- Details:
-
-  Comment list sorting methods.
-
-  Optional values: `'latest'`, `'oldest'`, `'hottest'`
+- Details: Comment list sorting methods, should be one of `'latest'`, `'oldest'`, `'hottest'`
 
 ### meta
 
 - Type: `string[]`
 - Default: `['nick','mail','link']`
-- Details:
-
-  Reviewer attributes.
-
-  Optional values: `'nick'`, `'mail'`, `'link'`
+- Details: Reviewer attributes, should be one of `'nick'`, `'mail'`, `'link'`
 
 ### requiredMeta
 
@@ -90,7 +74,7 @@
 - Default: `[]`
 - Details:
 
-  Set required fields, optional values:
+  Set required fields, available values:
 
   - `[]`
   - `['nick']`
@@ -102,7 +86,7 @@
 - Default value: `'enable'`
 - Details:
 
-  Login mode status, optional values:
+  Login mode status, available values:
 
   - `'enable'`: enable login (default)
   - `'disable'`: Login is disabled, users should fill in information to comment

@@ -13,7 +13,28 @@ import { walineLocalesInfo } from './locales.js'
 import type { CommentPluginOptions } from './options.js'
 import { CLIENT_FOLDER, PLUGIN_NAME, logger } from './utils.js'
 
-/** Comment Plugin */
+/**
+ * Comment plugin for VuePress
+ *
+ * VuePress 评论插件
+ *
+ * @param options Plugin options
+ * @returns VuePress plugin
+ *
+ * @example
+ * ```ts
+ * import { commentPlugin } from '@vuepress/plugin-comment'
+ *
+ * export default {
+ *   plugins: [
+ *     commentPlugin({
+ *       provider: 'Waline',
+ *       serverURL: 'https://waline.example.com'
+ *     })
+ *   ]
+ * }
+ * ```
+ */
 export const commentPlugin =
   (options: CommentPluginOptions): PluginFunction =>
   (app) => {

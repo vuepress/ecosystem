@@ -1,3 +1,8 @@
+/**
+ * Base comment plugin options
+ *
+ * 基础评论插件选项
+ */
 export interface BaseCommentPluginOptions {
   /**
    * Whether enable comment by default

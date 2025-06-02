@@ -1,5 +1,10 @@
 import type { BaseCommentPluginOptions } from './base.js'
 
+/**
+ * Twikoo initialization options
+ *
+ * Twikoo 初始化选项
+ */
 export interface TwikooInitOptions {
   /**
    * Environment ID for tencloud or Link for Vercel
@@ -18,4 +23,9 @@ export interface TwikooInitOptions {
   region?: string
 }
 
+/**
+ * Twikoo comment options
+ *
+ * Twikoo 评论选项
+ */
 export type TwikooOptions = BaseCommentPluginOptions & TwikooInitOptions
