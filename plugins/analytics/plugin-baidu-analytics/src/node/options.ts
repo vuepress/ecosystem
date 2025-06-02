@@ -3,7 +3,9 @@
  */
 export interface BaiduAnalyticsPluginOptions {
   /**
-   * The Measurement ID of baidu Analytics
+   * Baidu Analytics tracking ID
+   *
+   * @description The ID found in the `hm.js` URL from Baidu Analytics tracking code
    */
   id: string
 }
