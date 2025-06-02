@@ -6,113 +6,97 @@ export const previewLocaleInfo: DefaultLocaleInfo<MarkdownPreviewPluginLocaleDat
     [
       ['en', 'en-US'],
       {
-        show: 'Show code',
-        hide: 'Hide code',
+        toggle: 'Toggle code',
       },
     ],
     [
       ['zh', 'zh-CN', 'zh-Hans'],
       {
-        show: '显示代码',
-        hide: '隐藏代码',
+        toggle: '切换代码',
       },
     ],
     [
       ['zh-TW', 'zh-Hant'],
       {
-        show: '顯示程式碼',
-        hide: '隱藏程式碼',
+        toggle: '切換程式碼',
       },
     ],
     [
       ['de', 'de-DE'],
       {
-        show: 'Code anzeigen',
-        hide: 'Code ausblenden',
+        toggle: 'Code umschalten',
       },
     ],
     [
       ['de-AT'],
       {
-        show: 'Code anzeigen',
-        hide: 'Code ausblenden',
+        toggle: 'Code umschalten',
       },
     ],
     [
       ['vi', 'vi-VN'],
       {
-        show: 'Hiện mã',
-        hide: 'Ẩn mã',
+        toggle: 'Chuyển đổi mã',
       },
     ],
     [
       ['uk'],
       {
-        show: 'Показати код',
-        hide: 'Приховати код',
+        toggle: 'Перемкнути код',
       },
     ],
     [
       ['fr', 'fr-FR'],
       {
-        show: 'Afficher le code',
-        hide: 'Masquer le code',
+        toggle: 'Basculer le code',
       },
     ],
     [
       ['es', 'es-ES'],
       {
-        show: 'Mostrar código',
-        hide: 'Ocultar código',
+        toggle: 'Alternar código',
       },
     ],
     [
       ['it', 'it-IT'],
       {
-        show: 'Mostra codice',
-        hide: 'Nascondi codice',
+        toggle: 'Attiva/disattiva codice',
       },
     ],
     [
       ['ja', 'ja-JP'],
       {
-        show: 'コードを表示',
-        hide: 'コードを非表示',
+        toggle: 'コードを切り替え',
       },
     ],
     [
       ['ko', 'ko-KR'],
       {
-        show: '코드 보기',
-        hide: '코드 숨기기',
+        toggle: '코드 전환',
       },
     ],
     [
       ['tr', 'tr-TR'],
       {
-        show: 'Kodu göster',
-        hide: 'Kodu gizle',
+        toggle: 'Kodu değiştir',
       },
     ],
     [
       ['pt', 'pt-PT'],
       {
-        show: 'Mostrar código',
-        hide: 'Ocultar código',
+        toggle: 'Alternar código',
       },
     ],
     [
       ['pt-BR'],
       {
-        show: 'Mostrar código',
-        hide: 'Ocultar código',
+        toggle: 'Alternar código',
       },
     ],
     [
       ['ru', 'ru-RU'],
       {
-        show: 'Показать код',
-        hide: 'Скрыть код',
+        toggle: 'Переключить код',
       },
     ],
   ]

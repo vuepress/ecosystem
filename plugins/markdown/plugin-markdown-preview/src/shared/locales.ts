@@ -2,14 +2,9 @@ import type { ExactLocaleConfig } from '@vuepress/helper'
 
 export interface MarkdownPreviewPluginLocaleData {
   /**
-   * Show code button text
+   * toggle code button text
    */
-  show: string
-
-  /**
-   * Hide code button text
-   */
-  hide: string
+  toggle: string
 }
 
 export type MarkdownPreviewPluginLocaleConfig =
