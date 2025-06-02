@@ -1,11 +1,6 @@
 import type { RequiredSlot } from '@vuepress/helper/client'
 import { useLocale } from '@vuepress/helper/client'
-import {
-  useEventListener,
-  useMounted,
-  useResizeObserver,
-  useToggle,
-} from '@vueuse/core'
+import { useEventListener, useResizeObserver, useToggle } from '@vueuse/core'
 import type { PropType, SlotsType, VNode } from 'vue'
 import { defineComponent, h, ref, shallowRef, useId } from 'vue'
 import type { MarkdownPreviewPluginLocaleConfig } from '../../shared/index.js'
@@ -57,7 +52,6 @@ export default defineComponent({
 
   setup(props, { slots }) {
     const locale = useLocale(props.locales)
-    const isMounted = useMounted()
     const [isExpanded, toggleIsExpand] = useToggle(false)
     const codeContainer = shallowRef<HTMLDivElement>()
     const height = ref('0')
@@ -114,7 +108,7 @@ export default defineComponent({
               'class': 'vp-preview-toggle-button',
               'title': locale.value[isExpanded.value ? 'hide' : 'show'],
               'aria-expanded': isExpanded.value,
-              'aria-controls': isMounted.value ? uniqueId : null,
+              'aria-controls': uniqueId,
               'onClick': () => {
                 toggle()
               },
@@ -123,7 +117,7 @@ export default defineComponent({
           h(
             'div',
             {
-              'id': isMounted.value ? uniqueId : null,
+              'id': uniqueId,
               'class': 'vp-preview-code-wrapper',
               'style': { height: height.value },
               'data-allow-mismatch': 'attribute',
