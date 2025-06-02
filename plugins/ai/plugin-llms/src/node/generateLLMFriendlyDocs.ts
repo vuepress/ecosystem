@@ -5,7 +5,10 @@ import type { LLMPage, LLMState } from './types.js'
 import { generateLink, logger } from './utils/index.js'
 
 /**
- * Generate llm friendly docs
+ * Generate LLM-friendly documentation files for each page
+ *
+ * @param llmPages - Array of LLM pages to process
+ * @param state - State object containing generation options
  */
 export const generateLLMFriendlyDocs = async (
   llmPages: LLMPage[],

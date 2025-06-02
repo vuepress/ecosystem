@@ -68,35 +68,34 @@ export default {
 
 > Description 描述
 
-Details 详情 （可选）
+详情（可选）
 
-## Table Of Content
+## Table of Contents
 
 - [title](url): description
 - [title](url): description
 - …
 ```
 
-- **站点标题**: 根据以下顺序取值：
+- **站点标题**：根据以下顺序取值：
 
-  1. `llmTemplateGetter.title`
-  1. 首页 (语言 `README.md`) Frontmatter 中的 `heroText`
+  1. `llmsTxtTemplateGetter.title`
+  1. 首页 frontmatter 中的 `heroText`
   1. VuePress 配置文件中当前语言的 [title](https://v2.vuepress.vuejs.org/zh/reference/config.html#locales)
   1. VuePress 配置文件中的 [title](https://v2.vuepress.vuejs.org/zh/reference/config.html#title)
-  1. 首页 (`README.md`) 的第一个 **h1** 标题（单个 `#` 的标题）
   1. 首页 (`README.md`) 的页面标题
 
-- **站点描述**: 根据以下顺序取值：
+- **站点描述**：根据以下顺序取值：
 
-  1. `llmTemplateGetter.description`
-  1. 首页 (语言 `README.md`) Frontmatter 中的 `tagline`
+  1. `llmsTxtTemplateGetter.description`
+  1. 首页 frontmatter 中的 `tagline`
   1. VuePress 配置文件中当前语言的 [description](https://v2.vuepress.vuejs.org/zh/reference/config.html#locales)
   1. VuePress 配置文件中的 [description](https://v2.vuepress.vuejs.org/zh/reference/config.html#description)
   1. 首页 (`README.md`) 的 `frontmatter.description`
 
-- **站点详情（可选）**: 根据以下顺序取值：
+- **站点详情（可选）**：根据以下顺序取值：
 
-  1. `llmTemplateGetter.details`
+  1. `llmsTxtTemplateGetter.details`
   2. 首页 (`README.md`) 的 `frontmatter.details`
 
 - **目录（TOC）**：格式为 `- [title](url): description`，其中 `description` 从 `frontmatter.description` 中取值，如果不存在则仅显示 `- [title](url)`。
@@ -147,57 +146,59 @@ description: 描述
 
 ### llmsTxt
 
-- 类型: `boolean`
+- 类型：`boolean`
 
-- 默认值: `true`
+- 默认值：`true`
 
-- 详情: 是否生成包含章节及其链接列表的 `llms.txt` 文件。
+- 详情：是否生成包含章节及其链接列表的 `llms.txt` 文件。
 
 ### llmsFullTxt
 
-- 类型: `boolean`
+- 类型：`boolean`
 
-- 默认值: `true`
+- 默认值：`true`
 
-- 详情: 是否生成包含所有文档的单一文件 `llms-full.txt`。
+- 详情：是否生成包含所有文档的单一文件 `llms-full.txt`。
 
 ### llmsPageTxt
 
-- 类型: `boolean`
+- 类型：`boolean`
 
-- 默认值: `true`
+- 默认值：`true`
 
-- 详情: 是否为网站上的每个页面生成一个对LLM（大语言模型）友好的文档版本。
+- 详情：是否为网站上的每个页面生成 LLM 友好的文档版本。
 
 ### stripHTML
 
-- 类型: `boolean`
+- 类型：`boolean`
 
-- 默认值: `true`
+- 默认值：`true`
 
-- 详情: 是否需要从 Markdown 文件中剥离 HTML 标签
+- 详情：是否从 Markdown 文件中剥离 HTML 标签。
 
 ### filter
 
-- 类型： `(page: Page) => boolean`
+- 类型：`(page: Page) => boolean`
 
-- 默认值： `() => true`
+- 默认值：`() => true`
 
-- 详情：
+- 详情:
 
-  页面过滤器，当返回 `true` 时，页面将被包含在 `llms.txt` 中，否则将被排除在外。
+  页面过滤函数，当返回 `true` 时，页面将被包含在 `llms.txt` 中，否则将被排除。
+
+  被 `frontmatter.llmstxt` 禁用或不是从 Markdown 文件生成的页面将自动排除。
 
 ### domain
 
-- 类型： `string`
+- 类型：`string`
 
-- 默认值： `''`
+- 默认值：`''`
 
-- 详情：
+- 详情:
 
-  附加到 `llms.txt` 中 URL 开头以及其他文件上下文中的域名
+  将在 `llms.txt` 和其他文件中作为 URL 前缀的域名。
 
-  是否附加域名尚未达成一致（因为这取决于 AI 是否能解析当前存在的相对路径），但如果你愿意，可以添加它。
+  域名是否应该添加到链接中还没有标准（因为这取决于 AI 是否能够解析当前的相对路径），但如果需要可以添加。
 
   ```md title="llms.txt"
   - [title](/foo/bar.md) <!-- [!code --] -->
@@ -210,19 +211,19 @@ description: 描述
 
 - 默认值：`'/'`
 
-- 详情：
+- 详情:
 
-  生成的站点的语言环境。如果未设置，插件将使用 VuePress 站点的默认语言环境。如果将其设置为 `all`，插件将为所有语言环境生成 `llms.txt`。
+  要生成的站点语言环境。如果未设置，插件将使用 VuePress 站点的默认语言环境。如果设置为 `'all'`，插件将为所有语言环境生成 `llms.txt`。
 
-  此选项在你有多个语言环境并希望为特定语言环境（应具有最佳文档质量）生成 `llms.txt` 时非常有用。
+  当你有多个语言环境并希望为特定语言环境生成 `llms.txt` 时，此选项非常有用，该语言环境应该有最佳的文档质量。
 
-  此外，如果你有许多 LLMs 无法理解或正确翻译自定义概念，你应考虑为每个语言环境生成 `llms.txt`，以避免与 LLMs 的翻译和原始文档之间的不同表示造成混淆。
+  此外，如果你有许多 LLM 无法理解或正确翻译的自定义概念，你应该考虑为每个语言环境生成 `llms.txt`，以避免 LLM 翻译和原始文档的不同表述产生混淆。
 
 ### llmsTxtTemplate
 
-- 类型： `string`
+- 类型：`string`
 
-- 默认值：
+- 默认值:
 
   ```ts
   const DEFAULT_LLMSTXT_TEMPLATE = `\
@@ -237,9 +238,9 @@ description: 描述
   {toc}`
   ```
 
-- 详情：
+- 详情:
 
-  `llms.txt` 文件的自定义模板，允许个性化元素的顺序。
+  `llms.txt` 文件的自定义模板，允许自定义元素的顺序。
 
   默认情况下，`{title}`、`{description}`、`{details}` 和 `{toc}` 可用。
 
@@ -249,12 +250,12 @@ description: 描述
 
   ```ts
   /**
-   * 表示生成链接的链接扩展选项
+   * 生成链接的扩展名类型
    */
   export type LinksExtension = '.html' | '.md'
 
   /**
-   * 表示一个已准备好的页面，包括其标题和路径。
+   * 准备好的页面，包括其标题和路径
    */
   export interface LLMPage extends Page {
     /**
@@ -272,6 +273,9 @@ description: 描述
     excerpt: string
   }
 
+  /**
+   * 生成目录的选项
+   */
   export interface LLMState {
     /**
      * VuePress 应用实例
@@ -279,17 +283,17 @@ description: 描述
     app: App
 
     /**
-     * 基本 URL
+     * 基础 URL
      */
     base: string
 
     /**
-     * 可选的域名，用于在 URL 前缀
+     * 可选的域名前缀
      */
     domain?: string
 
     /**
-     * 生成链接的链接扩展
+     * 生成链接的扩展名
      */
     linkExtension?: LinkExtension
 
@@ -312,7 +316,7 @@ description: 描述
   export type TemplateGetter = (pages: LLMPage[], state: LLMState) => string
 
   export interface TemplateGetterOptions {
-    /** Any custom variable */
+    /** 任何自定义变量 */
     [key: string]: TemplateGetter | string | undefined
   }
   ```
@@ -330,18 +334,30 @@ description: 描述
   ```ts
   llmsPlugin({
     llmsTxtTemplateGetter: {
-      title: 'Very custom title',
+      title: 'My title',
     },
   })
   ```
 
-  还可以将其与自定义模板结合使用：
+  或添加自定义变量 `foo` 到模板中：
 
   ```ts
   llmsPlugin({
     llmsTxtTemplate: '# {title}\n\n{foo}',
     llmsTxtTemplateGetter: {
-      foo: 'Very custom title',
+      foo: 'My foo',
+    },
+  })
+  ```
+
+  你也可以向模板添加获取函数：
+
+  ```ts
+  llmsPlugin({
+    llmsTxtTemplate: '# {title}\n\n## Pages\n\n{titles}',
+    llmsTxtTemplateGetter: {
+      titles: (pages, state) =>
+        pages.map((page) => `- ${page.title}`).join('\n'),
     },
   })
   ```
@@ -356,9 +372,9 @@ description: 描述
 
 - 详情：
 
-  在首页（`README.md`）中时，作为 `llms.txt` 的标题的备选项。
+  在首页（`README.md`）中，作为 `llms.txt` 的标题替代选项。
 
-  在其它页面中时，作为页面标题。
+  在其他页面中，作为页面标题。
 
 ### description {#frontmatter-description}
 
@@ -366,11 +382,11 @@ description: 描述
 
 - 详情：
 
-  在 首页（`README.md`）中时，作为 `llms.txt` 的描述的备选项。
+  在首页（`README.md`）中，作为 `llms.txt` 的描述替代选项。
 
-  在其它页面中时，作为页面描述。
+  在其他页面中，作为页面描述。
 
-  推荐为页面添加简明扼要的描述，提供给 LLM 读取页面关键信息。
+  建议为页面添加简洁明了的描述，为 LLM 提供理解页面的关键信息。
 
 ### heroText {#frontmatter-herotext}
 
@@ -378,7 +394,7 @@ description: 描述
 
 - 详情：
 
-  只在首页（`README.md`）中时，作为 `llms.txt` 的标题。
+  仅在首页（`README.md`）中读取，作为 `llms.txt` 的标题。
 
 ### tagline {#frontmatter-tagline}
 
@@ -386,7 +402,7 @@ description: 描述
 
 - 详情：
 
-  只在首页（`README.md`）中时，作为 `llms.txt` 的描述。
+  仅在首页（`README.md`）中读取，作为 `llms.txt` 的描述。
 
 ### details {#frontmatter-details}
 
@@ -404,15 +420,15 @@ description: 描述
 
 - 详情： 在 `llms.txt` 文件中是否包含当前页面。
 
-## 其它
+## 其他{#others}
 
-建议配置重定向，以便AI可以使用.md和.txt扩展名的地址。
+建议配置重定向，以便 AI 可以使用 `.md` 和 `.txt` 扩展名的地址。
 
-比如在 `Netlify` 中，在 `public/_redirects` 中配置如下：
+例如，在 `Netlify` 中，在 `public/_redirects` 中配置如下：
 
 ```txt
 /llms.md         /llms.txt 200!
 /llms-full.md    /llms-full.txt 200!
 ```
 
-配置语法说明：<https://docs.netlify.com/routing/redirects>
+配置文档：<https://docs.netlify.com/routing/redirects>

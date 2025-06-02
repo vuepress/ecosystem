@@ -16,7 +16,10 @@ import {
 const PAGE_SEPARATOR = '\n---\n\n'
 
 /**
- * Generate `llms-full.txt`
+ * Generate `llms-full.txt` file with all page contents
+ *
+ * @param llmPages - Array of LLM pages to include
+ * @param state - State object containing generation options
  */
 export const generateLLMsFullTxt = async (
   llmPages: LLMPage[],

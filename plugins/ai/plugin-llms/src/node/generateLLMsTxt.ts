@@ -13,7 +13,11 @@ type GenerateLLMsTxtOptions = Required<
 >
 
 /**
- * Generate `llms.txt`
+ * Generate `llms.txt` file with table of contents
+ *
+ * @param pages - Array of LLM pages to include
+ * @param state - State object containing generation options
+ * @param options - Template and template getter options
  */
 export const generateLLMsTxt = async (
   pages: LLMPage[],

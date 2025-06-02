@@ -6,13 +6,11 @@ export const withBase = (link: string, base: string): string =>
   link.startsWith(base) ? link : `${base}${removeLeadingSlash(link)}`
 
 /**
- * Generates a complete link by combining a domain, path, and an optional extension.
+ * Generate a complete link with domain, base, and extension
  *
- * @param path - The path to append to the domain (e.g., "/guide.html").
- * @param base - The prefix base path of the link (e.g., "/").
- * @param domain - The base domain of the link (e.g., "https://example.com").
- * @param extension - An optional extension to append to the path (e.g., ".md").
- * @returns The generated link
+ * @param path - Page path (e.g., "/guide.html")
+ * @param state - State object containing base, domain, and link extension
+ * @returns Generated link with all components
  */
 export const generateLink = (
   path: string,

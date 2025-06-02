@@ -1,8 +1,12 @@
 const MARKDOWN_TITLE_REGEXP = /^#[^#][\s]*(.+?)#*?$/m
 
 /**
- * Extracts the title from a markdown string.
- * The title is defined as the first line that starts with a single `#` character.
+ * Extract title from markdown string
+ *
+ * Title is defined as the first line starting with a single `#` character
+ *
+ * @param markdown - Markdown content to extract title from
+ * @returns Extracted title or undefined if not found
  */
 export const extractTitle = (markdown: string): string | undefined => {
   const matches = markdown.match(MARKDOWN_TITLE_REGEXP)

@@ -2,31 +2,31 @@ import type { App, Page } from 'vuepress/core'
 import type { SiteLocaleData } from 'vuepress/shared'
 
 /**
- * Represents the link extension options for generated links.
+ * Link extension options for generated links
  *
- * 表示生成链接的链接扩展选项
+ * 生成链接的扩展名选项
  */
 export type LinkExtension = '.html' | '.md'
 
 /**
- * Represents a prepared page, including its title and path.
+ * Page with additional LLM-friendly content
  *
- * 表示一个已准备好的页面，包括其标题和路径。
+ * 包含额外 LLM 友好内容的页面
  */
 export interface LLMPage extends Page {
   /**
-   * The content of the markdown file.
+   * The page's Markdown content
    *
-   * 页面的 markdown 内容
+   * 页面的 Markdown 内容
    *
    * @example '# Guide\n\nA guide'
    */
   markdown: string
 
   /**
-   * The excerpt of the page.
+   * The page's excerpt
    *
-   * 页面的摘要
+   * 页面摘要
    *
    * @example 'Introduction to the guide'
    */
@@ -34,41 +34,43 @@ export interface LLMPage extends Page {
 }
 
 /**
- * LLM state
+ * State object for LLM text generation
+ *
+ * LLM 文本生成的状态对象
  */
 export interface LLMState {
   /**
-   * The VuePress app instance.
+   * VuePress app instance
    *
    * VuePress 应用实例
    */
   app: App
 
   /**
-   * Base URL
+   * Site base URL
    *
-   * 基本 URL
+   * 站点基础 URL
    */
   base: string
 
   /**
-   * Optional domain to prefix URLs with.
+   * Optional domain to prepend to URLs
    *
-   * 可选的域名，用于在 URL 前缀
+   * 可选的域名前缀
    */
   domain?: string
 
   /**
-   * The link extension for generated links.
+   * Link extension for generated links
    *
-   * 生成链接的链接扩展
+   * 生成链接的扩展名
    */
   linkExtension?: LinkExtension
 
   /**
-   * The path of the current locale.
+   * Current locale path
    *
-   * 当前语言环境的路径
+   * 当前语言环境路径
    */
   currentLocale: string
 
@@ -80,9 +82,9 @@ export interface LLMState {
   siteLocale: SiteLocaleData
 
   /**
-   * Whether to generate llms.txt files for all locales.
+   * Whether to generate files for all locales
    *
-   * 是否为所有语言环境生成 llms.txt 文件
+   * 是否为所有语言环境生成文件
    */
   allLocales: boolean
 }
@@ -91,40 +93,40 @@ export type TemplateGetter = (pages: LLMPage[], state: LLMState) => string
 
 export interface TemplateGetterOptions {
   /**
-   * The title
+   * Site title
    *
-   * @description Extracted from the frontmatter or the first h1 heading in the main document (`README.md`) by default
+   * Extracted from frontmatter or first h1 heading in main document (`README.md`) by default
    *
-   * 标题
+   * 站点标题
    *
-   * @description 默认从 frontmatter 部分或主文档（`README.md`）中第一个 h1 标题提取的标题。
+   * 默认从 frontmatter 或主文档（`README.md`）中的第一个 h1 标题提取
    *
-   * @example 'Awesome tool'
+   * @example 'Awesome Tool'
    */
   title?: TemplateGetter | string
 
   /**
-   * Project description.
+   * Site description
    *
-   * 项目描述。
+   * 站点描述
    *
    * @example 'Blazing fast build tool'
    */
   description?: TemplateGetter | string
 
   /**
-   * The details.
+   * Additional details about the site
    *
-   * 详情。
+   * 站点的额外详情
    *
    * @example 'A multi-user version of the notebook designed for companies, classrooms and research labs'
    */
   details?: TemplateGetter | string
 
   /**
-   * An automatically generated **T**able **O**f **C**ontents.
+   * Automatically generated **T**able **o**f **C**ontents
    *
-   * 自动生成的**T**oc**O**c**C**nts。
+   * 自动生成的目录
    *
    * @example
    * ```md

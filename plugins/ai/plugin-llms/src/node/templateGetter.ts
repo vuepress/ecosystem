@@ -70,14 +70,13 @@ export const defaultAlternateLinksGetter: TemplateGetter = (_pages, state) => {
 }
 
 /**
- * Generates a Table of Contents (TOC) for the provided prepared pages.
+ * Generate Table of Contents for the provided pages
  *
- * Each entry in the TOC is formatted as a markdown link to the corresponding
- * text file.
+ * Each entry is formatted as a markdown link to the corresponding file
  *
- * @param pages - An array of prepared pages.
- * @param state - Options for generating the TOC.
- * @returns A string representing the formatted Table of Contents.
+ * @param pages - Array of LLM pages
+ * @param state - State object containing generation options
+ * @returns Formatted Table of Contents as markdown string
  */
 export const defaultTOCGetter: TemplateGetter = (pages, state): string =>
   pages.map((page) => generateTOCLink(page, state)).join('')

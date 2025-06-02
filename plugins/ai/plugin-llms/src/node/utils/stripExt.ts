@@ -1,10 +1,10 @@
 import { path } from 'vuepress/utils'
 
 /**
- * Strips the file extension from a given file path.
+ * Strip file extension from path
  *
- * @param filepath - The path to the file.
- * @returns The filename without the extension.
+ * @param filepath - File path to process
+ * @returns Path without extension
  */
 export const stripExt = (filepath: string): string => {
   const ext = path.extname(filepath)

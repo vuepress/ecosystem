@@ -1,33 +1,34 @@
 /**
- * Creates a regular expression to match a specific template variable in the format `{key}`.
+ * Create regex to match template variable in format `{key}`
  *
- * @param key - The name of the template variable to match.
- * @returns A case-insensitive regular expression that detects `{key}` occurrences in a string.
+ * @param key - Template variable name to match
+ * @returns Case-insensitive regex that detects `{key}` occurrences
  *
  * @example
  * ```ts
- * const regex = templateVariable('name');
- * console.log(regex.test('Hello {name}')); // true
+ * const regex = templateVariable('name')
+ * console.log(regex.test('Hello {name}')) // true
  * ```
  */
 const templateVariable = (key: string): RegExp =>
   new RegExp(`(\\n\\s*\\n)?\\{${key}\\}`, 'gi')
 
 /**
- * Replaces occurrences of a template variable `{variable}` in a given content string with a provided value.
- * If the value is empty or undefined, it falls back to a specified fallback value.
+ * Replace template variable `{variable}` with provided value
  *
- * @param content - The template string containing placeholders.
- * @param variable - The template variable name to replace.
- * @param value - The value to replace the variable with.
- * @param fallback - An optional fallback value if `value` is empty.
- * @returns A new string with the template variable replaced.
+ * Falls back to fallback value if value is empty or undefined
+ *
+ * @param content - Template string containing placeholders
+ * @param variable - Template variable name to replace
+ * @param value - Value to replace the variable with
+ * @param fallback - Optional fallback value if `value` is empty
+ * @returns String with template variable replaced
  *
  * @example
  * ```ts
- * const template = 'Hello {name}!';
- * const result = replaceTemplateVariable(template, 'name', 'Alice', 'User');
- * console.log(result); // 'Hello Alice!'
+ * const template = 'Hello {name}!'
+ * const result = replaceTemplateVariable(template, 'name', 'Alice', 'User')
+ * console.log(result) // 'Hello Alice!'
  * ```
  */
 export const replaceTemplateVariable = (
@@ -42,18 +43,18 @@ export const replaceTemplateVariable = (
   })
 
 /**
- * Expands a template string by replacing multiple template variables with their corresponding values.
+ * Expand template string by replacing multiple variables with their values
  *
- * @param template - The template string containing placeholders.
- * @param values - An object mapping variable names to their respective values.
- * @returns A string with all template variables replaced.
+ * @param template - Template string containing placeholders
+ * @param variables - Object mapping variable names to their values
+ * @returns String with all template variables replaced
  *
  * @example
  * ```ts
- * const template = 'Hello {name}, welcome to {place}!';
- * const values = { name: 'Alice', place: 'Wonderland' };
- * const result = expandTemplate(template, values);
- * console.log(result); // 'Hello Alice, welcome to Wonderland!'
+ * const template = 'Hello {name}, welcome to {place}!'
+ * const values = { name: 'Alice', place: 'Wonderland' }
+ * const result = expandTemplate(template, values)
+ * console.log(result) // 'Hello Alice, welcome to Wonderland!'
  * ```
  */
 export const expandTemplate = (
