@@ -9,6 +9,28 @@ const PLUGIN_NAME = '@vuepress/plugin-baidu-analytics'
 
 const logger = new Logger(PLUGIN_NAME)
 
+/**
+ * Baidu Analytics plugin for VuePress
+ *
+ * @param options - Plugin options
+ * @returns VuePress plugin
+ *
+ * @description Integrates Baidu Analytics tracking into VuePress applications.
+ * Only active in production builds when a valid tracking ID is provided.
+ *
+ * @example
+ * ```ts
+ * import { baiduAnalyticsPlugin } from '@vuepress/plugin-baidu-analytics'
+ *
+ * export default {
+ *   plugins: [
+ *     baiduAnalyticsPlugin({
+ *       id: 'your-baidu-analytics-id'
+ *     })
+ *   ]
+ * }
+ * ```
+ */
 export const baiduAnalyticsPlugin =
   ({ id }: BaiduAnalyticsPluginOptions): Plugin =>
   (app) => {
