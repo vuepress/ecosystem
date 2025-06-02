@@ -51,22 +51,19 @@ export default defineComponent({
   }>,
 
   setup(props, { slots }) {
+    // Generate unique ID for accessibility
+    const codeID = `vp-preview-${useId()}`
+
     const locale = useLocale(props.locales)
-    const [isExpanded, toggleIsExpand] = useToggle(false)
+    const [isExpanded, toggleExpanded] = useToggle(false)
     const codeContainer = shallowRef<HTMLDivElement>()
     const height = ref('0')
 
-    // Generate unique ID for accessibility
-    const uniqueId = `vp-preview-${useId()}`
-
-    const toggle = (current?: boolean): void => {
-      isExpanded.value = current ?? !isExpanded.value
-
-      if (isExpanded.value) {
-        height.value = `${codeContainer.value!.clientHeight}px`
-      } else {
-        height.value = '0'
-      }
+    const toggleCode = (value?: boolean): void => {
+      toggleExpanded(value)
+      height.value = isExpanded.value
+        ? `${codeContainer.value!.clientHeight}px`
+        : '0'
     }
 
     let isBeforePrintOpen: boolean = false
@@ -74,13 +71,13 @@ export default defineComponent({
     useEventListener('beforeprint', () => {
       isBeforePrintOpen = isExpanded.value
 
-      toggleIsExpand(true)
+      toggleExpanded(true)
     })
 
     useEventListener('afterprint', () => {
       if (isBeforePrintOpen) return
 
-      toggleIsExpand()
+      toggleExpanded()
     })
 
     useResizeObserver(codeContainer, () => {
@@ -107,17 +104,17 @@ export default defineComponent({
             h('span', {
               'class': 'vp-preview-toggle-button',
               'title': locale.value[isExpanded.value ? 'hide' : 'show'],
+              'aria-controls': codeID,
               'aria-expanded': isExpanded.value,
-              'aria-controls': uniqueId,
               'onClick': () => {
-                toggle()
+                toggleCode()
               },
             }),
           ]),
           h(
             'div',
             {
-              'id': uniqueId,
+              'id': codeID,
               'class': 'vp-preview-code-wrapper',
               'style': { height: height.value },
               'data-allow-mismatch': 'attribute',
