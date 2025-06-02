@@ -11,15 +11,22 @@ import type { LLMState } from './types.js'
 import { logger } from './utils/index.js'
 
 /**
- * llmstxt plugin
+ * Plugin to generate LLM-friendly documentation files
  *
- * @param llmOptions - LlmsPluginOptions
+ * @param llmOptions - Plugin configuration options
  *
  * @example
  * ```ts
  * import { llmsPlugin } from '@vuepress/plugin-llms'
  *
  * export default defineUserConfig({
+ *   plugins: [
+ *     llmsPlugin({
+ *       domain: 'https://example.com',
+ *       llmsTxt: true,
+ *       llmsFullTxt: true,
+ *     }),
+ *   ],
  * })
  * ```
  */

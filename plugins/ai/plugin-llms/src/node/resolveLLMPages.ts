@@ -7,7 +7,7 @@ import type { LlmsPluginOptions } from './options.js'
 import type { LLMPage } from './types.js'
 
 /**
- * Remove html from markdown
+ * Remove HTML from markdown AST
  */
 const cleanMarkdown: Plugin = () => (tree) => {
   unistRemove(tree, { type: 'html' })
@@ -23,7 +23,11 @@ interface ResolveLLMPagesOptions
 }
 
 /**
- * Resolve llm pages
+ * Resolve and filter pages for LLM processing
+ *
+ * @param app - VuePress app instance
+ * @param options - Filtering and processing options
+ * @returns Array of LLM pages
  */
 export const resolveLLMPages = (
   app: App,

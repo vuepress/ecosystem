@@ -4,36 +4,36 @@ import type { TemplateGetterOptions } from './types'
 
 export interface LlmsPluginOptions {
   /**
-   * The domain being appended in file links
+   * Domain to prepend to file links
    *
-   * 被附加到文件 URL 开头的域名
+   * 添加到文件链接前的域名
    *
    * @example 'https://example.com'
    */
   domain?: string
 
   /**
-   * Whether to generate the `llms.txt`
+   * Whether to generate the `llms.txt` file with site TOC
    *
-   * 是否生成 `llms.txt`
+   * 是否生成包含站点目录的 `llms.txt` 文件
    *
    * @default true
    */
   llmsTxt?: boolean
 
   /**
-   * Whether to generate `llms-full.txt`
+   * Whether to generate the `llms-full.txt` file with all content
    *
-   * 是否生成 `llms-full.txt`
+   * 是否生成包含所有内容的 `llms-full.txt` 文件
    *
    * @default true
    */
   llmsFullTxt?: boolean
 
   /**
-   * Whether to generate llm-friendly text for each page
+   * Whether to generate LLM-friendly text for each page
    *
-   * 是否为每个页面生成适合 LLM 的文本
+   * 是否为每个页面生成 LLM 友好的文本
    *
    * @default true
    */
@@ -42,20 +42,20 @@ export interface LlmsPluginOptions {
   /**
    * Whether to strip HTML tags from Markdown files
    *
-   * 是否需要从 Markdown 文件中剥离 HTML 标签
+   * 是否从 Markdown 文件中剥离 HTML 标签
    *
    * @default true
    */
   stripHTML?: boolean
 
   /**
-   * Locale to be processed, `'all'` for all locales
+   * Locale to process, use `'all'` for all locales
    *
-   * If not set, the root locale will be used.
+   * Defaults to root locale if not set
    *
-   * 待处理的语言环境，`'all'` 表示所有语言环境
+   * 要处理的语言环境，使用 `'all'` 处理所有语言环境
    *
-   * 如果未设置，将使用根语言环境。
+   * 如果未设置，将使用根语言环境
    *
    * @default '/'
    */
@@ -64,16 +64,16 @@ export interface LlmsPluginOptions {
   /**
    * Page filter function
    *
-   * 页面过滤器
+   * 页面过滤函数
    *
    * @default () => true
    */
   filter?: (page: Page) => boolean
 
   /**
-   * Template for `llms.txt`
+   * Custom template for `llms.txt` file
    *
-   * `llms.txt` 的模板
+   * `llms.txt` 文件的自定义模板
    *
    * @default
    * ```md
@@ -91,9 +91,9 @@ export interface LlmsPluginOptions {
   llmsTxtTemplate?: string
 
   /**
-   * Custom variables for {@link LlmsPluginOptions.llmsTxtTemplate | `llmsTxtTemplate`}.
+   * Custom variables for {@link LlmsPluginOptions.llmsTxtTemplate | `llmsTxtTemplate`}
    *
-   * {@link LlmsPluginOptions.llmsTxtTemplate | `llmsTxtTemplate`} 的自定义变量。
+   * {@link LlmsPluginOptions.llmsTxtTemplate | `llmsTxtTemplate`} 的自定义变量
    */
   llmsTxtTemplateGetter?: TemplateGetterOptions
 }

@@ -60,7 +60,7 @@ The plugin only generates the `llms.txt` file, along with other LLM-friendly doc
 
 ### `llms.txt`
 
-The `llms.txt` file contains the **title**, **description**, **details (optional)**, and **Table Of Content(TOC)** for the site.
+The `llms.txt` file contains the **title**, **description**, **details (optional)**, and **Table of Contents (TOC)** for the site.
 
 The default format is as follows:
 
@@ -71,7 +71,7 @@ The default format is as follows:
 
 Details (Optional)
 
-## Table Of Content
+## Table of Contents
 
 - [title](url): description
 - [title](url): description
@@ -80,28 +80,28 @@ Details (Optional)
 
 - **Site Title**: Values are determined in the following order:
 
-  1. `llmTemplateGetter.title`
-  1. `heroText` in homepage frontmatter.
-  1. Current locale's [title](https://v2.vuepress.vuejs.org/reference/config.html#locales) in VuePress config file.
-  1. [title](https://v2.vuepress.vuejs.org/reference/config.html#title) in VuePress config file.
-  1. Page title of homepage (locale `README.md`)
+  1. `llmsTxtTemplateGetter.title`
+  1. `heroText` in homepage frontmatter
+  1. Current locale's [title](https://v2.vuepress.vuejs.org/reference/config.html#locales) in VuePress config file
+  1. [title](https://v2.vuepress.vuejs.org/reference/config.html#title) in VuePress config file
+  1. Page title of locale homepage (locale `README.md`)
 
 - **Site Description**: Values are determined in the following order:
 
-  1. `llmTemplateGetter.description`
-  1. `tagline` in homepage frontmatter.
-  1. Current locale's [description](https://v2.vuepress.vuejs.org/reference/config.html#locales) in VuePress config file.
-  1. [description](https://v2.vuepress.vuejs.org/reference/config.html#description) in VuePress config file.
-  1. The `frontmatter.description` in the homepage (locale `README.md`)
+  1. `llmsTxtTemplateGetter.description`
+  1. `tagline` in locale homepage frontmatter
+  1. Current locale's [description](https://v2.vuepress.vuejs.org/reference/config.html#locales) in VuePress config file
+  1. [description](https://v2.vuepress.vuejs.org/reference/config.html#description) in VuePress config file
+  1. `frontmatter.description` in locale homepage (locale `README.md`)
 
 - **Site Details (Optional)**: Values are determined in the following order:
 
-  1. `llmTemplateGetter.details`
-  2. The `frontmatter.details` in homepage (`README.md`).
+  1. `llmsTxtTemplateGetter.details`
+  2. `frontmatter.details` in locale homepage (`README.md`)
 
-- **Table Of Content(TOC)**: Formatted as `- [title](url): description`, where `description` is taken from `frontmatter.description`. If it does not exist, only `- [title](url)` is displayed.
+- **Table of Contents (TOC)**: Formatted as `- [title](url): description`, where `description` is taken from `frontmatter.description`. If it does not exist, only `- [title](url)` is displayed.
 
-  By default the plugin only generates first-level TOC, and the default getter function is as follows:
+  By default, the plugin only generates first-level TOC, and the default getter function is as follows:
 
   ```ts
   import { generateTOCLink } from '@vuepress/plugin-llms'
@@ -110,7 +110,7 @@ Details (Optional)
     pages.map((page) => generateTOCLink(page, state)).join('\n')
   ```
 
-  You can customize it to generate a multi-level TOC by setting a customize function with the [`llmsTxtTemplateGetter`](#llmstxttemplategetter) option.
+  You can customize it to generate a multi-level TOC by setting a custom function with the [`llmsTxtTemplateGetter`](#llmstxttemplategetter) option.
 
 ### `llms-full.txt`
 
@@ -138,7 +138,7 @@ page's Markdown-formatted content
 …
 ```
 
-The plugin directly merges the content of the Markdown files in the document source directory into `llms-full.txt` so that LLM can read and analyze it.
+The plugin directly merges the content of the Markdown files in the document source directory into `llms-full.txt` so that LLMs can read and analyze it.
 
 ### Page Contents
 
@@ -148,59 +148,59 @@ The plugin generates accessible Markdown files for each page in the format `${ur
 
 ### llmsTxt
 
-- Types: `boolean`
+- Type: `boolean`
 
 - Default: `true`
 
-- Details: Indicates whether to generate the `llms.txt` file, which contains a list of sections with corresponding links.
+- Details: Whether to generate the `llms.txt` file, which contains a list of sections with corresponding links.
 
 ### llmsFullTxt
 
-- Types: `boolean`
+- Type: `boolean`
 
 - Default: `true`
 
-- Details: Determines whether to generate the `llms-full.txt` which contains all the documentation in one file.
+- Details: Whether to generate the `llms-full.txt` file which contains all the documentation in one file.
 
 ### llmsPageTxt
 
-- Types: `boolean`
+- Type: `boolean`
 
 - Default: `true`
 
-- Details: Determines whether to generate an LLM-friendly version of the documentation for each page on the website.
+- Details: Whether to generate an LLM-friendly version of the documentation for each page on the website.
 
 ### stripHTML
 
-- Types: `boolean`
+- Type: `boolean`
 
 - Default: `true`
 
-- Details: Whether to strip HTML tags from Markdown files
+- Details: Whether to strip HTML tags from Markdown files.
 
 ### filter
 
-- Types: `(page: Page) => boolean`
+- Type: `(page: Page) => boolean`
 
 - Default: `() => true`
 
 - Details:
 
-  Page filter, when returns `true`, the page will be included in `llms.txt`, otherwise it will be excluded.
+  Page filter function. When it returns `true`, the page will be included in `llms.txt`, otherwise it will be excluded.
 
-  Pages which is disabled by `frontmatter.llmstxt` or not generated from Markdown files will be excluded anyway.
+  Pages that are disabled by `frontmatter.llmstxt` or not generated from Markdown files will be excluded anyway.
 
 ### domain
 
-- Types: `string`
+- Type: `string`
 
 - Default: `''`
 
 - Details:
 
-  The domain that will be appended to the beginning of URLs in `llms.txt` and in the context of other files
+  The domain that will be prepended to URLs in `llms.txt` and other files.
 
-  Domain attachment is not yet agreed upon (since it depends on the AI whether it can resolve the relative paths that are currently there), but if you want you can add it.
+  Domain attachment is not yet standardized (since it depends on whether the AI can resolve the relative paths that are currently there), but you can add it if needed.
 
   ```md title="llms.txt"
   - [title](/foo/bar.md) <!-- [!code --] -->
@@ -215,11 +215,11 @@ The plugin generates accessible Markdown files for each page in the format `${ur
 
 - Details:
 
-  The generated locale of the site. If not set, the plugin will use the default locale of the VuePress site. If you set it to `all`, the plugin will generate `llms.txt` for all locales.
+  The locale of the site to generate. If not set, the plugin will use the default locale of the VuePress site. If you set it to `'all'`, the plugin will generate `llms.txt` for all locales.
 
-  This option is useful when you have multiple locales and want to generate `llms.txt` for a specific locale, which shall have the best documentation quality.
+  This option is useful when you have multiple locales and want to generate `llms.txt` for a specific locale, which should have the best documentation quality.
 
-  Also, if you have many self-defined concepts that LLMs cannot understand or translate correctly, you shall consider generating `llms.txt` for each locale to avoid confusion with different representations coming from LLMs' translation and the original documentation.
+  Also, if you have many self-defined concepts that LLMs cannot understand or translate correctly, you should consider generating `llms.txt` for each locale to avoid confusion with different representations coming from LLM translation and the original documentation.
 
 ### llmsTxtTemplate
 
@@ -248,27 +248,27 @@ The plugin generates accessible Markdown files for each page in the format `${ur
 
 ### llmsTxtTemplateGetter
 
-- Types: `TemplateGetterOptions`
+- Type: `TemplateGetterOptions`
 
   ```ts
   /**
-   * Represents the link extension options for generated links.
+   * Link extension options for generated links
    */
-  export type LinksExtension = '.html' | '.md'
+  export type LinkExtension = '.html' | '.md'
 
   /**
-   * Represents a prepared page, including its title and path.
+   * Page with additional LLM-friendly content
    */
   export interface LLMPage extends Page {
     /**
-     * The content of the Markdown file.
+     * The page's Markdown content
      *
      * @example '# Guide\n\nA guide'
      */
     markdown: string
 
     /**
-     * The excerpt of the page.
+     * The page's excerpt
      *
      * @example 'Introduction to the guide'
      */
@@ -276,26 +276,26 @@ The plugin generates accessible Markdown files for each page in the format `${ur
   }
 
   /**
-   * Options for generating a Table of Contents (TOC).
+   * State object for LLM text generation
    */
   export interface LLMState {
     /**
-     * The VuePress app instance.
+     * VuePress app instance
      */
     app: App
 
     /**
-     * Base URL
+     * Site base URL
      */
     base: string
 
     /**
-     * Optional domain to prefix URLs with.
+     * Optional domain to prepend to URLs
      */
     domain?: string
 
     /**
-     * The link extension for generated links.
+     * Link extension for generated links
      */
     linkExtension?: LinkExtension
 
@@ -417,11 +417,11 @@ The following `frontmatter` will be used in the plugin.
 
 - Default: `true`
 
-- Details: Whether `llms.txt` contain the current page.
+- Details: Whether the current page should be included in `llms.txt`.
 
 ## Others
 
-It is recommended to configure redirects so that the AI can use addresses with .md and .txt extensions.
+It is recommended to configure redirects so that AI can use addresses with `.md` and `.txt` extensions.
 
 For example, in `Netlify`, configure the following in `public/_redirects`:
 
@@ -430,4 +430,4 @@ For example, in `Netlify`, configure the following in `public/_redirects`:
 /llms-full.md    /llms-full.txt 200!
 ```
 
-Options Syntax documentation: <https://docs.netlify.com/routing/redirects>
+Options syntax documentation: <https://docs.netlify.com/routing/redirects>
