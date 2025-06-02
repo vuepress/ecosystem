@@ -3,12 +3,17 @@
  */
 export interface GoogleAnalyticsPluginOptions {
   /**
-   * The Measurement ID of Google Analytics 4, which should start with `'G-'`.
+   * Google Analytics 4 Measurement ID
+   *
+   * @description The Measurement ID starting with 'G-' from Google Analytics 4
    */
   id: string
 
   /**
-   * Enable debug mode.
+   * Enable debug mode
+   *
+   * @description When enabled, events will be sent to DebugView for testing
+   * @default false
    */
   debug?: boolean
 }

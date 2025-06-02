@@ -4,6 +4,28 @@ import type { GoogleAnalyticsPluginOptions } from '../shared/index.js'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
+/**
+ * Google Analytics plugin for VuePress
+ *
+ * @param options - Plugin options
+ * @returns VuePress plugin
+ *
+ * @description Integrates Google Analytics 4 tracking into VuePress applications.
+ * Only active in production builds unless debug mode is enabled.
+ *
+ * @example
+ * ```ts
+ * import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
+ *
+ * export default {
+ *   plugins: [
+ *     googleAnalyticsPlugin({
+ *       id: 'G-XXXXXXXXXX'
+ *     })
+ *   ]
+ * }
+ * ```
+ */
 export const googleAnalyticsPlugin =
   (options: GoogleAnalyticsPluginOptions): Plugin =>
   (app) => {
