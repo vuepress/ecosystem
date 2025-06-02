@@ -48,14 +48,6 @@ export const replaceTemplateVariable = (
  * @param template - Template string containing placeholders
  * @param variables - Object mapping variable names to their values
  * @returns String with all template variables replaced
- *
- * @example
- * ```ts
- * const template = 'Hello {name}, welcome to {place}!'
- * const values = { name: 'Alice', place: 'Wonderland' }
- * const result = expandTemplate(template, values)
- * console.log(result) // 'Hello Alice, welcome to Wonderland!'
- * ```
  */
 export const expandTemplate = (
   template: string,
