@@ -49,15 +49,10 @@ In markdown, you can use `::icon decorators... =size /color key=value complex-ke
 ::icon rotate vertical-align=middle:: <!-- <VPIcon icon="icon rotate" vertical-align="middle" -->
 ```
 
-::: info Demo
+::: preview
 
 ::mdi:home /blue::
 ::mdi:apple =2rem vertical-align=text-bottom::
-
-```md
-::mdi:home /blue::
-::mdi:apple =2rem vertical-align=text-bottom::
-```
 
 :::
 

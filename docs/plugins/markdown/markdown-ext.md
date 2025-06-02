@@ -36,7 +36,7 @@ export default {
 
 - If there are multiple paragraphs in footnote, the paragraph show be double indented
 
-::: details Demo
+::: preview
 
 Footnote 1 link[^first].
 
@@ -51,22 +51,6 @@ Duplicated footnote reference[^second].
     and multiple paragraphs.
 
 [^second]: Footnote text.
-
-```md
-Footnote 1 link[^first].
-
-Footnote 2 link[^second].
-
-Inline footnote^[Text of inline footnote] definition.
-
-Duplicated footnote reference[^second].
-
-[^first]: Footnote **can have markup**
-
-    and multiple paragraphs.
-
-[^second]: Footnote text.
-```
 
 :::
 
@@ -75,15 +59,10 @@ Duplicated footnote reference[^second].
 - Use `- [ ] some text` to render an unchecked task item.
 - Use `- [x] some text` to render a checked task item. (Capital `X` is also supported)
 
-::: details Demo
+::: preview
 
 - [ ] Plan A
 - [x] Plan B
-
-```md
-- [ ] Plan A
-- [x] Plan B
-```
 
 :::
 
@@ -109,7 +88,7 @@ You can use component fence block to add a component into your markdown content.
   ```
   ````
 
-::: details Demo
+::: preview
 
 ```component Badge
 text: Mr.Hope
@@ -122,20 +101,6 @@ type: tip
   "type": "tip"
 }
 ```
-
-````md
-```component Badge
-text: Mr.Hope
-type: tip
-```
-
-```component Badge
-{
-  "text": "Mr.Hope",
-  "type": "tip"
-}
-```
-````
 
 :::
 
@@ -143,21 +108,13 @@ type: tip
 
 You can use any mustache syntax as raw text in `v-pre` container:
 
-:::: details Demo
+:::: preview
 
 ::: v-pre
 
 {{ abc }}
 
 :::
-
-```md
-::: v-pre
-
-{{ abc }}
-
-:::
-```
 
 ::::
 

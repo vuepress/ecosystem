@@ -49,15 +49,10 @@ export default {
 ::icon rotate vertical-align=middle:: <!-- ::icon rotate" vertical-align="middle" -->
 ```
 
-::: info 案例
+::: preview
 
 ::mdi:home /blue::
 ::mdi:apple =2rem vertical-align=text-bottom::
-
-```md
-::mdi:home /blue::
-::mdi:apple =2rem vertical-align=text-bottom::
-```
 
 :::
 

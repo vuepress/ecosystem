@@ -45,13 +45,12 @@ When you set `mark: true` in plugin options, you can mark pictures by `#light` a
 
 <VPToggleColorModeButton /> (Try to toggle theme mode)
 
+::: preview
+
 ![GitHub Light](/images/icon/github-light.svg#dark)
 ![GitHub Dark](/images/icon/github-dark.svg#light)
 
-```md
-![GitHub Light](/images/icon/github-light.svg#dark)
-![GitHub Dark](/images/icon/github-dark.svg#light)
-```
+:::
 
 #### Advanced
 
@@ -142,6 +141,8 @@ Sometimes, you may want to add a description with image and place it between con
 
 If the image is standalone in a line, wrapped or not wrapped by link, it will be displayed as `<figure>` and title (or alt) will be displayed as `<figcaption>`.
 
+::: preview
+
 ![VuePress Logo](/favicon.ico)
 
 [![VuePress Logo](/favicon.ico)](https://vuejs.press/)
@@ -152,17 +153,7 @@ If the image is standalone in a line, wrapped or not wrapped by link, it will be
 
 ![VuePress Logo](https://vuejs.press/images/hero.png "VuePress Logo" =300x300)
 
-```md
-![VuePress Logo](/favicon.ico)
-
-[![VuePress Logo](/favicon.ico)](https://vuejs.press/)
-
-![VuePress Logo](/favicon.ico 'VuePress Logo')
-
-[![VuePress Logo](/favicon.ico 'VuePress Logo')](https://vuejs.press/)
-
-![VuePress Logo](https://vuejs.press/images/hero.png "VuePress Logo" =300x300)
-```
+:::
 
 ## Options
 

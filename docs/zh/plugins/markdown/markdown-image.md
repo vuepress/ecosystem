@@ -45,13 +45,12 @@ export default {
 
 <VPToggleColorModeButton /> (尝试切换主题)
 
+::: preview
+
 ![GitHub Light](/images/icon/github-light.svg#dark)
 ![GitHub Dark](/images/icon/github-dark.svg#light)
 
-```md
-![GitHub Light](/images/icon/github-light.svg#dark)
-![GitHub Dark](/images/icon/github-dark.svg#light)
-```
+:::
 
 #### 高级用法
 
@@ -143,6 +142,8 @@ interface ImageMarkOptions {
 
 这样当你单独将图片至于一行 (也可同时嵌套链接)，图像将显示为 `<figure>` ，标题或图片替代文字将显示为 `<figcaption>`。
 
+::: preview
+
 ![VuePress 图标](/favicon.ico)
 
 [![VuePress 图标](/favicon.ico)](https://vuejs.press/)
@@ -153,17 +154,7 @@ interface ImageMarkOptions {
 
 ![VuePress 图标](https://vuejs.press/images/hero.png "VuePress 图标" =300x300)
 
-```md
-![VuePress 图标](/favicon.ico)
-
-[![VuePress 图标](/favicon.ico)](https://vuejs.press/)
-
-![VuePress 图标](/favicon.ico 'VuePress 图标')
-
-[![VuePress 图标](/favicon.ico 'VuePress 图标')](https://vuejs.press/)
-
-![VuePress 图标](https://vuejs.press/images/hero.png "VuePress 图标" =300x300)
-```
+:::
 
 ## 配置项
 

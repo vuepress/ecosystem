@@ -105,9 +105,8 @@ export default {
 
   You can add `:line-numbers` / `:no-line-numbers` mark in your fenced code blocks to override the value set in config, and customize the beginning number by adding `=` after `:line-numbers`. For example, `:line-numbers=2` means the line numbers in code blocks will start from `2`.
 
-**Input:**
+::: preview
 
-````md
 ```ts:line-numbers
 // line-numbers is enabled
 const line2 = 'This is line 2'
@@ -125,27 +124,8 @@ const line3 = 'This is line 3'
 const line3 = 'This is line 3'
 const line4 = 'This is line 4'
 ```
-````
 
-**Output:**
-
-```ts :line-numbers
-// line-numbers is enabled
-const line2 = 'This is line 2'
-const line3 = 'This is line 3'
-```
-
-```ts :no-line-numbers
-// line-numbers is disabled
-const line2 = 'This is line 2'
-const line3 = 'This is line 3'
-```
-
-```ts :line-numbers=2
-// line-numbers is enabled and start from 2
-const line3 = 'This is line 3'
-const line4 = 'This is line 4'
-```
+:::
 
 ### highlightLines
 
@@ -161,24 +141,7 @@ const line4 = 'This is line 4'
   - Multiple single lines: `{4,7,9}`
   - Combined: `{4,7-13,16,23-27,40}`
 
-**Input:**
-
-````md
-```ts {1,7-9}
-import { defaultTheme } from '@vuepress/theme-default'
-import { defineUserConfig } from 'vuepress'
-
-export default defineUserConfig({
-  title: 'Hello, VuePress',
-
-  theme: defaultTheme({
-    logo: 'https://vuepress.vuejs.org/images/hero.png',
-  }),
-})
-```
-````
-
-**Output:**
+::: preview
 
 ```ts {1,7-9}
 import { defaultTheme } from '@vuepress/theme-default'
@@ -192,6 +155,8 @@ export default defineUserConfig({
   }),
 })
 ```
+
+:::
 
 ### collapsedLines
 
@@ -208,44 +173,7 @@ export default defineUserConfig({
 
   To override global settings, you can add the `:collapsed-lines` / `:no-collapsed-lines` marker to the code block. You can also add `=` after `:collapsed-lines` to customize the starting line number being collapsed, for example, `:collapsed-lines=12` means collapsing the code block starting from line 12.
 
-**Input:**
-
-````md
-<!-- Collapsed by default starting from line 15 -->
-
-```css :collapsed-lines
-html {
-  margin: 0;
-  background: black;
-  height: 100%;
-}
-/* ... more code */
-```
-
-<!-- Disabled collapsed -->
-
-```css :no-collapsed-lines
-html {
-  margin: 0;
-  background: black;
-  height: 100%;
-}
-/* ... more code */
-```
-
-<!-- Collapsed starting from line 10 -->
-
-```css :collapsed-lines=10
-html {
-  margin: 0;
-  background: black;
-  height: 100%;
-}
-/* ... more code */
-```
-````
-
-**Output:**
+::: preview
 
 <!-- Collapsed by default starting from line 15 -->
 
@@ -277,22 +205,6 @@ body > div {
 
 .main {
   display: none;
-}
-
-.blowup {
-  display: block;
-  position: absolute;
-  object-fit: contain;
-  object-position: center;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2000;
-}
-
-.darken {
-  opacity: 0.4;
 }
 ```
 
@@ -327,22 +239,6 @@ body > div {
 .main {
   display: none;
 }
-
-.blowup {
-  display: block;
-  position: absolute;
-  object-fit: contain;
-  object-position: center;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2000;
-}
-
-.darken {
-  opacity: 0.4;
-}
 ```
 
 <!-- Collapsed starting from line 10 -->
@@ -376,23 +272,9 @@ body > div {
 .main {
   display: none;
 }
-
-.blowup {
-  display: block;
-  position: absolute;
-  object-fit: contain;
-  object-position: center;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2000;
-}
-
-.darken {
-  opacity: 0.4;
-}
 ```
+
+:::
 
 ### codeBlockTitle
 
@@ -410,19 +292,13 @@ body > div {
 
 - Example:
 
-  **Input:**
-
-  ````md {1}
-  ```ts title="foo/baz.js"
-  console.log('hello')
-  ```
-  ````
-
-  **Output:**
+  ::: preview
 
   ```ts title="foo/baz.js"
   console.log('hello')
   ```
+
+  :::
 
 ### notationDiff
 
@@ -434,7 +310,8 @@ body > div {
 
 - Example:
 
-  **Input:**
+  <VPPreview>
+  <template #code>
 
   ````md
   ```ts
@@ -444,13 +321,17 @@ body > div {
   ```
   ````
 
-  **Output:**
+  </template>
+  <template #content>
 
   ```ts
   console.log('hewwo') // [!code --]
   console.log('hello') // [!code ++]
   console.log('goodbye')
   ```
+
+  </template>
+  </VPPreview>
 
 - Also see:
   - [Shiki > Notation Diff](https://shiki.style/packages/transformers#transformernotationdiff)
@@ -465,7 +346,8 @@ body > div {
 
 - Example:
 
-  **Input:**
+  <VPPreview>
+  <template #code>
 
   ````md
   ```ts
@@ -475,13 +357,17 @@ body > div {
   ```
   ````
 
-  **Output:**
+  </template>
+  <template #content>
 
   ```ts
   console.log('Not focused')
   console.log('Focused') // [!code focus]
   console.log('Not focused')
   ```
+
+  </template>
+  </VPPreview>
 
 - Also see:
   - [Shiki > Notation Focus](https://shiki.style/packages/transformers#transformernotationfocus)
@@ -496,7 +382,8 @@ body > div {
 
 - Example:
 
-  **Input:**
+  <VPPreview>
+  <template #code>
 
   ````md
   ```ts
@@ -506,13 +393,17 @@ body > div {
   ```
   ````
 
-  **Output:**
+  </template>
+  <template #content>
 
   ```ts
   console.log('Not highlighted')
   console.log('Highlighted') // [!code highlight]
   console.log('Not highlighted')
   ```
+
+  </template>
+  </VPPreview>
 
 - Also see:
   - [Shiki > Notation Highlight](https://shiki.style/packages/transformers#transformernotationhighlight)
@@ -527,7 +418,8 @@ body > div {
 
 - Example:
 
-  **Input:**
+  <VPPreview>
+  <template #code>
 
   ````md
   ```ts
@@ -537,13 +429,17 @@ body > div {
   ```
   ````
 
-  **Output:**
+  </template>
+  <template #content>
 
   ```ts
   console.log('No errors or warnings')
   console.warn('Warning') // [!code warning]
   console.error('Error') // [!code error]
   ```
+
+  </template>
+  </VPPreview>
 
 - Also see:
   - [Shiki > Notation Error Level](https://shiki.style/packages/transformers#transformernotationerrorlevel)
@@ -560,7 +456,10 @@ body > div {
 
 - Example:
 
-  **Input:**
+  Highlight words with comments
+
+  <VPPreview>
+  <template #code>
 
   ````md
   ```ts
@@ -570,7 +469,8 @@ body > div {
   ```
   ````
 
-  **Output:**
+  </template>
+  <template #content>
 
   ```ts
   // [!code word:Hello]
@@ -578,25 +478,19 @@ body > div {
   console.log(message) // prints Hello World
   ```
 
-- Example：Highlight words based on the meta string provided on the code snippet
+  </template>
+  </VPPreview>
 
-  **Input:**
+  Highlight words based on the meta string provided on the code snippet
 
-  ````md
-  ```js /Hello/
-  const msg = 'Hello World'
-  console.log(msg)
-  console.log(msg) // prints Hello World
-  ```
-  ````
-
-  **Output:**
+  ::: preview
 
   ```js /Hello/
   const msg = 'Hello World'
-  console.log(msg)
-  console.log(msg) // prints Hello World
+  console.log(msg) // pints Hello World
   ```
+
+  :::
 
 - Also see:
 
@@ -620,47 +514,7 @@ body > div {
 
 - Example:
 
-  **Input:**
-
-  ````md
-  ```md :whitespace
-  <!-- render all whitespace -->
-
-  A text  
-  with trailing spaces
-
-      indented text
-  ```
-
-  ```md :whitespace=boundary
-  <!-- render leading and trailing whitespace of the line -->
-
-  A text  
-  with trailing spaces
-
-      indented text
-  ```
-
-  ```md :whitespace=trailing
-  <!-- render trailing whitespace of the line -->
-
-  A text  
-  with trailing spaces
-
-      indented text
-  ```
-
-  ```md :no-whitespace
-  <!-- disable render whitespace -->
-
-  A text  
-  with trailing spaces
-
-      indented text
-  ```
-  ````
-
-  **Output:**
+  ::: preview
 
   ```md :whitespace
   <!-- render all whitespace -->
@@ -697,6 +551,8 @@ body > div {
 
       indented text
   ```
+
+  :::
 
 - Also see：
   - [Shiki > Render Whitespace](https://shiki.style/packages/transformers#transformerrenderwhitespace)
@@ -746,23 +602,15 @@ body > div {
 
 - Example:
 
-  **Input:**
-
-  ````md
-  ```ts twoslash
-  const a = 1
-  const b = 2
-  console.log(a + b)
-  ```
-  ````
-
-  **Output:**
+  ::: preview
 
   ```ts twoslash
   const a = 1
   const b = 23
   console.log(a + b)
   ```
+
+  :::
 
   ::: warning
 
