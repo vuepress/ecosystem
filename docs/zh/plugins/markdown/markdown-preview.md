@@ -81,3 +81,28 @@ document.querySelector('body').innerText = 'Hello world!'
 
   </template>
 </VPPreview>
+
+## 选项
+
+### locales
+
+- 类型: `Record<string, MarkdownPreviewLocaleData>`
+
+  ```ts
+  export interface MarkdownPreviewLocaleData {
+    /**
+     * 切换代码按钮文本
+     */
+    toggle: string
+  }
+  ```
+
+- 详细信息:
+
+  `<VPPreview>` 的多语言配置。
+
+## 样式
+
+你可以通过 CSS 变量自定义样式：
+
+@[code css](@vuepress/plugin-markdown-preview/src/client/styles/vars.css)

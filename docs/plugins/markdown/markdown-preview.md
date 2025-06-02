@@ -81,3 +81,28 @@ document.querySelector('body').innerText = 'Hello world!'
 
   </template>
 </VPPreview>
+
+## Options
+
+### locales
+
+- Type: `Record<string, MarkdownPreviewLocaleData>`
+
+  ```ts
+  export interface MarkdownPreviewLocaleData {
+    /**
+     * Toggle code button text
+     */
+    toggle: string
+  }
+  ```
+
+- Details:
+
+  Locales configuration for `<VPPreview>`.
+
+## Styles
+
+You can customize the style via CSS variables:
+
+@[code css](@vuepress/plugin-markdown-preview/src/client/styles/vars.css)
