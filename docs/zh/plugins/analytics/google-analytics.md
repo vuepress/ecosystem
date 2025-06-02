@@ -41,6 +41,7 @@ Google Analytics 会 [自动收集部分事件](https://support.google.com/analy
 ### id
 
 - 类型：`string`
+- 必填：是
 
 - 详情：
 
@@ -63,7 +64,6 @@ export default {
 ### debug
 
 - 类型：`boolean`
-
 - 详情：
 
   设置为 `true` 可向 DebugView 发送事件。[了解更多 DebugView 信息](https://support.google.com/analytics/answer/7201382)。

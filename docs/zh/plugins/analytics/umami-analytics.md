@@ -6,7 +6,7 @@ icon: chart-no-axes-combined
 
 <NpmBadge package="@vuepress/plugin-umami-analytics" />
 
-将 [Umami 统计](https://umami.is/) 集成到 VuePress 中。
+将 [Umami Analytics](https://umami.is/) 集成到 VuePress 中。
 
 ## 使用方法
 
@@ -28,23 +28,25 @@ export default {
 
 你可以使用 [Umami Cloud](https://cloud.umami.is/login) 或 [自行托管 Umami](https://umami.is/docs/install)。
 
-### 上报事件
+### 事件上报
 
-插件会在访问和切换页面时自动上报页面浏览事件。
+插件会自动上报页面访问和路由切换事件。
 
-另外，一个全局的 `umami` 对象会被挂载到 `window` 上，你可以使用 `umami.track` 设置 [自定义追踪](https://umami.is/docs/tracker-functions) 。
+此外，全局 `umami` 对象会挂载到 `window`，可使用 `umami.track` 进行 [自定义追踪](https://umami.is/docs/tracker-functions)。
 
 ## 选项
 
 ### id
 
-- 类型： `string`
-- 详情： Umami 统计中的网站 ID。
+- 类型：`string`
+- 必填：是
+- 详情：Umami Analytics 中的网站 ID。
 
 ### link
 
 - 类型：`string`
-- 详情：Umami 统计的脚本链接
+- 默认值：`'https://us.umami.is/script.js'`
+- 详情：Umami Analytics 脚本链接。
 
 ### autoTrack
 
@@ -52,7 +54,7 @@ export default {
 - 默认值：`true`
 - 详情：
 
-  默认情况下，Umami 会自动跟踪所有页面浏览量和事件。你可以禁用此行为并使用追踪器功能自行追踪事件。
+  默认情况下，Umami 会自动追踪所有页面浏览和事件。设为 `false` 可禁用自动追踪，改用手动追踪功能。
 
 ### cache
 
@@ -61,14 +63,15 @@ export default {
 
   缓存数据以提高追踪脚本的性能。
 
-  注意：这将使用会话存储，因此您可能需要通知您的用户。
+  注意：这将使用会话存储，因此你可能需要通知你的用户。
 
 ### domains
 
 - 类型：`string[]`
-- 详情： 让跟踪器仅在特定的域名上运行。
+- 详情：限制追踪器仅在指定域名上运行。
 
 ### hostUrl
 
 - 类型：`string`
-- 详情：发送数据的位置
+- 默认值：`link`
+- 详情：数据发送的目标地址。

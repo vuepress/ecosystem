@@ -10,11 +10,17 @@ declare global {
 /**
  * Initialize Google Analytics 4 tracking
  *
+ * 初始化 Google Analytics 4 追踪
+ *
  * @param options - Google Analytics plugin options
  *
  * @description Injects gtag.js and configures Google Analytics 4.
  * Enhanced measurement automatically tracks page views and other events.
  * The global `gtag()` function will be available for custom event tracking.
+ *
+ * 注入 gtag.js 并配置 Google Analytics 4。
+ * 增强测量功能会自动追踪页面浏览和其他事件。
+ * 全局 `gtag()` 函数可用于自定义事件追踪。
  *
  * @see https://developers.google.com/analytics/devguides/collection/gtagjs
  * @see https://developers.google.com/analytics/devguides/collection/ga4/events

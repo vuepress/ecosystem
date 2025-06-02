@@ -41,6 +41,7 @@ After using this plugin, the global `gtag()` function is available on the `windo
 ### id
 
 - Type: `string`
+- Required: Yes
 
 - Details:
 
@@ -63,7 +64,6 @@ After using this plugin, the global `gtag()` function is available on the `windo
 ### debug
 
 - Type: `boolean`
-
 - Details:
   Set to `true` to enable sending events to DebugView. [See more information on DebugView](https://support.google.com/analytics/answer/7201382).
 

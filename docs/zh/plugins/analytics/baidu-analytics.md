@@ -43,4 +43,5 @@ export default {
 ### id
 
 - 类型：`string`
+- 必填：是
 - 详情：百度统计追踪 ID，即 `hm.js` URL 中的查询参数。

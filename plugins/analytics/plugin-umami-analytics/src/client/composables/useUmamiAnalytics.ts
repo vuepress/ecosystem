@@ -12,10 +12,20 @@ declare global {
 }
 
 /**
- * Add umami analytics to the site
+ * Initialize Umami Analytics tracking
  *
- * @see https://umami.is/docs/install
+ * 初始化 Umami Analytics 追踪
+ *
+ * @param options - Umami Analytics options
+ *
+ * @description Injects Umami tracking script and configures tracking behavior.
+ * The global `umami.track()` function will be available for custom event tracking.
+ *
+ * 注入 Umami 追踪脚本并配置追踪行为。
+ * 全局 `umami.track()` 函数可用于自定义事件追踪。
+ *
  * @see https://umami.is/docs/tracker-functions
+ * @see https://umami.is/docs/tracker-configuration
  */
 export const useUmamiAnalytics = ({
   link = 'https://us.umami.is/script.js',

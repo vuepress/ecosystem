@@ -43,4 +43,5 @@ A global `_hmt` array is available on the `window` object for [custom event repo
 ### id
 
 - Type: `string`
+- Required: Yes
 - Details: Baidu Analytics tracking ID, which is the query parameter in the `hm.js` URL.

@@ -49,9 +49,10 @@ For all exported content, JSDoc must be bilingual (English + Chinese):
 - **Required Options**: Always emphasize that an option is required
   - English: "Required: Yes"
   - Chinese: "必填：是"
-- **Default Values**: Always mention default values for optional parameters
+- **Default Values**: Always mention default values for optional parameters, except for boolean options with `false` default
   - English: "Default: `defaultValue`"
   - Chinese: "默认值：`defaultValue`"
+- **Boolean False Default**: Do not provide default value declaration for boolean options with `false` default
 
 ### Content Refactoring Principles
 
