@@ -59,8 +59,8 @@ export default defineComponent({
     const codeContainer = shallowRef<HTMLDivElement>()
     const height = ref('0')
 
-    const toggleCode = (value?: boolean): void => {
-      toggleExpanded(value)
+    const toggleCode = (): void => {
+      toggleExpanded()
       height.value = isExpanded.value
         ? `${codeContainer.value!.clientHeight}px`
         : '0'
@@ -101,15 +101,20 @@ export default defineComponent({
                   decodeURIComponent(props.title),
                 )
               : null,
-            h('span', {
-              'class': 'vp-preview-toggle-button',
-              'title': locale.value.toggle,
-              'aria-controls': codeID,
-              'aria-expanded': isExpanded.value,
-              'onClick': () => {
-                toggleCode()
+            h(
+              'button',
+              {
+                'type': 'button',
+                'class': 'vp-preview-toggle-button',
+                'title': locale.value.toggle,
+                'aria-controls': codeID,
+                'aria-expanded': isExpanded.value,
+                'onClick': () => {
+                  toggleCode()
+                },
               },
-            }),
+              h('span', { class: 'vp-preview-toggle-icon' }),
+            ),
           ]),
           h(
             'div',
