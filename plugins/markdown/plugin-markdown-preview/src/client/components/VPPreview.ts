@@ -113,7 +113,7 @@ export default defineComponent({
                   toggleCode()
                 },
               },
-              h('span', { class: 'vp-preview-toggle-icon' }),
+              h('div', { class: 'vp-preview-toggle-icon' }),
             ),
           ]),
           h(
