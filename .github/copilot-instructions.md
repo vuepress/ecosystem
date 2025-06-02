@@ -1,43 +1,61 @@
-# Copilot Instructions for VuePress Ecosystem
+# VuePress Ecosystem Coding Standards
 
-## Content Requirements
+## Content Rules
 
-All contents are targeting developers, so they must be concise and clear, avoid verbose descriptions and unnecessary details.
+- Target developers: concise, clear, essential information only
+- Focus on essential information developers need to understand and implement features
+- No typos or grammar errors
 
-The content should be straightforward, focusing on essential information that developers need to understand and implement features effectively, without any typos and grammar errors.
+## Code Rules
 
-## Style Requirements
+### API Usage Restrictions
 
-### CSS Class Naming Rules
+- No Node.js APIs in `client` folder
+- No browser APIs in `node` folder
+- No cross import between `client` and `node` folders
+- No Node.js or browser APIs in `shared` folder
 
-All CSS class names must follow these conventions:
+### Export Requirements
 
-- **VuePress Prefixed Classes**: All CSS class names must start with `vp-` prefix
-- **External Integration Exception**: Classes for external content integration are exempt from the prefix requirement
-  - Example: `waline-wrapper` for Waline comment system integration
-  - Example: `giscus-container` for Giscus comment system integration
-- **Component Classes**: Use descriptive names after the prefix
-  - Good: `vp-comment-form`, `vp-back-to-top-button`, `vp-code-block`
-  - Bad: `comment-form`, `btn`, `container`
+- **Plugin and theme exports** must satisfy:
+  - Name: consistent with package name
+  - Types: All types in export content shall be exported
+- **Single function files**: filename should match export function/class name
 
-## Documentation Requirements
+### Import/Export Rules
 
-## JSDoc Requirements
+- Relative imports/exports must use `.js` extension with `.ts` files
+- No external dependencies warnings with `bundle` command
 
-### Scope of Application
+## CSS Rules
 
-JSDocs is required for Any user-visible things
+### Class Naming
 
-- **@example**: Only for exported functions
+- **Classes**: Must start with `vp-` prefix
+- **External Integration Exception**: Classes for external content integration are exempt. E.g.: `waline-wrapper` for Waline comment system
+
+### Variable Naming
+
+- **Color variables**: Must contain `-c-`
+- **Plugin variables**: Prefixed with plugin name
+- **Theme variables**: Prefixed with `vp-`
+- **Icon variables**: If in class definitions, `--icon` is required.
+
+## JSDoc Rules
+
+### Scope
+
+- **Required for**: All user-visible exports
+- **Not required for**: Internal implementations (but existing ones must be correct)
+
+### Format Requirements
+
+- **Bilingual**: English + Chinese for all exported content
 - **@default**:
-  - user-visible things: Always include for user-visible things when there's a default value, including `@default false` for boolean options.
-  - rest: Only when the default value is not clearly visible in the function parameters
-
-User-invisible internal implementations does not required JSDoc comments, but existing comments should be correct.
-
-### JSDoc Bilingual Rules
-
-For all exported content, JSDoc must be bilingual (English + Chinese):
+  - User-visible things: Always include if exists (including `@default false`)
+  - Others: Only when not clearly visible in function parameters
+- **@example**: Only for exported functions
+- **@description**: Optional, only if necessary to explain more
 
 ````typescript
 /**
@@ -45,7 +63,7 @@ For all exported content, JSDoc must be bilingual (English + Chinese):
  *
  * 中文描述
  *
- * @description (optional, only if it's necessary to explain more besides description) English detailed description
+ * @description English detailed description
  *
  * 中文详细描述
  *
@@ -58,45 +76,38 @@ For all exported content, JSDoc must be bilingual (English + Chinese):
  */
 ````
 
-## Documentation Requirements
+#### Scope of Application
 
-1. Use consistent terms across documentation, and all options should match the terminology used in the code.
-2. Chinese and English content must be consistent in structure and content
-3. Make the content concise and clear, shorten the content always if possible, remove unnecessary words, and avoid redundancy.
-4. Use "你" instead of "您" in Chinese documentation.
+- ✅ **Exported Content**: Interfaces, functions, types, classes and other user-visible APIs
+- ❌ **Internal Functions**: User-invisible internal implementations
+- ✅ **@example**: Only for exported content
+- ✅ **@default**: Only when default values are not obvious; can be omitted for internal function parameters with obvious defaults
 
-In plugin/theme documentation files (\*.md), each option should include:
+### Markdown Language Style
 
-- **Type**: Always specify the type of the option, a code fence should be used for complicated types
-  - English: "Type: `type`"
-  - Chinese: "类型：`type`"
-- **Required Options**: Always emphasize in documentation
+- **English Documentation**: Keep concise and professional, avoid verbose descriptions, focus on clarity over detail
+- **Chinese Documentation**: Use "你" instead of "您", keep concise and crisp, avoid verbose descriptions that slow reading and ensure sync with en docs.
+
+### Documentation Option Requirements
+
+- **Required Options**: Always emphasize that an option is required
   - English: "Required: Yes"
   - Chinese: "必填：是"
-- **Optional Options**: Must not declare "Required: No"
-- **Default Values**: Always mention default values for optional parameters, except for boolean options with `false` default (which should be removed)
+- **Default Values**: Always mention default values for optional parameters, except for boolean options with `false` default
   - English: "Default: `defaultValue`"
   - Chinese: "默认值：`defaultValue`"
-- **Reference**: Optional, links to relevant documentation or external resources, should always be a list of links.
-- **Details**: Provide a brief description of the option's purpose or usage, should not change any existing format.
+- **Boolean False Default**: Do not provide default value declaration for boolean options with `false` default
 
-Example documentation format:
+### Content Refactoring Principles
 
-```markdown
-### requiredOption
+- **Length Control**: Avoid significantly lengthening content during refactoring
+- **Target Users**: Technical professionals who prefer concise descriptions
+- **Remove Redundancy**: Eliminate unnecessary modifier words
+- **Preserve Core**: Retain key information while simplifying expression
 
-- Type: `string`
-- Required: Yes
-- Details: This option is required
+### Quality Checks
 
-### optionalOptionWithDefault
-
-- Type: `string`
-- Default: `"defaultValue"`
-- Details: This option is optional with a default value
-
-### optionalBooleanFalseDefault
-
-- Type: `boolean`
-- Details: This boolean option defaults to false (no default declaration needed)
-```
+1. Spelling and grammar accuracy
+2. Format consistency
+3. Accurate English and Chinese expression
+4. Appropriate content length
