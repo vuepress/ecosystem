@@ -4,21 +4,25 @@ icon: lightbulb
 
 # 指南
 
-使用 `@vuepress/plugin-blog`，你可以轻松地将博客功能引入主题。
+使用 `@vuepress/plugin-blog`，你可以轻松地将博客## 自定义类别和类型
 
-## 收集文章并生成信息
+## 收集文章
 
-起步时，插件会首选过滤并选择那些需要作为文章的页面。这将剔除你不想要的页面，并在后续处理中排除它们。
+插件通过 `filter` 选项过滤所有页面，以丢弃你不想要的页面。
 
 ::: tip 默认情况下，所有从 Markdown 文件生成但不是主页的页面，都将被视作文章。
 
 :::
 
-你可能需要设置 `filter` 选项来完全自定义要收集的页面。 `filter` 接受一个形状为 `(page: Page) => boolean` 的函数。
+你可以通过 `filter` 选项来完全自定义要收集的页面。`filter` 接受一个形状为 `(page: Page) => boolean` 的函数。
 
-接着，你应该设置 `getInfo` 选项为一个接受 `Page` 作为参数并返回包含所需信息的对象的函数。这样稍后，你可以从组合 API 中获取这些信息。
+## 收集信息
 
-::: details 案例
+你应该设置 `getInfo` 选项为一个接受 `Page` 作为参数并返回包含所需信息的对象的函数。
+
+插件将收集你想要的所有信息并将它们写入每个页面的 `routeMeta` 字段，这样你稍后就能够通过组合 API 获取这些信息。
+
+::: details 示例
 
 ```ts title="主题入口"
 import { blogPlugin } from '@vuepress/plugin-blog'
@@ -81,7 +85,7 @@ export default {
 
 让我们从此处 2 个例子开始。
 
-假设你想为每篇文章设置标签，并且你正在通过 `frontmatter.tag` 设置它们。同时，你想要在 `/tag/` 中使用 `TagMap` 布局的标签页面，并在`/tag/标签名称` 中使用 `TagList` 布局对标签按名称进行分组，你可能需要这样的配置:
+假设你想为每篇文章设置标签，并且你正在通过页面 frontmatter 中的 `tag` 字段设置它们。你想要在 `/tag/` 中使用 `TagMap` 布局的标签映射页面，并在 `/tag/tagName` 中使用 `TagList` 布局按标签名称分组每个标签列表，你可能需要这样的配置：
 
 ```ts title="主题入口"
 import { blogPlugin } from '@vuepress/plugin-blog'
@@ -100,7 +104,7 @@ export default {
           frontmatter: () => ({ title: '标签页' }),
           itemPath: '/tag/:name/',
           itemLayout: 'TagList',
-          itemFrontmatter: (name) => ({ title: `${name}标签` }),
+          itemFrontmatter: (name) => ({ title: `标签 ${name}` }),
         },
       ],
     }),
@@ -109,7 +113,7 @@ export default {
 }
 ```
 
-此外，你可能希望为你的一些文章加注星标，并将其展示给访问者。当你在 frontmatter 中设置 `star: true` 来标记它们时，你可能需要这样的配置来在 `/star/` 路径中以 `StarList` 布局显示它们:
+此外，你可能希望为你的一些文章加注星标并将其展示给访问者。当你在 frontmatter 中设置 `star: true` 来标记它们时，你可能需要这样的配置来在 `/star/` 路径中以 `StarList` 布局显示它们：
 
 ```ts title="主题入口"
 import { blogPlugin } from '@vuepress/plugin-blog'
@@ -134,11 +138,11 @@ export default {
 }
 ```
 
-看，设置这两种类型很容易。有关完整选项，请参阅 [博客分类配置](./config.md#博客分类配置) 和 [博客分类配置](./config.md#博客类型配置)。
+看，设置这两种类型很容易。有关完整选项，请参阅[博客分类配置](./config.md#博客分类配置)和[博客类型配置](./config.md#博客类型配置)。
 
 ## 在客户端使用组合 API
 
-当生成每个页面时，插件将在 `frontmatter.blog` 中设置如下信息
+当生成每个页面时，插件将在 `frontmatter.blog` 中设置如下信息：
 
 ```ts
 interface BlogFrontmatterOptions {
@@ -157,19 +161,20 @@ interface BlogFrontmatterOptions {
 
 所以你可以直接调用 `useBlogCategory()` 和 `useBlogType()`，结果将是当前路由绑定的类别或类型。
 
-此外，你可以通过传递所需的 `key` 作为参数，来将获得绑定到该 `key` 的信息。
+此外，你可以通过传递所需的 `key` 作为参数，来获得绑定到该 `key` 的信息。
 
-对于上方的 Node 配置而言，你可以在客户端通过如下方式获取 tag 和 star 的信息:
+对于上方的 Node 配置而言，你可以在客户端通过如下方式获取 tag 和 star 的信息：
 
 `TagMap` 布局:
 
 ```vue
 <script setup lang="ts">
-import { useBlogCategory } from '@vuepress/plugin-blog'
+import { useBlogCategory } from '@vuepress/plugin-blog/client'
 import { RouteLink } from 'vuepress/client'
 
 const categoryMap = useBlogCategory('tag')
 </script>
+
 <template>
   <div>
     <h1>Tag page</h1>
@@ -191,11 +196,12 @@ const categoryMap = useBlogCategory('tag')
 
 ```vue
 <script setup lang="ts">
-import { useBlogCategory } from '@vuepress/plugin-blog'
+import { useBlogCategory } from '@vuepress/plugin-blog/client'
 import { RouteLink } from 'vuepress/client'
 
 const categoryMap = useBlogCategory('tag')
 </script>
+
 <template>
   <div>
     <h1>Tag page</h1>
@@ -250,12 +256,13 @@ const categoryMap = useBlogCategory('tag')
 ```vue
 <script setup lang="ts">
 import { useBlogType } from '@vuepress/plugin-blog/client'
-
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
+
 import ArticleList from '../components/ArticleList.vue'
 
 const stars = useBlogType('star')
 </script>
+
 <template>
   <div v-if="stars.items?.length" class="article-wrapper">
     <article

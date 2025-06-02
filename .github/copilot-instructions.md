@@ -37,31 +37,55 @@ For all exported content, JSDoc must be bilingual (English + Chinese):
 - ✅ **Exported Content**: Interfaces, functions, types, classes and other user-visible APIs
 - ❌ **Internal Functions**: User-invisible internal implementations
 - ✅ **@example**: Only for exported content
-- ✅ **@default**: Only when default values are not obvious; can be omitted for internal function parameters with obvious defaults
+- ✅ **@default**: Always include when there's a default value, including `@default false` for boolean options
+
+### Markdown Documentation Option Requirements
+
+**IMPORTANT**: The following rules apply to Markdown documentation files (\*.md), NOT to JSDoc comments in TypeScript files.
+
+In plugin/theme documentation files, each option should include:
+
+- **Required Options**: Always emphasize in documentation
+  - English: "Required: Yes"
+  - Chinese: "必填：是"
+- **Optional Options**: Do not declare "Required: No" as it's redundant
+- **Default Values**: Always mention default values for optional parameters, except for boolean options with `false` default
+  - English: "Default: `defaultValue`"
+  - Chinese: "默认值：`defaultValue`"
+- **Boolean False Default**: Do not provide default value declaration in Markdown documentation for boolean options with `false` default
+
+Example documentation format:
+
+```markdown
+### requiredOption
+
+- Type: `string`
+- Required: Yes
+- Details: This option is required
+
+### optionalOptionWithDefault
+
+- Type: `string`
+- Default: `"defaultValue"`
+- Details: This option is optional with a default value
+
+### optionalBooleanFalseDefault
+
+- Type: `boolean`
+- Details: This boolean option defaults to false (no default declaration needed)
+```
 
 ### Markdown Language Style
 
 - **English Documentation**: Keep concise and professional, avoid verbose descriptions, focus on clarity over detail
 - **Chinese Documentation**: Use "你" instead of "您", keep concise and crisp, avoid verbose descriptions that slow reading and ensure sync with en docs.
 
-### Documentation Option Requirements
-
-- **Required Options**: Always emphasize that an option is required
-  - English: "Required: Yes"
-  - Chinese: "必填：是"
-- **Default Values**: Always mention default values for optional parameters, except for boolean options with `false` default
-  - English: "Default: `defaultValue`"
-  - Chinese: "默认值：`defaultValue`"
-- **Boolean False Default**: Do not provide default value declaration for boolean options with `false` default
-
-### Content Refactoring Principles
-
 - **Length Control**: Avoid significantly lengthening content during refactoring
 - **Target Users**: Technical professionals who prefer concise descriptions
 - **Remove Redundancy**: Eliminate unnecessary modifier words
 - **Preserve Core**: Retain key information while simplifying expression
 
-### Quality Checks
+### Content Refactoring Principles
 
 1. Spelling and grammar accuracy
 2. Format consistency

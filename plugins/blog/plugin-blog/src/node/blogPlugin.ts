@@ -19,6 +19,33 @@ import type { BlogPluginOptions } from './options.js'
 import { Store, prepareStore } from './store.js'
 import { getType, getTypeOptions, prepareTypesMap } from './type/index.js'
 
+/**
+ * Blog plugin for VuePress
+ *
+ * VuePress 的博客插件
+ *
+ * @param options - Plugin options
+ * @returns VuePress plugin
+ *
+ * @description Adds blog functionality to VuePress including article collection,
+ * categorization, type filtering, and excerpt generation.
+ *
+ * 为 VuePress 添加博客功能，包括文章收集、分类、类型过滤和摘要生成。
+ *
+ * @example
+ * ```ts
+ * import { blogPlugin } from '@vuepress/plugin-blog'
+ *
+ * export default {
+ *   plugins: [
+ *     blogPlugin({
+ *       filter: (page) => Boolean(page.filePathRelative),
+ *       excerpt: true
+ *     })
+ *   ]
+ * }
+ * ```
+ */
 export const blogPlugin =
   (options: BlogPluginOptions): PluginFunction =>
   (app) => {

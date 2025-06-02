@@ -36,11 +36,11 @@ export interface BlogCategoryOptions<
   /**
    * Path pattern of page to be registered
    *
-   * @description `:key` will be replaced by the "slugify" result of the original key
-   *
    * 待注册的页面路径图案
    *
-   * @description `:key` 将会被替换为原 key 的 slugify 结果
+   * @description `:key` will be replaced by the "slugify" result of the original key
+   *
+   * `:key` 将会被替换为原 key 的 slugify 结果
    *
    * @default `/:key/`
    */
@@ -65,11 +65,11 @@ export interface BlogCategoryOptions<
   /**
    * Item page path pattern or custom function to be registered
    *
-   * @description When filling in a string, `:key` and `:name` will be replaced by the "slugify" result of the original key and name
-   *
    * 待注册的项目页面路径图案或自定义函数
    *
-   * @description 当填入字符串的时候, `:key` 和 `:name` 会被自动替换为原始的 key、name 的 slugify 结果。
+   * @description When filling in a string, `:key` and `:name` will be replaced by the "slugify" result of the original key and name
+   *
+   * 当填入字符串的时候, `:key` 和 `:name` 会被自动替换为原始的 key、name 的 slugify 结果。
    *
    * @default `/:key/:name/`
    */
@@ -202,11 +202,15 @@ export interface BlogPluginOptions
 
   /**
    * Categories config
+   *
+   * 分类配置
    */
   category?: BlogCategoryOptions[]
 
   /**
    * Types config
+   *
+   * 类型配置
    */
   type?: BlogTypeOptions[]
 
@@ -233,7 +237,7 @@ export interface BlogPluginOptions
    *
    * 摘要生成
    *
-   * @default false
+   * @default true
    */
   excerpt?: boolean
 
@@ -289,7 +293,7 @@ export interface BlogPluginOptions
    *
    * @description 在大型站点上，这可能会有性能影响
    *
-   * @default false
+   * @default app.env.isDebug
    */
   hotReload?: boolean
 }

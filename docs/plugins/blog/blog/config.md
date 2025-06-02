@@ -9,7 +9,6 @@ icon: settings-2
 ### getInfo
 
 - Type: `(page: Page) => Record<string, unknown>`
-- Required: No
 - Reference:
   - [Guide → Gathering Info](./guide.md#gathering-info)
 - Details:
@@ -33,7 +32,6 @@ icon: settings-2
 ### category
 
 - Type: `BlogCategoryOptions[]`
-- Required: No
 - Reference:
   - [Guide → Customizing Categories and Types](./guide.md#customizing-categories-and-types)
 - Details:
@@ -42,7 +40,6 @@ icon: settings-2
 ### type
 
 - Type: `BlogTypeOptions[]`
-- Required: No
 - Reference:
   - [Guide → Customizing Categories and Types](./guide.md#customizing-categories-and-types)
 - Details:
