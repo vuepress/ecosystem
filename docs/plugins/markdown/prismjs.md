@@ -499,7 +499,7 @@ In the new version, some functionalities similar to [shiki](https://shiki.style/
 
   ```js /Hello/
   const msg = 'Hello World'
-  console.log(msg) // pints Hello World
+  console.log(msg) // prints Hello World
   ```
 
   :::

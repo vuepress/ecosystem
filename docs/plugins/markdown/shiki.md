@@ -487,7 +487,7 @@ body > div {
 
   ```js /Hello/
   const msg = 'Hello World'
-  console.log(msg) // pints Hello World
+  console.log(msg) // prints Hello World
   ```
 
   :::
