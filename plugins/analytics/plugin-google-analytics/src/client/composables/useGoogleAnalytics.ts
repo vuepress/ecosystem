@@ -8,15 +8,16 @@ declare global {
 }
 
 /**
- * Add gtag.js to your site
+ * Initialize Google Analytics 4 tracking
+ *
+ * @param options - Google Analytics plugin options
+ *
+ * @description Injects gtag.js and configures Google Analytics 4.
+ * Enhanced measurement automatically tracks page views and other events.
+ * The global `gtag()` function will be available for custom event tracking.
  *
  * @see https://developers.google.com/analytics/devguides/collection/gtagjs
- * @see https://developers.google.com/analytics/devguides/collection/gtagjs/pages
- * @see https://developers.google.com/analytics/devguides/collection/gtagjs/single-page-applications
- *
- * The enhanced measurement will listen to browser history events (i.e `pushState`, `popState`, and `replaceState`)
- * to collect page_view event, so we do not need to report it manually
- *
+ * @see https://developers.google.com/analytics/devguides/collection/ga4/events
  * @see https://support.google.com/analytics/answer/9216061
  */
 export const useGoogleAnalytics = (
