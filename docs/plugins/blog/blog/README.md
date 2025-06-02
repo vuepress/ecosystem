@@ -6,6 +6,8 @@ icon: la:blog
 
 <NpmBadge package="@vuepress/plugin-blog" />
 
+Blog plugin for VuePress, providing article collection, categorization, type filtering, and excerpt generation.
+
 ## Usage
 
 ```bash

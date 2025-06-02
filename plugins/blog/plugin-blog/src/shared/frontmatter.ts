@@ -4,20 +4,20 @@ export interface BlogCategoryFrontmatterOptions {
   type: 'category'
 
   /**
-   * Unique key under current category
+   * Unique key for this category
    *
-   * 在当前分类下全局唯一的 key
+   * 分类的唯一键名
    */
   key: string
 
   /**
-   * Current category name
+   * Category name
    *
-   * @description Only available in category item page
+   * 分类名称
    *
-   * 当前的分类名称
+   * @description Only available in category item pages
    *
-   * @description 仅在分类子项目页面中可用
+   * 仅在分类子项页面中可用
    */
   name?: string
 }
@@ -26,9 +26,9 @@ export interface BlogTypeFrontmatterOptions {
   type: 'type'
 
   /**
-   * Unique key under current category
+   * Unique key for this type
    *
-   * 在当前分类下全局唯一的 key
+   * 类型的唯一键名
    */
   key: string
 }

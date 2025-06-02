@@ -25,12 +25,16 @@ import { getType, getTypeOptions, prepareTypesMap } from './type/index.js'
  * VuePress 的博客插件
  *
  * @param options - Plugin options
+ *
+ * 插件选项
+ *
  * @returns VuePress plugin
  *
- * @description Adds blog functionality to VuePress including article collection,
- * categorization, type filtering, and excerpt generation.
+ * VuePress 插件
  *
- * 为 VuePress 添加博客功能，包括文章收集、分类、类型过滤和摘要生成。
+ * @description Adds blog functionality including article collection, categorization, type filtering, and excerpt generation
+ *
+ * 添加博客功能，包括文章收集、分类、类型过滤和摘要生成
  *
  * @example
  * ```ts

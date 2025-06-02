@@ -10,94 +10,91 @@ icon: settings-2
 
 - Type: `(page: Page) => Record<string, unknown>`
 - Reference:
-  - [Guide → Gathering Info](./guide.md#gathering-info)
+  - [Guide → Article Collection](./guide.md#gathering-info)
 - Details:
 
-  Function getting article info.
+  Function to extract article information from pages.
 
-  Article info will be injected in route meta so that they will be available later in client composables.
+  Article info will be injected into route meta, making it available in client composables.
 
 ### filter
 
 - Type: `(page: Page) => boolean`
 - Default: `(page) => Boolean(page.filePathRelative) && !page.frontmatter.home`
 - Reference:
-  - [Guide → Collecting Articles](./guide.md#collecting-articles)
+  - [Guide → Article Collection](./guide.md#collecting-articles)
 - Details:
 
-  Page filter, determine whether a page should be included.
+  Function to filter pages for blog articles.
 
-  By default, all the pages generated from Markdown files but not homepage will be included as articles.
+  By default, all pages generated from Markdown files except homepage are included.
 
 ### category
 
 - Type: `BlogCategoryOptions[]`
 - Reference:
-  - [Guide → Customizing Categories and Types](./guide.md#customizing-categories-and-types)
-- Details:
-  Blog category config, see [Blog Category Config](#blog-category-config)
+  - [Guide → Categories and Types](./guide.md#customizing-categories-and-types)
+- Details: Category configurations. See [Category Config](#blog-category-config).
 
 ### type
 
 - Type: `BlogTypeOptions[]`
 - Reference:
-  - [Guide → Customizing Categories and Types](./guide.md#customizing-categories-and-types)
-- Details:
-  Blog type config, see [Blog Type Config](#blog-type-config)
+  - [Guide → Categories and Types](./guide.md#customizing-categories-and-types)
+- Details: Type configurations. See [Type Config](#blog-type-config).
 
 ### slugify
 
 - Type: `(name: string) => string`
 - Default: `(name) => name.replace(/ _/g, '-').replace(/[:?*|\\/<>]/g, "").toLowerCase()`
-- Details: Slugify function, used to convert key name which they are register in routes.
+- Details: Function to convert strings to URL-friendly slugs for route registration.
 
 ### excerpt
 
 - Type: `boolean`
 - Default: `true`
-- Reference:
-  - [Guide → Generating Excerpt](./guide.md#generating-excerpt)
-- Details: Whether generate excerpt for page.
+- Reference: [Guide → Excerpt Generation](./guide.md#generating-excerpt)
+- Details: Whether to generate excerpt for pages.
 
 ### excerptSeparator
 
 - Type: `string`
 - Default: `<!-- more -->`
 - Reference:
-  - [Guide → Generating Excerpt](./guide.md#generating-excerpt)
-- Details: Separator used to split excerpt from page content.
+  - [Guide → Excerpt Generation](./guide.md#generating-excerpt)
+- Details: Separator for manual excerpt in content.
 
 ### excerptLength
 
 - Type: `number`
 - Default: `300`
 - Reference:
-  - [Guide → Generating Excerpt](./guide.md#generating-excerpt)
+  - [Guide → Excerpt Generation](./guide.md#generating-excerpt)
 - Details:
 
-  Length of excerpt when auto generating.
+  Target length for auto-generated excerpts.
 
   ::: tip
 
   Excerpt length will be the minimal possible length reaching this value.
 
-  You can set it to `0` to disable auto excerpt generation.
+  Set to `0` to disable auto excerpt generation.
 
   :::
 
 ### excerptFilter
 
 - Type: `(page: Page) => boolean`
-- Default: `filter` option
+- Default: Same as `filter` option
 - Reference:
-  - [Guide → Generating Excerpt](./guide.md#generating-excerpt)
+  - [Guide → Excerpt Generation](./guide.md#generating-excerpt)
 - Details:
 
-  Page filter, determine whether the plugin should generate excerpt for it.
+  Function to filter pages for excerpt generation.
 
   ::: tip
 
-  You should use this to skip pages that you don't need to generate excerpt for. E.g.: If users set `excerpt` or `description` in frontmatter, you may want to use them directly.
+  Use this to skip pages that don't need excerpt generation. For example, if users set `excerpt` or `description` in frontmatter, you may want to use them directly.
 
   :::
 

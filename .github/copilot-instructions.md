@@ -63,51 +63,42 @@
  *
  * 中文描述
  *
- * @description English detailed description
+ * @description (optional) English detailed description
  *
  * 中文详细描述
  *
  * @default defaultValue
- * @example <Only for exported content>
- *
+ * @example
  * ```ts
  * // Example code in TypeScript
  * ```
  */
 ````
 
-#### Scope of Application
+## Documentation Rules
 
-- ✅ **Exported Content**: Interfaces, functions, types, classes and other user-visible APIs
-- ❌ **Internal Functions**: User-invisible internal implementations
-- ✅ **@example**: Only for exported content
-- ✅ **@default**: Only when default values are not obvious; can be omitted for internal function parameters with obvious defaults
+### General Requirements
 
-### Markdown Language Style
+- Consistent with code behaviors
+- Chinese/English content must be consistent in structure and content
+- Make content concise and clear, remove unnecessary words, avoid redundancy, prefer shorter if possible
+- Use "你" instead of "您" in Chinese
 
-- **English Documentation**: Keep concise and professional, avoid verbose descriptions, focus on clarity over detail
-- **Chinese Documentation**: Use "你" instead of "您", keep concise and crisp, avoid verbose descriptions that slow reading and ensure sync with en docs.
+### Options Documentation Format
 
-### Documentation Option Requirements
+Each option in plugin/theme documentation must include:
 
-- **Required Options**: Always emphasize that an option is required
+- **Type**: Always specify type
+  - English: "Type: `type`"
+  - Chinese: "类型：`type`"
+  - Follow with code fence for complex types
+- **Required Options**: Always emphasize required options
   - English: "Required: Yes"
   - Chinese: "必填：是"
-- **Default Values**: Always mention default values for optional parameters, except for boolean options with `false` default
+- **Optional Options**: Must NOT declare "Required: No"
+- **Default Values**: Always mention for optional parameters
+  - Exception: Boolean options with `false` default (omit default declaration)
   - English: "Default: `defaultValue`"
   - Chinese: "默认值：`defaultValue`"
-- **Boolean False Default**: Do not provide default value declaration for boolean options with `false` default
-
-### Content Refactoring Principles
-
-- **Length Control**: Avoid significantly lengthening content during refactoring
-- **Target Users**: Technical professionals who prefer concise descriptions
-- **Remove Redundancy**: Eliminate unnecessary modifier words
-- **Preserve Core**: Retain key information while simplifying expression
-
-### Quality Checks
-
-1. Spelling and grammar accuracy
-2. Format consistency
-3. Accurate English and Chinese expression
-4. Appropriate content length
+- **Reference**: Optional, links to relevant documentation (always as list)
+- **Details**: Brief description of purpose/usage, prefer paragraph for long contents.

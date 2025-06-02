@@ -4,23 +4,21 @@ icon: lightbulb
 
 # Guide
 
-With `@vuepress/plugin-blog`, you can easily bring blog features to your theme.
+Adds blog functionality to VuePress themes with article collection, categorization, and excerpt generation.
 
-## Collecting Articles
+## Article Collection
 
-The plugin filters all pages using the `filter` option to drop pages you don't want.
+The plugin filters pages using the `filter` option to determine which pages should be treated as articles.
 
-::: tip By default, all pages generated from Markdown files but not the homepage are considered articles.
-
+::: tip
+By default, all pages generated from Markdown files except the homepage are considered articles.
 :::
-
-You can fully customize which pages to collect through the `filter` option, which accepts a function `(page: Page) => boolean`.
 
 ## Gathering Info
 
-You should set the `getInfo` option with a function accepting `Page` as an argument and returning an object containing the information you want.
+Set the `getInfo` option with a function that extracts article information from pages.
 
-The plugin will collect all the information you want and write it to the `routeMeta` field of each page, so you will be able to get this information through the Composition API later.
+The plugin injects collected information into the `routeMeta` field, making it available through Composition API.
 
 ::: details Demo
 
