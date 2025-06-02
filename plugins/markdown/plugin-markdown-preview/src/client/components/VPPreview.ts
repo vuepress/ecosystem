@@ -59,8 +59,6 @@ export default defineComponent({
     // Generate unique ID for accessibility
     const uniqueId = `vp-preview-${useId()}`
 
-    let previousState: boolean | null = null
-
     const toggle = (current?: boolean): void => {
       isExpanded.value = current ?? !isExpanded.value
 
@@ -71,16 +69,18 @@ export default defineComponent({
       }
     }
 
+    let isBeforePrintOpen: boolean = false
+
     useEventListener('beforeprint', () => {
+      isBeforePrintOpen = isExpanded.value
+
       toggleIsExpand(true)
     })
 
     useEventListener('afterprint', () => {
-      if (previousState !== null) {
-        toggleIsExpand(previousState)
-      }
+      if (isBeforePrintOpen) return
 
-      previousState = null
+      toggleIsExpand()
     })
 
     useResizeObserver(codeContainer, () => {
