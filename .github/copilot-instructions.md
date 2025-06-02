@@ -85,6 +85,18 @@ Example documentation format:
 - **Remove Redundancy**: Eliminate unnecessary modifier words
 - **Preserve Core**: Retain key information while simplifying expression
 
+### CSS Class Naming Rules
+
+All CSS class names must follow these conventions:
+
+- **VuePress Prefixed Classes**: All CSS class names must start with `vp-` prefix
+- **External Integration Exception**: Classes for external content integration are exempt from the prefix requirement
+  - Example: `waline-wrapper` for Waline comment system integration
+  - Example: `giscus-container` for Giscus comment system integration
+- **Component Classes**: Use descriptive names after the prefix
+  - Good: `vp-comment-form`, `vp-back-to-top-button`, `vp-code-block`
+  - Bad: `comment-form`, `btn`, `container`
+
 ### Content Refactoring Principles
 
 1. Spelling and grammar accuracy
