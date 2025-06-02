@@ -6,7 +6,7 @@ icon: message-circle-more
 
 <NpmBadge package="@vuepress/plugin-comment" />
 
-Comment plugin for VuePress, supports multiple comment providers.
+Comment plugin for VuePress supporting multiple providers.
 
 ## Usage
 
@@ -21,7 +21,7 @@ export default {
   plugins: [
     commentPlugin({
       provider: 'Waline', // Artalk | Giscus | Waline | Twikoo
-      // provider options
+      // provider-specific options
     }),
   ],
 }
@@ -36,4 +36,4 @@ export default {
 
 ## Guide
 
-For detailed configuration and usage, see [Guide](./guide.md).
+See [Guide](./guide.md) for detailed configuration.

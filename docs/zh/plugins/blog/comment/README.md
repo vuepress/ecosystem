@@ -2,7 +2,7 @@
 
 <NpmBadge package="@vuepress/plugin-comment" />
 
-VuePress 评论插件，支持多种评论服务商。
+VuePress 评论插件，支持多种评论服务。
 
 ## 使用
 
@@ -17,7 +17,7 @@ export default {
   plugins: [
     commentPlugin({
       provider: 'Waline', // Artalk | Giscus | Waline | Twikoo
-      // 服务商选项
+      // 服务商配置
     }),
   ],
 }
@@ -32,4 +32,4 @@ export default {
 
 ## 指南
 
-详细配置和使用说明请查看[指南](./guide.md)。
+详细配置请查看[指南](./guide.md)。
