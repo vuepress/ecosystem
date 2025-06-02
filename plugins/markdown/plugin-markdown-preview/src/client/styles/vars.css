@@ -1,0 +1,7 @@
+:root {
+  --preview-c-divider: var(--vp-c-divider);
+  --preview-c-button: var(--vp-c-text-mute);
+  --preview-c-button-hover: var(--vp-c-accent);
+  --preview-c-button-focus: var(--vp-c-text);
+  --preview-border-radius: 8px;
+}
