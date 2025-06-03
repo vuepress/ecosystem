@@ -9,8 +9,9 @@ icon: settings-2
 ### getInfo
 
 - 类型：`(page: Page) => Record<string, unknown>`
+- 必填: 否
 - 参考：
-  - [指南 → 收集信息](./guide.md#收集信息)
+  - [指南 → 收集文章并生成信息](./guide.md#收集文章并生成信息)
 - 详情：
 
   获取文章信息的函数。
@@ -19,10 +20,12 @@ icon: settings-2
 
 ### filter
 
-- 类型：`(page: Page) => boolean`
-- 默认值：`(page) => Boolean(page.filePathRelative) && !page.frontmatter.home`
-- 参考：
-  - [指南 → 收集文章](./guide.md#收集文章)
+- 类型: `(page: Page) => boolean`
+- 默认值: `(page) => Boolean(page.filePathRelative) && !page.frontmatter.home`
+- 参考:
+
+  - [指南 → 收集文章并生成信息](./guide.md#收集文章并生成信息)
+
 - 详情：
 
   页面过滤器，此函数用于鉴别页面是否作为文章。
@@ -31,14 +34,18 @@ icon: settings-2
 
 ### category
 
-- 类型：`BlogCategoryOptions[]`
-- 参考：
+- 类型: `BlogCategoryOptions[]`
+- 必填: 否
+- 详情：
+
   - [指南 → 自定义类别和类型](./guide.md#自定义类别和类型)
+
 - 详情：博客分类配置，详见 [博客分类配置](#博客分类配置)。
 
 ### type
 
-- 类型：`BlogTypeOptions[]`
+- 类型: `BlogTypeOptions[]`
+- 必填: 否
 - 参考：
   - [指南 → 自定义类别和类型](./guide.md#自定义类别和类型)
 - 详情：博客类型配置，详见 [博客类型配置](#博客类型配置)。
@@ -51,18 +58,14 @@ icon: settings-2
 
 ### excerpt
 
-- 类型：`boolean`
-- 默认值：`true`
-- 参考：
-  - [指南 → 摘要生成](./guide.md#摘要生成)
+- 类型: `boolean`
+- 默认值: `true`
 - 详情：是否生成摘要。
 
 ### excerptSeparator
 
-- 类型：`string`
-- 默认值：`<!-- more -->`
-- 参考：
-  - [指南 → 摘要生成](./guide.md#摘要生成)
+- 类型: `string`
+- 默认值: `<!-- more -->`
 - 详情：摘要分隔符。
 
 ### excerptLength

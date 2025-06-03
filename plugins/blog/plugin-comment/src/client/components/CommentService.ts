@@ -5,6 +5,11 @@ import { useData } from 'vuepress/client'
 import type { CommentPluginFrontmatter } from '../../shared/index.js'
 import { useCommentOptions } from '../helpers/index.js'
 
+/**
+ * Comment service component
+ *
+ * 评论服务组件
+ */
 export default defineComponent({
   name: 'CommentService',
 

@@ -6,7 +6,7 @@
 
 - Type: `string`
 - Required: Yes
-- Details: Vercel address.
+- Details: Vercel address or Tencent CloudBase environment ID.
 
 ## Plugin Config
 

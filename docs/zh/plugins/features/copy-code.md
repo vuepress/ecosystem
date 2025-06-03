@@ -34,7 +34,7 @@ export default {
 
 - 类型：`string | string[]`
 - 默认值：`'[vp-content] div[class*="language-"] pre'`
-- 详情:
+- 详情：
 
   代码块选择器
 
@@ -42,7 +42,7 @@ export default {
 
 - 类型：`boolean`
 - 默认值：`false`
-- 详情:
+- 详情：
 
   是否展示在移动端
 
@@ -50,14 +50,14 @@ export default {
 
 - 类型：`number`
 - 默认值：`2000`
-- 详情:
+- 详情：
 
   提示消息显示时间，设置为 `0` 会禁用提示。
 
 ### ignoreSelector
 
 - 类型：`string[] | string`
-- 详情:
+- 详情：
 
   代码块中的元素选择器，用于在复制时忽略相关元素。
 
@@ -67,7 +67,7 @@ export default {
 
 - 类型：`string[] | string | boolean`
 - 默认值：`false`
-- 详情:
+- 详情：
 
   是否在双击时复制行内代码内容。
 
@@ -77,7 +77,7 @@ export default {
 ### transform <Badge type="tip" text="仅限组合式 API" />
 
 - 类型：`(preElement: HTMLPreElement) => void`
-- 详情:
+- 详情：
 
   一个转换器，用于在复制之前对 `<pre>` 中代码块内容进行修改。该选项仅在使用 `useCopyCode()` 时有效。
 
@@ -124,7 +124,7 @@ export default {
   ```
 
 - 必填：否
-- 详情:
+- 详情：
 
   复制按钮插件的国际化配置。
 

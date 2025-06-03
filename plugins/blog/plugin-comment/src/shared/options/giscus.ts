@@ -1,7 +1,17 @@
 import type { BaseCommentPluginOptions } from './base.js'
 
+/**
+ * Giscus repository format
+ *
+ * Giscus 仓库格式
+ */
 export type GiscusRepo = `${string}/${string}`
 
+/**
+ * Giscus mapping types
+ *
+ * Giscus 映射类型
+ */
 export type GiscusMapping =
   | 'number'
   | 'og:title'
@@ -10,8 +20,18 @@ export type GiscusMapping =
   | 'title'
   | 'url'
 
+/**
+ * Giscus input position
+ *
+ * Giscus 输入框位置
+ */
 export type GiscusInputPosition = 'bottom' | 'top'
 
+/**
+ * Giscus theme options
+ *
+ * Giscus 主题选项
+ */
 export type GiscusTheme =
   | 'catppuccin_frappe'
   | 'catppuccin_latte'
@@ -39,6 +59,11 @@ export type GiscusTheme =
   | 'transparent_dark'
   | `https://${string}`
 
+/**
+ * Giscus comment options
+ *
+ * Giscus 评论选项
+ */
 export interface GiscusOptions extends BaseCommentPluginOptions {
   /**
    * The name of repository to store discussions.

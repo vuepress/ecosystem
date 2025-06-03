@@ -6,6 +6,8 @@ icon: message-circle-more
 
 <NpmBadge package="@vuepress/plugin-comment" />
 
+Comment plugin for VuePress supporting multiple providers.
+
 ## Usage
 
 ```bash
@@ -18,8 +20,20 @@ import { commentPlugin } from '@vuepress/plugin-comment'
 export default {
   plugins: [
     commentPlugin({
-      // options
+      provider: 'Waline', // Artalk | Giscus | Waline | Twikoo
+      // provider-specific options
     }),
   ],
 }
 ```
+
+## Supported Providers
+
+- [Artalk](./artalk/)
+- [Giscus](./giscus/)
+- [Twikoo](./twikoo/)
+- [Waline](./waline/)
+
+## Guide
+
+See [Guide](./guide.md) for detailed configuration.

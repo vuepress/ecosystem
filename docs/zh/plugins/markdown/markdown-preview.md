@@ -86,7 +86,7 @@ document.querySelector('body').innerText = 'Hello world!'
 
 ### locales
 
-- 类型: `Record<string, MarkdownPreviewLocaleData>`
+- 类型：`Record<string, MarkdownPreviewLocaleData>`
 
   ```ts
   export interface MarkdownPreviewLocaleData {

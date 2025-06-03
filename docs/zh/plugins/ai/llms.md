@@ -182,7 +182,7 @@ description: 描述
 
 - 默认值：`() => true`
 
-- 详情:
+- 详情：
 
   页面过滤函数，当返回 `true` 时，页面将被包含在 `llms.txt` 中，否则将被排除。
 
@@ -194,7 +194,7 @@ description: 描述
 
 - 默认值：`''`
 
-- 详情:
+- 详情：
 
   将在 `llms.txt` 和其他文件中作为 URL 前缀的域名。
 
@@ -211,7 +211,7 @@ description: 描述
 
 - 默认值：`'/'`
 
-- 详情:
+- 详情：
 
   要生成的站点语言环境。如果未设置，插件将使用 VuePress 站点的默认语言环境。如果设置为 `'all'`，插件将为所有语言环境生成 `llms.txt`。
 
@@ -223,7 +223,7 @@ description: 描述
 
 - 类型：`string`
 
-- 默认值:
+- 默认值：
 
   ```ts
   const DEFAULT_LLMSTXT_TEMPLATE = `\
@@ -238,7 +238,7 @@ description: 描述
   {toc}`
   ```
 
-- 详情:
+- 详情：
 
   `llms.txt` 文件的自定义模板，允许自定义元素的顺序。
 
