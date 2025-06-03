@@ -14,7 +14,7 @@ export interface BaseCommentPluginOptions {
   comment?: boolean
 
   /**
-   * The delay of dom operation, in ms
+   * The delay of DOM operation, in ms
    *
    * If the theme you are using has a switching animation, it is recommended to configure this option to `Switch animation duration + 200`
    *

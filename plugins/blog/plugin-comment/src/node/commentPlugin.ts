@@ -14,16 +14,14 @@ import type { CommentPluginOptions } from './options.js'
 import { CLIENT_FOLDER, PLUGIN_NAME, logger } from './utils.js'
 
 /**
- * Comment plugin for VuePress
+ * VuePress comment plugin
  *
  * VuePress 评论插件
  *
  * @param options - Plugin options
- *
  * 插件选项
  *
  * @returns VuePress plugin
- *
  * VuePress 插件
  *
  * @example
@@ -34,9 +32,9 @@ import { CLIENT_FOLDER, PLUGIN_NAME, logger } from './utils.js'
  *   plugins: [
  *     commentPlugin({
  *       provider: 'Waline',
- *       serverURL: 'https://waline.example.com'
- *     })
- *   ]
+ *       serverURL: 'https://waline.example.com',
+ *     }),
+ *   ],
  * }
  * ```
  */
