@@ -34,28 +34,26 @@ export const useRtl = (
   const routeLocale = useRouteLocale()
 
   const toggleRTL = (localePath: string): void => {
-    if (rtlLocalePaths.includes(localePath)) {
-      entries(selectorOptions).forEach(([selector, attrs = {}]) => {
-        const element = getElement(selector)
+    const isRTL = rtlLocalePaths.includes(localePath)
 
-        if (element)
-          entries(attrs).forEach(([attr, value]) => {
-            if (attr === 'class') element.classList.add(value)
-            else element.setAttribute(attr, value)
-          })
-      })
+    entries(selectorOptions).forEach(([selector, attrs = {}]) => {
+      const element = getElement(selector)
+
+      if (element)
+        entries(attrs).forEach(([attr, value]) => {
+          if (attr === 'class') {
+            element.classList[isRTL ? 'add' : 'remove'](value)
+          } else if (isRTL) {
+            element.setAttribute(attr, value)
+          } else {
+            element.removeAttribute(attr)
+          }
+        })
+    })
+
+    if (isRTL) {
       document.documentElement.style.setProperty('direction', 'rtl')
     } else {
-      entries(selectorOptions).forEach(([selector, attrs = {}]) => {
-        const element = getElement(selector)
-
-        if (element)
-          entries(attrs).forEach(([attr, value]) => {
-            if (attr === 'class') element.classList.remove(value)
-            else element.removeAttribute(attr)
-          })
-      })
-
       document.documentElement.style.removeProperty('direction')
     }
   }
