@@ -131,6 +131,6 @@ npm i -D twikoo
 
 ## 配置
 
-请配置 `provider: "Twikoo"` 并将你的服务端地址传入插件选项中的 `server`。
+请配置 `provider: "Twikoo"` 并将你的服务端地址传入插件选项中的 `envId`。
 
 其他的配置项详见 [Twikoo 配置](config.md)。

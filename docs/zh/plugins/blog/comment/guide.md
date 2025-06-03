@@ -77,12 +77,12 @@ defineArtalkConfig({
 
 ### provider <Badge text="仅限插件选项" type="warning"/>
 
-- 类型: `"Artalk" | "Giscus" | "Twikoo" | "Waline" | "None"`
-- 默认值: `"None"`
+- 类型：`"Artalk" | "Giscus" | "Twikoo" | "Waline" | "None"`
+- 默认值：`"None"`
 - 详情：评论服务提供者。
 
 ### comment
 
-- 类型: `boolean`
-- 默认值: `true`
+- 类型：`boolean`
+- 默认值：`true`
 - 详情：是否默认启用评论功能。

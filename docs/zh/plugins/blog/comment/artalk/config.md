@@ -28,13 +28,13 @@ export default {
 
 ## 客户端配置
 
-你可以使用 `defineArtalkConfig` 函数来配置 Artalk：
+你可以使用 `defineArtalkConfig` 函数来配置 Artalk。
 
 ```ts title=".vuepress/client.ts"
 import { defineArtalkConfig } from '@vuepress/plugin-comment/client'
 import { defineClientConfig } from 'vuepress/client'
 
 defineArtalkConfig({
-  // Artalk 配置
+  // Artalk 选项
 })
 ```

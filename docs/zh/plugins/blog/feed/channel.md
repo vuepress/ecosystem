@@ -30,7 +30,7 @@ icon: tv
 ## channel.language
 
 - 类型：`string`
-- 默认值:
+- 默认值：
   - `siteConfig.locales['/'].locales`
   - 如果上述未提供，回退到 `"en-US"`
 
@@ -39,7 +39,7 @@ icon: tv
 ## channel.copyright
 
 - 类型：`string`
-- 默认值:
+- 默认值：
   - 尝试读取 channel 选项中的 `author.name` 生成 `Copyright by $author`
 - 建议自行设置: **是**
 

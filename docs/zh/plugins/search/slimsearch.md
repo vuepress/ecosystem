@@ -129,8 +129,8 @@ export default defineUserConfig({
 
 ### indexContent
 
-- 类型: `boolean`
-- 默认值: `false`
+- 类型：`boolean`
+- 默认值：`false`
 
 是否索引内容。
 
@@ -142,14 +142,14 @@ export default defineUserConfig({
 
 ### suggestion
 
-- 类型: `boolean`
-- 默认值: `false`
+- 类型：`boolean`
+- 默认值：`false`
 
 是否自动提示搜索建议。
 
 ### customFields
 
-- 类型: `CustomFieldOptions[]`
+- 类型：`CustomFieldOptions[]`
 
   ```ts
   interface CustomFieldOptions {
@@ -175,11 +175,11 @@ export default defineUserConfig({
 
 ### hotKeys
 
-- 类型: `(KeyOptions | string)[]`
+- 类型：`(KeyOptions | string)[]`
 
   @[code ts](@vuepress/helper/src/shared/key.ts)
 
-- 默认值: `[{ key: "k", ctrl: true }, { key: "/", ctrl: true }]`
+- 默认值：`[{ key: "k", ctrl: true }, { key: "/", ctrl: true }]`
 
 指定热键的 [event.key](http://keycode.info/)。
 
@@ -187,22 +187,22 @@ export default defineUserConfig({
 
 ### queryHistoryCount
 
-- 类型: `number`
-- 默认值: `5`
+- 类型：`number`
+- 默认值：`5`
 
 存储搜索查询词历史的最大数量，可以设置为 `0` 以禁用。
 
 ### resultHistoryCount
 
-- 类型: `number`
-- 默认值: `5`
+- 类型：`number`
+- 默认值：`5`
 
 存储搜索结果历史的最大数量，可以设置为 `0` 以禁用。
 
 ### searchDelay
 
-- 类型: `number`
-- 默认值: `150`
+- 类型：`number`
+- 默认值：`150`
 
 结束输入到开始搜索的延时
 
@@ -214,15 +214,15 @@ export default defineUserConfig({
 
 ### filter
 
-- 类型: `(page: Page) => boolean`
-- 默认值: `() => true`
+- 类型：`(page: Page) => boolean`
+- 默认值：`() => true`
 
 用于过滤页面的函数。
 
 ### sortStrategy
 
-- 类型: `"max" | "total"`
-- 默认值: `"max"`
+- 类型：`"max" | "total"`
+- 默认值：`"max"`
 
 结果排序策略
 
@@ -230,15 +230,15 @@ export default defineUserConfig({
 
 ### worker
 
-- 类型: `string`
-- 默认值: `slimsearch.worker.js`
+- 类型：`string`
+- 默认值：`slimsearch.worker.js`
 
 输出的 Worker 文件名称
 
 ### hotReload
 
-- 类型: `boolean`
-- 默认值: 是否使用 `--debug` 标记
+- 类型：`boolean`
+- 默认值：是否使用 `--debug` 标记
 
 是否在开发服务器中启用实时热重载。
 
@@ -250,7 +250,7 @@ export default defineUserConfig({
 
 ### indexOptions
 
-- 类型: `SlimSearchIndexOptions`
+- 类型：`SlimSearchIndexOptions`
 
   ```ts
   interface SlimSearchIndexOptions {
@@ -271,14 +271,14 @@ export default defineUserConfig({
 
 ### indexLocaleOptions
 
-- 类型: `Record<string, SlimSearchIndexOptions>`
+- 类型：`Record<string, SlimSearchIndexOptions>`
 - 必填: 否
 
 分语言的创建索引选项，键为语言路径。
 
 ### locales
 
-- 类型: `SlimSearchLocaleConfig`
+- 类型：`SlimSearchLocaleConfig`
 
   ```ts
   interface SlimSearchLocaleData {

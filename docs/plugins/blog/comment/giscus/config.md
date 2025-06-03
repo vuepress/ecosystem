@@ -36,19 +36,19 @@
 
 - Type: `boolean`
 - Default: `true`
-- Details: Whether enable strict mapping
+- Details: Whether to enable strict mapping
 
 ### lazyLoading
 
 - Type: `boolean`
 - Default: `true`
-- Details: Whether enable lazy loading
+- Details: Whether to enable lazy loading
 
 ### reactionsEnabled
 
 - Type: `boolean`
 - Default: `true`
-- Details: Whether enable reactions
+- Details: Whether to enable reactions
 
 ### inputPosition
 
@@ -77,9 +77,9 @@
 - Default: `"light"`
 - Details:
 
-  Giscus theme used in lightmode
+  Giscus theme used in light mode
 
-  Should be a built-in theme keyword or a css link starting with `https://`.
+  Should be a built-in theme keyword or a CSS link starting with `https://`.
 
 ### darkTheme
 
@@ -102,9 +102,9 @@
 - Default: `"dark"`
 - Details:
 
-  Giscus theme used in darkmode
+  Giscus theme used in dark mode
 
-  Should be a built-in theme keyword or a css link starting with `https://`.
+  Should be a built-in theme keyword or a CSS link starting with `https://`.
 
 ## Plugin Config
 
