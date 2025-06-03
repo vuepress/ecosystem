@@ -2,11 +2,11 @@
 icon: pilcrow-left
 ---
 
-# rtl
+# RTL
 
 <NpmBadge package="@vuepress/plugin-rtl" />
 
-This plugin will set direction to rtl on configured locales.
+This plugin sets text direction to RTL on configured locales.
 
 ## Usage
 
@@ -37,8 +37,7 @@ export default {
 
 - Type: `string[]`
 - Default: `['/']`
-- Details:
-  Locale path to enable rtl.
+- Details: RTL locale paths to enable RTL layout.
 
 ### selector
 
@@ -53,12 +52,7 @@ export default {
   ```
 
 - Default: `{ 'html': { dir: 'rtl' } }`
-
-- Details:
-
-  Selector to enable rtl.
-
-  The default settings mean that the `dir` attribute of the `html` element will be set to `rtl` in rtl locales.
+- Details: Selector configuration to enable RTL layout. The default settings mean that the `dir` attribute of the `html` element will be set to `rtl` in RTL locales.
 
 <script setup>
 import ToggleRTLButton from '@source/.vuepress/components/ToggleRTLButton.vue'
