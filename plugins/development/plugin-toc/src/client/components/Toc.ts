@@ -8,11 +8,38 @@ import type { PageHeader } from 'vuepress/client'
 import { RouteLink, useRoute } from 'vuepress/client'
 import type { TocPropsOptions } from '../../shared/index.js'
 
+/**
+ * Headers for TOC component
+ *
+ * 目录组件的标题
+ */
 export type TocPropsHeaders = PageHeader[]
 
+/**
+ * TOC component props
+ *
+ * 目录组件属性
+ */
 export interface TocProps {
+  /**
+   * Headers to render
+   *
+   * 要渲染的标题
+   */
   headers: TocPropsHeaders
+
+  /**
+   * Headers options
+   *
+   * 标题选项
+   */
   headersOptions: GetHeadersOptions
+
+  /**
+   * Props options
+   *
+   * 属性选项
+   */
   propsOptions: TocPropsOptions
 }
 
@@ -103,22 +130,33 @@ const renderHeaders = (
   ]
 }
 
+/**
+ * Table of Contents component
+ *
+ * 目录组件
+ */
 export const Toc = defineComponent({
   name: 'Toc',
 
   props: {
     /**
      * Headers to render the table of contents
+     *
+     * 渲染目录的标题
      */
     headers: Array as PropType<TocPropsHeaders>,
 
     /**
      * Get headers options
+     *
+     * 获取标题的选项
      */
     headersOptions: Object as PropType<GetHeadersOptions>,
 
     /**
      * TOC prop options
+     *
+     * 目录属性选项
      */
     propsOptions: Object as PropType<Partial<TocPropsOptions>>,
   },

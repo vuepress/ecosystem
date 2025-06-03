@@ -28,7 +28,7 @@ export default {
 
 ## Differences with Markdown TOC Syntax
 
-Similar to the [Table of Contents Markdown Syntax](https://vuejs.press/guide/markdown.html#table-of-contents), the TOC component that provided by this plugin could be used in your markdown content directly:
+Similar to the [Table of Contents Markdown Syntax](https://vuejs.press/guide/markdown.html#table-of-contents), the TOC component provided by this plugin can be used in your markdown content directly:
 
 ```md
 <!-- markdown toc syntax -->
@@ -41,11 +41,11 @@ Similar to the [Table of Contents Markdown Syntax](https://vuejs.press/guide/mar
 
 Both of them can be pre-rendered correctly in build mode. However, there are some differences between them.
 
-The markdown syntax `[[toc]]` could only be used in markdown files. It is parsed by markdown-it, and the generated TOC is static content.
+The markdown syntax `[[toc]]` can only be used in markdown files. It is parsed by markdown-it, and the generated TOC is static content.
 
-The component `<Toc/>` could be used in both markdown files and vue files. It is loaded by vue, and the generated TOC is a vue component.
+The component `<Toc/>` can be used in both markdown files and vue files. It is loaded by vue, and the generated TOC is a vue component.
 
-This plugin could work together with [@vuepress/plugin-active-header-links](./active-header-links.md) by setting the [headerLinkSelector](./active-header-links.md#headerlinkselector) to match the `linkClass` option. When the page scroll to a certain header anchor, this corresponding link will be added `linkActiveClass` class name.
+This plugin can work together with [@vuepress/plugin-active-header-links](./active-header-links.md) by setting the [headerLinkSelector](./active-header-links.md#headerlinkselector) to match the `linkClass` option. When the page scrolls to a certain header anchor, the corresponding link will be added the `linkActiveClass` class name.
 
 Therefore, this plugin is more useful for theme developers.
 
@@ -61,7 +61,7 @@ Therefore, this plugin is more useful for theme developers.
 
   Specify the name of the TOC component.
 
-### headersOptions
+### headerOptions
 
 - Type: `Partial<GetHeadersOptions>`
 
@@ -69,7 +69,7 @@ Therefore, this plugin is more useful for theme developers.
 
 - Details:
 
-  Override the default values of the component [headersOptions](#headersoptions-1) prop.
+  Override the default values of the component [headersOptions](#headersoptions) prop.
 
 ### propsOptions
 
@@ -87,7 +87,11 @@ The TOC component also accepts props for customization.
 
 ```vue
 <template>
-  <Toc :headers="headers" :options="options" />
+  <Toc
+    :headers="headers"
+    :headers-options="headersOptions"
+    :props-options="propsOptions"
+  />
 </template>
 ```
 
@@ -118,7 +122,7 @@ interface PageHeader {
 
 - Default:
 
-  See [GetHeadersOptions](../../tools/helper/client.md#getheaders), it can be overridden by [headersOptions](#headaersoptions) in plugin options.
+  See [GetHeadersOptions](../../tools/helper/client.md#getheaders), it can be overridden by [headerOptions](#headeroptions) in plugin options.
 
 - Details:
 

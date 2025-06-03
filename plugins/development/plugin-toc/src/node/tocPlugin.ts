@@ -4,6 +4,33 @@ import type { TocPluginOptions } from './options.js'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
+/**
+ * TOC plugin
+ *
+ * 目录插件
+ *
+ * @param options - Plugin options / 插件配置
+ * @default {}
+ * @example
+ * ```ts
+ * import { tocPlugin } from '@vuepress/plugin-toc'
+ *
+ * export default {
+ *   plugins: [
+ *     tocPlugin({
+ *       componentName: 'Toc',
+ *       headerOptions: {
+ *         level: [2, 4]
+ *       },
+ *       propsOptions: {
+ *         containerClass: 'my-toc',
+ *         linkClass: 'my-toc-link'
+ *       }
+ *     })
+ *   ]
+ * }
+ * ```
+ */
 export const tocPlugin = ({
   componentName = 'Toc',
   headerOptions = {},

@@ -69,7 +69,7 @@ Markdown 语法 `[[toc]]` 仅能在 Markdown 文件中使用。它是由 markdow
 
 - 详情：
 
-  覆盖组件 [headerOptions](#headeroptions-1) Prop 的默认值。
+  覆盖组件 [headerOptions](#headeroptions) Prop 的默认值。
 
 ### propsOptions
 
@@ -87,7 +87,11 @@ Markdown 语法 `[[toc]]` 仅能在 Markdown 文件中使用。它是由 markdow
 
 ```vue
 <template>
-  <Toc :headers="headers" :options="options" />
+  <Toc
+    :headers="headers"
+    :headers-options="headersOptions"
+    :props-options="propsOptions"
+  />
 </template>
 ```
 
