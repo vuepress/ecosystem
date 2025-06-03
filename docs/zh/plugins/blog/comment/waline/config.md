@@ -66,7 +66,7 @@
 
 - 类型：`string[]`
 - 默认值：`['nick', 'mail', 'link']`
-- 详情：评论者相关属性。可选值: 'nick'`、`'mail'`、`'link'`。
+- 详情：评论者相关属性。可选值: `'nick'`、`'mail'`、`'link'`。
 
 ### requiredMeta
 
@@ -140,7 +140,11 @@
   - [Cookbook → 自定义 TeX 渲染器](https://waline.js.org/cookbook/customize/tex-renderer.html)
   - [MathJax](https://www.mathjax.org/)
   - [KaTeX](https://katex.org/)
-- 详情：自定义 TeX 渲染。默认显示预览模式不支持 TeX 的消息。
+- 详情：
+
+  自定义 TeX 渲染。默认显示预览模式不支持 TeX 的消息。函数提供两个参数：第一个参数指示是否应该在块级渲染，第二个参数是 TeX 内容的字符串。返回 HTML 字符串作为渲染结果。
+
+  你可以导入 TeX 渲染器来提供预览功能。我们推荐你使用 KaTeX 或 MathJax，或设置 `false` 禁用 TeX 解析。
 
 ### search <Badge text="仅限客户端配置" type="warning"/>
 
@@ -207,7 +211,7 @@
 
 - 类型：`boolean | string[]`
 - 默认值：`false`
-- 详情：文章表情反应。设置 `true` 使用默认表情，或提供自定义表情 URL（最多8个）。
+- 详情：文章表情反应。设置 `true` 使用默认表情，或提供自定义表情 URL 数组（最多8个）。
 
 ### metaIcon <Badge text="仅限插件选项" type="warning" />
 
@@ -258,6 +262,6 @@ import { defineWalineConfig } from '@vuepress/plugin-comment/client'
 import { defineClientConfig } from 'vuepress/client'
 
 defineWalineConfig({
-  // 选项
+  // Waline 配置选项
 })
 ```
