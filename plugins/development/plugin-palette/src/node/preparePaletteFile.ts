@@ -2,6 +2,24 @@ import type { App } from 'vuepress/core'
 import { fs } from 'vuepress/utils'
 import type { PalettePluginOptions } from './palettePlugin.js'
 
+/**
+ * Prepare palette file
+ *
+ * 准备调色板文件
+ *
+ * @param app - VuePress app instance
+ * @param options - prepare options
+ * @returns file path of generated palette file
+ *
+ * @example
+ * ```ts
+ * const palettePath = await preparePaletteFile(app, {
+ *   userPaletteFile: '.vuepress/styles/palette.scss',
+ *   tempPaletteFile: 'styles/palette.scss',
+ *   importCode: (filePath) => `@forward 'file:///${filePath}';\n`
+ * })
+ * ```
+ */
 export const preparePaletteFile = async (
   app: App,
   {

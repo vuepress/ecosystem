@@ -2,6 +2,8 @@ import type { PalettePluginOptions } from './palettePlugin.js'
 
 /**
  * Default options for different palette preset
+ *
+ * 不同调色板预设的默认配置
  */
 export const presetOptions: Record<
   Required<PalettePluginOptions>['preset'],
