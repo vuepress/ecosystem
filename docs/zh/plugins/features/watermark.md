@@ -64,7 +64,7 @@ export default {
 
 ### watermark
 
-- 类型: `boolean | WatermarkOptions`
+- 类型：`boolean | WatermarkOptions`
 
 - 详情：
 

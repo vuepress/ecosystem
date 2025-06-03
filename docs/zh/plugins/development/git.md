@@ -248,7 +248,7 @@ gitInclude:
 
 ### contributors
 
-- 类型: `boolean | string[]`
+- 类型：`boolean | string[]`
 
 - 详情：
 

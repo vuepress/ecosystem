@@ -8,15 +8,15 @@ icon: settings-2
 
 ### id
 
-- 类型: `string`
+- 类型：`string`
 - 必填: 是
 
 调色板的唯一 ID，用于避免重复注册。
 
 ### config
 
-- 类型: `string`
-- 默认值: `` `.vuepress/styles/${id}-palette.scss` ``
+- 类型：`string`
+- 默认值：`` `.vuepress/styles/${id}-palette.scss` ``
 
 用户配置文件路径，相对于源文件夹。
 
@@ -30,8 +30,8 @@ icon: settings-2
 
 ### defaultConfig
 
-- 类型: `string`
-- 默认值: `"@vuepress/plugin-sass-palette/styles/default/config.scss"`
+- 类型：`string`
+- 默认值：`"@vuepress/plugin-sass-palette/styles/default/config.scss"`
 
 默认的配置文件路径，应为绝对路径。
 
@@ -43,8 +43,8 @@ icon: settings-2
 
 ### palette
 
-- 类型: `string`
-- 默认值: `` `.vuepress/styles/${id}-palette.scss` ``
+- 类型：`string`
+- 默认值：`` `.vuepress/styles/${id}-palette.scss` ``
 
 用户的调色板文件路径，相对于源文件夹。
 
@@ -58,8 +58,8 @@ icon: settings-2
 
 ### defaultPalette
 
-- 类型: `string`
-- 默认值: `"@vuepress/plugin-sass-palette/styles/default/palette.scss"`
+- 类型：`string`
+- 默认值：`"@vuepress/plugin-sass-palette/styles/default/palette.scss"`
 
 默认的调色板文件路径，应为绝对路径。
 
@@ -71,7 +71,7 @@ icon: settings-2
 
 ### generator
 
-- 类型: `string`
+- 类型：`string`
 - 必填: 否
 
 自定义的生成器，用于生成调色板配置的衍生值。
@@ -80,7 +80,7 @@ icon: settings-2
 
 ### style
 
-- 类型: `string`
+- 类型：`string`
 - 必填: 否
 
 用户的样式文件路径，相对于源文件夹。.

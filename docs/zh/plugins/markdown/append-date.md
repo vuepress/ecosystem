@@ -26,12 +26,12 @@ export default {
 
 ### key
 
-- 类型: `string`
-- 默认值: `"date"`
+- 类型：`string`
+- 默认值：`"date"`
 - 详情：追加时间时使用的 frontmatter 键名。
 
 ### format
 
-- 类型: `"date" | "time" | "full"`
-- 默认值: `"date"`
+- 类型：`"date" | "time" | "full"`
+- 默认值：`"date"`
 - 详情：追加时间时使用的日期格式。

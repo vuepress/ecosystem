@@ -46,7 +46,7 @@ export default {
 
 - 默认值： `'memory'`
 
-- 详情:
+- 详情：
 
   缓存类型
 
@@ -59,7 +59,7 @@ export default {
 
 - 默认值： `false`
 
-- 详情:
+- 详情：
 
   在 CI 环境中是否启用缓存。
 

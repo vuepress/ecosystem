@@ -8,9 +8,9 @@ icon: settings-2
 
 ### getInfo
 
-- 类型: `(page: Page) => Record<string, unknown>`
+- 类型：`(page: Page) => Record<string, unknown>`
 - 必填: 否
-- 参考:
+- 参考：
   - [指南 → 收集文章并生成信息](./guide.md#收集文章并生成信息)
 - 详情：
 
@@ -20,9 +20,9 @@ icon: settings-2
 
 ### filter
 
-- 类型: `(page: Page) => boolean`
-- 默认值: `(page) => Boolean(page.filePathRelative) && !page.frontmatter.home`
-- 参考:
+- 类型：`(page: Page) => boolean`
+- 默认值：`(page) => Boolean(page.filePathRelative) && !page.frontmatter.home`
+- 参考：
 
   - [指南 → 收集文章并生成信息](./guide.md#收集文章并生成信息)
 
@@ -34,7 +34,7 @@ icon: settings-2
 
 ### category
 
-- 类型: `BlogCategoryOptions[]`
+- 类型：`BlogCategoryOptions[]`
 - 必填: 否
 - 详情：
 
@@ -46,7 +46,7 @@ icon: settings-2
 
 ### type
 
-- 类型: `BlogTypeOptions[]`
+- 类型：`BlogTypeOptions[]`
 - 必填: 否
 - 参考：
   - [指南 → 自定义类别和类型](./guide.md#自定义类别和类型)
@@ -56,26 +56,26 @@ icon: settings-2
 
 ### slugify
 
-- 类型: `(name: string) => string`
-- 默认值: `(name) => name.replace(/ _/g, '-').replace(/[:?*|\\/<>]/g, "").toLowerCase()`
+- 类型：`(name: string) => string`
+- 默认值：`(name) => name.replace(/ _/g, '-').replace(/[:?*|\\/<>]/g, "").toLowerCase()`
 - 详情：Slugify 函数，用于转换 key 在路由中注册的形式。
 
 ### excerpt
 
-- 类型: `boolean`
-- 默认值: `true`
+- 类型：`boolean`
+- 默认值：`true`
 - 详情：是否生成摘要。
 
 ### excerptSeparator
 
-- 类型: `string`
-- 默认值: `<!-- more -->`
+- 类型：`string`
+- 默认值：`<!-- more -->`
 - 详情：摘要分隔符。
 
 ### excerptLength
 
-- 类型: `number`
-- 默认值: `300`
+- 类型：`number`
+- 默认值：`300`
 - 参考：
   - [指南 → 摘要生成](./guide.md#摘要生成)
 - 详情：
@@ -90,8 +90,8 @@ icon: settings-2
 
 ### excerptFilter
 
-- 类型: `(page: Page) => boolean`
-- 默认值: `filter` 选项
+- 类型：`(page: Page) => boolean`
+- 默认值：`filter` 选项
 - 参考：
   - [指南 → 摘要生成](./guide.md#摘要生成)
 - 详情：
@@ -105,8 +105,8 @@ icon: settings-2
 
 ### isCustomElement
 
-- 类型: `(tagName: string) => boolean`
-- 默认值: `() => false`
+- 类型：`(tagName: string) => boolean`
+- 默认值：`() => false`
 - 参考：
   - [指南 → 摘要生成](./guide.md#摘要生成)
 - 详情：
@@ -116,8 +116,8 @@ icon: settings-2
 
 ### metaScope
 
-- 类型: `string`
-- 默认值: `"_blog"`
+- 类型：`string`
+- 默认值：`"_blog"`
 - 详情：
   注入文章信息至路由元数据时使用的键名。
 
@@ -129,8 +129,8 @@ icon: settings-2
 
 ### hotReload
 
-- 类型: `boolean`
-- 默认值: 是否使用 `--debug` 标记
+- 类型：`boolean`
+- 默认值：是否使用 `--debug` 标记
 - 详情：
   是否在开发服务器中启用实时热重载。
 
