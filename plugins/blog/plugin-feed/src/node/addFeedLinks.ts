@@ -5,6 +5,11 @@ import { getFeedFilenames } from './getFeedFilenames.js'
 import type { ResolvedFeedOptionsMap } from './getFeedOptions.js'
 import { getUrl } from './utils/index.js'
 
+/**
+ * Add feed links to page head
+ *
+ * 将 Feed 链接添加到页面头部
+ */
 export const addFeedLinks = (
   app: App,
   options: ResolvedFeedOptionsMap,

@@ -29,6 +29,11 @@ import {
   getUrl,
 } from '../utils/index.js'
 
+/**
+ * Feed item class for generating feed entries
+ *
+ * 用于生成 Feed 条目的项目类
+ */
 export class FeedItem {
   private readonly pageOptions: FeedFrontmatterOption
   private readonly frontmatter: PageFrontmatter<FeedPluginFrontmatter>

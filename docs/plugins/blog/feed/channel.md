@@ -83,7 +83,7 @@ A picture presenting the channel. A square picture with a size not smaller than 
 - Type: `string`
 - Recommended to set manually: **Yes**
 
-An icon representing a channel, a square picture, with not less than 128×128 in size, and transparent background color is recommended.
+An icon representing a channel, a square picture, with not less than 128×128 in size. Transparent background color is recommended.
 
 ## channel.author
 
