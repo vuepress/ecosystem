@@ -8,9 +8,6 @@ icon: list-tree
 
 This plugin automatically generates cat- Details: Catalog page paths to be excluded during generation.
 
-- `"/foo/"` excludes only catalog page generation at `/foo/` folder.
-- `/^\/foo\//` excludes catalog page generation at `/foo/` folder and its subfolders. pages and provides catalog components.
-
 ## Usage
 
 ```bash
