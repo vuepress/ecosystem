@@ -6,7 +6,7 @@ icon: arrow-up-to-line
 
 <NpmBadge package="@vuepress/plugin-back-to-top" />
 
-This plugin will add a _back to top_ button to your site. The button will be displayed in the bottom right corner of the page when scrolling down. By clicking the button, the page will scroll to the top.
+This plugin adds a _back to top_ button to your site. The button appears in the bottom right corner when scrolling down and scrolls the page to the top when clicked.
 
 This plugin has been integrated into the default theme.
 
@@ -30,13 +30,13 @@ export default {
 
 - Type: `number`
 - Default: `100`
-- Details: Scroll threshold distance to display back to top button (in pixels)
+- Details: Scroll threshold distance to display the back to top button (in pixels)
 
 ### progress
 
 - Type: `boolean`
 - Default: `true`
-- Details: Whether display progress bar around icon
+- Details: Whether to display scroll progress
 
 ## Styles
 
