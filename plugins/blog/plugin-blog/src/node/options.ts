@@ -15,18 +15,18 @@ export interface BlogCategoryOptions<
   key: string
 
   /**
-   * Function getting category from page
+   * Function to extract category values from page
    *
-   * 从页面中获取分类的函数
+   * 从页面中获取分类值的函数
    */
   getter: (
     page: Page<ExtraPageData, ExtraPageFrontmatter, ExtraPageFields>,
   ) => string[]
 
   /**
-   * A custom function to sort the pages
+   * Custom function to sort pages
    *
-   * 页面排序器
+   * 自定义页面排序函数
    */
   sorter?: (
     pageA: Page<ExtraPageData, ExtraPageFrontmatter, ExtraPageFields>,
@@ -34,60 +34,60 @@ export interface BlogCategoryOptions<
   ) => number
 
   /**
-   * Path pattern of page to be registered
+   * Path pattern for category page
    *
-   * @description `:key` will be replaced by the "slugify" result of the original key
+   * 分类页面路径模式
    *
-   * 待注册的页面路径图案
+   * @description `:key` will be replaced by slugified category key
    *
-   * @description `:key` 将会被替换为原 key 的 slugify 结果
+   * `:key` 将被替换为经过 slugify 处理的分类键名
    *
    * @default `/:key/`
    */
   path?: string | false
 
   /**
-   * Page layout name
+   * Layout component name for category page
    *
-   * 页面布局组件名称
+   * 分类页面的布局组件名称
    *
    * @default "Layout"
    */
   layout?: string
 
   /**
-   * Frontmatter
+   * Frontmatter configuration for category page
    *
-   * Front Matter 配置
+   * 分类页面的 frontmatter 配置
    */
   frontmatter?: (localePath: string) => Record<string, unknown>
 
   /**
-   * Item page path pattern or custom function to be registered
+   * Path pattern for category item pages
    *
-   * @description When filling in a string, `:key` and `:name` will be replaced by the "slugify" result of the original key and name
+   * 分类子项页面路径模式
    *
-   * 待注册的项目页面路径图案或自定义函数
+   * @description `:key` and `:name` will be replaced by slugified values
    *
-   * @description 当填入字符串的时候, `:key` 和 `:name` 会被自动替换为原始的 key、name 的 slugify 结果。
+   * `:key` 和 `:name` 将被替换为经过 slugify 处理的值
    *
    * @default `/:key/:name/`
    */
   itemPath?: string | false | ((name: string) => string)
 
   /**
-   * Item page layout name
+   * Layout component name for category item pages
    *
-   * 项目页面布局组件名称
+   * 分类子项页面的布局组件名称
    *
    * @default "Layout"
    */
   itemLayout?: string
 
   /**
-   * Items Frontmatter
+   * Frontmatter configuration for category item pages
    *
-   * 项目 Front Matter 配置
+   * 分类子项页面的 frontmatter 配置
    */
   itemFrontmatter?: (
     name: string,
@@ -108,18 +108,18 @@ export interface BlogTypeOptions<
   key: string
 
   /**
-   * A filter function to determine whether a page should be the type
+   * Filter function to determine if page belongs to this type
    *
-   * 一个过滤函数来决定页面是否满足此类型
+   * 用于确定页面是否属于此类型的过滤函数
    */
   filter: (
     page: Page<ExtraPageData, ExtraPageFrontmatter, ExtraPageFields>,
   ) => boolean
 
   /**
-   * A custom function to sort the pages
+   * Custom function to sort pages
    *
-   * 页面排序器
+   * 自定义页面排序函数
    */
   sorter?: (
     pageA: Page<ExtraPageData, ExtraPageFrontmatter, ExtraPageFields>,
@@ -127,27 +127,27 @@ export interface BlogTypeOptions<
   ) => number
 
   /**
-   * Page path to be registered
+   * Path for type page
    *
-   * 待注册的页面路径
+   * 类型页面路径
    *
    * @default "/:key/"
    */
   path?: string | false
 
   /**
-   * Page layout name
+   * Layout component name for type page
    *
-   * 页面布局组件名称
+   * 类型页面的布局组件名称
    *
    * @default "Layout"
    */
   layout?: string
 
   /**
-   * Frontmatter
+   * Frontmatter configuration for type page
    *
-   * Front Matter 配置
+   * 类型页面的 frontmatter 配置
    */
   frontmatter?: (localePath: string) => Record<string, unknown>
 }
@@ -167,9 +167,9 @@ export interface BlogPluginOptions
     'isCustomElement' | 'keepFenceDom' | 'keepPageTitle'
   > {
   /**
-   * Function getting article info.
+   * Function to extract article information from page
    *
-   * 获取文章信息的函数。
+   * 从页面中提取文章信息的函数
    */
   getInfo?: <
     ExtraPageData extends Record<string, unknown> = Record<never, never>,
@@ -183,9 +183,9 @@ export interface BlogPluginOptions
   ) => Record<string, unknown>
 
   /**
-   * Page filter, determine whether a page should be included.
+   * Function to filter pages for blog articles
    *
-   * 页面过滤器，此函数用于鉴别页面是否作为文章。
+   * 用于过滤博客文章页面的函数
    *
    * @default (page) => Boolean(page.filePathRelative) && !page.frontmatter.home
    */
@@ -201,71 +201,75 @@ export interface BlogPluginOptions
   ) => boolean
 
   /**
-   * Categories config
+   * Category configurations
+   *
+   * 分类配置
    */
   category?: BlogCategoryOptions[]
 
   /**
-   * Types config
+   * Type configurations
+   *
+   * 类型配置
    */
   type?: BlogTypeOptions[]
 
   /**
-   * Key used when injecting info to route meta.
+   * Key for injecting article info into route meta
    *
-   * 注入文章信息至路由元数据时使用的键名。
+   * 注入文章信息到路由元数据的键名
    *
    * @default "_blog"
    */
   metaScope?: string
 
   /**
-   * Slugify function
+   * Function to convert strings to URL-friendly slugs
    *
-   * Slugify 函数
+   * 将字符串转换为 URL 友好格式的函数
    *
    * @default (name) => name.replace(/ _/g, "-").toLowerCase()
    */
   slugify?: (name: string) => string
 
   /**
-   * Excerpt generation
+   * Whether to generate excerpt for pages
    *
-   * 摘要生成
+   * 是否为页面生成摘要
    *
-   * @default false
+   * @default true
    */
   excerpt?: boolean
 
   /**
-   * Excerpt separator
+   * Separator for manual excerpt in content
    *
-   * 摘要分隔符
+   * 内容中手动摘要的分隔符
    *
    * @default "<!-- more -->"
    */
   excerptSeparator?: string
   /**
-   * Length of excerpt
+   * Target length for auto-generated excerpts
+   *
+   * 自动生成摘要的目标长度
    *
    * @description Excerpt length will be the minimal possible length reaching this value
    *
-   * 摘要的长度
-   *
-   * @description 摘要的长度会尽可能的接近这个值
+   * 摘要长度将是达到此值的最小可能长度
    *
    * @default 300
    */
   excerptLength?: number
 
   /**
-   * Page filter, determine whether the plugin should generate excerpt for it.
+   * Function to filter pages for excerpt generation
    *
-   * @description You should use this to skip pages that you don't need to generate excerpt for. E.g.: If users set `excerpt` or `description` in frontmatter, you may want to use them directly.
+   * 用于过滤需要生成摘要的页面的函数
    *
-   * 页面过滤器，此函数用于鉴别插件是否需要生成摘要
+   * @description Use this to skip pages that don't need excerpt generation
    *
-   * @description 你可以使用此函数来跳过你不需要生成摘要的页面。例如：如果用户在 frontmatter 中设置了 `excerpt` 或 `description`，你可能希望直接使用它们。
+   * 使用此函数跳过不需要生成摘要的页面
    *
    * @default options.filter
    */
@@ -281,15 +285,15 @@ export interface BlogPluginOptions
   ) => boolean
 
   /**
-   * Whether enable hotReload
+   * Whether to enable hot reload in development
    *
-   * @description This may have performance impact in large sites
+   * 是否在开发环境启用热重载
    *
-   * 是否启用热更新
+   * @description May impact performance on large sites
    *
-   * @description 在大型站点上，这可能会有性能影响
+   * 在大型站点上可能影响性能
    *
-   * @default false
+   * @default app.env.isDebug
    */
   hotReload?: boolean
 }

@@ -2,16 +2,13 @@
 icon: settings-2
 ---
 
-# 配置
-
-## 插件选项
+# 插件选项
 
 ### getInfo
 
 - 类型：`(page: Page) => Record<string, unknown>`
-- 必填: 否
 - 参考：
-  - [指南 → 收集文章并生成信息](./guide.md#收集文章并生成信息)
+  - [指南 → 收集信息](./guide.md#收集信息)
 - 详情：
 
   获取文章信息的函数。
@@ -23,9 +20,7 @@ icon: settings-2
 - 类型：`(page: Page) => boolean`
 - 默认值：`(page) => Boolean(page.filePathRelative) && !page.frontmatter.home`
 - 参考：
-
-  - [指南 → 收集文章并生成信息](./guide.md#收集文章并生成信息)
-
+  - [指南 → 文章收集](./guide.md#文章收集)
 - 详情：
 
   页面过滤器，此函数用于鉴别页面是否作为文章。
@@ -35,24 +30,16 @@ icon: settings-2
 ### category
 
 - 类型：`BlogCategoryOptions[]`
-- 必填: 否
-- 详情：
-
+- 参考：
   - [指南 → 自定义类别和类型](./guide.md#自定义类别和类型)
-
-- 详情：
-
-  博客分类配置，详见 [博客分类配置](#博客分类配置)。
+- 详情：博客分类配置，详见 [博客分类配置](#博客分类配置)。
 
 ### type
 
 - 类型：`BlogTypeOptions[]`
-- 必填: 否
 - 参考：
   - [指南 → 自定义类别和类型](./guide.md#自定义类别和类型)
-- 详情：
-
-  博客分类配置，详见 [博客类型配置](#博客类型配置)。
+- 详情：博客类型配置，详见 [博客类型配置](#博客类型配置)。
 
 ### slugify
 
@@ -64,12 +51,15 @@ icon: settings-2
 
 - 类型：`boolean`
 - 默认值：`true`
+- 参考：[指南 → 摘要生成](./guide.md#摘要生成)
 - 详情：是否生成摘要。
 
 ### excerptSeparator
 
 - 类型：`string`
 - 默认值：`<!-- more -->`
+- 参考：
+  - [指南 → 摘要生成](./guide.md#摘要生成)
 - 详情：摘要分隔符。
 
 ### excerptLength
@@ -95,6 +85,7 @@ icon: settings-2
 - 参考：
   - [指南 → 摘要生成](./guide.md#摘要生成)
 - 详情：
+
   页面过滤器，此函数用于鉴别插件是否需要生成摘要。
 
   ::: tip
@@ -110,6 +101,7 @@ icon: settings-2
 - 参考：
   - [指南 → 摘要生成](./guide.md#摘要生成)
 - 详情：
+
   被认为是自定义元素的标签。
 
   用于判断一个标签是否是自定义元素，因为在摘要中，所有的未知标签都会被移除。
@@ -119,11 +111,12 @@ icon: settings-2
 - 类型：`string`
 - 默认值：`"_blog"`
 - 详情：
+
   注入文章信息至路由元数据时使用的键名。
 
   ::: tip
 
-  设置为空字符串会直接注入路由元数据 (而不是一个键下)。
+  设置为空字符串会直接注入路由元数据（而不是一个键下）。
 
   :::
 
@@ -132,6 +125,7 @@ icon: settings-2
 - 类型：`boolean`
 - 默认值：是否使用 `--debug` 标记
 - 详情：
+
   是否在开发服务器中启用实时热重载。
 
   ::: tip 致主题开发者
@@ -189,7 +183,7 @@ interface BlogCategoryOptions {
   /**
    * 待注册的项目页面路径图案或自定义函数
    *
-   * @description 当填入字符串的时候, `:key` 和 `:name` 会被自动替换为原始的 key、name 的 slugify 结果。
+   * @description 当填入字符串的时候，`:key` 和 `:name` 会被自动替换为原始的 key、name 的 slugify 结果。
    *
    * @default `/:key/:name/`
    */
@@ -235,7 +229,7 @@ interface BlogTypeOptions {
    *
    * @default '/:key/'
    */
-  path?: string | false
+  path?: string
 
   /**
    * 页面布局组件名称
@@ -253,7 +247,7 @@ interface BlogTypeOptions {
 
 ## 可组合式 API
 
-你可以从 `@vuepress/plugin-blog/client` 导入下列 API:
+你可以从 `@vuepress/plugin-blog/client` 导入下列 API：
 
 - 博客分类
 
@@ -279,7 +273,7 @@ interface BlogTypeOptions {
 
   参数 `key` 为需要获取的键名。如果未传入 key，会尝试使用与当前路径匹配的 key。
 
-详细的返回值如下:
+详细的返回值如下：
 
 ```ts
 interface Article<T extends Record<string, unknown> = Record<string, unknown>> {
