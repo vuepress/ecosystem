@@ -35,7 +35,7 @@ export interface SassPalettePluginOptions {
   /**
    * User palette file path, relative to source dir.
    *
-   * @description This is the file where user control injected CSS variables. All the variables will be converted to kebab-case and injected.
+   * @description This is the file where user-controlled injected CSS variables. All the variables will be converted to kebab-case and injected.
    *
    * 用户的调色板文件路径，相对于源文件夹。
    *
