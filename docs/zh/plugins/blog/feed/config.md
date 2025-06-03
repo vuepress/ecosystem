@@ -55,7 +55,7 @@ icon: settings-2
 
 ## preservedElements
 
-- 类型：`(RegExp | string)[] | (tagName：string) => boolean`
+- 类型：`(RegExp | string)[] | (tagName: string) => boolean`
 
 应在 Feed 中保留的自定义元素或组件。
 
@@ -77,13 +77,13 @@ icon: settings-2
 
 ## sorter
 
-- 类型： `(pageA: Page, pageB: Page)=> number`
+- 类型：`(pageA: Page, pageB: Page)=> number`
 
 - 默认值：
 
   ```ts
   // dateSorter 来源于 @vuepress/helper
-  ;(pageA, pageB): number =>
+  ;(pageA: Page, pageB: Page): number =>
     dateSorter(
       pageA.data.git?.createdTime
         ? new Date(pageA.data.git?.createdTime)
@@ -142,7 +142,7 @@ Atom 格式输出路径，相对于输出路径。
 - 类型：`string`
 - 默认值：`@vuepress/plugin-feed/templates/atom.xsl` 的内容
 
-Atom xsl 模板文件没人陪美国
+Atom xsl 模板文件内容。
 
 ## atomXslFilename
 

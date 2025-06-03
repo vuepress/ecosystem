@@ -47,6 +47,8 @@ const getRSSEnclosure = (enclosure: FeedEnclosure): RSSEnclosure => ({
 /**
  * Returns a RSS 2.0 feed
  *
+ * 返回 RSS 2.0 格式的 Feed
+ *
  * @see https://validator.w3.org/feed/docs/rss2.html
  */
 export const getRssFeed = (feedStore: FeedStore): string => {

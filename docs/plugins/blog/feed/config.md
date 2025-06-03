@@ -23,7 +23,7 @@ Whether to output Atom syntax files.
 - Type: `boolean`
 - Default: `false`
 
-Whether output JSON syntax files.
+Whether to output JSON syntax files.
 
 ## rss
 

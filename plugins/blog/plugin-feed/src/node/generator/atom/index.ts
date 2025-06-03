@@ -34,6 +34,8 @@ const getAtomCategory = (category: FeedCategory): AtomCategory => {
 /**
  * Returns an Atom 1.0 feed
  *
+ * 返回 Atom 1.0 格式的 Feed
+ *
  * @see http://www.atomenabled.org/developers/syndication/
  */
 export const getAtomFeed = (feedStore: FeedStore): string => {

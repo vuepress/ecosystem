@@ -26,7 +26,7 @@ Item description getter
 
 ::: tip
 
-Due to Atom support HTML in summary, so you can return HTML content here if possible, but the content must start with mark `html:`.
+Due to Atom supporting HTML in summary, you can return HTML content here if possible, but the content must start with the mark `html:`.
 
 :::
 
@@ -131,7 +131,7 @@ interface FeedEnclosure {
    *
    * @description should be a standard MIME Type, rss format only
    */
-  Type: string
+  type: string
 
   /**
    * Size in bytes
@@ -160,7 +160,7 @@ Item last update date getter
 
 - Type: `(page: Page, app: App) => string`
 
-Item Image Getter
+Item image getter
 
 ::: tip Ensure it's returning a full URL
 
@@ -170,7 +170,7 @@ Item Image Getter
 
 - Type: `(page: Page, app: App) => FeedContributor[]`
 
-Item Contributor Getter
+Item contributor getter
 
 ::: tip The getter should return an empty array when contributor information is missing.
 
