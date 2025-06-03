@@ -5,23 +5,37 @@ import { useRouteLocale } from 'vuepress/client'
 import { getElement } from '../utils/index.js'
 
 /**
+ * Composable to use RTL functionality
  *
- * @param rtlLocalePaths rtl locale paths
- * @param selectorOptions rtl selector options
+ * 使用 RTL 功能的组合式函数
+ *
+ * @param rtlLocalePaths - RTL locale paths
+ * @param selectorOptions - RTL selector options
+ *
+ * @default selectorOptions { html: { dir: 'rtl' } }
+ *
+ * @example
+ * ```ts
+ * import { useRtl } from '@vuepress/plugin-rtl'
+ *
+ * // Use in client side
+ * useRtl(['/ar/', '/he/'], {
+ *   html: { dir: 'rtl' },
+ *   body: { class: 'rtl-layout' }
+ * })
+ * ```
  */
 export const useRtl = (
   rtlLocalePaths: string[],
-  selectorOptions?: Record<string, Record<string, string>>,
+  selectorOptions: Record<string, Record<string, string>> = {
+    html: { dir: 'rtl' },
+  },
 ): void => {
   const routeLocale = useRouteLocale()
 
   const toggleRTL = (localePath: string): void => {
     if (rtlLocalePaths.includes(localePath)) {
-      entries(
-        selectorOptions ?? {
-          html: { dir: 'rtl' },
-        },
-      ).forEach(([selector, attrs = {}]) => {
+      entries(selectorOptions).forEach(([selector, attrs = {}]) => {
         const element = getElement(selector)
 
         if (element)
@@ -32,7 +46,7 @@ export const useRtl = (
       })
       document.documentElement.style.setProperty('direction', 'rtl')
     } else {
-      entries(rtlLocalePaths).forEach(([selector, attrs = {}]) => {
+      entries(selectorOptions).forEach(([selector, attrs = {}]) => {
         const element = getElement(selector)
 
         if (element)
