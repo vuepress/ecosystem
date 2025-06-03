@@ -3,6 +3,8 @@ import type { GitContributorInfo, GitLocaleData } from '../shared/index.js'
 
 /**
  * Contributor information
+ *
+ * 贡献者信息
  */
 export interface ContributorInfo {
   /**
@@ -68,6 +70,11 @@ export interface ContributorInfo {
   url?: string
 }
 
+/**
+ * Options for contributors functionality
+ *
+ * 贡献者功能配置项
+ */
 export interface ContributorsOptions {
   /**
    * Contributors Information
@@ -104,6 +111,11 @@ export interface ContributorsOptions {
   transform?: (contributors: GitContributorInfo[]) => GitContributorInfo[]
 }
 
+/**
+ * Options for changelog functionality
+ *
+ * 变更历史记录功能配置项
+ */
 export interface ChangelogOptions {
   /**
    * Maximum number of changelog
@@ -166,6 +178,11 @@ export interface ChangelogOptions {
   tagUrlPattern?: string
 }
 
+/**
+ * Options for @vuepress/plugin-git
+ *
+ * @vuepress/plugin-git 插件配置项
+ */
 export interface GitPluginOptions {
   /**
    * Page filter, if it returns `true`, the page will collect git information.

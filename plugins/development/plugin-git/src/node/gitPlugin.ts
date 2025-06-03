@@ -13,12 +13,39 @@ import { resolveChangelog } from './resolveChangelog.js'
 import { resolveContributors } from './resolveContributors.js'
 import {
   PLUGIN_NAME,
-  checkGitRepo,
   getCommits,
   inferGitProvider,
   injectGitOptions,
+  isGitRepo,
 } from './utils/index.js'
 
+/**
+ * Git plugin
+ *
+ * Git 插件
+ *
+ * @param options - Plugin options
+ *
+ * 插件选项
+ *
+ * @default {}
+ *
+ * @example
+ * ```ts
+ * import { gitPlugin } from '@vuepress/plugin-git'
+ *
+ * export default {
+ *   plugins: [
+ *     gitPlugin({
+ *       createdTime: true,
+ *       updatedTime: true,
+ *       contributors: true,
+ *       changelog: false
+ *     })
+ *   ]
+ * }
+ * ```
+ */
 export const gitPlugin =
   ({
     createdTime = true,
@@ -32,7 +59,7 @@ export const gitPlugin =
   }: GitPluginOptions = {}): Plugin =>
   (app) => {
     const cwd = app.dir.source()
-    const isGitRepoValid = checkGitRepo(cwd)
+    const isGitRepoValid = isGitRepo(cwd)
     const gitProvider = isGitRepoValid ? inferGitProvider(cwd) : null
     return {
       name: PLUGIN_NAME,

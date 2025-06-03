@@ -124,7 +124,7 @@ export default {
      * 贡献者转换函数，例如去重和排序
      * 该函数接收一个贡献者信息数组，返回一个新的贡献者信息数组。
      */
-    transform?: (contributors: GitContributor[]) => GitContributor[]
+    transform?: (contributors: GitContributorInfo[]) => GitContributorInfo[]
   }
   ```
 
@@ -152,28 +152,31 @@ export default {
 
     /**
      * 提交记录访问地址模式
-     * 默认值：':repo/commit/:hash'
      *
      * - `:repo` - git 仓库的访问地址
      * - `:hash` - 提交记录的 hash
+     *
+     * @default ':repo/commit/:hash'
      */
     commitUrlPattern?: string
 
     /**
      * issue 访问地址模式
-     * 默认值：':repo/issues/:issue'
      *
      * - `:repo` - git 仓库的访问地址
      * - `:issue` - issue 的 id
+     *
+     * @default ':repo/issues/:issue'
      */
     issueUrlPattern?: string
 
     /**
-     * tag 访问地址模式,
-     * 默认值：':repo/releases/tag/:tag'
+     * tag 访问地址模式
      *
      * - `:repo` - git 仓库的访问地址
      * - `:tag` - tag 的名称
+     *
+     * @default ':repo/releases/tag/:tag'
      */
     tagUrlPattern?: string
   }
@@ -275,46 +278,58 @@ gitInclude:
 获取当前页面的变更历史记录。
 
 ```ts
+export interface CoAuthorInfo {
+  /**
+   * 协同作者名称
+   */
+  name: string
+  /**
+   * 协同作者邮箱
+   */
+  email: string
+}
+
 export interface GitChangelogItem {
   /**
-   * Commit hash
+   * 提交哈希
    */
   hash: string
   /**
-   * Unix timestamp in milliseconds
+   * Unix 时间戳，单位毫秒
    */
   time: number
   /**
-   * Commit message
+   * 提交信息
    */
   message: string
   /**
-   * The url of the commit
+   * 提交访问地址
    */
   commitUrl?: string
   /**
-   * release tag
+   * 发布标签
    */
   tag?: string
   /**
-   * The url of the release tag
+   * 标签访问地址
    */
   tagUrl?: string
   /**
-   * Commit author name
+   * 提交作者名称
    */
   author: string
   /**
-   * Commit author email
+   * 提交作者邮箱
    */
   email: string
 
   /**
-   * The co-authors of the commit
+   * 提交协同作者列表
    */
   coAuthors?: CoAuthorInfo[]
+
   /**
-   * Date text of the commit
+   * 提交日期文本
    */
   date: string
 }
@@ -331,28 +346,28 @@ export const useChangelog: (
 ```ts
 export interface GitContributorInfo {
   /**
-   * Contributor display name
+   * 贡献者显示名称
    */
   name: string
   /**
-   * Contributor email
+   * 贡献者邮箱
    */
   email: string
 
   /**
-   * Contributor username on the git hosting service
+   * 贡献者在 git 托管服务中的用户名
    */
   username: string
   /**
-   * Number of commits
+   * 提交次数
    */
   commits: number
   /**
-   * Contributor avatar
+   * 贡献者头像
    */
   avatar?: string
   /**
-   * The url of the contributor
+   * 贡献者访问地址
    */
   url?: string
 }
@@ -369,19 +384,19 @@ export const useContributors: (
 ```ts
 export interface LastUpdated {
   /**
-   * The date object of the last updated time
+   * 最后更新时间的日期对象
    */
   date: Date
   /**
-   * The ISO string of the last updated time
+   * 最后更新时间的 ISO 字符串
    */
   iso: string
   /**
-   * The formatted text of the last updated time
+   * 最后更新时间的格式化文本
    */
   text: string
   /**
-   * The locale of the last updated time
+   * 最后更新时间的语言环境
    */
   locale: string
 }
@@ -431,17 +446,21 @@ export default {
 
 ### git.contributors
 
-- 类型： `GitContributor[]`
+- 类型： `GitContributorInfo[]`
 
 ```ts
-interface GitContributor {
+interface GitContributorInfo {
   // 在页面中显示的贡献者名称
   name: string
+  // 贡献者邮箱
   email: string
   // 在 git 托管服务中的用户名
   username: string
+  // 提交次数
   commits: number
+  // 贡献者头像
   avatar?: string
+  // 贡献者访问地址
   url?: string
 }
 ```
@@ -454,22 +473,45 @@ interface GitContributor {
 
 ### git.changelog
 
-- 类型： `GitChangelog[]`
+- 类型： `GitChangelogInfo[]`
 
 ```ts
-interface GitChangelog {
+interface CoAuthorInfo {
   /**
-   * 提交 hash
+   * 协同作者名称
+   */
+  name: string
+  /**
+   * 协同作者邮箱
+   */
+  email: string
+}
+
+interface GitChangelogInfo {
+  /**
+   * 提交哈希
    */
   hash: string
   /**
-   * Unix 时间戳，单位毫秒，提交时间
+   * Unix 时间戳，单位毫秒
    */
-  date: number
+  time: number
   /**
    * 提交信息
    */
   message: string
+  /**
+   * 提交访问地址
+   */
+  commitUrl?: string
+  /**
+   * 发布标签
+   */
+  tag?: string
+  /**
+   * 标签访问地址
+   */
+  tagUrl?: string
   /**
    * 提交者名称
    */
@@ -478,21 +520,11 @@ interface GitChangelog {
    * 提交者邮箱
    */
   email: string
-  /**
-   * 提交访问地址
-   */
-  commitUrl?: string
-  /**
-   * tag 访问地址
-   */
-  tagUrl?: string
+
   /**
    * 协同作者列表
    */
-  coAuthors?: {
-    name: string
-    email: string
-  }[]
+  coAuthors?: CoAuthorInfo[]
 }
 ```
 

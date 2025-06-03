@@ -8,6 +8,23 @@ import {
   getUserNameWithNoreplyEmail,
 } from './utils/index.js'
 
+/**
+ * Get raw contributors from commits
+ *
+ * 从提交记录中获取原始贡献者信息
+ *
+ * @param commits - Git commits
+ *
+ * Git 提交记录
+ *
+ * @param options - Contributors options
+ *
+ * 贡献者选项
+ *
+ * @param gitProvider - Git provider
+ *
+ * Git 提供商
+ */
 export const getRawContributors = (
   commits: MergedRawCommit[],
   options: ContributorsOptions,
@@ -89,6 +106,29 @@ export const getRawContributors = (
   })
 }
 
+/**
+ * Resolve contributors
+ *
+ * 解析贡献者
+ *
+ * @param commits - Git commits
+ *
+ * Git 提交记录
+ *
+ * @param gitProvider - Git provider
+ *
+ * Git 提供商
+ *
+ * @param options - Contributors options
+ *
+ * 贡献者选项
+ *
+ * @param extraContributors - Extra contributors
+ *
+ * 额外贡献者
+ *
+ * @default []
+ */
 export const resolveContributors = (
   commits: MergedRawCommit[],
   gitProvider: KnownGitProvider | null,
