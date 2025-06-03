@@ -21,6 +21,27 @@ const parseTagName = (refs: string): string | undefined => {
   return tags[0]?.includes('tag:') ? tags[0].replace('tag:', '').trim() : ''
 }
 
+/**
+ * Resolve changelog
+ *
+ * 解析变更日志
+ *
+ * @param app - VuePress app instance
+ *
+ * VuePress 应用实例
+ *
+ * @param commits - Git commits
+ *
+ * Git 提交记录
+ *
+ * @param options - Changelog options
+ *
+ * 变更日志选项
+ *
+ * @param contributors - Contributor info
+ *
+ * 贡献者信息
+ */
 export const resolveChangelog = (
   app: App,
   commits: MergedRawCommit[],

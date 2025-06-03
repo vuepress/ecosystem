@@ -11,12 +11,28 @@ import { resolveRepoLink } from '../utils/index.js'
 
 declare const __GIT_CHANGELOG__: boolean
 
+/**
+ * Git changelog item
+ *
+ * Git 变更日志项目
+ */
 export interface GitChangelogItem extends GitChangelogInfo {
   date: string
 }
 
 const RE_ISSUE = /#(\d+)/g
 
+/**
+ * Changelog composable
+ *
+ * 变更日志组合式函数
+ *
+ * @param enabled - Whether to enable changelog
+ *
+ * 是否启用变更日志
+ *
+ * @default true
+ */
 export const useChangelog =
   typeof __GIT_CHANGELOG__ === 'boolean' && __GIT_CHANGELOG__
     ? (
