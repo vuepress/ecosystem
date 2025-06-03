@@ -6,7 +6,10 @@ icon: list-tree
 
 <NpmBadge package="@vuepress/plugin-catalog" />
 
-The plugin can automatically generate catalog pages and provide catalog components.
+This plugin automatically generates cat- Details: Catalog page paths to be excluded during generation.
+
+- `"/foo/"` excludes only catalog page generation at `/foo/` folder.
+- `/^\/foo\//` excludes catalog page generation at `/foo/` folder and its subfolders. pages and provides catalog components.
 
 ## Usage
 
@@ -26,16 +29,16 @@ export default {
 }
 ```
 
-First, you should set catalog info in routeMeta:
+First, you should set catalog info in `routeMeta`:
 
 ```ts title=".vuepress/config.ts"
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 
 export default {
   extendsPage: (page) => {
-    // set catalog info in routeMeta
+    // Set catalog info in routeMeta
     page.routeMeta = {
-      // catalog title
+      // Catalog title
       title: page.title,
       // ... other information
     }
@@ -43,7 +46,7 @@ export default {
 }
 ```
 
-You can then import `defineCatalogInfoGetter` from `@vuepress/plugin-catalog/client` and use it in [client config file][client-config] to extract catalog info from meta.
+You can then import `defineCatalogInfoGetter` from `@vuepress/plugin-catalog/client` and use it in [client config file][client-config] to extract catalog info from route meta.
 
 ```ts title=".vuepress/client.ts"
 import { defineCatalogInfoGetter } from '@vuepress/plugin-catalog/client'
@@ -51,28 +54,28 @@ import { defineCatalogInfoGetter } from '@vuepress/plugin-catalog/client'
 defineCatalogInfoGetter((meta) => (meta.title ? { title: meta.title } : null))
 ```
 
-Catalog info should contains:
+Catalog info should contain:
 
-- `title`: catalog title
-- `order`: catalog order (optional)
-- `content`: catalog content component (optional)
+- `title`: Catalog title
+- `order`: Catalog order (optional)
+- `content`: Catalog content component (optional)
 
 ::: tip Sorting with order
 
-The plugin will sort pages by `order` in the following way:
+The plugin sorts pages by `order` in the following sequence:
 
 ```:no-line-numbers
-// order positive numbers from small to large
+// Positive numbers from small to large
 Project with order 1
 Project with order 2
 ...
 Project with order 10
 ...
-// Project without order
+// Projects without order
 Project without order
 Project without order
 ...
-// order negative numbers from small to large
+// Negative numbers from small to large
 Project with order -10
 // ...
 Project with order -2
@@ -87,29 +90,29 @@ Project with order -1
 
 - Type: `1 | 2 | 3`
 - Default: `3`
-- Details: Max depth of catalog items.
+- Details: Maximum depth of catalog items.
 
 ### index <Badge text="Built-in component only" />
 
 - Type: `boolean`
 - Default: `false`
-- Details: Whether show index for catalog
+- Details: Whether to show index numbers for catalog items.
 
 ### frontmatter
 
 - Type: `(path: string) => Record<string, any>`
-- Details: Frontmatter getter for the generated page.
+- Details: Frontmatter getter for generated pages.
 - Example:
 
-  ```js title=".vuepress/config.js"
+  ```ts title=".vuepress/config.ts"
   import { catalogPlugin } from '@vuepress/plugin-catalog'
 
   export default {
     plugins: [
       catalogPlugin({
         frontmatter: (path) => ({
-          // frontmatter you want
-          // you may customize title, author. time, etc.
+          // Frontmatter you want
+          // You may customize title, author, time, etc.
         }),
       }),
     ],
@@ -134,7 +137,7 @@ Project with order -1
 ### component
 
 - Type: `string`
-- Details: Component name to use as catalog.
+- Details: Component name to use as the catalog component.
 
 ### locales
 
@@ -158,7 +161,7 @@ Project with order -1
   }
   ```
 
-- Details: Locales config for catalog component.
+- Details: Locales configuration for catalog component.
 
 ::: details Built-in Supported Languages
 
@@ -183,7 +186,7 @@ Project with order -1
 
 :::
 
-## Client options
+## Client Options
 
 ### defineCatalogInfoGetter
 
@@ -202,7 +205,7 @@ type CatalogInfoGetter = (meta: Record<string, unknown>) => CatalogInfo | null
 const defineCatalogInfoGetter: (options: CatalogInfoGetter) => void
 ```
 
-Customize how to extract catalog info from meta.
+Customizes how to extract catalog info from route meta.
 
 ## Components
 
@@ -210,21 +213,21 @@ Customize how to extract catalog info from meta.
 
 - Details:
 
-  The plugin will globally register a `<Catalog />` component by default (unless you set the `component` option).
+  This plugin globally registers a `<Catalog />` component by default (unless you set the `component` option).
 
-  You can use `<Catalog />` in the theme layout or directly in the Markdown file.
+  You can use `<Catalog />` in theme layouts or directly in Markdown files.
 
   The component supports four props:
 
-  - `level`: Change the display depth (maximum support 3 levels), default is `3`.
-  - `base`: Display catalog of the specified folder, default is the current folder directory.
-  - `index`: Add an index number to the directory item, default is no number.
-  - `hideHeading`: Hide the component title, default is to display the `Catalog` title.
+  - `level`: Changes the display depth (maximum 3 levels), default is `3`.
+  - `base`: Displays catalog of the specified folder, default is the current folder.
+  - `index`: Adds index numbers to catalog items, default is no numbers.
+  - `hideHeading`: Hides the component title, default is to display the `Catalog` title.
 
 [client-config]: https://vuejs.press/guide/configuration.html#client-config-file
 
 ## Styles
 
-You can customize the style of catalog via CSS variables:
+You can customize catalog styles via CSS variables:
 
 @[code css](@vuepress/plugin-catalog/src/client/styles/vars.css)

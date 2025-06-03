@@ -8,6 +8,28 @@ import type { CatalogPluginOptions } from './options.js'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
+/**
+ * Catalog plugin
+ *
+ * 目录插件
+ *
+ * @param options plugin options
+ *
+ * @example
+ * ```ts
+ * import { catalogPlugin } from '@vuepress/plugin-catalog'
+ *
+ * export default {
+ *   plugins: [
+ *     catalogPlugin({
+ *       level: 2,
+ *       index: true,
+ *       exclude: ['/private/']
+ *     })
+ *   ]
+ * }
+ * ```
+ */
 export const catalogPlugin =
   (options: CatalogPluginOptions = {}): PluginFunction =>
   (app) => {

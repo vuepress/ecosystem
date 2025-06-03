@@ -34,13 +34,32 @@ const catalogInfoSymbol: InjectionKey<CatalogInfoGetter> = Symbol(
   __VUEPRESS_DEV__ ? 'catalog-info-getter' : '',
 )
 
+/**
+ * Define catalog info getter
+ *
+ * 定义目录信息获取器
+ *
+ * @param getter catalog info getter function
+ */
 export const defineCatalogInfoGetter = (getter: CatalogInfoGetter): void => {
   catalogGetter = getter
 }
 
+/**
+ * Use catalog info getter
+ *
+ * 使用目录信息获取器
+ */
 export const useCatalogInfoGetter = (): CatalogInfoGetter =>
   inject(catalogInfoSymbol)!
 
+/**
+ * Inject catalog info getter
+ *
+ * 注入目录信息获取器
+ *
+ * @param app Vue app instance
+ */
 export const injectCatalogInfoGetter = (app: App): void => {
   app.provide(catalogInfoSymbol, catalogGetter)
 }
