@@ -3,7 +3,27 @@ import type { ReadingTimePluginOptions } from './options.js'
 import { readingTimePlugin } from './readingTimePlugin.js'
 
 /**
- * Composition Api to use `@vuepress/plugin-reading-time`
+ * Composition API to use `@vuepress/plugin-reading-time`
+ *
+ * 使用 `@vuepress/plugin-reading-time` 的组合式 API
+ *
+ * @param app - VuePress app instance
+ * @param options - plugin options
+ *
+ * @example
+ * ```ts
+ * import { useReadingTimePlugin } from '@vuepress/plugin-reading-time'
+ *
+ * export default (options) => (app) => {
+ *   useReadingTimePlugin(app, {
+ *     wordPerMinute: 250
+ *   })
+ *
+ *   return {
+ *     name: 'vuepress-plugin-xxx'
+ *   }
+ * }
+ * ```
  */
 export const useReadingTimePlugin = (
   app: App,
@@ -18,7 +38,24 @@ export const useReadingTimePlugin = (
 }
 
 /**
- * Composition Api to remove `@vuepress/plugin-reading-time`
+ * Composition API to remove `@vuepress/plugin-reading-time`
+ *
+ * 移除 `@vuepress/plugin-reading-time` 的组合式 API
+ *
+ * @param app - VuePress app instance
+ *
+ * @example
+ * ```ts
+ * import { removeReadingTimePlugin } from '@vuepress/plugin-reading-time'
+ *
+ * export default (options) => (app) => {
+ *   removeReadingTimePlugin(app)
+ *
+ *   return {
+ *     name: 'vuepress-plugin-xxx'
+ *   }
+ * }
+ * ```
  */
 export const removeReadingTimePlugin = (app: App): void => {
   const { plugins } = app.pluginApi

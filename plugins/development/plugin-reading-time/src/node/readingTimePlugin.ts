@@ -6,7 +6,27 @@ import { readingTimeLocaleInfo } from './locales.js'
 import { PLUGIN_NAME, logger } from './logger.js'
 import type { ReadingTimePluginOptions } from './options.js'
 
-/** Reading time plugin */
+/**
+ * Reading time plugin
+ *
+ * 阅读时间插件
+ *
+ * @param options - plugin options
+ * @returns VuePress plugin function
+ *
+ * @example
+ * ```ts
+ * import { readingTimePlugin } from '@vuepress/plugin-reading-time'
+ *
+ * export default {
+ *   plugins: [
+ *     readingTimePlugin({
+ *       wordPerMinute: 300
+ *     })
+ *   ]
+ * }
+ * ```
+ */
 export const readingTimePlugin =
   (options: ReadingTimePluginOptions = {}): PluginFunction =>
   (app) => {
