@@ -38,7 +38,7 @@ export interface CopyCodePluginOptions {
    *
    * 复制代码时，选择忽略代码块中的节点，被选中的节点文本内容将不会被复制
    *
-   * @default []
+   * @default ""
    */
   ignoreSelector?: string[] | string
 
@@ -52,15 +52,16 @@ export interface CopyCodePluginOptions {
   /**
    * Whether to copy inline code content when double click.
    *
+   * 是否在双击时复制内联代码内容
+   *
+   * @description
    * - boolean: Whether to copy inline code content when double click.
    * - string | string[]: The selector of inline code.
-   *
-   * 是否在双击时复制内联代码内容
    *
    * - boolean: 是否在双击时复制内联代码内容
    * - string | string[]: 内联代码的选择器
    *
-   * @default '[vp-content] :not(pre) > code'
+   * @default false
    */
   inline?: string[] | boolean | string
 }
