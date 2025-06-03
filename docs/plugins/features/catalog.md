@@ -98,7 +98,6 @@ Project with order -1
 ### frontmatter
 
 - Type: `(path: string) => Record<string, any>`
-- Required: No
 - Details: Frontmatter getter for the generated page.
 - Example:
 
@@ -135,7 +134,6 @@ Project with order -1
 ### component
 
 - Type: `string`
-- Required: No
 - Details: Component name to use as catalog.
 
 ### locales
@@ -159,8 +157,6 @@ Project with order -1
     [localePath: string]: Partial<CatalogPluginLocaleData>
   }
   ```
-
-- Required: No
 
 - Details: Locales config for catalog component.
 

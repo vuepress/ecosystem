@@ -171,8 +171,6 @@ Whether to show suggestions while searching.
   }
   ```
 
-- Required: No
-
 Customize index fields.
 
 ### hotKeys
@@ -267,14 +265,11 @@ It is disabled by default because this feature can have a huge performance impac
   }
   ```
 
-- Required: No
-
 Options used to create index.
 
 ### indexLocaleOptions
 
 - Type: `Record<string, SlimSearchIndexOptions>`
-- Required: No
 
 Options used to create index per locale, the object keys should be the locale path.
 
@@ -369,8 +364,6 @@ Options used to create index per locale, the object keys should be the locale pa
     [localePath: string]: SlimSearchLocaleData
   }
   ```
-
-- Required: No
 
 Multilingual configuration of the search plugin.
 

@@ -123,8 +123,6 @@ export default {
   }
   ```
 
-- Required: No
-
 - Details:
 
   Locales config for copy code plugin.

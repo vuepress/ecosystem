@@ -108,8 +108,6 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "
   }
   ```
 
-- Required: No
-
 - Details:
 
   Locales config for reading-time plugin.

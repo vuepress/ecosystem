@@ -277,8 +277,6 @@ Generate redirect site for current VuePress project
   }
   ```
 
-- 必填：否
-
 - 详情：
 
   重定向插件的国际化配置。
