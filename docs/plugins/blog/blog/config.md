@@ -170,7 +170,7 @@ interface BlogCategoryOptions {
    *
    * @default `/:key/`
    */
-  path?: string
+  path?: string | false
 
   /**
    * Page layout name
@@ -191,7 +191,7 @@ interface BlogCategoryOptions {
    *
    * @default `/:key/:name/`
    */
-  itemPath?: string | ((name: string) => string)
+  itemPath?: string | false | ((name: string) => string)
 
   /**
    * Item page layout name

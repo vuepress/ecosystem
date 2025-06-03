@@ -72,7 +72,6 @@ This is the file you should use to provide default CSS variables with `!default`
 ### generator
 
 - Type: `string`
-- Required: No
 
 Custom generator, used to generate derivative values with the above config.
 
@@ -81,7 +80,6 @@ E.g.: You may want to provide a `$theme-color-light` based on `$theme-color`.
 ### style
 
 - Type: `string`
-- Required: No
 
 User style file path, relative to source dir.
 

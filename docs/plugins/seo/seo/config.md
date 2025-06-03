@@ -39,8 +39,6 @@ icon: settings-2
   type Author = AuthorInfo | AuthorInfo[] | AuthorName | AuthorName[]
   ```
 
-- Required: No
-
 - Details:
 
   Default author.
@@ -103,7 +101,6 @@ icon: settings-2
   ): SeoContent
   ```
 
-- Required: No
 - Details:
 
   Custom OPG Generator.
@@ -125,8 +122,6 @@ icon: settings-2
   ): ArticleSchema | BlogPostingSchema | WebPageSchema
   ```
 
-- Required: No
-
 - Details:
 
   Custom JSON-LD Generator.
@@ -147,8 +142,6 @@ icon: settings-2
     app: App,
   ): void
   ```
-
-- Required: No
 
 - Details:
 

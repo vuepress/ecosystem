@@ -267,8 +267,6 @@ By default, the plugin will output to `.vuepress/redirect` directory under sourc
   }
   ```
 
-- Required: No
-
 - Details:
 
   Locales config for redirect plugin.

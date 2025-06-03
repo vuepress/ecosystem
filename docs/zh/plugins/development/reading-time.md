@@ -108,8 +108,6 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 分钟", words: "
   }
   ```
 
-- 必填：否
-
 - 详情：
 
   阅读时间插件的国际化配置。
