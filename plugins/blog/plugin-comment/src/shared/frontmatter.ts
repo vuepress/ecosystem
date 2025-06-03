@@ -1,10 +1,15 @@
 import type { PageFrontmatter } from 'vuepress/shared'
 
+/**
+ * Comment plugin frontmatter
+ *
+ * 评论插件 frontmatter
+ */
 export interface CommentPluginFrontmatter extends PageFrontmatter {
   /**
-   * 是否启用评论
+   * Whether enable comment
    *
-   * Whether Enable Comment
+   * 是否启用评论
    *
    * @default true
    */
@@ -18,11 +23,13 @@ export interface CommentPluginFrontmatter extends PageFrontmatter {
   commentID?: string
 
   /**
-   * @description Only available when using valine
+   * Whether enable pageviews
    *
    * 是否启用访问量
    *
-   * Whether enable pageviews
+   * @description Only available when using waline
+   *
+   * 仅在使用 Waline 时可用
    *
    * @default true
    */

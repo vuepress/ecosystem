@@ -4,9 +4,9 @@ icon: https://artalk.js.org/favicon.png
 
 # Artalk
 
-Artalk is a neat self-hosted commenting system that you can easily deploy on your server and put into your front-end page.
+Artalk is a clean self-hosted commenting system that you can easily deploy on your server and integrate into your front-end pages.
 
-Come to your blog, or anywhere, place the Artalk comment box, so that the page has rich social functions.
+Deploy the Artalk comment box on your blog or any other page to add rich social functionality.
 
 <!-- more -->
 

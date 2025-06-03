@@ -6,7 +6,7 @@
 
 - Type: `string`
 - Required: Yes
-- Details: Waline server address url
+- Details: Waline server address URL
 
 ### emoji
 
@@ -46,43 +46,27 @@
 - Default: `['//unpkg.com/@waline/emojis@1.1.0/weibo']`
 - Reference:
   - [Guide → Emoji](https://waline.js.org/en/guide/features/emoji.html)
-- Details: Emoji settings.
+- Details: Emoji settings
 
 ### dark
 
 - Type: `string | boolean`
 - Default: `false`
 - Reference:
-
   - [Custom Style](https://waline.js.org/en/guide/features/style.html)
-
-- Details:
-
-  Dark mode support
-
-  - Setting a boolean will set the dark mode according to its value.
-  - Set it to `'auto'` will display darkmode due to device settings.
-  - Filling in a CSS selector will enable darkmode only when the selector match waline ancestor nodes.
+- Details: Dark mode support. Setting a boolean will set the dark mode according to its value. Set it to `'auto'` will display darkmode due to device settings. Filling in a CSS selector will enable darkmode only when the selector match waline ancestor nodes.
 
 ### commentSorting
 
 - Type: `WalineCommentSorting`
 - Default: `'latest'`
-- Details:
-
-  Comment list sorting methods.
-
-  Optional values: `'latest'`, `'oldest'`, `'hottest'`
+- Details: Comment list sorting method. Should be one of `'latest'`, `'oldest'`, or `'hottest'`.
 
 ### meta
 
 - Type: `string[]`
-- Default: `['nick','mail','link']`
-- Details:
-
-  Reviewer attributes.
-
-  Optional values: `'nick'`, `'mail'`, `'link'`
+- Default: `['nick', 'mail', 'link']`
+- Details: Reviewer attributes. Should be one of `'nick'`, `'mail'`, `'link'`.
 
 ### requiredMeta
 
@@ -90,21 +74,21 @@
 - Default: `[]`
 - Details:
 
-  Set required fields, optional values:
+  Set required fields. Available values:
 
   - `[]`
   - `['nick']`
-  - `['nick','mail']`
+  - `['nick', 'mail']`
 
 ### login
 
 - Type: `string`
-- Default value: `'enable'`
+- Default: `'enable'`
 - Details:
 
-  Login mode status, optional values:
+  Login mode status. Available values:
 
-  - `'enable'`: enable login (default)
+  - `'enable'`: Enable login (default)
   - `'disable'`: Login is disabled, users should fill in information to comment
   - `'force'`: Forced login, users must login to comment
 
@@ -112,17 +96,13 @@
 
 - Type: `number | [number, number]`
 - Default: `0`
-- Details:
-
-  Comment words limit. When a single number is filled in, it 's the maximum number of comment words. No limit when set to `0`.
+- Details: Comment word limit. When a single number is filled in, it's the maximum number of comment words. No limit when set to `0`.
 
 ### pageSize
 
 - Type: `number`
 - Default: `10`
-- Details:
-
-  Number of comments per page.
+- Details: Number of comments per page.
 
 ### imageUploader <Badge text="Client Config Only" type="warning"/>
 
@@ -156,7 +136,7 @@
 
 - Details:
 
-  **Code highlighting**, use `hanabi` by default. The function passes in original content of code block and language of the code block. You should return a string directly.
+  **Code highlighting** uses `hanabi` by default. The function passes in original content of code block and language of the code block. You should return a string directly.
 
   You can pass in a code highlighter of your own, or set to `false` to disable code highlighting.
 
@@ -176,9 +156,9 @@
 
 - Details:
 
-  Customize TeX rendering, the default behavior is to prompt that the preview mode does not support TeX. The function provides two parameters, the first parameter indicates whether it should be rendered in block level, and the second parameter is the string of the TeX content, and return a HTML string as render result.
+  Customize TeX rendering. The default behavior is to prompt that the preview mode does not support TeX. The function provides two parameters: the first parameter indicates whether it should be rendered in block level, and the second parameter is the string of the TeX content. Return an HTML string as render result.
 
-  You can import TeX renderer to provide preview feature. We recommend you to use Katex or MathJax, or you can set to `false` to disable parsing TeX.
+  You can import TeX renderer to provide preview feature. We recommend you use KaTeX or MathJax, or set to `false` to disable parsing TeX.
 
 ### search <Badge text="Client Config Only" type="warning"/>
 
@@ -234,7 +214,7 @@
   }
   ```
 
-- Details: Customize search features, you can disable search function by setting it to `false`.
+- Details: Customize search features. You can disable search function by setting it to `false`.
 
 ### recaptchaV3Key
 
@@ -251,13 +231,13 @@
 - Default: `false`
 - Details:
 
-  Add emoji interaction function to the article, set it to `true` to provide the default emoji, you can also customize the emoji image by setting the emoji url array, and supports a maximum of 8 emojis.
+  Add emoji interaction function to the article. Set it to `true` to provide the default emoji, you can also customize the emoji image by setting the emoji URL array, and supports a maximum of 8 emojis.
 
 ### metaIcon <Badge text="Plugin Option Only" type="warning"/>
 
 - Type: `boolean`
 - Default: `true`
-- Details: Whether import meta icon.
+- Details: Whether to import meta icon.
 
 ### locales <Badge text="Plugin Option Only" type="warning"/>
 

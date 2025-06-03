@@ -5,9 +5,9 @@ import type { TwikooOptions } from './twikoo.js'
 import type { WalineOptions } from './waline.js'
 
 /**
- * 评论选项
- *
  * Comment options
+ *
+ * 评论选项
  */
 export type CommentOptions =
   | ArtalkOptions
