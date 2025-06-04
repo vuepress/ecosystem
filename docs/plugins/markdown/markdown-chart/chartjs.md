@@ -1,7 +1,8 @@
 ---
-title: Chart.js
 icon: chart-simple
 ---
+
+# Chart.js
 
 Add [chart.js][] support to the Markdown files in your VuePress site.
 
@@ -37,7 +38,7 @@ npm i -D chart.js
 
 Then enabling via:
 
-```js {7} title=".vuepress/config.js"
+```ts {7} title=".vuepress/config.ts"
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 
 export default {
@@ -68,7 +69,7 @@ export default {
 
 ## Demo
 
-:::: md-demo Bar Chart
+:::: preview Bar Chart
 
 ::: chartjs A bar chart
 
@@ -115,7 +116,7 @@ export default {
 
 ::::
 
-:::: md-demo Bubble Chart
+:::: preview Bubble Chart
 
 ::: chartjs A Bubble Chart
 
@@ -141,7 +142,7 @@ export default {
 
 ::::
 
-:::: md-demo Line Chart
+:::: preview Line Chart
 
 ::: chartjs A Line Chart
 
@@ -167,7 +168,7 @@ export default {
 
 ::::
 
-:::: md-demo Polar Area Chart
+:::: preview Polar Area Chart
 
 ::: chartjs A Polar Area Chart
 
@@ -197,7 +198,7 @@ export default {
 
 ::::
 
-:::: md-demo Radar Chart
+:::: preview Radar Chart
 
 ::: chartjs A Radar Chart
 
@@ -253,7 +254,7 @@ export default {
 
 ::::
 
-:::: md-demo Scatter Chart
+:::: preview Scatter Chart
 
 ::: chartjs A Scatter Chart
 

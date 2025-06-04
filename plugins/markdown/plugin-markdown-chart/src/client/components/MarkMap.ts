@@ -15,7 +15,7 @@ import {
 } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
 
-import '../styles/markmap.scss'
+import '../styles/markmap.css'
 
 export default defineComponent({
   name: 'MarkMap',

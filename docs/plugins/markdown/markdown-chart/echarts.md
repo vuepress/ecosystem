@@ -1,9 +1,8 @@
 ---
-title: ECharts
 icon: chart-simple
 ---
 
-<!-- #region before -->
+# ECharts
 
 Add [echarts][] support to the Markdown files in your VuePress site.
 
@@ -39,8 +38,6 @@ npm i -D echarts
 
 Then enabling via:
 
-<!-- #endregion before -->
-
 ```js {7} title=".vuepress/config.js"
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 
@@ -53,8 +50,6 @@ export default {
   ],
 }
 ```
-
-<!-- #region after -->
 
 ## Syntax
 
@@ -127,72 +122,70 @@ For details, please see [ECharts Docs](https://echarts.apache.org/handbook/en/ge
 
 ## Demo
 
-:::: md-demo Line Chart
+:::: preview Line Chart
 
 <!-- @include: @echarts/line.snippet.md -->
 
 ::::
 
-:::: md-demo Bar Chart
+:::: preview Bar Chart
 
 <!-- @include: @echarts/bar.snippet.md -->
 
 ::::
 
-:::: md-demo Pie Chart
+:::: preview Pie Chart
 
 <!-- @include: @echarts/pie.snippet.md -->
 
 ::::
 
-:::: md-demo Scatter Chart
+:::: preview Scatter Chart
 
 <!-- @include: @echarts/scatter.snippet.md -->
 
 ::::
 
-:::: md-demo Polar Chart
+:::: preview Polar Chart
 
 <!-- @include: @echarts/polar.snippet.md -->
 
 ::::
 
-:::: md-demo Candlestick Chart
+:::: preview Candlestick Chart
 
 <!-- @include: @echarts/candlestick.snippet.md -->
 
 ::::
 
-:::: md-demo Radar Chart
+:::: preview Radar Chart
 
 <!-- @include: @echarts/radar.snippet.md -->
 
 ::::
 
-:::: md-demo Heat Map
+:::: preview Heat Map
 
 <!-- @include: @echarts/heat-map.snippet.md -->
 
 ::::
 
-:::: md-demo Tree Chart
+:::: preview Tree Chart
 
 <!-- @include: @echarts/tree.snippet.md -->
 
 ::::
 
-:::: md-demo Multiple Chart
+:::: preview Multiple Chart
 
 <!-- @include: @echarts/multiple.snippet.md -->
 
 ::::
 
-:::: md-demo WordCloud (with setup function)
+:::: preview WordCloud (with setup function)
 
 <!-- @include: @echarts/wordcloud.snippet.md -->
 
 ::::
 
 [client-config]: https://vuejs.press/guide/configuration.html#client-config-file
-
-<!-- #endregion after -->

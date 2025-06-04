@@ -107,6 +107,21 @@ export const sidebarEn: SidebarOptions = {
 
   '/plugins/markdown/': [
     'append-date',
+    {
+      text: 'markdown-chart',
+      icon: 'chart-simple',
+      prefix: 'markdown-chart/',
+      link: 'markdown-chart/',
+      children: [
+        '',
+        'chartjs',
+        'echarts',
+        'flowchart',
+        'markmap',
+        'mermaid',
+        'plantuml',
+      ],
+    },
     'markdown-container',
     'markdown-ext',
     'markdown-image',

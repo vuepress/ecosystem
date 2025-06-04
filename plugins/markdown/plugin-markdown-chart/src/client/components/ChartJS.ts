@@ -14,7 +14,7 @@ import {
 } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
 
-import '../styles/chartjs.scss'
+import '../styles/chartjs.css'
 
 const parseChartConfig = (
   config: string,

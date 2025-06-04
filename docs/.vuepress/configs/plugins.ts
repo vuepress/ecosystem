@@ -46,8 +46,10 @@ export const plugins = [
     prefix: 'lucide:',
   }),
   markdownChartPlugin({
-    chartJs: true,
+    chartjs: true,
     echarts: true,
+    flowchart: true,
+    markmap: true,
     mermaid: true,
     plantuml: true,
   }),
