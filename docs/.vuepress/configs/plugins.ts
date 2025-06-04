@@ -5,6 +5,7 @@ import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
 import { iconPlugin } from '@vuepress/plugin-icon'
 import { llmsPlugin } from '@vuepress/plugin-llms'
+import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
@@ -44,7 +45,12 @@ export const plugins = [
   iconPlugin({
     prefix: 'lucide:',
   }),
-  markdownPreviewPlugin(),
+  markdownChartPlugin({
+    chartJs: true,
+    echarts: true,
+    mermaid: true,
+    plantuml: true,
+  }),
   markdownExtPlugin({
     gfm: true,
     component: true,
@@ -62,6 +68,7 @@ export const plugins = [
   markdownMathPlugin({
     type: 'katex',
   }),
+  markdownPreviewPlugin(),
   markdownStylizePlugin({
     align: true,
     attrs: true,
