@@ -5,9 +5,9 @@ export interface CopyrightPluginFrontmatter extends PageFrontmatter {
     | boolean
     | {
         /**
-         * Min words triggering copyright append
+         * Min length triggering copyright append
          *
-         * 触发附加版权的最小字数
+         * 触发附加版权的最小长度
          *
          * @default 100
          */
@@ -18,7 +18,7 @@ export interface CopyrightPluginFrontmatter extends PageFrontmatter {
          *
          * @description 0 means unlimited
          *
-         * 允许复制的最大字数
+         * 允许复制的最大长度
          *
          * @description 0 表示无限制
          *

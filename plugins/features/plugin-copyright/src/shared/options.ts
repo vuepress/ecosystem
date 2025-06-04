@@ -1,13 +1,13 @@
 export interface CopyrightPluginSharedOptions {
   /**
-   * Default Author Information
+   * Default author information
    *
    * 默认作者信息
    */
   author?: string
 
   /**
-   * Default License Information
+   * Default license information
    *
    * 默认协议信息
    */

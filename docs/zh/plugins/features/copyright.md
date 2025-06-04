@@ -43,10 +43,10 @@ export default {
 
 ### 禁用复制和选择
 
-如果你希望禁止用户复制较长内容，你可以在插件选项中设置 `maxLength` 控制这个临界值，或在页面 frontmatter 单独设置 `copy.maxLength`。
+如果你希望禁止用户复制较长内容，你可以在插件选项中设置 `maxLength` 控制这个临界值，或在页面 frontmatter 中设置 `copy.maxLength`。
 
-- 如果你不希望用户复制你的整个站点或特定页面文字，你可以在插件选项中设置 `disableCopy` 或在页面 frontmatter 中设置 `copy.disableCopy` 来禁用复制，后者具有更高优先级。
-- 如果你不希望用户选择你的整个站点或特定页面文字，你可以在插件选项中设置 `disableSelection` 或在页面 frontmatter 中设置 `copy.disableSelection` 来禁用文字选择。此选项具有更高优先级
+- 如果你不希望用户复制你的整个站点或特定页面文字，你可以在插件选项中设置 `disableCopy` 或在页面 frontmatter 中设置 `copy.disableCopy` 来禁用复制。后者具有更高优先级。
+- 如果你不希望用户选择你的整个站点或特定页面文字，你可以在插件选项中设置 `disableSelection` 或在页面 frontmatter 中设置 `copy.disableSelection` 来禁用文字选择。后者具有更高优先级。
 
 ## 选项
 
@@ -73,19 +73,23 @@ export default {
 ### copyrightGetter
 
 - 类型：`(page: Page) => string | null`
-- 详情：协议信息获取器
+- 详情：版权信息获取器
 
-### triggerLength
+### canonical
 
-- 类型：`number`
-- 默认值：`100`
-- 详情：触发附加版权的最小内容长度
+- 类型：`string`
+- 详情：首选部署位置
 
-### maxLength
+  ::: tip 例子
 
-- 类型：`number`
-- 默认值：`0`
-- 详情：允许复制的最大内容长度，`0` 意味着无限制。
+  如果你在 `https://myblog.com` 和 `https://blog.com/username/` 下部署相同的内容，你可能希望选择一个站点作为首选链接。
+
+  - 如果你倾向于使用第一个，你应该将 `canonical` 设置为 `https://myblog.com`
+  - 如果你倾向于使用第二个，你应该将 `canonical` 设置为 `https://blog.com/username/`
+
+  这样，在另一个站点触发的版权信息也会指向你的首选站点。
+
+  :::
 
 ### global
 
@@ -105,23 +109,17 @@ export default {
 - 默认值：`false`
 - 详情：禁用选择
 
-### canonical
+### triggerLength
 
-- 类型：`string`
-- 详情：
+- 类型：`number`
+- 默认值：`100`
+- 详情：触发附加版权的最小内容长度
 
-  首选部署位置。
+### maxLength
 
-::: tip 例子
-
-如果你在 `https://myblog.com` 和 `https://blog.com/username/` 下部署相同的内容，你可能希望选择一个站点作为首选链接。
-
-- 如果你倾向于使用第一个，你应该将 `canonical` 设置为 `https://myblog.com`
-- 如果你倾向于使用第二个，你应该将 `canonical` 设置为 `https://blog.com/username/`
-
-这样，在另一个站点触发的版权信息也会指向你的首选站点。
-
-:::
+- 类型：`number`
+- 默认值：`0`
+- 详情：允许复制的最大内容长度，`0` 意味着无限制
 
 ### locales
 
@@ -204,11 +202,12 @@ export default {
 - **波兰语** (pl-PL)
 - **法语** (fr-FR)
 - **西班牙语** (es-ES)
-- **斯洛伐克** (sk-SK)
+- **斯洛伐克语** (sk-SK)
 - **日语** (ja-JP)
 - **土耳其语** (tr-TR)
 - **韩语** (ko-KR)
 - **芬兰语** (fi-FI)
+- **匈牙利语** (hu-HU)
 - **印尼语** (id-ID)
 - **荷兰语** (nl-NL)
 
@@ -220,14 +219,13 @@ export default {
 
 - 类型：`number`
 - 默认值：`100`
-- 详情： 触发附加版权的最小内容长度
+- 详情：触发附加版权的最小内容长度
 
 ### copy.maxLength
 
 - 类型：`number`
 - 默认值：`0`
-- 详情：
-  允许复制的最大内容长度，`0` 意味着无限制。
+- 详情：允许复制的最大内容长度，`0` 意味着无限制
 
 ### copy.disableCopy
 
