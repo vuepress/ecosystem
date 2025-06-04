@@ -97,7 +97,7 @@ Each option in plugin/theme documentation must include:
   - Chinese: "必填：是"
 - **Optional Options**: Must NOT declare "Required: No"
 - **Default Values**: Always mention for optional parameters
-  - Exception: Boolean options with `false` default (omit default declaration)
+  - Exception: Default is expected, e.g.: object options with `undefined` default, boolean options with `false` default, string options with `''` default (omit default declaration)
   - English: "Default: `defaultValue`"
   - Chinese: "默认值：`defaultValue`"
 - **Reference**: Optional, links to relevant documentation (always as list)

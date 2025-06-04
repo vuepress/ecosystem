@@ -7,6 +7,20 @@ import type { BackToTopPluginOptions } from './options.js'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
+/**
+ * Back to top plugin
+ *
+ * 返回顶部插件
+ *
+ * @example
+ * ```ts
+ * import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
+ *
+ * export default {
+ *   plugins: [backToTopPlugin()]
+ * }
+ * ```
+ */
 export const backToTopPlugin =
   (options: BackToTopPluginOptions = {}): Plugin =>
   (app) => {
