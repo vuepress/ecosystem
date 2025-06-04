@@ -52,8 +52,8 @@ export const pwaLocaleInfo: DefaultLocaleInfo<PwaPluginLocaleData> = [
       feature: '主要特色',
       explain:
         '該應用可以安裝在你的 PC 或行動裝置上。這將使該 Web 應用程式外觀和行為與其他應用程式相同。它將在出現在應用程式列表中，並可以固定到主畫面，開始菜單或任務欄。此 Web 應用程式還將能夠與其他應用程式和你的操作系統安全地進行交互。',
-      hint: '發現新内容可用',
-      update: '新内容已就绪',
+      hint: '發現新內容可用',
+      update: '新內容已就緒',
     },
   ],
   [
@@ -65,7 +65,7 @@ export const pwaLocaleInfo: DefaultLocaleInfo<PwaPluginLocaleData> = [
       close: 'Schließen',
       prevImage: 'Vorheriges Bild',
       nextImage: 'Nächstes Bild',
-      desc: 'Berschreibung',
+      desc: 'Beschreibung',
       feature: 'Funktionen',
       explain:
         'Diese App kann auf Ihrem PC oder Mobilgerät installiert werden. Dadurch sieht diese Web-App aus und verhält sich wie jede andere installierte App. Sie finden sie in Ihren App-Listen und können sie an den Startbildschirm, die Startmenüs oder die Taskleisten anheften. Diese installierte Web-App kann auch sicher mit anderen Apps und Ihrem Betriebssystem interagieren.',
