@@ -103,6 +103,8 @@ export default {
 
   Enable [@vuepress/plugin-links-check](../../plugins/markdown/links-check.md) or not.
 
+  Object value is supported as plugin options.
+
 ## themePlugins.mediumZoom
 
 - Type: `boolean`

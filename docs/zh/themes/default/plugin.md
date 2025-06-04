@@ -93,15 +93,17 @@ export default {
 - 参考：
   - [默认主题 > Markdown > 提示容器](./markdown.md#提示容器)
 
-## themePlugins.links-check
+## themePlugins.linksCheck
 
-- 类型： `boolean`
+- 类型：`LinksCheckPluginOptions | boolean`
 
-- 默认值： `true`
+- 默认值：`true`
 
 - 详情：
 
-  是否启用 [@vuepress/plugin-links-check](../../plugins/markdown/links-check.md) 。
+  是否启用 [@vuepress/plugin-links-check](../../plugins/markdown/links-check.md)。
+
+  支持对象格式以作为插件选项。
 
 ## themePlugins.mediumZoom
 
