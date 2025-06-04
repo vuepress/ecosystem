@@ -1,13 +1,13 @@
 import type { GetHeadersOptions } from '@vuepress/helper/client'
 import { h } from 'vue'
 import { defineClientConfig } from 'vuepress/client'
-import type { TocPropsOptions } from '../shared/index.js'
+import type { TocRenderOptions } from '../shared/index.js'
 import type { TocProps } from './components/Toc.js'
 import { Toc } from './components/Toc.js'
 
 declare const __TOC_COMPONENT_NAME__: string
 declare const __TOC_HEADERS_OPTIONS__: GetHeadersOptions
-declare const __TOC_PROPS_OPTIONS__: TocPropsOptions
+declare const __TOC_RENDER_OPTIONS__: TocRenderOptions
 
 export default defineClientConfig({
   enhance({ app }) {
@@ -19,9 +19,9 @@ export default defineClientConfig({
           ...__TOC_HEADERS_OPTIONS__,
           ...props.headersOptions,
         },
-        propsOptions: {
-          ...__TOC_PROPS_OPTIONS__,
-          ...props.propsOptions,
+        renderOptions: {
+          ...__TOC_RENDER_OPTIONS__,
+          ...props.renderOptions,
         },
       }),
     )

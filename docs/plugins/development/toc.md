@@ -28,7 +28,7 @@ export default {
 
 ## Differences with Markdown TOC Syntax
 
-Similar to the [Table of Contents Markdown Syntax](https://vuejs.press/guide/markdown.html#table-of-contents), the TOC component that provided by this plugin could be used in your markdown content directly:
+Similar to the [Table of Contents Markdown Syntax](https://vuejs.press/guide/markdown.html#table-of-contents), the TOC component provided by this plugin can be used in your markdown content directly:
 
 ```md
 <!-- markdown toc syntax -->
@@ -41,11 +41,11 @@ Similar to the [Table of Contents Markdown Syntax](https://vuejs.press/guide/mar
 
 Both of them can be pre-rendered correctly in build mode. However, there are some differences between them.
 
-The markdown syntax `[[toc]]` could only be used in markdown files. It is parsed by markdown-it, and the generated TOC is static content.
+The markdown syntax `[[toc]]` can only be used in markdown files. It is parsed by markdown-it, and the generated TOC is static content.
 
-The component `<Toc/>` could be used in both markdown files and vue files. It is loaded by vue, and the generated TOC is a vue component.
+The component `<Toc/>` can be used in both markdown files and vue files. It is loaded by vue, and the generated TOC is a vue component.
 
-This plugin could work together with [@vuepress/plugin-active-header-links](./active-header-links.md) by setting the [headerLinkSelector](./active-header-links.md#headerlinkselector) to match the `linkClass` option. When the page scroll to a certain header anchor, this corresponding link will be added `linkActiveClass` class name.
+This plugin can work together with [@vuepress/plugin-active-header-links](./active-header-links.md) by setting the [headerLinkSelector](./active-header-links.md#headerlinkselector) to match the `linkClass` option. When the page scrolls to a certain header anchor, the corresponding link will be added the `linkActiveClass` class name.
 
 Therefore, this plugin is more useful for theme developers.
 
@@ -71,7 +71,7 @@ Therefore, this plugin is more useful for theme developers.
 
   Override the default values of the component [headersOptions](#headersoptions-1) prop.
 
-### propsOptions
+### renderOptions
 
 - Type: `Partial<TocPropsOptions>`
 
@@ -79,7 +79,7 @@ Therefore, this plugin is more useful for theme developers.
 
 - Details:
 
-  Override the default values of the component [propsOptions](#propsoptions-1) prop.
+  Override the default values of the component [renderOptions](#renderoptions-1) prop.
 
 ## Component Props
 
@@ -87,7 +87,11 @@ The TOC component also accepts props for customization.
 
 ```vue
 <template>
-  <Toc :headers="headers" :options="options" />
+  <Toc
+    :headers="headers"
+    :headers-options="headersOptions"
+    :render-options="renderOptions"
+  />
 </template>
 ```
 
@@ -118,45 +122,92 @@ interface PageHeader {
 
 - Default:
 
-  See [GetHeadersOptions](../../tools/helper/client.md#getheaders), it can be overridden by [headersOptions](#headaersoptions) in plugin options.
+  See [GetHeadersOptions](../../tools/helper/client.md#getheaders), it can be overridden by [headersOptions](#headersoptions) in plugin options.
 
 - Details:
 
   Customize header extracting behavior.
 
-### propsOptions
+### renderOptions
 
-- Type: `Partial<TocPropsOptions>`
+- Type: `TocRenderOptions`
 
 ```ts
-interface TocPropsOptions {
-  containerTag: string
-  containerClass: string
-  listClass: string
-  itemClass: string
-  linkTag: 'a' | 'RouteLink' | 'RouterLink'
-  linkClass: string
-  linkActiveClass: string
-  linkChildrenActiveClass: string
+interface TocRenderOptions {
+  /**
+   * Container tag name
+   *
+   * @default 'nav'
+   */
+  containerTag?: string
+
+  /**
+   * Container class name
+   *
+   * @default 'vuepress-toc'
+   */
+  containerClass?: string
+
+  /**
+   * List class name
+   *
+   * @default 'vuepress-toc-list'
+   */
+  listClass?: string
+
+  /**
+   * Item class name
+   *
+   * @default 'vuepress-toc-item'
+   */
+  itemClass?: string
+
+  /**
+   * Link tag type
+   *
+   * @default 'RouteLink'
+   */
+  linkTag?: 'a' | 'RouteLink' | 'RouterLink'
+
+  /**
+   * Link class name
+   *
+   * @default 'vuepress-toc-link'
+   */
+  linkClass?: string
+
+  /**
+   * Active link class name
+   *
+   * @default 'active'
+   */
+  linkActiveClass?: string
+
+  /**
+   * Active children link class name
+   *
+   * @default 'active'
+   */
+  linkChildrenActiveClass?: string
 }
 ```
 
 - Default:
 
-  Following default values can be overridden by [propsOptions](#propsoptions) in plugin options.
+  Following default values can be overridden by [renderOptions](#renderoptions) in plugin options.
 
-```ts
-const defaultOptions = {
-  containerTag: 'nav',
-  containerClass: 'vuepress-toc',
-  listClass: 'vuepress-toc-list',
-  itemClass: 'vuepress-toc-item',
-  linkTag: 'RouteLink',
-  linkClass: 'vuepress-toc-link',
-  linkActiveClass: 'active',
-  linkChildrenActiveClass: 'active',
-}
-```
+  ```ts
+  const defaultOptions = {
+    containerTag: 'nav',
+    containerClass: 'vuepress-toc',
+    listClass: 'vuepress-toc-list',
+    itemClass: 'vuepress-toc-item',
+    linkTag: 'RouteLink',
+    linkClass: 'vuepress-toc-link',
+    linkActiveClass: 'active',
+    linkChildrenActiveClass: 'active',
+  }
+  ```
 
 - Details:
 
