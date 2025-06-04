@@ -61,9 +61,7 @@ export interface PalettePluginOptions {
  *
  * 创建调色板插件
  *
- * @param options - plugin options
- *
- * @default {}
+ * @param [options={}] - plugin options / 插件选项
  *
  * @example
  * ```ts

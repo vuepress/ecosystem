@@ -24,11 +24,7 @@ import {
  *
  * Git 插件
  *
- * @param options - Plugin options
- *
- * 插件选项
- *
- * @default {}
+ * @param [options={}] - Plugin options / 插件选项
  *
  * @example
  * ```ts

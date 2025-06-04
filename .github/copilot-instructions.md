@@ -56,6 +56,7 @@
   - Others: Only when not clearly visible in function parameters
 - **@example**: Only for exported functions
 - **@description**: Optional, only if necessary to explain more
+- **@param**: Required for all parameters, should be bilingual, separate with `/` for English and Chinese
 
 ````typescript
 /**
@@ -66,6 +67,8 @@
  * @description (optional) English detailed description
  *
  * 中文详细描述
+ *
+ * @param paramName - English description / 中文描述
  *
  * @default defaultValue
  * @example
