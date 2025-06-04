@@ -35,7 +35,7 @@ export default {
 
 You need to wrap your tabs in `tabs` container.
 
-You can add an id suffix in `tabs` container, which will be used as tab id. All tabs with same id will share same switch event.
+You can add an id suffix in `tabs` container, which will be used as tab id. All tabs with the same id will share the same switch event.
 
 ```md
 <!-- 👇 here, fruit will be used as id, it's optional -->
@@ -71,7 +71,7 @@ Behind `@tab` marker, you can add text `:active` to activate the tab by default,
 :::
 ```
 
-By default, the title will be used as value of tab, but you can override it using id suffix.
+By default, the title will be used as the value of the tab, but you can override it using an id suffix.
 
 ```md
 ::: tabs
@@ -138,7 +138,7 @@ pnpm add -D vuepress
 
 ## Code Tabs Guide
 
-This is the same as [tabs](#tabs-guide), but it's special built for code blocks.
+This is the same as [tabs](#tabs-guide), but it's specially built for code blocks.
 
 Only the first code fence after `@tab` marker is rendered inside code tabs, other Markdown content will be ignored.
 
@@ -255,12 +255,12 @@ npm i -D @vuepress/plugin-markdown-tab
 ### tabs
 
 - Type: `boolean`
-- Details: Whether enable tabs.
+- Details: Whether to enable tabs.
 
 ### codeTabs
 
 - Type: `boolean`
-- Details: Whether enable code tabs.
+- Details: Whether to enable code tabs.
 
 ## Styles
 

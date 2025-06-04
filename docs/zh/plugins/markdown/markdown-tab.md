@@ -35,7 +35,7 @@ export default {
 
 你需要将选项卡包装在 `tabs` 容器中。
 
-你可以在 `tabs` 容器中添加一个 id 后缀，该后缀将用作选项卡 id。 所有具有相同 id 的选项卡将共享相同的切换事件。
+你可以在 `tabs` 容器中添加一个 id 后缀，该后缀将用作选项卡 id。所有具有相同 id 的选项卡将共享相同的切换事件。
 
 ```md
 <!-- 👇 这里，fruit 将用作 id，它是可选的 -->
@@ -146,7 +146,7 @@ pnpm add -D vuepress
 
 :::: preview 选项卡
 
-一个水果选项卡列表:
+一个水果选项卡：
 
 ::: tabs#fruit
 
@@ -160,7 +160,7 @@ Banana
 
 :::
 
-另一个水果选项卡列表:
+另一个水果选项卡：
 
 ::: tabs#fruit
 
@@ -254,13 +254,13 @@ npm i -D @vuepress/plugin-markdown-tab
 
 ### tabs
 
-- 类型： `boolean`
-- 详情： 是否启用选项卡
+- 类型：`boolean`
+- 详情：是否启用选项卡。
 
 ### codeTabs
 
-- 类型： `boolean`
-- 详情： 是否启用代码选项卡
+- 类型：`boolean`
+- 详情：是否启用代码选项卡。
 
 ## 样式
 
