@@ -9,6 +9,25 @@ import type { MarkdownImagePluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepare/index.js'
 import { PLUGIN_NAME } from './utils.js'
 
+/**
+ * Create markdown image plugin
+ *
+ * 创建 markdown 图片插件
+ *
+ * @param options - Plugin options / 插件配置项
+ *
+ * @example
+ * ```ts
+ * import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
+ *
+ * markdownImagePlugin({
+ *   figure: true,
+ *   lazyload: true,
+ *   mark: true,
+ *   size: true,
+ * })
+ * ```
+ */
 export const markdownImagePlugin = (
   options: MarkdownImagePluginOptions,
 ): Plugin => ({
