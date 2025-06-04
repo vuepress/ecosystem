@@ -6,6 +6,27 @@ import type { MarkdownEnv } from 'vuepress/markdown'
 import { path } from 'vuepress/utils'
 import type { MarkdownIncludePluginOptions } from './options.js'
 
+/**
+ * Markdown include plugin
+ *
+ * Markdown 导入插件
+ *
+ * @param options - Plugin options / 插件选项
+ *
+ * @example
+ * ```ts
+ * import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
+ *
+ * export default {
+ *   plugins: [
+ *     markdownIncludePlugin({
+ *       deep: true,
+ *       useComment: true,
+ *     }),
+ *   ],
+ * }
+ * ```
+ */
 export const markdownIncludePlugin =
   (options: MarkdownIncludePluginOptions): Plugin =>
   (app) => {
