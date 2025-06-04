@@ -6,7 +6,7 @@ icon: image-play
 
 <NpmBadge package="@vuepress/plugin-photo-swipe" />
 
-此插件会使页面正文内的图片在点击时进入浏览模式浏览。
+此插件使用 PhotoSwipe 提供图片画廊功能，允许用户在优雅的全屏灯箱中查看图片，支持缩放、导航和分享功能。
 
 ## 使用方法
 
@@ -54,19 +54,19 @@ export default {
 
 - 类型：`boolean`
 - 默认值：`true`
-- 详情：是否显示下载按钮。
+- 详情：是否显示下载按钮
 
 ### fullscreen
 
 - 类型：`boolean`
 - 默认值：`true`
-- 详情：是否显示全屏按钮。
+- 详情：是否显示全屏按钮
 
 ### scrollToClose
 
 - 类型：`boolean`
 - 默认值：`true`
-- 详情：是否在滚动时关闭当前图片。
+- 详情：是否在滚动时关闭当前图片
 
 ### locales
 
@@ -80,14 +80,14 @@ export default {
     close: string
 
     /**
+     * 下载按钮标签文字
+     */
+    download: string
+
+    /**
      * 全屏按钮标签文字
      */
     fullscreen: string
-
-    /**
-     * 分享按钮标签文字
-     */
-    share: string
 
     /**
      * 缩放按钮标签文字
@@ -97,17 +97,12 @@ export default {
     /**
      * 上一张图片按钮标签文字
      */
-    prev: string
+    arrowPrev: string
 
     /**
      * 下一张图片按钮标签文字
      */
-    next: string
-
-    /**
-     * 功能按钮配置
-     */
-    buttons: PhotoSwipeDefaultUI.ShareButtonData[]
+    arrowNext: string
   }
 
   interface PhotoSwipePluginLocaleConfig {
@@ -115,7 +110,7 @@ export default {
   }
   ```
 
-- 详情：Photo Swipe 插件的国际化配置。
+- 详情：Photo Swipe 插件的国际化配置
 
 - 示例：
 
@@ -130,7 +125,7 @@ export default {
         lang: 'zh-CN',
       },
       '/xx/': {
-        // 这是一个没有收到插件支持的语言
+        // 插件不支持这个语言
         lang: 'mm-NN',
       },
     },
@@ -139,8 +134,8 @@ export default {
       photoSwipePlugin({
         locales: {
           '/': {
-            // 覆盖分享标签文字
-            share: '分享给伙伴',
+            // 覆盖关闭标签文字
+            close: '关闭图片',
           },
 
           '/xx/': {
@@ -177,32 +172,30 @@ export default {
 
 ## Frontmatter
 
-### photoswipe
+### photoSwipe
 
-- 类型： `string | false`
-- 详情：
-
-  当前页面的图片选择器或 `false` 以在当前页面中禁用 photo-swipe。
+- 类型：`string | false`
+- 详情：当前页面的图片选择器，或 `false` 以在当前页面禁用 photo-swipe
 
 ## 客户端配置
 
 ### definePhotoSwipeConfig
 
-传递给 [`photo-swipe`](http://photoswipe.com/) 的额外选项。
+传递给 [`photo-swipe`](http://photoswipe.com/) 的选项
 
 ```ts title=".vuepress/client.ts"
 import { definePhotoSwipeConfig } from '@vuepress/plugin-photo-swipe/client'
 
 definePhotoSwipeConfig({
-  // 在此设置 photoswipe 选项
+  // 在此设置 PhotoSwipe 选项
 })
 ```
 
 ## API
 
-你可以通过 API 来调用 photoswipe。
+你也可以通过 API 调用 PhotoSwipe。
 
-`createPhotoSwipe` 允许你以编程的方式查看图片链接:
+`createPhotoSwipe` 允许你以编程方式使用 PhotoSwipe 查看图片链接：
 
 ```vue
 <script setup lang="ts">
@@ -216,15 +209,15 @@ const openPhotoSwipe = (index: number): void => {
 }
 
 onMounted(async () => {
-  // 通过图片链接创建一个新的 photoswipe 实例
+  // 通过图片链接创建一个新的 PhotoSwipe 实例
   state = await createPhotoSwipe(
     [
-      'https://exmaple.com/image1.png',
-      'https://exmaple.com/image2.png',
-      'https://exmaple.com/image3.png',
+      'https://example.com/image1.png',
+      'https://example.com/image2.png',
+      'https://example.com/image3.png',
     ],
     {
-      // photoswipe 选项
+      // PhotoSwipe 选项
     },
   )
 })
@@ -236,13 +229,13 @@ onUnmounted(() => {
 
 <template>
   <button v-for="i in 3" :key="i" type="button" @click="openPhotoSwipe(i)">
-    open photo {{ i }}
+    打开图片 {{ i }}
   </button>
 </template>
 ```
 
 ## 样式
 
-你可以通过 CSS 变量来自定义部分样式：
+你可以通过 CSS 变量自定义样式：
 
 @[code css](@vuepress/plugin-photo-swipe/src/client/styles/vars.css)
