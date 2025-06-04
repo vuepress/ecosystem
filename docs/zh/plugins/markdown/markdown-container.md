@@ -10,8 +10,6 @@ icon: package
 
 该插件简化了 [markdown-it-container](https://github.com/markdown-it/markdown-it-container) 的使用方法，但同时也保留了其原本的能力。
 
-默认主题的 [自定义容器](../../themes/default/markdown.md#自定义容器) 就是由该插件支持的。
-
 ## 使用方法
 
 ```bash
@@ -40,7 +38,7 @@ export default {
 
 - `type` 是必需的，应通过 [type](#type) 配置项来指定。
 - `info` 是可选的，其默认值可以通过 [locales](#locales) 的 `defaultInfo` 配置项来指定。
-- `content` 可是任何合法的 Markdown 内容。
+- `content` 可以是任何合法的 Markdown 内容。
 
 ::: tip
 该插件可以被多次使用，以便支持不同类型的容器。
@@ -50,7 +48,9 @@ export default {
 
 ### type
 
-- 类型： `string`
+- 类型：`string`
+
+- 必填：是
 
 - 详情：
 
@@ -60,13 +60,13 @@ export default {
 
 ### locales
 
-- 类型： `Record<string, { defaultInfo: string }>`
+- 类型：`Record<string, { defaultInfo: string }>`
 
 - 详情：
 
-  容器在不同 locales 下的默认 `info` 。
+  容器在不同 locales 下的默认 `info`。
 
-  如果没有指定该配置项，默认 `info` 会使用大写的 [type](#type) 。
+  如果没有指定该配置项，默认 `info` 会使用大写的 [type](#type)。
 
 - 示例：
 
@@ -93,7 +93,7 @@ export default {
 
 ### before
 
-- 类型： `(info: string) => string`
+- 类型：`(info: string) => string`
 
 - 默认值：
 
@@ -114,7 +114,7 @@ export default {
 
 ### after
 
-- 类型： `(info: string) => string`
+- 类型：`(info: string) => string`
 
 - 默认值：
 
@@ -150,11 +150,11 @@ type MarkdownItContainerRenderFunction = (
 
   [markdown-it-container](https://github.com/markdown-it/markdown-it-container#api) 的 `render` 配置项。
 
-  该插件使用了一个默认的 `render` 函数。但如果你指定了该配置项，那么默认的 `render` 函数就会被替换掉，此时 [locales](#locales) 、 [before](#before) 和 [after](#after) 配置项都会被忽略。
+  该插件使用了一个默认的 `render` 函数。但如果你指定了该配置项，那么默认的 `render` 函数就会被替换掉，此时 [locales](#locales)、[before](#before) 和 [after](#after) 配置项都会被忽略。
 
 ### validate
 
-- 类型： `(params: string) => boolean`
+- 类型：`(params: string) => boolean`
 
 - 详情：
 
@@ -162,7 +162,9 @@ type MarkdownItContainerRenderFunction = (
 
 ### marker
 
-- 类型： `string`
+- 类型：`string`
+
+- 默认值：`':'`
 
 - 详情：
 
