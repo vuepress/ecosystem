@@ -340,7 +340,7 @@ int main() {
 ### deep
 
 - Type: `boolean`
-- Details: Whether deep include files in included Markdown files.
+- Details: Whether to recursively include files referenced in included Markdown files.
 
 ### useComment
 

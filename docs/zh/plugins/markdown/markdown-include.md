@@ -340,7 +340,7 @@ int main() {
 ### deep
 
 - 类型：`boolean`
-- 详情：是否深度导入包含的 Markdown 文件。
+- 详情：是否递归包含被包含的 Markdown 文件中引用的文件。
 
 ### useComment
 
