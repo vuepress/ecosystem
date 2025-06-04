@@ -6,7 +6,7 @@ icon: list-checks
 
 <NpmBadge package="@vuepress/plugin-links-check" />
 
-此插件将检查您的 markdown 文件中的死链接。
+此插件检查你的 Markdown 文件中的死链接。
 
 此插件已集成到默认主题中。
 
@@ -38,7 +38,7 @@ export default {
 
 - 详情：
 
-  是否在开发服务器中检查 markdown 中的死链接
+  是否在开发服务器中检查 Markdown 中的死链接。
 
 ### build
 
@@ -48,7 +48,7 @@ export default {
 
 - 详情：
 
-  是否在构建中检查 markdown 中的死链接。如果设置为 `'error'`，则构建将在存在死链接时失败。
+  是否在构建时检查 Markdown 中的死链接。如果设置为 `'error'`，则在发现死链接时构建将失败。
 
 ### exclude
 
@@ -56,7 +56,7 @@ export default {
 
 - 详情：
 
-  应该从检查中排除的链接。您可以使用字符串或正则表达式的列表，或者返回布尔值的函数。
+  检查时需要排除的链接。你可以使用字符串或正则表达式的列表，或者返回布尔值的函数。
 
 - 示例：
 

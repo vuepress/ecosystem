@@ -6,7 +6,7 @@ icon: list-checks
 
 <NpmBadge package="@vuepress/plugin-links-check" />
 
-This plugin will check dead links in your markdown files.
+This plugin checks for dead links in your markdown files.
 
 This plugin has been integrated into the default theme.
 
@@ -38,7 +38,7 @@ export default {
 
 - Details:
 
-  Whether check dead links in markdown in devServer
+  Whether to check dead links in markdown in dev server.
 
 ### build
 
@@ -48,7 +48,7 @@ export default {
 
 - Details:
 
-  Whether check dead links in markdown in build. If set to `'error'`, the build will fail if there are dead links.
+  Whether to check dead links in markdown during build. If set to `'error'`, the build will fail when dead links are found.
 
 ### exclude
 
@@ -56,7 +56,7 @@ export default {
 
 - Details:
 
-  The links that should be excluded from checking. You can use a list of strings or regular expressions, or a function that returns a boolean.
+  Links to exclude from checking. You can use a list of strings or regular expressions, or a function that returns a boolean.
 
 - Example:
 

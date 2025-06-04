@@ -3,6 +3,13 @@ import type { Plugin } from 'vuepress'
 import { checkMarkdownLink } from './checkMarkdownLink.js'
 import type { LinksCheckPluginOptions } from './options.js'
 
+/**
+ * VuePress plugin to check dead links in markdown files
+ *
+ * VuePress 插件，用于检查 Markdown 文件中的死链接
+ *
+ * @param options - Plugin options / 插件选项
+ */
 export const linksCheckPlugin =
   ({
     dev = true,
