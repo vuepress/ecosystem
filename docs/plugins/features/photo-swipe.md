@@ -6,7 +6,7 @@ icon: image-play
 
 <NpmBadge package="@vuepress/plugin-photo-swipe" />
 
-This plugin will make the pictures in the body of the page enter the preview mode when clicked.
+This plugin provides image gallery functionality with PhotoSwipe, allowing users to view images in an elegant fullscreen lightbox with zoom, navigation, and sharing capabilities.
 
 ## Usage
 
@@ -30,15 +30,15 @@ In preview mode, you can:
 
 - Swipe left and right to preview other pictures on the page in order
 - View the description of the picture
-- Zoom in and zoom out the picture
+- Zoom in and out of the picture
 - View pictures in fullscreen
 - Download pictures
 - Share pictures
 
 ::: tip
 
-- Besides clicking "×" in the upper right corner to exit the preview mode, scrolling up and down more than a certain distance will also exit preview mode.
-- On mobile devices, or using the PC trackpad, you can use pan and zoom gestures to pan and zoom in the preview mode.
+- Besides clicking "×" in the upper right corner to exit preview mode, scrolling up and down more than a certain distance will also exit preview mode.
+- On mobile devices or when using a PC trackpad, you can use pan and zoom gestures in preview mode.
 
 :::
 
@@ -54,19 +54,19 @@ In preview mode, you can:
 
 - Type: `boolean`
 - Default: `true`
-- Details: Whether to show the download button.
+- Details: Whether to show the download button
 
 ### fullscreen
 
 - Type: `boolean`
 - Default: `true`
-- Details: Whether to show the fullscreen button.
+- Details: Whether to show the fullscreen button
 
 ### scrollToClose
 
 - Type: `boolean`
 - Default: `true`
-- Details: Whether close the current image when scrolling.
+- Details: Whether to close the current image when scrolling
 
 ### locales
 
@@ -80,14 +80,14 @@ In preview mode, you can:
     close: string
 
     /**
+     * Download button label text
+     */
+    download: string
+
+    /**
      * Full screen button label text
      */
     fullscreen: string
-
-    /**
-     * Share button label text
-     */
-    share: string
 
     /**
      * Zoom button label text
@@ -97,17 +97,12 @@ In preview mode, you can:
     /**
      * Previous image button label text
      */
-    prev: string
+    arrowPrev: string
 
     /**
      * Next image button label text
      */
-    next: string
-
-    /**
-     * Share button config
-     */
-    buttons: PhotoSwipeDefaultUI.ShareButtonData[]
+    arrowNext: string
   }
 
   interface PhotoSwipePluginLocaleConfig {
@@ -115,7 +110,7 @@ In preview mode, you can:
   }
   ```
 
-- Details: Locales config for photo-swipe plugin.
+- Details: Locales config for photo-swipe plugin
 
 - Example:
 
@@ -139,8 +134,8 @@ In preview mode, you can:
       photoSwipePlugin({
         locales: {
           '/': {
-            // Override share label text
-            share: 'Share with friends',
+            // Override close label text
+            close: 'Close Image',
           },
 
           '/xx/': {
@@ -180,9 +175,7 @@ In preview mode, you can:
 ### photoSwipe
 
 - Type: `string | false`
-- Details:
-
-Image selector for the current page, or `false` to disable photo-swipe in current page.
+- Details: Image selector for the current page, or `false` to disable photo-swipe on the current page
 
 ## Client Config
 
@@ -200,9 +193,9 @@ definePhotoSwipeConfig({
 
 ## API
 
-You can also call photoswipe with apis.
+You can also call PhotoSwipe with APIs.
 
-`createPhotoSwipe` allows you to programmatically view images links with PhotoSwipe:
+`createPhotoSwipe` allows you to programmatically view image links with PhotoSwipe:
 
 ```vue
 <script setup lang="ts">
@@ -216,15 +209,15 @@ const openPhotoSwipe = (index: number): void => {
 }
 
 onMounted(async () => {
-  // create a new photoswipe instance with image links
+  // Create a new PhotoSwipe instance with image links
   state = await createPhotoSwipe(
     [
-      'https://exmaple.com/image1.png',
-      'https://exmaple.com/image2.png',
-      'https://exmaple.com/image3.png',
+      'https://example.com/image1.png',
+      'https://example.com/image2.png',
+      'https://example.com/image3.png',
     ],
     {
-      // photoswipe options
+      // PhotoSwipe options
     },
   )
 })
@@ -236,7 +229,7 @@ onUnmounted(() => {
 
 <template>
   <button v-for="i in 3" :key="i" type="button" @click="openPhotoSwipe(i)">
-    open photo {{ i }}
+    Open photo {{ i }}
   </button>
 </template>
 ```

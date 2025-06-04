@@ -86,6 +86,8 @@
 - Chinese/English content must be consistent in structure and content
 - Make content concise and clear, remove unnecessary words, avoid redundancy, prefer shorter if possible
 - Use "你" instead of "您" in Chinese
+- Ignore any errors with `@[code ...` as they are VuePress code import grammar, which is not standard.
+- Ignore any errors with VuePress components in markdown.
 
 ### Options Documentation Format
 

@@ -13,6 +13,29 @@ import type { PhotoSwipePluginOptions } from './options.js'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
+/**
+ * VuePress PhotoSwipe plugin
+ *
+ * VuePress PhotoSwipe 插件
+ *
+ * @param [options={}] - Plugin options / 插件选项
+ *
+ * @example
+ * ```ts
+ * import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
+ *
+ * export default {
+ *   plugins: [
+ *     photoSwipePlugin({
+ *       selector: '[vp-content] :not(a) > img:not([no-view])',
+ *       download: true,
+ *       fullscreen: true,
+ *       scrollToClose: true,
+ *     }),
+ *   ],
+ * }
+ * ```
+ */
 export const photoSwipePlugin =
   (options: PhotoSwipePluginOptions = {}): PluginFunction =>
   (app) => {

@@ -30,9 +30,9 @@ export interface PhotoSwipePluginOptions {
   fullscreen?: boolean
 
   /**
-   * Whether close the current image when scrolling.
+   * Whether close the current image when scrolling
    *
-   * 是否在滚动时关闭当前图片。
+   * 是否在滚动时关闭当前图片
    *
    * @default true
    */

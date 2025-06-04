@@ -2,7 +2,9 @@ import type { DefaultLocaleInfo } from '@vuepress/helper'
 import type { PhotoSwipePluginLocaleData } from '../shared/index.js'
 
 /**
- * Default locale info for `@vuepress/plugin-photo-swipe`
+ * Default locale info for PhotoSwipe plugin
+ *
+ * PhotoSwipe 插件的默认多语言信息
  */
 export const photoSwipeLocaleInfo: DefaultLocaleInfo<PhotoSwipePluginLocaleData> =
   [
