@@ -50,7 +50,7 @@ export interface MarkdownStylizePluginOptions {
   /**
    * Whether to enable spoiler support
    *
-   * 是否启用剧透支持
+   * 是否启用剧透支持。
    *
    * @default false
    */
@@ -59,7 +59,7 @@ export interface MarkdownStylizePluginOptions {
   /**
    * Customizing token stylize
    *
-   * 自定义标记样式
+   * 自定义标记样式。
    */
   custom?: MarkdownItStylizeConfig[]
 }

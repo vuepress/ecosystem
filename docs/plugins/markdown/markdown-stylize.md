@@ -96,7 +96,7 @@ VuePress is ==powerful==!
 
 ### Creating Spoilers
 
-You can use `!! !!` to mark a content as spoiler.
+You can use `!! !!` to mark content as spoiler.
 
 ::: preview
 
@@ -119,8 +119,7 @@ H~2~O is a liquid. 2^10^ is 1024.
 The `custom` option receives an array, where each element accepts 2 options:
 
 - `matcher`: should be `string` or `RegExp`.
-
-- `replacer`: a function customizing the matched token
+- `replacer`: a function customizing the matched token.
 
 For example, you can use the following config to transform `*Recommended*` into a Badge <Badge type="tip">Recommended</Badge>
 
@@ -185,47 +184,34 @@ Also, you can use `stylize` in frontmatter to provide extra stylize rules for co
 ### align
 
 - Type: `boolean`
-
-- Details: Whether to enable align support
+- Details: Whether to enable align support.
 
 ### attrs
 
 - Type: `MarkdownItAttrsOptions | boolean`
-
-- Details:
-
-  Whether to enable attrs support.
-
-  You can also pass an object to specify the options of [@mdit/plugin-attrs](https://mdit-plugins.github.io/attrs.html#advanced).
+- Details: Whether to enable attrs support. You can also pass an object to specify the options of [@mdit/plugin-attrs](https://mdit-plugins.github.io/attrs.html#advanced).
 
 ### mark
 
 - Type: `boolean`
-
-- Details: Whether to enable mark format support
+- Details: Whether to enable mark format support.
 
 ### spoiler
 
 - Type: `boolean`
-
-- Details: Whether to enable spoiler support
+- Details: Whether to enable spoiler support.
 
 ### sup
 
 - Type: `boolean`
-
-- Details: Whether to enable superscript format support
+- Details: Whether to enable superscript format support.
 
 ### sub
 
 - Type: `boolean`
-
-- Details: Whether to enable subscript format support
+- Details: Whether to enable subscript format support.
 
 ### custom
 
 - Type: `MarkdownItStylizeConfig[]`
-
-- Details:
-
-  Create own stylize customizations. For details, see [@mdit/plugin-stylize](https://mdit-plugins.github.io/stylize.html#usage)
+- Details: Create own stylize customizations. For details, see [@mdit/plugin-stylize](https://mdit-plugins.github.io/stylize.html#usage).

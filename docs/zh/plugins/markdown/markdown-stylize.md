@@ -96,11 +96,11 @@ VuePress ==非常== 强大!
 
 ### 创建剧透
 
-你可以使用使用 `!! !!` 标记剧透文字。请注意标记两侧需要有空格。
+你可以使用 `!! !!` 标记剧透文字。请注意标记两侧需要有空格。
 
 ::: preview
 
-VuePress !!非常强大!!!
+VuePress !!非常强大!!。
 
 :::
 
@@ -119,18 +119,17 @@ H~2~O 是液体，2^10^ 是 1024.
 `custom` 选项接收一个数组，其中每个元素接受 2 个选项：
 
 - `matcher`：应为 `string` 或 `RegExp`。
-
-- `replacer`: 自定义匹配标记的函数
+- `replacer`：自定义匹配标记的函数。
 
 例如，你可以使用以下配置将 `*推荐*` 转换为徽章 <Badge type="tip">推荐</Badge>：
 
 ```js {6-18} title=".vuepress/config.js"
-import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance'
+import { markdownStylizePlugin } from '@vuepress/plugin-markdown-stylize'
 
 export default {
   plugins: [
-    mdEnhancePlugin({
-      stylize: [
+    markdownStylizePlugin({
+      custom: [
         {
           matcher: '推荐',
           replacer: ({ tag }) => {
@@ -153,12 +152,12 @@ export default {
 另一个例子是你想要将所有的“不或者没”开头的强调词设置为红色，这样 `设置它*没有*任何效果，请*不要*这样使用。`变成：“设置它<span style="color:red">没有</span>任何效果，请<span style="color:red">不要</span>这样使用。"
 
 ```js {6-18} title=".vuepress/config.js"
-import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance'
+import { markdownStylizePlugin } from '@vuepress/plugin-markdown-stylize'
 
 export default {
   plugins: [
-    mdEnhancePlugin({
-      stylize: [
+    markdownStylizePlugin({
+      custom: [
         {
           matcher: /^(不|没)/,
           replacer: ({ tag, attrs, content }) => {
@@ -178,54 +177,41 @@ export default {
 }
 ```
 
-同时，你也可以在 frontmatter 总通过 `stylize` 选项来自定义此页面额外的匹配标记的函数。
+同时，你也可以在 frontmatter 中通过 `stylize` 选项来自定义此页面额外的匹配标记的函数。
 
 ## 配置项
 
 ### align
 
-- 类型： `boolean`
-
-- 详情： 是否启用对齐支持。
+- 类型：`boolean`
+- 详情：是否启用对齐支持。
 
 ### attrs
 
-- 类型： `MarkdownItAttrsOptions | boolean`
-
-- 详情：
-
-  是否启用 attrs 支持。
-
-  你也可以传递一个对象来指定 [@mdit/plugin-attrs](https://mdit-plugins.github.io/zh/attrs.html#高级) 的选项。
+- 类型：`MarkdownItAttrsOptions | boolean`
+- 详情：是否启用 attrs 支持。你也可以传递一个对象来指定 [@mdit/plugin-attrs](https://mdit-plugins.github.io/zh/attrs.html#高级) 的选项。
 
 ### mark
 
-- 类型： `boolean`
-
-- 详情： 是否启用标记格式支持。
+- 类型：`boolean`
+- 详情：是否启用标记格式支持。
 
 ### spoiler
 
-- 类型： `boolean`
-
-- 详情： 是否启用剧透支持。
+- 类型：`boolean`
+- 详情：是否启用剧透支持。
 
 ### sup
 
-- 类型： `boolean`
-
-- 详情： 是否启用上标格式支持。
+- 类型：`boolean`
+- 详情：是否启用上标格式支持。
 
 ### sub
 
-- 类型： `boolean`
-
-- 详情： 是否启用下标格式支持。
+- 类型：`boolean`
+- 详情：是否启用下标格式支持。
 
 ### custom
 
-- 类型： `MarkdownStylizeCustomOptions[]`
-
-- 详情：
-
-  创建自定义样式化。详情请参阅 [@mdit/plugin-stylize](https://mdit-plugins.github.io/zh/stylize.html#使用)
+- 类型：`MarkdownItStylizeConfig[]`
+- 详情：创建自定义样式化。详情请参阅 [@mdit/plugin-stylize](https://mdit-plugins.github.io/zh/stylize.html#使用)。
