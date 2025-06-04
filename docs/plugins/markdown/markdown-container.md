@@ -60,6 +60,7 @@ This plugin can be used multiple times to support different types of containers.
 ### locales
 
 - Type: `Record<string, { defaultInfo: string }>`
+- Default: `{}`
 
 - Details:
 
@@ -93,15 +94,12 @@ export default {
 ### before
 
 - Type: `(info: string) => string`
-
 - Default:
 
-<!-- prettier-ignore-start -->
-```ts
-(info: string): string =>
-  `<div class="custom-container ${type}">${info ? `<p class="custom-container-title">${info}</p>` : ''}\n`
-```
-<!-- prettier-ignore-end -->
+  ```ts
+  ;(info: string): string =>
+    `<div class="custom-container ${type}">${info ? `<p class="custom-container-title">${info}</p>` : ''}\n`
+  ```
 
 - Details:
 
@@ -114,14 +112,11 @@ export default {
 ### after
 
 - Type: `(info: string) => string`
-
 - Default:
 
-<!-- prettier-ignore-start -->
-```ts
-(): string => '</div>\n'
-```
-<!-- prettier-ignore-end -->
+  ```ts
+  ;(): string => '</div>\n'
+  ```
 
 - Details:
 
@@ -135,15 +130,15 @@ export default {
 
 - Type:
 
-```ts
-type MarkdownItContainerRenderFunction = (
-  tokens: Token[],
-  index: number,
-  options: unknown,
-  env: MarkdownEnv,
-  self: Renderer,
-) => string
-```
+  ```ts
+  type MarkdownItContainerRenderFunction = (
+    tokens: Token[],
+    index: number,
+    options: unknown,
+    env: MarkdownEnv,
+    self: Renderer,
+  ) => string
+  ```
 
 - Details:
 

@@ -49,7 +49,6 @@ export default {
 ### type
 
 - 类型：`string`
-
 - 必填：是
 
 - 详情：
@@ -61,6 +60,7 @@ export default {
 ### locales
 
 - 类型：`Record<string, { defaultInfo: string }>`
+- 默认值：`{}`
 
 - 详情：
 
@@ -94,15 +94,12 @@ export default {
 ### before
 
 - 类型：`(info: string) => string`
-
 - 默认值：
 
-<!-- prettier-ignore-start -->
-```ts
-(info: string): string =>
-  `<div class="custom-container ${type}">${info ? `<p class="custom-container-title">${info}</p>` : ''}\n`
-```
-<!-- prettier-ignore-end -->
+  ```ts
+  ;(info: string): string =>
+    `<div class="custom-container ${type}">${info ? `<p class="custom-container-title">${info}</p>` : ''}\n`
+  ```
 
 - 详情：
 
@@ -115,14 +112,11 @@ export default {
 ### after
 
 - 类型：`(info: string) => string`
-
 - 默认值：
 
-<!-- prettier-ignore-start -->
-```ts
-(): string => '</div>\n'
-```
-<!-- prettier-ignore-end -->
+  ```ts
+  ;(): string => '</div>\n'
+  ```
 
 - 详情：
 
@@ -136,15 +130,15 @@ export default {
 
 - 类型：
 
-```ts
-type MarkdownItContainerRenderFunction = (
-  tokens: Token[],
-  index: number,
-  options: unknown,
-  env: MarkdownEnv,
-  self: Renderer,
-) => string
-```
+  ```ts
+  type MarkdownItContainerRenderFunction = (
+    tokens: Token[],
+    index: number,
+    options: unknown,
+    env: MarkdownEnv,
+    self: Renderer,
+  ) => string
+  ```
 
 - 详情：
 
