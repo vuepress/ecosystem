@@ -6,6 +6,8 @@ icon: panel-top
 
 Common information generator for pages.
 
+These functions are only available via `@vuepress/helper`.
+
 ## getPageExcerpt
 
 Get the excerpt of the page.

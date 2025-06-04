@@ -31,7 +31,9 @@ const _useDarkMode = (): Readonly<Ref<boolean>> => {
 /**
  * Get darkmode status
  *
- * @returns readonly darkmode ref
+ * 获取暗色模式状态
+ *
+ * @returns Readonly darkmode ref / 只读的暗色模式响应式引用
  */
 // eslint-disable-next-line no-return-assign
 export const useDarkMode = (): Readonly<Ref<boolean>> =>

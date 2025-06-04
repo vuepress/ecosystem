@@ -1,3 +1,7 @@
+---
+icon: hammer
+---
+
 # @vuepress/helper
 
 <NpmBadge package="@vuepress/helper" />
