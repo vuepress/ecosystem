@@ -6,7 +6,7 @@ icon: bell
 
 <NpmBadge package="@vuepress/plugin-notice" />
 
-You can add notice popup with this plugin.
+Add notice popups to your site with this plugin.
 
 ## Usage
 
@@ -26,27 +26,27 @@ export default {
 }
 ```
 
-You can set multiple notices for different paths in the site.
+You can set multiple notices for different paths on your site.
 
-Each notice options needs to contain a `path` or `match` option, which is used to match the path. The `path` option is a string, which matches all paths starting with this, and the `match` option is a regexp to test the page route path against.
+Each notice configuration requires either a `path` or `match` option to determine which pages it should appear on. The `path` option is a string that matches all paths starting with it, while the `match` option is a regular expression to test against the page route path.
 
-A notice configuration item includes:
+A notice configuration includes:
 
-- `title`: Notice title, support both text and HTMLString
-- `content`: Notice content, support both text, HTMLString and Markdown
+- `title`: Notice title, supports both text and HTML strings
+- `content`: Notice content, supports text, HTML strings, and Markdown
 
-  - When using `Markdown` as content, the `contentType` should be set to `markdown`.
+  - When using Markdown as content, set `contentType` to `markdown`.
 
-  - You can also use `contentFile` to specify the absolute path of a file, with the file format being `.md` or `.html`, to read the notice content from the file.
+  - You can also use `contentFile` to specify the absolute path of a file (`.md` or `.html` format) to read the notice content from.
 
 - `actions`: Notice actions
 
-  Should be an array of objects containing:
+  An array of objects containing:
 
-  - `text`: action text
-  - `link`: action link (optional).
+  - `text`: Action text
+  - `link`: Action link (optional).
 
-    Pathname will be treated as internal route link and handled by router, and full URL will be treated as external link and being opened in new window.
+    Pathnames are treated as internal route links and handled by the router, while full URLs are treated as external links and opened in a new window.
 
   - `type`: `"default"` or `"primary"` (optional)
 
@@ -108,31 +108,31 @@ export default {
 }
 ```
 
-Also, we provide some advanced option for you to control notice display.
+We also provide advanced options to control notice display behavior.
 
 ::: tip Display Control
 
-By default, the notice will be shown whenever users enter the site, and it will remain closed in the session if users close it.
+By default, notices are shown whenever users enter the site, and remain closed for the session if users close them.
 
-To prevent notice being shown again in next visit after users close it, you can set `showOnce: true` in notice options.
+To prevent notices from appearing again after users close them (even in future visits), set `showOnce: true` in the notice options.
 
-Also, notice remembering is based on notice title and notice content, you can set `noticeKey` option to use a key you want, so that you can edit notice without bothering users who already confirm them.
-
-:::
-
-::: tip Full Screen
-
-If you want to display a fullscreen popup, you can use `fullscreen: true` in notice options. We recommend you to use this together with `confirm: true`.
-
-The notice will display in the center of screen, and the other places will be covered by a blur mask.
+Notice state is remembered based on the notice title and content. You can set a custom `key` option to use your own identifier, allowing you to edit notice content without bothering users who have already acknowledged them.
 
 :::
 
-::: tip Close button
+::: tip Fullscreen Mode
 
-By default, there will be a close button on the right of notice, and users can close it by clicking it. Users can also close fullscreen notice by clicking the mask.
+To display a fullscreen popup, use `fullscreen: true` in the notice options. We recommend combining this with `confirm: true`.
 
-However, if you want users to confirm the notice, you can set `confirm: true`, so that users can only close the notice by hitting action buttons.
+The notice will be displayed in the center of the screen, with other areas covered by a blur mask.
+
+:::
+
+::: tip Close Button
+
+By default, there is a close button on the right side of the notice, allowing users to dismiss it. Users can also close fullscreen notices by clicking the mask.
+
+However, if you want users to acknowledge the notice, set `confirm: true` so users can only close the notice by clicking action buttons.
 
 :::
 
