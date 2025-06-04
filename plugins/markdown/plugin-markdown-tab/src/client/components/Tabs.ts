@@ -1,7 +1,15 @@
 import type { RequiredSlot } from '@vuepress/helper/client'
 import { useStorage } from '@vueuse/core'
 import type { PropType, SlotsType, VNode } from 'vue'
-import { defineComponent, h, onMounted, ref, shallowRef, watch } from 'vue'
+import {
+  defineComponent,
+  h,
+  onMounted,
+  ref,
+  shallowRef,
+  useId,
+  watch,
+} from 'vue'
 
 import '../styles/tabs.css'
 
@@ -42,16 +50,6 @@ export const Tabs = defineComponent({
      *
      * 标签页 id
      */
-    id: {
-      type: String,
-      required: true,
-    },
-
-    /**
-     * Tab id
-     *
-     * 标签页 id
-     */
     tabId: String,
   },
 
@@ -67,6 +65,7 @@ export const Tabs = defineComponent({
   }>,
 
   setup(props, { slots }) {
+    let ids = props.data.map(() => useId())
     // Index of current active item
     const activeIndex = ref(props.active)
 
@@ -119,6 +118,16 @@ export const Tabs = defineComponent({
       return props.active
     }
 
+    // only update ids in dev mode
+    if (__VUEPRESS_DEV__) {
+      watch(
+        () => props.data.length,
+        () => {
+          ids = props.data.map(() => useId())
+        },
+      )
+    }
+
     onMounted(() => {
       activeIndex.value = getInitialIndex()
 
@@ -153,7 +162,7 @@ export const Tabs = defineComponent({
                     },
                     'class': ['vp-tab-nav', { active: isActive }],
                     'role': 'tab',
-                    'aria-controls': `tab-${props.id}-${index}`,
+                    'aria-controls': ids[index],
                     'aria-selected': isActive,
                     'onClick': () => {
                       activeIndex.value = index
@@ -174,7 +183,7 @@ export const Tabs = defineComponent({
                 'div',
                 {
                   'class': ['vp-tab', { active: isActive }],
-                  'id': `tab-${props.id}-${index}`,
+                  'id': ids[index],
                   'role': 'tabpanel',
                   'aria-expanded': isActive,
                 },

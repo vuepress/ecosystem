@@ -22,7 +22,7 @@ export const codeTabs: PluginSimple = (md) => {
         return { id }
       })
 
-      return `<CodeTabs id="${index}" :data='${stringifyProp(tabsData)}'${
+      return `<CodeTabs :data='${stringifyProp(tabsData)}'${
         active === -1 ? '' : ` :active="${active}"`
       }${
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
