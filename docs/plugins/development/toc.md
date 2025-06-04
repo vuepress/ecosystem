@@ -61,7 +61,7 @@ Therefore, this plugin is more useful for theme developers.
 
   Specify the name of the TOC component.
 
-### headerOptions
+### headersOptions
 
 - Type: `Partial<GetHeadersOptions>`
 
@@ -69,9 +69,9 @@ Therefore, this plugin is more useful for theme developers.
 
 - Details:
 
-  Override the default values of the component [headersOptions](#headersoptions) prop.
+  Override the default values of the component [headersOptions](#headersoptions-1) prop.
 
-### propsOptions
+### renderOptions
 
 - Type: `Partial<TocPropsOptions>`
 
@@ -79,7 +79,7 @@ Therefore, this plugin is more useful for theme developers.
 
 - Details:
 
-  Override the default values of the component [propsOptions](#propsoptions-1) prop.
+  Override the default values of the component [renderOptions](#renderoptions-1) prop.
 
 ## Component Props
 
@@ -90,7 +90,7 @@ The TOC component also accepts props for customization.
   <Toc
     :headers="headers"
     :headers-options="headersOptions"
-    :props-options="propsOptions"
+    :render-options="renderOptions"
   />
 </template>
 ```
@@ -122,45 +122,92 @@ interface PageHeader {
 
 - Default:
 
-  See [GetHeadersOptions](../../tools/helper/client.md#getheaders), it can be overridden by [headerOptions](#headeroptions) in plugin options.
+  See [GetHeadersOptions](../../tools/helper/client.md#getheaders), it can be overridden by [headersOptions](#headersoptions) in plugin options.
 
 - Details:
 
   Customize header extracting behavior.
 
-### propsOptions
+### renderOptions
 
-- Type: `Partial<TocPropsOptions>`
+- Type: `TocRenderOptions`
 
 ```ts
-interface TocPropsOptions {
-  containerTag: string
-  containerClass: string
-  listClass: string
-  itemClass: string
-  linkTag: 'a' | 'RouteLink' | 'RouterLink'
-  linkClass: string
-  linkActiveClass: string
-  linkChildrenActiveClass: string
+interface TocRenderOptions {
+  /**
+   * Container tag name
+   *
+   * @default 'nav'
+   */
+  containerTag?: string
+
+  /**
+   * Container class name
+   *
+   * @default 'vuepress-toc'
+   */
+  containerClass?: string
+
+  /**
+   * List class name
+   *
+   * @default 'vuepress-toc-list'
+   */
+  listClass?: string
+
+  /**
+   * Item class name
+   *
+   * @default 'vuepress-toc-item'
+   */
+  itemClass?: string
+
+  /**
+   * Link tag type
+   *
+   * @default 'RouteLink'
+   */
+  linkTag?: 'a' | 'RouteLink' | 'RouterLink'
+
+  /**
+   * Link class name
+   *
+   * @default 'vuepress-toc-link'
+   */
+  linkClass?: string
+
+  /**
+   * Active link class name
+   *
+   * @default 'active'
+   */
+  linkActiveClass?: string
+
+  /**
+   * Active children link class name
+   *
+   * @default 'active'
+   */
+  linkChildrenActiveClass?: string
 }
 ```
 
 - Default:
 
-  Following default values can be overridden by [propsOptions](#propsoptions) in plugin options.
+  Following default values can be overridden by [renderOptions](#renderoptions) in plugin options.
 
-```ts
-const defaultOptions = {
-  containerTag: 'nav',
-  containerClass: 'vuepress-toc',
-  listClass: 'vuepress-toc-list',
-  itemClass: 'vuepress-toc-item',
-  linkTag: 'RouteLink',
-  linkClass: 'vuepress-toc-link',
-  linkActiveClass: 'active',
-  linkChildrenActiveClass: 'active',
-}
-```
+  ```ts
+  const defaultOptions = {
+    containerTag: 'nav',
+    containerClass: 'vuepress-toc',
+    listClass: 'vuepress-toc-list',
+    itemClass: 'vuepress-toc-item',
+    linkTag: 'RouteLink',
+    linkClass: 'vuepress-toc-link',
+    linkActiveClass: 'active',
+    linkChildrenActiveClass: 'active',
+  }
+  ```
 
 - Details:
 
