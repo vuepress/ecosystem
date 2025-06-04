@@ -10,10 +10,9 @@ export const revealJs: PluginSimple = (md) => {
     close: 'slideend',
     render: (tokens, index) => {
       const token = tokens[index]
-      const key = `revealjs-${index}`
       const { content, info } = token
 
-      return `<RevealJs id="${key}" code="${encodeData(content)}" theme="${
+      return `<RevealJs code="${encodeData(content)}" theme="${
         info.trim() || 'auto'
       }"></RevealJs>`
     },
