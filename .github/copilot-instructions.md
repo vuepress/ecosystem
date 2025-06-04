@@ -106,4 +106,4 @@ Each option in plugin/theme documentation must include:
   - English: "Default: `defaultValue`"
   - Chinese: "默认值：`defaultValue`"
 - **Reference**: Optional, links to relevant documentation (always as list)
-- **Details**: Brief description of purpose/usage, prefer paragraph for long contents.
+- **Details**: Brief description of purpose/usage, prefer same line for short contents and paragraph for long contents.
