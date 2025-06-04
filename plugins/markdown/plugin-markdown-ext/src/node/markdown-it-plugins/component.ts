@@ -7,6 +7,14 @@ import type { MarkdownEnv } from 'vuepress/markdown'
 import { logger } from '../utils.js'
 import { stringifyProp } from './utils.js'
 
+/**
+ * Get component render function
+ *
+ * 获取组件渲染函数
+ *
+ * @param name - Component name / 组件名称
+ * @returns Render function / 渲染函数
+ */
 const getComponentRender =
   (name: string): RenderRule =>
   (
@@ -46,6 +54,11 @@ ${content}
     return ''
   }
 
+/**
+ * Component fence support plugin
+ *
+ * 组件代码块支持插件
+ */
 export const component: PluginSimple = (md) => {
   // Handle ```component  blocks
   const { fence } = md.renderer.rules

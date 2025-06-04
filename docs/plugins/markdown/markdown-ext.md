@@ -140,9 +140,8 @@ You can use any mustache syntax as raw text in `v-pre` container:
 ### footnote
 
 - Type: `boolean`
-- Default: `false`
-- Enabled in GFM: Yes
 - Details: Whether to enable footnote format support.
+- Enabled in GFM: Yes
 
 ### tasklist
 
@@ -166,34 +165,30 @@ You can use any mustache syntax as raw text in `v-pre` container:
   }
   ```
 
-- Default: `false`
-- Enabled in GFM: Yes
 - Details:
 
   Whether to enable tasklist format support. You can pass an object to config tasklist.
 
+- Enabled in GFM: Yes
+
 ### breaks
 
 - Type: `boolean`
-- Default: `false`
+- Details: Whether convert `\n` in paragraphs into `<br>`s.
 - Enabled in GFM: Yes
-- Details: Whether convert `\n` in paragraphs into `<br>`s
 
 ### linkify
 
 - Type: `boolean`
-- Default: `false`
+- Details: Whether convert URL-like text into links.
 - Enabled in GFM: Yes
-- Details: Whether convert URL-like text into links
 
 ### component
 
 - Type: `boolean`
-- Default: `false`
-- Details: Whether to enable component fence support
+- Details: Whether to enable component fence support.
 
 ### vPre
 
 - Type: `boolean`
-- Default: `false`
 - Details: Whether to enable v-pre wrapper.
