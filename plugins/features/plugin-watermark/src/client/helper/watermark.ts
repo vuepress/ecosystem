@@ -35,6 +35,8 @@ const watermarkOptions = ref<WatermarkOptions>({})
  * 比如需要在 深色/浅色 模式下控制不同的 水印 透明度、字体颜色等，
  * 或者需要传入如 `onSuccess`、`extraDrawFunc` 等回调函数。
  *
+ * @param userConfig - Watermark options / 水印选项
+ *
  * @example
  * ```ts
  * import { useDarkMode } from '@vuepress/helper/client'
@@ -51,9 +53,6 @@ const watermarkOptions = ref<WatermarkOptions>({})
  *
  * defineWatermarkConfig(watermarkConfig)
  * ```
- *
- * @param userConfig Watermark options
- *
  */
 export const defineWatermarkConfig = (
   userConfig: MaybeRefOrGetter<WatermarkOptions>,
@@ -71,6 +70,15 @@ export const defineWatermarkConfig = (
   }
 }
 
+/**
+ * Get watermark options from multiple sources
+ *
+ * 从多个来源获取水印选项
+ *
+ * @param options - Base watermark options / 基础水印选项
+ *
+ * @returns Computed watermark options / 计算后的水印选项
+ */
 export const useWatermarkOptions = (
   options: MaybeRef<WatermarkOptions>,
 ): ComputedRef<WatermarkOptions> => {
@@ -88,6 +96,13 @@ export const useWatermarkOptions = (
   })
 }
 
+/**
+ * Inject watermark configuration into Vue application
+ *
+ * 向 Vue 应用注入水印配置
+ *
+ * @param app - Vue application instance / Vue 应用实例
+ */
 export const injectWatermarkConfig = (app: App): void => {
   app.provide(watermarkSymbol, watermarkOptions)
 }

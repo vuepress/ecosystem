@@ -6,9 +6,9 @@ icon: droplet
 
 <NpmBadge package="@vuepress/plugin-watermark" />
 
-Integrate [watermark-js-plus](https://github.com/zhensherlock/watermark-js-plus) into VuePress。
+Integrate [watermark-js-plus](https://github.com/zhensherlock/watermark-js-plus) into VuePress.
 
-This plugin can add watermark to the pages, you can choose between add watermark globally or on specific pages. You can also choose between add text watermark or image watermark.
+This plugin can add watermarks to pages. You can choose to add watermarks globally or on specific pages. You can also choose to add text watermarks or image watermarks.
 
 ## Usage
 
@@ -22,7 +22,10 @@ import { watermarkPlugin } from '@vuepress/plugin-watermark'
 export default {
   plugins: [
     watermarkPlugin({
-      // options
+      enabled: true,
+      watermarkOptions: {
+        content: 'My Site',
+      },
     }),
   ],
 }
@@ -34,13 +37,13 @@ export default {
 
 - Type: `boolean | ((page: Page) => boolean)`
 
-- Default: `false`
+- Default: `true`
 
 - Details:
 
-  Specify which pages need to have watermarks added.
+  Specify which pages should have watermarks added.
 
-  Pages with `true` value will have watermarks added.
+  Pages with a `true` value will have watermarks added.
 
 ### watermarkOptions
 
@@ -48,17 +51,17 @@ export default {
 
 - Default: `undefined`
 
-- Details: Please refer to the [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/zh/config/) configuration options.
+- Details: Configuration options. Please refer to [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/config/) for details.
 
 #### watermarkOptions.parent
 
 - Type: `string`
 
-- Default: `body`
+- Default: `'body'`
 
-- Details: Parent element selector for adding watermark.
+- Details: Parent element selector for watermark insertion.
 
-  By default, it is inserted into the body, but you can specify inserting it into a specific element on the page.
+  By default, watermarks are inserted into the body element, but you can specify a different parent element on the page.
 
 ## Frontmatter
 
@@ -68,11 +71,11 @@ export default {
 
 - Details:
 
-  When the type is `boolean`, it indicates whether the watermark is enabled.
+  When the type is `boolean`, it indicates whether watermarks are enabled.
 
-  When the type is `WatermarkOptions`, it represents the current page's watermark configuration.
+  When the type is `WatermarkOptions`, it represents the watermark configuration for the current page.
 
-  You can refer to [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/zh/config/).
+  Refer to [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/config/) for configuration options.
 
 ```md
 ---
@@ -90,24 +93,26 @@ watermark:
 
 - Type: `(config: MaybeRefOrGetter<WatermarkOptions>) => void`
 
-Additional configuration passed to [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/en/config/).
+Additional configuration to pass to [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/config/).
 
 ```ts title=".vuepress/client.ts"
 import { defineWatermarkConfig } from '@vuepress/plugin-watermark/client'
 
 defineWatermarkConfig({
-  // Set up additional watermark configurations here.
+  // Set up additional watermark configurations here
 })
 ```
 
-In most cases, the majority of options should be defined in Node,
-but there are some special situations. For example,
-it may be necessary to control different watermark opacities, font colors,
-etc., in **dark/light mode** , or to pass in callbacks such as `onSuccess`, `extraDrawFunc`, and so on.
+In most cases, options should be defined in the Node.js configuration,
+but there are special situations where client-side configuration is needed. For example,
+you may need to control different watermark opacities or font colors
+in **dark/light mode**, or pass callbacks such as `onSuccess` and `extraDrawFunc`.
 
-```ts
+```ts title=".vuepress/client.ts"
 import { useDarkMode } from '@vuepress/helper/client'
+import { defineWatermarkConfig } from '@vuepress/plugin-watermark/client'
 import { computed } from 'vue'
+import { defineClientConfig } from 'vuepress/client'
 
 export default defineClientConfig({
   setup() {
