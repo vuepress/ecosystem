@@ -49,7 +49,7 @@ export default {
 ````md
 <VPPreview title="可选标题">
   <template #content>
-    <!-- 你的内容在这里  -->
+    <!-- 你的内容在这里 -->
 
     Hello world!
 
@@ -67,7 +67,7 @@ document.querySelector('body').innerText = 'Hello world!'
 
 <VPPreview title="可选标题">
   <template #content>
-    <!-- 你的内容在这里  -->
+    <!-- 你的内容在这里 -->
 
     Hello world!
 
@@ -91,15 +91,15 @@ document.querySelector('body').innerText = 'Hello world!'
   ```ts
   export interface MarkdownPreviewLocaleData {
     /**
-     * 切换代码按钮文本
+     * Toggle code button text
+     *
+     * 切换代码按钮文字
      */
     toggle: string
   }
   ```
 
-- 详细信息:
-
-  `<VPPreview>` 的多语言配置。
+- 详情：`<VPPreview>` 的本地化配置。
 
 ## 样式
 

@@ -3,9 +3,9 @@ import type { MarkdownPreviewPluginLocaleData } from '../shared/index.js'
 
 export interface MarkdownPreviewPluginOptions {
   /**
-   * Localization config
+   * Localization config for preview component
    *
-   * 本地化配置
+   * 预览组件的本地化配置
    */
   locales?: LocaleConfig<MarkdownPreviewPluginLocaleData>
 }

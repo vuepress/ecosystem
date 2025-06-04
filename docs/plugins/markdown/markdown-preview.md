@@ -97,9 +97,7 @@ document.querySelector('body').innerText = 'Hello world!'
   }
   ```
 
-- Details:
-
-  Locales configuration for `<VPPreview>`.
+- Details: Locales configuration for `<VPPreview>`.
 
 ## Styles
 
