@@ -116,6 +116,7 @@ Each option in plugin/theme documentation must include these sections **in this 
 4. **Details** (必须包含)
    - English: `- Details: Brief description`
    - Chinese: `- 详情：简要描述`
+   - Prefer same line for short contents and paragraph for long contents.
 
 **Example Format:**
 

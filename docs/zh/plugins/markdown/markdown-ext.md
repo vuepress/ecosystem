@@ -135,14 +135,13 @@ type: tip
   - 脚注
   - 任务列表
 
-  请注意，一些行为可能和 GitHub Flavored Markdown 不同。
+  请注意：并不是所有行为都与 GitHub Flavored Markdown 完全相同。
 
 ### footnote
 
 - 类型：`boolean`
-- 默认值：`false`
+- 详情：是否启用脚注格式支持。
 - 在 GFM 中启用：是
-- 详情：是否启用页脚格式支持。
 
 ### tasklist
 
@@ -166,34 +165,30 @@ type: tip
   }
   ```
 
-- 默认值：`false`
-- 在 GFM 中启用：是
 - 详情：
 
-  是否启用任务列表格式支持。您可以传递一个对象来配置任务列表。
+  是否启用任务列表格式支持。你可以传递一个对象来配置任务列表。
+
+- 在 GFM 中启用：是
 
 ### breaks
 
 - 类型：`boolean`
-- 默认值：`false`
-- 在 GFM 中启用：是
 - 详情：是否将段落中的 `\n` 转换为 `<br>`。
+- 在 GFM 中启用：是
 
 ### linkify
 
 - 类型：`boolean`
-- 默认值：`false`
-- 在 GFM 中启用：是
 - 详情：是否将类似 URL 的文本转换为链接。
+- 在 GFM 中启用：是
 
 ### component
 
 - 类型：`boolean`
-- 默认值：`false`
 - 详情：是否启用组件代码块支持。
 
 ### vPre
 
 - 类型：`boolean`
-- 默认值：`false`
-- 详情：是否启用 `v-pre` 块支持。
+- 详情：是否启用 v-pre 容器支持。
