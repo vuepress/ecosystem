@@ -6,7 +6,7 @@ icon: between-horizontal-end
 
 <NpmBadge package="@vuepress/plugin-markdown-include" />
 
-向你的 VuePress 添加导入文件功能。
+为你的 VuePress 站点添加 Markdown 导入功能。
 
 ## 使用方法
 
@@ -30,13 +30,13 @@ export default {
 
 使用 `<!-- @include: filename -->` 导入文件。
 
-如果要部分导入文件，你可以指定导入的行数
+如果要部分导入文件，你可以指定导入的行数：
 
 - `<!-- @include: filename{start-end} -->`
 - `<!-- @include: filename{start-} -->`
 - `<!-- @include: filename{-end} -->`
 
-同时你也可以导入文件区域:
+同时你也可以导入文件区域：
 
 - `<!-- @include: filename#region -->`
 
@@ -214,7 +214,7 @@ class MyClass:
     #region snippet
     def sayHello(self):
         print("Hello " + self.msg + "!")
-    #region snippet
+    #endregion snippet
 
     def sayBye(self):
         print("Bye " + self.msg + "!")
@@ -340,7 +340,7 @@ int main() {
 ### deep
 
 - 类型：`boolean`
-- 详情：是否启用图片 Figure 支持。
+- 详情：是否深度导入包含的 Markdown 文件。
 
 ### useComment
 
