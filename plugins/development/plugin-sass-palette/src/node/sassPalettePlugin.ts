@@ -18,11 +18,11 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
 /**
  * Sass palette plugin
  *
- * @description Plugin to provide palette and config file support for themes, allowing users to control theme colors and other style variables.
- *
  * Sass 调色板插件
  *
- * @description 为主题提供调色板和配置文件支持的插件，允许用户控制主题颜色和其他样式变量。
+ * @description Plugin to provide palette and config file support for themes, allowing users to control theme colors and other style variables.
+ *
+ * 为主题提供调色板和配置文件支持的插件，允许用户控制主题颜色和其他样式变量。
  *
  * @example
  * ```ts

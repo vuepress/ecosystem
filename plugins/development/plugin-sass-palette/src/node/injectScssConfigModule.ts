@@ -23,15 +23,15 @@ type SassLoaderContext =
 /**
  * Use "additionalData" to make config and palette modules available in SCSS
  *
- * @description Injects SCSS config and palette modules into bundler configuration using additionalData option.
- *
  * 使用 "additionalData" 使配置和调色板模块在 SCSS 中可用
  *
- * @description 使用 additionalData 选项将 SCSS 配置和调色板模块注入到打包器配置中。
+ * @description Injects SCSS config and palette modules into bundler configuration using additionalData option.
  *
- * @param config - VuePress bundler configuration
- * @param app - VuePress app instance
- * @param id - Module identifier for the palette
+ * 使用 additionalData 选项将 SCSS 配置和调色板模块注入到打包器配置中。
+ *
+ * @param config - VuePress bundler configuration / VuePress 打包器配置
+ * @param app - VuePress app instance / VuePress 应用实例
+ * @param id - Module identifier for the palette / 调色板的模块标识符
  */
 export const injectScssConfigModule = (
   config: unknown,
