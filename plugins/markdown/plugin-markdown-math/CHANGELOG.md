@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.108](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.107...v2.0.0-rc.108) (2025-06-04)
+
+### Bug Fixes
+
+- **plugin-markdown-math:** fix issues with unexpected mdit.render ([9eee3a1](https://github.com/vuepress/ecosystem/commit/9eee3a1abde636ed0bd3edf0e90cbf4efb730d66))
+
 # [2.0.0-rc.107](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.106...v2.0.0-rc.107) (2025-06-04)
 
 ### Performance Improvements
