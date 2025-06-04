@@ -1,19 +1,24 @@
+/**
+ * Plugin options
+ *
+ * 插件选项
+ */
 export interface AppendDatePluginOptions {
   /**
-   * Frontmatter key to use when appending date.
+   * Frontmatter key to use when appending date
    *
-   * 追加时间时使用的 frontmatter 键名。
+   * 追加时间时使用的 frontmatter 键名
    *
-   * @default 'date'
+   * @default "date"
    */
   key?: string
 
   /**
-   * Format of the date value when appending date.
+   * Format of the date value when appending date
    *
-   * 追加时间时使用的日期格式。
+   * 追加时间时使用的日期格式
    *
-   * @default 'date'
+   * @default "date"
    */
   format?: 'date' | 'full' | 'time'
 }

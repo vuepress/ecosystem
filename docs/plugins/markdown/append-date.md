@@ -6,7 +6,7 @@ icon: calendar
 
 <NpmBadge package="@vuepress/plugin-append-date" />
 
-This plugin will append writing date to frontmatter with [@vuepress/plugin-git](../development/git.md).
+This plugin will append writing date to frontmatter based on [@vuepress/plugin-git](../development/git.md).
 
 ## Usage
 
@@ -28,9 +28,7 @@ export default {
 
 - Type: `string`
 - Default: `"date"`
-- Details:
-
-  Frontmatter key to use when appending date.
+- Details: Frontmatter key to use when appending date
 
 ### format
 
@@ -38,4 +36,8 @@ export default {
 - Default: `"date"`
 - Details:
 
-  Format of the date value when appending date.
+  Format of the date value when appending date:
+
+  - `"date"`: YYYY-MM-DD format
+  - `"time"`: HH:MM:SS format
+  - `"full"`: YYYY-MM-DD HH:MM:SS format

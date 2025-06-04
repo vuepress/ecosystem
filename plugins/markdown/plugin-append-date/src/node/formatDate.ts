@@ -13,11 +13,32 @@ const getMinutes = (date: Date): string => padZero(date.getMinutes())
 
 const getSeconds = (date: Date): string => padZero(date.getSeconds())
 
+/**
+ * Get date string in YYYY-MM-DD format
+ *
+ * 获取 YYYY-MM-DD 格式的日期字符串
+ *
+ * @param date - Date object / 日期对象
+ */
 export const getDateString = (date: Date): string =>
   `${getFullYear(date)}-${getMonth(date)}-${getDate(date)}`
 
+/**
+ * Get time string in HH:mm:ss format
+ *
+ * 获取 HH:mm:ss 格式的时间字符串
+ *
+ * @param date - Date object / 日期对象
+ */
 export const getTimeString = (date: Date): string =>
   `${getHours(date)}:${getMinutes(date)}:${getSeconds(date)}`
 
+/**
+ * Get full date string in YYYY-MM-DD HH:mm:ss format
+ *
+ * 获取 YYYY-MM-DD HH:mm:ss 格式的完整日期时间字符串
+ *
+ * @param date - Date object / 日期对象
+ */
 export const getFullDateString = (date: Date): string =>
   `${getDateString(date)} ${getTimeString(date)}`
