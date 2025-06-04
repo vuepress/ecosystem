@@ -1,1 +1,1 @@
-export * from './twoslash.js'
+export * from './enhanceTwoslash.js'
