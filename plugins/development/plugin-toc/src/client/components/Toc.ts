@@ -6,7 +6,7 @@ import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import { RouterLink } from 'vue-router'
 import type { PageHeader } from 'vuepress/client'
 import { RouteLink, useRoute } from 'vuepress/client'
-import type { TocPropsOptions } from '../../shared/index.js'
+import type { TocRenderOptions } from '../../shared/index.js'
 
 /**
  * Headers for TOC component
@@ -36,16 +36,16 @@ export interface TocProps {
   headersOptions: GetHeadersOptions
 
   /**
-   * Props options
+   * Render options
    *
-   * 属性选项
+   * 渲染选项
    */
-  propsOptions: TocPropsOptions
+  render: TocRenderOptions
 }
 
 const renderLink = (
   header: PageHeader,
-  options: TocPropsOptions,
+  options: Required<TocRenderOptions>,
   route: RouteLocationNormalizedLoaded,
 ): VNode => {
   const hash = `#${header.slug}`
@@ -101,7 +101,7 @@ const renderLink = (
 
 const renderHeaders = (
   headers: PageHeader[],
-  options: TocPropsOptions,
+  options: Required<TocRenderOptions>,
   route: RouteLocationNormalizedLoaded,
 ): VNode[] => {
   if (headers.length === 0) {
@@ -158,16 +158,16 @@ export const Toc = defineComponent({
      *
      * 目录属性选项
      */
-    propsOptions: Object as PropType<Partial<TocPropsOptions>>,
+    renderOptions: Object as PropType<TocRenderOptions>,
   },
 
   setup(props) {
-    const { headers, headersOptions, propsOptions } = toRefs(props)
+    const { headers, headersOptions, renderOptions } = toRefs(props)
 
     const pageHeaders = useHeaders(headersOptions)
     const route = useRoute()
 
-    const options = computed<TocPropsOptions>(() => ({
+    const options = computed<Required<TocRenderOptions>>(() => ({
       containerTag: 'nav',
       containerClass: 'vuepress-toc',
       listClass: 'vuepress-toc-list',
@@ -176,7 +176,7 @@ export const Toc = defineComponent({
       linkClass: 'vuepress-toc-link',
       linkActiveClass: 'active',
       linkChildrenActiveClass: 'active',
-      ...propsOptions.value,
+      ...renderOptions.value,
     }))
 
     return () => {

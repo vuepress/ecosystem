@@ -19,10 +19,10 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  *   plugins: [
  *     tocPlugin({
  *       componentName: 'Toc',
- *       headerOptions: {
+ *       headersOptions: {
  *         level: [2, 4]
  *       },
- *       propsOptions: {
+ *       renderOptions: {
  *         containerClass: 'my-toc',
  *         linkClass: 'my-toc-link'
  *       }
@@ -33,10 +33,14 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  */
 export const tocPlugin = ({
   componentName = 'Toc',
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   headerOptions = {},
   // eslint-disable-next-line @typescript-eslint/no-deprecated
-  defaultPropsOptions = {},
-  propsOptions = defaultPropsOptions,
+  defaultPropsOptions,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  propsOptions = {},
+  headersOptions = headerOptions,
+  renderOptions = defaultPropsOptions ?? propsOptions,
 }: TocPluginOptions = {}): Plugin => ({
   name: '@vuepress/plugin-toc',
 
@@ -44,7 +48,7 @@ export const tocPlugin = ({
 
   define: {
     __TOC_COMPONENT_NAME__: componentName,
-    __TOC_HEADERS_OPTIONS__: headerOptions,
-    __TOC_PROPS_OPTIONS__: propsOptions,
+    __TOC_HEADERS_OPTIONS__: headersOptions,
+    __TOC_RENDER_OPTIONS__: renderOptions,
   },
 })

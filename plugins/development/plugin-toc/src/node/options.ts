@@ -1,5 +1,5 @@
 import type { GetHeadersOptions } from '@vuepress/helper'
-import type { TocPropsOptions } from '../shared/index.js'
+import type { TocRenderOptions } from '../shared/index.js'
 
 /**
  * Options for @vuepress/plugin-toc
@@ -17,26 +17,34 @@ export interface TocPluginOptions {
   componentName?: string
 
   /**
-   * Default header options
+   * Default headers options
    *
    * 默认的标题选项
    *
    * @default {}
    */
-  headerOptions?: GetHeadersOptions
+  headersOptions?: GetHeadersOptions
 
   /**
-   * Default props options
+   * Default render options
    *
-   * 默认的属性选项
+   * 默认的渲染选项
    *
    * @default {}
    */
-  propsOptions?: Partial<TocPropsOptions>
+  renderOptions?: TocRenderOptions
 
   // FIXME: Remove in stable
   /**
-   * @deprecated use `propsOptions` instead
+   * @deprecated use `headersOptions` instead
    */
-  defaultPropsOptions?: Partial<TocPropsOptions>
+  headerOptions?: GetHeadersOptions
+  /**
+   * @deprecated use `renderOptions` instead
+   */
+  defaultPropsOptions?: TocRenderOptions
+  /**
+   * @deprecated use `renderOptions` instead
+   */
+  propsOptions?: TocRenderOptions
 }

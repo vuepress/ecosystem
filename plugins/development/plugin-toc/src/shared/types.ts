@@ -1,9 +1,9 @@
 /**
- * TOC component props options
+ * TOC component render options
  *
- * 目录组件属性选项
+ * 目录组件渲染选项
  */
-export interface TocPropsOptions {
+export interface TocRenderOptions {
   /**
    * Container tag name
    *
@@ -11,7 +11,7 @@ export interface TocPropsOptions {
    *
    * @default 'nav'
    */
-  containerTag: string
+  containerTag?: string
 
   /**
    * Container class name
@@ -20,7 +20,7 @@ export interface TocPropsOptions {
    *
    * @default 'vuepress-toc'
    */
-  containerClass: string
+  containerClass?: string
 
   /**
    * List class name
@@ -29,7 +29,7 @@ export interface TocPropsOptions {
    *
    * @default 'vuepress-toc-list'
    */
-  listClass: string
+  listClass?: string
 
   /**
    * Item class name
@@ -38,7 +38,7 @@ export interface TocPropsOptions {
    *
    * @default 'vuepress-toc-item'
    */
-  itemClass: string
+  itemClass?: string
 
   /**
    * Link tag type
@@ -47,7 +47,7 @@ export interface TocPropsOptions {
    *
    * @default 'RouteLink'
    */
-  linkTag: 'a' | 'RouteLink' | 'RouterLink'
+  linkTag?: 'a' | 'RouteLink' | 'RouterLink'
 
   /**
    * Link class name
@@ -56,7 +56,7 @@ export interface TocPropsOptions {
    *
    * @default 'vuepress-toc-link'
    */
-  linkClass: string
+  linkClass?: string
 
   /**
    * Active link class name
@@ -65,7 +65,7 @@ export interface TocPropsOptions {
    *
    * @default 'active'
    */
-  linkActiveClass: string
+  linkActiveClass?: string
 
   /**
    * Active children link class name
@@ -74,5 +74,5 @@ export interface TocPropsOptions {
    *
    * @default 'active'
    */
-  linkChildrenActiveClass: string
+  linkChildrenActiveClass?: string
 }
