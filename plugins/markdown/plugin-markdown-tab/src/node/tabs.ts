@@ -23,7 +23,7 @@ export const tabs: PluginSimple = (md) => {
       })
 
       return `\
-<Tabs id="${index}" :data='${stringifyProp(tabsData)}'${
+<Tabs :data='${stringifyProp(tabsData)}'${
         active === -1 ? '' : ` :active="${active}"`
       }${
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access

@@ -1,7 +1,15 @@
 import type { RequiredSlot } from '@vuepress/helper/client'
 import { useStorage } from '@vueuse/core'
 import type { PropType, SlotsType, VNode } from 'vue'
-import { defineComponent, h, onMounted, ref, shallowRef, watch } from 'vue'
+import {
+  defineComponent,
+  h,
+  onMounted,
+  ref,
+  shallowRef,
+  useId,
+  watch,
+} from 'vue'
 
 import type { TabProps } from './Tabs.js'
 
@@ -36,16 +44,6 @@ export const CodeTabs = defineComponent({
     },
 
     /**
-     * Code tab id
-     *
-     * 代码标签页 id
-     */
-    id: {
-      type: String,
-      required: true,
-    },
-
-    /**
      * Tab id
      *
      * 标签页 id
@@ -65,6 +63,8 @@ export const CodeTabs = defineComponent({
   }>,
 
   setup(props, { slots }) {
+    let ids = props.data.map(() => useId())
+
     // Index of current active item
     const activeIndex = ref(props.active)
 
@@ -118,6 +118,16 @@ export const CodeTabs = defineComponent({
       return props.active
     }
 
+    // only update ids in dev mode
+    if (__VUEPRESS_DEV__) {
+      watch(
+        () => props.data.length,
+        () => {
+          ids = props.data.map(() => useId())
+        },
+      )
+    }
+
     onMounted(() => {
       activeIndex.value = getInitialIndex()
 
@@ -152,7 +162,7 @@ export const CodeTabs = defineComponent({
                     },
                     'class': ['vp-code-tab-nav', { active: isActive }],
                     'role': 'tab',
-                    'aria-controls': `codetab-${props.id}-${index}`,
+                    'aria-controls': ids[index],
                     'aria-selected': isActive,
                     'onClick': () => {
                       activeIndex.value = index
@@ -173,7 +183,7 @@ export const CodeTabs = defineComponent({
                 'div',
                 {
                   'class': ['vp-code-tab', { active: isActive }],
-                  'id': `codetab-${props.id}-${index}`,
+                  'id': ids[index],
                   'role': 'tabpanel',
                   'aria-expanded': isActive,
                 },
