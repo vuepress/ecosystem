@@ -37,7 +37,7 @@ export default {
 
 - Type: `boolean | ((page: Page) => boolean)`
 
-- Default: `false`
+- Default: `true`
 
 - Details:
 

@@ -37,7 +37,7 @@ export default {
 
 - 类型：`boolean | ((page: Page) => boolean)`
 
-- 默认值：`false`
+- 默认值：`true`
 
 - 详情：
 
