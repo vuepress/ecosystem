@@ -16,6 +16,27 @@ import {
 } from './prepare/index.js'
 import { PLUGIN_NAME } from './utils.js'
 
+/**
+ * Math plugin for VuePress
+ *
+ * VuePress 数学插件
+ *
+ * @param [options={}] - Plugin options / 插件选项
+ * @param options.type - Math renderer type / 数学渲染器类型
+ *
+ * @example
+ * ```ts
+ * import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
+ *
+ * export default {
+ *   plugins: [
+ *     markdownMathPlugin({
+ *       type: 'katex'
+ *     })
+ *   ]
+ * }
+ * ```
+ */
 export const markdownMathPlugin = ({
   type,
   ...options

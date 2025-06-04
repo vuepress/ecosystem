@@ -103,7 +103,7 @@ Mathjax:
   - `'katex'`: use [KaTeX](https://katex.org/)
   - `'mathjax'`: use [MathJax](https://www.mathjax.org/)
 
-  When this options is not specified, the plugin will try to detect which package is installed. If both are installed, it will use "mathjax".
+  When this option is not specified, the plugin will try to detect which package is installed. If both are installed, it will use "mathjax".
 
 ### Using KaTeX
 
@@ -111,14 +111,37 @@ When using KaTeX, any other options will be passed to KaTeX as `KatexOptions`. S
 
 Besides, 2 special options are supported:
 
-- `copy`: enable copy extension or not.
-- `mhchem`: enable mhchem extension or not.
+#### copy
+
+- Type: `boolean`
+- Details: Whether to enable copy extension.
+
+#### mhchem
+
+- Type: `boolean`
+- Details: Whether to enable mhchem extension.
 
 ### Using MathJax
 
 When using MathJax, you can set:
 
-- `tex`: options which is passed to TeX input parser
-- `output`: either `'svg'` (default) or `'chtml'` to change output format between SVG and HTML.
-- `chtml`: options which is passed to Common HTML output parser
-- `svg`: options which is passed to SVG output parser
+#### tex
+
+- Type: `object`
+- Details: Options passed to TeX input parser.
+
+#### output
+
+- Type: `'svg' | 'chtml'`
+- Default: `'svg'`
+- Details: Output format, either SVG or Common HTML.
+
+#### chtml
+
+- Type: `object`
+- Details: Options passed to Common HTML output parser.
+
+#### svg
+
+- Type: `object`
+- Details: Options passed to SVG output parser.
