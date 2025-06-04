@@ -6,7 +6,7 @@ icon: list-tree
 
 <NpmBadge package="@vuepress/plugin-catalog" />
 
-This plugin automatically generates cat- Details: Catalog page paths to be excluded during generation.
+This plugin automatically generates catalog pages and provides catalog components.
 
 ## Usage
 
