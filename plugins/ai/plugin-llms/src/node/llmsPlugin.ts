@@ -1,4 +1,3 @@
-// import { getRootLang } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import { removeEndingSlash } from 'vuepress/shared'
 import { DEFAULT_LLMSTXT_TEMPLATE, PLUGIN_NAME } from './constants.js'

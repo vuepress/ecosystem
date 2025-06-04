@@ -8,9 +8,11 @@ import { getBundlerName } from '../getBundlerName.js'
 /**
  * Chain webpack
  *
- * @param bundlerOptions VuePress Bundler config
- * @param app VuePress Node App
- * @param chain chain function
+ * 链式配置 webpack
+ *
+ * @param bundlerOptions - VuePress Bundler config / VuePress 打包器配置
+ * @param app - VuePress Node App / VuePress Node 应用
+ * @param chain - Chain function / 链式配置函数
  */
 export const chainWebpack = (
   bundlerOptions: unknown,

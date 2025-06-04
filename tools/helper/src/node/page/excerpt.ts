@@ -148,9 +148,12 @@ const isH1Tag = (node: AnyNode): boolean =>
 /**
  * Get raw content of excerpt from page content
  *
- * @param content raw content of page
- * @param separator excerpt separator
- * @returns raw content of excerpt
+ * 从页面内容中获取摘要的原始内容
+ *
+ * @param content - Raw content of page / 页面的原始内容
+ * @param separator - Excerpt separator / 摘要分隔符
+ *
+ * @returns Raw content of excerpt / 摘要的原始内容
  */
 export const getPageExcerptContent = (
   content: string,
@@ -220,10 +223,13 @@ export interface PageExcerptOptions {
 /**
  * Get excerpt content of a page
  *
- * @param app VuePress App
- * @param page VuePress Page
- * @param excerptOptions excerpt behavior options
- * @returns page excerpt
+ * 获取页面的摘要内容
+ *
+ * @param app - VuePress App / VuePress 应用
+ * @param page - VuePress Page / VuePress 页面
+ * @param excerptOptions - Excerpt behavior options / 摘要行为选项
+ *
+ * @returns Page excerpt / 页面摘要
  */
 export const getPageExcerpt = (
   { markdown, options: { base } }: App,

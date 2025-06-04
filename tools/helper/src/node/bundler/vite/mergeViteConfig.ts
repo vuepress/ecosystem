@@ -205,6 +205,17 @@ const mergeConfigRecursively = (
   return merged
 }
 
+/**
+ * Merge Vite configurations
+ *
+ * 合并 Vite 配置
+ *
+ * @param defaults - Default configuration / 默认配置
+ * @param overrides - Override configuration / 覆盖配置
+ * @param isRoot - Whether it's root level merge / 是否为根级别合并
+ *
+ * @returns Merged configuration / 合并后的配置
+ */
 export const mergeViteConfig = (
   defaults: Record<string, any>,
   overrides: Record<string, any>,
