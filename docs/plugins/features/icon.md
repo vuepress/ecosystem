@@ -44,9 +44,9 @@ In markdown, you can use `::icon decorators... =size /color key=value complex-ke
 - The rest part will be treated as the icon name.
 
 ```md
-::icon =16 /red:: <!-- <VPIcon class="icon" color="red" size="16px" -->
+::icon =16 /red:: <!-- <VPIcon icon="icon" color="red" size="16px" /> -->
 
-::icon rotate vertical-align=middle:: <!-- <VPIcon icon="icon rotate" vertical-align="middle" -->
+::icon rotate vertical-align=middle:: <!-- <VPIcon icon="icon rotate" vertical-align="middle" /> -->
 ```
 
 ::: preview
@@ -121,15 +121,15 @@ You can add other classes that fontawesome supports after the icon name and spli
 
 See <https://docs.fontawesome.com/web/style/styling> for all available classes.
 
-::: tip Fontaweome Kits and Pro features
+::: tip FontAwesome Kits and Pro features
 
-By default, we use jsdelivr CDN to load V6 version of fontawesome free icons. This should be enough for most open source projects.
+By default, we use jsdelivr CDN to load V6 version of FontAwesome free icons. This should be enough for most open source projects.
 
 Besides, you can purchase at [fontawesome.com](https://fontawesome.com) to use kits.
 
-Fontawesome kits with pro features support pro icons, more icon styles and uploading your own icons.
+FontAwesome kits with pro features support pro icons, more icon styles and uploading your own icons.
 
-For details, please follow [fontawesome document](https://docs.fontawesome.com/).
+For details, please follow [FontAwesome document](https://docs.fontawesome.com/).
 
 - [Full Icon List](https://fontawesome.com/search)
 
@@ -217,11 +217,13 @@ Images links are supported with any icon types (relative links are NOT supported
   export type IconAsset = (BuiltInIcon | IconLink)[] | BuiltInIcon | IconLink
   ```
 
+- Default: `"iconify"`
+
 - Details:
 
   Icon assets to be used.
 
-  The following keywords are supported and you may use other CDN links or even your own.:
+  The following keywords are supported and you may use other CDN links or even your own:
 
   - `iconify`: Iconify
   - `fontawesome`: Font Awesome free icons only
@@ -235,7 +237,7 @@ Images links are supported with any icon types (relative links are NOT supported
   export type IconType = 'fontawesome' | 'iconfont' | 'iconify' | 'unknown'
   ```
 
-- Default: Inferred from the `assets`
+- Default: Inferred from `assets`
 
 - Details:
 
@@ -250,30 +252,27 @@ Images links are supported with any icon types (relative links are NOT supported
 ### prefix
 
 - Type: `string`
-- Default: Infer from the `assets` and `type`
+
+- Default: Inferred from `assets` and `type`
+
 - Details:
 
   Prefix for the icon component. By default, the plugin will use:
 
   - `iconfont icon-` for iconfont type
-  - `fas fa-` for fontawesome type
   - empty string for all other types
 
 ### component
 
-- Type: `string | null`
-- Default: `VPIcon`
-- Details:
-
-  Name of the icon component. If set to `null`, the plugin will not register the icon component globally.
+- Type: `string`
+- Default: `"VPIcon"`
+- Details: Name of the icon component
 
 ### markdown
 
 - Type: `boolean`
 - Default: `true`
-- Details:
-
-  Whether to enable icon syntax (`::icon::`) in markdown.
+- Details: Whether to enable icon syntax (`::icon::`) in markdown
 
 ## Component Props
 
@@ -286,25 +285,25 @@ Images links are supported with any icon types (relative links are NOT supported
 ### color
 
 - Type: `string`
-- Default: `'inherit'`
+- Default: `"inherit"`
 - Details: Color used for icon.
 
 ### size
 
 - Type: `number | string`
-- Default: `Current font size`
+- Default: Current font size
 - Details: Icon size.
 
 ### verticalAlign
 
 - Type: `string`
-- Default: `-0.125em`
+- Default: `"-0.125em"`
 - Details: Vertical alignment of the icon.
 
 ### sizing
 
-- Type: `'width' | 'height' | 'both'`
-- Default: `'height'`
+- Type: `"width" | "height" | "both"`
+- Default: `"height"`
 - Details: Icon size adjustment method.
 
   - `width`: Set width only
