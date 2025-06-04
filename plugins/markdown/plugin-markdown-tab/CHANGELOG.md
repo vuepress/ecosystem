@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.107](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.106...v2.0.0-rc.107) (2025-06-04)
+
+### Features
+
+- **plugin-markdown-tab:** use `useId()` ([#521](https://github.com/vuepress/ecosystem/issues/521)) ([3fdaf2b](https://github.com/vuepress/ecosystem/commit/3fdaf2bab54c68ba77cb4f062a0b865646fee4fa))
+
 # [2.0.0-rc.106](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.105...v2.0.0-rc.106) (2025-05-26)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-tab

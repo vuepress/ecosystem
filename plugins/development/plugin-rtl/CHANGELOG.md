@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.107](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.106...v2.0.0-rc.107) (2025-06-04)
+
+### Bug Fixes
+
+- **plugin-rtl:** bug fixes and docs improvement ([#495](https://github.com/vuepress/ecosystem/issues/495)) ([2b773b2](https://github.com/vuepress/ecosystem/commit/2b773b213337ec3ac694af71ced62ec959533471))
+
 # [2.0.0-rc.106](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.105...v2.0.0-rc.106) (2025-05-26)
 
 **Note:** Version bump only for package @vuepress/plugin-rtl
