@@ -11,6 +11,27 @@ const PLUGIN_NAME = '@vuepress/plugin-markdown-hint'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
+/**
+ * Markdown hint plugin
+ *
+ * Markdown 提示插件
+ *
+ * @param options - plugin options / 插件选项
+ *
+ * @example
+ * ```ts
+ * import { markdownHintPlugin } from '@vuepress/plugin-markdown-hint'
+ *
+ * export default {
+ *   plugins: [
+ *     markdownHintPlugin({
+ *       hint: true,
+ *       alert: true,
+ *     }),
+ *   ],
+ * }
+ * ```
+ */
 export const markdownHintPlugin = (
   options: MarkdownHintPluginOptions,
 ): Plugin => {

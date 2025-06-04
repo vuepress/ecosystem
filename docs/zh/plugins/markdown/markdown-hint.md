@@ -33,13 +33,13 @@ export default {
 
 ## 指南
 
-默认情况下，我们支持 `important`、`info`、`note`、`tip`、`warning`、`danger`、`details` 容器与 markdown 容器：
+默认情况下，我们支持 `important`、`info`、`note`、`tip`、`warning`、`caution`、`details` 容器与 markdown 容器：
 
 :::: preview
 
 ::: tip
 
-一个带有 `code`、[链接](#demo) 的自定义提示容器。
+一个带有 `code` 和[链接](https://example.com)的自定义提示容器。
 
 ```js
 const a = 1
@@ -94,7 +94,8 @@ const a = 1
 ### hint
 
 - 类型：`boolean`
-- 详情：是否启用提示容器，默认启用。
+- 默认值：`true`
+- 详情：是否启用提示容器，包括 important、info、note、tip、warning、caution、details。
 
 ### alert
 
@@ -154,4 +155,4 @@ const a = 1
   }
   ```
 
-  - 详情：本地化提示容器的默认标题。
+- 详情：提示容器标题的本地化配置。
