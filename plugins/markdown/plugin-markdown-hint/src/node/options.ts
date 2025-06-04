@@ -3,49 +3,49 @@ import type { LocaleConfig } from 'vuepress/shared'
 
 export interface MarkdownHintPluginLocaleData {
   /**
-   * Default Title text for important block
+   * Default title text for important block
    *
    * 重要块的默认标题
    */
   important: string
 
   /**
-   * Default Title text for note block
+   * Default title text for note block
    *
    * 注释块的默认标题
    */
   note: string
 
   /**
-   * Default Title text for tip block
+   * Default title text for tip block
    *
    * 提示块的默认标题
    */
   tip: string
 
   /**
-   * Default Title text for warning block
+   * Default title text for warning block
    *
    * 注意块的默认标题
    */
   warning: string
 
   /**
-   * Default Title text for danger block
+   * Default title text for caution block
    *
    * 警告块的默认标题
    */
   caution: string
 
   /**
-   * Default Title text for info block
+   * Default title text for info block
    *
    * 信息块的默认标题
    */
   info: string
 
   /**
-   * Default Title text for details block
+   * Default title text for details block
    *
    * 详情块的默认标题
    */
@@ -56,38 +56,24 @@ export type MarkdownHintPluginLocaleConfig =
   ExactLocaleConfig<MarkdownHintPluginLocaleData>
 
 /**
- * markdown hint plugin configuration
+ * Markdown hint plugin configuration
+ *
+ * Markdown 提示插件配置
  */
 export interface MarkdownHintPluginOptions {
   /**
-   * Wether enable gfm alerts
+   * Whether to enable GFM alerts
    *
-   * 是否启用 gfm 警告
+   * 是否启用 GFM 警告
    *
    * @default false
    */
   alert?: boolean
 
   /**
-   * Whether to enable hint container including
+   * Whether to enable hint containers including important, info, note, tip, warning, caution, details
    *
-   * - important
-   * - info
-   * - note
-   * - tip
-   * - warning
-   * - caution
-   * - details
-   *
-   * 是否启用提示容器
-   *
-   * - important
-   * - info
-   * - note
-   * - tip
-   * - warning
-   * - caution
-   * - details
+   * 是否启用提示容器，包括 important、info、note、tip、warning、caution、details
    *
    * @default true
    */
@@ -95,6 +81,8 @@ export interface MarkdownHintPluginOptions {
 
   /**
    * Whether to inject default styles
+   *
+   * 是否注入默认样式
    *
    * @default true
    */
