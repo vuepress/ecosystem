@@ -4,6 +4,13 @@ import type { MediumZoomPluginOptions } from './options'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
+/**
+ * VuePress plugin - medium-zoom
+ *
+ * VuePress 插件 - medium-zoom
+ *
+ * @param options - Plugin options / 插件配置项
+ */
 export const mediumZoomPlugin = ({
   selector = '[vp-content] > img, [vp-content] :not(a) > img',
   zoomOptions = {},
