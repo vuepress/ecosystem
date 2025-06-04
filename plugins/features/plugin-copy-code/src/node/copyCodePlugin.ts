@@ -12,6 +12,24 @@ import type { CopyCodePluginOptions } from './options.js'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
+/**
+ * Copy code plugin for VuePress
+ *
+ * VuePress 复制代码插件
+ *
+ * @example
+ * ```ts
+ * import { copyCodePlugin } from '@vuepress/plugin-copy-code'
+ *
+ * export default {
+ *   plugins: [
+ *     copyCodePlugin({
+ *       // options
+ *     }),
+ *   ],
+ * }
+ * ```
+ */
 export const copyCodePlugin =
   (options: CopyCodePluginOptions = {}): PluginFunction =>
   (app) => {
