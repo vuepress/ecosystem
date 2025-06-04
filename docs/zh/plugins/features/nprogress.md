@@ -6,7 +6,7 @@ icon: pajamas:progress
 
 <NpmBadge package="@vuepress/plugin-nprogress" />
 
-将 [nprogress](https://github.com/rstacruz/nprogress) 集成到 VuePress 中，在切换到另一个页面时会展示进度条。
+将 [nprogress](https://github.com/rstacruz/nprogress) 集成到 VuePress 中，在切换到另一个页面时提供进度条。
 
 该插件已经集成到默认主题中。
 
