@@ -66,104 +66,6 @@ locale.value // '标题'
 
 ## 工具
 
-### getHeaders
-
-获取当前页面指定的 标题列表。
-
-```ts
-export const getHeaders: (options: GetHeadersOptions) => HeaderItem[]
-```
-
-**参数:**
-
-```ts
-export interface GetHeadersOptions {
-  /**
-   * 页面标题选择器
-   *
-   * @default '[vp-content] h1, [vp-content] h2, [vp-content] h3, [vp-content] h4, [vp-content] h5, [vp-content] h6'
-   */
-  selector?: string
-  /**
-   * 忽略标题内的特定元素选择器
-   *
-   * 它将作为 `document.querySelectorAll` 的参数。
-   * 因此，你应该传入一个 `CSS 选择器` 字符串
-   *
-   * @default []
-   */
-  ignore?: string[]
-  /**
-   * 指定获取的标题层级
-   *
-   * `1` 至 `6` 表示 `<h1>` 至 `<h6>`
-   *
-   * - `false`: 不返回标题列表
-   * - `number`: 只获取指定的单个层级的标题。
-   * - `[number, number]: 标题层级元组，第一个数字应小于第二个数字。例如，`[2, 4]` 表示显示从 `<h2>` 到 `<h4>` 的所有标题。
-   * - `deep`: 等同于 `[2, 6]`, 表示获取从 `<h2>` 到 `<h6>` 的所有标题。
-   *
-   * @default 2
-   */
-  levels?: HeaderLevels
-}
-```
-
-**返回结果:**
-
-```ts
-interface PageHeader {
-  /**
-   * 当前标题的层级
-   *
-   * `1` 至 `6` 表示 `<h1>` 至 `<h6>`
-   */
-  level: number
-  /**
-   * 当前标题的内容
-   */
-  title: string
-  /**
-   * 标题的 标识
-   *
-   * 这通常是标题元素的 `id` 属性值
-   */
-  slug: string
-  /**
-   * 标题的链接
-   *
-   * 通常使用`#${slug}`作为锚点哈希
-   */
-  link: string
-  /**
-   * 标题的子标题列表
-   */
-  children: Header[]
-}
-
-export type HeaderLevels = number | 'deep' | false | [number, number]
-
-export type HeaderItem = Omit<PageHeader, 'children'> & {
-  element: HTMLHeadingElement
-  children?: HeaderItem[]
-}
-```
-
-::: details Examples
-
-```ts
-onMounted(() => {
-  const headers = getHeaders({
-    selector: '[vp-content] :where(h1,h2,h3,h4,h5,h6)',
-    levels: [2, 3], // 只有 h2 和 h3
-    ignore: ['.badge'], // 忽略标题内的 <Badge />
-  })
-  console.log(headers)
-})
-```
-
-:::
-
 ### env
 
 检查当前环境是否满足给定条件：
@@ -208,6 +110,104 @@ if (isSafari(userAgent)) {
 if (isIOS(userAgent)) {
   console.log('用户正在使用 iOS 设备')
 }
+```
+
+:::
+
+### getHeaders
+
+获取当前页面的标题列表。
+
+```ts
+export const getHeaders: (options: GetHeadersOptions) => HeaderItem[]
+```
+
+**参数:**
+
+```ts
+export interface GetHeadersOptions {
+  /**
+   * 标题的选择器
+   *
+   * 它将作为 `document.querySelectorAll(selector)` 的参数，
+   * 因此你应该传入一个 `CSS 选择器` 字符串。
+   *
+   * @default '[vp-content] h1, [vp-content] h2, [vp-content] h3, [vp-content] h4, [vp-content] h5, [vp-content] h6'
+   */
+  selector?: string
+  /**
+   * 忽略标题内的特定元素。
+   *
+   * `CSS 选择器` 数组
+   *
+   * @default []
+   */
+  ignore?: string[]
+  /**
+   * 标题的层级
+   *
+   * - `false`: 无标题。
+   * - `number`: 仅显示该层级的标题。
+   * - `[number, number]`: 标题层级元组，第一个数字应小于第二个数字，例如 `[2, 4]` 表示显示从 `<h2>` 到 `<h4>` 的所有标题。
+   * - `deep`: 等同于 `[2, 6]`，表示显示从 `<h2>` 到 `<h6>` 的所有标题。
+   *
+   * @default 2
+   */
+  levels?: HeaderLevels
+}
+```
+
+**返回结果:**
+
+```ts
+interface PageHeader {
+  /**
+   * 标题的层级
+   *
+   * `1` 至 `6` 表示 `<h1>` 至 `<h6>`
+   */
+  level: number
+  /**
+   * 标题的内容
+   */
+  title: string
+  /**
+   * 标题的标识符
+   *
+   * 通常是标题锚点的 `id` 属性
+   */
+  slug: string
+  /**
+   * 标题的链接
+   *
+   * 通常使用 `#${slug}` 作为锚点哈希
+   */
+  link: string
+  /**
+   * 标题的子标题
+   */
+  children: MarkdownItHeader[]
+}
+
+export type HeaderLevels = number | 'deep' | false | [number, number]
+
+export type HeaderItem = Omit<PageHeader, 'children'> & {
+  element: HTMLHeadingElement
+  children?: HeaderItem[]
+}
+```
+
+::: details Examples
+
+```ts
+onMounted(() => {
+  const headers = getHeaders({
+    selector: '[vp-content] :where(h1,h2,h3,h4,h5,h6)',
+    levels: [2, 3], // 只有 h2 和 h3
+    ignore: ['.badge'], // 忽略标题内的 <Badge />
+  })
+  console.log(headers)
+})
 ```
 
 :::
