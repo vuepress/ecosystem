@@ -2,7 +2,9 @@ import type { DefaultLocaleInfo } from '@vuepress/helper'
 import type { CopyrightPluginLocaleData } from '../shared/index.js'
 
 /**
- * Default locale info for `@vuepress/plugin-copyright`
+ * Default locale info for copyright plugin
+ *
+ * 版权插件的默认多语言信息
  */
 export const copyrightLocaleInfo: DefaultLocaleInfo<CopyrightPluginLocaleData> =
   [
@@ -35,6 +37,30 @@ export const copyrightLocaleInfo: DefaultLocaleInfo<CopyrightPluginLocaleData> =
       {
         author: 'Авторские права :author',
         license: 'Лицензия :license',
+        link: ':link',
+      },
+    ],
+    [
+      ['uk', 'uk-UA'],
+      {
+        author: 'Авторські права :author',
+        license: 'Ліцензія :license',
+        link: ':link',
+      },
+    ],
+    [
+      ['vi', 'vi-VN'],
+      {
+        author: 'Bản quyền thuộc về :author',
+        license: 'Cấp phép theo :license',
+        link: ':link',
+      },
+    ],
+    [
+      ['pt-BR'],
+      {
+        author: 'Direitos autorais de :author',
+        license: 'Licenciado sob :license',
         link: ':link',
       },
     ],
@@ -74,7 +100,7 @@ export const copyrightLocaleInfo: DefaultLocaleInfo<CopyrightPluginLocaleData> =
       ['ja', 'ja-JP'],
       {
         author: '著作権者 :author',
-        license: ':licenseプロトコルに基づく',
+        license: ':license ライセンスに基づく',
         link: ':link',
       },
     ],
@@ -87,10 +113,10 @@ export const copyrightLocaleInfo: DefaultLocaleInfo<CopyrightPluginLocaleData> =
       },
     ],
     [
-      ['ko', 'ko-KO'],
+      ['ko', 'ko-KR'],
       {
         author: '저작권자 :author',
-        license: ':license 프로토콜에 따라',
+        license: ':license 라이선스에 따라',
         link: ':link',
       },
     ],
@@ -114,7 +140,7 @@ export const copyrightLocaleInfo: DefaultLocaleInfo<CopyrightPluginLocaleData> =
       ['hu', 'hu-HU'],
       {
         author: 'Szerzői jog :author',
-        license: 'Licensz: :license',
+        license: 'Licenc: :license',
         link: ':link',
       },
     ],
@@ -122,7 +148,7 @@ export const copyrightLocaleInfo: DefaultLocaleInfo<CopyrightPluginLocaleData> =
       ['id', 'id-ID'],
       {
         author: 'Hak cipta oleh :author',
-        license: 'Dibawah Lisensi :license',
+        license: 'Di bawah lisensi :license',
         link: ':link',
       },
     ],
