@@ -1,20 +1,22 @@
 /**
- * markdown tab plugin configuration
+ * Markdown tab plugin configuration
+ *
+ * Markdown 选项卡插件配置
  */
 export interface MarkdownTabPluginOptions {
   /**
-   * Whether to enable code tabs.
+   * Whether to enable code tabs
    *
-   * 是否启用代码组。
+   * 是否启用代码选项卡
    *
    * @default false
    */
   codeTabs?: boolean
 
   /**
-   * Whether to enable tabs.
+   * Whether to enable tabs
    *
-   * 是否启用标签页分组。
+   * 是否启用选项卡
    *
    * @default false
    */

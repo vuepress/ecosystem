@@ -3,6 +3,11 @@ import type { PluginSimple } from 'markdown-it'
 
 import { stringifyProp } from './utils.js'
 
+/**
+ * Markdown-it plugin for tabs
+ *
+ * 用于选项卡的 Markdown-it 插件
+ */
 export const tabs: PluginSimple = (md) => {
   tab(md, {
     name: 'tabs',
