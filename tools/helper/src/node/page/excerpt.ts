@@ -155,7 +155,7 @@ const isH1Tag = (node: AnyNode): boolean =>
  *
  * @returns Raw content of excerpt / 摘要的原始内容
  */
-export const getPageExcerptContent = (
+export const getPageRawExcerpt = (
   content: string,
   separator = '<!-- more -->',
 ): string | undefined =>
@@ -243,11 +243,11 @@ export const getPageExcerpt = (
   }: PageExcerptOptions = {},
 ): string => {
   // get page content
-  const excerpt = getPageExcerptContent(content, separator)
+  const rawExcerpt = getPageRawExcerpt(content, separator)
 
-  if (excerpt) {
+  if (rawExcerpt) {
     const renderedContent = markdown.render(
-      excerpt,
+      rawExcerpt,
       // markdown env
       {
         base,
