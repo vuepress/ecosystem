@@ -44,4 +44,4 @@ $$</p>
 "
 `;
 
-exports[`revealJs > Should render 1`] = `"<RevealJs id="revealjs-0" code="eJxVjb0KwjAUhff7FBfaoQXTH92UDo66OlppQxtMtGlCc0VBfHcTKJRuh4/vnANRhJdB9QJLgCNaPvH7xK3EtyKJzmiBJD6EfOyR43VQ4/OWSCLr9nmulSMxMWmsyDqjUwDGGCyTWw/wREL78TkEtHJ2mT9u2/bhoDOj809YYXkIKKgr05fjGM5JTVIQb4rNHMrUd2r30s1XVcUvSH9FOzuV" theme="auto"></RevealJs>"`;
+exports[`revealJs > Should render 1`] = `"<RevealJs code="eJxVjb0KwjAUhff7FBfaoQXTH92UDo66OlppQxtMtGlCc0VBfHcTKJRuh4/vnANRhJdB9QJLgCNaPvH7xK3EtyKJzmiBJD6EfOyR43VQ4/OWSCLr9nmulSMxMWmsyDqjUwDGGCyTWw/wREL78TkEtHJ2mT9u2/bhoDOj809YYXkIKKgr05fjGM5JTVIQb4rNHMrUd2r30s1XVcUvSH9FOzuV" theme="auto"></RevealJs>"`;
