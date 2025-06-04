@@ -6,7 +6,7 @@ icon: pajamas:progress
 
 <NpmBadge package="@vuepress/plugin-nprogress" />
 
-Integrate [nprogress](https://github.com/rstacruz/nprogress) into VuePress, which can provide a progress bar when navigating to another page.
+Integrate [nprogress](https://github.com/rstacruz/nprogress) into VuePress, which provides a progress bar when navigating to another page.
 
 This plugin has been integrated into the default theme.
 
