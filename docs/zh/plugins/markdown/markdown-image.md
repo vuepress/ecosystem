@@ -37,7 +37,7 @@ export default {
 
 ### 图片懒加载
 
-插件会通过原生 HTML5 功能启用图片的延迟加载，此功能仅在 [支持 loading=lazy 属性](https://caniuse.com/loading-lazy-attr) 的浏览器生效。
+插件会通过原生 HTML5 功能启用图片的延迟加载，此功能仅在[支持 loading=lazy 属性](https://caniuse.com/loading-lazy-attr)的浏览器中生效。
 
 ### 图片 ID 标记
 
@@ -57,7 +57,7 @@ export default {
 你可以将对象传递给 `mark` 以配置 ID 标记，可用选项如下：
 
 ```ts
-interface ImageMarkOptions {
+interface MarkdownItImgMarkOptions {
   /** 仅限日间模式的 ID */
   light?: string[]
   /** 仅限夜间模式的 ID */
@@ -115,7 +115,6 @@ interface ImageMarkOptions {
 #### 旧语法 (已废弃)
 
 ::: warning 这种语法可能会在 GitHub 等平台上导致渲染问题。
-
 :::
 
 当你在插件选项中设置 `legacySize: true` 时，你可以在图片链接部分的末尾添加 `=widthxheight`，并用空格分隔。
@@ -140,7 +139,7 @@ interface ImageMarkOptions {
 
 有时，你可能希望为图像添加描述，并将其单独展示在上下文中，在这种情况下，你应该在插件选项中设置 `figure: true`。
 
-这样当你单独将图片至于一行 (也可同时嵌套链接)，图像将显示为 `<figure>` ，标题或图片替代文字将显示为 `<figcaption>`。
+这样当你单独将图片置于一行（也可同时嵌套链接），图像将显示为 `<figure>`，标题或图片替代文字将显示为 `<figcaption>`。
 
 ::: preview
 
@@ -160,7 +159,7 @@ interface ImageMarkOptions {
 
 ### figure
 
-- 类型：`boolean`
+- 类型：`MarkdownItFigureOptions | boolean`
 - 详情：是否启用图片 Figure 支持。
 
 ### lazyload
@@ -170,10 +169,10 @@ interface ImageMarkOptions {
 
 ### mark
 
-- 类型：`ImageMarkOptions | boolean`
+- 类型：`MarkdownItImgMarkOptions | boolean`
 
   ```ts
-  interface ImageMarkOptions {
+  interface MarkdownItImgMarkOptions {
     /** 日间模式的 ID */
     light?: string[]
     /** 夜间模式的 ID */
@@ -181,12 +180,12 @@ interface ImageMarkOptions {
   }
   ```
 
-- 详情：是否启用图片标注支持
+- 详情：是否启用图片标注支持。
 
 ### size
 
-- 类型：`boolean | 'strict'`
-- 详情：是否启用图片尺寸支持。`strict` 需要显式设置 `0` 来忽略宽度或高度。
+- 类型：`boolean`
+- 详情：是否启用图片尺寸支持。
 
 ### obsidianSize
 

@@ -3,7 +3,7 @@ import type { MarkdownItImgMarkOptions } from '@mdit/plugin-img-mark'
 
 export interface MarkdownImagePluginOptions {
   /**
-   * Whether render figure with standalone imag
+   * Whether render figure with standalone image
    *
    * 是否将单独的图片渲染为 figure
    *

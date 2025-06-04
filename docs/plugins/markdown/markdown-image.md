@@ -14,7 +14,7 @@ Add additional features to your markdown images.
 npm i -D @vuepress/plugin-markdown-image@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 
 export default {
@@ -37,7 +37,7 @@ export default {
 
 ### Image Lazyload
 
-The plugin will enable image lazyload using native HTML5 features, so only it's only working on browsers which [support loading=lazy attribute](https://caniuse.com/loading-lazy-attr).
+The plugin will enable image lazyload using native HTML5 features, so it's only working on browsers which [support loading=lazy attribute](https://caniuse.com/loading-lazy-attr).
 
 ### Image Mark
 
@@ -105,6 +105,13 @@ Renders as ↓
 <img src="/example.bmp" alt="Alt" height="300" />
 ```
 
+::: tip Choosing between 3 Grammars
+
+- The legacy grammar breaks image rendering in environments that don't support it (e.g.: GitHub)
+- Both the new grammar and the Obsidian grammar are compatible with the Markdown standard, but new grammar is more natural.
+
+:::
+
 #### Legacy Syntax (Deprecated)
 
 ::: warning This may cause rendering issues on platforms like GitHub.
@@ -124,16 +131,9 @@ Renders as ↓
 
 ```html
 <img src="/example.png" width="200" height="300" />
-<img src="/example.jpg" title="TTitle" width="200" />
+<img src="/example.jpg" title="Title" width="200" />
 <img src="/example.bmp" height="300" />
 ```
-
-::: tip Choosing between 3 Grammars
-
-- The legacy grammar breaks image rendering in environments that don't support it (e.g.: GitHub)
-- Both the new grammar and the Obsidian grammar are compatible with the Markdown standard, but new grammar is more natural.
-
-:::
 
 ### Figure Display
 
@@ -159,7 +159,7 @@ If the image is standalone in a line, wrapped or not wrapped by link, it will be
 
 ### figure
 
-- Type: `boolean`
+- Type: `MarkdownItFigureOptions | boolean`
 - Details: Whether enable figure support.
 
 ### lazyload
@@ -169,10 +169,10 @@ If the image is standalone in a line, wrapped or not wrapped by link, it will be
 
 ### mark
 
-- Type: `ImageMarkOptions | boolean`
+- Type: `MarkdownItImgMarkOptions | boolean`
 
   ```ts
-  interface ImageMarkOptions {
+  interface MarkdownItImgMarkOptions {
     /** lightmode only IDs */
     light?: string[]
     /** darkmode only IDs */
