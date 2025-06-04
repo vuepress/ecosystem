@@ -11,6 +11,31 @@ import { isPlainObject } from 'vuepress/shared'
 import type { MarkdownStylizePluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 
+/**
+ * Markdown stylize plugin
+ *
+ * Markdown 样式化插件
+ *
+ * @param options - plugin options / 插件选项
+ *
+ * @example
+ * ```ts
+ * import { markdownStylizePlugin } from '@vuepress/plugin-markdown-stylize'
+ *
+ * export default {
+ *   plugins: [
+ *     markdownStylizePlugin({
+ *       align: true,
+ *       attrs: true,
+ *       mark: true,
+ *       spoiler: true,
+ *       sub: true,
+ *       sup: true,
+ *     }),
+ *   ],
+ * }
+ * ```
+ */
 export const markdownStylizePlugin = ({
   attrs,
   align,
