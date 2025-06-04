@@ -7,6 +7,29 @@ import type { IconPluginOptions } from './options.js'
 import { prepareConfigFile } from './prepareConfigFile.js'
 import { PLUGIN_NAME } from './utils.js'
 
+/**
+ * Icon plugin
+ *
+ * 图标插件
+ *
+ * @param options - Plugin options / 插件选项
+ * @returns VuePress plugin / VuePress 插件
+ *
+ * @example
+ * ```ts
+ * import { iconPlugin } from '@vuepress/plugin-icon'
+ *
+ * export default {
+ *   plugins: [
+ *     iconPlugin({
+ *       assets: 'iconify',
+ *       prefix: 'mdi:',
+ *       component: 'VPIcon'
+ *     })
+ *   ]
+ * }
+ * ```
+ */
 export const iconPlugin = (options: IconPluginOptions = {}): Plugin => {
   const iconType = options.type ?? getAssetsType(options)
 

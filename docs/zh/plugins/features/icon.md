@@ -44,9 +44,9 @@ export default {
 - 其余部分将被视为图标名称。
 
 ```md
-::icon =16 /red:: <!-- <VPIcon class="icon" color="red" size="16px" -->
+::icon =16 /red:: <!-- <VPIcon icon="icon" color="red" size="16px" /> -->
 
-::icon rotate vertical-align=middle:: <!-- ::icon rotate" vertical-align="middle" -->
+::icon rotate vertical-align=middle:: <!-- <VPIcon icon="icon rotate" vertical-align="middle" /> -->
 ```
 
 ::: preview
@@ -121,15 +121,15 @@ export default {
 
 有关所有可用类的详细信息，请参见 <https://docs.fontawesome.com/web/style/styling>。
 
-::: tip Fontaweome 套件和 Pro 功能
+::: tip FontAwesome 套件和 Pro 功能
 
-默认情况下，我们使用 jsdelivr CDN 来加载 fontawesome 免费图标的 V6 版本。这对于大多数开源项目来说应该足够了。
+默认情况下，我们使用 jsdelivr CDN 来加载 FontAwesome 免费图标的 V6 版本。这对于大多数开源项目来说应该足够了。
 
 此外，你可以在 [fontawesome.com](https://fontawesome.com) 购买套件来使用。
 
-具有专业功能的 fontawesome 套件支持专业图标、更多图标样式和上传自己的图标。
+具有专业功能的 FontAwesome 套件支持专业图标、更多图标样式和上传自己的图标。
 
-有关详细信息，请参见 [fontawesome 文档](https://docs.fontawesome.com/)。
+有关详细信息，请参见 [FontAwesome 文档](https://docs.fontawesome.com/)。
 
 - [完整图标列表](https://fontawesome.com/search)
 
@@ -217,6 +217,8 @@ export default {
   export type IconAsset = (BuiltInIcon | IconLink)[] | BuiltInIcon | IconLink
   ```
 
+- 默认值：`"iconify"`
+
 - 详情：
 
   要使用的图标资源。
@@ -250,7 +252,9 @@ export default {
 ### prefix
 
 - 类型：`string`
+
 - 默认值：从 `assets` 和 `type` 推断
+
 - 详情：
 
   图标组件的前缀。默认情况下，插件将使用：
@@ -260,43 +264,47 @@ export default {
 
 ### component
 
-- 类型：`string | null`
-- 默认值：`VPIcon`
-- 详情：
+- 类型：`string`
+- 默认值：`"VPIcon"`
+- 详情：图标组件的名称
 
-  图标组件的名称。如果设置为 `null`，插件将不会全局注册图标组件。
+### markdown
+
+- 类型：`boolean`
+- 默认值：`true`
+- 详情：是否在 Markdown 中启用图标语法（`::icon::`）
 
 ## 组件属性
 
 ### icon {#icon-prop}
 
 - 类型：`string`
-- 必填： 是
-- 详情： 图标名称
+- 必填：是
+- 详情：图标名称
 
 ### color
 
 - 类型：`string`
-- 默认值：`'inherit'`
-- 详情： 图标颜色
+- 默认值：`"inherit"`
+- 详情：图标颜色
 
 ### size
 
 - 类型：`number | string`
-- 默认值：`当前字体大小`
-- 详情： 图标尺寸
+- 默认值：当前字体大小
+- 详情：图标尺寸
 
 ### verticalAlign
 
 - 类型：`string`
-- 默认值：`-0.125em`
-- 详情： 图标垂直对齐方式
+- 默认值：`"-0.125em"`
+- 详情：图标垂直对齐方式
 
 ### sizing
 
-- 类型：`'width' | 'height' | 'both'`
-- 默认值：`'height'`
-- 详情： 图标尺寸调整方式
+- 类型：`"width" | "height" | "both"`
+- 默认值：`"height"`
+- 详情：图标尺寸调整方式
 
   - `width`：仅设置宽度
   - `height`：仅设置高度
