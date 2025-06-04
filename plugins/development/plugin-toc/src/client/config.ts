@@ -21,7 +21,7 @@ export default defineClientConfig({
         },
         renderOptions: {
           ...__TOC_RENDER_OPTIONS__,
-          ...props.render,
+          ...props.renderOptions,
         },
       }),
     )

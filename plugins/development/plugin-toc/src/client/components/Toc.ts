@@ -40,7 +40,7 @@ export interface TocProps {
    *
    * 渲染选项
    */
-  render: TocRenderOptions
+  renderOptions: TocRenderOptions
 }
 
 const renderLink = (
