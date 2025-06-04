@@ -3,7 +3,11 @@ import { computed } from 'vue'
 import { useRoutes } from 'vuepress/client'
 
 /**
- * get all route paths
+ * Composables for route paths
+ *
+ * 获取路由路径的组合函数
+ *
+ * @returns Computed reference to route paths / 路由路径的计算引用
  */
 export const useRoutePaths = (): ComputedRef<string[]> => {
   const routes = useRoutes()
