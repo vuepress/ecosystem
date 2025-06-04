@@ -5,6 +5,14 @@ import { useSiteLocale, withBase } from 'vuepress/client'
 import { Watermark } from 'watermark-js-plus'
 import type { WatermarkOptions } from '../helper/index.js'
 
+/**
+ * Setup watermark functionality
+ *
+ * 设置水印功能
+ *
+ * @param options - Watermark options / 水印选项
+ * @param enabled - Whether watermark is enabled / 是否启用水印
+ */
 export const setupWatermark = (
   options: MaybeRef<WatermarkOptions>,
   enabled: Ref<boolean>,
