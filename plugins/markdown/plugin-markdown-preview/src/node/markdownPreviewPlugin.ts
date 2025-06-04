@@ -10,6 +10,24 @@ const PLUGIN_NAME = '@vuepress/plugin-markdown-preview'
 
 const __dirname = getDirname(import.meta.url)
 
+/**
+ * Markdown preview plugin
+ *
+ * Markdown 预览插件
+ *
+ * @param options - plugin options / 插件选项
+ *
+ * @example
+ * ```ts
+ * import { markdownPreviewPlugin } from '@vuepress/plugin-markdown-preview'
+ *
+ * export default {
+ *   plugins: [
+ *     markdownPreviewPlugin(),
+ *   ],
+ * }
+ * ```
+ */
 export const markdownPreviewPlugin =
   (options: MarkdownPreviewPluginOptions = {}): Plugin =>
   (app) => ({
