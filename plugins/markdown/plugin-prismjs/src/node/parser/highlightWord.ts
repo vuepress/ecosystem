@@ -54,6 +54,8 @@ export const parseMetaHighlightWords = (meta: string): string[] => {
 /**
  * `` ```js /Hello|Hi/ ``
  *
+ * Meta word highlight
+ *
  * 元词汇高亮
  *
  * @param parser - Code parser instance / 代码解析器实例
