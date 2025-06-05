@@ -114,8 +114,7 @@ export const mermaid: PluginSimple = (md) => {
 
     const fenceInfo = info.trim()
 
-    if (fenceInfo === 'mermaid')
-      return getMermaid({ content, indent: false }, index)
+    if (fenceInfo === 'mermaid') return getMermaid({ content, indent: false })
 
     const [name, ...rest] = fenceInfo.split(' ')
 
