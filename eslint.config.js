@@ -25,7 +25,12 @@ const TOOLS_DIRS = fs
 
 export default vuepress(
   {
-    ignores: ['**/lib/**', '**/template/**', '**/node_modules/**'],
+    ignores: [
+      '**/lib/**',
+      '**/template/**',
+      '**/node_modules/**',
+      '**/*.snippet.md',
+    ],
     imports: {
       packageDir: [
         ROOT,
