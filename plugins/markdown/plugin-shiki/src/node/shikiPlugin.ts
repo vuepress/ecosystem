@@ -23,30 +23,54 @@ import type { ShikiPluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 import { TWOSLASH_RE, logger } from './utils.js'
 
-export const shikiPlugin = (_options: ShikiPluginOptions = {}): Plugin => {
+/**
+ * Shiki plugin for VuePress
+ *
+ * VuePress 的 Shiki 插件
+ *
+ * @param options - Plugin options / 插件选项
+ *
+ * @returns VuePress plugin / VuePress 插件
+ *
+ * @example
+ * ```ts
+ * import { shikiPlugin } from '@vuepress/plugin-shiki'
+ *
+ * export default {
+ *   plugins: [
+ *     shikiPlugin({
+ *       langs: ['ts', 'json', 'vue', 'md', 'bash', 'diff'],
+ *       theme: 'nord',
+ *       lineNumbers: true,
+ *     }),
+ *   ],
+ * }
+ * ```
+ */
+export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => {
   return (app) => {
     // FIXME: Remove in stable version
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { code } = app.options.markdown
-    const options = {
+    const shikiOptions = {
       ...(isPlainObject(code) ? code : {}),
-      ..._options,
+      ...options,
     }
 
-    options.logLevel ??= app.env.isDebug ? 'debug' : 'warn'
-    options.preWrapper ??= true
-    options.lineNumbers ??= true
-    options.collapsedLines ??= 'disable'
-    options.codeBlockTitle ??= true
+    shikiOptions.logLevel ??= app.env.isDebug ? 'debug' : 'warn'
+    shikiOptions.preWrapper ??= true
+    shikiOptions.lineNumbers ??= true
+    shikiOptions.collapsedLines ??= 'disable'
+    shikiOptions.codeBlockTitle ??= true
 
     if (
-      options.twoslash &&
+      shikiOptions.twoslash &&
       !isModuleAvailable('@vuepress/shiki-twoslash', import.meta)
     ) {
       logger.error(
         `${colors.cyan('twoslash')} is enabled, but ${colors.magenta('@vuepress/shiki-twoslash')} is not installed, please install it manually`,
       )
-      options.twoslash = false
+      shikiOptions.twoslash = false
     }
 
     /**
@@ -75,15 +99,15 @@ export const shikiPlugin = (_options: ShikiPluginOptions = {}): Plugin => {
 
       extendsMarkdown: async (md) => {
         const { preWrapper, lineNumbers, collapsedLines, codeBlockTitle } =
-          options
+          shikiOptions
 
         const markdownFilePathGetter = createMarkdownFilePathGetter(md)
         const { highlighter, loadLang, extraTransformers } =
-          await createShikiHighlighter(app, options, enableVPre)
+          await createShikiHighlighter(app, shikiOptions, enableVPre)
 
         md.options.highlight = getHighLightFunction(
           highlighter,
-          options,
+          shikiOptions,
           extraTransformers,
           loadLang,
           markdownFilePathGetter,
@@ -94,7 +118,7 @@ export const shikiPlugin = (_options: ShikiPluginOptions = {}): Plugin => {
           md.use<MarkdownItLineNumbersOptions>(lineNumbersPlugin, {
             lineNumbers,
             resolveLineNumbers(info) {
-              return options.twoslash && TWOSLASH_RE.test(info)
+              return shikiOptions.twoslash && TWOSLASH_RE.test(info)
                 ? false
                 : undefined
             },
@@ -108,7 +132,7 @@ export const shikiPlugin = (_options: ShikiPluginOptions = {}): Plugin => {
         }
       },
 
-      clientConfigFile: () => prepareClientConfigFile(app, options),
+      clientConfigFile: () => prepareClientConfigFile(app, shikiOptions),
     }
   }
 }
