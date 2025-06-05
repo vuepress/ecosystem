@@ -67,31 +67,50 @@ export default {
 
 ````markmap
 ---
+title: markmap
 markmap:
   colorFreezeLevel: 2
 ---
 
-# markmap
-
 ## 链接
 
-- <https://markmap.js.org/>
-- [GitHub](https://github.com/markmap/markmap)
+- [官网](https://markmap.js.org/)
+- [GitHub](https://github.com/gera2ld/markmap)
+
+## 相关项目
+
+- [coc-markmap](https://github.com/gera2ld/coc-markmap) for Neovim
+- [markmap-vscode](https://marketplace.visualstudio.com/items?itemName=gera2ld.markmap-vscode) for VSCode
+- [eaf-markmap](https://github.com/emacs-eaf/eaf-markmap) for Emacs
 
 ## 功能
 
-- 链接
-- **强调** ~~删除线~~ *斜体* ==高亮==
-- 多行
-  文字
+注意：如果块元素和列表出现在同一级别，列表将被忽略。
+
+### 列表
+
+- **加粗** ~~删除线~~ _斜体_ ==高亮==
 - `行内代码`
--
-    ```js
-    console.log('code block');
-    ```
-- Katex
-  - $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$
-- 现在我们可以通过 `maxWidth` 选项自动换行非常非常非常非常非常非常非常非常非常非常长的内容
+- [x] 复选框
+- Katex: $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$ <!-- markmap: fold -->
+  - [更多 Katex 示例](#?d=gist:af76a4c245b302206b16aec503dbe07b:katex.md)
+- 现在我们可以通过 `maxWidth` 选项自动换行非常非常非常非常长的文本
+- 有序列表
+  1. 项目 1
+  2. 项目 2
+
+### 块元素
+
+```js
+console.log('你好，JavaScript')
+```
+
+| 产品 | 价格 |
+| ---- | ---- |
+| 苹果 | 4    |
+| 香蕉 | 2    |
+
+![](https://markmap.js.org/favicon.png)
 ````
 
 :::

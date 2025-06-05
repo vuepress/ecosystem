@@ -14,6 +14,11 @@ const echartsRender = (tokens: Token[], index: number): string => {
   }></ECharts>`
 }
 
+/**
+ * ECharts markdown-it plugin
+ *
+ * ECharts markdown-it 插件
+ */
 export const echarts: PluginSimple = (md) => {
   // Handle ```echarts blocks
   const { fence } = md.renderer.rules

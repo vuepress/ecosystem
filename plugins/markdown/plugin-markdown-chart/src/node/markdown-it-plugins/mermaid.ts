@@ -14,6 +14,15 @@ interface MermaidOptions {
   indent?: boolean
 }
 
+/**
+ * Get Mermaid content with proper formatting
+ *
+ * 获取格式化的 Mermaid 内容
+ *
+ * @param options - Mermaid options / Mermaid 选项
+ *
+ * @returns Formatted Mermaid content / 格式化的 Mermaid 内容
+ */
 export const getMermaidContent = ({
   diagram = 'mermaid',
   content,
@@ -92,6 +101,11 @@ const DIAGRAM_MAP: Record<string, [diagramName: string, indent?: boolean]> = {
   'radar': ['radar-beta'],
 }
 
+/**
+ * Mermaid markdown-it plugin
+ *
+ * Mermaid markdown-it 插件
+ */
 export const mermaid: PluginSimple = (md) => {
   // Handle ```mermaid blocks
   const { fence } = md.renderer.rules

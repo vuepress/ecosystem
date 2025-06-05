@@ -2,6 +2,11 @@ import { container } from '@mdit/plugin-container'
 import { encodeData } from '@vuepress/helper'
 import type { PluginSimple } from 'markdown-it'
 
+/**
+ * Chart.js markdown-it plugin
+ *
+ * Chart.js markdown-it 插件
+ */
 export const chartjs: PluginSimple = (md) => {
   container(md, {
     name: 'chartjs',

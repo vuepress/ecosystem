@@ -87,7 +87,7 @@ Note that if blocks and lists appear at the same level, the lists will be ignore
 
 ### Lists
 
-- **strong** ~~del~~ *italic* ==highlight==
+- **strong** ~~del~~ _italic_ ==highlight==
 - `inline code`
 - [x] checkbox
 - Katex: $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$ <!-- markmap: fold -->
@@ -104,9 +104,9 @@ console.log('hello, JavaScript')
 ```
 
 | Products | Price |
-|-|-|
-| Apple | 4 |
-| Banana | 2 |
+| -------- | ----- |
+| Apple    | 4     |
+| Banana   | 2     |
 
 ![](https://markmap.js.org/favicon.png)
 ````

@@ -35,7 +35,10 @@ import { PLUGIN_NAME, isInstalled, logger } from './utils.js'
  *     markdownChartPlugin({
  *       chartjs: true,
  *       echarts: true,
+ *       flowchart: true,
+ *       markmap: true,
  *       mermaid: true,
+ *       plantuml: true,
  *     }),
  *   ],
  * }

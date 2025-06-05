@@ -10,6 +10,11 @@ const markmapRender = (tokens: Token[], index: number): string => {
   return `<MarkMap id="${key}" content="${encodeData(content)}"></MarkMap>`
 }
 
+/**
+ * Markmap markdown-it plugin
+ *
+ * Markmap markdown-it 插件
+ */
 export const markmap: PluginSimple = (md) => {
   // Handle ```markmap blocks
   const { fence } = md.renderer.rules

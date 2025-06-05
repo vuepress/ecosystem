@@ -15,6 +15,11 @@ const flowchartRender = (tokens: Token[], index: number): string => {
   }"></FlowChart>`
 }
 
+/**
+ * Flowchart markdown-it plugin
+ *
+ * Flowchart markdown-it 插件
+ */
 export const flowchart: PluginSimple = (md) => {
   // Handle ```flow and ```flowchart blocks
   const { fence } = md.renderer.rules
