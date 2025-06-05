@@ -6,7 +6,7 @@ icon: presentation
 
 <NpmBadge package="@vuepress/plugin-revealjs" />
 
-在你的 VuePress 站点中添加幻灯片。
+在你的 VuePress 中添加幻灯片。
 
 <!-- more -->
 
@@ -31,7 +31,7 @@ export default {
 ## 幻灯片语法
 
 - 使用 `---` 分割幻灯片
-- 使用 `--` 对幻灯片进行二次分割(垂直显示)
+- 使用 `--` 对幻灯片进行垂直分割
 
 ```md
 @slidestart
@@ -100,7 +100,7 @@ const add = (a, b) => {
 
 ## 幻灯片布局
 
-默认情况下，插件会注册一个 `SlidePage` 布局来供你渲染“幻灯片页”。
+默认情况下，插件会注册一个 `SlidePage` 布局来供你渲染幻灯片页面。
 
 在使用此布局的页面中，你应该只包含单个幻灯片语法，不包含其他内容，以避免渲染问题:
 
@@ -169,7 +169,7 @@ defineRevealJsConfig(options1or2or3)
 
 ::: note
 
-Reveal.js 还提供了[更多的插件](https://github.com/hakimel/reveal.js/wiki/Plugins,-Tools-and-Hardware)，你可以通过 `plugin` 选项在 `defineRevealJsConfig` 中添加它们，这种自定义行为不会影响你声明的内置插件。
+Reveal.js 还提供了[更多的插件](https://github.com/hakimel/reveal.js/wiki/Plugins,-Tools-and-Hardware)，你可以通过 `defineRevealJsConfig` 中的 `plugins` 选项添加它们。你在 node 端请求的内置插件将自动添加。
 
 :::
 
@@ -183,24 +183,24 @@ Reveal.js 选项，请参见[reveal.js config](https://revealjs.com/config/)，R
 
 ### plugins
 
-- 类型： `RevealJsPlugin[]`
-- 详情：需要启用 Reveal.js 内置的插件
+- 类型：`RevealJsPlugin[]`
+- 详情：要启用的 Reveal.js 内置插件。
 
   可用值：`highlight`、`math`、`search`、`notes`、`zoom`
 
 ### themes
 
-- 类型： `RevealJsTheme[]`
+- 类型：`RevealJsTheme[]`
 - 默认值：`['auto']`
-- 详情：需要启用的 Reveal.js 主题
+- 详情：要启用的主题。
 
   可用值：`auto`、`black`、`white`、`league`、`beige`、`sky`、`night`、`serif`、`simple`、`solarized`、`blood`、`moon`
 
 ### layout
 
-- 类型： `string | false`
+- 类型：`string | false`
 - 默认值：`'SlidePage'`
-- 详情：用于渲染幻灯片的布局组件名称
+- 详情：用于渲染幻灯片的布局组件名称。
 
 ## 样式
 
