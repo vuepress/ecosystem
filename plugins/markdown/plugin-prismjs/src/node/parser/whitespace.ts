@@ -104,19 +104,17 @@ export const renderWhitespaceInLine = (
  *
  * 基于元字符串处理空白字符渲染
  *
+ * `` ```js :whitespace[=all|boundary|trailing] ``
+ *
  * @param parser - Code parser instance / 代码解析器实例
  * @param meta - Meta string / 元字符串
  * @param globalOption - Global whitespace option / 全局空白字符选项
  *
  * @example
- * ```js :whitespace[=all|boundary|trailing]
- * ```
- *
- * @example
  * ```ts
  * import { metaWhitespace } from '@vuepress/plugin-prismjs'
  *
- * metaWhitespace(parser, ':whitespace[=all]', true)
+ * metaWhitespace(parser, ':whitespace=all', true)
  * ```
  */
 export const metaWhitespace = (
