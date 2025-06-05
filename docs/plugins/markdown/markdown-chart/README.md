@@ -4,37 +4,59 @@
 
 Add powerful charts to your VuePress site.
 
-This plugin provides 6 ways to let you insert charts into your markdown file.
+This plugin provides 6 different chart libraries to help you insert charts into your Markdown files:
 
-- chart.js: A lightweight, easy-to-use, highly customizable chart library.
+- **Chart.js**: A lightweight, easy-to-use, highly customizable chart library.
 
-  chart.js is lighter comparing to echarts.
+  Chart.js is lighter compared to ECharts.
 
-- echarts: A powerful, interactive charting and visualization library for browser.
+- **ECharts**: A powerful, interactive charting and visualization library for browsers.
 
-  echarts is more powerful comparing to chart.js.
+  ECharts is more powerful compared to Chart.js.
 
-- Flowchart: A simple markdown extension to generate flowcharts and sequence diagrams.
+- **Flowchart**: A simple Markdown extension to generate flowcharts and sequence diagrams.
 
-  Lightweight, only focusing on flowcharts.
+  Lightweight, focusing only on flowcharts.
 
-- Markmap: Create mindmap with markdown
+- **Markmap**: Create mind maps from Markdown.
 
-  The runtime is very heavy, not recommended.
+  The runtime is heavy, not recommended for production.
 
-- Mermaid: Generation of diagram and flowchart from text in a similar manner as markdown.
+- **Mermaid**: Generate diagrams and flowcharts from text in a similar manner as Markdown.
 
   Powerful collection of common charts.
 
-- Plantuml: UML diagram driven by Java.
+- **PlantUML**: UML diagrams powered by Java.
 
-  No runtime, diagram render is processed on plantuml server.
+  No client-side runtime, extremely lightweight.
 
-## Usage
+<!-- more -->
+
+## Installation
+
+::: code-tabs#shell
+
+@tab pnpm
+
+```bash
+pnpm add -D @vuepress/plugin-markdown-chart@next
+```
+
+@tab yarn
+
+```bash
+yarn add -D @vuepress/plugin-markdown-chart@next
+```
+
+@tab npm
 
 ```bash
 npm i -D @vuepress/plugin-markdown-chart@next
 ```
+
+:::
+
+## Usage
 
 ```ts
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
@@ -42,17 +64,60 @@ import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 export default {
   plugins: [
     markdownChartPlugin({
-      // Enable chart.js
+      // Enable Chart.js
       chartjs: true,
-      // Enable echarts
+      // Enable ECharts
       echarts: true,
-      // Enable flowchart.ts
+      // Enable Flowchart.js
       flowchart: true,
-      // Enable markmap
+      // Enable Markmap
       markmap: true,
-      // Enable mermaid
+      // Enable Mermaid
       mermaid: true,
+      // Enable PlantUML
+      plantuml: true,
     }),
   ],
 }
 ```
+
+## Available Charts
+
+- [Chart.js](./chartjs.md)
+- [ECharts](./echarts.md)
+- [Flowchart](./flowchart.md)
+- [Markmap](./markmap.md)
+- [Mermaid](./mermaid.md)
+- [PlantUML](./plantuml.md)
+
+## Configuration
+
+### chartjs
+
+- Type: `boolean`
+- Details: Whether to enable Chart.js support.
+
+### echarts
+
+- Type: `boolean`
+- Details: Whether to enable ECharts support.
+
+### flowchart
+
+- Type: `boolean`
+- Details: Whether to enable Flowchart support.
+
+### markmap
+
+- Type: `boolean`
+- Details: Whether to enable Markmap support.
+
+### mermaid
+
+- Type: `boolean`
+- Details: Whether to enable Mermaid support.
+
+### plantuml
+
+- Type: `boolean | MarkdownItPlantumlOptions[]`
+- Details: Whether to enable PlantUML support. Can accept configuration options for advanced usage.

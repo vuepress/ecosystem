@@ -4,15 +4,15 @@ icon: chart-pie
 
 # Mermaid
 
-Let the Markdown files in your VuePress site support [Mermaid][].
+让你的 VuePress 站点中的 Markdown 文件支持 [Mermaid][]。
 
 [mermaid]: https://mermaid.js.org/
 
 <!-- more -->
 
-## Installation
+## 安装
 
-Install [Mermaid][] in your project:
+在你的项目中安装 [Mermaid][]：
 
 ::: code-tabs#shell
 
@@ -36,7 +36,7 @@ npm i -D mermaid
 
 :::
 
-Then enable it via:
+然后通过以下方式启用：
 
 ```ts {7} title=".vuepress/config.ts"
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
@@ -44,24 +44,26 @@ import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 export default {
   plugins: [
     markdownChartPlugin({
-      // Enable Mermaid
+      // 启用 Mermaid
       mermaid: true,
     }),
   ],
 }
 ```
 
-## Syntax
+<!-- #region after -->
+
+## 语法
 
 ````md
 ```mermaid
 
-<!-- Your mermaid code here. -->
+<!-- 在此处放置 mermaid 代码 -->
 
 ```
 ````
 
-Besides using mermaid, you can also use the following code blocks:
+除了使用 mermaid 代码块，你也可以直接使用以下代码块：
 
 - class: `classDiagram`
 - c4c: `C4Context`
@@ -84,36 +86,36 @@ Besides using mermaid, you can also use the following code blocks:
 - sankey: `sankey-beta`
 - xy: `xychart-beta`
 
-You do not need to declare diagram type and intent your code.
+你不需要再声明图表类型，也不需要缩进图表代码。
 
-If the diagram supports setting title, you can add the title directly after fence info:
+当图表支持设置标题时，你可以直接在代码块信息后添加标题:
 
 ````md
-```sequence Chart Title
-sequence diagram body
+```sequence 代码标题
+顺序图代码内容
 ...
 ```
 ````
 
-## Usage
+## 使用
 
-Please see [mermaid](https://mermaid.js.org/).
+详见 [mermaid 官方文档](https://mermaid.js.org/)。
 
-## Advanced
+## 高级
 
-You can import and call `defineMermaidConfig` in [client config file][client-config] to customize mermaid:
+你可以在[客户端配置文件][client-config]中导入并使用 `defineMermaidConfig` 来自定义 Mermaid 配置:
 
 ```ts title=".vuepress/client.ts"
-import { defineMermaidConfig } from 'vuepress-plugin-md-enhance/client'
+import { defineClientConfig } from 'vuepress/client'
 
 defineMermaidConfig({
-  // mermaid options here
+  // 在此设置 mermaid 选项
 })
 ```
 
-## Demo
+## 例子
 
-::: preview Flowchart
+::: preview 流程图
 
 ```mermaid
 ---
@@ -137,7 +139,7 @@ flowchart TB
 
 :::
 
-::: preview Sequence Diagram
+::: preview 循序图
 
 ```sequence Greetings
 Alice ->> Bob: Hello Bob, how are you?
@@ -152,7 +154,7 @@ Alice->John: Yes... John, how are you?
 
 :::
 
-::: preview Class Diagram
+::: preview 类图
 
 ```class Animal Example
 note "From Duck till Zebra"
@@ -181,7 +183,7 @@ class Zebra{
 
 :::
 
-::: preview State Diagram
+::: preview 状态图
 
 ```state Check if n is negative
 
@@ -194,7 +196,7 @@ if_state --> True : if n >= 0
 
 :::
 
-::: preview Entity Relationship Diagrams
+::: preview 关系图
 
 ```er Er Example
 CAR ||--o{ NAMED-DRIVER : allows
@@ -213,7 +215,7 @@ PERSON {
 
 :::
 
-::: preview User Journey Diagram
+::: preview 用户日记图
 
 ```journey
 title My working day
@@ -228,7 +230,7 @@ section Go home
 
 :::
 
-::: preview Gantt Diagrams
+::: preview 甘特图
 
 ```gantt
 dateFormat  YYYY-MM-DD
@@ -263,7 +265,7 @@ Add another diagram to demo page    :48h
 
 :::
 
-::: preview Pie Chart Diagrams
+::: preview 饼图
 
 ```pie
 title What Voldemort doesn't have?
@@ -274,7 +276,7 @@ title What Voldemort doesn't have?
 
 :::
 
-::: preview Git Graph Diagrams
+::: preview Git 图表
 
 ```git-graph
 commit
@@ -322,7 +324,7 @@ merge release
 
 :::
 
-::: preview C4C Diagrams
+::: preview C4C 图表
 
 ```c4c
 title System Context diagram for Internet Banking System
@@ -360,7 +362,7 @@ Rel(SystemC, customerA, "Sends e-mails to")
 
 :::
 
-::: preview Mindmap
+::: preview 思维导图
 
 ```mindmap
 root((VuePress))
@@ -383,7 +385,7 @@ root((VuePress))
 
 :::
 
-::: preview Timeline
+::: preview 时间线
 
 ```timeline
 title Timeline of Industrial Revolution
@@ -398,7 +400,7 @@ section 21st century
 
 :::
 
-::: preview Sankey
+::: preview 桑基图
 
 ```sankey
 Agricultural 'waste',Bio-conversion,124.729
@@ -473,7 +475,7 @@ Wind,Electricity grid,289.366
 
 :::
 
-::: preview Requirement
+::: preview 依赖图
 
 ```requirement
 requirement test_req {
@@ -492,7 +494,7 @@ test_entity - satisfies -> test_req
 
 :::
 
-::: preview Quadrant Chart
+::: preview 象限图
 
 ```quadrant
 title Reach and engagement of campaigns
@@ -512,7 +514,7 @@ Campaign F: [0.35, 0.78]
 
 :::
 
-::: preview XY Chart
+::: preview XY 图
 
 ```xy
 title "Sales Revenue"
@@ -524,13 +526,13 @@ line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
 
 :::
 
-::: preview Block Chart
+::: preview 块图
 
 ```block
 columns 3
-Frontend blockArrowId6<[" "]>(right) Backend
+前端 blockArrowId6<[" "]>(right) 后端
 space:2 down<[" "]>(down)
-Disk left<[" "]>(left) Database[("Database")]
+硬盘 left<[" "]>(left) Database[("数据库")]
 
 classDef front fill:#696,stroke:#333;
 classDef back fill:#969,stroke:#333;
@@ -540,7 +542,7 @@ class Backend,Database back
 
 :::
 
-::: preview Packet Chart
+::: preview 容器图
 
 ```packet
 title UDP Packet
@@ -553,7 +555,7 @@ title UDP Packet
 
 :::
 
-::: preview Radar Chart
+::: preview 雷达图
 
 ```radar
 ---
@@ -578,7 +580,7 @@ curve c3{3,3,3,3,3}
 
 :::
 
-::: preview A Complex Example
+::: preview 一个复杂的案例
 
 ```mermaid
 graph TB
@@ -606,4 +608,4 @@ graph TB
 
 :::
 
-[client-config]: https://vuejs.press/guide/configuration.html#client-config-file
+[client-config]: https://vuejs.press/zh/guide/configuration.html#%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6

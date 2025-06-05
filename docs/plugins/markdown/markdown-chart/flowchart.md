@@ -1,13 +1,14 @@
 ---
-title: Flowchart
 icon: route
 ---
 
-Let the Markdown file support flow chart in your VuePress site.
+# Flowchart
+
+Add flowchart support to the Markdown files in your VuePress site.
 
 <!-- more -->
 
-## Settings
+## Installation
 
 Install [flowchart.ts](http://flowchart.js.org/) in your project:
 
@@ -33,15 +34,15 @@ npm i -D flowchart.ts
 
 :::
 
-Then enabling via:
+Then enable it via:
 
-```js {7} title=".vuepress/config.js"
+```ts {7} title=".vuepress/config.ts"
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 
 export default {
   plugins: [
     markdownChartPlugin({
-      // Enable flowchart
+      // Enable Flowchart
       flowchart: true,
     }),
   ],

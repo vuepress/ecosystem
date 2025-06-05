@@ -4,15 +4,15 @@ icon: diagram-project
 
 # PlantUML
 
-Add [PlantUML][] support to the Markdown files in your VuePress site.
+为你站点中的 Markdown 文件添加 [PlantUML][] 支持。
 
-[plantuml]: https://plantuml.com/
+[plantuml]: https://plantuml.com/zh/
 
 <!-- more -->
 
-## Installation
+## 安装
 
-You can enable this feature via:
+你可以通过以下方式启用此功能：
 
 ```ts {7} title=".vuepress/config.ts"
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
@@ -20,58 +20,58 @@ import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 export default {
   plugins: [
     markdownChartPlugin({
-      // Enable PlantUML
+      // 启用 PlantUML
       plantuml: true,
     }),
   ],
 }
 ```
 
-## Syntax
+## 语法
 
-You can insert the same content that [plantuml][] supports, for example:
+你可以插入 [PlantUML][] 支持的相同内容，例如：
 
 ```md
 @startuml
-content
+内容
 @enduml
 ```
 
-## Demo
+## 示例
 
 <!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 
-::: preview Sequence Diagram
+::: preview 序列图
 
 @startuml
-Alice -> Bob: Authentication Request
+Alice -> Bob: 认证请求
 
-alt successful case
+alt 成功情况
 
-    Bob -> Alice: Authentication Accepted
+   plain Bob -> Alice: 认证接受
 
-else some kind of failure
+else 某种失败情况
 
-    Bob -> Alice: Authentication Failure
-    group My own label
-    Alice -> Log : Log attack start
-        loop 1000 times
-            Alice -> Bob: DNS Attack
+   plain Bob -> Alice: 认证失败
+    group 我自己的标签
+    Alice -> Log : 开始记录攻击日志
+         loop 1000次
+            Alice -> Bob: DNS 攻击
         end
-    Alice -> Log : Log attack end
+    Alice -> Log : 结束记录攻击日志
     end
 
-else Another type of failure
+else 另一种失败
 
-Bob -> Alice: Please repeat
+   plain Bob -> Alice: 请重复
 
 end
 @enduml
 
 :::
 
-::: preview Use Case
+::: preview 用例图
 
 @startuml
 :Main Admin: as Admin
@@ -96,7 +96,7 @@ N2 .. (Use)
 
 :::
 
-::: preview Class
+::: preview 类图
 
 @startuml
 abstract class AbstractList
@@ -133,7 +133,7 @@ annotation Annotation {
 
 :::
 
-::: preview Activity
+::: preview 活动图
 
 @startuml
 start
@@ -147,7 +147,7 @@ if (Page.onSecurityCheck) then (true)
       stop
     endif
 
-    if (isPost?) then (yes)
+   plain if (isPost?) then (yes)
       :Page.onPost();
     else (no)
       :Page.onGet();
@@ -172,7 +172,7 @@ stop
 
 :::
 
-::: preview Component
+::: preview 组件图
 
 @startuml
 package "Some Group" {
@@ -206,7 +206,7 @@ database "MySql" {
 
 :::
 
-::: preview State
+::: preview 状态图
 
 @startuml
 state start1  <<start>>
@@ -233,7 +233,7 @@ join2   --> [*]     : from join\nto end
 
 :::
 
-::: preview Object
+::: preview 对象图
 
 @startuml
 object London
@@ -252,33 +252,33 @@ NewYork --> CapitalCity::USA
 
 :::
 
-::: preview Deployment
+::: preview 部署图
 
 @startuml
-node node1
-node node2
-node node3
-node node4
-node node5
-node1 -- node2 : label1
-node1 .. node3 : label2
-node1 ~~ node4 : label3
-node1 == node5
+node 节点 1
+node 节点 2
+node 节点 3
+node 节点 4
+node 节点 5
+节点 1 -- 节点 2 : 标签 1
+节点 1 .. 节点 3 : 标签 2
+节点 1 ~~ 节点 4 : 标签 3
+节点 1 == 节点 5
 @enduml
 
 :::
 
-::: preview Timing
+::: preview 时序图
 
 @startuml
 scale 5 as 150 pixels
 
 clock clk with period 1
-binary "enable" as en
-binary "R/W" as rw
-binary "data Valid" as dv
-concise "dataBus" as db
-concise "address bus" as addr
+binary "启用" as en
+binary "读/写" as rw
+binary "数据有效" as dv
+concise "数据总线" as db
+concise "地址总线" as addr
 
 @6 as :write_beg
 @10 as :write_end
@@ -321,16 +321,16 @@ dv is low
 @21 
 db is "0x0"
 
-highlight :write_beg to :write_end #Gold:Write
-highlight :read_beg to :read_end #lightBlue:Read
+highlight :write_beg to :write_end #Gold:写
+highlight :read_beg to :read_end #lightBlue:读
 
-db@:write_beg-1 <-> @:write_end : setup time
-db@:write_beg-1 -> addr@:write_end+1 : hold
+db@:write_beg-1 <-> @:write_end : 设置时间
+db@:write_beg-1 -> addr@:write_end+1 : 保持
 @enduml
 
 :::
 
-::: preview RegExp
+::: preview 正则图
 
 @startregex
 /<style(\s*lang=(['"])(.*?)\2)?\s*(?:scoped)?>([\s\S]+)<\/style>
@@ -338,56 +338,56 @@ db@:write_beg-1 -> addr@:write_end+1 : hold
 
 :::
 
-::: preview Network
+::: preview 网络图
 
 @startuml
 nwdiag {
   group nightly {
     color = "#FFAAAA";
-    description = "<&clock> Restarted nightly <&clock>";
+    description = "<&clock> 每晚重启 <&clock>";
     web02;
     db01;
   }
-  network dmz {
+  network 缓冲区 {
       address = "210.x.x.x/24"
 
-      user [description = "<&person*4.5>\n user1"];
-      web01 [address = "210.x.x.1, 210.x.x.20",  description = "<&cog*4>\nweb01"]
-      web02 [address = "210.x.x.2",  description = "<&cog*4>\nweb02"];
+   plain   user [description = "<&person*4.5>\n 用户1"];
+      web01 [address = "210.x.x.1, 210.x.x.20",  description = "<&cog*4>\n网战01"]
+      web02 [address = "210.x.x.2",  description = "<&cog*4>\n网站02"];
 
   }
-  network internal {
+  network 内网 {
       address = "172.x.x.x/24";
 
-      web01 [address = "172.x.x.1"];
+   plain   web01 [address = "172.x.x.1"];
       web02 [address = "172.x.x.2"];
-      db01 [address = "172.x.x.100",  description = "<&spreadsheet*4>\n db01"];
-      db02 [address = "172.x.x.101",  description = "<&spreadsheet*4>\n db02"];
-      ptr  [address = "172.x.x.110",  description = "<&print*4>\n ptr01"];
+      db01 [address = "172.x.x.100",  description = "<&spreadsheet*4>\n 数据库01"];
+      db02 [address = "172.x.x.101",  description = "<&spreadsheet*4>\n 数据库02"];
+      ptr  [address = "172.x.x.110",  description = "<&print*4>\n 打印机r01"];
   }
 }
 @enduml
 
 :::
 
-::: preview Salt
+::: preview 图形界面
 
 @startsalt
 {+
-{/ <b>General | Fullscreen | Behavior | Saving }
+{/ <b>通用 | 全屏 | 行为 | 保存 }
 {
-{ Open image in: | ^Smart Mode^ }
-[X] Smooth images when zoomed
-[X] Confirm image deletion
-[ ] Show hidden images
+{ 图片打开模式: | ^智能模式^ }
+[X] 缩放时平滑显示图片
+[X] 图片删除确认
+[ ] 显示隐藏图片
 }
-[Close]
+[关闭]
 }
 @endsalt
 
 :::
 
-::: preview Archimate
+::: preview 架构图
 
 @startuml
 skinparam rectangle<<behavior>> {
@@ -456,7 +456,7 @@ endlegend
 
 :::
 
-::: preview Gantt
+::: preview 甘特图
 
 @startgantt
 <style>
@@ -541,7 +541,7 @@ end note
 
 :::
 
-::: preview Mindmap
+::: preview 思维导图
 
 @startmindmap
 caption figure 1
@@ -574,7 +574,7 @@ endlegend
 
 :::
 
-::: preview WBS
+::: preview 工作分解结构图
 
 @startwbs
 + New Job
@@ -656,6 +656,7 @@ xmas-fifth-day:
 
 :::
 
+<!-- endregion after -->
 
 <!-- prettier-ignore-end -->
 <!-- markdownlint-enable -->

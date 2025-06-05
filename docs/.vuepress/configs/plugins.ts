@@ -66,6 +66,15 @@ export const plugins = [
   }),
   markdownIncludePlugin({
     deep: true,
+    resolvePath: (file) => {
+      if (file.startsWith('@echarts'))
+        return file.replace(
+          '@echarts',
+          path.resolve(__dirname, '../echarts-snippets'),
+        )
+
+      return file
+    },
   }),
   markdownMathPlugin({
     type: 'katex',

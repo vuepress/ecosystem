@@ -4,13 +4,13 @@ icon: fab fa-markdown
 
 # Markmap
 
-Add Markmap support to the Markdown files in your VuePress site.
+为你的 VuePress 站点中的 Markdown 文件添加 Markmap 支持。
 
 <!-- more -->
 
-## Installation
+## 安装
 
-Install `markmap-lib`, `markmap-toolbar` and `markmap-view` in your project:
+在你的项目中安装 `markmap-lib`、`markmap-toolbar` 和 `markmap-view`：
 
 ::: code-tabs#shell
 
@@ -34,7 +34,7 @@ npm i -D markmap-lib markmap-toolbar markmap-view
 
 :::
 
-Then enable it via:
+然后通过以下方式启用：
 
 ```ts {7} title=".vuepress/config.ts"
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
@@ -42,24 +42,26 @@ import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 export default {
   plugins: [
     markdownChartPlugin({
-      // Enable Markmap
+      // 启用 Markmap
       markmap: true,
     }),
   ],
 }
 ```
 
-## Syntax
+<!-- #region after -->
+
+## 语法
 
 ````md
 ```markmap
-<!-- contents here -->
+<!-- 在这里放置内容 -->
 ```
 ````
 
-Configuring through frontmatter syntax is supported.
+支持通过 Frontmatter 语法进行配置。
 
-## Demo
+## 案例
 
 ::: preview
 
@@ -71,25 +73,25 @@ markmap:
 
 # markmap
 
-## Links
+## 链接
 
 - <https://markmap.js.org/>
 - [GitHub](https://github.com/markmap/markmap)
 
-## Features
+## 功能
 
-- links
-- **strong** ~~del~~ *italic* ==highlight==
-- multiline
-  text
-- `inline code`
+- 链接
+- **强调** ~~删除线~~ *斜体* ==高亮==
+- 多行
+  文字
+- `行内代码`
 -
     ```js
     console.log('code block');
     ```
 - Katex
   - $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$
-- Now we can wrap very very very very long text based on `maxWidth` option
+- 现在我们可以通过 `maxWidth` 选项自动换行非常非常非常非常非常非常非常非常非常非常长的内容
 ````
 
 :::

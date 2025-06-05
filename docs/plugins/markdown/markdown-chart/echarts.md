@@ -4,15 +4,15 @@ icon: chart-simple
 
 # ECharts
 
-Add [echarts][] support to the Markdown files in your VuePress site.
+Add [ECharts][] support to the Markdown files in your VuePress site.
 
 [echarts]: https://echarts.apache.org/en/index.html
 
 <!-- more -->
 
-## Settings
+## Installation
 
-Install [echarts][] in your project:
+Install [ECharts][] in your project:
 
 ::: code-tabs#shell
 
@@ -36,15 +36,15 @@ npm i -D echarts
 
 :::
 
-Then enabling via:
+Then enable it via:
 
-```js {7} title=".vuepress/config.js"
+```ts {7} title=".vuepress/config.ts"
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 
 export default {
   plugins: [
     markdownChartPlugin({
-      // Enable echarts
+      // Enable ECharts
       echarts: true,
     }),
   ],
@@ -98,7 +98,6 @@ You can use top-level await and `fetch` to get data from network requests.
 You can import and call `defineEChartsConfig` in [client config file][client-config] to customize echarts.
 
 ```ts title=".vuepress/client.ts"
-import { defineClientConfig } from 'vuepress/client'
 import { defineEChartsConfig } from 'vuepress-plugin-md-enhance/client'
 
 defineEChartsConfig({
@@ -109,10 +108,6 @@ defineEChartsConfig({
     // echarts setup
     // e.g.: await import("echarts-wordcloud")
   },
-})
-
-export default defineClientConfig({
-  // ...
 })
 ```
 

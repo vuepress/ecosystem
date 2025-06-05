@@ -4,15 +4,15 @@ icon: chart-simple
 
 # Chart.js
 
-Add [Chart.js][] support to the Markdown files in your VuePress site.
+为你 VuePress 站点中的 Markdown 文件添加 [Chart.js][] 支持。
 
 [chart.js]: https://www.chartjs.org/docs/latest/
 
 <!-- more -->
 
-## Installation
+## 安装
 
-Install [Chart.js][] in your project:
+在你的项目中安装 [Chart.js][]：
 
 ::: code-tabs#shell
 
@@ -36,7 +36,7 @@ npm i -D chart.js
 
 :::
 
-Then enable it via:
+然后通过以下方式启用：
 
 ```ts {7} title=".vuepress/config.ts"
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
@@ -44,43 +44,43 @@ import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 export default {
   plugins: [
     markdownChartPlugin({
-      // Enable Chart.js
+      // 启用 Chart.js
       chartjs: true,
     }),
   ],
 }
 ```
 
-## Syntax
+## 语法
 
 ````md
-::: chartjs Chart Title
+::: chartjs 图表标题
 
 ```json
 {
-  // Your chart configuration here
+  // 你的图表配置
 }
 ```
 
 :::
 ````
 
-Both `js` and `javascript` code blocks are also supported. For these, you should assign your export object to `module.exports`.
+同时支持 `js` 和 `javascript` 代码块。对于这些，你应该将导出对象赋值给 `module.exports`。
 
-## Demo
+## 案例
 
-:::: preview Bar Chart
+:::: preview 块状图
 
-::: chartjs A bar chart
+::: chartjs 一个块状图案例
 
 ```json
 {
   "type": "bar",
   "data": {
-    "labels": ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    "labels": ["红色", "蓝色", "黄色", "绿色", "紫色", "橙色"],
     "datasets": [
       {
-        "label": "# of Votes",
+        "label": "投票数",
         "data": [12, 19, 3, 5, 2, 3],
         "backgroundColor": [
           "rgba(255, 99, 132, 0.2)",
@@ -116,9 +116,9 @@ Both `js` and `javascript` code blocks are also supported. For these, you should
 
 ::::
 
-:::: preview Bubble Chart
+:::: preview 气泡图
 
-::: chartjs A Bubble Chart
+::: chartjs 一个气泡图案例
 
 ```json
 {
@@ -126,7 +126,7 @@ Both `js` and `javascript` code blocks are also supported. For these, you should
   "data": {
     "datasets": [
       {
-        "label": "First Dataset",
+        "label": "第一个数据集",
         "data": [
           { "x": 20, "y": 30, "r": 15 },
           { "x": 40, "y": 10, "r": 10 }
@@ -142,18 +142,18 @@ Both `js` and `javascript` code blocks are also supported. For these, you should
 
 ::::
 
-:::: preview Line Chart
+:::: preview 线状图
 
-::: chartjs A Line Chart
+::: chartjs 一个线状图案例
 
 ```json
 {
   "type": "line",
   "data": {
-    "labels": ["January", "February", "March", "April", "May", "June", "July"],
+    "labels": ["一月", "二月", "三月", "四月", "五月", "六月", "七月"],
     "datasets": [
       {
-        "label": "My First Dataset",
+        "label": "我的第一个数据集",
         "data": [65, 59, 80, 81, 56, 55, 40],
         "fill": false,
         "borderColor": "rgb(75, 192, 192)",
@@ -168,18 +168,18 @@ Both `js` and `javascript` code blocks are also supported. For these, you should
 
 ::::
 
-:::: preview Polar Area Chart
+:::: preview 玫瑰图
 
-::: chartjs A Polar Area Chart
+::: chartjs 一个玫瑰图案例
 
 ```json
 {
   "type": "polarArea",
   "data": {
-    "labels": ["Red", "Green", "Yellow", "Grey", "Blue"],
+    "labels": ["红色", "绿色", "黄色", "灰色", "蓝色"],
     "datasets": [
       {
-        "label": "My First Dataset",
+        "label": "我的第一个数据集",
         "data": [11, 16, 7, 3, 14],
         "backgroundColor": [
           "rgb(255, 99, 132)",
@@ -198,26 +198,18 @@ Both `js` and `javascript` code blocks are also supported. For these, you should
 
 ::::
 
-:::: preview Radar Chart
+:::: preview 雷达图
 
-::: chartjs A Radar Chart
+::: chartjs 一个雷达图案例
 
 ```json
 {
   "type": "radar",
   "data": {
-    "labels": [
-      "Eating",
-      "Drinking",
-      "Sleeping",
-      "Designing",
-      "Coding",
-      "Cycling",
-      "Running"
-    ],
+    "labels": ["吃饭", "喝水", "睡觉", "设计", "编程", "骑车", "跑步"],
     "datasets": [
       {
-        "label": "My First Dataset",
+        "label": "我的第一个数据集",
         "data": [65, 59, 90, 81, 56, 55, 40],
         "fill": true,
         "backgroundColor": "rgba(255, 99, 132, 0.2)",
@@ -228,7 +220,7 @@ Both `js` and `javascript` code blocks are also supported. For these, you should
         "pointHoverBorderColor": "rgb(255, 99, 132)"
       },
       {
-        "label": "My Second Dataset",
+        "label": "我的第二个数据集",
         "data": [28, 48, 40, 19, 96, 27, 100],
         "fill": true,
         "backgroundColor": "rgba(54, 162, 235, 0.2)",
@@ -254,9 +246,9 @@ Both `js` and `javascript` code blocks are also supported. For these, you should
 
 ::::
 
-:::: preview Scatter Chart
+:::: preview 散点图
 
-::: chartjs A Scatter Chart
+::: chartjs 一个散点图案例
 
 ```json
 {
@@ -264,7 +256,7 @@ Both `js` and `javascript` code blocks are also supported. For these, you should
   "data": {
     "datasets": [
       {
-        "label": "Scatter Dataset",
+        "label": "散点数据集",
         "data": [
           { "x": -10, "y": 0 },
           { "x": 0, "y": 10 },
@@ -290,6 +282,6 @@ Both `js` and `javascript` code blocks are also supported. For these, you should
 
 ::::
 
-## Docs
+## 文档
 
-For details, please see [Chart.js Docs](https://www.chartjs.org/docs/latest/).
+相关详情，详见 [Chart.js 文档](https://www.chartjs.org/docs/latest/).
