@@ -6,11 +6,10 @@ const SUPPORTED_PRESETS = ['ant', 'pie', 'vue']
 
 const flowchartRender = (tokens: Token[], index: number): string => {
   const token = tokens[index]
-  const key = `flowchart-${index}`
   const { content, info } = token
   const preset = info.trim().split(':', 2)[1]
 
-  return `<FlowChart id="${key}" code="${encodeData(content)}" preset="${
+  return `<FlowChart code="${encodeData(content)}" preset="${
     SUPPORTED_PRESETS.includes(preset) ? preset : 'vue'
   }"></FlowChart>`
 }

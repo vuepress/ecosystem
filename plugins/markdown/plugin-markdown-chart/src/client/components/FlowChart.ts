@@ -11,6 +11,7 @@ import {
   ref,
   shallowRef,
   toRefs,
+  useId,
   watch,
 } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
@@ -31,13 +32,6 @@ export default defineComponent({
     code: { type: String, required: true },
 
     /**
-     * Flowchart id
-     *
-     * 流程图 id
-     */
-    id: { type: String, required: true },
-
-    /**
      * Flowchart preset
      *
      * 流程图预设
@@ -49,7 +43,8 @@ export default defineComponent({
   },
 
   setup(props) {
-    const { code, id, preset } = toRefs(props)
+    const id = useId()
+    const { code, preset } = toRefs(props)
     const element = shallowRef<HTMLDivElement>()
 
     const loaded = ref(false)
@@ -69,7 +64,7 @@ export default defineComponent({
           if (scale.value !== newScale) {
             scale.value = newScale
 
-            flowchart.draw(props.id, {
+            flowchart.draw(id, {
               ...flowchartPresets[props.preset],
               scale: newScale,
             })
@@ -98,7 +93,7 @@ export default defineComponent({
       loaded.value = true
 
       // Draw svg to #id
-      flowchart.draw(props.id, {
+      flowchart.draw(id, {
         ...flowchartPresets[props.preset],
         scale: scale.value,
       })
@@ -131,7 +126,7 @@ export default defineComponent({
       h('div', {
         ref: element,
         class: ['flowchart-wrapper', props.preset],
-        id: props.id,
+        id,
         style: {
           display: loaded.value ? 'block' : 'none',
         },

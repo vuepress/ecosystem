@@ -63,4 +63,4 @@ markmap:
 "
 `;
 
-exports[`markmap plugin > Should render \`\`\`markmap 1`] = `"<MarkMap id="markmap-0" data="eJxdjz9PwzAQxXd/iie1A0RyKyqmQhgLEhUrAwXFSazErWMH+9IWquazc42ahcH2+X7v3R8ppWhU2DWqXQqg8NaHVdD6V6/1XtslFuIiERNcVRxOsDZuF4WQeKyJ2ricz690to0zH6r5E7OPZ0MvXf55M2oqQ3WXzwrfjPLxvR2qrrSiLuihsB06SCRJpOBdlSTo+1LbvkdiSFlTJEjT2lS15UNpytqms2TYqHkR0kfiVGbcJcF7lToTkgGQZdk2DlHhXSQopLh7GBGbXhW7+S8xPTI7yRybtsEmfgc65V8Lea+KMzZ+rwMW6jxly5s/4MBtlMMhqBaMfv5fltcY5kKuoi7hHbJGHd9NSXUG35LxTog/qFx+Wg=="></MarkMap>"`;
+exports[`markmap plugin > Should render \`\`\`markmap 1`] = `"<MarkMap content="eJxdjz9PwzAQxXd/iie1A0RyKyqmQhgLEhUrAwXFSazErWMH+9IWquazc42ahcH2+X7v3R8ppWhU2DWqXQqg8NaHVdD6V6/1XtslFuIiERNcVRxOsDZuF4WQeKyJ2ricz690to0zH6r5E7OPZ0MvXf55M2oqQ3WXzwrfjPLxvR2qrrSiLuihsB06SCRJpOBdlSTo+1LbvkdiSFlTJEjT2lS15UNpytqms2TYqHkR0kfiVGbcJcF7lToTkgGQZdk2DlHhXSQopLh7GBGbXhW7+S8xPTI7yRybtsEmfgc65V8Lea+KMzZ+rwMW6jxly5s/4MBtlMMhqBaMfv5fltcY5kKuoi7hHbJGHd9NSXUG35LxTog/qFx+Wg=="></MarkMap>"`;

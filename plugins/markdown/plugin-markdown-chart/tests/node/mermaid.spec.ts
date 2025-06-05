@@ -69,14 +69,10 @@ ${flowchartDemo}
 \`\`\`
 `)
 
-    expect(renderResult).toMatch(
-      /<Mermaid id="mermaid.*?" code=".*?"><\/Mermaid>/,
-    )
+    expect(renderResult).toMatch(/<Mermaid code=".*?"><\/Mermaid>/)
     expect(
       decodeData(
-        /<Mermaid id="mermaid.*?" code="(.*?)"><\/Mermaid>/.exec(
-          renderResult,
-        )?.[1] ?? '',
+        /<Mermaid code="(.*?)"><\/Mermaid>/.exec(renderResult)?.[1] ?? '',
       ),
     ).toMatch(flowchartDemo)
     expect(renderResult).toMatchSnapshot()

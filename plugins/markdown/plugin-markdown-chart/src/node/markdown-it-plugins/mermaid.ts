@@ -3,9 +3,7 @@ import type { PluginSimple } from 'markdown-it'
 import type { RenderRule } from 'markdown-it/lib/renderer.mjs'
 
 const mermaidRenderer: RenderRule = (tokens, index) =>
-  `<Mermaid id="mermaid-${index}" code="${encodeData(
-    tokens[index].content,
-  )}"></Mermaid>`
+  `<Mermaid code="${encodeData(tokens[index].content)}"></Mermaid>`
 
 interface MermaidOptions {
   content: string
@@ -71,8 +69,8 @@ ${
 `
 }
 
-const getMermaid = (options: MermaidOptions, index: number): string =>
-  `<Mermaid id="mermaid-${index}" code="${encodeData(getMermaidContent(options))}"${
+const getMermaid = (options: MermaidOptions): string =>
+  `<Mermaid code="${encodeData(getMermaidContent(options))}"${
     options.title ? ` title="${encodeData(options.title)}"` : ''
   }></Mermaid>`
 
@@ -122,15 +120,12 @@ export const mermaid: PluginSimple = (md) => {
     const [name, ...rest] = fenceInfo.split(' ')
 
     if (name in DIAGRAM_MAP)
-      return getMermaid(
-        {
-          diagram: DIAGRAM_MAP[name][0] || name,
-          title: rest.join(' '),
-          content,
-          indent: DIAGRAM_MAP[name][1] ?? true,
-        },
-        index,
-      )
+      return getMermaid({
+        diagram: DIAGRAM_MAP[name][0] || name,
+        title: rest.join(' '),
+        content,
+        indent: DIAGRAM_MAP[name][1] ?? true,
+      })
 
     return fence!(...args)
   }

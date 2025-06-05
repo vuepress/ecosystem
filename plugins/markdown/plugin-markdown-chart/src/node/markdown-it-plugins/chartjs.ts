@@ -17,8 +17,6 @@ export const chartjs: PluginSimple = (md) => {
         .slice(7)
         .trim()
 
-      const key = `chartjs-${index}`
-
       let config = '{}'
       let configType = ''
 
@@ -43,7 +41,7 @@ export const chartjs: PluginSimple = (md) => {
         tokens[i].hidden = true
       }
 
-      return `<ChartJS id="${key}" config="${config}" ${
+      return `<ChartJS config="${config}" ${
         title ? `title="${encodeURIComponent(title)}" ` : ''
       }type="${configType}">`
     },

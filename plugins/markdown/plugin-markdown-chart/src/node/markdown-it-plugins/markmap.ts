@@ -2,13 +2,8 @@ import { encodeData } from '@vuepress/helper'
 import type { PluginSimple } from 'markdown-it'
 import type Token from 'markdown-it/lib/token.mjs'
 
-const markmapRender = (tokens: Token[], index: number): string => {
-  const token = tokens[index]
-  const key = `markmap-${index}`
-  const { content } = token
-
-  return `<MarkMap id="${key}" content="${encodeData(content)}"></MarkMap>`
-}
+const markmapRender = (tokens: Token[], index: number): string =>
+  `<MarkMap content="${encodeData(tokens[index].content)}"></MarkMap>`
 
 /**
  * Markmap markdown-it plugin

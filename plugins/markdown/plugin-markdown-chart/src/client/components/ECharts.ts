@@ -10,7 +10,6 @@ import {
   onUnmounted,
   ref,
   shallowRef,
-  toRefs,
   watch,
 } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
@@ -68,16 +67,6 @@ export default defineComponent({
     },
 
     /**
-     * Chart id
-     *
-     * 图表 id
-     */
-    id: {
-      type: String,
-      required: true,
-    },
-
-    /**
      * Chart title
      *
      * 图表标题
@@ -96,7 +85,6 @@ export default defineComponent({
   },
 
   setup(props) {
-    const { config, id } = toRefs(props)
     const echartsConfig = useEChartsConfig()
     const echartsContainer = shallowRef<HTMLElement>()
 
@@ -147,7 +135,7 @@ export default defineComponent({
 
       // config must be changed if type is changed, so no need to watch it
       watch(
-        [config, id],
+        () => props.config,
         async () => {
           destroyEcharts()
           await nextTick()
@@ -167,7 +155,6 @@ export default defineComponent({
         h('div', {
           ref: echartsContainer,
           class: 'echarts-container',
-          id: props.id,
         }),
         loaded.value
           ? null

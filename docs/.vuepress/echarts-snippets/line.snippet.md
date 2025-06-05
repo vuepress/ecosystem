@@ -7,7 +7,7 @@ let now = new Date(1997, 9, 3)
 let value = Math.random() * 1000
 
 const randomData = () => {
-  now = new Date(+now + oneDay)
+  now = new Date(now.getMilliseconds() + oneDay)
   value = value + Math.random() * 21 - 10
   return {
     name: now.toString(),

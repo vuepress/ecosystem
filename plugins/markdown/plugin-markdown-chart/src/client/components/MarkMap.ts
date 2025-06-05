@@ -22,16 +22,6 @@ export default defineComponent({
 
   props: {
     /**
-     * Chart id
-     *
-     * 图表 id
-     */
-    id: {
-      type: String,
-      required: true,
-    },
-
-    /**
      * Markmap content
      *
      * Markmap
@@ -43,7 +33,7 @@ export default defineComponent({
   },
 
   setup(props) {
-    const { content, id } = toRefs(props)
+    const { content } = toRefs(props)
     const markmapWrapper = shallowRef<HTMLElement>()
     const markmapSVG = shallowRef<SVGElement>()
 
@@ -122,9 +112,8 @@ export default defineComponent({
     onMounted(() => {
       if (!__VUEPRESS_DEV__) return
 
-      // config must be changed if type is changed, so no need to watch it
       watch(
-        [content, id],
+        content,
         async () => {
           destroyMarkmap()
           await nextTick()
@@ -141,7 +130,6 @@ export default defineComponent({
         h('svg', {
           ref: markmapSVG,
           class: 'markmap-svg',
-          id: props.id,
         }),
         loaded.value
           ? null

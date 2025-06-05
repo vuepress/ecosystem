@@ -6,7 +6,15 @@ import {
 } from '@vuepress/helper/client'
 import { watchImmediate } from '@vueuse/core'
 import type { VNode } from 'vue'
-import { computed, defineComponent, h, onMounted, ref, shallowRef } from 'vue'
+import {
+  computed,
+  defineComponent,
+  h,
+  onMounted,
+  ref,
+  shallowRef,
+  useId,
+} from 'vue'
 
 import { useMermaidOptions } from '../helpers/index.js'
 import type { MermaidThemeVariables } from '../typings/index.js'
@@ -76,14 +84,6 @@ export default defineComponent({
 
   props: {
     /**
-     * Mermaid id
-     */
-    id: {
-      type: String,
-      required: true,
-    },
-
-    /**
      * Mermaid config
      *
      * Mermaid 配置
@@ -102,6 +102,7 @@ export default defineComponent({
   },
 
   setup(props) {
+    const id = useId()
     const isDarkMode = useDarkMode()
     const { themeVariables, ...mermaidOptions } = useMermaidOptions()
     const mermaidElement = shallowRef<HTMLElement>()
@@ -135,7 +136,7 @@ export default defineComponent({
         startOnLoad: false,
       })
 
-      svgCode.value = (await mermaid.render(props.id, code.value)).svg
+      svgCode.value = (await mermaid.render(id, code.value)).svg
     }
 
     const preview = (): void => {
@@ -160,7 +161,7 @@ export default defineComponent({
       a.setAttribute('href', dataURI)
       a.setAttribute(
         'download',
-        `${props.title ? decodeData(props.title) : props.id}.svg`,
+        `${props.title ? decodeData(props.title) : id}.svg`,
       )
       a.click()
     }

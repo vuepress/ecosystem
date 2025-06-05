@@ -29,7 +29,7 @@ export default vuepress(
       '**/lib/**',
       '**/template/**',
       '**/node_modules/**',
-      '**/*.snippet.md',
+      'heat-map.snippet.md',
     ],
     imports: {
       packageDir: [

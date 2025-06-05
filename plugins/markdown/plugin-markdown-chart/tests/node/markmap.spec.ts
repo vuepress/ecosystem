@@ -42,9 +42,7 @@ ${content}
 \`\`\`\`
 `)
 
-    expect(renderResult).toMatch(
-      /<MarkMap id="markmap-\d+" data="[^"]*?"><\/MarkMap>/,
-    )
+    expect(renderResult).toMatch(/<MarkMap content="[^"]*?"><\/MarkMap>/)
     expect(renderResult).toMatchSnapshot()
   })
 

@@ -9,7 +9,6 @@ import {
   onUnmounted,
   ref,
   shallowRef,
-  toRefs,
   watch,
 } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
@@ -52,16 +51,6 @@ export default defineComponent({
     },
 
     /**
-     * Chart id
-     *
-     * 图表 id
-     */
-    id: {
-      type: String,
-      required: true,
-    },
-
-    /**
      * Chart title
      *
      * 图表标题
@@ -80,7 +69,6 @@ export default defineComponent({
   },
 
   setup(props) {
-    const { config, id } = toRefs(props)
     const isDarkMode = useDarkMode()
     const chartElement = shallowRef<HTMLElement>()
     const chartCanvasElement = shallowRef<HTMLCanvasElement>()
@@ -124,7 +112,7 @@ export default defineComponent({
       watch(
         __VUEPRESS_DEV__
           ? // config must be changed if type is changed, so no need to watch type
-            [config, id, isDarkMode]
+            [() => props.config, isDarkMode]
           : isDarkMode,
         async () => {
           destroyChart()
@@ -149,7 +137,6 @@ export default defineComponent({
         {
           ref: chartElement,
           class: 'chartjs-wrapper',
-          id: props.id,
           style: {
             display: loaded.value ? 'block' : 'none',
           },

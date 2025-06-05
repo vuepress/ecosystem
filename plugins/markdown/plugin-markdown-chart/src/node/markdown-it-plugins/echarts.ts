@@ -4,12 +4,10 @@ import type { PluginSimple } from 'markdown-it'
 import type Token from 'markdown-it/lib/token.mjs'
 
 const echartsRender = (tokens: Token[], index: number): string => {
-  const token = tokens[index]
-  const key = `echarts-${index}`
-  const { content, info } = token
+  const { content, info } = tokens[index]
   const title = info.trim().split(':', 2)[1]
 
-  return `<ECharts id="${key}" config="${encodeData(content)}"${
+  return `<ECharts config="${encodeData(content)}"${
     title ? ` title="${encodeURIComponent(title)}"` : ''
   }></ECharts>`
 }
@@ -45,8 +43,6 @@ export const echarts: PluginSimple = (md) => {
         .slice(7)
         .trim()
 
-      const key = `echarts-${index}`
-
       let config = '{}'
       let isJavaScript = false
 
@@ -70,7 +66,7 @@ export const echarts: PluginSimple = (md) => {
         tokens[i].hidden = true
       }
 
-      return `<ECharts id="${key}" config="${encodeData(config)}"${
+      return `<ECharts config="${encodeData(config)}"${
         title ? ` title="${encodeURIComponent(title)}"` : ''
       }${isJavaScript ? ' type="js"' : ''}>`
     },
