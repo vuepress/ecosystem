@@ -1,3 +1,7 @@
+---
+icon: chart-no-axes-combined
+---
+
 # markdown-chart
 
 <NpmBadge package="@vuepress/plugin-markdown-chart" />

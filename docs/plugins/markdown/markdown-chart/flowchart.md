@@ -1,5 +1,5 @@
 ---
-icon: route
+icon: chart-network
 ---
 
 # Flowchart

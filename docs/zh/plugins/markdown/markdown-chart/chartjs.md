@@ -1,5 +1,5 @@
 ---
-icon: chart-simple
+icon: chart-bar-increasing
 ---
 
 # Chart.js

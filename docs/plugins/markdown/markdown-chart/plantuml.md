@@ -1,5 +1,5 @@
 ---
-icon: diagram-project
+icon: chart-column-stacked
 ---
 
 # PlantUML

@@ -109,7 +109,7 @@ export const sidebarZh: SidebarOptions = {
     'append-date',
     {
       text: 'markdown-chart',
-      icon: 'chart-simple',
+      icon: 'chart-no-axes-combined',
       prefix: 'markdown-chart/',
       link: 'markdown-chart/',
       children: [

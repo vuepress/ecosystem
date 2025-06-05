@@ -1,5 +1,5 @@
 ---
-icon: fab fa-markdown
+icon: list-tree
 ---
 
 # Markmap

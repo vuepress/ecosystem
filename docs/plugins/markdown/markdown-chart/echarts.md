@@ -1,5 +1,5 @@
 ---
-icon: chart-simple
+icon: chart-scatter
 ---
 
 # ECharts
