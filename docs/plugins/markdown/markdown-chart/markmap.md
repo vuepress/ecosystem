@@ -3,8 +3,6 @@ title: Markmap
 icon: fab fa-markdown
 ---
 
-<!-- #region before -->
-
 Let the Markdown file support markmap in your VuePress site.
 
 <!-- more -->
@@ -37,8 +35,6 @@ npm i -D markmap-lib markmap-toolbar markmap-view
 
 Then enabling via:
 
-<!-- #endregion before -->
-
 ```js {7} title=".vuepress/config.js"
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 
@@ -51,8 +47,6 @@ export default {
   ],
 }
 ```
-
-<!-- #region after -->
 
 ## Syntax
 
@@ -98,5 +92,3 @@ markmap:
 ````
 
 :::
-
-<!-- #endregion after -->

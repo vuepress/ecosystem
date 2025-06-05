@@ -3,8 +3,6 @@ title: Flowchart
 icon: route
 ---
 
-<!-- #region before -->
-
 Let the Markdown file support flow chart in your VuePress site.
 
 <!-- more -->
@@ -37,8 +35,6 @@ npm i -D flowchart.ts
 
 Then enabling via:
 
-<!-- #endregion before -->
-
 ```js {7} title=".vuepress/config.js"
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 
@@ -51,8 +47,6 @@ export default {
   ],
 }
 ```
-
-<!-- #region after -->
 
 ## Syntax
 
@@ -71,10 +65,6 @@ Available presets for now:
 - `vue` (default)
 - `ant`
 - `pie`
-
-## Playground
-
-<FlowChartPlayground />
 
 ## Demo
 
@@ -347,11 +337,3 @@ To emphasize a specific path in your flowchart, you can define it like this:
 ```md
 st@>op1({"stroke":"Red"})@>cond({"stroke":"Red","stroke-width":6,"arrow-end":"classic-wide-long"})@>c2({"stroke":"Red"})@>op2({"stroke":"Red"})@>e({"stroke":"Red"})
 ```
-
-<script setup lang="ts">
-import { defineAsyncComponent } from 'vue';
-
-const FlowChartPlayground = defineAsyncComponent(()=> import('@FlowChartPlayground'));
-</script>
-
-<!-- #endregion after -->

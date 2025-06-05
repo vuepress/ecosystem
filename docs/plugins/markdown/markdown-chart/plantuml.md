@@ -3,8 +3,6 @@ title: Plantuml
 icon: diagram-project
 ---
 
-<!-- #region before -->
-
 Let the Markdown files in your VuePress site support [plantuml][].
 
 [plantuml]: https://plantuml.com/
@@ -14,8 +12,6 @@ Let the Markdown files in your VuePress site support [plantuml][].
 ## Settings
 
 You can enable this feature via:
-
-<!-- #endregion before -->
 
 ```js {7} title=".vuepress/config.js"
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
@@ -29,8 +25,6 @@ export default {
   ],
 }
 ```
-
-<!-- #region after -->
 
 ## Syntax
 
@@ -661,7 +655,6 @@ xmas-fifth-day:
 
 :::
 
-<!-- endregion after -->
 
 <!-- prettier-ignore-end -->
 <!-- markdownlint-enable -->
