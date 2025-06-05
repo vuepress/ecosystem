@@ -7,8 +7,18 @@ import { isFunction } from 'vuepress/shared'
 
 declare const __VUEPRESS_DEV__: boolean
 
+/**
+ * Reveal.js options
+ *
+ * Reveal.js 选项
+ */
 export type RevealJsOptions = Partial<Omit<Reveal.Options, 'embedded'>>
 
+/**
+ * Reveal.js options ref
+ *
+ * Reveal.js 选项响应式引用
+ */
 export type RevealJsOptionsRef = Ref<RevealJsOptions>
 
 const revealOptions: RevealJsOptionsRef = ref({})
@@ -17,6 +27,24 @@ const revealJsSymbol: InjectionKey<RevealJsOptionsRef> = Symbol(
   __VUEPRESS_DEV__ ? 'revealjs' : '',
 )
 
+/**
+ * Define reveal.js configuration
+ *
+ * 定义 reveal.js 配置
+ *
+ * @param options - Reveal.js options / Reveal.js 选项
+ *
+ * @example
+ * ```ts
+ * import { defineRevealJsConfig } from '@vuepress/plugin-revealjs/client'
+ *
+ * defineRevealJsConfig({
+ *   hash: true,
+ *   keyboard: true,
+ *   overview: true
+ * })
+ * ```
+ */
 export const defineRevealJsConfig = (
   options: MaybeRefOrGetter<RevealJsOptions>,
 ): void => {
@@ -36,9 +64,15 @@ export const defineRevealJsConfig = (
   }
 }
 
+/**
+ * @internal
+ */
 export const useRevealJsConfig = (): RevealJsOptionsRef =>
   inject(revealJsSymbol)!
 
+/**
+ * @internal
+ */
 export const injectRevealJsConfig = (app: App): void => {
   app.provide(revealJsSymbol, revealOptions)
 }

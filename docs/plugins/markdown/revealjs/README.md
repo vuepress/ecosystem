@@ -31,7 +31,7 @@ export default {
 ## Slide Syntax
 
 - Use `---` to split slides
-- Use `--` to split the slides second time (vertical display)
+- Use `--` to split slides vertically
 
 ```md
 @slidestart
@@ -94,15 +94,15 @@ For the appearance of each theme, see [Themes demo](themes.md).
 
 ::: important Assets Path
 
-Since markdown contents between `@slidestart` and `@slideend` are handled by Reveal.js at browser, so you can only use absolute paths for assets in slides, which must be accessible directly in browser, relative paths or alias are not supported.
+Since markdown content between `@slidestart` and `@slideend` is handled by Reveal.js in the browser, you can only use absolute paths for assets in slides, which must be directly accessible in the browser. Relative paths or aliases are not supported.
 
 :::
 
 ## Slide Layout
 
-By default, the plugin registers a layout named `SlidePage` for you to render "a slides page".
+By default, the plugin registers a layout named `SlidePage` for you to render slides pages.
 
-In pages using this layout, you should only include a single slide syntax and no other contents to avoid rendering problems.
+In pages using this layout, you should only include a single slide syntax and no other content to avoid rendering problems.
 
 ```md
 ---
@@ -184,7 +184,7 @@ For reveal.js options, see [reveal.js config](https://revealjs.com/config/). For
 ### plugins
 
 - Type: `RevealJsPlugin[]`
-- Details: Built-in reveal plugins to enable
+- Details: Built-in reveal.js plugins to enable.
 
   Available values: `highlight`, `math`, `search`, `notes`, `zoom`
 
@@ -192,7 +192,7 @@ For reveal.js options, see [reveal.js config](https://revealjs.com/config/). For
 
 - Type: `RevealJsTheme[]`
 - Default: `['auto']`
-- Details: Themes to enable
+- Details: Themes to enable.
 
   Available values: `auto`, `black`, `white`, `league`, `beige`, `sky`, `night`, `serif`, `simple`, `solarized`, `blood`, `moon`
 
@@ -200,7 +200,7 @@ For reveal.js options, see [reveal.js config](https://revealjs.com/config/). For
 
 - Type: `string | false`
 - Default: `'SlidePage'`
-- Details: Layout component name to render slides
+- Details: Layout component name to render slides.
 
 ## Styles
 
