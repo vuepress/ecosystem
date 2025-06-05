@@ -1,9 +1,9 @@
 ::: echarts
 
 ```js
-///////////////////////////////////////////////////////////////////////////
-// perlin noise helper from https://github.com/josephg/noisejs
-///////////////////////////////////////////////////////////////////////////
+/*
+ * perlin noise helper from https://github.com/josephg/noisejs
+ */
 function getNoiseHelper() {
   class Grad {
     constructor(x, y, z) {
@@ -11,13 +11,16 @@ function getNoiseHelper() {
       this.y = y
       this.z = z
     }
+
     dot2(x, y) {
       return this.x * x + this.y * y
     }
+
     dot3(x, y, z) {
       return this.x * x + this.y * y + this.z * z
     }
   }
+
   const grad3 = [
     new Grad(1, 1, 0),
     new Grad(-1, 1, 0),
@@ -51,8 +54,8 @@ function getNoiseHelper() {
     141, 128, 195, 78, 66, 215, 61, 156, 180,
   ]
   // To remove the need for index wrapping, double the permutation table length
-  let perm = new Array(512)
-  let gradP = new Array(512)
+  const perm = new Array(512)
+  const gradP = new Array(512)
   // This isn't a very good seeding function, but it works ok. It supports 2^16
   // different seed values. Write something better if you need more seeds.
   function seed(seed) {
@@ -86,21 +89,21 @@ function getNoiseHelper() {
   // 2D Perlin Noise
   function perlin2(x, y) {
     // Find unit grid cell containing point
-    let X = Math.floor(x),
-      Y = Math.floor(y)
+    let X = Math.floor(x)
+    let Y = Math.floor(y)
     // Get relative xy coordinates of point within that cell
-    x = x - X
-    y = y - Y
+    x -= X
+    y -= Y
     // Wrap the integer cells at 255 (smaller integer period can be introduced here)
-    X = X & 255
-    Y = Y & 255
+    X &= 255
+    Y &= 255
     // Calculate noise contributions from each of the four corners
-    let n00 = gradP[X + perm[Y]].dot2(x, y)
-    let n01 = gradP[X + perm[Y + 1]].dot2(x, y - 1)
-    let n10 = gradP[X + 1 + perm[Y]].dot2(x - 1, y)
-    let n11 = gradP[X + 1 + perm[Y + 1]].dot2(x - 1, y - 1)
+    const n00 = gradP[X + perm[Y]].dot2(x, y)
+    const n01 = gradP[X + perm[Y + 1]].dot2(x, y - 1)
+    const n10 = gradP[X + 1 + perm[Y]].dot2(x - 1, y)
+    const n11 = gradP[X + 1 + perm[Y + 1]].dot2(x - 1, y - 1)
     // Compute the fade curve value for x
-    let u = fade(x)
+    const u = fade(x)
     // Interpolate the four results
     return lerp(lerp(n00, n10, u), lerp(n01, n11, u), fade(y))
   }
@@ -110,12 +113,12 @@ function getNoiseHelper() {
   }
 }
 
-let noise = getNoiseHelper()
-let xData = []
-let yData = []
+const noise = getNoiseHelper()
+const xData = []
+const yData = []
 noise.seed(Math.random())
 
-let data = []
+const data = []
 for (let i = 0; i <= 200; i++) {
   for (let j = 0; j <= 100; j++) {
     data.push([i, j, noise.perlin2(i / 40, j / 20) + 0.5])
@@ -161,7 +164,7 @@ option = {
     {
       name: 'Gaussian',
       type: 'heatmap',
-      data: data,
+      data,
       emphasis: {
         itemStyle: {
           borderColor: '#333',

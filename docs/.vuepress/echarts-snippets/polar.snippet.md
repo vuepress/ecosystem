@@ -4,8 +4,8 @@
 const data = []
 
 for (let i = 0; i <= 100; i++) {
-  let theta = (i / 100) * 360
-  let r = 5 * (1 + Math.sin((theta / 180) * Math.PI))
+  const theta = (i / 100) * 360
+  const r = 5 * (1 + Math.sin((theta / 180) * Math.PI))
   data.push([r, theta])
 }
 
@@ -32,7 +32,7 @@ const option = {
       coordinateSystem: 'polar',
       name: 'line',
       type: 'line',
-      data: data,
+      data,
     },
   ],
 }

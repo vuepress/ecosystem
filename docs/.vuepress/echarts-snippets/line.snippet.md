@@ -23,18 +23,13 @@ for (let i = 0; i < 1000; i++) data.push(randomData())
 const option = {
   tooltip: {
     trigger: 'axis',
-    formatter: function (params) {
-      params = params[0]
-      var date = new Date(params.name)
-      return (
-        date.getDate() +
-        '/' +
-        (date.getMonth() + 1) +
-        '/' +
-        date.getFullYear() +
-        ' : ' +
-        params.value[1]
-      )
+    formatter: (params) => {
+      const item = params[0]
+      const date = new Date(item.name)
+
+      return `${date.getDate()}/${
+        date.getMonth() + 1
+      }/${date.getFullYear()} : ${item.value[1]}`
     },
     axisPointer: {
       animation: false,
@@ -76,12 +71,15 @@ const option = {
       name: 'Fake Data',
       type: 'line',
       showSymbol: false,
-      data: data,
+      data,
     },
   ],
 }
 const timeId = setInterval(() => {
-  if (echarts._disposed) return clearInterval(timeId)
+  if (echarts._disposed) {
+    clearInterval(timeId)
+    return
+  }
 
   for (let i = 0; i < 5; i++) {
     data.shift()
@@ -90,7 +88,7 @@ const timeId = setInterval(() => {
   echarts.setOption({
     series: [
       {
-        data: data,
+        data,
       },
     ],
   })

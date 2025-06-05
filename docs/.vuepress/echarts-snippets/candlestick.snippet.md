@@ -16,8 +16,8 @@ const splitData = (rawData) => {
   }
 
   return {
-    categoryData: categoryData,
-    values: values,
+    categoryData,
+    values,
   }
 }
 
@@ -216,7 +216,7 @@ const option = {
           },
         ],
         tooltip: {
-          formatter: (param) => param.name + '<br>' + (param.data.coord || ''),
+          formatter: (param) => `${param.name}<br>${param.data.coord || ''}`,
         },
       },
       markLine: {

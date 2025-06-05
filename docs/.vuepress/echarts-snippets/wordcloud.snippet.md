@@ -58,7 +58,7 @@ const option = {
 
       // if the font size is too large for the text to be displayed,
       // whether to shrink the text. If it is set to false, the text will
-      // not be rendered. If it is set to true, the text will be shrinked.
+      // not be rendered. If it is set to true, the text will be shrunk.
       // This option is supported since echarts-wordcloud@2.1.0
       shrinkToFit: false,
 
@@ -71,17 +71,13 @@ const option = {
         fontFamily: 'sans-serif',
         fontWeight: 'bold',
         // Color can be a callback function or a color string
-        color: function () {
+        color() {
           // Random color
-          return (
-            'rgb(' +
-            [
-              Math.round(Math.random() * 160),
-              Math.round(Math.random() * 160),
-              Math.round(Math.random() * 160),
-            ].join(',') +
-            ')'
-          )
+          return `rgb(${[
+            Math.round(Math.random() * 160),
+            Math.round(Math.random() * 160),
+            Math.round(Math.random() * 160),
+          ].join(',')})`
         },
       },
       emphasis: {
@@ -99,8 +95,6 @@ const option = {
         {
           name: 'vuepress theme hope',
           value: 8888,
-          // Style of single text
-          //textStyle: {},
         },
         {
           name: 'Mr.Hope',

@@ -22,7 +22,7 @@ const option = {
       realtimeSort: true,
       name: 'X',
       type: 'bar',
-      data: data,
+      data,
       label: {
         show: true,
         position: 'right',
@@ -66,7 +66,11 @@ const run = () => {
 }
 
 const timeId = setInterval(() => {
-  if (echarts._disposed) return clearInterval(timeId)
+  if (echarts._disposed) {
+    clearInterval(timeId)
+
+    return
+  }
 
   run()
 }, 3000)
