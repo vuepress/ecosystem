@@ -9,6 +9,8 @@ import type { ShikiHighlightOptions } from './types.js'
 
 /**
  * Options of @vuepress/plugin-shiki
+ *
+ * @vuepress/plugin-shiki 的选项
  */
 export type ShikiPluginOptions = MarkdownItCodeBlockTitleOptions &
   MarkdownItLineNumbersOptions &
@@ -18,7 +20,11 @@ export type ShikiPluginOptions = MarkdownItCodeBlockTitleOptions &
     /**
      * Enable twoslash
      *
+     * 启用 twoslash
+     *
      * @description You should install `@shikijs/twoslash` manually.
+     *
+     * 你需要手动安装 `@shikijs/twoslash`。
      *
      * @default false
      */
@@ -27,6 +33,9 @@ export type ShikiPluginOptions = MarkdownItCodeBlockTitleOptions &
       | (ShikiTwoslashOptions & {
           /**
            * The options for caching resolved types
+           *
+           * 缓存解析类型的选项
+           *
            * @default true
            */
           typesCache?: ShikiTwoslashOptions['typesCache'] | true

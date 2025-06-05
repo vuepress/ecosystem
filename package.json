@@ -39,7 +39,7 @@
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@types/node": "^22.15.29",
     "@types/webpack-env": "^1.18.8",
-    "@vitest/coverage-istanbul": "3.1.4",
+    "@vitest/coverage-istanbul": "3.2.1",
     "cpx2": "^8.0.0",
     "cross-env": "^7.0.3",
     "eslint": "^9.28.0",
@@ -64,10 +64,10 @@
     "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "vite": "~6.3.5",
-    "vitest": "3.1.4",
+    "vitest": "3.2.1",
     "vuepress": "catalog:"
   },
-  "packageManager": "pnpm@10.11.0",
+  "packageManager": "pnpm@10.11.1",
   "engines": {
     "node": ">= 20.6.0"
   }

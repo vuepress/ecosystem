@@ -18,6 +18,21 @@ const renderSpace = (text: string): string =>
     (space) => `<span class="${classMap[space]}">${space}</span>`,
   )
 
+/**
+ * Render whitespace in a line based on position
+ *
+ * 根据位置在行中渲染空白字符
+ *
+ * @param node - Line node / 行节点
+ * @param position - Whitespace position / 空白字符位置
+ *
+ * @example
+ * ```ts
+ * import { renderWhitespaceInLine } from '@vuepress/plugin-prismjs'
+ *
+ * renderWhitespaceInLine(lineNode, 'all')
+ * ```
+ */
 export const renderWhitespaceInLine = (
   node: OpenTag,
   position: WhitespacePosition,
@@ -85,9 +100,22 @@ export const renderWhitespaceInLine = (
 }
 
 /**
- * type: 'all' | 'boundary' | 'trailing'
+ * Handle whitespace rendering based on meta string
  *
- * ```js :whitespace[=type]
+ * 基于元字符串处理空白字符渲染
+ *
+ * `` ```js :whitespace[=all|boundary|trailing] ``
+ *
+ * @param parser - Code parser instance / 代码解析器实例
+ * @param meta - Meta string / 元字符串
+ * @param globalOption - Global whitespace option / 全局空白字符选项
+ *
+ * @example
+ * ```ts
+ * import { metaWhitespace } from '@vuepress/plugin-prismjs'
+ *
+ * metaWhitespace(parser, ':whitespace=all', true)
+ * ```
  */
 export const metaWhitespace = (
   parser: CodeParser,

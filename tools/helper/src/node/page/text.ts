@@ -138,9 +138,13 @@ export interface PageTextOptions {
 /**
  * Get plain text from html content
  *
- * @param html html content
- * @param base base url of site
- * @param options options for getting text
+ * 从 HTML 内容中获取纯文本
+ *
+ * @param html - HTML content / HTML 内容
+ * @param base - Base url of site / 站点的基础 URL
+ * @param options - Options for getting text / 获取文本的选项
+ *
+ * @returns Plain text content / 纯文本内容
  */
 export const getText = (
   html: string,
@@ -170,10 +174,13 @@ export const getText = (
 /**
  * Get plain text of page content
  *
- * @param app VuePress App
- * @param page VuePress Page
- * @param options options for getting text
- * @returns plain text of page content
+ * 获取页面内容的纯文本
+ *
+ * @param app - VuePress App / VuePress 应用
+ * @param page - VuePress Page / VuePress 页面
+ * @param options - Options for getting text / 获取文本的选项
+ *
+ * @returns Plain text of page content / 页面内容的纯文本
  */
 export const getPageText = (
   { options: { base } }: App,

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.108](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.107...v2.0.0-rc.108) (2025-06-04)
+
+### Bug Fixes
+
+- **plugin-markdown-math:** fix issues with unexpected mdit.render ([9eee3a1](https://github.com/vuepress/ecosystem/commit/9eee3a1abde636ed0bd3edf0e90cbf4efb730d66))
+
+# [2.0.0-rc.107](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.106...v2.0.0-rc.107) (2025-06-04)
+
+### Performance Improvements
+
+- **plugin-markdown-math:** reduce build memory ([66cd67a](https://github.com/vuepress/ecosystem/commit/66cd67a7180e25d5ffcb9ee66d962f131e24ada1))
+
 # [2.0.0-rc.106](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.105...v2.0.0-rc.106) (2025-05-26)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-math

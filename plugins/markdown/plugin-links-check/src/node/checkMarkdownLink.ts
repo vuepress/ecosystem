@@ -15,7 +15,7 @@ import { logger } from 'vuepress/utils'
  */
 export const checkMarkdownLink = (
   page: Page,
-  { options, pages }: App,
+  app: App,
   isIgnoreLink: (link: string) => boolean,
 ): boolean => {
   const pagePath = page.filePathRelative ?? page.path
@@ -31,7 +31,7 @@ export const checkMarkdownLink = (
       .filter(
         ({ relative }) =>
           // Check whether the page exists
-          pages.every(
+          app.pages.every(
             ({ filePathRelative }) => filePathRelative !== decodeURI(relative),
           ) && !isIgnoreLink(relative),
       ),
@@ -42,10 +42,11 @@ export const checkMarkdownLink = (
         ({ absolute }) =>
           // Check whether the page exists
           absolute &&
-          pages.every(
+          app.pages.every(
             ({ filePathRelative }) =>
               !filePathRelative ||
-              (`${options.base}${filePathRelative}` !== decodeURI(absolute) &&
+              (`${app.siteData.base}${filePathRelative}` !==
+                decodeURI(absolute) &&
                 !isIgnoreLink(absolute)),
           ),
       ),

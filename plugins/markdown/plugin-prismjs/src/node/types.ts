@@ -43,12 +43,16 @@ export interface PrismjsHighlightOptions {
   /**
    * Single theme
    *
+   * 单一主题
+   *
    * @default 'nord'
    */
   theme?: PrismjsTheme
 
   /**
    * Dual themes
+   *
+   * 双主题
    */
   themes?: {
     light: PrismjsTheme
@@ -59,6 +63,10 @@ export interface PrismjsHighlightOptions {
    * Languages to preload
    *
    * Workaround for prismjs language reloading issue
+   *
+   * 要预加载的语言
+   *
+   * 解决 prismjs 语言重新加载问题的方法
    *
    * @default ['markdown', 'jsdoc', 'yaml']
    * @see https://github.com/PrismJS/prism/issues/2716

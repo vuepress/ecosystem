@@ -20,8 +20,26 @@ const resolveLangSync = createSyncFn<ShikiResolveLang>(
   require.resolve('@vuepress/plugin-shiki/resolveLang'),
 )
 
+/**
+ * Load language function type
+ *
+ * 加载语言函数类型
+ */
 export type ShikiLoadLang = (lang: string) => boolean
 
+/**
+ * Create Shiki highlighter with additional features
+ *
+ * 创建带有额外功能的 Shiki 高亮器
+ *
+ * @param app - VuePress app instance / VuePress 应用实例
+ * @param options - Plugin options / 插件选项
+ * @param enableVPre - Whether to enable v-pre transformer / 是否启用 v-pre 转换器
+ *
+ * @default enableVPre: true
+ *
+ * @returns Object containing highlighter, loadLang function and extra transformers / 包含高亮器、loadLang 函数和额外转换器的对象
+ */
 export const createShikiHighlighter = async (
   app: App,
   {

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.108](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.107...v2.0.0-rc.108) (2025-06-04)
+
+**Note:** Version bump only for package @vuepress/plugin-redirect
+
+# [2.0.0-rc.107](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.106...v2.0.0-rc.107) (2025-06-04)
+
+### Bug Fixes
+
+- fix locale info ([50a6f19](https://github.com/vuepress/ecosystem/commit/50a6f19e7be551a772a98bf387de6917f609d7ed))
+
 # [2.0.0-rc.106](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.105...v2.0.0-rc.106) (2025-05-26)
 
 ### Bug Fixes

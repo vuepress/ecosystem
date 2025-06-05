@@ -6,6 +6,8 @@ const getLength = (size: number | string): string =>
 
 /**
  * Loading icon
+ *
+ * 加载图标
  */
 export const LoadingIcon: FunctionalComponent<{
   size?: number

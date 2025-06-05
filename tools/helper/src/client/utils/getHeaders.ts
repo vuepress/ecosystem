@@ -86,6 +86,12 @@ export const getHeadersFromDom = (
 
 /**
  * Get headers of current page.
+ *
+ * 获取当前页面的标题
+ *
+ * @param options - Options for getting headers / 获取标题的选项
+ *
+ * @returns Array of header items / 标题项数组
  */
 export const getHeaders = ({
   selector = DEFAULT_HEADER_SELECTOR,

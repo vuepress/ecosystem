@@ -42,7 +42,7 @@ const tools = (
 const syncNpmMirror = (pkg: string): Promise<void> =>
   new Promise<void>((resolve) => {
     const req = request(
-      `https://registry-direct.npmmirror.com/${pkg}/sync?sync_upstream=true`,
+      `https://registry-direct.npmmirror.com/-/package/${pkg}/syncs`,
       {
         method: 'PUT',
         headers: {

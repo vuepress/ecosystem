@@ -10,9 +10,9 @@ icon: paintbrush-vertical
 
 `@vuepress/helper/normalize.css` 是一个 CSS 文件，用于规范化浏览器的默认样式。推荐在社区主题中引入它。
 
-## 过渡{#transitions}
+## 过渡
 
-`@vuepress/helper/transition/*.css` 是一组提供元素过渡效果的CSS文件集合，推荐在社区主题中按需导入使用。
+`@vuepress/helper/transition/*.css` 是一组提供元素过渡效果的 CSS 文件集合，推荐在社区主题中按需导入使用。
 
 - `fade-in.css`
 - `fade-in-up.css`

@@ -43,7 +43,7 @@ ${demo}
 `)
 
     expect(renderResult).toMatch(
-      /<RevealJs id="revealjs-.*?" code=".*?" theme=".*?"><\/RevealJs>/,
+      /<RevealJs code=".*?" theme=".*?"><\/RevealJs>/,
     )
     expect(renderResult).toMatchSnapshot()
   })

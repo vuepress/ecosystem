@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.108](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.107...v2.0.0-rc.108) (2025-06-04)
+
+### Bug Fixes
+
+- **plugin-markdown-math:** fix issues with unexpected mdit.render ([9eee3a1](https://github.com/vuepress/ecosystem/commit/9eee3a1abde636ed0bd3edf0e90cbf4efb730d66))
+
+# [2.0.0-rc.107](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.106...v2.0.0-rc.107) (2025-06-04)
+
+### Bug Fixes
+
+- fix locale info ([50a6f19](https://github.com/vuepress/ecosystem/commit/50a6f19e7be551a772a98bf387de6917f609d7ed))
+- **highlighter-helper:** fix line numbers calculation error in code block ([#483](https://github.com/vuepress/ecosystem/issues/483)) ([189d6a5](https://github.com/vuepress/ecosystem/commit/189d6a55a43053635e1d9b2b9d6bf5299e324c3f))
+- **plugin-rtl:** bug fixes and docs improvement ([#495](https://github.com/vuepress/ecosystem/issues/495)) ([2b773b2](https://github.com/vuepress/ecosystem/commit/2b773b213337ec3ac694af71ced62ec959533471))
+
+### Features
+
+- add plugin-preview ([#482](https://github.com/vuepress/ecosystem/issues/482)) ([85efae6](https://github.com/vuepress/ecosystem/commit/85efae678b19c1e111acc2272130d85704d1a2a6))
+- **helper:** remove deprecated methods and improve jsdoc ([#523](https://github.com/vuepress/ecosystem/issues/523)) ([6b5e471](https://github.com/vuepress/ecosystem/commit/6b5e47165f7e7285580fe9fe0a140445db6164b6))
+- **plugin-markdown-tab:** use `useId()` ([#521](https://github.com/vuepress/ecosystem/issues/521)) ([3fdaf2b](https://github.com/vuepress/ecosystem/commit/3fdaf2bab54c68ba77cb4f062a0b865646fee4fa))
+- **plugin-revealjs:** prefer useId ([#522](https://github.com/vuepress/ecosystem/issues/522)) ([892c1a1](https://github.com/vuepress/ecosystem/commit/892c1a129a8990375437706877d88a9df3a89748))
+
+### Performance Improvements
+
+- **plugin-markdown-math:** reduce build memory ([66cd67a](https://github.com/vuepress/ecosystem/commit/66cd67a7180e25d5ffcb9ee66d962f131e24ada1))
+
 # [2.0.0-rc.106](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.105...v2.0.0-rc.106) (2025-05-26)
 
 ### Bug Fixes

@@ -2,8 +2,26 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
 
+/**
+ * TypeScript paths mapping configuration
+ *
+ * TypeScript 路径映射配置
+ */
 export type TypeScriptPaths = Record<string, string[]>
 
+/**
+ * Resolve TypeScript paths from tsconfig.json
+ *
+ * 从 tsconfig.json 解析 TypeScript 路径
+ *
+ * @returns The resolved paths configuration or null if not found / 解析的路径配置，如果未找到则返回 null
+ *
+ * @example
+ * ```ts
+ * const paths = await resolveTypeScriptPaths()
+ * console.log(paths) // { "@/*": ["/src/*"] }
+ * ```
+ */
 export async function resolveTypeScriptPaths(): Promise<TypeScriptPaths | null> {
   const tsconfigPath = path.join(process.cwd(), 'tsconfig.json')
 

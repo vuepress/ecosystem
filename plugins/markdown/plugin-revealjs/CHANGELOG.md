@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.108](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.107...v2.0.0-rc.108) (2025-06-04)
+
+**Note:** Version bump only for package @vuepress/plugin-revealjs
+
+# [2.0.0-rc.107](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.106...v2.0.0-rc.107) (2025-06-04)
+
+### Features
+
+- **plugin-revealjs:** prefer useId ([#522](https://github.com/vuepress/ecosystem/issues/522)) ([892c1a1](https://github.com/vuepress/ecosystem/commit/892c1a129a8990375437706877d88a9df3a89748))
+
 # [2.0.0-rc.106](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.105...v2.0.0-rc.106) (2025-05-26)
 
 **Note:** Version bump only for package @vuepress/plugin-revealjs

@@ -6,15 +6,15 @@ import { logger } from '../logger.js'
 import { getLocaleRedirectHTML } from './getLocaleRedirectHTML.js'
 
 export const generateAutoLocaleRedirectFiles = async (
-  { dir, options, pages }: App,
+  app: App,
   localeOptions: RedirectBehaviorConfig,
 ): Promise<void> => {
-  const rootPaths = pages
+  const rootPaths = app.pages
     .filter(({ pathLocale }) => pathLocale === '/')
     .map(({ path: pagePath }) => pagePath)
   const localeRedirectMap: Record<string, string[]> = {}
 
-  pages
+  app.pages
     .filter(({ pathLocale }) => pathLocale !== '/')
     .forEach(({ path: pagePath, pathLocale }) => {
       const rootPath = pagePath
@@ -29,13 +29,17 @@ export const generateAutoLocaleRedirectFiles = async (
 
   await Promise.all(
     entries(localeRedirectMap).map(async ([rootPath, availableLocales]) => {
-      const filePath = dir.dest(removeLeadingSlash(rootPath))
+      const filePath = app.dir.dest(removeLeadingSlash(rootPath))
 
       if (!fs.existsSync(filePath)) {
         await fs.ensureDir(path.dirname(filePath))
         await fs.writeFile(
           filePath,
-          getLocaleRedirectHTML(localeOptions, availableLocales, options.base),
+          getLocaleRedirectHTML(
+            localeOptions,
+            availableLocales,
+            app.siteData.base,
+          ),
         )
       }
     }),

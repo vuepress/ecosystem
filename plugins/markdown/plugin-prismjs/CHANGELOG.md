@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.108](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.107...v2.0.0-rc.108) (2025-06-04)
+
+**Note:** Version bump only for package @vuepress/plugin-prismjs
+
+# [2.0.0-rc.107](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.106...v2.0.0-rc.107) (2025-06-04)
+
+### Bug Fixes
+
+- **highlighter-helper:** fix line numbers calculation error in code block ([#483](https://github.com/vuepress/ecosystem/issues/483)) ([189d6a5](https://github.com/vuepress/ecosystem/commit/189d6a55a43053635e1d9b2b9d6bf5299e324c3f))
+
 # [2.0.0-rc.106](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.105...v2.0.0-rc.106) (2025-05-26)
 
 ### Features

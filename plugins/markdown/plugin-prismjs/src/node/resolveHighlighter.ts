@@ -21,6 +21,18 @@ export type Highlighter = (code: string) => string
 
 /**
  * Resolve syntax highlighter for corresponding language
+ *
+ * 解析对应语言的语法高亮器
+ *
+ * @param language - Language name / 语言名称
+ * @returns Highlighter function or null / 高亮器函数或 null
+ * @example
+ * ```ts
+ * const highlighter = resolveHighlighter('javascript')
+ * if (highlighter) {
+ *   const result = highlighter('console.log("hello")')
+ * }
+ * ```
  */
 export const resolveHighlighter = (language: string): Highlighter | null => {
   const languageInfo = resolveLanguage(language)

@@ -96,7 +96,10 @@ export const markdownMathPlugin = ({
           mdIt.render = (src: string, env: unknown): string => {
             const result = originalRender(src, env)
 
-            mathjaxInstance!.reset()
+            // markdown render may be called after mathjaxInstance is released
+            // but the style is already prepared in onPrepared hook
+            // it's safe to use optional chaining here
+            mathjaxInstance?.reset()
 
             return result
           }

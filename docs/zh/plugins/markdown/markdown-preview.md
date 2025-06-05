@@ -1,5 +1,5 @@
 ---
-icon: siren
+icon: scan-eye
 ---
 
 # markdown-preview

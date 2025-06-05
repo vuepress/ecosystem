@@ -26,7 +26,11 @@ const isInstalled = (packageManager: PackageManager): boolean => {
 /**
  * Check if a package manager is installed globally.
  *
- * @param packageManager package manager
+ * 检查包管理器是否已全局安装
+ *
+ * @param packageManager - Package manager / 包管理器
+ *
+ * @returns Whether the package manager is installed / 包管理器是否已安装
  */
 export const isPackageManagerInstalled = (
   packageManager: PackageManager,
@@ -49,9 +53,12 @@ export const isPackageManagerInstalled = (
 /**
  * Get package manager setting in package.json
  *
- * @param cwd current working directory
- * @param deep whether to search in parent directories
- * @returns the type of lock file
+ * 获取 package.json 中的包管理器设置
+ *
+ * @param cwd - Current working directory / 当前工作目录
+ * @param deep - Whether to search in parent directories / 是否在父目录中搜索
+ *
+ * @returns The type of package manager / 包管理器类型
  */
 export const getPackageManagerSetting = (
   cwd = process.cwd(),
@@ -109,9 +116,12 @@ export const getPackageManagerSetting = (
 /**
  * Get the type of lock file.
  *
- * @param cwd current working directory
- * @param deep whether to search in parent directories
- * @returns the type of lock file
+ * 获取锁文件的类型
+ *
+ * @param cwd - Current working directory / 当前工作目录
+ * @param deep - Whether to search in parent directories / 是否在父目录中搜索
+ *
+ * @returns The type of lock file / 锁文件类型
  */
 export const getTypeofLockFile = (
   cwd = process.cwd(),
@@ -185,9 +195,12 @@ export const getTypeofLockFile = (
 /**
  * Detect the package manager used in the current project.
  *
- * @param cwd current working directory
- * @param deep whether to search in parent directories
- * @returns the type of package manager
+ * 检测当前项目使用的包管理器
+ *
+ * @param cwd - Current working directory / 当前工作目录
+ * @param deep - Whether to search in parent directories / 是否在父目录中搜索
+ *
+ * @returns The type of package manager / 包管理器类型
  */
 export const getPackageManager = (
   cwd = process.cwd(),

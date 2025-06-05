@@ -15,6 +15,16 @@ export interface MarkdownItPreWrapperOptions {
   preWrapper?: boolean
 }
 
+/**
+ * A markdown-it plugin for wrapping `<pre>` tag with an extra `<div>`
+ *
+ * 一个用于为 `<pre>` 标签添加额外 `<div>` 包装的 markdown-it 插件
+ *
+ * @param md - MarkdownIt instance / MarkdownIt 实例
+ * @param options - Plugin options / 插件选项
+ *
+ * @default { preWrapper: true }
+ */
 export const preWrapperPlugin = (
   md: Markdown,
   { preWrapper = true }: MarkdownItPreWrapperOptions = {},
