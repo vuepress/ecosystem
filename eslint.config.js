@@ -25,12 +25,7 @@ const TOOLS_DIRS = fs
 
 export default vuepress(
   {
-    ignores: [
-      '**/lib/**',
-      '**/template/**',
-      '**/node_modules/**',
-      'heat-map.snippet.md',
-    ],
+    ignores: ['**/lib/**', '**/template/**', '**/node_modules/**'],
     imports: {
       packageDir: [
         ROOT,

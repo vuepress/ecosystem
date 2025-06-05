@@ -58,7 +58,8 @@ function getNoiseHelper() {
   const gradP = new Array(512)
   // This isn't a very good seeding function, but it works ok. It supports 2^16
   // different seed values. Write something better if you need more seeds.
-  function seed(seed) {
+  const generateSeed = (seedValue) => {
+    let seed = seedValue
     if (seed > 0 && seed < 1) {
       // Scale the seed out
       seed *= 65536
@@ -74,11 +75,13 @@ function getNoiseHelper() {
       } else {
         v = p[i] ^ ((seed >> 8) & 255)
       }
-      perm[i] = perm[i + 256] = v
-      gradP[i] = gradP[i + 256] = grad3[v % 12]
+      perm[i] = v
+      perm[i + 256] = v
+      gradP[i] = grad3[v % 12]
+      gradP[i + 256] = grad3[v % 12]
     }
   }
-  seed(0)
+  generateSeed(0)
   // ##### Perlin noise stuff
   function fade(t) {
     return t * t * t * (t * (t * 6 - 15) + 10)
@@ -92,23 +95,23 @@ function getNoiseHelper() {
     let X = Math.floor(x)
     let Y = Math.floor(y)
     // Get relative xy coordinates of point within that cell
-    x -= X
-    y -= Y
+    const relativeX = x - X
+    const relativeY = y - Y
     // Wrap the integer cells at 255 (smaller integer period can be introduced here)
     X &= 255
     Y &= 255
     // Calculate noise contributions from each of the four corners
-    const n00 = gradP[X + perm[Y]].dot2(x, y)
-    const n01 = gradP[X + perm[Y + 1]].dot2(x, y - 1)
-    const n10 = gradP[X + 1 + perm[Y]].dot2(x - 1, y)
-    const n11 = gradP[X + 1 + perm[Y + 1]].dot2(x - 1, y - 1)
+    const n00 = gradP[X + perm[Y]].dot2(relativeX, relativeY)
+    const n01 = gradP[X + perm[Y + 1]].dot2(relativeX, relativeY - 1)
+    const n10 = gradP[X + 1 + perm[Y]].dot2(relativeX - 1, relativeY)
+    const n11 = gradP[X + 1 + perm[Y + 1]].dot2(relativeX - 1, relativeY - 1)
     // Compute the fade curve value for x
-    const u = fade(x)
+    const u = fade(relativeX)
     // Interpolate the four results
-    return lerp(lerp(n00, n10, u), lerp(n01, n11, u), fade(y))
+    return lerp(lerp(n00, n10, u), lerp(n01, n11, u), fade(relativeY))
   }
   return {
-    seed,
+    generateSeed,
     perlin2,
   }
 }
@@ -116,7 +119,7 @@ function getNoiseHelper() {
 const noise = getNoiseHelper()
 const xData = []
 const yData = []
-noise.seed(Math.random())
+noise.generateSeed(Math.random())
 
 const data = []
 for (let i = 0; i <= 200; i++) {
