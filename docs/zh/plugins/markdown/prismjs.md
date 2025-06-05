@@ -10,8 +10,6 @@ icon: pyramid
 
 该插件已经集成到默认主题中。
 
-需要注意的是，该插件仅会给代码块添加 HTML 标记，而不会添加样式。当你在一个自定义主题中使用它时，可能需要自己选择并引入 Prism.js 样式主题。
-
 ## 使用方法
 
 ```bash
@@ -38,7 +36,7 @@ export default {
 
 - 默认值：`'nord'`
 
-- 详情：Prismjs 的主题。该主题会应用到代码块上。
+- 详情：Prismjs 的主题，会应用到代码块上。
 
 ### themes
 
@@ -46,9 +44,9 @@ export default {
 
 - 详情：
 
-  使用暗黑和明亮模式双主题。
+  使用亮暗双主题。
 
-  注意：想使用这个功能，你的主题必须在夜间模式下在 `<html>` 标签上 `data-theme="dark"` 属性。
+  注意：想使用此功能，你的主题必须在夜间模式下在 `<html>` 标签上设置 `data-theme="dark"` 属性。
 
 ::: tip 可用的 Prism.js 浅色主题
 
@@ -104,10 +102,10 @@ export default {
 - 详情：
 
   - `number`：显示行号所需的最少行数。
-    例如，如果你将它设置为 4 ，那么只有在你的代码块包含至少 4 行代码时才会启用行号。
-  - `true`：全局启用代码行号
+    例如，如果你将它设置为 4，那么只有在你的代码块包含至少 4 行代码时才会启用行号。
+  - `true`：全局启用代码行号。
   - `false`：全局禁用代码行号。
-  - `'disable'`: 完全禁用行号，`:line-numbers` 标记不会生效。
+  - `'disable'`：完全禁用行号，`:line-numbers` 标记不会生效。
 
   你可以在代码块添加 `:line-numbers` / `:no-line-numbers` 标记来覆盖配置项中的设置，还可以在 `:line-numbers` 之后添加 `=` 来自定义起始行号，例如 `:line-numbers=2` 表示代码块中的行号从 `2` 开始。
 
@@ -172,10 +170,10 @@ export default defineUserConfig({
 
 - 详情：代码块折叠的默认行为。
 
-  - `number`: 从第 `number` 行开始折叠代码块，例如，`12` 表示从第 12 行开始折叠代码块。
-  - `true`: 等同于 `15`, 从第 15 行开始折叠代码块。
-  - `false`: 添加代码块折叠支持，但全局禁用此功能。
-  - `'disable'`: 完全禁用代码块折叠， `:collapsed-lines` 标记不会生效。
+  - `number`：从第 `number` 行开始折叠代码块，例如 `12` 表示从第 12 行开始折叠代码块。
+  - `true`：等同于 `15`，从第 15 行开始折叠代码块。
+  - `false`：添加代码块折叠支持，但全局禁用此功能。
+  - `'disable'`：完全禁用代码块折叠，`:collapsed-lines` 标记不会生效。
 
   你可以在代码块添加 `:collapsed-lines` / `:no-collapsed-lines` 标记来覆盖配置项中的设置。还可以在 `:collapsed-lines` 之后添加 `=` 来自定义起始折叠行号，例如 `:collapsed-lines=12` 表示代码块从第 12 行开始折叠。
 
@@ -465,7 +463,7 @@ body > div {
 
 - 详情：是否启用词高亮标记。
 
-  词高亮标记 必须单独写在一行。
+  词高亮标记必须单独写在一行。
 
 - 示例：
 
@@ -515,15 +513,15 @@ body > div {
 
 - 默认值：`false`
 
-- 详情：是否启用空白符（空格 和 Tab）渲染。
+- 详情：是否启用空白符（空格和 Tab）渲染。
 
-  - `true`: 启用空白符渲染，但默认不渲染任何空白符
-  - `false`: 完全禁用空白符渲染，`:whitespace` 标记不会生效。
-  - `'all'`: 渲染所有空白符
-  - `'boundary'`: 仅渲染行首行尾的空白符
-  - `'trailing'`: 仅渲染行尾的空白符
+  - `true`：启用空白符渲染，但默认不渲染任何空白符
+  - `false`：完全禁用空白符渲染，`:whitespace` 标记不会生效。
+  - `'all'`：渲染所有空白符
+  - `'boundary'`：仅渲染行首行尾的空白符
+  - `'trailing'`：仅渲染行尾的空白符
 
-  你可以在代码块中添加 `:whitespace / :no-whitespace` 标记来覆盖配置项中的设置。还可以在 `:whitespace` 之后添加 `=` 来定义渲染空白符的方式。比如 `:whitespace=boundary` 将渲染行首行尾的空白符。
+  你可以在代码块中添加 `:whitespace` / `:no-whitespace` 标记来覆盖配置项中的设置。还可以在 `:whitespace` 之后添加 `=` 来定义渲染空白符的方式。比如 `:whitespace=boundary` 将渲染行首行尾的空白符。
 
 - 示例：
 
@@ -557,12 +555,12 @@ body > div {
   ```
 
   ```md :no-whitespace
-  <!-- 禁用空白符 -->
+  <!-- 禁用空白符渲染 -->
 
-  A text
-  with line break
+  具有尾随空格  
+  的文字
 
-      code block
+      缩进文字
   ```
 
   :::
@@ -572,9 +570,9 @@ body > div {
 
 ### preloadLanguages
 
-- 类型： `string[]`
+- 类型：`string[]`
 
-- 默认值： `['markdown', 'jsdoc', 'yaml']`
+- 默认值：`['markdown', 'jsdoc', 'yaml']`
 
 - 详情：
 
@@ -582,22 +580,22 @@ body > div {
 
   默认情况下，语言会在解析 Markdown 文件时按需加载。
 
-  然而， Prism.js 在动态加载语言时可能会遇到 [一些潜在的问题](https://github.com/PrismJS/prism/issues/2716) 。为了避免这些问题，你可以使用该配置项来预加载一些语言。
+  然而，Prism.js 在动态加载语言时可能会遇到[一些潜在的问题](https://github.com/PrismJS/prism/issues/2716)。为了避免这些问题，你可以使用该配置项来预加载一些语言。
 
 ### preWrapper
 
-- 类型： `boolean`
+- 类型：`boolean`
 
-- 默认值： `true`
+- 默认值：`true`
 
 - 详情：
 
   是否在 `<pre>` 标签外添加包裹容器。
 
-  `lineNumbers` 和 `collapsedLines` 依赖于这个额外的包裹层。这换句话说，如果你禁用了 `preWrapper` ，那么行号和折叠代码块也会被同时禁用。
+  `lineNumbers` 和 `collapsedLines` 依赖于这个额外的包裹层。换句话说，如果你禁用了 `preWrapper`，那么行号和折叠代码块也会被同时禁用。
 
   ::: tip
 
-  如果你想要在客户端来实现这些功能时，可以禁用该配置项。比如使用 [Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) 或者 [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/)。
+  如果你想要在客户端来实现这些功能，可以禁用该配置项。比如使用 [Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) 或 [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/)。
 
   :::

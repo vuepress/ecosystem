@@ -6,11 +6,9 @@ icon: pyramid
 
 <NpmBadge package="@vuepress/plugin-prismjs" />
 
-This plugin will enable syntax highlighting for markdown code fence with [Prism.js](https://prismjs.com/).
+This plugin enables syntax highlighting for markdown code fences with [Prism.js](https://prismjs.com/).
 
 This plugin has been integrated into the default theme.
-
-Notice that this plugin would only tokenize the code fence without adding styles. When using it with a custom theme, you may need to choose and import Prism.js style theme yourself.
 
 ## Usage
 
@@ -38,7 +36,7 @@ export default {
 
 - Default: `'nord'`
 
-- Details: Theme of Prismjs, will be applied to code blocks.
+- Details: Prism.js theme that will be applied to code blocks.
 
 ### themes
 
@@ -46,9 +44,9 @@ export default {
 
 - Details:
 
-  Apply Light / Dark Dual themes.
+  Apply light/dark dual themes.
 
-  Note: To use this, your theme must set `data-theme="dark"` attribute on the `<html>` tag when dark mode is enabled.
+  Note: To use this feature, your theme must set the `data-theme="dark"` attribute on the `<html>` tag when dark mode is enabled.
 
 ::: tip Available Prism.js Light themes
 
@@ -103,13 +101,13 @@ export default {
 
 - Details:
 
-  - `number`: the minimum number of lines to enable line numbers.
+  - `number`: The minimum number of lines to enable line numbers.
     For example, if you set it to 4, line numbers will only be enabled when your code block has at least 4 lines of code.
-  - `true`: enable line numbers globally.
-  - `false`: disable line numbers globally.
-  - `'disable'`: Completely disable line numbers, `:line-numbers` will not take effect.
+  - `true`: Enable line numbers globally.
+  - `false`: Disable line numbers globally.
+  - `'disable'`: Completely disable line numbers; `:line-numbers` will not take effect.
 
-  You can add `:line-numbers` / `:no-line-numbers` mark in your fenced code blocks to override the value set in config, and customize the beginning number by adding `=` after `:line-numbers`. For example, `:line-numbers=2` means the line numbers in code blocks will start from `2`.
+  You can add `:line-numbers` / `:no-line-numbers` markers in your fenced code blocks to override the value set in config, and customize the beginning number by adding `=` after `:line-numbers`. For example, `:line-numbers=2` means the line numbers in code blocks will start from `2`.
 
 ::: preview
 
@@ -126,7 +124,7 @@ const line3 = 'This is line 3'
 ```
 
 ```ts :line-numbers=2
-// line-numbers is enabled and start from 2
+// line-numbers is enabled and starts from 2
 const line3 = 'This is line 3'
 const line4 = 'This is line 4'
 ```
@@ -141,7 +139,7 @@ const line4 = 'This is line 4'
 
 - Details:
 
-  Whether enable code line highlighting. You can highlight specified lines of your code blocks by adding line ranges mark in your fenced code blocks:
+  Whether to enable code line highlighting. You can highlight specified lines of your code blocks by adding line range markers in your fenced code blocks:
 
   - Line ranges: `{5-8}`
   - Multiple single lines: `{4,7,9}`
@@ -172,12 +170,12 @@ export default defineUserConfig({
 
 - Details: Default behavior of code block collapsing.
 
-  - `number`: collapse the code block starting from line `number` by default, for example, `12` means collapsing the code block starting from line 12.
+  - `number`: Collapse the code block starting from line `number` by default. For example, `12` means collapsing the code block starting from line 12.
   - `true`: Equivalent to `15`, collapsing the code block starting from line 15 by default.
-  - `false`: Add support for code block collapsing, but disable it globally
-  - `'disable'`: Completely disable code block collapsing, `:collapsed-lines` will not take effect.
+  - `false`: Add support for code block collapsing, but disable it globally.
+  - `'disable'`: Completely disable code block collapsing; `:collapsed-lines` will not take effect.
 
-  To override global settings, you can add the `:collapsed-lines` / `:no-collapsed-lines` marker to the code block. You can also add `=` after `:collapsed-lines` to customize the starting line number being collapsed, for example, `:collapsed-lines=12` means collapsing the code block starting from line 12.
+  To override global settings, you can add the `:collapsed-lines` / `:no-collapsed-lines` markers to the code block. You can also add `=` after `:collapsed-lines` to customize the starting line number being collapsed. For example, `:collapsed-lines=12` means collapsing the code block starting from line 12.
 
 ::: preview
 
@@ -318,7 +316,7 @@ In the new version, some functionalities similar to [shiki](https://shiki.style/
 
 - Default: `false`
 
-- Details: Whether enable notation diff.
+- Details: Whether to enable notation diff.
 
 - Example:
 
@@ -354,7 +352,7 @@ In the new version, some functionalities similar to [shiki](https://shiki.style/
 
 - Default: `false`
 
-- Details: Whether enable notation focus.
+- Details: Whether to enable notation focus.
 
 - Example:
 
@@ -390,7 +388,7 @@ In the new version, some functionalities similar to [shiki](https://shiki.style/
 
 - Default: `false`
 
-- Details: Whether enable notation highlight.
+- Details: Whether to enable notation highlight.
 
 - Example:
 
@@ -426,7 +424,7 @@ In the new version, some functionalities similar to [shiki](https://shiki.style/
 
 - Default: `false`
 
-- Details: Whether enable notation error level.
+- Details: Whether to enable notation error level.
 
 - Example:
 
@@ -462,7 +460,7 @@ In the new version, some functionalities similar to [shiki](https://shiki.style/
 
 - Default: `false`
 
-- Details: Whether enable notation word highlight.
+- Details: Whether to enable notation word highlight.
 
   Word highlight must be written on a separate line.
 
@@ -514,15 +512,15 @@ In the new version, some functionalities similar to [shiki](https://shiki.style/
 
 - Default: `false`
 
-- Details: Whether enable whitespace characters (Space and Tab).
+- Details: Whether to enable whitespace characters (Space and Tab).
 
-  - `true`: enable whitespace, but not render any whitespace by default
-  - `false`: completely disable render whitespace, `:whitespace` will not take effect.
-  - `'all'`: render all whitespace
-  - `'boundary'`: render leading and trailing whitespace of the line
-  - `'trailing'`: render trailing whitespace of the line
+  - `true`: Enable whitespace, but not render any whitespace by default.
+  - `false`: Completely disable whitespace rendering; `:whitespace` will not take effect.
+  - `'all'`: Render all whitespace.
+  - `'boundary'`: Render leading and trailing whitespace of the line.
+  - `'trailing'`: Render trailing whitespace of the line.
 
-  You can add `:whitespace / :no-whitespace` mark in your fenced code blocks to override the value set in config, and customize the render type by adding `=` after `:whitespace`. For example `:whitespace=boundary` will render leading and trailing whitespace of the line.
+  You can add `:whitespace` / `:no-whitespace` markers in your fenced code blocks to override the value set in config, and customize the render type by adding `=` after `:whitespace`. For example, `:whitespace=boundary` will render leading and trailing whitespace of the line.
 
 - Example:
 
@@ -566,7 +564,7 @@ In the new version, some functionalities similar to [shiki](https://shiki.style/
 
   :::
 
-- Also see：
+- Also see:
   - [Shiki > Render Whitespace](https://shiki.style/packages/transformers#transformerrenderwhitespace)
 
 ### preloadLanguages
@@ -591,12 +589,12 @@ In the new version, some functionalities similar to [shiki](https://shiki.style/
 
 - Details:
 
-  Adds extra wrapper outside `<pre>` tag or not.
+  Whether to add an extra wrapper outside the `<pre>` tag.
 
-  The wrapper is required by the `lineNumbers` and `collapsedLines`. That means, if you disable `preWrapper`, the line line numbers and collapsed lines will also be disabled.
+  The wrapper is required by `lineNumbers` and `collapsedLines`. This means if you disable `preWrapper`, the line numbers and collapsed lines will also be disabled.
 
   ::: tip
 
-  You can disable it if you want to implement them in client side. For example, [Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) or [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/).
+  You can disable it if you want to implement them on the client side. For example, [Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) or [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/).
 
   :::

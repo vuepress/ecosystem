@@ -6,6 +6,14 @@ const META_WORD_REGEXP = /\/((?:\\.|[^/])+)\//g
 const WORD_BEFORE = '<span class="highlighted-word">'
 const WORD_AFTER = '</span>'
 
+/**
+ * Highlight specific word in a line
+ *
+ * 在行中高亮特定词汇
+ *
+ * @param node - Line node / 行节点
+ * @param pattern - Pattern to match / 匹配模式
+ */
 export const highlightWordInLine = (
   node: OpenTag,
   pattern: RegExp | string,
@@ -24,6 +32,13 @@ export const highlightWordInLine = (
     .join('')
 }
 
+/**
+ * Parse meta highlight words from meta string
+ *
+ * 从元字符串中解析高亮词汇
+ *
+ * @param meta - Meta string / 元字符串
+ */
 export const parseMetaHighlightWords = (meta: string): string[] => {
   if (!meta) return []
 
@@ -37,7 +52,12 @@ export const parseMetaHighlightWords = (meta: string): string[] => {
 }
 
 /**
- * ```js /Hello|Hi/
+ * `` ```js /Hello|Hi/ ``
+ *
+ * 元词汇高亮
+ *
+ * @param parser - Code parser instance / 代码解析器实例
+ * @param meta - Meta string / 元字符串
  */
 export const metaWordHighlight = (parser: CodeParser, meta: string): void => {
   const words = parseMetaHighlightWords(meta)
