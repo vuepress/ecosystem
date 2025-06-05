@@ -6,19 +6,18 @@ icon: trash-2
 
 <NpmBadge package="@vuepress/plugin-remove-pwa" />
 
-此插件从你的 VuePress 站点中删除任何相关的 Service Worker，因此如果你在启用后任何 PWA 插件后移除它们，用户仍然可以获得更新。
+此插件从你的 VuePress 站点中删除 service worker，确保在你移除之前启用的任何 PWA 插件后，用户仍能接收到更新。
 
 ::: tip 如果你启用过 PWA，为什么需要这个插件？
 
-PWA 插件，如 [`@vuepress/plugin-pwa`](./pwa/README.md) 将 Service Worker 注册到你的站点，这将缓存你的站点并使其离线可用。
+PWA 插件，如 [`@vuepress/plugin-pwa`](./pwa/README.md) 会注册 service worker 到你的站点，使其可以被缓存并离线访问。
 
-但是，如果你删除 PWA 插件，先前的 Service Worker 仍将在那里，但它们永远无法获得更新，因为他们永远无法找到要更新的新 Service Worker。 因此，用户将继续使用你网站的旧版本。
+如果你删除 PWA 插件，旧的 service worker 仍会存在，但它无法获得更新，因为没有可更新的新 service worker。用户将继续使用你网站的旧版本。
 
 要解决这个问题：
 
-1. 一个新的内容为空的 Service Worker 需要生成在原位置。
-
-1. 新的 Service Worker 应该尝试删除旧 Service Worker 缓存的内容，然后它应该注销自己。
+1. 在原位置生成一个新的空 service worker。
+2. 这个 service worker 会删除旧 service worker 缓存的内容，然后注销自己。
 
 :::
 
@@ -34,7 +33,10 @@ import { removePwaPlugin } from '@vuepress/plugin-remove-pwa'
 export default {
   plugins: [
     removePwaPlugin({
-      // options
+      // 默认情况下，所有缓存都会被移除
+      // 如需针对特定缓存，请提供正则表达式模式
+      cachePatterns: ['\\bworkbox\\b', 'precache-v2'],
+      swLocation: 'service-worker.js',
     }),
   ],
 }
@@ -42,14 +44,14 @@ export default {
 
 ## 选项
 
-### cachePrefix
+### cachePatterns
 
-- 类型：`string`
-- 默认值：`'workbox'`
-- 详情：Service worker 的缓存前缀。
+- 类型：`string[]`
+- 默认值：`[]`
+- 详情：用于匹配需要移除的缓存名称的正则表达式模式。如果为空，将移除所有缓存。
 
 ### swLocation
 
-- 类型： `string`
+- 类型：`string`
 - 默认值：`'service-worker.js'`
-- 详情：旧 Service Worker 的位置。
+- 详情：相对于 dest 文件夹的原始 service worker 位置。
