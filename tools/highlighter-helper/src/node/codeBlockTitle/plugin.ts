@@ -6,6 +6,11 @@ import type {
   MarkdownItCodeBlockTitleOptions,
 } from './options.js'
 
+/**
+ * Default title render function
+ *
+ * 默认标题渲染函数
+ */
 const defaultTitleRender: CodeBlockTitleRender = (title, code) =>
   `\
 <div class="code-block-with-title">
@@ -15,6 +20,23 @@ const defaultTitleRender: CodeBlockTitleRender = (title, code) =>
   ${code}
 </div>`
 
+/**
+ * Add code block title functionality to markdown-it
+ *
+ * 为 markdown-it 添加代码块标题功能
+ *
+ * @param md - The markdown-it instance / markdown-it 实例
+ * @param options - Plugin options / 插件选项
+ *
+ * @example
+ * ```ts
+ * import { codeBlockTitle } from '@vuepress/highlighter-helper'
+ *
+ * md.use(codeBlockTitle, {
+ *   codeBlockTitle: true
+ * })
+ * ```
+ */
 export const codeBlockTitle = (
   md: Markdown,
   {
