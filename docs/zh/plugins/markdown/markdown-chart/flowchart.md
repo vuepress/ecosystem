@@ -69,10 +69,6 @@ export default {
 - `ant`
 - `pie`
 
-## 在此尝试
-
-<FlowChartPlayground />
-
 ## 演示
 
 ::: preview Vue 主题
@@ -329,9 +325,3 @@ e=>end: End:>http://www.yahoo.com
 ```
 st@>op1({"stroke":"Red"})@>cond({"stroke":"Red","stroke-width":6,"arrow-end":"classic-wide-long"})@>c2({"stroke":"Red"})@>op2({"stroke":"Red"})@>e({"stroke":"Red"})
 ```
-
-<script setup lang="ts">
-import { defineAsyncComponent } from 'vue';
-
-const FlowChartPlayground = defineAsyncComponent(()=> import('@FlowChartPlayground'));
-</script>
