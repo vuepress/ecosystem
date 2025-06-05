@@ -8,10 +8,25 @@ declare module 'medium-zoom' {
   }
 }
 
+/**
+ * Injection key for medium zoom instance
+ *
+ * medium zoom 实例的注入键
+ */
 export const mediumZoomSymbol: InjectionKey<Zoom> = Symbol('mediumZoom')
 
 /**
  * Inject medium zoom instance
+ *
+ * 注入 medium zoom 实例
+ *
+ * @example
+ * ```ts
+ * import { useMediumZoom } from '@vuepress/plugin-medium-zoom/client'
+ *
+ * const zoom = useMediumZoom()
+ * zoom?.refresh()
+ * ```
  */
 export const useMediumZoom = (): Zoom | null => {
   if (__VUEPRESS_SSR__) return null

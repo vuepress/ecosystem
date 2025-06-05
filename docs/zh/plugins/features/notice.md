@@ -14,7 +14,7 @@ icon: bell
 npm i -D @vuepress/plugin-notice@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { noticePlugin } from '@vuepress/plugin-notice'
 
 export default {
@@ -26,11 +26,11 @@ export default {
 }
 ```
 
-你可以为站点的不同路径设置多个公告。
+你可以为站点的不同路径设置多个通知。
 
-每个公告配置需要包含一个 `path` 或 `match` 选项，用于匹配路径。`path` 选项为字符串，匹配所有以此开头的路径，`match` 选项为正则表达式以和所有路由测试匹配。
+每个通知配置需要包含一个 `path` 或 `match` 选项，用于匹配路径。`path` 选项为字符串，匹配所有以此开头的路径，`match` 选项为正则表达式，用于测试页面路由路径。
 
-一个公告配置包括:
+一个通知配置包括:
 
 - `title`: 通知标题，支持文本和 HTMLString
 - `content`: 通知内容，支持文本、HTMLString 和 Markdown
@@ -45,7 +45,7 @@ export default {
   - `text`: 动作文本
   - `link` (可选): 操作链接。
 
-    绝对路径会被当作内部路处理，完整 URL 被当作外部链接在新窗口打。
+    路径名会被当作内部路由链接处理，完整 URL 会被当作外部链接在新窗口打开。
 
   - `type` (可选): `"default"` 或 `"primary"`
 
@@ -53,7 +53,7 @@ export default {
 
 这是一个例子:
 
-```ts
+```ts title=".vuepress/config.ts"
 import { noticePlugin } from '@vuepress/plugin-notice'
 import { path } from 'vuepress/utils'
 
@@ -109,27 +109,27 @@ export default {
 
 此外，我们还为你提供了一些高级选项来控制通知显示。
 
-::: tip 通知显示控件
+::: tip 显示控制
 
-默认情况下，每当用户进入网站时都会显示该通知，如果用户关闭该网站，该通知将在此期间保持关闭状态。
+默认情况下，每当用户进入网站时都会显示通知，如果用户关闭通知，该通知将在当前会话中保持关闭状态。
 
-为了防止在用户关闭通知后下次访问时再次显示通知，你可以在公告配置中设置 `showOnce: true`。
+为了防止在用户关闭通知后下次访问时再次显示通知，你可以在通知配置中设置 `showOnce: true`。
 
-另外，通知记忆是根据通知标题和通知内容来记忆的，你可以设置 `key` 选项来使用你想要的记忆键值，这样你就可以编辑通知而不会打扰已经确认过的用户。
+另外，通知记忆是根据通知标题和通知内容来实现的，你可以设置 `key` 选项来使用你想要的键值，这样你就可以编辑通知而不会打扰已经确认过的用户。
 
 :::
 
 ::: tip 全屏
 
-如果要显示全屏弹出窗口，可以在公告配置中使用 `fullscreen: true`。我们建议你将它与 `confirm: true` 一起使用。
+如果要显示全屏弹出窗口，可以在通知配置中使用 `fullscreen: true`。我们建议你将它与 `confirm: true` 一起使用。
 
 通知将显示在屏幕中央，其他地方将被模糊遮罩覆盖。
 
 :::
 
-::: tip 关闭逻辑
+::: tip 关闭按钮
 
-默认情况下，通知右侧会有一个关闭按钮，用户可以点击关闭。
+默认情况下，通知右侧会有一个关闭按钮，用户可以点击关闭。用户也可以通过点击遮罩来关闭全屏通知。
 
 但是，如果你希望用户确认通知，你可以设置 `confirm: true`，这样用户只能通过点击操作按钮来关闭通知。
 
@@ -151,7 +151,7 @@ export default {
     /**
      * 通知内容
      */
-    content: string
+    content?: string
 
     /**
      * 通知内容类型
@@ -167,9 +167,9 @@ export default {
     contentFile?: string
 
     /**
-     * Notice 的 key
+     * 通知键值
      *
-     * @description 用于标识和存储 notice 的状态
+     * @description 用于标识和存储通知的状态
      */
     key?: string
 
@@ -202,14 +202,14 @@ export default {
 
   interface NoticePathOptions extends NoticeItemOptions {
     /**
-     * 公告需要匹配的前缀路径
+     * 路径前缀匹配
      */
     path: string
   }
 
   interface NoticeMatchOptions extends NoticeItemOptions {
     /**
-     * 公告路径的正则匹配
+     * 匹配通知路径的正则表达式
      */
     match: RegExp
   }

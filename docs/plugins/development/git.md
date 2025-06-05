@@ -18,7 +18,7 @@ This plugin is mainly used to develop themes. You won't need to use it directly 
 npm i -D @vuepress/plugin-git@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { gitPlugin } from '@vuepress/plugin-git'
 
 export default {
@@ -132,7 +132,7 @@ This plugin will significantly slow down the speed of data preparation, especial
      * Functions to transform contributors, e.g. remove duplicates ones and sort them.
      * The input is the contributors collected by this plugin, and the output should be the transformed contributors.
      */
-    transform?: (contributors: GitContributor[]) => GitContributor[]
+    transform?: (contributors: GitContributorInfo[]) => GitContributorInfo[]
   }
   ```
 
@@ -160,28 +160,31 @@ This plugin will significantly slow down the speed of data preparation, especial
 
     /**
      * Commit url pattern
-     * Default: ':repo/commit/:hash'
      *
      * - `:repo` - The url of the git repository
      * - `:hash` - Hash of the commit record
+     *
+     * @default ':repo/commit/:hash'
      */
     commitUrlPattern?: string
 
     /**
      * Issue url pattern
-     * Default: ':repo/issues/:issue'
      *
      * - `:repo` - The url of the git repository
      * - `:issue` - Id of the issue
+     *
+     * @default ':repo/issues/:issue'
      */
     issueUrlPattern?: string
 
     /**
      * Tag url pattern
-     * Default: ':repo/releases/tag/:tag'
      *
      * - `:repo` - The url of the git repository
      * - `:tag` - Name of the tag
+     *
+     * @default ':repo/releases/tag/:tag'
      */
     tagUrlPattern?: string
   }
@@ -287,7 +290,18 @@ You can import the following composables from `@vuepress/plugin-git/client`.
 Get the changelog of the current page.
 
 ```ts
-export interface GitChangelogItem {
+export interface CoAuthorInfo {
+  /**
+   * Co-author name
+   */
+  name: string
+  /**
+   * Co-author email
+   */
+  email: string
+}
+
+export interface GitChangelogItem extends GitChangelogInfo {
   /**
    * Commit hash
    */
@@ -325,6 +339,7 @@ export interface GitChangelogItem {
    * The co-authors of the commit
    */
   coAuthors?: CoAuthorInfo[]
+
   /**
    * Date text of the commit
    */
@@ -411,11 +426,11 @@ After using this plugin, you can get the collected git information in page data:
 
 ```ts
 import type { GitPluginPageData } from '@vuepress/plugin-git'
-import { usePageData } from 'vuepress/client'
+import { usePage } from 'vuepress/client'
 
 export default {
   setup(): void {
-    const page = usePageData<GitPluginPageData>()
+    const page = usePage<GitPluginPageData>()
     console.log(page.value.git)
   },
 }
@@ -443,10 +458,10 @@ export default {
 
 ### git.contributors
 
-- Type: `GitContributor[]`
+- Type: `GitContributorInfo[]`
 
 ```ts
-interface GitContributor {
+interface GitContributorInfo {
   // display name
   name: string
   email: string
@@ -466,10 +481,21 @@ interface GitContributor {
 
 ### git.changelog
 
-- 类型： `GitChangelog[]`
+- Type: `GitChangelogInfo[]`
 
 ```ts
-interface GitChangelog {
+interface CoAuthorInfo {
+  /**
+   * Co-author name
+   */
+  name: string
+  /**
+   * Co-author email
+   */
+  email: string
+}
+
+interface GitChangelogInfo {
   /**
    * Commit hash
    */
@@ -477,11 +503,23 @@ interface GitChangelog {
   /**
    * Unix timestamp in milliseconds
    */
-  date: number
+  time: number
   /**
    * Commit message
    */
   message: string
+  /**
+   * The url of the commit
+   */
+  commitUrl?: string
+  /**
+   * release tag
+   */
+  tag?: string
+  /**
+   * The url of the release tag
+   */
+  tagUrl?: string
   /**
    * Commit author name
    */
@@ -490,22 +528,11 @@ interface GitChangelog {
    * Commit author email
    */
   email: string
-  /**
-   * The url of the commit
-   */
-  commitUrl?: string
-  /**
-   * The url of the release tag
-   */
-  tagUrl?: string
 
   /**
-   * The list of co-authors
+   * The co-authors of the commit
    */
-  coAuthors?: {
-    name: string
-    email: string
-  }[]
+  coAuthors?: CoAuthorInfo[]
 }
 ```
 

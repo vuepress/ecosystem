@@ -6,7 +6,7 @@ icon: list-tree
 
 <NpmBadge package="@vuepress/plugin-catalog" />
 
-此插件可以自动生成目录页面，也提供目录组件。
+此插件可以自动生成目录页面，并提供目录组件。
 
 ## 使用方法
 
@@ -14,7 +14,7 @@ icon: list-tree
 npm i -D @vuepress/plugin-catalog@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 
 export default {
@@ -26,9 +26,9 @@ export default {
 }
 ```
 
-首先，你应该在路由元信息中设置目录信息:
+首先，你需要在路由元信息中设置目录信息：
 
-```js title=".vuepress/config.js"
+```ts title=".vuepress/config.ts"
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 
 export default {
@@ -43,28 +43,26 @@ export default {
 }
 ```
 
-你可以之后导入 `defineCatalogInfoGetter` 并在 [客户端配置文件][client-config] 中使用它来从元信息中提取目录信息。
+然后导入 `defineCatalogInfoGetter` 并在[客户端配置文件][client-config]中使用它来从路由元信息中提取目录信息。
 
-```js title=".vuepress/client.js"
+```ts title=".vuepress/client.ts"
 import { defineCatalogInfoGetter } from '@vuepress/plugin-catalog/client'
 
 defineCatalogInfoGetter((meta) => (meta.title ? { title: meta.title } : null))
-
-export default {}
 ```
 
-目录信息应包含:
+目录信息应包含：
 
-- `title`: 目录标题
-- `order`: 目录顺序 (可选)
-- `content`: 目录内容组件 (可选)
+- `title`：目录标题
+- `order`：目录顺序（可选）
+- `content`：目录内容组件（可选）
 
 ::: tip 通过 order 排序
 
-插件将按以下方式通过 `order` 对页面进行排序:
+插件会按以下顺序通过 `order` 对页面进行排序：
 
 ```:no-line-numbers
-// 从小到大依次排列正数
+// 正数按从小到大排列
 order 1 的项目
 order 2 的项目
 ...
@@ -74,7 +72,7 @@ order 10 的项目
 无 order 的项目
 无 order 的项目
 ...
-// 从小到大依次排列负数
+// 负数按从小到大排列
 order -10 的项目
 // ...
 order -2 的项目
@@ -89,21 +87,21 @@ order -1 的项目
 
 - 类型：`1 | 2 | 3`
 - 默认值：`3`
-- 详情：目录项级别的最大深度。
+- 详情：目录项级别的最大深度
 
 ### index <Badge text="仅限内置组件" />
 
 - 类型：`boolean`
 - 默认值：`false`
-- 详情：目录是否显示索引
+- 详情：是否显示目录索引
 
 ### frontmatter
 
 - 类型：`(path: string) => Record<string, any>`
-- 详情：生成页面的 Frontmatter 获取器。
+- 详情：生成页面的 Frontmatter 获取器
 - 示例：
 
-  ```js title=".vuepress/config.js"
+  ```ts title=".vuepress/config.ts"
   import { catalogPlugin } from '@vuepress/plugin-catalog'
 
   export default {
@@ -124,10 +122,10 @@ order -1 的项目
 - 默认值：`[]`
 - 详情：
 
-  生成中需要排除的目录页路径。
+  需要排除的目录页路径。
 
-  - `"/foo/"` 意味着仅排除 `/foo/` 文件夹的目录页生成。
-  - `/^\/foo\//` 意味着排除 `/foo/` 文件夹及其子文件夹的目录页生成。
+  - `"/foo/"` 仅排除 `/foo/` 文件夹的目录页生成
+  - `/^\/foo\//` 排除 `/foo/` 文件夹及其子文件夹的目录页生成
 
   ::: tip 404 页面会被自动排除。
 
@@ -136,7 +134,7 @@ order -1 的项目
 ### component
 
 - 类型：`string`
-- 详情：用作目录的组件名称。
+- 详情：用作目录的组件名称
 
 ### locales
 
@@ -160,9 +158,7 @@ order -1 的项目
   }
   ```
 
-- 必填: 否
-
-- 详情：目录组件国际化配置。
+- 详情：目录组件国际化配置
 
 ::: details 内置支持语言
 
@@ -182,8 +178,6 @@ order -1 的项目
 - **土耳其语** (tr-TR)
 - **韩语** (ko-KR)
 - **芬兰语** (fi-FI)
-- **印尼语** (id-ID)
-- **荷兰语** (nl-NL)
 - **印尼语** (id-ID)
 - **荷兰语** (nl-NL)
 
@@ -208,7 +202,7 @@ type CatalogInfoGetter = (meta: Record<string, unknown>) => CatalogInfo | null
 const defineCatalogInfoGetter: (options: CatalogInfoGetter) => void
 ```
 
-自定义如何从 meta 中提取目录信息。
+自定义如何从路由元信息中提取目录信息。
 
 ## 组件
 
@@ -220,12 +214,12 @@ const defineCatalogInfoGetter: (options: CatalogInfoGetter) => void
 
   你可以在主题布局中或直接在 Markdown 文件中使用 `<Catalog />`。
 
-  组件支持四个属性：
+  组件支持以下属性：
 
-  - `level`：更改显示层次深度（最大仅支持 3 层），默认为 `3`。
-  - `base`：显示指定文件夹的目录，默认显示当前文件夹目录。
-  - `index`：为目录项添加索引号，默认无标号。
-  - `hideHeading`：隐藏组件标题，默认会显示 `目录` 标题。
+  - `level`：更改显示层次深度（最大支持 3 层），默认为 `3`
+  - `base`：显示指定文件夹的目录，默认显示当前文件夹目录
+  - `index`：为目录项添加索引号，默认无标号
+  - `hideHeading`：隐藏组件标题，默认显示 `目录` 标题
 
 ## 样式
 

@@ -62,7 +62,7 @@ h1 {
 
 h2 {
   padding-bottom: 0.3rem;
-  border-bottom: 1px solid var(--vp-c-gutter, #e2e2e3);
+  border-bottom: 1px solid var(--vp-c-divider, #e2e2e3);
   font-size: 1.65rem;
   transition: border-color var(--vp-t-color);
 }
@@ -108,6 +108,7 @@ a {
   &.header-anchor {
     position: relative;
     color: inherit;
+    font-weight: inherit;
     text-decoration: none;
 
     &::before {
@@ -169,7 +170,7 @@ blockquote {
 
 hr {
   border: 0;
-  border-bottom: 1px solid var(--vp-c-gutter, #e2e2e3);
+  border-bottom: 1px solid var(--vp-c-divider, #e2e2e3);
   transition: border-color var(--vp-t-color);
 }
 

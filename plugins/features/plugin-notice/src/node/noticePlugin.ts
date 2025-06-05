@@ -9,6 +9,39 @@ import {
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
+/**
+ * VuePress notice plugin
+ *
+ * VuePress 通知插件
+ *
+ * @param options - Plugin options / 插件选项
+ *
+ * @example
+ * ```ts
+ * import { noticePlugin } from '@vuepress/plugin-notice'
+ *
+ * export default {
+ *   plugins: [
+ *     noticePlugin({
+ *       config: [
+ *         {
+ *           path: '/',
+ *           title: 'Notice Title',
+ *           content: 'Notice Content',
+ *           actions: [
+ *             {
+ *               text: 'Primary Action',
+ *               link: 'https://example.com',
+ *               type: 'primary',
+ *             },
+ *           ],
+ *         },
+ *       ],
+ *     }),
+ *   ],
+ * }
+ * ```
+ */
 export const noticePlugin =
   (options: NoticePluginOptions): Plugin =>
   (app) => {

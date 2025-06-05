@@ -6,9 +6,9 @@ icon: droplet
 
 <NpmBadge package="@vuepress/plugin-watermark" />
 
-将 [watermark-js-plus](https://github.com/zhensherlock/watermark-js-plus) 到 VuePress 中。
+将 [watermark-js-plus](https://github.com/zhensherlock/watermark-js-plus) 集成到 VuePress 中。
 
-此插件可在在页面中添加水印，可以选择为 全局页面 或 部分页面添加水印，还可以选择添加 文字水印 或 图片水印。
+此插件可在页面中添加水印，你可以选择为全局页面或部分页面添加水印，还可以选择添加文字水印或图片水印。
 
 ## 使用
 
@@ -16,13 +16,16 @@ icon: droplet
 npm i -D @vuepress/plugin-watermark@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { watermarkPlugin } from '@vuepress/plugin-watermark'
 
 export default {
   plugins: [
     watermarkPlugin({
-      // options
+      enabled: true,
+      watermarkOptions: {
+        content: 'My Site',
+      },
     }),
   ],
 }
@@ -32,9 +35,9 @@ export default {
 
 ### enabled
 
-- 类型： `boolean | ((page: Page) => boolean)`
+- 类型：`boolean | ((page: Page) => boolean)`
 
-- 默认值： `false`
+- 默认值：`true`
 
 - 详情：
 
@@ -44,17 +47,17 @@ export default {
 
 ### watermarkOptions
 
-- 类型： `WatermarkOptions`
+- 类型：`WatermarkOptions`
 
-- 默认值： `undefined`
+- 默认值：`undefined`
 
-- 详情： 配置项请参考 [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/zh/config/)。
+- 详情：配置项请参考 [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/zh/config/)。
 
 #### watermarkOptions.parent
 
-- 类型： `string`
+- 类型：`string`
 
-- 默认值： `body`
+- 默认值：`'body'`
 
 - 详情：添加水印的父元素选择器。
 
@@ -64,7 +67,7 @@ export default {
 
 ### watermark
 
-- 类型: `boolean | WatermarkOptions`
+- 类型：`boolean | WatermarkOptions`
 
 - 详情：
 
@@ -88,11 +91,11 @@ watermark:
 
 ### defineWatermarkConfig(config)
 
-- 类型： `(config: MaybeRefOrGetter<WatermarkOptions>) => void`
+- 类型：`(config: MaybeRefOrGetter<WatermarkOptions>) => void`
 
 传递给 [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/zh/config/) 的额外配置。
 
-```ts
+```ts title=".vuepress/client.ts"
 import { defineWatermarkConfig } from '@vuepress/plugin-watermark/client'
 
 defineWatermarkConfig({
@@ -104,9 +107,11 @@ defineWatermarkConfig({
 比如需要在 **深色/浅色 模式** 下控制不同的 水印 透明度、字体颜色等，
 或者需要传入如 `onSuccess`、`extraDrawFunc` 等回调函数。
 
-```ts
+```ts title=".vuepress/client.ts"
 import { useDarkMode } from '@vuepress/helper/client'
+import { defineWatermarkConfig } from '@vuepress/plugin-watermark/client'
 import { computed } from 'vue'
+import { defineClientConfig } from 'vuepress/client'
 
 export default defineClientConfig({
   setup() {

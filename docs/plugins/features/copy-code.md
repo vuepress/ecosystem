@@ -16,7 +16,7 @@ This plugin has been integrated into the default theme.
 npm i -D @vuepress/plugin-copy-code@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 
 export default {
@@ -57,16 +57,18 @@ export default {
 ### ignoreSelector
 
 - Type: `string[] | string`
+- Default: `""`
 - Details:
 
   Elements selector in code blocks, used to ignore related elements when copying.
 
   For example, `['.token.comment']` will ignore nodes with the class name `.token.comment` in code blocks (which in `prismjs` refers to ignoring comments).
 
-### inlineSelector
+### inline
 
 - Type: `string[] | string | boolean`
 - Default: `false`
+- Details:
 
   Whether to copy inline code content when double click.
 
@@ -83,7 +85,7 @@ export default {
 
 - Example:
 
-  ```ts
+  ```ts title=".vuepress/client.ts"
   import { useCopyCode } from '@vuepress/plugin-copy-code/client'
 
   export default {
@@ -91,9 +93,9 @@ export default {
       useCopyCode({
         transform: (preElement) => {
           // Remove all `.ignore` elements
-          pre.querySelectorAll('.ignore').remove()
+          preElement.querySelectorAll('.ignore').forEach((el) => el.remove())
           // insert copyright
-          pre.innerHTML += `\n Copied by VuePress`
+          preElement.innerHTML += `\n Copied by VuePress`
         },
         // ...other options
       })
@@ -123,15 +125,13 @@ export default {
   }
   ```
 
-- Required: No
-
 - Details:
 
   Locales config for copy code plugin.
 
 - Example:
 
-  ```ts
+  ```ts title=".vuepress/config.ts"
   import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 
   export default {

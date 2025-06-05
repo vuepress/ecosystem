@@ -39,6 +39,10 @@ export const sidebarEn: SidebarOptions = {
       text: 'Tools',
       link: 'tools/',
     },
+    {
+      text: 'AI',
+      link: 'ai/',
+    },
   ],
 
   '/plugins/analytics/': [
@@ -109,6 +113,7 @@ export const sidebarEn: SidebarOptions = {
     'markdown-include',
     'markdown-hint',
     'markdown-math',
+    'markdown-preview',
     'markdown-stylize',
     'markdown-tab',
     'links-check',
@@ -141,7 +146,13 @@ export const sidebarEn: SidebarOptions = {
     'register-components',
   ],
 
-  '/plugins/search/': ['guidelines', 'docsearch', 'search', 'slimsearch'],
+  '/plugins/search/': [
+    'guidelines',
+    'docsearch',
+    'meilisearch',
+    'search',
+    'slimsearch',
+  ],
 
   '/plugins/seo/': [
     {
@@ -159,6 +170,8 @@ export const sidebarEn: SidebarOptions = {
       children: ['guide', 'config', 'frontmatter'],
     },
   ],
+
+  '/plugins/ai/': ['llms'],
 
   '/themes/': [
     'guidelines',

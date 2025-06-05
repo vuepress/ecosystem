@@ -6,6 +6,31 @@ import type { WatermarkPluginOptions } from './options.js'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
+/**
+ * VuePress watermark plugin
+ *
+ * VuePress 水印插件
+ *
+ * @param options - Plugin options / 插件选项
+ *
+ * @example
+ * ```ts
+ * import { watermarkPlugin } from '@vuepress/plugin-watermark'
+ *
+ * export default {
+ *   plugins: [
+ *     watermarkPlugin({
+ *       enabled: true,
+ *       watermarkOptions: {
+ *         content: 'My Site',
+ *         fontColor: '#666',
+ *         opacity: 0.3,
+ *       },
+ *     }),
+ *   ],
+ * }
+ * ```
+ */
 export const watermarkPlugin =
   ({ enabled = true, ...options }: WatermarkPluginOptions = {}): Plugin =>
   (app) => {

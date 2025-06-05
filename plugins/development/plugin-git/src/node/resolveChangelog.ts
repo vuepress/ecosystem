@@ -5,6 +5,7 @@ import type { MergedRawCommit } from './typings.js'
 import {
   getContributorInfo,
   getUserNameWithNoreplyEmail,
+  sanitizeHTML,
 } from './utils/index.js'
 
 const RE_CLEAN_REFS = /[()]/g
@@ -20,6 +21,27 @@ const parseTagName = (refs: string): string | undefined => {
   return tags[0]?.includes('tag:') ? tags[0].replace('tag:', '').trim() : ''
 }
 
+/**
+ * Resolve changelog
+ *
+ * 解析变更日志
+ *
+ * @param app - VuePress app instance
+ *
+ * VuePress 应用实例
+ *
+ * @param commits - Git commits
+ *
+ * Git 提交记录
+ *
+ * @param options - Changelog options
+ *
+ * 变更日志选项
+ *
+ * @param contributors - Contributor info
+ *
+ * 贡献者信息
+ */
 export const resolveChangelog = (
   app: App,
   commits: MergedRawCommit[],
@@ -44,7 +66,7 @@ export const resolveChangelog = (
       time,
       email: contributor?.email || email,
       author: contributor?.name ?? contributor?.username ?? author,
-      message: app.markdown.renderInline(message),
+      message: sanitizeHTML(app.markdown.renderInline(message)),
     }
 
     if (coAuthors.length) resolved.coAuthors = coAuthors

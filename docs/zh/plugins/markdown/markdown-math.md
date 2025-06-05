@@ -20,7 +20,7 @@ npm i -D mathjax-full
 npm i -D katex
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 
 export default {
@@ -36,11 +36,11 @@ export default {
 
 - 内联模式：`$xxx$`
 
+  ::: preview
+
   Euler's identity $e^{i\pi}+1=0$ is a beautiful formula in $\mathbb{R}^2$.
 
-  ```md
-  Euler's identity $e^{i\pi}+1=0$ is a beautiful formula in $\mathbb{R}^2$.
-  ```
+  :::
 
 - 显示模式：
 
@@ -52,29 +52,26 @@ export default {
   $$
   ```
 
+  ::: preview
+
   $$
   \frac {\partial^r} {\partial \omega^r} \left(\frac {y^{\omega}} {\omega}\right)
   = \left(\frac {y^{\omega}} {\omega}\right) \left\{(\log y)^r + \sum_{i=1}^r \frac {(-1)^ Ir \cdots (r-i+1) (\log y)^{ri}} {\omega^i} \right\}
   $$
 
-  ```md
-  $$
-  \frac {\partial^r} {\partial \omega^r} \left(\frac {y^{\omega}} {\omega}\right)
-  = \left(\frac {y^{\omega}} {\omega}\right) \left\{(\log y)^r + \sum_{i=1}^r \frac {(-1)^ Ir \cdots (r-i+1) (\log y)^{ri}} {\omega^i} \right\}
-  $$
-  ```
+  :::
 
-::: tip 转义
+:::: tip 转义
 
 可以通过在 `$` 字符之前使用 `\` 或在 `$` 字符前后添加空格来完成转义：
 
-$a=1$ 是一个 TeX 方程，而 $ a=1 $ 和 \$a=1$ 不是。
+::: preview
 
-```md
 $a=1$ 是一个 TeX 方程，而 $ a=1 $ 和 \$a=1$ 不是。
-```
 
 :::
+
+::::
 
 ## 支持列表
 
@@ -96,7 +93,7 @@ Mathjax:
 
 ## 配置项
 
-### 类型
+### type
 
 - 类型：`'katex' | 'mathjax'`
 - 详情：
@@ -114,14 +111,37 @@ Mathjax:
 
 此外，还支持 2 个特殊选项：
 
-- `copy`：是否启用复制扩展。
-- `mhchem`：是否启用 mhchem 扩展。
+#### copy
+
+- 类型：`boolean`
+- 详情：是否启用复制扩展。
+
+#### mhchem
+
+- 类型：`boolean`
+- 详情：是否启用 mhchem 扩展。
 
 ### 使用 MathJax
 
-使用 MathJax 时，您可以设置：
+使用 MathJax 时，你可以设置：
 
-- `tex`：传递给 TeX 输入解析器的选项
-- `output`：`'svg'`（默认）或 `'chtml'` 来更改输出格式为 SVG 或 HTML。
-- `chtml`：传递给通用 HTML 输出解析器的选项
-- `svg`：传递给 SVG 输出解析器的选项
+#### tex
+
+- 类型：`object`
+- 详情：传递给 TeX 输入解析器的选项。
+
+#### output
+
+- 类型：`'svg' | 'chtml'`
+- 默认值：`'svg'`
+- 详情：输出格式，SVG 或通用 HTML。
+
+#### chtml
+
+- 类型：`object`
+- 详情：传递给通用 HTML 输出解析器的选项。
+
+#### svg
+
+- 类型：`object`
+- 详情：传递给 SVG 输出解析器的选项。

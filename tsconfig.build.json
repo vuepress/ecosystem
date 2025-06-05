@@ -4,6 +4,8 @@
     "composite": true
   },
   "references": [
+    // AI
+    { "path": "./plugins/ai/plugin-llms/tsconfig.build.json" },
     // analytics
     {
       "path": "./plugins/analytics/plugin-baidu-analytics/tsconfig.build.json"
@@ -56,6 +58,9 @@
     },
     { "path": "./plugins/markdown/plugin-markdown-math/tsconfig.build.json" },
     {
+      "path": "./plugins/markdown/plugin-markdown-preview/tsconfig.build.json"
+    },
+    {
       "path": "./plugins/markdown/plugin-markdown-stylize/tsconfig.build.json"
     },
     { "path": "./plugins/markdown/plugin-markdown-tab/tsconfig.build.json" },
@@ -86,6 +91,7 @@
 
     // search
     { "path": "./plugins/search/plugin-docsearch/tsconfig.build.json" },
+    { "path": "./plugins/search/plugin-meilisearch/tsconfig.build.json" },
     { "path": "./plugins/search/plugin-search/tsconfig.build.json" },
     { "path": "./plugins/search/plugin-slimsearch/tsconfig.build.json" },
 

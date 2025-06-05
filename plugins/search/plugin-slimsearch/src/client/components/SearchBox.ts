@@ -1,9 +1,9 @@
 import {
-  checkIsIOS,
-  checkIsMacOS,
-  checkIsiPad,
+  isIOS,
+  isMacOS,
+  isiPad,
   useKeys,
-  useLocaleConfig,
+  useLocale,
 } from '@vuepress/helper/client'
 import type { VNode } from 'vue'
 import { computed, defineComponent, h, onMounted, ref } from 'vue'
@@ -20,9 +20,9 @@ export default defineComponent({
   name: 'SearchBox',
 
   setup() {
-    const locale = useLocaleConfig(locales)
+    const locale = useLocale(locales)
     const [isActive, toggleActive] = useActiveState()
-    const isMacOS = ref(false)
+    const isMacOSDevice = ref(false)
 
     useKeys(options.hotKeys, () => {
       if (!isActive.value) toggleActive()
@@ -32,7 +32,7 @@ export default defineComponent({
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       primaryHotKey
         ? [
-            ...(isMacOS.value
+            ...(isMacOSDevice.value
               ? ['⌃', '⇧', '⌥', '⌘']
               : ['Ctrl', 'Shift', 'Alt', 'Win']
             ).filter(
@@ -49,10 +49,8 @@ export default defineComponent({
     onMounted(() => {
       const { userAgent } = navigator
 
-      isMacOS.value =
-        checkIsMacOS(userAgent) ||
-        checkIsIOS(userAgent) ||
-        checkIsiPad(userAgent)
+      isMacOSDevice.value =
+        isMacOS(userAgent) || isIOS(userAgent) || isiPad(userAgent)
     })
 
     return (): (VNode | null)[] => [

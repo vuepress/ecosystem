@@ -8,9 +8,9 @@ icon: palette
 
 Provide palette support for your theme.
 
-This plugin is mainly used to develop themes, and has been integrated into the default theme. You won't need to use it directly in most cases.
+This plugin is primarily designed for theme development and has been integrated into the default theme. You typically won't need to use it directly in most cases.
 
-For theme authors, this plugin will help you to provide styles customization for users.
+For theme authors, this plugin provides users with the ability to customize styles.
 
 ## Usage
 
@@ -18,7 +18,7 @@ For theme authors, this plugin will help you to provide styles customization for
 npm i -D @vuepress/plugin-palette@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { palettePlugin } from '@vuepress/plugin-palette'
 
 export default {
@@ -32,26 +32,31 @@ export default {
 
 ## Palette and Style
 
-This plugin will provide a `@vuepress/plugin-palette/palette` (palette file) and a `@vuepress/plugin-palette/style` (style file) to be imported in your theme styles.
+This plugin provides a `@vuepress/plugin-palette/palette` (palette file) and a `@vuepress/plugin-palette/style` (style file) for import in your theme styles.
 
-The palette file is used for defining style variables, so it's likely to be imported at the beginning of your theme styles. For example, users can define [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), [SASS variables](https://sass-lang.com/documentation/variables), [LESS variables](http://lesscss.org/features/#variables-feature) or [Stylus variables](https://stylus-lang.com/docs/variables.html) in the palette, and then you can use those variables in your theme styles.
+The palette file is used to define style variables, so it's typically imported at the beginning of your theme styles. For example, users can define [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), [SASS variables](https://sass-lang.com/documentation/variables), [LESS variables](http://lesscss.org/features/#variables-feature), or [Stylus variables](https://stylus-lang.com/docs/variables.html) in the palette, and then you can use those variables in your theme styles.
 
-The style file is used for overriding the default styles or adding extra styles, so it's likely to be imported at the end of your theme styles.
+The style file is used to override default styles or add extra styles, so it's typically imported at the end of your theme styles.
 
 ## Usage
 
-Use this plugin in your theme, assuming you are using SASS:
+Use this plugin in your theme, assuming you're using SASS:
 
 ```ts
+import { palettePlugin } from '@vuepress/plugin-palette'
+
 export default {
   // ...
-  plugins: [palettePlugin({ preset: 'sass' })],
+  plugins: [
+    palettePlugin({ preset: 'sass' }),
+    // ...
+  ],
 }
 ```
 
 ### Usage of Palette
 
-Import the plugin's palette file where your theme needs to use the corresponding variables, such as in the `Layout.vue` file:
+Import the plugin's palette file wherever your theme needs to use the corresponding variables, such as in the `Layout.vue` file:
 
 ```vue
 <template>
@@ -89,7 +94,7 @@ import 'path/to/your/theme/style'
 import '@vuepress/plugin-palette/style'
 ```
 
-Then users can add extra styles in `.vuepress/styles/index.scss` and override the default styles of your theme:
+Then users can add extra styles in `.vuepress/styles/index.scss` and override your theme's default styles:
 
 ```scss
 h1 {
@@ -101,7 +106,7 @@ h1 {
 
 ### preset
 
-- Type: `'css' | 'sass' | 'less' | 'stylus'`
+- Type: `'css' | 'less' | 'sass' | 'stylus'`
 
 - Default: `'css'`
 
@@ -109,7 +114,7 @@ h1 {
 
   Set preset for other options.
 
-  If you don't need advanced customization of the plugin, it's recommended to only set this option and omit other options.
+  If you don't need advanced customization of the plugin, it's recommended to set only this option and omit others.
 
 ### userPaletteFile
 
@@ -118,8 +123,8 @@ h1 {
 - Default:
 
   - css: `'.vuepress/styles/palette.css'`
-  - sass: `'.vuepress/styles/palette.scss'`
   - less: `'.vuepress/styles/palette.less'`
+  - sass: `'.vuepress/styles/palette.scss'`
   - stylus: `'.vuepress/styles/palette.styl'`
 
 - Details:
@@ -128,7 +133,7 @@ h1 {
 
   The default value depends on the [preset](#preset) option.
 
-  The file is where users define style variables, and it's recommended to keep the default file path as a convention.
+  This file is where users define style variables, and it's recommended to keep the default file path as a convention.
 
 ### tempPaletteFile
 
@@ -137,8 +142,8 @@ h1 {
 - Default:
 
   - css: `'styles/palette.css'`
-  - sass: `'styles/palette.scss'`
   - less: `'styles/palette.less'`
+  - sass: `'styles/palette.scss'`
   - stylus: `'styles/palette.styl'`
 
 - Details:
@@ -156,8 +161,8 @@ h1 {
 - Default:
 
   - css: `'.vuepress/styles/index.css'`
-  - sass: `'.vuepress/styles/index.scss'`
   - less: `'.vuepress/styles/index.less'`
+  - sass: `'.vuepress/styles/index.scss'`
   - stylus: `'.vuepress/styles/index.styl'`
 
 - Details:
@@ -166,7 +171,7 @@ h1 {
 
   The default value depends on the [preset](#preset) option.
 
-  The file is where users override default styles or add extra styles, and it's recommended to keep the default file path as a convention.
+  This file is where users override default styles or add extra styles, and it's recommended to keep the default file path as a convention.
 
 ### tempStyleFile
 
@@ -175,8 +180,8 @@ h1 {
 - Default:
 
   - css: `'styles/index.css'`
-  - sass: `'styles/index.scss'`
   - less: `'styles/index.less'`
+  - sass: `'styles/index.scss'`
   - stylus: `'styles/index.styl'`
 
 - Details:
@@ -194,8 +199,8 @@ h1 {
 - Default:
 
   - css: `` (filePath) => `@import '${filePath}';\n` ``
-  - sass: `` (filePath) => `@forward 'file:///${filePath}';\n` ``
   - less: `` (filePath) => `@import '${filePath}';\n` ``
+  - sass: `` (filePath) => `@forward 'file:///${filePath}';\n` ``
   - stylus: `` (filePath) => `@require '${filePath}';\n` ``
 
 - Details:

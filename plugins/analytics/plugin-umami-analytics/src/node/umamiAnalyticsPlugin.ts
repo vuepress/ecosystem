@@ -9,6 +9,34 @@ const PLUGIN_NAME = '@vuepress/plugin-umami-analytics'
 
 const logger = new Logger(PLUGIN_NAME)
 
+/**
+ * Umami Analytics plugin for VuePress
+ *
+ * VuePress 的 Umami Analytics 插件
+ *
+ * @param options - Plugin options
+ * @returns VuePress plugin
+ *
+ * @description Integrates Umami Analytics tracking into VuePress applications.
+ * Only active in production builds when a valid website ID is provided.
+ *
+ * 集成 Umami Analytics 追踪到 VuePress 应用中。
+ * 仅在生产构建且提供有效网站 ID 时启用。
+ *
+ * @example
+ * ```ts
+ * import { umamiAnalyticsPlugin } from '@vuepress/plugin-umami-analytics'
+ *
+ * export default {
+ *   plugins: [
+ *     umamiAnalyticsPlugin({
+ *       id: 'your-website-id',
+ *       link: 'https://your-umami-instance.com/script.js'
+ *     })
+ *   ]
+ * }
+ * ```
+ */
 export const umamiAnalyticsPlugin =
   ({ id, ...options }: UmamiOptions): Plugin =>
   (app) => {

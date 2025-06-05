@@ -4,9 +4,9 @@
 
 See [Artalk Configuration](https://artalk.js.org/guide/frontend/config.html) for details.
 
-- The `el` `pageTitle`, `pageKey` and `site` options are reserved for plugins, they will be inferred from VuePress config.
+- The `el`, `pageTitle`, `pageKey`, and `site` options are reserved for the plugin and will be automatically inferred from VuePress config.
 
-- Two function options `imgUploader` and `avatarURLBuilder` can only be set on client side.
+- The two function options `imgUploader` and `avatarURLBuilder` can only be set on the client side.
 
 ## Plugin Config
 
@@ -14,9 +14,8 @@ You can directly configure serializable options in the plugin options:
 
 ```ts title=".vuepress/config.ts"
 import { commentPlugin } from '@vuepress/plugin-comment'
-import { defineUserConfig } from 'vuepress'
 
-export default defineUserConfig({
+export default {
   plugins: [
     commentPlugin({
       provider: 'Artalk',
@@ -24,7 +23,7 @@ export default defineUserConfig({
       // ...
     }),
   ],
-})
+}
 ```
 
 ## Client Config

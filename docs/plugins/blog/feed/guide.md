@@ -14,11 +14,11 @@ The plugin can generate feed files in the following three formats for you:
 
 Please set `atom`, `json` or `rss` to `true` in the plugin options according to the formats you want to generate.
 
-To correctly generate feed links, you need to set `hostname` in the plugin options,
+To correctly generate feed links, you need to set `hostname` in the plugin options.
 
 ## Readable Preview
 
-When you open the feed file in browser, we magically convert atom and rss feed xml to human readable html via xsl template. Check [atom](/atom.xml) and [rss](/rss.xml) feed of this site as an example!
+When you open the feed file in a browser, we magically convert atom and rss feed xml to human readable html via xsl template. Check [atom](/atom.xml) and [rss](/rss.xml) feed of this site as an example!
 
 If you want to preview your feed in devServer, set `devServer: true` in plugin options. You may also need to set `devHostname` if you are not using the default `http://localhost:{port}`.
 

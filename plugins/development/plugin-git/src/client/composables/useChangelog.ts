@@ -1,6 +1,6 @@
 import type { ComputedRef, MaybeRefOrGetter } from 'vue'
 import { computed, toValue } from 'vue'
-import { usePageData, usePageFrontmatter, usePageLang } from 'vuepress/client'
+import { useData } from 'vuepress/client'
 import type {
   GitChangelogInfo,
   GitPluginFrontmatter,
@@ -11,20 +11,37 @@ import { resolveRepoLink } from '../utils/index.js'
 
 declare const __GIT_CHANGELOG__: boolean
 
+/**
+ * Git changelog item
+ *
+ * Git 变更日志项目
+ */
 export interface GitChangelogItem extends GitChangelogInfo {
   date: string
 }
 
 const RE_ISSUE = /#(\d+)/g
 
+/**
+ * Changelog composable
+ *
+ * 变更日志组合式函数
+ *
+ * @param enabled - Whether to enable changelog
+ *
+ * 是否启用变更日志
+ *
+ * @default true
+ */
 export const useChangelog =
   typeof __GIT_CHANGELOG__ === 'boolean' && __GIT_CHANGELOG__
     ? (
         enabled: MaybeRefOrGetter<boolean> = true,
       ): ComputedRef<GitChangelogItem[]> => {
-        const frontmatter = usePageFrontmatter<GitPluginFrontmatter>()
-        const lang = usePageLang()
-        const page = usePageData<GitPluginPageData>()
+        const { frontmatter, lang, page } = useData<
+          GitPluginFrontmatter,
+          GitPluginPageData
+        >()
 
         const { pattern = {}, provider } = gitOptions
         const repo = resolveRepoLink(gitOptions.repo, provider)

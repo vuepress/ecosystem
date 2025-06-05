@@ -48,7 +48,7 @@ export const useLocaleConfig: <T extends LocaleData>(
 ::: details 示例
 
 ```ts
-const localesCOnfig = {
+const localesConfig = {
   '/': 'Title',
   '/zh/': '标题',
 }
@@ -66,9 +66,57 @@ locale.value // '标题'
 
 ## 工具
 
+### env
+
+检查当前环境是否满足给定条件：
+
+```ts
+export const isMobile: (ua: string) => boolean
+export const isChromeWebView: (ua: string) => boolean
+export const isSafariMobile: (ua: string) => boolean
+export const isSafari: (ua: string) => boolean
+export const isiPhone: (ua: string) => boolean
+export const isiPad: (ua: string) => boolean
+export const isWindows: (ua: string) => boolean
+export const isIOS: (ua: string) => boolean
+export const isMacOS: (ua: string) => boolean
+```
+
+**参数:**
+
+- `ua`: 要检查的用户代理字符串
+
+**返回值:**
+
+- `boolean`: 条件是否满足
+
+::: details 示例
+
+```ts
+import { isIOS, isMobile, isSafari } from '@vuepress/helper/client'
+
+// 获取用户代理字符串
+const userAgent = navigator.userAgent
+
+// 检查环境
+if (isMobile(userAgent)) {
+  console.log('用户正在使用移动设备')
+}
+
+if (isSafari(userAgent)) {
+  console.log('用户正在使用 Safari 浏览器')
+}
+
+if (isIOS(userAgent)) {
+  console.log('用户正在使用 iOS 设备')
+}
+```
+
+:::
+
 ### getHeaders
 
-获取当前页面指定的 标题列表。
+获取当前页面的标题列表。
 
 ```ts
 export const getHeaders: (options: GetHeadersOptions) => HeaderItem[]
@@ -79,29 +127,29 @@ export const getHeaders: (options: GetHeadersOptions) => HeaderItem[]
 ```ts
 export interface GetHeadersOptions {
   /**
-   * 页面标题选择器
+   * 标题的选择器
+   *
+   * 它将作为 `document.querySelectorAll(selector)` 的参数，
+   * 因此你应该传入一个 `CSS 选择器` 字符串。
    *
    * @default '[vp-content] h1, [vp-content] h2, [vp-content] h3, [vp-content] h4, [vp-content] h5, [vp-content] h6'
    */
   selector?: string
   /**
-   * 忽略标题内的特定元素选择器
+   * 忽略标题内的特定元素。
    *
-   * 它将作为 `document.querySelectorAll` 的参数。
-   * 因此，你应该传入一个 `CSS 选择器` 字符串
+   * `CSS 选择器` 数组
    *
    * @default []
    */
   ignore?: string[]
   /**
-   * 指定获取的标题层级
+   * 标题的层级
    *
-   * `1` 至 `6` 表示 `<h1>` 至 `<h6>`
-   *
-   * - `false`: 不返回标题列表
-   * - `number`: 只获取指定的单个层级的标题。
-   * - `[number, number]: 标题层级元组，第一个数字应小于第二个数字。例如，`[2, 4]` 表示显示从 `<h2>` 到 `<h4>` 的所有标题。
-   * - `deep`: 等同于 `[2, 6]`, 表示获取从 `<h2>` 到 `<h6>` 的所有标题。
+   * - `false`: 无标题。
+   * - `number`: 仅显示该层级的标题。
+   * - `[number, number]`: 标题层级元组，第一个数字应小于第二个数字，例如 `[2, 4]` 表示显示从 `<h2>` 到 `<h4>` 的所有标题。
+   * - `deep`: 等同于 `[2, 6]`，表示显示从 `<h2>` 到 `<h6>` 的所有标题。
    *
    * @default 2
    */
@@ -114,31 +162,31 @@ export interface GetHeadersOptions {
 ```ts
 interface PageHeader {
   /**
-   * 当前标题的层级
+   * 标题的层级
    *
    * `1` 至 `6` 表示 `<h1>` 至 `<h6>`
    */
   level: number
   /**
-   * 当前标题的内容
+   * 标题的内容
    */
   title: string
   /**
-   * 标题的 标识
+   * 标题的标识符
    *
-   * 这通常是标题元素的 `id` 属性值
+   * 通常是标题锚点的 `id` 属性
    */
   slug: string
   /**
    * 标题的链接
    *
-   * 通常使用`#${slug}`作为锚点哈希
+   * 通常使用 `#${slug}` 作为锚点哈希
    */
   link: string
   /**
-   * 标题的子标题列表
+   * 标题的子标题
    */
-  children: Header[]
+  children: MarkdownItHeader[]
 }
 
 export type HeaderLevels = number | 'deep' | false | [number, number]
@@ -160,6 +208,148 @@ onMounted(() => {
   })
   console.log(headers)
 })
+```
+
+:::
+
+### isKeyMatched
+
+检查键盘事件是否匹配指定的热键：
+
+```ts
+export const isKeyMatched: (
+  event: KeyboardEvent,
+  hotKeys: (KeyOptions | string)[],
+) => boolean
+```
+
+**参数:**
+
+- `event`: 要检查的键盘事件
+- `hotKeys`: 热键定义的数组，可以是字符串（仅键名）或 `KeyOptions` 对象
+
+**KeyOptions 接口:**
+
+```ts
+interface KeyOptions {
+  key: string
+  ctrl?: boolean
+  shift?: boolean
+  alt?: boolean
+}
+```
+
+**返回值:**
+
+- `boolean`: 是否有任何热键匹配此事件
+
+::: details 示例
+
+```ts
+import { isKeyMatched } from '@vuepress/helper/client'
+
+document.addEventListener('keydown', (event) => {
+  // 检查是否按下 Escape 键
+  if (isKeyMatched(event, ['Escape'])) {
+    console.log('按下了 Escape 键')
+  }
+
+  // 检查是否按下 Ctrl+S
+  if (isKeyMatched(event, [{ key: 's', ctrl: true }])) {
+    console.log('按下了 Ctrl+S')
+    event.preventDefault()
+  }
+
+  // 检查多个可能的热键
+  if (isKeyMatched(event, ['Enter', { key: ' ', shift: true }])) {
+    console.log('按下了 Enter 或 Shift+Space')
+  }
+})
+```
+
+:::
+
+### isSlotContentEmpty
+
+检查插槽内容是否为空：
+
+```ts
+export const isSlotContentEmpty: (normalizedSlotContent: SlotContent) => boolean
+```
+
+**参数:**
+
+- `normalizedSlotContent`: 规范化的插槽内容，应该是插槽函数的结果
+
+**返回值:**
+
+- `boolean`: 如果插槽内容为空则返回 `true`，否则返回 `false`
+
+::: details 示例
+
+```ts
+import { isSlotContentEmpty } from '@vuepress/helper/client'
+import { useSlots } from 'vue'
+
+const slots = useSlots()
+
+// 检查默认插槽是否为空
+const isDefaultSlotEmpty = isSlotContentEmpty(slots.default?.())
+
+// 基于插槽内容有条件地渲染
+const renderContent = () => {
+  if (!isSlotContentEmpty(slots.header?.())) {
+    // 渲染头部内容
+  }
+
+  // 组件的其余部分
+}
+```
+
+:::
+
+### wait
+
+等待指定的时间：
+
+```ts
+export const wait: (ms: number) => Promise<void>
+```
+
+**参数:**
+
+- `ms`: 等待时间（毫秒）
+
+**返回值:**
+
+- `Promise<void>`: 在指定时间后解析的 Promise
+
+::: details 示例
+
+```ts
+import { wait } from '@vuepress/helper/client'
+
+const handleOperation = async () => {
+  // 执行某些操作
+  console.log('操作开始')
+
+  // 等待 1 秒
+  await wait(1000)
+
+  // 等待后继续
+  console.log('操作在 1 秒后继续')
+}
+
+// 在动画序列中使用
+const animateSequence = async () => {
+  element1.classList.add('animate')
+  await wait(500)
+
+  element2.classList.add('animate')
+  await wait(300)
+
+  element3.classList.add('animate')
+}
 ```
 
 :::

@@ -11,7 +11,7 @@ import { logger } from '../logger.js'
 import { getRedirectHTML } from './getRedirectHTML.js'
 
 export const generateRedirectFiles = async (
-  { dir, options }: App,
+  app: App,
   config: Record<string, string>,
   hostname = '',
 ): Promise<void> => {
@@ -23,11 +23,11 @@ export const generateRedirectFiles = async (
 
   await Promise.all(
     entries(config).map(async ([from, to]) => {
-      const filePath = dir.dest(removeLeadingSlash(from))
+      const filePath = app.dir.dest(removeLeadingSlash(from))
 
       if (!fs.existsSync(filePath)) {
         const redirectUrl = isLinkAbsolute(to)
-          ? `${resolvedHostname}${options.base}${removeLeadingSlash(to)}`
+          ? `${resolvedHostname}${app.siteData.base}${removeLeadingSlash(to)}`
           : to
 
         await fs.ensureDir(path.dirname(filePath))

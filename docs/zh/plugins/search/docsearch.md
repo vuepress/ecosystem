@@ -14,7 +14,7 @@ icon: https://docsearch.algolia.com/img/favicon.ico
 npm i -D @vuepress/plugin-docsearch@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 
 export default {
@@ -30,7 +30,7 @@ export default {
 
 你需要 [提交你的网站 URL](https://docsearch.algolia.com/apply/) 来加入 DocSearch 项目。当你的索引成功创建后， DocSearch 团队会将 [apiKey](#apikey) 和 [indexName](#indexname) 发送到你的邮箱。接下来，你就可以配置该插件，在 VuePress 中启用 DocSearch 了。
 
-或者，你也可以 [运行你自己的爬虫](https://docsearch.algolia.com/docs/run-your-own/) 来创建索引，然后使用你自己的 [appId](#appId), [apiKey](#apikey) 和 [indexName](#indexname) 来配置该插件。
+或者，你也可以 [运行你自己的爬虫](https://docsearch.algolia.com/docs/run-your-own/) 来创建索引，然后使用你自己的 [appId](#appid), [apiKey](#apikey) 和 [indexName](#indexname) 来配置该插件。
 
 ::: details 官方爬虫配置示例
 
@@ -41,7 +41,7 @@ new Crawler({
   rateLimit: 8,
   startUrls: [
     // 这是 Algolia 开始抓取网站的初始地址
-    // 如果你的网站被分为数个独立部分，你可能需要在此设置多个入口链接
+    // 如果你的网站被分为多个独立部分，你可能需要在此设置多个入口链接
     'https://YOUR_WEBSITE_URL/',
   ],
   sitemaps: [
@@ -59,7 +59,7 @@ new Crawler({
   // 爬虫执行的计划时间，可根据文档更新频率设置
   schedule: 'at 02:00 every 1 day',
   actions: [
-    // 你可以拥有多个 action，特别是你在一个域名下部署多个文档时
+    // 你可以拥有多个 action，特别是当你在一个域名下部署多个文档时
     {
       // 使用适当的名称为索引命名
       indexName: 'YOUR_INDEX_NAME',
@@ -172,50 +172,35 @@ new Crawler({
 
 ### apiKey
 
-- 类型： `string`
-
-- 是否必需： `true`
-
-- 详情：
-
-  从 DocSearch 团队收到的 `apiKey` ，或者由你自己生成。
+- 类型：`string`
+- 必填：是
+- 详情：从 DocSearch 团队收到的 `apiKey` ，或者由你自己生成。
 
 - 参考：
   - [DocSearch > Options > apiKey](https://docsearch.algolia.com/docs/api#apikey)
 
 ### indexName
 
-- 类型： `string`
-
-- 是否必需： `true`
-
-- 详情：
-
-  从 DocSearch 团队收到的 `indexName` ，或者由你自己生成。
+- 类型：`string`
+- 必填：是
+- 详情：从 DocSearch 团队收到的 `indexName` ，或者由你自己生成。
 
 - 参考：
   - [DocSearch > Options > indexName](https://docsearch.algolia.com/docs/api#indexname)
 
 ### appId
 
-- 类型： `string`
-
-- 是否必需： `true`
-
-- 详情：
-
-  用于设置你的 Application ID。
+- 类型：`string`
+- 必填：是
+- 详情：用于设置你的 Application ID。
 
 - 参考：
   - [DocSearch > Options > appId](https://docsearch.algolia.com/docs/api#appid)
 
 ### searchParameters
 
-- 类型： `SearchParameters`
-
-- 详情：
-
-  Algolia 搜索 API 参数。
+- 类型：`SearchParameters`
+- 详情：Algolia 搜索 API 参数。
 
 - 参考：
   - [DocSearch > Options > searchParameters](https://docsearch.algolia.com/docs/api/#searchparameters)
@@ -223,78 +208,55 @@ new Crawler({
 
 ### placeholder
 
-- 类型： `string`
-
-- 默认值： `'Search docs'`
-
-- 详情：
-
-  搜索输入框的 placeholder 属性。
+- 类型：`string`
+- 默认值：`'Search docs'`
+- 详情：搜索输入框的 placeholder 属性。
 
 - 参考：
   - [DocSearch > Options > placeholder](https://docsearch.algolia.com/docs/api#placeholder)
 
 ### disableUserPersonalization
 
-- 类型： `boolean`
-
-- 默认值： `false`
-
-- 详情：
-
-  是否禁用所有的个性化功能：最近的搜索、收藏的搜索结果等。
+- 类型：`boolean`
+- 默认值：`false`
+- 详情：是否禁用所有的个性化功能：最近的搜索、收藏的搜索结果等。
 
 - 参考：
   - [DocSearch > Options > disableUserPersonalization](https://docsearch.algolia.com/docs/api#disableuserpersonalization)
 
 ### initialQuery
 
-- 类型： `string`
-
-- 详情：
-
-  打开弹窗时的初始请求。
+- 类型：`string`
+- 详情：打开弹窗时的初始请求。
 
 - 参考：
   - [DocSearch > Options > initialQuery](https://docsearch.algolia.com/docs/api#initialquery)
 
 ### translations
 
-- 类型： `Partial<DocSearchTranslations>`
-
-- 详情：
-
-  允许替换 DocSearch 按钮和弹窗内的默认文字。
+- 类型：`Partial<DocSearchTranslations>`
+- 详情：允许替换 DocSearch 按钮和弹窗内的默认文字。
 
 - 参考：
   - [DocSearch > Options > translations](https://docsearch.algolia.com/docs/api/#translations)
 
 ### maxResultsPerGroup
 
-- 类型： `number`
-
-- 默认值： `5`
-
-- 详情：
-
-  每个组的最大结果数。
+- 类型：`number`
+- 默认值：`5`
+- 详情：每个组的最大结果数。
 
 - 参考：
   - [DocSearch > Options > maxResultsPerGroup](https://docsearch.algolia.com/docs/api#maxresultspergroup)
 
 ### locales
 
-- 类型： `Record<string, DocSearchPluginOptions>`
-
-- 详情：
-
-  在不同 locales 下对该插件进行不同的配置。
-
-  该插件的所有其他选项都可以在 locale 中进行配置。
+- 类型：`Record<string, DocSearchPluginOptions>`
+- 详情：在不同 locales 下对该插件进行不同的配置。该插件的所有其他选项都可以在 locale 中进行配置。
 
 - 示例：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     docsearchPlugin({
@@ -329,27 +291,19 @@ export default {
 
 ### indexBase
 
-- 类型： `string`
+- 类型：`string`
+- 默认值：[base](https://vuejs.press/zh/reference/config.html#base)
+- 详情：搜索索引基础路径。
 
-- 默认值： [base](https://vuejs.press/zh/reference/config.html#base)
-
-- 详情：
-
-  搜索索引基础路径。
-
-  如果你需要把你的站点部署到不同的域名上，你不需要把它们全都提交到 DocSearch 上来分别生成搜索索引。你可以选择其中一个域名作为 _索引域名_ ，并且仅将 _索引域名_ 提交到 DocSearch 上来爬去搜索索引。然后，你就可以在不同的部署域名下复用索引。
+  如果你需要把你的站点部署到不同的域名上，你不需要把它们全都提交到 DocSearch 上来分别生成搜索索引。你可以选择其中一个域名作为 _索引域名_ ，并且仅将 _索引域名_ 提交到 DocSearch 上来爬取搜索索引。然后，你就可以在不同的部署域名下复用索引。
 
   如果你不同部署域名下的 [base](https://vuejs.press/zh/reference/config.html#base) 是不一样的，你就需要将这个配置设置成 _索引域名_ 的 [base](https://vuejs.press/zh/reference/config.html#base) ，这样其他的部署域名就可以正确复用索引了。
 
 ### injectStyles
 
-- 类型： `boolean`
-
-- 默认值： `true`
-
-- 详情：
-
-  是否注入 DocSearch 的默认样式。
+- 类型：`boolean`
+- 默认值：`true`
+- 详情：是否注入 DocSearch 的默认样式。
 
   如果你认为 DocSearch 的默认样式和你的站点不兼容，你可以尝试覆盖默认样式，或者将该选项设置为 `false` 来完全移除默认样式。
 
@@ -371,7 +325,7 @@ const defineDocSearchConfig: (
 ) => void
 ```
 
-自定义 DocSearch 选项，支持普通对象，Ref 者 Getter。
+自定义 DocSearch 选项，支持普通对象，Ref 或 Getter。
 
 ::: warning
 

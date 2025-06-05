@@ -39,6 +39,9 @@ export default defaultTheme({
       editLinkText: '在 GitHub 上编辑此页',
       lastUpdatedText: '上次更新',
       contributorsText: '贡献者',
+      // page nav
+      prev: '上一页',
+      next: '下一页',
       // custom containers
       tip: '提示',
       warning: '注意',

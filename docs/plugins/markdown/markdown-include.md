@@ -6,7 +6,7 @@ icon: between-horizontal-end
 
 <NpmBadge package="@vuepress/plugin-markdown-include" />
 
-Add additional features to your markdown includes.
+Add markdown include features to your VuePress site.
 
 ## Usage
 
@@ -14,7 +14,7 @@ Add additional features to your markdown includes.
 npm i -D @vuepress/plugin-markdown-include@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
 
 export default {
@@ -30,13 +30,13 @@ export default {
 
 Use `<!-- @include: filename -->` to include a file.
 
-To partially import the file, you can specify the range of lines to be included:
+To partially import a file, you can specify the range of lines to be included:
 
 - `<!-- @include: filename{start-end} -->`
 - `<!-- @include: filename{start-} -->`
 - `<!-- @include: filename{-end} -->`
 
-Also, you can include file region:
+Also, you can include a file region:
 
 - `<!-- @include: filename#region -->`
 
@@ -214,7 +214,7 @@ class MyClass:
     #region snippet
     def sayHello(self):
         print("Hello " + self.msg + "!")
-    #region snippet
+    #endregion snippet
 
     def sayBye(self):
         print("Bye " + self.msg + "!")
@@ -340,7 +340,7 @@ int main() {
 ### deep
 
 - Type: `boolean`
-- Details: Whether enable figure support.
+- Details: Whether to recursively include files referenced in included Markdown files.
 
 ### useComment
 

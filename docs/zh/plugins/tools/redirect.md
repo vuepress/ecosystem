@@ -14,7 +14,7 @@ icon: forward
 npm i -D @vuepress/plugin-redirect@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 
 export default {
@@ -203,13 +203,13 @@ Generate redirect site for current VuePress project
 ### autoLocale
 
 - 类型：`boolean`
-- 默认值: `false`
+- 默认值：`false`
 - 详情： 是否启用语言重定向
 
 ### switchLocale
 
 - 类型：`"direct" | "modal" | false`
-- 默认值: `false`
+- 默认值：`false`
 - 详情：
 
   是否根据用户偏好切换到新的语言环境。
@@ -225,19 +225,19 @@ Generate redirect site for current VuePress project
 ### localeFallback
 
 - 类型：`boolean`
-- 默认值: `true`
+- 默认值：`true`
 - 详情：是否回退到用户定义的其他语言
 
 ### defaultBehavior
 
 - 类型：`"defaultLocale" | "homepage" | "404"`
-- 默认值: `"defaultLocale"`
+- 默认值：`"defaultLocale"`
 - 详情：当前链接没有可用的语言版本时的行为
 
 ### defaultLocale
 
 - 类型：`string`
-- 默认值: 首个语言路径
+- 默认值：首个语言路径
 - 详情：默认语言路径
 
 ### locales
@@ -276,8 +276,6 @@ Generate redirect site for current VuePress project
     [localePath: string]: Partial<RedirectPluginLocaleData>
   }
   ```
-
-- 必填：否
 
 - 详情：
 

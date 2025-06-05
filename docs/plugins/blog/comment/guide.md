@@ -5,29 +5,26 @@ layout: CommentPage
 
 # Guide
 
-## Setting Options
+## Configuration
 
-You can both set options with plugin options on Node side and set options in [client config file][client-config] on Browser side.
+Configure the plugin with its options and client config file.
 
-### With Plugin Options
+### Using Plugin Options
 
-```ts
+```ts title=".vuepress/config.ts"
 import { commentPlugin } from '@vuepress/plugin-comment'
 
-// .vuepress/config.ts
 export default {
   plugins: [
     commentPlugin({
       provider: 'Artalk', // Artalk | Giscus | Waline | Twikoo
-
-      // other options here
-      // ...
+      // provider-specific options
     }),
   ],
 }
 ```
 
-### With Client Config File
+### Using Client Config
 
 ```ts title=".vuepress/client.ts"
 import {
@@ -39,46 +36,40 @@ import {
 import { defineClientConfig } from 'vuepress/client'
 
 defineArtalkConfig({
-  // 选项
+  // options
 })
 ```
 
-But here are some limitations you should remember:
+### Configuration Limitations
 
-- `provider`, locales and other resource related option must be set in plugin options.
+- **Plugin Options Only**: `provider`, locales, and resource-related options must be set in plugin options for tree-shaking optimization.
 
-  To ensure tree-shaking works, we must optimize entries at node so that bundler can understand which resource should be included in the final bundle.
+- **Client Config Only**: Function-based options must be set in client config as they cannot be serialized.
 
-  These options will be marked with <Badge text="Plugin Option Only" type="warning" vertical="baseline" /> in config reference.
+## Using Comments
 
-- Options which can not be serialized to JSON must be set in client config.
+The plugin registers a global `<CommentService />` component.
 
-  Options that receives function values can not be set in plugin options, as plugins are running under Node.js environment, so we can not pass these values and their contexts to browser.
+**For Users**: Use aliases and layout slots to insert the component. Recommended placement is after `<PageNav />`.
 
-  These options will be marked with <Badge text="Client Config Only" type="warning" vertical="baseline" /> in config reference.
+**For Theme Developers**: Insert the component in your theme layout.
 
-## Adding Comment
+### Comment Control
 
-This plugin globally registers a component `<CommentService />`.
+Control comments via plugin options or page frontmatter:
 
-- If you are a user, you should use `alias` and layout slots to insert the component. We recommended you to insert the comment component (`<CommentService />`) after the `<PageNav />` component, and the current page is a demo with default theme.
-- If you are a theme developer, you should insert this component in the layout of your theme.
+- **Global**: Set `comment: false` in plugin options to disable globally
+- **Per Page**: Set `comment: true/false` in frontmatter to enable/disable locally
+- **Custom ID**: Set `commentID` in frontmatter to customize comment storage identifier
 
-By default, `<CommentService />` component is enabled globally, and you can use `comment` option in both plugin options and page frontmatter to control it.
+## Available Providers
 
-- You can disable it locally by setting `comment: false` in page frontmatter.
-- To keep it globally disabled, please set `comment` to `false` in the plugin options. Then you can set `comment: true` in page frontmatter to enable it locally.
+Choose from [Giscus](giscus/README.md), [Waline](waline/README.md), [Artalk](artalk/README.md), or [Twikoo](twikoo/README.md).
 
-You can set `commentID` option in page frontmatter to customize comment ID, which is used to identify comment storage item to use for a page. By default it will be the `path` of the page, which means if you are deploying the site to multiple places, page with same content across sites will share the same comment data.
+::: tip Recommendations
 
-## Available Comment Services
-
-Currently, you can choose from [Giscus](giscus/README.md), [Waline](waline/README.md), [Artalk](artalk/README.md) and [Twikoo](twikoo/README.md).
-
-::: tip Recommended comment services
-
-- Facing programmers and developers: Giscus
-- Facing general public: Waline
+- **Developers**: Giscus (GitHub-based)
+- **General Users**: Waline (full-featured)
 
 :::
 
@@ -95,5 +86,3 @@ Currently, you can choose from [Giscus](giscus/README.md), [Waline](waline/READM
 - Type: `boolean`
 - Default: `true`
 - Details: Whether to enable comment feature by default.
-
-[client-config]: https://vuejs.press/guide/configuration.html#client-config-file

@@ -1,3 +1,8 @@
+/**
+ * Built-in reveal.js theme names
+ *
+ * reveal.js 内置主题名称
+ */
 export type RevealJsTheme =
   | 'auto'
   | 'beige'

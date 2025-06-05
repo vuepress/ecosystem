@@ -11,7 +11,7 @@ export interface WatermarkPluginOptions {
    *
    * 拥有 `true` 值的页面将会被添加水印。
    *
-   * @default false
+   * @default true
    */
   enabled?: boolean | ((page: Page) => boolean)
 

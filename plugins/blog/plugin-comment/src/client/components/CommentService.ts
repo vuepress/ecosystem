@@ -1,10 +1,15 @@
 import CommentProvider from '@vuepress/plugin-comment/service'
 import type { VNode } from 'vue'
 import { computed, defineComponent, h } from 'vue'
-import { usePageData, usePageFrontmatter } from 'vuepress/client'
+import { useData } from 'vuepress/client'
 import type { CommentPluginFrontmatter } from '../../shared/index.js'
 import { useCommentOptions } from '../helpers/index.js'
 
+/**
+ * Comment service component
+ *
+ * 评论服务组件
+ */
 export default defineComponent({
   name: 'CommentService',
 
@@ -25,9 +30,8 @@ export default defineComponent({
   },
 
   setup(props) {
+    const { frontmatter, page } = useData<CommentPluginFrontmatter>()
     const commentOptions = useCommentOptions()
-    const page = usePageData()
-    const frontmatter = usePageFrontmatter<CommentPluginFrontmatter>()
 
     const enabled = computed(
       () => frontmatter.value.comment ?? commentOptions.value.comment ?? true,

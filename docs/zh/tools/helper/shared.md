@@ -6,7 +6,7 @@ icon: split
 
 以下函数在 Node.js 和客户端上均可用。
 
-这些函数在 `@vuepress/helper` `@vuepress/helper/client` 和 `@vuepress/helper/shared` 中都可用。
+这些函数在 `@vuepress/helper`、`@vuepress/helper/client` 和 `@vuepress/helper/shared` 中都可用。
 
 ## 数据相关
 

@@ -14,7 +14,7 @@ Provide local search to your documentation site.
 npm i -D @vuepress/plugin-search@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { searchPlugin } from '@vuepress/plugin-search'
 
 export default {
@@ -44,7 +44,7 @@ However, when your site has a large number of pages, the size of search index fi
 
 - Example:
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     searchPlugin({
@@ -105,7 +105,7 @@ export default {
 
 - Example:
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     searchPlugin({
@@ -130,7 +130,7 @@ export default {
 
 - Example:
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     searchPlugin({

@@ -23,6 +23,14 @@ const CONTAINERS: MarkdownHintContainerName[] = [
   'important',
 ]
 
+/**
+ * Hint container markdown-it plugin
+ *
+ * 提示容器 markdown-it 插件
+ *
+ * @param md - markdown-it instance / markdown-it 实例
+ * @param options - plugin options / 插件选项
+ */
 export const hint: PluginWithOptions<MarkdownItHintOptions> = (
   md,
   options = {},

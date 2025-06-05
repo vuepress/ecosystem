@@ -1,4 +1,5 @@
-import { useLocaleConfig } from '@vuepress/helper/client'
+import type { Slot } from '@vuepress/helper/client'
+import { useLocale } from '@vuepress/helper/client'
 import type { PropType, SlotsType, VNode } from 'vue'
 import { Transition, defineComponent, h, onMounted, ref } from 'vue'
 import { usePwaEvent } from '../composables/index.js'
@@ -20,14 +21,11 @@ export const PwaFoundPopup = defineComponent({
   },
 
   slots: Object as SlotsType<{
-    default?: (props: {
-      found: boolean
-      refresh: () => void
-    }) => VNode | VNode[] | null
+    default?: Slot<{ found: boolean; refresh: () => void }>
   }>,
 
   setup(props, { slots }) {
-    const locale = useLocaleConfig(props.locales)
+    const locale = useLocale(props.locales)
     const found = ref(false)
 
     const refresh = (): void => {

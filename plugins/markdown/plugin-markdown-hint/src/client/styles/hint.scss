@@ -43,8 +43,7 @@
     font-size: var(--hint-font-size);
 
     @media print {
-      border-inline-start-width: 0.25em;
-      border-inline-start-style: solid;
+      border: 1px solid var(--hint-c-title);
     }
 
     .hint-container-title {

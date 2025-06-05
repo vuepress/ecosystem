@@ -14,7 +14,7 @@ Integrate [Umami Analytics](https://umami.is/) into VuePress.
 npm i -D @vuepress/plugin-umami-analytics@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { umamiAnalyticsPlugin } from '@vuepress/plugin-umami-analytics'
 
 export default {
@@ -30,21 +30,23 @@ You can use [Umami Cloud](https://cloud.umami.is/login) or [Self-host Umami](htt
 
 ### Reporting Events
 
-The plugin will automatically report page view events when visiting and switching pages.
+The plugin automatically reports page view events on page visits and route changes.
 
-Besides, a global `umami` object is available on the `window` object, and you can call `umami.track` for [custom tracker function](https://umami.is/docs/tracker-functions).
+A global `umami` object is available on the `window` object, and you can call `umami.track` for [custom tracking](https://umami.is/docs/tracker-functions).
 
 ## Options
 
 ### id
 
 - Type: `string`
-- Details: The website ID in Umami Analytics
+- Required: Yes
+- Details: The website ID from Umami Analytics
 
 ### link
 
 - Type: `string`
-- Details: Link of umami analytics script
+- Default: `'https://us.umami.is/script.js'`
+- Details: URL to the Umami Analytics tracking script
 
 ### autoTrack
 
@@ -52,23 +54,26 @@ Besides, a global `umami` object is available on the `window` object, and you ca
 - Default: `true`
 - Details:
 
-  By default, Umami tracks all pageviews and events for you automatically. You can disable this behavior and track events yourself using the tracker functions.
+  By default, Umami tracks all pageviews and events automatically.
+
+  Set to `false` to disable automatic tracking and use manual tracking functions.
 
 ### cache
 
 - Type: `boolean`
 - Details:
 
-  Cache data to improve the performance of the tracking script.
+  Cache data to improve tracking script performance.
 
   Note: This will use session storage so you may need to inform your users.
 
 ### domains
 
 - Type: `string[]`
-- Details: Let the tracker only run on specific domains.
+- Details: Restrict tracking to specific domains only.
 
 ### hostUrl
 
 - Type: `string`
-- Details: Location to send data
+- Default: `link`
+- Details: Custom endpoint for sending tracking data.

@@ -20,7 +20,7 @@ npm i -D mathjax-full
 npm i -D katex
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 
 export default {
@@ -36,11 +36,11 @@ export default {
 
 - Inline mode: `$xxx$`
 
+  ::: preview
+
   Euler's identity $e^{i\pi}+1=0$ is a beautiful formula in $\mathbb{R}^2$.
 
-  ```md
-  Euler's identity $e^{i\pi}+1=0$ is a beautiful formula in $\mathbb{R}^2$.
-  ```
+  :::
 
 - Display mode:
 
@@ -52,29 +52,26 @@ export default {
   $$
   ```
 
+  ::: preview
+
   $$
   \frac {\partial^r} {\partial \omega^r} \left(\frac {y^{\omega}} {\omega}\right)
   = \left(\frac {y^{\omega}} {\omega}\right) \left\{(\log y)^r + \sum_{i=1}^r \frac {(-1)^ Ir \cdots (r-i+1) (\log y)^{ri}} {\omega^i} \right\}
   $$
 
-  ```md
-  $$
-  \frac {\partial^r} {\partial \omega^r} \left(\frac {y^{\omega}} {\omega}\right)
-  = \left(\frac {y^{\omega}} {\omega}\right) \left\{(\log y)^r + \sum_{i=1}^r \frac {(-1)^ Ir \cdots (r-i+1) (\log y)^{ri}} {\omega^i} \right\}
-  $$
-  ```
+  :::
 
-::: tip Escaping
+:::: tip Escaping
 
 Escaping can be done by using `\` before the `$` character, or adding space both before and after the `$` character.
 
-The $a=1$ is a TeX equation, while $ a=1 $ and \$a=1$ is not.
+::: preview
 
-```md
 The $a=1$ is a TeX equation, while $ a=1 $ and \$a=1$ is not.
-```
 
 :::
+
+::::
 
 ## Support List
 
@@ -106,7 +103,7 @@ Mathjax:
   - `'katex'`: use [KaTeX](https://katex.org/)
   - `'mathjax'`: use [MathJax](https://www.mathjax.org/)
 
-  When this options is not specified, the plugin will try to detect which package is installed. If both are installed, it will use "mathjax".
+  When this option is not specified, the plugin will try to detect which package is installed. If both are installed, it will use "mathjax".
 
 ### Using KaTeX
 
@@ -114,14 +111,37 @@ When using KaTeX, any other options will be passed to KaTeX as `KatexOptions`. S
 
 Besides, 2 special options are supported:
 
-- `copy`: enable copy extension or not.
-- `mhchem`: enable mhchem extension or not.
+#### copy
+
+- Type: `boolean`
+- Details: Whether to enable copy extension.
+
+#### mhchem
+
+- Type: `boolean`
+- Details: Whether to enable mhchem extension.
 
 ### Using MathJax
 
 When using MathJax, you can set:
 
-- `tex`: options which is passed to TeX input parser
-- `output`: either `'svg'` (default) or `'chtml'` to change output format between SVG and HTML.
-- `chtml`: options which is passed to Common HTML output parser
-- `svg`: options which is passed to SVG output parser
+#### tex
+
+- Type: `object`
+- Details: Options passed to TeX input parser.
+
+#### output
+
+- Type: `'svg' | 'chtml'`
+- Default: `'svg'`
+- Details: Output format, either SVG or Common HTML.
+
+#### chtml
+
+- Type: `object`
+- Details: Options passed to Common HTML output parser.
+
+#### svg
+
+- Type: `object`
+- Details: Options passed to SVG output parser.

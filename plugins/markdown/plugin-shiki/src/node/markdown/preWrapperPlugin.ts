@@ -15,6 +15,16 @@ export interface MarkdownItPreWrapperOptions {
   preWrapper?: boolean
 }
 
+/**
+ * A markdown-it plugin for wrapping `<pre>` tag with an extra `<div>`
+ *
+ * 一个用于为 `<pre>` 标签添加额外 `<div>` 包装的 markdown-it 插件
+ *
+ * @param md - MarkdownIt instance / MarkdownIt 实例
+ * @param options - Plugin options / 插件选项
+ *
+ * @default { preWrapper: true }
+ */
 export const preWrapperPlugin = (
   md: Markdown,
   { preWrapper = true }: MarkdownItPreWrapperOptions = {},
@@ -37,22 +47,9 @@ export const preWrapperPlugin = (
     const lang = resolveLanguage(info)
     const languageClass = `${options.langPrefix}${lang}`
 
+    result = result.replace(/<code[^]*?>/, `<code class="${languageClass}">`)
     if (!preWrapper) {
-      /**
-       * remove `<code>` attributes
-       *
-       * In the source code of `markdown-it fence line 71, line 74`,
-       * `fence` writes `class="language-*"` onto the `code` element,
-       * whereas in past versions, `vuepress` wrote it on the `pre` element.
-       * Therefore, this behavior needs to be reset.
-       *
-       * Even though `shiki` directly returns the contents within `<pre>`
-       * at `line 48` of `markdown-it`, I believe it is still prudent to make this adjustment.
-       *
-       * @see https://github.com/markdown-it/markdown-it/blob/master/lib/renderer.mjs
-       */
-      result = result.replace(/<code[^]*?>/, '<code>')
-      result = `<pre class="${languageClass}"${result.slice('<pre'.length)}`
+      result = `<pre class="${languageClass} ${result.slice('<pre class="'.length)}`
       return result
     }
     let styles = ''

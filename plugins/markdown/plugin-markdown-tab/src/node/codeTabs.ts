@@ -3,11 +3,16 @@ import type { PluginSimple } from 'markdown-it'
 
 import { stringifyProp } from './utils.js'
 
+/**
+ * Markdown-it plugin for code tabs
+ *
+ * 用于代码选项卡的 Markdown-it 插件
+ */
 export const codeTabs: PluginSimple = (md) => {
   tab(md, {
     name: 'code-tabs',
 
-    tabsOpenRenderer: ({ active, data }, tokens, index) => {
+    openRender: ({ active, data }, tokens, index) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const { meta } = tokens[index]
       const titles = data.map(({ title }) => md.renderInline(title))
@@ -17,7 +22,7 @@ export const codeTabs: PluginSimple = (md) => {
         return { id }
       })
 
-      return `<CodeTabs id="${index}" :data='${stringifyProp(tabsData)}'${
+      return `<CodeTabs :data='${stringifyProp(tabsData)}'${
         active === -1 ? '' : ` :active="${active}"`
       }${
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
@@ -33,11 +38,11 @@ ${titles
 `
     },
 
-    tabsCloseRenderer: () => `\
+    closeRender: () => `\
 </CodeTabs>
 `,
 
-    tabOpenRenderer: ({ index }, tokens, tokenIndex) => {
+    tabOpenRender: ({ index }, tokens, tokenIndex) => {
       let foundFence = false
 
       // Hide all elements excerpt the first fence
@@ -62,7 +67,7 @@ ${titles
 `
     },
 
-    tabCloseRenderer: () => `\
+    tabCloseRender: () => `\
 </template>
 `,
   })

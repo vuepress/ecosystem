@@ -9,6 +9,16 @@ import {
 } from './formatDate.js'
 import type { AppendDatePluginOptions } from './options.js'
 
+/**
+ * Append date to page frontmatter
+ *
+ * 向页面 frontmatter 追加日期
+ *
+ * @param options - Plugin options / 插件选项
+ * @param options.key - Frontmatter key to use / 使用的 frontmatter 键名
+ * @param options.format - Date format to use / 使用的日期格式
+ * @param page - Page object / 页面对象
+ */
 export const appendDateToPage = async (
   { key = 'date', format = 'date' }: AppendDatePluginOptions,
   { data, filePath, frontmatter }: Page<GitPluginPageData>,
@@ -35,7 +45,7 @@ export const appendDateToPage = async (
   await fs.writeFile(
     filePath,
     startsWith(markdownContent, '---\n')
-      ? `---\n${key}: ${text}\n${markdownContent.substring(4)}`
+      ? `---\n${key}: ${text}\n${markdownContent.slice(4)}`
       : `---\n${key}: ${text}\n---\n\n${markdownContent}`,
     'utf-8',
   )

@@ -7,9 +7,33 @@ import { resolveImageInfoFromLink } from './images.js'
 import { LOADING_ICON } from './loadingIcon.js'
 import { setupPhotoSwipe } from './setupPhotoSwipe.js'
 
+/**
+ * PhotoSwipe state interface
+ *
+ * PhotoSwipe 状态接口
+ */
 export interface PhotoSwipeState {
+  /**
+   * Open PhotoSwipe at specific index
+   *
+   * 在指定索引打开 PhotoSwipe
+   *
+   * @param index - Image index / 图片索引
+   */
   open: (index: number) => void
+
+  /**
+   * Close PhotoSwipe
+   *
+   * 关闭 PhotoSwipe
+   */
   close: () => void
+
+  /**
+   * Destroy PhotoSwipe instance
+   *
+   * 销毁 PhotoSwipe 实例
+   */
   destroy: () => void
 }
 
@@ -32,6 +56,30 @@ const getDataSource = (
   return dataSource
 }
 
+/**
+ * Create PhotoSwipe instance
+ *
+ * 创建 PhotoSwipe 实例
+ *
+ * @param images - Image links / 图片链接
+ * @param options - PhotoSwipe options / PhotoSwipe 选项
+ *
+ * @example
+ * ```ts
+ * import { createPhotoSwipe } from '@vuepress/plugin-photo-swipe/client'
+ *
+ * const state = await createPhotoSwipe([
+ *   'https://example.com/image1.jpg',
+ *   'https://example.com/image2.jpg',
+ * ], {
+ *   download: true,
+ *   fullscreen: true,
+ * })
+ *
+ * // Open first image
+ * state.open(0)
+ * ```
+ */
 export const createPhotoSwipe = async (
   images: string[],
   {

@@ -2,6 +2,8 @@ import type { MarkdownItTaskListOptions } from '@mdit/plugin-tasklist'
 
 /**
  * Options of markdown-ext plugin
+ *
+ * markdown-ext 插件选项
  */
 export interface MarkdownExtPluginOptions {
   /**

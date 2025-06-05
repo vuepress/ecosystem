@@ -1,5 +1,5 @@
-import type { TwoslashRenderer } from '@shikijs/twoslash'
-import { rendererRich } from '@shikijs/twoslash'
+import type { TwoslashRenderer } from '@shikijs/twoslash/core'
+import { rendererRich } from '@shikijs/twoslash/core'
 import type { Element, ElementContent, Text } from 'hast'
 import { fromMarkdown } from 'mdast-util-from-markdown'
 import { gfmFromMarkdown } from 'mdast-util-gfm'
@@ -107,9 +107,27 @@ function renderMarkdownInline(
   return children
 }
 
+/**
+ * Create a FloatingVue renderer for twoslash
+ *
+ * 为 twoslash 创建 FloatingVue 渲染器
+ *
+ * @param options - Renderer options / 渲染器选项
+ *
+ * @example
+ * ```ts
+ * const renderer = rendererFloatingVue({
+ *   floatingVue: {
+ *     classCopyIgnore: 'vp-copy-ignore',
+ *     floatingVueTheme: 'twoslash'
+ *   }
+ * })
+ * ```
+ */
 export const rendererFloatingVue = (
   options: TwoslashFloatingVueRendererOptions = {},
 ): TwoslashRenderer => {
+  const { errorRendering = 'line', floatingVue = {} } = options
   const {
     classCopyIgnore = 'vp-copy-ignore',
     classFloatingPanel = 'twoslash-floating',
@@ -119,9 +137,7 @@ export const rendererFloatingVue = (
     floatingVueTheme = 'twoslash',
     floatingVueThemeQuery = 'twoslash-query',
     floatingVueThemeCompletion = 'twoslash-completion',
-  } = options.floatingVue ?? {}
-
-  const { errorRendering = 'line' } = options
+  } = floatingVue
 
   const hoverBasicProps = {
     'class': 'twoslash-hover',

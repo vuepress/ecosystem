@@ -276,7 +276,7 @@ export default defineUserConfig({
       manifest: {
         icons: [
           {
-            src: '/logo.png',
+            src: '/hero.png',
             sizes: '600x600',
             type: 'image/png',
           },

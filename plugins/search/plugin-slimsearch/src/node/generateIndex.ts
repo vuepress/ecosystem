@@ -71,11 +71,10 @@ export const generatePageIndex = (
   customFieldsGetter: CustomFieldOptions[] = [],
   indexContent = false,
 ): IndexItem[] => {
-  const { contentRendered, data, title } = page
   const pageId = store.addPath(page.path).toString() as PageIndexId
-  const hasExcerpt = Boolean(data.excerpt?.length)
+  const hasExcerpt = Boolean(page.data.excerpt)
 
-  const pageIndex: PageIndexItem = { id: pageId, h: title }
+  const pageIndex: PageIndexItem = { id: pageId, h: page.title }
   const results: IndexItem[] = [pageIndex]
 
   // Here are some variables holding the current state of the parser
@@ -137,7 +136,7 @@ export const generatePageIndex = (
 
   // The types are not correct, null is returned if contentRendered is empty
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  const nodes = $.parseHTML(contentRendered) ?? []
+  const nodes = $.parseHTML(page.contentRendered) ?? []
 
   // Get custom fields
   const customFields = fromEntries(

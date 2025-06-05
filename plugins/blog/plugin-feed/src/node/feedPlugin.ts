@@ -10,6 +10,31 @@ import { getAtomTemplates, getRSSTemplates } from './getTemplates.js'
 import { writeFiles } from './output.js'
 import { FEED_GENERATOR, logger } from './utils/index.js'
 
+/**
+ * Feed plugin
+ *
+ * Feed 插件
+ *
+ * @description Generate feed files in Atom, JSON, and RSS formats
+ *
+ * 生成 Atom、JSON 和 RSS 格式的 Feed 文件
+ *
+ * @example
+ * ```ts
+ * import { feedPlugin } from '@vuepress/plugin-feed'
+ *
+ * export default {
+ *   plugins: [
+ *     feedPlugin({
+ *       hostname: 'https://example.com',
+ *       atom: true,
+ *       json: true,
+ *       rss: true,
+ *     }),
+ *   ],
+ * }
+ * ```
+ */
 export const feedPlugin =
   (options: FeedPluginOptions): PluginFunction =>
   (app) => {

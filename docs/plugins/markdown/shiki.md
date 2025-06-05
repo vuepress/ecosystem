@@ -6,11 +6,11 @@ icon: highlighter
 
 <NpmBadge package="@vuepress/plugin-shiki" />
 
-This plugin will enable syntax highlighting for markdown code fence with [Shiki](https://shiki.style/).
+This plugin enables syntax highlighting for markdown code fence with [Shiki](https://shiki.style/).
 
 ::: tip
 
-[Shiki](https://shiki.style/) is the syntax highlighter being used by VSCode. It has higher fidelity, but it could be slower than [Prism.js](https://prismjs.com/), especially when you have a lot of code blocks.
+[Shiki](https://shiki.style/) is the syntax highlighter used by VSCode. It provides higher fidelity highlighting but may be slower than [Prism.js](https://prismjs.com/), especially when processing many code blocks.
 
 :::
 
@@ -20,7 +20,7 @@ This plugin will enable syntax highlighting for markdown code fence with [Shiki]
 npm i -D @vuepress/plugin-shiki@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 
 export default {
@@ -38,14 +38,11 @@ export default {
 ### langs
 
 - Type: `ShikiLang[]`
-
-- Details:
-
-  Additional languages to be parsed by Shiki.
+- Details: Additional languages to be parsed by Shiki.
 
   ::: tip
 
-  The plugin now automatically loads the languages used in your markdown files, so you don't need to specify them manually.
+  The plugin automatically loads languages used in your markdown files, so manual specification is not required.
 
   :::
 
@@ -55,8 +52,7 @@ export default {
 ### langAlias
 
 - Type: `{ [lang: string]: string }`
-
-- Details: Customize language aliases for Shiki.
+- Details: Custom language aliases for Shiki.
 
 - Also see:
   - [Shiki > Custom Language Aliases](https://shiki.style/guide/load-lang#custom-language-aliases)
@@ -64,10 +60,8 @@ export default {
 ### theme
 
 - Type: `ShikiTheme`
-
 - Default: `'nord'`
-
-- Details: Theme of Shiki, will be applied to code blocks.
+- Details: Shiki theme to be applied to code blocks.
 
 - Also see:
   - [Shiki > Themes](https://shiki.style/themes)
@@ -75,12 +69,9 @@ export default {
 ### themes
 
 - Type: `{ light: ShikiTheme; dark: ShikiTheme }`
+- Details: Dark/light dual themes for Shiki.
 
-- Details:
-
-  Dark / Light Dual themes of Shiki.
-
-  The styles of the 2 themes will be injected as `--shiki-light` and `--shiki-dark` to code blocks:
+  The styles of both themes will be injected as `--shiki-light` and `--shiki-dark` CSS variables to code blocks:
 
   ```html
   <span style="--shiki-light:lightColor;--shiki-dark:darkColor;">code</span>
@@ -92,93 +83,50 @@ export default {
 ### lineNumbers
 
 - Type: `boolean | number | 'disable'`
-
 - Default: `true`
+- Details: Controls the display of line numbers.
 
-- Details:
-
-  - `number`: the minimum number of lines to enable line numbers.
-    For example, if you set it to 4, line numbers will only be enabled when your code block has at least 4 lines of code.
+  - `number`: minimum number of lines required to enable line numbers.
+    For example, setting it to 4 will only enable line numbers when your code block has at least 4 lines.
   - `true`: enable line numbers globally.
   - `false`: disable line numbers globally.
-  - `'disable'`: Completely disable line numbers, `:line-numbers` will not take effect.
+  - `'disable'`: completely disable line numbers; `:line-numbers` will not take effect.
 
-  You can add `:line-numbers` / `:no-line-numbers` mark in your fenced code blocks to override the value set in config, and customize the beginning number by adding `=` after `:line-numbers`. For example, `:line-numbers=2` means the line numbers in code blocks will start from `2`.
+  You can add `:line-numbers` / `:no-line-numbers` markers to your fenced code blocks to override the config setting, and customize the starting number by adding `=` after `:line-numbers`. For example, `:line-numbers=2` will start line numbers from `2`.
 
-**Input:**
+::: preview
 
-````md
 ```ts:line-numbers
-// line-numbers is enabled
+// line-numbers are enabled
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
 ```ts :no-line-numbers
-// line-numbers is disabled
+// line-numbers are disabled
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
 ```ts :line-numbers=2
-// line-numbers is enabled and start from 2
+// line-numbers are enabled and start from 2
 const line3 = 'This is line 3'
 const line4 = 'This is line 4'
 ```
-````
 
-**Output:**
-
-```ts :line-numbers
-// line-numbers is enabled
-const line2 = 'This is line 2'
-const line3 = 'This is line 3'
-```
-
-```ts :no-line-numbers
-// line-numbers is disabled
-const line2 = 'This is line 2'
-const line3 = 'This is line 3'
-```
-
-```ts :line-numbers=2
-// line-numbers is enabled and start from 2
-const line3 = 'This is line 3'
-const line4 = 'This is line 4'
-```
+:::
 
 ### highlightLines
 
 - Type: `boolean`
-
 - Default: `true`
-
-- Details:
-
-  Whether enable code line highlighting. You can highlight specified lines of your code blocks by adding line ranges mark in your fenced code blocks:
+- Details: Whether to enable code line highlighting. You can highlight specified lines by adding line range markers to your fenced code blocks:
 
   - Line ranges: `{5-8}`
   - Multiple single lines: `{4,7,9}`
   - Combined: `{4,7-13,16,23-27,40}`
 
-**Input:**
-
-````md
-```ts {1,7-9}
-import { defaultTheme } from '@vuepress/theme-default'
-import { defineUserConfig } from 'vuepress'
-
-export default defineUserConfig({
-  title: 'Hello, VuePress',
-
-  theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
-  }),
-})
-```
-````
-
-**Output:**
+::: preview
 
 ```ts {1,7-9}
 import { defaultTheme } from '@vuepress/theme-default'
@@ -188,17 +136,17 @@ export default defineUserConfig({
   title: 'Hello, VuePress',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: 'https://vuepress.vuejs.org/images/hero.png',
   }),
 })
 ```
+
+:::
 
 ### collapsedLines
 
 - Type: `boolean | number | 'disable'`
-
 - Default: `'disable'`
-
 - Details: Default behavior of code block collapsing.
 
   - `number`: collapse the code block starting from line `number` by default, for example, `12` means collapsing the code block starting from line 12.
@@ -208,44 +156,7 @@ export default defineUserConfig({
 
   To override global settings, you can add the `:collapsed-lines` / `:no-collapsed-lines` marker to the code block. You can also add `=` after `:collapsed-lines` to customize the starting line number being collapsed, for example, `:collapsed-lines=12` means collapsing the code block starting from line 12.
 
-**Input:**
-
-````md
-<!-- Collapsed by default starting from line 15 -->
-
-```css :collapsed-lines
-html {
-  margin: 0;
-  background: black;
-  height: 100%;
-}
-/* ... more code */
-```
-
-<!-- Disabled collapsed -->
-
-```css :no-collapsed-lines
-html {
-  margin: 0;
-  background: black;
-  height: 100%;
-}
-/* ... more code */
-```
-
-<!-- Collapsed starting from line 10 -->
-
-```css :collapsed-lines=10
-html {
-  margin: 0;
-  background: black;
-  height: 100%;
-}
-/* ... more code */
-```
-````
-
-**Output:**
+::: preview
 
 <!-- Collapsed by default starting from line 15 -->
 
@@ -277,22 +188,6 @@ body > div {
 
 .main {
   display: none;
-}
-
-.blowup {
-  display: block;
-  position: absolute;
-  object-fit: contain;
-  object-position: center;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2000;
-}
-
-.darken {
-  opacity: 0.4;
 }
 ```
 
@@ -327,22 +222,6 @@ body > div {
 .main {
   display: none;
 }
-
-.blowup {
-  display: block;
-  position: absolute;
-  object-fit: contain;
-  object-position: center;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2000;
-}
-
-.darken {
-  opacity: 0.4;
-}
 ```
 
 <!-- Collapsed starting from line 10 -->
@@ -376,23 +255,9 @@ body > div {
 .main {
   display: none;
 }
-
-.blowup {
-  display: block;
-  position: absolute;
-  object-fit: contain;
-  object-position: center;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2000;
-}
-
-.darken {
-  opacity: 0.4;
-}
 ```
+
+:::
 
 ### codeBlockTitle
 
@@ -406,23 +271,17 @@ body > div {
 
 - Details: Whether to enable code block title rendering. Add `title="Title"` after the code block <code>\`\`\`</code> to set the title.
 
-  Pass `CodeBlockTitleRender` to customize the title rendering.
+  Pass a `CodeBlockTitleRender` function to customize title rendering.
 
 - Example:
 
-  **Input:**
-
-  ````md {1}
-  ```ts title="foo/baz.js"
-  console.log('hello')
-  ```
-  ````
-
-  **Output:**
+  ::: preview
 
   ```ts title="foo/baz.js"
   console.log('hello')
   ```
+
+  :::
 
 ### notationDiff
 
@@ -430,11 +289,12 @@ body > div {
 
 - Default: `false`
 
-- Details: Whether enable notation diff.
+- Details: Whether to enable notation diff.
 
 - Example:
 
-  **Input:**
+  <VPPreview>
+  <template #code>
 
   ````md
   ```ts
@@ -444,13 +304,17 @@ body > div {
   ```
   ````
 
-  **Output:**
+  </template>
+  <template #content>
 
   ```ts
   console.log('hewwo') // [!code --]
   console.log('hello') // [!code ++]
   console.log('goodbye')
   ```
+
+  </template>
+  </VPPreview>
 
 - Also see:
   - [Shiki > Notation Diff](https://shiki.style/packages/transformers#transformernotationdiff)
@@ -461,11 +325,12 @@ body > div {
 
 - Default: `false`
 
-- Details: Whether enable notation focus.
+- Details: Whether to enable notation focus.
 
 - Example:
 
-  **Input:**
+  <VPPreview>
+  <template #code>
 
   ````md
   ```ts
@@ -475,13 +340,17 @@ body > div {
   ```
   ````
 
-  **Output:**
+  </template>
+  <template #content>
 
   ```ts
   console.log('Not focused')
   console.log('Focused') // [!code focus]
   console.log('Not focused')
   ```
+
+  </template>
+  </VPPreview>
 
 - Also see:
   - [Shiki > Notation Focus](https://shiki.style/packages/transformers#transformernotationfocus)
@@ -492,11 +361,12 @@ body > div {
 
 - Default: `false`
 
-- Details: Whether enable notation highlight.
+- Details: Whether to enable notation highlight.
 
 - Example:
 
-  **Input:**
+  <VPPreview>
+  <template #code>
 
   ````md
   ```ts
@@ -506,13 +376,17 @@ body > div {
   ```
   ````
 
-  **Output:**
+  </template>
+  <template #content>
 
   ```ts
   console.log('Not highlighted')
   console.log('Highlighted') // [!code highlight]
   console.log('Not highlighted')
   ```
+
+  </template>
+  </VPPreview>
 
 - Also see:
   - [Shiki > Notation Highlight](https://shiki.style/packages/transformers#transformernotationhighlight)
@@ -523,11 +397,12 @@ body > div {
 
 - Default: `false`
 
-- Details: Whether enable notation error level.
+- Details: Whether to enable notation error level.
 
 - Example:
 
-  **Input:**
+  <VPPreview>
+  <template #code>
 
   ````md
   ```ts
@@ -537,13 +412,17 @@ body > div {
   ```
   ````
 
-  **Output:**
+  </template>
+  <template #content>
 
   ```ts
   console.log('No errors or warnings')
   console.warn('Warning') // [!code warning]
   console.error('Error') // [!code error]
   ```
+
+  </template>
+  </VPPreview>
 
 - Also see:
   - [Shiki > Notation Error Level](https://shiki.style/packages/transformers#transformernotationerrorlevel)
@@ -554,13 +433,16 @@ body > div {
 
 - Default: `false`
 
-- Details: Whether enable notation word highlight.
+- Details: Whether to enable notation word highlight.
 
-  Word highlight must be written on a separate line.
+  Word highlights must be written on separate lines.
 
 - Example:
 
-  **Input:**
+  Highlight words with comments
+
+  <VPPreview>
+  <template #code>
 
   ````md
   ```ts
@@ -570,7 +452,8 @@ body > div {
   ```
   ````
 
-  **Output:**
+  </template>
+  <template #content>
 
   ```ts
   // [!code word:Hello]
@@ -578,25 +461,19 @@ body > div {
   console.log(message) // prints Hello World
   ```
 
-- Example：Highlight words based on the meta string provided on the code snippet
+  </template>
+  </VPPreview>
 
-  **Input:**
+  Highlight words based on the meta string provided in the code snippet
 
-  ````md
-  ```js /Hello/
-  const msg = 'Hello World'
-  console.log(msg)
-  console.log(msg) // prints Hello World
-  ```
-  ````
-
-  **Output:**
+  ::: preview
 
   ```js /Hello/
   const msg = 'Hello World'
-  console.log(msg)
   console.log(msg) // prints Hello World
   ```
+
+  :::
 
 - Also see:
 
@@ -608,59 +485,19 @@ body > div {
 
 - Default: `false`
 
-- Details: Whether enable whitespace characters (Space and Tab).
+- Details: Whether to enable whitespace characters (spaces and tabs).
 
-  - `true`: enable render whitespace, same of `all`
-  - `false`: disable render whitespace
-  - `'all'`: render all whitespace
-  - `'boundary'`: render leading and trailing whitespace of the line
-  - `'trailing'`: render trailing whitespace of the line
+  - `true`: enable whitespace rendering but don't render any whitespace by default
+  - `false`: completely disable whitespace rendering; `:whitespace` will not take effect
+  - `'all'`: render all whitespace characters
+  - `'boundary'`: render leading and trailing whitespace on each line
+  - `'trailing'`: render trailing whitespace on each line
 
-  You can add `:whitespace / :no-whitespace` mark in your fenced code blocks to override the value set in config, and customize the render type by adding `=` after `:whitespace`. For example `:whitespace=boundary` will render leading and trailing whitespace of the line.
+  You can add `:whitespace` / `:no-whitespace` markers to your fenced code blocks to override the config setting, and customize the render type by adding `=` after `:whitespace`. For example, `:whitespace=boundary` will render leading and trailing whitespace on each line.
 
 - Example:
 
-  **Input:**
-
-  ````md
-  ```md :whitespace
-  <!-- render all whitespace -->
-
-  A text  
-  with trailing spaces
-
-      indented text
-  ```
-
-  ```md :whitespace=boundary
-  <!-- render leading and trailing whitespace of the line -->
-
-  A text  
-  with trailing spaces
-
-      indented text
-  ```
-
-  ```md :whitespace=trailing
-  <!-- render trailing whitespace of the line -->
-
-  A text  
-  with trailing spaces
-
-      indented text
-  ```
-
-  ```md :no-whitespace
-  <!-- disable render whitespace -->
-
-  A text  
-  with trailing spaces
-
-      indented text
-  ```
-  ````
-
-  **Output:**
+  ::: preview
 
   ```md :whitespace
   <!-- render all whitespace -->
@@ -672,7 +509,7 @@ body > div {
   ```
 
   ```md :whitespace=boundary
-  <!-- render leading and trailing whitespace of the line -->
+  <!-- render leading and trailing whitespace on each line -->
 
   A text  
   with trailing spaces
@@ -681,7 +518,7 @@ body > div {
   ```
 
   ```md :whitespace=trailing
-  <!-- render trailing whitespace of the line -->
+  <!-- render trailing whitespace on each line -->
 
   A text  
   with trailing spaces
@@ -690,7 +527,7 @@ body > div {
   ```
 
   ```md :no-whitespace
-  <!-- disable render whitespace -->
+  <!-- disable whitespace rendering -->
 
   A text  
   with trailing spaces
@@ -698,7 +535,9 @@ body > div {
       indented text
   ```
 
-- Also see：
+  :::
+
+- Also see:
   - [Shiki > Render Whitespace](https://shiki.style/packages/transformers#transformerrenderwhitespace)
 
 ### twoslash
@@ -729,11 +568,11 @@ body > div {
 
 - Default: `false`
 
-- Details: Whether enable [twoslash](https://github.com/twoslashes/twoslash).
+- Details: Whether to enable [twoslash](https://github.com/twoslashes/twoslash).
 
   ::: tip
 
-  For size reasons, the plugin does not include the `@vuepress/shiki-twoslash` package by default. If you want to use it, you need to install it manually.
+  For size optimization, the plugin doesn't include the `@vuepress/shiki-twoslash` package by default. You need to install it manually to use this feature.
 
   :::
 
@@ -746,17 +585,7 @@ body > div {
 
 - Example:
 
-  **Input:**
-
-  ````md
-  ```ts twoslash
-  const a = 1
-  const b = 2
-  console.log(a + b)
-  ```
-  ````
-
-  **Output:**
+  ::: preview
 
   ```ts twoslash
   const a = 1
@@ -764,13 +593,15 @@ body > div {
   console.log(a + b)
   ```
 
+  :::
+
   ::: warning
 
-  For code blocks that have `twoslash` enabled:
+  For code blocks with `twoslash` enabled:
 
-  - Do not add the `:v-pre` marker in the code block, as this will cause `twoslash` to fail to run properly.
+  - Don't add the `:v-pre` marker to code blocks, as this will prevent `twoslash` from running properly.
 
-  - To avoid layout conflicts, code blocks will no longer display line numbers.
+  - To avoid layout conflicts, line numbers will not be displayed for these code blocks.
 
   :::
 
@@ -779,52 +610,38 @@ body > div {
 ### defaultLang
 
 - Type: `string`
-
-- Default: `''`
-
-- Details: Fallback language when the specified language is not available.
+- Default: `'plain'`
+- Details: Fallback language to use when the specified language is not available.
 
 ### logLevel
 
 - Type: `'warn' | 'debug' | 'silent'`
-
 - Default: `'warn'`
+- Details: Log level for Shiki language detection.
 
-- Details:
-
-  Log level of Shiki language detection.
-
-  - `warn`: warn each unknown lang one time (default)
-  - `debug`: log every unknown code block with its file path. (default when `--debug` flag is set)
-  - `silent`: no warning
+  - `warn`: warn about each unknown language once (default)
+  - `debug`: log every unknown code block with its file path (default when `--debug` flag is set)
+  - `silent`: no warnings
 
 ### preWrapper
 
 - Type: `boolean`
-
 - Default: `true`
+- Details: Whether to add an extra wrapper outside the `<pre>` tag.
 
-- Details:
-
-  Adds extra wrapper outside `<pre>` tag or not.
-
-  The wrapper is required by the `lineNumbers` and `collapsedLines`. That means, if you disable `preWrapper`, the line line numbers and collapsed lines will also be disabled.
+  This wrapper is required for `lineNumbers` and `collapsedLines` features. If you disable `preWrapper`, line numbers and collapsed lines will also be disabled.
 
 ### shikiSetup
 
 - Type: `(shiki: Highlighter) => void | Promise<void>`
-
-- Details: A function hook to customize Shiki highlighter instance.
+- Details: A hook function to customize the Shiki highlighter instance.
 
 ### transformers
 
 - Type: `ShikiTransformer[]`
+- Details: Shiki transformers.
 
-- Details:
-
-  Transformers of Shiki.
-
-  This option will be forwarded to `codeToHtml()` method of Shiki.
+  This option will be passed to the `codeToHtml()` method of Shiki.
 
 - Also see:
   - [Shiki > Transformers](https://shiki.style/guide/transformers)

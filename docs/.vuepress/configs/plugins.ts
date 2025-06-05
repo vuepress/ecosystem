@@ -4,10 +4,12 @@ import { commentPlugin } from '@vuepress/plugin-comment'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
 import { iconPlugin } from '@vuepress/plugin-icon'
+import { llmsPlugin } from '@vuepress/plugin-llms'
 import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
+import { markdownPreviewPlugin } from '@vuepress/plugin-markdown-preview'
 import { markdownStylizePlugin } from '@vuepress/plugin-markdown-stylize'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
@@ -15,11 +17,11 @@ import { revealJsPlugin } from '@vuepress/plugin-revealjs'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 import type { Page } from 'vuepress'
 import { getDirname, path } from 'vuepress/utils'
+import { tocGetter } from './llmstxtTOC.js'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export const plugins = [
-  cachePlugin(),
   catalogPlugin(),
   commentPlugin({
     provider: 'Giscus',
@@ -42,6 +44,7 @@ export const plugins = [
   iconPlugin({
     prefix: 'lucide:',
   }),
+  markdownPreviewPlugin(),
   markdownExtPlugin({
     gfm: true,
     component: true,
@@ -51,6 +54,7 @@ export const plugins = [
     figure: true,
     mark: true,
     size: true,
+    legacySize: true,
   }),
   markdownIncludePlugin({
     deep: true,
@@ -129,4 +133,10 @@ export const plugins = [
       }
     },
   },
+  cachePlugin(),
+  llmsPlugin({
+    llmsTxtTemplateGetter: {
+      toc: tocGetter,
+    },
+  }),
 ]

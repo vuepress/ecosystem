@@ -22,6 +22,19 @@ type MarkdownItHighlight = (
   attrs: string,
 ) => string
 
+/**
+ * Get highlight function for markdown-it
+ *
+ * 获取 markdown-it 的高亮函数
+ *
+ * @param highlighter - Shiki highlighter instance / Shiki 高亮器实例
+ * @param options - Highlight options / 高亮选项
+ * @param extraTransformers - Extra transformers / 额外转换器
+ * @param loadLang - Language loader function / 语言加载函数
+ * @param markdownFilePathGetter - Markdown file path getter / Markdown 文件路径获取器
+ *
+ * @returns Highlight function for markdown-it / markdown-it 的高亮函数
+ */
 export const getHighLightFunction = (
   highlighter: HighlighterGeneric<BundledLanguage, BundledTheme>,
   options: ShikiHighlightOptions,
@@ -47,7 +60,9 @@ export const getHighLightFunction = (
           ...((options.highlightLines ?? true)
             ? [transformerCompactLineOptions(attrsToLines(attrs))]
             : []),
-          ...whitespaceTransformer(attrs, options.whitespace),
+          ...(options.whitespace
+            ? whitespaceTransformer(attrs, options.whitespace)
+            : []),
           ...(extraTransformers ?? []),
           ...(options.transformers ?? []),
         ],

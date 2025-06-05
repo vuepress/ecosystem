@@ -3,6 +3,79 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.108](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.107...v2.0.0-rc.108) (2025-06-04)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.107](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.106...v2.0.0-rc.107) (2025-06-04)
+
+### Features
+
+- **helper:** remove deprecated methods and improve jsdoc ([#523](https://github.com/vuepress/ecosystem/issues/523)) ([6b5e471](https://github.com/vuepress/ecosystem/commit/6b5e47165f7e7285580fe9fe0a140445db6164b6))
+
+# [2.0.0-rc.106](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.105...v2.0.0-rc.106) (2025-05-26)
+
+### Features
+
+- **helper:** add isSlotContentEmpty function ([#474](https://github.com/vuepress/ecosystem/issues/474)) ([6782d7e](https://github.com/vuepress/ecosystem/commit/6782d7ed15a7d70cc2e41b2cffcb2712dda2eb02))
+
+# [2.0.0-rc.105](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.104...v2.0.0-rc.105) (2025-05-16)
+
+### Features
+
+- add plugin-llms ([#466](https://github.com/vuepress/ecosystem/issues/466)) ([0de62e5](https://github.com/vuepress/ecosystem/commit/0de62e588f53d33a06c6ec9a3708c6b1b7a5be18))
+- improve style ([#469](https://github.com/vuepress/ecosystem/issues/469)) ([f89110e](https://github.com/vuepress/ecosystem/commit/f89110e9f363eb9d05e64b0524a9acd6e3bdf7ad))
+
+# [2.0.0-rc.104](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.103...v2.0.0-rc.104) (2025-05-13)
+
+### Features
+
+- **helper:** improve slot type ([744b5a2](https://github.com/vuepress/ecosystem/commit/744b5a2213441bc32317307ac38f12b5f1d50423))
+
+# [2.0.0-rc.103](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.102...v2.0.0-rc.103) (2025-05-08)
+
+### Features
+
+- **helper:** add `RequiredSlot` type ([d504309](https://github.com/vuepress/ecosystem/commit/d5043095d4b8c4c3a4fa7a08f26d66e2c6d428fc))
+- **helper:** improve slot types ([a156c84](https://github.com/vuepress/ecosystem/commit/a156c84833b1c43296c0b24de8d2dea39f9ea19f))
+
+# [2.0.0-rc.102](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.101...v2.0.0-rc.102) (2025-05-07)
+
+### Features
+
+- **helper:** provide slot types ([#453](https://github.com/vuepress/ecosystem/issues/453)) ([618ad70](https://github.com/vuepress/ecosystem/commit/618ad70c165385978f2c163dce434c38abd8106c))
+
+# [2.0.0-rc.99](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.98...v2.0.0-rc.99) (2025-05-01)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.98](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.97...v2.0.0-rc.98) (2025-04-28)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.97](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.96...v2.0.0-rc.97) (2025-04-28)
+
+### Bug Fixes
+
+- **helper:** fix heading normalize style ([0242dcc](https://github.com/vuepress/ecosystem/commit/0242dccbe16c161d3b5a79a2936db188d26e290b))
+
+# [2.0.0-rc.94](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.93...v2.0.0-rc.94) (2025-04-12)
+
+**Note:** Version bump only for package @vuepress/helper
+
+# [2.0.0-rc.93](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.92...v2.0.0-rc.93) (2025-04-12)
+
+### Features
+
+- **helper:** add RenderDefault component ([ad9d080](https://github.com/vuepress/ecosystem/commit/ad9d080c198c7080a3e5ec9ff2289b996b63f692))
+
+# [2.0.0-rc.92](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.91...v2.0.0-rc.92) (2025-04-09)
+
+### Features
+
+- **helper:** add `!important` into transition properties ([#427](https://github.com/vuepress/ecosystem/issues/427)) ([8cfb4ac](https://github.com/vuepress/ecosystem/commit/8cfb4ac7054abce3e79d1230c36d71c730764264))
+- **helper:** add DeepRequired type helper ([3e78f08](https://github.com/vuepress/ecosystem/commit/3e78f081f4e236370db506f4200f5041e0b7e3d9))
+
 # [2.0.0-rc.91](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.90...v2.0.0-rc.91) (2025-04-01)
 
 ### Bug Fixes

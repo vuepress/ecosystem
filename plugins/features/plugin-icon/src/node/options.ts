@@ -1,15 +1,35 @@
 import type { IconType } from '../shared/index.js'
 
+/**
+ * Built-in icon types
+ *
+ * 内置图标类型
+ */
 export type BuiltInIcon = 'fontawesome-with-brands' | 'fontawesome' | 'iconify'
 
+/**
+ * Icon link type
+ *
+ * 图标链接类型
+ */
 export type IconLink =
   | `//${string}`
   | `/${string}`
   | `http://${string}`
   | `https://${string}`
 
+/**
+ * Icon asset type
+ *
+ * 图标资源类型
+ */
 export type IconAsset = (BuiltInIcon | IconLink)[] | BuiltInIcon | IconLink
 
+/**
+ * Options for icon plugin
+ *
+ * 图标插件选项
+ */
 export interface IconPluginOptions {
   /**
    * Link of font icon asset

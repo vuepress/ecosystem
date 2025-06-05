@@ -16,7 +16,7 @@ This plugin has been integrated into the default theme.
 npm i -D @vuepress/plugin-medium-zoom@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom'
 
 export default {
@@ -33,9 +33,7 @@ export default {
 ### selector
 
 - Type: `string`
-
 - Default: `'[vp-content] > img, [vp-content] :not(a) > img'`
-
 - Details:
 
   Selector of zoomable images.
@@ -45,12 +43,11 @@ export default {
 ### zoomOptions
 
 - Type: `Object`
-
 - Details:
 
   Options for medium-zoom.
 
-- Also see:
+- Reference:
   - [medium-zoom > Options](https://github.com/francoischalifour/medium-zoom#options)
 
 ## Styles
@@ -65,11 +62,11 @@ You can customize most of the zoom styles via [zoomOptions](#zoomoptions), while
 
 - Details:
 
-  Returns the `Zoom` instance that used by this plugin, so that you can use the instance [methods](https://github.com/francoischalifour/medium-zoom#methods) directly.
+  Returns the `Zoom` instance that is used by this plugin, so that you can use the instance [methods](https://github.com/francoischalifour/medium-zoom#methods) directly.
 
   This plugin will make images zoomable after navigating to current page. But if you are going to add new images dynamically, you may need this method to make those new images zoomable, too.
 
-  This plugin adds an extra `refresh` method on the `Zoom` instance, which will call `zoom.detach()` then `zoom.attach()` with the [selector](#selector) as the default parameter. It will help you to refresh the zoomable images for current page.
+  This plugin adds an extra `refresh` method on the `Zoom` instance, which will call `zoom.detach()` then `zoom.attach()` with the [selector](#selector) as the default parameter. It will help you refresh the zoomable images for current page.
 
 - Example:
 

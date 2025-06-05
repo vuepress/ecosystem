@@ -13,7 +13,7 @@ import {
   shallowRef,
   watch,
 } from 'vue'
-import { usePageData, useSiteData } from 'vuepress/client'
+import { useData } from 'vuepress/client'
 import { useArtalkOptions } from '../helpers/index.js'
 
 import 'artalk/dist/Artalk.css'
@@ -41,9 +41,8 @@ export default defineComponent({
   },
 
   setup(props) {
+    const { page, site } = useData()
     const artalkOptions = useArtalkOptions()
-    const page = usePageData()
-    const site = useSiteData()
 
     const loaded = ref(false)
     const artalkContainer = shallowRef<HTMLDivElement>()
@@ -53,6 +52,8 @@ export default defineComponent({
     const enableArtalk = computed(() => isString(artalkOptions.value.server))
 
     const initArtalk = async (): Promise<void> => {
+      if (__VUEPRESS_SSR__) return
+
       const [{ default: Artalk }] = await Promise.all([
         import(/* webpackChunkName: "artalk" */ 'artalk/dist/Artalk.mjs'),
         wait(artalkOptions.value.delay ?? 800),

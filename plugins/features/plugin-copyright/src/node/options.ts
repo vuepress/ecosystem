@@ -7,9 +7,11 @@ import type {
 
 export interface CopyrightPluginOptions extends CopyrightPluginSharedOptions {
   /**
-   * Author Getter
+   * Author getter
    *
    * 作者获取器
+   *
+   * @param page - Page object / 页面对象
    */
   authorGetter?: <
     ExtraPageData extends Record<string, unknown> = Record<never, never>,
@@ -26,6 +28,8 @@ export interface CopyrightPluginOptions extends CopyrightPluginSharedOptions {
    * License getter
    *
    * 协议信息获取器
+   *
+   * @param page - Page object / 页面对象
    */
   licenseGetter?: <
     ExtraPageData extends Record<string, unknown> = Record<never, never>,
@@ -39,9 +43,11 @@ export interface CopyrightPluginOptions extends CopyrightPluginSharedOptions {
   ) => string | null
 
   /**
-   * Copyright Getter
+   * Copyright getter
    *
-   * 协议获取器
+   * 版权信息获取器
+   *
+   * @param page - Page object / 页面对象
    */
   copyrightGetter?: <
     ExtraPageData extends Record<string, unknown> = Record<never, never>,
@@ -57,7 +63,7 @@ export interface CopyrightPluginOptions extends CopyrightPluginSharedOptions {
   /**
    * Locales config for copyright
    *
-   * 复制版权的多语言配置
+   * 版权插件的多语言配置
    */
   locales?: LocaleConfig<CopyrightPluginLocaleData>
 }

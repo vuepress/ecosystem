@@ -30,6 +30,6 @@ npm i -D twikoo
 
 ## Configuration
 
-Please set `provider: "Twikoo"` and set `envId` in the plugin options.
+Please set `provider: "Twikoo"` and pass your server address to `envId` in the plugin options.
 
 For other configuration items, see [Twikoo Config](./config.md).

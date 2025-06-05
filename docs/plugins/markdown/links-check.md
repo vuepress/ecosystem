@@ -6,7 +6,7 @@ icon: list-checks
 
 <NpmBadge package="@vuepress/plugin-links-check" />
 
-This plugin will check dead links in your markdown files.
+This plugin checks for dead links in your markdown files.
 
 This plugin has been integrated into the default theme.
 
@@ -16,7 +16,7 @@ This plugin has been integrated into the default theme.
 npm i -D @vuepress/plugin-links-check@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { linksCheckPlugin } from '@vuepress/plugin-links-check'
 
 export default {
@@ -38,7 +38,7 @@ export default {
 
 - Details:
 
-  Whether check dead links in markdown in devServer
+  Whether to check dead links in markdown in dev server.
 
 ### build
 
@@ -48,7 +48,7 @@ export default {
 
 - Details:
 
-  Whether check dead links in markdown in build. If set to `'error'`, the build will fail if there are dead links.
+  Whether to check dead links in markdown during build. If set to `'error'`, the build will fail when dead links are found.
 
 ### exclude
 
@@ -56,25 +56,31 @@ export default {
 
 - Details:
 
-  The links that should be excluded from checking. You can use a list of strings or regular expressions, or a function that returns a boolean.
+  Links to exclude from checking. You can use a list of strings or regular expressions, or a function that returns a boolean.
 
 - Example:
 
-  ```ts
-  linksCheckPlugin({
-    exclude: [
-      // exclude links by string
-      '/exclude-link',
-      // exclude links by regex
-      /\/exclude-link-regex/,
-    ],
+  ```ts title=".vuepress/config.ts"
+  import { linksCheckPlugin } from '@vuepress/plugin-links-check'
 
-    // or exclude links by function
-    exclude: (link, isDev) => {
-      if (isDev) {
-        return link.startsWith('/exclude-link-dev')
-      }
-      return link.startsWith('/exclude-link-build')
-    },
-  })
+  export default {
+    plugins: [
+      linksCheckPlugin({
+        exclude: [
+          // exclude links by string
+          '/exclude-link',
+          // exclude links by regex
+          /\/exclude-link-regex/,
+        ],
+
+        // or exclude links by function
+        exclude: (link, isDev) => {
+          if (isDev) {
+            return link.startsWith('/exclude-link-dev')
+          }
+          return link.startsWith('/exclude-link-build')
+        },
+      }),
+    ],
+  }
   ```

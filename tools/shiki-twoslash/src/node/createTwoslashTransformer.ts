@@ -14,6 +14,22 @@ import { resolveTypeScriptPaths } from './resolveTypeScriptPaths.js'
 
 /**
  * Create a Shiki transformer for VuePress to enable twoslash integration
+ *
+ * 为 VuePress 创建启用 twoslash 集成的 Shiki 转换器
+ *
+ * @param options - Twoslash transformer options / Twoslash 转换器选项
+ *
+ * @example
+ * ```ts
+ * const transformer = await createTwoslashTransformer({
+ *   explicitTrigger: true,
+ *   twoslashOptions: {
+ *     compilerOptions: {
+ *       lib: ["es2015"]
+ *     }
+ *   }
+ * })
+ * ```
  */
 export const createTwoslashTransformer = async (
   options: ShikiTwoslashOptions = {},
@@ -25,13 +41,13 @@ export const createTwoslashTransformer = async (
 
   const { compilerOptions = {} } = _twoslashOptions
 
-  const twoslashOptions = {
+  const twoslashOptions: ShikiTwoslashOptions['twoslashOptions'] = {
     ...defaultTwoslashOptions(),
     ..._twoslashOptions,
     compilerOptions: {
       baseUrl: process.cwd(),
       ...compilerOptions,
-      path: {
+      paths: {
         ...compilerOptions.paths,
         ...(await resolveTypeScriptPaths()),
       },

@@ -16,15 +16,15 @@ Identifier for palette, used to avoid duplicate registration.
 ### config
 
 - Type: `string`
-- Default: `` `.vuepress/styles/${id}-palette.scss` ``
+- Default: `` `.vuepress/styles/${id}-config.scss` ``
 
 User config file path, relative to source dir.
 
 ::: tip
 
-This is the file where user set style variables.
+This is the file where users set style variables.
 
-The default filename is starting with ID above.
+The default filename starts with ID above.
 
 :::
 
@@ -50,44 +50,41 @@ User palette file path, relative to source dir.
 
 ::: tip
 
-This is the file where user control injected CSS variables. All the variables will be converted in to kebab-case and injected.
+This is the file where users control injected CSS variables. All the variables will be converted to kebab-case and injected.
 
-The default filename is starting with ID above.
+The default filename starts with ID above.
 
 :::
 
 ### defaultPalette
 
 - Type: `string`
-- Default: `"@vuepress/plugin-sass-palette/styles/default/palette.scss"`
 
 Default palette file path, should be absolute path.
 
 ::: tip
 
-This is the file you should use to provide default CSS variables with `!default`. All the variable will be converted in to kebab-case and injected.
+This is the file you should use to provide default CSS variables with `!default`. All the variables will be converted to kebab-case and injected.
 
 :::
 
 ### generator
 
 - Type: `string`
-- Required: No
 
-Custom generator, used to generate derivative values with the above config.
+Custom generator used to generate derivative values with palette config.
 
-E.g.: You may want to provide a `$theme-color-light` based on `$theme-color`.
+For example: You may want to provide a `$theme-color-light` based on `$theme-color`.
 
 ### style
 
 - Type: `string`
-- Required: No
 
 User style file path, relative to source dir.
 
 ## Alias
 
-Available alias are:
+Available aliases are:
 
 - config: `@sass-palette/${id}-config` (based on `id`)
 - palette: `@sass-palette/${id}-palette` (based on `id`)

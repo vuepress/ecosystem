@@ -5,60 +5,56 @@
 ### repo
 
 - Type: `string`
-- Details: The name of repository to store discussions.
+- Required: Yes
+- Details: The name of repository to store discussions
 
 ### repoId
 
 - Type: `string`
-- Details:
-  The ID of repository to store discussions. Generate through [Giscus Page](https://giscus.app/)
+- Required: Yes
+- Details: The ID of repository to store discussions. Generate through [Giscus Page](https://giscus.app/)
 
 ### category
 
 - Type: `string`
-- Details:
-  The name of the discussion category.
+- Required: Yes
+- Details: The name of the discussion category
 
 ### categoryId
 
 - Type: `string`
-- Details:
-  The ID of the discussion category. Generate through [Giscus Page](https://giscus.app/)
+- Required: Yes
+- Details: The ID of the discussion category. Generate through [Giscus Page](https://giscus.app/)
 
 ### mapping
 
 - Type: `string`
 - Default: `"pathname"`
-- Details:
-  Page - Discussion mapping. For details see [Giscus Page](https://giscus.app/)
+- Details: Page - Discussion mapping. For details see [Giscus Page](https://giscus.app/)
 
 ### strict
 
 - Type: `boolean`
 - Default: `true`
-- Details:
-  Whether enable strict mapping or not
+- Details: Whether to enable strict mapping
 
 ### lazyLoading
 
 - Type: `boolean`
 - Default: `true`
-- Details:
-  Whether enable lazy loading or not
+- Details: Whether to enable lazy loading
 
 ### reactionsEnabled
 
 - Type: `boolean`
 - Default: `true`
-- Details:
-  Whether enable reactions or not
+- Details: Whether to enable reactions
 
 ### inputPosition
 
 - Type: `"top" | "bottom"`
 - Default: `"top"`
-- Details:
-  Input position
+- Details: Input position
 
 ### lightTheme
 
@@ -81,9 +77,9 @@
 - Default: `"light"`
 - Details:
 
-  Giscus theme used in lightmode
+  Giscus theme used in light mode
 
-  Should be a built-in theme keyword or a css link starting with `https://`.
+  Should be a built-in theme keyword or a CSS link starting with `https://`.
 
 ### darkTheme
 
@@ -106,9 +102,9 @@
 - Default: `"dark"`
 - Details:
 
-  Giscus theme used in darkmode
+  Giscus theme used in dark mode
 
-  Should be a built-in theme keyword or a css link starting with `https://`.
+  Should be a built-in theme keyword or a CSS link starting with `https://`.
 
 ## Plugin Config
 
@@ -116,9 +112,8 @@ You can directly configure serializable options in the plugin options:
 
 ```ts title=".vuepress/config.ts"
 import { commentPlugin } from '@vuepress/plugin-comment'
-import { defineUserConfig } from 'vuepress'
 
-export default defineUserConfig({
+export default {
   plugins: [
     commentPlugin({
       provider: 'Giscus',
@@ -126,7 +121,7 @@ export default defineUserConfig({
       // ...
     }),
   ],
-})
+}
 ```
 
 ## Client Config

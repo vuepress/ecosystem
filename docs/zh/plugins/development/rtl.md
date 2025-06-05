@@ -2,11 +2,11 @@
 icon: pilcrow-left
 ---
 
-# rtl
+# RTL
 
 <NpmBadge package="@vuepress/plugin-rtl" />
 
-此插件会在配置的语言上设置 rtl 方向。
+此插件在配置的语言上设置文本方向为 RTL。
 
 ## 使用方法
 
@@ -14,7 +14,7 @@ icon: pilcrow-left
 npm i -D @vuepress/plugin-rtl@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { rtlPlugin } from '@vuepress/plugin-rtl'
 
 export default {
@@ -37,8 +37,7 @@ export default {
 
 - 类型：`string[]`
 - 默认值：`['/']`
-- 详情：
-  开启 RTL 布局的多语言路径。
+- 详情：启用 RTL 布局的语言路径。
 
 ### selector
 
@@ -53,12 +52,7 @@ export default {
   ```
 
 - 默认值：`{ 'html': { dir: 'rtl' } }`
-
-- 详情：
-
-  开启 RTL 的选择器。
-
-  默认设置意味着在 RTL 多语言中，`html` 元素的 `dir` 属性将被设置为 `rtl`。
+- 详情：启用 RTL 布局的选择器配置。默认设置意味着在 RTL 语言中，`html` 元素的 `dir` 属性将被设置为 `rtl`。
 
 <script setup>
 import ToggleRTLButton from '@source/.vuepress/components/ToggleRTLButton.vue'

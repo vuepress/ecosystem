@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-cache",
-  "version": "2.0.0-rc.83",
+  "version": "2.0.0-rc.103",
   "description": "VuePress plugin - cache",
   "keywords": [
     "vuepress-plugin",
@@ -34,14 +34,14 @@
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
+  "dependencies": {
+    "ci-info": "^4.2.0",
+    "lru-cache": "^11.1.0"
+  },
   "peerDependencies": {
     "vuepress": "catalog:"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "ci-info": "^4.2.0",
-    "lru-cache": "^10.4.3"
   }
 }

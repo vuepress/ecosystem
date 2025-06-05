@@ -2,12 +2,7 @@ import { categoriesMap } from '@temp/blog/category'
 import { store } from '@temp/blog/store'
 import type { ComputedRef } from 'vue'
 import { computed, readonly, shallowRef } from 'vue'
-import {
-  resolveRoute,
-  usePageData,
-  usePageFrontmatter,
-  useRouteLocale,
-} from 'vuepress/client'
+import { resolveRoute, useData } from 'vuepress/client'
 import type {
   BlogCategoryFrontmatterOptions,
   CategoriesMap,
@@ -20,16 +15,31 @@ const categoryMapRef = shallowRef(categoriesMap)
 
 export const blogCategoryMap = readonly(categoryMapRef)
 
+/**
+ * Use blog category data
+ *
+ * 使用博客分类数据
+ *
+ * @description Get blog category data for current page or specified key
+ *
+ * 获取当前页面或指定键的博客分类数据
+ *
+ * @param key - Category key to get data for
+ *
+ * key - 要获取数据的分类键
+ *
+ * @returns Computed blog category data
+ *
+ * 返回计算的博客分类数据
+ */
 export const useBlogCategory = <
   T extends Record<string, unknown> = Record<string, unknown>,
 >(
   key?: string,
 ): ComputedRef<BlogCategoryData<T>> => {
-  const page = usePageData()
-  const frontmatter = usePageFrontmatter<{
+  const { frontmatter, page, routeLocale } = useData<{
     blog?: BlogCategoryFrontmatterOptions
   }>()
-  const routeLocale = useRouteLocale()
 
   return computed(() => {
     const mapKey = key ?? frontmatter.value.blog?.key ?? ''

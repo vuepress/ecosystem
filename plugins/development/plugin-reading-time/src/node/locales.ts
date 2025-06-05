@@ -27,7 +27,7 @@ export const readingTimeLocaleInfo: DefaultLocaleInfo<ReadingTimePluginLocaleDat
       {
         word: '約 $word 字',
         less1Minute: '小於 1 分鐘',
-        time: '大约 $time 分鐘',
+        time: '大約 $time 分鐘',
       },
     ],
     [

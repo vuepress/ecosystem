@@ -14,7 +14,7 @@ icon: heading
 npm i -D @vuepress/plugin-toc@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { tocPlugin } from '@vuepress/plugin-toc'
 
 export default {
@@ -61,7 +61,7 @@ Markdown 语法 `[[toc]]` 仅能在 Markdown 文件中使用。它是由 markdow
 
   指定目录组件的名称。
 
-### headerOptions
+### headersOptions
 
 - 类型： `Partial<GetHeadersOptions>`
 
@@ -69,9 +69,9 @@ Markdown 语法 `[[toc]]` 仅能在 Markdown 文件中使用。它是由 markdow
 
 - 详情：
 
-  覆盖组件 [headerOptions](#headeroptions-1) Prop 的默认值。
+  覆盖组件 [headersOptions](#headersoptions-1) Prop 的默认值。
 
-### propsOptions
+### renderOptions
 
 - 类型： `Partial<TocPropsOptions>`
 
@@ -79,7 +79,7 @@ Markdown 语法 `[[toc]]` 仅能在 Markdown 文件中使用。它是由 markdow
 
 - 详情：
 
-  覆盖组件 [propsOptions](#propsoptions-1) Prop 的默认值。
+  覆盖组件 [renderOptions](#renderoptions-1) Prop 的默认值。
 
 ## 组件 Props
 
@@ -87,7 +87,11 @@ Markdown 语法 `[[toc]]` 仅能在 Markdown 文件中使用。它是由 markdow
 
 ```vue
 <template>
-  <Toc :headers="headers" :options="options" />
+  <Toc
+    :headers="headers"
+    :headers-options="headersOptions"
+    :render-options="renderOptions"
+  />
 </template>
 ```
 
@@ -110,7 +114,7 @@ interface PageHeader {
 
   如果该 Prop 没有被设置，默认会使用当前页面的标题。
 
-### headerOptions
+### headersOptions
 
 - 类型： `Partial<GetHeadersOptions>`
 
@@ -118,32 +122,79 @@ interface PageHeader {
 
 - 默认值：
 
-  详见 [GetHeadersOptions](../../tools/helper/client.md#getheaders)，可以通过插件选项中的 [headerOptions](#headeroptions) 来覆盖。
+  详见 [GetHeadersOptions](../../tools/helper/client.md#getheaders)，可以通过插件配置项中的 [headersOptions](#headersoptions) 来覆盖。
 
 - 详情：
 
-  覆盖 [getHeaders](../../tools/helper/client.md#getheaders) 函数的默认值。
+  自定义标题提取行为。
 
-### propsOptions
+### renderOptions
 
-- 类型： `Partial<TocPropsOptions>`
+- 类型： `TocRenderOptions`
 
 ```ts
-interface TocPropsOptions {
-  containerTag: string
-  containerClass: string
-  listClass: string
-  itemClass: string
-  linkTag: 'a' | 'RouteLink' | 'RouterLink'
-  linkClass: string
-  linkActiveClass: string
-  linkChildrenActiveClass: string
+interface TocRenderOptions {
+  /**
+   * Container tag name
+   *
+   * @default 'nav'
+   */
+  containerTag?: string
+
+  /**
+   * Container class name
+   *
+   * @default 'vuepress-toc'
+   */
+  containerClass?: string
+
+  /**
+   * List class name
+   *
+   * @default 'vuepress-toc-list'
+   */
+  listClass?: string
+
+  /**
+   * Item class name
+   *
+   * @default 'vuepress-toc-item'
+   */
+  itemClass?: string
+
+  /**
+   * Link tag type
+   *
+   * @default 'RouteLink'
+   */
+  linkTag?: 'a' | 'RouteLink' | 'RouterLink'
+
+  /**
+   * Link class name
+   *
+   * @default 'vuepress-toc-link'
+   */
+  linkClass?: string
+
+  /**
+   * Active link class name
+   *
+   * @default 'active'
+   */
+  linkActiveClass?: string
+
+  /**
+   * Active children link class name
+   *
+   * @default 'active'
+   */
+  linkChildrenActiveClass?: string
 }
 ```
 
 - 默认值：
 
-  下列默认值可以用过插件选项中的 [propsOptions](#propsoptions) 来覆盖：
+  下列默认值可以通过插件配置项中的 [renderOptions](#renderoptions) 来覆盖：
 
 ```ts
 const defaultOptions = {

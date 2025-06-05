@@ -2,9 +2,20 @@ import { isLinkAbsolute } from '@vuepress/helper'
 import type { App, Page } from 'vuepress/core'
 import { logger } from 'vuepress/utils'
 
+/**
+ * Check markdown links in a page and report broken links
+ *
+ * 检查页面中的 Markdown 链接并报告死链接
+ *
+ * @param page - The page to check / 要检查的页面
+ * @param app - VuePress app instance / VuePress 应用实例
+ * @param isIgnoreLink - Function to check if a link should be ignored / 检查链接是否应被忽略的函数
+ *
+ * @returns Whether any broken links were found / 是否发现了死链接
+ */
 export const checkMarkdownLink = (
   page: Page,
-  { options, pages }: App,
+  app: App,
   isIgnoreLink: (link: string) => boolean,
 ): boolean => {
   const pagePath = page.filePathRelative ?? page.path
@@ -20,7 +31,7 @@ export const checkMarkdownLink = (
       .filter(
         ({ relative }) =>
           // Check whether the page exists
-          pages.every(
+          app.pages.every(
             ({ filePathRelative }) => filePathRelative !== decodeURI(relative),
           ) && !isIgnoreLink(relative),
       ),
@@ -31,10 +42,11 @@ export const checkMarkdownLink = (
         ({ absolute }) =>
           // Check whether the page exists
           absolute &&
-          pages.every(
+          app.pages.every(
             ({ filePathRelative }) =>
               !filePathRelative ||
-              (`${options.base}${filePathRelative}` !== decodeURI(absolute) &&
+              (`${app.siteData.base}${filePathRelative}` !==
+                decodeURI(absolute) &&
                 !isIgnoreLink(absolute)),
           ),
       ),

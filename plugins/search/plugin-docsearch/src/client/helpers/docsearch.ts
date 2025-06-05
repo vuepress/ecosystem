@@ -26,12 +26,67 @@ const docsearchSymbol: InjectionKey<Readonly<DocSearchRef>> = Symbol(
   __VUEPRESS_DEV__ ? 'docsearch' : '',
 )
 
+/**
+ * DocSearch client locale options
+ *
+ * DocSearch 客户端多语言选项
+ */
 export type DocSearchClientLocaleOptions = Partial<DocSearchProps>
 
+/**
+ * DocSearch client options
+ *
+ * DocSearch 客户端选项
+ */
 export interface DocSearchClientOptions extends DocSearchClientLocaleOptions {
+  /**
+   * Locale options
+   *
+   * 多语言选项
+   */
   locales?: Record<string, DocSearchClientLocaleOptions>
 }
 
+/**
+ * Customize DocSearch options
+ *
+ * 自定义 DocSearch 选项
+ *
+ * @param options - DocSearch options, support plain object, ref or getter / DocSearch 选项，支持普通对象，Ref 或 Getter
+ *
+ * @example
+ * ```ts
+ * import { defineDocSearchConfig } from '@vuepress/plugin-docsearch/client'
+ *
+ * // Use plain object
+ * defineDocSearchConfig({
+ *   translations: {
+ *     button: {
+ *       buttonText: 'Search',
+ *     },
+ *   },
+ * })
+ *
+ * // Use ref
+ * const options = ref({
+ *   translations: {
+ *     button: {
+ *       buttonText: 'Search',
+ *     },
+ *   },
+ * })
+ * defineDocSearchConfig(options)
+ *
+ * // Use getter
+ * defineDocSearchConfig(() => ({
+ *   translations: {
+ *     button: {
+ *       buttonText: isDarkMode.value ? 'Search in dark' : 'Search in light',
+ *     },
+ *   },
+ * }))
+ * ```
+ */
 export const defineDocSearchConfig = (
   options: MaybeRefOrGetter<DocSearchClientOptions>,
 ): void => {
@@ -51,6 +106,9 @@ export const defineDocSearchConfig = (
   }
 }
 
+/**
+ * @internal
+ */
 export const useDocSearchOptions = (): ComputedRef<DocSearchProps> => {
   const options = inject(docsearchSymbol)!
   const routeLocale = useRouteLocale()
@@ -61,6 +119,9 @@ export const useDocSearchOptions = (): ComputedRef<DocSearchProps> => {
   }))
 }
 
+/**
+ * @internal
+ */
 export const injectDocSearchConfig = (app: App): void => {
   // @ts-expect-error: Types loop back
   app.provide(docsearchSymbol, readonly(docsearchOptions))

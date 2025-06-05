@@ -6,11 +6,11 @@ icon: database
 
 <NpmBadge package="@vuepress/plugin-theme-data" />
 
-为你的主题提供客户端数据，包含 VuePress 的 [多语言支持](https://vuejs.press/zh/guide/i18n.html) 。
+为你的主题提供客户端数据，包含 VuePress 的 [多语言支持](https://vuejs.press/zh/guide/i18n.html)。
 
 该插件主要用于开发主题，并且已经集成到默认主题中。大部分情况下你不需要直接使用它。
 
-对于主题作者，该插件可以提供与 VuePress 及默认主题相同的多语言支持机制。但是如果你的主题不需要提供多语言支持，或者你想用你自己的方式来实现多语言支持，那么你不需要使用该插件。
+对于主题作者，该插件可以提供与 VuePress 及默认主题相同的多语言支持机制。但是如果你的主题不需要提供多语言支持，或者你想用自己的方式来实现多语言支持，那么你不需要使用该插件。
 
 ## 使用方法
 
@@ -18,7 +18,7 @@ icon: database
 npm i -D @vuepress/plugin-theme-data@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 
 export default {
@@ -34,19 +34,19 @@ export default {
 
 ### themeData
 
-- 类型： `ThemeData`
+- 类型：`ThemeData`
 
-- 默认值： `{}`
+- 必填：是
 
 - 详情：
 
-  你希望在 Client 端中使用的主题数据对象。
+  你希望在客户端中使用的主题数据对象。
 
-  你可以通过该配置项，在 Node 端提供主题数据，然后在客户端通过 [useThemeData](#useThemeData) 和 [useThemeLocaleData](#useThemeLocaleData) 来使用主题数据。
+  你可以通过该配置项，在 Node 端提供主题数据，然后在客户端通过 [useThemeData](#usethemedata) 和 [useThemeLocaleData](#usethemelocaledata) 来使用主题数据。
 
 - 示例：
 
-```ts
+```ts title=".vuepress/config.ts"
 export default {
   plugins: [
     themeDataPlugin({
@@ -73,9 +73,9 @@ export default {
 
 - 详情：
 
-  返回主题数据的 Ref 对象。
+  返回主题数据的响应式引用对象。
 
-  数据是通过 [themeData](#themeData) 配置项提供的。
+  数据是通过 [themeData](#themedata) 配置项提供的。
 
 - 示例：
 
@@ -99,9 +99,9 @@ export default {
 
 - 详情：
 
-  返回当前 locale 下主题数据的 Ref 对象。
+  返回当前语言环境下主题数据的响应式引用对象。
 
-  当前 locale 中的字段已被合并到顶层字段中。
+  当前语言环境中的字段已被合并到顶层字段中。
 
 - 示例：
 

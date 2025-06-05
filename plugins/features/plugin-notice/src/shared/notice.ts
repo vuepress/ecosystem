@@ -61,11 +61,11 @@ export interface NoticeItemOptions {
   /**
    * Notice key
    *
+   * 通知键值
+   *
    * @description Used to identify and store the notice status
    *
-   * Notice 的 key
-   *
-   * @description 用于标识和存储 notice 的状态
+   * 用于标识和存储通知的状态
    */
   key?: string
 
@@ -108,7 +108,7 @@ export interface NoticePathOptions extends NoticeItemOptions {
   /**
    * Path prefix to match
    *
-   * 公告需要匹配的前缀路径
+   * 路径前缀匹配
    */
   path: string
 }
@@ -117,7 +117,7 @@ export interface NoticeMatchOptions extends NoticeItemOptions {
   /**
    * A regexp matching notice path
    *
-   * 公告路径的正则匹配
+   * 匹配通知路径的正则表达式
    */
   match: RegExp
 }

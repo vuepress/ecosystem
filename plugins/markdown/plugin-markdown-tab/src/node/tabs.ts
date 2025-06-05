@@ -3,11 +3,16 @@ import type { PluginSimple } from 'markdown-it'
 
 import { stringifyProp } from './utils.js'
 
+/**
+ * Markdown-it plugin for tabs
+ *
+ * 用于选项卡的 Markdown-it 插件
+ */
 export const tabs: PluginSimple = (md) => {
   tab(md, {
     name: 'tabs',
 
-    tabsOpenRenderer: ({ active, data }, tokens, index) => {
+    openRender: ({ active, data }, tokens, index) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const { meta } = tokens[index]
       const titles = data.map(({ title }) => md.renderInline(title))
@@ -18,7 +23,7 @@ export const tabs: PluginSimple = (md) => {
       })
 
       return `\
-<Tabs id="${index}" :data='${stringifyProp(tabsData)}'${
+<Tabs :data='${stringifyProp(tabsData)}'${
         active === -1 ? '' : ` :active="${active}"`
       }${
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
@@ -34,16 +39,16 @@ ${titles
 `
     },
 
-    tabsCloseRenderer: () => `\
+    closeRender: () => `\
 </Tabs>
 `,
 
-    tabOpenRenderer: ({ index }) =>
+    tabOpenRender: ({ index }) =>
       `\
 <template #tab${index}="{ value, isActive }">
 `,
 
-    tabCloseRenderer: () => `\
+    tabCloseRender: () => `\
 </template>
 `,
   })

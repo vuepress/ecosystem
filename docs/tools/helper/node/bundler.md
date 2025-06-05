@@ -43,9 +43,9 @@ export const getBundlerName: (app: App) => string
 
 ```ts
 // @vuepress/bundler-vite
-getBundleName(app) === 'vite' // true
+getBundlerName(app) === 'vite' // true
 // @vuepress/bundler-webpack
-getBundleName(app) === 'webpack' // true
+getBundlerName(app) === 'webpack' // true
 ```
 
 :::

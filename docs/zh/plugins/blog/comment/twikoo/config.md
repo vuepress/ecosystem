@@ -4,15 +4,15 @@
 
 ### envId
 
-- 类型: `string`
+- 类型：`string`
 - 必填: 是
-- 详情：腾讯云环境 ID 或 Vercel 地址。
+- 详情： 腾讯云环境 ID 或 Vercel 地址。
 
-### repoId
+### region
 
-- 类型: `string`
-- 默认值: `"ap-shanghai"`
-- 详情：腾讯云区域。
+- 类型：`string`
+- 默认值：`"ap-shanghai"`
+- 详情： 腾讯云区域。
 
 ## 插件配置
 
@@ -20,9 +20,8 @@
 
 ```ts title=".vuepress/config.ts"
 import { commentPlugin } from '@vuepress/plugin-comment'
-import { defineUserConfig } from 'vuepress'
 
-export default defineUserConfig({
+export default {
   plugins: [
     commentPlugin({
       provider: 'Twikoo',
@@ -30,7 +29,7 @@ export default defineUserConfig({
       // ...
     }),
   ],
-})
+}
 ```
 
 ## 客户端配置

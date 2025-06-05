@@ -8,7 +8,7 @@ export default [
   ...rollupBundle(
     {
       base: 'client',
-      files: ['components/SearchResult', 'config', 'index', 'worker/index'],
+      files: ['components/SearchResult', 'config', 'index', 'worker'],
     },
     {
       external: ['@internal/pagesComponents', 'slimsearch'],

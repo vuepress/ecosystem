@@ -1,7 +1,7 @@
 import { useDebounceFn, watchImmediate } from '@vueuse/core'
 import type { Ref } from 'vue'
 import { computed, onMounted, onUnmounted, ref, shallowRef } from 'vue'
-import { usePageData, useRouteLocale } from 'vuepress/client'
+import { useData } from 'vuepress/client'
 
 import { options } from '../define.js'
 import { useSearchOptions } from '../helpers/index.js'
@@ -14,9 +14,8 @@ export interface Results {
 }
 
 export const useResults = (queries: Ref<string[]>): Results => {
+  const { page, routeLocale } = useData()
   const searchOptions = useSearchOptions()
-  const routeLocale = useRouteLocale()
-  const pageData = usePageData()
 
   const searchingProcessNumber = ref(0)
   const isSearching = computed(() => searchingProcessNumber.value > 0)
@@ -39,7 +38,7 @@ export const useResults = (queries: Ref<string[]>): Results => {
 
           search(query, routeLocale.value, rest)
             .then((items) =>
-              resultsFilter(items, query, routeLocale.value, pageData.value),
+              resultsFilter(items, query, routeLocale.value, page.value),
             )
             .then((items) => {
               searchingProcessNumber.value -= 1

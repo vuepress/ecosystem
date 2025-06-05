@@ -11,6 +11,13 @@ export const noticeOptions: NoticeOptionsRef = ref(
   NOTICE_OPTIONS,
 ) as NoticeOptionsRef
 
+/**
+ * Use notice options
+ *
+ * 使用通知选项
+ *
+ * @returns Notice options ref / 通知选项引用
+ */
 export const useNoticeOptions = (): NoticeOptionsRef => noticeOptions
 
 if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {

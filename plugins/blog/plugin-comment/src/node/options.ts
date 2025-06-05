@@ -8,19 +8,39 @@ import type {
   WalineOptions,
 } from '../shared/index.js'
 
+/**
+ * Artalk comment plugin options
+ *
+ * Artalk 评论插件选项
+ */
 export interface ArtalkPluginOptions
   extends Omit<Partial<ArtalkOptions>, 'avatarURLBuilder' | 'imgUploader'> {
   provider: 'Artalk'
 }
 
+/**
+ * Giscus comment plugin options
+ *
+ * Giscus 评论插件选项
+ */
 export interface GiscusPluginOptions extends Partial<GiscusOptions> {
   provider: 'Giscus'
 }
 
+/**
+ * Twikoo comment plugin options
+ *
+ * Twikoo 评论插件选项
+ */
 export interface TwikooPluginOptions extends Partial<TwikooOptions> {
   provider: 'Twikoo'
 }
 
+/**
+ * Waline comment plugin options
+ *
+ * Waline 评论插件选项
+ */
 export interface WalinePluginOptions
   extends Omit<
     Partial<WalineOptions>,
@@ -39,14 +59,16 @@ export interface WalinePluginOptions
 
   /**
    * Locale config for waline
+   *
+   * Waline 本地化配置
    */
   locales?: LocaleConfig<WalineLocaleData>
 }
 
 /**
- * 评论选项
+ * Comment plugin options
  *
- * Comment options
+ * 评论插件选项
  */
 export type CommentPluginOptions =
   | ArtalkPluginOptions

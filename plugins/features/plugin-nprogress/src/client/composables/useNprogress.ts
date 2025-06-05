@@ -5,6 +5,11 @@ import { nprogress } from '../nprogress.js'
 import '../styles/vars.css'
 import '../styles/nprogress.css'
 
+/**
+ * Use nprogress
+ *
+ * 使用 nprogress
+ */
 export const useNprogress = (): void => {
   onMounted(() => {
     // get vue-router instance

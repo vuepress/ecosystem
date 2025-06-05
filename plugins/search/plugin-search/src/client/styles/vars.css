@@ -2,7 +2,7 @@
   --search-c-bg: var(--vp-c-bg);
   --search-c-accent: var(--vp-c-accent);
   --search-c-text: var(--vp-c-text);
-  --search-c-border: var(--vp-c-gutter);
+  --search-c-divider: var(--vp-c-divider);
   --search-c-item-text: var(--vp-c-text-subtle);
   --search-c-item-focus: var(--vp-c-bg-alt);
   --search-input-width: 8rem;

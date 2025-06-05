@@ -16,6 +16,27 @@ import {
 } from './prepare/index.js'
 import { PLUGIN_NAME } from './utils.js'
 
+/**
+ * Math plugin for VuePress
+ *
+ * VuePress 数学插件
+ *
+ * @param [options={}] - Plugin options / 插件选项
+ * @param options.type - Math renderer type / 数学渲染器类型
+ *
+ * @example
+ * ```ts
+ * import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
+ *
+ * export default {
+ *   plugins: [
+ *     markdownMathPlugin({
+ *       type: 'katex'
+ *     })
+ *   ]
+ * }
+ * ```
+ */
 export const markdownMathPlugin = ({
   type,
   ...options
@@ -47,7 +68,7 @@ export const markdownMathPlugin = ({
     }
   }
 
-  const mathjaxInstance =
+  let mathjaxInstance =
     mathRenderer === 'mathjax'
       ? createMathjaxInstance({
           ...(options as MarkdownMathjaxPluginOptions),
@@ -75,7 +96,10 @@ export const markdownMathPlugin = ({
           mdIt.render = (src: string, env: unknown): string => {
             const result = originalRender(src, env)
 
-            mathjaxInstance!.reset()
+            // markdown render may be called after mathjaxInstance is released
+            // but the style is already prepared in onPrepared hook
+            // it's safe to use optional chaining here
+            mathjaxInstance?.reset()
 
             return result
           }
@@ -114,6 +138,8 @@ export const markdownMathPlugin = ({
     onPrepared: async (app) => {
       if (mathRenderer === 'mathjax') {
         await prepareMathjaxStyle(app, mathjaxInstance!)
+        // release mathjaxInstance in build mode to reduce memory
+        if (app.env.isBuild) mathjaxInstance = null
       }
     },
 

@@ -3,6 +3,186 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.108](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.107...v2.0.0-rc.108) (2025-06-04)
+
+### Bug Fixes
+
+- **plugin-markdown-math:** fix issues with unexpected mdit.render ([9eee3a1](https://github.com/vuepress/ecosystem/commit/9eee3a1abde636ed0bd3edf0e90cbf4efb730d66))
+
+# [2.0.0-rc.107](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.106...v2.0.0-rc.107) (2025-06-04)
+
+### Bug Fixes
+
+- fix locale info ([50a6f19](https://github.com/vuepress/ecosystem/commit/50a6f19e7be551a772a98bf387de6917f609d7ed))
+- **highlighter-helper:** fix line numbers calculation error in code block ([#483](https://github.com/vuepress/ecosystem/issues/483)) ([189d6a5](https://github.com/vuepress/ecosystem/commit/189d6a55a43053635e1d9b2b9d6bf5299e324c3f))
+- **plugin-rtl:** bug fixes and docs improvement ([#495](https://github.com/vuepress/ecosystem/issues/495)) ([2b773b2](https://github.com/vuepress/ecosystem/commit/2b773b213337ec3ac694af71ced62ec959533471))
+
+### Features
+
+- add plugin-preview ([#482](https://github.com/vuepress/ecosystem/issues/482)) ([85efae6](https://github.com/vuepress/ecosystem/commit/85efae678b19c1e111acc2272130d85704d1a2a6))
+- **helper:** remove deprecated methods and improve jsdoc ([#523](https://github.com/vuepress/ecosystem/issues/523)) ([6b5e471](https://github.com/vuepress/ecosystem/commit/6b5e47165f7e7285580fe9fe0a140445db6164b6))
+- **plugin-markdown-tab:** use `useId()` ([#521](https://github.com/vuepress/ecosystem/issues/521)) ([3fdaf2b](https://github.com/vuepress/ecosystem/commit/3fdaf2bab54c68ba77cb4f062a0b865646fee4fa))
+- **plugin-revealjs:** prefer useId ([#522](https://github.com/vuepress/ecosystem/issues/522)) ([892c1a1](https://github.com/vuepress/ecosystem/commit/892c1a129a8990375437706877d88a9df3a89748))
+
+### Performance Improvements
+
+- **plugin-markdown-math:** reduce build memory ([66cd67a](https://github.com/vuepress/ecosystem/commit/66cd67a7180e25d5ffcb9ee66d962f131e24ada1))
+
+# [2.0.0-rc.106](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.105...v2.0.0-rc.106) (2025-05-26)
+
+### Bug Fixes
+
+- **plugin-copy-code:** fix hydration mismatch ([#476](https://github.com/vuepress/ecosystem/issues/476)) ([7318f6a](https://github.com/vuepress/ecosystem/commit/7318f6a73e653cef9cd710021ae8ccb638e25cb0))
+- **plugin-redirect:** fix cache and temp option in cli ([d5f414a](https://github.com/vuepress/ecosystem/commit/d5f414a29c761eb342e11f59f978a4b6827ea125))
+
+### Features
+
+- add attribute `class="language-"` into `<code>` ([#473](https://github.com/vuepress/ecosystem/issues/473)) ([31f4309](https://github.com/vuepress/ecosystem/commit/31f43098a8a13e51510abffb012d14467e958298))
+- **helper:** add isSlotContentEmpty function ([#474](https://github.com/vuepress/ecosystem/issues/474)) ([6782d7e](https://github.com/vuepress/ecosystem/commit/6782d7ed15a7d70cc2e41b2cffcb2712dda2eb02))
+- **plugin-meilisearch:** add cli to generate only_urls ([#446](https://github.com/vuepress/ecosystem/issues/446)) ([22f13d1](https://github.com/vuepress/ecosystem/commit/22f13d13da80a64f44a211569d1504d5f2b282aa))
+
+# [2.0.0-rc.105](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.104...v2.0.0-rc.105) (2025-05-16)
+
+### Features
+
+- add plugin-llms ([#466](https://github.com/vuepress/ecosystem/issues/466)) ([0de62e5](https://github.com/vuepress/ecosystem/commit/0de62e588f53d33a06c6ec9a3708c6b1b7a5be18))
+- improve style ([#469](https://github.com/vuepress/ecosystem/issues/469)) ([f89110e](https://github.com/vuepress/ecosystem/commit/f89110e9f363eb9d05e64b0524a9acd6e3bdf7ad))
+
+# [2.0.0-rc.104](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.103...v2.0.0-rc.104) (2025-05-13)
+
+### Bug Fixes
+
+- **plugin-shiki:** fix incorrect highlight lines parsing ([#463](https://github.com/vuepress/ecosystem/issues/463)) ([1205432](https://github.com/vuepress/ecosystem/commit/1205432dae10e4914fe17e3aacbb44c3b56410e2))
+- **theme-default:** fix navbar mismatch ([bca0562](https://github.com/vuepress/ecosystem/commit/bca0562e4914366898f348af9af8fbb606bfe0e2))
+- **theme-default:** fix NotFound mismatch ([#467](https://github.com/vuepress/ecosystem/issues/467)) ([1818e8b](https://github.com/vuepress/ecosystem/commit/1818e8ba0d8623a7ab72eee60386e94b094721b1))
+
+### Features
+
+- **helper:** improve slot type ([744b5a2](https://github.com/vuepress/ecosystem/commit/744b5a2213441bc32317307ac38f12b5f1d50423))
+
+# [2.0.0-rc.103](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.102...v2.0.0-rc.103) (2025-05-08)
+
+### Bug Fixes
+
+- fix code block related style ([#456](https://github.com/vuepress/ecosystem/issues/456)) ([e446824](https://github.com/vuepress/ecosystem/commit/e446824b64e4f5fab45d158fc8ba5c1d63093e32))
+- fix whitespace feature, close [#459](https://github.com/vuepress/ecosystem/issues/459) ([#462](https://github.com/vuepress/ecosystem/issues/462)) ([1ea93c1](https://github.com/vuepress/ecosystem/commit/1ea93c158aa6ce4e35951f4d4e70bef41aa9dd51))
+
+### Features
+
+- **helper:** add `RequiredSlot` type ([d504309](https://github.com/vuepress/ecosystem/commit/d5043095d4b8c4c3a4fa7a08f26d66e2c6d428fc))
+- **helper:** improve slot types ([a156c84](https://github.com/vuepress/ecosystem/commit/a156c84833b1c43296c0b24de8d2dea39f9ea19f))
+- **highlighter-helper:** helper to inject icons for code-title-bar ([#458](https://github.com/vuepress/ecosystem/issues/458)) ([4569d42](https://github.com/vuepress/ecosystem/commit/4569d42430b96d27c62770d38b683c4475f767c7))
+
+# [2.0.0-rc.102](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.101...v2.0.0-rc.102) (2025-05-07)
+
+### Bug Fixes
+
+- **plugin-git:** fix issues where the plugin is not enabled ([97a54ce](https://github.com/vuepress/ecosystem/commit/97a54ce485a2553bfa68423470560fd2e8cba42c))
+
+### Features
+
+- **helper:** provide slot types ([#453](https://github.com/vuepress/ecosystem/issues/453)) ([618ad70](https://github.com/vuepress/ecosystem/commit/618ad70c165385978f2c163dce434c38abd8106c))
+- **plugin-redirect:** use `location.replace` to keep history records clean ([b4aa32c](https://github.com/vuepress/ecosystem/commit/b4aa32c9bf777e3edfc72a96f78ce2c844b35cdc))
+- **plugin-seo:** not add "\n" if the file does not exist ([#452](https://github.com/vuepress/ecosystem/issues/452)) ([b476bae](https://github.com/vuepress/ecosystem/commit/b476baeed377d4fdc3dd9c82c1a73a104162da09))
+
+# [2.0.0-rc.101](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.100...v2.0.0-rc.101) (2025-05-01)
+
+**Note:** Version bump only for package @vuepress/ecosystem
+
+# [2.0.0-rc.100](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.99...v2.0.0-rc.100) (2025-05-01)
+
+### Features
+
+- **plugin-markdown-image:** allow 'strict' in size ([#451](https://github.com/vuepress/ecosystem/issues/451)) ([c1ea524](https://github.com/vuepress/ecosystem/commit/c1ea5249646790b71fdb3e71fd4c06a82138c56d))
+
+# [2.0.0-rc.99](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.98...v2.0.0-rc.99) (2025-05-01)
+
+### Bug Fixes
+
+- **plugin-git:** fix commit body parsing and remove execa ([#447](https://github.com/vuepress/ecosystem/issues/447)) ([df92ae2](https://github.com/vuepress/ecosystem/commit/df92ae25758e52502f86f121fac0d8226131c8fa))
+
+### Features
+
+- **create-vuepress:** remove execa ([91b5f4b](https://github.com/vuepress/ecosystem/commit/91b5f4b18e3c25210c83e7fb10f0bad0b0cc8978))
+
+# [2.0.0-rc.98](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.97...v2.0.0-rc.98) (2025-04-28)
+
+**Note:** Version bump only for package @vuepress/ecosystem
+
+# [2.0.0-rc.97](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.96...v2.0.0-rc.97) (2025-04-28)
+
+### Bug Fixes
+
+- **helper:** fix heading normalize style ([0242dcc](https://github.com/vuepress/ecosystem/commit/0242dccbe16c161d3b5a79a2936db188d26e290b))
+- **plugin-markdown-hint:** fix print style, close [#438](https://github.com/vuepress/ecosystem/issues/438) ([55f8473](https://github.com/vuepress/ecosystem/commit/55f8473dde174fadc94e33d4b794f52fe173774d))
+- **plugin-seo:** overlay issue when using with plugin-sitemap ([#442](https://github.com/vuepress/ecosystem/issues/442)) ([64894c5](https://github.com/vuepress/ecosystem/commit/64894c52759c0245d0f1da165ad4da56081f4b61))
+- **plugin-slimsearch:** fix dev server worker, close [#439](https://github.com/vuepress/ecosystem/issues/439) ([4c405cf](https://github.com/vuepress/ecosystem/commit/4c405cf8300278d75e81453137c7fa3f1601eb28))
+- **theme-default:** fix hero action button hover, close [#437](https://github.com/vuepress/ecosystem/issues/437) ([0b51977](https://github.com/vuepress/ecosystem/commit/0b519776c6971b8924715e9232a88189c1620db8))
+
+### Features
+
+- **plugin-sitemap:** sitemap is always written to robots ([#443](https://github.com/vuepress/ecosystem/issues/443)) ([9b2e3b9](https://github.com/vuepress/ecosystem/commit/9b2e3b9c81be344c509a9019f9e5ac70c041e322))
+
+# [2.0.0-rc.96](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.95...v2.0.0-rc.96) (2025-04-16)
+
+### Bug Fixes
+
+- **plugin-markdown-tab:** fix code tab styles with code title ([5effefe](https://github.com/vuepress/ecosystem/commit/5effefef58065e3f09a23bf439e2fdebcc53b68a))
+
+### Features
+
+- **plugin-git:** sanitize commit messages ([#436](https://github.com/vuepress/ecosystem/issues/436)) ([b00e290](https://github.com/vuepress/ecosystem/commit/b00e2902cdfbafc51530d2ac3025f38d081cb8cd))
+- **plugin-meilisearch:** add pre-check when starting the plugin ([#433](https://github.com/vuepress/ecosystem/issues/433)) ([959edc9](https://github.com/vuepress/ecosystem/commit/959edc92b703fa98dbfc2b3b986c584158ab3ec4))
+- **theme-default:** hide navbar while printing ([585e65e](https://github.com/vuepress/ecosystem/commit/585e65ebcf10b2b34c516c5b8850b1f0d5f48d91))
+
+# [2.0.0-rc.95](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.94...v2.0.0-rc.95) (2025-04-14)
+
+### Bug Fixes
+
+- **plugin-git:** avoid innerHTML with unsafe commit message ([7141fac](https://github.com/vuepress/ecosystem/commit/7141fac80d9bf71f375a0ae8b628361aa4ef5351))
+- **plugin-photo-swipe:** fix photo-swipe options ([72dae75](https://github.com/vuepress/ecosystem/commit/72dae75eb90ac4593c6ac97986aadce2b17853f8))
+- **plugin-reading-time:** fix composables ([3ff7d98](https://github.com/vuepress/ecosystem/commit/3ff7d9816101569672b99a3c6587b96082e0527d))
+
+### Features
+
+- **plugin-meilisearch:** support meilisearch ([#422](https://github.com/vuepress/ecosystem/issues/422)) ([819fc11](https://github.com/vuepress/ecosystem/commit/819fc11953d242974a378c90c56826b17951c907))
+
+### Performance Improvements
+
+- improve webpack perf ([#431](https://github.com/vuepress/ecosystem/issues/431)) ([d51ba3e](https://github.com/vuepress/ecosystem/commit/d51ba3e57cecd8837e85246aec07590764066567))
+
+# [2.0.0-rc.94](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.93...v2.0.0-rc.94) (2025-04-12)
+
+### Features
+
+- **highlighter-helper:** hide ext when title exists ([7458ff1](https://github.com/vuepress/ecosystem/commit/7458ff1cdfd8b1f2fb9dc3009d54ff208290054b))
+
+# [2.0.0-rc.93](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.92...v2.0.0-rc.93) (2025-04-12)
+
+### Bug Fixes
+
+- **theme-default:** fix navbar active state, close [#428](https://github.com/vuepress/ecosystem/issues/428) ([a7c7fae](https://github.com/vuepress/ecosystem/commit/a7c7faea52f8ab2bd3fb6b3fd648c2ea3f08d799))
+
+### Features
+
+- **helper:** add RenderDefault component ([ad9d080](https://github.com/vuepress/ecosystem/commit/ad9d080c198c7080a3e5ec9ff2289b996b63f692))
+
+# [2.0.0-rc.92](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.91...v2.0.0-rc.92) (2025-04-09)
+
+### Bug Fixes
+
+- **shiki-twoslash:** fix typo error ([#426](https://github.com/vuepress/ecosystem/issues/426)) ([67eee7d](https://github.com/vuepress/ecosystem/commit/67eee7dc649459c7907aa60045764235bdd4d564))
+
+### Features
+
+- **helper:** add `!important` into transition properties ([#427](https://github.com/vuepress/ecosystem/issues/427)) ([8cfb4ac](https://github.com/vuepress/ecosystem/commit/8cfb4ac7054abce3e79d1230c36d71c730764264))
+- **helper:** add DeepRequired type helper ([3e78f08](https://github.com/vuepress/ecosystem/commit/3e78f081f4e236370db506f4200f5041e0b7e3d9))
+- **plugin-seo:** add head tags to front ([7d7c5c5](https://github.com/vuepress/ecosystem/commit/7d7c5c53c7802dd824ea1f2441c39b147e7aea73))
+
+### Performance Improvements
+
+- **plugin-slimsearch:** improve worker file tree-shake ([e58cf3f](https://github.com/vuepress/ecosystem/commit/e58cf3fb4e4031a20ca3b39c4c29cd8bbb2e8a85))
+
 # [2.0.0-rc.91](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.90...v2.0.0-rc.91) (2025-04-01)
 
 ### Bug Fixes

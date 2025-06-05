@@ -20,7 +20,7 @@ icon: chart-no-axes-combined
 npm i -D @vuepress/plugin-baidu-analytics@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { baiduAnalyticsPlugin } from '@vuepress/plugin-baidu-analytics'
 
 export default {
@@ -32,15 +32,16 @@ export default {
 }
 ```
 
-### 上报事件
+### 事件上报
 
-插件会在访问和切换页面时自动上报页面浏览事件。
+插件会自动上报页面访问和路由切换事件。
 
-另外，一个全局的 `hmt` 数组会被挂载到 `window` 对象上，你可以使用它进行 [自定义事件的上报](https://tongji.baidu.com/holmes/Analytics/%E6%8A%80%E6%9C%AF%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97/JS%20API/JS%20API%20%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C) 。
+此外，全局 `_hmt` 数组会挂载到 `window` 对象，可用于 [自定义事件上报](https://tongji.baidu.com/holmes/Analytics/%E6%8A%80%E6%9C%AF%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97/JS%20API/JS%20API%20%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C)。
 
 ## 选项
 
 ### id
 
-- 类型： `string`
-- 详情： 百度统计的 ID ，即 `hm.js` URL 中的查询参数。
+- 类型：`string`
+- 必填：是
+- 详情：百度统计追踪 ID，即 `hm.js` URL 中的查询参数。

@@ -11,6 +11,29 @@ import type { MarkdownExtPluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepreClientConfigFile.js'
 import { PLUGIN_NAME } from './utils.js'
 
+/**
+ * Markdown extensions plugin
+ *
+ * Markdown 扩展插件
+ *
+ * @param options - Plugin options / 插件选项
+ * @returns VuePress plugin / VuePress 插件
+ *
+ * @example
+ * ```ts
+ * import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
+ *
+ * export default {
+ *   plugins: [
+ *     markdownExtPlugin({
+ *       gfm: true,
+ *       component: true,
+ *       vPre: true,
+ *     }),
+ *   ],
+ * }
+ * ```
+ */
 export const markdownExtPlugin = ({
   gfm,
   breaks,

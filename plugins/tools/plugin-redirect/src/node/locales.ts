@@ -19,7 +19,7 @@ export const redirectLocaleInfo: DefaultLocaleInfo<RedirectPluginLocaleData> = [
     ['zh', 'zh-CN', 'zh-Hans'],
     {
       name: '简体中文',
-      hint: '您的首选语言是 $1，是否切换到该语言？',
+      hint: '你的首选语言是 $1，是否切换到该语言？',
       switch: '切换到 $1',
       cancel: '取消',
       remember: '记住我的选择',
@@ -29,7 +29,7 @@ export const redirectLocaleInfo: DefaultLocaleInfo<RedirectPluginLocaleData> = [
     ['zh-TW', 'zh-Hant'],
     {
       name: '繁體中文',
-      hint: '您的首選語言是 $1，是否切換到該語言？',
+      hint: '你的首選語言是 $1，是否切換到該語言？',
       switch: '切換到 $1',
       cancel: '取消',
       remember: '記住我的選擇',

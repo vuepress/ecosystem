@@ -14,7 +14,7 @@ This plugin can automatically append copyright information when visitors copy co
 npm i -D @vuepress/plugin-copyright@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { copyrightPlugin } from '@vuepress/plugin-copyright'
 
 export default {
@@ -33,7 +33,7 @@ This plugin **is disabled globally by default**, you can:
 - Manually enable it by setting `copy: true` in page frontmatter
 - Set `global: true` in plugin options to enable it globally, and set `copy: false` in page frontmatter to disable it.
 
-To avoid disturbing visitors, copyright information will be appended only when the copied content length is greater than 100. Set `triggerLength` in plugin options if you want to change this threshold, or via `copy.triggerLength` in page frontmatter.
+To avoid disturbing visitors, copyright information will be appended only when the copied content length is greater than 100. Set `triggerLength` in plugin options if you want to change this threshold, or set `copy.triggerLength` in page frontmatter.
 
 You can set default author and license information via `author` and `license` in plugin options.
 
@@ -43,22 +43,22 @@ The plugin will generate copyright information from author, license, and page li
 
 ### Disable Copy and Selection
 
-If you want to prevent users copying long content, you can set `maxLength` in plugin options to customize this limit, or via `copy.maxLength` in page frontmatter.
+If you want to prevent users copying long content, you can set `maxLength` in plugin options to customize this limit, or set `copy.maxLength` in page frontmatter.
 
-- If you don't want users to copy your entire site or specific page text, you can set `disableCopy` in plugin options or `copy.disableCopy` in page frontmatter, the latter has higher priority.
-- If you don't want users to select your entire site or specific page text, you can set `disableSelection` in plugin options or `copy.disableSelection` in page frontmatter. This option has higher priority.
+- If you don't want users to copy your entire site or specific page text, you can set `disableCopy` in plugin options or `copy.disableCopy` in page frontmatter. The latter has higher priority.
+- If you don't want users to select your entire site or specific page text, you can set `disableSelection` in plugin options or `copy.disableSelection` in page frontmatter. The latter has higher priority.
 
 ## Options
 
 ### author
 
 - Type: `string`
-- Details: Default author Information
+- Details: Default author information
 
 ### license
 
 - Type: `string`
-- Details: Default license Information
+- Details: Default license information
 
 ### authorGetter
 
@@ -75,23 +75,27 @@ If you want to prevent users copying long content, you can set `maxLength` in pl
 - Type: `(page: Page) => string | null`
 - Details: Copyright getter
 
-### triggerLength
+### canonical
 
-- Type: `number`
-- Default: `100`
-- Details: Min content length triggering copyright append
+- Type: `string`
+- Details: Canonical deploy location
 
-### maxLength
+  ::: tip Example
 
-- Type: `number`
-- Default: `0`
-- Details: Max content length which allows to copy, `0` means no limit.
+  If you are deploying same content under `https://myblog.com` and `https://blog.com/username/`, you may want to prefer one site as reference link.
+
+  - If you prefer the first one, you should set `canonical` to `https://myblog.com`
+  - If you prefer the second one, you should set `canonical` to `https://blog.com/username/`
+
+  So copyright message triggered on another site also points to your preferred site.
+
+  :::
 
 ### global
 
 - Type: `boolean`
 - Default: `false`
-- Details: Whether enable globally.
+- Details: Whether enable globally
 
 ### disableCopy
 
@@ -105,21 +109,17 @@ If you want to prevent users copying long content, you can set `maxLength` in pl
 - Default: `false`
 - Details: Disable selection
 
-### canonical
+### triggerLength
 
-- Type: `string`
-- Details: Canonical deploy location.
+- Type: `number`
+- Default: `100`
+- Details: Min content length triggering copyright append
 
-::: tip Example
+### maxLength
 
-If you are deploying same content under `https://myblog.com` and `https://blog.com/username/`, you may want to prefer one site as reference link.
-
-- If you prefer the first one, you should set `canonical` to `https://myblog.com`
-- If you prefer the second one, you should set `canonical` to `https://blog.com/username/`
-
-So copyright message triggered on another site also points to your preferred site.
-
-:::
+- Type: `number`
+- Default: `0`
+- Details: Max content length which allows to copy, `0` means no limit
 
 ### locales
 
@@ -158,7 +158,7 @@ So copyright message triggered on another site also points to your preferred sit
 
 - Example:
 
-  ```ts
+  ```ts title=".vuepress/config.ts"
   import { copyrightPlugin } from '@vuepress/plugin-copyright'
 
   export default {
@@ -208,6 +208,7 @@ So copyright message triggered on another site also points to your preferred sit
 - **Turkish** (tr-TR)
 - **Korean** (ko-KR)
 - **Finnish** (fi-FI)
+- **Hungarian** (hu-HU)
 - **Indonesian** (id-ID)
 - **Dutch** (nl-NL)
 
@@ -225,7 +226,7 @@ So copyright message triggered on another site also points to your preferred sit
 
 - Type: `number`
 - Default: `0`
-- Details: Max content length which allows to copy, `0` means no limit.
+- Details: Max content length which allows to copy, `0` means no limit
 
 ### copy.disableCopy
 

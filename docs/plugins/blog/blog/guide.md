@@ -4,23 +4,21 @@ icon: lightbulb
 
 # Guide
 
-With `@vuepress/plugin-blog`, you can easily bring blog feature into your theme.
+Adds blog functionality to VuePress themes with article collection, categorization, and excerpt generation.
 
-## Collecting Articles
+## Article Collection
 
-The plugin filters all pages using `filter` option to drop pages you don't want.
+The plugin filters pages using the `filter` option to determine which pages should be treated as articles.
 
-::: tip By default, all pages generating from Markdown files but not homepage are considered as articles.
-
+::: tip
+By default, all pages generated from Markdown files except the homepage are considered articles.
 :::
-
-You can fully customize pages to collect through option `filter`, which accepts a function `(page: Page) => boolean`.
 
 ## Gathering Info
 
-You should set `getInfo` option with a function accepting `Page` as argument and returning an object containing the info you want.
+Set the `getInfo` option with a function that extracts article information from pages.
 
-The plugin will collect all the info you want and write them to `routeMeta` field of each page, so you will be able to get this information through Composition API later.
+The plugin injects collected information into the `routeMeta` field, making it available through Composition API.
 
 ::: details Demo
 
@@ -45,7 +43,7 @@ export default {
       },
 
       getInfo: ({ frontmatter, title, git = {}, data = {} }) => {
-        // getting page info
+        // get page info
         const info: Record<string, unknown> = {
           title,
           author: frontmatter.author || '',
@@ -67,13 +65,13 @@ export default {
 
 ## Customizing Categories and Types
 
-Basically, you would want 2 types of collection in your blog:
+Basically, you would want 2 types of collections in your blog:
 
 - Category:
 
   "Category" means grouping articles with their labels.
 
-  For example, each article may have their "categories" and "tags".
+  For example, each article may have "categories" and "tags".
 
 - Type:
 
@@ -81,11 +79,11 @@ Basically, you would want 2 types of collection in your blog:
 
   For example, you may want to describe some of your articles as diary.
 
-After understanding description of these 2 types, you can set `category` and `type` options, each accepts an array, and each element represents a configuration.
+After understanding the description of these 2 types, you can set the `category` and `type` options, each accepts an array, and each element represents a configuration.
 
 Let's start with 2 examples here.
 
-Imagine you are setting tags for each articles with `tag` field in page frontmatter. You want a tag mapping page in `/tag/` with `TagMap` layout, and group each tag list with tagName in `/tag/tagName` with `TagList` layout, you probably need a configuration like this:
+Imagine you are setting tags for each article with the `tag` field in page frontmatter. You want a tag mapping page in `/tag/` with `TagMap` layout, and group each tag list with tagName in `/tag/tagName` with `TagList` layout, you probably need a configuration like this:
 
 ```ts title="theme entrance"
 import { blogPlugin } from '@vuepress/plugin-blog'
@@ -113,7 +111,7 @@ export default {
 }
 ```
 
-Also, you may want to star some of your articles, and display them to visitors. When you are setting `star: true` in frontmatter to mark them, you probably need a configuration like this to display them in `/star/` path with `StarList` layout:
+Also, you may want to star some of your articles and display them to visitors. When you are setting `star: true` in frontmatter to mark them, you probably need a configuration like this to display them in the `/star/` path with `StarList` layout:
 
 ```ts title="theme entrance"
 import { blogPlugin } from '@vuepress/plugin-blog'
@@ -142,7 +140,7 @@ See, setting these 2 types is easy. For full options, please see [Category Confi
 
 ## Using Composition API in Client-side
 
-When generating each page, the plugin will set following information under `frontmatter.blog`:
+When generating each page, the plugin will set the following information under `frontmatter.blog`:
 
 ```ts
 interface BlogFrontmatterOptions {
@@ -159,11 +157,11 @@ interface BlogFrontmatterOptions {
 }
 ```
 
-So you can invoke `useBlogCategory()` and `useBlogType()` directly, and the result will be the category or type bind to current route.
+So you can invoke `useBlogCategory()` and `useBlogType()` directly, and the result will be the category or type bound to the current route.
 
-Also, you can pass `key` you want as argument, then you will get information bind to that key.
+Also, you can pass the `key` you want as an argument, then you will get information bound to that key.
 
-So with node side settings above, you can get information about "tag" and "star" in client side:
+So with the node side settings above, you can get information about "tag" and "star" in the client side:
 
 `TagMap` layout:
 
@@ -197,6 +195,7 @@ const categoryMap = useBlogCategory('tag')
 ```vue
 <script setup lang="ts">
 import { useBlogCategory } from '@vuepress/plugin-blog/client'
+import { RouteLink } from 'vuepress/client'
 
 const categoryMap = useBlogCategory('tag')
 </script>
@@ -256,7 +255,6 @@ const categoryMap = useBlogCategory('tag')
 <script setup lang="ts">
 import { useBlogType } from '@vuepress/plugin-blog/client'
 import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
-import { RouteLink } from 'vuepress/client'
 
 import ArticleList from '../components/ArticleList.vue'
 
@@ -298,7 +296,7 @@ For return types, please see [Composition API Return Types](./config.md#composit
 
 This plugin adds native i18n support, so your settings will be automatically applied to each language.
 
-For example, if user has the following locales' config, and you are setting the "star" example above:
+For example, if the user has the following locales config, and you are setting the "star" example above:
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -317,25 +315,25 @@ Then `/zh/star/` and `/star/` will both be available, and only articles under th
 
 ## Generating Excerpt
 
-This plugin provides a built-in excerpt generator, which can be enabled by setting `excerpt` option to `true`.
+This plugin provides a built-in excerpt generator, which can be enabled by setting the `excerpt` option to `true`.
 
 ::: tip Excerpt introduction
 
 An excerpt is an HTML fragment that is used to display a short description of an article in the blog list, so the excerpt has the following restrictions:
 
-- It doesn't support any unknown tags (including all Vue components) and Vue syntax, so these contents will be removed when generating. If you have custom components (non-Vue components), set `isCustomElement` option.
-- Since the snippet is an HTML fragment, you will not be able to import any images via relative paths or aliases, they will be removed directly. If you want to keep images, please use absolute path based on `.vuepress/public` or full URL to ensure they can be accessed in other places.
+- It doesn't support any unknown tags (including all Vue components) and Vue syntax, so these contents will be removed when generating. If you have custom components (non-Vue components), set the `isCustomElement` option.
+- Since the excerpt is an HTML fragment, you will not be able to import any images via relative paths or aliases, they will be removed directly. If you want to keep images, please use absolute paths based on `.vuepress/public` or full URLs to ensure they can be accessed in other places.
 
 :::
 
-The excerpt generator will try to find a valid excerpt separator from markdown contents, if it finds one, it will use content before the separator. The separator is default `<!-- more -->`, and you can customize it by setting `excerptSeparator` option.
+The excerpt generator will try to find a valid excerpt separator from markdown contents, if it finds one, it will use content before the separator. The separator is default `<!-- more -->`, and you can customize it by setting the `excerptSeparator` option.
 
-If it cannot find a valid separator, it will parse content from the beginning of markdown file, and stop till its length reaches a preset value. The value is default `300`, and you can customize it by setting `excerptLength` option.
+If it cannot find a valid separator, it will parse content from the beginning of the markdown file, and stop till its length reaches a preset value. The value is default `300`, and you can customize it by setting the `excerptLength` option.
 
-To choose which page should generate excerpt, you can use `excerptFilter` option.
+To choose which page should generate excerpt, you can use the `excerptFilter` option.
 
 ::: tip Example
 
-Normally you may want to use `frontmatter.description` if users set them, so you can let filter function return `false` if `frontmatter.description` is not empty.
+Normally you may want to use `frontmatter.description` if users set them, so you can let the filter function return `false` if `frontmatter.description` is not empty.
 
 :::

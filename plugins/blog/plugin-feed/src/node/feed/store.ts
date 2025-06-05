@@ -10,6 +10,11 @@ import { getFeedLinks } from '../getFeedLinks.js'
 import type { ResolvedFeedOptions } from '../getFeedOptions.js'
 import type { FeedItem } from './item.js'
 
+/**
+ * Feed store for managing feed items and channel information
+ *
+ * 用于管理 Feed 项目和频道信息的存储
+ */
 export class FeedStore {
   public categories = new Set<string>()
   public contributors: FeedContributor[] = []

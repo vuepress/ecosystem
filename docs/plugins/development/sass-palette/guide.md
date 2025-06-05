@@ -7,24 +7,24 @@ icon: lightbulb
 Comparing to [`@vuepress/plugin-palette`](../palette.md), this plugin allows you to:
 
 - Derive related styles based on user configuration
-- Provide style customization similar to theme in plugins
+- Provide style customization similar to themes in plugins
 - Group applications across multiple plugins or themes via id option
 
 Before using the plugin, you need to understand the id option, as well as three styling concepts: configuration, palette and generator.
 
 ## ID Option
 
-To get started, you should understand that this plugin is designed to take across plugins and theme (unlike the official one only for theme).
+To get started, you should understand that this plugin is designed to work across plugins and themes (unlike the official one only for themes).
 
-We are providing `id` option to do that, and using this plugin (by calling `useSassPalette`) with same ID won't have any side effects. Also, all the alias and module names have an ID prefix.
+We are providing `id` option to do that, and using this plugin (by calling `useSassPalette`) with same ID won't have any side effects. Also, all the aliases and module names have an ID prefix.
 
 This will allow you to:
 
-- Share same style system across your plugins (or themes) using same ID without any side effects.
+- Share the same style system across your plugins (or themes) using the same ID without any side effects.
 
   All aliases and module names have an ID prefix, which means you can use a set of style variables within your plugins (or theme) to unify your styles without being affected by other plugins (or themes).
 
-  Users can configure all color variables, breakpoints, and other style configurations in the same file and have them automatically applied on themes and plugins with the same ID.
+  Users can configure all color variables, breakpoints, and other style configurations in the same file and have them automatically applied to themes and plugins with the same ID.
 
   ::: tip Example
 
@@ -142,11 +142,11 @@ Then the below CSS variables will be available under root selector:
 
 :::
 
-Like config file, palette file provides a module named `${$id}-palette` (also including generator values), and it is also limited by `additionalData` option, so you should import the module manually if you want to use it in other Sass files.
+Like config file, palette file provides a module named `${id}-palette` (also including generator values), and it is also limited by `additionalData` option, so you should import the module manually if you want to use it in other Sass files.
 
 ### Color Settings
 
-Since the default theme is providing darkmode, so you probably want different colors under lightmode and darkmode.
+Since the default theme provides dark mode, you probably want different colors under light mode and dark mode.
 
 To achieve that, you should set color variables with a map containing `light` and `dark` keys. Later, the plugin will generate different colors for you.
 
@@ -216,17 +216,17 @@ $moveTransition: 'width 0.3s ease';
 
 ## Helper
 
-We are exposing internal functions which `@vuepress/plugin-sass-palette` uses, as a helper module.
+We are exposing internal functions that `@vuepress/plugin-sass-palette` uses, as a helper module.
 
-You can use this helper with `@sass-palette/helper` alias and call its function to achieve similar features yourself.
+You can use this helper with `@sass-palette/helper` alias and call its functions to achieve similar features yourself.
 
 ## Generator
 
-A generator file is facing developers to generate derived values based on palette file variables.
+A generator file is designed for developers to generate derived values based on palette file variables.
 
-You can access variables from palette file directly in this file and generate new values based on them.
+You can access variables from the palette file directly in this file and generate new values based on them.
 
-Variables in generator file will be also injected as CSS variables like palette, and they will be available in palette module.
+Variables in the generator file will also be injected as CSS variables like palette, and they will be available in the palette module.
 
 ::: details Example
 
@@ -257,11 +257,11 @@ $code-c-bg: abc-config.$highlighter == 'shiki'? #fff: #f8f8f8;
 
 ## User Styles
 
-If you are a theme developer, you may probably want to provide your users a way to custom your theme or the site.
+If you are a theme developer, you may want to provide your users a way to customize your theme or the site.
 
-In this case you should set `style` option as the user style file when using this plugin.
+In this case you should set the `style` option as the user style file when using this plugin.
 
-Later, you should manually include user style file by importing `@sass-palette/${id}-style` **after your theme styles**.
+Later, you should manually include the user style file by importing `@sass-palette/${id}-style` **after your theme styles**.
 
 ::: tip
 

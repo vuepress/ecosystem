@@ -1,3 +1,5 @@
+@use '@vuepress/highlighter-helper/scss/code-title-icon';
+
 :root {
   --code-c-bg: #fafafa;
   --code-tabs-c-text: var(--vp-c-text);
@@ -8,3 +10,21 @@
   --code-c-bg: #282c34;
   --code-tabs-c-bg: #181819;
 }
+
+@include code-title-icon.style(
+  (
+    title: '.vuepress/config.ts',
+    match: 'equals',
+    icon: 'https://ecosystem.vuejs.press/images/hero.png',
+  ),
+  (
+    title: '.vuepress/client.ts',
+    match: 'equals',
+    icon: 'https://ecosystem.vuejs.press/images/hero.png',
+  ),
+  (
+    title: '.scss',
+    match: 'endsWith',
+    icon: 'https://sass-lang.com/assets/img/logos/logo.svg',
+  )
+);

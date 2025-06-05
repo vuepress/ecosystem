@@ -4,6 +4,7 @@ import type { LocaleConfig, Page } from 'vuepress/core'
 import type {
   SlimSearchCustomFieldFormatter,
   SlimSearchLocaleData,
+  SlimSearchSortStrategy,
 } from '../shared/index.js'
 
 export interface SlimSearchIndexOptions {
@@ -176,7 +177,7 @@ export interface SlimSearchPluginOptions {
    *
    * @default "max"
    */
-  sortStrategy?: 'max' | 'total'
+  sortStrategy?: SlimSearchSortStrategy
 
   /**
    * Create Index option

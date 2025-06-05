@@ -4,6 +4,13 @@ import { logger } from './logger.js'
 
 const GIT_PLUGIN_NAME = '@vuepress/plugin-git'
 
+/**
+ * Check if git plugin is enabled
+ *
+ * 检查 git 插件是否已启用
+ *
+ * @param app - VuePress app instance / VuePress 应用实例
+ */
 export const isGitPluginEnabled = (app: App): boolean => {
   if (
     app.pluginApi.plugins.every((plugin) => plugin.name !== GIT_PLUGIN_NAME)

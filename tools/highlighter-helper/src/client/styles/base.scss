@@ -10,8 +10,15 @@
 
 div[class*='language-'] {
   position: relative;
+
+  margin-block: 0.75rem;
   border-radius: var(--code-border-radius);
+
   background-color: var(--code-c-bg);
+
+  transition:
+    background-color var(--vp-t-color),
+    color var(--vp-t-color);
 
   &::before {
     content: attr(data-ext);
@@ -54,6 +61,10 @@ div[class*='language-'] {
 
       -webkit-font-smoothing: auto;
       -moz-osx-font-smoothing: auto;
+
+      @media print {
+        white-space: pre-wrap;
+      }
     }
   }
 }

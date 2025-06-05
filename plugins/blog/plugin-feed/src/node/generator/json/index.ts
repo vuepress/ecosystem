@@ -12,6 +12,8 @@ const getJSONAuthor = (author: FeedAuthor): JSONAuthor => ({
 /**
  * JSON 1.1 feed
  *
+ * JSON 1.1 格式的 Feed
+ *
  * @see https://jsonfeed.org/version/1.1
  */
 export const getJSONFeed = (feedStore: FeedStore): string => {

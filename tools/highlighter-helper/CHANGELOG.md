@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.107](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.106...v2.0.0-rc.107) (2025-06-04)
+
+### Bug Fixes
+
+- **highlighter-helper:** fix line numbers calculation error in code block ([#483](https://github.com/vuepress/ecosystem/issues/483)) ([189d6a5](https://github.com/vuepress/ecosystem/commit/189d6a55a43053635e1d9b2b9d6bf5299e324c3f))
+
+# [2.0.0-rc.106](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.105...v2.0.0-rc.106) (2025-05-26)
+
+**Note:** Version bump only for package @vuepress/highlighter-helper
+
+# [2.0.0-rc.103](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.102...v2.0.0-rc.103) (2025-05-08)
+
+### Bug Fixes
+
+- fix code block related style ([#456](https://github.com/vuepress/ecosystem/issues/456)) ([e446824](https://github.com/vuepress/ecosystem/commit/e446824b64e4f5fab45d158fc8ba5c1d63093e32))
+- fix whitespace feature, close [#459](https://github.com/vuepress/ecosystem/issues/459) ([#462](https://github.com/vuepress/ecosystem/issues/462)) ([1ea93c1](https://github.com/vuepress/ecosystem/commit/1ea93c158aa6ce4e35951f4d4e70bef41aa9dd51))
+
+### Features
+
+- **highlighter-helper:** helper to inject icons for code-title-bar ([#458](https://github.com/vuepress/ecosystem/issues/458)) ([4569d42](https://github.com/vuepress/ecosystem/commit/4569d42430b96d27c62770d38b683c4475f767c7))
+
+# [2.0.0-rc.98](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.97...v2.0.0-rc.98) (2025-04-28)
+
+**Note:** Version bump only for package @vuepress/highlighter-helper
+
+# [2.0.0-rc.94](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.93...v2.0.0-rc.94) (2025-04-12)
+
+### Features
+
+- **highlighter-helper:** hide ext when title exists ([7458ff1](https://github.com/vuepress/ecosystem/commit/7458ff1cdfd8b1f2fb9dc3009d54ff208290054b))
+
 # [2.0.0-rc.90](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.89...v2.0.0-rc.90) (2025-03-28)
 
 **Note:** Version bump only for package @vuepress/highlighter-helper

@@ -14,7 +14,7 @@ icon: image
 npm i -D @vuepress/plugin-markdown-image@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 
 export default {
@@ -37,7 +37,7 @@ export default {
 
 ### 图片懒加载
 
-插件会通过原生 HTML5 功能启用图片的延迟加载，此功能仅在 [支持 loading=lazy 属性](https://caniuse.com/loading-lazy-attr) 的浏览器生效。
+插件会通过原生 HTML5 功能启用图片的延迟加载，此功能仅在[支持 loading=lazy 属性](https://caniuse.com/loading-lazy-attr)的浏览器中生效。
 
 ### 图片 ID 标记
 
@@ -45,20 +45,19 @@ export default {
 
 <VPToggleColorModeButton /> (尝试切换主题)
 
+::: preview
+
 ![GitHub Light](/images/icon/github-light.svg#dark)
 ![GitHub Dark](/images/icon/github-dark.svg#light)
 
-```md
-![GitHub Light](/images/icon/github-light.svg#dark)
-![GitHub Dark](/images/icon/github-dark.svg#light)
-```
+:::
 
 #### 高级用法
 
 你可以将对象传递给 `mark` 以配置 ID 标记，可用选项如下：
 
 ```ts
-interface ImageMarkOptions {
+interface MarkdownItImgMarkOptions {
   /** 仅限日间模式的 ID */
   light?: string[]
   /** 仅限夜间模式的 ID */
@@ -68,28 +67,81 @@ interface ImageMarkOptions {
 
 ### 图片尺寸
 
-当你在插件选项中设置 `size: true` 时，可以使用 `=widthxheight` 指定图像大小。
+当你在插件选项中设置 `size: true` 时，你可以在图片替代文字后面添加 `=widthxheight`，并用空格分隔。
+
+`width` 和 `height` 都应该是数字，单位为像素，并且都是可选的。
 
 ```md
-![Alt](/example.png =200x300)
-
-![Alt](/example.jpg "图片标题" =200x)
-![Alt](/example.bmp =x300)
+![替代文字 =200x300](/example.png)
+![替代文字 =200x](/example.jpg '标题')
+![替代文字 =x300](/example.bmp)
 ```
 
-上面的 Markdown 将被解析为:
+渲染为 ↓
 
 ```html
-<img src="/example.png" width="200" height="300" />
-<img src="/example.jpg" title="图片标题" width="200" />
-<img src="/example.bmp" height="300" />
+<img src="/example.png" alt="替代文字" width="200" height="300" />
+<img src="/example.jpg" alt="替代文字" title="标题" width="200" />
+<img src="/example.bmp" alt="替代文字" height="300" />
+```
+
+#### Obsidian 语法
+
+当你在插件选项中设置 `obsidianSize: true` 时，你可以在图片替代文字后面添加 `widthxheight`，并用 `|` 分隔。
+
+`width` 和 `height` 都应该是数字，单位为像素，并且都是必需的。设置其中一个为 `0` 以按比例缩放另一个。
+
+```md
+![替代文字|200x200](/example.png)
+![替代文字|200x0](/example.jpg)
+![替代文字|0x300](/example.bmp)
+```
+
+渲染为 ↓
+
+```html
+<img src="/example.png" alt="替代文字" width="200" height="300" />
+<img src="/example.jpg" alt="替代文字" width="200" />
+<img src="/example.bmp" alt="替代文字" height="300" />
+```
+
+::: tip 在三种语法之间选择
+
+- 旧语法在不支持的环境中会导致图片渲染问题（例如：GitHub）
+- 新语法和 Obsidian 语法都与 Markdown 标准兼容，但新语法更自然。
+
+:::
+
+#### 旧语法 (已废弃)
+
+::: warning 这种语法可能会在 GitHub 等平台上导致渲染问题。
+:::
+
+当你在插件选项中设置 `legacySize: true` 时，你可以在图片链接部分的末尾添加 `=widthxheight`，并用空格分隔。
+
+`width` 和 `height` 都应该是数字，单位为像素，并且都是可选的。
+
+```md
+![替代文字](/example.png =200x300)
+![替代文字](/example.jpg "标题" =200x)
+![替代文字](/example.bmp =x300)
+```
+
+渲染为 ↓
+
+```html
+<img src="/example.png" alt="替代文字" width="200" height="300" />
+<img src="/example.jpg" alt="替代文字" title="标题" width="200" />
+<img src="/example.bmp" alt="替代文字" height="300" />
 ```
 
 ### 图片展示
 
 有时，你可能希望为图像添加描述，并将其单独展示在上下文中，在这种情况下，你应该在插件选项中设置 `figure: true`。
 
-这样当你单独将图片至于一行 (也可同时嵌套链接)，图像将显示为 `<figure>` ，标题或图片替代文字将显示为 `<figcaption>`。
+这样当你单独将图片置于一行（也可同时嵌套链接），图像将显示为 `<figure>`，标题或图片替代文字将显示为 `<figcaption>`。
+
+::: preview
 
 ![VuePress 图标](/favicon.ico)
 
@@ -101,23 +153,13 @@ interface ImageMarkOptions {
 
 ![VuePress 图标](https://vuejs.press/images/hero.png "VuePress 图标" =300x300)
 
-```md
-![VuePress 图标](/favicon.ico)
-
-[![VuePress 图标](/favicon.ico)](https://vuejs.press/)
-
-![VuePress 图标](/favicon.ico 'VuePress 图标')
-
-[![VuePress 图标](/favicon.ico 'VuePress 图标')](https://vuejs.press/)
-
-![VuePress 图标](https://vuejs.press/images/hero.png "VuePress 图标" =300x300)
-```
+:::
 
 ## 配置项
 
 ### figure
 
-- 类型：`boolean`
+- 类型：`MarkdownItFigureOptions | boolean`
 - 详情：是否启用图片 Figure 支持。
 
 ### lazyload
@@ -125,12 +167,12 @@ interface ImageMarkOptions {
 - 类型：`boolean`
 - 详情：是否使用原生方式懒加载页面图片。
 
-### imgMark
+### mark
 
-- 类型：`ImageMarkOptions | boolean`
+- 类型：`MarkdownItImgMarkOptions | boolean`
 
   ```ts
-  interface ImageMarkOptions {
+  interface MarkdownItImgMarkOptions {
     /** 日间模式的 ID */
     light?: string[]
     /** 夜间模式的 ID */
@@ -138,17 +180,22 @@ interface ImageMarkOptions {
   }
   ```
 
-- 详情：是否启用图片标注支持
+- 详情：是否启用图片标注支持。
 
-### imgSize
+### size
 
 - 类型：`boolean`
 - 详情：是否启用图片尺寸支持。
 
-### obsidianImgSize
+### obsidianSize
 
 - 类型：`boolean`
 - 详情：是否启用 Obsidian 图片尺寸支持。
+
+### legacySize
+
+- 类型：`boolean`
+- 详情：是否启用旧版图片尺寸支持。
 
 <script setup>
 import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'

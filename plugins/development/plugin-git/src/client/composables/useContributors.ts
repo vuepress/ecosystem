@@ -1,6 +1,6 @@
 import type { ComputedRef, MaybeRefOrGetter } from 'vue'
 import { computed, toValue } from 'vue'
-import { usePageData, usePageFrontmatter } from 'vuepress/client'
+import { useData } from 'vuepress/client'
 import type {
   GitContributorInfo,
   GitPluginFrontmatter,
@@ -9,20 +9,32 @@ import type {
 
 declare const __GIT_CONTRIBUTORS__: boolean
 
+/**
+ * Contributors composable
+ *
+ * 贡献者组合式函数
+ *
+ * @param enabled - Whether to enable contributors
+ *
+ * 是否启用贡献者
+ *
+ * @default true
+ */
 export const useContributors =
   typeof __GIT_CONTRIBUTORS__ === 'boolean' && __GIT_CONTRIBUTORS__
     ? (
         enabled: MaybeRefOrGetter<boolean> = true,
       ): ComputedRef<GitContributorInfo[]> => {
-        const frontmatter = usePageFrontmatter<GitPluginFrontmatter>()
-        const page = usePageData<GitPluginPageData>()
+        const { frontmatter, page } = useData<
+          GitPluginFrontmatter,
+          GitPluginPageData
+        >()
 
         return computed(() => {
           if (frontmatter.value.contributors === false || !toValue(enabled))
             return []
 
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-          return page.value.git?.contributors ?? []
+          return page.value.git.contributors ?? []
         })
       }
     : (): ComputedRef<GitContributorInfo[]> => computed(() => [])

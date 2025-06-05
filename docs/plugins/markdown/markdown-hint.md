@@ -16,7 +16,7 @@ This plugin has been integrated into the default theme.
 npm i -D @vuepress/plugin-markdown-hint@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { markdownHintPlugin } from '@vuepress/plugin-markdown-hint'
 
 export default {
@@ -33,11 +33,13 @@ export default {
 
 ## Guide
 
-By default, we support `important`, `info`, `note`, `tip`, `warning`, `danger`, `details` containers with markdown container:
+By default, we support `important`, `info`, `note`, `tip`, `warning`, `caution`, `details` containers with markdown container:
+
+:::: preview
 
 ::: tip
 
-A custom tip container with `code`, [link](#demo).
+A custom tip container with `code` and [links](https://example.com).
 
 ```js
 const a = 1
@@ -45,43 +47,28 @@ const a = 1
 
 :::
 
-````md
-::: tip
-
-A custom tip container with `code`, [link](#demo).
-
-```js
-const a = 1
-```
-
-:::
-````
+::::
 
 To customize the title of the container, you can add the title after the named container:
 
+:::: preview
+
 ::: important Custom Title
 
-A important container with customized title.
+An important container with customized title.
 
 :::
 
-```md
-::: important Custom Title
-
-A important container with customized title.
-
-:::
-```
+::::
 
 The container can contain a title only:
 
+:::: preview
+
 ::: warning A warning text
 :::
 
-```md
-::: warning A warning text
-:::
-```
+::::
 
 The plugin also provides an `alert` option to support gfm alerts:
 
@@ -107,12 +94,13 @@ The plugin also provides an `alert` option to support gfm alerts:
 ### hint
 
 - Type: `boolean`
-- Details: Whether enable hint containers, enabled by default.
+- Default: `true`
+- Details: Whether to enable hint containers including important, info, note, tip, warning, caution, details.
 
 ### alert
 
 - Type: `boolean`
-- Details: Whether enable gfm alert support.
+- Details: Whether to enable GFM alert support.
 
 ### injectStyles
 
@@ -131,40 +119,40 @@ The plugin also provides an `alert` option to support gfm alerts:
 
   interface MarkdownHintPluginLocaleData {
     /**
-     * Default Title text for important block
+     * Default title text for important block
      */
     important: string
 
     /**
-     * Default Title text for note block
+     * Default title text for note block
      */
     note: string
 
     /**
-     * Default Title text for tip block
+     * Default title text for tip block
      */
     tip: string
 
     /**
-     * Default Title text for warning block
+     * Default title text for warning block
      */
     warning: string
 
     /**
-     * Default Title text for danger block
+     * Default title text for caution block
      */
     caution: string
 
     /**
-     * Default Title text for info block
+     * Default title text for info block
      */
     info: string
 
     /**
-     * Default Title text for details block
+     * Default title text for details block
      */
     details: string
   }
   ```
 
-- Details: The locales for hint container titles.
+- Details: Locale config for hint container titles.

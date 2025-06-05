@@ -43,9 +43,9 @@ export const getBundlerName: (app: App) => string
 
 ```ts
 // @vuepress/bundler-vite
-getBundleName(app) === 'vite' // true
+getBundlerName(app) === 'vite' // true
 // @vuepress/bundler-webpack
-getBundleName(app) === 'webpack' // true
+getBundlerName(app) === 'webpack' // true
 ```
 
 :::
@@ -243,7 +243,7 @@ useCustomDevServer(bundlerOptions, app, {
 
 - addViteConfig
 
-  A function for you to add vite config
+  让你添加 Vite 配置的函数
 
   ```ts
   export const addViteConfig: (
@@ -253,7 +253,7 @@ useCustomDevServer(bundlerOptions, app, {
   ) => void
   ```
 
-  ::: details Example
+  ::: details 示例
 
   ```ts
   import { addViteConfig } from '@vuepress/helper'

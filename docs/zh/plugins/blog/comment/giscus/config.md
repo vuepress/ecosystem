@@ -4,57 +4,61 @@
 
 ### repo
 
-- 类型: `string`
-- 详情：存放评论的仓库
+- 类型：`string`
+- 必填: 是
+- 详情：存放评论的仓库名称
 
 ### repoId
 
-- 类型: `string`
-- 详情：仓库 ID，请从 [Giscus 页面](https://giscus.app/zh-CN) 生成。
+- 类型：`string`
+- 必填: 是
+- 详情：仓库 ID，请从 [Giscus 页面](https://giscus.app/zh-CN) 生成
 
 ### category
 
-- 类型: `string`
-- 详情：讨论分类
+- 类型：`string`
+- 必填: 是
+- 详情：讨论分类名称
 
 ### categoryId
 
-- 类型: `string`
-- 详情：讨论分类 ID，请从 [Giscus 页面](https://giscus.app/zh-CN) 生成。
+- 类型：`string`
+- 必填: 是
+- 详情：讨论分类 ID，请从 [Giscus 页面](https://giscus.app/zh-CN) 生成
 
 ### mapping
 
-- 类型: `string`
-- 默认值: `"pathname"`
-- 详情：页面 ↔️ discussion 映射关系，详见 [Giscus 页面](https://giscus.app/zh-CN)。
+- 类型：`string`
+- 默认值：`"pathname"`
+- 详情：页面 ↔️ discussion 映射关系，详见 [Giscus 页面](https://giscus.app/zh-CN)
 
 ### strict
 
-- 类型: `boolean`
-- 默认值: `true`
+- 类型：`boolean`
+- 默认值：`true`
 - 详情：是否启用严格匹配
 
 ### lazyLoading
 
-- 类型: `boolean`
-- 默认值: `true`
+- 类型：`boolean`
+- 默认值：`true`
 - 详情：是否启用懒加载
 
 ### reactionsEnabled
 
-- 类型: `boolean`
-- 默认值: `true`
+- 类型：`boolean`
+- 默认值：`true`
 - 详情：是否启用主帖子上的反应
 
 ### inputPosition
 
-- 类型: `"top" | "bottom"`
-- 默认值: `"top"`
+- 类型：`"top" | "bottom"`
+- 默认值：`"top"`
 - 详情：输入框的位置
 
 ### lightTheme
 
-- 类型: `GiscusTheme`
+- 类型：`GiscusTheme`
 
   ```ts
   type GiscusTheme =
@@ -70,7 +74,7 @@
     | `https://${string}`
   ```
 
-- 默认值: `"light"`
+- 默认值：`"light"`
 - 详情：
 
   Giscus 在日间模式下使用的主题
@@ -79,7 +83,7 @@
 
 ### darkTheme
 
-- 类型: `GiscusTheme`
+- 类型：`GiscusTheme`
 
   ```ts
   type GiscusTheme =
@@ -95,7 +99,7 @@
     | `https://${string}`
   ```
 
-- 默认值: `"dark"`
+- 默认值：`"dark"`
 - 详情：
 
   Giscus 在夜间模式下使用的主题
@@ -108,9 +112,8 @@
 
 ```ts title=".vuepress/config.ts"
 import { commentPlugin } from '@vuepress/plugin-comment'
-import { defineUserConfig } from 'vuepress'
 
-export default defineUserConfig({
+export default {
   plugins: [
     commentPlugin({
       provider: 'Giscus',
@@ -118,7 +121,7 @@ export default defineUserConfig({
       // ...
     }),
   ],
-})
+}
 ```
 
 ## 客户端配置

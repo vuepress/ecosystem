@@ -6,9 +6,9 @@ icon: clipboard-copy
 
 <NpmBadge package="@vuepress/plugin-copy-code" />
 
-此插件会自动在 PC 设备上为每个代码块右上角添加复制按钮。
+该插件为代码块右上角自动添加复制按钮，方便用户复制代码内容。
 
-该插件已经集成到默认主题中。
+该插件已集成到默认主题中。
 
 ## 使用
 
@@ -16,7 +16,7 @@ icon: clipboard-copy
 npm i -D @vuepress/plugin-copy-code@next
 ```
 
-```ts
+```ts title=".vuepress/config.ts"
 import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 
 export default {
@@ -34,56 +34,58 @@ export default {
 
 - 类型：`string | string[]`
 - 默认值：`'[vp-content] div[class*="language-"] pre'`
-- 详情:
+- 详情：
 
-  代码块选择器
+  代码块的 CSS 选择器，用于确定需添加复制按钮的代码块范围
 
 ### showInMobile
 
 - 类型：`boolean`
 - 默认值：`false`
-- 详情:
+- 详情：
 
-  是否展示在移动端
+  是否在移动端设备上显示复制按钮。默认情况下，移动端不显示复制按钮以避免干扰内容浏览
 
 ### duration
 
 - 类型：`number`
 - 默认值：`2000`
-- 详情:
+- 详情：
 
-  提示消息显示时间，设置为 `0` 会禁用提示。
+  复制成功提示消息的显示时间（毫秒）。设置为 `0` 将禁用提示信息
 
 ### ignoreSelector
 
 - 类型：`string[] | string`
-- 详情:
+- 默认值：`""`
+- 详情：
 
-  代码块中的元素选择器，用于在复制时忽略相关元素。
+  指定复制代码时需要忽略的元素选择器。匹配的元素在复制时将被排除。
 
-  例如: `['.token.comment']` 将忽略代码块中类名为 `.token.comment` 的节点 （这会在 `prismjs` 中忽略注释）。
+  例如：`['.token.comment']` 将在复制时忽略代码块中所有带有类名 `.token.comment` 的元素（在 `prismjs` 高亮情况下，这会自动跳过注释内容）
 
-### inlineSelector
+### inline
 
 - 类型：`string[] | string | boolean`
 - 默认值：`false`
-- 详情:
+- 详情：
 
-  是否在双击时复制行内代码内容。
+  配置行内代码（inline code）的双击复制功能：
 
-  - `boolean`: 是否在双击时复制行内代码内容。
-  - `string[] | string`: 选择器，表示需要复制的行内代码内容。
+  - 设置为 `true`：启用默认选择器 `'[vp-content] :not(pre) > code'` 匹配行内代码元素
+  - 设置为 `false`：禁用行内代码双击复制功能
+  - 设置为自定义选择器：使用指定的选择器匹配行内代码元素
 
 ### transform <Badge type="tip" text="仅限组合式 API" />
 
 - 类型：`(preElement: HTMLPreElement) => void`
-- 详情:
+- 详情：
 
   一个转换器，用于在复制之前对 `<pre>` 中代码块内容进行修改。该选项仅在使用 `useCopyCode()` 时有效。
 
 - 示例：
 
-  ```js
+  ```ts title=".vuepress/client.ts"
   import { useCopyCode } from '@vuepress/plugin-copy-code/client'
 
   export default {
@@ -91,9 +93,9 @@ export default {
       useCopyCode({
         transform: (preElement) => {
           // 删除 `.ignore` 类名的元素
-          pre.querySelectorAll('.ignore').remove()
+          preElement.querySelectorAll('.ignore').forEach((el) => el.remove())
           // 插入版权信息
-          pre.innerHTML += `\n Copied by VuePress`
+          preElement.innerHTML += `\n Copied by VuePress`
         },
         // ...其它选项
       })
@@ -123,14 +125,13 @@ export default {
   }
   ```
 
-- 必填：否
-- 详情:
+- 详情：
 
   复制按钮插件的国际化配置。
 
 - 示例：
 
-  ```ts
+  ```ts title=".vuepress/config.ts"
   import { copyCodePlugin } from '@vuepress/plugin-copy-code'
 
   export default {

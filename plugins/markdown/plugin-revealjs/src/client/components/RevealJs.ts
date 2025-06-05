@@ -11,11 +11,12 @@ import {
   onUnmounted,
   ref,
   shallowRef,
+  useId,
   watch,
 } from 'vue'
 import {
   onContentUpdated,
-  usePageFrontmatter,
+  useFrontmatter,
   usePageLayout,
 } from 'vuepress/client'
 
@@ -28,16 +29,6 @@ export const RevealJs = defineComponent({
   name: 'RevealJs',
 
   props: {
-    /**
-     * Presentation id
-     *
-     * 幻灯片 id
-     */
-    id: {
-      type: String,
-      required: true,
-    },
-
     /**
      * Presentation code
      *
@@ -60,8 +51,9 @@ export const RevealJs = defineComponent({
   },
 
   setup(props) {
+    const id = useId()
     const revealOptions = useRevealJsConfig()
-    const frontmatter = usePageFrontmatter<{ revealJs: Reveal.Options }>()
+    const frontmatter = useFrontmatter<{ revealJs: Reveal.Options }>()
     const layout = usePageLayout()
 
     const loading = ref(true)
@@ -105,7 +97,6 @@ export const RevealJs = defineComponent({
       const container = presentationContainer.value
 
       if (container) {
-        container.setAttribute('id', props.id)
         container.setAttribute('data-theme', props.theme)
 
         loading.value = true
@@ -135,6 +126,7 @@ export const RevealJs = defineComponent({
           {
             ref: presentationContainer,
             class: ['reveal', 'reveal-viewport'],
+            id,
           },
           h('div', {
             class: 'slides',

@@ -1,37 +1,80 @@
-import { execa } from 'execa'
+import { spawn } from 'node:child_process'
 import type { GitContributorInfo } from '../../shared/index.js'
 import type { GitPluginOptions } from '../options.js'
 import type { MergedRawCommit, RawCommit } from '../typings.js'
+import { logger } from './logger.js'
 
-const SPLIT_CHAR = '[GIT_LOG_COMMIT_END]'
-const RE_SPLIT = /\[GIT_LOG_COMMIT_END\]$/
-
+const INFO_SPLITTER = '[|]'
+const COMMIT_SPLITTER = '\\|/'
 const RE_CO_AUTHOR = /^ *Co-authored-by: ?([^<]*)<([^>]*)> */gim
 
-const getCoAuthors = (
+const getCoAuthorsFromCommitBody = (
   body: string,
-): Pick<GitContributorInfo, 'email' | 'name'>[] => {
-  if (!body) return []
+): Pick<GitContributorInfo, 'email' | 'name'>[] =>
+  body
+    ? Array.from(body.matchAll(RE_CO_AUTHOR)).map(([, name, email]) => ({
+        name: name.trim(),
+        email: email.trim(),
+      }))
+    : []
 
-  return [...body.matchAll(RE_CO_AUTHOR)]
-    .map(([, name, email]) => ({
-      name: name.trim(),
-      email: email.trim(),
-    }))
-    .filter(Boolean)
-}
+const getGitLogFormat = ({
+  contributors,
+  changelog,
+}: GitPluginOptions): string => {
+  if (!contributors && !changelog)
+    // hash | author_date
+    return ['%H', '%ad'].join(INFO_SPLITTER)
 
-const getFormat = ({ contributors, changelog }: GitPluginOptions): string => {
-  // hash | _ | _ | author_date | _ | _ | _
-  if (!contributors && !changelog) return '%H|||%ad|||'
-  // hash | author_name | author_email | author_date | _ | _ | body
-  if (contributors && !changelog) return '%H|%an|%ae|%ad|||%b'
-  // hash | author_name | author_email | author_date | subject | ref | body
-  return '%H|%an|%ae|%ad|%s|%d|%b'
+  if (contributors && !changelog)
+    // hash | author_date | author_name | author_email | body
+    return ['%H', '%ad', '%an', '%ae', '%b'].join(INFO_SPLITTER)
+
+  // hash | author_date | author_name | author_email | body | subject | ref
+  return ['%H', '%ad', '%an', '%ae', '%b', '%s', '%d'].join(INFO_SPLITTER)
 }
 
 /**
- * Get raw commits
+ * Helper function to run git command using spawn and return stdout as a promise.
+ * Rejects if the git command exits with a non-zero code.
+ */
+const runGitLog = (args: string[], cwd: string): Promise<string> =>
+  new Promise((resolve, reject) => {
+    const gitProcess = spawn('git', ['log', ...args], {
+      cwd,
+      stdio: ['ignore', 'pipe', 'pipe'],
+    })
+
+    let stdoutData = ''
+    let stderrData = ''
+
+    gitProcess.stdout.on('data', (chunk: Buffer) => {
+      stdoutData += chunk.toString('utf8')
+    })
+
+    gitProcess.stderr.on('data', (chunk: Buffer) => {
+      stderrData += chunk.toString('utf8')
+    })
+
+    gitProcess.on('error', (error) => {
+      reject(new Error(`Failed to spawn 'git log': ${error.message}`))
+    })
+
+    gitProcess.on('close', (code) => {
+      if (code === 0) {
+        resolve(stdoutData)
+      } else {
+        reject(
+          new Error(
+            `'git log' failed with exit code ${code}: ${stderrData.trim()}`,
+          ),
+        )
+      }
+    })
+  })
+
+/**
+ * Get raw commits for a specific file
  *
  * ${commit_hash} ${author_name} ${author_email} ${author_date} ${subject} ${ref} ${body}
  *
@@ -42,30 +85,36 @@ export const getRawCommits = async (
   cwd: string,
   options: GitPluginOptions,
 ): Promise<RawCommit[]> => {
-  const format = getFormat(options)
+  const format = getGitLogFormat(options)
+
   try {
-    const { stdout } = await execa(
-      'git',
+    const stdout = await runGitLog(
       [
-        'log',
         '--max-count=-1',
-        `--format=${format}${SPLIT_CHAR}`,
+        `--format=${format}${COMMIT_SPLITTER}`,
         '--date=unix',
         '--follow',
         '--',
         filepath,
       ],
-      { cwd },
+      cwd,
     )
 
     return stdout
-      .replace(RE_SPLIT, '')
-      .split(`${SPLIT_CHAR}\n`)
+      .slice(0, -1 - COMMIT_SPLITTER.length)
+      .split(`${COMMIT_SPLITTER}\n`)
       .filter(Boolean)
       .map((rawString) => {
-        const [hash, author, email, time, message, refs, body] = rawString
-          .split('|')
-          .map((v) => v.trim())
+        const [
+          hash,
+          time,
+          author = '',
+          email = '',
+          body = '',
+          message = '',
+          refs = '',
+        ] = rawString.split(INFO_SPLITTER).map((v) => v.trim())
+
         return {
           filepath,
           hash,
@@ -75,37 +124,66 @@ export const getRawCommits = async (
           refs,
           author,
           email,
-          coAuthors: getCoAuthors(body),
+          coAuthors: getCoAuthorsFromCommitBody(body),
         }
       })
-  } catch {
+  } catch (error) {
+    logger.error(`Failed to get commits for ${filepath} in ${cwd}:`, error)
+
     return []
   }
 }
 
+/**
+ * Merge raw commits by hash
+ *
+ * 按哈希值合并原始提交记录
+ *
+ * @param commits - Raw commits
+ *
+ * 原始提交记录
+ */
 export const mergeRawCommits = (commits: RawCommit[]): MergedRawCommit[] => {
   const commitMap = new Map<string, MergedRawCommit>()
 
   commits.forEach(({ filepath, ...commit }) => {
     const _commit = commitMap.get(commit.hash)
+
     if (_commit) _commit.filepaths.push(filepath)
-    else commitMap.set(commit.hash, { filepaths: [filepath], ...commit })
+    else commitMap.set(commit.hash, { ...commit, filepaths: [filepath] })
   })
 
   const result = Array.from(commitMap.values())
   return result
 }
 
+/**
+ * Get merged commits for multiple file paths
+ *
+ * 获取多个文件路径的合并提交记录
+ *
+ * @param filepaths - File paths to get commits for
+ *
+ * 要获取提交记录的文件路径
+ *
+ * @param cwd - Working directory
+ *
+ * 工作目录
+ *
+ * @param options - Git plugin options
+ *
+ * Git 插件选项
+ */
 export const getCommits = async (
   filepaths: string[],
   cwd: string,
   options: GitPluginOptions,
 ): Promise<MergedRawCommit[]> => {
-  const rawCommits = await Promise.all(
-    filepaths.map((filepath) => getRawCommits(filepath, cwd, options)),
-  )
+  const rawCommits = (
+    await Promise.all(
+      filepaths.map((filepath) => getRawCommits(filepath, cwd, options)),
+    )
+  ).flat()
 
-  return mergeRawCommits(rawCommits.flat()).sort((a, b) =>
-    b.time - a.time > 0 ? 1 : -1,
-  )
+  return mergeRawCommits(rawCommits).sort((a, b) => b.time - a.time)
 }

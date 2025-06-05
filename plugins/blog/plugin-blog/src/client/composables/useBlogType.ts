@@ -2,11 +2,7 @@ import { store } from '@temp/blog/store'
 import { typesMap } from '@temp/blog/type'
 import type { ComputedRef } from 'vue'
 import { computed, readonly, shallowRef } from 'vue'
-import {
-  resolveRoute,
-  usePageFrontmatter,
-  useRouteLocale,
-} from 'vuepress/client'
+import { resolveRoute, useData } from 'vuepress/client'
 import type {
   BlogTypeFrontmatterOptions,
   TypesMap,
@@ -19,15 +15,31 @@ const typeMapRef = shallowRef(typesMap)
 
 export const blogTypeMap = readonly(typeMapRef)
 
+/**
+ * Use blog type data
+ *
+ * 使用博客类型数据
+ *
+ * @description Get blog type data for current page or specified key
+ *
+ * 获取当前页面或指定键的博客类型数据
+ *
+ * @param key - Type key to get data for
+ *
+ * key - 要获取数据的类型键
+ *
+ * @returns Computed blog type data
+ *
+ * 返回计算的博客类型数据
+ */
 export const useBlogType = <
   T extends Record<string, unknown> = Record<string, unknown>,
 >(
   key?: string,
 ): ComputedRef<BlogTypeData<T>> => {
-  const frontmatter = usePageFrontmatter<{
+  const { frontmatter, routeLocale } = useData<{
     blog?: BlogTypeFrontmatterOptions
   }>()
-  const routeLocale = useRouteLocale()
 
   return computed(() => {
     const mapKey = key ?? frontmatter.value.blog?.key ?? ''
