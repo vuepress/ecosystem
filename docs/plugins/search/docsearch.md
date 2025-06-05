@@ -201,28 +201,26 @@ If you are not using default theme, or you meet any problems when using docsearc
 ### searchParameters
 
 - Type: `SearchParameters`
+- Details: Algolia Search API parameters.
+
 - Reference:
   - [DocSearch > Options > searchParameters](https://docsearch.algolia.com/docs/api/#searchparameters)
   - [Algolia > Search API Parameters](https://www.algolia.com/doc/api-reference/search-api-parameters/)
-- Details: Parameters of Algolia Search API.
 
 ### placeholder
 
 - Type: `string`
 - Default: `'Search docs'`
+- Details: The placeholder attribute of the search input.
+
 - Reference:
   - [DocSearch > Options > placeholder](https://docsearch.algolia.com/docs/api/#placeholder)
-- Details: The placeholder attribute of the search input.
 
 ### disableUserPersonalization
 
 - Type: `boolean`
-
 - Default: `false`
-
-- Details:
-
-  Whether to disable all personalized features: recent searches, favorite searches, etc.
+- Details: Whether to disable all personalized features: recent searches, favorite searches, etc.
 
 - Reference:
   - [DocSearch > Options > disableUserPersonalization](https://docsearch.algolia.com/docs/api/#disableuserpersonalization)
