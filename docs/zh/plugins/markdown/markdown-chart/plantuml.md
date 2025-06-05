@@ -45,26 +45,26 @@ export default {
 ::: preview 序列图
 
 @startuml
-Alice -> Bob: 认证请求
+Alice -> Bob: Authentication Request
 
-alt 成功情况
+alt successful case
 
-   plain Bob -> Alice: 认证接受
+    Bob -> Alice: Authentication Accepted
 
-else 某种失败情况
+else some kind of failure
 
-   plain Bob -> Alice: 认证失败
-    group 我自己的标签
-    Alice -> Log : 开始记录攻击日志
-         loop 1000次
-            Alice -> Bob: DNS 攻击
+    Bob -> Alice: Authentication Failure
+    group My own label
+    Alice -> Log : Log attack start
+        loop 1000 times
+            Alice -> Bob: DNS Attack
         end
-    Alice -> Log : 结束记录攻击日志
+    Alice -> Log : Log attack end
     end
 
-else 另一种失败
+else Another type of failure
 
-   plain Bob -> Alice: 请重复
+Bob -> Alice: Please repeat
 
 end
 @enduml
@@ -147,7 +147,7 @@ if (Page.onSecurityCheck) then (true)
       stop
     endif
 
-   plain if (isPost?) then (yes)
+    if (isPost?) then (yes)
       :Page.onPost();
     else (no)
       :Page.onGet();
@@ -255,15 +255,15 @@ NewYork --> CapitalCity::USA
 ::: preview 部署图
 
 @startuml
-node 节点 1
-node 节点 2
-node 节点 3
-node 节点 4
-node 节点 5
-节点 1 -- 节点 2 : 标签 1
-节点 1 .. 节点 3 : 标签 2
-节点 1 ~~ 节点 4 : 标签 3
-节点 1 == 节点 5
+node node1
+node node2
+node node3
+node node4
+node node5
+node1 -- node2 : label1
+node1 .. node3 : label2
+node1 ~~ node4 : label3
+node1 == node5
 @enduml
 
 :::
@@ -274,11 +274,11 @@ node 节点 5
 scale 5 as 150 pixels
 
 clock clk with period 1
-binary "启用" as en
-binary "读/写" as rw
-binary "数据有效" as dv
-concise "数据总线" as db
-concise "地址总线" as addr
+binary "enable" as en
+binary "R/W" as rw
+binary "data Valid" as dv
+concise "dataBus" as db
+concise "address bus" as addr
 
 @6 as :write_beg
 @10 as :write_end
@@ -321,11 +321,11 @@ dv is low
 @21 
 db is "0x0"
 
-highlight :write_beg to :write_end #Gold:写
-highlight :read_beg to :read_end #lightBlue:读
+highlight :write_beg to :write_end #Gold:Write
+highlight :read_beg to :read_end #lightBlue:Read
 
-db@:write_beg-1 <-> @:write_end : 设置时间
-db@:write_beg-1 -> addr@:write_end+1 : 保持
+db@:write_beg-1 <-> @:write_end : setup time
+db@:write_beg-1 -> addr@:write_end+1 : hold
 @enduml
 
 :::
@@ -344,26 +344,26 @@ db@:write_beg-1 -> addr@:write_end+1 : 保持
 nwdiag {
   group nightly {
     color = "#FFAAAA";
-    description = "<&clock> 每晚重启 <&clock>";
+    description = "<&clock> Restarted nightly <&clock>";
     web02;
     db01;
   }
-  network 缓冲区 {
+  network dmz {
       address = "210.x.x.x/24"
 
-   plain   user [description = "<&person*4.5>\n 用户1"];
-      web01 [address = "210.x.x.1, 210.x.x.20",  description = "<&cog*4>\n网战01"]
-      web02 [address = "210.x.x.2",  description = "<&cog*4>\n网站02"];
+      user [description = "<&person*4.5>\n user1"];
+      web01 [address = "210.x.x.1, 210.x.x.20",  description = "<&cog*4>\nweb01"]
+      web02 [address = "210.x.x.2",  description = "<&cog*4>\nweb02"];
 
   }
-  network 内网 {
+  network internal {
       address = "172.x.x.x/24";
 
-   plain   web01 [address = "172.x.x.1"];
+      web01 [address = "172.x.x.1"];
       web02 [address = "172.x.x.2"];
-      db01 [address = "172.x.x.100",  description = "<&spreadsheet*4>\n 数据库01"];
-      db02 [address = "172.x.x.101",  description = "<&spreadsheet*4>\n 数据库02"];
-      ptr  [address = "172.x.x.110",  description = "<&print*4>\n 打印机r01"];
+      db01 [address = "172.x.x.100",  description = "<&spreadsheet*4>\n db01"];
+      db02 [address = "172.x.x.101",  description = "<&spreadsheet*4>\n db02"];
+      ptr  [address = "172.x.x.110",  description = "<&print*4>\n ptr01"];
   }
 }
 @enduml
@@ -374,14 +374,14 @@ nwdiag {
 
 @startsalt
 {+
-{/ <b>通用 | 全屏 | 行为 | 保存 }
+{/ <b>General | Fullscreen | Behavior | Saving }
 {
-{ 图片打开模式: | ^智能模式^ }
-[X] 缩放时平滑显示图片
-[X] 图片删除确认
-[ ] 显示隐藏图片
+{ Open image in: | ^Smart Mode^ }
+[X] Smooth images when zoomed
+[X] Confirm image deletion
+[ ] Show hidden images
 }
-[关闭]
+[Close]
 }
 @endsalt
 
