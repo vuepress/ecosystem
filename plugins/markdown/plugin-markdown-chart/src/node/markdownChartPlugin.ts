@@ -18,6 +18,29 @@ import type { MarkdownChartPluginOptions } from './options.js'
 import { prepareConfigFile } from './prepareConfigFile.js'
 import { PLUGIN_NAME, isInstalled, logger } from './utils.js'
 
+/**
+ * Markdown chart plugin
+ *
+ * Markdown 图表插件
+ *
+ * @param options - Plugin options / 插件选项
+ * @returns VuePress plugin / VuePress 插件
+ *
+ * @example
+ * ```ts
+ * import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
+ *
+ * export default {
+ *   plugins: [
+ *     markdownChartPlugin({
+ *       chartjs: true,
+ *       echarts: true,
+ *       mermaid: true,
+ *     }),
+ *   ],
+ * }
+ * ```
+ */
 export const markdownChartPlugin =
   (options: MarkdownChartPluginOptions = {}): Plugin =>
   (app) => {

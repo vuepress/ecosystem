@@ -22,7 +22,7 @@ export const defineEChartsConfig = (config: EChartsConfig): void => {
   echartsConfig = config
 }
 
-/** @deprecated: use defineEChartsConfig instead */
-export const defineEchartsConfig = defineEChartsConfig
-
+/**
+ * @internal
+ */
 export const useEChartsConfig = (): EChartsConfig => echartsConfig

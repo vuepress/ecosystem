@@ -90,7 +90,7 @@ export default {
 - [Mermaid](./mermaid.md)
 - [PlantUML](./plantuml.md)
 
-## 配置
+## 选项
 
 ### chartjs
 

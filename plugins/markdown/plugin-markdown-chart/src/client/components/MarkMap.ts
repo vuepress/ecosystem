@@ -44,7 +44,7 @@ export default defineComponent({
 
   setup(props) {
     const { content, id } = toRefs(props)
-    const markupWrapper = shallowRef<HTMLElement>()
+    const markmapWrapper = shallowRef<HTMLElement>()
     const markmapSVG = shallowRef<SVGElement>()
 
     const loaded = ref(false)
@@ -66,17 +66,31 @@ export default defineComponent({
     const renderMarkmap = async (): Promise<void> => {
       if (__VUEPRESS_SSR__) return
 
-      const [{ Transformer }, { Markmap, deriveOptions }, { Toolbar }] =
-        await Promise.all([
-          import(/* webpackChunkName: "markmap" */ 'markmap-lib'),
-          import(/* webpackChunkName: "markmap" */ 'markmap-view'),
-          import(/* webpackChunkName: "markmap" */ 'markmap-toolbar'),
-        ])
+      const [{ Transformer }, markmapView, { Toolbar }] = await Promise.all([
+        import(/* webpackChunkName: "markmap" */ 'markmap-lib'),
+        import(/* webpackChunkName: "markmap" */ 'markmap-view'),
+        import(/* webpackChunkName: "markmap" */ 'markmap-toolbar'),
+      ])
+
+      const { Markmap, deriveOptions, loadJS, loadCSS } = markmapView
 
       const transformer = new Transformer()
-      const { frontmatter, root } = transformer.transform(
+      const { frontmatter, features, root } = transformer.transform(
         decodeData(props.content),
       )
+      const { styles, scripts } = transformer.getUsedAssets(features)
+
+      await Promise.all([
+        // Load scripts
+        scripts
+          ? loadJS(scripts, {
+              // For plugins to access the `markmap-view` module
+              getMarkmap: () => markmapView,
+            })
+          : Promise.resolve(),
+        // Load styles
+        styles ? loadCSS(styles) : Promise.resolve(),
+      ])
 
       markmap = Markmap.create(
         markmapSVG.value!,
@@ -95,7 +109,7 @@ export default defineComponent({
       el.style.bottom = '0.5rem'
       el.style.right = '0.5rem'
 
-      markupWrapper.value!.append(el)
+      markmapWrapper.value!.append(el)
     }
 
     onContentUpdated(async (reason) => {
@@ -123,7 +137,7 @@ export default defineComponent({
     onUnmounted(destroyMarkmap)
 
     return (): VNode =>
-      h('div', { class: 'markmap-wrapper', ref: markupWrapper }, [
+      h('div', { class: 'markmap-wrapper', ref: markmapWrapper }, [
         h('svg', {
           ref: markmapSVG,
           class: 'markmap-svg',

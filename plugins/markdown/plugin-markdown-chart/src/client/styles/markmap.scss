@@ -11,8 +11,8 @@
   --markmap-a-hover-color: var(--vp-c-accent) !important;
   --markmap-code-bg: var(--vp-c-border) !important;
   --markmap-code-color: var(--vp-c-text) !important;
-  --markup-circle-open-bg: var(--vp-c-white) !important;
-  --markup-text-color: var(--vp-c-text) !important;
+  --markmap-circle-open-bg: var(--vp-c-white) !important;
+  --markmap-text-color: var(--vp-c-text) !important;
 }
 
 .markmap-wrapper {
@@ -33,11 +33,6 @@
       background-color: var(--vp-c-border) !important;
       color: inherit;
     }
-  }
-
-  // FIXME: Probably markmap bug
-  .katex-html {
-    display: none;
   }
 }
 
