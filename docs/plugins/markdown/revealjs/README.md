@@ -169,7 +169,7 @@ defineRevealJsConfig(options1or2or3)
 
 ::: note
 
-Reveal.js also provides [more plugins](https://github.com/hakimel/reveal.js/wiki/Plugins,-Tools-and-Hardware), you can add them via `plugin` option in `defineRevealJsConfig`. Built-in plugins you request at node side will be added automatically.
+Reveal.js also provides [more plugins](https://github.com/hakimel/reveal.js/wiki/Plugins,-Tools-and-Hardware), you can add them via `plugins` option in `defineRevealJsConfig`. Built-in plugins you request at node side will be added automatically.
 
 :::
 

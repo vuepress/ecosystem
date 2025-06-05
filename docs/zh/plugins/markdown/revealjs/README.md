@@ -169,7 +169,7 @@ defineRevealJsConfig(options1or2or3)
 
 ::: note
 
-Reveal.js 还提供了[更多的插件](https://github.com/hakimel/reveal.js/wiki/Plugins,-Tools-and-Hardware)，你可以通过 `defineRevealJsConfig` 中的 `plugin` 选项添加它们。你在 node 端请求的内置插件将自动添加。
+Reveal.js 还提供了[更多的插件](https://github.com/hakimel/reveal.js/wiki/Plugins,-Tools-and-Hardware)，你可以通过 `defineRevealJsConfig` 中的 `plugins` 选项添加它们。你在 node 端请求的内置插件将自动添加。
 
 :::
 
