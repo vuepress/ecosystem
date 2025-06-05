@@ -29,11 +29,11 @@ self.addEventListener('activate', async (event) => {
 
     const cachePatterns = ${JSON.stringify(cachePatterns)}.map((pattern) => new RegExp(pattern));
 
-    await Promise.all(
-      await self.caches.keys()
-        .filter((name) => !cachePatterns.length || cachePatterns.some((pattern) => pattern.test(name)))
-        .map((name) => self.caches.delete(name)),
-    );
+    const cacheKeys = await self.caches.keys();
+    const deletionPromises = cacheKeys
+      .filter((name) => !cachePatterns.length || cachePatterns.some((pattern) => pattern.test(name)))
+      .map((name) => self.caches.delete(name));
+    await Promise.all(deletionPromises);
 
     const clients = await self.clients.matchAll({ type: 'window' });
 
