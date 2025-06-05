@@ -43,9 +43,7 @@ export const useSize = <E extends HTMLElement>(
     const height = unref(options.height)
     const ratio = getRadio(unref(options.ratio))
 
-    return height
-      ? getValue(height)
-      : `${Number(width) / ratio + unref(extraHeight)}px`
+    return height ? getValue(height) : `${width / ratio + unref(extraHeight)}px`
   }
 
   const updateHeight = (): void => {
