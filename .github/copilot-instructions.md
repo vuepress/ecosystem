@@ -50,13 +50,13 @@
 
 ### Format Requirements
 
+- **Exported Content**: Only contents that are exported from the package.
 - **Bilingual**: English + Chinese for all exported content
-- **@default**:
-  - User-visible things: Always include if exists (including `@default false`)
-  - Others: Only when not clearly visible in function parameters
+- **@default**: Always include if exists for all properties (including `@default false`)
 - **@example**: Only for exported functions
 - **@description**: Optional, only if necessary to explain more
 - **@param**: Required for all parameters, should be bilingual, separate with `/` for English and Chinese
+- **@returns**: Required for all return values expect `void` and `Promise<void>`, should be bilingual, separate with `/` for English and Chinese
 
 ````typescript
 /**

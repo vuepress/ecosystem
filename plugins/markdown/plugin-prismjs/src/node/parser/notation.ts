@@ -58,7 +58,11 @@ const createNotationCommentMarkerRule = (
 /**
  * line highlight
  *
+ * 行高亮
+ *
  * `// [!code highlight]`, or `// [!code hl]`
+ *
+ * @param parser - Code parser instance / 代码解析器实例
  */
 export const notationHighlight = (parser: CodeParser): void => {
   createNotationCommentMarkerRule(parser, {
@@ -73,7 +77,11 @@ export const notationHighlight = (parser: CodeParser): void => {
 /**
  * line focus
  *
+ * 行聚焦
+ *
  * `// [!code focus]`
+ *
+ * @param parser - Code parser instance / 代码解析器实例
  */
 export const notationFocus = (parser: CodeParser): void => {
   createNotationCommentMarkerRule(parser, {
@@ -87,7 +95,11 @@ export const notationFocus = (parser: CodeParser): void => {
 /**
  * line diff
  *
+ * 行差异
+ *
  * `// [!code ++]` and `// [!code --]`
+ *
+ * @param parser - Code parser instance / 代码解析器实例
  */
 export const notationDiff = (parser: CodeParser): void => {
   createNotationCommentMarkerRule(parser, {
@@ -102,7 +114,11 @@ export const notationDiff = (parser: CodeParser): void => {
 /**
  * line error level
  *
+ * 行错误级别
+ *
  * `// [!code warning]` and `// [!code error]`
+ *
+ * @param parser - Code parser instance / 代码解析器实例
  */
 export const notationErrorLevel = (parser: CodeParser): void => {
   createNotationCommentMarkerRule(parser, {
@@ -117,8 +133,11 @@ export const notationErrorLevel = (parser: CodeParser): void => {
 /**
  * highlight word
  *
+ * 词汇高亮
+ *
  * `// [!code word:xxx]`: `xxx` can be any word.
- * @param parser
+ *
+ * @param parser - Code parser instance / 代码解析器实例
  */
 export const notationWordHighlight = (parser: CodeParser): void => {
   createNotationRule(

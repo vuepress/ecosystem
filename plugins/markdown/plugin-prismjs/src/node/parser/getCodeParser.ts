@@ -94,6 +94,24 @@ const createOpenTag = (
   }
 }
 
+/**
+ * Parse highlighted code and create code parser
+ *
+ * 解析高亮代码并创建代码解析器
+ *
+ * @param html - Highlighted HTML content / 高亮 HTML 内容
+ * @returns Code parser instance / 代码解析器实例
+ * @example
+ * ```ts
+ * import { getCodeParser } from '@vuepress/plugin-prismjs'
+ *
+ * const html = '<pre><code>console.log("hello")</code></pre>'
+ * const parser = getCodeParser(html)
+ * parser.line((node, index) => {
+ *   if (index === 1) node.classList.push('highlighted')
+ * })
+ * ```
+ */
 export const getCodeParser = (html: string): CodeParser => {
   let content = html
   const preOpen = html.match(PRE_OPEN_TAG_RE)?.[1] ?? ''
