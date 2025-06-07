@@ -5,6 +5,14 @@ import { pwaEventSymbol } from './usePwaEvent.js'
 import { useRegisterSW } from './useRegisterSW.js'
 import type { PwaEvent } from './index.js'
 
+/**
+ * Setup PWA functionality
+ *
+ * 设置 PWA 功能
+ *
+ * @param serviceWorkerPath - Service Worker path / Service Worker 路径
+ * @param shouldForceUpdate - Whether to force update / 是否强制更新
+ */
 export const setupPwa = (
   serviceWorkerPath: string,
   shouldForceUpdate = false,

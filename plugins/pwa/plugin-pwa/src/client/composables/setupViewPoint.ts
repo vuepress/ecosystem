@@ -1,5 +1,10 @@
 import { onMounted } from 'vue'
 
+/**
+ * Setup viewport for PWA standalone mode
+ *
+ * 为 PWA 独立模式设置视口
+ */
 export const setupViewPoint = (): void => {
   onMounted(() => {
     const isStandAlone = window.matchMedia('(display-mode: standalone)').matches
