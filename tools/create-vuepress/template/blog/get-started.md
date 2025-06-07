@@ -12,7 +12,7 @@ See [routing][] for more details.
 
 Every markdown file [will be rendered to HTML, then converted to a Vue SFC][content].
 
-VuePress support basic markdown syntax and [some extensions][synatex-extensions], you can also [use Vue features][vue-feature] in it.
+VuePress support basic markdown syntax and [some extensions][syntax-extensions], you can also [use Vue features][vue-feature] in it.
 
 ## Configuration
 
@@ -35,7 +35,7 @@ You can [add extra style][style] with `.vuepress/styles/index.scss` file.
 
 [routing]: https://vuejs.press/guide/page.html#routing
 [content]: https://vuejs.press/guide/page.html#content
-[synatex-extensions]: https://vuejs.press/guide/markdown.html#syntax-extensions
+[syntax-extensions]: https://vuejs.press/guide/markdown.html#syntax-extensions
 [vue-feature]: https://vuejs.press/guide/markdown.html#using-vue-in-markdown
 [config]: https://vuejs.press/guide/configuration.html#client-config-file
 [client-config]: https://vuejs.press/guide/configuration.html#client-config-file
