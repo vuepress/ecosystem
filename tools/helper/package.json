@@ -58,7 +58,7 @@
   "dependencies": {
     "@vue/shared": "^3.5.16",
     "@vueuse/core": "catalog:",
-    "cheerio": "1.0.0",
+    "cheerio": "^1.1.0",
     "fflate": "^0.8.2",
     "gray-matter": "^4.0.3",
     "vue": "catalog:"

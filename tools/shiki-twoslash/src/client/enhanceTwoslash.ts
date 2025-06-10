@@ -1,5 +1,5 @@
 import { isMobile } from '@vuepress/helper/client'
-// eslint-disable-next-line import/no-rename-default
+
 import FloatingVue, { recomputeAllPoppers } from 'floating-vue'
 import type { App } from 'vue'
 import 'floating-vue/dist/style.css'

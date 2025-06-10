@@ -1,5 +1,5 @@
 import { watchImmediate } from '@vueuse/core'
-// eslint-disable-next-line import/no-rename-default
+
 import type Reveal from 'reveal.js'
 import type { App, InjectionKey, MaybeRefOrGetter, Ref } from 'vue'
 import { computed, inject, isRef, ref } from 'vue'
