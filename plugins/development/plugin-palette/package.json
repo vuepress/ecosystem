@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "chokidar": "^3.6.0"
+    "chokidar": "catalog:"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

@@ -1,3 +1,4 @@
+import { glob } from 'node:fs/promises'
 import { watch } from 'chokidar'
 import type { Plugin } from 'vuepress/core'
 import { hash, path } from 'vuepress/utils'
@@ -56,10 +57,15 @@ export const registerComponentsPlugin = ({
     clientConfigFile: (app) =>
       prepareClientConfigFile(app, options, optionsHash),
 
-    onWatched: (app, watchers) => {
+    onWatched: async (app, watchers) => {
       if (componentsDir) {
-        const componentsWatcher = watch(componentsPatterns, {
-          cwd: componentsDir,
+        const files = await Array.fromAsync(
+          glob(componentsPatterns, {
+            cwd: componentsDir,
+          }),
+        )
+
+        const componentsWatcher = watch(files, {
           ignoreInitial: true,
         })
         componentsWatcher.on('add', () => {

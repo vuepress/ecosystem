@@ -190,9 +190,12 @@ export const blogPlugin =
           'hotReload' in options ? options.hotReload : app.env.isDebug
 
         if (hotReload) {
-          const pageDataWatcher = watch('pages/**/*.js', {
+          const pageDataWatcher = watch('pages', {
             cwd: app.dir.temp(),
             ignoreInitial: true,
+            // only watch js files
+            ignored: (path, stats) =>
+              Boolean(stats?.isFile() && !path.endsWith('.js')),
           })
 
           const updateBlog = async (): Promise<void> => {
