@@ -1,9 +1,9 @@
 import commonjs from '@rollup/plugin-commonjs'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import type { ModuleSideEffectsOption, RollupOptions } from 'rollup'
-// eslint-disable-next-line import/no-rename-default
+
 import dts from 'rollup-plugin-dts'
-// eslint-disable-next-line import/no-rename-default
+
 import esbuild from 'rollup-plugin-esbuild'
 import { shebang } from 'rollup-plugin-resolve-shebang'
 
