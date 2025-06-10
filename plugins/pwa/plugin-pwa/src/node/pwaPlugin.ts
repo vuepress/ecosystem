@@ -13,6 +13,31 @@ import { PLUGIN_NAME, logger } from './logger.js'
 import type { PwaPluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 
+/**
+ * PWA plugin
+ *
+ * PWA 插件
+ *
+ * @param options - Plugin options / 插件选项
+ * @returns VuePress plugin / VuePress 插件
+ *
+ * @example
+ * ```ts
+ * import { pwaPlugin } from '@vuepress/plugin-pwa'
+ *
+ * export default {
+ *   plugins: [
+ *     pwaPlugin({
+ *       showInstall: true,
+ *       manifest: {
+ *         name: 'My PWA App'
+ *       },
+ *       update: 'hint'
+ *     })
+ *   ]
+ * }
+ * ```
+ */
 export const pwaPlugin =
   (options: PwaPluginOptions = {}): PluginFunction =>
   (app) => {
