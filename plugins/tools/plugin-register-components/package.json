@@ -35,7 +35,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "chokidar": "^4.0.3"
+    "chokidar": "catalog:"
   },
   "peerDependencies": {
     "vuepress": "catalog:"
