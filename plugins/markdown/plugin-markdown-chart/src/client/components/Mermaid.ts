@@ -17,67 +17,11 @@ import {
 } from 'vue'
 
 import { useMermaidOptions } from '../helpers/index.js'
-import type { MermaidThemeVariables } from '../typings/index.js'
 import { DOWNLOAD_ICON, PREVIEW_ICON, encodeSVG } from '../utils/index.js'
 
 import '../styles/mermaid.css'
 
 const DEFAULT_CHART_OPTIONS = { useMaxWidth: false }
-
-const getThemeVariables = (isDarkMode: boolean): MermaidThemeVariables => ({
-  dark: isDarkMode,
-  background: isDarkMode ? '#1e1e1e' : '#fff',
-
-  primaryColor: isDarkMode ? '#389d70' : '#4abf8a',
-  primaryBorderColor: isDarkMode ? '#389d70' : '#4abf8a',
-  primaryTextColor: isDarkMode ? '#fff' : '#000',
-
-  secondaryColor: '#ffb500',
-  secondaryBorderColor: isDarkMode ? '#fff' : '#000',
-  secondaryTextColor: isDarkMode ? '#ddd' : '#333',
-
-  tertiaryColor: isDarkMode ? '#282828' : '#efeef4',
-  tertiaryBorderColor: isDarkMode ? '#bbb' : '#242424',
-  tertiaryTextColor: isDarkMode ? '#ddd' : '#333',
-
-  // Note
-  noteBkgColor: isDarkMode ? '#f6d365' : '#fff5ad',
-  noteTextColor: '#242424',
-  noteBorderColor: isDarkMode ? '#f6d365' : '#333',
-
-  lineColor: isDarkMode ? '#d3d3d3' : '#333',
-  textColor: isDarkMode ? '#fff' : '#242424',
-
-  mainBkg: isDarkMode ? '#389d70' : '#4abf8a',
-  errorBkgColor: '#eb4d5d',
-  errorTextColor: '#fff',
-
-  // Flowchart
-  nodeBorder: isDarkMode ? '#389d70' : '#4abf8a',
-  nodeTextColor: isDarkMode ? '#fff' : '#242424',
-
-  // Sequence
-  signalTextColor: isDarkMode ? '#9e9e9e' : '#242424',
-
-  // Class
-  classText: '#fff',
-
-  // State
-  labelColor: '#fff',
-
-  attributeBackgroundColorEven: isDarkMode ? '#0d1117' : '#fff',
-  attributeBackgroundColorOdd: isDarkMode ? '#161b22' : '#f8f8f8',
-
-  // Colors
-  fillType0: isDarkMode ? '#cf1322' : '#f1636e',
-  fillType1: '#f39c12',
-  fillType2: '#2ecc71',
-  fillType3: '#fa541c',
-  fillType4: '#25a55b',
-  fillType5: '#13c2c2',
-  fillType6: '#096dd9',
-  fillType7: '#aa6fe9',
-})
 
 export default defineComponent({
   name: 'Mermaid',
@@ -119,9 +63,9 @@ export default defineComponent({
       )
 
       mermaid.initialize({
-        theme: 'base',
+        theme: isDarkMode.value ? 'dark' : 'default',
         themeVariables: {
-          ...getThemeVariables(isDarkMode.value),
+          dark: isDarkMode.value,
           ...(isFunction(themeVariables)
             ? themeVariables(isDarkMode.value)
             : themeVariables),
