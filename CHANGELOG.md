@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.109](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.108...v2.0.0-rc.109) (2025-06-17)
+
+### Bug Fixes
+
+- **create-vuepress:** fix typo in get-started.md ([#534](https://github.com/vuepress/ecosystem/issues/534)) ([21b429a](https://github.com/vuepress/ecosystem/commit/21b429ab45363a1f7cddf41279b9e0855061cbd4))
+- **plugin-git:** fix locale format ([#537](https://github.com/vuepress/ecosystem/issues/537)) ([cc2132e](https://github.com/vuepress/ecosystem/commit/cc2132e51973b60cafc18883b993cb6693f12a67))
+
+### Features
+
+- add plugin-markdown-chart ([#249](https://github.com/vuepress/ecosystem/issues/249)) ([7f5fdff](https://github.com/vuepress/ecosystem/commit/7f5fdff8c26f865b21697b3c6d29bb49d9b20ba4))
+- **plugin-markdown-chart:** remove mermaid theme default variables ([#538](https://github.com/vuepress/ecosystem/issues/538)) ([e211c68](https://github.com/vuepress/ecosystem/commit/e211c68e6d51812a9a48d8af8df7e7084051bb15))
+- **plugin-remove-pwa:** improve cache handling ([#531](https://github.com/vuepress/ecosystem/issues/531)) ([a7e8a1a](https://github.com/vuepress/ecosystem/commit/a7e8a1a788e44d4da5de2f5a9b6b4443d996acdb))
+
 # [2.0.0-rc.108](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.107...v2.0.0-rc.108) (2025-06-04)
 
 ### Bug Fixes

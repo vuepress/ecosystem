@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.109](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.108...v2.0.0-rc.109) (2025-06-17)
+
+### Bug Fixes
+
+- **plugin-git:** fix locale format ([#537](https://github.com/vuepress/ecosystem/issues/537)) ([cc2132e](https://github.com/vuepress/ecosystem/commit/cc2132e51973b60cafc18883b993cb6693f12a67))
+
 # [2.0.0-rc.108](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.107...v2.0.0-rc.108) (2025-06-04)
 
 **Note:** Version bump only for package @vuepress/plugin-git
