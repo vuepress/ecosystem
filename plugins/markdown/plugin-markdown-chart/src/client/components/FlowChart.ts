@@ -107,7 +107,7 @@ export default defineComponent({
       if (!__VUEPRESS_DEV__) return
 
       watch(
-        [code, id, preset],
+        [code, preset],
         async () => {
           destroyFlowChart()
           await nextTick()
