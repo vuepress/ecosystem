@@ -1,13 +1,10 @@
 import { useData } from '@theme/useData'
+import { darkModeSymbol } from '@vuepress/helper/client'
 import { usePreferredDark, useStorage, watchImmediate } from '@vueuse/core'
-import type { InjectionKey, WritableComputedRef } from 'vue'
+import type { WritableComputedRef } from 'vue'
 import { computed, inject, onMounted, onUnmounted, provide } from 'vue'
 
 export type DarkModeRef = WritableComputedRef<boolean>
-
-export const darkModeSymbol: InjectionKey<DarkModeRef> = Symbol(
-  __VUEPRESS_DEV__ ? 'darkMode' : '',
-)
 
 const applyDarkModeToHTML = (isDarkMode: DarkModeRef): void => {
   const update = (value = isDarkMode.value): void => {
@@ -31,7 +28,7 @@ const applyDarkModeToHTML = (isDarkMode: DarkModeRef): void => {
  * Inject dark mode global computed
  */
 export const useDarkMode = (): DarkModeRef => {
-  const isDarkMode = inject(darkModeSymbol)
+  const isDarkMode = inject<WritableComputedRef<boolean>>(darkModeSymbol)
   if (!isDarkMode) {
     throw new Error('useDarkMode() is called without provider.')
   }

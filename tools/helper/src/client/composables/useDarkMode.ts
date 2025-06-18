@@ -1,9 +1,15 @@
-import type { Ref } from 'vue'
-import { readonly, ref } from 'vue'
+import type { ComputedRef, InjectionKey, Ref, WritableComputedRef } from 'vue'
+import { inject, readonly, ref } from 'vue'
 
 import { getDarkMode } from '../utils/index.js'
 
-const darkmode: Ref<boolean> = ref(false)
+export type DarkModeRef = Ref<boolean>
+
+export const darkModeSymbol: InjectionKey<
+  ComputedRef<boolean> | Ref<boolean> | WritableComputedRef<boolean>
+> = Symbol(__VUEPRESS_DEV__ ? 'darkMode' : '')
+
+const darkmode: DarkModeRef = ref(false)
 
 // Ensure darkmode is initialized only once in client-side
 if (typeof document !== 'undefined') {
@@ -27,4 +33,5 @@ if (typeof document !== 'undefined') {
  * @returns Readonly darkmode ref / 只读的暗色模式响应式引用
  */
 
-export const useDarkMode = (): Readonly<Ref<boolean>> => readonly(darkmode)
+export const useDarkMode = (): Readonly<Ref<boolean>> =>
+  readonly(inject(darkModeSymbol, darkmode))

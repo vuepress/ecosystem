@@ -99,20 +99,15 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      let pending: Promise<void> | null = null
-
       watchImmediate(
         __VUEPRESS_DEV__
           ? // config must be changed if type is changed, so no need to watch type
             [() => props.config, isDarkMode]
           : isDarkMode,
         async () => {
-          await pending
           destroyChart()
           await nextTick()
-          pending = renderChart()
-          await pending
-          pending = null
+          await renderChart()
           loaded.value = true
         },
         { flush: 'post' },
