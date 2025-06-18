@@ -1,4 +1,5 @@
 import { LoadingIcon, decodeData, useDarkMode } from '@vuepress/helper/client'
+import { watchImmediate } from '@vueuse/core'
 import type { Chart, ChartConfiguration } from 'chart.js'
 import type { PropType, VNode } from 'vue'
 import {
@@ -9,9 +10,8 @@ import {
   onUnmounted,
   ref,
   shallowRef,
-  watch,
+  useId,
 } from 'vue'
-import { onContentUpdated } from 'vuepress/client'
 
 import '../styles/chartjs.css'
 
@@ -71,8 +71,7 @@ export default defineComponent({
   setup(props) {
     const isDarkMode = useDarkMode()
     const chartElement = shallowRef<HTMLElement>()
-    const chartCanvasElement = shallowRef<HTMLCanvasElement>()
-
+    const id = useId()
     const loaded = ref(false)
 
     let chartjs: Chart | null
@@ -96,28 +95,25 @@ export default defineComponent({
       const chartConfig = decodeData(props.config)
       const data = parseChartConfig(chartConfig, props.type)
 
-      const ctx = chartCanvasElement.value!.getContext('2d')!
-
-      chartjs = new ChartJs(ctx, data)
+      chartjs = new ChartJs(id, data)
     }
 
-    onContentUpdated(async (reason) => {
-      if (reason === 'mounted') {
-        await renderChart()
-        loaded.value = true
-      }
-    })
-
     onMounted(() => {
-      watch(
+      let pending: Promise<void> | null = null
+
+      watchImmediate(
         __VUEPRESS_DEV__
           ? // config must be changed if type is changed, so no need to watch type
             [() => props.config, isDarkMode]
           : isDarkMode,
         async () => {
+          await pending
           destroyChart()
           await nextTick()
-          await renderChart()
+          pending = renderChart()
+          await pending
+          pending = null
+          loaded.value = true
         },
         { flush: 'post' },
       )
@@ -142,7 +138,7 @@ export default defineComponent({
           },
         },
         h('canvas', {
-          ref: chartCanvasElement,
+          id,
           height: 400,
         }),
       ),

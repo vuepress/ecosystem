@@ -1,31 +1,22 @@
-import { useMutationObserver } from '@vueuse/core'
 import type { Ref } from 'vue'
-import { onMounted, readonly, ref } from 'vue'
+import { readonly, ref } from 'vue'
 
 import { getDarkMode } from '../utils/index.js'
 
-let darkmode: Readonly<Ref<boolean>> | null = null
+const darkmode: Ref<boolean> = ref(false)
 
-const _useDarkMode = (): Readonly<Ref<boolean>> => {
-  const isDarkMode = ref(false)
+// Ensure darkmode is initialized only once in client-side
+if (typeof document !== 'undefined') {
+  darkmode.value = getDarkMode()
 
-  onMounted(() => {
-    isDarkMode.value = getDarkMode()
-
-    // Watch darkmode change
-    useMutationObserver(
-      document.documentElement,
-      () => {
-        isDarkMode.value = getDarkMode()
-      },
-      {
-        attributeFilter: ['data-theme'],
-        attributes: true,
-      },
-    )
+  const mutationObserver = new MutationObserver(() => {
+    darkmode.value = getDarkMode()
   })
 
-  return readonly(isDarkMode)
+  mutationObserver.observe(document.documentElement, {
+    attributeFilter: ['data-theme'],
+    attributes: true,
+  })
 }
 
 /**
@@ -35,6 +26,5 @@ const _useDarkMode = (): Readonly<Ref<boolean>> => {
  *
  * @returns Readonly darkmode ref / 只读的暗色模式响应式引用
  */
-// eslint-disable-next-line no-return-assign
-export const useDarkMode = (): Readonly<Ref<boolean>> =>
-  (darkmode ??= _useDarkMode())
+
+export const useDarkMode = (): Readonly<Ref<boolean>> => readonly(darkmode)
