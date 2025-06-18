@@ -21,8 +21,8 @@ onlyBuiltDependencies:
   - unrs-resolver
 
 overrides:
-  esbuild: ^0.25.4
+  esbuild: ^0.25.5
 
 peerDependencyRules:
   allowedVersions:
-    artalk>marked: ^15.0.0
+    artalk>marked: ^15.0.12
