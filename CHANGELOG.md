@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.110](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.109...v2.0.0-rc.110) (2025-06-19)
+
+### Bug Fixes
+
+- **plugin-markdown-chart:** fix wrong watching of id ([4a3b136](https://github.com/vuepress/ecosystem/commit/4a3b136bce82a18b3565ba571e442a93d2e8c2bc))
+
+### Features
+
+- **helper:** improve darkmode ([#540](https://github.com/vuepress/ecosystem/issues/540)) ([cc167e7](https://github.com/vuepress/ecosystem/commit/cc167e7bd2306ca5d548ab12268b2d4ad40d729f))
+- use chokidar v4 ([#535](https://github.com/vuepress/ecosystem/issues/535)) ([a7627e2](https://github.com/vuepress/ecosystem/commit/a7627e266ed10f04ffe6d877eb99dbebf56b73a6))
+
 # [2.0.0-rc.109](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.108...v2.0.0-rc.109) (2025-06-17)
 
 ### Bug Fixes

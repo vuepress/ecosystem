@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-meilisearch",
-  "version": "2.0.0-rc.109",
+  "version": "2.0.0-rc.110",
   "description": "VuePress plugin - built-in meilisearch",
   "keywords": [
     "vuepress-plugin",

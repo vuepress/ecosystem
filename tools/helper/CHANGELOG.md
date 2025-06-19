@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.110](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.109...v2.0.0-rc.110) (2025-06-19)
+
+### Features
+
+- **helper:** improve darkmode ([#540](https://github.com/vuepress/ecosystem/issues/540)) ([cc167e7](https://github.com/vuepress/ecosystem/commit/cc167e7bd2306ca5d548ab12268b2d4ad40d729f))
+
 # [2.0.0-rc.109](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.108...v2.0.0-rc.109) (2025-06-17)
 
 **Note:** Version bump only for package @vuepress/helper

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-notice",
-  "version": "2.0.0-rc.109",
+  "version": "2.0.0-rc.110",
   "description": "VuePress plugin - back to top",
   "keywords": [
     "vuepress-plugin",
