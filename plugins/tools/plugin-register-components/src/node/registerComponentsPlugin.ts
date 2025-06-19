@@ -63,8 +63,11 @@ export const registerComponentsPlugin = ({
           cwd: componentsDir,
           ignoreInitial: true,
           ignored: (filepath, stats) =>
-            !!stats?.isFile() &&
-            micromatch.isMatch(filepath, componentsPatterns),
+            Boolean(stats?.isFile()) &&
+            !micromatch.isMatch(
+              path.relative(componentsDir, filepath),
+              componentsPatterns,
+            ),
         })
         componentsWatcher.on('add', () => {
           void prepareClientConfigFile(app, options, optionsHash)
