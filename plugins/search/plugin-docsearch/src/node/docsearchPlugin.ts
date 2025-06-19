@@ -1,32 +1,9 @@
 import { getFullLocaleConfig } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
-import type { DocSearchOptions } from '../shared/index.js'
 import { docSearchLocaleInfo } from './locales.js'
+import type { DocSearchPluginOptions } from './options.js'
 import { prepareClientConfig } from './prepareClientConfig.js'
 import { PLUGIN_NAME } from './utils.js'
-
-/**
- * Options for @vuepress/plugin-docsearch
- *
- * @vuepress/plugin-docsearch 的配置项
- */
-export interface DocSearchPluginOptions extends DocSearchOptions {
-  /**
-   * Base path of the search index
-   *
-   * 搜索索引的基础路径
-   */
-  indexBase?: string
-
-  /**
-   * Whether to inject docsearch default styles
-   *
-   * 是否注入 docsearch 的默认样式
-   *
-   * @default true
-   */
-  injectStyles?: boolean
-}
 
 /**
  * DocSearch plugin
@@ -57,6 +34,8 @@ export interface DocSearchPluginOptions extends DocSearchOptions {
  *   ],
  * }
  * ```
+ *
+ * @returns Plugin object / 插件对象
  */
 export const docsearchPlugin = ({
   injectStyles = true,
