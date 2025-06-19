@@ -1,4 +1,5 @@
 import { watch } from 'chokidar'
+import micromatch from 'micromatch'
 import type { Plugin } from 'vuepress/core'
 import { hash, path } from 'vuepress/utils'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
@@ -58,9 +59,15 @@ export const registerComponentsPlugin = ({
 
     onWatched: (app, watchers) => {
       if (componentsDir) {
-        const componentsWatcher = watch(componentsPatterns, {
+        const componentsWatcher = watch('.', {
           cwd: componentsDir,
           ignoreInitial: true,
+          ignored: (filepath, stats) =>
+            Boolean(stats?.isFile()) &&
+            !micromatch.isMatch(
+              path.relative(componentsDir, filepath),
+              componentsPatterns,
+            ),
         })
         componentsWatcher.on('add', () => {
           void prepareClientConfigFile(app, options, optionsHash)

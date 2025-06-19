@@ -94,9 +94,12 @@ export const slimsearchPlugin =
 
         if (hotReload) {
           // This ensure the page is generated or updated
-          const searchIndexWatcher = watch('pages/**/*.vue', {
+          const searchIndexWatcher = watch('pages', {
             cwd: app.dir.temp(),
             ignoreInitial: true,
+            // only watch vue files
+            ignored: (path, stats) =>
+              Boolean(stats?.isFile() && !path.endsWith('.vue')),
           })
 
           searchIndexWatcher.on('add', (path) => {
