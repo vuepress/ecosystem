@@ -1,5 +1,5 @@
-import { glob } from 'node:fs/promises'
 import { watch } from 'chokidar'
+import micromatch from 'micromatch'
 import type { Plugin } from 'vuepress/core'
 import { hash, path } from 'vuepress/utils'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
@@ -57,19 +57,14 @@ export const registerComponentsPlugin = ({
     clientConfigFile: (app) =>
       prepareClientConfigFile(app, options, optionsHash),
 
-    onWatched: async (app, watchers) => {
+    onWatched: (app, watchers) => {
       if (componentsDir) {
-        const files: string[] = []
-        const globResults = glob(componentsPatterns, {
+        const componentsWatcher = watch('.', {
           cwd: componentsDir,
-        })
-
-        for await (const file of globResults) {
-          files.push(file)
-        }
-
-        const componentsWatcher = watch(files, {
           ignoreInitial: true,
+          ignored: (filepath, stats) =>
+            !!stats?.isFile() &&
+            micromatch.isMatch(filepath, componentsPatterns),
         })
         componentsWatcher.on('add', () => {
           void prepareClientConfigFile(app, options, optionsHash)
