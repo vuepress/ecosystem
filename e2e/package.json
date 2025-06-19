@@ -36,6 +36,6 @@
     "vuepress": "catalog:"
   },
   "devDependencies": {
-    "@playwright/test": "^1.53.0"
+    "@playwright/test": "^1.53.1"
   }
 }
