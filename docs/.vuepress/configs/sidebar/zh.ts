@@ -159,6 +159,7 @@ export const sidebarZh: SidebarOptions = {
     'google-tag-manager',
     'redirect',
     'register-components',
+    'replace-assets',
   ],
 
   '/zh/plugins/search/': [
