@@ -1,4 +1,4 @@
-import { addViteConfig, chainWebpack, getBundlerName } from '@vuepress/helper'
+import { addViteConfig, configWebpack, getBundlerName } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import { PLUGIN_NAME } from './constants.js'
 import { normalizeRules } from './normalizeRules.js'
@@ -45,10 +45,10 @@ export const replaceAssetsPlugin = (
       }
 
       if (bundle === 'webpack') {
-        chainWebpack(bundlerOptions, app, (config) => {
-          config
-            .plugin(PLUGIN_NAME)
-            .use(createWebpackPluginReplaceAssets(), [rules])
+        configWebpack(bundlerOptions, app, (config) => {
+          config.plugins ??= []
+          const replaceAssets = createWebpackPluginReplaceAssets()
+          config.plugins.push(replaceAssets(rules))
         })
       }
     },
