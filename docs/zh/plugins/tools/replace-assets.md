@@ -24,17 +24,18 @@ icon: lucide:replace
 
 插件旨在解决这个问题。在内容创作过程中，只需要直接使用本地资源地址，由插件在合适的阶段，完成资源地址的替换。
 
-::: important 插件仅查找 `/` 开头的本地静态资源链接，比如 `/images/foo.jpg`
-:::
-
 ::: important 插件不会修改源文件，仅在编译后的内容中进行替换
 :::
 
 ## 使用方法
 
+### 安装
+
 ```sh
 npm i -D @vuepress/plugin-replace-assets@next
 ```
+
+### 配置
 
 ```ts title=".vuepress/config.ts"
 import { replaceAssetsPlugin } from '@vuepress/plugin-replace-assets'
@@ -45,6 +46,56 @@ export default {
   ],
 }
 ```
+
+### 资源管理
+
+**你应该将资源存放在 [.vuepress/public](https://v2.vuepress.vuejs.org/zh/guide/assets.html#public-%E6%96%87%E4%BB%B6) 目录下**:
+
+```sh
+./docs
+├── .vuepress
+│ └── public  # [!code hl:6]
+│     ├── images
+│     │   ├── foo.jpg
+│     │   └── bar.jpg
+│     └── medias
+│         └── foo.mp4
+└── README.md
+```
+
+::: tip 为什么需要存放在这个目录下？
+当站点完成编译准备部署前，我们可以很方便地直接将这个目录下的文件上传到 CDN 。
+:::
+
+在 markdown 中，直接使用本地资源地址：
+
+```md
+![foo](/images/foo.jpg)
+
+<img src="/images/foo.jpg">
+```
+
+在 `javascript` 中：
+
+```js
+const foo = '/images/foo.jpg'
+
+const img = document.createElement('img')
+img.src = '/images/foo.jpg'
+```
+
+以及在 样式文件 中：
+
+```css
+.foo {
+  background: url('/images/foo.jpg');
+}
+```
+
+插件会正确识别这些资源，并在编译后的内容中进行替换。
+
+:::warning 插件不支持识别 `'/images/' + 'foo.jpg'` 拼接的路径。
+:::
 
 ## 配置说明
 
@@ -82,17 +133,17 @@ export interface ReplaceAssetsOptions {
    */
   rules?: ReplacementRule | ReplacementRule[]
   /**
-   * 内置的资源匹配规则，匹配查找常见的图片、视频、音频等资源路径
-   */
-  all?: Replacement
-  /**
-   * 内置的图片匹配规则，匹配查找常见的图片路径
+   * 内置的图片匹配规则，匹配查找 `^/images/` 开头的常见的图片路径
    */
   image?: Replacement
   /**
-   * 内置的媒体匹配规则，匹配查找常见的视频、音频等媒体路径
+   * 内置的媒体匹配规则，匹配查找 `^/medias/` 开头的常见的视频、音频等媒体路径
    */
   media?: Replacement
+  /**
+   * 相当于同时设置 `image` 和 `media`
+   */
+  all?: Replacement
 }
 
 /**
@@ -109,8 +160,20 @@ export type ReplaceAssetsPluginOptions =
 
 为便于使用，插件提供了内置的资源匹配规则，你可以直接使用它们。
 
-- `image`: 查找图片资源，包括 `['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp', 'avif']` 格式的本地图片资源链接
-- `media`: 查找媒体资源，包括 `['mp4', 'webm', 'ogg', 'mp3', 'wav', 'flac', 'aac', 'm3u8', 'm3u', 'flv', 'pdf']` 格式的本地媒体资源链接
+- `image`: 查找 `.vuepress/public/images` 目录下的图片资源，包括 `['apng','bmp','png','jpeg','jpg','jfif','pjpeg','pjp','gif','svg','ico','webp','avif','cur','jxl']` 格式的本地图片资源链接：
+
+  ```md
+  ![](/images/foo.jpg)
+  <img src="/images/bar/baz.png">
+  ```
+
+- `media`: 查找 `.vuepress/public/medias` 目录下的媒体资源，包括 `['mp4','webm','ogg','mp3','wav','flac','aac','opus','mov','m4a','vtt','pdf']` 格式的本地媒体资源链接：
+
+  ```md
+  <video src="/medias/foo.mp4">
+  <audio src="/medias/bar.mp3">
+  ```
+
 - `all`: 查找 图片 和 媒体资源，即 `image` 和 `media` 的合集
 
 直接传入 **资源链接前缀** 或 **资源链接替换函数** 时，插件使用 `all` 规则替换资源链接。
@@ -134,8 +197,8 @@ import { replaceAssetsPlugin } from '@vuepress/plugin-replace-assets'
 export default {
   plugins: [
     // replaceAssetsPlugin({  // [!code hl:4]
-    //   image: 'https://image.cdn.com/',
-    //   media: 'https://media.cdn.com/'
+    //   image: 'https://image.cdn.com',
+    //   media: 'https://media.cdn.com'
     // }),
     replaceAssetsPlugin({
       // [!code ++:4]

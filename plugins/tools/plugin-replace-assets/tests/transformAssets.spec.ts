@@ -87,7 +87,23 @@ describe('plugin-replace-assets > isMatchUrl', () => {
 })
 
 describe('plugin-replace-assets > replacementAssetWithRules', () => {
-  const IMAGE_SUPPORTED = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'avif']
+  const IMAGE_SUPPORTED = [
+    'apng',
+    'bmp',
+    'png',
+    'jpg',
+    'jpeg',
+    'jfif',
+    'pjpeg',
+    'pjp',
+    'gif',
+    'svg',
+    'ico',
+    'webp',
+    'avif',
+    'cur',
+    'jxl',
+  ]
   const MEDIA_SUPPORTED = [
     'mp4',
     'webm',
@@ -96,9 +112,10 @@ describe('plugin-replace-assets > replacementAssetWithRules', () => {
     'wav',
     'flac',
     'aac',
-    'm3u8',
-    'm3u',
-    'flv',
+    'opus',
+    'mov',
+    'm4a',
+    'vtt',
     'pdf',
   ]
   const replacementFn = vi.fn((url) => `https://example.com/assets${url}`)
@@ -136,24 +153,24 @@ describe('plugin-replace-assets > replacementAssetWithRules', () => {
       expects: [
         // images
         ...IMAGE_SUPPORTED.map((ext) => [
-          `/images-1/foo.${ext}`,
-          `https://example.com/assets/images-1/foo.${ext}`,
+          `/images/bar.${ext}`,
+          `https://example.com/assets/images/bar.${ext}`,
         ]),
         // media
         ...MEDIA_SUPPORTED.map((ext) => [
-          `/medias-1/foo.${ext}`,
-          `https://example.com/assets/medias-1/foo.${ext}`,
+          `/medias/bar.${ext}`,
+          `https://example.com/assets/medias/bar.${ext}`,
         ]),
         // have query string
         [
-          '/images-1/foo.jpg?a=1',
-          'https://example.com/assets/images-1/foo.jpg?a=1',
+          '/images/bar.jpg?a=1',
+          'https://example.com/assets/images/bar.jpg?a=1',
         ],
         // cached images
-        ['/images-1/foo.jpg', 'https://example.com/assets/images-1/foo.jpg'],
+        ['/images/bar.jpg', 'https://example.com/assets/images/bar.jpg'],
         // no supported
-        ['/images-1/foo.txt', undefined],
-        ['/medias-1/foo', undefined],
+        ['/images/bar.txt', undefined],
+        ['/medias/bar', undefined],
       ] as const,
     },
   ])('$name', ({ name, rules, expects }) => {

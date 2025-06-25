@@ -1,6 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
 import {
-  KNOWN_ASSET_EXTENSIONS,
   KNOWN_IMAGE_EXTENSIONS,
   KNOWN_MEDIA_EXTENSIONS,
 } from '../src/node/constants.js'
@@ -22,7 +21,11 @@ describe('plugin-replace-assets > normalizeRules', () => {
 
     expect(rules).toEqual([
       {
-        find: createFindPattern(KNOWN_ASSET_EXTENSIONS),
+        find: createFindPattern('images', KNOWN_IMAGE_EXTENSIONS),
+        replacement: 'https://example.com/assets/',
+      },
+      {
+        find: createFindPattern('medias', KNOWN_MEDIA_EXTENSIONS),
         replacement: 'https://example.com/assets/',
       },
     ])
@@ -36,7 +39,11 @@ describe('plugin-replace-assets > normalizeRules', () => {
 
     expect(rules).toEqual([
       {
-        find: createFindPattern(KNOWN_ASSET_EXTENSIONS),
+        find: createFindPattern('images', KNOWN_IMAGE_EXTENSIONS),
+        replacement,
+      },
+      {
+        find: createFindPattern('medias', KNOWN_MEDIA_EXTENSIONS),
         replacement,
       },
     ])
@@ -85,21 +92,16 @@ describe('plugin-replace-assets > normalizeRules', () => {
     const rules = normalizeRules({
       image: 'https://example.com/images/',
       media,
-      all: 'https://example.com/assets/',
     })
 
     expect(rules).toEqual([
       {
-        find: createFindPattern(KNOWN_IMAGE_EXTENSIONS),
+        find: createFindPattern('images', KNOWN_IMAGE_EXTENSIONS),
         replacement: 'https://example.com/images/',
       },
       {
-        find: createFindPattern(KNOWN_MEDIA_EXTENSIONS),
+        find: createFindPattern('medias', KNOWN_MEDIA_EXTENSIONS),
         replacement: media,
-      },
-      {
-        find: createFindPattern(KNOWN_ASSET_EXTENSIONS),
-        replacement: 'https://example.com/assets/',
       },
     ])
   })

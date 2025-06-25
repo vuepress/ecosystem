@@ -1,13 +1,12 @@
 import { isArray, isFunction } from '@vuepress/helper'
-import {
-  KNOWN_ASSET_EXTENSIONS,
-  KNOWN_IMAGE_EXTENSIONS,
-  KNOWN_MEDIA_EXTENSIONS,
-} from './constants.js'
+import { KNOWN_IMAGE_EXTENSIONS, KNOWN_MEDIA_EXTENSIONS } from './constants.js'
 import type { ReplaceAssetsPluginOptions, ReplacementRule } from './types.js'
 
-export const createFindPattern = (extensions: string[]): RegExp => {
-  return new RegExp(`\\.(?:${extensions.join('|')})(\\?.*)?$`)
+export const createFindPattern = (
+  dir: string,
+  extensions: string[],
+): RegExp => {
+  return new RegExp(`^/${dir}/.*\\.(?:${extensions.join('|')})(\\?.*)?$`)
 }
 
 /**
@@ -21,11 +20,10 @@ export const normalizeRules = (
   if (!options) return []
 
   if (typeof options === 'string' || isFunction(options)) {
-    normalized.push({
-      find: createFindPattern(KNOWN_ASSET_EXTENSIONS),
-      replacement: options,
-    })
-    return normalized
+    // eslint-disable-next-line no-param-reassign
+    options = {
+      all: options,
+    }
   }
 
   if (isArray(options)) {
@@ -38,31 +36,24 @@ export const normalizeRules = (
     return normalized
   }
 
-  if (options.image) {
-    normalized.push({
-      find: createFindPattern(KNOWN_IMAGE_EXTENSIONS),
-      replacement: options.image,
-    })
-  }
-
-  if (options.media) {
-    normalized.push({
-      find: createFindPattern(KNOWN_MEDIA_EXTENSIONS),
-      replacement: options.media,
-    })
-  }
-
-  if (options.all) {
-    normalized.push({
-      find: createFindPattern(KNOWN_ASSET_EXTENSIONS),
-      replacement: options.all,
-    })
-  }
-
   if (options.rules) {
     normalized.push(
       ...(isArray(options.rules) ? options.rules : [options.rules]),
     )
+  }
+
+  if (options.image || options.all) {
+    normalized.push({
+      find: createFindPattern('images', KNOWN_IMAGE_EXTENSIONS),
+      replacement: options.image || options.all!,
+    })
+  }
+
+  if (options.media || options.all) {
+    normalized.push({
+      find: createFindPattern('medias', KNOWN_MEDIA_EXTENSIONS),
+      replacement: options.media || options.all!,
+    })
   }
 
   return normalized

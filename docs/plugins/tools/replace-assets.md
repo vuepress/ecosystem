@@ -24,17 +24,18 @@ During this process, content creation is frequently interrupted.
 
 This plugin aims to solve this problem. During content creation, you only need to directly use local asset addresses, and the plugin will handle the replacement of asset addresses at the appropriate stage.
 
-::: important The plugin only finds local static assets links that start with `/`, such as `/images/foo.jpg`.
-:::
-
 ::: important The plugin does not modify the source files; it only performs replacements in the compiled content.
 :::
 
 ## Usage
 
+### Install
+
 ```sh
 npm i -D @vuepress/plugin-replace-assets@next
 ```
+
+### Configuration
 
 ```ts title=".vuepress/config.ts"
 import { replaceAssetsPlugin } from '@vuepress/plugin-replace-assets'
@@ -45,6 +46,59 @@ export default {
   ],
 }
 ```
+
+### Assets Management
+
+**You should store the assets in the [.vuepress/public](https://v2.vuepress.vuejs.org/guide/assets.html#public-files) directory**:
+
+```sh
+./docs
+├── .vuepress
+│ └── public  # [!code hl:6]
+│     ├── images
+│     │   ├── foo.jpg
+│     │   └── bar.jpg
+│     └── medias
+│         └── foo.mp4
+└── README.md
+```
+
+::: tip Why is it necessary to store files in this directory?
+
+Before the site is compiled and ready for deployment, we can easily upload the files from this directory directly to a CDN.
+
+:::
+
+In markdown, use local resource paths directly:
+
+```md
+![foo](/images/foo.jpg)
+
+<img src="/images/foo.jpg">
+```
+
+In `javascript`:
+
+```js
+const foo = '/images/foo.jpg'
+
+const img = document.createElement('img')
+img.src = '/images/foo.jpg'
+```
+
+In `css`:
+
+```css
+.foo {
+  background: url('/images/foo.jpg');
+}
+```
+
+The plugin will correctly identify these resources and replace them in the compiled content.
+
+:::warning The plugin does not support recognizing concatenated paths like `'/images/' + 'foo.jpg'`.
+
+:::
 
 ## Options
 
@@ -82,17 +136,17 @@ export interface ReplaceAssetsOptions {
    */
   rules?: ReplacementRule | ReplacementRule[]
   /**
-   * Built-in assets matching rules, designed to locate and match common assets paths such as images, videos, audio, etc.
-   */
-  all?: Replacement
-  /**
-   * Built-in image matching rules, designed to locate and match common image paths.
+   * Built-in image matching rules, designed to match and find common image paths starting with `^/images/`
    */
   image?: Replacement
   /**
-   * Built-in media matching rules, designed to locate and match common media paths such as videos, audio, etc.
+   * Built-in media matching rules, designed to match and locate common media paths such as videos and audio that start with `^/medias/`.
    */
   media?: Replacement
+  /**
+   * Equivalent to setting both `image` and `media` simultaneously.
+   */
+  all?: Replacement
 }
 
 /**
@@ -109,9 +163,19 @@ export type ReplaceAssetsPluginOptions =
 
 For ease of use, the plugin provides built-in assets matching rules that you can directly utilize.
 
-- `image`: Locates image assets, including local image asset links in formats such as `['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp', 'avif']`.
+- `image`: Find image assets in the `.vuepress/public/images` directory, including local image asset links in formats such as `['apng','bmp','png','jpg','jpeg','jfif','pjpeg','pjp','gif','svg','ico','webp','avif','cur','jxl']`:
 
-- `media`: Locates media assets, including local media asset links in formats such as `['mp4', 'webm', 'ogg', 'mp3', 'wav', 'flac', 'aac', 'm3u8', 'm3u', 'flv', 'pdf']`.
+  ```md
+  ![](/images/foo.jpg)
+  <img src="/images/bar/baz.png">
+  ```
+
+- `media`: Find media assets in the `.vuepress/public/medias` directory, including local media asset links in formats such as `['mp4','webm','ogg','mp3','wav','flac','aac','opus','mov','m4a','vtt','pdf']`:
+
+  ```md
+  <video src="/medias/foo.mp4">
+  <audio src="/medias/bar.mp3">
+  ```
 
 - `all`: Locates both image and media assets, combining the rules of `image` and `media`.
 
@@ -136,8 +200,8 @@ import { replaceAssetsPlugin } from '@vuepress/plugin-replace-assets'
 export default {
   plugins: [
     // replaceAssetsPlugin({  // [!code hl:4]
-    //   image: 'https://image.cdn.com/',
-    //   media: 'https://media.cdn.com/'
+    //   image: 'https://image.cdn.com',
+    //   media: 'https://media.cdn.com'
     // }),
     replaceAssetsPlugin({
       // [!code ++:4]

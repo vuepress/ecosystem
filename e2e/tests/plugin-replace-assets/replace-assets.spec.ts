@@ -4,7 +4,7 @@ test.describe('plugin-replace-assets', () => {
   test('replace assets', async ({ page }) => {
     await page.goto('replace-assets/')
 
-    const PREFIX = 'https://cnd.example.com/replace-assets/foo.'
+    const PREFIX = 'https://cnd.example.com/images/replace-assets/foo.'
 
     const markdownImgList = page.locator('.markdown-syntax img')
 

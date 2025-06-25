@@ -4,13 +4,20 @@ export const PLUGIN_NAME = '@vuepress/plugin-replace-assets'
  * images extensions
  */
 export const KNOWN_IMAGE_EXTENSIONS: string[] = [
+  'apng',
+  'bmp',
   'png',
-  'jpg',
-  'jpeg',
+  'jpe?g',
+  'jfif',
+  'pjpeg',
+  'pjp',
   'gif',
-  'webp',
   'svg',
+  'ico',
+  'webp',
   'avif',
+  'cur',
+  'jxl',
 ]
 
 /**
@@ -24,14 +31,10 @@ export const KNOWN_MEDIA_EXTENSIONS: string[] = [
   'wav',
   'flac',
   'aac',
-  'm3u8',
-  'm3u',
-  'flv',
+  'opus',
+  'mov',
+  'm4a',
+  'vtt',
 
   'pdf',
-]
-
-export const KNOWN_ASSET_EXTENSIONS: string[] = [
-  ...KNOWN_IMAGE_EXTENSIONS,
-  ...KNOWN_MEDIA_EXTENSIONS,
 ]

@@ -309,7 +309,7 @@ export default defineUserConfig({
       componentsPatterns: ['**/*.vue', '**/*.ts', '**/*.js'],
     }),
     replaceAssetsPlugin({
-      find: /^\/replace-assets\/.*\.(png|jpg|svg|gif|webp)$/,
+      find: /^\/images\/replace-assets\/.*\.(png|jpg|svg|gif|webp)$/,
       replacement: 'https://cnd.example.com',
     }),
     sassPalettePlugin({

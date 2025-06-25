@@ -75,22 +75,9 @@ export interface ReplaceAssetsOptions {
    */
   rules?: ReplacementRule | ReplacementRule[]
   /**
-   * Built-in assets matching rules, designed to locate and match common assets paths such as images, videos, audio, etc.
+   * Built-in image matching rules, designed to match and find common image paths starting with `^/images/`
    *
-   * 内置的资源匹配规则，匹配查找常见的图片、视频、音频等资源路径
-   *
-   * @example
-   * ```
-   * {
-   *   all: 'https://example.com'
-   * }
-   * ```
-   */
-  all?: Replacement
-  /**
-   * Built-in image matching rules, designed to locate and match common image paths.
-   *
-   * 内置的图片匹配规则，匹配查找常见的图片路径
+   * 内置的图片匹配规则，匹配查找 `^/images/` 开头的常见的图片路径
    *
    * @example
    * ```
@@ -101,9 +88,9 @@ export interface ReplaceAssetsOptions {
    */
   image?: Replacement
   /**
-   * Built-in media matching rules, designed to locate and match common media paths such as videos, audio, etc.
+   * Built-in media matching rules, designed to match and locate common media paths such as videos and audio that start with `^/medias/`.
    *
-   * 内置的媒体匹配规则，匹配查找常见的视频、音频等媒体路径
+   * 内置的媒体匹配规则，匹配查找 `^/medias/` 开头的常见的视频、音频等媒体路径
    *
    * @example
    * ```
@@ -113,6 +100,19 @@ export interface ReplaceAssetsOptions {
    * ```
    */
   media?: Replacement
+  /**
+   * Equivalent to setting both {@link ReplaceAssetsOptions.image image} and {@link ReplaceAssetsOptions.media media} simultaneously.
+   *
+   * 相当于同时设置 {@link ReplaceAssetsOptions.image image} 和 {@link ReplaceAssetsOptions.media media}
+   *
+   * @example
+   * ```
+   * {
+   *   all: 'https://example.com'
+   * }
+   * ```
+   */
+  all?: Replacement
 }
 
 /**
