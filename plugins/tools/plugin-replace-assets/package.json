@@ -1,0 +1,54 @@
+{
+  "name": "@vuepress/plugin-replace-assets",
+  "version": "2.0.0-rc.110",
+  "description": "VuePress plugin - replace assets",
+  "keywords": [
+    "vuepress-plugin",
+    "vuepress",
+    "plugin",
+    "replace assets"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/plugins/tools/replace-assets.html",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/tools/plugin-replace-assets"
+  },
+  "license": "MIT",
+  "author": "pengzhanbo",
+  "maintainers": [
+    {
+      "name": "pengzhanbo",
+      "email": "volodymyr@foxmail.com"
+    }
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/node/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
+  },
+  "dependencies": {
+    "@vuepress/helper": "workspace:*",
+    "magic-string": "^0.30.17",
+    "unplugin": "^2.3.5"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

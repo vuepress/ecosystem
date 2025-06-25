@@ -159,6 +159,7 @@ export const sidebarEn: SidebarOptions = {
     'google-tag-manager',
     'redirect',
     'register-components',
+    'replace-assets',
   ],
 
   '/plugins/search/': [

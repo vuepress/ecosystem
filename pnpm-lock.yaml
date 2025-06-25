@@ -305,6 +305,9 @@ importers:
       '@vuepress/plugin-register-components':
         specifier: workspace:*
         version: link:../plugins/tools/plugin-register-components
+      '@vuepress/plugin-replace-assets':
+        specifier: workspace:*
+        version: link:../plugins/tools/plugin-replace-assets
       '@vuepress/plugin-sass-palette':
         specifier: workspace:*
         version: link:../plugins/development/plugin-sass-palette
@@ -1349,6 +1352,21 @@ importers:
       '@types/micromatch':
         specifier: ^4.0.9
         version: 4.0.9
+
+  plugins/tools/plugin-replace-assets:
+    dependencies:
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../../tools/helper
+      magic-string:
+        specifier: ^0.30.17
+        version: 0.30.17
+      unplugin:
+        specifier: ^2.3.5
+        version: 2.3.5
+      vuepress:
+        specifier: 'catalog:'
+        version: 2.0.0-rc.23(@vuepress/bundler-vite@2.0.0-rc.23(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(sass@1.89.2)(terser@5.43.0)(tsx@4.20.3)(typescript@5.8.3)(yaml@2.8.0))(@vuepress/bundler-webpack@2.0.0-rc.23(esbuild@0.25.5)(typescript@5.8.3))(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3))
 
   themes/theme-default:
     dependencies:
@@ -9087,6 +9105,10 @@ packages:
     resolution: {integrity: sha512-8U/MtpkPkkk3Atewj1+RcKIjb5WBimZ/WSLhhR3w6SsIj8XJuKTacSP8g+2JhfSGw0Cb125Y+2zA/IzJZDVbhA==}
     engines: {node: '>=18.12.0'}
 
+  unplugin@2.3.5:
+    resolution: {integrity: sha512-RyWSb5AHmGtjjNQ6gIlA67sHOsWpsbWpwDokLwTcejVdOjEkJZh7QKu14J00gDDVSh8kGH4KYC/TNBceXFZhtw==}
+    engines: {node: '>=18.12.0'}
+
   unrs-resolver@1.9.0:
     resolution: {integrity: sha512-wqaRu4UnzBD2ABTC1kLfBjAqIDZ5YUTr/MLGa7By47JV1bJDSW7jq/ZSLigB7enLe7ubNaJhtnBXgrc/50cEhg==}
 
@@ -9356,6 +9378,9 @@ packages:
   webpack-v5-chain@1.0.0:
     resolution: {integrity: sha512-YtFduE7cIRW2v/Ofqmac68UNLk8C8ZnwQTBuClynJfGlMn4LgcDo5utFAx+Y5f8k5aG+yreUmEdXxwTsb3zxYQ==}
     engines: {node: '>=10.13.0'}
+
+  webpack-virtual-modules@0.6.2:
+    resolution: {integrity: sha512-66/V2i5hQanC51vBQKPH4aI8NMAcBW59FVBs+rC7eGHupMyfn34q7rZIE+ETlJ+XTevqfUhVVBgSUNSW2flEUQ==}
 
   webpack@5.99.9:
     resolution: {integrity: sha512-brOPwM3JnmOa+7kd3NsmOUOwbDAj8FT9xDsG3IW0MgbN9yZV7Oi/s/+MNQ/EcSMqw7qfoRyXPoeEWT8zLVdVGg==}
@@ -18222,6 +18247,12 @@ snapshots:
       pathe: 2.0.3
       picomatch: 4.0.2
 
+  unplugin@2.3.5:
+    dependencies:
+      acorn: 8.15.0
+      picomatch: 4.0.2
+      webpack-virtual-modules: 0.6.2
+
   unrs-resolver@1.9.0:
     dependencies:
       napi-postinstall: 0.2.4
@@ -18543,6 +18574,8 @@ snapshots:
     dependencies:
       deepmerge: 4.3.1
       javascript-stringify: 2.1.0
+
+  webpack-virtual-modules@0.6.2: {}
 
   webpack@5.99.9(esbuild@0.25.5):
     dependencies:
