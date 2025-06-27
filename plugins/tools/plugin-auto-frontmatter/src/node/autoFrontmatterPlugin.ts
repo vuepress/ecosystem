@@ -55,7 +55,6 @@ export const autoFrontmatterPlugin = (
         const watcher = watch('.', {
           cwd,
           ignoreInitial: true,
-          depth: Infinity,
           ignored: (filepath, stats) => {
             const isFile = Boolean(stats?.isFile())
             if (
