@@ -202,7 +202,10 @@ The plugin provides some built-in helper functions that can be used to add new f
 ### `addTitleByFilename(data, context)`
 
 ```ts
-addTitleByFilename(data: AutoFrontmatterData, context: AutoFrontmatterContext): void
+function addTitleByFilename(
+  data: AutoFrontmatterData,
+  context: AutoFrontmatterContext,
+): void
 ```
 
 Add title based on filename:
@@ -249,10 +252,10 @@ interface AddCreateDateOptions {
   format?: 'date' | 'full' | 'time'
 }
 
-addCreateDate(
+function addCreateDate(
   data: AutoFrontmatterData,
   context: AutoFrontmatterContext,
-  options?: AddCreateDateOptions
+  options?: AddCreateDateOptions,
 ): void
 ```
 
@@ -304,7 +307,10 @@ interface AddShortPermalinkOptions {
   suffix?: string
 }
 
-addShortPermalink(data: AutoFrontmatterData, options: AddShortPermalinkOptions): void
+function addShortPermalink(
+  data: AutoFrontmatterData,
+  options: AddShortPermalinkOptions,
+): void
 ```
 
 Using `nanoid` to generate random characters as permalink:

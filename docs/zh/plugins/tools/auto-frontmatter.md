@@ -203,7 +203,10 @@ export default {
 ### `addTitleByFilename(data, context)`
 
 ```ts
-addTitleByFilename(data: AutoFrontmatterData, context: AutoFrontmatterContext): void
+function addTitleByFilename(
+  data: AutoFrontmatterData,
+  context: AutoFrontmatterContext,
+): void
 ```
 
 根据文件名添加 title：
@@ -250,10 +253,10 @@ interface AddCreateDateOptions {
   format?: 'date' | 'full' | 'time'
 }
 
-addCreateDate(
+function addCreateDate(
   data: AutoFrontmatterData,
   context: AutoFrontmatterContext,
-  options?: AddCreateDateOptions
+  options?: AddCreateDateOptions,
 ): void
 ```
 
@@ -305,7 +308,10 @@ interface AddShortPermalinkOptions {
   suffix?: string
 }
 
-addShortPermalink(data: AutoFrontmatterData, options: AddShortPermalinkOptions): void
+function addShortPermalink(
+  data: AutoFrontmatterData,
+  options: AddShortPermalinkOptions,
+): void
 ```
 
 使用 `nanoid` 生成随机字符作为 permalink：
