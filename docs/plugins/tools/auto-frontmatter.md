@@ -8,7 +8,7 @@ icon: pajamas:insert
 
 Automatically insert frontmatter at the beginning of markdown files.
 
-When vuepress starts, locate markdown files based on **matching rules**, use the `handle(data [,context])` function to generate frontmatter, and then add the frontmatter to the beginning of the markdown file.
+When VuePress starts, locate markdown files based on **matching rules**, use the `handle(data [,context])` function to generate frontmatter, and then add the frontmatter to the beginning of the markdown file.
 
 ::: tip The plugin only processes markdown files under the [source directory](https://v2.vuepress.vuejs.org/guide/getting-started.html#directory-structure) that meet the [config.pagePatterns](https://v2.vuepress.vuejs.org/reference/config.html#pagepatterns) rules.
 :::

@@ -8,7 +8,7 @@ icon: pajamas:insert
 
 在 markdown 文件的头部自动插入 frontmatter。
 
-当 vuepress 启动时，根据 **匹配规则** 查找 markdown 文件，使用 `handle(data [,context])`
+当 VuePress 启动时，根据 **匹配规则** 查找 markdown 文件，使用 `handle(data [,context])`
 函数来生成 frontmatter，然后将 frontmatter 添加到 markdown 文件的头部。
 
 ::: tip 插件仅处理 [源文件目录](https://v2.vuepress.vuejs.org/zh/guide/getting-started.html#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84) 下的满足 [config.pagePatterns](https://v2.vuepress.vuejs.org/zh/reference/config.html#pagepatterns) 规则的 markdown 文件
