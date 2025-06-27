@@ -85,8 +85,8 @@ export type AutoFrontmatterPluginOptions =
 Pass directly to the `AutoFrontmatterHandle` function, indicating processing for all markdown files:
 
 ```ts title=".vuepress/config.ts"
-import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 import path from 'node:path'
+import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
   plugins: [
@@ -106,8 +106,8 @@ Use `AutoFrontmatterRule` to configure filter rules and handle functions, matchi
 The `filter` parameter accepts one or more glob strings, using [picomatch](https://github.com/micromatch/picomatch) for pattern matching:
 
 ```ts title=".vuepress/config.ts"
-import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 import path from 'node:path'
+import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
   plugins: [
@@ -125,8 +125,8 @@ export default {
 If you need to exclude files, you can pass a glob string starting with `!` to the `filter`:
 
 ```ts title=".vuepress/config.ts"
-import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 import path from 'node:path'
+import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
   plugins: [
@@ -145,8 +145,8 @@ export default {
 `filter` can also accept a function, where returning `true` indicates a match and returning `false` indicates no match:
 
 ```ts title=".vuepress/config.ts"
-import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 import path from 'node:path'
+import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
   plugins: [
@@ -167,8 +167,8 @@ export default {
 You can configure multiple filter rules and handle functions, allowing different processing for files in different directories:
 
 ```ts title=".vuepress/config.ts"
-import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 import path from 'node:path'
+import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
   plugins: [

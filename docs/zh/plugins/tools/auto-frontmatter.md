@@ -86,8 +86,8 @@ export type AutoFrontmatterPluginOptions =
 直接传入 `AutoFrontmatterHandle` 函数，表示对所有的 markdown 文件进行处理：
 
 ```ts title=".vuepress/config.ts"
-import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 import path from 'node:path'
+import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
   plugins: [
@@ -107,8 +107,8 @@ export default {
 `filter` 参数接收一个或多个 glob 字符串，使用 [picomatch](https://github.com/micromatch/picomatch) 进行模式匹配：
 
 ```ts title=".vuepress/config.ts"
-import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 import path from 'node:path'
+import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
   plugins: [
@@ -126,8 +126,8 @@ export default {
 如果需要排除文件，可以向 `filter` 传入以 `!` 开头的 glob 字符串：
 
 ```ts title=".vuepress/config.ts"
-import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 import path from 'node:path'
+import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
   plugins: [
@@ -146,8 +146,8 @@ export default {
 `filter` 也可以传入一个函数，返回 `true` 表示匹配，返回 `false` 表示不匹配：
 
 ```ts title=".vuepress/config.ts"
-import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 import path from 'node:path'
+import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
   plugins: [
@@ -168,8 +168,8 @@ export default {
 可以同时配置多个过滤规则和处理器，这样可以针对不同的目录下的文件进行不同的处理：
 
 ```ts title=".vuepress/config.ts"
-import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 import path from 'node:path'
+import { autoFrontmatterPlugin } from '@vuepress/plugin-auto-frontmatter'
 
 export default {
   plugins: [
