@@ -4,8 +4,8 @@ import { globby, path } from 'vuepress/utils'
 import { createFilter } from './createFilter.js'
 import {
   findRule,
-  generateFrontmatter,
-  generatorFileFrontmatter,
+  generateFileFrontmatter,
+  generateFileListFrontmatter,
 } from './generateFrontmatter.js'
 import { resolveRules } from './resolveRules.js'
 import type { AutoFrontmatterPluginOptions } from './types.js'
@@ -47,7 +47,7 @@ export const autoFrontmatterPlugin = (
        */
       async extendsMarkdownOptions() {
         const fileList = await globby(pagePatterns, { cwd })
-        await generateFrontmatter(fileList, cwd, rules)
+        await generateFileListFrontmatter(fileList, cwd, rules)
       },
 
       onWatched(_, watchers) {
@@ -73,8 +73,7 @@ export const autoFrontmatterPlugin = (
         watcher.on('add', (filepath) => {
           const relativePath = path.join(filepath) // normalize path
           const rule = findRule(rules, relativePath)
-          if (rule)
-            void generatorFileFrontmatter(relativePath, cwd, rule.handle)
+          if (rule) void generateFileFrontmatter(relativePath, cwd, rule.handle)
         })
 
         watchers.push(watcher)

@@ -48,7 +48,7 @@ export const findRule = (
 /**
  * Generate frontmatter for a single Markdown file
  */
-export const generatorFileFrontmatter = async (
+export const generateFileFrontmatter = async (
   filepath: string,
   cwd: string,
   handle: AutoFrontmatterHandle,
@@ -88,7 +88,7 @@ type Task = readonly [string, AutoFrontmatterHandle]
 /**
  * Generate frontmatter for all Markdown files
  */
-export const generateFrontmatter = async (
+export const generateFileListFrontmatter = async (
   fileList: string[],
   cwd: string,
   rules: AutoFrontmatterRule[],
@@ -107,7 +107,7 @@ export const generateFrontmatter = async (
   // Limit the number of concurrent tasks
   await pMap(
     tasks,
-    ([filepath, handle]) => generatorFileFrontmatter(filepath, cwd, handle),
+    ([filepath, handle]) => generateFileFrontmatter(filepath, cwd, handle),
     { concurrency: 64 },
   )
 }
