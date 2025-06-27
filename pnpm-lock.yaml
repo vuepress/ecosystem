@@ -278,6 +278,9 @@ importers:
       '@vuepress/bundler-webpack':
         specifier: 'catalog:'
         version: 2.0.0-rc.23(esbuild@0.25.5)(typescript@5.8.3)
+      '@vuepress/plugin-auto-frontmatter':
+        specifier: workspace:*
+        version: link:../plugins/tools/plugin-auto-frontmatter
       '@vuepress/plugin-blog':
         specifier: workspace:*
         version: link:../plugins/blog/plugin-blog
@@ -1300,6 +1303,37 @@ importers:
       '@vuepress/plugin-git':
         specifier: workspace:*
         version: link:../../development/plugin-git
+
+  plugins/tools/plugin-auto-frontmatter:
+    dependencies:
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../../tools/helper
+      chokidar:
+        specifier: 'catalog:'
+        version: 4.0.3
+      gray-matter:
+        specifier: ^4.0.3
+        version: 4.0.3
+      js-yaml:
+        specifier: ^4.1.0
+        version: 4.1.0
+      p-map:
+        specifier: ^7.0.3
+        version: 7.0.3
+      picomatch:
+        specifier: ^4.0.2
+        version: 4.0.2
+      vuepress:
+        specifier: 'catalog:'
+        version: 2.0.0-rc.23(@vuepress/bundler-vite@2.0.0-rc.23(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(sass@1.89.2)(terser@5.43.0)(tsx@4.20.3)(typescript@5.8.3)(yaml@2.8.0))(@vuepress/bundler-webpack@2.0.0-rc.23(esbuild@0.25.5)(typescript@5.8.3))(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3))
+    devDependencies:
+      '@types/js-yaml':
+        specifier: ^4.0.9
+        version: 4.0.9
+      '@types/picomatch':
+        specifier: ^4.0.0
+        version: 4.0.0
 
   plugins/tools/plugin-cache:
     dependencies:
@@ -3778,6 +3812,9 @@ packages:
   '@types/parse-path@7.1.0':
     resolution: {integrity: sha512-EULJ8LApcVEPbrfND0cRQqutIOdiIgJ1Mgrhpy755r14xMohPTEpkV/k28SJvuOs9bHRFW8x+KeDAEPiGQPB9Q==}
     deprecated: This is a stub types definition. parse-path provides its own type definitions, so you do not need this installed.
+
+  '@types/picomatch@4.0.0':
+    resolution: {integrity: sha512-J1Bng+wlyEERWSgJQU1Pi0HObCLVcr994xT/M+1wcl/yNRTGBupsCxthgkdYG+GCOMaQH7iSVUY3LJVBBqG7MQ==}
 
   '@types/prismjs@1.26.5':
     resolution: {integrity: sha512-AUZTa7hQ2KY5L7AmtSiqxlhWxb4ina0yd8hNbl4TWuqnv/pFP0nDMb3YrfSBf4hJVGLh2YEIBfKaBW/9UEl6IQ==}
@@ -12183,6 +12220,8 @@ snapshots:
   '@types/parse-path@7.1.0':
     dependencies:
       parse-path: 7.1.0
+
+  '@types/picomatch@4.0.0': {}
 
   '@types/prismjs@1.26.5': {}
 

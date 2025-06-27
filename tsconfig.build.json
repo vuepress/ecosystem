@@ -109,6 +109,7 @@
     },
     { "path": "./plugins/tools/plugin-cache/tsconfig.build.json" },
     { "path": "./plugins/tools/plugin-replace-assets/tsconfig.build.json" },
+    { "path": "./plugins/tools/plugin-auto-frontmatter/tsconfig.build.json" },
 
     // themes
     { "path": "./themes/theme-default/tsconfig.build.json" },

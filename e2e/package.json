@@ -17,6 +17,7 @@
   "dependencies": {
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
+    "@vuepress/plugin-auto-frontmatter": "workspace:*",
     "@vuepress/plugin-blog": "workspace:*",
     "@vuepress/plugin-catalog": "workspace:*",
     "@vuepress/plugin-copyright": "workspace:*",
