@@ -55,15 +55,15 @@ export const autoFrontmatterPlugin = (
         const watcher = watch('.', {
           cwd,
           ignoreInitial: true,
+          depth: Infinity,
           ignored: (filepath, stats) => {
+            const isFile = Boolean(stats?.isFile())
             if (
-              Boolean(stats?.isFile()) &&
-              filepath.endsWith('.md') &&
-              !filepath.includes('.vuepress')
-            ) {
-              return !filter(path.relative(cwd, filepath))
-            }
-            return true
+              filepath.includes('.vuepress') ||
+              (isFile && !filepath.endsWith('.md'))
+            )
+              return true
+            return isFile && !filter(path.relative(cwd, filepath))
           },
         })
         /**
