@@ -155,6 +155,7 @@ export const sidebarEn: SidebarOptions = {
   ],
 
   '/plugins/tools/': [
+    'auto-frontmatter',
     'cache',
     'google-tag-manager',
     'redirect',
