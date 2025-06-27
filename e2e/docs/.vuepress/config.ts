@@ -116,7 +116,7 @@ export default defineUserConfig({
     autoFrontmatterPlugin([
       {
         filter: ['auto-frontmatter/**/*.md', '!*/no-generate.md'],
-        transform: (data) => {
+        handle: (data) => {
           data.test ??= 'test'
           return data
         },
