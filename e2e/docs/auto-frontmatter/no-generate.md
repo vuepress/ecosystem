@@ -1,3 +1,3 @@
 # auto-frontmatter
 
-<p>{{ $frontmatter.test }}</p>
+<p class="frontmatter-test">{{ $frontmatter.title }}</p>

@@ -4,7 +4,7 @@ import { writeSourceMarkdown } from '../../utils/source'
 const restoreMarkdownContent = async (): Promise<void> => {
   await writeSourceMarkdown(
     'auto-frontmatter/README.md',
-    '# auto-frontmatter\n\n<p class="frontmatter-test">{{ $frontmatter.test }}</p>\n',
+    '# auto-frontmatter\n\n<p class="frontmatter-test">{{ $frontmatter.title }}</p>\n',
   )
 }
 
@@ -15,11 +15,11 @@ test.afterAll(async () => {
 test('should auto frontmatter', async ({ page }) => {
   await page.goto('auto-frontmatter/')
 
-  await expect(page.locator('.frontmatter-test')).toHaveText('test')
+  await expect(page.locator('.frontmatter-test')).toHaveText('README')
 })
 
 test('should not auto frontmatter', async ({ page }) => {
   await page.goto('auto-frontmatter/no-generate.html')
 
-  await expect(page.locator('.frontmatter-test')).not.toBeVisible()
+  await expect(page.locator('.frontmatter-test')).toHaveText('')
 })

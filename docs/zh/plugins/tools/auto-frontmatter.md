@@ -195,3 +195,142 @@ export default {
   ],
 }
 ```
+
+## 帮助函数
+
+插件提供了一些内置的帮助函数，可用于向 `frontmatter` 中添加新的字段：
+
+### `addTitleByFilename(data, context)`
+
+```ts
+addTitleByFilename(data: AutoFrontmatterData, context: AutoFrontmatterContext): void
+```
+
+根据文件名添加 title：
+
+```ts title=".vuepress/config.ts"
+import path from 'node:path'
+import {
+  addTitleByFilename,
+  autoFrontmatterPlugin,
+} from '@vuepress/plugin-auto-frontmatter'
+
+export default {
+  plugins: [
+    autoFrontmatterPlugin((data, context) => {
+      addTitleByFilename(data, context) // [!code ++]
+      return data
+    }),
+  ],
+}
+```
+
+**输出**：
+
+```md title="docs/guide.md"
+---
+title: guide
+---
+```
+
+### `addCreateDate(data, context, options)`
+
+```ts
+interface AddCreateDateOptions {
+  /**
+   * 添加时间时使用的 frontmatter 键名
+   * @default "date"
+   */
+  key?: string
+
+  /**
+   * 添加时间时使用的日期格式
+   * @default "date"
+   */
+  format?: 'date' | 'full' | 'time'
+}
+
+addCreateDate(
+  data: AutoFrontmatterData,
+  context: AutoFrontmatterContext,
+  options?: AddCreateDateOptions
+): void
+```
+
+根据文件创建时间添加 date，该函数会优先从 `git` 记录中读取创建时间，如果没有则使用 `fs.stats` 获取创建时间。
+
+```ts title=".vuepress/config.ts"
+import path from 'node:path'
+import {
+  addCreateDate,
+  autoFrontmatterPlugin,
+} from '@vuepress/plugin-auto-frontmatter'
+
+export default {
+  plugins: [
+    autoFrontmatterPlugin((data, context) => {
+      addCreateDate(data, context, { format: 'full' }) // [!code ++]
+      return data
+    }),
+  ],
+}
+```
+
+**输出**：
+
+```md title="docs/guide.md"
+---
+date: 2025-01-01 11:11:11
+---
+```
+
+### `addShortPermalink(data, options)`
+
+```ts
+interface AddShortPermalinkOptions {
+  /**
+   * 使用 `nanoid` 生成随机字符长度
+   * @default 8
+   */
+  length?: number
+  /**
+   * 前缀
+   * @default `/`
+   */
+  prefix?: string
+  /**
+   * 后缀
+   * @default `.html`
+   */
+  suffix?: string
+}
+
+addShortPermalink(data: AutoFrontmatterData, options: AddShortPermalinkOptions): void
+```
+
+使用 `nanoid` 生成随机字符作为 permalink：
+
+```ts title=".vuepress/config.ts"
+import path from 'node:path'
+import {
+  addShortPermalink,
+  autoFrontmatterPlugin,
+} from '@vuepress/plugin-auto-frontmatter'
+
+export default {
+  plugins: [
+    autoFrontmatterPlugin((data, context) => {
+      addShortPermalink(data, { length: 8, prefix: '/', suffix: '.html' }) // [!code ++]
+      return data
+    }),
+  ],
+}
+```
+
+**输出**：
+
+```md title="docs/guide.md"
+---
+permalink: /abcd1234.html
+---
+```

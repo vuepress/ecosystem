@@ -194,3 +194,142 @@ export default {
   ],
 }
 ```
+
+## Helper Functions
+
+The plugin provides some built-in helper functions that can be used to add new fields to the `frontmatter`:
+
+### `addTitleByFilename(data, context)`
+
+```ts
+addTitleByFilename(data: AutoFrontmatterData, context: AutoFrontmatterContext): void
+```
+
+Add title based on filename:
+
+```ts title=".vuepress/config.ts"
+import path from 'node:path'
+import {
+  addTitleByFilename,
+  autoFrontmatterPlugin,
+} from '@vuepress/plugin-auto-frontmatter'
+
+export default {
+  plugins: [
+    autoFrontmatterPlugin((data, context) => {
+      addTitleByFilename(data, context) // [!code ++]
+      return data
+    }),
+  ],
+}
+```
+
+**Output**:
+
+```md title="docs/guide.md"
+---
+title: guide
+---
+```
+
+### `addCreateDate(data, context, options)`
+
+```ts
+interface AddCreateDateOptions {
+  /**
+   * The frontmatter key name used when adding time
+   * @default "date"
+   */
+  key?: string
+
+  /**
+   * Date format used when adding time
+   * @default "date"
+   */
+  format?: 'date' | 'full' | 'time'
+}
+
+addCreateDate(
+  data: AutoFrontmatterData,
+  context: AutoFrontmatterContext,
+  options?: AddCreateDateOptions
+): void
+```
+
+Add date based on file creation time. This function will first attempt to read the creation time from `git` records, and if unavailable, it will use `fs.stats` to obtain the creation time.
+
+```ts title=".vuepress/config.ts"
+import path from 'node:path'
+import {
+  addCreateDate,
+  autoFrontmatterPlugin,
+} from '@vuepress/plugin-auto-frontmatter'
+
+export default {
+  plugins: [
+    autoFrontmatterPlugin((data, context) => {
+      addCreateDate(data, context, { format: 'full' }) // [!code ++]
+      return data
+    }),
+  ],
+}
+```
+
+**Output**:
+
+```md title="docs/guide.md"
+---
+date: 2025-01-01 11:11:11
+---
+```
+
+### `addShortPermalink(data, options)`
+
+```ts
+interface AddShortPermalinkOptions {
+  /**
+   * Use `nanoid` to generate a random character length
+   * @default 8
+   */
+  length?: number
+  /**
+   * add a prefix
+   * @default `/`
+   */
+  prefix?: string
+  /**
+   * add a suffix
+   * @default `.html`
+   */
+  suffix?: string
+}
+
+addShortPermalink(data: AutoFrontmatterData, options: AddShortPermalinkOptions): void
+```
+
+Using `nanoid` to generate random characters as permalink:
+
+```ts title=".vuepress/config.ts"
+import path from 'node:path'
+import {
+  addShortPermalink,
+  autoFrontmatterPlugin,
+} from '@vuepress/plugin-auto-frontmatter'
+
+export default {
+  plugins: [
+    autoFrontmatterPlugin((data, context) => {
+      addShortPermalink(data, { length: 8, prefix: '/', suffix: '.html' }) // [!code ++]
+      return data
+    }),
+  ],
+}
+```
+
+**Output**:
+
+```md title="docs/guide.md"
+---
+permalink: /abcd1234.html
+---
+```
