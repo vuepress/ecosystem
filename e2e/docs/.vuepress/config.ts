@@ -1,6 +1,11 @@
 import process from 'node:process'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
+import {
+  addCreateDate,
+  addTitleByFilename,
+  autoFrontmatterPlugin,
+} from '@vuepress/plugin-auto-frontmatter'
 import { blogPlugin } from '@vuepress/plugin-blog'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { copyrightPlugin } from '@vuepress/plugin-copyright'
@@ -112,6 +117,16 @@ export default defineUserConfig({
   shouldPrefetch: false,
 
   plugins: [
+    autoFrontmatterPlugin([
+      {
+        filter: ['auto-frontmatter/**/*.md', '!*/no-generate.md'],
+        handle: (data, context) => {
+          addTitleByFilename(data, context)
+          addCreateDate(data, context)
+          return data
+        },
+      },
+    ]),
     blogPlugin({
       // Only files under posts are articles
       filter: ({ filePathRelative }) =>

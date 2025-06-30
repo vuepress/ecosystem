@@ -155,6 +155,7 @@ export const sidebarZh: SidebarOptions = {
   ],
 
   '/zh/plugins/tools/': [
+    'auto-frontmatter',
     'cache',
     'google-tag-manager',
     'redirect',

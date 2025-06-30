@@ -278,6 +278,9 @@ importers:
       '@vuepress/bundler-webpack':
         specifier: 'catalog:'
         version: 2.0.0-rc.23(esbuild@0.25.5)(typescript@5.8.3)
+      '@vuepress/plugin-auto-frontmatter':
+        specifier: workspace:*
+        version: link:../plugins/tools/plugin-auto-frontmatter
       '@vuepress/plugin-blog':
         specifier: workspace:*
         version: link:../plugins/blog/plugin-blog
@@ -1300,6 +1303,40 @@ importers:
       '@vuepress/plugin-git':
         specifier: workspace:*
         version: link:../../development/plugin-git
+
+  plugins/tools/plugin-auto-frontmatter:
+    dependencies:
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../../tools/helper
+      chokidar:
+        specifier: 'catalog:'
+        version: 4.0.3
+      gray-matter:
+        specifier: ^4.0.3
+        version: 4.0.3
+      js-yaml:
+        specifier: ^4.1.0
+        version: 4.1.0
+      nanoid:
+        specifier: ^5.1.5
+        version: 5.1.5
+      p-map:
+        specifier: ^7.0.3
+        version: 7.0.3
+      picomatch:
+        specifier: ^4.0.2
+        version: 4.0.2
+      vuepress:
+        specifier: 'catalog:'
+        version: 2.0.0-rc.23(@vuepress/bundler-vite@2.0.0-rc.23(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(sass@1.89.2)(terser@5.43.0)(tsx@4.20.3)(typescript@5.8.3)(yaml@2.8.0))(@vuepress/bundler-webpack@2.0.0-rc.23(esbuild@0.25.5)(typescript@5.8.3))(typescript@5.8.3)(vue@3.5.17(typescript@5.8.3))
+    devDependencies:
+      '@types/js-yaml':
+        specifier: ^4.0.9
+        version: 4.0.9
+      '@types/picomatch':
+        specifier: ^4.0.0
+        version: 4.0.0
 
   plugins/tools/plugin-cache:
     dependencies:
