@@ -75,7 +75,6 @@
 - Details:
 
   Set required fields. Available values:
-
   - `[]`
   - `['nick']`
   - `['nick', 'mail']`
@@ -87,7 +86,6 @@
 - Details:
 
   Login mode status. Available values:
-
   - `'enable'`: Enable login (default)
   - `'disable'`: Login is disabled, users should fill in information to comment
   - `'force'`: Forced login, users must login to comment
@@ -113,7 +111,6 @@
   ```
 
 - Reference:
-
   - [Cookbook → Upload Image](https://waline.js.org/en/cookbook/customize/upload-image.html)
 
 - Details:
@@ -131,7 +128,6 @@
   ```
 
 - Reference:
-
   - [Cookbook → Customize Highlighter](https://waline.js.org/en/cookbook/customize/highlighter.html)
 
 - Details:
@@ -149,7 +145,6 @@
   ```
 
 - Reference:
-
   - [Cookbook → Customize TeX Renderer](https://waline.js.org/en/cookbook/customize/tex-renderer.html)
   - [MathJax](https://www.mathjax.org/)
   - [KaTeX](https://katex.org/)

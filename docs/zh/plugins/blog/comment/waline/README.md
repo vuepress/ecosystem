@@ -96,7 +96,6 @@ npm i -D @waline/client
    | CNAME | example | cname.vercel-dns.com |
 
 1. 等待生效，你可以通过自己的域名来访问了:tada:
-
    - 评论系统：example.your-domain.com
    - 评论管理：example.your-domain.com/ui
 

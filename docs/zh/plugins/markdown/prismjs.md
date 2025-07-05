@@ -100,7 +100,6 @@ export default {
 - 默认值：`true`
 
 - 详情：
-
   - `number`：显示行号所需的最少行数。
     例如，如果你将它设置为 4，那么只有在你的代码块包含至少 4 行代码时才会启用行号。
   - `true`：全局启用代码行号。
@@ -140,7 +139,6 @@ const line4 = 'This is line 4'
 - 详情：
 
   是否启用行高亮。启用后，可在代码块的信息描述中添加行数标记来高亮指定的行：
-
   - 行数范围：`{5-8}`
   - 多个单行：`{4,7,9}`
   - 组合：`{4,7-13,16,23-27,40}`
@@ -169,7 +167,6 @@ export default defineUserConfig({
 - 默认值：`'disable'`
 
 - 详情：代码块折叠的默认行为。
-
   - `number`：从第 `number` 行开始折叠代码块，例如 `12` 表示从第 12 行开始折叠代码块。
   - `true`：等同于 `15`，从第 15 行开始折叠代码块。
   - `false`：添加代码块折叠支持，但全局禁用此功能。
@@ -504,7 +501,6 @@ body > div {
   :::
 
 - 参考：
-
   - [Shiki > 词高亮标记](https://shiki.tmrs.site/packages/transformers#transformernotationwordhighlight)
 
 ### whitespace
@@ -514,7 +510,6 @@ body > div {
 - 默认值：`false`
 
 - 详情：是否启用空白符（空格和 Tab）渲染。
-
   - `true`：启用空白符渲染，但默认不渲染任何空白符
   - `false`：完全禁用空白符渲染，`:whitespace` 标记不会生效。
   - `'all'`：渲染所有空白符

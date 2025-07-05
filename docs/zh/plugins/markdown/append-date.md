@@ -37,7 +37,6 @@ export default {
 - 详情：
 
   追加时间时使用的日期格式：
-
   - `"date"`：YYYY-MM-DD 格式
   - `"time"`：HH:MM:SS 格式
   - `"full"`：YYYY-MM-DD HH:MM:SS 格式

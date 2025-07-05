@@ -71,7 +71,6 @@ export default {
 - Details:
 
   Whether to copy inline code content when double click.
-
   - `boolean`: Whether to copy inline code content when double click.
   - `string | string[]`: The selector of inline code.
 

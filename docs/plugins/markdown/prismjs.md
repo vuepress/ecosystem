@@ -100,7 +100,6 @@ export default {
 - Default: `true`
 
 - Details:
-
   - `number`: The minimum number of lines to enable line numbers.
     For example, if you set it to 4, line numbers will only be enabled when your code block has at least 4 lines of code.
   - `true`: Enable line numbers globally.
@@ -140,7 +139,6 @@ const line4 = 'This is line 4'
 - Details:
 
   Whether to enable code line highlighting. You can highlight specified lines of your code blocks by adding line range markers in your fenced code blocks:
-
   - Line ranges: `{5-8}`
   - Multiple single lines: `{4,7,9}`
   - Combined: `{4,7-13,16,23-27,40}`
@@ -169,7 +167,6 @@ export default defineUserConfig({
 - Default: `'disable'`
 
 - Details: Default behavior of code block collapsing.
-
   - `number`: Collapse the code block starting from line `number` by default. For example, `12` means collapsing the code block starting from line 12.
   - `true`: Equivalent to `15`, collapsing the code block starting from line 15 by default.
   - `false`: Add support for code block collapsing, but disable it globally.
@@ -503,7 +500,6 @@ In the new version, some functionalities similar to [shiki](https://shiki.style/
   :::
 
 - Also see:
-
   - [Shiki > Notation Word Highlight](https://shiki.style/packages/transformers#transformernotationwordhighlight)
 
 ### whitespace
@@ -513,7 +509,6 @@ In the new version, some functionalities similar to [shiki](https://shiki.style/
 - Default: `false`
 
 - Details: Whether to enable whitespace characters (Space and Tab).
-
   - `true`: Enable whitespace, but not render any whitespace by default.
   - `false`: Completely disable whitespace rendering; `:whitespace` will not take effect.
   - `'all'`: Render all whitespace.

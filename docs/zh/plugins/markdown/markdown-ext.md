@@ -129,7 +129,6 @@ type: tip
   是否调整行为和功能，使其更类似于 GitHub Flavored Markdown。
 
   `markdown-it` 已经默认支持表格与删除线。如果此选项为 `true`，则会启用以下新功能：
-
   - 自动链接（在 `markdown-it` 中命名为 `linkify`）
   - 硬换行
   - 脚注

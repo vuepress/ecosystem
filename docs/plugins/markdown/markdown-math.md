@@ -99,7 +99,6 @@ Mathjax:
 - Details:
 
   The package to render $\TeX$ contents.
-
   - `'katex'`: use [KaTeX](https://katex.org/)
   - `'mathjax'`: use [MathJax](https://www.mathjax.org/)
 
@@ -110,7 +109,6 @@ Mathjax:
 - Type: `'brackets' | 'dollars' | 'all'`
 - Default: `'dollars'`
 - Details: Math delimiter syntax to enable.
-
   - `'brackets'`: Use `\(...\)` for inline math and `\[...\]` for display math (LaTeX style).
   - `'dollars'`: Use `$...$` for inline math and `$$...$$` for display math (common Markdown style).
   - `'all'`: Enable both bracket and dollar syntaxes.

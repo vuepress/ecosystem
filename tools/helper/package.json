@@ -68,7 +68,7 @@
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
     "domhandler": "5.0.3",
-    "vite": "~6.3.5"
+    "vite": "~7.0.2"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

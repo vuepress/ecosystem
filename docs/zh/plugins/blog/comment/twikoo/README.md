@@ -41,7 +41,6 @@ npm i -D twikoo
 1. 进入[云开发 CloudBase](https://curl.qcloud.com/KnnJtUom)活动页面，滚动到“新用户专享”部分，选择适合的套餐，点击“立即购买”，按提示创建好环境。
 
    ::: tip 提示
-
    - 推荐创建上海环境。如选择广州环境，需要在 `twikoo.init()` 时额外指定环境 `region: "ap-guangzhou"`
    - 环境名称自由填写
    - 推荐选择计费方式`包年包月`，套餐版本`基础版 1`，超出免费额度不会收费

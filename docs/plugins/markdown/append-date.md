@@ -37,7 +37,6 @@ export default {
 - Details:
 
   Format of the date value when appending date:
-
   - `"date"`: YYYY-MM-DD format
   - `"time"`: HH:MM:SS format
   - `"full"`: YYYY-MM-DD HH:MM:SS format

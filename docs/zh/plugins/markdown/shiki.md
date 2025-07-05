@@ -93,7 +93,6 @@ export default {
 - 类型：`boolean | number | 'disable'`
 - 默认值：`true`
 - 详情：控制行号的显示。
-
   - `number`：显示行号所需的最少行数。
     例如，设置为 4 时，只有代码块包含至少 4 行代码才会启用行号。
   - `true`：全局启用行号
@@ -129,7 +128,6 @@ const line4 = 'This is line 4'
 - 类型：`boolean`
 - 默认值：`true`
 - 详情：是否启用行高亮。启用后，可在代码块信息描述中添加行数标记来高亮指定行：
-
   - 行数范围：`{5-8}`
   - 多个单行：`{4,7,9}`
   - 组合：`{4,7-13,16,23-27,40}`
@@ -158,7 +156,6 @@ export default defineUserConfig({
 - 类型：`boolean | number | 'disable'`
 - 默认值：`'disable'`
 - 详情：代码块折叠的默认行为。
-
   - `number`：从第 `number` 行开始折叠代码块，例如 `12` 表示从第 12 行开始折叠。
   - `true`：等同于 `15`，从第 15 行开始折叠。
   - `false`：添加代码块折叠支持，但全局禁用此功能
@@ -475,7 +472,6 @@ body > div {
   :::
 
 - 参考：
-
   - [Shiki > 词高亮标记](https://shiki.tmrs.site/packages/transformers#transformernotationwordhighlight)
 
 ### whitespace
@@ -483,7 +479,6 @@ body > div {
 - 类型：`boolean | 'all' | 'boundary' | 'trailing'`
 - 默认值：`false`
 - 详情：是否启用空白符（空格和 Tab）渲染。
-
   - `true`：启用空白符渲染，但默认不渲染任何空白符
   - `false`：完全禁用空白符渲染，`:whitespace` 标记不生效
   - `'all'`：渲染所有空白符
@@ -573,7 +568,6 @@ body > div {
   :::
 
 - 参考：
-
   - [Shiki > Twoslash](https://shiki.style/packages/twoslash)
   - [Twoslash > TransformerTwoslashOptions](https://github.com/shikijs/shiki/blob/main/packages/twoslash/src/types.ts#L30)
   - [Twoslash > VueSpecificOptions](https://github.com/twoslashes/twoslash/blob/main/packages/twoslash-vue/src/index.ts#L36)
@@ -594,7 +588,6 @@ body > div {
   ::: warning
 
   对于启用了 `twoslash` 的代码块：
-
   - 不要在代码块中添加 `:v-pre` 标记，这会导致 `twoslash` 无法正常运行
   - 为避免布局冲突，代码块不再显示**行号**
 
@@ -613,7 +606,6 @@ body > div {
 - 类型：`'warn' | 'debug' | 'silent'`
 - 默认值：`'warn'`
 - 详情：Shiki 语言检测的日志级别。
-
   - `warn`：每次检测到未知语言时发出警告（默认）
   - `debug`：每次检测到未知代码块时记录其文件路径（设置 `--debug` 标记时默认）
   - `silent`：不发出警告

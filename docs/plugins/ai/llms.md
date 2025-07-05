@@ -79,7 +79,6 @@ Details (Optional)
 ```
 
 - **Site Title**: Values are determined in the following order:
-
   1. `llmsTxtTemplateGetter.title`
   1. `heroText` in homepage frontmatter
   1. Current locale's [title](https://v2.vuepress.vuejs.org/reference/config.html#locales) in VuePress config file
@@ -87,7 +86,6 @@ Details (Optional)
   1. Page title of locale homepage (locale `README.md`)
 
 - **Site Description**: Values are determined in the following order:
-
   1. `llmsTxtTemplateGetter.description`
   1. `tagline` in locale homepage frontmatter
   1. Current locale's [description](https://v2.vuepress.vuejs.org/reference/config.html#locales) in VuePress config file
@@ -95,7 +93,6 @@ Details (Optional)
   1. `frontmatter.description` in locale homepage (locale `README.md`)
 
 - **Site Details (Optional)**: Values are determined in the following order:
-
   1. `llmsTxtTemplateGetter.details`
   2. `frontmatter.details` in locale homepage (`README.md`)
 

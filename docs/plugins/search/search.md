@@ -99,7 +99,6 @@ export default {
 - Details:
 
   A function to determine whether a page should be included in the search index.
-
   - Return `true` to include the page.
   - Return `false` to exclude the page.
 

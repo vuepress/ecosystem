@@ -27,7 +27,6 @@ export const getFullLocaleConfig: <T extends LocaleData>(
 - `default` 参数是默认的 locale 信息，应该是一个 locale 信息设置的数组。
 
   每个 locale 信息设置应该是一个包含两个元素的元组：
-
   - 第一个元素是 locale 信息设置所属的语言代码数组。
   - 第二个元素是 locale 信息设置。
 

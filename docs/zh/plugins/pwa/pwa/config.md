@@ -25,7 +25,6 @@ icon: settings-2
   ::: tip
 
   如果未设置某些选项，它们会回退到插件预设值。
-
   - name: `siteConfig.title` || `siteConfig.locales['/'].title` || `"Site"`
   - short_name: `siteConfig.title` || `siteConfig.locales['/'].title` || `"Site"`
   - description: `siteConfig.description` || `siteConfig.locales['/'].description` || `"A site built with vuepress"`
@@ -41,7 +40,6 @@ icon: settings-2
   :::
 
   **参考：**
-
   - [MDN Web Docs: Web App Manifest](https://developer.mozilla.org/zh-CN/docs/Web/Manifest)
   - [W3C Manifest](https://w3c.github.io/manifest/)
 
@@ -103,7 +101,6 @@ icon: settings-2
 - 类型：`"disable" | "available" | "hint" | "force"`
 - 默认值：`"available"`
 - 详情：发现新内容时的控制逻辑。
-
   - `"disable"`: 即使有新的 service worker 也不做任何事情，新的 service work 开始等待后，会在用户下次访问时接管页面，让用户获得新内容。
   - `"available"`: 仅当新的 service worker 可用时才显示更新弹出窗口。
   - `"hint"`: 显示更新内容可用提示，并允许用户立即刷新。当新的 SW 成功注册后，将转为更新内容就绪弹窗。当你希望用户立即查看新文档时，这很有帮助。
@@ -241,7 +238,6 @@ icon: settings-2
 - 详情：PWA 插件的国际化配置。
 
   ::: details 内置支持语言
-
   - **简体中文** (zh-CN)
   - **繁体中文** (zh-TW)
   - **英文(美国)** (en-US)

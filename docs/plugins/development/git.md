@@ -268,7 +268,6 @@ gitInclude:
 - Details:
 
   Whether to collect contributor information for the current page, this value will override the [contributors](#contributors) configuration item.
-
   - `true` - Collect contributor information
   - `false` - Do not collect contributor information
   - `string[]` - List of additional contributors, sometimes there are additional contributors on the page, and this configuration item can be used to specify the list of additional contributors to obtain contributor information

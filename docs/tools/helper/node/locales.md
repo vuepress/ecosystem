@@ -27,7 +27,6 @@ export const getFullLocaleConfig: <T extends LocaleData>(
 - The `default` parameter is the default locale info, where this should be an array of locale info settings.
 
   Each locale info setting should be an tuple with two elements:
-
   - The first element are an array of lang code that the locale info setting belongs to.
   - The second element are the locale info setting.
 
