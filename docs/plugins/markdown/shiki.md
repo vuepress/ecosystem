@@ -85,7 +85,6 @@ export default {
 - Type: `boolean | number | 'disable'`
 - Default: `true`
 - Details: Controls the display of line numbers.
-
   - `number`: minimum number of lines required to enable line numbers.
     For example, setting it to 4 will only enable line numbers when your code block has at least 4 lines.
   - `true`: enable line numbers globally.
@@ -121,7 +120,6 @@ const line4 = 'This is line 4'
 - Type: `boolean`
 - Default: `true`
 - Details: Whether to enable code line highlighting. You can highlight specified lines by adding line range markers to your fenced code blocks:
-
   - Line ranges: `{5-8}`
   - Multiple single lines: `{4,7,9}`
   - Combined: `{4,7-13,16,23-27,40}`
@@ -148,7 +146,6 @@ export default defineUserConfig({
 - Type: `boolean | number | 'disable'`
 - Default: `'disable'`
 - Details: Default behavior of code block collapsing.
-
   - `number`: collapse the code block starting from line `number` by default, for example, `12` means collapsing the code block starting from line 12.
   - `true`: Equivalent to `15`, collapsing the code block starting from line 15 by default.
   - `false`: Add support for code block collapsing, but disable it globally
@@ -476,7 +473,6 @@ body > div {
   :::
 
 - Also see:
-
   - [Shiki > Notation Word Highlight](https://shiki.style/packages/transformers#transformernotationwordhighlight)
 
 ### whitespace
@@ -486,7 +482,6 @@ body > div {
 - Default: `false`
 
 - Details: Whether to enable whitespace characters (spaces and tabs).
-
   - `true`: enable whitespace rendering but don't render any whitespace by default
   - `false`: completely disable whitespace rendering; `:whitespace` will not take effect
   - `'all'`: render all whitespace characters
@@ -577,7 +572,6 @@ body > div {
   :::
 
 - Also see:
-
   - [Shiki > Twoslash](https://shiki.style/packages/twoslash)
   - [Twoslash > TransformerTwoslashOptions](https://github.com/shikijs/shiki/blob/main/packages/twoslash/src/types.ts#L30)
   - [Twoslash > VueSpecificOptions](https://github.com/twoslashes/twoslash/blob/main/packages/twoslash-vue/src/index.ts#L36)
@@ -598,7 +592,6 @@ body > div {
   ::: warning
 
   For code blocks with `twoslash` enabled:
-
   - Don't add the `:v-pre` marker to code blocks, as this will prevent `twoslash` from running properly.
 
   - To avoid layout conflicts, line numbers will not be displayed for these code blocks.
@@ -618,7 +611,6 @@ body > div {
 - Type: `'warn' | 'debug' | 'silent'`
 - Default: `'warn'`
 - Details: Log level for Shiki language detection.
-
   - `warn`: warn about each unknown language once (default)
   - `debug`: log every unknown code block with its file path (default when `--debug` flag is set)
   - `silent`: no warnings

@@ -325,7 +325,6 @@ Frontmatter in this section will only take effect in normal pages.
   If you don't set this frontmatter, the link will be inferred from the sidebar config.
 
   To configure the prev link manually, you can set this frontmatter to a `AutoLinkConfig` object or a string:
-
   - A `AutoLinkConfig` object should have a `text` field and a `link` field.
   - A string should be the path to the target page file. It will be converted to a `AutoLinkConfig` object, whose `text` is the page title, and `link` is the page route path.
   - Set to `false` to disable the prev link.

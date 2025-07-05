@@ -116,7 +116,6 @@ h1 {
 - 类型： `string`
 
 - 默认值：
-
   - css: `'.vuepress/styles/palette.css'`
   - less: `'.vuepress/styles/palette.less'`
   - sass: `'.vuepress/styles/palette.scss'`
@@ -135,7 +134,6 @@ h1 {
 - 类型： `string`
 
 - 默认值：
-
   - css: `'styles/palette.css'`
   - less: `'styles/palette.less'`
   - sass: `'styles/palette.scss'`
@@ -154,7 +152,6 @@ h1 {
 - 类型： `string`
 
 - 默认值：
-
   - css: `'.vuepress/styles/index.css'`
   - less: `'.vuepress/styles/index.less'`
   - sass: `'.vuepress/styles/index.scss'`
@@ -173,7 +170,6 @@ h1 {
 - 类型： `string`
 
 - 默认值：
-
   - css: `'styles/index.css'`
   - less: `'styles/index.less'`
   - sass: `'styles/index.scss'`
@@ -192,7 +188,6 @@ h1 {
 - 类型： `(filePath: string) => string`
 
 - 默认值：
-
   - css: `` (filePath) => `@import '${filePath}';\n` ``
   - less: `` (filePath) => `@import '${filePath}';\n` ``
   - sass: `` (filePath) => `@forward 'file:///${filePath}';\n` ``

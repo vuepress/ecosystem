@@ -164,7 +164,6 @@ By default, the plugin will output to `.vuepress/redirect` directory under sourc
 - Example:
 
   When base is set to `/base/`:
-
   - redirect `/base/foo.html` to `/base/bar.html`
   - `/base/baz.html` to `https://example.com/qux.html`.
 
@@ -204,7 +203,6 @@ By default, the plugin will output to `.vuepress/redirect` directory under sourc
 - Details:
 
   Whether switch to a new locale based on user preference.
-
   - `"direct"`: redirect to the new locale directly without asking
   - `"modal"`: show a modal to let user choose whether to switch to the new locale
 

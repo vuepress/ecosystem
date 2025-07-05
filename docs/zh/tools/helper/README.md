@@ -9,7 +9,6 @@ icon: hammer
 此包为 VuePress 开发者提供辅助函数。
 
 - `@vuepress/helper`: Node.js 一侧的辅助函数。
-
   - [打包器相关](node/bundler.md)
   - [多语言相关](node/locales.md)
   - [页面相关](node/page.md)
