@@ -78,7 +78,6 @@ export default {
 ```
 
 - **站点标题**：根据以下顺序取值：
-
   1. `llmsTxtTemplateGetter.title`
   1. 首页 frontmatter 中的 `heroText`
   1. VuePress 配置文件中当前语言的 [title](https://v2.vuepress.vuejs.org/zh/reference/config.html#locales)
@@ -86,7 +85,6 @@ export default {
   1. 首页 (`README.md`) 的页面标题
 
 - **站点描述**：根据以下顺序取值：
-
   1. `llmsTxtTemplateGetter.description`
   1. 首页 frontmatter 中的 `tagline`
   1. VuePress 配置文件中当前语言的 [description](https://v2.vuepress.vuejs.org/zh/reference/config.html#locales)
@@ -94,7 +92,6 @@ export default {
   1. 首页 (`README.md`) 的 `frontmatter.description`
 
 - **站点详情（可选）**：根据以下顺序取值：
-
   1. `llmsTxtTemplateGetter.details`
   2. 首页 (`README.md`) 的 `frontmatter.details`
 

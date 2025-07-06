@@ -22,7 +22,6 @@ icon: settings-2
 - Type: `AppManifest`
 
 - Reference:
-
   - [MDN Web Docs: Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest)
   - [W3C: Web App Manifest](https://www.w3.org/TR/appmanifest/)
 
@@ -31,7 +30,6 @@ icon: settings-2
   ::: tip
 
   Some options have their fallback if you don't set them.
-
   - name: `siteConfig.title` || `siteConfig.locales['/'].title` || `"Site"`
   - short_name: `siteConfig.title` || `siteConfig.locales['/'].title` || `"Site"`
   - description: `siteConfig.description` || `siteConfig.locales['/'].description` || `"A site built with vuepress"`
@@ -104,7 +102,6 @@ icon: settings-2
 - Type: `"disable" | "available" | "hint" | "force"`
 - Default: `"available"`
 - Details: Control logic when new content is found.
-
   - `"disable"`: Do nothing even when new service worker is available. After new service work succeeds installing and starts waiting, it will control page and provide new content in next visit.
   - `"available"`: Only display update popup when the new service worker is available.
   - `"hint"`: Display a hint to let user choose to refresh immediately. This is helpful when you want users to see new docs immediately.
@@ -242,7 +239,6 @@ icon: settings-2
 - Details: Locales config for pwa plugin.
 
   ::: details Built-in Supported Languages
-
   - **Simplified Chinese** (zh-CN)
   - **Traditional Chinese** (zh-TW)
   - **English (United States)** (en-US)

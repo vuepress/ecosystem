@@ -129,7 +129,6 @@ You can use any mustache syntax as raw text in `v-pre` container:
   Whether tweaks the behavior and features to be more similar to GitHub Flavored Markdown.
 
   `markdown-it` already supports tables and strike through by default. If this option is `true`, the following new features will be enabled:
-
   - Auto link (named `linkify` in `markdown-it`)
   - Hard breaks
   - Footnote

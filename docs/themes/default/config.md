@@ -87,7 +87,6 @@ Config of this section can be used as normal config, and can also be used in the
   Specify the path of the homepage.
 
   This will be used for:
-
   - the logo link of the navbar
   - the _back to home_ link of the 404 page
 
@@ -104,7 +103,6 @@ Config of this section can be used as normal config, and can also be used in the
   Set to `false` to disable navbar.
 
   To configure the navbar items, you can set it to a _navbar array_, each item of which could be a `NavbarLink` object, a `NavbarGroup` object, or a string:
-
   - A `NavbarLink` object should have a `text` field and a `link` field, could have an optional `activeMatch` field.
   - A `NavbarGroup` object should have a `text` field and a `children` field, could have an optional `prefix` field. The `children` field should be a _navbar array_ too, and `prefix` will be prepended before every link inside it.
   - A string should be the path to the target page file. It will be converted to a `NavbarLink` object, using the page title as `text`, and the page route path as `link`.
@@ -288,12 +286,10 @@ export default {
   If you set it to `'heading'`, the sidebar will be automatically generated from the page headers.
 
   To configure the sidebar items manually, you can set this option to a _sidebar array_, each item of which could be a `SidebarItem` object or a string:
-
   - A `SidebarItem` object should have a `text` field, could have an optional `link` field, an optional `children` field, an optional `collapsible` field and an optional `prefix` field. The `children` field should be a _sidebar array_, where `prefix` will be prepended to every link inside it. The `collapsible` field controls whether the item is collapsible.
   - A string should be the path to the target page file. It will be converted to a `SidebarItem` object, whose `text` is the page title, `link` is the page route path, and `children` is automatically generated from the page headers.
 
   If you want to set different sidebar for different sub paths, you can set this option to a _sidebar object_:
-
   - The key should be the path prefix.
   - The value should be a _sidebar array_ or set to `'heading'` to automatically generate the sidebar from the page headers for just the corresponding path.
 
@@ -389,7 +385,6 @@ export default {
 - Details:
 
   Set the maximum depth of the sidebar children which are automatically generated from the page headers.
-
   - Set to `0` to disable all levels of headers.
   - Set to `1` to include `<h2>` headers.
   - Set to `2` to include `<h2>` and `<h3>` headers.

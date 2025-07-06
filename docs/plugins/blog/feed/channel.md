@@ -42,7 +42,6 @@ The language of the channel
 - Type: `string`
 
 - Default:
-
   - Try to read the `author.name` in channel options, and fall back to `Copyright by $author`
 
 - Recommended to set manually: **Yes**

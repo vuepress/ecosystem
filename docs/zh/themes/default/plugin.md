@@ -51,7 +51,6 @@ export default {
   是否启用由 [@vuepress/plugin-markdown-container](../../plugins/markdown/markdown-container.md) 支持的自定义容器。
 
   `ContainerType` 类型为：
-
   - `codeGroup`
   - `codeGroupItem`
 

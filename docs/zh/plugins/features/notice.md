@@ -34,14 +34,12 @@ export default {
 
 - `title`: 通知标题，支持文本和 HTMLString
 - `content`: 通知内容，支持文本、HTMLString 和 Markdown
-
   - 使用 `Markdown` 作为内容时，应设置 `contentType` 为 `markdown`
   - 还可以使用 `contentFile` 指定文件绝对路径，文件格式为 `.md` 或 `.html`，从文件中读取通知内容。
 
 - `actions`: 通知操作
 
   应该是包含以下内容的对象数组:
-
   - `text`: 动作文本
   - `link` (可选): 操作链接。
 

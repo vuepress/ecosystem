@@ -48,7 +48,6 @@ export default {
 - Details:
 
   Cache Types
-
   - `'memory'` is for memory cache, using memory cache can achieve optimal optimization effects, but as the project scales up, it occupies more memory, suitable for projects with fewer pages.
   - `'filesystem'` is for file system cache, for complex projects with many pages, file cache is recommended.
 

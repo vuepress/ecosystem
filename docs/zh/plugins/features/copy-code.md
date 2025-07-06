@@ -71,7 +71,6 @@ export default {
 - 详情：
 
   配置行内代码（inline code）的双击复制功能：
-
   - 设置为 `true`：启用默认选择器 `'[vp-content] :not(pre) > code'` 匹配行内代码元素
   - 设置为 `false`：禁用行内代码双击复制功能
   - 设置为自定义选择器：使用指定的选择器匹配行内代码元素

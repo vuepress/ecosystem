@@ -9,7 +9,6 @@ icon: puzzle
 ## Badge <Badge text="badge" />
 
 - Props:
-
   - type
     - 类型： `'tip' | 'warning' | 'danger' | 'important' | 'info' | 'note'`
     - 默认值： `'tip'`

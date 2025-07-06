@@ -34,7 +34,6 @@ A notice configuration includes:
 
 - `title`: Notice title, supports both text and HTML strings
 - `content`: Notice content, supports text, HTML strings, and Markdown
-
   - When using Markdown as content, set `contentType` to `markdown`.
 
   - You can also use `contentFile` to specify the absolute path of a file (`.md` or `.html` format) to read the notice content from.
@@ -42,7 +41,6 @@ A notice configuration includes:
 - `actions`: Notice actions
 
   An array of objects containing:
-
   - `text`: Action text
   - `link`: Action link (optional).
 

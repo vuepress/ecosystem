@@ -123,7 +123,6 @@ order -1 的项目
 - 详情：
 
   需要排除的目录页路径。
-
   - `"/foo/"` 仅排除 `/foo/` 文件夹的目录页生成
   - `/^\/foo\//` 排除 `/foo/` 文件夹及其子文件夹的目录页生成
 
@@ -215,7 +214,6 @@ const defineCatalogInfoGetter: (options: CatalogInfoGetter) => void
   你可以在主题布局中或直接在 Markdown 文件中使用 `<Catalog />`。
 
   组件支持以下属性：
-
   - `level`：更改显示层次深度（最大支持 3 层），默认为 `3`
   - `base`：显示指定文件夹的目录，默认显示当前文件夹目录
   - `index`：为目录项添加索引号，默认无标号
