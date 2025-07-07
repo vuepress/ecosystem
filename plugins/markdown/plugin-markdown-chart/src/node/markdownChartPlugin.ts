@@ -80,7 +80,7 @@ export const markdownChartPlugin =
         if (status.chartjs) md.use(chartjs)
         if (status.echarts) md.use(echarts)
         if (status.flowchart) md.use(flowchart)
-        if (isArray(options.plantuml)) md.use(plantuml, options)
+        if (isArray(options.plantuml)) md.use(plantuml, options.plantuml)
         else if (options.plantuml) md.use(plantuml)
         if (status.markmap) md.use(markmap)
         if (status.mermaid) md.use(mermaid)
