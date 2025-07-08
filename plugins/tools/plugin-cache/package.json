@@ -35,7 +35,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "ci-info": "^4.2.0",
+    "ci-info": "^4.3.0",
     "lru-cache": "^11.1.0"
   },
   "peerDependencies": {
