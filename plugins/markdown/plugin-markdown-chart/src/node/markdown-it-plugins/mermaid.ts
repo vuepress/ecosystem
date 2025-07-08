@@ -96,6 +96,7 @@ const DIAGRAM_MAP: Record<string, [diagramName: string, indent?: boolean]> = {
   'packet': ['packet-beta', false],
   'sankey': ['sankey-beta', false],
   'xy': ['xychart-beta', false],
+  'treemap': ['treemap-beta', false],
   'radar': ['radar-beta'],
 }
 

@@ -82,6 +82,7 @@ Besides using mermaid, you can also use the following code blocks:
 - packet: `packet-beta`
 - radar: `radar-beta`
 - sankey: `sankey-beta`
+- treemap: `treemap-beta`
 - xy: `xychart-beta`
 
 You do not need to declare diagram type and intent your code.
