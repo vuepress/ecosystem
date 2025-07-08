@@ -84,6 +84,7 @@ export default {
 - packet: `packet-beta`
 - radar: `radar-beta`
 - sankey: `sankey-beta`
+- treemap: `treemap-beta`
 - xy: `xychart-beta`
 
 你不需要再声明图表类型，也不需要缩进图表代码。
