@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.111](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.110...v2.0.0-rc.111) (2025-07-09)
+
+### Bug Fixes
+
+- **plugin-register-components:** fix `componentsPatterns` matcher ([#544](https://github.com/vuepress/ecosystem/issues/544)) ([d187e44](https://github.com/vuepress/ecosystem/commit/d187e442ba435e5286b0c45fb8e1f7d116fccd56))
+
 # [2.0.0-rc.110](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.109...v2.0.0-rc.110) (2025-06-19)
 
 ### Features

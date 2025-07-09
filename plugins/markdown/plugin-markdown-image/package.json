@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-image",
-  "version": "2.0.0-rc.110",
+  "version": "2.0.0-rc.111",
   "description": "VuePress plugin - markdown image",
   "keywords": [
     "vuepress-plugin",

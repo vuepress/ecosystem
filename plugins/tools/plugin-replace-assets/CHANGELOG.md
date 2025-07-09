@@ -1,0 +1,10 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [2.0.0-rc.111](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.110...v2.0.0-rc.111) (2025-07-09)
+
+### Features
+
+- add `plugin-replace-assets` ([#541](https://github.com/vuepress/ecosystem/issues/541)) ([67c65a8](https://github.com/vuepress/ecosystem/commit/67c65a8a08b5aa2bdd9dddf1b55f42c00278df7b))
