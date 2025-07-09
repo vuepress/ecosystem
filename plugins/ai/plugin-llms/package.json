@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-llms",
-  "version": "2.0.0-rc.111",
+  "version": "2.0.0-rc.112",
   "description": "VuePress plugin - llms.txt",
   "keywords": [
     "vuepress-plugin",
