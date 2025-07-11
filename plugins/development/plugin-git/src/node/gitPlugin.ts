@@ -13,10 +13,10 @@ import { resolveChangelog } from './resolveChangelog.js'
 import { resolveContributors } from './resolveContributors.js'
 import {
   PLUGIN_NAME,
+  checkGitRepo,
   getCommits,
   inferGitProvider,
   injectGitOptions,
-  isGitRepo,
 } from './utils/index.js'
 
 /**
@@ -55,8 +55,8 @@ export const gitPlugin =
   }: GitPluginOptions = {}): Plugin =>
   (app) => {
     const cwd = app.dir.source()
-    const isGitRepoValid = isGitRepo(cwd)
-    const gitProvider = isGitRepoValid ? inferGitProvider(cwd) : null
+    const isGitRepo = checkGitRepo(cwd)
+    const gitProvider = isGitRepo ? inferGitProvider(cwd) : null
     return {
       name: PLUGIN_NAME,
 
@@ -77,7 +77,7 @@ export const gitPlugin =
       ) => {
         page.data.git = {}
 
-        if (!isGitRepoValid || page.filePathRelative === null) {
+        if (!isGitRepo || page.filePathRelative === null) {
           return
         }
 
