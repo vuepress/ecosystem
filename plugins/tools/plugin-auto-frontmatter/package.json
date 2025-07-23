@@ -47,7 +47,7 @@
     "js-yaml": "^4.1.0",
     "nanoid": "^5.1.5",
     "p-map": "^7.0.3",
-    "picomatch": "^4.0.2"
+    "picomatch": "^4.0.3"
   },
   "peerDependencies": {
     "vuepress": "catalog:"
@@ -57,6 +57,6 @@
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
-    "@types/picomatch": "^4.0.0"
+    "@types/picomatch": "^4.0.1"
   }
 }
