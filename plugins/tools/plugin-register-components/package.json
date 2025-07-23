@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "chokidar": "catalog:",
-    "picomatch": "^4.0.2"
+    "picomatch": "^4.0.3"
   },
   "peerDependencies": {
     "vuepress": "catalog:"
@@ -45,6 +45,6 @@
     "access": "public"
   },
   "devDependencies": {
-    "@types/picomatch": "^4.0.0"
+    "@types/picomatch": "^4.0.1"
   }
 }

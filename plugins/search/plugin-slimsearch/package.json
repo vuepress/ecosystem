@@ -45,7 +45,7 @@
   "dependencies": {
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
-    "cheerio": "^1.1.0",
+    "cheerio": "^1.1.2",
     "chokidar": "catalog:",
     "slimsearch": "^2.2.2",
     "vue": "catalog:"
