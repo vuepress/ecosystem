@@ -47,6 +47,7 @@ export const sidebarEn: SidebarOptions = {
 
   '/plugins/analytics/': [
     'baidu-analytics',
+    'clarity-analytics',
     'google-analytics',
     'umami-analytics',
   ],

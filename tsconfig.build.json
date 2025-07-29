@@ -11,6 +11,9 @@
       "path": "./plugins/analytics/plugin-baidu-analytics/tsconfig.build.json"
     },
     {
+      "path": "./plugins/analytics/plugin-clarity-analytics/tsconfig.build.json"
+    },
+    {
       "path": "./plugins/analytics/plugin-google-analytics/tsconfig.build.json"
     },
     {

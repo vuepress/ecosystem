@@ -47,6 +47,7 @@ export const sidebarZh: SidebarOptions = {
 
   '/zh/plugins/analytics/': [
     'baidu-analytics',
+    'clarity-analytics',
     'google-analytics',
     'umami-analytics',
   ],
