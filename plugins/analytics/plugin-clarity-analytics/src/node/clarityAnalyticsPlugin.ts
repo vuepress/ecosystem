@@ -58,7 +58,7 @@ export const clarityAnalyticsPlugin =
       ...plugin,
 
       define: {
-        __CLARITY_OPTIONS__: { id, options },
+        __CLARITY_OPTIONS__: { id, ...options },
       },
 
       clientConfigFile: path.resolve(__dirname, '../client/config.js'),
