@@ -45,6 +45,6 @@
     "access": "public"
   },
   "devDependencies": {
-    "@types/picomatch": "^4.0.1"
+    "@types/picomatch": "^4.0.0"
   }
 }
