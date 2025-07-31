@@ -50,7 +50,7 @@
     "workbox-build": "^7.3.0"
   },
   "devDependencies": {
-    "rollup": "^4.45.1"
+    "rollup": "^4.46.2"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

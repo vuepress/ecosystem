@@ -61,7 +61,7 @@
   },
   "peerDependencies": {
     "chart.js": "^4.4.7",
-    "echarts": "^5.6.0",
+    "echarts": "^6.0.0",
     "flowchart.ts": "^3.0.1",
     "markmap-lib": "^0.18.11",
     "markmap-toolbar": "^0.18.10",
