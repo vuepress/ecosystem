@@ -8,6 +8,7 @@ export default [
     },
     {
       external: ['commander'],
+      dts: true,
     },
   ),
   ...rollupBundle('node/index', {}),
