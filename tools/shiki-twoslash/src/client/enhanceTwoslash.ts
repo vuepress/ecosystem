@@ -23,9 +23,7 @@ import 'floating-vue/dist/style.css'
  * ```
  */
 export const enhanceTwoslash = (app: App): void => {
-  const isMobileDevice = __VUEPRESS_SSR__
-    ? false
-    : isMobile(navigator.userAgent)
+  const isMobileDevice = __VUEPRESS_SSR__ ? false : isMobile()
 
   if (!__VUEPRESS_SSR__) {
     // Recompute poppers when clicking on a tab

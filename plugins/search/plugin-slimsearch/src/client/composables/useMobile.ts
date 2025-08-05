@@ -1,3 +1,4 @@
+import { isMobile } from '@vuepress/helper/client'
 import { useSupported } from '@vueuse/core'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
@@ -7,9 +8,5 @@ export const useMobile = (): ComputedRef<boolean> => {
     () => typeof window !== 'undefined' && 'userAgent' in window.navigator,
   )
 
-  return computed(
-    () =>
-      supportUserAgent.value &&
-      /\b(?:Android|iPhone)/i.test(navigator.userAgent),
-  )
+  return computed(() => supportUserAgent.value && isMobile())
 }

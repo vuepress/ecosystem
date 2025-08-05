@@ -1,10 +1,4 @@
-import {
-  isIOS,
-  isMacOS,
-  isiPad,
-  useKeys,
-  useLocale,
-} from '@vuepress/helper/client'
+import { isIOS, isMacOS, useKeys, useLocale } from '@vuepress/helper/client'
 import type { VNode } from 'vue'
 import { computed, defineComponent, h, onMounted, ref } from 'vue'
 
@@ -22,7 +16,7 @@ export default defineComponent({
   setup() {
     const locale = useLocale(locales)
     const [isActive, toggleActive] = useActiveState()
-    const isMacOSDevice = ref(false)
+    const isAppleDevice = ref(false)
 
     useKeys(options.hotKeys, () => {
       if (!isActive.value) toggleActive()
@@ -32,7 +26,7 @@ export default defineComponent({
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       primaryHotKey
         ? [
-            ...(isMacOSDevice.value
+            ...(isAppleDevice.value
               ? ['⌃', '⇧', '⌥', '⌘']
               : ['Ctrl', 'Shift', 'Alt', 'Win']
             ).filter(
@@ -47,10 +41,7 @@ export default defineComponent({
     )
 
     onMounted(() => {
-      const { userAgent } = navigator
-
-      isMacOSDevice.value =
-        isMacOS(userAgent) || isIOS(userAgent) || isiPad(userAgent)
+      isAppleDevice.value = isMacOS() || isIOS()
     })
 
     return (): (VNode | null)[] => [
