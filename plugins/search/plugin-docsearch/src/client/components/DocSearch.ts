@@ -95,6 +95,7 @@ export const DocSearch = defineComponent({
     // preconnect to algolia
     onMounted(() => {
       preconnectToAlgolia(options.value.appId)
+      void initialize()
     })
 
     return () => [
