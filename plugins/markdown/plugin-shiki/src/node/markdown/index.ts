@@ -1,2 +1,3 @@
 export * from './highlighter/index.js'
 export * from './preWrapperPlugin.js'
+export * from './highlightLinesPlugin.js'
