@@ -301,13 +301,13 @@ exports[`@vuepress/plugin-shiki > fence preWrapper > :line-numbers / :no-line-nu
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
-</div><div class="language-ts" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
-<span class="line"></span>
+</div><div class="language-ts" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
+<span class="line highlighted"><wbr></span>
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
-</div><div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
-<span class="line"></span>
+</div><div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
+<span class="line highlighted"><wbr></span>
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
@@ -315,8 +315,8 @@ exports[`@vuepress/plugin-shiki > fence preWrapper > :line-numbers / :no-line-nu
   <div class="code-block-title-bar" data-title="config/foo.ts">
     <span>config/foo.ts</span>
   </div>
-  <div class="language-ts" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
-<span class="line highlighted"><wbr></span>
+  <div class="language-ts" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
@@ -343,13 +343,13 @@ exports[`@vuepress/plugin-shiki > fence preWrapper > :line-numbers / :no-line-nu
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
-</div><div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
-<span class="line"></span>
+</div><div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
+<span class="line highlighted"><wbr></span>
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
-<span class="line"></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
+<span class="line highlighted"><wbr></span>
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
@@ -357,8 +357,8 @@ exports[`@vuepress/plugin-shiki > fence preWrapper > :line-numbers / :no-line-nu
   <div class="code-block-title-bar" data-title="config/foo.ts">
     <span>config/foo.ts</span>
   </div>
-  <div class="language-ts" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
-<span class="line highlighted"><wbr></span>
+  <div class="language-ts" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
@@ -385,13 +385,13 @@ exports[`@vuepress/plugin-shiki > fence preWrapper > :line-numbers / :no-line-nu
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
-</div><div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
-<span class="line"></span>
+</div><div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
+<span class="line highlighted"><wbr></span>
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
-<span class="line"></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
+<span class="line highlighted"><wbr></span>
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
@@ -399,8 +399,8 @@ exports[`@vuepress/plugin-shiki > fence preWrapper > :line-numbers / :no-line-nu
   <div class="code-block-title-bar" data-title="config/foo.ts">
     <span>config/foo.ts</span>
   </div>
-  <div class="language-ts" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
-<span class="line highlighted"><wbr></span>
+  <div class="language-ts" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
@@ -412,14 +412,14 @@ exports[`@vuepress/plugin-shiki > fence preWrapper > :line-numbers=number > shou
 "<div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line2</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 2</span><span style="color:#ECEFF4">'</span></span>
 <span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line3</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 3</span><span style="color:#ECEFF4">'</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 1"><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line3</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 3</span><span style="color:#ECEFF4">'</span></span>
-<span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line4</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 4</span><span style="color:#ECEFF4">'</span></span>
-<span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line5</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 5</span><span style="color:#ECEFF4">'</span></span></code></pre>
+<span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line4</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 4</span><span style="color:#ECEFF4">'</span></span>
+<span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line5</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 5</span><span style="color:#ECEFF4">'</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 2"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="code-block-with-title">
   <div class="code-block-title-bar" data-title="config/foo.ts">
     <span>config/foo.ts</span>
   </div>
-  <div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line10</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 10</span><span style="color:#ECEFF4">'</span></span>
-<span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line11</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 11</span><span style="color:#ECEFF4">'</span></span></code></pre>
+  <div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line10</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 10</span><span style="color:#ECEFF4">'</span></span>
+<span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line11</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 11</span><span style="color:#ECEFF4">'</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 9"><div class="line-number"></div><div class="line-number"></div></div></div>
 </div>"
 `;
@@ -428,14 +428,14 @@ exports[`@vuepress/plugin-shiki > fence preWrapper > :line-numbers=number > shou
 "<div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line2</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 2</span><span style="color:#ECEFF4">'</span></span>
 <span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line3</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 3</span><span style="color:#ECEFF4">'</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 1"><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line3</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 3</span><span style="color:#ECEFF4">'</span></span>
-<span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line4</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 4</span><span style="color:#ECEFF4">'</span></span>
-<span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line5</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 5</span><span style="color:#ECEFF4">'</span></span></code></pre>
+<span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line4</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 4</span><span style="color:#ECEFF4">'</span></span>
+<span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line5</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 5</span><span style="color:#ECEFF4">'</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 2"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="code-block-with-title">
   <div class="code-block-title-bar" data-title="config/foo.ts">
     <span>config/foo.ts</span>
   </div>
-  <div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line10</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 10</span><span style="color:#ECEFF4">'</span></span>
-<span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line11</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 11</span><span style="color:#ECEFF4">'</span></span></code></pre>
+  <div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line10</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 10</span><span style="color:#ECEFF4">'</span></span>
+<span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line11</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 11</span><span style="color:#ECEFF4">'</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 9"><div class="line-number"></div><div class="line-number"></div></div></div>
 </div>"
 `;
@@ -444,14 +444,14 @@ exports[`@vuepress/plugin-shiki > fence preWrapper > :line-numbers=number > shou
 "<div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line2</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 2</span><span style="color:#ECEFF4">'</span></span>
 <span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line3</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 3</span><span style="color:#ECEFF4">'</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 1"><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line3</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 3</span><span style="color:#ECEFF4">'</span></span>
-<span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line4</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 4</span><span style="color:#ECEFF4">'</span></span>
-<span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line5</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 5</span><span style="color:#ECEFF4">'</span></span></code></pre>
+<span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line4</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 4</span><span style="color:#ECEFF4">'</span></span>
+<span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line5</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 5</span><span style="color:#ECEFF4">'</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 2"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="code-block-with-title">
   <div class="code-block-title-bar" data-title="config/foo.ts">
     <span>config/foo.ts</span>
   </div>
-  <div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line10</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 10</span><span style="color:#ECEFF4">'</span></span>
-<span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line11</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 11</span><span style="color:#ECEFF4">'</span></span></code></pre>
+  <div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line10</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 10</span><span style="color:#ECEFF4">'</span></span>
+<span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line11</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 11</span><span style="color:#ECEFF4">'</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 9"><div class="line-number"></div><div class="line-number"></div></div></div>
 </div>"
 `;
@@ -511,8 +511,8 @@ exports[`@vuepress/plugin-shiki > fence preWrapper > plugin options > should dis
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
-</div><div class="language-ts" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
-<span class="line"></span>
+</div><div class="language-ts" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
+<span class="line highlighted"><wbr></span>
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
@@ -542,8 +542,8 @@ exports[`@vuepress/plugin-shiki > fence preWrapper > plugin options > should dis
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
-<pre class="language-ts shiki nord vp-code" style="background-color:#2e3440ff;color:#d8dee9ff"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
-<span class="line"></span>
+<pre class="language-ts shiki nord vp-code" style="background-color:#2e3440ff;color:#d8dee9ff"><code class="language-ts"><span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
+<span class="line highlighted"><wbr></span>
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
@@ -568,8 +568,8 @@ exports[`@vuepress/plugin-shiki > fence preWrapper > plugin options > should ena
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
-<span class="line"></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
+<span class="line highlighted"><wbr></span>
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
@@ -599,8 +599,8 @@ exports[`@vuepress/plugin-shiki > fence preWrapper > plugin options > should pro
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
-<span class="line"></span>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> foo</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">foo</span><span style="color:#ECEFF4">'</span></span>
+<span class="line highlighted"><wbr></span>
 <span class="line"><span style="color:#81A1C1">function</span><span style="color:#88C0D0"> bar</span><span style="color:#ECEFF4"> ()</span><span style="color:#ECEFF4"> {</span></span>
 <span class="line"><span style="color:#81A1C1">  return</span><span style="color:#B48EAD"> 1024</span></span>
 <span class="line"><span style="color:#ECEFF4">}</span></span></code></pre>
