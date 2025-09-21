@@ -100,7 +100,7 @@ const option = {
 你可以在[客户端配置文件][client-config]中导入并使用 `defineEChartsConfig` 来自定义 ECharts:
 
 ```ts title=".vuepress/client.ts"
-import { defineEChartsConfig } from 'vuepress-plugin-md-enhance/client'
+import { defineEChartsConfig } from '@vuepress/plugin-markdown-chart/client'
 
 defineEChartsConfig({
   options: {

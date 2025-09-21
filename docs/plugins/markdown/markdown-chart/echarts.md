@@ -98,7 +98,7 @@ You can use top-level await and `fetch` to get data from network requests.
 You can import and call `defineEChartsConfig` in [client config file][client-config] to customize echarts.
 
 ```ts title=".vuepress/client.ts"
-import { defineEChartsConfig } from 'vuepress-plugin-md-enhance/client'
+import { defineEChartsConfig } from '@vuepress/plugin-markdown-chart/client'
 
 defineEChartsConfig({
   options: {
