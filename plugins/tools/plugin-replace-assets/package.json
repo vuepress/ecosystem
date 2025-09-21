@@ -42,8 +42,8 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "magic-string": "^0.30.17",
-    "unplugin": "^2.3.8"
+    "magic-string": "^0.30.19",
+    "unplugin": "^2.3.10"
   },
   "peerDependencies": {
     "vuepress": "catalog:"
