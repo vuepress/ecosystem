@@ -105,7 +105,7 @@ Please see [mermaid](https://mermaid.js.org/).
 You can import and call `defineMermaidConfig` in [client config file][client-config] to customize mermaid:
 
 ```ts title=".vuepress/client.ts"
-import { defineMermaidConfig } from 'vuepress-plugin-md-enhance/client'
+import { defineMermaidConfig } from '@vuepress/plugin-markdown-chart/client'
 
 defineMermaidConfig({
   // mermaid options here
