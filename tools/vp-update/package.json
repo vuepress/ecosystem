@@ -38,11 +38,11 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "commander": "^14.0.0",
+    "commander": "^14.0.1",
     "semver": "^7.7.2"
   },
   "devDependencies": {
-    "@types/semver": "7.7.0"
+    "@types/semver": "7.7.1"
   },
   "engines": {
     "node": ">= 20"
