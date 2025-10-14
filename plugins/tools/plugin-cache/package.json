@@ -35,8 +35,8 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "ci-info": "^4.3.0",
-    "lru-cache": "^11.2.1"
+    "ci-info": "^4.3.1",
+    "lru-cache": "^11.2.2"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

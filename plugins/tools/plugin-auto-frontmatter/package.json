@@ -45,7 +45,7 @@
     "chokidar": "catalog:",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
-    "nanoid": "^5.1.5",
+    "nanoid": "^5.1.6",
     "p-map": "^7.0.3",
     "picomatch": "^4.0.3"
   },

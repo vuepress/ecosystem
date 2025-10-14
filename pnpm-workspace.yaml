@@ -10,10 +10,10 @@ catalog:
   '@vuepress/bundler-webpack': 2.0.0-rc.24
   '@vueuse/core': ^13.9.0
   chokidar: ^4.0.3
-  sass: ^1.93.0
-  sass-embedded: ^1.93.0
+  sass: ^1.93.2
+  sass-embedded: ^1.93.2
   sass-loader: ^16.0.5
-  vue: ^3.5.21
+  vue: ^3.5.22
   vuepress: 2.0.0-rc.24
 
 onlyBuiltDependencies:

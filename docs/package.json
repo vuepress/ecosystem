@@ -45,7 +45,7 @@
     "@vuepress/theme-default": "workspace:*",
     "@vueuse/core": "catalog:",
     "echarts-wordcloud": "2.1.0",
-    "katex": "0.16.22",
+    "katex": "0.16.25",
     "mathjax-full": "3.2.2",
     "sass-embedded": "catalog:",
     "sass-loader": "catalog:",

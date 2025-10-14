@@ -46,7 +46,7 @@
   "dependencies": {
     "@mdit/plugin-uml": "^0.22.1",
     "@types/markdown-it": "^14.1.2",
-    "@types/reveal.js": "^5.2.0",
+    "@types/reveal.js": "^5.2.1",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "reveal.js": "^5.2.1",

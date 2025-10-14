@@ -75,6 +75,7 @@ export const renderWhitespaceInLine = (
     for (let i = snippets.length - 1; i >= 0; i--) {
       const snippet = snippets[i]
       let j = snippet.length - 1
+      // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
       if (snippet && snippet[j] !== '>') {
         while (snippet[j] && j >= 0) {
           if (!isSpace(snippet[j])) {
