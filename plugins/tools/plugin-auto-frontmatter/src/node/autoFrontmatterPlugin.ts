@@ -1,6 +1,6 @@
 import { watch } from 'chokidar'
 import type { Plugin } from 'vuepress/core'
-import { globby, path } from 'vuepress/utils'
+import { path, tinyglobby } from 'vuepress/utils'
 import { createFilter } from './createFilter.js'
 import {
   findRule,
@@ -46,7 +46,7 @@ export const autoFrontmatterPlugin = (
        * 利用钩子阻塞其他任务执行，先完成 frontmatter 的自动生成
        */
       async extendsMarkdownOptions() {
-        const fileList = await globby(pagePatterns, { cwd })
+        const fileList = await tinyglobby.glob(pagePatterns, { cwd })
         await generateFileListFrontmatter(fileList, cwd, rules)
       },
 

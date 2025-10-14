@@ -1,8 +1,8 @@
 import picomatch from 'picomatch'
 
 /**
- * `globby` uses `!*.md` as an negative-pattern, and `picomatch` needs special handling for this specific case.
- * `globby` 使用 `!*.md` 作为反模式，`picomatch` 需要根据这个特殊情况做特殊处理
+ * `tinyglobby` uses `!*.md` as an negative-pattern, and `picomatch` needs special handling for this specific case.
+ * `tinyglobby` 使用 `!*.md` 作为反模式，`picomatch` 需要根据这个特殊情况做特殊处理
  */
 export const createMatcher = (rawPatterns: string[]): picomatch.Matcher => {
   const patterns: string[] = []

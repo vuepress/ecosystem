@@ -120,7 +120,7 @@ app.component(
 
 - 详情：
 
-  使用 [globby](https://github.com/sindresorhus/globby) 来匹配组件文件的 Patterns 。
+  使用 [tinyglobby](https://github.com/SuperchupuDev/tinyglobby) 来匹配组件文件的 Patterns 。
 
   该 Patterns 是相对于 [componentsDir](#componentsdir) 目录的。
 

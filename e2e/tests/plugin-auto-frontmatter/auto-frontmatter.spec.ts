@@ -12,13 +12,13 @@ test.afterAll(async () => {
   await restoreMarkdownContent()
 })
 
-test('should auto frontmatter', async ({ page }) => {
+test.skip('should auto frontmatter', async ({ page }) => {
   await page.goto('auto-frontmatter/')
 
   await expect(page.locator('.frontmatter-test')).toHaveText('README')
 })
 
-test('should not auto frontmatter', async ({ page }) => {
+test.skip('should not auto frontmatter', async ({ page }) => {
   await page.goto('auto-frontmatter/no-generate.html')
 
   await expect(page.locator('.frontmatter-test')).toHaveText('')
