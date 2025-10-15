@@ -28,9 +28,9 @@ export default {
 
 ## 获取搜索索引
 
-你需要 [提交你的网站 URL](https://docsearch.algolia.com/apply/) 来加入 DocSearch 项目。当你的索引成功创建后， DocSearch 团队会将 [apiKey](#apikey) 和 [indexName](#indexname) 发送到你的邮箱。接下来，你就可以配置该插件，在 VuePress 中启用 DocSearch 了。
+你需要 [提交你的网站 URL](https://docsearch.algolia.com/apply/) 来加入 DocSearch 项目。当你的索引成功创建后， DocSearch 团队会将 [apiKey](#apikey) 和 [indices](#indices) 发送到你的邮箱。接下来，你就可以配置该插件，在 VuePress 中启用 DocSearch 了。
 
-或者，你也可以 [运行你自己的爬虫](https://docsearch.algolia.com/docs/run-your-own/) 来创建索引，然后使用你自己的 [appId](#appid), [apiKey](#apikey) 和 [indexName](#indexname) 来配置该插件。
+或者，你也可以 [运行你自己的爬虫](https://docsearch.algolia.com/docs/run-your-own/) 来创建索引，然后使用你自己的 [appId](#appid), [apiKey](#apikey) 和 [indices](#indices) 来配置该插件。
 
 ::: details 官方爬虫配置示例
 
@@ -210,15 +210,6 @@ new Crawler({
 
 :::
 
-### searchParameters
-
-- 类型：`SearchParameters`
-- 详情：Algolia 搜索 API 参数。
-
-- 参考：
-  - [DocSearch > Options > searchParameters](https://docsearch.algolia.com/docs/api/#searchparameters)
-  - [Algolia > Search API Parameters](https://www.algolia.com/doc/api-reference/search-api-parameters/)
-
 ### placeholder
 
 - 类型：`string`
@@ -350,56 +341,9 @@ const defineDocSearchConfig: (
 
 ## 样式
 
-你可以通过 [@docsearch/css](https://docsearch.algolia.com/docs/styling) 提供的 CSS 变量来自定义样式：
+你可以通过 [@docsearch/css](https://docsearch.algolia.com/docs/styling) 提供的 CSS 变量来自定义样式。
 
-```css
-:root {
-  --docsearch-primary-color: rgb(84, 104, 255);
-  --docsearch-text-color: rgb(28, 30, 33);
-  --docsearch-spacing: 12px;
-  --docsearch-icon-stroke-width: 1.4;
-  --docsearch-highlight-color: var(--docsearch-primary-color);
-  --docsearch-muted-color: rgb(150, 159, 175);
-  --docsearch-container-background: rgba(101, 108, 133, 0.8);
-  --docsearch-logo-color: rgba(84, 104, 255);
-
-  /* modal */
-  --docsearch-modal-width: 560px;
-  --docsearch-modal-height: 600px;
-  --docsearch-modal-background: rgb(245, 246, 247);
-  --docsearch-modal-shadow:
-    inset 1px 1px 0 0 rgba(255, 255, 255, 0.5), 0 3px 8px 0 rgba(85, 90, 100, 1);
-
-  /* searchbox */
-  --docsearch-searchbox-height: 56px;
-  --docsearch-searchbox-background: rgb(235, 237, 240);
-  --docsearch-searchbox-focus-background: #fff;
-  --docsearch-searchbox-shadow: inset 0 0 0 2px var(--docsearch-primary-color);
-
-  /* hit */
-  --docsearch-hit-height: 56px;
-  --docsearch-hit-color: rgb(68, 73, 80);
-  --docsearch-hit-active-color: #fff;
-  --docsearch-hit-background: #fff;
-  --docsearch-hit-shadow: 0 1px 3px 0 rgb(212, 217, 225);
-
-  /* key */
-  --docsearch-key-gradient: linear-gradient(
-    -225deg,
-    rgb(213, 219, 228) 0%,
-    rgb(248, 248, 248) 100%
-  );
-  --docsearch-key-shadow:
-    inset 0 -2px 0 0 rgb(205, 205, 230), inset 0 0 1px 1px #fff,
-    0 1px 2px 1px rgba(30, 35, 90, 0.4);
-
-  /* footer */
-  --docsearch-footer-height: 44px;
-  --docsearch-footer-background: #fff;
-  --docsearch-footer-shadow:
-    0 -1px 0 0 rgb(224, 227, 232), 0 -3px 6px 0 rgba(69, 98, 155, 0.12);
-}
-```
+为了适配 VuePress 其他部分的样式，插件覆盖了一些原有 CSS 变量。
 
 ## 组件
 
