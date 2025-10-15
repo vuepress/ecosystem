@@ -10,22 +10,19 @@ export const useDocSearchHotkeyListener = (
   options: ComputedRef<DocSearchProps>,
   callback: () => void,
 ): void => {
-  useEventListener(
-    'keydown',
-    (event) => {
-      const { keyboardShortcuts = {} } = options.value
-      const triggerByHotKey =
-        keyboardShortcuts['Ctrl/Cmd+K'] !== false &&
-        event.key === 'k' &&
-        (isMacOS() || isiPad() ? event.metaKey : event.ctrlKey)
-      const triggeredBySlashKey =
-        keyboardShortcuts['/'] !== false && event.key === '/'
+  const cleanup = useEventListener('keydown', (event) => {
+    const { keyboardShortcuts = {} } = options.value
+    const triggerByHotKey =
+      keyboardShortcuts['Ctrl/Cmd+K'] !== false &&
+      event.key === 'k' &&
+      (isMacOS() || isiPad() ? event.metaKey : event.ctrlKey)
+    const triggeredBySlashKey =
+      keyboardShortcuts['/'] !== false && event.key === '/'
 
-      if (triggerByHotKey || triggeredBySlashKey) {
-        event.preventDefault()
-        callback()
-      }
-    },
-    { once: true },
-  )
+    if (triggerByHotKey || triggeredBySlashKey) {
+      event.preventDefault()
+      callback()
+      cleanup()
+    }
+  })
 }
