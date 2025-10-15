@@ -118,7 +118,7 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "
 - **Russian** (ru-RU)
 - **Ukrainian** (uk-UA)
 - **Vietnamese** (vi-VN)
-- **Portuguese (Brazil)** (pt-BR)
+- **Portuguese** (pt)
 - **Polish** (pl-PL)
 - **French** (fr-FR)
 - **Spanish** (es-ES)

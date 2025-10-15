@@ -168,7 +168,7 @@ Project with order -1
 - **Russian** (ru-RU)
 - **Ukrainian** (uk-UA)
 - **Vietnamese** (vi-VN)
-- **Portuguese (Brazil)** (pt-BR)
+- **Portuguese** (pt)
 - **Polish** (pl-PL)
 - **French** (fr-FR)
 - **Spanish** (es-ES)

@@ -289,7 +289,7 @@ Generate redirect site for current VuePress project
 - **俄语** (ru-RU)
 - **乌克兰语** (uk-UA)
 - **越南语** (vi-VN)
-- **葡萄牙语(巴西)** (pt-BR)
+- **葡萄牙语** (pt)
 - **波兰语** (pl-PL)
 - **法语** (fr-FR)
 - **西班牙语** (es-ES)

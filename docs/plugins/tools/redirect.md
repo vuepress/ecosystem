@@ -279,7 +279,7 @@ By default, the plugin will output to `.vuepress/redirect` directory under sourc
 - **Russian** (ru-RU)
 - **Ukrainian** (uk-UA)
 - **Vietnamese** (vi-VN)
-- **Portuguese (Brazil)** (pt-BR)
+- **Portuguese** (pt)
 - **Polish** (pl-PL)
 - **French** (fr-FR)
 - **Spanish** (es-ES)
