@@ -49,6 +49,13 @@ const defaultLocaleInfo: DefaultLocaleInfo<{ text: string; label: string }> = [
       label: 'Dutch',
     },
   ],
+  [
+    ['pt', 'pt-PT'],
+    {
+      text: 'Português',
+      label: 'Português',
+    },
+  ],
 ]
 
 describe('getFullLocaleConfig() should generate locale', () => {
@@ -404,6 +411,35 @@ describe('getFullLocaleConfig() should generate locale', () => {
       '/test2/': {
         text: 'Test2',
         label: 'US English',
+      },
+    })
+  })
+
+  it('fallback to same language if a region is not match', () => {
+    const app = createBuildApp({
+      locales: {
+        '/': { lang: 'zh-CN' },
+        '/pt/': { lang: 'pt-BR' },
+      },
+      source: path.resolve(__dirname, './__fixtures__/src'),
+      bundler: {} as Bundler,
+      theme: emptyTheme,
+    })
+
+    const locales = getFullLocaleConfig({
+      app,
+      default: defaultLocaleInfo,
+      config: {},
+    })
+
+    expect(locales).toEqual({
+      '/': {
+        text: '简体中文',
+        label: '简体中文',
+      },
+      '/pt/': {
+        text: 'Português',
+        label: 'Português',
       },
     })
   })
