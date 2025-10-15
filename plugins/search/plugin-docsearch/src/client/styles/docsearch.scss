@@ -1,5 +1,11 @@
 /* stylelint-disable selector-class-pattern */
 
+.DocSearch-Button-Key {
+  min-width: initial;
+  margin-inline: initial;
+  padding: initial;
+}
+
 @media (max-width: 750px) {
   .DocSearch-Container {
     /* fix the search modal on mobile */
