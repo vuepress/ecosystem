@@ -83,7 +83,7 @@ li.slimsearch-record {
 
   font-weight: normal;
   white-space: pre-wrap;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
 
   > * {
     display: flex;

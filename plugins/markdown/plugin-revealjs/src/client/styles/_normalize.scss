@@ -101,7 +101,7 @@
     font-size: 0.55em;
     line-height: 1.2em;
     text-align: left;
-    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   code {
@@ -116,7 +116,7 @@
     max-height: 400px;
     padding: 5px;
 
-    word-wrap: normal;
+    overflow-wrap: normal;
   }
 
   a {
