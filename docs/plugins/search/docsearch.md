@@ -171,6 +171,15 @@ If you are not using default theme, or you meet any problems when using docsearc
 
 ## Options
 
+### appId
+
+- Type: `string`
+- Required: Yes
+- Details: It defines your own application ID.
+
+- Also see:
+  - [DocSearch > Options > appId](https://docsearch.algolia.com/docs/api#appid)
+
 ### apiKey
 
 - Type: `string`
@@ -189,14 +198,11 @@ If you are not using default theme, or you meet any problems when using docsearc
 - Also see:
   - [DocSearch > Options > indices](https://docsearch.algolia.com/docs/api#indices)
 
-### appId
+::: tip indexName
 
-- Type: `string`
-- Required: Yes
-- Details: It defines your own application ID.
+`indexName` can also be used as a shorthand of `indices`, but it will be deprecated in future versions. See [DocSearch > Options > indexName](https://docsearch.algolia.com/docs/api#indexname) for details.
 
-- Also see:
-  - [DocSearch > Options > appId](https://docsearch.algolia.com/docs/api#appid)
+:::
 
 ### placeholder
 

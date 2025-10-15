@@ -199,14 +199,7 @@ new Crawler({
 
 ::: tip indexName
 
-`indexName` 也可以作为 `indices` 的简写形式，但它将会在未来的版本中废弃。
-
-- 类型：`string`
-- 必填：是
-- 详情：从 DocSearch 团队收到的 `indexName` ，或者由你自己生成。
-
-- 参考：
-  - [DocSearch > Options > indexName](https://docsearch.algolia.com/docs/api#indexname)
+`indexName` 也可以作为 `indices` 的简写形式，但它将会在未来的版本中废弃。详见 [DocSearch > Options > indexName](https://docsearch.algolia.com/docs/api#indexname)。
 
 :::
 
