@@ -5,7 +5,7 @@
   min-height: 400px;
 
   @media print {
-    page-break-inside: avoid;
+    break-inside: avoid;
   }
 }
 

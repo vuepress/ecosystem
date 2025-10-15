@@ -6,10 +6,14 @@
   padding: 2rem 2.5rem;
 
   @media (max-width: $MQNarrow) {
+    // FIXME: Issue in stylelint-scss: https://github.com/stylelint-scss/stylelint-scss/issues/1189
+    /* stylelint-disable-next-line no-invalid-position-declaration */
     padding: 2rem;
   }
 
   @media (max-width: $MQMobileNarrow) {
+    // FIXME: Issue in stylelint-scss: https://github.com/stylelint-scss/stylelint-scss/issues/1189
+    /* stylelint-disable-next-line no-invalid-position-declaration */
     padding: 1.5rem;
   }
 }

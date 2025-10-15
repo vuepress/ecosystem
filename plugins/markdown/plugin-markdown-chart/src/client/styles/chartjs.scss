@@ -16,7 +16,7 @@
   transition: all 1s;
 
   @media print {
-    page-break-inside: avoid;
+    break-inside: avoid;
   }
 
   @media (max-width: 719px) {

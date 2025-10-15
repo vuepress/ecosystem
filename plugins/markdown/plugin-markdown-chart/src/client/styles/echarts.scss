@@ -19,7 +19,7 @@
   min-height: 360px;
 
   @media print {
-    page-break-inside: avoid;
+    break-inside: avoid;
   }
 }
 

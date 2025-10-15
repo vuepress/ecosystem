@@ -67,7 +67,7 @@
     letter-spacing: var(--r-heading-letter-spacing);
     text-transform: var(--r-heading-text-transform);
     text-shadow: var(--r-heading-text-shadow);
-    word-wrap: break-word;
+    overflow-wrap: break-word;
 
     &:last-child {
       margin-bottom: 0;

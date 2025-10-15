@@ -240,8 +240,8 @@ pre {
   direction: ltr;
   white-space: pre;
   word-spacing: normal;
-  word-wrap: normal;
   word-break: normal;
+  overflow-wrap: normal;
   overflow-wrap: unset;
   tab-size: 4;
   hyphens: none;
@@ -281,7 +281,7 @@ pre {
 
   h2,
   h3 {
-    page-break-after: avoid;
+    break-after: avoid;
   }
 
   a {
@@ -323,7 +323,7 @@ pre {
   img,
   tr,
   canvas {
-    page-break-inside: avoid;
+    break-inside: avoid;
   }
 }
 
