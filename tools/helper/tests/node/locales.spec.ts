@@ -63,6 +63,7 @@ describe('getFullLocaleConfig() should generate locale', () => {
     const app = createBuildApp({
       locales: {
         '/': { lang: 'zh-CN' },
+        '/tw/': { lang: 'zh-TW' },
         '/en/': { lang: 'en-US' },
         '/nl/': { lang: 'nl-NL' },
         '/ja/': { lang: 'ja-JP' },
@@ -77,6 +78,10 @@ describe('getFullLocaleConfig() should generate locale', () => {
       '/': {
         text: '简体中文',
         label: '简体中文',
+      },
+      '/tw/': {
+        text: '繁體中文',
+        label: '繁體中文',
       },
       '/en/': {
         text: 'English',
