@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.113](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.112...v2.0.0-rc.113) (2025-10-15)
+
+### Bug Fixes
+
+- add declaration files and missing externals ([a28fe69](https://github.com/vuepress/ecosystem/commit/a28fe69a35400965cf2958e01ba95434f6344a14))
+- fix ua detect issue ([5a49bd6](https://github.com/vuepress/ecosystem/commit/5a49bd6184696371739b1a5e32cdec908300b206))
+- **plugin-docsearch:** fix docsearch shortcuts ([#566](https://github.com/vuepress/ecosystem/issues/566)) ([eba6086](https://github.com/vuepress/ecosystem/commit/eba6086d8874627575e5188e5cd807d968f7c6fe))
+- **plugin-git:** revert breaking changes in refactor ([b3d6681](https://github.com/vuepress/ecosystem/commit/b3d66819d34eae577e6ce74f34f12478d492d991))
+- **plugin-shiki:** fix incorrect highlight lines parsing, close [#555](https://github.com/vuepress/ecosystem/issues/555) ([#557](https://github.com/vuepress/ecosystem/issues/557)) ([b74872b](https://github.com/vuepress/ecosystem/commit/b74872b53ee53108afc720854e275f0a63b4ab42))
+
+### Features
+
+- **helper:** improve env detection ([dad84fd](https://github.com/vuepress/ecosystem/commit/dad84fd5deded7ff1841ee6d90902cabe76ffd49))
+- **plugin-clarity-analytics:** supports clarity analytics ([#553](https://github.com/vuepress/ecosystem/issues/553)) ([3ed7477](https://github.com/vuepress/ecosystem/commit/3ed7477fd48a99d8055d7079f4a9cec814fffc6a))
+- **plugin-docsearch:** support docsearch v4 ([#565](https://github.com/vuepress/ecosystem/issues/565)) ([6bf4f1e](https://github.com/vuepress/ecosystem/commit/6bf4f1e1cf778017242a3c9e10046f75d6e44d20))
+- **plugin-meilisearch:** add convertDiffFilesToMarkdown ([e703e38](https://github.com/vuepress/ecosystem/commit/e703e388b5a1cb0bcddb82e7f401db512b0b6101))
+- remove api: modern ([27a35cb](https://github.com/vuepress/ecosystem/commit/27a35cbe42a344c4fea28c8905dc37b4ae1f47e5))
+
 # [2.0.0-rc.112](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.111...v2.0.0-rc.112) (2025-07-09)
 
 **Note:** Version bump only for package @vuepress/ecosystem

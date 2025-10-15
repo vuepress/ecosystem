@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.113](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.112...v2.0.0-rc.113) (2025-10-15)
+
+### Bug Fixes
+
+- **plugin-docsearch:** fix docsearch shortcuts ([#566](https://github.com/vuepress/ecosystem/issues/566)) ([eba6086](https://github.com/vuepress/ecosystem/commit/eba6086d8874627575e5188e5cd807d968f7c6fe))
+
+### Features
+
+- **plugin-docsearch:** support docsearch v4 ([#565](https://github.com/vuepress/ecosystem/issues/565)) ([6bf4f1e](https://github.com/vuepress/ecosystem/commit/6bf4f1e1cf778017242a3c9e10046f75d6e44d20))
+
 # [2.0.0-rc.112](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.111...v2.0.0-rc.112) (2025-07-09)
 
 **Note:** Version bump only for package @vuepress/plugin-docsearch
