@@ -1,4 +1,3 @@
-import type { SearchParamsObject } from 'algoliasearch'
 import type { PropType } from 'vue'
 import { computed, defineComponent, h, onMounted, ref, watch } from 'vue'
 import { useLang, useRouteLocale } from 'vuepress/client'
@@ -9,7 +8,7 @@ import {
 } from '../composables/index.js'
 import { useDocSearchOptions } from '../helpers/index.js'
 import {
-  getFacetFilters,
+  getIndices,
   getSearchButtonTemplate,
   pollToOpenDocSearch,
   preconnectToAlgolia,
@@ -57,19 +56,11 @@ export const DocSearch = defineComponent({
 
       const { default: docsearch } = await import('@docsearch/js')
 
-      const { searchParameters } = options.value
-
       docsearch({
         ...docsearchShim,
         ...options.value,
         container: `#${props.containerId}`,
-        searchParameters: {
-          ...searchParameters,
-          facetFilters: getFacetFilters(
-            lang.value,
-            (searchParameters as SearchParamsObject | undefined)?.facetFilters,
-          ),
-        },
+        indices: getIndices(options.value, lang.value),
       })
       // mark as initialized
       hasInitialized.value = true
