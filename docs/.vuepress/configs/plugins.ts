@@ -34,7 +34,7 @@ export const plugins = [
   docsearchPlugin({
     appId: 'N7UOPMVZ5B',
     apiKey: 'aa626dfa43a5e32cd519ba84735ad384',
-    indexName: 'ecosystem-vuejs',
+    indices: ['ecosystem-vuejs'],
   }),
   feedPlugin({
     hostname: 'https://ecosystem.vuejs.press',

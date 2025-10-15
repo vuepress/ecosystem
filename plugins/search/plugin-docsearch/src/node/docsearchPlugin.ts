@@ -21,7 +21,7 @@ import { PLUGIN_NAME } from './utils.js'
  *     docsearchPlugin({
  *       appId: 'XXXXXX',
  *       apiKey: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
- *       indexName: 'xxxxxxxx',
+ *       indices: ['xxxxxxxx'],
  *       locales: {
  *         '/': {
  *           placeholder: 'Search Documentation',

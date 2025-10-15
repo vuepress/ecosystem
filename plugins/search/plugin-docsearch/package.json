@@ -40,9 +40,9 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@docsearch/css": "^3.9.0",
-    "@docsearch/js": "^3.9.0",
-    "@docsearch/react": "^3.9.0",
+    "@docsearch/css": "^4.2.0",
+    "@docsearch/js": "^4.2.0",
+    "@docsearch/react": "^4.2.0",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "ts-debounce": "^4.0.0",

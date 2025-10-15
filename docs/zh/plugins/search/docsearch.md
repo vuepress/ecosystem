@@ -170,6 +170,15 @@ new Crawler({
 
 ## 配置项
 
+### appId
+
+- 类型：`string`
+- 必填：是
+- 详情：用于设置你的 Application ID。
+
+- 参考：
+  - [DocSearch > Options > appId](https://docsearch.algolia.com/docs/api#appid)
+
 ### apiKey
 
 - 类型：`string`
@@ -179,7 +188,18 @@ new Crawler({
 - 参考：
   - [DocSearch > Options > apiKey](https://docsearch.algolia.com/docs/api#apikey)
 
-### indexName
+### indices
+
+- 类型：`Array<string | DocSearchIndex>`
+- 必填：是
+- 详情：要用于关键字搜索的索引及其可选的 searchParameters 列表。
+
+- 参考：
+  - [DocSearch > Options > indexName](https://docsearch.algolia.com/docs/api#indices)
+
+::: tip indexName
+
+`indexName` 也可以作为 `indices` 的简写形式，但它将会在未来的版本中废弃。
 
 - 类型：`string`
 - 必填：是
@@ -188,14 +208,7 @@ new Crawler({
 - 参考：
   - [DocSearch > Options > indexName](https://docsearch.algolia.com/docs/api#indexname)
 
-### appId
-
-- 类型：`string`
-- 必填：是
-- 详情：用于设置你的 Application ID。
-
-- 参考：
-  - [DocSearch > Options > appId](https://docsearch.algolia.com/docs/api#appid)
+:::
 
 ### searchParameters
 
