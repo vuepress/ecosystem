@@ -1,22 +1,28 @@
+import type { DocSearchProps } from '@docsearch/react'
+import { isMacOS, isiPad } from '@vuepress/helper/client'
 import { useEventListener } from '@vueuse/core'
+import type { ComputedRef } from 'vue'
 
 /**
  * Add hotkey listener, remove it after triggered
  */
-export const useDocSearchHotkeyListener = (callback: () => void): void => {
-  useEventListener(
-    'keydown',
-    (event) => {
-      const isHotKeyBind = event.key === 'k' && (event.ctrlKey || event.metaKey)
-      const isSlashKey = event.key === '/'
+export const useDocSearchHotkeyListener = (
+  options: ComputedRef<DocSearchProps>,
+  callback: () => void,
+): void => {
+  const cleanup = useEventListener('keydown', (event) => {
+    const { keyboardShortcuts = {} } = options.value
+    const triggerByHotKey =
+      keyboardShortcuts['Ctrl/Cmd+K'] !== false &&
+      event.key === 'k' &&
+      (isMacOS() || isiPad() ? event.metaKey : event.ctrlKey)
+    const triggeredBySlashKey =
+      keyboardShortcuts['/'] !== false && event.key === '/'
 
-      if (!isSlashKey && !isHotKeyBind) {
-        return
-      }
-
+    if (triggerByHotKey || triggeredBySlashKey) {
       event.preventDefault()
       callback()
-    },
-    { once: true },
-  )
+      cleanup()
+    }
+  })
 }
