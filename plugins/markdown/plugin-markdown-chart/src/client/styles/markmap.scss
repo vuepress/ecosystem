@@ -42,7 +42,7 @@
   color: var(--vp-c-text);
 
   @media print {
-    page-break-inside: avoid;
+    break-inside: avoid;
   }
 }
 
