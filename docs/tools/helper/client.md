@@ -72,8 +72,6 @@ Accept user agent and check if the current environment satisfies the given condi
 
 ```ts
 export const isMobile: (ua: string) => boolean
-export const isChromeWebView: (ua: string) => boolean
-export const isSafariMobile: (ua: string) => boolean
 export const isSafari: (ua: string) => boolean
 export const isiPhone: (ua: string) => boolean
 export const isiPad: (ua: string) => boolean

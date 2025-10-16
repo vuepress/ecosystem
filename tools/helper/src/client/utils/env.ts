@@ -1,100 +1,109 @@
+import { isBoolean, isNumber } from '../../shared'
+
+interface NavigatorUAData {
+  platform?: string
+  mobile?: boolean
+}
+
+declare global {
+  interface Navigator {
+    userAgentData?: NavigatorUAData
+  }
+}
+
+const getPlatform = (): string =>
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  navigator.userAgentData?.platform || navigator.platform
+const getUA = (): string => navigator.userAgent
+
 /**
- * Check if the user agent indicates iPhone or iPod.
+ * Check if the user device is iPhone or iPod.
  *
- * 检查用户代理是否表示 iPhone 或 iPod。
+ * 检查用户设备是否为 iPhone 或 iPod。
  *
  * @returns Whether it's iPhone or iPod / 是否为 iPhone 或 iPod
  */
-export const isiPhone = (): boolean =>
-  /\b(iPhone|iPod)\b/i.test(navigator.userAgent)
-
-const hasMacUA = (): boolean => /macintosh|mac os x/i.test(navigator.userAgent)
+export const isiPhone = (): boolean => /\biPhone\b/i.test(getPlatform())
 
 /**
- * Check if the user agent indicates Windows.
+ * Check if the user device is Windows.
  *
- * 检查用户代理是否表示 Windows。
+ * 检查用户设备是否为 Windows。
  *
  * @returns Whether it's Windows / 是否为 Windows
  */
 export const isWindows = (): boolean =>
-  [
-    /microsoft (windows) (vista|xp)/i,
-    /(win(?=3|9|n)|win 9x )([nt\d.]+)/i,
-    /(windows) nt 6\.2; (arm)/i,
-    /(windows (?:phone(?: os)?|mobile))[/ ]?([\d.\w ]*)/i,
-    /(windows)[/ ]?([ntce\d. ]+\w)(?!.+xbox)/i,
-  ].some((item) => item.test(navigator.userAgent))
+  /\b(Windows|Win32)\b/i.test(getPlatform())
 
 /**
- * Check if the user agent indicates iPad.
+ * Check if the user device is iPad.
  *
- * 检查用户代理是否表示 iPad。
+ * 检查用户设备是否为 iPad。
  *
  * @returns Whether it's iPad / 是否为 iPad
  */
-export const isiPad = (): boolean => {
-  const isTouch = !!(navigator.maxTouchPoints && navigator.maxTouchPoints > 0)
-
-  return /\b(iPad)\b/i.test(navigator.userAgent) || (hasMacUA() && isTouch)
-}
-
+export const isiPad = (): boolean => /\biPad\b/i.test(getPlatform())
 /**
- * Check if the user agent indicates iOS (iPhone, iPad, or iPod).
+ * Check if the user device is iOS (iPhone, iPad, or iPod).
  *
- * 检查用户代理是否表示 iOS (iPhone, iPad, iPod)。
+ * 检查用户设备是否为 iOS (iPhone, iPad, iPod)。
  *
  * @returns Whether it's iOS / 是否为 iOS
  */
-export const isIOS = (): boolean => isiPhone() || isiPad()
+export const isIOS = (): boolean =>
+  // UA-CH platform says iOS, or legacy detections
+  /ios/i.test(getPlatform()) || isiPhone() || isiPad()
 
 /**
- * Check if the user agent indicates macOS.
+ * Check if the user device is macOS.
  *
- * 检查用户代理是否表示 macOS。
+ * 检查用户设备是否为 macOS。
  *
  * @returns Whether it's macOS / 是否为 macOS
  */
-export const isMacOS = (): boolean => hasMacUA() && !isIOS()
+export const isMacOS = (): boolean => {
+  const platform = getPlatform()
+
+  if (platform) return /mac/i.test(platform)
+
+  // Explicit macOS platform or legacy UA, while excluding iOS (iPadOS desktop UA)
+  return /macintosh|mac os x/i.test(getUA()) && !isIOS()
+}
 
 /**
- * Check if the user agent indicates a mobile device.
+ * Check if the user device is a mobile device.
  *
- * 检查用户代理是否表示移动设备。
+ * 检查用户设备是否为移动设备。
  *
  * @returns Whether it's a mobile device / 是否为移动设备
  */
-export const isMobile = (): boolean =>
-  /\b(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS|FxiOS)\b/i.test(
-    navigator.userAgent,
+export const isMobile = (): boolean => {
+  // Use UA-CH first if available
+  const uaDataMobile = navigator.userAgentData?.mobile
+
+  if (isBoolean(uaDataMobile)) return uaDataMobile
+
+  // Fallback to UA
+  return /\b(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|CriOS|FxiOS)\b/i.test(
+    getUA(),
   )
+}
 
 /**
- * Check if the user agent indicates Chrome WebView.
+ * Check if the user device is Safari.
  *
- * 检查用户代理是否表示 Chrome WebView。
- *
- * @returns Whether it's Chrome WebView / 是否为 Chrome WebView
- */
-export const isChromeWebView = (): boolean =>
-  /(?!Chrom.*OPR)wv\).*?Chrome\//i.test(navigator.userAgent)
-
-/**
- * Check if the user agent indicates Safari.
- *
- * 检查用户代理是否表示 Safari。
+ * 检查用户设备是否为 Safari。
  *
  * @returns Whether it's Safari / 是否为 Safari
  */
-export const isSafari = (): boolean =>
-  /safari/i.test(navigator.userAgent) &&
-  !/chrome|crios|fxios|edgios/i.test(navigator.userAgent)
+export const isSafari = (): boolean => {
+  const ua = getUA()
 
-/**
- * Check if the user agent indicates Safari Mobile.
- *
- * 检查用户代理是否表示 Safari Mobile。
- *
- * @returns Whether it's Safari Mobile / 是否为 Safari Mobile
- */
-export const isSafariMobile = (): boolean => isSafari() && isMobile()
+  return (
+    /safari/i.test(ua) &&
+    // Safari has 'Safari' but not these chromium/gecko/edge/opera flavors
+    !/chrome|crios|fxios|edgios|edg|opr|opera|ucbrowser|qqbrowser|baidubrowser/i.test(
+      ua,
+    )
+  )
+}
