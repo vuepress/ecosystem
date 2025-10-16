@@ -1,4 +1,4 @@
-import { isBoolean, isNumber } from '../../shared'
+import { isBoolean } from '../../shared/index.js'
 
 interface NavigatorUAData {
   platform?: string
