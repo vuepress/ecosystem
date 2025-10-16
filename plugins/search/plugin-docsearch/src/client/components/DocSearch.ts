@@ -97,6 +97,7 @@ export const DocSearch = defineComponent({
       hasInitialized.value
         ? null
         : h('div', {
+            class: 'docsearch-placeholder',
             onClick: startDocsearch,
             innerHTML: getSearchButtonTemplate(
               options.value.translations?.button,
