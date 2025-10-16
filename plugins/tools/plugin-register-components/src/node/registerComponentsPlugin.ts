@@ -1,6 +1,7 @@
 import { watch } from 'chokidar'
 import type { Plugin } from 'vuepress/core'
 import { hash, path } from 'vuepress/utils'
+import { createMatcher } from './createMatcher.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 
 /**
@@ -18,7 +19,7 @@ export interface RegisterComponentsPluginOptions {
   componentsDir?: string | null
 
   /**
-   * Patterns to match component files using [globby](https://github.com/sindresorhus/globby)
+   * Patterns to match component files using [tinyglobby](https://github.com/SuperchupuDev/tinyglobby)
    *
    * The patterns are relative to componentsDir`
    */
@@ -58,9 +59,13 @@ export const registerComponentsPlugin = ({
 
     onWatched: (app, watchers) => {
       if (componentsDir) {
-        const componentsWatcher = watch(componentsPatterns, {
+        const matcher = createMatcher(componentsPatterns)
+        const componentsWatcher = watch('.', {
           cwd: componentsDir,
           ignoreInitial: true,
+          ignored: (filepath, stats) =>
+            Boolean(stats?.isFile()) &&
+            !matcher(path.relative(componentsDir, filepath)),
         })
         componentsWatcher.on('add', () => {
           void prepareClientConfigFile(app, options, optionsHash)

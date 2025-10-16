@@ -1,31 +1,28 @@
-import { useMutationObserver } from '@vueuse/core'
-import type { Ref } from 'vue'
-import { onMounted, readonly, ref } from 'vue'
+import type { ComputedRef, InjectionKey, Ref, WritableComputedRef } from 'vue'
+import { inject, readonly, ref } from 'vue'
 
 import { getDarkMode } from '../utils/index.js'
 
-let darkmode: Readonly<Ref<boolean>> | null = null
+export type DarkModeRef = Ref<boolean>
 
-const _useDarkMode = (): Readonly<Ref<boolean>> => {
-  const isDarkMode = ref(false)
+export const darkModeSymbol: InjectionKey<
+  ComputedRef<boolean> | Ref<boolean> | WritableComputedRef<boolean>
+> = Symbol(__VUEPRESS_DEV__ ? 'darkMode' : '')
 
-  onMounted(() => {
-    isDarkMode.value = getDarkMode()
+const darkmode: DarkModeRef = ref(false)
 
-    // Watch darkmode change
-    useMutationObserver(
-      document.documentElement,
-      () => {
-        isDarkMode.value = getDarkMode()
-      },
-      {
-        attributeFilter: ['data-theme'],
-        attributes: true,
-      },
-    )
+// Ensure darkmode is initialized only once in client-side
+if (typeof document !== 'undefined') {
+  darkmode.value = getDarkMode()
+
+  const mutationObserver = new MutationObserver(() => {
+    darkmode.value = getDarkMode()
   })
 
-  return readonly(isDarkMode)
+  mutationObserver.observe(document.documentElement, {
+    attributeFilter: ['data-theme'],
+    attributes: true,
+  })
 }
 
 /**
@@ -35,6 +32,6 @@ const _useDarkMode = (): Readonly<Ref<boolean>> => {
  *
  * @returns Readonly darkmode ref / 只读的暗色模式响应式引用
  */
-// eslint-disable-next-line no-return-assign
+
 export const useDarkMode = (): Readonly<Ref<boolean>> =>
-  (darkmode ??= _useDarkMode())
+  readonly(inject(darkModeSymbol, darkmode))

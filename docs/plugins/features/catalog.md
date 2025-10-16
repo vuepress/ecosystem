@@ -123,7 +123,6 @@ Project with order -1
 - Details:
 
   Catalog page path to be excluded during generation.
-
   - `"/foo/"` means only exclude catalog page generation at `/foo/` folder.
   - `/^\/foo\//` means exclude catalog page generation at `/foo/` folder and its subfolders.
 
@@ -169,7 +168,7 @@ Project with order -1
 - **Russian** (ru-RU)
 - **Ukrainian** (uk-UA)
 - **Vietnamese** (vi-VN)
-- **Portuguese (Brazil)** (pt-BR)
+- **Portuguese** (pt)
 - **Polish** (pl-PL)
 - **French** (fr-FR)
 - **Spanish** (es-ES)
@@ -215,7 +214,6 @@ Customizes how to extract catalog info from route meta.
   You can use `<Catalog />` in theme layouts or directly in Markdown files.
 
   The component supports four props:
-
   - `level`: Changes the display depth (maximum 3 levels), default is `3`.
   - `base`: Displays catalog of the specified folder, default is the current folder.
   - `index`: Adds index numbers to catalog items, default is no numbers.

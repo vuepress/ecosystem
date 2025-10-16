@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-rename-default
 import container from 'markdown-it-container'
 import type { Plugin, PluginObject } from 'vuepress/core'
 import { ensureLeadingSlash, resolveLocalePath } from 'vuepress/shared'

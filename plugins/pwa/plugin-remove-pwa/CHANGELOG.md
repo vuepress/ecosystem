@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.114](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.113...v2.0.0-rc.114) (2025-10-15)
+
+**Note:** Version bump only for package @vuepress/plugin-remove-pwa
+
+# [2.0.0-rc.112](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.111...v2.0.0-rc.112) (2025-07-09)
+
+**Note:** Version bump only for package @vuepress/plugin-remove-pwa
+
+# [2.0.0-rc.109](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.108...v2.0.0-rc.109) (2025-06-17)
+
+### Features
+
+- **plugin-remove-pwa:** improve cache handling ([#531](https://github.com/vuepress/ecosystem/issues/531)) ([a7e8a1a](https://github.com/vuepress/ecosystem/commit/a7e8a1a788e44d4da5de2f5a9b6b4443d996acdb))
+
 # [2.0.0-rc.103](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.102...v2.0.0-rc.103) (2025-05-08)
 
 **Note:** Version bump only for package @vuepress/plugin-remove-pwa

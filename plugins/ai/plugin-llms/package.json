@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-llms",
-  "version": "2.0.0-rc.108",
+  "version": "2.0.0-rc.114",
   "description": "VuePress plugin - llms.txt",
   "keywords": [
     "vuepress-plugin",
@@ -41,7 +41,7 @@
     "gray-matter": "^4.0.3",
     "millify": "^6.1.0",
     "remark": "^15.0.1",
-    "tokenx": "^1.0.1",
+    "tokenx": "^1.1.0",
     "unist-util-remove": "^4.0.0"
   },
   "peerDependencies": {

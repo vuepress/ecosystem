@@ -9,7 +9,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: 'Changelog',
       timeOn: 'on',
       viewChangelog: 'View All Changelog',
-      latestUpdateAt: 'Last Updated:',
+      latestUpdateAt: 'Last Updated',
     },
   ],
   [
@@ -19,7 +19,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: '更新日志',
       timeOn: '于',
       viewChangelog: '查看所有更新日志',
-      latestUpdateAt: '最近更新：',
+      latestUpdateAt: '最近更新',
     },
   ],
   [
@@ -29,7 +29,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: '更新日誌',
       timeOn: '於',
       viewChangelog: '查看所有更新日誌',
-      latestUpdateAt: '最近更新：',
+      latestUpdateAt: '最近更新',
     },
   ],
   [
@@ -39,7 +39,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: 'Aenderungen',
       timeOn: 'am',
       viewChangelog: 'Alle Aenderungen anzeigen',
-      latestUpdateAt: 'Zuletzt aktualisiert:',
+      latestUpdateAt: 'Zuletzt aktualisiert',
     },
   ],
   [
@@ -49,7 +49,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: 'Aenderungen',
       timeOn: 'am',
       viewChangelog: 'Alle Aenderungen anzeigen',
-      latestUpdateAt: 'Zuletzt aktualisiert:',
+      latestUpdateAt: 'Zuletzt aktualisiert',
     },
   ],
   [
@@ -59,7 +59,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: 'Lịch sử thay đổi',
       timeOn: 'vào',
       viewChangelog: 'Xem tất cả lịch sử thay đổi',
-      latestUpdateAt: 'Cập nhật gần nhất:',
+      latestUpdateAt: 'Cập nhật gần nhất',
     },
   ],
   [
@@ -69,7 +69,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: 'Історія змін',
       timeOn: 'в',
       viewChangelog: 'Показати всю історію змін',
-      latestUpdateAt: 'Останнє оновлення:',
+      latestUpdateAt: 'Останнє оновлення',
     },
   ],
   [
@@ -79,7 +79,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: 'История изменений',
       timeOn: 'в',
       viewChangelog: 'Показать всю историю изменений',
-      latestUpdateAt: 'Последнее обновление:',
+      latestUpdateAt: 'Последнее обновление',
     },
   ],
   [
@@ -89,7 +89,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: 'Log de Alterações',
       timeOn: 'em',
       viewChangelog: 'Ver todas as Alterações',
-      latestUpdateAt: 'Atualizado em:',
+      latestUpdateAt: 'Atualizado em',
     },
   ],
   [
@@ -99,7 +99,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: 'Zmiany',
       timeOn: 'w',
       viewChangelog: 'Zobacz wszystkie zmiany',
-      latestUpdateAt: 'Ostatnio zaktualizowano:',
+      latestUpdateAt: 'Ostatnio zaktualizowano',
     },
   ],
   [
@@ -109,7 +109,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: 'Zmeny',
       timeOn: 'na',
       viewChangelog: 'Zobrazit vsetky zmeny',
-      latestUpdateAt: 'Poslednou aktualizaciu:',
+      latestUpdateAt: 'Poslednou aktualizaciu',
     },
   ],
   [
@@ -119,7 +119,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: 'Historique des modifications',
       timeOn: 'le',
       viewChangelog: "Voir l'historique des modifications",
-      latestUpdateAt: 'Dernière mise à jour:',
+      latestUpdateAt: 'Dernière mise à jour',
     },
   ],
   [
@@ -129,7 +129,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: 'Historial de cambios',
       timeOn: 'el',
       viewChangelog: 'Ver el historial de cambios',
-      latestUpdateAt: 'Actualizado el:',
+      latestUpdateAt: 'Actualizado el',
     },
   ],
   [
@@ -139,7 +139,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: '変更履歴',
       timeOn: '日',
       viewChangelog: '全ての変更履歴を表示',
-      latestUpdateAt: '最終更新:',
+      latestUpdateAt: '最終更新',
     },
   ],
   [
@@ -149,7 +149,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: 'Düzenleme Girişimleri',
       timeOn: 'de',
       viewChangelog: 'Tüm düzenleme girişimlerini göster',
-      latestUpdateAt: 'Son günceleme:',
+      latestUpdateAt: 'Son günceleme',
     },
   ],
   [
@@ -159,7 +159,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: '변경 기록',
       timeOn: '에서',
       viewChangelog: '변경 기록 별 상세 내용 바보기',
-      latestUpdateAt: '최근 수정:',
+      latestUpdateAt: '최근 수정',
     },
   ],
   [
@@ -169,7 +169,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: 'Muutokset',
       timeOn: 'kun',
       viewChangelog: 'Näytä kaikki muutokset',
-      latestUpdateAt: 'Viimeksi paivittynyt:',
+      latestUpdateAt: 'Viimeksi paivittynyt',
     },
   ],
   [
@@ -179,7 +179,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: 'Modosítások',
       timeOn: 'ben',
       viewChangelog: 'Minden modosítás megtekintése',
-      latestUpdateAt: 'Legutóbb frissítés:',
+      latestUpdateAt: 'Legutóbb frissítés',
     },
   ],
   [
@@ -189,7 +189,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: 'Perubahan',
       timeOn: 'pada',
       viewChangelog: 'Lihat semua perubahan',
-      latestUpdateAt: 'Diperbarui terakhir:',
+      latestUpdateAt: 'Diperbarui terakhir',
     },
   ],
   [
@@ -199,7 +199,7 @@ export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [
       changelog: 'Wijzigingen',
       timeOn: 'op',
       viewChangelog: 'Bekijk alle wijzigingen',
-      latestUpdateAt: 'Laatst bijgewerkt:',
+      latestUpdateAt: 'Laatst bijgewerkt',
     },
   ],
 ]

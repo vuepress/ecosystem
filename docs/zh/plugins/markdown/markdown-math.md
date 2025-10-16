@@ -99,11 +99,19 @@ Mathjax:
 - 详情：
 
   用于渲染 $\TeX$ 内容的包。
-
   - `'katex'`：使用 [KaTeX](https://katex.org/)
   - `'mathjax'`：使用 [MathJax](https://www.mathjax.org/)
 
   当未指定此选项时，插件将尝试检测安装了哪个包。如果两者都安装了，它将使用“mathjax”。
+
+### delimiters
+
+- 类型：`'brackets' | 'dollars' | 'all'`
+- 默认值：`'dollars'`
+- 详情：启用的数学分隔符语法。
+  - `"brackets"`: 使用 `\(...\)` 表示内联数学，使用 `\[...\]` 表示显示模式数学（LaTeX 风格）
+  - `"dollars"`: 使用 `$...$` 表示内联数学，使用 `$$...$$` 表示显示模式数学（常见 Markdown 风格）
+  - `"all"`: 启用括号和美元符号两种语法
 
 ### 使用 KaTeX
 

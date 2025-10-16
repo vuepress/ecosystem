@@ -11,6 +11,9 @@
       "path": "./plugins/analytics/plugin-baidu-analytics/tsconfig.build.json"
     },
     {
+      "path": "./plugins/analytics/plugin-clarity-analytics/tsconfig.build.json"
+    },
+    {
       "path": "./plugins/analytics/plugin-google-analytics/tsconfig.build.json"
     },
     {
@@ -43,6 +46,7 @@
     // markdown
     { "path": "./plugins/markdown/plugin-append-date/tsconfig.build.json" },
     { "path": "./plugins/markdown/plugin-links-check/tsconfig.build.json" },
+    { "path": "./plugins/markdown/plugin-markdown-chart/tsconfig.build.json" },
     {
       "path": "./plugins/markdown/plugin-markdown-container/tsconfig.build.json"
     },
@@ -108,6 +112,8 @@
       "path": "./plugins/tools/plugin-register-components/tsconfig.build.json"
     },
     { "path": "./plugins/tools/plugin-cache/tsconfig.build.json" },
+    { "path": "./plugins/tools/plugin-replace-assets/tsconfig.build.json" },
+    { "path": "./plugins/tools/plugin-auto-frontmatter/tsconfig.build.json" },
 
     // themes
     { "path": "./themes/theme-default/tsconfig.build.json" },

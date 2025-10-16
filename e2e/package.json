@@ -17,6 +17,7 @@
   "dependencies": {
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
+    "@vuepress/plugin-auto-frontmatter": "workspace:*",
     "@vuepress/plugin-blog": "workspace:*",
     "@vuepress/plugin-catalog": "workspace:*",
     "@vuepress/plugin-copyright": "workspace:*",
@@ -26,6 +27,7 @@
     "@vuepress/plugin-pwa": "workspace:*",
     "@vuepress/plugin-redirect": "workspace:*",
     "@vuepress/plugin-register-components": "workspace:*",
+    "@vuepress/plugin-replace-assets": "workspace:*",
     "@vuepress/plugin-sass-palette": "workspace:*",
     "@vuepress/plugin-theme-data": "workspace:*",
     "@vuepress/plugin-watermark": "workspace:*",
@@ -36,6 +38,6 @@
     "vuepress": "catalog:"
   },
   "devDependencies": {
-    "@playwright/test": "^1.52.0"
+    "@playwright/test": "^1.56.0"
   }
 }

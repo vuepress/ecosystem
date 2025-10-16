@@ -120,7 +120,7 @@ app.component(
 
 - Details:
 
-  Patterns to match component files using [globby](https://github.com/sindresorhus/globby).
+  Patterns to match component files using [tinyglobby](https://github.com/SuperchupuDev/tinyglobby).
 
   The patterns are relative to [componentsDir](#componentsdir).
 

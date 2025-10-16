@@ -71,7 +71,6 @@ export default {
 - Details:
 
   Whether to copy inline code content when double click.
-
   - `boolean`: Whether to copy inline code content when double click.
   - `string | string[]`: The selector of inline code.
 
@@ -173,7 +172,7 @@ export default {
 - **Russian** (ru-RU)
 - **Ukrainian** (uk-UA)
 - **Vietnamese** (vi-VN)
-- **Portuguese (Brazil)** (pt-BR)
+- **Portuguese** (pt)
 - **Polish** (pl-PL)
 - **French** (fr-FR)
 - **Spanish** (es-ES)

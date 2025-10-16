@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.114](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.113...v2.0.0-rc.114) (2025-10-15)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
+# [2.0.0-rc.113](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.112...v2.0.0-rc.113) (2025-10-15)
+
+### Bug Fixes
+
+- **plugin-git:** revert breaking changes in refactor ([b3d6681](https://github.com/vuepress/ecosystem/commit/b3d66819d34eae577e6ce74f34f12478d492d991))
+
+# [2.0.0-rc.112](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.111...v2.0.0-rc.112) (2025-07-09)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
+# [2.0.0-rc.111](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.110...v2.0.0-rc.111) (2025-07-09)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
+# [2.0.0-rc.110](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.109...v2.0.0-rc.110) (2025-06-19)
+
+**Note:** Version bump only for package @vuepress/plugin-git
+
+# [2.0.0-rc.109](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.108...v2.0.0-rc.109) (2025-06-17)
+
+### Bug Fixes
+
+- **plugin-git:** fix locale format ([#537](https://github.com/vuepress/ecosystem/issues/537)) ([cc2132e](https://github.com/vuepress/ecosystem/commit/cc2132e51973b60cafc18883b993cb6693f12a67))
+
 # [2.0.0-rc.108](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.107...v2.0.0-rc.108) (2025-06-04)
 
 **Note:** Version bump only for package @vuepress/plugin-git

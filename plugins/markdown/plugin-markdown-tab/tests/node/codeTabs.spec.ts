@@ -231,7 +231,7 @@ const a = 1;
     expect(
       markdownIt.render(`
 ::: code-tabs
-@tab js # javascript
+@tab js #javascript
 \`\`\`js
 const a = 1;
 \`\`\`

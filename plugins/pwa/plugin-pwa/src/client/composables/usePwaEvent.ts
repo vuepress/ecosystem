@@ -18,6 +18,13 @@ export const pwaEventSymbol: InjectionKey<PwaEvent> = Symbol(
   __VUEPRESS_DEV__ ? 'PwaEvent' : '',
 )
 
+/**
+ * Use PWA event emitter
+ *
+ * 使用 PWA 事件发射器
+ *
+ * @returns PWA event emitter / PWA 事件发射器
+ */
 export const usePwaEvent = (): PwaEvent => {
   const pwaEvent = inject(pwaEventSymbol)
 

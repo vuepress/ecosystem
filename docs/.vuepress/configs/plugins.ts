@@ -5,6 +5,7 @@ import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
 import { iconPlugin } from '@vuepress/plugin-icon'
 import { llmsPlugin } from '@vuepress/plugin-llms'
+import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
@@ -33,7 +34,7 @@ export const plugins = [
   docsearchPlugin({
     appId: 'N7UOPMVZ5B',
     apiKey: 'aa626dfa43a5e32cd519ba84735ad384',
-    indexName: 'ecosystem-vuejs',
+    indices: ['ecosystem-vuejs'],
   }),
   feedPlugin({
     hostname: 'https://ecosystem.vuejs.press',
@@ -44,7 +45,14 @@ export const plugins = [
   iconPlugin({
     prefix: 'lucide:',
   }),
-  markdownPreviewPlugin(),
+  markdownChartPlugin({
+    chartjs: true,
+    echarts: true,
+    flowchart: true,
+    markmap: true,
+    mermaid: true,
+    plantuml: true,
+  }),
   markdownExtPlugin({
     gfm: true,
     component: true,
@@ -58,10 +66,20 @@ export const plugins = [
   }),
   markdownIncludePlugin({
     deep: true,
+    resolvePath: (file) => {
+      if (file.startsWith('@echarts'))
+        return file.replace(
+          '@echarts',
+          path.resolve(__dirname, '../echarts-snippets'),
+        )
+
+      return file
+    },
   }),
   markdownMathPlugin({
     type: 'katex',
   }),
+  markdownPreviewPlugin(),
   markdownStylizePlugin({
     align: true,
     attrs: true,

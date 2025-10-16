@@ -224,7 +224,6 @@ Images links are supported with any icon types (relative links are NOT supported
   Icon assets to be used.
 
   The following keywords are supported and you may use other CDN links or even your own:
-
   - `iconify`: Iconify
   - `fontawesome`: Font Awesome free icons only
   - `fontawesome-with-brands`: Font Awesome free icons and brand icons
@@ -244,7 +243,6 @@ Images links are supported with any icon types (relative links are NOT supported
   Type of the icon, the plugin will try to infer the type from the assets, and fallbacks to `unknown`.
 
   Notably, the plugin can recognize:
-
   - iconfont css links
   - fontawesome kits
   - CDN links for fontawesome and iconify
@@ -258,7 +256,6 @@ Images links are supported with any icon types (relative links are NOT supported
 - Details:
 
   Prefix for the icon component. By default, the plugin will use:
-
   - `iconfont icon-` for iconfont type
   - empty string for all other types
 
@@ -305,7 +302,6 @@ Images links are supported with any icon types (relative links are NOT supported
 - Type: `"width" | "height" | "both"`
 - Default: `"height"`
 - Details: Icon size adjustment method.
-
   - `width`: Set width only
   - `height`: Set height only
   - `both`: Set width and height

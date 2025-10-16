@@ -6,25 +6,25 @@ icon: settings-2
 
 ## 选项
 
+### serviceWorkerFilename
+
+- 类型：`string`
+- 默认值：`"service-worker.js"`
+- 详情：Service Worker 文件路径。
+
 ### showInstall
 
 - 类型：`boolean`
-- 默认值：`false`
-- 详情：
-
-  是否在 Service Worker 首次成功注册时显示 PWA 安装按钮
+- 详情：是否在 Service Worker 首次成功注册时显示 PWA 安装按钮。
 
 ### manifest
 
-- 类型：`ManifestOption`
-- 详情：
-
-  填充一个将被解析为 manifest.webmanifest 的对象。
+- 类型：`AppManifest`
+- 详情：填充一个将被解析为 manifest.webmanifest 的对象。
 
   ::: tip
 
   如果未设置某些选项，它们会回退到插件预设值。
-
   - name: `siteConfig.title` || `siteConfig.locales['/'].title` || `"Site"`
   - short_name: `siteConfig.title` || `siteConfig.locales['/'].title` || `"Site"`
   - description: `siteConfig.description` || `siteConfig.locales['/'].description` || `"A site built with vuepress"`
@@ -39,17 +39,14 @@ icon: settings-2
 
   :::
 
-- 参考：
-
+  **参考：**
   - [MDN Web Docs: Web App Manifest](https://developer.mozilla.org/zh-CN/docs/Web/Manifest)
   - [W3C Manifest](https://w3c.github.io/manifest/)
 
 ### favicon
 
 - 类型：`string`
-- 详情：
-
-  `favicon.ico` 地址，填入绝对路径。
+- 详情：`favicon.ico` 地址，填入绝对路径。
 
   ::: warning
 
@@ -63,25 +60,11 @@ icon: settings-2
 - 默认值：`"#46bd87"`
 - 详情：PWA 的主题色。
 
-### cacheHTML
-
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：是否缓存主页和 404 错误页之外的 HTML 文件
-
-### cacheImage
-
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：是否缓存图片。
-
 ### maxSize
 
 - 类型：`number`
 - 默认值：`2048`
-- 详情：
-
-  允许缓存的最大大小 (以 KB 为单位)
+- 详情：允许缓存的最大大小 (以 KB 为单位)。
 
   ::: warning
 
@@ -91,33 +74,36 @@ icon: settings-2
 
   :::
 
+### cacheHTML
+
+- 类型：`boolean`
+- 详情：是否缓存主页和 404 错误页之外的 HTML 文件。
+
+### cacheImage
+
+- 类型：`boolean`
+- 详情：是否缓存图片。
+
 ### maxImageSize
 
 - 类型：`number`
 - 默认值：`1024`
-- 详情：
+- 详情：图片允许缓存的最大大小 (以 KB 为单位)。
 
-  图片允许缓存的最大大小 (以 KB 为单位)
+  ::: tip
 
-  ::: tip 该选项不能大于 maxSize 选项
+  该选项不能大于 maxSize 选项。
 
   :::
 
 ### update
 
-- 类型：`"disabled" | "available" | "hint" | "force"`
+- 类型：`"disable" | "available" | "hint" | "force"`
 - 默认值：`"available"`
-- 详情：
-
-  发现新内容时的控制逻辑。
-
-  - `"disabled"`: 即使有新的 service worker 也不做任何事情，新的 service work 开始等待后，会在用户下次访问时接管页面，让用户获得新内容。
-
-  - `"available"`: 仅当新的 service worker 可用时才显示更新弹出窗口
-
-  - `"hint"`: 显示更新内容可用提示，并允许用户立即刷新。当新的 SW 成功注册后，将转为更新内容就绪弹窗。
-
-    当你希望用户立即查看新文档时，这很有帮助。
+- 详情：发现新内容时的控制逻辑。
+  - `"disable"`: 即使有新的 service worker 也不做任何事情，新的 service work 开始等待后，会在用户下次访问时接管页面，让用户获得新内容。
+  - `"available"`: 仅当新的 service worker 可用时才显示更新弹出窗口。
+  - `"hint"`: 显示更新内容可用提示，并允许用户立即刷新。当新的 SW 成功注册后，将转为更新内容就绪弹窗。当你希望用户立即查看新文档时，这很有帮助。
 
     ::: tip
 
@@ -125,7 +111,7 @@ icon: settings-2
 
     :::
 
-  - `"force"`: 立即注销当前 Service Worker 然后刷新以获取新内容
+  - `"force"`: 立即注销当前 Service Worker 然后刷新以获取新内容。
 
     ::: danger
 
@@ -141,22 +127,24 @@ icon: settings-2
 
 ### apple
 
-更高支持苹果的特殊设置，忽略它们是安全的。
+- 类型：`ApplePwaOptions | false`
+- 详情：支持苹果的特殊设置，忽略它们是安全的。
 
 #### apple.icon
 
 - 类型：`string`
-- 详情：填入苹果使用的图标地址，推荐 152×152 大小
+- 详情：填入苹果使用的图标地址，推荐 152×152 大小。
 
 #### apple.maskIcon
 
 - 类型：`string`
-- 详情：Safari 图标
+- 详情：Safari 图标。
 
 #### apple.statusBarColor
 
-- 类型：`'black-translucent' | 'black' | 'default`
-- 详情：Safari 状态栏颜色
+- 类型：`"black-translucent" | "black" | "default"`
+- 默认值：`"default"`
+- 详情：Safari 状态栏颜色。
 
 ### foundComponent
 
@@ -173,14 +161,12 @@ icon: settings-2
 ### appendBase
 
 - 类型：`boolean`
-- 默认值：`false`
 - 详情：是否为选项中所有绝对链接添加 base。
 
 ### generateSwConfig
 
-- 详情：
-
-  传递给 `workbox-build` 的选项，具体详情，请见 [Workbox 文档](https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-build#.generateSW)
+- 类型：`Partial<GenerateSWOptions>`
+- 详情：传递给 `workbox-build` 的选项，具体详情，请见 [Workbox 文档](https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-build#.generateSW)。
 
 ### locales
 
@@ -249,177 +235,170 @@ icon: settings-2
   }
   ```
 
-- 详情：
+- 详情：PWA 插件的国际化配置。
 
-  PWA 插件的国际化配置。
+  ::: details 内置支持语言
+  - **简体中文** (zh-CN)
+  - **繁体中文** (zh-TW)
+  - **英文(美国)** (en-US)
+  - **德语** (de-DE)
+  - **俄语** (ru-RU)
+  - **乌克兰语** (uk-UA)
+  - **越南语** (vi-VN)
+  - **葡萄牙语** (pt)
+  - **波兰语** (pl-PL)
+  - **法语** (fr-FR)
+  - **西班牙语** (es-ES)
+  - **斯洛伐克** (sk-SK)
+  - **日语** (ja-JP)
+  - **土耳其语** (tr-TR)
+  - **韩语** (ko-KR)
+  - **芬兰语** (fi-FI)
+  - **印尼语** (id-ID)
+  - **荷兰语** (nl-NL)
 
-::: details 内置支持语言
-
-- **简体中文** (zh-CN)
-- **繁体中文** (zh-TW)
-- **英文(美国)** (en-US)
-- **德语** (de-DE)
-- **俄语** (ru-RU)
-- **乌克兰语** (uk-UA)
-- **越南语** (vi-VN)
-- **葡萄牙语(巴西)** (pt-BR)
-- **波兰语** (pl-PL)
-- **法语** (fr-FR)
-- **西班牙语** (es-ES)
-- **斯洛伐克** (sk-SK)
-- **日语** (ja-JP)
-- **土耳其语** (tr-TR)
-- **韩语** (ko-KR)
-- **芬兰语** (fi-FI)
-- **印尼语** (id-ID)
-- **荷兰语** (nl-NL)
-
-:::
+  :::
 
 ## 组合式 API
 
 ### usePwaEvent
 
-- 详情：
-
-  返回此插件的事件派发器。
-
-  你可以添加监听器函数到 [register-service-worker](https://github.com/yyx990803/register-service-worker) 提供的事件。
+- 类型：`() => EventEmitter`
+- 返回值：插件的事件发射器
+- 详情：返回此插件的事件派发器。你可以添加监听器函数到 [register-service-worker](https://github.com/yyx990803/register-service-worker) 提供的事件。
 
 - 示例：
 
-```ts
-import { usePwaEvent } from '@vuepress/plugin-pwa/client'
+  ```ts
+  import { usePwaEvent } from '@vuepress/plugin-pwa/client'
 
-export default {
-  setup(): void {
-    const event = usePwaEvent()
-    event.on('ready', (registration) => {
-      console.log('Service worker is active.')
-    })
-  },
-}
-```
+  export default {
+    setup(): void {
+      const event = usePwaEvent()
+      event.on('ready', (registration) => {
+        console.log('Service worker is active.')
+      })
+    },
+  }
+  ```
 
 ## 工具函数
 
 ### forceUpdate
 
-- 详情：
-
-  当发现新内容时强制刷新页面。
+- 类型：`() => void`
+- 详情：当发现新内容时强制刷新页面。
 
 - 示例：
 
-```ts
-import { forceUpdate } from '@vuepress/plugin-pwa/client'
-import { onMounted } from 'vue'
+  ```ts
+  import { forceUpdate } from '@vuepress/plugin-pwa/client'
+  import { onMounted } from 'vue'
 
-export default {
-  setup(): void {
-    onMounted(() => {
-      forceUpdate()
-    })
-  },
-}
-```
+  export default {
+    setup(): void {
+      onMounted(() => {
+        forceUpdate()
+      })
+    },
+  }
+  ```
 
 ### registerSW
 
-- 详情：
-
-  手动注册 Service Worker。
+- 类型：`(serviceWorkerPath: string, hooks?: Hooks, showStatus?: boolean) => void`
 
 - 参数：
 
-| 参数              | 类型      | 描述                  |
-| ----------------- | --------- | --------------------- |
-| serviceWorkerPath | `string`  | Service worker 的路径 |
-| hooks             | `object`  | Service worker 的钩子 |
-| showStatus        | `boolean` | 在控制台输出状态日志  |
+  | 参数              | 类型      | 描述                  |
+  | ----------------- | --------- | --------------------- |
+  | serviceWorkerPath | `string`  | Service worker 的路径 |
+  | hooks             | `object`  | Service worker 的钩子 |
+  | showStatus        | `boolean` | 在控制台输出状态日志  |
 
-```ts
-interface Hooks {
-  registrationOptions?: RegistrationOptions
-  ready?: (registration: ServiceWorkerRegistration) => void
-  registered?: (registration: ServiceWorkerRegistration) => void
-  cached?: (registration: ServiceWorkerRegistration) => void
-  updated?: (registration: ServiceWorkerRegistration) => void
-  updatefound?: (registration: ServiceWorkerRegistration) => void
-  offline?: () => void
-  error?: (error: Error) => void
-}
-```
+  ```ts
+  interface Hooks {
+    registrationOptions?: RegistrationOptions
+    ready?: (registration: ServiceWorkerRegistration) => void
+    registered?: (registration: ServiceWorkerRegistration) => void
+    cached?: (registration: ServiceWorkerRegistration) => void
+    updated?: (registration: ServiceWorkerRegistration) => void
+    updatefound?: (registration: ServiceWorkerRegistration) => void
+    offline?: () => void
+    error?: (error: Error) => void
+  }
+  ```
+
+- 详情：手动注册 Service Worker。
 
 - 示例：
 
-```ts
-import { registerSW } from '@vuepress/plugin-pwa/client'
-import { onMounted } from 'vue'
+  ```ts
+  import { registerSW } from '@vuepress/plugin-pwa/client'
+  import { onMounted } from 'vue'
 
-export default {
-  setup(): void {
-    onMounted(() => {
-      registerSW('/service-worker.js', {
-        ready(registration) {
-          console.log('Service worker is active.')
-        },
+  export default {
+    setup(): void {
+      onMounted(() => {
+        registerSW('/service-worker.js', {
+          ready(registration) {
+            console.log('Service worker is active.')
+          },
+        })
       })
-    })
-  },
-}
-```
+    },
+  }
+  ```
 
 ### skipWaiting
 
-- 详情：
-
-  激活等待中的 Service Worker。
+- 类型：`(registration: ServiceWorkerRegistration) => void`
 
 - 参数：
 
-| 参数         | 类型                        | 描述                             |
-| ------------ | --------------------------- | -------------------------------- |
-| registration | `ServiceWorkerRegistration` | 想要激活的 Service Worker 的注册 |
+  | 参数         | 类型                        | 描述                             |
+  | ------------ | --------------------------- | -------------------------------- |
+  | registration | `ServiceWorkerRegistration` | 想要激活的 Service Worker 的注册 |
+
+- 详情：激活等待中的 Service Worker。
 
 - 示例：
 
-```ts
-import { skipWaiting, usePwaEvent } from '@vuepress/plugin-pwa/client'
+  ```ts
+  import { skipWaiting, usePwaEvent } from '@vuepress/plugin-pwa/client'
 
-export default {
-  setup(): void {
-    const event = usePwaEvent()
+  export default {
+    setup(): void {
+      const event = usePwaEvent()
 
-    event.on('updated', (registration) => {
-      console.log('The waiting service worker is available.')
-      // activate the waiting service worker
-      skipWaiting(registration)
-    })
-  },
-}
-```
+      event.on('updated', (registration) => {
+        console.log('The waiting service worker is available.')
+        // activate the waiting service worker
+        skipWaiting(registration)
+      })
+    },
+  }
+  ```
 
 ### unregisterSW
 
-- 详情：
-
-  手动注销 Service Worker。
+- 类型：`() => void`
+- 详情：手动注销 Service Worker。
 
 - 示例：
 
-```ts
-import { unregisterSW } from '@vuepress/plugin-pwa/client'
-import { onMounted } from 'vue'
+  ```ts
+  import { unregisterSW } from '@vuepress/plugin-pwa/client'
+  import { onMounted } from 'vue'
 
-export default {
-  setup(): void {
-    onMounted(() => {
-      unregisterSW()
-    })
-  },
-}
-```
+  export default {
+    setup(): void {
+      onMounted(() => {
+        unregisterSW()
+      })
+    },
+  }
+  ```
 
 ## 样式
 

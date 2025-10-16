@@ -1,0 +1,53 @@
+{
+  "name": "@vuepress/plugin-clarity-analytics",
+  "version": "2.0.0-rc.114",
+  "description": "VuePress plugin - clarity-analytics",
+  "keywords": [
+    "vuepress-plugin",
+    "vuepress",
+    "plugin",
+    "clarity",
+    "analytics"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/plugins/analytics/clarity-analytics.html",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/analytics/plugin-clarity-analytics"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Zhao Bin",
+    "email": "hi@zhaobc.site",
+    "url": "https://zhaobc.site"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./lib/node/index.js",
+    "./client": "./lib/client/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
+  },
+  "dependencies": {
+    "@vuepress/helper": "workspace:*",
+    "vue": "catalog:"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -173,7 +173,6 @@ Generate redirect site for current VuePress project
 - 示例：
 
   当 base 为 `/base/`时：
-
   - 将 `/base/foo.html` 重定向到 `/base/bar.html`
   - 将 `/base/baz.html` 重定向到 `https://example.com/qux.html`。
 
@@ -213,7 +212,6 @@ Generate redirect site for current VuePress project
 - 详情：
 
   是否根据用户偏好切换到新的语言环境。
-
   - `"direct"`: 直接重定向到新的语言环境而不询问
   - `"modal"`: 显示一个模式让用户选择是否切换到新的语言环境
 
@@ -291,7 +289,7 @@ Generate redirect site for current VuePress project
 - **俄语** (ru-RU)
 - **乌克兰语** (uk-UA)
 - **越南语** (vi-VN)
-- **葡萄牙语(巴西)** (pt-BR)
+- **葡萄牙语** (pt)
 - **波兰语** (pl-PL)
 - **法语** (fr-FR)
 - **西班牙语** (es-ES)

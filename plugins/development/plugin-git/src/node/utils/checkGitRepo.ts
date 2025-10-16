@@ -9,7 +9,7 @@ import { execSync } from 'node:child_process'
  *
  * 要检查的目录
  */
-export const isGitRepo = (cwd: string): boolean => {
+export const checkGitRepo = (cwd: string): boolean => {
   try {
     execSync('git status', {
       cwd,

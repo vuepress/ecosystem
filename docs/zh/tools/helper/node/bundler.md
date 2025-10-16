@@ -154,7 +154,6 @@ useCustomDevServer(bundlerOptions, app, {
   ::: tip
 
   如果一个包满足下列条件之一，你应该考虑将它添加至此。
-
   - 为 CJS 格式
   - 包的依赖包含 CJS 包
   - 包通过 `import()` 动态导入

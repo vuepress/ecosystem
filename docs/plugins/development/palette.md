@@ -121,7 +121,6 @@ h1 {
 - Type: `string`
 
 - Default:
-
   - css: `'.vuepress/styles/palette.css'`
   - less: `'.vuepress/styles/palette.less'`
   - sass: `'.vuepress/styles/palette.scss'`
@@ -140,7 +139,6 @@ h1 {
 - Type: `string`
 
 - Default:
-
   - css: `'styles/palette.css'`
   - less: `'styles/palette.less'`
   - sass: `'styles/palette.scss'`
@@ -159,7 +157,6 @@ h1 {
 - Type: `string`
 
 - Default:
-
   - css: `'.vuepress/styles/index.css'`
   - less: `'.vuepress/styles/index.less'`
   - sass: `'.vuepress/styles/index.scss'`
@@ -178,7 +175,6 @@ h1 {
 - Type: `string`
 
 - Default:
-
   - css: `'styles/index.css'`
   - less: `'styles/index.less'`
   - sass: `'styles/index.scss'`
@@ -197,7 +193,6 @@ h1 {
 - Type: `(filePath: string) => string`
 
 - Default:
-
   - css: `` (filePath) => `@import '${filePath}';\n` ``
   - less: `` (filePath) => `@import '${filePath}';\n` ``
   - sass: `` (filePath) => `@forward 'file:///${filePath}';\n` ``

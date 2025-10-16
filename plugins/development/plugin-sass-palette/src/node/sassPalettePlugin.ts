@@ -94,11 +94,9 @@ export const sassPalettePlugin =
           css: {
             preprocessorOptions: {
               sass: {
-                api: 'modern',
                 silenceDeprecations: ['import'],
               },
               scss: {
-                api: 'modern',
                 silenceDeprecations: ['import'],
               },
             },

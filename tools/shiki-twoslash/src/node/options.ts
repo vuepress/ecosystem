@@ -1,8 +1,8 @@
+import type { TwoslashTypesCache } from '@shikijs/twoslash'
 import type {
   RendererRichOptions,
   TransformerTwoslashOptions,
 } from '@shikijs/twoslash/core'
-import type { TwoslashReturn } from 'twoslash'
 import type { VueSpecificOptions } from 'twoslash-vue'
 
 /**
@@ -128,38 +128,5 @@ export interface ShikiTwoslashOptions
    *
    * 缓存解析类型的选项
    */
-  typesCache?: TwoslashTypesCache | false
-}
-
-/**
- * Interface for twoslash types cache
- *
- * Twoslash 类型缓存接口
- */
-export interface TwoslashTypesCache {
-  /**
-   * Read cached result
-   *
-   * 读取缓存结果
-   *
-   * @param code - Source code / 源代码
-   */
-  read: (code: string) => TwoslashReturn | null
-
-  /**
-   * Save result to cache
-   *
-   * 保存结果到缓存
-   *
-   * @param code - Source code / 源代码
-   * @param data - Twoslash data / Twoslash 数据
-   */
-  write: (code: string, data: TwoslashReturn) => void
-
-  /**
-   * On initialization
-   *
-   * 初始化时调用
-   */
-  init?: () => void
+  typesCache?: TwoslashTypesCache
 }

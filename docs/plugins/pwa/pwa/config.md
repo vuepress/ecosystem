@@ -6,24 +6,30 @@ icon: settings-2
 
 ## Options
 
+### serviceWorkerFilename
+
+- Type: `string`
+- Default: `"service-worker.js"`
+- Details: Service Worker file path.
+
 ### showInstall
 
 - Type: `boolean`
-- Default: `false`
-- Details:
-  Whether display install button when Service Worker is first registered successfully.
+- Details: Whether to display install button when Service Worker is first registered successfully.
 
 ### manifest
 
 - Type: `AppManifest`
-- Details:
 
-  You can fill with an object which will be parsed to manifest.webmanifest.
+- Reference:
+  - [MDN Web Docs: Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest)
+  - [W3C: Web App Manifest](https://www.w3.org/TR/appmanifest/)
+
+- Details: You can fill with an object which will be parsed to manifest.webmanifest.
 
   ::: tip
 
   Some options have their fallback if you don't set them.
-
   - name: `siteConfig.title` || `siteConfig.locales['/'].title` || `"Site"`
   - short_name: `siteConfig.title` || `siteConfig.locales['/'].title` || `"Site"`
   - description: `siteConfig.description` || `siteConfig.locales['/'].description` || `"A site built with vuepress"`
@@ -38,20 +44,14 @@ icon: settings-2
 
   :::
 
-- Reference:
-  - [MDN Web Docs: Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest)
-  - [W3C: Web App Manifest](https://www.w3.org/TR/appmanifest/)
-
 ### favicon
 
 - Type: `string`
-- Details:
-
-  Link of favicon.ico.
+- Details: Link of favicon.ico.
 
   ::: warning
 
-  We recommend you to set favicon for your site.
+  We recommend setting favicon for your site.
 
   :::
 
@@ -59,33 +59,13 @@ icon: settings-2
 
 - Type: `string`
 - Default: `"#46bd87"`
-- Details:
-
-  Theme Color of the pwa.
-
-### cacheHTML
-
-- Type: `boolean`
-- Default: `false`
-- Details:
-
-  Whether cache HTML files besides home page and 404 page.
-
-### cacheImage
-
-- Type: `boolean`
-- Default: `false`
-- Details:
-
-  Whether cache pictures
+- Details: Theme color of the PWA.
 
 ### maxSize
 
 - Type: `number`
 - Default: `2048`
-- Details:
-
-  Max size allowed to be cached, with KB unit
+- Details: Max size allowed to be cached, in KB.
 
   ::: warning
 
@@ -95,14 +75,25 @@ icon: settings-2
 
   :::
 
+### cacheHTML
+
+- Type: `boolean`
+- Details: Whether to cache HTML files besides home page and 404 page.
+
+### cacheImage
+
+- Type: `boolean`
+- Details: Whether to cache pictures.
+
 ### maxImageSize
 
 - Type: `number`
 - Default: `1024`
-- Details:
-  Max picture size allowed to be cached, with KB unit
+- Details: Max picture size allowed to be cached, in KB.
 
-  ::: tip The value must not be greater than maxSize option
+  ::: tip
+
+  The value must not be greater than maxSize option.
 
   :::
 
@@ -110,16 +101,10 @@ icon: settings-2
 
 - Type: `"disable" | "available" | "hint" | "force"`
 - Default: `"available"`
-- Details:
-  Control logic when new content is found.
-
+- Details: Control logic when new content is found.
   - `"disable"`: Do nothing even when new service worker is available. After new service work succeeds installing and starts waiting, it will control page and provide new content in next visit.
-
-  - `"available"`: Only display update popup when the new service worker is available
-
-  - `"hint"`: Display a hint to let user choose to refresh immediately
-
-    This is helpful when you want users to see new docs immediately.
+  - `"available"`: Only display update popup when the new service worker is available.
+  - `"hint"`: Display a hint to let user choose to refresh immediately. This is helpful when you want users to see new docs immediately.
 
     ::: tip
 
@@ -127,7 +112,7 @@ icon: settings-2
 
     :::
 
-  - `"force"`: unregister current service worker immediately then refresh to get new content
+  - `"force"`: unregister current service worker immediately then refresh to get new content.
 
     ::: danger
 
@@ -137,13 +122,14 @@ icon: settings-2
 
   ::: tip
 
-  How docs are updated is controlled by a previous version, so the current option only effect next update from this version.
+  How docs are updated is controlled by a previous version, so the current option only affects the next update from this version.
 
   :::
 
 ### apple
 
-Special settings for better supporting Safari, ignoring these options are safe.
+- Type: `ApplePwaOptions | false`
+- Details: Special settings for better supporting Safari, ignoring these options are safe.
 
 #### apple.icon
 
@@ -153,12 +139,13 @@ Special settings for better supporting Safari, ignoring these options are safe.
 #### apple.maskIcon
 
 - Type: `string`
-- Details: Safari mask icon
+- Details: Safari mask icon.
 
 #### apple.statusBarColor
 
-- Type: `'black-translucent' | 'black' | 'default`
-- Details: Status bar color for Safari
+- Type: `"black-translucent" | "black" | "default"`
+- Default: `"default"`
+- Details: Status bar color for Safari.
 
 ### foundComponent
 
@@ -175,14 +162,12 @@ Special settings for better supporting Safari, ignoring these options are safe.
 ### appendBase
 
 - Type: `boolean`
-- Default: `false`
 - Details: Whether append base to all absolute links in options.
 
 ### generateSwConfig
 
-- Details:
-
-  Options passed to `workbox-build`, for details, see [Workbox documentation](https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-build#.generateSW)
+- Type: `Partial<GenerateSWOptions>`
+- Details: Options passed to `workbox-build`, for details, see [Workbox documentation](https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-build#.generateSW).
 
 ### locales
 
@@ -251,176 +236,170 @@ Special settings for better supporting Safari, ignoring these options are safe.
   }
   ```
 
-- Details:
-  Locales config for pwa plugin.
+- Details: Locales config for pwa plugin.
 
-::: details Built-in Supported Languages
+  ::: details Built-in Supported Languages
+  - **Simplified Chinese** (zh-CN)
+  - **Traditional Chinese** (zh-TW)
+  - **English (United States)** (en-US)
+  - **German** (de-DE)
+  - **Russian** (ru-RU)
+  - **Ukrainian** (uk-UA)
+  - **Vietnamese** (vi-VN)
+  - **Portuguese** (pt)
+  - **Polish** (pl-PL)
+  - **French** (fr-FR)
+  - **Spanish** (es-ES)
+  - **Slovak** (sk-SK)
+  - **Japanese** (ja-JP)
+  - **Turkish** (tr-TR)
+  - **Korean** (ko-KR)
+  - **Finnish** (fi-FI)
+  - **Indonesian** (id-ID)
+  - **Dutch** (nl-NL)
 
-- **Simplified Chinese** (zh-CN)
-- **Traditional Chinese** (zh-TW)
-- **English (United States)** (en-US)
-- **German** (de-DE)
-- **Russian** (ru-RU)
-- **Ukrainian** (uk-UA)
-- **Vietnamese** (vi-VN)
-- **Portuguese (Brazil)** (pt-BR)
-- **Polish** (pl-PL)
-- **French** (fr-FR)
-- **Spanish** (es-ES)
-- **Slovak** (sk-SK)
-- **Japanese** (ja-JP)
-- **Turkish** (tr-TR)
-- **Korean** (ko-KR)
-- **Finnish** (fi-FI)
-- **Indonesian** (id-ID)
-- **Dutch** (nl-NL)
-
-:::
+  :::
 
 ## Composition API
 
 ### usePwaEvent
 
-- Details:
-
-  Returns the event emitter of this plugin.
-
-  You can add listener function to events that provided by [register-service-worker](https://github.com/yyx990803/register-service-worker).
+- Type: `() => EventEmitter`
+- Returns: Event emitter of this plugin / 插件的事件发射器
+- Details: Returns the event emitter of this plugin. You can add listener function to events that provided by [register-service-worker](https://github.com/yyx990803/register-service-worker).
 
 - Example:
 
-```ts
-import { usePwaEvent } from '@vuepress/plugin-pwa/client'
+  ```ts
+  import { usePwaEvent } from '@vuepress/plugin-pwa/client'
 
-export default {
-  setup(): void {
-    const event = usePwaEvent()
-    event.on('ready', (registration) => {
-      console.log('Service worker is active.')
-    })
-  },
-}
-```
+  export default {
+    setup(): void {
+      const event = usePwaEvent()
+      event.on('ready', (registration) => {
+        console.log('Service worker is active.')
+      })
+    },
+  }
+  ```
 
 ## Utilities
 
 ### forceUpdate
 
-- Details:
-
-  Force update the page when an update is found.
+- Type: `() => void`
+- Details: Force update the page when an update is found.
 
 - Example:
 
-```ts
-import { forceUpdate } from '@vuepress/plugin-pwa/client'
-import { onMounted } from 'vue'
+  ```ts
+  import { forceUpdate } from '@vuepress/plugin-pwa/client'
+  import { onMounted } from 'vue'
 
-export default {
-  setup(): void {
-    onMounted(() => {
-      forceUpdate()
-    })
-  },
-}
-```
+  export default {
+    setup(): void {
+      onMounted(() => {
+        forceUpdate()
+      })
+    },
+  }
+  ```
 
 ### registerSW
 
-- Details:
-
-  Register service worker manually.
+- Type: `(serviceWorkerPath: string, hooks?: Hooks, showStatus?: boolean) => void`
 
 - Parameters:
 
-| Parameter         | Type      | Description                          |
-| ----------------- | --------- | ------------------------------------ |
-| serviceWorkerPath | `string`  | Path of the service worker           |
-| hooks             | `object`  | Hooks of service worker              |
-| showStatus        | `boolean` | Log service worker status in console |
+  | Parameter         | Type      | Description                          |
+  | ----------------- | --------- | ------------------------------------ |
+  | serviceWorkerPath | `string`  | Path of the service worker           |
+  | hooks             | `object`  | Hooks of service worker              |
+  | showStatus        | `boolean` | Log service worker status in console |
 
-```ts
-interface Hooks {
-  registrationOptions?: RegistrationOptions
-  ready?: (registration: ServiceWorkerRegistration) => void
-  registered?: (registration: ServiceWorkerRegistration) => void
-  cached?: (registration: ServiceWorkerRegistration) => void
-  updated?: (registration: ServiceWorkerRegistration) => void
-  updatefound?: (registration: ServiceWorkerRegistration) => void
-  offline?: () => void
-  error?: (error: Error) => void
-}
-```
+  ```ts
+  interface Hooks {
+    registrationOptions?: RegistrationOptions
+    ready?: (registration: ServiceWorkerRegistration) => void
+    registered?: (registration: ServiceWorkerRegistration) => void
+    cached?: (registration: ServiceWorkerRegistration) => void
+    updated?: (registration: ServiceWorkerRegistration) => void
+    updatefound?: (registration: ServiceWorkerRegistration) => void
+    offline?: () => void
+    error?: (error: Error) => void
+  }
+  ```
+
+- Details: Register service worker manually.
 
 - Example:
 
-```ts
-import { registerSW } from '@vuepress/plugin-pwa/client'
-import { onMounted } from 'vue'
+  ```ts
+  import { registerSW } from '@vuepress/plugin-pwa/client'
+  import { onMounted } from 'vue'
 
-export default {
-  setup(): void {
-    onMounted(() => {
-      registerSW('/service-worker.js', {
-        ready(registration) {
-          console.log('Service worker is active.')
-        },
+  export default {
+    setup(): void {
+      onMounted(() => {
+        registerSW('/service-worker.js', {
+          ready(registration) {
+            console.log('Service worker is active.')
+          },
+        })
       })
-    })
-  },
-}
-```
+    },
+  }
+  ```
 
 ### skipWaiting
 
-- Details:
-
-  Activate the waiting service worker.
+- Type: `(registration: ServiceWorkerRegistration) => void`
 
 - Parameters:
 
-| Parameter    | Type                        | Description                                              |
-| ------------ | --------------------------- | -------------------------------------------------------- |
-| registration | `ServiceWorkerRegistration` | The registration of the service worker you want activate |
+  | Parameter    | Type                        | Description                                              |
+  | ------------ | --------------------------- | -------------------------------------------------------- |
+  | registration | `ServiceWorkerRegistration` | The registration of the service worker you want activate |
+
+- Details: Activate the waiting service worker.
 
 - Example:
 
-```ts
-import { skipWaiting, usePwaEvent } from '@vuepress/plugin-pwa/client'
+  ```ts
+  import { skipWaiting, usePwaEvent } from '@vuepress/plugin-pwa/client'
 
-export default {
-  setup(): void {
-    const event = usePwaEvent()
+  export default {
+    setup(): void {
+      const event = usePwaEvent()
 
-    event.on('updated', (registration) => {
-      console.log('The waiting service worker is available.')
-      // activate the waiting service worker
-      skipWaiting(registration)
-    })
-  },
-}
-```
+      event.on('updated', (registration) => {
+        console.log('The waiting service worker is available.')
+        // activate the waiting service worker
+        skipWaiting(registration)
+      })
+    },
+  }
+  ```
 
 ### unregisterSW
 
-- Details:
-
-  Unregister service worker manually.
+- Type: `() => void`
+- Details: Unregister service worker manually.
 
 - Example:
 
-```ts
-import { unregisterSW } from '@vuepress/plugin-pwa/client'
-import { onMounted } from 'vue'
+  ```ts
+  import { unregisterSW } from '@vuepress/plugin-pwa/client'
+  import { onMounted } from 'vue'
 
-export default {
-  setup(): void {
-    onMounted(() => {
-      unregisterSW()
-    })
-  },
-}
-```
+  export default {
+    setup(): void {
+      onMounted(() => {
+        unregisterSW()
+      })
+    },
+  }
+  ```
 
 ## Styles
 

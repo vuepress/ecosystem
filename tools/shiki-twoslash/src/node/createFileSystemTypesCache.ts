@@ -1,8 +1,8 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
+import type { TwoslashTypesCache } from '@shikijs/twoslash'
 import type { TwoslashReturn } from 'twoslash'
 import { hash as createHash } from 'vuepress/utils'
-import type { TwoslashTypesCache } from './options.js'
 
 export interface FileSystemTypeResultCacheOptions {
   /**

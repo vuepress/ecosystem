@@ -9,7 +9,6 @@ icon: hammer
 This package is a helper utility for VuePress developers.
 
 - `@vuepress/helper`: Node.js side helper utilities.
-
   - [Bundler Related](node/bundler.md)
   - [Locales Related](node/locales.md)
   - [Page Related](node/page.md)

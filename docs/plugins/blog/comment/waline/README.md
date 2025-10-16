@@ -77,7 +77,6 @@ npm i -D @waline/client
    | CNAME | example | cname.vercel-dns.com |
 
 1. You can use your own domain to visit the Waline comment system after it goes into effect. :tada:
-
    - serverURL: example.your-domain.com
    - admin panel: example.your-domain.com/ui
 

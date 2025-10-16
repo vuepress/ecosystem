@@ -51,7 +51,6 @@ export default {
   Enable custom containers that powered by [@vuepress/plugin-markdown-container](../../plugins/markdown/markdown-container.md) or not.
 
   `ContainerType` type is:
-
   - `codeGroup`
   - `codeGroupItem`
 

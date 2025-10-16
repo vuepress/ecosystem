@@ -1,10 +1,11 @@
 import process from 'node:process'
+import type { TwoslashShikiReturn } from '@shikijs/twoslash'
 import {
   createTransformerFactory,
   defaultTwoslashOptions,
 } from '@shikijs/twoslash/core'
 import type { ShikiTransformer } from 'shiki'
-import type { TwoslashExecuteOptions, TwoslashReturn } from 'twoslash'
+import type { TwoslashExecuteOptions } from 'twoslash'
 import { removeTwoslashNotations } from 'twoslash'
 import { createTwoslasher } from 'twoslash-vue'
 import { logger } from 'vuepress/utils'
@@ -81,7 +82,7 @@ export const createTwoslashTransformer = async (
       code: string,
       extension?: string,
       opt?: TwoslashExecuteOptions,
-    ): TwoslashReturn => {
+    ): TwoslashShikiReturn => {
       const cached = typesCache.read(code) // Restore cache
       if (cached) return cached
 

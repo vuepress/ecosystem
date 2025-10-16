@@ -99,11 +99,19 @@ Mathjax:
 - Details:
 
   The package to render $\TeX$ contents.
-
   - `'katex'`: use [KaTeX](https://katex.org/)
   - `'mathjax'`: use [MathJax](https://www.mathjax.org/)
 
   When this option is not specified, the plugin will try to detect which package is installed. If both are installed, it will use "mathjax".
+
+### delimiters
+
+- Type: `'brackets' | 'dollars' | 'all'`
+- Default: `'dollars'`
+- Details: Math delimiter syntax to enable.
+  - `'brackets'`: Use `\(...\)` for inline math and `\[...\]` for display math (LaTeX style).
+  - `'dollars'`: Use `$...$` for inline math and `$$...$$` for display math (common Markdown style).
+  - `'all'`: Enable both bracket and dollar syntaxes.
 
 ### Using KaTeX
 

@@ -61,6 +61,8 @@ defineSlots<{
   [vp-content] {
     @include mixins.content-wrapper;
 
+    // FIXME: https://github.com/stylelint-scss/stylelint-scss/issues/1190
+    /* stylelint-disable-next-line block-no-redundant-nested-style-rules */
     & {
       padding-top: 0;
     }

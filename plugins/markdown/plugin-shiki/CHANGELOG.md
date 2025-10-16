@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.114](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.113...v2.0.0-rc.114) (2025-10-15)
+
+**Note:** Version bump only for package @vuepress/plugin-shiki
+
+# [2.0.0-rc.113](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.112...v2.0.0-rc.113) (2025-10-15)
+
+### Bug Fixes
+
+- **plugin-shiki:** fix incorrect highlight lines parsing, close [#555](https://github.com/vuepress/ecosystem/issues/555) ([#557](https://github.com/vuepress/ecosystem/issues/557)) ([b74872b](https://github.com/vuepress/ecosystem/commit/b74872b53ee53108afc720854e275f0a63b4ab42))
+
+# [2.0.0-rc.112](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.111...v2.0.0-rc.112) (2025-07-09)
+
+**Note:** Version bump only for package @vuepress/plugin-shiki
+
+# [2.0.0-rc.111](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.110...v2.0.0-rc.111) (2025-07-09)
+
+**Note:** Version bump only for package @vuepress/plugin-shiki
+
+# [2.0.0-rc.110](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.109...v2.0.0-rc.110) (2025-06-19)
+
+**Note:** Version bump only for package @vuepress/plugin-shiki
+
+# [2.0.0-rc.109](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.108...v2.0.0-rc.109) (2025-06-17)
+
+**Note:** Version bump only for package @vuepress/plugin-shiki
+
 # [2.0.0-rc.108](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.107...v2.0.0-rc.108) (2025-06-04)
 
 **Note:** Version bump only for package @vuepress/plugin-shiki

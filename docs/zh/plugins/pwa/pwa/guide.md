@@ -26,7 +26,7 @@ icon: lightbulb
 
 A PWA uses a Service Worker [^service-worker] (SW for short) to cache and proxy site content.
 
-一个 PWA 使用 Service Worker [^service-worker] (简称 SW) 来获取并托管网站内容。
+一个 PWA 使用 Service Worker [^service-worker] (简称 SW) 来缓存并代理网站内容。
 
 [^service-worker]: **Service Worker 简要介绍**
 
@@ -58,9 +58,9 @@ A PWA uses a Service Worker [^service-worker] (SW for short) to cache and proxy 
 
     想要让网站可以注册为 PWA，网站需要自行成功注册有效的 Service Worker，同时拥有合法的 manifest 清单文件并在网站中声明它。
 
-    清单文件应至少包含 `name`(或 `short_name`) `icons` `start_url`。
+    清单文件应至少包含 `name`(或 `short_name`)、`icons` 和 `start_url`。
 
-    在 Safari 中，SW 的最大缓存空间为 50 MB。
+    在 Safari 中，Service Worker 的最大缓存空间为 50 MB。
 
 你可以通过设置 `manifest` 选项来自定义 manifest 文件，或者在 public 文件夹中提供 `manifest.webmanifest` 或 `manifest.json`。前者优先级更高。
 
@@ -74,7 +74,7 @@ A PWA uses a Service Worker [^service-worker] (SW for short) to cache and proxy 
 
 :::
 
-此外，该插件默认不处理清单中的任何内容，而是按原样输出。 这意味着，如果你计划部署到子目录，则应自行将 URL 前缀附加到自己的清单 Urls 中。如果你需要的所有东西都在 base 文件夹下，你可以在插件选项中设置 `appendBase: true` 让插件将 `base` 自动附加到任何地址。
+此外，该插件默认不处理清单中的任何内容，而是按原样输出。这意味着，如果你计划部署到子目录，则应自行将 URL 前缀附加到自己的清单 URLs 中。如果你需要的所有内容都在 `base` 文件夹下，你可以在插件选项中设置 `appendBase: true` 让插件将 `base` 自动附加到任何地址。
 
 ## 缓存控制
 
@@ -126,13 +126,13 @@ VuePress 本质上是一个 SPA。这意味着你只需要缓存主页并从主�
 
 如果你的文档仍在建设期，希望尽早提示用户他可能在阅读已过时的内容，你可以将其设置为 `"hint"`。这样用户在进入文档后数秒内就可以收到新内容已发布的通知。但这样做的负面效果是如果用户在新 SW 就绪前选择更新，那么他将在新 SW 安装并接管页面前，需要从互联网获取页面的全部资源。
 
-如果你的文档很稳定，或者你在托管博客，不太关心用户立即接收到最新版本，你可以将其设置为 `"disable"`，这意味着新的 SW 将在后台完全静默安装并在安装后等待，当旧版本 SW 控制的页面全部关闭后，新 SW 将再下次访问接管并提供用户新内容。此设置可以避免用户在访中被弹窗打扰。
+如果你的文档很稳定，或者你在托管博客，不太关心用户立即接收到最新版本，你可以将其设置为 `"disabled"`，这意味着新的 Service Worker 将在后台完全静默安装并在安装后等待，当旧版本 Service Worker 控制的页面全部关闭后，新 Service Worker 将在下次访问时接管并提供新内容给用户。此设置可以避免用户在访问中被弹窗打扰。
 
-如果你希望通过 SW 来加速用户在弱网或无网条件下的访问，但同时希望用户时刻访问新内容，你可以将此选项设置为 `"force"`。这意味着检测到新 SW 后旧 SW 将会被立刻销毁并且页面会被刷新以确保用户浏览最新内容。最大的缺点就是致新 SW 发布后，用户在重新进入网站后的几秒内会遇到预期之外的突然刷新，并且他们将必须通过互联网访问文档并完全重新安装最新的 SW。
+如果你希望通过 Service Worker 来加速用户在弱网或无网条件下的访问，但同时希望用户时刻访问新内容，你可以将此选项设置为 `"force"`。这意味着检测到新 Service Worker 后旧 Service Worker 将会被立刻销毁并且页面会被刷新以确保用户浏览最新内容。最大的缺点就是当新 Service Worker 发布后，用户在重新进入网站后的几秒内会遇到预期之外的突然刷新，并且他们将必须通过互联网访问文档并完全重新安装最新的 Service Worker。
 
 ### 更新提示弹窗
 
-当检测到新内容 (检测到新的 SW) 时，更新提示弹窗将会出现；当新内容就绪时，更新就绪弹窗将会出现。
+当检测到新内容 (检测到新的 Service Worker) 时，更新提示弹窗将会出现；当新内容就绪时，更新就绪弹窗将会出现。
 
 如果你对默认的弹窗不满意，你可以自行编写组件更换。从 `@vuepress/plugin-pwa/client` 中导入 `PwaFoundPopup` 或 `PwaReadyPopup` 并使用其 slot 来自定义弹窗内容，然后将组件路径传递给 `foundComponent` 或 `readyComponent` 选项。
 

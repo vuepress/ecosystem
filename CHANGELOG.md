@@ -3,6 +3,69 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.114](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.113...v2.0.0-rc.114) (2025-10-15)
+
+**Note:** Version bump only for package @vuepress/ecosystem
+
+# [2.0.0-rc.113](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.112...v2.0.0-rc.113) (2025-10-15)
+
+### Bug Fixes
+
+- add declaration files and missing externals ([a28fe69](https://github.com/vuepress/ecosystem/commit/a28fe69a35400965cf2958e01ba95434f6344a14))
+- fix ua detect issue ([5a49bd6](https://github.com/vuepress/ecosystem/commit/5a49bd6184696371739b1a5e32cdec908300b206))
+- **plugin-docsearch:** fix docsearch shortcuts ([#566](https://github.com/vuepress/ecosystem/issues/566)) ([eba6086](https://github.com/vuepress/ecosystem/commit/eba6086d8874627575e5188e5cd807d968f7c6fe))
+- **plugin-git:** revert breaking changes in refactor ([b3d6681](https://github.com/vuepress/ecosystem/commit/b3d66819d34eae577e6ce74f34f12478d492d991))
+- **plugin-shiki:** fix incorrect highlight lines parsing, close [#555](https://github.com/vuepress/ecosystem/issues/555) ([#557](https://github.com/vuepress/ecosystem/issues/557)) ([b74872b](https://github.com/vuepress/ecosystem/commit/b74872b53ee53108afc720854e275f0a63b4ab42))
+
+### Features
+
+- **helper:** improve env detection ([dad84fd](https://github.com/vuepress/ecosystem/commit/dad84fd5deded7ff1841ee6d90902cabe76ffd49))
+- **plugin-clarity-analytics:** supports clarity analytics ([#553](https://github.com/vuepress/ecosystem/issues/553)) ([3ed7477](https://github.com/vuepress/ecosystem/commit/3ed7477fd48a99d8055d7079f4a9cec814fffc6a))
+- **plugin-docsearch:** support docsearch v4 ([#565](https://github.com/vuepress/ecosystem/issues/565)) ([6bf4f1e](https://github.com/vuepress/ecosystem/commit/6bf4f1e1cf778017242a3c9e10046f75d6e44d20))
+- **plugin-meilisearch:** add convertDiffFilesToMarkdown ([e703e38](https://github.com/vuepress/ecosystem/commit/e703e388b5a1cb0bcddb82e7f401db512b0b6101))
+- remove api: modern ([27a35cb](https://github.com/vuepress/ecosystem/commit/27a35cbe42a344c4fea28c8905dc37b4ae1f47e5))
+
+# [2.0.0-rc.112](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.111...v2.0.0-rc.112) (2025-07-09)
+
+**Note:** Version bump only for package @vuepress/ecosystem
+
+# [2.0.0-rc.111](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.110...v2.0.0-rc.111) (2025-07-09)
+
+### Bug Fixes
+
+- **plugin-markdown-chart:** fix plantuml ([#547](https://github.com/vuepress/ecosystem/issues/547)) ([1ac8a86](https://github.com/vuepress/ecosystem/commit/1ac8a86eb4c1dc446cace3e8f23495ca2753d686))
+- **plugin-register-components:** fix `componentsPatterns` matcher ([#544](https://github.com/vuepress/ecosystem/issues/544)) ([d187e44](https://github.com/vuepress/ecosystem/commit/d187e442ba435e5286b0c45fb8e1f7d116fccd56))
+
+### Features
+
+- add `plugin-auto-frontmatter` ([#543](https://github.com/vuepress/ecosystem/issues/543)) ([0523387](https://github.com/vuepress/ecosystem/commit/0523387645c1ed45c203738649ccaa4af803d24c))
+- add `plugin-replace-assets` ([#541](https://github.com/vuepress/ecosystem/issues/541)) ([67c65a8](https://github.com/vuepress/ecosystem/commit/67c65a8a08b5aa2bdd9dddf1b55f42c00278df7b))
+- **plugin-markdown-chart:** support treemap chart ([#548](https://github.com/vuepress/ecosystem/issues/548)) ([ba7bb2e](https://github.com/vuepress/ecosystem/commit/ba7bb2e8c053f59475f11480c3d09a60ffd47451))
+
+# [2.0.0-rc.110](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.109...v2.0.0-rc.110) (2025-06-19)
+
+### Bug Fixes
+
+- **plugin-markdown-chart:** fix wrong watching of id ([4a3b136](https://github.com/vuepress/ecosystem/commit/4a3b136bce82a18b3565ba571e442a93d2e8c2bc))
+
+### Features
+
+- **helper:** improve darkmode ([#540](https://github.com/vuepress/ecosystem/issues/540)) ([cc167e7](https://github.com/vuepress/ecosystem/commit/cc167e7bd2306ca5d548ab12268b2d4ad40d729f))
+- use chokidar v4 ([#535](https://github.com/vuepress/ecosystem/issues/535)) ([a7627e2](https://github.com/vuepress/ecosystem/commit/a7627e266ed10f04ffe6d877eb99dbebf56b73a6))
+
+# [2.0.0-rc.109](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.108...v2.0.0-rc.109) (2025-06-17)
+
+### Bug Fixes
+
+- **create-vuepress:** fix typo in get-started.md ([#534](https://github.com/vuepress/ecosystem/issues/534)) ([21b429a](https://github.com/vuepress/ecosystem/commit/21b429ab45363a1f7cddf41279b9e0855061cbd4))
+- **plugin-git:** fix locale format ([#537](https://github.com/vuepress/ecosystem/issues/537)) ([cc2132e](https://github.com/vuepress/ecosystem/commit/cc2132e51973b60cafc18883b993cb6693f12a67))
+
+### Features
+
+- add plugin-markdown-chart ([#249](https://github.com/vuepress/ecosystem/issues/249)) ([7f5fdff](https://github.com/vuepress/ecosystem/commit/7f5fdff8c26f865b21697b3c6d29bb49d9b20ba4))
+- **plugin-markdown-chart:** remove mermaid theme default variables ([#538](https://github.com/vuepress/ecosystem/issues/538)) ([e211c68](https://github.com/vuepress/ecosystem/commit/e211c68e6d51812a9a48d8af8df7e7084051bb15))
+- **plugin-remove-pwa:** improve cache handling ([#531](https://github.com/vuepress/ecosystem/issues/531)) ([a7e8a1a](https://github.com/vuepress/ecosystem/commit/a7e8a1a788e44d4da5de2f5a9b6b4443d996acdb))
+
 # [2.0.0-rc.108](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.107...v2.0.0-rc.108) (2025-06-04)
 
 ### Bug Fixes

@@ -12,10 +12,13 @@ export type DocSearchLocaleOptions = Partial<
     | 'apiKey'
     | 'appId'
     | 'disableUserPersonalization'
+    /** @deprecated use `indices` instead */
     | 'indexName'
+    | 'indices'
     | 'initialQuery'
     | 'maxResultsPerGroup'
     | 'placeholder'
+    /** @deprecated use `indices` instead */
     | 'searchParameters'
     | 'translations'
   >

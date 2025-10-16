@@ -1,4 +1,3 @@
-/* eslint-disable import/no-rename-default */
 declare module 'reveal.js/dist/reveal.esm.js' {
   import type Reveal from 'reveal.js'
 

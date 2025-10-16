@@ -79,11 +79,15 @@ export const slimsearchPlugin =
       onPrepared: async (): Promise<void> => {
         const { isBuild, isDev } = app.env
 
-        await Promise.all([
-          isDev ? prepareSearchIndex(app, searchIndexStore!) : null,
-          prepareStore(app, store),
-          isDev ? prepareWorkerOptions(app, options) : null,
-        ])
+        const promises = [prepareStore(app, store)]
+
+        if (isDev)
+          promises.push(
+            prepareSearchIndex(app, searchIndexStore!),
+            prepareWorkerOptions(app, options),
+          )
+
+        await Promise.all(promises)
 
         // clean store in build to save memory
         if (isBuild) store.clear()
@@ -94,9 +98,12 @@ export const slimsearchPlugin =
 
         if (hotReload) {
           // This ensure the page is generated or updated
-          const searchIndexWatcher = watch('pages/**/*.vue', {
+          const searchIndexWatcher = watch('pages', {
             cwd: app.dir.temp(),
             ignoreInitial: true,
+            // only watch vue files
+            ignored: (path, stats) =>
+              Boolean(stats?.isFile() && !path.endsWith('.vue')),
           })
 
           searchIndexWatcher.on('add', (path) => {

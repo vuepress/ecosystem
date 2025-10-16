@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-docsearch",
-  "version": "2.0.0-rc.108",
+  "version": "2.0.0-rc.114",
   "description": "VuePress plugin - docsearch",
   "keywords": [
     "vuepress-plugin",
@@ -40,16 +40,16 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@docsearch/css": "^3.9.0",
-    "@docsearch/js": "^3.9.0",
-    "@docsearch/react": "^3.9.0",
+    "@docsearch/css": "^4.2.0",
+    "@docsearch/js": "^4.2.0",
+    "@docsearch/react": "^4.2.0",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "ts-debounce": "^4.0.0",
     "vue": "catalog:"
   },
   "devDependencies": {
-    "algoliasearch": "5.25.0"
+    "algoliasearch": "5.40.0"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

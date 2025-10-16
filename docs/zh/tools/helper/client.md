@@ -72,8 +72,6 @@ locale.value // '标题'
 
 ```ts
 export const isMobile: (ua: string) => boolean
-export const isChromeWebView: (ua: string) => boolean
-export const isSafariMobile: (ua: string) => boolean
 export const isSafari: (ua: string) => boolean
 export const isiPhone: (ua: string) => boolean
 export const isiPad: (ua: string) => boolean

@@ -47,6 +47,7 @@ export const sidebarZh: SidebarOptions = {
 
   '/zh/plugins/analytics/': [
     'baidu-analytics',
+    'clarity-analytics',
     'google-analytics',
     'umami-analytics',
   ],
@@ -107,6 +108,21 @@ export const sidebarZh: SidebarOptions = {
 
   '/zh/plugins/markdown/': [
     'append-date',
+    {
+      text: 'markdown-chart',
+      icon: 'chart-no-axes-combined',
+      prefix: 'markdown-chart/',
+      link: 'markdown-chart/',
+      children: [
+        '',
+        'chartjs',
+        'echarts',
+        'flowchart',
+        'markmap',
+        'mermaid',
+        'plantuml',
+      ],
+    },
     'markdown-container',
     'markdown-ext',
     'markdown-image',
@@ -140,10 +156,12 @@ export const sidebarZh: SidebarOptions = {
   ],
 
   '/zh/plugins/tools/': [
+    'auto-frontmatter',
     'cache',
     'google-tag-manager',
     'redirect',
     'register-components',
+    'replace-assets',
   ],
 
   '/zh/plugins/search/': [

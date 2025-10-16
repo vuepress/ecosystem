@@ -1,4 +1,4 @@
-import type { SearchParamsObject } from 'algoliasearch'
+import type { DocSearchProps } from '@docsearch/react'
 import type { PropType } from 'vue'
 import { computed, defineComponent, h, onMounted, ref, watch } from 'vue'
 import { useLang, useRouteLocale } from 'vuepress/client'
@@ -9,7 +9,7 @@ import {
 } from '../composables/index.js'
 import { useDocSearchOptions } from '../helpers/index.js'
 import {
-  getFacetFilters,
+  getIndices,
   getSearchButtonTemplate,
   pollToOpenDocSearch,
   preconnectToAlgolia,
@@ -39,7 +39,7 @@ export const DocSearch = defineComponent({
     const hasTriggered = ref(false)
 
     // resolve docsearch options for current locale
-    const options = computed(() => {
+    const options = computed<DocSearchProps>(() => {
       const { locales = {}, ...rest } = props.options
 
       return {
@@ -57,19 +57,11 @@ export const DocSearch = defineComponent({
 
       const { default: docsearch } = await import('@docsearch/js')
 
-      const { searchParameters } = options.value
-
       docsearch({
         ...docsearchShim,
         ...options.value,
         container: `#${props.containerId}`,
-        searchParameters: {
-          ...searchParameters,
-          facetFilters: getFacetFilters(
-            lang.value,
-            (searchParameters as SearchParamsObject | undefined)?.facetFilters,
-          ),
-        },
+        indices: getIndices(options.value, lang.value),
       })
       // mark as initialized
       hasInitialized.value = true
@@ -78,7 +70,7 @@ export const DocSearch = defineComponent({
     /**
      * Trigger docsearch initialization and open it
      */
-    const trigger = (): void => {
+    const startDocsearch = (): void => {
       if (hasTriggered.value || hasInitialized.value) return
       // mark as triggered
       hasTriggered.value = true
@@ -90,7 +82,7 @@ export const DocSearch = defineComponent({
     }
 
     // trigger when hotkey is pressed
-    useDocSearchHotkeyListener(trigger)
+    useDocSearchHotkeyListener(options, startDocsearch)
 
     // preconnect to algolia
     onMounted(() => {
@@ -105,7 +97,8 @@ export const DocSearch = defineComponent({
       hasInitialized.value
         ? null
         : h('div', {
-            onClick: trigger,
+            class: 'docsearch-placeholder',
+            onClick: startDocsearch,
             innerHTML: getSearchButtonTemplate(
               options.value.translations?.button,
             ),

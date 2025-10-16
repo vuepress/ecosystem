@@ -1,6 +1,6 @@
 {
   "name": "create-vuepress",
-  "version": "2.0.0-rc.108",
+  "version": "2.0.0-rc.114",
   "description": "VuePress template helper",
   "keywords": [
     "vuepress",
@@ -42,8 +42,8 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@inquirer/prompts": "^7.5.3",
-    "commander": "^14.0.0"
+    "@inquirer/prompts": "^7.9.0",
+    "commander": "^14.0.1"
   },
   "devDependencies": {
     "@vuepress/plugin-blog": "workspace:*",
@@ -54,7 +54,7 @@
     "vuepress": "catalog:"
   },
   "engines": {
-    "node": ">= 20.6.0",
+    "node": "^20.19.0 || >= 22.12.0",
     "npm": ">=8",
     "pnpm": ">=7",
     "yarn": ">=2"

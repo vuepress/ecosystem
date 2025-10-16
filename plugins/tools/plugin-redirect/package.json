@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-redirect",
-  "version": "2.0.0-rc.108",
+  "version": "2.0.0-rc.114",
   "description": "VuePress plugin - redirect",
   "keywords": [
     "vuepress-plugin",
@@ -46,7 +46,7 @@
   "dependencies": {
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
-    "commander": "^14.0.0",
+    "commander": "^14.0.1",
     "vue": "catalog:"
   },
   "peerDependencies": {

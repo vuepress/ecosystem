@@ -13,12 +13,13 @@ import { fs, logger, path } from 'vuepress/utils'
 import { shouldRescrape } from './shouldRescrape.js'
 import { getChangedFiles, getGitRelativePath } from './utils.js'
 
-interface MeiliSearchCommandOptions {
+export interface GenerateOnlyUrlOptions {
   config?: string
   cache?: string
   temp?: string
   cleanCache?: boolean
   cleanTemp?: boolean
+  convertDiffFilesToMarkdown?: (files: string[]) => string[]
 }
 
 interface ScraperConfig extends Record<string, unknown> {
@@ -58,7 +59,14 @@ const generateOnlyUrls = (
 export const generateScraperConfig = async (
   source: string,
   output: string | undefined,
-  commandOptions: MeiliSearchCommandOptions,
+  {
+    config,
+    cache,
+    temp,
+    cleanCache,
+    cleanTemp,
+    convertDiffFilesToMarkdown = (files) => files,
+  }: GenerateOnlyUrlOptions = {},
 ): Promise<void> => {
   // ensure NODE_ENV is set
   process.env.NODE_ENV ??= 'production'
@@ -67,8 +75,8 @@ export const generateScraperConfig = async (
   const cliAppConfig = resolveCliAppConfig(source, {})
 
   // resolve user config file
-  const userConfigPath = commandOptions.config
-    ? resolveUserConfigPath(commandOptions.config)
+  const userConfigPath = config
+    ? resolveUserConfigPath(config)
     : resolveUserConfigConventionalPath(cliAppConfig.source)
 
   const { userConfig } = await loadUserConfig(userConfigPath)
@@ -76,8 +84,8 @@ export const generateScraperConfig = async (
   // resolve the final app config to use
   const appConfig = resolveAppConfig({
     defaultAppConfig: {
-      cache: commandOptions.cache,
-      temp: commandOptions.temp,
+      cache,
+      temp,
     },
     cliAppConfig,
     userConfig,
@@ -92,12 +100,12 @@ export const generateScraperConfig = async (
   app.use(transformUserConfigToPlugin(userConfig, cliAppConfig.source))
 
   // clean temp and cache
-  if (commandOptions.cleanTemp === true) {
+  if (cleanTemp) {
     logger.info('Cleaning temp...')
     await fs.remove(app.dir.temp())
   }
 
-  if (commandOptions.cleanCache === true) {
+  if (cleanCache) {
     logger.info('Cleaning cache...')
     await fs.remove(app.dir.cache())
   }
@@ -125,7 +133,9 @@ export const generateScraperConfig = async (
 
   const sourceRelativePath = getGitRelativePath(app.dir.source())
 
-  const changedMarkdownFilesPathRelative = getChangedFiles()
+  const changedMarkdownFilesPathRelative = convertDiffFilesToMarkdown(
+    getChangedFiles(),
+  )
     .filter(
       (line) => line.startsWith(sourceRelativePath) && line.endsWith('.md'),
     )

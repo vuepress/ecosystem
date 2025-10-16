@@ -88,12 +88,6 @@ export const previewLocaleInfo: DefaultLocaleInfo<MarkdownPreviewPluginLocaleDat
       },
     ],
     [
-      ['pt-BR'],
-      {
-        toggle: 'Alternar código',
-      },
-    ],
-    [
       ['ru', 'ru-RU'],
       {
         toggle: 'Переключить код',

@@ -1,6 +1,6 @@
 import { useRevealJs } from '@temp/revealjs/index.js'
 import { LoadingIcon, decodeData } from '@vuepress/helper/client'
-// eslint-disable-next-line import/no-rename-default
+
 import type Reveal from 'reveal.js/dist/reveal.esm.js'
 import type { PropType, VNode } from 'vue'
 import {

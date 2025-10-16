@@ -57,7 +57,7 @@ export const copyrightLocaleInfo: DefaultLocaleInfo<CopyrightPluginLocaleData> =
       },
     ],
     [
-      ['pt-BR'],
+      ['pt', 'pt-PT'],
       {
         author: 'Direitos autorais de :author',
         license: 'Licenciado sob :license',

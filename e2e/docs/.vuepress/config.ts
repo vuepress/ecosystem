@@ -1,6 +1,11 @@
 import process from 'node:process'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
+import {
+  addCreateDate,
+  addTitleByFilename,
+  autoFrontmatterPlugin,
+} from '@vuepress/plugin-auto-frontmatter'
 import { blogPlugin } from '@vuepress/plugin-blog'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { copyrightPlugin } from '@vuepress/plugin-copyright'
@@ -10,6 +15,7 @@ import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
 import { pwaPlugin } from '@vuepress/plugin-pwa'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
+import { replaceAssetsPlugin } from '@vuepress/plugin-replace-assets'
 import { sassPalettePlugin } from '@vuepress/plugin-sass-palette'
 import { watermarkPlugin } from '@vuepress/plugin-watermark'
 import { defaultTheme } from '@vuepress/theme-default'
@@ -111,6 +117,16 @@ export default defineUserConfig({
   shouldPrefetch: false,
 
   plugins: [
+    autoFrontmatterPlugin([
+      {
+        filter: ['auto-frontmatter/**/*.md', '!*/no-generate.md'],
+        handle: (data, context) => {
+          addTitleByFilename(data, context)
+          addCreateDate(data, context)
+          return data
+        },
+      },
+    ]),
     blogPlugin({
       // Only files under posts are articles
       filter: ({ filePathRelative }) =>
@@ -306,6 +322,10 @@ export default defineUserConfig({
       },
       componentsDir: path.resolve(__dirname, 'global-components/'),
       componentsPatterns: ['**/*.vue', '**/*.ts', '**/*.js'],
+    }),
+    replaceAssetsPlugin({
+      find: /^\/images\/replace-assets\/.*\.(png|jpg|svg|gif|webp)$/,
+      replacement: 'https://cnd.example.com',
     }),
     sassPalettePlugin({
       id: 'test',

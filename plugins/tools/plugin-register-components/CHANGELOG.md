@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.114](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.113...v2.0.0-rc.114) (2025-10-15)
+
+**Note:** Version bump only for package @vuepress/plugin-register-components
+
+# [2.0.0-rc.113](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.112...v2.0.0-rc.113) (2025-10-15)
+
+### Bug Fixes
+
+- add declaration files and missing externals ([a28fe69](https://github.com/vuepress/ecosystem/commit/a28fe69a35400965cf2958e01ba95434f6344a14))
+
+# [2.0.0-rc.112](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.111...v2.0.0-rc.112) (2025-07-09)
+
+**Note:** Version bump only for package @vuepress/plugin-register-components
+
+# [2.0.0-rc.111](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.110...v2.0.0-rc.111) (2025-07-09)
+
+### Bug Fixes
+
+- **plugin-register-components:** fix `componentsPatterns` matcher ([#544](https://github.com/vuepress/ecosystem/issues/544)) ([d187e44](https://github.com/vuepress/ecosystem/commit/d187e442ba435e5286b0c45fb8e1f7d116fccd56))
+
+# [2.0.0-rc.110](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.109...v2.0.0-rc.110) (2025-06-19)
+
+### Features
+
+- use chokidar v4 ([#535](https://github.com/vuepress/ecosystem/issues/535)) ([a7627e2](https://github.com/vuepress/ecosystem/commit/a7627e266ed10f04ffe6d877eb99dbebf56b73a6))
+
 # [2.0.0-rc.103](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.102...v2.0.0-rc.103) (2025-05-08)
 
 **Note:** Version bump only for package @vuepress/plugin-register-components
