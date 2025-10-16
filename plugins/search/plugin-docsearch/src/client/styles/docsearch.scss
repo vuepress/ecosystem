@@ -1,13 +1,20 @@
 /* stylelint-disable selector-class-pattern */
 
-.DocSearch-Button-Key {
-  min-width: initial;
-  margin-inline: initial;
-  padding: initial;
+.DocSearch-Button {
+  border-radius: 8px;
+
+  @media (max-width: 768px) {
+    border-radius: 50%;
+  }
 }
 
-@media (max-width: 750px) {
-  .DocSearch-Container {
+.DocSearch-Button-Placeholder {
+  padding-inline: 8px 6px;
+  font-size: 0.875rem;
+}
+
+.DocSearch-Container {
+  @media (max-width: 750px) {
     /* fix the search modal on mobile */
     position: fixed;
   }
@@ -18,4 +25,10 @@
   .DocSearch-Button {
     display: none;
   }
+}
+
+.DocSearch-Button-Key {
+  min-width: initial;
+  margin-inline: initial;
+  padding: initial;
 }
