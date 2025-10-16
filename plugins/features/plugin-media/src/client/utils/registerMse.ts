@@ -77,15 +77,15 @@ export const registerMseHls = async (
   ) {
     mediaElement.src = src
   } else if (typeof HLS_JS_INSTALLED !== 'undefined' && HLS_JS_INSTALLED) {
-    const hls = (
+    const HLS = (
       await import(/* webpackChunkName: "hls.js" */ 'hls.js/dist/hls.min.js')
     ).default
 
-    if (hls.isSupported()) {
-      const hlsInstance = new hls()
+    if (HLS.isSupported()) {
+      const hlsInstance = new HLS()
 
       hlsInstance.attachMedia(mediaElement)
-      hlsInstance.on(hls.Events.MEDIA_ATTACHED, () => {
+      hlsInstance.on(HLS.Events.MEDIA_ATTACHED, () => {
         hlsInstance.loadSource(src)
       })
 

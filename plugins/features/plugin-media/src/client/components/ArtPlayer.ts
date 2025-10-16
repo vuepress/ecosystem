@@ -1,6 +1,6 @@
 import { LoadingIcon, keys } from '@vuepress/helper/client'
 import type Artplayer from 'artplayer'
-import type { Option as ArtPlayerInitOptions } from 'artplayer/types/option.js'
+import type { Option as ArtPlayerInitOptions } from 'artplayer'
 import type { PropType, VNode } from 'vue'
 import { camelize, defineComponent, h, onMounted, onUnmounted, ref } from 'vue'
 import { usePageLang } from 'vuepress/client'
@@ -219,6 +219,7 @@ export const ArtPlayer = defineComponent({
 
       // Auto config mse
       if (initOptions.type) {
+        // eslint-disable-next-line no-multi-assign
         const customType = (initOptions.customType ??= {})
 
         if (SUPPORTED_VIDEO_TYPES.includes(initOptions.type.toLowerCase()))

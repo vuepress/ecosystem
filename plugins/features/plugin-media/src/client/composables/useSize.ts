@@ -30,8 +30,8 @@ export const useSize = <E extends HTMLElement>(
 
   const getRadio = (ratio: number | string | undefined): number => {
     if (isString(ratio)) {
-      const [width, height] = ratio.split(':')
-      const parsedRadio = Number(width) / Number(height)
+      const [radioWidth, radioHeight] = ratio.split(':')
+      const parsedRadio = Number(radioWidth) / Number(radioHeight)
 
       if (!Number.isNaN(parsedRadio)) return parsedRadio
     }
@@ -39,11 +39,13 @@ export const useSize = <E extends HTMLElement>(
     return typeof ratio === 'number' ? ratio : 16 / 9
   }
 
-  const getHeight = (width: number): string => {
-    const height = unref(options.height)
+  const getHeight = (widthValue: number): string => {
+    const heightValue = unref(options.height)
     const ratio = getRadio(unref(options.ratio))
 
-    return height ? getValue(height) : `${width / ratio + unref(extraHeight)}px`
+    return heightValue
+      ? getValue(heightValue)
+      : `${widthValue / ratio + unref(extraHeight)}px`
   }
 
   const updateHeight = (): void => {
