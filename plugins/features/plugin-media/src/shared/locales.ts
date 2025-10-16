@@ -15,13 +15,4 @@ export interface PDFLocaleData {
   hint: string
 }
 
-export interface SiteInfoLocaleData {
-  /**
-   * Source text
-   *
-   * 源代码文字
-   */
-  source: string
-}
-
 export type VidstackLocaleData = Partial<DefaultLayoutTranslations>
