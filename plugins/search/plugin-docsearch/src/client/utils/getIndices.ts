@@ -18,7 +18,13 @@ export const getIndices = (
       },
     ]
   ).map((item) => {
-    if (isString(item)) return { name: item, searchParameters }
+    if (isString(item))
+      return {
+        name: item,
+        searchParameters: {
+          facetFilters: `lang:${lang}`,
+        },
+      }
 
     const { searchParameters: indexSearchParameters, ...rest } = item
 
