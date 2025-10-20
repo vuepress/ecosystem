@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.115](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.114...v2.0.0-rc.115) (2025-10-20)
+
+### Bug Fixes
+
+- **plugin-docsearch:** fix facetFilters ([226c704](https://github.com/vuepress/ecosystem/commit/226c70430e1eacd2040e4f82be541aeabdcd483f))
+- **plugin-docsearch:** fix searchbox template ([6043660](https://github.com/vuepress/ecosystem/commit/60436608808a5da19f2242ada8708a81ce4cd982))
+
 # [2.0.0-rc.114](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.113...v2.0.0-rc.114) (2025-10-15)
 
 **Note:** Version bump only for package @vuepress/plugin-docsearch
