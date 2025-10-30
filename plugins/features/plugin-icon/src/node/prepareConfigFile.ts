@@ -31,14 +31,14 @@ import { hasGlobalComponent } from "${getModulePath(
 ${
   linksInfo.some(({ type }) => type === 'script')
     ? `\
-import { useScriptTag } from "${getModulePath('@vueuse/core/index.mjs', import.meta)}";
+import { useScriptTag } from "${getModulePath('@vueuse/core', import.meta)}";
 `
     : ''
 }\
 ${
   linksInfo.some(({ type }) => type === 'style')
     ? `\
-import { useStyleTag } from "${getModulePath('@vueuse/core/index.mjs', import.meta)}";
+import { useStyleTag } from "${getModulePath('@vueuse/core', import.meta)}";
 `
     : ''
 }\
