@@ -16,7 +16,7 @@ icon: sigma
 npm i -D @vuepress/plugin-markdown-math@next
 
 # 安装下列包之一:
-npm i -D mathjax-full
+npm i -D @mathjax/src
 npm i -D katex
 ```
 
