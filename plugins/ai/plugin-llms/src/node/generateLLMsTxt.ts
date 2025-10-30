@@ -1,6 +1,6 @@
 import { entries, fromEntries } from '@vuepress/helper'
 import { millify } from 'millify'
-import { approximateTokenSize } from 'tokenx'
+import { estimateTokenCount } from 'tokenx'
 import { isFunction, removeLeadingSlash } from 'vuepress/shared'
 import { colors, fs, path } from 'vuepress/utils'
 import type { LlmsPluginOptions } from './options.js'
@@ -49,7 +49,7 @@ export const generateLLMsTxt = async (
       'Generated {file} (~{tokens} tokens, {size}) with {pageCount} documentation links',
       {
         file: colors.cyan(llmsTxtRelativePath),
-        tokens: colors.bold(millify(approximateTokenSize(llmsTxt))),
+        tokens: colors.bold(millify(estimateTokenCount(llmsTxt))),
         size: colors.bold(getSizeOf(llmsTxt)),
         pageCount: colors.bold(pages.length),
       },

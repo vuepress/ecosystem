@@ -56,12 +56,17 @@ export const DocSearch = defineComponent({
       if (__VUEPRESS_SSR__) return
 
       const { default: docsearch } = await import('@docsearch/js')
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      const { indexName, indices, searchParameters, ...rest } = options.value
 
       docsearch({
         ...docsearchShim,
-        ...options.value,
+        ...rest,
         container: `#${props.containerId}`,
-        indices: getIndices(options.value, lang.value),
+        indices: getIndices(
+          { indices, indexName, searchParameters },
+          lang.value,
+        ),
       })
       // mark as initialized
       hasInitialized.value = true
