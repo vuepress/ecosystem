@@ -13,8 +13,8 @@ catalogs:
       specifier: 2.0.0-rc.26
       version: 2.0.0-rc.26
     '@vueuse/core':
-      specifier: ^13.9.0
-      version: 13.9.0
+      specifier: ^14.0.0
+      version: 14.0.0
     chokidar:
       specifier: ^4.0.3
       version: 4.0.3
@@ -33,9 +33,6 @@ catalogs:
     vuepress:
       specifier: 2.0.0-rc.26
       version: 2.0.0-rc.26
-
-overrides:
-  esbuild: ^0.25.6
 
 importers:
 
@@ -250,7 +247,7 @@ importers:
         version: link:../themes/theme-default
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       echarts-wordcloud:
         specifier: 2.1.0
         version: 2.1.0(echarts@6.0.0)
@@ -438,10 +435,10 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       '@waline/client':
-        specifier: ^3.5.5
-        version: 3.7.0(typescript@5.9.3)
+        specifier: ^3.7.1
+        version: 3.7.1(typescript@5.9.3)
       artalk:
         specifier: ^2.9.1
         version: 2.9.1(marked@16.4.1)
@@ -478,7 +475,7 @@ importers:
     dependencies:
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.22(typescript@5.9.3)
@@ -493,7 +490,7 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       rehype-parse:
         specifier: ^9.0.1
         version: 9.0.1
@@ -544,7 +541,7 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.22(typescript@5.9.3)
@@ -614,7 +611,7 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.22(typescript@5.9.3)
@@ -641,7 +638,7 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.22(typescript@5.9.3)
@@ -656,7 +653,7 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.22(typescript@5.9.3)
@@ -674,7 +671,7 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.22(typescript@5.9.3)
@@ -704,7 +701,7 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       chokidar:
         specifier: 'catalog:'
         version: 4.0.3
@@ -734,7 +731,7 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       photoswipe:
         specifier: ^5.4.4
         version: 5.4.4
@@ -752,7 +749,7 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.22(typescript@5.9.3)
@@ -797,7 +794,7 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       chart.js:
         specifier: ^4.4.7
         version: 4.5.1
@@ -899,7 +896,7 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       vuepress:
         specifier: 'catalog:'
         version: 2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1))(@vuepress/bundler-webpack@2.0.0-rc.26(esbuild@0.25.11)(typescript@5.9.3))(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3))
@@ -994,7 +991,7 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.22(typescript@5.9.3)
@@ -1056,7 +1053,7 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.22(typescript@5.9.3)
@@ -1109,7 +1106,7 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       reveal.js:
         specifier: ^5.2.1
         version: 5.2.1
@@ -1165,7 +1162,7 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       mitt:
         specifier: ^3.0.1
         version: 3.0.1
@@ -1208,7 +1205,7 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       ts-debounce:
         specifier: ^4.0.0
         version: 4.0.0
@@ -1266,7 +1263,7 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       cheerio:
         specifier: ^1.1.2
         version: 1.1.2
@@ -1375,7 +1372,7 @@ importers:
         version: link:../../../tools/helper
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       commander:
         specifier: ^14.0.2
         version: 14.0.2
@@ -1466,7 +1463,7 @@ importers:
         version: link:../../plugins/development/plugin-theme-data
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       sass:
         specifier: 'catalog:'
         version: 1.93.2
@@ -1518,7 +1515,7 @@ importers:
         version: 3.5.22
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       cheerio:
         specifier: ^1.1.2
         version: 1.1.2
@@ -1555,7 +1552,7 @@ importers:
     dependencies:
       '@vueuse/core':
         specifier: 'catalog:'
-        version: 13.9.0(vue@3.5.22(typescript@5.9.3))
+        version: 14.0.0(vue@3.5.22(typescript@5.9.3))
       vuepress:
         specifier: 'catalog:'
         version: 2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.9.2)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.1))(@vuepress/bundler-webpack@2.0.0-rc.26(esbuild@0.25.11)(typescript@5.9.3))(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3))
@@ -4306,16 +4303,16 @@ packages:
   '@vuepress/utils@2.0.0-rc.26':
     resolution: {integrity: sha512-RWzZrGQ0WLSWdELuxg7c6q1D9I22T5PfK/qNFkOsv9eD3gpUsU4jq4zAoumS8o+NRIWHovCJ9WnAhHD0Ns5zAw==}
 
-  '@vueuse/core@13.9.0':
-    resolution: {integrity: sha512-ts3regBQyURfCE2BcytLqzm8+MmLlo5Ln/KLoxDVcsZ2gzIwVNnQpQOL/UKV8alUqjSZOlpFZcRNsLRqj+OzyA==}
+  '@vueuse/core@14.0.0':
+    resolution: {integrity: sha512-d6tKRWkZE8IQElX2aHBxXOMD478fHIYV+Dzm2y9Ag122ICBpNKtGICiXKOhWU3L1kKdttDD9dCMS4bGP3jhCTQ==}
     peerDependencies:
       vue: ^3.5.0
 
-  '@vueuse/metadata@13.9.0':
-    resolution: {integrity: sha512-1AFRvuiGphfF7yWixZa0KwjYH8ulyjDCC0aFgrGRz8+P4kvDFSdXLVfTk5xAN9wEuD1J6z4/myMoYbnHoX07zg==}
+  '@vueuse/metadata@14.0.0':
+    resolution: {integrity: sha512-6yoGqbJcMldVCevkFiHDBTB1V5Hq+G/haPlGIuaFZHpXC0HADB0EN1ryQAAceiW+ryS3niUwvdFbGiqHqBrfVA==}
 
-  '@vueuse/shared@13.9.0':
-    resolution: {integrity: sha512-e89uuTLMh0U5cZ9iDpEI2senqPGfbPRTHM/0AaQkcxnpqjkZqDYP8rpfm7edOz8s+pOCOROEy1PIveSW8+fL5g==}
+  '@vueuse/shared@14.0.0':
+    resolution: {integrity: sha512-mTCA0uczBgurRlwVaQHfG0Ja7UdGe4g9mwffiJmvLiTtp1G4AQyIjej6si/k8c8pUwTfVpNufck+23gXptPAkw==}
     peerDependencies:
       vue: ^3.5.0
 
@@ -4323,8 +4320,8 @@ packages:
     resolution: {integrity: sha512-o0lWjt+/oZH1/4q3DJxTf5kdkgNbSmoLRXIiGznW225A6hq9/9IkOO1DiAijIsxGYJS6psFC+58+IzkD1EerBA==}
     engines: {node: '>=18'}
 
-  '@waline/client@3.7.0':
-    resolution: {integrity: sha512-vD2Wea82qhQkm8+aj9WlW8qYAHE7HgtRXoxFgYkpmBbRiGUHqF2mU8EwGgmL1gqZGd8gMGD+h0b30s7Uw55Orw==}
+  '@waline/client@3.7.1':
+    resolution: {integrity: sha512-hC3E4/rS1TZBWVe0gkkrvvfENBakZLbN1r7CpWv4HqDoD+QgWdTuTC6I4xseGkmglkrunyszEC02jm0+eTdrIg==}
     engines: {node: '>=18'}
 
   '@webassemblyjs/ast@1.14.1':
@@ -8316,7 +8313,7 @@ packages:
     resolution: {integrity: sha512-jTNOMGoMRhs0JuueJrJqbW8tOwxumaWYq+V5i+PD+8ecSCVkuX27tGW7BXqDgoULQ55rO7IdNxPcnsWtshz3AA==}
     engines: {node: '>=14.18.0'}
     peerDependencies:
-      esbuild: ^0.25.6
+      esbuild: '>=0.18.0'
       rollup: ^1.20.0 || ^2.0.0 || ^3.0.0 || ^4.0.0
 
   rollup-plugin-resolve-shebang@1.0.1:
@@ -13040,24 +13037,24 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vueuse/core@13.9.0(vue@3.5.22(typescript@5.9.3))':
+  '@vueuse/core@14.0.0(vue@3.5.22(typescript@5.9.3))':
     dependencies:
       '@types/web-bluetooth': 0.0.21
-      '@vueuse/metadata': 13.9.0
-      '@vueuse/shared': 13.9.0(vue@3.5.22(typescript@5.9.3))
+      '@vueuse/metadata': 14.0.0
+      '@vueuse/shared': 14.0.0(vue@3.5.22(typescript@5.9.3))
       vue: 3.5.22(typescript@5.9.3)
 
-  '@vueuse/metadata@13.9.0': {}
+  '@vueuse/metadata@14.0.0': {}
 
-  '@vueuse/shared@13.9.0(vue@3.5.22(typescript@5.9.3))':
+  '@vueuse/shared@14.0.0(vue@3.5.22(typescript@5.9.3))':
     dependencies:
       vue: 3.5.22(typescript@5.9.3)
 
   '@waline/api@1.0.0': {}
 
-  '@waline/client@3.7.0(typescript@5.9.3)':
+  '@waline/client@3.7.1(typescript@5.9.3)':
     dependencies:
-      '@vueuse/core': 13.9.0(vue@3.5.22(typescript@5.9.3))
+      '@vueuse/core': 14.0.0(vue@3.5.22(typescript@5.9.3))
       '@waline/api': 1.0.0
       autosize: 6.0.1
       marked: 16.4.1
