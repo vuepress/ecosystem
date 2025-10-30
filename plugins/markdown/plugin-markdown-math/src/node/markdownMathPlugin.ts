@@ -1,5 +1,6 @@
 import type { MarkdownItKatexOptions } from '@mdit/plugin-katex-slim'
 import { katex, loadMhchem } from '@mdit/plugin-katex-slim'
+import type { MathjaxInstance } from '@mdit/plugin-mathjax-slim'
 import { createMathjaxInstance, mathjax } from '@mdit/plugin-mathjax-slim'
 import { addCustomElement, isModuleAvailable } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
@@ -41,7 +42,7 @@ export const markdownMathPlugin = ({
   type,
   ...options
 }: MarkdownMathPluginOptions = {}): Plugin => {
-  const isMathjaxInstalled = isModuleAvailable('mathjax-full', import.meta)
+  const isMathjaxInstalled = isModuleAvailable('@mathjax/src', import.meta)
   const isKatexInstalled = isModuleAvailable('katex', import.meta)
 
   const mathRenderer =
@@ -56,10 +57,10 @@ export const markdownMathPlugin = ({
             : null
 
   if (!mathRenderer || (type && mathRenderer !== type)) {
-    const packages = { katex: 'katex', mathjax: 'mathjax-full' }
+    const packages = { katex: 'katex', mathjax: '@mathjax/src' }
     logger.error(
       !mathRenderer
-        ? 'No math renderer found, please install mathjax-full or katex'
+        ? 'No math renderer found, please install @mathjax/src or katex'
         : `type is "${type}", but "${packages[type!]}" is not installed`,
     )
 
@@ -68,14 +69,7 @@ export const markdownMathPlugin = ({
     }
   }
 
-  let mathjaxInstance =
-    mathRenderer === 'mathjax'
-      ? createMathjaxInstance({
-          ...(options as MarkdownMathjaxPluginOptions),
-          transformer: (content: string) =>
-            content.replace(/^<mjx-container/, '<mjx-container v-pre'),
-        })
-      : null
+  let mathjaxInstance: MathjaxInstance | null
 
   return {
     name: PLUGIN_NAME,
@@ -88,6 +82,11 @@ export const markdownMathPlugin = ({
 
     extendsMarkdown: async (md) => {
       if (mathRenderer === 'mathjax') {
+        mathjaxInstance = await createMathjaxInstance({
+          ...(options as MarkdownMathjaxPluginOptions),
+          transformer: (content: string) =>
+            content.replace(/^<mjx-container/, '<mjx-container v-pre'),
+        })
         md.use(mathjax, mathjaxInstance)
         // Reset mathjax style in each render
         md.use((mdIt) => {

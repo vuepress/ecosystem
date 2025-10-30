@@ -42,8 +42,8 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@mdit/plugin-alert": "^0.22.2",
-    "@mdit/plugin-container": "^0.22.1",
+    "@mdit/plugin-alert": "^0.22.3",
+    "@mdit/plugin-container": "^0.22.2",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:"

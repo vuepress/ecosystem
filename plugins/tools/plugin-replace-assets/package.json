@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "magic-string": "^0.30.19",
+    "magic-string": "^0.30.21",
     "unplugin": "^2.3.10"
   },
   "peerDependencies": {
