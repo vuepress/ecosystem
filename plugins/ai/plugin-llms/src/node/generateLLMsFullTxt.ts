@@ -1,6 +1,6 @@
 import matter from 'gray-matter'
 import { millify } from 'millify'
-import { approximateTokenSize } from 'tokenx'
+import { estimateTokenCount } from 'tokenx'
 import type { PageFrontmatter } from 'vuepress'
 import { removeLeadingSlash } from 'vuepress/shared'
 import { colors, fs, path } from 'vuepress/utils'
@@ -62,7 +62,7 @@ export const generateLLMsFullTxt = async (
       'Generated {file} (~{tokens} tokens, {size}) with {pageCount} documentation links',
       {
         file: colors.cyan(llmsFullTxtRelativePath),
-        tokens: colors.bold(millify(approximateTokenSize(llmsFullTxt))),
+        tokens: colors.bold(millify(estimateTokenCount(llmsFullTxt))),
         size: colors.bold(getSizeOf(llmsFullTxt)),
         pageCount: colors.bold(llmPages.length),
       },
