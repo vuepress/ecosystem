@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-include",
-  "version": "2.0.0-rc.115",
+  "version": "2.0.0-rc.116",
   "description": "VuePress plugin - markdown include",
   "keywords": [
     "vuepress-plugin",
