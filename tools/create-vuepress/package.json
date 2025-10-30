@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@inquirer/prompts": "^7.9.0",
-    "commander": "^14.0.1"
+    "commander": "^14.0.2"
   },
   "devDependencies": {
     "@vuepress/plugin-blog": "workspace:*",

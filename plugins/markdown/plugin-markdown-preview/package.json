@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@mdit/helper": "^0.22.1",
-    "@mdit/plugin-demo": "^0.22.2",
+    "@mdit/plugin-demo": "^0.22.3",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
