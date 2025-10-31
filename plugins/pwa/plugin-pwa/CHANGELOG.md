@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.119](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.118...v2.0.0-rc.119) (2025-10-31)
+
+### Bug Fixes
+
+- **plugin-pwa:** fix import typos ([f229cea](https://github.com/vuepress/ecosystem/commit/f229cea3ac6295287483e46dd8d9eb2f40c8053f))
+
 # [2.0.0-rc.118](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.117...v2.0.0-rc.118) (2025-10-31)
 
 **Note:** Version bump only for package @vuepress/plugin-pwa
