@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.118](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.117...v2.0.0-rc.118) (2025-10-31)
+
+**Note:** Version bump only for package @vuepress/plugin-nprogress
+
 # [2.0.0-rc.116](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.115...v2.0.0-rc.116) (2025-10-30)
 
 **Note:** Version bump only for package @vuepress/plugin-nprogress
