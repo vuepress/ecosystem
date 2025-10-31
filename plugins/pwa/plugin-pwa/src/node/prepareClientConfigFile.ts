@@ -24,7 +24,7 @@ import { PwaInstall as _PwaInstall } from "${path.join(__dirname, '../client/com
 
   if (options.update === 'hint') {
     configImport += options.foundComponent
-      ? `import PwaFoundPopup as _PwaFoundPopup from "${options.foundComponent}";
+      ? `import _PwaFoundPopup from "${options.foundComponent}";
 `
       : `\
 import { PwaFoundPopup as _PwaFoundPopup } from "${path.join(
@@ -36,7 +36,7 @@ import { PwaFoundPopup as _PwaFoundPopup } from "${path.join(
     rootComponents.push('PwaFoundPopup')
   } else if (options.update !== 'disable' && options.update !== 'force') {
     configImport += options.readyComponent
-      ? `import PwaReadyPopup as _PwaReadyPopup from "${options.readyComponent}";
+      ? `import _PwaReadyPopup from "${options.readyComponent}";
 `
       : `\
 import { PwaReadyPopup as _PwaReadyPopup } from "${path.join(
