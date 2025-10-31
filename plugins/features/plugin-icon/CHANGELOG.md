@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.118](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.117...v2.0.0-rc.118) (2025-10-31)
+
+**Note:** Version bump only for package @vuepress/plugin-icon
+
+# [2.0.0-rc.117](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.116...v2.0.0-rc.117) (2025-10-30)
+
+### Bug Fixes
+
+- **plugin-icon:** fix import path in config file ([8885581](https://github.com/vuepress/ecosystem/commit/88855811ee2a2d01a63b2047f444597c77c8760a))
+
+# [2.0.0-rc.116](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.115...v2.0.0-rc.116) (2025-10-30)
+
+**Note:** Version bump only for package @vuepress/plugin-icon
+
+# [2.0.0-rc.115](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.114...v2.0.0-rc.115) (2025-10-20)
+
+**Note:** Version bump only for package @vuepress/plugin-icon
+
 # [2.0.0-rc.114](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.113...v2.0.0-rc.114) (2025-10-15)
 
 **Note:** Version bump only for package @vuepress/plugin-icon

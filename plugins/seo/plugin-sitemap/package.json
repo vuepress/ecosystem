@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-sitemap",
-  "version": "2.0.0-rc.114",
+  "version": "2.0.0-rc.118",
   "description": "Sitemap plugin for vuepress",
   "keywords": [
     "vuepress",
@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "sitemap": "^8.0.0"
+    "sitemap": "^8.0.2"
   },
   "devDependencies": {
     "@vuepress/plugin-git": "workspace:*"

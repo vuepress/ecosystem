@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-comment",
-  "version": "2.0.0-rc.114",
+  "version": "2.0.0-rc.118",
   "description": "VuePress plugin - comment",
   "keywords": [
     "vuepress-plugin",
@@ -56,7 +56,7 @@
     "vue": "catalog:"
   },
   "peerDependencies": {
-    "@waline/client": "^3.5.5",
+    "@waline/client": "^3.7.1",
     "artalk": "^2.9.1",
     "twikoo": "^1.6.41",
     "vuepress": "catalog:"

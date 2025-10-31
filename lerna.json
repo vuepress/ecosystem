@@ -1,6 +1,6 @@
 {
   "npmClient": "pnpm",
-  "version": "2.0.0-rc.114",
+  "version": "2.0.0-rc.118",
   "command": {
     "version": {
       "allowBranch": "main",
@@ -12,7 +12,7 @@
     },
     "publish": {
       "graphType": "all",
-      "removePackageFields": ["scripts"]
+      "stripPackageKeys": ["scripts"]
     }
   },
   "packages": ["plugins/*/*", "themes/*", "tools/*"],

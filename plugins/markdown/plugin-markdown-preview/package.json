@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-preview",
-  "version": "2.0.0-rc.114",
+  "version": "2.0.0-rc.118",
   "description": "VuePress plugin - preview",
   "keywords": [
     "vuepress-plugin",
@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@mdit/helper": "^0.22.1",
-    "@mdit/plugin-demo": "^0.22.2",
+    "@mdit/plugin-demo": "^0.22.3",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",

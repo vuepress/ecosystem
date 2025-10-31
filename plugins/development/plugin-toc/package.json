@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-toc",
-  "version": "2.0.0-rc.114",
+  "version": "2.0.0-rc.118",
   "description": "VuePress plugin - toc",
   "keywords": [
     "vuepress-plugin",
@@ -38,7 +38,7 @@
   "dependencies": {
     "@vuepress/helper": "workspace:*",
     "vue": "catalog:",
-    "vue-router": "^4.6.0"
+    "vue-router": "^4.6.3"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

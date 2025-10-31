@@ -1,6 +1,6 @@
 {
   "name": "create-vuepress",
-  "version": "2.0.0-rc.114",
+  "version": "2.0.0-rc.118",
   "description": "VuePress template helper",
   "keywords": [
     "vuepress",
@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@inquirer/prompts": "^7.9.0",
-    "commander": "^14.0.1"
+    "commander": "^14.0.2"
   },
   "devDependencies": {
     "@vuepress/plugin-blog": "workspace:*",

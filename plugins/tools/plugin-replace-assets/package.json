@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-replace-assets",
-  "version": "2.0.0-rc.114",
+  "version": "2.0.0-rc.118",
   "description": "VuePress plugin - replace assets",
   "keywords": [
     "vuepress-plugin",
@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "magic-string": "^0.30.19",
+    "magic-string": "^0.30.21",
     "unplugin": "^2.3.10"
   },
   "peerDependencies": {

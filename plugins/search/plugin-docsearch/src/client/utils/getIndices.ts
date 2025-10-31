@@ -4,13 +4,16 @@ import type { DocSearchOptions } from '../../shared/index.js'
 import { getFacetFilters } from './getFacetFilters.js'
 
 export const getIndices = (
-  options: DocSearchOptions,
+  {
+    indices,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    indexName,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    searchParameters,
+  }: Pick<DocSearchOptions, 'indexName' | 'indices' | 'searchParameters'>,
   lang: string,
-): DocSearchIndex[] => {
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
-  const { indices, indexName, searchParameters } = options
-
-  return (
+): DocSearchIndex[] =>
+  (
     indices ?? [
       {
         name: indexName ?? '',
@@ -18,7 +21,13 @@ export const getIndices = (
       },
     ]
   ).map((item) => {
-    if (isString(item)) return { name: item, searchParameters }
+    if (isString(item))
+      return {
+        name: item,
+        searchParameters: {
+          facetFilters: `lang:${lang}`,
+        },
+      }
 
     const { searchParameters: indexSearchParameters, ...rest } = item
 
@@ -33,4 +42,3 @@ export const getIndices = (
       },
     }
   })
-}

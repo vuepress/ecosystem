@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.118](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.117...v2.0.0-rc.118) (2025-10-31)
+
+**Note:** Version bump only for package @vuepress/plugin-pwa
+
+# [2.0.0-rc.116](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.115...v2.0.0-rc.116) (2025-10-30)
+
+### Bug Fixes
+
+- **plugin-pwa:** fix wrong import in custom popups ([a1850f5](https://github.com/vuepress/ecosystem/commit/a1850f5d6fc9e8af2603aa80f2e306c700d1cd0f))
+
+# [2.0.0-rc.115](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.114...v2.0.0-rc.115) (2025-10-20)
+
+**Note:** Version bump only for package @vuepress/plugin-pwa
+
 # [2.0.0-rc.114](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.113...v2.0.0-rc.114) (2025-10-15)
 
 **Note:** Version bump only for package @vuepress/plugin-pwa

@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.118](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.117...v2.0.0-rc.118) (2025-10-31)
+
+**Note:** Version bump only for package @vuepress/ecosystem
+
+# [2.0.0-rc.117](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.116...v2.0.0-rc.117) (2025-10-30)
+
+### Bug Fixes
+
+- **plugin-icon:** fix import path in config file ([8885581](https://github.com/vuepress/ecosystem/commit/88855811ee2a2d01a63b2047f444597c77c8760a))
+
+# [2.0.0-rc.116](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.115...v2.0.0-rc.116) (2025-10-30)
+
+### Bug Fixes
+
+- **plugin-docsearch:** fix issues with deprecated indexName options ([f1b63d5](https://github.com/vuepress/ecosystem/commit/f1b63d51bc55a4fc3365410d24bf6daca8a540e1))
+- **plugin-pwa:** fix wrong import in custom popups ([a1850f5](https://github.com/vuepress/ecosystem/commit/a1850f5d6fc9e8af2603aa80f2e306c700d1cd0f))
+
+# [2.0.0-rc.115](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.114...v2.0.0-rc.115) (2025-10-20)
+
+### Bug Fixes
+
+- **plugin-docsearch:** fix facetFilters ([226c704](https://github.com/vuepress/ecosystem/commit/226c70430e1eacd2040e4f82be541aeabdcd483f))
+- **plugin-docsearch:** fix searchbox template ([6043660](https://github.com/vuepress/ecosystem/commit/60436608808a5da19f2242ada8708a81ce4cd982))
+
+### Features
+
+- **helper:** improve env ([#567](https://github.com/vuepress/ecosystem/issues/567)) ([0217b03](https://github.com/vuepress/ecosystem/commit/0217b03fba98aacdfa08bd224eb2c58e1327310c))
+
 # [2.0.0-rc.114](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.113...v2.0.0-rc.114) (2025-10-15)
 
 **Note:** Version bump only for package @vuepress/ecosystem

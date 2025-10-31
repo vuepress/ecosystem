@@ -16,7 +16,7 @@ This plugin allows you to use `mathjax` or `katex` to render $\TeX$ in your mark
 npm i -D @vuepress/plugin-markdown-math@next
 
 # install one of the following packages:
-npm i -D mathjax-full
+npm i -D @mathjax/src
 npm i -D katex
 ```
 
