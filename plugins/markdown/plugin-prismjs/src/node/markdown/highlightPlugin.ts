@@ -149,7 +149,7 @@ export const highlightPlugin = (
       // remove the default `language-${ext}` class
       .replace(/<code[^]*?>/, '<code>')
 
-    const parser = getCodeParser(code)
+    const parser = getCodeParser(code, language.name)
 
     if (highlightLines) {
       highlightCodeLines(parser, getHighlightLinesRange(info))

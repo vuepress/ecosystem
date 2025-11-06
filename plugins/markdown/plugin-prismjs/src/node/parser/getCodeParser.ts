@@ -30,6 +30,7 @@ export interface OpenTag {
 type LineHandler = (node: OpenTag, index: number) => void
 
 export interface CodeParser {
+  lang: string
   pre: OpenTag
   code: OpenTag
   lines: OpenTag[]
@@ -112,7 +113,7 @@ const createOpenTag = (
  * })
  * ```
  */
-export const getCodeParser = (html: string): CodeParser => {
+export const getCodeParser = (html: string, lang = ''): CodeParser => {
   let content = html
   const preOpen = html.match(PRE_OPEN_TAG_RE)?.[1] ?? ''
 
@@ -141,7 +142,7 @@ export const getCodeParser = (html: string): CodeParser => {
   const stringify = (): string => {
     const linesContent = lineNodeList.map((line, index) => {
       lineNodeHandlers.forEach((handler) => {
-        handler(line, index + 1)
+        handler(line, index)
       })
       line.content = line.content.replace(CODE_ESCAPE_RE, '[!code')
 
@@ -157,6 +158,7 @@ export const getCodeParser = (html: string): CodeParser => {
   }
 
   return {
+    lang,
     pre: preOpenTag,
     code: codeOpenTag,
     lines: lineNodeList,
