@@ -2,24 +2,20 @@ import { getFullLocaleConfig } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 
 import { vidstackLocaleInfo } from './locales/index.js'
-import type { ComponentPluginOptions } from './options/index.js'
+import type { MediaPluginOptions } from './options.js'
 import { isInstalled } from './utils.js'
 
 export const getDefine =
-  ({
-    components = [],
-    componentOptions = {},
-    locales = {},
-  }: ComponentPluginOptions): ((app: App) => Record<string, unknown>) =>
+  (options: MediaPluginOptions): ((app: App) => Record<string, unknown>) =>
   (app) => {
     const result: Record<string, unknown> = {}
 
-    if (components.includes('ArtPlayer') || components.includes('VidStack')) {
+    if (options.artplayer || options.vidstack) {
       result.DASHJS_INSTALLED = isInstalled('dashjs')
       result.HLS_JS_INSTALLED = isInstalled('hls.js')
     }
 
-    if (components.includes('ArtPlayer')) {
+    if (options.artplayer) {
       result.ART_PLAYER_OPTIONS = {
         fullscreen: true,
         playbackRate: true,
@@ -29,7 +25,7 @@ export const getDefine =
       result.MPEGTS_JS_INSTALLED = isInstalled('mpegts.js')
     }
 
-    if (components.includes('PDF')) {
+    if (options.pdf) {
       result.PDF_LOCALES = getFullLocaleConfig({
         app,
         name: 'pdf',
@@ -44,7 +40,7 @@ export const getDefine =
             : 'https://theme-hope-assets.vuejs.press/pdfjs/'
     }
 
-    if (components.includes('VidStack'))
+    if (options.vidstack)
       result.VIDSTACK_LOCALES = getFullLocaleConfig({
         app,
         name: 'vidstack',
