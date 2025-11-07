@@ -75,7 +75,7 @@ export const highlightCodeLines = (
 ): void => {
   if (ranges?.length) {
     parser.line((node, index) => {
-      if (isLineHighlighted(index, ranges)) {
+      if (isLineHighlighted(index + 1, ranges)) {
         node.classList.push('highlighted')
       }
     })

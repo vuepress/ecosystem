@@ -27,11 +27,12 @@ const toArray = <T>(value: T | T[]): T[] =>
 export interface NotationCommentMarkerOption {
   classMap: Record<string, string[] | string>
   classPre?: string
+  notation?: string
 }
 
 const createNotationCommentMarkerRule = (
   parser: CodeParser,
-  { classMap, classPre }: NotationCommentMarkerOption,
+  { classMap, classPre, notation }: NotationCommentMarkerOption,
 ): void => {
   const marker = Object.keys(classMap).map(escapeRegExp).join('|')
   createNotationRule(
@@ -43,8 +44,21 @@ const createNotationCommentMarkerRule = (
     ([, match, range = ':1'], index): boolean => {
       const lineNum = Number.parseInt(range.slice(1), 10)
 
-      parser.lines.slice(index, index + lineNum).forEach((node) => {
-        node.classList.push(...toArray(classMap[match]))
+      parser.line((line, i) => {
+        if (i < index || i >= index + lineNum) return
+
+        line.classList.push(...toArray(classMap[match]))
+
+        // fix https://github.com/vuepress/ecosystem/issues/569
+        // Only the focus issue within the diff code blocks has been fixed here.
+        // In reality, other notations in diff code blocks have similar problems.
+        // However, because prismjs does not properly handle lines when processing inserted/deleted content in diff code blocks, the performance of other notations is quite poor.
+        if (parser.lang === 'diff' && notation === 'focus') {
+          line.content = line.content.replaceAll(
+            'class="',
+            `class="${toArray(classMap[match]).join(' ')} `,
+          )
+        }
       })
       if (classPre) {
         parser.pre.classList.push(classPre)
@@ -66,6 +80,7 @@ const createNotationCommentMarkerRule = (
  */
 export const notationHighlight = (parser: CodeParser): void => {
   createNotationCommentMarkerRule(parser, {
+    notation: 'highlight',
     classMap: {
       highlight: 'highlighted',
       hl: 'highlighted',
@@ -85,6 +100,7 @@ export const notationHighlight = (parser: CodeParser): void => {
  */
 export const notationFocus = (parser: CodeParser): void => {
   createNotationCommentMarkerRule(parser, {
+    notation: 'focus',
     classMap: {
       focus: 'has-focus',
     },
@@ -103,6 +119,7 @@ export const notationFocus = (parser: CodeParser): void => {
  */
 export const notationDiff = (parser: CodeParser): void => {
   createNotationCommentMarkerRule(parser, {
+    notation: 'diff',
     classMap: {
       '++': 'diff add',
       '--': 'diff remove',
@@ -122,6 +139,7 @@ export const notationDiff = (parser: CodeParser): void => {
  */
 export const notationErrorLevel = (parser: CodeParser): void => {
   createNotationCommentMarkerRule(parser, {
+    notation: 'error',
     classMap: {
       error: ['highlighted', 'error'],
       warning: ['highlighted', 'warning'],
