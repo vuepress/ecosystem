@@ -1,0 +1,161 @@
+---
+url: /ecosystem/plugins/markdown/markdown-chart/echarts.md
+---
+# ECharts
+
+Add [ECharts][] support to the Markdown files in your VuePress site.
+
+[echarts]: https://echarts.apache.org/en/index.html
+
+## Installation
+
+Install [ECharts][] in your project:
+
+::: code-tabs#shell
+
+@tab pnpm
+
+```bash
+pnpm add -D echarts
+```
+
+@tab yarn
+
+```bash
+yarn add -D echarts
+```
+
+@tab npm
+
+```bash
+npm i -D echarts
+```
+
+:::
+
+Then enable it via:
+
+```ts {7} title=".vuepress/config.ts"
+import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
+
+export default {
+  plugins: [
+    markdownChartPlugin({
+      // Enable ECharts
+      echarts: true,
+    }),
+  ],
+}
+```
+
+## Syntax
+
+### With JSON
+
+If you can generate your chart data easily, you can just provide echarts config using JSON code block:
+
+````md
+::: echarts Title
+
+```json
+{
+  // Your echarts config here.
+}
+```
+
+:::
+````
+
+### With Scripts
+
+If you need to use script to get the data, you can use `js` or `javascript` code block.
+
+We will expose the echarts instance as `echarts` in the script, and you are expected to assign the echarts option object to `option` variable. Also, you can assign `width` and `height` variable to set the chart size.
+
+````md
+::: echarts Title
+
+```js
+const option = {
+  // Your echarts config here.
+}
+```
+
+:::
+````
+
+::: tip
+
+You can use top-level await and `fetch` to get data from network requests.
+
+:::
+
+## Advanced
+
+You can import and call `defineEChartsConfig` in [client config file][client-config] to customize echarts.
+
+```ts title=".vuepress/client.ts"
+import { defineEChartsConfig } from '@vuepress/plugin-markdown-chart/client'
+
+defineEChartsConfig({
+  options: {
+    // global echarts options
+  },
+  setup: async () => {
+    // echarts setup
+    // e.g.: await import("echarts-wordcloud")
+  },
+})
+```
+
+## Docs
+
+For details, please see [ECharts Docs](https://echarts.apache.org/handbook/en/get-started/).
+
+## Demo
+
+:::: preview Line Chart
+
+::::
+
+:::: preview Bar Chart
+
+::::
+
+:::: preview Pie Chart
+
+::::
+
+:::: preview Scatter Chart
+
+::::
+
+:::: preview Polar Chart
+
+::::
+
+:::: preview Candlestick Chart
+
+::::
+
+:::: preview Radar Chart
+
+::::
+
+:::: preview Heat Map
+
+::::
+
+:::: preview Tree Chart
+
+::::
+
+:::: preview Multiple Chart
+
+::::
+
+:::: preview WordCloud (with setup function)
+
+::::
+
+[client-config]: https://vuejs.press/guide/configuration.html#client-config-file
