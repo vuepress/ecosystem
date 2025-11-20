@@ -1,10 +1,15 @@
 import type { MathjaxInstance } from '@mdit/plugin-mathjax-slim'
 import type { App } from 'vuepress/core'
 
-// Prevent mathjax breaking mobile layout
+// 1. prevent mathjax breaking mobile layout
+// 2. hide assistive mml
 const MATHJAX_STYLE_PATCH = `\
 mjx-container {
   overflow: auto hidden;
+}
+
+mjx-assistive-mml {
+  display: none;
 }
 `
 
