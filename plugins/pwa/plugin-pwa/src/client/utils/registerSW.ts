@@ -36,11 +36,9 @@ export const registerSW = async (
       hooks.cached?.(registration)
     },
 
-    async updatefound(registration) {
-      if (await navigator.serviceWorker.getRegistration()) {
-        if (showStatus) console.log('[Service Worker]: update found')
-        hooks.updatefound?.(registration)
-      }
+    updatefound(registration) {
+      if (showStatus) console.log('[Service Worker]: update found')
+      hooks.updatefound?.(registration)
     },
 
     updated(registration) {
