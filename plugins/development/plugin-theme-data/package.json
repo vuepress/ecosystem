@@ -38,7 +38,7 @@
     "copy": "cpx \"src/**/*.d.ts\" lib"
   },
   "dependencies": {
-    "@vue/devtools-api": "^8.0.3",
+    "@vue/devtools-api": "^8.0.5",
     "vue": "catalog:"
   },
   "peerDependencies": {

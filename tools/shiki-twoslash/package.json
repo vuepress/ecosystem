@@ -41,7 +41,7 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@shikijs/twoslash": "^3.14.0",
+    "@shikijs/twoslash": "^3.15.0",
     "@vuepress/helper": "workspace:*",
     "floating-vue": "^5.2.2",
     "mdast-util-from-markdown": "^2.0.2",
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@types/hast": "^3.0.4",
-    "shiki": "^3.14.0",
+    "shiki": "^3.15.0",
     "vue": "catalog:"
   },
   "peerDependencies": {
