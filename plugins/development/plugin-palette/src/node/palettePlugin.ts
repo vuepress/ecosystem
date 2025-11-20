@@ -1,3 +1,4 @@
+import { addViteConfig, chainWebpack } from '@vuepress/helper'
 import { watch } from 'chokidar'
 import type { Plugin } from 'vuepress/core'
 import { preparePaletteFile } from './preparePaletteFile.js'
@@ -89,6 +90,42 @@ export const palettePlugin = ({
     '@vuepress/plugin-palette/palette': app.dir.temp(tempPaletteFile),
     '@vuepress/plugin-palette/style': app.dir.temp(tempStyleFile),
   }),
+
+  extendsBundlerOptions: (bundlerOptions, app) => {
+    if (preset !== 'sass') return
+
+    // silent import deprecation for vite
+    addViteConfig(bundlerOptions, app, {
+      css: {
+        preprocessorOptions: {
+          sass: {
+            silenceDeprecations: ['import'],
+          },
+          scss: {
+            silenceDeprecations: ['import'],
+          },
+        },
+      },
+    })
+    // silent import deprecation for webpack
+    chainWebpack(bundlerOptions, app, (webpackOptions) => {
+      webpackOptions.module
+        .rule('scss')
+        .use('sass-loader')
+        .tap((loaderOptions) => ({
+          ...loaderOptions,
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+          sassOptions: {
+            ...loaderOptions.sassOptions,
+            silenceDeprecations: [
+              'import',
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+              ...(loaderOptions.sassOptions?.silenceDeprecations ?? []),
+            ],
+          },
+        }))
+    })
+  },
 
   onPrepared: async (app) => {
     await Promise.all([
