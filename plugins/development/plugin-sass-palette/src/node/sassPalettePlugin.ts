@@ -89,7 +89,7 @@ export const sassPalettePlugin =
       },
 
       extendsBundlerOptions: (bundlerOptions: unknown): void => {
-        // switch to modern api and silent import deprecation for vite
+        // silent import deprecation for vite
         addViteConfig(bundlerOptions, app, {
           css: {
             preprocessorOptions: {
