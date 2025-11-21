@@ -18,7 +18,7 @@ import {
   shallowRef,
   watch,
 } from 'vue'
-import { useSiteLocale } from 'vuepress/client'
+import { useLang, useSiteLocale } from 'vuepress/client'
 
 import {
   useActiveState,
@@ -54,6 +54,7 @@ export default defineComponent({
   name: 'SearchModal',
 
   setup() {
+    const lang = useLang()
     const locale = useLocale(locales)
     const siteLocale = useSiteLocale()
     const searchOptions = useSearchOptions()
@@ -111,13 +112,13 @@ export default defineComponent({
     watchImmediate(
       input,
       useDebounceFn(
-        () =>
-          (
-            searchOptions.value.querySplitter?.(input.value) ??
-            Promise.resolve(defaultQuerySplitter(input.value))
-          ).then((result) => {
-            queries.value = result.filter((item) => item.length)
-          }),
+        async () => {
+          const result = await (
+            searchOptions.value.querySplitter ?? defaultQuerySplitter
+          )(input.value, lang.value)
+
+          queries.value = result.filter((item) => item.length)
+        },
         Math.min(options.searchDelay, options.suggestDelay),
       ),
     )

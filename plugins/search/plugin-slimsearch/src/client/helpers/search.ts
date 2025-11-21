@@ -11,7 +11,7 @@ declare const __VUEPRESS_DEV__: boolean
 
 export interface SearchLocaleOptions extends WorkerSearchOptions {
   /** A function to split words */
-  querySplitter?: (query: string) => Promise<string[]>
+  querySplitter?: (query: string, lang: string) => Promise<string[]>
 
   /** A function to filter suggestions */
   suggestionsFilter?: (
