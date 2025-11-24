@@ -65,7 +65,13 @@ export default {
 :::
 ````
 
-同时支持 `js` 和 `javascript` 代码块。对于这些，你应该将导出对象赋值给 `module.exports`。
+你应该尽可能使用 `json` 代码块来提供你的图表数据配置，但如果需要动态生成数据，你也可以使用脚本块。`js` 或 `javascript` 代码块均受支持。你应当将导出的对象赋值给 `module.exports`。
+
+::: warning
+
+出于安全考虑，你需要手动允许特定文件中的脚本块。请在插件选项中设置 `DANGEROUS_ALLOW_SCRIPT_EXECUTION: true` 和 `DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST: ['your/file/path.md']`。
+
+:::
 
 ## 案例
 
