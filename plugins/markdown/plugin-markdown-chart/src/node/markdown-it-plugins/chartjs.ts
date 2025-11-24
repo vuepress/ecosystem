@@ -6,6 +6,7 @@ import { colors } from 'vuepress/utils'
 export interface ChartJSPluginOptions {
   /**
    * Allow executing custom scripts inside Chart.js blocks.
+   *
    * 允许在 Chart.js 块内执行自定义脚本。
    *
    * @default false
@@ -14,6 +15,7 @@ export interface ChartJSPluginOptions {
 
   /**
    * Allow all scripts to be executed inside Chart.js blocks.
+   *
    * 允许在 Chart.js 块内执行所有脚本。
    *
    * @default false
@@ -22,9 +24,12 @@ export interface ChartJSPluginOptions {
 
   /**
    * List of files allowed to execute scripts inside Chart.js blocks.
+   *
    * 允许在 Chart.js 块内执行脚本的文件列表。
+   *
+   * @default new Set()
    */
-  allowList: Set<string>
+  allowList?: Set<string>
 }
 
 /**

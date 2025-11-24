@@ -25,6 +25,7 @@ export interface EChartsPluginOptions {
 
   /**
    * Allow all scripts to be executed inside ECharts blocks.
+   *
    * 允许在 ECharts 块内执行所有脚本。
    *
    * @default false
@@ -33,7 +34,10 @@ export interface EChartsPluginOptions {
 
   /**
    * List of files allowed to execute scripts inside ECharts blocks.
+   *
    * 允许在 ECharts 块内执行脚本的文件列表。
+   *
+   * @default new Set()
    */
   allowList?: Set<string>
 }

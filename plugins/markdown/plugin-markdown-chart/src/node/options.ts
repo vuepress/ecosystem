@@ -73,7 +73,7 @@ export interface MarkdownChartPluginOptions {
    *
    * 允许执行图表脚本的源文件列表（允许清单）。
    *
-   * Only effective when `DANGEROUS_ALLOW_SCRIPT_EXECUTION` is set; paths must match real files.
+   * @description Only effective when `DANGEROUS_ALLOW_SCRIPT_EXECUTION` is set; paths must match real files.
    *
    * 仅在 `DANGEROUS_ALLOW_SCRIPT_EXECUTION` 被设置后生效；路径需与实际文件匹配。
    */
