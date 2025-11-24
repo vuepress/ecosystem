@@ -4,7 +4,10 @@ import { describe, expect, it } from 'vitest'
 import { echarts } from '../../src/node/markdown-it-plugins/echarts.js'
 
 describe('echarts', () => {
-  const markdownIt = MarkdownIt({ linkify: true }).use(echarts)
+  const markdownIt = MarkdownIt({ linkify: true }).use(echarts, {
+    allowScripts: true,
+    allowAll: true,
+  })
 
   it('Should resolve echarts container with json block', () => {
     const result = markdownIt.render(
@@ -181,5 +184,41 @@ const a = 1;
 
     expect(result).toMatch(/<pre.*>[\s\S]*<\/pre>/)
     expect(result).toMatchSnapshot()
+  })
+
+  it('Should remove unsafe script block by default', () => {
+    const md = MarkdownIt({ linkify: true }).use(echarts)
+
+    const result = md.render(
+      `
+::: echarts A bar chart
+
+\`\`\`js
+const option = {
+  xAxis: {
+    type: "category",
+    data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+  },
+  yAxis: {
+    type: "value",
+  },
+  series: [
+    {
+      data: [150, 230, 224, 218, 135, 147, 260],
+      type: "line",
+    },
+  ],
+  tooltip: {
+    trigger: "axis",
+  },
+};
+\`\`\`
+
+:::
+`,
+      {},
+    )
+
+    expect(result).toMatch('')
   })
 })

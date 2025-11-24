@@ -24,16 +24,16 @@ export interface EChartsPluginOptions {
   allowScripts?: boolean
 
   /**
-   * Allow all scripts to be executed inside Echarts blocks.
-   * 允许在 Echarts 块内执行所有脚本。
+   * Allow all scripts to be executed inside ECharts blocks.
+   * 允许在 ECharts 块内执行所有脚本。
    *
    * @default false
    */
   allowAll?: boolean
 
   /**
-   * List of files allowed to execute scripts inside Echarts blocks.
-   * 允许在 Echarts 块内执行脚本的文件列表。
+   * List of files allowed to execute scripts inside ECharts blocks.
+   * 允许在 ECharts 块内执行脚本的文件列表。
    */
   allowList?: Set<string>
 }
@@ -47,7 +47,7 @@ export const echarts: PluginWithOptions<EChartsPluginOptions> = (
   md,
   options,
 ) => {
-  const { allowScripts, allowAll, allowList = new Set() } = options!
+  const { allowScripts, allowAll, allowList = new Set() } = options ?? {}
 
   // Handle ```echarts blocks
   const { fence } = md.renderer.rules
@@ -89,8 +89,8 @@ export const echarts: PluginWithOptions<EChartsPluginOptions> = (
             // eslint-disable-next-line no-console
             console.warn(
               `\
-${colors.magenta('[echarts]')}: JavaScript in echarts block is found in ${colors.cyan(filePathRelative)}, ${colors.red("it's ignored for security reasons")}.
-To enable the chart, you must manually add it to allowlist, see https://vuepress.vuejs.org/plugin/markdown/markdown-charts/echarts.html for details.
+${colors.magenta('[echarts]')}: JavaScript in echarts block is found in ${colors.cyan(filePathRelative)}, ${colors.red('it is ignored for security reasons')}.
+To enable the chart, you must manually add it to allowlist, see https://vuepress.vuejs.org/plugin/markdown/markdown-chart/echarts.html for details.
 `,
             )
             tokens[i].hidden = true

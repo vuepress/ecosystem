@@ -36,7 +36,7 @@ export const chartjs: PluginWithOptions<ChartJSPluginOptions> = (
   md,
   options,
 ) => {
-  const { allowScripts, allowAll, allowList = new Set() } = options!
+  const { allowScripts, allowAll, allowList = new Set() } = options ?? {}
 
   container(md, {
     name: 'chartjs',
@@ -62,8 +62,8 @@ export const chartjs: PluginWithOptions<ChartJSPluginOptions> = (
             // eslint-disable-next-line no-console
             console.warn(
               `\
-${colors.magenta('chartjs')}: JavaScript in echarts block is found in ${colors.cyan(filePathRelative)}, ${colors.red("it's ignored for security reasons")}.
-To enable the chart, you must manually add it to allowlist, see https://vuepress.vuejs.org/plugin/markdown/markdown-charts/echarts.html for details.
+${colors.magenta('chartjs')}: JavaScript in Chart.js block is found in ${colors.cyan(filePathRelative)}, ${colors.red('it is ignored for security reasons')}.
+To enable the chart, you must manually add it to allowlist, see https://vuepress.vuejs.org/plugin/markdown/markdown-charts/chartjs.html for details.
 `,
             )
             tokens[i].hidden = true
@@ -94,8 +94,8 @@ To enable the chart, you must manually add it to allowlist, see https://vuepress
         return ''
       }
 
-      return `<ChartJS config="${config}" ${
-        title ? `title="${encodeURIComponent(title)}" ` : ''
+      return `<ChartJS config="${config}"${
+        title ? ` title="${encodeURIComponent(title)}"` : ''
       }${isJavaScript ? ' type="js"' : ''}>`
     },
     closeRender: (tokens, index) => (tokens[index].hidden ? '' : '</ChartJS>'),

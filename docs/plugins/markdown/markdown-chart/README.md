@@ -135,4 +135,4 @@ export default {
 
 - Type: `string[] | '*'`
 - Default: `[]`
-- Details: A list of sources files that script execution is enabled. Use `'*'` to allow all source files.
+- Details: Only effective when `DANGEROUS_ALLOW_SCRIPT_EXECUTION` is enabled. A list of file paths allowed to execute chart scripts. Use `'*'` to allow all files.
