@@ -43,7 +43,7 @@
   "dependencies": {
     "@vuepress/helper": "workspace:*",
     "magic-string": "^0.30.21",
-    "unplugin": "^2.3.10"
+    "unplugin": "^2.3.11"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

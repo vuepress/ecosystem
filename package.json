@@ -39,7 +39,7 @@
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@types/node": "^24.10.1",
     "@types/webpack-env": "^1.18.8",
-    "@vitest/coverage-istanbul": "4.0.10",
+    "@vitest/coverage-istanbul": "4.0.13",
     "cpx2": "^8.0.0",
     "cross-env": "^10.1.0",
     "eslint": "^9.39.1",
@@ -57,17 +57,17 @@
     "rollup-plugin-resolve-shebang": "^1.0.1",
     "sass-embedded": "catalog:",
     "sort-package-json": "^3.4.0",
-    "stylelint": "^16.25.0",
+    "stylelint": "^16.26.0",
     "stylelint-config-hope": "^10.0.0",
     "stylelint-config-html": "^1.1.0",
     "tsconfig-vuepress": "^7.0.0",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "vite": "~7.1.12",
-    "vitest": "4.0.10",
+    "vitest": "4.0.13",
     "vuepress": "catalog:"
   },
-  "packageManager": "pnpm@10.22.0",
+  "packageManager": "pnpm@10.23.0",
   "engines": {
     "node": "^20.19.0 || >= 22.12.0"
   }
