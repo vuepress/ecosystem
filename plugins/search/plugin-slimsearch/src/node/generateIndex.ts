@@ -203,7 +203,16 @@ export const getSearchIndexStore = async (
 
   await Promise.all(
     entries(indexesByLocale).map(async ([localePath, indexes]) => {
+      const lang = app.options.locales[localePath].lang ?? 'en'
+      const tokenizer = new Intl.Segmenter(lang, { granularity: 'word' })
+
       const index = createIndex<string, IndexItem, IndexItem>({
+        tokenize: (text, fieldName) =>
+          fieldName === 'id'
+            ? [text]
+            : [...tokenizer.segment(text)]
+                .map(({ segment }) => segment)
+                .filter((word) => word.trim()),
         ...indexOptions,
         ...indexLocaleOptions?.[localePath],
         fields: [/** Heading */ 'h', /** Text */ 't', /** CustomFields */ 'c'],
