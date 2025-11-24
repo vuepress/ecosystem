@@ -135,4 +135,4 @@ export default {
 
 - Type: `string[] | '*'`
 - Default: `[]`
-- Details: A list of allowed script sources when script execution is enabled. Use `'*'` to allow all sources.
+- Details: A list of sources files that script execution is enabled. Use `'*'` to allow all source files.
