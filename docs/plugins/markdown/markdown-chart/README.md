@@ -125,3 +125,14 @@ export default {
 
 - Type: `boolean | MarkdownItPlantumlOptions[]`
 - Details: Whether to enable PlantUML support. Can accept configuration options for advanced usage.
+
+### DANGEROUS_ALLOW_SCRIPT_EXECUTION
+
+- Type: `boolean`
+- Details: Whether to allow script execution in charts.
+
+### DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST
+
+- Type: `string[] | '*'`
+- Default: `[]`
+- Details: A list of allowed script sources when script execution is enabled. Use `'*'` to allow all sources.
