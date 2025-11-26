@@ -77,8 +77,32 @@ export const markdownChartPlugin =
       name: PLUGIN_NAME,
 
       extendsMarkdown: (md) => {
-        if (status.chartjs) md.use(chartjs)
-        if (status.echarts) md.use(echarts)
+        const {
+          DANGEROUS_ALLOW_SCRIPT_EXECUTION,
+          DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST,
+        } = options
+
+        const scriptOptions = {
+          allowScripts: DANGEROUS_ALLOW_SCRIPT_EXECUTION ?? false,
+          allowAll: DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST === '*',
+          allowList: new Set<string>(
+            isArray(DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST)
+              ? DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST.map((file) => {
+                  const result = file
+                    // normalize `\` to `/` on Windows
+                    .replace(/\\/g, '/')
+                    // remove any leading slash
+                    .replace(/^\//, '')
+
+                  // ensure markdown extension
+                  return result.endsWith('.md') ? result : `${result}.md`
+                })
+              : [],
+          ),
+        }
+
+        if (status.chartjs) md.use(chartjs, scriptOptions)
+        if (status.echarts) md.use(echarts, scriptOptions)
         if (status.flowchart) md.use(flowchart)
         if (isArray(options.plantuml)) md.use(plantuml, options.plantuml)
         else if (options.plantuml) md.use(plantuml)

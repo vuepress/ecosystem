@@ -4,7 +4,10 @@ import { describe, expect, it } from 'vitest'
 import { chartjs } from '../../src/node/markdown-it-plugins/chartjs.js'
 
 describe('chartjs', () => {
-  const markdownIt = MarkdownIt({ linkify: true }).use(chartjs)
+  const markdownIt = MarkdownIt({ linkify: true }).use(chartjs, {
+    allowScripts: true,
+    allowAll: true,
+  })
 
   it('Should resolve chartjs info with json block', () => {
     const result = markdownIt.render(
@@ -57,7 +60,7 @@ describe('chartjs', () => {
 
     expect(result).toMatch(/<ChartJS.*><\/ChartJS>/)
     expect(result).toContain(`title="${encodeURIComponent('A bar chart')}"`)
-    expect(result).toContain('type="json"')
+    expect(result).not.toContain('type="')
     expect(result).toMatchSnapshot()
   })
 
@@ -183,7 +186,7 @@ const config = {
 
     expect(result).toMatch(/<ChartJS.*><\/ChartJS>/)
     expect(result).not.toContain('title="')
-    expect(result).toContain('type=""')
+    expect(result).not.toContain('type="')
     expect(result).toMatchSnapshot()
   })
 
@@ -199,5 +202,59 @@ const a = 1;
 
     expect(result).toMatch(/<pre.*>[\s\S]*<\/pre>/)
     expect(result).toMatchSnapshot()
+  })
+
+  it('Should remove unsafe script block by default', () => {
+    const md = MarkdownIt({ linkify: true }).use(chartjs)
+
+    const result = md.render(
+      `
+::: chartjs A bar chart
+
+\`\`\`js
+const config = {
+  type: "bar",
+  data: {
+    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    datasets: [
+      {
+        label: "# of Votes",
+        data: [12, 19, 3, 5, 2, 3],
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(153, 102, 255, 0.2)",
+          "rgba(255, 159, 64, 0.2)",
+        ],
+        borderColor: [
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)",
+          "rgba(75, 192, 192, 1)",
+          "rgba(153, 102, 255, 1)",
+          "rgba(255, 159, 64, 1)",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+  },
+};
+\`\`\`
+
+:::
+`,
+      {},
+    )
+
+    expect(result).toMatch('')
   })
 })

@@ -1,6 +1,7 @@
 import { LoadingIcon, decodeData } from '@vuepress/helper/client'
 import { useDebounceFn, useEventListener } from '@vueuse/core'
 import type { EChartsOption, EChartsType } from 'echarts'
+import type * as ECharts from 'echarts'
 import type { PropType, VNode } from 'vue'
 import {
   defineComponent,
@@ -29,12 +30,14 @@ const AsyncFunction = (async (): Promise<void> => {}).constructor
 const parseEChartsConfig = (
   config: string,
   type: 'js' | 'json',
+  echarts: typeof ECharts,
   instance: EChartsType,
 ): Promise<EChartsConfig> => {
   if (type === 'js') {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
     const runner = AsyncFunction(
       'echarts',
+      'myChart',
       `\
 let width,height,option,__echarts_config__;
 {
@@ -46,7 +49,7 @@ return __echarts_config__;
     )
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    return runner(instance) as Promise<EChartsConfig>
+    return runner(echarts, instance) as Promise<EChartsConfig>
   }
 
   return Promise.resolve({ option: JSON.parse(config) as EChartsOption })
@@ -99,12 +102,12 @@ export default defineComponent({
       }, 100),
     )
 
-    const destroyEcharts = (): void => {
+    const destroyECharts = (): void => {
       instance?.dispose()
       instance = null
     }
 
-    const renderEcharts = async (): Promise<void> => {
+    const renderECharts = async (): Promise<void> => {
       if (__VUEPRESS_SSR__) return
 
       const echarts = await import(/* webpackChunkName: "echarts" */ 'echarts')
@@ -116,6 +119,7 @@ export default defineComponent({
       const { option, ...size } = await parseEChartsConfig(
         decodeData(props.config),
         props.type,
+        echarts,
         instance,
       )
 
@@ -125,7 +129,7 @@ export default defineComponent({
 
     onContentUpdated(async (reason) => {
       if (reason === 'mounted') {
-        await renderEcharts()
+        await renderECharts()
         loaded.value = true
       }
     })
@@ -137,15 +141,15 @@ export default defineComponent({
       watch(
         () => props.config,
         async () => {
-          destroyEcharts()
+          destroyECharts()
           await nextTick()
-          await renderEcharts()
+          await renderECharts()
         },
         { flush: 'post' },
       )
     })
 
-    onUnmounted(destroyEcharts)
+    onUnmounted(destroyECharts)
 
     return (): (VNode | null)[] => [
       props.title

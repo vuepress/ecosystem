@@ -52,6 +52,11 @@ export const plugins = [
     markmap: true,
     mermaid: true,
     plantuml: true,
+    DANGEROUS_ALLOW_SCRIPT_EXECUTION: true,
+    DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST: [
+      'plugins/markdown/markdown-chart/echarts',
+      'zh/plugins/markdown/markdown-chart/echarts',
+    ],
   }),
   markdownExtPlugin({
     gfm: true,

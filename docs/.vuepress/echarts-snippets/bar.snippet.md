@@ -60,13 +60,13 @@ const run = () => {
   for (let i = 0; i < data.length; i++)
     data[i] += Math.round(Math.random() * Math.random() > 0.9 ? 2000 : 200)
 
-  echarts.setOption({
+  myChart.setOption({
     series: [{ type: 'bar', data }],
   })
 }
 
 const timeId = setInterval(() => {
-  if (echarts._disposed) {
+  if (myChart._disposed) {
     clearInterval(timeId)
 
     return

@@ -65,7 +65,13 @@ export default {
 :::
 ````
 
-Both `js` and `javascript` code blocks are also supported. For these, you should assign your export object to `module.exports`.
+You should use `json` code block to provide your Chart.js configuration whenever possible, however for dynamic data generation, you can also use script blocks. Both `js` and `javascript` code blocks are also supported. You should assign your export object to `module.exports`.
+
+::: warning
+
+For security reasons, you need to manually allow script blocks in certain files. Set `DANGEROUS_ALLOW_SCRIPT_EXECUTION: true` and `DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST: ['your/file/path.md']` in plugin options.
+
+:::
 
 ## Demo
 
