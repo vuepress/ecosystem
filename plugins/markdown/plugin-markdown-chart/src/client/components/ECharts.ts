@@ -112,7 +112,10 @@ export default defineComponent({
 
       const echarts = await import(/* webpackChunkName: "echarts" */ 'echarts')
 
-      await echartsConfig.setup?.()
+      if (!echartsConfig.isSetup) {
+        await echartsConfig.setup?.()
+        echartsConfig.isSetup = true
+      }
 
       instance = echarts.init(echartsContainer.value)
 

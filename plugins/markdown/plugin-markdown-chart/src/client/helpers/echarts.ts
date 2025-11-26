@@ -14,6 +14,13 @@ export interface EChartsConfig {
    * ECharts 初始化函数
    */
   setup?: () => Promise<void>
+
+  /**
+   * Whether ECharts has been set up
+   *
+   * ECharts 是否已初始化
+   */
+  isSetup?: boolean
 }
 
 let echartsConfig: EChartsConfig = {}
