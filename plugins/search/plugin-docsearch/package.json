@@ -49,7 +49,7 @@
     "vue": "catalog:"
   },
   "devDependencies": {
-    "algoliasearch": "5.44.0"
+    "algoliasearch": "5.45.0"
   },
   "peerDependencies": {
     "vuepress": "catalog:"
