@@ -13,8 +13,7 @@ export type BuiltInIcon = 'fontawesome-with-brands' | 'fontawesome' | 'iconify'
  * 图标链接类型
  */
 export type IconLink =
-  | `//${string}`
-  | `/${string}`
+  | `/${string}` // including `//${string}`
   | `http://${string}`
   | `https://${string}`
 

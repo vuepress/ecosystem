@@ -104,9 +104,9 @@ export default defineComponent({
       Boolean(
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         giscusOptions.value.repo &&
-          giscusOptions.value.repoId &&
-          giscusOptions.value.category &&
-          giscusOptions.value.categoryId,
+        giscusOptions.value.repoId &&
+        giscusOptions.value.category &&
+        giscusOptions.value.categoryId,
       ),
     )
 

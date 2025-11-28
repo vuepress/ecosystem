@@ -69,8 +69,7 @@ export type RenderPlaceFunction = (info: string) => string
  *
  * @vuepress/plugin-markdown-container 的配置项
  */
-export interface MarkdownContainerPluginOptions
-  extends MarkdownItContainerOptions {
+export interface MarkdownContainerPluginOptions extends MarkdownItContainerOptions {
   /**
    * The type of the container
    *

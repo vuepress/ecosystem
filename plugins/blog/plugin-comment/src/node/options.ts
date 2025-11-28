@@ -13,8 +13,10 @@ import type {
  *
  * Artalk 评论插件选项
  */
-export interface ArtalkPluginOptions
-  extends Omit<Partial<ArtalkOptions>, 'avatarURLBuilder' | 'imgUploader'> {
+export interface ArtalkPluginOptions extends Omit<
+  Partial<ArtalkOptions>,
+  'avatarURLBuilder' | 'imgUploader'
+> {
   provider: 'Artalk'
 }
 
@@ -41,11 +43,10 @@ export interface TwikooPluginOptions extends Partial<TwikooOptions> {
  *
  * Waline 评论插件选项
  */
-export interface WalinePluginOptions
-  extends Omit<
-    Partial<WalineOptions>,
-    'highlighter' | 'imageUploader' | 'search' | 'texRenderer'
-  > {
+export interface WalinePluginOptions extends Omit<
+  Partial<WalineOptions>,
+  'highlighter' | 'imageUploader' | 'search' | 'texRenderer'
+> {
   provider: 'Waline'
 
   /**

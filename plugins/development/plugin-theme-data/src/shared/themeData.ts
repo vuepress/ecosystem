@@ -5,7 +5,10 @@ import type { LocaleConfig, LocaleData } from 'vuepress/shared'
  *
  * 支持多语言的主题数据
  */
-export type ThemeData<T extends LocaleData = LocaleData> = T & {
+export type ThemeData<T extends LocaleData = LocaleData> = Omit<
+  T,
+  'locales'
+> & {
   /**
    * Locale configurations
    *

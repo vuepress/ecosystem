@@ -17,8 +17,9 @@ const cleanMarkdown: Plugin = () => (tree) => {
 
 const remarkInstance = remark().use(cleanMarkdown)
 
-interface ResolveLLMPagesOptions
-  extends Required<Pick<LlmsPluginOptions, 'filter' | 'stripHTML'>> {
+interface ResolveLLMPagesOptions extends Required<
+  Pick<LlmsPluginOptions, 'filter' | 'stripHTML'>
+> {
   currentLocale: string
 }
 

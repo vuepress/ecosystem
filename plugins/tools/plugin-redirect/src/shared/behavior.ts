@@ -42,8 +42,7 @@ export interface RedirectBehaviorOptions {
   defaultLocale?: string
 }
 
-export interface RedirectBehaviorConfig
-  extends Required<RedirectBehaviorOptions> {
+export interface RedirectBehaviorConfig extends Required<RedirectBehaviorOptions> {
   /**
    * Locale language config
    *

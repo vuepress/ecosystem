@@ -14,7 +14,8 @@ export type WalineLocaleData = Partial<WalineLocale>
  * Waline 评论选项
  */
 export interface WalineOptions
-  extends BaseCommentPluginOptions,
+  extends
+    BaseCommentPluginOptions,
     Omit<WalineInitOptions, 'comment' | 'el' | 'locale'> {
   /**
    * Whether enable page views count by default

@@ -41,7 +41,7 @@ export interface DefaultThemeLocaleData extends LocaleData {
    *
    * Set to `false` to disable navbar in current locale
    */
-  navbar?: NavbarOptions | false
+  navbar?: NavbarOptions
 
   /**
    * Navbar label used for screen readers using the `aria-label` attribute

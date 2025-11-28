@@ -538,11 +538,10 @@ terminate()
 为了提供更准确的搜索查询、建议和结果，我们额外提供了 `querySplitter` `suggestionsFilter` 和 `resultsFilter` 选项，你可以为特定或所有语言设定它们：
 
 ```ts
-interface SearchLocaleOptions
-  extends Omit<
-    SearchOptions,
-    'boostDocument' | 'fields' | 'filter' | 'processTerm' | 'tokenize'
-  > {
+interface SearchLocaleOptions extends Omit<
+  SearchOptions,
+  'boostDocument' | 'fields' | 'filter' | 'processTerm' | 'tokenize'
+> {
   /** 分词器 */
   querySplitter?: (query: string) => Promise<string[]>
 

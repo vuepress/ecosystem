@@ -15,37 +15,33 @@ import type {
 } from '../../shared/index.js'
 
 export interface Data<
-  PageFrontmatter extends Record<
-    string,
-    unknown
-  > = DefaultThemeNormalPageFrontmatter,
+  PageFrontmatter extends Record<string, unknown> =
+    DefaultThemeNormalPageFrontmatter,
   PageData extends Record<string, unknown> = DefaultThemePageData,
 > extends Pick<
-    ClientData<PageFrontmatter, PageData>,
-    | 'frontmatter'
-    | 'head'
-    | 'headTitle'
-    | 'lang'
-    | 'layouts'
-    | 'page'
-    | 'pageComponent'
-    | 'pageLayout'
-    | 'redirects'
-    | 'routeLocale'
-    | 'routePath'
-    | 'routes'
-    | 'site'
-    | 'siteLocale'
-  > {
+  ClientData<PageFrontmatter, PageData>,
+  | 'frontmatter'
+  | 'head'
+  | 'headTitle'
+  | 'lang'
+  | 'layouts'
+  | 'page'
+  | 'pageComponent'
+  | 'pageLayout'
+  | 'redirects'
+  | 'routeLocale'
+  | 'routePath'
+  | 'routes'
+  | 'site'
+  | 'siteLocale'
+> {
   theme: ThemeDataRef<DefaultThemeData>
   themeLocale: ThemeLocaleDataRef<DefaultThemeData>
 }
 
 export const useData = <
-  PageFrontmatter extends Record<
-    string,
-    unknown
-  > = DefaultThemeNormalPageFrontmatter,
+  PageFrontmatter extends Record<string, unknown> =
+    DefaultThemeNormalPageFrontmatter,
   PageData extends Record<string, unknown> = DefaultThemePageData,
 >(): Data<PageFrontmatter, PageData> => ({
   ..._useData<PageFrontmatter, PageData>(),

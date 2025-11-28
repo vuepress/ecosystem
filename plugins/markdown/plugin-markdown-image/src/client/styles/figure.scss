@@ -2,8 +2,8 @@ figure {
   text-align: center;
 
   /* hide external-link-icon */
-  > a[href*="://"]::after,
-  > a[target=_blank]::after {
+  > a[href*='://']::after,
+  > a[target='_blank']::after {
     display: none !important;
   }
 }

@@ -26,8 +26,8 @@
   }
 
   [vp-content] {
-    a[href*="://"],
-    a[target=_blank] {
+    a[href*='://'],
+    a[target='_blank'] {
       &:not(.no-external-link-icon) {
         @include external-link-icon;
       }

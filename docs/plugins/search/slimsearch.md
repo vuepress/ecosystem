@@ -528,11 +528,10 @@ Since searching is done in a Web Worker, setting function-typed options for `sli
 For more accurate search queries, suggestions, and results, we provide `querySplitter`, `suggestionsFilter`, and `resultsFilter` options. You can set them for specific or all languages:
 
 ```ts
-interface SearchLocaleOptions
-  extends Omit<
-    SearchOptions,
-    'boostDocument' | 'fields' | 'filter' | 'processTerm' | 'tokenize'
-  > {
+interface SearchLocaleOptions extends Omit<
+  SearchOptions,
+  'boostDocument' | 'fields' | 'filter' | 'processTerm' | 'tokenize'
+> {
   /** A function to split words */
   querySplitter?: (query: string) => Promise<string[]>
 

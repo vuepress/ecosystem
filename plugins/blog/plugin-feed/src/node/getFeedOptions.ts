@@ -14,10 +14,8 @@ import type {
 } from '../typings/index.js'
 
 export interface ResolvedFeedOptions
-  extends Omit<
-      BaseFeedPluginOptions,
-      'filter' | 'preservedElements' | 'sorter'
-    >,
+  extends
+    Omit<BaseFeedPluginOptions, 'filter' | 'preservedElements' | 'sorter'>,
     Required<Pick<BaseFeedPluginOptions, 'filter' | 'sorter'>> {
   hostname: string
   isPreservedElement: (tagName: string) => boolean

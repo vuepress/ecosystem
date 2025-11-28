@@ -14,8 +14,7 @@ export interface DefaultThemePageFrontmatter extends PageFrontmatter {
   externalLinkIcon?: boolean
 }
 
-export interface DefaultThemeHomePageFrontmatter
-  extends DefaultThemePageFrontmatter {
+export interface DefaultThemeHomePageFrontmatter extends DefaultThemePageFrontmatter {
   home: true
   heroImage?: string
   heroImageDark?: string
@@ -36,8 +35,7 @@ export interface DefaultThemeHomePageFrontmatter
   footerHtml?: boolean
 }
 
-export interface DefaultThemeNormalPageFrontmatter
-  extends DefaultThemePageFrontmatter {
+export interface DefaultThemeNormalPageFrontmatter extends DefaultThemePageFrontmatter {
   home?: false
   editLink?: boolean
   editLinkPattern?: string

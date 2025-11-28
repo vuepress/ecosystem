@@ -89,8 +89,7 @@ export interface TwoslashFloatingVueOptions {
  *
  * Twoslash FloatingVue 渲染器选项
  */
-export interface TwoslashFloatingVueRendererOptions
-  extends RendererRichOptions {
+export interface TwoslashFloatingVueRendererOptions extends RendererRichOptions {
   /**
    * Class and themes for floating-vue specific nodes
    *
@@ -105,8 +104,7 @@ export interface TwoslashFloatingVueRendererOptions
  * Shiki twoslash 集成选项
  */
 export interface ShikiTwoslashOptions
-  extends TransformerTwoslashOptions,
-    TwoslashFloatingVueRendererOptions {
+  extends TransformerTwoslashOptions, TwoslashFloatingVueRendererOptions {
   /**
    * Twoslash options
    *

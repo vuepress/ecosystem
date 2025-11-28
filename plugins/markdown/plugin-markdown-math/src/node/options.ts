@@ -6,8 +6,10 @@ import type { MarkdownItMathjaxOptions } from '@mdit/plugin-mathjax-slim'
  *
  * KaTeX 插件选项
  */
-export interface MarkdownKatexPluginOptions
-  extends Omit<MarkdownItKatexOptions, 'transformer'> {
+export interface MarkdownKatexPluginOptions extends Omit<
+  MarkdownItKatexOptions,
+  'transformer'
+> {
   type?: 'katex'
 
   /**
@@ -34,8 +36,10 @@ export interface MarkdownKatexPluginOptions
  *
  * MathJax 插件选项
  */
-export interface MarkdownMathjaxPluginOptions
-  extends Omit<MarkdownItMathjaxOptions, 'transformer'> {
+export interface MarkdownMathjaxPluginOptions extends Omit<
+  MarkdownItMathjaxOptions,
+  'transformer'
+> {
   type?: 'mathjax'
 }
 

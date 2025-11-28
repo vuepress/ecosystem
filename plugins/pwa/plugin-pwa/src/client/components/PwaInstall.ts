@@ -74,8 +74,8 @@ export const PwaInstall = defineComponent({
           // iPad pro
           Boolean(
             userAgent.includes('Macintosh') &&
-              navigator.maxTouchPoints &&
-              navigator.maxTouchPoints > 2,
+            navigator.maxTouchPoints &&
+            navigator.maxTouchPoints > 2,
           )
 
         isSafari.value =

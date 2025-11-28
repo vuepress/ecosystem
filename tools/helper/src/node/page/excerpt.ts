@@ -9,10 +9,9 @@ import { isArray, isLinkAbsolute, startsWith } from '../../shared/index.js'
 
 const HEADING_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
 
-interface NodeOptions
-  extends Required<
-    Pick<PageExcerptOptions, 'isCustomElement' | 'keepFenceDom'>
-  > {
+interface NodeOptions extends Required<
+  Pick<PageExcerptOptions, 'isCustomElement' | 'keepFenceDom'>
+> {
   base: string
 }
 

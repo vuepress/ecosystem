@@ -161,11 +161,10 @@ export interface BlogPluginPageData {
   excerpt?: string
 }
 
-export interface BlogPluginOptions
-  extends Pick<
-    PageExcerptOptions,
-    'isCustomElement' | 'keepFenceDom' | 'keepPageTitle'
-  > {
+export interface BlogPluginOptions extends Pick<
+  PageExcerptOptions,
+  'isCustomElement' | 'keepFenceDom' | 'keepPageTitle'
+> {
   /**
    * Function to extract article information from page
    *

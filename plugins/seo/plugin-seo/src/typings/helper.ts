@@ -16,7 +16,7 @@ export type ExtendPage<
   >,
   ExtraPageFields extends Record<string, unknown> = Record<string, unknown>,
 > = Page<
-  ExtraPageData & SeoPluginPageData,
+  Omit<ExtraPageData, keyof SeoPluginPageData> & SeoPluginPageData,
   ExtraPageFrontmatter & SEOPluginFrontmatter,
   ExtraPageFields
 >
