@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.120](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.119...v2.0.0-rc.120) (2025-11-28)
+
+### Bug Fixes
+
+- **plugin-markdown-math:** fix mathjax mml display ([3e1bca2](https://github.com/vuepress/ecosystem/commit/3e1bca281f3b201d4205d5c716397afac3f80ceb))
+
 # [2.0.0-rc.118](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.117...v2.0.0-rc.118) (2025-10-31)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-math

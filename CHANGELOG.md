@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.120](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.119...v2.0.0-rc.120) (2025-11-28)
+
+### Bug Fixes
+
+- **plugin-markdown-math:** fix mathjax mml display ([3e1bca2](https://github.com/vuepress/ecosystem/commit/3e1bca281f3b201d4205d5c716397afac3f80ceb))
+- **plugin-palette:** fix plugin usage with default theme ([#573](https://github.com/vuepress/ecosystem/issues/573)) ([3806756](https://github.com/vuepress/ecosystem/commit/380675638bc4b5d3161d5f1e6b15d64ce52af1f1))
+- **plugin-prismjs:** fix incorrect rendering of notation focus in diff code blocks ([#570](https://github.com/vuepress/ecosystem/issues/570)) ([3a7b041](https://github.com/vuepress/ecosystem/commit/3a7b041b8ed58c26e76d37c036d1be8143e9ebe3))
+
+### Features
+
+- **plugin-slimsearch:** improve default querySplitter ([e83e96f](https://github.com/vuepress/ecosystem/commit/e83e96f7f4adf27d5923bb47c48a29da660b522d))
+- **plugin-slimsearch:** improve default tokenizer ([b1d7327](https://github.com/vuepress/ecosystem/commit/b1d7327605aec884960cda7d329324e560b7f41c))
+
+### Performance Improvements
+
+- **plugin-markdown-chart:** avoid echart being setup multiple times ([f73dd61](https://github.com/vuepress/ecosystem/commit/f73dd61e833a35fbfab3aaed56d0e438cb1e208c))
+
 # [2.0.0-rc.119](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.118...v2.0.0-rc.119) (2025-10-31)
 
 ### Bug Fixes

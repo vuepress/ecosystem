@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.120](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.119...v2.0.0-rc.120) (2025-11-28)
+
+### Bug Fixes
+
+- **plugin-prismjs:** fix incorrect rendering of notation focus in diff code blocks ([#570](https://github.com/vuepress/ecosystem/issues/570)) ([3a7b041](https://github.com/vuepress/ecosystem/commit/3a7b041b8ed58c26e76d37c036d1be8143e9ebe3))
+
 # [2.0.0-rc.118](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.117...v2.0.0-rc.118) (2025-10-31)
 
 **Note:** Version bump only for package @vuepress/plugin-prismjs

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.120](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.119...v2.0.0-rc.120) (2025-11-28)
+
+### Features
+
+- **plugin-slimsearch:** improve default querySplitter ([e83e96f](https://github.com/vuepress/ecosystem/commit/e83e96f7f4adf27d5923bb47c48a29da660b522d))
+- **plugin-slimsearch:** improve default tokenizer ([b1d7327](https://github.com/vuepress/ecosystem/commit/b1d7327605aec884960cda7d329324e560b7f41c))
+
 # [2.0.0-rc.118](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.117...v2.0.0-rc.118) (2025-10-31)
 
 **Note:** Version bump only for package @vuepress/plugin-slimsearch

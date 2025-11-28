@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-links-check",
-  "version": "2.0.0-rc.118",
+  "version": "2.0.0-rc.120",
   "description": "VuePress plugin - links-check",
   "keywords": [
     "vuepress-plugin",

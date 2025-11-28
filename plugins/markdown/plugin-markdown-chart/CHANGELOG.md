@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.120](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.119...v2.0.0-rc.120) (2025-11-28)
+
+### Performance Improvements
+
+- **plugin-markdown-chart:** avoid echart being setup multiple times ([f73dd61](https://github.com/vuepress/ecosystem/commit/f73dd61e833a35fbfab3aaed56d0e438cb1e208c))
+
 # [2.0.0-rc.118](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.117...v2.0.0-rc.118) (2025-10-31)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-chart
