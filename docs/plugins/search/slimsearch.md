@@ -6,7 +6,7 @@ icon: search
 
 <NpmBadge package="@vuepress/plugin-slimsearch" />
 
-A powerful client-side search plugin with custom indexing and full-text search support.
+A powerful client-side search plugin featuring custom indexing and full-text search support.
 
 ## Usage
 
@@ -28,34 +28,24 @@ export default {
 
 ## Search Index
 
-With [`slimsearch`](https://mister-hope.github.io/slimsearch/), searching is ultra fast, even on large sites.
+Powered by [`slimsearch`](https://mister-hope.github.io/slimsearch/), this plugin provides ultra-fast search capabilities, even for large documentation sites.
 
-By default, the plugin will only index headings, article excerpt and custom fields you add. If you want to index all content, you should set `indexContent: true` in the plugin options.
+By default, the plugin indexes only headings, article excerpts, and any custom fields you configure. If you wish to index the full content of your pages, set `indexContent: true` in the plugin options.
 
-To prevent a page from being indexed, you can set `search: false` in it's frontmatter. TO programmatically filter pages, you can set [`filter` option](#filter).
-
-::: important Tokenize every language correctly
-
-When indexing languages that is not word based, like Chinese, Japanese or Korean, you should set `indexOptions` and `indexLocaleOptions` to perform correct word-splitting, see [Customize Index Generation](#customize-index-generation).
-
-Meanwhile, for better client search experience, you should customize the `querySplitter` option to split the input query through `defineSearchConfig`, introducing a NLP[^nlp] API could be a good choice.
-
-:::
+To exclude a specific page from the index, set `search: false` in its frontmatter. For programmatic filtering (e.g., excluding pages based on paths), use the [`filter` option](#filter).
 
 ## Custom Fields
 
-Whether you are a theme developer or a user, adding extra data for a page through page frontmatter or the `extendsPage` lifecycle is common, and in most cases you may want to index these data as well.
+Whether you are a theme developer or a user, it is common to attach extra metadata to pages via frontmatter or the `extendsPage` lifecycle hook. You can add this data to the search index using the `customFields` option.
 
-The `customFields` options accepts an array, each element represents a custom search index configuration item. Each configuration item contains 2 parts:
+The `customFields` option accepts an array of configuration objects. Each object consists of two parts:
 
-- `getter`: The getter for this custom field. This function takes `page` object as a parameter and returns the value of the custom field as a string (single), an array of strings (multiple), `null` (the item is missing).
-- `formatter`: a string controlling how the item is displayed in the custom search result, where `$content` is replaced with the actual value returned by `getter`. If you're using multiple languages, you can also set it as an object to set the display format for each language individually.
+- `getter`: A function that receives the `page` object and returns the value to be indexed. It can return a string, an array of strings, or `null`/`undefined` if the field is missing.
+- `formatter`: A string or object defining how the item appears in search results. The placeholder `$content` is replaced by the value returned by the `getter`. If your site supports multiple languages, you can provide an object mapping locale paths to format strings.
 
-These data will be added to indexes and the search result will contain them.
+::: tip Example: Adding Author to Index
 
-::: tip Example: Adding author to index
-
-Assuming you add author information via `author` in frontmatter:
+Suppose you define an author in your frontmatter:
 
 ```md
 ---
@@ -65,7 +55,7 @@ author: Your name
 Your Markdown content...
 ```
 
-You can add author information to the index by setting:
+You can add this author information to the search index like this:
 
 ```ts title=".vuepress/config.ts"
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
@@ -89,16 +79,16 @@ export default {
 
 ::: tip Example: Adding Update Time
 
-Supposed you are using the `@vuepress/plugin-git` plugin and you are putting Chinese and English docs under `/zh/` and `/` respectively.
+Suppose you are using the `@vuepress/plugin-git` plugin and host Chinese docs under `/zh/` and English docs under `/`.
 
-Then you can set the following to index the update time:
+You can index the last updated time with locale-specific formatting:
 
 ```ts title=".vuepress/config.ts"
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 import { defineUserConfig } from 'vuepress'
 
 export default defineUserConfig({
-  // We assume you are using the following multilingual
+  // Assuming the following locale config
   locales: {
     '/': {
       lang: 'en-US',
@@ -134,11 +124,11 @@ export default defineUserConfig({
 - Type: `boolean`
 - Default: `false`
 
-Whether to enable content indexing.
+Whether to enable full content indexing.
 
 ::: tip
 
-By default, only headings and excerpt of the page will be indexed along with your custom fields. If you need to index the content of the page, set this option to `true`
+By default, only page headings, excerpts, and custom fields are indexed. Set this to `true` only if you need to search the entire body text of your pages.
 
 :::
 
@@ -147,7 +137,7 @@ By default, only headings and excerpt of the page will be indexed along with you
 - Type: `boolean`
 - Default: `true`
 
-Whether to show suggestions while searching.
+Whether to display search suggestions while typing.
 
 ### customFields
 
@@ -161,9 +151,9 @@ Whether to show suggestions while searching.
     getter: (page: Page) => string[] | string | null | undefined
 
     /**
-     * Display content
+     * Display content format
      *
-     * @description `$content` will be replaced by the content returned by `getter`
+     * @description `$content` will be replaced by the value returned by `getter`
      *
      * @default `$content`
      */
@@ -171,7 +161,7 @@ Whether to show suggestions while searching.
   }
   ```
 
-Customize index fields.
+Configuration for indexing custom fields.
 
 ### hotKeys
 
@@ -181,34 +171,34 @@ Customize index fields.
 
 - Default: `[{ key: "k", ctrl: true }, { key: "/", ctrl: true }]`
 
-Specify the [event.key](http://keycode.info/) of the hotkeys.
+Specify the [event.key](http://keycode.info/) for hotkeys.
 
-When hotkeys are pressed, the search box input will be focused. Set to an empty array to disable hotkeys.
+Pressing these keys will focus the search input. Set to an empty array `[]` to disable hotkeys.
 
 ### queryHistoryCount
 
 - Type: `number`
 - Default: `5`
 
-Max stored query history count, set `0` to disable it.
+The maximum number of search query history items to store. Set to `0` to disable.
 
 ### resultHistoryCount
 
 - Type: `number`
 - Default: `5`
 
-Max stored matched result history count, set `0` to disable it.
+The maximum number of matched result history items to store. Set to `0` to disable.
 
 ### searchDelay
 
 - Type: `number`
 - Default: `150`
 
-Delay to start searching after input.
+The delay (in milliseconds) before starting a search after input.
 
 ::: note
 
-Performing client search with huge contents could be slow, so under this case you might need to increase this value to ensure user finish input before searching.
+Client-side searching on sites with massive content can be resource-intensive. You may need to increase this value to ensure the user has finished typing before the search triggers.
 
 :::
 
@@ -217,34 +207,34 @@ Performing client search with huge contents could be slow, so under this case yo
 - Type: `(page: Page) => boolean`
 - Default: `() => true`
 
-Function used to filter pages.
+A function to filter which pages are included in the index.
 
 ### sortStrategy
 
 - Type: `"max" | "total"`
 - Default: `"max"`
 
-Result Sort strategy.
+The strategy used to sort search results.
 
-When there are multiple matched results, the result will be sorted by the strategy. `max` means that page having higher total score will be placed in front. `total` means that page having higher max score will be placed in front.
+When multiple results match, this determines the order. `max` places pages with the highest single-match score first. `total` places pages with the highest cumulative score first.
 
 ### worker
 
 - Type: `string`
 - Default: `slimsearch.worker.js`
 
-Output Worker filename
+The filename for the output Worker script.
 
 ### hotReload
 
 - Type: `boolean`
-- Default: Whether using `--debug` flag
+- Default: Same as the `--debug` flag status
 
-Whether to enable hot reload in the development server.
+Whether to enable hot reloading of the search index in the development server.
 
 ::: note
 
-It is disabled by default because this feature can have a huge performance impact on sites with huge content and drastically increases the speed of hot reloads when editing Markdown.
+This is disabled by default because rebuilding the index on every file change can severely impact performance on large sites.
 
 :::
 
@@ -265,13 +255,13 @@ It is disabled by default because this feature can have a huge performance impac
   }
   ```
 
-Options used to create index.
+Options passed to `slimsearch` during index creation.
 
 ### indexLocaleOptions
 
 - Type: `Record<string, SlimSearchIndexOptions>`
 
-Options used to create index per locale, the object keys should be the locale path.
+Options for index creation per locale. The object keys should correspond to the locale path.
 
 ### locales
 
@@ -285,27 +275,27 @@ Options used to create index per locale, the object keys should be the locale pa
     placeholder: string
 
     /**
-     * Search text
+     * Search text label
      */
     search: string
 
     /**
-     * Clear search text
+     * Clear search text label
      */
     clear: string
 
     /**
-     * Remove current item
+     * Remove current item label
      */
     remove: string
 
     /**
-     * Searching text
+     * Searching status text
      */
     searching: string
 
     /**
-     * Cancel text
+     * Cancel text label
      */
     cancel: string
 
@@ -320,7 +310,7 @@ Options used to create index per locale, the object keys should be the locale pa
     select: string
 
     /**
-     * Choose hint
+     * Navigate hint
      */
     navigate: string
 
@@ -350,12 +340,12 @@ Options used to create index per locale, the object keys should be the locale pa
     resultHistory: string
 
     /**
-     * Search history empty hint
+     * Empty history hint
      */
     emptyHistory: string
 
     /**
-     * Empty hint
+     * Empty result hint
      */
     emptyResult: string
   }
@@ -365,7 +355,7 @@ Options used to create index per locale, the object keys should be the locale pa
   }
   ```
 
-Multilingual configuration of the search plugin.
+Multilingual configuration for the search UI.
 
 ::: details Built-in Supported Languages
 
@@ -397,75 +387,19 @@ Multilingual configuration of the search plugin.
 - Type: `boolean`
 - Default: `true`
 
-Whether to index this page.
+Whether to include this page in the search index.
 
 ## Advanced
 
 ### Customize Index Generation
 
-If you are indexing other language which is not using "Words", like Chinese, Japanese or Korean, you should set `indexOptions` and `indexLocaleOptions` to perform correct word-splitting.
+You can customize the index generation process using `indexOptions` and `indexLocaleOptions`. This allows you to fine-tune indexing results globally or for specific locales.
 
-If you are building a Chinese docs, you can use [nodejs-jieba](https://github.com/Mister-Hope/nodejs-jieba) to perform word splitting. (Japanese and Korean do not have built-in dictionary, but you can provide your own dictionary and split words with `nodejs-jieba`).
-
-If your docs only contain Chinese, you can tokenize the content like this:
-
-```ts title=".vuepress/config.ts"
-import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
-import { cut } from 'nodejs-jieba'
-import { defineUserConfig } from 'vuepress'
-
-export default defineUserConfig({
-  lang: 'zh-CN',
-
-  plugins: [
-    slimsearchPlugin({
-      // index all content
-      indexContent: true,
-      indexOptions: {
-        // tokenize the content with nodejs-jieba
-        tokenize: (text, fieldName) =>
-          fieldName === 'id' ? [text] : cut(text, true),
-      },
-    }),
-  ],
-})
-```
-
-If you need word splitting in some locales, you can set `indexLocaleOptions`:
-
-```ts title=".vuepress/config.ts"
-import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
-import { cut } from 'nodejs-jieba'
-import { defineUserConfig } from 'vuepress'
-
-export default defineUserConfig({
-  locales: {
-    '/': {
-      lang: 'en-US',
-    },
-    '/zh/': {
-      lang: 'zh-CN',
-    },
-  },
-
-  plugins: [
-    slimsearchPlugin({
-      indexContent: true,
-      indexLocaleOptions: {
-        '/zh/': {
-          // tokenize the content with nodejs-jieba
-          tokenize: (text, fieldName) =>
-            fieldName === 'id' ? [text] : cut(text, true),
-        },
-      },
-    }),
-  ],
-})
-```
+We use the `Intl.Segmenter` API for tokenization (word-splitting) by default. While this works well for most languages, you might want to provide a custom `tokenize` function for specific languages to improve search accuracy.
 
 ### Using with API
 
-If you want to access the search API, you need to import the `createSearchWorker` function from `@vuepress/plugin-slimsearch/client`:
+To access the search functionality programmatically, import the `createSearchWorker` function from `@vuepress/plugin-slimsearch/client`:
 
 ```ts
 import { createSearchWorker } from '@vuepress/plugin-slimsearch/client'
@@ -473,59 +407,59 @@ import { defineClientConfig } from 'vuepress/client'
 
 const { all, suggest, search, terminate } = createSearchWorker()
 
-// suggest something
+// Suggest terms based on input
 suggest('key').then((suggestions) => {
-  // display search suggestions
+  // Handle search suggestions
 })
 
-// search something
+// Search for content
 search('keyword').then((results) => {
-  // display search results
+  // Handle search results
 })
 
-// return both suggestions and results
+// Get both suggestions and results
 all('key').then(({ suggestions, results }) => {
-  // display search suggestions and results
+  // Handle suggestions and results
 })
 
-// terminate the worker when you don't need it
+// Terminate the worker when no longer needed
 terminate()
 ```
 
 ### Limitations in DevServer
 
-The search service is powered by a worker, and in dev mode we cannot bundle the worker file.
+The search service runs in a Web Worker. In development mode, we cannot bundle the worker file like in production.
 
-In order to load search indexes in dev mode, we are using a modern service worker with `type: "module"`, so if you want to try searching in devServer, you should use a supported browser, see [CanIUse](https://caniuse.com/mdn-api_worker_worker_ecmascript_modules) for support details.
+To load search indexes in the dev server, we use a modern Service Worker with `type: "module"`. If you want to test search functionality locally, please ensure your browser supports ES Module Workers (see [CanIUse](https://caniuse.com/mdn-api_worker_worker_ecmascript_modules)).
 
-For better performance, adding/editing/deleting markdown contents will not trigger update for search index in dev mode. If you are proofreading or refining your search results, you can enable hot reloading by setting the `hotReload: true` option.
+For performance reasons, adding, editing, or deleting Markdown content will **not** trigger a search index update in development mode by default. If you are refining search results, you can enable hot reloading by setting `hotReload: true`.
 
 ### Comparing with Server-Search
 
-Client-side search has advantages, like no backend services and easy to add, but you should be aware that it has disadvantages.
+Client-side search offers benefits like zero backend dependencies and ease of integration, but it also comes with trade-offs.
 
 ::: warning Disadvantages
 
-1. You need to index your website during the build stage, which increases website deployment time and website bundle size.
-1. Users need to fetch the entire search index from your server before searching, which will bring additional traffic and bandwidth pressure to your server. The more content you hold on your site, the larger search index will be.
-1. To perform a search, users must wait for the search index to be downloaded and parsed locally. This may be much slower than performing a simple web request to get results via Server-search.
-1. Since searching is done on users devices, the speed is totally based on device performance.
+1. **Build Time:** Indexes are generated during the build, which increases deployment time and the size of the output bundle.
+1. **Bandwidth:** Users must download the search index before they can search. The more content you have, the larger the index file, which consumes more bandwidth.
+1. **Latency:** Users must wait for the index to be downloaded and parsed locally. This initial load can be slower than a direct API request to a server-side search engine.
+1. **Device Performance:** Since the search logic runs on the user's device, speed is dependent on their hardware capabilities.
 
 :::
 
-In most cases, if you are building a large site, you should choose a service provider to provide search services for your site if possible, such as [Algolia](https://www.algolia.com/), or choose an open source search crawler tool and host it on your own server to provide a search service and regularly craw your site. This is necessary for large sites because users send search terms to the search API via network requests and get search results directly.
+If you are building a very large site, it is recommended to use a dedicated search service provider like [Algolia](https://www.algolia.com/), or host an open-source search crawler on your own server. This approach is more scalable as users only send search queries over the network rather than downloading the entire dataset.
 
-In particular, [DocSearch](https://docsearch.algolia.com/) is a free search service provided by Algolia for open source projects. If you are creating open source project documentation or an open source technical blog, you can [apply for it](https://docsearch.algolia.com/apply/), and use [`@vuepress/plugin-docsearch`](./docsearch.md) plugin to provide search features.
+Notably, [DocSearch](https://docsearch.algolia.com/) is a free service by Algolia for open-source projects. If you maintain open-source documentation or a technical blog, you can [apply for it](https://docsearch.algolia.com/apply/) and use the [`@vuepress/plugin-docsearch`](./docsearch.md) plugin.
 
 ## Client Config
 
 ### defineSearchConfig
 
-Customize [search options](https://mister-hope.github.io/slimsearch/interfaces/SearchOptions.html), accepts plain object, ref or getter functions as parameters.
+Customize [search options](https://mister-hope.github.io/slimsearch/interfaces/SearchOptions.html). Accepts a plain object, a ref, or a getter function.
 
-Since searching is done in a Web Worker, setting function-typed options for `slimsearch` is not supported.
+Since searching is performed inside a Web Worker, you cannot pass function-typed options directly to `slimsearch`.
 
-For more accurate search queries, suggestions, and results, we provide `querySplitter`, `suggestionsFilter`, and `resultsFilter` options. You can set them for specific or all languages:
+However, to provide more accurate queries, suggestions, and results, we expose `querySplitter`, `suggestionsFilter`, and `resultsFilter` options in the client config. You can set these for specific languages or globally:
 
 ```ts
 interface SearchLocaleOptions extends Omit<
@@ -566,7 +500,7 @@ export const defineSearchConfig: (
 import { defineSearchConfig } from '@vuepress/plugin-slimsearch/client'
 
 defineSearchConfig({
-  // search options here
+  // global search options here
 
   locales: {
     '/zh/': {
@@ -579,5 +513,3 @@ defineSearchConfig({
 ## Components
 
 - SearchBox
-
-[^nlp]: **N**atural **L**anguage **P**rocessing

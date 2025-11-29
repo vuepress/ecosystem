@@ -6,7 +6,7 @@ icon: book-open-text
 
 <NpmBadge package="@vuepress/plugin-reading-time" />
 
-This plugin generates word count and estimated reading time for each page.
+This plugin analyzes your page content to generate word counts and estimated reading times.
 
 ## Usage
 
@@ -26,39 +26,37 @@ export default {
 }
 ```
 
-The plugin injects reading time information into the `readingTime` field of page data:
+## Page Data (Node.js Side)
 
-- `readingTime.minutes`: estimated reading time in minutes (`number`)
-- `readingTime.words`: word count (`number`)
+The plugin calculates statistics for every page and injects them into the `page.data.readingTime` property. This object contains:
 
-### Getting Data on Node Side
+- `minutes`: The estimated reading time in minutes (`number`).
+- `words`: The total word count (`number`).
 
-For any page, you can get estimated reading time and word count from `page.data.readingTime`:
+You can access this data directly within Node.js during the build process, such as inside the `extendsPage` or `onInitialized` lifecycles:
 
 ```ts
-page.data.readingTime // { minutes: 3.2, words: 934 }
-```
-
-You can access it for further processing in the `extendsPage` lifecycle and other lifecycles:
-
-```js
 export default {
   // ...
   extendsPage: (page) => {
-    page.data.readingTime // { minutes: 3.2, words: 934 }
+    // Access reading time data for the current page being processed
+    console.log(page.data.readingTime) // { minutes: 3.2, words: 934 }
   },
 
   onInitialized: (app) => {
+    // Iterate through all pages in the VuePress app
     app.pages.forEach((page) => {
-      page.data.readingTime // { minutes: 3.2, words: 934 }
+      console.log(page.data.readingTime) // { minutes: 3.2, words: 934 }
     })
   },
 }
 ```
 
-### Getting Data on Client Side
+## Composition API (Client Side)
 
-You can import `useReadingTimeData` and `useReadingTimeLocale` from `@vuepress/plugin-reading-time/client` to get the reading time data and locale data of the current page:
+To display reading time information in your theme or components, you can use the composition APIs provided by the client module.
+
+Import `useReadingTimeData` for raw numbers or `useReadingTimeLocale` for localized strings:
 
 ```vue
 <script setup lang="ts">
@@ -67,7 +65,10 @@ import {
   useReadingTimeLocale,
 } from '@vuepress/plugin-reading-time/client'
 
+// Get raw values (e.g., for custom logic or sorting)
 const readingTimeData = useReadingTimeData() // { minutes: 1.1, words: 100 }
+
+// Get localized text based on current site configuration
 const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "100 words" }
 </script>
 ```
@@ -168,9 +169,9 @@ interface ReadingTimeLocale {
 const useReadingTimeLocale: () => ComputedRef<ReadingTimeLocale>
 ```
 
-## Advanced Usage
+## Theme Integration
 
-This plugin targets plugin and theme developers, so we provide a "Use API":
+For plugin and theme authors, a programmatic "Use API" is available. This approach is recommended over adding the plugin to the `plugins` array directly in your theme, as it handles registration ordering and prevents duplicate registration.
 
 ```js title="your plugin or theme entry"
 import { useReadingTimePlugin } from '@vuepress/plugin-reading-time'
@@ -186,23 +187,23 @@ export default (options) => (app) => {
 }
 ```
 
-::: tip Why you should use the "Use API"
+::: tip Why use the "Use API"?
 
-1. When you register a plugin multiple times, VuePress gives you a warning that only the first one takes effect. The `useReadingTimePlugin` automatically detects if the plugin is registered and avoids registering multiple times.
-1. If you access reading time data in the `extendsPage` lifecycle, then `@vuepress/plugin-reading-time` must be called before your theme or plugin, otherwise you will get `undefined` for `page.data.readingTime`. The `useReadingTimePlugin` ensures that `@vuepress/plugin-reading-time` is called before your theme or plugin.
+1. **Singleton Pattern**: VuePress warns if a plugin is registered multiple times (where only the first takes effect). `useReadingTimePlugin` checks for existing instances and skips registration if already present.
+2. **Execution Order**: If you rely on reading time data within the `extendsPage` lifecycle, the reading time plugin must execute _before_ your code. `useReadingTimePlugin` ensures the correct initialization order so `page.data.readingTime` is available when you need it.
 
 :::
 
-We also provide a `removeReadingTimePlugin` API to remove the plugin. You can use this to ensure your call takes effect or clear the plugin:
+If you need to force a specific configuration or reset the plugin state, you can use `removeReadingTimePlugin`:
 
 ```js title="your plugin or theme entry"
 import { useReadingTimePlugin } from '@vuepress/plugin-reading-time'
 
 export default (options) => (app) => {
-  // this removes any existing reading time plugin at this time
+  // Remove any previously registered instances of the reading time plugin
   removeReadingTimePlugin(app)
 
-  // so this will take effect even if there is a reading time plugin registered before
+  // Register the plugin again to ensure your specific options take precedence
   useReadingTimePlugin(app, {
     // your options
   })

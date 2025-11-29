@@ -6,7 +6,7 @@ icon: book-open-text
 
 <NpmBadge package="@vuepress/plugin-reading-time" />
 
-此插件为每个页面生成字数统计与预计阅读时间。
+该插件通过分析你的页面内容，生成字数统计和预计阅读时间。
 
 ## 使用方法
 
@@ -20,45 +20,43 @@ import { readingTimePlugin } from '@vuepress/plugin-reading-time'
 export default {
   plugins: [
     readingTimePlugin({
-      // 配置项
+      // 选项
     }),
   ],
 }
 ```
 
-插件将相关信息注入到页面数据的 `readingTime` 字段：
+## 页面数据（Node.js 端）
 
-- `readingTime.minutes`：预计阅读时间（分钟）(`number`)
-- `readingTime.words`：字数统计 (`number`)
+初始化后，插件会计算每个页面的统计信息，并将它们注入到 `page.data.readingTime` 属性中。该对象包含：
 
-### 在 Node 侧获取数据
+- `minutes`: 预计阅读时间，单位为分钟 (`number`)。
+- `words`: 总字数 (`number`)。
 
-对于任何页面，你可以从 `page.data.readingTime` 获取预计阅读时间与字数统计：
+你可以在 Node.js 端的构建过程中直接访问此数据，例如在 `extendsPage` 或 `onInitialized` 生命周期中：
 
 ```ts
-page.data.readingTime // { minutes: 3.2, words: 934 }
-```
-
-你可以在 `extendsPage` 以及其他生命周期中获取它做进一步处理：
-
-```js
 export default {
   // ...
   extendsPage: (page) => {
-    page.data.readingTime // { minutes: 3.2, words: 934 }
+    // 访问当前正在处理页面的阅读时间数据
+    console.log(page.data.readingTime) // { minutes: 3.2, words: 934 }
   },
 
   onInitialized: (app) => {
+    // 遍历 VuePress 应用中的所有页面
     app.pages.forEach((page) => {
-      page.data.readingTime // { minutes: 3.2, words: 934 }
+      console.log(page.data.readingTime) // { minutes: 3.2, words: 934 }
     })
   },
 }
 ```
 
-### 在客户端侧获取数据
+## 组合式 API (客户端)
 
-你可以从 `@vuepress/plugin-reading-time/client` 导入 `useReadingTimeData` 和 `useReadingTimeLocale` 来获取当前页面的阅读时间数据和语言环境数据：
+要在主题或组件中显示阅读时间信息，你可以使用客户端模块提供的组合式 API（Composables）。
+
+引入 `useReadingTimeData` 获取原始数值，或引入 `useReadingTimeLocale` 获取本地化的文本字符串：
 
 ```vue
 <script setup lang="ts">
@@ -67,8 +65,11 @@ import {
   useReadingTimeLocale,
 } from '@vuepress/plugin-reading-time/client'
 
+// 获取原始值（例如用于自定义逻辑或排序）
 const readingTimeData = useReadingTimeData() // { minutes: 1.1, words: 100 }
-const readingTimeLocale = useReadingTimeLocale() // { time: "1 分钟", words: "100 字" }
+
+// 根据当前站点配置获取本地化文本
+const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "100 words" }
 </script>
 ```
 
@@ -87,17 +88,17 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 分钟", words: "
   ```ts
   interface ReadingTimePluginLocaleData {
     /**
-     * 字数模板，模板中 `$word` 会被自动替换为字数
+     * 字数模板，`$word` 会被自动替换为实际字数
      */
     word: string
 
     /**
-     * 小于一分钟文字
+     * 小于一分钟时的文本
      */
     less1Minute: string
 
     /**
-     * 时间模板，模板中 `$time` 会被自动替换为实际时间
+     * 时间模板，`$time` 会被自动替换为实际时间
      */
     time: string
   }
@@ -136,7 +137,7 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 分钟", words: "
 
 你可以从 `@vuepress/plugin-reading-time/client` 导入并使用这些 API：
 
-::: tip 即使插件被禁用，这些 API 也不会抛出错误。
+::: tip 即便你禁用了插件，使用这些 API 也不会报错。
 
 :::
 
@@ -144,9 +145,9 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 分钟", words: "
 
 ```ts
 interface ReadingTime {
-  /** 分钟为单位的预计阅读时长 */
+  /** 预计阅读时间（分钟） */
   minutes: number
-  /** 内容的字数 */
+  /** 内容字数 */
   words: number
 }
 
@@ -159,25 +160,25 @@ const useReadingTimeData: () => ComputedRef<ReadingTime | null>
 
 ```ts
 interface ReadingTimeLocale {
-  /** 当前语言的预计阅读时间 */
+  /** 本地化的预计阅读时间文本 */
   time: string
-  /** 当前语言的字数文字 */
+  /** 本地化的字数统计文本 */
   words: string
 }
 
 const useReadingTimeLocale: () => ComputedRef<ReadingTimeLocale>
 ```
 
-## 高级使用
+## 主题集成
 
-由于此插件主要面向插件和主题开发者，所以提供了"使用 API"：
+对于插件和主题开发者，我们提供了一个编程式的 "Use API"。相比于直接在你的主题 `plugins` 数组中添加该插件，我们更推荐这种方式，因为它能处理注册顺序并防止重复注册。
 
-```js title="你插件或主题的入口"
+```js title="your plugin or theme entry"
 import { useReadingTimePlugin } from '@vuepress/plugin-reading-time'
 
 export default (options) => (app) => {
   useReadingTimePlugin(app, {
-    // 你的选项
+    // 你的配置选项
   })
 
   return {
@@ -186,26 +187,25 @@ export default (options) => (app) => {
 }
 ```
 
-::: tip 为什么你应该使用"使用 API"
+::: tip 为什么要使用 "Use API"？
 
-1. 当你多次注册一个插件时，VuePress 会给你一个警告，告诉你只有第一个插件会生效。`useReadingTimePlugin` 会自动检测插件是否已经注册，避免多次注册。
-
-1. 如果你在 `extendsPage` 生命周期访问阅读时间数据，那么 `@vuepress/plugin-reading-time` 必须在你的主题或插件之前被调用，否则你会得到未定义的 `page.data.readingTime`。`useReadingTimePlugin` 确保了 `@vuepress/plugin-reading-time` 在你的主题或插件之前被调用。
+1. **单例模式**：当一个插件被注册多次时，VuePress 会发出警告，且只有第一个生效。`useReadingTimePlugin` 会自动检测插件是否已注册，避免重复注册。
+2. **执行顺序**：如果你在 `extendsPage` 生命周期中访问阅读时间数据，那么 `@vuepress/plugin-reading-time` 必须在你的代码*之前*执行。`useReadingTimePlugin` 能够确保正确的初始化顺序，从而保证 `page.data.readingTime` 在你需要时已经可用。
 
 :::
 
-我们也提供了一个 `removeReadingTimePlugin` API 来移除插件。你可以使用它来确保你的调用生效或清除插件：
+如果你需要强制应用特定配置或重置插件状态，可以使用 `removeReadingTimePlugin`：
 
-```js title="你插件或主题的入口"
+```js title="your plugin or theme entry"
 import { useReadingTimePlugin } from '@vuepress/plugin-reading-time'
 
 export default (options) => (app) => {
-  // 这会移除任何当前存在的阅读时间插件
+  // 移除此时任何已存在的阅读时间插件实例
   removeReadingTimePlugin(app)
 
-  // 所以这会生效，即使之前已经注册了一个阅读时间插件
+  // 重新注册插件，以确保你的特定配置生效
   useReadingTimePlugin(app, {
-    // 你的选项
+    // 你的配置选项
   })
 
   return {
