@@ -18,7 +18,18 @@ export const useLocaleConfig = <T extends LocaleData>(
 ): ComputedRef<T> => {
   const routeLocale = useRouteLocale()
 
-  return computed(() => toValue(localesConfig)[routeLocale.value] ?? {})
+  return computed(() => {
+    const config = toValue(localesConfig)
+
+    return (
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      config[routeLocale.value] ??
+      // fallback to root locale config
+      config['/'] ??
+      // falling back to first locale config that exists
+      Object.values(config)[0]
+    )
+  })
 }
 
 /**
