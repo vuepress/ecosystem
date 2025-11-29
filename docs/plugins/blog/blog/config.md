@@ -13,9 +13,9 @@ icon: settings-2
   - [Guide → Article Collection](./guide.md#gathering-info)
 - Details:
 
-  Function to extract article information from pages.
+  A function to extract article information from pages.
 
-  Article info will be injected into route meta, making it available in client composables.
+  The extracted information is injected into the route meta, making it accessible via client-side composables.
 
 ### filter
 
@@ -25,9 +25,9 @@ icon: settings-2
   - [Guide → Article Collection](./guide.md#collecting-articles)
 - Details:
 
-  Function to filter pages for blog articles.
+  A function to determine which pages are treated as blog articles.
 
-  By default, all pages generated from Markdown files except homepage are included.
+  By default, it includes all pages generated from Markdown files, excluding the homepage.
 
 ### category
 
@@ -47,14 +47,14 @@ icon: settings-2
 
 - Type: `(name: string) => string`
 - Default: `(name) => name.replace(/ _/g, '-').replace(/[:?*|\\/<>]/g, "").toLowerCase()`
-- Details: Function to convert strings to URL-friendly slugs for route registration.
+- Details: A function that converts strings into URL-friendly slugs for route registration.
 
 ### excerpt
 
 - Type: `boolean`
 - Default: `true`
 - Reference: [Guide → Excerpt Generation](./guide.md#generating-excerpt)
-- Details: Whether to generate excerpt for pages.
+- Details: Enables or disables excerpt generation for pages.
 
 ### excerptSeparator
 
@@ -62,7 +62,7 @@ icon: settings-2
 - Default: `<!-- more -->`
 - Reference:
   - [Guide → Excerpt Generation](./guide.md#generating-excerpt)
-- Details: Separator for manual excerpt in content.
+- Details: The separator used to manually define excerpts within the content.
 
 ### excerptLength
 
@@ -72,29 +72,29 @@ icon: settings-2
   - [Guide → Excerpt Generation](./guide.md#generating-excerpt)
 - Details:
 
-  Target length for auto-generated excerpts.
+  The target length for auto-generated excerpts.
 
   ::: tip
 
-  Excerpt length will be the minimal possible length reaching this value.
+  The generator will cut the text at the nearest position meeting or exceeding this length.
 
-  Set to `0` to disable auto excerpt generation.
+  Set to `0` to disable automatic excerpt generation.
 
   :::
 
 ### excerptFilter
 
 - Type: `(page: Page) => boolean`
-- Default: Same as `filter` option
+- Default: Same as the `filter` option
 - Reference:
   - [Guide → Excerpt Generation](./guide.md#generating-excerpt)
 - Details:
 
-  Function to filter pages for excerpt generation.
+  A function to filter pages for excerpt generation.
 
   ::: tip
 
-  Use this to skip pages that don't need excerpt generation. For example, if users set `excerpt` or `description` in frontmatter, you may want to use them directly.
+  Use this to exclude pages from automatic excerpt generation. For instance, if `excerpt` or `description` is already defined in the frontmatter, you might prefer to use those values directly.
 
   :::
 
@@ -106,9 +106,9 @@ icon: settings-2
   - [Guide → Generating Excerpt](./guide.md#generating-excerpt)
 - Details:
 
-  Tags which is considered as custom elements.
+  A function to identify custom elements.
 
-  This is used to determine whether a tag is a custom element since all unknown tags are removed in excerpt.
+  This is used to distinguish custom elements from unknown tags, which are otherwise stripped during excerpt generation.
 
 ### metaScope
 
@@ -116,35 +116,35 @@ icon: settings-2
 - Default: `"_blog"`
 - Details:
 
-  Key used when injecting info to route meta.
+  The key under which the extracted information is injected into the route meta.
 
   ::: tip
 
-  Setting to an empty key will inject to route meta directly instead of a field.
+  Setting this to an empty string will inject the information directly into the route meta root, rather than nesting it under a field.
 
   :::
 
 ### hotReload
 
 - Type: `boolean`
-- Default: Whether using `--debug` flag
+- Default: Enabled if the `--debug` flag is used
 - Details:
 
-  Whether enable hotReload in devServer.
+  Enables hot reload support in the development server.
 
   ::: tip To theme developers
 
-  It's disabled by default because it does have performance impact in sites with a lot of categories and types. And it can slow down hotReload speed when editing Markdown.
+  This is disabled by default due to potential performance impacts on sites with extensive categories and types. It may also slow down hot updates when editing Markdown.
 
-  If users are adding or organizing your categories or tags, you may tell them to enable this, for the rest it's better to keep it disabled.
+  It is recommended to enable this only when users are actively adding or organizing categories/tags. For general use, keep it disabled.
 
-  Also, you can try to detect number of pages in users project and decide whether to enable it.
+  Alternatively, you can detect the number of pages in the user's project and decide whether to enable it programmatically.
 
   :::
 
 ## Blog Category Config
 
-Blog category config should be an array, while each item is controlling a "category" rule.
+The blog category configuration accepts an array, where each item defines a specific "category" rule.
 
 ```ts
 interface BlogCategoryOptions {
@@ -154,7 +154,7 @@ interface BlogCategoryOptions {
   key: string
 
   /**
-   * Function getting category from page
+   * Function to retrieve categories from a page
    */
   getter: (page: Page) => string[]
 
@@ -164,7 +164,7 @@ interface BlogCategoryOptions {
   sorter?: (pageA: Page, pageB: Page) => number
 
   /**
-   * Path pattern of page to be registered
+   * The path pattern for the registered page
    *
    * @description `:key` will be replaced by the "slugify" result of the original key
    *
@@ -180,14 +180,14 @@ interface BlogCategoryOptions {
   layout?: string
 
   /**
-   * Frontmatter
+   * Frontmatter configuration
    */
   frontmatter?: (localePath: string) => Record<string, string>
 
   /**
-   * Item page path pattern or custom function to be registered
+   * The path pattern or custom function for the item page
    *
-   * @description When filling in a string, `:key` and `:name` will be replaced by the "slugify" result of the original key and name
+   * @description When providing a string, `:key` and `:name` will be replaced by the "slugify" result of the original key and name
    *
    * @default `/:key/:name/`
    */
@@ -201,7 +201,7 @@ interface BlogCategoryOptions {
   itemLayout?: string
 
   /**
-   * Items Frontmatter
+   * Frontmatter configuration for items
    */
   itemFrontmatter?: (name: string, localePath: string) => Record<string, string>
 }
@@ -209,7 +209,7 @@ interface BlogCategoryOptions {
 
 ## Blog Type Config
 
-Blog type config should be an array, while each item is controlling a "type" rule.
+The blog type configuration accepts an array, where each item defines a specific "type" rule.
 
 ```ts
 interface BlogTypeOptions {
@@ -219,7 +219,7 @@ interface BlogTypeOptions {
   key: string
 
   /**
-   * A filter function to determine whether a page should be the type
+   * A filter function to determine if a page belongs to this type
    */
   filter: (page: Page) => boolean
 
@@ -229,7 +229,7 @@ interface BlogTypeOptions {
   sorter?: (pageA: Page, pageB: Page) => number
 
   /**
-   * Page path to be registered
+   * The path pattern for the registered page
    *
    * @default '/:key/'
    */
@@ -243,7 +243,7 @@ interface BlogTypeOptions {
   layout?: string
 
   /**
-   * Frontmatter
+   * Frontmatter configuration
    */
   frontmatter?: (localePath: string) => Record<string, string>
 }
@@ -251,7 +251,7 @@ interface BlogTypeOptions {
 
 ## Composition API
 
-You can import the following API from `@vuepress/plugin-blog/client`.
+The following APIs are available via `@vuepress/plugin-blog/client`.
 
 - Blog category
 
@@ -263,11 +263,11 @@ You can import the following API from `@vuepress/plugin-blog/client`.
   ) => ComputedRef<BlogCategoryData<T>>
   ```
 
-  Argument `key` should be the category unique key.
+  The `key` argument represents the unique category key.
 
-  If no key is passed, the plugin will try to use the key in current path.
+  If no key is provided, the plugin attempts to infer the key from the current route.
 
-- Blog category
+- Blog type
 
   ```ts
   const useBlogType: <
@@ -277,11 +277,11 @@ You can import the following API from `@vuepress/plugin-blog/client`.
   ) => ComputedRef<BlogTypeData<T>>
   ```
 
-  Argument `key` should be the type unique key.
+  The `key` argument represents the unique type key.
 
-  If no key is passed, the plugin will try to use the key in current path.
+  If no key is provided, the plugin attempts to infer the key from the current route.
 
-Returning values are:
+The return values are:
 
 ```ts
 interface Article<T extends Record<string, unknown> = Record<string, unknown>> {
@@ -298,7 +298,7 @@ interface BlogCategoryData<
   path: string
 
   /**
-   * Only available when current route matches an item path
+   * Available only when the current route matches a specific item path
    */
   currentItems?: Article<T>[]
 

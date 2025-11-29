@@ -4,21 +4,21 @@ icon: lightbulb
 
 # 指南
 
-为 VuePress 主题添加博客功能，包括文章收集、分类和摘要生成。
+为 VuePress 主题赋予博客功能，包含文章收集、分类和摘要生成。
 
-## 收集文章
+## 文章收集
 
-插件通过 `filter` 选项过滤页面，以确定哪些页面应被视为文章。
+插件使用 `filter` 选项来决定哪些页面应被视为文章。
 
 ::: tip
-默认情况下，所有从 Markdown 文件生成但不是主页的页面，都将被视作文章。
+默认情况下，除主页外，所有从 Markdown 文件生成的页面都被视为文章。
 :::
 
 ## 收集信息
 
-设置 `getInfo` 选项为从页面中提取文章信息的函数。
+使用 `getInfo` 选项定义一个函数，用于从页面中提取文章元数据。
 
-插件会将收集到的信息注入到 `routeMeta` 字段中，使其可通过组合式 API 获取。
+插件会将收集到的信息注入 `routeMeta` 字段，使其可以通过组合式 API (Composition API) 访问。
 
 ::: details 示例
 
@@ -30,20 +30,20 @@ export default {
   plugins: [
     blogPlugin({
       filter: ({ filePathRelative, frontmatter }) => {
-        // 舍弃那些不是从 Markdown 文件生成的页面
+        // 排除非文件生成的页面
         if (!filePathRelative) return false
 
-        // 舍弃 `archives` 文件夹的页面
+        // 排除 `archives` 目录下的页面
         if (filePathRelative.startsWith('archives/')) return false
 
-        // 舍弃那些没有使用默认布局的页面
+        // 排除未使用默认布局的页面
         if (frontmatter.home || frontmatter.layout) return false
 
         return true
       },
 
       getInfo: ({ frontmatter, title, git = {}, data = {} }) => {
-        // 获取页面信息
+        // 提取页面信息
         const info: Record<string, unknown> = {
           title,
           author: frontmatter.author || '',
@@ -63,27 +63,20 @@ export default {
 
 :::
 
-## 自定义类别和类型
+## 自定义分类与类型 (Customizing Categories and Types)
 
-基本上，你的博客中需要两种“类型”:
+本插件允许你将文章组织成两种主要的集合类型：
 
-- 类别:
+- **Category (分类)**：基于标签（如“标签”、“分类”）对文章进行分组。
+- **Type (类型)**：基于特定条件筛选文章（如“日记”条目、“星标”文章）。
 
-  “类别”是用文章的标签 (或类别) 对它们进行分组。
+你可以使用 `category` 和 `type` 数组选项进行配置。
 
-  例如，每篇文章可能都有对应的“分类”和“标签”。
+### Category 配置
 
-- 类型：
+使用 `category` 选项创建基于标签的分组。
 
-  “类型”是过滤不同条件的文章。
-
-  例如，你的帖子中可能有日记或笔记。当帖子带有写作日期信息时，它可以称为“时间线项目”。
-
-了解这两种类型的描述后，你可以设置 `category` 和 `type` 选项，它们都接受一个数组，每个元素代表一个配置。
-
-让我们从此处 2 个例子开始。
-
-假设你想为每篇文章设置标签，并且你正在通过页面 frontmatter 中的 `tag` 字段设置它们。你想要在 `/tag/` 中使用 `TagMap` 布局的标签映射页面，并在 `/tag/tagName` 中使用 `TagList` 布局按标签名称分组每个标签列表，你可能需要这样的配置：
+例如，如果你想根据 Frontmatter 中定义的 `tags` 对文章进行分组，在 `/tag/` 生成一个映射页面（使用 `TagMap` 布局），并在 `/tag/:tagName` 列出特定标签的文章（使用 `TagList` 布局），你可以使用以下配置：
 
 ```ts title="主题入口"
 import { blogPlugin } from '@vuepress/plugin-blog'
@@ -92,7 +85,7 @@ export default {
   name: 'vuepress-theme-xxx',
   plugins: [
     blogPlugin({
-      // 其他配置 ...
+      // 其他选项 ...
       category: [
         {
           key: 'tag',
@@ -111,7 +104,11 @@ export default {
 }
 ```
 
-此外，你可能希望为你的一些文章加注星标并将其展示给访问者。当你在 frontmatter 中设置 `star: true` 来标记它们时，你可能需要这样的配置来在 `/star/` 路径中以 `StarList` 布局显示它们：
+### Type 配置
+
+使用 `type` 选项创建特定的集合列表。
+
+例如，要在 `/star/` 路径下使用 `StarList` 布局显示“星标”文章列表（在 Frontmatter 中标记为 `star: true`）：
 
 ```ts title="主题入口"
 import { blogPlugin } from '@vuepress/plugin-blog'
@@ -120,14 +117,14 @@ export default {
   name: 'vuepress-theme-xxx',
   plugins: [
     blogPlugin({
-      // 其他配置 ...
+      // 其他选项 ...
       type: [
         {
           key: 'star',
           filter: ({ frontmatter }) => frontmatter.star,
           path: '/star/',
           layout: 'StarList',
-          frontmatter: () => ({ title: '星标文章' }),
+          frontmatter: () => ({ title: '星标页面' }),
         },
       ],
     }),
@@ -136,34 +133,32 @@ export default {
 }
 ```
 
-看，设置这两种类型很容易。有关完整选项，请参阅[博客分类配置](./config.md#博客分类配置)和[博客类型配置](./config.md#博客类型配置)。
+如需完整的选项列表，请参阅 [Category 配置](./config.md#blog-category-config) 和 [Type 配置](./config.md#blog-type-config)。
 
-## 在客户端使用组合 API
+## 在客户端使用组合式 API
 
-当生成每个页面时，插件将在 `frontmatter.blog` 中设置如下信息：
+在页面生成过程中，插件会将以下信息注入到 `frontmatter.blog` 中：
 
 ```ts
 interface BlogFrontmatterOptions {
   /** 当前页面的类型 */
   type: 'category' | 'type'
-  /** 在当前分类或类别下全局唯一的 key */
+  /** 当前分类或标签下的唯一 key */
   key: string
   /**
-   * 当前的分类名称
+   * 当前分类名称
    *
-   * @description 仅在分类子项目页面中可用
+   * @description 仅在分类子项页面可用
    */
   name?: string
 }
 ```
 
-所以你可以直接调用 `useBlogCategory()` 和 `useBlogType()`，结果将是当前路由绑定的类别或类型。
+你可以使用 `useBlogCategory()` 和 `useBlogType()` 钩子来获取绑定到当前路由的数据。或者，你可以传递一个特定的 `key` 作为参数来检索与该 key 相关的数据。
 
-此外，你可以通过传递所需的 `key` 作为参数，来获得绑定到该 `key` 的信息。
+基于上面的配置示例，以下是如何在客户端获取标签和星标信息的方法：
 
-对于上方的 Node 配置而言，你可以在客户端通过如下方式获取 tag 和 star 的信息：
-
-`TagMap` 布局:
+`TagMap` 布局：
 
 ```vue
 <script setup lang="ts">
@@ -175,7 +170,7 @@ const categoryMap = useBlogCategory('tag')
 
 <template>
   <div>
-    <h1>Tag page</h1>
+    <h1>标签页</h1>
     <ul>
       <li v-for="({ items, path }, name) in categoryMap.map" :key="path">
         <RouteLink :key="name" :to="path" class="category">
@@ -190,7 +185,7 @@ const categoryMap = useBlogCategory('tag')
 </template>
 ```
 
-`TagList` 布局:
+`TagList` 布局：
 
 ```vue
 <script setup lang="ts">
@@ -202,7 +197,7 @@ const categoryMap = useBlogCategory('tag')
 
 <template>
   <div>
-    <h1>Tag page</h1>
+    <h1>标签页</h1>
     <div class="category-wrapper">
       <RouteLink
         v-for="({ items, path }, name) in categoryMap.map"
@@ -217,7 +212,7 @@ const categoryMap = useBlogCategory('tag')
       </RouteLink>
     </div>
     <div v-if="categoryMap.currentItems" class="article-wrapper">
-      <div v-if="!categoryMap.currentItems.length">Nothing in here.</div>
+      <div v-if="!categoryMap.currentItems.length">这里没有文章。</div>
       <article
         v-for="{ info, path } in categoryMap.currentItems"
         :key="path"
@@ -229,17 +224,15 @@ const categoryMap = useBlogCategory('tag')
         </header>
         <hr />
         <div class="article-info">
-          <span v-if="info.author" class="author"
-            >Author: {{ info.author }}</span
-          >
+          <span v-if="info.author" class="author">作者: {{ info.author }}</span>
           <span v-if="info.date" class="date"
-            >Date: {{ new Date(info.date).toLocaleDateString() }}</span
+            >日期: {{ new Date(info.date).toLocaleDateString() }}</span
           >
           <span v-if="info.category" class="category"
-            >Category: {{ info.category.join(', ') }}</span
+            >分类: {{ info.category.join(', ') }}</span
           >
           <span v-if="info.tag" class="tag"
-            >Tag: {{ info.tag.join(', ') }}</span
+            >标签: {{ info.tag.join(', ') }}</span
           >
         </div>
         <div v-if="info.excerpt" class="excerpt" v-html="info.excerpt" />
@@ -249,7 +242,7 @@ const categoryMap = useBlogCategory('tag')
 </template>
 ```
 
-`StarList` 布局:
+`StarList` 布局：
 
 ```vue
 <script setup lang="ts">
@@ -274,29 +267,29 @@ const stars = useBlogType('star')
       </header>
       <hr />
       <div class="article-info">
-        <span v-if="info.author" class="author">Author: {{ info.author }}</span>
+        <span v-if="info.author" class="author">作者: {{ info.author }}</span>
         <span v-if="info.date" class="date"
-          >Date: {{ new Date(info.date).toLocaleDateString() }}</span
+          >日期: {{ new Date(info.date).toLocaleDateString() }}</span
         >
         <span v-if="info.category" class="category"
-          >Category: {{ info.category.join(', ') }}</span
+          >分类: {{ info.category.join(', ') }}</span
         >
-        <span v-if="info.tag" class="tag">Tag: {{ info.tag.join(', ') }}</span>
+        <span v-if="info.tag" class="tag">标签: {{ info.tag.join(', ') }}</span>
       </div>
       <div v-if="info.excerpt" class="excerpt" v-html="info.excerpt" />
     </article>
   </div>
-  <div v-else>Nothing in here.</div>
+  <div v-else>这里没有文章。</div>
 </template>
 ```
 
-有关返回类型，请参阅 [Composition API 返回类型](./config.md#可组合式-API)。
+关于返回类型详情，请参阅 [组合式 API 返回类型](./config.md#composition-api)。
 
-## 多语言支持
+## 国际化支持
 
-该插件添加了原生多语言支持，因此你的设置将自动应用于每种语言。
+本插件支持原生国际化。你的配置会自动应用于每个语言环境。
 
-例如，如果用户进行了以下 locales 配置，并且你正在设置上面的“star”示例:
+例如，如果你在配置中定义了以下语言环境：
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -311,29 +304,29 @@ export default {
 }
 ```
 
-那么 `/zh/star/` 和 `/star/` 都将可用，并且只会显示对应语言下的文章。
+插件将自动生成 `/zh/star/` 和 `/star/`。每个路径下只会显示属于对应语言环境的文章。
 
-## 摘要生成
+## 生成摘要
 
-这个插件提供了一个内置的摘要生成器，可以通过将 `excerpt` 选项设置为 `true` 来启用。
+本插件包含一个内置的摘要生成器，通过设置 `excerpt: true` 启用。
 
-::: tip 摘要介绍
+::: tip 摘要的限制
 
-摘要是一个 HTML 片段，被用于在博客列表中显示文章的简短描述，所以摘要有如下限制:
+摘要是一个用于展示文章简短预览的 HTML 片段。请注意以下限制：
 
-- 摘要不支持任何未知标签以及 Vue 语法，所以此类内容会在生成时被移除。如果你有自定义组件 (非 Vue 组件)，请配置 `isCustomElement` 选项。
-- 由于摘要是一个 HTML 片段，所以你将无法通过相对路径或别名引入任何图片，这些图片会被直接移除。如果你想要保留图片，请使用基于 `.vuepress/public` 的绝对路径或完整路径以确保它们可以在其他地址被访问。
+- **语法支持**：未知标签（包括 Vue 组件）和 Vue 特有的语法将在生成过程中被移除。若要保留自定义非 Vue 元素，请使用 `isCustomElement` 选项。
+- **资源引用**：由于摘要是 HTML 片段，图片相对路径和别名将被移除。为确保图片在摘要中正确显示，请使用绝对路径（基于 `.vuepress/public`）或完整的 URL。
 
 :::
 
-摘要生成器将尝试从 Frontmatter 内容中找到有效的摘要分隔符，如果找到，它将使用分隔符之前的内容，分隔符默认为 `<!-- more -->`，并且你可以通过 `excerptSeparator` 选项来自定义它。
+生成器优先使用分隔符来确定摘要。默认分隔符为 `<!-- more -->`，可以通过 `excerptSeparator` 选项进行自定义。
 
-如果找不到有效的分隔符，它将从 Markdown 文件的开头开始解析内容，直到长度达到预设值时停止。该值默认为 `300`，你可以通过设置 `excerptLength` 选项来自定义它。
+如果未找到有效的分隔符，生成器将提取文件开头的内容，直到达到指定长度（默认：`300` 个字符）。该长度可以通过 `excerptLength` 选项调整。
 
-要选择哪个页面应该生成摘要，你可以使用 `excerptFilter` 选项。
+若要控制哪些页面需要生成摘要，请使用 `excerptFilter` 选项。
 
 ::: tip 示例
 
-通常，如果用户设置了 `frontmatter.description`，你可能希望使用它们，因此如果 `frontmatter.description` 不为空，你可以让过滤器函数返回 `false`。
+你可能更倾向于在 `frontmatter.description` 存在时直接使用它作为摘要，你可以配置过滤函数，当 `frontmatter.description` 存在时返回 `false`，从而跳过这些页面的自动生成。
 
 :::

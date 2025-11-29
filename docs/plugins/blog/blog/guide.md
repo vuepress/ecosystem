@@ -4,21 +4,21 @@ icon: lightbulb
 
 # Guide
 
-Adds blog functionality to VuePress themes with article collection, categorization, and excerpt generation.
+Empowers VuePress themes with blog functionality, including article collection, categorization, and excerpt generation.
 
 ## Article Collection
 
-The plugin filters pages using the `filter` option to determine which pages should be treated as articles.
+The plugin uses the `filter` option to determine which pages should be treated as articles.
 
 ::: tip
-By default, all pages generated from Markdown files except the homepage are considered articles.
+By default, all pages generated from Markdown files are considered articles, excluding the homepage.
 :::
 
 ## Gathering Info
 
-Set the `getInfo` option with a function that extracts article information from pages.
+Use the `getInfo` option to define a function that extracts article metadata from pages.
 
-The plugin injects collected information into the `routeMeta` field, making it available through Composition API.
+The plugin injects this collected information into the `routeMeta` field, making it accessible via the Composition API.
 
 ::: details Demo
 
@@ -30,20 +30,20 @@ export default {
   plugins: [
     blogPlugin({
       filter: ({ filePathRelative, frontmatter }) => {
-        // drop those pages which is NOT generated from file
+        // Exclude pages not generated from files
         if (!filePathRelative) return false
 
-        // drop those pages in `archives` directory
+        // Exclude pages in the `archives` directory
         if (filePathRelative.startsWith('archives/')) return false
 
-        // drop those pages which do not use default layout
+        // Exclude pages that do not use the default layout
         if (frontmatter.home || frontmatter.layout) return false
 
         return true
       },
 
       getInfo: ({ frontmatter, title, git = {}, data = {} }) => {
-        // get page info
+        // Extract page info
         const info: Record<string, unknown> = {
           title,
           author: frontmatter.author || '',
@@ -65,25 +65,18 @@ export default {
 
 ## Customizing Categories and Types
 
-Basically, you would want 2 types of collections in your blog:
+This plugin allows you to organize articles into two primary collection types:
 
-- Category:
+- **Category**: Groups articles based on labels (e.g., Tags, Categories).
+- **Type**: Filters articles based on specific conditions (e.g., "Diary" entries, "Starred" posts).
 
-  "Category" means grouping articles with their labels.
+You can configure these using the `category` and `type` array options.
 
-  For example, each article may have "categories" and "tags".
+### Category Configuration
 
-- Type:
+Use the `category` option to create label-based groupings.
 
-  "Type" means identifying articles with conditions.
-
-  For example, you may want to describe some of your articles as diary.
-
-After understanding the description of these 2 types, you can set the `category` and `type` options, each accepts an array, and each element represents a configuration.
-
-Let's start with 2 examples here.
-
-Imagine you are setting tags for each article with the `tag` field in page frontmatter. You want a tag mapping page in `/tag/` with `TagMap` layout, and group each tag list with tagName in `/tag/tagName` with `TagList` layout, you probably need a configuration like this:
+For example, if you want to group articles by "tags" defined in the frontmatter, generate a map page at `/tag/` (using a `TagMap` layout), and list articles for specific tags at `/tag/:tagName` (using a `TagList` layout), you would use the following configuration:
 
 ```ts title="theme entrance"
 import { blogPlugin } from '@vuepress/plugin-blog'
@@ -111,7 +104,11 @@ export default {
 }
 ```
 
-Also, you may want to star some of your articles and display them to visitors. When you are setting `star: true` in frontmatter to mark them, you probably need a configuration like this to display them in the `/star/` path with `StarList` layout:
+### Type Configuration
+
+Use the `type` option to create specific collection lists.
+
+For example, to display a list of "Starred" articles (marked by `star: true` in the frontmatter) at `/star/` using a `StarList` layout:
 
 ```ts title="theme entrance"
 import { blogPlugin } from '@vuepress/plugin-blog'
@@ -136,11 +133,11 @@ export default {
 }
 ```
 
-See, setting these 2 types is easy. For full options, please see [Category Config](./config.md#blog-category-config) and [Type Config](./config.md#blog-type-config).
+For a complete list of options, please refer to the [Category Config](./config.md#blog-category-config) and [Type Config](./config.md#blog-type-config).
 
 ## Using Composition API in Client-side
 
-When generating each page, the plugin will set the following information under `frontmatter.blog`:
+During page generation, the plugin injects the following information into `frontmatter.blog`:
 
 ```ts
 interface BlogFrontmatterOptions {
@@ -157,11 +154,9 @@ interface BlogFrontmatterOptions {
 }
 ```
 
-So you can invoke `useBlogCategory()` and `useBlogType()` directly, and the result will be the category or type bound to the current route.
+You can use the `useBlogCategory()` and `useBlogType()` hooks to retrieve the data bound to the current route. Alternatively, you can pass a specific `key` as an argument to retrieve data associated with that key.
 
-Also, you can pass the `key` you want as an argument, then you will get information bound to that key.
-
-So with the node side settings above, you can get information about "tag" and "star" in the client side:
+Based on the configuration examples above, here is how you can access "tag" and "star" data on the client side:
 
 `TagMap` layout:
 
@@ -217,7 +212,7 @@ const categoryMap = useBlogCategory('tag')
       </RouteLink>
     </div>
     <div v-if="categoryMap.currentItems" class="article-wrapper">
-      <div v-if="!categoryMap.currentItems.length">Nothing in here.</div>
+      <div v-if="!categoryMap.currentItems.length">No articles found.</div>
       <article
         v-for="{ info, path } in categoryMap.currentItems"
         :key="path"
@@ -286,17 +281,17 @@ const stars = useBlogType('star')
       <div v-if="info.excerpt" class="excerpt" v-html="info.excerpt" />
     </article>
   </div>
-  <div v-else>Nothing in here.</div>
+  <div v-else>No articles found.</div>
 </template>
 ```
 
-For return types, please see [Composition API Return Types](./config.md#composition-api).
+For details on return types, please refer to [Composition API Return Types](./config.md#composition-api).
 
 ## I18n Support
 
-This plugin adds native i18n support, so your settings will be automatically applied to each language.
+This plugin features native Internationalization (i18n) support. Your configurations are automatically applied to each locale.
 
-For example, if the user has the following locales config, and you are setting the "star" example above:
+For example, if you define the following locales in your config:
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -311,29 +306,29 @@ export default {
 }
 ```
 
-Then `/zh/star/` and `/star/` will both be available, and only articles under the correct locale will appear.
+The plugin will automatically generate `/zh/star/` alongside `/star/`. Each path will only display articles belonging to the corresponding locale.
 
 ## Generating Excerpt
 
-This plugin provides a built-in excerpt generator, which can be enabled by setting the `excerpt` option to `true`.
+The plugin includes a built-in excerpt generator, which can be enabled by setting `excerpt: true`.
 
-::: tip Excerpt introduction
+::: tip Excerpt Limitations
 
-An excerpt is an HTML fragment that is used to display a short description of an article in the blog list, so the excerpt has the following restrictions:
+An excerpt is an HTML fragment used to display a short preview of an article. Please note the following restrictions:
 
-- It doesn't support any unknown tags (including all Vue components) and Vue syntax, so these contents will be removed when generating. If you have custom components (non-Vue components), set the `isCustomElement` option.
-- Since the excerpt is an HTML fragment, you will not be able to import any images via relative paths or aliases, they will be removed directly. If you want to keep images, please use absolute paths based on `.vuepress/public` or full URLs to ensure they can be accessed in other places.
+- **Syntax Support**: Unknown tags (including Vue components) and Vue-specific syntax will be removed during generation. To preserve custom non-Vue elements, use the `isCustomElement` option.
+- **Assets**: As excerpts are HTML fragments, relative paths and aliases for images will be removed. To ensure images display correctly in excerpts, use absolute paths (based on `.vuepress/public`) or full URLs.
 
 :::
 
-The excerpt generator will try to find a valid excerpt separator from markdown contents, if it finds one, it will use content before the separator. The separator is default `<!-- more -->`, and you can customize it by setting the `excerptSeparator` option.
+The generator prioritizes the use of a separator to determine the excerpt. The default separator is `<!-- more -->`, which can be customized via the `excerptSeparator` option.
 
-If it cannot find a valid separator, it will parse content from the beginning of the markdown file, and stop till its length reaches a preset value. The value is default `300`, and you can customize it by setting the `excerptLength` option.
+If no valid separator is found, the generator extracts content from the beginning of the file up to a specified length (default: `300` characters). This length can be adjusted using the `excerptLength` option.
 
-To choose which page should generate excerpt, you can use the `excerptFilter` option.
+To control which pages should generate excerpts, use the `excerptFilter` option.
 
 ::: tip Example
 
-Normally you may want to use `frontmatter.description` if users set them, so you can let the filter function return `false` if `frontmatter.description` is not empty.
+You may prefer to use `frontmatter.description` as excerpt when available, you can configure the filter function to return `false` whenever `frontmatter.description` is present, skipping the automatic generation for those pages.
 
 :::
