@@ -6,11 +6,11 @@ icon: la:git-alt
 
 <NpmBadge package="@vuepress/plugin-git" />
 
-This plugin will collect git information of your pages, including the created and updated time, the contributors, the changelog, etc.
+This plugin collects Git information for your pages, including creation and update timestamps, contributor lists, and changelogs.
 
-The [lastUpdated](../../themes/default/config.md#lastupdated) and [contributors](../../themes/default/config.md#contributors) of default theme is powered by this plugin.
+The [lastUpdated](../../themes/default/config.md#lastupdated) and [contributors](../../themes/default/config.md#contributors) features in the default theme are powered by this plugin.
 
-This plugin is mainly used to develop themes. You won't need to use it directly in most cases.
+This plugin is primarily intended for theme development. In most cases, you will not need to use it directly.
 
 ## Usage
 
@@ -32,12 +32,12 @@ export default {
 
 ## Git Repository
 
-This plugin requires your project to be inside a [Git Repository](https://git-scm.com/book/en/Git-Basics-Getting-a-Git-Repository), so that it can collect information from the commit history.
+This plugin requires your project to be located within a [Git Repository](https://git-scm.com/book/en/Git-Basics-Getting-a-Git-Repository) to properly collect data from the commit history.
 
-You should ensure all commits are available when building your site. For example, CI workflows usually clone your repository with [--depth 1](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---depthltdepthgt) to avoid fetching all commits, so you should disable the behavior to make this plugin work properly in CI.
+Ensure that the full commit history is available when building your site. CI workflows often use [--depth 1](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---depthltdepthgt) when cloning repositories to improve performance, which prevents the plugin from accessing the necessary history. You must disable this shallow clone behavior (usually by setting `fetch-depth: 0`) for the plugin to work correctly in CI environments.
 
 ::: warning
-This plugin will significantly slow down the speed of data preparation, especially when you have a lot of pages. You can consider disabling this plugin in `dev` mode to get better development experience.
+This plugin may significantly increase data preparation time during builds, especially for projects with a large number of pages. You may consider disabling this plugin in `dev` mode to improve the development experience.
 :::
 
 ## Options
@@ -50,7 +50,7 @@ This plugin will significantly slow down the speed of data preparation, especial
 
 - Details:
 
-  Whether to collect page created time or not.
+  Whether to collect the creation timestamp of the page.
 
 ### updatedTime
 
@@ -60,7 +60,7 @@ This plugin will significantly slow down the speed of data preparation, especial
 
 - Details:
 
-  Whether to collect page updated time or not.
+  Whether to collect the update timestamp of the page.
 
 ### contributors
 
@@ -69,18 +69,17 @@ This plugin will significantly slow down the speed of data preparation, especial
   ```ts
   interface ContributorInfo {
     /**
-     * Contributor's username on the git hosting service
+     * The contributor's username on the Git hosting service
      */
     username: string
     /**
-     * Contributor name displayed on the page, default is `username`
+     * The contributor's display name on the page. Defaults to `username`.
      */
     name?: string
     /**
-     * The alias of the contributor,
-     * Since contributors may have different usernames saved in their local git configuration
-     * compared to their usernames on the hosting service, In this case, aliases can be used to
-     * map to the actual usernames.
+     * Aliases for the contributor.
+     * Useful when a contributor's local Git username differs from their
+     * hosting service username. Use aliases to map them to the correct account.
      */
     alias?: string[] | string
     /**
@@ -88,40 +87,39 @@ This plugin will significantly slow down the speed of data preparation, especial
      */
     email?: string
     /**
-     * The alternative emails of the contributor on the Git hosting service,
-     * or emails they have used in the past.
+     * Alternative emails for the contributor (e.g., emails used in past commits).
      */
     emailAlias?: string[] | string
     /**
-     * The avatar url of the contributor.
+     * The avatar URL of the contributor.
      *
-     * If the git hosting service is `github`, it can be ignored and left blank,
-     * as the plugin will automatically fill it in.
+     * If the hosting service is `github`, this can be left blank,
+     * as the plugin will automatically populate it.
      */
     avatar?: string
     /**
-     * The url of the contributor
+     * The profile URL of the contributor.
      *
-     * If the git hosting service is `github`, it can be ignored and left blank,
-     * as the plugin will automatically fill it in.
+     * If the hosting service is `github`, this can be left blank,
+     * as the plugin will automatically populate it.
      */
     url?: string
   }
 
   interface ContributorsOptions {
     /**
-     * Contributor information
+     * Pre-defined contributor information
      */
     info?: ContributorInfo[]
 
     /**
-     * Whether to add avatar in contributor information
+     * Whether to include avatars in contributor information
      * @default false
      */
     avatar?: boolean
 
     /**
-     * Avatar url pattern
+     * The pattern for avatar URLs
      * - `:username` - Contributor's username
      *
      * @example 'https://github.com/:username'
@@ -129,8 +127,8 @@ This plugin will significantly slow down the speed of data preparation, especial
     avatarPattern?: string
 
     /**
-     * Functions to transform contributors, e.g. remove duplicates ones and sort them.
-     * The input is the contributors collected by this plugin, and the output should be the transformed contributors.
+     * A function to transform the contributors list (e.g., to deduplicate or sort).
+     * Accepts the list collected by the plugin and returns the transformed list.
      */
     transform?: (contributors: GitContributorInfo[]) => GitContributorInfo[]
   }
@@ -140,7 +138,7 @@ This plugin will significantly slow down the speed of data preparation, especial
 
 - Details:
 
-  Whether to collect page contributors or not.
+  Whether to collect contributor information for the page.
 
 ### changelog
 
@@ -149,40 +147,40 @@ This plugin will significantly slow down the speed of data preparation, especial
   ```ts
   interface ChangelogOptions {
     /**
-     * Maximum number of changelog
+     * The maximum number of changelog entries to collect
      */
     maxCount?: number
 
     /**
-     * The url of the git repository, e.g: https://github.com/vuepress/ecosystem
+     * The URL of the Git repository, e.g., https://github.com/vuepress/ecosystem
      */
     repoUrl?: string
 
     /**
-     * Commit url pattern
+     * The pattern for commit URLs
      *
-     * - `:repo` - The url of the git repository
-     * - `:hash` - Hash of the commit record
+     * - `:repo` - The URL of the Git repository
+     * - `:hash` - The hash of the commit
      *
      * @default ':repo/commit/:hash'
      */
     commitUrlPattern?: string
 
     /**
-     * Issue url pattern
+     * The pattern for issue URLs
      *
-     * - `:repo` - The url of the git repository
-     * - `:issue` - Id of the issue
+     * - `:repo` - The URL of the Git repository
+     * - `:issue` - The ID of the issue
      *
      * @default ':repo/issues/:issue'
      */
     issueUrlPattern?: string
 
     /**
-     * Tag url pattern
+     * The pattern for tag URLs
      *
-     * - `:repo` - The url of the git repository
-     * - `:tag` - Name of the tag
+     * - `:repo` - The URL of the Git repository
+     * - `:tag` - The name of the tag
      *
      * @default ':repo/releases/tag/:tag'
      */
@@ -194,7 +192,7 @@ This plugin will significantly slow down the speed of data preparation, especial
 
 - Details:
 
-  Whether to collect page changelog or not.
+  Whether to collect the changelog for the page.
 
 ### filter
 
@@ -202,7 +200,7 @@ This plugin will significantly slow down the speed of data preparation, especial
 
 - Details:
 
-  Page filter, if it returns `true`, the page will collect git information.
+  A function to filter pages. Git information will only be collected if this function returns `true`.
 
 ### locales
 
@@ -211,27 +209,27 @@ This plugin will significantly slow down the speed of data preparation, especial
   ```ts
   export interface GitLocaleData {
     /**
-     * Contributors title
+     * The title for the contributors section
      */
     contributors: string
 
     /**
-     * Changelog title
+     * The title for the changelog section
      */
     changelog: string
 
     /**
-     * Word to represent a commit "on" a time
+     * The text representing a commit "on" a specific date
      */
     timeOn: string
 
     /**
-     * Changelog button
+     * The text for the "View Changelog" button
      */
     viewChangelog: string
 
     /**
-     * Latest updated
+     * The text for "Latest Updated"
      */
     latestUpdateAt: string
   }
@@ -239,7 +237,7 @@ This plugin will significantly slow down the speed of data preparation, especial
 
 - Details:
 
-  Locales configuration, used in the [Git Component](#component).
+  Locale configuration, primarily used by the [Git Components](#component).
 
 ## Frontmatter
 
@@ -249,7 +247,7 @@ This plugin will significantly slow down the speed of data preparation, especial
 
 - Details:
 
-  An array of relative paths to be included when calculating page data.
+  An array of relative file paths. The Git history of these files will be included when calculating the current page's data (e.g., timestamps and contributors).
 
 - Example:
 
@@ -267,10 +265,10 @@ gitInclude:
 
 - Details:
 
-  Whether to collect contributor information for the current page, this value will override the [contributors](#contributors) configuration item.
-  - `true` - Collect contributor information
-  - `false` - Do not collect contributor information
-  - `string[]` - List of additional contributors, sometimes there are additional contributors on the page, and this configuration item can be used to specify the list of additional contributors to obtain contributor information
+  Controls the collection of contributor information for the current page. This overrides the global [contributors](#contributors) option.
+  - `true` - Enable collection.
+  - `false` - Disable collection.
+  - `string[]` - A list of additional contributors. Useful for manually specifying contributors who may not appear in the Git history.
 
 ### changelog
 
@@ -278,7 +276,7 @@ gitInclude:
 
 - Details:
 
-  Whether to collect the change history for the current page, this value will override the [changelog](#changelog) configuration item.
+  Whether to collect the changelog for the current page. This overrides the global [changelog](#changelog) option.
 
 ## Composables
 
@@ -286,7 +284,7 @@ You can import the following composables from `@vuepress/plugin-git/client`.
 
 ### useChangelog
 
-Get the changelog of the current page.
+Returns the changelog for the current page.
 
 ```ts
 export interface CoAuthorInfo {
@@ -314,15 +312,15 @@ export interface GitChangelogItem extends GitChangelogInfo {
    */
   message: string
   /**
-   * The url of the commit
+   * The URL of the commit
    */
   commitUrl?: string
   /**
-   * release tag
+   * Release tag associated with the commit
    */
   tag?: string
   /**
-   * The url of the release tag
+   * The URL of the release tag
    */
   tagUrl?: string
   /**
@@ -340,7 +338,7 @@ export interface GitChangelogItem extends GitChangelogInfo {
   coAuthors?: CoAuthorInfo[]
 
   /**
-   * Date text of the commit
+   * Formatted date string of the commit
    */
   date: string
 }
@@ -352,7 +350,7 @@ export const useChangelog: (
 
 ### useContributors
 
-Get the contributors of the current page.
+Returns the list of contributors for the current page.
 
 ```ts
 export interface GitContributorInfo {
@@ -366,7 +364,7 @@ export interface GitContributorInfo {
   email: string
 
   /**
-   * Contributor username on the git hosting service
+   * Contributor username on the Git hosting service
    */
   username: string
   /**
@@ -374,11 +372,11 @@ export interface GitContributorInfo {
    */
   commits: number
   /**
-   * Contributor avatar
+   * Contributor avatar URL
    */
   avatar?: string
   /**
-   * The url of the contributor
+   * Contributor profile URL
    */
   url?: string
 }
@@ -390,12 +388,12 @@ export const useContributors: (
 
 ### useLastUpdated
 
-Get the last updated time of the current page.
+Returns the last updated time of the current page.
 
 ```ts
 export interface LastUpdated {
   /**
-   * The date object of the last updated time
+   * The Date object of the last updated time
    */
   date: Date
   /**
@@ -407,7 +405,7 @@ export interface LastUpdated {
    */
   text: string
   /**
-   * The locale of the last updated time
+   * The locale string for the date format
    */
   locale: string
 }
@@ -419,9 +417,9 @@ export const useLastUpdated: (
 
 ## Page Data
 
-This plugin will add a `git` field to page data.
+This plugin injects a `git` field into the page data.
 
-After using this plugin, you can get the collected git information in page data:
+You can access the collected Git information via the page data object:
 
 ```ts
 import type { GitPluginPageData } from '@vuepress/plugin-git'
@@ -441,9 +439,9 @@ export default {
 
 - Details:
 
-  Unix timestamp in milliseconds of the first commit of the page.
+  The Unix timestamp (in milliseconds) of the page's first commit.
 
-  This attribute would take the minimum of the first commit timestamps of the current page and the files listed in [gitInclude](#gitinclude).
+  This value reflects the earliest commit timestamp among the current page and any files listed in [gitInclude](#gitinclude).
 
 ### git.updatedTime
 
@@ -451,9 +449,9 @@ export default {
 
 - Details:
 
-  Unix timestamp in milliseconds of the last commit of the page.
+  The Unix timestamp (in milliseconds) of the page's last commit.
 
-  This attribute would take the maximum of the last commit timestamps of the current page and the files listed in [gitInclude](#gitinclude).
+  This value reflects the latest commit timestamp among the current page and any files listed in [gitInclude](#gitinclude).
 
 ### git.contributors
 
@@ -474,9 +472,9 @@ interface GitContributorInfo {
 
 - Details:
 
-  The contributors information of the page.
+  The list of contributors for the page.
 
-  This attribute would also include contributors to the files listed in [gitInclude](#gitinclude).
+  This list includes contributors from the current page and any files listed in [gitInclude](#gitinclude).
 
 ### git.changelog
 
@@ -508,15 +506,15 @@ interface GitChangelogInfo {
    */
   message: string
   /**
-   * The url of the commit
+   * The URL of the commit
    */
   commitUrl?: string
   /**
-   * release tag
+   * Release tag associated with the commit
    */
   tag?: string
   /**
-   * The url of the release tag
+   * The URL of the release tag
    */
   tagUrl?: string
   /**
@@ -537,17 +535,17 @@ interface GitChangelogInfo {
 
 - Details:
 
-  The changelog of the page.
+  The changelog for the page.
 
-  This attribute would also include contributors to the files listed in [gitInclude](#gitinclude).
+  This list includes commit history from the current page and any files listed in [gitInclude](#gitinclude).
 
 ## Git Component{#component}
 
-The plugin provides global components related to Git information, which can be used in themes.
+The plugin registers global components for displaying Git information, which can be easily used within themes.
 
 ### GitContributors
 
-List the contributor information for the current page.
+Displays a list of contributors for the current page.
 
 ```vue{4}
 <template>
@@ -558,13 +556,13 @@ List the contributor information for the current page.
 </template>
 ```
 
-**Effect Preview:**
+**Preview:**
 
 <GitContributors :header-level="4" />
 
 ### GitChangelog
 
-List the changelog of the current page.
+Displays the changelog for the current page.
 
 ```vue{4}
 <template>
@@ -575,6 +573,6 @@ List the changelog of the current page.
 </template>
 ```
 
-**Effect Preview:**
+**Preview:**
 
 <GitChangelog :header-level="4" />
