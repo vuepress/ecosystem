@@ -2,11 +2,13 @@
 icon: chart-no-axes-combined
 ---
 
+s
+
 # clarity-analytics
 
 <NpmBadge package="@vuepress/plugin-clarity-analytics" />
 
-Integrate [Clarity Analytics](https://clarity.microsoft.com/) into VuePress.
+Seamlessly integrate [Microsoft Clarity](https://clarity.microsoft.com/) into your VuePress project.
 
 ## Usage
 
@@ -26,18 +28,25 @@ export default {
 }
 ```
 
-### Reporting Events
+## Features
 
-The plugin helps you understand user interaction with your website.
+Microsoft Clarity is a behavioral analysis tool that helps you understand how users interact with your website. This plugin simplifies the setup process, enabling you to capture actionable insights without complex configuration.
 
-[Supported Features](https://learn.microsoft.com/en-us/clarity/setup-and-installation/about-clarity#supported-features)
+Key features include:
 
-- Session recordings
-- Heatmaps
-- Event and funnel tracking
-- Chat and summarize with Copilot
+- **Session Recordings:** Watch playbacks of user sessions to see exactly how they navigate your site.
+- **Heatmaps:** Visualize clicks, scrolls, and area engagement to identify what content matters most.
+- **Smart Insights:** Leverage AI-powered analysis with Copilot to summarize user behavior and trends.
 
-After using this plugin, the global `clarity()` function is available on the `window` object for [advanced features](https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-api).
+For more details on capabilities, please refer to the [Clarity Features Overview](https://learn.microsoft.com/en-us/clarity/setup-and-installation/about-clarity#supported-features).
+
+### Advanced Usage
+
+Once the plugin is enabled, the `clarity()` function is exposed on the global `window` object. You can use this to interact with the [Clarity Client API](https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-api) for advanced tasks, such as:
+
+- Identifying users.
+- Tracking custom events.
+- Managing cookie consent.
 
 ## Options
 
@@ -45,10 +54,10 @@ After using this plugin, the global `clarity()` function is available on the `wi
 
 - Type: `string`
 - Required: Yes
-- Details: Clarity Analytics project ID.
+- Details: The Project ID assigned by Microsoft Clarity. You can find this in your Clarity dashboard under Settings.
 
 ### crossOrigin
 
 - Type: `string`
 - Default: `undefined`
-- Details: The `crossorigin` attribute, provides support for `CORS`.
+- Details: The `crossorigin` attribute for the injected script tag. This configures the [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) setting for loading the Clarity resources.
