@@ -6,7 +6,7 @@ icon: chart-no-axes-combined
 
 <NpmBadge package="@vuepress/plugin-umami-analytics" />
 
-Integrate [Umami Analytics](https://umami.is/) into VuePress.
+Seamlessly integrate [Umami Analytics](https://umami.is/)—a privacy-focused, open-source web analytics solution—into your VuePress site.
 
 ## Usage
 
@@ -26,13 +26,13 @@ export default {
 }
 ```
 
-You can use [Umami Cloud](https://cloud.umami.is/login) or [Self-host Umami](https://umami.is/docs/install).
+This plugin supports both [Umami Cloud](https://cloud.umami.is/login) and [Self-hosted](https://umami.is/docs/install) instances.
 
 ### Reporting Events
 
-The plugin automatically reports page view events on page visits and route changes.
+Out of the box, the plugin automatically captures page view events during initial visits and subsequent route changes.
 
-A global `umami` object is available on the `window` object, and you can call `umami.track` for [custom tracking](https://umami.is/docs/tracker-functions).
+For advanced tracking needs, the global `umami` object is exposed on the `window` instance. You can utilize this to trigger [custom events](https://umami.is/docs/tracker-functions) programmatically via `umami.track()`.
 
 ## Options
 
@@ -40,13 +40,13 @@ A global `umami` object is available on the `window` object, and you can call `u
 
 - Type: `string`
 - Required: Yes
-- Details: The website ID from Umami Analytics
+- Details: The unique Website ID provided by your Umami dashboard.
 
 ### link
 
 - Type: `string`
 - Default: `'https://us.umami.is/script.js'`
-- Details: URL to the Umami Analytics tracking script
+- Details: The source URL of the Umami tracking script.
 
 ### autoTrack
 
@@ -54,26 +54,30 @@ A global `umami` object is available on the `window` object, and you can call `u
 - Default: `true`
 - Details:
 
-  By default, Umami tracks all pageviews and events automatically.
+  Controls whether to track pageviews and events automatically.
 
-  Set to `false` to disable automatic tracking and use manual tracking functions.
+  Set this to `false` if you wish to disable automatic data collection and rely solely on manual tracking functions.
 
 ### cache
 
 - Type: `boolean`
 - Details:
 
-  Cache data to improve tracking script performance.
+  Enables caching to improve the tracking script's performance.
 
-  Note: This will use session storage so you may need to inform your users.
+  **Note:** This feature utilizes Session Storage. Depending on your region's regulations, you may need to disclose this usage to your visitors.
 
 ### domains
 
 - Type: `string[]`
-- Details: Restrict tracking to specific domains only.
+- Details:
+
+  A list of allowed domains. Tracking will only occur when the site is accessed via these specific domains.
 
 ### hostUrl
 
 - Type: `string`
 - Default: `link`
-- Details: Custom endpoint for sending tracking data.
+- Details:
+
+  A custom endpoint for sending analytics data. If not specified, it defaults to the script location defined in `link`.

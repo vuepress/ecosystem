@@ -6,9 +6,9 @@ icon: chart-no-axes-combined
 
 <NpmBadge package="@vuepress/plugin-google-analytics" />
 
-Integrate [Google Analytics](https://analytics.google.com/) into VuePress.
+Seamlessly integrate [Google Analytics 4](https://analytics.google.com/) (GA4) into your VuePress site.
 
-This plugin imports [gtag.js](https://developers.google.com/analytics/devguides/collection/gtagjs) to enable [Google Analytics 4](https://support.google.com/analytics/answer/10089681) tracking.
+This plugin leverages the [Global Site Tag (gtag.js)](https://developers.google.com/analytics/devguides/collection/gtagjs) to enable robust traffic analysis and user tracking.
 
 ## Usage
 
@@ -30,11 +30,11 @@ export default {
 
 ### Reporting Events
 
-Google Analytics [automatically collects some events](https://support.google.com/analytics/answer/9234069), such as `page_view`, `first_visit`, etc.
+Google Analytics 4 [automatically collects a wide range of events](https://support.google.com/analytics/answer/9234069) by default, such as `page_view`, `first_visit`, and `scroll`.
 
-If you only need to collect basic site data, simply set the [Measurement ID](#id) correctly.
+For standard metric collection, simply set the [Measurement ID](#id).
 
-After using this plugin, the global `gtag()` function is available on the `window` object for [custom event reporting](https://developers.google.com/analytics/devguides/collection/ga4/events).
+If you require advanced tracking capabilities, this plugin exposes the global `gtag()` function on the `window` object. You can utilize this function to report [custom events](https://developers.google.com/analytics/devguides/collection/ga4/events) programmatically based on user interactions within your site.
 
 ## Options
 
@@ -45,9 +45,9 @@ After using this plugin, the global `gtag()` function is available on the `windo
 
 - Details:
 
-  Google Analytics 4 Measurement ID, which should start with `'G-'`.
+  The Google Analytics 4 Measurement ID (must start with `'G-'`).
 
-  You can follow the instructions [here](https://support.google.com/analytics/answer/9539598) to find your Measurement ID. Note the difference between Google Analytics 4 Measurement ID ("G-" ID) and Universal Analytics Tracking ID ("UA-" ID).
+  Please refer to the [official guide](https://support.google.com/analytics/answer/9539598) to locate your Measurement ID. Ensure you are using a GA4 Measurement ID (`G-XXXXXXXXXX`) rather than a Universal Analytics Tracking ID (`UA-XXXXXXXX`).
 
 - Example:
 
@@ -65,7 +65,7 @@ After using this plugin, the global `gtag()` function is available on the `windo
 
 - Type: `boolean`
 - Details:
-  Set to `true` to enable sending events to DebugView. [See more information on DebugView](https://support.google.com/analytics/answer/7201382).
+  Enables the sending of events to the Google Analytics DebugView. This is useful for verifying your setup and troubleshooting event data during development. [Learn more about DebugView](https://support.google.com/analytics/answer/7201382).
 
 - Example:
 
