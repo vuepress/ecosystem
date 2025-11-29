@@ -28,41 +28,38 @@ export default {
 
 ## Why llms.txt?
 
-Large language models increasingly rely on website information, but face a critical limitation: context windows are too small to handle most websites in their entirety. Converting complex HTML pages with navigation, ads, and JavaScript into LLM-friendly plain text is both difficult and imprecise.
+Large Language Models (LLMs) increasingly rely on web-based documentation to answer user queries and write code. However, standard websites present significant challenges: context windows are limited, and raw HTML—cluttered with navigation, scripts, and styling—is token-expensive and difficult to parse.
 
-While websites serve both human readers and LLMs, the latter benefit from more concise, expert-level information gathered in a single, accessible location. This is particularly important for use cases like development environments, where LLMs need quick access to programming documentation and APIs.
+**llms.txt** bridges this gap. It creates a standardized entry point for AI agents, providing a concise summary of your project and direct links to clean, expert-level documentation. This is particularly critical for development tools, ensuring LLMs have accurate, low-noise access to your APIs and guides.
 
-Add a `/llms.txt` Markdown file to the website to provide LLM-friendly content. This file includes brief background information, guidelines, and links to detailed Markdown files.
+### Plugin Overview
 
-### Plugin Features
+This plugin automatically converts your VuePress documentation into a structured dataset optimized for machine reading.
 
-The plugin retrieves all Markdown files from your document source directory and converts them into LLM-friendly plain text files.
+During the build process, it generates the following assets in your output directory:
 
 ```txt
 📂 .vuepress/dist
 ├── ...
-├── llms.txt
-├── llms-full.txt
-├── markdown-examples.html
-└── markdown-examples.md
+├── llms.txt                # The entry point / map of your documentation
+├── llms-full.txt           # A single file containing your entire documentation
+├── markdown-examples.html  # Your standard web page
+└── markdown-examples.md    # The clean Markdown version of that page
 ```
 
-Click the link below to view the `llms.txt` file of this documentation site:
-
-- <a :href="$withBase('/llms.txt')" target="_blank">llms.txt</a>
-- <a :href="$withBase('/llms-full.txt')" target="_blank">llms-full.txt</a>
-
 ::: tip
-
-The plugin only generates the `llms.txt` file, along with other LLM-friendly documentation files, during the production build—that is, when the `vuepress build` command is executed—and outputs them to the `.vuepress/dist` directory.
-
+These files are generated **only during the production build** (i.e., when running `vuepress build`). They will appear in the `.vuepress/dist` directory alongside your HTML files.
 :::
 
-### `llms.txt`
+## Output Files
 
-The `llms.txt` file contains the **title**, **description**, **details (optional)**, and **Table of Contents (TOC)** for the site.
+### 1. `llms.txt`
 
-The default format is as follows:
+The `llms.txt` file acts as the primary index for AI agents. It contains the **Title**, **Description**, **Details (Optional)**, and a **Table of Contents (TOC)** for your site.
+
+You can view the generated file for this documentation site here: <a :href="$withBase('/llms.txt')" target="_blank">llms.txt</a>.
+
+**Default Format:**
 
 ```md title="llms.txt"
 # Title
@@ -73,73 +70,71 @@ Details (Optional)
 
 ## Table of Contents
 
-- [title](url): description
-- [title](url): description
-- …
+- [Title](url): Description
+- [Title](url): Description
+- ...
 ```
 
-- **Site Title**: Values are determined in the following order:
+**Content Resolution Logic:**
+
+The plugin determines the content for these fields based on the following priority order (highest priority first):
+
+- **Site Title:**
   1. `llmsTxtTemplateGetter.title`
-  1. `heroText` in homepage frontmatter
-  1. Current locale's [title](https://v2.vuepress.vuejs.org/reference/config.html#locales) in VuePress config file
-  1. [title](https://v2.vuepress.vuejs.org/reference/config.html#title) in VuePress config file
-  1. Page title of locale homepage (locale `README.md`)
+  2. `heroText` in the homepage frontmatter
+  3. The current locale's [title](https://v2.vuepress.vuejs.org/reference/config.html#locales) in the VuePress config
+  4. The main [title](https://v2.vuepress.vuejs.org/reference/config.html#title) in the VuePress config
+  5. The page title of the locale homepage (`README.md`)
 
-- **Site Description**: Values are determined in the following order:
+- **Site Description:**
   1. `llmsTxtTemplateGetter.description`
-  1. `tagline` in locale homepage frontmatter
-  1. Current locale's [description](https://v2.vuepress.vuejs.org/reference/config.html#locales) in VuePress config file
-  1. [description](https://v2.vuepress.vuejs.org/reference/config.html#description) in VuePress config file
-  1. `frontmatter.description` in locale homepage (locale `README.md`)
+  2. `tagline` in the locale homepage frontmatter
+  3. The current locale's [description](https://v2.vuepress.vuejs.org/reference/config.html#locales) in the VuePress config
+  4. The main [description](https://v2.vuepress.vuejs.org/reference/config.html#description) in the VuePress config
+  5. `frontmatter.description` in the locale homepage (`README.md`)
 
-- **Site Details (Optional)**: Values are determined in the following order:
+- **Site Details (Optional):**
   1. `llmsTxtTemplateGetter.details`
-  2. `frontmatter.details` in locale homepage (`README.md`)
+  2. `frontmatter.details` in the locale homepage (`README.md`)
 
-- **Table of Contents (TOC)**: Formatted as `- [title](url): description`, where `description` is taken from `frontmatter.description`. If it does not exist, only `- [title](url)` is displayed.
+- **Table of Contents (TOC):**
+  Formatted as `- [title](url): description`. The `description` is pulled from the page's `frontmatter.description`.
 
-  By default, the plugin only generates first-level TOC, and the default getter function is as follows:
+  By default, a flat, first-level TOC is generated. You can customize this behavior (e.g., to support multi-level nesting) by defining a custom getter in the [`llmsTxtTemplateGetter`](#llmstxttemplategetter) option.
 
-  ```ts
-  import { generateTOCLink } from '@vuepress/plugin-llms'
+### 2. `llms-full.txt`
 
-  const defaultTOCGetter = (pages, state) =>
-    pages.map((page) => generateTOCLink(page, state)).join('\n')
-  ```
+The `llms-full.txt` file is a concatenated version of your documentation. It merges the content of all Markdown files into a single text stream, allowing LLMs to ingest your entire knowledge base in one request.
 
-  You can customize it to generate a multi-level TOC by setting a custom function with the [`llmsTxtTemplateGetter`](#llmstxttemplategetter) option.
+You can view the full file for this site here: <a :href="$withBase('/llms-full.txt')" target="_blank">llms-full.txt</a>.
 
-### `llms-full.txt`
-
-`llms-full.txt` contains **links**, **descriptions**, and **Markdown-formatted content** for each page.
-
-Its format is as follows:
+**Format:**
 
 ```txt title="llms-full.txt"
 ---
-url: url
-description: optional description
+url: /path/to/page
+description: A brief summary of the page
 ---
 
-page's Markdown-formatted content
+# Page Title
+
+Full Markdown content of the page...
 
 ---
 
 ---
-url: url
-description: optional description
+url: /path/to/next-page
+description: ...
 ---
 
-page's Markdown-formatted content
-
-…
+...
 ```
 
-The plugin directly merges the content of the Markdown files in the document source directory into `llms-full.txt` so that LLMs can read and analyze it.
+### 3. Individual Page Content
 
-### Page Contents
+In addition to the summary files, the plugin generates a clean Markdown file for every HTML page in your site.
 
-The plugin generates accessible Markdown files for each page in the format `${url}.md`. For example, `/guide/quick-start.html` will produce a corresponding `/guide/quick-start.md` file.
+For example, if your site has a page at `/guide/quick-start.html`, the plugin generates a corresponding `/guide/quick-start.md` file. This allows LLMs to fetch specific pages with zero HTML noise.
 
 ## Options
 
@@ -149,7 +144,7 @@ The plugin generates accessible Markdown files for each page in the format `${ur
 
 - Default: `true`
 
-- Details: Whether to generate the `llms.txt` file, which contains a list of sections with corresponding links.
+- Details: Specifies whether to generate the `llms.txt` file (the index file containing links to section summaries).
 
 ### llmsFullTxt
 
@@ -157,7 +152,7 @@ The plugin generates accessible Markdown files for each page in the format `${ur
 
 - Default: `true`
 
-- Details: Whether to generate the `llms-full.txt` file which contains all the documentation in one file.
+- Details: Specifies whether to generate the `llms-full.txt` file (a consolidated text file containing the entire documentation).
 
 ### llmsPageTxt
 
@@ -165,7 +160,7 @@ The plugin generates accessible Markdown files for each page in the format `${ur
 
 - Default: `true`
 
-- Details: Whether to generate an LLM-friendly version of the documentation for each page on the website.
+- Details: Specifies whether to generate individual LLM-friendly Markdown files for each page of the website.
 
 ### stripHTML
 
@@ -173,7 +168,7 @@ The plugin generates accessible Markdown files for each page in the format `${ur
 
 - Default: `true`
 
-- Details: Whether to strip HTML tags from Markdown files.
+- Details: Determines whether HTML tags should be stripped from the generated Markdown files to ensure cleaner input for LLMs.
 
 ### filter
 
@@ -183,9 +178,9 @@ The plugin generates accessible Markdown files for each page in the format `${ur
 
 - Details:
 
-  Page filter function. When it returns `true`, the page will be included in `llms.txt`, otherwise it will be excluded.
+  A function to filter which pages are included. If the function returns `true`, the page is included in `llms.txt`.
 
-  Pages that are disabled by `frontmatter.llmstxt` or not generated from Markdown files will be excluded anyway.
+  Note that pages explicitly disabled via `frontmatter.llmstxt` or pages not generated from Markdown sources will always be excluded, regardless of this setting.
 
 ### domain
 
@@ -195,9 +190,9 @@ The plugin generates accessible Markdown files for each page in the format `${ur
 
 - Details:
 
-  The domain that will be prepended to URLs in `llms.txt` and other files.
+  An optional domain to prepend to all URLs in `llms.txt` and other generated files.
 
-  Domain attachment is not yet standardized (since it depends on whether the AI can resolve the relative paths that are currently there), but you can add it if needed.
+  While standard relative paths are often sufficient, some AI agents may handle absolute URLs better. Use this option if you need to enforce fully qualified URLs (e.g., `https://example.com/foo/bar.md`).
 
   ```md title="llms.txt"
   - [title](/foo/bar.md) <!-- [!code --] -->
@@ -212,11 +207,16 @@ The plugin generates accessible Markdown files for each page in the format `${ur
 
 - Details:
 
-  The locale of the site to generate. If not set, the plugin will use the default locale of the VuePress site. If you set it to `'all'`, the plugin will generate `llms.txt` for all locales.
+  Controls which locale to generate content for.
+  - If unset, it defaults to the site's root locale.
+  - If set to a specific locale key (e.g., `'/zh/'`), it generates files only for that language.
+  - If set to `'all'`, the plugin generates `llms.txt` resources for every configured locale.
 
-  This option is useful when you have multiple locales and want to generate `llms.txt` for a specific locale, which should have the best documentation quality.
+  ：：： tip Why use `'all'`?
 
-  Also, if you have many self-defined concepts that LLMs cannot understand or translate correctly, you should consider generating `llms.txt` for each locale to avoid confusion with different representations coming from LLM translation and the original documentation.
+  If your documentation contains specialized terminology or concepts that LLMs struggle to translate accurately, generating dedicated `llms.txt` files for each language ensures that international users (and their AI assistants) receive the most precise information available.
+
+  :::
 
 ### llmsTxtTemplate
 
@@ -239,9 +239,7 @@ The plugin generates accessible Markdown files for each page in the format `${ur
 
 - Details:
 
-  A custom template for the `llms.txt` file, allowing for a personalized order of elements.
-
-  By default, `{title}`, `{description}`, `{details}`, and `{toc}` are available.
+  Defines the structure of the `llms.txt` file. You can rearrange the default placeholders—`{title}`, `{description}`, `{details}`, and `{toc}`—or introduce new ones using `llmsTxtTemplateGetter`.
 
 ### llmsTxtTemplateGetter
 
@@ -324,38 +322,38 @@ The plugin generates accessible Markdown files for each page in the format `${ur
 
 - Details:
 
-  Custom variables for the [`llmsTxtTemplate`](#llmstxttemplate).
+  Provides custom variables or getter functions for the [`llmsTxtTemplate`](#llmstxttemplate).
 
-  With this option you can add and override template variables.
+  You can use this to inject static strings or dynamically generated content.
 
-  For example, setting a customized title for `llms.txt`:
+  **Example: Overriding the title**
 
   ```ts
   llmsPlugin({
     llmsTxtTemplateGetter: {
-      title: 'My title',
+      title: 'My Custom Docs Title',
     },
   })
   ```
 
-  Or adding a custom variable `foo` to the template:
+  **Example: Adding a custom variable**
 
   ```ts
   llmsPlugin({
-    llmsTxtTemplate: '# {title}\n\n{foo}',
+    llmsTxtTemplate: '# {title}\n\n{customNote}',
     llmsTxtTemplateGetter: {
-      foo: 'My foo',
+      customNote: 'Note: This content is optimized for AI agents.',
     },
   })
   ```
 
-  You can also add getter functions to the template:
+  **Example: Generating a custom list of pages**
 
   ```ts
   llmsPlugin({
-    llmsTxtTemplate: '# {title}\n\n## Pages\n\n{titles}',
+    llmsTxtTemplate: '# {title}\n\n## Page List\n\n{pageList}',
     llmsTxtTemplateGetter: {
-      titles: (pages, state) =>
+      pageList: (pages, state) =>
         pages.map((page) => `- ${page.title}`).join('\n'),
     },
   })
@@ -363,68 +361,58 @@ The plugin generates accessible Markdown files for each page in the format `${ur
 
 ## Frontmatter
 
-The following `frontmatter` will be used in the plugin.
+The plugin respects the following `frontmatter` properties in your Markdown files.
 
 ### title {#frontmatter-title}
 
 - Types: `string`
 - Details:
-
-  On the homepage (`README.md`), it serves as an alternative title for `llms.txt`.
-
-  On other pages, it functions as the page title.
+  - On the **homepage** (`README.md`), this overrides the site title in `llms.txt`.
+  - On **regular pages**, this serves as the page title in the Table of Contents.
 
 ### description {#frontmatter-description}
 
 - Types: `string`
 - Details:
+  - On the **homepage** (`README.md`), this overrides the site description in `llms.txt`.
+  - On **regular pages**, this provides the page summary in the Table of Contents.
 
-  On the homepage (`README.md`), as an alternative description for `llms.txt`.
-
-  On other pages, as the page description.
-
-  It is recommended to add concise and clear descriptions to the page, providing key information for LLMs to understand it.
+  _Recommendation: Write clear, concise descriptions for every page to help LLMs understand the context and relevance of the link._
 
 ### heroText {#frontmatter-herotext}
 
 - Types: `string`
-
 - Details:
-
-  Being read from homepage (locale `README.md`) only, as title of `llms.txt`.
+  - Used exclusively on the homepage (locale `README.md`). It serves as the primary title source for `llms.txt`.
 
 ### tagline {#frontmatter-tagline}
 
 - Types: `string`
-
 - Details:
-
-  Being read from homepage (locale `README.md`) only, as description of `llms.txt`.
+  - Used exclusively on the homepage (locale `README.md`). It serves as the primary description source for `llms.txt`.
 
 ### details {#frontmatter-details}
 
 - Types: `string`
 - Details:
-
-  Being read from homepage (locale `README.md`) only, as details of `llms.txt`.
+  - Used exclusively on the homepage (locale `README.md`). It provides the content for the `{details}` section in `llms.txt`.
 
 ### llmstxt
 
 - Types: `boolean`
-
 - Default: `true`
-
-- Details: Whether the current page should be included in `llms.txt`.
+- Details:
+  - Controls whether the current page is included in the generated LLM files. Set to `false` to hide a specific page from AI agents.
 
 ## Others
 
-It is recommended to configure redirects so that AI can use addresses with `.md` and `.txt` extensions.
+It is recommended to configure server redirects so that AI agents can reliably access files via `.md` or `.txt` extensions, even if they guess the URL structure.
 
-For example, in `Netlify`, configure the following in `public/_redirects`:
+For example, on **Netlify**, add the following to `public/_redirects`:
 
 ```txt
 /llms.md         /llms.txt 200!
 /llms-full.md    /llms-full.txt 200!
 ```
 
-Options syntax documentation: <https://docs.netlify.com/routing/redirects>
+For more details on redirect syntax, refer to the [Netlify documentation](https://docs.netlify.com/routing/redirects).
