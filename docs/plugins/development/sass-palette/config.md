@@ -10,21 +10,19 @@ icon: settings-2
 
 - Type: `string`
 - Required: Yes
-
-Identifier for palette, used to avoid duplicate registration.
+- Details: The unique identifier for the plugin instance. This is used to scope the style system and avoid conflicts between different plugins or themes.
 
 ### config
 
 - Type: `string`
 - Default: `` `.vuepress/styles/${id}-config.scss` ``
-
-User config file path, relative to source dir.
+- Details: The path to the user's Sass configuration file, relative to the source directory.
 
 ::: tip
 
-This is the file where users set style variables.
+This file is where users define Sass variables.
 
-The default filename starts with ID above.
+The default filename is prefixed with the `id` defined above.
 
 :::
 
@@ -32,12 +30,11 @@ The default filename starts with ID above.
 
 - Type: `string`
 - Default: `"@vuepress/plugin-sass-palette/styles/default/config.scss"`
-
-Default config file path, should be absolute path.
+- Details: The absolute path to the default Sass configuration file.
 
 ::: tip
 
-This is the file you should use to provide default values with `!default`.
+As a plugin developer, you should use this file to provide fallback values for variables using the `!default` flag.
 
 :::
 
@@ -45,48 +42,46 @@ This is the file you should use to provide default values with `!default`.
 
 - Type: `string`
 - Default: `` `.vuepress/styles/${id}-palette.scss` ``
-
-User palette file path, relative to source dir.
+- Details: The path to the user's palette file, relative to the source directory.
 
 ::: tip
 
-This is the file where users control injected CSS variables. All the variables will be converted to kebab-case and injected.
+This file allows users to control injected CSS variables. All variables defined here will be converted to kebab-case and injected into the CSS root.
 
-The default filename starts with ID above.
+The default filename is prefixed with the `id` defined above.
 
 :::
 
 ### defaultPalette
 
 - Type: `string`
-
-Default palette file path, should be absolute path.
+- Details: The absolute path to the default palette file.
 
 ::: tip
 
-This is the file you should use to provide default CSS variables with `!default`. All the variables will be converted to kebab-case and injected.
+As a plugin developer, you should use this file to provide default CSS variables via Sass variables using the `!default` flag. These will also be converted to kebab-case and injected.
 
 :::
 
 ### generator
 
 - Type: `string`
+- Details:
 
-Custom generator used to generate derivative values with palette config.
+  The absolute path to a custom generator file. This is used to derive new values based on the palette configuration.
 
-For example: You may want to provide a `$theme-color-light` based on `$theme-color`.
+  For example, you can use this to generate a `$theme-color-light` variable based on the `$theme-color` provided by the user.
 
 ### style
 
 - Type: `string`
-
-User style file path, relative to source dir.
+- Details: The path to the user's custom style file, relative to the source directory. This is used for standard CSS/Sass customization.
 
 ## Alias
 
-Available aliases are:
+The following aliases are available for import:
 
-- config: `@sass-palette/${id}-config` (based on `id`)
-- palette: `@sass-palette/${id}-palette` (based on `id`)
-- style: `@sass-palette/${id}-style` (only available when `style` option is set)
-- helper: `@sass-palette/helper`
+- **config**: `@sass-palette/${id}-config` (Derived from `id`)
+- **palette**: `@sass-palette/${id}-palette` (Derived from `id`)
+- **style**: `@sass-palette/${id}-style` (Only available when the `style` option is set)
+- **helper**: `@sass-palette/helper`

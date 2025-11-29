@@ -9,22 +9,20 @@ icon: settings-2
 ### id
 
 - 类型：`string`
-- 必填：是
-
-调色板的唯一 ID，用于避免重复注册。
+- 必填: 是
+- 详情：插件实例的唯一标识符。用于隔离样式系统，避免不同插件或主题之间的重复注册与冲突。
 
 ### config
 
 - 类型：`string`
 - 默认值：`` `.vuepress/styles/${id}-config.scss` ``
-
-用户配置文件路径，相对于源文件夹。
+- 详情：用户配置文件的路径，相对于源码目录。
 
 ::: tip
 
-这是用户设置样式变量的文件。
+这是用户设置 Sass 变量的文件。
 
-默认路径的文件名以上方的 ID 作为前缀。
+默认文件名以配置的 `id` 开头。
 
 :::
 
@@ -32,12 +30,11 @@ icon: settings-2
 
 - 类型：`string`
 - 默认值：`"@vuepress/plugin-sass-palette/styles/default/config.scss"`
-
-默认的配置文件路径，应为绝对路径。
+- 详情：默认 Sass 配置文件的绝对路径。
 
 ::: tip
 
-这是你应该通过 `!default` 来提供默认样式变量的文件。
+作为插件开发者，你应该使用此文件并通过 `!default` 标志为变量提供默认回退值。
 
 :::
 
@@ -45,48 +42,46 @@ icon: settings-2
 
 - 类型：`string`
 - 默认值：`` `.vuepress/styles/${id}-palette.scss` ``
-
-用户的调色板文件路径，相对于源文件夹。
+- 详情：用户调色板文件的路径，相对于源码目录。
 
 ::: tip
 
-这是用户控制注入 CSS 变量的文件。所有的变量会被转换为连字符格式然后被注入。
+这是用户控制注入 CSS 变量的文件。此处定义的所有变量都将被转换为 kebab-case（短横线命名）并注入。
 
-默认路径的文件名以上方的 ID 作为前缀。
+默认文件名以配置的 `id` 开头。
 
 :::
 
 ### defaultPalette
 
 - 类型：`string`
-
-默认的调色板文件路径，应为绝对路径。
+- 详情：默认调色板文件的绝对路径。
 
 ::: tip
 
-这是你应该通过 `!default` 来提供默认调色板值的文件。所有的变量会被转换为连字符格式然后被注入。
+作为插件开发者，你应该使用此文件并通过带有 `!default` 标志的 Sass 变量提供默认 CSS 变量。这些变量同样会被转换为 kebab-case 并注入。
 
 :::
 
 ### generator
 
 - 类型：`string`
+- 详情：
 
-自定义的生成器，用于生成调色板配置的衍生值。
+  自定义生成器文件的绝对路径。该文件用于基于调色板配置推导生成新的值。
 
-如：你可能想要根据 `$theme-color` 的值提供一个 `$theme-color-light`。
+  例如：你可以利用它基于用户提供的 `$theme-color` 来生成一个 `$theme-color-light` 变量。
 
 ### style
 
 - 类型：`string`
+- 详情：用户自定义样式文件的路径，相对于源码目录。这通常用于标准的 CSS/Sass 样式覆盖。
 
-用户的样式文件路径，相对于源文件夹。
+## 别名 (Alias)
 
-## 别名
+可用的导入别名如下：
 
-可用的别名如下:
-
-- 配置: `@sass-palette/${id}-config` (基于 `id`)
-- 调色板: `@sass-palette/${id}-palette` (基于 `id`)
-- 样式: `@sass-palette/${id}-style` (仅在设置了 `style` 选项时可用)
-- 助手: `@sass-palette/helper`
+- **config**：`@sass-palette/${id}-config` (基于 `id` 生成)
+- **palette**：`@sass-palette/${id}-palette` (基于 `id` 生成)
+- **style**：`@sass-palette/${id}-style` (仅在设置了 `style` 选项时可用)
+- **helper**：`@sass-palette/helper`

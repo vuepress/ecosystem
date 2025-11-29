@@ -4,61 +4,52 @@ icon: lightbulb
 
 # Guide
 
-Comparing to [`@vuepress/plugin-palette`](../palette.md), this plugin allows you to:
+Compared to [`@vuepress/plugin-palette`](../palette.md), this plugin offers advanced styling capabilities:
 
-- Derive related styles based on user configuration
-- Provide style customization similar to themes in plugins
-- Group applications across multiple plugins or themes via id option
+- **Derived Styles:** Generate related styles based on user configuration.
+- **Theme-like Customization:** Allow plugins to offer style customization similar to themes.
+- **Style Isolation/Sharing:** Group applications across multiple plugins or themes via the `id` option.
 
-Before using the plugin, you need to understand the id option, as well as three styling concepts: configuration, palette and generator.
+To use this plugin effectively, you need to understand the **ID option** and three core styling concepts: **Configuration**, **Palette**, and **Generator**.
 
 ## ID Option
 
-To get started, you should understand that this plugin is designed to work across plugins and themes (unlike the official one only for themes).
+This plugin is designed to work across both plugins and themes (unlike the official palette plugin, which is restricted to themes).
 
-We are providing `id` option to do that, and using this plugin (by calling `useSassPalette`) with same ID won't have any side effects. Also, all the aliases and module names have an ID prefix.
+The `id` option is the key mechanism for scoping. Calling `useSassPalette` creates a style system isolated by this ID. All generated aliases and module names will be prefixed with this ID.
 
-This will allow you to:
+This mechanism allows you to:
 
-- Share the same style system across your plugins (or themes) using the same ID without any side effects.
+- **Share a style system:**
+  By using the same ID, multiple plugins (or a theme and its plugins) can share variables.
 
-  All aliases and module names have an ID prefix, which means you can use a set of style variables within your plugins (or theme) to unify your styles without being affected by other plugins (or themes).
-
-  Users can configure all color variables, breakpoints, and other style configurations in the same file and have them automatically applied to themes and plugins with the same ID.
-
-  ::: tip Example
-
-  `vuepress-theme-hope` and other related plugins use the same ID `hope` to call the plugin, so the styles configured by the user in the theme will automatically take effect in all plugins.
-
-  :::
-
-- With different ID, plugins and theme won't affect others. We recommend you to set the `id` variable with your plugin name.
-
-  With the default settings, users will set your plugin style under `.vuepress/styles` directory with Sass files starting with your ID prefix. And you can access the variables you need with `${id}-config` and `${id}-palette`.
+  Since aliases are prefixed with the ID, you can use a unified set of style variables. Users can configure color variables, breakpoints, and other settings in a single file, and the changes will automatically apply to all themes and plugins using that ID.
 
   ::: tip Example
-
-  `vuepress-theme-hope` is using ID `"hope"`, and just imagine a `vuepress-plugin-abc` is using `"abc"`. They can get their own variables with module name `hope-config` `hope-palette` and `abc-config` `abc-palette`.
-
+  `vuepress-theme-hope` uses the ID `hope`. Any plugin that also uses the ID `hope` will inherit the styles configured by the user for the theme.
   :::
 
-- Calling the plugin with the same ID has no side effects.
+- **Isolate styles:**
+  By using different IDs, plugins will not affect each other. We recommend setting the `id` to your plugin name to ensure isolation.
 
-  ::: tip example
+  With default settings, users configure your plugin styles in the `.vuepress/styles` directory using Sass files starting with your ID. You access these variables via `${id}-config` and `${id}-palette`.
 
-  `vuepress-theme-hope` and other related plugins use the same ID `hope` to call the plugin.
-
+  ::: tip Example
+  If `vuepress-theme-hope` uses ID `hope` and a separate plugin uses ID `abc`, they are completely independent. They access their specific variables via modules like `hope-config`/`hope-palette` and `abc-config`/`abc-palette` respectively.
   :::
+
+- **Avoid side effects:**
+  Calling the plugin multiple times with the same ID is safe and causes no conflicts.
 
 ## Config
 
-Config file is used for Sass variable only. It holds Sass variables which can be used via `${id}-config` in other files later.
+The **Config** file is dedicated to **Sass variables**. These variables can be accessed via the `${id}-config` module.
 
-You can specify a file (probably in `.vuepress/styles/` directory) as user config file. So you can get the module containing every variable later in Sass files. Also, you are able to provide a default config files where you can place fallback values for variables with `!default`.
+You can specify a user configuration file (typically in `.vuepress/styles/`) and provide a default configuration file. The default file should use the `!default` flag to allow user overrides.
 
-::: details An example
+::: details Example
 
-Imagine you are invoking the plugin with the following options in `vuepress-plugin-abc`:
+Invoking the plugin in `vuepress-plugin-abc`:
 
 ```js
 useSassPalette(app, {
@@ -67,23 +58,23 @@ useSassPalette(app, {
 })
 ```
 
-User config file:
+**User config file:**
 
 ```scss title=".vuepress/styles/abc-palette.scss"
 $navbar-height: 3.5rem;
 ```
 
-Default config file:
+**Default config file:**
 
 ```scss title="vuepress-plugin-abc/styles/palette.scss"
 $navbar-height: 2rem !default;
 $sidebar-width: 18rem !default;
 ```
 
-You can get the following variables in the plugin Sass files:
+**Usage in plugin Sass files:**
 
 ```scss
-// <style lang="scss"> block in vue sfc or scss file directly imported in scripts
+// <style lang="scss"> block or directly imported scss
 @debug abc-config.$navbar-height; // 3.5rem
 @debug abc-config.$sidebar-width; // 18rem
 ```
@@ -92,24 +83,24 @@ You can get the following variables in the plugin Sass files:
 
 ### Limitations
 
-We are using `additionalData` options to let `${id}-config` module available in your styles, but this has some limitations.
+The plugin uses the `additionalData` option to inject the `${id}-config` module. This comes with limitations:
 
-`additionalData` only works on Scss entry, so `${id}-config` is available only in :
+The `${id}-config` module is only available in:
 
-- `<style lang="scss">` block in component files
-- Scss files imported by script files directly (e.g.: `import "./a-scss-file.scss"` in client app enhance file).
+- `<style lang="scss">` blocks in Vue SFC files.
+- Sass files imported directly by script files (e.g., `import "./styles.scss"`).
 
-If the Scss file is not imported directly, but is imported through `@use` or `@import` api, the module won't be available. So that in this case, you should manually import the module with `@use "@sass-palette/${id}-config";`.
+If a Sass file is imported via `@use` or `@import` within another Sass file, the module will **not** be automatically available. In such cases, you must manually import it using `@use "@sass-palette/${id}-config";`.
 
 ## Palette
 
-Palette files are used for CSS variable injection, where each variable will be injected in to root with kebab-name of variable name.
+The **Palette** file is used for **CSS Variable** injection. Every variable defined here will be injected into the root stylesheet as a CSS variable with a kebab-case name.
 
-You can specify a file (probably in `.vuepress/styles/` directory) as user palette file, and the default filename is `${id}-palette.scss`. Also, you are able to provide a default palette files where you can place fallback values for variables with `!default`.
+The default user palette filename is `${id}-palette.scss`. Like the config file, you can provide a default palette file containing fallback values with `!default`.
 
-::: details An example
+::: details Example
 
-Imagine you are invoking the plugin with the following options in `vuepress-plugin-abc`:
+Invoking the plugin in `vuepress-plugin-abc`:
 
 ```js
 useSassPalette(app, {
@@ -118,20 +109,20 @@ useSassPalette(app, {
 })
 ```
 
-If users are setting:
+**User palette:**
 
 ```scss title=".vuepress/styles/abc-palette.scss"
 $color-a: red;
 ```
 
-And you are providing a default palette file with:
+**Default palette:**
 
 ```scss title="vuepress-plugin-abc/styles/palette.scss"
 $color-a: blue !default;
 $color-b: green !default;
 ```
 
-Then the below CSS variables will be available under root selector:
+**Resulting CSS:**
 
 ```scss
 :root {
@@ -142,15 +133,13 @@ Then the below CSS variables will be available under root selector:
 
 :::
 
-Like config file, palette file provides a module named `${id}-palette` (also including generator values), and it is also limited by `additionalData` option, so you should import the module manually if you want to use it in other Sass files.
+The palette module is named `${id}-palette`. It shares the same `additionalData` limitations as the config module, requiring manual import in nested Sass files.
 
-### Color Settings
+### Color Settings (Dark Mode)
 
-Since the default theme provides dark mode, you probably want different colors under light mode and dark mode.
+To support light and dark modes, you can define color variables as a map containing `light` and `dark` keys. The plugin will automatically generate the appropriate CSS variables for each mode.
 
-To achieve that, you should set color variables with a map containing `light` and `dark` keys. Later, the plugin will generate different colors for you.
-
-::: details An example
+::: details Example
 
 ```scss
 // User palette
@@ -170,7 +159,7 @@ $bg-color: (
 ) !default;
 ```
 
-Then you will get:
+**Generated CSS:**
 
 ```scss
 :root {
@@ -188,25 +177,23 @@ Then you will get:
 
 ### Allowed Variable Types
 
-Only colors (or color map for light/dark mode), length and strings are allowed in palette. Any other type will be dropped.
+Only **colors** (including light/dark maps), **lengths**, and **strings** are allowed in the palette. Other types will be discarded to ensure valid CSS variable generation.
 
-:::: tip Why only allow color and length besides strings
+:::: tip Why this limitation?
 
-In common situations, you probably only want to make calculations with color and length. So it's quite safe to drop other type support, because any other value you want can be converted to string.
+CSS variables usually represent visual properties (colors, dimensions). Restricting types prevents compilation errors. Complex values can still be passed as strings.
 
 ::: details Example
 
-If you want a `--move-transition` with `width 0.3s ease`, you can use strings:
+If you want a variable for transition properties:
 
 ```scss
-// this will be regarded as a list with (length, time, function) by Sass
-// and will trigger a warning and be dropped by plugin
+// ❌ Incorrect: Regarded as a Sass list.
+// Triggers a warning and will be dropped.
 $moveTransition: width 0.3s ease;
 
-// this will get what you want
-// :root {
-//   --move-transition: width 0.3s ease
-// }
+// ✅ Correct: Wrapped in quotes.
+// Result: :root { --move-transition: width 0.3s ease; }
 $moveTransition: 'width 0.3s ease';
 ```
 
@@ -216,36 +203,36 @@ $moveTransition: 'width 0.3s ease';
 
 ## Helper
 
-We are exposing internal functions that `@vuepress/plugin-sass-palette` uses, as a helper module.
-
-You can use this helper with `@sass-palette/helper` alias and call its functions to achieve similar features yourself.
+The plugin exposes its internal Sass functions via a helper module. You can use this alias `@sass-palette/helper` to access utility functions for your own style logic.
 
 ## Generator
 
-A generator file is designed for developers to generate derived values based on palette file variables.
+The **Generator** file allows you to create **derived values** based on variables from the palette or config files.
 
-You can access variables from the palette file directly in this file and generate new values based on them.
+Variables defined in the generator are:
 
-Variables in the generator file will also be injected as CSS variables like palette, and they will be available in the palette module.
+1. Injected as CSS variables (just like the Palette).
+2. Available in the palette module for Sass usage.
 
 ::: details Example
 
-You may want a `$theme-color-light` based on `$theme-color`. So you can write a generator like this:
+You might need a lighter version of the user's theme color.
 
 ```scss
 @use 'sass:color';
 @use '@sass-palette/helper';
 
+// Define a new variable based on an existing palette variable ($theme-color)
 $theme-color-light: (
   light: color.scale(helper.get-color($theme-color), $lightness: 10%),
   dark: color.scale(helper.get-dark-color($theme-color), $lightness: 10%),
 ) !default;
 ```
 
-You can also generate values based on variables provided by config files by importing it:
+You can also rely on config variables:
 
 ```scss
-// generator with id "abc"
+// Generator with id "abc"
 @use 'sass:color';
 @use '@sass-palette/abc-config';
 @use '@sass-palette/helper';
@@ -257,14 +244,10 @@ $code-c-bg: abc-config.$highlighter == 'shiki'? #fff: #f8f8f8;
 
 ## User Styles
 
-If you are a theme developer, you may want to provide your users a way to customize your theme or the site.
+Theme developers can use the `style` option to allow users to customize the site's appearance with standard CSS/Sass.
 
-In this case you should set the `style` option as the user style file when using this plugin.
-
-Later, you should manually include the user style file by importing `@sass-palette/${id}-style` **after your theme styles**.
+You must manually include the user style file by importing the alias `@sass-palette/${id}-style`. This should be imported **after** your theme's base styles to ensure user overrides take precedence.
 
 ::: tip
-
-`@sass-palette/${id}-style` is an alias to user style file, and you can import it in JS/TS/SASS.
-
+`@sass-palette/${id}-style` is a direct alias to the user's style file and can be imported in JS, TS, or Sass.
 :::
