@@ -30,7 +30,7 @@ export default {
 
 ::: tip 禁用 Javascript 的情况下工作
 
-如果您希望 Google 跟踪代码管理器在禁用 javascript 时正常工作，您应该通过 `templateBuild` 将以下内容添加到构建模板的正文部分：
+如果你希望 Google 跟踪代码管理器在禁用 javascript 时正常工作，你应该通过 `templateBuild` 将以下内容添加到构建模板的正文部分：
 
 ```html
 <!-- Google Tag Manager (noscript) -->

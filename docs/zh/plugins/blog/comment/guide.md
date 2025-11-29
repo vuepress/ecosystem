@@ -7,7 +7,7 @@ layout: CommentPage
 
 ## 配置
 
-使用插件选项与客户端配置文件配置插件。
+该插件通过插件选项和客户端配置文件提供灵活的配置方式。
 
 ### 使用插件选项
 
@@ -18,7 +18,7 @@ export default {
   plugins: [
     commentPlugin({
       provider: 'Artalk', // Artalk | Giscus | Waline | Twikoo
-      // 服务商特定选项
+      // 服务商的特定配置
     }),
   ],
 }
@@ -40,36 +40,40 @@ defineArtalkConfig({
 })
 ```
 
-### 配置限制
+### 配置逻辑
 
-- **仅限插件选项**：`provider`、多语言和资源相关选项必须在插件选项中设置，以确保 tree-shaking 优化。
+为了确保最佳性能和正确的序列化，配置选项被拆分到了插件配置和客户端配置中：
 
-- **仅限客户端配置**：基于函数的选项必须在客户端配置中设置，因为无法序列化。
+- **插件选项 (Plugin Options)**：静态选项（如 `provider`、`locales` 和资源链接）必须在此处设置。这允许构建工具进行 **Tree-shaking**，确保未使用的服务商代码不会被打包到最终构建中。
 
-## 使用评论
+- **客户端配置 (Client Config)**：动态选项（尤其是涉及函数或回调的选项）必须在此处设置。由于这些选项无法在主配置中序列化，客户端配置将作为运行时的入口点。
 
-插件注册了全局组件 `<CommentService />`。
+## 组件用法
 
-**用户**：使用别名和布局插槽插入组件。建议放在 `<PageNav />` 之后。
+该插件注册了一个全局的 `<CommentService />` 组件，你可以将其放置在布局的任何位置。
 
-**主题开发者**：在主题布局中插入组件。
+**对于用户**：
+你可以通过别名或主题提供的布局插槽来注入该组件。通用的做法是将其放置在 `<PageNav />` 组件之后。
 
-### 评论控制
+**对于主题开发者**：
+你应该直接在主题的布局文件中包含 `<CommentService />` 组件，以提供内置的评论支持。
 
-通过插件选项或页面 frontmatter 控制评论：
+### 可见性与标识
 
-- **全局**：在插件选项中设置 `comment: false` 全局禁用
-- **单页**：在 frontmatter 中设置 `comment: true/false` 局部启用/禁用
-- **自定义 ID**：在 frontmatter 中设置 `commentID` 自定义评论存储标识符
+你可以控制评论区的显示状态，并自定义每个页面的唯一标识符：
 
-## 可用服务商
+- **全局开关**：使用插件配置中的 `comment` 选项来设置全站的默认显示状态。
+- **单页开关**：使用 Frontmatter 中的 `comment` 键来启用或禁用特定页面的评论，该设置会覆盖全局设置。
+- **自定义标识符**：使用 Frontmatter 中的 `commentID` 键来定义页面评论的自定义标识符（例如在迁移文章或更改 URL 时）。
 
-可选择 [Giscus](giscus/README.md)、[Waline](waline/README.md)、[Artalk](artalk/README.md) 或 [Twikoo](twikoo/README.md)。
+## 可选服务商
+
+我们支持以下评论服务。请参考各自的指南以获取设置详情：[Giscus](giscus/README.md)、[Waline](waline/README.md)、[Artalk](artalk/README.md) 和 [Twikoo](twikoo/README.md)。
 
 ::: tip 推荐
 
-- **开发者**：Giscus（基于 GitHub）
-- **一般用户**：Waline（功能完整）
+- **Giscus**：**开发者**和技术博客的理想选择，它使用 GitHub Discussions 来存储评论。
+- **Waline**：**普通用户**的全面之选，提供丰富的功能集和后端灵活性。
 
 :::
 
@@ -79,10 +83,10 @@ defineArtalkConfig({
 
 - 类型：`"Artalk" | "Giscus" | "Twikoo" | "Waline" | "None"`
 - 默认值：`"None"`
-- 详情：评论服务提供者。
+- 详情：要使用的评论服务提供商。
 
 ### comment
 
 - 类型：`boolean`
 - 默认值：`true`
-- 详情：是否默认启用评论功能。
+- 详情：是否默认在全局范围内启用评论功能。

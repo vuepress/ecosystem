@@ -30,11 +30,11 @@ export default {
 
 大型语言模型（LLM）越来越依赖网络文档来回答用户提问和编写代码。然而，普通网站存在明显的局限性：上下文窗口（Context Window）有限，且充斥着导航栏、脚本和样式的原始 HTML 既浪费 Token 又难以解析。
 
-**llms.txt** 填补了这一空白。它为 AI Agent 创建了一个标准化的入口点，提供项目的简要摘要以及通往干净、专家级文档的直接链接。这对于开发工具文档尤为重要，能够确保 LLM 准确、无干扰地获取您的 API 和指南。
+**llms.txt** 填补了这一空白。它为 AI Agent 创建了一个标准化的入口点，提供项目的简要摘要以及通往干净、专家级文档的直接链接。这对于开发工具文档尤为重要，能够确保 LLM 准确、无干扰地获取你的 API 和指南。
 
 ### 插件概览
 
-该插件会自动将您的 VuePress 文档转换为针对机器阅读优化的结构化数据集。
+该插件会自动将你的 VuePress 文档转换为针对机器阅读优化的结构化数据集。
 
 在构建过程中，它会在输出目录中生成以下资源：
 
@@ -43,12 +43,12 @@ export default {
 ├── ...
 ├── llms.txt                # 文档入口点 / 索引映射
 ├── llms-full.txt           # 包含完整文档的单个合并文件
-├── markdown-examples.html  # 您的标准网页
+├── markdown-examples.html  # 你的标准网页
 └── markdown-examples.md    # 该页面的纯净 Markdown 版本
 ```
 
 ::: tip
-这些文件**仅在生产构建期间**（即运行 `vuepress build` 时）生成。它们将与您的 HTML 文件一起出现在 `.vuepress/dist` 目录中。
+这些文件**仅在生产构建期间**（即运行 `vuepress build` 时）生成。它们将与你的 HTML 文件一起出现在 `.vuepress/dist` 目录中。
 :::
 
 ## 输出文件
@@ -57,7 +57,7 @@ export default {
 
 `llms.txt` 文件充当 AI Agent 的主索引。它包含站点的 **标题 (Title)**、**描述 (Description)**、**详情 (Details - 可选)** 以及 **目录 (Table of Contents)**。
 
-您可以点击链接查看本文档站点的生成文件：<a :href="$withBase('/llms.txt')" target="_blank">llms.txt</a>。
+你可以点击链接查看本文档站点的生成文件：<a :href="$withBase('/llms.txt')" target="_blank">llms.txt</a>。
 
 **默认格式：**
 
@@ -100,13 +100,13 @@ Details (Optional)
 - **目录 (Table of Contents):**
   格式为 `- [title](url): description`。其中 `description` 取自页面的 `frontmatter.description`。
 
-  默认情况下，插件仅生成一级扁平目录。您可以通过在 [`llmsTxtTemplateGetter`](#llmstxttemplategetter) 选项中定义自定义函数来修改此行为（例如支持多级嵌套）。
+  默认情况下，插件仅生成一级扁平目录。你可以通过在 [`llmsTxtTemplateGetter`](#llmstxttemplategetter) 选项中定义自定义函数来修改此行为（例如支持多级嵌套）。
 
 ### 2. `llms-full.txt`
 
-`llms-full.txt` 是文档的拼接版本。它将所有 Markdown 文件的内容合并到一个文本流中，允许 LLM 通过一次请求读取您的整个知识库。
+`llms-full.txt` 是文档的拼接版本。它将所有 Markdown 文件的内容合并到一个文本流中，允许 LLM 通过一次请求读取你的整个知识库。
 
-您可以点击链接查看本文档站点的完整文件：<a :href="$withBase('/llms-full.txt')" target="_blank">llms-full.txt</a>。
+你可以点击链接查看本文档站点的完整文件：<a :href="$withBase('/llms-full.txt')" target="_blank">llms-full.txt</a>。
 
 **格式：**
 
@@ -134,7 +134,7 @@ description: ...
 
 除了摘要文件外，插件还会为站点中的每个 HTML 页面生成纯净的 Markdown 文件。
 
-例如，如果您的站点有一个页面位于 `/guide/quick-start.html`，插件会生成对应的 `/guide/quick-start.md` 文件。这让 LLM 可以获取零 HTML 干扰的特定页面内容。
+例如，如果你的站点有一个页面位于 `/guide/quick-start.html`，插件会生成对应的 `/guide/quick-start.md` 文件。这让 LLM 可以获取零 HTML 干扰的特定页面内容。
 
 ## 选项 (Options)
 
@@ -192,7 +192,7 @@ description: ...
 
   一个可选的域名，将附加到 `llms.txt` 和其他生成文件中的 URL 前面。
 
-  虽然标准的相对路径通常足够，但某些 AI Agent 对绝对路径的支持更好。如果您需要强制使用完整 URL（例如 `https://example.com/foo/bar.md`），请使用此选项。
+  虽然标准的相对路径通常足够，但某些 AI Agent 对绝对路径的支持更好。如果你需要强制使用完整 URL（例如 `https://example.com/foo/bar.md`），请使用此选项。
 
   ```md title="llms.txt"
   - [title](/foo/bar.md) <!-- [!code --] -->
@@ -213,7 +213,7 @@ description: ...
   - 如果设置为 `'all'`，插件将为所有配置的语言环境生成 `llms.txt` 资源。
 
   **为什么使用 `'all'`？**
-  如果您的文档包含 LLM 难以准确翻译的专业术语或概念，为每种语言生成专用的 `llms.txt` 文件可以确保国际用户（及其 AI 助手）获得最准确的信息。
+  如果你的文档包含 LLM 难以准确翻译的专业术语或概念，为每种语言生成专用的 `llms.txt` 文件可以确保国际用户（及其 AI 助手）获得最准确的信息。
 
 ### llmsTxtTemplate
 
@@ -236,7 +236,7 @@ description: ...
 
 - 详情:
 
-  定义 `llms.txt` 文件的结构。您可以调整默认占位符——`{title}`、`{description}`、`{details}` 和 `{toc}`——的顺序，或使用 `llmsTxtTemplateGetter` 引入新的占位符。
+  定义 `llms.txt` 文件的结构。你可以调整默认占位符——`{title}`、`{description}`、`{details}` 和 `{toc}`——的顺序，或使用 `llmsTxtTemplateGetter` 引入新的占位符。
 
 ### llmsTxtTemplateGetter
 
@@ -321,7 +321,7 @@ description: ...
 
   为 [`llmsTxtTemplate`](#llmstxttemplate) 提供自定义变量或 Getter 函数。
 
-  您可以使用它来注入静态字符串或动态生成的内容。
+  你可以使用它来注入静态字符串或动态生成的内容。
 
   **示例：覆盖标题**
 

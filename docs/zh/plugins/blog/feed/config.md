@@ -6,83 +6,83 @@ icon: settings-2
 
 ## hostname
 
-- 类型：`string`
-- 必填：是
+- 类型: `string`
+- 必填: 是
 
-部署网站的域名。
+部署站点的域名。
 
 ## atom
 
-- 类型：`boolean`
-- 默认值：`false`
+- 类型: `boolean`
+- 默认值: `false`
 
-是否启用 Atom 格式输出。
+是否生成 Atom 格式的 Feed。
 
 ## json
 
-- 类型：`boolean`
-- 默认值：`false`
+- 类型: `boolean`
+- 默认值: `false`
 
-是否启用 JSON 格式输出。
+是否生成 JSON 格式的 Feed。
 
 ## rss
 
-- 类型：`boolean`
-- 默认值：`false`
+- 类型: `boolean`
+- 默认值: `false`
 
-是否启用 RSS 格式输出。
+是否生成 RSS 格式的 Feed。
 
 ## image
 
-- 类型：`string`
+- 类型: `string`
 
-一个大的图片，用作 feed 展示。
+Feed 的大图或图标，通常用作 Banner。
 
 ## icon
 
-- 类型：`string`
+- 类型: `string`
 
-一个小的图标，显示在订阅列表中。
+Feed 的小图标，通常用作 Favicon。
 
 ## count
 
-- 类型：`number`
-- 默认值：`100`
+- 类型: `number`
+- 默认值: `100`
 
-设置 feed 的最大项目数量。在所有页面排序好后，插件会截取前 count 个项目。
+设置 Feed 中包含的最大项目数。在所有页面排序后，只有前 `count` 项会被保留。
 
-如果你的站点文章很多，你应该考虑设置这个选项以减少 feed 文件大小。
+如果你的站点包含大量文章，可以考虑调整此选项以减小 Feed 文件的大小。
 
 ## preservedElements
 
-- 类型：`(RegExp | string)[] | (tagName: string) => boolean`
+- 类型: `(RegExp | string)[] | (tagName: string) => boolean`
 
-应在 Feed 中保留的自定义元素或组件。
+自定义需要在 Feed 内容中保留的元素或组件。
 
-::: tip 默认情况下，所有未知标签均会被移除。
-
+::: tip
+默认情况下，所有未知的标签都会被移除。
 :::
 
 ## filter
 
-- 类型：`(page: Page)=> boolean`
-- 默认值：
+- 类型: `(page: Page)=> boolean`
+- 默认值:
 
   ```js
   ;({ frontmatter, filePathRelative }) =>
     Boolean(frontmatter.feed ?? (filePathRelative && !frontmatter.home))
   ```
 
-自定义的过滤函数，用于过滤哪些项目在 feed 中显示。
+用于筛选 Feed 项目的自定义过滤器函数。
 
 ## sorter
 
-- 类型：`(pageA: Page, pageB: Page)=> number`
+- 类型: `(pageA: Page, pageB: Page)=> number`
 
-- 默认值：
+- 默认值:
 
   ```ts
-  // dateSorter 来源于 @vuepress/helper
+  // dateSorter 来自 @vuepress/helper
   ;(pageA: Page, pageB: Page): number =>
     dateSorter(
       pageA.data.git?.createdTime
@@ -94,103 +94,99 @@ icon: settings-2
     )
   ```
 
-Feed 项目的排序器。
+用于 Feed 项目的自定义排序函数。
 
-默认的排序行为是通过 Git 的文件添加日期 (需要 `@vuepress/plugin-git`)。
+默认的排序行为是根据 git 获取的文件添加时间进行排序（需要 `@vuepress/plugin-git`）。
 
 ::: tip
-
-你应该启用 `@vuepress/plugin-git` 来获取最新创建的页面作为 feed 项目。否则，feed 项目将按照 VuePress 中页面的默认顺序排序。
-
+你应该启用 `@vuepress/plugin-git` 以获取最新创建的页面作为 Feed 项目。否则，Feed 项目将按照 VuePress 中页面的默认顺序进行排序。
 :::
 
 ## channel
 
-`channel` 选项用于配置 Feed 频道。
+`channel` 选项用于配置 _Feed 频道_。
 
-可用选项详见 [配置 → 频道设置](channel.md)
+查看可用选项，请参阅 [配置 → 频道](channel.md)。
 
 ## devServer
 
-- 类型：`boolean`
-- 默认值：`false`
+- 类型: `boolean`
+- 默认值: `false`
 
-是否在开发服务器中启用
+是否在开发服务器（devServer）中启用。
 
 ::: tip
-
-由于性能原因，我们不提供热更新。重启开发服务器以同步你的变更。
-
+出于性能原因，我们不提供热重载支持。你需要重启开发服务器以同步更改。
 :::
 
 ## devHostname
 
-- 类型：`string`
-- 默认值：`"http://localhost:${port}"`
+- 类型: `string`
+- 默认值: `"http://localhost:${port}"`
 
-开发服务器使用的主机名
+在开发服务器中使用的域名。
 
 ## atomOutputFilename
 
-- 类型：`string`
-- 默认值：`"atom.xml"`
+- 类型: `string`
+- 默认值: `"atom.xml"`
 
-Atom 格式输出路径，相对于输出路径。
+Atom 输出文件名，相对于输出目录。
 
 ## atomXslTemplate
 
-- 类型：`string`
-- 默认值：`@vuepress/plugin-feed/templates/atom.xsl` 的内容
+- 类型: `string`
+- 默认值: `@vuepress/plugin-feed/templates/atom.xsl` 的内容
 
-Atom xsl 模板文件内容。
+Atom XSL 模板文件的内容。
 
 ## atomXslFilename
 
-- 类型：`string`
-- 默认值：`"atom.xsl"`
+- 类型: `string`
+- 默认值: `"atom.xsl"`
 
-Atom xsl 输出路径，相对于输出路径。
+Atom XSL 文件名，相对于输出目录。
 
 ## jsonOutputFilename
 
-- 类型：`string`
-- 默认值：`"feed.json"`
+- 类型: `string`
+- 默认值: `"feed.json"`
 
-JSON 格式输出路径，相对于输出路径。
+JSON Feed 输出文件名，相对于输出目录。
 
 ## rssOutputFilename
 
-- 类型：`string`
-- 默认值：`"rss.xml"`
+- 类型: `string`
+- 默认值: `"rss.xml"`
 
-RSS 格式输出路径，相对于输出路径。
+RSS 输出文件名，相对于输出目录。
 
 ## rssXslTemplate
 
-- 类型：`string`
-- 默认值：`@vuepress/plugin-feed/templates/rss.xsl` 的内容
+- 类型: `string`
+- 默认值: `@vuepress/plugin-feed/templates/rss.xsl` 的内容
 
-RSS xsl 模板文件内容。
+RSS XSL 模板文件的内容。
 
 ## rssXslFilename
 
-- 类型：`string`
-- 默认值：`"rss.xsl"`
+- 类型: `string`
+- 默认值: `"rss.xsl"`
 
-RSS xsl 输出路径，相对于输出路径。
+RSS XSL 文件名，相对于输出目录。
 
 ## getter
 
-Feed 生成控制器，详见 [Feed 生成器](./getter.md)。
+Feed 生成控制器，详见 [Feed Getter](./getter.md)。
 
-::: tip 此插件内置了生成器，只有当你想完全控制 feed 生成时才需要设置此选项。
-
+::: tip
+插件已内置了一个 Getter，仅在你想要完全控制 Feed 生成过程时设置此项。
 :::
 
 ## locales
 
-- 类型：`Record<string, BaseFeedOptions>`
+- 类型: `Record<string, BaseFeedOptions>`
 
-你可以将它用于每个语言环境的特定选项。
+你可以使用它为每个语言环境（locale）指定特定配置。
 
-除 `hostname` 外，上述任何选项均受支持。
+支持除 `hostname` 以外的上述所有选项。

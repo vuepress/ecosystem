@@ -28,7 +28,7 @@ export default {
 
 ## 功能介绍
 
-Microsoft Clarity 是一款免费且易用的行为分析工具，旨在帮助您深入了解用户如何与网站进行交互。本插件简化了集成流程，无需复杂的配置即可获取可付诸行动的洞察数据。
+Microsoft Clarity 是一款免费且易用的行为分析工具，旨在帮助你深入了解用户如何与网站进行交互。本插件简化了集成流程，无需复杂的配置即可获取可付诸行动的洞察数据。
 
 主要功能包括：
 
@@ -40,7 +40,7 @@ Microsoft Clarity 是一款免费且易用的行为分析工具，旨在帮助�
 
 ### 高级用法
 
-插件启用后，全局 `window` 对象上将暴露 `clarity()` 函数。您可以通过该函数调用 [Clarity Client API](https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-api) 来处理高级任务，例如：
+插件启用后，全局 `window` 对象上将暴露 `clarity()` 函数。你可以通过该函数调用 [Clarity Client API](https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-api) 来处理高级任务，例如：
 
 - 识别特定用户身份。
 - 追踪自定义事件 (Custom Events)。
@@ -52,7 +52,7 @@ Microsoft Clarity 是一款免费且易用的行为分析工具，旨在帮助�
 
 - 类型：`string`
 - 必填：是
-- 详情：Microsoft Clarity 分配的项目 ID (Project ID)。您可以在 Clarity 控制台的“设置 (Settings)”页面中找到此 ID。
+- 详情：Microsoft Clarity 分配的项目 ID (Project ID)。你可以在 Clarity 控制台的“设置 (Settings)”页面中找到此 ID。
 
 ### crossOrigin
 

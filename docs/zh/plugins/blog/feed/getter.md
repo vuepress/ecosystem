@@ -4,45 +4,42 @@ icon: arrow-up-from-line
 
 # Feed 获取器
 
-你可以通过控制插件选项中的 `getter` 来完全控制 Feed 项目的生成。
+你可以通过在插件选项中配置 `getter` 对象，来完全控制 Feed 项目的生成逻辑。
 
 ## getter.title
 
-- 类型：`(page: Page, app: App) => string`
-
-项目标题获取器
+- 类型: `(page: Page, app: App) => string`
+- 详情：自定义 Feed 项目的标题。
 
 ## getter.link
 
-- 类型：`(page: Page, app: App) => string`
-
-项目链接获取器
+- 类型: `(page: Page, app: App) => string`
+- 详情：自定义 Feed 项目的链接 (URL)。
 
 ## getter.description
 
-- 类型：`(page: Page, app: App) => string | undefined`
-
-项目描述获取器
+- 类型: `(page: Page, app: App) => string | undefined`
+- 详情：自定义 Feed 项目的描述或摘要。
 
 ::: tip
 
-因为 Atom 在摘要中支持 HTML，所以如果可能的话，你可以在这里返回 HTML 内容，但内容必须以标记 `html:` 开头。
+由于 Atom 支持在摘要中使用 HTML，你可以在此处返回 HTML 内容。但是，为了确保正确渲染，返回的字符串必须以 `html:` 前缀开头。
 
 :::
 
 ## getter.content
 
-- 类型：`(page: Page, app: App) => string`
-
-项目内容获取器
+- 类型: `(page: Page, app: App) => string`
+- 详情：自定义 Feed 项目的正文内容。
 
 ## getter.author
 
-- 类型：`(page: Page, app: App) => FeedAuthor[]`
+- 类型: `(page: Page, app: App) => FeedAuthor[]`
+- 详情：获取 Feed 项目的作者列表。
 
-项目作者获取器。
+::: tip
 
-::: tip 获取器应在作者信息缺失时返回空数组。
+如果缺少作者信息，该 getter 应当返回一个空数组 `[]`。
 
 :::
 
@@ -51,26 +48,26 @@ icon: arrow-up-from-line
 ```ts
 interface FeedAuthor {
   /**
-   * 作者名字
+   * 作者姓名
    */
   name?: string
 
   /**
-   * 作者邮件
+   * 作者电子邮箱
    */
   email?: string
 
   /**
    * 作者网站
    *
-   * @description json format only
+   * @description 仅限 JSON 格式
    */
   url?: string
 
   /**
    * 作者头像
    *
-   * @description json format only
+   * @description 仅限 JSON 格式
    */
   avatar?: string
 }
@@ -80,9 +77,8 @@ interface FeedAuthor {
 
 ## getter.category
 
-- 类型：`(page: Page, app: App) => FeedCategory[] | undefined`
-
-项目分类获取器。
+- 类型: `(page: Page, app: App) => FeedCategory[] | undefined`
+- 详情：获取与 Feed 项目关联的分类。
 
 ::: details FeedCategory 格式
 
@@ -94,16 +90,16 @@ interface FeedCategory {
   name: string
 
   /**
-   * 标识分类法的字符串
+   * 标识分类法的字符串 (Domain)
    *
-   * @description rss format only
+   * @description 仅限 RSS 格式
    */
   domain?: string
 
   /**
-   * URI 标识的分类 scheme
+   * 通过 URI 标识的分类方案 (Scheme)
    *
-   * @description atom format only
+   * @description 仅限 Atom 格式
    */
   scheme?: string
 }
@@ -113,30 +109,29 @@ interface FeedCategory {
 
 ## getter.enclosure
 
-- 类型：`(page: Page, app: App) => FeedEnclosure | undefined`
-
-项目附件获取器。
+- 类型: `(page: Page, app: App) => FeedEnclosure | undefined`
+- 详情：指定 Feed 项目的媒体附件（例如音频、视频或文件）。
 
 ::: details FeedEnclosure 格式
 
 ```ts
 interface FeedEnclosure {
   /**
-   * Enclosure 地址
+   * 附件链接
    */
   url: string
 
   /**
-   * 类型
+   * 附件的 MIME 类型
    *
-   * @description 应为一个标准的 MIME 类型，rss format only
+   * @description 应为标准 MIME 类型，仅限 RSS 格式
    */
   type: string
 
   /**
-   * 按照字节数计算的大小
+   * 大小（字节）
    *
-   * @description rss format only
+   * @description 仅限 RSS 格式
    */
   length?: number
 }
@@ -146,33 +141,33 @@ interface FeedEnclosure {
 
 ## getter.publishDate
 
-- 类型：`(page: Page, app: App) => Date | undefined`
-
-项目发布日期获取器
+- 类型: `(page: Page, app: App) => Date | undefined`
+- 详情：确定 Feed 项目的发布日期。
 
 ## getter.lastUpdateDate
 
-- 类型：`(page: Page, app: App) => Date`
-
-项目最后更新日期获取器
+- 类型: `(page: Page, app: App) => Date`
+- 详情：确定 Feed 项目的最后修改日期。
 
 ## getter.image
 
-- 类型：`(page: Page, app: App) => string`
+- 类型: `(page: Page, app: App) => string`
+- 详情：设置 Feed 项目的图片。
 
-项目图片获取器
+::: tip
 
-::: tip 确保返回一个完整的 URL。
+请确保返回的是完整的绝对 URL。
 
 :::
 
 ## getter.contributor
 
-- 类型：`(page: Page, app: App) => FeedContributor[]`
+- 类型: `(page: Page, app: App) => FeedContributor[]`
+- 详情：获取 Feed 项目的贡献者列表。
 
-项目贡献者获取器
+::: tip
 
-::: tip 获取器应在贡献者信息缺失时返回空数组。
+如果缺少贡献者信息，该 getter 应当返回一个空数组 `[]`。
 
 :::
 
@@ -181,26 +176,26 @@ interface FeedEnclosure {
 ```ts
 interface FeedContributor {
   /**
-   * 作者名字
+   * 贡献者姓名
    */
   name?: string
 
   /**
-   * 作者邮件
+   * 贡献者电子邮箱
    */
   email?: string
 
   /**
-   * 作者网站
+   * 贡献者网站
    *
-   * @description json format only
+   * @description 仅限 JSON 格式
    */
   url?: string
 
   /**
-   * 作者头像
+   * 贡献者头像
    *
-   * @description json format only
+   * @description 仅限 JSON 格式
    */
   avatar?: string
 }
@@ -210,6 +205,5 @@ interface FeedContributor {
 
 ## getter.copyright
 
-- 类型：`(page: Page, app: App) => string | undefined`
-
-项目版权获取器
+- 类型: `(page: Page, app: App) => string | undefined`
+- 详情：指定 Feed 项目的版权信息。

@@ -6,45 +6,45 @@ icon: lightbulb
 
 ## Usage
 
-The plugin can generate feed files in the following three formats for you:
+The plugin generates feeds in the following three formats:
 
 - Atom 1.0
 - JSON 1.1
 - RSS 2.0
 
-Please set `atom`, `json` or `rss` to `true` in the plugin options according to the formats you want to generate.
+Enable the formats you need by setting `atom`, `json`, or `rss` to `true` in the plugin options.
 
-To correctly generate feed links, you need to set `hostname` in the plugin options.
+To ensure feed links are generated correctly, the `hostname` option is required.
 
 ## Readable Preview
 
-When you open the feed file in a browser, we magically convert atom and rss feed xml to human readable html via xsl template. Check [atom](/atom.xml) and [rss](/rss.xml) feed of this site as an example!
+Atom and RSS feeds include XSL templates, allowing them to be rendered as human-readable HTML when opened in a browser. Check out the [atom](/atom.xml) and [rss](/rss.xml) feeds of this site for a live demo.
 
-If you want to preview your feed in devServer, set `devServer: true` in plugin options. You may also need to set `devHostname` if you are not using the default `http://localhost:{port}`.
+To preview feeds in your development environment, set `devServer: true` in the plugin options. If your local setup differs from the default `http://localhost:{port}`, you should also configure `devHostname`.
 
-## Channel settings
+## Channel Settings
 
-You can customize the feed channel information by setting the `channel` option.
+You can customize global feed metadata via the `channel` option.
 
-We recommend the following settings:
+We recommend configuring the following fields:
 
-- Convert the date of creating the feed to ISOString and write it into `channel.pubDate`
-- The update period of the content set in `channel.ttl` (unit: minutes)
-- Set copyright information via `channel.copyright`
-- Set the channel author via `channel.author`.
+- `channel.pubDate`: Set to the current ISOString to indicate the feed generation time.
+- `channel.ttl`: Define the content update frequency (in minutes).
+- `channel.copyright`: Specify copyright information.
+- `channel.author`: Set the default author for the channel.
 
-For detailed options and their default values, see [Channel Config](./channel.md)
+For a complete list of options and their default values, please refer to [Channel Config](./channel.md).
 
 ## Feed Generation
 
-By default, all articles are added to the feed stream.
+By default, all articles are included in the feed.
 
-You can set `feed` and other options in page frontmatter to control contents of feed item. See [Frontmatter Config](./frontmatter.md) for how they are converted.
+You can control individual feed items using the `feed` option in the page frontmatter. See [Frontmatter Config](./frontmatter.md) for mapping details.
 
-You can take full control of feed items generation by configuring the `getter` in the plugin options. For detailed options and their default values, see [Configuration → Feed Getter](./getter.md).
+For complete control over the item generation logic, you can configure the `getter` function in the plugin options. See [Configuration → Feed Getter](./getter.md) for details.
 
-### I18n Config
+### I18n Support
 
-The plugin generates separate feeds for each language.
+The plugin automatically generates separate feeds for each language.
 
-You can provide different settings for different languages via `locales` in the plugin options.
+You can provide language-specific configurations via the `locales` option.

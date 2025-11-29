@@ -7,7 +7,7 @@ layout: CommentPage
 
 ## Configuration
 
-Configure the plugin with its options and client config file.
+The plugin offers flexible configuration through both the plugin options and the client configuration file.
 
 ### Using Plugin Options
 
@@ -40,36 +40,40 @@ defineArtalkConfig({
 })
 ```
 
-### Configuration Limitations
+### Configuration Logic
 
-- **Plugin Options Only**: `provider`, locales, and resource-related options must be set in plugin options for tree-shaking optimization.
+To ensure optimal performance and proper serialization, options are split between the plugin configuration and the client configuration:
 
-- **Client Config Only**: Function-based options must be set in client config as they cannot be serialized.
+- **Plugin Options**: Static options such as `provider`, `locales`, and resource links must be set here. This allows the bundler to perform **tree-shaking**, ensuring that code for unused providers is excluded from the final build.
 
-## Using Comments
+- **Client Config**: Dynamic options, specifically those involving functions or callbacks, must be set here. Since these cannot be serialized in the main config, the client config serves as the runtime entry point.
 
-The plugin registers a global `<CommentService />` component.
+## Component Usage
 
-**For Users**: Use aliases and layout slots to insert the component. Recommended placement is after `<PageNav />`.
+The plugin registers a global `<CommentService />` component that you can place anywhere in your layout.
 
-**For Theme Developers**: Insert the component in your theme layout.
+**For Users**:
+You can inject the component using aliases or layout slots provided by your theme. A common practice is to place it immediately after the `<PageNav />` component.
 
-### Comment Control
+**For Theme Developers**:
+You should include the `<CommentService />` component directly within your theme's layout files to provide built-in comment support.
 
-Control comments via plugin options or page frontmatter:
+### Visibility & Identification
 
-- **Global**: Set `comment: false` in plugin options to disable globally
-- **Per Page**: Set `comment: true/false` in frontmatter to enable/disable locally
-- **Custom ID**: Set `commentID` in frontmatter to customize comment storage identifier
+You can control the visibility of the comment section and customize the unique identifier for each page:
+
+- **Global Toggle**: Use the `comment` option in the plugin configuration to set the default visibility for the entire site.
+- **Per-Page Toggle**: Use the `comment` key in the frontmatter to enable or disable comments for a specific page, overriding the global setting.
+- **Custom Identifier**: Use the `commentID` key in the frontmatter to define a custom identifier for the page's comments (e.g., when migrating posts or changing URLs).
 
 ## Available Providers
 
-Choose from [Giscus](giscus/README.md), [Waline](waline/README.md), [Artalk](artalk/README.md), or [Twikoo](twikoo/README.md).
+We support the following comment services. Please refer to their respective guides for setup details: [Giscus](giscus/README.md), [Waline](waline/README.md), [Artalk](artalk/README.md), and [Twikoo](twikoo/README.md).
 
 ::: tip Recommendations
 
-- **Developers**: Giscus (GitHub-based)
-- **General Users**: Waline (full-featured)
+- **Giscus**: Ideal for **developers** and technical blogs, as it uses GitHub Discussions to store comments.
+- **Waline**: A comprehensive choice for **general users**, offering a rich feature set and backend flexibility.
 
 :::
 
@@ -79,10 +83,10 @@ Choose from [Giscus](giscus/README.md), [Waline](waline/README.md), [Artalk](art
 
 - Type: `"Artalk" | "Giscus" | "Twikoo" | "Waline" | "None"`
 - Default: `"None"`
-- Details: Comment service provider.
+- Details: The comment service provider to use.
 
 ### comment
 
 - Type: `boolean`
 - Default: `true`
-- Details: Whether to enable comment feature by default.
+- Details: Whether to enable the comment feature globally by default.

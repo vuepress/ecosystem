@@ -9,58 +9,58 @@ icon: settings-2
 - Type: `string`
 - Required: Yes
 
-The domain name of the deployment site.
+The domain name where the site is deployed.
 
 ## atom
 
 - Type: `boolean`
 - Default: `false`
 
-Whether to output Atom syntax files.
+Whether to generate an Atom feed.
 
 ## json
 
 - Type: `boolean`
 - Default: `false`
 
-Whether to output JSON syntax files.
+Whether to generate a JSON feed.
 
 ## rss
 
 - Type: `boolean`
 - Default: `false`
 
-Whether to output RSS syntax files.
+Whether to generate an RSS feed.
 
 ## image
 
 - Type: `string`
 
-A large image/icon of the feed, probably used as banner.
+A large image or icon for the feed, typically used as a banner.
 
 ## icon
 
 - Type: `string`
 
-A small icon of the feed, probably used as favicon.
+A small icon for the feed, typically used as a favicon.
 
 ## count
 
 - Type: `number`
 - Default: `100`
 
-Set the maximum number of items in the feed. After all pages are sorted, the first `count` items will be intercepted.
+The maximum number of items to include in the feed. After sorting all valid pages, only the first `count` items will be preserved.
 
-If your site has a lot of articles, you may consider this option to reduce feed file size.
+If your site contains a large number of articles, consider adjusting this option to reduce the feed file size.
 
 ## preservedElements
 
 - Type: `(RegExp | string)[] | (tagName: string) => boolean`
 
-Custom element or component which should be preserved in feed.
+Custom elements or components that should be preserved in the feed content.
 
-::: tip By default, all unknown tags will be removed.
-
+::: tip
+By default, all unknown tags will be removed.
 :::
 
 ## filter
@@ -73,7 +73,7 @@ Custom element or component which should be preserved in feed.
     Boolean(frontmatter.feed ?? (filePathRelative && !frontmatter.home))
   ```
 
-A custom filter function, used to filter feed items.
+A custom filter function to determine which pages are included in the feed.
 
 ## sorter
 
@@ -94,33 +94,29 @@ A custom filter function, used to filter feed items.
     )
   ```
 
-Custom sorter function for feed items.
+A custom sorter function for feed items.
 
-The default sorting behavior is by file adding time coming from git (needs `@vuepress/plugin-git`).
+The default behavior sorts items by the file creation time retrieved from git (requires `@vuepress/plugin-git`).
 
 ::: tip
-
-You should enable `@vuepress/plugin-git` to get the newest created pages as feed items. Otherwise, the feed items will be sorted by the default order of pages in VuePress.
-
+You should enable `@vuepress/plugin-git` to accurately use the creation time of pages for sorting. Otherwise, feed items will follow the default page order in VuePress.
 :::
 
 ## channel
 
-`channel` option is used to config _Feed Channels_.
+The `channel` option configures _Feed Channels_.
 
-For available options, please see [Config → Channel](channel.md)
+For available options, please see [Config → Channel](channel.md).
 
 ## devServer
 
 - Type: `boolean`
 - Default: `false`
 
-Whether enabled in devServer.
+Whether to enable feed generation in the development server.
 
 ::: tip
-
-For performance reasons, we do not provide hot reload. Reboot your devServer to sync your changes.
-
+For performance reasons, hot reload is not available. You must restart the devServer to sync changes.
 :::
 
 ## devHostname
@@ -128,69 +124,69 @@ For performance reasons, we do not provide hot reload. Reboot your devServer to 
 - Type: `string`
 - Default: `"http://localhost:${port}"`
 
-Hostname to use in devServer
+The hostname to use when running in the development server.
 
 ## atomOutputFilename
 
 - Type: `string`
 - Default: `"atom.xml"`
 
-Atom syntax output filename, relative to dest folder.
+The output filename for the Atom feed, relative to the output directory.
 
 ## atomXslTemplate
 
 - Type: `string`
 - Default: Content of `@vuepress/plugin-feed/templates/atom.xsl`
 
-Atom xsl template file content.
+The content of the XSL template file for Atom.
 
 ## atomXslFilename
 
 - Type: `string`
 - Default: `"atom.xsl"`
 
-Atom xsl filename, relative to dest folder.
+The output filename for the Atom XSL file, relative to the output directory.
 
 ## jsonOutputFilename
 
 - Type: `string`
 - Default: `"feed.json"`
 
-JSON syntax output filename, relative to dest folder.
+The output filename for the JSON feed, relative to the output directory.
 
 ## rssOutputFilename
 
 - Type: `string`
 - Default: `"rss.xml"`
 
-RSS syntax output filename, relative to dest folder.
+The output filename for the RSS feed, relative to the output directory.
 
 ## rssXslTemplate
 
 - Type: `string`
 - Default: Content of `@vuepress/plugin-feed/templates/rss.xsl`
 
-RSS xsl template file content.
+The content of the XSL template file for RSS.
 
 ## rssXslFilename
 
 - Type: `string`
 - Default: `"rss.xsl"`
 
-RSS syntax xsl filename, relative to dest folder.
+The output filename for the RSS XSL file, relative to the output directory.
 
 ## getter
 
-Feed generation controller, see [Feed Getter](./getter.md).
+The controller for feed generation. See [Feed Getter](./getter.md).
 
-::: tip The plugin has a built-in getter, only set this if you want full control of feed generation.
-
+::: tip
+The plugin includes a built-in getter. Set this option only if you require full control over the feed generation process.
 :::
 
 ## locales
 
 - Type: `Record<string, BaseFeedOptions>`
 
-You can use it to specific options for each locale.
+Configuration for specific locales.
 
-Any options above are supported except `hostname`.
+All options listed above are supported within locales, except for `hostname`.

@@ -4,103 +4,107 @@ icon: captions
 
 # Frontmatter 配置
 
-你可以通过配置每个页面的 Frontmatter，来对每个 Feed 项目生成进行单独的控制。
+你可以通过配置页面 Frontmatter 来控制每个 Feed 条目的生成方式。
 
 ## 添加与移除
 
-默认情况下，所有文章均会被添加至 feed 流。如果你想在 feed 中移除特定页面，你可以在 frontmatter 中设置 `feed: false`。
+默认情况下，所有文章都会被添加到 Feed 流中。若要在 Feed 中移除某个页面，请在 Frontmatter 中设置 `feed: false`。
 
-## 读取的 Frontmatter 信息
+## 基础信息
+
+插件会自动读取以下标准的 Frontmatter 属性来填充 Feed 条目。
 
 ### title
 
-- 类型：`string`
+- 类型: `string`
 
-由 VuePress 自动生成，默认为页面的 h1 内容
+页面标题。如果未指定，默认自动读取页面的第一个 `h1` 标题内容。
 
 ### description
 
-- 类型：`string`
+- 类型: `string`
 
-页面描述
+页面的描述或摘要。
 
 ### date
 
-- 类型：`Date`
+- 类型: `Date`
 
-页面的发布日期
+页面的发布日期。
 
 ### article
 
-- 类型：`boolean`
+- 类型: `boolean`
 
-该页面是否是文章
+该页面是否为一篇文章。
 
-> 如果此项设置为 `false`，则该页不会包含在最终的 feed 中。
+> 如果设置为 `false`，该页面将被视为非文章页面，并且不会包含在最终的 Feed 中。
 
 ### copyright
 
-- 类型：`string`
+- 类型: `string`
 
-页面版权信息
+页面的版权信息。
 
 ### cover / image / banner
 
-- 类型：`string`
+- 类型: `string`
 
-页面的封面/分享图，需为完整链接或绝对链接。
+用作页面封面的图片。必须是完整的 URL 链接或绝对路径。
 
-## Frontmatter 选项
+## Feed 选项
+
+你可以使用 `feed` 对象来覆盖默认属性，或为 RSS/Atom/JSON 条目提供特定的配置。
 
 ### feed.title
 
-- 类型：`string`
+- 类型: `string`
 
-Feed 项目的标题
+该条目在 Feed 中显示的标题。
 
 ### feed.description
 
-- 类型：`string`
+- 类型: `string`
 
-Feed 项目的描述
+该条目在 Feed 中显示的描述。
 
 ### feed.content
 
-- 类型：`string`
+- 类型: `string`
 
-Feed 项目的内容
+该条目在 Feed 中的内容。
 
 ### feed.author
 
-- 类型：`FeedAuthor[] | FeedAuthor`
+- 类型: `FeedAuthor[] | FeedAuthor`
 
-Feed 项目的作者
+该 Feed 条目的作者。
 
 ::: details FeedAuthor 格式
 
 ```ts
 interface FeedAuthor {
   /**
-   * 作者名字
+   * 作者姓名
    */
   name?: string
 
   /**
-   * 作者邮件
+   * 作者邮箱
    */
   email?: string
 
   /**
    * 作者网站
    *
-   * @description json format only
+   * @description 仅限 json 格式
    */
   url?: string
 
   /**
    * 作者头像
    *
-   * @description json format only
+   * @description 仅限 json 格式
    */
   avatar?: string
 }
@@ -110,35 +114,35 @@ interface FeedAuthor {
 
 ### feed.contributor
 
-- 类型：`FeedContributor[] | FeedContributor`
+- 类型: `FeedContributor[] | FeedContributor`
 
-Feed 项目的贡献者
+该 Feed 条目的贡献者。
 
 ::: details FeedContributor 格式
 
 ```ts
 interface FeedContributor {
   /**
-   * 作者名字
+   * 作者姓名
    */
   name?: string
 
   /**
-   * 作者邮件
+   * 作者邮箱
    */
   email?: string
 
   /**
    * 作者网站
    *
-   * @description json format only
+   * @description 仅限 json 格式
    */
   url?: string
 
   /**
    * 作者头像
    *
-   * @description json format only
+   * @description 仅限 json 格式
    */
   avatar?: string
 }
@@ -148,10 +152,10 @@ interface FeedContributor {
 
 ### feed.guid
 
-- 类型：`string`
+- 类型: `string`
 
-Feed 项目的标识符，用于标识 Feed 项目。
+Feed 条目的唯一标识符，用于识别该条目。
 
-::: tip 你应该确保每个 Feed 项目有全局唯一的 guid。
-
+::: tip
+你应该确保每个 Feed 条目都有一个唯一的 GUID。
 :::

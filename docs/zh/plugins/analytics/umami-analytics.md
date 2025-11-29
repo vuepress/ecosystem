@@ -6,7 +6,7 @@ icon: chart-no-axes-combined
 
 <NpmBadge package="@vuepress/plugin-umami-analytics" />
 
-将 [Umami Analytics](https://umami.is/)（一种注重隐私的开源网络分析解决方案）无缝集成到您的 VuePress 站点中。
+将 [Umami Analytics](https://umami.is/)（一种注重隐私的开源网络分析解决方案）无缝集成到你的 VuePress 站点中。
 
 ## 使用方法
 
@@ -32,7 +32,7 @@ export default {
 
 插件开箱即用，会自动捕获首次访问和后续路由切换时的页面浏览事件，从而确保单页应用（SPA）流量数据的准确性。
 
-针对高级追踪需求，插件在 `window` 实例上暴露了全局 `umami` 对象。您可以通过调用 `umami.track()` 编程式地触发[自定义事件](https://umami.is/docs/tracker-functions)。
+针对高级追踪需求，插件在 `window` 实例上暴露了全局 `umami` 对象。你可以通过调用 `umami.track()` 编程式地触发[自定义事件](https://umami.is/docs/tracker-functions)。
 
 ## 选项
 
@@ -65,7 +65,7 @@ export default {
 
   启用缓存以提高追踪脚本的性能。
 
-  **注意：** 此功能会使用 Session Storage。根据您所在地区的法规，您可能需要向用户告知这一情况。
+  **注意：** 此功能会使用 Session Storage。根据你所在地区的法规，你可能需要向用户告知这一情况。
 
 ### domains
 
