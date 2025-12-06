@@ -10,7 +10,7 @@ icon: puzzle
 
 - Props:
   - type
-    - 类型： `'tip' | 'warning' | 'danger' | 'important' | 'info' | 'note'`
+    - Type： `'tip' | 'warning' | 'danger' | 'important' | 'info' | 'note'`
     - Default: `'tip'`
   - text
     - Type: `string`
