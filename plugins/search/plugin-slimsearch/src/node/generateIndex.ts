@@ -203,7 +203,8 @@ export const getSearchIndexStore = async (
 
   await Promise.all(
     entries(indexesByLocale).map(async ([localePath, indexes]) => {
-      const lang = app.options.locales[localePath].lang ?? 'en'
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      const lang = app.options.locales[localePath]?.lang ?? app.options.lang
       const tokenizer = new Intl.Segmenter(lang, { granularity: 'word' })
 
       const index = createIndex<string, IndexItem, IndexItem>({
