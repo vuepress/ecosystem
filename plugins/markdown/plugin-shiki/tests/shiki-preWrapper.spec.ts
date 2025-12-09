@@ -441,4 +441,32 @@ ${codeFence}
       expect(md.render(source)).toMatchSnapshot()
     })
   })
+
+  describe('highlighted lines with other options (issue #577)', () => {
+    const source = `\
+${codeFence}java :no-collapsed-lines {1}
+13213123
+${codeFence}
+
+${codeFence}ts :collapsed-lines=5 {1,3-5}
+const line1 = 'line 1'
+const line2 = 'line 2'
+const line3 = 'line 3'
+const line4 = 'line 4'
+const line5 = 'line 5'
+${codeFence}
+
+${codeFence}ts title="config.ts" {2}
+const line1 = 'line 1'
+const line2 = 'line 2'
+${codeFence}
+`
+    it('should highlight lines when combined with other options', () => {
+      const md = createMarkdown()
+      const result = md.render(source)
+      expect(result).toMatchSnapshot()
+      // Verify that highlighted class is present
+      expect(result).toContain('highlighted')
+    })
+  })
 })

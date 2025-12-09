@@ -47,7 +47,8 @@ export const resolveLanguage = (info: string): string =>
  * @returns Line options array / 行选项数组
  */
 export const attrsToLines = (attrs: string): TransformerCompactLineOption[] => {
-  const attrsContent = attrs.replace(/^(?:\[.*?\])?.*?([\d,-]+).*/, '$1').trim()
+  const match = attrs.match(/\s+([\d,-]+)\s*$/)
+  const attrsContent = match ? match[1] : ''
   const result: number[] = []
 
   if (!attrsContent) {
