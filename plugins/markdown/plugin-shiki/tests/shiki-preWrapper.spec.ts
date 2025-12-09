@@ -445,7 +445,7 @@ ${codeFence}
   describe('highlighted lines with other options (issue #577)', () => {
     const source = `\
 ${codeFence}java :no-collapsed-lines {1}
-13213123
+System.out.println("Hello World");
 ${codeFence}
 
 ${codeFence}ts :collapsed-lines=5 {1,3-5}
@@ -462,7 +462,7 @@ const line2 = 'line 2'
 ${codeFence}
 
 ${codeFence}java {1} :no-collapsed-lines
-13213123
+System.out.println("Hello World");
 ${codeFence}
 `
     it('should highlight lines when combined with other options', () => {
