@@ -460,6 +460,10 @@ ${codeFence}ts title="config.ts" {2}
 const line1 = 'line 1'
 const line2 = 'line 2'
 ${codeFence}
+
+${codeFence}java {1} :no-collapsed-lines
+13213123
+${codeFence}
 `
     it('should highlight lines when combined with other options', () => {
       const md = createMarkdown()

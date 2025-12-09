@@ -470,7 +470,8 @@ exports[`@vuepress/plugin-shiki > fence preWrapper > highlighted lines with othe
   <div class="language-ts line-numbers-mode" data-highlighter="shiki" data-ext="ts" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-ts"><span class="line"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line1</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 1</span><span style="color:#ECEFF4">'</span></span>
 <span class="line highlighted"><span style="color:#81A1C1">const</span><span style="color:#D8DEE9"> line2</span><span style="color:#81A1C1"> =</span><span style="color:#ECEFF4"> '</span><span style="color:#A3BE8C">line 2</span><span style="color:#ECEFF4">'</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div>
-</div>"
+</div><div class="language-java line-numbers-mode" data-highlighter="shiki" data-ext="java" style="background-color:#2e3440ff;color:#d8dee9ff"><pre class="shiki nord vp-code"><code class="language-java"><span class="line highlighted"><span style="color:#B48EAD">13213123</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div>"
 `;
 
 exports[`@vuepress/plugin-shiki > fence preWrapper > notation transformers > should work notation enabled 1`] = `
