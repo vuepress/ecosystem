@@ -558,10 +558,10 @@ importers:
         specifier: 'catalog:'
         version: 4.0.3
       sass:
-        specifier: 'catalog:'
+        specifier: ^1.95.0
         version: 1.96.0
       sass-embedded:
-        specifier: 'catalog:'
+        specifier: ^1.95.0
         version: 1.96.0
       sass-loader:
         specifier: 'catalog:'
