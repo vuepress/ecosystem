@@ -37,7 +37,7 @@
     "@lerna-lite/publish": "^4.9.4",
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
-    "@types/node": "^24.10.3",
+    "@types/node": "^25.0.0",
     "@types/webpack-env": "^1.18.8",
     "@vitest/coverage-istanbul": "4.0.15",
     "cpx2": "^8.0.0",

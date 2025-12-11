@@ -40,16 +40,16 @@ importers:
     devDependencies:
       '@commitlint/cli':
         specifier: ^20.2.0
-        version: 20.2.0(@types/node@24.10.3)(typescript@5.9.3)
+        version: 20.2.0(@types/node@25.0.0)(typescript@5.9.3)
       '@commitlint/config-conventional':
         specifier: ^20.2.0
         version: 20.2.0
       '@lerna-lite/cli':
         specifier: ^4.9.4
-        version: 4.9.4(@lerna-lite/publish@4.9.4(@types/node@24.10.3)(conventional-commits-filter@5.0.0))(@lerna-lite/version@4.9.4(@lerna-lite/publish@4.9.4(@types/node@24.10.3)(conventional-commits-filter@5.0.0))(@types/node@24.10.3)(conventional-commits-filter@5.0.0))(@types/node@24.10.3)
+        version: 4.9.4(@lerna-lite/publish@4.9.4(@types/node@25.0.0)(conventional-commits-filter@5.0.0))(@lerna-lite/version@4.9.4(@lerna-lite/publish@4.9.4(@types/node@25.0.0)(conventional-commits-filter@5.0.0))(@types/node@25.0.0)(conventional-commits-filter@5.0.0))(@types/node@25.0.0)
       '@lerna-lite/publish':
         specifier: ^4.9.4
-        version: 4.9.4(@types/node@24.10.3)(conventional-commits-filter@5.0.0)
+        version: 4.9.4(@types/node@25.0.0)(conventional-commits-filter@5.0.0)
       '@rollup/plugin-commonjs':
         specifier: ^29.0.0
         version: 29.0.0(rollup@4.53.3)
@@ -57,14 +57,14 @@ importers:
         specifier: ^16.0.3
         version: 16.0.3(rollup@4.53.3)
       '@types/node':
-        specifier: ^24.10.3
-        version: 24.10.3
+        specifier: ^25.0.0
+        version: 25.0.0
       '@types/webpack-env':
         specifier: ^1.18.8
         version: 1.18.8
       '@vitest/coverage-istanbul':
         specifier: 4.0.15
-        version: 4.0.15(vitest@4.0.15(@opentelemetry/api@1.9.0)(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))
+        version: 4.0.15(vitest@4.0.15(@opentelemetry/api@1.9.0)(@types/node@25.0.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))
       cpx2:
         specifier: ^8.0.0
         version: 8.0.0
@@ -136,13 +136,13 @@ importers:
         version: 5.9.3
       vite:
         specifier: ~7.1.12
-        version: 7.1.12(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
+        version: 7.1.12(@types/node@25.0.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
       vitest:
         specifier: 4.0.15
-        version: 4.0.15(@opentelemetry/api@1.9.0)(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
+        version: 4.0.15(@opentelemetry/api@1.9.0)(@types/node@25.0.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(@vuepress/bundler-webpack@2.0.0-rc.26(esbuild@0.27.1)(typescript@5.9.3))(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
+        version: 2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@25.0.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(@vuepress/bundler-webpack@2.0.0-rc.26(esbuild@0.27.1)(typescript@5.9.3))(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
 
   docs:
     dependencies:
@@ -1199,7 +1199,7 @@ importers:
         version: 4.3.2
       '@docsearch/react':
         specifier: ^4.3.2
-        version: 4.3.2(@algolia/client-search@5.46.0)(react@19.1.1)(search-insights@2.17.3)
+        version: 4.3.2(@algolia/client-search@5.46.0)(react@19.2.1)(search-insights@2.17.3)
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../../../tools/helper
@@ -8292,8 +8292,8 @@ packages:
     resolution: {integrity: sha512-s4VSOf6yN0rvbRZGxs8Om5CWj6seneMwK3oDb4lWDH0UPhWcxwOWw5+qk24bxq87szX1ydrwylIOp2uG1ojUpA==}
     engines: {node: '>= 0.8'}
 
-  react@19.1.1:
-    resolution: {integrity: sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==}
+  react@19.2.1:
+    resolution: {integrity: sha512-DGrYcCWK7tvYMnWh79yrPHt+vdx9tY+1gPZa7nJQtO/p8bLTDaHp4dzwEhQB7pZ4Xe3ok4XKuEPrVuc+wlpkmw==}
     engines: {node: '>=0.10.0'}
 
   read-cmd-shim@6.0.0:
@@ -9989,12 +9989,12 @@ snapshots:
     dependencies:
       json-schema: 0.4.0
 
-  '@ai-sdk/react@2.0.112(react@19.1.1)(zod@4.1.13)':
+  '@ai-sdk/react@2.0.112(react@19.2.1)(zod@4.1.13)':
     dependencies:
       '@ai-sdk/provider-utils': 3.0.18(zod@4.1.13)
       ai: 5.0.110(zod@4.1.13)
-      react: 19.1.1
-      swr: 2.3.7(react@19.1.1)
+      react: 19.2.1
+      swr: 2.3.7(react@19.2.1)
       throttleit: 2.1.0
     optionalDependencies:
       zod: 4.1.13
@@ -10804,11 +10804,11 @@ snapshots:
 
   '@chevrotain/utils@11.0.3': {}
 
-  '@commitlint/cli@20.2.0(@types/node@24.10.3)(typescript@5.9.3)':
+  '@commitlint/cli@20.2.0(@types/node@25.0.0)(typescript@5.9.3)':
     dependencies:
       '@commitlint/format': 20.2.0
       '@commitlint/lint': 20.2.0
-      '@commitlint/load': 20.2.0(@types/node@24.10.3)(typescript@5.9.3)
+      '@commitlint/load': 20.2.0(@types/node@25.0.0)(typescript@5.9.3)
       '@commitlint/read': 20.2.0
       '@commitlint/types': 20.2.0
       tinyexec: 1.0.2
@@ -10855,7 +10855,7 @@ snapshots:
       '@commitlint/rules': 20.2.0
       '@commitlint/types': 20.2.0
 
-  '@commitlint/load@20.2.0(@types/node@24.10.3)(typescript@5.9.3)':
+  '@commitlint/load@20.2.0(@types/node@25.0.0)(typescript@5.9.3)':
     dependencies:
       '@commitlint/config-validator': 20.2.0
       '@commitlint/execute-rule': 20.0.0
@@ -10863,7 +10863,7 @@ snapshots:
       '@commitlint/types': 20.2.0
       chalk: 5.6.2
       cosmiconfig: 9.0.0(typescript@5.9.3)
-      cosmiconfig-typescript-loader: 6.2.0(@types/node@24.10.3)(cosmiconfig@9.0.0(typescript@5.9.3))(typescript@5.9.3)
+      cosmiconfig-typescript-loader: 6.2.0(@types/node@25.0.0)(cosmiconfig@9.0.0(typescript@5.9.3))(typescript@5.9.3)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -10940,9 +10940,9 @@ snapshots:
     dependencies:
       postcss-selector-parser: 7.1.1
 
-  '@docsearch/core@4.3.1(react@19.1.1)':
+  '@docsearch/core@4.3.1(react@19.2.1)':
     optionalDependencies:
-      react: 19.1.1
+      react: 19.2.1
 
   '@docsearch/css@4.3.2': {}
 
@@ -10950,18 +10950,18 @@ snapshots:
     dependencies:
       htm: 3.1.1
 
-  '@docsearch/react@4.3.2(@algolia/client-search@5.46.0)(react@19.1.1)(search-insights@2.17.3)':
+  '@docsearch/react@4.3.2(@algolia/client-search@5.46.0)(react@19.2.1)(search-insights@2.17.3)':
     dependencies:
-      '@ai-sdk/react': 2.0.112(react@19.1.1)(zod@4.1.13)
+      '@ai-sdk/react': 2.0.112(react@19.2.1)(zod@4.1.13)
       '@algolia/autocomplete-core': 1.19.2(@algolia/client-search@5.46.0)(algoliasearch@5.46.0)(search-insights@2.17.3)
-      '@docsearch/core': 4.3.1(react@19.1.1)
+      '@docsearch/core': 4.3.1(react@19.2.1)
       '@docsearch/css': 4.3.2
       ai: 5.0.110(zod@4.1.13)
       algoliasearch: 5.46.0
       marked: 16.4.2
       zod: 4.1.13
     optionalDependencies:
-      react: 19.1.1
+      react: 19.2.1
       search-insights: 2.17.3
     transitivePeerDependencies:
       - '@algolia/client-search'
@@ -11247,18 +11247,18 @@ snapshots:
     optionalDependencies:
       '@types/node': 25.0.0
 
-  '@inquirer/core@10.3.2(@types/node@24.10.3)':
+  '@inquirer/core@10.3.2(@types/node@25.0.0)':
     dependencies:
       '@inquirer/ansi': 1.0.2
       '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10(@types/node@24.10.3)
+      '@inquirer/type': 3.0.10(@types/node@25.0.0)
       cli-width: 4.1.0
       mute-stream: 2.0.0
       signal-exit: 4.1.0
       wrap-ansi: 6.2.0
       yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 24.10.3
+      '@types/node': 25.0.0
 
   '@inquirer/core@11.0.2(@types/node@25.0.0)':
     dependencies:
@@ -11280,13 +11280,13 @@ snapshots:
     optionalDependencies:
       '@types/node': 25.0.0
 
-  '@inquirer/expand@4.0.23(@types/node@24.10.3)':
+  '@inquirer/expand@4.0.23(@types/node@25.0.0)':
     dependencies:
-      '@inquirer/core': 10.3.2(@types/node@24.10.3)
-      '@inquirer/type': 3.0.10(@types/node@24.10.3)
+      '@inquirer/core': 10.3.2(@types/node@25.0.0)
+      '@inquirer/type': 3.0.10(@types/node@25.0.0)
       yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 24.10.3
+      '@types/node': 25.0.0
 
   '@inquirer/expand@5.0.2(@types/node@25.0.0)':
     dependencies:
@@ -11306,12 +11306,12 @@ snapshots:
 
   '@inquirer/figures@2.0.2': {}
 
-  '@inquirer/input@4.3.1(@types/node@24.10.3)':
+  '@inquirer/input@4.3.1(@types/node@25.0.0)':
     dependencies:
-      '@inquirer/core': 10.3.2(@types/node@24.10.3)
-      '@inquirer/type': 3.0.10(@types/node@24.10.3)
+      '@inquirer/core': 10.3.2(@types/node@25.0.0)
+      '@inquirer/type': 3.0.10(@types/node@25.0.0)
     optionalDependencies:
-      '@types/node': 24.10.3
+      '@types/node': 25.0.0
 
   '@inquirer/input@5.0.2(@types/node@25.0.0)':
     dependencies:
@@ -11365,15 +11365,15 @@ snapshots:
     optionalDependencies:
       '@types/node': 25.0.0
 
-  '@inquirer/select@4.4.2(@types/node@24.10.3)':
+  '@inquirer/select@4.4.2(@types/node@25.0.0)':
     dependencies:
       '@inquirer/ansi': 1.0.2
-      '@inquirer/core': 10.3.2(@types/node@24.10.3)
+      '@inquirer/core': 10.3.2(@types/node@25.0.0)
       '@inquirer/figures': 1.0.15
-      '@inquirer/type': 3.0.10(@types/node@24.10.3)
+      '@inquirer/type': 3.0.10(@types/node@25.0.0)
       yoctocolors-cjs: 2.1.3
     optionalDependencies:
-      '@types/node': 24.10.3
+      '@types/node': 25.0.0
 
   '@inquirer/select@5.0.2(@types/node@25.0.0)':
     dependencies:
@@ -11384,9 +11384,9 @@ snapshots:
     optionalDependencies:
       '@types/node': 25.0.0
 
-  '@inquirer/type@3.0.10(@types/node@24.10.3)':
+  '@inquirer/type@3.0.10(@types/node@25.0.0)':
     optionalDependencies:
-      '@types/node': 24.10.3
+      '@types/node': 25.0.0
 
   '@inquirer/type@4.0.2(@types/node@25.0.0)':
     optionalDependencies:
@@ -11506,10 +11506,10 @@ snapshots:
 
   '@leichtgewicht/ip-codec@2.0.5': {}
 
-  '@lerna-lite/cli@4.9.4(@lerna-lite/publish@4.9.4(@types/node@24.10.3)(conventional-commits-filter@5.0.0))(@lerna-lite/version@4.9.4(@lerna-lite/publish@4.9.4(@types/node@24.10.3)(conventional-commits-filter@5.0.0))(@types/node@24.10.3)(conventional-commits-filter@5.0.0))(@types/node@24.10.3)':
+  '@lerna-lite/cli@4.9.4(@lerna-lite/publish@4.9.4(@types/node@25.0.0)(conventional-commits-filter@5.0.0))(@lerna-lite/version@4.9.4(@lerna-lite/publish@4.9.4(@types/node@25.0.0)(conventional-commits-filter@5.0.0))(@types/node@25.0.0)(conventional-commits-filter@5.0.0))(@types/node@25.0.0)':
     dependencies:
-      '@lerna-lite/core': 4.9.4(@types/node@24.10.3)
-      '@lerna-lite/init': 4.9.4(@types/node@24.10.3)
+      '@lerna-lite/core': 4.9.4(@types/node@25.0.0)
+      '@lerna-lite/init': 4.9.4(@types/node@25.0.0)
       '@lerna-lite/npmlog': 4.9.4
       dedent: 1.7.0
       dotenv: 17.2.3
@@ -11517,18 +11517,18 @@ snapshots:
       load-json-file: 7.0.1
       yargs: 18.0.0
     optionalDependencies:
-      '@lerna-lite/publish': 4.9.4(@types/node@24.10.3)(conventional-commits-filter@5.0.0)
-      '@lerna-lite/version': 4.9.4(@lerna-lite/publish@4.9.4(@types/node@24.10.3)(conventional-commits-filter@5.0.0))(@types/node@24.10.3)(conventional-commits-filter@5.0.0)
+      '@lerna-lite/publish': 4.9.4(@types/node@25.0.0)(conventional-commits-filter@5.0.0)
+      '@lerna-lite/version': 4.9.4(@lerna-lite/publish@4.9.4(@types/node@25.0.0)(conventional-commits-filter@5.0.0))(@types/node@25.0.0)(conventional-commits-filter@5.0.0)
     transitivePeerDependencies:
       - '@types/node'
       - babel-plugin-macros
       - supports-color
 
-  '@lerna-lite/core@4.9.4(@types/node@24.10.3)':
+  '@lerna-lite/core@4.9.4(@types/node@25.0.0)':
     dependencies:
-      '@inquirer/expand': 4.0.23(@types/node@24.10.3)
-      '@inquirer/input': 4.3.1(@types/node@24.10.3)
-      '@inquirer/select': 4.4.2(@types/node@24.10.3)
+      '@inquirer/expand': 4.0.23(@types/node@25.0.0)
+      '@inquirer/input': 4.3.1(@types/node@25.0.0)
+      '@inquirer/select': 4.4.2(@types/node@25.0.0)
       '@lerna-lite/npmlog': 4.9.4
       '@npmcli/run-script': 10.0.3
       ci-info: 4.3.1
@@ -11557,9 +11557,9 @@ snapshots:
       - babel-plugin-macros
       - supports-color
 
-  '@lerna-lite/init@4.9.4(@types/node@24.10.3)':
+  '@lerna-lite/init@4.9.4(@types/node@25.0.0)':
     dependencies:
-      '@lerna-lite/core': 4.9.4(@types/node@24.10.3)
+      '@lerna-lite/core': 4.9.4(@types/node@25.0.0)
       fs-extra: 11.3.2
       p-map: 7.0.4
       write-json-file: 7.0.0
@@ -11578,12 +11578,12 @@ snapshots:
       tinyrainbow: 3.0.3
       wide-align: 1.1.5
 
-  '@lerna-lite/publish@4.9.4(@types/node@24.10.3)(conventional-commits-filter@5.0.0)':
+  '@lerna-lite/publish@4.9.4(@types/node@25.0.0)(conventional-commits-filter@5.0.0)':
     dependencies:
-      '@lerna-lite/cli': 4.9.4(@lerna-lite/publish@4.9.4(@types/node@24.10.3)(conventional-commits-filter@5.0.0))(@lerna-lite/version@4.9.4(@lerna-lite/publish@4.9.4(@types/node@24.10.3)(conventional-commits-filter@5.0.0))(@types/node@24.10.3)(conventional-commits-filter@5.0.0))(@types/node@24.10.3)
-      '@lerna-lite/core': 4.9.4(@types/node@24.10.3)
+      '@lerna-lite/cli': 4.9.4(@lerna-lite/publish@4.9.4(@types/node@25.0.0)(conventional-commits-filter@5.0.0))(@lerna-lite/version@4.9.4(@lerna-lite/publish@4.9.4(@types/node@25.0.0)(conventional-commits-filter@5.0.0))(@types/node@25.0.0)(conventional-commits-filter@5.0.0))(@types/node@25.0.0)
+      '@lerna-lite/core': 4.9.4(@types/node@25.0.0)
       '@lerna-lite/npmlog': 4.9.4
-      '@lerna-lite/version': 4.9.4(@lerna-lite/publish@4.9.4(@types/node@24.10.3)(conventional-commits-filter@5.0.0))(@types/node@24.10.3)(conventional-commits-filter@5.0.0)
+      '@lerna-lite/version': 4.9.4(@lerna-lite/publish@4.9.4(@types/node@25.0.0)(conventional-commits-filter@5.0.0))(@types/node@25.0.0)(conventional-commits-filter@5.0.0)
       '@npmcli/arborist': 9.1.9
       '@npmcli/package-json': 7.0.4
       byte-size: 9.0.1
@@ -11616,11 +11616,11 @@ snapshots:
       - conventional-commits-filter
       - supports-color
 
-  '@lerna-lite/version@4.9.4(@lerna-lite/publish@4.9.4(@types/node@24.10.3)(conventional-commits-filter@5.0.0))(@types/node@24.10.3)(conventional-commits-filter@5.0.0)':
+  '@lerna-lite/version@4.9.4(@lerna-lite/publish@4.9.4(@types/node@25.0.0)(conventional-commits-filter@5.0.0))(@types/node@25.0.0)(conventional-commits-filter@5.0.0)':
     dependencies:
       '@conventional-changelog/git-client': 2.5.1(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.2.1)
-      '@lerna-lite/cli': 4.9.4(@lerna-lite/publish@4.9.4(@types/node@24.10.3)(conventional-commits-filter@5.0.0))(@lerna-lite/version@4.9.4(@lerna-lite/publish@4.9.4(@types/node@24.10.3)(conventional-commits-filter@5.0.0))(@types/node@24.10.3)(conventional-commits-filter@5.0.0))(@types/node@24.10.3)
-      '@lerna-lite/core': 4.9.4(@types/node@24.10.3)
+      '@lerna-lite/cli': 4.9.4(@lerna-lite/publish@4.9.4(@types/node@25.0.0)(conventional-commits-filter@5.0.0))(@lerna-lite/version@4.9.4(@lerna-lite/publish@4.9.4(@types/node@25.0.0)(conventional-commits-filter@5.0.0))(@types/node@25.0.0)(conventional-commits-filter@5.0.0))(@types/node@25.0.0)
+      '@lerna-lite/core': 4.9.4(@types/node@25.0.0)
       '@lerna-lite/npmlog': 4.9.4
       '@octokit/plugin-enterprise-rest': 6.0.1
       '@octokit/rest': 22.0.1
@@ -12499,7 +12499,7 @@ snapshots:
 
   '@types/conventional-commits-parser@5.0.2':
     dependencies:
-      '@types/node': 24.10.3
+      '@types/node': 25.0.0
 
   '@types/d3-array@3.2.2': {}
 
@@ -12655,7 +12655,7 @@ snapshots:
   '@types/fs-extra@11.0.4':
     dependencies:
       '@types/jsonfile': 6.1.4
-      '@types/node': 24.10.3
+      '@types/node': 25.0.0
 
   '@types/geojson@7946.0.16': {}
 
@@ -12689,7 +12689,7 @@ snapshots:
 
   '@types/jsonfile@6.1.4':
     dependencies:
-      '@types/node': 24.10.3
+      '@types/node': 25.0.0
 
   '@types/linkify-it@5.0.0': {}
 
@@ -12756,7 +12756,7 @@ snapshots:
 
   '@types/sax@1.2.7':
     dependencies:
-      '@types/node': 24.10.3
+      '@types/node': 25.0.0
 
   '@types/semver@7.7.1': {}
 
@@ -12964,20 +12964,13 @@ snapshots:
 
   '@vercel/oidc@3.0.5': {}
 
-  '@vitejs/plugin-vue@6.0.2(vite@7.1.12(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(vue@3.5.25(typescript@5.9.3))':
-    dependencies:
-      '@rolldown/pluginutils': 1.0.0-beta.50
-      vite: 7.1.12(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
-      vue: 3.5.25(typescript@5.9.3)
-    optional: true
-
   '@vitejs/plugin-vue@6.0.2(vite@7.1.12(@types/node@25.0.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(vue@3.5.25(typescript@5.9.3))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-beta.50
       vite: 7.1.12(@types/node@25.0.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
       vue: 3.5.25(typescript@5.9.3)
 
-  '@vitest/coverage-istanbul@4.0.15(vitest@4.0.15(@opentelemetry/api@1.9.0)(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))':
+  '@vitest/coverage-istanbul@4.0.15(vitest@4.0.15(@opentelemetry/api@1.9.0)(@types/node@25.0.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))':
     dependencies:
       '@istanbuljs/schema': 0.1.3
       '@jridgewell/gen-mapping': 0.3.13
@@ -12990,7 +12983,7 @@ snapshots:
       magicast: 0.5.1
       obug: 2.1.1
       tinyrainbow: 3.0.3
-      vitest: 4.0.15(@opentelemetry/api@1.9.0)(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
+      vitest: 4.0.15(@opentelemetry/api@1.9.0)(@types/node@25.0.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
     transitivePeerDependencies:
       - supports-color
 
@@ -13003,13 +12996,13 @@ snapshots:
       chai: 6.2.1
       tinyrainbow: 3.0.3
 
-  '@vitest/mocker@4.0.15(vite@7.1.12(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))':
+  '@vitest/mocker@4.0.15(vite@7.1.12(@types/node@25.0.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))':
     dependencies:
       '@vitest/spy': 4.0.15
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 7.1.12(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
+      vite: 7.1.12(@types/node@25.0.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
 
   '@vitest/pretty-format@4.0.15':
     dependencies:
@@ -13128,38 +13121,6 @@ snapshots:
       vue: 3.5.25(typescript@5.9.3)
 
   '@vue/shared@3.5.25': {}
-
-  '@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)':
-    dependencies:
-      '@vitejs/plugin-vue': 6.0.2(vite@7.1.12(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))(vue@3.5.25(typescript@5.9.3))
-      '@vuepress/bundlerutils': 2.0.0-rc.26(typescript@5.9.3)
-      '@vuepress/client': 2.0.0-rc.26(typescript@5.9.3)
-      '@vuepress/core': 2.0.0-rc.26(typescript@5.9.3)
-      '@vuepress/shared': 2.0.0-rc.26
-      '@vuepress/utils': 2.0.0-rc.26
-      autoprefixer: 10.4.22(postcss@8.5.6)
-      connect-history-api-fallback: 2.0.0
-      postcss: 8.5.6
-      postcss-load-config: 6.0.1(jiti@2.6.1)(postcss@8.5.6)(tsx@4.21.0)(yaml@2.8.2)
-      rollup: 4.53.3
-      vite: 7.1.12(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
-      vue: 3.5.25(typescript@5.9.3)
-      vue-router: 4.6.3(vue@3.5.25(typescript@5.9.3))
-    transitivePeerDependencies:
-      - '@types/node'
-      - jiti
-      - less
-      - lightningcss
-      - sass
-      - sass-embedded
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-      - tsx
-      - typescript
-      - yaml
-    optional: true
 
   '@vuepress/bundler-vite@2.0.0-rc.26(@types/node@25.0.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)':
     dependencies:
@@ -14060,9 +14021,9 @@ snapshots:
     dependencies:
       layout-base: 2.0.1
 
-  cosmiconfig-typescript-loader@6.2.0(@types/node@24.10.3)(cosmiconfig@9.0.0(typescript@5.9.3))(typescript@5.9.3):
+  cosmiconfig-typescript-loader@6.2.0(@types/node@25.0.0)(cosmiconfig@9.0.0(typescript@5.9.3))(typescript@5.9.3):
     dependencies:
-      '@types/node': 24.10.3
+      '@types/node': 25.0.0
       cosmiconfig: 9.0.0(typescript@5.9.3)
       jiti: 2.6.1
       typescript: 5.9.3
@@ -17533,7 +17494,7 @@ snapshots:
       iconv-lite: 0.4.24
       unpipe: 1.0.0
 
-  react@19.1.1: {}
+  react@19.2.1: {}
 
   read-cmd-shim@6.0.0: {}
 
@@ -18514,11 +18475,11 @@ snapshots:
       picocolors: 1.1.1
       sax: 1.4.3
 
-  swr@2.3.7(react@19.1.1):
+  swr@2.3.7(react@19.2.1):
     dependencies:
       dequal: 2.0.3
-      react: 19.1.1
-      use-sync-external-store: 1.6.0(react@19.1.1)
+      react: 19.2.1
+      use-sync-external-store: 1.6.0(react@19.2.1)
 
   sync-child-process@1.0.2:
     dependencies:
@@ -18874,9 +18835,9 @@ snapshots:
 
   url-join@4.0.1: {}
 
-  use-sync-external-store@1.6.0(react@19.1.1):
+  use-sync-external-store@1.6.0(react@19.2.1):
     dependencies:
-      react: 19.1.1
+      react: 19.2.1
 
   util-deprecate@1.0.2: {}
 
@@ -18916,25 +18877,6 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite@7.1.12(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2):
-    dependencies:
-      esbuild: 0.25.12
-      fdir: 6.5.0(picomatch@4.0.3)
-      picomatch: 4.0.3
-      postcss: 8.5.6
-      rollup: 4.53.3
-      tinyglobby: 0.2.15
-    optionalDependencies:
-      '@types/node': 24.10.3
-      fsevents: 2.3.3
-      jiti: 2.6.1
-      lightningcss: 1.30.2
-      sass: 1.96.0
-      sass-embedded: 1.96.0
-      terser: 5.44.1
-      tsx: 4.21.0
-      yaml: 2.8.2
-
   vite@7.1.12(@types/node@25.0.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2):
     dependencies:
       esbuild: 0.25.12
@@ -18954,10 +18896,10 @@ snapshots:
       tsx: 4.21.0
       yaml: 2.8.2
 
-  vitest@4.0.15(@opentelemetry/api@1.9.0)(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2):
+  vitest@4.0.15(@opentelemetry/api@1.9.0)(@types/node@25.0.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2):
     dependencies:
       '@vitest/expect': 4.0.15
-      '@vitest/mocker': 4.0.15(vite@7.1.12(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))
+      '@vitest/mocker': 4.0.15(vite@7.1.12(@types/node@25.0.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))
       '@vitest/pretty-format': 4.0.15
       '@vitest/runner': 4.0.15
       '@vitest/snapshot': 4.0.15
@@ -18974,11 +18916,11 @@ snapshots:
       tinyexec: 1.0.2
       tinyglobby: 0.2.15
       tinyrainbow: 3.0.3
-      vite: 7.1.12(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
+      vite: 7.1.12(@types/node@25.0.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@opentelemetry/api': 1.9.0
-      '@types/node': 24.10.3
+      '@types/node': 25.0.0
     transitivePeerDependencies:
       - jiti
       - less
@@ -19048,22 +18990,6 @@ snapshots:
       '@vue/shared': 3.5.25
     optionalDependencies:
       typescript: 5.9.3
-
-  vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(@vuepress/bundler-webpack@2.0.0-rc.26(esbuild@0.27.1)(typescript@5.9.3))(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3)):
-    dependencies:
-      '@vuepress/cli': 2.0.0-rc.26(typescript@5.9.3)
-      '@vuepress/client': 2.0.0-rc.26(typescript@5.9.3)
-      '@vuepress/core': 2.0.0-rc.26(typescript@5.9.3)
-      '@vuepress/markdown': 2.0.0-rc.26
-      '@vuepress/shared': 2.0.0-rc.26
-      '@vuepress/utils': 2.0.0-rc.26
-      vue: 3.5.25(typescript@5.9.3)
-    optionalDependencies:
-      '@vuepress/bundler-vite': 2.0.0-rc.26(@types/node@24.10.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2)
-      '@vuepress/bundler-webpack': 2.0.0-rc.26(esbuild@0.27.1)(typescript@5.9.3)
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
 
   vuepress@2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@25.0.0)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(@vuepress/bundler-webpack@2.0.0-rc.26(esbuild@0.27.1)(typescript@5.9.3))(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3)):
     dependencies:
