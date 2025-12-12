@@ -41,8 +41,8 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@mdit/plugin-katex-slim": "^0.24.0",
-    "@mdit/plugin-mathjax-slim": "^0.24.0",
+    "@mdit/plugin-katex-slim": "^0.25.1",
+    "@mdit/plugin-mathjax-slim": "^0.24.1",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
     "vue": "catalog:"
