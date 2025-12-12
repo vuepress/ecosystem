@@ -1,5 +1,5 @@
 import type { MarkdownItKatexOptions } from '@mdit/plugin-katex-slim'
-import { katex, loadMhchem } from '@mdit/plugin-katex-slim'
+import { katex } from '@mdit/plugin-katex-slim'
 import type { MathjaxInstance } from '@mdit/plugin-mathjax-slim'
 import { createMathjaxInstance, mathjax } from '@mdit/plugin-mathjax-slim'
 import { addCustomElement, isModuleAvailable } from '@vuepress/helper'
@@ -105,7 +105,7 @@ export const markdownMathPlugin = ({
         })
       } else {
         if ((options as MarkdownKatexPluginOptions).mhchem) {
-          await loadMhchem()
+          await import('@mdit/plugin-katex-slim/mhchem')
         }
 
         md.use<MarkdownItKatexOptions<MarkdownEnv>>(katex, {

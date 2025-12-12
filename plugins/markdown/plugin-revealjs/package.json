@@ -44,9 +44,9 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@mdit/plugin-uml": "^0.22.2",
+    "@mdit/plugin-uml": "^0.23.0",
     "@types/markdown-it": "^14.1.2",
-    "@types/reveal.js": "^5.2.1",
+    "@types/reveal.js": "^5.2.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "reveal.js": "^5.2.1",

@@ -55,8 +55,8 @@
     "@vuepress/bundler-webpack": "catalog:"
   },
   "peerDependencies": {
-    "sass": "catalog:",
-    "sass-embedded": "catalog:",
+    "sass": "^1.95.0",
+    "sass-embedded": "^1.95.0",
     "sass-loader": "catalog:",
     "vuepress": "catalog:"
   },
