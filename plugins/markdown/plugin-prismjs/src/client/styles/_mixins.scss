@@ -9,14 +9,14 @@
   --code-c-highlight-bg: #{color.scale(
       $code-bg-color,
       $saturation: if(
-          color.channel($code-bg-color, 'lightness', $space: hsl) < 50%,
-          5%,
-          10%
+          sass(color.channel($code-bg-color, 'lightness', $space: hsl) < 50):
+            5%;
+            else: 10%
         ),
       $lightness: if(
-          color.channel($code-bg-color, 'lightness', $space: hsl) < 50%,
-          5%,
-          -5%
+          sass(color.channel($code-bg-color, 'lightness', $space: hsl) < 50%):
+            5%;
+            else: -5%
         )
     )};
 
