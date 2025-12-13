@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.121](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.120...v2.0.0-rc.121) (2025-12-13)
+
+### Bug Fixes
+
+- **plugin-docsearch:** avoid accessing navigator at SSG, close [#575](https://github.com/vuepress/ecosystem/issues/575) ([1cf07e2](https://github.com/vuepress/ecosystem/commit/1cf07e2b435a6cfa8cb9e1a4edd364a03ed42767))
+
 # [2.0.0-rc.120](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.119...v2.0.0-rc.120) (2025-11-28)
 
 **Note:** Version bump only for package @vuepress/plugin-docsearch

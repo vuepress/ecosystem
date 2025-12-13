@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.121](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.120...v2.0.0-rc.121) (2025-12-13)
+
+### Features
+
+- **helper:** always try to return a valid locale config ([56387e7](https://github.com/vuepress/ecosystem/commit/56387e77218c043a124222bb31ebb23ca0b3f92e))
+
 # [2.0.0-rc.120](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.119...v2.0.0-rc.120) (2025-11-28)
 
 **Note:** Version bump only for package @vuepress/helper

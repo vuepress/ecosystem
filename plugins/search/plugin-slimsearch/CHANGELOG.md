@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.121](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.120...v2.0.0-rc.121) (2025-12-13)
+
+### Bug Fixes
+
+- **plugin-slimsearch:** prevent issue when locale is not defined ([e2dec26](https://github.com/vuepress/ecosystem/commit/e2dec26468e44fb5a78b95abf5c5f32fe626cae8))
+
 # [2.0.0-rc.120](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.119...v2.0.0-rc.120) (2025-11-28)
 
 ### Features

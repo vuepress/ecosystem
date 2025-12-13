@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.121](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.120...v2.0.0-rc.121) (2025-12-13)
+
+### Bug Fixes
+
+- **plugin-docsearch:** avoid accessing navigator at SSG, close [#575](https://github.com/vuepress/ecosystem/issues/575) ([1cf07e2](https://github.com/vuepress/ecosystem/commit/1cf07e2b435a6cfa8cb9e1a4edd364a03ed42767))
+- **plugin-slimsearch:** prevent issue when locale is not defined ([e2dec26](https://github.com/vuepress/ecosystem/commit/e2dec26468e44fb5a78b95abf5c5f32fe626cae8))
+- stop using deprecated sass if ([#581](https://github.com/vuepress/ecosystem/issues/581)) ([c54a298](https://github.com/vuepress/ecosystem/commit/c54a298ff92119fe718abbacac3b0c26d920aaa3))
+
+### Features
+
+- **helper:** always try to return a valid locale config ([56387e7](https://github.com/vuepress/ecosystem/commit/56387e77218c043a124222bb31ebb23ca0b3f92e))
+
 # [2.0.0-rc.120](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.119...v2.0.0-rc.120) (2025-11-28)
 
 ### Bug Fixes
