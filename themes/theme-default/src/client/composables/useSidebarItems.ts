@@ -187,10 +187,10 @@ export const setupSidebarItems = (): void => {
   const headers = useHeaders()
   const routePath = useRoutePath()
 
-  const sidebarConfig = computed<SidebarOptions | false>(() =>
-    frontmatter.value.home
-      ? false
-      : ((frontmatter.value as DefaultThemeNormalPageFrontmatter).sidebar ??
+  const sidebarConfig = computed<SidebarOptions | false>(
+    () =>
+      !frontmatter.value.home &&
+      ((frontmatter.value as DefaultThemeNormalPageFrontmatter).sidebar ??
         themeLocale.value.sidebar ??
         'heading'),
   )
