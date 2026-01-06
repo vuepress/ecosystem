@@ -1,6 +1,6 @@
 @use 'sass:color';
+@use 'pkg:@vuepress/helper/scss/svg';
 @use 'icons';
-@use 'svg';
 
 .hint-container {
   position: relative;

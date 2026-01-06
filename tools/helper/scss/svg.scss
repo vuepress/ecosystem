@@ -3,14 +3,15 @@
 @use 'sass:string';
 
 @function encode-svg($svg) {
-  $encoded: '';
-  $slice: 2000;
-  $index: 0;
-  $loops: math.ceil(math.div(string.length($svg), $slice));
-
-  @if not string.index($svg, xmlns) {
+  @if not string.index($svg, 'xmlns') {
     $svg: str-replace($svg, '<svg', '<svg xmlns="http://www.w3.org/2000/svg"');
   }
+
+  /* stylelint-disable-next-line order/order */
+  $encoded: '';
+  $slice: 2000;
+  $index: 1;
+  $loops: math.ceil(math.div(string.length($svg), $slice));
 
   @for $i from 1 through $loops {
     $chunk: string.slice($svg, $index, $index + $slice - 1);
@@ -21,7 +22,7 @@
     $chunk: str-replace($chunk, '}', '%7D');
     $chunk: str-replace($chunk, '<', '%3C');
     $chunk: str-replace($chunk, '>', '%3E');
-    $encoded: #{$encoded}#{$chunk};
+    $encoded: $encoded + $chunk;
     $index: $index + $slice;
   }
 
@@ -44,14 +45,14 @@
 @function str-replace($string, $search, $replace: '') {
   $index: string.index($string, $search);
 
-  @if not $index {
-    @return $string;
+  @if $index {
+    @return string.slice($string, 1, $index - 1) + $replace +
+      str-replace(
+        string.slice($string, $index + string.length($search)),
+        $search,
+        $replace
+      );
   }
 
-  @return string.slice($string, 1, $index - 1) + $replace +
-    str-replace(
-      string.slice($string, $index + string.length($search)),
-      $search,
-      $replace
-    );
+  @return $string;
 }
