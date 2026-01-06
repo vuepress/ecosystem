@@ -1550,6 +1550,9 @@ importers:
 
   tools/highlighter-helper:
     dependencies:
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../helper
       '@vueuse/core':
         specifier: 'catalog:'
         version: 14.1.0(vue@3.5.25(typescript@5.9.3))

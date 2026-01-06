@@ -1,6 +1,7 @@
 import {
   LoadingIcon,
   decodeData,
+  encodeSVG,
   isFunction,
   useDarkMode,
 } from '@vuepress/helper/client'
@@ -17,7 +18,7 @@ import {
 } from 'vue'
 
 import { useMermaidOptions } from '../helpers/index.js'
-import { DOWNLOAD_ICON, PREVIEW_ICON, encodeSVG } from '../utils/index.js'
+import { DOWNLOAD_ICON, PREVIEW_ICON } from '../utils/index.js'
 
 import '../styles/mermaid.css'
 
