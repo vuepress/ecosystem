@@ -11,7 +11,7 @@
     "docs:serve": "http-server -a localhost .vuepress/dist"
   },
   "dependencies": {
-    "@mathjax/src": "^4.0.0",
+    "@mathjax/src": "^4.1.0",
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
     "@vuepress/helper": "workspace:*",
