@@ -1,4 +1,5 @@
 export * from './data.js'
+export * from './encodeSVG.js'
 export * from './env.js'
 export * from './getDarkMode.js'
 export * from './getHeaders.js'

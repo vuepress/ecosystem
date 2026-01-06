@@ -1,3 +1,10 @@
+@use 'pkg:@vuepress/helper/scss/svg';
+
+$changelog-icon: '<svg viewBox="0 0 16 16"><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M2.71 10.96a6.5 6.5 0 1 0-.69-3.53M2 8l1.5-1.5M2 8L.5 6.5m8 2v-4m0 4h3"/></svg>';
+$changelog-menu-icon: '<svg viewBox="0 0 24 24"><g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 5h0.01"/><path d="M8 5h12"/><path d="M4 10h0.01"/><path d="M8 10h12"/><path d="M4 15h0.01"/><path d="M8 15h12"/><path d="M4 20h0.01"/><path d="M8 20h12"/></g></svg>';
+$changelog-commit-icon: '<svg viewBox="0 0 24 24"><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m3-9v6m0 6v6"/></svg>';
+$changelog-tag-icon: '<svg viewBox="0 0 24 24"><g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0-2 0"/><path d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592-5.592a2.41 2.41 0 0 0 0-3.408l-7.71-7.71A2 2 0 0 0 11.172 3H6a3 3 0 0 0-3 3"/></g></svg>';
+
 .vp-changelog-wrapper {
   margin-block: 1rem;
   padding-inline: 1rem;
@@ -65,11 +72,13 @@
 }
 
 .vp-changelog-icon {
-  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' d='M2.71 10.96a6.5 6.5 0 1 0-.69-3.53M2 8l1.5-1.5M2 8L.5 6.5m8 2v-4m0 4h3'/%3E%3C/svg%3E");
+  /* stylelint-disable-next-line scss/dollar-variable-no-missing-interpolation */
+  --icon: #{svg.encode-svg($changelog-icon)};
 }
 
 .vp-changelog-menu-icon {
-  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M4 5h0.01'/%3E%3Cpath d='M8 5h12'/%3E%3Cpath d='M4 10h0.01'/%3E%3Cpath d='M8 10h12'/%3E%3Cpath d='M4 15h0.01'/%3E%3Cpath d='M8 15h12'/%3E%3Cpath d='M4 20h0.01'/%3E%3Cpath d='M8 20h12'/%3E%3C/g%3E%3C/svg%3E");
+  /* stylelint-disable-next-line scss/dollar-variable-no-missing-interpolation */
+  --icon: #{svg.encode-svg($changelog-menu-icon)};
 }
 
 .vp-changelog-list {
@@ -116,11 +125,13 @@
 }
 
 .vp-changelog-item-commit::before {
-  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12a3 3 0 1 0 6 0a3 3 0 1 0-6 0m3-9v6m0 6v6'/%3E%3C/svg%3E");
+  // stylelint-disable-next-line scss/dollar-variable-no-missing-interpolation
+  --icon: #{svg.encode-svg($changelog-commit-icon)};
 }
 
 .vp-changelog-item-tag::before {
-  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M6.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0-2 0'/%3E%3Cpath d='M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592-5.592a2.41 2.41 0 0 0 0-3.408l-7.71-7.71A2 2 0 0 0 11.172 3H6a3 3 0 0 0-3 3'/%3E%3C/g%3E%3C/svg%3E");
+  // stylelint-disable-next-line scss/dollar-variable-no-missing-interpolation
+  --icon: #{svg.encode-svg($changelog-tag-icon)};
 }
 
 .vp-changelog-tag {
