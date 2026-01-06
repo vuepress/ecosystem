@@ -268,7 +268,7 @@ jobs:
     name: 重新抓取 MeiliSearch 文档
     steps:
       - name: 检出
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           # 这是比较当前和上一个提交所必需的
           fetch-depth: 2
