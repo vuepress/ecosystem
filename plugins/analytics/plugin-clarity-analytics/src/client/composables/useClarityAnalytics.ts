@@ -28,6 +28,14 @@ export const useClarityAnalytics = ({
   // avoid duplicated import
   if ('clarity' in window) return
 
+  // init clarity
+  // eslint-disable-next-line func-names
+  window.clarity = function () {
+    // @ts-expect-error: Property 'q' does not exist on type
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment, prefer-rest-params
+    ;(window.clarity.q = window.clarity.q || []).push(arguments)
+  }
+
   const script = document.createElement('script')
   script.src = `https://www.clarity.ms/tag/${id}`
   script.async = true
