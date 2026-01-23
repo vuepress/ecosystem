@@ -55,8 +55,8 @@ export const remarkPlease = (intent: 'remove' | 'unwrap', tag: string) => {
           let closeIndex = index + 1
           while (closeIndex < parent.children.length) {
             const closeNode = parent.children[closeIndex]
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             if (
+              // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
               closeNode?.type === 'html' &&
               tagRegex(tag, 'closed').test(closeNode.value)
             ) {
@@ -101,8 +101,8 @@ export const remarkPlease = (intent: 'remove' | 'unwrap', tag: string) => {
         const firstChild = node.children[0]
         const isEmpty =
           node.children.length === 0 ||
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           (node.children.length === 1 &&
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             firstChild?.type === 'text' &&
             firstChild.value.trim() === '')
 
