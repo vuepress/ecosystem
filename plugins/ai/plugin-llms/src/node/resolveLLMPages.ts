@@ -4,6 +4,7 @@ import type { Plugin } from 'unified'
 import { remove as unistRemove } from 'unist-util-remove'
 import type { App } from 'vuepress'
 import type { LlmsPluginOptions } from './options.js'
+import { remarkPlease } from './remark-plugins/index.js'
 import type { LLMPage } from './types.js'
 
 /**
@@ -15,10 +16,8 @@ const cleanMarkdown: Plugin = () => (tree) => {
   return tree
 }
 
-const remarkInstance = remark().use(cleanMarkdown)
-
 interface ResolveLLMPagesOptions extends Required<
-  Pick<LlmsPluginOptions, 'filter' | 'stripHTML'>
+  Pick<LlmsPluginOptions, 'filter' | 'stripHTML' | 'transformMarkdown'>
 > {
   currentLocale: string
 }
@@ -32,7 +31,12 @@ interface ResolveLLMPagesOptions extends Required<
  */
 export const resolveLLMPages = (
   app: App,
-  { stripHTML, filter, currentLocale }: ResolveLLMPagesOptions,
+  {
+    stripHTML,
+    filter,
+    currentLocale,
+    transformMarkdown,
+  }: ResolveLLMPagesOptions,
 ): LLMPage[] => {
   const llmPages: LLMPage[] = []
 
@@ -55,9 +59,18 @@ export const resolveLLMPages = (
     // Ignore empty pages
     if (!content.trim().length) continue
 
+    const remarkInstance = remark()
+      .use(remarkPlease('unwrap', 'llm-only'))
+      .use(remarkPlease('remove', 'llm-exclude'))
+
     if (stripHTML) {
-      page.markdown = String(remarkInstance.processSync(content))
+      remarkInstance.use(cleanMarkdown)
     }
+
+    page.markdown = transformMarkdown(
+      String(remarkInstance.processSync(content)),
+      page,
+    )
 
     llmPages.push(page as LLMPage)
   }

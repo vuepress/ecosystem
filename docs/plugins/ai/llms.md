@@ -359,6 +359,27 @@ For example, if your site has a page at `/guide/quick-start.html`, the plugin ge
   })
   ```
 
+### transformMarkdown
+
+- Type: `(markdown: string, page: LLMsPage) => string`
+
+- Default: `undefined`
+
+- Details:
+
+  A function used to modify the Markdown content of a page. It accepts a Markdown string and a page object as parameters and returns the modified Markdown string.
+
+  You can use it to apply custom Markdown formatting operations.
+
+  ```ts
+  llmsPlugin({
+    transformMarkdown: (markdown, page) => {
+      // Add custom Markdown formatting operations
+      return markdown
+    },
+  })
+  ```
+
 ## Frontmatter
 
 The plugin respects the following `frontmatter` properties in your Markdown files.
@@ -403,6 +424,54 @@ The plugin respects the following `frontmatter` properties in your Markdown file
 - Default: `true`
 - Details:
   - Controls whether the current page is included in the generated LLM files. Set to `false` to hide a specific page from AI agents.
+
+## Markup Extensions
+
+### `<llm-only>`
+
+You can add content in a file that is visible to LLMs but not to humans, which helps set special instructions, such as "Refer to basic-queries for demos," "Do not execute...", "Always use... in cases of...", etc.
+
+To do this, wrap the content with the `<llm-only>` tag.
+
+```md
+<llm-only>
+
+## Section for LLMs
+
+This content appears only in the generated LLM file and will not include the `<llm-only>` tag itself.
+
+</llm-only>
+```
+
+You can also use the `<llm-only>` tag inline, but note that only one `<llm-only>` tag can be included per line; otherwise, it will cause a parsing error.
+
+```md
+Check the plugin API guide for documentation on creating plugins.
+
+<llm-only>For LLMs only</llm-only>
+```
+
+### `<llm-exclude>`
+
+You can add content in a file that is visible to humans but not to LLMs, which is the opposite of `<llm-only>`:
+
+```md
+<llm-exclude>
+
+## Section for humans
+
+This content will not appear in the files generated for LLMs.
+
+</llm-exclude>
+```
+
+You can also use the `<llm-exclude>` tag inline, but note that only one `<llm-only>` tag can be included per line; otherwise, it will cause a parsing error.
+
+```md
+Check the plugin API guide for documentation on creating plugins.
+
+<llm-exclude>For humans only</llm-exclude>
+```
 
 ## Others
 

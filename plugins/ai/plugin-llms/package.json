@@ -39,10 +39,12 @@
     "@vuepress/helper": "workspace:*",
     "byte-size": "^9.0.1",
     "gray-matter": "^4.0.3",
+    "mdast": "^3.0.0",
     "millify": "^6.1.0",
     "remark": "^15.0.1",
     "tokenx": "^1.2.1",
-    "unist-util-remove": "^4.0.0"
+    "unist-util-remove": "^4.0.0",
+    "unist-util-visit": "^5.1.0"
   },
   "peerDependencies": {
     "vuepress": "catalog:"
@@ -52,6 +54,9 @@
   },
   "devDependencies": {
     "@types/byte-size": "^8.1.2",
+    "@types/markdown-it": "^14.1.2",
+    "@types/mdast": "^4.0.4",
+    "markdown-it": "^14.1.0",
     "unified": "^11.0.5"
   }
 }
