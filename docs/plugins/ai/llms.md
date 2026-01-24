@@ -361,7 +361,7 @@ For example, if your site has a page at `/guide/quick-start.html`, the plugin ge
 
 ### transformMarkdown
 
-- Type: `(markdown: string, page: LLMsPage) => string`
+- Type: `(markdown: string, page: LLMPage) => string`
 
 - Default: `undefined`
 

@@ -358,7 +358,7 @@ description: ...
 
 ### transformMarkdown
 
-- 类型: `(markdown: string, page: LLMsPage) => string`
+- 类型: `(markdown: string, page: LLMPage) => string`
 
 - 默认值: `undefined`
 

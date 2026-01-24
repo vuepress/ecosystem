@@ -3,8 +3,13 @@ import { remark } from 'remark'
 import type { Plugin } from 'unified'
 import { remove as unistRemove } from 'unist-util-remove'
 import type { App } from 'vuepress'
+import { path } from 'vuepress/utils'
 import type { LlmsPluginOptions } from './options.js'
-import { remarkPlease } from './remark-plugins/index.js'
+import {
+  remarkImportCode,
+  remarkInclude,
+  remarkPlease,
+} from './remark-plugins/index.js'
 import type { LLMPage } from './types.js'
 
 /**
@@ -62,6 +67,30 @@ export const resolveLLMPages = (
     const remarkInstance = remark()
       .use(remarkPlease('unwrap', 'llm-only'))
       .use(remarkPlease('remove', 'llm-exclude'))
+
+    // Adapt the plugin-markdown-include
+    if (app.options.markdown.include) {
+      remarkInstance.use(
+        remarkInclude(path.dirname(page.filePath), {
+          resolvePath: (filepath) => filepath,
+          deep: false,
+          resolveLinkPath: true,
+          resolveImagePath: true,
+          useComment: true,
+          ...app.options.markdown.include,
+        }),
+      )
+    }
+
+    // Adapt the built-in plugin markdown-import-code
+    if (app.options.markdown.importCode !== false) {
+      remarkInstance.use(
+        remarkImportCode(
+          path.dirname(page.filePath),
+          app.options.markdown.importCode ?? {},
+        ),
+      )
+    }
 
     if (stripHTML) {
       remarkInstance.use(cleanMarkdown)
