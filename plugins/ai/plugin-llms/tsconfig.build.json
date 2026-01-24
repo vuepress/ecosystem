@@ -9,6 +9,9 @@
   "references": [
     {
       "path": "../../../tools/helper/tsconfig.build.json"
+    },
+    {
+      "path": "../../markdown/plugin-markdown-include/tsconfig.build.json"
     }
   ]
 }
