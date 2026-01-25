@@ -59,7 +59,10 @@ export const remarkImportCode = (
         if (!parent || typeof index !== 'number') return
 
         if (node.type === 'text' && node.value.trim().startsWith('@[code')) {
-          const matched = node.value.trim().match(SYNTAX_RE)
+          const content = node.value.trim()
+          if (content.length <= 9) return
+
+          const matched = content.match(SYNTAX_RE)
           if (!matched?.groups) return
 
           const lineSingle = parseLineNumber(matched.groups.lineSingle)
