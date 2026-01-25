@@ -6,6 +6,12 @@ import type { MarkdownEnv } from 'vuepress/markdown'
 import { path } from 'vuepress/utils'
 import type { MarkdownIncludePluginOptions } from './options.js'
 
+declare module 'vuepress/markdown' {
+  interface MarkdownOptions {
+    include?: MarkdownIncludePluginOptions
+  }
+}
+
 /**
  * Markdown include plugin
  *
@@ -31,6 +37,11 @@ export const markdownIncludePlugin =
   (options: MarkdownIncludePluginOptions): Plugin =>
   (app) => {
     const source = app.dir.source()
+
+    app.options.markdown.include = {
+      ...app.options.markdown.include,
+      ...options,
+    }
 
     return {
       name: '@vuepress/plugin-markdown-include',

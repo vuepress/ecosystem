@@ -53,35 +53,31 @@ export const commentPlugin =
       return { name: PLUGIN_NAME }
     }
 
-    // Remove locales so that they won’t be injected in client twice
-    if (options.provider === 'Waline' && 'locales' in options)
-      delete options.locales
-
     return {
       name: PLUGIN_NAME,
 
       alias: getAlias(options),
 
       define: () => {
-        const userWalineLocales =
-          options.provider === 'Waline'
-            ? getFullLocaleConfig({
-                app,
-                name: 'waline',
-                default: walineLocalesInfo,
-                config: options.locales,
-              })
-            : {}
-
-        return {
+        const result: Record<string, unknown> = {
           __COMMENT_OPTIONS__: options,
-          ...(options.provider === 'Waline'
-            ? {
-                WALINE_LOCALES: userWalineLocales,
-                WALINE_META: options.metaIcon ?? true,
-              }
-            : {}),
         }
+
+        // special handling for Waline locales
+        if (options.provider === 'Waline') {
+          result.WALINE_LOCALES = getFullLocaleConfig({
+            app,
+            name: 'waline',
+            default: walineLocalesInfo,
+            config: options.locales,
+          })
+          result.WALINE_META = options.metaIcon ?? true
+
+          // Remove locales so that they won’t be injected in client twice
+          if ('locales' in options) delete options.locales
+        }
+
+        return result
       },
 
       extendsBundlerOptions: (bundlerOptions: unknown): void => {

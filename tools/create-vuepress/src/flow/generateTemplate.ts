@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           # ${
@@ -57,7 +57,7 @@ ${
 }
 
       - name: ${lang === 'zh' ? '设置 Node.js' : 'Setup Node.js'}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 24
           cache: ${packageManager}

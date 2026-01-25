@@ -43,6 +43,7 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "peerDependencies": {
+    "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vuepress": "catalog:"
   },

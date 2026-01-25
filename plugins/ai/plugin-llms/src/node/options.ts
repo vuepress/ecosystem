@@ -71,6 +71,17 @@ export interface LlmsPluginOptions {
   filter?: (page: Page) => boolean
 
   /**
+   * Page markdown transform function
+   *
+   * 页面 Markdown 转换函数
+   *
+   * @param markdown page original markdown content
+   * @param page current llms page
+   * @returns transformed markdown
+   */
+  transformMarkdown?: (markdown: string, page: Page) => string
+
+  /**
    * Custom template for `llms.txt` file
    *
    * `llms.txt` 文件的自定义模板
