@@ -41,7 +41,6 @@ const INCLUDE_RE =
   /^( *)@include:\s*([^<>|:"*?]+(?:\.[a-z0-9]+))(?:#([\w-]+))?(?:\{(\d+)?-(\d+)?\})?\s*$/gm
 
 const NEWLINE_RE = /\r\n?|\n/g
-
 const SYNTAX_PUSH_RE = /^<!-- #include-env-start: ([^)]*?) -->$/
 const HTML_LINK_RE = /(?:href|src)="(.*?)"/
 
@@ -233,9 +232,12 @@ const resolveLink = (
 
     const base = path.relative(cwd, currentDir)
     if (resolveLinkPath) {
+      // markdown syntax: [link](path)
       if (node.type === 'link') {
         node.url = convertLink(node.url, base)
       }
+
+      // html tag: <a href="path">
       if (node.type === 'html' && node.value.startsWith('<a ')) {
         node.value = node.value.replace(HTML_LINK_RE, (m, link: string) => {
           return m.replace(link, convertLink(link, base))
@@ -244,9 +246,12 @@ const resolveLink = (
     }
 
     if (resolveImagePath) {
+      // markdown syntax: ![alt](path)
       if (node.type === 'image') {
         node.url = convertLink(node.url, base)
       }
+
+      // html tag: <img src="path">
       if (node.type === 'html' && node.value.startsWith('<img ')) {
         node.value = node.value.replace(HTML_LINK_RE, (m, link: string) => {
           return m.replace(link, convertLink(link, base))
@@ -256,6 +261,14 @@ const resolveLink = (
   })
 }
 
+/**
+ * Remark plugin for include, which is based on markdown-it-include
+ *
+ *
+ * ```markdown
+ * <!-- \@include: path/to/file.md -->
+ * ```
+ */
 export const remarkInclude = (
   cwd: string,
   options: Required<MarkdownIncludePluginOptions>,

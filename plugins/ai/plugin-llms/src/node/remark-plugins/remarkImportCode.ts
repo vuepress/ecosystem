@@ -49,6 +49,13 @@ const resolveImportCode = (
 const parseLineNumber = (line: string | undefined): number | undefined =>
   line ? Number.parseInt(line, 10) : undefined
 
+/**
+ * import code plugin for remark, convert syntax into actual content
+ *
+ * `@[code](filepath)`
+ *
+ * `@[code{lineStart-lineEnd} info}](filepath)`
+ */
 export const remarkImportCode = (
   cwd: string,
   { handleImportPath = (str) => str }: ImportCodePluginOptions,
@@ -60,6 +67,7 @@ export const remarkImportCode = (
 
         if (node.type === 'text' && node.value.trim().startsWith('@[code')) {
           const content = node.value.trim()
+          // @[code]()
           if (content.length <= 9) return
 
           const matched = content.match(SYNTAX_RE)

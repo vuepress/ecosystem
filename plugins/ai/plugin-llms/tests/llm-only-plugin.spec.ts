@@ -10,48 +10,17 @@ describe('@vuepress/plugin-llms > llmOnlyPlugin', () => {
   })
 
   it('should render inline content', () => {
-    expect(
-      md.render(`\
-<llm-only>foo</llm-only>
-
-bar
-`),
-    ).toBe('<p>bar</p>\n')
-    expect(
-      md.render(`\
-foo
-
-<llm-only>bar</llm-only>
-`),
-    ).toBe('<p>foo</p>\n')
+    expect(md.render(`<llm-only>foo</llm-only>\n\nbar`)).toBe('<p>bar</p>\n')
+    expect(md.render(`foo\n\n<llm-only>bar</llm-only>`)).toBe('<p>foo</p>\n')
   })
 
   it('should render block content', () => {
-    expect(
-      md.render(`\
-<llm-only>
-</llm-only>
-`),
-    ).toBe('')
-
-    expect(
-      md.render(`\
-foo
-
-<llm-only>
-bar
-</llm-only>
-`),
-    ).toBe('<p>foo</p>\n')
-
-    expect(
-      md.render(`\
-<llm-only>
-bar
-</llm-only>
-
-foo
-`),
-    ).toBe('<p>foo</p>\n')
+    expect(md.render(`<llm-only>\n</llm-only>`)).toBe('')
+    expect(md.render(`foo\n\n<llm-only>\nbar\n</llm-only>`)).toBe(
+      '<p>foo</p>\n',
+    )
+    expect(md.render(`<llm-only>\nbar\n</llm-only>\n\nfoo`)).toBe(
+      '<p>foo</p>\n',
+    )
   })
 })
