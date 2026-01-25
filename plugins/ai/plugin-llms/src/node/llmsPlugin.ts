@@ -4,6 +4,7 @@ import { DEFAULT_LLMSTXT_TEMPLATE, PLUGIN_NAME } from './constants.js'
 import { generateLLMFriendlyDocs } from './generateLLMFriendlyDocs.js'
 import { generateLLMsFullTxt } from './generateLLMsFullTxt.js'
 import { generateLLMsTxt } from './generateLLMsTxt.js'
+import { llmExcludePlugin, llmOnlyPlugin } from './markdown-it-plugins/index.js'
 import type { LlmsPluginOptions } from './options.js'
 import { resolveLLMPages } from './resolveLLMPages.js'
 import type { LLMState } from './types.js'
@@ -37,6 +38,11 @@ export const llmsPlugin =
     return {
       name: PLUGIN_NAME,
 
+      extendsMarkdown: (md) => {
+        md.use(llmOnlyPlugin)
+        md.use(llmExcludePlugin)
+      },
+
       onGenerated: async () => {
         const {
           domain,
@@ -45,6 +51,7 @@ export const llmsPlugin =
           llmsPageTxt = true,
           filter = () => true,
           stripHTML = true,
+          transformMarkdown = (md) => md,
           llmsTxtTemplate = DEFAULT_LLMSTXT_TEMPLATE,
           llmsTxtTemplateGetter = {},
           locale = '/',
@@ -71,6 +78,7 @@ export const llmsPlugin =
             stripHTML,
             filter,
             currentLocale: localePath,
+            transformMarkdown,
           })
 
           if (llmsTxt) {

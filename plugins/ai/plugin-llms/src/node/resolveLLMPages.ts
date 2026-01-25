@@ -3,7 +3,13 @@ import { remark } from 'remark'
 import type { Plugin } from 'unified'
 import { remove as unistRemove } from 'unist-util-remove'
 import type { App } from 'vuepress'
+import { path } from 'vuepress/utils'
 import type { LlmsPluginOptions } from './options.js'
+import {
+  remarkImportCode,
+  remarkInclude,
+  remarkPlease,
+} from './remark-plugins/index.js'
 import type { LLMPage } from './types.js'
 
 /**
@@ -15,10 +21,8 @@ const cleanMarkdown: Plugin = () => (tree) => {
   return tree
 }
 
-const remarkInstance = remark().use(cleanMarkdown)
-
 interface ResolveLLMPagesOptions extends Required<
-  Pick<LlmsPluginOptions, 'filter' | 'stripHTML'>
+  Pick<LlmsPluginOptions, 'filter' | 'stripHTML' | 'transformMarkdown'>
 > {
   currentLocale: string
 }
@@ -32,7 +36,12 @@ interface ResolveLLMPagesOptions extends Required<
  */
 export const resolveLLMPages = (
   app: App,
-  { stripHTML, filter, currentLocale }: ResolveLLMPagesOptions,
+  {
+    stripHTML,
+    filter,
+    currentLocale,
+    transformMarkdown,
+  }: ResolveLLMPagesOptions,
 ): LLMPage[] => {
   const llmPages: LLMPage[] = []
 
@@ -55,9 +64,42 @@ export const resolveLLMPages = (
     // Ignore empty pages
     if (!content.trim().length) continue
 
-    if (stripHTML) {
-      page.markdown = String(remarkInstance.processSync(content))
+    const remarkInstance = remark()
+      .use(remarkPlease('unwrap', 'llm-only'))
+      .use(remarkPlease('remove', 'llm-exclude'))
+
+    // Adapt the plugin-markdown-include
+    if (app.options.markdown.include) {
+      remarkInstance.use(
+        remarkInclude(path.dirname(page.filePath), {
+          resolvePath: (filepath) => filepath,
+          deep: false,
+          resolveLinkPath: true,
+          resolveImagePath: true,
+          useComment: true,
+          ...app.options.markdown.include,
+        }),
+      )
     }
+
+    // Adapt the built-in plugin markdown-import-code
+    if (app.options.markdown.importCode !== false) {
+      remarkInstance.use(
+        remarkImportCode(
+          path.dirname(page.filePath),
+          app.options.markdown.importCode ?? {},
+        ),
+      )
+    }
+
+    if (stripHTML) {
+      remarkInstance.use(cleanMarkdown)
+    }
+
+    page.markdown = transformMarkdown(
+      String(remarkInstance.processSync(content)),
+      page,
+    )
 
     llmPages.push(page as LLMPage)
   }

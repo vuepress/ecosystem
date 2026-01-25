@@ -356,6 +356,27 @@ description: ...
   })
   ```
 
+### transformMarkdown
+
+- 类型: `(markdown: string, page: LLMPage) => string`
+
+- 默认值: `undefined`
+
+- 详情:
+
+  用于修改页面 Markdown 内容的函数。它接受 Markdown 字符串和页面对象作为参数，并返回修改后的 Markdown 字符串。
+
+  你可以使用它来应用自定义 Markdown 格式化操作。
+
+  ```ts
+  llmsPlugin({
+    transformMarkdown: (markdown, page) => {
+      // 添加自定义 Markdown 格式化操作
+      return markdown
+    },
+  })
+  ```
+
 ## Frontmatter 配置
 
 插件会读取 Markdown 文件中的以下 `frontmatter` 属性。
@@ -400,6 +421,55 @@ description: ...
 - 默认值: `true`
 - 详情:
   - 控制是否将当前页面包含在生成的 LLM 文件中。设置为 `false` 可对 AI Agent 隐藏特定页面。
+
+## 扩展标记 (Markup)
+
+### `<llm-only>`
+
+你可以在文件中添加对 LLM 可见但对人类不可见的内容，这有助于设置特殊指令，
+例如 “参考 basic-queries 获取演示”、“切勿执行……”、“在……情况下始终使用……”等。
+
+为此，需要使用 `<llm-only>` 标签来包裹内容。
+
+```md
+<llm-only>
+
+## Section for LLMs
+
+此内容仅出现在生成的LLM文件中，不会包含 `<llm-only>` 标签本身。
+
+</llm-only>
+```
+
+也可以在单行中使用 `<llm-only>` 标签，但请注意单行时仅能包含一个 `<llm-only>` 标签，否则会导致解析错误。
+
+```md
+查看插件API指南，了解创建插件的相关文档。
+
+<llm-only>仅限 LLM 阅读</llm-only>
+```
+
+### `<llm-exclude>`
+
+你可以在文件中添加对人类可见但对LLM不可见的内容，这与 `<llm-only>` 的作用相反：
+
+```md
+<llm-exclude>
+
+## Section for humans
+
+此内容将不会出现在为 LLMs 生成的文件中
+
+</llm-exclude>
+```
+
+也可以在单行中使用 `<llm-exclude>` 标签，但请注意单行时仅能包含一个 `<llm-only>` 标签，否则会导致解析错误。
+
+```md
+查看插件API指南，了解创建插件的相关文档。
+
+<llm-exclude>仅限人类阅读</llm-exclude>
+```
 
 ## 其他 (Others)
 
