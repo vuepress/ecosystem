@@ -11,6 +11,7 @@ export type DocSearchLocaleOptions = Partial<
     DocSearchProps,
     | 'apiKey'
     | 'appId'
+    | 'askAi'
     | 'disableUserPersonalization'
     /** @deprecated use `indices` instead */
     | 'indexName'
