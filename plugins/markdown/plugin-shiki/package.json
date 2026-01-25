@@ -39,12 +39,12 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@shikijs/transformers": "^3.20.0",
+    "@shikijs/transformers": "^3.21.0",
     "@vuepress/helper": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
     "nanoid": "^5.1.6",
-    "shiki": "^3.20.0",
-    "synckit": "^0.11.11"
+    "shiki": "^3.21.0",
+    "synckit": "^0.11.12"
   },
   "devDependencies": {
     "@types/markdown-it": "^14.1.2",
