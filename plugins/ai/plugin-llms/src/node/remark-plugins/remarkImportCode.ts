@@ -58,8 +58,8 @@ export const remarkImportCode = (
       visit(tree, (node, index, parent) => {
         if (!parent || typeof index !== 'number') return
 
-        if (node.type === 'text' && node.value.startsWith('@[code')) {
-          const matched = node.value.match(SYNTAX_RE)
+        if (node.type === 'text' && node.value.trim().startsWith('@[code')) {
+          const matched = node.value.trim().match(SYNTAX_RE)
           if (!matched?.groups) return
 
           const lineSingle = parseLineNumber(matched.groups.lineSingle)
