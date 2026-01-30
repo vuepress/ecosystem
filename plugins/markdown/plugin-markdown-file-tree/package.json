@@ -1,0 +1,58 @@
+{
+  "name": "@vuepress/plugin-markdown-file-tree",
+  "version": "2.0.0-rc.121",
+  "description": "VuePress plugin - markdown file tree",
+  "keywords": [
+    "vuepress-plugin",
+    "vuepress",
+    "plugin",
+    "markdown",
+    "file-tree"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/plugins/markdown/markdown-file-tree.html",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/markdown/plugin-markdown-file-tree"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "pengzhanbo",
+    "email": "q942450674@qq.com",
+    "url": "https://github.com/pengzhanbo"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./lib/node/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
+    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
+    "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
+  },
+  "dependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@vuepress/helper": "workspace:*",
+    "@vueuse/core": "catalog:",
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "markdown-it": "^14.1.0"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

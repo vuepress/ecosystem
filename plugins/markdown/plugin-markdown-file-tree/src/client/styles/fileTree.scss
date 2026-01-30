@@ -1,0 +1,224 @@
+.vp-file-tree {
+  position: relative;
+
+  overflow: auto hidden;
+
+  max-width: 100%;
+  padding: 16px;
+  border: solid 1px var(--file-tree-c-border);
+  border-radius: 8px;
+
+  background-color: var(--file-tree-c-bg);
+
+  font-size: 14px;
+
+  transition:
+    border var(--vp-t-color),
+    background-color var(--vp-t-color);
+}
+
+.vp-file-tree .file-tree-title {
+  margin-block: -16px 8px;
+  margin-inline: -16px;
+  padding-block: 8px;
+  padding-inline: 16px;
+  border-bottom: solid 1px var(--file-tree-c-border);
+
+  color: var(--file-tree-c-text);
+
+  font-weight: bold;
+  font-size: 16px;
+
+  transition:
+    color var(--vp-t-color),
+    border-color var(--vp-t-color);
+}
+
+.vp-file-tree-node .group {
+  position: relative;
+  min-width: max-content;
+  margin-inline-start: 28px;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: -4px;
+
+    width: 1px;
+    height: 100%;
+
+    background-color: var(--file-tree-c-border);
+
+    transition: background-color var(--vp-t-color);
+  }
+}
+
+.vp-file-tree-node .node-info {
+  position: relative;
+
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+
+  min-width: max-content;
+  height: 28px;
+  margin-block: 0;
+  margin-inline-start: 16px;
+  padding-block: 2px;
+
+  line-height: 28px;
+  text-wrap: nowrap;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    inset: 0 -16px 0 calc(var(--file-tree-level) * 28px - 32px);
+    z-index: 0;
+
+    display: block;
+
+    background-color: transparent;
+
+    pointer-events: none;
+
+    transition: background-color var(--vp-t-color);
+  }
+
+  &.active::after,
+  &:not(.diff):hover::after {
+    background-color: var(--file-tree-c-bg-hover);
+  }
+
+  &.diff::after {
+    padding-inline-start: 4px;
+    font-size: 1.25em;
+  }
+
+  &.diff.add::after {
+    content: '+';
+    background-color: var(--file-tree-c-diff-add-bg);
+    color: var(--file-tree-c-diff-add-text);
+  }
+
+  &.diff.remove::after {
+    content: '-';
+    background-color: var(--file-tree-c-diff-remove-bg);
+    color: var(--file-tree-c-diff-remove-text);
+  }
+
+  &.folder {
+    cursor: pointer;
+
+    &::before {
+      --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23000' d='m5.157 13.069l4.611-4.685a.546.546 0 0 0 0-.768L5.158 2.93a.55.55 0 0 1 0-.771a.53.53 0 0 1 .759 0l4.61 4.684a1.65 1.65 0 0 1 0 2.312l-4.61 4.684a.53.53 0 0 1-.76 0a.55.55 0 0 1 0-.771'/%3E%3C/svg%3E");
+      content: '';
+
+      position: absolute;
+      top: 10px;
+      left: -16px;
+
+      display: block;
+
+      width: 12px;
+      height: 12px;
+
+      background-color: currentcolor;
+      color: var(--file-tree-c-text-mute);
+
+      mask: var(--icon) no-repeat;
+      mask-size: 100% 100%;
+      cursor: pointer;
+
+      transition:
+        color var(--vp-t-color),
+        transform var(--vp-t-color);
+
+      transform: rotate(0);
+    }
+
+    &.expanded::before {
+      transform: rotate(90deg);
+    }
+  }
+
+  .name {
+    position: relative;
+    flex-shrink: 99;
+    min-width: 0;
+    font-family: var(--file-tree-font-family);
+  }
+
+  &.folder .name {
+    color: var(--file-tree-c-text);
+    transition: color var(--vp-t-color);
+  }
+
+  &.focus .name {
+    margin-block: 0;
+    margin-inline: -4px;
+    padding-inline: 4px;
+    border-radius: 4px;
+
+    background: var(--file-tree-c-focus-bg);
+    color: var(--file-tree-c-focus-text);
+
+    font-weight: bold;
+
+    transition:
+      color var(--vp-t-color),
+      background-color var(--vp-t-color);
+  }
+
+  &:not(.focus).folder .name:hover {
+    color: var(--file-tree-c-text-hover);
+  }
+
+  .comment {
+    display: inline-block;
+    flex: 1 2;
+
+    height: 28px;
+    margin-block: -2px;
+    padding-inline: 20px 16px;
+
+    color: var(--file-tree-c-comment-text);
+
+    line-height: 28px;
+
+    cursor: auto;
+
+    transition: color var(--vp-t-color);
+  }
+
+  .icon-file,
+  .icon-folder {
+    display: inline-block;
+    vertical-align: middle;
+
+    width: 1.2em;
+    height: 1.2em;
+
+    background-color: currentcolor;
+    color: inherit;
+
+    mask: var(--icon) no-repeat;
+    mask-size: 100% 100%;
+  }
+
+  .icon-file {
+    --icon: var(--file-tree-icon-file);
+  }
+
+  .icon-folder {
+    --icon: var(--file-tree-icon-folder);
+  }
+
+  /* stylelint-disable-next-line selector-max-class */
+  &.folder.expanded .icon-folder {
+    --icon: var(--file-tree-icon-folder-expanded);
+  }
+}
