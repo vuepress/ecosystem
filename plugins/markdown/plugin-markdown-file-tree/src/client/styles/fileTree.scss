@@ -114,7 +114,6 @@
     cursor: pointer;
 
     &::before {
-      --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23000' d='m5.157 13.069l4.611-4.685a.546.546 0 0 0 0-.768L5.158 2.93a.55.55 0 0 1 0-.771a.53.53 0 0 1 .759 0l4.61 4.684a1.65 1.65 0 0 1 0 2.312l-4.61 4.684a.53.53 0 0 1-.76 0a.55.55 0 0 1 0-.771'/%3E%3C/svg%3E");
       content: '';
 
       position: absolute;
@@ -129,7 +128,7 @@
       background-color: currentcolor;
       color: var(--file-tree-c-text-mute);
 
-      mask: var(--icon) no-repeat;
+      mask: var(--file-tree-icon-folder-arrow) no-repeat;
       mask-size: 100% 100%;
       cursor: pointer;
 

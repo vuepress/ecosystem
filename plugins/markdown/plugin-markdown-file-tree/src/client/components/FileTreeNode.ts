@@ -14,7 +14,7 @@ export const FileTreeNode = defineComponent({
     },
     filename: {
       type: String,
-      require: true,
+      required: true,
     },
     level: {
       type: Number,
@@ -30,7 +30,7 @@ export const FileTreeNode = defineComponent({
     },
     diff: {
       type: String as PropType<'add' | 'remove'>,
-      default: '',
+      default: undefined,
     },
   },
 
@@ -64,8 +64,9 @@ export const FileTreeNode = defineComponent({
               [props.type]: true,
               'focus': props.focus,
               'expanded': props.type === 'folder' ? active.value : false,
-              'diff add': props.diff === 'add',
-              'diff remove': props.diff === 'remove',
+              'diff': props.diff,
+              'add': props.diff === 'add',
+              'remove': props.diff === 'remove',
             },
             style: { '--file-tree-level': -props.level },
             onClick: toggle,

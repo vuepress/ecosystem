@@ -2,11 +2,11 @@ import type { PluginSimple } from 'markdown-it'
 import type StateBlock from 'markdown-it/lib/rules_block/state_block.mjs'
 import type Token from 'markdown-it/lib/token.mjs'
 import { parseFileTreeContent } from './parseFileTreeContent.js'
-import type { FileTreeNode } from './types'
+import type { FileTreeNode } from './types.js'
 
-const maker = ':'
-const markerMinLen = 3
-const name = 'file-tree'
+const MARKER = ':'
+const MARKER_MIN_LEN = 3
+const NAME = 'file-tree'
 
 const defineFileTreeContainer = (
   state: StateBlock,
@@ -19,29 +19,29 @@ const defineFileTreeContainer = (
   let pos = start
 
   // check marker
-  if (state.src[pos] !== maker) return false
+  if (state.src[pos] !== MARKER) return false
 
   // check marker length
   for (pos = start + 1; pos <= max; pos++) {
-    if (state.src[pos] !== maker) break
+    if (state.src[pos] !== MARKER) break
   }
 
-  if (pos - start < markerMinLen) return false
+  if (pos - start < MARKER_MIN_LEN) return false
 
   const markup = state.src.slice(start, pos)
   const info = state.src.slice(pos, max).trim()
 
   // ::: file-tree
   // check info starts with file-tree
-  if (!info.startsWith(name)) return false
+  if (!info.startsWith(NAME)) return false
 
   /* istanbul ignore if -- @preserve */
   if (silent) return true
 
-  let line = startLine
+  let line = startLine + 1
   let content = ''
   // collect container content until encounter the end marker
-  while (++line < endLine) {
+  while (line < endLine) {
     if (
       state.src.slice(state.bMarks[line], state.eMarks[line]).trim() === markup
     ) {
@@ -49,12 +49,13 @@ const defineFileTreeContainer = (
     }
 
     content += `${state.src.slice(state.bMarks[line], state.eMarks[line])}\n`
+    line++
   }
 
-  const token = state.push(`${name}_container`, '', 0)
-  token.meta = { title: info.slice(name.length).trim() }
+  const token = state.push(`${NAME}_container`, '', 0)
+  token.meta = { title: info.slice(NAME.length).trim() }
   token.content = content
-  token.markup = `${markup} ${name}`
+  token.markup = `${markup} ${NAME}`
   token.map = [startLine, line + 1]
 
   state.line = line + 1
@@ -63,12 +64,12 @@ const defineFileTreeContainer = (
 }
 
 export const fileTree: PluginSimple = (md) => {
-  md.block.ruler.before('fence', `${name}_definition`, defineFileTreeContainer)
+  md.block.ruler.before('fence', `${NAME}_definition`, defineFileTreeContainer)
 
   const renderNodes = (nodes: FileTreeNode[]): string =>
     nodes
-      .map((node) => {
-        const {
+      .map(
+        ({
           level,
           children,
           filename,
@@ -77,31 +78,35 @@ export const fileTree: PluginSimple = (md) => {
           expanded,
           type,
           diff,
-        } = node
-        // 文件夹无子节点时补充省略号
-        if (children.length === 0 && type === 'folder') {
-          children.push({
-            level: level + 1,
-            children: [],
-            filename: '…',
-            type: 'file',
-          } as unknown as FileTreeNode)
-        }
+        }) => {
+          // 文件夹无子节点时补充省略号
+          if (children.length === 0 && type === 'folder') {
+            children.push({
+              level: level + 1,
+              children: [],
+              filename: '…',
+              type: 'file',
+            } as unknown as FileTreeNode)
+          }
 
-        const nodeType = children.length > 0 ? 'folder' : type
-        const renderedComment = comment
-          ? `<template #comment>${md.renderInline(comment.replaceAll('#', '\\#'))}</template>`
-          : ''
-        const renderProps = `type="${nodeType}" filename="${filename}" :level="${level}"${nodeType === 'folder' && expanded ? ' expanded' : ''}${focus ? ' focus' : ''}${diff ? ` diff="${diff}"` : ''}`
+          const nodeType = children.length > 0 ? 'folder' : type
+          const indent = `\n${'  '.repeat(level + 1)}`
 
-        return `<FileTreeNode ${renderProps}>
-      ${renderedComment}
-      ${children.length > 0 ? renderNodes(children) : ''}
-      </FileTreeNode>`
-      })
-      .join('\n')
+          const propsRendered = `type="${nodeType}" filename="${filename}" :level="${level}"${nodeType === 'folder' && expanded ? ' expanded' : ''}${focus ? ' focus' : ''}${diff ? ` diff="${diff}"` : ''}`
+          const commentRendered = comment
+            ? `${indent}  <template #comment>${md.renderInline(comment.replaceAll('#', '\\#'))}</template>`
+            : ''
+          const childrenRendered =
+            children.length > 0
+              ? `${indent}  ${renderNodes(children).trimStart()}`
+              : ''
 
-  md.renderer.rules[`${name}_container`] = (
+          return `${indent}<FileTreeNode ${propsRendered}>${commentRendered}${childrenRendered}${indent}</FileTreeNode>`
+        },
+      )
+      .join('')
+
+  md.renderer.rules[`${NAME}_container`] = (
     tokens: Token[],
     idx: number,
   ): string => {
@@ -109,9 +114,6 @@ export const fileTree: PluginSimple = (md) => {
     const meta = token.meta as { title: string }
     const nodes = parseFileTreeContent(token.content)
 
-    return `<div class="vp-${name}">
-  ${meta.title ? `<div class="${name}-title">${meta.title}</div>` : ''}
-  ${renderNodes(nodes)}
-</div>`
+    return `<div class="vp-${NAME}">${meta.title ? `\n<div class="${NAME}-title">${meta.title}</div>\n` : ''}${renderNodes(nodes)}\n</div>`
   }
 }
