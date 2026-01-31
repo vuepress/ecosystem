@@ -1,9 +1,16 @@
+import { deepAssign } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 
 import { codeTabs } from './codeTabs.js'
 import type { MarkdownTabPluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 import { tabs } from './tabs.js'
+
+declare module 'vuepress/markdown' {
+  interface MarkdownOptions {
+    tab?: MarkdownTabPluginOptions
+  }
+}
 
 const PLUGIN_NAME = '@vuepress/plugin-markdown-tab'
 
@@ -29,22 +36,25 @@ const PLUGIN_NAME = '@vuepress/plugin-markdown-tab'
  * }
  * ```
  */
-export const markdownTabPlugin = (
-  options: MarkdownTabPluginOptions,
-): Plugin => {
-  if (!options.codeTabs && !options.tabs)
+export const markdownTabPlugin =
+  (options: MarkdownTabPluginOptions): Plugin =>
+  (app) => {
+    const opts = deepAssign({}, app.options.markdown.tab, options)
+    app.options.markdown.tab = opts
+
+    if (!opts.codeTabs && !opts.tabs)
+      return {
+        name: PLUGIN_NAME,
+      }
+
     return {
       name: PLUGIN_NAME,
+
+      extendsMarkdown: (md) => {
+        if (opts.codeTabs) md.use(codeTabs)
+        if (opts.tabs) md.use(tabs)
+      },
+
+      clientConfigFile: () => prepareClientConfigFile(app, opts),
     }
-
-  return {
-    name: PLUGIN_NAME,
-
-    extendsMarkdown: (md) => {
-      if (options.codeTabs) md.use(codeTabs)
-      if (options.tabs) md.use(tabs)
-    },
-
-    clientConfigFile: (app) => prepareClientConfigFile(app, options),
   }
-}
