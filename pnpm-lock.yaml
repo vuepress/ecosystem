@@ -194,6 +194,9 @@ importers:
       '@vuepress/plugin-markdown-ext':
         specifier: workspace:*
         version: link:../plugins/markdown/plugin-markdown-ext
+      '@vuepress/plugin-markdown-file-tree':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-file-tree
       '@vuepress/plugin-markdown-image':
         specifier: workspace:*
         version: link:../plugins/markdown/plugin-markdown-image
@@ -894,6 +897,28 @@ importers:
       '@types/js-yaml':
         specifier: 4.0.9
         version: 4.0.9
+      markdown-it:
+        specifier: ^14.1.0
+        version: 14.1.0
+
+  plugins/markdown/plugin-markdown-file-tree:
+    dependencies:
+      '@types/markdown-it':
+        specifier: ^14.1.2
+        version: 14.1.2
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../../tools/helper
+      '@vueuse/core':
+        specifier: 'catalog:'
+        version: 14.1.0(vue@3.5.25(typescript@5.9.3))
+      vue:
+        specifier: 'catalog:'
+        version: 3.5.25(typescript@5.9.3)
+      vuepress:
+        specifier: 'catalog:'
+        version: 2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@25.0.1)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.96.0)(sass@1.96.0)(terser@5.44.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(@vuepress/bundler-webpack@2.0.0-rc.26(esbuild@0.27.1)(typescript@5.9.3))(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
+    devDependencies:
       markdown-it:
         specifier: ^14.1.0
         version: 14.1.0

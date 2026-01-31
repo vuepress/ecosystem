@@ -7,6 +7,7 @@ import { iconPlugin } from '@vuepress/plugin-icon'
 import { llmsPlugin } from '@vuepress/plugin-llms'
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
+import { markdownFileTreePlugin } from '@vuepress/plugin-markdown-file-tree'
 import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'
 import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
@@ -63,6 +64,7 @@ export const plugins = [
     component: true,
     vPre: true,
   }),
+  markdownFileTreePlugin(),
   markdownImagePlugin({
     figure: true,
     mark: true,

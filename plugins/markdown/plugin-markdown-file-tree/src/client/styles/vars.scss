@@ -1,0 +1,30 @@
+:root {
+  --file-tree-icon-file: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath fill='%23c5c5c5' d='M20.414 2H5v28h22V8.586ZM7 28V4h12v6h6v18Z'/%3E%3C/svg%3E");
+  --file-tree-icon-folder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath fill='%23c09553' d='M27.5 5.5h-9.3l-2.1 4.2H4.4v16.8h25.2v-21Zm0 4.2h-8.2l1.1-2.1h7.1Z'/%3E%3C/svg%3E");
+  --file-tree-icon-folder-expanded: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath fill='%23dcb67a' d='M27.4 5.5h-9.2l-2.1 4.2H4.3v16.8h25.2v-21Zm0 18.7H6.6V11.8h20.8Zm0-14.5h-8.2l1-2.1h7.1v2.1Z'/%3E%3Cpath fill='%23dcb67a' d='M25.7 13.7H.5l3.8 12.8h25.2z'/%3E%3C/svg%3E");
+  --file-tree-icon-folder-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23000' d='m5.157 13.069l4.611-4.685a.546.546 0 0 0 0-.768L5.158 2.93a.55.55 0 0 1 0-.771a.53.53 0 0 1 .759 0l4.61 4.684a1.65 1.65 0 0 1 0 2.312l-4.61 4.684a.53.53 0 0 1-.76 0a.55.55 0 0 1 0-.771'/%3E%3C/svg%3E");
+  --file-tree-font-family:
+    ui-monospace, 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono',
+    'Courier New', monospace;
+  --file-tree-c-bg: var(--vp-c-bg-alt);
+  --file-tree-c-bg-hover: rgb(142 150 170 / 14%);
+  --file-tree-c-text: var(--vp-c-text);
+  --file-tree-c-text-mute: var(--vp-c-text-mute);
+  --file-tree-c-text-hover: var(--vp-c-accent-hover);
+  --file-tree-c-border: var(--vp-c-divider);
+  --file-tree-c-diff-add-text: #18794e;
+  --file-tree-c-diff-add-bg: rgb(16 185 129 / 14%);
+  --file-tree-c-diff-remove-text: #b8272c;
+  --file-tree-c-diff-remove-bg: rgb(244 63 94 / 14%);
+  --file-tree-c-focus-bg: var(--vp-c-accent-bg);
+  --file-tree-c-focus-text: var(--vp-c-accent-text);
+  --file-tree-c-comment-text: var(--vp-c-text-subtle);
+}
+
+[data-theme='dark'] {
+  --file-tree-c-bg-hover: rgb(101 117 133 / 16%);
+  --file-tree-c-diff-add-text: #3dd68c;
+  --file-tree-c-diff-add-bg: rgb(16 185 129 / 16%);
+  --file-tree-c-diff-remove-text: #f66f81;
+  --file-tree-c-diff-remove-bg: rgb(244 63 94 / 16%);
+}
