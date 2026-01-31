@@ -1,5 +1,6 @@
 import { footnote as footnotePlugin } from '@mdit/plugin-footnote'
 import { tasklist as tasklistPlugin } from '@mdit/plugin-tasklist'
+import { deepAssign } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 
@@ -10,6 +11,12 @@ import {
 import type { MarkdownExtPluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepreClientConfigFile.js'
 import { PLUGIN_NAME } from './utils.js'
+
+declare module 'vuepress/markdown' {
+  interface MarkdownOptions {
+    ext?: MarkdownExtPluginOptions
+  }
+}
 
 /**
  * Markdown extensions plugin
@@ -34,33 +41,33 @@ import { PLUGIN_NAME } from './utils.js'
  * }
  * ```
  */
-export const markdownExtPlugin = ({
-  gfm,
-  breaks,
-  linkify,
-  footnote,
-  tasklist,
-  component,
-  vPre,
-}: MarkdownExtPluginOptions): Plugin => ({
-  name: PLUGIN_NAME,
+export const markdownExtPlugin =
+  (options: MarkdownExtPluginOptions): Plugin =>
+  (app) => {
+    const opts = deepAssign({}, app.options.markdown.ext, options)
+    app.options.markdown.ext = opts
+    const { gfm, breaks, linkify, footnote, tasklist, component, vPre } = opts
 
-  extendsMarkdown: (md) => {
-    // Behavior
-    if (breaks ?? gfm) md.options.breaks = true
-    if (linkify ?? gfm) md.options.linkify = true
+    return {
+      name: PLUGIN_NAME,
 
-    if (footnote ?? gfm) md.use(footnotePlugin)
-    if (tasklist ?? gfm)
-      md.use(tasklistPlugin, [isPlainObject(tasklist) ? tasklist : {}])
-    if (component) md.use(componentPlugin)
-    if (vPre) md.use(vPrePlugin)
-  },
+      extendsMarkdown: (md) => {
+        // Behavior
+        if (breaks ?? gfm) md.options.breaks = true
+        if (linkify ?? gfm) md.options.linkify = true
 
-  clientConfigFile: (app) =>
-    prepareClientConfigFile(app, {
-      gfm,
-      footnote,
-      tasklist,
-    }),
-})
+        if (footnote ?? gfm) md.use(footnotePlugin)
+        if (tasklist ?? gfm)
+          md.use(tasklistPlugin, [isPlainObject(tasklist) ? tasklist : {}])
+        if (component) md.use(componentPlugin)
+        if (vPre) md.use(vPrePlugin)
+      },
+
+      clientConfigFile: () =>
+        prepareClientConfigFile(app, {
+          gfm,
+          footnote,
+          tasklist,
+        }),
+    }
+  }
