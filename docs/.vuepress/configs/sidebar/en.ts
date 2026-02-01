@@ -125,6 +125,7 @@ export const sidebarEn: SidebarOptions = {
     },
     'markdown-container',
     'markdown-ext',
+    'markdown-file-tree',
     'markdown-image',
     'markdown-include',
     'markdown-hint',

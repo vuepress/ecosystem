@@ -3,6 +3,7 @@ import {
   addViteOptimizeDepsInclude,
   addViteSsrExternal,
   addViteSsrNoExternal,
+  deepAssign,
   isArray,
 } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
@@ -17,6 +18,12 @@ import {
 import type { MarkdownChartPluginOptions } from './options.js'
 import { prepareConfigFile } from './prepareConfigFile.js'
 import { PLUGIN_NAME, isInstalled, logger } from './utils.js'
+
+declare module 'vuepress/markdown' {
+  interface MarkdownOptions {
+    chart?: MarkdownChartPluginOptions
+  }
+}
 
 /**
  * Markdown chart plugin
@@ -47,15 +54,18 @@ import { PLUGIN_NAME, isInstalled, logger } from './utils.js'
 export const markdownChartPlugin =
   (options: MarkdownChartPluginOptions = {}): Plugin =>
   (app) => {
-    if (app.env.isDebug) logger.info('Options:', options)
+    const opts = deepAssign({}, app.options.markdown.chart, options)
+    app.options.markdown.chart = opts
+
+    if (app.env.isDebug) logger.info('Options:', opts)
 
     const getStatus = (
       key: keyof MarkdownChartPluginOptions,
       pkgs: string[] = [],
     ): boolean => {
-      const enabled = Boolean(options[key])
+      const enabled = Boolean(opts[key])
       const pkgInstalled = pkgs.every((pkg) =>
-        isInstalled(pkg, Boolean(options[key])),
+        isInstalled(pkg, Boolean(opts[key])),
       )
 
       return enabled && pkgInstalled
@@ -80,7 +90,7 @@ export const markdownChartPlugin =
         const {
           DANGEROUS_ALLOW_SCRIPT_EXECUTION,
           DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST,
-        } = options
+        } = opts
 
         const scriptOptions = {
           allowScripts: DANGEROUS_ALLOW_SCRIPT_EXECUTION ?? false,
@@ -104,8 +114,8 @@ export const markdownChartPlugin =
         if (status.chartjs) md.use(chartjs, scriptOptions)
         if (status.echarts) md.use(echarts, scriptOptions)
         if (status.flowchart) md.use(flowchart)
-        if (isArray(options.plantuml)) md.use(plantuml, options.plantuml)
-        else if (options.plantuml) md.use(plantuml)
+        if (isArray(opts.plantuml)) md.use(plantuml, opts.plantuml)
+        else if (opts.plantuml) md.use(plantuml)
         if (status.markmap) md.use(markmap)
         if (status.mermaid) md.use(mermaid)
       },

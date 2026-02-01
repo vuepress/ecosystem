@@ -3,8 +3,17 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./lib",
-    "types": ["vuepress/client-types", "vite/client", "webpack-env"]
+    "types": [
+      "vuepress/client-types",
+      "vite/client",
+      "webpack-env",
+      "vuepress/markdown"
+    ]
   },
   "include": ["./src"],
-  "references": [{ "path": "../../../tools/helper/tsconfig.build.json" }]
+  "references": [
+    {
+      "path": "../../../tools/helper/tsconfig.build.json"
+    }
+  ]
 }

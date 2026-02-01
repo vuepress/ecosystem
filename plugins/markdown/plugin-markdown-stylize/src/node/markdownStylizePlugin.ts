@@ -5,11 +5,18 @@ import { spoiler as spoilerPlugin } from '@mdit/plugin-spoiler'
 import { stylize as stylizePlugin } from '@mdit/plugin-stylize'
 import { sub as subPlugin } from '@mdit/plugin-sub'
 import { sup as supPlugin } from '@mdit/plugin-sup'
+import { deepAssign } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import type { MarkdownEnv } from 'vuepress/markdown'
 import { isPlainObject } from 'vuepress/shared'
 import type { MarkdownStylizePluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
+
+declare module 'vuepress/markdown' {
+  interface MarkdownOptions {
+    stylize?: MarkdownStylizePluginOptions
+  }
+}
 
 /**
  * Markdown stylize plugin
@@ -36,33 +43,31 @@ import { prepareClientConfigFile } from './prepareClientConfigFile.js'
  * }
  * ```
  */
-export const markdownStylizePlugin = ({
-  attrs,
-  align,
-  custom,
-  mark,
-  spoiler,
-  sup,
-  sub,
-}: MarkdownStylizePluginOptions): Plugin => {
-  return {
-    name: '@vuepress/plugin-markdown-stylize',
+export const markdownStylizePlugin =
+  (options: MarkdownStylizePluginOptions): Plugin =>
+  (app) => {
+    const opts = deepAssign({}, app.options.markdown.stylize, options)
+    app.options.markdown.stylize = opts
+    const { attrs, align, custom, mark, spoiler, sup, sub } = opts
 
-    extendsMarkdown: (md) => {
-      if (custom)
-        md.use(stylizePlugin, {
-          config: custom,
-          localConfigGetter: (env: MarkdownEnv) =>
-            env.frontmatter?.stylize || null,
-        })
-      if (attrs) md.use(attrsPlugin, isPlainObject(attrs) ? attrs : {})
-      if (align) md.use(alignPlugin)
-      if (mark) md.use(markPlugin)
-      if (spoiler) md.use(spoilerPlugin)
-      if (sub) md.use(subPlugin)
-      if (sup) md.use(supPlugin)
-    },
+    return {
+      name: '@vuepress/plugin-markdown-stylize',
 
-    clientConfigFile: (app) => prepareClientConfigFile(app, { spoiler }),
+      extendsMarkdown: (md) => {
+        if (custom)
+          md.use(stylizePlugin, {
+            config: custom,
+            localConfigGetter: (env: MarkdownEnv) =>
+              env.frontmatter?.stylize || null,
+          })
+        if (attrs) md.use(attrsPlugin, isPlainObject(attrs) ? attrs : {})
+        if (align) md.use(alignPlugin)
+        if (mark) md.use(markPlugin)
+        if (spoiler) md.use(spoilerPlugin)
+        if (sub) md.use(subPlugin)
+        if (sup) md.use(supPlugin)
+      },
+
+      clientConfigFile: () => prepareClientConfigFile(app, { spoiler }),
+    }
   }
-}

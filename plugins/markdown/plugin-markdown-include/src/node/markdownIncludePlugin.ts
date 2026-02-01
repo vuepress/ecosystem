@@ -1,5 +1,6 @@
 import type { IncludeEnv } from '@mdit/plugin-include'
 import { include } from '@mdit/plugin-include'
+import { deepAssign } from '@vuepress/helper'
 import type { RuleCore } from 'markdown-it/lib/parser_core.mjs'
 import type { Plugin } from 'vuepress/core'
 import type { MarkdownEnv } from 'vuepress/markdown'
@@ -38,10 +39,8 @@ export const markdownIncludePlugin =
   (app) => {
     const source = app.dir.source()
 
-    app.options.markdown.include = {
-      ...app.options.markdown.include,
-      ...options,
-    }
+    const opts = deepAssign({}, app.options.markdown.include, options)
+    app.options.markdown.include = opts
 
     return {
       name: '@vuepress/plugin-markdown-include',
@@ -49,7 +48,7 @@ export const markdownIncludePlugin =
       extendsMarkdown: (md) => {
         md.use(include, {
           currentPath: (env: MarkdownEnv) => env.filePath,
-          ...options,
+          ...opts,
         })
 
         // @ts-expect-error: __rules__ is private
