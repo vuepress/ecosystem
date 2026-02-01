@@ -32,7 +32,7 @@ jobs:
         run: pnpm build
 
       - name: Linter Test
-        run: pnpm lint
+        run: pnpm lint:check
 
       - name: Docs Test
         run: |
@@ -64,7 +64,7 @@ jobs:
         run: pnpm bundle
 
       - name: Linter Test
-        run: pnpm lint
+        run: pnpm lint:check
 
       - name: Docs Test
         run: |

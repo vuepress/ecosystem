@@ -42,7 +42,7 @@
     "mdast-util-from-markdown": "^2.0.2",
     "millify": "^6.1.0",
     "remark": "^15.0.1",
-    "tokenx": "^1.2.1",
+    "tokenx": "^1.3.0",
     "unist-util-remove": "^4.0.0",
     "unist-util-visit": "^5.1.0"
   },

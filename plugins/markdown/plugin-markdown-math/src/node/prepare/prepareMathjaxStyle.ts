@@ -19,6 +19,6 @@ export const prepareMathjaxStyle = async (
 ): Promise<void> => {
   await app.writeTemp(
     'markdown-math/mathjax.css',
-    `${mathjaxInstance.outputStyle()}\n${MATHJAX_STYLE_PATCH}`,
+    `${await mathjaxInstance.outputStyle()}\n${MATHJAX_STYLE_PATCH}`,
   )
 }

@@ -41,18 +41,18 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@shikijs/twoslash": "^3.20.0",
+    "@shikijs/twoslash": "^3.22.0",
     "@vuepress/helper": "workspace:*",
     "floating-vue": "^5.2.2",
     "mdast-util-from-markdown": "^2.0.2",
     "mdast-util-gfm": "^3.1.0",
     "mdast-util-to-hast": "^13.2.1",
-    "twoslash": "^0.3.4",
-    "twoslash-vue": "^0.3.4"
+    "twoslash": "^0.3.6",
+    "twoslash-vue": "^0.3.6"
   },
   "devDependencies": {
     "@types/hast": "^3.0.4",
-    "shiki": "^3.20.0",
+    "shiki": "^3.22.0",
     "vue": "catalog:"
   },
   "peerDependencies": {

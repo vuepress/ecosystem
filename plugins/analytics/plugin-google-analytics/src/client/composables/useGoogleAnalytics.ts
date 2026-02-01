@@ -1,11 +1,5 @@
 import type { GoogleAnalyticsPluginOptions } from '../../shared/index.js'
-
-declare global {
-  interface Window {
-    dataLayer?: unknown[]
-    gtag?: (...args: unknown[]) => void
-  }
-}
+import './declare.js'
 
 /**
  * Initialize Google Analytics 4 tracking

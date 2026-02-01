@@ -11,7 +11,7 @@
     "docs:serve": "http-server -a localhost .vuepress/dist"
   },
   "dependencies": {
-    "@mathjax/src": "^4.0.0",
+    "@mathjax/src": "^4.1.0",
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
     "@vuepress/helper": "workspace:*",
@@ -47,7 +47,7 @@
     "@vuepress/theme-default": "workspace:*",
     "@vueuse/core": "catalog:",
     "echarts-wordcloud": "2.1.0",
-    "katex": "0.16.27",
+    "katex": "0.16.28",
     "sass-embedded": "catalog:",
     "sass-loader": "catalog:",
     "vue": "catalog:",

@@ -1,15 +1,5 @@
 import type { UmamiOptions } from '../../shared/index.js'
-
-declare global {
-  interface Window {
-    umami: {
-      track: {
-        (payload?: Record<string, unknown>): void
-        (name: string, data?: Record<string, unknown>): void
-      }
-    }
-  }
-}
+import './declare.js'
 
 /**
  * Initialize Umami Analytics tracking

@@ -1,10 +1,5 @@
 import type { ClarityOptions } from '../../shared/index.js'
-
-declare global {
-  interface Window {
-    clarity?: (...args: unknown[]) => void
-  }
-}
+import './declare.js'
 
 /**
  * Initialize Clarity Analytics tracking
