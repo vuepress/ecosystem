@@ -38,7 +38,7 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "commander": "^14.0.2",
+    "commander": "^14.0.3",
     "semver": "^7.7.3"
   },
   "devDependencies": {
