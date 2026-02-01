@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.122](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.121...v2.0.0-rc.122) (2026-02-01)
+
+### Bug Fixes
+
+- **plugin-clarity-analytics:** fix clarity-analytics ([#587](https://github.com/vuepress/ecosystem/issues/587)) ([74f9d90](https://github.com/vuepress/ecosystem/commit/74f9d90403cf334c3729a06fea0cb8c07d666078))
+- **plugin-comment:** fix waline locales ([72309e6](https://github.com/vuepress/ecosystem/commit/72309e692729dd5a29fcd4f56f14f82bea7f75bc))
+- **plugin-shiki:** fix highlightLines break combined with other options, close [#577](https://github.com/vuepress/ecosystem/issues/577) ([#589](https://github.com/vuepress/ecosystem/issues/589)) ([b0be1dc](https://github.com/vuepress/ecosystem/commit/b0be1dc9508d4827441a86cbfc0c843f0ecc7a0e))
+
+### Features
+
+- add merging of markdown plugin options from `app.options.markdown` ([#594](https://github.com/vuepress/ecosystem/issues/594)) ([86242fb](https://github.com/vuepress/ecosystem/commit/86242fb393426902ff97558907c0ecf42768be38))
+- add plugin-markdown-file-tree ([#593](https://github.com/vuepress/ecosystem/issues/593)) ([9dc82e2](https://github.com/vuepress/ecosystem/commit/9dc82e26292bde909c96e05a59c70fb4836bdcd5))
+- **helper:** add scss helper ([40a9da9](https://github.com/vuepress/ecosystem/commit/40a9da976934896d54a56cfe2465139eca267626))
+- **plugin-docsearch:** add `askAi` support into plugin options ([#590](https://github.com/vuepress/ecosystem/issues/590)) ([fc5254c](https://github.com/vuepress/ecosystem/commit/fc5254cce49884c7ed4fd7683ecd8bfb739b49cb))
+- **plugin-llms:** add markup `<llm-only>` / `<llm-exclude>` and `transformMarkdown` option ([#588](https://github.com/vuepress/ecosystem/issues/588)) ([a3a434a](https://github.com/vuepress/ecosystem/commit/a3a434abca45e80e2d89e9f2efce89ac4655713c))
+
 # [2.0.0-rc.121](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.120...v2.0.0-rc.121) (2025-12-13)
 
 ### Bug Fixes

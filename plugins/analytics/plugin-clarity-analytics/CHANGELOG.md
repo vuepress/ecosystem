@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.122](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.121...v2.0.0-rc.122) (2026-02-01)
+
+### Bug Fixes
+
+- **plugin-clarity-analytics:** fix clarity-analytics ([#587](https://github.com/vuepress/ecosystem/issues/587)) ([74f9d90](https://github.com/vuepress/ecosystem/commit/74f9d90403cf334c3729a06fea0cb8c07d666078))
+
 # [2.0.0-rc.121](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.120...v2.0.0-rc.121) (2025-12-13)
 
 **Note:** Version bump only for package @vuepress/plugin-clarity-analytics

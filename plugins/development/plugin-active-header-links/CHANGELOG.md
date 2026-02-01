@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.122](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.121...v2.0.0-rc.122) (2026-02-01)
+
+**Note:** Version bump only for package @vuepress/plugin-active-header-links
+
 # [2.0.0-rc.118](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.117...v2.0.0-rc.118) (2025-10-31)
 
 **Note:** Version bump only for package @vuepress/plugin-active-header-links

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.122](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.121...v2.0.0-rc.122) (2026-02-01)
+
+### Features
+
+- **helper:** add scss helper ([40a9da9](https://github.com/vuepress/ecosystem/commit/40a9da976934896d54a56cfe2465139eca267626))
+
 # [2.0.0-rc.121](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.120...v2.0.0-rc.121) (2025-12-13)
 
 ### Features

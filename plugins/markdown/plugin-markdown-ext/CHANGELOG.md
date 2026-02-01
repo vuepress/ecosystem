@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.122](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.121...v2.0.0-rc.122) (2026-02-01)
+
+### Features
+
+- add merging of markdown plugin options from `app.options.markdown` ([#594](https://github.com/vuepress/ecosystem/issues/594)) ([86242fb](https://github.com/vuepress/ecosystem/commit/86242fb393426902ff97558907c0ecf42768be38))
+
 # [2.0.0-rc.121](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.120...v2.0.0-rc.121) (2025-12-13)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-ext

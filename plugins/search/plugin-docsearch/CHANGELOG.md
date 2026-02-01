@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.122](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.121...v2.0.0-rc.122) (2026-02-01)
+
+### Features
+
+- **plugin-docsearch:** add `askAi` support into plugin options ([#590](https://github.com/vuepress/ecosystem/issues/590)) ([fc5254c](https://github.com/vuepress/ecosystem/commit/fc5254cce49884c7ed4fd7683ecd8bfb739b49cb))
+
 # [2.0.0-rc.121](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.120...v2.0.0-rc.121) (2025-12-13)
 
 ### Bug Fixes

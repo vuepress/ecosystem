@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.122](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.121...v2.0.0-rc.122) (2026-02-01)
+
+### Bug Fixes
+
+- **plugin-shiki:** fix highlightLines break combined with other options, close [#577](https://github.com/vuepress/ecosystem/issues/577) ([#589](https://github.com/vuepress/ecosystem/issues/589)) ([b0be1dc](https://github.com/vuepress/ecosystem/commit/b0be1dc9508d4827441a86cbfc0c843f0ecc7a0e))
+
 # [2.0.0-rc.121](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.120...v2.0.0-rc.121) (2025-12-13)
 
 **Note:** Version bump only for package @vuepress/plugin-shiki

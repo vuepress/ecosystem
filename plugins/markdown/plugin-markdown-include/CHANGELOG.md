@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.122](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.121...v2.0.0-rc.122) (2026-02-01)
+
+### Features
+
+- add merging of markdown plugin options from `app.options.markdown` ([#594](https://github.com/vuepress/ecosystem/issues/594)) ([86242fb](https://github.com/vuepress/ecosystem/commit/86242fb393426902ff97558907c0ecf42768be38))
+- **plugin-llms:** add markup `<llm-only>` / `<llm-exclude>` and `transformMarkdown` option ([#588](https://github.com/vuepress/ecosystem/issues/588)) ([a3a434a](https://github.com/vuepress/ecosystem/commit/a3a434abca45e80e2d89e9f2efce89ac4655713c))
+
 # [2.0.0-rc.121](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.120...v2.0.0-rc.121) (2025-12-13)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-include
