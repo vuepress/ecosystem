@@ -25,3 +25,8 @@ peerDependencyRules:
   allowedVersions:
     artalk>marked: ^16.0.0
     echarts-wordcloud@2>echarts: '6'
+
+packageExtensions:
+  '@docsearch/react':
+    dependencies:
+      '@algolia/autocomplete-core': 1.19.4
