@@ -1,10 +1,5 @@
 import { useRouter } from 'vuepress/client'
-
-declare global {
-  interface Window {
-    _hmt?: [name: string, options: unknown][]
-  }
-}
+import './declare.js'
 
 /**
  * Initialize Baidu Analytics tracking
