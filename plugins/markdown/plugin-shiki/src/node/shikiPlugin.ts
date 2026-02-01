@@ -50,7 +50,7 @@ import { TWOSLASH_RE, logger } from './utils.js'
  */
 export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => {
   return (app) => {
-    // FIXME: Remove in stable version
+    // TODO: Remove in stable version
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { code } = app.options.markdown
     const shikiOptions = {

@@ -34,7 +34,7 @@ export interface TocPluginOptions {
    */
   renderOptions?: TocRenderOptions
 
-  // FIXME: Remove in stable
+  // TODO: Remove in stable
   /**
    * @deprecated use `headersOptions` instead
    */

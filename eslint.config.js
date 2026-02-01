@@ -36,8 +36,12 @@ export default vuepress(
         ...TOOLS_DIRS,
       ],
     },
+    markdown: false,
     typescript: {
       overrides: {
+        // FIXME: This is a workaround for a typescript-eslint issue, see https://github.com/typescript-eslint/typescript-eslint/issues/12026
+        '@typescript-eslint/no-useless-default-assignment': 'off',
+
         '@typescript-eslint/consistent-indexed-object-style': 'off',
         '@typescript-eslint/naming-convention': [
           'warn',
