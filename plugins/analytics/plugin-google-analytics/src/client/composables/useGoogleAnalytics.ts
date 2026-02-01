@@ -1,4 +1,5 @@
 import type { GoogleAnalyticsPluginOptions } from '../../shared/index.js'
+import './declare.js'
 
 /**
  * Initialize Google Analytics 4 tracking

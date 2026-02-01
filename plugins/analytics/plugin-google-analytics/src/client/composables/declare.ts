@@ -4,3 +4,5 @@ declare global {
     gtag?: (...args: unknown[]) => void
   }
 }
+
+export {}
