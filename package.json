@@ -63,7 +63,7 @@
     "tsconfig-vuepress": "^7.0.0",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "vite": "~7.3.1",
+    "vite": "~7.1.2",
     "vitest": "4.0.18",
     "vuepress": "catalog:"
   },
