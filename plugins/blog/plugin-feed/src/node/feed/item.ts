@@ -49,7 +49,6 @@ export class FeedItem {
     this.base = this.app.siteData.base
     this.frontmatter = page.frontmatter
     this.getter = options.getter ?? {}
-    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     this.pageOptions = this.frontmatter.feed || {}
   }
 

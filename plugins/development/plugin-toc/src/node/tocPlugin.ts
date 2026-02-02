@@ -39,6 +39,7 @@ export const tocPlugin = ({
   defaultPropsOptions,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   propsOptions = {},
+  // oxlint-disable-next-line typescript/no-deprecated
   headersOptions = headerOptions,
   renderOptions = defaultPropsOptions ?? propsOptions,
 }: TocPluginOptions = {}): Plugin =>

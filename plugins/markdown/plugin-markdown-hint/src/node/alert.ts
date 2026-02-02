@@ -34,7 +34,6 @@ export const alert: PluginWithOptions<MarkdownItAlertOptions> = (
 
       return `\
 <p class="hint-container-title">${
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         options[localePath]?.[type as keyof MarkdownHintPluginLocaleData] ||
         type
       }</p>

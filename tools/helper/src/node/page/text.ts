@@ -54,6 +54,7 @@ const handleNode = (
   node: AnyNode,
   { base, removedTags }: NodeOptions,
 ): string => {
+  // oxlint-disable-next-line typescript/no-unsafe-enum-comparison
   if (node.type === 'tag') {
     // toc should be dropped
     if (
@@ -74,13 +75,13 @@ const handleNode = (
       !removedTags.includes(node.tagName) &&
       isHTMLTag(node.tagName)
     ) {
-      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       return handleNodes(node.children, { base, removedTags })
     }
 
     return ''
   }
 
+  // oxlint-disable-next-line typescript/no-unsafe-enum-comparison
   if (node.type === 'text') return node.data
 
   return ''

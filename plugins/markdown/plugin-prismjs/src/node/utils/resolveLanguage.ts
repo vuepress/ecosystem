@@ -16,7 +16,6 @@ let languagesMap: LanguagesMap | null = null
 /**
  * Lazy generate languages map
  */
-// eslint-disable-next-line no-return-assign
 const getLanguagesMap = (): LanguagesMap =>
   (languagesMap ??= Object.values(languages).reduce<LanguagesMap>(
     (result, item) => ({

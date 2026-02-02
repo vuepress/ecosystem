@@ -168,7 +168,6 @@ const resolveInclude = (
   )
 
   if (options.deep && actualPath.endsWith('.md')) {
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     content = replaceInclude(content, options, {
       cwd: path.isAbsolute(actualPath)
         ? path.dirname(actualPath)

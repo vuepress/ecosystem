@@ -17,4 +17,4 @@ export const getImages = (
 
       return null
     })
-    .filter((item): item is string => item !== null)
+    .filter((item): item is string => item != null)

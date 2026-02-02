@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-globals */
 import database from '@temp/slimsearch/index.js'
 import { sortStrategy } from '@temp/slimsearch/worker-options.js'
 import { loadJSONIndex } from 'slimsearch'
