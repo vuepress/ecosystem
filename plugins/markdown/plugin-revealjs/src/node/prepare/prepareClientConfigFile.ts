@@ -48,17 +48,19 @@ ${layout ? `import { SlidePage } from "${getModulePath(`${PLUGIN_NAME}/layouts`,
 import "${getModulePath('reveal.js/dist/reveal.css', import.meta)}";
 import "${getModulePath(`${PLUGIN_NAME}/styles/base.css`, import.meta)}";
 import "${getModulePath(`${PLUGIN_NAME}/styles/vars.css`, import.meta)}";
-${Array.from(fonts)
-  .map(
-    (name) =>
-      `import "${getModulePath(`${PLUGIN_NAME}/styles/fonts/${name}.css`, import.meta)}";`,
-  )
+${Array.from(
+  fonts,
+  (name) =>
+    `import "${getModulePath(`${PLUGIN_NAME}/styles/fonts/${name}.css`, import.meta)}";`,
+)
+
   .join('\n')}
-${Array.from(themes)
-  .map(
-    (name) =>
-      `import "${getModulePath(`${PLUGIN_NAME}/styles/themes/${name}.css`, import.meta)}";`,
-  )
+${Array.from(
+  themes,
+  (name) =>
+    `import "${getModulePath(`${PLUGIN_NAME}/styles/themes/${name}.css`, import.meta)}";`,
+)
+
   .join('\n')}
 
 export default {
