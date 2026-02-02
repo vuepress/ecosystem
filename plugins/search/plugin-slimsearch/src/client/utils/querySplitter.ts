@@ -4,6 +4,7 @@ const CJK_REGEXP =
 export const fallbackQuerySplitter = (query: string): string[] =>
   query.split(/\s+/).flatMap((word) => {
     if (word.length > 3) {
+      // oxlint-disable-next-line unicorn/prefer-spread
       const chars = word.split('')
 
       if (chars.every((char) => CJK_REGEXP.test(char))) return chars

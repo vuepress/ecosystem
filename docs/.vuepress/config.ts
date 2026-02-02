@@ -42,7 +42,7 @@ export default defineUserConfig({
       handleImportPath: (importPath) => {
         // handle @vuepress packages import path
         if (importPath.startsWith('@vuepress/')) {
-          const packageName = importPath.match(/^(@vuepress\/[^/]*)/)![1]
+          const [, packageName] = importPath.match(/^(@vuepress\/[^/]*)/)!
           const realPath = importPath.replace(
             packageName,
             path.dirname(

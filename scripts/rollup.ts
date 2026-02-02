@@ -2,7 +2,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import type { ModuleSideEffectsOption, RollupOptions } from 'rollup'
 
-import dts from 'rollup-plugin-dts'
+import { dts } from 'rollup-plugin-dts'
 
 import esbuild from 'rollup-plugin-esbuild'
 import { shebang } from 'rollup-plugin-resolve-shebang'
@@ -25,6 +25,7 @@ export interface BundleOptions {
   define?: Record<string, string>
 }
 
+// oxlint-disable-next-line complexity, max-lines-per-function
 export const rollupBundle = (
   filePath: FileInfo | string,
   {
@@ -75,7 +76,8 @@ export const rollupBundle = (
       preserveShebang ? shebang() : null,
       ...(resolve ? [nodeResolve({ preferBuiltins: true }), commonjs()] : []),
       esbuild({
-        charset: 'utf-8',
+        // oxlint-disable-next-line unicorn/text-encoding-identifier-case
+        charset: 'utf8',
         minify: true,
         target: 'node20.6.0',
         define,

@@ -5,7 +5,7 @@ import type { CodeParser, OpenTag } from './getCodeParser.js'
 const SPLIT_REGEXP = /(<[^>]+>)/
 const SPACE_REGEXP = /[\s\t]/g
 
-const classMap = {
+const classMap: Record<string, string> = {
   ' ': 'space',
   '\t': 'tab',
 }
@@ -33,6 +33,7 @@ const renderSpace = (text: string): string =>
  * renderWhitespaceInLine(lineNode, 'all')
  * ```
  */
+// oxlint-disable-next-line complexity, max-statements
 export const renderWhitespaceInLine = (
   node: OpenTag,
   position: WhitespacePosition,

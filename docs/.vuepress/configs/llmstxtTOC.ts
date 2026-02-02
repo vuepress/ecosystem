@@ -72,7 +72,7 @@ export const tocGetter = (llmPages: LLMPage[], llmState: LLMState): string => {
       sidebarConfig[key] as SidebarItemOptions[],
       key,
     )
-      .map(generateTOCLink)
+      .map((path) => generateTOCLink(path))
       .filter(Boolean)
       .join('')
     tableOfContent += '\n'

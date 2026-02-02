@@ -52,7 +52,6 @@ export const iconPlugin = (options: IconPluginOptions = {}): Plugin => {
             })
 
             if (color && !attrs.color) attrs.color = color
-            // oxlint-disable-next-line unicorn/explicit-length-check
             if (size && !attrs.size) attrs.size = size
 
             return `<${options.component ?? 'VPIcon'} icon="${content}"${stringifyAttrs(attrs)} />`

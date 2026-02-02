@@ -42,7 +42,7 @@ export const isPackageManagerInstalled = (
 
   const status = globalCache.get(key)
 
-  if (status !== undefined) return status
+  if (status != null) return status
 
   if (isInstalled(packageManager)) {
     globalCache.set(key, true)
@@ -68,7 +68,7 @@ export const getPackageManagerSetting = (
 
   const status = localCache.get(key)
 
-  if (status !== undefined) return status
+  if (status != null) return status
 
   if (existsSync(resolve(cwd, PACKAGE_CONFIG))) {
     const { packageManager: packageManagerSettings } = JSON.parse(
