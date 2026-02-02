@@ -3,19 +3,14 @@
   "version": "2.0.0-rc.122",
   "description": "VuePress plugin - sass-palette",
   "keywords": [
-    "vuepress-plugin",
-    "vuepress",
+    "palette",
     "sass",
-    "palette"
+    "vuepress",
+    "vuepress-plugin"
   ],
   "homepage": "https://ecosystem.vuejs.press/plugins/development/sass-palette/",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vuepress/ecosystem.git",
-    "directory": "plugins/development/plugin-sass-palette"
   },
   "license": "MIT",
   "author": {
@@ -23,7 +18,18 @@
     "email": "mister-hope@outlook.com",
     "url": "https://mister-hope.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/development/plugin-sass-palette"
+  },
+  "files": [
+    "lib",
+    "styles"
+  ],
   "type": "module",
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
   "exports": {
     ".": "./lib/node/index.js",
     "./styles*": "./styles/*",
@@ -35,12 +41,9 @@
     "./helper.scss": "./styles/helper.scss",
     "./package.json": "./package.json"
   },
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
-  "files": [
-    "lib",
-    "styles"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
@@ -70,8 +73,5 @@
     "sass-loader": {
       "optional": true
     }
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

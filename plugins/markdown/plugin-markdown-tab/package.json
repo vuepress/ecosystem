@@ -3,20 +3,15 @@
   "version": "2.0.0-rc.122",
   "description": "VuePress plugin - markdown tab",
   "keywords": [
-    "vuepress-plugin",
-    "vuepress",
-    "plugin",
     "markdown",
-    "tab"
+    "plugin",
+    "tab",
+    "vuepress",
+    "vuepress-plugin"
   ],
   "homepage": "https://ecosystem.vuejs.press/plugins/markdown/markdown-tab.html",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vuepress/ecosystem.git",
-    "directory": "plugins/markdown/plugin-markdown-tab"
   },
   "license": "MIT",
   "author": {
@@ -24,17 +19,25 @@
     "email": "mister-hope@outlook.com",
     "url": "https://mister-hope.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/markdown/plugin-markdown-tab"
+  },
+  "files": [
+    "lib"
+  ],
   "type": "module",
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
   "exports": {
     ".": "./lib/node/index.js",
     "./client": "./lib/client/index.js",
     "./package.json": "./package.json"
   },
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
@@ -53,8 +56,5 @@
   },
   "peerDependencies": {
     "vuepress": "catalog:"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

@@ -10,9 +10,9 @@
     "build:tsc": "tsc -b tsconfig.build.json",
     "bundle": "pnpm build:bundle && pnpm build:copy && pnpm build:style",
     "clean": "pnpm --parallel --stream clean",
-    "format": "prettier --write .",
-    "lint": "eslint . --fix && prettier --check --write . && stylelint **/*.{css,html,scss,vue} --fix",
-    "lint:check": "eslint . && prettier --check . && stylelint **/*.{css,html,scss,vue}",
+    "format": "oxfmt",
+    "lint": "eslint . --fix && oxfmt && stylelint **/*.{css,html,scss,vue} --fix",
+    "lint:check": "eslint . && oxfmt --check && stylelint **/*.{css,html,scss,vue}",
     "prepare": "husky",
     "release": "pnpm release:check && pnpm release:version && pnpm release:publish",
     "release:check": "pnpm lint && pnpm clean && pnpm build && pnpm test",
@@ -23,13 +23,6 @@
     "test:e2e": "pnpm --filter ecosystem-e2e e2e:dev && pnpm --filter ecosystem-e2e e2e:build",
     "test:unit": "cross-env TZ=Etc/UTC vitest run"
   },
-  "nano-staged": {
-    "**/*": "prettier --write --ignore-unknown",
-    "*.(cjs|js|ts|vue)": "eslint --fix",
-    "*.(s?css|html|vue)": "stylelint --fix",
-    "package.json": "sort-package-json"
-  },
-  "prettier": "prettier-config-vuepress",
   "devDependencies": {
     "@commitlint/cli": "^20.4.0",
     "@commitlint/config-conventional": "^20.4.0",
@@ -47,9 +40,8 @@
     "http-server": "^14.1.1",
     "husky": "^9.1.7",
     "nano-staged": "^0.9.0",
+    "oxfmt": "0.27.0",
     "postcss-html": "^1.8.1",
-    "prettier": "^3.8.1",
-    "prettier-config-vuepress": "^7.0.4",
     "rimraf": "^6.1.2",
     "rollup": "^4.57.1",
     "rollup-plugin-dts": "^6.3.0",
@@ -67,8 +59,14 @@
     "vitest": "4.0.18",
     "vuepress": "catalog:"
   },
-  "packageManager": "pnpm@10.28.2",
+  "nano-staged": {
+    "**/*": "oxfmt --no-error-on-unmatched-pattern",
+    "*.(cjs|js|ts|vue)": "eslint --fix",
+    "*.(s?css|html|vue)": "stylelint --fix",
+    "package.json": "sort-package-json"
+  },
   "engines": {
     "node": "^20.19.0 || >= 22.12.0"
-  }
+  },
+  "packageManager": "pnpm@10.28.2"
 }

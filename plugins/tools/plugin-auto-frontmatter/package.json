@@ -3,19 +3,14 @@
   "version": "2.0.0-rc.122",
   "description": "VuePress plugin - auto-frontmatter",
   "keywords": [
-    "vuepress-plugin",
-    "vuepress",
+    "auto-frontmatter",
     "plugin",
-    "auto-frontmatter"
+    "vuepress",
+    "vuepress-plugin"
   ],
   "homepage": "https://ecosystem.vuejs.press/plugins/tools/auto-frontmatter.html",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vuepress/ecosystem.git",
-    "directory": "plugins/tools/plugin-auto-frontmatter"
   },
   "license": "MIT",
   "author": "pengzhanbo",
@@ -25,16 +20,24 @@
       "email": "volodymyr@foxmail.com"
     }
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/tools/plugin-auto-frontmatter"
+  },
+  "files": [
+    "lib"
+  ],
   "type": "module",
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
   "exports": {
     ".": "./lib/node/index.js",
     "./package.json": "./package.json"
   },
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
@@ -49,14 +52,11 @@
     "p-map": "^7.0.4",
     "picomatch": "^4.0.3"
   },
-  "peerDependencies": {
-    "vuepress": "catalog:"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
     "@types/picomatch": "^4.0.2"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
   }
 }

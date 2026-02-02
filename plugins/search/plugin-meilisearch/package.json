@@ -3,43 +3,46 @@
   "version": "2.0.0-rc.122",
   "description": "VuePress plugin - built-in meilisearch",
   "keywords": [
-    "vuepress-plugin",
-    "vuepress",
+    "meilisearch",
     "plugin",
     "search",
-    "meilisearch"
+    "vuepress",
+    "vuepress-plugin"
   ],
   "homepage": "https://ecosystem.vuejs.press/plugins/search/meilisearch.html",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
   },
+  "license": "MIT",
+  "author": "JQiue, Mister-Hope",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/ecosystem.git",
     "directory": "plugins/search/plugin-meilisearch"
   },
-  "license": "MIT",
-  "author": "JQiue, Mister-Hope",
+  "bin": {
+    "vp-meilisearch-scrapper": "./lib/cli/index.js"
+  },
+  "files": [
+    "lib"
+  ],
   "type": "module",
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
   "exports": {
     ".": "./lib/node/index.js",
     "./cli": "./lib/cli/generateScraperConfig.js",
     "./client": "./lib/client/index.js",
     "./package.json": "./package.json"
   },
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
-  },
-  "bin": {
-    "vp-meilisearch-scrapper": "./lib/cli/index.js"
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
@@ -50,8 +53,5 @@
   },
   "peerDependencies": {
     "vuepress": "catalog:"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

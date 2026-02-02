@@ -36,7 +36,7 @@ Main tools that used in this project:
 
 - [TypeScript](https://www.typescriptlang.org/) as the development language
 - [Vitest](https://vitest.dev/) for unit testing
-- [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/) for code linting and formatting
+- [ESLint](https://eslint.org/) + [Oxfmt](https://oxc.rs/docs/guide/usage/formatter) for code linting and formatting
 
 ## Scripts
 
@@ -56,7 +56,7 @@ It's used before you want to re-build source files from a clean / initial state.
 
 ### `pnpm format`
 
-The `format` script uses Prettier to format all source files.
+The `format` script uses oxfmt to format all source files.
 
 ### `pnpm lint`
 

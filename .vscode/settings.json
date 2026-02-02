@@ -1,5 +1,5 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
@@ -14,7 +14,6 @@
     "source.fixAll.eslint": "explicit",
     "source.fixAll.stylelint": "explicit"
   },
-  "prettier.enable": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.validate": [
     "javascript",
@@ -23,6 +22,8 @@
     "typescriptreact",
     "vue"
   ],
+  "oxc.typeAware": true,
+  "oxc.unusedDisableDirectives": "deny",
   "cSpell.words": [
     "artalk",
     "bumpp",

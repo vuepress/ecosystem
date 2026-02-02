@@ -3,28 +3,34 @@
   "version": "2.0.0-rc.122",
   "description": "Default theme of VuePress",
   "keywords": [
-    "vuepress-theme",
-    "vuepress",
+    "default",
     "theme",
-    "default"
+    "vuepress",
+    "vuepress-theme"
   ],
   "homepage": "https://ecosystem.vuejs.press/themes/default/",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
   },
+  "license": "MIT",
+  "author": "meteorlxy",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/ecosystem.git",
     "directory": "themes/theme-default"
   },
-  "license": "MIT",
-  "author": "meteorlxy",
+  "files": [
+    "lib",
+    "templates"
+  ],
+  "type": "module",
   "sideEffects": [
     "./lib/client/components/**/*.vue",
     "./lib/client/layouts/*.vue",
     "./lib/client/styles/*.scss"
   ],
-  "type": "module",
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
   "exports": {
     ".": "./lib/node/index.js",
     "./client": "./lib/client/index.js",
@@ -35,12 +41,9 @@
     "./lib/*": "./lib/*",
     "./package.json": "./package.json"
   },
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
-  "files": [
-    "lib",
-    "templates"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "bundle": "tsc -b tsconfig.build.json",
@@ -82,8 +85,5 @@
     "sass-loader": {
       "optional": true
     }
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

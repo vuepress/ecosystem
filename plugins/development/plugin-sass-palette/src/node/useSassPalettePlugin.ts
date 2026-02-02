@@ -29,9 +29,10 @@ export const useSassPalettePlugin = (
 
   if (
     plugins
-      .filter<
-        PluginObject & { id: string }
-      >((plugin): plugin is PluginObject & { id: string } => plugin.name === PLUGIN_NAME)
+      .filter<PluginObject & { id: string }>(
+        (plugin): plugin is PluginObject & { id: string } =>
+          plugin.name === PLUGIN_NAME,
+      )
       .every((plugin) => plugin.id !== options.id)
   )
     app.use(sassPalettePlugin(options))

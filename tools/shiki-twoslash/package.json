@@ -3,18 +3,13 @@
   "version": "2.0.0-rc.122",
   "description": "VuePress shiki twoslash",
   "keywords": [
-    "vuepress",
     "shiki",
-    "twoslash"
+    "twoslash",
+    "vuepress"
   ],
   "homepage": "https://ecosystem.vuejs.press/tools/shiki-twoslash/",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vuepress/ecosystem.git",
-    "directory": "tools/tools/shiki-twoslash"
   },
   "license": "MIT",
   "author": {
@@ -22,18 +17,26 @@
     "email": "volodymyr@foxmail.com",
     "url": "https://github.com/pengzhanbo"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "tools/tools/shiki-twoslash"
+  },
+  "files": [
+    "lib"
+  ],
   "type": "module",
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
   "exports": {
     ".": "./lib/node/index.js",
     "./client": "./lib/client/index.js",
     "./styles/*": "./lib/client/styles/*",
     "./package.json": "./package.json"
   },
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
@@ -57,8 +60,5 @@
   },
   "peerDependencies": {
     "vuepress": "catalog:"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

@@ -20,9 +20,10 @@ export const removePalettePlugin = (app: App, id: string): void => {
   const { plugins } = app.pluginApi
 
   const index = plugins
-    .filter<
-      PluginObject & { id: string }
-    >((plugin): plugin is PluginObject & { id: string } => plugin.name === PLUGIN_NAME)
+    .filter<PluginObject & { id: string }>(
+      (plugin): plugin is PluginObject & { id: string } =>
+        plugin.name === PLUGIN_NAME,
+    )
     .findIndex((plugin) => plugin.id === id)
 
   if (index !== -1) plugins.splice(index, 1)

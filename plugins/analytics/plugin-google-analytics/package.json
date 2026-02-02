@@ -3,34 +3,37 @@
   "version": "2.0.0-rc.122",
   "description": "VuePress plugin - google-analytics",
   "keywords": [
-    "vuepress-plugin",
-    "vuepress",
-    "plugin",
+    "analytics",
     "google",
-    "analytics"
+    "plugin",
+    "vuepress",
+    "vuepress-plugin"
   ],
   "homepage": "https://ecosystem.vuejs.press/plugins/analytics/google-analytics.html",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
   },
+  "license": "MIT",
+  "author": "meteorlxy",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/ecosystem.git",
     "directory": "plugins/analytics/plugin-google-analytics"
   },
-  "license": "MIT",
-  "author": "meteorlxy",
+  "files": [
+    "lib"
+  ],
   "type": "module",
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
   "exports": {
     ".": "./lib/node/index.js",
     "./client": "./lib/client/index.js",
     "./package.json": "./package.json"
   },
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
@@ -38,8 +41,5 @@
   },
   "peerDependencies": {
     "vuepress": "catalog:"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
