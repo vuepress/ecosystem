@@ -37,14 +37,14 @@
 .vp-file-tree-node .group {
   position: relative;
   min-width: max-content;
-  margin-inline-start: 28px;
+  margin-inline-start: 20px;
 
   &::before {
     content: '';
 
     position: absolute;
     top: 0;
-    left: -4px;
+    left: -18px;
 
     width: 1px;
     height: 100%;
@@ -64,19 +64,19 @@
   justify-content: flex-start;
 
   min-width: max-content;
-  height: 28px;
+  height: 24px;
   margin-block: 0;
   margin-inline-start: 16px;
   padding-block: 2px;
 
-  line-height: 28px;
+  line-height: 24px;
   text-wrap: nowrap;
 
   &::after {
     content: '';
 
     position: absolute;
-    inset: 0 -16px 0 calc(var(--file-tree-level) * 28px - 32px);
+    inset: 0 -16px 0 calc(var(--file-tree-level) * 20px - 32px);
     z-index: 0;
 
     display: block;
@@ -94,7 +94,7 @@
   }
 
   &.diff::after {
-    padding-inline-start: 4px;
+    padding-inline-start: 2px;
     font-size: 1.25em;
   }
 
@@ -106,6 +106,7 @@
 
   &.diff.remove::after {
     content: '-';
+    padding-inline-start: 4px;
     background-color: var(--file-tree-c-diff-remove-bg);
     color: var(--file-tree-c-diff-remove-text);
   }
@@ -117,8 +118,8 @@
       content: '';
 
       position: absolute;
-      top: 10px;
-      left: -16px;
+      top: 8px;
+      left: -20px;
 
       display: block;
 
@@ -176,17 +177,25 @@
     color: var(--file-tree-c-text-hover);
   }
 
+  .name.omit {
+    padding-inline-start: 22px;
+  }
+
+  + .group.empty .name.omit {
+    padding-inline-start: 2px;
+  }
+
   .comment {
     display: inline-block;
     flex: 1 2;
 
-    height: 28px;
+    height: 24px;
     margin-block: -2px;
     padding-inline: 20px 16px;
 
     color: var(--file-tree-c-comment-text);
 
-    line-height: 28px;
+    line-height: 24px;
 
     cursor: auto;
 
@@ -200,6 +209,7 @@
 
     width: 1.2em;
     height: 1.2em;
+    margin-inline-start: -3px;
 
     background-color: currentcolor;
     color: inherit;

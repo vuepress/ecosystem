@@ -19,7 +19,7 @@ exports[`fileTree > should handle diff 1`] = `
 
 exports[`fileTree > should handle empty folder with ellipsis 1`] = `
 "<div class="vp-file-tree">
-  <FileTreeNode type="folder" filename="empty-folder" :level="0">
+  <FileTreeNode type="folder" filename="empty-folder" :level="0" empty>
     <FileTreeNode type="file" filename="…" :level="1">
     </FileTreeNode>
   </FileTreeNode>

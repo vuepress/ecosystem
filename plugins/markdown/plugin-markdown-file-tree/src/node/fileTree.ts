@@ -91,8 +91,13 @@ export const fileTree: PluginSimple = (md) => {
 
           const nodeType = children.length > 0 ? 'folder' : type
           const indent = `\n${'  '.repeat(level + 1)}`
+          const isEmptyFolder =
+            nodeType === 'folder' &&
+            children.filter(
+              (child) => child.filename !== '…' && child.filename !== '...',
+            ).length === 0
 
-          const propsRendered = `type="${nodeType}" filename="${filename}" :level="${level}"${nodeType === 'folder' && expanded ? ' expanded' : ''}${focus ? ' focus' : ''}${diff ? ` diff="${diff}"` : ''}`
+          const propsRendered = `type="${nodeType}" filename="${filename}" :level="${level}"${nodeType === 'folder' && expanded ? ' expanded' : ''}${focus ? ' focus' : ''}${diff ? ` diff="${diff}"` : ''}${isEmptyFolder ? ' empty' : ''}`
           const commentRendered = comment
             ? `${indent}  <template #comment>${md.renderInline(comment.replaceAll('#', '\\#'))}</template>`
             : ''
