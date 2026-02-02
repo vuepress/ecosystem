@@ -45,7 +45,7 @@ export const getAtomFeed = (feedStore: FeedStore): string => {
     _declaration: {
       _attributes: {
         version: '1.0',
-        encoding: 'utf-8',
+        encoding: 'utf8',
       },
     },
     _instruction: {
@@ -95,11 +95,11 @@ export const getAtomFeed = (feedStore: FeedStore): string => {
 
   if (channel.copyright) content.feed.rights = channel.copyright
 
-  content.feed.category = Array.from(feedStore.categories).map((category) => ({
+  content.feed.category = Array.from(feedStore.categories, (category) => ({
     _attributes: { term: category },
   }))
 
-  content.feed.contributor = Array.from(feedStore.contributors)
+  content.feed.contributor = [...feedStore.contributors]
     .filter((contributor) => contributor.name)
     .map((contributor) => getAtomAuthor(contributor))
 
@@ -145,7 +145,7 @@ export const getAtomFeed = (feedStore: FeedStore): string => {
       )
 
     // contributor
-    if (item.contributor.length)
+    if (item.contributor.length > 0)
       entry.contributor = item.contributor.map((contributor) =>
         getAtomAuthor(contributor),
       )

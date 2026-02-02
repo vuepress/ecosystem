@@ -171,6 +171,8 @@
     "unicorn/no-array-sort": "off",
     // Array.forEach has its use cases
     "unicorn/no-array-for-each": "off",
+    // for code simplicity we may not want to create temp variables for single use
+    "unicorn/no-await-expression-member": "off",
     // conflicts with oxfmt code style
     "unicorn/no-nested-ternary": "off",
     // conflicts with oxfmt code style
@@ -265,6 +267,10 @@
         "typescript/prefer-ts-expect-error": "off",
         "typescript/require-array-sort-compare": "off",
         "vitest/prefer-called-once": "off",
+        "vitest/consistent-test-filename": [
+          "error",
+          { "allTestPattern": "__tests__", "pattern": ".*\\.spec\\.ts$" }
+        ],
         "unicorn/consistent-function-scoping": "off"
       }
     }

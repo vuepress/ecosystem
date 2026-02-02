@@ -54,12 +54,11 @@ export const useChangelog =
             dateStyle: 'short',
           })
 
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           return (page.value.git?.changelog ?? []).map((item) => {
-            const res: GitChangelogItem = {
-              date: formatter.format(item.time),
-              ...item,
-            }
+            const res: GitChangelogItem = Object.assign(
+              { date: formatter.format(item.time) },
+              item,
+            )
 
             if (pattern.issue && repo) {
               res.message = res.message.replace(

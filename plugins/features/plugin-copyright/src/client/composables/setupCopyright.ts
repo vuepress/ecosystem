@@ -114,13 +114,13 @@ export const setupCopyright = (
           const copyright = getCopyright()
           const node = document.createElement('div')
 
-          node.appendChild(selection.getRangeAt(0).cloneContents())
+          node.append(selection.getRangeAt(0).cloneContents())
 
           if (event.clipboardData) {
             event.clipboardData.setData(
               'text/html',
-              `${node.innerHTML}<hr><div class="copyright">${copyright.replace(
-                /\\n/g,
+              `${node.innerHTML}<hr><div class="copyright">${copyright.replaceAll(
+                '\\n',
                 '<br>',
               )}</div>`,
             )

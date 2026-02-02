@@ -94,7 +94,7 @@ export const VPIcon = defineComponent({
         if (sizing !== 'width') attrsObject.height = props.size || '1em'
       }
 
-      if (keys(styleObject).length) attrsObject.style = styleObject
+      if (keys(styleObject).length > 0) attrsObject.style = styleObject
 
       return attrsObject
     })

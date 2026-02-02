@@ -2,13 +2,18 @@
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "extends": ["./.oxlintrc.base.json"],
   "ignorePatterns": ["coverage/", "packages/*/*/lib/", "template/"],
-  "plugins": ["typescript", "oxc", "jsdoc", "import", "promise", "unicorn"],
+  // disable jsdoc currently
+  "plugins": ["typescript", "oxc", "import", "promise", "unicorn"],
   "rules": {
     // object assign can be performant
     "prefer-object-spread": "off",
 
+    // we only use this when necessary
+    "typescript/no-non-null-assertion": "off",
     // this can introduce false positives, as though type is required, users might not provide such
     "typescript/prefer-nullish-coalescing": "off",
+    // we often check other types
+    "typescript/strict-boolean-expressions": "off",
 
     // disabled due to performance consideration
     "unicorn/prefer-code-point": "off"
@@ -25,7 +30,7 @@
       }
     },
     {
-      "files": ["src/node/**/*.ts"],
+      "files": ["**/src/node/**/*.ts"],
       "plugins": ["node"],
       "rules": {
         "no-restricted-imports": [
@@ -36,7 +41,7 @@
       }
     },
     {
-      "files": ["src/client/**/*.{ts,vue}"],
+      "files": ["**/src/client/**/*.{ts,vue}"],
       "plugins": ["vue"],
       "rules": {
         "no-restricted-imports": [
@@ -73,10 +78,21 @@
       }
     },
     {
-      "files": ["declare.ts"],
+      "files": ["**/src/client/components/**/*.{ts,vue}"],
+      "plugins": ["vue"],
+      "rules": {
+        // loose max lines for components setup blocks
+        "max-lines-per-function": [
+          "warn",
+          { "max": 200, "skipBlankLines": true, "skipComments": true }
+        ]
+      }
+    },
+    {
+      "files": ["**/declare.ts"],
       "rules": {
         // export {} are needed to become a module
-        "unicorn/require-module-specifiers": "error"
+        "unicorn/require-module-specifiers": "off"
       }
     }
   ]

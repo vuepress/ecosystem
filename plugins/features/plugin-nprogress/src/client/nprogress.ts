@@ -47,7 +47,7 @@ const queue = (() => {
 const camelCase = (content: string): string =>
   content
     .replace(/^-ms-/, 'ms-')
-    .replace(/-([\da-z])/gi, (_, letter: string) => letter.toUpperCase())
+    .replaceAll(/-([\da-z])/gi, (_, letter: string) => letter.toUpperCase())
 
 const addStyle = (() => {
   const cssPrefixes = ['Webkit', 'O', 'Moz', 'ms']
@@ -74,7 +74,6 @@ const addStyle = (() => {
   const getStyleProp = (name: string): string => {
     const finalizedName = camelCase(name)
 
-    // eslint-disable-next-line no-return-assign
     return (cssProps[finalizedName] ??= getVendorProp(finalizedName))
   }
 
@@ -143,7 +142,7 @@ const SETTINGS: NProgressSettings = {
 export const nprogress: NProgress = {
   percent: null,
 
-  isRendered: () => Boolean(document.getElementById('nprogress')),
+  isRendered: () => Boolean(document.querySelector('#nprogress')),
 
   set: (progress) => {
     const { speed, easing } = SETTINGS
@@ -243,7 +242,7 @@ export const nprogress: NProgress = {
 
   render: (fromStart) => {
     if (nprogress.isRendered()) {
-      return document.getElementById('nprogress') as HTMLDivElement
+      return document.querySelector<HTMLDivElement>('#nprogress')!
     }
 
     addClass(document.documentElement, 'nprogress-busy')
@@ -270,7 +269,7 @@ export const nprogress: NProgress = {
         addClass(parentElement, 'nprogress-custom-parent')
       }
 
-      parentElement.appendChild(nprogressElement)
+      parentElement.append(nprogressElement)
     }
 
     return nprogressElement
@@ -282,6 +281,6 @@ export const nprogress: NProgress = {
       document.querySelector(SETTINGS.parent)!,
       'nprogress-custom-parent',
     )
-    removeElement(document.getElementById('nprogress'))
+    removeElement(document.querySelector('#nprogress'))
   },
 }

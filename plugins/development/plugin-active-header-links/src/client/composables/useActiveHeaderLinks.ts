@@ -17,6 +17,7 @@ const updateHash = async (router: Router, hash: string): Promise<void> => {
   const { scrollBehavior } = router.options
 
   // temporarily disable `scrollBehavior`
+  // oxlint-disable-next-line no-undefined
   router.options.scrollBehavior = undefined
   await router.replace({ path, query, hash })
   // restore it after navigation
@@ -62,13 +63,13 @@ export const useActiveHeaderLinks = ({
     const isAtPageBottom = Math.abs(scrollHeight - scrollBottom) < offset
 
     // get all header links
-    const headerLinks: HTMLAnchorElement[] = Array.from(
-      document.querySelectorAll(headerLinkSelector),
-    )
+    const headerLinks = [
+      ...document.querySelectorAll<HTMLAnchorElement>(headerLinkSelector),
+    ]
     // get all header anchors
-    const headerAnchors: HTMLAnchorElement[] = Array.from(
-      document.querySelectorAll(headerAnchorSelector),
-    )
+    const headerAnchors = [
+      ...document.querySelectorAll<HTMLAnchorElement>(headerAnchorSelector),
+    ]
     // filter anchors that do not have corresponding links
     const existedHeaderAnchors = headerAnchors.filter((anchor) =>
       headerLinks.some((link) => link.hash === anchor.hash),

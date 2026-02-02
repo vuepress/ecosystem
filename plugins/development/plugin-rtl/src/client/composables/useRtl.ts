@@ -42,7 +42,7 @@ export const useRtl = (
       if (element)
         entries(attrs).forEach(([attr, value]) => {
           if (attr === 'class') {
-            element.classList[isRTL ? 'add' : 'remove'](value)
+            element.classList.toggle(value, isRTL)
           } else if (isRTL) {
             element.setAttribute(attr, value)
           } else {

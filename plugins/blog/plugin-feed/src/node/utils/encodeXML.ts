@@ -5,15 +5,15 @@ import type { ElementCompact } from 'xml-js'
  * @see https://stackoverflow.com/questions/223652/is-there-a-way-to-escape-a-cdata-end-token-in-xml
  */
 export const encodeCDATA = (content: string): string =>
-  content.replace(/]]>/g, ']]]]><![CDATA[>')
+  content.replaceAll(']]>', ']]]]><![CDATA[>')
 
 export const encodeXMLContent = (content: string): string =>
   content
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&apos;')
 
 export const encodeXML = (content: ElementCompact): ElementCompact =>
   fromEntries(
@@ -25,6 +25,7 @@ export const encodeXML = (content: ElementCompact): ElementCompact =>
             entries(value as Record<string, number | string | undefined>).map(
               ([attr, attrValue]) => [
                 attr,
+                // oxlint-disable-next-line no-undefined
                 attrValue ? encodeXMLContent(attrValue.toString()) : undefined,
               ],
             ),

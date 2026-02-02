@@ -10,7 +10,6 @@ export const readFile = async <T = unknown>(
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
 export const readFileSync = <T = unknown>(filepath: string): T | null => {
   try {
     return fs.readJSONSync(filepath, 'utf8') as T

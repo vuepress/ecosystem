@@ -135,7 +135,6 @@ export const createTwoslashTransformer = async (
 
         // Disable v-pre for twoslash, because we need render it with FloatingVue
         if (
-          // oxlint-disable-next-line typescript/strict-boolean-expressions
           !explicitTrigger ||
           preprocessOptions.meta?.__raw?.match(triggerRegExp)
         ) {
@@ -147,7 +146,6 @@ export const createTwoslashTransformer = async (
         }
       }
 
-      // oxlint-disable-next-line typescript/no-non-null-assertion
       return twoslashTransformer.preprocess!.call(this, code, preprocessOptions)
     },
 

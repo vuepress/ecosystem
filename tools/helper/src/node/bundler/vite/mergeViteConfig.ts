@@ -85,8 +85,8 @@ const normalizeSingleAlias = ({
   customResolver,
 }: Alias): Alias => {
   if (isString(find) && endsWith(find, '/') && endsWith(replacement, '/')) {
-    find = find.slice(0, find.length - 1)
-    replacement = replacement.slice(0, replacement.length - 1)
+    find = find.slice(0, -1)
+    replacement = replacement.slice(0, -1)
   }
 
   const alias: Alias = {
@@ -133,13 +133,14 @@ const backwardCompatibleWorkerPlugins = (plugins: any): any[] => {
   }
 
   if (typeof plugins === 'function') {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    // oxlint-disable-next-line typescript/no-unsafe-call
     return plugins() as any[]
   }
 
   return []
 }
 
+// oxlint-disable-next-line complexity
 const mergeConfigRecursively = (
   { ...merged }: Record<string, any>,
   overrides: Record<string, any>,
@@ -174,8 +175,8 @@ const mergeConfigRecursively = (
       merged[key] = true
       continue
     } else if (key === 'plugins' && rootPath === 'worker') {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-      merged[key] = () => [
+      // oxlint-disable-next-line typescript/no-unsafe-return
+      merged[key] = (): any[] => [
         ...backwardCompatibleWorkerPlugins(existing),
         ...backwardCompatibleWorkerPlugins(value),
       ]

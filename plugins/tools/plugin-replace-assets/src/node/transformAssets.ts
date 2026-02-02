@@ -49,7 +49,6 @@ export const replacementAssetWithRules = (
       }
     }
   }
-  return undefined
 }
 
 export const transformAssets = (
@@ -60,7 +59,7 @@ export const transformAssets = (
   const s = new MagicString(code)
   let matched: RegExpExecArray | null
   let hasMatched = false
-  // eslint-disable-next-line no-cond-assign
+
   while ((matched = pattern.exec(code))) {
     const assetUrl =
       matched[6] ||

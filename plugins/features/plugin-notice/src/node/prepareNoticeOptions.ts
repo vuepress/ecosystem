@@ -23,7 +23,7 @@ if (import.meta.hot) {
 
 const readFile = async (filepath: string): Promise<string> => {
   try {
-    const content = await fs.readFile(filepath, 'utf-8')
+    const content = await fs.readFile(filepath, 'utf8')
     return content
   } catch {
     return ''
@@ -43,7 +43,6 @@ const resolveNoticeItem = async (
     contentFile = path.resolve(contentFile)
 
     if (noticeCache.has(contentFile)) {
-      // oxlint-disable-next-line typescript/no-non-null-assertion
       return noticeCache.get(contentFile)!
     }
 

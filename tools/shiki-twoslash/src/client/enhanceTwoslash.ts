@@ -33,7 +33,6 @@ export const enhanceTwoslash = (app: App): void => {
         const path = event.composedPath()
         if (
           path.some((el) =>
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             (el as HTMLElement)?.classList?.contains('vp-code-tab'),
           )
         )

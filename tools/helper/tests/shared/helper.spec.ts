@@ -64,7 +64,6 @@ test
 })
 
 it('isRegExp', () => {
-  // eslint-disable-next-line prefer-regex-literals
   expect(isRegExp(new RegExp('abc'))).toBeTruthy()
   expect(isRegExp(/\.html$/)).toBeTruthy()
   expect(isRegExp(console)).toBeFalsy()

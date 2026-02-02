@@ -37,9 +37,7 @@ export const getJSONFeed = (feedStore: FeedStore): string => {
       : channel.author
         ? [channel.author]
         : []
-  )
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    .filter((author) => author?.name)
+  ).filter((author) => author?.name)
 
   if (channelAuthors.length > 0)
     content.authors = channelAuthors.map((author) => getJSONAuthor(author))

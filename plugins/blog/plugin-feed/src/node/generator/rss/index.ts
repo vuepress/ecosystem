@@ -56,6 +56,8 @@ export const getRssFeed = (feedStore: FeedStore): string => {
   let hasContent = false as boolean
 
   const content: RSSContent = {
+    // Only utf-8 is supported in XML encodings
+    // oxlint-disable-next-line unicorn/text-encoding-identifier-case
     _declaration: { _attributes: { version: '1.0', encoding: 'utf-8' } },
     _instruction: {
       'xml-stylesheet': `type="text/xsl" href="${links.rssXsl}"`,
@@ -115,7 +117,8 @@ export const getRssFeed = (feedStore: FeedStore): string => {
    *
    * @see https://validator.w3.org/feed/docs/rss2.html#comments
    */
-  content.rss.channel.category = Array.from(feedStore.categories).map(
+  content.rss.channel.category = Array.from(
+    feedStore.categories,
     (category) => ({ _text: category }),
   )
 

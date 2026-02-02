@@ -5,14 +5,14 @@ import type { MergedRawCommit, RawCommit } from '../typings.js'
 import { logger } from './logger.js'
 
 const INFO_SPLITTER = '[|]'
-const COMMIT_SPLITTER = '\\|/'
+const COMMIT_SPLITTER = String.raw`\|/`
 const RE_CO_AUTHOR = /^ *Co-authored-by: ?([^<]*)<([^>]*)> */gim
 
 const getCoAuthorsFromCommitBody = (
   body: string,
 ): Pick<GitContributorInfo, 'email' | 'name'>[] =>
   body
-    ? Array.from(body.matchAll(RE_CO_AUTHOR)).map(([, name, email]) => ({
+    ? Array.from(body.matchAll(RE_CO_AUTHOR), ([, name, email]) => ({
         name: name.trim(),
         email: email.trim(),
       }))
@@ -127,8 +127,8 @@ export const getRawCommits = async (
           coAuthors: getCoAuthorsFromCommitBody(body),
         }
       })
-  } catch (error) {
-    logger.error(`Failed to get commits for ${filepath} in ${cwd}:`, error)
+  } catch (err) {
+    logger.error(`Failed to get commits for ${filepath} in ${cwd}:`, err)
 
     return []
   }
@@ -153,8 +153,7 @@ export const mergeRawCommits = (commits: RawCommit[]): MergedRawCommit[] => {
     else commitMap.set(commit.hash, { ...commit, filepaths: [filepath] })
   })
 
-  const result = Array.from(commitMap.values())
-  return result
+  return [...commitMap.values()]
 }
 
 /**

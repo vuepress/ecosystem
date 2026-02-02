@@ -187,7 +187,7 @@ export const useCopyCode = ({
     let text = clone.textContent || ''
 
     if (SHELL_RE.test(codeContainer.className))
-      text = text.replace(/^ *(\$|>) /gm, '')
+      text = text.replaceAll(/^ *(\$|>) /gm, '')
 
     await copy(text)
 
