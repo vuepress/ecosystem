@@ -32,6 +32,10 @@ export const FileTreeNode = defineComponent({
       type: String as PropType<'add' | 'remove'>,
       default: undefined,
     },
+    empty: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   slots: Object as SlotsType<{
@@ -73,7 +77,11 @@ export const FileTreeNode = defineComponent({
           },
           [
             isOmit.value ? null : h('span', { class: `icon-${props.type}` }),
-            h('span', { class: ['name', props.type] }, props.filename),
+            h(
+              'span',
+              { class: ['name', props.type, isOmit.value ? 'omit' : ''] },
+              props.filename,
+            ),
             slots.comment
               ? h('span', { class: 'comment' }, slots.comment())
               : null,
@@ -83,7 +91,7 @@ export const FileTreeNode = defineComponent({
           ? h(
               'div',
               {
-                class: 'group',
+                class: { group: true, empty: props.empty },
                 style: { display: active.value ? 'block' : 'none' },
               },
               slots.default(),
