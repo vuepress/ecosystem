@@ -32,7 +32,7 @@ export const useGoogleAnalytics = (
   const gtagScript = document.createElement('script')
   gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${options.id}`
   gtagScript.async = true
-  document.head.appendChild(gtagScript)
+  document.head.append(gtagScript)
 
   // insert gtag snippet
   window.dataLayer = window.dataLayer ?? []

@@ -13,6 +13,6 @@ export const preconnectToAlgolia = (appId: string): void => {
     preconnect.rel = 'preconnect'
     preconnect.href = `https://${appId}-dsn.algolia.net`
     preconnect.crossOrigin = ''
-    document.head.appendChild(preconnect)
+    document.head.append(preconnect)
   })
 }

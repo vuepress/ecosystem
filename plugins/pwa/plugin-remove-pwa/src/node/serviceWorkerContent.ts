@@ -49,6 +49,6 @@ self.addEventListener('activate', async (event) => {
   await fs.writeFile(
     app.dir.dest(removeLeadingSlash(swLocation)),
     serviceWorkerContent,
-    'utf-8',
+    'utf8',
   )
 }

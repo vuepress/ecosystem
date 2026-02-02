@@ -38,5 +38,5 @@ export const useUmamiAnalytics = ({
   if (domains) script.setAttribute('data-domains', domains.join(','))
   if (hostUrl) script.setAttribute('data-hostUrl', hostUrl)
 
-  document.head.appendChild(script)
+  document.head.append(script)
 }

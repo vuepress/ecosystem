@@ -21,9 +21,7 @@ export const tagRegex = (
   tag: RegExp | string,
   type: 'closed' | 'open',
   flags?: string,
-): RegExp => {
-  return new RegExp(`<${type === 'open' ? '' : '/'}${tag}>`, flags)
-}
+): RegExp => new RegExp(`<${type === 'open' ? '' : '/'}${tag}>`, flags)
 
 /**
  * Generates a regular expression that matches a complete custom tag, including its content.

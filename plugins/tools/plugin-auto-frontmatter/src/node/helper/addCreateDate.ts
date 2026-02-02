@@ -56,7 +56,7 @@ const getGitCreateDate = (filepath: string): Date | undefined => {
       `git -no-pager log --follow --diff-filter=A --format=%at ${path.relative(cwd, filepath)}`,
       {
         cwd,
-        encoding: 'utf-8',
+        encoding: 'utf8',
         timeout: 5000,
         stdio: ['pipe', 'pipe', 'ignore'],
       },

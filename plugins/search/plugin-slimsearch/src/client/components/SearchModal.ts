@@ -48,7 +48,13 @@ const SearchResult = defineAsyncComponent({
   },
 })
 
-const SUGGESTIONS_KEYCODE = ['ArrowDown', 'ArrowUp', 'Escape', 'Tab', 'Enter']
+const SUGGESTIONS_KEYCODE = new Set([
+  'ArrowDown',
+  'ArrowUp',
+  'Escape',
+  'Tab',
+  'Enter',
+])
 
 export default defineComponent({
   name: 'SearchModal',
@@ -178,7 +184,7 @@ export default defineComponent({
                       if (
                         hasSuggestions.value &&
                         // These keys are handled by the suggestion list
-                        SUGGESTIONS_KEYCODE.includes(event.key)
+                        SUGGESTIONS_KEYCODE.has(event.key)
                       ) {
                         event.preventDefault()
                       }

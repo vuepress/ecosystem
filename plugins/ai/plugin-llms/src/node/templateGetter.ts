@@ -64,7 +64,7 @@ export const defaultAlternateLinksGetter: TemplateGetter = (_pages, state) => {
     })
     .filter((item) => item !== null)
 
-  return alternateLLMTxtLinks.length
+  return alternateLLMTxtLinks.length > 0
     ? `\n\n## Alternate Language Versions\n\n${alternateLLMTxtLinks.join('\n')}\n\n`
     : ''
 }

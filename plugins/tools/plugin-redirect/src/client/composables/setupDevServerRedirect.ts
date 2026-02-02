@@ -45,7 +45,7 @@ export const setupDevServerRedirect = ({
     let matchedLocalePath: string | null = null
 
     // get matched locale
-    // eslint-disable-next-line no-restricted-syntax
+    // oxlint-disable-next-line no-labels
     findLanguage: for (const lang of languages.value)
       for (const [localePath, langs] of localeEntries)
         if (langs.includes(lang)) {
@@ -58,6 +58,7 @@ export const setupDevServerRedirect = ({
             continue
 
           matchedLocalePath = localePath
+          // oxlint-disable-next-line no-labels
           break findLanguage
         }
 

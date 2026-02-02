@@ -13,12 +13,12 @@ const TEMPLATE_FOLDER = ensureEndingSlash(
 
 const DEFAULT_ATOM_XML_TEMPLATE = fs.readFileSync(
   `${TEMPLATE_FOLDER}atom.xsl`,
-  'utf-8',
+  'utf8',
 )
 
 const DEFAULT_RSS_XML_TEMPLATE = fs.readFileSync(
   `${TEMPLATE_FOLDER}rss.xsl`,
-  'utf-8',
+  'utf8',
 )
 
 export const getAtomTemplates = (

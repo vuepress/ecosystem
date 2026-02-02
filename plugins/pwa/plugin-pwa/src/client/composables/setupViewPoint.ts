@@ -26,7 +26,7 @@ export const setupViewPoint = (): void => {
       viewportMeta.content =
         'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover'
 
-      document.head.appendChild(viewportMeta)
+      document.head.append(viewportMeta)
     }
   })
 }

@@ -102,7 +102,6 @@ export default defineComponent({
 
     const enableGiscus = computed(() =>
       Boolean(
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         giscusOptions.value.repo &&
         giscusOptions.value.repoId &&
         giscusOptions.value.category &&

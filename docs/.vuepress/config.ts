@@ -13,7 +13,7 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export default defineUserConfig({
   // set site base to default value
-  base: (process.env.BASE as '/' | `/${string}/` | undefined) || '/',
+  base: (process.env.BASE as '/' | `/${string}/` | undefined) ?? '/',
 
   // extra tags in `<head>`
   head,

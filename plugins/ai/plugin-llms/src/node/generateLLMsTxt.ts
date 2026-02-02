@@ -42,7 +42,7 @@ export const generateLLMsTxt = async (
   )
   const llmsTxt = expandTemplate(llmsTxtTemplate, llmsTxtTemplateData)
 
-  await fs.writeFile(app.dir.dest(llmsTxtRelativePath), llmsTxt, 'utf-8')
+  await fs.writeFile(app.dir.dest(llmsTxtRelativePath), llmsTxt, 'utf8')
 
   logger.succeed(
     expandTemplate(

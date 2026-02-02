@@ -21,7 +21,7 @@ export const getLocaleInfo = (
 ): [localePath: string, lang: string][] => {
   const localeEntries = Object.entries(app.options.locales)
 
-  if (!localeEntries.length) return [['/', app.options.lang]]
+  if (localeEntries.length === 0) return [['/', app.options.lang]]
 
   return localeEntries.map(([path, { lang }]) => {
     if (lang) return [path, lang]

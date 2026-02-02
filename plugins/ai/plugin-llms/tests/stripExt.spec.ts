@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { stripExt } from '../src/node/utils/stripExt.js'
 
-describe('stripExt', () => {
+describe(stripExt, () => {
   it('should strip the extension from a file path', () => {
     const filepath = '/path/to/file.txt'
     const expected = '/path/to/file'

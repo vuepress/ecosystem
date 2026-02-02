@@ -15,71 +15,71 @@ import {
 } from '../../src/shared/helper.js'
 
 it('isDef', () => {
-  expect(isDef(true)).toBe(true)
-  expect(isDef(false)).toBe(true)
-  expect(isDef(0)).toBe(true)
-  expect(isDef(1)).toBe(true)
-  expect(isDef('')).toBe(true)
-  expect(isDef('abc')).toBe(true)
-  expect(isDef([])).toBe(true)
-  expect(isDef({})).toBe(true)
-  expect(isDef(null)).toBe(true)
-  expect(isDef(undefined)).toBe(false)
-  // eslint-disable-next-line no-void
-  expect(isDef(void 0)).toBe(false)
+  expect(isDef(true)).toBeTruthy()
+  expect(isDef(false)).toBeTruthy()
+  expect(isDef(0)).toBeTruthy()
+  expect(isDef(1)).toBeTruthy()
+  expect(isDef('')).toBeTruthy()
+  expect(isDef('abc')).toBeTruthy()
+  expect(isDef([])).toBeTruthy()
+  expect(isDef({})).toBeTruthy()
+  expect(isDef(null)).toBeTruthy()
+  // oxlint-disable-next-line unicorn/no-useless-undefined
+  expect(isDef(undefined)).toBeFalsy()
+  expect(isDef(void 0)).toBeFalsy()
 })
 
 it('isBoolean', () => {
-  expect(isBoolean(true)).toBe(true)
-  expect(isBoolean(false)).toBe(true)
-  expect(isBoolean(1)).toBe(false)
-  expect(isBoolean('abc')).toBe(false)
+  expect(isBoolean(true)).toBeTruthy()
+  expect(isBoolean(false)).toBeTruthy()
+  expect(isBoolean(1)).toBeFalsy()
+  expect(isBoolean('abc')).toBeFalsy()
 })
 
 it('isFunction', () => {
-  expect(isFunction(isBoolean)).toBe(true)
-  expect(isFunction(console.log)).toBe(true)
-  expect(isFunction(1)).toBe(false)
-  expect(isFunction('abc')).toBe(false)
+  expect(isFunction(isBoolean)).toBeTruthy()
+  expect(isFunction(console.log)).toBeTruthy()
+  expect(isFunction(1)).toBeFalsy()
+  expect(isFunction('abc')).toBeFalsy()
 })
 
 it('isNumber', () => {
-  expect(isNumber(1)).toBe(true)
-  expect(isNumber(1.3)).toBe(true)
-  expect(isNumber(0xac1)).toBe(true)
-  expect(isNumber(false)).toBe(false)
-  expect(isNumber('abc')).toBe(false)
+  expect(isNumber(1)).toBeTruthy()
+  expect(isNumber(1.3)).toBeTruthy()
+  expect(isNumber(0xac1)).toBeTruthy()
+  expect(isNumber(false)).toBeFalsy()
+  expect(isNumber('abc')).toBeFalsy()
 })
 
 it('isString', () => {
-  expect(isString('abc')).toBe(true)
+  expect(isString('abc')).toBeTruthy()
   expect(
     isString(`\
 test
 `),
-  ).toBe(true)
-  expect(isString(console)).toBe(false)
-  expect(isString(false)).toBe(false)
-  expect(isString(3)).toBe(false)
+  ).toBeTruthy()
+  expect(isString(console)).toBeFalsy()
+  expect(isString(false)).toBeFalsy()
+  expect(isString(3)).toBeFalsy()
 })
 
 it('isRegExp', () => {
   // eslint-disable-next-line prefer-regex-literals
-  expect(isRegExp(new RegExp('abc'))).toBe(true)
-  expect(isRegExp(/\.html$/)).toBe(true)
-  expect(isRegExp(console)).toBe(false)
-  expect(isRegExp(false)).toBe(false)
-  expect(isRegExp(3)).toBe(false)
+  expect(isRegExp(new RegExp('abc'))).toBeTruthy()
+  expect(isRegExp(/\.html$/)).toBeTruthy()
+  expect(isRegExp(console)).toBeFalsy()
+  expect(isRegExp(false)).toBeFalsy()
+  expect(isRegExp(3)).toBeFalsy()
 })
 
 it('startsWith', () => {
-  expect(startsWith('abc', 'a')).toBe(true)
-  expect(startsWith('abc', 'b')).toBe(false)
+  expect(startsWith('abc', 'a')).toBeTruthy()
+  expect(startsWith('abc', 'b')).toBeFalsy()
 })
 
 it('endsWith', () => {
-  expect(endsWith('abc', 'c')).toBe(true)
-  expect(endsWith('abc', 'b')).toBe(false)
+  expect(endsWith('abc', 'c')).toBeTruthy()
+  expect(endsWith('abc', 'b')).toBeFalsy()
 })
 
 it('entries', () => {

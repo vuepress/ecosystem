@@ -57,7 +57,7 @@ export class Logger {
   public info(text = '', ...args: unknown[]): void {
     this.init(colors.blue(text)).info()
 
-    if (args.length) console.info(...args)
+    if (args.length > 0) console.info(...args)
   }
 
   /**
@@ -71,7 +71,7 @@ export class Logger {
   public succeed(text = '', ...args: unknown[]): void {
     this.init(colors.green(text)).succeed()
 
-    if (args.length) console.log(...args)
+    if (args.length > 0) console.log(...args)
   }
 
   /**
@@ -85,7 +85,7 @@ export class Logger {
   public warn(text = '', ...args: unknown[]): void {
     this.init(colors.yellow(text)).warn()
 
-    if (args.length) console.warn(...args)
+    if (args.length > 0) console.warn(...args)
   }
 
   /**
@@ -99,6 +99,6 @@ export class Logger {
   public error(text = '', ...args: unknown[]): void {
     this.init(colors.red(text)).fail()
 
-    if (args.length) console.error(...args)
+    if (args.length > 0) console.error(...args)
   }
 }

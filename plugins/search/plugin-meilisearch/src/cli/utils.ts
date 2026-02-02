@@ -16,9 +16,9 @@ export const getGitRelativePath = (cwd = process.cwd()): string => {
       cwd,
       encoding: 'utf8',
     })
-  } catch (spawnError) {
+  } catch (err) {
     throw new Error(
-      `Failed to spawn 'git' process: ${(spawnError as Error).message}`,
+      `Failed to spawn 'git' process: ${(err as Error).message}`, { cause: spawnError },
     )
   }
 
@@ -59,9 +59,9 @@ export const getWorkspaceStatus = (cwd = process.cwd()): string => {
       cwd,
       encoding: 'utf8',
     })
-  } catch (spawnError) {
+  } catch (err) {
     throw new Error(
-      `Failed to spawn 'git' process: ${(spawnError as Error).message}`,
+      `Failed to spawn 'git' process: ${(err as Error).message}`, { cause: spawnError },
     )
   }
 
@@ -87,11 +87,11 @@ export const getChangedFilesByDiff = (cwd = process.cwd()): string[] => {
   try {
     gitProcess = spawnSync('git', ['diff', 'HEAD~1', 'HEAD', '--name-only'], {
       cwd,
-      encoding: 'utf-8',
+      encoding: 'utf8',
     })
-  } catch (spawnError) {
+  } catch (err) {
     throw new Error(
-      `Failed to spawn 'git' process: ${(spawnError as Error).message}`,
+      `Failed to spawn 'git' process: ${(err as Error).message}`, { cause: spawnError },
     )
   }
 
@@ -136,8 +136,8 @@ export const parseGitStatus = (status: string): string[] => {
     const filePath =
       // For renamed files, get the new path (after "->")
       statusX === 'R' || statusX === 'C'
-        ? line.substring(3).split(' -> ')[1]
-        : line.substring(3)
+        ? line.slice(3).split(' -> ')[1]
+        : line.slice(3)
 
     changedFiles.push(filePath)
   })

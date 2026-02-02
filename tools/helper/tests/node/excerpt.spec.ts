@@ -6,7 +6,7 @@ import type { PageExcerptOptions } from '../../src/node/page/excerpt.js'
 import { getPageExcerpt } from '../../src/node/page/excerpt.js'
 import { emptyTheme } from '../__fixtures__/theme/empty.js'
 
-describe('getPageExcerpt', async () => {
+describe(getPageExcerpt, async () => {
   const app = createBuildApp({
     bundler: {} as Bundler,
     source: path.resolve(__dirname, '../__fixtures__/src'),

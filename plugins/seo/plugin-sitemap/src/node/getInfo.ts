@@ -103,7 +103,6 @@ export const getSitemapInfos = (
           })
 
         links = relatedLocales.map((localePrefix) => ({
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           lang: locales[localePrefix]?.lang ?? 'en',
           url: `${base}${removeLeadingSlash(localePrefix)}${rootPath.slice(1)}`,
         }))

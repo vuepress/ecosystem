@@ -122,7 +122,7 @@ export const generateScraperConfig = async (
     throw new Error(`Scraper file not found at ${scraperPath}`)
   }
 
-  const scraperConfig = fs.readJSONSync(scraperPath, 'utf-8') as ScraperConfig
+  const scraperConfig = fs.readJSONSync(scraperPath, 'utf8') as ScraperConfig
 
   if (shouldRescrape()) {
     logger.info('A full rescrape is needed, removing only_urls...')
@@ -140,7 +140,7 @@ export const generateScraperConfig = async (
       (line) => line.startsWith(sourceRelativePath) && line.endsWith('.md'),
     )
 
-    .map((line) => line.substring(sourceRelativePath.length + 1))
+    .map((line) => line.slice(sourceRelativePath.length + 1))
 
   if (changedMarkdownFilesPathRelative.length === 0) {
     logger.info('No changed files found.')

@@ -67,7 +67,7 @@ const enableExternalLinkIcon = computed(
 const containerClass = computed(() => [
   {
     'no-navbar': !shouldShowNavbar.value,
-    'no-sidebar': !sidebarItems.value.length,
+    'no-sidebar': sidebarItems.value.length === 0,
     'sidebar-open': isSidebarOpen.value,
     'external-link-icon': enableExternalLinkIcon.value,
   },

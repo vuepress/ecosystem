@@ -22,7 +22,6 @@ export const useLocaleConfig = <T extends LocaleData>(
     const config = toValue(localesConfig)
 
     return (
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       config[routeLocale.value] ??
       // fallback to root locale config
       config['/'] ??

@@ -275,7 +275,6 @@ export class FeedItem {
     if (isString(this.frontmatter.copyright)) return this.frontmatter.copyright
     const firstAuthor = this.author[0]
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (firstAuthor?.name) return `Copyright by ${firstAuthor.name}`
 
     return null

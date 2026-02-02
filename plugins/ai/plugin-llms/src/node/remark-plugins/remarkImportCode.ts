@@ -56,39 +56,36 @@ const parseLineNumber = (line: string | undefined): number | undefined =>
  *
  * `@[code{lineStart-lineEnd} info}](filepath)`
  */
-export const remarkImportCode = (
-  cwd: string,
-  { handleImportPath = (str) => str }: ImportCodePluginOptions,
-) => {
-  return () =>
-    (tree: Root): void => {
-      visit(tree, (node, index, parent) => {
-        if (!parent || typeof index !== 'number') return
+export const remarkImportCode =
+  (cwd: string, { handleImportPath = (str) => str }: ImportCodePluginOptions) =>
+  () =>
+  (tree: Root): void => {
+    visit(tree, (node, index, parent) => {
+      if (!parent || typeof index !== 'number') return
 
-        if (node.type === 'text' && node.value.trim().startsWith('@[code')) {
-          const content = node.value.trim()
-          // @[code]()
-          if (content.length <= 9) return
+      if (node.type === 'text' && node.value.trim().startsWith('@[code')) {
+        const content = node.value.trim()
+        // @[code]()
+        if (content.length <= 9) return
 
-          const matched = content.match(SYNTAX_RE)
-          if (!matched?.groups) return
+        const matched = content.match(SYNTAX_RE)
+        if (!matched?.groups) return
 
-          const lineSingle = parseLineNumber(matched.groups.lineSingle)
-          const importPath = handleImportPath(matched.groups.importPath)
-          const info = matched.groups.info || path.extname(importPath).slice(1)
-          const lang = info.match(/^([^ :[{]+)/)?.[1] || ''
+        const lineSingle = parseLineNumber(matched.groups.lineSingle)
+        const importPath = handleImportPath(matched.groups.importPath)
+        const info = matched.groups.info || path.extname(importPath).slice(1)
+        const lang = info.match(/^([^ :[{]+)/)?.[1] || ''
 
-          const options: ImportCodeInfo = {
-            lineStart:
-              lineSingle ?? parseLineNumber(matched.groups.lineStart) ?? 0,
-            lineEnd: lineSingle ?? parseLineNumber(matched.groups.lineEnd),
-            importPath,
-            lang: lang.toLowerCase(),
-            meta: info.slice(lang.length).trim(),
-          }
-
-          parent.children.splice(index, 1, resolveImportCode(cwd, options))
+        const options: ImportCodeInfo = {
+          lineStart:
+            lineSingle ?? parseLineNumber(matched.groups.lineStart) ?? 0,
+          lineEnd: lineSingle ?? parseLineNumber(matched.groups.lineEnd),
+          importPath,
+          lang: lang.toLowerCase(),
+          meta: info.slice(lang.length).trim(),
         }
-      })
-    }
-}
+
+        parent.children.splice(index, 1, resolveImportCode(cwd, options))
+      }
+    })
+  }

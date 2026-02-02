@@ -45,8 +45,8 @@ export const getCategory = (
         : isString(itemPathOptions)
           ? (name: string): string =>
               itemPathOptions
-                .replace(/:key/g, slugify(key))
-                .replace(/:name/g, slugify(name))
+                .replaceAll(':key', slugify(key))
+                .replaceAll(':name', slugify(name))
           : (): null => null
 
       const categoryMap: CategoryMap = {}
@@ -55,7 +55,7 @@ export const getCategory = (
       for (const localePath in pagesMap) {
         if (path) {
           const pagePath = `${localePath}${removeLeadingSlash(
-            path.replace(/:key/g, slugify(key)),
+            path.replaceAll(':key', slugify(key)),
           )}`
 
           pageOptions.push({
@@ -159,6 +159,6 @@ export const getCategory = (
     categoriesMap: fromEntries(
       result.map(({ key, categoryMap }) => [key, categoryMap]),
     ),
-    pageOptions: result.map(({ pageOptions }) => pageOptions).flat(),
+    pageOptions: result.flatMap(({ pageOptions }) => pageOptions),
   }
 }

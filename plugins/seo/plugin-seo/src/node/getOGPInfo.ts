@@ -56,7 +56,6 @@ export const getOGPInfo = (
 
   const defaultOGP: SeoContent = {
     'og:url': getUrl(hostname, base, page.path),
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     'og:site_name': locales[page.pathLocale]?.title || siteTitle,
     'og:title': articleTitle,
     'og:description': page.frontmatter.description || '',

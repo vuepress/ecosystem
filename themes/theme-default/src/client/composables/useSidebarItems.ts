@@ -20,16 +20,24 @@ import type { SidebarHeaderItem, SidebarItem } from '../typings.js'
 
 /**
  * Util to transform page header to sidebar item
+ *
+ * @param header page header
+ * @returns sidebar item from header
  */
 export const resolveSidebarPageHeader = (
   header: PageHeader,
 ): SidebarHeaderItem => ({
   text: header.title,
   link: header.link,
-  // eslint-disable-next-line @typescript-eslint/no-use-before-define
   children: resolveSidebarPageHeaders(header.children),
 })
 
+/**
+ * get sidebar header items from page headers
+ *
+ * @param headers page headers
+ * @returns sidebar header items
+ */
 export const resolveSidebarPageHeaders = (
   headers?: PageHeader[],
 ): SidebarHeaderItem[] =>
@@ -37,6 +45,11 @@ export const resolveSidebarPageHeaders = (
 
 /**
  * Resolve current page and its header to sidebar items if the config is `heading`
+ *
+ * @param page current page data
+ * @param headers current page headers
+ *
+ * @returns sidebar items
  */
 export const resolveSidebarHeadingItem = (
   page: PageData,
@@ -50,6 +63,13 @@ export const resolveSidebarHeadingItem = (
 
 /**
  * Resolve sidebar items if the config is an array
+ *
+ * @param sidebarConfig sidebar config array
+ * @param headers current page headers
+ * @param path current page path
+ * @param prefix path prefix
+ *
+ * @returns resolved sidebar items
  */
 export const resolveArraySidebarItems = (
   sidebarConfig: SidebarArrayOptions,
@@ -102,6 +122,13 @@ export const resolveArraySidebarItems = (
 
 /**
  * Resolve sidebar items if the config is a key -> value (path-prefix -> array) object
+ *
+ * @param sidebarConfig sidebar config object
+ * @param page current page data
+ * @param headers current page headers
+ * @param path current page path
+ *
+ * @returns resolved sidebar items
  */
 export const resolveMultiSidebarItems = (
   sidebarConfig: SidebarObjectOptions,
@@ -109,18 +136,18 @@ export const resolveMultiSidebarItems = (
   headers: PageHeader[],
   path: string,
 ): SidebarItem[] => {
-  const sidebarRoutes = keys(sidebarConfig).sort((x, y) => y.length - x.length)
+  const sidebarRoutes = keys(sidebarConfig).sort((a, b) => b.length - a.length)
 
   // Find matching config
   for (const base of sidebarRoutes)
     if (startsWith(decodeURI(path), base)) {
       const matched = sidebarConfig[base]
 
-      return matched
-        ? matched === 'heading'
+      return matched === false
+        ? []
+        : matched === 'heading'
           ? resolveSidebarHeadingItem(page, headers)
           : resolveArraySidebarItems(matched, headers, path, base)
-        : []
     }
 
   // eslint-disable-next-line no-console
@@ -136,6 +163,8 @@ export const sidebarItemsSymbol: InjectionKey<SidebarItemsRef> =
 
 /**
  * Inject sidebar items global computed
+ *
+ * @returns sidebar items global computed
  */
 export const useSidebarItems = (): SidebarItemsRef => {
   const sidebarItems = inject(sidebarItemsSymbol)
@@ -149,7 +178,16 @@ export const useSidebarItems = (): SidebarItemsRef => {
  * Resolve sidebar items global computed
  *
  * It should only be resolved and provided once
+ *
+ * @param sidebarConfig sidebar config
+ * @param page current page data
+ * @param path current page path
+ * @param routeLocale current route locale
+ * @param headers current page headers
+ *
+ * @returns resolved sidebar items
  */
+// oxlint-disable-next-line max-params
 export const resolveSidebarItems = (
   sidebarConfig: SidebarOptions | false,
   page: PageData,

@@ -37,13 +37,13 @@ const resolveNoticeItem = async (
   app: App,
   notice: NoticeOptions,
 ): Promise<NoticeOptions> => {
-  // eslint-disable-next-line prefer-const
   let { contentType = 'html', contentFile, content = '', ...item } = notice
 
   if (contentFile) {
     contentFile = path.resolve(contentFile)
 
     if (noticeCache.has(contentFile)) {
+      // oxlint-disable-next-line typescript/no-non-null-assertion
       return noticeCache.get(contentFile)!
     }
 

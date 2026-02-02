@@ -22,7 +22,7 @@ const getMarkdownInfo = async (
   context: AutoFrontmatterContext
 }> => {
   const filepath = path.join(cwd, relativePath)
-  const raw = await fs.promises.readFile(filepath, 'utf-8')
+  const raw = await fs.promises.readFile(filepath, 'utf8')
   const { data, content } = matter(raw)
   return {
     data,
@@ -76,10 +76,10 @@ export const generateFileFrontmatter = async (
     await fs.promises.writeFile(
       context.filepath,
       formatted ? `---\n${formatted}---\n${context.content}` : context.content,
-      'utf-8',
+      'utf8',
     )
-  } catch (e) {
-    logger.error(`Failed to generate frontmatter for ${filepath}`, e)
+  } catch (err) {
+    logger.error(`Failed to generate frontmatter for ${filepath}`, err)
   }
 }
 

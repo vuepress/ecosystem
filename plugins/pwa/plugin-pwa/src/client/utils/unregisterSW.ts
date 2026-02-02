@@ -19,10 +19,10 @@ export const unregisterSW = (): Promise<boolean> =>
 
       return false
     })
-    .catch((error: unknown) => {
+    .catch((err: unknown) => {
       console.error(
         '[PWA] Unregister current service worker failed with error:',
-        error,
+        err,
       )
 
       return false

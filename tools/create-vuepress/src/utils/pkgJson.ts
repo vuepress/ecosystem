@@ -9,7 +9,7 @@ interface PackageJson extends Record<string, unknown> {
 const packageJSON = JSON.parse(
   readFileSync(
     fileURLToPath(import.meta.resolve('create-vuepress/package.json')),
-    'utf-8',
+    'utf8',
   ),
 ) as PackageJson
 

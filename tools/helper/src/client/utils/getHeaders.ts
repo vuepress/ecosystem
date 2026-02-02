@@ -1,9 +1,10 @@
 import type { PageHeader } from 'vuepress/shared'
 import type { GetHeadersOptions, HeaderLevels } from '../../shared/index.js'
 
-const DEFAULT_HEADER_SELECTOR = [...new Array<undefined>(6)]
-  .map((_, i) => `[vp-content] h${i + 1}`)
-  .join(',')
+const DEFAULT_HEADER_SELECTOR = Array.from(
+  { length: 6 },
+  (_, i) => `[vp-content] h${i + 1}`,
+).join(',')
 
 export type HeaderItem = Omit<PageHeader, 'children'> & {
   element: HTMLHeadingElement
@@ -30,7 +31,7 @@ export const resolveHeaders = (
 
   const result: HeaderItem[] = []
 
-  // eslint-disable-next-line no-restricted-syntax
+  // oxlint-disable-next-line no-labels
   outer: for (let i = 0; i < allowedHeaders.length; i++) {
     const current = allowedHeaders[i]
 
@@ -41,6 +42,7 @@ export const resolveHeaders = (
         const prev = allowedHeaders[j]
         if (prev.level < current.level) {
           prev.children.push(current)
+          // oxlint-disable-next-line no-labels
           continue outer
         }
       }
@@ -51,19 +53,22 @@ export const resolveHeaders = (
   return result
 }
 
-const serializeHeader = (h: Element, ignore: string[] = []): string => {
+const serializeHeader = (
+  headerEl: Element,
+  ignoreSelectors: string[] = [],
+): string => {
   let text: string
 
-  if (ignore.length) {
-    const clone = h.cloneNode(true) as Element
+  if (ignoreSelectors.length > 0) {
+    const clone = headerEl.cloneNode(true) as Element
 
-    clone.querySelectorAll(ignore.join(',')).forEach((el) => {
+    clone.querySelectorAll(ignoreSelectors.join(',')).forEach((el) => {
       el.remove()
     })
 
     text = clone.textContent || ''
   } else {
-    text = h.textContent || ''
+    text = headerEl.textContent || ''
   }
 
   return text.trim()
@@ -73,7 +78,7 @@ export const getHeadersFromDom = (
   selector = DEFAULT_HEADER_SELECTOR,
   ignore: string[] = [],
 ): HeaderItem[] =>
-  Array.from(document.querySelectorAll(selector))
+  [...document.querySelectorAll(selector)]
     .filter((el) => el.id && el.hasChildNodes())
     .map((el) => ({
       element: el as HTMLHeadingElement,
@@ -89,7 +94,7 @@ export const getHeadersFromDom = (
  *
  * 获取当前页面的标题
  *
- * @param options - Options for getting headers / 获取标题的选项
+ * @param {GetHeadersOptions} options - Options for getting headers / 获取标题的选项
  *
  * @returns Array of header items / 标题项数组
  */

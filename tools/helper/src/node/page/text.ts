@@ -1,14 +1,12 @@
-/* eslint-disable @typescript-eslint/no-unsafe-enum-comparison */
 import { isHTMLTag } from '@vue/shared'
 import { load } from 'cheerio'
 import type { AnyNode } from 'domhandler'
 import type { App, Page } from 'vuepress/core'
-import {} from 'vuepress/shared'
 import { isArray } from '../../shared/index.js'
 
-const MEDIA_WITH_ALT = ['img']
+const MEDIA_WITH_ALT = new Set(['img'])
 
-const REMOVED_TAGS = [
+const REMOVED_TAGS = new Set([
   // non content
   'title',
   'base',
@@ -45,7 +43,7 @@ const REMOVED_TAGS = [
   'option',
   'optgroup',
   'datalist',
-]
+])
 
 interface NodeOptions {
   base: string
@@ -66,13 +64,13 @@ const handleNode = (
       return ''
 
     // return alt text
-    if (MEDIA_WITH_ALT.includes(node.tagName)) {
+    if (MEDIA_WITH_ALT.has(node.tagName)) {
       return node.attribs.alt || ''
     }
 
     // html tags can be returned
     if (
-      !REMOVED_TAGS.includes(node.tagName) &&
+      !REMOVED_TAGS.has(node.tagName) &&
       !removedTags.includes(node.tagName) &&
       isHTMLTag(node.tagName)
     ) {
@@ -167,7 +165,7 @@ export const getText = (
     }
   }
   return (
-    singleLine ? result.replace(/\n/g, ' ').replace(/\s+/g, ' ') : result
+    singleLine ? result.replaceAll('\n', ' ').replaceAll(/\s+/g, ' ') : result
   ).trim()
 }
 

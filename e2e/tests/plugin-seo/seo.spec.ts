@@ -43,7 +43,9 @@ test.describe('plugin-seo', () => {
     await page.goto('seo/')
 
     const json = JSON.parse(
-      await page.locator('head script[type="application/ld+json"]').innerText(),
+      (await page
+        .locator('head script[type="application/ld+json"]')
+        .textContent())!,
     ) as Record<string, unknown> & { author: Record<string, unknown>[] }
 
     expect(json['@context']).toBe('https://schema.org')

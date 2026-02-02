@@ -32,14 +32,15 @@ export const addOGP = (head: HeadConfig[], content: SeoContent): void => {
     .reverse()
     .forEach((property) => {
       switch (property) {
-        case 'article:tag':
+        case 'article:tag': {
           ;(content as ArticleSeoContent)['article:tag']!.forEach(
             (tag: string) => {
               appendMetaToHead(head, { name: 'article:tag', content: tag })
             },
           )
           break
-        case 'og:locale:alternate':
+        }
+        case 'og:locale:alternate': {
           content['og:locale:alternate'].forEach((locale: string) => {
             if (locale !== content['og:locale'])
               appendMetaToHead(head, {
@@ -48,12 +49,14 @@ export const addOGP = (head: HeadConfig[], content: SeoContent): void => {
               })
           })
           break
-        default:
+        }
+        default: {
           if (content[property as keyof SeoContent] as string)
             appendMetaToHead(head, {
               name: property,
               content: content[property as keyof SeoContent] as string,
             })
+        }
       }
     })
 }

@@ -4,14 +4,20 @@ export const getNoticeOptions = (
   options: NoticeOptions[] = [],
 ): NoticeAttrOptions[] =>
   options
-    .map(({ key, contentType, contentFile, ...item }) =>
-      'match' in item
-        ? {
-            ...item,
-            match: item.match.source,
-            noticeKey: key,
-          }
-        : { ...item, noticeKey: key },
+    .map(
+      ({
+        key,
+        contentType: _contentType,
+        contentFile: _contentFile,
+        ...item
+      }) =>
+        'match' in item
+          ? {
+              ...item,
+              match: item.match.source,
+              noticeKey: key,
+            }
+          : { ...item, noticeKey: key },
     )
     .sort((a, b) =>
       'match' in a

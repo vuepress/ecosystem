@@ -89,7 +89,7 @@ export const getRawContributors = (
     }
   }
 
-  return Array.from(contributors.values()).filter((item, index, self) => {
+  return [...contributors.values()].filter((item, index, self) => {
     // If one of the contributors is a "noreply" email address, and there's
     // already a contributor with the same name, it is very likely a duplicate,
     // so it can be removed.
@@ -137,7 +137,7 @@ export const resolveContributors = (
 ): GitContributorInfo[] => {
   const contributors = getRawContributors(commits, options, gitProvider)
 
-  if (options.info?.length && extraContributors.length) {
+  if (options.info?.length && extraContributors.length > 0) {
     for (const extraContributor of extraContributors) {
       if (
         contributors.every(

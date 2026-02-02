@@ -72,7 +72,7 @@ export const createShikiHighlighter = async (
     if (!loadedLangs.includes(lang)) {
       const resolvedLang = resolveLangSync(lang)
 
-      if (!resolvedLang.length) return false
+      if (resolvedLang.length === 0) return false
 
       highlighter.loadLanguageSync(resolvedLang)
     }

@@ -38,7 +38,7 @@ const flattenSidebar = (
           result.push(normalizePath(prefix, item.link))
         }
       }
-      if ('children' in item && item.children.length) {
+      if ('children' in item && item.children.length > 0) {
         result.push(
           ...flattenSidebar(item.children, normalizePath(prefix, item.prefix)),
         )
@@ -90,7 +90,7 @@ export const tocGetter = (llmPages: LLMPage[], llmState: LLMState): string => {
   appendTOC('Tools', '/tools/')
   // Others
   const unUsagePages = llmPages.filter((page) => !usagePages.includes(page))
-  if (unUsagePages.length) {
+  if (unUsagePages.length > 0) {
     tableOfContent += '### Others\n\n'
     tableOfContent += unUsagePages
       .map((page) => rawGenerateTOCLink(page, llmState))
