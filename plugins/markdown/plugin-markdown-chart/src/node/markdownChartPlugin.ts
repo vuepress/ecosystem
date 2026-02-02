@@ -100,7 +100,7 @@ export const markdownChartPlugin =
               ? DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST.map((file) => {
                   const result = file
                     // normalize `\` to `/` on Windows
-                    .replace(/\\/g, '/')
+                    .replaceAll('\\', '/')
                     // remove any leading slash
                     .replace(/^\//, '')
 

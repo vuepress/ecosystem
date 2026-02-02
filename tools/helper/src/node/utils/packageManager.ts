@@ -72,7 +72,7 @@ export const getPackageManagerSetting = (
 
   if (fs.existsSync(path.resolve(cwd, PACKAGE_CONFIG))) {
     const { packageManager: packageManagerSettings } = JSON.parse(
-      fs.readFileSync(path.resolve(cwd, PACKAGE_CONFIG), 'utf8'),
+      fs.readFileSync(path.resolve(cwd, PACKAGE_CONFIG), 'utf-8'),
     ) as Record<string, unknown> & { packageManager?: string }
 
     if (packageManagerSettings) {
@@ -94,7 +94,7 @@ export const getPackageManagerSetting = (
 
       if (fs.existsSync(path.resolve(cwd, PACKAGE_CONFIG))) {
         const { packageManager: packageManagerSettings } = JSON.parse(
-          fs.readFileSync(path.resolve(cwd, PACKAGE_CONFIG), 'utf8'),
+          fs.readFileSync(path.resolve(cwd, PACKAGE_CONFIG), 'utf-8'),
         ) as Record<string, unknown> & { packageManager?: string }
 
         if (packageManagerSettings) {

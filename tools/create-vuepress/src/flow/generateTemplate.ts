@@ -117,7 +117,7 @@ export const generateTemplate = async ({
 
   const configFilePath = join(targetDirPath, 'docs/.vuepress/config.js')
 
-  const content = readFileSync(configFilePath, { encoding: 'utf8' })
+  const content = readFileSync(configFilePath, { encoding: 'utf-8' })
 
   writeFileSync(
     configFilePath,
@@ -127,7 +127,7 @@ export const generateTemplate = async ({
         `\nimport { ${bundler}Bundler } from '@vuepress/bundler-${bundler}'\n\nexport default defineUserConfig({`,
       )
       .replace(/\}\)\n$/, `\n  bundler: ${bundler}Bundler(),\n})\n`),
-    { encoding: 'utf8' },
+    { encoding: 'utf-8' },
   )
 
   if (enableWorkflow) {
@@ -138,7 +138,7 @@ export const generateTemplate = async ({
     writeFileSync(
       join(workflowDir, 'deploy-docs.yml'),
       getWorkflowContent(packageManager, lang),
-      { encoding: 'utf8' },
+      { encoding: 'utf-8' },
     )
   }
 }

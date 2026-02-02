@@ -7,5 +7,5 @@ export const writeFiles = (app: App, files: FeedConfig[]): Promise<void>[] =>
     const location = app.dir.dest(filename)
 
     await fs.ensureDir(path.dirname(location))
-    await fs.writeFile(location, content, 'utf8')
+    await fs.writeFile(location, content, 'utf-8')
   })

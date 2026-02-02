@@ -57,7 +57,9 @@ export const attrsToLines = (attrs: string): TransformerCompactLineOption[] => {
   attrsContent
     .split(',')
     .map((lineNumberConfig) =>
-      lineNumberConfig.split('-').map((lineNumber) => parseInt(lineNumber, 10)),
+      lineNumberConfig
+        .split('-')
+        .map((lineNumber) => Number.parseInt(lineNumber, 10)),
     )
     .forEach(([start, end]) => {
       if (start && end) {

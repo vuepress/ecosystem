@@ -45,7 +45,7 @@ export const mainAction = async function (
   if (themePackageName in KNOWN_THEME_COMMANDS) {
     execSync(
       `${packageManager} ${KNOWN_THEME_COMMANDS[themePackageName]} ${targetDir}`,
-      { stdio: 'inherit', encoding: 'utf8' },
+      { stdio: 'inherit', encoding: 'utf-8' },
     )
 
     return
@@ -128,7 +128,7 @@ export const mainAction = async function (
 
   execSync(
     `${packageManager} install ${registry ? `--registry ${registry}` : ''}`,
-    { cwd: targetDirPath, stdio: 'inherit', encoding: 'utf8' },
+    { cwd: targetDirPath, stdio: 'inherit', encoding: 'utf-8' },
   )
 
   console.log(locale.hint.finish)

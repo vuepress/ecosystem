@@ -14,11 +14,12 @@ export const getGitRelativePath = (cwd = process.cwd()): string => {
     // Get the git root directory
     gitProcess = spawnSync('git', ['rev-parse', '--show-toplevel'], {
       cwd,
-      encoding: 'utf8',
+      encoding: 'utf-8',
     })
   } catch (err) {
     throw new Error(
-      `Failed to spawn 'git' process: ${(err as Error).message}`, { cause: spawnError },
+      `Failed to spawn 'git' process: ${(err as Error).message}`,
+      { cause: err },
     )
   }
 
@@ -57,11 +58,12 @@ export const getWorkspaceStatus = (cwd = process.cwd()): string => {
   try {
     gitProcess = spawnSync('git', ['status', '--porcelain'], {
       cwd,
-      encoding: 'utf8',
+      encoding: 'utf-8',
     })
   } catch (err) {
     throw new Error(
-      `Failed to spawn 'git' process: ${(err as Error).message}`, { cause: spawnError },
+      `Failed to spawn 'git' process: ${(err as Error).message}`,
+      { cause: err },
     )
   }
 
@@ -87,11 +89,12 @@ export const getChangedFilesByDiff = (cwd = process.cwd()): string[] => {
   try {
     gitProcess = spawnSync('git', ['diff', 'HEAD~1', 'HEAD', '--name-only'], {
       cwd,
-      encoding: 'utf8',
+      encoding: 'utf-8',
     })
   } catch (err) {
     throw new Error(
-      `Failed to spawn 'git' process: ${(err as Error).message}`, { cause: spawnError },
+      `Failed to spawn 'git' process: ${(err as Error).message}`,
+      { cause: err },
     )
   }
 

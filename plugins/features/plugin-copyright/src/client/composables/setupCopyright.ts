@@ -120,7 +120,7 @@ export const setupCopyright = (
             event.clipboardData.setData(
               'text/html',
               `${node.innerHTML}<hr><div class="copyright">${copyright.replaceAll(
-                '\\n',
+                String.raw`\n`,
                 '<br>',
               )}</div>`,
             )

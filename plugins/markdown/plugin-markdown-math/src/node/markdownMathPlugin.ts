@@ -146,7 +146,7 @@ export const markdownMathPlugin =
             },
             ...(options as Omit<MarkdownKatexPluginOptions, 'type'>),
             transformer: (content) =>
-              content.replace(/^(<[a-z]+ )/g, '$1v-pre '),
+              content.replaceAll(/^(<[a-z]+ )/g, '$1v-pre '),
           })
         }
       },

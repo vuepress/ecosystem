@@ -51,7 +51,11 @@ export const generateLLMsFullTxt = async (
 
   const llmsFullTxt = pageContents.join(PAGE_SEPARATOR)
 
-  await fs.writeFile(app.dir.dest(llmsFullTxtRelativePath), llmsFullTxt, 'utf8')
+  await fs.writeFile(
+    app.dir.dest(llmsFullTxtRelativePath),
+    llmsFullTxt,
+    'utf-8',
+  )
 
   logger.succeed(
     expandTemplate(

@@ -75,7 +75,7 @@ export const rollupBundle = (
       preserveShebang ? shebang() : null,
       ...(resolve ? [nodeResolve({ preferBuiltins: true }), commonjs()] : []),
       esbuild({
-        charset: 'utf8',
+        charset: 'utf-8',
         minify: true,
         target: 'node20.6.0',
         define,

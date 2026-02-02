@@ -4,7 +4,7 @@ export const readFile = async <T = unknown>(
   filepath: string,
 ): Promise<T | null> => {
   try {
-    return (await fs.readJSON(filepath, 'utf8')) as T
+    return (await fs.readJSON(filepath, 'utf-8')) as T
   } catch {
     return null
   }
@@ -12,21 +12,21 @@ export const readFile = async <T = unknown>(
 
 export const readFileSync = <T = unknown>(filepath: string): T | null => {
   try {
-    return fs.readJSONSync(filepath, 'utf8') as T
+    return fs.readJSONSync(filepath, 'utf-8') as T
   } catch {
     return null
   }
 }
 
 export const writeFile = (filepath: string, data: unknown): Promise<void> =>
-  fs.writeJSON(filepath, data, 'utf8')
+  fs.writeJSON(filepath, data, 'utf-8')
 
 const FALLBACK_SPEED = 0.15
 
 export const checkIOSpeed = (cwd = process.cwd()): number => {
   try {
     const tmp = path.join(cwd, 'tmp')
-    fs.writeFileSync(tmp, '{}', 'utf8')
+    fs.writeFileSync(tmp, '{}', 'utf-8')
     const start = performance.now()
     readFileSync(tmp)
     const end = performance.now()

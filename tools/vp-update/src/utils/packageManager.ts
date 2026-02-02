@@ -72,7 +72,7 @@ export const getPackageManagerSetting = (
 
   if (existsSync(resolve(cwd, PACKAGE_CONFIG))) {
     const { packageManager: packageManagerSettings } = JSON.parse(
-      readFileSync(resolve(cwd, PACKAGE_CONFIG), 'utf8'),
+      readFileSync(resolve(cwd, PACKAGE_CONFIG), 'utf-8'),
     ) as Record<string, unknown> & { packageManager?: string }
 
     if (packageManagerSettings) {
@@ -94,7 +94,7 @@ export const getPackageManagerSetting = (
 
       if (existsSync(resolve(cwd, PACKAGE_CONFIG))) {
         const { packageManager: packageManagerSettings } = JSON.parse(
-          readFileSync(resolve(cwd, PACKAGE_CONFIG), 'utf8'),
+          readFileSync(resolve(cwd, PACKAGE_CONFIG), 'utf-8'),
         ) as Record<string, unknown> & { packageManager?: string }
 
         if (packageManagerSettings) {
@@ -138,7 +138,7 @@ export const getTypeofLockFile = (
 
   if (existsSync(resolve(cwd, YARN_LOCK))) {
     const packageManager = readFileSync(resolve(cwd, YARN_LOCK), {
-      encoding: 'utf8',
+      encoding: 'utf-8',
     }).includes('yarn lockfile v1')
       ? 'yarn1'
       : 'yarn'
@@ -174,7 +174,7 @@ export const getTypeofLockFile = (
 
       if (existsSync(resolve(dir, YARN_LOCK))) {
         const packageManager = readFileSync(resolve(dir, YARN_LOCK), {
-          encoding: 'utf8',
+          encoding: 'utf-8',
         }).includes('yarn lockfile v1')
           ? 'yarn1'
           : 'yarn'

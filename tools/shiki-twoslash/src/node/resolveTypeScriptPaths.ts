@@ -26,7 +26,7 @@ export async function resolveTypeScriptPaths(): Promise<TypeScriptPaths | null> 
   const tsconfigPath = path.join(process.cwd(), 'tsconfig.json')
 
   try {
-    const tsconfig = JSON.parse(await fs.readFile(tsconfigPath, 'utf8')) as {
+    const tsconfig = JSON.parse(await fs.readFile(tsconfigPath, 'utf-8')) as {
       compilerOptions?: {
         paths?: Record<string, string[]>
         baseUrl?: string

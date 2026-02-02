@@ -98,6 +98,6 @@ export const createPackageJson = async ({
   writeFileSync(
     packageJsonPath,
     `${JSON.stringify(packageContent, null, 2)}\n`,
-    { encoding: 'utf8' },
+    { encoding: 'utf-8' },
   )
 }

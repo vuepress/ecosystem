@@ -42,12 +42,12 @@ export const highlightWordInLine = (
 export const parseMetaHighlightWords = (meta: string): string[] => {
   if (!meta) return []
 
-  const match = Array.from(meta.matchAll(META_WORD_REGEXP))
+  const match = [...meta.matchAll(META_WORD_REGEXP)]
 
   return (
     match
       // Escape backslashes
-      .map((v) => v[1].replace(/\\(.)/g, '$1'))
+      .map((part) => part[1].replaceAll(/\\(.)/g, '$1'))
   )
 }
 

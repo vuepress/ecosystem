@@ -23,7 +23,7 @@ if (import.meta.hot) {
 
 const readFile = async (filepath: string): Promise<string> => {
   try {
-    const content = await fs.readFile(filepath, 'utf8')
+    const content = await fs.readFile(filepath, 'utf-8')
     return content
   } catch {
     return ''

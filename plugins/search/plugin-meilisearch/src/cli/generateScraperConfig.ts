@@ -122,7 +122,7 @@ export const generateScraperConfig = async (
     throw new Error(`Scraper file not found at ${scraperPath}`)
   }
 
-  const scraperConfig = fs.readJSONSync(scraperPath, 'utf8') as ScraperConfig
+  const scraperConfig = fs.readJSONSync(scraperPath, 'utf-8') as ScraperConfig
 
   if (shouldRescrape()) {
     logger.info('A full rescrape is needed, removing only_urls...')

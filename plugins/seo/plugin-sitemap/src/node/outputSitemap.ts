@@ -30,24 +30,24 @@ export const outputSitemap = async (
     `Appending sitemap path to ${colors.cyan('robots.txt')}`,
   )
   if (fs.existsSync(robotTxtPath)) {
-    const robotsTxt = await fs.readFile(robotTxtPath, 'utf8')
+    const robotsTxt = await fs.readFile(robotTxtPath, 'utf-8')
     const siteMapRegex = /^Sitemap: .*$/mu
 
     if (siteMapRegex.test(robotsTxt)) {
       await fs.writeFile(
         robotTxtPath,
         robotsTxt.replace(siteMapRegex, sitemapDeclaration),
-        { encoding: 'utf8', flag: 'w' },
+        { encoding: 'utf-8', flag: 'w' },
       )
     } else {
       await fs.writeFile(robotTxtPath, `\n${sitemapDeclaration}`, {
-        encoding: 'utf8',
+        encoding: 'utf-8',
         flag: 'a',
       })
     }
   } else {
     await fs.writeFile(robotTxtPath, sitemapDeclaration, {
-      encoding: 'utf8',
+      encoding: 'utf-8',
       flag: 'w',
     })
   }

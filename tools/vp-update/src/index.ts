@@ -36,7 +36,7 @@ pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]\
 
     checkTaobaoRegistry(packageManager)
 
-    const content = readFileSync(packageJSON, { encoding: 'utf8' })
+    const content = readFileSync(packageJSON, { encoding: 'utf-8' })
 
     const packageJSONContent = JSON.parse(content) as Record<
       string,

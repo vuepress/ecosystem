@@ -168,7 +168,7 @@ export const notationWordHighlight = (parser: CodeParser): void => {
         : parser.lines.length - 1
 
       // escape backslashes
-      const normalizedWord = word.replace(/\\(.)/g, '$1')
+      const normalizedWord = word.replaceAll(/\\(.)/g, '$1')
 
       parser.lines
         // start from the next line after the comment

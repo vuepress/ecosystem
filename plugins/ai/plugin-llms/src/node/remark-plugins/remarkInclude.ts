@@ -238,9 +238,9 @@ const resolveLink = (
 
       // html tag: <a href="path">
       if (node.type === 'html' && node.value.startsWith('<a ')) {
-        node.value = node.value.replace(HTML_LINK_RE, (m, link: string) => {
-          return m.replace(link, convertLink(link, base))
-        })
+        node.value = node.value.replace(HTML_LINK_RE, (m, link: string) =>
+          m.replace(link, convertLink(link, base)),
+        )
       }
     }
 
@@ -252,9 +252,9 @@ const resolveLink = (
 
       // html tag: <img src="path">
       if (node.type === 'html' && node.value.startsWith('<img ')) {
-        node.value = node.value.replace(HTML_LINK_RE, (m, link: string) => {
-          return m.replace(link, convertLink(link, base))
-        })
+        node.value = node.value.replace(HTML_LINK_RE, (m, link: string) =>
+          m.replace(link, convertLink(link, base)),
+        )
       }
     }
   })
@@ -268,38 +268,35 @@ const resolveLink = (
  * <!-- \@include: path/to/file.md -->
  * ```
  */
-export const remarkInclude = (
-  cwd: string,
-  options: Required<MarkdownIncludePluginOptions>,
-) => {
-  return () =>
-    (tree: Root): void => {
-      visit(tree, (node, index, parent) => {
-        if (!parent || typeof index !== 'number') return
+export const remarkInclude =
+  (cwd: string, options: Required<MarkdownIncludePluginOptions>) =>
+  () =>
+  (tree: Root): void => {
+    visit(tree, (node, index, parent) => {
+      if (!parent || typeof index !== 'number') return
 
-        let matched: string[] | null = null
+      let matched: string[] | null = null
 
-        if (node.type === 'html' && options.useComment)
-          matched = node.value.match(new RegExp(INCLUDE_COMMENT_RE.source))
-        else if (node.type === 'text')
-          matched = node.value.match(new RegExp(INCLUDE_RE.source))
+      if (node.type === 'html' && options.useComment)
+        matched = node.value.match(new RegExp(INCLUDE_COMMENT_RE.source))
+      else if (node.type === 'text')
+        matched = node.value.match(new RegExp(INCLUDE_RE.source))
 
-        if (!matched) return
+      if (!matched) return
 
-        const content = resolveInclude(cwd, matched.slice(1), options)
+      const content = resolveInclude(cwd, matched.slice(1), options)
 
-        if (content !== (node as { value: string }).value) {
-          const subTree = fromMarkdown(content)
-          if (options.resolveLinkPath || options.resolveImagePath) {
-            resolveLink(
-              subTree,
-              cwd,
-              options.resolveLinkPath,
-              options.resolveImagePath,
-            )
-          }
-          parent.children.splice(index, 1, ...subTree.children)
+      if (content !== (node as { value: string }).value) {
+        const subTree = fromMarkdown(content)
+        if (options.resolveLinkPath || options.resolveImagePath) {
+          resolveLink(
+            subTree,
+            cwd,
+            options.resolveLinkPath,
+            options.resolveImagePath,
+          )
         }
-      })
-    }
-}
+        parent.children.splice(index, 1, ...subTree.children)
+      }
+    })
+  }

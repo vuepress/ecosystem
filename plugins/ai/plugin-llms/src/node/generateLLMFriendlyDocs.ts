@@ -37,7 +37,7 @@ export const generateLLMFriendlyDocs = async (
 
     try {
       await fs.mkdir(path.dirname(markdownFilePath), { recursive: true })
-      await fs.writeFile(markdownFilePath, markdownContent, 'utf8')
+      await fs.writeFile(markdownFilePath, markdownContent, 'utf-8')
       logger.load(
         `Generated llm friendly docs - ${colors.cyan(markdownFilePathRelative)}`,
       )

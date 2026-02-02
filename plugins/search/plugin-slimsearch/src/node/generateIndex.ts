@@ -61,7 +61,7 @@ const renderHeader = (node: Element): string => {
     .map((childNode) => (childNode.type === 'text' ? childNode.data : null))
     .filter(Boolean)
     .join(' ')
-    .replace(/\s+/gu, ' ')
+    .replaceAll(/\s+/gu, ' ')
     .trim()
 }
 
@@ -86,7 +86,7 @@ export const generatePageIndex = (
   const addTextToIndex = (): void => {
     if (indexedText && shouldIndexContent) {
       ;((foundFirstHeader ? sectionIndex! : pageIndex).t ??= []).push(
-        indexedText.replace(/[\n\s]+/gu, ' '),
+        indexedText.replaceAll(/[\n\s]+/gu, ' '),
       )
       indexedText = ''
     }

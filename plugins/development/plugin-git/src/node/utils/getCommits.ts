@@ -49,11 +49,11 @@ const runGitLog = (args: string[], cwd: string): Promise<string> =>
     let stderrData = ''
 
     gitProcess.stdout.on('data', (chunk: Buffer) => {
-      stdoutData += chunk.toString('utf8')
+      stdoutData += chunk.toString('utf-8')
     })
 
     gitProcess.stderr.on('data', (chunk: Buffer) => {
-      stderrData += chunk.toString('utf8')
+      stderrData += chunk.toString('utf-8')
     })
 
     gitProcess.on('error', (error) => {

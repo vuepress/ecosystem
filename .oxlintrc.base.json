@@ -163,6 +163,8 @@
     // filename should not be enforced strictly, e.g. Vue SFC files shall be PascalCased
     // we shall expect a project level setting
     "unicorn/filename-case": "off",
+    // this rule introduce too many false positives
+    "unicorn/explicit-length-check": "off",
     // toReversed can introduce memory overhead,
     // in some chained calls it is better to use reverse as the "reversed" array is also a temp variable.
     "unicorn/no-array-reverse": "off",
@@ -182,6 +184,8 @@
     // support starts with chrome71, firefox68. safari12.1, node12
     // leaving it to warn for edge cases
     "unicorn/prefer-global-this": "warn",
+    // prefer utf-8 over utf8
+    "unicorn/text-encoding-identifier-case": ["error", { "withDash": true }],
 
     // stylistic rules with default being tweaked
     "catch-error-name": ["warn", { "name": "err" }],

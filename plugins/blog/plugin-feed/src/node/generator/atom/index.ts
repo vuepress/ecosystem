@@ -45,7 +45,7 @@ export const getAtomFeed = (feedStore: FeedStore): string => {
     _declaration: {
       _attributes: {
         version: '1.0',
-        encoding: 'utf8',
+        encoding: 'utf-8',
       },
     },
     _instruction: {
