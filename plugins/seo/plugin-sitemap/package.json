@@ -3,19 +3,14 @@
   "version": "2.0.0-rc.122",
   "description": "Sitemap plugin for vuepress",
   "keywords": [
+    "sitemap",
     "vuepress",
-    "vuepress2",
     "vuepress-plugin",
-    "sitemap"
+    "vuepress2"
   ],
   "homepage": "https://ecosystem.vuejs.press/plugins/seo/sitemap/",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vuepress/ecosystem.git",
-    "directory": "plugins/seo/plugin-sitemap"
   },
   "license": "MIT",
   "author": {
@@ -23,18 +18,26 @@
     "email": "mister-hope@outlook.com",
     "url": "https://mister-hope.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/seo/plugin-sitemap"
+  },
+  "files": [
+    "lib",
+    "templates"
+  ],
   "type": "module",
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
   "exports": {
     ".": "./lib/node/index.js",
     "./templates/*": "./templates/*",
     "./package.json": "./package.json"
   },
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
-  "files": [
-    "lib",
-    "templates"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
@@ -49,8 +52,5 @@
   },
   "peerDependencies": {
     "vuepress": "catalog:"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

@@ -3,20 +3,15 @@
   "version": "2.0.0-rc.122",
   "description": "VuePress plugin - markdown file tree",
   "keywords": [
-    "vuepress-plugin",
-    "vuepress",
-    "plugin",
+    "file-tree",
     "markdown",
-    "file-tree"
+    "plugin",
+    "vuepress",
+    "vuepress-plugin"
   ],
   "homepage": "https://ecosystem.vuejs.press/plugins/markdown/markdown-file-tree.html",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vuepress/ecosystem.git",
-    "directory": "plugins/markdown/plugin-markdown-file-tree"
   },
   "license": "MIT",
   "author": {
@@ -24,16 +19,24 @@
     "email": "q942450674@qq.com",
     "url": "https://github.com/pengzhanbo"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/markdown/plugin-markdown-file-tree"
+  },
+  "files": [
+    "lib"
+  ],
   "type": "module",
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
   "exports": {
     ".": "./lib/node/index.js",
     "./package.json": "./package.json"
   },
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
@@ -51,8 +54,5 @@
   },
   "peerDependencies": {
     "vuepress": "catalog:"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

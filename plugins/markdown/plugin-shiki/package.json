@@ -3,35 +3,38 @@
   "version": "2.0.0-rc.122",
   "description": "VuePress plugin - shiki",
   "keywords": [
-    "vuepress-plugin",
-    "vuepress",
+    "highlight",
     "plugin",
     "shiki",
-    "highlight"
+    "vuepress",
+    "vuepress-plugin"
   ],
   "homepage": "https://ecosystem.vuejs.press/plugins/markdown/shiki.html",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
   },
+  "license": "MIT",
+  "author": "meteorlxy",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/ecosystem.git",
     "directory": "plugins/markdown/plugin-shiki"
   },
-  "license": "MIT",
-  "author": "meteorlxy",
+  "files": [
+    "lib"
+  ],
   "type": "module",
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
   "exports": {
     ".": "./lib/node/index.js",
     "./resolveLang": "./lib/node/resolveLang.js",
     "./styles/*": "./lib/client/styles/*",
     "./package.json": "./package.json"
   },
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
@@ -59,8 +62,5 @@
     "@vuepress/shiki-twoslash": {
       "optional": true
     }
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

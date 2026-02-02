@@ -3,18 +3,13 @@
   "version": "2.0.0-rc.122",
   "description": "Update helper for VuePress2",
   "keywords": [
+    "update",
     "vuepress",
-    "vuepress2",
-    "update"
+    "vuepress2"
   ],
   "homepage": "https://github.com/vuepress",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vuepress/ecosystem.git",
-    "directory": "tools/vp-update"
   },
   "license": "MIT",
   "author": {
@@ -22,9 +17,10 @@
     "email": "mister-hope@outlook.com",
     "url": "https://mister-hope.com"
   },
-  "type": "module",
-  "exports": {
-    "./package.json": "./package.json"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "tools/vp-update"
   },
   "bin": {
     "vp-update": "./lib/index.js"
@@ -32,6 +28,13 @@
   "files": [
     "lib"
   ],
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
@@ -46,8 +49,5 @@
   },
   "engines": {
     "node": ">= 20"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

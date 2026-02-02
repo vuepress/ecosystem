@@ -3,33 +3,36 @@
   "version": "2.0.0-rc.122",
   "description": "VuePress plugin - llms.txt",
   "keywords": [
-    "vuepress-plugin",
-    "vuepress",
-    "plugin",
+    "AI",
     "llms.txt",
-    "AI"
+    "plugin",
+    "vuepress",
+    "vuepress-plugin"
   ],
   "homepage": "https://ecosystem.vuejs.press/plugins/ai/llms.html",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
   },
+  "license": "MIT",
+  "author": "pengzhanbo",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuepress/ecosystem.git",
     "directory": "plugins/ai/plugin-llms"
   },
-  "license": "MIT",
-  "author": "pengzhanbo",
+  "files": [
+    "lib"
+  ],
   "type": "module",
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
   "exports": {
     ".": "./lib/node/index.js",
     "./package.json": "./package.json"
   },
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
@@ -46,12 +49,6 @@
     "unist-util-remove": "^4.0.0",
     "unist-util-visit": "^5.1.0"
   },
-  "peerDependencies": {
-    "vuepress": "catalog:"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
   "devDependencies": {
     "@types/byte-size": "^8.1.2",
     "@types/markdown-it": "^14.1.2",
@@ -59,5 +56,8 @@
     "@vuepress/plugin-markdown-include": "workspace:*",
     "markdown-it": "^14.1.0",
     "unified": "^11.0.5"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
   }
 }

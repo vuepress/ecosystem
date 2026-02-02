@@ -3,23 +3,18 @@
   "version": "2.0.0-rc.122",
   "description": "VuePress plugin - comment",
   "keywords": [
-    "vuepress-plugin",
-    "vuepress",
-    "plugin",
-    "comment",
     "artalk",
+    "comment",
     "giscus",
+    "plugin",
     "twikoo",
+    "vuepress",
+    "vuepress-plugin",
     "waline"
   ],
   "homepage": "https://ecosystem.vuejs.press/plugins/blog/comment/",
   "bugs": {
     "url": "https://github.com/vuepress/ecosystem/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vuepress/ecosystem.git",
-    "directory": "plugins/blog/plugin-comment"
   },
   "license": "MIT",
   "author": {
@@ -27,10 +22,20 @@
     "email": "mister-hope@outlook.com",
     "url": "https://mister-hope.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/blog/plugin-comment"
+  },
+  "files": [
+    "lib"
+  ],
+  "type": "module",
   "sideEffects": [
     "./lib/styles/*.css"
   ],
-  "type": "module",
+  "main": "./lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
   "exports": {
     ".": "./lib/node/index.js",
     "./client": "./lib/client/index.js",
@@ -38,11 +43,9 @@
     "./pageview": "./lib/client/pageview/noop.js",
     "./package.json": "./package.json"
   },
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
@@ -71,8 +74,5 @@
     "twikoo": {
       "optional": true
     }
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
