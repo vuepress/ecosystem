@@ -190,4 +190,4 @@ export default {
 
 You can customize the icon of the _copy button_ via CSS variables:
 
-@[code{1-6} css](@vuepress/plugin-copy-code/src/client/styles/vars.css)
+@[code{1-6} css](@vuepress/plugin-copy-code/lib/client/styles/vars.css)
