@@ -1,8 +1,8 @@
 import { isHTMLTag } from '@vue/shared'
-import { load } from 'cheerio'
 import type { AnyNode } from 'domhandler'
 import type { App, Page } from 'vuepress/core'
 import { isArray } from '../../shared/index.js'
+import { cheerio } from './utils.js'
 
 const MEDIA_WITH_ALT = new Set(['img'])
 
@@ -95,8 +95,6 @@ const handleNodes = (
     ? nodes.map((node) => handleNode(node, { base, removedTags })).join('')
     : ''
 
-const $ = load('')
-
 export interface PageTextOptions {
   /**
    * Whether convert text to single line content
@@ -155,7 +153,7 @@ export const getText = (
   }: PageTextOptions = {},
 ): string => {
   let result = ''
-  const rootNodes = html ? $.parseHTML(html) : []
+  const rootNodes = html ? cheerio.parseHTML(html) : []
 
   for (const node of rootNodes) {
     const text = handleNode(node, { base, removedTags })

@@ -257,6 +257,7 @@
       "files": ["**/worker/**/*.{js,ts}", "*.worker.{js,ts}", "worker.{js,ts}"],
       "rules": { "unicorn/require-post-message-target-origin": "off" }
     },
+
     {
       "files": [
         "*.{bench,spec,test}.{js,ts}",
@@ -282,6 +283,13 @@
           { "allTestPattern": "__tests__", "pattern": ".*\\.spec\\.ts$" }
         ],
         "unicorn/consistent-function-scoping": "off"
+      }
+    },
+    {
+      "files": ["e2e/**/*.{spec,test}.{js,ts}"],
+      "rules": {
+        // e2e tests navigation and locators are async
+        "no-await-in-loop": "off"
       }
     }
   ]

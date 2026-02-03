@@ -51,12 +51,14 @@ export const replacementAssetWithRules = (
   }
 }
 
+const ESCAPED_DOUBLE_QUOTE = String.raw`\"`
+
 export const transformAssets = (
   code: string,
   pattern: RegExp,
   rules: ReplacementRule[],
 ): string => {
-  const s = new MagicString(code)
+  const str = new MagicString(code)
   let matched: RegExpExecArray | null
   let hasMatched = false
 
@@ -70,8 +72,8 @@ export const transformAssets = (
       matched[1]
     const [left, right] = matched[0].startsWith('(')
       ? ['("', '")']
-      : matched[0].startsWith('\\"')
-        ? ['\\"', '\\"']
+      : matched[0].startsWith(ESCAPED_DOUBLE_QUOTE)
+        ? [ESCAPED_DOUBLE_QUOTE, ESCAPED_DOUBLE_QUOTE]
         : ['"', '"']
 
     const start = matched.index
@@ -79,11 +81,11 @@ export const transformAssets = (
     const resolved = replacementAssetWithRules(rules, assetUrl)
     if (resolved) {
       hasMatched = true
-      s.update(start, end, `${left}${resolved}${right}`)
+      str.update(start, end, `${left}${resolved}${right}`)
     }
   }
 
   if (!hasMatched) return code
 
-  return s.toString()
+  return str.toString()
 }

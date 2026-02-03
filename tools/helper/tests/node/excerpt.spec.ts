@@ -1,3 +1,4 @@
+// oxlint-disable vitest/no-conditional-tests
 import { describe, expect, it } from 'vitest'
 import type { Bundler } from 'vuepress/core'
 import { createBuildApp } from 'vuepress/core'
