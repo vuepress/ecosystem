@@ -134,7 +134,7 @@ export default defineComponent({
                       class: 'redirect-modal-action primary',
                       onClick: () => {
                         updateState()
-                        router.replace(
+                        void router.replace(
                           routePath.value.replace(
                             routeLocale.value,
                             redirectInfo.value!.localePath,

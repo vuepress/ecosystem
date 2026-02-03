@@ -26,7 +26,7 @@ export const getRedirectMap = (
     ...fromEntries(
       (
         app.pages as Page<Record<string, never>, RedirectPluginFrontmatter>[]
-      ).flatMap<[string, string][]>(({ frontmatter, path }) =>
+      ).flatMap(({ frontmatter, path }) =>
         isArray(frontmatter.redirectFrom)
           ? frontmatter.redirectFrom.map((from) => [
               normalizePath(from, true),

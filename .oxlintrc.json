@@ -51,26 +51,27 @@
           "vuepress/core",
           "vuepress/markdown",
           "vuepress/utils"
-        ],
-        "typescript/no-floating-promises": [
-          "error",
-          {
-            "allowForKnownSafeCalls": [
-              // Avoid explicit marking void for router.push
-              {
-                "from": "package",
-                "name": "push",
-                "package": "vue-router"
-              },
-              // Avoid explicit marking void for router.replace
-              {
-                "from": "package",
-                "name": "replace",
-                "package": "vue-router"
-              }
-            ]
-          }
         ]
+        // not working at all
+        // "typescript/no-floating-promises": [
+        //   "error",
+        //   {
+        //     "allowForKnownSafeCalls": [
+        //       // Avoid explicit marking void for router.push
+        //       {
+        //         "from": "package",
+        //         "name": "push",
+        //         "package": "vue-router"
+        //       },
+        //       // Avoid explicit marking void for router.replace
+        //       {
+        //         "from": "package",
+        //         "name": "replace",
+        //         "package": "vue-router"
+        //       }
+        //     ]
+        //   }
+        // ]
         // "typescript/prefer-nullish-coalescing": [
         //   "warn",
         //   { "ignoreConditionalTests": true }

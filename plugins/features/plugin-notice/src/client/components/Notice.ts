@@ -1,5 +1,6 @@
 import { isLinkAbsolute, isLinkHttp, startsWith } from '@vuepress/helper/client'
 import { watchImmediate } from '@vueuse/core'
+import type { VNode } from 'vue'
 import {
   TransitionGroup,
   computed,
@@ -64,7 +65,7 @@ export const Notice = defineComponent({
 
     const footerAction = (link?: string): void => {
       if (link)
-        if (isLinkAbsolute(link)) router.push(link)
+        if (isLinkAbsolute(link)) void router.push(link)
         else if (isLinkHttp(link)) window.open(link)
 
       closeModal()
@@ -82,7 +83,7 @@ export const Notice = defineComponent({
       })
     })
 
-    return () =>
+    return (): VNode =>
       h(TransitionGroup, { name: 'fade-in-up' }, () =>
         matchedConfig.value && isVisible.value
           ? [

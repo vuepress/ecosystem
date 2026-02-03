@@ -151,6 +151,8 @@
         { "selector": "enumMember", "format": ["PascalCase"] }
       ]
     ],
+    // allow functions that return promise to not use await
+    "typescript/require-await": "off",
     // allow non-null assertions in some cases
     "typescript/strict-boolean-expressions": [
       "warn",
@@ -250,6 +252,10 @@
         // we need `export {}` to convert a file to a module
         "unicorn/require-module-specifiers": "off"
       }
+    },
+    {
+      "files": ["**/worker/**/*.{js,ts}", "*.worker.{js,ts}", "worker.{js,ts}"],
+      "rules": { "unicorn/require-post-message-target-origin": "off" }
     },
     {
       "files": [
