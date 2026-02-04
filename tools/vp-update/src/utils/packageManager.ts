@@ -42,7 +42,7 @@ export const isPackageManagerInstalled = (
 
   const status = globalCache.get(key)
 
-  if (status !== undefined) return status
+  if (status != null) return status
 
   if (isInstalled(packageManager)) {
     globalCache.set(key, true)
@@ -68,7 +68,7 @@ export const getPackageManagerSetting = (
 
   const status = localCache.get(key)
 
-  if (status !== undefined) return status
+  if (status != null) return status
 
   if (existsSync(resolve(cwd, PACKAGE_CONFIG))) {
     const { packageManager: packageManagerSettings } = JSON.parse(
@@ -113,6 +113,21 @@ export const getPackageManagerSetting = (
   return null
 }
 
+const getLockFileTypeInDir = (dir: string): PackageManager | null => {
+  if (existsSync(resolve(dir, PNPM_LOCK))) return 'pnpm'
+
+  if (existsSync(resolve(dir, YARN_LOCK))) {
+    const content = readFileSync(resolve(dir, YARN_LOCK), 'utf-8')
+    return content.includes('yarn lockfile v1') ? 'yarn1' : 'yarn'
+  }
+
+  if (existsSync(resolve(dir, BUN_LOCK))) return 'bun'
+
+  if (existsSync(resolve(dir, NPM_LOCK))) return 'npm'
+
+  return null
+}
+
 /**
  * Get the type of lock file.
  *
@@ -128,36 +143,14 @@ export const getTypeofLockFile = (
 
   const status = localCache.get(key)
 
-  if (status !== undefined) return status
+  if (status != null) return status
 
-  if (existsSync(resolve(cwd, PNPM_LOCK))) {
-    localCache.set(key, 'pnpm')
+  const type = getLockFileTypeInDir(cwd)
 
-    return 'pnpm'
-  }
+  if (type) {
+    localCache.set(key, type)
 
-  if (existsSync(resolve(cwd, YARN_LOCK))) {
-    const packageManager = readFileSync(resolve(cwd, YARN_LOCK), {
-      encoding: 'utf-8',
-    }).includes('yarn lockfile v1')
-      ? 'yarn1'
-      : 'yarn'
-
-    localCache.set(key, packageManager)
-
-    return packageManager
-  }
-
-  if (existsSync(resolve(cwd, BUN_LOCK))) {
-    localCache.set(key, 'bun')
-
-    return 'bun'
-  }
-
-  if (existsSync(resolve(cwd, NPM_LOCK))) {
-    localCache.set(key, 'npm')
-
-    return 'npm'
+    return type
   }
 
   if (deep) {
@@ -166,34 +159,12 @@ export const getTypeofLockFile = (
     while (dir !== dirname(dir)) {
       dir = dirname(dir)
 
-      if (existsSync(resolve(dir, PNPM_LOCK))) {
-        localCache.set(key, 'pnpm')
+      const type = getLockFileTypeInDir(dir)
 
-        return 'pnpm'
-      }
+      if (type) {
+        localCache.set(key, type)
 
-      if (existsSync(resolve(dir, YARN_LOCK))) {
-        const packageManager = readFileSync(resolve(dir, YARN_LOCK), {
-          encoding: 'utf-8',
-        }).includes('yarn lockfile v1')
-          ? 'yarn1'
-          : 'yarn'
-
-        localCache.set(key, packageManager)
-
-        return packageManager
-      }
-
-      if (existsSync(resolve(dir, BUN_LOCK))) {
-        localCache.set(key, 'bun')
-
-        return 'bun'
-      }
-
-      if (existsSync(resolve(dir, NPM_LOCK))) {
-        localCache.set(key, 'npm')
-
-        return 'npm'
+        return type
       }
     }
   }
