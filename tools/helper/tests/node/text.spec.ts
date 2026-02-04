@@ -6,7 +6,7 @@ import type { PageTextOptions } from '../../src/node/page/text.js'
 import { getPageText } from '../../src/node/page/text.js'
 import { emptyTheme } from '../__fixtures__/theme/empty.js'
 
-describe('getPageText', async () => {
+describe(getPageText, async () => {
   const app = createBuildApp({
     bundler: {} as Bundler,
     source: path.resolve(__dirname, '../__fixtures__/src'),

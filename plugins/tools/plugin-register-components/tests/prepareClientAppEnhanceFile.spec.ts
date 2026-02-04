@@ -23,7 +23,7 @@ describe('plugin-register-components > node > prepareClientConfigFile', () => {
         componentsDir: null,
         componentsPatterns: ['**/*.vue'],
         getComponentName: (filename) =>
-          path.trimExt(filename.replace(/\/|\\/g, '-')),
+          path.trimExt(filename.replaceAll(/\/|\\/g, '-')),
       },
       `${identifier++}`,
     )
@@ -39,7 +39,7 @@ describe('plugin-register-components > node > prepareClientConfigFile', () => {
         componentsDir: path.resolve(__dirname, './__fixtures__/components'),
         componentsPatterns: ['**/*.vue'],
         getComponentName: (filename) =>
-          path.trimExt(filename.replace(/\/|\\/g, '-')),
+          path.trimExt(filename.replaceAll(/\/|\\/g, '-')),
       },
       `${identifier++}`,
     )
@@ -60,7 +60,7 @@ describe('plugin-register-components > node > prepareClientConfigFile', () => {
         componentsDir: path.resolve(__dirname, './__fixtures__/components'),
         componentsPatterns: ['**/*.vue'],
         getComponentName: (filename) =>
-          path.trimExt(filename.replace(/\/|\\/g, '-')),
+          path.trimExt(filename.replaceAll(/\/|\\/g, '-')),
       },
       `${identifier++}`,
     )

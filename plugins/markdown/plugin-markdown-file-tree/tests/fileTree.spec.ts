@@ -2,7 +2,7 @@ import MarkdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 import { fileTree } from '../src/node/fileTree.js'
 
-describe('fileTree', () => {
+describe(fileTree, () => {
   const markdownIt = MarkdownIt({ linkify: true }).use(fileTree)
 
   it('should render basic file tree', () => {

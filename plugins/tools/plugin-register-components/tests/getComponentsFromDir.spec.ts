@@ -10,7 +10,7 @@ describe('plugin-register-components > node > getComponentsFromDir', () => {
       componentsDir: null,
       componentsPatterns: ['**/*.vue'],
       getComponentName: (filename) =>
-        path.trimExt(filename.replace(/\/|\\/g, '-')),
+        path.trimExt(filename.replaceAll(/\/|\\/g, '-')),
     })
     expect(result).toEqual({})
   })
@@ -20,7 +20,7 @@ describe('plugin-register-components > node > getComponentsFromDir', () => {
       componentsDir: path.resolve(__dirname, './__fixtures__/components'),
       componentsPatterns: ['**/*.vue'],
       getComponentName: (filename) =>
-        path.trimExt(filename.replace(/\/|\\/g, '-')),
+        path.trimExt(filename.replaceAll(/\/|\\/g, '-')),
     })
     expect(result).toEqual({
       FooBar: path.resolve(__dirname, './__fixtures__/components/FooBar.vue'),
@@ -32,7 +32,7 @@ describe('plugin-register-components > node > getComponentsFromDir', () => {
       componentsDir: path.resolve(__dirname, './__fixtures__/components'),
       componentsPatterns: ['**/*.{vue,ts}'],
       getComponentName: (filename) =>
-        path.trimExt(filename.replace(/\/|\\/g, '-')),
+        path.trimExt(filename.replaceAll(/\/|\\/g, '-')),
     })
     expect(result).toEqual({
       FooBar: path.resolve(__dirname, './__fixtures__/components/FooBar.vue'),
