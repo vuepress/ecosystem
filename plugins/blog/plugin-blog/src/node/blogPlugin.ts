@@ -69,8 +69,8 @@ export const blogPlugin =
       type = [],
       slugify = (name: string): string =>
         name
-          .replace(/[ _]/g, '-')
-          .replace(/[:?*|\\/<>]/g, '')
+          .replaceAll(/[ _]/g, '-')
+          .replaceAll(/[:?*|\\/<>]/g, '')
           .toLowerCase(),
     } = options
 
@@ -170,8 +170,8 @@ export const blogPlugin =
           ...categoryResult.pageOptions,
           ...typeResult.pageOptions,
         ].map((page) => page.path!)
-        categoriesMap = categoryResult.categoriesMap
-        typesMap = typeResult.typesMap
+        ;({ categoriesMap } = categoryResult)
+        ;({ typesMap } = typeResult)
       },
 
       onPrepared: async (): Promise<void> => {
@@ -232,7 +232,7 @@ export const blogPlugin =
             )
 
             // add new pages
-            if (pagesToBeAdded.length) {
+            if (pagesToBeAdded.length > 0) {
               if (app.env.isDebug)
                 logger.info(
                   `Adding new pages: ${pagesToBeAdded.map(({ path }) => path).join(', ')}`,
@@ -251,7 +251,7 @@ export const blogPlugin =
             }
 
             // Remove pages
-            if (pagesToBeRemoved.length) {
+            if (pagesToBeRemoved.length > 0) {
               if (app.env.isDebug)
                 logger.info(
                   `Removing following pages: ${pagesToBeRemoved.join(', ')}`,
@@ -266,7 +266,7 @@ export const blogPlugin =
             }
 
             // Prepare pages entry
-            if (pagesToBeRemoved.length || pagesToBeAdded.length) {
+            if (pagesToBeRemoved.length > 0 || pagesToBeAdded.length > 0) {
               await prepareRoutes(app)
             }
 

@@ -36,7 +36,7 @@ export const getType = (
         // get type page path
         const pagePath = path
           ? `${localePath}${removeLeadingSlash(
-              path.replace(/:key/g, slugify(key)),
+              path.replaceAll(':key', slugify(key)),
             )}`
           : ''
 
@@ -76,6 +76,6 @@ export const getType = (
 
   return {
     typesMap: fromEntries(result.map(({ key, typeMap }) => [key, typeMap])),
-    pageOptions: result.map(({ pageOptions }) => pageOptions).flat(),
+    pageOptions: result.flatMap(({ pageOptions }) => pageOptions),
   }
 }
