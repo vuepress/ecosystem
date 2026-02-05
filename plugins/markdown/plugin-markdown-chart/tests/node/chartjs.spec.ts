@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 
 import { chartjs } from '../../src/node/markdown-it-plugins/chartjs.js'
 
-describe('chartjs', () => {
+describe(chartjs, () => {
   const markdownIt = MarkdownIt({ linkify: true }).use(chartjs, {
     allowScripts: true,
     allowAll: true,

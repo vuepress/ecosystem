@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 
 import { echarts } from '../../src/node/markdown-it-plugins/echarts.js'
 
-describe('echarts', () => {
+describe(echarts, () => {
   const markdownIt = MarkdownIt({ linkify: true }).use(echarts, {
     allowScripts: true,
     allowAll: true,
