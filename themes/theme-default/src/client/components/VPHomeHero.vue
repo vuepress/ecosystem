@@ -18,7 +18,8 @@ const heroText = computed(() => {
   return frontmatter.value.heroText || siteLocale.value.title || 'Hello'
 })
 const tagline = computed(() => {
-  if (frontmatter.value.tagline == null) {
+  // oxlint-disable-next-line eqeqeq
+  if (frontmatter.value.tagline === null) {
     return null
   }
 
