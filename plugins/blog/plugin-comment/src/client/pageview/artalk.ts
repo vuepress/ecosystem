@@ -8,7 +8,7 @@ export const usePageview = (): UpdatePageview => {
   const options = useArtalkOptions()
 
   return ({ selector }) => {
-    // oxlint-disable-next-line import/no-named-as-default-member, no-new
+    // oxlint-disable-next-line no-new
     new Artalk({
       server: options.value.server,
       site: options.value.site,

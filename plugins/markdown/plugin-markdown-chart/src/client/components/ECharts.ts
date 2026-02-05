@@ -1,6 +1,7 @@
 import { LoadingIcon, decodeData } from '@vuepress/helper/client'
 import { useDebounceFn, useEventListener } from '@vueuse/core'
 import type { EChartsOption, EChartsType } from 'echarts'
+// oxlint-disable-next-line import/no-namespace
 import type * as ECharts from 'echarts'
 import type { PropType, VNode } from 'vue'
 import {
@@ -34,7 +35,7 @@ const parseEChartsConfig = (
   instance: EChartsType,
 ): Promise<EChartsConfig> => {
   if (type === 'js') {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, new-cap
     const runner = AsyncFunction(
       'echarts',
       'myChart',

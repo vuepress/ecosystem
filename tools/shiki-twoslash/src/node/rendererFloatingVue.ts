@@ -189,8 +189,7 @@ export const rendererFloatingVue = (
       },
       errorToken:
         errorRendering === 'line'
-          ? // oxlint-disable-next-line no-undefined
-            undefined
+          ? undefined
           : {
               tagName: 'v-menu',
               properties: {

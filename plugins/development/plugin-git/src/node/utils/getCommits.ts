@@ -113,7 +113,7 @@ export const getRawCommits = async (
           body = '',
           message = '',
           refs = '',
-        ] = rawString.split(INFO_SPLITTER).map((v) => v.trim())
+        ] = rawString.split(INFO_SPLITTER).map((val) => val.trim())
 
         return {
           filepath,

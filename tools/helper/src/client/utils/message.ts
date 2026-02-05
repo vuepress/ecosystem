@@ -100,7 +100,6 @@ export class Message {
       messageElement.classList.add('move-out')
       messageElement.addEventListener('animationend', () => {
         messageElement.remove()
-        // oxlint-disable-next-line typescript/no-dynamic-delete
         delete this.elements[messageId]
       })
     }

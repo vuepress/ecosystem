@@ -17,7 +17,6 @@ const updateHash = async (router: Router, hash: string): Promise<void> => {
   const { scrollBehavior } = router.options
 
   // temporarily disable `scrollBehavior`
-  // oxlint-disable-next-line no-undefined
   router.options.scrollBehavior = undefined
   await router.replace({ path, query, hash })
   // restore it after navigation

@@ -34,7 +34,9 @@ const createNotationCommentMarkerRule = (
   parser: CodeParser,
   { classMap, classPre, notation }: NotationCommentMarkerOption,
 ): void => {
-  const marker = Object.keys(classMap).map(escapeRegExp).join('|')
+  const marker = Object.keys(classMap)
+    .map((key) => escapeRegExp(key))
+    .join('|')
   createNotationRule(
     parser,
     new RegExp(

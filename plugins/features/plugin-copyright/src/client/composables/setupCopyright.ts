@@ -1,3 +1,4 @@
+// oxlint-disable max-lines-per-function
 import type { ExactLocaleConfig } from '@vuepress/helper/client'
 import {
   isLinkHttp,
@@ -75,7 +76,7 @@ export const setupCopyright = (
       licenseInfo ? license.replace(':license', licenseInfo) : '',
       link.replace(':link', getLink(options.canonical)),
     ]
-      .filter((item) => item)
+      .filter(Boolean)
       .join('\n')
   }
 

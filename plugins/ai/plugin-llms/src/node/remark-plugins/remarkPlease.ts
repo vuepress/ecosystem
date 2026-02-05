@@ -16,6 +16,7 @@ import { fullTagRegex, tagRegex } from '../constants.js'
 export const remarkPlease =
   (intent: 'remove' | 'unwrap', tag: string) =>
   () =>
+  // oxlint-disable-next-line max-statements
   (tree: Root): Root => {
     const ourFullTagRegex = fullTagRegex(tag)
 
@@ -69,6 +70,7 @@ export const remarkPlease =
           if (intent === 'remove') {
             // Remove all nodes from opening to closing tag (inclusive)
             parent.children.splice(index, closeIndex - index + 1)
+            // oxlint-disable-next-line max-depth
             if (parent.type === 'paragraph' && parent.children.length === 0) {
               emptyParagraphs.add({ node: parent, parent })
             }
@@ -98,7 +100,7 @@ export const remarkPlease =
     visit(tree, 'paragraph', (node, index, parent) => {
       if (!parent || typeof index !== 'number') return
 
-      const firstChild = node.children[0]
+      const [firstChild] = node.children
       const isEmpty =
         node.children.length === 0 ||
         (node.children.length === 1 &&

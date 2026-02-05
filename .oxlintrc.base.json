@@ -84,6 +84,7 @@
     "import/no-default-export": "off",
     // a rule that shall not be enabled anyway
     "import/no-named-export": "off",
+    "import/max-dependencies": "off",
     // allow importing stylesheets
     "import/no-unassigned-import": [
       "error",
@@ -243,7 +244,9 @@
     "unicorn/prefer-at": "off",
     // support starts with chrome71, firefox68. safari12.1, node12
     // leaving it to warn for edge cases
-    "unicorn/prefer-global-this": "warn",
+    "unicorn/prefer-global-this": "off",
+    "unicorn/no-array-reduce": "off",
+    "unicorn/no-typeof-undefined": "off",
     // prefer utf-8 over utf8
     "unicorn/text-encoding-identifier-case": [
       "error",
@@ -271,6 +274,9 @@
           "b",
           // events
           "e",
+          // svg attributes
+          "d",
+          "r",
           // loops
           "i",
           "j",
@@ -281,6 +287,8 @@
           // type generics
           "T",
           "U",
+          "D",
+          "K",
           "V",
           "P",
           "S",

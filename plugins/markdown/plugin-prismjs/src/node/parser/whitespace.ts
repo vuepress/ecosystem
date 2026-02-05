@@ -56,6 +56,7 @@ export const renderWhitespaceInLine = (
         let j = 0
 
         while (snippet[j] && j < snippet.length) {
+          // oxlint-disable-next-line max-depth
           if (!isSpace(snippet[j])) {
             has = false
             break
@@ -79,6 +80,7 @@ export const renderWhitespaceInLine = (
 
       if (snippet && snippet[j] !== '>') {
         while (snippet[j] && j >= 0) {
+          // oxlint-disable-next-line max-depth
           if (!isSpace(snippet[j])) {
             has = false
             break

@@ -4,7 +4,8 @@ export const getFeedCategory = (
   category: string[] | string | undefined,
 ): string[] => {
   if (category) {
-    if (isArray(category) && category.every(isString)) return category
+    if (isArray(category) && category.every((item) => isString(item)))
+      return category
     if (isString(category)) return [category]
   }
 

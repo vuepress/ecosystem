@@ -2,6 +2,7 @@ import type { App } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import type { PwaPluginOptions } from './options.js'
 
+// oxlint-disable-next-line complexity
 export const injectLinksToHead = (
   app: App,
   { favicon, manifest, themeColor = '#46bd87', apple }: PwaPluginOptions,

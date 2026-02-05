@@ -123,8 +123,7 @@ export const parseGitStatus = (status: string): string[] => {
   status.split('\n').forEach((line) => {
     if (!line) return
 
-    const statusX = line[0]
-    const statusY = line[1]
+    const [statusX, statusY] = line
 
     // Check for unstaged changes or untracked files
     if (

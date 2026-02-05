@@ -116,6 +116,7 @@ const SHELL_RE = /language-(shellscript|shell|bash|sh|zsh)/
  * }
  * ```
  */
+// oxlint-disable-next-line max-lines-per-function
 export const useCopyCode = ({
   selector,
   ignoreSelector,
@@ -154,7 +155,9 @@ export const useCopyCode = ({
     document.body.classList.toggle('no-copy-code', !enabled.value)
     if (!enabled.value) return
 
-    document.querySelectorAll<HTMLElement>(selector).forEach(insertCopyButton)
+    document.querySelectorAll<HTMLElement>(selector).forEach((el) => {
+      insertCopyButton(el)
+    })
   }
 
   watchImmediate(enabled, () => nextTick(appendCopyButton), {

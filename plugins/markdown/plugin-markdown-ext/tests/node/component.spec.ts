@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest'
 import { component } from '../../src/node/markdown-it-plugins/component.js'
 
 describe(component, () => {
-  const markdownIt = MarkdownIt({ linkify: true }).use(component)
+  const markdownIt = new MarkdownIt({ linkify: true }).use(component)
 
   it('Should resolve component fence', () => {
     const result1 = markdownIt.render(

@@ -6,6 +6,7 @@ import type { IndexItem } from '../shared/index.js'
 import type { WorkerMessageData } from './typings/index.js'
 import { getSearchResults, getSuggestions } from './worker-utils/index.js'
 
+// oxlint-disable-next-line unicorn/prefer-add-event-listener
 globalThis.onmessage = async ({
   data: { type = 'all', query, locale = '/', options, id },
 }: MessageEvent<WorkerMessageData>): Promise<void> => {

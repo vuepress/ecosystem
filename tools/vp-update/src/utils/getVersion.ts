@@ -2,6 +2,7 @@ import { get } from 'node:https'
 import semver from 'semver'
 import type { PackageManager } from './packageManager.js'
 import { getRegistry } from './registry.js'
+import { retry } from './retry.js'
 
 export const getVersion = async (
   packageManager: PackageManager,
@@ -30,26 +31,21 @@ export const getVersion = async (
       }).on('error', reject)
     })
 
-  for (let times = 1; times <= retries; times++) {
-    const versionInfo = await getVersionInfo().catch(() => {
+  try {
+    const { next, latest } = await retry(getVersionInfo, retries, (times) => {
       // eslint-disable-next-line no-console
       console.log(`Get ${packageName} version failed, [${times}/${retries}]`)
     })
-
-    if (versionInfo) {
-      const { next, latest } = versionInfo
-
-      return tag === 'latest'
-        ? latest
-        : tag === 'next'
+    return tag === 'latest'
+      ? latest
+      : tag === 'next'
+        ? next
+        : next && semver.gt(next, latest)
           ? next
-          : next && semver.gt(next, latest)
-            ? next
-            : latest
-    }
+          : latest
+  } catch {
+    throw new Error(
+      `Failed to get ${packageName} version!\n Can not get version info from ${infoUrl}`,
+    )
   }
-
-  throw new Error(
-    `Failed to get ${packageName} version!\n Can not get version info from ${infoUrl}`,
-  )
 }

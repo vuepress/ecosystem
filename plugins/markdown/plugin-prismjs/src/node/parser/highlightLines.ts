@@ -24,7 +24,7 @@ export const getHighlightLinesRange = (
   const match = info.match(/{([\d,-]+)}/)
 
   // no highlight-lines mark, return `null`
-  if (match === null) {
+  if (match == null) {
     return null
   }
 

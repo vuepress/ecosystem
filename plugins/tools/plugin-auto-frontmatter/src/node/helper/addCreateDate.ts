@@ -69,7 +69,7 @@ const getGitCreateDate = (filepath: string): Date | undefined => {
 
 const getFileCreateDate = (filepath: string): Date => {
   const stats = fs.statSync(filepath)
-  return stats.birthtime.getFullYear() !== 1970 ? stats.birthtime : stats.atime
+  return stats.birthtime.getFullYear() === 1970 ? stats.atime : stats.birthtime
 }
 
 export interface AddCreateDateOptions {

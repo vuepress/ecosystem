@@ -1,4 +1,5 @@
 import { useRouter } from 'vuepress/client'
+// oxlint-disable-next-line import/no-unassigned-import
 import './declare.js'
 
 /**

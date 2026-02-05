@@ -69,13 +69,9 @@ export const prepareNoticeOptions = async (
   app: App,
   options: NoticeOptions[] = [],
 ): Promise<void> => {
-  const noticeOptions: NoticeOptions[] = []
-
-  for (const item of options) {
-    noticeOptions.push(await resolveNoticeItem(app, item))
-  }
-
-  const noticeAttrOptions = getNoticeOptions(noticeOptions)
+  const noticeAttrOptions = getNoticeOptions(
+    await Promise.all(options.map((item) => resolveNoticeItem(app, item))),
+  )
 
   let content = `\
 export const NOTICE_OPTIONS = JSON.parse(${JSON.stringify(

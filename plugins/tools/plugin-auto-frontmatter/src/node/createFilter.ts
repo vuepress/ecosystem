@@ -27,11 +27,11 @@ export const createFilter = (pattern: Pattern): Matcher => {
   const ignorePatterns: string[] = []
 
   // find negative patterns, like `!*.md`
-  for (const p of pattern) {
-    if (p.startsWith('!')) {
-      ignorePatterns.push(p.slice(1))
+  for (const item of pattern) {
+    if (item.startsWith('!')) {
+      ignorePatterns.push(item.slice(1))
     } else {
-      patterns.push(p)
+      patterns.push(item)
     }
   }
 

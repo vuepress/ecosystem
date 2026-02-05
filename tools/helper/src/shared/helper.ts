@@ -20,7 +20,7 @@ export { isFunction, isString, isPlainObject } from 'vuepress/shared'
  * isDef(0) // true
  * ```
  */
-// oxlint-disable-next-line unicorn/no-typeof-undefined, typescript/no-explicit-any
+// oxlint-disable-next-line typescript/no-explicit-any
 export const isDef = <T = any>(val?: T): val is T => typeof val !== 'undefined'
 
 /**

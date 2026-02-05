@@ -1,4 +1,5 @@
 import type { HighlightLanguage } from './languages.js'
+// oxlint-disable-next-line import/no-namespace
 import * as languages from './languages.js'
 
 type LanguageAlias = string
@@ -18,10 +19,11 @@ let languagesMap: LanguagesMap | null = null
  */
 const getLanguagesMap = (): LanguagesMap =>
   (languagesMap ??= Object.values(languages).reduce<LanguagesMap>(
-    (result, item) => ({
-      ...result,
-      ...Object.fromEntries(item.aliases.map((alias) => [alias, item])),
-    }),
+    (result, item) =>
+      Object.assign(
+        result,
+        Object.fromEntries(item.aliases.map((alias) => [alias, item])),
+      ),
     {},
   ))
 

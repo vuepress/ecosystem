@@ -4,6 +4,7 @@ import { isLinkHttp } from 'vuepress/shared'
 import type { FeedChannelOptions, FeedPluginOptions } from '../typings/index.js'
 import { getUrl } from './utils/index.js'
 
+// oxlint-disable-next-line complexity
 export const getFeedChannelOptions = (
   app: App,
   options: FeedPluginOptions,

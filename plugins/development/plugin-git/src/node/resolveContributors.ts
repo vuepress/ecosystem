@@ -25,6 +25,7 @@ import {
  *
  * Git 提供商
  */
+// oxlint-disable-next-line complexity
 export const getRawContributors = (
   commits: MergedRawCommit[],
   options: ContributorsOptions,
@@ -94,7 +95,7 @@ export const getRawContributors = (
     // already a contributor with the same name, it is very likely a duplicate,
     // so it can be removed.
     if (item.email.split('@')[1]?.match(/no-?reply/)) {
-      const realIndex = self.findIndex((t) => t.name === item.name)
+      const realIndex = self.findIndex((info) => info.name === item.name)
       if (realIndex !== index) {
         // Update the "real" contributor to also include the noreply's commits
         self[realIndex].commits += item.commits

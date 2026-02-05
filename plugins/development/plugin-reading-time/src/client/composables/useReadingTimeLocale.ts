@@ -65,7 +65,7 @@ export interface ReadingTimeLocale {
  * ```
  */
 export const useReadingTimeLocale = (): ComputedRef<ReadingTimeLocale> => {
-  if (readingTimeLocales === null) return computed(() => DEFAULT_LOCALE)
+  if (readingTimeLocales == null) return computed(() => DEFAULT_LOCALE)
 
   const readingTime = useReadingTimeData()
   const readingTimeLocale = useReadingTimeLocaleConfig()

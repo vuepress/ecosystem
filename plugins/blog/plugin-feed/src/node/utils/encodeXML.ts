@@ -25,7 +25,6 @@ export const encodeXML = (content: ElementCompact): ElementCompact =>
             entries(value as Record<string, number | string | undefined>).map(
               ([attr, attrValue]) => [
                 attr,
-                // oxlint-disable-next-line no-undefined
                 attrValue ? encodeXMLContent(attrValue.toString()) : undefined,
               ],
             ),

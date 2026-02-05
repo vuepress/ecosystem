@@ -10,7 +10,6 @@ export default defineConfig({
   forbidOnly: IS_CI,
   reporter: IS_CI ? 'github' : 'line',
   retries: IS_CI ? 2 : 0,
-  // oxlint-disable-next-line no-undefined
   workers: IS_DEV ? 1 : undefined,
   projects: [
     {

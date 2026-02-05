@@ -11,13 +11,13 @@ const { frontmatter, siteLocale } = useData<DefaultThemeHomePageFrontmatter>()
 const isDarkMode = useDarkMode()
 
 const heroText = computed(() => {
-  if (frontmatter.value.heroText === null) {
+  if (frontmatter.value.heroText == null) {
     return null
   }
   return frontmatter.value.heroText || siteLocale.value.title || 'Hello'
 })
 const tagline = computed(() => {
-  if (frontmatter.value.tagline === null) {
+  if (frontmatter.value.tagline == null) {
     return null
   }
 

@@ -1,3 +1,4 @@
+// oxlint-disable id-length
 /* eslint-disable @typescript-eslint/no-unsafe-enum-comparison */
 import { entries, fromEntries, isArray, keys } from '@vuepress/helper'
 import { load } from 'cheerio'
@@ -102,6 +103,7 @@ export const generatePageIndex = (
 
         // Update current section index only if it has an id
         if (id) {
+          // oxlint-disable-next-line no-negated-condition
           if (!foundFirstHeader) foundFirstHeader = true
           else results.push(sectionIndex!)
 

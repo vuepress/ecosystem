@@ -73,9 +73,9 @@ export const markdownMathPlugin =
     if (!mathRenderer || (type && mathRenderer !== type)) {
       const packages = { katex: 'katex', mathjax: '@mathjax/src' }
       logger.error(
-        !mathRenderer
-          ? 'No math renderer found, please install @mathjax/src or katex'
-          : `type is "${type}", but "${packages[type!]}" is not installed`,
+        mathRenderer
+          ? `type is "${type}", but "${packages[type!]}" is not installed`
+          : 'No math renderer found, please install @mathjax/src or katex',
       )
 
       return {

@@ -14,7 +14,7 @@ const FOCUS_RE = /^\*\*(.*)\*\*(?:$|\s+)/
 export const parseFileTreeNodeInfo = (rawInfo: string): FileTreeNodeProps => {
   let filename = ''
   let focus = false
-  let expanded: boolean = true
+  let expanded = true
   let type: FileTreeNodeProps['type'] = 'file'
   let diff: FileTreeNodeProps['diff']
   let info = rawInfo

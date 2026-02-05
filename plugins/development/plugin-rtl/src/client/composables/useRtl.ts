@@ -27,6 +27,7 @@ import { getElement } from '../utils/index.js'
  */
 export const useRtl = (
   rtlLocalePaths: string[],
+  // oxlint-disable-next-line unicorn/no-object-as-default-parameter
   selectorOptions: Record<string, Record<string, string>> = {
     html: { dir: 'rtl' },
   },

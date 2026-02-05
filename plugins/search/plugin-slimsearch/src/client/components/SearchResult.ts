@@ -1,3 +1,4 @@
+// oxlint-disable max-lines-per-function
 import { isPlainObject, isString, useLocale } from '@vuepress/helper/client'
 import { useEventListener } from '@vueuse/core'
 import type { PropType, VNode } from 'vue'

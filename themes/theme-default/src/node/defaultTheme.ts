@@ -1,4 +1,3 @@
-// oxlint-disable import/max-dependencies
 import { addViteOptimizeDepsExclude } from '@vuepress/helper'
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { backToTopPlugin } from '@vuepress/plugin-back-to-top'

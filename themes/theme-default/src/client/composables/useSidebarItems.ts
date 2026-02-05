@@ -187,7 +187,7 @@ export const useSidebarItems = (): SidebarItemsRef => {
  *
  * @returns resolved sidebar items
  */
-// oxlint-disable-next-line max-params
+
 export const resolveSidebarItems = (
   sidebarConfig: SidebarOptions | false,
   page: PageData,

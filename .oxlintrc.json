@@ -1,7 +1,12 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "extends": ["./.oxlintrc.base.json"],
-  "ignorePatterns": ["coverage/", "packages/*/*/lib/", "template/"],
+  "ignorePatterns": [
+    "coverage/",
+    "packages/*/*/lib/",
+    "template/",
+    "**/tests/__fixtures__/"
+  ],
   // disable jsdoc currently
   "plugins": ["typescript", "oxc", "import", "promise", "unicorn"],
   "rules": {
@@ -99,7 +104,7 @@
         "max-lines-per-function": [
           "warn",
           {
-            "max": 200,
+            "max": 300,
             "skipBlankLines": true,
             "skipComments": true
           }

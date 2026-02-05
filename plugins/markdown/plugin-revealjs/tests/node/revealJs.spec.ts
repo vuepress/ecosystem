@@ -33,7 +33,7 @@ $$
 `
 
 describe(revealJs, () => {
-  const markdownIt = MarkdownIt({ linkify: true }).use(revealJs)
+  const markdownIt = new MarkdownIt({ linkify: true }).use(revealJs)
 
   it('Should render', () => {
     const renderResult = markdownIt.render(`

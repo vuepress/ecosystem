@@ -1,4 +1,3 @@
-// oxlint-disable import/max-dependencies
 import { cachePlugin } from '@vuepress/plugin-cache'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { commentPlugin } from '@vuepress/plugin-comment'
