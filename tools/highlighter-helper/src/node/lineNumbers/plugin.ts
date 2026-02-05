@@ -64,7 +64,7 @@ export const lineNumbers = (
       typeof lineNumbersInfo === 'number' ? lineNumbersInfo - 1 : 0
     const lineNumbersStyle = `style="counter-reset:line-number ${startNumbers}"`
 
-    const lineNumbersCode = Array(lines.length)
+    const lineNumbersCode = Array.from({ length: lines.length })
       .fill('<div class="line-number"></div>')
       .join('')
 

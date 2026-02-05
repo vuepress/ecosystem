@@ -6,7 +6,7 @@ import type { IndexItem } from '../shared/index.js'
 import type { WorkerMessageData } from './typings/index.js'
 import { getSearchResults, getSuggestions } from './worker-utils/index.js'
 
-self.onmessage = async ({
+globalThis.onmessage = async ({
   data: { type = 'all', query, locale = '/', options, id },
 }: MessageEvent<WorkerMessageData>): Promise<void> => {
   const { default: localeIndex } = await database[locale]()
@@ -24,19 +24,19 @@ self.onmessage = async ({
   )
 
   if (type === 'suggest')
-    self.postMessage([
+    globalThis.postMessage([
       type,
       id,
       getSuggestions(query, searchLocaleIndex, options),
     ])
   else if (type === 'search')
-    self.postMessage([
+    globalThis.postMessage([
       type,
       id,
       getSearchResults(query, searchLocaleIndex, options, sortStrategy),
     ])
   else
-    self.postMessage({
+    globalThis.postMessage({
       suggestions: [
         type,
         id,

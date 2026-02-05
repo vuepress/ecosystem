@@ -69,7 +69,7 @@ export const tocGetter = (llmPages: LLMPage[], llmState: LLMState): string => {
   const appendTOC = (title: string, key: string): void => {
     tableOfContent += `### ${title}\n\n`
     tableOfContent += flattenSidebar(
-      sidebarConfig[key] as SidebarItemOptions[],
+      (sidebarConfig as Record<string, unknown[]>)[key] as SidebarItemOptions[],
       key,
     )
       .map((path) => generateTOCLink(path))
@@ -81,11 +81,13 @@ export const tocGetter = (llmPages: LLMPage[], llmState: LLMState): string => {
   // Themes
   appendTOC('Themes', '/themes/')
   // Plugins
-  ;(sidebarConfig['/plugins/'] as AutoLinkOptions[]).forEach(
-    ({ text, link }) => {
-      appendTOC(`${text} Plugins`, `/plugins/${link}`)
-    },
-  )
+  ;(
+    (sidebarConfig as Record<string, unknown[]>)[
+      '/plugins/'
+    ] as AutoLinkOptions[]
+  ).forEach(({ text, link }) => {
+    appendTOC(`${text} Plugins`, `/plugins/${link}`)
+  })
   // Tools
   appendTOC('Tools', '/tools/')
   // Others

@@ -9,6 +9,7 @@ import type { LlmsPluginOptions } from './options.js'
 import { resolveLLMPages } from './resolveLLMPages.js'
 import type { LLMState } from './types.js'
 import { logger } from './utils/index.js'
+import { keys } from '@vuepress/helper'
 
 /**
  * Plugin to generate LLM-friendly documentation files
@@ -49,9 +50,9 @@ export const llmsPlugin =
           llmsTxt = true,
           llmsFullTxt = true,
           llmsPageTxt = true,
-          filter = () => true,
+          filter = (): boolean => true,
           stripHTML = true,
-          transformMarkdown = (md) => md,
+          transformMarkdown = (md): string => md,
           llmsTxtTemplate = DEFAULT_LLMSTXT_TEMPLATE,
           llmsTxtTemplateGetter = {},
           locale = '/',
@@ -99,9 +100,9 @@ export const llmsPlugin =
 
         if (locale === 'all') {
           // Generate llms for all locales
-          for (const localePath in app.siteData.locales) {
-            await generateLLM(localePath)
-          }
+          await Promise.all(
+            keys(app.siteData.locales).map((locale) => generateLLM(locale)),
+          )
         } else {
           // Generate llms for the specified locale
           await generateLLM(locale)

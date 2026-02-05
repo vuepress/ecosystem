@@ -3,7 +3,7 @@
  * @license MIT
  */
 
-import { isDef } from '@vuepress/helper/client'
+import { entries, isDef } from '@vuepress/helper/client'
 
 // Forked and modified from nprogress v0.2.0
 
@@ -16,16 +16,16 @@ const removeClass = (element: Element, name: string): void => {
 }
 
 const removeElement = (element?: Element | null): void => {
-  element?.parentNode?.removeChild(element)
+  element?.remove()
 }
 
-const clamp = (n: number, min: number, max: number): number => {
-  if (n < min) return min
-  if (n > max) return max
-  return n
+const clamp = (num: number, min: number, max: number): number => {
+  if (num < min) return min
+  if (num > max) return max
+  return num
 }
 
-const toBarPercent = (n: number): number => (-1 + n) * 100
+const toBarPercent = (num: number): number => (-1 + num) * 100
 
 const queue = (() => {
   const pending: ((next: () => void) => void)[] = []
@@ -82,18 +82,16 @@ const addStyle = (() => {
     prop: string,
     value: string,
   ): void => {
-    element.style[getStyleProp(prop)] = value
+    ;(element.style as unknown as Record<string, string>)[getStyleProp(prop)] =
+      value
   }
 
   return (
     element: HTMLElement,
     properties: Record<string, string | undefined>,
   ): void => {
-    for (const prop in properties) {
-      const value = properties[prop]
-
-      if (Object.hasOwn(properties, prop) && isDef(value))
-        applyCss(element, prop, value)
+    for (const [prop, value] of entries(properties)) {
+      if (isDef(value)) applyCss(element, prop, value)
     }
   }
 })()

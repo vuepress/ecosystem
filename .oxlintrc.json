@@ -7,14 +7,12 @@
   "rules": {
     // object assign can be performant
     "prefer-object-spread": "off",
-
     // we only use this when necessary
     "typescript/no-non-null-assertion": "off",
     // this can introduce false positives, as though type is required, users might not provide such
     "typescript/prefer-nullish-coalescing": "off",
     // we often check other types
     "typescript/strict-boolean-expressions": "off",
-
     // disabled due to performance consideration
     "unicorn/prefer-code-point": "off"
   },
@@ -25,8 +23,16 @@
         "import/no-unresolved": "off",
         "vue/multi-word-component-names": [
           "error",
-          { "ignores": ["Article", "Category", "Tag", "Timeline"] }
+          {
+            "ignores": ["Article", "Category", "Tag", "Timeline"]
+          }
         ]
+      }
+    },
+    {
+      "files": ["**/*.spec.ts"],
+      "rules": {
+        "no-console": "off"
       }
     },
     {
@@ -37,7 +43,8 @@
           "error",
           "@vuepress/helper/client",
           "vuepress/client"
-        ]
+        ],
+        "node/no-process-env": "off"
       }
     },
     {
@@ -51,6 +58,12 @@
           "vuepress/core",
           "vuepress/markdown",
           "vuepress/utils"
+        ],
+        "vue/max-props": [
+          "warn",
+          {
+            "maxProps": 10
+          }
         ]
         // not working at all
         // "typescript/no-floating-promises": [
@@ -85,8 +98,18 @@
         // loose max lines for components setup blocks
         "max-lines-per-function": [
           "warn",
-          { "max": 200, "skipBlankLines": true, "skipComments": true }
+          {
+            "max": 200,
+            "skipBlankLines": true,
+            "skipComments": true
+          }
         ]
+      }
+    },
+    {
+      "files": ["**/.vuepress/client.ts", "**/src/client/config.ts"],
+      "rules": {
+        "typescript/no-unsafe-assignment": "off"
       }
     },
     {
@@ -94,6 +117,14 @@
       "rules": {
         // export {} are needed to become a module
         "unicorn/require-module-specifiers": "off"
+      }
+    },
+    {
+      "files": ["**/src/node/*Plugin.ts"],
+      "rules": {
+        "max-lines-per-function": "off",
+        "max-dependencies": "off",
+        "complexity": "off"
       }
     }
   ]

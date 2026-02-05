@@ -99,7 +99,7 @@ export const plugins = [
     custom: [
       {
         matcher: 'Recommended',
-        replacer: ({ tag }): MarkdownItStylizeResult => {
+        replacer: ({ tag }): MarkdownItStylizeResult | null => {
           if (tag === 'em')
             return {
               tag: 'Badge',

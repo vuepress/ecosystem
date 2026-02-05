@@ -87,15 +87,15 @@ export const shikiPlugin =
         /**
          * Turn off the `v-pre` configuration of the code block.
          */
-        if (opts.vPre !== false) {
+        if (opts.vPre === false) {
+          enableVPre = false
+        } else {
           const vPre = isPlainObject(opts.vPre) ? opts.vPre : { block: true }
           if (vPre.block) {
             opts.vPre ??= {}
             opts.vPre.block = false
           }
           enableVPre = vPre.block ?? true
-        } else {
-          enableVPre = false
         }
       },
 

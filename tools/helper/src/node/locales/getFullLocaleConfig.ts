@@ -51,13 +51,12 @@ export const getLocaleData = <T extends LocaleData>(
 
   if (!isShortLang) {
     // find short lang match
-    const shortLang = lang.split('-')[0]
+    const [shortLang] = lang.split('-')
 
     const shortLocaleData = info.find(([langs]) => langs.includes(shortLang))
 
     if (shortLocaleData) return shortLocaleData[1]
   }
-
   ;(logger ?? console).warn(`${lang} is missing it's i18n config`)
 
   return (

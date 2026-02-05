@@ -26,7 +26,7 @@ const resolveEditLinkPatterns = ({
   }
 
   const repoType = resolveRepoType(docsRepo)
-  if (repoType !== null) {
+  if (repoType != null) {
     return EDIT_LINK_PATTERNS[repoType]
   }
 

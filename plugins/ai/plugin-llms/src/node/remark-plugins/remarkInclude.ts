@@ -68,7 +68,7 @@ const findRegion = (
   let lineStart = -1
 
   for (const [lineId, line] of lines.entries())
-    if (regexp === null) {
+    if (regexp == null) {
       for (const reg of REGIONS_RE)
         if (testLine(line, reg, regionName)) {
           lineStart = lineId + 1
@@ -238,8 +238,8 @@ const resolveLink = (
 
       // html tag: <a href="path">
       if (node.type === 'html' && node.value.startsWith('<a ')) {
-        node.value = node.value.replace(HTML_LINK_RE, (m, link: string) =>
-          m.replace(link, convertLink(link, base)),
+        node.value = node.value.replace(HTML_LINK_RE, (matched, link: string) =>
+          matched.replace(link, convertLink(link, base)),
         )
       }
     }
@@ -252,8 +252,8 @@ const resolveLink = (
 
       // html tag: <img src="path">
       if (node.type === 'html' && node.value.startsWith('<img ')) {
-        node.value = node.value.replace(HTML_LINK_RE, (m, link: string) =>
-          m.replace(link, convertLink(link, base)),
+        node.value = node.value.replace(HTML_LINK_RE, (matched, link: string) =>
+          matched.replace(link, convertLink(link, base)),
         )
       }
     }

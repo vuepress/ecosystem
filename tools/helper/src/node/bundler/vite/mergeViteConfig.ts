@@ -51,7 +51,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-import { endsWith, isArray, isString, keys } from '../../../shared/index.js'
+import {
+  endsWith,
+  isArray,
+  isString,
+  keys,
+  entries,
+} from '../../../shared/index.js'
 
 interface Alias {
   find: RegExp | string
@@ -102,12 +108,12 @@ const normalizeSingleAlias = ({
 }
 
 const normalizeAlias = (aliasOption: AliasOptions = []): Alias[] =>
-  isArray(aliasOption)
-    ? aliasOption.map(normalizeSingleAlias)
+  isArray<Alias>(aliasOption)
+    ? aliasOption.map((alias) => normalizeSingleAlias(alias))
     : keys(aliasOption).map((find) =>
         normalizeSingleAlias({
           find,
-          replacement: aliasOption[find],
+          replacement: (aliasOption as Record<string, string>)[find],
         }),
       )
 
@@ -146,9 +152,7 @@ const mergeConfigRecursively = (
   overrides: Record<string, any>,
   rootPath: string,
 ): Record<string, any> => {
-  for (const key in overrides) {
-    const value = overrides[key]
-
+  for (const [key, value] of entries(overrides)) {
     if (value == null) {
       continue
     }
@@ -165,6 +169,7 @@ const mergeConfigRecursively = (
       merged[key] = mergeAlias(existing, value)
       continue
     } else if (key === 'assetsInclude' && rootPath === '') {
+      // oxlint-disable-next-line unicorn/prefer-spread
       merged[key] = [].concat(existing, value)
       continue
     } else if (

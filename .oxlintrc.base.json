@@ -12,9 +12,20 @@
     // oxlint core rules
     // we should not enforce capitalized comments
     "capitalized-comments": "off",
-    "complexity": ["warn", { "variant": "modified" }],
+    "complexity": [
+      "warn",
+      {
+        "variant": "modified"
+      }
+    ],
     // we allow == and != with null
-    "eqeqeq": ["error", "smart", { "null": "never" }],
+    "eqeqeq": [
+      "error",
+      "smart",
+      {
+        "null": "never"
+      }
+    ],
     // function names can be omitted if the name can be inferred from the context
     "func-names": ["warn", "as-needed"],
     // prefer to export declarations instead of exporting at the end
@@ -28,7 +39,12 @@
     // warn about console usage but allow it
     "no-console": "warn",
     // type imports can be duplicated with value imports
-    "no-duplicate-imports": ["error", { "allowSeparateTypeImports": true }],
+    "no-duplicate-imports": [
+      "error",
+      {
+        "allowSeparateTypeImports": true
+      }
+    ],
     // we use == null to check for both null and undefined
     "no-eq-null": "off",
     // inline comments shall be allowed
@@ -39,6 +55,8 @@
     "no-nested-ternary": "off",
     // allow null usage
     "no-null": "off",
+    // allow undefined usage
+    "no-undefined": "off",
     // NOTE: this rule currently do not allow to forbid change with read operations, a single expression like `a++;` shall be allowed with loops
     // "no-plusplus": ["warn", { "allowForLoopAfterthoughts": true }],
     "no-plusplus": "off",
@@ -46,6 +64,8 @@
     "no-ternary": "off",
     // we use void operator to mark those promise that shall not be awaited
     "no-void": "off",
+    // allow warning comments, like todo, fixme
+    "no-warning-comments": "off",
     // normally we do not enforce numeric separator usage
     "numeric-separators-style": "off",
     // some functions that return promise and plain values in different conditions
@@ -55,7 +75,6 @@
     "sort-imports": "off",
     // object keys are not supposed to be sorted in many cases
     "sort-keys": "off",
-
     // import plugin rules
     // exports shall be at their declaration location
     "import/exports-last": "off",
@@ -68,27 +87,36 @@
     // allow importing stylesheets
     "import/no-unassigned-import": [
       "error",
-      { "allow": ["**/*.css", "**/*.scss"] }
+      {
+        "allow": ["**/*.css", "**/*.scss"]
+      }
     ],
     // named export is preferred
     "import/prefer-default-export": "off",
-
     // jsdoc plugin rules
     // duplicated typescript related jsdoc shall be warned
-    "jsdoc/check-tag-names": ["warn", { "typed": true }],
+    "jsdoc/check-tag-names": [
+      "warn",
+      {
+        "typed": true
+      }
+    ],
     // we do not require types in jsdoc since we use TypeScript
     "jsdoc/require-param-type": "off",
     // getter does not need a @returns tag
-    "jsdoc/require-returns": ["warn", { "checkGetters": false }],
+    "jsdoc/require-returns": [
+      "warn",
+      {
+        "checkGetters": false
+      }
+    ],
     // we do not require types in jsdoc since we use TypeScript
     "jsdoc/require-returns-type": "off",
-
     "promise/always-return": "off",
     // we sometimes need to create new Promise instance
     "promise/avoid-new": "off",
     // we prefer async/await syntax
     "promise/prefer-await-to-then": "off",
-
     // oxc plugin rules
     // our environment supports object rest/spread properties
     "oxc/no-rest-spread-properties": "off",
@@ -96,30 +124,47 @@
     "oxc/no-optional-chaining": "off",
     // async/await is widely supported in our target environments
     "oxc/no-async-await": "off",
-
     // react plugin rules
     // allow jsx in tsx files
     "react/jsx-filename-extension": [
       "warn",
-      { "extensions": [".jsx", ".tsx"] }
+      {
+        "extensions": [".jsx", ".tsx"]
+      }
     ],
     // default 2 levels is too low for complex components
-    "react/jsx-max-depth": ["warn", { "max": 6 }],
+    "react/jsx-max-depth": [
+      "warn",
+      {
+        "max": 6
+      }
+    ],
     // React 17+ does not require React in scope
     "react/react-in-jsx-scope": "off",
-
     // typescript plugin rules
     // disable unsafe type assertion checks
     "typescript/no-unsafe-type-assertion": "off",
+    "typescript/explicit-function-return-type": [
+      "warn",
+      {
+        "allowExpressions": true
+      }
+    ],
     // enforce naming conventions
     // NOTE: not implemented yet by the moment: https://github.com/oxc-project/tsgolint/tree/main?tab=readme-ov-file#implemented-rules
     "typescript/naming-convention": [
       "warn",
       [
-        { "selector": "default", "format": ["camelCase"] },
+        {
+          "selector": "default",
+          "format": ["camelCase"]
+        },
         {
           "selector": "variable",
-          "filter": { "regex": "^__(?:dirname|filename)$", "match": true },
+          "filter": {
+            "regex": "^__(?:dirname|filename)$",
+            "match": true
+          },
           "format": null
         },
         {
@@ -146,9 +191,18 @@
           "leadingUnderscore": "allow",
           "trailingUnderscore": "allow"
         },
-        { "selector": "import", "format": ["PascalCase", "camelCase"] },
-        { "selector": "typeLike", "format": ["PascalCase"] },
-        { "selector": "enumMember", "format": ["PascalCase"] }
+        {
+          "selector": "import",
+          "format": ["PascalCase", "camelCase"]
+        },
+        {
+          "selector": "typeLike",
+          "format": ["PascalCase"]
+        },
+        {
+          "selector": "enumMember",
+          "format": ["PascalCase"]
+        }
       ]
     ],
     // allow functions that return promise to not use await
@@ -156,17 +210,20 @@
     // allow non-null assertions in some cases
     "typescript/strict-boolean-expressions": [
       "warn",
-      { "allowNullableString": true, "allowNullableBoolean": true }
+      {
+        "allowNullableString": true,
+        "allowNullableBoolean": true
+      }
     ],
     // missing async with await will be reported by typescript itself
     "typescript/promise-function-async": "off",
-
     // unicorn plugin rules
     // filename should not be enforced strictly, e.g. Vue SFC files shall be PascalCased
     // we shall expect a project level setting
     "unicorn/filename-case": "off",
     // this rule introduce too many false positives
     "unicorn/explicit-length-check": "off",
+    "typescript/no-dynamic-delete": "off",
     // toReversed can introduce memory overhead,
     // in some chained calls it is better to use reverse as the "reversed" array is also a temp variable.
     "unicorn/no-array-reverse": "off",
@@ -179,6 +236,7 @@
     "unicorn/no-await-expression-member": "off",
     // conflicts with oxfmt code style
     "unicorn/no-nested-ternary": "off",
+    "unicorn/prefer-dom-node-dataset": "off",
     // conflicts with oxfmt code style
     "unicorn/number-literal-case": "off",
     // Array.at() is too modern for browser targets
@@ -187,10 +245,19 @@
     // leaving it to warn for edge cases
     "unicorn/prefer-global-this": "warn",
     // prefer utf-8 over utf8
-    "unicorn/text-encoding-identifier-case": ["error", { "withDash": true }],
-
+    "unicorn/text-encoding-identifier-case": [
+      "error",
+      {
+        "withDash": true
+      }
+    ],
     // stylistic rules with default being tweaked
-    "catch-error-name": ["warn", { "name": "err" }],
+    "catch-error-name": [
+      "warn",
+      {
+        "name": "err"
+      }
+    ],
     // FIXME: https://github.com/oxc-project/oxc/issues/18566
     // "curly": ["warn", "multi-or-nest", "consistent"],
     "curly": "off",
@@ -202,27 +269,56 @@
           // sorting
           "a",
           "b",
+          // events
+          "e",
           // loops
           "i",
           "j",
+          // positions
+          "x",
+          "y",
+          "z",
           // type generics
           "T",
+          "U",
+          "V",
+          "P",
+          "S",
           // parameter name for unused variables
           "_"
         ]
       }
     ],
-    "max-dependencies": ["warn", { "ignoreTypeImports": true, "max": 15 }],
+    "max-dependencies": [
+      "warn",
+      {
+        "ignoreTypeImports": true,
+        "max": 15
+      }
+    ],
     "max-lines": [
       "warn",
-      { "max": 500, "skipBlankLines": true, "skipComments": true }
+      {
+        "max": 500,
+        "skipBlankLines": true,
+        "skipComments": true
+      }
     ],
     "max-lines-per-function": [
       "warn",
-      { "max": 100, "skipBlankLines": true, "skipComments": true }
+      {
+        "max": 100,
+        "skipBlankLines": true,
+        "skipComments": true
+      }
     ],
-    "max-params": ["warn", 4],
-    "max-statements": ["warn", { "max": 30 }]
+    "max-params": ["warn", 5],
+    "max-statements": [
+      "warn",
+      {
+        "max": 30
+      }
+    ]
   },
   "overrides": [
     {
@@ -255,9 +351,10 @@
     },
     {
       "files": ["**/worker/**/*.{js,ts}", "*.worker.{js,ts}", "worker.{js,ts}"],
-      "rules": { "unicorn/require-post-message-target-origin": "off" }
+      "rules": {
+        "unicorn/require-post-message-target-origin": "off"
+      }
     },
-
     {
       "files": [
         "*.{bench,spec,test}.{js,ts}",
@@ -280,7 +377,10 @@
         "vitest/prefer-called-once": "off",
         "vitest/consistent-test-filename": [
           "error",
-          { "allTestPattern": "__tests__", "pattern": ".*\\.spec\\.ts$" }
+          {
+            "allTestPattern": "__tests__",
+            "pattern": ".*\\.spec\\.ts$"
+          }
         ],
         "unicorn/consistent-function-scoping": "off"
       }

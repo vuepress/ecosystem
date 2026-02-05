@@ -27,7 +27,7 @@ export const enhanceTwoslash = (app: App): void => {
 
   if (!__VUEPRESS_SSR__) {
     // Recompute poppers when clicking on a tab
-    window.addEventListener(
+    globalThis.addEventListener(
       'click',
       (event) => {
         const path = event.composedPath()

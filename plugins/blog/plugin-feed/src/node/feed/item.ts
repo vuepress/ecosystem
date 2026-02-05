@@ -272,7 +272,7 @@ export class FeedItem {
       return this.getter.copyright(this.page, this.app)
 
     if (isString(this.frontmatter.copyright)) return this.frontmatter.copyright
-    const firstAuthor = this.author[0]
+    const [firstAuthor] = this.author
 
     if (firstAuthor?.name) return `Copyright by ${firstAuthor.name}`
 

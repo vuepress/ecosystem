@@ -1,3 +1,4 @@
+// oxlint-disable import/max-dependencies
 import { addViteOptimizeDepsExclude } from '@vuepress/helper'
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
@@ -41,6 +42,7 @@ export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
   themePlugins?: DefaultThemePluginsOptions
 }
 
+// oxlint-disable-next-line max-lines-per-function, complexity
 export const defaultTheme = ({
   hostname,
   themePlugins = {},

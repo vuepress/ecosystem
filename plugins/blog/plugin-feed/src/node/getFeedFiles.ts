@@ -39,7 +39,7 @@ export const getFeedFiles = (
         const feedStore = localMap[localePath]
         const pages = app.pages
           .filter((page) => page.pathLocale === localePath)
-          .filter(filter)
+          .filter((page) => filter(page))
           .sort(sorter)
 
         // add feed items

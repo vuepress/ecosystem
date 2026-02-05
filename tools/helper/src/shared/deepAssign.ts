@@ -40,7 +40,7 @@ export const deepAssign = <
       if (isPlainObject(originObject[property]) && isPlainObject(value))
         deepAssign(originObject[property], value)
       else if (isArray(value))
-        (originObject as IAnyObject)[property] = [...(value as unknown[])]
+        (originObject as IAnyObject)[property] = [...value]
       else if (isPlainObject(value))
         (originObject as IAnyObject)[property] = {
           ...value,

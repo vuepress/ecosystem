@@ -9,11 +9,11 @@ export const getFeedAuthor = (
 ): FeedAuthor[] => {
   if (author) {
     if (isArray(author))
-      return author
+      return (author as (FeedAuthor | null)[])
         .map((item) =>
           isString(item) ? { name: item } : isFeedAuthor(item) ? item : null,
         )
-        .filter((item): item is FeedAuthor => item !== null)
+        .filter((item): item is FeedAuthor => item != null)
 
     if (isString(author)) return [{ name: author }]
 
