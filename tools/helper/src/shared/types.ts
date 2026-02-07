@@ -31,11 +31,11 @@ type NotNill<T> = T extends null | undefined ? never : T
 export type DeepRequired<T> = T extends Primitive
   ? NotNill<T>
   : {
-      [P in keyof T]-?: T[P] extends (infer U)[]
-        ? DeepRequired<U>[]
-        : T[P] extends readonly (infer V)[]
-          ? DeepRequired<V>
-          : DeepRequired<T[P]>
+      [Key in keyof T]-?: T[Key] extends (infer ItemType)[]
+        ? DeepRequired<ItemType>[]
+        : T[Key] extends readonly (infer ReadOnlyItemType)[]
+          ? DeepRequired<ReadOnlyItemType>
+          : DeepRequired<T[Key]>
     }
 
 /**

@@ -1,5 +1,6 @@
 import RedirectModal from '@vuepress/plugin-redirect/modal'
 import { h } from 'vue'
+import type { VNode } from 'vue'
 import { defineClientConfig } from 'vuepress/client'
 import type { RedirectBehaviorConfig } from '../shared/index.js'
 import { setupDevServerRedirect, setupRedirect } from './composables/index.js'
@@ -22,7 +23,7 @@ export default defineClientConfig({
   ...(__REDIRECT_MODAL__
     ? {
         rootComponents: [
-          () =>
+          (): VNode =>
             h(RedirectModal, {
               config,
               locales: __REDIRECT_LOCALES__,

@@ -121,5 +121,5 @@ export const remarkPlease =
   }
 
 type NotUndefined<T> = {
-  [K in keyof T]-?: Exclude<T[K], undefined>
+  [Key in keyof T]-?: Exclude<T[Key], undefined>
 }

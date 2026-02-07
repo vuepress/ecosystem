@@ -1,3 +1,4 @@
+// oxlint-disable id-length
 import type { FunctionalComponent, VNode } from 'vue'
 import { h } from 'vue'
 

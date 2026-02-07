@@ -36,11 +36,11 @@ export const getLocaleInfo = (
   })
 }
 
-export const getLocaleData = <T extends LocaleData>(
-  info: DefaultLocaleInfo<T>,
+export const getLocaleData = <Locale extends LocaleData>(
+  info: DefaultLocaleInfo<Locale>,
   lang: string,
   logger?: Logger,
-): T => {
+): Locale => {
   const isShortLang = !lang.includes('-')
 
   // full search
@@ -69,13 +69,13 @@ export const getLocaleData = <T extends LocaleData>(
   )
 }
 
-export interface GetLocaleConfigOption<T extends LocaleData> {
+export interface GetLocaleConfigOption<Locale extends LocaleData> {
   /** VuePress Node app */
   app: App
   /** Default locale config */
-  default: DefaultLocaleInfo<T>
+  default: DefaultLocaleInfo<Locale>
   /** user locale config */
-  config?: LocaleConfig<T> | undefined
+  config?: LocaleConfig<Locale> | undefined
   /** plugin name */
   name?: string
 }
@@ -89,22 +89,22 @@ export interface GetLocaleConfigOption<T extends LocaleData> {
  *
  * @returns Final locale config / 最终本地化配置
  */
-export const getFullLocaleConfig = <T extends LocaleData>({
+export const getFullLocaleConfig = <Locale extends LocaleData>({
   app,
   name,
   default: defaultLocaleData,
   config: userLocalesConfig = {},
-}: GetLocaleConfigOption<T>): ExactLocaleConfig<T> => {
+}: GetLocaleConfigOption<Locale>): ExactLocaleConfig<Locale> => {
   const logger = new Logger(name)
   const localeInfo = getLocaleInfo(app, logger)
 
   return fromEntries(
-    localeInfo.map<[string, T]>(([localePath, lang]) => [
+    localeInfo.map<[string, Locale]>(([localePath, lang]) => [
       localePath,
       deepAssign(
         {},
         getLocaleData(defaultLocaleData, lang, logger),
-        (userLocalesConfig[localePath] ?? {}) as T,
+        (userLocalesConfig[localePath] ?? {}) as Locale,
       ),
     ]),
   )

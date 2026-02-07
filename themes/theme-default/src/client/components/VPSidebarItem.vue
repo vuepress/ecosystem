@@ -35,9 +35,9 @@ const isOpenDefault = computed(() =>
 )
 
 const [isOpen, toggleIsOpen] = useToggle(isOpenDefault.value)
-const onClick = (e: Event): void => {
+const onClick = (event: Event): void => {
   if (collapsible.value) {
-    e.preventDefault()
+    event.preventDefault()
     // toggle open status on click
     toggleIsOpen()
   }

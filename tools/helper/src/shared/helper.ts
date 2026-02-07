@@ -66,7 +66,8 @@ export const isNumber = (val: any): val is number => typeof val === 'number'
  *
  * 检查值是否为数组
  */
-export const isArray = <T>(val: unknown): val is T[] => Array.isArray(val)
+export const isArray = <ItemType>(val: unknown): val is ItemType[] =>
+  Array.isArray(val)
 
 /**
  * Check if a value is regexp
@@ -138,11 +139,11 @@ export {
 export const { entries } = Object
 export const { fromEntries } = Object
 
-export const keys = <T extends object>(
-  obj: T,
-): `${keyof T & (string | number | boolean | null | undefined)}`[] =>
+export const keys = <ObjectType extends object>(
+  obj: ObjectType,
+): `${keyof ObjectType & (string | number | boolean | null | undefined)}`[] =>
   Object.keys(
     obj,
-  ) as `${keyof T & (string | number | boolean | null | undefined)}`[]
+  ) as `${keyof ObjectType & (string | number | boolean | null | undefined)}`[]
 
 export const { values } = Object

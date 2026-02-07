@@ -13,9 +13,9 @@ import type { ExactLocaleConfig } from '../../shared/index.js'
  *
  * @returns Current locale config / 当前本地化配置
  */
-export const useLocaleConfig = <T extends LocaleData>(
-  localesConfig: MaybeRef<ExactLocaleConfig<T>>,
-): ComputedRef<T> => {
+export const useLocaleConfig = <Locale extends LocaleData>(
+  localesConfig: MaybeRef<ExactLocaleConfig<Locale>>,
+): ComputedRef<Locale> => {
   const routeLocale = useRouteLocale()
 
   return computed(() => {

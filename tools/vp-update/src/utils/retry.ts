@@ -13,13 +13,13 @@
  * }, {  limit: 3, delay: 1000 })
  * ```
  */
-export const retry = <T>(
-  fn: () => Promise<T>,
+export const retry = <ReturnType>(
+  fn: () => Promise<ReturnType>,
   times = 3,
   reject?: (attempts: number, err: unknown) => void,
-): Promise<T> => {
+): Promise<ReturnType> => {
   let attempts = 0
-  const run = async (): Promise<T> => {
+  const run = async (): Promise<ReturnType> => {
     try {
       return await fn()
     } catch (err: unknown) {

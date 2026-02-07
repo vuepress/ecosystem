@@ -10,8 +10,25 @@
   // disable jsdoc currently
   "plugins": ["typescript", "oxc", "import", "promise", "unicorn"],
   "rules": {
+    "max-params": ["warn", 5],
+    // allow undefined usage
+    "no-undefined": "off",
+    // allow warning comments, like todo, fixme
+    "no-warning-comments": "off",
     // object assign can be performant
     "prefer-object-spread": "off",
+    "import/max-dependencies": "off",
+    // allow functions that return promise to not use await
+    "typescript/require-await": "off",
+    "typescript/no-dynamic-delete": "off",
+    "unicorn/prefer-dom-node-dataset": "off",
+    "unicorn/prefer-global-this": "off",
+    "unicorn/no-array-reduce": "off",
+    "unicorn/no-typeof-undefined": "off",
+    "typescript/explicit-function-return-type": [
+      "warn",
+      { "allowExpressions": true }
+    ],
     // we only use this when necessary
     "typescript/no-non-null-assertion": "off",
     // this can introduce false positives, as though type is required, users might not provide such
@@ -50,6 +67,13 @@
           "vuepress/client"
         ],
         "node/no-process-env": "off"
+      }
+    },
+    {
+      "files": ["tools/**/*.ts", "**/.vuepress/config.ts"],
+      "rules": {
+        // allow importing node built-in modules in node files
+        "import/no-nodejs-modules": "off"
       }
     },
     {
