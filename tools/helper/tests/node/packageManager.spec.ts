@@ -12,8 +12,8 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
 const fixtures = path.resolve(__dirname, '../__fixtures__/package-manager')
 
 it('isPackageManagerInstalled()', () => {
-  expect(isPackageManagerInstalled('npm')).toBeTruthy()
-  expect(isPackageManagerInstalled('pnpm')).toBeTruthy()
+  expect(isPackageManagerInstalled('npm')).toBe(true)
+  expect(isPackageManagerInstalled('pnpm')).toBe(true)
 })
 
 describe('getPackageManagerSetting()', () => {

@@ -2,8 +2,8 @@ import { expect, it } from 'vitest'
 import { isLinkAbsolute } from '../../src/shared/link.js'
 
 it('isLinkAbsolute()', () => {
-  expect(isLinkAbsolute('/a/')).toBeTruthy()
-  expect(isLinkAbsolute('/a.html')).toBeTruthy()
-  expect(isLinkAbsolute('mister-hope.com')).toBeFalsy()
-  expect(isLinkAbsolute('mrhope')).toBeFalsy()
+  expect(isLinkAbsolute('/a/')).toBe(true)
+  expect(isLinkAbsolute('/a.html')).toBe(true)
+  expect(isLinkAbsolute('mister-hope.com')).toBe(false)
+  expect(isLinkAbsolute('mrhope')).toBe(false)
 })

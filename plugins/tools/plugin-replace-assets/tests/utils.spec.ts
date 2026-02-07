@@ -3,20 +3,18 @@ import { createAssetPattern, normalizeUrl } from '../src/node/utils.js'
 
 describe('plugin-replace-assets > utils', () => {
   it('createAssetPattern', () => {
-    expect(createAssetPattern('/[^/]').test(`'/images/foo.jpg'`)).toBeTruthy()
-    expect(createAssetPattern('/[^/]').test(`"/images/foo.jpg"`)).toBeTruthy()
-    expect(createAssetPattern('/[^/]').test(`(/images/foo.jpg)`)).toBeTruthy()
-    expect(createAssetPattern('/[^/]').test(`('/images/foo.jpg')`)).toBeTruthy()
-    expect(createAssetPattern('/[^/]').test(`("/images/foo.jpg")`)).toBeTruthy()
-    expect(
-      createAssetPattern('/[^/]').test(`"/images/foo.jpg?a=1"`),
-    ).toBeTruthy()
+    expect(createAssetPattern('/[^/]').test(`'/images/foo.jpg'`)).toBe(true)
+    expect(createAssetPattern('/[^/]').test(`"/images/foo.jpg"`)).toBe(true)
+    expect(createAssetPattern('/[^/]').test(`(/images/foo.jpg)`)).toBe(true)
+    expect(createAssetPattern('/[^/]').test(`('/images/foo.jpg')`)).toBe(true)
+    expect(createAssetPattern('/[^/]').test(`("/images/foo.jpg")`)).toBe(true)
+    expect(createAssetPattern('/[^/]').test(`"/images/foo.jpg?a=1"`)).toBe(true)
 
     expect(
       createAssetPattern('/[^/]').test(`'https://example.com/images/foo.jpg'`),
-    ).toBeFalsy()
-    expect(createAssetPattern('/[^/]').test(`"./images/foo.jpg"`)).toBeFalsy()
-    expect(createAssetPattern('/[^/]').test(`"images/foo.jpg"`)).toBeFalsy()
+    ).toBe(false)
+    expect(createAssetPattern('/[^/]').test(`"./images/foo.jpg"`)).toBe(false)
+    expect(createAssetPattern('/[^/]').test(`"images/foo.jpg"`)).toBe(false)
   })
 
   it('normalizeUrl', () => {

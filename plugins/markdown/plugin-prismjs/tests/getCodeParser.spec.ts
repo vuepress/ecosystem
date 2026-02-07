@@ -25,9 +25,9 @@ const c = 3
 
     expect(parser.lines.length).toBe(4)
     expect(parser.pre.before).toContain('<pre')
-    expect(
-      parser.lines.every((line) => line.classList.includes('line')),
-    ).toBeTruthy()
+    expect(parser.lines.every((line) => line.classList.includes('line'))).toBe(
+      true,
+    )
     expect(parser.stringify()).toMatchSnapshot()
   })
 
@@ -36,7 +36,7 @@ const c = 3
 
     const parser = getCodeParser(code)
 
-    expect(parser.pre.classList.includes('test')).toBeTruthy()
+    expect(parser.pre.classList.includes('test')).toBe(true)
   })
 
   it('normal parse line node add class', () => {
@@ -67,9 +67,9 @@ function add(a, b) {
 
     const result = parser.stringify()
 
-    expect(parser.lines[0].classList.includes('highlighted')).toBeTruthy() // line 1
-    expect(parser.lines[6].classList.includes('highlighted')).toBeTruthy() // line 7
-    expect(parser.lines[4].classList.includes('highlighted')).toBeFalsy() // line 4
+    expect(parser.lines[0].classList.includes('highlighted')).toBe(true) // line 1
+    expect(parser.lines[6].classList.includes('highlighted')).toBe(true) // line 7
+    expect(parser.lines[4].classList.includes('highlighted')).toBe(false) // line 4
 
     expect(result).toMatchSnapshot()
   })
@@ -90,13 +90,13 @@ function add(a, b) {
 
     const result = parser.stringify()
 
-    expect(parser.lines[2].classList.includes('highlighted')).toBeTruthy() // line 3
+    expect(parser.lines[2].classList.includes('highlighted')).toBe(true) // line 3
     // magic comment should be removed
-    expect(parser.lines[2].content.includes('// [!code highlight]')).toBeFalsy() // line 3
-    expect(parser.lines[3].classList.includes('highlighted')).toBeTruthy() // line 4
+    expect(parser.lines[2].content.includes('// [!code highlight]')).toBe(false) // line 3
+    expect(parser.lines[3].classList.includes('highlighted')).toBe(true) // line 4
 
     // pre tag should add has-highlighted class
-    expect(parser.pre.classList.includes('has-highlighted')).toBeTruthy()
+    expect(parser.pre.classList.includes('has-highlighted')).toBe(true)
 
     expect(result).toMatchSnapshot()
   })
@@ -121,9 +121,9 @@ function add(a, b) {
       parser.lines
         .slice(1, 4)
         .every((line) => line.classList.includes('highlighted')),
-    ).toBeTruthy()
+    ).toBe(true)
 
-    expect(parser.lines[4].classList.includes('highlighted')).toBeFalsy()
+    expect(parser.lines[4].classList.includes('highlighted')).toBe(false)
 
     expect(result).toMatchSnapshot()
   })
@@ -144,12 +144,12 @@ function add(a, b) { // [!code ++]
 
     const result = parser.stringify()
 
-    expect(parser.lines[1].classList.includes('diff add')).toBeTruthy() // line 2
-    expect(parser.lines[3].classList.includes('diff remove')).toBeTruthy() // line 4
+    expect(parser.lines[1].classList.includes('diff add')).toBe(true) // line 2
+    expect(parser.lines[3].classList.includes('diff remove')).toBe(true) // line 4
 
-    expect(parser.lines[5].content.includes('// [!code ++]')).toBeFalsy()
+    expect(parser.lines[5].content.includes('// [!code ++]')).toBe(false)
 
-    expect(parser.pre.classList.includes('has-diff')).toBeTruthy()
+    expect(parser.pre.classList.includes('has-diff')).toBe(true)
 
     expect(result).toMatchSnapshot()
   })
@@ -174,9 +174,9 @@ function add(a, b) {
       parser.lines
         .slice(1, 4)
         .every((line) => line.classList.includes('diff add')),
-    ).toBeTruthy()
+    ).toBe(true)
 
-    expect(parser.lines[4].classList.includes('diff add')).toBeFalsy()
+    expect(parser.lines[4].classList.includes('diff add')).toBe(false)
 
     expect(result).toMatchSnapshot()
   })
@@ -197,10 +197,10 @@ function add(a, b) { // [!code focus]
 
     const result = parser.stringify()
 
-    expect(parser.lines[1].classList.includes('has-focus')).toBeTruthy() // line 2
-    expect(parser.lines[5].classList.includes('has-focus')).toBeTruthy() // line 5
+    expect(parser.lines[1].classList.includes('has-focus')).toBe(true) // line 2
+    expect(parser.lines[5].classList.includes('has-focus')).toBe(true) // line 5
 
-    expect(parser.pre.classList.includes('has-focused-lines')).toBeTruthy()
+    expect(parser.pre.classList.includes('has-focused-lines')).toBe(true)
 
     expect(result).toMatchSnapshot()
   })
@@ -225,9 +225,9 @@ function add(a, b) {
       parser.lines
         .slice(1, 4)
         .every((line) => line.classList.includes('has-focus')),
-    ).toBeTruthy()
+    ).toBe(true)
 
-    expect(parser.lines[4].classList.includes('has-focus')).toBeFalsy()
+    expect(parser.lines[4].classList.includes('has-focus')).toBe(false)
 
     expect(result).toMatchSnapshot()
   })
@@ -248,12 +248,12 @@ function add(a, b) { // [!code warning]
 
     const result = parser.stringify()
 
-    expect(parser.lines[1].classList.includes('warning')).toBeTruthy() // line 2
-    expect(parser.lines[3].classList.includes('error')).toBeTruthy() // line 4
+    expect(parser.lines[1].classList.includes('warning')).toBe(true) // line 2
+    expect(parser.lines[3].classList.includes('error')).toBe(true) // line 4
 
-    expect(parser.lines[5].content.includes('// [!code warning]')).toBeFalsy()
+    expect(parser.lines[5].content.includes('// [!code warning]')).toBe(false)
 
-    expect(parser.pre.classList.includes('has-highlighted')).toBeTruthy()
+    expect(parser.pre.classList.includes('has-highlighted')).toBe(true)
 
     expect(result).toMatchSnapshot()
   })
@@ -278,9 +278,9 @@ function add(a, b) {
       parser.lines
         .slice(1, 4)
         .every((line) => line.classList.includes('error')),
-    ).toBeTruthy()
+    ).toBe(true)
 
-    expect(parser.lines[4].classList.includes('error')).toBeFalsy()
+    expect(parser.lines[4].classList.includes('error')).toBe(false)
 
     expect(result).toMatchSnapshot()
   })
@@ -299,7 +299,7 @@ console.log(message) // prints Hello World\
       parser.lines.every((line) =>
         line.content.includes('class="highlighted-word"'),
       ),
-    ).toBeTruthy()
+    ).toBe(true)
 
     expect(result).toMatchSnapshot()
   })
@@ -315,15 +315,15 @@ console.log(message) // prints Hello World\
     notationWordHighlight(parser)
 
     const result = parser.stringify()
-    expect(
-      parser.lines[0].content.includes('class="highlighted-word"'),
-    ).toBeTruthy()
-    expect(
-      parser.lines[1].content.includes('class="highlighted-word"'),
-    ).toBeTruthy()
-    expect(
-      parser.lines[2].content.includes('class="highlighted-word"'),
-    ).toBeFalsy()
+    expect(parser.lines[0].content.includes('class="highlighted-word"')).toBe(
+      true,
+    )
+    expect(parser.lines[1].content.includes('class="highlighted-word"')).toBe(
+      true,
+    )
+    expect(parser.lines[2].content.includes('class="highlighted-word"')).toBe(
+      false,
+    )
 
     expect(result).toMatchSnapshot()
   })
@@ -341,7 +341,7 @@ console.log(message) // prints Hello World\
       parser.lines.every((line) =>
         line.content.includes('class="highlighted-word"'),
       ),
-    ).toBeTruthy()
+    ).toBe(true)
 
     expect(result).toMatchSnapshot()
   })
@@ -355,12 +355,12 @@ console.log(message) // prints Hello Bar\
     metaWordHighlight(parser, '/Foo|Bar/')
 
     const result = parser.stringify()
-    expect(
-      parser.lines[0].content.includes('class="highlighted-word"'),
-    ).toBeTruthy()
-    expect(
-      parser.lines[1].content.includes('class="highlighted-word"'),
-    ).toBeTruthy()
+    expect(parser.lines[0].content.includes('class="highlighted-word"')).toBe(
+      true,
+    )
+    expect(parser.lines[1].content.includes('class="highlighted-word"')).toBe(
+      true,
+    )
 
     expect(result).toMatchSnapshot()
   })
@@ -373,7 +373,7 @@ const a = 1 // [\\!code focus]`)
 
     const result = parser.stringify()
 
-    expect(parser.lines[0].content.includes('// [!code focus]')).toBeTruthy()
+    expect(parser.lines[0].content.includes('// [!code focus]')).toBe(true)
 
     expect(result).toMatchSnapshot()
   })
@@ -408,8 +408,8 @@ console.log('hello world)\t
       metaWhitespace(parser, '')
       const result = parser.stringify()
 
-      expect(result.includes('class="space"')).toBeFalsy()
-      expect(result.includes('class="tab"')).toBeFalsy()
+      expect(result.includes('class="space"')).toBe(false)
+      expect(result.includes('class="tab"')).toBe(false)
 
       expect(parser.stringify()).toMatchSnapshot()
     })
@@ -419,11 +419,11 @@ console.log('hello world)\t
       metaWhitespace(parser, 'js :whitespace')
       const result = parser.stringify()
 
-      expect(parser.lines[0].content.includes('class="space"')).toBeTruthy()
-      expect(
-        parser.lines[1].content.includes('<span class="space">'),
-      ).toBeTruthy()
-      expect(parser.lines[3].content.includes('span class="tab"')).toBeTruthy()
+      expect(parser.lines[0].content.includes('class="space"')).toBe(true)
+      expect(parser.lines[1].content.includes('<span class="space">')).toBe(
+        true,
+      )
+      expect(parser.lines[3].content.includes('span class="tab"')).toBe(true)
       expect(result).toMatchSnapshot()
     })
 
@@ -431,7 +431,7 @@ console.log('hello world)\t
       const parser = getCodeParser(code)
       metaWhitespace(parser, 'js :whitespace=boundary')
       const result = parser.stringify()
-      expect(parser.lines[0].content.includes('class="space"')).toBeFalsy()
+      expect(parser.lines[0].content.includes('class="space"')).toBe(false)
       expect(
         parser.lines[1].content.match(/<span class="space">/g)?.length,
       ).toBe(4)
@@ -445,11 +445,11 @@ console.log('hello world)\t
       const parser = getCodeParser(code)
       metaWhitespace(parser, 'js :whitespace=trailing')
       const result = parser.stringify()
-      expect(parser.lines[0].content.includes('class="space"')).toBeFalsy()
+      expect(parser.lines[0].content.includes('class="space"')).toBe(false)
       expect(
         parser.lines[1].content.match(/<span class="space">/g)?.length,
       ).toBe(2)
-      expect(parser.lines[3].content.includes('class="space"')).toBeFalsy()
+      expect(parser.lines[3].content.includes('class="space"')).toBe(false)
       expect(result).toMatchSnapshot()
     })
   })
@@ -473,7 +473,7 @@ console.log('hello world)\t
         parser.lines
           .slice(0, -1)
           .every((line) => line.content.includes('class="space"')),
-      ).toBeTruthy()
+      ).toBe(true)
       expect(result).toMatchSnapshot()
     })
 
@@ -481,11 +481,11 @@ console.log('hello world)\t
       const parser = getCodeParser(code)
       metaWhitespace(parser, 'js :whitespace=boundary', true)
       const result = parser.stringify()
-      expect(parser.lines[0].content.includes('class="space"')).toBeFalsy()
-      expect(parser.lines[1].content.includes('class="space"')).toBeTruthy()
-      expect(parser.lines[2].content.includes('class="space"')).toBeTruthy()
-      expect(parser.lines[3].content.includes('class="tab"')).toBeTruthy()
-      expect(parser.lines[4].content.includes('class="tab"')).toBeTruthy()
+      expect(parser.lines[0].content.includes('class="space"')).toBe(false)
+      expect(parser.lines[1].content.includes('class="space"')).toBe(true)
+      expect(parser.lines[2].content.includes('class="space"')).toBe(true)
+      expect(parser.lines[3].content.includes('class="tab"')).toBe(true)
+      expect(parser.lines[4].content.includes('class="tab"')).toBe(true)
       expect(result).toMatchSnapshot()
     })
 
@@ -494,10 +494,10 @@ console.log('hello world)\t
       metaWhitespace(parser, 'js :whitespace=trailing', true)
       const result = parser.stringify()
 
-      expect(parser.lines[0].content.includes('class="space"')).toBeFalsy()
-      expect(parser.lines[1].content.includes('class="space"')).toBeTruthy()
-      expect(parser.lines[2].content.includes('class="space"')).toBeFalsy()
-      expect(parser.lines[4].content.includes('class="tab"')).toBeTruthy()
+      expect(parser.lines[0].content.includes('class="space"')).toBe(false)
+      expect(parser.lines[1].content.includes('class="space"')).toBe(true)
+      expect(parser.lines[2].content.includes('class="space"')).toBe(false)
+      expect(parser.lines[4].content.includes('class="tab"')).toBe(true)
 
       expect(result).toMatchSnapshot()
     })
@@ -510,7 +510,7 @@ console.log('hello world)\t
         parser.lines
           .slice(0, -1)
           .every((line) => line.content.includes('class="space"')),
-      ).toBeTruthy()
+      ).toBe(true)
       expect(result).toMatchSnapshot()
     })
   })
@@ -528,11 +528,11 @@ console.log('hello world)\t
       const parser = getCodeParser(code)
       metaWhitespace(parser, 'js :whitespace', 'boundary')
       const result = parser.stringify()
-      expect(parser.lines[0].content.includes('class="space"')).toBeFalsy()
-      expect(parser.lines[1].content.includes('class="space"')).toBeTruthy()
-      expect(parser.lines[2].content.includes('class="space"')).toBeTruthy()
-      expect(parser.lines[3].content.includes('class="tab"')).toBeTruthy()
-      expect(parser.lines[4].content.includes('class="tab"')).toBeTruthy()
+      expect(parser.lines[0].content.includes('class="space"')).toBe(false)
+      expect(parser.lines[1].content.includes('class="space"')).toBe(true)
+      expect(parser.lines[2].content.includes('class="space"')).toBe(true)
+      expect(parser.lines[3].content.includes('class="tab"')).toBe(true)
+      expect(parser.lines[4].content.includes('class="tab"')).toBe(true)
       expect(result).toMatchSnapshot()
     })
 
@@ -544,7 +544,7 @@ console.log('hello world)\t
         parser.lines
           .slice(0, -1)
           .every((line) => line.content.includes('class="space"')),
-      ).toBeTruthy()
+      ).toBe(true)
       expect(result).toMatchSnapshot()
     })
 
@@ -552,10 +552,10 @@ console.log('hello world)\t
       const parser = getCodeParser(code)
       metaWhitespace(parser, 'js :whitespace=trailing', 'boundary')
       const result = parser.stringify()
-      expect(parser.lines[0].content.includes('class="space"')).toBeFalsy()
-      expect(parser.lines[1].content.includes('class="space"')).toBeTruthy()
-      expect(parser.lines[2].content.includes('class="space"')).toBeFalsy()
-      expect(parser.lines[4].content.includes('class="tab"')).toBeTruthy()
+      expect(parser.lines[0].content.includes('class="space"')).toBe(false)
+      expect(parser.lines[1].content.includes('class="space"')).toBe(true)
+      expect(parser.lines[2].content.includes('class="space"')).toBe(false)
+      expect(parser.lines[4].content.includes('class="tab"')).toBe(true)
       expect(result).toMatchSnapshot()
     })
   })
