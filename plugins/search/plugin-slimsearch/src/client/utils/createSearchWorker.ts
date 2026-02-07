@@ -122,6 +122,7 @@ export const createSearchWorker = (): SearchWorker => {
           query,
           locale,
           options: searchOptions,
+          // oxlint-disable-next-line unicorn/require-post-message-target-origin
         })
         states.suggest = { id, resolve, reject }
       }),
@@ -142,6 +143,7 @@ export const createSearchWorker = (): SearchWorker => {
           query,
           locale,
           options: searchOptions,
+          // oxlint-disable-next-line unicorn/require-post-message-target-origin
         })
         states.search = { id, resolve, reject }
       }),
@@ -162,6 +164,7 @@ export const createSearchWorker = (): SearchWorker => {
           query,
           locale,
           options: searchOptions,
+          // oxlint-disable-next-line unicorn/require-post-message-target-origin
         })
         states.all = { id, resolve, reject }
       }),

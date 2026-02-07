@@ -20,6 +20,8 @@ import { resolveTypeScriptPaths } from './resolveTypeScriptPaths.js'
  *
  * @param options - Twoslash transformer options / Twoslash 转换器选项
  *
+ * @returns Twoslash Shiki transformer / Twoslash Shiki 转换器
+ *
  * @example
  * ```ts
  * const transformer = await createTwoslashTransformer({
@@ -35,9 +37,7 @@ import { resolveTypeScriptPaths } from './resolveTypeScriptPaths.js'
 export const createTwoslashTransformer = async (
   options: ShikiTwoslashOptions = {},
 ): Promise<ShikiTransformer> => {
-  // eslint-disable-next-line no-multi-assign
   const explicitTrigger = (options.explicitTrigger ??= true)
-  // eslint-disable-next-line no-multi-assign
   const _twoslashOptions = (options.twoslashOptions ??= {})
 
   const { compilerOptions = {} } = _twoslashOptions
@@ -54,11 +54,13 @@ export const createTwoslashTransformer = async (
       },
     },
   }
-  const shouldThrow =
+  const shouldThrow = Boolean(
     // respect user option
     options.throws ??
     // in CI or production mode
-    (process.env.CI || process.env.NODE_ENV === 'production')
+    process.env.CI ??
+    process.env.NODE_ENV === 'production',
+  )
 
   const onError = (error: unknown, code: string): string => {
     logger.error(
@@ -78,18 +80,26 @@ export const createTwoslashTransformer = async (
   const { typesCache } = options
   let twoslashInstance = defaultTwoslashInstance
   if (typesCache) {
-    twoslashInstance = ((
-      code: string,
-      extension?: string,
-      opt?: TwoslashExecuteOptions,
-    ): TwoslashShikiReturn => {
-      const cached = typesCache.read(code) // Restore cache
-      if (cached) return cached
+    twoslashInstance =
+      /**
+       * @param code - The code to execute twoslash on
+       * @param extension - The file extension of the code
+       * @param opt - Additional twoslash execute options
+       *
+       * @returns The result of the twoslash execution
+       */
+      ((
+        code: string,
+        extension?: string,
+        opt?: TwoslashExecuteOptions,
+      ): TwoslashShikiReturn => {
+        const cached = typesCache.read(code) // Restore cache
+        if (cached) return cached
 
-      const twoslashResult = defaultTwoslashInstance(code, extension, opt)
-      typesCache.write(code, twoslashResult)
-      return twoslashResult
-    }) as typeof defaultTwoslashInstance
+        const twoslashResult = defaultTwoslashInstance(code, extension, opt)
+        typesCache.write(code, twoslashResult)
+        return twoslashResult
+      }) as typeof defaultTwoslashInstance
     twoslashInstance.getCacheMap = defaultTwoslashInstance.getCacheMap
 
     typesCache.init?.()
@@ -121,7 +131,7 @@ export const createTwoslashTransformer = async (
           ({ name }) => name === 'vuepress:clean-up',
         )
 
-        if (cleanupIndex >= 0) transformers.splice(cleanupIndex, 1)
+        if (cleanupIndex !== -1) transformers.splice(cleanupIndex, 1)
 
         // Disable v-pre for twoslash, because we need render it with FloatingVue
         if (
@@ -132,7 +142,7 @@ export const createTwoslashTransformer = async (
             ({ name }) => name === 'vuepress:v-pre',
           )
 
-          if (vPreIndex >= 0) transformers.splice(vPreIndex, 1)
+          if (vPreIndex !== -1) transformers.splice(vPreIndex, 1)
         }
       }
 
@@ -140,7 +150,7 @@ export const createTwoslashTransformer = async (
     },
 
     postprocess(html) {
-      return this.meta.twoslash ? html.replace(/\{/g, '&#123;') : html
+      return this.meta.twoslash ? html.replaceAll('{', '&#123;') : html
     },
   }
 }

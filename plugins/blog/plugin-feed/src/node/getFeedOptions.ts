@@ -36,7 +36,7 @@ export const getFeedOptions = (
       const preservedElements =
         options.locales?.[localePath]?.preservedElements ??
         options.preservedElements
-      const { hostname, devServer, locales, ...rest } = options
+      const { hostname, devServer: _d, locales: _l, ...rest } = options
 
       return [
         localePath,

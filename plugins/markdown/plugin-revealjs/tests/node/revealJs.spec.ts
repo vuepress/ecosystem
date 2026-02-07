@@ -32,8 +32,8 @@ J(\\theta_0,\\theta_1) = \\sum_{i=0}
 $$
 `
 
-describe('revealJs', () => {
-  const markdownIt = MarkdownIt({ linkify: true }).use(revealJs)
+describe(revealJs, () => {
+  const markdownIt = new MarkdownIt({ linkify: true }).use(revealJs)
 
   it('Should render', () => {
     const renderResult = markdownIt.render(`

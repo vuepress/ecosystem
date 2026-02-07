@@ -1,14 +1,14 @@
 // eslint-disable-next-line no-control-regex
-const nonASCIIRegExp = /[^\x00-\x7F]/
+const nonASCIIRegExp = /[^\u0000-\u007F]/
 
 const splitWords = (content: string): string[] =>
   content
     .split(/\s+/g)
     .map((str) => str.trim())
-    .filter((str) => !!str)
+    .filter(Boolean)
 
 const escapeRegExp = (str: string): string =>
-  str.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
+  str.replaceAll(/[-/\\^$*+?.()|[\]{}]/g, String.raw`\$&`)
 
 export const isQueryMatched = (query: string, toMatch: string[]): boolean => {
   const toMatchStr = toMatch.join(' ')

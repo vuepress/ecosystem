@@ -35,8 +35,8 @@ program
     ) => {
       try {
         await generateScraperConfig(sourceDir, output, commandOptions)
-      } catch (error) {
-        logger.error(error)
+      } catch (err) {
+        logger.error(err)
         program.error(`Command execution error.`)
       }
     },

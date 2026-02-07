@@ -33,13 +33,11 @@ export const prepareClientConfigFile = (
   return app.writeTemp(
     'git/config.js',
     `\
-${Array.from(imports.values()).join('\n')}
+${[...imports.values()].join('\n')}
 
 export default {
   enhance: ({ app }) => {
-${Array.from(enhances.values())
-  .map((line) => `    ${line}`)
-  .join('\n')}
+${Array.from(enhances.values(), (line) => `    ${line}`).join('\n')}
   },
 };
 `,

@@ -43,7 +43,7 @@ export const sitemapPlugin =
           ].forEach(([path, content]) => {
             customizeDevServer(config, app, {
               path,
-              response: async () => Promise.resolve(content),
+              response: async () => content,
               errMsg: 'Unexpected sitemap generation error',
             })
           })

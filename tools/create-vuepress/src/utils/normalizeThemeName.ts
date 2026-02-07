@@ -8,7 +8,7 @@ export const normalizeThemeName = (name: string): string => {
   const scopedMatch = name.match(/^@(.*)\/(.*)$/)
 
   // handle non-scoped package
-  if (scopedMatch === null)
+  if (scopedMatch == null)
     return name.startsWith(THEME_PREFIX) ? name : `${THEME_PREFIX}${name}`
 
   // handle scoped package

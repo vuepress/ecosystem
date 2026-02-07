@@ -1,6 +1,9 @@
 import type { MarkdownItAttrsOptions } from '@mdit/plugin-attrs'
 import type { MarkdownItStylizeConfig } from '@mdit/plugin-stylize'
 
+export type * from '@mdit/plugin-attrs'
+export type * from '@mdit/plugin-stylize'
+
 export interface MarkdownStylizePluginOptions {
   /**
    * Whether to enable align support

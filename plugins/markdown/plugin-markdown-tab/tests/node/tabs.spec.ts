@@ -3,9 +3,9 @@ import { describe, expect, it } from 'vitest'
 
 import { tabs } from '../../src/node/tabs.js'
 
-const markdownIt = MarkdownIt({ linkify: true }).use(tabs)
+const markdownIt = new MarkdownIt({ linkify: true }).use(tabs)
 
-describe('tabs', () => {
+describe(tabs, () => {
   it('Should render single block', () => {
     expect(
       markdownIt.render(`

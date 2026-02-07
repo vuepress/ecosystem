@@ -9,7 +9,7 @@
 import type { App } from 'vuepress'
 import type { Markdown, MarkdownEnv } from 'vuepress/markdown'
 import { fs, hash } from 'vuepress/utils'
-import { checkIOSpeed, readFile, readFileSync, writeFile } from './utils.js'
+import { checkIOSpeed, readJson, readJSONSync, writeJSON } from './utils.js'
 
 export interface CacheData {
   content: string
@@ -41,8 +41,8 @@ export const renderCacheWithMemory = async (
   await fs.ensureDir(basename)
 
   const [metadata, cache] = await Promise.all([
-    readFile<Metadata>(metaFilepath),
-    readFile<Cache>(cacheFilepath),
+    readJson<Metadata>(metaFilepath),
+    readJson<Cache>(cacheFilepath),
   ]).then(
     ([metadataStore, cacheStore]) =>
       [metadataStore ?? {}, cacheStore ?? {}] as const,
@@ -55,8 +55,8 @@ export const renderCacheWithMemory = async (
 
     timer = setTimeout(() => {
       void Promise.all([
-        writeFile(metaFilepath, metadata),
-        writeFile(cacheFilepath, cache),
+        writeJSON(metaFilepath, metadata),
+        writeJSON(cacheFilepath, cache),
       ])
     }, 200)
   }
@@ -103,17 +103,17 @@ export const renderCacheWithFilesystem = async (
 
   const metaFilepath = `${basename}/${META_FILE}`
 
-  const metadata = (await readFile<Metadata>(metaFilepath)) ?? {}
+  const metadata = (await readJson<Metadata>(metaFilepath)) ?? {}
 
   let timer: ReturnType<typeof setTimeout> | null = null
 
   const update = (filepath: string, data: CacheData): void => {
-    void writeFile(`${basename}/${filepath}`, data)
+    void writeJSON(`${basename}/${filepath}`, data)
 
     if (timer) clearTimeout(timer)
 
     timer = setTimeout(() => {
-      void writeFile(metaFilepath, metadata)
+      void writeJSON(metaFilepath, metadata)
     }, 200)
   }
 
@@ -131,7 +131,7 @@ export const renderCacheWithFilesystem = async (
     const filename = hash(filepath)
 
     if (metadata[filepath] === key) {
-      const cached = readFileSync<CacheData>(`${basename}/${filename}`)
+      const cached = readJSONSync<CacheData>(`${basename}/${filename}`)
       if (cached) {
         Object.assign(env, cached.env)
         return cached.content

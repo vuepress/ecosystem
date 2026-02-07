@@ -26,8 +26,8 @@ export const setupCollapsedLines = ({
 }: { selector?: string } = {}): void => {
   useEventListener(
     'click',
-    (e) => {
-      const target = e.target as HTMLElement
+    (event) => {
+      const target = event.target as HTMLElement
       if (target.matches(selector)) {
         const parent = target.parentElement
         if (parent?.classList.toggle('collapsed')) {

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-enum-comparison */
 import { isHTMLTag, isMathMLTag, isSVGTag } from '@vue/shared'
-import { load } from 'cheerio'
 import type { AnyNode, Element } from 'domhandler'
 import matter from 'gray-matter'
 import type { App, Page } from 'vuepress/core'
 import { isLinkHttp, removeEndingSlash } from 'vuepress/shared'
 import { isArray, isLinkAbsolute, startsWith } from '../../shared/index.js'
+import { cheerio } from './utils.js'
 
-const HEADING_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
+const HEADING_TAGS = new Set(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
 
 interface NodeOptions extends Required<
   Pick<PageExcerptOptions, 'isCustomElement' | 'keepFenceDom'>
@@ -15,6 +15,7 @@ interface NodeOptions extends Required<
   base: string
 }
 
+// oxlint-disable-next-line complexity
 const handleNode = (
   node: AnyNode,
   { base, isCustomElement, keepFenceDom }: NodeOptions,
@@ -43,7 +44,7 @@ const handleNode = (
       isMathMLTag(node.tagName)
     ) {
       // handing heading tags
-      if (HEADING_TAGS.includes(node.tagName)) {
+      if (HEADING_TAGS.has(node.tagName)) {
         // remove heading id tabindex
         delete node.attribs.id
         delete node.attribs.tabindex
@@ -86,7 +87,6 @@ const handleNode = (
       if (node.tagName === 'code' || node.tagName === 'pre')
         delete node.attribs['v-pre']
 
-      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       node.children = handleNodes(node.children, {
         base,
         isCustomElement,
@@ -103,7 +103,6 @@ const handleNode = (
       node.attribs.target = '_blank'
       delete node.attribs.to
 
-      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       node.children = handleNodes(node.children, {
         base,
         isCustomElement,
@@ -136,10 +135,8 @@ const handleNodes = (
             keepFenceDom,
           }),
         )
-        .filter((node): node is AnyNode => node !== null)
+        .filter((node): node is AnyNode => node != null)
     : []
-
-const $ = load('')
 
 const isH1Tag = (node: AnyNode): boolean =>
   node.type === 'tag' && node.tagName === 'h1'
@@ -256,12 +253,12 @@ export const getPageExcerpt = (
       },
     )
 
-    const rootNodes = renderedContent ? $.parseHTML(renderedContent) : []
+    const rootNodes = renderedContent ? cheerio.parseHTML(renderedContent) : []
 
     if (rootNodes[0] && !keepPageTitle && isH1Tag(rootNodes[0]))
       rootNodes.shift()
 
-    return $.html(
+    return cheerio.html(
       handleNodes(rootNodes, {
         base,
         isCustomElement,
@@ -273,7 +270,7 @@ export const getPageExcerpt = (
   if (length > 0) {
     let autoExcerpt = ''
 
-    const rootNodes = contentRendered ? $.parseHTML(contentRendered) : []
+    const rootNodes = contentRendered ? cheerio.parseHTML(contentRendered) : []
 
     if (rootNodes[0] && !keepPageTitle && isH1Tag(rootNodes[0]))
       rootNodes.shift()
@@ -286,7 +283,7 @@ export const getPageExcerpt = (
       })
 
       if (resolvedNode) {
-        autoExcerpt += $.html(resolvedNode)
+        autoExcerpt += cheerio.html(resolvedNode)
         if (autoExcerpt.length >= length) break
       }
     }

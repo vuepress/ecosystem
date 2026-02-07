@@ -14,7 +14,7 @@ import type { KnownGitProvider } from '../../shared/index.js'
 export const getRemoteUrl = (cwd: string): string | null => {
   const execOptions: ExecSyncOptionsWithStringEncoding = {
     cwd,
-    encoding: 'utf8',
+    encoding: 'utf-8',
     stdio: ['pipe', 'pipe', 'ignore'],
     // prevent hanging
     timeout: 5000,

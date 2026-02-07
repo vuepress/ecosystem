@@ -49,9 +49,9 @@ export const FileTreeNode = defineComponent({
       () => props.filename === '…' || props.filename === '...',
     )
 
-    const toggle = (ev: MouseEvent): void => {
+    const toggle = (event: MouseEvent): void => {
       if (props.type === 'folder') {
-        const el = ev.target as HTMLElement
+        const el = event.target as HTMLElement
         if (!el.matches('.comment, .comment *')) {
           active.value = !active.value
         }

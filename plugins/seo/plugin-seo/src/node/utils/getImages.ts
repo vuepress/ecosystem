@@ -10,11 +10,9 @@ export const getImages = (
   { options: { base } }: App,
   hostname: string,
 ): string[] =>
-  Array.from(content.matchAll(IMAGE_REG_EXP))
-    .map(([, link]) => {
-      if (isLinkAbsolute(link)) return getUrl(hostname, base, link)
-      if (isLinkWithProtocol(link)) return link
+  Array.from(content.matchAll(IMAGE_REG_EXP), ([, src]) => {
+    if (isLinkAbsolute(src)) return getUrl(hostname, base, src)
+    if (isLinkWithProtocol(src)) return src
 
-      return null
-    })
-    .filter((item): item is string => item !== null)
+    return null
+  }).filter((item): item is string => item != null)

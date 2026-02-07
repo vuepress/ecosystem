@@ -18,7 +18,7 @@ Generate a new vuepress template
 · yarn create vuepress <dir>
 `,
   )
-  .action(mainAction)
+  .action(mainAction.bind(program))
 
 program.version(version)
 program.showHelpAfterError('add --help for additional information')

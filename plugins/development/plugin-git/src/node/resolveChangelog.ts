@@ -69,7 +69,7 @@ export const resolveChangelog = (
       message: sanitizeHTML(app.markdown.renderInline(message)),
     }
 
-    if (coAuthors.length) resolved.coAuthors = coAuthors
+    if (coAuthors.length > 0) resolved.coAuthors = coAuthors
 
     if (tag) resolved.tag = tag
 

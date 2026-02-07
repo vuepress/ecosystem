@@ -49,7 +49,6 @@ export class FeedItem {
     this.base = this.app.siteData.base
     this.frontmatter = page.frontmatter
     this.getter = options.getter ?? {}
-    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     this.pageOptions = this.frontmatter.feed || {}
   }
 
@@ -273,9 +272,8 @@ export class FeedItem {
       return this.getter.copyright(this.page, this.app)
 
     if (isString(this.frontmatter.copyright)) return this.frontmatter.copyright
-    const firstAuthor = this.author[0]
+    const [firstAuthor] = this.author
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (firstAuthor?.name) return `Copyright by ${firstAuthor.name}`
 
     return null

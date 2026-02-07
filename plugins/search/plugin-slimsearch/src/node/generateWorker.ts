@@ -13,7 +13,7 @@ export const generateWorker = async (
   const workerFilePath = app.dir.dest(options.worker ?? 'slimsearch.worker.js')
   const searchIndexContent = JSON.stringify(searchStore)
 
-  const workerFileContent = await fs.readFile(WORKER_FILE, 'utf8')
+  const workerFileContent = await fs.readFile(WORKER_FILE, 'utf-8')
 
   await fs.ensureDir(path.dirname(workerFilePath))
   await fs.writeFile(

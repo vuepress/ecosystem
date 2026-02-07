@@ -97,7 +97,7 @@ export const GitChangelog = defineComponent({
       ])
 
     return () =>
-      changelog.value.length
+      changelog.value.length > 0
         ? [
             h(VPHeader, {
               level: props.headerLevel,

@@ -46,7 +46,9 @@ export const getJSONLDInfo = (
         'image': images.length ? images : [cover || fallBackImage],
         datePublished,
         dateModified,
-        'author': author.map((item) => ({ '@type': 'Person', ...item })),
+        'author': author.map((item) =>
+          Object.assign({ '@type': `Person` }, item),
+        ),
       }
     : {
         '@context': 'https://schema.org',

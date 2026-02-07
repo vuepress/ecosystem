@@ -9,13 +9,13 @@ export const useNavigate = (): ((url: string) => void) => {
     if (url)
       if (isLinkAbsolute(url)) {
         // Inner absolute path
-        if (route.fullPath !== url) router.push(url)
+        if (route.fullPath !== url) void router.push(url)
       } else if (isLinkWithProtocol(url)) {
         // external url
         window.open(url)
       } else {
         // relative url
-        router.push(encodeURI(url))
+        void router.push(encodeURI(url))
       }
   }
 }

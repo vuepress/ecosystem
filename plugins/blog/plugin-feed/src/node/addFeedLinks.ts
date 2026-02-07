@@ -33,10 +33,7 @@ export const addFeedLinks = (
         rel: 'alternate',
         type,
         href: getUrl(hostname, base, fileName),
-        title: `${
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-          title || locales['/']?.title || ''
-        } ${name} Feed`,
+        title: `${title || locales['/']?.title || ''} ${name} Feed`,
       },
     ]
 
@@ -73,12 +70,7 @@ export const addFeedLinks = (
             type,
             href: getUrl(localeOptions.hostname, base, fileName),
             title: `${
-              // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-              locales[pathLocale]?.title ||
-              title ||
-              // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-              locales['/']?.title ||
-              ''
+              locales[pathLocale]?.title || title || locales['/']?.title || ''
             } ${name} Feed`,
           },
         ]

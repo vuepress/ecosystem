@@ -13,7 +13,7 @@ export const getSEOAuthor = (
         .map((item) =>
           isString(item) ? { name: item } : isSEOAuthor(item) ? item : null,
         )
-        .filter((item): item is AuthorInfo => item !== null)
+        .filter((item): item is AuthorInfo => item != null)
 
     if (isString(author)) return [{ name: author }]
 

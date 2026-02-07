@@ -26,8 +26,8 @@ export const useSuggestions = (queries: Ref<string[]>): SuggestionsRef => {
 
       const performSuggestion = (query: string): void => {
         const {
-          resultsFilter,
-          querySplitter,
+          resultsFilter: _r,
+          querySplitter: _q,
           suggestionsFilter = (items): string[] => items,
           ...options
         } = searchOptions.value
@@ -45,6 +45,7 @@ export const useSuggestions = (queries: Ref<string[]>): SuggestionsRef => {
                   : [query, ...items]
                 : []
             })
+            // oxlint-disable-next-line promise/prefer-await-to-callbacks
             .catch((err: unknown) => {
               // eslint-disable-next-line no-console
               console.error(err)

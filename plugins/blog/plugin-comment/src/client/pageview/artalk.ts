@@ -8,7 +8,8 @@ export const usePageview = (): UpdatePageview => {
   const options = useArtalkOptions()
 
   return ({ selector }) => {
-    Artalk.loadCountWidget({
+    // oxlint-disable-next-line no-new
+    new Artalk({
       server: options.value.server,
       site: options.value.site,
       ...(selector ? { countEl: selector } : {}),

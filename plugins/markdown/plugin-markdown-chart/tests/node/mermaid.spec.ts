@@ -60,7 +60,7 @@ describe('getMermaidContent()', () => {
 })
 
 describe('mermaid plugin', () => {
-  const markdownIt = MarkdownIt({ linkify: true }).use(mermaid)
+  const markdownIt = new MarkdownIt({ linkify: true }).use(mermaid)
 
   it('Should render ```mermaid', () => {
     const renderResult = markdownIt.render(`

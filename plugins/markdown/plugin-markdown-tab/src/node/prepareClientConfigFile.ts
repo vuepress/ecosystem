@@ -31,14 +31,12 @@ export const prepareClientConfigFile = (
   return app.writeTemp(
     'markdown-tab/config.js',
     `\
-${Array.from(imports.values()).join('\n')}
+${[...imports.values()].join('\n')}
 import "${CLIENT_FOLDER}styles/vars.css";
 
 export default {
   enhance: ({ app }) => {
-${Array.from(enhances.values())
-  .map((line) => `    ${line}`)
-  .join('\n')}
+${Array.from(enhances.values(), (line) => `    ${line}`).join('\n')}
   },
 };
 `,

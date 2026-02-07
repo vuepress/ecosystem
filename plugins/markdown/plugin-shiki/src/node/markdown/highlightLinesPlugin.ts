@@ -31,11 +31,11 @@ export const highlightLinePlugin = (md: Markdown): void => {
       // ensure the next plugin get the correct lang
       token.info = langName
 
-      lines = HIGHLIGHT_LINES_REGEXP.exec(rawInfo)![1]
+      ;[, lines] = HIGHLIGHT_LINES_REGEXP.exec(rawInfo)!
     }
 
     if (!lines) {
-      lines = attr![0]
+      ;[lines] = attr!
 
       if (!lines || !/[\d,-]+/.test(lines)) {
         return fence(...args)

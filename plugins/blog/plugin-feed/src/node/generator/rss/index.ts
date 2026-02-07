@@ -115,7 +115,8 @@ export const getRssFeed = (feedStore: FeedStore): string => {
    *
    * @see https://validator.w3.org/feed/docs/rss2.html#comments
    */
-  content.rss.channel.category = Array.from(feedStore.categories).map(
+  content.rss.channel.category = Array.from(
+    feedStore.categories,
     (category) => ({ _text: category }),
   )
 

@@ -22,11 +22,9 @@ useEventListener('keydown', (event): void => {
         navigate(nextLink.value.link)
         event.preventDefault()
       }
-    } else if (event.key === 'ArrowLeft') {
-      if (prevLink.value) {
-        navigate(prevLink.value.link)
-        event.preventDefault()
-      }
+    } else if (event.key === 'ArrowLeft' && prevLink.value) {
+      navigate(prevLink.value.link)
+      event.preventDefault()
     }
   }
 })

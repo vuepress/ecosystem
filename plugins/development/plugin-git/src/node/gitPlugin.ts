@@ -77,7 +77,7 @@ export const gitPlugin =
       ) => {
         page.data.git = {}
 
-        if (!isGitRepo || page.filePathRelative === null) {
+        if (!isGitRepo || page.filePathRelative == null) {
           return
         }
 

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { getMatchedContent } from '../src/client/worker-utils/getMatchedContent.js'
 
-describe('getMatchedContent', () => {
+describe(getMatchedContent, () => {
   it('Should match content', () => {
     expect(getMatchedContent('a b c d', 'a')).toEqual([['mark', 'a'], ' b c d'])
     expect(getMatchedContent('a b c d', 'b')).toEqual([

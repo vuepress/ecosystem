@@ -1,3 +1,4 @@
+// oxlint-disable max-lines-per-function
 import { isPlainObject, isString, useLocale } from '@vuepress/helper/client'
 import { useEventListener } from '@vueuse/core'
 import type { PropType, VNode } from 'vue'
@@ -267,9 +268,9 @@ export default defineComponent({
                             : null,
                           h(
                             'div',
-                            item.display
-                              .map((display) => getVNodes(display))
-                              .flat(),
+                            item.display.flatMap((display) =>
+                              getVNodes(display),
+                            ),
                           ),
                         ]),
                         h('button', {
@@ -349,13 +350,14 @@ export default defineComponent({
           class: [
             'slimsearch-result-wrapper',
             {
-              empty: props.queries.length
-                ? !hasResults.value
-                : !hasHistory.value,
+              empty:
+                props.queries.length > 0
+                  ? !hasResults.value
+                  : !hasHistory.value,
             },
           ],
         },
-        props.queries.length
+        props.queries.length > 0
           ? isSearching.value
             ? h(SearchLoading, { hint: locale.value.searching })
             : hasResults.value

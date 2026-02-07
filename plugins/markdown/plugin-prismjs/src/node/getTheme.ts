@@ -1,7 +1,7 @@
 import type { PrismjsPluginOptions } from './options.js'
 import type { PrismjsTheme } from './types.js'
 
-const PRISMJS_THEMES: PrismjsTheme[] = [
+const PRISMJS_THEMES = new Set<PrismjsTheme>([
   'ateliersulphurpool-light',
   'coldark-cold',
   'coy',
@@ -37,11 +37,11 @@ const PRISMJS_THEMES: PrismjsTheme[] = [
   'vsc-dark-plus',
   'xonokai',
   'z-touch',
-]
+])
 
 const isValidTheme = (theme?: string): theme is PrismjsTheme =>
   // @ts-expect-error: Actual assertion here
-  PRISMJS_THEMES.includes(theme)
+  PRISMJS_THEMES.has(theme)
 
 export const getTheme = (
   options: Pick<PrismjsPluginOptions, 'theme' | 'themes'>,

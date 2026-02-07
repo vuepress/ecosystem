@@ -72,7 +72,6 @@ export const getSearchResults = (
         terms.slice(index + 1).every((term) => !term.includes(item)),
       )
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, no-multi-assign
     const { contents } = (resultMap[pageId] ??= {
       title: '',
       contents: [],
@@ -86,22 +85,21 @@ export const getSearchResults = (
           id: pageId,
           index: info,
           display: displayTerms
-            .map((term) =>
+            .flatMap((term) =>
               (result as CustomFieldIndexItem).c.map((field) =>
                 getMatchedContent(field, term),
               ),
             )
-            .flat()
-            .filter((item): item is Word[] => item !== null),
+            .filter((item): item is Word[] => item != null),
         },
         score,
       ])
     } else {
       const headerContent = displayTerms
         .map((term) => getMatchedContent((result as PageIndexItem).h, term))
-        .filter((item): item is Word[] => item !== null)
+        .filter((item): item is Word[] => item != null)
 
-      if (headerContent.length)
+      if (headerContent.length > 0)
         contents.push([
           {
             type: isSection ? 'heading' : 'title',
@@ -116,9 +114,9 @@ export const getSearchResults = (
         for (const text of result.t) {
           const matchedContent = displayTerms
             .map((term) => getMatchedContent(text, term))
-            .filter((item): item is Word[] => item !== null)
+            .filter((item): item is Word[] => item != null)
 
-          if (matchedContent.length)
+          if (matchedContent.length > 0)
             contents.push([
               {
                 type: 'text',

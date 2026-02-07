@@ -85,7 +85,7 @@ export const updateSearchIndex = async (
 
     // Update index
     // Remove previous index
-    Array.from(localeSearchIndex._documentIds.values())
+    ;[...localeSearchIndex._documentIds.values()]
       .filter((id) => id.startsWith(pageId))
       .forEach((id) => {
         discard(localeSearchIndex, id)
@@ -126,7 +126,7 @@ export const removeSearchIndex = async (
     const localeSearchIndex = searchIndexStore[pathLocale]
 
     // Remove previous index
-    Array.from(localeSearchIndex._documentIds.values())
+    ;[...localeSearchIndex._documentIds.values()]
       .filter((id) => id.startsWith(pageId))
       .forEach((id) => {
         discard(localeSearchIndex, id)

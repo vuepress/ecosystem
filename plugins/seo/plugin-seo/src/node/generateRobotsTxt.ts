@@ -7,7 +7,7 @@ export const generateRobotsTxt = async (app: App): Promise<void> => {
   const publicPath = app.dir.public('robots.txt')
 
   let content = fs.existsSync(publicPath)
-    ? await fs.readFile(publicPath, { encoding: 'utf8' })
+    ? await fs.readFile(publicPath, { encoding: 'utf-8' })
     : ''
 
   if (content && !content.includes('User-agent')) {

@@ -27,13 +27,12 @@ export const enhanceTwoslash = (app: App): void => {
 
   if (!__VUEPRESS_SSR__) {
     // Recompute poppers when clicking on a tab
-    window.addEventListener(
+    globalThis.addEventListener(
       'click',
       (event) => {
         const path = event.composedPath()
         if (
           path.some((el) =>
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             (el as HTMLElement)?.classList?.contains('vp-code-tab'),
           )
         )

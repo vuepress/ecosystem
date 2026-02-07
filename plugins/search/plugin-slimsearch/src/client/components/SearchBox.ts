@@ -8,7 +8,7 @@ import { SearchIcon } from './icons.js'
 
 import '../styles/search-box.css'
 
-const primaryHotKey = options.hotKeys[0]
+const [primaryHotKey] = options.hotKeys
 
 export default defineComponent({
   name: 'SearchBox',
@@ -23,7 +23,6 @@ export default defineComponent({
     })
 
     const controlKeys = computed(() =>
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       primaryHotKey
         ? [
             ...(isAppleDevice.value

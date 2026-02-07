@@ -1,5 +1,5 @@
 import { useLocale } from '@vuepress/helper/client'
-import type { PropType } from 'vue'
+import type { PropType, VNode } from 'vue'
 import {
   computed,
   defineComponent,
@@ -94,11 +94,10 @@ export const MeiliSearch = defineComponent({
     })
 
     onUnmounted(() => {
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       destroy?.()
     })
 
-    return () => [
+    return (): (VNode | null)[] => [
       h('div', {
         id: 'docsearch',
         style: { display: hasInitialized.value ? 'block' : 'none' },

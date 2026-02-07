@@ -24,8 +24,8 @@ it('isDef', () => {
   expect(isDef([])).toBe(true)
   expect(isDef({})).toBe(true)
   expect(isDef(null)).toBe(true)
+  // oxlint-disable-next-line unicorn/no-useless-undefined
   expect(isDef(undefined)).toBe(false)
-  // eslint-disable-next-line no-void
   expect(isDef(void 0)).toBe(false)
 })
 
@@ -64,7 +64,6 @@ test
 })
 
 it('isRegExp', () => {
-  // eslint-disable-next-line prefer-regex-literals
   expect(isRegExp(new RegExp('abc'))).toBe(true)
   expect(isRegExp(/\.html$/)).toBe(true)
   expect(isRegExp(console)).toBe(false)

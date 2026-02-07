@@ -22,11 +22,11 @@ export const setupPhotoSwipe = (
           const bullet = document.createElement('div')
 
           bullet.className = 'photo-swipe-bullet'
-          bullet.onclick = (event: Event): void => {
+          bullet.addEventListener('click', (event: Event) => {
             photoSwipe.goTo(bullets.indexOf(event.target as HTMLElement))
-          }
+          })
           bullets.push(bullet)
-          el.appendChild(bullet)
+          el.append(bullet)
         }
 
         photoSwipe.on('change', () => {

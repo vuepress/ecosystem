@@ -1,4 +1,5 @@
 import type { ClarityOptions } from '../../shared/index.js'
+// oxlint-disable-next-line import/no-unassigned-import
 import './declare.js'
 
 /**
@@ -27,8 +28,8 @@ export const useClarityAnalytics = ({
   // eslint-disable-next-line func-names
   window.clarity = function () {
     // @ts-expect-error: Property 'q' does not exist on type
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment, prefer-rest-params
-    ;(window.clarity.q = window.clarity.q || []).push(arguments)
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment, prefer-rest-params, id-length
+    ;(window.clarity.q = window.clarity.q ?? []).push(arguments)
   }
 
   const script = document.createElement('script')
@@ -38,5 +39,5 @@ export const useClarityAnalytics = ({
     script.crossOrigin = crossOrigin
   }
 
-  document.head.appendChild(script)
+  document.head.append(script)
 }

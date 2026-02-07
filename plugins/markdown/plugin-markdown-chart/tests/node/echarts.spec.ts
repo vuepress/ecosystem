@@ -3,8 +3,8 @@ import { describe, expect, it } from 'vitest'
 
 import { echarts } from '../../src/node/markdown-it-plugins/echarts.js'
 
-describe('echarts', () => {
-  const markdownIt = MarkdownIt({ linkify: true }).use(echarts, {
+describe(echarts, () => {
+  const markdownIt = new MarkdownIt({ linkify: true }).use(echarts, {
     allowScripts: true,
     allowAll: true,
   })
@@ -187,7 +187,7 @@ const a = 1;
   })
 
   it('Should remove unsafe script block by default', () => {
-    const md = MarkdownIt({ linkify: true }).use(echarts)
+    const md = new MarkdownIt({ linkify: true }).use(echarts)
 
     const result = md.render(
       `

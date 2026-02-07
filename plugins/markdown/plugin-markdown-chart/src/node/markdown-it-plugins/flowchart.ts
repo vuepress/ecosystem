@@ -2,15 +2,15 @@ import { encodeData } from '@vuepress/helper'
 import type { PluginSimple } from 'markdown-it'
 import type Token from 'markdown-it/lib/token.mjs'
 
-const SUPPORTED_PRESETS = ['ant', 'pie', 'vue']
+const SUPPORTED_PRESETS = new Set(['ant', 'pie', 'vue'])
 
 const flowchartRender = (tokens: Token[], index: number): string => {
   const token = tokens[index]
   const { content, info } = token
-  const preset = info.trim().split(':', 2)[1]
+  const [, preset] = info.trim().split(':', 2)
 
   return `<FlowChart code="${encodeData(content)}" preset="${
-    SUPPORTED_PRESETS.includes(preset) ? preset : 'vue'
+    SUPPORTED_PRESETS.has(preset) ? preset : 'vue'
   }"></FlowChart>`
 }
 

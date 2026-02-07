@@ -40,8 +40,11 @@ export interface AutoFrontmatterContext {
  * ```
  */
 export type AutoFrontmatterHandle<
-  D extends AutoFrontmatterData = AutoFrontmatterData,
-> = (data: D, context: AutoFrontmatterContext) => D | Promise<D>
+  DataType extends AutoFrontmatterData = AutoFrontmatterData,
+> = (
+  data: DataType,
+  context: AutoFrontmatterContext,
+) => DataType | Promise<DataType>
 
 export interface AutoFrontmatterRule {
   /**

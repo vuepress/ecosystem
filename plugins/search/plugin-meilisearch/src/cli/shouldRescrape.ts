@@ -27,10 +27,8 @@ export const shouldRescrape = (cwd = process.cwd()): boolean => {
       cwd,
       encoding: 'utf-8',
     })
-  } catch (spawnError) {
-    logger.warn(
-      `Failed to get commit message: ${(spawnError as Error).message}`,
-    )
+  } catch (err) {
+    logger.warn(`Failed to get commit message: ${(err as Error).message}`)
     return false
   }
 

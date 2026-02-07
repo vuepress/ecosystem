@@ -4,4 +4,4 @@ export const COMMAND = process.env.E2E_COMMAND ?? 'dev'
 
 export const IS_DEV = COMMAND === 'dev'
 export const IS_PROD = COMMAND === 'build'
-export const IS_CI = !!process.env.CI
+export const IS_CI = Boolean(process.env.CI)

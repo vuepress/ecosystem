@@ -19,8 +19,8 @@ cond(no)->sub1(left)->op1
 c2(yes)->io->e
 c2(no)->op2->e`
 
-describe('flowchart', () => {
-  const markdownIt = MarkdownIt({ linkify: true }).use(flowchart)
+describe(flowchart, () => {
+  const markdownIt = new MarkdownIt({ linkify: true }).use(flowchart)
 
   it('Should render ```flow', () => {
     const flowRenderResult = markdownIt.render(`

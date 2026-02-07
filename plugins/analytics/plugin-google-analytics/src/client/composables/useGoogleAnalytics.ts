@@ -1,4 +1,5 @@
 import type { GoogleAnalyticsPluginOptions } from '../../shared/index.js'
+// oxlint-disable-next-line import/no-unassigned-import
 import './declare.js'
 
 /**
@@ -32,11 +33,12 @@ export const useGoogleAnalytics = (
   const gtagScript = document.createElement('script')
   gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${options.id}`
   gtagScript.async = true
-  document.head.appendChild(gtagScript)
+  document.head.append(gtagScript)
 
   // insert gtag snippet
   window.dataLayer = window.dataLayer ?? []
   // the gtag function must use `arguments` object to forward parameters
+  // oxlint-disable-next-line unicorn/consistent-function-scoping
   window.gtag = function gtag() {
     // eslint-disable-next-line prefer-rest-params
     window.dataLayer!.push(arguments)

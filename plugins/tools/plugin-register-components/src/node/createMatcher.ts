@@ -16,5 +16,7 @@ export const createMatcher = (rawPatterns: string[]): picomatch.Matcher => {
     }
   }
 
-  return picomatch(patterns, { ignore: ignored.length ? ignored : undefined })
+  return picomatch(patterns, {
+    ignore: ignored.length > 0 ? ignored : undefined,
+  })
 }

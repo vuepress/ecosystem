@@ -14,6 +14,7 @@ describe('getDate()', () => {
 
   it('return null', () => {
     expect(getDate('')).toBe(null)
+    // oxlint-disable-next-line unicorn/no-useless-undefined
     expect(getDate(undefined)).toBe(null)
     expect(getDate(null)).toBe(null)
   })

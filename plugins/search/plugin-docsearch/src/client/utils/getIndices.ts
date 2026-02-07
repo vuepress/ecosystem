@@ -20,25 +20,27 @@ export const getIndices = (
         searchParameters,
       },
     ]
-  ).map((item) => {
-    if (isString(item))
+  )
+    // oxlint-disable-next-line oxc/no-map-spread
+    .map((item) => {
+      if (isString(item))
+        return {
+          name: item,
+          searchParameters: {
+            facetFilters: `lang:${lang}`,
+          },
+        }
+
+      const { searchParameters: indexSearchParameters, ...rest } = item
+
       return {
-        name: item,
+        ...rest,
         searchParameters: {
-          facetFilters: `lang:${lang}`,
+          ...indexSearchParameters,
+          facetFilters: getFacetFilters(
+            lang,
+            indexSearchParameters?.facetFilters,
+          ),
         },
       }
-
-    const { searchParameters: indexSearchParameters, ...rest } = item
-
-    return {
-      ...rest,
-      searchParameters: {
-        ...indexSearchParameters,
-        facetFilters: getFacetFilters(
-          lang,
-          indexSearchParameters?.facetFilters,
-        ),
-      },
-    }
-  })
+    })

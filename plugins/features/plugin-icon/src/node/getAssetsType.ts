@@ -14,13 +14,15 @@ const isIconFontLink = (link: string): boolean =>
 
 export const isFontAwesomeAssets = (assets: IconAsset): boolean =>
   isArray(assets)
-    ? assets.every(isFontAwesomeLink)
+    ? assets.every((link) => isFontAwesomeLink(link))
     : assets === 'fontawesome' ||
       assets === 'fontawesome-with-brands' ||
       isFontAwesomeLink(assets)
 
 export const isIconFontAssets = (assets: IconAsset): boolean =>
-  isArray(assets) ? assets.every(isIconFontLink) : isIconFontLink(assets)
+  isArray(assets)
+    ? assets.every((link) => isIconFontLink(link))
+    : isIconFontLink(assets)
 
 export const isIconifyAssets = (assets: IconAsset): boolean =>
   isString(assets) && (isIconifyLink(assets) || assets === 'iconify')

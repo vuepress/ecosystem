@@ -1,9 +1,9 @@
 import type { LocaleData } from 'vuepress/shared'
 
-export type DefaultLocaleInfoItem<T extends LocaleData = LocaleData> = [
+export type DefaultLocaleInfoItem<Locale extends LocaleData = LocaleData> = [
   lang: string[],
-  data: T,
+  data: Locale,
 ]
 
-export type DefaultLocaleInfo<T extends LocaleData = LocaleData> =
-  DefaultLocaleInfoItem<T>[]
+export type DefaultLocaleInfo<Locale extends LocaleData = LocaleData> =
+  DefaultLocaleInfoItem<Locale>[]

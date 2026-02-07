@@ -40,7 +40,7 @@ export const slimsearchPlugin =
             ?.map(({ formatter }, index) =>
               formatter ? [index.toString(), formatter] : null,
             )
-            .filter((item): item is [string, string] => item !== null) ?? [],
+            .filter((item): item is [string, string] => item != null) ?? [],
         ),
         __SLIMSEARCH_LOCALES__: getFullLocaleConfig({
           app,

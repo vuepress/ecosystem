@@ -52,7 +52,7 @@ export const registerSW = async (
     },
 
     error(err) {
-      if (showStatus) console.error('[Service Worker]: ', err)
+      if (showStatus) console.error('[Service Worker]:', err)
       hooks.error?.(err)
     },
   })

@@ -81,7 +81,7 @@ export const generateServiceWorker = async (
       )}.`,
     )
 
-    if (warnings.length)
+    if (warnings.length > 0)
       logger.warn(`\n${warnings.map((warning) => `  · ${warning}`).join('\n')}`)
 
     if (size > 104857600)

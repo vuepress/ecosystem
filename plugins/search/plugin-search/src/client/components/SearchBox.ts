@@ -54,7 +54,7 @@ export const SearchBox = defineComponent({
     })
 
     const showSuggestions = computed(
-      () => isActive.value && !!suggestions.value.length,
+      () => isActive.value && suggestions.value.length > 0,
     )
     const onArrowUp = (): void => {
       if (!showSuggestions.value) {
@@ -123,9 +123,7 @@ export const SearchBox = defineComponent({
                   goTo(focusIndex.value)
                   break
                 }
-                default: {
-                  // do nothing
-                }
+                default:
               }
             },
           }),

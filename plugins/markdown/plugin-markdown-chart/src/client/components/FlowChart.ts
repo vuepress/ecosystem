@@ -20,6 +20,9 @@ import { flowchartPresets } from '../utils/index.js'
 
 import '../styles/flowchart.css'
 
+const getScale = (width: number): number =>
+  width < 419 ? 0.8 : width > 1280 ? 1 : 0.9
+
 export default defineComponent({
   name: 'FlowChart',
 
@@ -51,9 +54,6 @@ export default defineComponent({
     const scale = ref(1)
 
     let flowchart: Chart | null = null
-
-    const getScale = (width: number): number =>
-      width < 419 ? 0.8 : width > 1280 ? 1 : 0.9
 
     useEventListener(
       'resize',

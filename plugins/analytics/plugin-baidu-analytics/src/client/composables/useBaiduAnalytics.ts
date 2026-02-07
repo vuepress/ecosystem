@@ -1,4 +1,5 @@
 import { useRouter } from 'vuepress/client'
+// oxlint-disable-next-line import/no-unassigned-import
 import './declare.js'
 
 /**
@@ -30,7 +31,7 @@ export const useBaiduAnalytics = (id: string): void => {
   const script = document.createElement('script')
   script.src = `https://hm.baidu.com/hm.js?${id}`
   script.async = true
-  document.head.appendChild(script)
+  document.head.append(script)
 
   router.afterEach((to) => {
     window._hmt!.push(['_trackPageview', to.fullPath])

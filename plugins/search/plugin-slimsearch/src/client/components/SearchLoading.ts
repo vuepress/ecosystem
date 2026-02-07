@@ -18,6 +18,7 @@ export const SearchLoading: FunctionalComponent<{
       [
         h(
           'circle',
+          // oxlint-disable-next-line id-length
           { cx: '28', cy: '75', r: '11', fill: 'currentColor' },
           h('animate', {
             attributeName: 'fill-opacity',

@@ -15,12 +15,12 @@ export const resolveImageInfoFromElement = (
         msrc: imageElement.src,
       })
     } else {
-      imageElement.onload = (): void => {
-        resolve(resolveImageInfoFromElement(imageElement))
-      }
-      imageElement.onerror = (): void => {
-        reject()
-      }
+      imageElement.addEventListener('load', () => {
+        resolveImageInfoFromElement(imageElement).then(resolve).catch(reject)
+      })
+      imageElement.addEventListener('error', (event) => {
+        reject(new Error(event.message))
+      })
     }
   })
 
@@ -31,10 +31,10 @@ export const resolveImageInfoFromLink = (
     const el = new Image()
 
     el.src = imageLink
-    el.onload = (): void => {
-      resolve(resolveImageInfoFromElement(el))
-    }
-    el.onerror = (): void => {
-      reject()
-    }
+    el.addEventListener('load', () => {
+      resolveImageInfoFromElement(el).then(resolve).catch(reject)
+    })
+    el.addEventListener('error', (event) => {
+      reject(new Error(event.message))
+    })
   })

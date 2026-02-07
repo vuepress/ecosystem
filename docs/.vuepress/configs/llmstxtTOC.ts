@@ -38,7 +38,7 @@ const flattenSidebar = (
           result.push(normalizePath(prefix, item.link))
         }
       }
-      if ('children' in item && item.children.length) {
+      if ('children' in item && item.children.length > 0) {
         result.push(
           ...flattenSidebar(item.children, normalizePath(prefix, item.prefix)),
         )
@@ -69,10 +69,10 @@ export const tocGetter = (llmPages: LLMPage[], llmState: LLMState): string => {
   const appendTOC = (title: string, key: string): void => {
     tableOfContent += `### ${title}\n\n`
     tableOfContent += flattenSidebar(
-      sidebarConfig[key] as SidebarItemOptions[],
+      (sidebarConfig as Record<string, unknown[]>)[key] as SidebarItemOptions[],
       key,
     )
-      .map(generateTOCLink)
+      .map((path) => generateTOCLink(path))
       .filter(Boolean)
       .join('')
     tableOfContent += '\n'
@@ -81,16 +81,18 @@ export const tocGetter = (llmPages: LLMPage[], llmState: LLMState): string => {
   // Themes
   appendTOC('Themes', '/themes/')
   // Plugins
-  ;(sidebarConfig['/plugins/'] as AutoLinkOptions[]).forEach(
-    ({ text, link }) => {
-      appendTOC(`${text} Plugins`, `/plugins/${link}`)
-    },
-  )
+  ;(
+    (sidebarConfig as Record<string, unknown[]>)[
+      '/plugins/'
+    ] as AutoLinkOptions[]
+  ).forEach(({ text, link }) => {
+    appendTOC(`${text} Plugins`, `/plugins/${link}`)
+  })
   // Tools
   appendTOC('Tools', '/tools/')
   // Others
   const unUsagePages = llmPages.filter((page) => !usagePages.includes(page))
-  if (unUsagePages.length) {
+  if (unUsagePages.length > 0) {
     tableOfContent += '### Others\n\n'
     tableOfContent += unUsagePages
       .map((page) => rawGenerateTOCLink(page, llmState))

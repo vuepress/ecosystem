@@ -1,0 +1,160 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "extends": ["./.oxlintrc.base.json"],
+  "ignorePatterns": [
+    "coverage/",
+    "packages/*/*/lib/",
+    "template/",
+    "**/tests/__fixtures__/"
+  ],
+  // disable jsdoc currently
+  "plugins": ["typescript", "oxc", "import", "promise", "unicorn"],
+  "rules": {
+    "max-params": ["warn", 5],
+    // allow undefined usage
+    "no-undefined": "off",
+    // allow warning comments, like todo, fixme
+    "no-warning-comments": "off",
+    // object assign can be performant
+    "prefer-object-spread": "off",
+    "import/max-dependencies": "off",
+    // allow functions that return promise to not use await
+    "typescript/require-await": "off",
+    "typescript/no-dynamic-delete": "off",
+    "unicorn/prefer-dom-node-dataset": "off",
+    "unicorn/prefer-global-this": "off",
+    "unicorn/no-array-reduce": "off",
+    "unicorn/no-typeof-undefined": "off",
+    "typescript/explicit-function-return-type": [
+      "warn",
+      { "allowExpressions": true }
+    ],
+    // we only use this when necessary
+    "typescript/no-non-null-assertion": "off",
+    // this can introduce false positives, as though type is required, users might not provide such
+    "typescript/prefer-nullish-coalescing": "off",
+    // we often check other types
+    "typescript/strict-boolean-expressions": "off",
+    // disabled due to performance consideration
+    "unicorn/prefer-code-point": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/template/**"],
+      "rules": {
+        "import/no-unresolved": "off",
+        "vue/multi-word-component-names": [
+          "error",
+          {
+            "ignores": ["Article", "Category", "Tag", "Timeline"]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["**/*.spec.ts"],
+      "rules": {
+        "no-console": "off"
+      }
+    },
+    {
+      "files": ["**/src/node/**/*.ts"],
+      "plugins": ["node"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          "@vuepress/helper/client",
+          "vuepress/client"
+        ],
+        "node/no-process-env": "off"
+      }
+    },
+    {
+      "files": ["tools/**/*.ts", "**/.vuepress/config.ts"],
+      "rules": {
+        // allow importing node built-in modules in node files
+        "import/no-nodejs-modules": "off"
+      }
+    },
+    {
+      "files": ["**/src/client/**/*.{ts,vue}"],
+      "plugins": ["vue"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          "@vuepress/helper",
+          "@vuepress/helper/node",
+          "vuepress/core",
+          "vuepress/markdown",
+          "vuepress/utils"
+        ],
+        "vue/max-props": [
+          "warn",
+          {
+            "maxProps": 10
+          }
+        ]
+        // not working at all
+        // "typescript/no-floating-promises": [
+        //   "error",
+        //   {
+        //     "allowForKnownSafeCalls": [
+        //       // Avoid explicit marking void for router.push
+        //       {
+        //         "from": "package",
+        //         "name": "push",
+        //         "package": "vue-router"
+        //       },
+        //       // Avoid explicit marking void for router.replace
+        //       {
+        //         "from": "package",
+        //         "name": "replace",
+        //         "package": "vue-router"
+        //       }
+        //     ]
+        //   }
+        // ]
+        // "typescript/prefer-nullish-coalescing": [
+        //   "warn",
+        //   { "ignoreConditionalTests": true }
+        // ]
+      }
+    },
+    {
+      "files": ["**/src/client/components/**/*.{ts,vue}"],
+      "plugins": ["vue"],
+      "rules": {
+        // loose max lines for components setup blocks
+        "max-lines-per-function": [
+          "warn",
+          {
+            "max": 300,
+            "skipBlankLines": true,
+            "skipComments": true
+          }
+        ]
+      }
+    },
+    {
+      "files": ["**/.vuepress/client.ts", "**/src/client/config.ts"],
+      "rules": {
+        "typescript/no-unsafe-assignment": "off"
+      }
+    },
+    {
+      "files": ["**/declare.ts"],
+      "rules": {
+        // export {} are needed to become a module
+        "unicorn/require-module-specifiers": "off"
+      }
+    },
+    {
+      "files": ["**/src/node/*Plugin.ts"],
+      "rules": {
+        "max-lines-per-function": "off",
+        "max-dependencies": "off",
+        "complexity": "off"
+      }
+    }
+  ]
+}

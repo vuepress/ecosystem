@@ -9,7 +9,6 @@ import type { TwoslashFloatingVueRendererOptions } from './options.js'
 
 const addVPreProp = <T extends ElementContent>(el: T): T => {
   if (el.type === 'element') {
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     ;(el.properties ??= {})['v-pre'] = ''
   }
   return el
@@ -18,35 +17,33 @@ const addVPreProp = <T extends ElementContent>(el: T): T => {
 const compose = (parts: {
   token: Element | Text
   popup: Element
-}): Element[] => {
-  return [
-    {
-      type: 'element',
-      tagName: 'span',
-      properties: {},
-      children: [parts.token],
+}): Element[] => [
+  {
+    type: 'element',
+    tagName: 'span',
+    properties: {},
+    children: [parts.token],
+  },
+  {
+    type: 'element',
+    tagName: 'template',
+    properties: {
+      'v-slot:popper': '{}',
     },
-    {
-      type: 'element',
-      tagName: 'template',
-      properties: {
-        'v-slot:popper': '{}',
-      },
-      content: {
-        type: 'root',
-        children: [addVPreProp(parts.popup)],
-      },
-      children: [],
+    content: {
+      type: 'root',
+      children: [addVPreProp(parts.popup)],
     },
-  ]
-}
+    children: [],
+  },
+]
 
-function renderMarkdown(
+const renderMarkdown = function (
   this: ShikiTransformerContextCommon,
   md: string,
 ): ElementContent[] {
   const mdast = fromMarkdown(
-    md.replace(/\{@link ([^}]*)\}/g, '$1'), // replace jsdoc links
+    md.replaceAll(/\{@link ([^}]*)\}/g, '$1'), // replace jsdoc links
     { mdastExtensions: [gfmFromMarkdown()] },
   )
 
@@ -88,7 +85,7 @@ function renderMarkdown(
   ).children
 }
 
-function renderMarkdownInline(
+const renderMarkdownInline = function (
   this: ShikiTransformerContextCommon,
   md: string,
   context?: string,
@@ -113,6 +110,7 @@ function renderMarkdownInline(
  * 为 twoslash 创建 FloatingVue 渲染器
  *
  * @param options - Renderer options / 渲染器选项
+ * @returns Twoslash renderer / Twoslash 渲染器
  *
  * @example
  * ```ts
@@ -124,6 +122,7 @@ function renderMarkdownInline(
  * })
  * ```
  */
+// oxlint-disable-next-line max-lines-per-function
 export const rendererFloatingVue = (
   options: TwoslashFloatingVueRendererOptions = {},
 ): TwoslashRenderer => {

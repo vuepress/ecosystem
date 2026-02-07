@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+// oxlint-disable-next-line typescript/ban-types, typescript/no-unsafe-function-type
 type Primitive = Function | boolean | number | string | null | undefined
 
 type NotNill<T> = T extends null | undefined ? never : T
@@ -31,11 +31,11 @@ type NotNill<T> = T extends null | undefined ? never : T
 export type DeepRequired<T> = T extends Primitive
   ? NotNill<T>
   : {
-      [P in keyof T]-?: T[P] extends (infer U)[]
-        ? DeepRequired<U>[]
-        : T[P] extends readonly (infer V)[]
-          ? DeepRequired<V>
-          : DeepRequired<T[P]>
+      [Key in keyof T]-?: T[Key] extends (infer ItemType)[]
+        ? DeepRequired<ItemType>[]
+        : T[Key] extends readonly (infer ReadOnlyItemType)[]
+          ? DeepRequired<ReadOnlyItemType>
+          : DeepRequired<T[Key]>
     }
 
 /**
@@ -46,3 +46,22 @@ export type DeepRequired<T> = T extends Primitive
 export type LiteralUnion<Union extends Base, Base = string> =
   | Union
   | (Base & { IGNORE_ME?: never })
+
+/**
+ * Convert a union type to an intersection type using [distributive conditional types](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#distributive-conditional-types).
+ *
+ */
+export type UnionToIntersection<Union> =
+  // `extends unknown` is always going to be the case and is used to convert the
+  // `Union` into a [distributive conditional type](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#distributive-conditional-types).
+  (
+    Union extends unknown
+      ? // The union type is used as the only argument to a function since the union
+        // of function arguments is an intersection.
+        (distributedUnion: Union) => void
+      : // This won't happen.
+        never
+  ) extends (mergedIntersection: infer Intersection) => void // arguments of unions of functions as an intersection of the union. // Infer the `Intersection` type since TypeScript represents the positional
+    ? // The `& Union` is to ensure result of `UnionToIntersection<A | B>` is always assignable to `A | B`
+      Intersection & Union
+    : never

@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { llmExcludePlugin } from '../src/node/markdown-it-plugins/llm-exclude'
 
 describe('@vuepress/plugin-llms > llmExcludePlugin', () => {
-  const md = MarkdownIt().use(llmExcludePlugin)
+  const md = new MarkdownIt().use(llmExcludePlugin)
 
   it('should render inline empty content', () => {
     expect(md.render('<llm-exclude></llm-exclude>')).toBe('<p></p>\n')

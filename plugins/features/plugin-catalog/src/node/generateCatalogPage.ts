@@ -39,7 +39,7 @@ export const generateCatalogPage = async (
           // not discovered yet
           !pathToBeGenerated.has(catalogPath) &&
           // not being excluded
-          // eslint-disable-next-line @typescript-eslint/no-loop-func
+          // oxlint-disable-next-line no-loop-func, unicorn/prefer-regexp-test
           exclude.every((pattern) => !catalogPath.match(pattern)) &&
           // path not found
           // eslint-disable-next-line @typescript-eslint/no-loop-func
@@ -53,9 +53,8 @@ export const generateCatalogPage = async (
   })
 
   await Promise.all(
-    Array.from(pathToBeGenerated)
-      .map((path) => decodeURI(path))
-      .map(async (path) => {
+    Array.from(pathToBeGenerated, (path) => decodeURI(path)).map(
+      async (path) => {
         const [, basename = ''] = /\/([^/]+)\/?$/.exec(path) ?? []
         const title = getTitleFromFilename(basename)
 
@@ -67,7 +66,8 @@ export const generateCatalogPage = async (
           content,
           path,
         })
-      }),
+      },
+    ),
   ).then((catalogPages) => {
     app.pages.push(...catalogPages)
   })

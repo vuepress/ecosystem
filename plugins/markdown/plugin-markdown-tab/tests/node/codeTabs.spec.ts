@@ -4,7 +4,7 @@ import { createMarkdown } from 'vuepress/markdown'
 
 import { codeTabs } from '../../src/node/codeTabs.js'
 
-const markdownIt = MarkdownIt({ linkify: true }).use(codeTabs)
+const markdownIt = new MarkdownIt({ linkify: true }).use(codeTabs)
 
 describe('code tabs', () => {
   it('Should render single block', () => {

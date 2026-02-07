@@ -25,6 +25,7 @@ export interface RTLPluginOptions {
    */
   selector?: {
     [cssSelector: string]: {
+      // oxlint-disable-next-line typescript/consistent-indexed-object-style
       [attr: string]: string
     }
   }

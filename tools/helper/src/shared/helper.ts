@@ -20,7 +20,7 @@ export { isFunction, isString, isPlainObject } from 'vuepress/shared'
  * isDef(0) // true
  * ```
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// oxlint-disable-next-line typescript/no-explicit-any
 export const isDef = <T = any>(val?: T): val is T => typeof val !== 'undefined'
 
 /**
@@ -66,7 +66,8 @@ export const isNumber = (val: any): val is number => typeof val === 'number'
  *
  * 检查值是否为数组
  */
-export const { isArray } = Array
+export const isArray = <ItemType>(val: unknown): val is ItemType[] =>
+  Array.isArray(val)
 
 /**
  * Check if a value is regexp
@@ -137,5 +138,12 @@ export {
 /* Object helper */
 export const { entries } = Object
 export const { fromEntries } = Object
-export const { keys } = Object
+
+export const keys = <ObjectType extends object>(
+  obj: ObjectType,
+): `${keyof ObjectType & (string | number | boolean | null | undefined)}`[] =>
+  Object.keys(
+    obj,
+  ) as `${keyof ObjectType & (string | number | boolean | null | undefined)}`[]
+
 export const { values } = Object

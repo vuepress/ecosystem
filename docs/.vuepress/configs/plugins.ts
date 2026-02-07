@@ -13,6 +13,7 @@ import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 import { markdownPreviewPlugin } from '@vuepress/plugin-markdown-preview'
 import { markdownStylizePlugin } from '@vuepress/plugin-markdown-stylize'
+import type { MarkdownItStylizeResult } from '@vuepress/plugin-markdown-stylize'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { revealJsPlugin } from '@vuepress/plugin-revealjs'
@@ -97,7 +98,7 @@ export const plugins = [
     custom: [
       {
         matcher: 'Recommended',
-        replacer: ({ tag }) => {
+        replacer: ({ tag }): MarkdownItStylizeResult | null => {
           if (tag === 'em')
             return {
               tag: 'Badge',

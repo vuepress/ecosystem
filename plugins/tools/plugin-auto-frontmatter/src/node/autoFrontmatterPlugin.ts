@@ -14,6 +14,8 @@ import { PLUGIN_NAME } from './utils.js'
 /**
  * Auto frontmatter plugin
  *
+ * @param options - Plugin options / 插件选项
+ *
  * @example
  * ```ts
  * export default {
@@ -29,10 +31,9 @@ import { PLUGIN_NAME } from './utils.js'
  * }
  * ```
  */
-export const autoFrontmatterPlugin = (
-  options: AutoFrontmatterPluginOptions = [],
-): Plugin => {
-  return (app) => {
+export const autoFrontmatterPlugin =
+  (options: AutoFrontmatterPluginOptions = []): Plugin =>
+  (app) => {
     const { pagePatterns = ['**/*.md', '!.vuepress', '!node_modules'] } =
       app.options
     const cwd = app.dir.source()
@@ -79,4 +80,3 @@ export const autoFrontmatterPlugin = (
       },
     }
   }
-}

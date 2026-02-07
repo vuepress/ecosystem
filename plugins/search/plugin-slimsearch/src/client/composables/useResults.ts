@@ -28,8 +28,8 @@ export const useResults = (queries: Ref<string[]>): Results => {
       (query: string): void => {
         const {
           resultsFilter = (items): SearchResult[] => items,
-          querySplitter,
-          suggestionsFilter,
+          querySplitter: _q,
+          suggestionsFilter: _s,
           ...rest
         } = searchOptions.value
 
@@ -44,6 +44,7 @@ export const useResults = (queries: Ref<string[]>): Results => {
               searchingProcessNumber.value -= 1
               results.value = items
             })
+            // oxlint-disable-next-line promise/prefer-await-to-callbacks
             .catch((err: unknown) => {
               // eslint-disable-next-line no-console
               console.warn(err)

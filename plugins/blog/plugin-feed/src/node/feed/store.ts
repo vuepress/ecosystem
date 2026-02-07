@@ -61,8 +61,12 @@ export class FeedStore {
       const { category, contributor } = item
 
       this.items.push(item)
-      category?.forEach(this.addCategory)
-      contributor.forEach(this.addContributor)
+      category?.forEach((cate) => {
+        this.addCategory(cate)
+      })
+      contributor.forEach((cont) => {
+        this.addContributor(cont)
+      })
     }
   }
 }

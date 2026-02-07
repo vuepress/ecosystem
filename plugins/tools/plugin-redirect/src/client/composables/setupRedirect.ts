@@ -16,7 +16,7 @@ export const setupRedirect = (behaviorConfig: RedirectBehaviorConfig): void => {
 
   onMounted(() => {
     if (redirectInfo.value && !statusSessionStorage.value[routeLocale.value]) {
-      router.replace(
+      void router.replace(
         routePath.value.replace(
           routeLocale.value,
           redirectInfo.value.localePath,

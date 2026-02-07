@@ -1,3 +1,5 @@
+import { entries } from '@vuepress/helper'
+
 /**
  * Create regex to match template variable in format `{key}`
  *
@@ -52,8 +54,10 @@ export const replaceTemplateVariable = (
 export const expandTemplate = (
   template: string,
   variables: Record<string, string | undefined>,
-): string =>
-  Object.entries(variables).reduce(
-    (result, [key, value]) => replaceTemplateVariable(result, key, value),
-    template,
-  )
+): string => {
+  let res = template
+  for (const [key, value] of entries(variables)) {
+    res = replaceTemplateVariable(res, key, value)
+  }
+  return res
+}

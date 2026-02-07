@@ -5,7 +5,7 @@ import {
   getTimeString,
 } from '../../src/node/formatDate.js'
 
-describe('getDateString', () => {
+describe(getDateString, () => {
   it('should return date string', () => {
     expect(getDateString(new Date('2021-01-01'))).toBe('2021-01-01')
   })
@@ -15,7 +15,7 @@ describe('getDateString', () => {
   })
 })
 
-describe('getTimeString', () => {
+describe(getTimeString, () => {
   it('should return time string with date', () => {
     expect(getTimeString(new Date('2021-01-01'))).toBe('00:00:00')
   })
@@ -25,7 +25,7 @@ describe('getTimeString', () => {
   })
 })
 
-describe('getFullDateString', () => {
+describe(getFullDateString, () => {
   it('should return full date string', () => {
     expect(getFullDateString(new Date('2021-01-01'))).toBe(
       '2021-01-01 00:00:00',

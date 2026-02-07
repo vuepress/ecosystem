@@ -1,6 +1,7 @@
 import { removeEndingSlash, removeLeadingSlash } from '@vuepress/helper'
 
 export const createAssetPattern = (prefix: string): RegExp => {
+  // oxlint-disable-next-line id-length
   const s = `(${prefix}.*?)`
   return new RegExp(
     [

@@ -18,9 +18,9 @@ export const getManifest = async (
 
   const manifestFileContent = JSON.parse(
     fs.existsSync(userManifestPath)
-      ? await fs.readFile(userManifestPath, 'utf8')
+      ? await fs.readFile(userManifestPath, 'utf-8')
       : fs.existsSync(userManifestJSONPath)
-        ? await fs.readFile(userManifestJSONPath, 'utf8')
+        ? await fs.readFile(userManifestJSONPath, 'utf-8')
         : '{}',
   ) as AppManifest
 

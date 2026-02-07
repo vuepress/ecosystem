@@ -21,7 +21,7 @@ export const getLocaleInfo = (
 ): [localePath: string, lang: string][] => {
   const localeEntries = Object.entries(app.options.locales)
 
-  if (!localeEntries.length) return [['/', app.options.lang]]
+  if (localeEntries.length === 0) return [['/', app.options.lang]]
 
   return localeEntries.map(([path, { lang }]) => {
     if (lang) return [path, lang]
@@ -36,11 +36,11 @@ export const getLocaleInfo = (
   })
 }
 
-export const getLocaleData = <T extends LocaleData>(
-  info: DefaultLocaleInfo<T>,
+export const getLocaleData = <Locale extends LocaleData>(
+  info: DefaultLocaleInfo<Locale>,
   lang: string,
   logger?: Logger,
-): T => {
+): Locale => {
   const isShortLang = !lang.includes('-')
 
   // full search
@@ -51,13 +51,12 @@ export const getLocaleData = <T extends LocaleData>(
 
   if (!isShortLang) {
     // find short lang match
-    const shortLang = lang.split('-')[0]
+    const [shortLang] = lang.split('-')
 
     const shortLocaleData = info.find(([langs]) => langs.includes(shortLang))
 
     if (shortLocaleData) return shortLocaleData[1]
   }
-
   ;(logger ?? console).warn(`${lang} is missing it's i18n config`)
 
   return (
@@ -70,13 +69,13 @@ export const getLocaleData = <T extends LocaleData>(
   )
 }
 
-export interface GetLocaleConfigOption<T extends LocaleData> {
+export interface GetLocaleConfigOption<Locale extends LocaleData> {
   /** VuePress Node app */
   app: App
   /** Default locale config */
-  default: DefaultLocaleInfo<T>
+  default: DefaultLocaleInfo<Locale>
   /** user locale config */
-  config?: LocaleConfig<T> | undefined
+  config?: LocaleConfig<Locale> | undefined
   /** plugin name */
   name?: string
 }
@@ -90,22 +89,22 @@ export interface GetLocaleConfigOption<T extends LocaleData> {
  *
  * @returns Final locale config / 最终本地化配置
  */
-export const getFullLocaleConfig = <T extends LocaleData>({
+export const getFullLocaleConfig = <Locale extends LocaleData>({
   app,
   name,
   default: defaultLocaleData,
   config: userLocalesConfig = {},
-}: GetLocaleConfigOption<T>): ExactLocaleConfig<T> => {
+}: GetLocaleConfigOption<Locale>): ExactLocaleConfig<Locale> => {
   const logger = new Logger(name)
   const localeInfo = getLocaleInfo(app, logger)
 
   return fromEntries(
-    localeInfo.map<[string, T]>(([localePath, lang]) => [
+    localeInfo.map<[string, Locale]>(([localePath, lang]) => [
       localePath,
       deepAssign(
         {},
         getLocaleData(defaultLocaleData, lang, logger),
-        (userLocalesConfig[localePath] ?? {}) as T,
+        (userLocalesConfig[localePath] ?? {}) as Locale,
       ),
     ]),
   )

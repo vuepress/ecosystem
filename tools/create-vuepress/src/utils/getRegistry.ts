@@ -14,7 +14,7 @@ const getUserRegistry = (
     `${packageManager} config get ${
       isYarnModern ? 'npmRegistryServer' : 'registry'
     }`,
-    { encoding: 'utf8' },
+    { encoding: 'utf-8' },
   ).trim()
 
 export const getRegistry = async (

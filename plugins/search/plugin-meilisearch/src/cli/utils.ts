@@ -14,11 +14,12 @@ export const getGitRelativePath = (cwd = process.cwd()): string => {
     // Get the git root directory
     gitProcess = spawnSync('git', ['rev-parse', '--show-toplevel'], {
       cwd,
-      encoding: 'utf8',
+      encoding: 'utf-8',
     })
-  } catch (spawnError) {
+  } catch (err) {
     throw new Error(
-      `Failed to spawn 'git' process: ${(spawnError as Error).message}`,
+      `Failed to spawn 'git' process: ${(err as Error).message}`,
+      { cause: err },
     )
   }
 
@@ -57,11 +58,12 @@ export const getWorkspaceStatus = (cwd = process.cwd()): string => {
   try {
     gitProcess = spawnSync('git', ['status', '--porcelain'], {
       cwd,
-      encoding: 'utf8',
+      encoding: 'utf-8',
     })
-  } catch (spawnError) {
+  } catch (err) {
     throw new Error(
-      `Failed to spawn 'git' process: ${(spawnError as Error).message}`,
+      `Failed to spawn 'git' process: ${(err as Error).message}`,
+      { cause: err },
     )
   }
 
@@ -89,9 +91,10 @@ export const getChangedFilesByDiff = (cwd = process.cwd()): string[] => {
       cwd,
       encoding: 'utf-8',
     })
-  } catch (spawnError) {
+  } catch (err) {
     throw new Error(
-      `Failed to spawn 'git' process: ${(spawnError as Error).message}`,
+      `Failed to spawn 'git' process: ${(err as Error).message}`,
+      { cause: err },
     )
   }
 
@@ -120,8 +123,7 @@ export const parseGitStatus = (status: string): string[] => {
   status.split('\n').forEach((line) => {
     if (!line) return
 
-    const statusX = line[0]
-    const statusY = line[1]
+    const [statusX, statusY] = line
 
     // Check for unstaged changes or untracked files
     if (
@@ -136,8 +138,8 @@ export const parseGitStatus = (status: string): string[] => {
     const filePath =
       // For renamed files, get the new path (after "->")
       statusX === 'R' || statusX === 'C'
-        ? line.substring(3).split(' -> ')[1]
-        : line.substring(3)
+        ? line.slice(3).split(' -> ')[1]
+        : line.slice(3)
 
     changedFiles.push(filePath)
   })

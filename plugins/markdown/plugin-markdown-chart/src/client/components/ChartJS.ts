@@ -21,7 +21,7 @@ const parseChartConfig = (
 ): ChartConfiguration => {
   if (type === 'json') return JSON.parse(config) as ChartConfiguration
 
-  // eslint-disable-next-line @typescript-eslint/no-implied-eval
+  // oxlint-disable-next-line no-new-func, typescript/no-implied-eval
   const runner = new Function(
     `\
 let config,__chart_js_config__;

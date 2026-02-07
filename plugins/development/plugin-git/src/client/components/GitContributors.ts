@@ -1,4 +1,4 @@
-import type { FunctionalComponent } from 'vue'
+import type { FunctionalComponent, VNode } from 'vue'
 import { defineComponent, h } from 'vue'
 import type { GitContributorInfo } from '../../shared/index.js'
 import { useContributors, useGitLocale } from '../composables/index.js'
@@ -45,8 +45,8 @@ export const GitContributors = defineComponent({
     const contributors = useContributors()
     const locale = useGitLocale()
 
-    return () =>
-      contributors.value.length
+    return (): VNode[] | null =>
+      contributors.value.length > 0
         ? [
             h(VPHeader, {
               level: props.headerLevel,

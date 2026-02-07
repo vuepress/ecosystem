@@ -66,7 +66,7 @@ export default defineComponent({
         : '0'
     }
 
-    let isBeforePrintOpen: boolean = false
+    let isBeforePrintOpen = false
 
     useEventListener('beforeprint', () => {
       isBeforePrintOpen = isExpanded.value

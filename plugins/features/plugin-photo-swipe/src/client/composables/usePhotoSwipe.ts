@@ -118,23 +118,21 @@ export const usePhotoSwipe = ({
     const id = Date.now()
     const PhotoSwipeConstructor = await photoSwipeLoader
 
-    const images = Array.from(
-      document.querySelectorAll<HTMLImageElement>(imageSelector.value),
-    )
+    const images = [
+      ...document.querySelectorAll<HTMLImageElement>(imageSelector.value),
+    ]
     const dataSource = images.map<SlideData>((image) => ({
       html: LOADING_ICON,
       element: image,
       msrc: image.src,
     }))
 
-    const index = images.findIndex((image) => image === el)
-
     photoSwipe = new PhotoSwipeConstructor({
       preloaderDelay: 0,
       showHideAnimationType: 'zoom',
       ...options.value,
       dataSource,
-      index,
+      index: images.indexOf(el),
       ...(scrollToClose
         ? { closeOnVerticalDrag: true, wheelToZoom: false }
         : {}),
@@ -173,9 +171,7 @@ export const usePhotoSwipe = ({
     rIC(() => {
       photoSwipeLoader = import(
         /* webpackChunkName: "photo-swipe" */ 'photoswipe'
-      ).then(({ default: _PhotoSwipe }) => {
-        return _PhotoSwipe
-      })
+      ).then(({ default: _PhotoSwipe }) => _PhotoSwipe)
     })
   })
 
