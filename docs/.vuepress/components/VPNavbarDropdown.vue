@@ -29,8 +29,8 @@ const isLastItemOfArray = (arrayItem: unknown, array: unknown[]): boolean =>
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail
  */
-const handleDropdown = (ev: UIEvent): void => {
-  if (ev.detail === 0) toggleOpen()
+const handleDropdown = ({ detail }: UIEvent): void => {
+  if (detail === 0) toggleOpen()
   else toggleOpen(false)
 }
 
