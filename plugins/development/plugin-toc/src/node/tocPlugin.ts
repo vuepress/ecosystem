@@ -9,8 +9,6 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  *
  * 目录插件
  *
- * @param options - Plugin options / 插件配置
- * @default {}
  * @example
  * ```ts
  * import { tocPlugin } from '@vuepress/plugin-toc'

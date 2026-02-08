@@ -13,8 +13,6 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  *
  * 目录插件
  *
- * @param options plugin options
- *
  * @example
  * ```ts
  * import { catalogPlugin } from '@vuepress/plugin-catalog'

@@ -21,8 +21,6 @@ const __dirname = getDirname(import.meta.url)
  *
  * Markdown 预览插件
  *
- * @param options - plugin options / 插件选项
- *
  * @example
  * ```ts
  * import { markdownPreviewPlugin } from '@vuepress/plugin-markdown-preview'
@@ -37,8 +35,8 @@ const __dirname = getDirname(import.meta.url)
 export const markdownPreviewPlugin =
   (options: MarkdownPreviewPluginOptions = {}): Plugin =>
   (app) => {
-    const opts = deepAssign({}, app.options.markdown.preview, options)
-    app.options.markdown.preview = opts
+    const mergedOptions = deepAssign({}, app.options.markdown.preview, options)
+    app.options.markdown.preview = mergedOptions
 
     return {
       name: PLUGIN_NAME,
@@ -48,7 +46,7 @@ export const markdownPreviewPlugin =
           app,
           name: PLUGIN_NAME,
           default: previewLocaleInfo,
-          config: opts.locales,
+          config: mergedOptions.locales,
         }),
       }),
 

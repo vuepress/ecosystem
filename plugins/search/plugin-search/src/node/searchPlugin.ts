@@ -11,7 +11,9 @@ import { prepareSearchIndex } from './prepareSearchIndex.js'
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 /**
- * Options for @vuepress/plugin-search
+ * Options for `@vuepress/plugin-search`
+ *
+ * `@vuepress/plugin-search` 的配置项
  */
 export interface SearchPluginOptions {
   /**

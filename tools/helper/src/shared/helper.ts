@@ -65,6 +65,9 @@ export const isNumber = (val: any): val is number => typeof val === 'number'
  * Check if a value is array
  *
  * 检查值是否为数组
+ *
+ * @param val - The value to check / 要检查的值
+ * @returns Whether the value is array / 值是否为数组
  */
 export const isArray = <ItemType>(val: unknown): val is ItemType[] =>
   Array.isArray(val)

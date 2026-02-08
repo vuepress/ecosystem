@@ -14,8 +14,6 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  *
  * VuePress 通知插件
  *
- * @param options - Plugin options / 插件选项
- *
  * @example
  * ```ts
  * import { noticePlugin } from '@vuepress/plugin-notice'

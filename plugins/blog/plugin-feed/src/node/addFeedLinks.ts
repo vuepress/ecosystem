@@ -9,6 +9,9 @@ import { getUrl } from './utils/index.js'
  * Add feed links to page head
  *
  * 将 Feed 链接添加到页面头部
+ *
+ * @param app - VuePress app instance / VuePress 应用实例
+ * @param options - Resolved feed options map / 解析后的 Feed 选项映射
  */
 export const addFeedLinks = (
   app: App,

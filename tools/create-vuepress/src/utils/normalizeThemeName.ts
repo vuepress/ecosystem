@@ -2,6 +2,11 @@ const THEME_PREFIX = 'vuepress-theme-'
 
 /**
  * Normalize theme name
+ *
+ * 规范化主题名称
+ *
+ * @param name - Theme name / 主题名称
+ * @returns Normalized theme name / 规范化后的主题名称
  */
 export const normalizeThemeName = (name: string): string => {
   // scoped package pattern

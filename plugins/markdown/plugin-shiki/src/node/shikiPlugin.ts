@@ -29,10 +29,6 @@ import { TWOSLASH_RE, logger } from './utils.js'
  *
  * VuePress 的 Shiki 插件
  *
- * @param options - Plugin options / 插件选项
- *
- * @returns VuePress plugin / VuePress 插件
- *
  * @example
  * ```ts
  * import { shikiPlugin } from '@vuepress/plugin-shiki'

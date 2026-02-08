@@ -18,12 +18,6 @@ import { CLIENT_FOLDER, PLUGIN_NAME, logger } from './utils.js'
  *
  * VuePress 评论插件
  *
- * @param options - Plugin options
- * 插件选项
- *
- * @returns VuePress plugin
- * VuePress 插件
- *
  * @example
  * ```ts
  * import { commentPlugin } from '@vuepress/plugin-comment'

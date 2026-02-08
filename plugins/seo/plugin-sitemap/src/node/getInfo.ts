@@ -17,6 +17,9 @@ const stripLocalePrefix = ({ path, pathLocale }: Page): string =>
   path.replace(pathLocale, '/')
 
 /**
+ * Get pages locale map
+ *
+ * @param app - VuePress app instance
  * @returns A map with keys of rootPath and string[] value for pathLocales
  */
 const getPagesLocaleMap = (app: App): Map<string, string[]> => {

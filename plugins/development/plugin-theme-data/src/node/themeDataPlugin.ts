@@ -23,9 +23,6 @@ export interface ThemeDataPluginOptions {
  * Theme data plugin
  *
  * 主题数据插件
- *
- * @param options - Plugin options / 插件选项
- * @returns VuePress plugin / VuePress 插件
  */
 export const themeDataPlugin = ({
   themeData,

@@ -19,9 +19,6 @@ const PLUGIN_NAME = '@vuepress/plugin-markdown-tab'
  *
  * Markdown 选项卡插件
  *
- * @param options - Plugin options / 插件选项
- * @returns VuePress plugin / VuePress 插件
- *
  * @example
  * ```ts
  * import { markdownTabPlugin } from '@vuepress/plugin-markdown-tab'
@@ -39,10 +36,10 @@ const PLUGIN_NAME = '@vuepress/plugin-markdown-tab'
 export const markdownTabPlugin =
   (options: MarkdownTabPluginOptions): Plugin =>
   (app) => {
-    const opts = deepAssign({}, app.options.markdown.tab, options)
-    app.options.markdown.tab = opts
+    const mergedOptions = deepAssign({}, app.options.markdown.tab, options)
+    app.options.markdown.tab = mergedOptions
 
-    if (!opts.codeTabs && !opts.tabs)
+    if (!mergedOptions.codeTabs && !mergedOptions.tabs)
       return {
         name: PLUGIN_NAME,
       }
@@ -51,10 +48,10 @@ export const markdownTabPlugin =
       name: PLUGIN_NAME,
 
       extendsMarkdown: (md) => {
-        if (opts.codeTabs) md.use(codeTabs)
-        if (opts.tabs) md.use(tabs)
+        if (mergedOptions.codeTabs) md.use(codeTabs)
+        if (mergedOptions.tabs) md.use(tabs)
       },
 
-      clientConfigFile: () => prepareClientConfigFile(app, opts),
+      clientConfigFile: () => prepareClientConfigFile(app, mergedOptions),
     }
   }

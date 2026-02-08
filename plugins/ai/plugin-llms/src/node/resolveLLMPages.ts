@@ -14,6 +14,8 @@ import type { LLMPage } from './types.js'
 
 /**
  * Remove HTML from markdown AST
+ *
+ * @returns Unified plugin to remove HTML nodes from markdown AST
  */
 const cleanMarkdown: Plugin = () => (tree) => {
   unistRemove(tree, { type: 'html' })

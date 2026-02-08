@@ -11,8 +11,6 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  *
  * VuePress 水印插件
  *
- * @param options - Plugin options / 插件选项
- *
  * @example
  * ```ts
  * import { watermarkPlugin } from '@vuepress/plugin-watermark'

@@ -18,8 +18,6 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  *
  * VuePress PhotoSwipe 插件
  *
- * @param [options={}] - Plugin options / 插件选项
- *
  * @example
  * ```ts
  * import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'

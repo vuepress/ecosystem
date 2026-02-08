@@ -21,8 +21,6 @@ declare module 'vuepress/markdown' {
  *
  * 创建 markdown 图片插件
  *
- * @param options - Plugin options / 插件配置项
- *
  * @example
  * ```ts
  * import { markdownImagePlugin } from '@vuepress/plugin-markdown-image'

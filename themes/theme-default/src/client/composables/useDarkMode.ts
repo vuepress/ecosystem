@@ -26,6 +26,10 @@ const applyDarkModeToHTML = (isDarkMode: DarkModeRef): void => {
 
 /**
  * Inject dark mode global computed
+ *
+ * 注入暗色模式全局计算属性
+ *
+ * @returns Dark mode ref / 暗色模式引用
  */
 export const useDarkMode = (): DarkModeRef => {
   const isDarkMode = inject<WritableComputedRef<boolean>>(darkModeSymbol)

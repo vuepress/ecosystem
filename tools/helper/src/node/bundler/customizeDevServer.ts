@@ -93,6 +93,13 @@ export const customizeDevServer = (
 
       const { devServerSetupMiddlewares } = webpackBundlerOptions
 
+      /**
+       * @see https://webpack.js.org/configuration/dev-server/#devserversetupmiddlewares
+       *
+       * @param middlewares - Existing middlewares / 现有中间件
+       * @param server - Webpack Dev Server instance / Webpack 开发服务器实例
+       * @returns Updated middlewares / 更新后的中间件
+       */
       webpackBundlerOptions.devServerSetupMiddlewares = (
         middlewares: WebpackDevServer.Middleware[],
         server: WebpackDevServer,

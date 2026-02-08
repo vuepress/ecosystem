@@ -38,8 +38,6 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  *
  * 创建 RTL 插件
  *
- * @param options - Plugin options
- *
  * @example
  * ```ts
  * import { rtlPlugin } from '@vuepress/plugin-rtl'

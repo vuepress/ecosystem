@@ -1,10 +1,11 @@
 /**
  * Retry a async function
  *
- * @category Promise
  * @param fn - the function to retry
  * @param times - the number of times to retry, default is 3
  * @param reject - the function to handle retry error
+ *
+ * @returns the result of the function if it succeeds, otherwise throws the last error
  *
  * @example
  * ```ts

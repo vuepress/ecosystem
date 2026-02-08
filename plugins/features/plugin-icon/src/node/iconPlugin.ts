@@ -12,9 +12,6 @@ import { PLUGIN_NAME } from './utils.js'
  *
  * 图标插件
  *
- * @param options - Plugin options / 插件选项
- * @returns VuePress plugin / VuePress 插件
- *
  * @example
  * ```ts
  * import { iconPlugin } from '@vuepress/plugin-icon'

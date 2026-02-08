@@ -14,8 +14,6 @@ import { keys } from '@vuepress/helper'
 /**
  * Plugin to generate LLM-friendly documentation files
  *
- * @param llmOptions - Plugin configuration options
- *
  * @example
  * ```ts
  * import { llmsPlugin } from '@vuepress/plugin-llms'
@@ -32,9 +30,9 @@ import { keys } from '@vuepress/helper'
  * ```
  */
 export const llmsPlugin =
-  (llmOptions: LlmsPluginOptions = {}): Plugin =>
+  (options: LlmsPluginOptions = {}): Plugin =>
   (app) => {
-    if (app.env.isDebug) logger.info('Options: ', llmOptions)
+    if (app.env.isDebug) logger.info('Options: ', options)
 
     return {
       name: PLUGIN_NAME,
@@ -56,7 +54,7 @@ export const llmsPlugin =
           llmsTxtTemplate = DEFAULT_LLMSTXT_TEMPLATE,
           llmsTxtTemplateGetter = {},
           locale = '/',
-        } = llmOptions
+        } = options
 
         const linkExtension = llmsPageTxt ? '.md' : '.html'
         const { locales, ...base } = app.siteData

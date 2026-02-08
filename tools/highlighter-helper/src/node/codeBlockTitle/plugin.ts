@@ -10,6 +10,10 @@ import type {
  * Default title render function
  *
  * 默认标题渲染函数
+ *
+ * @param title - Code block title / 代码块标题
+ * @param code - Original code block HTML / 原始代码块 HTML
+ * @returns Code block HTML with title / 带标题的代码块 HTML
  */
 const defaultTitleRender: CodeBlockTitleRender = (title, code) =>
   `\

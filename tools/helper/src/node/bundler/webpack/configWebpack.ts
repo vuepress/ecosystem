@@ -27,6 +27,14 @@ export const configWebpack = (
     const webpackBundlerOptions = bundlerOptions as WebpackBundlerOptions
     const { configureWebpack: originalConfigWebpack } = webpackBundlerOptions
 
+    /**
+     * Configure webpack options
+     *
+     * @param config - Webpack config
+     * @param isServer - Whether it's for server
+     * @param isBuild - Whether it's for build
+     * @returns Updated webpack config
+     */
     webpackBundlerOptions.configureWebpack = (
       config,
       isServer,

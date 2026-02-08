@@ -1,9 +1,9 @@
 import type { DocSearchOptions } from '../shared/index.js'
 
 /**
- * Options for @vuepress/plugin-docsearch
+ * Options for `@vuepress/plugin-docsearch`
  *
- * @vuepress/plugin-docsearch 的配置项
+ * `@vuepress/plugin-docsearch` 的配置项
  */
 export interface DocSearchPluginOptions extends DocSearchOptions {
   /**

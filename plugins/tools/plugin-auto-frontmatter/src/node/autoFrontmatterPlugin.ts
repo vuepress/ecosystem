@@ -14,8 +14,6 @@ import { PLUGIN_NAME } from './utils.js'
 /**
  * Auto frontmatter plugin
  *
- * @param options - Plugin options / 插件选项
- *
  * @example
  * ```ts
  * export default {

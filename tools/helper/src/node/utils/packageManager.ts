@@ -113,7 +113,7 @@ export const getPackageManagerSetting = (
   return null
 }
 
-const checkLockFile = (dir: string): PackageManager | null => {
+const getLockFileTypeInDir = (dir: string): PackageManager | null => {
   if (fs.existsSync(path.resolve(dir, PNPM_LOCK))) return 'pnpm'
   if (fs.existsSync(path.resolve(dir, YARN_LOCK))) return 'yarn'
   if (fs.existsSync(path.resolve(dir, BUN_LOCK))) return 'bun'
@@ -141,10 +141,11 @@ export const getTypeofLockFile = (
 
   if (status != null) return status
 
-  const packageManager = checkLockFile(cwd)
-  if (packageManager) {
-    localCache.set(key, packageManager)
-    return packageManager
+  let type = getLockFileTypeInDir(cwd)
+
+  if (type) {
+    localCache.set(key, type)
+    return type
   }
 
   if (deep) {
@@ -152,11 +153,11 @@ export const getTypeofLockFile = (
 
     while (dir !== path.dirname(dir)) {
       dir = path.dirname(dir)
+      type = getLockFileTypeInDir(dir)
 
-      const pm = checkLockFile(dir)
-      if (pm) {
-        localCache.set(key, pm)
-        return pm
+      if (type) {
+        localCache.set(key, type)
+        return type
       }
     }
   }

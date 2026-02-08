@@ -24,8 +24,6 @@ import {
  *
  * Git 插件
  *
- * @param [options={}] - Plugin options / 插件选项
- *
  * @example
  * ```ts
  * import { gitPlugin } from '@vuepress/plugin-git'

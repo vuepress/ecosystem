@@ -15,7 +15,16 @@ import type { Store } from '../store.js'
 import { getPagePath } from '../utils.js'
 
 /**
- * @returns Page paths to be generated
+ * Get category
+ *
+ * 获取分类
+ *
+ * @param pagesMap - Pages map / 页面映射
+ * @param store - Blog store / 博客存储
+ * @param categoryOptions - Category options / 分类选项
+ * @param slugify - Slugify function / Slugify 函数
+ * @param isDebug - Whether in debug mode / 是否处于调试模式
+ * @returns Object containing categories map and page options / 包含分类映射和页面选项的对象
  */
 // oxlint-disable-next-line max-lines-per-function
 export const getCategory = (

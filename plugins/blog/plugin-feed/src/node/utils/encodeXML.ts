@@ -2,7 +2,14 @@ import { entries, fromEntries, isArray, isPlainObject } from '@vuepress/helper'
 import type { ElementCompact } from 'xml-js'
 
 /**
+ * Encode CDATA
+ *
+ * 编码 CDATA
+ *
  * @see https://stackoverflow.com/questions/223652/is-there-a-way-to-escape-a-cdata-end-token-in-xml
+ *
+ * @param content - Content to encode / 要编码的内容
+ * @returns Encoded content / 编码后的内容
  */
 export const encodeCDATA = (content: string): string =>
   content.replaceAll(']]>', ']]]]><![CDATA[>')

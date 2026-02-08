@@ -15,6 +15,9 @@ const getJSONAuthor = (author: FeedAuthor): JSONAuthor => ({
  * JSON 1.1 格式的 Feed
  *
  * @see https://jsonfeed.org/version/1.1
+ *
+ * @param feedStore - Feed store / Feed 存储
+ * @returns JSON feed content / JSON Feed 内容
  */
 export const getJSONFeed = (feedStore: FeedStore): string => {
   const { channel, links } = feedStore

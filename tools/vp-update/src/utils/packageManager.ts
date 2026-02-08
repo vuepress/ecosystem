@@ -34,6 +34,7 @@ const isInstalled = (packageManager: PackageManager): boolean => {
  * Check if a package manager is installed globally.
  *
  * @param packageManager package manager
+ * @returns whether the package manager is installed globally
  */
 export const isPackageManagerInstalled = (
   packageManager: PackageManager,
@@ -145,7 +146,7 @@ export const getTypeofLockFile = (
 
   if (status != null) return status
 
-  const type = getLockFileTypeInDir(cwd)
+  let type = getLockFileTypeInDir(cwd)
 
   if (type) {
     localCache.set(key, type)
@@ -159,7 +160,7 @@ export const getTypeofLockFile = (
     while (dir !== dirname(dir)) {
       dir = dirname(dir)
 
-      const type = getLockFileTypeInDir(dir)
+      type = getLockFileTypeInDir(dir)
 
       if (type) {
         localCache.set(key, type)

@@ -35,6 +35,8 @@ export class FeedStore {
 
   /**
    * Add category to store
+   *
+   * @param category - Category to add / 要添加的分类
    */
   private readonly addCategory = (category: FeedCategory): void => {
     this.categories.add(category.name)
@@ -42,6 +44,8 @@ export class FeedStore {
 
   /**
    * Add contributor to store
+   *
+   * @param contributor - Contributor to add / 要添加的贡献者
    */
   private readonly addContributor = (contributor: FeedContributor): void => {
     // use keys to avoid adding same contributor
@@ -54,7 +58,9 @@ export class FeedStore {
   }
 
   /**
-   * Add a feed item
+   * Add a feed item / 添加一个 Feed 项目
+   *
+   * @param item - Item to add / 要添加的项目
    */
   public add = (item: FeedItem): void => {
     if (item.isValid) {

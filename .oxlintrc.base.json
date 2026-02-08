@@ -80,6 +80,10 @@
     // jsdoc plugin rules
     // duplicated typescript related jsdoc shall be warned
     "jsdoc/check-tag-names": ["warn", { "typed": true }],
+    "jsdoc/require-param": [
+      "warn",
+      { "checkConstructors": true, "checkDestructuredRoots": false }
+    ],
     // we do not require types in jsdoc since we use TypeScript
     "jsdoc/require-param-type": "off",
     // getter does not need a @returns tag

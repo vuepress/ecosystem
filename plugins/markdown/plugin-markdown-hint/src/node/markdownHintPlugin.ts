@@ -22,8 +22,6 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  *
  * Markdown 提示插件
  *
- * @param options - plugin options / 插件选项
- *
  * @example
  * ```ts
  * import { markdownHintPlugin } from '@vuepress/plugin-markdown-hint'

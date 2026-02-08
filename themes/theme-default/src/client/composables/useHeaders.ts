@@ -12,6 +12,10 @@ export const headersSymbol: InjectionKey<HeadersRef> = Symbol('headers')
 
 /**
  * Inject headers
+ *
+ * 注入标题
+ *
+ * @returns Headers ref / 标题引用
  */
 export const useHeaders = (): HeadersRef => {
   const headers = injectLocal(headersSymbol)

@@ -10,6 +10,7 @@
   // disable jsdoc currently
   "plugins": ["typescript", "oxc", "import", "promise", "unicorn"],
   "rules": {
+    // complex states may be needed for some functions
     "max-params": ["warn", 5],
     // allow undefined usage
     "no-undefined": "off",
@@ -18,6 +19,13 @@
     // object assign can be performant
     "prefer-object-spread": "off",
     "import/max-dependencies": "off",
+
+    // @recommended is used to mark recommended fields in options interfaces, which are not required but recommended to be provided
+    "jsdoc/check-tag-names": [
+      "warn",
+      { "definedTags": ["recommended"], "typed": true }
+    ],
+
     // allow functions that return promise to not use await
     "typescript/require-await": "off",
     "typescript/no-dynamic-delete": "off",
@@ -72,7 +80,7 @@
     {
       "files": ["tools/**/*.ts", "**/.vuepress/config.ts"],
       "rules": {
-        // allow importing node built-in modules in node files
+        // allow importing node built-in modules in tools as they need nodejs as runtime
         "import/no-nodejs-modules": "off"
       }
     },
@@ -88,13 +96,8 @@
           "vuepress/markdown",
           "vuepress/utils"
         ],
-        "vue/max-props": [
-          "warn",
-          {
-            "maxProps": 10
-          }
-        ]
-        // not working at all
+        "vue/max-props": ["warn", { "maxProps": 10 }]
+        // FIXME: not working at all
         // "typescript/no-floating-promises": [
         //   "error",
         //   {
@@ -127,11 +130,7 @@
         // loose max lines for components setup blocks
         "max-lines-per-function": [
           "warn",
-          {
-            "max": 300,
-            "skipBlankLines": true,
-            "skipComments": true
-          }
+          { "max": 300, "skipBlankLines": true, "skipComments": true }
         ]
       }
     },
@@ -151,9 +150,16 @@
     {
       "files": ["**/src/node/*Plugin.ts"],
       "rules": {
-        "max-lines-per-function": "off",
+        // plugin entrypoints can be complex and have many dependencies,
+        // as they need to export a function that returns a VuePress plugin
+        "complexity": "off",
         "max-dependencies": "off",
-        "complexity": "off"
+        "max-lines-per-function": "off",
+
+        // jsdoc is not needed for plugin entrypoints, as the options are already typed
+        // and a VuePress plugin type is expected to be returned
+        "jsdoc/require-param": "off",
+        "jsdoc/require-returns": "off"
       }
     }
   ]

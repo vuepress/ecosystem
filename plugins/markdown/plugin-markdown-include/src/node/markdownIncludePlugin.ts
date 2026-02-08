@@ -18,8 +18,6 @@ declare module 'vuepress/markdown' {
  *
  * Markdown 导入插件
  *
- * @param options - Plugin options / 插件选项
- *
  * @example
  * ```ts
  * import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'

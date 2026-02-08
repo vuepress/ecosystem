@@ -23,8 +23,6 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  *
  * 版权插件
  *
- * @param options - Plugin options / 插件选项
- *
  * @example
  * ```ts
  * import { copyrightPlugin } from '@vuepress/plugin-copyright'

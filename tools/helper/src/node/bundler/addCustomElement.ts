@@ -42,6 +42,12 @@ export const addCustomElement = (
     const { isCustomElement } = (((viteBundlerConfig.vuePluginOptions ??=
       {}).template ??= {}).compilerOptions ??= {})
 
+    /**
+     * @see https://github.com/vitejs/vite-plugin-vue/blob/main/packages/plugin-vue/README.md
+     *
+     * @param tag - The tag name to check / 要检查的标签名称
+     * @returns Whether the tag is a custom element / 是否为自定义元素
+     */
     viteBundlerConfig.vuePluginOptions.template.compilerOptions.isCustomElement =
       (tag: string): boolean | void => {
         if (
@@ -62,6 +68,12 @@ export const addCustomElement = (
     const { isCustomElement } = ((webpackBundlerConfig.vue ??=
       {}).compilerOptions ??= {})
 
+    /**
+     * @see https://vue-loader.vuejs.org/options.html#compileroptions
+     *
+     * @param tag - The tag name to check / 要检查的标签名称
+     * @returns Whether the tag is a custom element / 是否为自定义元素
+     */
     webpackBundlerConfig.vue.compilerOptions.isCustomElement = (
       tag: string,
     ): boolean | void => {

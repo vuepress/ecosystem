@@ -8,8 +8,6 @@ import type { LinksCheckPluginOptions } from './options.js'
  *
  * VuePress 插件，用于检查 Markdown 文件中的死链接
  *
- * @param options - Plugin options / 插件选项
- *
  * @example
  * ```ts
  * import { linksCheckPlugin } from '@vuepress/plugin-links-check'
