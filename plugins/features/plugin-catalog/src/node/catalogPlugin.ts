@@ -38,7 +38,7 @@ export const catalogPlugin =
     return {
       name: PLUGIN_NAME,
 
-      define: (): Record<string, unknown> => ({
+      define: () => ({
         __CATALOG_LOCALES__: getFullLocaleConfig({
           app,
           name: PLUGIN_NAME,
@@ -47,9 +47,9 @@ export const catalogPlugin =
         }),
       }),
 
-      onInitialized: (): Promise<void> => generateCatalogPage(app, options),
+      onInitialized: () => generateCatalogPage(app, options),
 
-      extendsBundlerOptions: (bundlerOptions: unknown): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown) => {
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
 

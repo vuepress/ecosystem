@@ -37,7 +37,7 @@ export const preWrapperPlugin = (
 ): void => {
   const rawFence = md.renderer.rules.fence!
 
-  md.renderer.rules.fence = (...args) => {
+  md.renderer.rules.fence = (...args): string => {
     let result = rawFence(...args)
 
     const [tokens, idx, { langPrefix }] = args

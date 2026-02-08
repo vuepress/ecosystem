@@ -42,7 +42,7 @@ export const photoSwipePlugin =
     return {
       name: PLUGIN_NAME,
 
-      define: (): Record<string, unknown> => ({
+      define: () => ({
         __PS_SELECTOR__:
           options.selector || '[vp-content] :not(a) > img:not([no-view])',
         __PS_DOWNLOAD__: options.download ?? true,
@@ -68,7 +68,7 @@ export const photoSwipePlugin =
         ),
       }),
 
-      extendsBundlerOptions: (bundlerOptions: unknown): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown) => {
         addViteOptimizeDepsExclude(bundlerOptions, app, 'photoswipe')
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },

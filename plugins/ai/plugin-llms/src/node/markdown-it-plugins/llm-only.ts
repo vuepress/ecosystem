@@ -62,5 +62,5 @@ export const llmOnlyPlugin = (md: Markdown): void => {
   )
 
   // renderer to empty content
-  md.renderer.rules.llm_only_block = () => ''
+  md.renderer.rules.llm_only_block = (): string => ''
 }

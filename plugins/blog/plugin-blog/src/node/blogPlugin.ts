@@ -80,11 +80,11 @@ export const blogPlugin =
         __BLOG_META_SCOPE__: metaScope,
       }),
 
-      extendsBundlerOptions: (bundlerOptions: unknown): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown) => {
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
 
-      extendsPage: (page): void => {
+      extendsPage: (page) => {
         // Generate page excerpt
         if (
           excerpt &&
@@ -112,7 +112,7 @@ export const blogPlugin =
           }
       },
 
-      onInitialized: async (): Promise<void> => {
+      onInitialized: async () => {
         const pageMap = getPageMap(app, filter)
 
         const categoryResult = getCategory(
@@ -166,7 +166,7 @@ export const blogPlugin =
         ;({ typesMap } = typeResult)
       },
 
-      onPrepared: async (): Promise<void> => {
+      onPrepared: async () => {
         // Prepare store
         await prepareStore(app, store)
         // Prepare category
@@ -177,7 +177,7 @@ export const blogPlugin =
         if (app.env.isDebug) logger.info('temp file generated')
       },
 
-      onWatched: (_, watchers): void => {
+      onWatched: (_, watchers) => {
         const hotReload =
           'hotReload' in options ? options.hotReload : app.env.isDebug
 

@@ -29,7 +29,7 @@ const createMarkdown = ({
 }: PrismjsPluginOptions = {}): MarkdownIt => {
   const md = new MarkdownIt()
 
-  md.options.highlight = (code, lang) => {
+  md.options.highlight = (code, lang): string => {
     const highlighter = resolveHighlighter(lang)
     return highlighter?.(code) || ''
   }

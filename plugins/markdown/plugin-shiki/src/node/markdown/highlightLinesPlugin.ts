@@ -8,7 +8,8 @@ const HIGHLIGHT_LINES_REGEXP = /{([\d,-]+?)}/
 
 export const highlightLinePlugin = (md: Markdown): void => {
   const fence = md.renderer.rules.fence!
-  md.renderer.rules.fence = (...args) => {
+
+  md.renderer.rules.fence = (...args): string => {
     const [tokens, idx] = args
     const token = tokens[idx]
 

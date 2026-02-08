@@ -74,7 +74,7 @@ export const commentPlugin =
         return result
       },
 
-      extendsBundlerOptions: (bundlerOptions: unknown): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown) => {
         // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check, default-case
         switch (options.provider) {
           case 'Artalk': {

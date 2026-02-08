@@ -32,7 +32,7 @@ export interface FileSystemTypeResultCacheOptions {
 export const createFileSystemTypesCache = ({
   dir,
 }: FileSystemTypeResultCacheOptions): TwoslashTypesCache => ({
-  init() {
+  init(): void {
     mkdirSync(dir, { recursive: true })
   },
 
@@ -44,7 +44,7 @@ export const createFileSystemTypesCache = ({
    * @param code - The code to read cache for / 要读取缓存的代码
    * @returns Cached result or null if not found / 缓存结果或未找到时返回 null
    */
-  read(code) {
+  read(code): TwoslashReturn | null {
     const hash = createHash(code)
     const filePath = join(dir, `${hash}.json`)
     if (!existsSync(filePath)) {
@@ -63,7 +63,7 @@ export const createFileSystemTypesCache = ({
    * @param code - The code to write cache for / 要写入缓存的代码
    * @param data - The result to cache / 要缓存的结果
    */
-  write(code, data) {
+  write(code, data): void {
     const hash = createHash(code)
     const filePath = join(dir, `${hash}.json`)
     const json = JSON.stringify(data)

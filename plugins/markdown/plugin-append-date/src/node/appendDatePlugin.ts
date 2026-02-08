@@ -29,7 +29,7 @@ export const appendDatePlugin = (
 ): PluginObject => ({
   name: PLUGIN_NAME,
 
-  onInitialized: async (app): Promise<void> => {
+  onInitialized: async (app) => {
     if (isGitPluginEnabled(app))
       await Promise.all(
         (app.pages as Page<GitPluginPageData>[]).map((page) =>

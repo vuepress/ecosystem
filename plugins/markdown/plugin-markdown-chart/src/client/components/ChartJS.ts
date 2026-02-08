@@ -102,7 +102,7 @@ export default defineComponent({
       watchImmediate(
         __VUEPRESS_DEV__
           ? // config must be changed if type is changed, so no need to watch type
-            [() => props.config, isDarkMode]
+            [(): string => props.config, isDarkMode]
           : isDarkMode,
         async () => {
           destroyChart()

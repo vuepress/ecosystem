@@ -1,4 +1,4 @@
-import type { Component, PropType } from 'vue'
+import type { Component, PropType, VNode } from 'vue'
 import { Transition, TransitionGroup, defineComponent, h } from 'vue'
 
 export const FadeInExpandTransition = defineComponent({
@@ -56,7 +56,7 @@ export const FadeInExpandTransition = defineComponent({
       props.onAfterEnter?.()
     }
 
-    return () =>
+    return (): VNode =>
       h(
         (props.group ? TransitionGroup : Transition) as Component,
         {

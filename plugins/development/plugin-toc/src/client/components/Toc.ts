@@ -179,7 +179,7 @@ export const Toc = defineComponent({
       ...renderOptions.value,
     }))
 
-    return () => {
+    return (): VNode | VNode[] => {
       const renderedHeaders = renderHeaders(
         headers.value ?? pageHeaders.value,
         options.value,

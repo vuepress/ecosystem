@@ -1,5 +1,5 @@
 import { useToggle } from '@vueuse/core'
-import type { FunctionalComponent } from 'vue'
+import type { FunctionalComponent, VNode } from 'vue'
 import { defineComponent, h } from 'vue'
 import type { GitChangelogItem } from '../composables/index.js'
 import {
@@ -96,7 +96,7 @@ export const GitChangelog = defineComponent({
         ]),
       ])
 
-    return () =>
+    return (): VNode[] | null =>
       changelog.value.length > 0
         ? [
             h(VPHeader, {

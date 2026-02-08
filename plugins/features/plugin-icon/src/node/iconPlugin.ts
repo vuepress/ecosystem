@@ -33,14 +33,14 @@ export const iconPlugin = (options: IconPluginOptions = {}): Plugin => {
   return {
     name: PLUGIN_NAME,
 
-    extendsBundlerOptions: (bundlerOptions, app): void => {
+    extendsBundlerOptions: (bundlerOptions, app) => {
       addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
 
       if (iconType === 'iconify')
         addCustomElement(bundlerOptions, app, 'iconify-icon')
     },
 
-    extendsMarkdown: (md): void => {
+    extendsMarkdown: (md) => {
       if (options.markdown ?? true) {
         md.use(icon, {
           render: (raw) => {

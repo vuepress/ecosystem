@@ -10,7 +10,7 @@ export const searchIndex = ref(SEARCH_INDEX)
 export const useSearchIndex = (): SearchIndexRef => searchIndex
 
 if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
-  __VUE_HMR_RUNTIME__.updateSearchIndex = (data: SearchIndex) => {
+  __VUE_HMR_RUNTIME__.updateSearchIndex = (data: SearchIndex): void => {
     searchIndex.value = data
   }
 }

@@ -135,7 +135,7 @@ export const highlightPlugin = (
 ): void => {
   const rawFence = md.renderer.rules.fence!
 
-  md.renderer.rules.fence = (...args) => {
+  md.renderer.rules.fence = (...args): string => {
     const [tokens, idx, { langPrefix }] = args
     const token = tokens[idx]
 

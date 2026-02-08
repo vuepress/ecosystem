@@ -25,10 +25,6 @@
       { "definedTags": ["recommended"], "typed": true }
     ],
 
-    "typescript/explicit-function-return-type": [
-      "warn",
-      { "allowExpressions": true }
-    ],
     // we only use this when necessary
     "typescript/no-non-null-assertion": "off",
     // this can introduce false positives, as though type is required, users might not provide such
@@ -162,7 +158,13 @@
         // jsdoc is not needed for plugin entrypoints, as the options are already typed
         // and a VuePress plugin type is expected to be returned
         "jsdoc/require-param": "off",
-        "jsdoc/require-returns": "off"
+        "jsdoc/require-returns": "off",
+
+        // avoid redundant return type annotations in plugin objects
+        "typescript/explicit-function-return-type": [
+          "warn",
+          { "allowExpressions": true }
+        ]
       }
     }
   ]

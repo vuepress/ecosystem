@@ -57,7 +57,12 @@ const parseLineNumber = (line: string | undefined): number | undefined =>
  * `@[code{lineStart-lineEnd} info}](filepath)`
  */
 export const remarkImportCode =
-  (cwd: string, { handleImportPath = (str) => str }: ImportCodePluginOptions) =>
+  (
+    cwd: string,
+    {
+      handleImportPath = (importPath): string => importPath,
+    }: ImportCodePluginOptions,
+  ) =>
   () =>
   (tree: Root): void => {
     visit(tree, (node, index, parent) => {

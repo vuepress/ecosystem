@@ -118,7 +118,7 @@ export const markdownChartPlugin =
         if (status.mermaid) md.use(mermaid)
       },
 
-      extendsBundlerOptions: (bundlerOptions: unknown): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown) => {
         addViteSsrNoExternal(bundlerOptions, app, [
           '@vuepress/helper',
           'fflate',

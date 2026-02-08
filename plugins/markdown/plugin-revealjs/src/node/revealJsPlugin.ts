@@ -48,7 +48,7 @@ export const revealJsPlugin = ({
 }: RevealJsPluginOptions = {}): Plugin => ({
   name: PLUGIN_NAME,
 
-  extendsBundlerOptions: (bundlerOptions, app): void => {
+  extendsBundlerOptions: (bundlerOptions, app) => {
     addViteOptimizeDepsExclude(bundlerOptions, app, [
       'reveal.js/dist/reveal.esm.js',
       'reveal.js/plugin/markdown/markdown.esm.js',
@@ -58,11 +58,11 @@ export const revealJsPlugin = ({
     addViteSsrExternal(bundlerOptions, app, 'reveal.js')
   },
 
-  extendsMarkdown: (md): void => {
+  extendsMarkdown: (md) => {
     md.use(revealJs)
   },
 
-  onPrepared: async (app): Promise<void> => prepareRevealJsEntry(app, plugins),
+  onPrepared: async (app) => prepareRevealJsEntry(app, plugins),
   clientConfigFile: (app): Promise<string> =>
     prepareClientConfigFile(app, themes, layout),
 })

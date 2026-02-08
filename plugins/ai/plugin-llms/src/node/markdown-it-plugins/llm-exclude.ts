@@ -41,6 +41,6 @@ export const llmExcludePlugin = (md: Markdown): void => {
     return true
   })
 
-  md.renderer.rules.llm_exclude_start = () => ''
-  md.renderer.rules.llm_exclude_end = () => ''
+  md.renderer.rules.llm_exclude_start = (): string => ''
+  md.renderer.rules.llm_exclude_end = (): string => ''
 }

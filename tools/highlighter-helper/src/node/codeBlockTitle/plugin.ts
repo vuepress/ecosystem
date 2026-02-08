@@ -55,7 +55,7 @@ export const codeBlockTitle = (
 
   const rawFence = md.renderer.rules.fence!
 
-  md.renderer.rules.fence = (...args) => {
+  md.renderer.rules.fence = (...args): string => {
     const [tokens, index] = args
     const token = tokens[index]
     // get token info

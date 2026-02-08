@@ -81,7 +81,7 @@ export const markdownIncludePlugin =
           }
         })
       },
-      extendsPage: ({ deps, markdownEnv }): void => {
+      extendsPage: ({ deps, markdownEnv }) => {
         const { includedFiles = [] } = markdownEnv as IncludeEnv
 
         // mark included files as page deps

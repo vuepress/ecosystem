@@ -38,8 +38,8 @@ export const useGoogleAnalytics = (
   // insert gtag snippet
   window.dataLayer = window.dataLayer ?? []
   // the gtag function must use `arguments` object to forward parameters
-  // oxlint-disable-next-line unicorn/consistent-function-scoping
-  window.gtag = function gtag() {
+  // oxlint-disable-next-line func-names
+  window.gtag = function (): void {
     // eslint-disable-next-line prefer-rest-params
     window.dataLayer!.push(arguments)
   }

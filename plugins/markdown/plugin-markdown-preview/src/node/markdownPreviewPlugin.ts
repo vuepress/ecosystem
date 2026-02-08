@@ -41,7 +41,7 @@ export const markdownPreviewPlugin =
     return {
       name: PLUGIN_NAME,
 
-      define: (): Record<string, unknown> => ({
+      define: () => ({
         __PREVIEW_LOCALES__: getFullLocaleConfig({
           app,
           name: PLUGIN_NAME,

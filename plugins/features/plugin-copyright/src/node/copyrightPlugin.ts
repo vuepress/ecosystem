@@ -67,7 +67,7 @@ export const copyrightPlugin =
     return {
       name: PLUGIN_NAME,
 
-      define: (): Record<string, unknown> => ({
+      define: () => ({
         __COPYRIGHT_OPTIONS__: {
           canonical: canonical || '',
           author: author || '',
@@ -81,7 +81,7 @@ export const copyrightPlugin =
         __COPYRIGHT_LOCALES__: locales,
       }),
 
-      extendsPage: (page: Page<Partial<CopyrightPluginPageData>>): void => {
+      extendsPage: (page: Page<Partial<CopyrightPluginPageData>>) => {
         const authorText = authorGetter?.(page) ?? author
         const licenseText = licenseGetter?.(page) ?? license
         const copyright = copyrightGetter?.(page)
@@ -102,7 +102,7 @@ export const copyrightPlugin =
         }
       },
 
-      extendsBundlerOptions: (bundlerOptions: unknown): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown) => {
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
 

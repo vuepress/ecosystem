@@ -35,7 +35,7 @@ export const readingTimePlugin =
     return {
       name: PLUGIN_NAME,
 
-      define: (): Record<string, unknown> => ({
+      define: () => ({
         __READING_TIME_LOCALES__: getFullLocaleConfig({
           app,
           name: PLUGIN_NAME,
@@ -44,14 +44,14 @@ export const readingTimePlugin =
         }),
       }),
 
-      extendsPage: (page: Page<{ readingTime?: ReadingTime }>): void => {
+      extendsPage: (page: Page<{ readingTime?: ReadingTime }>) => {
         page.data.readingTime = getReadingTime(
           page.content,
           options.wordPerMinute ?? 300,
         )
       },
 
-      extendsBundlerOptions: (bundlerOptions: unknown): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown) => {
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
     }

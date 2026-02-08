@@ -37,7 +37,7 @@ export const createFilter = (pattern: Pattern): Matcher => {
 
   const matcher =
     patterns.length === 0
-      ? () => false
+      ? (): false => false
       : picomatch(patterns, { ignore: ignorePatterns })
 
   matchers.set(pattern, matcher)

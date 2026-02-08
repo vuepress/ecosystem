@@ -35,7 +35,7 @@ export const sitemapPlugin =
     return {
       ...plugin,
 
-      extendsBundlerOptions: async (config): Promise<void> => {
+      extendsBundlerOptions: async (config) => {
         if (options.devServer)
           [
             await getSiteMap(app, options, hostname),
@@ -49,6 +49,6 @@ export const sitemapPlugin =
           })
       },
 
-      onGenerated: (): Promise<void> => outputSitemap(app, options, hostname),
+      onGenerated: () => outputSitemap(app, options, hostname),
     }
   }

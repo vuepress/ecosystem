@@ -58,7 +58,7 @@ export const FileTreeNode = defineComponent({
       }
     }
 
-    return () =>
+    return (): VNode =>
       h('div', { 'class': 'vp-file-tree-node', 'data-title': props.filename }, [
         h(
           'p',

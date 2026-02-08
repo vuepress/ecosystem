@@ -63,7 +63,7 @@ export const slimsearchPlugin =
 
       clientConfigFile: `${CLIENT_FOLDER}config.js`,
 
-      extendsBundlerOptions: (bundlerOptions: unknown): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown) => {
         addViteOptimizeDepsInclude(bundlerOptions, app, 'slimsearch', true)
         addViteSsrNoExternal(bundlerOptions, app, [
           '@vuepress/helper',
@@ -72,11 +72,11 @@ export const slimsearchPlugin =
         ])
       },
 
-      onInitialized: async (): Promise<void> => {
+      onInitialized: async () => {
         searchIndexStore = await getSearchIndexStore(app, options, store)
       },
 
-      onPrepared: async (): Promise<void> => {
+      onPrepared: async () => {
         const { isBuild, isDev } = app.env
 
         const promises = [prepareStore(app, store)]
@@ -93,7 +93,7 @@ export const slimsearchPlugin =
         if (isBuild) store.clear()
       },
 
-      onWatched: (_, watchers): void => {
+      onWatched: (_, watchers) => {
         const hotReload = options.hotReload ?? app.env.isDebug
 
         if (hotReload) {

@@ -4,6 +4,7 @@ import type {
   BundledTheme,
   HighlighterGeneric,
   ShikiTransformer,
+  Grammar,
 } from 'shiki'
 import { createHighlighter, isSpecialLang } from 'shiki'
 import { createSyncFn } from 'synckit'
@@ -83,7 +84,7 @@ export const createShikiHighlighter = async (
   // patch for twoslash - https://github.com/vuejs/vitepress/issues/4334
   const rawGetLanguage = highlighter.getLanguage
 
-  highlighter.getLanguage = (name) => {
+  highlighter.getLanguage = (name): Grammar => {
     const lang = typeof name === 'string' ? name : name.name
 
     loadLang(resolveLanguage(lang))

@@ -50,7 +50,7 @@ export const redirectPlugin =
         }),
       },
 
-      extendsBundlerOptions: (bundlerOptions: unknown): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown) => {
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
 
@@ -58,7 +58,7 @@ export const redirectPlugin =
         handleRedirectTo(page, app)
       },
 
-      onInitialized: async (): Promise<void> => {
+      onInitialized: async () => {
         redirectMap = getRedirectMap(app, options)
 
         if (app.env.isDebug) logger.info('Redirect Map:', redirectMap)
@@ -66,7 +66,7 @@ export const redirectPlugin =
         if (options.autoLocale && app.env.isDebug) await ensureRootHomePage(app)
       },
 
-      onPrepared: async (): Promise<void> => {
+      onPrepared: async () => {
         await app.writeTemp(
           'redirect/map.js',
           `\
@@ -79,7 +79,7 @@ export const redirectMap = ${
         if (app.env.isDev) redirectMap = null
       },
 
-      onGenerated: async (): Promise<void> => {
+      onGenerated: async () => {
         await generateRedirectFiles(app, redirectMap!)
         if (options.autoLocale)
           await generateAutoLocaleRedirectFiles(app, behaviorConfig)
