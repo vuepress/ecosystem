@@ -38,6 +38,7 @@ export const highlightWordInLine = (
  * 从元字符串中解析高亮词汇
  *
  * @param meta - Meta string / 元字符串
+ * @returns Highlight words / 高亮词汇
  */
 export const parseMetaHighlightWords = (meta: string): string[] => {
   if (!meta) return []

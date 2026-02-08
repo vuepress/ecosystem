@@ -108,7 +108,7 @@ export const injectScssConfigModule = (
     const { additionalData } = webpackBundlerConfig.scss
 
     webpackBundlerConfig.scss.additionalData = (
-      content: string,
+      content,
       loaderContext: SassLoaderContext,
     ): string => {
       let originalContent = isString(additionalData)

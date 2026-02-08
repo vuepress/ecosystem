@@ -6,9 +6,9 @@ import { prepareThemeData } from './prepareThemeData.js'
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 /**
- * Options of @vuepress/plugin-theme-data
+ * Options of `@vuepress/plugin-theme-data`
  *
- * @vuepress/plugin-theme-data 的选项
+ * `@vuepress/plugin-theme-data` 的选项
  */
 export interface ThemeDataPluginOptions {
   /**

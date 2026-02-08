@@ -52,6 +52,11 @@ const parseLineNumber = (line: string | undefined): number | undefined =>
 /**
  * import code plugin for remark, convert syntax into actual content
  *
+ * @param cwd - Current working directory to resolve import paths / 用于解析导入路径的当前工作目录
+ * @param handleImportPath - Optional function to handle import paths, e.g. for alias resolution / 可选的函数，用于处理导入路径，例如别名解析
+ *
+ * @returns Unified plugin to transform import code syntax into actual code blocks in markdown AST / 将导入代码语法转换为 markdown AST 中实际代码块的 Unified 插件
+ *
  * `@[code](filepath)`
  *
  * `@[code{lineStart-lineEnd} info}](filepath)`

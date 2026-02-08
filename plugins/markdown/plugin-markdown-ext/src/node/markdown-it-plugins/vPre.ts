@@ -5,6 +5,8 @@ import type { PluginSimple } from 'markdown-it'
  * v-pre container support plugin
  *
  * v-pre 容器支持插件
+ *
+ * @param md - MarkdownIt instance / MarkdownIt 实例
  */
 export const vPre: PluginSimple = (md) => {
   container(md, {

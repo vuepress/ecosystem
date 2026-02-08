@@ -19,6 +19,10 @@ export const createAssetPattern = (prefix: string): RegExp => {
 /**
  * Normalize url
  *
+ * @param url - The url to normalize
+ * @param base - The base url to prepend to the url
+ * @returns Normalized url
+ *
  * @example
  * ```ts
  * normalizeUrl('/bar', '/foo/') // -> /foo/bar

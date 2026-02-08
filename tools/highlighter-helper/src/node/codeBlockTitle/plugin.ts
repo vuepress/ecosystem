@@ -29,7 +29,7 @@ const defaultTitleRender: CodeBlockTitleRender = (title, code) =>
  *
  * 为 markdown-it 添加代码块标题功能
  *
- * @param md - The markdown-it instance / markdown-it 实例
+ * @param md - MarkdownIt instance / MarkdownIt 实例
  * @param options - Plugin options / 插件选项
  *
  * @example

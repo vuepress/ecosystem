@@ -41,24 +41,6 @@
     "unicorn/no-typeof-undefined": "off"
   },
   "overrides": [
-    {
-      "files": ["**/template/**"],
-      "rules": {
-        "import/no-unresolved": "off",
-        "vue/multi-word-component-names": [
-          "error",
-          {
-            "ignores": ["Article", "Category", "Tag", "Timeline"]
-          }
-        ]
-      }
-    },
-    {
-      "files": ["**/*.spec.ts"],
-      "rules": {
-        "no-console": "off"
-      }
-    },
     // node files
     {
       "files": ["**/src/node/**/*.ts"],
@@ -79,6 +61,7 @@
         "import/no-nodejs-modules": "off"
       }
     },
+    // client files
     {
       "files": ["**/src/client/**/*.{ts,vue}"],
       "plugins": ["vue"],
@@ -90,8 +73,7 @@
           "vuepress/core",
           "vuepress/markdown",
           "vuepress/utils"
-        ],
-        "vue/max-props": ["warn", { "maxProps": 10 }]
+        ]
         // FIXME: not working at all
         // "typescript/no-floating-promises": [
         //   "error",
@@ -118,25 +100,30 @@
         // ]
       }
     },
+    // components
     {
       "files": ["**/src/client/components/**/*.{ts,vue}"],
       "plugins": ["vue"],
       "rules": {
-        // loose max lines for components setup blocks
-        "max-lines-per-function": [
-          "warn",
-          { "max": 300, "skipBlankLines": true, "skipComments": true }
-        ],
-
         // components may have many dependencies, as they need to import other components and utils
         // FIXME: This might be a bug, see https://github.com/oxc-project/oxc/issues/19120
-        "import/max-dependencies": "off"
+        "import/max-dependencies": "off",
+        "vue/max-props": ["warn", { "maxProps": 5 }]
       }
     },
     {
-      "files": ["**/.vuepress/client.ts", "**/src/client/config.ts"],
+      "files": ["**/template/**"],
       "rules": {
-        "typescript/no-unsafe-assignment": "off"
+        // files in template are copied to user working directory
+        // deps installation is handled by template cli
+        "import/no-unresolved": "off",
+        // to simplify template code, we use some single-word component names
+        "vue/multi-word-component-names": [
+          "error",
+          {
+            "ignores": ["Article", "Category", "Tag", "Timeline"]
+          }
+        ]
       }
     },
     {

@@ -4,7 +4,9 @@ import { getDirname, path } from 'vuepress/utils'
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 /**
- * Options for @vuepress/plugin-active-header-links
+ * Options for `@vuepress/plugin-active-header-links`
+ *
+ * `@vuepress/plugin-active-header-links` 的选项
  */
 export interface ActiveHeaderLinksPluginOptions {
   /**

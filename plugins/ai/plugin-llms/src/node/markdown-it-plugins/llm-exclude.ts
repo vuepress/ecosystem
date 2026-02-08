@@ -4,6 +4,8 @@ import type { Markdown } from 'vuepress/markdown'
  * Only remove the `<llm-exclude>` tag itself, and expand the content contained within the `<llm-exclude>` tag
  *
  * 仅移除 `<llm-exclude>` 标签本身，展开 `<llm-exclude>` 标签包含的内容
+ *
+ * @param md - MarkdownIt instance / MarkdownIt 实例
  */
 export const llmExcludePlugin = (md: Markdown): void => {
   const START_TAG = '<llm-exclude>'

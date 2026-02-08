@@ -15,7 +15,10 @@ if (import.meta.hot)
 `
 
 /**
- * @returns Page paths to be generated
+ * Prepare categories map and write it to temp file
+ *
+ * @param app - VuePress app instance
+ * @param categoriesMap - Categories map
  */
 export const prepareCategoriesMap = async (
   app: App,

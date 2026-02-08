@@ -202,6 +202,9 @@
     // prefer utf-8 over utf8
     "unicorn/text-encoding-identifier-case": ["error", { "withDash": true }],
 
+    // allow 5 props in vue components
+    "vue/max-props": ["warn", { "maxProps": 5 }],
+
     // stylistic rules with default being tweaked
     "catch-error-name": ["warn", { "name": "err" }],
     // FIXME: https://github.com/oxc-project/oxc/issues/18566
@@ -277,6 +280,20 @@
         "jsdoc/require-returns": "off",
         // allow loose boolean expressions in react components
         "typescript/strict-boolean-expressions": "off"
+      }
+    },
+    {
+      "files": ["**/components/**/*.{ts,vue}"],
+      "rules": {
+        // loose max lines for components setup blocks
+        "max-lines-per-function": [
+          "warn",
+          { "max": 300, "skipBlankLines": true, "skipComments": true }
+        ]
+
+        // FIXME: This does not work unless plugin vue is enabled
+        // increase max props for vue components to 5
+        // "vue/max-props": ["warn", { "maxProps": 5 }]
       }
     },
     {

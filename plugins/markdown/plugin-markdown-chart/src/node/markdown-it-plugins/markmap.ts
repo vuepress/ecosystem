@@ -9,6 +9,8 @@ const markmapRender = (tokens: Token[], index: number): string =>
  * Markmap markdown-it plugin
  *
  * Markmap markdown-it 插件
+ *
+ * @param md - MarkdownIt instance / MarkdownIt 实例
  */
 export const markmap: PluginSimple = (md) => {
   // Handle ```markmap blocks

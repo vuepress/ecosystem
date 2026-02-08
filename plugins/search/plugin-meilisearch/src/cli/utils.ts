@@ -82,6 +82,9 @@ export const getWorkspaceStatus = (cwd = process.cwd()): string => {
 
 /**
  * Gets files changed in the most recent commit
+ *
+ * @param cwd Current working directory
+ * @returns Array of changed file paths relative to the git root
  */
 export const getChangedFilesByDiff = (cwd = process.cwd()): string[] => {
   let gitProcess: SpawnSyncReturns<string>
@@ -113,6 +116,10 @@ export const getChangedFilesByDiff = (cwd = process.cwd()): string[] => {
 
 /**
  * Parse git status output and return file paths
+ *
+ * @param status Output from `git status --porcelain`
+ * @returns Array of changed file paths
+ * @throws Error if there are unstaged or untracked files
  */
 export const parseGitStatus = (status: string): string[] => {
   const changedFiles: string[] = []

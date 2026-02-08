@@ -1,7 +1,7 @@
 import type { DocSearchIndex } from '@docsearch/react'
 import { isString } from 'vuepress/shared'
 import type { DocSearchOptions } from '../../shared/index.js'
-import { getFacetFilters } from './getFacetFilters.js'
+import { getFacetFiltersWithLang } from './getFacetFilters.js'
 
 export const getIndices = (
   {
@@ -37,7 +37,7 @@ export const getIndices = (
         ...rest,
         searchParameters: {
           ...indexSearchParameters,
-          facetFilters: getFacetFilters(
+          facetFilters: getFacetFiltersWithLang(
             lang,
             indexSearchParameters?.facetFilters,
           ),

@@ -8,7 +8,7 @@ import type { PluginSimple } from 'markdown-it'
  *
  * 用于 reveal.js 演示的 markdown-it 插件
  *
- * @param md - Markdown-it instance / Markdown-it 实例
+ * @param md - MarkdownIt instance / MarkdownIt 实例
  */
 export const revealJs: PluginSimple = (md) => {
   md.use<MarkdownItUMLOptions>(uml, {

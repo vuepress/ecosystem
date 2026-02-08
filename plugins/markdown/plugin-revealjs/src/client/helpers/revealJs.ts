@@ -66,12 +66,16 @@ export const defineRevealJsConfig = (
 
 /**
  * @internal
+ *
+ * @returns Reveal.js options ref
  */
 export const useRevealJsConfig = (): RevealJsOptionsRef =>
   inject(revealJsSymbol)!
 
 /**
  * @internal
+ *
+ * @param app - Vue application instance
  */
 export const injectRevealJsConfig = (app: App): void => {
   app.provide(revealJsSymbol, revealOptions)

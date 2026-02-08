@@ -46,6 +46,9 @@ export interface EChartsPluginOptions {
  * ECharts markdown-it plugin
  *
  * ECharts markdown-it 插件
+ *
+ * @param md - MarkdownIt instance / MarkdownIt 实例
+ * @param options - Plugin options / 插件选项
  */
 export const echarts: PluginWithOptions<EChartsPluginOptions> = (
   md,

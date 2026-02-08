@@ -6,7 +6,9 @@ import { isLinkHttp } from 'vuepress/shared'
 import type { NavbarItem } from '../typings.js'
 
 /**
- * Get navbar config of repository link
+ * Repository link in navbar
+ *
+ * @returns Navbar config of repository link / 仓库链接的导航栏配置
  */
 export const useNavbarRepo = (): ComputedRef<NavbarItem[]> => {
   const { themeLocale } = useData()

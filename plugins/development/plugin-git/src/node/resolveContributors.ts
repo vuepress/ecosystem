@@ -13,17 +13,11 @@ import {
  *
  * 从提交记录中获取原始贡献者信息
  *
- * @param commits - Git commits
+ * @param commits - Git commits / Git 提交记录
+ * @param options - Contributors options / 贡献者选项
+ * @param gitProvider - Git provider / Git 提供商
  *
- * Git 提交记录
- *
- * @param options - Contributors options
- *
- * 贡献者选项
- *
- * @param gitProvider - Git provider
- *
- * Git 提供商
+ * @returns Raw contributors / 原始贡献者信息
  */
 // oxlint-disable-next-line complexity
 export const getRawContributors = (
@@ -112,23 +106,12 @@ export const getRawContributors = (
  *
  * 解析贡献者
  *
- * @param commits - Git commits
+ * @param commits - Git commits / Git 提交记录
+ * @param gitProvider - Git provider / Git 提供商
+ * @param options - Contributors options / 贡献者选项
+ * @param extraContributors - Extra contributors / 额外贡献者
  *
- * Git 提交记录
- *
- * @param gitProvider - Git provider
- *
- * Git 提供商
- *
- * @param options - Contributors options
- *
- * 贡献者选项
- *
- * @param extraContributors - Extra contributors
- *
- * 额外贡献者
- *
- * @default []
+ * @returns Resolved contributors / 解析后的贡献者
  */
 export const resolveContributors = (
   commits: MergedRawCommit[],

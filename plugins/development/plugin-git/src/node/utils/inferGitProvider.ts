@@ -7,9 +7,9 @@ import type { KnownGitProvider } from '../../shared/index.js'
  *
  * 获取 Git 远程仓库的 URL
  *
- * @param cwd - The directory where the git commands should be executed.
+ * @param cwd - The directory where the git commands should be executed. / 执行 git 命令的目录
  *
- * 执行 git 命令的目录
+ * @returns The URL of the Git remote, or null if it cannot be determined. / Git 远程仓库的 URL，如果无法确定则返回 null
  */
 export const getRemoteUrl = (cwd: string): string | null => {
   const execOptions: ExecSyncOptionsWithStringEncoding = {
@@ -50,9 +50,9 @@ export const getRemoteUrl = (cwd: string): string | null => {
  *
  * 从远程 URL 推断 Git 提供商
  *
- * @param cwd - The directory where the git commands should be executed
+ * @param cwd - The directory where the git commands should be executed / 执行 git 命令的目录
  *
- * 执行 git 命令的目录
+ * @returns The inferred git provider, or null if it cannot be determined / 推断出的 Git 提供商，如果无法确定则返回 null
  */
 export const inferGitProvider = (cwd: string): KnownGitProvider | null => {
   const remoteUrl = getRemoteUrl(cwd)

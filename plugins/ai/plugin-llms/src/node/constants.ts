@@ -17,6 +17,29 @@ export const DEFAULT_LLMSTXT_TEMPLATE = `\
 {toc}\
 `
 
+/**
+ * Generates a regular expression that matches either an opening or closing HTML tag based on the provided parameters.
+ *
+ * @param tag - The HTML tag name to match (e.g., 'a' for <a href="...">).
+ * @param type - open or closed tag type to match (e.g., 'open' for <a>, 'closed' for </a>).
+ * @param flags - Optional RegExp flags (e.g., 'i' for case-insensitive matching).
+ *
+ * @example
+ *
+ * ```ts
+ * // To match an opening <a> tag:
+ * const openTagRegex = tagRegex('a', 'open');
+ * console.log(openTagRegex.test('<a href="...">')); // true
+ * console.log(openTagRegex.test('</a>')); // false
+ *
+ * // To match a closing </a> tag:
+ * const closedTagRegex = tagRegex('a', 'closed');
+ * console.log(closedTagRegex.test('<a href="...">')); // false
+ * console.log(closedTagRegex.test('</a>')); // true
+ * ```
+ *
+ * @returns A RegExp that matches the specified tag type.
+ */
 export const tagRegex = (
   tag: RegExp | string,
   type: 'closed' | 'open',
@@ -30,6 +53,7 @@ export const tagRegex = (
  * and then matches the corresponding closing tag. The tag name is provided as an argument.
  *
  * @param tag - The name of the tag to match (e.g., "note" will match <note>...</note>).
+ * @param flags - Optional RegExp flags (e.g., "i" for case-insensitive matching).
  * @returns A RegExp that captures the entire tag block including its inner content.
  *
  * @example

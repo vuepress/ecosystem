@@ -38,6 +38,7 @@ it('isBoolean', () => {
 
 it('isFunction', () => {
   expect(isFunction(isBoolean)).toBe(true)
+  // oxlint-disable-next-line no-console
   expect(isFunction(console.log)).toBe(true)
   expect(isFunction(1)).toBe(false)
   expect(isFunction('abc')).toBe(false)

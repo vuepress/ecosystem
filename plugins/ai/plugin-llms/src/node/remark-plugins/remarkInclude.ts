@@ -263,6 +263,13 @@ const resolveLink = (
 /**
  * Remark plugin for include, which is based on markdown-it-include
  *
+ * Remark 插件，用于包含其他文件内容，基于 markdown-it-include 实现
+ *
+ * @param cwd - The current working directory, used to resolve relative paths
+ * @param options - The options for the plugin
+ * @returns A remark plugin
+ *
+ * @example
  *
  * ```markdown
  * <!-- \@include: path/to/file.md -->

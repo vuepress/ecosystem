@@ -20,6 +20,8 @@ export const mediumZoomSymbol: InjectionKey<Zoom> = Symbol('mediumZoom')
  *
  * 注入 medium zoom 实例
  *
+ * @returns Medium zoom instance / medium zoom 实例
+ *
  * @example
  * ```ts
  * import { useMediumZoom } from '@vuepress/plugin-medium-zoom/client'

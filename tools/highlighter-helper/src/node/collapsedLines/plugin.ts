@@ -7,7 +7,7 @@ import { resolveCollapsedLines } from './resolveCollapsedLine.js'
  *
  * 为 markdown-it 中的代码块添加折叠行功能
  *
- * @param md - The markdown-it instance / markdown-it 实例
+ * @param md - MarkdownIt instance / MarkdownIt 实例
  * @param options - Plugin options / 插件选项
  *
  * @example

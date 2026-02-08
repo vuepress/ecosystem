@@ -18,6 +18,8 @@ const flowchartRender = (tokens: Token[], index: number): string => {
  * Flowchart markdown-it plugin
  *
  * Flowchart markdown-it 插件
+ *
+ * @param md - MarkdownIt instance / MarkdownIt 实例
  */
 export const flowchart: PluginSimple = (md) => {
   // Handle ```flow and ```flowchart blocks

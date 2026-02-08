@@ -4,6 +4,8 @@ import type { Markdown } from 'vuepress/markdown'
  * Remove content enclosed within `<llm-only>` tags from markdown
  *
  * 从 markdown 中移除 `<llm-only>` 标签包含的内容
+ *
+ * @param md - MarkdownIt instance / MarkdownIt 实例
  */
 export const llmOnlyPlugin = (md: Markdown): void => {
   md.block.ruler.before(

@@ -179,9 +179,9 @@ export interface ChangelogOptions {
 }
 
 /**
- * Options for @vuepress/plugin-git
+ * Options for `@vuepress/plugin-git`
  *
- * @vuepress/plugin-git 插件配置项
+ * `@vuepress/plugin-git` 插件配置项
  */
 export interface GitPluginOptions {
   /**

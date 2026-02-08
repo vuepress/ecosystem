@@ -8,6 +8,9 @@ const matchers = new Map<string[] | string, Matcher>()
 
 /**
  * Create Filter from pattern
+ *
+ * @param pattern - Pattern to create filter / 用于创建过滤器的模式
+ * @returns Filter function / 过滤器函数
  */
 export const createFilter = (pattern: Pattern): Matcher => {
   if (isFunction(pattern)) {

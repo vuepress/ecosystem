@@ -7,7 +7,7 @@ import { resolveLineNumbers } from './resolveLineNumbers.js'
  *
  * 为 markdown-it 中的代码块添加行号
  *
- * @param md - Markdown-it instance / Markdown-it 实例
+ * @param md - MarkdownIt instance / MarkdownIt 实例
  *
  * @example
  * ```ts

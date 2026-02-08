@@ -27,6 +27,8 @@ const isLastItemOfArray = (arrayItem: unknown, array: unknown[]): boolean =>
  * The Tab + Click is UIEvent > KeyboardEvent, so the detail is 0.
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail
+ *
+ * @param event - The UIEvent triggered by the click
  */
 const handleDropdown = (event: UIEvent): void => {
   if (event.detail === 0) toggleOpen()

@@ -17,5 +17,7 @@ export const locales =
  * Git locale composable
  *
  * Git 多语言组合式函数
+ *
+ * @returns Git locale data / Git 多语言数据
  */
 export const useGitLocale = (): ComputedRef<GitLocaleData> => useLocale(locales)

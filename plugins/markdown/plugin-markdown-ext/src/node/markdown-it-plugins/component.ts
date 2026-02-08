@@ -58,6 +58,8 @@ ${content}
  * Component fence support plugin
  *
  * 组件代码块支持插件
+ *
+ * @param md - MarkdownIt instance / MarkdownIt 实例
  */
 export const component: PluginSimple = (md) => {
   // Handle ```component  blocks

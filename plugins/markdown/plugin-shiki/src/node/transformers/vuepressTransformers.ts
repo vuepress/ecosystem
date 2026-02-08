@@ -2,6 +2,9 @@ import type { ShikiTransformer } from 'shiki'
 
 const CODE_ESCAPE_RE = /\[\\!code/g
 
+/**
+ * A transformer to add `vp-code` class to code blocks for better styling
+ */
 export const addClassTransformer: ShikiTransformer = {
   name: 'vuepress:add-class',
   pre(node) {
@@ -9,6 +12,9 @@ export const addClassTransformer: ShikiTransformer = {
   },
 }
 
+/**
+ * A transformer to remove `tabindex` property from code blocks to avoid being focused
+ */
 export const cleanupTransformer: ShikiTransformer = {
   name: 'vuepress:cleanup',
   pre(node) {
@@ -25,11 +31,12 @@ export const cleanupTransformer: ShikiTransformer = {
  */
 export const removeEscapeTransformer: ShikiTransformer = {
   name: 'vuepress:remove-escape',
-  postprocess(code) {
-    return code.replace(CODE_ESCAPE_RE, '[!code')
-  },
+  postprocess: (code) => code.replace(CODE_ESCAPE_RE, '[!code'),
 }
 
+/**
+ * This transformer adds a `wbr` tag to the end of the empty line to insure the empty line can be correctly displayed
+ */
 export const emptyLineTransformer: ShikiTransformer = {
   name: 'vuepress:empty-line',
   code(hast) {
@@ -52,6 +59,9 @@ export const emptyLineTransformer: ShikiTransformer = {
   },
 }
 
+/**
+ * A transformer to add `v-pre` directive to code blocks to avoid being processed by Vue
+ */
 export const vPreTransformer: ShikiTransformer = {
   name: 'vuepress:v-pre',
   pre(node) {

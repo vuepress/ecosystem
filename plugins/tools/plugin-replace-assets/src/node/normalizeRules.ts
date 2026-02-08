@@ -7,6 +7,9 @@ export const createFindPattern = (dir: string, extensions: string[]): RegExp =>
 
 /**
  * Normalize replacement rules
+ *
+ * @param options - The plugin options to normalize
+ * @returns Normalized replacement rules
  */
 export const normalizeRules = (
   options?: ReplaceAssetsPluginOptions,

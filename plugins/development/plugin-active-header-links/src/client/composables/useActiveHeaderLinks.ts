@@ -11,6 +11,9 @@ export interface UseActiveHeaderLinksOptions {
 
 /**
  * Update current hash and do not trigger `scrollBehavior`
+ *
+ * @param router - Vue Router instance / Vue Router 实例
+ * @param hash - Hash to update / 要更新的 hash
  */
 const updateHash = async (router: Router, hash: string): Promise<void> => {
   const { path, query } = router.currentRoute.value

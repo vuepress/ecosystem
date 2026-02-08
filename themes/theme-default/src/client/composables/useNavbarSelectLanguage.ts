@@ -8,6 +8,8 @@ import type { NavbarItem } from '../typings.js'
 
 /**
  * Get navbar config of select language dropdown
+ *
+ * @returns Navbar config of select language dropdown
  */
 export const useNavbarSelectLanguage = (): ComputedRef<NavbarItem[]> => {
   const route = useRoute()

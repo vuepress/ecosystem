@@ -31,6 +31,11 @@ const resolveFromFrontmatterConfig = (
 }
 /**
  * Resolve `prev` or `next` config from sidebar items
+ *
+ * @param sidebarItems - Sidebar items / 侧边栏配置项
+ * @param currentPath - Current route path / 当前路由路径
+ * @param offset - The offset to find the target link, -1 for `prev` and 1 for `next` / 查找目标链接的偏移量，-1 表示查找 `prev`，1 表示查找 `next`
+ * @returns Resolved link or null if not found
  */
 const resolveFromSidebarItems = (
   sidebarItems: SidebarItem[],

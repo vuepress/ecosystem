@@ -7,6 +7,8 @@ declare const __DOCSEARCH_INDEX_BASE__: string
 
 /**
  * Get docsearch options to be compatible with VuePress
+ *
+ * @returns DocSearch options compatible with VuePress
  */
 export const useDocSearchShim = (): Partial<DocSearchProps> => {
   const router = useRouter()

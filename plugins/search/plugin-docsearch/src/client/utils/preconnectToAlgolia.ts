@@ -1,5 +1,7 @@
 /**
  * Preconnect to Algolia's API
+ *
+ * @param appId - Algolia application ID / Algolia 应用 ID
  */
 export const preconnectToAlgolia = (appId: string): void => {
   const id = 'algolia-preconnect'

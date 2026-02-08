@@ -6,9 +6,9 @@ import { prepareStyleFile } from './prepareStyleFile.js'
 import { presetOptions } from './presetOptions.js'
 
 /**
- * Options of @vuepress/plugin-palette
+ * Options of `@vuepress/plugin-palette`
  *
- * @vuepress/plugin-palette 插件配置项
+ * `@vuepress/plugin-palette` 插件配置项
  */
 export interface PalettePluginOptions {
   /**
