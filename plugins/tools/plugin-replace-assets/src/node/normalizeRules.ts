@@ -2,15 +2,14 @@ import { isArray, isFunction } from '@vuepress/helper'
 import { KNOWN_IMAGE_EXTENSIONS, KNOWN_MEDIA_EXTENSIONS } from './constants.js'
 import type { ReplaceAssetsPluginOptions, ReplacementRule } from './types.js'
 
-export const createFindPattern = (
-  dir: string,
-  extensions: string[],
-): RegExp => {
-  return new RegExp(`^/${dir}/.*\\.(?:${extensions.join('|')})(\\?.*)?$`)
-}
+export const createFindPattern = (dir: string, extensions: string[]): RegExp =>
+  new RegExp(`^/${dir}/.*\\.(?:${extensions.join('|')})(\\?.*)?$`)
 
 /**
  * Normalize replacement rules
+ *
+ * @param options - The plugin options to normalize
+ * @returns Normalized replacement rules
  */
 export const normalizeRules = (
   options?: ReplaceAssetsPluginOptions,

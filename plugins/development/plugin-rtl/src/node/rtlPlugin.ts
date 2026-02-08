@@ -25,6 +25,7 @@ export interface RTLPluginOptions {
    */
   selector?: {
     [cssSelector: string]: {
+      // oxlint-disable-next-line typescript/consistent-indexed-object-style
       [attr: string]: string
     }
   }
@@ -36,8 +37,6 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  * Create RTL plugin
  *
  * 创建 RTL 插件
- *
- * @param options - Plugin options
  *
  * @example
  * ```ts

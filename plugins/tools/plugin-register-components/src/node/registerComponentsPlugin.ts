@@ -5,7 +5,7 @@ import { createMatcher } from './createMatcher.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 
 /**
- * Options for @vuepress/plugin-register-components
+ * Options for `@vuepress/plugin-register-components`
  */
 export interface RegisterComponentsPluginOptions {
   /**
@@ -36,7 +36,7 @@ export const registerComponentsPlugin = ({
   componentsDir = null,
   componentsPatterns = ['**/*.vue'],
   getComponentName = (filename) =>
-    path.trimExt(filename.replace(/\/|\\/g, '-')),
+    path.trimExt(filename.replaceAll(/\/|\\/g, '-')),
 }: RegisterComponentsPluginOptions = {}): Plugin => {
   const options = {
     components,

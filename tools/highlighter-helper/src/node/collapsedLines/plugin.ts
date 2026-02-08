@@ -7,7 +7,7 @@ import { resolveCollapsedLines } from './resolveCollapsedLine.js'
  *
  * 为 markdown-it 中的代码块添加折叠行功能
  *
- * @param md - The markdown-it instance / markdown-it 实例
+ * @param md - MarkdownIt instance / MarkdownIt 实例
  * @param options - Plugin options / 插件选项
  *
  * @example
@@ -31,7 +31,7 @@ export const collapsedLines = (
 
   const rawFence = md.renderer.rules.fence!
 
-  md.renderer.rules.fence = (...args) => {
+  md.renderer.rules.fence = (...args): string => {
     const [tokens, index] = args
     const token = tokens[index]
     // get token info

@@ -7,7 +7,6 @@ import {
   themeLocaleDataSymbol,
   useThemeData,
 } from './composables/index.js'
-import {} from './composables/setupDevtools.js'
 
 export default defineClientConfig({
   enhance({ app }) {

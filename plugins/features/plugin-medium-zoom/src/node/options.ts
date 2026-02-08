@@ -1,9 +1,9 @@
 import type { ZoomOptions } from 'medium-zoom'
 
 /**
- * Options for @vuepress/plugin-medium-zoom
+ * Options for `@vuepress/plugin-medium-zoom`
  *
- * @vuepress/plugin-medium-zoom 的配置项
+ * `@vuepress/plugin-medium-zoom` 的配置项
  */
 export interface MediumZoomPluginOptions {
   /**

@@ -8,7 +8,8 @@ const HIGHLIGHT_LINES_REGEXP = /{([\d,-]+?)}/
 
 export const highlightLinePlugin = (md: Markdown): void => {
   const fence = md.renderer.rules.fence!
-  md.renderer.rules.fence = (...args) => {
+
+  md.renderer.rules.fence = (...args): string => {
     const [tokens, idx] = args
     const token = tokens[idx]
 
@@ -31,11 +32,11 @@ export const highlightLinePlugin = (md: Markdown): void => {
       // ensure the next plugin get the correct lang
       token.info = langName
 
-      lines = HIGHLIGHT_LINES_REGEXP.exec(rawInfo)![1]
+      ;[, lines] = HIGHLIGHT_LINES_REGEXP.exec(rawInfo)!
     }
 
     if (!lines) {
-      lines = attr![0]
+      ;[lines] = attr!
 
       if (!lines || !/[\d,-]+/.test(lines)) {
         return fence(...args)

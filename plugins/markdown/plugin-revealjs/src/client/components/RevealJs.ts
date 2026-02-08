@@ -97,7 +97,7 @@ export const RevealJs = defineComponent({
       const container = presentationContainer.value
 
       if (container) {
-        container.setAttribute('data-theme', props.theme)
+        container.dataset.theme = props.theme
 
         loading.value = true
 

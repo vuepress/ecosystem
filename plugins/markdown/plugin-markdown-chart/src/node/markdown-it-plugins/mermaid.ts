@@ -104,6 +104,8 @@ const DIAGRAM_MAP: Record<string, [diagramName: string, indent?: boolean]> = {
  * Mermaid markdown-it plugin
  *
  * Mermaid markdown-it 插件
+ *
+ * @param md - MarkdownIt instance / MarkdownIt 实例
  */
 export const mermaid: PluginSimple = (md) => {
   // Handle ```mermaid blocks

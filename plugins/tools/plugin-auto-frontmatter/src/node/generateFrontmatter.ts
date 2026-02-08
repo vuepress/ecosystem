@@ -1,5 +1,5 @@
 import matter from 'gray-matter'
-import yaml from 'js-yaml'
+import { dump } from 'js-yaml'
 import pMap from 'p-map'
 import { fs, hash as getHash, path } from 'vuepress/utils'
 import { createFilter } from './createFilter.js'
@@ -13,6 +13,10 @@ import { logger } from './utils.js'
 
 /**
  * Get markdown info
+ *
+ * @param relativePath - Relative path of the markdown file / Markdown 文件的相对路径
+ * @param cwd - Current working directory / 当前工作目录
+ * @returns Markdown info including frontmatter data and content / 包含 frontmatter 数据和内容的 Markdown 信息
  */
 const getMarkdownInfo = async (
   relativePath: string,
@@ -36,6 +40,10 @@ const getMarkdownInfo = async (
 
 /**
  * Find rule by filepath, Only return the first
+ *
+ * @param rules - List of auto frontmatter rules / 自动 frontmatter 规则列表
+ * @param filepath - File path to find rule for / 要查找规则的文件路径
+ * @returns The first matched rule / 第一个匹配的规则
  */
 export const findRule = (
   rules: AutoFrontmatterRule[],
@@ -47,6 +55,10 @@ export const findRule = (
 
 /**
  * Generate frontmatter for a single Markdown file
+ *
+ * @param filepath - File path of the Markdown file / Markdown 文件的路径
+ * @param cwd - Current working directory / 当前工作目录
+ * @param handle - Function to handle frontmatter data and context / 处理 frontmatter 数据和上下文的函数
  */
 export const generateFileFrontmatter = async (
   filepath: string,
@@ -71,15 +83,15 @@ export const generateFileFrontmatter = async (
     // 这个版本 stringify 后的内容，值会包裹在 `""` 中，但不符合通常的 yaml 书写格式
     // 而如果通过匹配删除 `""`, 又会导致特殊字符无法正常解析
     // 这些问题在 `js-yaml@4.x` 中已经解决
-    const formatted = Object.keys(result).length === 0 ? '' : yaml.dump(result)
+    const formatted = Object.keys(result).length === 0 ? '' : dump(result)
 
     await fs.promises.writeFile(
       context.filepath,
       formatted ? `---\n${formatted}---\n${context.content}` : context.content,
       'utf-8',
     )
-  } catch (e) {
-    logger.error(`Failed to generate frontmatter for ${filepath}`, e)
+  } catch (err) {
+    logger.error(`Failed to generate frontmatter for ${filepath}`, err)
   }
 }
 
@@ -87,6 +99,10 @@ type Task = readonly [string, AutoFrontmatterHandle]
 
 /**
  * Generate frontmatter for all Markdown files
+ *
+ * @param fileList - List of Markdown file paths / Markdown 文件路径列表
+ * @param cwd - Current working directory / 当前工作目录
+ * @param rules - List of auto frontmatter rules / 自动 frontmatter 规则列表
  */
 export const generateFileListFrontmatter = async (
   fileList: string[],

@@ -1,4 +1,5 @@
 import { getDate, isArray, isString } from '@vuepress/helper'
+import type { UnionToIntersection } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import type { ExtendPage, SeoContent } from '../typings/index.js'
 import type { SeoPluginOptions } from './options.js'
@@ -10,6 +11,7 @@ import {
   getUrl,
 } from './utils/index.js'
 
+// oxlint-disable-next-line complexity
 export const getOGPInfo = (
   page: ExtendPage,
   app: App,
@@ -28,7 +30,7 @@ export const getOGPInfo = (
     restrictions?: SeoPluginOptions['restrictions']
     twitterID?: SeoPluginOptions['twitterID']
   },
-): SeoContent => {
+): UnionToIntersection<SeoContent> => {
   const { base, title: siteTitle, locales } = app.siteData
   const {
     frontmatter: {
@@ -54,9 +56,8 @@ export const getOGPInfo = (
 
   const ogImage = cover || images[0] || fallBackImage
 
-  const defaultOGP: SeoContent = {
+  const defaultOGP = {
     'og:url': getUrl(hostname, base, page.path),
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     'og:site_name': locales[page.pathLocale]?.title || siteTitle,
     'og:title': articleTitle,
     'og:description': page.frontmatter.description || '',
@@ -76,10 +77,10 @@ export const getOGPInfo = (
       : {}),
 
     'article:author': author[0]?.name,
-    'article:tag': articleTags,
+    'article:tag': articleTags as string[],
     ...(publishedTime ? { 'article:published_time': publishedTime } : {}),
     ...(modifiedTime ? { 'article:modified_time': modifiedTime } : {}),
-  }
+  } as UnionToIntersection<SeoContent>
 
   return defaultOGP
 }

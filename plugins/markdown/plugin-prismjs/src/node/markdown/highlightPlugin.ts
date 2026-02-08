@@ -110,7 +110,7 @@ export interface MarkdownItPrismjsHighlightOptions {
  *
  * 用于 prismjs 高亮的 markdown-it 插件
  *
- * @param md - Markdown instance / Markdown 实例
+ * @param md - MarkdownIt instance / MarkdownIt 实例
  * @param options - Plugin options / 插件选项
  * @example
  * ```ts
@@ -135,7 +135,7 @@ export const highlightPlugin = (
 ): void => {
   const rawFence = md.renderer.rules.fence!
 
-  md.renderer.rules.fence = (...args) => {
+  md.renderer.rules.fence = (...args): string => {
     const [tokens, idx, { langPrefix }] = args
     const token = tokens[idx]
 

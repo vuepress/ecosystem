@@ -25,15 +25,15 @@ export const seoPlugin =
     return {
       ...plugin,
 
-      extendsPage: (page: ExtendPage): void => {
+      extendsPage: (page: ExtendPage) => {
         if (page.frontmatter.seo ?? true)
           generateDescription(app, page, autoDescription)
       },
 
-      onInitialized: (): void => {
+      onInitialized: () => {
         appendSEO(app, { hostname, ...rest })
       },
 
-      onGenerated: (): Promise<void> => generateRobotsTxt(app),
+      onGenerated: () => generateRobotsTxt(app),
     }
   }

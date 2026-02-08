@@ -13,8 +13,6 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  *
  * 目录插件
  *
- * @param options plugin options
- *
  * @example
  * ```ts
  * import { catalogPlugin } from '@vuepress/plugin-catalog'
@@ -40,7 +38,7 @@ export const catalogPlugin =
     return {
       name: PLUGIN_NAME,
 
-      define: (): Record<string, unknown> => ({
+      define: () => ({
         __CATALOG_LOCALES__: getFullLocaleConfig({
           app,
           name: PLUGIN_NAME,
@@ -49,9 +47,9 @@ export const catalogPlugin =
         }),
       }),
 
-      onInitialized: (): Promise<void> => generateCatalogPage(app, options),
+      onInitialized: () => generateCatalogPage(app, options),
 
-      extendsBundlerOptions: (bundlerOptions: unknown): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown) => {
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
 

@@ -27,9 +27,9 @@ const createMarkdown = ({
   codeBlockTitle = true,
   ...options
 }: PrismjsPluginOptions = {}): MarkdownIt => {
-  const md = MarkdownIt()
+  const md = new MarkdownIt()
 
-  md.options.highlight = (code, lang) => {
+  md.options.highlight = (code, lang): string => {
     const highlighter = resolveHighlighter(lang)
     return highlighter?.(code) || ''
   }

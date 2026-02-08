@@ -1,5 +1,5 @@
 import type { DocSearchProps } from '@docsearch/react'
-import type { PropType } from 'vue'
+import type { PropType, VNode } from 'vue'
 import { computed, defineComponent, h, onMounted, ref, watch } from 'vue'
 import { useLang, useRouteLocale } from 'vuepress/client'
 import type { DocSearchOptions } from '../../shared/index.js'
@@ -94,7 +94,7 @@ export const DocSearch = defineComponent({
       preconnectToAlgolia(options.value.appId)
     })
 
-    return () => [
+    return (): (VNode | null)[] => [
       h('div', {
         id: props.containerId,
         style: { display: hasInitialized.value ? 'block' : 'none' },

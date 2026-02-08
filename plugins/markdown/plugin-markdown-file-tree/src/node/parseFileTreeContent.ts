@@ -14,7 +14,7 @@ const FOCUS_RE = /^\*\*(.*)\*\*(?:$|\s+)/
 export const parseFileTreeNodeInfo = (rawInfo: string): FileTreeNodeProps => {
   let filename = ''
   let focus = false
-  let expanded: boolean = true
+  let expanded = true
   let type: FileTreeNodeProps['type'] = 'file'
   let diff: FileTreeNodeProps['diff']
   let info = rawInfo
@@ -33,7 +33,6 @@ export const parseFileTreeNodeInfo = (rawInfo: string): FileTreeNodeProps => {
     return ''
   })
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (filename === '' && !focus) {
     const sharpIndex = info.indexOf('#')
     filename = info.slice(0, sharpIndex === -1 ? info.length : sharpIndex)

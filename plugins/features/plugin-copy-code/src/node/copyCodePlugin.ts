@@ -62,7 +62,7 @@ export const copyCodePlugin =
         __CC_SHOW_IN_MOBILE__: options.showInMobile ?? false,
       }),
 
-      extendsBundlerOptions: (bundlerOptions: unknown): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown) => {
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
 

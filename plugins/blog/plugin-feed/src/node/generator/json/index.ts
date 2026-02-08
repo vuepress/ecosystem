@@ -15,6 +15,9 @@ const getJSONAuthor = (author: FeedAuthor): JSONAuthor => ({
  * JSON 1.1 格式的 Feed
  *
  * @see https://jsonfeed.org/version/1.1
+ *
+ * @param feedStore - Feed store / Feed 存储
+ * @returns JSON feed content / JSON Feed 内容
  */
 export const getJSONFeed = (feedStore: FeedStore): string => {
   const { channel, links } = feedStore
@@ -37,11 +40,9 @@ export const getJSONFeed = (feedStore: FeedStore): string => {
       : channel.author
         ? [channel.author]
         : []
-  )
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    .filter((author) => author?.name)
+  ).filter((author) => author?.name)
 
-  if (channelAuthors.length)
+  if (channelAuthors.length > 0)
     content.authors = channelAuthors.map((author) => getJSONAuthor(author))
 
   content.items = feedStore.items.map((item) => {

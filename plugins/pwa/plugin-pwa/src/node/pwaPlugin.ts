@@ -58,7 +58,7 @@ export const pwaPlugin =
     return {
       name: PLUGIN_NAME,
 
-      extendsBundlerOptions: (bundlerOptions: unknown): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown) => {
         addViteOptimizeDepsExclude(bundlerOptions, app, [
           'mitt',
           'register-service-worker',
@@ -76,7 +76,7 @@ export const pwaPlugin =
         })
       },
 
-      onGenerated: async (): Promise<void> => {
+      onGenerated: async () => {
         await generateManifest(app, options)
         await generateServiceWorker(app, options)
       },

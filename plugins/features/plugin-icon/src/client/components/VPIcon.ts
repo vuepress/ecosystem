@@ -6,6 +6,9 @@ import { withBase } from 'vuepress/client'
 import type { IconType } from '../../shared/index.js'
 import '../styles/vp-icon.css'
 
+const appendFontawesomePrefix = (icon: string): string =>
+  icon.includes('fa-') || /^fa.$/.test(icon) ? icon : `fa-${icon}`
+
 export const VPIcon = defineComponent({
   name: 'VPIcon',
 
@@ -94,13 +97,10 @@ export const VPIcon = defineComponent({
         if (sizing !== 'width') attrsObject.height = props.size || '1em'
       }
 
-      if (keys(styleObject).length) attrsObject.style = styleObject
+      if (keys(styleObject).length > 0) attrsObject.style = styleObject
 
       return attrsObject
     })
-
-    const appendFontawesomePrefix = (icon: string): string =>
-      icon.includes('fa-') || /^fa.$/.test(icon) ? icon : `fa-${icon}`
 
     return (): VNode | null => {
       const { type, icon, prefix = '', sizing } = props
@@ -141,7 +141,7 @@ export const VPIcon = defineComponent({
             iconType.length === 1
               ? `fa${iconType}`
               : appendFontawesomePrefix(iconType),
-            ...rest.split(' ').map(appendFontawesomePrefix),
+            ...rest.split(' ').map((icon) => appendFontawesomePrefix(icon)),
             sizing === 'height' ? '' : 'fa-fw',
           ],
           ...attrs.value,

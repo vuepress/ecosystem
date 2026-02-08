@@ -20,7 +20,7 @@ export interface MarkdownItPreWrapperOptions {
  *
  * 用于 pre 包装器的 markdown-it 插件
  *
- * @param md - Markdown instance / Markdown 实例
+ * @param md - MarkdownIt instance / MarkdownIt 实例
  * @param options - Plugin options / 插件选项
  * @example
  * ```ts
@@ -37,7 +37,7 @@ export const preWrapperPlugin = (
 ): void => {
   const rawFence = md.renderer.rules.fence!
 
-  md.renderer.rules.fence = (...args) => {
+  md.renderer.rules.fence = (...args): string => {
     let result = rawFence(...args)
 
     const [tokens, idx, { langPrefix }] = args

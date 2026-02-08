@@ -10,7 +10,6 @@ import { fs } from 'vuepress/utils'
  * @param app - VuePress App
  * @param swLocation - Service worker location / Service worker 位置
  * @param cachePatterns - Cache patterns / 缓存模式
- * @returns Promise that resolves when the service worker is generated / 生成 service worker 后解析的 Promise
  */
 export const generateEmptyServiceWorker = async (
   app: App,

@@ -44,11 +44,8 @@ export interface LastUpdated {
  *
  * 最后更新组合式函数
  *
- * @param enabled - Whether to enable last updated
- *
- * 是否启用最后更新
- *
- * @default true
+ * @param enabled - Whether to enable last updated /是否启用最后更新
+ * @returns The last updated information /最后更新信息
  */
 export const useLastUpdated = (
   enabled: MaybeRefOrGetter<boolean> = true,

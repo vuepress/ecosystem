@@ -18,6 +18,9 @@ export default defineClientConfig({
 
     // handle scrollBehavior with transition
     const scrollBehavior = router.options.scrollBehavior!
+
+    // scrollBehavior is a bit hard to typed here
+    // oxlint-disable-next-line typescript/explicit-function-return-type
     router.options.scrollBehavior = async (...args) => {
       await useScrollPromise().wait()
       return scrollBehavior(...args)

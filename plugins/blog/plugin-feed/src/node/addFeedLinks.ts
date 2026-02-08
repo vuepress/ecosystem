@@ -9,6 +9,9 @@ import { getUrl } from './utils/index.js'
  * Add feed links to page head
  *
  * 将 Feed 链接添加到页面头部
+ *
+ * @param app - VuePress app instance / VuePress 应用实例
+ * @param options - Resolved feed options map / 解析后的 Feed 选项映射
  */
 export const addFeedLinks = (
   app: App,
@@ -33,10 +36,7 @@ export const addFeedLinks = (
         rel: 'alternate',
         type,
         href: getUrl(hostname, base, fileName),
-        title: `${
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-          title || locales['/']?.title || ''
-        } ${name} Feed`,
+        title: `${title || locales['/']?.title || ''} ${name} Feed`,
       },
     ]
 
@@ -73,12 +73,7 @@ export const addFeedLinks = (
             type,
             href: getUrl(localeOptions.hostname, base, fileName),
             title: `${
-              // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-              locales[pathLocale]?.title ||
-              title ||
-              // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-              locales['/']?.title ||
-              ''
+              locales[pathLocale]?.title || title || locales['/']?.title || ''
             } ${name} Feed`,
           },
         ]

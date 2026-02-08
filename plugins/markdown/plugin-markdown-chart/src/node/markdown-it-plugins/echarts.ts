@@ -6,7 +6,7 @@ import { colors } from 'vuepress/utils'
 
 const echartsRender = (tokens: Token[], index: number): string => {
   const { content, info } = tokens[index]
-  const title = info.trim().split(':', 2)[1]
+  const [, title] = info.trim().split(':', 2)
 
   return `<ECharts config="${encodeData(content)}"${
     title ? ` title="${encodeURIComponent(title)}"` : ''
@@ -46,6 +46,9 @@ export interface EChartsPluginOptions {
  * ECharts markdown-it plugin
  *
  * ECharts markdown-it 插件
+ *
+ * @param md - MarkdownIt instance / MarkdownIt 实例
+ * @param options - Plugin options / 插件选项
  */
 export const echarts: PluginWithOptions<EChartsPluginOptions> = (
   md,
@@ -59,7 +62,7 @@ export const echarts: PluginWithOptions<EChartsPluginOptions> = (
   md.renderer.rules.fence = (...args): string => {
     const [tokens, index] = args
     const { info } = tokens[index]
-    const realInfo = info.split(':', 2)[0]
+    const [realInfo] = info.split(':', 2)
 
     if (realInfo === 'echarts') return echartsRender(tokens, index)
 

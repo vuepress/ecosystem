@@ -32,11 +32,13 @@ const getIconLink = (asset?: string): LinkInfo[] => {
   if (isString(asset)) {
     if (asset === 'fontawesome')
       return ['solid', 'regular', 'fontawesome']
-        .map(getFontAwesomeCDNLink)
-        .map(getFontAwesomeLink)
+        .map((type) => getFontAwesomeCDNLink(type))
+        .map((link) => getFontAwesomeLink(link))
 
     if (asset === 'fontawesome-with-brands')
-      return ['all'].map(getFontAwesomeCDNLink).map(getFontAwesomeLink)
+      return ['all']
+        .map((type) => getFontAwesomeCDNLink(type))
+        .map((link) => getFontAwesomeLink(link))
 
     if (asset === 'iconify')
       return [
@@ -86,4 +88,4 @@ useStyleTag(\`\\
 }
 
 export const getIconLinks = (assets: IconAsset = 'iconify'): LinkInfo[] =>
-  (isArray(assets) ? assets : [assets]).map(getIconLink).flat()
+  (isArray(assets) ? assets : [assets]).flatMap((item) => getIconLink(item))

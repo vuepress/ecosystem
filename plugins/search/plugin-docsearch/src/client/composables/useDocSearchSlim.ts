@@ -7,6 +7,8 @@ declare const __DOCSEARCH_INDEX_BASE__: string
 
 /**
  * Get docsearch options to be compatible with VuePress
+ *
+ * @returns DocSearch options compatible with VuePress
  */
 export const useDocSearchShim = (): Partial<DocSearchProps> => {
   const router = useRouter()
@@ -29,7 +31,7 @@ export const useDocSearchShim = (): Partial<DocSearchProps> => {
     navigator: {
       // when pressing Enter without metaKey
       navigate: ({ itemUrl }) => {
-        router.push(itemUrl.replace(__VUEPRESS_BASE__, '/'))
+        void router.push(itemUrl.replace(__VUEPRESS_BASE__, '/'))
       },
     },
 

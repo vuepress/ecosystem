@@ -33,7 +33,7 @@ markmap:
 `
 
 describe('markmap plugin', () => {
-  const markdownIt = MarkdownIt({ linkify: true }).use(markmap)
+  const markdownIt = new MarkdownIt({ linkify: true }).use(markmap)
 
   it('Should render ```markmap', () => {
     const renderResult = markdownIt.render(`

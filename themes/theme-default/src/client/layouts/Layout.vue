@@ -39,13 +39,13 @@ const toggleSidebar = (to?: boolean): void => {
   isSidebarOpen.value = typeof to === 'boolean' ? to : !isSidebarOpen.value
 }
 const touchStart = { x: 0, y: 0 }
-const onTouchStart = (e: TouchEvent): void => {
-  touchStart.x = e.changedTouches[0].clientX
-  touchStart.y = e.changedTouches[0].clientY
+const onTouchStart = ({ changedTouches }: TouchEvent): void => {
+  touchStart.x = changedTouches[0].clientX
+  touchStart.y = changedTouches[0].clientY
 }
-const onTouchEnd = (e: TouchEvent): void => {
-  const dx = e.changedTouches[0].clientX - touchStart.x
-  const dy = e.changedTouches[0].clientY - touchStart.y
+const onTouchEnd = ({ changedTouches }: TouchEvent): void => {
+  const dx = changedTouches[0].clientX - touchStart.x
+  const dy = changedTouches[0].clientY - touchStart.y
   if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
     if (dx > 0 && touchStart.x <= 80) {
       toggleSidebar(true)
@@ -67,7 +67,7 @@ const enableExternalLinkIcon = computed(
 const containerClass = computed(() => [
   {
     'no-navbar': !shouldShowNavbar.value,
-    'no-sidebar': !sidebarItems.value.length,
+    'no-sidebar': sidebarItems.value.length === 0,
     'sidebar-open': isSidebarOpen.value,
     'external-link-icon': enableExternalLinkIcon.value,
   },

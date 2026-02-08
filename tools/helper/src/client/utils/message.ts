@@ -22,13 +22,15 @@ export class Message {
    * @returns Message container element / 消息容器元素
    */
   public static get containerElement(): HTMLElement {
-    let containerElement = document.getElementById(containerId)
+    let containerElement = document.querySelector<HTMLElement>(
+      `#${containerId}`,
+    )
 
     if (containerElement) return containerElement
 
     containerElement = document.createElement('div')
     containerElement.id = containerId
-    document.body.appendChild(containerElement)
+    document.body.append(containerElement)
 
     return containerElement
   }
@@ -62,7 +64,7 @@ export class Message {
     const messageElement = document.createElement('div')
     messageElement.className = 'message-item move-in'
     messageElement.innerHTML = html
-    Message.containerElement.appendChild(messageElement)
+    Message.containerElement.append(messageElement)
     this.elements[messageId] = messageElement
 
     if (clickToClose)
@@ -86,18 +88,20 @@ export class Message {
    * @param messageId - Message ID to close, if not provided, close all / 要关闭的消息 ID，如果未提供则关闭所有
    */
   public close(messageId?: number): void {
-    if (messageId) {
+    if (messageId == null) {
+      // close all messages
+      keys(this.elements).forEach((id) => {
+        this.close(Number(id))
+      })
+    } else {
       const messageElement = this.elements[messageId]
 
       messageElement.classList.remove('move-in')
       messageElement.classList.add('move-out')
       messageElement.addEventListener('animationend', () => {
         messageElement.remove()
+        // oxlint-disable-next-line typescript/no-dynamic-delete
         delete this.elements[messageId]
-      })
-    } else {
-      keys(this.elements).forEach((id) => {
-        this.close(Number(id))
       })
     }
   }
@@ -108,8 +112,7 @@ export class Message {
    * 销毁消息实例
    */
   public destroy(): void {
-    const containerElement = document.getElementById(containerId)
-    if (containerElement) document.body.removeChild(containerElement)
+    document.querySelector<HTMLElement>(`#${containerId}`)?.remove()
     this.elements = {}
   }
 }

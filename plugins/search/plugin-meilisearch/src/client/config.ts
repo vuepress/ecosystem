@@ -8,7 +8,9 @@ import type {
 } from '../shared/index.js'
 import { MeiliSearch } from './components/index.js'
 
+// oxlint-disable-next-line import/no-unassigned-import
 import 'meilisearch-docsearch/css/button'
+// oxlint-disable-next-line import/no-unassigned-import
 import 'meilisearch-docsearch/css/modal'
 import './styles/vars.css'
 

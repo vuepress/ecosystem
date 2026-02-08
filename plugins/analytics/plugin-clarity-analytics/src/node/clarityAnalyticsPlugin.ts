@@ -14,9 +14,6 @@ const logger = new Logger(PLUGIN_NAME)
  *
  * VuePress 的 Clarity Analytics 插件
  *
- * @param options - Plugin options
- * @returns VuePress plugin
- *
  * @description Integrates Clarity Analytics tracking into VuePress applications.
  * Only active in production builds when a valid project ID is provided.
  *

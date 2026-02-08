@@ -39,7 +39,7 @@ export const isPackageManagerInstalled = (
 
   const status = globalCache.get(key)
 
-  if (status !== undefined) return status
+  if (status != null) return status
 
   if (isInstalled(packageManager)) {
     globalCache.set(key, true)
@@ -68,7 +68,7 @@ export const getPackageManagerSetting = (
 
   const status = localCache.get(key)
 
-  if (status !== undefined) return status
+  if (status != null) return status
 
   if (fs.existsSync(path.resolve(cwd, PACKAGE_CONFIG))) {
     const { packageManager: packageManagerSettings } = JSON.parse(
@@ -113,6 +113,14 @@ export const getPackageManagerSetting = (
   return null
 }
 
+const getLockFileTypeInDir = (dir: string): PackageManager | null => {
+  if (fs.existsSync(path.resolve(dir, PNPM_LOCK))) return 'pnpm'
+  if (fs.existsSync(path.resolve(dir, YARN_LOCK))) return 'yarn'
+  if (fs.existsSync(path.resolve(dir, BUN_LOCK))) return 'bun'
+  if (fs.existsSync(path.resolve(dir, NPM_LOCK))) return 'npm'
+  return null
+}
+
 /**
  * Get the type of lock file.
  *
@@ -131,30 +139,13 @@ export const getTypeofLockFile = (
 
   const status = localCache.get(key)
 
-  if (status !== undefined) return status
+  if (status != null) return status
 
-  if (fs.existsSync(path.resolve(cwd, PNPM_LOCK))) {
-    localCache.set(key, 'pnpm')
+  let type = getLockFileTypeInDir(cwd)
 
-    return 'pnpm'
-  }
-
-  if (fs.existsSync(path.resolve(cwd, YARN_LOCK))) {
-    localCache.set(key, 'yarn')
-
-    return 'yarn'
-  }
-
-  if (fs.existsSync(path.resolve(cwd, BUN_LOCK))) {
-    localCache.set(key, 'bun')
-
-    return 'bun'
-  }
-
-  if (fs.existsSync(path.resolve(cwd, NPM_LOCK))) {
-    localCache.set(key, 'npm')
-
-    return 'npm'
+  if (type) {
+    localCache.set(key, type)
+    return type
   }
 
   if (deep) {
@@ -162,29 +153,11 @@ export const getTypeofLockFile = (
 
     while (dir !== path.dirname(dir)) {
       dir = path.dirname(dir)
+      type = getLockFileTypeInDir(dir)
 
-      if (fs.existsSync(path.resolve(dir, PNPM_LOCK))) {
-        localCache.set(key, 'pnpm')
-
-        return 'pnpm'
-      }
-
-      if (fs.existsSync(path.resolve(dir, YARN_LOCK))) {
-        localCache.set(key, 'yarn')
-
-        return 'yarn'
-      }
-
-      if (fs.existsSync(path.resolve(cwd, BUN_LOCK))) {
-        localCache.set(key, 'bun')
-
-        return 'bun'
-      }
-
-      if (fs.existsSync(path.resolve(dir, NPM_LOCK))) {
-        localCache.set(key, 'npm')
-
-        return 'npm'
+      if (type) {
+        localCache.set(key, type)
+        return type
       }
     }
   }
@@ -206,8 +179,8 @@ export const getPackageManager = (
   cwd = process.cwd(),
   deep = true,
 ): PackageManager =>
-  getPackageManagerSetting(cwd, deep) ||
-  getTypeofLockFile(cwd, deep) ||
+  getPackageManagerSetting(cwd, deep) ??
+  getTypeofLockFile(cwd, deep) ??
   (isPackageManagerInstalled('pnpm')
     ? 'pnpm'
     : isPackageManagerInstalled('yarn')

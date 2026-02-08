@@ -63,6 +63,7 @@ const getDataSource = (
  *
  * @param images - Image links / 图片链接
  * @param options - PhotoSwipe options / PhotoSwipe 选项
+ * @returns PhotoSwipe state / 可操作的 PhotoSwipe 状态
  *
  * @example
  * ```ts

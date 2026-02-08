@@ -19,17 +19,16 @@ export const useKeys = (
   const onKeydown = (event: KeyboardEvent): void => {
     const hotKeysValue = toValue(hotKeys)
 
-    if (hotKeysValue?.length) {
-      if (
-        // key matches
-        isKeyMatched(event, hotKeysValue) &&
-        // event does not come from the search box itself or
-        // user isn't focusing (and thus perhaps typing in) a text control
-        !isFocusingTextControl(event.target!)
-      ) {
-        event.preventDefault()
-        void action()
-      }
+    if (
+      hotKeysValue?.length &&
+      // key matches
+      isKeyMatched(event, hotKeysValue) &&
+      // event does not come from the search box itself or
+      // user isn't focusing (and thus perhaps typing in) a text control
+      !isFocusingTextControl(event.target!)
+    ) {
+      event.preventDefault()
+      void action()
     }
   }
 

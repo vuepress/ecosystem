@@ -15,9 +15,9 @@ const navbarRepo = useNavbarRepo()
 
 const isMobile = ref(false)
 
-const navbarLabel = computed(() => {
-  return themeLocale.value.navbarLabel ?? 'site navigation'
-})
+const navbarLabel = computed(
+  () => themeLocale.value.navbarLabel ?? 'site navigation',
+)
 
 const navbarLinks = computed(() => [
   ...navbarConfig.value,

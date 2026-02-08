@@ -25,6 +25,7 @@ const getSeconds = (date: Date): string => padZero(date.getSeconds())
  * 获取 YYYY-MM-DD 格式的日期字符串
  *
  * @param date - Date object / 日期对象
+ * @returns Date string in YYYY-MM-DD format / YYYY-MM-DD 格式的日期字符串
  */
 export const getDateString = (date: Date): string =>
   `${getFullYear(date)}-${getMonth(date)}-${getDate(date)}`
@@ -35,6 +36,7 @@ export const getDateString = (date: Date): string =>
  * 获取 HH:mm:ss 格式的时间字符串
  *
  * @param date - Date object / 日期对象
+ * @returns Time string in HH:mm:ss format / HH:mm:ss 格式的时间字符串
  */
 const getTimeString = (date: Date): string =>
   `${getHours(date)}:${getMinutes(date)}:${getSeconds(date)}`
@@ -45,6 +47,7 @@ const getTimeString = (date: Date): string =>
  * 获取 YYYY-MM-DD HH:mm:ss 格式的完整日期时间字符串
  *
  * @param date - Date object / 日期对象
+ * @returns Full date string in YYYY-MM-DD HH:mm:ss format / YYYY-MM-DD HH:mm:ss 格式的完整日期时间字符串
  */
 const getFullDateString = (date: Date): string =>
   `${getDateString(date)} ${getTimeString(date)}`
@@ -69,7 +72,7 @@ const getGitCreateDate = (filepath: string): Date | undefined => {
 
 const getFileCreateDate = (filepath: string): Date => {
   const stats = fs.statSync(filepath)
-  return stats.birthtime.getFullYear() !== 1970 ? stats.birthtime : stats.atime
+  return stats.birthtime.getFullYear() === 1970 ? stats.atime : stats.birthtime
 }
 
 export interface AddCreateDateOptions {
@@ -94,9 +97,9 @@ export interface AddCreateDateOptions {
 
 /**
  * Add create date to frontmatter
- * @param data
- * @param context
- * @param options
+ * @param data - Frontmatter data / Frontmatter 数据
+ * @param context - Auto frontmatter context / 自动 frontmatter 上下文
+ * @param options - Options for adding create date / 添加创建日期的选项
  * @param option.key - Frontmatter key to use when add date / 添加时间时使用的 frontmatter 键名
  * @param option.format - Format of the date value when add date / 添加时间时使用的日期格式
  * @example

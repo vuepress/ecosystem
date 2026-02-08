@@ -23,6 +23,7 @@ export const useRedirectInfo = (
       for (const language of languages.value)
         for (const [localePath, langs] of localeEntries)
           if (langs.includes(language)) {
+            // oxlint-disable-next-line max-depth
             if (localePath === routeLocale.value) return null
 
             return {

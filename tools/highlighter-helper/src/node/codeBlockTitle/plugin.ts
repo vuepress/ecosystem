@@ -10,6 +10,10 @@ import type {
  * Default title render function
  *
  * 默认标题渲染函数
+ *
+ * @param title - Code block title / 代码块标题
+ * @param code - Original code block HTML / 原始代码块 HTML
+ * @returns Code block HTML with title / 带标题的代码块 HTML
  */
 const defaultTitleRender: CodeBlockTitleRender = (title, code) =>
   `\
@@ -25,7 +29,7 @@ const defaultTitleRender: CodeBlockTitleRender = (title, code) =>
  *
  * 为 markdown-it 添加代码块标题功能
  *
- * @param md - The markdown-it instance / markdown-it 实例
+ * @param md - MarkdownIt instance / MarkdownIt 实例
  * @param options - Plugin options / 插件选项
  *
  * @example
@@ -51,7 +55,7 @@ export const codeBlockTitle = (
 
   const rawFence = md.renderer.rules.fence!
 
-  md.renderer.rules.fence = (...args) => {
+  md.renderer.rules.fence = (...args): string => {
     const [tokens, index] = args
     const token = tokens[index]
     // get token info

@@ -18,7 +18,7 @@ export default defineClientConfig({
 
     // create zoom instance and provide it
     const zoom = mediumZoom(zoomOptions)
-    zoom.refresh = (sel = selector) => {
+    zoom.refresh = (sel = selector): void => {
       zoom.detach()
       zoom.attach(sel)
     }

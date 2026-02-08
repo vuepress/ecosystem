@@ -1,5 +1,7 @@
+// oxlint-disable id-length
 import type { SearchIndex } from 'slimsearch'
 
+// oxlint-disable-next-line oxc/no-const-enum
 export const enum IndexField {
   Heading = 'h',
   Anchor = 'a',

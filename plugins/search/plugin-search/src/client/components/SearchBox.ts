@@ -1,6 +1,6 @@
 import type { KeyOptions } from '@vuepress/helper/client'
 import { useKeys, useLocale } from '@vuepress/helper/client'
-import type { PropType } from 'vue'
+import type { PropType, VNode } from 'vue'
 import { computed, defineComponent, h, ref, toRefs } from 'vue'
 import { useRouteLocale, useRouter } from 'vuepress/client'
 import type { SearchSuggestion } from '../composables/index.js'
@@ -54,7 +54,7 @@ export const SearchBox = defineComponent({
     })
 
     const showSuggestions = computed(
-      () => isActive.value && !!suggestions.value.length,
+      () => isActive.value && suggestions.value.length > 0,
     )
     const onArrowUp = (): void => {
       if (!showSuggestions.value) {
@@ -84,7 +84,7 @@ export const SearchBox = defineComponent({
         })
     }
 
-    return () =>
+    return (): VNode =>
       h(
         'form',
         {
@@ -123,9 +123,7 @@ export const SearchBox = defineComponent({
                   goTo(focusIndex.value)
                   break
                 }
-                default: {
-                  // do nothing
-                }
+                default:
               }
             },
           }),

@@ -45,7 +45,7 @@ export const setupDevServerRedirect = ({
     let matchedLocalePath: string | null = null
 
     // get matched locale
-    // eslint-disable-next-line no-restricted-syntax
+    // oxlint-disable-next-line no-labels
     findLanguage: for (const lang of languages.value)
       for (const [localePath, langs] of localeEntries)
         if (langs.includes(lang)) {
@@ -58,6 +58,7 @@ export const setupDevServerRedirect = ({
             continue
 
           matchedLocalePath = localePath
+          // oxlint-disable-next-line no-labels
           break findLanguage
         }
 
@@ -87,13 +88,13 @@ export const setupDevServerRedirect = ({
               : // as is to get a 404 page of that locale
                 localeRoute
 
-      router.replace(redirectPath)
+      void router.replace(redirectPath)
     }
     // we have a default page
     else if (defaultRoute) {
-      router.replace(defaultRoute)
+      void router.replace(defaultRoute)
     } else if (routePath.value !== '/404.html') {
-      router.replace('/404.html')
+      void router.replace('/404.html')
     }
   }
 
@@ -102,7 +103,7 @@ export const setupDevServerRedirect = ({
     for (const [from, to] of entries(redirectMap))
       if (normalizePath(path.toLowerCase()) === from.toLowerCase()) {
         if (isLinkHttp(to)) window.open(to)
-        else router.replace(to)
+        else void router.replace(to)
 
         return
       }

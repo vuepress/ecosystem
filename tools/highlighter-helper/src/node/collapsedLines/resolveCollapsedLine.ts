@@ -39,7 +39,9 @@ const NO_COLLAPSED_LINES_REGEXP = /:no-collapsed-lines\b/
  * resolveCollapsedLines('js') // null
  * ```
  */
-export function resolveCollapsedLines(info: string): boolean | number | null {
+export const resolveCollapsedLines = (
+  info: string,
+): boolean | number | null => {
   const lines = COLLAPSED_LINES_START_REGEXP.exec(info)?.[1]
 
   if (lines) {

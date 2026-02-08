@@ -68,7 +68,7 @@ const findRegion = (
   let lineStart = -1
 
   for (const [lineId, line] of lines.entries())
-    if (regexp === null) {
+    if (regexp == null) {
       for (const reg of REGIONS_RE)
         if (testLine(line, reg, regionName)) {
           lineStart = lineId + 1
@@ -168,7 +168,6 @@ const resolveInclude = (
   )
 
   if (options.deep && actualPath.endsWith('.md')) {
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     content = replaceInclude(content, options, {
       cwd: path.isAbsolute(actualPath)
         ? path.dirname(actualPath)
@@ -239,9 +238,9 @@ const resolveLink = (
 
       // html tag: <a href="path">
       if (node.type === 'html' && node.value.startsWith('<a ')) {
-        node.value = node.value.replace(HTML_LINK_RE, (m, link: string) => {
-          return m.replace(link, convertLink(link, base))
-        })
+        node.value = node.value.replace(HTML_LINK_RE, (matched, link: string) =>
+          matched.replace(link, convertLink(link, base)),
+        )
       }
     }
 
@@ -253,9 +252,9 @@ const resolveLink = (
 
       // html tag: <img src="path">
       if (node.type === 'html' && node.value.startsWith('<img ')) {
-        node.value = node.value.replace(HTML_LINK_RE, (m, link: string) => {
-          return m.replace(link, convertLink(link, base))
-        })
+        node.value = node.value.replace(HTML_LINK_RE, (matched, link: string) =>
+          matched.replace(link, convertLink(link, base)),
+        )
       }
     }
   })
@@ -264,43 +263,47 @@ const resolveLink = (
 /**
  * Remark plugin for include, which is based on markdown-it-include
  *
+ * Remark 插件，用于包含其他文件内容，基于 markdown-it-include 实现
+ *
+ * @param cwd - The current working directory, used to resolve relative paths
+ * @param options - The options for the plugin
+ * @returns A remark plugin
+ *
+ * @example
  *
  * ```markdown
  * <!-- \@include: path/to/file.md -->
  * ```
  */
-export const remarkInclude = (
-  cwd: string,
-  options: Required<MarkdownIncludePluginOptions>,
-) => {
-  return () =>
-    (tree: Root): void => {
-      visit(tree, (node, index, parent) => {
-        if (!parent || typeof index !== 'number') return
+export const remarkInclude =
+  (cwd: string, options: Required<MarkdownIncludePluginOptions>) =>
+  () =>
+  (tree: Root): void => {
+    visit(tree, (node, index, parent) => {
+      if (!parent || typeof index !== 'number') return
 
-        let matched: string[] | null = null
+      let matched: string[] | null = null
 
-        if (node.type === 'html' && options.useComment)
-          matched = node.value.match(new RegExp(INCLUDE_COMMENT_RE.source))
-        else if (node.type === 'text')
-          matched = node.value.match(new RegExp(INCLUDE_RE.source))
+      if (node.type === 'html' && options.useComment)
+        matched = node.value.match(new RegExp(INCLUDE_COMMENT_RE.source))
+      else if (node.type === 'text')
+        matched = node.value.match(new RegExp(INCLUDE_RE.source))
 
-        if (!matched) return
+      if (!matched) return
 
-        const content = resolveInclude(cwd, matched.slice(1), options)
+      const content = resolveInclude(cwd, matched.slice(1), options)
 
-        if (content !== (node as { value: string }).value) {
-          const subTree = fromMarkdown(content)
-          if (options.resolveLinkPath || options.resolveImagePath) {
-            resolveLink(
-              subTree,
-              cwd,
-              options.resolveLinkPath,
-              options.resolveImagePath,
-            )
-          }
-          parent.children.splice(index, 1, ...subTree.children)
+      if (content !== (node as { value: string }).value) {
+        const subTree = fromMarkdown(content)
+        if (options.resolveLinkPath || options.resolveImagePath) {
+          resolveLink(
+            subTree,
+            cwd,
+            options.resolveLinkPath,
+            options.resolveImagePath,
+          )
         }
-      })
-    }
-}
+        parent.children.splice(index, 1, ...subTree.children)
+      }
+    })
+  }

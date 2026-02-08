@@ -88,7 +88,7 @@ export const sassPalettePlugin =
           : {}),
       },
 
-      extendsBundlerOptions: (bundlerOptions: unknown): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown) => {
         // silent import deprecation for vite
         addViteConfig(bundlerOptions, app, {
           css: {
@@ -123,7 +123,7 @@ export const sassPalettePlugin =
         injectScssConfigModule(bundlerOptions, app, id)
       },
 
-      onInitialized: (): Promise<void> =>
+      onInitialized: () =>
         Promise.all([
           prepareConfigSass(app, id, defaultConfig, userConfig),
           prepareInjectSass(app, id),
@@ -138,7 +138,7 @@ export const sassPalettePlugin =
           if (app.env.isDebug) logger.info(`Style file for ${id} generated`)
         }),
 
-      onWatched: (_, watchers): void => {
+      onWatched: (_, watchers) => {
         const configWatcher = watch(userConfig, {
           cwd: app.dir.source(),
           ignoreInitial: true,

@@ -9,11 +9,10 @@ import type { LlmsPluginOptions } from './options.js'
 import { resolveLLMPages } from './resolveLLMPages.js'
 import type { LLMState } from './types.js'
 import { logger } from './utils/index.js'
+import { keys } from '@vuepress/helper'
 
 /**
  * Plugin to generate LLM-friendly documentation files
- *
- * @param llmOptions - Plugin configuration options
  *
  * @example
  * ```ts
@@ -31,9 +30,9 @@ import { logger } from './utils/index.js'
  * ```
  */
 export const llmsPlugin =
-  (llmOptions: LlmsPluginOptions = {}): Plugin =>
+  (options: LlmsPluginOptions = {}): Plugin =>
   (app) => {
-    if (app.env.isDebug) logger.info('Options: ', llmOptions)
+    if (app.env.isDebug) logger.info('Options: ', options)
 
     return {
       name: PLUGIN_NAME,
@@ -49,13 +48,13 @@ export const llmsPlugin =
           llmsTxt = true,
           llmsFullTxt = true,
           llmsPageTxt = true,
-          filter = () => true,
+          filter = (): boolean => true,
           stripHTML = true,
-          transformMarkdown = (md) => md,
+          transformMarkdown = (md): string => md,
           llmsTxtTemplate = DEFAULT_LLMSTXT_TEMPLATE,
           llmsTxtTemplateGetter = {},
           locale = '/',
-        } = llmOptions
+        } = options
 
         const linkExtension = llmsPageTxt ? '.md' : '.html'
         const { locales, ...base } = app.siteData
@@ -99,9 +98,9 @@ export const llmsPlugin =
 
         if (locale === 'all') {
           // Generate llms for all locales
-          for (const localePath in app.siteData.locales) {
-            await generateLLM(localePath)
-          }
+          await Promise.all(
+            keys(app.siteData.locales).map((locale) => generateLLM(locale)),
+          )
         } else {
           // Generate llms for the specified locale
           await generateLLM(locale)

@@ -4,6 +4,8 @@ import type { AutoFrontmatterContext, AutoFrontmatterData } from '../types.js'
 /**
  * Add title by filename
  *
+ * @param data - Auto frontmatter data
+ *
  * @example
  * ```ts
  * {

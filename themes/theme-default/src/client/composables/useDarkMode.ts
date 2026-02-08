@@ -6,26 +6,30 @@ import { computed, inject, onMounted, onUnmounted, provide } from 'vue'
 
 export type DarkModeRef = WritableComputedRef<boolean>
 
+const update = (value: boolean): void => {
+  // set `class="dark"` on `<html>` element
+  const el = globalThis.document.documentElement
+
+  // set `data-theme="light|dark"` on `<html>` element
+  el.dataset.theme = value ? 'dark' : 'light'
+}
+
 const applyDarkModeToHTML = (isDarkMode: DarkModeRef): void => {
-  const update = (value = isDarkMode.value): void => {
-    // set `class="dark"` on `<html>` element
-    const el = window.document.documentElement
-
-    // set `data-theme="light|dark"` on `<html>` element
-    el.dataset.theme = value ? 'dark' : 'light'
-  }
-
   onMounted(() => {
     watchImmediate(isDarkMode, update)
   })
 
   onUnmounted(() => {
-    update()
+    update(isDarkMode.value)
   })
 }
 
 /**
  * Inject dark mode global computed
+ *
+ * 注入暗色模式全局计算属性
+ *
+ * @returns Dark mode ref / 暗色模式引用
  */
 export const useDarkMode = (): DarkModeRef => {
   const isDarkMode = inject<WritableComputedRef<boolean>>(darkModeSymbol)

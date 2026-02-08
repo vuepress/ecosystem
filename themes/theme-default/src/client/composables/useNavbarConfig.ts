@@ -40,7 +40,6 @@ export const useNavbarConfig = (): ComputedRef<NavbarItem[]> => {
   const { themeLocale } = useData()
 
   return computed(() =>
-    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     (themeLocale.value.navbar || []).map((item) => resolveNavbarItem(item)),
   )
 }

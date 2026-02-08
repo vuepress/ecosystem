@@ -1,7 +1,7 @@
 /**
- * Options for @vuepress/plugin-umami-analytics
+ * Options for `@vuepress/plugin-umami-analytics`
  *
- * @vuepress/plugin-umami-analytics 插件选项
+ * `@vuepress/plugin-umami-analytics` 插件选项
  */
 export interface UmamiOptions {
   /**

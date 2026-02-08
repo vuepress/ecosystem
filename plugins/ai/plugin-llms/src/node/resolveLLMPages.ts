@@ -14,6 +14,8 @@ import type { LLMPage } from './types.js'
 
 /**
  * Remove HTML from markdown AST
+ *
+ * @returns Unified plugin to remove HTML nodes from markdown AST
  */
 const cleanMarkdown: Plugin = () => (tree) => {
   unistRemove(tree, { type: 'html' })
@@ -62,7 +64,7 @@ export const resolveLLMPages = (
     const { content } = matter(page.content)
 
     // Ignore empty pages
-    if (!content.trim().length) continue
+    if (content.trim().length === 0) continue
 
     const remarkInstance = remark()
       .use(remarkPlease('unwrap', 'llm-only'))

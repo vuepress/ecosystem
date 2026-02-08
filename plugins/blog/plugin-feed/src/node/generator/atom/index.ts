@@ -37,6 +37,9 @@ const getAtomCategory = (category: FeedCategory): AtomCategory => {
  * 返回 Atom 1.0 格式的 Feed
  *
  * @see http://www.atomenabled.org/developers/syndication/
+ *
+ * @param feedStore - Feed store / Feed 存储
+ * @returns Atom feed content / Atom Feed 内容
  */
 export const getAtomFeed = (feedStore: FeedStore): string => {
   const { channel, links } = feedStore
@@ -95,11 +98,11 @@ export const getAtomFeed = (feedStore: FeedStore): string => {
 
   if (channel.copyright) content.feed.rights = channel.copyright
 
-  content.feed.category = Array.from(feedStore.categories).map((category) => ({
+  content.feed.category = Array.from(feedStore.categories, (category) => ({
     _attributes: { term: category },
   }))
 
-  content.feed.contributor = Array.from(feedStore.contributors)
+  content.feed.contributor = [...feedStore.contributors]
     .filter((contributor) => contributor.name)
     .map((contributor) => getAtomAuthor(contributor))
 
@@ -145,7 +148,7 @@ export const getAtomFeed = (feedStore: FeedStore): string => {
       )
 
     // contributor
-    if (item.contributor.length)
+    if (item.contributor.length > 0)
       entry.contributor = item.contributor.map((contributor) =>
         getAtomAuthor(contributor),
       )

@@ -1,3 +1,4 @@
+// oxlint-disable no-unexpected-multiline
 import type {
   DynamicImportLanguageRegistration,
   LanguageRegistration,
@@ -5,18 +6,15 @@ import type {
 import { bundledLanguages } from 'shiki'
 import { runAsWorker } from 'synckit'
 
-async function resolveLang(lang: string): Promise<LanguageRegistration[]> {
-  return (
-    (
-      bundledLanguages as Record<
-        string,
-        DynamicImportLanguageRegistration | undefined
-      >
-    )
-      [lang]?.()
-      .then((m) => m.default) ?? []
+const resolveLang = async (lang: string): Promise<LanguageRegistration[]> =>
+  (
+    bundledLanguages as Record<
+      string,
+      DynamicImportLanguageRegistration | undefined
+    >
   )
-}
+    [lang]?.()
+    .then((mod) => mod.default) ?? []
 
 runAsWorker(resolveLang)
 

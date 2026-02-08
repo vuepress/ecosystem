@@ -24,14 +24,6 @@ import { getType, getTypeOptions, prepareTypesMap } from './type/index.js'
  *
  * VuePress 的博客插件
  *
- * @param options - Plugin options
- *
- * 插件选项
- *
- * @returns VuePress plugin
- *
- * VuePress 插件
- *
  * @description Adds blog functionality including article collection, categorization, type filtering, and excerpt generation
  *
  * 添加博客功能，包括文章收集、分类、类型过滤和摘要生成
@@ -88,11 +80,11 @@ export const blogPlugin =
         __BLOG_META_SCOPE__: metaScope,
       }),
 
-      extendsBundlerOptions: (bundlerOptions: unknown): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown) => {
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
 
-      extendsPage: (page): void => {
+      extendsPage: (page) => {
         // Generate page excerpt
         if (
           excerpt &&
@@ -120,7 +112,7 @@ export const blogPlugin =
           }
       },
 
-      onInitialized: async (): Promise<void> => {
+      onInitialized: async () => {
         const pageMap = getPageMap(app, filter)
 
         const categoryResult = getCategory(
@@ -174,7 +166,7 @@ export const blogPlugin =
         ;({ typesMap } = typeResult)
       },
 
-      onPrepared: async (): Promise<void> => {
+      onPrepared: async () => {
         // Prepare store
         await prepareStore(app, store)
         // Prepare category
@@ -185,7 +177,7 @@ export const blogPlugin =
         if (app.env.isDebug) logger.info('temp file generated')
       },
 
-      onWatched: (_, watchers): void => {
+      onWatched: (_, watchers) => {
         const hotReload =
           'hotReload' in options ? options.hotReload : app.env.isDebug
 

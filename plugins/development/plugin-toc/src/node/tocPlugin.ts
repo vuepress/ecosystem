@@ -9,8 +9,6 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  *
  * 目录插件
  *
- * @param options - Plugin options / 插件配置
- * @default {}
  * @example
  * ```ts
  * import { tocPlugin } from '@vuepress/plugin-toc'
@@ -39,6 +37,7 @@ export const tocPlugin = ({
   defaultPropsOptions,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   propsOptions = {},
+  // oxlint-disable-next-line typescript/no-deprecated
   headersOptions = headerOptions,
   renderOptions = defaultPropsOptions ?? propsOptions,
 }: TocPluginOptions = {}): Plugin =>

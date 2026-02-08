@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-shadow */
 import type { ExactLocaleConfig } from '@vuepress/helper/client'
 import {
   endsWith,
@@ -95,12 +94,14 @@ export default defineComponent({
 
           const level = path.split('/').length
 
-          return {
-            level: endsWith(path, '/') ? level - 2 : level - 1,
-            base: path.replace(/\/[^/]+\/?$/, '/'),
-            path,
-            ...info,
-          }
+          return Object.assign(
+            {
+              level: endsWith(path, `/`) ? level - 2 : level - 1,
+              base: path.replace(/\/[^/]+\/?$/, `/`),
+              path,
+            },
+            info,
+          )
         })
         .filter(
           (item): item is CatalogData =>
@@ -219,7 +220,7 @@ export default defineComponent({
         props.hideHeading
           ? null
           : h('h2', { class: 'vp-catalog-main-title' }, locale.value.title),
-        catalogData.value.length
+        catalogData.value.length > 0
           ? h(
               props.index ? 'ol' : 'ul',
               { class: ['vp-catalog-list', { deep: isDeep }] },
@@ -254,7 +255,7 @@ export default defineComponent({
                               childLink,
                             ],
                           ),
-                          children.length
+                          children.length > 0
                             ? h(
                                 props.index ? 'ol' : 'ul',
                                 { class: 'vp-child-catalogs' },
@@ -287,7 +288,7 @@ export default defineComponent({
                                           ),
                                         ],
                                       ),
-                                      children.length
+                                      children.length > 0
                                         ? h(
                                             props.index ? 'ol' : 'div',
                                             {

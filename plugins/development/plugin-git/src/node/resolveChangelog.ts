@@ -26,21 +26,11 @@ const parseTagName = (refs: string): string | undefined => {
  *
  * 解析变更日志
  *
- * @param app - VuePress app instance
- *
- * VuePress 应用实例
- *
- * @param commits - Git commits
- *
- * Git 提交记录
- *
- * @param options - Changelog options
- *
- * 变更日志选项
- *
- * @param contributors - Contributor info
- *
- * 贡献者信息
+ * @param app - VuePress app instance / VuePress 应用实例
+ * @param commits - Git commits / Git 提交记录
+ * @param options - Changelog options / 变更日志选项
+ * @param contributors - Contributor info / 贡献者信息
+ * @returns Resolved changelog info / 解析后的变更日志信息
  */
 export const resolveChangelog = (
   app: App,
@@ -69,7 +59,7 @@ export const resolveChangelog = (
       message: sanitizeHTML(app.markdown.renderInline(message)),
     }
 
-    if (coAuthors.length) resolved.coAuthors = coAuthors
+    if (coAuthors.length > 0) resolved.coAuthors = coAuthors
 
     if (tag) resolved.tag = tag
 

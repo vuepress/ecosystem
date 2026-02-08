@@ -1,4 +1,5 @@
 import {
+  entries,
   fromEntries,
   isFunction,
   isString,
@@ -14,8 +15,18 @@ import type { Store } from '../store.js'
 import { getPagePath } from '../utils.js'
 
 /**
- * @returns Page paths to be generated
+ * Get category
+ *
+ * 获取分类
+ *
+ * @param pagesMap - Pages map / 页面映射
+ * @param store - Blog store / 博客存储
+ * @param categoryOptions - Category options / 分类选项
+ * @param slugify - Slugify function / Slugify 函数
+ * @param isDebug - Whether in debug mode / 是否处于调试模式
+ * @returns Object containing categories map and page options / 包含分类映射和页面选项的对象
  */
+// oxlint-disable-next-line max-lines-per-function
 export const getCategory = (
   pagesMap: PagesMap,
   store: Store,
@@ -27,6 +38,7 @@ export const getCategory = (
   pageOptions: PageOptions[]
 } => {
   const result = categoryOptions.map(
+    // oxlint-disable-next-line max-lines-per-function, complexity, max-statements
     ({
       key,
       getter,
@@ -52,7 +64,7 @@ export const getCategory = (
       const categoryMap: CategoryMap = {}
       const pageOptions: PageOptions[] = []
 
-      for (const localePath in pagesMap) {
+      for (const [localePath, pages] of entries(pagesMap)) {
         if (path) {
           const pagePath = `${localePath}${removeLeadingSlash(
             path.replaceAll(':key', slugify(key)),
@@ -84,13 +96,14 @@ export const getCategory = (
         const { map } = categoryMap[localePath]
         const pageMapStore: Record<string, Page[]> = {}
 
-        for (const page of pagesMap[localePath]) {
+        for (const page of pages) {
           const categories = getter(page)
 
           for (const category of categories) {
             if (!(category in map)) {
               const itemPath = getItemPath(category)
 
+              // oxlint-disable-next-line max-depth
               if (itemPath) {
                 const itemPagePath = `${localePath}${removeLeadingSlash(itemPath)}`
 
@@ -125,19 +138,18 @@ export const getCategory = (
           }
         }
 
-        for (const category in pageMapStore)
+        for (const [category, pages] of entries(pageMapStore))
           map[category].indexes = store.addItems(
-            pageMapStore[category]
-              .sort(sorter)
-              .map(({ path: pagePath }) => pagePath),
+            pages.sort(sorter).map(({ path: pagePath }) => pagePath),
           )
 
         if (isDebug) {
           let infoMessage = `${key} category in locale ${localePath}:\n`
 
-          for (const category in map) {
-            const { path: categoryPath, indexes: items } = map[category]
-
+          for (const [
+            category,
+            { path: categoryPath, indexes: items },
+          ] of entries(map)) {
             infoMessage += `${category}: found ${items.length} items${
               categoryPath ? ` in path: ${categoryPath}` : ''
             }\n`

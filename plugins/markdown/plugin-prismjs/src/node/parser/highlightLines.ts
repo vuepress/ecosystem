@@ -24,7 +24,7 @@ export const getHighlightLinesRange = (
   const match = info.match(/{([\d,-]+)}/)
 
   // no highlight-lines mark, return `null`
-  if (match === null) {
+  if (match == null) {
     return null
   }
 
@@ -47,6 +47,7 @@ export const getHighlightLinesRange = (
  *
  * @param lineNumber - Line number to check / 要检查的行号
  * @param ranges - Highlight ranges / 高亮范围
+ * @returns Whether the line number is in ranges / 行号是否在范围内
  */
 const isLineHighlighted = (
   lineNumber: number,

@@ -32,7 +32,6 @@ declare module 'vuepress/markdown' {
  *
  * VuePress 数学插件
  *
- * @param [mathOptions={}] - Plugin options / 插件选项
  * @param mathOptions.type - Math renderer type / 数学渲染器类型
  *
  * @example
@@ -49,12 +48,12 @@ declare module 'vuepress/markdown' {
  * ```
  */
 export const markdownMathPlugin =
-  (mathOptions: MarkdownMathPluginOptions = {}): Plugin =>
+  (options: MarkdownMathPluginOptions = {}): Plugin =>
   (app) => {
-    const opts = deepAssign({}, app.options.markdown.math, mathOptions)
-    app.options.markdown.math = opts
+    const mergedOptions = deepAssign({}, app.options.markdown.math, options)
+    const { type, ...renderOptions } = mergedOptions
 
-    const { type, ...options } = opts
+    app.options.markdown.math = mergedOptions
 
     const isMathjaxInstalled = isModuleAvailable('@mathjax/src', import.meta)
     const isKatexInstalled = isModuleAvailable('katex', import.meta)
@@ -73,9 +72,9 @@ export const markdownMathPlugin =
     if (!mathRenderer || (type && mathRenderer !== type)) {
       const packages = { katex: 'katex', mathjax: '@mathjax/src' }
       logger.error(
-        !mathRenderer
-          ? 'No math renderer found, please install @mathjax/src or katex'
-          : `type is "${type}", but "${packages[type!]}" is not installed`,
+        mathRenderer
+          ? `type is "${type}", but "${packages[type!]}" is not installed`
+          : 'No math renderer found, please install @mathjax/src or katex',
       )
 
       return {
@@ -97,7 +96,7 @@ export const markdownMathPlugin =
       extendsMarkdown: async (md) => {
         if (mathRenderer === 'mathjax') {
           mathjaxInstance = await createMathjaxInstance({
-            ...(options as MarkdownMathjaxPluginOptions),
+            ...(renderOptions as MarkdownMathjaxPluginOptions),
             transformer: (content: string) =>
               content.replace(/^<mjx-container/, '<mjx-container v-pre'),
           })
@@ -118,7 +117,7 @@ export const markdownMathPlugin =
             }
           })
         } else {
-          if ((options as MarkdownKatexPluginOptions).mhchem) {
+          if ((renderOptions as MarkdownKatexPluginOptions).mhchem) {
             await import('@mdit/plugin-katex-slim/mhchem')
           }
 
@@ -144,9 +143,9 @@ export const markdownMathPlugin =
                   }`,
                 )
             },
-            ...(options as Omit<MarkdownKatexPluginOptions, 'type'>),
+            ...(renderOptions as Omit<MarkdownKatexPluginOptions, 'type'>),
             transformer: (content) =>
-              content.replace(/^(<[a-z]+ )/g, '$1v-pre '),
+              content.replaceAll(/^(<[a-z]+ )/g, '$1v-pre '),
           })
         }
       },
@@ -160,6 +159,6 @@ export const markdownMathPlugin =
       },
 
       clientConfigFile: () =>
-        prepareClientConfigFile(app, mathRenderer, options),
+        prepareClientConfigFile(app, mathRenderer, renderOptions),
     }
   }

@@ -9,6 +9,7 @@ import {
   onMounted,
   shallowRef,
 } from 'vue'
+import type { VNode } from 'vue'
 import { useFrontmatter } from 'vuepress/client'
 import type { BackToTopPluginLocaleData } from '../../shared/index.js'
 
@@ -47,7 +48,7 @@ export const BackToTop = defineComponent({
       body.value = document.body
     })
 
-    return () =>
+    return (): VNode =>
       h(Transition, { name: 'fade-in' }, () =>
         show.value
           ? h(

@@ -70,6 +70,8 @@ export const definePhotoSwipeConfig = (
  * Get PhotoSwipe options
  *
  * 获取 PhotoSwipe 选项
+ *
+ * @returns PhotoSwipe options / PhotoSwipe 选项
  */
 export const usePhotoSwipeOptions = (): PhotoSwipeOptionsRef =>
   inject(photoswipeSymbol)!

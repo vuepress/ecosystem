@@ -19,7 +19,7 @@ export const NO_WHITESPACE_REGEXP = /:no-whitespace\b/
  */
 export type WhitespacePosition = 'all' | 'boundary' | 'trailing'
 
-const AVAILABLE_WHITESPACE_POSITIONS = ['all', 'boundary', 'trailing']
+const AVAILABLE_WHITESPACE_POSITIONS = new Set(['all', 'boundary', 'trailing'])
 
 /**
  * Resolve whitespace position from code block info and global option
@@ -45,7 +45,7 @@ export const resolveWhitespacePosition = (
     return false
   }
 
-  const defaultPosition = AVAILABLE_WHITESPACE_POSITIONS.includes(
+  const defaultPosition = AVAILABLE_WHITESPACE_POSITIONS.has(
     globalOption as WhitespacePosition,
   )
     ? (globalOption as WhitespacePosition)
@@ -54,7 +54,7 @@ export const resolveWhitespacePosition = (
   const match = info.match(WHITESPACE_REGEXP)
 
   if (match) {
-    if (AVAILABLE_WHITESPACE_POSITIONS.includes(match[1])) {
+    if (AVAILABLE_WHITESPACE_POSITIONS.has(match[1])) {
       return match[1] as WhitespacePosition
     }
 

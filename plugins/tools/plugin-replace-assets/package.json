@@ -48,6 +48,9 @@
     "magic-string": "^0.30.21",
     "unplugin": "^3.0.0"
   },
+  "devDependencies": {
+    "webpack": "^5.105.0"
+  },
   "peerDependencies": {
     "vuepress": "catalog:"
   }

@@ -3,6 +3,7 @@ import type { App } from 'vuepress'
 import type { ShikiPluginOptions } from './options.js'
 import { PLUGIN_NAME } from './utils.js'
 
+// oxlint-disable-next-line max-lines-per-function, complexity, max-statements
 export const prepareClientConfigFile = (
   app: App,
   {

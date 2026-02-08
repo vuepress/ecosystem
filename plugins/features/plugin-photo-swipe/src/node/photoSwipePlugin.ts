@@ -18,8 +18,6 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  *
  * VuePress PhotoSwipe 插件
  *
- * @param [options={}] - Plugin options / 插件选项
- *
  * @example
  * ```ts
  * import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
@@ -44,7 +42,7 @@ export const photoSwipePlugin =
     return {
       name: PLUGIN_NAME,
 
-      define: (): Record<string, unknown> => ({
+      define: () => ({
         __PS_SELECTOR__:
           options.selector || '[vp-content] :not(a) > img:not([no-view])',
         __PS_DOWNLOAD__: options.download ?? true,
@@ -70,7 +68,7 @@ export const photoSwipePlugin =
         ),
       }),
 
-      extendsBundlerOptions: (bundlerOptions: unknown): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown) => {
         addViteOptimizeDepsExclude(bundlerOptions, app, 'photoswipe')
         addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },

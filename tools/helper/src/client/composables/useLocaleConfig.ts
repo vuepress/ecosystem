@@ -13,16 +13,15 @@ import type { ExactLocaleConfig } from '../../shared/index.js'
  *
  * @returns Current locale config / 当前本地化配置
  */
-export const useLocaleConfig = <T extends LocaleData>(
-  localesConfig: MaybeRef<ExactLocaleConfig<T>>,
-): ComputedRef<T> => {
+export const useLocaleConfig = <Locale extends LocaleData>(
+  localesConfig: MaybeRef<ExactLocaleConfig<Locale>>,
+): ComputedRef<Locale> => {
   const routeLocale = useRouteLocale()
 
   return computed(() => {
     const config = toValue(localesConfig)
 
     return (
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       config[routeLocale.value] ??
       // fallback to root locale config
       config['/'] ??

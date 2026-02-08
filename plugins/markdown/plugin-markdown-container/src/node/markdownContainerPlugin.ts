@@ -12,8 +12,6 @@ import type {
  *
  * 创建 markdown 容器插件
  *
- * @param options - Plugin options / 插件配置项
- *
  * @example
  * ```ts
  * import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'

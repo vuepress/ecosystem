@@ -26,7 +26,7 @@ export const useThemeData = <
 >(): ThemeDataRef<T> => themeData as ThemeDataRef<T>
 
 if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
-  __VUE_HMR_RUNTIME__.updateThemeData = (data: ThemeData) => {
+  __VUE_HMR_RUNTIME__.updateThemeData = (data: ThemeData): void => {
     themeData.value = data
   }
 }

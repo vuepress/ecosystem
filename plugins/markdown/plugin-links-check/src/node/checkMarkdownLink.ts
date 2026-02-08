@@ -52,7 +52,7 @@ export const checkMarkdownLink = (
       ),
   ].map(({ raw }) => raw)
 
-  if (brokenLinks.length) {
+  if (brokenLinks.length > 0) {
     logger.warn(`Broken links found in ${pagePath}: ${brokenLinks.join(', ')}`)
 
     return true

@@ -36,6 +36,9 @@ export interface ChartJSPluginOptions {
  * Chart.js markdown-it plugin
  *
  * Chart.js markdown-it 插件
+ *
+ * @param md - MarkdownIt instance / MarkdownIt 实例
+ * @param options - Plugin options / 插件选项
  */
 export const chartjs: PluginWithOptions<ChartJSPluginOptions> = (
   md,

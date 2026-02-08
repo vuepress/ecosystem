@@ -14,7 +14,7 @@ export const CLIENT_FOLDER = ensureEndingSlash(
 export const WORKER_FILE = path.resolve(__dirname, '../worker/index.js')
 
 export const getLocaleChunkName = (locale: string): string =>
-  locale.replace(/\//g, '') || 'root'
+  locale.replaceAll('/', '') || 'root'
 
 export const inferFilePath = (vuePath: string): string =>
   vuePath

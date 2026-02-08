@@ -29,8 +29,8 @@ const isLastItemOfArray = (arrayItem: unknown, array: unknown[]): boolean =>
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail
  */
-const handleDropdown = (e: UIEvent): void => {
-  if (e.detail === 0) toggleOpen()
+const handleDropdown = ({ detail }: UIEvent): void => {
+  if (detail === 0) toggleOpen()
   else toggleOpen(false)
 }
 
@@ -87,11 +87,11 @@ onContentUpdated(() => {
                 "
               />
 
-              <span v-else
-                ><VPIcon v-if="config.icon" :icon="config.icon" />{{
+              <span v-else>
+                <VPIcon v-if="config.icon" :icon="config.icon" />{{
                   child.text
-                }}</span
-              >
+                }}
+              </span>
             </h4>
 
             <ul class="vp-navbar-dropdown-subitem-wrapper">

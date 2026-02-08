@@ -21,7 +21,9 @@ export const noticeOptions: NoticeOptionsRef = ref(
 export const useNoticeOptions = (): NoticeOptionsRef => noticeOptions
 
 if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
-  __VUE_HMR_RUNTIME__.updateNoticeOptions = (data: NoticeAttrOptions[]) => {
+  __VUE_HMR_RUNTIME__.updateNoticeOptions = (
+    data: NoticeAttrOptions[],
+  ): void => {
     noticeOptions.value = data
   }
 }

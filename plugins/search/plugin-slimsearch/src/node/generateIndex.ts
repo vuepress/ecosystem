@@ -1,3 +1,4 @@
+// oxlint-disable id-length
 /* eslint-disable @typescript-eslint/no-unsafe-enum-comparison */
 import { entries, fromEntries, isArray, keys } from '@vuepress/helper'
 import { load } from 'cheerio'
@@ -61,7 +62,7 @@ const renderHeader = (node: Element): string => {
     .map((childNode) => (childNode.type === 'text' ? childNode.data : null))
     .filter(Boolean)
     .join(' ')
-    .replace(/\s+/gu, ' ')
+    .replaceAll(/\s+/gu, ' ')
     .trim()
 }
 
@@ -86,7 +87,7 @@ export const generatePageIndex = (
   const addTextToIndex = (): void => {
     if (indexedText && shouldIndexContent) {
       ;((foundFirstHeader ? sectionIndex! : pageIndex).t ??= []).push(
-        indexedText.replace(/[\n\s]+/gu, ' '),
+        indexedText.replaceAll(/[\n\s]+/gu, ' '),
       )
       indexedText = ''
     }
@@ -102,6 +103,7 @@ export const generatePageIndex = (
 
         // Update current section index only if it has an id
         if (id) {
+          // oxlint-disable-next-line no-negated-condition
           if (!foundFirstHeader) foundFirstHeader = true
           else results.push(sectionIndex!)
 
@@ -135,7 +137,6 @@ export const generatePageIndex = (
   }
 
   // The types are not correct, null is returned if contentRendered is empty
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   const nodes = $.parseHTML(page.contentRendered) ?? []
 
   // Get custom fields
@@ -150,11 +151,11 @@ export const generatePageIndex = (
             ? [index.toString(), [result]]
             : null
       })
-      .filter((item): item is [string, string[]] => item !== null),
+      .filter((item): item is [string, string[]] => item != null),
   )
 
   // No content in page and no customFields
-  if (!nodes.length && !keys(customFields).length) return []
+  if (nodes.length === 0 && keys(customFields).length === 0) return []
 
   // Walk through nodes and extract indexes
   nodes.forEach((node) => {
@@ -165,7 +166,6 @@ export const generatePageIndex = (
   addTextToIndex()
 
   // Push last section
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (sectionIndex) results.push(sectionIndex)
 
   // Add custom fields
@@ -203,7 +203,6 @@ export const getSearchIndexStore = async (
 
   await Promise.all(
     entries(indexesByLocale).map(async ([localePath, indexes]) => {
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       const lang = app.options.locales[localePath]?.lang ?? app.options.lang
       const tokenizer = new Intl.Segmenter(lang, { granularity: 'word' })
 

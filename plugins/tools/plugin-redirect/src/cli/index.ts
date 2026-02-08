@@ -76,7 +76,7 @@ program
         userConfig,
       })
 
-      if (appConfig === null) return
+      if (appConfig == null) return
 
       // create vuepress app
       const app = createBuildApp(appConfig)

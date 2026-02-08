@@ -10,62 +10,62 @@ import type { SitemapPluginOptions } from '@vuepress/plugin-sitemap'
 
 export interface DefaultThemePluginsOptions {
   /**
-   * Enable @vuepress/plugin-active-header-links or not
+   * Enable `@vuepress/plugin-active-header-links` or not
    */
   activeHeaderLinks?: boolean
 
   /**
-   * Enable @vuepress/plugin-back-to-top or not
+   * Enable `@vuepress/plugin-back-to-top` or not
    */
   backToTop?: BackToTopPluginOptions | boolean
 
   /**
-   * Enable @vuepress/plugin-copy-code or not
+   * Enable `@vuepress/plugin-copy-code` or not
    */
   copyCode?: CopyCodePluginOptions | boolean
 
   /**
-   * Enable @vuepress/plugin-git or not
+   * Enable `@vuepress/plugin-git` or not
    */
   git?: GitPluginOptions | boolean
 
   /**
-   * Enable @vuepress/plugin-markdown-hint or not
+   * Enable `@vuepress/plugin-markdown-hint` or not
    */
   hint?: MarkdownHintPluginOptions | boolean
 
   /**
-   * Enable @vuepress/plugin-links-check or not
+   * Enable `@vuepress/plugin-links-check` or not
    */
   linksCheck?: LinksCheckPluginOptions | boolean
 
   /**
-   * Enable @vuepress/plugin-medium-zoom or not
+   * Enable `@vuepress/plugin-medium-zoom` or not
    */
   mediumZoom?: boolean
 
   /**
-   * Enable @vuepress/plugin-nprogress or not
+   * Enable `@vuepress/plugin-nprogress` or not
    */
   nprogress?: boolean
 
   /**
-   * Enable @vuepress/plugin-prismjs or not
+   * Enable `@vuepress/plugin-prismjs` or not
    */
   prismjs?: PrismjsPluginOptions | boolean
 
   /**
-   * Enable @vuepress/plugin-seo or not
+   * Enable `@vuepress/plugin-seo` or not
    */
   seo?: Partial<SeoPluginOptions> | boolean
 
   /**
-   * Enable @vuepress/plugin-sitemap or not
+   * Enable `@vuepress/plugin-sitemap` or not
    */
   sitemap?: Partial<SitemapPluginOptions> | boolean
 
   /**
-   * Enable @vuepress/plugin-markdown-tab or not
+   * Enable `@vuepress/plugin-markdown-tab` or not
    */
   tab?: MarkdownTabPluginOptions | boolean
 }

@@ -7,6 +7,8 @@ import { stringifyProp } from './utils.js'
  * Markdown-it plugin for code tabs
  *
  * 用于代码选项卡的 Markdown-it 插件
+ *
+ * @param md - MarkdownIt instance / MarkdownIt 实例
  */
 export const codeTabs: PluginSimple = (md) => {
   tab(md, {

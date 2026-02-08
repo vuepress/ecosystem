@@ -105,7 +105,7 @@ export default defineComponent({
                     /* webpackChunkName: "waline" */ '@waline/client/component'
                   )
 
-                  return () =>
+                  return (): VNode =>
                     h(ClientOnly, () =>
                       h(Waline, walineProps.value as WalineProps),
                     )

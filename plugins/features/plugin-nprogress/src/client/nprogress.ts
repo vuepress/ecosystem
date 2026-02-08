@@ -3,7 +3,7 @@
  * @license MIT
  */
 
-import { isDef } from '@vuepress/helper/client'
+import { entries, isDef } from '@vuepress/helper/client'
 
 // Forked and modified from nprogress v0.2.0
 
@@ -16,16 +16,16 @@ const removeClass = (element: Element, name: string): void => {
 }
 
 const removeElement = (element?: Element | null): void => {
-  element?.parentNode?.removeChild(element)
+  element?.remove()
 }
 
-const clamp = (n: number, min: number, max: number): number => {
-  if (n < min) return min
-  if (n > max) return max
-  return n
+const clamp = (num: number, min: number, max: number): number => {
+  if (num < min) return min
+  if (num > max) return max
+  return num
 }
 
-const toBarPercent = (n: number): number => (-1 + n) * 100
+const toBarPercent = (num: number): number => (-1 + num) * 100
 
 const queue = (() => {
   const pending: ((next: () => void) => void)[] = []
@@ -47,7 +47,7 @@ const queue = (() => {
 const camelCase = (content: string): string =>
   content
     .replace(/^-ms-/, 'ms-')
-    .replace(/-([\da-z])/gi, (_, letter: string) => letter.toUpperCase())
+    .replaceAll(/-([\da-z])/gi, (_, letter: string) => letter.toUpperCase())
 
 const addStyle = (() => {
   const cssPrefixes = ['Webkit', 'O', 'Moz', 'ms']
@@ -74,7 +74,6 @@ const addStyle = (() => {
   const getStyleProp = (name: string): string => {
     const finalizedName = camelCase(name)
 
-    // eslint-disable-next-line no-return-assign
     return (cssProps[finalizedName] ??= getVendorProp(finalizedName))
   }
 
@@ -83,18 +82,16 @@ const addStyle = (() => {
     prop: string,
     value: string,
   ): void => {
-    element.style[getStyleProp(prop)] = value
+    ;(element.style as unknown as Record<string, string>)[getStyleProp(prop)] =
+      value
   }
 
   return (
     element: HTMLElement,
     properties: Record<string, string | undefined>,
   ): void => {
-    for (const prop in properties) {
-      const value = properties[prop]
-
-      if (Object.hasOwn(properties, prop) && isDef(value))
-        applyCss(element, prop, value)
+    for (const [prop, value] of entries(properties)) {
+      if (isDef(value)) applyCss(element, prop, value)
     }
   }
 })()
@@ -143,7 +140,7 @@ const SETTINGS: NProgressSettings = {
 export const nprogress: NProgress = {
   percent: null,
 
-  isRendered: () => Boolean(document.getElementById('nprogress')),
+  isRendered: () => Boolean(document.querySelector('#nprogress')),
 
   set: (progress) => {
     const { speed, easing } = SETTINGS
@@ -243,7 +240,7 @@ export const nprogress: NProgress = {
 
   render: (fromStart) => {
     if (nprogress.isRendered()) {
-      return document.getElementById('nprogress') as HTMLDivElement
+      return document.querySelector<HTMLDivElement>('#nprogress')!
     }
 
     addClass(document.documentElement, 'nprogress-busy')
@@ -270,7 +267,7 @@ export const nprogress: NProgress = {
         addClass(parentElement, 'nprogress-custom-parent')
       }
 
-      parentElement.appendChild(nprogressElement)
+      parentElement.append(nprogressElement)
     }
 
     return nprogressElement
@@ -282,6 +279,6 @@ export const nprogress: NProgress = {
       document.querySelector(SETTINGS.parent)!,
       'nprogress-custom-parent',
     )
-    removeElement(document.getElementById('nprogress'))
+    removeElement(document.querySelector('#nprogress'))
   },
 }

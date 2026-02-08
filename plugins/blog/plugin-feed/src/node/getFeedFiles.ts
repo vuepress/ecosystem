@@ -25,9 +25,8 @@ export const getFeedFiles = (
   return (
     entries(options)
       // filter enabled locales
-      // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
       .filter(([, { atom, json, rss }]) => atom || json || rss)
-      .map(([localePath, localeOptions]) => {
+      .flatMap(([localePath, localeOptions]) => {
         const {
           atom,
           json,
@@ -40,7 +39,7 @@ export const getFeedFiles = (
         const feedStore = localMap[localePath]
         const pages = app.pages
           .filter((page) => page.pathLocale === localePath)
-          .filter(filter)
+          .filter((page) => filter(page))
           .sort(sorter)
 
         // add feed items
@@ -92,6 +91,5 @@ export const getFeedFiles = (
 
         return results
       })
-      .flat()
   )
 }

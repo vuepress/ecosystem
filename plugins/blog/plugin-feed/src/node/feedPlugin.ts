@@ -80,11 +80,11 @@ export const feedPlugin =
     return {
       ...plugin,
 
-      onInitialized: (): void => {
+      onInitialized: () => {
         if (app.env.isBuild || options.devServer) addFeedLinks(app, feedOptions)
       },
 
-      extendsBundlerOptions: (config): void => {
+      extendsBundlerOptions: (config) => {
         if (options.devServer)
           [
             ...getFeedFiles(app, feedOptions, hostname),
@@ -103,7 +103,7 @@ export const feedPlugin =
           })
       },
 
-      onGenerated: async (): Promise<void> => {
+      onGenerated: async () => {
         await Promise.all([
           ...writeFiles(app, getFeedFiles(app, feedOptions, hostname)),
           ...writeFiles(app, getAtomTemplates(feedOptions)),

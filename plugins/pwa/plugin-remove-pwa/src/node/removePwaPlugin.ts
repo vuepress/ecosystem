@@ -13,7 +13,7 @@ export const removePwaPlugin = ({
 }: RemovePwaPluginOptions): PluginObject => ({
   name: '@vuepress/plugin-remove-pwa',
 
-  onGenerated: async (app): Promise<void> => {
+  onGenerated: async (app) => {
     await generateEmptyServiceWorker(app, swLocation, cachePatterns)
   },
 })

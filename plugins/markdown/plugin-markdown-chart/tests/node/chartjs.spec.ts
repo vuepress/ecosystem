@@ -3,8 +3,8 @@ import { describe, expect, it } from 'vitest'
 
 import { chartjs } from '../../src/node/markdown-it-plugins/chartjs.js'
 
-describe('chartjs', () => {
-  const markdownIt = MarkdownIt({ linkify: true }).use(chartjs, {
+describe(chartjs, () => {
+  const markdownIt = new MarkdownIt({ linkify: true }).use(chartjs, {
     allowScripts: true,
     allowAll: true,
   })
@@ -205,7 +205,7 @@ const a = 1;
   })
 
   it('Should remove unsafe script block by default', () => {
-    const md = MarkdownIt({ linkify: true }).use(chartjs)
+    const md = new MarkdownIt({ linkify: true }).use(chartjs)
 
     const result = md.render(
       `

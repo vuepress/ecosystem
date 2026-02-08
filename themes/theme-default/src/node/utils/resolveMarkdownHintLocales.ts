@@ -3,9 +3,12 @@ import type { LocaleConfig } from 'vuepress/shared'
 import type { DefaultThemeData } from '../../shared/index.js'
 
 /**
- * Resolve options for @vuepress/plugin-markdown-container
+ * Resolve options for `@vuepress/plugin-markdown-container`
  *
  * For custom containers default title
+ *
+ * @param localeOptions - Locales config from theme options
+ * @returns Locales config for `@vuepress/plugin-markdown-container`
  */
 export const resolveMarkdownHintLocales = (
   localeOptions: DefaultThemeData,

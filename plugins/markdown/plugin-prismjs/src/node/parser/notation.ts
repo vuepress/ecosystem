@@ -34,7 +34,9 @@ const createNotationCommentMarkerRule = (
   parser: CodeParser,
   { classMap, classPre, notation }: NotationCommentMarkerOption,
 ): void => {
-  const marker = Object.keys(classMap).map(escapeRegExp).join('|')
+  const marker = Object.keys(classMap)
+    .map((key) => escapeRegExp(key))
+    .join('|')
   createNotationRule(
     parser,
     new RegExp(
@@ -168,7 +170,7 @@ export const notationWordHighlight = (parser: CodeParser): void => {
         : parser.lines.length - 1
 
       // escape backslashes
-      const normalizedWord = word.replace(/\\(.)/g, '$1')
+      const normalizedWord = word.replaceAll(/\\(.)/g, '$1')
 
       parser.lines
         // start from the next line after the comment

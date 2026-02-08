@@ -41,12 +41,13 @@ export const prepareConfigFile = async (
     `markdown-chart/config.js`,
     `\
 import { defineClientConfig } from "vuepress/client";
-${Array.from(imports.values()).join('\n')}
+${[...imports.values()].join('\n')}
 
 export default defineClientConfig({
   enhance: ({ app }) => {
-${Array.from(enhances.values())
-  .map((item) => item.split('\n').map((line) => `    ${line}`))
+${Array.from(enhances.values(), (item) =>
+  item.split('\n').map((line) => `    ${line}`),
+)
   .flat()
   .join('\n')}
   },

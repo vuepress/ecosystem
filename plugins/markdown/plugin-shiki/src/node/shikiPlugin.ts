@@ -29,10 +29,6 @@ import { TWOSLASH_RE, logger } from './utils.js'
  *
  * VuePress 的 Shiki 插件
  *
- * @param options - Plugin options / 插件选项
- *
- * @returns VuePress plugin / VuePress 插件
- *
  * @example
  * ```ts
  * import { shikiPlugin } from '@vuepress/plugin-shiki'
@@ -48,8 +44,9 @@ import { TWOSLASH_RE, logger } from './utils.js'
  * }
  * ```
  */
-export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => {
-  return (app) => {
+export const shikiPlugin =
+  (options: ShikiPluginOptions = {}): Plugin =>
+  (app) => {
     // TODO: Remove in stable version
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { code } = app.options.markdown
@@ -86,15 +83,15 @@ export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => {
         /**
          * Turn off the `v-pre` configuration of the code block.
          */
-        if (opts.vPre !== false) {
+        if (opts.vPre === false) {
+          enableVPre = false
+        } else {
           const vPre = isPlainObject(opts.vPre) ? opts.vPre : { block: true }
           if (vPre.block) {
             opts.vPre ??= {}
             opts.vPre.block = false
           }
           enableVPre = vPre.block ?? true
-        } else {
-          enableVPre = false
         }
       },
 
@@ -136,4 +133,3 @@ export const shikiPlugin = (options: ShikiPluginOptions = {}): Plugin => {
       clientConfigFile: () => prepareClientConfigFile(app, shikiOptions),
     }
   }
-}

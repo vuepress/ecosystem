@@ -17,17 +17,22 @@ const stripLocalePrefix = ({ path, pathLocale }: Page): string =>
   path.replace(pathLocale, '/')
 
 /**
+ * Get pages locale map
+ *
+ * @param app - VuePress app instance
  * @returns A map with keys of rootPath and string[] value for pathLocales
  */
-const getPagesLocaleMap = (app: App): Map<string, string[]> =>
-  app.pages.reduce((map, page) => {
+const getPagesLocaleMap = (app: App): Map<string, string[]> => {
+  const map = new Map<string, string[]>()
+  for (const page of app.pages) {
     const rootPath = stripLocalePrefix(page)
     const pathLocales = map.get(rootPath) ?? []
 
     pathLocales.push(page.pathLocale)
-
-    return map.set(rootPath, pathLocales)
-  }, new Map<string, string[]>())
+    map.set(rootPath, pathLocales)
+  }
+  return map
+}
 
 export interface SitemapInfo {
   lastmod?: string
@@ -103,7 +108,6 @@ export const getSitemapInfos = (
           })
 
         links = relatedLocales.map((localePrefix) => ({
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           lang: locales[localePrefix]?.lang ?? 'en',
           url: `${base}${removeLeadingSlash(localePrefix)}${rootPath.slice(1)}`,
         }))

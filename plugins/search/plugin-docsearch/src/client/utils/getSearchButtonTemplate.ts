@@ -6,7 +6,11 @@ type DocSearchTranslation = Exclude<DocSearchProps['translations'], undefined>
 /**
  * Get the search button template
  *
- * Similar to content as in @docsearch/j, the key are rendered by text instead of svg
+ * Similar to content as in `@docsearch/js`, the key are rendered by text instead of svg
+ *
+ * @param buttonText - The text of the search button / 搜索按钮的文本
+ * @param buttonAriaLabel - The aria-label of the search button / 搜索按钮的 aria-label
+ * @returns Search button template / 搜索按钮模板
  */
 export const getSearchButtonTemplate = ({
   buttonText = 'Search',

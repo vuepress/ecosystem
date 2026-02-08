@@ -14,9 +14,6 @@ const logger = new Logger(PLUGIN_NAME)
  *
  * VuePress 的百度统计插件
  *
- * @param options - Plugin options
- * @returns VuePress plugin
- *
  * @description Integrates Baidu Analytics tracking into VuePress applications.
  * Only active in production builds when a valid tracking ID is provided.
  *

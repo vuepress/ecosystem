@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-globals */
 import database from '@temp/slimsearch/index.js'
 import { sortStrategy } from '@temp/slimsearch/worker-options.js'
 import { loadJSONIndex } from 'slimsearch'
@@ -7,7 +6,8 @@ import type { IndexItem } from '../shared/index.js'
 import type { WorkerMessageData } from './typings/index.js'
 import { getSearchResults, getSuggestions } from './worker-utils/index.js'
 
-self.onmessage = async ({
+// oxlint-disable-next-line unicorn/prefer-add-event-listener
+globalThis.onmessage = async ({
   data: { type = 'all', query, locale = '/', options, id },
 }: MessageEvent<WorkerMessageData>): Promise<void> => {
   const { default: localeIndex } = await database[locale]()
@@ -25,19 +25,19 @@ self.onmessage = async ({
   )
 
   if (type === 'suggest')
-    self.postMessage([
+    globalThis.postMessage([
       type,
       id,
       getSuggestions(query, searchLocaleIndex, options),
     ])
   else if (type === 'search')
-    self.postMessage([
+    globalThis.postMessage([
       type,
       id,
       getSearchResults(query, searchLocaleIndex, options, sortStrategy),
     ])
   else
-    self.postMessage({
+    globalThis.postMessage({
       suggestions: [
         type,
         id,

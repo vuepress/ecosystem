@@ -49,6 +49,8 @@ export const defineCatalogInfoGetter = (getter: CatalogInfoGetter): void => {
  * Use catalog info getter
  *
  * 使用目录信息获取器
+ *
+ * @returns Catalog info getter function / 目录信息获取器函数
  */
 export const useCatalogInfoGetter = (): CatalogInfoGetter =>
   inject(catalogInfoSymbol)!

@@ -50,6 +50,9 @@ const getRSSEnclosure = (enclosure: FeedEnclosure): RSSEnclosure => ({
  * 返回 RSS 2.0 格式的 Feed
  *
  * @see https://validator.w3.org/feed/docs/rss2.html
+ *
+ * @param feedStore - Feed store / Feed 存储
+ * @returns RSS feed content / RSS Feed 内容
  */
 export const getRssFeed = (feedStore: FeedStore): string => {
   const { channel, links } = feedStore
@@ -115,7 +118,8 @@ export const getRssFeed = (feedStore: FeedStore): string => {
    *
    * @see https://validator.w3.org/feed/docs/rss2.html#comments
    */
-  content.rss.channel.category = Array.from(feedStore.categories).map(
+  content.rss.channel.category = Array.from(
+    feedStore.categories,
     (category) => ({ _text: category }),
   )
 

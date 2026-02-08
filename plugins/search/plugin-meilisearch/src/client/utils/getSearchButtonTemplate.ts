@@ -3,9 +3,13 @@ import type { MeiliSearchLocaleData } from '../../shared/index.js'
 /**
  * Get the search button template
  *
- * Use the same content as in @docsearch/js
+ * Use the same content as in `@docsearch/js`
  *
  * TODO: the meta key text should also be dynamic
+ *
+ * @param buttonText - The button text
+ * @param buttonAriaLabel - The button aria-label
+ * @returns The search button template
  */
 export const getSearchButtonTemplate = ({
   buttonText = 'Search',

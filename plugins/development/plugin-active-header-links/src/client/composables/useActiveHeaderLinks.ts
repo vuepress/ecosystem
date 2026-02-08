@@ -11,6 +11,9 @@ export interface UseActiveHeaderLinksOptions {
 
 /**
  * Update current hash and do not trigger `scrollBehavior`
+ *
+ * @param router - Vue Router instance / Vue Router 实例
+ * @param hash - Hash to update / 要更新的 hash
  */
 const updateHash = async (router: Router, hash: string): Promise<void> => {
   const { path, query } = router.currentRoute.value
@@ -62,13 +65,13 @@ export const useActiveHeaderLinks = ({
     const isAtPageBottom = Math.abs(scrollHeight - scrollBottom) < offset
 
     // get all header links
-    const headerLinks: HTMLAnchorElement[] = Array.from(
-      document.querySelectorAll(headerLinkSelector),
-    )
+    const headerLinks = [
+      ...document.querySelectorAll<HTMLAnchorElement>(headerLinkSelector),
+    ]
     // get all header anchors
-    const headerAnchors: HTMLAnchorElement[] = Array.from(
-      document.querySelectorAll(headerAnchorSelector),
-    )
+    const headerAnchors = [
+      ...document.querySelectorAll<HTMLAnchorElement>(headerAnchorSelector),
+    ]
     // filter anchors that do not have corresponding links
     const existedHeaderAnchors = headerAnchors.filter((anchor) =>
       headerLinks.some((link) => link.hash === anchor.hash),

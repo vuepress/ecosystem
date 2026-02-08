@@ -1,3 +1,4 @@
+// oxlint-disable import/max-dependencies
 import process from 'node:process'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
@@ -6,6 +7,7 @@ import {
   addTitleByFilename,
   autoFrontmatterPlugin,
 } from '@vuepress/plugin-auto-frontmatter'
+import type { AutoFrontmatterData } from '@vuepress/plugin-auto-frontmatter'
 import { blogPlugin } from '@vuepress/plugin-blog'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { copyrightPlugin } from '@vuepress/plugin-copyright'
@@ -120,7 +122,7 @@ export default defineUserConfig({
     autoFrontmatterPlugin([
       {
         filter: ['auto-frontmatter/**/*.md', '!*/no-generate.md'],
-        handle: (data, context) => {
+        handle: (data, context): AutoFrontmatterData => {
           addTitleByFilename(data, context)
           addCreateDate(data, context)
           return data

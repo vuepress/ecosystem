@@ -5,14 +5,14 @@ import type { MergedRawCommit, RawCommit } from '../typings.js'
 import { logger } from './logger.js'
 
 const INFO_SPLITTER = '[|]'
-const COMMIT_SPLITTER = '\\|/'
+const COMMIT_SPLITTER = String.raw`\|/`
 const RE_CO_AUTHOR = /^ *Co-authored-by: ?([^<]*)<([^>]*)> */gim
 
 const getCoAuthorsFromCommitBody = (
   body: string,
 ): Pick<GitContributorInfo, 'email' | 'name'>[] =>
   body
-    ? Array.from(body.matchAll(RE_CO_AUTHOR)).map(([, name, email]) => ({
+    ? Array.from(body.matchAll(RE_CO_AUTHOR), ([, name, email]) => ({
         name: name.trim(),
         email: email.trim(),
       }))
@@ -37,6 +37,10 @@ const getGitLogFormat = ({
 /**
  * Helper function to run git command using spawn and return stdout as a promise.
  * Rejects if the git command exits with a non-zero code.
+ *
+ * @param args - The arguments to pass to the git command
+ * @param cwd - The working directory to run the git command in
+ * @returns A promise that resolves with the stdout of the git command
  */
 const runGitLog = (args: string[], cwd: string): Promise<string> =>
   new Promise((resolve, reject) => {
@@ -49,11 +53,11 @@ const runGitLog = (args: string[], cwd: string): Promise<string> =>
     let stderrData = ''
 
     gitProcess.stdout.on('data', (chunk: Buffer) => {
-      stdoutData += chunk.toString('utf8')
+      stdoutData += chunk.toString('utf-8')
     })
 
     gitProcess.stderr.on('data', (chunk: Buffer) => {
-      stderrData += chunk.toString('utf8')
+      stderrData += chunk.toString('utf-8')
     })
 
     gitProcess.on('error', (error) => {
@@ -79,6 +83,12 @@ const runGitLog = (args: string[], cwd: string): Promise<string> =>
  * ${commit_hash} ${author_name} ${author_email} ${author_date} ${subject} ${ref} ${body}
  *
  * @see {@link https://git-scm.com/docs/pretty-formats | documentation} for details.
+ *
+ * @param filepath - The file path to get commits for / 要获取提交记录的文件路径
+ * @param cwd - The working directory to run git command / 运行 git 命令的工作目录
+ * @param options - Git plugin options / Git 插件选项
+ *
+ * @returns Raw commits for the specified file / 指定文件的原始提交记录
  */
 export const getRawCommits = async (
   filepath: string,
@@ -113,7 +123,7 @@ export const getRawCommits = async (
           body = '',
           message = '',
           refs = '',
-        ] = rawString.split(INFO_SPLITTER).map((v) => v.trim())
+        ] = rawString.split(INFO_SPLITTER).map((val) => val.trim())
 
         return {
           filepath,
@@ -127,8 +137,8 @@ export const getRawCommits = async (
           coAuthors: getCoAuthorsFromCommitBody(body),
         }
       })
-  } catch (error) {
-    logger.error(`Failed to get commits for ${filepath} in ${cwd}:`, error)
+  } catch (err) {
+    logger.error(`Failed to get commits for ${filepath} in ${cwd}:`, err)
 
     return []
   }
@@ -139,9 +149,8 @@ export const getRawCommits = async (
  *
  * 按哈希值合并原始提交记录
  *
- * @param commits - Raw commits
- *
- * 原始提交记录
+ * @param commits - Raw commits / 原始提交记录
+ * @returns Merged raw commits / 合并后的原始提交记录
  */
 export const mergeRawCommits = (commits: RawCommit[]): MergedRawCommit[] => {
   const commitMap = new Map<string, MergedRawCommit>()
@@ -153,8 +162,7 @@ export const mergeRawCommits = (commits: RawCommit[]): MergedRawCommit[] => {
     else commitMap.set(commit.hash, { ...commit, filepaths: [filepath] })
   })
 
-  const result = Array.from(commitMap.values())
-  return result
+  return [...commitMap.values()]
 }
 
 /**
@@ -162,17 +170,10 @@ export const mergeRawCommits = (commits: RawCommit[]): MergedRawCommit[] => {
  *
  * 获取多个文件路径的合并提交记录
  *
- * @param filepaths - File paths to get commits for
- *
- * 要获取提交记录的文件路径
- *
- * @param cwd - Working directory
- *
- * 工作目录
- *
- * @param options - Git plugin options
- *
- * Git 插件选项
+ * @param filepaths - File paths to get commits for / 要获取提交记录的文件路径
+ * @param cwd - Working directory / 工作目录
+ * @param options - Git plugin options / Git 插件选项
+ * @returns Merged commits for the specified file paths / 指定文件路径的合并提交记录
  */
 export const getCommits = async (
   filepaths: string[],

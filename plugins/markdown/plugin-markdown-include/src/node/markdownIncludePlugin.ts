@@ -18,8 +18,6 @@ declare module 'vuepress/markdown' {
  *
  * Markdown 导入插件
  *
- * @param options - Plugin options / 插件选项
- *
  * @example
  * ```ts
  * import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
@@ -83,7 +81,7 @@ export const markdownIncludePlugin =
           }
         })
       },
-      extendsPage: ({ deps, markdownEnv }): void => {
+      extendsPage: ({ deps, markdownEnv }) => {
         const { includedFiles = [] } = markdownEnv as IncludeEnv
 
         // mark included files as page deps

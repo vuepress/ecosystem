@@ -20,7 +20,7 @@ export const generateDescription = (
       singleLine: true,
     })
 
-    if (pageText.length) {
+    if (pageText.length > 0) {
       page.frontmatter.description =
         pageText.length > 180 ? `${pageText.slice(0, 177)}...` : pageText
       page.data.autoDesc = true

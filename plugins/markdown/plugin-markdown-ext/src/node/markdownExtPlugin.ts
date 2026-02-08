@@ -23,9 +23,6 @@ declare module 'vuepress/markdown' {
  *
  * Markdown 扩展插件
  *
- * @param options - Plugin options / 插件选项
- * @returns VuePress plugin / VuePress 插件
- *
  * @example
  * ```ts
  * import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
@@ -44,9 +41,11 @@ declare module 'vuepress/markdown' {
 export const markdownExtPlugin =
   (options: MarkdownExtPluginOptions): Plugin =>
   (app) => {
-    const opts = deepAssign({}, app.options.markdown.ext, options)
-    app.options.markdown.ext = opts
-    const { gfm, breaks, linkify, footnote, tasklist, component, vPre } = opts
+    const mergedOptions = deepAssign({}, app.options.markdown.ext, options)
+    const { gfm, breaks, linkify, footnote, tasklist, component, vPre } =
+      mergedOptions
+
+    app.options.markdown.ext = mergedOptions
 
     return {
       name: PLUGIN_NAME,

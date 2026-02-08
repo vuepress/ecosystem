@@ -13,7 +13,7 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export default defineUserConfig({
   // set site base to default value
-  base: (process.env.BASE as '/' | `/${string}/` | undefined) || '/',
+  base: (process.env.BASE as '/' | `/${string}/` | undefined) ?? '/',
 
   // extra tags in `<head>`
   head,
@@ -42,7 +42,7 @@ export default defineUserConfig({
       handleImportPath: (importPath) => {
         // handle @vuepress packages import path
         if (importPath.startsWith('@vuepress/')) {
-          const packageName = importPath.match(/^(@vuepress\/[^/]*)/)![1]
+          const [, packageName] = importPath.match(/^(@vuepress\/[^/]*)/)!
           const realPath = importPath.replace(
             packageName,
             path.dirname(

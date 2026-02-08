@@ -4,6 +4,10 @@ import { normalizeUrl } from './utils.js'
 
 /**
  * Check if url matches find
+ *
+ * @param find - The find pattern, can be a string or a RegExp / 查找模式，可以是字符串或正则表达式
+ * @param url - The URL to check / 要检查的 URL
+ * @returns True if the URL matches the find pattern, false otherwise / 如果 URL 匹配查找模式则返回 true，否则返回 false
  */
 export const isMatchUrl = (find: RegExp | string, url: string): boolean => {
   if (typeof find === 'string') {
@@ -22,6 +26,10 @@ const cache = new Map<string, string>()
 
 /**
  * Replace asset with rules
+ *
+ * @param rules - Replacement rules / 替换规则
+ * @param url - The original asset URL / 原始资源 URL
+ * @returns The replaced asset URL if matched, otherwise return undefined / 如果匹配则返回替换后的资源 URL，否则返回 undefined
  *
  * @example
  * ```ts
@@ -49,18 +57,19 @@ export const replacementAssetWithRules = (
       }
     }
   }
-  return undefined
 }
+
+const ESCAPED_DOUBLE_QUOTE = String.raw`\"`
 
 export const transformAssets = (
   code: string,
   pattern: RegExp,
   rules: ReplacementRule[],
 ): string => {
-  const s = new MagicString(code)
+  const str = new MagicString(code)
   let matched: RegExpExecArray | null
   let hasMatched = false
-  // eslint-disable-next-line no-cond-assign
+
   while ((matched = pattern.exec(code))) {
     const assetUrl =
       matched[6] ||
@@ -71,8 +80,8 @@ export const transformAssets = (
       matched[1]
     const [left, right] = matched[0].startsWith('(')
       ? ['("', '")']
-      : matched[0].startsWith('\\"')
-        ? ['\\"', '\\"']
+      : matched[0].startsWith(ESCAPED_DOUBLE_QUOTE)
+        ? [ESCAPED_DOUBLE_QUOTE, ESCAPED_DOUBLE_QUOTE]
         : ['"', '"']
 
     const start = matched.index
@@ -80,11 +89,11 @@ export const transformAssets = (
     const resolved = replacementAssetWithRules(rules, assetUrl)
     if (resolved) {
       hasMatched = true
-      s.update(start, end, `${left}${resolved}${right}`)
+      str.update(start, end, `${left}${resolved}${right}`)
     }
   }
 
   if (!hasMatched) return code
 
-  return s.toString()
+  return str.toString()
 }

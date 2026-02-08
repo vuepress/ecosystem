@@ -30,9 +30,6 @@ declare module 'vuepress/markdown' {
  *
  * Markdown 图表插件
  *
- * @param options - Plugin options / 插件选项
- * @returns VuePress plugin / VuePress 插件
- *
  * @example
  * ```ts
  * import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
@@ -54,18 +51,18 @@ declare module 'vuepress/markdown' {
 export const markdownChartPlugin =
   (options: MarkdownChartPluginOptions = {}): Plugin =>
   (app) => {
-    const opts = deepAssign({}, app.options.markdown.chart, options)
-    app.options.markdown.chart = opts
+    const mergedOptions = deepAssign({}, app.options.markdown.chart, options)
+    app.options.markdown.chart = mergedOptions
 
-    if (app.env.isDebug) logger.info('Options:', opts)
+    if (app.env.isDebug) logger.info('Options:', mergedOptions)
 
     const getStatus = (
       key: keyof MarkdownChartPluginOptions,
       pkgs: string[] = [],
     ): boolean => {
-      const enabled = Boolean(opts[key])
+      const enabled = Boolean(mergedOptions[key])
       const pkgInstalled = pkgs.every((pkg) =>
-        isInstalled(pkg, Boolean(opts[key])),
+        isInstalled(pkg, Boolean(mergedOptions[key])),
       )
 
       return enabled && pkgInstalled
@@ -90,7 +87,7 @@ export const markdownChartPlugin =
         const {
           DANGEROUS_ALLOW_SCRIPT_EXECUTION,
           DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST,
-        } = opts
+        } = mergedOptions
 
         const scriptOptions = {
           allowScripts: DANGEROUS_ALLOW_SCRIPT_EXECUTION ?? false,
@@ -100,7 +97,7 @@ export const markdownChartPlugin =
               ? DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST.map((file) => {
                   const result = file
                     // normalize `\` to `/` on Windows
-                    .replace(/\\/g, '/')
+                    .replaceAll('\\', '/')
                     // remove any leading slash
                     .replace(/^\//, '')
 
@@ -114,13 +111,14 @@ export const markdownChartPlugin =
         if (status.chartjs) md.use(chartjs, scriptOptions)
         if (status.echarts) md.use(echarts, scriptOptions)
         if (status.flowchart) md.use(flowchart)
-        if (isArray(opts.plantuml)) md.use(plantuml, opts.plantuml)
-        else if (opts.plantuml) md.use(plantuml)
+        if (isArray(mergedOptions.plantuml))
+          md.use(plantuml, mergedOptions.plantuml)
+        else if (mergedOptions.plantuml) md.use(plantuml)
         if (status.markmap) md.use(markmap)
         if (status.mermaid) md.use(mermaid)
       },
 
-      extendsBundlerOptions: (bundlerOptions: unknown): void => {
+      extendsBundlerOptions: (bundlerOptions: unknown) => {
         addViteSsrNoExternal(bundlerOptions, app, [
           '@vuepress/helper',
           'fflate',

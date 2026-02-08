@@ -21,15 +21,15 @@ type IAnyObject = Record<string, any>
  * ```
  */
 export const deepAssign = <
-  T extends IAnyObject,
-  U extends IAnyObject = T,
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
-  V extends Partial<T> & Partial<U> = T & U,
+  OriginType extends IAnyObject,
+  MergeType extends IAnyObject = OriginType,
+  FinalType extends Partial<OriginType> & Partial<MergeType> = OriginType &
+    MergeType,
 >(
-  originObject: T,
-  ...overrideObjects: (U | null | undefined)[]
-): V => {
-  if (overrideObjects.length === 0) return originObject as unknown as V
+  originObject: OriginType,
+  ...overrideObjects: (MergeType | null | undefined)[]
+): FinalType => {
+  if (overrideObjects.length === 0) return originObject as unknown as FinalType
 
   /** Object being merged */
   const assignObject = overrideObjects.shift()
@@ -40,7 +40,7 @@ export const deepAssign = <
       if (isPlainObject(originObject[property]) && isPlainObject(value))
         deepAssign(originObject[property], value)
       else if (isArray(value))
-        (originObject as IAnyObject)[property] = [...(value as unknown[])]
+        (originObject as IAnyObject)[property] = [...value]
       else if (isPlainObject(value))
         (originObject as IAnyObject)[property] = {
           ...value,

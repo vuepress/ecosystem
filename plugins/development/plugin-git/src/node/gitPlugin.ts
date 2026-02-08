@@ -24,8 +24,6 @@ import {
  *
  * Git 插件
  *
- * @param [options={}] - Plugin options / 插件选项
- *
  * @example
  * ```ts
  * import { gitPlugin } from '@vuepress/plugin-git'
@@ -77,7 +75,7 @@ export const gitPlugin =
       ) => {
         page.data.git = {}
 
-        if (!isGitRepo || page.filePathRelative === null) {
+        if (!isGitRepo || page.filePathRelative == null) {
           return
         }
 

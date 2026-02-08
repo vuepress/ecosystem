@@ -10,9 +10,9 @@ import type {
 import type { PrismjsHighlightOptions } from './types.js'
 
 /**
- * Options of @vuepress/plugin-prismjs
+ * Options of `@vuepress/plugin-prismjs`
  *
- * @vuepress/plugin-prismjs 的选项
+ * `@vuepress/plugin-prismjs` 的选项
  */
 export type PrismjsPluginOptions = MarkdownItCodeBlockTitleOptions &
   MarkdownItLineNumbersOptions &

@@ -9,9 +9,6 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  *
  * VuePress 的 Google Analytics 插件
  *
- * @param options - Plugin options
- * @returns VuePress plugin
- *
  * @description Integrates Google Analytics 4 tracking into VuePress applications.
  * Only active in production builds unless debug mode is enabled.
  *

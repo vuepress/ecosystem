@@ -14,4 +14,4 @@
  * ```
  */
 export const escapeRegExp = (str: string): string =>
-  str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  str.replaceAll(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`)

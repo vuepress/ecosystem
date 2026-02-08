@@ -27,11 +27,8 @@ const RE_ISSUE = /#(\d+)/g
  *
  * 变更日志组合式函数
  *
- * @param enabled - Whether to enable changelog
- *
- * 是否启用变更日志
- *
- * @default true
+ * @param enabled - Whether to enable changelog / 是否启用变更日志
+ * @returns Changelog items / 变更日志项目
  */
 export const useChangelog =
   typeof __GIT_CHANGELOG__ === 'boolean' && __GIT_CHANGELOG__
@@ -54,12 +51,11 @@ export const useChangelog =
             dateStyle: 'short',
           })
 
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
           return (page.value.git?.changelog ?? []).map((item) => {
-            const res: GitChangelogItem = {
-              date: formatter.format(item.time),
-              ...item,
-            }
+            const res: GitChangelogItem = Object.assign(
+              { date: formatter.format(item.time) },
+              item,
+            )
 
             if (pattern.issue && repo) {
               res.message = res.message.replace(

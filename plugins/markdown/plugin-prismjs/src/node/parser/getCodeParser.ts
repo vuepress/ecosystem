@@ -71,7 +71,6 @@ const createOpenTag = (
       after: hashHtml ? snippet.slice(-1) : '',
       content,
       toString() {
-        // eslint-disable-next-line @typescript-eslint/no-shadow
         const { before, after, classList, content } = this
         const className = uniq(classList).join(' ')
 
@@ -86,7 +85,6 @@ const createOpenTag = (
     after: snippet.slice(match.index! + match[0].length),
     content,
     toString() {
-      // eslint-disable-next-line @typescript-eslint/no-shadow
       const { before, after, classList, content } = this
       const className = uniq(classList).join(' ')
 
@@ -101,6 +99,7 @@ const createOpenTag = (
  * 解析高亮代码并创建代码解析器
  *
  * @param html - Highlighted HTML content / 高亮 HTML 内容
+ * @param lang - Code language / 代码语言
  * @returns Code parser instance / 代码解析器实例
  * @example
  * ```ts

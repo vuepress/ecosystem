@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-globals */
 import { entries, fromEntries } from '@vuepress/helper/client'
 import type { IndexObject } from 'slimsearch'
 import { loadIndex } from 'slimsearch'
@@ -33,36 +32,21 @@ const searchIndex: SearchIndexStore = fromEntries(
   ]),
 )
 
-self.onmessage = ({
-  data: { type = 'all', query, locale, options, id },
-}: MessageEvent<WorkerMessageData>): void => {
-  const searchLocaleIndex = searchIndex[locale]
+self.addEventListener(
+  'message',
+  ({
+    data: { type = 'all', query, locale, options, id },
+  }: MessageEvent<WorkerMessageData>) => {
+    const searchLocaleIndex = searchIndex[locale]
 
-  if (type === 'suggest')
-    self.postMessage([
-      type,
-      id,
-      getSuggestions(query, searchLocaleIndex, options),
-    ])
-  else if (type === 'search')
-    self.postMessage([
-      type,
-      id,
-      getSearchResults(
-        query,
-        searchLocaleIndex,
-        options,
-        __SLIMSEARCH_SORT_STRATEGY__,
-      ),
-    ])
-  else
-    self.postMessage({
-      suggestions: [
+    if (type === 'suggest')
+      self.postMessage([
         type,
         id,
         getSuggestions(query, searchLocaleIndex, options),
-      ],
-      results: [
+      ])
+    else if (type === 'search')
+      self.postMessage([
         type,
         id,
         getSearchResults(
@@ -71,6 +55,24 @@ self.onmessage = ({
           options,
           __SLIMSEARCH_SORT_STRATEGY__,
         ),
-      ],
-    })
-}
+      ])
+    else
+      self.postMessage({
+        suggestions: [
+          type,
+          id,
+          getSuggestions(query, searchLocaleIndex, options),
+        ],
+        results: [
+          type,
+          id,
+          getSearchResults(
+            query,
+            searchLocaleIndex,
+            options,
+            __SLIMSEARCH_SORT_STRATEGY__,
+          ),
+        ],
+      })
+  },
+)

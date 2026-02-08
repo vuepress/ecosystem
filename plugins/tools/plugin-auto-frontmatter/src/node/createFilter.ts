@@ -8,6 +8,9 @@ const matchers = new Map<string[] | string, Matcher>()
 
 /**
  * Create Filter from pattern
+ *
+ * @param pattern - Pattern to create filter / 用于创建过滤器的模式
+ * @returns Filter function / 过滤器函数
  */
 export const createFilter = (pattern: Pattern): Matcher => {
   if (isFunction(pattern)) {
@@ -27,17 +30,17 @@ export const createFilter = (pattern: Pattern): Matcher => {
   const ignorePatterns: string[] = []
 
   // find negative patterns, like `!*.md`
-  for (const p of pattern) {
-    if (p.startsWith('!')) {
-      ignorePatterns.push(p.slice(1))
+  for (const item of pattern) {
+    if (item.startsWith('!')) {
+      ignorePatterns.push(item.slice(1))
     } else {
-      patterns.push(p)
+      patterns.push(item)
     }
   }
 
   const matcher =
     patterns.length === 0
-      ? () => false
+      ? (): false => false
       : picomatch(patterns, { ignore: ignorePatterns })
 
   matchers.set(pattern, matcher)

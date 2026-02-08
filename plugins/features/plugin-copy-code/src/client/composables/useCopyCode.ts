@@ -116,6 +116,7 @@ const SHELL_RE = /language-(shellscript|shell|bash|sh|zsh)/
  * }
  * ```
  */
+// oxlint-disable-next-line max-lines-per-function
 export const useCopyCode = ({
   selector,
   ignoreSelector,
@@ -144,7 +145,7 @@ export const useCopyCode = ({
     copyElement.type = 'button'
     copyElement.classList.add('vp-copy-code-button')
     copyElement.setAttribute('aria-label', locale.value.copy)
-    copyElement.setAttribute('data-copied', locale.value.copied)
+    copyElement.dataset.copied = locale.value.copied
 
     codeBlockElement.parentElement?.insertBefore(copyElement, codeBlockElement)
     codeBlockElement.setAttribute('copy-code', '')
@@ -154,7 +155,9 @@ export const useCopyCode = ({
     document.body.classList.toggle('no-copy-code', !enabled.value)
     if (!enabled.value) return
 
-    document.querySelectorAll<HTMLElement>(selector).forEach(insertCopyButton)
+    document.querySelectorAll<HTMLElement>(selector).forEach((el) => {
+      insertCopyButton(el)
+    })
   }
 
   watchImmediate(enabled, () => nextTick(appendCopyButton), {
@@ -187,7 +190,7 @@ export const useCopyCode = ({
     let text = clone.textContent || ''
 
     if (SHELL_RE.test(codeContainer.className))
-      text = text.replace(/^ *(\$|>) /gm, '')
+      text = text.replaceAll(/^ *(\$|>) /gm, '')
 
     await copy(text)
 

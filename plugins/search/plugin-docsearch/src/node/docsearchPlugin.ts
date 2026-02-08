@@ -10,8 +10,6 @@ import { PLUGIN_NAME } from './utils.js'
  *
  * DocSearch 插件
  *
- * @param options - DocSearch plugin options / DocSearch 插件选项
- *
  * @example
  * ```ts
  * import { docsearchPlugin } from '@vuepress/plugin-docsearch'

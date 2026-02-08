@@ -28,7 +28,7 @@ const CONTAINERS: MarkdownHintContainerName[] = [
  *
  * 提示容器 markdown-it 插件
  *
- * @param md - markdown-it instance / markdown-it 实例
+ * @param md - MarkdownIt instance / MarkdownIt 实例
  * @param options - plugin options / 插件选项
  */
 export const hint: PluginWithOptions<MarkdownItHintOptions> = (
@@ -45,15 +45,15 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
         let info = token.info.trim().slice(name.length).trim()
 
         // Get locale
-        if (!info) {
+        if (info) {
+          info = md.renderInline(info, cleanMarkdownEnv(env))
+        } else {
           const { filePathRelative } = env
           const relativePath = ensureLeadingSlash(filePathRelative ?? '')
           const localePath = resolveLocalePath(options, relativePath)
+          const localeText = options[localePath]?.[name]
 
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-          info = options[localePath]?.[name]
-        } else {
-          info = md.renderInline(info, cleanMarkdownEnv(env))
+          if (localeText) info = localeText
         }
 
         return `<div class="hint-container ${name}">\n<p class="hint-container-title">${info || name}</p>\n`
@@ -72,15 +72,15 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
       let info = token.info.trim().slice(6).trim()
 
       // Get locale
-      if (!info) {
+      if (info) {
+        info = md.renderInline(info, cleanMarkdownEnv(env))
+      } else {
         const { filePathRelative } = env
         const relativePath = ensureLeadingSlash(filePathRelative ?? '')
         const localePath = resolveLocalePath(options, relativePath)
+        const localeText = options[localePath]?.caution
 
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        info = options[localePath]?.caution
-      } else {
-        info = md.renderInline(info, cleanMarkdownEnv(env))
+        if (localeText) info = localeText
       }
 
       return `<div class="hint-container caution">\n<p class="hint-container-title">${
@@ -105,15 +105,15 @@ export const hint: PluginWithOptions<MarkdownItHintOptions> = (
         .trim()
 
       // Get locale
-      if (!info) {
+      if (info) {
+        info = md.renderInline(info, cleanMarkdownEnv(env))
+      } else {
         const { filePathRelative } = env
         const relativePath = ensureLeadingSlash(filePathRelative ?? '')
         const localePath = resolveLocalePath(options, relativePath)
+        const localeText = options[localePath]?.details
 
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        info = options[localePath]?.details
-      } else {
-        info = md.renderInline(info, cleanMarkdownEnv(env))
+        if (localeText) info = localeText
       }
 
       return `<details class="hint-container details"><summary>${

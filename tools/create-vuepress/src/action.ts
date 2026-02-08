@@ -27,7 +27,8 @@ interface CreateOptions {
 const bundlers: Bundler[] = ['vite', 'webpack']
 const presets: Preset[] = ['blog', 'docs']
 
-export async function mainAction(
+// oxlint-disable-next-line max-lines-per-function
+export const mainAction = async function (
   this: Command,
   targetDir: string,
   { bundler, preset, theme = '@vuepress/theme-default' }: CreateOptions,
@@ -41,10 +42,10 @@ export async function mainAction(
   // handle theme
   const themePackageName = normalizeThemeName(theme)
 
-  if (KNOWN_THEME_COMMANDS[themePackageName]) {
+  if (themePackageName in KNOWN_THEME_COMMANDS) {
     execSync(
       `${packageManager} ${KNOWN_THEME_COMMANDS[themePackageName]} ${targetDir}`,
-      { stdio: 'inherit', encoding: 'utf8' },
+      { stdio: 'inherit', encoding: 'utf-8' },
     )
 
     return
@@ -70,33 +71,31 @@ export async function mainAction(
   const targetDirPath = pathResolve(process.cwd(), targetDir)
 
   // check if the user is trying to cover his files
-  if (existsSync(targetDirPath) && readdirSync(targetDirPath).length) {
+  if (existsSync(targetDirPath) && readdirSync(targetDirPath).length > 0) {
     this.error(locale.error.dirNotEmpty(targetDir))
   }
 
   ensureDirExistSync(targetDirPath)
 
   // complete bundler
-  if (!bundler)
-    // eslint-disable-next-line no-param-reassign
-    bundler = await select<Bundler>({
-      message: locale.question.bundler,
-      choices: bundlers.map((item) => ({
-        name: item,
-        value: item,
-      })),
-    })
+  // eslint-disable-next-line no-param-reassign
+  bundler ??= await select<Bundler>({
+    message: locale.question.bundler,
+    choices: bundlers.map((item) => ({
+      name: item,
+      value: item,
+    })),
+  })
 
   // complete preset
-  if (!preset)
-    // eslint-disable-next-line no-param-reassign
-    preset = await select<Preset>({
-      message: locale.question.preset,
-      choices: presets.map((item) => ({
-        name: item,
-        value: item,
-      })),
-    })
+  // eslint-disable-next-line no-param-reassign
+  preset ??= await select<Preset>({
+    message: locale.question.preset,
+    choices: presets.map((item) => ({
+      name: item,
+      value: item,
+    })),
+  })
 
   /*
    * Generate template
@@ -129,7 +128,7 @@ export async function mainAction(
 
   execSync(
     `${packageManager} install ${registry ? `--registry ${registry}` : ''}`,
-    { cwd: targetDirPath, stdio: 'inherit', encoding: 'utf8' },
+    { cwd: targetDirPath, stdio: 'inherit', encoding: 'utf-8' },
   )
 
   console.log(locale.hint.finish)

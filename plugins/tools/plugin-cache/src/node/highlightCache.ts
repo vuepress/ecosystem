@@ -24,7 +24,7 @@ export const highlightCache = (md: Markdown, app: App): void => {
 
   const { highlight } = md.options
 
-  md.options.highlight = (...args) => {
+  md.options.highlight = (...args): string => {
     const key = hash(args.join(''))
     const cached = cache.get(key)
 

@@ -44,7 +44,7 @@ export const getType = (
         const indexes = store.addItems(
           // get page paths
           pages
-            .filter(filter)
+            .filter((page) => filter(page))
             .sort(sorter)
             .map(({ path: itemPagePath }) => itemPagePath),
         )

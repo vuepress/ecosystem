@@ -27,6 +27,7 @@ import { getElement } from '../utils/index.js'
  */
 export const useRtl = (
   rtlLocalePaths: string[],
+  // oxlint-disable-next-line unicorn/no-object-as-default-parameter
   selectorOptions: Record<string, Record<string, string>> = {
     html: { dir: 'rtl' },
   },
@@ -42,7 +43,7 @@ export const useRtl = (
       if (element)
         entries(attrs).forEach(([attr, value]) => {
           if (attr === 'class') {
-            element.classList[isRTL ? 'add' : 'remove'](value)
+            element.classList.toggle(value, isRTL)
           } else if (isRTL) {
             element.setAttribute(attr, value)
           } else {

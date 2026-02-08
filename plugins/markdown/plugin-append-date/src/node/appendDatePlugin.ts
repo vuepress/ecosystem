@@ -10,8 +10,6 @@ import type { AppendDatePluginOptions } from './options.js'
  *
  * 追加日期插件
  *
- * @param [options={}] - Plugin options / 插件选项
- *
  * @example
  * ```ts
  * import { appendDatePlugin } from '@vuepress/plugin-append-date'
@@ -31,7 +29,7 @@ export const appendDatePlugin = (
 ): PluginObject => ({
   name: PLUGIN_NAME,
 
-  onInitialized: async (app): Promise<void> => {
+  onInitialized: async (app) => {
     if (isGitPluginEnabled(app))
       await Promise.all(
         (app.pages as Page<GitPluginPageData>[]).map((page) =>

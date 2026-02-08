@@ -19,6 +19,7 @@ export const useNprogress = (): void => {
     const loadedPages = new Set()
 
     // add path of current page as initial value
+    // oxlint-disable-next-line unicorn/no-immediate-mutation
     loadedPages.add(router.currentRoute.value.path)
 
     // show progress bar before navigation

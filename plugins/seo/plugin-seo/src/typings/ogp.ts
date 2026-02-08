@@ -116,6 +116,7 @@ export interface ArticleSeoContent extends SimpleSeoContent {
    * Writers of the article
    */
   'article:author'?: string
+
   /**
    * 文章章节
    *

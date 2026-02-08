@@ -61,9 +61,7 @@ export const useBlogCategory = <
       map: {},
     }
 
-    for (const category in currentMap.map) {
-      const categoryMap = currentMap.map[category]
-
+    for (const [category, categoryMap] of Object.entries(currentMap.map)) {
       result.map[category] = { path: categoryMap.path, items: [] }
 
       for (const index of categoryMap.indexes) {

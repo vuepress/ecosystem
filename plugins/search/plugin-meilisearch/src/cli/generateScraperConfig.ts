@@ -56,6 +56,7 @@ const generateOnlyUrls = (
     )
 }
 
+// oxlint-disable-next-line max-statements
 export const generateScraperConfig = async (
   source: string,
   output: string | undefined,
@@ -91,7 +92,7 @@ export const generateScraperConfig = async (
     userConfig,
   })
 
-  if (appConfig === null) return
+  if (appConfig == null) return
 
   // create vuepress app
   const app = createBuildApp(appConfig)
@@ -140,7 +141,7 @@ export const generateScraperConfig = async (
       (line) => line.startsWith(sourceRelativePath) && line.endsWith('.md'),
     )
 
-    .map((line) => line.substring(sourceRelativePath.length + 1))
+    .map((line) => line.slice(sourceRelativePath.length + 1))
 
   if (changedMarkdownFilesPathRelative.length === 0) {
     logger.info('No changed files found.')

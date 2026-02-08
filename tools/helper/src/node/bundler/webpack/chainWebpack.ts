@@ -27,6 +27,13 @@ export const chainWebpack = (
     const webpackBundlerOptions = bundlerOptions as WebpackBundlerOptions
     const { chainWebpack: originalChainWebpack } = webpackBundlerOptions
 
+    /**
+     * Chain webpack config
+     *
+     * @param config - Webpack chain config
+     * @param isServer - Whether it's for server
+     * @param isBuild - Whether it's for build
+     */
     webpackBundlerOptions.chainWebpack = (config, isServer, isBuild): void => {
       originalChainWebpack?.(config, isServer, isBuild)
       chain(config, isServer, isBuild)

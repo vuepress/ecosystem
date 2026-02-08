@@ -8,6 +8,7 @@ export const usePageview = (): UpdatePageview => {
   const options = useArtalkOptions()
 
   return ({ selector }) => {
+    // oxlint-disable-next-line import/no-named-as-default-member
     Artalk.loadCountWidget({
       server: options.value.server,
       site: options.value.site,

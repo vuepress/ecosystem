@@ -91,10 +91,10 @@ export default defineComponent({
       div.classList.add('mermaid-preview')
 
       div.innerHTML = svgCode.value
-      body.appendChild(div)
+      body.append(div)
 
       div.addEventListener('click', () => {
-        body.removeChild(div)
+        div.remove()
       })
     }
 

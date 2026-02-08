@@ -1,7 +1,7 @@
 /**
- * Options for @vuepress/plugin-clarity-analytics
+ * Options for `@vuepress/plugin-clarity-analytics`
  *
- * @vuepress/plugin-clarity-analytics 插件选项
+ * `@vuepress/plugin-clarity-analytics` 插件选项
  */
 export interface ClarityOptions {
   /**

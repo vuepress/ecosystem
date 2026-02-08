@@ -37,7 +37,7 @@ export const createPackageJson = async ({
     message: locale.question.name,
     default: 'my-vuepress-site',
     validate: (value: string): string | true =>
-      PACKAGE_NAME_REG.exec(value) ? true : locale.error.name,
+      PACKAGE_NAME_REG.test(value) ? true : locale.error.name,
   })
 
   const description = await input({
@@ -49,7 +49,7 @@ export const createPackageJson = async ({
     message: locale.question.version,
     default: '0.0.1',
     validate: (value: string): string | true =>
-      VERSION_REG.exec(value) ? true : locale.error.version,
+      VERSION_REG.test(value) ? true : locale.error.version,
   })
 
   const license = await input({

@@ -8,6 +8,8 @@ import type { NavbarItem } from '../typings.js'
 
 /**
  * Get navbar config of select language dropdown
+ *
+ * @returns Navbar config of select language dropdown
  */
 export const useNavbarSelectLanguage = (): ComputedRef<NavbarItem[]> => {
   const route = useRoute()
@@ -33,7 +35,6 @@ export const useNavbarSelectLanguage = (): ComputedRef<NavbarItem[]> => {
       }`,
       children: localePaths.map((targetLocalePath) => {
         // target locale config of this language link
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         const targetSiteLocale = site.value.locales?.[targetLocalePath] ?? {}
         const targetThemeLocale = theme.value.locales?.[targetLocalePath] ?? {}
         const targetLang = `${targetSiteLocale.lang}`

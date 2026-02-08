@@ -81,12 +81,12 @@ export const injectScssConfigModule = (
 
                 if (
                   originalResult.includes(configModuleName) &&
-                  !originalResult.match(configRegExp)
+                  !configRegExp.test(originalResult)
                 )
                   originalResult = `${configImport}\n${originalResult}`
                 if (
                   originalResult.includes(paletteModuleName) &&
-                  !originalResult.match(paletteRegExp)
+                  !paletteRegExp.test(originalResult)
                 )
                   originalResult = `${paletteImport}\n${originalResult}`
 
@@ -108,7 +108,7 @@ export const injectScssConfigModule = (
     const { additionalData } = webpackBundlerConfig.scss
 
     webpackBundlerConfig.scss.additionalData = (
-      content: string,
+      content,
       loaderContext: SassLoaderContext,
     ): string => {
       let originalContent = isString(additionalData)
@@ -119,13 +119,13 @@ export const injectScssConfigModule = (
 
       if (
         originalContent.includes(configModuleName) &&
-        !originalContent.match(configRegExp)
+        !configRegExp.test(originalContent)
       )
         originalContent = `${configImport}\n${originalContent}`
 
       if (
         originalContent.includes(paletteModuleName) &&
-        !originalContent.match(paletteRegExp)
+        !paletteRegExp.test(originalContent)
       )
         originalContent = `${paletteImport}\n${originalContent}`
 

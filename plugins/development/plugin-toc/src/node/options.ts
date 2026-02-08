@@ -2,9 +2,9 @@ import type { GetHeadersOptions } from '@vuepress/helper'
 import type { TocRenderOptions } from '../shared/index.js'
 
 /**
- * Options for @vuepress/plugin-toc
+ * Options for `@vuepress/plugin-toc`
  *
- * @vuepress/plugin-toc 的选项
+ * `@vuepress/plugin-toc` 的选项
  */
 export interface TocPluginOptions {
   /**

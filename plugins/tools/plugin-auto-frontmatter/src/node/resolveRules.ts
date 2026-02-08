@@ -6,7 +6,10 @@ import type {
 
 /**
  * resolve rules from options
+ *
  * @internal
+ * @param options - Auto frontmatter plugin options / 自动 frontmatter 插件选项
+ * @returns List of auto frontmatter rules / 自动 frontmatter 规则列表
  */
 export const resolveRules = (
   options: AutoFrontmatterPluginOptions,

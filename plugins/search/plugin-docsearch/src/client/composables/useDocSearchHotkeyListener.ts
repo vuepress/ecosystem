@@ -1,3 +1,4 @@
+// oxlint-disable promise/prefer-await-to-callbacks
 import type { DocSearchProps } from '@docsearch/react'
 import { isMacOS, isiPad } from '@vuepress/helper/client'
 import { useEventListener } from '@vueuse/core'
@@ -5,6 +6,9 @@ import type { ComputedRef } from 'vue'
 
 /**
  * Add hotkey listener, remove it after triggered
+ *
+ * @param options - DocSearch options / DocSearch 配置项
+ * @param callback - Callback function to open search modal / 打开搜索模态框的回调函数
  */
 export const useDocSearchHotkeyListener = (
   options: ComputedRef<DocSearchProps>,

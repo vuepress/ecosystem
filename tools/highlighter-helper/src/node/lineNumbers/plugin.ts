@@ -7,8 +7,7 @@ import { resolveLineNumbers } from './resolveLineNumbers.js'
  *
  * 为 markdown-it 中的代码块添加行号
  *
- * @param md - The markdown-it instance / markdown-it 实例
- * @param options - Plugin options / 插件选项
+ * @param md - MarkdownIt instance / MarkdownIt 实例
  *
  * @example
  * ```ts
@@ -30,7 +29,7 @@ export const lineNumbers = (
 ): void => {
   const rawFence = md.renderer.rules.fence!
 
-  md.renderer.rules.fence = (...args) => {
+  md.renderer.rules.fence = (...args): string => {
     const [tokens, index] = args
     const token = tokens[index]
     // get token info
@@ -64,7 +63,7 @@ export const lineNumbers = (
       typeof lineNumbersInfo === 'number' ? lineNumbersInfo - 1 : 0
     const lineNumbersStyle = `style="counter-reset:line-number ${startNumbers}"`
 
-    const lineNumbersCode = Array(lines.length)
+    const lineNumbersCode = Array.from({ length: lines.length })
       .fill('<div class="line-number"></div>')
       .join('')
 

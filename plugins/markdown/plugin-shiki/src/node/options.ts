@@ -8,9 +8,9 @@ import type { MarkdownItPreWrapperOptions } from './markdown/index.js'
 import type { ShikiHighlightOptions } from './types.js'
 
 /**
- * Options of @vuepress/plugin-shiki
+ * Options of `@vuepress/plugin-shiki`
  *
- * @vuepress/plugin-shiki 的选项
+ * `@vuepress/plugin-shiki` 的选项
  */
 export type ShikiPluginOptions = MarkdownItCodeBlockTitleOptions &
   MarkdownItLineNumbersOptions &

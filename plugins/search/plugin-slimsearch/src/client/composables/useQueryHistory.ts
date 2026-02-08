@@ -23,12 +23,12 @@ export const useQueryHistory = (): QueryHistory => {
 
   const addQueryHistory = (item: string): void => {
     if (enabled)
-      searchProQueryStorage.value = Array.from(
-        new Set([
+      searchProQueryStorage.value = [
+        ...new Set([
           item,
           ...searchProQueryStorage.value.slice(0, queryHistoryCount - 1),
         ]),
-      )
+      ]
   }
 
   const removeQueryHistory = (index: number): void => {

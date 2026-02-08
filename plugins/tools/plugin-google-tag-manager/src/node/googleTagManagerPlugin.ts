@@ -2,7 +2,9 @@ import type { Plugin, PluginObject } from 'vuepress/core'
 import { logger } from 'vuepress/utils'
 
 /**
- * Options for @vuepress/plugin-google-tag-manager
+ * Options for `@vuepress/plugin-google-tag-manager`
+ *
+ * `@vuepress/plugin-google-tag-manager` 插件选项
  */
 export interface GoogleTagManagerPluginOptions {
   /**

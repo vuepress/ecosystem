@@ -108,6 +108,8 @@ export const defineDocSearchConfig = (
 
 /**
  * @internal
+ *
+ * @returns DocSearch options with locale config / 包含多语言配置的 DocSearch 选项
  */
 export const useDocSearchOptions = (): ComputedRef<DocSearchProps> => {
   const options = inject(docsearchSymbol)!
@@ -121,6 +123,8 @@ export const useDocSearchOptions = (): ComputedRef<DocSearchProps> => {
 
 /**
  * @internal
+ *
+ * @param app - Vue app instance / Vue 应用实例
  */
 export const injectDocSearchConfig = (app: App): void => {
   // @ts-expect-error: Types loop back

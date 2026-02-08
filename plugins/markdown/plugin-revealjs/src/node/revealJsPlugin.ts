@@ -45,28 +45,24 @@ export const revealJsPlugin = ({
   plugins = [],
   themes = ['auto'],
   layout = 'SlidePage',
-}: RevealJsPluginOptions = {}): Plugin => {
-  return {
-    name: PLUGIN_NAME,
+}: RevealJsPluginOptions = {}): Plugin => ({
+  name: PLUGIN_NAME,
 
-    extendsBundlerOptions: (bundlerOptions, app) => {
-      addViteOptimizeDepsExclude(bundlerOptions, app, [
-        'reveal.js/dist/reveal.esm.js',
-        'reveal.js/plugin/markdown/markdown.esm.js',
-        ...plugins.map(
-          (plugin) => `reveal.js/plugin/${plugin}/${plugin}.esm.js`,
-        ),
-      ])
+  extendsBundlerOptions: (bundlerOptions, app) => {
+    addViteOptimizeDepsExclude(bundlerOptions, app, [
+      'reveal.js/dist/reveal.esm.js',
+      'reveal.js/plugin/markdown/markdown.esm.js',
+      ...plugins.map((plugin) => `reveal.js/plugin/${plugin}/${plugin}.esm.js`),
+    ])
 
-      addViteSsrExternal(bundlerOptions, app, 'reveal.js')
-    },
+    addViteSsrExternal(bundlerOptions, app, 'reveal.js')
+  },
 
-    extendsMarkdown: (md) => {
-      md.use(revealJs)
-    },
+  extendsMarkdown: (md) => {
+    md.use(revealJs)
+  },
 
-    onPrepared: async (app) => prepareRevealJsEntry(app, plugins),
-
-    clientConfigFile: (app) => prepareClientConfigFile(app, themes, layout),
-  }
-}
+  onPrepared: async (app) => prepareRevealJsEntry(app, plugins),
+  clientConfigFile: (app): Promise<string> =>
+    prepareClientConfigFile(app, themes, layout),
+})

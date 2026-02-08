@@ -365,7 +365,7 @@ console.log(message) // prints Hello Bar\
     expect(result).toMatchSnapshot()
   })
 
-  it('should not remove // [\\!code xxx]', () => {
+  it(String.raw`should not remove // [\!code xxx]`, () => {
     const code = genCode(`\
 const a = 1 // [\\!code focus]`)
 
