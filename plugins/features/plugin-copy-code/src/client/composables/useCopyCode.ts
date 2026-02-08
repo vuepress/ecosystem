@@ -145,7 +145,7 @@ export const useCopyCode = ({
     copyElement.type = 'button'
     copyElement.classList.add('vp-copy-code-button')
     copyElement.setAttribute('aria-label', locale.value.copy)
-    copyElement.dataset.copied = locale.value.copy
+    copyElement.dataset.copied = locale.value.copied
 
     codeBlockElement.parentElement?.insertBefore(copyElement, codeBlockElement)
     codeBlockElement.setAttribute('copy-code', '')
