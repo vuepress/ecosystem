@@ -129,6 +129,7 @@
         ],
 
         // components may have many dependencies, as they need to import other components and utils
+        // FIXME: This might be a bug, see https://github.com/oxc-project/oxc/issues/19120
         "import/max-dependencies": "off"
       }
     },

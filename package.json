@@ -61,8 +61,8 @@
   },
   "nano-staged": {
     "**/*": "oxfmt --no-error-on-unmatched-pattern",
-    "*.{cjs|js,ts}": "oxlint --fix --type-aware --type-check --deny-warnings --report-unused-disable-directives",
-    "*.(s?css|html|vue)": "stylelint --fix",
+    "*.{cjs,js,ts,vue}": "oxlint --fix --type-aware --type-check --deny-warnings --report-unused-disable-directives",
+    "*.{css,scss,html,vue}": "stylelint --fix",
     "package.json": "sort-package-json"
   },
   "engines": {
