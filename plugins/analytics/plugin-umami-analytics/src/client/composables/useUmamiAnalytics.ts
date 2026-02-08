@@ -32,12 +32,12 @@ export const useUmamiAnalytics = ({
   const script = document.createElement('script')
   script.src = link!
   script.async = true
-  script.setAttribute('data-website-id', id)
+  script.dataset.websiteId = id
 
-  if (autoTrack === false) script.setAttribute('data-auto-track', 'false')
-  if (cache) script.setAttribute('data-cache', 'true')
-  if (domains) script.setAttribute('data-domains', domains.join(','))
-  if (hostUrl) script.setAttribute('data-hostUrl', hostUrl)
+  if (autoTrack === false) script.dataset.autoTrack = 'false'
+  if (cache) script.dataset.cache = 'true'
+  if (domains) script.dataset.domains = domains.join(',')
+  if (hostUrl) script.dataset.hostUrl = hostUrl
 
   document.head.append(script)
 }

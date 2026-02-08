@@ -18,7 +18,6 @@
     "no-warning-comments": "off",
     // object assign can be performant
     "prefer-object-spread": "off",
-    "import/max-dependencies": "off",
 
     // @recommended is used to mark recommended fields in options interfaces, which are not required but recommended to be provided
     "jsdoc/check-tag-names": [
@@ -26,13 +25,6 @@
       { "definedTags": ["recommended"], "typed": true }
     ],
 
-    // allow functions that return promise to not use await
-    "typescript/require-await": "off",
-    "typescript/no-dynamic-delete": "off",
-    "unicorn/prefer-dom-node-dataset": "off",
-    "unicorn/prefer-global-this": "off",
-    "unicorn/no-array-reduce": "off",
-    "unicorn/no-typeof-undefined": "off",
     "typescript/explicit-function-return-type": [
       "warn",
       { "allowExpressions": true }
@@ -43,8 +35,14 @@
     "typescript/prefer-nullish-coalescing": "off",
     // we often check other types
     "typescript/strict-boolean-expressions": "off",
+
     // disabled due to performance consideration
-    "unicorn/prefer-code-point": "off"
+    "unicorn/prefer-code-point": "off",
+    // globalThis is not supported in some environments, and we already handle SSR carefully
+    // so window is still preferred in client codes
+    "unicorn/prefer-global-this": "off",
+    // sometimes we need to check if a defined variable is injected
+    "unicorn/no-typeof-undefined": "off"
   },
   "overrides": [
     {
@@ -65,6 +63,7 @@
         "no-console": "off"
       }
     },
+    // node files
     {
       "files": ["**/src/node/**/*.ts"],
       "plugins": ["node"],
@@ -131,7 +130,10 @@
         "max-lines-per-function": [
           "warn",
           { "max": 300, "skipBlankLines": true, "skipComments": true }
-        ]
+        ],
+
+        // components may have many dependencies, as they need to import other components and utils
+        "import/max-dependencies": "off"
       }
     },
     {
@@ -148,13 +150,14 @@
       }
     },
     {
-      "files": ["**/src/node/*Plugin.ts"],
+      "files": ["**/src/node/*Plugin.ts", "**/src/node/*Theme.ts"],
       "rules": {
         // plugin entrypoints can be complex and have many dependencies,
         // as they need to export a function that returns a VuePress plugin
         "complexity": "off",
         "max-dependencies": "off",
         "max-lines-per-function": "off",
+        "import/max-dependencies": "off",
 
         // jsdoc is not needed for plugin entrypoints, as the options are already typed
         // and a VuePress plugin type is expected to be returned

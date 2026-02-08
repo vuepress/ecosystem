@@ -6,4 +6,4 @@
  * @returns Darkmode status / 暗色模式状态
  */
 export const getDarkMode = (): boolean =>
-  document.documentElement.getAttribute('data-theme') === 'dark'
+  document.documentElement.dataset.theme === 'dark'

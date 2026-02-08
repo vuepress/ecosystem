@@ -41,7 +41,6 @@ export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
   themePlugins?: DefaultThemePluginsOptions
 }
 
-// oxlint-disable-next-line max-lines-per-function, complexity
 export const defaultTheme = ({
   hostname,
   themePlugins = {},

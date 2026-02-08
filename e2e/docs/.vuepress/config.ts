@@ -1,3 +1,4 @@
+// oxlint-disable import/max-dependencies
 import process from 'node:process'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'

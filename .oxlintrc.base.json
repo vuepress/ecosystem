@@ -61,6 +61,11 @@
     // import plugin rules
     // exports shall be at their declaration location
     "import/exports-last": "off",
+    // type imports should be ignored
+    "import/max-dependencies": [
+      "warn",
+      { "ignoreTypeImports": true, "max": 15 }
+    ],
     // usually we just export vue components as default export without naming it
     "import/no-anonymous-default-export": "off",
     // config file may use default export
@@ -173,6 +178,8 @@
     "unicorn/filename-case": "off",
     // this rule introduce too many false positives
     "unicorn/explicit-length-check": "off",
+    // sometimes we do need to use reduce for better readability
+    "unicorn/no-array-reduce": "off",
     // toReversed can introduce memory overhead,
     // in some chained calls it is better to use reverse as the "reversed" array is also a temp variable.
     "unicorn/no-array-reverse": "off",

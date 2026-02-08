@@ -22,6 +22,7 @@ export const updatePackages = async (
         console.error(
           `Removing "${dependency}" from your dependencies, as it's no longer maintained.`,
         )
+        // oxlint-disable-next-line typescript/no-dynamic-delete
         delete dependencies[dependency]
 
         return
