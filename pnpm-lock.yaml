@@ -327,7 +327,7 @@ importers:
         version: 1.97.3
       sass-loader:
         specifier: 'catalog:'
-        version: 16.0.6(sass-embedded@1.97.3)(sass@1.97.3)(webpack@5.104.1(esbuild@0.27.3))
+        version: 16.0.6(sass-embedded@1.97.3)(sass@1.97.3)(webpack@5.105.0(esbuild@0.27.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.27(typescript@5.9.3)
@@ -585,7 +585,7 @@ importers:
         version: 1.97.3
       sass-loader:
         specifier: 'catalog:'
-        version: 16.0.6(sass-embedded@1.97.3)(sass@1.97.3)(webpack@5.104.1(esbuild@0.27.3))
+        version: 16.0.6(sass-embedded@1.97.3)(sass@1.97.3)(webpack@5.105.0(esbuild@0.27.3))
       vuepress:
         specifier: 'catalog:'
         version: 2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@25.2.1)(jiti@2.6.1)(lightningcss@1.31.1)(sass-embedded@1.97.3)(sass@1.97.3)(terser@5.46.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(@vuepress/bundler-webpack@2.0.0-rc.26(esbuild@0.27.3)(tslib@2.8.1)(typescript@5.9.3))(typescript@5.9.3)(vue@3.5.27(typescript@5.9.3))
@@ -1455,6 +1455,10 @@ importers:
       vuepress:
         specifier: 'catalog:'
         version: 2.0.0-rc.26(@vuepress/bundler-vite@2.0.0-rc.26(@types/node@25.2.1)(jiti@2.6.1)(lightningcss@1.31.1)(sass-embedded@1.97.3)(sass@1.97.3)(terser@5.46.0)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(@vuepress/bundler-webpack@2.0.0-rc.26(esbuild@0.27.3)(tslib@2.8.1)(typescript@5.9.3))(typescript@5.9.3)(vue@3.5.27(typescript@5.9.3))
+    devDependencies:
+      webpack:
+        specifier: ^5.105.0
+        version: 5.105.0(esbuild@0.27.3)
 
   themes/theme-default:
     dependencies:
@@ -1514,7 +1518,7 @@ importers:
         version: 1.97.3
       sass-loader:
         specifier: 'catalog:'
-        version: 16.0.6(sass-embedded@1.97.3)(sass@1.97.3)(webpack@5.104.1(esbuild@0.27.3))
+        version: 16.0.6(sass-embedded@1.97.3)(sass@1.97.3)(webpack@5.105.0(esbuild@0.27.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.27(typescript@5.9.3)
@@ -1542,7 +1546,7 @@ importers:
         version: 1.97.3
       sass-loader:
         specifier: 'catalog:'
-        version: 16.0.6(sass-embedded@1.97.3)(sass@1.97.3)(webpack@5.104.1(esbuild@0.27.3))
+        version: 16.0.6(sass-embedded@1.97.3)(sass@1.97.3)(webpack@5.105.0(esbuild@0.27.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.27(typescript@5.9.3)
@@ -5808,6 +5812,10 @@ packages:
     resolution: {integrity: sha512-LgQMM4WXU3QI+SYgEc2liRgznaD5ojbmY3sb8LxyguVkIg5FxdpTkvk72te2R38/TGKxH634oLxXRGY6d7AP+Q==}
     engines: {node: '>=10.13.0'}
 
+  enhanced-resolve@5.19.0:
+    resolution: {integrity: sha512-phv3E1Xl4tQOShqSte26C7Fl84EwUdZsyOuSSk9qtAGyyQs2s3jJzComh+Abf4g187lUUAvH+H26omrqia2aGg==}
+    engines: {node: '>=10.13.0'}
+
   entities@2.2.0:
     resolution: {integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==}
 
@@ -9546,6 +9554,16 @@ packages:
 
   webpack@5.104.1:
     resolution: {integrity: sha512-Qphch25abbMNtekmEGJmeRUhLDbe+QfiWTiqpKYkpCOWY64v9eyl+KRRLmqOFA2AvKPpc9DC6+u2n76tQLBoaA==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    peerDependencies:
+      webpack-cli: '*'
+    peerDependenciesMeta:
+      webpack-cli:
+        optional: true
+
+  webpack@5.105.0:
+    resolution: {integrity: sha512-gX/dMkRQc7QOMzgTe6KsYFM7DxeIONQSui1s0n/0xht36HvrgbxtM1xBlgx596NbpHuQU8P7QpKwrZYwUX48nw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     peerDependencies:
@@ -14361,6 +14379,11 @@ snapshots:
       graceful-fs: 4.2.11
       tapable: 2.3.0
 
+  enhanced-resolve@5.19.0:
+    dependencies:
+      graceful-fs: 4.2.11
+      tapable: 2.3.0
+
   entities@2.2.0: {}
 
   entities@4.5.0: {}
@@ -17401,6 +17424,14 @@ snapshots:
       sass-embedded: 1.97.3
       webpack: 5.104.1(esbuild@0.27.3)
 
+  sass-loader@16.0.6(sass-embedded@1.97.3)(sass@1.97.3)(webpack@5.105.0(esbuild@0.27.3)):
+    dependencies:
+      neo-async: 2.6.2
+    optionalDependencies:
+      sass: 1.97.3
+      sass-embedded: 1.97.3
+      webpack: 5.105.0(esbuild@0.27.3)
+
   sass@1.97.3:
     dependencies:
       chokidar: 4.0.3
@@ -18026,6 +18057,17 @@ snapshots:
     optionalDependencies:
       esbuild: 0.27.3
 
+  terser-webpack-plugin@5.3.16(esbuild@0.27.3)(webpack@5.105.0(esbuild@0.27.3)):
+    dependencies:
+      '@jridgewell/trace-mapping': 0.3.31
+      jest-worker: 27.5.1
+      schema-utils: 4.3.3
+      serialize-javascript: 6.0.2
+      terser: 5.46.0
+      webpack: 5.105.0(esbuild@0.27.3)
+    optionalDependencies:
+      esbuild: 0.27.3
+
   terser@5.46.0:
     dependencies:
       '@jridgewell/source-map': 0.3.11
@@ -18569,6 +18611,38 @@ snapshots:
       schema-utils: 4.3.3
       tapable: 2.3.0
       terser-webpack-plugin: 5.3.16(esbuild@0.27.3)(webpack@5.104.1(esbuild@0.27.3))
+      watchpack: 2.5.1
+      webpack-sources: 3.3.3
+    transitivePeerDependencies:
+      - '@swc/core'
+      - esbuild
+      - uglify-js
+
+  webpack@5.105.0(esbuild@0.27.3):
+    dependencies:
+      '@types/eslint-scope': 3.7.7
+      '@types/estree': 1.0.8
+      '@types/json-schema': 7.0.15
+      '@webassemblyjs/ast': 1.14.1
+      '@webassemblyjs/wasm-edit': 1.14.1
+      '@webassemblyjs/wasm-parser': 1.14.1
+      acorn: 8.15.0
+      acorn-import-phases: 1.0.4(acorn@8.15.0)
+      browserslist: 4.28.1
+      chrome-trace-event: 1.0.4
+      enhanced-resolve: 5.19.0
+      es-module-lexer: 2.0.0
+      eslint-scope: 5.1.1
+      events: 3.3.0
+      glob-to-regexp: 0.4.1
+      graceful-fs: 4.2.11
+      json-parse-even-better-errors: 2.3.1
+      loader-runner: 4.3.1
+      mime-types: 2.1.35
+      neo-async: 2.6.2
+      schema-utils: 4.3.3
+      tapable: 2.3.0
+      terser-webpack-plugin: 5.3.16(esbuild@0.27.3)(webpack@5.105.0(esbuild@0.27.3))
       watchpack: 2.5.1
       webpack-sources: 3.3.3
     transitivePeerDependencies:
