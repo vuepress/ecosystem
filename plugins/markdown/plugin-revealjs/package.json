@@ -56,7 +56,7 @@
     "vue": "catalog:"
   },
   "devDependencies": {
-    "markdown-it": "^14.1.0"
+    "markdown-it": "^14.1.1"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

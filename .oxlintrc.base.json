@@ -124,6 +124,8 @@
     // typescript plugin rules
     // disable unsafe type assertion checks
     "typescript/no-unsafe-type-assertion": "off",
+    // we may use a union contain void to declare function return type
+    "typescript/no-invalid-void-type": "off",
     // enforce naming conventions
     // NOTE: not implemented yet by the moment: https://github.com/oxc-project/tsgolint/tree/main?tab=readme-ov-file#implemented-rules
     "typescript/naming-convention": [
@@ -247,7 +249,7 @@
   },
   "overrides": [
     {
-      "files": ["scripts/**/*.{js,ts}", "*.config.{js,ts,mjs,mts,cjs,cts}"],
+      "files": ["**/scripts/**/*.{js,ts}", "*.config.{js,ts,mjs,mts,cjs,cts}"],
       "plugins": ["node"],
       "rules": {
         // allow console usage in scripts and config files
@@ -338,6 +340,7 @@
         "unicorn/consistent-function-scoping": "off"
       }
     },
+    // for playwright e2e tests
     {
       "files": ["e2e/**/*.{spec,test}.{js,ts}"],
       "rules": {

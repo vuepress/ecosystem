@@ -1,4 +1,4 @@
-import type { DocSearchProps } from '@docsearch/react'
+import type { DocSearchProps } from '@docsearch/js'
 import { debounce } from 'ts-debounce'
 import { useRouter } from 'vuepress/client'
 import { removeLeadingSlash, resolveRoutePathFromUrl } from 'vuepress/shared'

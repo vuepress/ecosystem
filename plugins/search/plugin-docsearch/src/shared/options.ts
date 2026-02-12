@@ -1,4 +1,4 @@
-import type { DocSearchProps } from '@docsearch/react'
+import type { DocSearchProps } from '@docsearch/js'
 import type { LocaleConfig } from 'vuepress/shared'
 
 /**

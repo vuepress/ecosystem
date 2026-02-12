@@ -12,7 +12,6 @@ declare global {
 }
 
 const getPlatform = (): string =>
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
   navigator.userAgentData?.platform ?? navigator.platform
 const getUA = (): string => navigator.userAgent
 

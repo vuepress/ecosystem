@@ -1,5 +1,5 @@
 // oxlint-disable promise/prefer-await-to-callbacks
-import type { DocSearchProps } from '@docsearch/react'
+import type { DocSearchProps } from '@docsearch/js'
 import { isMacOS, isiPad } from '@vuepress/helper/client'
 import { useEventListener } from '@vueuse/core'
 import type { ComputedRef } from 'vue'

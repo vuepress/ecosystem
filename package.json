@@ -30,7 +30,7 @@
     "@lerna-lite/publish": "^4.11.2",
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
-    "@types/node": "^25.2.2",
+    "@types/node": "^25.2.3",
     "@types/webpack-env": "^1.18.8",
     "@vitest/coverage-istanbul": "4.0.18",
     "cpx2": "^8.0.0",
@@ -38,9 +38,9 @@
     "http-server": "^14.1.1",
     "husky": "^9.1.7",
     "nano-staged": "^0.9.0",
-    "oxfmt": "0.28.0",
-    "oxlint": "1.43.0",
-    "oxlint-tsgolint": "0.11.4",
+    "oxfmt": "0.32.0",
+    "oxlint": "1.47.0",
+    "oxlint-tsgolint": "0.12.1",
     "postcss-html": "^1.8.1",
     "rimraf": "^6.1.2",
     "rollup": "^4.57.1",
@@ -49,7 +49,7 @@
     "rollup-plugin-resolve-shebang": "^1.0.1",
     "sass-embedded": "catalog:",
     "sort-package-json": "^3.6.1",
-    "stylelint": "^17.1.1",
+    "stylelint": "^17.2.0",
     "stylelint-config-hope": "^11.0.0",
     "stylelint-config-html": "^1.1.0",
     "tsconfig-vuepress": "^7.0.0",
@@ -68,5 +68,5 @@
   "engines": {
     "node": "^20.19.0 || >= 22.12.0"
   },
-  "packageManager": "pnpm@10.29.1"
+  "packageManager": "pnpm@10.29.3"
 }

@@ -1,4 +1,4 @@
-import type { DocSearchProps } from '@docsearch/react'
+import type { DocSearchProps } from '@docsearch/js'
 import { isMacOS, isiPad, isiPhone } from '@vuepress/helper/client'
 
 type DocSearchTranslation = Exclude<DocSearchProps['translations'], undefined>

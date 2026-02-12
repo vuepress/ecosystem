@@ -1,4 +1,4 @@
-import type { DocSearchProps } from '@docsearch/react'
+import type { DocSearchProps } from '@docsearch/js'
 import { deepAssign, isFunction } from '@vuepress/helper/client'
 import { watchImmediate } from '@vueuse/core'
 import type { App, ComputedRef, InjectionKey, MaybeRefOrGetter, Ref } from 'vue'

@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "ci-info": "^4.4.0",
-    "lru-cache": "^11.2.5"
+    "lru-cache": "^11.2.6"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

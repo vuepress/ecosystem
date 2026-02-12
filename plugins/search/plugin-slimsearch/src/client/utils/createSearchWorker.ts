@@ -74,7 +74,7 @@ const ERR_MSG = 'Canceled because of new search request.'
 export const createSearchWorker = (): SearchWorker => {
   const worker = new Worker(
     __VUEPRESS_DEV__
-      ? new URL('./worker.js', import.meta.url)
+      ? new URL('worker.js', import.meta.url)
       : `${__VUEPRESS_BASE__}${options.worker}`,
     __VUEPRESS_DEV__ ? { type: 'module' } : {},
   )

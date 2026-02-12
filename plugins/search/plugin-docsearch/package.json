@@ -45,14 +45,14 @@
   "dependencies": {
     "@docsearch/css": "^4.5.4",
     "@docsearch/js": "^4.5.4",
-    "@docsearch/react": "^4.5.4",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "ts-debounce": "^4.0.0",
     "vue": "catalog:"
   },
   "devDependencies": {
-    "algoliasearch": "5.47.0"
+    "@docsearch/react": "^4.5.4",
+    "algoliasearch": "5.48.1"
   },
   "peerDependencies": {
     "vuepress": "catalog:"
