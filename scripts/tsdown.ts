@@ -4,34 +4,6 @@ import { defineConfig } from 'tsdown'
 const isProduction = process.env.NODE_ENV === 'production'
 
 /**
- * File information
- *
- * 文件信息
- */
-export interface FileInfo {
-  /**
-   * Base directory
-   *
-   * 基础目录
-   */
-  base: string
-
-  /**
-   * Files to bundle
-   *
-   * 待打包的文件
-   */
-  files: string[]
-
-  /**
-   * Target directory
-   *
-   * 目标目录
-   */
-  target?: string
-}
-
-/**
  * Tsdown options
  *
  * Tsdown 选项
@@ -102,27 +74,13 @@ export interface TsdownOptions {
  * @param options - Tsdown options / Tsdown 选项
  * @returns Tsdown configuration / Tsdown 配置
  */
-// oxlint-disable-next-line complexity
 export const tsdownConfig = (
-  fileOptions: string | FileInfo,
+  fileOptions: string | string[],
   options: TsdownOptions = {},
 ): UserConfig => {
-  const isObject = typeof fileOptions === 'object'
-  const base = isObject ? (fileOptions.base ? `${fileOptions.base}/` : '') : ''
-  const files = isObject ? fileOptions.files : [fileOptions]
-  const targetDir = isObject ? (fileOptions.target ?? fileOptions.base) : ''
-  const isNode = isObject
-    ? fileOptions.base.startsWith('node') || fileOptions.base.startsWith('cli')
-    : fileOptions.startsWith('node/') || fileOptions.startsWith('cli/')
-  const isBrowser = isObject
-    ? fileOptions.base.startsWith('client')
-    : fileOptions.startsWith('client/')
+  const files = Array.isArray(fileOptions) ? fileOptions : [fileOptions]
 
   const {
-    platform = isNode ? 'node' : isBrowser ? 'browser' : 'neutral',
-    dts = isObject
-      ? !fileOptions.base.startsWith('cli')
-      : !fileOptions.startsWith('cli/'),
     alias,
     define,
     treeshake = {
@@ -131,20 +89,18 @@ export const tsdownConfig = (
     },
     noExternal = [],
     inlineOnly = false,
+    platform = 'node',
+    dts = true,
   } = options
 
   return defineConfig({
-    entry: Object.fromEntries(
-      files.map((item) => [item, `./src/${base}${item}.ts`]),
-    ),
+    entry: Object.fromEntries(files.map((item) => [item, `./src/${item}.ts`])),
     format: 'esm',
-    outDir: `./lib${targetDir ? `/${targetDir}` : ''}`,
+    outDir: './lib',
     sourcemap: true,
     dts,
     minify: isProduction,
-    target: isBrowser
-      ? ['chrome107', 'edge107', 'firefox104', 'safari16']
-      : 'node20.19',
+    target: ['node20.19', 'chrome107', 'edge107', 'firefox104', 'safari16'],
     platform,
     define,
     alias,
