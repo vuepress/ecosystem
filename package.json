@@ -4,7 +4,6 @@
   "type": "module",
   "scripts": {
     "build": "pnpm -r --stream build && pnpm build:copy && pnpm build:style",
-    "build:check": "tsc -b tsconfig.build.json --noEmit",
     "build:check-externals": "tsx scripts/checkExternals.ts",
     "build:copy": "pnpm --parallel --stream copy",
     "build:style": "pnpm --parallel --stream style",
@@ -21,12 +20,6 @@
     "test:cov": "cross-env TZ=Etc/UTC vitest run --coverage ",
     "test:e2e": "pnpm --filter ecosystem-e2e e2e:dev && pnpm --filter ecosystem-e2e e2e:build",
     "test:unit": "cross-env TZ=Etc/UTC vitest run"
-  },
-  "nano-staged": {
-    "**/*": "oxfmt --no-error-on-unmatched-pattern",
-    "*.{cjs,js,ts,vue}": "oxlint --fix --type-aware --type-check --deny-warnings --report-unused-disable-directives",
-    "*.{css,scss,html,vue}": "stylelint --fix",
-    "package.json": "sort-package-json"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.4.1",
@@ -59,8 +52,14 @@
     "vitest": "4.0.18",
     "vuepress": "catalog:"
   },
-  "packageManager": "pnpm@10.29.1",
+  "nano-staged": {
+    "**/*": "oxfmt --no-error-on-unmatched-pattern",
+    "*.{cjs,js,ts,vue}": "oxlint --fix --type-aware --type-check --deny-warnings --report-unused-disable-directives",
+    "*.{css,scss,html,vue}": "stylelint --fix",
+    "package.json": "sort-package-json"
+  },
   "engines": {
     "node": "^20.19.0 || >= 22.12.0"
-  }
+  },
+  "packageManager": "pnpm@10.29.1"
 }
