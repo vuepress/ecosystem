@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.123](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.122...v2.0.0-rc.123) (2026-02-12)
+
+### Bug Fixes
+
+- **plugin-cache:** ensure render method is bind with markdownIt instance ([01ceb73](https://github.com/vuepress/ecosystem/commit/01ceb73140de87429ffb5f43c3a430c0e17da17d))
+- **plugin-copy-code:** fix code copy button ([6bdfd64](https://github.com/vuepress/ecosystem/commit/6bdfd64cb501735afb667ef908e84a748d995789))
+
+### Features
+
+- **plugin-markdown-hint:** update note icon ([db1c198](https://github.com/vuepress/ecosystem/commit/db1c198a4287bd0e6fc1a57beba9e59ccc00742d))
+
+### Performance Improvements
+
+- **blog:** use string replace and flatMap if possible ([#600](https://github.com/vuepress/ecosystem/issues/600)) ([93cca2a](https://github.com/vuepress/ecosystem/commit/93cca2aa10d3c420e8554af4b7f097943a5f8a4e))
+
 # [2.0.0-rc.122](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.121...v2.0.0-rc.122) (2026-02-01)
 
 ### Bug Fixes

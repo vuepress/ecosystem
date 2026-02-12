@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.123](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.122...v2.0.0-rc.123) (2026-02-12)
+
+### Performance Improvements
+
+- **blog:** use string replace and flatMap if possible ([#600](https://github.com/vuepress/ecosystem/issues/600)) ([93cca2a](https://github.com/vuepress/ecosystem/commit/93cca2aa10d3c420e8554af4b7f097943a5f8a4e))
+
 # [2.0.0-rc.122](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.121...v2.0.0-rc.122) (2026-02-01)
 
 **Note:** Version bump only for package @vuepress/plugin-blog

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.123](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.122...v2.0.0-rc.123) (2026-02-12)
+
+**Note:** Version bump only for package @vuepress/plugin-markdown-container
+
 # [2.0.0-rc.120](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.119...v2.0.0-rc.120) (2025-11-28)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-container

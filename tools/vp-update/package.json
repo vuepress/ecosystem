@@ -1,6 +1,6 @@
 {
   "name": "vp-update",
-  "version": "2.0.0-rc.122",
+  "version": "2.0.0-rc.123",
   "description": "Update helper for VuePress2",
   "keywords": [
     "update",

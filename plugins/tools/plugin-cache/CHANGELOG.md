@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.123](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.122...v2.0.0-rc.123) (2026-02-12)
+
+### Bug Fixes
+
+- **plugin-cache:** ensure render method is bind with markdownIt instance ([01ceb73](https://github.com/vuepress/ecosystem/commit/01ceb73140de87429ffb5f43c3a430c0e17da17d))
+
 # [2.0.0-rc.122](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.121...v2.0.0-rc.122) (2026-02-01)
 
 **Note:** Version bump only for package @vuepress/plugin-cache
