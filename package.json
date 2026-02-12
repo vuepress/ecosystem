@@ -22,13 +22,17 @@
     "test:e2e": "pnpm --filter ecosystem-e2e e2e:dev && pnpm --filter ecosystem-e2e e2e:build",
     "test:unit": "cross-env TZ=Etc/UTC vitest run"
   },
+  "nano-staged": {
+    "**/*": "oxfmt --no-error-on-unmatched-pattern",
+    "*.{cjs,js,ts,vue}": "oxlint --fix --type-aware --type-check --deny-warnings --report-unused-disable-directives",
+    "*.{css,scss,html,vue}": "stylelint --fix",
+    "package.json": "sort-package-json"
+  },
   "devDependencies": {
     "@commitlint/cli": "^20.4.1",
     "@commitlint/config-conventional": "^20.4.1",
     "@lerna-lite/cli": "^4.11.2",
     "@lerna-lite/publish": "^4.11.2",
-    "@rollup/plugin-commonjs": "^29.0.0",
-    "@rollup/plugin-node-resolve": "^16.0.3",
     "@types/node": "^25.2.2",
     "@types/webpack-env": "^1.18.8",
     "@vitest/coverage-istanbul": "4.0.18",
@@ -42,10 +46,6 @@
     "oxlint-tsgolint": "0.11.4",
     "postcss-html": "^1.8.1",
     "rimraf": "^6.1.2",
-    "rollup": "^4.57.1",
-    "rollup-plugin-dts": "^6.3.0",
-    "rollup-plugin-esbuild": "^6.2.1",
-    "rollup-plugin-resolve-shebang": "^1.0.1",
     "sass-embedded": "catalog:",
     "sort-package-json": "^3.6.1",
     "stylelint": "^17.1.1",
@@ -59,14 +59,8 @@
     "vitest": "4.0.18",
     "vuepress": "catalog:"
   },
-  "nano-staged": {
-    "**/*": "oxfmt --no-error-on-unmatched-pattern",
-    "*.{cjs,js,ts,vue}": "oxlint --fix --type-aware --type-check --deny-warnings --report-unused-disable-directives",
-    "*.{css,scss,html,vue}": "stylelint --fix",
-    "package.json": "sort-package-json"
-  },
+  "packageManager": "pnpm@10.29.1",
   "engines": {
     "node": "^20.19.0 || >= 22.12.0"
-  },
-  "packageManager": "pnpm@10.29.1"
+  }
 }
