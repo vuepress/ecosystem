@@ -53,11 +53,13 @@ interface PackageJson {
 const extractImports = (content: string): string[] => {
   const imports: string[] = []
 
-  // Remove block comments, line comments, and template literals
+  // Remove block comments, template literals, then line comments
+  // Order matters: template literals must be removed before line comments
+  // because `//` inside template literals (e.g. URLs) is not a comment
   const stripped = content
     .replaceAll(/\/\*[\s\S]*?\*\//g, '')
-    .replaceAll(/\/\/[^\n]*/g, '')
     .replaceAll(/`[^`]*`/g, '""')
+    .replaceAll(/\/\/[^\n]*/g, '')
 
   const staticImportRegex =
     /(?:^|[\n;])\s*import\s+(?:[\s\S]*?\s+from\s+)?['"]([^'"]+)['"]/g
@@ -71,6 +73,13 @@ const extractImports = (content: string): string[] => {
     /(?:^|[\n;])\s*export\s+(?:[\s\S]*?\s+from\s+)['"]([^'"]+)['"]/g
 
   while ((match = reExportRegex.exec(stripped)) != null) {
+    imports.push(match[1])
+  }
+
+  // Dynamic import() expressions
+  const dynamicImportRegex = /\bimport\(\s*['"]([^'"]+)['"]\s*\)/g
+
+  while ((match = dynamicImportRegex.exec(stripped)) != null) {
     imports.push(match[1])
   }
 
@@ -190,9 +199,7 @@ const reports: PackageReport[] = []
 
 for (const pkgDir of findPackages()) {
   const pkgJsonPath = join(pkgDir, 'package.json')
-  const pkgJson = JSON.parse(
-    readFileSync(pkgJsonPath, 'utf-8'),
-  ) as PackageJson
+  const pkgJson = JSON.parse(readFileSync(pkgJsonPath, 'utf-8')) as PackageJson
   const libDir = join(pkgDir, 'lib')
 
   if (!existsSync(libDir)) continue
@@ -256,9 +263,7 @@ for (const pkgDir of findPackages()) {
       report.externalImports.add(specifier)
 
       if (!allowedDeps.has(pkgName)) {
-        report.issues.push(
-          `"${specifier}" (${pkgName} not in deps)`,
-        )
+        report.issues.push(`"${specifier}" (${pkgName} not in deps)`)
       }
     }
   }
@@ -308,9 +313,7 @@ console.log(
 if (totalIssues > 0) {
   console.log(`\n❌ Found ${totalIssues} issue(s) with undeclared dependencies`)
 
-  throw new Error(
-    `Found ${totalIssues} issue(s) with undeclared dependencies`,
-  )
+  throw new Error(`Found ${totalIssues} issue(s) with undeclared dependencies`)
 } else {
   console.log('\n✅ All external imports match declared dependencies')
 }
