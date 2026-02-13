@@ -3,6 +3,9 @@ import { defineConfig } from 'tsdown'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
+const defaultModuleSideEffects = (id: string): boolean =>
+  id.endsWith('.css') || id.endsWith('.scss')
+
 /**
  * Tsdown options
  *
@@ -63,6 +66,29 @@ export interface TsdownOptions {
    * 定义选项
    */
   define?: Record<string, string>
+
+  /**
+   * Additional external dependencies (for special cases like self-referencing
+   * virtual modules). In most cases, tsdown auto-externalizes deps from
+   * package.json so this is not needed.
+   *
+   * 额外的外部依赖（用于自引用虚拟模块等特殊情况）。
+   * 大部分情况下 tsdown 会自动外部化 package.json 中的依赖，无需手动声明。
+   */
+  external?: (string | RegExp)[]
+
+  /**
+   * Custom module side effects判定
+   *
+   * By default, only `.css` and `.scss` imports are considered to have side
+   * effects. Use this to add additional side-effect patterns. This is part
+   * of the `treeshake` option in tsdown/rolldown.
+   *
+   * 自定义模块副作用判定，默认仅保留 `.css` 和 `.scss` 导入的副作用。
+   *
+   * @default (id) => id.endsWith('.css') || id.endsWith('.scss')
+   */
+  moduleSideEffects?: (id: string, external: boolean) => boolean | undefined
 }
 
 /**
@@ -83,14 +109,13 @@ export const tsdownConfig = (
   const {
     alias,
     define,
-    treeshake = {
-      moduleSideEffects: (id: string): boolean =>
-        id.endsWith('.css') || id.endsWith('.scss'),
-    },
+    treeshake,
     noExternal = [],
+    external = [],
     inlineOnly = false,
     platform = 'node',
     dts = true,
+    moduleSideEffects,
   } = options
 
   return defineConfig({
@@ -104,7 +129,10 @@ export const tsdownConfig = (
     platform,
     define,
     alias,
-    treeshake,
+    treeshake: treeshake ?? {
+      moduleSideEffects: moduleSideEffects ?? defaultModuleSideEffects,
+    },
+    external: [/\.s?css$/, ...external],
     fixedExtension: false,
     noExternal,
     inlineOnly,
