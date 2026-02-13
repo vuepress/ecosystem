@@ -1,5 +1,3 @@
 import { tsdownConfig } from '../../../scripts/tsdown.js'
 
-export default tsdownConfig('node/index', {
-  external: ['sitemap'],
-})
+export default tsdownConfig('node/index')

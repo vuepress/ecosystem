@@ -21,7 +21,6 @@ program
 pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]\
 `,
   )
-  // oxlint-disable-next-line typescript/no-inferrable-types
   .action(async (targetDir: string = ''): Promise<void> => {
     console.log('Bumping deps...')
 
