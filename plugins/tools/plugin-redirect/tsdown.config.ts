@@ -1,17 +1,9 @@
 import { tsdownConfig } from '../../../scripts/tsdown.js'
 
-export default [
-  tsdownConfig('cli/index', {
-    external: ['commander'],
-  }),
-  tsdownConfig('node/index'),
-  tsdownConfig(
-    {
-      base: 'client',
-      files: ['components/RedirectModal', 'config', 'index'],
-    },
-    {
-      external: ['@vuepress/plugin-redirect/modal'],
-    },
-  ),
-]
+export default tsdownConfig([
+  'cli/index',
+  'node/index',
+  'client/components/RedirectModal',
+  'client/config',
+  'client/index',
+])

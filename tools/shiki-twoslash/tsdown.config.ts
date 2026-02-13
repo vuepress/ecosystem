@@ -1,3 +1,3 @@
 import { tsdownConfig } from '../../scripts/tsdown.js'
 
-export default [tsdownConfig('node/index'), tsdownConfig('client/index')]
+export default tsdownConfig(['node/index', 'client/index'])

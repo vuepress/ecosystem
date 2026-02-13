@@ -1,28 +1,8 @@
 import { tsdownConfig } from '../../../scripts/tsdown.js'
 
 export default [
-  tsdownConfig(
-    {
-      base: 'cli',
-      files: ['index', 'generateScraperConfig'],
-    },
-    {
-      external: ['commander'],
-      dts: true,
-    },
-  ),
-  tsdownConfig('node/index', {}),
-  tsdownConfig('client/config', {
-    external: [
-      'meilisearch-docsearch',
-      'meilisearch-docsearch/css/button',
-      'meilisearch-docsearch/css/modal',
-    ],
-    dtsExternal: [
-      'meilisearch-docsearch/css/button',
-      'meilisearch-docsearch/css/modal',
-    ],
-    moduleSideEffects: (id: string) =>
-      id.endsWith('.css') || id.startsWith('meilisearch-docsearch/css'),
+  tsdownConfig(['cli/index', 'cli/generateScraperConfig'], {
+    dts: true,
   }),
+  tsdownConfig(['node/index', 'client/config']),
 ]

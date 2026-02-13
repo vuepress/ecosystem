@@ -1,31 +1,11 @@
 import { tsdownConfig } from '../../../scripts/tsdown.js'
 
-export default [
-  tsdownConfig('node/index', {
-    external: ['@mdit/plugin-container', '@mdit/plugin-plantuml'],
-  }),
-  tsdownConfig(
-    {
-      base: 'client',
-      files: [
-        'components/ChartJS',
-        'components/ECharts',
-        'components/FlowChart',
-        'components/MarkMap',
-        'components/Mermaid',
-        'index',
-      ],
-    },
-    {
-      external: [
-        'chart.js/auto',
-        'markmap-lib',
-        'markmap-view',
-        'markmap-toolbar',
-        'echarts',
-        'flowchart.ts',
-        'mermaid/dist/mermaid.esm.min.mjs',
-      ],
-    },
-  ),
-]
+export default tsdownConfig([
+  'node/index',
+  'client/components/ChartJS',
+  'client/components/ECharts',
+  'client/components/FlowChart',
+  'client/components/MarkMap',
+  'client/components/Mermaid',
+  'client/index',
+])

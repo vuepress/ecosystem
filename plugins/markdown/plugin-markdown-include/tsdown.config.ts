@@ -1,5 +1,3 @@
 import { tsdownConfig } from '../../../scripts/tsdown.js'
 
-export default tsdownConfig('node/index', {
-  external: ['@mdit/plugin-include'],
-})
+export default tsdownConfig('node/index')
