@@ -2,6 +2,7 @@ import { spawn } from 'node:child_process'
 import type { GitContributorInfo } from '../../shared/index.js'
 import type { GitPluginOptions } from '../options.js'
 import type { MergedRawCommit, RawCommit } from '../typings.js'
+import { path } from 'vuepress/utils'
 import { logger } from './logger.js'
 
 const INFO_SPLITTER = '[|]'
@@ -78,6 +79,52 @@ const runGitLog = (args: string[], cwd: string): Promise<string> =>
   })
 
 /**
+ * Get git repository root directory for a given file path.
+ *
+ * This function runs `git rev-parse --show-toplevel` in the directory of the
+ * target file to determine the top-level directory of the git repository.
+ *
+ * @param filePath - File path (relative or absolute) whose repository root is requested
+ * @param cwd - Current working directory
+ * @returns Promise that resolves to normalized git root path, or null if not in a git repository
+ */
+const getGitRepoRoot = (filePath: string, cwd: string): Promise<string> =>
+  new Promise((resolve) => {
+    const dir = path.dirname(path.join(cwd, filePath))
+    const gitProcess = spawn('git', ['rev-parse', '--show-toplevel'], {
+      cwd: dir,
+      stdio: ['ignore', 'pipe', 'pipe'],
+    })
+
+    let stdoutData = ''
+    let stderrData = ''
+
+    gitProcess.stdout.on('data', (chunk: Buffer) => {
+      stdoutData += chunk.toString('utf-8')
+    })
+
+    gitProcess.stderr.on('data', (chunk: Buffer) => {
+      stderrData += chunk.toString('utf-8')
+    })
+
+    gitProcess.on('error', (error) => {
+      logger.error(`Failed to spawn git rev-parse: ${error.message}`)
+      resolve('')
+    })
+
+    gitProcess.on('close', (code) => {
+      if (code === 0) {
+        resolve(path.normalize(stdoutData.trim()))
+      } else {
+        logger.error(
+          `git rev-parse failed (code=${code}): ${stderrData.trim()}`,
+        )
+        resolve('')
+      }
+    })
+  })
+
+/**
  * Get raw commits for a specific file
  *
  * ${commit_hash} ${author_name} ${author_email} ${author_date} ${subject} ${ref} ${body}
@@ -96,8 +143,21 @@ export const getRawCommits = async (
   options: GitPluginOptions,
 ): Promise<RawCommit[]> => {
   const format = getGitLogFormat(options)
+  const gitRoot = await getGitRepoRoot(filepath, cwd)
 
   try {
+    let _filepath = filepath
+    if (gitRoot) {
+      // Resolve to absolute path first, then convert to repo-relative path
+      const absFilePath = path.isAbsolute(_filepath)
+        ? _filepath
+        : path.resolve(cwd, _filepath)
+
+      _filepath = path.relative(gitRoot, absFilePath)
+    } else {
+      logger.warn('Get git repo root error!')
+    }
+
     const stdout = await runGitLog(
       [
         '--max-count=-1',
@@ -105,9 +165,9 @@ export const getRawCommits = async (
         '--date=unix',
         '--follow',
         '--',
-        filepath,
+        _filepath,
       ],
-      cwd,
+      gitRoot || cwd,
     )
 
     return stdout
