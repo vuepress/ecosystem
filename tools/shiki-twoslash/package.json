@@ -38,8 +38,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
-    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
+    "build": "tsdown --config-loader unrun",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
@@ -51,7 +50,8 @@
     "mdast-util-gfm": "^3.1.0",
     "mdast-util-to-hast": "^13.2.1",
     "twoslash": "^0.3.6",
-    "twoslash-vue": "^0.3.6"
+    "twoslash-vue": "^0.3.6",
+    "vue": "catalog:"
   },
   "devDependencies": {
     "@types/hast": "^3.0.4",
