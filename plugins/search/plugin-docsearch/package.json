@@ -43,16 +43,16 @@
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@docsearch/css": "^4.5.4",
-    "@docsearch/js": "^4.5.4",
+    "@docsearch/css": "^4.6.0",
+    "@docsearch/js": "^4.6.0",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "ts-debounce": "^4.0.0",
     "vue": "catalog:"
   },
   "devDependencies": {
-    "@docsearch/react": "^4.5.4",
-    "algoliasearch": "5.48.1"
+    "@docsearch/react": "^4.6.0",
+    "algoliasearch": "5.49.1"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

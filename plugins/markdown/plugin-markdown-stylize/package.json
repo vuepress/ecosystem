@@ -43,13 +43,13 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
-    "@mdit/plugin-align": "^0.23.1",
-    "@mdit/plugin-attrs": "^0.24.2",
-    "@mdit/plugin-mark": "^0.22.2",
-    "@mdit/plugin-spoiler": "^0.22.3",
-    "@mdit/plugin-stylize": "^0.22.4",
-    "@mdit/plugin-sub": "^0.23.1",
-    "@mdit/plugin-sup": "^0.23.1",
+    "@mdit/plugin-align": "^0.24.0",
+    "@mdit/plugin-attrs": "^0.25.0",
+    "@mdit/plugin-mark": "^0.23.0",
+    "@mdit/plugin-spoiler": "^0.23.0",
+    "@mdit/plugin-stylize": "^0.23.0",
+    "@mdit/plugin-sub": "^0.24.0",
+    "@mdit/plugin-sup": "^0.24.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*"
   },
