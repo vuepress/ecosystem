@@ -121,13 +121,14 @@ export const mermaid: PluginSimple = (md) => {
 
     const [name, ...rest] = fenceInfo.split(' ')
 
-    if (name in DIAGRAM_MAP)
+    if (name in DIAGRAM_MAP) {
       return getMermaid({
         diagram: DIAGRAM_MAP[name][0] || name,
         title: rest.join(' '),
         content,
         indent: DIAGRAM_MAP[name][1] ?? true,
       })
+    }
 
     return fence!(...args)
   }

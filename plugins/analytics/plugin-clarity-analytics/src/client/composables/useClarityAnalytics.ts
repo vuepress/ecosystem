@@ -35,9 +35,7 @@ export const useClarityAnalytics = ({
   const script = document.createElement('script')
   script.src = `https://www.clarity.ms/tag/${id}`
   script.async = true
-  if (crossOrigin !== undefined) {
-    script.crossOrigin = crossOrigin
-  }
+  if (crossOrigin !== undefined) script.crossOrigin = crossOrigin
 
   document.head.append(script)
 }

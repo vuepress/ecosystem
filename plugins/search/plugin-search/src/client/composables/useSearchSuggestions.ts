@@ -45,18 +45,14 @@ export const useSearchSuggestions = ({
       }
 
       for (const child of header.children) {
-        if (suggestions.length >= maxSuggestions.value) {
-          return
-        }
+        if (suggestions.length >= maxSuggestions.value) return
 
         matchPageHeader(searchIndexItem, child)
       }
     }
 
     for (const searchIndexItem of localeSearchIndex.value) {
-      if (suggestions.length >= maxSuggestions.value) {
-        break
-      }
+      if (suggestions.length >= maxSuggestions.value) break
 
       // match page title and extra fields
       if (
@@ -74,9 +70,7 @@ export const useSearchSuggestions = ({
 
       // match page headers
       for (const header of searchIndexItem.headers) {
-        if (suggestions.length >= maxSuggestions.value) {
-          break
-        }
+        if (suggestions.length >= maxSuggestions.value) break
 
         matchPageHeader(searchIndexItem, header)
       }

@@ -27,7 +27,6 @@ interface CreateOptions {
 const bundlers: Bundler[] = ['vite', 'webpack']
 const presets: Preset[] = ['blog', 'docs']
 
-// oxlint-disable-next-line max-lines-per-function
 export const mainAction = async function (
   this: Command,
   targetDir: string,
@@ -54,26 +53,22 @@ export const mainAction = async function (
   if (theme !== '@vuepress/theme-default') console.warn(locale.error.theme)
 
   // check bundler
-  if (bundler && !['vite', 'webpack'].includes(bundler)) {
+  if (bundler && !['vite', 'webpack'].includes(bundler))
     this.error(locale.error.bundler)
-  }
 
   // check presets
-  if (preset && !['docs', 'blog'].includes(preset)) {
+  if (preset && !['docs', 'blog'].includes(preset))
     this.error(locale.error.preset)
-  }
 
   // check if the user is a noob and warn him
-  if (!targetDir || (targetDir.startsWith('[') && targetDir.endsWith(']'))) {
+  if (!targetDir || (targetDir.startsWith('[') && targetDir.endsWith(']')))
     this.error(locale.error.dirMissing(packageManager))
-  }
 
   const targetDirPath = pathResolve(process.cwd(), targetDir)
 
   // check if the user is trying to cover his files
-  if (existsSync(targetDirPath) && readdirSync(targetDirPath).length > 0) {
+  if (existsSync(targetDirPath) && readdirSync(targetDirPath).length > 0)
     this.error(locale.error.dirNotEmpty(targetDir))
-  }
 
   ensureDirExistSync(targetDirPath)
 

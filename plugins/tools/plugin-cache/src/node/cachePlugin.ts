@@ -37,20 +37,19 @@ export const cachePlugin = ({
     name: '@vuepress/plugin-cache',
   }
 
-  if (ci.isCI && !enableInCi) {
-    return plugin
-  }
+  if (ci.isCI && !enableInCi) return plugin
 
   return {
     ...plugin,
 
     async extendsMarkdown(md, app) {
       highlightCache(md, app)
-      if (type === 'filesystem') {
-        await renderCacheWithFilesystem(md, app)
-      } else {
-        await renderCacheWithMemory(md, app)
-      }
+
+      await (
+        type === 'filesystem'
+          ? renderCacheWithFilesystem
+          : renderCacheWithMemory
+      )(md, app)
     },
   }
 }

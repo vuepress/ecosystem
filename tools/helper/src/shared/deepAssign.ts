@@ -34,22 +34,24 @@ export const deepAssign = <
   /** Object being merged */
   const assignObject = overrideObjects.shift()
 
-  if (assignObject)
+  if (assignObject) {
     entries(assignObject).forEach(([property, value]) => {
       if (property === '__proto__' || property === 'constructor') return
-      if (isPlainObject(originObject[property]) && isPlainObject(value))
+      if (isPlainObject(originObject[property]) && isPlainObject(value)) {
         deepAssign(originObject[property], value)
-      else if (isArray(value))
-        (originObject as IAnyObject)[property] = [...value]
-      else if (isPlainObject(value))
-        (originObject as IAnyObject)[property] = {
+      } else if (isArray(value)) {
+        ;(originObject as IAnyObject)[property] = [...value]
+      } else if (isPlainObject(value)) {
+        ;(originObject as IAnyObject)[property] = {
           ...value,
         }
-      else
-        (originObject as IAnyObject)[property] = assignObject[
+      } else {
+        ;(originObject as IAnyObject)[property] = assignObject[
           property
         ] as unknown
+      }
     })
+  }
 
   return deepAssign(originObject, ...overrideObjects)
 }

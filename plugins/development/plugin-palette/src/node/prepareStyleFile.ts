@@ -35,9 +35,7 @@ export const prepareStyleFile = async (
 
   let content = ''
 
-  if (await fs.pathExists(userStyle)) {
-    content += importCode(userStyle)
-  }
+  if (await fs.pathExists(userStyle)) content += importCode(userStyle)
 
   return app.writeTemp(tempStyleFile, content)
 }

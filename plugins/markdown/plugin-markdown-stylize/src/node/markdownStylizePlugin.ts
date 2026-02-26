@@ -54,12 +54,13 @@ export const markdownStylizePlugin =
       name: '@vuepress/plugin-markdown-stylize',
 
       extendsMarkdown: (md) => {
-        if (custom)
+        if (custom) {
           md.use(stylizePlugin, {
             config: custom,
             localConfigGetter: (env: MarkdownEnv) =>
               env.frontmatter?.stylize || null,
           })
+        }
         if (attrs) md.use(attrsPlugin, isPlainObject(attrs) ? attrs : {})
         if (align) md.use(alignPlugin)
         if (mark) md.use(markPlugin)

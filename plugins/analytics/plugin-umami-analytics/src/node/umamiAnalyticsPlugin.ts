@@ -48,9 +48,7 @@ export const umamiAnalyticsPlugin =
     }
 
     // returns an empty plugin in dev mode when debug mode is not enabled
-    if (app.env.isDev) {
-      return plugin
-    }
+    if (app.env.isDev) return plugin
 
     return {
       ...plugin,

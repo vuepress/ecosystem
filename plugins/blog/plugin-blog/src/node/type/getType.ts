@@ -49,7 +49,7 @@ export const getType = (
             .map(({ path: itemPagePath }) => itemPagePath),
         )
 
-        if (pagePath)
+        if (pagePath) {
           pageOptions.push({
             path: pagePath,
             frontmatter: {
@@ -61,11 +61,13 @@ export const getType = (
               layout,
             },
           })
+        }
 
-        if (isDebug)
+        if (isDebug) {
           logger.info(
             `${key} type in locale ${localePath}: found ${indexes.length} items\n`,
           )
+        }
 
         typeMap[localePath] = { path: getPagePath(pagePath), indexes }
       })

@@ -87,24 +87,19 @@ export const llmsPlugin =
             })
           }
 
-          if (llmsFullTxt) {
-            await generateLLMsFullTxt(llmPages, llmState)
-          }
+          if (llmsFullTxt) await generateLLMsFullTxt(llmPages, llmState)
 
-          if (llmsPageTxt) {
-            await generateLLMFriendlyDocs(llmPages, llmState)
-          }
+          if (llmsPageTxt) await generateLLMFriendlyDocs(llmPages, llmState)
         }
 
-        if (locale === 'all') {
-          // Generate llms for all locales
-          await Promise.all(
-            keys(app.siteData.locales).map((locale) => generateLLM(locale)),
-          )
-        } else {
-          // Generate llms for the specified locale
-          await generateLLM(locale)
-        }
+        await Promise.all(
+          (locale === 'all'
+            ? // Generate llms for all locales
+              keys(app.siteData.locales)
+            : // Generate llms for the specified locale
+              [locale]
+          ).map((localePath) => generateLLM(localePath)),
+        )
       },
     }
   }

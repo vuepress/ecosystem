@@ -22,9 +22,7 @@ const resolveImportCode = (
 ): Code => {
   let importFilePath = importPath
 
-  if (!path.isAbsolute(importPath)) {
-    importFilePath = path.join(cwd, importPath)
-  }
+  if (!path.isAbsolute(importPath)) importFilePath = path.join(cwd, importPath)
 
   // check file existence
   if (!fs.existsSync(importFilePath)) {

@@ -27,9 +27,9 @@ export const useThemeLocaleData = <
   T extends ThemeData = ThemeData,
 >(): ThemeLocaleDataRef<T> => {
   const themeLocaleData = inject(themeLocaleDataSymbol)
-  if (!themeLocaleData) {
+  if (!themeLocaleData)
     throw new Error('useThemeLocaleData() is called without provider.')
-  }
+
   return themeLocaleData as ThemeLocaleDataRef<T>
 }
 

@@ -36,8 +36,8 @@ export const sitemapPlugin =
       ...plugin,
 
       extendsBundlerOptions: async (config) => {
-        if (options.devServer)
-          [
+        if (options.devServer) {
+          ;[
             await getSiteMap(app, options, hostname),
             getSiteMapTemplate(options),
           ].forEach(([path, content]) => {
@@ -47,6 +47,7 @@ export const sitemapPlugin =
               errMsg: 'Unexpected sitemap generation error',
             })
           })
+        }
       },
 
       onGenerated: () => outputSitemap(app, options, hostname),

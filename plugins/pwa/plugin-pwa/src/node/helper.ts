@@ -9,13 +9,14 @@ export const appendBaseToManifest = (
   base: string,
   manifest: AppManifest,
 ): AppManifest => {
-  if (manifest.icons)
+  if (manifest.icons) {
     manifest.icons = manifest.icons.map((icon) => ({
       ...icon,
       src: appendBaseToLink(base, icon.src),
     }))
+  }
 
-  if (manifest.shortcuts)
+  if (manifest.shortcuts) {
     manifest.shortcuts = manifest.shortcuts.map((shortcut) => ({
       ...shortcut,
       icons:
@@ -25,12 +26,14 @@ export const appendBaseToManifest = (
         })) ?? [],
       url: appendBaseToLink(base, shortcut.url),
     }))
+  }
 
-  if (manifest.screenshots)
+  if (manifest.screenshots) {
     manifest.screenshots = manifest.screenshots.map((screenshot) => ({
       ...screenshot,
       src: appendBaseToLink(base, screenshot.src),
     }))
+  }
 
   return manifest
 }

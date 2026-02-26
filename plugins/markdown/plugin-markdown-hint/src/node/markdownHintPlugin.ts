@@ -42,10 +42,11 @@ export const markdownHintPlugin =
     const opts = deepAssign({}, app.options.markdown.hint, options)
     app.options.markdown.hint = opts
 
-    if (!opts.alert && opts.hint === false)
+    if (!opts.alert && opts.hint === false) {
       return {
         name: PLUGIN_NAME,
       }
+    }
 
     return {
       name: PLUGIN_NAME,

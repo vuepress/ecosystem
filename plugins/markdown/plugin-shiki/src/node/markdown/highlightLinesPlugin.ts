@@ -23,9 +23,8 @@ export const highlightLinePlugin = (md: Markdown): void => {
       // markdown-it-attrs maybe disabled
       const rawInfo = token.info
 
-      if (!rawInfo || !HIGHLIGHT_LINES_REGEXP.test(rawInfo)) {
+      if (!rawInfo || !HIGHLIGHT_LINES_REGEXP.test(rawInfo))
         return fence(...args)
-      }
 
       const langName = rawInfo.replace(HIGHLIGHT_LINES_REGEXP, '').trim()
 
@@ -38,9 +37,7 @@ export const highlightLinePlugin = (md: Markdown): void => {
     if (!lines) {
       ;[lines] = attr!
 
-      if (!lines || !/[\d,-]+/.test(lines)) {
-        return fence(...args)
-      }
+      if (!lines || !/[\d,-]+/.test(lines)) return fence(...args)
     }
 
     token.info += ` ${lines}`

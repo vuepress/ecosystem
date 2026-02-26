@@ -41,6 +41,7 @@ const getAtomCategory = (category: FeedCategory): AtomCategory => {
  * @param feedStore - Feed store / Feed 存储
  * @returns Atom feed content / Atom Feed 内容
  */
+// oxlint-disable-next-line max-lines-per-function
 export const getAtomFeed = (feedStore: FeedStore): string => {
   const { channel, links } = feedStore
 
@@ -82,15 +83,17 @@ export const getAtomFeed = (feedStore: FeedStore): string => {
     },
   }
 
-  if (channel.link)
+  if (channel.link) {
     content.feed.link.push({
       _attributes: { rel: 'alternate', href: channel.link },
     })
+  }
 
-  if (channel.hub)
+  if (channel.hub) {
     content.feed.link.push({
       _attributes: { rel: 'hub', href: channel.hub },
     })
+  }
 
   if (channel.image) content.feed.logo = channel.image
 
@@ -119,39 +122,43 @@ export const getAtomFeed = (feedStore: FeedStore): string => {
     }
 
     // entry: recommended elements
-    if (item.summary)
+    if (item.summary) {
       entry.summary = {
         _attributes: { type: 'html' },
         _cdata: item.summary,
       }
-    else if (item.description)
+    } else if (item.description) {
       entry.summary = {
         _attributes: { type: 'text' },
         _text: item.description,
       }
+    }
 
-    if (item.content)
+    if (item.content) {
       entry.content = {
         _attributes: { type: 'html' },
         _cdata: item.content,
       }
+    }
 
     // author(s)
     entry.author = item.author
       .filter((author) => author.name)
       .map((author) => getAtomAuthor(author))
 
-    if (item.category)
-      // category
+    if (item.category) // category
+    {
       entry.category = item.category.map((category) =>
         getAtomCategory(category),
       )
+    }
 
     // contributor
-    if (item.contributor.length > 0)
+    if (item.contributor.length > 0) {
       entry.contributor = item.contributor.map((contributor) =>
         getAtomAuthor(contributor),
       )
+    }
 
     // published
     if (item.pubDate) entry.published = item.pubDate.toISOString()

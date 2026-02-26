@@ -16,9 +16,9 @@ export const llmExcludePlugin = (md: Markdown): void => {
     'llm_exclude_start',
     (state, silent) => {
       const start = state.pos
-      if (state.src.slice(start, start + START_TAG.length) !== START_TAG) {
+      if (state.src.slice(start, start + START_TAG.length) !== START_TAG)
         return false
-      }
+
       if (!silent) {
         const token = state.push('llm_exclude_start', 'html_inline', 0)
         token.content = ''
@@ -31,9 +31,8 @@ export const llmExcludePlugin = (md: Markdown): void => {
 
   md.inline.ruler.before('html_inline', 'llm_exclude_end', (state, silent) => {
     const start = state.pos
-    if (state.src.slice(start, start + END_TAG.length) !== END_TAG) {
-      return false
-    }
+    if (state.src.slice(start, start + END_TAG.length) !== END_TAG) return false
+
     if (!silent) {
       const token = state.push('llm_exclude_end', 'html_inline', 0)
       token.content = ''

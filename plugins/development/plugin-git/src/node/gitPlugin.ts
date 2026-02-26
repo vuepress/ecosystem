@@ -75,9 +75,7 @@ export const gitPlugin =
       ) => {
         page.data.git = {}
 
-        if (!isGitRepo || page.filePathRelative == null) {
-          return
-        }
+        if (!isGitRepo || page.filePathRelative == null) return
 
         if (filter && !filter(page)) return
 
@@ -89,9 +87,8 @@ export const gitPlugin =
           !(frontmatter.changelog ?? changelog) &&
           !createdTime &&
           !updatedTime
-        ) {
+        )
           return
-        }
 
         const filePaths = [
           page.filePathRelative,
@@ -107,13 +104,10 @@ export const gitPlugin =
 
         if (commits.length === 0) return
 
-        if (createdTime) {
+        if (createdTime)
           page.data.git.createdTime = commits[commits.length - 1].time
-        }
 
-        if (updatedTime) {
-          page.data.git.updatedTime = commits[0].time
-        }
+        if (updatedTime) page.data.git.updatedTime = commits[0].time
 
         const contributorsOptions = isPlainObject(contributors)
           ? contributors

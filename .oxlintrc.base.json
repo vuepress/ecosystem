@@ -44,6 +44,10 @@
     "no-plusplus": "off",
     // ternary operator shall be allowed for simple expressions
     "no-ternary": "off",
+    // _ is commonly used as a placeholder variable name
+    "no-shadow": ["warn", { "allow": ["_"] }],
+    // allow using variables before their declaration, as long as they are not used in their initializers
+    "no-use-before-define": ["warn", { "allowNamedExports": true }],
     // we use void operator to mark those promise that shall not be awaited
     "no-void": "off",
     // normally we do not enforce numeric separator usage
@@ -122,6 +126,9 @@
     "react/react-in-jsx-scope": "off",
 
     // typescript plugin rules
+    // shall be disabled with isolateDeclarations: true since type that can be inferred
+    // will be required to be explicitly declared
+    "typescript/no-inferrable-types": "off",
     // disable unsafe type assertion checks
     "typescript/no-unsafe-type-assertion": "off",
     // we may use a union contain void to declare function return type
@@ -166,6 +173,10 @@
         { "selector": "enumMember", "format": ["PascalCase"] }
       ]
     ],
+    "typescript/parameter-properties": [
+      "warn",
+      { "prefer": "parameter-property" }
+    ],
     // allow non-null assertions in some cases
     "typescript/strict-boolean-expressions": [
       "warn",
@@ -209,9 +220,7 @@
 
     // stylistic rules with default being tweaked
     "catch-error-name": ["warn", { "name": "err" }],
-    // FIXME: https://github.com/oxc-project/oxc/issues/18566
-    // "curly": ["warn", "multi-or-nest", "consistent"],
-    "curly": "off",
+    "curly": ["warn", "multi-or-nest", "consistent"],
     "id-length": [
       "warn",
       {
@@ -322,6 +331,8 @@
         "max-statements": "off",
         "no-empty-function": "off",
         "no-undefined": "off",
+        // vitest polyfills __dirname and __filename
+        "prefer-module": "off",
         "import/no-nodejs-modules": "off",
         "typescript/ban-ts-comment": "off",
         "typescript/no-non-null-assertion": "off",
@@ -334,6 +345,7 @@
             "pattern": ".*\\.((bench|spec)\\.[tj]sx?|spec-d\\.ts)$"
           }
         ],
+        "vitest/no-importing-vitest-globals": "off",
         "vitest/prefer-called-once": "off",
         "vitest/prefer-to-be-falsy": "off",
         "vitest/prefer-to-be-truthy": "off",

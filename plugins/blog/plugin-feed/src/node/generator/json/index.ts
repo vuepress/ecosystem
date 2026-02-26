@@ -65,16 +65,18 @@ export const getJSONFeed = (feedStore: FeedStore): string => {
       feedItem.date_modified = item.lastUpdated.toISOString()
 
     // author
-    if (isArray(item.author))
+    if (isArray(item.author)) {
       feedItem.authors = item.author
         .filter((author) => author.name)
         .map((author) => getJSONAuthor(author))
+    }
 
     // tags
-    if (item.category)
+    if (item.category) {
       feedItem.tags = item.category
         .filter((category) => category.name)
         .map((category) => category.name)
+    }
 
     return feedItem
   })

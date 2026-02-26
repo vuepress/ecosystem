@@ -34,8 +34,7 @@ export const useMediumZoom = (): Zoom | null => {
   if (__VUEPRESS_SSR__) return null
 
   const zoom = inject(mediumZoomSymbol)
-  if (!zoom) {
-    throw new Error('useMediumZoom() is called without provider.')
-  }
+  if (!zoom) throw new Error('useMediumZoom() is called without provider.')
+
   return zoom
 }

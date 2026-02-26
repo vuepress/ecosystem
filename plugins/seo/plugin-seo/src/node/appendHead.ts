@@ -32,7 +32,7 @@ export const addOGP = (head: HeadConfig[], content: SeoContent): void => {
   keys(content as ArticleSeoContent & SimpleSeoContent)
     .reverse()
     .forEach((property) => {
-      // oxlint-disable-next-line typescript/switch-exhaustiveness-check
+      // oxlint-disable-next-line switch-exhaustiveness-check
       switch (property) {
         case 'article:tag': {
           ;(content as ArticleSeoContent)['article:tag']!.forEach(
@@ -44,20 +44,22 @@ export const addOGP = (head: HeadConfig[], content: SeoContent): void => {
         }
         case 'og:locale:alternate': {
           content['og:locale:alternate'].forEach((locale: string) => {
-            if (locale !== content['og:locale'])
+            if (locale !== content['og:locale']) {
               appendMetaToHead(head, {
                 name: 'og:locale:alternate',
                 content: locale,
               })
+            }
           })
           break
         }
         default: {
-          if (content[property as keyof SeoContent] as string)
+          if (content[property as keyof SeoContent] as string) {
             appendMetaToHead(head, {
               name: property,
               content: content[property as keyof SeoContent] as string,
             })
+          }
         }
       }
     })

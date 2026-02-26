@@ -106,17 +106,17 @@ To enable the chart, you must manually add it to allowlist, see https://vuepress
         }
 
         if (!content) continue
-        if (type === 'fence')
+        if (type === 'fence') {
           if (info === 'json') {
             config = content
           } else if (info === 'js' || info === 'javascript') {
             config = content
             isJavaScript = true
 
-            if (allowScripts && (allowAll || allowList.has(filePathRelative))) {
+            if (allowScripts && (allowAll || allowList.has(filePathRelative)))
               isInAllowList = true
-            }
           }
+        }
 
         // Set to an unknown token type
         tokens[i].type = 'echarts_empty'
@@ -124,9 +124,7 @@ To enable the chart, you must manually add it to allowlist, see https://vuepress
         tokens[i].hidden = true
       }
 
-      if (isJavaScript && !isInAllowList) {
-        return ''
-      }
+      if (isJavaScript && !isInAllowList) return ''
 
       return `<ECharts config="${encodeData(config)}"${
         title ? ` title="${encodeURIComponent(title)}"` : ''

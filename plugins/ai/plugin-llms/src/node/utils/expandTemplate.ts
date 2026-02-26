@@ -56,8 +56,8 @@ export const expandTemplate = (
   variables: Record<string, string | undefined>,
 ): string => {
   let res = template
-  for (const [key, value] of entries(variables)) {
+  for (const [key, value] of entries(variables))
     res = replaceTemplateVariable(res, key, value)
-  }
+
   return res
 }

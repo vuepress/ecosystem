@@ -51,11 +51,12 @@ export const markdownImagePlugin =
         // eslint-disable-next-line @typescript-eslint/no-deprecated
         if (opts.legacySize) md.use(legacyImgSize)
         if (opts.obsidianSize) md.use(obsidianImgSize)
-        if (mark)
+        if (mark) {
           md.use<MarkdownItImgMarkOptions>(
             imgMark,
             isPlainObject(mark) ? mark : {},
           )
+        }
       },
 
       clientConfigFile: () => prepareClientConfigFile(app, opts),

@@ -48,9 +48,7 @@ const splitLines = (code: string): string[] => {
   const parts = code.split(NEWLINE_RE)
   const lines: string[] = []
 
-  for (let i = 0; i < parts.length; i += 2) {
-    lines.push(parts[i])
-  }
+  for (let i = 0; i < parts.length; i += 2) lines.push(parts[i])
 
   return lines
 }
@@ -71,6 +69,7 @@ const createOpenTag = (
       after: hashHtml ? snippet.slice(-1) : '',
       content,
       toString() {
+        // oxlint-disable-next-line no-shadow
         const { before, after, classList, content } = this
         const className = uniq(classList).join(' ')
 
@@ -85,6 +84,7 @@ const createOpenTag = (
     after: snippet.slice(match.index! + match[0].length),
     content,
     toString() {
+      // oxlint-disable-next-line no-shadow
       const { before, after, classList, content } = this
       const className = uniq(classList).join(' ')
 

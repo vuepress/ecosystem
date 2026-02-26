@@ -57,31 +57,28 @@ export const SearchBox = defineComponent({
       () => isActive.value && suggestions.value.length > 0,
     )
     const onArrowUp = (): void => {
-      if (!showSuggestions.value) {
-        return
-      }
+      if (!showSuggestions.value) return
+
       focusPrev()
     }
     const onArrowDown = (): void => {
-      if (!showSuggestions.value) {
-        return
-      }
+      if (!showSuggestions.value) return
+
       focusNext()
     }
     const goTo = (index: number): void => {
-      if (!showSuggestions.value) {
-        return
-      }
+      if (!showSuggestions.value) return
 
       const suggestion = suggestions.value[index] as
         | SearchSuggestion
         | undefined
 
-      if (suggestion)
+      if (suggestion) {
         void router.push(suggestion.link).then(() => {
           query.value = ''
           focusIndex.value = 0
         })
+      }
     }
 
     return (): VNode =>

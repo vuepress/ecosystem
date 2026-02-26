@@ -18,22 +18,25 @@ export const getMatchedContent = (
     let display: string
 
     // A beginning of a long string
-    if (contentLength === 0)
+    if (contentLength === 0) {
       display =
         text.length > SUFFIX_LENGTH ? `… ${text.slice(-SUFFIX_LENGTH)}` : text
+    }
     // Already the last text
-    else if (isEnd)
+    else if (isEnd) {
       display =
         // If the string will be longer than maxLength
         text.length + contentLength > MAX_LENGTH
           ? `${text.slice(0, MAX_LENGTH - contentLength)}… `
           : text
+    }
     // Text is at the middle
-    else
+    else {
       display =
         text.length > SUFFIX_LENGTH
           ? `${text.slice(0, SUFFIX_LENGTH)} … ${text.slice(-SUFFIX_LENGTH)}`
           : text
+    }
 
     if (display) result.push(display)
     contentLength += display.length

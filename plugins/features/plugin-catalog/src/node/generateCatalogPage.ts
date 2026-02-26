@@ -31,7 +31,7 @@ export const generateCatalogPage = async (
     let catalogPath = pagePath
 
     // not 404 page
-    if (pagePath !== '/404.html')
+    if (pagePath !== '/404.html') {
       while (catalogPath !== pathLocale) {
         catalogPath = catalogPath.replace(/\/(?:[^/]+\/?)$/, '/')
 
@@ -50,6 +50,7 @@ export const generateCatalogPage = async (
           pathToBeGenerated.add(catalogPath)
         }
       }
+    }
   })
 
   await Promise.all(

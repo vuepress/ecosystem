@@ -25,17 +25,11 @@ const LINE_NUMBERS_START_REGEXP = /:line-numbers=(\d+)\b/
 export const resolveLineNumbers = (info: string): boolean | number | null => {
   const lineNumber = LINE_NUMBERS_START_REGEXP.exec(info)?.[1]
 
-  if (lineNumber) {
-    return Number(lineNumber)
-  }
+  if (lineNumber) return Number(lineNumber)
 
-  if (LINE_NUMBERS_REGEXP.test(info)) {
-    return true
-  }
+  if (LINE_NUMBERS_REGEXP.test(info)) return true
 
-  if (NO_LINE_NUMBERS_REGEXP.test(info)) {
-    return false
-  }
+  if (NO_LINE_NUMBERS_REGEXP.test(info)) return false
 
   return null
 }

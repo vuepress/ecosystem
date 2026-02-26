@@ -67,15 +67,17 @@ export class Message {
     Message.containerElement.append(messageElement)
     this.elements[messageId] = messageElement
 
-    if (clickToClose)
+    if (clickToClose) {
       messageElement.addEventListener('click', () => {
         this.close(messageId)
       })
+    }
 
-    if (duration > 0)
+    if (duration > 0) {
       setTimeout(() => {
         this.close(messageId)
       }, duration)
+    }
 
     return messageId
   }

@@ -42,9 +42,7 @@ export const collapsedLines = (
     const collapsedLinesInfo =
       resolveCollapsedLines(info) ?? collapsedLinesOptions
 
-    if (collapsedLinesInfo === false) {
-      return code
-    }
+    if (collapsedLinesInfo === false) return code
 
     const lines =
       code
@@ -53,9 +51,7 @@ export const collapsedLines = (
     const startLines =
       typeof collapsedLinesInfo === 'number' ? collapsedLinesInfo : 15
 
-    if (lines < startLines) {
-      return code
-    }
+    if (lines < startLines) return code
 
     const collapsedLinesCode = `<div class="collapsed-lines"></div>`
     const styles = `--vp-collapsed-lines:${startLines};`
@@ -64,9 +60,9 @@ export const collapsedLines = (
       .replace(/<\/div>$/, `${collapsedLinesCode}</div>`)
       .replace(/"(language-[^"]*?)"/, '"$1 has-collapsed-lines collapsed"')
       .replace(/^<div[^>]*>/, (match) => {
-        if (!match.includes('style=')) {
+        if (!match.includes('style='))
           return `${match.slice(0, -1)} style="${styles}">`
-        }
+
         return match.replace(/(style=")/, `$1${styles}`)
       })
 

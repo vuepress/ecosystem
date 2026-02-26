@@ -24,17 +24,13 @@ export const getHighlightLinesRange = (
   const match = info.match(/{([\d,-]+)}/)
 
   // no highlight-lines mark, return `null`
-  if (match == null) {
-    return null
-  }
+  if (match == null) return null
 
   // resolve lines ranges from the highlight-lines mark
   return match[1].split(',').map((item) => {
     const range = item.split('-')
 
-    if (range.length === 1) {
-      range.push(range[0])
-    }
+    if (range.length === 1) range.push(range[0])
 
     return range.map((line) => Number.parseInt(line, 10)) as HighlightLinesRange
   })
@@ -76,9 +72,8 @@ export const highlightCodeLines = (
 ): void => {
   if (ranges?.length) {
     parser.line((node, index) => {
-      if (isLineHighlighted(index + 1, ranges)) {
+      if (isLineHighlighted(index + 1, ranges))
         node.classList.push('highlighted')
-      }
     })
   }
 }

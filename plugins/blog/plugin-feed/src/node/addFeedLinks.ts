@@ -82,22 +82,25 @@ export const addFeedLinks = (
         page.frontmatter.head ??= []
 
         // add atom link
-        if (localeOptions.atom)
+        if (localeOptions.atom) {
           page.frontmatter.head.push(
             getHeadItem('Atom', atomOutputFilename, 'application/atom+xml'),
           )
+        }
 
         // add json link
-        if (localeOptions.json)
+        if (localeOptions.json) {
           page.frontmatter.head.push(
             getHeadItem('JSON', jsonOutputFilename, 'application/json'),
           )
+        }
 
         // add rss link
-        if (localeOptions.rss)
+        if (localeOptions.rss) {
           page.frontmatter.head.push(
             getHeadItem('RSS', rssOutputFilename, 'application/rss+xml'),
           )
+        }
       }
     })
   }

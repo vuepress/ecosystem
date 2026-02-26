@@ -54,6 +54,7 @@ const getRSSEnclosure = (enclosure: FeedEnclosure): RSSEnclosure => ({
  * @param feedStore - Feed store / Feed 存储
  * @returns RSS feed content / RSS Feed 内容
  */
+// oxlint-disable-next-line max-lines-per-function
 export const getRssFeed = (feedStore: FeedStore): string => {
   const { channel, links } = feedStore
   let hasContent = false as boolean
@@ -106,12 +107,13 @@ export const getRssFeed = (feedStore: FeedStore): string => {
 
   if (channel.ttl) content.rss.channel.ttl = { _text: channel.ttl.toString() }
 
-  if (channel.image)
+  if (channel.image) {
     content.rss.channel.image = {
       title: { _text: channel.title },
       url: { _text: channel.image },
       link: { _text: channel.link },
     }
+  }
 
   /**
    * Channel Categories
@@ -139,10 +141,11 @@ export const getRssFeed = (feedStore: FeedStore): string => {
       },
     }
 
-    if (entry.description)
+    if (entry.description) {
       item.description = {
         _text: entry.description,
       }
+    }
 
     /**
      * Item Author
@@ -151,20 +154,22 @@ export const getRssFeed = (feedStore: FeedStore): string => {
       (authorItem) => authorItem.email && authorItem.name,
     )
 
-    if (author)
+    if (author) {
       item.author = {
         _text: `${author.email!} (${author.name!})`,
       }
+    }
 
     /**
      * Item Category
      *
      * @see https://validator.w3.org/feed/docs/rss2.html#ltcategorygtSubelementOfLtitemgt
      */
-    if (entry.category)
+    if (entry.category) {
       item.category = entry.category
         .filter((category) => category.name)
         .map((category) => getRSSCategory(category))
+    }
 
     // TODO: This is currently not supported
     // if (entry.comments) item.comments = { _text: entry.link };

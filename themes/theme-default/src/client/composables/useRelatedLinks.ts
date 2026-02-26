@@ -12,13 +12,9 @@ const resolveFromFrontmatterConfig = (
   config: AutoLinkOptions | string | false | undefined,
   currentPath: string,
 ): AutoLinkOptions | false | null => {
-  if (config === false) {
-    return false
-  }
+  if (config === false) return false
 
-  if (isString(config)) {
-    return resolveAutoLink(config, currentPath)
-  }
+  if (isString(config)) return resolveAutoLink(config, currentPath)
 
   if (isPlainObject(config)) {
     return {
@@ -53,11 +49,12 @@ const resolveFromSidebarItems = (
 
     if (targetItem.link) return targetItem as AutoLinkOptions
 
-    if ('prefix' in targetItem && !resolveRoute(targetItem.prefix!).notFound)
+    if ('prefix' in targetItem && !resolveRoute(targetItem.prefix!).notFound) {
       return {
         ...targetItem,
         link: targetItem.prefix!,
       }
+    }
 
     return null
   }
@@ -70,9 +67,7 @@ const resolveFromSidebarItems = (
         offset,
       )
 
-      if (childResult) {
-        return childResult
-      }
+      if (childResult) return childResult
     }
   }
 
@@ -89,11 +84,12 @@ const resolveFromSidebarItems = (
 
     if (targetItem.link) return targetItem as AutoLinkOptions
 
-    if ('prefix' in targetItem && !resolveRoute(targetItem.prefix!).notFound)
+    if ('prefix' in targetItem && !resolveRoute(targetItem.prefix!).notFound) {
       return {
         ...targetItem,
         link: targetItem.prefix!,
       }
+    }
 
     return null
   }

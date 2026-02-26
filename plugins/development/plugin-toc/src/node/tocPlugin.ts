@@ -40,15 +40,14 @@ export const tocPlugin = ({
   // oxlint-disable-next-line typescript/no-deprecated
   headersOptions = headerOptions,
   renderOptions = defaultPropsOptions ?? propsOptions,
-}: TocPluginOptions = {}): Plugin =>
-  ({
-    name: '@vuepress/plugin-toc',
+}: TocPluginOptions = {}): Plugin => ({
+  name: '@vuepress/plugin-toc',
 
-    clientConfigFile: path.resolve(__dirname, '../client/config.js'),
+  clientConfigFile: path.resolve(__dirname, '../client/config.js'),
 
-    define: {
-      __TOC_COMPONENT_NAME__: componentName,
-      __TOC_HEADERS_OPTIONS__: headersOptions,
-      __TOC_RENDER_OPTIONS__: renderOptions,
-    },
-  })
+  define: {
+    __TOC_COMPONENT_NAME__: componentName,
+    __TOC_HEADERS_OPTIONS__: headersOptions,
+    __TOC_RENDER_OPTIONS__: renderOptions,
+  },
+})

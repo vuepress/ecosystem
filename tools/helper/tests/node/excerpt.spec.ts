@@ -131,9 +131,8 @@ describe(getPageExcerpt, async () => {
         expect(excerpt.length).toBeGreaterThan(0)
         expect(excerpt).toMatchSnapshot(pagePath)
 
-        if (pagePath === '/long-content.html') {
+        if (pagePath === '/long-content.html')
           expect(excerpt).toContain('Content ends.')
-        }
       })
     })
   })
@@ -180,18 +179,16 @@ describe(getPageExcerpt, async () => {
   describe('keepPageTitle', () => {
     it('remove first h1', () => {
       getExcerptData().forEach(({ excerpt, pagePath }) => {
-        if (pagePath === '/markdown.html') {
+        if (pagePath === '/markdown.html')
           expect(excerpt).not.toContain('Content Example')
-        }
       })
     })
 
     it('not remove first h1', () => {
       getExcerptData({ keepPageTitle: true }).forEach(
         ({ excerpt, pagePath }) => {
-          if (pagePath === '/markdown.html') {
+          if (pagePath === '/markdown.html')
             expect(excerpt).toContain('Content Example')
-          }
         },
       )
     })

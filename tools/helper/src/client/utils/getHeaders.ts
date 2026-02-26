@@ -15,9 +15,7 @@ export const resolveHeaders = (
   headers: HeaderItem[],
   levels: HeaderLevels = 2,
 ): HeaderItem[] => {
-  if (levels === false) {
-    return []
-  }
+  if (levels === false) return []
 
   const [high, low]: [number, number] =
     typeof levels === 'number'

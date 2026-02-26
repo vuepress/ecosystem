@@ -24,9 +24,7 @@ export const useNprogress = (): void => {
 
     // show progress bar before navigation
     router.beforeEach((to) => {
-      if (!loadedPages.has(to.path)) {
-        nprogress.start()
-      }
+      if (!loadedPages.has(to.path)) nprogress.start()
     })
 
     // hide progress bar after navigation

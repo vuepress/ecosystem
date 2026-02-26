@@ -52,17 +52,15 @@ const renderLink = (
   const linkClass = [options.linkClass]
 
   // add active class if the header hash is matched
-  if (options.linkActiveClass && route.hash === hash) {
+  if (options.linkActiveClass && route.hash === hash)
     linkClass.push(options.linkActiveClass)
-  }
 
   // add active class if any sub-header hash is matched
   if (
     options.linkChildrenActiveClass &&
     header.children.some((item) => `#${item.slug}` === route.hash)
-  ) {
+  )
     linkClass.push(options.linkChildrenActiveClass)
-  }
 
   if (options.linkTag === 'RouteLink') {
     return h(
@@ -104,9 +102,7 @@ const renderHeaders = (
   options: Required<TocRenderOptions>,
   route: RouteLocationNormalizedLoaded,
 ): VNode[] => {
-  if (headers.length === 0) {
-    return []
-  }
+  if (headers.length === 0) return []
 
   return [
     h(

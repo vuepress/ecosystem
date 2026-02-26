@@ -46,8 +46,8 @@ export const setupDevServerRedirect = ({
 
     // get matched locale
     // oxlint-disable-next-line no-labels
-    findLanguage: for (const lang of languages.value)
-      for (const [localePath, langs] of localeEntries)
+    findLanguage: for (const lang of languages.value) {
+      for (const [localePath, langs] of localeEntries) {
         if (langs.includes(lang)) {
           if (
             localeFallback &&
@@ -61,6 +61,8 @@ export const setupDevServerRedirect = ({
           // oxlint-disable-next-line no-labels
           break findLanguage
         }
+      }
+    }
 
     // default link
     const defaultRoute = defaultLocale
@@ -100,13 +102,14 @@ export const setupDevServerRedirect = ({
 
   watchImmediate(routePath, (path) => {
     // handle redirects
-    for (const [from, to] of entries(redirectMap))
+    for (const [from, to] of entries(redirectMap)) {
       if (normalizePath(path.toLowerCase()) === from.toLowerCase()) {
         if (isLinkHttp(to)) window.open(to)
         else void router.replace(to)
 
         return
       }
+    }
 
     if (autoLocale && isRootLocale.value) handleLocaleRedirect()
   })

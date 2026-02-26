@@ -33,7 +33,7 @@ const renderSpace = (text: string): string =>
  * renderWhitespaceInLine(lineNode, 'all')
  * ```
  */
-// oxlint-disable-next-line complexity, max-statements
+// oxlint-disable-next-line complexity
 export const renderWhitespaceInLine = (
   node: OpenTag,
   position: WhitespacePosition,
@@ -65,9 +65,7 @@ export const renderWhitespaceInLine = (
         }
         snippets[i] = renderSpace(snippet.slice(0, j)) + snippet.slice(j)
       }
-      if (!has) {
-        break
-      }
+      if (!has) break
     }
   }
 
@@ -94,9 +92,7 @@ export const renderWhitespaceInLine = (
               ? snippet.slice(0, j) + renderSpace(snippet.slice(j))
               : renderSpace(snippet)
       }
-      if (!has) {
-        break
-      }
+      if (!has) break
     }
   }
 

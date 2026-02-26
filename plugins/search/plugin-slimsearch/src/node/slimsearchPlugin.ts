@@ -81,11 +81,12 @@ export const slimsearchPlugin =
 
         const promises = [prepareStore(app, store)]
 
-        if (isDev)
+        if (isDev) {
           promises.push(
             prepareSearchIndex(app, searchIndexStore!),
             prepareWorkerOptions(app, options),
           )
+        }
 
         await Promise.all(promises)
 

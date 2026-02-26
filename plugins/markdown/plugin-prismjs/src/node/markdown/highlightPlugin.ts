@@ -151,30 +151,22 @@ export const highlightPlugin = (
 
     const parser = getCodeParser(code, language.name)
 
-    if (highlightLines) {
-      highlightCodeLines(parser, getHighlightLinesRange(info))
-    }
-    if (enabledDiff) {
-      notationDiff(parser)
-    }
-    if (enabledErrorLevel) {
-      notationErrorLevel(parser)
-    }
-    if (enabledFocus) {
-      notationFocus(parser)
-    }
-    if (enabledHighlight) {
-      notationHighlight(parser)
-    }
+    if (highlightLines) highlightCodeLines(parser, getHighlightLinesRange(info))
+
+    if (enabledDiff) notationDiff(parser)
+
+    if (enabledErrorLevel) notationErrorLevel(parser)
+
+    if (enabledFocus) notationFocus(parser)
+
+    if (enabledHighlight) notationHighlight(parser)
 
     if (enabledWordHighlight) {
       notationWordHighlight(parser)
       metaWordHighlight(parser, info)
     }
 
-    if (whitespacePosition) {
-      metaWhitespace(parser, info, whitespacePosition)
-    }
+    if (whitespacePosition) metaWhitespace(parser, info, whitespacePosition)
 
     parser.pre.classList.push(languageClass)
 

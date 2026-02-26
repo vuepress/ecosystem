@@ -33,11 +33,13 @@ const imageFilter =
     for (const entry of manifestEntries) {
       const { url, size } = entry
 
-      if (imageExtensions.some((ext) => endsWith(url, `.${ext}`)))
+      if (imageExtensions.some((ext) => endsWith(url, `.${ext}`))) {
         if (size > maxSize * 1024)
           warnings.push(`Skipped ${url}, as it's ${Math.ceil(size / 1024)} KB.`)
         else manifest.push(entry)
-      else manifest.push(entry)
+      } else {
+        manifest.push(entry)
+      }
     }
 
     return { warnings, manifest }
@@ -84,17 +86,18 @@ export const generateServiceWorker = async (
     if (warnings.length > 0)
       logger.warn(`\n${warnings.map((warning) => `  · ${warning}`).join('\n')}`)
 
-    if (size > 104857600)
+    if (size > 104857600) {
       logger.error(
         `Cache Size is larger than 100MB, so that it can not be registered on all browsers.\n${colors.blue(
           'Please consider disable `cacheHTML` and `cacheImage`, or set `maxSize` and `maxImageSize` option.\n',
         )}`,
       )
-    else if (size > 52428800)
+    } else if (size > 52428800) {
       logger.warn(
         `\nCache Size is larger than 50MB, which will not be registered on Safari.\n${colors.blue(
           'Please consider disable `cacheHTML` and `cacheImage`, or set `maxSize` and `maxImageSize` option.\n',
         )}`,
       )
+    }
   })
 }

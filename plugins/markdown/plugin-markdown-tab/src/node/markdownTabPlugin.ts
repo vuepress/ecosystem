@@ -39,10 +39,11 @@ export const markdownTabPlugin =
     const mergedOptions = deepAssign({}, app.options.markdown.tab, options)
     app.options.markdown.tab = mergedOptions
 
-    if (!mergedOptions.codeTabs && !mergedOptions.tabs)
+    if (!mergedOptions.codeTabs && !mergedOptions.tabs) {
       return {
         name: PLUGIN_NAME,
       }
+    }
 
     return {
       name: PLUGIN_NAME,

@@ -29,9 +29,8 @@ const navbarBrand = useTemplateRef<HTMLElement | null>('navbar-brand')
 
 const linksWrapperMaxWidth = ref(0)
 const linksWrapperStyle = computed(() => {
-  if (!linksWrapperMaxWidth.value) {
-    return {}
-  }
+  if (!linksWrapperMaxWidth.value) return {}
+
   return {
     maxWidth: `${linksWrapperMaxWidth.value}px`,
   }
@@ -55,14 +54,12 @@ useUpdateDeviceStatus(
     const navbarHorizontalPadding =
       getCssValue(navbar.value, 'paddingLeft') +
       getCssValue(navbar.value, 'paddingRight')
-    if (window.innerWidth < mobileDesktopBreakpoint) {
-      linksWrapperMaxWidth.value = 0
-    } else {
-      linksWrapperMaxWidth.value =
-        navbar.value!.offsetWidth -
-        navbarHorizontalPadding -
-        (navbarBrand.value?.offsetWidth ?? 0)
-    }
+    linksWrapperMaxWidth.value =
+      window.innerWidth < mobileDesktopBreakpoint
+        ? 0
+        : navbar.value!.offsetWidth -
+          navbarHorizontalPadding -
+          (navbarBrand.value?.offsetWidth ?? 0)
   },
 )
 </script>

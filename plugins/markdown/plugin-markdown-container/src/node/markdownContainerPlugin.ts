@@ -89,11 +89,7 @@ export const markdownContainerPlugin = ({
           const localePath = resolveLocalePath(locales, relativePath)
           const localeData = locales[localePath] ?? {}
 
-          if (localeData.defaultInfo) {
-            info = localeData.defaultInfo
-          } else {
-            info = type.toUpperCase()
-          }
+          info = localeData.defaultInfo || type.toUpperCase()
         }
 
         // push the info to stack

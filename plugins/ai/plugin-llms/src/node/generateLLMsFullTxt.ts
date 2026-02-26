@@ -37,9 +37,8 @@ export const generateLLMsFullTxt = async (
       url: generateLink(page.htmlFilePathRelative, state),
     }
 
-    if (page.frontmatter.description && !page.data.autoDesc) {
+    if (page.frontmatter.description && !page.data.autoDesc)
       metadata.description = page.frontmatter.description
-    }
 
     // completion title in markdown content
     const content = extractTitle(page.markdown)

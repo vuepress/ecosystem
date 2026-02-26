@@ -35,9 +35,7 @@ export const preparePaletteFile = async (
 
   let content = ''
 
-  if (await fs.pathExists(userPalette)) {
-    content += importCode(userPalette)
-  }
+  if (await fs.pathExists(userPalette)) content += importCode(userPalette)
 
   return app.writeTemp(tempPaletteFile, content)
 }

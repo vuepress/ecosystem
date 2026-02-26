@@ -39,9 +39,8 @@ const messages = computed(
 )
 
 const notFoundMsg = computed(() => {
-  if (isMounted.value) {
+  if (isMounted.value)
     return messages.value[Math.floor(Math.random() * messages.value.length)]
-  }
 
   return messages.value[0]
 })
