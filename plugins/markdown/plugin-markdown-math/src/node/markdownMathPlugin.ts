@@ -124,7 +124,8 @@ export const markdownMathPlugin =
           md.use<MarkdownItKatexOptions<MarkdownEnv>>(katex, {
             logger: (errorCode, errorMsg, token, { filePathRelative }) => {
               // Ignore this error
-              if (errorCode === 'newLineInDisplayMode') return
+              // oxlint-disable-next-line no-useless-undefined
+              if (errorCode === 'newLineInDisplayMode') return undefined
 
               if (errorCode === 'unicodeTextInMathMode')
                 logger.warn(

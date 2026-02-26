@@ -14,6 +14,8 @@ body {
 }
 
 html {
+  // FIXME: https://github.com/stylelint/stylelint/issues/9115
+  /* stylelint-disable-next-line property-no-unknown */
   font-display: optional;
 
   -webkit-font-smoothing: antialiased;

@@ -46,11 +46,12 @@ export const cachePlugin = ({
 
     async extendsMarkdown(md, app) {
       highlightCache(md, app)
-      if (type === 'filesystem') {
-        await renderCacheWithFilesystem(md, app)
-      } else {
-        await renderCacheWithMemory(md, app)
-      }
+
+      await (
+        type === 'filesystem'
+          ? renderCacheWithFilesystem
+          : renderCacheWithMemory
+      )(md, app)
     },
   }
 }

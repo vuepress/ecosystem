@@ -29,6 +29,7 @@ export const resolveSidebarPageHeader = (
 ): SidebarHeaderItem => ({
   text: header.title,
   link: header.link,
+  // oxlint-disable-next-line no-use-before-define
   children: resolveSidebarPageHeaders(header.children),
 })
 

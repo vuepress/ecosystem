@@ -32,7 +32,7 @@ export const addOGP = (head: HeadConfig[], content: SeoContent): void => {
   keys(content as ArticleSeoContent & SimpleSeoContent)
     .reverse()
     .forEach((property) => {
-      // oxlint-disable-next-line typescript/switch-exhaustiveness-check
+      // oxlint-disable-next-line switch-exhaustiveness-check
       switch (property) {
         case 'article:tag': {
           ;(content as ArticleSeoContent)['article:tag']!.forEach(

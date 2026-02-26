@@ -141,7 +141,9 @@ export const VPIcon = defineComponent({
             iconType.length === 1
               ? `fa${iconType}`
               : appendFontawesomePrefix(iconType),
-            ...rest.split(' ').map((icon) => appendFontawesomePrefix(icon)),
+            ...rest
+              .split(' ')
+              .map((iconName) => appendFontawesomePrefix(iconName)),
             sizing === 'height' ? '' : 'fa-fw',
           ],
           ...attrs.value,

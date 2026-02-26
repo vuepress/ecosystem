@@ -55,14 +55,12 @@ useUpdateDeviceStatus(
     const navbarHorizontalPadding =
       getCssValue(navbar.value, 'paddingLeft') +
       getCssValue(navbar.value, 'paddingRight')
-    if (window.innerWidth < mobileDesktopBreakpoint) {
-      linksWrapperMaxWidth.value = 0
-    } else {
-      linksWrapperMaxWidth.value =
-        navbar.value!.offsetWidth -
-        navbarHorizontalPadding -
-        (navbarBrand.value?.offsetWidth ?? 0)
-    }
+    linksWrapperMaxWidth.value =
+      window.innerWidth < mobileDesktopBreakpoint
+        ? 0
+        : navbar.value!.offsetWidth -
+          navbarHorizontalPadding -
+          (navbarBrand.value?.offsetWidth ?? 0)
   },
 )
 </script>

@@ -87,6 +87,7 @@ const handleNode = (
       if (node.tagName === 'code' || node.tagName === 'pre')
         delete node.attribs['v-pre']
 
+      // oxlint-disable-next-line no-use-before-define
       node.children = handleNodes(node.children, {
         base,
         isCustomElement,
@@ -103,6 +104,7 @@ const handleNode = (
       node.attribs.target = '_blank'
       delete node.attribs.to
 
+      // oxlint-disable-next-line no-use-before-define
       node.children = handleNodes(node.children, {
         base,
         isCustomElement,

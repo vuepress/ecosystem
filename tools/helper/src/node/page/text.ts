@@ -75,6 +75,7 @@ const handleNode = (
       !removedTags.includes(node.tagName) &&
       isHTMLTag(node.tagName)
     ) {
+      // oxlint-disable-next-line no-use-before-define
       return handleNodes(node.children, { base, removedTags })
     }
 

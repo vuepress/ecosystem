@@ -168,6 +168,7 @@ const resolveInclude = (
   )
 
   if (options.deep && actualPath.endsWith('.md')) {
+    // oxlint-disable-next-line no-use-before-define
     content = replaceInclude(content, options, {
       cwd: path.isAbsolute(actualPath)
         ? path.dirname(actualPath)
