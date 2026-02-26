@@ -220,9 +220,7 @@
 
     // stylistic rules with default being tweaked
     "catch-error-name": ["warn", { "name": "err" }],
-    // FIXME: https://github.com/oxc-project/oxc/issues/18566
-    // "curly": ["warn", "multi-or-nest", "consistent"],
-    "curly": "off",
+    "curly": ["warn", "multi-or-nest", "consistent"],
     "id-length": [
       "warn",
       {
