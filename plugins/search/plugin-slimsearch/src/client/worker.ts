@@ -24,19 +24,19 @@ globalThis.onmessage = async ({
     },
   )
 
-  if (type === 'suggest')
+  if (type === 'suggest') {
     globalThis.postMessage([
       type,
       id,
       getSuggestions(query, searchLocaleIndex, options),
     ])
-  else if (type === 'search')
+  } else if (type === 'search') {
     globalThis.postMessage([
       type,
       id,
       getSearchResults(query, searchLocaleIndex, options, sortStrategy),
     ])
-  else
+  } else {
     globalThis.postMessage({
       suggestions: [
         type,
@@ -49,4 +49,5 @@ globalThis.onmessage = async ({
         getSearchResults(query, searchLocaleIndex, options, sortStrategy),
       ],
     })
+  }
 }

@@ -42,7 +42,7 @@ export const setupPhotoSwipe = (
     if (fullscreen) {
       const { isSupported, toggle } = useFullscreen()
 
-      if (isSupported.value)
+      if (isSupported.value) {
         photoSwipe.ui!.registerElement({
           name: 'fullscreen',
           order: 7,
@@ -54,6 +54,7 @@ export const setupPhotoSwipe = (
             void toggle()
           },
         })
+      }
     }
 
     if (download) {

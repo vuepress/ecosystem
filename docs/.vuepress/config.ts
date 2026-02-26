@@ -96,8 +96,6 @@ export default defineUserConfig({
     const { icon } = page.frontmatter
 
     // save icon into route meta
-    if (icon) {
-      page.routeMeta.icon = icon
-    }
+    if (icon) page.routeMeta.icon = icon
   },
 })

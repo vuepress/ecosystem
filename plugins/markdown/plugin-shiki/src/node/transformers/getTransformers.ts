@@ -25,9 +25,7 @@ export const getTransformers = (
 ): ShikiTransformer[] => {
   const transformers: ShikiTransformer[] = []
 
-  if (options.notationDiff) {
-    transformers.push(transformerNotationDiff())
-  }
+  if (options.notationDiff) transformers.push(transformerNotationDiff())
 
   if (options.notationFocus) {
     transformers.push(
@@ -38,13 +36,11 @@ export const getTransformers = (
     )
   }
 
-  if (options.notationHighlight) {
+  if (options.notationHighlight)
     transformers.push(transformerNotationHighlight())
-  }
 
-  if (options.notationErrorLevel) {
+  if (options.notationErrorLevel)
     transformers.push(transformerNotationErrorLevel())
-  }
 
   if (options.notationWordHighlight) {
     transformers.push(transformerNotationWordHighlight())

@@ -113,9 +113,7 @@ export const generateFileListFrontmatter = async (
 
   for (const filepath of fileList) {
     const rule = findRule(rules, filepath)
-    if (rule) {
-      tasks.push([filepath, rule.handle])
-    }
+    if (rule) tasks.push([filepath, rule.handle])
   }
 
   if (tasks.length === 0) return

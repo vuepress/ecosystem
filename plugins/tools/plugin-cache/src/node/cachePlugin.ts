@@ -37,9 +37,7 @@ export const cachePlugin = ({
     name: '@vuepress/plugin-cache',
   }
 
-  if (ci.isCI && !enableInCi) {
-    return plugin
-  }
+  if (ci.isCI && !enableInCi) return plugin
 
   return {
     ...plugin,

@@ -25,20 +25,15 @@ export const getGitRelativePath = (cwd = process.cwd()): string => {
 
   const { error, status, stderr, stdout } = gitProcess
 
-  if (error) {
-    throw new Error(`Failed to start git process: ${error.message}`)
-  }
+  if (error) throw new Error(`Failed to start git process: ${error.message}`)
 
-  if (status !== 0) {
+  if (status !== 0)
     throw new Error(`Git command failed with exit code ${status}: ${stderr}`)
-  }
 
   const gitRootPath = stdout.trim()
 
   // If cwd is already the git root, return empty string
-  if (cwd === gitRootPath) {
-    return ''
-  }
+  if (cwd === gitRootPath) return ''
 
   // Calculate relative path from git root to cwd
   if (cwd.startsWith(gitRootPath)) {
@@ -69,13 +64,10 @@ export const getWorkspaceStatus = (cwd = process.cwd()): string => {
 
   const { error, status, stderr, stdout } = gitProcess
 
-  if (error) {
-    throw new Error(`Failed to start git process: ${error.message}`)
-  }
+  if (error) throw new Error(`Failed to start git process: ${error.message}`)
 
-  if (status !== 0) {
+  if (status !== 0)
     throw new Error(`Git command failed with exit code ${status}: ${stderr}`)
-  }
 
   return stdout.trim()
 }
@@ -103,13 +95,10 @@ export const getChangedFilesByDiff = (cwd = process.cwd()): string[] => {
 
   const { error, status, stderr, stdout } = gitProcess
 
-  if (error) {
-    throw new Error(`Failed to start git process: ${error.message}`)
-  }
+  if (error) throw new Error(`Failed to start git process: ${error.message}`)
 
-  if (status !== 0) {
+  if (status !== 0)
     throw new Error(`Git command failed with exit code ${status}: ${stderr}`)
-  }
 
   return stdout.trim().split('\n').filter(Boolean)
 }

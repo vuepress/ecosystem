@@ -75,10 +75,11 @@ export const useChangelog =
                 .replace(':repo', repo)
             }
 
-            if (pattern.tag && repo && res.tag)
+            if (pattern.tag && repo && res.tag) {
               res.tagUrl = pattern.tag
                 .replace(':tag', res.tag)
                 .replace(':repo', repo)
+            }
 
             return res
           })

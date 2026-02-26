@@ -30,11 +30,12 @@ export const appendDatePlugin = (
   name: PLUGIN_NAME,
 
   onInitialized: async (app) => {
-    if (isGitPluginEnabled(app))
+    if (isGitPluginEnabled(app)) {
       await Promise.all(
         (app.pages as Page<GitPluginPageData>[]).map((page) =>
           appendDateToPage(options, page),
         ),
       )
+    }
   },
 })

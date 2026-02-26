@@ -17,23 +17,25 @@ interface InstallPromptEvent extends Event {
 const scrollToLeft = (): void => {
   const screenshotsDiv = document.querySelector('.screenshot')
 
-  if (screenshotsDiv)
+  if (screenshotsDiv) {
     screenshotsDiv.scrollBy({
       left: -screenshotsDiv.clientWidth,
       top: 0,
       behavior: 'smooth',
     })
+  }
 }
 
 const scrollToRight = (): void => {
   const screenshotsDiv = document.querySelector('.screenshot')
 
-  if (screenshotsDiv)
+  if (screenshotsDiv) {
     screenshotsDiv.scrollBy({
       left: screenshotsDiv.clientWidth,
       top: 0,
       behavior: 'smooth',
     })
+  }
 }
 
 export const PwaInstallModal = defineComponent({
@@ -65,9 +67,9 @@ export const PwaInstallModal = defineComponent({
     const getManifest = async (): Promise<void> => {
       const manifestContent = localStorage.getItem('manifest')
 
-      if (manifestContent)
+      if (manifestContent) {
         manifest.value = JSON.parse(manifestContent) as AppManifest
-      else
+      } else {
         try {
           const response = await fetch(withBase('manifest.webmanifest'))
           const data = (await response.json()) as AppManifest
@@ -79,6 +81,7 @@ export const PwaInstallModal = defineComponent({
             '[PWA]: Error getting manifest, check that you have a valid web manifest or network connection',
           )
         }
+      }
     }
 
     const install = async (): Promise<void> => {

@@ -51,12 +51,13 @@ export const addViteOptimizeDepsInclude = (
     ('FORCE_OPTIMIZE_DEPS' in process.env
       ? Boolean(process.env.FORCE_OPTIMIZE_DEPS)
       : !isDeep)
-  )
+  ) {
     addViteConfig(bundlerOptions, app, {
       optimizeDeps: {
         include: isString(module) ? [module] : module,
       },
     })
+  }
 }
 
 /**

@@ -41,9 +41,7 @@ export const resolveWhitespacePosition = (
   info: string,
   globalOption: WhitespacePosition | true,
 ): WhitespacePosition | false => {
-  if (NO_WHITESPACE_REGEXP.test(info)) {
-    return false
-  }
+  if (NO_WHITESPACE_REGEXP.test(info)) return false
 
   const defaultPosition = AVAILABLE_WHITESPACE_POSITIONS.has(
     globalOption as WhitespacePosition,
@@ -54,9 +52,8 @@ export const resolveWhitespacePosition = (
   const match = info.match(WHITESPACE_REGEXP)
 
   if (match) {
-    if (AVAILABLE_WHITESPACE_POSITIONS.has(match[1])) {
+    if (AVAILABLE_WHITESPACE_POSITIONS.has(match[1]))
       return match[1] as WhitespacePosition
-    }
 
     return defaultPosition || 'all'
   }

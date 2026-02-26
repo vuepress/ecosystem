@@ -8,12 +8,13 @@ export const getSEOAuthor = (
   author: SeoAuthor | false | undefined,
 ): AuthorInfo[] => {
   if (author) {
-    if (isArray(author))
+    if (isArray(author)) {
       return author
         .map((item) =>
           isString(item) ? { name: item } : isSEOAuthor(item) ? item : null,
         )
         .filter((item): item is AuthorInfo => item != null)
+    }
 
     if (isString(author)) return [{ name: author }]
 

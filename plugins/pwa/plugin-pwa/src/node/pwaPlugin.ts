@@ -48,10 +48,11 @@ export const pwaPlugin =
 
     if (options.appendBase) appendBase(base, options)
 
-    if (shouldPrefetch === true)
+    if (shouldPrefetch === true) {
       logger.warn(
         'The plugin will register service worker to handle assets, so we recommend you to set "shouldPrefetch: false" in VuePress config file.',
       )
+    }
 
     injectLinksToHead(app, options)
 

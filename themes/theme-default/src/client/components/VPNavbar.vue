@@ -29,9 +29,8 @@ const navbarBrand = useTemplateRef<HTMLElement | null>('navbar-brand')
 
 const linksWrapperMaxWidth = ref(0)
 const linksWrapperStyle = computed(() => {
-  if (!linksWrapperMaxWidth.value) {
-    return {}
-  }
+  if (!linksWrapperMaxWidth.value) return {}
+
   return {
     maxWidth: `${linksWrapperMaxWidth.value}px`,
   }

@@ -62,9 +62,7 @@ const createNotationCommentMarkerRule = (
           )
         }
       })
-      if (classPre) {
-        parser.pre.classList.push(classPre)
-      }
+      if (classPre) parser.pre.classList.push(classPre)
 
       return true
     },

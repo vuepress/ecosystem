@@ -44,20 +44,22 @@ export const addOGP = (head: HeadConfig[], content: SeoContent): void => {
         }
         case 'og:locale:alternate': {
           content['og:locale:alternate'].forEach((locale: string) => {
-            if (locale !== content['og:locale'])
+            if (locale !== content['og:locale']) {
               appendMetaToHead(head, {
                 name: 'og:locale:alternate',
                 content: locale,
               })
+            }
           })
           break
         }
         default: {
-          if (content[property as keyof SeoContent] as string)
+          if (content[property as keyof SeoContent] as string) {
             appendMetaToHead(head, {
               name: property,
               content: content[property as keyof SeoContent] as string,
             })
+          }
         }
       }
     })

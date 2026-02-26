@@ -24,13 +24,9 @@ export const llmOnlyPlugin = (md: Markdown): void => {
       }
 
       // strict match <llm-only>
-      if (state.src.slice(start, start + 10) !== '<llm-only>') {
-        return false
-      }
+      if (state.src.slice(start, start + 10) !== '<llm-only>') return false
 
-      if (silent) {
-        return true
-      }
+      if (silent) return true
 
       let nextLine = startLine
       let found = false
@@ -49,9 +45,7 @@ export const llmOnlyPlugin = (md: Markdown): void => {
         nextLine++
       }
 
-      if (!found) {
-        return false
-      }
+      if (!found) return false
 
       const token = state.push('llm_only_block', '', 0)
       token.content = ''

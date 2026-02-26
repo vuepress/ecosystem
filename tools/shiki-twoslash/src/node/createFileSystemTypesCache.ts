@@ -47,9 +47,8 @@ export const createFileSystemTypesCache = ({
   read(code): TwoslashReturn | null {
     const hash = createHash(code)
     const filePath = join(dir, `${hash}.json`)
-    if (!existsSync(filePath)) {
-      return null
-    }
+    if (!existsSync(filePath)) return null
+
     return JSON.parse(
       readFileSync(filePath, { encoding: 'utf-8' }),
     ) as TwoslashReturn

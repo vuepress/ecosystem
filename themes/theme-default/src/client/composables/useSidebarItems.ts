@@ -140,7 +140,7 @@ export const resolveMultiSidebarItems = (
   const sidebarRoutes = keys(sidebarConfig).sort((a, b) => b.length - a.length)
 
   // Find matching config
-  for (const base of sidebarRoutes)
+  for (const base of sidebarRoutes) {
     if (startsWith(decodeURI(path), base)) {
       const matched = sidebarConfig[base]
 
@@ -150,6 +150,7 @@ export const resolveMultiSidebarItems = (
           ? resolveSidebarHeadingItem(page, headers)
           : resolveArraySidebarItems(matched, headers, path, base)
     }
+  }
 
   // eslint-disable-next-line no-console
   console.warn(`${decodeURI(path)} is missing sidebar config.`)
@@ -169,9 +170,9 @@ export const sidebarItemsSymbol: InjectionKey<SidebarItemsRef> =
  */
 export const useSidebarItems = (): SidebarItemsRef => {
   const sidebarItems = inject(sidebarItemsSymbol)
-  if (!sidebarItems) {
+  if (!sidebarItems)
     throw new Error('useSidebarItems() is called without provider.')
-  }
+
   return sidebarItems
 }
 
@@ -197,21 +198,16 @@ export const resolveSidebarItems = (
   headers: PageHeader[],
 ): SidebarItem[] => {
   // resolve sidebar items according to the config
-  if (sidebarConfig === false) {
-    return []
-  }
+  if (sidebarConfig === false) return []
 
-  if (sidebarConfig === 'heading') {
+  if (sidebarConfig === 'heading')
     return resolveSidebarHeadingItem(page, headers)
-  }
 
-  if (Array.isArray(sidebarConfig)) {
+  if (Array.isArray(sidebarConfig))
     return resolveArraySidebarItems(sidebarConfig, headers, path, routeLocale)
-  }
 
-  if (isPlainObject(sidebarConfig)) {
+  if (isPlainObject(sidebarConfig))
     return resolveMultiSidebarItems(sidebarConfig, page, headers, path)
-  }
 
   return []
 }

@@ -28,18 +28,19 @@ const getComponentRender =
 
     let config: unknown = null
 
-    if (content.trim().startsWith('{'))
+    if (content.trim().startsWith('{')) {
       try {
         config = JSON.parse(content) as unknown
       } catch {
         // Do nothing
       }
-    else
+    } else {
       try {
         config = load(content)
       } catch {
         // Do nothing
       }
+    }
 
     if (config) return `<${name} v-bind='${stringifyProp(config)}' />`
 

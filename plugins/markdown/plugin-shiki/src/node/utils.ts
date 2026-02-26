@@ -50,9 +50,7 @@ export const attrsToLines = (attrs: string): TransformerCompactLineOption[] => {
   const attrsContent = attrs.match(/\s*[\d,-]*?$/)?.[0].trim()
   const result: number[] = []
 
-  if (!attrsContent) {
-    return []
-  }
+  if (!attrsContent) return []
 
   attrsContent
     .split(',')

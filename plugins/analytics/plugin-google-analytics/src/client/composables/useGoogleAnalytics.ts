@@ -46,9 +46,6 @@ export const useGoogleAnalytics = (
 
   window.gtag('js', new Date())
 
-  if (options.debug) {
-    window.gtag('config', options.id, { debug_mode: true })
-  } else {
-    window.gtag('config', options.id)
-  }
+  if (options.debug) window.gtag('config', options.id, { debug_mode: true })
+  else window.gtag('config', options.id)
 }

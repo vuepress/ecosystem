@@ -87,13 +87,9 @@ export const llmsPlugin =
             })
           }
 
-          if (llmsFullTxt) {
-            await generateLLMsFullTxt(llmPages, llmState)
-          }
+          if (llmsFullTxt) await generateLLMsFullTxt(llmPages, llmState)
 
-          if (llmsPageTxt) {
-            await generateLLMFriendlyDocs(llmPages, llmState)
-          }
+          if (llmsPageTxt) await generateLLMFriendlyDocs(llmPages, llmState)
         }
 
         await Promise.all(

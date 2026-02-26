@@ -15,9 +15,7 @@ const resolveNavbarItem = (
   item: NavbarGroupOptions | NavbarLinkOptions,
   prefix = '',
 ): NavbarItem => {
-  if (isString(item)) {
-    return resolveAutoLink(resolvePrefix(prefix, item))
-  }
+  if (isString(item)) return resolveAutoLink(resolvePrefix(prefix, item))
 
   if ('children' in item) {
     return {

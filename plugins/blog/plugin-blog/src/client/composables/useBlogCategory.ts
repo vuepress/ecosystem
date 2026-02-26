@@ -84,7 +84,8 @@ export const useBlogCategory = <
   })
 }
 
-if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot))
+if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
   __VUE_HMR_RUNTIME__.updateBlogCategory = (value: CategoriesMap): void => {
     categoryMapRef.value = value
   }
+}

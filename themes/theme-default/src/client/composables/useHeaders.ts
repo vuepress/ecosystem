@@ -20,9 +20,8 @@ export const headersSymbol: InjectionKey<HeadersRef> = Symbol('headers')
 export const useHeaders = (): HeadersRef => {
   const headers = injectLocal(headersSymbol)
 
-  if (!headers) {
-    throw new Error('useHeaders() is called without provider.')
-  }
+  if (!headers) throw new Error('useHeaders() is called without provider.')
+
   return headers
 }
 

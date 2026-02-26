@@ -25,7 +25,7 @@ export const encodeXMLContent = (content: string): string =>
 export const encodeXML = (content: ElementCompact): ElementCompact =>
   fromEntries(
     entries(content).map(([key, value]) => {
-      if (key === '_attributes' && value)
+      if (key === '_attributes' && value) {
         return [
           key,
           fromEntries(
@@ -37,6 +37,7 @@ export const encodeXML = (content: ElementCompact): ElementCompact =>
             ),
           ),
         ]
+      }
 
       if (key === '_text')
         return [key, encodeXMLContent((value as number | string).toString())]

@@ -32,7 +32,7 @@ export const useSuggestions = (queries: Ref<string[]>): SuggestionsRef => {
           ...options
         } = searchOptions.value
 
-        if (query.length >= 3)
+        if (query.length >= 3) {
           suggest(query, routeLocale.value, options)
             .then((items) =>
               suggestionsFilter(items, query, routeLocale.value, page.value),
@@ -50,7 +50,9 @@ export const useSuggestions = (queries: Ref<string[]>): SuggestionsRef => {
               // eslint-disable-next-line no-console
               console.error(err)
             })
-        else suggestions.value = []
+        } else {
+          suggestions.value = []
+        }
       }
 
       watchImmediate([queries, routeLocale], ([newQueries]) => {

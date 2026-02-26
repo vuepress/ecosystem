@@ -193,10 +193,11 @@ export const getSearchIndexStore = async (
   const indexesByLocale: LocaleIndex = {}
 
   app.pages.forEach((page) => {
-    if (filter(page) && page.frontmatter.search !== false)
-      (indexesByLocale[page.pathLocale] ??= []).push(
+    if (filter(page) && page.frontmatter.search !== false) {
+      ;(indexesByLocale[page.pathLocale] ??= []).push(
         ...generatePageIndex(page, store, customFields, indexContent),
       )
+    }
   })
 
   const searchIndex: SearchIndexStore = {}

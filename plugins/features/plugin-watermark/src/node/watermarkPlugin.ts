@@ -47,9 +47,8 @@ export const watermarkPlugin =
         if (isFunction(enabled)) {
           const { frontmatter } = page
 
-          if (!('watermark' in frontmatter) && enabled(page)) {
+          if (!('watermark' in frontmatter) && enabled(page))
             frontmatter.watermark = true
-          }
         }
       },
 

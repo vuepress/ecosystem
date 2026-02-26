@@ -12,16 +12,13 @@ const isDarkMode = useDarkMode()
 
 const heroText = computed(() => {
   // oxlint-disable-next-line eqeqeq
-  if (frontmatter.value.heroText === null) {
-    return null
-  }
+  if (frontmatter.value.heroText === null) return null
+
   return frontmatter.value.heroText || siteLocale.value.title || 'Hello'
 })
 const tagline = computed(() => {
   // oxlint-disable-next-line eqeqeq
-  if (frontmatter.value.tagline === null) {
-    return null
-  }
+  if (frontmatter.value.tagline === null) return null
 
   return (
     frontmatter.value.tagline ||
@@ -30,9 +27,9 @@ const tagline = computed(() => {
   )
 })
 const heroImage = computed(() => {
-  if (isDarkMode.value && frontmatter.value.heroImageDark !== undefined) {
+  if (isDarkMode.value && frontmatter.value.heroImageDark !== undefined)
     return frontmatter.value.heroImageDark
-  }
+
   return frontmatter.value.heroImage
 })
 const heroAlt = computed(
@@ -41,9 +38,7 @@ const heroAlt = computed(
 const heroHeight = computed(() => frontmatter.value.heroHeight ?? 280)
 
 const actions = computed(() => {
-  if (!Array.isArray(frontmatter.value.actions)) {
-    return []
-  }
+  if (!Array.isArray(frontmatter.value.actions)) return []
 
   return frontmatter.value.actions.map(({ type = 'primary', ...rest }) => ({
     type,
@@ -61,9 +56,7 @@ const HomeHeroImage: FunctionalComponent = () => {
     height: heroHeight.value,
   })
 
-  if (frontmatter.value.heroImageDark === undefined) {
-    return img
-  }
+  if (frontmatter.value.heroImageDark === undefined) return img
 
   // wrap hero image with <ClientOnly> to avoid ssr-mismatch
   // when using a different hero image in dark mode

@@ -12,9 +12,8 @@ import { normalizeUrl } from './utils.js'
 export const isMatchUrl = (find: RegExp | string, url: string): boolean => {
   if (typeof find === 'string') {
     // like regexp string, start with `^` or end with `$`
-    if (find.startsWith('^') || find.endsWith('$')) {
+    if (find.startsWith('^') || find.endsWith('$'))
       return new RegExp(find).test(url)
-    }
 
     return url.endsWith(find) || url.startsWith(find)
   }

@@ -65,9 +65,7 @@ const handleNode = (
       return ''
 
     // return alt text
-    if (MEDIA_WITH_ALT.has(node.tagName)) {
-      return node.attribs.alt || ''
-    }
+    if (MEDIA_WITH_ALT.has(node.tagName)) return node.attribs.alt || ''
 
     // html tags can be returned
     if (

@@ -239,9 +239,8 @@ export const useCopyCode = ({
             selection &&
             (el.contains(selection.anchorNode) ||
               el.contains(selection.focusNode))
-          ) {
+          )
             selection.removeAllRanges()
-          }
 
           void copy(el.textContent || '')
           ;(message ??= new Message()).pop(

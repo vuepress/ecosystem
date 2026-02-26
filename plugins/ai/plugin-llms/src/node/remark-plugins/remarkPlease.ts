@@ -38,9 +38,9 @@ export const remarkPlease =
       if (ourFullTagRegex.test(node.value)) {
         if (intent === 'remove') {
           parent.children.splice(index, 1)
-          if (parent.type === 'paragraph' && parent.children.length === 0) {
+          if (parent.type === 'paragraph' && parent.children.length === 0)
             emptyParagraphs.add({ node: parent, parent })
-          }
+
           continue
         }
         const match = node.value.match(ourFullTagRegex)
@@ -60,9 +60,9 @@ export const remarkPlease =
           if (
             closeNode?.type === 'html' &&
             tagRegex(tag, 'closed').test(closeNode.value)
-          ) {
+          )
             break
-          }
+
           closeIndex++
         }
 
@@ -71,9 +71,8 @@ export const remarkPlease =
             // Remove all nodes from opening to closing tag (inclusive)
             parent.children.splice(index, closeIndex - index + 1)
             // oxlint-disable-next-line max-depth
-            if (parent.type === 'paragraph' && parent.children.length === 0) {
+            if (parent.type === 'paragraph' && parent.children.length === 0)
               emptyParagraphs.add({ node: parent, parent })
-            }
           } else {
             // Keep the content between tags, remove only the HTML tag nodes
             parent.children.splice(closeIndex, 1) // Remove closing tag
@@ -91,9 +90,7 @@ export const remarkPlease =
     // First mark paragraphs that were emptied during tag removal
     for (const { node, parent } of emptyParagraphs) {
       const index = parent.children.indexOf(node)
-      if (index !== -1) {
-        paragraphsToRemove.push({ index, parent })
-      }
+      if (index !== -1) paragraphsToRemove.push({ index, parent })
     }
 
     // Then check for any other empty paragraphs (only whitespace or no children)
@@ -107,15 +104,12 @@ export const remarkPlease =
           firstChild?.type === 'text' &&
           firstChild.value.trim() === '')
 
-      if (isEmpty) {
-        paragraphsToRemove.push({ index, parent })
-      }
+      if (isEmpty) paragraphsToRemove.push({ index, parent })
     })
 
     // Remove empty paragraphs in reverse order to maintain correct indices
-    for (const { index, parent } of paragraphsToRemove.reverse()) {
+    for (const { index, parent } of paragraphsToRemove.reverse())
       parent.children.splice(index, 1)
-    }
 
     return tree
   }
