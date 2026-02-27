@@ -6,7 +6,7 @@
     "build": "pnpm -r --stream build && pnpm build:copy && pnpm build:style",
     "build:copy": "pnpm --parallel --stream copy",
     "build:style": "pnpm --parallel --stream style",
-    "bundle": "cross-env pnpm clean && pnpm build:copy && pnpm build:style && NODE_ENV=production pnpm -r --stream build",
+    "bundle": "cross-env pnpm clean && pnpm build:copy && pnpm build:style && cross-env NODE_ENV=production pnpm -r --stream build",
     "clean": "pnpm --parallel --stream clean",
     "format": "oxfmt",
     "lint": "oxlint --fix --type-aware --type-check --report-unused-disable-directives --deny-warnings && oxfmt && stylelint **/*.{css,html,scss,vue} --fix",
