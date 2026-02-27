@@ -33,10 +33,6 @@
   "exports": {
     ".": "./lib/node/index.js",
     "./styles*": "./styles/*",
-    "./color.scss": "./styles/default/color.scss",
-    "./config.scss": "./styles/default/config.scss",
-    "./layout.scss": "./styles/default/layout.scss",
-    "./palette.scss": "./styles/default/palette.scss",
     "./empty.scss": "./styles/empty.scss",
     "./helper.scss": "./styles/helper.scss",
     "./package.json": "./package.json"

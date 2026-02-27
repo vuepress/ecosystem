@@ -122,6 +122,7 @@ export const tsdownConfig = (
   } = options
 
   return defineConfig({
+    clean: !isProduction,
     entry: Object.fromEntries(files.map((item) => [item, `./src/${item}.ts`])),
     format: 'esm',
     outDir: './lib',
@@ -139,5 +140,6 @@ export const tsdownConfig = (
     fixedExtension: false,
     noExternal,
     inlineOnly,
+    publint: isProduction,
   })
 }

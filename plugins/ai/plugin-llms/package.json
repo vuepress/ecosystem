@@ -38,10 +38,10 @@
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
   },
   "dependencies": {
+    "@types/mdast": "^4.0.4",
     "@vuepress/helper": "workspace:*",
     "byte-size": "^9.0.1",
     "gray-matter": "^4.0.3",
-    "mdast": "^3.0.0",
     "mdast-util-from-markdown": "^2.0.3",
     "millify": "^6.1.0",
     "remark": "^15.0.1",
@@ -52,7 +52,6 @@
   "devDependencies": {
     "@types/byte-size": "^8.1.2",
     "@types/markdown-it": "^14.1.2",
-    "@types/mdast": "^4.0.4",
     "@vuepress/plugin-markdown-include": "workspace:*",
     "markdown-it": "^14.1.1",
     "unified": "^11.0.5"
