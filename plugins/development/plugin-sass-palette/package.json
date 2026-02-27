@@ -32,7 +32,12 @@
   "types": "./lib/node/index.d.ts",
   "exports": {
     ".": "./lib/node/index.js",
-    "./styles*": "./styles/*",
+    "./helper": {
+      "sass": "./styles/helper.scss"
+    },
+    "./empty": {
+      "sass": "./styles/empty.scss"
+    },
     "./empty.scss": "./styles/empty.scss",
     "./helper.scss": "./styles/helper.scss",
     "./package.json": "./package.json"

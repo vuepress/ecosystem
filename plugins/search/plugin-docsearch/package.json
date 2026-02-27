@@ -30,7 +30,7 @@
   "exports": {
     ".": "./lib/node/index.js",
     "./client": "./lib/client/index.js",
-    "./styles/*": "./lib/client/styles/*",
+    "./styles/*.css": "./lib/client/styles/*.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {

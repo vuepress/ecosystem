@@ -24,12 +24,15 @@
     "lib"
   ],
   "type": "module",
+  "sideEffects": [
+    "./lib/styles/*.css"
+  ],
   "main": "./lib/node/index.js",
   "types": "./lib/node/index.d.ts",
   "exports": {
     ".": "./lib/node/index.js",
     "./resolveLang": "./lib/node/resolveLang.js",
-    "./styles/*": "./lib/client/styles/*",
+    "./shiki.css": "./lib/client/styles/shiki.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
