@@ -69,8 +69,8 @@ jobs:
       - name: Install deps
         run: pnpm install --frozen-lockfile
 
-      - name: Build Project
-        run: pnpm build
+      - name: Build source files
+        run: pnpm bundle
 
       - name: Docs build
         env:

@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-check:
+  check:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,39 +28,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build
-        run: pnpm build
-
-      - name: Linter Test
-        run: pnpm lint:check
-
-      - name: Docs Test
-        run: |
-          pnpm --filter @vuepress/ecosystem-docs docs:build
-          pnpm --filter @vuepress/ecosystem-docs docs:build-webpack
-
-      - name: Unit Test
-        run: pnpm test:unit
-
-  bundle-check:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Use Node.js 22
-        uses: actions/setup-node@v6
-        with:
-          node-version: 24
-          cache: pnpm
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build
+      - name: Build source files
         run: pnpm bundle
 
       - name: Linter Test
@@ -73,14 +41,3 @@ jobs:
 
       - name: Unit Test
         run: pnpm test:unit
-
-  check-result:
-    if: ${{ always() }}
-    name: check result
-    runs-on: ubuntu-latest
-    needs:
-      - build-check
-      - bundle-check
-    steps:
-      - if: ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}
-        run: exit 1

@@ -86,7 +86,7 @@ jobs:
         run: pnpm playwright install chromium
 
       - name: Build source files
-        run: pnpm build
+        run: pnpm bundle
 
       - name: E2E test (base /)
         run: pnpm test:e2e
@@ -133,7 +133,7 @@ jobs:
         run: pnpm playwright install chromium
 
       - name: Build source files
-        run: pnpm build
+        run: pnpm bundle
 
       - name: E2E test (base /)
         run: pnpm test:e2e

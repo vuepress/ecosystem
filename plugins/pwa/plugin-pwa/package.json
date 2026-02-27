@@ -30,8 +30,14 @@
   "main": "./lib/node/index.js",
   "types": "./lib/node/index.d.ts",
   "exports": {
-    ".": "./lib/node/index.js",
-    "./client": "./lib/client/index.js",
+    ".": {
+      "types": "./lib/node/index.d.ts",
+      "default": "./lib/node/index.js"
+    },
+    "./client": {
+      "types": "./lib/client/index.d.ts",
+      "default": "./lib/client/index.js"
+    },
     "./styles/*": "./lib/client/styles/*",
     "./package.json": "./package.json"
   },
@@ -39,8 +45,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
-    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
+    "build": "tsdown --config-loader unrun",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
@@ -51,9 +56,6 @@
     "register-service-worker": "^1.7.2",
     "vue": "catalog:",
     "workbox-build": "^7.4.0"
-  },
-  "devDependencies": {
-    "rollup": "^4.59.0"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

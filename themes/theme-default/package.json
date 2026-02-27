@@ -32,11 +32,20 @@
   "main": "./lib/node/index.js",
   "types": "./lib/node/index.d.ts",
   "exports": {
-    ".": "./lib/node/index.js",
-    "./client": "./lib/client/index.js",
+    ".": {
+      "types": "./lib/node/index.d.ts",
+      "default": "./lib/node/index.js"
+    },
+    "./client": {
+      "types": "./lib/client/index.d.ts",
+      "default": "./lib/client/index.js"
+    },
     "./components/*": "./lib/client/components/*",
     "./layouts/*": "./lib/client/layouts/*",
-    "./styles/*": "./lib/client/styles/*",
+    "./styles/*": {
+      "sass": "./lib/client/styles/*.scss",
+      "default": "./lib/client/styles/*"
+    },
     "./templates/*": "./templates/*",
     "./lib/*": "./lib/*",
     "./package.json": "./package.json"

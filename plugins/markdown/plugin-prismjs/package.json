@@ -24,21 +24,26 @@
     "lib"
   ],
   "type": "module",
+  "sideEffects": [
+    "./lib/client/styles/**/*.css"
+  ],
   "main": "./lib/node/index.js",
   "types": "./lib/node/index.d.ts",
   "exports": {
-    ".": "./lib/node/index.js",
-    "./styles/*": "./lib/client/styles/*",
+    ".": {
+      "types": "./lib/node/index.d.ts",
+      "default": "./lib/node/index.js"
+    },
+    "./styles/*.css": "./lib/client/styles/*.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
-    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
+    "build": "tsdown --config-loader unrun",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "style": "tsx scripts/generateThemeFiles.ts"
+    "style": "unrun scripts/generateThemeFiles.ts"
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
