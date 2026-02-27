@@ -24,6 +24,7 @@
     "lib"
   ],
   "type": "module",
+  "sideEffects": false,
   "main": "./lib/node/index.js",
   "types": "./lib/node/index.d.ts",
   "exports": {
