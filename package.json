@@ -14,7 +14,7 @@
     "prepare": "husky",
     "release": "pnpm release:check && pnpm release:version && pnpm release:publish",
     "release:check": "pnpm lint && pnpm clean && pnpm bundle && pnpm test",
-    "release:publish": "lerna publish --dist-tag next from-package --yes && node --experimental-strip-types scripts/syncNpmmirror.ts",
+    "release:publish": "lerna publish --dist-tag next from-package --yes && unrun scripts/syncNpmmirror.ts",
     "release:version": "lerna version",
     "test": "pnpm test:unit && pnpm test:e2e",
     "test:cov": "cross-env TZ=Etc/UTC vitest run --coverage ",
@@ -55,6 +55,7 @@
     "tsconfig-vuepress": "^7.0.0",
     "tsdown": "^0.20.3",
     "typescript": "^5.9.3",
+    "unrun": "^0.2.28",
     "vite": "~7.1.12",
     "vitest": "4.0.18",
     "vuepress": "catalog:"

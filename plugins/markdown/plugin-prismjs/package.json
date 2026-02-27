@@ -37,7 +37,7 @@
   "scripts": {
     "build": "tsdown --config-loader unrun",
     "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
-    "style": "node --experimental-strip-types scripts/generateThemeFiles.ts"
+    "style": "unrun scripts/generateThemeFiles.ts"
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
