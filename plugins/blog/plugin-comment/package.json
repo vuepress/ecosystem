@@ -32,7 +32,7 @@
   ],
   "type": "module",
   "sideEffects": [
-    "./lib/styles/*.css"
+    "./lib/client/styles/**/*.css"
   ],
   "exports": {
     ".": {
