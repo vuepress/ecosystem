@@ -16,5 +16,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div :id="name" :style="`border-color: var(--${name})`">{{ value }}</div>
+  <div :style="`border-color: var(--${name})`">
+    {{ name }}: <span :id="name">{{ value }}</span>
+  </div>
 </template>
