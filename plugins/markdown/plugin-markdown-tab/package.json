@@ -31,8 +31,14 @@
   "main": "./lib/node/index.js",
   "types": "./lib/node/index.d.ts",
   "exports": {
-    ".": "./lib/node/index.js",
-    "./client": "./lib/client/index.js",
+    ".": {
+      "types": "./lib/node/index.d.ts",
+      "default": "./lib/node/index.js"
+    },
+    "./client": {
+      "types": "./lib/client/index.d.ts",
+      "default": "./lib/client/index.js"
+    },
     "./package.json": "./package.json"
   },
   "publishConfig": {

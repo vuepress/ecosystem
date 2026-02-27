@@ -30,7 +30,10 @@
   "main": "./lib/node/index.js",
   "types": "./lib/node/index.d.ts",
   "exports": {
-    ".": "./lib/node/index.js",
+    ".": {
+      "types": "./lib/node/index.d.ts",
+      "default": "./lib/node/index.js"
+    },
     "./resolveLang": "./lib/node/resolveLang.js",
     "./shiki.css": "./lib/client/styles/shiki.css",
     "./package.json": "./package.json"

@@ -28,10 +28,14 @@
     "styles"
   ],
   "type": "module",
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
+  "sideEffects": [
+    "./styles/*.scss"
+  ],
   "exports": {
-    ".": "./lib/node/index.js",
+    ".": {
+      "types": "./lib/node/index.d.ts",
+      "default": "./lib/node/index.js"
+    },
     "./helper": {
       "sass": "./styles/helper.scss"
     },

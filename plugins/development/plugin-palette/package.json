@@ -28,10 +28,12 @@
     "lib"
   ],
   "type": "module",
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
+  "sideEffects": false,
   "exports": {
-    ".": "./lib/node/index.js",
+    ".": {
+      "types": "./lib/node/index.d.ts",
+      "default": "./lib/node/index.js"
+    },
     "./package.json": "./package.json"
   },
   "publishConfig": {
