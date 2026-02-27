@@ -22,12 +22,6 @@
     "test:unit": "cross-env TZ=Etc/UTC vitest run",
     "type:check": "tsc --noEmit"
   },
-  "nano-staged": {
-    "**/*": "oxfmt --no-error-on-unmatched-pattern",
-    "*.{cjs,js,ts,vue}": "oxlint --fix --type-aware --type-check --deny-warnings --report-unused-disable-directives",
-    "*.{css,scss,html,vue}": "stylelint --fix",
-    "package.json": "sort-package-json"
-  },
   "devDependencies": {
     "@commitlint/cli": "^20.4.2",
     "@commitlint/config-conventional": "^20.4.2",
@@ -48,7 +42,6 @@
     "publint": "^0.3.17",
     "rimraf": "^6.1.3",
     "sass-embedded": "catalog:",
-    "sort-package-json": "^3.6.1",
     "stylelint": "^17.4.0",
     "stylelint-config-hope": "^11.0.0",
     "stylelint-config-html": "^1.1.0",
@@ -60,8 +53,13 @@
     "vitest": "4.0.18",
     "vuepress": "catalog:"
   },
-  "packageManager": "pnpm@10.30.2",
+  "nano-staged": {
+    "**/*": "oxfmt --no-error-on-unmatched-pattern",
+    "*.{cjs,js,ts,vue}": "oxlint --fix --type-aware --type-check --deny-warnings --report-unused-disable-directives",
+    "*.{css,scss,html,vue}": "stylelint --fix"
+  },
   "engines": {
     "node": "^20.19.0 || >= 22.12.0"
-  }
+  },
+  "packageManager": "pnpm@10.30.2"
 }
