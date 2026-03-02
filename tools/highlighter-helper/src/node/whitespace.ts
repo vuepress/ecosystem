@@ -3,7 +3,8 @@
  *
  * 匹配代码块信息中 `:whitespace` 指令的正则表达式
  */
-export const WHITESPACE_REGEXP = /:whitespace(?:=(all|boundary|trailing)?)?\b/
+export const WHITESPACE_REGEXP =
+  /:whitespace(?:=(all|boundary|leading|trailing)?)?\b/
 
 /**
  * Regular expression to match `:no-whitespace` directive in code block info
@@ -17,9 +18,14 @@ export const NO_WHITESPACE_REGEXP = /:no-whitespace\b/
  *
  * 空白符位置类型
  */
-export type WhitespacePosition = 'all' | 'boundary' | 'trailing'
+export type WhitespacePosition = 'all' | 'boundary' | 'leading' | 'trailing'
 
-const AVAILABLE_WHITESPACE_POSITIONS = new Set(['all', 'boundary', 'trailing'])
+const AVAILABLE_WHITESPACE_POSITIONS = new Set([
+  'all',
+  'boundary',
+  'leading',
+  'trailing',
+])
 
 /**
  * Resolve whitespace position from code block info and global option

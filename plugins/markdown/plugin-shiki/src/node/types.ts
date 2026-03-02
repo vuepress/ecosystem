@@ -184,23 +184,36 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
   notationWordHighlight?: boolean
 
   /**
+   * Enable remove comments transformer
+   *
+   * 是否启用移除注释转换器
+   *
+   * @default false
+   *
+   * @see https://shiki.style/packages/transformers#transformerremovecomments
+   */
+  removeComments?: boolean
+
+  /**
    * Enable whitespace
    * - true: enable whitespace, but not render any whitespace by default
    * - false: disable whitespace completely
    * - 'all': render all whitespace
    * - 'boundary': render leading and trailing whitespace of each line.
+   * - 'leading': render leading whitespace of each line
    * - 'trailing': render trailing whitespace of each line
    *
-   * you are able to use `:whitespace` or `:no-whitespace` or `:whitespace=all|boundary|trailing` to set single code block
+   * you are able to use `:whitespace` or `:no-whitespace` or `:whitespace=all|boundary|leading|trailing` to set single code block
    *
    * 启用空白字符显示
    * - true: 启用空白字符，但默认不渲染任何空白字符
    * - false: 完全禁用空白字符
    * - 'all': 渲染所有空白字符
    * - 'boundary': 渲染每行的前导和尾随空白字符
+   * - 'leading': 渲染每行的前导空白字符
    * - 'trailing': 渲染每行的尾随空白字符
    *
-   * 你可以使用 `:whitespace` 或 `:no-whitespace` 或 `:whitespace=all|boundary|trailing` 来设置单个代码块
+   * 你可以使用 `:whitespace` 或 `:no-whitespace` 或 `:whitespace=all|boundary|leading|trailing` 来设置单个代码块
    *
    * @default false
    *

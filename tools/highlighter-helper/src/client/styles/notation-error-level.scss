@@ -3,9 +3,11 @@
 // notation error level
 // - `// [\!code warning]`
 // - `// [\!code error]`
+// - `// [\!code info]`
 :root {
   --code-highlight-error-bg-color: rgb(244 63 94 / 16%);
   --code-highlight-warning-bg-color: rgb(255 193 7 / 16%);
+  --code-highlight-info-bg-color: rgb(33 150 243 / 16%);
 }
 
 div[class*='language-'] .line.highlighted {
@@ -15,5 +17,9 @@ div[class*='language-'] .line.highlighted {
 
   &.warning {
     background-color: var(--code-highlight-warning-bg-color);
+  }
+
+  &.info {
+    background-color: var(--code-highlight-info-bg-color);
   }
 }

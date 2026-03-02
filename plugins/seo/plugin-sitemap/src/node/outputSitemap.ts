@@ -33,7 +33,6 @@ export const outputSitemap = async (
     const robotsTxt = await fs.readFile(robotTxtPath, 'utf-8')
     const siteMapRegex = /^Sitemap: .*$/mu
 
-    // oxlint-disable-next-line unicorn/prefer-ternary
     if (siteMapRegex.test(robotsTxt)) {
       await fs.writeFile(
         robotTxtPath,

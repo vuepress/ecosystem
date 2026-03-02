@@ -85,18 +85,20 @@ export interface MarkdownItPrismjsHighlightOptions {
    * - false: disable whitespace completely
    * - 'all': render all whitespace
    * - 'boundary': render leading and trailing whitespace of each line.
+   * - 'leading': render leading whitespace of each line
    * - 'trailing': render trailing whitespace of each line
    *
-   * you are able to use `:whitespace` or `:no-whitespace` or `:whitespace=all|boundary|trailing` to set single code block
+   * you are able to use `:whitespace` or `:no-whitespace` or `:whitespace=all|boundary|leading|trailing` to set single code block
    *
    * 是否启用渲染空格
    * - true: 启用空格，但默认不渲染任何空格
    * - false: 完全禁用空格
    * - 'all': 渲染所有空格
    * - 'boundary': 渲染每行的前导和尾随空格
+   * - 'leading': 渲染每行的前导空格
    * - 'trailing': 渲染每行的尾随空格
    *
-   * 你可以使用 `:whitespace` 或 `:no-whitespace` 或 `:whitespace=all|boundary|trailing` 来设置单个代码块
+   * 你可以使用 `:whitespace` 或 `:no-whitespace` 或 `:whitespace=all|boundary|leading|trailing` 来设置单个代码块
    *
    * @default false
    *
