@@ -1036,6 +1036,9 @@ importers:
       '@mdit/plugin-attrs':
         specifier: ^0.25.0
         version: 0.25.0(markdown-it@14.1.1)
+      '@mdit/plugin-layout':
+        specifier: ^0.2.0
+        version: 0.2.0(markdown-it@14.1.1)
       '@mdit/plugin-mark':
         specifier: ^0.23.0
         version: 0.23.0(markdown-it@14.1.1)
@@ -3354,6 +3357,14 @@ packages:
     peerDependenciesMeta:
       katex:
         optional: true
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-layout@0.2.0':
+    resolution: {integrity: sha512-TOagPlXo8b+d/2m9laXgKr24FDnfKPZ5hgZHiu6SN+IlUH+uWVl6D3wSvFyevHQZxyl680YIM4oTeAmOcfQdow==}
+    peerDependencies:
+      markdown-it: ^14.1.0
+    peerDependenciesMeta:
       markdown-it:
         optional: true
 
@@ -12018,6 +12029,13 @@ snapshots:
       '@types/markdown-it': 14.1.2
     optionalDependencies:
       katex: 0.16.33
+      markdown-it: 14.1.1
+
+  '@mdit/plugin-layout@0.2.0(markdown-it@14.1.1)':
+    dependencies:
+      '@mdit/helper': 0.23.0(markdown-it@14.1.1)
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
       markdown-it: 14.1.1
 
   '@mdit/plugin-mark@0.23.0(markdown-it@14.1.1)':

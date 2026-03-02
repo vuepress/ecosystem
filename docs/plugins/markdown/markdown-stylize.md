@@ -94,6 +94,32 @@ VuePress is ==powerful==!
 
 :::
 
+### Adding layouts
+
+You can use `@flexs`/`@flex`, `@grids`/`@grid` and `@columns`/`@column` with `@end` to add layouts for content:
+
+::: preview
+
+@flexs gap-4 items-center
+
+@flex.flex-demo flex-1
+
+### Left Column
+
+This content grows to fill available space.
+
+@flex.flex-demo
+
+### Right Column
+
+This content takes its natural width.
+
+@end
+
+:::
+
+For grammars, see [@mdit/plugin-layouts](https://mdit-plugins.github.io/layout.html#syntax).
+
 ### Creating Spoilers
 
 You can use `!! !!` to mark content as spoiler.

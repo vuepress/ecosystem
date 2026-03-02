@@ -24,6 +24,15 @@ export interface MarkdownStylizePluginOptions {
   attrs?: MarkdownItAttrsOptions | boolean
 
   /**
+   * Whether to enable layout support
+   *
+   * 是否启用布局支持。
+   *
+   * @default false
+   */
+  layout?: boolean
+
+  /**
    * Whether to enable superscript format support
    *
    * 是否启用上角标格式支持。

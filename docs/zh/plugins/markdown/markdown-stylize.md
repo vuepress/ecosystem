@@ -94,6 +94,31 @@ VuePress ==非常== 强大!
 
 :::
 
+### 添加布局
+
+你可以使用 `@flexs`/`@flex`、`@grids`/`@grid` 和 `@columns`/`@column` 配合 `@end` 来为内容添加布局：
+
+::: preview
+
+@flexs gap-4 items-center
+@flex.flex-demo flex-1
+
+### 左列
+
+此内容会增长以填充可用空间。
+
+@flex.flex-demo
+
+### 右列
+
+此内容使用其自然宽度。
+
+@end
+
+:::
+
+语法请参阅 [@mdit/plugin-layouts](https://mdit-plugins.github.io/zh/layout.html#格式)。
+
 ### 创建剧透
 
 你可以使用 `!! !!` 标记剧透文字。请注意标记两侧需要有空格。
