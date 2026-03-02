@@ -20,8 +20,8 @@ onlyBuiltDependencies:
   - '@parcel/watcher'
   - esbuild
 
-overrides:
-  vite@7: npm:rolldown-vite@7
+# overrides:
+#   vite@7: npm:rolldown-vite@7
 
 peerDependencyRules:
   allowedVersions:
