@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.124](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.123...v2.0.0-rc.124) (2026-03-02)
+
+### Bug Fixes
+
+- **helper:** fix excerpt generation with self-closing tags, close [#595](https://github.com/vuepress/ecosystem/issues/595) ([c25cf16](https://github.com/vuepress/ecosystem/commit/c25cf163fe0bade18cceb62dc5128f892f666c44))
+- **plugin-comment:** resolve waline lang correctly ([#609](https://github.com/vuepress/ecosystem/issues/609)) ([8d12dd0](https://github.com/vuepress/ecosystem/commit/8d12dd070c02b6d9b7a2ead2dec1c8a59b846d1e))
+
+### Features
+
+- **helper:** add sass helper ([#199](https://github.com/vuepress/ecosystem/issues/199)) ([c4e5476](https://github.com/vuepress/ecosystem/commit/c4e5476d5b1f70a7ecd125a1da5df1098e70a772))
+- **plugin-markdown-ext:** add cjkFriendly option ([#620](https://github.com/vuepress/ecosystem/issues/620)) ([2fbb745](https://github.com/vuepress/ecosystem/commit/2fbb745d29491ca432b97a39d1df1f9b9d5b2e1d))
+- **plugin-markdown-stylize:** add layout support ([#617](https://github.com/vuepress/ecosystem/issues/617)) ([0251546](https://github.com/vuepress/ecosystem/commit/0251546362ec504488a0b05604a1507fd260f28f))
+- **plugin-shiki:** add transformerRemoveComments, info error level, leading whitespace, and twoslash scroll fix ([#619](https://github.com/vuepress/ecosystem/issues/619)) ([c488456](https://github.com/vuepress/ecosystem/commit/c48845633e52f2fb4c840d294ae7e9b987b71491))
+
 # [2.0.0-rc.123](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.122...v2.0.0-rc.123) (2026-02-12)
 
 ### Bug Fixes

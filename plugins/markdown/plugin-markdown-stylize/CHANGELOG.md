@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.124](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.123...v2.0.0-rc.124) (2026-03-02)
+
+### Features
+
+- **plugin-markdown-stylize:** add layout support ([#617](https://github.com/vuepress/ecosystem/issues/617)) ([0251546](https://github.com/vuepress/ecosystem/commit/0251546362ec504488a0b05604a1507fd260f28f))
+
 # [2.0.0-rc.123](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.122...v2.0.0-rc.123) (2026-02-12)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-stylize

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.124](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.123...v2.0.0-rc.124) (2026-03-02)
+
+### Features
+
+- **plugin-shiki:** add transformerRemoveComments, info error level, leading whitespace, and twoslash scroll fix ([#619](https://github.com/vuepress/ecosystem/issues/619)) ([c488456](https://github.com/vuepress/ecosystem/commit/c48845633e52f2fb4c840d294ae7e9b987b71491))
+
 # [2.0.0-rc.123](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.122...v2.0.0-rc.123) (2026-02-12)
 
 **Note:** Version bump only for package @vuepress/plugin-shiki

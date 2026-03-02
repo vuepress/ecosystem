@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-seo",
-  "version": "2.0.0-rc.123",
+  "version": "2.0.0-rc.124",
   "description": "SEO plugin for vuepress",
   "keywords": [
     "seo",

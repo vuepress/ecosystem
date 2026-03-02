@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.124](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.123...v2.0.0-rc.124) (2026-03-02)
+
+### Bug Fixes
+
+- **plugin-comment:** resolve waline lang correctly ([#609](https://github.com/vuepress/ecosystem/issues/609)) ([8d12dd0](https://github.com/vuepress/ecosystem/commit/8d12dd070c02b6d9b7a2ead2dec1c8a59b846d1e))
+
 # [2.0.0-rc.123](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.122...v2.0.0-rc.123) (2026-02-12)
 
 **Note:** Version bump only for package @vuepress/plugin-comment
