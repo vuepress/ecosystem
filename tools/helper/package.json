@@ -35,6 +35,7 @@
   "exports": {
     ".": {
       "types": "./lib/node/index.d.ts",
+      "sass": "./lib/styles/helper.scss",
       "default": "./lib/node/index.js"
     },
     "./client": {
@@ -60,6 +61,12 @@
     "./transition/*.css": "./lib/client/styles/transition/*.css",
     "./scss/*": {
       "sass": "./scss/*.scss"
+    },
+    "./scss/color": {
+      "sass": "./scss/functions/_color.scss"
+    },
+    "./scss/svg": {
+      "sass": "./scss/functions/_svg.scss"
     },
     "./package.json": "./package.json"
   },
