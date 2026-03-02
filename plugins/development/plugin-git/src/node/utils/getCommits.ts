@@ -88,9 +88,15 @@ const runGitLog = (args: string[], cwd: string): Promise<string> =>
  * @param cwd - Current working directory
  * @returns Promise that resolves to normalized git root path, or null if not in a git repository
  */
-const getGitRepoRoot = (filePath: string, cwd: string): Promise<string> =>
+const getGitRepoRoot = (
+  filePath: string,
+  cwd: string,
+): Promise<string | null> =>
   new Promise((resolve) => {
-    const dir = path.dirname(path.join(cwd, filePath))
+    const absFilePath = path.isAbsolute(filePath)
+      ? filePath
+      : path.resolve(cwd, filePath)
+    const dir = path.dirname(absFilePath)
     const gitProcess = spawn('git', ['rev-parse', '--show-toplevel'], {
       cwd: dir,
       stdio: ['ignore', 'pipe', 'pipe'],
@@ -109,7 +115,7 @@ const getGitRepoRoot = (filePath: string, cwd: string): Promise<string> =>
 
     gitProcess.on('error', (error) => {
       logger.error(`Failed to spawn git rev-parse: ${error.message}`)
-      resolve('')
+      resolve(null)
     })
 
     gitProcess.on('close', (code) => {
@@ -119,7 +125,7 @@ const getGitRepoRoot = (filePath: string, cwd: string): Promise<string> =>
         logger.error(
           `git rev-parse failed (code=${code}): ${stderrData.trim()}`,
         )
-        resolve('')
+        resolve(null)
       }
     })
   })
