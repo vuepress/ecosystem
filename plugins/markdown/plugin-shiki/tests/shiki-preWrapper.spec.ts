@@ -344,6 +344,54 @@ ${codeFence}
     })
   })
 
+  describe('remove comments', () => {
+    const source = `\
+${codeFence}ts
+// This is a line comment
+const foo = 'foo'
+const bar = 'bar' // inline comment
+/* block comment */
+const baz = 'baz'
+${codeFence}
+
+${codeFence}js
+// Another line comment
+function hello() {
+  /* multi-line
+     block comment */
+  return 'world'
+}
+${codeFence}
+`
+
+    it('should remove comments when `removeComments` is enabled', () => {
+      const md = createMarkdown({ removeComments: true })
+      const result = md.render(source)
+
+      expect(result).toMatchSnapshot()
+      expect(result).not.toContain('This is a line comment')
+      expect(result).not.toContain('inline comment')
+      expect(result).not.toContain('block comment')
+      expect(result).not.toContain('Another line comment')
+      expect(result).not.toContain('multi-line')
+      expect(result).toContain('foo')
+      expect(result).toContain('bar')
+      expect(result).toContain('baz')
+      expect(result).toContain('hello')
+      expect(result).toContain('world')
+    })
+
+    it('should keep comments when `removeComments` is not set', () => {
+      const md = createMarkdown()
+      const result = md.render(source)
+
+      expect(result).toMatchSnapshot()
+      expect(result).toContain('line comment')
+      expect(result).toContain('inline comment')
+      expect(result).toContain('block comment')
+    })
+  })
+
   describe('render whitespace', () => {
     const source = `\
 ${codeFence}
