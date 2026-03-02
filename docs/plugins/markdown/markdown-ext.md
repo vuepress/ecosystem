@@ -191,3 +191,8 @@ You can use any mustache syntax as raw text in `v-pre` container:
 
 - Type: `boolean`
 - Details: Whether to enable v-pre wrapper.
+
+### cjkFriendly
+
+- Type: `boolean`
+- Details: Whether to enable CJK-friendly support for emphasis marks. When not set, automatically enabled for CJK languages (`zh`, `ja`, `ko`) detected in site configuration.
