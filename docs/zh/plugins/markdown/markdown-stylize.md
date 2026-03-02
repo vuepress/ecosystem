@@ -117,7 +117,7 @@ VuePress ==非常== 强大!
 
 :::
 
-语法请参阅 [@mdit/plugin-layouts](https://mdit-plugins.github.io/zh/layout.html#格式)。
+语法请参阅 [@mdit/plugin-layout](https://mdit-plugins.github.io/zh/layout.html#格式)。
 
 ### 创建剧透
 
@@ -215,6 +215,11 @@ export default {
 
 - 类型：`MarkdownItAttrsOptions | boolean`
 - 详情：是否启用 attrs 支持。你也可以传递一个对象来指定 [@mdit/plugin-attrs](https://mdit-plugins.github.io/zh/attrs.html#高级) 的选项。
+
+### layout
+
+- 类型：`boolean`
+- 详情：是否启用布局支持。
 
 ### mark
 

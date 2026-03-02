@@ -118,7 +118,7 @@ This content takes its natural width.
 
 :::
 
-For grammars, see [@mdit/plugin-layouts](https://mdit-plugins.github.io/layout.html#syntax).
+For syntax, see [@mdit/plugin-layout](https://mdit-plugins.github.io/layout.html#syntax).
 
 ### Creating Spoilers
 
@@ -216,6 +216,11 @@ Also, you can use `stylize` in frontmatter to provide extra stylize rules for co
 
 - Type: `MarkdownItAttrsOptions | boolean`
 - Details: Whether to enable attrs support. You can also pass an object to specify the options of [@mdit/plugin-attrs](https://mdit-plugins.github.io/attrs.html#advanced).
+
+### layout
+
+- Type: `boolean`
+- Details: Whether to enable layout support.
 
 ### mark
 
