@@ -35,7 +35,7 @@
   "exports": {
     ".": {
       "types": "./lib/node/index.d.ts",
-      "sass": "./lib/styles/helper.scss",
+      "sass": "./scss/helper.scss",
       "default": "./lib/node/index.js"
     },
     "./client": {
