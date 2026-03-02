@@ -558,5 +558,15 @@ console.log('hello world)\t
       expect(parser.lines[4].content.includes('class="tab"')).toBe(true)
       expect(result).toMatchSnapshot()
     })
+
+    it('`boundary` and `:whitespace=leading`', () => {
+      const parser = getCodeParser(code)
+      metaWhitespace(parser, 'js :whitespace=leading', 'boundary')
+      const result = parser.stringify()
+      expect(parser.lines[0].content.includes('class="space"')).toBe(false)
+      expect(parser.lines[1].content.includes('class="space"')).toBe(true)
+      expect(parser.lines[3].content.includes('class="tab"')).toBe(true)
+      expect(result).toMatchSnapshot()
+    })
   })
 })

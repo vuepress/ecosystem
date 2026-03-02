@@ -367,6 +367,10 @@ function foo () {
   const foo = 'foo'  \n  return 'foo'  \n}
 }
 ${codeFence}
+${codeFence}js :whitespace=leading
+function foo () {
+  const foo = 'foo'  \n  return 'foo'  \n}
+${codeFence}
 ${codeFence}js :whitespace=all
 function foo () {
   const foo = 'foo'  \n  return 'foo'
@@ -395,6 +399,11 @@ function foo () {
 
     it('should work whitespace with `false` option', () => {
       const md = createMarkdown({ whitespace: false })
+      expect(md.render(source)).toMatchSnapshot()
+    })
+
+    it('should work whitespace with `leading` option', () => {
+      const md = createMarkdown({ whitespace: 'leading' })
       expect(md.render(source)).toMatchSnapshot()
     })
   })
