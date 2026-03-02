@@ -72,6 +72,9 @@ export const getHighLightFunction = (
               defaultColor: false,
             }
           : { theme: options.theme ?? 'nord' }),
+        ...(options.removeComments
+          ? { includeExplanation: 'scopeName' as const }
+          : {}),
       }),
     )
 }

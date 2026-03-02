@@ -406,6 +406,7 @@ body > div {
   console.log('No errors or warnings')
   console.warn('Warning') // [\!code warning]
   console.error('Error') // [\!code error]
+  console.log('Info') // [\!code info]
   ```
   ````
 
@@ -416,6 +417,7 @@ body > div {
   console.log('No errors or warnings')
   console.warn('Warning') // [!code warning]
   console.error('Error') // [!code error]
+  console.log('Info') // [!code info]
   ```
 
   </template>
@@ -475,9 +477,20 @@ body > div {
 - Also see:
   - [Shiki > Notation Word Highlight](https://shiki.style/packages/transformers#transformernotationwordhighlight)
 
+### removeComments
+
+- Type: `boolean`
+
+- Default: `false`
+
+- Details: Whether to remove comments from the code. It works by checking the grammar token metadata to determine if the token is a comment.
+
+- Also see:
+  - [Shiki > Remove Comments](https://shiki.style/packages/transformers#transformerremovecomments)
+
 ### whitespace
 
-- Type: `boolean | 'all' | 'boundary' | 'trailing'`
+- Type: `boolean | 'all' | 'boundary' | 'leading' | 'trailing'`
 
 - Default: `false`
 
@@ -486,6 +499,7 @@ body > div {
   - `false`: completely disable whitespace rendering; `:whitespace` will not take effect
   - `'all'`: render all whitespace characters
   - `'boundary'`: render leading and trailing whitespace on each line
+  - `'leading'`: render leading whitespace on each line
   - `'trailing'`: render trailing whitespace on each line
 
   You can add `:whitespace` / `:no-whitespace` markers to your fenced code blocks to override the config setting, and customize the render type by adding `=` after `:whitespace`. For example, `:whitespace=boundary` will render leading and trailing whitespace on each line.
@@ -505,6 +519,15 @@ body > div {
 
   ```md :whitespace=boundary
   <!-- render leading and trailing whitespace on each line -->
+
+  A text  
+  with trailing spaces
+
+      indented text
+  ```
+
+  ```md :whitespace=leading
+  <!-- render leading whitespace on each line -->
 
   A text  
   with trailing spaces

@@ -5,6 +5,7 @@ import {
   transformerNotationFocus,
   transformerNotationHighlight,
   transformerNotationWordHighlight,
+  transformerRemoveComments,
   transformerRenderWhitespace,
 } from '@shikijs/transformers'
 import type { WhitespacePosition } from '@vuepress/highlighter-helper'
@@ -46,6 +47,8 @@ export const getTransformers = (
     transformers.push(transformerNotationWordHighlight())
     transformers.push(transformerMetaWordHighlight())
   }
+
+  if (options.removeComments) transformers.push(transformerRemoveComments())
 
   transformers.push(
     addClassTransformer,

@@ -504,7 +504,7 @@ In the new version, some functionalities similar to [shiki](https://shiki.style/
 
 ### whitespace
 
-- Type: `boolean | 'all' | 'boundary' | 'trailing'`
+- Type: `boolean | 'all' | 'boundary' | 'leading' | 'trailing'`
 
 - Default: `false`
 
@@ -513,6 +513,7 @@ In the new version, some functionalities similar to [shiki](https://shiki.style/
   - `false`: Completely disable whitespace rendering; `:whitespace` will not take effect.
   - `'all'`: Render all whitespace.
   - `'boundary'`: Render leading and trailing whitespace of the line.
+  - `'leading'`: Render leading whitespace of the line.
   - `'trailing'`: Render trailing whitespace of the line.
 
   You can add `:whitespace` / `:no-whitespace` markers in your fenced code blocks to override the value set in config, and customize the render type by adding `=` after `:whitespace`. For example, `:whitespace=boundary` will render leading and trailing whitespace of the line.
@@ -532,6 +533,15 @@ In the new version, some functionalities similar to [shiki](https://shiki.style/
 
   ```md :whitespace=boundary
   <!-- render leading and trailing whitespace of the line -->
+
+  A text  
+  with trailing spaces
+
+      indented text
+  ```
+
+  ```md :whitespace=leading
+  <!-- render leading whitespace of the line -->
 
   A text  
   with trailing spaces

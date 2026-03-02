@@ -407,6 +407,7 @@ body > div {
   console.log('无警告或错误')
   console.warn('警告') // [\!code warning]
   console.error('错误') // [\!code error]
+  console.log('信息') // [\!code info]
   ```
   ````
 
@@ -417,6 +418,7 @@ body > div {
   console.log('无警告或错误')
   console.warn('警告') // [!code warning]
   console.error('错误') // [!code error]
+  console.log('信息') // [!code info]
   ```
 
   </template>
@@ -474,15 +476,25 @@ body > div {
 - 参考：
   - [Shiki > 词高亮标记](https://shiki.tmrs.site/packages/transformers#transformernotationwordhighlight)
 
+### removeComments
+
+- 类型：`boolean`
+- 默认值：`false`
+- 详情：是否启用移除注释。通过检查语法标记元数据来判断标记是否为注释。
+
+- 参考：
+  - [Shiki > 移除注释](https://shiki.tmrs.site/packages/transformers#transformerremovecomments)
+
 ### whitespace
 
-- 类型：`boolean | 'all' | 'boundary' | 'trailing'`
+- 类型：`boolean | 'all' | 'boundary' | 'leading' | 'trailing'`
 - 默认值：`false`
 - 详情：是否启用空白符（空格和 Tab）渲染。
   - `true`：启用空白符渲染，但默认不渲染任何空白符
   - `false`：完全禁用空白符渲染，`:whitespace` 标记不生效
   - `'all'`：渲染所有空白符
   - `'boundary'`：仅渲染行首行尾的空白符
+  - `'leading'`：仅渲染行首的空白符
   - `'trailing'`：仅渲染行尾的空白符
 
   你可以在代码块中添加 `:whitespace / :no-whitespace` 标记来覆盖配置项设置。还可以在 `:whitespace` 之后添加 `=` 来定义渲染空白符的方式，例如 `:whitespace=boundary` 将渲染行首行尾的空白符。
@@ -502,6 +514,15 @@ body > div {
 
   ```md :whitespace=boundary
   <!-- 渲染行首行尾的空白符 -->
+
+  具有尾随空格  
+  的文字
+
+      缩进文字
+  ```
+
+  ```md :whitespace=leading
+  <!-- 渲染行首的空白符 -->
 
   具有尾随空格  
   的文字
