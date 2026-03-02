@@ -161,7 +161,9 @@ export const getRawCommits = async (
 
       _filepath = path.relative(gitRoot, absFilePath)
     } else {
-      logger.warn('Get git repo root error!')
+      logger.warn(
+        `Failed to resolve git repo root for "${filepath}" under cwd "${cwd}", falling back to cwd; git history may be incomplete.`,
+      )
     }
 
     const stdout = await runGitLog(
