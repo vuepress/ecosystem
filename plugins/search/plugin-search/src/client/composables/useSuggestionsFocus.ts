@@ -10,18 +10,12 @@ export const useSuggestionsFocus = (
 } => {
   const focusIndex = ref(0)
   const focusNext = (): void => {
-    if (focusIndex.value < suggestions.value.length - 1) {
-      focusIndex.value += 1
-    } else {
-      focusIndex.value = 0
-    }
+    if (focusIndex.value < suggestions.value.length - 1) focusIndex.value += 1
+    else focusIndex.value = 0
   }
   const focusPrev = (): void => {
-    if (focusIndex.value > 0) {
-      focusIndex.value -= 1
-    } else {
-      focusIndex.value = suggestions.value.length - 1
-    }
+    if (focusIndex.value > 0) focusIndex.value -= 1
+    else focusIndex.value = suggestions.value.length - 1
   }
 
   return {

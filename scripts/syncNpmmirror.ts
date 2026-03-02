@@ -1,45 +1,48 @@
 import { readdirSync } from 'node:fs'
 import { request } from 'node:https'
-import { resolve as pathResolve } from 'node:path'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const pluginPkgJsons = await Promise.all(
-  readdirSync(pathResolve(process.cwd(), 'plugins')).flatMap((category) =>
-    readdirSync(pathResolve(process.cwd(), 'plugins', category)).map(
+const root = path.resolve(fileURLToPath(import.meta.url), '../../')
+
+const pluginPkgJSONs = await Promise.all(
+  readdirSync(path.resolve(root, 'plugins')).flatMap((category) =>
+    readdirSync(path.resolve(root, 'plugins', category)).map(
       (packageName) =>
-        import(`../plugins/${category}/${packageName}/package.json`, {
-          assert: { type: 'json' },
+        import(`${root}/plugins/${category}/${packageName}/package.json`, {
+          with: { type: 'json' },
         }),
     ),
   ),
 )
 
-const plugins = pluginPkgJsons.map(
+const plugins = pluginPkgJSONs.map(
   ({ default: { name } }: { default: { name: string } }) => name,
 )
 
-const themePkgJsons = await Promise.all(
-  readdirSync(pathResolve(process.cwd(), 'themes')).map(
+const themePkgJSONs = await Promise.all(
+  readdirSync(path.resolve(root, 'themes')).map(
     (packageName) =>
-      import(`../themes/${packageName}/package.json`, {
-        assert: { type: 'json' },
+      import(`${root}/themes/${packageName}/package.json`, {
+        with: { type: 'json' },
       }),
   ),
 )
 
-const themes = themePkgJsons.map(
+const themes = themePkgJSONs.map(
   ({ default: { name } }: { default: { name: string } }) => name,
 )
 
-const toolPkgJsons = await Promise.all(
-  readdirSync(pathResolve(process.cwd(), 'tools')).map(
+const toolPkgJSONs = await Promise.all(
+  readdirSync(path.resolve(root, 'tools')).map(
     (packageName) =>
-      import(`../tools/${packageName}/package.json`, {
-        assert: { type: 'json' },
+      import(`${root}/tools/${packageName}/package.json`, {
+        with: { type: 'json' },
       }),
   ),
 )
 
-const tools = toolPkgJsons.map(
+const tools = toolPkgJSONs.map(
   ({ default: { name } }: { default: { name: string } }) => name,
 )
 

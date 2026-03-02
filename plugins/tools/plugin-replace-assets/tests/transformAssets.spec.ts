@@ -80,9 +80,8 @@ describe('plugin-replace-assets > isMatchUrl', () => {
       ] as const,
     },
   ])('$name', ({ find, expects }) => {
-    for (const [url, expected] of expects) {
+    for (const [url, expected] of expects)
       expect(isMatchUrl(find, url)).toBe(expected)
-    }
   })
 })
 
@@ -174,9 +173,9 @@ describe('plugin-replace-assets > replacementAssetWithRules', () => {
       ] as const,
     },
   ])('$name', ({ name, rules, expects }) => {
-    for (const [url, expected] of expects) {
+    for (const [url, expected] of expects)
       expect(replacementAssetWithRules(rules, url)).toBe(expected)
-    }
+
     if (name === 'function replacement') {
       // should not called with cached, and not called with no supported
       expect(replacementFn).toBeCalledTimes(expects.length - 3)

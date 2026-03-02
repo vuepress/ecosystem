@@ -157,7 +157,7 @@ exports[`Should generate seo information > Should contain basic properties 3`] =
   [
     "meta",
     {
-      "content": "Heading 1 Heading 2 Heading 3 Heading 4 Heading 5 Heading 6 Text This sentence has bold、italic and style text. Paragraph This is a paragraph. This is another paragraph. Line Bre...",
+      "content": "Heading 1 Heading 2 Heading 3 Heading 4 Heading 5 Heading 6 Text This sentence has bold, italic and style text. Paragraph This is a paragraph. This is another paragraph. Line Br...",
       "property": "og:description",
     },
   ],

@@ -85,12 +85,13 @@ export const PwaInstall = defineComponent({
         hinted.value = Boolean(localStorage.getItem('iOS-pwa-hint'))
       }
 
-      if ('getInstalledRelatedApps' in (navigator as ModernNavigator))
+      if ('getInstalledRelatedApps' in (navigator as ModernNavigator)) {
         void (navigator as ModernNavigator)
           .getInstalledRelatedApps()
           .then((result) => {
             hasRelatedApps.value = result.length > 0
           })
+      }
     })
 
     return (): VNode =>

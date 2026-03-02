@@ -22,9 +22,7 @@ const defineFileTreeContainer = (
   if (state.src[pos] !== MARKER) return false
 
   // check marker length
-  for (pos = start + 1; pos <= max; pos++) {
-    if (state.src[pos] !== MARKER) break
-  }
+  for (pos = start + 1; pos <= max; pos++) if (state.src[pos] !== MARKER) break
 
   if (pos - start < MARKER_MIN_LEN) return false
 
@@ -44,9 +42,8 @@ const defineFileTreeContainer = (
   while (line < endLine) {
     if (
       state.src.slice(state.bMarks[line], state.eMarks[line]).trim() === markup
-    ) {
+    )
       break
-    }
 
     content += `${state.src.slice(state.bMarks[line], state.eMarks[line])}\n`
     line++

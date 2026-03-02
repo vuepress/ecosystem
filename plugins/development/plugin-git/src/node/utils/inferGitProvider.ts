@@ -59,21 +59,13 @@ export const inferGitProvider = (cwd: string): KnownGitProvider | null => {
 
   if (!remoteUrl) return null
 
-  if (remoteUrl.includes('github.com')) {
-    return 'github'
-  }
+  if (remoteUrl.includes('github.com')) return 'github'
 
-  if (remoteUrl.includes('gitlab.com')) {
-    return 'gitlab'
-  }
+  if (remoteUrl.includes('gitlab.com')) return 'gitlab'
 
-  if (remoteUrl.includes('gitee.com')) {
-    return 'gitee'
-  }
+  if (remoteUrl.includes('gitee.com')) return 'gitee'
 
-  if (remoteUrl.includes('bitbucket.org')) {
-    return 'bitbucket'
-  }
+  if (remoteUrl.includes('bitbucket.org')) return 'bitbucket'
 
   return null
 }

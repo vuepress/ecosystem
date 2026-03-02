@@ -74,9 +74,8 @@ export const parseFileTreeContent = (content: string): FileTreeNode[] => {
     const level = Math.floor((match[1].length - spaceLength) / 2)
     const info = match[2].trim()
 
-    while (stack.length > 0 && stack[stack.length - 1].level >= level) {
+    while (stack.length > 0 && stack[stack.length - 1].level >= level)
       stack.pop()
-    }
 
     const parent = stack[stack.length - 1]
     const node: FileTreeNode = {

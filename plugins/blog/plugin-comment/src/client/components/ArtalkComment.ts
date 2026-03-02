@@ -72,10 +72,11 @@ export default defineComponent({
         darkMode: props.darkmode,
       })
 
-      if (artalkOptions.value.useBackendConf)
+      if (artalkOptions.value.useBackendConf) {
         artalk.on('mounted', () => {
           artalk!.setDarkMode(props.darkmode)
         })
+      }
     }
 
     onMounted(() => {

@@ -24,9 +24,8 @@ export const generateLLMFriendlyDocs = async (
       }),
     }
 
-    if (page.frontmatter.description && !page.data.autoDesc) {
+    if (page.frontmatter.description && !page.data.autoDesc)
       metadata.description = page.frontmatter.description
-    }
 
     const markdownFilePathRelative = page.htmlFilePathRelative.replace(
       /\.html$/,

@@ -76,8 +76,9 @@ export const injectScssConfigModule = (
                   const result = await originalAdditionalData(source, file)
 
                   originalResult = isString(result) ? result : result.content
-                } else if (isString(originalAdditionalData))
+                } else if (isString(originalAdditionalData)) {
                   originalResult = `${originalAdditionalData}${source}`
+                }
 
                 if (
                   originalResult.includes(configModuleName) &&

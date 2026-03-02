@@ -21,9 +21,8 @@ export const highlightWordInLine = (
   node.content = node.content
     .split(SPLIT_REGEXP)
     .map((text) => {
-      if (!text || text.startsWith('<')) {
-        return text
-      }
+      if (!text || text.startsWith('<')) return text
+
       return text.replaceAll(
         pattern,
         (word) => `${WORD_BEFORE}${word}${WORD_AFTER}`,

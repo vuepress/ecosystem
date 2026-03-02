@@ -12,13 +12,14 @@ export const getRegistry = (packageManager: PackageManager): string => {
     })
       .stdout.toString()
       .startsWith('1')
-  )
+  ) {
     return spawnSync(`${packageManager} config get npmRegistryServer`, {
       shell: true,
     })
       .stdout.toString()
       .trim()
       .replace(/\/?$/, '/')
+  }
 
   if (
     packageManager === 'bun' &&

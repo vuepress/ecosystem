@@ -100,9 +100,7 @@ const normalizeSingleAlias = ({
     replacement,
   }
 
-  if (customResolver) {
-    alias.customResolver = customResolver
-  }
+  if (customResolver) alias.customResolver = customResolver
 
   return alias
 }
@@ -134,9 +132,7 @@ const mergeAlias = (
 }
 
 const backwardCompatibleWorkerPlugins = (plugins: any): any[] => {
-  if (Array.isArray(plugins)) {
-    return plugins
-  }
+  if (Array.isArray(plugins)) return plugins
 
   if (typeof plugins === 'function') {
     // oxlint-disable-next-line typescript/no-unsafe-call
@@ -153,9 +149,7 @@ const mergeConfigRecursively = (
   rootPath: string,
 ): Record<string, any> => {
   for (const [key, value] of entries(overrides)) {
-    if (value == null) {
-      continue
-    }
+    if (value == null) continue
 
     const existing = merged[key]
 

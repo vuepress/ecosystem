@@ -67,17 +67,19 @@ const findRegion = (
   let regexp: RegExp | null = null
   let lineStart = -1
 
-  for (const [lineId, line] of lines.entries())
+  for (const [lineId, line] of lines.entries()) {
     if (regexp == null) {
-      for (const reg of REGIONS_RE)
+      for (const reg of REGIONS_RE) {
         if (testLine(line, reg, regionName)) {
           lineStart = lineId + 1
           regexp = reg
           break
         }
+      }
     } else if (testLine(line, regexp, regionName, true)) {
       return { lineStart, lineEnd: lineId }
     }
+  }
 
   return null
 }
@@ -168,6 +170,7 @@ const resolveInclude = (
   )
 
   if (options.deep && actualPath.endsWith('.md')) {
+    // oxlint-disable-next-line no-use-before-define
     content = replaceInclude(content, options, {
       cwd: path.isAbsolute(actualPath)
         ? path.dirname(actualPath)
@@ -194,9 +197,8 @@ const replaceInclude = (
   )
 
 const convertLink = (filepath: string, base: string): string => {
-  if (filepath.startsWith('.')) {
-    path.relative(base, filepath)
-  }
+  if (filepath.startsWith('.')) path.relative(base, filepath)
+
   return filepath
 }
 
@@ -232,9 +234,7 @@ const resolveLink = (
     const base = path.relative(cwd, currentDir)
     if (resolveLinkPath) {
       // markdown syntax: [link](path)
-      if (node.type === 'link') {
-        node.url = convertLink(node.url, base)
-      }
+      if (node.type === 'link') node.url = convertLink(node.url, base)
 
       // html tag: <a href="path">
       if (node.type === 'html' && node.value.startsWith('<a ')) {
@@ -246,9 +246,7 @@ const resolveLink = (
 
     if (resolveImagePath) {
       // markdown syntax: ![alt](path)
-      if (node.type === 'image') {
-        node.url = convertLink(node.url, base)
-      }
+      if (node.type === 'image') node.url = convertLink(node.url, base)
 
       // html tag: <img src="path">
       if (node.type === 'html' && node.value.startsWith('<img ')) {

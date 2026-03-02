@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-register-components",
-  "version": "2.0.0-rc.123",
+  "version": "2.0.0-rc.124",
   "description": "VuePress plugin - register-components",
   "keywords": [
     "component",
@@ -23,19 +23,20 @@
     "lib"
   ],
   "type": "module",
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
+  "sideEffects": false,
   "exports": {
-    ".": "./lib/node/index.js",
+    ".": {
+      "types": "./lib/node/index.d.ts",
+      "default": "./lib/node/index.js"
+    },
     "./package.json": "./package.json"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
-    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
-    "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
+    "build": "tsdown --config-loader unrun",
+    "clean": "rimraf --glob ./lib"
   },
   "dependencies": {
     "chokidar": "catalog:",

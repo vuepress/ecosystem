@@ -18,7 +18,5 @@ rawLoadLanguages.silent = true
 export const loadLanguages = (languages: string[]): void => {
   const langsToLoad = languages.filter((item) => !(item in Prism.languages))
 
-  if (langsToLoad.length) {
-    rawLoadLanguages(langsToLoad)
-  }
+  if (langsToLoad.length) rawLoadLanguages(langsToLoad)
 }

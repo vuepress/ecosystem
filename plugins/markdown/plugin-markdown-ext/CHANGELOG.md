@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.124](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.123...v2.0.0-rc.124) (2026-03-02)
+
+### Features
+
+- **plugin-markdown-ext:** add cjkFriendly option ([#620](https://github.com/vuepress/ecosystem/issues/620)) ([2fbb745](https://github.com/vuepress/ecosystem/commit/2fbb745d29491ca432b97a39d1df1f9b9d5b2e1d))
+
 # [2.0.0-rc.123](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.122...v2.0.0-rc.123) (2026-02-12)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-ext

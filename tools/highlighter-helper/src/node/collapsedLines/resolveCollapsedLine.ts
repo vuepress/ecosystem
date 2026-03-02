@@ -44,17 +44,11 @@ export const resolveCollapsedLines = (
 ): boolean | number | null => {
   const lines = COLLAPSED_LINES_START_REGEXP.exec(info)?.[1]
 
-  if (lines) {
-    return Number(lines)
-  }
+  if (lines) return Number(lines)
 
-  if (COLLAPSED_LINES_REGEXP.test(info)) {
-    return true
-  }
+  if (COLLAPSED_LINES_REGEXP.test(info)) return true
 
-  if (NO_COLLAPSED_LINES_REGEXP.test(info)) {
-    return false
-  }
+  if (NO_COLLAPSED_LINES_REGEXP.test(info)) return false
 
   return null
 }

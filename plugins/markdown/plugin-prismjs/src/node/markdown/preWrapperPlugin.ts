@@ -50,9 +50,7 @@ export const preWrapperPlugin = (
     const languageClass = `${langPrefix}${language.name}`
 
     result = result.replace(/<code[^]*?>/, `<code class="${languageClass}">`)
-    if (!preWrapper || !result.startsWith('<pre')) {
-      return result
-    }
+    if (!preWrapper || !result.startsWith('<pre')) return result
 
     /**
      * Add information to dataset for current code block.

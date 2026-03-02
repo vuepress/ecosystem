@@ -66,9 +66,9 @@ export default defineComponent({
 
     const updateState = (): void => {
       statusSessionStorage.value[routeLocale.value] = true
-      if (shouldRemember.value) {
+      if (shouldRemember.value)
         statusLocalStorage.value[routeLocale.value] = true
-      }
+
       showModal.value = false
     }
 
@@ -85,9 +85,8 @@ export default defineComponent({
         redirectInfo.value &&
         !statusSessionStorage.value[routeLocale.value] &&
         !statusLocalStorage.value[routeLocale.value]
-      ) {
+      )
         showModal.value = true
-      }
     })
 
     onBeforeUnmount(() => {

@@ -99,7 +99,7 @@ export const getSearchResults = (
         .map((term) => getMatchedContent((result as PageIndexItem).h, term))
         .filter((item): item is Word[] => item != null)
 
-      if (headerContent.length > 0)
+      if (headerContent.length > 0) {
         contents.push([
           {
             type: isSection ? 'heading' : 'title',
@@ -109,14 +109,15 @@ export const getSearchResults = (
           } as HeadingMatchedItem | TitleMatchedItem,
           score,
         ])
+      }
 
-      if (/** Text */ 't' in result && result.t)
+      if (/** Text */ 't' in result && result.t) {
         for (const text of result.t) {
           const matchedContent = displayTerms
             .map((term) => getMatchedContent(text, term))
             .filter((item): item is Word[] => item != null)
 
-          if (matchedContent.length > 0)
+          if (matchedContent.length > 0) {
             contents.push([
               {
                 type: 'text',
@@ -126,7 +127,9 @@ export const getSearchResults = (
               },
               score,
             ])
+          }
         }
+      }
     }
   })
 

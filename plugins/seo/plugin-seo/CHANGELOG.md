@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.124](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.123...v2.0.0-rc.124) (2026-03-02)
+
+### Bug Fixes
+
+- **helper:** fix excerpt generation with self-closing tags, close [#595](https://github.com/vuepress/ecosystem/issues/595) ([c25cf16](https://github.com/vuepress/ecosystem/commit/c25cf163fe0bade18cceb62dc5128f892f666c44))
+
 # [2.0.0-rc.123](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.122...v2.0.0-rc.123) (2026-02-12)
 
 **Note:** Version bump only for package @vuepress/plugin-seo

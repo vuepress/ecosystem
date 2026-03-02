@@ -34,9 +34,7 @@ export const preWrapperPlugin = (
   md.renderer.rules.fence = (...args): string => {
     let result = rawFence(...args)
 
-    if (!result.startsWith('<pre')) {
-      return result
-    }
+    if (!result.startsWith('<pre')) return result
 
     const [tokens, idx, options] = args
     const token = tokens[idx]

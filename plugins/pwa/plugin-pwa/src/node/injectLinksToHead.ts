@@ -69,10 +69,11 @@ export const injectLinksToHead = (
 
   if (isPlainObject(apple) && (apple.icon || fallBackIcon)) {
     setLink('apple-touch-icon', apple.icon || fallBackIcon)
-    if (apple.maskIcon)
+    if (apple.maskIcon) {
       setLink('mask-icon', apple.maskIcon, {
         color: themeColor || '#46bd87',
       })
+    }
   } else if ((apple ?? true) && fallBackIcon) {
     setLink('apple-touch-icon', fallBackIcon)
   }

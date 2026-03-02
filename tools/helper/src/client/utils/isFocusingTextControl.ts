@@ -13,9 +13,8 @@
  * @returns Whether user is focusing a text control / 用户是否正在聚焦文本控件
  */
 export const isFocusingTextControl = (target: EventTarget): boolean => {
-  if (!(target instanceof Element)) {
-    return false
-  }
+  if (!(target instanceof Element)) return false
+
   return (
     document.activeElement === target &&
     (['TEXTAREA', 'SELECT', 'INPUT'].includes(target.tagName) ||

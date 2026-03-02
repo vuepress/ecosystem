@@ -64,9 +64,10 @@ export const Notice = defineComponent({
     }
 
     const footerAction = (link?: string): void => {
-      if (link)
+      if (link) {
         if (isLinkAbsolute(link)) void router.push(link)
         else if (isLinkHttp(link)) window.open(link)
+      }
 
       closeModal()
     }

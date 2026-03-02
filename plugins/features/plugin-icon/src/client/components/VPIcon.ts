@@ -86,10 +86,11 @@ export const VPIcon = defineComponent({
       }
 
       if (props.color) styleObject.color = props.color
-      if (size)
+      if (size) {
         styleObject['--icon-size'] = Number.isNaN(Number(size))
           ? (size as string)
           : `${size}px`
+      }
       if (verticalAlign) styleObject['--icon-vertical-align'] = verticalAlign
 
       if (type === 'iconify') {
@@ -141,7 +142,9 @@ export const VPIcon = defineComponent({
             iconType.length === 1
               ? `fa${iconType}`
               : appendFontawesomePrefix(iconType),
-            ...rest.split(' ').map((icon) => appendFontawesomePrefix(icon)),
+            ...rest
+              .split(' ')
+              .map((iconName) => appendFontawesomePrefix(iconName)),
             sizing === 'height' ? '' : 'fa-fw',
           ],
           ...attrs.value,

@@ -14,9 +14,7 @@ import type {
 export const resolveRules = (
   options: AutoFrontmatterPluginOptions,
 ): AutoFrontmatterRule[] => {
-  if (isFunction(options)) {
-    return [{ filter: () => true, handle: options }]
-  }
+  if (isFunction(options)) return [{ filter: () => true, handle: options }]
 
   return Array.isArray(options) ? options : [options]
 }

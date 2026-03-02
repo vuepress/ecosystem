@@ -138,10 +138,11 @@ export const getCategory = (
           }
         }
 
-        for (const [category, pages] of entries(pageMapStore))
+        for (const [category, categoryPages] of entries(pageMapStore)) {
           map[category].indexes = store.addItems(
-            pages.sort(sorter).map(({ path: pagePath }) => pagePath),
+            categoryPages.sort(sorter).map(({ path: pagePath }) => pagePath),
           )
+        }
 
         if (isDebug) {
           let infoMessage = `${key} category in locale ${localePath}:\n`

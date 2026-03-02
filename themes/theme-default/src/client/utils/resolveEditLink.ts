@@ -21,14 +21,10 @@ const resolveEditLinkPatterns = ({
   docsRepo: string
   editLinkPattern?: string
 }): string | null => {
-  if (editLinkPattern) {
-    return editLinkPattern
-  }
+  if (editLinkPattern) return editLinkPattern
 
   const repoType = resolveRepoType(docsRepo)
-  if (repoType != null) {
-    return EDIT_LINK_PATTERNS[repoType]
-  }
+  if (repoType != null) return EDIT_LINK_PATTERNS[repoType]
 
   return null
 }

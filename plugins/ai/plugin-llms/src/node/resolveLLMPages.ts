@@ -57,9 +57,8 @@ export const resolveLLMPages = (
       page.frontmatter.llmstxt === false ||
       // filtered
       !filter(page)
-    ) {
+    )
       continue
-    }
 
     const { content } = matter(page.content)
 
@@ -94,9 +93,7 @@ export const resolveLLMPages = (
       )
     }
 
-    if (stripHTML) {
-      remarkInstance.use(cleanMarkdown)
-    }
+    if (stripHTML) remarkInstance.use(cleanMarkdown)
 
     page.markdown = transformMarkdown(
       String(remarkInstance.processSync(content)),

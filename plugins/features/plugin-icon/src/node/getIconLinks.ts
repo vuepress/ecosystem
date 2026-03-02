@@ -30,17 +30,19 @@ useScriptTag(
 
 const getIconLink = (asset?: string): LinkInfo[] => {
   if (isString(asset)) {
-    if (asset === 'fontawesome')
+    if (asset === 'fontawesome') {
       return ['solid', 'regular', 'fontawesome']
         .map((type) => getFontAwesomeCDNLink(type))
         .map((link) => getFontAwesomeLink(link))
+    }
 
-    if (asset === 'fontawesome-with-brands')
+    if (asset === 'fontawesome-with-brands') {
       return ['all']
         .map((type) => getFontAwesomeCDNLink(type))
         .map((link) => getFontAwesomeLink(link))
+    }
 
-    if (asset === 'iconify')
+    if (asset === 'iconify') {
       return [
         {
           type: 'script',
@@ -49,6 +51,7 @@ useScriptTag(\`https://cdn.jsdelivr.net/npm/iconify-icon@2\`);\
 `,
         },
       ]
+    }
 
     const actualLink = isLinkHttp(asset)
       ? asset
@@ -56,7 +59,7 @@ useScriptTag(\`https://cdn.jsdelivr.net/npm/iconify-icon@2\`);\
         ? asset
         : `//${asset}`
 
-    if (endsWith(actualLink, '.css'))
+    if (endsWith(actualLink, '.css')) {
       return [
         {
           type: 'style',
@@ -67,6 +70,7 @@ useStyleTag(\`\\
 `,
         },
       ]
+    }
 
     if (endsWith(actualLink, '.js')) {
       if (isFontAwesomeLink(actualLink)) return [getFontAwesomeLink(actualLink)]

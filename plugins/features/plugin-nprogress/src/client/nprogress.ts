@@ -33,9 +33,7 @@ const queue = (() => {
   const nextStep = (): void => {
     const fn = pending.shift()
 
-    if (fn) {
-      fn(nextStep)
-    }
+    if (fn) fn(nextStep)
   }
 
   return (fn: (next: () => void) => void): void => {
@@ -90,9 +88,8 @@ const addStyle = (() => {
     element: HTMLElement,
     properties: Record<string, string | undefined>,
   ): void => {
-    for (const [prop, value] of entries(properties)) {
+    for (const [prop, value] of entries(properties))
       if (isDef(value)) applyCss(element, prop, value)
-    }
   }
 })()
 
@@ -220,9 +217,7 @@ export const nprogress: NProgress = {
   increase: (amount) => {
     let { percent } = nprogress
 
-    if (!percent) {
-      return nprogress.start()
-    }
+    if (!percent) return nprogress.start()
 
     percent = clamp(
       percent +
@@ -239,9 +234,8 @@ export const nprogress: NProgress = {
   trickle: () => nprogress.increase(Math.random() * SETTINGS.trickleRate),
 
   render: (fromStart) => {
-    if (nprogress.isRendered()) {
+    if (nprogress.isRendered())
       return document.querySelector<HTMLDivElement>('#nprogress')!
-    }
 
     addClass(document.documentElement, 'nprogress-busy')
 
@@ -263,9 +257,8 @@ export const nprogress: NProgress = {
     })
 
     if (parentElement) {
-      if (parentElement !== document.body) {
+      if (parentElement !== document.body)
         addClass(parentElement, 'nprogress-custom-parent')
-      }
 
       parentElement.append(nprogressElement)
     }

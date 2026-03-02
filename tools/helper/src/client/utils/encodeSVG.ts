@@ -11,9 +11,8 @@ export const encodeSVG = (svg: string): string => {
     .replaceAll('<', '%3C')
     .replaceAll('>', '%3E')
 
-  if (!svg.includes('xmlns')) {
+  if (!svg.includes('xmlns'))
     encoded = encoded.replace('<svg', '<svg xmlns="http://www.w3.org/2000/svg"')
-  }
 
   return `data:image/svg+xml;charset=utf8,${encoded}`
 }

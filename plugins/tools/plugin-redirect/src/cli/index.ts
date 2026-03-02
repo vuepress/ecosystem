@@ -52,9 +52,8 @@ program
       // ensure NODE_ENV is set
       process.env.NODE_ENV ??= 'production'
 
-      if (!fs.existsSync(sourceDir)) {
+      if (!fs.existsSync(sourceDir))
         program.error(`Source directory ${sourceDir} does not exist!`)
-      }
 
       // resolve app config from cli options
       const cliAppConfig = resolveCliAppConfig(sourceDir, {})

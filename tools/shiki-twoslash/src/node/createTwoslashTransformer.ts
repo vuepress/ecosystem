@@ -67,11 +67,8 @@ export const createTwoslashTransformer = async (
       `\n\n--------\nTwoslash error in code:\n--------\n${code.split(/\n/g).slice(0, 15).join('\n').trim()}\n--------\n`,
     )
 
-    if (shouldThrow) {
-      throw error
-    } else {
-      logger.error(error)
-    }
+    if (shouldThrow) throw error
+    else logger.error(error)
 
     return removeTwoslashNotations(code)
   }

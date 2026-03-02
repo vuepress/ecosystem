@@ -49,9 +49,8 @@ export const getRawContributors = (
       if (contributor) {
         contributor.commits++
         // try to rewrite the no-reply email to a genuine email
-        if (contributor.email.includes('@users.noreply.github.com')) {
+        if (contributor.email.includes('@users.noreply.github.com'))
           contributor.email = config?.email ?? email
-        }
       } else {
         const item: GitContributorInfo = {
           name: config?.name ?? username ?? name,
@@ -63,7 +62,7 @@ export const getRawContributors = (
           commits: 1,
         }
 
-        if (options.avatar)
+        if (options.avatar) {
           item.avatar =
             config?.avatar ??
             (item.username
@@ -72,6 +71,7 @@ export const getRawContributors = (
             (item.username
               ? `https://avatars.githubusercontent.com/${item.username}?v=4`
               : `https://gravatar.com/avatar/${digestSHA256(email)}?d=retro`)
+        }
 
         const url =
           config?.url ??
@@ -150,7 +150,7 @@ export const resolveContributors = (
             ? `https://github.com/${contributorInfo.username}`
             : null)
 
-        if (options.avatar)
+        if (options.avatar) {
           result.avatar =
             contributorInfo.avatar ??
             options.avatarPattern?.replace(
@@ -160,6 +160,7 @@ export const resolveContributors = (
             (gitProvider === 'github'
               ? `https://avatars.githubusercontent.com/${contributorInfo.username}?v=4`
               : `https://gravatar.com/avatar/${digestSHA256(contributorInfo.username)}?d=retro`)
+        }
 
         if (url) result.url = url
 

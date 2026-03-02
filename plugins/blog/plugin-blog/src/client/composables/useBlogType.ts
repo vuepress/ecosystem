@@ -77,7 +77,8 @@ export const useBlogType = <
   })
 }
 
-if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot))
+if (__VUEPRESS_DEV__ && (import.meta.webpackHot || import.meta.hot)) {
   __VUE_HMR_RUNTIME__.updateBlogType = (value: TypesMap): void => {
     typeMapRef.value = value
   }
+}

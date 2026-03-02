@@ -30,9 +30,7 @@ export const renderCacheWithMemory = async (
   md: Markdown,
   app: App,
 ): Promise<void> => {
-  if (app.env.isBuild && !fs.existsSync(app.dir.cache(CACHE_DIR))) {
-    return
-  }
+  if (app.env.isBuild && !fs.existsSync(app.dir.cache(CACHE_DIR))) return
 
   const basename = app.dir.cache(CACHE_DIR)
   const metaFilepath = `${basename}/${META_FILE}`
@@ -66,9 +64,7 @@ export const renderCacheWithMemory = async (
   md.render = (input, env: MarkdownEnv = {}): string => {
     const filepath = env.filePathRelative
 
-    if (!filepath) {
-      return rawRender(input, env)
-    }
+    if (!filepath) return rawRender(input, env)
 
     const key = hash(input)
 
@@ -92,9 +88,8 @@ export const renderCacheWithFilesystem = async (
   md: Markdown,
   app: App,
 ): Promise<void> => {
-  if (app.env.isBuild && !fs.existsSync(app.dir.cache(CACHE_DIR))) {
-    return
-  }
+  if (app.env.isBuild && !fs.existsSync(app.dir.cache(CACHE_DIR))) return
+
   const basename = app.dir.cache(CACHE_DIR)
 
   await fs.ensureDir(basename)
@@ -122,9 +117,7 @@ export const renderCacheWithFilesystem = async (
   md.render = (input, env: MarkdownEnv = {}): string => {
     const filepath = env.filePathRelative
 
-    if (!filepath) {
-      return rawRender(input, env)
-    }
+    if (!filepath) return rawRender(input, env)
 
     const key = hash(input)
     const filename = hash(filepath)

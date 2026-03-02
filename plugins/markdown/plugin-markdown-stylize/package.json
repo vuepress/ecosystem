@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-stylize",
-  "version": "2.0.0-rc.123",
+  "version": "2.0.0-rc.124",
   "description": "VuePress plugin - markdown stylize",
   "keywords": [
     "markdown",
@@ -31,25 +31,28 @@
   "main": "./lib/node/index.js",
   "types": "./lib/node/index.d.ts",
   "exports": {
-    ".": "./lib/node/index.js",
+    ".": {
+      "types": "./lib/node/index.d.ts",
+      "default": "./lib/node/index.js"
+    },
     "./package.json": "./package.json"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
-    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
-    "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
+    "build": "tsdown --config-loader unrun",
+    "clean": "rimraf --glob ./lib"
   },
   "dependencies": {
-    "@mdit/plugin-align": "^0.23.1",
-    "@mdit/plugin-attrs": "^0.24.2",
-    "@mdit/plugin-mark": "^0.22.2",
-    "@mdit/plugin-spoiler": "^0.22.3",
-    "@mdit/plugin-stylize": "^0.22.4",
-    "@mdit/plugin-sub": "^0.23.1",
-    "@mdit/plugin-sup": "^0.23.1",
+    "@mdit/plugin-align": "^0.24.0",
+    "@mdit/plugin-attrs": "^0.25.0",
+    "@mdit/plugin-layout": "^0.2.0",
+    "@mdit/plugin-mark": "^0.23.0",
+    "@mdit/plugin-spoiler": "^0.23.0",
+    "@mdit/plugin-stylize": "^0.23.0",
+    "@mdit/plugin-sub": "^0.24.0",
+    "@mdit/plugin-sup": "^0.24.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*"
   },

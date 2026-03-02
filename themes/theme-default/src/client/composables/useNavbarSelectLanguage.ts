@@ -21,9 +21,8 @@ export const useNavbarSelectLanguage = (): ComputedRef<NavbarItem[]> => {
   return computed<NavbarItem[]>(() => {
     const localePaths = Object.keys(site.value.locales)
     // do not display language selection dropdown if there is only one language
-    if (localePaths.length < 2) {
-      return []
-    }
+    if (localePaths.length < 2) return []
+
     const currentPath = route.path
     const currentFullPath = route.fullPath
 

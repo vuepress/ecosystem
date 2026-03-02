@@ -43,9 +43,7 @@ export const lineNumbers = (
 
     const lines = code.split('\n')
 
-    if (removeLastLine) {
-      lines.pop()
-    }
+    if (removeLastLine) lines.pop()
 
     // resolve line-numbers mark from token info
     const lineNumbersInfo =
@@ -55,9 +53,7 @@ export const lineNumbers = (
         ? lines.length >= lineNumberOptions
         : lineNumberOptions)
 
-    if (lineNumbersInfo === false) {
-      return rawCode
-    }
+    if (lineNumbersInfo === false) return rawCode
 
     const startNumbers =
       typeof lineNumbersInfo === 'number' ? lineNumbersInfo - 1 : 0

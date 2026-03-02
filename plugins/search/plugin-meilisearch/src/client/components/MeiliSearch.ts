@@ -60,11 +60,10 @@ export const MeiliSearch = defineComponent({
       let rawFilter: (string[] | string)[] = []
 
       if (searchParams?.filter) {
-        if (typeof searchParams.filter === 'string') {
+        if (typeof searchParams.filter === 'string')
           rawFilter.push(searchParams.filter)
-        } else if (Array.isArray(searchParams.filter)) {
+        else if (Array.isArray(searchParams.filter))
           rawFilter = searchParams.filter
-        }
       }
       const filter = [`lang=${lang.value}`, ...rawFilter]
 

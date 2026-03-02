@@ -85,8 +85,8 @@ export const feedPlugin =
       },
 
       extendsBundlerOptions: (config) => {
-        if (options.devServer)
-          [
+        if (options.devServer) {
+          ;[
             ...getFeedFiles(app, feedOptions, hostname),
             ...getAtomTemplates(feedOptions),
             ...getRSSTemplates(feedOptions),
@@ -101,6 +101,7 @@ export const feedPlugin =
               errMsg: 'Unexpected feed generation error',
             })
           })
+        }
       },
 
       onGenerated: async () => {

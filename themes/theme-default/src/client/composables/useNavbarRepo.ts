@@ -19,9 +19,8 @@ export const useNavbarRepo = (): ComputedRef<NavbarItem[]> => {
   )
 
   const repoLink = computed(() => {
-    if (repo.value && !isLinkHttp(repo.value)) {
+    if (repo.value && !isLinkHttp(repo.value))
       return `https://github.com/${repo.value}`
-    }
 
     return repo.value
   })
@@ -34,9 +33,7 @@ export const useNavbarRepo = (): ComputedRef<NavbarItem[]> => {
   })
 
   return computed(() => {
-    if (!repoLink.value || !repoLabel.value) {
-      return []
-    }
+    if (!repoLink.value || !repoLabel.value) return []
 
     return [
       {

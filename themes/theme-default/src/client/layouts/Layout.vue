@@ -47,11 +47,8 @@ const onTouchEnd = ({ changedTouches }: TouchEvent): void => {
   const dx = changedTouches[0].clientX - touchStart.x
   const dy = changedTouches[0].clientY - touchStart.y
   if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
-    if (dx > 0 && touchStart.x <= 80) {
-      toggleSidebar(true)
-    } else {
-      toggleSidebar(false)
-    }
+    if (dx > 0 && touchStart.x <= 80) toggleSidebar(true)
+    else toggleSidebar(false)
   }
 }
 

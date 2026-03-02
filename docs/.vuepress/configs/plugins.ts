@@ -76,11 +76,12 @@ export const plugins = [
   markdownIncludePlugin({
     deep: true,
     resolvePath: (file) => {
-      if (file.startsWith('@echarts'))
+      if (file.startsWith('@echarts')) {
         return file.replace(
           '@echarts',
           path.resolve(__dirname, '../echarts-snippets'),
         )
+      }
 
       return file
     },
@@ -100,12 +101,13 @@ export const plugins = [
       {
         matcher: 'Recommended',
         replacer: ({ tag }): MarkdownItStylizeResult | null => {
-          if (tag === 'em')
+          if (tag === 'em') {
             return {
               tag: 'Badge',
               attrs: { type: 'tip' },
               content: 'Recommended',
             }
+          }
 
           return null
         },
@@ -155,9 +157,7 @@ export const plugins = [
   {
     name: 'virtual:git',
     extendsPage: (page: Page): void => {
-      if (!page.path.endsWith('/git.html')) {
-        delete page.data.changelog
-      }
+      if (!page.path.endsWith('/git.html')) delete page.data.changelog
     },
   },
   cachePlugin(),

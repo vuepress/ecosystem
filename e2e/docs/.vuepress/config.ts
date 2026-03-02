@@ -199,11 +199,12 @@ export default defineUserConfig({
           }),
           // Sort pages with time and sticky
           sorter: (pageA, pageB): number => {
-            if (pageA.frontmatter.sticky && pageB.frontmatter.sticky)
+            if (pageA.frontmatter.sticky && pageB.frontmatter.sticky) {
               return (
                 (pageB.frontmatter.sticky as number) -
                 (pageA.frontmatter.sticky as number)
               )
+            }
 
             if (pageA.frontmatter.sticky && !pageB.frontmatter.sticky) return -1
 

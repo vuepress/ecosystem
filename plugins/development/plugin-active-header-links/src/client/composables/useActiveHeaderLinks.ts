@@ -111,9 +111,8 @@ export const useActiveHeaderLinks = ({
       if (isAtPageBottom) {
         for (let j = i + 1; j < existedHeaderAnchors.length; j++) {
           // if current route hash is below the active hash, do nothing
-          if (routeHash === decodeURIComponent(existedHeaderAnchors[j].hash)) {
+          if (routeHash === decodeURIComponent(existedHeaderAnchors[j].hash))
             return
-          }
         }
       }
 

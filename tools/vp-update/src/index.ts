@@ -21,17 +21,17 @@ program
 pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]\
 `,
   )
-  // oxlint-disable-next-line typescript/no-inferrable-types
   .action(async (targetDir: string = ''): Promise<void> => {
     console.log('Bumping deps...')
 
     const dir = resolve(process.cwd(), targetDir)
     const packageJSON = resolve(dir, 'package.json')
 
-    if (!existsSync(packageJSON))
+    if (!existsSync(packageJSON)) {
       return program.error(
         `No package.json found in ${targetDir || 'current dir'}`,
       )
+    }
 
     const packageManager = getPackageManager()
 

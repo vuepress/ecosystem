@@ -36,9 +36,7 @@ export const themeData = JSON.parse(${JSON.stringify(
 `
 
   // inject HMR code
-  if (app.env.isDev) {
-    content += HMR_CODE
-  }
+  if (app.env.isDev) content += HMR_CODE
 
   await app.writeTemp('internal/themeData.js', content)
 }

@@ -35,9 +35,8 @@ export const setupWatermark = (
         ...toValue(options),
       }
 
-      if (watermarkOptions.image?.startsWith('/')) {
+      if (watermarkOptions.image?.startsWith('/'))
         watermarkOptions.image = withBase(watermarkOptions.image)
-      }
 
       void watermark.changeOptions(watermarkOptions)
     } else {

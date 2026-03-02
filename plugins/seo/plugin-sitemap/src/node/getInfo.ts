@@ -96,7 +96,7 @@ export const getSitemapInfos = (
 
       if (relatedLocales.length > 1) {
         // warnings for missing `locale[path].lang` in debug mode
-        if (app.env.isDebug)
+        if (app.env.isDebug) {
           relatedLocales.forEach((localePrefix) => {
             if (
               !locales[localePrefix].lang &&
@@ -106,6 +106,7 @@ export const getSitemapInfos = (
               reportedLocales.push(localePrefix)
             }
           })
+        }
 
         links = relatedLocales.map((localePrefix) => ({
           lang: locales[localePrefix]?.lang ?? 'en',
@@ -121,7 +122,7 @@ export const getSitemapInfos = (
       }
 
       // log sitemap info in debug mode
-      if (app.env.isDebug)
+      if (app.env.isDebug) {
         logger.info(
           `sitemap option for ${page.path}: ${JSON.stringify(
             sitemapInfo,
@@ -129,6 +130,7 @@ export const getSitemapInfos = (
             2,
           )}`,
         )
+      }
 
       sitemapInfos.push([page.path, sitemapInfo])
     },

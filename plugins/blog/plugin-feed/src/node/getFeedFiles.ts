@@ -70,24 +70,27 @@ export const getFeedFiles = (
         const results: FeedConfig[] = []
 
         // generate feed
-        if (atom)
+        if (atom) {
           results.push([
             atomOutputFilename,
             getAtomFeed(feedStore),
             'application/atom+xml',
           ])
-        if (json)
+        }
+        if (json) {
           results.push([
             jsonOutputFilename,
             getJSONFeed(feedStore),
             'application/json',
           ])
-        if (rss)
+        }
+        if (rss) {
           results.push([
             rssOutputFilename,
             getRssFeed(feedStore),
             'application/xml',
           ])
+        }
 
         return results
       })

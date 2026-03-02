@@ -43,18 +43,14 @@ export const resolveHighlighter = (language: string): Highlighter | null => {
   const langsToLoad = [lang]
 
   // doc language of current language
-  if (docLangMap[lang]) {
-    langsToLoad.push(docLangMap[lang])
-  }
+  if (docLangMap[lang]) langsToLoad.push(docLangMap[lang])
 
   // try to load languages
   loadLanguages(langsToLoad)
 
   // return null if current language could not be loaded
   // the doc language is not required so we don't check it here
-  if (!(lang in Prism.languages)) {
-    return null
-  }
+  if (!(lang in Prism.languages)) return null
 
   return (code) => Prism.highlight(code, Prism.languages[lang], lang)
 }

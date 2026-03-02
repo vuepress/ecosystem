@@ -23,13 +23,14 @@ export const getIndices = (
   )
     // oxlint-disable-next-line oxc/no-map-spread
     .map((item) => {
-      if (isString(item))
+      if (isString(item)) {
         return {
           name: item,
           searchParameters: {
             facetFilters: `lang:${lang}`,
           },
         }
+      }
 
       const { searchParameters: indexSearchParameters, ...rest } = item
 

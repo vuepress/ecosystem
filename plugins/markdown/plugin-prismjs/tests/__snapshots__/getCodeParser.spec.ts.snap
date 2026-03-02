@@ -194,6 +194,15 @@ exports[`@vuepress/plugin-prismjs > parser > should work \`metaWhitespace\` with
 <span class="line">}</code></pre></span>"
 `;
 
+exports[`@vuepress/plugin-prismjs > parser > should work \`metaWhitespace\` with \`boundary\` options > \`boundary\` and \`:whitespace=leading\` 1`] = `
+"<pre><code><span class="line"><span class="line">function foo(bar: string, baz: string) {</span></span>
+<span class="line"><span class="line"><span class="space"> </span><span class="space"> </span>console</span><span>.</span>log('hello world'<span>)  </span></span></span>
+<span class="line"><span class="space"> </span><span class="space"> </span>console.log('hello world')</span>
+<span class="line"><span class="tab">	</span><span class="tab">	</span>console.log('hello world')</span>
+<span class="line">console.log('hello world)	</span>
+<span class="line">}</code></pre></span>"
+`;
+
 exports[`@vuepress/plugin-prismjs > parser > should work \`metaWhitespace\` with \`boundary\` options > \`boundary\` and \`:whitespace=trailing\` 1`] = `
 "<pre><code><span class="line"><span class="line">function foo(bar: string, baz: string) {</span></span>
 <span class="line"><span class="line">  console</span><span>.</span>log('hello world'<span>)<span class="space"> </span><span class="space"> </span></span></span></span>

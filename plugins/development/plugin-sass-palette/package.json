@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-sass-palette",
-  "version": "2.0.0-rc.123",
+  "version": "2.0.0-rc.124",
   "description": "VuePress plugin - sass-palette",
   "keywords": [
     "palette",
@@ -28,15 +28,20 @@
     "styles"
   ],
   "type": "module",
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
+  "sideEffects": [
+    "./styles/*.scss"
+  ],
   "exports": {
-    ".": "./lib/node/index.js",
-    "./styles*": "./styles/*",
-    "./color.scss": "./styles/default/color.scss",
-    "./config.scss": "./styles/default/config.scss",
-    "./layout.scss": "./styles/default/layout.scss",
-    "./palette.scss": "./styles/default/palette.scss",
+    ".": {
+      "types": "./lib/node/index.d.ts",
+      "default": "./lib/node/index.js"
+    },
+    "./helper": {
+      "sass": "./styles/helper.scss"
+    },
+    "./empty": {
+      "sass": "./styles/empty.scss"
+    },
     "./empty.scss": "./styles/empty.scss",
     "./helper.scss": "./styles/helper.scss",
     "./package.json": "./package.json"
@@ -45,9 +50,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
-    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
-    "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
+    "build": "tsdown --config-loader unrun",
+    "clean": "rimraf --glob ./lib"
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",

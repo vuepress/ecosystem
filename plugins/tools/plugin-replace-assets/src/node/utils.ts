@@ -31,9 +31,7 @@ export const createAssetPattern = (prefix: string): RegExp => {
 export const normalizeUrl = (url: string, base?: string): string => {
   if (!url) return ''
 
-  if (base) {
-    return `${removeEndingSlash(base)}/${removeLeadingSlash(url)}`
-  }
+  if (base) return `${removeEndingSlash(base)}/${removeLeadingSlash(url)}`
 
   return url
 }

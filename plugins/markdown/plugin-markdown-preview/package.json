@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-preview",
-  "version": "2.0.0-rc.123",
+  "version": "2.0.0-rc.124",
   "description": "VuePress plugin - preview",
   "keywords": [
     "markdown",
@@ -31,21 +31,23 @@
   "main": "./lib/node/index.js",
   "types": "./lib/node/index.d.ts",
   "exports": {
-    ".": "./lib/node/index.js",
+    ".": {
+      "types": "./lib/node/index.d.ts",
+      "default": "./lib/node/index.js"
+    },
     "./package.json": "./package.json"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
-    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
-    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
+    "build": "tsdown --config-loader unrun",
+    "clean": "rimraf --glob ./lib",
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@mdit/helper": "^0.22.2",
-    "@mdit/plugin-demo": "^0.22.4",
+    "@mdit/helper": "^0.23.0",
+    "@mdit/plugin-demo": "^0.23.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-chart",
-  "version": "2.0.0-rc.123",
+  "version": "2.0.0-rc.124",
   "description": "VuePress plugin - markdown chart",
   "keywords": [
     "chart",
@@ -33,26 +33,32 @@
     "lib"
   ],
   "type": "module",
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
+  "sideEffects": [
+    "./lib/client/styles/**/*.css"
+  ],
   "exports": {
-    ".": "./lib/node/index.js",
-    "./client": "./lib/client/index.js",
-    "./client/*": "./lib/client/*",
+    ".": {
+      "types": "./lib/node/index.d.ts",
+      "default": "./lib/node/index.js"
+    },
+    "./client": {
+      "types": "./lib/client/index.d.ts",
+      "default": "./lib/client/index.js"
+    },
+    "./client/components/*": "./lib/client/components/*",
     "./package.json": "./package.json"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
-    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
-    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
+    "build": "tsdown --config-loader unrun",
+    "clean": "rimraf --glob ./lib",
     "style": "sass src:lib --embed-sources --style=compressed"
   },
   "dependencies": {
-    "@mdit/plugin-container": "^0.22.3",
-    "@mdit/plugin-plantuml": "^0.23.1",
+    "@mdit/plugin-container": "^0.23.0",
+    "@mdit/plugin-plantuml": "^0.24.0",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vue": "catalog:"

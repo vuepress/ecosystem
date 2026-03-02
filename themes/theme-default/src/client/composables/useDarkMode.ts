@@ -33,9 +33,8 @@ const applyDarkModeToHTML = (isDarkMode: DarkModeRef): void => {
  */
 export const useDarkMode = (): DarkModeRef => {
   const isDarkMode = inject<WritableComputedRef<boolean>>(darkModeSymbol)
-  if (!isDarkMode) {
-    throw new Error('useDarkMode() is called without provider.')
-  }
+  if (!isDarkMode) throw new Error('useDarkMode() is called without provider.')
+
   return isDarkMode
 }
 
@@ -53,22 +52,18 @@ export const setupDarkMode = (): void => {
   const isDarkMode = computed<boolean>({
     get() {
       // disable color mode switching
-      if (!themeLocale.value.colorModeSwitch) {
+      if (!themeLocale.value.colorModeSwitch)
         return themeLocale.value.colorMode === 'dark'
-      }
+
       // auto detected from prefers-color-scheme
-      if (darkStorage.value === 'auto') {
-        return isDarkPreferred.value
-      }
+      if (darkStorage.value === 'auto') return isDarkPreferred.value
+
       // storage value
       return darkStorage.value === 'dark'
     },
     set(val) {
-      if (val === isDarkPreferred.value) {
-        darkStorage.value = 'auto'
-      } else {
-        darkStorage.value = val ? 'dark' : 'light'
-      }
+      if (val === isDarkPreferred.value) darkStorage.value = 'auto'
+      else darkStorage.value = val ? 'dark' : 'light'
     },
   })
   provide(darkModeSymbol, isDarkMode)

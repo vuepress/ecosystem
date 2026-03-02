@@ -115,13 +115,11 @@ export const generateScraperConfig = async (
     ? path.join(process.cwd(), output)
     : path.join(app.dir.source(), '.vuepress', 'meilisearch-config.json')
 
-  if (!fs.existsSync(source)) {
+  if (!fs.existsSync(source))
     throw new Error(`Source directory ${source} does not exist!`)
-  }
 
-  if (!fs.existsSync(scraperPath)) {
+  if (!fs.existsSync(scraperPath))
     throw new Error(`Scraper file not found at ${scraperPath}`)
-  }
 
   const scraperConfig = fs.readJSONSync(scraperPath, 'utf-8') as ScraperConfig
 

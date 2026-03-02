@@ -8,9 +8,7 @@ export const getComponentsFromDir = async ({
 }: Omit<Required<RegisterComponentsPluginOptions>, 'components'>): Promise<
   Record<string, string>
 > => {
-  if (!componentsDir) {
-    return {}
-  }
+  if (!componentsDir) return {}
 
   // get all matched component files
   const componentsDirFiles = await tinyglobby.glob(componentsPatterns, {

@@ -111,18 +111,18 @@ export default defineComponent({
     const catalogInfo = shallowRef(getCatalogData())
 
     const catalogData = computed(() => {
-      const base = props.base
+      const basePath = props.base
         ? ensureLeadingSlash(ensureEndingSlash(props.base))
         : page.value.path.replace(/\/[^/]+$/, '/')
-      const baseDepth = base.split('/').length - 2
+      const baseDepth = basePath.split('/').length - 2
       const result: CatalogData[] = []
 
       catalogInfo.value
         .filter(({ level, path }) => {
           // filter those under current base
-          if (!startsWith(path, base) || path === base) return false
+          if (!startsWith(path, basePath) || path === basePath) return false
 
-          if (base === '/') {
+          if (basePath === '/') {
             const otherLocales = keys(site.value.locales).filter(
               (item) => item !== '/',
             )
@@ -260,7 +260,12 @@ export default defineComponent({
                                 props.index ? 'ol' : 'ul',
                                 { class: 'vp-child-catalogs' },
                                 children.map(
-                                  ({ children = [], content, path, title }) =>
+                                  ({
+                                    children: grandChildren = [],
+                                    content: childContent,
+                                    path: childPath,
+                                    title: childTitle,
+                                  }) =>
                                     h('li', { class: 'vp-child-catalog' }, [
                                       h(
                                         'div',
@@ -268,27 +273,30 @@ export default defineComponent({
                                           class: [
                                             'vp-catalog-sub-title',
                                             {
-                                              'has-children': children.length,
+                                              'has-children':
+                                                grandChildren.length,
                                             },
                                           ],
                                         },
                                         [
                                           h('a', {
-                                            href: `#${title}`,
+                                            href: `#${childTitle}`,
                                             class: 'vp-catalog-header-anchor',
                                           }),
                                           h(
                                             RouteLink,
                                             {
                                               class: 'vp-catalog-title',
-                                              to: path,
+                                              to: childPath,
                                             },
                                             () =>
-                                              content ? h(content) : title,
+                                              childContent
+                                                ? h(childContent)
+                                                : childTitle,
                                           ),
                                         ],
                                       ),
-                                      children.length > 0
+                                      grandChildren.length > 0
                                         ? h(
                                             props.index ? 'ol' : 'div',
                                             {
@@ -296,8 +304,12 @@ export default defineComponent({
                                                 ? 'vp-sub-catalogs'
                                                 : 'vp-sub-catalogs-wrapper',
                                             },
-                                            children.map(
-                                              ({ content, path, title }) =>
+                                            grandChildren.map(
+                                              ({
+                                                content: grandChildContent,
+                                                path: grandChildPath,
+                                                title: grandChildTitle,
+                                              }) =>
                                                 props.index
                                                   ? h(
                                                       'li',
@@ -306,11 +318,13 @@ export default defineComponent({
                                                       },
                                                       h(
                                                         RouteLink,
-                                                        { to: path },
+                                                        { to: grandChildPath },
                                                         () =>
-                                                          content
-                                                            ? h(content)
-                                                            : title,
+                                                          grandChildContent
+                                                            ? h(
+                                                                grandChildContent,
+                                                              )
+                                                            : grandChildTitle,
                                                       ),
                                                     )
                                                   : h(
@@ -318,12 +332,12 @@ export default defineComponent({
                                                       {
                                                         class:
                                                           'vp-sub-catalog-link',
-                                                        to: path,
+                                                        to: grandChildPath,
                                                       },
                                                       () =>
-                                                        content
-                                                          ? h(content)
-                                                          : title,
+                                                        grandChildContent
+                                                          ? h(grandChildContent)
+                                                          : grandChildTitle,
                                                     ),
                                             ),
                                           )

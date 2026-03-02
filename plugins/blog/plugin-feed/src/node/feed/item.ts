@@ -139,11 +139,12 @@ export class FeedItem {
     if (isFunction(this.getter.enclosure))
       return this.getter.enclosure(this.page, this.app)
 
-    if (this.image)
+    if (this.image) {
       return {
         url: this.image,
         type: getImageMineType(this.image.split('.').pop()),
       }
+    }
 
     return null
   }

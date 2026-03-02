@@ -53,9 +53,7 @@ export const prismjsPlugin = (options: PrismjsPluginOptions = {}): Plugin => {
         codeBlockTitle,
       } = opt
 
-      if (preloadLanguages?.length) {
-        loadLanguages(preloadLanguages)
-      }
+      if (preloadLanguages?.length) loadLanguages(preloadLanguages)
 
       md.options.highlight = (code, lang) => {
         const highlighter = resolveHighlighter(lang)

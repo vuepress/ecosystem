@@ -19,9 +19,9 @@ export const useRedirectInfo = (
   const localeEntries = entries(behaviorConfig.config)
 
   return computed(() => {
-    if (localeEntries.some(([key]) => routeLocale.value === key))
-      for (const language of languages.value)
-        for (const [localePath, langs] of localeEntries)
+    if (localeEntries.some(([key]) => routeLocale.value === key)) {
+      for (const language of languages.value) {
+        for (const [localePath, langs] of localeEntries) {
           if (langs.includes(language)) {
             // oxlint-disable-next-line max-depth
             if (localePath === routeLocale.value) return null
@@ -31,6 +31,9 @@ export const useRedirectInfo = (
               localePath,
             }
           }
+        }
+      }
+    }
 
     return null
   })

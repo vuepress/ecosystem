@@ -9,9 +9,7 @@ import { path } from 'vuepress/utils'
 export const stripExt = (filepath: string): string => {
   const ext = path.extname(filepath)
 
-  if (ext === '' || filepath.endsWith('/')) {
-    return filepath
-  }
+  if (ext === '' || filepath.endsWith('/')) return filepath
 
   return filepath.slice(0, -ext.length)
 }

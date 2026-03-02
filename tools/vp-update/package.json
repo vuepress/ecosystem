@@ -1,6 +1,6 @@
 {
   "name": "vp-update",
-  "version": "2.0.0-rc.123",
+  "version": "2.0.0-rc.124",
   "description": "Update helper for VuePress2",
   "keywords": [
     "update",
@@ -29,6 +29,7 @@
     "lib"
   ],
   "type": "module",
+  "sideEffects": false,
   "exports": {
     "./package.json": "./package.json"
   },
@@ -36,9 +37,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
-    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
-    "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
+    "build": "tsdown --config-loader unrun",
+    "clean": "rimraf --glob ./lib"
   },
   "dependencies": {
     "commander": "^14.0.3",

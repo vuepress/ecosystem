@@ -42,9 +42,7 @@ const resolveNoticeItem = async (
   if (contentFile) {
     contentFile = path.resolve(contentFile)
 
-    if (noticeCache.has(contentFile)) {
-      return noticeCache.get(contentFile)!
-    }
+    if (noticeCache.has(contentFile)) return noticeCache.get(contentFile)!
 
     contentType = contentFile.endsWith('.md') ? 'markdown' : 'html'
     content = await readFile(contentFile)
@@ -58,9 +56,7 @@ const resolveNoticeItem = async (
 
   const resolved: NoticeOptions = { content, ...item }
 
-  if (contentFile) {
-    noticeCache.set(contentFile, resolved)
-  }
+  if (contentFile) noticeCache.set(contentFile, resolved)
 
   return resolved
 }
@@ -78,9 +74,7 @@ export const NOTICE_OPTIONS = JSON.parse(${JSON.stringify(
     JSON.stringify(noticeAttrOptions),
   )})
 `
-  if (app.env.isDev) {
-    content += HMR_CODE
-  }
+  if (app.env.isDev) content += HMR_CODE
 
   await app.writeTemp('internal/noticeOptions.js', content)
 }

@@ -40,23 +40,17 @@ export const useRtl = (
     entries(selectorOptions).forEach(([selector, attrs = {}]) => {
       const element = getElement(selector)
 
-      if (element)
+      if (element) {
         entries(attrs).forEach(([attr, value]) => {
-          if (attr === 'class') {
-            element.classList.toggle(value, isRTL)
-          } else if (isRTL) {
-            element.setAttribute(attr, value)
-          } else {
-            element.removeAttribute(attr)
-          }
+          if (attr === 'class') element.classList.toggle(value, isRTL)
+          else if (isRTL) element.setAttribute(attr, value)
+          else element.removeAttribute(attr)
         })
+      }
     })
 
-    if (isRTL) {
-      document.documentElement.style.setProperty('direction', 'rtl')
-    } else {
-      document.documentElement.style.removeProperty('direction')
-    }
+    if (isRTL) document.documentElement.style.setProperty('direction', 'rtl')
+    else document.documentElement.style.removeProperty('direction')
   }
 
   onMounted(() => {

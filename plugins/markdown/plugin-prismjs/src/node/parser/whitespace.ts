@@ -33,7 +33,7 @@ const renderSpace = (text: string): string =>
  * renderWhitespaceInLine(lineNode, 'all')
  * ```
  */
-// oxlint-disable-next-line complexity, max-statements
+// oxlint-disable-next-line complexity
 export const renderWhitespaceInLine = (
   node: OpenTag,
   position: WhitespacePosition,
@@ -47,7 +47,7 @@ export const renderWhitespaceInLine = (
     )
   }
   // match whitespace at the beginning of the line
-  if (position === 'boundary') {
+  if (position === 'boundary' || position === 'leading') {
     let has = true
     for (let i = 0; i < snippets.length; i++) {
       const snippet = snippets[i]
@@ -65,9 +65,7 @@ export const renderWhitespaceInLine = (
         }
         snippets[i] = renderSpace(snippet.slice(0, j)) + snippet.slice(j)
       }
-      if (!has) {
-        break
-      }
+      if (!has) break
     }
   }
 
@@ -94,9 +92,7 @@ export const renderWhitespaceInLine = (
               ? snippet.slice(0, j) + renderSpace(snippet.slice(j))
               : renderSpace(snippet)
       }
-      if (!has) {
-        break
-      }
+      if (!has) break
     }
   }
 
@@ -108,7 +104,7 @@ export const renderWhitespaceInLine = (
  *
  * 基于元字符串处理空白字符渲染
  *
- * `` ```js :whitespace[=all|boundary|trailing] ``
+ * `` ```js :whitespace[=all|boundary|leading|trailing] ``
  *
  * @param parser - Code parser instance / 代码解析器实例
  * @param meta - Meta string / 元字符串

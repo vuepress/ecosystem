@@ -13,8 +13,9 @@ export const prepareClientConfigFile = async (
 ): Promise<string> => {
   let content = ''
 
-  if (mathRenderer === 'katex') {
-    content += `\
+  content +=
+    mathRenderer === 'katex'
+      ? `\
 import "${getModulePath('katex/dist/katex.min.css', import.meta)}";
 import "${CLIENT_FOLDER}styles/katex.css";
 ${
@@ -30,11 +31,9 @@ export default {
 `
     : ''
 }`
-  } else {
-    content += `\
+      : `\
 import './mathjax.css';
 `
-  }
 
   return app.writeTemp(`markdown-math/config.js`, content)
 }

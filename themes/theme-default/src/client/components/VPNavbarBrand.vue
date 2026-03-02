@@ -13,9 +13,9 @@ const navbarBrandLink = computed(
 )
 const navbarBrandTitle = computed(() => siteLocale.value.title)
 const navbarBrandLogo = computed(() => {
-  if (isDarkMode.value && themeLocale.value.logoDark !== undefined) {
+  if (isDarkMode.value && themeLocale.value.logoDark !== undefined)
     return themeLocale.value.logoDark
-  }
+
   return themeLocale.value.logo
 })
 const navbarBrandLogoAlt = computed(
@@ -33,9 +33,8 @@ const NavbarBrandLogo: FunctionalComponent = () => {
     src: withBase(navbarBrandLogo.value),
     alt: navbarBrandLogoAlt.value,
   })
-  if (themeLocale.value.logoDark === undefined) {
-    return img
-  }
+  if (themeLocale.value.logoDark === undefined) return img
+
   // wrap brand logo with <ClientOnly> to avoid ssr-mismatch
   // when using a different brand logo in dark mode
   return h(ClientOnly, () => img)

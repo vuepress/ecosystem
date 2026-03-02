@@ -39,13 +39,13 @@ self.addEventListener(
   }: MessageEvent<WorkerMessageData>) => {
     const searchLocaleIndex = searchIndex[locale]
 
-    if (type === 'suggest')
+    if (type === 'suggest') {
       self.postMessage([
         type,
         id,
         getSuggestions(query, searchLocaleIndex, options),
       ])
-    else if (type === 'search')
+    } else if (type === 'search') {
       self.postMessage([
         type,
         id,
@@ -56,7 +56,7 @@ self.addEventListener(
           __SLIMSEARCH_SORT_STRATEGY__,
         ),
       ])
-    else
+    } else {
       self.postMessage({
         suggestions: [
           type,
@@ -74,5 +74,6 @@ self.addEventListener(
           ),
         ],
       })
+    }
   },
 )

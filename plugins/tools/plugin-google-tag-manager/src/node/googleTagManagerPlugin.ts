@@ -26,7 +26,7 @@ export const googleTagManagerPlugin =
     }
 
     // enable plugin in build mode or debug mode
-    if (app.env.isBuild || app.env.isDebug)
+    if (app.env.isBuild || app.env.isDebug) {
       return {
         ...plugin,
 
@@ -46,6 +46,7 @@ f.parentNode.insertBefore(j,f);\
           ])
         },
       }
+    }
 
     return plugin
   }

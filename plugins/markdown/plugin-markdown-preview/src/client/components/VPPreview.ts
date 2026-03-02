@@ -81,9 +81,8 @@ export default defineComponent({
     })
 
     useResizeObserver(codeContainer, () => {
-      if (isExpanded.value) {
+      if (isExpanded.value)
         height.value = `${codeContainer.value!.clientHeight}px`
-      }
     })
 
     return (): VNode =>

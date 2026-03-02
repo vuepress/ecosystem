@@ -103,13 +103,14 @@ export const blogPlugin =
         }
 
         // inject meta information
-        if (filter(page))
+        if (filter(page)) {
           page.routeMeta = {
             ...(metaScope === ''
               ? getInfo(page)
               : { [metaScope]: getInfo(page) }),
             ...page.routeMeta,
           }
+        }
       },
 
       onInitialized: async () => {
@@ -225,10 +226,11 @@ export const blogPlugin =
 
             // add new pages
             if (pagesToBeAdded.length > 0) {
-              if (app.env.isDebug)
+              if (app.env.isDebug) {
                 logger.info(
                   `Adding new pages: ${pagesToBeAdded.map(({ path }) => path).join(', ')}`,
                 )
+              }
 
               // Prepare page files
               await Promise.all(
@@ -244,10 +246,11 @@ export const blogPlugin =
 
             // Remove pages
             if (pagesToBeRemoved.length > 0) {
-              if (app.env.isDebug)
+              if (app.env.isDebug) {
                 logger.info(
                   `Removing following pages: ${pagesToBeRemoved.join(', ')}`,
                 )
+              }
 
               pagesToBeRemoved.forEach((pagePath) => {
                 app.pages.splice(
@@ -258,9 +261,8 @@ export const blogPlugin =
             }
 
             // Prepare pages entry
-            if (pagesToBeRemoved.length > 0 || pagesToBeAdded.length > 0) {
+            if (pagesToBeRemoved.length > 0 || pagesToBeAdded.length > 0)
               await prepareRoutes(app)
-            }
 
             // store blog pages for next update
             blogPagePaths = newPageOptions.map((page) => page.path!)

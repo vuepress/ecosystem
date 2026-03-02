@@ -10,9 +10,8 @@ const isActiveLink = (
   link: string,
   route: RouteLocationNormalizedLoaded,
 ): boolean => {
-  if (route.hash === link) {
-    return true
-  }
+  if (route.hash === link) return true
+
   const currentPath = normalizePath(route.path)
   const targetPath = normalizePath(link)
   return currentPath === targetPath
@@ -22,13 +21,10 @@ export const isActiveSidebarItem = (
   item: SidebarItem,
   route: RouteLocationNormalizedLoaded,
 ): boolean => {
-  if (item.link && isActiveLink(item.link, route)) {
-    return true
-  }
+  if (item.link && isActiveLink(item.link, route)) return true
 
-  if ('children' in item) {
+  if ('children' in item)
     return item.children.some((child) => isActiveSidebarItem(child, route))
-  }
 
   return false
 }

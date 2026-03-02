@@ -10,9 +10,7 @@ export const useEditLink = (): ComputedRef<AutoLinkConfig | null> => {
   return computed(() => {
     const showEditLink =
       frontmatter.value.editLink ?? themeLocale.value.editLink ?? true
-    if (!showEditLink) {
-      return null
-    }
+    if (!showEditLink) return null
 
     const {
       repo,

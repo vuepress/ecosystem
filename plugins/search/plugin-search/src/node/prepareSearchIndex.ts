@@ -43,9 +43,7 @@ export const SEARCH_INDEX = ${JSON.stringify(searchIndex, null, 2)}
 `
 
   // inject HMR code
-  if (app.env.isDev) {
-    content += HMR_CODE
-  }
+  if (app.env.isDev) content += HMR_CODE
 
   return app.writeTemp('internal/searchIndex.js', content)
 }

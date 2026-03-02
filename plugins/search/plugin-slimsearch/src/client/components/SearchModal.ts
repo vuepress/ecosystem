@@ -185,9 +185,8 @@ export default defineComponent({
                         hasSuggestions.value &&
                         // These keys are handled by the suggestion list
                         SUGGESTIONS_KEYCODE.has(event.key)
-                      ) {
+                      )
                         event.preventDefault()
-                      }
                     },
                     'onInput': ({ target }: InputEvent) => {
                       input.value = (target as HTMLInputElement).value

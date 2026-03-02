@@ -505,7 +505,7 @@ body > div {
 
 ### whitespace
 
-- 类型：`boolean | 'all' | 'boundary' | 'trailing'`
+- 类型：`boolean | 'all' | 'boundary' | 'leading' | 'trailing'`
 
 - 默认值：`false`
 
@@ -514,6 +514,7 @@ body > div {
   - `false`：完全禁用空白符渲染，`:whitespace` 标记不会生效。
   - `'all'`：渲染所有空白符
   - `'boundary'`：仅渲染行首行尾的空白符
+  - `'leading'`：仅渲染行首的空白符
   - `'trailing'`：仅渲染行尾的空白符
 
   你可以在代码块中添加 `:whitespace` / `:no-whitespace` 标记来覆盖配置项中的设置。还可以在 `:whitespace` 之后添加 `=` 来定义渲染空白符的方式。比如 `:whitespace=boundary` 将渲染行首行尾的空白符。
@@ -533,6 +534,15 @@ body > div {
 
   ```md :whitespace=boundary
   <!-- 渲染行首行尾的空白符 -->
+
+  具有尾随空格  
+  的文字
+
+      缩进文字
+  ```
+
+  ```md :whitespace=leading
+  <!-- 渲染行首的空白符 -->
 
   具有尾随空格  
   的文字

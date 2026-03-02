@@ -13,11 +13,8 @@ export const createMatcher = (rawPatterns: string[]): picomatch.Matcher => {
   const ignored: string[] = []
 
   for (const pattern of rawPatterns) {
-    if (pattern.startsWith('!')) {
-      ignored.push(pattern.slice(1))
-    } else {
-      patterns.push(pattern)
-    }
+    if (pattern.startsWith('!')) ignored.push(pattern.slice(1))
+    else patterns.push(pattern)
   }
 
   return picomatch(patterns, {

@@ -30,9 +30,8 @@ export const setupCollapsedLines = ({
       const target = event.target as HTMLElement
       if (target.matches(selector)) {
         const parent = target.parentElement
-        if (parent?.classList.toggle('collapsed')) {
+        if (parent?.classList.toggle('collapsed'))
           parent.scrollIntoView({ block: 'center', behavior: 'instant' })
-        }
       }
     },
     { passive: true },

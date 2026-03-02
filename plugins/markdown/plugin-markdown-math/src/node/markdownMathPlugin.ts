@@ -88,9 +88,8 @@ export const markdownMathPlugin =
       name: PLUGIN_NAME,
 
       extendsBundlerOptions: (bundlerOptions) => {
-        if (mathRenderer === 'mathjax') {
+        if (mathRenderer === 'mathjax')
           addCustomElement(bundlerOptions, app, /^mjx-/)
-        }
       },
 
       extendsMarkdown: async (md) => {
@@ -117,16 +116,16 @@ export const markdownMathPlugin =
             }
           })
         } else {
-          if ((renderOptions as MarkdownKatexPluginOptions).mhchem) {
+          if ((renderOptions as MarkdownKatexPluginOptions).mhchem)
             await import('@mdit/plugin-katex-slim/mhchem')
-          }
 
           md.use<MarkdownItKatexOptions<MarkdownEnv>>(katex, {
             logger: (errorCode, errorMsg, token, { filePathRelative }) => {
               // Ignore this error
-              if (errorCode === 'newLineInDisplayMode') return
+              // oxlint-disable-next-line no-useless-undefined
+              if (errorCode === 'newLineInDisplayMode') return undefined
 
-              if (errorCode === 'unicodeTextInMathMode')
+              if (errorCode === 'unicodeTextInMathMode') {
                 logger.warn(
                   `Found unicode character ${token.text} inside tex${
                     filePathRelative
@@ -134,7 +133,7 @@ export const markdownMathPlugin =
                       : ''
                   }. You should use ${colors.magenta(`\\text{${token.text}}`)}`,
                 )
-              else
+              } else {
                 logger.warn(
                   `${errorMsg}.${
                     filePathRelative
@@ -142,6 +141,7 @@ export const markdownMathPlugin =
                       : ''
                   }`,
                 )
+              }
             },
             ...(renderOptions as Omit<MarkdownKatexPluginOptions, 'type'>),
             transformer: (content) =>

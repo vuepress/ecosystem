@@ -80,17 +80,17 @@ To enable the chart, you must manually add it to allowlist, see https://vuepress
         }
 
         if (!content) continue
-        if (type === 'fence')
+        if (type === 'fence') {
           if (info === 'json') {
             config = encodeData(content)
           } else if (info === 'js' || info === 'javascript') {
             config = encodeData(content)
             isJavaScript = true
 
-            if (allowScripts && (allowAll || allowList.has(filePathRelative))) {
+            if (allowScripts && (allowAll || allowList.has(filePathRelative)))
               isInAllowList = true
-            }
           }
+        }
 
         // Set to an unknown token type
         tokens[i].type = 'chartjs_empty'
@@ -98,9 +98,7 @@ To enable the chart, you must manually add it to allowlist, see https://vuepress
         tokens[i].hidden = true
       }
 
-      if (isJavaScript && !isInAllowList) {
-        return ''
-      }
+      if (isJavaScript && !isInAllowList) return ''
 
       return `<ChartJS config="${config}"${
         title ? ` title="${encodeURIComponent(title)}"` : ''
