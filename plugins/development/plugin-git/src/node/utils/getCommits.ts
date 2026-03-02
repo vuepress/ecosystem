@@ -152,14 +152,14 @@ export const getRawCommits = async (
   const gitRoot = await getGitRepoRoot(filepath, cwd)
 
   try {
-    let _filepath = filepath
+    let repoRelativeFilePath = filepath
     if (gitRoot) {
       // Resolve to absolute path first, then convert to repo-relative path
-      const absFilePath = path.isAbsolute(_filepath)
-        ? _filepath
-        : path.resolve(cwd, _filepath)
+      const absFilePath = path.isAbsolute(repoRelativeFilePath)
+        ? repoRelativeFilePath
+        : path.resolve(cwd, repoRelativeFilePath)
 
-      _filepath = path.relative(gitRoot, absFilePath)
+      repoRelativeFilePath = path.relative(gitRoot, absFilePath)
     } else {
       logger.warn(
         `Failed to resolve git repo root for "${filepath}" under cwd "${cwd}", falling back to cwd; git history may be incomplete.`,
@@ -173,7 +173,7 @@ export const getRawCommits = async (
         '--date=unix',
         '--follow',
         '--',
-        _filepath,
+        repoRelativeFilePath,
       ],
       gitRoot || cwd,
     )
