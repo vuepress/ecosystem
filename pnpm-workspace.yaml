@@ -19,9 +19,11 @@ catalog:
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - esbuild
-  - unrs-resolver
+
+overrides:
+  vite@7: npm:rolldown-vite@7
 
 peerDependencyRules:
   allowedVersions:
-    artalk>marked: ^16.0.0
+    artalk>marked: ^17.0.0
     echarts-wordcloud@2>echarts: '6'
