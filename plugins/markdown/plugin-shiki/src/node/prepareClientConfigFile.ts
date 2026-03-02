@@ -22,7 +22,7 @@ export const prepareClientConfigFile = (
 ): Promise<string> => {
   const imports: string[] = [
     `import "${getModulePath('@vuepress/highlighter-helper/styles/base.css', import.meta)}"`,
-    `import "${getModulePath(`${PLUGIN_NAME}/styles/shiki.css`, import.meta)}"`,
+    `import "${getModulePath(`${PLUGIN_NAME}/shiki.css`, import.meta)}"`,
   ]
 
   const enhances: string[] = []
@@ -95,7 +95,7 @@ export const prepareClientConfigFile = (
       `import { enhanceTwoslash } from "${getModulePath('@vuepress/shiki-twoslash/client', import.meta)}"`,
     )
     imports.push(
-      `import "${getModulePath('@vuepress/shiki-twoslash/styles/twoslash.css', import.meta)}"`,
+      `import "${getModulePath('@vuepress/shiki-twoslash/twoslash.css', import.meta)}"`,
     )
     enhances.push('enhanceTwoslash(app)')
   }

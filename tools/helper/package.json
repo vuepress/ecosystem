@@ -29,22 +29,36 @@
   ],
   "type": "module",
   "sideEffects": [
-    "**/*.css"
+    "./lib/client/styles/**/*.css",
+    "./scss/**/*.scss"
   ],
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
   "exports": {
-    ".": "./lib/node/index.js",
-    "./client": "./lib/client/index.js",
-    "./shared": "./lib/shared/index.js",
-    "./noopComponent": "./lib/client/noopComponent.js",
-    "./noopModule": "./lib/client/noopModule.js",
+    ".": {
+      "types": "./lib/node/index.d.ts",
+      "default": "./lib/node/index.js"
+    },
+    "./client": {
+      "types": "./lib/client/index.d.ts",
+      "default": "./lib/client/index.js"
+    },
+    "./shared": {
+      "types": "./lib/shared/index.d.ts",
+      "default": "./lib/shared/index.js"
+    },
+    "./noopComponent": {
+      "types": "./lib/client/noopComponent.d.ts",
+      "default": "./lib/client/noopComponent.js"
+    },
+    "./noopModule": {
+      "types": "./lib/client/noopModule.d.ts",
+      "default": "./lib/client/noopModule.js"
+    },
     "./colors.css": "./lib/client/styles/colors.css",
     "./message.css": "./lib/client/styles/message.css",
     "./normalize.css": "./lib/client/styles/normalize.css",
     "./sr-only.css": "./lib/client/styles/sr-only.css",
     "./transition/*.css": "./lib/client/styles/transition/*.css",
-    "./scss/*.scss": {
+    "./scss/*": {
       "sass": "./scss/*.scss"
     },
     "./package.json": "./package.json"
@@ -53,9 +67,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
-    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
-    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
+    "build": "tsdown --config-loader unrun",
+    "clean": "rimraf --glob ./lib",
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
@@ -74,6 +87,16 @@
     "vite": "~7.1.12"
   },
   "peerDependencies": {
+    "@vuepress/bundler-vite": "catalog:",
+    "@vuepress/bundler-webpack": "catalog:",
     "vuepress": "catalog:"
+  },
+  "peerDependenciesMeta": {
+    "@vuepress/bundler-vite": {
+      "optional": true
+    },
+    "@vuepress/bundler-webpack": {
+      "optional": true
+    }
   }
 }

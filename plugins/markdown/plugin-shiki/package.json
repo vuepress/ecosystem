@@ -24,29 +24,34 @@
     "lib"
   ],
   "type": "module",
+  "sideEffects": [
+    "./lib/client/styles/**/*.css"
+  ],
   "main": "./lib/node/index.js",
   "types": "./lib/node/index.d.ts",
   "exports": {
-    ".": "./lib/node/index.js",
+    ".": {
+      "types": "./lib/node/index.d.ts",
+      "default": "./lib/node/index.js"
+    },
     "./resolveLang": "./lib/node/resolveLang.js",
-    "./styles/*": "./lib/client/styles/*",
+    "./shiki.css": "./lib/client/styles/shiki.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
-    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
-    "clean": "rimraf --glob ./lib ./*.tsbuildinfo",
+    "build": "tsdown --config-loader unrun",
+    "clean": "rimraf --glob ./lib",
     "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@shikijs/transformers": "^3.23.0",
+    "@shikijs/transformers": "^4.0.0",
     "@vuepress/helper": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
     "nanoid": "^5.1.6",
-    "shiki": "^3.23.0",
+    "shiki": "^4.0.0",
     "synckit": "^0.11.12"
   },
   "devDependencies": {

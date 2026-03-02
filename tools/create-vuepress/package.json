@@ -31,7 +31,7 @@
     "template"
   ],
   "type": "module",
-  "main": "./lib/index.js",
+  "sideEffects": false,
   "exports": {
     ".": "./lib/index.js",
     "./package.json": "./package.json"
@@ -40,9 +40,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
-    "bundle": "rollup -c rollup.config.ts --configPlugin esbuild",
-    "clean": "rimraf --glob ./lib ./*.tsbuildinfo"
+    "build": "tsdown --config-loader unrun",
+    "clean": "rimraf --glob ./lib"
   },
   "dependencies": {
     "@inquirer/prompts": "^8.3.0",
