@@ -191,3 +191,8 @@ type: tip
 
 - 类型：`boolean`
 - 详情：是否启用 v-pre 容器支持。
+
+### cjkFriendly
+
+- 类型：`boolean`
+- 详情：是否启用对强调标记的 CJK 友好支持。未设置时，检测到 CJK 语言（`zh`、`ja`、`ko`）将自动启用。

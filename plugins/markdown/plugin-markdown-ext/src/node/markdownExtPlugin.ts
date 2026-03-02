@@ -1,6 +1,7 @@
 import { footnote as footnotePlugin } from '@mdit/plugin-footnote'
 import { tasklist as tasklistPlugin } from '@mdit/plugin-tasklist'
 import { deepAssign } from '@vuepress/helper'
+import markdownItCjkFriendlyPlugin from 'markdown-it-cjk-friendly'
 import type { Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 
@@ -11,6 +12,8 @@ import {
 import type { MarkdownExtPluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepreClientConfigFile.js'
 import { PLUGIN_NAME } from './utils.js'
+
+const CJK_LANG_REGEXP = /^(zh|ja|ko)\b/i
 
 declare module 'vuepress/markdown' {
   interface MarkdownOptions {
@@ -42,10 +45,26 @@ export const markdownExtPlugin =
   (options: MarkdownExtPluginOptions): Plugin =>
   (app) => {
     const mergedOptions = deepAssign({}, app.options.markdown.ext, options)
-    const { gfm, breaks, linkify, footnote, tasklist, component, vPre } =
-      mergedOptions
+    const {
+      gfm,
+      breaks,
+      linkify,
+      footnote,
+      tasklist,
+      component,
+      vPre,
+      cjkFriendly,
+    } = mergedOptions
 
     app.options.markdown.ext = mergedOptions
+
+    // Auto-detect CJK if cjkFriendly is not explicitly set
+    const isCjkFriendlyEnabled =
+      cjkFriendly ??
+      [
+        app.options.lang,
+        ...Object.values(app.options.locales).map((locale) => locale.lang),
+      ].some((lang) => lang && CJK_LANG_REGEXP.test(lang))
 
     return {
       name: PLUGIN_NAME,
@@ -60,6 +79,7 @@ export const markdownExtPlugin =
           md.use(tasklistPlugin, [isPlainObject(tasklist) ? tasklist : {}])
         if (component) md.use(componentPlugin)
         if (vPre) md.use(vPrePlugin)
+        if (isCjkFriendlyEnabled) md.use(markdownItCjkFriendlyPlugin)
       },
 
       clientConfigFile: () =>

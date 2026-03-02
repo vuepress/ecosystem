@@ -76,4 +76,15 @@ export interface MarkdownExtPluginOptions {
    * @default false
    */
   vPre?: boolean
+
+  /**
+   * Whether to enable CJK-friendly support for emphasis marks.
+   *
+   * 是否启用对强调标记的 CJK 友好支持。
+   *
+   * @description When not set, it is automatically enabled if a CJK language is detected in the site's `lang` or `locales[xxx].lang` configuration.
+   *
+   * 未设置时，如果在站点的 `lang` 或 `locales[xxx].lang` 配置中检测到 CJK 语言，将自动启用。
+   */
+  cjkFriendly?: boolean
 }
