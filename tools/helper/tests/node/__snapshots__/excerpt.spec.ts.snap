@@ -6,7 +6,7 @@ exports[`getPageExcerpt > default > generate excerpt for all pages > / 1`] = `
 `;
 
 exports[`getPageExcerpt > default > generate excerpt for all pages > /component.html 1`] = `
-"<p>A text with </p>
+"<p>A text with .</p>
 "
 `;
 
@@ -42,7 +42,7 @@ exports[`getPageExcerpt > default > generate excerpt for all pages > /markdown.h
 <h6>Heading 6</h6>
 <h3>Heading with <strong>markdown</strong> and <span>html</span></h3>
 <h2>Text</h2>
-<p>This sentence has <strong>bold</strong>、<em>italic</em> and <s>delete</s> style text.</p>"
+<p>This sentence has <strong>bold</strong>, <em>italic</em> and <s>delete</s> style text.</p>"
 `;
 
 exports[`getPageExcerpt > default > generate excerpt for all pages > /separator.html 1`] = `
@@ -58,7 +58,7 @@ exports[`getPageExcerpt > excerptLength > extract all content with Infinity > / 
 `;
 
 exports[`getPageExcerpt > excerptLength > extract all content with Infinity > /component.html 1`] = `
-"<p>A text with </p>
+"<p>A text with .</p>
 "
 `;
 
@@ -145,7 +145,7 @@ exports[`getPageExcerpt > excerptLength > extract all content with Infinity > /m
 <h6>Heading 6</h6>
 <h3>Heading with <strong>markdown</strong> and <span>html</span></h3>
 <h2>Text</h2>
-<p>This sentence has <strong>bold</strong>、<em>italic</em> and <s>delete</s> style text.</p>
+<p>This sentence has <strong>bold</strong>, <em>italic</em> and <s>delete</s> style text.</p>
 <h2>Paragraph</h2>
 <p>This is a paragraph.</p>
 <p>This is another paragraph.</p>

@@ -61,7 +61,7 @@ exports[`generateIndex > Should generate full index 2`] = `
     "h": "Text",
     "id": "1#text",
     "t": [
-      "This sentence has bold、italic and delete style text.",
+      "This sentence has bold, italic and delete style text.",
     ],
   },
   {
@@ -648,7 +648,7 @@ exports[`generateIndex > Should support customFields with full index 2`] = `
     "h": "Text",
     "id": "1#text",
     "t": [
-      "This sentence has bold、italic and delete style text.",
+      "This sentence has bold, italic and delete style text.",
     ],
   },
   {
