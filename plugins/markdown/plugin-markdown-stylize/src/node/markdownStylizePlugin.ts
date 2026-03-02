@@ -1,5 +1,6 @@
 import { align as alignPlugin } from '@mdit/plugin-align'
 import { attrs as attrsPlugin } from '@mdit/plugin-attrs'
+import { layout as layoutPlugin } from '@mdit/plugin-layout'
 import { mark as markPlugin } from '@mdit/plugin-mark'
 import { spoiler as spoilerPlugin } from '@mdit/plugin-spoiler'
 import { stylize as stylizePlugin } from '@mdit/plugin-stylize'
@@ -35,6 +36,7 @@ declare module 'vuepress/markdown' {
  *       align: true,
  *       attrs: true,
  *       mark: true,
+ *       layout: true,
  *       spoiler: true,
  *       sub: true,
  *       sup: true,
@@ -48,7 +50,7 @@ export const markdownStylizePlugin =
   (app) => {
     const opts = deepAssign({}, app.options.markdown.stylize, options)
     app.options.markdown.stylize = opts
-    const { attrs, align, custom, mark, spoiler, sup, sub } = opts
+    const { attrs, align, custom, layout, mark, spoiler, sup, sub } = opts
 
     return {
       name: '@vuepress/plugin-markdown-stylize',
@@ -67,6 +69,7 @@ export const markdownStylizePlugin =
         if (spoiler) md.use(spoilerPlugin)
         if (sub) md.use(subPlugin)
         if (sup) md.use(supPlugin)
+        if (layout) md.use(layoutPlugin)
       },
 
       clientConfigFile: () => prepareClientConfigFile(app, { spoiler }),
