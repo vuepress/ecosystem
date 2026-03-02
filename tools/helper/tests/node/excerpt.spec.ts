@@ -170,6 +170,9 @@ describe(getPageExcerpt, async () => {
           expect(excerpt).toContain('custom-element1')
           expect(excerpt).toContain('custom-element2')
           expect(excerpt).toContain('custom-element3')
+          expect(excerpt).toContain('custom-element4')
+          expect(excerpt).toContain('text1')
+          expect(excerpt).toContain('text2')
           expect(excerpt).not.toContain('VueComponent')
         }
       })

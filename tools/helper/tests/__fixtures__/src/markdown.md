@@ -18,7 +18,7 @@
 
 ## Text
 
-This sentence has **bold**、_italic_ and ~~delete~~ style text.
+This sentence has **bold**, _italic_ and ~~delete~~ style text.
 
 ## Paragraph
 
