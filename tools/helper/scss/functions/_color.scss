@@ -2,7 +2,7 @@
 @use 'sass:math';
 
 /**
- * By adjusting the brightness of a color and calculating a new opacity value based on the color's original opacity, a high-contrast color within the same color scheme can be obtained.
+ * By adjusting the brightness of a color and calculating a new opacity value based on the color's lightness, a high-contrast color within the same color scheme can be obtained.
  */
 @function get-soft-color($color) {
   $lightness: color.lightness($color);
