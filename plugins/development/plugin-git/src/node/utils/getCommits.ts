@@ -9,6 +9,9 @@ const INFO_SPLITTER = '[|]'
 const COMMIT_SPLITTER = String.raw`\|/`
 const RE_CO_AUTHOR = /^ *Co-authored-by: ?([^<]*)<([^>]*)> */gim
 
+const gitRepoRootResultCache = new Map<string, string | null>()
+const gitRepoRootTaskCache = new Map<string, Promise<string | null>>()
+
 const getCoAuthorsFromCommitBody = (
   body: string,
 ): Pick<GitContributorInfo, 'email' | 'name'>[] =>
@@ -91,12 +94,21 @@ const runGitLog = (args: string[], cwd: string): Promise<string> =>
 const getGitRepoRoot = (
   filePath: string,
   cwd: string,
-): Promise<string | null> =>
-  new Promise((resolve) => {
-    const absFilePath = path.isAbsolute(filePath)
-      ? filePath
-      : path.resolve(cwd, filePath)
-    const dir = path.dirname(absFilePath)
+): Promise<string | null> => {
+  const absFilePath = path.isAbsolute(filePath)
+    ? filePath
+    : path.resolve(cwd, filePath)
+
+  const dir = path.normalize(path.dirname(absFilePath))
+  const cachedResult = gitRepoRootResultCache.get(dir)
+
+  if (cachedResult !== undefined || gitRepoRootResultCache.has(dir))
+    return Promise.resolve(cachedResult ?? null)
+
+  const cachedTask = gitRepoRootTaskCache.get(dir)
+  if (cachedTask) return cachedTask
+
+  const task = new Promise<string | null>((resolve) => {
     const gitProcess = spawn('git', ['rev-parse', '--show-toplevel'], {
       cwd: dir,
       stdio: ['ignore', 'pipe', 'pipe'],
@@ -129,6 +141,16 @@ const getGitRepoRoot = (
       }
     })
   })
+
+  const cached = task.then((gitRoot) => {
+    gitRepoRootResultCache.set(dir, gitRoot)
+    gitRepoRootTaskCache.delete(dir)
+    return gitRoot
+  })
+  gitRepoRootTaskCache.set(dir, cached)
+
+  return cached
+}
 
 /**
  * Get raw commits for a specific file
@@ -255,4 +277,9 @@ export const getCommits = async (
   ).flat()
 
   return mergeRawCommits(rawCommits).sort((a, b) => b.time - a.time)
+}
+
+export const clearGitRepoRootCache = (): void => {
+  gitRepoRootResultCache.clear()
+  gitRepoRootTaskCache.clear()
 }
