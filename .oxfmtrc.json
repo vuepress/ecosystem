@@ -11,7 +11,7 @@
   "semi": false,
   "printWidth": 80,
   "quoteProps": "consistent",
-  "experimentalSortPackageJson": {
+  "sortPackageJson": {
     "sortScripts": true
   }
 }
