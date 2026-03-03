@@ -57,8 +57,8 @@
     "style": "sass src:lib --embed-sources --style=compressed"
   },
   "dependencies": {
-    "@mdit/plugin-container": "^0.23.0",
-    "@mdit/plugin-plantuml": "^0.24.0",
+    "@mdit/plugin-container": "^0.23.1",
+    "@mdit/plugin-plantuml": "^0.24.1",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vue": "catalog:"

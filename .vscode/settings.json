@@ -22,7 +22,6 @@
     "typescriptreact",
     "vue"
   ],
-  "oxc.typeAware": true,
   "oxc.unusedDisableDirectives": "deny",
   "cSpell.words": [
     "artalk",

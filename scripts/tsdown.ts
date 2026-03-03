@@ -99,7 +99,7 @@ export interface TsdownOptions {
  *
  * 创建 tsdown 配置
  *
- * @param filePath - File path or file info / 文件路径或文件信息
+ * @param fileOptions - File path or file info / 文件路径或文件信息
  * @param options - Tsdown options / Tsdown 选项
  * @returns Tsdown configuration / Tsdown 配置
  */
