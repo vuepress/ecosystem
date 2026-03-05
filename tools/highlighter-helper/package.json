@@ -41,6 +41,7 @@
       "default": "./lib/client/index.js"
     },
     "./styles/*.css": "./lib/client/styles/*.css",
+    "./scss/*.scss": "./scss/*.scss",
     "./scss/*": {
       "sass": "./scss/*.scss"
     },

@@ -13,6 +13,6 @@ export default tsdownConfig(
     'client/index',
   ],
   {
-    external: ['@vuepress/plugin-comment/service'],
+    neverBundle: ['@vuepress/plugin-comment/service'],
   },
 )

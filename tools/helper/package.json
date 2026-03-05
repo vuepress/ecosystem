@@ -59,14 +59,15 @@
     "./normalize.css": "./lib/client/styles/normalize.css",
     "./sr-only.css": "./lib/client/styles/sr-only.css",
     "./transition/*.css": "./lib/client/styles/transition/*.css",
-    "./scss/*": {
-      "sass": "./scss/*.scss"
-    },
     "./scss/color": {
       "sass": "./scss/functions/_color.scss"
     },
     "./scss/svg": {
       "sass": "./scss/functions/_svg.scss"
+    },
+    "./scss/*.scss": "./scss/*.scss",
+    "./scss/*": {
+      "sass": "./scss/*.scss"
     },
     "./package.json": "./package.json"
   },

@@ -1,3 +1,4 @@
+import { dirname } from 'node:path'
 import type { UserConfig } from 'tsdown'
 import { defineConfig } from 'tsdown'
 
@@ -45,20 +46,20 @@ export interface TsdownOptions {
   treeshake?: UserConfig['treeshake']
 
   /**
-   * Inline options
+   * Whitelist of dependencies allowed to be bundled
    *
-   * 内联选项
+   * 允许被打包的依赖白名单
    *
    * @default browser ? false : undefined
    */
-  inlineOnly?: (string | RegExp)[] | false
+  onlyAllowBundle?: (string | RegExp)[] | false
 
   /**
-   * Packages not to treat as external
+   * Packages to always bundle
    *
-   * 不作为外部处理的包
+   * 永远打包的包
    */
-  noExternal?: (string | RegExp)[]
+  alwaysBundle?: (string | RegExp)[]
 
   /**
    * Define options
@@ -68,14 +69,13 @@ export interface TsdownOptions {
   define?: Record<string, string>
 
   /**
-   * Additional external dependencies (for special cases like self-referencing
-   * virtual modules). In most cases, tsdown auto-externalizes deps from
-   * package.json so this is not needed.
+   * Assets to never bundle
    *
-   * 额外的外部依赖（用于自引用虚拟模块等特殊情况）。
-   * 大部分情况下 tsdown 会自动外部化 package.json 中的依赖，无需手动声明。
+   * 永远不打包的资源
+   *
+   * @description `@temp/`, `@internal/` 以及 .css/.scss 文件默认不打包
    */
-  external?: (string | RegExp)[]
+  neverBundle?: (string | RegExp)[]
 
   /**
    * Custom module side effects determination
@@ -92,40 +92,80 @@ export interface TsdownOptions {
    * @default (id) => id.endsWith('.css') || id.endsWith('.scss')
    */
   moduleSideEffects?: (id: string, external: boolean) => boolean | undefined
+
+  /**
+   * Additional files to copy to the output directory
+   *
+   * 要复制到输出目录的额外文件
+   *
+   * Each item is a tuple of [from, to], where 'from' is the source path relative to the project root, and 'to' is the destination path relative to the output directory.
+   * 每个项都是一个 [from, to] 的元组，其中 'from' 是相对于项目根目录的源路径，'to' 是相对于输出目录的目标路径。
+   *
+   * Example:
+   * 例如：
+   * copy: [
+   *   ['assets/', 'assets/'], // Copy src/assets/ folder to dist/assets/
+   *   ['types/global.d.ts', 'types/global.d.ts'], // Copy src/types/global.d.ts to dist/types/global.d.ts
+   * ]
+   */
+  copy?: [from: string, to?: string][]
+
+  /**
+   * Whether to run publint during the build process
+   *
+   * 是否在构建过程中运行 publint
+   *
+   * @default true (only in production mode)
+   */
+  publint?: boolean
 }
+
+const resolveEntry = (entryItem: string): string =>
+  entryItem.startsWith('src/') ? entryItem : `./src/${entryItem}.ts`
 
 /**
  * Create tsdown configuration
  *
  * 创建 tsdown 配置
  *
- * @param fileOptions - File path or file info / 文件路径或文件信息
+ * @param entryOptions - Entry options / 入口选项
  * @param options - Tsdown options / Tsdown 选项
  * @returns Tsdown configuration / Tsdown 配置
  */
 export const tsdownConfig = (
-  fileOptions: string | string[],
-  options: TsdownOptions = {},
-): UserConfig => {
-  const files = Array.isArray(fileOptions) ? fileOptions : [fileOptions]
-
-  const {
+  entryOptions: UserConfig['entry'],
+  {
     alias,
     define,
     treeshake,
-    noExternal = [],
-    external = [],
-    inlineOnly = false,
+    alwaysBundle = [],
+    neverBundle = [],
+    onlyAllowBundle = false,
     platform = 'node',
     dts = true,
     moduleSideEffects,
-  } = options
+    copy = [],
+    publint = true,
+  }: TsdownOptions = {},
+): UserConfig => {
+  const entry =
+    typeof entryOptions === 'string'
+      ? { [entryOptions]: resolveEntry(entryOptions) }
+      : Array.isArray(entryOptions)
+        ? entryOptions.every((item) => typeof item === 'string')
+          ? Object.fromEntries(
+              entryOptions.map((item) => [item, resolveEntry(item)]),
+            )
+          : entryOptions.map((item) =>
+              typeof item === 'string' ? { [item]: resolveEntry(item) } : item,
+            )
+        : entryOptions
 
   return defineConfig({
     clean: !isProduction,
-    entry: Object.fromEntries(files.map((item) => [item, `./src/${item}.ts`])),
+    entry,
     format: 'esm',
-    outDir: './lib',
+    outDir: './dist',
     sourcemap: true,
     dts,
     minify: isProduction,
@@ -136,10 +176,16 @@ export const tsdownConfig = (
     treeshake: treeshake ?? {
       moduleSideEffects: moduleSideEffects ?? defaultModuleSideEffects,
     },
-    external: [/^@internal\//, /^@temp\//, /\.s?css$/, ...external],
+    deps: {
+      alwaysBundle: alwaysBundle,
+      neverBundle: [/^@internal\//, /^@temp\//, /\.s?css$/, ...neverBundle],
+      onlyAllowBundle: onlyAllowBundle,
+    },
     fixedExtension: false,
-    noExternal,
-    inlineOnly,
-    publint: isProduction,
+    publint: isProduction &&  publint,
+    copy: copy.map(([from, to = dirname(from)]) => ({
+      from: `./src/${from}`,
+      to: `./dist/${to}`,
+    })),
   })
 }
