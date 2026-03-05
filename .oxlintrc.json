@@ -3,7 +3,7 @@
   "extends": ["./.oxlintrc.base.json"],
   "ignorePatterns": [
     "coverage/",
-    "packages/*/*/dist/",
+    "**/dist/",
     "template/",
     "**/tests/__fixtures__/"
   ],
