@@ -29,5 +29,5 @@
     "scripts/**/*",
     "*.config.ts"
   ],
-  "exclude": ["node_modules", ".temp", "lib", "dist"]
+  "exclude": ["node_modules", ".cache", ".temp", "dist"]
 }

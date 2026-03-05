@@ -2,7 +2,7 @@
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "ignorePatterns": [
     "coverage/",
-    "packages/*/*/lib/",
+    "packages/*/*/dist/",
     "**/.vuepress/.cache",
     "**/.vuepress/.temp",
     "**/.vuepress/dist"

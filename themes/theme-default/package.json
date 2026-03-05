@@ -20,34 +20,34 @@
     "directory": "themes/theme-default"
   },
   "files": [
-    "lib",
+    "dist",
     "templates"
   ],
   "type": "module",
   "sideEffects": [
-    "./lib/client/components/**/*.vue",
-    "./lib/client/layouts/*.vue",
-    "./lib/client/styles/*.scss"
+    "./dist/client/components/**/*.vue",
+    "./dist/client/layouts/*.vue",
+    "./dist/client/styles/*.scss"
   ],
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
+  "main": "./dist/node/index.js",
+  "types": "./dist/node/index.d.ts",
   "exports": {
     ".": {
-      "types": "./lib/node/index.d.ts",
-      "default": "./lib/node/index.js"
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.js"
     },
     "./client": {
-      "types": "./lib/client/index.d.ts",
-      "default": "./lib/client/index.js"
+      "types": "./dist/client/index.d.ts",
+      "default": "./dist/client/index.js"
     },
-    "./components/*": "./lib/client/components/*",
-    "./layouts/*": "./lib/client/layouts/*",
-    "./styles/*.scss": "./lib/client/styles/*.scss",
+    "./components/*": "./dist/client/components/*",
+    "./layouts/*": "./dist/client/layouts/*",
+    "./styles/*.scss": "./dist/client/styles/*.scss",
     "./styles/*": {
-      "sass": "./lib/client/styles/*.scss"
+      "sass": "./dist/client/styles/*.scss"
     },
     "./templates/*": "./templates/*",
-    "./lib/*": "./lib/*",
+    "./dist/*": "./dist/*",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -55,8 +55,8 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./lib",
-    "copy": "cpx \"src/**/*.{d.ts,vue,scss}\" lib"
+    "clean": "rimraf --glob ./dist",
+    "copy": "cpx \"src/**/*.{d.ts,vue,scss}\" dist"
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",

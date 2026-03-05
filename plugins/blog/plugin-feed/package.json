@@ -24,15 +24,15 @@
     "directory": "plugins/blog/plugin-feed"
   },
   "files": [
-    "lib",
+    "dist",
     "templates"
   ],
   "type": "module",
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./lib/node/index.d.ts",
-      "default": "./lib/node/index.js"
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.js"
     },
     "./templates/*": "./templates/*",
     "./package.json": "./package.json"
@@ -42,7 +42,7 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./lib"
+    "clean": "rimraf --glob ./dist"
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",

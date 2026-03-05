@@ -24,41 +24,41 @@
     "directory": "tools/helper"
   },
   "files": [
-    "lib",
+    "dist",
     "scss"
   ],
   "type": "module",
   "sideEffects": [
-    "./lib/client/styles/**/*.css",
+    "./dist/client/styles/**/*.css",
     "./scss/**/*.scss"
   ],
   "exports": {
     ".": {
-      "types": "./lib/node/index.d.ts",
+      "types": "./dist/node/index.d.ts",
       "sass": "./scss/helper.scss",
-      "default": "./lib/node/index.js"
+      "default": "./dist/node/index.js"
     },
     "./client": {
-      "types": "./lib/client/index.d.ts",
-      "default": "./lib/client/index.js"
+      "types": "./dist/client/index.d.ts",
+      "default": "./dist/client/index.js"
     },
     "./shared": {
-      "types": "./lib/shared/index.d.ts",
-      "default": "./lib/shared/index.js"
+      "types": "./dist/shared/index.d.ts",
+      "default": "./dist/shared/index.js"
     },
     "./noopComponent": {
-      "types": "./lib/client/noopComponent.d.ts",
-      "default": "./lib/client/noopComponent.js"
+      "types": "./dist/client/noopComponent.d.ts",
+      "default": "./dist/client/noopComponent.js"
     },
     "./noopModule": {
-      "types": "./lib/client/noopModule.d.ts",
-      "default": "./lib/client/noopModule.js"
+      "types": "./dist/client/noopModule.d.ts",
+      "default": "./dist/client/noopModule.js"
     },
-    "./colors.css": "./lib/client/styles/colors.css",
-    "./message.css": "./lib/client/styles/message.css",
-    "./normalize.css": "./lib/client/styles/normalize.css",
-    "./sr-only.css": "./lib/client/styles/sr-only.css",
-    "./transition/*.css": "./lib/client/styles/transition/*.css",
+    "./colors.css": "./dist/client/styles/colors.css",
+    "./message.css": "./dist/client/styles/message.css",
+    "./normalize.css": "./dist/client/styles/normalize.css",
+    "./sr-only.css": "./dist/client/styles/sr-only.css",
+    "./transition/*.css": "./dist/client/styles/transition/*.css",
     "./scss/color": {
       "sass": "./scss/functions/_color.scss"
     },
@@ -76,8 +76,8 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./lib",
-    "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
+    "clean": "rimraf --glob ./dist",
+    "style": "sass src:dist --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
     "@vue/shared": "^3.5.29",
