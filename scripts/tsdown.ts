@@ -182,7 +182,7 @@ export const tsdownConfig = (
       onlyAllowBundle: onlyAllowBundle,
     },
     fixedExtension: false,
-    publint: isProduction &&  publint,
+    publint: isProduction && publint,
     copy: copy.map(([from, to = dirname(from)]) => ({
       from: `./src/${from}`,
       to: `./dist/${to}`,
