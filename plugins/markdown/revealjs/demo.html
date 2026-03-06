@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.26" />
+    <style>
+      :root {
+        --vp-c-bg: #fff;
+      }
+
+      [data-theme='dark'] {
+        --vp-c-bg: #1b1b1f;
+      }
+
+      html,
+      body {
+        background-color: var(--vp-c-bg);
+      }
+    </style>
+    <script>
+      const useChoice = localStorage.getItem('vuepress-color-scheme')
+      const systemStatus =
+        'matchMedia' in window
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : false
+
+      if (useChoice === 'light') {
+        document.documentElement.dataset.theme = 'light'
+      } else if (useChoice === 'dark' || systemStatus) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Slide Demo","image":["https://theme-hope-assets.vuejs.press/logo.svg"],"dateModified":"2025-01-10T18:07:54.000Z","author":[]}</script><meta property="og:url" content="https://ecosystem.vuejs.press/plugins/markdown/revealjs/demo.html"><meta property="og:site_name" content="VuePress Ecosystem"><meta property="og:title" content="Slide Demo"><meta property="og:type" content="article"><meta property="og:image" content="https://theme-hope-assets.vuejs.press/logo.svg"><meta property="og:locale" content="en-US"><meta property="og:locale:alternate" content="zh-CN"><meta property="og:updated_time" content="2025-01-10T18:07:54.000Z"><meta property="article:modified_time" content="2025-01-10T18:07:54.000Z"><link rel="alternate" hreflang="zh-cn" href="https://ecosystem.vuejs.press/zh/plugins/markdown/revealjs/demo.html"><link rel="alternate" type="application/atom+xml" href="https://ecosystem.vuejs.press/atom.xml" title="VuePress Ecosystem Atom Feed"><link rel="alternate" type="application/json" href="https://ecosystem.vuejs.press/feed.json" title="VuePress Ecosystem JSON Feed"><link rel="alternate" type="application/rss+xml" href="https://ecosystem.vuejs.press/rss.xml" title="VuePress Ecosystem RSS Feed"><link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="application-name" content="VuePress"><link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png"><link rel="mask-icon" href="/images/icons/safari-pinned-tab.svg" color="#3eaf7c"><meta name="theme-color" content="#3eaf7c"><title>Slide Demo | VuePress Ecosystem</title><meta name="description" content="VuePress official themes and plugins">
+    <link rel="preload" href="/assets/style-CcyhNUuk.css" as="style"><link rel="stylesheet" href="/assets/style-CcyhNUuk.css">
+    <link rel="modulepreload" href="/assets/app-Cc21XyOh.js"><link rel="modulepreload" href="/assets/demo.html-CQ42raIp.js">
+    <link rel="prefetch" href="/assets/index.html-CfRe42qW.js" as="script"><link rel="prefetch" href="/assets/index.html-2YFb-jrU.js" as="script"><link rel="prefetch" href="/assets/index.html-E7N4-b4G.js" as="script"><link rel="prefetch" href="/assets/index.html-mxYhQ1X-.js" as="script"><link rel="prefetch" href="/assets/guidelines.html-BW_D8Hci.js" as="script"><link rel="prefetch" href="/assets/index.html-B3hbvpOX.js" as="script"><link rel="prefetch" href="/assets/index.html-DGtu_gUm.js" as="script"><link rel="prefetch" href="/assets/llms.html-BFe1eZqw.js" as="script"><link rel="prefetch" href="/assets/index.html-DfiwRRdx.js" as="script"><link rel="prefetch" href="/assets/baidu-analytics.html-Ci2COQEq.js" as="script"><link rel="prefetch" href="/assets/clarity-analytics.html-8yItvPJi.js" as="script"><link rel="prefetch" href="/assets/google-analytics.html-DnWtiqKb.js" as="script"><link rel="prefetch" href="/assets/umami-analytics.html-CDfKaTJv.js" as="script"><link rel="prefetch" href="/assets/index.html-BGNe5Ujj.js" as="script"><link rel="prefetch" href="/assets/index.html-Dx46kgUX.js" as="script"><link rel="prefetch" href="/assets/active-header-links.html-DKzNMgSu.js" as="script"><link rel="prefetch" href="/assets/git.html-BV6_Jg9i.js" as="script"><link rel="prefetch" href="/assets/palette.html-WIjtlqBN.js" as="script"><link rel="prefetch" href="/assets/reading-time.html-B2uvotHO.js" as="script"><link rel="prefetch" href="/assets/rtl.html-ckJ0aJrW.js" as="script"><link rel="prefetch" href="/assets/theme-data.html-Bzx0rAeS.js" as="script"><link rel="prefetch" href="/assets/toc.html-DECrsmNO.js" as="script"><link rel="prefetch" href="/assets/index.html-CEBLQpSG.js" as="script"><link rel="prefetch" href="/assets/append-date.html-CxjYgaqK.js" as="script"><link rel="prefetch" href="/assets/links-check.html-DdUruNpx.js" as="script"><link rel="prefetch" href="/assets/markdown-container.html-DlN-5KHN.js" as="script"><link rel="prefetch" href="/assets/markdown-ext.html-CZP5cWBq.js" as="script"><link rel="prefetch" href="/assets/markdown-file-tree.html-DiKJhwdH.js" as="script"><link rel="prefetch" href="/assets/markdown-hint.html-CEYs-H_P.js" as="script"><link rel="prefetch" href="/assets/markdown-image.html-WMi6g7IZ.js" as="script"><link rel="prefetch" href="/assets/markdown-include.html-C_k85cl3.js" as="script"><link rel="prefetch" href="/assets/markdown-math.html-BD3Jaf7P.js" as="script"><link rel="prefetch" href="/assets/markdown-preview.html-c9LbmNdf.js" as="script"><link rel="prefetch" href="/assets/markdown-stylize.html-DsrkIFgZ.js" as="script"><link rel="prefetch" href="/assets/markdown-tab.html-CBeTKMKf.js" as="script"><link rel="prefetch" href="/assets/prismjs.html-DKye7MZF.js" as="script"><link rel="prefetch" href="/assets/shiki.html-Dufyt_Xa.js" as="script"><link rel="prefetch" href="/assets/index.html-DWkCfOvz.js" as="script"><link rel="prefetch" href="/assets/remove-pwa.html-nn80rsVx.js" as="script"><link rel="prefetch" href="/assets/index.html-DdA3_osj.js" as="script"><link rel="prefetch" href="/assets/back-to-top.html-emNqf5iM.js" as="script"><link rel="prefetch" href="/assets/catalog.html-NiqeYDz-.js" as="script"><link rel="prefetch" href="/assets/copy-code.html-B8ywk35R.js" as="script"><link rel="prefetch" href="/assets/copyright.html-BUI5K4Ob.js" as="script"><link rel="prefetch" href="/assets/icon.html-BUqqBU6C.js" as="script"><link rel="prefetch" href="/assets/medium-zoom.html-DRLLHs8o.js" as="script"><link rel="prefetch" href="/assets/notice.html-CbjtL3Bo.js" as="script"><link rel="prefetch" href="/assets/nprogress.html-IDneZZfI.js" as="script"><link rel="prefetch" href="/assets/photo-swipe.html-CQ06MAst.js" as="script"><link rel="prefetch" href="/assets/watermark.html-D5aSno8S.js" as="script"><link rel="prefetch" href="/assets/index.html-CAbSxeHq.js" as="script"><link rel="prefetch" href="/assets/docsearch.html-vKQLYZIW.js" as="script"><link rel="prefetch" href="/assets/guidelines.html-BKqW3dJa.js" as="script"><link rel="prefetch" href="/assets/meilisearch.html-BX_gF1qf.js" as="script"><link rel="prefetch" href="/assets/search.html-B00n7hbU.js" as="script"><link rel="prefetch" href="/assets/slimsearch.html-J0IS_c_o.js" as="script"><link rel="prefetch" href="/assets/index.html-CAtOlact.js" as="script"><link rel="prefetch" href="/assets/index.html-BwcvspRG.js" as="script"><link rel="prefetch" href="/assets/auto-frontmatter.html-BXgGWztL.js" as="script"><link rel="prefetch" href="/assets/cache.html-CKestEum.js" as="script"><link rel="prefetch" href="/assets/google-tag-manager.html-2FHzbNDP.js" as="script"><link rel="prefetch" href="/assets/redirect.html-C0R0WzBJ.js" as="script"><link rel="prefetch" href="/assets/register-components.html-CZjElo7f.js" as="script"><link rel="prefetch" href="/assets/replace-assets.html-D7sWDFYp.js" as="script"><link rel="prefetch" href="/assets/index.html-DEEl-QVA.js" as="script"><link rel="prefetch" href="/assets/client.html-BP6NDQH6.js" as="script"><link rel="prefetch" href="/assets/shared.html-C9yr3t9M.js" as="script"><link rel="prefetch" href="/assets/style.html-B22cLlWQ.js" as="script"><link rel="prefetch" href="/assets/index.html-z3i5gtcI.js" as="script"><link rel="prefetch" href="/assets/components.html-V2CD7kXb.js" as="script"><link rel="prefetch" href="/assets/config.html-CaGdWdHz.js" as="script"><link rel="prefetch" href="/assets/extending.html-D5todPKh.js" as="script"><link rel="prefetch" href="/assets/frontmatter.html-CIVDId3y.js" as="script"><link rel="prefetch" href="/assets/locale.html-D1jzB98V.js" as="script"><link rel="prefetch" href="/assets/markdown.html-BVzgH0xL.js" as="script"><link rel="prefetch" href="/assets/plugin.html-UisT31Xg.js" as="script"><link rel="prefetch" href="/assets/styles.html-CeBiiEmn.js" as="script"><link rel="prefetch" href="/assets/index.html-TWJx-mbI.js" as="script"><link rel="prefetch" href="/assets/index.html-DGmEjBEd.js" as="script"><link rel="prefetch" href="/assets/guidelines.html-C1g8QD2L.js" as="script"><link rel="prefetch" href="/assets/index.html-B0jOXQDF.js" as="script"><link rel="prefetch" href="/assets/index.html-DSXA0cEE.js" as="script"><link rel="prefetch" href="/assets/config.html-DBLc1SkK.js" as="script"><link rel="prefetch" href="/assets/guide.html-DziquJYh.js" as="script"><link rel="prefetch" href="/assets/index.html-T1g76-v_.js" as="script"><link rel="prefetch" href="/assets/guide.html-DVrC67ya.js" as="script"><link rel="prefetch" href="/assets/index.html-6Ahf4mLV.js" as="script"><link rel="prefetch" href="/assets/channel.html-BRwll_Y5.js" as="script"><link rel="prefetch" href="/assets/config.html-B41H-W6J.js" as="script"><link rel="prefetch" href="/assets/frontmatter.html-49MA4nuQ.js" as="script"><link rel="prefetch" href="/assets/getter.html-Flgs4BI6.js" as="script"><link rel="prefetch" href="/assets/guide.html-BqK2i3mO.js" as="script"><link rel="prefetch" href="/assets/index.html-DTt41WM8.js" as="script"><link rel="prefetch" href="/assets/config.html-CEKnUm4J.js" as="script"><link rel="prefetch" href="/assets/guide.html-CLOgBj5P.js" as="script"><link rel="prefetch" href="/assets/index.html-D84IB_2y.js" as="script"><link rel="prefetch" href="/assets/chartjs.html-Ct723h1Z.js" as="script"><link rel="prefetch" href="/assets/echarts.html-C1fdAVC6.js" as="script"><link rel="prefetch" href="/assets/flowchart.html-BqyR1sdE.js" as="script"><link rel="prefetch" href="/assets/markmap.html-D9R-H7rm.js" as="script"><link rel="prefetch" href="/assets/mermaid.html-vGUmrmv_.js" as="script"><link rel="prefetch" href="/assets/plantuml.html-D8dvkYoR.js" as="script"><link rel="prefetch" href="/assets/index.html-BWJC5R8K.js" as="script"><link rel="prefetch" href="/assets/themes.html-BD4oQ2iB.js" as="script"><link rel="prefetch" href="/assets/index.html-BaGYMCwe.js" as="script"><link rel="prefetch" href="/assets/config.html-PowBqfQu.js" as="script"><link rel="prefetch" href="/assets/guide.html-B2aitN12.js" as="script"><link rel="prefetch" href="/assets/index.html-dK2-F2Hs.js" as="script"><link rel="prefetch" href="/assets/config.html-CjrT1RMt.js" as="script"><link rel="prefetch" href="/assets/guide.html-D01JeP-B.js" as="script"><link rel="prefetch" href="/assets/index.html-BB15vuys.js" as="script"><link rel="prefetch" href="/assets/config.html-CSkSYR6n.js" as="script"><link rel="prefetch" href="/assets/frontmatter.html-Duh5z22e.js" as="script"><link rel="prefetch" href="/assets/guide.html-DZ6eMe1M.js" as="script"><link rel="prefetch" href="/assets/bundler.html-227zAzK8.js" as="script"><link rel="prefetch" href="/assets/locales.html-Dr8x2Wo0.js" as="script"><link rel="prefetch" href="/assets/page.html-BvnNa1az.js" as="script"><link rel="prefetch" href="/assets/index.html-8mcYN4X7.js" as="script"><link rel="prefetch" href="/assets/llms.html-obLzaXzJ.js" as="script"><link rel="prefetch" href="/assets/index.html-PNCCv18I.js" as="script"><link rel="prefetch" href="/assets/baidu-analytics.html-DgvDF6De.js" as="script"><link rel="prefetch" href="/assets/clarity-analytics.html-NLzA9t9S.js" as="script"><link rel="prefetch" href="/assets/google-analytics.html-BOyi13oc.js" as="script"><link rel="prefetch" href="/assets/umami-analytics.html-UHF1REeS.js" as="script"><link rel="prefetch" href="/assets/index.html-2MHZgoUO.js" as="script"><link rel="prefetch" href="/assets/index.html-CKrNVGxX.js" as="script"><link rel="prefetch" href="/assets/active-header-links.html-DAOEmf1C.js" as="script"><link rel="prefetch" href="/assets/git.html-BVLbv5TI.js" as="script"><link rel="prefetch" href="/assets/palette.html-D4JxhFhl.js" as="script"><link rel="prefetch" href="/assets/reading-time.html-BdAqH8wW.js" as="script"><link rel="prefetch" href="/assets/rtl.html-M8DXDpdN.js" as="script"><link rel="prefetch" href="/assets/theme-data.html-B5PcvBUL.js" as="script"><link rel="prefetch" href="/assets/toc.html-D7g5MDBP.js" as="script"><link rel="prefetch" href="/assets/index.html-B-yY3QdX.js" as="script"><link rel="prefetch" href="/assets/back-to-top.html-Oi2eiFsl.js" as="script"><link rel="prefetch" href="/assets/catalog.html-BmsidAnY.js" as="script"><link rel="prefetch" href="/assets/copy-code.html-CyHmvuOi.js" as="script"><link rel="prefetch" href="/assets/copyright.html-B0QU1gw-.js" as="script"><link rel="prefetch" href="/assets/icon.html-B9yWpxlE.js" as="script"><link rel="prefetch" href="/assets/medium-zoom.html-CVsy_l9U.js" as="script"><link rel="prefetch" href="/assets/notice.html-BVY8c-Od.js" as="script"><link rel="prefetch" href="/assets/nprogress.html-N6Z1q7kz.js" as="script"><link rel="prefetch" href="/assets/photo-swipe.html-COzxmRab.js" as="script"><link rel="prefetch" href="/assets/watermark.html-C_4hhslC.js" as="script"><link rel="prefetch" href="/assets/index.html-wJVdNZLE.js" as="script"><link rel="prefetch" href="/assets/append-date.html-C1jnxh2l.js" as="script"><link rel="prefetch" href="/assets/links-check.html-B99psjok.js" as="script"><link rel="prefetch" href="/assets/markdown-container.html-DbArsjeo.js" as="script"><link rel="prefetch" href="/assets/markdown-ext.html-CXrW2ms0.js" as="script"><link rel="prefetch" href="/assets/markdown-file-tree.html-BDTrZ1la.js" as="script"><link rel="prefetch" href="/assets/markdown-hint.html-B1vCyWX1.js" as="script"><link rel="prefetch" href="/assets/markdown-image.html-BJ3zpC6x.js" as="script"><link rel="prefetch" href="/assets/markdown-include.html-CVBPR27Y.js" as="script"><link rel="prefetch" href="/assets/markdown-math.html-D9HRx8EY.js" as="script"><link rel="prefetch" href="/assets/markdown-preview.html-rbqBr1QI.js" as="script"><link rel="prefetch" href="/assets/markdown-stylize.html-BtJCCUNQ.js" as="script"><link rel="prefetch" href="/assets/markdown-tab.html-BtbtQTkZ.js" as="script"><link rel="prefetch" href="/assets/prismjs.html-BjAgmLFA.js" as="script"><link rel="prefetch" href="/assets/shiki.html-ZWSfRAR-.js" as="script"><link rel="prefetch" href="/assets/index.html-DpOnMCV-.js" as="script"><link rel="prefetch" href="/assets/remove-pwa.html-CZdL0mwT.js" as="script"><link rel="prefetch" href="/assets/index.html-CurMkhLv.js" as="script"><link rel="prefetch" href="/assets/docsearch.html-BVy7ct7j.js" as="script"><link rel="prefetch" href="/assets/guidelines.html-67Sigaxe.js" as="script"><link rel="prefetch" href="/assets/meilisearch.html-Ch6GBioU.js" as="script"><link rel="prefetch" href="/assets/search.html-IaE_V2du.js" as="script"><link rel="prefetch" href="/assets/slimsearch.html-DIc6s8sX.js" as="script"><link rel="prefetch" href="/assets/index.html-wqaVwjbG.js" as="script"><link rel="prefetch" href="/assets/index.html-BOS3PJ9l.js" as="script"><link rel="prefetch" href="/assets/auto-frontmatter.html-B3iF_Oms.js" as="script"><link rel="prefetch" href="/assets/cache.html-Bnn9YUep.js" as="script"><link rel="prefetch" href="/assets/google-tag-manager.html-wsYFnyuS.js" as="script"><link rel="prefetch" href="/assets/redirect.html-YThCmDbt.js" as="script"><link rel="prefetch" href="/assets/register-components.html-BYPooYOU.js" as="script"><link rel="prefetch" href="/assets/replace-assets.html-Ci9RAprr.js" as="script"><link rel="prefetch" href="/assets/index.html-BlerS0l_.js" as="script"><link rel="prefetch" href="/assets/components.html-BbYW7jlU.js" as="script"><link rel="prefetch" href="/assets/config.html-DkgNlmKb.js" as="script"><link rel="prefetch" href="/assets/extending.html-DH_c1nZo.js" as="script"><link rel="prefetch" href="/assets/frontmatter.html-DoAUPRlx.js" as="script"><link rel="prefetch" href="/assets/locale.html-2vQ7bFOn.js" as="script"><link rel="prefetch" href="/assets/markdown.html-DwmaNTCV.js" as="script"><link rel="prefetch" href="/assets/plugin.html-BcUPdGqv.js" as="script"><link rel="prefetch" href="/assets/styles.html-CTJcWyUF.js" as="script"><link rel="prefetch" href="/assets/index.html-EVD31KIW.js" as="script"><link rel="prefetch" href="/assets/client.html-EuatwFmO.js" as="script"><link rel="prefetch" href="/assets/shared.html-DOCnek0Q.js" as="script"><link rel="prefetch" href="/assets/style.html-Bmaj2k3v.js" as="script"><link rel="prefetch" href="/assets/index.html-DkA_C26O.js" as="script"><link rel="prefetch" href="/assets/config.html-D-8NS-x3.js" as="script"><link rel="prefetch" href="/assets/index.html-CZNB8jx4.js" as="script"><link rel="prefetch" href="/assets/config.html-BC19RS8m.js" as="script"><link rel="prefetch" href="/assets/index.html-CGzbXg6z.js" as="script"><link rel="prefetch" href="/assets/config.html-C5fhJtZx.js" as="script"><link rel="prefetch" href="/assets/index.html-IsO-Az10.js" as="script"><link rel="prefetch" href="/assets/config.html-Cow254mF.js" as="script"><link rel="prefetch" href="/assets/index.html-DowY1pF4.js" as="script"><link rel="prefetch" href="/assets/config.html-B6yiOBwf.js" as="script"><link rel="prefetch" href="/assets/guide.html-xDZTjA0T.js" as="script"><link rel="prefetch" href="/assets/index.html-DxNLjZwF.js" as="script"><link rel="prefetch" href="/assets/guide.html-BLyQ1N0o.js" as="script"><link rel="prefetch" href="/assets/index.html-DjMGpwsE.js" as="script"><link rel="prefetch" href="/assets/channel.html-nL3ywZNF.js" as="script"><link rel="prefetch" href="/assets/config.html-BUCfnRCW.js" as="script"><link rel="prefetch" href="/assets/frontmatter.html-CUyPulMG.js" as="script"><link rel="prefetch" href="/assets/getter.html-CEdosgEQ.js" as="script"><link rel="prefetch" href="/assets/guide.html-5jhEeHB3.js" as="script"><link rel="prefetch" href="/assets/index.html-CBC--eKR.js" as="script"><link rel="prefetch" href="/assets/config.html-C0APIwv2.js" as="script"><link rel="prefetch" href="/assets/guide.html-ClOni00A.js" as="script"><link rel="prefetch" href="/assets/index.html-D_lBmUGh.js" as="script"><link rel="prefetch" href="/assets/chartjs.html-N6ZTu1j9.js" as="script"><link rel="prefetch" href="/assets/echarts.html-BYbylnTC.js" as="script"><link rel="prefetch" href="/assets/flowchart.html-bWfYVA7l.js" as="script"><link rel="prefetch" href="/assets/markmap.html-C2FJlW_8.js" as="script"><link rel="prefetch" href="/assets/mermaid.html-CxtyYUuz.js" as="script"><link rel="prefetch" href="/assets/plantuml.html-C4keXre7.js" as="script"><link rel="prefetch" href="/assets/index.html-BHuEDXPi.js" as="script"><link rel="prefetch" href="/assets/demo.html-Di27BNIM.js" as="script"><link rel="prefetch" href="/assets/themes.html-JjKE6MjZ.js" as="script"><link rel="prefetch" href="/assets/index.html-U3Vb0HEH.js" as="script"><link rel="prefetch" href="/assets/config.html-BOw0mXEF.js" as="script"><link rel="prefetch" href="/assets/guide.html-D2_WMwYO.js" as="script"><link rel="prefetch" href="/assets/index.html-C5opAtIK.js" as="script"><link rel="prefetch" href="/assets/config.html-B_ts9fN1.js" as="script"><link rel="prefetch" href="/assets/guide.html-BSgcwTBM.js" as="script"><link rel="prefetch" href="/assets/index.html-CwUcZlZB.js" as="script"><link rel="prefetch" href="/assets/config.html-HGjjRdDM.js" as="script"><link rel="prefetch" href="/assets/frontmatter.html-CNBw7Jyf.js" as="script"><link rel="prefetch" href="/assets/guide.html-Ct5uNUsr.js" as="script"><link rel="prefetch" href="/assets/bundler.html-Wod_oD_S.js" as="script"><link rel="prefetch" href="/assets/locales.html-T6822GQr.js" as="script"><link rel="prefetch" href="/assets/page.html-B0PEQGjJ.js" as="script"><link rel="prefetch" href="/assets/index.html-DJ8_k2vn.js" as="script"><link rel="prefetch" href="/assets/config.html-Ck1B0zAs.js" as="script"><link rel="prefetch" href="/assets/index.html-B6DCkaJw.js" as="script"><link rel="prefetch" href="/assets/config.html-DAaYtAmh.js" as="script"><link rel="prefetch" href="/assets/index.html-55VoUHZC.js" as="script"><link rel="prefetch" href="/assets/config.html-v-D71-q1.js" as="script"><link rel="prefetch" href="/assets/index.html-BQekLXrs.js" as="script"><link rel="prefetch" href="/assets/config.html-Bh1bhuLR.js" as="script"><link rel="prefetch" href="/assets/404.html-CsVAS5_u.js" as="script"><link rel="prefetch" href="/assets/index.html-CbnDubsM.js" as="script"><link rel="prefetch" href="/assets/index.html-CAoxqpZI.js" as="script"><link rel="prefetch" href="/assets/giscus-CpJ6lC06.js" as="script"><link rel="prefetch" href="/assets/index-BuqEEp8M.js" as="script"><link rel="prefetch" href="/assets/auto-fmlfkwi0.js" as="script"><link rel="prefetch" href="/assets/index-DDRuxRDv.js" as="script"><link rel="prefetch" href="/assets/flowchart-G1WAoCnn.js" as="script"><link rel="prefetch" href="/assets/index-Cu1I_Iap.js" as="script"><link rel="prefetch" href="/assets/index-8KGZosBr.js" as="script"><link rel="prefetch" href="/assets/index-BPAdBlYL.js" as="script"><link rel="prefetch" href="/assets/mermaid.esm.min-CrYN24PG.js" as="script"><link rel="prefetch" href="/assets/NpmBadge-ggpvx1f6.js" as="script"><link rel="prefetch" href="/assets/reveal.esm-IL6PhzrQ.js" as="script"><link rel="prefetch" href="/assets/markdown.esm-CSCL3NJe.js" as="script"><link rel="prefetch" href="/assets/highlight.esm-CJk6ev8u.js" as="script"><link rel="prefetch" href="/assets/math.esm-BmZXia10.js" as="script"><link rel="prefetch" href="/assets/search.esm-D94zHP-f.js" as="script"><link rel="prefetch" href="/assets/notes.esm-CrtRLS_3.js" as="script"><link rel="prefetch" href="/assets/zoom.esm-u92KjI0g.js" as="script"><link rel="prefetch" href="/assets/index-B7Sp0Yh8.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="vp-reveal-page"><div><div class="vp-reveal"><div class="reveal reveal-viewport" id="v-0"><div class="slides"><section data-markdown><script type="text/template">
+<!-- .slide: data-transition="slide" -->
+
+## Slide Demo
+
+<!-- .element: class="r-fit-text" -->
+
+A simple slide demo and useful hints.
+
+<!-- .element: class="r-fit-text" -->
+
+> By Mr.Hope. Please scroll mouse wheel down to the next slide
+
+---
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## Marking Slides
+
+<!-- .element: class="r-fit-text" -->
+
+[👇](#/1/1)
+
+--
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## Marking Slides
+
+<!-- .element: class="r-fit-text" -->
+
+Use `---` to mark horizontal slides
+
+<!-- .element: class="fragment fade-in" -->
+
+Use `--` to separate vertical slides in a horizontal slide.
+
+<!-- .element: class="fragment fade-in" -->
+
+Use `<!-- .slide: ... -->` to add attributes to slide
+
+<!-- .element: class="fragment fade-in" -->
+
+Use `<!-- .element: ... -->` to add attributes to the previous HTML element
+
+<!-- .element: class="fragment fade-in" -->
+
+---
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## Markdown
+
+<!-- .element: class="r-fit-text" -->
+
+You can use all kinds of markup in slides.
+
+<!-- .element: class="r-fit-text" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Markdown
+
+You can use all kinds of markup in slides.
+
+### This is an H3
+
+Headings will transform to UPPERCASE by default.
+
+Here is paragraph with some **bold**, _italic_, ~~strike-through~~ text and a [link](https://mister-hope.com), and it can auto break itself, so you don't need to worry the length.
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Markdown
+
+You can use all kinds of markup in slides.
+
+List is `inline-block` by default.
+
+- Item
+- Item
+- Item
+
+1. Item 1
+1. Item 2
+1. Item 3
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Markdown
+
+You can use all kinds of markup in slides.
+
+Code block will get auto highlight if you enable `highlight` plugin.
+
+```js
+const a = 1
+```
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Markdown
+
+You can use all kinds of markup in slides.
+
+You can also write math equation using tex syntax if you enable `math` plugin.
+
+$$
+J(\theta_0,\theta_1) = \sum_{i=0}
+$$
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Markdown
+
+You can use all kinds of markup in slides.
+
+⚠**Note**: Table, hr and other nonstandard Markdown syntax is not supported.
+
+---
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## Layout
+
+<!-- .element: class="r-fit-text" -->
+
+--
+
+<!-- .slide: data-auto-animate  -->
+
+## Layout
+
+<!-- .element: class="r-fit-text" -->
+
+👆 The `r-fit-text` class makes text as large as possible without overflowing the slide.
+
+--
+
+<!-- .slide: data-auto-animate  -->
+
+## Layout
+
+![Logo](https://theme-hope-assets.vuejs.press/logo.svg)
+
+<!-- .element: class="r-stretch" -->
+
+👆 The `r-stretch` class helper lets you resize an element, like an image or video, to cover the remaining vertical space in a slide.
+
+--
+
+<!-- .slide: data-auto-animate data-background-color="rgb(70, 70, 255)" -->
+
+## Layout
+
+### Background
+
+Custom background by adding `data-background` attribute to slide.
+
+---
+
+<!-- .slide: data-auto-animate -->
+
+## Fragment
+
+<!-- .element: class="r-fit-text" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Fragment
+
+<!-- .element: class="r-fit-text" -->
+
+Fragments are used to highlight or incrementally reveal individual elements on a slide.
+
+Add `fragment` and animation class to element.
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Fragment
+
+### Animation class
+
+- `fade-in`
+<!-- .element: class="fragment fade-in" -->
+
+- `fade-out`
+<!-- .element: class="fragment fade-out" -->
+
+- `fade-up`
+<!-- .element: class="fragment fade-up" -->
+
+<!-- list break -->
+
+- `fade-down`
+<!-- .element: class="fragment fade-down" -->
+
+- `fade-left`
+<!-- .element: class="fragment fade-left" -->
+
+- `fade-right`
+<!-- .element: class="fragment fade-right" -->
+
+<!-- list break -->
+
+- `fade-in-then-out`
+<!-- .element: class="fragment fade-in-then-out" -->
+
+- `fade-in-then-semi-out`
+<!-- .element: class="fragment fade-in-then-semi-out" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Fragment
+
+### Animation class
+
+- `grow`
+<!-- .element: class="fragment grow" -->
+
+- `shrink`
+<!-- .element: class="fragment shrink" -->
+
+- `strike`
+<!-- .element: class="fragment strike" -->
+
+<!-- list break -->
+
+- `highlight-red`
+<!-- .element: class="fragment highlight-red" -->
+
+- `highlight-green`
+<!-- .element: class="fragment highlight-green" -->
+
+- `highlight-blue`
+<!-- .element: class="fragment highlight-blue" -->
+
+<!-- list break -->
+
+- `highlight-current-red`
+<!-- .element: class="fragment highlight-current-red" -->
+
+- `highlight-current-green`
+<!-- .element: class="fragment highlight-current-green" -->
+
+- `highlight-current-blue`
+<!-- .element: class="fragment highlight-current-blue" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Fragment
+
+### Multiple fragments
+
+Multiple fragments can be applied to the same element sequentially by wrapping it
+
+<span class="fragment fade-in">
+  <span class="fragment highlight-red">
+    <span class="fragment fade-out">
+      Fade in > Turn red > Fade out
+    </span>
+  </span>
+</span>
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Fragment
+
+### Order
+
+Order can be changed using the `data-fragment-index` attribute.
+
+Multiple elements can appear at the same index.
+
+- Appears last
+<!-- .element: class="fragment" data-fragment-index="3"-->
+
+- Appears second
+<!-- .element: class="fragment" data-fragment-index="2"-->
+
+<!-- list break -->
+
+- Appears first
+<!-- .element: class="fragment" data-fragment-index="1"-->
+
+- Appears second
+<!-- .element: class="fragment" data-fragment-index="2"-->
+
+---
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## Transition
+
+<!-- .element: class="r-fit-text" -->
+
+--
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## Transition
+
+<!-- .element: class="r-fit-text" -->
+
+Transition can be changed by setting the `transition` config option globally or `data-transition` attribute on slide.
+
+Possible values:
+
+- none
+- fade
+- slide
+
+<!-- list break -->
+
+- convex
+- concave
+- zoom
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Transition
+
+<!-- .element: class="r-fit-text" -->
+
+### Auto animate
+
+`data-auto-animate` can be added on nearby slides to make an animation on unchanged elements.
+
+---
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## Functions
+
+<!-- .element: class="r-fit-text" -->
+
+--
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## Functions
+
+<!-- .element: class="r-fit-text" -->
+
+### Code
+
+By enabling `highlight` plugin, you can highlight code blocks.
+
+You can use `[a-b|c-d]` syntax to highlight lines by steps.
+
+```js [1-2|3|4]
+const a = 1
+const b = 2
+const c = (x) => 1 + 2 + x
+c(3)
+```
+
+--
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## Functions
+
+<!-- .element: class="r-fit-text" -->
+
+### Overview
+
+Press `Esc` or `O` to enter overview mode when the slide is active
+
+--
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## Functions
+
+<!-- .element: class="r-fit-text" -->
+
+### Full Screen
+
+Press `F` or `F11` to enter full-screen when the slide is active
+
+--
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## Functions
+
+<!-- .element: class="r-fit-text" -->
+
+### Zoom
+
+Hold down the `alt` key (`ctrl` in Linux) and click on any element to zoom towards it.
+
+Click again to zoom back out.
+
+---
+
+<!-- .element: class="r-fit-text" -->
+
+## The End
+</script></section></div></div><div style="display:flex;align-items:center;justify-content:center;height:400px;" class="reveal-loading"><span style="--loading-icon: url(&quot;data:image/svg+xml;charset=utf8,%3Csvg preserveAspectRatio=%22xMidYMid%22 viewBox=%2225 25 50 50%22%3E%3CanimateTransform attributeName=%22transform%22 type=%22rotate%22 dur=%222s%22 keyTimes=%220;1%22 repeatCount=%22indefinite%22 values=%220;360%22%3E%3C/animateTransform%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2220%22 fill=%22none%22 stroke=%22currentColor%22 stroke-width=%224%22 stroke-linecap=%22round%22%3E%3Canimate attributeName=%22stroke-dasharray%22 dur=%221.5s%22 keyTimes=%220;0.5;1%22 repeatCount=%22indefinite%22 values=%221,200;90,200;1,200%22%3E%3C/animate%3E%3Canimate attributeName=%22stroke-dashoffset%22 dur=%221.5s%22 keyTimes=%220;0.5;1%22 repeatCount=%22indefinite%22 values=%220;-35px;-125px%22%3E%3C/animate%3E%3C/circle%3E%3C/svg%3E&quot;);--icon-size: 48px;display: inline-block;width: var(--icon-size);height: var(--icon-size);background-color: currentcolor;-webkit-mask-image: var(--loading-icon);mask-image: var(--loading-icon)"></span></div></div></div><div class="vp-reveal-menu"><button type="button" class="menu-button"><span class="icon"></span></button><button type="button" class="back-button"><svg xmlns="http://www.w3.org/2000/svg" class="back-icon" viewBox="0 0 1024 1024" fill="currentColor"><path d="M1014.749 449.156v125.688H260.626l345.64 345.64-89.239 89.237L19.307 512l497.72-497.721 89.238 89.238-345.64 345.64h754.124z"></path></svg></button><button type="button" class="home-button"><svg xmlns="http://www.w3.org/2000/svg" class="icon home-icon" viewBox="0 0 1024 1024" fill="currentColor"><path d="M780.106 420.978L506.994 147.866 233.882 420.978h.045v455.11H780.06v-455.11h.046zm90.977 90.976V876.09a91.022 91.022 0 01-91.023 91.022H233.927a91.022 91.022 0 01-91.022-91.022V511.954l-67.22 67.175-64.307-64.307 431.309-431.31c35.498-35.498 93.115-35.498 128.614 0l431.309 431.31-64.307 64.307L871.083 512z"></path></svg></button></div></div><!--[--><!----><!--[--><!--]--><!--]--><!--]--></div>
+    <script type="module" src="/assets/app-Cc21XyOh.js" defer></script>
+  </body>
+</html>
