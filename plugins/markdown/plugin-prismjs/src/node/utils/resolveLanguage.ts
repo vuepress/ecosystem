@@ -16,6 +16,8 @@ let languagesMap: LanguagesMap | null = null
 
 /**
  * Lazy generate languages map
+ *
+ * @returns Languages map
  */
 const getLanguagesMap = (): LanguagesMap =>
   (languagesMap ??= Object.values(languages).reduce<LanguagesMap>(

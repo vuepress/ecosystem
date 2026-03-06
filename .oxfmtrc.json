@@ -2,7 +2,7 @@
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "ignorePatterns": [
     "coverage/",
-    "packages/*/*/lib/",
+    "**/dist/",
     "**/.vuepress/.cache",
     "**/.vuepress/.temp",
     "**/.vuepress/dist"
@@ -11,7 +11,7 @@
   "semi": false,
   "printWidth": 80,
   "quoteProps": "consistent",
-  "experimentalSortPackageJson": {
+  "sortPackageJson": {
     "sortScripts": true
   }
 }

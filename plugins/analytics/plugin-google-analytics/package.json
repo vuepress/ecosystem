@@ -21,18 +21,18 @@
     "directory": "plugins/analytics/plugin-google-analytics"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "type": "module",
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./lib/node/index.d.ts",
-      "default": "./lib/node/index.js"
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.js"
     },
     "./client": {
-      "types": "./lib/client/index.d.ts",
-      "default": "./lib/client/index.js"
+      "types": "./dist/client/index.d.ts",
+      "default": "./dist/client/index.js"
     },
     "./package.json": "./package.json"
   },
@@ -41,7 +41,7 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./lib"
+    "clean": "rimraf --glob ./dist"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

@@ -23,10 +23,10 @@
     "directory": "tools/vp-update"
   },
   "bin": {
-    "vp-update": "./lib/index.js"
+    "vp-update": "./dist/index.js"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "type": "module",
   "sideEffects": false,
@@ -38,7 +38,7 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./lib"
+    "clean": "rimraf --glob ./dist"
   },
   "dependencies": {
     "commander": "^14.0.3",

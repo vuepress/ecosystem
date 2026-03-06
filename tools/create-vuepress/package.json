@@ -24,16 +24,16 @@
     "directory": "tools/create-vuepress"
   },
   "bin": {
-    "create-vuepress": "./lib/index.js"
+    "create-vuepress": "./dist/index.js"
   },
   "files": [
-    "lib",
+    "dist",
     "template"
   ],
   "type": "module",
   "sideEffects": false,
   "exports": {
-    ".": "./lib/index.js",
+    ".": "./dist/index.js",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -41,7 +41,7 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./lib"
+    "clean": "rimraf --glob ./dist"
   },
   "dependencies": {
     "@inquirer/prompts": "^8.3.0",

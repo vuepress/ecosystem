@@ -26,14 +26,14 @@
     "directory": "plugins/tools/plugin-replace-assets"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "type": "module",
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./lib/node/index.d.ts",
-      "default": "./lib/node/index.js"
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.js"
     },
     "./package.json": "./package.json"
   },
@@ -42,7 +42,7 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./lib"
+    "clean": "rimraf --glob ./dist"
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
@@ -50,7 +50,7 @@
     "unplugin": "^3.0.0"
   },
   "devDependencies": {
-    "webpack": "^5.105.3"
+    "webpack": "^5.105.4"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

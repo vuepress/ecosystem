@@ -13,8 +13,8 @@ import type { PwaEvent } from './usePwaEvent.js'
 export const useRegisterSW = async (
   serviceWorkerPath: string,
   event: PwaEvent,
-): Promise<void> =>
-  registerSW(withBase(serviceWorkerPath), {
+): Promise<void> => {
+  await registerSW(withBase(serviceWorkerPath), {
     ready(registration) {
       event.emit('ready', registration)
     },
@@ -49,3 +49,4 @@ export const useRegisterSW = async (
       event.emit('error', err)
     },
   })
+}

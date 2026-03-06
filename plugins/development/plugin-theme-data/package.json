@@ -20,18 +20,18 @@
     "directory": "plugins/development/plugin-theme-data"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "type": "module",
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./lib/node/index.d.ts",
-      "default": "./lib/node/index.js"
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.js"
     },
     "./client": {
-      "types": "./lib/client/index.d.ts",
-      "default": "./lib/client/index.js"
+      "types": "./dist/client/index.d.ts",
+      "default": "./dist/client/index.js"
     },
     "./package.json": "./package.json"
   },
@@ -40,8 +40,8 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./lib",
-    "copy": "cpx \"src/**/*.d.ts\" lib"
+    "clean": "rimraf --glob ./dist",
+    "copy": "cpx \"src/**/*.d.ts\" dist"
   },
   "dependencies": {
     "@vue/devtools-api": "^8.0.7",

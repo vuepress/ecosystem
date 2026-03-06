@@ -3,12 +3,16 @@
   "extends": ["./.oxlintrc.base.json"],
   "ignorePatterns": [
     "coverage/",
-    "packages/*/*/lib/",
+    "**/dist/",
     "template/",
     "**/tests/__fixtures__/"
   ],
+  "options": {
+    "typeAware": true,
+    "typeCheck": true
+  },
   // disable jsdoc currently
-  "plugins": ["typescript", "oxc", "import", "promise", "unicorn"],
+  "plugins": ["typescript", "jsdoc", "oxc", "import", "promise", "unicorn"],
   "rules": {
     // complex states may be needed for some functions
     "max-params": ["warn", 5],

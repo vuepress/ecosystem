@@ -6,7 +6,7 @@ ignoreFiles:
   - .temp/
   - '**/__fixtures__/**'
   - node_modules/
-  - '**/lib/**/'
+  - '**/dist/**/'
   - '**/*.module.scss'
   - '**/empty.scss'
 

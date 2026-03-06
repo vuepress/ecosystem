@@ -5,7 +5,7 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 const styleDir = path.resolve(__dirname, '../src/client/styles')
 const themeDir = path.resolve(styleDir, 'themes')
-const outputDir = path.resolve(__dirname, '../lib/client/styles')
+const outputDir = path.resolve(__dirname, '../dist/client/styles')
 
 const themeFiles = fs.readdirSync(themeDir)
 
