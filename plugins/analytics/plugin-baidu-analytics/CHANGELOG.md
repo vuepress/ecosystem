@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.125](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.124...v2.0.0-rc.125) (2026-03-06)
+
+**Note:** Version bump only for package @vuepress/plugin-baidu-analytics
+
 # [2.0.0-rc.124](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.123...v2.0.0-rc.124) (2026-03-02)
 
 **Note:** Version bump only for package @vuepress/plugin-baidu-analytics
