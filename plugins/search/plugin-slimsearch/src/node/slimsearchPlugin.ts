@@ -3,8 +3,8 @@ import {
   addViteSsrNoExternal,
   fromEntries,
   getFullLocaleConfig,
+  getSharedWatcher,
 } from '@vuepress/helper'
-import { watch } from 'chokidar'
 import type { PluginFunction } from 'vuepress/core'
 
 import type { SearchIndexStore } from '../shared/index.js'
@@ -99,22 +99,34 @@ export const slimsearchPlugin =
 
         if (hotReload) {
           // This ensure the page is generated or updated
-          const searchIndexWatcher = watch('pages', {
+          const searchIndexWatcher = getSharedWatcher('pages', {
             cwd: app.dir.temp(),
             ignoreInitial: true,
-            // only watch vue files
-            ignored: (path, stats) =>
-              Boolean(stats?.isFile() && !path.endsWith('.vue')),
           })
 
           searchIndexWatcher.on('add', (path) => {
-            void updateSearchIndex(app, options, searchIndexStore!, store, path)
+            if (path.endsWith('.vue'))
+              {void updateSearchIndex(
+                app,
+                options,
+                searchIndexStore!,
+                store,
+                path,
+              )}
           })
           searchIndexWatcher.on('change', (path) => {
-            void updateSearchIndex(app, options, searchIndexStore!, store, path)
+            if (path.endsWith('.vue'))
+              {void updateSearchIndex(
+                app,
+                options,
+                searchIndexStore!,
+                store,
+                path,
+              )}
           })
           searchIndexWatcher.on('unlink', (path) => {
-            void removeSearchIndex(app, searchIndexStore!, store, path)
+            if (path.endsWith('.vue'))
+              void removeSearchIndex(app, searchIndexStore!, store, path)
           })
 
           watchers.push(searchIndexWatcher)

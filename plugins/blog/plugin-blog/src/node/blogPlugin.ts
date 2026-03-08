@@ -1,5 +1,8 @@
-import { addViteSsrNoExternal, getPageExcerpt } from '@vuepress/helper'
-import { watch } from 'chokidar'
+import {
+  addViteSsrNoExternal,
+  getPageExcerpt,
+  getSharedWatcher,
+} from '@vuepress/helper'
 import type { Page, PluginFunction } from 'vuepress/core'
 import {
   createPage,
@@ -183,12 +186,9 @@ export const blogPlugin =
           'hotReload' in options ? options.hotReload : app.env.isDebug
 
         if (hotReload) {
-          const pageDataWatcher = watch('pages', {
+          const pageDataWatcher = getSharedWatcher('pages', {
             cwd: app.dir.temp(),
             ignoreInitial: true,
-            // only watch js files
-            ignored: (path, stats) =>
-              Boolean(stats?.isFile() && !path.endsWith('.js')),
           })
 
           const updateBlog = async (): Promise<void> => {
@@ -270,14 +270,14 @@ export const blogPlugin =
             if (app.env.isDebug) logger.info('temp file updated')
           }
 
-          pageDataWatcher.on('add', () => {
-            void updateBlog()
+          pageDataWatcher.on('add', (filePath) => {
+            if (filePath.endsWith('.js')) void updateBlog()
           })
-          pageDataWatcher.on('change', () => {
-            void updateBlog()
+          pageDataWatcher.on('change', (filePath) => {
+            if (filePath.endsWith('.js')) void updateBlog()
           })
-          pageDataWatcher.on('unlink', () => {
-            void updateBlog()
+          pageDataWatcher.on('unlink', (filePath) => {
+            if (filePath.endsWith('.js')) void updateBlog()
           })
 
           watchers.push(pageDataWatcher)

@@ -83,6 +83,7 @@
     "@vue/shared": "^3.5.29",
     "@vueuse/core": "catalog:",
     "cheerio": "^1.2.0",
+    "chokidar": "catalog:",
     "fflate": "^0.8.2",
     "gray-matter": "^4.0.3",
     "vue": "catalog:"
