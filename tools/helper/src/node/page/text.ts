@@ -1,3 +1,4 @@
+// oxlint-disable-next-line vue/prefer-import-from-vue
 import { isHTMLTag } from '@vue/shared'
 import type { AnyNode } from 'domhandler'
 import type { App, Page } from 'vuepress/core'

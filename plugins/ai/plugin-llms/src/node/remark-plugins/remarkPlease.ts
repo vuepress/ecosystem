@@ -63,7 +63,7 @@ export const remarkPlease =
           )
             break
 
-          closeIndex++
+          closeIndex += 1
         }
 
         if (closeIndex < parent.children.length) {

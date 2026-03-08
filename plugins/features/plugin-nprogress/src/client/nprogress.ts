@@ -60,6 +60,7 @@ const addStyle = (() => {
 
     let index = cssPrefixes.length
 
+    // oxlint-disable-next-line no-plusplus
     while (index--) {
       const vendorName = `${cssPrefixes[index]}${capName}`
 

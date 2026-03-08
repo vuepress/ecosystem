@@ -45,11 +45,11 @@ importers:
         specifier: ^20.4.3
         version: 20.4.3
       '@lerna-lite/cli':
-        specifier: ^4.11.3
-        version: 4.11.3(@lerna-lite/publish@4.11.3(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@lerna-lite/version@4.11.3(@lerna-lite/publish@4.11.3(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)
+        specifier: ^4.11.4
+        version: 4.11.4(@lerna-lite/publish@4.11.4(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@lerna-lite/version@4.11.4(@lerna-lite/publish@4.11.4(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)
       '@lerna-lite/publish':
-        specifier: ^4.11.3
-        version: 4.11.3(@types/node@25.3.5)(conventional-commits-filter@5.0.0)
+        specifier: ^4.11.4
+        version: 4.11.4(@types/node@25.3.5)(conventional-commits-filter@5.0.0)
       '@types/node':
         specifier: ^25.3.5
         version: 25.3.5
@@ -74,6 +74,12 @@ importers:
       nano-staged:
         specifier: ^0.9.0
         version: 0.9.0
+      npm-check-updates:
+        specifier: ^19.6.3
+        version: 19.6.3
+      oxc-config-hope:
+        specifier: ^0.0.5
+        version: 0.0.5(oxfmt@0.36.0)(oxlint-tsgolint@0.16.0)(oxlint@1.51.0(oxlint-tsgolint@0.16.0))
       oxfmt:
         specifier: 0.36.0
         version: 0.36.0
@@ -237,8 +243,8 @@ importers:
         specifier: 2.1.0
         version: 2.1.0(echarts@6.0.0)
       katex:
-        specifier: 0.16.35
-        version: 0.16.35
+        specifier: 0.16.37
+        version: 0.16.37
       sass-embedded:
         specifier: 'catalog:'
         version: 1.97.3
@@ -979,7 +985,7 @@ importers:
         version: 4.1.1
       '@mdit/plugin-katex-slim':
         specifier: ^0.26.1
-        version: 0.26.1(katex@0.16.35)(markdown-it@14.1.1)
+        version: 0.26.1(katex@0.16.37)(markdown-it@14.1.1)
       '@mdit/plugin-mathjax-slim':
         specifier: ^0.26.1
         version: 0.26.1(@mathjax/mathjax-newcm-font@4.1.1)(@mathjax/src@4.1.1)(markdown-it@14.1.1)
@@ -991,7 +997,7 @@ importers:
         version: link:../../../tools/helper
       katex:
         specifier: ^0.16.21
-        version: 0.16.35
+        version: 0.16.37
       vue:
         specifier: 'catalog:'
         version: 3.5.29(typescript@5.9.3)
@@ -1765,8 +1771,8 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0
 
-  '@babel/helper-define-polyfill-provider@0.6.6':
-    resolution: {integrity: sha512-mOAsxeeKkUKayvZR3HeTYD/fICpCPLJrU5ZjelT/PA6WHtNDBOE436YiaEUvHN454bRM3CebhDsIpieCc4texA==}
+  '@babel/helper-define-polyfill-provider@0.6.7':
+    resolution: {integrity: sha512-6Fqi8MtQ/PweQ9xvux65emkLQ83uB+qAVtfHkC9UodyHMIZdxNI01HjLCLUtybElp2KY2XNE0nOgyP1E1vXw9w==}
     peerDependencies:
       '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
 
@@ -3139,8 +3145,8 @@ packages:
   '@leichtgewicht/ip-codec@2.0.5':
     resolution: {integrity: sha512-Vo+PSpZG2/fmgmiNzYK9qWRh8h/CHrwD0mo1h1DzL4yzHNSfWYujGTYsWGreD000gcgmZ7K4Ys6Tx9TxtsKdDw==}
 
-  '@lerna-lite/cli@4.11.3':
-    resolution: {integrity: sha512-Xgs57JflCV8gTctP3piJaHvFBDQihLyX8DxaSelRMCGfJ+CiONXPLMWf81SVkmqW/ADZkARYKUf6C7hMes46Jg==}
+  '@lerna-lite/cli@4.11.4':
+    resolution: {integrity: sha512-yqyXDE4ED5MH0FFI3s0eksziz0r3STsgNuTT9oWHYNSZVcsxZM71JXFiapv5ynZAGl8i8YQ55QvZeWmvvxpwmg==}
     engines: {node: ^20.17.0 || >=22.9.0}
     hasBin: true
     peerDependencies:
@@ -3164,24 +3170,24 @@ packages:
       '@lerna-lite/watch':
         optional: true
 
-  '@lerna-lite/core@4.11.3':
-    resolution: {integrity: sha512-ZdgnLBay5seb5xC/hd8ug99eRdApfd7nw8IXqG1j9tp6iGKruWrvUvY53u8Ht7pEwHCRFXWwYDsL153h5Q9PRQ==}
+  '@lerna-lite/core@4.11.4':
+    resolution: {integrity: sha512-5fHoslPtzclHR7hUu/6RnzB1zq/sEol1dwckOKeb4dx97rW7w+f7vZxOcOTz4Tx7gr+IR5l1FY/h3yBA85P2ZQ==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  '@lerna-lite/init@4.11.3':
-    resolution: {integrity: sha512-I7TZ4fga8w7L4WzleVCNZSiaKm1oH+YveHcDcksjrzOn1aFLZIAI0yQ3uq14JVPr6qMsu8t1T+LWU89cD9TD4w==}
+  '@lerna-lite/init@4.11.4':
+    resolution: {integrity: sha512-7J1vec+IJI0QtJc1wjZvMbPznXVXcSmGLdaSNaJOYO78JN7EwWZZdrrKDSbSxESAK5485NybXAbkszzriwr2SQ==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
   '@lerna-lite/npmlog@4.11.3':
     resolution: {integrity: sha512-iHSB+by3a8fj6lD2+dzEgnV4pwHaEWlaowg4/F9S85VBXyepaqMnrl299slnCCVATxfHCdKSiYFr99Bp+dLIhg==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  '@lerna-lite/publish@4.11.3':
-    resolution: {integrity: sha512-BZFjkZAmyFN+ETOxABzMpBRnqYjjXVbfXAArj9kVhpyZ5NJWX2LxwG0scHUsDcvj4CYfhTib+zmLiYHGpjoFBQ==}
+  '@lerna-lite/publish@4.11.4':
+    resolution: {integrity: sha512-2D2/Mpy5YN/TwvAOyxYYH3PdN2c5+yHXBPWd5v/kd0Ij4w5BFeI4gKpwZ/m16vGYN0N7cTAlecgivwO6gBfKDg==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  '@lerna-lite/version@4.11.3':
-    resolution: {integrity: sha512-kPUBDiwofM9eX+27mUPo3343A6ZNzhNUdKlRzmZU0mgpb4GgyaPBfnuvAwCYJlZFFC2NREX0jDMSgYGZ4ThlTQ==}
+  '@lerna-lite/version@4.11.4':
+    resolution: {integrity: sha512-gAR5XdBVkrQT79GEB2n0PqFPIwxefqa6Rqm1n0EA7ZIeHxzSFK5a2Ivjg9vtb527J9D2FnhnmBm3HYKwCaiX8Q==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
   '@lit-labs/ssr-dom-shim@1.5.1':
@@ -4629,8 +4635,8 @@ packages:
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
 
-  '@types/node@24.11.2':
-    resolution: {integrity: sha512-HTsxyfkxTNxOXBsEdgIOzbMgBjDGPvkTfw0B1m09j1LFPk8u3tSL8SNBRTSc381wXXX/Wp93qPi1kQXwnWuHgA==}
+  '@types/node@24.12.0':
+    resolution: {integrity: sha512-GYDxsZi3ChgmckRT9HPU0WEhKLP08ev/Yfcq2AstjrDASOYCSXeyjDsHg4v5t4jOj7cyDX3vmprafKlWIG9MXQ==}
 
   '@types/node@25.3.5':
     resolution: {integrity: sha512-oX8xrhvpiyRCQkG1MFchB09f+cXftgIXb3a7UUa4Y3wpmZPw5tyZGTLWhlESOLq1Rq6oDlc8npVU2/9xiCuXMA==}
@@ -4648,8 +4654,8 @@ packages:
   '@types/prismjs@1.26.6':
     resolution: {integrity: sha512-vqlvI7qlMvcCBbVe0AKAb4f97//Hy0EBTaiW8AalRnG/xAN5zOiWWyrNqNXeq8+KAuvRewjCVY1+IPxk4RdNYw==}
 
-  '@types/qs@6.14.0':
-    resolution: {integrity: sha512-eOunJqu0K1923aExK6y8p6fsihYEn/BYuQ4g0CxAAgFc4b/ZLN4CrsRZ55srTdqoiLzU2B2evC+apEIxprEzkQ==}
+  '@types/qs@6.15.0':
+    resolution: {integrity: sha512-JawvT8iBVWpzTrz3EGw9BTQFg3BQNmwERdKE22vlTxawwtbyUSlMppvZYKLZzB5zgACXdXxbD3m1bXaMqP/9ow==}
 
   '@types/range-parser@1.2.7':
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
@@ -5061,18 +5067,18 @@ packages:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
 
-  babel-plugin-polyfill-corejs2@0.4.15:
-    resolution: {integrity: sha512-hR3GwrRwHUfYwGfrisXPIDP3JcYfBrW7wKE7+Au6wDYl7fm/ka1NEII6kORzxNU556JjfidZeBsO10kYvtV1aw==}
+  babel-plugin-polyfill-corejs2@0.4.16:
+    resolution: {integrity: sha512-xaVwwSfebXf0ooE11BJovZYKhFjIvQo7TsyVpETuIeH2JHv0k/T6Y5j22pPTvqYqmpkxdlPAJlyJ0tfOJAoMxw==}
     peerDependencies:
       '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
 
-  babel-plugin-polyfill-corejs3@0.14.0:
-    resolution: {integrity: sha512-AvDcMxJ34W4Wgy4KBIIePQTAOP1Ie2WFwkQp3dB7FQ/f0lI5+nM96zUnYEOE1P9sEg0es5VCP0HxiWu5fUHZAQ==}
+  babel-plugin-polyfill-corejs3@0.14.1:
+    resolution: {integrity: sha512-ENp89vM9Pw4kv/koBb5N2f9bDZsR0hpf3BdPMOg/pkS3pwO4dzNnQZVXtBbeyAadgm865DmQG2jMMLqmZXvuCw==}
     peerDependencies:
       '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
 
-  babel-plugin-polyfill-regenerator@0.6.6:
-    resolution: {integrity: sha512-hYm+XLYRMvupxiQzrvXUj7YyvFFVfv5gI0R71AJzudg1g2AI2vyCPPIFEBjk162/wFzti3inBHo7isWFuEVS/A==}
+  babel-plugin-polyfill-regenerator@0.6.7:
+    resolution: {integrity: sha512-OTYbUlSwXhNgr4g6efMZgsO8//jA61P7ZbRX3iTT53VON8l+WQS8IAUEVo4a4cWknrg2W8Cj4gQhRYNCJ8GkAA==}
     peerDependencies:
       '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
 
@@ -5205,8 +5211,8 @@ packages:
   caniuse-api@3.0.0:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
 
-  caniuse-lite@1.0.30001776:
-    resolution: {integrity: sha512-sg01JDPzZ9jGshqKSckOQthXnYwOEP50jeVFhaSFbZcOy05TiuuaffDOfcwtCisJ9kNQuLBFibYywv2Bgm9osw==}
+  caniuse-lite@1.0.30001777:
+    resolution: {integrity: sha512-tmN+fJxroPndC74efCdp12j+0rk0RHwV5Jwa1zWaFVyw2ZxAuPeG8ZgWC3Wz7uSjT3qMRQ5XHZ4COgQmsCMJAQ==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -5571,8 +5577,8 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  cssnano-preset-default@7.0.10:
-    resolution: {integrity: sha512-6ZBjW0Lf1K1Z+0OKUAUpEN62tSXmYChXWi2NAA0afxEVsj9a+MbcB1l5qel6BHJHmULai2fCGRthCeKSFbScpA==}
+  cssnano-preset-default@7.0.11:
+    resolution: {integrity: sha512-waWlAMuCakP7//UCY+JPrQS1z0OSLeOXk2sKWJximKWGupVxre50bzPlvpbUwZIDylhf/ptf0Pk+Yf7C+hoa3g==}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.32
@@ -5583,8 +5589,8 @@ packages:
     peerDependencies:
       postcss: ^8.4.32
 
-  cssnano@7.1.2:
-    resolution: {integrity: sha512-HYOPBsNvoiFeR1eghKD5C3ASm64v9YVyJB4Ivnl2gqKoQYvjjN/G0rztvKQq8OxocUtC6sjqY8jwYngIB4AByA==}
+  cssnano@7.1.3:
+    resolution: {integrity: sha512-mLFHQAzyapMVFLiJIn7Ef4C2UCEvtlTlbyILR6B5ZsUAV3D/Pa761R5uC1YPhyBkRd3eqaDm2ncaNrD7R4mTRg==}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.32
@@ -7030,8 +7036,8 @@ packages:
   just-diff@6.0.2:
     resolution: {integrity: sha512-S59eriX5u3/QhMNq3v/gm8Kd0w8OS6Tz2FS1NG4blv+z0MuQcBRJyFWjdovM0Rad4/P4aUPFtnkNjMjyMlMSYA==}
 
-  katex@0.16.35:
-    resolution: {integrity: sha512-S0+riEvy1CK4VKse1ivMff8gmabe/prY7sKB3njjhyoLLsNFDQYtKNgXrbWUggGDCJBz7Fctl5i8fLCESHXzSg==}
+  katex@0.16.37:
+    resolution: {integrity: sha512-TIGjO2cCGYono+uUzgkE7RFF329mLLWGuHUlSr6cwIVj9O8f0VQZ783rsanmJpFUo32vvtj7XT04NGRPh+SZFg==}
     hasBin: true
 
   keyv@5.6.0:
@@ -7692,6 +7698,11 @@ packages:
     resolution: {integrity: sha512-JLSpbzh6UUXIEoqPsYBvVNVmyrjVZ1fzEFbqxKkTJQkWBO3xFzFT+KDnSKQWwOQNbuWRwt5LSD6HOTLGIWzfrw==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
+  npm-check-updates@19.6.3:
+    resolution: {integrity: sha512-VAt9Bp26eLaymZ0nZyh5n/by+YZIuegXlvWR0yv1zBqd984f8VnEnBbn+1lS3nN5LyEjn62BJ+yYgzNSpb6Gzg==}
+    engines: {node: '>=20.0.0', npm: '>=8.12.1'}
+    hasBin: true
+
   npm-install-checks@8.0.0:
     resolution: {integrity: sha512-ScAUdMpyzkbpxoNekQ3tNRdFI8SJ86wgKZSQZdUxT+bj0wVFpsEMWnkXP0twVe1gJyNF5apBWDJhhIbgrIViRA==}
     engines: {node: ^20.17.0 || >=22.9.0}
@@ -7777,6 +7788,20 @@ packages:
   own-keys@1.0.1:
     resolution: {integrity: sha512-qFOyK5PjiWZd+QQIh+1jhdb9LpxTF0qs7Pm8o5QHYZ0M3vKqSqzsZaEB6oWlxZ+q2sJBMI/Ktgd2N5ZwQoRHfg==}
     engines: {node: '>= 0.4'}
+
+  oxc-config-hope@0.0.5:
+    resolution: {integrity: sha512-84EYvNyuxlJH3otcxlvk3nhad7lf7IYdPEwVkmrOgaq/1k3og22vLf9yT4CA/6FEGlqr5E1D2Ci/nLlvlm3BNQ==}
+    peerDependencies:
+      oxfmt: '>=0.36.0'
+      oxlint: ^1.51.0
+      oxlint-tsgolint: '>=0.16.0'
+    peerDependenciesMeta:
+      oxfmt:
+        optional: true
+      oxlint:
+        optional: true
+      oxlint-tsgolint:
+        optional: true
 
   oxfmt@0.36.0:
     resolution: {integrity: sha512-/ejJ+KoSW6J9bcNT9a9UtJSJNWhJ3yOLSBLbkoFHJs/8CZjmaZVZAJe4YgO1KMJlKpNQasrn/G9JQUEZI3p0EQ==}
@@ -7988,20 +8013,20 @@ packages:
     peerDependencies:
       postcss: ^8.4.38
 
-  postcss-colormin@7.0.5:
-    resolution: {integrity: sha512-ekIBP/nwzRWhEMmIxHHbXHcMdzd1HIUzBECaj5KEdLz9DVP2HzT065sEhvOx1dkLjYW7jyD0CngThx6bpFi2fA==}
+  postcss-colormin@7.0.6:
+    resolution: {integrity: sha512-oXM2mdx6IBTRm39797QguYzVEWzbdlFiMNfq88fCCN1Wepw3CYmJ/1/Ifa/KjWo+j5ZURDl2NTldLJIw51IeNQ==}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.32
 
-  postcss-convert-values@7.0.8:
-    resolution: {integrity: sha512-+XNKuPfkHTCEo499VzLMYn94TiL3r9YqRE3Ty+jP7UX4qjewUONey1t7CG21lrlTLN07GtGM8MqFVp86D4uKJg==}
+  postcss-convert-values@7.0.9:
+    resolution: {integrity: sha512-l6uATQATZaCa0bckHV+r6dLXfWtUBKXxO3jK+AtxxJJtgMPD+VhhPCCx51I4/5w8U5uHV67g3w7PXj+V3wlMlg==}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.32
 
-  postcss-discard-comments@7.0.5:
-    resolution: {integrity: sha512-IR2Eja8WfYgN5n32vEGSctVQ1+JARfu4UH8M7bgGh1bC+xI/obsPJXaBpQF7MAByvgwZinhpHpdrmXtvVVlKcQ==}
+  postcss-discard-comments@7.0.6:
+    resolution: {integrity: sha512-Sq+Fzj1Eg5/CPf1ERb0wS1Im5cvE2gDXCE+si4HCn1sf+jpQZxDI4DXEp8t77B/ImzDceWE2ebJQFXdqZ6GRJw==}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.32
@@ -8068,8 +8093,8 @@ packages:
     peerDependencies:
       postcss: ^8.4.32
 
-  postcss-merge-rules@7.0.7:
-    resolution: {integrity: sha512-njWJrd/Ms6XViwowaaCc+/vqhPG3SmXn725AGrnl+BgTuRPEacjiLEaGq16J6XirMJbtKkTwnt67SS+e2WGoew==}
+  postcss-merge-rules@7.0.8:
+    resolution: {integrity: sha512-BOR1iAM8jnr7zoQSlpeBmCsWV5Uudi/+5j7k05D0O/WP3+OFMPD86c1j/20xiuRtyt45bhxw/7hnhZNhW2mNFA==}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.32
@@ -8086,14 +8111,14 @@ packages:
     peerDependencies:
       postcss: ^8.4.32
 
-  postcss-minify-params@7.0.5:
-    resolution: {integrity: sha512-FGK9ky02h6Ighn3UihsyeAH5XmLEE2MSGH5Tc4tXMFtEDx7B+zTG6hD/+/cT+fbF7PbYojsmmWjyTwFwW1JKQQ==}
+  postcss-minify-params@7.0.6:
+    resolution: {integrity: sha512-YOn02gC68JijlaXVuKvFSCvQOhTpblkcfDre2hb/Aaa58r2BIaK4AtE/cyZf2wV7YKAG+UlP9DT+By0ry1E4VQ==}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.32
 
-  postcss-minify-selectors@7.0.5:
-    resolution: {integrity: sha512-x2/IvofHcdIrAm9Q+p06ZD1h6FPcQ32WtCRVodJLDR+WMn8EVHI1kvLxZuGKz/9EY5nAmI6lIQIrpo4tBy5+ug==}
+  postcss-minify-selectors@7.0.6:
+    resolution: {integrity: sha512-lIbC0jy3AAwDxEgciZlBullDiMBeBCT+fz5G8RcA9MWqh/hfUkpOI3vNDUNEZHgokaoiv0juB9Y8fGcON7rU/A==}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.32
@@ -8158,8 +8183,8 @@ packages:
     peerDependencies:
       postcss: ^8.4.32
 
-  postcss-normalize-unicode@7.0.5:
-    resolution: {integrity: sha512-X6BBwiRxVaFHrb2WyBMddIeB5HBjJcAaUHyhLrM2FsxSq5TFqcHSsK7Zu1otag+o0ZphQGJewGH1tAyrD0zX1Q==}
+  postcss-normalize-unicode@7.0.6:
+    resolution: {integrity: sha512-z6bwTV84YW6ZvvNoaNLuzRW4/uWxDKYI1iIDrzk6D2YTL7hICApy+Q1LP6vBEsljX8FM7YSuV9qI79XESd4ddQ==}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.32
@@ -8182,8 +8207,8 @@ packages:
     peerDependencies:
       postcss: ^8.4.32
 
-  postcss-reduce-initial@7.0.5:
-    resolution: {integrity: sha512-RHagHLidG8hTZcnr4FpyMB2jtgd/OcyAazjMhoy5qmWJOx1uxKh4ntk0Pb46ajKM0rkf32lRH4C8c9qQiPR6IA==}
+  postcss-reduce-initial@7.0.6:
+    resolution: {integrity: sha512-G6ZyK68AmrPdMB6wyeA37ejnnRG2S8xinJrZJnOv+IaRKf6koPAVbQsiC7MfkmXaGmF1UO+QCijb27wfpxuRNg==}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.32
@@ -8224,14 +8249,14 @@ packages:
     peerDependencies:
       postcss: ^8.4.20
 
-  postcss-svgo@7.1.0:
-    resolution: {integrity: sha512-KnAlfmhtoLz6IuU3Sij2ycusNs4jPW+QoFE5kuuUOK8awR6tMxZQrs5Ey3BUz7nFCzT3eqyFgqkyrHiaU2xx3w==}
+  postcss-svgo@7.1.1:
+    resolution: {integrity: sha512-zU9H9oEDrUFKa0JB7w+IYL7Qs9ey1mZyjhbf0KLxwJDdDRtoPvCmaEfknzqfHj44QS9VD6c5sJnBAVYTLRg/Sg==}
     engines: {node: ^18.12.0 || ^20.9.0 || >= 18}
     peerDependencies:
       postcss: ^8.4.32
 
-  postcss-unique-selectors@7.0.4:
-    resolution: {integrity: sha512-pmlZjsmEAG7cHd7uK3ZiNSW6otSZ13RHuZ/4cDN/bVglS5EpF2r2oxY99SuOHa8m7AWoBCelTS3JPpzsIs8skQ==}
+  postcss-unique-selectors@7.0.5:
+    resolution: {integrity: sha512-3QoYmEt4qg/rUWDn6Tc8+ZVPmbp4G1hXDtCNWDx0st8SjtCbRcxRXDDM1QrEiXGG3A45zscSJFb4QH90LViyxg==}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.32
@@ -8496,8 +8521,8 @@ packages:
   robust-predicates@3.0.2:
     resolution: {integrity: sha512-IXgzBWvWQwE6PrDI05OvmXUIruQTcoMDzRsOd5CDvHCVLcLHMTSYvOK5Cm46kWqlV3yAbuSpBZdJ5oP5OUoStg==}
 
-  rolldown-plugin-dts@0.22.3:
-    resolution: {integrity: sha512-APIGZGChvLVu05f+7bMmgf+lpvhjIvELhkOsg7c/95IVdOgULVFOX9iciaHJLaBfZeTthIgp+gryGBjgyKNA1A==}
+  rolldown-plugin-dts@0.22.4:
+    resolution: {integrity: sha512-pueqTPyN1N6lWYivyDGad+j+GO3DT67pzpct8s8e6KGVIezvnrDjejuw1AXFeyDRas3xTq4Ja6Lj5R5/04C5GQ==}
     engines: {node: '>=20.19.0'}
     peerDependencies:
       '@ts-macro/tsc': ^0.3.6
@@ -9037,8 +9062,8 @@ packages:
     peerDependencies:
       webpack: ^5.27.0
 
-  stylehacks@7.0.7:
-    resolution: {integrity: sha512-bJkD0JkEtbRrMFtwgpJyBbFIwfDDONQ1Ov3sDLZQP8HuJ73kBOyx66H4bOcAbVWmnfLdvQ0AJwXxOMkpujcO6g==}
+  stylehacks@7.0.8:
+    resolution: {integrity: sha512-I3f053GBLIiS5Fg6OMFhq/c+yW+5Hc2+1fgq7gElDMMSqwlRb3tBf2ef6ucLStYRpId4q//bQO1FjcyNyy4yDQ==}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.32
@@ -10186,7 +10211,7 @@ snapshots:
       regexpu-core: 6.4.0
       semver: 6.3.1
 
-  '@babel/helper-define-polyfill-provider@0.6.6(@babel/core@7.29.0)':
+  '@babel/helper-define-polyfill-provider@0.6.7(@babel/core@7.29.0)':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/helper-compilation-targets': 7.28.6
@@ -10740,9 +10765,9 @@ snapshots:
       '@babel/plugin-transform-unicode-regex': 7.27.1(@babel/core@7.29.0)
       '@babel/plugin-transform-unicode-sets-regex': 7.28.6(@babel/core@7.29.0)
       '@babel/preset-modules': 0.1.6-no-external-plugins(@babel/core@7.29.0)
-      babel-plugin-polyfill-corejs2: 0.4.15(@babel/core@7.29.0)
-      babel-plugin-polyfill-corejs3: 0.14.0(@babel/core@7.29.0)
-      babel-plugin-polyfill-regenerator: 0.6.6(@babel/core@7.29.0)
+      babel-plugin-polyfill-corejs2: 0.4.16(@babel/core@7.29.0)
+      babel-plugin-polyfill-corejs3: 0.14.1(@babel/core@7.29.0)
+      babel-plugin-polyfill-regenerator: 0.6.7(@babel/core@7.29.0)
       core-js-compat: 3.48.0
       semver: 6.3.1
     transitivePeerDependencies:
@@ -11536,10 +11561,10 @@ snapshots:
 
   '@leichtgewicht/ip-codec@2.0.5': {}
 
-  '@lerna-lite/cli@4.11.3(@lerna-lite/publish@4.11.3(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@lerna-lite/version@4.11.3(@lerna-lite/publish@4.11.3(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)':
+  '@lerna-lite/cli@4.11.4(@lerna-lite/publish@4.11.4(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@lerna-lite/version@4.11.4(@lerna-lite/publish@4.11.4(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)':
     dependencies:
-      '@lerna-lite/core': 4.11.3(@types/node@25.3.5)
-      '@lerna-lite/init': 4.11.3(@types/node@25.3.5)
+      '@lerna-lite/core': 4.11.4(@types/node@25.3.5)
+      '@lerna-lite/init': 4.11.4(@types/node@25.3.5)
       '@lerna-lite/npmlog': 4.11.3
       dedent: 1.7.2
       dotenv: 17.3.1
@@ -11547,14 +11572,14 @@ snapshots:
       load-json-file: 7.0.1
       yargs: 18.0.0
     optionalDependencies:
-      '@lerna-lite/publish': 4.11.3(@types/node@25.3.5)(conventional-commits-filter@5.0.0)
-      '@lerna-lite/version': 4.11.3(@lerna-lite/publish@4.11.3(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)(conventional-commits-filter@5.0.0)
+      '@lerna-lite/publish': 4.11.4(@types/node@25.3.5)(conventional-commits-filter@5.0.0)
+      '@lerna-lite/version': 4.11.4(@lerna-lite/publish@4.11.4(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)(conventional-commits-filter@5.0.0)
     transitivePeerDependencies:
       - '@types/node'
       - babel-plugin-macros
       - supports-color
 
-  '@lerna-lite/core@4.11.3(@types/node@25.3.5)':
+  '@lerna-lite/core@4.11.4(@types/node@25.3.5)':
     dependencies:
       '@inquirer/expand': 4.0.23(@types/node@25.3.5)
       '@inquirer/input': 4.3.1(@types/node@25.3.5)
@@ -11586,9 +11611,9 @@ snapshots:
       - babel-plugin-macros
       - supports-color
 
-  '@lerna-lite/init@4.11.3(@types/node@25.3.5)':
+  '@lerna-lite/init@4.11.4(@types/node@25.3.5)':
     dependencies:
-      '@lerna-lite/core': 4.11.3(@types/node@25.3.5)
+      '@lerna-lite/core': 4.11.4(@types/node@25.3.5)
       fs-extra: 11.3.4
       p-map: 7.0.4
       write-json-file: 7.0.0
@@ -11607,12 +11632,12 @@ snapshots:
       tinyrainbow: 3.0.3
       wide-align: 1.1.5
 
-  '@lerna-lite/publish@4.11.3(@types/node@25.3.5)(conventional-commits-filter@5.0.0)':
+  '@lerna-lite/publish@4.11.4(@types/node@25.3.5)(conventional-commits-filter@5.0.0)':
     dependencies:
-      '@lerna-lite/cli': 4.11.3(@lerna-lite/publish@4.11.3(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@lerna-lite/version@4.11.3(@lerna-lite/publish@4.11.3(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)
-      '@lerna-lite/core': 4.11.3(@types/node@25.3.5)
+      '@lerna-lite/cli': 4.11.4(@lerna-lite/publish@4.11.4(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@lerna-lite/version@4.11.4(@lerna-lite/publish@4.11.4(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)
+      '@lerna-lite/core': 4.11.4(@types/node@25.3.5)
       '@lerna-lite/npmlog': 4.11.3
-      '@lerna-lite/version': 4.11.3(@lerna-lite/publish@4.11.3(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)(conventional-commits-filter@5.0.0)
+      '@lerna-lite/version': 4.11.4(@lerna-lite/publish@4.11.4(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)(conventional-commits-filter@5.0.0)
       '@npmcli/arborist': 9.4.0
       '@npmcli/package-json': 7.0.5
       byte-size: 9.0.1
@@ -11645,11 +11670,11 @@ snapshots:
       - conventional-commits-filter
       - supports-color
 
-  '@lerna-lite/version@4.11.3(@lerna-lite/publish@4.11.3(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)(conventional-commits-filter@5.0.0)':
+  '@lerna-lite/version@4.11.4(@lerna-lite/publish@4.11.4(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)(conventional-commits-filter@5.0.0)':
     dependencies:
       '@conventional-changelog/git-client': 2.6.0(conventional-commits-filter@5.0.0)(conventional-commits-parser@6.3.0)
-      '@lerna-lite/cli': 4.11.3(@lerna-lite/publish@4.11.3(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@lerna-lite/version@4.11.3(@lerna-lite/publish@4.11.3(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)
-      '@lerna-lite/core': 4.11.3(@types/node@25.3.5)
+      '@lerna-lite/cli': 4.11.4(@lerna-lite/publish@4.11.4(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@lerna-lite/version@4.11.4(@lerna-lite/publish@4.11.4(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)(conventional-commits-filter@5.0.0))(@types/node@25.3.5)
+      '@lerna-lite/core': 4.11.4(@types/node@25.3.5)
       '@lerna-lite/npmlog': 4.11.3
       '@octokit/plugin-enterprise-rest': 6.0.1
       '@octokit/rest': 22.0.1
@@ -11838,13 +11863,13 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.1.1
 
-  '@mdit/plugin-katex-slim@0.26.1(katex@0.16.35)(markdown-it@14.1.1)':
+  '@mdit/plugin-katex-slim@0.26.1(katex@0.16.37)(markdown-it@14.1.1)':
     dependencies:
       '@mdit/helper': 0.23.1(markdown-it@14.1.1)
       '@mdit/plugin-tex': 0.24.1(markdown-it@14.1.1)
       '@types/markdown-it': 14.1.2
     optionalDependencies:
-      katex: 0.16.35
+      katex: 0.16.37
       markdown-it: 14.1.1
 
   '@mdit/plugin-layout@0.2.1(markdown-it@14.1.1)':
@@ -12910,7 +12935,7 @@ snapshots:
   '@types/express-serve-static-core@4.19.8':
     dependencies:
       '@types/node': 25.3.5
-      '@types/qs': 6.14.0
+      '@types/qs': 6.15.0
       '@types/range-parser': 1.2.7
       '@types/send': 1.2.1
 
@@ -12918,7 +12943,7 @@ snapshots:
     dependencies:
       '@types/body-parser': 1.19.6
       '@types/express-serve-static-core': 4.19.8
-      '@types/qs': 6.14.0
+      '@types/qs': 6.15.0
       '@types/serve-static': 1.15.10
 
   '@types/fs-extra@11.0.4':
@@ -12983,7 +13008,7 @@ snapshots:
 
   '@types/ms@2.1.0': {}
 
-  '@types/node@24.11.2':
+  '@types/node@24.12.0':
     dependencies:
       undici-types: 7.16.0
 
@@ -13001,7 +13026,7 @@ snapshots:
 
   '@types/prismjs@1.26.6': {}
 
-  '@types/qs@6.14.0': {}
+  '@types/qs@6.15.0': {}
 
   '@types/range-parser@1.2.7': {}
 
@@ -13015,7 +13040,7 @@ snapshots:
 
   '@types/sax@1.2.7':
     dependencies:
-      '@types/node': 24.11.2
+      '@types/node': 24.12.0
 
   '@types/semver@7.7.1': {}
 
@@ -13138,7 +13163,7 @@ snapshots:
 
   '@vscode/markdown-it-katex@1.1.2':
     dependencies:
-      katex: 0.16.35
+      katex: 0.16.37
 
   '@vue/compiler-core@3.5.29':
     dependencies:
@@ -13621,7 +13646,7 @@ snapshots:
   autoprefixer@10.4.27(postcss@8.5.8):
     dependencies:
       browserslist: 4.28.1
-      caniuse-lite: 1.0.30001776
+      caniuse-lite: 1.0.30001777
       fraction.js: 5.3.4
       picocolors: 1.1.1
       postcss: 8.5.8
@@ -13633,27 +13658,27 @@ snapshots:
     dependencies:
       possible-typed-array-names: 1.1.0
 
-  babel-plugin-polyfill-corejs2@0.4.15(@babel/core@7.29.0):
+  babel-plugin-polyfill-corejs2@0.4.16(@babel/core@7.29.0):
     dependencies:
       '@babel/compat-data': 7.29.0
       '@babel/core': 7.29.0
-      '@babel/helper-define-polyfill-provider': 0.6.6(@babel/core@7.29.0)
+      '@babel/helper-define-polyfill-provider': 0.6.7(@babel/core@7.29.0)
       semver: 6.3.1
     transitivePeerDependencies:
       - supports-color
 
-  babel-plugin-polyfill-corejs3@0.14.0(@babel/core@7.29.0):
+  babel-plugin-polyfill-corejs3@0.14.1(@babel/core@7.29.0):
     dependencies:
       '@babel/core': 7.29.0
-      '@babel/helper-define-polyfill-provider': 0.6.6(@babel/core@7.29.0)
+      '@babel/helper-define-polyfill-provider': 0.6.7(@babel/core@7.29.0)
       core-js-compat: 3.48.0
     transitivePeerDependencies:
       - supports-color
 
-  babel-plugin-polyfill-regenerator@0.6.6(@babel/core@7.29.0):
+  babel-plugin-polyfill-regenerator@0.6.7(@babel/core@7.29.0):
     dependencies:
       '@babel/core': 7.29.0
-      '@babel/helper-define-polyfill-provider': 0.6.6(@babel/core@7.29.0)
+      '@babel/helper-define-polyfill-provider': 0.6.7(@babel/core@7.29.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -13728,7 +13753,7 @@ snapshots:
   browserslist@4.28.1:
     dependencies:
       baseline-browser-mapping: 2.10.0
-      caniuse-lite: 1.0.30001776
+      caniuse-lite: 1.0.30001777
       electron-to-chromium: 1.5.307
       node-releases: 2.0.36
       update-browserslist-db: 1.2.3(browserslist@4.28.1)
@@ -13798,11 +13823,11 @@ snapshots:
   caniuse-api@3.0.0:
     dependencies:
       browserslist: 4.28.1
-      caniuse-lite: 1.0.30001776
+      caniuse-lite: 1.0.30001777
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
 
-  caniuse-lite@1.0.30001776: {}
+  caniuse-lite@1.0.30001777: {}
 
   ccount@2.0.1: {}
 
@@ -14151,7 +14176,7 @@ snapshots:
   css-minimizer-webpack-plugin@7.0.4(lightningcss@1.31.1)(webpack@5.105.4):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
-      cssnano: 7.1.2(postcss@8.5.8)
+      cssnano: 7.1.3(postcss@8.5.8)
       jest-worker: 30.2.0
       postcss: 8.5.8
       schema-utils: 4.3.3
@@ -14190,47 +14215,47 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  cssnano-preset-default@7.0.10(postcss@8.5.8):
+  cssnano-preset-default@7.0.11(postcss@8.5.8):
     dependencies:
       browserslist: 4.28.1
       css-declaration-sorter: 7.3.1(postcss@8.5.8)
       cssnano-utils: 5.0.1(postcss@8.5.8)
       postcss: 8.5.8
       postcss-calc: 10.1.1(postcss@8.5.8)
-      postcss-colormin: 7.0.5(postcss@8.5.8)
-      postcss-convert-values: 7.0.8(postcss@8.5.8)
-      postcss-discard-comments: 7.0.5(postcss@8.5.8)
+      postcss-colormin: 7.0.6(postcss@8.5.8)
+      postcss-convert-values: 7.0.9(postcss@8.5.8)
+      postcss-discard-comments: 7.0.6(postcss@8.5.8)
       postcss-discard-duplicates: 7.0.2(postcss@8.5.8)
       postcss-discard-empty: 7.0.1(postcss@8.5.8)
       postcss-discard-overridden: 7.0.1(postcss@8.5.8)
       postcss-merge-longhand: 7.0.5(postcss@8.5.8)
-      postcss-merge-rules: 7.0.7(postcss@8.5.8)
+      postcss-merge-rules: 7.0.8(postcss@8.5.8)
       postcss-minify-font-values: 7.0.1(postcss@8.5.8)
       postcss-minify-gradients: 7.0.1(postcss@8.5.8)
-      postcss-minify-params: 7.0.5(postcss@8.5.8)
-      postcss-minify-selectors: 7.0.5(postcss@8.5.8)
+      postcss-minify-params: 7.0.6(postcss@8.5.8)
+      postcss-minify-selectors: 7.0.6(postcss@8.5.8)
       postcss-normalize-charset: 7.0.1(postcss@8.5.8)
       postcss-normalize-display-values: 7.0.1(postcss@8.5.8)
       postcss-normalize-positions: 7.0.1(postcss@8.5.8)
       postcss-normalize-repeat-style: 7.0.1(postcss@8.5.8)
       postcss-normalize-string: 7.0.1(postcss@8.5.8)
       postcss-normalize-timing-functions: 7.0.1(postcss@8.5.8)
-      postcss-normalize-unicode: 7.0.5(postcss@8.5.8)
+      postcss-normalize-unicode: 7.0.6(postcss@8.5.8)
       postcss-normalize-url: 7.0.1(postcss@8.5.8)
       postcss-normalize-whitespace: 7.0.1(postcss@8.5.8)
       postcss-ordered-values: 7.0.2(postcss@8.5.8)
-      postcss-reduce-initial: 7.0.5(postcss@8.5.8)
+      postcss-reduce-initial: 7.0.6(postcss@8.5.8)
       postcss-reduce-transforms: 7.0.1(postcss@8.5.8)
-      postcss-svgo: 7.1.0(postcss@8.5.8)
-      postcss-unique-selectors: 7.0.4(postcss@8.5.8)
+      postcss-svgo: 7.1.1(postcss@8.5.8)
+      postcss-unique-selectors: 7.0.5(postcss@8.5.8)
 
   cssnano-utils@5.0.1(postcss@8.5.8):
     dependencies:
       postcss: 8.5.8
 
-  cssnano@7.1.2(postcss@8.5.8):
+  cssnano@7.1.3(postcss@8.5.8):
     dependencies:
-      cssnano-preset-default: 7.0.10(postcss@8.5.8)
+      cssnano-preset-default: 7.0.11(postcss@8.5.8)
       lilconfig: 3.1.3
       postcss: 8.5.8
 
@@ -15799,7 +15824,7 @@ snapshots:
 
   just-diff@6.0.2: {}
 
-  katex@0.16.35:
+  katex@0.16.37:
     dependencies:
       commander: 8.3.0
 
@@ -16078,7 +16103,7 @@ snapshots:
       '@babel/runtime': 7.28.6
       '@vscode/markdown-it-katex': 1.1.2
       highlight.js: 11.11.1
-      katex: 0.16.35
+      katex: 0.16.37
       markdown-it: 14.1.1
       markdown-it-ins: 4.0.0
       markdown-it-mark: 4.0.0
@@ -16282,7 +16307,7 @@ snapshots:
       dagre-d3-es: 7.0.13
       dayjs: 1.11.19
       dompurify: 3.3.2
-      katex: 0.16.35
+      katex: 0.16.37
       khroma: 2.1.0
       lodash-es: 4.17.23
       marked: 16.4.2
@@ -16602,6 +16627,8 @@ snapshots:
     dependencies:
       npm-normalize-package-bin: 5.0.0
 
+  npm-check-updates@19.6.3: {}
+
   npm-install-checks@8.0.0:
     dependencies:
       semver: 7.7.4
@@ -16711,6 +16738,12 @@ snapshots:
       get-intrinsic: 1.3.0
       object-keys: 1.1.1
       safe-push-apply: 1.0.0
+
+  oxc-config-hope@0.0.5(oxfmt@0.36.0)(oxlint-tsgolint@0.16.0)(oxlint@1.51.0(oxlint-tsgolint@0.16.0)):
+    optionalDependencies:
+      oxfmt: 0.36.0
+      oxlint: 1.51.0(oxlint-tsgolint@0.16.0)
+      oxlint-tsgolint: 0.16.0
 
   oxfmt@0.36.0:
     dependencies:
@@ -16968,7 +17001,7 @@ snapshots:
       postcss-selector-parser: 7.1.1
       postcss-value-parser: 4.2.0
 
-  postcss-colormin@7.0.5(postcss@8.5.8):
+  postcss-colormin@7.0.6(postcss@8.5.8):
     dependencies:
       browserslist: 4.28.1
       caniuse-api: 3.0.0
@@ -16976,13 +17009,13 @@ snapshots:
       postcss: 8.5.8
       postcss-value-parser: 4.2.0
 
-  postcss-convert-values@7.0.8(postcss@8.5.8):
+  postcss-convert-values@7.0.9(postcss@8.5.8):
     dependencies:
       browserslist: 4.28.1
       postcss: 8.5.8
       postcss-value-parser: 4.2.0
 
-  postcss-discard-comments@7.0.5(postcss@8.5.8):
+  postcss-discard-comments@7.0.6(postcss@8.5.8):
     dependencies:
       postcss: 8.5.8
       postcss-selector-parser: 7.1.1
@@ -17031,9 +17064,9 @@ snapshots:
     dependencies:
       postcss: 8.5.8
       postcss-value-parser: 4.2.0
-      stylehacks: 7.0.7(postcss@8.5.8)
+      stylehacks: 7.0.8(postcss@8.5.8)
 
-  postcss-merge-rules@7.0.7(postcss@8.5.8):
+  postcss-merge-rules@7.0.8(postcss@8.5.8):
     dependencies:
       browserslist: 4.28.1
       caniuse-api: 3.0.0
@@ -17053,14 +17086,14 @@ snapshots:
       postcss: 8.5.8
       postcss-value-parser: 4.2.0
 
-  postcss-minify-params@7.0.5(postcss@8.5.8):
+  postcss-minify-params@7.0.6(postcss@8.5.8):
     dependencies:
       browserslist: 4.28.1
       cssnano-utils: 5.0.1(postcss@8.5.8)
       postcss: 8.5.8
       postcss-value-parser: 4.2.0
 
-  postcss-minify-selectors@7.0.5(postcss@8.5.8):
+  postcss-minify-selectors@7.0.6(postcss@8.5.8):
     dependencies:
       cssesc: 3.0.0
       postcss: 8.5.8
@@ -17116,7 +17149,7 @@ snapshots:
       postcss: 8.5.8
       postcss-value-parser: 4.2.0
 
-  postcss-normalize-unicode@7.0.5(postcss@8.5.8):
+  postcss-normalize-unicode@7.0.6(postcss@8.5.8):
     dependencies:
       browserslist: 4.28.1
       postcss: 8.5.8
@@ -17138,7 +17171,7 @@ snapshots:
       postcss: 8.5.8
       postcss-value-parser: 4.2.0
 
-  postcss-reduce-initial@7.0.5(postcss@8.5.8):
+  postcss-reduce-initial@7.0.6(postcss@8.5.8):
     dependencies:
       browserslist: 4.28.1
       caniuse-api: 3.0.0
@@ -17172,13 +17205,13 @@ snapshots:
     dependencies:
       postcss: 8.5.8
 
-  postcss-svgo@7.1.0(postcss@8.5.8):
+  postcss-svgo@7.1.1(postcss@8.5.8):
     dependencies:
       postcss: 8.5.8
       postcss-value-parser: 4.2.0
       svgo: 4.0.1
 
-  postcss-unique-selectors@7.0.4(postcss@8.5.8):
+  postcss-unique-selectors@7.0.5(postcss@8.5.8):
     dependencies:
       postcss: 8.5.8
       postcss-selector-parser: 7.1.1
@@ -17462,7 +17495,7 @@ snapshots:
 
   robust-predicates@3.0.2: {}
 
-  rolldown-plugin-dts@0.22.3(rolldown@1.0.0-rc.7)(typescript@5.9.3):
+  rolldown-plugin-dts@0.22.4(rolldown@1.0.0-rc.7)(typescript@5.9.3):
     dependencies:
       '@babel/generator': 8.0.0-rc.2
       '@babel/helper-validator-identifier': 8.0.0-rc.2
@@ -17858,7 +17891,7 @@ snapshots:
 
   sitemap@9.0.1:
     dependencies:
-      '@types/node': 24.11.2
+      '@types/node': 24.12.0
       '@types/sax': 1.2.7
       arg: 5.0.2
       sax: 1.5.0
@@ -18091,7 +18124,7 @@ snapshots:
     dependencies:
       webpack: 5.105.4
 
-  stylehacks@7.0.7(postcss@8.5.8):
+  stylehacks@7.0.8(postcss@8.5.8):
     dependencies:
       browserslist: 4.28.1
       postcss: 8.5.8
@@ -18345,7 +18378,7 @@ snapshots:
       obug: 2.1.1
       picomatch: 4.0.3
       rolldown: 1.0.0-rc.7
-      rolldown-plugin-dts: 0.22.3(rolldown@1.0.0-rc.7)(typescript@5.9.3)
+      rolldown-plugin-dts: 0.22.4(rolldown@1.0.0-rc.7)(typescript@5.9.3)
       semver: 7.7.4
       tinyexec: 1.0.2
       tinyglobby: 0.2.15

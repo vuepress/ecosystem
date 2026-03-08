@@ -24,7 +24,7 @@ export const retry = <ReturnType>(
     try {
       return await fn()
     } catch (err: unknown) {
-      attempts++
+      attempts += 1
       if (attempts < times) {
         reject?.(attempts, err)
         return run()

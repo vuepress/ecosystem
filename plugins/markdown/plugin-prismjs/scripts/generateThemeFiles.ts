@@ -49,21 +49,21 @@ await Promise.all(
       compileStringAsync(themeContent, {
         loadPaths: [styleDir],
         style: 'compressed',
-      }).then(({ css }) => {
-        fs.writeFileSync(path.resolve(outputDir, `${filename}.css`), css)
-      }),
+      }).then(({ css }) =>
+        fs.writeFile(path.resolve(outputDir, `${filename}.css`), css),
+      ),
       compileStringAsync(lightThemeContent, {
         loadPaths: [styleDir],
         style: 'compressed',
-      }).then(({ css }) => {
-        fs.writeFileSync(path.resolve(outputDir, `${filename}.light.css`), css)
-      }),
+      }).then(({ css }) =>
+        fs.writeFile(path.resolve(outputDir, `${filename}.light.css`), css),
+      ),
       compileStringAsync(darkThemeContent, {
         loadPaths: [styleDir],
         style: 'compressed',
-      }).then(({ css }) => {
-        fs.writeFileSync(path.resolve(outputDir, `${filename}.dark.css`), css)
-      }),
+      }).then(({ css }) =>
+        fs.writeFile(path.resolve(outputDir, `${filename}.dark.css`), css),
+      ),
     ])
   }),
 )

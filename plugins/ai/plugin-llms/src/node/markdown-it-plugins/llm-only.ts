@@ -42,7 +42,7 @@ export const llmOnlyPlugin = (md: Markdown): void => {
           break
         }
 
-        nextLine++
+        nextLine += 1
       }
 
       if (!found) return false

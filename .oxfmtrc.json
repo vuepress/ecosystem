@@ -1,17 +1,8 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "ignorePatterns": [
-    "coverage/",
-    "**/dist/",
-    "**/.vuepress/.cache",
-    "**/.vuepress/.temp",
-    "**/.vuepress/dist"
-  ],
+  "extends": ["./node_modules/oxc-config-hope/.oxfmtrc.json"],
   "singleQuote": true,
   "semi": false,
   "printWidth": 80,
-  "quoteProps": "consistent",
-  "sortPackageJson": {
-    "sortScripts": true
-  }
+  "quoteProps": "consistent"
 }
