@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import { spawnSync } from 'node:child_process'
+import process from 'node:process'
 import type { PackageManager } from './packageManager.js'
 
 const NPM_MIRROR_REGISTRY = 'https://registry.npmmirror.com/'
@@ -33,12 +34,16 @@ export const getRegistry = (packageManager: PackageManager): string => {
     return spawnSync(
       // TODO: wait for bun to support get registry config
       `npm config get registry`,
-      { shell: true },
+      { shell: true, env: process.env },
     )
       .stdout.toString()
       .trim()
       .replace(/\/?$/, '/')
   }
+
+  // 优先从环境变量读取 registry
+  const envRegistry = process.env.npm_config_registry
+  if (envRegistry) return envRegistry.replace(/\/?$/, '/')
 
   return spawnSync(`${packageManager} config get registry`, {
     shell: true,
