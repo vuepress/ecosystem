@@ -1,7 +1,7 @@
 /* stylelint-disable scss/operator-no-newline-after */
 @use 'pkg:@vuepress/helper/scss/svg';
 
-$collapsed-lines-icon: '<svg viewBox="0 0 24 24"><path fill="none" stroke="%23000" stroke-width="2" d="m18 12l-6 6l-6-6m12-6l-6 6l-6-6"/></svg>';
+$collapsed-lines-icon: '<svg viewBox="0 0 24 24"><path fill="none" stroke="#000" stroke-width="2" d="m18 12l-6 6l-6-6m12-6l-6 6l-6-6"/></svg>';
 
 @property --vp-collapsed-lines-bg {
   inherits: false;
