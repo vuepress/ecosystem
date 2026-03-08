@@ -63,9 +63,13 @@ export const registerComponentsPlugin = ({
         const componentsWatcher = watch('.', {
           cwd: componentsDir,
           ignoreInitial: true,
-          ignored: (filepath, stats) =>
-            Boolean(stats?.isFile()) &&
-            !matcher(path.relative(componentsDir, filepath)),
+          ignored: (filepath, stats) => {
+            if (!stats?.isFile()) {
+              const dirName = path.basename(filepath)
+              return dirName === 'node_modules' || dirName.startsWith('.')
+            }
+            return !matcher(path.relative(componentsDir, filepath))
+          },
         })
         componentsWatcher.on('add', () => {
           void prepareClientConfigFile(app, options, optionsHash)

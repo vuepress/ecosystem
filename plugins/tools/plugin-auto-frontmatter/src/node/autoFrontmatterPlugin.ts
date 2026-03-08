@@ -55,13 +55,12 @@ export const autoFrontmatterPlugin =
           cwd,
           ignoreInitial: true,
           ignored: (filepath, stats) => {
-            const isFile = Boolean(stats?.isFile())
-            if (
-              filepath.includes('.vuepress') ||
-              (isFile && !filepath.endsWith('.md'))
-            )
-              return true
-            return isFile && !filter(path.relative(cwd, filepath))
+            if (!stats?.isFile()) {
+              const dirName = path.basename(filepath)
+              return dirName === 'node_modules' || dirName.startsWith('.')
+            }
+            if (!filepath.endsWith('.md')) return true
+            return !filter(path.relative(cwd, filepath))
           },
         })
         /**
