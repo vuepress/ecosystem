@@ -9,6 +9,6 @@ export default tsdownConfig(
     'client/index',
   ],
   {
-    external: ['@vuepress/plugin-redirect/modal'],
+    neverBundle: ['@vuepress/plugin-redirect/modal'],
   },
 )

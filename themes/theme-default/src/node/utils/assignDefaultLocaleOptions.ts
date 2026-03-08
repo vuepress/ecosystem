@@ -48,6 +48,8 @@ export const DEFAULT_LOCALE_DATA: DefaultThemeLocaleData = {
 
 /**
  * Assign default options
+ *
+ * @param localeOptions - Locale options to assign default options
  */
 export const assignDefaultLocaleOptions = (
   localeOptions: DefaultThemeLocaleOptions,

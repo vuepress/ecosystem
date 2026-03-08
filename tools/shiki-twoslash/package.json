@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/shiki-twoslash",
-  "version": "2.0.0-rc.124",
+  "version": "2.0.0-rc.125",
   "description": "VuePress shiki twoslash",
   "keywords": [
     "shiki",
@@ -23,22 +23,22 @@
     "directory": "tools/tools/shiki-twoslash"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "type": "module",
   "sideEffects": [
-    "./lib/client/styles/**/*.css"
+    "./dist/client/styles/**/*.css"
   ],
   "exports": {
     ".": {
-      "types": "./lib/node/index.d.ts",
-      "default": "./lib/node/index.js"
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.js"
     },
     "./client": {
-      "types": "./lib/client/index.d.ts",
-      "default": "./lib/client/index.js"
+      "types": "./dist/client/index.d.ts",
+      "default": "./dist/client/index.js"
     },
-    "./twoslash.css": "./lib/client/styles/twoslash.css",
+    "./twoslash.css": "./dist/client/styles/twoslash.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -46,11 +46,11 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./lib",
-    "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
+    "clean": "rimraf --glob ./dist",
+    "style": "sass src:dist --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@shikijs/twoslash": "^4.0.0",
+    "@shikijs/twoslash": "^4.0.1",
     "@vuepress/helper": "workspace:*",
     "floating-vue": "^5.2.2",
     "mdast-util-from-markdown": "^2.0.3",
@@ -62,7 +62,7 @@
   },
   "devDependencies": {
     "@types/hast": "^3.0.4",
-    "shiki": "^4.0.0",
+    "shiki": "^4.0.1",
     "vue": "catalog:"
   },
   "peerDependencies": {

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-shiki",
-  "version": "2.0.0-rc.124",
+  "version": "2.0.0-rc.125",
   "description": "VuePress plugin - shiki",
   "keywords": [
     "highlight",
@@ -21,21 +21,21 @@
     "directory": "plugins/markdown/plugin-shiki"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "type": "module",
   "sideEffects": [
-    "./lib/client/styles/**/*.css"
+    "./dist/client/styles/**/*.css"
   ],
-  "main": "./lib/node/index.js",
-  "types": "./lib/node/index.d.ts",
+  "main": "./dist/node/index.js",
+  "types": "./dist/node/index.d.ts",
   "exports": {
     ".": {
-      "types": "./lib/node/index.d.ts",
-      "default": "./lib/node/index.js"
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.js"
     },
-    "./resolveLang": "./lib/node/resolveLang.js",
-    "./shiki.css": "./lib/client/styles/shiki.css",
+    "./resolveLang": "./dist/node/resolveLang.js",
+    "./shiki.css": "./dist/client/styles/shiki.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -43,15 +43,15 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./lib",
-    "style": "sass src:lib --embed-sources --style=compressed --pkg-importer=node"
+    "clean": "rimraf --glob ./dist",
+    "style": "sass src:dist --embed-sources --style=compressed --pkg-importer=node"
   },
   "dependencies": {
-    "@shikijs/transformers": "^4.0.0",
+    "@shikijs/transformers": "^4.0.1",
     "@vuepress/helper": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
     "nanoid": "^5.1.6",
-    "shiki": "^4.0.0",
+    "shiki": "^4.0.1",
     "synckit": "^0.11.12"
   },
   "devDependencies": {

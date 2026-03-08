@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-google-tag-manager",
-  "version": "2.0.0-rc.124",
+  "version": "2.0.0-rc.125",
   "description": "VuePress plugin - google-tag-manager",
   "keywords": [
     "google-tag-manager",
@@ -20,14 +20,14 @@
     "directory": "plugins/tools/plugin-google-tag-manager"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "type": "module",
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./lib/node/index.d.ts",
-      "default": "./lib/node/index.js"
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.js"
     },
     "./package.json": "./package.json"
   },
@@ -36,7 +36,7 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./lib"
+    "clean": "rimraf --glob ./dist"
   },
   "peerDependencies": {
     "vuepress": "catalog:"
