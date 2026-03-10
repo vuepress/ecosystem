@@ -29,7 +29,7 @@
   ],
   "type": "module",
   "sideEffects": [
-    "./dist/client/styles/**/*.css"
+    "./dist/**/*.css"
   ],
   "main": "./dist/node/index.js",
   "types": "./dist/node/index.d.ts",
