@@ -328,7 +328,7 @@ export default defineUserConfig({
     }),
     replaceAssetsPlugin({
       find: /^\/images\/replace-assets\/.*\.(png|jpg|svg|gif|webp)$/,
-      replacement: 'https://cnd.example.com',
+      replacement: 'https://cdn.example.com',
     }),
     sassPalettePlugin({
       id: 'test',
