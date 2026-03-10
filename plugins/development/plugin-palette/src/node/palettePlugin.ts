@@ -145,40 +145,33 @@ export const palettePlugin = ({
       cwd: app.dir.source(),
       ignoreInitial: true,
     })
-    paletteWatcher.on('add', () => {
-      void preparePaletteFile(app, {
-        userPaletteFile,
-        tempPaletteFile,
-        importCode,
-      })
-    })
-    paletteWatcher.on('unlink', () => {
-      void preparePaletteFile(app, {
-        userPaletteFile,
-        tempPaletteFile,
-        importCode,
-      })
-    })
-    watchers.push(paletteWatcher)
 
     const styleWatcher = watch(userStyleFile, {
       cwd: app.dir.source(),
       ignoreInitial: true,
     })
-    styleWatcher.on('add', () => {
+
+    const handlePaletteChange = (): void => {
+      void preparePaletteFile(app, {
+        userPaletteFile,
+        tempPaletteFile,
+        importCode,
+      })
+    }
+
+    const handleStyleChange = (): void => {
       void prepareStyleFile(app, {
         userStyleFile,
         tempStyleFile,
         importCode,
       })
-    })
-    styleWatcher.on('unlink', () => {
-      void prepareStyleFile(app, {
-        userStyleFile,
-        tempStyleFile,
-        importCode,
-      })
-    })
-    watchers.push(styleWatcher)
+    }
+
+    paletteWatcher.on('add', handlePaletteChange)
+    paletteWatcher.on('change', handlePaletteChange)
+    styleWatcher.on('add', handleStyleChange)
+    styleWatcher.on('unlink', handleStyleChange)
+
+    watchers.push(paletteWatcher, styleWatcher)
   },
 })
