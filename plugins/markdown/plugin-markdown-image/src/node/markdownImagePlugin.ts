@@ -7,7 +7,7 @@ import { deepAssign } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import type { MarkdownImagePluginOptions } from './options.js'
-import { prepareClientConfigFile } from './prepare/index.js'
+import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 import { PLUGIN_NAME } from './utils.js'
 
 declare module 'vuepress/markdown' {

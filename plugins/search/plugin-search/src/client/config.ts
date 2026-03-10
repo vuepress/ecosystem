@@ -4,7 +4,7 @@ import { SearchBox } from './components/index.js'
 import type { SearchPluginLocaleConfig } from './types.js'
 
 import './styles/vars.css'
-import './styles/search.css'
+import './styles/search.scss'
 
 declare const __SEARCH_LOCALES__: SearchPluginLocaleConfig
 declare const __SEARCH_HOT_KEYS__: string[]

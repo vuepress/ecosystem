@@ -13,7 +13,7 @@ import {
 
 import type { TabProps } from './Tabs.js'
 
-import '../styles/code-tabs.css'
+import '../styles/code-tabs.scss'
 
 const CODE_TAB_STORE_NAME = 'VUEPRESS_CODE_TAB_STORE'
 

@@ -14,7 +14,7 @@ import { useFrontmatter } from 'vuepress/client'
 import type { BackToTopPluginLocaleData } from '../../shared/index.js'
 
 import '@vuepress/helper/transition/fade-in.css'
-import '../styles/back-to-top.css'
+import '../styles/back-to-top.scss'
 
 declare const __BACK_TO_TOP_LOCALES__: ExactLocaleConfig<BackToTopPluginLocaleData>
 declare const __BACK_TO_TOP_PROGRESS__: boolean

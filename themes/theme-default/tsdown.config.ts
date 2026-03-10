@@ -18,6 +18,12 @@ export default tsdownConfig(
       .map((file) => `client/utils/${file.slice(0, -3)}`),
   ],
   {
-    neverBundle: [/^@theme\//, /\.vue$/],
+    neverBundle: [/^@theme\//, /\.vue$/, /\.s?css$/],
+    copy: [
+      'client/components/global/*.vue',
+      'client/components/*.vue',
+      'client/layouts/*.vue',
+      'client/styles/**/*.scss',
+    ],
   },
 )

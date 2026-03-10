@@ -1,5 +1,5 @@
 @use 'sass:color';
-@use 'pkg:@vuepress/helper/scss/svg';
+@use 'pkg:@vuepress/helper';
 @use 'icons';
 
 .hint-container {
@@ -86,7 +86,7 @@
     --hint-c-soft: var(--important-c-soft);
 
     > .hint-container-title::before {
-      @include svg.mask-svg(icons.$important-icon);
+      @include helper.mask-svg(icons.$important-icon);
     }
   }
 
@@ -96,7 +96,7 @@
     --hint-c-soft: var(--info-c-soft);
 
     > .hint-container-title::before {
-      @include svg.mask-svg(icons.$info-icon);
+      @include helper.mask-svg(icons.$info-icon);
     }
   }
 
@@ -106,7 +106,7 @@
     --hint-c-soft: var(--note-c-soft);
 
     > .hint-container-title::before {
-      @include svg.mask-svg(icons.$note-icon);
+      @include helper.mask-svg(icons.$note-icon);
     }
   }
 
@@ -116,7 +116,7 @@
     --hint-c-soft: var(--tip-c-soft);
 
     > .hint-container-title::before {
-      @include svg.mask-svg(icons.$tip-icon);
+      @include helper.mask-svg(icons.$tip-icon);
     }
   }
 
@@ -126,7 +126,7 @@
     --hint-c-soft: var(--warning-c-soft);
 
     > .hint-container-title::before {
-      @include svg.mask-svg(icons.$warning-icon);
+      @include helper.mask-svg(icons.$warning-icon);
     }
   }
 
@@ -136,7 +136,7 @@
     --hint-c-soft: var(--caution-c-soft);
 
     > .hint-container-title::before {
-      @include svg.mask-svg(icons.$caution-icon);
+      @include helper.mask-svg(icons.$caution-icon);
     }
   }
 
@@ -199,7 +199,7 @@
       }
 
       &::before {
-        @include svg.mask-svg(icons.$detail-icon);
+        @include helper.mask-svg(icons.$detail-icon);
 
         content: ' ';
 

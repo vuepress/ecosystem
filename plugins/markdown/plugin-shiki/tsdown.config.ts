@@ -1,3 +1,7 @@
 import { tsdownConfig } from '../../../scripts/tsdown.js'
 
-export default tsdownConfig(['node/index', 'node/resolveLang'])
+export default tsdownConfig([
+  'node/index',
+  'node/resolveLang',
+  { 'client/styles/*': './src/client/styles/*.scss' },
+])

@@ -33,7 +33,7 @@ import SearchKeyHints from './SearchKeyHints.js'
 import { SearchLoading } from './SearchLoading.js'
 import { SearchIcon } from './icons.js'
 
-import '../styles/search-modal.css'
+import '../styles/search-modal.scss'
 
 const SearchResult = defineAsyncComponent({
   loader: () =>

@@ -18,7 +18,7 @@ import type { RedirectPluginLocaleConfig } from '../types.js'
 import { statusLocalStorage, statusSessionStorage } from '../utils/index.js'
 
 import '@vuepress/helper/transition/fade-in-scale-up.css'
-import '../styles/redirect-modal.css'
+import '../styles/redirect-modal.scss'
 
 export default defineComponent({
   name: 'RedirectModal',

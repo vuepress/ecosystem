@@ -42,8 +42,7 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./dist",
-    "style": "sass src:dist --embed-sources --style=compressed --pkg-importer=node"
+    "clean": "rimraf ./dist"
   },
   "dependencies": {
     "@mdit/helper": "^0.23.1",

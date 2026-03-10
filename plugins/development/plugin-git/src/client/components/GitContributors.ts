@@ -4,7 +4,7 @@ import type { GitContributorInfo } from '../../shared/index.js'
 import { useContributors, useGitLocale } from '../composables/index.js'
 import { VPHeader } from './VPHeader.js'
 
-import '../styles/contributors.css'
+import '../styles/contributors.scss'
 
 export const GitContributor: FunctionalComponent<GitContributorInfo> = ({
   name,

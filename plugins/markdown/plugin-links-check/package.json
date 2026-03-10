@@ -40,7 +40,7 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./dist"
+    "clean": "rimraf ./dist"
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*"

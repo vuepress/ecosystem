@@ -5,7 +5,7 @@ import type { PropType, SlotsType, VNode } from 'vue'
 import { defineComponent, h, ref, shallowRef, useId } from 'vue'
 import type { MarkdownPreviewPluginLocaleConfig } from '../../shared/index.js'
 
-import '../styles/vp-preview.css'
+import '../styles/vp-preview.scss'
 
 export interface VPPreviewProps {
   /**

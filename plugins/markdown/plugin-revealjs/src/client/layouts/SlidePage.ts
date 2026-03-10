@@ -3,7 +3,7 @@ import type { VNode } from 'vue'
 import { defineComponent, h, ref, shallowRef } from 'vue'
 import { Content, useRouteLocale, useRouter } from 'vuepress/client'
 
-import '../styles/slide-page.css'
+import '../styles/slide-page.scss'
 
 const BACK_SVG =
   '<svg xmlns="http://www.w3.org/2000/svg" class="back-icon" viewBox="0 0 1024 1024" fill="currentColor"><path d="M1014.749 449.156v125.688H260.626l345.64 345.64-89.239 89.237L19.307 512l497.72-497.721 89.238 89.238-345.64 345.64h754.124z"></path></svg>'

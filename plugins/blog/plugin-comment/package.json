@@ -43,7 +43,10 @@
       "types": "./dist/client/index.d.ts",
       "default": "./dist/client/index.js"
     },
-    "./client/*": "./dist/client/*",
+    "./components/*": {
+      "types": "./dist/client/components/*.d.ts",
+      "default": "./dist/client/components/*.js"
+    },
     "./pageview": {
       "types": "./dist/client/pageview/noop.d.ts",
       "default": "./dist/client/pageview/noop.js"
@@ -55,8 +58,7 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./dist",
-    "style": "sass src:dist --embed-sources --style=compressed --pkg-importer=node"
+    "clean": "rimraf ./dist"
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",

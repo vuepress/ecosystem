@@ -7,4 +7,7 @@ export default tsdownConfig([
   'client/components/PwaReadyPopup',
   'client/composables/index',
   'client/index',
+  {
+    'client/styles/*': './src/client/styles/*.css',
+  },
 ])

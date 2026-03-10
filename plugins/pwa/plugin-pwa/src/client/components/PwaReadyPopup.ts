@@ -15,7 +15,7 @@ import { skipWaiting } from '../utils/index.js'
 import { UpdateIcon } from './icons.js'
 
 import '@vuepress/helper/transition/fade-in-scale-up.css'
-import '../styles/popup.css'
+import '../styles/popup.scss'
 
 export const PwaReadyPopup = defineComponent({
   name: 'PwaReadyPopup',

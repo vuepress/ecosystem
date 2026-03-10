@@ -2,7 +2,7 @@ import { defineClientConfig } from 'vuepress/client'
 import CommentService from './components/CommentService.js'
 import { injectCommentConfig } from './helpers/index.js'
 
-import './styles/base.css'
+import './styles/base.scss'
 
 export default defineClientConfig({
   enhance: ({ app }) => {

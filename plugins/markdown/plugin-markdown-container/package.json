@@ -37,7 +37,7 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./dist"
+    "clean": "rimraf ./dist"
   },
   "dependencies": {
     "@types/markdown-it": "^14.1.2",
