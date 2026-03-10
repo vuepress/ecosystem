@@ -1,12 +1,7 @@
 import { addViteSsrNoExternal, getPageExcerpt } from '@vuepress/helper'
 import { watch } from 'chokidar'
 import type { Page, PluginFunction } from 'vuepress/core'
-import {
-  createPage,
-  preparePageChunk,
-  preparePageComponent,
-  prepareRoutes,
-} from 'vuepress/core'
+import { createPage, preparePageChunk, prepareRoutes } from 'vuepress/core'
 import type { CategoriesMap, TypesMap } from '../shared/index.js'
 import {
   getCategory,
@@ -237,7 +232,6 @@ export const blogPlugin =
                 pagesToBeAdded.map(async (pageOptions) => {
                   const page = await createPage(app, pageOptions)
 
-                  await preparePageComponent(app, page)
                   await preparePageChunk(app, page)
                   app.pages.push(page)
                 }),
