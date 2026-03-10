@@ -1,5 +1,10 @@
 import type { App } from 'vuepress/core'
 
+/**
+ * Simple store to handle page paths with a unique index.
+ *
+ * It is used to avoid duplicating long page paths in category and type data.
+ */
 export class Store {
   public store: string[]
 

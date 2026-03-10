@@ -8,7 +8,7 @@ import type { BlogTypeOptions } from '../options.js'
 import type { Store } from '../store.js'
 import { getPagePath } from '../utils.js'
 
-export const getType = (
+export const collectTypes = (
   pagesMap: PagesMap,
   store: Store,
   type: BlogTypeOptions[],

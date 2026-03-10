@@ -1,15 +1,10 @@
 import { addViteSsrNoExternal, getPageExcerpt } from '@vuepress/helper'
 import { watch } from 'chokidar'
 import type { Page, PluginFunction } from 'vuepress/core'
-import {
-  createPage,
-  preparePageChunk,
-  preparePageComponent,
-  prepareRoutes,
-} from 'vuepress/core'
+import { createPage, preparePageChunk, prepareRoutes } from 'vuepress/core'
 import type { CategoriesMap, TypesMap } from '../shared/index.js'
 import {
-  getCategory,
+  collectCategories,
   getCategoryOptions,
   prepareCategoriesMap,
 } from './category/index.js'
@@ -17,7 +12,7 @@ import { getPageMap } from './getPagesMap.js'
 import { PLUGIN_NAME, logger } from './logger.js'
 import type { BlogPluginOptions } from './options.js'
 import { Store, prepareStore } from './store.js'
-import { getType, getTypeOptions, prepareTypesMap } from './type/index.js'
+import { collectTypes, getTypeOptions, prepareTypesMap } from './type/index.js'
 
 /**
  * Blog plugin for VuePress
@@ -73,6 +68,9 @@ export const blogPlugin =
     let categoriesMap: CategoriesMap = {}
     let typesMap: TypesMap = {}
 
+    const hotReload =
+      'hotReload' in options ? options.hotReload : app.env.isDebug
+
     return {
       name: PLUGIN_NAME,
 
@@ -116,7 +114,7 @@ export const blogPlugin =
       onInitialized: async () => {
         const pageMap = getPageMap(app, filter)
 
-        const categoryResult = getCategory(
+        const categoryResult = collectCategories(
           pageMap,
           store,
           categoryOptions,
@@ -124,7 +122,7 @@ export const blogPlugin =
           app.env.isDebug,
         )
 
-        const typeResult = getType(
+        const typeResult = collectTypes(
           pageMap,
           store,
           typeOptions,
@@ -178,10 +176,19 @@ export const blogPlugin =
         if (app.env.isDebug) logger.info('temp file generated')
       },
 
-      onWatched: (_, watchers) => {
-        const hotReload =
-          'hotReload' in options ? options.hotReload : app.env.isDebug
+      // onPageUpdated: (app, type, newPage, oldPage) => {
+      //   if (!hotReload) return
 
+      //   if (type === 'create') {
+      //     categoryOptions.forEach(({ getter }) => {
+      //       const categories = getter(newPage)
+
+      //       store.addItem(categories)
+      //     })
+      //   }
+      // },
+
+      onWatched: (_, watchers) => {
         if (hotReload) {
           const pageDataWatcher = watch('pages', {
             cwd: app.dir.temp(),
@@ -193,7 +200,7 @@ export const blogPlugin =
 
           const updateBlog = async (): Promise<void> => {
             const pageMap = getPageMap(app, filter)
-            const categoryResult = getCategory(
+            const categoryResult = collectCategories(
               pageMap,
               store,
               categoryOptions,
@@ -201,7 +208,7 @@ export const blogPlugin =
               app.env.isDebug,
             )
 
-            const typeResult = getType(
+            const typeResult = collectTypes(
               pageMap,
               store,
               typeOptions,
@@ -237,7 +244,6 @@ export const blogPlugin =
                 pagesToBeAdded.map(async (pageOptions) => {
                   const page = await createPage(app, pageOptions)
 
-                  await preparePageComponent(app, page)
                   await preparePageChunk(app, page)
                   app.pages.push(page)
                 }),

@@ -27,7 +27,7 @@ import { getPagePath } from '../utils.js'
  * @returns Object containing categories map and page options / 包含分类映射和页面选项的对象
  */
 // oxlint-disable-next-line max-lines-per-function
-export const getCategory = (
+export const collectCategories = (
   pagesMap: PagesMap,
   store: Store,
   categoryOptions: BlogCategoryOptions[],
