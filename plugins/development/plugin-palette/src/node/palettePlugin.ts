@@ -168,7 +168,7 @@ export const palettePlugin = ({
     }
 
     paletteWatcher.on('add', handlePaletteChange)
-    paletteWatcher.on('change', handlePaletteChange)
+    paletteWatcher.on('unlink', handlePaletteChange)
     styleWatcher.on('add', handleStyleChange)
     styleWatcher.on('unlink', handleStyleChange)
 
