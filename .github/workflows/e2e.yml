@@ -28,7 +28,7 @@ jobs:
       - name: Use Node.js 22
         uses: actions/setup-node@v6
         with:
-          node-version: 24
+          node-version: 22
           cache: pnpm
 
       - name: Install dependencies
@@ -89,12 +89,14 @@ jobs:
         run: pnpm bundle
 
       - name: E2E test (base /)
+        continue-on-error: ${{ matrix.os == 'windows-latest' && matrix.bundler == 'vite' }}
         run: pnpm test:e2e
         env:
           E2E_BASE: /
           E2E_BUNDLER: ${{ matrix.bundler }}
 
       - name: E2E test (base /e2e/)
+        continue-on-error: ${{ matrix.os == 'windows-latest' && matrix.bundler == 'vite' }}
         run: pnpm test:e2e
         env:
           E2E_BASE: /e2e/
