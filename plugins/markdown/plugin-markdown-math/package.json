@@ -56,8 +56,8 @@
     "markdown-it": "^14.1.1"
   },
   "peerDependencies": {
-    "@mathjax/src": "^4.0.0",
-    "katex": "^0.16.21",
+    "@mathjax/src": "^4.1.1",
+    "katex": "^0.16.38",
     "vuepress": "catalog:"
   },
   "peerDependenciesMeta": {
