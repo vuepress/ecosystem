@@ -46,7 +46,7 @@ const defineFileTreeContainer = (
       break
 
     content += `${state.src.slice(state.bMarks[line], state.eMarks[line])}\n`
-    line++
+    line += 1
   }
 
   const token = state.push(`${NAME}_container`, '', 0)

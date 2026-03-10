@@ -47,7 +47,7 @@ export const getRawContributors = (
       const contributor = contributors.get(username ?? name)
 
       if (contributor) {
-        contributor.commits++
+        contributor.commits += 1
         // try to rewrite the no-reply email to a genuine email
         if (contributor.email.includes('@users.noreply.github.com'))
           contributor.email = config?.email ?? email

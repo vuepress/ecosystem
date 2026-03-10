@@ -11,6 +11,8 @@
     "format": "oxfmt",
     "lint": "oxlint --fix --report-unused-disable-directives --deny-warnings && oxfmt && stylelint **/*.{css,html,scss,vue} --fix",
     "lint:check": "oxlint --report-unused-disable-directives --deny-warnings && oxfmt --check && stylelint **/*.{css,html,scss,vue}",
+    "pkg:check-update": "ncu",
+    "pkg:update": "pnpm up -r",
     "prepare": "husky",
     "release": "pnpm release:check && pnpm release:version && pnpm release:publish",
     "release:check": "pnpm lint && pnpm clean && pnpm bundle && pnpm test",
@@ -25,8 +27,8 @@
   "devDependencies": {
     "@commitlint/cli": "^20.4.3",
     "@commitlint/config-conventional": "^20.4.3",
-    "@lerna-lite/cli": "^4.11.3",
-    "@lerna-lite/publish": "^4.11.3",
+    "@lerna-lite/cli": "^4.11.4",
+    "@lerna-lite/publish": "^4.11.4",
     "@types/node": "^25.3.5",
     "@types/webpack-env": "^1.18.8",
     "@vitest/coverage-istanbul": "4.0.18",
@@ -35,6 +37,8 @@
     "http-server": "^14.1.1",
     "husky": "^9.1.7",
     "nano-staged": "^0.9.0",
+    "npm-check-updates": "^19.6.3",
+    "oxc-config-hope": "^0.0.5",
     "oxfmt": "0.36.0",
     "oxlint": "1.51.0",
     "oxlint-tsgolint": "0.16.0",
@@ -61,5 +65,5 @@
   "engines": {
     "node": "^20.19.0 || >= 22.12.0"
   },
-  "packageManager": "pnpm@10.30.3"
+  "packageManager": "pnpm@10.31.0"
 }

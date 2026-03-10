@@ -219,7 +219,6 @@ $popper: v-popper;
 
 .twoslash .#{$popper} {
   display: inline-block;
-  content-visibility: auto;
 }
 
 .#{$popper}--theme-twoslash {

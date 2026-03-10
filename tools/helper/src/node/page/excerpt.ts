@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-enum-comparison */
+// oxlint-disable-next-line vue/prefer-import-from-vue
 import { isHTMLTag, isMathMLTag, isSVGTag } from '@vue/shared'
 import type { AnyNode, Element } from 'domhandler'
 import matter from 'gray-matter'

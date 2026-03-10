@@ -12,7 +12,6 @@ const app = createBuildApp({
   bundler: {} as Bundler,
   temp: path.resolve(__dirname, './__fixtures__/.temp'),
 })
-let identifier = 0
 
 describe('plugin-register-components > node > prepareClientConfigFile', () => {
   it('should write a noop temp file', async () => {
@@ -25,7 +24,7 @@ describe('plugin-register-components > node > prepareClientConfigFile', () => {
         getComponentName: (filename) =>
           path.trimExt(filename.replaceAll(/\/|\\/g, '-')),
       },
-      `${identifier++}`,
+      '1',
     )
     const result = (await fs.readFile(tempFile)).toString()
     expect(result).not.toMatch(/app.component/)
@@ -41,7 +40,7 @@ describe('plugin-register-components > node > prepareClientConfigFile', () => {
         getComponentName: (filename) =>
           path.trimExt(filename.replaceAll(/\/|\\/g, '-')),
       },
-      `${identifier++}`,
+      '2',
     )
     const result = (await fs.readFile(tempFile)).toString()
     expect(result).toMatch(/app.component\("FooBar",/)
@@ -62,7 +61,7 @@ describe('plugin-register-components > node > prepareClientConfigFile', () => {
         getComponentName: (filename) =>
           path.trimExt(filename.replaceAll(/\/|\\/g, '-')),
       },
-      `${identifier++}`,
+      '3',
     )
     const result = (await fs.readFile(tempFile)).toString()
     expect(result).toMatch(/app.component\("FooBar",.*FooBaz.ts"/)

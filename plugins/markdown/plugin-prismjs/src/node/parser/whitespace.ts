@@ -61,7 +61,7 @@ export const renderWhitespaceInLine = (
             has = false
             break
           }
-          j++
+          j += 1
         }
         snippets[i] = renderSpace(snippet.slice(0, j)) + snippet.slice(j)
       }
@@ -83,7 +83,7 @@ export const renderWhitespaceInLine = (
             has = false
             break
           }
-          j--
+          j -= 1
         }
         snippets[i] =
           j === snippet.length - 1
