@@ -1,7 +1,7 @@
 import { useEventListener } from '@vueuse/core'
 import { defineClientConfig } from 'vuepress/client'
 
-import './styles/hint.css'
+import './styles/hint.scss'
 import './styles/vars.css'
 
 export default defineClientConfig({

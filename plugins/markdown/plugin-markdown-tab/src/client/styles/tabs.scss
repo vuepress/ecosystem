@@ -1,6 +1,4 @@
-:root {
-  --tab-border-radius: 0.5rem;
-}
+@use 'tabs-vars';
 
 .vp-tabs {
   margin: 1.5rem 0;

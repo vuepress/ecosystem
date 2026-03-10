@@ -34,7 +34,7 @@
   ],
   "type": "module",
   "sideEffects": [
-    "./dist/client/styles/**/*.css"
+    "./dist/**/*.css"
   ],
   "exports": {
     ".": {
@@ -53,8 +53,7 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./dist",
-    "style": "sass src:dist --embed-sources --style=compressed"
+    "clean": "rimraf ./dist"
   },
   "dependencies": {
     "@mdit/plugin-container": "^0.23.1",

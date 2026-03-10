@@ -6,7 +6,7 @@ import type { ManifestExternalApplicationResource } from '../../shared/index.js'
 import type { PwaPluginLocaleConfig } from '../types.js'
 import { PwaInstallModal } from './PwaInstallModal.js'
 
-import '../styles/modal.css'
+import '../styles/modal.scss'
 
 interface ModernNavigator extends Navigator {
   // Nonstandard Api

@@ -20,7 +20,7 @@ import type {
 import { useWalineOptions } from '../helpers/index.js'
 
 import '@waline/client/waline.css'
-import '../styles/waline.css'
+import '../styles/waline.scss'
 
 declare const WALINE_META: boolean
 declare const WALINE_LOCALES: ExactLocaleConfig<WalineLocaleData>

@@ -24,7 +24,7 @@
   ],
   "type": "module",
   "sideEffects": [
-    "./dist/client/styles/**/*.css"
+    "./dist/**/*.css"
   ],
   "exports": {
     ".": {
@@ -35,6 +35,9 @@
       "types": "./dist/client/index.d.ts",
       "default": "./dist/client/index.js"
     },
+    "./type": {
+      "types": "./dist/client/searchIndex.d.ts"
+    },
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -42,9 +45,7 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./dist",
-    "copy": "cpx \"src/**/*.{d.ts,svg}\" dist",
-    "style": "sass src:dist --embed-sources --style=compressed --pkg-importer=node"
+    "clean": "rimraf ./dist"
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",

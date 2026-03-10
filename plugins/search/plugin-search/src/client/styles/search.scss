@@ -1,3 +1,7 @@
+@use 'pkg:@vuepress/helper';
+
+$search-icon: '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="13"><g fill="none" stroke="#aaa" stroke-width="2"><path d="m11.29 11.71-4-4"/><circle cx="5" cy="5" r="4"/></g></svg>';
+
 .search-box {
   position: relative;
   display: inline-block;
@@ -17,7 +21,8 @@
     border: 1px solid var(--search-c-divider);
     border-radius: 2rem;
 
-    background: var(--search-c-bg) url('search.svg') 0.6rem 0.5rem no-repeat;
+    background: var(--search-c-bg) #{helper.encode-svg($search-icon)} 0.6rem
+      0.5rem no-repeat;
     background-size: 1rem;
     color: var(--search-c-text);
     outline: none;

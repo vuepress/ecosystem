@@ -42,7 +42,7 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./dist"
+    "clean": "rimraf ./dist"
   },
   "dependencies": {
     "@mdit/plugin-include": "^0.23.1",

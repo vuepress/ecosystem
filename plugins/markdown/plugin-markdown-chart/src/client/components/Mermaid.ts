@@ -20,7 +20,7 @@ import {
 import { useMermaidOptions } from '../helpers/index.js'
 import { DOWNLOAD_ICON, PREVIEW_ICON } from '../utils/index.js'
 
-import '../styles/mermaid.css'
+import '../styles/mermaid.scss'
 
 const DEFAULT_CHART_OPTIONS = { useMaxWidth: false }
 

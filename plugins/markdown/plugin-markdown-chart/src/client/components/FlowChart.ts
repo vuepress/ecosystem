@@ -18,7 +18,7 @@ import { onContentUpdated } from 'vuepress/client'
 
 import { flowchartPresets } from '../utils/index.js'
 
-import '../styles/flowchart.css'
+import '../styles/flowchart.scss'
 
 const getScale = (width: number): number =>
   width < 419 ? 0.8 : width > 1280 ? 1 : 0.9

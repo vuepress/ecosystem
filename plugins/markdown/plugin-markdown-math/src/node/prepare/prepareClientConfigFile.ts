@@ -15,7 +15,8 @@ export const prepareClientConfigFile = async (
 
   content +=
     mathRenderer === 'katex'
-      ? `\
+      ? // Note: katex.scss would not be compiled by tsdown here
+        `\
 import "${getModulePath('katex/dist/katex.min.css', import.meta)}";
 import "${CLIENT_FOLDER}styles/katex.css";
 ${

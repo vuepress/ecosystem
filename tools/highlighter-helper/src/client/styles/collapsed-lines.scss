@@ -1,5 +1,5 @@
 /* stylelint-disable scss/operator-no-newline-after */
-@use 'pkg:@vuepress/helper/scss/svg';
+@use 'pkg:@vuepress/helper';
 
 $collapsed-lines-icon: '<svg viewBox="0 0 24 24"><path fill="none" stroke="#000" stroke-width="2" d="m18 12l-6 6l-6-6m12-6l-6 6l-6-6"/></svg>';
 
@@ -26,7 +26,7 @@ div[class*='language-'].has-collapsed-lines {
   .collapsed-lines {
     --vp-collapsed-lines-bg: var(--code-c-bg);
     /* stylelint-disable-next-line scss/dollar-variable-no-missing-interpolation */
-    --vp-collapsed-lines-icon: #{svg.encode-svg($collapsed-lines-icon)};
+    --vp-collapsed-lines-icon: #{helper.encode-svg($collapsed-lines-icon)};
     --vp-collapsed-lines-rotate: 0deg;
 
     position: absolute;

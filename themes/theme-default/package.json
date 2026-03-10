@@ -55,8 +55,7 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./dist",
-    "copy": "cpx \"src/**/*.{d.ts,vue,scss}\" dist"
+    "clean": "rimraf ./dist"
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",

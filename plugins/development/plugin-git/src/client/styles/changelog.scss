@@ -1,4 +1,4 @@
-@use 'pkg:@vuepress/helper/scss/svg';
+@use 'pkg:@vuepress/helper';
 
 $changelog-icon: '<svg viewBox="0 0 16 16"><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" d="M2.71 10.96a6.5 6.5 0 1 0-.69-3.53M2 8l1.5-1.5M2 8L.5 6.5m8 2v-4m0 4h3"/></svg>';
 $changelog-menu-icon: '<svg viewBox="0 0 24 24"><g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 5h0.01"/><path d="M8 5h12"/><path d="M4 10h0.01"/><path d="M8 10h12"/><path d="M4 15h0.01"/><path d="M8 15h12"/><path d="M4 20h0.01"/><path d="M8 20h12"/></g></svg>';
@@ -73,12 +73,12 @@ $changelog-tag-icon: '<svg viewBox="0 0 24 24"><g fill="none" stroke="#000" stro
 
 .vp-changelog-icon {
   /* stylelint-disable-next-line scss/dollar-variable-no-missing-interpolation */
-  --icon: #{svg.encode-svg($changelog-icon)};
+  --icon: #{helper.encode-svg($changelog-icon)};
 }
 
 .vp-changelog-menu-icon {
   /* stylelint-disable-next-line scss/dollar-variable-no-missing-interpolation */
-  --icon: #{svg.encode-svg($changelog-menu-icon)};
+  --icon: #{helper.encode-svg($changelog-menu-icon)};
 }
 
 .vp-changelog-list {
@@ -126,12 +126,12 @@ $changelog-tag-icon: '<svg viewBox="0 0 24 24"><g fill="none" stroke="#000" stro
 
 .vp-changelog-item-commit::before {
   // stylelint-disable-next-line scss/dollar-variable-no-missing-interpolation
-  --icon: #{svg.encode-svg($changelog-commit-icon)};
+  --icon: #{helper.encode-svg($changelog-commit-icon)};
 }
 
 .vp-changelog-item-tag::before {
   // stylelint-disable-next-line scss/dollar-variable-no-missing-interpolation
-  --icon: #{svg.encode-svg($changelog-tag-icon)};
+  --icon: #{helper.encode-svg($changelog-tag-icon)};
 }
 
 .vp-changelog-tag {

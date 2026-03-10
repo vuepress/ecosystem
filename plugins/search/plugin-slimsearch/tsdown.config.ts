@@ -3,9 +3,9 @@ import { tsdownConfig } from '../../../scripts/tsdown.js'
 export default [
   tsdownConfig([
     'node/index',
-    'client/components/SearchResult',
     'client/config',
     'client/index',
+    'client/shims.d',
     'client/worker',
   ]),
   tsdownConfig('worker/index', {

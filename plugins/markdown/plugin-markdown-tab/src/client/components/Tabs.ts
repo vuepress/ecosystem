@@ -11,7 +11,7 @@ import {
   watch,
 } from 'vue'
 
-import '../styles/tabs.css'
+import '../styles/tabs.scss'
 
 export interface TabProps extends Record<string, unknown> {
   id: string

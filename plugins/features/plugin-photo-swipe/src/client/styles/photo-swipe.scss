@@ -30,9 +30,9 @@
   transition:
     width 0.3s,
     color 0.3s;
-}
 
-.photo-swipe-bullet.active {
-  width: 30px;
-  background: var(--photo-swipe-c-bullet-active);
+  &.active {
+    width: 30px;
+    background: var(--photo-swipe-c-bullet-active);
+  }
 }

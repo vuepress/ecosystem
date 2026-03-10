@@ -32,7 +32,6 @@ export const prepareClientConfigFile = (
     'markdown-tab/config.js',
     `\
 ${[...imports.values()].join('\n')}
-import "${CLIENT_FOLDER}styles/vars.css";
 
 export default {
   enhance: ({ app }) => {

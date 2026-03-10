@@ -33,6 +33,9 @@
       "types": "./dist/client/index.d.ts",
       "default": "./dist/client/index.js"
     },
+    "./type": {
+      "types": "./dist/client/themeData.d.ts"
+    },
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -40,8 +43,7 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./dist",
-    "copy": "cpx \"src/**/*.d.ts\" dist"
+    "clean": "rimraf ./dist"
   },
   "dependencies": {
     "@vue/devtools-api": "^8.0.7",

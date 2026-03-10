@@ -1,8 +1,8 @@
 import type { PropType, SlotsType, VNode } from 'vue'
 import { computed, defineComponent, h, ref } from 'vue'
 
-import '../styles/vars.css'
-import '../styles/fileTree.css'
+import '../styles/vars.scss'
+import '../styles/fileTree.scss'
 
 export const FileTreeNode = defineComponent({
   name: 'FileTreeNode',
