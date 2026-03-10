@@ -75,6 +75,7 @@ const getMermaid = (options: MermaidOptions): string =>
   }></Mermaid>`
 
 const DIAGRAM_MAP: Record<string, [diagramName: string, indent?: boolean]> = {
+  'block': ['', false],
   'class': ['classDiagram'],
   'c4c': ['C4Context'],
   'er': ['erDiagram'],
@@ -83,21 +84,22 @@ const DIAGRAM_MAP: Record<string, [diagramName: string, indent?: boolean]> = {
   'journey': [''],
   'mindmap': [''],
   'kanban': [''],
+  'packet': ['', false],
   'pie': [''],
   'quadrant': ['quadrantChart'],
   'requirement': ['requirementDiagram'],
+  'sankey': ['', false],
   'sequence': ['sequenceDiagram'],
   'state': ['stateDiagram-v2'],
   'timeline': [''],
 
   // beta diagrams
   'architecture': ['architecture-beta'],
-  'block': ['block-beta', false],
-  'packet': ['packet-beta', false],
-  'sankey': ['sankey-beta', false],
-  'xy': ['xychart-beta', false],
-  'treemap': ['treemap-beta', false],
+  'ishikawa': ['ishikawa-beta'],
   'radar': ['radar-beta'],
+  'treemap': ['treemap-beta', false],
+  'venn': ['venn-beta', false],
+  'xy': ['xychart', false],
 }
 
 /**
