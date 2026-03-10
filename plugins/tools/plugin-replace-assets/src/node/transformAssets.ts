@@ -77,11 +77,15 @@ export const transformAssets = (
       matched[3] ||
       matched[2] ||
       matched[1]
-    const [left, right] = matched[0].startsWith('(')
+    const [left, right] = matched[0].startsWith('("')
       ? ['("', '")']
-      : matched[0].startsWith(ESCAPED_DOUBLE_QUOTE)
-        ? [ESCAPED_DOUBLE_QUOTE, ESCAPED_DOUBLE_QUOTE]
-        : ['"', '"']
+      : matched[0].startsWith("('")
+        ? ["('", "')"]
+        : matched[0].startsWith('(')
+          ? ['(', ')']
+          : matched[0].startsWith(ESCAPED_DOUBLE_QUOTE)
+            ? [ESCAPED_DOUBLE_QUOTE, ESCAPED_DOUBLE_QUOTE]
+            : ['"', '"']
 
     const start = matched.index
     const end = start + matched[0].length

@@ -8,14 +8,14 @@ exports[`plugin-replace-assets > transformAssets > should work with like css 1`]
   background-image: url("https://example.com/assets/images/foo.svg");
   background-image: url("https://example.com/assets/medias/foo.mp4");
 
-  background-image: url("https://example.com/assets/images/foo.jpg");
-  background-image: url("https://example.com/assets/images/foo.png");
+  background-image: url('https://example.com/assets/images/foo.jpg');
+  background-image: url(https://example.com/assets/images/foo.png);
 
   background-image: url("https://example.com/assets/images/foo.jpg?a=1");
 
   background-image: url("https://not-replace.com/images/foo.jpg");
 
-  background: url("https://example.com/assets/images/foo.png");
+  background: url('https://example.com/assets/images/foo.png');
 
 }
 "
