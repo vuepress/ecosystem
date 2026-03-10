@@ -87,9 +87,7 @@ export const watchNoticeOptions = (
     .map(({ contentFile }) => contentFile)
     .filter(Boolean) as string[]
 
-  const watcher = watch(filepaths, {
-    ignoreInitial: true,
-  })
+  const watcher = watch(filepaths, { ignoreInitial: true })
 
   const onChange = async (file: string): Promise<void> => {
     const filepath = path.resolve(file)

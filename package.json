@@ -29,7 +29,7 @@
     "@commitlint/config-conventional": "^20.4.3",
     "@lerna-lite/cli": "^4.11.4",
     "@lerna-lite/publish": "^4.11.4",
-    "@types/node": "^25.3.5",
+    "@types/node": "^25.4.0",
     "@types/webpack-env": "^1.18.8",
     "@vitest/coverage-istanbul": "4.0.18",
     "cpx2": "^8.0.0",
@@ -38,9 +38,9 @@
     "husky": "^9.1.7",
     "nano-staged": "^0.9.0",
     "npm-check-updates": "^19.6.3",
-    "oxc-config-hope": "^0.0.5",
-    "oxfmt": "0.36.0",
-    "oxlint": "1.51.0",
+    "oxc-config-hope": "^0.0.7",
+    "oxfmt": "0.37.0",
+    "oxlint": "1.52.0",
     "oxlint-tsgolint": "0.16.0",
     "postcss-html": "^1.8.1",
     "publint": "^0.3.18",
@@ -50,10 +50,10 @@
     "stylelint-config-hope": "^11.0.0",
     "stylelint-config-html": "^1.1.0",
     "tsconfig-vuepress": "^7.0.0",
-    "tsdown": "0.21.0",
+    "tsdown": "0.21.1",
     "typescript": "^5.9.3",
-    "unrun": "^0.2.30",
-    "vite": "~7.1.12",
+    "unrun": "^0.2.31",
+    "vite": "8.0.0-beta.18",
     "vitest": "4.0.18",
     "vuepress": "catalog:"
   },
@@ -65,5 +65,5 @@
   "engines": {
     "node": "^20.19.0 || >= 22.12.0"
   },
-  "packageManager": "pnpm@10.31.0"
+  "packageManager": "pnpm@10.32.0"
 }
