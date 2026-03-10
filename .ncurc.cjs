@@ -4,6 +4,7 @@ module.exports = defineConfig({
   workspaces: true,
   upgrade: true,
   timeout: 60000,
+  peer: true,
   target: (name) => {
     if (
       name.startsWith('@vuepress/') ||
