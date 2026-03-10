@@ -1,4 +1,22 @@
 /**
+ * Single category data for a locale
+ */
+export type CategoryLocaleData = Record<
+  /* category key */ string,
+  /* page paths */ string[]
+>
+
+/**
+ * Single category data
+ */
+export type CategoryData = Record</* locale path */ string, CategoryLocaleData>
+
+/**
+ * All Categories data
+ */
+export type CategoriesData = Record</* category key */ string, CategoryData>
+
+/**
  * Category configuration
  *
  * 分类配置
