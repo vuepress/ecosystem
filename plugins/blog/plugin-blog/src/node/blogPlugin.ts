@@ -1,6 +1,5 @@
 import { addViteSsrNoExternal, getPageExcerpt } from '@vuepress/helper'
-import { watch } from 'chokidar'
-import type { Page, PluginFunction } from 'vuepress/core'
+import type { Page, PageOptions, PluginFunction } from 'vuepress/core'
 import { createPage, preparePageChunk, prepareRoutes } from 'vuepress/core'
 import type { CategoriesMap, TypesMap } from '../shared/index.js'
 import {
@@ -64,9 +63,87 @@ export const blogPlugin =
     const categoryOptions = getCategoryOptions(category)
     const typeOptions = getTypeOptions(type)
     const store = new Store()
+    // Paths of virtual pages created by this plugin (category/type listing pages)
     let blogPagePaths: string[] = []
+    // Current category and type maps; used in onPrepared and kept in sync by onPageUpdated
     let categoriesMap: CategoriesMap = {}
     let typesMap: TypesMap = {}
+
+    // Build category/type maps and page options for all virtual blog pages
+    // from the current set of app pages.
+    // 从当前 app 页面集合中计算分类/类型映射和所有虚拟博客页面的配置。
+    const buildBlog = (): {
+      categoriesMap: CategoriesMap
+      typesMap: TypesMap
+      pageOptions: PageOptions[]
+    } => {
+      const pageMap = getPageMap(app, filter)
+
+      const {
+        categoriesMap: newCategoriesMap,
+        pageOptions: categoryPageOptions,
+      } = getCategory(pageMap, store, categoryOptions, slugify, app.env.isDebug)
+
+      const { typesMap: newTypesMap, pageOptions: typePageOptions } = getType(
+        pageMap,
+        store,
+        typeOptions,
+        slugify,
+        app.env.isDebug,
+      )
+
+      return {
+        categoriesMap: newCategoriesMap,
+        typesMap: newTypesMap,
+        pageOptions: [...categoryPageOptions, ...typePageOptions],
+      }
+    }
+
+    // Sync virtual blog pages in `app.pages`: add pages that are new and remove
+    // pages that no longer exist. Returns `true` when `app.pages` was mutated.
+    // 同步 `app.pages` 中的虚拟博客页面：添加新页面，删除不再存在的页面。
+    const syncBlogPages = async (
+      pageOptions: PageOptions[],
+    ): Promise<boolean> => {
+      const newPagePathSet = new Set(pageOptions.map(({ path }) => path!))
+      const oldPagePathSet = new Set(blogPagePaths)
+
+      const toAdd = pageOptions.filter(({ path }) => !oldPagePathSet.has(path!))
+      const toRemove = blogPagePaths.filter((path) => !newPagePathSet.has(path))
+
+      if (toRemove.length > 0) {
+        if (app.env.isDebug)
+          logger.info(`Removing blog pages: ${toRemove.join(', ')}`)
+
+        for (const pagePath of toRemove) {
+          const idx = app.pages.findIndex(({ path }) => path === pagePath)
+
+          if (idx !== -1) app.pages.splice(idx, 1)
+        }
+      }
+
+      if (toAdd.length > 0) {
+        if (app.env.isDebug) {
+          logger.info(
+            `Adding blog pages: ${toAdd.map(({ path }) => path).join(', ')}`,
+          )
+        }
+
+        await Promise.all(
+          toAdd.map(async (opts) => {
+            const page = await createPage(app, opts)
+
+            await preparePageChunk(app, page)
+            app.pages.push(page)
+          }),
+        )
+      }
+
+      // Keep blogPagePaths in sync with the new set
+      blogPagePaths = pageOptions.map(({ path }) => path!)
+
+      return toAdd.length > 0 || toRemove.length > 0
+    }
 
     return {
       name: PLUGIN_NAME,
@@ -97,7 +174,7 @@ export const blogPlugin =
           )
         }
 
-        // inject meta information
+        // Inject meta information
         if (filter(page)) {
           page.routeMeta = {
             ...(metaScope === ''
@@ -109,173 +186,65 @@ export const blogPlugin =
       },
 
       onInitialized: async () => {
-        const pageMap = getPageMap(app, filter)
+        const result = buildBlog()
 
-        const categoryResult = getCategory(
-          pageMap,
-          store,
-          categoryOptions,
-          slugify,
-          app.env.isDebug,
-        )
+        // Store maps for onPrepared
+        ;({ categoriesMap, typesMap } = result)
+        blogPagePaths = result.pageOptions.map(({ path }) => path!)
 
-        const typeResult = getType(
-          pageMap,
-          store,
-          typeOptions,
-          slugify,
-          app.env.isDebug,
-        )
-
+        // Add all virtual blog pages to app.pages
         await Promise.all(
-          [...categoryResult.pageOptions, ...typeResult.pageOptions].map(
-            async (pageOptions) => {
-              const index = app.pages.findIndex(
-                (page) => page.path === pageOptions.path,
-              )
+          result.pageOptions.map(async (pageOptions) => {
+            const existingIndex = app.pages.findIndex(
+              ({ path }) => path === pageOptions.path,
+            )
 
-              if (index !== -1) {
-                logger.warn('Overriding existing page:', pageOptions.path)
-
-                const existingIndex = app.pages.findIndex(
-                  (page) => page.path === pageOptions.path,
-                )
-
-                app.pages.splice(
-                  existingIndex,
-                  1,
-                  await createPage(app, pageOptions),
-                )
-              }
-
+            if (existingIndex === -1) {
               app.pages.push(await createPage(app, pageOptions))
-            },
-          ),
+            } else {
+              logger.warn('Overriding existing page:', pageOptions.path)
+              app.pages.splice(
+                existingIndex,
+                1,
+                await createPage(app, pageOptions),
+              )
+            }
+          }),
         )
 
-        // store data for onPrepared and onWatched
-        blogPagePaths = [
-          ...categoryResult.pageOptions,
-          ...typeResult.pageOptions,
-        ].map((page) => page.path!)
-        ;({ categoriesMap } = categoryResult)
-        ;({ typesMap } = typeResult)
+        if (app.env.isDebug) logger.info('blog initialized')
       },
 
       onPrepared: async () => {
-        // Prepare store
         await prepareStore(app, store)
-        // Prepare category
         await prepareCategoriesMap(app, categoriesMap)
-        // Prepare type
         await prepareTypesMap(app, typesMap)
 
         if (app.env.isDebug) logger.info('temp file generated')
       },
 
-      onWatched: (_, watchers) => {
+      onPageUpdated: async (_, _type, page) => {
         const hotReload =
           'hotReload' in options ? options.hotReload : app.env.isDebug
 
-        if (hotReload) {
-          const pageDataWatcher = watch('pages', {
-            cwd: app.dir.temp(),
-            ignoreInitial: true,
-            // only watch js files
-            ignored: (path, stats) =>
-              Boolean(stats?.isFile() && !path.endsWith('.js')),
-          })
+        // Skip if hot reload is disabled, or if the changed page is one of the
+        // virtual blog pages created by this plugin (to avoid re-entrant updates)
+        if (!hotReload || blogPagePaths.includes(page.path)) return
 
-          const updateBlog = async (): Promise<void> => {
-            const pageMap = getPageMap(app, filter)
-            const categoryResult = getCategory(
-              pageMap,
-              store,
-              categoryOptions,
-              slugify,
-              app.env.isDebug,
-            )
+        const result = buildBlog()
 
-            const typeResult = getType(
-              pageMap,
-              store,
-              typeOptions,
-              slugify,
-              app.env.isDebug,
-            )
+        ;({ categoriesMap, typesMap } = result)
 
-            const newPageOptions = [
-              ...categoryResult.pageOptions,
-              ...typeResult.pageOptions,
-            ]
+        const pagesChanged = await syncBlogPages(result.pageOptions)
 
-            await prepareCategoriesMap(app, categoryResult.categoriesMap)
-            await prepareTypesMap(app, typeResult.typesMap)
+        // Write all temp files so the dev client receives HMR updates
+        await prepareStore(app, store)
+        await prepareCategoriesMap(app, categoriesMap)
+        await prepareTypesMap(app, typesMap)
 
-            const pagesToBeAdded = newPageOptions.filter(
-              (pageOptions) => !blogPagePaths.includes(pageOptions.path!),
-            )
-            const pagesToBeRemoved = blogPagePaths.filter((path) =>
-              newPageOptions.every((page) => page.path !== path),
-            )
+        if (pagesChanged) await prepareRoutes(app)
 
-            // add new pages
-            if (pagesToBeAdded.length > 0) {
-              if (app.env.isDebug) {
-                logger.info(
-                  `Adding new pages: ${pagesToBeAdded.map(({ path }) => path).join(', ')}`,
-                )
-              }
-
-              // Prepare page files
-              await Promise.all(
-                pagesToBeAdded.map(async (pageOptions) => {
-                  const page = await createPage(app, pageOptions)
-
-                  await preparePageChunk(app, page)
-                  app.pages.push(page)
-                }),
-              )
-            }
-
-            // Remove pages
-            if (pagesToBeRemoved.length > 0) {
-              if (app.env.isDebug) {
-                logger.info(
-                  `Removing following pages: ${pagesToBeRemoved.join(', ')}`,
-                )
-              }
-
-              pagesToBeRemoved.forEach((pagePath) => {
-                app.pages.splice(
-                  app.pages.findIndex(({ path }) => path === pagePath),
-                  1,
-                )
-              })
-            }
-
-            // Prepare pages entry
-            if (pagesToBeRemoved.length > 0 || pagesToBeAdded.length > 0)
-              await prepareRoutes(app)
-
-            // store blog pages for next update
-            blogPagePaths = newPageOptions.map((page) => page.path!)
-
-            if (app.env.isDebug) logger.info('temp file updated')
-          }
-
-          pageDataWatcher.on('add', () => {
-            void updateBlog()
-          })
-          pageDataWatcher.on('change', () => {
-            void updateBlog()
-          })
-          pageDataWatcher.on('unlink', () => {
-            void updateBlog()
-          })
-
-          watchers.push(pageDataWatcher)
-        }
+        if (app.env.isDebug) logger.info('blog updated')
       },
     }
   }

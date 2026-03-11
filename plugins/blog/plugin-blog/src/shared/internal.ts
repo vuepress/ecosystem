@@ -1,75 +1,94 @@
 /**
- * Category configuration
+ * Configuration for a single category value (e.g. a specific tag name)
  *
- * 分类配置
+ * 单个分类值的配置（例如特定标签名）
  */
 export interface CategoryConfig {
   /**
-   * Category page path
+   * Path of the category item page
    *
-   * 分类页面路径
+   * 分类子项页面路径
    */
   path: string
   /**
-   * Article indexes in this category
+   * Indexes into the path store for all articles in this category
    *
-   * 此分类中的文章索引
+   * 此分类中所有文章在路径存储中的索引
    */
   indexes: number[]
 }
 
-export type CategoryLocaleMap = Record<
-  /** Category name */ string,
-  CategoryConfig
->
+/**
+ * Map from category value name to its configuration
+ *
+ * 分类值名称到其配置的映射
+ */
+export type CategoryLocaleMap = Record<string, CategoryConfig>
 
 /**
- * Category locale configuration
+ * Category data for a single locale
  *
- * 分类区域配置
+ * 单个区域的分类数据
  */
 export interface CategoryLocaleConfig {
   /**
-   * Main page of category
+   * Path of the category listing page for this locale
    *
-   * 分类主页面
+   * 此区域的分类列表页面路径
    */
   path: string
   /**
-   * Category map for current locale
+   * Map of all category values in this locale
    *
-   * 当前区域的分类映射
+   * 此区域中所有分类值的映射
    */
   map: CategoryLocaleMap
 }
 
-export type CategoryMap = Record<
-  /** Locale Path */ string,
-  CategoryLocaleConfig
->
-
-export type CategoriesMap = Record</** Category key */ string, CategoryMap>
+/**
+ * Map from locale path to its category configuration
+ *
+ * 区域路径到分类配置的映射
+ */
+export type CategoryMap = Record<string, CategoryLocaleConfig>
 
 /**
- * Type locale configuration
+ * Map from category key (e.g. `"tag"`) to its per-locale configuration
  *
- * 类型区域配置
+ * 分类键名（如 `"tag"`）到其各区域配置的映射
+ */
+export type CategoriesMap = Record<string, CategoryMap>
+
+/**
+ * Type data for a single locale
+ *
+ * 单个区域的类型数据
  */
 export interface TypeLocaleConfig {
   /**
-   * Type page path
+   * Path of the type listing page for this locale
    *
-   * 类型页面路径
+   * 此区域的类型列表页面路径
    */
   path: string
   /**
-   * Article indexes in this type
+   * Indexes into the path store for all articles of this type
    *
-   * 此类型中的文章索引
+   * 此类型中所有文章在路径存储中的索引
    */
   indexes: number[]
 }
 
-export type TypeMap = Record</** Locale Path */ string, TypeLocaleConfig>
+/**
+ * Map from locale path to its type configuration
+ *
+ * 区域路径到类型配置的映射
+ */
+export type TypeMap = Record<string, TypeLocaleConfig>
 
-export type TypesMap = Record</** Type key */ string, TypeMap>
+/**
+ * Map from type key (e.g. `"article"`) to its per-locale configuration
+ *
+ * 类型键名（如 `"article"`）到其各区域配置的映射
+ */
+export type TypesMap = Record<string, TypeMap>

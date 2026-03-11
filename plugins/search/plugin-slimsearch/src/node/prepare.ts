@@ -1,12 +1,12 @@
 import { entries, keys } from '@vuepress/helper'
 import { addAll, discard, vacuum } from 'slimsearch'
-import type { App } from 'vuepress/core'
+import type { App, Page } from 'vuepress/core'
 
 import type { PageIndexId, SearchIndexStore } from '../shared/index.js'
 import { generatePageIndex } from './generateIndex.js'
 import type { SlimSearchPluginOptions } from './options.js'
 import type { PathStore } from './pathStore.js'
-import { getLocaleChunkName, inferFilePath } from './utils.js'
+import { getLocaleChunkName } from './utils.js'
 
 export const prepareStore = async (
   app: App,
@@ -63,85 +63,61 @@ export const updateSearchIndex = async (
   options: SlimSearchPluginOptions,
   searchIndexStore: SearchIndexStore,
   store: PathStore,
-  path: string,
+  page: Page,
 ): Promise<void> => {
-  const filePath = inferFilePath(path)
+  const { pathLocale } = page
+  const localeSearchIndex = searchIndexStore[pathLocale]
 
-  const page = app.pages.find(
-    ({ filePathRelative }) =>
-      filePathRelative?.toLowerCase() === filePath.toLowerCase(),
+  if (!localeSearchIndex) return
+
+  const pageIndexes = generatePageIndex(
+    page as Page<{ excerpt?: string }>,
+    store,
+    options.customFields,
+    options.indexContent,
   )
+  const pageId = store.addPath(page.path).toString() as PageIndexId
 
-  if (page) {
-    const pageIndexes = generatePageIndex(
-      page,
-      store,
-      options.customFields,
-      options.indexContent,
-    )
-    const { pathLocale } = page
-    const pageId = store.addPath(page.path).toString() as PageIndexId
-    const localeSearchIndex = searchIndexStore[pathLocale]
+  // Remove any existing index entries for this page before re-adding
+  ;[...localeSearchIndex._documentIds.values()]
+    .filter((id) => id.startsWith(pageId))
+    .forEach((id) => {
+      discard(localeSearchIndex, id)
+    })
 
-    // Update index
-    // Remove previous index
-    ;[...localeSearchIndex._documentIds.values()]
-      .filter((id) => id.startsWith(pageId))
-      .forEach((id) => {
-        discard(localeSearchIndex, id)
-      })
+  addAll(localeSearchIndex, pageIndexes)
+  await vacuum(localeSearchIndex)
 
-    addAll(localeSearchIndex, pageIndexes)
-
-    await vacuum(localeSearchIndex)
-
-    // Search index file content
-    const content = `\
-export default ${JSON.stringify(JSON.stringify(localeSearchIndex))}
-`
-
-    await app.writeTemp(
-      `slimsearch/${getLocaleChunkName(pathLocale)}.js`,
-      content,
-    )
-  }
+  await app.writeTemp(
+    `slimsearch/${getLocaleChunkName(pathLocale)}.js`,
+    `export default ${JSON.stringify(JSON.stringify(localeSearchIndex))}`,
+  )
 }
 
 export const removeSearchIndex = async (
   app: App,
   searchIndexStore: SearchIndexStore,
   store: PathStore,
-  path: string,
+  page: Page,
 ): Promise<void> => {
-  const filePath = inferFilePath(path)
+  const { pathLocale } = page
+  const localeSearchIndex = searchIndexStore[pathLocale]
 
-  const page = app.pages.find(
-    ({ filePathRelative }) =>
-      filePathRelative?.toLowerCase() === filePath.toLowerCase(),
+  if (!localeSearchIndex) return
+
+  const pageId = store.addPath(page.path).toString() as PageIndexId
+
+  // Remove all index entries for this page
+  ;[...localeSearchIndex._documentIds.values()]
+    .filter((id) => id.startsWith(pageId))
+    .forEach((id) => {
+      discard(localeSearchIndex, id)
+    })
+
+  await vacuum(localeSearchIndex)
+
+  await app.writeTemp(
+    `slimsearch/${getLocaleChunkName(pathLocale)}.js`,
+    `export default ${JSON.stringify(JSON.stringify(localeSearchIndex))}`,
   )
-
-  if (page) {
-    const { pathLocale } = page
-    const pageId = store.addPath(page.path).toString() as PageIndexId
-    const localeSearchIndex = searchIndexStore[pathLocale]
-
-    // Remove previous index
-    ;[...localeSearchIndex._documentIds.values()]
-      .filter((id) => id.startsWith(pageId))
-      .forEach((id) => {
-        discard(localeSearchIndex, id)
-      })
-
-    await vacuum(localeSearchIndex)
-
-    // Search index file content
-    const content = `\
-export default ${JSON.stringify(JSON.stringify(localeSearchIndex))}
-`
-
-    await app.writeTemp(
-      `slimsearch/${getLocaleChunkName(pathLocale)}.js`,
-      content,
-    )
-  }
 }
