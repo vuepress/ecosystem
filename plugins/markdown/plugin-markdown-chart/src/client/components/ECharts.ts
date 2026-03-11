@@ -17,7 +17,7 @@ import {
 import { onContentUpdated } from 'vuepress/client'
 
 import { useEChartsConfig } from '../helpers/index.js'
-import '../styles/echarts.css'
+import '../styles/echarts.scss'
 
 interface EChartsConfig {
   width?: number

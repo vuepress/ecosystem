@@ -6,4 +6,8 @@ export default tsdownConfig([
   'client/noopModule',
   'client/index',
   'shared/index',
+  {
+    'client/styles/*': './src/client/styles/*.scss',
+    'client/styles/transition/*': './src/client/styles/transition/*.scss',
+  },
 ])

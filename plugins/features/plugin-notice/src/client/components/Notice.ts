@@ -14,7 +14,7 @@ import { useNoticeOptions } from '../composables/index.js'
 import { CloseIcon } from './CloseIcon.js'
 
 import '@vuepress/helper/transition/fade-in-up.css'
-import '../styles/notice.css'
+import '../styles/notice.scss'
 
 export const Notice = defineComponent({
   name: 'Notice',

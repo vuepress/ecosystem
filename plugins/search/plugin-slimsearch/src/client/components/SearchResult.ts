@@ -17,7 +17,7 @@ import { getResultPath } from '../utils/index.js'
 import { SearchLoading } from './SearchLoading.js'
 import { HeadingIcon, HeartIcon, HistoryIcon, TitleIcon } from './icons.js'
 
-import '../styles/search-result.css'
+import '../styles/search-result.scss'
 
 export default defineComponent({
   name: 'SearchResult',

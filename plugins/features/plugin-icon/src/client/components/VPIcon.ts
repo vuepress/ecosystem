@@ -4,7 +4,7 @@ import { computed, defineComponent, h } from 'vue'
 import { withBase } from 'vuepress/client'
 
 import type { IconType } from '../../shared/index.js'
-import '../styles/vp-icon.css'
+import '../styles/vp-icon.scss'
 
 const appendFontawesomePrefix = (icon: string): string =>
   icon.includes('fa-') || /^fa.$/.test(icon) ? icon : `fa-${icon}`

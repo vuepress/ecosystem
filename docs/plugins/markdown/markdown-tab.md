@@ -266,4 +266,5 @@ npm i -D @vuepress/plugin-markdown-tab
 
 You can customize the style via CSS variables:
 
-@[code css](@vuepress/plugin-markdown-tab/src/client/styles/vars.css)
+@[code css](@vuepress/plugin-markdown-tab/src/client/styles/code-tabs-vars.scss)
+@[code css](@vuepress/plugin-markdown-tab/src/client/styles/tabs-vars.scss)

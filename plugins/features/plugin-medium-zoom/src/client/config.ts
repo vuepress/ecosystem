@@ -4,7 +4,7 @@ import { defineClientConfig, onContentUpdated } from 'vuepress/client'
 import { mediumZoomSymbol, useMediumZoom } from './composables/index.js'
 
 import './styles/vars.css'
-import './styles/medium-zoom.css'
+import './styles/medium-zoom.scss'
 
 declare const __MZ_SELECTOR__: string
 declare const __MZ_ZOOM_OPTIONS__: ZoomOptions

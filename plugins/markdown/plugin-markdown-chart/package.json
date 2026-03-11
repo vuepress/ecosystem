@@ -34,7 +34,7 @@
   ],
   "type": "module",
   "sideEffects": [
-    "./dist/client/styles/**/*.css"
+    "./dist/**/*.css"
   ],
   "exports": {
     ".": {
@@ -53,8 +53,7 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./dist",
-    "style": "sass src:dist --embed-sources --style=compressed"
+    "clean": "rimraf ./dist"
   },
   "dependencies": {
     "@mdit/plugin-container": "^0.23.1",
@@ -69,13 +68,13 @@
     "markmap-common": "^0.18.9"
   },
   "peerDependencies": {
-    "chart.js": "^4.4.7",
+    "chart.js": "^4.5.1",
     "echarts": "^6.0.0",
     "flowchart.ts": "^3.0.1",
-    "markmap-lib": "^0.18.11",
-    "markmap-toolbar": "^0.18.10",
-    "markmap-view": "^0.18.10",
-    "mermaid": "^11.12.0",
+    "markmap-lib": "^0.18.12",
+    "markmap-toolbar": "^0.18.12",
+    "markmap-view": "^0.18.12",
+    "mermaid": "^11.13.0",
     "vuepress": "catalog:"
   },
   "peerDependenciesMeta": {

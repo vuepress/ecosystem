@@ -18,7 +18,7 @@ import type { CatalogPluginLocaleData } from '../../shared/index.js'
 import type { CatalogInfo } from '../helpers/index.js'
 import { useCatalogInfoGetter } from '../helpers/index.js'
 
-import '../styles/catalog.css'
+import '../styles/catalog.scss'
 
 declare const __CATALOG_LOCALES__: ExactLocaleConfig<CatalogPluginLocaleData>
 

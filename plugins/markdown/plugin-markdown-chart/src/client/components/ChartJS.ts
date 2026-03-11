@@ -13,7 +13,7 @@ import {
   useId,
 } from 'vue'
 
-import '../styles/chartjs.css'
+import '../styles/chartjs.scss'
 
 const parseChartConfig = (
   config: string,

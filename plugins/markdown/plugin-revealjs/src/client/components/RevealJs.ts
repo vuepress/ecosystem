@@ -23,7 +23,7 @@ import {
 import type { RevealJsTheme } from '../../shared/index.js'
 import { useRevealJsConfig } from '../helpers/index.js'
 
-import '../styles/reveal-js.css'
+import '../styles/reveal-js.scss'
 
 export const RevealJs = defineComponent({
   name: 'RevealJs',

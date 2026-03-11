@@ -14,7 +14,7 @@ import {
 } from '../utils/index.js'
 
 import 'photoswipe/dist/photoswipe.css'
-import '../styles/photo-swipe.css'
+import '../styles/photo-swipe.scss'
 
 /**
  * Options for usePhotoSwipe composable

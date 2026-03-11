@@ -10,8 +10,8 @@ import { onContentUpdated } from 'vuepress/client'
 import type { CopyCodePluginLocaleConfig } from '../types.js'
 
 import '@vuepress/helper/message.css'
-import '../styles/copy-code.css'
-import '../styles/vars.css'
+import '../styles/vars.scss'
+import '../styles/copy-code.scss'
 
 /**
  * Options for the useCopyCode composable

@@ -26,7 +26,7 @@
   ],
   "type": "module",
   "sideEffects": [
-    "./dist/client/styles/**/*.css"
+    "./dist/**/*.css"
   ],
   "exports": {
     ".": {
@@ -45,8 +45,7 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./dist",
-    "style": "sass src:dist --embed-sources --style=compressed --pkg-importer=node"
+    "clean": "rimraf ./dist"
   },
   "dependencies": {
     "@docsearch/css": "^4.6.0",
@@ -58,7 +57,7 @@
   },
   "devDependencies": {
     "@docsearch/react": "^4.6.0",
-    "algoliasearch": "5.49.1"
+    "algoliasearch": "5.49.2"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

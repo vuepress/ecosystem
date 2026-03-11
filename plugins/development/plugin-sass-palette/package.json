@@ -51,7 +51,7 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./dist"
+    "clean": "rimraf ./dist"
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
@@ -62,8 +62,8 @@
     "@vuepress/bundler-webpack": "catalog:"
   },
   "peerDependencies": {
-    "sass": "^1.95.0",
-    "sass-embedded": "^1.95.0",
+    "sass": "^1.97.3",
+    "sass-embedded": "^1.97.3",
     "sass-loader": "catalog:",
     "vuepress": "catalog:"
   },

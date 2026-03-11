@@ -25,7 +25,7 @@
   ],
   "type": "module",
   "sideEffects": [
-    "./dist/client/styles/**/*.css"
+    "./dist/**/*.css"
   ],
   "main": "./dist/node/index.js",
   "types": "./dist/node/index.d.ts",
@@ -43,15 +43,14 @@
   },
   "scripts": {
     "build": "tsdown --config-loader unrun",
-    "clean": "rimraf --glob ./dist",
-    "style": "sass src:dist --embed-sources --style=compressed --pkg-importer=node"
+    "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@shikijs/transformers": "^4.0.1",
+    "@shikijs/transformers": "^4.0.2",
     "@vuepress/helper": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
     "nanoid": "^5.1.6",
-    "shiki": "^4.0.1",
+    "shiki": "^4.0.2",
     "synckit": "^0.11.12"
   },
   "devDependencies": {

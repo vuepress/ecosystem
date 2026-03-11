@@ -6,7 +6,7 @@ import { useActiveState } from '../composables/index.js'
 import { locales, options } from '../define.js'
 import { SearchIcon } from './icons.js'
 
-import '../styles/search-box.css'
+import '../styles/search-box.scss'
 
 const [primaryHotKey] = options.hotKeys
 

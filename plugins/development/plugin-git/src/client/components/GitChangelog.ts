@@ -10,7 +10,7 @@ import {
 import { VPHeader } from './VPHeader.js'
 
 import '../styles/vars.css'
-import '../styles/changelog.css'
+import '../styles/changelog.scss'
 
 export const GitChangelog = defineComponent({
   name: 'GitChangelog',

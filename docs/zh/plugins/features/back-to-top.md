@@ -42,4 +42,4 @@ export default {
 
 你可以通过 CSS 变量来自定义 _返回顶部_ 按钮的样式：
 
-@[code css](@vuepress/plugin-back-to-top/src/client/styles/vars.css)
+@[code css](@vuepress/plugin-back-to-top/src/client/styles/vars.scss)

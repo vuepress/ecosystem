@@ -1,4 +1,4 @@
-@use '@vuepress/helper/scss/svg';
+@use '@vuepress/helper';
 
 $external-link-icon: '<svg viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z"/></svg>';
 
@@ -81,6 +81,6 @@ $external-link-icon: '<svg viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="n
 
   // external-link-icon
   /* stylelint-disable-next-line scss/dollar-variable-no-missing-interpolation */
-  --external-link-icon: #{svg.encode-svg($external-link-icon)};
+  --external-link-icon: #{helper.encode-svg($external-link-icon)};
   --external-link-c-icon: var(--vp-c-text-mute);
 }

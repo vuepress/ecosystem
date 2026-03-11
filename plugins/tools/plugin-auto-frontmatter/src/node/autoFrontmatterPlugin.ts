@@ -1,7 +1,6 @@
 import { watch } from 'chokidar'
 import type { Plugin } from 'vuepress/core'
-import { path, tinyglobby } from 'vuepress/utils'
-import { createFilter } from './createFilter.js'
+import { path, picomatch, tinyglobby } from 'vuepress/utils'
 import {
   findRule,
   generateFileFrontmatter,
@@ -32,9 +31,8 @@ import { PLUGIN_NAME } from './utils.js'
 export const autoFrontmatterPlugin =
   (options: AutoFrontmatterPluginOptions = []): Plugin =>
   (app) => {
-    const { pagePatterns = ['**/*.md', '!.vuepress', '!node_modules'] } =
-      app.options
-    const cwd = app.dir.source()
+    const { pagePatterns } = app.options
+    const sourceDir = app.dir.source()
     const rules = resolveRules(options)
 
     return {
@@ -45,33 +43,56 @@ export const autoFrontmatterPlugin =
        * 利用钩子阻塞其他任务执行，先完成 frontmatter 的自动生成
        */
       async extendsMarkdownOptions() {
-        const fileList = await tinyglobby.glob(pagePatterns, { cwd })
-        await generateFileListFrontmatter(fileList, cwd, rules)
+        const fileList = await tinyglobby.glob(pagePatterns, { cwd: sourceDir })
+        await generateFileListFrontmatter(fileList, sourceDir, rules)
       },
 
       onWatched(_, watchers) {
-        const filter = createFilter(pagePatterns)
+        const tempDir = app.dir.temp()
+        const cacheDir = app.dir.cache()
+
+        const ignorePatterns: string[] = []
+        const pagePathPatterns: string[] = []
+
+        for (const pattern of pagePatterns) {
+          if (pattern.startsWith('!')) ignorePatterns.push(pattern.slice(1))
+          else pagePathPatterns.push(pattern)
+        }
+
+        const ignoreMatcher = picomatch(ignorePatterns, { cwd: sourceDir })
+        const pageMatcher = picomatch(pagePathPatterns, { cwd: sourceDir })
+
         const watcher = watch('.', {
-          cwd,
-          ignoreInitial: true,
+          cwd: sourceDir,
           ignored: (filepath, stats) => {
+            // This is important so that folders like node_modules will be ignored immediately without traversing their children
+            if (ignoreMatcher(filepath)) return true
+
+            if (stats?.isDirectory())
+              return filepath === tempDir || filepath === cacheDir
+
             const isFile = Boolean(stats?.isFile())
             if (
               filepath.includes('.vuepress') ||
               (isFile && !filepath.endsWith('.md'))
             )
               return true
-            return isFile && !filter(path.relative(cwd, filepath))
+
+            return isFile && !pageMatcher(path.relative(sourceDir, filepath))
           },
+          ignoreInitial: true,
         })
         /**
          * Only need to focus on the newly added files
          * 只需要关注新增的文件
          */
         watcher.on('add', (filepath) => {
+          if (!filepath.endsWith('.md')) return
+
           const relativePath = path.join(filepath) // normalize path
           const rule = findRule(rules, relativePath)
-          if (rule) void generateFileFrontmatter(relativePath, cwd, rule.handle)
+          if (rule)
+            void generateFileFrontmatter(relativePath, sourceDir, rule.handle)
         })
 
         watchers.push(watcher)

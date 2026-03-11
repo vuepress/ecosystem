@@ -1,0 +1,13 @@
+@use 'pkg:@vuepress/helper';
+
+$back-to-top-icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M24.008 14.1V42M12 26l12-12 12 12M12 6h24"/></svg>';
+
+:root {
+  --back-to-top-z-index: 5;
+  --back-to-top-icon: #{helper.encode-svg($back-to-top-icon)};
+  --back-to-top-c-bg: var(--vp-c-bg);
+  --back-to-top-c-accent-bg: var(--vp-c-accent-bg);
+  --back-to-top-c-accent-hover: var(--vp-c-accent-hover);
+  --back-to-top-c-shadow: var(--vp-c-shadow);
+  --back-to-top-c-icon: currentcolor;
+}

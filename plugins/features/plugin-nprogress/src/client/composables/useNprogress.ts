@@ -3,7 +3,7 @@ import { useRouter } from 'vuepress/client'
 import { nprogress } from '../nprogress.js'
 
 import '../styles/vars.css'
-import '../styles/nprogress.css'
+import '../styles/nprogress.scss'
 
 /**
  * Use nprogress

@@ -266,4 +266,5 @@ npm i -D @vuepress/plugin-markdown-tab
 
 你可以通过 CSS 变量自定义样式:
 
-@[code css](@vuepress/plugin-markdown-tab/src/client/styles/vars.css)
+@[code css](@vuepress/plugin-markdown-tab/src/client/styles/code-tabs-vars.scss)
+@[code css](@vuepress/plugin-markdown-tab/src/client/styles/tabs-vars.scss)

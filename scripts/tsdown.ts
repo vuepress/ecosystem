@@ -1,6 +1,6 @@
-import { dirname } from 'node:path'
-import type { UserConfig } from 'tsdown'
+import type { UserConfig, CopyEntry } from 'tsdown'
 import { defineConfig } from 'tsdown'
+import { NodePackageImporter } from 'sass-embedded'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -34,7 +34,7 @@ export interface TsdownOptions extends Omit<UserConfig, 'entry' | 'copy'> {
    *
    * 永远不打包的资源
    *
-   * @description `@temp/`, `@internal/` 以及 .css/.scss 文件默认不打包
+   * @description modules starting with `@temp/`, `@internal/` are never bundled.
    */
   neverBundle?: (string | RegExp)[]
 
@@ -69,7 +69,7 @@ export interface TsdownOptions extends Omit<UserConfig, 'entry' | 'copy'> {
    *   ['types/global.d.ts', 'global.d.ts'], // Copy src/types/global.d.ts to dist/global.d.ts
    * ]
    */
-  copy?: [from: string, to?: string][]
+  copy?: (string | CopyEntry)[]
 }
 
 const resolveEntry = (entryItem: string): string =>
@@ -131,15 +131,30 @@ export const tsdownConfig = (
     },
     deps: {
       alwaysBundle: alwaysBundle,
-      neverBundle: [/^@internal\//, /^@temp\//, /\.s?css$/, ...neverBundle],
+      neverBundle: [/^@internal\//, /^@temp\//, ...neverBundle],
       onlyAllowBundle: onlyAllowBundle,
+    },
+    css: {
+      inject: true,
+      splitting: true,
+      preprocessorOptions: {
+        scss: {
+          importers: [new NodePackageImporter()],
+        },
+      },
     },
     fixedExtension: false,
     publint,
-    copy: copy.map(([from, to = dirname(from)]) => ({
-      from: `./src/${from}`,
-      to: `./dist/${to}`,
-    })),
+    copy: copy.map((item) => {
+      if (typeof item === 'string') {
+        return {
+          from: `./src/${item}`,
+          flatten: false,
+        }
+      }
+
+      return item
+    }),
     ...rest,
   })
 }
