@@ -100,12 +100,12 @@ export const searchPlugin = ({
       })
     },
 
-    onPageUpdated: async (_, type, page) => {
+    onPageUpdated: async (app, type, page) => {
       if (type === 'delete') {
-        await removeSearchIndexItem(_, page, searchIndex)
+        await removeSearchIndexItem(app, page, searchIndex)
       } else {
         await updateSearchIndexItem(
-          _,
+          app,
           page,
           isSearchable,
           getExtraFields,

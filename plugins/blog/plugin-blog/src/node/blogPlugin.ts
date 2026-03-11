@@ -214,7 +214,7 @@ export const blogPlugin =
         if (app.env.isDebug) logger.info('temp file generated')
       },
 
-      onPageUpdated: async (_, _type, _page) => {
+      onPageUpdated: async () => {
         const hotReload =
           'hotReload' in options ? options.hotReload : app.env.isDebug
 
