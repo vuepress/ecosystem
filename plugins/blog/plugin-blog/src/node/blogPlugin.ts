@@ -1,17 +1,73 @@
 import { addViteSsrNoExternal, getPageExcerpt } from '@vuepress/helper'
-import type { Page, PluginFunction } from 'vuepress/core'
+import type { Page, PageOptions, PluginFunction } from 'vuepress/core'
 import { createPage, preparePageChunk, prepareRoutes } from 'vuepress/core'
 import type { CategoriesMap, TypesMap } from '../shared/index.js'
 import {
   getCategory,
+  getCategoryItemPagePaths,
   getCategoryOptions,
   prepareCategoriesMap,
+  updateCategoriesMap,
 } from './category/index.js'
 import { getPageMap } from './getPagesMap.js'
 import { PLUGIN_NAME, logger } from './logger.js'
-import type { BlogPluginOptions } from './options.js'
+import type { BlogCategoryOptions, BlogPluginOptions } from './options.js'
 import { Store, prepareStore } from './store.js'
-import { getType, getTypeOptions, prepareTypesMap } from './type/index.js'
+import {
+  getType,
+  getTypeOptions,
+  prepareTypesMap,
+  updateTypesMap,
+} from './type/index.js'
+
+/**
+ * Build page options for a category item page
+ *
+ * 为分类子项页面构建页面选项
+ *
+ * @param pagePath - Item page path / 子项页面路径
+ * @param categoriesMap - Current categories map / 当前分类映射
+ * @param categoryOpts - Category options / 分类选项
+ * @returns Page options or null if not found / 页面选项或 null
+ */
+const buildCategoryItemPageOptions = (
+  pagePath: string,
+  categoriesMap: CategoriesMap,
+  categoryOpts: BlogCategoryOptions[],
+): PageOptions | null => {
+  for (const opt of categoryOpts) {
+    const {
+      key,
+      itemLayout = 'Layout',
+      itemFrontmatter = (): Record<string, string> => ({}),
+    } = opt
+
+    const categoryMap = categoriesMap[key]
+
+    if (!categoryMap) continue
+
+    for (const [localePath, localeConfig] of Object.entries(categoryMap)) {
+      for (const [categoryName, config] of Object.entries(localeConfig.map)) {
+        if (config.path === pagePath) {
+          return {
+            path: pagePath,
+            frontmatter: {
+              ...itemFrontmatter(categoryName, localePath),
+              blog: {
+                type: 'category',
+                name: categoryName,
+                key,
+              },
+              layout: itemLayout,
+            },
+          }
+        }
+      }
+    }
+  }
+
+  return null
+}
 
 /**
  * Blog plugin for VuePress
@@ -63,7 +119,6 @@ export const blogPlugin =
     const categoryOptions = getCategoryOptions(category)
     const typeOptions = getTypeOptions(type)
     const store = new Store()
-    let blogPagePaths: string[] = []
     let categoriesMap: CategoriesMap = {}
     let typesMap: TypesMap = {}
 
@@ -133,126 +188,127 @@ export const blogPlugin =
                 (page) => page.path === pageOptions.path,
               )
 
-              if (index !== -1) {
+              if (index === -1) {
+                app.pages.push(await createPage(app, pageOptions))
+              } else {
                 logger.warn('Overriding existing page:', pageOptions.path)
 
-                const existingIndex = app.pages.findIndex(
-                  (page) => page.path === pageOptions.path,
-                )
-
-                app.pages.splice(
-                  existingIndex,
-                  1,
-                  await createPage(app, pageOptions),
-                )
+                app.pages.splice(index, 1, await createPage(app, pageOptions))
               }
-
-              app.pages.push(await createPage(app, pageOptions))
             },
           ),
         )
 
         // store data for onPrepared and onPageUpdated
-        blogPagePaths = [
-          ...categoryResult.pageOptions,
-          ...typeResult.pageOptions,
-        ].map((page) => page.path!)
         ;({ categoriesMap } = categoryResult)
         ;({ typesMap } = typeResult)
       },
 
       onPrepared: async () => {
-        // Prepare store
-        await prepareStore(app, store)
-        // Prepare category
-        await prepareCategoriesMap(app, categoriesMap)
-        // Prepare type
-        await prepareTypesMap(app, typesMap)
+        await Promise.all([
+          prepareStore(app, store),
+          prepareCategoriesMap(app, categoriesMap),
+          prepareTypesMap(app, typesMap),
+        ])
 
         if (app.env.isDebug) logger.info('temp file generated')
       },
 
-      onPageUpdated: async () => {
+      onPageUpdated: async (_, _type, _page) => {
         const hotReload =
           'hotReload' in options ? options.hotReload : app.env.isDebug
 
-        if (hotReload) {
-          const pageMap = getPageMap(app, filter)
-          const categoryResult = getCategory(
-            pageMap,
-            store,
-            categoryOptions,
-            slugify,
-            app.env.isDebug,
-          )
+        if (!hotReload) return
 
-          const typeResult = getType(
-            pageMap,
-            store,
-            typeOptions,
-            slugify,
-            app.env.isDebug,
-          )
+        const pageMap = getPageMap(app, filter)
 
-          const newPageOptions = [
-            ...categoryResult.pageOptions,
-            ...typeResult.pageOptions,
-          ]
+        // Update types incrementally (store indexes only, no page changes)
+        typesMap = updateTypesMap(
+          pageMap,
+          store,
+          typeOptions,
+          slugify,
+          app.env.isDebug,
+        )
 
-          await prepareCategoriesMap(app, categoryResult.categoriesMap)
-          await prepareTypesMap(app, typeResult.typesMap)
+        // Update categories incrementally with delta comparison
+        const oldCategoryItemPaths = getCategoryItemPagePaths(
+          categoriesMap,
+          categoryOptions,
+        )
+        categoriesMap = updateCategoriesMap(
+          pageMap,
+          store,
+          categoryOptions,
+          slugify,
+          app.env.isDebug,
+        )
+        const newCategoryItemPaths = getCategoryItemPagePaths(
+          categoriesMap,
+          categoryOptions,
+        )
 
-          const pagesToBeAdded = newPageOptions.filter(
-            (pageOptions) => !blogPagePaths.includes(pageOptions.path!),
-          )
-          const pagesToBeRemoved = blogPagePaths.filter((path) =>
-            newPageOptions.every((page) => page.path !== path),
-          )
+        // Determine item pages to add/remove based on delta
+        const pagesToBeAdded = newCategoryItemPaths.filter(
+          (pagePath) => !oldCategoryItemPaths.includes(pagePath),
+        )
+        const pagesToBeRemoved = oldCategoryItemPaths.filter(
+          (pagePath) => !newCategoryItemPaths.includes(pagePath),
+        )
 
-          // add new pages
-          if (pagesToBeAdded.length > 0) {
-            if (app.env.isDebug) {
-              logger.info(
-                `Adding new pages: ${pagesToBeAdded.map(({ path }) => path).join(', ')}`,
-              )
-            }
+        // Write updated temp files
+        await Promise.all([
+          prepareStore(app, store),
+          prepareCategoriesMap(app, categoriesMap),
+          prepareTypesMap(app, typesMap),
+        ])
 
-            // Prepare page files
-            await Promise.all(
-              pagesToBeAdded.map(async (pageOptions) => {
-                const page = await createPage(app, pageOptions)
-
-                await preparePageChunk(app, page)
-                app.pages.push(page)
-              }),
+        // Add new category item pages
+        if (pagesToBeAdded.length > 0) {
+          if (app.env.isDebug) {
+            logger.info(
+              `Adding category item pages: ${pagesToBeAdded.join(', ')}`,
             )
           }
 
-          // Remove pages
-          if (pagesToBeRemoved.length > 0) {
-            if (app.env.isDebug) {
-              logger.info(
-                `Removing following pages: ${pagesToBeRemoved.join(', ')}`,
+          await Promise.all(
+            pagesToBeAdded.map(async (pagePath) => {
+              const pageOpts = buildCategoryItemPageOptions(
+                pagePath,
+                categoriesMap,
+                categoryOptions,
               )
-            }
 
-            pagesToBeRemoved.forEach((pagePath) => {
-              app.pages.splice(
-                app.pages.findIndex(({ path }) => path === pagePath),
-                1,
-              )
-            })
+              if (pageOpts) {
+                const newPage = await createPage(app, pageOpts)
+
+                await preparePageChunk(app, newPage)
+                app.pages.push(newPage)
+              }
+            }),
+          )
+        }
+
+        // Remove deleted category item pages
+        if (pagesToBeRemoved.length > 0) {
+          if (app.env.isDebug) {
+            logger.info(
+              `Removing category item pages: ${pagesToBeRemoved.join(', ')}`,
+            )
           }
 
-          // Prepare pages entry
-          if (pagesToBeRemoved.length > 0 || pagesToBeAdded.length > 0)
-            await prepareRoutes(app)
+          pagesToBeRemoved.forEach((pagePath) => {
+            const idx = app.pages.findIndex(({ path }) => path === pagePath)
 
-          // store blog pages for next update
-          blogPagePaths = newPageOptions.map((page) => page.path!)
-
-          if (app.env.isDebug) logger.info('temp file updated')
+            if (idx !== -1) app.pages.splice(idx, 1)
+          })
         }
+
+        // Prepare routes only if pages changed
+        if (pagesToBeAdded.length > 0 || pagesToBeRemoved.length > 0)
+          await prepareRoutes(app)
+
+        if (app.env.isDebug) logger.info('blog data updated incrementally')
       },
     }
   }
