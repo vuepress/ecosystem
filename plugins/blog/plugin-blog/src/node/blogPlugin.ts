@@ -1,5 +1,4 @@
 import { addViteSsrNoExternal, getPageExcerpt } from '@vuepress/helper'
-import { watch } from 'chokidar'
 import type { Page, PluginFunction } from 'vuepress/core'
 import { createPage, preparePageChunk, prepareRoutes } from 'vuepress/core'
 import type { CategoriesMap, TypesMap } from '../shared/index.js'
@@ -153,7 +152,7 @@ export const blogPlugin =
           ),
         )
 
-        // store data for onPrepared and onWatched
+        // store data for onPrepared and onPageUpdated
         blogPagePaths = [
           ...categoryResult.pageOptions,
           ...typeResult.pageOptions,
@@ -173,108 +172,86 @@ export const blogPlugin =
         if (app.env.isDebug) logger.info('temp file generated')
       },
 
-      onWatched: (_, watchers) => {
+      onPageUpdated: async () => {
         const hotReload =
           'hotReload' in options ? options.hotReload : app.env.isDebug
 
         if (hotReload) {
-          const pageDataWatcher = watch('pages', {
-            cwd: app.dir.temp(),
-            ignoreInitial: true,
-            // only watch js files
-            ignored: (path, stats) =>
-              Boolean(stats?.isFile() && !path.endsWith('.js')),
-          })
+          const pageMap = getPageMap(app, filter)
+          const categoryResult = getCategory(
+            pageMap,
+            store,
+            categoryOptions,
+            slugify,
+            app.env.isDebug,
+          )
 
-          const updateBlog = async (): Promise<void> => {
-            const pageMap = getPageMap(app, filter)
-            const categoryResult = getCategory(
-              pageMap,
-              store,
-              categoryOptions,
-              slugify,
-              app.env.isDebug,
-            )
+          const typeResult = getType(
+            pageMap,
+            store,
+            typeOptions,
+            slugify,
+            app.env.isDebug,
+          )
 
-            const typeResult = getType(
-              pageMap,
-              store,
-              typeOptions,
-              slugify,
-              app.env.isDebug,
-            )
+          const newPageOptions = [
+            ...categoryResult.pageOptions,
+            ...typeResult.pageOptions,
+          ]
 
-            const newPageOptions = [
-              ...categoryResult.pageOptions,
-              ...typeResult.pageOptions,
-            ]
+          await prepareCategoriesMap(app, categoryResult.categoriesMap)
+          await prepareTypesMap(app, typeResult.typesMap)
 
-            await prepareCategoriesMap(app, categoryResult.categoriesMap)
-            await prepareTypesMap(app, typeResult.typesMap)
+          const pagesToBeAdded = newPageOptions.filter(
+            (pageOptions) => !blogPagePaths.includes(pageOptions.path!),
+          )
+          const pagesToBeRemoved = blogPagePaths.filter((path) =>
+            newPageOptions.every((page) => page.path !== path),
+          )
 
-            const pagesToBeAdded = newPageOptions.filter(
-              (pageOptions) => !blogPagePaths.includes(pageOptions.path!),
-            )
-            const pagesToBeRemoved = blogPagePaths.filter((path) =>
-              newPageOptions.every((page) => page.path !== path),
-            )
-
-            // add new pages
-            if (pagesToBeAdded.length > 0) {
-              if (app.env.isDebug) {
-                logger.info(
-                  `Adding new pages: ${pagesToBeAdded.map(({ path }) => path).join(', ')}`,
-                )
-              }
-
-              // Prepare page files
-              await Promise.all(
-                pagesToBeAdded.map(async (pageOptions) => {
-                  const page = await createPage(app, pageOptions)
-
-                  await preparePageChunk(app, page)
-                  app.pages.push(page)
-                }),
+          // add new pages
+          if (pagesToBeAdded.length > 0) {
+            if (app.env.isDebug) {
+              logger.info(
+                `Adding new pages: ${pagesToBeAdded.map(({ path }) => path).join(', ')}`,
               )
             }
 
-            // Remove pages
-            if (pagesToBeRemoved.length > 0) {
-              if (app.env.isDebug) {
-                logger.info(
-                  `Removing following pages: ${pagesToBeRemoved.join(', ')}`,
-                )
-              }
+            // Prepare page files
+            await Promise.all(
+              pagesToBeAdded.map(async (pageOptions) => {
+                const page = await createPage(app, pageOptions)
 
-              pagesToBeRemoved.forEach((pagePath) => {
-                app.pages.splice(
-                  app.pages.findIndex(({ path }) => path === pagePath),
-                  1,
-                )
-              })
-            }
-
-            // Prepare pages entry
-            if (pagesToBeRemoved.length > 0 || pagesToBeAdded.length > 0)
-              await prepareRoutes(app)
-
-            // store blog pages for next update
-            blogPagePaths = newPageOptions.map((page) => page.path!)
-
-            if (app.env.isDebug) logger.info('temp file updated')
+                await preparePageChunk(app, page)
+                app.pages.push(page)
+              }),
+            )
           }
 
-          pageDataWatcher.on('add', () => {
-            void updateBlog()
-          })
-          pageDataWatcher.on('change', () => {
-            void updateBlog()
-          })
-          pageDataWatcher.on('unlink', () => {
-            void updateBlog()
-          })
+          // Remove pages
+          if (pagesToBeRemoved.length > 0) {
+            if (app.env.isDebug) {
+              logger.info(
+                `Removing following pages: ${pagesToBeRemoved.join(', ')}`,
+              )
+            }
 
-          watchers.push(pageDataWatcher)
+            pagesToBeRemoved.forEach((pagePath) => {
+              app.pages.splice(
+                app.pages.findIndex(({ path }) => path === pagePath),
+                1,
+              )
+            })
+          }
+
+          // Prepare pages entry
+          if (pagesToBeRemoved.length > 0 || pagesToBeAdded.length > 0)
+            await prepareRoutes(app)
+
+          // store blog pages for next update
+          blogPagePaths = newPageOptions.map((page) => page.path!)
+
+          if (app.env.isDebug) logger.info('temp file updated')
         }
       },
     }
