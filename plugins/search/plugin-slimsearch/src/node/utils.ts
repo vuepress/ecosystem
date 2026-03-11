@@ -15,9 +15,3 @@ export const WORKER_FILE = path.resolve(__dirname, '../worker/index.js')
 
 export const getLocaleChunkName = (locale: string): string =>
   locale.replaceAll('/', '') || 'root'
-
-export const inferFilePath = (vuePath: string): string =>
-  vuePath
-    .replace(/^pages\//, '')
-    .replace(/\/index\.html\.vue/, '/README.md')
-    .replace(/\.html\.vue/, '.md')
