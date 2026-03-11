@@ -190,8 +190,8 @@ export const blogPlugin =
         // Write updated temp files
         await Promise.all([
           prepareStore(app, store),
-          prepareCategoriesMap(app, categoriesMap),
-          prepareTypesMap(app, typesMap),
+          prepareCategoriesMap(app, categoryResult.categoriesMap),
+          prepareTypesMap(app, typeResult.typesMap),
         ])
 
         const pagesToBeAdded = newPageOptions.filter(
@@ -240,6 +240,8 @@ export const blogPlugin =
           await prepareRoutes(app)
 
         if (app.env.isDebug) logger.info('blog data updated incrementally')
+
+        blogPagePaths = newPageOptions.map((page) => page.path!)
       },
     }
   }
