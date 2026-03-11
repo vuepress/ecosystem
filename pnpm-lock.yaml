@@ -436,9 +436,6 @@ importers:
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../../../tools/helper
-      chokidar:
-        specifier: 'catalog:'
-        version: 5.0.0
       vue:
         specifier: 'catalog:'
         version: 3.5.30(typescript@5.9.3)
@@ -1288,9 +1285,6 @@ importers:
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../../../tools/helper
-      chokidar:
-        specifier: 'catalog:'
-        version: 5.0.0
       vue:
         specifier: 'catalog:'
         version: 3.5.30(typescript@5.9.3)
@@ -1309,9 +1303,6 @@ importers:
       cheerio:
         specifier: ^1.2.0
         version: 1.2.0
-      chokidar:
-        specifier: 'catalog:'
-        version: 5.0.0
       slimsearch:
         specifier: ^2.3.0
         version: 2.3.0
