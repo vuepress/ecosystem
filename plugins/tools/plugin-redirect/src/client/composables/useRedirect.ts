@@ -5,6 +5,9 @@ import { useRedirectLocation } from './useRedirectLocation.js'
 import type { RedirectPluginLocaleConfig } from '../types.js'
 import type { RedirectBehaviorConfig } from '../../shared/index.js'
 import { statusLocalStorage, statusSessionStorage } from '../utils/index.js'
+
+const AUTO_CLOSE_DELAY = 5000
+
 export const propsOptions = {
   config: {
     type: Object as PropType<RedirectBehaviorConfig>,
@@ -22,6 +25,7 @@ type Props = ExtractPropTypes<typeof propsOptions>
 export interface Redirect {
   showComponent: Ref<boolean>
   shouldRemember: Ref<boolean>
+  autoCloseProgress: Ref<number>
   locale: ComputedRef<{
     hint: string[]
     switch: string
@@ -39,6 +43,10 @@ export const useRedirect = (props: Props): Redirect => {
 
   const showComponent = ref(false)
   const shouldRemember = ref(false)
+  const autoCloseProgress = ref(0)
+
+  let autoCloseTimer: ReturnType<typeof setTimeout> | null = null
+  let progressInterval: ReturnType<typeof setInterval> | null = null
 
   const locale = computed(() => {
     if (!redirectInfo.value) return null
@@ -57,11 +65,39 @@ export const useRedirect = (props: Props): Redirect => {
     }
   })
 
+  const clearTimers = (): void => {
+    if (autoCloseTimer != null) {
+      clearTimeout(autoCloseTimer)
+      autoCloseTimer = null
+    }
+    if (progressInterval != null) {
+      clearInterval(progressInterval)
+      progressInterval = null
+    }
+  }
+
   const persistUserAction = (): void => {
+    clearTimers()
     statusSessionStorage.value[routeLocale.value] = true
     if (shouldRemember.value) statusLocalStorage.value[routeLocale.value] = true
 
     showComponent.value = false
+  }
+
+  const startAutoClose = (): void => {
+    autoCloseProgress.value = 0
+    const startTime = Date.now()
+
+    progressInterval = setInterval(() => {
+      const elapsed = Date.now() - startTime
+      autoCloseProgress.value = Math.min(elapsed / AUTO_CLOSE_DELAY, 1)
+    }, 50)
+
+    autoCloseTimer = setTimeout(() => {
+      clearTimers()
+      autoCloseProgress.value = 1
+      persistUserAction()
+    }, AUTO_CLOSE_DELAY)
   }
 
   const redirect = (): void => {
@@ -75,6 +111,7 @@ export const useRedirect = (props: Props): Redirect => {
   }
 
   watch(routePath, () => {
+    clearTimers()
     showComponent.value = false
   })
 
@@ -83,17 +120,21 @@ export const useRedirect = (props: Props): Redirect => {
       redirectInfo.value &&
       !statusSessionStorage.value[routeLocale.value] &&
       !statusLocalStorage.value[routeLocale.value]
-    )
+    ) {
       showComponent.value = true
+      startAutoClose()
+    }
   })
 
   onBeforeUnmount(() => {
+    clearTimers()
     showComponent.value = false
   })
 
   return {
     showComponent,
     shouldRemember,
+    autoCloseProgress,
     locale,
     persistUserAction,
     redirect,

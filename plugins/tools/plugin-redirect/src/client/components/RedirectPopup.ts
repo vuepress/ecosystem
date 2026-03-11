@@ -1,9 +1,13 @@
 import type { VNode } from 'vue'
-import { TransitionGroup, defineComponent, h } from 'vue'
+import { TransitionGroup, computed, defineComponent, h } from 'vue'
 import { useRedirect, propsOptions } from '../composables/index.js'
 
 import '@vuepress/helper/transition/fade-in-scale-up.css'
 import '../styles/redirect-popup.scss'
+
+// Close button circle: radius fits within a 24x24 viewBox with stroke-width 2
+const RADIUS = 10
+const CIRCUMFERENCE = 2 * Math.PI * RADIUS
 
 export default defineComponent({
   name: 'RedirectPopup',
@@ -15,9 +19,23 @@ export default defineComponent({
       shouldRemember,
       showComponent,
       locale,
+      autoCloseProgress,
       persistUserAction,
       redirect,
     } = useRedirect(props)
+
+    const closeButtonSvg = computed(() => {
+      const offset = CIRCUMFERENCE * autoCloseProgress.value
+      return (
+        `<svg class="redirect-close-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">` +
+        `<circle class="redirect-progress-track" cx="12" cy="12" r="${RADIUS}" fill="none"/>` +
+        `<circle class="redirect-progress-ring" cx="12" cy="12" r="${RADIUS}" fill="none"` +
+        ` stroke-dasharray="${CIRCUMFERENCE}" stroke-dashoffset="${offset}"/>` +
+        `<path d="M8 8l8 8M16 8l-8 8" stroke="currentColor" fill="none"` +
+        ` stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>` +
+        `</svg>`
+      )
+    })
 
     return (): VNode | null =>
       h(TransitionGroup, { name: 'fade-in-scale-up' }, () =>
@@ -29,8 +47,7 @@ export default defineComponent({
                 onClick: () => {
                   persistUserAction()
                 },
-                innerHTML:
-                  '<svg width="10" height="10" viewBox="0 0 20 20"><path d="M10 10l5.09-5.09L10 10l5.09 5.09L10 10zm0 0L4.91 4.91 10 10l-5.09 5.09L10 10z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+                innerHTML: closeButtonSvg.value,
               }),
               h(
                 'button',
