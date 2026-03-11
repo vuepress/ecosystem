@@ -115,7 +115,7 @@ export const plugins = [
     ],
   }),
   redirectPlugin({
-    switchLocale: 'modal',
+    switchLocale: 'popup',
   }),
   registerComponentsPlugin({
     components: {

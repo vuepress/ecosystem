@@ -5,10 +5,11 @@ export default tsdownConfig(
     'cli/index',
     'node/index',
     'client/components/RedirectModal',
+    'client/components/RedirectPopup',
     'client/config',
     'client/index',
   ],
   {
-    neverBundle: ['@vuepress/plugin-redirect/modal'],
+    neverBundle: ['@vuepress/plugin-redirect/component'],
   },
 )

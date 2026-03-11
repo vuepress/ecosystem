@@ -5,14 +5,14 @@ import { computed } from 'vue'
 import { useRouteLocale } from 'vuepress/client'
 import type { RedirectBehaviorConfig } from '../../shared/index.js'
 
-export interface RedirectInfo {
+export interface RedirectLocation {
   lang: string
   localePath: string
 }
 
-export const useRedirectInfo = (
+export const useRedirectLocation = (
   behaviorConfig: RedirectBehaviorConfig,
-): ComputedRef<RedirectInfo | null> => {
+): ComputedRef<RedirectLocation | null> => {
   const languages = usePreferredLanguages()
   const routeLocale = useRouteLocale()
 
