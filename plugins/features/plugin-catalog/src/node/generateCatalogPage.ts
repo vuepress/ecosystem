@@ -21,6 +21,7 @@ export const generateCatalogPage = async (
   } = app
 
   const pathToBeGenerated = new Set<string>()
+  const existingPaths = new Set(pages.map(({ path }) => path))
   const content = `\
 <${component}${[1, 2].includes(level) ? ` :level="${level}"` : ''}${
     index ? ' index' : ''
@@ -42,8 +43,7 @@ export const generateCatalogPage = async (
           // oxlint-disable-next-line no-loop-func, unicorn/prefer-regexp-test
           exclude.every((pattern) => !catalogPath.match(pattern)) &&
           // path not found
-          // eslint-disable-next-line @typescript-eslint/no-loop-func
-          pages.every(({ path }) => path !== catalogPath)
+          !existingPaths.has(catalogPath)
         ) {
           if (isDebug) logger.info(`Generating catalog ${catalogPath}`)
 

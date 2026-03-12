@@ -2,6 +2,8 @@ import MagicString from 'magic-string'
 import type { ReplacementRule } from './types.js'
 import { normalizeUrl } from './utils.js'
 
+const regexpCache = new Map<string, RegExp>()
+
 /**
  * Check if url matches find
  *
@@ -12,8 +14,14 @@ import { normalizeUrl } from './utils.js'
 export const isMatchUrl = (find: RegExp | string, url: string): boolean => {
   if (typeof find === 'string') {
     // like regexp string, start with `^` or end with `$`
-    if (find.startsWith('^') || find.endsWith('$'))
-      return new RegExp(find).test(url)
+    if (find.startsWith('^') || find.endsWith('$')) {
+      let re = regexpCache.get(find)
+      if (!re) {
+        re = new RegExp(find)
+        regexpCache.set(find, re)
+      }
+      return re.test(url)
+    }
 
     return url.endsWith(find) || url.startsWith(find)
   }
