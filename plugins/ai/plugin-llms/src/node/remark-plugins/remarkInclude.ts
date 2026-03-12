@@ -40,6 +40,10 @@ const INCLUDE_COMMENT_RE =
 const INCLUDE_RE =
   /^( *)@include:\s*([^<>|:"*?]+(?:\.[a-z0-9]+))(?:#([\w-]+))?(?:\{(\d+)?-(\d+)?\})?\s*$/gm
 
+// single-match (non-global) variants used inside the remark visitor
+const INCLUDE_COMMENT_RE_SINGLE = new RegExp(INCLUDE_COMMENT_RE.source, 'm')
+const INCLUDE_RE_SINGLE = new RegExp(INCLUDE_RE.source, 'm')
+
 const NEWLINE_RE = /\r\n?|\n/g
 const SYNTAX_PUSH_RE = /^<!-- #include-env-start: ([^)]*?) -->$/
 const HTML_LINK_RE = /(?:href|src)="(.*?)"/
@@ -283,9 +287,9 @@ export const remarkInclude =
       let matched: string[] | null = null
 
       if (node.type === 'html' && options.useComment)
-        matched = node.value.match(new RegExp(INCLUDE_COMMENT_RE.source))
+        matched = node.value.match(INCLUDE_COMMENT_RE_SINGLE)
       else if (node.type === 'text')
-        matched = node.value.match(new RegExp(INCLUDE_RE.source))
+        matched = node.value.match(INCLUDE_RE_SINGLE)
 
       if (!matched) return
 
