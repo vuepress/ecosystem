@@ -5,6 +5,7 @@ import { useRedirectLocation } from './useRedirectLocation.js'
 import type { RedirectPluginLocaleConfig } from '../types.js'
 import type { RedirectBehaviorConfig } from '../../shared/index.js'
 import { statusLocalStorage, statusSessionStorage } from '../utils/index.js'
+
 export const propsOptions = {
   config: {
     type: Object as PropType<RedirectBehaviorConfig>,
@@ -74,11 +75,11 @@ export const useRedirect = (props: Props): Redirect => {
     persistUserAction()
   }
 
-  watch(routePath, () => {
-    showComponent.value = false
-  })
-
   onMounted(() => {
+    watch(routePath, () => {
+      showComponent.value = false
+    })
+
     if (
       redirectInfo.value &&
       !statusSessionStorage.value[routeLocale.value] &&
