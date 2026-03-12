@@ -42,9 +42,11 @@ export default defineComponent({
         showComponent.value
           ? h('div', { key: 'popup', class: 'redirect-popup' }, [
               h('button', {
-                type: 'button',
-                class: 'redirect-close-button',
-                onClick: () => {
+                'type': 'button',
+                'class': 'redirect-close-button',
+                'aria-label': locale.value?.cancel,
+                'title': locale.value?.cancel,
+                'onClick': () => {
                   persistUserAction()
                 },
                 innerHTML: closeButtonSvg.value,
@@ -64,7 +66,7 @@ export default defineComponent({
                 h('input', {
                   id: 'remember-redirect',
                   type: 'checkbox',
-                  value: shouldRemember.value,
+                  checked: shouldRemember.value,
                   onChange: () => {
                     shouldRemember.value = !shouldRemember.value
                   },
