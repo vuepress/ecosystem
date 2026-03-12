@@ -24,12 +24,14 @@ export default defineComponent({
         showComponent.value
           ? h('div', { key: 'popup', class: 'redirect-popup' }, [
               h('button', {
-                type: 'button',
-                class: 'redirect-close-button',
-                onClick: () => {
+                'type': 'button',
+                'class': 'redirect-close-button',
+                'aria-label': locale.value?.cancel,
+                'title': locale.value?.cancel,
+                'onClick': () => {
                   persistUserAction()
                 },
-                innerHTML:
+                'innerHTML':
                   '<svg width="10" height="10" viewBox="0 0 20 20"><path d="M10 10l5.09-5.09L10 10l5.09 5.09L10 10zm0 0L4.91 4.91 10 10l-5.09 5.09L10 10z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
               }),
               h(
@@ -47,7 +49,7 @@ export default defineComponent({
                 h('input', {
                   id: 'remember-redirect',
                   type: 'checkbox',
-                  value: shouldRemember.value,
+                  checked: shouldRemember.value,
                   onChange: () => {
                     shouldRemember.value = !shouldRemember.value
                   },
