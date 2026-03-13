@@ -1,3 +1,3 @@
 declare module '@temp/blog/store' {
-  export const store: Record<string, string>
+  export const store: Record<number, string>
 }

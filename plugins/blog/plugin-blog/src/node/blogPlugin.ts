@@ -25,8 +25,8 @@ const hasBlogDataChanged = (
   typeOptions: { filter?: (page: Page) => boolean }[],
 ): boolean => {
   for (const { getter } of categoryOptions) {
-    const oldCategories = getter(oldPage).sort()
-    const newCategories = getter(newPage).sort()
+    const oldCategories = [...getter(oldPage)].sort()
+    const newCategories = [...getter(newPage)].sort()
 
     if (
       oldCategories.length !== newCategories.length ||
