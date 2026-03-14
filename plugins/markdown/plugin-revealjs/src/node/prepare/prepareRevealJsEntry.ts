@@ -15,18 +15,18 @@ export const useRevealJs = () => Promise.all(
     ? []
     : [
         import(/* webpackChunkName: "reveal" */ "${getModulePath(
-          'reveal.js/dist/reveal.esm.js',
+          'reveal.js',
           import.meta,
         )}").then(({ default: RevealJs }) => RevealJs),
         import(/* webpackChunkName: "reveal" */ "${getModulePath(
-          'reveal.js/plugin/markdown/markdown.esm.js',
+          'reveal.js/plugin/markdown',
           import.meta,
         )}").then(({ default: plugin }) => plugin),
       ${revealPlugins
         .map(
           (plugin) =>
             `  import(/* webpackChunkName: "reveal" */ "${getModulePath(
-              `reveal.js/plugin/${plugin}/${plugin}.esm.js`,
+              `reveal.js/plugin/${plugin}`,
               import.meta,
             )}").then(({ default: plugin }) => plugin)`,
         )

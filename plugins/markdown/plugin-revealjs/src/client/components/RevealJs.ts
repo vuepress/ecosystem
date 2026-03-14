@@ -1,7 +1,7 @@
 import { useRevealJs } from '@temp/revealjs/index.js'
 import { LoadingIcon, decodeData } from '@vuepress/helper/client'
 
-import type Reveal from 'reveal.js/dist/reveal.esm.js'
+import type { RevealApi, RevealConfig } from 'reveal.js'
 import type { PropType, VNode } from 'vue'
 import {
   computed,
@@ -53,7 +53,7 @@ export const RevealJs = defineComponent({
   setup(props) {
     const id = useId()
     const revealOptions = useRevealJsConfig()
-    const frontmatter = useFrontmatter<{ revealJs: Reveal.Options }>()
+    const frontmatter = useFrontmatter<{ revealJs: RevealConfig }>()
     const layout = usePageLayout()
 
     const loading = ref(true)
@@ -61,11 +61,11 @@ export const RevealJs = defineComponent({
 
     const code = computed(() => decodeData(props.code))
 
-    let reveal: Reveal.Api | null = null
+    let reveal: RevealApi | null = null
 
     const renderRevealJs = async (
       container: HTMLElement,
-    ): Promise<Reveal.Api> => {
+    ): Promise<RevealApi> => {
       const [Reveal, ...plugins] = await useRevealJs()
 
       const isSlidePage = layout.value.name === 'SlidePage'
