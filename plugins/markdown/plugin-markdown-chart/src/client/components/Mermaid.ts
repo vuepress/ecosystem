@@ -59,9 +59,7 @@ export default defineComponent({
     const renderMermaid = async (): Promise<void> => {
       if (__VUEPRESS_SSR__) return
 
-      const { default: mermaid } = await import(
-        /* webpackChunkName: "mermaid" */ 'mermaid/dist/mermaid.esm.min.mjs'
-      )
+      const { default: mermaid } = await import('mermaid')
 
       mermaid.initialize({
         theme: isDarkMode.value ? 'dark' : 'default',

@@ -54,8 +54,10 @@
     "build": "tsdown --config-loader unrun",
     "clean": "rimraf ./dist"
   },
+  "devDependencies": {
+    "@vuepress/helper": "workspace:*"
+  },
   "peerDependencies": {
-    "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vuepress": "catalog:"
   },

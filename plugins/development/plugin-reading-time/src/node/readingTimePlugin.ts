@@ -1,4 +1,4 @@
-import { addViteSsrNoExternal, getFullLocaleConfig } from '@vuepress/helper'
+import { getFullLocaleConfig } from '@vuepress/helper'
 import type { Page, PluginFunction } from 'vuepress/core'
 import type { ReadingTime } from '../shared/index.js'
 import { getReadingTime } from './getReadingTime.js'
@@ -49,10 +49,6 @@ export const readingTimePlugin =
           page.content,
           options.wordPerMinute ?? 300,
         )
-      },
-
-      extendsBundlerOptions: (bundlerOptions: unknown) => {
-        addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
     }
   }

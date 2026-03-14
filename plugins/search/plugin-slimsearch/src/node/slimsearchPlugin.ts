@@ -1,9 +1,4 @@
-import {
-  addViteOptimizeDepsInclude,
-  addViteSsrNoExternal,
-  fromEntries,
-  getFullLocaleConfig,
-} from '@vuepress/helper'
+import { fromEntries, getFullLocaleConfig } from '@vuepress/helper'
 import type { Page, PluginFunction } from 'vuepress/core'
 
 import type { SearchIndexStore } from '../shared/index.js'
@@ -61,15 +56,6 @@ export const slimsearchPlugin =
       },
 
       clientConfigFile: `${CLIENT_FOLDER}config.js`,
-
-      extendsBundlerOptions: (bundlerOptions: unknown) => {
-        addViteOptimizeDepsInclude(bundlerOptions, app, 'slimsearch', true)
-        addViteSsrNoExternal(bundlerOptions, app, [
-          '@vuepress/helper',
-          'fflate',
-          'vuepress-shared',
-        ])
-      },
 
       onInitialized: async () => {
         searchIndexStore = await getSearchIndexStore(app, options, store)

@@ -1,10 +1,4 @@
-import {
-  addViteOptimizeDepsExclude,
-  addViteSsrNoExternal,
-  entries,
-  fromEntries,
-  getFullLocaleConfig,
-} from '@vuepress/helper'
+import { entries, fromEntries, getFullLocaleConfig } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 import { photoSwipeLocaleInfo } from './locales.js'
@@ -67,11 +61,6 @@ export const photoSwipePlugin =
           ]),
         ),
       }),
-
-      extendsBundlerOptions: (bundlerOptions: unknown) => {
-        addViteOptimizeDepsExclude(bundlerOptions, app, 'photoswipe')
-        addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
-      },
 
       clientConfigFile: path.resolve(__dirname, '../client/config.js'),
     }
