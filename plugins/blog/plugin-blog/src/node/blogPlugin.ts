@@ -9,7 +9,11 @@ import {
 } from './category/index.js'
 import { getPageMap } from './getPagesMap.js'
 import { PLUGIN_NAME, logger } from './logger.js'
-import type { BlogCategoryOptions, BlogPluginOptions } from './options.js'
+import type {
+  BlogCategoryOptions,
+  BlogPluginOptions,
+  BlogTypeOptions,
+} from './options.js'
 import { Store, prepareStore } from './store.js'
 import { getType, getTypeOptions, prepareTypesMap } from './type/index.js'
 
@@ -22,9 +26,13 @@ const hasBlogDataChanged = (
   oldPage: Page,
   newPage: Page,
   categoryOptions: BlogCategoryOptions[],
-  typeOptions: { filter?: (page: Page) => boolean }[],
+  typeOptions: BlogTypeOptions[],
 ): boolean => {
-  for (const { getter } of categoryOptions) {
+  for (const { getter, sorter } of categoryOptions) {
+    // If a sorter is provided, we can't reliably detect sort-affecting changes,
+    // so conservatively treat the data as changed
+    if (sorter) return true
+
     const oldCategories = [...getter(oldPage)].sort()
     const newCategories = [...getter(newPage)].sort()
 
@@ -35,8 +43,12 @@ const hasBlogDataChanged = (
       return true
   }
 
-  for (const { filter: typeFilter = (): boolean => true } of typeOptions)
-    if (typeFilter(oldPage) !== typeFilter(newPage)) return true
+  for (const { filter: typeFilter, sorter } of typeOptions) {
+    // If a sorter is provided, conservatively treat the data as changed
+    if (sorter) return true
+
+    if (typeFilter?.(oldPage) !== typeFilter?.(newPage)) return true
+  }
 
   return false
 }
