@@ -47,7 +47,6 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@vuepress/helper": "workspace:*",
     "medium-zoom": "^1.1.0",
     "vue": "catalog:"
   },

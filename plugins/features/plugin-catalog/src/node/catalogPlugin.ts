@@ -1,4 +1,4 @@
-import { addViteSsrNoExternal, getFullLocaleConfig } from '@vuepress/helper'
+import { getFullLocaleConfig } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 import { generateCatalogPage } from './generateCatalogPage.js'
@@ -48,10 +48,6 @@ export const catalogPlugin =
       }),
 
       onInitialized: () => generateCatalogPage(app, options),
-
-      extendsBundlerOptions: (bundlerOptions: unknown) => {
-        addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
-      },
 
       ...(component
         ? {}

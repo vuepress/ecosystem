@@ -55,7 +55,9 @@ export const DocSearch = defineComponent({
     const initialize = async (): Promise<void> => {
       if (__VUEPRESS_SSR__) return
 
-      const { default: docsearch } = await import('@docsearch/js')
+      const { default: docsearch } = await import(
+        /* webpackChunkName: "docsearch" */ '@docsearch/js'
+      )
       // eslint-disable-next-line @typescript-eslint/no-deprecated
       const { indexName, indices, searchParameters, ...rest } = options.value
 

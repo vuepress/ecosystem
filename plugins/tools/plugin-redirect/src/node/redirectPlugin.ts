@@ -1,8 +1,4 @@
-import {
-  addViteSsrNoExternal,
-  getFullLocaleConfig,
-  getModulePath,
-} from '@vuepress/helper'
+import { getFullLocaleConfig, getModulePath } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 import { ensureRootHomePage } from './ensureRootHomePage.js'
@@ -51,10 +47,6 @@ export const redirectPlugin =
           config: options.locales,
           default: redirectLocaleInfo,
         }),
-      },
-
-      extendsBundlerOptions: (bundlerOptions: unknown) => {
-        addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
       },
 
       extendsPage: (page) => {

@@ -1,11 +1,4 @@
-import {
-  addViteOptimizeDepsExclude,
-  addViteOptimizeDepsInclude,
-  addViteSsrExternal,
-  addViteSsrNoExternal,
-  deepAssign,
-  isArray,
-} from '@vuepress/helper'
+import { deepAssign, isArray } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import {
   chartjs,
@@ -116,54 +109,6 @@ export const markdownChartPlugin =
         else if (mergedOptions.plantuml) md.use(plantuml)
         if (status.markmap) md.use(markmap)
         if (status.mermaid) md.use(mermaid)
-      },
-
-      extendsBundlerOptions: (bundlerOptions: unknown) => {
-        addViteSsrNoExternal(bundlerOptions, app, [
-          '@vuepress/helper',
-          'fflate',
-        ])
-
-        if (status.chartjs) {
-          addViteOptimizeDepsExclude(
-            bundlerOptions,
-            app,
-            'chart.js/auto/auto.mjs',
-          )
-          addViteSsrExternal(bundlerOptions, app, 'chart.js')
-        }
-
-        if (status.echarts) {
-          addViteOptimizeDepsExclude(bundlerOptions, app, 'echarts')
-          addViteSsrExternal(bundlerOptions, app, 'echarts')
-        }
-
-        if (status.flowchart) {
-          addViteOptimizeDepsExclude(bundlerOptions, app, 'flowchart.ts')
-          addViteSsrExternal(bundlerOptions, app, 'flowchart.ts')
-        }
-
-        if (status.markmap) {
-          addViteOptimizeDepsInclude(bundlerOptions, app, [
-            'markmap-lib',
-            'markmap-toolbar',
-            'markmap-view',
-          ])
-          addViteSsrExternal(bundlerOptions, app, [
-            'markmap-lib',
-            'markmap-toolbar',
-            'markmap-view',
-          ])
-        }
-
-        if (status.mermaid) {
-          addViteOptimizeDepsExclude(
-            bundlerOptions,
-            app,
-            'mermaid/dist/mermaid.esm.min.mjs',
-          )
-          addViteSsrExternal(bundlerOptions, app, 'mermaid')
-        }
       },
 
       clientConfigFile: () => prepareConfigFile(app, status),

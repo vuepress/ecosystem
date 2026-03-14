@@ -1,4 +1,4 @@
-import { addViteSsrNoExternal, getPageExcerpt } from '@vuepress/helper'
+import { getPageExcerpt } from '@vuepress/helper'
 import type { Page, PluginFunction } from 'vuepress/core'
 import { createPage, preparePageChunk, prepareRoutes } from 'vuepress/core'
 import type { CategoriesMap, TypesMap } from '../shared/index.js'
@@ -73,10 +73,6 @@ export const blogPlugin =
       define: () => ({
         __BLOG_META_SCOPE__: metaScope,
       }),
-
-      extendsBundlerOptions: (bundlerOptions: unknown) => {
-        addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
-      },
 
       extendsPage: (page) => {
         // Generate page excerpt

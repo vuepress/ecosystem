@@ -1,6 +1,5 @@
 import {
   Logger,
-  addViteSsrExternal,
   entries,
   fromEntries,
   getFullLocaleConfig,
@@ -49,10 +48,6 @@ export const meilisearchPlugin =
           ),
         }),
         __ML_SEARCH_OPTIONS__: options,
-      },
-
-      extendsBundlerOptions: (bundlerOptions) => {
-        addViteSsrExternal(bundlerOptions, app, 'meilisearch-docsearch')
       },
 
       clientConfigFile: path.resolve(__dirname, '../client/config.js'),
