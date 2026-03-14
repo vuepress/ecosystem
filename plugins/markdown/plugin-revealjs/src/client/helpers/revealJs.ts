@@ -1,6 +1,5 @@
 import { watchImmediate } from '@vueuse/core'
-
-import type Reveal from 'reveal.js'
+import type { RevealConfig } from 'reveal.js'
 import type { App, InjectionKey, MaybeRefOrGetter, Ref } from 'vue'
 import { computed, inject, isRef, ref } from 'vue'
 import { isFunction } from 'vuepress/shared'
@@ -12,7 +11,7 @@ declare const __VUEPRESS_DEV__: boolean
  *
  * Reveal.js 选项
  */
-export type RevealJsOptions = Partial<Omit<Reveal.Options, 'embedded'>>
+export type RevealJsOptions = Partial<Omit<RevealConfig, 'embedded'>>
 
 /**
  * Reveal.js options ref
