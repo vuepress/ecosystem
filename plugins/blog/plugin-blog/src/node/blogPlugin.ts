@@ -47,7 +47,9 @@ const hasBlogDataChanged = (
     // If a sorter is provided, conservatively treat the data as changed
     if (sorter) return true
 
-    if (typeFilter?.(oldPage) !== typeFilter?.(newPage)) return true
+    const filterFn = typeFilter ?? ((): boolean => true)
+
+    if (filterFn(oldPage) !== filterFn(newPage)) return true
   }
 
   return false
