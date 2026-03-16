@@ -482,6 +482,10 @@ ${codeFence}
 ${codeFence}ts :no-collapsed-lines=12
 ${genLines(20)}
 ${codeFence}
+
+${codeFence}ts :no-line-numbers :collapsed-lines=12
+${genLines(20)}
+${codeFence}
 `
     it('should work properly if `collapsedLines` is disabled by default', () => {
       const md = createMarkdown({ collapsedLines: false })

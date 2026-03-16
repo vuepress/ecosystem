@@ -32,22 +32,27 @@ export const resolveLanguage = (info: string): string =>
  *
  * 将属性转换为行选项
  *
- * @description 2 steps:
- * 1. convert attrs into line numbers:
+ * @description 3 steps:
+ * 1. strip directive tokens (e.g. `:collapsed-lines=5`) from attrs
+ * 2. convert attrs into line numbers:
  *    {4,7-13,16,23-27,40} -> [4,7,8,9,10,11,12,13,16,23,24,25,26,27,40]
- * 2. convert line numbers into line options:
+ * 3. convert line numbers into line options:
  *    [{ line: number, classes: string[] }]
  *
- * 转换分为两步：
- * 1. 将属性转换为行号数组
- * 2. 将行号数组转换为行选项
+ * 转换分为三步：
+ * 1. 从属性中移除指令标记（如 `:collapsed-lines=5`）
+ * 2. 将属性转换为行号数组
+ * 3. 将行号数组转换为行选项
  *
  * @param attrs - Attributes string / 属性字符串
  *
  * @returns Line options array / 行选项数组
  */
 export const attrsToLines = (attrs: string): TransformerCompactLineOption[] => {
-  const attrsContent = attrs.match(/\s*[\d,-]*?$/)?.[0].trim()
+  const attrsContent = attrs
+    .replaceAll(/:\S+/g, '')
+    .match(/[\d,-]+\s*$/)?.[0]
+    ?.trim()
   const result: number[] = []
 
   if (!attrsContent) return []
