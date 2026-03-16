@@ -198,13 +198,14 @@ By default, the plugin will output to `.vuepress/redirect` directory under sourc
 
 ### switchLocale
 
-- Type: `"direct" | "modal" | false`
+- Type: `"direct" | "popup" | "modal" | false`
 - Default: `false`
 - Details:
 
   Whether switch to a new locale based on user preference.
   - `"direct"`: redirect to the new locale directly without asking
-  - `"modal"`: show a modal to let user choose whether to switch to the new locale
+  - `"popup"`: show a popup to let user choose whether to switch to the new locale
+  - `"modal"`: show a full screen modal to let user choose whether to switch to the new locale
 
 ### localeConfig
 

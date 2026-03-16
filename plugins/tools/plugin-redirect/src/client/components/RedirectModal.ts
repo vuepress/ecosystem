@@ -1,21 +1,7 @@
-import { useScrollLock } from '@vueuse/core'
-import type { PropType, VNode } from 'vue'
-import {
-  TransitionGroup,
-  computed,
-  defineComponent,
-  h,
-  nextTick,
-  onBeforeUnmount,
-  onMounted,
-  ref,
-  watch,
-} from 'vue'
-import { useData, useRouter } from 'vuepress/client'
-import type { RedirectBehaviorConfig } from '../../shared/index.js'
-import { useRedirectInfo } from '../composables/index.js'
-import type { RedirectPluginLocaleConfig } from '../types.js'
-import { statusLocalStorage, statusSessionStorage } from '../utils/index.js'
+import { useScrollLock, watchImmediate } from '@vueuse/core'
+import type { VNode } from 'vue'
+import { TransitionGroup, defineComponent, h, onMounted, ref } from 'vue'
+import { useRedirect, propsOptions } from '../composables/index.js'
 
 import '@vuepress/helper/transition/fade-in-scale-up.css'
 import '../styles/redirect-modal.scss'
@@ -23,79 +9,33 @@ import '../styles/redirect-modal.scss'
 export default defineComponent({
   name: 'RedirectModal',
 
-  props: {
-    config: {
-      type: Object as PropType<RedirectBehaviorConfig>,
-      required: true,
-    },
-
-    locales: {
-      type: Object as PropType<RedirectPluginLocaleConfig>,
-      required: true,
-    },
-  },
+  props: propsOptions,
 
   setup(props) {
-    const router = useRouter()
-    const { routeLocale, routePath } = useData()
-    const redirectInfo = useRedirectInfo(props.config)
+    const {
+      shouldRemember,
+      showComponent,
+      locale,
+      persistUserAction,
+      redirect,
+    } = useRedirect(props)
 
     const body = ref<HTMLElement>()
     // lock body scroll when modal is displayed
-    const showModal = useScrollLock(body)
-    const shouldRemember = ref(false)
+    const bodyLock = useScrollLock(body)
 
-    const locale = computed(() => {
-      if (!redirectInfo.value) return null
-
-      const { lang, localePath } = redirectInfo.value
-      const locales = [
-        props.locales[localePath],
-        props.locales[routeLocale.value],
-      ]
-
-      return {
-        hint: locales.map(({ hint }) => hint.replace('$1', lang)),
-        switch: locales
-          .map(({ switch: switchText }) => switchText.replace('$1', lang))
-          .join(' / '),
-        cancel: locales.map(({ cancel }) => cancel).join(' / '),
-        remember: locales.map(({ remember }) => remember).join(' / '),
-      }
-    })
-
-    const updateState = (): void => {
-      statusSessionStorage.value[routeLocale.value] = true
-      if (shouldRemember.value)
-        statusLocalStorage.value[routeLocale.value] = true
-
-      showModal.value = false
-    }
-
-    watch(routePath, () => {
-      showModal.value = false
-    })
-
-    onMounted(async () => {
+    onMounted(() => {
       body.value = document.body
 
-      await nextTick()
-
-      if (
-        redirectInfo.value &&
-        !statusSessionStorage.value[routeLocale.value] &&
-        !statusLocalStorage.value[routeLocale.value]
-      )
-        showModal.value = true
-    })
-
-    onBeforeUnmount(() => {
-      showModal.value = false
+      // lock scroll while the modal is displayed
+      watchImmediate(showComponent, (value) => {
+        bodyLock.value = value
+      })
     })
 
     return (): VNode | null =>
       h(TransitionGroup, { name: 'fade-in-scale-up' }, () =>
-        showModal.value
+        showComponent.value
           ? h(
               'div',
               { key: 'mask', class: 'redirect-modal-mask' },
@@ -115,7 +55,7 @@ export default defineComponent({
                     h('input', {
                       id: 'remember-redirect',
                       type: 'checkbox',
-                      value: shouldRemember.value,
+                      checked: shouldRemember.value,
                       onChange: () => {
                         shouldRemember.value = !shouldRemember.value
                       },
@@ -126,34 +66,30 @@ export default defineComponent({
                       locale.value?.remember,
                     ),
                   ]),
-                  h(
-                    'button',
-                    {
-                      type: 'button',
-                      class: 'redirect-modal-action primary',
-                      onClick: () => {
-                        updateState()
-                        void router.replace(
-                          routePath.value.replace(
-                            routeLocale.value,
-                            redirectInfo.value!.localePath,
-                          ),
-                        )
+                  h('div', { class: 'redirect-modal-actions' }, [
+                    h(
+                      'button',
+                      {
+                        type: 'button',
+                        class: 'redirect-modal-action primary',
+                        onClick: () => {
+                          redirect()
+                        },
                       },
-                    },
-                    locale.value?.switch,
-                  ),
-                  h(
-                    'button',
-                    {
-                      type: 'button',
-                      class: 'redirect-modal-action',
-                      onClick: () => {
-                        updateState()
+                      locale.value?.switch,
+                    ),
+                    h(
+                      'button',
+                      {
+                        type: 'button',
+                        class: 'redirect-modal-action',
+                        onClick: () => {
+                          persistUserAction()
+                        },
                       },
-                    },
-                    locale.value?.cancel,
-                  ),
+                      locale.value?.cancel,
+                    ),
+                  ]),
                 ],
               ),
             )

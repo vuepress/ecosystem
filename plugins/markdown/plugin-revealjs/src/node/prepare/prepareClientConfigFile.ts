@@ -45,7 +45,7 @@ export const prepareClientConfigFile = async (
 import { RevealJs, injectRevealJsConfig } from "${CLIENT_ENTRY}";
 ${layout ? `import { SlidePage } from "${getModulePath(`${PLUGIN_NAME}/layouts`, import.meta)}";\n` : ''}\
 
-import "${getModulePath('reveal.js/dist/reveal.css', import.meta)}";
+import "${getModulePath('reveal.js/reveal.css', import.meta)}";
 import "${getModulePath(`${PLUGIN_NAME}/styles/vars.css`, import.meta)}";
 import "${getModulePath(`${PLUGIN_NAME}/styles/themes/base.css`, import.meta)}";
 ${Array.from(

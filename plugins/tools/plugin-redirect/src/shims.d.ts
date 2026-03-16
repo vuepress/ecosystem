@@ -2,7 +2,7 @@ declare module '@temp/redirect/map.js' {
   export const redirectMap: Record<string, string>
 }
 
-declare module '@vuepress/plugin-redirect/modal' {
+declare module '@vuepress/plugin-redirect/component' {
   import type { ComponentOptions } from 'vue'
 
   const component: ComponentOptions

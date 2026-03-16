@@ -32,16 +32,19 @@ export const redirectPlugin =
       name: PLUGIN_NAME,
 
       alias: {
-        '@vuepress/plugin-redirect/modal':
+        '@vuepress/plugin-redirect/component':
           options.switchLocale === 'modal'
             ? path.resolve(__dirname, '../client/components/RedirectModal.js')
-            : getModulePath('@vuepress/helper/noopComponent', import.meta),
+            : options.switchLocale === 'popup'
+              ? path.resolve(__dirname, '../client/components/RedirectPopup.js')
+              : getModulePath('@vuepress/helper/noopComponent', import.meta),
       },
 
       define: {
+        __REDIRECT_COMPONENT__:
+          options.switchLocale === 'modal' || options.switchLocale === 'popup',
         __REDIRECT_CONFIG__: behaviorConfig,
         __REDIRECT_DIRECT__: options.switchLocale === 'direct',
-        __REDIRECT_MODAL__: options.switchLocale === 'modal',
         __REDIRECT_LOCALES__: getFullLocaleConfig({
           app,
           name: 'redirect',

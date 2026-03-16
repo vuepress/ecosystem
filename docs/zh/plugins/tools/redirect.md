@@ -207,13 +207,14 @@ Generate redirect site for current VuePress project
 
 ### switchLocale
 
-- 类型：`"direct" | "modal" | false`
+- 类型：`"direct" | "popup" | "modal" | false`
 - 默认值：`false`
 - 详情：
 
   是否根据用户偏好切换到新的语言环境。
   - `"direct"`: 直接重定向到新的语言环境而不询问
-  - `"modal"`: 显示一个模式让用户选择是否切换到新的语言环境
+  - `"popup"`: 显示一个弹窗让用户选择是否切换到新的语言环境
+  - `"modal"`: 显示一个全屏模态框让用户选择是否切换到新的语言环境
 
 ### localeConfig
 
