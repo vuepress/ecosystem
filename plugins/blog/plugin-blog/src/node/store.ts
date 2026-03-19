@@ -7,21 +7,37 @@ import type { App } from 'vuepress/core'
  *
  * @description The store assigns a unique numeric index to each page path,
  * which is used by categories and types to reference articles efficiently.
- * Indexes are stable: removing an item clears its slot rather than shifting others.
+ * Uses Map for O(1) lookups and reuses freed slots for deleted paths.
  *
  * 存储为每个页面路径分配唯一的数字索引，分类和类型使用这些索引高效地引用文章。
- * 索引是稳定的：删除条目会清空其位置而不是移动其他条目。
+ * 使用 Map 实现 O(1) 查找，并复用已删除路径的空位。
  */
 export class Store {
   /**
-   * Internal array of page paths, where the array index is the store index
+   * Map of page paths to their indexes for O(1) lookup
    *
-   * 页面路径的内部数组，数组索引即为存储索引
+   * 页面路径到索引的映射，实现 O(1) 查找
    */
-  public store: string[]
+  private pathToIndex: Map<string, number>
+
+  /**
+   * Array of page paths indexed by store index
+   *
+   * 按存储索引排列的页面路径数组
+   */
+  private indexToPath: string[]
+
+  /**
+   * Stack of free slots available for reuse
+   *
+   * 可供复用的空闲位置栈
+   */
+  private freeSlots: number[]
 
   public constructor() {
-    this.store = []
+    this.pathToIndex = new Map()
+    this.indexToPath = []
+    this.freeSlots = []
   }
 
   /**
@@ -33,13 +49,21 @@ export class Store {
    * @returns Index of the item in the store / 条目在存储中的索引
    */
   public addItem(item: string): number {
-    const index = this.store.indexOf(item)
+    const existing = this.pathToIndex.get(item)
 
-    if (index === -1) {
-      this.store.push(item)
+    if (existing !== undefined) return existing
 
-      return this.store.length - 1
+    let index: number
+
+    if (this.freeSlots.length > 0) {
+      index = this.freeSlots.pop()!
+      this.indexToPath[index] = item
+    } else {
+      index = this.indexToPath.length
+      this.indexToPath.push(item)
     }
+
+    this.pathToIndex.set(item, index)
 
     return index
   }
@@ -57,20 +81,20 @@ export class Store {
   }
 
   /**
-   * Clear an item from the store by setting its slot to empty string
+   * Clear an item from the store and free its slot for reuse
    *
-   * 通过将其位置设为空字符串来清除存储中的条目
-   *
-   * @description This preserves index stability for other items
-   *
-   * 这样做可以保持其他条目的索引稳定性
+   * 从存储中清除条目并释放其位置供复用
    *
    * @param item - Page path to clear / 要清除的页面路径
    */
   public clearItem(item: string): void {
-    const index = this.store.indexOf(item)
+    const index = this.pathToIndex.get(item)
 
-    if (index !== -1) this.store[index] = ''
+    if (index !== undefined) {
+      this.pathToIndex.delete(item)
+      this.indexToPath[index] = ''
+      this.freeSlots.push(index)
+    }
   }
 
   /**
@@ -78,10 +102,14 @@ export class Store {
    *
    * 将存储序列化为 JSON 字符串
    *
-   * @returns JSON string of the store array / 存储数组的 JSON 字符串
+   * @returns JSON string of the store as an index-to-path object / 存储的索引到路径对象的 JSON 字符串
    */
   public toJSON(): string {
-    return JSON.stringify(this.store)
+    const result: Record<number, string> = {}
+
+    for (const [path, index] of this.pathToIndex) result[index] = path
+
+    return JSON.stringify(result)
   }
 }
 
