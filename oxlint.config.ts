@@ -1,5 +1,5 @@
 import { defineConfig } from 'oxlint'
-import { getOxlintConfigs } from 'oxc-config-hope'
+import { getOxlintConfigs } from 'oxc-config-hope/oxlint'
 
 export default defineConfig({
   extends: getOxlintConfigs({
@@ -7,6 +7,7 @@ export default defineConfig({
       '**/src/{cli,node}/**/*.ts',
       'tools/**/*.ts',
       '**/.vuepress/config.ts',
+      '.ncurc.cjs',
     ],
     vue: true,
     vitest: true,
