@@ -18,7 +18,7 @@ export interface TsdownOptions extends Omit<UserConfig, 'entry' | 'copy'> {
    *
    * 允许被打包的依赖白名单
    *
-   * @default browser ? false : undefined
+   * @default false
    */
   onlyAllowBundle?: (string | RegExp)[] | false
 
@@ -130,9 +130,9 @@ export const tsdownConfig = (
       moduleSideEffects: moduleSideEffects ?? defaultModuleSideEffects,
     },
     deps: {
-      alwaysBundle: alwaysBundle,
+      alwaysBundle,
       neverBundle: [/^@internal\//, /^@temp\//, ...neverBundle],
-      onlyAllowBundle: onlyAllowBundle,
+      onlyAllowBundle,
     },
     css: {
       inject: true,
