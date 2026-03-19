@@ -18,7 +18,7 @@
         "./themes/theme-default/src/client/utils/*.js"
       ]
     },
-    "types": ["vuepress/client-types", "webpack-env", "vite/client"]
+    "types": ["node", "vuepress/client-types", "webpack-env", "vite/client"]
   },
   "include": [
     "**/.vuepress/**/*",

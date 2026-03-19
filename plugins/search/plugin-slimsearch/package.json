@@ -59,7 +59,7 @@
     "vue": "catalog:"
   },
   "devDependencies": {
-    "domhandler": "5.0.3"
+    "domhandler": "6.0.1"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

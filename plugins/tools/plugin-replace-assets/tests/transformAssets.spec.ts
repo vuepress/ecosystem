@@ -178,7 +178,7 @@ describe('plugin-replace-assets > replacementAssetWithRules', () => {
 
     if (name === 'function replacement') {
       // should not called with cached, and not called with no supported
-      expect(replacementFn).toBeCalledTimes(expects.length - 3)
+      expect(replacementFn).toHaveBeenCalledTimes(expects.length - 3)
     }
   })
 })

@@ -1,10 +1,12 @@
+// oxlint-disable-next-line typescript/no-unsafe-call
 const { defineConfig } = require('npm-check-updates')
 
 module.exports = defineConfig({
   workspaces: true,
   upgrade: true,
   timeout: 60000,
-  peer: true,
+  // FIXME: https://github.com/raineorshine/npm-check-updates/issues/1604
+  // peer: true,
   target: (name) => {
     if (
       name.startsWith('@vuepress/') ||
