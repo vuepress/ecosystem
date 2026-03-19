@@ -1,7 +1,3 @@
-import {
-  addViteOptimizeDepsExclude,
-  addViteSsrExternal,
-} from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import type { RevealJsPluginOptions } from './options.js'
 import {
@@ -47,16 +43,6 @@ export const revealJsPlugin = ({
   layout = 'SlidePage',
 }: RevealJsPluginOptions = {}): Plugin => ({
   name: PLUGIN_NAME,
-
-  extendsBundlerOptions: (bundlerOptions, app) => {
-    addViteOptimizeDepsExclude(bundlerOptions, app, [
-      'reveal.js',
-      'reveal.js/plugin/markdown',
-      ...plugins.map((plugin) => `reveal.js/plugin/${plugin}`),
-    ])
-
-    addViteSsrExternal(bundlerOptions, app, 'reveal.js')
-  },
 
   extendsMarkdown: (md) => {
     md.use(revealJs)

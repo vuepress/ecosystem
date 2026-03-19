@@ -47,7 +47,6 @@
   },
   "dependencies": {
     "@types/markdown-it": "^14.1.2",
-    "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vue": "catalog:"
   },

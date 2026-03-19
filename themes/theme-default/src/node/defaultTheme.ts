@@ -1,4 +1,3 @@
-import { addViteOptimizeDepsExclude } from '@vuepress/helper'
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
 import { copyCodePlugin } from '@vuepress/plugin-copy-code'
@@ -87,11 +86,6 @@ export const defaultTheme = ({
     },
 
     clientConfigFile: path.resolve(__dirname, '../client/config.js'),
-
-    extendsBundlerOptions: (bundlerOptions, app) => {
-      // ensure theme alias is not optimized by Vite
-      addViteOptimizeDepsExclude(bundlerOptions, app, '@theme')
-    },
 
     extendsPage: (page: Page<Partial<DefaultThemePageData>>) => {
       // save relative file path into page data to generate edit link

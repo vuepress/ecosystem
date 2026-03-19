@@ -1,5 +1,4 @@
 import { extractInfo, icon, stringifyAttrs } from '@mdit/plugin-icon'
-import { addCustomElement, addViteSsrNoExternal } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 
 import { getAssetsType } from './getAssetsType.js'
@@ -32,13 +31,6 @@ export const iconPlugin = (options: IconPluginOptions = {}): Plugin => {
 
   return {
     name: PLUGIN_NAME,
-
-    extendsBundlerOptions: (bundlerOptions, app) => {
-      addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
-
-      if (iconType === 'iconify')
-        addCustomElement(bundlerOptions, app, 'iconify-icon')
-    },
 
     extendsMarkdown: (md) => {
       if (options.markdown ?? true) {

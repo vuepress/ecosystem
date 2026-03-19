@@ -1,9 +1,4 @@
-import {
-  addViteSsrNoExternal,
-  getFullLocaleConfig,
-  isArray,
-  isString,
-} from '@vuepress/helper'
+import { getFullLocaleConfig, isArray, isString } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 import { copyCodeLocaleInfo } from './locales.js'
@@ -61,10 +56,6 @@ export const copyCodePlugin =
         __CC_DURATION__: options.duration ?? 2000,
         __CC_SHOW_IN_MOBILE__: options.showInMobile ?? false,
       }),
-
-      extendsBundlerOptions: (bundlerOptions: unknown) => {
-        addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
-      },
 
       clientConfigFile: path.resolve(__dirname, '../client/config.js'),
     }

@@ -55,7 +55,9 @@ export const MeiliSearch = defineComponent({
     const initialize = async (): Promise<void> => {
       if (__VUEPRESS_SSR__) return
 
-      const { docsearch } = await import('meilisearch-docsearch')
+      const { docsearch } = await import(
+        /* webpackChunkName: "meilisearch" */ 'meilisearch-docsearch'
+      )
       const { searchParams } = meilisearchOptions.value
       let rawFilter: (string[] | string)[] = []
 

@@ -1,8 +1,4 @@
-import {
-  addViteOptimizeDepsExclude,
-  addViteSsrNoExternal,
-  customizeDevServer,
-} from '@vuepress/helper'
+import { customizeDevServer } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { generateManifest } from './generateManifest.js'
 import { generateServiceWorker } from './generateServiceWorker.js'
@@ -60,12 +56,6 @@ export const pwaPlugin =
       name: PLUGIN_NAME,
 
       extendsBundlerOptions: (bundlerOptions: unknown) => {
-        addViteOptimizeDepsExclude(bundlerOptions, app, [
-          'mitt',
-          'register-service-worker',
-        ])
-        addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
-
         customizeDevServer(bundlerOptions, app, {
           path: '/manifest.webmanifest',
           response: async (_, response) => {

@@ -1,12 +1,4 @@
-import {
-  addCustomElement,
-  addViteOptimizeDepsExclude,
-  addViteOptimizeDepsInclude,
-  addViteSsrExternal,
-  addViteSsrNoExternal,
-  getFullLocaleConfig,
-  isModuleAvailable,
-} from '@vuepress/helper'
+import { getFullLocaleConfig, isModuleAvailable } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getAlias, getProviderPackage } from './getProvider.js'
 import { walineLocalesInfo } from './locales.js'
@@ -72,48 +64,6 @@ export const commentPlugin =
         }
 
         return result
-      },
-
-      extendsBundlerOptions: (bundlerOptions: unknown) => {
-        // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check, default-case
-        switch (options.provider) {
-          case 'Artalk': {
-            addViteOptimizeDepsExclude(
-              bundlerOptions,
-              app,
-              'artalk/dist/Artalk.mjs',
-            )
-            addViteSsrExternal(bundlerOptions, app, 'artalk')
-            break
-          }
-
-          case 'Giscus': {
-            addCustomElement(bundlerOptions, app, 'GiscusWidget')
-            addViteSsrExternal(bundlerOptions, app, 'giscus')
-            break
-          }
-
-          case 'Twikoo': {
-            addViteOptimizeDepsInclude(bundlerOptions, app, 'twikoo')
-            addViteSsrExternal(bundlerOptions, app, 'twikoo')
-            break
-          }
-
-          case 'Waline': {
-            addViteOptimizeDepsInclude(bundlerOptions, app, [
-              '@waline/client > autosize',
-              '@waline/client > recaptcha-v3',
-            ])
-            addViteOptimizeDepsExclude(bundlerOptions, app, '@waline/client')
-            addViteSsrExternal(bundlerOptions, app, '@waline/client')
-            break
-          }
-        }
-
-        addViteSsrNoExternal(bundlerOptions, app, [
-          '@vuepress/helper',
-          '@vuepress/plugin-comment',
-        ])
       },
 
       clientConfigFile: `${CLIENT_FOLDER}config.js`,
