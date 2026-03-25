@@ -98,7 +98,7 @@ Then, create a **correct configuration file** for the scraper. Here, we provide 
     "lvl4": "[vp-content] h4",
     "lvl5": "[vp-content] h5",
     "lvl6": "[vp-content] h6",
-    "content": "[vp-content] p, [vp-content] li",
+    "content": "[vp-content] p, [vp-content] li, [vp-content] .vp-card-title, [vp-content] .vp-card-desc",
     "lang": {
       "selector": "/html/@lang",
       "global": true,
