@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.27" />
+    <style>
+      :root {
+        --vp-c-bg: #fff;
+      }
+
+      [data-theme='dark'] {
+        --vp-c-bg: #1b1b1f;
+      }
+
+      html,
+      body {
+        background-color: var(--vp-c-bg);
+      }
+    </style>
+    <script>
+      const useChoice = localStorage.getItem('vuepress-color-scheme')
+      const systemStatus =
+        'matchMedia' in window
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : false
+
+      if (useChoice === 'light') {
+        document.documentElement.dataset.theme = 'light'
+      } else if (useChoice === 'dark' || systemStatus) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"幻灯片演示","image":["https://theme-hope-assets.vuejs.press/logo.svg"],"dateModified":"2025-01-10T18:07:54.000Z","author":[]}</script><meta property="og:url" content="https://ecosystem.vuejs.press/zh/plugins/markdown/revealjs/demo.html"><meta property="og:site_name" content="VuePress 生态系统"><meta property="og:title" content="幻灯片演示"><meta property="og:type" content="article"><meta property="og:image" content="https://theme-hope-assets.vuejs.press/logo.svg"><meta property="og:locale" content="zh-CN"><meta property="og:locale:alternate" content="en-US"><meta property="og:updated_time" content="2025-01-10T18:07:54.000Z"><meta property="article:modified_time" content="2025-01-10T18:07:54.000Z"><link rel="alternate" hreflang="en-us" href="https://ecosystem.vuejs.press/plugins/markdown/revealjs/demo.html"><link rel="alternate" type="application/atom+xml" href="https://ecosystem.vuejs.press/zh/atom.xml" title="VuePress 生态系统 Atom Feed"><link rel="alternate" type="application/json" href="https://ecosystem.vuejs.press/zh/feed.json" title="VuePress 生态系统 JSON Feed"><link rel="alternate" type="application/rss+xml" href="https://ecosystem.vuejs.press/zh/rss.xml" title="VuePress 生态系统 RSS Feed"><link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="application-name" content="VuePress"><link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png"><link rel="mask-icon" href="/images/icons/safari-pinned-tab.svg" color="#3eaf7c"><meta name="theme-color" content="#3eaf7c"><title>幻灯片演示 | VuePress 生态系统</title><meta name="description" content="VuePress 官方主题和插件">
+    <link rel="preload" href="/assets/style-DKqCTXgz.css" as="style"><link rel="stylesheet" href="/assets/style-DKqCTXgz.css">
+    <link rel="modulepreload" href="/assets/app-DlZXEEOA.js"><link rel="modulepreload" href="/assets/preload-helper-D4M6sveU.js"><link rel="modulepreload" href="/assets/client-CjvO7Cpu.js"><link rel="modulepreload" href="/assets/runtime-core.esm-bundler-DCWUs8Ij.js"><link rel="modulepreload" href="/assets/demo-DZZyRPHN.js">
+    <link rel="prefetch" href="/assets/giscus-82roaNmn.js" as="script"><link rel="prefetch" href="/assets/esm-BimGn65T.js" as="script"><link rel="prefetch" href="/assets/auto-DVUsIrwh.js" as="script"><link rel="prefetch" href="/assets/echarts-CilpO8PF.js" as="script"><link rel="prefetch" href="/assets/flowchart-CstoOiJI.js" as="script"><link rel="prefetch" href="/assets/browser-D4kkDV3-.js" as="script"><link rel="prefetch" href="/assets/dist-SzrCM60E.js" as="script"><link rel="prefetch" href="/assets/dist-BRL6o_U3.js" as="script"><link rel="prefetch" href="/assets/mermaid.esm.min-C2E65gEi.js" as="script"><link rel="prefetch" href="/assets/NpmBadge-CNNnrbK5.js" as="script"><link rel="prefetch" href="/assets/reveal-BqWneBgV.js" as="script"><link rel="prefetch" href="/assets/markdown-D4OJU4q6.js" as="script"><link rel="prefetch" href="/assets/highlight-B3s4FJJc.js" as="script"><link rel="prefetch" href="/assets/math-Bag70XFv.js" as="script"><link rel="prefetch" href="/assets/search-on6u9wI1.js" as="script"><link rel="prefetch" href="/assets/notes-Cm7GqZUX.js" as="script"><link rel="prefetch" href="/assets/zoom-C_hoybcv.js" as="script"><link rel="prefetch" href="/assets/echarts-wordcloud-wfM38wkz.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="vp-reveal-page"><div><div class="vp-reveal"><div class="reveal reveal-viewport" id="v-0"><div class="slides"><section data-markdown><script type="text/template">
+<!-- .slide: data-transition="slide" -->
+
+## 幻灯片演示
+
+<!-- .element: class="r-fit-text" -->
+
+一个简单的幻灯片演示与各种小贴士。
+
+<!-- .element: class="r-fit-text" -->
+
+> 作者 Mr.Hope. 请滚动鼠标滚轮进入下一页
+
+---
+
+## 标注幻灯片
+
+<!-- .element: class="r-fit-text" -->
+
+[👇](#/1/1)
+
+--
+
+## 标注幻灯片
+
+<!-- .element: class="r-fit-text" -->
+
+使用 `---` 标注水平幻灯片
+
+<!-- .element: class="fragment fade-in" -->
+
+在水平幻灯片中使用 `--` 分割垂直幻灯片
+
+<!-- .element: class="fragment fade-in" -->
+
+使用 `<!-- .slide: ... -->` 在幻灯片上添加属性
+
+<!-- .element: class="fragment fade-in" -->
+
+使用 `<!-- .element: ... -->` 在前一个 HTML 元素上添加属性
+
+<!-- .element: class="fragment fade-in" -->
+
+---
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## Markdown
+
+<!-- .element: class="r-fit-text" -->
+
+你可以在幻灯片中使用 Markdown 语法的各种标记.
+
+<!-- .element: class="r-fit-text" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Markdown
+
+你可以在幻灯片中使用 Markdown 语法的各种标记.
+
+### 这是一个 H3
+
+标题默认会自动转换为大写。
+
+这是一个有着 **粗体**, _斜体_, ~~删除线~~ 文字并包含 [一个链接](https://mister-hope.com) 的段落，并且它会自动换行。所以你无需担心它的长度。
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Markdown
+
+你可以在幻灯片中使用 Markdown 语法的各种标记.
+
+列表默认为 `inline-block`
+
+- 项目
+- 项目
+- 项目
+
+1. 项目 1
+1. 项目 2
+1. 项目 3
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Markdown
+
+你可以在幻灯片中使用 Markdown 语法的各种标记.
+
+在你启用 `highlight` 插件后，代码块会自动高亮。
+
+```js
+const a = 1
+```
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Markdown
+
+你可以在幻灯片中使用 Markdown 语法的各种标记.
+
+在你启用 `math` 插件后，你也可以使用 TEX 格式使用数学公式。
+
+$$
+J(\theta_0,\theta_1) = \sum_{i=0}
+$$
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## Markdown
+
+你可以在幻灯片中使用 Markdown 语法的各种标记.
+
+⚠**请注意**: 表格和分割线，以及所有不在 Markdown 标准语法中的内容均不受支持。
+
+---
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## 布局
+
+<!-- .element: class="r-fit-text" -->
+
+--
+
+<!-- .slide: data-auto-animate  -->
+
+## 布局
+
+<!-- .element: class="r-fit-text" -->
+
+👆 `r-fit-text` class 会让文字在不超出幻灯片范围的情况下尽可能大。
+
+--
+
+<!-- .slide: data-auto-animate  -->
+
+## 布局
+
+![Logo](https://theme-hope-assets.vuejs.press/logo.svg)
+
+<!-- .element: class="r-stretch" -->
+
+👆 `r-stretch` class 帮助你控制注入图片或视频的大小，使它们填充满幻灯片垂直方向上的剩余空间。
+
+--
+
+<!-- .slide: data-auto-animate data-background-color="rgb(70, 70, 255)" -->
+
+## 布局
+
+### 背景
+
+你可以通过向特定幻灯片添加 `data-background` 属性自定义幻灯片背景.
+
+---
+
+<!-- .slide: data-auto-animate -->
+
+## 动画片段
+
+<!-- .element: class="r-fit-text" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 动画片段
+
+<!-- .element: class="r-fit-text" -->
+
+动画片段用于高亮或显隐幻灯片中的元素。
+
+你需要在元素上添加 `fragment` 和动画 class。
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 动画片段
+
+### 动画 class
+
+- `fade-in`
+<!-- .element: class="fragment fade-in" -->
+
+- `fade-out`
+<!-- .element: class="fragment fade-out" -->
+
+- `fade-up`
+<!-- .element: class="fragment fade-up" -->
+
+<!-- list break -->
+
+- `fade-down`
+<!-- .element: class="fragment fade-down" -->
+
+- `fade-left`
+<!-- .element: class="fragment fade-left" -->
+
+- `fade-right`
+<!-- .element: class="fragment fade-right" -->
+
+<!-- list break -->
+
+- `fade-in-then-out`
+<!-- .element: class="fragment fade-in-then-out" -->
+
+- `fade-in-then-semi-out`
+<!-- .element: class="fragment fade-in-then-semi-out" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 动画片段
+
+### 动画 class
+
+- `grow`
+<!-- .element: class="fragment grow" -->
+
+- `shrink`
+<!-- .element: class="fragment shrink" -->
+
+- `strike`
+<!-- .element: class="fragment strike" -->
+
+<!-- list break -->
+
+- `highlight-red`
+<!-- .element: class="fragment highlight-red" -->
+
+- `highlight-green`
+<!-- .element: class="fragment highlight-green" -->
+
+- `highlight-blue`
+<!-- .element: class="fragment highlight-blue" -->
+
+<!-- list break -->
+
+- `highlight-current-red`
+<!-- .element: class="fragment highlight-current-red" -->
+
+- `highlight-current-green`
+<!-- .element: class="fragment highlight-current-green" -->
+
+- `highlight-current-blue`
+<!-- .element: class="fragment highlight-current-blue" -->
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 动画片段
+
+### 多个动画片段
+
+你可以按照顺序包裹一个 HTML 元素使其拥有多个动画片段
+
+<span class="fragment fade-in">
+  <span class="fragment highlight-red">
+    <span class="fragment fade-out">
+      渐入 > 变红 > 渐出
+    </span>
+  </span>
+</span>
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 动画片段
+
+### 顺序
+
+你可以使用 `data-fragment-index` 属性改变元素的动画顺序。
+
+不同元素可以有相同的动画顺序。
+
+- 最后显示
+<!-- .element: class="fragment" data-fragment-index="3"-->
+
+- 第二个显示
+<!-- .element: class="fragment" data-fragment-index="2"-->
+
+<!-- list break -->
+
+- 第一个显示
+<!-- .element: class="fragment" data-fragment-index="1"-->
+
+- 第二个显示
+<!-- .element: class="fragment" data-fragment-index="2"-->
+
+---
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## 渐变
+
+<!-- .element: class="r-fit-text" -->
+
+--
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## 渐变
+
+<!-- .element: class="r-fit-text" -->
+
+Transition 可以通过 reveal.js 中的 `transition` 选项全局设置，也可以通过在特定幻灯片添加 `data-transition` 属性局部设置.
+
+可能的值:
+
+- none
+- fade
+- slide
+
+<!-- list break -->
+
+- convex
+- concave
+- zoom
+
+--
+
+<!-- .slide: data-auto-animate -->
+
+## 渐变
+
+<!-- .element: class="r-fit-text" -->
+
+### 过渡动画
+
+你可以在相邻的幻灯片上添加 `data-auto-animate` 使相同的 HTML 元素产生过渡动画效果。
+
+---
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## 功能
+
+<!-- .element: class="r-fit-text" -->
+
+--
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## 功能
+
+<!-- .element: class="r-fit-text" -->
+
+### 代码
+
+通过启用 `highlight` 插件，你可以对代码块进行高亮。
+
+你可以使用 `[a-b|c-d]` 语法来分布高亮特定行。
+
+```js [1-2|3|4]
+const a = 1
+const b = 2
+const c = (x) => 1 + 2 + x
+c(3)
+```
+
+--
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## 功能
+
+<!-- .element: class="r-fit-text" -->
+
+### 预览模式
+
+按下 `Esc` 或 `O` 即可在幻灯片获得焦点时进入预览模式。
+
+--
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## 功能
+
+<!-- .element: class="r-fit-text" -->
+
+### 全屏模式
+
+按下 `F` 或 `F11` 即可在幻灯片获得焦点时进入全屏模式。
+
+--
+
+<!-- .slide: data-transition="slide" data-auto-animate -->
+
+## 功能
+
+<!-- .element: class="r-fit-text" -->
+
+### 缩放
+
+按下 `alt` (Linux 上使用 `ctrl`) 的同时点击幻灯片的任何元素，即可以向此元素进行放大。
+
+再次点击即可缩小。
+
+---
+
+<!-- .element: class="r-fit-text" -->
+
+## 结束
+</script></section></div></div><div style="display:flex;align-items:center;justify-content:center;height:400px;" class="reveal-loading"><span style="--loading-icon: url(&quot;data:image/svg+xml;charset=utf8,%3Csvg preserveAspectRatio=%22xMidYMid%22 viewBox=%2225 25 50 50%22%3E%3CanimateTransform attributeName=%22transform%22 type=%22rotate%22 dur=%222s%22 keyTimes=%220;1%22 repeatCount=%22indefinite%22 values=%220;360%22%3E%3C/animateTransform%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2220%22 fill=%22none%22 stroke=%22currentColor%22 stroke-width=%224%22 stroke-linecap=%22round%22%3E%3Canimate attributeName=%22stroke-dasharray%22 dur=%221.5s%22 keyTimes=%220;0.5;1%22 repeatCount=%22indefinite%22 values=%221,200;90,200;1,200%22%3E%3C/animate%3E%3Canimate attributeName=%22stroke-dashoffset%22 dur=%221.5s%22 keyTimes=%220;0.5;1%22 repeatCount=%22indefinite%22 values=%220;-35px;-125px%22%3E%3C/animate%3E%3C/circle%3E%3C/svg%3E&quot;);--icon-size: 48px;display: inline-block;width: var(--icon-size);height: var(--icon-size);background-color: currentcolor;-webkit-mask-image: var(--loading-icon);mask-image: var(--loading-icon)"></span></div></div></div><div class="vp-reveal-menu"><button type="button" class="menu-button"><span class="icon"></span></button><button type="button" class="back-button"><svg xmlns="http://www.w3.org/2000/svg" class="back-icon" viewBox="0 0 1024 1024" fill="currentColor"><path d="M1014.749 449.156v125.688H260.626l345.64 345.64-89.239 89.237L19.307 512l497.72-497.721 89.238 89.238-345.64 345.64h754.124z"></path></svg></button><button type="button" class="home-button"><svg xmlns="http://www.w3.org/2000/svg" class="icon home-icon" viewBox="0 0 1024 1024" fill="currentColor"><path d="M780.106 420.978L506.994 147.866 233.882 420.978h.045v455.11H780.06v-455.11h.046zm90.977 90.976V876.09a91.022 91.022 0 01-91.023 91.022H233.927a91.022 91.022 0 01-91.022-91.022V511.954l-67.22 67.175-64.307-64.307 431.309-431.31c35.498-35.498 93.115-35.498 128.614 0l431.309 431.31-64.307 64.307L871.083 512z"></path></svg></button></div></div><!--[--><!----><!--[--><!--]--><!--]--><!--]--></div>
+    <script type="module" src="/assets/app-DlZXEEOA.js" defer></script>
+  </body>
+</html>
