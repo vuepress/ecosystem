@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.126](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.125...v2.0.0-rc.126) (2026-03-26)
+
+### Bug Fixes
+
+- **plugin-replace-assets:** fix `enforce` should be the default in webpack ([#639](https://github.com/vuepress/ecosystem/issues/639)) ([826bced](https://github.com/vuepress/ecosystem/commit/826bcedeee6bc11d16b3eb585b318ee70982f588))
+
+### Performance Improvements
+
+- **theme-default:** cache regexp ([e7d2676](https://github.com/vuepress/ecosystem/commit/e7d267699104dc7f98359b6ba19f378224d37c0a))
+
 # [2.0.0-rc.125](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.124...v2.0.0-rc.125) (2026-03-06)
 
 **Note:** Version bump only for package @vuepress/plugin-replace-assets

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-copy-code",
-  "version": "2.0.0-rc.125",
+  "version": "2.0.0-rc.126",
   "description": "VuePress plugin - copy code block",
   "keywords": [
     "code-copy",

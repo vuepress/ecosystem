@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.126](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.125...v2.0.0-rc.126) (2026-03-26)
+
+### Features
+
+- **plugin-blog:** use new api for hotReload ([#643](https://github.com/vuepress/ecosystem/issues/643)) ([1d2556b](https://github.com/vuepress/ecosystem/commit/1d2556ba401d60a99368f008ce1d8b674534a043))
+
+### Performance Improvements
+
+- use map-based store ([98e35d3](https://github.com/vuepress/ecosystem/commit/98e35d3ca63677d8de03137368a238c2d7a44870))
+
 # [2.0.0-rc.125](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.124...v2.0.0-rc.125) (2026-03-06)
 
 **Note:** Version bump only for package @vuepress/plugin-blog

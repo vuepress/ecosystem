@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.126](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.125...v2.0.0-rc.126) (2026-03-26)
+
+### Bug Fixes
+
+- **highlighter-helper:** fix incorrect rendering of collapsed lines icon, close [#624](https://github.com/vuepress/ecosystem/issues/624) ([#630](https://github.com/vuepress/ecosystem/issues/630)) ([087c0da](https://github.com/vuepress/ecosystem/commit/087c0da474ab11206ccf255f89a4bf8470e32ae3))
+- **plugin-replace-assets:** fix `enforce` should be the default in webpack ([#639](https://github.com/vuepress/ecosystem/issues/639)) ([826bced](https://github.com/vuepress/ecosystem/commit/826bcedeee6bc11d16b3eb585b318ee70982f588))
+- **plugin-shiki:** fix false line highlighting caused by trailing directive number ([#651](https://github.com/vuepress/ecosystem/issues/651)) ([385441d](https://github.com/vuepress/ecosystem/commit/385441d2c250373dec6b4bf8eacbc56ac2adc3fe))
+
+### Features
+
+- **plugin-blog:** use new api for hotReload ([#643](https://github.com/vuepress/ecosystem/issues/643)) ([1d2556b](https://github.com/vuepress/ecosystem/commit/1d2556ba401d60a99368f008ce1d8b674534a043))
+- **plugin-markdown-chart:** support new mermaid charts ([22c4fb3](https://github.com/vuepress/ecosystem/commit/22c4fb3c98d0e5106548af5c2bf80cab1cfb066a))
+- **plugin-redirect:** support popup in switchLocale, close [#625](https://github.com/vuepress/ecosystem/issues/625) ([#644](https://github.com/vuepress/ecosystem/issues/644)) ([e626f14](https://github.com/vuepress/ecosystem/commit/e626f14035d8a033eaa5b30bf459c12bfcd60d4f))
+- **plugin-revealjs:** support revealjs v6 ([be358e0](https://github.com/vuepress/ecosystem/commit/be358e04dcb2b1b605479cacff6290f1066e909e))
+- **plugin-slimsearch:** use new api to perform index hotReload ([#642](https://github.com/vuepress/ecosystem/issues/642)) ([a501f99](https://github.com/vuepress/ecosystem/commit/a501f99662c5941d2dedd069b58f409bcbe903a1))
+
+### Performance Improvements
+
+- **plugin-auto-frontmatter:** improve watcher perf ([#632](https://github.com/vuepress/ecosystem/issues/632)) ([16511a0](https://github.com/vuepress/ecosystem/commit/16511a02d45384198b2f7fc40b5d7bbad463195f))
+- **plugin-catalog:** avoid heavy page path lookup ([704ed36](https://github.com/vuepress/ecosystem/commit/704ed3645b03ae305058c349c2adaf170b4d7e53))
+- **plugin-llms:** eliminate repeated RegExp construction ([38600e3](https://github.com/vuepress/ecosystem/commit/38600e3a886fe00797344b2d19e0e7399ee7cb71))
+- **theme-default:** cache regexp ([e7d2676](https://github.com/vuepress/ecosystem/commit/e7d267699104dc7f98359b6ba19f378224d37c0a))
+- use map-based store ([98e35d3](https://github.com/vuepress/ecosystem/commit/98e35d3ca63677d8de03137368a238c2d7a44870))
+- **vp-update:** read registry from env variables first ([#628](https://github.com/vuepress/ecosystem/issues/628)) ([fc634c3](https://github.com/vuepress/ecosystem/commit/fc634c3100808ff5c99f84e4c7e84defbc888c06))
+
 # [2.0.0-rc.125](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.124...v2.0.0-rc.125) (2026-03-06)
 
 **Note:** Version bump only for package @vuepress/ecosystem
