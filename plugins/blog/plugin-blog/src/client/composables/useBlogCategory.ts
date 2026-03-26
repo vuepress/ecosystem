@@ -1,8 +1,10 @@
-import { categoriesMap } from '@temp/blog/category'
-import { store } from '@temp/blog/store'
 import type { ComputedRef } from 'vue'
 import { computed, readonly, shallowRef } from 'vue'
 import { resolveRoute, useData } from 'vuepress/client'
+
+import { categoriesMap } from '@temp/blog/category'
+import { store } from '@temp/blog/store'
+
 import type {
   BlogCategoryFrontmatterOptions,
   CategoriesMap,

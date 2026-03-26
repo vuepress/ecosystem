@@ -1,6 +1,7 @@
 import { entries, fromEntries } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { colors } from 'vuepress/utils'
+
 import type { FeedConfig, FeedPage } from '../typings/index.js'
 import { FeedItem, FeedStore } from './feed/index.js'
 import { getAtomFeed } from './generator/atom/index.js'

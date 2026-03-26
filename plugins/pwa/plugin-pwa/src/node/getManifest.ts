@@ -1,5 +1,6 @@
 import type { App } from 'vuepress/core'
 import { fs } from 'vuepress/utils'
+
 import type { AppManifest } from '../shared/index.js'
 import type { PwaPluginOptions } from './options.js'
 

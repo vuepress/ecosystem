@@ -1,6 +1,7 @@
 import matter from 'gray-matter'
 import type { PageFrontmatter } from 'vuepress'
 import { colors, fs, path } from 'vuepress/utils'
+
 import type { LLMPage, LLMState } from './types.js'
 import { generateLink, logger } from './utils/index.js'
 

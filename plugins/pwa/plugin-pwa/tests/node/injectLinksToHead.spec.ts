@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { createBuildApp } from 'vuepress/core'
+
 import type { PwaPluginOptions } from '../../src/node/index.js'
 import { injectLinksToHead } from '../../src/node/injectLinksToHead.js'
 

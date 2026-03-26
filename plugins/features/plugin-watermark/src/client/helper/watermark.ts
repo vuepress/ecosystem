@@ -11,6 +11,7 @@ import type {
 import { computed, inject, isRef, ref, toValue } from 'vue'
 import { useFrontmatter } from 'vuepress/client'
 import type { WatermarkOptions as WatermarkRawOptions } from 'watermark-js-plus'
+
 import type { WatermarkPluginFrontmatter } from '../../shared/index.js'
 
 export type WatermarkOptions = Partial<WatermarkRawOptions>

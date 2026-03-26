@@ -1,10 +1,12 @@
-import { resolveAutoLink } from '@theme/resolveAutoLink'
-import { resolvePrefix } from '@theme/resolvePrefix'
-import { useData } from '@theme/useData'
 import { isLinkRelative } from '@vuepress/helper/client'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import { isString } from 'vuepress/shared'
+
+import { resolveAutoLink } from '@theme/resolveAutoLink'
+import { resolvePrefix } from '@theme/resolvePrefix'
+import { useData } from '@theme/useData'
+
 import type {
   NavbarGroupOptions,
   NavbarLinkOptions,

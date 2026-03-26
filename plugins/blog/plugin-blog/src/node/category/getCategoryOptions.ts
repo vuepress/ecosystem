@@ -1,5 +1,6 @@
 import { isFunction, isString } from '@vuepress/helper'
 import { colors } from 'vuepress/utils'
+
 import { logger } from '../logger.js'
 import type { BlogCategoryOptions } from '../options.js'
 

@@ -3,6 +3,7 @@ import { millify } from 'millify'
 import { estimateTokenCount } from 'tokenx'
 import { isFunction, removeLeadingSlash } from 'vuepress/shared'
 import { colors, fs, path } from 'vuepress/utils'
+
 import type { LlmsPluginOptions } from './options.js'
 import { defaultTemplateGetter } from './templateGetter.js'
 import type { LLMPage, LLMState } from './types.js'

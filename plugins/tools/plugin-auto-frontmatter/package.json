@@ -51,7 +51,7 @@
     "js-yaml": "^4.1.1",
     "nanoid": "^5.1.7",
     "p-map": "^7.0.4",
-    "picomatch": "^4.0.3"
+    "picomatch": "^4.0.4"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",

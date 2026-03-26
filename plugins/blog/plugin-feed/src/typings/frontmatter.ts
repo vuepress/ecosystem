@@ -1,4 +1,5 @@
 import type { PageFrontmatter } from 'vuepress/core'
+
 import type { FeedAuthor, FeedCategory, FeedContributor } from './feed.js'
 
 export type AuthorName = string

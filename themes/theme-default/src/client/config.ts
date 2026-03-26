@@ -1,9 +1,11 @@
+import { hasGlobalComponent } from '@vuepress/helper/client'
+import { defineClientConfig } from 'vuepress/client'
+
 import { setupDarkMode } from '@theme/useDarkMode'
 import { setupHeaders } from '@theme/useHeaders'
 import { useScrollPromise } from '@theme/useScrollPromise'
 import { setupSidebarItems } from '@theme/useSidebarItems'
-import { hasGlobalComponent } from '@vuepress/helper/client'
-import { defineClientConfig } from 'vuepress/client'
+
 import { Badge } from './components/global/index.js'
 import Layout from './layouts/Layout.vue'
 import NotFound from './layouts/NotFound.vue'

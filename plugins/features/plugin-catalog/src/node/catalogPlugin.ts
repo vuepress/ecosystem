@@ -1,6 +1,7 @@
 import { addViteSsrNoExternal, getFullLocaleConfig } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
+
 import { generateCatalogPage } from './generateCatalogPage.js'
 import { catalogLocaleInfo } from './locales.js'
 import { PLUGIN_NAME, logger } from './logger.js'

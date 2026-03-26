@@ -1,7 +1,8 @@
-import { entries } from '@vuepress/helper'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
+
+import { entries } from '@vuepress/helper'
 
 /**
  * TypeScript paths mapping configuration

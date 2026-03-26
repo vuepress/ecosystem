@@ -1,4 +1,5 @@
 import type { App } from 'vuepress/core'
+
 import { getIdPrefix, getPath } from '../utils.js'
 
 export const prepareConfigSass = (

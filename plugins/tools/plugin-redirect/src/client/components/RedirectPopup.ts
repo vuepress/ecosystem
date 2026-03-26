@@ -1,5 +1,6 @@
 import type { VNode } from 'vue'
 import { TransitionGroup, defineComponent, h, ref, watch } from 'vue'
+
 import { useRedirect, propsOptions } from '../composables/index.js'
 
 import '@vuepress/helper/transition/fade-in-scale-up.css'

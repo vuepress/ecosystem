@@ -1,4 +1,5 @@
 import { isLinkHttp } from '@vuepress/helper/client'
+
 import type { KnownGitProvider } from '../../shared/index.js'
 
 /**

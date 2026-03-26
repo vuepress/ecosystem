@@ -1,6 +1,6 @@
+import { NodePackageImporter } from 'sass-embedded'
 import type { UserConfig, CopyEntry, TsdownInputOption } from 'tsdown'
 import { defineConfig } from 'tsdown'
-import { NodePackageImporter } from 'sass-embedded'
 
 const isProduction = process.env.NODE_ENV === 'production'
 

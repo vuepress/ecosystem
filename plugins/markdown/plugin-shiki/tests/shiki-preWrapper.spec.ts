@@ -11,6 +11,7 @@ import {
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 import type { App } from 'vuepress'
+
 import type { MarkdownItPreWrapperOptions } from '../src/node/markdown/index.js'
 import {
   createMarkdownFilePathGetter,

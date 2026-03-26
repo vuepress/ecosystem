@@ -1,4 +1,5 @@
 import type { App } from 'vuepress/core'
+
 import type { ReadingTimePluginOptions } from './options.js'
 import { readingTimePlugin } from './readingTimePlugin.js'
 

@@ -1,6 +1,7 @@
 import { Logger } from '@vuepress/helper'
 import type { Plugin, PluginObject } from 'vuepress/core'
 import { colors, getDirname, path } from 'vuepress/utils'
+
 import type { UmamiOptions } from '../shared/index.js'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)

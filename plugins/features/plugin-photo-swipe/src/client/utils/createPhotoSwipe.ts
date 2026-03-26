@@ -1,6 +1,7 @@
 import { useEventListener } from '@vueuse/core'
 import type PhotoSwipe from 'photoswipe'
 import type { SlideData } from 'photoswipe'
+
 import type { PhotoSwipeOptions } from '../helpers/index.js'
 import type { PhotoSwipeBehaviorOptions } from '../typings.js'
 import { resolveImageInfoFromLink } from './images.js'

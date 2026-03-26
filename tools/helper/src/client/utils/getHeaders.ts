@@ -1,4 +1,5 @@
 import type { PageHeader } from 'vuepress/shared'
+
 import type { GetHeadersOptions, HeaderLevels } from '../../shared/index.js'
 
 const DEFAULT_HEADER_SELECTOR = Array.from(

@@ -1,4 +1,5 @@
 import process from 'node:process'
+
 import { viteBundler } from '@vuepress/bundler-vite'
 import { webpackBundler } from '@vuepress/bundler-webpack'
 import { getModulePath } from '@vuepress/helper'
@@ -6,6 +7,7 @@ import type { DefaultThemePageData } from '@vuepress/theme-default'
 import type { Page } from 'vuepress'
 import { defineUserConfig } from 'vuepress'
 import { getDirname, path } from 'vuepress/utils'
+
 import { head, plugins } from './configs/index.js'
 import theme from './theme.js'
 

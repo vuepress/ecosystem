@@ -1,4 +1,5 @@
 import { expect, it } from 'vitest'
+
 import { isLinkAbsolute } from '../../src/shared/link.js'
 
 it('isLinkAbsolute()', () => {

@@ -1,8 +1,10 @@
-import { store } from '@temp/blog/store'
-import { typesMap } from '@temp/blog/type'
 import type { ComputedRef } from 'vue'
 import { computed, readonly, shallowRef } from 'vue'
 import { resolveRoute, useData } from 'vuepress/client'
+
+import { store } from '@temp/blog/store'
+import { typesMap } from '@temp/blog/type'
+
 import type {
   BlogTypeFrontmatterOptions,
   TypesMap,

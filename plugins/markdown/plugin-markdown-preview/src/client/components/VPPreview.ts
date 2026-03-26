@@ -3,6 +3,7 @@ import { useLocale } from '@vuepress/helper/client'
 import { useEventListener, useResizeObserver, useToggle } from '@vueuse/core'
 import type { PropType, SlotsType, VNode } from 'vue'
 import { defineComponent, h, ref, shallowRef, useId } from 'vue'
+
 import type { MarkdownPreviewPluginLocaleConfig } from '../../shared/index.js'
 
 import '../styles/vp-preview.scss'

@@ -1,6 +1,7 @@
 import { isArray } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { isLinkHttp } from 'vuepress/shared'
+
 import type { FeedChannelOptions, FeedPluginOptions } from '../typings/index.js'
 import { getUrl } from './utils/index.js'
 

@@ -2,6 +2,7 @@ import { setupDevtoolsPlugin } from '@vue/devtools-api'
 import type { App } from 'vue'
 import { watch } from 'vue'
 import { DEVTOOLS } from 'vuepress/client'
+
 import type { ThemeDataRef } from './useThemeData'
 import type { ThemeLocaleDataRef } from './useThemeLocaleData'
 

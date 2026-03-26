@@ -1,4 +1,5 @@
 import type { LocaleConfig } from 'vuepress/shared'
+
 import type { BackToTopPluginLocaleData } from '../shared/index.js'
 
 export interface BackToTopPluginOptions {

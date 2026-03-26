@@ -1,6 +1,7 @@
 import { watch } from 'chokidar'
 import type { Plugin } from 'vuepress/core'
 import { hash, path } from 'vuepress/utils'
+
 import { createMatcher } from './createMatcher.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 

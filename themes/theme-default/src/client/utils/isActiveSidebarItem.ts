@@ -1,4 +1,5 @@
 import type { RouteLocationNormalizedLoaded } from 'vuepress/client'
+
 import type { SidebarItem } from '../typings.js'
 
 const normalizePath = (path: string): string =>

@@ -16,7 +16,6 @@ import type {
   MeiliSearchLocaleData,
   MeiliSearchOptions,
 } from '../../shared/index.js'
-
 import { getSearchButtonTemplate } from '../utils/getSearchButtonTemplate.js'
 
 export const MeiliSearch = defineComponent({

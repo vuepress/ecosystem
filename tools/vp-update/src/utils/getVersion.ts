@@ -1,5 +1,7 @@
 import { get } from 'node:https'
+
 import semver from 'semver'
+
 import type { PackageManager } from './packageManager.js'
 import { getRegistry } from './registry.js'
 import { retry } from './retry.js'

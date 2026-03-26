@@ -1,5 +1,6 @@
 import { isArray, isFunction, isRegExp } from '@vuepress/helper'
 import type { Plugin } from 'vuepress'
+
 import { checkMarkdownLink } from './checkMarkdownLink.js'
 import type { LinksCheckPluginOptions } from './options.js'
 

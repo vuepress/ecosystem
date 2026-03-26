@@ -1,6 +1,7 @@
 import { useScrollLock, watchImmediate } from '@vueuse/core'
 import type { VNode } from 'vue'
 import { TransitionGroup, defineComponent, h, onMounted, ref } from 'vue'
+
 import { useRedirect, propsOptions } from '../composables/index.js'
 
 import '@vuepress/helper/transition/fade-in-scale-up.css'

@@ -5,6 +5,7 @@ import type { RuleCore } from 'markdown-it/lib/parser_core.mjs'
 import type { Plugin } from 'vuepress/core'
 import type { MarkdownEnv } from 'vuepress/markdown'
 import { path } from 'vuepress/utils'
+
 import type { MarkdownIncludePluginOptions } from './options.js'
 
 declare module 'vuepress/markdown' {

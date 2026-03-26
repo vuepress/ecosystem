@@ -1,6 +1,7 @@
 import type { App } from 'vuepress/core'
 import { createPage } from 'vuepress/core'
 import type { PageFrontmatter } from 'vuepress/shared'
+
 import { getTitleFromFilename } from './getTitleFromFilename.js'
 import { logger } from './logger.js'
 import type { CatalogPluginOptions } from './options.js'

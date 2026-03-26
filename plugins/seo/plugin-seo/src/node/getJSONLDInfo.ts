@@ -1,5 +1,6 @@
 import { getDate } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
+
 import type {
   ArticleSchema,
   BlogPostingSchema,

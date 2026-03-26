@@ -1,4 +1,5 @@
 import type { DefaultLocaleInfo } from '@vuepress/helper'
+
 import type { MarkdownHintPluginLocaleData } from './options.js'
 
 export const hintLocaleInfo: DefaultLocaleInfo<MarkdownHintPluginLocaleData> = [

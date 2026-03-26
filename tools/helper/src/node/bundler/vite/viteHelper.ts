@@ -1,5 +1,6 @@
 import type { ViteBundlerOptions } from '@vuepress/bundler-vite'
 import type { App } from 'vuepress/core'
+
 import { isString } from '../../../shared/index.js'
 import { getPackageManager } from '../../utils/index.js'
 import { getBundlerName } from '../getBundlerName.js'

@@ -4,6 +4,7 @@ import {
   lineNumbers as lineNumbersPlugin,
 } from '@vuepress/highlighter-helper'
 import type { Plugin } from 'vuepress/core'
+
 import { loadLanguages } from './loadLanguages.js'
 import { highlightPlugin, preWrapperPlugin } from './markdown/index.js'
 import type { PrismjsPluginOptions } from './options.js'

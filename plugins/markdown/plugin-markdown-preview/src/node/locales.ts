@@ -1,4 +1,5 @@
 import type { DefaultLocaleInfo } from '@vuepress/helper'
+
 import type { MarkdownPreviewPluginLocaleData } from '../shared/index.js'
 
 export const previewLocaleInfo: DefaultLocaleInfo<MarkdownPreviewPluginLocaleData> =

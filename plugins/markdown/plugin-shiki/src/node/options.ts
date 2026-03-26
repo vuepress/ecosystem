@@ -4,6 +4,7 @@ import type {
   MarkdownItLineNumbersOptions,
 } from '@vuepress/highlighter-helper'
 import type { ShikiTwoslashOptions } from '@vuepress/shiki-twoslash'
+
 import type { MarkdownItPreWrapperOptions } from './markdown/index.js'
 import type { ShikiHighlightOptions } from './types.js'
 

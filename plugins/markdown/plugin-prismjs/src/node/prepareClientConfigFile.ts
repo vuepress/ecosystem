@@ -1,5 +1,6 @@
 import { getModulePath } from '@vuepress/helper'
 import type { App } from 'vuepress'
+
 import { getTheme } from './getTheme.js'
 import type { PrismjsPluginOptions } from './options.js'
 

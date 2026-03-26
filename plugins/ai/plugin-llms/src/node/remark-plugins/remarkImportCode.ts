@@ -2,6 +2,7 @@ import type { Code, Root } from 'mdast'
 import { visit } from 'unist-util-visit'
 import type { ImportCodePluginOptions } from 'vuepress/markdown'
 import { colors, fs, path } from 'vuepress/utils'
+
 import { logger } from '../utils/logger.js'
 
 interface ImportCodeInfo {

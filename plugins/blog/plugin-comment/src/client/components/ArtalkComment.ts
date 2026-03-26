@@ -14,6 +14,7 @@ import {
   watch,
 } from 'vue'
 import { useData } from 'vuepress/client'
+
 import { useArtalkOptions } from '../helpers/index.js'
 
 import 'artalk/dist/Artalk.css'

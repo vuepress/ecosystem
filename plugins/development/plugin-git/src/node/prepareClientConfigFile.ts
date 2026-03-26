@@ -1,6 +1,7 @@
 import type { App } from 'vuepress'
 import { ensureEndingSlash } from 'vuepress/shared'
 import { getDirname, path } from 'vuepress/utils'
+
 import type { GitPluginOptions } from './options.js'
 
 const { url } = import.meta

@@ -2,6 +2,7 @@ import type { Slot } from '@vuepress/helper/client'
 import { useLocale } from '@vuepress/helper/client'
 import type { PropType, SlotsType, VNode } from 'vue'
 import { Transition, defineComponent, h, onMounted, ref } from 'vue'
+
 import { usePwaEvent } from '../composables/index.js'
 import type { PwaPluginLocaleConfig } from '../types.js'
 import { UpdateIcon } from './icons.js'

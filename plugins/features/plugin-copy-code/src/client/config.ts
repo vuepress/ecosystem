@@ -1,4 +1,5 @@
 import { defineClientConfig } from 'vuepress/client'
+
 import { useCopyCode } from './composables/index.js'
 import type { CopyCodePluginLocaleConfig } from './types.js'
 

@@ -1,5 +1,6 @@
 /* oxlint-disable max-lines */
 import type { DefaultLocaleInfo } from '@vuepress/helper'
+
 import type { DocSearchLocaleData } from '../shared/index.js'
 
 export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [

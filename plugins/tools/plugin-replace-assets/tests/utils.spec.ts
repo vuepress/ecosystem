@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+
 import { createAssetPattern, normalizeUrl } from '../src/node/utils.js'
 
 describe('plugin-replace-assets > utils', () => {

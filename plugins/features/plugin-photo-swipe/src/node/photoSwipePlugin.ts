@@ -7,6 +7,7 @@ import {
 } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
+
 import { photoSwipeLocaleInfo } from './locales.js'
 import { PLUGIN_NAME, logger } from './logger.js'
 import type { PhotoSwipePluginOptions } from './options.js'

@@ -1,5 +1,6 @@
 import { keys, startsWith } from '@vuepress/helper'
 import type { HeadConfig } from 'vuepress/core'
+
 import type {
   ArticleSchema,
   ArticleSeoContent,

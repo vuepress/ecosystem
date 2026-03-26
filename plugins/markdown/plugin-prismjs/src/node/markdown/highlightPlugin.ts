@@ -1,5 +1,6 @@
 import type { WhitespacePosition } from '@vuepress/highlighter-helper'
 import type { Markdown } from 'vuepress/markdown'
+
 import {
   getCodeParser,
   getHighlightLinesRange,

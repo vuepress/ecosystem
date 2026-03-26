@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { spawnSync } from 'node:child_process'
 import process from 'node:process'
+
 import type { PackageManager } from './packageManager.js'
 
 const NPM_MIRROR_REGISTRY = 'https://registry.npmmirror.com/'

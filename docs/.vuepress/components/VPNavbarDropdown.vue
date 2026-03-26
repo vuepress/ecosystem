@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import VPAutoLink from '@theme/VPAutoLink.vue'
 import { FadeInExpandTransition } from '@vuepress/helper/client'
 import type { AutoLinkOptions, NavGroup } from '@vuepress/theme-default/client'
 import { useToggle } from '@vueuse/core'
 import { computed } from 'vue'
 import type { AutoLinkConfig } from 'vuepress/client'
 import { onContentUpdated } from 'vuepress/client'
+
+import VPAutoLink from '@theme/VPAutoLink.vue'
 
 import '@vuepress/helper/transition/fade-in-height-expand.css'
 

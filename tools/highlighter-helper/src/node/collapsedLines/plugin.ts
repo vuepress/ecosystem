@@ -1,4 +1,5 @@
 import type { Markdown } from 'vuepress/markdown'
+
 import type { MarkdownItCollapsedLinesOptions } from './options.js'
 import { resolveCollapsedLines } from './resolveCollapsedLine.js'
 

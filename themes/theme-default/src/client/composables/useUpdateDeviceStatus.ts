@@ -1,6 +1,7 @@
 // oxlint-disable promise/prefer-await-to-callbacks
 import { useEventListener } from '@vueuse/core'
 import { onMounted } from 'vue'
+
 import cssVariables from '../styles/_variables.module.scss'
 
 export enum DeviceType {

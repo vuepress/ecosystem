@@ -1,10 +1,11 @@
-import { useData } from '@theme/useData'
 import type { HeaderItem } from '@vuepress/helper/client'
 import { getHeaders } from '@vuepress/helper/client'
 import { injectLocal, provideLocal } from '@vueuse/core'
 import type { InjectionKey, Ref } from 'vue'
 import { computed, ref } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
+
+import { useData } from '@theme/useData'
 
 export type HeadersRef = Ref<HeaderItem[]>
 

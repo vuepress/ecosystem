@@ -1,5 +1,6 @@
 import type { DocSearchIndex } from '@docsearch/react'
 import { isString } from 'vuepress/shared'
+
 import type { DocSearchOptions } from '../../shared/index.js'
 import { getFacetFiltersWithLang } from './getFacetFilters.js'
 

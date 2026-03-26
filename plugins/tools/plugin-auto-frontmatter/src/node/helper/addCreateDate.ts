@@ -2,6 +2,7 @@ import { execSync } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
+
 import type { AutoFrontmatterContext, AutoFrontmatterData } from '../types.js'
 
 const padZero = (num: number, length = 2): string =>

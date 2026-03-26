@@ -1,4 +1,5 @@
 import type { WalineInitOptions, WalineLocale } from '@waline/client'
+
 import type { BaseCommentPluginOptions } from './base.js'
 
 /**

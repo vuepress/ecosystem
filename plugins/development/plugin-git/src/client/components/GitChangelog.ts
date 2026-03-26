@@ -1,6 +1,7 @@
 import { useToggle } from '@vueuse/core'
 import type { FunctionalComponent, VNode } from 'vue'
 import { defineComponent, h } from 'vue'
+
 import type { GitChangelogItem } from '../composables/index.js'
 import {
   useChangelog,

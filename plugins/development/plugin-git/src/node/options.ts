@@ -1,4 +1,5 @@
 import type { LocaleConfig, Page } from 'vuepress'
+
 import type { GitContributorInfo, GitLocaleData } from '../shared/index.js'
 
 /**

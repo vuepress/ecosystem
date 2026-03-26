@@ -3,6 +3,7 @@ import type {
   MarkdownItCollapsedLinesOptions,
   MarkdownItLineNumbersOptions,
 } from '@vuepress/highlighter-helper'
+
 import type {
   MarkdownItPreWrapperOptions,
   MarkdownItPrismjsHighlightOptions,

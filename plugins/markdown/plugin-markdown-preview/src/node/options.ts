@@ -1,4 +1,5 @@
 import type { LocaleConfig } from 'vuepress'
+
 import type { MarkdownPreviewPluginLocaleData } from '../shared/index.js'
 
 export interface MarkdownPreviewPluginOptions {

@@ -1,4 +1,5 @@
 import { select } from '@inquirer/prompts'
+
 import { en } from './en.js'
 import type { CreateLocaleOptions, Lang } from './typings.js'
 import { zh } from './zh.js'

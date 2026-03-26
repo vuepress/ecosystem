@@ -1,5 +1,6 @@
 import type { App } from 'vuepress/core'
 import { colors } from 'vuepress/utils'
+
 import { logger } from './logger.js'
 
 const GIT_PLUGIN_NAME = '@vuepress/plugin-git'

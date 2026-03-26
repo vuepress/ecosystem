@@ -1,4 +1,5 @@
 import { defineClientConfig } from 'vuepress/client'
+
 import type { PhotoSwipePluginLocaleData } from '../shared/index.js'
 import { usePhotoSwipe } from './composables/index.js'
 import { injectPhotoSwipeConfig } from './helpers/index.js'

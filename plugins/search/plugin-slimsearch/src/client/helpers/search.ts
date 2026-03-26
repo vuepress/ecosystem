@@ -3,8 +3,8 @@ import type { App, ComputedRef, InjectionKey, MaybeRefOrGetter, Ref } from 'vue'
 import { computed, inject, isRef, readonly, ref } from 'vue'
 import type { PageData } from 'vuepress/client'
 import { useRouteLocale } from 'vuepress/client'
-
 import { isFunction } from 'vuepress/shared'
+
 import type { SearchResult, WorkerSearchOptions } from '../typings/index.js'
 
 declare const __VUEPRESS_DEV__: boolean

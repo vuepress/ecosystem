@@ -1,5 +1,6 @@
 import { getPageRawExcerpt, getText } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
+
 import type { ExtendPage } from '../typings/index.js'
 
 export const generateDescription = (

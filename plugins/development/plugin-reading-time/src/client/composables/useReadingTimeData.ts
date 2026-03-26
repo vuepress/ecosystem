@@ -1,6 +1,7 @@
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import { usePage } from 'vuepress/client'
+
 import type {
   ReadingTime,
   ReadingTimePluginPageData,

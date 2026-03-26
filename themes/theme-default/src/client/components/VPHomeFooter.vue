@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useFrontmatter } from 'vuepress/client'
+
 import type { DefaultThemeHomePageFrontmatter } from '../../shared/index.js'
 
 const frontmatter = useFrontmatter<DefaultThemeHomePageFrontmatter>()

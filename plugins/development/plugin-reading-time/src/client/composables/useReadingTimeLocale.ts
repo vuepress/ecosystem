@@ -2,6 +2,7 @@ import type { ExactLocaleConfig } from '@vuepress/helper/client'
 import { useLocale } from '@vuepress/helper/client'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
+
 import type { ReadingTimePluginLocaleData } from '../../shared/index.js'
 import { getReadingTimeLocale } from '../utils/index.js'
 import { useReadingTimeData } from './useReadingTimeData.js'

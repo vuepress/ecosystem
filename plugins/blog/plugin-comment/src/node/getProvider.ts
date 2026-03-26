@@ -1,4 +1,5 @@
 import { getModulePath } from '@vuepress/helper'
+
 import type { CommentPluginOptions } from './options.js'
 import { CLIENT_FOLDER, PLUGIN_NAME, logger } from './utils.js'
 

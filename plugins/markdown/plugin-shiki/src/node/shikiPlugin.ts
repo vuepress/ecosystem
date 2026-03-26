@@ -12,6 +12,7 @@ import {
 import type { Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import { colors } from 'vuepress/utils'
+
 import { createMarkdownFilePathGetter } from './markdown/highlighter/createMarkdownFilePathGetter.js'
 import type { MarkdownItPreWrapperOptions } from './markdown/index.js'
 import {

@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test'
+
 import { BASE, BUNDLER, IS_CI, IS_DEV } from './utils/env.js'
 
 const commandPart1 = IS_DEV ? 'docs:dev' : 'docs:build'

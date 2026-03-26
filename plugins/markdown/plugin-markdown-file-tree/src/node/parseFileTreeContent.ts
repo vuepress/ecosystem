@@ -1,4 +1,5 @@
 import { removeEndingSlash } from 'vuepress/shared'
+
 import type { FileTreeNode, FileTreeNodeProps } from './types.js'
 
 const FOCUS_RE = /^\*\*(.*)\*\*(?:$|\s+)/

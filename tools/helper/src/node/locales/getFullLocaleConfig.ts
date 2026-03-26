@@ -1,5 +1,6 @@
 import type { App } from 'vuepress'
 import type { LocaleConfig, LocaleData } from 'vuepress/shared'
+
 import type { ExactLocaleConfig } from '../../shared/index.js'
 import { deepAssign, fromEntries } from '../../shared/index.js'
 import { Logger } from '../utils/index.js'

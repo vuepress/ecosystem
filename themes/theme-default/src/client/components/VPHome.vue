@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { Content } from 'vuepress/client'
+
 import VPHomeFeatures from '@theme/VPHomeFeatures.vue'
 import VPHomeFooter from '@theme/VPHomeFooter.vue'
 import VPHomeHero from '@theme/VPHomeHero.vue'
-import { Content } from 'vuepress/client'
 </script>
 
 <template>

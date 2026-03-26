@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import VPSidebarItem from '@theme/VPSidebarItem.vue'
-import { useSidebarItems } from '@theme/useSidebarItems'
 import { onMounted, watch } from 'vue'
 import { useRoute } from 'vuepress/client'
+
+import { useSidebarItems } from '@theme/useSidebarItems'
+import VPSidebarItem from '@theme/VPSidebarItem.vue'
 
 const route = useRoute()
 const sidebarItems = useSidebarItems()

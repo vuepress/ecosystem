@@ -1,6 +1,4 @@
-import { useRevealJs } from '@temp/revealjs/index.js'
 import { LoadingIcon, decodeData } from '@vuepress/helper/client'
-
 import type { RevealApi, RevealConfig } from 'reveal.js'
 import type { PropType, VNode } from 'vue'
 import {
@@ -19,6 +17,8 @@ import {
   useFrontmatter,
   usePageLayout,
 } from 'vuepress/client'
+
+import { useRevealJs } from '@temp/revealjs/index.js'
 
 import type { RevealJsTheme } from '../../shared/index.js'
 import { useRevealJsConfig } from '../helpers/index.js'

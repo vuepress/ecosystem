@@ -2,6 +2,7 @@ import type { DocSearchProps } from '@docsearch/js'
 import type { PropType, VNode } from 'vue'
 import { computed, defineComponent, h, onMounted, ref, watch } from 'vue'
 import { useLang, useRouteLocale } from 'vuepress/client'
+
 import type { DocSearchOptions } from '../../shared/index.js'
 import {
   useDocSearchHotkeyListener,

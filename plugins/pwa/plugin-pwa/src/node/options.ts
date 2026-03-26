@@ -1,5 +1,6 @@
 import type { LocaleConfig } from 'vuepress/shared'
 import type { GenerateSWOptions } from 'workbox-build'
+
 import type { AppManifest, PwaPluginLocaleData } from '../shared/index.js'
 
 interface ApplePwaOptions {

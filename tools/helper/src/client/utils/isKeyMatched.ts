@@ -1,4 +1,5 @@
 import { isString } from 'vuepress/shared'
+
 import type { KeyOptions } from '../../shared/index.js'
 
 /**

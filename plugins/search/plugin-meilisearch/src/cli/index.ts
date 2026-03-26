@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import { createCommand } from 'commander'
-
 import { logger } from 'vuepress/utils'
+
 import pkg from '../../package.json' with { type: 'json' }
 import type { GenerateOnlyUrlOptions } from './generateScraperConfig.js'
 import { generateScraperConfig } from './generateScraperConfig.js'

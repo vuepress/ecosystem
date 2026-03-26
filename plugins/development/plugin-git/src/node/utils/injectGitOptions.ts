@@ -1,4 +1,5 @@
 import { isPlainObject } from 'vuepress/shared'
+
 import type {
   GitInjectOptions,
   GitUrlPattern,

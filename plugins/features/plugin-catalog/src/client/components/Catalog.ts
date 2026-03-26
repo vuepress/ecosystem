@@ -14,6 +14,7 @@ import {
 import type { VNode } from 'vue'
 import { computed, defineComponent, h, shallowRef } from 'vue'
 import { RouteLink, useData } from 'vuepress/client'
+
 import type { CatalogPluginLocaleData } from '../../shared/index.js'
 import type { CatalogInfo } from '../helpers/index.js'
 import { useCatalogInfoGetter } from '../helpers/index.js'

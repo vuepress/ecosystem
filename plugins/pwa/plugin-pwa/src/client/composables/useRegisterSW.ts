@@ -1,4 +1,5 @@
 import { withBase } from 'vuepress/client'
+
 import { registerSW } from '../utils/index.js'
 import type { PwaEvent } from './usePwaEvent.js'
 

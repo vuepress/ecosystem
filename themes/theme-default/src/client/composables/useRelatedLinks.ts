@@ -1,10 +1,12 @@
-import { resolveAutoLink } from '@theme/resolveAutoLink'
-import { useData } from '@theme/useData'
-import { useSidebarItems } from '@theme/useSidebarItems'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import { resolveRoute, useRoutePath } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
+
+import { resolveAutoLink } from '@theme/resolveAutoLink'
+import { useData } from '@theme/useData'
+import { useSidebarItems } from '@theme/useSidebarItems'
+
 import type { AutoLinkOptions } from '../../shared/index.js'
 import type { SidebarItem } from '../typings.js'
 

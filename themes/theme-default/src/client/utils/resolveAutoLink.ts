@@ -1,4 +1,5 @@
 import { resolveRoute } from 'vuepress/client'
+
 import type { AutoLinkOptions } from '../../shared/index.js'
 
 /**

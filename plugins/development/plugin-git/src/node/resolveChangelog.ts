@@ -1,4 +1,5 @@
 import type { App } from 'vuepress'
+
 import type { GitChangelogInfo } from '../shared/index.js'
 import type { ChangelogOptions, ContributorInfo } from './options.js'
 import type { MergedRawCommit } from './typings.js'

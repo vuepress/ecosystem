@@ -7,6 +7,7 @@ import type {
   ManifestTransformResult,
 } from 'workbox-build'
 import { generateSW } from 'workbox-build'
+
 import { logger } from './logger.js'
 import type { PwaPluginOptions } from './options.js'
 

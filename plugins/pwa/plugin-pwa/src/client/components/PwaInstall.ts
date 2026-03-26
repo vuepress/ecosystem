@@ -2,6 +2,7 @@ import { useLocale } from '@vuepress/helper/client'
 import { useToggle } from '@vueuse/core'
 import type { PropType, VNode } from 'vue'
 import { computed, defineComponent, h, onMounted, ref } from 'vue'
+
 import type { ManifestExternalApplicationResource } from '../../shared/index.js'
 import type { PwaPluginLocaleConfig } from '../types.js'
 import { PwaInstallModal } from './PwaInstallModal.js'

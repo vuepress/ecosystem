@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
 import { writeFileSync } from 'node:fs'
 import { join } from 'node:path'
+
 import { input } from '@inquirer/prompts'
+
 import type { CreateLocaleOptions } from '../i18n/index.js'
 import type { PackageManager } from '../utils/index.js'
 import { devDependencies } from '../utils/index.js'

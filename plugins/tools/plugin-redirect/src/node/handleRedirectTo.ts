@@ -1,5 +1,6 @@
 import { isLinkAbsolute, removeLeadingSlash } from '@vuepress/helper'
 import type { App, Page } from 'vuepress/core'
+
 import { normalizePath } from '../shared/normalizePath.js'
 import type { RedirectPluginFrontmatter } from './types/index.js'
 

@@ -1,5 +1,6 @@
 import { h } from 'vue'
 import { defineClientConfig } from 'vuepress/client'
+
 import { SearchBox } from './components/index.js'
 import type { SearchPluginLocaleConfig } from './types.js'
 

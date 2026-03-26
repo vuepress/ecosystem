@@ -1,4 +1,5 @@
 import { defineClientConfig } from 'vuepress/client'
+
 import type { UmamiOptions } from '../shared/index.js'
 import { useUmamiAnalytics } from './composables/index.js'
 

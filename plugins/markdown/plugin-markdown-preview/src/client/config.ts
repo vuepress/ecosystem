@@ -1,5 +1,6 @@
 import { h } from 'vue'
 import { defineClientConfig } from 'vuepress/client'
+
 import type { MarkdownPreviewPluginLocaleConfig } from '../shared/index.js'
 import type { VPPreviewProps } from './components/index.js'
 import { VPPreview } from './components/index.js'

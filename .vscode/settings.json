@@ -11,17 +11,8 @@
     "files.trimTrailingWhitespace": false
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
     "source.fixAll.stylelint": "explicit"
   },
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue"
-  ],
-  "oxc.typeAware": true,
   "oxc.unusedDisableDirectives": "deny",
   "cSpell.words": [
     "artalk",

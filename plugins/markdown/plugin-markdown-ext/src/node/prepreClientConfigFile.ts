@@ -1,4 +1,5 @@
 import type { App } from 'vuepress'
+
 import { CLIENT_FOLDER } from './utils.js'
 
 export const prepareClientConfigFile = (

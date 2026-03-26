@@ -1,4 +1,5 @@
 import type { App, Page } from 'vuepress/core'
+
 import type {
   FeedAuthor,
   FeedCategory,

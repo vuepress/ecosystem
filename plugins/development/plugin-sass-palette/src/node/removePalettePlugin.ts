@@ -1,4 +1,5 @@
 import type { App, PluginObject } from 'vuepress/core'
+
 import { PLUGIN_NAME } from './utils.js'
 
 /**

@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import type { Bundler } from 'vuepress/core'
 import { createBuildApp } from 'vuepress/core'
 import { fs, getDirname, path } from 'vuepress/utils'
+
 import { prepareClientConfigFile } from '../src/node/index.js'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)

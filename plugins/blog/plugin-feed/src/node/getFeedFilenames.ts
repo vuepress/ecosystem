@@ -1,5 +1,6 @@
 import type { App } from 'vuepress/core'
 import { removeLeadingSlash } from 'vuepress/shared'
+
 import type { FeedPluginOptions } from '../typings/index.js'
 import type { ResolvedFeedOptions } from './getFeedOptions.js'
 import { getUrl } from './utils/index.js'

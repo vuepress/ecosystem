@@ -3,6 +3,7 @@ import { usePreferredLanguages } from '@vueuse/core'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import { useRouteLocale } from 'vuepress/client'
+
 import type { RedirectBehaviorConfig } from '../../shared/index.js'
 
 export interface RedirectLocation {

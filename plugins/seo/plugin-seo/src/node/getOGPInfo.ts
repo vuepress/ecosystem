@@ -1,6 +1,7 @@
 import { getDate, isArray, isString } from '@vuepress/helper'
 import type { UnionToIntersection } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
+
 import type { ExtendPage, SeoContent } from '../typings/index.js'
 import type { SeoPluginOptions } from './options.js'
 import {

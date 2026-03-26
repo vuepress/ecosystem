@@ -1,6 +1,7 @@
 import type { ExactLocaleConfig } from '@vuepress/helper/client'
 import { useLocale } from '@vuepress/helper/client'
 import type { ComputedRef } from 'vue'
+
 import type { GitLocaleData } from '../../shared/index.js'
 
 declare const __GIT_LOCALES__: ExactLocaleConfig<GitLocaleData>

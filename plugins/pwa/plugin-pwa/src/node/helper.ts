@@ -1,4 +1,5 @@
 import { isLinkAbsolute } from '@vuepress/helper'
+
 import type { AppManifest } from '../shared/index.js'
 import type { PwaPluginOptions } from './options.js'
 

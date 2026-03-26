@@ -1,4 +1,5 @@
 import type { App, HeadConfig } from 'vuepress/core'
+
 import type {
   ArticleSchema,
   BlogPostingSchema,

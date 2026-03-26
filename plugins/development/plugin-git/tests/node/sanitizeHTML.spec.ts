@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+
 import { sanitizeHTML } from '../../src/node/utils/sanitizeHTML.js'
 
 describe('utils/sanitizeHTML', () => {

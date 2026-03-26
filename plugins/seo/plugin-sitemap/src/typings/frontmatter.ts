@@ -1,4 +1,5 @@
 import type { PageFrontmatter } from 'vuepress/core'
+
 import type {
   SitemapChangeFrequency,
   SitemapImageOption,
