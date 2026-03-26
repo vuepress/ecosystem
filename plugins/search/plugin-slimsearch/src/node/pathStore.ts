@@ -1,18 +1,30 @@
 export class PathStore {
-  private store: string[]
+  private pathToIndex: Map<string, number>
+  private indexToPath: string[]
+  private freeSlots: number[]
 
   public constructor() {
-    this.store = []
+    this.pathToIndex = new Map()
+    this.indexToPath = []
+    this.freeSlots = []
   }
 
   public addPath(item: string): number {
-    const index = this.store.indexOf(item)
+    const existing = this.pathToIndex.get(item)
 
-    if (index === -1) {
-      this.store.push(item)
+    if (existing !== undefined) return existing
 
-      return this.store.length - 1
+    let index: number
+
+    if (this.freeSlots.length > 0) {
+      index = this.freeSlots.pop()!
+      this.indexToPath[index] = item
+    } else {
+      index = this.indexToPath.length
+      this.indexToPath.push(item)
     }
+
+    this.pathToIndex.set(item, index)
 
     return index
   }
@@ -22,16 +34,26 @@ export class PathStore {
   }
 
   public deletePath(item: string): void {
-    const index = this.store.indexOf(item)
+    const index = this.pathToIndex.get(item)
 
-    if (index !== -1) this.store[index] = ''
+    if (index !== undefined) {
+      this.pathToIndex.delete(item)
+      this.indexToPath[index] = ''
+      this.freeSlots.push(index)
+    }
   }
 
   public clear(): void {
-    this.store = []
+    this.pathToIndex = new Map()
+    this.indexToPath = []
+    this.freeSlots = []
   }
 
   public toJSON(): string {
-    return JSON.stringify(this.store)
+    const result: Record<number, string> = {}
+
+    for (const [path, index] of this.pathToIndex) result[index] = path
+
+    return JSON.stringify(result)
   }
 }
