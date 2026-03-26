@@ -2,6 +2,7 @@
 import { isHTMLTag } from '@vue/shared'
 import type { AnyNode } from 'domhandler'
 import type { App, Page } from 'vuepress/core'
+
 import { isArray } from '../../shared/index.js'
 import { cheerio } from './utils.js'
 

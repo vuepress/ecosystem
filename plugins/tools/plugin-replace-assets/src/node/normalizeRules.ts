@@ -1,4 +1,5 @@
 import { isArray, isFunction } from '@vuepress/helper'
+
 import { KNOWN_IMAGE_EXTENSIONS, KNOWN_MEDIA_EXTENSIONS } from './constants.js'
 import type { ReplaceAssetsPluginOptions, ReplacementRule } from './types.js'
 

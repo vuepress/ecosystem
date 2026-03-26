@@ -1,6 +1,7 @@
 import { getFullLocaleConfig } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import { getDirname, logger, path } from 'vuepress/utils'
+
 import { backToTopLocaleInfo } from './locales.js'
 import { PLUGIN_NAME } from './logger.js'
 import type { BackToTopPluginOptions } from './options.js'

@@ -1,6 +1,7 @@
 import { addViteSsrNoExternal, getPageExcerpt } from '@vuepress/helper'
 import type { Page, PluginFunction } from 'vuepress/core'
 import { createPage, preparePageChunk, prepareRoutes } from 'vuepress/core'
+
 import type { CategoriesMap, TypesMap } from '../shared/index.js'
 import {
   getCategory,

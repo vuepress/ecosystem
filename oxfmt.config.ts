@@ -7,4 +7,7 @@ export default defineConfig({
   semi: false,
   printWidth: 80,
   quoteProps: 'consistent',
+  sortImports: {
+    internalPattern: ['@internal', '@temp', '@theme'],
+  },
 })

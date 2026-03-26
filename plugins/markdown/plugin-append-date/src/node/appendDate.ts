@@ -2,6 +2,7 @@ import { startsWith } from '@vuepress/helper'
 import type { GitPluginPageData } from '@vuepress/plugin-git'
 import type { Page } from 'vuepress/core'
 import { fs } from 'vuepress/utils'
+
 import {
   getDateString,
   getFullDateString,

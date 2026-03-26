@@ -1,5 +1,6 @@
 import type { ExecSyncOptionsWithStringEncoding } from 'node:child_process' // Import native execSync
 import { execSync } from 'node:child_process'
+
 import type { KnownGitProvider } from '../../shared/index.js'
 
 /**

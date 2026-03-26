@@ -1,5 +1,7 @@
 import { execSync } from 'node:child_process'
+
 import { select } from '@inquirer/prompts'
+
 import type { Lang } from '../i18n/index.js'
 import { checkYarnClassic } from './checkYarnClassic.js'
 import type { PackageManager } from './getPackageManager.js'

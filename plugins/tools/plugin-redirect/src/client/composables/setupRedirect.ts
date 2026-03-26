@@ -1,5 +1,6 @@
 import { onMounted } from 'vue'
 import { useData, useRouter } from 'vuepress/client'
+
 import type { RedirectBehaviorConfig } from '../../shared/index.js'
 import { statusSessionStorage } from '../utils/index.js'
 import { useRedirectLocation } from './useRedirectLocation.js'

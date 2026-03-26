@@ -1,4 +1,5 @@
 import { removeLeadingSlash } from 'vuepress/shared'
+
 import type { LLMState } from '../types.js'
 import { stripExt } from './stripExt.js'
 

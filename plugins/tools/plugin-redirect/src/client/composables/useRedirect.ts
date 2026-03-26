@@ -1,10 +1,11 @@
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import type { ComputedRef, ExtractPropTypes, PropType, Ref } from 'vue'
 import { useData, useRouter } from 'vuepress/client'
-import { useRedirectLocation } from './useRedirectLocation.js'
-import type { RedirectPluginLocaleConfig } from '../types.js'
+
 import type { RedirectBehaviorConfig } from '../../shared/index.js'
+import type { RedirectPluginLocaleConfig } from '../types.js'
 import { statusLocalStorage, statusSessionStorage } from '../utils/index.js'
+import { useRedirectLocation } from './useRedirectLocation.js'
 
 export const propsOptions = {
   config: {

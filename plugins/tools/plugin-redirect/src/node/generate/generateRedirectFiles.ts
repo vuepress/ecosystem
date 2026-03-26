@@ -7,6 +7,7 @@ import {
 } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { fs, path } from 'vuepress/utils'
+
 import { logger } from '../logger.js'
 import { getRedirectHTML } from './getRedirectHTML.js'
 

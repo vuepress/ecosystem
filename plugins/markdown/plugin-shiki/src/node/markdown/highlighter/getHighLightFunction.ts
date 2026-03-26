@@ -5,6 +5,7 @@ import type {
   HighlighterGeneric,
   ShikiTransformer,
 } from 'shiki'
+
 import {
   getTransformers,
   whitespaceTransformer,

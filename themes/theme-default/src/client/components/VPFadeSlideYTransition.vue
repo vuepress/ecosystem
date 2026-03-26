@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { SingleSlot } from '@vuepress/helper/client'
+
 import '@vuepress/helper/transition/fade-in-down.css'
 
 defineEmits<{

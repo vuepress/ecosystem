@@ -1,6 +1,7 @@
 import { SitemapStream, streamToPromise } from 'sitemap'
 import type { App } from 'vuepress/core'
 import { removeLeadingSlash } from 'vuepress/shared'
+
 import type { SitemapPluginOptions } from '../typings/index.js'
 import { getSitemapInfos } from './getInfo.js'
 

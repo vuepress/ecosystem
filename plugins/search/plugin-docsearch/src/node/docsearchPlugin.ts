@@ -1,5 +1,6 @@
 import { getFullLocaleConfig } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
+
 import { docSearchLocaleInfo } from './locales.js'
 import type { DocSearchPluginOptions } from './options.js'
 import { prepareClientConfig } from './prepareClientConfig.js'

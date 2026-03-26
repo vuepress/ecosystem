@@ -4,6 +4,7 @@ import { watch } from 'chokidar'
 import type { Page, Plugin } from 'vuepress/core'
 import type { LocaleConfig } from 'vuepress/shared'
 import { getDirname, path } from 'vuepress/utils'
+
 import type { SearchPluginLocaleData } from '../shared/index.js'
 import { searchLocaleInfo } from './locales.js'
 import { prepareSearchIndex } from './prepareSearchIndex.js'

@@ -10,6 +10,7 @@ import {
 } from '@vuepress/highlighter-helper'
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it, vi } from 'vitest'
+
 import type {
   MarkdownItPreWrapperOptions,
   MarkdownItPrismjsHighlightOptions,

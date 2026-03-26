@@ -1,13 +1,14 @@
 <script setup lang="ts">
+import type { Slot } from '@vuepress/helper/client'
+import { hasGlobalComponent } from '@vuepress/helper/client'
+import { computed, ref, resolveComponent, useTemplateRef } from 'vue'
+
+import { useData } from '@theme/useData'
+import { DeviceType, useUpdateDeviceStatus } from '@theme/useUpdateDeviceStatus'
 import VPNavbarBrand from '@theme/VPNavbarBrand.vue'
 import VPNavbarItems from '@theme/VPNavbarItems.vue'
 import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'
 import VPToggleSidebarButton from '@theme/VPToggleSidebarButton.vue'
-import { useData } from '@theme/useData'
-import { DeviceType, useUpdateDeviceStatus } from '@theme/useUpdateDeviceStatus'
-import type { Slot } from '@vuepress/helper/client'
-import { hasGlobalComponent } from '@vuepress/helper/client'
-import { computed, ref, resolveComponent, useTemplateRef } from 'vue'
 
 defineEmits<{
   toggleSidebar: []

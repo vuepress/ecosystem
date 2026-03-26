@@ -6,6 +6,7 @@ import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import { RouterLink } from 'vue-router'
 import type { PageHeader } from 'vuepress/client'
 import { RouteLink, useRoute } from 'vuepress/client'
+
 import type { TocRenderOptions } from '../../shared/index.js'
 
 /**

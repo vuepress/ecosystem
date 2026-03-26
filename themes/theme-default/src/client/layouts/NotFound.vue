@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { useData } from '@theme/useData'
 import { useMounted } from '@vueuse/core'
 import { computed } from 'vue'
 import { RouteLink } from 'vuepress/client'
+
+import { useData } from '@theme/useData'
 
 const { routeLocale, theme, themeLocale } = useData()
 

@@ -1,6 +1,8 @@
-import { NOTICE_OPTIONS } from '@internal/noticeOptions'
 import type { Ref } from 'vue'
 import { ref } from 'vue'
+
+import { NOTICE_OPTIONS } from '@internal/noticeOptions'
+
 import type { NoticeAttrOptions } from '../../shared/index.js'
 
 declare const __VUE_HMR_RUNTIME__: Record<string, unknown>

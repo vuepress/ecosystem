@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import type { Bundler } from 'vuepress/core'
 import { createBuildApp } from 'vuepress/core'
 import { path } from 'vuepress/utils'
+
 import type { PageTextOptions } from '../../src/node/page/text.js'
 import { getPageText } from '../../src/node/page/text.js'
 import { emptyTheme } from '../__fixtures__/theme/empty.js'

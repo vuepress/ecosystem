@@ -1,5 +1,6 @@
 import type { WhitespacePosition } from '@vuepress/highlighter-helper'
 import { resolveWhitespacePosition } from '@vuepress/highlighter-helper'
+
 import type { CodeParser, OpenTag } from './getCodeParser.js'
 
 const SPLIT_REGEXP = /(<[^>]+>)/

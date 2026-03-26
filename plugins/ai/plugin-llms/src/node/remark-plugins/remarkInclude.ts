@@ -3,6 +3,7 @@ import type { Root } from 'mdast'
 import { fromMarkdown } from 'mdast-util-from-markdown'
 import { visit } from 'unist-util-visit'
 import { fs, path } from 'vuepress/utils'
+
 import { dedent } from '../utils/dedent.js'
 import { logger } from '../utils/logger.js'
 

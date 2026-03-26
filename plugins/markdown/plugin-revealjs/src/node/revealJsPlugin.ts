@@ -3,6 +3,7 @@ import {
   addViteSsrExternal,
 } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
+
 import type { RevealJsPluginOptions } from './options.js'
 import {
   prepareClientConfigFile,

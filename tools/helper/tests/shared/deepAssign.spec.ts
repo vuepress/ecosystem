@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+
 import { deepAssign } from '../../src/shared/deepAssign.js'
 
 describe('deep merge', () => {

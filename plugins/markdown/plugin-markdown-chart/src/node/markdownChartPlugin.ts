@@ -7,6 +7,7 @@ import {
   isArray,
 } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
+
 import {
   chartjs,
   echarts,

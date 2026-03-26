@@ -1,4 +1,5 @@
 import { defineClientConfig } from 'vuepress/client'
+
 import type { GoogleAnalyticsPluginOptions } from '../shared/index.js'
 import { useGoogleAnalytics } from './composables/index.js'
 

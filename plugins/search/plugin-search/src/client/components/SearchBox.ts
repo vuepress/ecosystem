@@ -3,6 +3,7 @@ import { useKeys, useLocale } from '@vuepress/helper/client'
 import type { PropType, VNode } from 'vue'
 import { computed, defineComponent, h, ref, toRefs } from 'vue'
 import { useRouteLocale, useRouter } from 'vuepress/client'
+
 import type { SearchSuggestion } from '../composables/index.js'
 import {
   useSearchIndex,

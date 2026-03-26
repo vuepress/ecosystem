@@ -2,6 +2,7 @@ import { customizeDevServer } from '@vuepress/helper'
 import type { PluginFunction, PluginObject } from 'vuepress/core'
 import { isLinkHttp, removeEndingSlash } from 'vuepress/shared'
 import { colors } from 'vuepress/utils'
+
 import type { SitemapPluginOptions } from '../typings/index.js'
 import { getSiteMap } from './getSitemap.js'
 import { getSiteMapTemplate } from './getSitemapTemplate.js'

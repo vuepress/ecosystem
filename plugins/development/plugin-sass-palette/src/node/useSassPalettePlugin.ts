@@ -1,4 +1,5 @@
 import type { App, PluginObject } from 'vuepress/core'
+
 import type { SassPalettePluginOptions } from './options.js'
 import { sassPalettePlugin } from './sassPalettePlugin.js'
 import { PLUGIN_NAME } from './utils.js'

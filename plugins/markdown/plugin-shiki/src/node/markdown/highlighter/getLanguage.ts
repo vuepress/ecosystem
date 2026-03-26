@@ -1,4 +1,5 @@
 import { colors } from 'vuepress/utils'
+
 import type { ShikiHighlightOptions } from '../../types.js'
 import { logger, resolveLanguage } from '../../utils.js'
 import type { MarkdownFilePathGetter } from './createMarkdownFilePathGetter.js'

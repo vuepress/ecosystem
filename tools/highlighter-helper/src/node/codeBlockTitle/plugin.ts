@@ -1,5 +1,6 @@
 import type { Markdown } from 'vuepress/markdown'
 import { isFunction } from 'vuepress/shared'
+
 import { resolveAttr } from '../utils/index.js'
 import type {
   CodeBlockTitleRender,

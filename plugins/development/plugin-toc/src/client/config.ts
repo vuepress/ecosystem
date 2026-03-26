@@ -1,6 +1,7 @@
 import type { GetHeadersOptions } from '@vuepress/helper/client'
 import { h } from 'vue'
 import { defineClientConfig } from 'vuepress/client'
+
 import type { TocRenderOptions } from '../shared/index.js'
 import type { TocProps } from './components/Toc.js'
 import { Toc } from './components/Toc.js'

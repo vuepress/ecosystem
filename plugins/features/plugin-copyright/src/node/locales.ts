@@ -1,4 +1,5 @@
 import type { DefaultLocaleInfo } from '@vuepress/helper'
+
 import type { CopyrightPluginLocaleData } from '../shared/index.js'
 
 /**

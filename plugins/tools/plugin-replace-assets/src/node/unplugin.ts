@@ -4,6 +4,7 @@ import type {
   WebpackPluginInstance,
 } from 'unplugin'
 import { createVitePlugin, createWebpackPlugin } from 'unplugin'
+
 import { transformAssets } from './transformAssets.js'
 import type { ReplacementRule } from './types.js'
 import { createAssetPattern } from './utils.js'

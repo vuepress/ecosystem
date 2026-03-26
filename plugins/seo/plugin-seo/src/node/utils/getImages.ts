@@ -1,5 +1,6 @@
 import { isLinkAbsolute, isLinkWithProtocol } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
+
 import type { ExtendPage } from '../../typings/index.js'
 import { getUrl } from './getUrl.js'
 

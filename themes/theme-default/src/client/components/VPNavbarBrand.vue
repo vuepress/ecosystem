@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { useDarkMode } from '@theme/useDarkMode'
-import { useData } from '@theme/useData'
 import type { FunctionalComponent } from 'vue'
 import { computed, h } from 'vue'
 import { ClientOnly, RouteLink, withBase } from 'vuepress/client'
+
+import { useDarkMode } from '@theme/useDarkMode'
+import { useData } from '@theme/useData'
 
 const { routeLocale, siteLocale, themeLocale } = useData()
 const isDarkMode = useDarkMode()

@@ -1,4 +1,5 @@
 import { defineClientConfig } from 'vuepress/client'
+
 import { useRtl } from './composables/index.js'
 
 declare const __RTL_LOCALES__: string[]

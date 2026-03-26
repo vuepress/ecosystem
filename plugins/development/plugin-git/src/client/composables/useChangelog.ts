@@ -1,6 +1,7 @@
 import type { ComputedRef, MaybeRefOrGetter } from 'vue'
 import { computed, toValue } from 'vue'
 import { useData } from 'vuepress/client'
+
 import type {
   GitChangelogInfo,
   GitPluginFrontmatter,

@@ -2,6 +2,7 @@ import type { ComputedRef, InjectionKey } from 'vue'
 import { inject } from 'vue'
 import type { RouteLocale } from 'vuepress/client'
 import type { LocaleData } from 'vuepress/shared'
+
 import type { ThemeData } from '../../shared/index.js'
 
 /**

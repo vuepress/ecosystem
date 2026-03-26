@@ -1,6 +1,7 @@
 import { addViteConfig, chainWebpack } from '@vuepress/helper'
 import { watch } from 'chokidar'
 import type { Plugin } from 'vuepress/core'
+
 import { preparePaletteFile } from './preparePaletteFile.js'
 import { prepareStyleFile } from './prepareStyleFile.js'
 import { presetOptions } from './presetOptions.js'

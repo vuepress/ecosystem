@@ -1,5 +1,6 @@
 import type { App } from 'vuepress/core'
 import { fs } from 'vuepress/utils'
+
 import { logger } from './utils/index.js'
 
 export const generateRobotsTxt = async (app: App): Promise<void> => {

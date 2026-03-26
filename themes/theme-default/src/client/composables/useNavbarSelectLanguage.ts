@@ -1,9 +1,11 @@
-import { useData } from '@theme/useData'
 import { useRoutePaths } from '@vuepress/helper/client'
 import { useMounted } from '@vueuse/core'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import { useRoute } from 'vuepress/client'
+
+import { useData } from '@theme/useData'
+
 import type { NavbarItem } from '../typings.js'
 
 /**

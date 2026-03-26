@@ -1,6 +1,8 @@
-import { SEARCH_INDEX } from '@internal/searchIndex'
 import type { Ref } from 'vue'
 import { ref } from 'vue'
+
+import { SEARCH_INDEX } from '@internal/searchIndex'
+
 import type { SearchIndex } from '../../shared/index.js'
 
 export type SearchIndexRef = Ref<SearchIndex>

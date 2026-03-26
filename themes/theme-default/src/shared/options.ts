@@ -1,5 +1,6 @@
 import type { ThemeData } from '@vuepress/plugin-theme-data'
 import type { LocaleData } from 'vuepress/shared'
+
 import type { NavbarOptions } from './navbar.js'
 import type { SidebarOptions } from './sidebar.js'
 

@@ -1,4 +1,5 @@
 import type { DefaultLocaleInfo } from '@vuepress/helper'
+
 import type { CatalogPluginLocaleData } from '../shared/index.js'
 
 /**

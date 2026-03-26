@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+
 import { getTitleFromFilename } from '../../src/node/getTitleFromFilename.js'
 
 describe('should get correct title from filename', () => {

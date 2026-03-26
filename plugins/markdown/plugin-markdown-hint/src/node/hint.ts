@@ -5,8 +5,8 @@ import { ensureLeadingSlash } from '@vuepress/helper'
 import type { PluginWithOptions } from 'markdown-it'
 import type { MarkdownEnv } from 'vuepress/markdown'
 import { resolveLocalePath } from 'vuepress/shared'
-import { cleanMarkdownEnv } from './cleanMarkdownEnv.js'
 
+import { cleanMarkdownEnv } from './cleanMarkdownEnv.js'
 import type { MarkdownHintPluginLocaleData } from './options.js'
 
 export type MarkdownItHintOptions =

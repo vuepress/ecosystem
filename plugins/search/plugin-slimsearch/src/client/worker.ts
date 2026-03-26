@@ -1,6 +1,7 @@
+import { loadJSONIndex } from 'slimsearch'
+
 import database from '@temp/slimsearch/index.js'
 import { sortStrategy } from '@temp/slimsearch/worker-options.js'
-import { loadJSONIndex } from 'slimsearch'
 
 import type { IndexItem } from '../shared/index.js'
 import type { WorkerMessageData } from './typings/index.js'

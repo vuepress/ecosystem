@@ -1,5 +1,6 @@
 import { readdirSync, statSync } from 'node:fs'
 import { join } from 'node:path'
+
 import { getDirname } from 'vuepress/utils'
 
 const __dirname = getDirname(import.meta.url)

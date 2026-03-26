@@ -11,6 +11,7 @@ import {
 } from 'vue'
 import type { VNode } from 'vue'
 import { useFrontmatter } from 'vuepress/client'
+
 import type { BackToTopPluginLocaleData } from '../../shared/index.js'
 
 import '@vuepress/helper/transition/fade-in.css'

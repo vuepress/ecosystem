@@ -7,6 +7,7 @@ import {
 } from '@vuepress/helper'
 import type { Page, PageOptions } from 'vuepress/core'
 import { colors } from 'vuepress/utils'
+
 import type { CategoriesMap, CategoryMap } from '../../shared/index.js'
 import type { PagesMap } from '../getPagesMap.js'
 import { logger } from '../logger.js'

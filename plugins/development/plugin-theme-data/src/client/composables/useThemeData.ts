@@ -1,6 +1,8 @@
-import { themeData as themeDataRaw } from '@internal/themeData'
 import type { Ref } from 'vue'
 import { ref } from 'vue'
+
+import { themeData as themeDataRaw } from '@internal/themeData'
+
 import type { ThemeData } from '../../shared/index.js'
 
 declare const __VUE_HMR_RUNTIME__: Record<string, unknown>

@@ -1,5 +1,6 @@
 import type { Plugin } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
+
 import type { ThemeData } from '../shared/index.js'
 import { prepareThemeData } from './prepareThemeData.js'
 

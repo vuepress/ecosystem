@@ -1,6 +1,7 @@
 import { keys } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import type { HeadConfig } from 'vuepress/shared'
+
 import { getFeedFilenames } from './getFeedFilenames.js'
 import type { ResolvedFeedOptionsMap } from './getFeedOptions.js'
 import { getUrl } from './utils/index.js'

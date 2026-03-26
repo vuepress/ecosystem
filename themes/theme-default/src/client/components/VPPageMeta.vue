@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import VPAutoLink from '@theme/VPAutoLink.vue'
-import VPEditIcon from '@theme/VPEditIcon.vue'
+import { useContributors, useLastUpdated } from '@vuepress/plugin-git/client'
+
 import { useData } from '@theme/useData'
 import { useEditLink } from '@theme/useEditLink'
-import { useContributors, useLastUpdated } from '@vuepress/plugin-git/client'
+import VPAutoLink from '@theme/VPAutoLink.vue'
+import VPEditIcon from '@theme/VPEditIcon.vue'
 
 const { frontmatter, themeLocale } = useData()
 const contributors = useContributors(

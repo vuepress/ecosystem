@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import VPDarkIcon from '@theme/VPDarkIcon.vue'
-import VPLightIcon from '@theme/VPLightIcon.vue'
 import { useDarkMode } from '@theme/useDarkMode'
 import { useData } from '@theme/useData'
+import VPDarkIcon from '@theme/VPDarkIcon.vue'
+import VPLightIcon from '@theme/VPLightIcon.vue'
 
 const { themeLocale } = useData()
 const isDarkMode = useDarkMode()

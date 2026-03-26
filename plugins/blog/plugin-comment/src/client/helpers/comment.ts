@@ -2,6 +2,7 @@ import { isFunction } from '@vuepress/helper/client'
 import { watchImmediate } from '@vueuse/core'
 import type { App, MaybeRefOrGetter, Ref } from 'vue'
 import { computed, inject, isRef, readonly, ref } from 'vue'
+
 import type {
   ArtalkOptions,
   CommentOptions,

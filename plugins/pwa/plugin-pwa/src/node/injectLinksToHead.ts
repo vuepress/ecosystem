@@ -1,5 +1,6 @@
 import type { App } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
+
 import type { PwaPluginOptions } from './options.js'
 
 // oxlint-disable-next-line complexity

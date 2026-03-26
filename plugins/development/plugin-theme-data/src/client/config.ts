@@ -1,6 +1,7 @@
 import { computed } from 'vue'
 import type { ClientData } from 'vuepress/client'
 import { clientDataSymbol, defineClientConfig } from 'vuepress/client'
+
 import {
   resolveThemeLocaleData,
   setupDevTools,

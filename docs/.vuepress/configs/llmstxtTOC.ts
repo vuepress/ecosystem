@@ -11,6 +11,7 @@ import type {
   SidebarItemOptions,
 } from '@vuepress/theme-default'
 import { ensureEndingSlash, isLinkHttp } from 'vuepress/shared'
+
 import { sidebarEn as sidebarConfig } from './sidebar/en.js'
 
 const externalLinks: { link: string; text: string }[] = []

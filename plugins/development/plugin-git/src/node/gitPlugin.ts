@@ -2,6 +2,7 @@ import { getFullLocaleConfig } from '@vuepress/helper'
 import type { Page, Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import { path } from 'vuepress/utils'
+
 import type {
   GitPluginFrontmatter,
   GitPluginPageData,

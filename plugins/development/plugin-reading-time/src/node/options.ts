@@ -1,4 +1,5 @@
 import type { LocaleConfig } from 'vuepress/shared'
+
 import type { ReadingTimePluginLocaleData } from '../shared/index.js'
 
 /**

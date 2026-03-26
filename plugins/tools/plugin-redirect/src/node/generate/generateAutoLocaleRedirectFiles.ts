@@ -1,6 +1,7 @@
 import { entries, removeLeadingSlash } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { fs, path } from 'vuepress/utils'
+
 import type { RedirectBehaviorConfig } from '../../shared/index.js'
 import { logger } from '../logger.js'
 import { getLocaleRedirectHTML } from './getLocaleRedirectHTML.js'

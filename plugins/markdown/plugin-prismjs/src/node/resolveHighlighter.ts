@@ -1,4 +1,5 @@
 import Prism from 'prismjs'
+
 import { loadLanguages } from './loadLanguages.js'
 import { resolveLanguage } from './utils/index.js'
 

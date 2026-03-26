@@ -1,4 +1,5 @@
 import { assertType, expectTypeOf, it } from 'vitest'
+
 import type { NavbarOptions } from '../src/shared/index.js'
 
 it('navbar options', () => {

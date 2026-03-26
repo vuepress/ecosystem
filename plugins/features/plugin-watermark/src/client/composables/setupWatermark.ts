@@ -3,6 +3,7 @@ import type { MaybeRef, Ref } from 'vue'
 import { isRef, toValue } from 'vue'
 import { useSiteLocale, withBase } from 'vuepress/client'
 import { Watermark } from 'watermark-js-plus'
+
 import type { WatermarkOptions } from '../helper/index.js'
 
 /**

@@ -8,6 +8,7 @@ import {
 } from '@vuepress/plugin-theme-data/client'
 import type { ClientData } from 'vuepress/client'
 import { useData as _useData } from 'vuepress/client'
+
 import type {
   DefaultThemeData,
   DefaultThemeNormalPageFrontmatter,

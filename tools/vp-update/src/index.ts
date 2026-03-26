@@ -3,7 +3,9 @@
 import { spawnSync } from 'node:child_process'
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+
 import { createCommand } from 'commander'
+
 import { VERSION } from './config/index.js'
 import {
   checkTaobaoRegistry,

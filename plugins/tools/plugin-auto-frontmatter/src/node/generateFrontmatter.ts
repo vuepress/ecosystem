@@ -2,6 +2,7 @@ import matter from 'gray-matter'
 import { dump } from 'js-yaml'
 import pMap from 'p-map'
 import { fs, hash as getHash, path } from 'vuepress/utils'
+
 import { createFilter } from './createFilter.js'
 import type {
   AutoFrontmatterContext,

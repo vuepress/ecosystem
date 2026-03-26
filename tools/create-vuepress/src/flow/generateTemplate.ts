@@ -2,7 +2,9 @@
 import { readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+
 import { confirm } from '@inquirer/prompts'
+
 import type { CreateLocaleOptions, Lang } from '../i18n/index.js'
 import type { PackageManager } from '../utils/index.js'
 import { copy, ensureDirExistSync } from '../utils/index.js'

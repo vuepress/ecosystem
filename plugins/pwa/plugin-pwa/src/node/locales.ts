@@ -1,4 +1,5 @@
 import type { DefaultLocaleInfo } from '@vuepress/helper'
+
 import type { PwaPluginLocaleData } from '../shared/index.js'
 
 /**

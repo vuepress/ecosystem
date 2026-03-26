@@ -5,6 +5,7 @@ import type { AnyNode, Element } from 'domhandler'
 import matter from 'gray-matter'
 import type { App, Page } from 'vuepress/core'
 import { isLinkHttp, removeEndingSlash } from 'vuepress/shared'
+
 import { isArray, isLinkAbsolute, startsWith } from '../../shared/index.js'
 import { cheerio } from './utils.js'
 

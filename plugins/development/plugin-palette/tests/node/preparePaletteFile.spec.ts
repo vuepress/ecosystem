@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import type { Bundler } from 'vuepress/core'
 import { createBuildApp } from 'vuepress/core'
 import { fs, path } from 'vuepress/utils'
+
 import type { PalettePluginOptions } from '../../src/node/index.js'
 import { preparePaletteFile, presetOptions } from '../../src/node/index.js'
 

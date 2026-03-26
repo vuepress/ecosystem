@@ -1,5 +1,6 @@
 import { getModulePath } from '@vuepress/helper'
 import type { App } from 'vuepress'
+
 import { PLUGIN_NAME } from './utils.js'
 
 export const prepareClientConfig = (

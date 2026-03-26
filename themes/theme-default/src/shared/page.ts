@@ -1,5 +1,6 @@
 import type { GitPluginPageData } from '@vuepress/plugin-git'
 import type { PageFrontmatter } from 'vuepress/shared'
+
 import type { AutoLinkOptions } from './nav.js'
 import type { SidebarArrayOptions } from './sidebar.js'
 

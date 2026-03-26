@@ -1,5 +1,6 @@
 import type { Plugin } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
+
 import { PLUGIN_NAME, logger } from './logger.js'
 import type { NoticePluginOptions } from './options.js'
 import {

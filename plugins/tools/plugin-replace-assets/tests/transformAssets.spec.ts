@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
+
 import { normalizeRules } from '../src/node/normalizeRules.js'
 import {
   isMatchUrl,

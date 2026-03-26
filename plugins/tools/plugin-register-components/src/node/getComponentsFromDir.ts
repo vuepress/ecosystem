@@ -1,4 +1,5 @@
 import { path, tinyglobby } from 'vuepress/utils'
+
 import type { RegisterComponentsPluginOptions } from './registerComponentsPlugin.js'
 
 export const getComponentsFromDir = async ({

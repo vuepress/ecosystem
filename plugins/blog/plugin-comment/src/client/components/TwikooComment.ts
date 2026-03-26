@@ -3,6 +3,7 @@ import { watchImmediate } from '@vueuse/core'
 import type { VNode } from 'vue'
 import { computed, defineComponent, h, nextTick, onMounted, ref } from 'vue'
 import { useLang } from 'vuepress/client'
+
 import { useTwikooOptions } from '../helpers/index.js'
 
 export default defineComponent({

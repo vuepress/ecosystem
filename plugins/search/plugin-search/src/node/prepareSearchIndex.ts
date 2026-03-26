@@ -1,4 +1,5 @@
 import type { App } from 'vuepress/core'
+
 import type { SearchIndex } from '../shared/index.js'
 import type { SearchPluginOptions } from './searchPlugin.js'
 

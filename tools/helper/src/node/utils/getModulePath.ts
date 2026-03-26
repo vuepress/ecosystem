@@ -1,4 +1,5 @@
 import { fileURLToPath } from 'node:url'
+
 import { path } from 'vuepress/utils'
 
 /**

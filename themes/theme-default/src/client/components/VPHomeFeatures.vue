@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { useData } from '@theme/useData'
 import { computed } from 'vue'
+
+import { useData } from '@theme/useData'
+
 import type { DefaultThemeHomePageFrontmatter } from '../../shared/index.js'
 
 const { frontmatter } = useData<DefaultThemeHomePageFrontmatter>()

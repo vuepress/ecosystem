@@ -10,6 +10,7 @@ import {
 import type { App } from 'vuepress/core'
 import type { PageFrontmatter } from 'vuepress/shared'
 import { isString } from 'vuepress/shared'
+
 import type {
   AuthorInfo,
   FeedAuthor,

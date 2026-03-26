@@ -1,5 +1,6 @@
 import type { FunctionalComponent, VNode } from 'vue'
 import { h } from 'vue'
+
 import { encodeSVG } from '../utils/index.js'
 
 const getLength = (size: number | string): string =>

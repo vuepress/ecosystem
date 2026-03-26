@@ -1,4 +1,5 @@
 import { entries } from '@vuepress/helper'
+
 import { DEFAULT_LLMS_DETAILS, DEFAULT_LLMS_TITLE } from './constants.js'
 import type { TemplateGetter, TemplateGetterOptions } from './types.js'
 import { generateLink, generateTOCLink, logger } from './utils/index.js'

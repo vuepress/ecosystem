@@ -6,6 +6,7 @@ import {
 } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
+
 import { copyCodeLocaleInfo } from './locales.js'
 import { PLUGIN_NAME, logger } from './logger.js'
 import type { CopyCodePluginOptions } from './options.js'

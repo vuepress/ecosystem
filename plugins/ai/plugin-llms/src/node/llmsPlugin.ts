@@ -1,5 +1,7 @@
+import { keys } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import { removeEndingSlash } from 'vuepress/shared'
+
 import { DEFAULT_LLMSTXT_TEMPLATE, PLUGIN_NAME } from './constants.js'
 import { generateLLMFriendlyDocs } from './generateLLMFriendlyDocs.js'
 import { generateLLMsFullTxt } from './generateLLMsFullTxt.js'
@@ -9,7 +11,6 @@ import type { LlmsPluginOptions } from './options.js'
 import { resolveLLMPages } from './resolveLLMPages.js'
 import type { LLMState } from './types.js'
 import { logger } from './utils/index.js'
-import { keys } from '@vuepress/helper'
 
 /**
  * Plugin to generate LLM-friendly documentation files

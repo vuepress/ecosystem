@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+
 import type { GitContributorInfo } from '../../shared/index.js'
 import type { GitPluginOptions } from '../options.js'
 import type { MergedRawCommit, RawCommit } from '../typings.js'

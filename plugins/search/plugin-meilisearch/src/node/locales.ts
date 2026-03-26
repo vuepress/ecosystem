@@ -1,4 +1,5 @@
 import type { DefaultLocaleInfo } from '@vuepress/helper'
+
 import type { MeiliSearchLocaleData } from '../shared/index.js'
 
 export const localeInfo: DefaultLocaleInfo<MeiliSearchLocaleData> = [

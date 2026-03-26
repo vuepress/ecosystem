@@ -1,4 +1,5 @@
 import { defineClientConfig } from 'vuepress/client'
+
 import type { ClarityOptions } from '../shared/index.js'
 import { useClarityAnalytics } from './composables/index.js'
 

@@ -3,8 +3,10 @@
 import { execSync, spawn } from 'node:child_process'
 import { existsSync, readdirSync } from 'node:fs'
 import { resolve as pathResolve } from 'node:path'
+
 import { confirm, select } from '@inquirer/prompts'
 import type { Command } from 'commander'
+
 import { KNOWN_THEME_COMMANDS } from './config/index.js'
 import { createPackageJson, generateTemplate } from './flow/index.js'
 import { getLanguage } from './i18n/index.js'

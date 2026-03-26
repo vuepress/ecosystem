@@ -1,4 +1,5 @@
 import { pageviewCount } from '@waline/client/pageview'
+
 import { useWalineOptions } from '../helpers/index.js'
 import type { UpdatePageview } from './typings.js'
 

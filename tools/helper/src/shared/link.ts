@@ -1,4 +1,5 @@
 import { isLinkExternal, isLinkWithProtocol } from 'vuepress/shared'
+
 import { startsWith } from './helper.js'
 
 export { isLinkExternal, isLinkHttp, isLinkWithProtocol } from 'vuepress/shared'
