@@ -14,5 +14,6 @@ export default [
       '__VUEPRESS_SSR__': 'false',
       'process.env.NODE_ENV': JSON.stringify('production'),
     },
+    alwaysBundle: [/^@vuepress\//, 'slimsearch'],
   }),
 ]
