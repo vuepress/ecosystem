@@ -16,9 +16,9 @@ catalog:
   vue: ^3.5.31
   vuepress: 2.0.0-rc.27
 
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - esbuild
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
 
 overrides:
   vite@7: npm:vite@^8.0.0-beta.18

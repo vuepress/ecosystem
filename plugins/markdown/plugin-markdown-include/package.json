@@ -45,7 +45,7 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/plugin-include": "^0.23.1",
+    "@mdit/plugin-include": "^0.23.2",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*"
   },
