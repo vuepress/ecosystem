@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.127](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.126...v2.0.0-rc.127) (2026-03-31)
+
+### Bug Fixes
+
+- **plugin-slimsearch:** fix prod worker bundle, close [#653](https://github.com/vuepress/ecosystem/issues/653) ([086b1a7](https://github.com/vuepress/ecosystem/commit/086b1a7bc23d67996df2d543190955f0440d240c))
+
 # [2.0.0-rc.126](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.125...v2.0.0-rc.126) (2026-03-26)
 
 ### Features
