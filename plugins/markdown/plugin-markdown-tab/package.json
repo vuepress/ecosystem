@@ -49,7 +49,7 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/plugin-tab": "^0.24.1",
+    "@mdit/plugin-tab": "^0.24.2",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",

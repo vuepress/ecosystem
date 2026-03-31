@@ -76,7 +76,7 @@ export const commentPlugin =
       },
 
       extendsBundlerOptions: (bundlerOptions: unknown) => {
-        // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check, default-case
+        // oxlint-disable-next-line typescript/switch-exhaustiveness-check, default-case
         switch (options.provider) {
           case 'Artalk': {
             addViteOptimizeDepsExclude(

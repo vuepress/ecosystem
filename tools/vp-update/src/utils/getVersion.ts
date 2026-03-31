@@ -35,7 +35,7 @@ export const getVersion = async (
 
   try {
     const { next, latest } = await retry(getVersionInfo, retries, (times) => {
-      // eslint-disable-next-line no-console
+      // oxlint-disable-next-line no-console
       console.log(`Get ${packageName} version failed, [${times}/${retries}]`)
     })
     return tag === 'latest'

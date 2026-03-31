@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* eslint-disable no-console */
+/* oxlint-disable no-console */
 import { execSync, spawn } from 'node:child_process'
 import { existsSync, readdirSync } from 'node:fs'
 import { resolve as pathResolve } from 'node:path'
@@ -75,7 +75,7 @@ export const mainAction = async function (
   ensureDirExistSync(targetDirPath)
 
   // complete bundler
-  // eslint-disable-next-line no-param-reassign
+  // oxlint-disable-next-line no-param-reassign
   bundler ??= await select<Bundler>({
     message: locale.question.bundler,
     choices: bundlers.map((item) => ({
@@ -85,7 +85,7 @@ export const mainAction = async function (
   })
 
   // complete preset
-  // eslint-disable-next-line no-param-reassign
+  // oxlint-disable-next-line no-param-reassign
   preset ??= await select<Preset>({
     message: locale.question.preset,
     choices: presets.map((item) => ({

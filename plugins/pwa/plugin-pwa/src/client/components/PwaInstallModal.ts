@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* oxlint-disable no-console */
 import { useLocale } from '@vuepress/helper/client'
 import { useEventListener } from '@vueuse/core'
 import type { PropType, VNode } from 'vue'
@@ -113,7 +113,7 @@ export const PwaInstallModal = defineComponent({
     }
 
     onMounted(() => {
-      // eslint-disable-next-line no-prototype-builtins
+      // oxlint-disable-next-line no-prototype-builtins
       if (window.hasOwnProperty('BeforeInstallPromptEvent')) {
         useEventListener(window, 'beforeinstallprompt', (event) => {
           deferredPrompt.value = event as InstallPromptEvent

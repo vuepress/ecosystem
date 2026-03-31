@@ -110,12 +110,12 @@ export const sassPalettePlugin =
             .use('sass-loader')
             .tap((loaderOptions) => ({
               ...loaderOptions,
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+              // oxlint-disable-next-line typescript/no-unsafe-assignment
               sassOptions: {
                 ...loaderOptions.sassOptions,
                 silenceDeprecations: [
                   'import',
-                  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+                  // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
                   ...(loaderOptions.sassOptions?.silenceDeprecations ?? []),
                 ],
               },

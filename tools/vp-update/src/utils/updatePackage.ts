@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* oxlint-disable no-console */
 import {
   COMMON_PEERS,
   DEPRECATED_PACKAGES,

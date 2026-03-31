@@ -154,7 +154,7 @@ export const resolveMultiSidebarItems = (
     }
   }
 
-  // eslint-disable-next-line no-console
+  // oxlint-disable-next-line no-console
   console.warn(`${decodeURI(path)} is missing sidebar config.`)
 
   return []

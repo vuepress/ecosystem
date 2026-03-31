@@ -57,7 +57,7 @@ export const DocSearch = defineComponent({
       if (__VUEPRESS_SSR__) return
 
       const { default: docsearch } = await import('@docsearch/js')
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      // oxlint-disable-next-line typescript/no-deprecated
       const { indexName, indices, searchParameters, ...rest } = options.value
 
       docsearch({

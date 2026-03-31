@@ -25,10 +25,10 @@ export const useClarityAnalytics = ({
   if ('clarity' in window) return
 
   // init clarity
-  // eslint-disable-next-line func-names
+  // oxlint-disable-next-line func-names
   window.clarity = function (): void {
     // @ts-expect-error: Property 'q' does not exist on type
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment, prefer-rest-params, id-length
+    // oxlint-disable-next-line typescript/no-unsafe-member-access, typescript/no-unsafe-call, typescript/no-unsafe-assignment, prefer-rest-params, id-length
     ;(window.clarity.q = window.clarity.q ?? []).push(arguments)
   }
 

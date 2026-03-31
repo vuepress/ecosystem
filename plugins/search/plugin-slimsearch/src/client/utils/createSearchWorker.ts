@@ -10,7 +10,7 @@ declare const __VUEPRESS_DEV__: boolean
 
 interface PromiseItem {
   id: number
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // oxlint-disable-next-line typescript/no-explicit-any
   resolve: (args: any) => void
   reject: (err: Error) => void
 }
@@ -102,7 +102,7 @@ export const createSearchWorker = (): SearchWorker => {
   )
 
   worker.addEventListener('error', (err) => {
-    // eslint-disable-next-line no-console
+    // oxlint-disable-next-line no-console
     console.warn('Search Worker error:', err)
   })
 

@@ -49,7 +49,7 @@ export const shikiPlugin =
   (options: ShikiPluginOptions = {}): Plugin =>
   (app) => {
     // TODO: Remove in stable version
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // oxlint-disable-next-line typescript/no-deprecated
     const { code } = app.options.markdown
     const shikiOptions = {
       ...(isPlainObject(code) ? code : {}),

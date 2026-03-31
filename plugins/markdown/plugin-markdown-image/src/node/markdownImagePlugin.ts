@@ -49,7 +49,7 @@ export const markdownImagePlugin =
         if (opts.figure) md.use(figure)
         if (opts.lazyload) md.use(imgLazyload)
         if (opts.size) md.use(imgSize)
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        // oxlint-disable-next-line typescript/no-deprecated
         if (opts.legacySize) md.use(legacyImgSize)
         if (opts.obsidianSize) md.use(obsidianImgSize)
         if (mark) {

@@ -39,7 +39,7 @@ export const isDef = <T = any>(val?: T): val is T => typeof val !== 'undefined'
  * isBoolean('true') // false
  * ```
  */
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
+// oxlint-disable-next-line typescript/explicit-module-boundary-types, typescript/no-explicit-any
 export const isBoolean = (val: any): val is boolean => typeof val === 'boolean'
 
 /**
@@ -58,7 +58,7 @@ export const isBoolean = (val: any): val is boolean => typeof val === 'boolean'
  * isNumber(NaN) // true
  * ```
  */
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
+// oxlint-disable-next-line typescript/explicit-module-boundary-types, typescript/no-explicit-any
 export const isNumber = (val: any): val is number => typeof val === 'number'
 
 /**

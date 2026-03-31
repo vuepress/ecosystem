@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-control-regex
+// oxlint-disable-next-line no-control-regex
 const nonASCIIRegExp = /[^\u0000-\u007F]/
 
 const splitWords = (content: string): string[] =>

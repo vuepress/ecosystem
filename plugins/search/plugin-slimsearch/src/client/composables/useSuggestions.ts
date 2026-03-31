@@ -47,7 +47,7 @@ export const useSuggestions = (queries: Ref<string[]>): SuggestionsRef => {
             })
             // oxlint-disable-next-line promise/prefer-await-to-callbacks
             .catch((err: unknown) => {
-              // eslint-disable-next-line no-console
+              // oxlint-disable-next-line no-console
               console.error(err)
             })
         } else {
