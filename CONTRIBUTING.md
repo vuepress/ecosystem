@@ -36,7 +36,7 @@ Main tools that used in this project:
 
 - [TypeScript](https://www.typescriptlang.org/) as the development language
 - [Vitest](https://vitest.dev/) for unit testing
-- [ESLint](https://eslint.org/) + [Oxfmt](https://oxc.rs/docs/guide/usage/formatter) for code linting and formatting
+- [OxLint](https://oxc.rs/docs/guide/usage/linter) + [Oxfmt](https://oxc.rs/docs/guide/usage/formatter) for code linting and formatting
 
 ## Scripts
 
@@ -60,7 +60,7 @@ The `format` script uses oxfmt to format all source files.
 
 ### `pnpm lint`
 
-The `lint` script uses ESLint to check all source files.
+The `lint` script uses OxLint to check all source files.
 
 ### `pnpm test`
 

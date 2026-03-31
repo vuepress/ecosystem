@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* oxlint-disable no-console */
 /**
  * Call `unregister()` inside current active worker
  *

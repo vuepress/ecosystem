@@ -8,7 +8,7 @@ const isDarkMode = useDarkMode()
 <template>
   <ParentLayout>
     <template #page-bottom>
-      <!-- eslint-disable-next-line vue/no-undef-components -->
+      <!-- oxlint-disable-next-line vue/no-undef-components -->
       <CommentService :darkmode="isDarkMode" />
     </template>
   </ParentLayout>

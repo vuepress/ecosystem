@@ -43,9 +43,9 @@ export const injectLinksToHead = (
   setMeta('mobile-web-app-capable', 'yes')
   setMeta('theme-color', themeColor || '#46bd87')
 
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  // oxlint-disable-next-line typescript/no-deprecated
   if (isPlainObject(apple) && apple.statusBarColor)
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // oxlint-disable-next-line typescript/no-deprecated
     setMeta('apple-mobile-web-app-status-bar-style', apple.statusBarColor)
 
   if (favicon) setLink('icon', favicon)

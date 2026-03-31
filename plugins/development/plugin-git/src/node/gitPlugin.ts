@@ -48,7 +48,7 @@ export const gitPlugin =
     contributors = true,
     changelog = false,
     filter,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // oxlint-disable-next-line typescript/no-deprecated
     transformContributors,
     locales = {},
   }: GitPluginOptions = {}): Plugin =>

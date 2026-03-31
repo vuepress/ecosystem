@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* oxlint-disable no-console */
 import type { Hooks } from 'register-service-worker'
 
 /**

@@ -1,5 +1,5 @@
 // oxlint-disable id-length
-/* eslint-disable @typescript-eslint/no-unsafe-enum-comparison */
+/* oxlint-disable typescript/no-unsafe-enum-comparison */
 import { entries, fromEntries, isArray, keys } from '@vuepress/helper'
 import { load } from 'cheerio'
 import type { AnyNode, Element } from 'domhandler'

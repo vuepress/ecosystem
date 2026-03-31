@@ -21,7 +21,7 @@ export const getSEOAuthor = (
 
     if (isSEOAuthor(author)) return [author]
 
-    // eslint-disable-next-line no-console
+    // oxlint-disable-next-line no-console
     console.error(
       `Expect "author" to be \`AuthorInfo[] | AuthorInfo | string[] | string | undefined\`, but got`,
       author,

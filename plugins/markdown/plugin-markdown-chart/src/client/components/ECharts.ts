@@ -26,7 +26,7 @@ interface EChartsConfig {
   option: EChartsOption
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
+// oxlint-disable-next-line typescript/no-empty-function
 const AsyncFunction = (async (): Promise<void> => {}).constructor
 
 const parseEChartsConfig = (
@@ -36,7 +36,7 @@ const parseEChartsConfig = (
   instance: EChartsType,
 ): Promise<EChartsConfig> => {
   if (type === 'js') {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, new-cap
+    // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-call, new-cap
     const runner = AsyncFunction(
       'echarts',
       'myChart',
@@ -50,7 +50,7 @@ return __echarts_config__;
 `,
     )
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    // oxlint-disable-next-line typescript/no-unsafe-call
     return runner(echarts, instance) as Promise<EChartsConfig>
   }
 

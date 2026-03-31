@@ -32,11 +32,11 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  */
 export const tocPlugin = ({
   componentName = 'Toc',
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  // oxlint-disable-next-line typescript/no-deprecated
   headerOptions = {},
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  // oxlint-disable-next-line typescript/no-deprecated
   defaultPropsOptions,
-  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  // oxlint-disable-next-line typescript/no-deprecated
   propsOptions = {},
   // oxlint-disable-next-line typescript/no-deprecated
   headersOptions = headerOptions,

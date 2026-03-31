@@ -85,7 +85,7 @@ export const echarts: PluginWithOptions<EChartsPluginOptions> = (
       let isJavaScript = false
       let isInAllowList = false
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+      // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
       const filePathRelative: string = env?.filePathRelative ?? ''
 
       for (let i = index; i < tokens.length; i++) {
@@ -93,7 +93,7 @@ export const echarts: PluginWithOptions<EChartsPluginOptions> = (
 
         if (type === 'container_echarts_close') {
           if (isJavaScript && !isInAllowList) {
-            // eslint-disable-next-line no-console
+            // oxlint-disable-next-line no-console
             console.warn(
               `\
 ${colors.magenta('[echarts]')}: JavaScript in echarts block is found in ${colors.cyan(filePathRelative)}, ${colors.red('it is ignored for security reasons')}.

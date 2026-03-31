@@ -48,11 +48,11 @@ export const getSearchResults = (
 
   const results = search(localeIndex, query, {
     boost: {
-      // eslint-disable-next-line no-useless-computed-key
+      // oxlint-disable-next-line no-useless-computed-key
       [/** Heading */ 'h']: 2,
-      // eslint-disable-next-line no-useless-computed-key
+      // oxlint-disable-next-line no-useless-computed-key
       [/** Text */ 't']: 1,
-      // eslint-disable-next-line no-useless-computed-key
+      // oxlint-disable-next-line no-useless-computed-key
       [/** CustomFields */ 'c']: 4,
     },
     prefix: true,
@@ -144,7 +144,7 @@ export const getSearchResults = (
           | PageIndexItem
           | undefined
 
-        // eslint-disable-next-line no-param-reassign
+        // oxlint-disable-next-line no-param-reassign
         if (pageIndex) title = pageIndex.h
       }
 

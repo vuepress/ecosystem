@@ -20,7 +20,7 @@ export const normalizeRules = (
   if (!options) return []
 
   if (typeof options === 'string' || isFunction(options)) {
-    // eslint-disable-next-line no-param-reassign
+    // oxlint-disable-next-line no-param-reassign
     options = {
       all: options,
     }
