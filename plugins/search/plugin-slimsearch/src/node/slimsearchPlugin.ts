@@ -93,7 +93,7 @@ export const slimsearchPlugin =
         if (isBuild) store.clear()
       },
 
-      onPageUpdated: async (_, type, page) => {
+      onPageUpdated: async (_, type, newPage, oldPage) => {
         if (!(options.hotReload ?? app.env.isDebug)) return
 
         if (type === 'delete') {
@@ -101,7 +101,7 @@ export const slimsearchPlugin =
             app,
             searchIndexStore!,
             store,
-            page as Page<{ excerpt?: string }>,
+            oldPage as Page<{ excerpt?: string }>,
           )
         } else {
           await updateSearchIndex(
@@ -109,7 +109,7 @@ export const slimsearchPlugin =
             options,
             searchIndexStore!,
             store,
-            page as Page<{ excerpt?: string }>,
+            newPage as Page<{ excerpt?: string }>,
           )
         }
       },

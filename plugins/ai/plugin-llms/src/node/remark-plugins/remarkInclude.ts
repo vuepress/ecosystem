@@ -221,7 +221,7 @@ const resolveLink = (
     if (node.type === 'html') {
       // include env start
       if (node.value.startsWith('<!-- #include-env-start: ')) {
-        const matched = node.value.match(SYNTAX_PUSH_RE)
+        const matched = SYNTAX_PUSH_RE.exec(node.value)
         if (matched) stack.push(matched[1])
         node.value = ''
       }

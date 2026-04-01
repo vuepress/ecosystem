@@ -77,13 +77,13 @@ export const remarkImportCode =
         // @[code]()
         if (content.length <= 9) return
 
-        const matched = content.match(SYNTAX_RE)
+        const matched = SYNTAX_RE.exec(content)
         if (!matched?.groups) return
 
         const lineSingle = parseLineNumber(matched.groups.lineSingle)
         const importPath = handleImportPath(matched.groups.importPath)
         const info = matched.groups.info || path.extname(importPath).slice(1)
-        const lang = info.match(/^([^ :[{]+)/)?.[1] || ''
+        const lang = /^([^ :[{]+)/.exec(info)?.[1] || ''
 
         const options: ImportCodeInfo = {
           lineStart:

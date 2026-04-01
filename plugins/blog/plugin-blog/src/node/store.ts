@@ -14,7 +14,7 @@ export class Store {
    *
    * 页面路径到索引的映射，实现 O(1) 查找
    */
-  private pathToIndex: Map<string, number>
+  private readonly pathToIndex: Map<string, number>
 
   /**
    * Array of page paths indexed by store index
@@ -28,7 +28,7 @@ export class Store {
    *
    * 可供复用的空闲位置栈
    */
-  private freeSlots: number[]
+  private readonly freeSlots: number[]
 
   public constructor() {
     this.pathToIndex = new Map()

@@ -9,7 +9,7 @@ const MARKDOWN_TITLE_REGEXP = /^#[^#][\s]*(.+?)#*?$/m
  * @returns Extracted title or undefined if not found
  */
 export const extractTitle = (markdown: string): string | undefined => {
-  const matches = markdown.match(MARKDOWN_TITLE_REGEXP)
+  const matches = MARKDOWN_TITLE_REGEXP.exec(markdown)
   if (matches?.length) return matches.pop()?.trim()
 
   return undefined

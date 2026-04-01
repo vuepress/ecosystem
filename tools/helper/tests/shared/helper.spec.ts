@@ -25,7 +25,6 @@ it('isDef', () => {
   expect(isDef([])).toBe(true)
   expect(isDef({})).toBe(true)
   expect(isDef(null)).toBe(true)
-  // oxlint-disable-next-line unicorn/no-useless-undefined
   expect(isDef(undefined)).toBe(false)
   expect(isDef(void 0)).toBe(false)
 })

@@ -22,10 +22,7 @@ export const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz', 10)
  * @returns Resolved language / 解析的语言
  */
 export const resolveLanguage = (info: string): string =>
-  info
-    .match(/^([^ :[{]+)/)?.[1]
-    ?.replace(VUE_RE, '')
-    .toLowerCase() ?? ''
+  /^([^ :[{]+)/.exec(info)?.[1]?.replace(VUE_RE, '').toLowerCase() ?? ''
 
 /**
  * Convert attributes to line options
@@ -49,9 +46,8 @@ export const resolveLanguage = (info: string): string =>
  * @returns Line options array / 行选项数组
  */
 export const attrsToLines = (attrs: string): TransformerCompactLineOption[] => {
-  const attrsContent = attrs
-    .replaceAll(/:\S+/g, '')
-    .match(/[\d,-]+\s*$/)?.[0]
+  const attrsContent = /[\d,-]+\s*$/
+    .exec(attrs.replaceAll(/:\S+/g, ''))?.[0]
     ?.trim()
   const result: number[] = []
 

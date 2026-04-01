@@ -5,6 +5,8 @@ import type { WalineLocaleData } from '../shared/index.js'
 /**
  * Default locale info for Waline
  */
+// FIXME: https://github.com/oxc-project/tsgolint/issues/861
+// oxlint-disable-next-line typescript/no-unnecessary-type-arguments
 export const walineLocalesInfo: DefaultLocaleInfo<WalineLocaleData> = [
   [
     ['en', 'en-US'],
