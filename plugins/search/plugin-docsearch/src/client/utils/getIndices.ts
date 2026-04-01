@@ -1,14 +1,15 @@
 import type { DocSearchIndex } from '@docsearch/react'
 import { isString } from 'vuepress/shared'
+
 import type { DocSearchOptions } from '../../shared/index.js'
 import { getFacetFiltersWithLang } from './getFacetFilters.js'
 
 export const getIndices = (
   {
     indices,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // oxlint-disable-next-line typescript/no-deprecated
     indexName,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // oxlint-disable-next-line typescript/no-deprecated
     searchParameters,
   }: Pick<DocSearchOptions, 'indexName' | 'indices' | 'searchParameters'>,
   lang: string,

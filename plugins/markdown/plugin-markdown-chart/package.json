@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-chart",
-  "version": "2.0.0-rc.125",
+  "version": "2.0.0-rc.127",
   "description": "VuePress plugin - markdown chart",
   "keywords": [
     "chart",
@@ -56,8 +56,8 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/plugin-container": "^0.23.1",
-    "@mdit/plugin-plantuml": "^0.24.1",
+    "@mdit/plugin-container": "^0.23.2",
+    "@mdit/plugin-plantuml": "^0.24.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vue": "catalog:"

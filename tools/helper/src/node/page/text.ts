@@ -2,6 +2,7 @@
 import { isHTMLTag } from '@vue/shared'
 import type { AnyNode } from 'domhandler'
 import type { App, Page } from 'vuepress/core'
+
 import { isArray } from '../../shared/index.js'
 import { cheerio } from './utils.js'
 
@@ -183,7 +184,7 @@ export const getPageText = (
   { options: { base } }: App,
   {
     contentRendered,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // oxlint-disable-next-line typescript/no-explicit-any
   }: Page<Record<string, any>, Record<string, any>, Record<string, any>>,
   options: PageTextOptions = {},
 ): string => getText(contentRendered, base, options)

@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+
 import { writeSourceMarkdown } from '../../utils/source'
 
 const restoreMarkdownContent = async (): Promise<void> => {

@@ -4,6 +4,7 @@ import {
   customizeDevServer,
 } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
+
 import { generateManifest } from './generateManifest.js'
 import { generateServiceWorker } from './generateServiceWorker.js'
 import { getManifest } from './getManifest.js'

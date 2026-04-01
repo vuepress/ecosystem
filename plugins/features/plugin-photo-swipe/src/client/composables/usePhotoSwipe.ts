@@ -4,6 +4,7 @@ import type PhotoSwipe from 'photoswipe'
 import type { SlideData } from 'photoswipe'
 import { computed, onMounted, onUnmounted } from 'vue'
 import { useFrontmatter } from 'vuepress/client'
+
 import type { PhotoSwipePluginLocaleData } from '../../shared/index.js'
 import { usePhotoSwipeOptions } from '../helpers/index.js'
 import type { PhotoSwipeBehaviorOptions } from '../typings.js'

@@ -5,6 +5,7 @@ import {
 } from '@vuepress/helper'
 import type { Page, PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
+
 import type {
   CopyrightInfoData,
   CopyrightPluginPageData,

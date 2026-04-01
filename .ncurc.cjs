@@ -4,7 +4,8 @@ module.exports = defineConfig({
   workspaces: true,
   upgrade: true,
   timeout: 60000,
-  peer: true,
+  // FIXME: https://github.com/raineorshine/npm-check-updates/issues/1604
+  // peer: true,
   target: (name) => {
     if (
       name.startsWith('@vuepress/') ||

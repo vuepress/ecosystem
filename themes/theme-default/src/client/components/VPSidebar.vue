@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import type { Slot } from '@vuepress/helper/client'
+
 import VPNavbarItems from '@theme/VPNavbarItems.vue'
 import VPSidebarItems from '@theme/VPSidebarItems.vue'
-import type { Slot } from '@vuepress/helper/client'
 
 defineSlots<{
   top?: Slot

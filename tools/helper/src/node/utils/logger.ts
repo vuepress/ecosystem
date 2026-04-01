@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* oxlint-disable no-console */
 import { colors, ora } from 'vuepress/utils'
 
 type Ora = ReturnType<typeof ora>

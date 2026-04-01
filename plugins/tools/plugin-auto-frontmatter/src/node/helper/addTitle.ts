@@ -1,4 +1,5 @@
 import path from 'node:path'
+
 import type { AutoFrontmatterContext, AutoFrontmatterData } from '../types.js'
 
 /**

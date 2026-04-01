@@ -11,6 +11,7 @@ import {
 } from 'vuepress/cli'
 import { createBuildApp } from 'vuepress/core'
 import { fs, logger, path } from 'vuepress/utils'
+
 import pkg from '../../package.json' with { type: 'json' }
 import { getRedirectHTML } from '../node/generate/getRedirectHTML.js'
 

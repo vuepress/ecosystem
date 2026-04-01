@@ -117,6 +117,8 @@ export const removeSearchIndex = async (
 
   await vacuum(localeSearchIndex)
 
+  store.deletePath(page.path)
+
   // Search index file content
   const content = `\
 export default ${JSON.stringify(JSON.stringify(localeSearchIndex))}

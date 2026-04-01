@@ -1,6 +1,5 @@
 {
   "recommendations": [
-    "dbaeumer.vscode-eslint",
     "oxc.oxc-vscode",
     "mrmlnc.vscode-scss",
     "ms-playwright.playwright",

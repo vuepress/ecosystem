@@ -1,5 +1,6 @@
 import { addViteSsrNoExternal, getFullLocaleConfig } from '@vuepress/helper'
 import type { Page, PluginFunction } from 'vuepress/core'
+
 import type { ReadingTime } from '../shared/index.js'
 import { getReadingTime } from './getReadingTime.js'
 import { readingTimeLocaleInfo } from './locales.js'

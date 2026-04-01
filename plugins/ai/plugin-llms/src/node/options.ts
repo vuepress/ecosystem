@@ -1,5 +1,6 @@
 import type { LiteralUnion } from '@vuepress/helper'
 import type { Page } from 'vuepress'
+
 import type { TemplateGetterOptions } from './types'
 
 export interface LlmsPluginOptions {

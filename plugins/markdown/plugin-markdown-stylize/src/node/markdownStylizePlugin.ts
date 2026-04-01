@@ -10,6 +10,7 @@ import { deepAssign } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import type { MarkdownEnv } from 'vuepress/markdown'
 import { isPlainObject } from 'vuepress/shared'
+
 import type { MarkdownStylizePluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 

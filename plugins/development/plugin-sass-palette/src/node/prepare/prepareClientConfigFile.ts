@@ -1,4 +1,5 @@
 import type { App } from 'vuepress/core'
+
 import { getIdPrefix } from '../utils.js'
 
 export const prepareClientConfigFile = (

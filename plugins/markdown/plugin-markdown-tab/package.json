@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-tab",
-  "version": "2.0.0-rc.125",
+  "version": "2.0.0-rc.127",
   "description": "VuePress plugin - markdown tab",
   "keywords": [
     "markdown",
@@ -49,7 +49,7 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/plugin-tab": "^0.24.1",
+    "@mdit/plugin-tab": "^0.24.2",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",

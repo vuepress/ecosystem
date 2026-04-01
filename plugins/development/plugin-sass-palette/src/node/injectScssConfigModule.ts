@@ -10,6 +10,7 @@ import {
   mergeViteConfig,
 } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
+
 import { getIdPrefix } from './utils.js'
 
 type SassLoaderContext =

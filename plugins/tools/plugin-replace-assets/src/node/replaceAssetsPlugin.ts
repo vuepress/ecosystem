@@ -1,5 +1,6 @@
 import { addViteConfig, configWebpack, getBundlerName } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
+
 import { PLUGIN_NAME } from './constants.js'
 import { normalizeRules } from './normalizeRules.js'
 import type { ReplaceAssetsPluginOptions } from './types.js'

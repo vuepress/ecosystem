@@ -1,8 +1,10 @@
-import { store } from '@temp/blog/store'
-import { typesMap } from '@temp/blog/type'
 import type { ComputedRef } from 'vue'
 import { computed, readonly, shallowRef } from 'vue'
 import { resolveRoute, useData } from 'vuepress/client'
+
+import { store } from '@temp/blog/store'
+import { typesMap } from '@temp/blog/type'
+
 import type {
   BlogTypeFrontmatterOptions,
   TypesMap,
@@ -45,7 +47,7 @@ export const useBlogType = <
     const mapKey = key ?? frontmatter.value.blog?.key ?? ''
 
     if (!mapKey) {
-      // eslint-disable-next-line no-console
+      // oxlint-disable-next-line no-console
       console.warn(`useBlogType: key not found`)
 
       // Fallback data

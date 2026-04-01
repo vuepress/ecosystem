@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+
 import { stripExt } from '../src/node/utils/stripExt.js'
 
 describe(stripExt, () => {

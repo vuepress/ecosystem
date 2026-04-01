@@ -1,4 +1,5 @@
 import type { App } from 'vuepress/core'
+
 import type { CategoriesMap } from '../../shared/index.js'
 
 const HMR_CODE = `

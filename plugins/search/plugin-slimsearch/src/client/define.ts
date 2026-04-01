@@ -1,4 +1,5 @@
 import type { ExactLocaleConfig, KeyOptions } from '@vuepress/helper/client'
+
 import type {
   SlimSearchCustomFieldFormatter,
   SlimSearchLocaleData,

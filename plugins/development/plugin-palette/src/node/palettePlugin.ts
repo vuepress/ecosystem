@@ -1,6 +1,7 @@
 import { addViteConfig, chainWebpack } from '@vuepress/helper'
 import { watch } from 'chokidar'
 import type { Plugin } from 'vuepress/core'
+
 import { preparePaletteFile } from './preparePaletteFile.js'
 import { prepareStyleFile } from './prepareStyleFile.js'
 import { presetOptions } from './presetOptions.js'
@@ -112,12 +113,12 @@ export const palettePlugin = ({
         .use('sass-loader')
         .tap((loaderOptions) => ({
           ...loaderOptions,
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+          // oxlint-disable-next-line typescript/no-unsafe-assignment
           sassOptions: {
             ...loaderOptions.sassOptions,
             silenceDeprecations: [
               'import',
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+              // oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/no-unsafe-member-access
               ...(loaderOptions.sassOptions?.silenceDeprecations ?? []),
             ],
           },

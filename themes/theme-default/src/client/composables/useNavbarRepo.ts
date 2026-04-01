@@ -1,8 +1,10 @@
-import { resolveRepoType } from '@theme/resolveRepoType'
-import { useData } from '@theme/useData'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import { isLinkHttp } from 'vuepress/shared'
+
+import { resolveRepoType } from '@theme/resolveRepoType'
+import { useData } from '@theme/useData'
+
 import type { NavbarItem } from '../typings.js'
 
 /**

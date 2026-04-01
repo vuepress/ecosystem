@@ -1,6 +1,7 @@
 import { watch } from 'chokidar'
 import type { Plugin } from 'vuepress/core'
 import { path, picomatch, tinyglobby } from 'vuepress/utils'
+
 import {
   findRule,
   generateFileFrontmatter,

@@ -1,4 +1,5 @@
 import { createRequire } from 'node:module'
+
 import type {
   BundledLanguage,
   BundledTheme,
@@ -10,6 +11,7 @@ import { createHighlighter, isSpecialLang } from 'shiki'
 import { createSyncFn } from 'synckit'
 import type { App } from 'vuepress'
 import { isPlainObject } from 'vuepress/shared'
+
 import type { ShikiPluginOptions } from '../../options.js'
 import type { ShikiResolveLang } from '../../resolveLang.js'
 import { vPreTransformer } from '../../transformers/vuepressTransformers.js'

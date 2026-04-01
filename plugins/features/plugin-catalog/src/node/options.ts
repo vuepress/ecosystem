@@ -1,4 +1,5 @@
 import type { LocaleConfig, PageFrontmatter } from 'vuepress/shared'
+
 import type { CatalogPluginLocaleData } from '../shared/index.js'
 
 export interface CatalogPluginOptions {

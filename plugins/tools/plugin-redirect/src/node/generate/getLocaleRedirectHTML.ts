@@ -1,4 +1,5 @@
 import { removeEndingSlash } from '@vuepress/helper'
+
 import type { RedirectBehaviorConfig } from '../../shared/index.js'
 
 export const getLocaleRedirectHTML = (

@@ -7,6 +7,7 @@ import {
 } from '@vueuse/core'
 import { computed, nextTick } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
+
 import type { CopyCodePluginLocaleConfig } from '../types.js'
 
 import '@vuepress/helper/message.css'

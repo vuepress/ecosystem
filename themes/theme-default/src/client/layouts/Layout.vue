@@ -1,15 +1,16 @@
 <script setup lang="ts">
+import type { Slot } from '@vuepress/helper/client'
+import { computed, ref } from 'vue'
+import { onContentUpdated } from 'vuepress/client'
+
+import { useData } from '@theme/useData'
+import { useScrollPromise } from '@theme/useScrollPromise'
+import { useSidebarItems } from '@theme/useSidebarItems'
 import VPFadeSlideYTransition from '@theme/VPFadeSlideYTransition.vue'
 import VPHome from '@theme/VPHome.vue'
 import VPNavbar from '@theme/VPNavbar.vue'
 import VPPage from '@theme/VPPage.vue'
 import VPSidebar from '@theme/VPSidebar.vue'
-import { useData } from '@theme/useData'
-import { useScrollPromise } from '@theme/useScrollPromise'
-import { useSidebarItems } from '@theme/useSidebarItems'
-import type { Slot } from '@vuepress/helper/client'
-import { computed, ref } from 'vue'
-import { onContentUpdated } from 'vuepress/client'
 
 defineSlots<{
   'navbar'?: Slot

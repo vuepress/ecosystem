@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-auto-frontmatter",
-  "version": "2.0.0-rc.125",
+  "version": "2.0.0-rc.127",
   "description": "VuePress plugin - auto-frontmatter",
   "keywords": [
     "auto-frontmatter",
@@ -49,9 +49,9 @@
     "chokidar": "catalog:",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.1",
-    "nanoid": "^5.1.6",
+    "nanoid": "^5.1.7",
     "p-map": "^7.0.4",
-    "picomatch": "^4.0.3"
+    "picomatch": "^4.0.4"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",

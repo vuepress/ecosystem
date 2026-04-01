@@ -1,7 +1,7 @@
 import { isMobile } from '@vuepress/helper/client'
-
 import FloatingVue, { recomputeAllPoppers } from 'floating-vue'
 import type { App } from 'vue'
+
 import 'floating-vue/dist/style.css'
 
 /**

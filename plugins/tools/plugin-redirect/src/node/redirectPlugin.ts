@@ -5,6 +5,7 @@ import {
 } from '@vuepress/helper'
 import type { PluginFunction } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
+
 import { ensureRootHomePage } from './ensureRootHomePage.js'
 import {
   generateAutoLocaleRedirectFiles,

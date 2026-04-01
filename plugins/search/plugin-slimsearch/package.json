@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-slimsearch",
-  "version": "2.0.0-rc.125",
+  "version": "2.0.0-rc.127",
   "description": "VuePress plugin - built-in slimsearch",
   "keywords": [
     "plugin",
@@ -59,7 +59,7 @@
     "vue": "catalog:"
   },
   "devDependencies": {
-    "domhandler": "5.0.3"
+    "domhandler": "6.0.1"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

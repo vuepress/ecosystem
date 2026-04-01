@@ -1,4 +1,5 @@
 import type { LocaleConfig } from 'vuepress/shared'
+
 import type { PhotoSwipePluginLocaleData } from '../shared/index.js'
 
 export interface PhotoSwipePluginOptions {

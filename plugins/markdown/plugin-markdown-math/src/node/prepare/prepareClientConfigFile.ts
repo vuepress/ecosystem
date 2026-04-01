@@ -1,5 +1,6 @@
 import { getModulePath } from '@vuepress/helper'
 import type { App } from 'vuepress'
+
 import type {
   MarkdownKatexPluginOptions,
   MarkdownMathPluginOptions,

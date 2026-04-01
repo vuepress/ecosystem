@@ -1,4 +1,5 @@
 import { spawnSync } from 'node:child_process'
+
 import { select } from '@inquirer/prompts'
 
 const checkPnpmInstalled = (): boolean => {

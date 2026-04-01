@@ -1,5 +1,6 @@
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
+
 import { llmOnlyPlugin } from '../src/node/markdown-it-plugins/llm-only'
 
 describe('@vuepress/plugin-llms > llmOnlyPlugin', () => {

@@ -153,7 +153,7 @@ export const nprogress: NProgress = {
       SETTINGS.barSelector,
     )!
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    // oxlint-disable-next-line typescript/no-unused-expressions
     nprogressElement.offsetWidth /* Repaint */
 
     queue((next) => {
@@ -169,7 +169,7 @@ export const nprogress: NProgress = {
           transition: 'none',
           opacity: '1',
         })
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        // oxlint-disable-next-line typescript/no-unused-expressions
         nprogressElement.offsetWidth /* Repaint */
 
         setTimeout(() => {

@@ -1,5 +1,6 @@
 import { ensureEndingSlash, ensureLeadingSlash } from '@vuepress/helper'
 import { customAlphabet } from 'nanoid'
+
 import type { AutoFrontmatterData } from '../types.js'
 
 interface AddShortPermalinkOptions {

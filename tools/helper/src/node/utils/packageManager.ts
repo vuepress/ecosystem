@@ -1,4 +1,5 @@
 import { spawnSync } from 'node:child_process'
+
 import { fs, path } from 'vuepress/utils'
 
 export type PackageManager = 'bun' | 'npm' | 'pnpm' | 'yarn'

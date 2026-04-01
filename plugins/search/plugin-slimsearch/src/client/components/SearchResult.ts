@@ -14,8 +14,8 @@ import { customFieldConfig, locales } from '../define.js'
 import { CLOSE_ICON } from '../icons/index.js'
 import type { MatchedItem, Word } from '../typings/index.js'
 import { getResultPath } from '../utils/index.js'
-import { SearchLoading } from './SearchLoading.js'
 import { HeadingIcon, HeartIcon, HistoryIcon, TitleIcon } from './icons.js'
+import { SearchLoading } from './SearchLoading.js'
 
 import '../styles/search-result.scss'
 

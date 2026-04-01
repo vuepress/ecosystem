@@ -8,6 +8,7 @@ import {
 } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { colors } from 'vuepress/utils'
+
 import type { RedirectBehaviorConfig } from '../shared/index.js'
 import { logger } from './logger.js'
 import type { RedirectPluginOptions } from './types/index.js'

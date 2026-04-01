@@ -1,5 +1,6 @@
 import type { GitPluginPageData } from '@vuepress/plugin-git'
 import type { Page, PluginObject } from 'vuepress/core'
+
 import { appendDateToPage } from './appendDate.js'
 import { isGitPluginEnabled } from './checkGitPlugin.js'
 import { PLUGIN_NAME } from './logger.js'

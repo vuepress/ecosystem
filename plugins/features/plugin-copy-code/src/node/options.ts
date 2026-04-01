@@ -1,4 +1,5 @@
 import type { LocaleConfig } from 'vuepress/shared'
+
 import type { CopyCodePluginLocaleData } from '../shared/index.js'
 
 export interface CopyCodePluginOptions {

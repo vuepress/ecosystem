@@ -1,5 +1,6 @@
 import { defineEChartsConfig } from '@vuepress/plugin-markdown-chart/client'
 import { defineClientConfig } from 'vuepress/client'
+
 import CommentPage from './layouts/CommentPage.vue'
 
 defineEChartsConfig({

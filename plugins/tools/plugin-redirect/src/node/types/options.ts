@@ -1,4 +1,5 @@
 import type { App, LocaleConfig } from 'vuepress/core'
+
 import type {
   RedirectBehaviorOptions,
   RedirectPluginLocaleData,

@@ -1,5 +1,6 @@
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
+
 import { fileTree } from '../src/node/fileTree.js'
 
 describe(fileTree, () => {

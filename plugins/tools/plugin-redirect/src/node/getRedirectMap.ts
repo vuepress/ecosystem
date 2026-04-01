@@ -6,6 +6,7 @@ import {
   isPlainObject,
 } from '@vuepress/helper'
 import type { App, Page } from 'vuepress/core'
+
 import { normalizePath } from '../shared/normalizePath.js'
 import type {
   RedirectPluginFrontmatter,

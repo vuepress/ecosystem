@@ -15,7 +15,7 @@ export const codeTabs: PluginSimple = (md) => {
     name: 'code-tabs',
 
     openRender: ({ active, data }, tokens, index) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      // oxlint-disable-next-line typescript/no-unsafe-assignment
       const { meta } = tokens[index]
       const titles = data.map(({ title }) => md.renderInline(title))
       const tabsData = data.map((item, dataIndex) => {
@@ -27,7 +27,7 @@ export const codeTabs: PluginSimple = (md) => {
       return `<CodeTabs :data='${stringifyProp(tabsData)}'${
         active === -1 ? '' : ` :active="${active}"`
       }${
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        // oxlint-disable-next-line typescript/no-unsafe-member-access
         meta.id ? ` tab-id="${meta.id as string}"` : ''
       }>
 ${titles

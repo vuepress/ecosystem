@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import type { Bundler } from 'vuepress/core'
 import { createBuildApp } from 'vuepress/core'
 import { path } from 'vuepress/utils'
+
 import { getFullLocaleConfig } from '../../src/node/locales/getFullLocaleConfig.js'
 import type { DefaultLocaleInfo } from '../../src/node/locales/types.js'
 import { emptyTheme } from '../__fixtures__/theme/empty.js'

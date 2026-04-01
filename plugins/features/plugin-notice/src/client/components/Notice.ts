@@ -10,6 +10,7 @@ import {
   ref,
 } from 'vue'
 import { useRoutePath, useRouter } from 'vuepress/client'
+
 import { useNoticeOptions } from '../composables/index.js'
 import { CloseIcon } from './CloseIcon.js'
 

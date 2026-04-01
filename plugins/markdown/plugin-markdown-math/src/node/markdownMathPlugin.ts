@@ -10,6 +10,7 @@ import {
 import type { Plugin } from 'vuepress/core'
 import type { MarkdownEnv } from 'vuepress/markdown'
 import { colors, logger } from 'vuepress/utils'
+
 import type {
   MarkdownKatexPluginOptions,
   MarkdownMathPluginOptions,

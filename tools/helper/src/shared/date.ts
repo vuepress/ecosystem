@@ -18,7 +18,7 @@ export const getDate = (input: unknown): Date | null => {
   if (input) {
     if (typeof input === 'number') return new Date(input)
 
-    // eslint-disable-next-line @typescript-eslint/no-base-to-string
+    // oxlint-disable-next-line typescript/no-base-to-string
     const date = Date.parse(input.toString())
 
     if (!Number.isNaN(date)) return new Date(date)

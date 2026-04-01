@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/helper",
-  "version": "2.0.0-rc.125",
+  "version": "2.0.0-rc.127",
   "description": "VuePress helper",
   "keywords": [
     "bundler-helper",
@@ -79,7 +79,7 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@vue/shared": "^3.5.30",
+    "@vue/shared": "^3.5.31",
     "@vueuse/core": "catalog:",
     "cheerio": "^1.2.0",
     "fflate": "^0.8.2",
@@ -90,8 +90,8 @@
     "@types/connect": "3.4.38",
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
-    "domhandler": "5.0.3",
-    "vite": "8.0.0-beta.18"
+    "domhandler": "6.0.1",
+    "vite": "8.0.3"
   },
   "peerDependencies": {
     "@vuepress/bundler-vite": "catalog:",

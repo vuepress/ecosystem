@@ -3,6 +3,7 @@ import type {
   WebpackChainConfig,
 } from '@vuepress/bundler-webpack'
 import type { App } from 'vuepress/core'
+
 import { getBundlerName } from '../getBundlerName.js'
 
 /**

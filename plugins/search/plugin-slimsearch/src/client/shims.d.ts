@@ -15,7 +15,7 @@ declare module '@temp/slimsearch/index.js' {
 }
 
 declare module '@temp/slimsearch/store.js' {
-  export const store: string[]
+  export const store: Record<number, string>
 }
 
 declare module '@temp/slimsearch/worker-options.js' {

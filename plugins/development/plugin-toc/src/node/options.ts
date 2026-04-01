@@ -1,4 +1,5 @@
 import type { GetHeadersOptions } from '@vuepress/helper'
+
 import type { TocRenderOptions } from '../shared/index.js'
 
 /**

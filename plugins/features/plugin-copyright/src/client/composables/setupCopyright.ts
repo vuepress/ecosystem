@@ -10,6 +10,7 @@ import {
 import { useEventListener } from '@vueuse/core'
 import { computed, onMounted, watchEffect } from 'vue'
 import { useFrontmatter, usePage } from 'vuepress/client'
+
 import type {
   CopyrightPluginFrontmatter,
   CopyrightPluginLocaleData,

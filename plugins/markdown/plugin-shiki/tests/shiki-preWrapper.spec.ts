@@ -11,6 +11,7 @@ import {
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
 import type { App } from 'vuepress'
+
 import type { MarkdownItPreWrapperOptions } from '../src/node/markdown/index.js'
 import {
   createMarkdownFilePathGetter,
@@ -480,6 +481,10 @@ ${genLines(20)}
 ${codeFence}
 
 ${codeFence}ts :no-collapsed-lines=12
+${genLines(20)}
+${codeFence}
+
+${codeFence}ts :no-line-numbers :collapsed-lines=12
 ${genLines(20)}
 ${codeFence}
 `

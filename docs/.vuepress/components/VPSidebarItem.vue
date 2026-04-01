@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import VPAutoLink from '@theme/VPAutoLink.vue'
-import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
-import { isActiveSidebarItem } from '@theme/isActiveSidebarItem'
 import type {
   SidebarGroupItem,
   SidebarItem,
@@ -9,6 +6,10 @@ import type {
 import { useToggle } from '@vueuse/core'
 import { computed, nextTick, onBeforeUnmount } from 'vue'
 import { useRoute, useRouter } from 'vuepress/client'
+
+import { isActiveSidebarItem } from '@theme/isActiveSidebarItem'
+import VPAutoLink from '@theme/VPAutoLink.vue'
+import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
 
 const { item, depth = 0 } = defineProps<{
   /**

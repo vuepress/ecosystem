@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
+
 import {
   KNOWN_IMAGE_EXTENSIONS,
   KNOWN_MEDIA_EXTENSIONS,

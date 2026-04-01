@@ -29,9 +29,9 @@ import { locales, options } from '../define.js'
 import { useSearchOptions } from '../helpers/index.js'
 import { CLOSE_ICON } from '../icons/index.js'
 import { defaultQuerySplitter } from '../utils/index.js'
+import { SearchIcon } from './icons.js'
 import SearchKeyHints from './SearchKeyHints.js'
 import { SearchLoading } from './SearchLoading.js'
-import { SearchIcon } from './icons.js'
 
 import '../styles/search-modal.scss'
 

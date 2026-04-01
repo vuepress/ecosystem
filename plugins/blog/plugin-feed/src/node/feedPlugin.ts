@@ -2,6 +2,7 @@ import { customizeDevServer, values } from '@vuepress/helper'
 import type { PluginFunction, PluginObject } from 'vuepress/core'
 import { isLinkHttp, removeEndingSlash } from 'vuepress/shared'
 import { colors } from 'vuepress/utils'
+
 import type { FeedPluginOptions } from '../typings/index.js'
 import { addFeedLinks } from './addFeedLinks.js'
 import { getFeedFiles } from './getFeedFiles.js'

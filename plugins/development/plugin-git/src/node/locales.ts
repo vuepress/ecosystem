@@ -1,4 +1,5 @@
 import type { DefaultLocaleInfo } from '@vuepress/helper'
+
 import type { GitLocaleData } from '../shared/index.js'
 
 export const gitLocaleInfo: DefaultLocaleInfo<GitLocaleData> = [

@@ -1,4 +1,5 @@
 import type { App } from 'vuepress/core'
+
 import { getFeedFilenames } from './getFeedFilenames.js'
 import type { ResolvedFeedOptions } from './getFeedOptions.js'
 import { getUrl } from './utils/index.js'

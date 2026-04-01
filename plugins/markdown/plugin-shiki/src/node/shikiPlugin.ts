@@ -12,6 +12,7 @@ import {
 import type { Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import { colors } from 'vuepress/utils'
+
 import { createMarkdownFilePathGetter } from './markdown/highlighter/createMarkdownFilePathGetter.js'
 import type { MarkdownItPreWrapperOptions } from './markdown/index.js'
 import {
@@ -48,7 +49,7 @@ export const shikiPlugin =
   (options: ShikiPluginOptions = {}): Plugin =>
   (app) => {
     // TODO: Remove in stable version
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // oxlint-disable-next-line typescript/no-deprecated
     const { code } = app.options.markdown
     const shikiOptions = {
       ...(isPlainObject(code) ? code : {}),

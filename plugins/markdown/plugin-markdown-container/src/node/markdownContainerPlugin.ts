@@ -2,6 +2,7 @@ import container from 'markdown-it-container'
 import type { Plugin, PluginObject } from 'vuepress/core'
 import { ensureLeadingSlash, resolveLocalePath } from 'vuepress/shared'
 import { colors, logger } from 'vuepress/utils'
+
 import type {
   MarkdownContainerPluginOptions,
   RenderPlaceFunction,

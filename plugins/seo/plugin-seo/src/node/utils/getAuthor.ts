@@ -1,4 +1,5 @@
 import { isArray, isPlainObject, isString } from '@vuepress/helper'
+
 import type { AuthorInfo, SeoAuthor } from '../../typings/index.js'
 
 const isSEOAuthor = (author: unknown): author is SeoAuthor =>
@@ -20,7 +21,7 @@ export const getSEOAuthor = (
 
     if (isSEOAuthor(author)) return [author]
 
-    // eslint-disable-next-line no-console
+    // oxlint-disable-next-line no-console
     console.error(
       `Expect "author" to be \`AuthorInfo[] | AuthorInfo | string[] | string | undefined\`, but got`,
       author,

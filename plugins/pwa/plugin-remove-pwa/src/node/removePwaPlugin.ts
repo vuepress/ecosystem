@@ -1,4 +1,5 @@
 import type { PluginObject } from 'vuepress/core'
+
 import type { RemovePwaPluginOptions } from './options.js'
 import { generateEmptyServiceWorker } from './serviceWorkerContent.js'
 

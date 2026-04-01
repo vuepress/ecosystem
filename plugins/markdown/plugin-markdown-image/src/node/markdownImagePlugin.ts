@@ -6,6 +6,7 @@ import { imgSize, legacyImgSize, obsidianImgSize } from '@mdit/plugin-img-size'
 import { deepAssign } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
+
 import type { MarkdownImagePluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
 import { PLUGIN_NAME } from './utils.js'
@@ -48,7 +49,7 @@ export const markdownImagePlugin =
         if (opts.figure) md.use(figure)
         if (opts.lazyload) md.use(imgLazyload)
         if (opts.size) md.use(imgSize)
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        // oxlint-disable-next-line typescript/no-deprecated
         if (opts.legacySize) md.use(legacyImgSize)
         if (opts.obsidianSize) md.use(obsidianImgSize)
         if (mark) {

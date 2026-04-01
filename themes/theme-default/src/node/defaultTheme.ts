@@ -16,6 +16,7 @@ import { themeDataPlugin } from '@vuepress/plugin-theme-data'
 import type { Page, Theme } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import { fs, getDirname, path } from 'vuepress/utils'
+
 import type {
   DefaultThemeLocaleOptions,
   DefaultThemePageData,

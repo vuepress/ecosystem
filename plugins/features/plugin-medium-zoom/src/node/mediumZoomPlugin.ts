@@ -1,5 +1,6 @@
 import type { Plugin } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
+
 import type { MediumZoomPluginOptions } from './options'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)

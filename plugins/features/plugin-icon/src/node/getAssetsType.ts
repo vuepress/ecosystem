@@ -1,4 +1,5 @@
 import { isArray, isString } from '@vuepress/helper'
+
 import type { IconType } from '../shared/index.js'
 import type { IconAsset, IconPluginOptions } from './options.js'
 

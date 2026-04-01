@@ -1,4 +1,5 @@
 import { isArray, isFunction } from '@vuepress/helper'
+
 import { KNOWN_IMAGE_EXTENSIONS, KNOWN_MEDIA_EXTENSIONS } from './constants.js'
 import type { ReplaceAssetsPluginOptions, ReplacementRule } from './types.js'
 
@@ -19,7 +20,7 @@ export const normalizeRules = (
   if (!options) return []
 
   if (typeof options === 'string' || isFunction(options)) {
-    // eslint-disable-next-line no-param-reassign
+    // oxlint-disable-next-line no-param-reassign
     options = {
       all: options,
     }

@@ -2,6 +2,7 @@ import RedirectComponent from '@vuepress/plugin-redirect/component'
 import { h } from 'vue'
 import type { VNode } from 'vue'
 import { defineClientConfig } from 'vuepress/client'
+
 import type { RedirectBehaviorConfig } from '../shared/index.js'
 import { setupDevServerRedirect, setupRedirect } from './composables/index.js'
 import type { RedirectPluginLocaleConfig } from './types.js'

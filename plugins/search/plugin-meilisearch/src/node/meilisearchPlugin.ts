@@ -7,6 +7,7 @@ import {
 } from '@vuepress/helper'
 import type { Plugin } from 'vuepress'
 import { colors, getDirname, path } from 'vuepress/utils'
+
 import type { MeiliSearchOptions } from '../shared/index.js'
 import { localeInfo } from './locales.js'
 

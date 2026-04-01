@@ -1,5 +1,6 @@
 import type { App } from 'vuepress/core'
 import { colors, fs, path } from 'vuepress/utils'
+
 import { getManifest } from './getManifest.js'
 import { logger } from './logger.js'
 import type { PwaPluginOptions } from './options.js'

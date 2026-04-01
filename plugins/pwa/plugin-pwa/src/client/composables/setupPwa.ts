@@ -1,9 +1,10 @@
 import mitt from 'mitt'
 import { onMounted, provide } from 'vue'
+
 import { forceUpdate } from '../utils/index.js'
+import type { PwaEvent } from './index.js'
 import { pwaEventSymbol } from './usePwaEvent.js'
 import { useRegisterSW } from './useRegisterSW.js'
-import type { PwaEvent } from './index.js'
 
 /**
  * Setup PWA functionality

@@ -1,6 +1,7 @@
 import type { MaybeRef, Ref } from 'vue'
 import { ref, toValue } from 'vue'
 import { onContentUpdated } from 'vuepress/client'
+
 import type { GetHeadersOptions } from '../../shared/index.js'
 import type { HeaderItem } from '../utils/index.js'
 import { getHeaders } from '../utils/index.js'

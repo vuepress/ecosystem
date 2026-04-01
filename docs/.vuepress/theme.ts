@@ -1,4 +1,5 @@
 import { defaultTheme } from '@vuepress/theme-default'
+
 import { navbarEn, navbarZh, sidebarEn, sidebarZh } from './configs/index.js'
 
 export default defaultTheme({

@@ -1,9 +1,10 @@
-/* eslint-disable no-console */
+/* oxlint-disable no-console */
 import { useLocale } from '@vuepress/helper/client'
 import { useEventListener } from '@vueuse/core'
 import type { PropType, VNode } from 'vue'
 import { defineComponent, h, onMounted, shallowRef } from 'vue'
 import { withBase } from 'vuepress/client'
+
 import type { AppManifest } from '../../shared/index.js'
 import type { PwaPluginLocaleConfig } from '../types.js'
 import { ArrowLeftIcon, ArrowRightIcon, CloseIcon } from './icons.js'
@@ -112,7 +113,7 @@ export const PwaInstallModal = defineComponent({
     }
 
     onMounted(() => {
-      // eslint-disable-next-line no-prototype-builtins
+      // oxlint-disable-next-line no-prototype-builtins
       if (window.hasOwnProperty('BeforeInstallPromptEvent')) {
         useEventListener(window, 'beforeinstallprompt', (event) => {
           deferredPrompt.value = event as InstallPromptEvent

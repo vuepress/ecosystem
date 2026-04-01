@@ -1,6 +1,6 @@
-import type { UserConfig, CopyEntry } from 'tsdown'
-import { defineConfig } from 'tsdown'
 import { NodePackageImporter } from 'sass-embedded'
+import type { UserConfig, CopyEntry, TsdownInputOption } from 'tsdown'
+import { defineConfig } from 'tsdown'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -18,9 +18,9 @@ export interface TsdownOptions extends Omit<UserConfig, 'entry' | 'copy'> {
    *
    * 允许被打包的依赖白名单
    *
-   * @default browser ? false : undefined
+   * @default false
    */
-  onlyAllowBundle?: (string | RegExp)[] | false
+  onlyBundle?: (string | RegExp)[] | false
 
   /**
    * Packages to always bundle
@@ -85,16 +85,13 @@ const resolveEntry = (entryItem: string): string =>
  * @returns Tsdown configuration / Tsdown 配置
  */
 export const tsdownConfig = (
-  entryOptions: UserConfig['entry'],
+  entryOptions: TsdownInputOption,
   {
-    alias,
-    define,
-    treeshake,
+    platform = 'node',
     alwaysBundle = [],
     neverBundle = [],
-    onlyAllowBundle = false,
-    platform = 'node',
-    dts = true,
+    onlyBundle = false,
+    treeshake,
     moduleSideEffects,
     copy = [],
     publint = isProduction,
@@ -115,24 +112,20 @@ export const tsdownConfig = (
         : entryOptions
 
   return defineConfig({
-    clean: !isProduction,
     entry,
     format: 'esm',
     outDir: './dist',
     sourcemap: true,
-    dts,
     minify: isProduction,
-    target: ['node20.19', 'chrome107', 'edge107', 'firefox104', 'safari16'],
     platform,
-    define,
-    alias,
+    target: ['node20.19', 'chrome107', 'edge107', 'firefox104', 'safari16'],
     treeshake: treeshake ?? {
       moduleSideEffects: moduleSideEffects ?? defaultModuleSideEffects,
     },
     deps: {
-      alwaysBundle: alwaysBundle,
+      alwaysBundle,
       neverBundle: [/^@internal\//, /^@temp\//, ...neverBundle],
-      onlyAllowBundle: onlyAllowBundle,
+      onlyBundle,
     },
     css: {
       inject: true,
@@ -143,8 +136,6 @@ export const tsdownConfig = (
         },
       },
     },
-    fixedExtension: false,
-    publint,
     copy: copy.map((item) => {
       if (typeof item === 'string') {
         return {
@@ -155,6 +146,8 @@ export const tsdownConfig = (
 
       return item
     }),
+    fixedExtension: false,
+    publint,
     ...rest,
   })
 }

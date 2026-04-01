@@ -5,6 +5,7 @@ import {
   isLinkHttp,
   isString,
 } from '@vuepress/helper'
+
 import { isFontAwesomeLink } from './getAssetsType.js'
 import type { IconAsset } from './options.js'
 import { logger } from './utils.js'

@@ -1,6 +1,6 @@
 import { entries, isArray, isPlainObject } from './helper.js'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// oxlint-disable-next-line typescript/no-explicit-any
 type IAnyObject = Record<string, any>
 
 /**

@@ -46,7 +46,7 @@ export const useResults = (queries: Ref<string[]>): Results => {
             })
             // oxlint-disable-next-line promise/prefer-await-to-callbacks
             .catch((err: unknown) => {
-              // eslint-disable-next-line no-console
+              // oxlint-disable-next-line no-console
               console.warn(err)
               searchingProcessNumber.value -= 1
               if (!searchingProcessNumber.value) results.value = []

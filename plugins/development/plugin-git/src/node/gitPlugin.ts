@@ -2,6 +2,7 @@ import { getFullLocaleConfig } from '@vuepress/helper'
 import type { Page, Plugin } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import { path } from 'vuepress/utils'
+
 import type {
   GitPluginFrontmatter,
   GitPluginPageData,
@@ -48,7 +49,7 @@ export const gitPlugin =
     contributors = true,
     changelog = false,
     filter,
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    // oxlint-disable-next-line typescript/no-deprecated
     transformContributors,
     locales = {},
   }: GitPluginOptions = {}): Plugin =>

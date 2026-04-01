@@ -1,8 +1,10 @@
 import fs from 'node:fs/promises'
+
 import type { FSWatcher } from 'chokidar'
 import { watch } from 'chokidar'
 import type { App } from 'vuepress'
 import { path } from 'vuepress/utils'
+
 import type { NoticeOptions } from '../shared/index.js'
 import { getNoticeOptions } from './getNoticeOptions.js'
 

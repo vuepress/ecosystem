@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-docsearch",
-  "version": "2.0.0-rc.125",
+  "version": "2.0.0-rc.127",
   "description": "VuePress plugin - docsearch",
   "keywords": [
     "algolia",
@@ -48,16 +48,16 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@docsearch/css": "^4.6.0",
-    "@docsearch/js": "^4.6.0",
+    "@docsearch/css": "^4.6.2",
+    "@docsearch/js": "^4.6.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "ts-debounce": "^4.0.0",
     "vue": "catalog:"
   },
   "devDependencies": {
-    "@docsearch/react": "^4.6.0",
-    "algoliasearch": "5.49.2"
+    "@docsearch/react": "^4.6.2",
+    "algoliasearch": "5.50.0"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

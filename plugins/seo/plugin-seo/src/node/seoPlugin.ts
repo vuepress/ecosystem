@@ -1,5 +1,6 @@
 import type { Plugin, PluginFunction } from 'vuepress/core'
 import { colors } from 'vuepress/utils'
+
 import type { ExtendPage } from '../typings/index.js'
 import { appendSEO } from './appendSEO.js'
 import { generateDescription } from './generateDescription.js'

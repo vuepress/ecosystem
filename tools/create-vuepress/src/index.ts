@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { createCommand } from 'commander'
+
 import { mainAction } from './action.js'
 import { version } from './utils/index.js'
 

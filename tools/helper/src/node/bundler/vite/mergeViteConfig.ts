@@ -1,7 +1,7 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* oxlint-disable no-param-reassign */
+/* oxlint-disable typescript/no-unsafe-argument */
+/* oxlint-disable typescript/no-unsafe-assignment */
+/* oxlint-disable typescript/no-explicit-any */
 /**
 Types from https://github.com/rollup/plugins/blob/master/packages/alias/types/index.d.ts
 Inlined because the plugin is bundled.
@@ -123,7 +123,7 @@ const mergeAlias = (
   if (!overrides) return defaults
 
   if (isObject(defaults) && isObject(overrides))
-    // eslint-disable-next-line @typescript-eslint/no-misused-spread
+    // oxlint-disable-next-line typescript/no-misused-spread
     return { ...defaults, ...overrides }
 
   // the order is flipped because the alias is resolved from top-down,

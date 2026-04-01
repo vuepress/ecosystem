@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+
 import { getDate } from '../../src/shared/date.js'
 
 describe('getDate()', () => {

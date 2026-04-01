@@ -1,4 +1,5 @@
 import type { Markdown } from 'vuepress/markdown'
+
 import { resolveLanguage } from '../utils/index.js'
 
 export interface MarkdownItPreWrapperOptions {

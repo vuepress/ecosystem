@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-register-components",
-  "version": "2.0.0-rc.125",
+  "version": "2.0.0-rc.126",
   "description": "VuePress plugin - register-components",
   "keywords": [
     "component",
@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "chokidar": "catalog:",
-    "picomatch": "^4.0.3"
+    "picomatch": "^4.0.4"
   },
   "devDependencies": {
     "@types/picomatch": "^4.0.2"

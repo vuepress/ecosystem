@@ -1,5 +1,6 @@
 import type { Page } from 'vuepress/core'
 import type { LocaleConfig } from 'vuepress/shared'
+
 import type {
   CopyrightPluginLocaleData,
   CopyrightPluginSharedOptions,

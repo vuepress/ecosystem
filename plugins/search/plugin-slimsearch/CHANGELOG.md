@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.127](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.126...v2.0.0-rc.127) (2026-03-31)
+
+### Bug Fixes
+
+- **plugin-slimsearch:** fix prod worker bundle, close [#653](https://github.com/vuepress/ecosystem/issues/653) ([086b1a7](https://github.com/vuepress/ecosystem/commit/086b1a7bc23d67996df2d543190955f0440d240c))
+
+# [2.0.0-rc.126](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.125...v2.0.0-rc.126) (2026-03-26)
+
+### Features
+
+- **plugin-slimsearch:** use new api to perform index hotReload ([#642](https://github.com/vuepress/ecosystem/issues/642)) ([a501f99](https://github.com/vuepress/ecosystem/commit/a501f99662c5941d2dedd069b58f409bcbe903a1))
+
+### Performance Improvements
+
+- use map-based store ([98e35d3](https://github.com/vuepress/ecosystem/commit/98e35d3ca63677d8de03137368a238c2d7a44870))
+
 # [2.0.0-rc.125](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.124...v2.0.0-rc.125) (2026-03-06)
 
 **Note:** Version bump only for package @vuepress/plugin-slimsearch

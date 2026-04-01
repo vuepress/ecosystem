@@ -1,5 +1,6 @@
 import type { GitData } from '@vuepress/plugin-git'
 import type { App, Page } from 'vuepress/core'
+
 import type { SitemapChangeFrequency } from '.'
 
 export type PageModifyTimeGetter = <

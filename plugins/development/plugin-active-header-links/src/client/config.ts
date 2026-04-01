@@ -1,4 +1,5 @@
 import { defineClientConfig } from 'vuepress/client'
+
 import { useActiveHeaderLinks } from './composables/index.js'
 
 declare const __AHL_HEADER_LINK_SELECTOR__: string

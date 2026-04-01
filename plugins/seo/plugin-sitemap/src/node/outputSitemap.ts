@@ -1,5 +1,6 @@
 import type { App } from 'vuepress/core'
 import { colors, fs } from 'vuepress/utils'
+
 import type { SitemapPluginOptions } from '../typings/index.js'
 import { getSiteMap } from './getSitemap.js'
 import { getSiteMapTemplate } from './getSitemapTemplate.js'

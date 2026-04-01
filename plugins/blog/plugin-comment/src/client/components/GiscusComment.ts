@@ -2,6 +2,7 @@ import { LoadingIcon } from '@vuepress/helper/client'
 import type { VNode } from 'vue'
 import { computed, defineComponent, h, onMounted, ref } from 'vue'
 import { useLang } from 'vuepress/client'
+
 import type {
   GiscusInputPosition,
   GiscusMapping,

@@ -1,6 +1,7 @@
 import { useEventListener } from '@vueuse/core'
 import type { MaybeRef } from 'vue'
 import { toValue } from 'vue'
+
 import type { KeyOptions } from '../../shared/index.js'
 import { isFocusingTextControl, isKeyMatched } from '../utils/index.js'
 

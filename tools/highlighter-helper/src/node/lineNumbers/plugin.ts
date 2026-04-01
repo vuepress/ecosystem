@@ -1,4 +1,5 @@
 import type { Markdown } from 'vuepress/markdown'
+
 import type { MarkdownItLineNumbersOptions } from './options.js'
 import { resolveLineNumbers } from './resolveLineNumbers.js'
 

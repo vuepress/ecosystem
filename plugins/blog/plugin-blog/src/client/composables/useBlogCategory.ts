@@ -1,8 +1,10 @@
-import { categoriesMap } from '@temp/blog/category'
-import { store } from '@temp/blog/store'
 import type { ComputedRef } from 'vue'
 import { computed, readonly, shallowRef } from 'vue'
 import { resolveRoute, useData } from 'vuepress/client'
+
+import { categoriesMap } from '@temp/blog/category'
+import { store } from '@temp/blog/store'
+
 import type {
   BlogCategoryFrontmatterOptions,
   CategoriesMap,
@@ -45,7 +47,7 @@ export const useBlogCategory = <
     const mapKey = key ?? frontmatter.value.blog?.key ?? ''
 
     if (!mapKey) {
-      // eslint-disable-next-line no-console
+      // oxlint-disable-next-line no-console
       console.warn(`useBlogCategory: key not found`)
 
       // Fallback data

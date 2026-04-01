@@ -1,6 +1,7 @@
 // markdown-it plugin for generating line numbers.
 // v-pre block logic is in `../highlight.ts`
 import type { Markdown } from 'vuepress/markdown'
+
 import { resolveLanguage } from '../utils.js'
 
 const PRE_ATTRS_REGEXP = /<pre([\s\S]*?)style="([^"]*)"([^>]*)>/

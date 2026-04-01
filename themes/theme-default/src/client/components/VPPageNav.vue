@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import VPAutoLink from '@theme/VPAutoLink.vue'
+import { useEventListener } from '@vueuse/core'
+import { computed } from 'vue'
+
 import { useData } from '@theme/useData'
 import { useNavigate } from '@theme/useNavigate'
 import { useRelatedLinks } from '@theme/useRelatedLinks'
-import { useEventListener } from '@vueuse/core'
-import { computed } from 'vue'
+import VPAutoLink from '@theme/VPAutoLink.vue'
 
 const { themeLocale } = useData()
 const navigate = useNavigate()

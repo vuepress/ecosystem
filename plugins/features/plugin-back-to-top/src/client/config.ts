@@ -1,4 +1,5 @@
 import { defineClientConfig } from 'vuepress/client'
+
 import { BackToTop } from './components/index.js'
 
 import './styles/vars.scss'

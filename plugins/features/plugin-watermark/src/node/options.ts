@@ -1,4 +1,5 @@
 import type { Page } from 'vuepress'
+
 import type { WatermarkPureOptions } from '../shared/index.js'
 
 export interface WatermarkPluginOptions {

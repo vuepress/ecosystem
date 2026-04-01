@@ -1,13 +1,15 @@
-import { resolveAutoLink } from '@theme/resolveAutoLink'
-import { resolvePrefix } from '@theme/resolvePrefix'
-import { useData } from '@theme/useData'
-import { useHeaders } from '@theme/useHeaders'
 import { isLinkRelative, keys, startsWith } from '@vuepress/helper/client'
 import type { ComputedRef, InjectionKey } from 'vue'
 import { computed, inject, provide } from 'vue'
 import type { PageData, PageHeader } from 'vuepress/client'
 import { useRoutePath } from 'vuepress/client'
 import { isPlainObject, isString } from 'vuepress/shared'
+
+import { resolveAutoLink } from '@theme/resolveAutoLink'
+import { resolvePrefix } from '@theme/resolvePrefix'
+import { useData } from '@theme/useData'
+import { useHeaders } from '@theme/useHeaders'
+
 import type {
   DefaultThemeHomePageFrontmatter,
   DefaultThemeNormalPageFrontmatter,
@@ -152,7 +154,7 @@ export const resolveMultiSidebarItems = (
     }
   }
 
-  // eslint-disable-next-line no-console
+  // oxlint-disable-next-line no-console
   console.warn(`${decodeURI(path)} is missing sidebar config.`)
 
   return []

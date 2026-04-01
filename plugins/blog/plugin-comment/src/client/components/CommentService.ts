@@ -2,6 +2,7 @@ import CommentProvider from '@vuepress/plugin-comment/service'
 import type { VNode } from 'vue'
 import { computed, defineComponent, h } from 'vue'
 import { useData } from 'vuepress/client'
+
 import type { CommentPluginFrontmatter } from '../../shared/index.js'
 import { useCommentOptions } from '../helpers/index.js'
 

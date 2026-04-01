@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-icon",
-  "version": "2.0.0-rc.125",
+  "version": "2.0.0-rc.127",
   "description": "VuePress plugin - icon",
   "keywords": [
     "icon",
@@ -49,7 +49,7 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/plugin-icon": "^0.24.1",
+    "@mdit/plugin-icon": "^0.24.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vue": "catalog:"
