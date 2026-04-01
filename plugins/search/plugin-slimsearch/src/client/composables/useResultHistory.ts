@@ -1,8 +1,8 @@
 import { useLocalStorage } from '@vueuse/core'
 import type { Ref } from 'vue'
 
+import type { MatchedItem, Word } from '../../shared/index.js'
 import { options } from '../define.js'
-import type { MatchedItem, Word } from '../typings/index.js'
 import { getResultPath } from '../utils/index.js'
 
 const SLIMSEARCH_RESULT_HISTORY_STORAGE = 'SLIMSEARCH_RESULT_HISTORY'

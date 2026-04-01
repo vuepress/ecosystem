@@ -3,9 +3,9 @@ import type { Ref } from 'vue'
 import { computed, onMounted, onUnmounted, ref, shallowRef } from 'vue'
 import { useData } from 'vuepress/client'
 
+import type { SearchResult } from '../../shared/index.js'
 import { options } from '../define.js'
 import { useSearchOptions } from '../helpers/index.js'
-import type { SearchResult } from '../typings/index.js'
 import { createSearchWorker } from '../utils/index.js'
 
 export interface Results {
