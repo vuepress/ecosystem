@@ -6,9 +6,9 @@ export default [
     'client/config',
     'client/index',
     'client/shims.d',
-    'client/worker',
+    'worker/dev',
   ]),
-  tsdownConfig('worker/index', {
+  tsdownConfig('worker/build', {
     dts: false,
     define: {
       '__VUEPRESS_SSR__': 'false',

@@ -1,6 +1,6 @@
 import type { SearchOptions } from 'slimsearch'
 
-import type { IndexItem } from '../../shared/index.js'
+import type { IndexItem } from './data.js'
 
 export type WorkerSearchOptions = Omit<
   SearchOptions<string, IndexItem>,

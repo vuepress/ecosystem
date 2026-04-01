@@ -6,15 +6,13 @@ import type {
   CustomFieldIndexItem,
   IndexItem,
   PageIndexItem,
-} from '../../shared/index.js'
-import type {
   HeadingMatchedItem,
   MatchedItem,
   SearchResult,
   TitleMatchedItem,
   Word,
   WorkerSearchOptions,
-} from '../typings/index.js'
+} from '../../shared/index.js'
 import { getMatchedContent } from './getMatchedContent.js'
 
 export type MiniSearchResult = IndexItem & {

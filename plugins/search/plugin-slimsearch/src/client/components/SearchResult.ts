@@ -5,6 +5,7 @@ import type { PropType, VNode } from 'vue'
 import { computed, defineComponent, h, reactive, ref, toRef, watch } from 'vue'
 import { RouteLink, useRouteLocale, useRouter } from 'vuepress/client'
 
+import type { MatchedItem, Word } from '../../shared/index.js'
 import {
   useQueryHistory,
   useResultHistory,
@@ -12,7 +13,6 @@ import {
 } from '../composables/index.js'
 import { customFieldConfig, locales } from '../define.js'
 import { CLOSE_ICON } from '../icons/index.js'
-import type { MatchedItem, Word } from '../typings/index.js'
 import { getResultPath } from '../utils/index.js'
 import { HeadingIcon, HeartIcon, HistoryIcon, TitleIcon } from './icons.js'
 import { SearchLoading } from './SearchLoading.js'
