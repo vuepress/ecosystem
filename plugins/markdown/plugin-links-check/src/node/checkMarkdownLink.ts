@@ -21,7 +21,7 @@ export const checkMarkdownLink = (
   const pagePath = page.filePathRelative ?? page.path
 
   const markdownLinks = page.links.filter(({ raw }) =>
-    /^.+.md((?:\?|#).*)?$/.exec(raw),
+    /^.+\.md(?:[?#].*)?$/.exec(raw),
   )
 
   const brokenLinks = [
