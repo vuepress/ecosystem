@@ -206,13 +206,13 @@ export const blogPlugin =
         if (app.env.isDebug) logger.info('temp file generated')
       },
 
-      onPageUpdated: async (_app, updateType, updatedPage, oldPage) => {
+      onPageUpdated: async (_app, updateType, newPage, oldPage) => {
         if (!hotReload) return
 
         // For update type, check if blog-relevant data changed
-        if (updateType === 'update' && oldPage) {
-          const isFiltered = filter(updatedPage)
-          const wasFiltered = filter(oldPage)
+        if (updateType === 'update') {
+          const isFiltered = filter(newPage!)
+          const wasFiltered = filter(oldPage!)
 
           // If page wasn't and still isn't a blog page, skip
           if (!isFiltered && !wasFiltered) return
@@ -221,10 +221,10 @@ export const blogPlugin =
           if (
             isFiltered &&
             wasFiltered &&
-            updatedPage.path === oldPage.path &&
+            newPage!.path === oldPage!.path &&
             !hasBlogDataChanged(
-              oldPage,
-              updatedPage,
+              oldPage!,
+              newPage!,
               categoryOptions,
               typeOptions,
             )
@@ -278,10 +278,10 @@ export const blogPlugin =
           // Prepare page files
           await Promise.all(
             pagesToBeAdded.map(async (pageOptions) => {
-              const newPage = await createPage(app, pageOptions)
+              const page = await createPage(app, pageOptions)
 
-              app.pages.push(newPage)
-              await preparePageChunk(app, newPage)
+              app.pages.push(page)
+              await preparePageChunk(app, page)
             }),
           )
         }

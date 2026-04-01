@@ -40,7 +40,7 @@ const getChinese = (content: string): RegExpMatchArray | null =>
  * ```
  */
 export const getWordNumber = (content: string): number =>
-  (getWords(content)?.reduce<number>(
+  (getWords(content)?.reduce(
     (accumulator, word) =>
       accumulator + (word.trim() === '' ? 0 : word.trim().split(/\s+/u).length),
     0,

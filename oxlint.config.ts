@@ -45,7 +45,8 @@ export default defineHopeConfig(
       // sometimes we need to check if a defined variable is injected
       'unicorn/no-typeof-undefined': 'off',
     },
-  }, // node files
+  },
+  // node files
   {
     files: ['**/src/{cli,node}/**/*.ts'],
     plugins: ['node'],
@@ -108,16 +109,13 @@ export default defineHopeConfig(
   {
     files: ['**/template/**'],
     rules: {
-      // files in template are copied to user working directory
-      // deps installation is handled by template cli
-      'import/no-unresolved': 'off',
       // to simplify template code, we use some single-word component names
-      'vue/multi-word-component-names': [
-        'error',
-        {
-          ignores: ['Article', 'Category', 'Tag', 'Timeline'],
-        },
-      ],
+      // 'vue/multi-word-component-names': [
+      //   'error',
+      //   {
+      //     ignores: ['Article', 'Category', 'Tag', 'Timeline'],
+      //   },
+      // ],
     },
   },
   {

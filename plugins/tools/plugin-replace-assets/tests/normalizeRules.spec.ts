@@ -33,8 +33,8 @@ describe('plugin-replace-assets > normalizeRules', () => {
   })
 
   it('should work with function', () => {
-    const replacement = vi.fn(
-      (url: string) => `https://example.com/assets/${url}`,
+    const replacement = vi.fn<(url: string) => string>(
+      (url) => `https://example.com/assets/${url}`,
     )
     const rules = normalizeRules(replacement)
 
@@ -89,7 +89,9 @@ describe('plugin-replace-assets > normalizeRules', () => {
   })
 
   it('should work with presets', () => {
-    const media = vi.fn((url: string) => `https://example.com/medias/${url}`)
+    const media = vi.fn<(url: string) => string>(
+      (url) => `https://example.com/medias/${url}`,
+    )
     const rules = normalizeRules({
       image: 'https://example.com/images/',
       media,

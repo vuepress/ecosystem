@@ -34,6 +34,7 @@ const createMarkdown = ({
     const highlighter = resolveHighlighter(lang)
     return highlighter?.(code) || ''
   }
+  // oxlint-disable-next-line typescript/no-unnecessary-type-arguments
   md.use<MarkdownItPrismjsHighlightOptions>(highlightPlugin, options)
   md.use<MarkdownItPreWrapperOptions>(preWrapperPlugin, { preWrapper })
   if (preWrapper) {
@@ -323,7 +324,7 @@ ${codeFence}
 `
 
     it('should work if highlighted code is wrapped with `<pre>`', () => {
-      const highlight = vi.fn(
+      const highlight = vi.fn<(code: string, lang: string) => string>(
         (code, lang) =>
           `<pre><code>highlighted code: ${code}, lang: ${lang}</code></pre>`,
       )
@@ -336,7 +337,7 @@ ${codeFence}
     })
 
     it('should work if highlighted code is not wrapped with `<pre>`', () => {
-      const highlight = vi.fn(
+      const highlight = vi.fn<(code: string, lang: string) => string>(
         (code, lang) => `highlighted code: ${code}, lang: ${lang}`,
       )
       const md = createMarkdown()
