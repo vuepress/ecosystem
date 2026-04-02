@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.128](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.127...v2.0.0-rc.128) (2026-04-02)
+
+### Bug Fixes
+
+- **plugin-slimsearch:** correct worker file position ([#658](https://github.com/vuepress/ecosystem/issues/658)) ([dfcad1d](https://github.com/vuepress/ecosystem/commit/dfcad1d32a2432021b7ea0c27597558652c8c1e6))
+- Potential fix for code scanning alert no. 33: Inefficient regular expression ([#663](https://github.com/vuepress/ecosystem/issues/663)) ([9300b16](https://github.com/vuepress/ecosystem/commit/9300b16c14f874a96aee271d4c218accfb2be07c))
+- Potential fix for code scanning alert no. 34: Inefficient regular expression ([#662](https://github.com/vuepress/ecosystem/issues/662)) ([2fcaeab](https://github.com/vuepress/ecosystem/commit/2fcaeab9a274fc8da860d9006cf841e0aee7f985))
+- **theme-default:** improve repo resolve ([3767165](https://github.com/vuepress/ecosystem/commit/3767165cb99c814bfd66eea9a761b394a4ba90c3))
+- **theme:** stricter repo resolve ([12ea0b9](https://github.com/vuepress/ecosystem/commit/12ea0b99d60fa070ce73464fe472acb023904f57))
+
+### Features
+
+- **plugin-markdown-chart:** support 2 new charts in mermaid ([#660](https://github.com/vuepress/ecosystem/issues/660)) ([6f84147](https://github.com/vuepress/ecosystem/commit/6f84147e4e44b37cb285d48da6d1d3e2b96c5b32))
+- **plugin-slimsearch:** add preserveTags options and change default behavior ([#659](https://github.com/vuepress/ecosystem/issues/659)) ([62c98df](https://github.com/vuepress/ecosystem/commit/62c98df121d4ca4e9ab1fa459610db98607b7b6d))
+
 # [2.0.0-rc.127](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.126...v2.0.0-rc.127) (2026-03-31)
 
 ### Bug Fixes

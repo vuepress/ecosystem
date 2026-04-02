@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.128](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.127...v2.0.0-rc.128) (2026-04-02)
+
+### Features
+
+- **plugin-markdown-chart:** support 2 new charts in mermaid ([#660](https://github.com/vuepress/ecosystem/issues/660)) ([6f84147](https://github.com/vuepress/ecosystem/commit/6f84147e4e44b37cb285d48da6d1d3e2b96c5b32))
+
 # [2.0.0-rc.127](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.126...v2.0.0-rc.127) (2026-03-31)
 
 **Note:** Version bump only for package @vuepress/plugin-meilisearch
