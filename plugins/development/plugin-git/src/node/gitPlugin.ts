@@ -15,6 +15,7 @@ import { resolveContributors } from './resolveContributors.js'
 import {
   PLUGIN_NAME,
   checkGitRepo,
+  clearGitRepoRootCache,
   getCommits,
   inferGitProvider,
   injectGitOptions,
@@ -143,6 +144,10 @@ export const gitPlugin =
         app.pages.forEach((page) => {
           delete page.frontmatter.gitInclude
         })
+      },
+
+      onPrepared: () => {
+        clearGitRepoRootCache()
       },
 
       clientConfigFile: () =>

@@ -3,11 +3,15 @@ import { spawn } from 'node:child_process'
 import type { GitContributorInfo } from '../../shared/index.js'
 import type { GitPluginOptions } from '../options.js'
 import type { MergedRawCommit, RawCommit } from '../typings.js'
+import { path } from 'vuepress/utils'
 import { logger } from './logger.js'
 
 const INFO_SPLITTER = '[|]'
 const COMMIT_SPLITTER = String.raw`\|/`
 const RE_CO_AUTHOR = /^ *Co-authored-by: ?([^<]*)<([^>]*)> */gim
+
+const gitRepoRootResultCache = new Map<string, string | null>()
+const gitRepoRootTaskCache = new Map<string, Promise<string | null>>()
 
 const getCoAuthorsFromCommitBody = (
   body: string,
@@ -79,6 +83,77 @@ const runGitLog = (args: string[], cwd: string): Promise<string> =>
   })
 
 /**
+ * Get git repository root directory for a given file path.
+ *
+ * This function runs `git rev-parse --show-toplevel` in the directory of the
+ * target file to determine the top-level directory of the git repository.
+ *
+ * @param filePath - File path (relative or absolute) whose repository root is requested
+ * @param cwd - Current working directory
+ * @returns Promise that resolves to normalized git root path, or null if not in a git repository
+ */
+const getGitRepoRoot = (
+  filePath: string,
+  cwd: string,
+): Promise<string | null> => {
+  const absFilePath = path.isAbsolute(filePath)
+    ? filePath
+    : path.resolve(cwd, filePath)
+
+  const dir = path.normalize(path.dirname(absFilePath))
+  const cachedResult = gitRepoRootResultCache.get(dir)
+
+  if (cachedResult !== undefined || gitRepoRootResultCache.has(dir))
+    return Promise.resolve(cachedResult ?? null)
+
+  const cachedTask = gitRepoRootTaskCache.get(dir)
+  if (cachedTask) return cachedTask
+
+  const task = new Promise<string | null>((resolve) => {
+    const gitProcess = spawn('git', ['rev-parse', '--show-toplevel'], {
+      cwd: dir,
+      stdio: ['ignore', 'pipe', 'pipe'],
+    })
+
+    let stdoutData = ''
+    let stderrData = ''
+
+    gitProcess.stdout.on('data', (chunk: Buffer) => {
+      stdoutData += chunk.toString('utf-8')
+    })
+
+    gitProcess.stderr.on('data', (chunk: Buffer) => {
+      stderrData += chunk.toString('utf-8')
+    })
+
+    gitProcess.on('error', (error) => {
+      logger.error(`Failed to spawn git rev-parse: ${error.message}`)
+      resolve(null)
+    })
+
+    gitProcess.on('close', (code) => {
+      if (code === 0) {
+        resolve(path.normalize(stdoutData.trim()))
+      } else {
+        logger.error(
+          `git rev-parse failed (code=${code}): ${stderrData.trim()}`,
+        )
+        resolve(null)
+      }
+    })
+  })
+
+  const cached = task.then((gitRoot) => {
+    gitRepoRootResultCache.set(dir, gitRoot)
+    gitRepoRootTaskCache.delete(dir)
+    return gitRoot
+  })
+  gitRepoRootTaskCache.set(dir, cached)
+
+  return cached
+}
+
+/**
  * Get raw commits for a specific file
  *
  * ${commit_hash} ${author_name} ${author_email} ${author_date} ${subject} ${ref} ${body}
@@ -97,8 +172,23 @@ export const getRawCommits = async (
   options: GitPluginOptions,
 ): Promise<RawCommit[]> => {
   const format = getGitLogFormat(options)
+  const gitRoot = await getGitRepoRoot(filepath, cwd)
 
   try {
+    let repoRelativeFilePath = filepath
+    if (gitRoot) {
+      // Resolve to absolute path first, then convert to repo-relative path
+      const absFilePath = path.isAbsolute(repoRelativeFilePath)
+        ? repoRelativeFilePath
+        : path.resolve(cwd, repoRelativeFilePath)
+
+      repoRelativeFilePath = path.relative(gitRoot, absFilePath)
+    } else {
+      logger.warn(
+        `Failed to resolve git repo root for "${filepath}" under cwd "${cwd}", falling back to cwd; git history may be incomplete.`,
+      )
+    }
+
     const stdout = await runGitLog(
       [
         '--max-count=-1',
@@ -106,9 +196,9 @@ export const getRawCommits = async (
         '--date=unix',
         '--follow',
         '--',
-        filepath,
+        repoRelativeFilePath,
       ],
-      cwd,
+      gitRoot || cwd,
     )
 
     return stdout
@@ -188,4 +278,9 @@ export const getCommits = async (
   ).flat()
 
   return mergeRawCommits(rawCommits).sort((a, b) => b.time - a.time)
+}
+
+export const clearGitRepoRootCache = (): void => {
+  gitRepoRootResultCache.clear()
+  gitRepoRootTaskCache.clear()
 }
