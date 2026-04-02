@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@docsearch/react": "^4.6.2",
-    "algoliasearch": "5.50.0"
+    "algoliasearch": "5.50.1"
   },
   "peerDependencies": {
     "vuepress": "catalog:"
