@@ -1,7 +1,7 @@
 import type { CodeParser, OpenTag } from './getCodeParser.js'
 
 const SPLIT_REGEXP = /(<[^>]+>)/
-const META_WORD_REGEXP = /\/((?:\\.|[^/])+)\//g
+const META_WORD_REGEXP = /\/((?:\\.|[^\\/])+)\//g
 
 const WORD_BEFORE = '<span class="highlighted-word">'
 const WORD_AFTER = '</span>'

@@ -160,8 +160,8 @@ export const notationErrorLevel = (parser: CodeParser): void => {
 export const notationWordHighlight = (parser: CodeParser): void => {
   createNotationRule(
     parser,
-    // comment-begin             | marker    |word            | range |   comment-end
-    /\s*(?:\/\/|\/\*|<!--|#)\s+\[!code word:((?:\\.|[^:\]])+)(:\d+)?\]\s*(?:\*\/|-->)?/,
+    // comment-begin             | marker    |word                  | range |   comment-end
+    /\s*(?:\/\/|\/\*|<!--|#)\s+\[!code word:((?:\\.|[^:\\\]])+)(:\d+)?\]\s*(?:\*\/|-->)?/,
     ([, word, range], index): boolean => {
       const lineNum = range
         ? Number.parseInt(range.slice(1), 10)

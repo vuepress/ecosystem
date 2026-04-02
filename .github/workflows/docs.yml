@@ -28,13 +28,13 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build Project
-        run: pnpm bundle
+        run: pnpm run bundle
 
       - name: Docs build
         env:
           BASE: /ecosystem/
           NODE_OPTIONS: --max_old_space_size=8192
-        run: pnpm --filter @vuepress/ecosystem-docs docs:build
+        run: pnpm run --filter @vuepress/ecosystem-docs docs:build
 
       - name: Deploy docs
         uses: JamesIves/github-pages-deploy-action@v4
