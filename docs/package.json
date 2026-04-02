@@ -9,7 +9,7 @@
     "docs:clean-dev-webpack": "DOCS_BUNDLER=webpack pnpm docs:clean-dev",
     "docs:dev": "vuepress dev .",
     "docs:dev-webpack": "DOCS_BUNDLER=webpack pnpm docs:dev",
-    "docs:serve": "http-server -a localhost .vuepress/dist"
+    "docs:serve": "serve .vuepress/dist"
   },
   "dependencies": {
     "@mathjax/src": "^4.1.1",
