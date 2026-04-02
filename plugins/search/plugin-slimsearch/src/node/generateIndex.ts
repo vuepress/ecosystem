@@ -1,7 +1,6 @@
 // oxlint-disable id-length
 /* oxlint-disable typescript/no-unsafe-enum-comparison */
-import { entries, fromEntries, isArray, keys } from '@vuepress/helper'
-import { load } from 'cheerio'
+import { entries, fromEntries, isArray, keys, cheerio } from '@vuepress/helper'
 import type { AnyNode, Element } from 'domhandler'
 import { addAllAsync, createIndex } from 'slimsearch'
 import type { App, Page } from 'vuepress/core'
@@ -14,7 +13,7 @@ import type {
   SearchIndexStore,
   SectionIndexItem,
 } from '../shared/index.js'
-import type { CustomFieldOptions, SlimSearchPluginOptions } from './options.js'
+import type { SlimSearchPluginOptions } from './options.js'
 import type { PathStore } from './pathStore.js'
 
 /**
@@ -47,8 +46,6 @@ const CONTENT_INLINE_TAGS =
 const isExcerptMarker = (node: AnyNode): boolean =>
   node.type === 'comment' && node.data.trim() === 'more'
 
-const $ = load('')
-
 const renderHeader = (node: Element): string => {
   if (
     node.children.length === 1 &&
@@ -69,9 +66,18 @@ const renderHeader = (node: Element): string => {
 export const generatePageIndex = (
   page: Page<{ excerpt?: string }>,
   store: PathStore,
-  customFieldsGetter: CustomFieldOptions[] = [],
-  indexContent = false,
+  {
+    customFields: customFieldsGetter = [],
+    indexContent = false,
+    preserveTags = [],
+  }: Pick<
+    SlimSearchPluginOptions,
+    'customFields' | 'indexContent' | 'preserveTags'
+  > = {},
 ): IndexItem[] => {
+  const preserveTagsSet = new Set(
+    preserveTags.map((tag) => tag.toLowerCase().replaceAll('-', '')),
+  )
   const pageId = store.addPath(page.path).toString() as PageIndexId
   const hasExcerpt = Boolean(page.data.excerpt)
 
@@ -103,9 +109,8 @@ export const generatePageIndex = (
 
         // Update current section index only if it has an id
         if (id) {
-          // oxlint-disable-next-line no-negated-condition
-          if (!foundFirstHeader) foundFirstHeader = true
-          else results.push(sectionIndex!)
+          if (foundFirstHeader) results.push(sectionIndex!)
+          else foundFirstHeader = true
 
           sectionIndex = {
             id: `${pageId}#${id}`,
@@ -118,6 +123,12 @@ export const generatePageIndex = (
         addTextToIndex()
         node.childNodes.forEach((item) => {
           render(item, preserveSpace || node.name === 'pre')
+        })
+      } else if (preserveTagsSet.has(node.name.replaceAll('-', ''))) {
+        // Preserve tags should flush previous text and process children
+        addTextToIndex()
+        node.childNodes.forEach((item) => {
+          render(item, preserveSpace)
         })
       } else if (CONTENT_INLINE_TAGS.includes(node.name)) {
         node.childNodes.forEach((item) => {
@@ -137,7 +148,7 @@ export const generatePageIndex = (
   }
 
   // The types are not correct, null is returned if contentRendered is empty
-  const nodes = $.parseHTML(page.contentRendered) ?? []
+  const nodes = cheerio.parseHTML(page.contentRendered) ?? []
 
   // Get custom fields
   const customFields = fromEntries(
@@ -187,6 +198,7 @@ export const getSearchIndexStore = async (
     filter = (): boolean => true,
     indexOptions,
     indexLocaleOptions,
+    preserveTags = [],
   }: SlimSearchPluginOptions,
   store: PathStore,
 ): Promise<SearchIndexStore> => {
@@ -195,7 +207,11 @@ export const getSearchIndexStore = async (
   app.pages.forEach((page) => {
     if (filter(page) && page.frontmatter.search !== false) {
       ;(indexesByLocale[page.pathLocale] ??= []).push(
-        ...generatePageIndex(page, store, customFields, indexContent),
+        ...generatePageIndex(page, store, {
+          customFields,
+          indexContent,
+          preserveTags,
+        }),
       )
     }
   })

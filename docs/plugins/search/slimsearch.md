@@ -132,6 +132,18 @@ By default, only page headings, excerpts, and custom fields are indexed. Set thi
 
 :::
 
+### preserveTags
+
+- Type: `string[]`
+- Default: `[]`
+
+Tags whose inner content should be preserved when the surrounding tag would otherwise be skipped by the indexer.
+
+The indexer only traverses a built-in whitelist of standard HTML tags when extracting text content. Unknown or custom tags (including many Vue components) are skipped by default, which also drops their children from the index. Some tags such as `script`, `style`, `pre`, or `code` also have their contents excluded on purpose.
+
+By listing a tag name in `preserveTags`, you tell the indexer to keep and traverse that tag’s child text even if the tag itself is not part of the default traversal set. Tag names are matched in lowercase.
+For custom Vue components that render slot content by default (like `<human-only>contents</human-only>`), you can add their tag names to this option to preserve their content in the search index.
+
 ### suggestion
 
 - Type: `boolean`

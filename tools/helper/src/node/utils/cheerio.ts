@@ -1,7 +1,7 @@
 import { load } from 'cheerio'
 import type { CheerioOptions } from 'cheerio'
 
-export const parseOptions: CheerioOptions = {
+export const cheerioOptions: CheerioOptions = {
   xml: {
     xmlMode: false,
     recognizeSelfClosing: true,
@@ -9,4 +9,4 @@ export const parseOptions: CheerioOptions = {
   },
 }
 
-export const cheerio = load('', parseOptions)
+export const cheerio = load('', cheerioOptions)

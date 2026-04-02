@@ -3,8 +3,22 @@
 exports[`generateIndex > Should generate full index 1`] = `
 [
   {
-    "h": "Demo Page",
+    "h": "",
     "id": "0",
+    "t": [
+      "Text 1.",
+      "Text 2 with , , , and ., , , and .",
+      "Text 11 with , , , and .",
+    ],
+  },
+]
+`;
+
+exports[`generateIndex > Should generate full index 2`] = `
+[
+  {
+    "h": "Demo Page",
+    "id": "1",
     "t": [
       "Here is article excerpt.",
       "const a = 1 ",
@@ -12,7 +26,7 @@ exports[`generateIndex > Should generate full index 1`] = `
   },
   {
     "h": "Content",
-    "id": "0#content",
+    "id": "1#content",
     "t": [
       "Here is main content of article.",
       "A",
@@ -23,7 +37,7 @@ exports[`generateIndex > Should generate full index 1`] = `
   },
   {
     "h": "Title with Special Characters #@%/",
-    "id": "0#title-with-special-characters",
+    "id": "1#title-with-special-characters",
     "t": [
       "Content with regexp sequence 'a$' test.",
     ],
@@ -31,42 +45,42 @@ exports[`generateIndex > Should generate full index 1`] = `
 ]
 `;
 
-exports[`generateIndex > Should generate full index 2`] = `
+exports[`generateIndex > Should generate full index 3`] = `
 [
   {
     "h": "Heading 1",
-    "id": "1",
+    "id": "2",
   },
   {
     "h": "Heading 2",
-    "id": "1#heading-2",
+    "id": "2#heading-2",
   },
   {
     "h": "Heading 3",
-    "id": "1#heading-3",
+    "id": "2#heading-3",
   },
   {
     "h": "Heading 4",
-    "id": "1#heading-4",
+    "id": "2#heading-4",
   },
   {
     "h": "Heading 5",
-    "id": "1#heading-5",
+    "id": "2#heading-5",
   },
   {
     "h": "Heading 6",
-    "id": "1#heading-6",
+    "id": "2#heading-6",
   },
   {
     "h": "Text",
-    "id": "1#text",
+    "id": "2#text",
     "t": [
       "This sentence has bold, italic and delete style text.",
     ],
   },
   {
     "h": "Paragraph",
-    "id": "1#paragraph",
+    "id": "2#paragraph",
     "t": [
       "This is a paragraph.",
       "This is another paragraph.",
@@ -74,7 +88,7 @@ exports[`generateIndex > Should generate full index 2`] = `
   },
   {
     "h": "Line Break",
-    "id": "1#line-break",
+    "id": "2#line-break",
     "t": [
       "I would like to line break at this point",
       "::: tip",
@@ -84,7 +98,7 @@ exports[`generateIndex > Should generate full index 2`] = `
   },
   {
     "h": "Blockquotes",
-    "id": "1#blockquotes",
+    "id": "2#blockquotes",
     "t": [
       "Blockquotes can also be nested...",
       "...by using greater-than signs right next to each other...",
@@ -93,11 +107,11 @@ exports[`generateIndex > Should generate full index 2`] = `
   },
   {
     "h": "List",
-    "id": "1#list",
+    "id": "2#list",
   },
   {
     "h": "Unordered List",
-    "id": "1#unordered-list",
+    "id": "2#unordered-list",
     "t": [
       "Create a list by starting a line with -",
       "Make sub-lists by indenting 2 spaces:",
@@ -111,7 +125,7 @@ exports[`generateIndex > Should generate full index 2`] = `
   },
   {
     "h": "Ordered List",
-    "id": "1#ordered-list",
+    "id": "2#ordered-list",
     "t": [
       "Lorem ipsum dolor sit amet",
       "Consectetur adipiscing elit line break line break again",
@@ -120,11 +134,11 @@ exports[`generateIndex > Should generate full index 2`] = `
   },
   {
     "h": "HR",
-    "id": "1#hr",
+    "id": "2#hr",
   },
   {
     "h": "Link",
-    "id": "1#link",
+    "id": "2#link",
     "t": [
       "Home page using absolute path",
       "Home page using relative path",
@@ -132,11 +146,11 @@ exports[`generateIndex > Should generate full index 2`] = `
   },
   {
     "h": "Image",
-    "id": "1#image",
+    "id": "2#image",
   },
   {
     "h": "Emoji",
-    "id": "1#emoji",
+    "id": "2#emoji",
     "t": [
       "Classic:",
       "😉 😢 😆 😋",
@@ -144,7 +158,7 @@ exports[`generateIndex > Should generate full index 2`] = `
   },
   {
     "h": "Tables",
-    "id": "1#tables",
+    "id": "2#tables",
     "t": [
       "center",
       "right",
@@ -162,7 +176,7 @@ exports[`generateIndex > Should generate full index 2`] = `
   },
   {
     "h": "Codes",
-    "id": "1#codes",
+    "id": "2#codes",
     "t": [
       "Inline Code: code",
       "Block code:",
@@ -174,25 +188,16 @@ exports[`generateIndex > Should generate full index 2`] = `
 ]
 `;
 
-exports[`generateIndex > Should generate full index 3`] = `
-[
-  {
-    "h": "Tag Test",
-    "id": "2",
-    "t": [
-      "Markdown content.",
-    ],
-  },
-]
-`;
-
 exports[`generateIndex > Should generate full index 4`] = `
 [
   {
     "h": "",
     "id": "3",
     "t": [
-      "Markdown content.",
+      "Inline , , , and mixed together.",
+      "Normal content",
+      "Some badges: .",
+      "Some other tags: .",
     ],
   },
 ]
@@ -201,8 +206,32 @@ exports[`generateIndex > Should generate full index 4`] = `
 exports[`generateIndex > Should generate full index 5`] = `
 [
   {
-    "h": "西游记第一回",
+    "h": "Tag Test",
     "id": "4",
+    "t": [
+      "Markdown content.",
+    ],
+  },
+]
+`;
+
+exports[`generateIndex > Should generate full index 6`] = `
+[
+  {
+    "h": "",
+    "id": "5",
+    "t": [
+      "Markdown content.",
+    ],
+  },
+]
+`;
+
+exports[`generateIndex > Should generate full index 7`] = `
+[
+  {
+    "h": "西游记第一回",
+    "id": "6",
     "t": [
       "灵根育孕源流出 心性修持大道生",
       "诗曰：",
@@ -277,11 +306,11 @@ exports[`generateIndex > Should generate full index 5`] = `
 ]
 `;
 
-exports[`generateIndex > Should generate full index 6`] = `
+exports[`generateIndex > Should generate full index 8`] = `
 [
   {
     "h": "",
-    "id": "5",
+    "id": "7",
     "t": [
       "404 Not Found",
     ],
@@ -292,19 +321,8 @@ exports[`generateIndex > Should generate full index 6`] = `
 exports[`generateIndex > Should generate index 1`] = `
 [
   {
-    "h": "Demo Page",
+    "h": "",
     "id": "0",
-    "t": [
-      "Here is article excerpt.",
-    ],
-  },
-  {
-    "h": "Content",
-    "id": "0#content",
-  },
-  {
-    "h": "Title with Special Characters #@%/",
-    "id": "0#title-with-special-characters",
   },
 ]
 `;
@@ -312,80 +330,19 @@ exports[`generateIndex > Should generate index 1`] = `
 exports[`generateIndex > Should generate index 2`] = `
 [
   {
-    "h": "Heading 1",
+    "h": "Demo Page",
     "id": "1",
+    "t": [
+      "Here is article excerpt.",
+    ],
   },
   {
-    "h": "Heading 2",
-    "id": "1#heading-2",
+    "h": "Content",
+    "id": "1#content",
   },
   {
-    "h": "Heading 3",
-    "id": "1#heading-3",
-  },
-  {
-    "h": "Heading 4",
-    "id": "1#heading-4",
-  },
-  {
-    "h": "Heading 5",
-    "id": "1#heading-5",
-  },
-  {
-    "h": "Heading 6",
-    "id": "1#heading-6",
-  },
-  {
-    "h": "Text",
-    "id": "1#text",
-  },
-  {
-    "h": "Paragraph",
-    "id": "1#paragraph",
-  },
-  {
-    "h": "Line Break",
-    "id": "1#line-break",
-  },
-  {
-    "h": "Blockquotes",
-    "id": "1#blockquotes",
-  },
-  {
-    "h": "List",
-    "id": "1#list",
-  },
-  {
-    "h": "Unordered List",
-    "id": "1#unordered-list",
-  },
-  {
-    "h": "Ordered List",
-    "id": "1#ordered-list",
-  },
-  {
-    "h": "HR",
-    "id": "1#hr",
-  },
-  {
-    "h": "Link",
-    "id": "1#link",
-  },
-  {
-    "h": "Image",
-    "id": "1#image",
-  },
-  {
-    "h": "Emoji",
-    "id": "1#emoji",
-  },
-  {
-    "h": "Tables",
-    "id": "1#tables",
-  },
-  {
-    "h": "Codes",
-    "id": "1#codes",
+    "h": "Title with Special Characters #@%/",
+    "id": "1#title-with-special-characters",
   },
 ]
 `;
@@ -393,8 +350,80 @@ exports[`generateIndex > Should generate index 2`] = `
 exports[`generateIndex > Should generate index 3`] = `
 [
   {
-    "h": "Tag Test",
+    "h": "Heading 1",
     "id": "2",
+  },
+  {
+    "h": "Heading 2",
+    "id": "2#heading-2",
+  },
+  {
+    "h": "Heading 3",
+    "id": "2#heading-3",
+  },
+  {
+    "h": "Heading 4",
+    "id": "2#heading-4",
+  },
+  {
+    "h": "Heading 5",
+    "id": "2#heading-5",
+  },
+  {
+    "h": "Heading 6",
+    "id": "2#heading-6",
+  },
+  {
+    "h": "Text",
+    "id": "2#text",
+  },
+  {
+    "h": "Paragraph",
+    "id": "2#paragraph",
+  },
+  {
+    "h": "Line Break",
+    "id": "2#line-break",
+  },
+  {
+    "h": "Blockquotes",
+    "id": "2#blockquotes",
+  },
+  {
+    "h": "List",
+    "id": "2#list",
+  },
+  {
+    "h": "Unordered List",
+    "id": "2#unordered-list",
+  },
+  {
+    "h": "Ordered List",
+    "id": "2#ordered-list",
+  },
+  {
+    "h": "HR",
+    "id": "2#hr",
+  },
+  {
+    "h": "Link",
+    "id": "2#link",
+  },
+  {
+    "h": "Image",
+    "id": "2#image",
+  },
+  {
+    "h": "Emoji",
+    "id": "2#emoji",
+  },
+  {
+    "h": "Tables",
+    "id": "2#tables",
+  },
+  {
+    "h": "Codes",
+    "id": "2#codes",
   },
 ]
 `;
@@ -411,7 +440,7 @@ exports[`generateIndex > Should generate index 4`] = `
 exports[`generateIndex > Should generate index 5`] = `
 [
   {
-    "h": "西游记第一回",
+    "h": "Tag Test",
     "id": "4",
   },
 ]
@@ -426,28 +455,81 @@ exports[`generateIndex > Should generate index 6`] = `
 ]
 `;
 
+exports[`generateIndex > Should generate index 7`] = `
+[
+  {
+    "h": "西游记第一回",
+    "id": "6",
+  },
+]
+`;
+
+exports[`generateIndex > Should generate index 8`] = `
+[
+  {
+    "h": "",
+    "id": "7",
+  },
+]
+`;
+
+exports[`generateIndex > Should preserve content inside custom tags with preserveTags > not preserve 1`] = `
+[
+  {
+    "h": "",
+    "id": "0",
+    "t": [
+      "Inline , , , and mixed together.",
+      "Normal content",
+      "Some badges: .",
+      "Some other tags: .",
+    ],
+  },
+]
+`;
+
+exports[`generateIndex > Should preserve content inside custom tags with preserveTags > preserve 1`] = `
+[
+  {
+    "h": "",
+    "id": "0",
+    "t": [
+      "Human readable content",
+      "Human readable content",
+      "Inline , , ",
+      "Human readable content, and ",
+      "Human readable content mixed together.",
+      "Normal content",
+      "Some badges: ",
+      "text1",
+      "text2.",
+      "Some other tags: ",
+      "text3",
+      "text4.",
+    ],
+  },
+]
+`;
+
+exports[`generateIndex > Should remove custom tags by default > default 1`] = `
+[
+  {
+    "h": "",
+    "id": "0",
+    "t": [
+      "Text 1.",
+      "Text 2 with , , , and ., , , and .",
+      "Text 11 with , , , and .",
+    ],
+  },
+]
+`;
+
 exports[`generateIndex > Should support customFields 1`] = `
 [
   {
-    "h": "Demo Page",
+    "h": "",
     "id": "0",
-    "t": [
-      "Here is article excerpt.",
-    ],
-  },
-  {
-    "h": "Content",
-    "id": "0#content",
-  },
-  {
-    "h": "Title with Special Characters #@%/",
-    "id": "0#title-with-special-characters",
-  },
-  {
-    "c": [
-      "Demo",
-    ],
-    "id": "0@0",
   },
 ]
 `;
@@ -455,80 +537,25 @@ exports[`generateIndex > Should support customFields 1`] = `
 exports[`generateIndex > Should support customFields 2`] = `
 [
   {
-    "h": "Heading 1",
+    "h": "Demo Page",
     "id": "1",
+    "t": [
+      "Here is article excerpt.",
+    ],
   },
   {
-    "h": "Heading 2",
-    "id": "1#heading-2",
+    "h": "Content",
+    "id": "1#content",
   },
   {
-    "h": "Heading 3",
-    "id": "1#heading-3",
+    "h": "Title with Special Characters #@%/",
+    "id": "1#title-with-special-characters",
   },
   {
-    "h": "Heading 4",
-    "id": "1#heading-4",
-  },
-  {
-    "h": "Heading 5",
-    "id": "1#heading-5",
-  },
-  {
-    "h": "Heading 6",
-    "id": "1#heading-6",
-  },
-  {
-    "h": "Text",
-    "id": "1#text",
-  },
-  {
-    "h": "Paragraph",
-    "id": "1#paragraph",
-  },
-  {
-    "h": "Line Break",
-    "id": "1#line-break",
-  },
-  {
-    "h": "Blockquotes",
-    "id": "1#blockquotes",
-  },
-  {
-    "h": "List",
-    "id": "1#list",
-  },
-  {
-    "h": "Unordered List",
-    "id": "1#unordered-list",
-  },
-  {
-    "h": "Ordered List",
-    "id": "1#ordered-list",
-  },
-  {
-    "h": "HR",
-    "id": "1#hr",
-  },
-  {
-    "h": "Link",
-    "id": "1#link",
-  },
-  {
-    "h": "Image",
-    "id": "1#image",
-  },
-  {
-    "h": "Emoji",
-    "id": "1#emoji",
-  },
-  {
-    "h": "Tables",
-    "id": "1#tables",
-  },
-  {
-    "h": "Codes",
-    "id": "1#codes",
+    "c": [
+      "Demo",
+    ],
+    "id": "1@0",
   },
 ]
 `;
@@ -536,14 +563,80 @@ exports[`generateIndex > Should support customFields 2`] = `
 exports[`generateIndex > Should support customFields 3`] = `
 [
   {
-    "h": "Tag Test",
+    "h": "Heading 1",
     "id": "2",
   },
   {
-    "c": [
-      "markdown",
-    ],
-    "id": "2@0",
+    "h": "Heading 2",
+    "id": "2#heading-2",
+  },
+  {
+    "h": "Heading 3",
+    "id": "2#heading-3",
+  },
+  {
+    "h": "Heading 4",
+    "id": "2#heading-4",
+  },
+  {
+    "h": "Heading 5",
+    "id": "2#heading-5",
+  },
+  {
+    "h": "Heading 6",
+    "id": "2#heading-6",
+  },
+  {
+    "h": "Text",
+    "id": "2#text",
+  },
+  {
+    "h": "Paragraph",
+    "id": "2#paragraph",
+  },
+  {
+    "h": "Line Break",
+    "id": "2#line-break",
+  },
+  {
+    "h": "Blockquotes",
+    "id": "2#blockquotes",
+  },
+  {
+    "h": "List",
+    "id": "2#list",
+  },
+  {
+    "h": "Unordered List",
+    "id": "2#unordered-list",
+  },
+  {
+    "h": "Ordered List",
+    "id": "2#ordered-list",
+  },
+  {
+    "h": "HR",
+    "id": "2#hr",
+  },
+  {
+    "h": "Link",
+    "id": "2#link",
+  },
+  {
+    "h": "Image",
+    "id": "2#image",
+  },
+  {
+    "h": "Emoji",
+    "id": "2#emoji",
+  },
+  {
+    "h": "Tables",
+    "id": "2#tables",
+  },
+  {
+    "h": "Codes",
+    "id": "2#codes",
   },
 ]
 `;
@@ -554,20 +647,20 @@ exports[`generateIndex > Should support customFields 4`] = `
     "h": "",
     "id": "3",
   },
-  {
-    "c": [
-      "markdown",
-    ],
-    "id": "3@0",
-  },
 ]
 `;
 
 exports[`generateIndex > Should support customFields 5`] = `
 [
   {
-    "h": "西游记第一回",
+    "h": "Tag Test",
     "id": "4",
+  },
+  {
+    "c": [
+      "markdown",
+    ],
+    "id": "4@0",
   },
 ]
 `;
@@ -578,14 +671,52 @@ exports[`generateIndex > Should support customFields 6`] = `
     "h": "",
     "id": "5",
   },
+  {
+    "c": [
+      "markdown",
+    ],
+    "id": "5@0",
+  },
+]
+`;
+
+exports[`generateIndex > Should support customFields 7`] = `
+[
+  {
+    "h": "西游记第一回",
+    "id": "6",
+  },
+]
+`;
+
+exports[`generateIndex > Should support customFields 8`] = `
+[
+  {
+    "h": "",
+    "id": "7",
+  },
 ]
 `;
 
 exports[`generateIndex > Should support customFields with full index 1`] = `
 [
   {
-    "h": "Demo Page",
+    "h": "",
     "id": "0",
+    "t": [
+      "Text 1.",
+      "Text 2 with , , , and ., , , and .",
+      "Text 11 with , , , and .",
+    ],
+  },
+]
+`;
+
+exports[`generateIndex > Should support customFields with full index 2`] = `
+[
+  {
+    "h": "Demo Page",
+    "id": "1",
     "t": [
       "Here is article excerpt.",
       "const a = 1 ",
@@ -593,7 +724,7 @@ exports[`generateIndex > Should support customFields with full index 1`] = `
   },
   {
     "h": "Content",
-    "id": "0#content",
+    "id": "1#content",
     "t": [
       "Here is main content of article.",
       "A",
@@ -604,7 +735,7 @@ exports[`generateIndex > Should support customFields with full index 1`] = `
   },
   {
     "h": "Title with Special Characters #@%/",
-    "id": "0#title-with-special-characters",
+    "id": "1#title-with-special-characters",
     "t": [
       "Content with regexp sequence 'a$' test.",
     ],
@@ -613,47 +744,47 @@ exports[`generateIndex > Should support customFields with full index 1`] = `
     "c": [
       "Demo",
     ],
-    "id": "0@0",
+    "id": "1@0",
   },
 ]
 `;
 
-exports[`generateIndex > Should support customFields with full index 2`] = `
+exports[`generateIndex > Should support customFields with full index 3`] = `
 [
   {
     "h": "Heading 1",
-    "id": "1",
+    "id": "2",
   },
   {
     "h": "Heading 2",
-    "id": "1#heading-2",
+    "id": "2#heading-2",
   },
   {
     "h": "Heading 3",
-    "id": "1#heading-3",
+    "id": "2#heading-3",
   },
   {
     "h": "Heading 4",
-    "id": "1#heading-4",
+    "id": "2#heading-4",
   },
   {
     "h": "Heading 5",
-    "id": "1#heading-5",
+    "id": "2#heading-5",
   },
   {
     "h": "Heading 6",
-    "id": "1#heading-6",
+    "id": "2#heading-6",
   },
   {
     "h": "Text",
-    "id": "1#text",
+    "id": "2#text",
     "t": [
       "This sentence has bold, italic and delete style text.",
     ],
   },
   {
     "h": "Paragraph",
-    "id": "1#paragraph",
+    "id": "2#paragraph",
     "t": [
       "This is a paragraph.",
       "This is another paragraph.",
@@ -661,7 +792,7 @@ exports[`generateIndex > Should support customFields with full index 2`] = `
   },
   {
     "h": "Line Break",
-    "id": "1#line-break",
+    "id": "2#line-break",
     "t": [
       "I would like to line break at this point",
       "::: tip",
@@ -671,7 +802,7 @@ exports[`generateIndex > Should support customFields with full index 2`] = `
   },
   {
     "h": "Blockquotes",
-    "id": "1#blockquotes",
+    "id": "2#blockquotes",
     "t": [
       "Blockquotes can also be nested...",
       "...by using greater-than signs right next to each other...",
@@ -680,11 +811,11 @@ exports[`generateIndex > Should support customFields with full index 2`] = `
   },
   {
     "h": "List",
-    "id": "1#list",
+    "id": "2#list",
   },
   {
     "h": "Unordered List",
-    "id": "1#unordered-list",
+    "id": "2#unordered-list",
     "t": [
       "Create a list by starting a line with -",
       "Make sub-lists by indenting 2 spaces:",
@@ -698,7 +829,7 @@ exports[`generateIndex > Should support customFields with full index 2`] = `
   },
   {
     "h": "Ordered List",
-    "id": "1#ordered-list",
+    "id": "2#ordered-list",
     "t": [
       "Lorem ipsum dolor sit amet",
       "Consectetur adipiscing elit line break line break again",
@@ -707,11 +838,11 @@ exports[`generateIndex > Should support customFields with full index 2`] = `
   },
   {
     "h": "HR",
-    "id": "1#hr",
+    "id": "2#hr",
   },
   {
     "h": "Link",
-    "id": "1#link",
+    "id": "2#link",
     "t": [
       "Home page using absolute path",
       "Home page using relative path",
@@ -719,11 +850,11 @@ exports[`generateIndex > Should support customFields with full index 2`] = `
   },
   {
     "h": "Image",
-    "id": "1#image",
+    "id": "2#image",
   },
   {
     "h": "Emoji",
-    "id": "1#emoji",
+    "id": "2#emoji",
     "t": [
       "Classic:",
       "😉 😢 😆 😋",
@@ -731,7 +862,7 @@ exports[`generateIndex > Should support customFields with full index 2`] = `
   },
   {
     "h": "Tables",
-    "id": "1#tables",
+    "id": "2#tables",
     "t": [
       "center",
       "right",
@@ -749,7 +880,7 @@ exports[`generateIndex > Should support customFields with full index 2`] = `
   },
   {
     "h": "Codes",
-    "id": "1#codes",
+    "id": "2#codes",
     "t": [
       "Inline Code: code",
       "Block code:",
@@ -761,38 +892,17 @@ exports[`generateIndex > Should support customFields with full index 2`] = `
 ]
 `;
 
-exports[`generateIndex > Should support customFields with full index 3`] = `
-[
-  {
-    "h": "Tag Test",
-    "id": "2",
-    "t": [
-      "Markdown content.",
-    ],
-  },
-  {
-    "c": [
-      "markdown",
-    ],
-    "id": "2@0",
-  },
-]
-`;
-
 exports[`generateIndex > Should support customFields with full index 4`] = `
 [
   {
     "h": "",
     "id": "3",
     "t": [
-      "Markdown content.",
+      "Inline , , , and mixed together.",
+      "Normal content",
+      "Some badges: .",
+      "Some other tags: .",
     ],
-  },
-  {
-    "c": [
-      "markdown",
-    ],
-    "id": "3@0",
   },
 ]
 `;
@@ -800,8 +910,44 @@ exports[`generateIndex > Should support customFields with full index 4`] = `
 exports[`generateIndex > Should support customFields with full index 5`] = `
 [
   {
-    "h": "西游记第一回",
+    "h": "Tag Test",
     "id": "4",
+    "t": [
+      "Markdown content.",
+    ],
+  },
+  {
+    "c": [
+      "markdown",
+    ],
+    "id": "4@0",
+  },
+]
+`;
+
+exports[`generateIndex > Should support customFields with full index 6`] = `
+[
+  {
+    "h": "",
+    "id": "5",
+    "t": [
+      "Markdown content.",
+    ],
+  },
+  {
+    "c": [
+      "markdown",
+    ],
+    "id": "5@0",
+  },
+]
+`;
+
+exports[`generateIndex > Should support customFields with full index 7`] = `
+[
+  {
+    "h": "西游记第一回",
+    "id": "6",
     "t": [
       "灵根育孕源流出 心性修持大道生",
       "诗曰：",
@@ -876,11 +1022,11 @@ exports[`generateIndex > Should support customFields with full index 5`] = `
 ]
 `;
 
-exports[`generateIndex > Should support customFields with full index 6`] = `
+exports[`generateIndex > Should support customFields with full index 8`] = `
 [
   {
     "h": "",
-    "id": "5",
+    "id": "7",
     "t": [
       "404 Not Found",
     ],
