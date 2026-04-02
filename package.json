@@ -4,9 +4,9 @@
   "type": "module",
   "scripts": {
     "build": "pnpm run -r --stream build && pnpm run build:style",
-    "build:style": "pnpm run --parallel --stream style",
+    "build:style": "pnpm -r --parallel --stream run style",
     "bundle": "cross-env NODE_ENV=production pnpm run -r --stream build && pnpm run build:style",
-    "clean": "pnpm run --parallel --stream clean",
+    "clean": "pnpm -r --parallel --stream run clean",
     "format": "oxfmt",
     "lint": "oxlint --fix --report-unused-disable-directives --deny-warnings && stylelint **/*.{css,html,scss,vue} --fix && oxfmt",
     "lint:check": "oxlint --report-unused-disable-directives --deny-warnings && stylelint **/*.{css,html,scss,vue} && oxfmt --check",
