@@ -4,7 +4,7 @@ This document provides guidance for AI agents working on the **VuePress Ecosyste
 
 ## Repository Overview
 
-This is a [pnpm workspaces](https://pnpm.io/workspaces) monorepo that contains the official VuePress 2 plugins, themes, and tooling. All packages are published under the `@vuepress/` scope (except `create-vuepress` and `vp-update`).
+This is a [pnpm workspaces](https://pnpm.io/workspaces) monorepo that contains the official VuePress 2 plugins, themes, and tooling. All published packages are under the `@vuepress/` scope (except `create-vuepress` and `vp-update`), and the workspace also includes some private / non-published packages.
 
 ```
 plugins/      # Official plugins (grouped into sub-categories)
