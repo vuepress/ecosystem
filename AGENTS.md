@@ -12,7 +12,7 @@ This document provides guidance for AI agents working on the **VuePress Ecosyste
 
 This is a [pnpm workspaces](https://pnpm.io/workspaces) monorepo that contains the official VuePress 2 plugins, themes, and tooling. All published packages are under the `@vuepress/` scope (except `create-vuepress` and `vp-update`), and the workspace also includes some private / non-published packages.
 
-```
+```plain
 plugins/      # Official plugins (grouped into sub-categories)
 themes/       # Official themes
 tools/        # CLI tools and shared helpers
@@ -80,7 +80,7 @@ Plugins are grouped into sub-categories:
 
 Each plugin/theme follows this layout:
 
-```
+```plain
 src/
   client/      # Browser-only code (Vue components, composables, styles)
   node/        # Node.js-only code (plugin factory, markdown-it extensions)
@@ -98,10 +98,12 @@ All source files are in `src/`. Compiled output goes to `dist/` (git-ignored).
 ### Import / Export Rules
 
 - **Relative imports must use `.js` extension** even though the source files are `.ts`:
+
   ```ts
-  import { foo } from './utils.js'  // ✅
-  import { foo } from './utils'     // ❌
+  import { foo } from './utils.js' // ✅
+  import { foo } from './utils' // ❌
   ```
+
 - **No cross-folder imports** between `client`, `node`, and `shared`:
   - `client/` — no Node.js APIs, no imports from `node/`
   - `node/` — no browser APIs, no imports from `client/`
@@ -123,7 +125,7 @@ All source files are in `src/`. Compiled output goes to `dist/` (git-ignored).
 
 - All user-visible exports **must have JSDoc comments**.
   - Comments are **bilingual**: English description first, then Chinese, separated by a blank line.
-  - Include `@param` (bilingual, separated with ` / `) for every parameter.
+  - Include `@param` (bilingual, separated with `/`) for every parameter.
   - Include `@returns` (bilingual) for every non-`void` return value.
   - Include `@default` for every option that has a default value (including `@default false`).
   - Include `@example` only on exported functions.
@@ -157,7 +159,7 @@ All source files are in `src/`. Compiled output goes to `dist/` (git-ignored).
 
 Commits follow [Conventional Commits](https://www.conventionalcommits.org/). The allowed scopes are the package directory names (e.g. `plugin-shiki`, `theme-default`, `helper`) plus `e2e` and `release`. Examples:
 
-```
+```plain
 feat(plugin-shiki): add line number toggle
 fix(theme-default): correct sidebar scroll position
 chore(e2e): update playwright version
