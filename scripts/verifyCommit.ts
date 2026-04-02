@@ -9,7 +9,7 @@ const msgPath = process.argv[2]
 const msg = readFileSync(msgPath, 'utf-8').trim()
 
 const commitRE =
-  /^(revert: )?(feat|fix|docs|style|refactor|perf|test|workflow|build|ci|chore|types|release)(\(.+\))?: .{1,50}/
+  /^(revert: )?(feat|fix|docs|style|refactor|perf|test|workflow|build|ci|chore|types|release)(\([^)]+\))?: .{1,50}$/
 
 if (!commitRE.test(msg)) {
   console.error(
