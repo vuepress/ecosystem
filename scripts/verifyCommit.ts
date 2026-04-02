@@ -62,8 +62,6 @@ if (!match) {
   process.exit(1)
 }
 
-console.log(match, types, scopes)
-
 if (!types.includes(match.groups?.type ?? '')) {
   console.error(
     `${picocolors.white(picocolors.bgRed(' ERROR '))} ${picocolors.red(
@@ -80,4 +78,6 @@ if (match.groups?.scope && !scopes.includes(match.groups.scope)) {
       `invalid commit message scope: "${match.groups.scope}".`,
     )}`,
   )
+  // oxlint-disable-next-line unicorn/no-process-exit
+  process.exit(1)
 }
