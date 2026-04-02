@@ -36,7 +36,7 @@ jobs:
 
       - name: Install playwright chromium
         working-directory: ./e2e
-        run: pnpm run playwright install chromium
+        run: pnpm exec playwright install chromium
 
       - name: Build source files
         run: pnpm run bundle
