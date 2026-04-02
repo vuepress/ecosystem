@@ -2,6 +2,12 @@
 
 This document provides guidance for AI agents working on the **VuePress Ecosystem** monorepo. Read it before making any changes.
 
+## Content Rules
+
+- Target developers: concise, clear, essential information only
+- Focus on essential information developers need to understand and implement features
+- No typos or grammar errors
+
 ## Repository Overview
 
 This is a [pnpm workspaces](https://pnpm.io/workspaces) monorepo that contains the official VuePress 2 plugins, themes, and tooling. All published packages are under the `@vuepress/` scope (except `create-vuepress` and `vp-update`), and the workspace also includes some private / non-published packages.
@@ -25,7 +31,7 @@ scripts/      # Shared build scripts (tsdown config, release helpers)
 | Command               | What it does                                                  |
 | --------------------- | ------------------------------------------------------------- |
 | `pnpm install`        | Install all dependencies                                      |
-| `pnpm run bundle`     | Build every package with `tsdown` (required before tests run) |
+| `pnpm run bundle`     | Build every package with `tsdown` (required before e2e tests) |
 | `pnpm run test:unit`  | Run Vitest unit tests                                         |
 | `pnpm run test:e2e`   | Run Playwright e2e tests                                      |
 | `pnpm run test`       | Run `test:unit` + `test:e2e`                                  |
@@ -35,7 +41,7 @@ scripts/      # Shared build scripts (tsdown config, release helpers)
 | `pnpm run clean`      | Delete all `dist/` outputs                                    |
 | `pnpm run type:check` | TypeScript type checking (no emit)                            |
 
-> **Important:** All packages compile TypeScript to `./dist/` via `tsdown`. The `dist/` directories are git-ignored. Run `pnpm bundle` after cloning or cleaning before running tests.
+> **Important:** All packages compile TypeScript to `./dist/` via `tsdown`. The `dist/` directories are git-ignored. Run `pnpm bundle` before running e2e tests or working with the docs site. Unit tests (`pnpm test:unit`) run Vitest directly against TypeScript sources via aliases and do **not** require a build step.
 
 ## Directory Structure
 
@@ -91,6 +97,11 @@ All source files are in `src/`. Compiled output goes to `dist/` (git-ignored).
 
 ### Import / Export Rules
 
+- **Relative imports must use `.js` extension** even though the source files are `.ts`:
+  ```ts
+  import { foo } from './utils.js'  // ✅
+  import { foo } from './utils'     // ❌
+  ```
 - **No cross-folder imports** between `client`, `node`, and `shared`:
   - `client/` — no Node.js APIs, no imports from `node/`
   - `node/` — no browser APIs, no imports from `client/`
@@ -112,12 +123,35 @@ All source files are in `src/`. Compiled output goes to `dist/` (git-ignored).
 
 - All user-visible exports **must have JSDoc comments**.
   - Comments are **bilingual**: English description first, then Chinese, separated by a blank line.
-  - Include `@param` (bilingual, separated with `/`) for every parameter.
+  - Include `@param` (bilingual, separated with ` / `) for every parameter.
   - Include `@returns` (bilingual) for every non-`void` return value.
-  - Include `@default` for every option that has a default value.
+  - Include `@default` for every option that has a default value (including `@default false`).
   - Include `@example` only on exported functions.
+  - `@description` is optional — add only when extra explanation is genuinely needed.
 - Internal implementations do not require JSDoc, but existing ones must remain correct.
 - Plugin entrypoint files (`*Plugin.ts`, `*Theme.ts`) are exempt from `@param` / `@returns` and complexity rules.
+
+**JSDoc template:**
+
+````typescript
+/**
+ * English description
+ *
+ * 中文描述
+ *
+ * @description (optional) English detailed description
+ *
+ * 中文详细描述
+ *
+ * @param paramName - English description / 中文描述
+ *
+ * @default defaultValue
+ * @example
+ * ```ts
+ * // Example code in TypeScript
+ * ```
+ */
+````
 
 ### Commit Messages
 
@@ -224,6 +258,8 @@ Each option in plugin/theme documentation must include these sections **in this 
 ```
 
 ## CI
+
+The following table covers the PR / build / release workflows. The repo also has issue-triage automation (`issue-commented.yml`, `issue-daily.yml`, `issue-labeled.yml`) which are not relevant to code changes.
 
 | Workflow       | Trigger        | What it does                       |
 | -------------- | -------------- | ---------------------------------- |
