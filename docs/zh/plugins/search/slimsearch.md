@@ -134,6 +134,17 @@ export default defineUserConfig({
 
 :::
 
+### preserveTags
+
+- 类型: `string[]`
+- 默认值: `[]`
+
+需要在索引时保留内部内容的标签。
+
+默认情况下，只有白名单中的标签（如 `script`、`style`、`pre`、`code` 等）的内部内容会被排除在索引之外。未在白名单中的标签不会被索引。
+
+对于一些会将其插槽内容渲染为默认内容的自定义 Vue 组件（如 `<human-only>contents</human-only>`），你可以将其标签名添加到这里以在搜索索引中保留其内容。
+
 ### suggestion
 
 - 类型: `boolean`

@@ -1,3 +1,4 @@
+export * from './cheerio.js'
 export * from './data.js'
 export * from './isModuleAvailable.js'
 export * from './getModulePath.js'
