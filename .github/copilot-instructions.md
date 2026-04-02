@@ -24,7 +24,6 @@
 
 ### Import/Export Rules
 
-- Relative imports/exports must use `.js` extension with `.ts` files
 - No external dependencies warnings with `bundle` command
 
 ## CSS Rules

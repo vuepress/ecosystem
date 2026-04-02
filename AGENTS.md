@@ -22,18 +22,18 @@ scripts/      # Shared build scripts (tsdown config, release helpers)
 
 ## Essential Commands
 
-| Command | What it does |
-|---|---|
-| `pnpm install` | Install all dependencies |
-| `pnpm bundle` | Build every package with `tsdown` (required before tests run) |
-| `pnpm test:unit` | Run Vitest unit tests |
-| `pnpm test:e2e` | Run Playwright e2e tests |
-| `pnpm test` | Run `test:unit` + `test:e2e` |
-| `pnpm lint` | OxLint + Oxfmt + Stylelint (auto-fix) |
-| `pnpm lint:check` | Same checks without auto-fix |
-| `pnpm format` | Format all files with Oxfmt |
-| `pnpm clean` | Delete all `dist/` outputs |
-| `pnpm type:check` | TypeScript type checking (no emit) |
+| Command               | What it does                                                  |
+| --------------------- | ------------------------------------------------------------- |
+| `pnpm install`        | Install all dependencies                                      |
+| `pnpm run bundle`     | Build every package with `tsdown` (required before tests run) |
+| `pnpm run test:unit`  | Run Vitest unit tests                                         |
+| `pnpm run test:e2e`   | Run Playwright e2e tests                                      |
+| `pnpm run test`       | Run `test:unit` + `test:e2e`                                  |
+| `pnpm run lint`       | OxLint + Oxfmt + Stylelint (auto-fix)                         |
+| `pnpm run lint:check` | Same checks without auto-fix                                  |
+| `pnpm run format`     | Format all files with Oxfmt                                   |
+| `pnpm run clean`      | Delete all `dist/` outputs                                    |
+| `pnpm run type:check` | TypeScript type checking (no emit)                            |
 
 > **Important:** All packages compile TypeScript to `./dist/` via `tsdown`. The `dist/` directories are git-ignored. Run `pnpm bundle` after cloning or cleaning before running tests.
 
@@ -43,18 +43,18 @@ scripts/      # Shared build scripts (tsdown config, release helpers)
 
 Plugins are grouped into sub-categories:
 
-| Category | Plugins |
-|---|---|
-| `ai/` | `plugin-llms` — generates `llms.txt` / `llms-full.txt` for LLM crawlers |
-| `analytics/` | `plugin-baidu-analytics`, `plugin-clarity-analytics`, `plugin-google-analytics`, `plugin-umami-analytics` |
-| `blog/` | `plugin-blog`, `plugin-comment`, `plugin-feed` |
-| `development/` | `plugin-active-header-links`, `plugin-git`, `plugin-palette`, `plugin-reading-time`, `plugin-rtl`, `plugin-sass-palette`, `plugin-theme-data`, `plugin-toc` |
-| `features/` | `plugin-back-to-top`, `plugin-catalog`, `plugin-copy-code`, `plugin-copyright`, `plugin-icon`, `plugin-medium-zoom`, `plugin-notice`, `plugin-nprogress`, `plugin-photo-swipe`, `plugin-watermark` |
-| `markdown/` | `plugin-append-date`, `plugin-links-check`, `plugin-markdown-chart`, `plugin-markdown-container`, `plugin-markdown-ext`, `plugin-markdown-file-tree`, `plugin-markdown-hint`, `plugin-markdown-image`, `plugin-markdown-include`, `plugin-markdown-math`, `plugin-markdown-preview`, `plugin-markdown-stylize`, `plugin-markdown-tab`, `plugin-prismjs`, `plugin-revealjs`, `plugin-shiki` |
-| `pwa/` | `plugin-pwa`, `plugin-remove-pwa` |
-| `search/` | `plugin-docsearch`, `plugin-meilisearch`, `plugin-search`, `plugin-slimsearch` |
-| `seo/` | `plugin-seo`, `plugin-sitemap` |
-| `tools/` | `plugin-auto-frontmatter`, `plugin-cache`, `plugin-google-tag-manager`, `plugin-redirect`, `plugin-register-components`, `plugin-replace-assets` |
+| Category       | Plugins                                                                                                                                                                                                                                                                                                                                                                                    |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ai/`          | `plugin-llms` — generates `llms.txt` / `llms-full.txt` for LLM crawlers                                                                                                                                                                                                                                                                                                                    |
+| `analytics/`   | `plugin-baidu-analytics`, `plugin-clarity-analytics`, `plugin-google-analytics`, `plugin-umami-analytics`                                                                                                                                                                                                                                                                                  |
+| `blog/`        | `plugin-blog`, `plugin-comment`, `plugin-feed`                                                                                                                                                                                                                                                                                                                                             |
+| `development/` | `plugin-active-header-links`, `plugin-git`, `plugin-palette`, `plugin-reading-time`, `plugin-rtl`, `plugin-sass-palette`, `plugin-theme-data`, `plugin-toc`                                                                                                                                                                                                                                |
+| `features/`    | `plugin-back-to-top`, `plugin-catalog`, `plugin-copy-code`, `plugin-copyright`, `plugin-icon`, `plugin-medium-zoom`, `plugin-notice`, `plugin-nprogress`, `plugin-photo-swipe`, `plugin-watermark`                                                                                                                                                                                         |
+| `markdown/`    | `plugin-append-date`, `plugin-links-check`, `plugin-markdown-chart`, `plugin-markdown-container`, `plugin-markdown-ext`, `plugin-markdown-file-tree`, `plugin-markdown-hint`, `plugin-markdown-image`, `plugin-markdown-include`, `plugin-markdown-math`, `plugin-markdown-preview`, `plugin-markdown-stylize`, `plugin-markdown-tab`, `plugin-prismjs`, `plugin-revealjs`, `plugin-shiki` |
+| `pwa/`         | `plugin-pwa`, `plugin-remove-pwa`                                                                                                                                                                                                                                                                                                                                                          |
+| `search/`      | `plugin-docsearch`, `plugin-meilisearch`, `plugin-search`, `plugin-slimsearch`                                                                                                                                                                                                                                                                                                             |
+| `seo/`         | `plugin-seo`, `plugin-sitemap`                                                                                                                                                                                                                                                                                                                                                             |
+| `tools/`       | `plugin-auto-frontmatter`, `plugin-cache`, `plugin-google-tag-manager`, `plugin-redirect`, `plugin-register-components`, `plugin-replace-assets`                                                                                                                                                                                                                                           |
 
 ### `themes/`
 
@@ -62,13 +62,13 @@ Plugins are grouped into sub-categories:
 
 ### `tools/`
 
-| Package | Description |
-|---|---|
-| `helper` (`@vuepress/helper`) | Shared utilities for node, client, and shared environments |
+| Package                                               | Description                                                    |
+| ----------------------------------------------------- | -------------------------------------------------------------- |
+| `helper` (`@vuepress/helper`)                         | Shared utilities for node, client, and shared environments     |
 | `highlighter-helper` (`@vuepress/highlighter-helper`) | Shared utilities for syntax highlighter plugins (Shiki, Prism) |
-| `shiki-twoslash` (`@vuepress/shiki-twoslash`) | TwoSlash integration for the Shiki plugin |
-| `create-vuepress` | CLI scaffolding tool (`npm create vuepress`) |
-| `vp-update` (`vp-update`) | CLI for updating VuePress project dependencies |
+| `shiki-twoslash` (`@vuepress/shiki-twoslash`)         | TwoSlash integration for the Shiki plugin                      |
+| `create-vuepress`                                     | CLI scaffolding tool (`npm create vuepress`)                   |
+| `vp-update` (`vp-update`)                             | CLI for updating VuePress project dependencies                 |
 
 ## Package Anatomy
 
@@ -91,11 +91,6 @@ All source files are in `src/`. Compiled output goes to `dist/` (git-ignored).
 
 ### Import / Export Rules
 
-- **Relative imports must use `.js` extension** even though the source files are `.ts`:
-  ```ts
-  import { foo } from './utils.js'  // ✅
-  import { foo } from './utils'     // ❌
-  ```
 - **No cross-folder imports** between `client`, `node`, and `shared`:
   - `client/` — no Node.js APIs, no imports from `node/`
   - `node/` — no browser APIs, no imports from `client/`
@@ -117,7 +112,7 @@ All source files are in `src/`. Compiled output goes to `dist/` (git-ignored).
 
 - All user-visible exports **must have JSDoc comments**.
   - Comments are **bilingual**: English description first, then Chinese, separated by a blank line.
-  - Include `@param` (bilingual, separated with ` / `) for every parameter.
+  - Include `@param` (bilingual, separated with `/`) for every parameter.
   - Include `@returns` (bilingual) for every non-`void` return value.
   - Include `@default` for every option that has a default value.
   - Include `@example` only on exported functions.
@@ -170,19 +165,70 @@ All packages use a shared `tsdownConfig` factory defined in `scripts/tsdown.ts`:
 
 ## Documentation
 
-The documentation site lives in `docs/` and is built with VuePress. Each plugin has English and Chinese documentation pages. When changing plugin options or behaviour, update the matching docs. Documentation rules:
+The documentation site lives in `docs/` and is built with VuePress. Each plugin has English and Chinese documentation pages. When changing plugin options or behavior, update the matching docs.
 
-- Content must be consistent between English and Chinese versions.
-- Use `你` (not `您`) in Chinese text.
-- Option documentation order: **Type → Required (only if required) → Default (only if non-obvious) → Details**.
-- Omit `Default: false` for boolean options and `Default: ''` for string options.
+### General Requirements
+
+- Consistent with code behaviors
+- Chinese/English content must be consistent in structure and content
+- Make content concise and clear, remove unnecessary words, avoid redundancy, prefer shorter if possible
+- Use "你" instead of "您" in Chinese
+- Ignore any errors with `@[code ...` as they are VuePress code import grammar, which is not standard.
+- Ignore any errors with VuePress components in markdown.
+
+### Options Documentation Format
+
+Each option in plugin/theme documentation must include these sections **in this exact order**:
+
+1. **Type**
+   - English: `- Type: \`type\``
+   - Chinese: `- 类型：\`type\``
+   - Follow with code fence for complex types
+
+2. **Required Status**
+   - Only for required options: `- Required: Yes` / `- 必填：是`
+   - **Never write "Required: No" for optional options**
+
+3. **Default Value**
+   - **INCLUDE Default when**: Default value is NOT the expected/obvious value
+   - **OMIT Default when**: Default value is expected/obvious
+     - `boolean` options with `false` default → **OMIT**
+     - `string` options with `''` default → **OMIT**
+     - `object` options with `undefined` default → **OMIT**
+   - Format: `- Default: \`value\``/`- 默认值：\`value\``
+
+4. **Details** (必须包含)
+   - English: `- Details: Brief description`
+   - Chinese: `- 详情：简要描述`
+   - Prefer same line for short contents and paragraph for long contents.
+
+**Example Format:**
+
+```md
+### optionName
+
+- Type: `boolean`
+- Details: Whether to enable this feature.
+
+### requiredOption
+
+- Type: `string`
+- Required: Yes
+- Details: The required configuration.
+
+### optionWithNonStandardDefault
+
+- Type: `number`
+- Default: `100`
+- Details: Custom timeout value.
+```
 
 ## CI
 
-| Workflow | Trigger | What it does |
-|---|---|---|
-| `check.yml` | Push / PR | Lint, type-check, unit tests |
-| `e2e.yml` | Push / PR | Playwright e2e tests (dev + build) |
-| `coverage.yml` | Push to `main` | Code coverage report (Coveralls) |
-| `docs.yml` | Push to `main` | Deploys the documentation site |
-| `release.yml` | Manual | Full release pipeline |
+| Workflow       | Trigger        | What it does                       |
+| -------------- | -------------- | ---------------------------------- |
+| `check.yml`    | Push / PR      | Lint, type-check, unit tests       |
+| `e2e.yml`      | Push / PR      | Playwright e2e tests (dev + build) |
+| `coverage.yml` | Push to `main` | Code coverage report (Coveralls)   |
+| `docs.yml`     | Push to `main` | Deploys the documentation site     |
+| `release.yml`  | Manual         | Full release pipeline              |
