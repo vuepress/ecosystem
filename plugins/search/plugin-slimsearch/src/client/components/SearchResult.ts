@@ -147,9 +147,13 @@ export default defineComponent({
         const formatterConfig =
           customFieldConfig[matchedItem.index] || '$content'
 
-        const [prefix, suffix = ''] = isPlainObject(formatterConfig)
-          ? formatterConfig[routeLocale.value].split('$content')
-          : formatterConfig.split('$content')
+        const rawFormatter = isPlainObject(formatterConfig)
+          ? (formatterConfig[routeLocale.value] ?? '$content')
+          : formatterConfig
+
+        const [prefix, suffix = ''] = (
+          isString(rawFormatter) ? rawFormatter : '$content'
+        ).split('$content')
 
         return matchedItem.display.map((display) =>
           h('div', getVNodes([prefix, ...display, suffix])),
