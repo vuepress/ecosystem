@@ -2,16 +2,13 @@ import { entries, fromEntries } from '@vuepress/helper/client'
 import type { IndexObject } from 'slimsearch'
 import { loadIndex } from 'slimsearch'
 
-import type { WorkerMessageData } from '../client/typings/index.js'
-import {
-  getSearchResults,
-  getSuggestions,
-} from '../client/worker-utils/index.js'
 import type {
   IndexItem,
   SearchIndexStore,
   SlimSearchSortStrategy,
+  WorkerMessageData,
 } from '../shared/index.js'
+import { getSearchResults, getSuggestions } from './utils/index.js'
 
 declare const __SLIMSEARCH_INDEX__: string
 declare const __SLIMSEARCH_SORT_STRATEGY__: SlimSearchSortStrategy

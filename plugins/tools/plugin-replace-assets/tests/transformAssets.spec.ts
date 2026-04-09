@@ -118,7 +118,9 @@ describe('plugin-replace-assets > replacementAssetWithRules', () => {
     'vtt',
     'pdf',
   ]
-  const replacementFn = vi.fn((url) => `https://example.com/assets${url}`)
+  const replacementFn = vi.fn<(url: string) => string>(
+    (url) => `https://example.com/assets${url}`,
+  )
 
   it.each([
     {

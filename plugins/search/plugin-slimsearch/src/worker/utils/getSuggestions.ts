@@ -1,8 +1,7 @@
 import type { SearchIndex } from 'slimsearch'
 import { autoSuggest } from 'slimsearch'
 
-import type { IndexItem } from '../../shared/index.js'
-import type { WorkerSearchOptions } from '../typings/index.js'
+import type { IndexItem, WorkerSearchOptions } from '../../shared/index.js'
 
 export const getSuggestions = (
   query: string,

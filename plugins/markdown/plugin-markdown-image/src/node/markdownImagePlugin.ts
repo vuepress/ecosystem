@@ -1,6 +1,5 @@
 import { figure } from '@mdit/plugin-figure'
 import { imgLazyload } from '@mdit/plugin-img-lazyload'
-import type { MarkdownItImgMarkOptions } from '@mdit/plugin-img-mark'
 import { imgMark } from '@mdit/plugin-img-mark'
 import { imgSize, legacyImgSize, obsidianImgSize } from '@mdit/plugin-img-size'
 import { deepAssign } from '@vuepress/helper'
@@ -52,12 +51,7 @@ export const markdownImagePlugin =
         // oxlint-disable-next-line typescript/no-deprecated
         if (opts.legacySize) md.use(legacyImgSize)
         if (opts.obsidianSize) md.use(obsidianImgSize)
-        if (mark) {
-          md.use<MarkdownItImgMarkOptions>(
-            imgMark,
-            isPlainObject(mark) ? mark : {},
-          )
-        }
+        if (mark) md.use(imgMark, isPlainObject(mark) ? mark : {})
       },
 
       clientConfigFile: () => prepareClientConfigFile(app, opts),

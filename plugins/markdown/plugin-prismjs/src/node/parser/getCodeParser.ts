@@ -58,7 +58,7 @@ const createOpenTag = (
   content = '',
   classList: string[] = [],
 ): OpenTag => {
-  const match = snippet.match(CLASS_RE)
+  const match = CLASS_RE.exec(snippet)
 
   if (!match) {
     const hashHtml = snippet.length > 1
@@ -81,7 +81,7 @@ const createOpenTag = (
   return {
     before: snippet.slice(0, match.index),
     classList: [...classList, ...match[1].split(' ')],
-    after: snippet.slice(match.index! + match[0].length),
+    after: snippet.slice(match.index + match[0].length),
     content,
     toString() {
       // oxlint-disable-next-line no-shadow
@@ -114,12 +114,12 @@ const createOpenTag = (
  */
 export const getCodeParser = (html: string, lang = ''): CodeParser => {
   let content = html
-  const preOpen = html.match(PRE_OPEN_TAG_RE)?.[1] ?? ''
+  const preOpen = PRE_OPEN_TAG_RE.exec(html)?.[1] ?? ''
 
   content = content.slice(preOpen.length)
 
-  const code = content.match(CODE_OPEN_TAG_RE)?.[1] ?? ''
-  const endLine = content.match(FENCE_CLOSE_TAG_RE)?.[1] ?? ''
+  const code = CODE_OPEN_TAG_RE.exec(content)?.[1] ?? ''
+  const endLine = FENCE_CLOSE_TAG_RE.exec(content)?.[1] ?? ''
 
   content = content.slice(
     code.length,

@@ -65,12 +65,7 @@ export const updateSearchIndex = async (
   store: PathStore,
   page: Page<{ excerpt?: string }>,
 ): Promise<void> => {
-  const pageIndexes = generatePageIndex(
-    page,
-    store,
-    options.customFields,
-    options.indexContent,
-  )
+  const pageIndexes = generatePageIndex(page, store, options)
   const { pathLocale } = page
   const pageId = store.addPath(page.path).toString() as PageIndexId
   const localeSearchIndex = searchIndexStore[pathLocale]

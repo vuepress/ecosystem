@@ -202,4 +202,15 @@ export interface SlimSearchPluginOptions {
    * @returns whether the page should be indexed
    */
   filter?: (page: Page) => boolean
+
+  /**
+   * Tags whose content should be preserved
+   *
+   * @description Tags not in the default whitelist will not be indexed. For custom Vue components that render slot content by default (like `<human-only>contents</human-only>`), you can add their tag names here to preserve their content.
+   *
+   * 需要保留内容的标签
+   *
+   * @description 默认白名单之外的标签不会被索引。对于一些会将其插槽内容渲染为默认内容的 Vue 组件（如 `<human-only>contents</human-only>`），你可以将其标签名添加到这里以保留其内容。
+   */
+  preserveTags?: string[]
 }

@@ -11,7 +11,7 @@ export const CLIENT_FOLDER = ensureEndingSlash(
   path.resolve(__dirname, '../client/'),
 )
 
-export const WORKER_FILE = path.resolve(__dirname, '../worker/index.js')
+export const WORKER_FILE = path.resolve(__dirname, '../worker/build.js')
 
 export const getLocaleChunkName = (locale: string): string =>
   locale.replaceAll('/', '') || 'root'

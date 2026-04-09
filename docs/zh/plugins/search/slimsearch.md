@@ -134,6 +134,17 @@ export default defineUserConfig({
 
 :::
 
+### preserveTags
+
+- 类型: `string[]`
+- 默认值: `[]`
+
+需要在索引时保留内部内容的标签。
+
+默认情况下，索引器只会遍历一组内置的 HTML 标签来提取文本内容，并且会索引诸如 `pre`、`code` 中的代码内容。像 `script`、`style` 这类标签，以及不在这组内置标签中的自定义标签 / 组件，其内部内容会被整体跳过，不会进入索引。
+
+对于一些会将其插槽内容渲染为普通文本的自定义 Vue 组件（如 `<human-only>contents</human-only>`），你可以将其标签名添加到这里，以便在搜索索引中保留其内部内容。
+
 ### suggestion
 
 - 类型: `boolean`

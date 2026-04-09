@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.128](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.127...v2.0.0-rc.128) (2026-04-02)
+
+### Bug Fixes
+
+- Potential fix for code scanning alert no. 33: Inefficient regular expression ([#663](https://github.com/vuepress/ecosystem/issues/663)) ([9300b16](https://github.com/vuepress/ecosystem/commit/9300b16c14f874a96aee271d4c218accfb2be07c))
+- Potential fix for code scanning alert no. 34: Inefficient regular expression ([#662](https://github.com/vuepress/ecosystem/issues/662)) ([2fcaeab](https://github.com/vuepress/ecosystem/commit/2fcaeab9a274fc8da860d9006cf841e0aee7f985))
+
 # [2.0.0-rc.127](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.126...v2.0.0-rc.127) (2026-03-31)
 
 **Note:** Version bump only for package @vuepress/plugin-prismjs

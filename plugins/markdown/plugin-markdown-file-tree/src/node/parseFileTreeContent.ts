@@ -66,10 +66,10 @@ export const parseFileTreeContent = (content: string): FileTreeNode[] => {
   } as unknown as FileTreeNode
   const stack: FileTreeNode[] = [root]
   const lines = content.trimEnd().split('\n')
-  const spaceLength = lines[0].match(/^\s*/)?.[0].length ?? 0
+  const spaceLength = /^\s*/.exec(lines[0])?.[0].length ?? 0
 
   for (const line of lines) {
-    const match = line.match(/^(\s*)-(.*)$/)
+    const match = /^(\s*)-(.*)$/.exec(line)
     if (!match) continue
 
     const level = Math.floor((match[1].length - spaceLength) / 2)

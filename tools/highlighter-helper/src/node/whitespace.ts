@@ -55,7 +55,7 @@ export const resolveWhitespacePosition = (
     ? (globalOption as WhitespacePosition)
     : false
 
-  const match = info.match(WHITESPACE_REGEXP)
+  const match = WHITESPACE_REGEXP.exec(info)
 
   if (match) {
     if (AVAILABLE_WHITESPACE_POSITIONS.has(match[1]))

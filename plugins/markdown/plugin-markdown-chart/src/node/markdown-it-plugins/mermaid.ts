@@ -98,7 +98,9 @@ const DIAGRAM_MAP: Record<string, [diagramName: string, indent?: boolean]> = {
   'ishikawa': ['ishikawa-beta'],
   'radar': ['radar-beta'],
   'treemap': ['treemap-beta', false],
+  'treeview': ['treeView-beta'],
   'venn': ['venn-beta', false],
+  'wardley': ['wardley-beta', false],
   'xy': ['xychart', false],
 }
 

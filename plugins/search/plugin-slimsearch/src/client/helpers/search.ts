@@ -5,7 +5,7 @@ import type { PageData } from 'vuepress/client'
 import { useRouteLocale } from 'vuepress/client'
 import { isFunction } from 'vuepress/shared'
 
-import type { SearchResult, WorkerSearchOptions } from '../typings/index.js'
+import type { SearchResult, WorkerSearchOptions } from '../../shared/index.js'
 
 declare const __VUEPRESS_DEV__: boolean
 

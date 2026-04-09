@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.128](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.127...v2.0.0-rc.128) (2026-04-02)
+
+### Bug Fixes
+
+- **theme-default:** improve repo resolve ([3767165](https://github.com/vuepress/ecosystem/commit/3767165cb99c814bfd66eea9a761b394a4ba90c3))
+- **theme:** stricter repo resolve ([12ea0b9](https://github.com/vuepress/ecosystem/commit/12ea0b99d60fa070ce73464fe472acb023904f57))
+
 # [2.0.0-rc.127](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.126...v2.0.0-rc.127) (2026-03-31)
 
 **Note:** Version bump only for package @vuepress/theme-default

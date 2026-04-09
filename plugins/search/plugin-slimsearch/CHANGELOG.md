@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.129](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.128...v2.0.0-rc.129) (2026-04-02)
+
+### Bug Fixes
+
+- **slimsearch:** ensure vuepress is inlined ([dea9212](https://github.com/vuepress/ecosystem/commit/dea9212e73fedbc0d31746466c3655ce18b9e93b))
+
+# [2.0.0-rc.128](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.127...v2.0.0-rc.128) (2026-04-02)
+
+### Bug Fixes
+
+- **plugin-slimsearch:** correct worker file position ([#658](https://github.com/vuepress/ecosystem/issues/658)) ([dfcad1d](https://github.com/vuepress/ecosystem/commit/dfcad1d32a2432021b7ea0c27597558652c8c1e6))
+
+### Features
+
+- **plugin-slimsearch:** add preserveTags options and change default behavior ([#659](https://github.com/vuepress/ecosystem/issues/659)) ([62c98df](https://github.com/vuepress/ecosystem/commit/62c98df121d4ca4e9ab1fa459610db98607b7b6d))
+
 # [2.0.0-rc.127](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.126...v2.0.0-rc.127) (2026-03-31)
 
 ### Bug Fixes

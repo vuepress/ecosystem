@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-chart",
-  "version": "2.0.0-rc.127",
+  "version": "2.0.0-rc.128",
   "description": "VuePress plugin - markdown chart",
   "keywords": [
     "chart",
@@ -74,7 +74,7 @@
     "markmap-lib": "^0.18.12",
     "markmap-toolbar": "^0.18.12",
     "markmap-view": "^0.18.12",
-    "mermaid": "^11.13.0",
+    "mermaid": "^11.14.0",
     "vuepress": "catalog:"
   },
   "peerDependenciesMeta": {

@@ -9,6 +9,9 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -29,15 +32,15 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build source files
-        run: pnpm bundle
+        run: pnpm run bundle
 
       - name: Linter Test
-        run: pnpm lint:check
+        run: pnpm run lint:check
 
       - name: Docs Test
         run: |
-          pnpm --filter @vuepress/ecosystem-docs docs:build
-          pnpm --filter @vuepress/ecosystem-docs docs:build-webpack
+          pnpm run --filter @vuepress/ecosystem-docs docs:build
+          pnpm run --filter @vuepress/ecosystem-docs docs:build-webpack
 
       - name: Unit Test
-        run: pnpm test:unit
+        run: pnpm run test:unit

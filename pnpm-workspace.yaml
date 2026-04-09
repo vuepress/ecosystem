@@ -6,24 +6,33 @@ packages:
   - tools/*
 
 catalog:
-  '@vuepress/bundler-vite': 2.0.0-rc.27
-  '@vuepress/bundler-webpack': 2.0.0-rc.27
+  '@vuepress/bundler-vite': 2.0.0-rc.28
+  '@vuepress/bundler-webpack': 2.0.0-rc.28
   '@vueuse/core': ^14.2.1
   chokidar: ^5.0.0
   sass: ^1.98.0
   sass-embedded: ^1.98.0
   sass-loader: ^16.0.7
   vue: ^3.5.31
-  vuepress: 2.0.0-rc.27
+  vuepress: 2.0.0-rc.28
 
 allowBuilds:
   '@parcel/watcher': true
   esbuild: true
 
 overrides:
-  vite@7: npm:vite@^8.0.0-beta.18
+  '@chevrotain/cst-dts-gen@11>lodash-es': ^4.18.1
+  '@chevrotain/gast@11>lodash-es': ^4.18.1
+  'chevrotain@11>lodash-es': ^4.18.1
+  '@rollup/plugin-replace@2>magic-string': ^0.30.21
+  '@surma/rollup-plugin-off-main-thread>magic-string': ^0.30.21
+  '@xmldom/xmldom': ^0.9.9
+  'markmap-html-parser@0.18.11>cheerio': ^1.2.0
+  'workbox-build@7.4.0>@rollup/plugin-terser': ^1.0.0
+  'workbox-build@7.4.0>glob': ^13.0.6
+  'workbox-build@7.4.0>source-map': ^0.7.6
 
 peerDependencyRules:
   allowedVersions:
     artalk>marked: ^17.0.0
-    echarts-wordcloud@2>echarts: '6'
+    echarts-wordcloud>echarts: ^6.0.0
