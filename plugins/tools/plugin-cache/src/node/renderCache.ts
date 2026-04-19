@@ -1,10 +1,11 @@
 /**
- * When various features are added to markdown, the compilation speed of a single markdown file
- * will become slower, especially when there are many pages in the project,
- * causing the startup of the vuepress development service to become very slow and time-consuming.
- * This plugin will cache the `markdown render` result during the initial compilation process.
- * During subsequent compilations, if the content has not been modified,
- * compilation will be skipped directly, thus speeding up the second startup of vuepress.
+ * When various features are added to markdown, the compilation speed of a
+ * single markdown file will become slower, especially when there are many pages
+ * in the project, causing the startup of the vuepress development service to
+ * become very slow and time-consuming. This plugin will cache the `markdown
+ * render` result during the initial compilation process. During subsequent
+ * compilations, if the content has not been modified, compilation will be
+ * skipped directly, thus speeding up the second startup of vuepress.
  */
 import type { App } from 'vuepress'
 import type { Markdown, MarkdownEnv } from 'vuepress/markdown'
@@ -135,8 +136,8 @@ export const renderCacheWithFilesystem = async (
     const content = rawRender(input, env)
 
     /**
-     * High-frequency I/O is also a time-consuming operation,
-     * therefore, for render operations with low overhead, caching is not performed.
+     * High-frequency I/O is also a time-consuming operation, therefore, for
+     * render operations with low overhead, caching is not performed.
      */
     if (performance.now() - start > speed) {
       metadata[filepath] = key

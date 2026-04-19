@@ -16,7 +16,8 @@ export interface BaseCommentPluginOptions {
   /**
    * The delay of DOM operation, in ms
    *
-   * If the theme you are using has a switching animation, it is recommended to configure this option to `Switch animation duration + 200`
+   * If the theme you are using has a switching animation, it is recommended to
+   * configure this option to `Switch animation duration + 200`
    *
    * 进行 DOM 操作的延时，单位 ms
    *

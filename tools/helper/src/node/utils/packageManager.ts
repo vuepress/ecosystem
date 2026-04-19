@@ -30,7 +30,6 @@ const isInstalled = (packageManager: PackageManager): boolean => {
  * 检查包管理器是否已全局安装
  *
  * @param packageManager - Package manager / 包管理器
- *
  * @returns Whether the package manager is installed / 包管理器是否已安装
  */
 export const isPackageManagerInstalled = (
@@ -58,7 +57,6 @@ export const isPackageManagerInstalled = (
  *
  * @param cwd - Current working directory / 当前工作目录
  * @param deep - Whether to search in parent directories / 是否在父目录中搜索
- *
  * @returns The type of package manager / 包管理器类型
  */
 export const getPackageManagerSetting = (
@@ -129,7 +127,6 @@ const getLockFileTypeInDir = (dir: string): PackageManager | null => {
  *
  * @param cwd - Current working directory / 当前工作目录
  * @param deep - Whether to search in parent directories / 是否在父目录中搜索
- *
  * @returns The type of lock file / 锁文件类型
  */
 export const getTypeofLockFile = (
@@ -173,7 +170,6 @@ export const getTypeofLockFile = (
  *
  * @param cwd - Current working directory / 当前工作目录
  * @param deep - Whether to search in parent directories / 是否在父目录中搜索
- *
  * @returns The type of package manager / 包管理器类型
  */
 export const getPackageManager = (

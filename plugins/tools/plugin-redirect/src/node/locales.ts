@@ -2,9 +2,7 @@ import type { DefaultLocaleInfo } from '@vuepress/helper'
 
 import type { RedirectPluginLocaleData } from '../shared/index.js'
 
-/**
- * Default locale info for `@vuepress/plugin-redirect`
- */
+/** Default locale info for `@vuepress/plugin-redirect` */
 export const redirectLocaleInfo: DefaultLocaleInfo<RedirectPluginLocaleData> = [
   [
     ['en', 'en-US'],

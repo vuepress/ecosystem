@@ -97,14 +97,14 @@ interface FeedAuthor {
   /**
    * 作者网站
    *
-   * @description 仅限 json 格式
+   * 仅限 json 格式
    */
   url?: string
 
   /**
    * 作者头像
    *
-   * @description 仅限 json 格式
+   * 仅限 json 格式
    */
   avatar?: string
 }
@@ -135,14 +135,14 @@ interface FeedContributor {
   /**
    * 作者网站
    *
-   * @description 仅限 json 格式
+   * 仅限 json 格式
    */
   url?: string
 
   /**
    * 作者头像
    *
-   * @description 仅限 json 格式
+   * 仅限 json 格式
    */
   avatar?: string
 }

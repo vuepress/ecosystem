@@ -32,22 +32,20 @@ declare module 'vuepress/markdown' {
  * Markdown 图表插件
  *
  * @example
- * ```ts
- * import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
+ *   import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
  *
- * export default {
- *   plugins: [
- *     markdownChartPlugin({
- *       chartjs: true,
- *       echarts: true,
- *       flowchart: true,
- *       markmap: true,
- *       mermaid: true,
- *       plantuml: true,
- *     }),
- *   ],
- * }
- * ```
+ *   export default {
+ *     plugins: [
+ *       markdownChartPlugin({
+ *         chartjs: true,
+ *         echarts: true,
+ *         flowchart: true,
+ *         markmap: true,
+ *         mermaid: true,
+ *         plantuml: true,
+ *       }),
+ *     ],
+ *   }
  */
 export const markdownChartPlugin =
   (options: MarkdownChartPluginOptions = {}): Plugin =>

@@ -129,21 +129,21 @@ If you want to prevent users copying long content, you can set `maxLength` in pl
     /**
      * Author text
      *
-     * @description `:author` will be replaced by author
+     * `:author` will be replaced by author
      */
     author: string
 
     /**
      * License text
      *
-     * @description `:license` will be replaced by current license
+     * `:license` will be replaced by current license
      */
     license: string
 
     /**
      * Link text
      *
-     * @description `:link` will be replaced by current page link
+     * `:link` will be replaced by current page link
      */
     link: string
   }

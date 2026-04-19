@@ -28,7 +28,7 @@ export interface RedirectPluginLocaleData {
   cancel: string
 
   /**
-   * remember hint text
+   * Remember hint text
    *
    * 记住提示文本
    */

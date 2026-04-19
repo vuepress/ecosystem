@@ -3,14 +3,12 @@ import { entries } from '@vuepress/helper'
 /**
  * Create regex to match template variable in format `{key}`
  *
+ * @example
+ *   const regex = templateVariable('name')
+ *   console.log(regex.test('Hello {name}')) // true
+ *
  * @param key - Template variable name to match
  * @returns Case-insensitive regex that detects `{key}` occurrences
- *
- * @example
- * ```ts
- * const regex = templateVariable('name')
- * console.log(regex.test('Hello {name}')) // true
- * ```
  */
 const templateVariable = (key: string): RegExp =>
   new RegExp(`(\\n\\s*\\n)?\\{${key}\\}`, 'gi')
@@ -20,18 +18,16 @@ const templateVariable = (key: string): RegExp =>
  *
  * Falls back to fallback value if value is empty or undefined
  *
+ * @example
+ *   const template = 'Hello {name}!'
+ *   const result = replaceTemplateVariable(template, 'name', 'Alice', 'User')
+ *   console.log(result) // 'Hello Alice!'
+ *
  * @param content - Template string containing placeholders
  * @param variable - Template variable name to replace
  * @param value - Value to replace the variable with
  * @param fallback - Optional fallback value if `value` is empty
  * @returns String with template variable replaced
- *
- * @example
- * ```ts
- * const template = 'Hello {name}!'
- * const result = replaceTemplateVariable(template, 'name', 'Alice', 'User')
- * console.log(result) // 'Hello Alice!'
- * ```
  */
 export const replaceTemplateVariable = (
   content: string,

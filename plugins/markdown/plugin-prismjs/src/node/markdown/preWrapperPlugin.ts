@@ -4,8 +4,8 @@ import { resolveLanguage } from '../utils/index.js'
 
 export interface MarkdownItPreWrapperOptions {
   /**
-   * Wrap the `<pre>` tag with an extra `<div>` or not. Do not disable it unless you
-   * understand what's it for
+   * Wrap the `<pre>` tag with an extra `<div>` or not. Do not disable it unless
+   * you understand what's it for
    *
    * - Required for line numbers, title display and code block collapsing
    *
@@ -21,16 +21,15 @@ export interface MarkdownItPreWrapperOptions {
  *
  * 用于 pre 包装器的 markdown-it 插件
  *
+ * @example
+ *   import { preWrapperPlugin } from '@vuepress/plugin-prismjs'
+ *   import MarkdownIt from 'markdown-it'
+ *
+ *   const md = new MarkdownIt()
+ *   md.use(preWrapperPlugin, { preWrapper: true })
+ *
  * @param md - MarkdownIt instance / MarkdownIt 实例
  * @param options - Plugin options / 插件选项
- * @example
- * ```ts
- * import { preWrapperPlugin } from '@vuepress/plugin-prismjs'
- * import MarkdownIt from 'markdown-it'
- *
- * const md = new MarkdownIt()
- * md.use(preWrapperPlugin, { preWrapper: true })
- * ```
  */
 export const preWrapperPlugin = (
   md: Markdown,
@@ -53,9 +52,7 @@ export const preWrapperPlugin = (
     result = result.replace(/<code[^]*?>/, `<code class="${languageClass}">`)
     if (!preWrapper || !result.startsWith('<pre')) return result
 
-    /**
-     * Add information to dataset for current code block.
-     */
+    /** Add information to dataset for current code block. */
     return `<div class="${languageClass}" data-highlighter="prismjs" data-ext="${language.ext}">${result.replace(` class="${languageClass}"`, '')}</div>`
   }
 }

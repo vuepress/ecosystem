@@ -11,24 +11,22 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  * 目录插件
  *
  * @example
- * ```ts
- * import { tocPlugin } from '@vuepress/plugin-toc'
+ *   import { tocPlugin } from '@vuepress/plugin-toc'
  *
- * export default {
- *   plugins: [
- *     tocPlugin({
- *       componentName: 'Toc',
- *       headersOptions: {
- *         level: [2, 4]
- *       },
- *       renderOptions: {
- *         containerClass: 'my-toc',
- *         linkClass: 'my-toc-link'
- *       }
- *     })
- *   ]
- * }
- * ```
+ *   export default {
+ *     plugins: [
+ *       tocPlugin({
+ *         componentName: 'Toc',
+ *         headersOptions: {
+ *           level: [2, 4],
+ *         },
+ *         renderOptions: {
+ *           containerClass: 'my-toc',
+ *           linkClass: 'my-toc-link',
+ *         },
+ *       }),
+ *     ],
+ *   }
  */
 export const tocPlugin = ({
   componentName = 'Toc',

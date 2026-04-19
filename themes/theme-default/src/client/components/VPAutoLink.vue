@@ -4,9 +4,7 @@ import type { AutoLinkConfig } from 'vuepress/client'
 import { AutoLink } from 'vuepress/client'
 
 const { config } = defineProps<{
-  /**
-   * The auto link config
-   */
+  /** The auto link config */
   config: AutoLinkConfig
 }>()
 

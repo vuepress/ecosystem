@@ -1,8 +1,6 @@
 const POLL_INTERVAL = 16
 
-/**
- * Programmatically open the docsearch modal
- */
+/** Programmatically open the docsearch modal */
 export const pollToOpenDocSearch = (): void => {
   if (document.querySelector('.DocSearch-Modal')) return
   const event = new Event('keydown') as {

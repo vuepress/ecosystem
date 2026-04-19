@@ -7,20 +7,15 @@ const getLength = (size: number | string): string =>
   typeof size === 'number' ? `${size}px` : size
 
 export interface LoadingIconProps {
-  /**
-   * The size of the loading icon, default to 48
-   */
+  /** The size of the loading icon, default to 48 */
   size?: number
-  /**
-   * The stroke width of the loading icon, default to 4
-   */
+  /** The stroke width of the loading icon, default to 4 */
   stroke?: number
-  /**
-   * Whether to wrap the loading icon with a div, default to true
-   */
+  /** Whether to wrap the loading icon with a div, default to true */
   wrapper?: boolean
   /**
-   * The height of the wrapper div, default to 2 times the size of the loading icon
+   * The height of the wrapper div, default to 2 times the size of the loading
+   * icon
    */
   height?: number | string
 }
@@ -30,13 +25,13 @@ export interface LoadingIconProps {
  *
  * 加载图标
  *
- * @returns A loading icon component
- *
- * @example
+ * E.g.:
  *
  * ```html
  * <LoadingIcon :size="64" :stroke="6" :wrapper="false" />
  * ```
+ *
+ * @returns A loading icon component
  */
 export const LoadingIcon: FunctionalComponent<LoadingIconProps> = ({
   size = 48,

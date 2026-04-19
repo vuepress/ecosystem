@@ -1,10 +1,9 @@
 import { readdirSync } from 'node:fs'
-import { dirname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { resolve } from 'node:path'
 
 import { tsdownConfig } from '../../scripts/tsdown.js'
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const __dirname = import.meta.dirname
 
 export default tsdownConfig(
   [

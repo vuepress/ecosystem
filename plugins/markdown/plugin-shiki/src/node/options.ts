@@ -23,7 +23,7 @@ export type ShikiPluginOptions = MarkdownItCodeBlockTitleOptions &
      *
      * 启用 twoslash
      *
-     * @description You should install `@shikijs/twoslash` manually.
+     * You should install `@shikijs/twoslash` manually.
      *
      * 你需要手动安装 `@shikijs/twoslash`。
      *

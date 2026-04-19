@@ -165,7 +165,7 @@ interface BlogCategoryOptions {
   /**
    * 注册页面的路径模式
    *
-   * @description `:key` 将被替换为原始 key 的 "slugify" 结果
+   * `:key` 将被替换为原始 key 的 "slugify" 结果
    *
    * @default `/:key/`
    */
@@ -186,7 +186,7 @@ interface BlogCategoryOptions {
   /**
    * Item 页面的路径模式或自定义函数
    *
-   * @description 当填入字符串时，`:key` 和 `:name` 将被替换为原始 key 和 name 的 "slugify" 结果
+   * 当填入字符串时，`:key` 和 `:name` 将被替换为原始 key 和 name 的 "slugify" 结果
    *
    * @default `/:key/:name/`
    */

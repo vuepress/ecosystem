@@ -168,7 +168,7 @@ However, if you want users to acknowledge the notice, set `confirm: true` so use
     /**
      * Notice key
      *
-     * @description Used to identify and store the notice status
+     * Used to identify and store the notice status
      */
     key?: string
 

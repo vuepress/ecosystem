@@ -4,7 +4,7 @@ export interface RemovePwaPluginOptions {
    *
    * 需要移除的缓存模式
    *
-   * @default []
+   * @default [ ]
    */
   cachePatterns?: string[]
 
@@ -13,7 +13,7 @@ export interface RemovePwaPluginOptions {
    *
    * 相对于 dest 文件夹的原始 service worker 位置
    *
-   * @default "service-worker.js"
+   * @default 'service-worker.js'
    */
   swLocation?: string
 }

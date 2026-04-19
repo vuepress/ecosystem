@@ -22,17 +22,12 @@ export const blogCategoryMap = readonly(categoryMapRef)
  *
  * 使用博客分类数据
  *
- * @description Get blog category data for current page or specified key
+ * Get blog category data for current page or specified key
  *
  * 获取当前页面或指定键的博客分类数据
  *
- * @param key - Category key to get data for
- *
- * key - 要获取数据的分类键
- *
- * @returns Computed blog category data
- *
- * 返回计算的博客分类数据
+ * @param key - Category key to get data for / 要获取数据的分类键
+ * @returns Computed blog category dat / 返回计算的博客分类数据
  */
 export const useBlogCategory = <
   T extends Record<string, unknown> = Record<string, unknown>,

@@ -51,11 +51,11 @@ export default defineComponent({
     /**
      * Max level of catalog
      *
-     * @description only 1,2,3 are supported
+     * Only 1,2,3 are supported
      *
      * Catalog 的最大层级
      *
-     * @description 目前仅支持 1,2,3
+     * 目前仅支持 1,2,3
      *
      * @default 3
      */

@@ -2,9 +2,7 @@ import type { DefaultLocaleInfo } from '@vuepress/helper'
 
 import type { SlimSearchLocaleData } from '../shared/index.js'
 
-/**
- * Default locale info for `@vuepress/plugin-slimsearch`
- */
+/** Default locale info for `@vuepress/plugin-slimsearch` */
 export const slimsearchLocaleInfo: DefaultLocaleInfo<SlimSearchLocaleData> = [
   [
     ['en', 'en-US'],

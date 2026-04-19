@@ -28,8 +28,7 @@ interface ApplePwaOptions {
    * Color of status bar
    *
    * 状态栏的颜色
-   *
-   * @default "default"
+   * @default 'default'
    */
   statusBarColor?: 'black-translucent' | 'black' | 'default'
 }
@@ -40,7 +39,7 @@ export interface PwaPluginOptions {
    *
    * Service Worker 文件路径
    *
-   * @default "service-worker.js"
+   * @default 'service-worker.js'
    */
   serviceWorkerFilename?: string
 
@@ -56,14 +55,14 @@ export interface PwaPluginOptions {
   /**
    * Manifest file Config
    *
-   * manifest 文件设置
+   * Manifest 文件设置
    */
   manifest?: AppManifest
 
   /**
    * Path of favicon
    *
-   * favicon 地址
+   * Favicon 地址
    */
   favicon?: string
 
@@ -72,7 +71,7 @@ export interface PwaPluginOptions {
    *
    * 主题色
    *
-   * @default "#46bd87"
+   * @default '#46bd87'
    */
   themeColor?: string
 
@@ -122,19 +121,26 @@ export interface PwaPluginOptions {
   /**
    * Update logic
    *
-   * - `"disable"`: Do nothing even when new service worker is available. After new service work succeeds installing and starts waiting, it will control page and provide new content in next visit.
-   * - `"available"`: Only display update popup when the new service worker is available
-   * - `"hint"`: Display a hint to let user choose to refresh immediately. This is helpful when you want users to see new docs immediately.
-   * - `"force"`: unregister current service worker immediately then refresh to get new content. **This may affect visiting experiences**！
+   * - `"disable"`: Do nothing even when new service worker is available. After
+   *   new service work succeeds installing and starts waiting, it will control
+   *   page and provide new content in next visit.
+   * - `"available"`: Only display update popup when the new service worker is
+   *   available
+   * - `"hint"`: Display a hint to let user choose to refresh immediately. This is
+   *   helpful when you want users to see new docs immediately.
+   * - `"force"`: unregister current service worker immediately then refresh to
+   *   get new content. **This may affect visiting experiences**！
    *
    * 更新逻辑
    *
-   * - `"disable"`: 即使有新的 service worker 也不做任何事情，新的 service work 开始等待后，会在用户下次访问时接管页面，让用户获得新内容。
+   * - `"disable"`: 即使有新的 service worker 也不做任何事情，新的 service work
+   *   开始等待后，会在用户下次访问时接管页面，让用户获得新内容。
    * - `"available"`: 仅当新的 service worker 可用时才显示更新弹出窗口
-   * - `"hint"`: 显示更新内容可用提示，并允许用户立即刷新。当新的 SW 成功注册后，将转为更新内容就绪弹窗。当你希望用户立即查看新文档时，这很有帮助。
+   * - `"hint"`: 显示更新内容可用提示，并允许用户立即刷新。当新的 SW
+   *   成功注册后，将转为更新内容就绪弹窗。当你希望用户立即查看新文档时，这很有帮助。
    * - `"force"`: 立即注销当前 Service Worker 然后刷新以获取新内容。**这可能会影响访问体验**!
    *
-   * @default "available"
+   * @default 'available'
    */
   update?: 'available' | 'disable' | 'force' | 'hint'
 
@@ -143,7 +149,7 @@ export interface PwaPluginOptions {
    *
    * 用于替换默认提示弹出组件的自定义组件。
    *
-   * @default "PwaFoundPopup"
+   * @default 'PwaFoundPopup'
    */
   foundComponent?: string
 
@@ -152,13 +158,13 @@ export interface PwaPluginOptions {
    *
    * 用于替换默认更新弹出组件的自定义组件。
    *
-   * @default "PwaReadyPopup"
+   * @default 'PwaReadyPopup'
    */
   readyComponent?: string
 
   /**
-   * workbox-build’s [generateSW config](https://developers.google.com/web/tools/workbox/modules/workbox-build#full_generatesw_config)
-   *
+   * Workbox-build’s [generateSW
+   * config](https://developers.google.com/web/tools/workbox/modules/workbox-build#full_generatesw_config)
    */
   generateSWConfig?: Partial<GenerateSWOptions>
 

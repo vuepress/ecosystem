@@ -5,9 +5,8 @@ import type { FunctionalComponent, VNode } from 'vue'
  *
  * 渲染默认插槽内容
  *
- * @param _props unused component props
- *
- * @returns default slot content
+ * @param _props Unused component props
+ * @returns Default slot content
  */
 export const RenderDefault: FunctionalComponent<
   Record<never, never>,

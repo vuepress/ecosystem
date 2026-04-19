@@ -97,14 +97,14 @@ interface FeedAuthor {
   /**
    * Author site
    *
-   * @description json format only
+   * json format only
    */
   url?: string
 
   /**
    * Author avatar
    *
-   * @description json format only
+   * json format only
    */
   avatar?: string
 }
@@ -135,14 +135,14 @@ interface FeedContributor {
   /**
    * Author site
    *
-   * @description json format only
+   * json format only
    */
   url?: string
 
   /**
    * Author avatar
    *
-   * @description json format only
+   * json format only
    */
   avatar?: string
 }

@@ -46,7 +46,9 @@ const c = 3
   console.log(a + b)`)
     const parser = getCodeParser(code)
 
-    parser.line((node) => node.classList.push('highlighted'))
+    parser.line((node) => {
+      node.classList.push('highlighted')
+    })
 
     expect(parser.stringify()).toMatchSnapshot()
   })

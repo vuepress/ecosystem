@@ -20,21 +20,18 @@ import { resolveTypeScriptPaths } from './resolveTypeScriptPaths.js'
  *
  * 为 VuePress 创建启用 twoslash 集成的 Shiki 转换器
  *
- * @param options - Twoslash transformer options / Twoslash 转换器选项
- *
- * @returns Twoslash Shiki transformer / Twoslash Shiki 转换器
- *
  * @example
- * ```ts
- * const transformer = await createTwoslashTransformer({
- *   explicitTrigger: true,
- *   twoslashOptions: {
- *     compilerOptions: {
- *       lib: ["es2015"]
- *     }
- *   }
- * })
- * ```
+ *   const transformer = await createTwoslashTransformer({
+ *     explicitTrigger: true,
+ *     twoslashOptions: {
+ *       compilerOptions: {
+ *         lib: ['es2015'],
+ *       },
+ *     },
+ *   })
+ *
+ * @param options - Twoslash transformer options / Twoslash 转换器选项
+ * @returns Twoslash Shiki transformer / Twoslash Shiki 转换器
  */
 export const createTwoslashTransformer = async (
   options: ShikiTwoslashOptions = {},
@@ -84,7 +81,6 @@ export const createTwoslashTransformer = async (
        * @param code - The code to execute twoslash on
        * @param extension - The file extension of the code
        * @param opt - Additional twoslash execute options
-       *
        * @returns The result of the twoslash execution
        */
       ((
@@ -107,7 +103,9 @@ export const createTwoslashTransformer = async (
   const twoslashTransformer = createTransformerFactory(twoslashInstance)({
     langs: ['ts', 'tsx', 'js', 'jsx', 'json', 'vue'],
     renderer: rendererFloatingVue(options),
-    onShikiError: onError,
+    onShikiError: (error, code) => {
+      onError(error, code)
+    },
     onTwoslashError: onError,
     ...options,
     explicitTrigger,

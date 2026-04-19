@@ -7,15 +7,14 @@ export type HighlightLinesRange = [start: number, end: number]
  *
  * 从代码标记信息中解析高亮行范围
  *
+ * @example
+ *   import { getHighlightLinesRange } from '@vuepress/plugin-prismjs'
+ *
+ *   const ranges = getHighlightLinesRange('js {1,3-5}')
+ *   console.log(ranges) // [[1, 1], [3, 5]]
+ *
  * @param info - Token info string / 代码标记信息字符串
  * @returns Highlight ranges or null / 高亮范围或 null
- * @example
- * ```ts
- * import { getHighlightLinesRange } from '@vuepress/plugin-prismjs'
- *
- * const ranges = getHighlightLinesRange('js {1,3-5}')
- * console.log(ranges) // [[1, 1], [3, 5]]
- * ```
  */
 export const getHighlightLinesRange = (
   info: string,
@@ -56,15 +55,20 @@ const isLineHighlighted = (
  *
  * 根据范围高亮代码行
  *
+ * @example
+ *   import {
+ *     highlightCodeLines,
+ *     getCodeParser,
+ *   } from '@vuepress/plugin-prismjs'
+ *
+ *   const parser = getCodeParser('<pre><code>line1\nline2\nline3</code></pre>')
+ *   highlightCodeLines(parser, [
+ *     [1, 1],
+ *     [3, 3],
+ *   ])
+ *
  * @param parser - Code parser instance / 代码解析器实例
  * @param ranges - Highlight ranges / 高亮范围
- * @example
- * ```ts
- * import { highlightCodeLines, getCodeParser } from '@vuepress/plugin-prismjs'
- *
- * const parser = getCodeParser('<pre><code>line1\nline2\nline3</code></pre>')
- * highlightCodeLines(parser, [[1, 1], [3, 3]])
- * ```
  */
 export const highlightCodeLines = (
   parser: CodeParser,

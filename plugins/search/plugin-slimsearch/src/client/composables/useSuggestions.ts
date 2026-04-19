@@ -28,7 +28,7 @@ export const useSuggestions = (queries: Ref<string[]>): SuggestionsRef => {
         const {
           resultsFilter: _r,
           querySplitter: _q,
-          suggestionsFilter = (items): string[] => items,
+          suggestionsFilter = (items: string[]): string[] => items,
           ...options
         } = searchOptions.value
 

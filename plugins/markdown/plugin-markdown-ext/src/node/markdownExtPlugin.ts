@@ -27,19 +27,17 @@ declare module 'vuepress/markdown' {
  * Markdown 扩展插件
  *
  * @example
- * ```ts
- * import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
+ *   import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
  *
- * export default {
- *   plugins: [
- *     markdownExtPlugin({
- *       gfm: true,
- *       component: true,
- *       vPre: true,
- *     }),
- *   ],
- * }
- * ```
+ *   export default {
+ *     plugins: [
+ *       markdownExtPlugin({
+ *         gfm: true,
+ *         component: true,
+ *         vPre: true,
+ *       }),
+ *     ],
+ *   }
  */
 export const markdownExtPlugin =
   (options: MarkdownExtPluginOptions): Plugin =>

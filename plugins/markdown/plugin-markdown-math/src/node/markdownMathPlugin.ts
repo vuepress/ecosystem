@@ -33,20 +33,18 @@ declare module 'vuepress/markdown' {
  *
  * VuePress 数学插件
  *
- * @param mathOptions.type - Math renderer type / 数学渲染器类型
- *
  * @example
- * ```ts
- * import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
+ *   import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
  *
- * export default {
- *   plugins: [
- *     markdownMathPlugin({
- *       type: 'katex'
- *     })
- *   ]
- * }
- * ```
+ *   export default {
+ *     plugins: [
+ *       markdownMathPlugin({
+ *         type: 'katex',
+ *       }),
+ *     ],
+ *   }
+ *
+ * @param mathOptions.type - Math renderer type / 数学渲染器类型
  */
 export const markdownMathPlugin =
   (options: MarkdownMathPluginOptions = {}): Plugin =>
@@ -123,8 +121,7 @@ export const markdownMathPlugin =
           md.use<MarkdownItKatexOptions<MarkdownEnv>>(katex, {
             logger: (errorCode, errorMsg, token, { filePathRelative }) => {
               // Ignore this error
-              // oxlint-disable-next-line no-useless-undefined
-              if (errorCode === 'newLineInDisplayMode') return undefined
+              if (errorCode === 'newLineInDisplayMode') return
 
               if (errorCode === 'unicodeTextInMathMode') {
                 logger.warn(

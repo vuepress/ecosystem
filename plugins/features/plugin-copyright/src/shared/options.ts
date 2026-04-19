@@ -16,11 +16,11 @@ export interface CopyrightPluginSharedOptions {
   /**
    * Canonical hostname with base
    *
-   * @description This is useful when your content are deployed in multiple places
+   * This is useful when your content are deployed in multiple places
    *
    * 首选域名与部署目录
    *
-   * @description 当你在多个站点部署内容时很有用。
+   * 当你在多个站点部署内容时很有用。
    */
   canonical?: string
 
@@ -61,13 +61,9 @@ export interface CopyrightPluginSharedOptions {
   triggerLength?: number
 
   /**
-   * Max length that allows to copy
+   * Max length that allows to copy, 0 means unlimited
    *
-   * @description 0 means unlimited
-   *
-   * 允许复制的最大字数
-   *
-   * @description 0 表示无限制
+   * 允许复制的最大字数，0 表示无限制
    *
    * @default 0
    */

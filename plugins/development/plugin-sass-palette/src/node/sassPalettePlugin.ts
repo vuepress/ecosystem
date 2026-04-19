@@ -21,21 +21,20 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  *
  * Sass 调色板插件
  *
- * @description Plugin to provide palette and config file support for themes, allowing users to control theme colors and other style variables.
+ * Plugin to provide palette and config file support for themes, allowing users
+ * to control theme colors and other style variables.
  *
  * 为主题提供调色板和配置文件支持的插件，允许用户控制主题颜色和其他样式变量。
  *
  * @example
- * ```ts
- * // Use with default options
- * export default {
- *   plugins: [
- *     sassPalettePlugin({
- *       id: "hope"
- *     })
- *   ]
- * }
- * ```
+ *   // Use with default options
+ *   export default {
+ *     plugins: [
+ *       sassPalettePlugin({
+ *         id: 'hope',
+ *       }),
+ *     ],
+ *   }
  */
 export const sassPalettePlugin =
   (options: SassPalettePluginOptions): PluginFunction =>
@@ -43,6 +42,7 @@ export const sassPalettePlugin =
     if (app.env.isDebug) logger.info('Options:', options)
 
     const {
+      // oxlint-disable-next-line typescript/no-useless-default-assignment
       id = '',
       config = `.vuepress/styles/${getIdPrefix(id)}config.scss`,
       defaultConfig = path.resolve(

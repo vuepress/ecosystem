@@ -15,13 +15,9 @@ import {
  * 资源路径替换插件
  *
  * @example
- * ```
- * export default defineUserConfig({
- *   plugins: [
- *     replaceAssetsPlugin('https://cnd.example.com')
- *   ]
- * })
- * ```
+ *   export default defineUserConfig({
+ *     plugins: [replaceAssetsPlugin('https://cnd.example.com')],
+ *   })
  */
 export const replaceAssetsPlugin = (
   options?: ReplaceAssetsPluginOptions,

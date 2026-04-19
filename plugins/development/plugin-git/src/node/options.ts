@@ -23,13 +23,12 @@ export interface ContributorInfo {
   name?: string
 
   /**
-   * The alias of the contributor,
-   * Since contributors may have different usernames saved in their local git configuration
-   * compared to their usernames on the hosting service, In this case, aliases can be used to
-   * map to the actual usernames.
+   * The alias of the contributor, Since contributors may have different
+   * usernames saved in their local git configuration compared to their
+   * usernames on the hosting service, In this case, aliases can be used to map
+   * to the actual usernames.
    *
-   * 贡献者别名， 由于贡献者可能在本地 git 配置中保存的 用户名与 托管服务 用户名不一致，
-   * 这时候可以通过别名映射到真实的用户名
+   * 贡献者别名， 由于贡献者可能在本地 git 配置中保存的 用户名与 托管服务 用户名不一致， 这时候可以通过别名映射到真实的用户名
    */
   alias?: string[] | string
 
@@ -41,8 +40,8 @@ export interface ContributorInfo {
   email?: string
 
   /**
-   * The alternative emails of the contributor on the Git hosting service,
-   * or emails they have used in the past.
+   * The alternative emails of the contributor on the Git hosting service, or
+   * emails they have used in the past.
    *
    * 贡献者在 Git 托管服务中的备用邮箱，或者曾经使用过的邮箱
    */
@@ -51,7 +50,8 @@ export interface ContributorInfo {
   /**
    * The avatar url of the contributor.
    *
-   * If the git hosting service is `github`, it can be ignored and left blank, as the plugin will automatically fill it in.
+   * If the git hosting service is `github`, it can be ignored and left blank,
+   * as the plugin will automatically fill it in.
    *
    * 贡献者头像地址
    *
@@ -62,7 +62,8 @@ export interface ContributorInfo {
   /**
    * The url of the contributor
    *
-   * If the git hosting service is `github`, it can be ignored and left blank, as the plugin will automatically fill it in.
+   * If the git hosting service is `github`, it can be ignored and left blank,
+   * as the plugin will automatically fill it in.
    *
    * 贡献者访问地址
    *
@@ -95,17 +96,21 @@ export interface ContributorsOptions {
 
   /**
    * Avatar url pattern
+   *
    * - `:username` - Contributor's username
    *
    * 头像访问地址模式
+   *
    * - `:username` - 贡献者的用户名
    *
-   * @example 'https://github.com/:username'
+   * @example
+   *   'https://github.com/:username'
    */
   avatarPattern?: string
 
   /**
-   * Functions to transform contributors, e.g. remove duplicates ones and sort them
+   * Functions to transform contributors, e.g. remove duplicates ones and sort
+   * them
    *
    * 贡献者转换函数，例如去重和排序
    */
@@ -128,7 +133,7 @@ export interface ChangelogOptions {
   /**
    * The url of the git repository, e.g: https://github.com/vuepress/ecosystem
    *
-   * git 仓库的访问地址，例如：https://github.com/vuepress/ecosystem
+   * Git 仓库的访问地址，例如：https://github.com/vuepress/ecosystem
    */
   repoUrl?: string
 
@@ -153,7 +158,7 @@ export interface ChangelogOptions {
    * - `:repo` - The url of the git repository
    * - `:issue` - Id of the issue
    *
-   * issue 访问地址模式
+   * Issue 访问地址模式
    *
    * - `:repo` - git 仓库的访问地址
    * - `:issue` - issue 的 id
@@ -168,8 +173,7 @@ export interface ChangelogOptions {
    * - `:repo` - The url of the git repository
    * - `:tag` - Name of the tag
    *
-   * tag 访问地址模式,
-   * 默认值：':repo/releases/tag/:tag'
+   * Tag 访问地址模式, 默认值：':repo/releases/tag/:tag'
    *
    * - `:repo` - git 仓库的访问地址
    * - `:tag` - tag 的名称

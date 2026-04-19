@@ -16,11 +16,11 @@ export interface CopyrightPluginFrontmatter extends PageFrontmatter {
         /**
          * Max length that allows to copy
          *
-         * @description 0 means unlimited
+         * 0 means unlimited
          *
          * 允许复制的最大长度
          *
-         * @description 0 表示无限制
+         * 0 表示无限制
          *
          * @default 0
          */

@@ -41,7 +41,8 @@ export const getTimeString = (date: Date): string =>
  * 获取 YYYY-MM-DD HH:mm:ss 格式的完整日期时间字符串
  *
  * @param date - Date object / 日期对象
- * @returns Full date string in YYYY-MM-DD HH:mm:ss format / YYYY-MM-DD HH:mm:ss 格式的完整日期时间字符串
+ * @returns Full date string in YYYY-MM-DD HH:mm:ss format / YYYY-MM-DD HH:mm:ss
+ *   格式的完整日期时间字符串
  */
 export const getFullDateString = (date: Date): string =>
   `${getDateString(date)} ${getTimeString(date)}`

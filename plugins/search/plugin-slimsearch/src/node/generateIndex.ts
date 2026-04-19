@@ -16,17 +16,14 @@ import type {
 import type { SlimSearchPluginOptions } from './options.js'
 import type { PathStore } from './pathStore.js'
 
-/**
- * These tags are valid HTML tags which can contain content.
- */
+/** These tags are valid HTML tags which can contain content. */
 
-/**
- * @description h1 is removed because it's the title of the page.
- */
+/** H1 is removed because it's the title of the page. */
 const HEADING_TAGS = 'h2,h3,h4,h5,h6'.split(',')
 
 /**
- * @description Not all the block tags are included, because some of them shall not be indexed
+ * Not all the block tags are included, because some of them shall not be
+ * indexed
  */
 const CONTENT_BLOCK_TAGS =
   'header,nav,section,div,dd,dl,dt,figcaption,figure,picture,hr,li,main,ol,p,ul,caption,table,thead,tbody,tfoot,th,tr,td,datalist,fieldset,form,legend,optgroup,option,select,details,dialog,menu,menuitem,summary,blockquote,pre'.split(
@@ -34,9 +31,11 @@ const CONTENT_BLOCK_TAGS =
   )
 
 /**
- * @description Not all the inline tags are included, because some of them shall not be indexed
+ * Not all the inline tags are included, because some of them shall not be
+ * indexed
  *
- * routelink and routerlink are added to the list, because they are link components
+ * Routelink and routerlink are added to the list, because they are link
+ * components
  */
 const CONTENT_INLINE_TAGS =
   'routelink,routerlink,a,b,abbr,bdi,bdo,cite,code,dfn,em,i,kbd,mark,q,rp,rt,ruby,s,samp,small,span,strong,sub,sup,time,u,var,wbr,del,ins,button,label,legend,meter,optgroup,option,output,progress,select'.split(

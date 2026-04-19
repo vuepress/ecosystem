@@ -2,14 +2,15 @@ export interface BaseSeoContent {
   /**
    * 文章的标题，不包含任何品牌，例如你的网站名称。
    *
-   * The title of your object as it should appear within the graph, e.g., "The Rock".
+   * The title of your object as it should appear within the graph, e.g., "The
+   * Rock".
    */
   'og:title': string
   /**
    * 页面类型，根据你选择类别的不同，可能需要填写其他属性。
    *
-   * The type of your object, e.g., "video.movie".
-   * Depending on the type you specify, other properties may also be required.
+   * The type of your object, e.g., "video.movie". Depending on the type you
+   * specify, other properties may also be required.
    */
   'og:type':
     | 'article'
@@ -25,9 +26,8 @@ export interface BaseSeoContent {
     | 'video.tv_show'
     | 'website'
   /**
-   * 页面的图片网址。图片应至少为 600×315 像素，但最好是 1200×630 像素或更大的尺寸 (大小不超过 5MB)。
-   * 将长宽比保持在 1.91:1 左右，以避免裁剪。
-   * 游戏图标应为正方形，且至少为 600×600 像素。
+   * 页面的图片网址。图片应至少为 600×315 像素，但最好是 1200×630 像素或更大的尺寸 (大小不超过 5MB)。 将长宽比保持在
+   * 1.91:1 左右，以避免裁剪。 游戏图标应为正方形，且至少为 600×600 像素。
    * 如果在发布图片后更新了图片，请使用新网址，因为系统会根据之前的网址缓存图片，可能不会更新图片。
    *
    * An image URL which should represent your object within the graph.
@@ -37,8 +37,8 @@ export interface BaseSeoContent {
    * 页面的权威链接。此标签应该是未加修饰的网址，没有会话变量、用户识别参数或计数器。
    * 此网址的“赞”和“分享”将在此网址中汇总。例如，移动域网址应将桌面版网址指定为权威链接，用于跨不同页面版本汇总“赞”和“分享”
    *
-   * The canonical URL of your object that will be used as its permanent ID in the graph,
-   * e.g., "http://www.imdb.com/title/tt0117500/".
+   * The canonical URL of your object that will be used as its permanent ID in
+   * the graph, e.g., "http://www.imdb.com/title/tt0117500/".
    */
   'og:url': string
 }
@@ -65,15 +65,16 @@ export interface SimpleSeoContent extends BaseSeoContent {
   /**
    * 当文章出现在句子中时，前面的量词
    *
-   * The word that appears before this object's title in a sentence.
-   * An enum of (a, an, the, "", auto). If auto is chosen, the consumer of your data should
+   * The word that appears before this object's title in a sentence. An enum of
+   * (a, an, the, "", auto). If auto is chosen, the consumer of your data should
    * chose between "a" or "an". Default is "" (blank).
    */
   'og:determiner'?: '' | 'a' | 'an' | 'auto' | 'the'
   /**
    * 页面使用的语言
    *
-   * The locale these tags are marked up in. Of the format language_TERRITORY. Default is en_US.
+   * The locale these tags are marked up in. Of the format language_TERRITORY.
+   * Default is en_US.
    */
   'og:locale': string
   /**
@@ -146,13 +147,13 @@ export interface TwitterSeoContent extends SimpleSeoContent {
   /**
    * 用户的 Twitter ID
    *
-   * username of website
+   * Username of website
    */
   'twitter:site': string
   /**
    * 创作者用户名
    *
-   * username of content creator
+   * Username of content creator
    */
 
   'twitter:creator': string
@@ -170,7 +171,7 @@ export interface ExtendedSeoContent extends SimpleSeoContent {
   /**
    * 网站更新时间
    *
-   * page update time
+   * Page update time
    */
   'og:updated_time': string
   /**

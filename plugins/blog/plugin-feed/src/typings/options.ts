@@ -118,11 +118,11 @@ export interface FeedGetter {
   /**
    * Item author getter
    *
-   * @description The getter should return an empty array when lacking author info
+   * The getter should return an empty array when lacking author info
    *
    * 项目作者获取器
    *
-   * @description 获取器应在作者信息缺失时返回空数组
+   * 获取器应在作者信息缺失时返回空数组
    */
   author?: <
     ExtraPageData extends Record<string, unknown> = Record<never, never>,
@@ -403,7 +403,7 @@ export interface BaseFeedPluginOptions {
    *
    * Atom 格式输出路径，相对于输出路径。
    *
-   * @default "atom.xml"
+   * @default 'atom.xml'
    */
   atomOutputFilename?: string
 
@@ -419,7 +419,7 @@ export interface BaseFeedPluginOptions {
    *
    * Atom xsl 输出路径，相对于输出路径。
    *
-   * @default "atom.xsl"
+   * @default 'atom.xsl'
    */
   atomXslFilename?: string
 
@@ -428,7 +428,7 @@ export interface BaseFeedPluginOptions {
    *
    * JSON 格式输出路径，相对于输出路径。
    *
-   * @default "feed.json"
+   * @default 'feed.json'
    */
   jsonOutputFilename?: string
 
@@ -437,7 +437,7 @@ export interface BaseFeedPluginOptions {
    *
    * RSS 格式输出路径，相对于输出路径。
    *
-   * @default "rss.xml"
+   * @default 'rss.xml'
    */
   rssOutputFilename?: string
 
@@ -453,18 +453,19 @@ export interface BaseFeedPluginOptions {
    *
    * RSS xsl 输出路径，相对于输出路径。
    *
-   * @default "rss.xsl"
+   * @default 'rss.xsl'
    */
   rssXslFilename?: string
 
   /**
    * Feed generation controller
    *
-   * @description The plugin is providing a reasonable getter by default, if you want full control of feed generating, you can set this field.
+   * The plugin is providing a reasonable getter by default, if you want full
+   * control of feed generating, you can set this field.
    *
    * Feed 生成控制器
    *
-   * @description 插件已经在默认情况下提供了合理的获取器，如果你需要完全控制 Feed 生成，你可以设置此项。
+   * 插件已经在默认情况下提供了合理的获取器，如果你需要完全控制 Feed 生成，你可以设置此项。
    */
   getter?: FeedGetter
 }
@@ -480,11 +481,12 @@ export interface FeedPluginOptions extends BaseFeedPluginOptions {
   /**
    * Whether enabled in devServer
    *
-   * @description For performance reasons, we do not provide hot reload. Reboot your devServer to sync your changes.
+   * For performance reasons, we do not provide hot reload. Reboot your
+   * devServer to sync your changes.
    *
    * 是否在开发服务器中启用
    *
-   * @description 由于性能原因，我们不提供热更新。重启开发服务器以同步你的变更。
+   * 由于性能原因，我们不提供热更新。重启开发服务器以同步你的变更。
    *
    * @default false
    */

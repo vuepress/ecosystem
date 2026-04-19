@@ -2,9 +2,9 @@ import { container } from '@mdit/plugin-container'
 import type { PluginSimple } from 'markdown-it'
 
 /**
- * v-pre container support plugin
+ * `v-pre` container support plugin
  *
- * v-pre 容器支持插件
+ * `v-pre` 容器支持插件
  *
  * @param md - MarkdownIt instance / MarkdownIt 实例
  */

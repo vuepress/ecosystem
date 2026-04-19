@@ -14,7 +14,7 @@ export const PwaFoundPopup = defineComponent({
   name: 'PwaFoundPopup',
 
   props: {
-    /** locale data */
+    /** Locale data */
     locales: {
       type: Object as PropType<PwaPluginLocaleConfig>,
       required: true,

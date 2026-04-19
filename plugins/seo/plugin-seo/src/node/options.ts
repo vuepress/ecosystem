@@ -47,11 +47,11 @@ export interface SeoPluginOptions {
   /**
    * Fallback Image link when no image are found
    *
-   * @description should be full or absolute links, probably your site favicon
+   * Should be full or absolute links, probably your site favicon
    *
    * 当找不到图片时的回退图片链接
    *
-   * @description 应为完整或绝对链接，你可以设置为站点图标
+   * 应为完整或绝对链接，你可以设置为站点图标
    */
   fallBackImage?: string
 
@@ -152,7 +152,7 @@ export interface SeoPluginOptions {
     /**
      * Head tag config
      *
-     * head 标签配置
+     * Head 标签配置
      */
     head: HeadConfig[],
     /**

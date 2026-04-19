@@ -17,7 +17,8 @@ import { logger } from './utils.js'
  *
  * @param relativePath - Relative path of the markdown file / Markdown 文件的相对路径
  * @param cwd - Current working directory / 当前工作目录
- * @returns Markdown info including frontmatter data and content / 包含 frontmatter 数据和内容的 Markdown 信息
+ * @returns Markdown info including frontmatter data and content / 包含
+ *   frontmatter 数据和内容的 Markdown 信息
  */
 const getMarkdownInfo = async (
   relativePath: string,
@@ -59,7 +60,8 @@ export const findRule = (
  *
  * @param filepath - File path of the Markdown file / Markdown 文件的路径
  * @param cwd - Current working directory / 当前工作目录
- * @param handle - Function to handle frontmatter data and context / 处理 frontmatter 数据和上下文的函数
+ * @param handle - Function to handle frontmatter data and context / 处理
+ *   frontmatter 数据和上下文的函数
  */
 export const generateFileFrontmatter = async (
   filepath: string,

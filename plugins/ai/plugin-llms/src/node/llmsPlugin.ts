@@ -16,19 +16,17 @@ import { logger } from './utils/index.js'
  * Plugin to generate LLM-friendly documentation files
  *
  * @example
- * ```ts
- * import { llmsPlugin } from '@vuepress/plugin-llms'
+ *   import { llmsPlugin } from '@vuepress/plugin-llms'
  *
- * export default defineUserConfig({
- *   plugins: [
- *     llmsPlugin({
- *       domain: 'https://example.com',
- *       llmsTxt: true,
- *       llmsFullTxt: true,
- *     }),
- *   ],
- * })
- * ```
+ *   export default defineUserConfig({
+ *     plugins: [
+ *       llmsPlugin({
+ *         domain: 'https://example.com',
+ *         llmsTxt: true,
+ *         llmsFullTxt: true,
+ *       }),
+ *     ],
+ *   })
  */
 export const llmsPlugin =
   (options: LlmsPluginOptions = {}): Plugin =>
@@ -51,7 +49,7 @@ export const llmsPlugin =
           llmsPageTxt = true,
           filter = (): boolean => true,
           stripHTML = true,
-          transformMarkdown = (md): string => md,
+          transformMarkdown = (content: string): string => content,
           llmsTxtTemplate = DEFAULT_LLMSTXT_TEMPLATE,
           llmsTxtTemplateGetter = {},
           locale = '/',

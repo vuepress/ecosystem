@@ -7,14 +7,12 @@ import './declare.js'
  *
  * 初始化 Umami Analytics 追踪
  *
+ * Injects Umami tracking script and configures tracking behavior. The global
+ * `umami.track()` function will be available for custom event tracking.
+ *
+ * 注入 Umami 追踪脚本并配置追踪行为。 全局 `umami.track()` 函数可用于自定义事件追踪。
+ *
  * @param options - Umami Analytics options
- *
- * @description Injects Umami tracking script and configures tracking behavior.
- * The global `umami.track()` function will be available for custom event tracking.
- *
- * 注入 Umami 追踪脚本并配置追踪行为。
- * 全局 `umami.track()` 函数可用于自定义事件追踪。
- *
  * @see https://umami.is/docs/tracker-functions
  * @see https://umami.is/docs/tracker-configuration
  */

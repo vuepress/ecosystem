@@ -2,12 +2,12 @@ import type { FunctionalComponent } from 'vue'
 import { h } from 'vue'
 
 export interface VPHeaderProps {
-  /** header text */
+  /** Header text */
   text: string
-  /** header anchor */
+  /** Header anchor */
   anchor: string
   /**
-   * header level
+   * Header level
    *
    * @default 2
    */

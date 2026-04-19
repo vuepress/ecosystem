@@ -14,7 +14,6 @@ export type MarkdownFilePathGetter = () => string
  * 创建获取当前 markdown 文件路径的函数
  *
  * @param md - MarkdownIt instance / MarkdownIt 实例
- *
  * @returns Function to get current markdown file path / 获取当前 markdown 文件路径的函数
  */
 export const createMarkdownFilePathGetter = (

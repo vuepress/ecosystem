@@ -32,16 +32,15 @@ const AVAILABLE_WHITESPACE_POSITIONS = new Set([
  *
  * 从代码块信息和全局选项中解析空白符位置
  *
+ * @example
+ *   resolveWhitespacePosition('js :whitespace=all', 'boundary') // 'all'
+ *   resolveWhitespacePosition('js :no-whitespace', 'boundary') // false
+ *   resolveWhitespacePosition('js', 'boundary') // 'boundary'
+ *
  * @param info - Code block info string / 代码块信息字符串
  * @param globalOption - Global whitespace option / 全局空白符选项
- * @returns Resolved whitespace position or false if disabled / 解析的空白符位置，如果禁用则返回 false
- *
- * @example
- * ```ts
- * resolveWhitespacePosition('js :whitespace=all', 'boundary') // 'all'
- * resolveWhitespacePosition('js :no-whitespace', 'boundary') // false
- * resolveWhitespacePosition('js', 'boundary') // 'boundary'
- * ```
+ * @returns Resolved whitespace position or false if disabled / 解析的空白符位置，如果禁用则返回
+ *   false
  */
 export const resolveWhitespacePosition = (
   info: string,

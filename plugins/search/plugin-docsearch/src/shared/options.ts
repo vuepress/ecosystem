@@ -37,6 +37,5 @@ export interface DocSearchOptions extends DocSearchLocaleOptions {
    * 多语言选项
    */
   // FIXME: https://github.com/oxc-project/tsgolint/issues/861
-  // oxlint-disable-next-line typescript/no-unnecessary-type-arguments
   locales?: LocaleConfig<DocSearchLocaleOptions>
 }

@@ -166,7 +166,7 @@ export default defineUserConfig({
     /**
      * 展示内容
      *
-     * @description `$content` 会被 `getter` 返回的内容替换
+     * `$content` 会被 `getter` 返回的内容替换
      *
      * @default `$content`
      */

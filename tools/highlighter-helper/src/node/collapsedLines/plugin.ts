@@ -8,18 +8,16 @@ import { resolveCollapsedLines } from './resolveCollapsedLine.js'
  *
  * 为 markdown-it 中的代码块添加折叠行功能
  *
+ * @example
+ *   import { collapsedLines } from '@vuepress/highlighter-helper'
+ *
+ *   md.use(collapsedLines, {
+ *     collapsedLines: 15,
+ *     removeLastLine: false,
+ *   })
+ *
  * @param md - MarkdownIt instance / MarkdownIt 实例
  * @param options - Plugin options / 插件选项
- *
- * @example
- * ```ts
- * import { collapsedLines } from '@vuepress/highlighter-helper'
- *
- * md.use(collapsedLines, {
- *   collapsedLines: 15,
- *   removeLastLine: false
- * })
- * ```
  */
 export const collapsedLines = (
   md: Markdown,

@@ -12,18 +12,16 @@ import type { AppendDatePluginOptions } from './options.js'
  * 追加日期插件
  *
  * @example
- * ```ts
- * import { appendDatePlugin } from '@vuepress/plugin-append-date'
+ *   import { appendDatePlugin } from '@vuepress/plugin-append-date'
  *
- * export default {
- *   plugins: [
- *     appendDatePlugin({
- *       key: 'date',
- *       format: 'date'
- *     })
- *   ]
- * }
- * ```
+ *   export default {
+ *     plugins: [
+ *       appendDatePlugin({
+ *         key: 'date',
+ *         format: 'date',
+ *       }),
+ *     ],
+ *   }
  */
 export const appendDatePlugin = (
   options: AppendDatePluginOptions = {},

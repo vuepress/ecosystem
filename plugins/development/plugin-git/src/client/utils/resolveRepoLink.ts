@@ -9,7 +9,6 @@ import type { KnownGitProvider } from '../../shared/index.js'
  *
  * @param link - Repository link / 仓库链接
  * @param provider - Git provider / Git 提供商
- *
  * @returns Resolved repository link / 解析后的仓库链接
  */
 export const resolveRepoLink = (

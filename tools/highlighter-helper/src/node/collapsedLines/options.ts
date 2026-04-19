@@ -1,18 +1,19 @@
 /**
  * Options for markdown-it collapsed lines plugin
  *
- * markdown-it 折叠行插件选项
+ * Markdown-it 折叠行插件选项
  */
 export interface MarkdownItCollapsedLinesOptions {
   /**
    * Whether to collapse code blocks when they exceed a certain number of lines
    *
-   * 当代码块超过一定行数时是否折叠
-   *
    * - If `number`, collapse starts from line `number`.
    * - If `true`, collapse starts from line 15 by default.
-   * - If `false`, do not enable code block collapsing globally, but you can enable it for individual code blocks using `:collapsed-lines`
+   * - If `false`, do not enable code block collapsing globally, but you can
+   *   enable it for individual code blocks using `:collapsed-lines`
    * - If `'disable'`, Completely disable code block collapsing
+   *
+   * 当代码块超过一定行数时是否折叠
    *
    * - 如果是 `number`，从第 `number` 行开始折叠
    * - 如果是 `true`，默认从第 15 行开始折叠

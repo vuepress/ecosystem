@@ -24,15 +24,13 @@ const renderSpace = (text: string): string =>
  *
  * 根据位置在行中渲染空白字符
  *
+ * @example
+ *   import { renderWhitespaceInLine } from '@vuepress/plugin-prismjs'
+ *
+ *   renderWhitespaceInLine(lineNode, 'all')
+ *
  * @param node - Line node / 行节点
  * @param position - Whitespace position / 空白字符位置
- *
- * @example
- * ```ts
- * import { renderWhitespaceInLine } from '@vuepress/plugin-prismjs'
- *
- * renderWhitespaceInLine(lineNode, 'all')
- * ```
  */
 // oxlint-disable-next-line complexity
 export const renderWhitespaceInLine = (
@@ -100,23 +98,21 @@ export const renderWhitespaceInLine = (
   node.content = snippets.join('')
 }
 
+// FIXME: https://github.com/oxc-project/oxc/issues/21550
+// `` ```js :whitespace[=all|boundary|leading|trailing] ``
 /**
  * Handle whitespace rendering based on meta string
  *
  * 基于元字符串处理空白字符渲染
  *
- * `` ```js :whitespace[=all|boundary|leading|trailing] ``
+ * @example
+ *   import { metaWhitespace } from '@vuepress/plugin-prismjs'
+ *
+ *   MetaWhitespace(parser, ':whitespace=all', true)
  *
  * @param parser - Code parser instance / 代码解析器实例
  * @param meta - Meta string / 元字符串
  * @param globalOption - Global whitespace option / 全局空白字符选项
- *
- * @example
- * ```ts
- * import { metaWhitespace } from '@vuepress/plugin-prismjs'
- *
- * metaWhitespace(parser, ':whitespace=all', true)
- * ```
  */
 export const metaWhitespace = (
   parser: CodeParser,

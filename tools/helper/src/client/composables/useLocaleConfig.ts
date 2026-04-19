@@ -11,7 +11,6 @@ import type { ExactLocaleConfig } from '../../shared/index.js'
  * 获取当前本地化配置的组合函数
  *
  * @param localesConfig - Client locale config / 客户端本地化配置
- *
  * @returns Current locale config / 当前本地化配置
  */
 export const useLocaleConfig = <Locale extends LocaleData>(

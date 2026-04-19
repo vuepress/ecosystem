@@ -41,7 +41,6 @@ export class Message {
    * 根据 ID 获取消息元素
    *
    * @param messageId - Message ID / 消息 ID
-   *
    * @returns Message element / 消息元素
    */
   public getElement(messageId: number): HTMLDivElement {
@@ -56,7 +55,6 @@ export class Message {
    * @param html - Message HTML content / 消息 HTML 内容
    * @param duration - Duration to display in milliseconds / 显示持续时间（毫秒）
    * @param clickToClose - Whether to close on click / 是否点击关闭
-   *
    * @returns Message ID / 消息 ID
    */
   public pop(html: string, duration = 2000, clickToClose = true): number {
@@ -87,7 +85,8 @@ export class Message {
    *
    * 根据 ID 关闭消息或关闭所有消息
    *
-   * @param messageId - Message ID to close, if not provided, close all / 要关闭的消息 ID，如果未提供则关闭所有
+   * @param messageId - Message ID to close, if not provided, close all / 要关闭的消息
+   *   ID，如果未提供则关闭所有
    */
   public close(messageId?: number): void {
     if (messageId == null) {

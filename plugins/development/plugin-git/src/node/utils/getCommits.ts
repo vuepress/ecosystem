@@ -36,8 +36,8 @@ const getGitLogFormat = ({
 }
 
 /**
- * Helper function to run git command using spawn and return stdout as a promise.
- * Rejects if the git command exits with a non-zero code.
+ * Helper function to run git command using spawn and return stdout as a
+ * promise. Rejects if the git command exits with a non-zero code.
  *
  * @param args - The arguments to pass to the git command
  * @param cwd - The working directory to run the git command in
@@ -81,15 +81,14 @@ const runGitLog = (args: string[], cwd: string): Promise<string> =>
 /**
  * Get raw commits for a specific file
  *
- * ${commit_hash} ${author_name} ${author_email} ${author_date} ${subject} ${ref} ${body}
- *
- * @see {@link https://git-scm.com/docs/pretty-formats | documentation} for details.
+ * ${commit_hash} ${author_name} ${author_email} ${author_date} ${subject}
+ * ${ref} ${body}
  *
  * @param filepath - The file path to get commits for / 要获取提交记录的文件路径
  * @param cwd - The working directory to run git command / 运行 git 命令的工作目录
  * @param options - Git plugin options / Git 插件选项
- *
  * @returns Raw commits for the specified file / 指定文件的原始提交记录
+ * @see {@link https://git-scm.com/docs/pretty-formats | documentation} for details.
  */
 export const getRawCommits = async (
   filepath: string,

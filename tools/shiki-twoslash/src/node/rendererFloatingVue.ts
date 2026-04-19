@@ -110,18 +110,16 @@ const renderMarkdownInline = function (
  *
  * 为 twoslash 创建 FloatingVue 渲染器
  *
+ * @example
+ *   const renderer = rendererFloatingVue({
+ *     floatingVue: {
+ *       classCopyIgnore: 'vp-copy-ignore',
+ *       floatingVueTheme: 'twoslash',
+ *     },
+ *   })
+ *
  * @param options - Renderer options / 渲染器选项
  * @returns Twoslash renderer / Twoslash 渲染器
- *
- * @example
- * ```ts
- * const renderer = rendererFloatingVue({
- *   floatingVue: {
- *     classCopyIgnore: 'vp-copy-ignore',
- *     floatingVueTheme: 'twoslash'
- *   }
- * })
- * ```
  */
 // oxlint-disable-next-line max-lines-per-function
 export const rendererFloatingVue = (

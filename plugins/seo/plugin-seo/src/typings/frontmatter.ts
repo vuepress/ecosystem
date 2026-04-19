@@ -35,9 +35,7 @@ export interface SEOPluginFrontmatter extends PageFrontmatter {
    */
   seo?: boolean
 
-  /**
-   * Feed author
-   */
+  /** Feed author */
   author?: SeoAuthor
 
   /**

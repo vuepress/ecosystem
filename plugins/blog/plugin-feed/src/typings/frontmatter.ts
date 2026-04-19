@@ -34,48 +34,36 @@ export type FrontmatterAuthor =
   | AuthorName[]
 
 export interface FeedFrontmatterOption {
-  /**
-   * Feed title
-   */
+  /** Feed title */
   title?: string
 
   /**
    * Feed description
    *
-   * @description Should be plain text
+   * Should be plain text
    */
   description?: string
 
   /**
    * Feed summary
    *
-   * @description Should be html content
+   * Should be html content
    */
   summary?: string
 
-  /**
-   * Feed content
-   */
+  /** Feed content */
   content?: string
 
-  /**
-   * Feed author
-   */
+  /** Feed author */
   author?: FeedAuthor | FeedAuthor[]
 
-  /**
-   * Feed contributor
-   */
+  /** Feed contributor */
   contributor?: FeedContributor | FeedContributor[]
 
-  /**
-   * Feed category
-   */
+  /** Feed category */
   category?: FeedCategory | FeedCategory[]
 
-  /**
-   * @description guid should be unique globally
-   */
+  /** Guid should be unique globally */
   guid?: string
 }
 

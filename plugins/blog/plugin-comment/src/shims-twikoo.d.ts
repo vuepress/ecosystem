@@ -10,13 +10,11 @@ declare module 'twikoo' {
     /**
      * Tencloud region
      *
-     * @default "ap-shanghai"
+     * @default 'ap-shanghai'
      */
     region?: string
 
-    /**
-     * Container Element selector
-     */
+    /** Container Element selector */
     el: string
 
     /**
@@ -26,14 +24,10 @@ declare module 'twikoo' {
      */
     path?: string
 
-    /**
-     * Display language
-     */
+    /** Display language */
     lang?: string
 
-    /**
-     * Callback when comment loaded
-     */
+    /** Callback when comment loaded */
     onCommentLoaded?: () => void
   }
   export interface TwikooCommentCountOptions {
@@ -47,13 +41,11 @@ declare module 'twikoo' {
     /**
      * Tencloud region
      *
-     * @default "ap-shanghai"
+     * @default 'ap-shanghai'
      */
     region?: string
 
-    /**
-     * @description protocol, domain and url should not be included
-     */
+    /** Protocol, domain and url should not be included */
     urls: string[]
     /**
      * Whether include reply
@@ -79,12 +71,12 @@ declare module 'twikoo' {
     /**
      * Tencloud region
      *
-     * @default "ap-shanghai"
+     * @default 'ap-shanghai'
      */
     region?: string
 
     /**
-     * @description max to 100
+     * Max to 100
      *
      * @default 10
      */

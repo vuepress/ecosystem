@@ -14,17 +14,13 @@ export const VPIcon = defineComponent({
   name: 'VPIcon',
 
   props: {
-    /**
-     * Icon type
-     */
+    /** Icon type */
     type: {
       type: String as PropType<IconType>,
       default: 'unknown',
     },
 
-    /**
-     * Icon prefix
-     */
+    /** Icon prefix */
     prefix: String,
 
     /**

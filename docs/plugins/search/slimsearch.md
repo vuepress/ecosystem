@@ -165,7 +165,7 @@ Whether to display search suggestions while typing.
     /**
      * Display content format
      *
-     * @description `$content` will be replaced by the value returned by `getter`
+     * `$content` will be replaced by the value returned by `getter`
      *
      * @default `$content`
      */

@@ -10,27 +10,25 @@ import type { LinksCheckPluginOptions } from './options.js'
  * VuePress 插件，用于检查 Markdown 文件中的死链接
  *
  * @example
- * ```ts
- * import { linksCheckPlugin } from '@vuepress/plugin-links-check'
+ *   import { linksCheckPlugin } from '@vuepress/plugin-links-check'
  *
- * export default {
- *   plugins: [
- *     // Basic usage
- *     linksCheckPlugin(),
+ *   export default {
+ *     plugins: [
+ *       // Basic usage
+ *       linksCheckPlugin(),
  *
- *     // With options
- *     linksCheckPlugin({
- *       dev: true,
- *       build: 'error', // Fail build on dead links
- *       exclude: [
- *         /^https?:\/\/example\.com/,
- *         'mailto:example@example.com',
- *         (link, isDev) => isDev && link.startsWith('/api/')
- *       ]
- *     })
- *   ]
- * }
- * ```
+ *       // With options
+ *       linksCheckPlugin({
+ *         dev: true,
+ *         build: 'error', // Fail build on dead links
+ *         exclude: [
+ *           /^https?:\/\/example\.com/,
+ *           'mailto:example@example.com',
+ *           (link, isDev) => isDev && link.startsWith('/api/'),
+ *         ],
+ *       }),
+ *     ],
+ *   }
  */
 export const linksCheckPlugin =
   ({

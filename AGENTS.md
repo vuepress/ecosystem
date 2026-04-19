@@ -135,25 +135,23 @@ All source files are in `src/`. Compiled output goes to `dist/` (git-ignored).
 
 **JSDoc template:**
 
-````typescript
+```typescript
 /**
  * English description
  *
+ * (optional) English detailed description
+ *
  * 中文描述
  *
- * @description (optional) English detailed description
- *
- * 中文详细描述
+ * （可选）中文详细描述
  *
  * @param paramName - English description / 中文描述
  *
  * @default defaultValue
  * @example
- * ```ts
- * // Example code in TypeScript
- * ```
+ *   // Example code in TypeScript
  */
-````
+```
 
 ### Commit Messages
 

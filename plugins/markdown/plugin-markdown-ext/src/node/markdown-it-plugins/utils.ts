@@ -3,7 +3,7 @@
  *
  * 为 Vue 组件字符化属性数据
  *
- * @description Single quote will break `@vue/compiler-sfc`
+ * Single quote will break `@vue/compiler-sfc`
  *
  * 单引号会破坏 `@vue/compiler-sfc`
  *

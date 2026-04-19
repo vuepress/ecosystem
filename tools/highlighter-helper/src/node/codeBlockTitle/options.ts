@@ -12,17 +12,17 @@ export type CodeBlockTitleRender = (title: string, code: string) => string
 /**
  * Options for markdown-it code block title plugin
  *
- * markdown-it 代码块标题插件选项
+ * Markdown-it 代码块标题插件选项
  */
 export interface MarkdownItCodeBlockTitleOptions {
   /**
    * Whether to render the title of the code block
    *
-   * 是否渲染代码块的标题
-   *
    * - If `true`, enable the title render of the code block
    * - If `false`, disable the title render of the code block
    * - If `Function`, custom title render
+   *
+   * 是否渲染代码块的标题\
    *
    * - 如果是 `true`，启用代码块标题渲染
    * - 如果是 `false`，禁用代码块标题渲染

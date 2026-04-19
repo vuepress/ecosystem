@@ -51,9 +51,9 @@ export const parseMetaHighlightWords = (meta: string): string[] => {
   )
 }
 
+// FIXME: https://github.com/oxc-project/oxc/issues/21550
+// `` ```js /Hello|Hi/ ``
 /**
- * `` ```js /Hello|Hi/ ``
- *
  * Meta word highlight
  *
  * 元词汇高亮

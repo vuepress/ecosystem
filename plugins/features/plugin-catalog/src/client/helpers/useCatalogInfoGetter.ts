@@ -39,7 +39,7 @@ const catalogInfoSymbol: InjectionKey<CatalogInfoGetter> = Symbol(
  *
  * 定义目录信息获取器
  *
- * @param getter catalog info getter function
+ * @param getter Catalog info getter function
  */
 export const defineCatalogInfoGetter = (getter: CatalogInfoGetter): void => {
   catalogGetter = getter

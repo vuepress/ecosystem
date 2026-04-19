@@ -7,7 +7,8 @@ import { getWorkspaceStatus } from './utils.js'
 
 /**
  * Checks if a full rescrape is needed by examining the most recent commit
- * Returns true if workspace is clean and the most recent commit message contains [full-scrape]
+ * Returns true if workspace is clean and the most recent commit message
+ * contains [full-scrape]
  *
  * @param cwd Current working directory
  * @returns Whether a full rescrape should be performed

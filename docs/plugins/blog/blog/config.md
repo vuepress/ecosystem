@@ -166,7 +166,7 @@ interface BlogCategoryOptions {
   /**
    * The path pattern for the registered page
    *
-   * @description `:key` will be replaced by the "slugify" result of the original key
+   * `:key` will be replaced by the "slugify" result of the original key
    *
    * @default `/:key/`
    */
@@ -187,7 +187,7 @@ interface BlogCategoryOptions {
   /**
    * The path pattern or custom function for the item page
    *
-   * @description When providing a string, `:key` and `:name` will be replaced by the "slugify" result of the original key and name
+   * When providing a string, `:key` and `:name` will be replaced by the "slugify" result of the original key and name
    *
    * @default `/:key/:name/`
    */

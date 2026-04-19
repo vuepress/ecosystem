@@ -53,40 +53,39 @@ export interface DocSearchClientOptions extends DocSearchClientLocaleOptions {
  *
  * 自定义 DocSearch 选项
  *
- * @param options - DocSearch options, support plain object, ref or getter / DocSearch 选项，支持普通对象，Ref 或 Getter
- *
  * @example
- * ```ts
- * import { defineDocSearchConfig } from '@vuepress/plugin-docsearch/client'
+ *   import { defineDocSearchConfig } from '@vuepress/plugin-docsearch/client'
  *
- * // Use plain object
- * defineDocSearchConfig({
- *   translations: {
- *     button: {
- *       buttonText: 'Search',
+ *   // Use plain object
+ *   defineDocSearchConfig({
+ *     translations: {
+ *       button: {
+ *         buttonText: 'Search',
+ *       },
  *     },
- *   },
- * })
+ *   })
  *
- * // Use ref
- * const options = ref({
- *   translations: {
- *     button: {
- *       buttonText: 'Search',
+ *   // Use ref
+ *   const options = ref({
+ *     translations: {
+ *       button: {
+ *         buttonText: 'Search',
+ *       },
  *     },
- *   },
- * })
- * defineDocSearchConfig(options)
+ *   })
+ *   defineDocSearchConfig(options)
  *
- * // Use getter
- * defineDocSearchConfig(() => ({
- *   translations: {
- *     button: {
- *       buttonText: isDarkMode.value ? 'Search in dark' : 'Search in light',
+ *   // Use getter
+ *   defineDocSearchConfig(() => ({
+ *     translations: {
+ *       button: {
+ *         buttonText: isDarkMode.value ? 'Search in dark' : 'Search in light',
+ *       },
  *     },
- *   },
- * }))
- * ```
+ *   }))
+ *
+ * @param options - DocSearch options, support plain object, ref or getter /
+ *   DocSearch 选项，支持普通对象，Ref 或 Getter
  */
 export const defineDocSearchConfig = (
   options: MaybeRefOrGetter<DocSearchClientOptions>,
@@ -108,9 +107,8 @@ export const defineDocSearchConfig = (
 }
 
 /**
- * @internal
- *
  * @returns DocSearch options with locale config / 包含多语言配置的 DocSearch 选项
+ * @internal
  */
 export const useDocSearchOptions = (): ComputedRef<DocSearchProps> => {
   const options = inject(docsearchSymbol)!
@@ -123,9 +121,8 @@ export const useDocSearchOptions = (): ComputedRef<DocSearchProps> => {
 }
 
 /**
- * @internal
- *
  * @param app - Vue app instance / Vue 应用实例
+ * @internal
  */
 export const injectDocSearchConfig = (app: App): void => {
   // @ts-expect-error: Types loop back
