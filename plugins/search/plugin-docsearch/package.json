@@ -52,12 +52,12 @@
     "@docsearch/js": "^4.6.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
-    "ts-debounce": "^4.0.0",
+    "ts-debounce": "^5.0.0",
     "vue": "catalog:"
   },
   "devDependencies": {
     "@docsearch/react": "^4.6.2",
-    "algoliasearch": "5.50.1"
+    "algoliasearch": "5.50.2"
   },
   "peerDependencies": {
     "vuepress": "catalog:"
