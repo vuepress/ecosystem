@@ -15,5 +15,9 @@ export default [
       'process.env.NODE_ENV': JSON.stringify('production'),
     },
     alwaysBundle: [/^@vuepress\//, 'slimsearch', /^vuepress\//],
+    format: 'iife',
+    outputOptions: {
+      entryFileNames: '[name].js',
+    },
   }),
 ]
