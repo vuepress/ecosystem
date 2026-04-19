@@ -2,9 +2,7 @@ import type { DefaultLocaleInfo } from '@vuepress/helper'
 
 import type { CopyCodePluginLocaleData } from '../shared/index.js'
 
-/**
- * Default locale info for `@vuepress/plugin-copy-code`
- */
+/** Default locale info for `@vuepress/plugin-copy-code` */
 export const copyCodeLocaleInfo: DefaultLocaleInfo<CopyCodePluginLocaleData> = [
   [['en', 'en-US'], { copy: 'Copy code', copied: 'Copied' }],
   [['zh', 'zh-CN', 'zh-Hans'], { copy: '复制代码', copied: '已复制' }],

@@ -5,8 +5,8 @@ import type { App } from 'vuepress/core'
  *
  * 博客存储，将文章页面路径映射为数字索引
  *
- * @description The store assigns a unique numeric index to each page path,
- * which is used by categories and types to reference articles efficiently.
+ * The store assigns a unique numeric index to each page path, which is used by
+ * categories and types to reference articles efficiently.
  */
 export class Store {
   /**
@@ -98,7 +98,8 @@ export class Store {
    *
    * 将存储序列化为 JSON 字符串
    *
-   * @returns JSON string of the store as an index-to-path object / 存储的索引到路径对象的 JSON 字符串
+   * @returns JSON string of the store as an index-to-path object / 存储的索引到路径对象的
+   *   JSON 字符串
    */
   public toJSON(): string {
     const result: Record<number, string> = {}

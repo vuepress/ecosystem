@@ -5,8 +5,8 @@ import type { ReadingTime } from '../shared/index.js'
  *
  * 从内容中提取拉丁文字
  *
- * @param content - content to extract words from
- * @returns matched words or null
+ * @param content - Content to extract words from
+ * @returns Matched words or null
  */
 const getWords = (content: string): RegExpMatchArray | null =>
   // \u00C0-\u024F are Latin Supplement letters, maybe used in language like french
@@ -19,8 +19,8 @@ const getWords = (content: string): RegExpMatchArray | null =>
  *
  * 从内容中提取中文字符
  *
- * @param content - content to extract Chinese characters from
- * @returns matched Chinese characters or null
+ * @param content - Content to extract Chinese characters from
+ * @returns Matched Chinese characters or null
  */
 const getChinese = (content: string): RegExpMatchArray | null =>
   content.match(/[\u4E00-\u9FD5]/gu)
@@ -30,14 +30,12 @@ const getChinese = (content: string): RegExpMatchArray | null =>
  *
  * 获取给定字符串的字数
  *
- * @param content - content to count words
- * @returns word count
- *
  * @example
- * ```ts
- * getWordNumber('Hello world') // 2
- * getWordNumber('你好世界') // 4
- * ```
+ *   getWordNumber('Hello world') // 2
+ *   getWordNumber('你好世界') // 4
+ *
+ * @param content - Content to count words
+ * @returns Word count
  */
 export const getWordNumber = (content: string): number =>
   (getWords(content)?.reduce(
@@ -51,17 +49,14 @@ export const getWordNumber = (content: string): number =>
  *
  * 获取阅读时间信息
  *
- * @param content - content to calculate reading time
- * @param wordsPerMinute - reading speed in words per minute
- * @returns reading time information
+ * @example
+ *   getReadingTime('Hello world', 300)
+ *   // { minutes: 0.01, words: 2 }
  *
  * @default wordsPerMinute 300
- *
- * @example
- * ```ts
- * getReadingTime('Hello world', 300)
- * // { minutes: 0.01, words: 2 }
- * ```
+ * @param content - Content to calculate reading time
+ * @param wordsPerMinute - Reading speed in words per minute
+ * @returns Reading time information
  */
 export const getReadingTime = (
   content: string,

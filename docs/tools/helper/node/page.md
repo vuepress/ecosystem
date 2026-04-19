@@ -24,7 +24,7 @@ export interface PageExcerptOptions {
   /**
    * Length of excerpt
    *
-   * @description Excerpt length will be the minimal possible length reaching this value
+   * Excerpt length will be the minimal possible length reaching this value
    *
    * @default 300
    */
@@ -33,7 +33,7 @@ export interface PageExcerptOptions {
   /**
    * Tags which is considered as custom elements
    *
-   * @description This is used to determine whether a tag is a custom element since all unknown tags are removed in excerpt.
+   * This is used to determine whether a tag is a custom element since all unknown tags are removed in excerpt.
    */
   isCustomElement?: (tagName: string) => boolean
 
@@ -75,7 +75,7 @@ export interface PageTextOptions {
   /**
    * Length of text
    *
-   * @description Text length will be the minimal possible length reaching this value
+   * Text length will be the minimal possible length reaching this value
    *
    * @default 300
    */
@@ -84,7 +84,7 @@ export interface PageTextOptions {
   /**
    * Tags to be removed
    *
-   * @description Table and code blocks are removed by default.
+   * Table and code blocks are removed by default.
    *
    * @default ['table', 'pre']
    */

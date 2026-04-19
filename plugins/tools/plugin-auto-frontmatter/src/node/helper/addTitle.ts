@@ -5,18 +5,16 @@ import type { AutoFrontmatterContext, AutoFrontmatterData } from '../types.js'
 /**
  * Add title by filename
  *
- * @param data - Auto frontmatter data
- *
  * @example
- * ```ts
- * {
- *   handle(data, context) {
- *     addTitleByFilename(data, context)
- *     // => data.title = 'foo'
- *     return data
- *   }
- * }
- * ```
+ *   ;({
+ *     handle(data, context) {
+ *       addTitleByFilename(data, context)
+ *       // => data.title = 'foo'
+ *       return data
+ *     },
+ *   })
+ *
+ * @param data - Auto frontmatter data
  */
 export const addTitleByFilename = (
   data: AutoFrontmatterData,

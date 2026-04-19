@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue'
 
 const { name } = defineProps<{
-  /** variable name */
+  /** Variable name */
   name: string
 }>()
 

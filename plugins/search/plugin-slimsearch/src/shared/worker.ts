@@ -8,9 +8,7 @@ export type WorkerSearchOptions = Omit<
 >
 
 export interface WorkerMessageData {
-  /**
-   * @default "all"
-   */
+  /** @default 'all' */
   type?: 'all' | 'search' | 'suggest'
   query: string
   locale: string

@@ -36,9 +36,8 @@ export interface ShikiSingleThemeOptions {
   /**
    * The single theme to use
    *
-   * @see https://shiki.style/themes
-   *
    * @default 'nord'
+   * @see https://shiki.style/themes
    */
   theme?: ShikiTheme
 }
@@ -134,7 +133,6 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
    * 是否启用差异标记转换器
    *
    * @default false
-   *
    * @see https://shiki.style/packages/transformers#transformernotationdiff
    */
   notationDiff?: boolean
@@ -145,7 +143,6 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
    * 是否启用聚焦标记转换器
    *
    * @default false
-   *
    * @see https://shiki.style/packages/transformers#transformernotationfocus
    */
   notationFocus?: boolean
@@ -156,7 +153,6 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
    * 是否启用高亮标记转换器
    *
    * @default false
-   *
    * @see https://shiki.style/packages/transformers#transformernotationhighlight
    */
   notationHighlight?: boolean
@@ -167,7 +163,6 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
    * 是否启用错误级别标记转换器
    *
    * @default false
-   *
    * @see https://shiki.style/packages/transformers#transformernotationerrorlevel
    */
   notationErrorLevel?: boolean
@@ -178,7 +173,6 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
    * 是否启用单词高亮标记转换器
    *
    * @default false
-   *
    * @see https://shiki.style/packages/transformers#transformernotationwordhighlight
    */
   notationWordHighlight?: boolean
@@ -189,34 +183,36 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
    * 是否启用移除注释转换器
    *
    * @default false
-   *
    * @see https://shiki.style/packages/transformers#transformerremovecomments
    */
   removeComments?: boolean
 
   /**
    * Enable whitespace
-   * - true: enable whitespace, but not render any whitespace by default
-   * - false: disable whitespace completely
-   * - 'all': render all whitespace
-   * - 'boundary': render leading and trailing whitespace of each line.
-   * - 'leading': render leading whitespace of each line
-   * - 'trailing': render trailing whitespace of each line
    *
-   * you are able to use `:whitespace` or `:no-whitespace` or `:whitespace=all|boundary|leading|trailing` to set single code block
+   * - `true`: enable whitespace, but not render any whitespace by default
+   * - `false`: disable whitespace completely
+   * - `'all'`: render all whitespace
+   * - `'boundary'`: render leading and trailing whitespace of each line.
+   * - `'leading'`: render leading whitespace of each line
+   * - `'trailing'`: render trailing whitespace of each line
+   *
+   * You are able to use `:whitespace` or `:no-whitespace` or
+   * `:whitespace=all|boundary|leading|trailing` to set single code block
    *
    * 启用空白字符显示
-   * - true: 启用空白字符，但默认不渲染任何空白字符
-   * - false: 完全禁用空白字符
-   * - 'all': 渲染所有空白字符
-   * - 'boundary': 渲染每行的前导和尾随空白字符
-   * - 'leading': 渲染每行的前导空白字符
-   * - 'trailing': 渲染每行的尾随空白字符
    *
-   * 你可以使用 `:whitespace` 或 `:no-whitespace` 或 `:whitespace=all|boundary|leading|trailing` 来设置单个代码块
+   * - `true`: 启用空白字符，但默认不渲染任何空白字符
+   * - `false`: 完全禁用空白字符
+   * - `'all'`: 渲染所有空白字符
+   * - `'boundary'`: 渲染每行的前导和尾随空白字符
+   * - `'leading'`: 渲染每行的前导空白字符
+   * - `'trailing'`: 渲染每行的尾随空白字符
+   *
+   * 你可以使用 `:whitespace` 或 `:no-whitespace` 或
+   * `:whitespace=all|boundary|leading|trailing` 来设置单个代码块
    *
    * @default false
-   *
    * @see https://shiki.style/packages/transformers#transformerrenderwhitespace
    */
   whitespace?: WhitespacePosition | boolean
@@ -226,7 +222,7 @@ export type ShikiHighlightOptions = ShikiThemeOptions & {
    *
    * 高亮器语言检测器的日志级别
    *
-   * @description defaults to `'debug'` when `--debug` flag is enabled
+   * Defaults to `'debug'` when `--debug` flag is enabled
    *
    * 当启用 `--debug` 标志时默认为 `'debug'`
    *

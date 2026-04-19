@@ -27,7 +27,7 @@ export interface CommentPluginFrontmatter extends PageFrontmatter {
    *
    * 是否启用访问量
    *
-   * @description Only available when using waline
+   * Only available when using waline
    *
    * 仅在使用 Waline 时可用
    *

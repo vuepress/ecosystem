@@ -35,9 +35,10 @@ export interface IconPluginOptions {
    *
    * 字体图标资源链接
    *
-   * @description `"iconify"`, `"fontawesome"` and `"fontawesome-with-brands"` keywords are supported
+   * `"iconify"`, `"fontawesome"` and `"fontawesome-with-brands"` keywords are
+   * supported
    *
-   * @default "iconify"
+   * @default 'iconify'
    */
   assets?: IconAsset
 
@@ -46,7 +47,7 @@ export interface IconPluginOptions {
    *
    * 字体图标的 Class 前缀
    *
-   * @default ""
+   * @default ''
    */
   prefix?: string
 
@@ -62,7 +63,7 @@ export interface IconPluginOptions {
    *
    * 图标的组件名称
    *
-   * @default "VPIcon"
+   * @default 'VPIcon'
    */
   component?: string
 

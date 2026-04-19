@@ -65,7 +65,6 @@ export interface WalinePluginOptions extends Omit<
    * Waline 本地化配置
    */
   // FIXME: https://github.com/oxc-project/tsgolint/issues/861
-  // oxlint-disable-next-line typescript/no-unnecessary-type-arguments
   locales?: LocaleConfig<WalineLocaleData>
 }
 

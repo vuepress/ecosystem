@@ -34,7 +34,6 @@ const createMarkdown = ({
     const highlighter = resolveHighlighter(lang)
     return highlighter?.(code) || ''
   }
-  // oxlint-disable-next-line typescript/no-unnecessary-type-arguments
   md.use<MarkdownItPrismjsHighlightOptions>(highlightPlugin, options)
   md.use<MarkdownItPreWrapperOptions>(preWrapperPlugin, { preWrapper })
   if (preWrapper) {

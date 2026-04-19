@@ -9,8 +9,8 @@ import { logger } from 'vuepress/utils'
  *
  * @param page - The page to check / 要检查的页面
  * @param app - VuePress app instance / VuePress 应用实例
- * @param isIgnoreLink - Function to check if a link should be ignored / 检查链接是否应被忽略的函数
- *
+ * @param isIgnoreLink - Function to check if a link should be ignored /
+ *   检查链接是否应被忽略的函数
  * @returns Whether any broken links were found / 是否发现了死链接
  */
 export const checkMarkdownLink = (

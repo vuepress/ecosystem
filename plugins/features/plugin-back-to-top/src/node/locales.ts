@@ -2,9 +2,7 @@ import type { DefaultLocaleInfo } from '@vuepress/helper'
 
 import type { BackToTopPluginLocaleData } from '../shared/index.js'
 
-/**
- * Default locale info for `@vuepress/plugin-back-to-top`
- */
+/** Default locale info for `@vuepress/plugin-back-to-top` */
 export const backToTopLocaleInfo: DefaultLocaleInfo<BackToTopPluginLocaleData> =
   [
     [['en', 'en-US'], { backToTop: 'Back to top' }],

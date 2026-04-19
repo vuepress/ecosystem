@@ -4,14 +4,13 @@ import { resolveRoute } from 'vuepress/client'
 /**
  * Resolve AutoLink props from string
  *
- * @param config AutoLink config string
- * @param currentPath current page path, used to resolve relative link
- *
- * @returns AutoLink options
- *
  * @example
- * - Input: '/README.md'
- * - Output: { text: 'Home', icon: 'home', link: '/' }
+ *   - Input: '/README.md'
+ *   - Output: { text: 'Home', icon: 'home', link: '/' }
+ *
+ * @param config AutoLink config string
+ * @param currentPath Current page path, used to resolve relative link
+ * @returns AutoLink options
  */
 export const resolveAutoLink = (
   config: string,

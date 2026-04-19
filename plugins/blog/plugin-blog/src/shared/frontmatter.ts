@@ -15,9 +15,7 @@ export interface BlogCategoryFrontmatterOptions {
    *
    * 分类名称
    *
-   * @description Only available in category item pages
-   *
-   * 仅在分类子项页面中可用
+   * Only available in category item pages 仅在分类子项页面中可用
    */
   name?: string
 }

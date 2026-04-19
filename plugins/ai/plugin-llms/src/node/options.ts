@@ -9,7 +9,8 @@ export interface LlmsPluginOptions {
    *
    * 添加到文件链接前的域名
    *
-   * @example 'https://example.com'
+   * @example
+   *   'https://example.com'
    */
   domain?: string
 
@@ -76,9 +77,9 @@ export interface LlmsPluginOptions {
    *
    * 页面 Markdown 转换函数
    *
-   * @param markdown page original markdown content
-   * @param page current llms page
-   * @returns transformed markdown
+   * @param markdown Page original markdown content
+   * @param page Current llms page
+   * @returns Transformed markdown
    */
   transformMarkdown?: (markdown: string, page: Page) => string
 
@@ -103,7 +104,8 @@ export interface LlmsPluginOptions {
   llmsTxtTemplate?: string
 
   /**
-   * Custom variables for {@link LlmsPluginOptions.llmsTxtTemplate | `llmsTxtTemplate`}
+   * Custom variables for
+   * {@link LlmsPluginOptions.llmsTxtTemplate | `llmsTxtTemplate`}
    *
    * {@link LlmsPluginOptions.llmsTxtTemplate | `llmsTxtTemplate`} 的自定义变量
    */

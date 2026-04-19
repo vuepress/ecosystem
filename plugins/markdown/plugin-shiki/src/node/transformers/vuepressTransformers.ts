@@ -2,9 +2,7 @@ import type { ShikiTransformer } from 'shiki'
 
 const CODE_ESCAPE_RE = /\[\\!code/g
 
-/**
- * A transformer to add `vp-code` class to code blocks for better styling
- */
+/** A transformer to add `vp-code` class to code blocks for better styling */
 export const addClassTransformer: ShikiTransformer = {
   name: 'vuepress:add-class',
   pre(node) {
@@ -13,7 +11,8 @@ export const addClassTransformer: ShikiTransformer = {
 }
 
 /**
- * A transformer to remove `tabindex` property from code blocks to avoid being focused
+ * A transformer to remove `tabindex` property from code blocks to avoid being
+ * focused
  */
 export const cleanupTransformer: ShikiTransformer = {
   name: 'vuepress:cleanup',
@@ -23,11 +22,11 @@ export const cleanupTransformer: ShikiTransformer = {
 }
 
 /**
- * This `transformer` is primarily for the usage instructions of themes.
- * When developers need to provide an example like `// [!code xxx]`,
- * they can use `// [\!code xxx]` to avoid being processed by `shiki`.
- * After `shiki` completes the processing,
- * replace `[\!code` back with `[!code` to display the correct text.
+ * This `transformer` is primarily for the usage instructions of themes. When
+ * developers need to provide an example like `// [!code xxx]`, they can use `//
+ * [\!code xxx]` to avoid being processed by `shiki`. After `shiki` completes
+ * the processing, replace `[\!code` back with `[!code` to display the correct
+ * text.
  */
 export const removeEscapeTransformer: ShikiTransformer = {
   name: 'vuepress:remove-escape',
@@ -35,7 +34,8 @@ export const removeEscapeTransformer: ShikiTransformer = {
 }
 
 /**
- * This transformer adds a `wbr` tag to the end of the empty line to insure the empty line can be correctly displayed
+ * This transformer adds a `wbr` tag to the end of the empty line to insure the
+ * empty line can be correctly displayed
  */
 export const emptyLineTransformer: ShikiTransformer = {
   name: 'vuepress:empty-line',
@@ -60,7 +60,8 @@ export const emptyLineTransformer: ShikiTransformer = {
 }
 
 /**
- * A transformer to add `v-pre` directive to code blocks to avoid being processed by Vue
+ * A transformer to add `v-pre` directive to code blocks to avoid being
+ * processed by Vue
  */
 export const vPreTransformer: ShikiTransformer = {
   name: 'vuepress:v-pre',

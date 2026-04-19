@@ -23,7 +23,7 @@ const readingTimeLocales =
  *
  * 获取阅读时间多语言配置
  *
- * @returns reading time locale config or null if plugin is disabled
+ * @returns Reading time locale config or null if plugin is disabled
  */
 export const useReadingTimeLocaleConfig =
   (): ComputedRef<ReadingTimePluginLocaleData | null> =>
@@ -55,15 +55,13 @@ export interface ReadingTimeLocale {
  *
  * 获取当前页面的阅读时间本地化数据
  *
- * @returns reading time locale data
- *
  * @example
- * ```ts
- * import { useReadingTimeLocale } from '@vuepress/plugin-reading-time/client'
+ *   import { useReadingTimeLocale } from '@vuepress/plugin-reading-time/client'
  *
- * const readingTimeLocale = useReadingTimeLocale()
- * // { time: "1 minute", words: "100 words" }
- * ```
+ *   const readingTimeLocale = useReadingTimeLocale()
+ *   // { time: "1 minute", words: "100 words" }
+ *
+ * @returns Reading time locale data
  */
 export const useReadingTimeLocale = (): ComputedRef<ReadingTimeLocale> => {
   if (readingTimeLocales == null) return computed(() => DEFAULT_LOCALE)

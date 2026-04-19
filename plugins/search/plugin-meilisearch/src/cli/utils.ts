@@ -5,7 +5,8 @@ import { spawnSync } from 'node:child_process'
  * Gets the relative path from git root to the current directory
  *
  * @param cwd Current working directory
- * @returns Relative path from git root to cwd, or empty string if cwd is the git root
+ * @returns Relative path from git root to cwd, or empty string if cwd is the
+ *   git root
  */
 export const getGitRelativePath = (cwd = process.cwd()): string => {
   let gitProcess: SpawnSyncReturns<string>

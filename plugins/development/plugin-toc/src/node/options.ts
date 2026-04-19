@@ -36,16 +36,10 @@ export interface TocPluginOptions {
   renderOptions?: TocRenderOptions
 
   // TODO: Remove in stable
-  /**
-   * @deprecated use `headersOptions` instead
-   */
+  /** @deprecated use `headersOptions` instead */
   headerOptions?: GetHeadersOptions
-  /**
-   * @deprecated use `renderOptions` instead
-   */
+  /** @deprecated use `renderOptions` instead */
   defaultPropsOptions?: TocRenderOptions
-  /**
-   * @deprecated use `renderOptions` instead
-   */
+  /** @deprecated use `renderOptions` instead */
   propsOptions?: TocRenderOptions
 }

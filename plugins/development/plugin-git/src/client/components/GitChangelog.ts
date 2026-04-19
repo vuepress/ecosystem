@@ -20,7 +20,7 @@ export const GitChangelog = defineComponent({
     /** Title of changelog */
     title: String,
 
-    /** header level of changelog */
+    /** Header level of changelog */
     headerLevel: {
       type: Number,
       default: 2,

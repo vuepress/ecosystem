@@ -13,7 +13,7 @@ export interface LinksCheckPluginOptions {
    *
    * 是否在构建时检查 Markdown 中的死链
    *
-   * @description If set to 'error', the build will fail when dead links are found
+   * If set to 'error', the build will fail when dead links are found
    *
    * 如果设置为 'error'，则在发现死链时构建将失败
    *

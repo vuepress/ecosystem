@@ -25,19 +25,17 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  * 版权插件
  *
  * @example
- * ```ts
- * import { copyrightPlugin } from '@vuepress/plugin-copyright'
+ *   import { copyrightPlugin } from '@vuepress/plugin-copyright'
  *
- * export default {
- *   plugins: [
- *     copyrightPlugin({
- *       author: 'Your Name',
- *       license: 'MIT',
- *       global: true,
- *     }),
- *   ],
- * }
- * ```
+ *   export default {
+ *     plugins: [
+ *       copyrightPlugin({
+ *         author: 'Your Name',
+ *         license: 'MIT',
+ *         global: true,
+ *       }),
+ *     ],
+ *   }
  */
 export const copyrightPlugin =
   (options: CopyrightPluginOptions = {}): PluginFunction =>

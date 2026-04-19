@@ -8,7 +8,7 @@ import { getSearchResults, getSuggestions } from './utils/index.js'
 
 // oxlint-disable-next-line unicorn/prefer-add-event-listener
 globalThis.onmessage = async ({
-  data: { type = 'all', query, locale = '/', options, id },
+  data: { type = 'all', query, locale, options, id },
 }: MessageEvent<WorkerMessageData>): Promise<void> => {
   const { default: localeIndex } = await database[locale]()
 

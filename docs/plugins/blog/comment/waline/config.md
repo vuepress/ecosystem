@@ -169,14 +169,14 @@
     /**
      * Image title
      *
-     * @description Used for alt attribute of image
+     * Used for alt attribute of image
      */
     title?: string
 
     /**
      * Image preview link
      *
-     * @description For better loading performance, we will use this thumbnail first in the list
+     * For better loading performance, we will use this thumbnail first in the list
      *
      * @default src
      */
@@ -201,7 +201,7 @@
     /**
      * Fetch more action
      *
-     * @description It will be triggered when the list scrolls to the bottom. If your search service supports paging, you should set this to achieve infinite scrolling
+     * It will be triggered when the list scrolls to the bottom. If your search service supports paging, you should set this to achieve infinite scrolling
      *
      * @default (word) => search(word)
      */

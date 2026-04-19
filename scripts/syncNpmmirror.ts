@@ -1,9 +1,8 @@
 import { readdirSync } from 'node:fs'
 import { request } from 'node:https'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 
-const root = path.resolve(fileURLToPath(import.meta.url), '../../')
+const root = path.resolve(import.meta.dirname, '../')
 
 const pluginPkgJSONs = await Promise.all(
   readdirSync(path.resolve(root, 'plugins')).flatMap((category) =>

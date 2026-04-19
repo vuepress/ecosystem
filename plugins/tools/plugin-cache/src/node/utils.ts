@@ -10,6 +10,7 @@ export const readJson = async <Data = unknown>(
   }
 }
 
+// oxlint-disable-next-line typescript/no-unnecessary-type-parameters
 export const readJSONSync = <Data = unknown>(filepath: string): Data | null => {
   try {
     return fs.readJSONSync(filepath, 'utf-8') as Data

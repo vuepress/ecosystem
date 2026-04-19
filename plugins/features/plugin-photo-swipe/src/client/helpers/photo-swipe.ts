@@ -35,17 +35,15 @@ const photoswipeSymbol: InjectionKey<PhotoSwipeOptionsRef> = Symbol(
  *
  * 定义 PhotoSwipe 配置
  *
- * @param options - PhotoSwipe options / PhotoSwipe 选项
- *
  * @example
- * ```ts
- * import { definePhotoSwipeConfig } from '@vuepress/plugin-photo-swipe/client'
+ *   import { definePhotoSwipeConfig } from '@vuepress/plugin-photo-swipe/client'
  *
- * definePhotoSwipeConfig({
- *   bgOpacity: 0.8,
- *   spacing: 0.1,
- * })
- * ```
+ *   definePhotoSwipeConfig({
+ *     bgOpacity: 0.8,
+ *     spacing: 0.1,
+ *   })
+ *
+ * @param options - PhotoSwipe options / PhotoSwipe 选项
  */
 export const definePhotoSwipeConfig = (
   options: MaybeRefOrGetter<PhotoSwipeOptions>,

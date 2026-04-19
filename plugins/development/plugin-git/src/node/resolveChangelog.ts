@@ -11,8 +11,8 @@ import {
 
 const RE_CLEAN_REFS = /[()]/g
 
-const parseTagName = (refs: string): string | undefined => {
-  if (!refs) return
+const parseTagName = (refs: string): string | null => {
+  if (!refs) return null
 
   const tags = refs
     .replace(RE_CLEAN_REFS, '')

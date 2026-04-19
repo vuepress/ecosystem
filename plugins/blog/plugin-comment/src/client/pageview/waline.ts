@@ -8,6 +8,7 @@ export const isSupported = true
 export const usePageview = (): UpdatePageview => {
   const walineOptions = useWalineOptions()
 
-  return (options) =>
+  return (options) => {
     pageviewCount({ serverURL: walineOptions.value.serverURL, ...options })
+  }
 }

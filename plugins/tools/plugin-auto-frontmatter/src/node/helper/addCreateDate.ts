@@ -48,7 +48,8 @@ const getTimeString = (date: Date): string =>
  * 获取 YYYY-MM-DD HH:mm:ss 格式的完整日期时间字符串
  *
  * @param date - Date object / 日期对象
- * @returns Full date string in YYYY-MM-DD HH:mm:ss format / YYYY-MM-DD HH:mm:ss 格式的完整日期时间字符串
+ * @returns Full date string in YYYY-MM-DD HH:mm:ss format / YYYY-MM-DD HH:mm:ss
+ *   格式的完整日期时间字符串
  */
 const getFullDateString = (date: Date): string =>
   `${getDateString(date)} ${getTimeString(date)}`
@@ -82,7 +83,7 @@ export interface AddCreateDateOptions {
    *
    * 添加时间时使用的 frontmatter 键名
    *
-   * @default "date"
+   * @default 'date'
    */
   key?: string
 
@@ -91,38 +92,37 @@ export interface AddCreateDateOptions {
    *
    * 添加时间时使用的日期格式
    *
-   * @default "date"
+   * @default 'date'
    */
   format?: 'date' | 'full' | 'time'
 }
 
 /**
  * Add create date to frontmatter
+ *
+ * @example
+ *   ;({
+ *     handle(data, context) {
+ *       addCreateDate(data, context)
+ *       // => data.date = '2022-01-01'
+ *       return data
+ *     },
+ *   })
+ *
+ *   ;({
+ *     handle(data, context) {
+ *       addCreateDate(data, context, { format: 'full' })
+ *       // => data.date = '2022-01-01 00:00:00'
+ *       return data
+ *     },
+ *   })
+ *
  * @param data - Frontmatter data / Frontmatter 数据
  * @param context - Auto frontmatter context / 自动 frontmatter 上下文
  * @param options - Options for adding create date / 添加创建日期的选项
- * @param option.key - Frontmatter key to use when add date / 添加时间时使用的 frontmatter 键名
+ * @param option.key - Frontmatter key to use when add date / 添加时间时使用的
+ *   frontmatter 键名
  * @param option.format - Format of the date value when add date / 添加时间时使用的日期格式
- * @example
- * ```ts
- * {
- *   handle(data, context) {
- *     addCreateDate(data, context)
- *     // => data.date = '2022-01-01'
- *     return data
- *   }
- * }
- * ```
- * @example
- * ```ts
- * {
- *   handle(data, context) {
- *     addCreateDate(data, context, { format: 'full' })
- *     // => data.date = '2022-01-01 00:00:00'
- *     return data
- *   }
- * }
- * ```
  */
 export const addCreateDate = (
   data: AutoFrontmatterData,

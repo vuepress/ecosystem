@@ -2,9 +2,7 @@ import type { DefaultLocaleInfo } from '@vuepress/helper'
 
 import type { CatalogPluginLocaleData } from '../shared/index.js'
 
-/**
- * Default locale info for `@vuepress/plugin-catalog`
- */
+/** Default locale info for `@vuepress/plugin-catalog` */
 export const catalogLocaleInfo: DefaultLocaleInfo<CatalogPluginLocaleData> = [
   [['en', 'en-US'], { title: 'Catalog', empty: 'No catalog' }],
   [['zh', 'zh-CN', 'zh-Hans'], { title: '目录', empty: '暂无目录' }],

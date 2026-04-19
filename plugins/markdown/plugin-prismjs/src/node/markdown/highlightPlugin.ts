@@ -31,7 +31,6 @@ export interface MarkdownItPrismjsHighlightOptions {
    * 是否启用标记差异
    *
    * @default false
-   *
    * @see https://shiki.style/packages/transformers#transformernotationdiff
    */
   notationDiff?: boolean
@@ -42,7 +41,6 @@ export interface MarkdownItPrismjsHighlightOptions {
    * 是否启用标记聚焦
    *
    * @default false
-   *
    * @see https://shiki.style/packages/transformers#transformernotationfocus
    */
   notationFocus?: boolean
@@ -53,7 +51,6 @@ export interface MarkdownItPrismjsHighlightOptions {
    * 是否启用标记高亮
    *
    * @default false
-   *
    * @see https://shiki.style/packages/transformers#transformernotationhighlight
    */
   notationHighlight?: boolean
@@ -64,7 +61,6 @@ export interface MarkdownItPrismjsHighlightOptions {
    * 是否启用标记错误级别
    *
    * @default false
-   *
    * @see https://shiki.style/packages/transformers#transformernotationerrorlevel
    */
   notationErrorLevel?: boolean
@@ -75,34 +71,36 @@ export interface MarkdownItPrismjsHighlightOptions {
    * 是否启用标记词汇高亮
    *
    * @default false
-   *
    * @see https://shiki.style/packages/transformers#transformernotationwordhighlight
    */
   notationWordHighlight?: boolean
 
   /**
    * Enable render whitespace
-   * - true: enable whitespace, but not render any whitespace by default
-   * - false: disable whitespace completely
-   * - 'all': render all whitespace
-   * - 'boundary': render leading and trailing whitespace of each line.
-   * - 'leading': render leading whitespace of each line
-   * - 'trailing': render trailing whitespace of each line
    *
-   * you are able to use `:whitespace` or `:no-whitespace` or `:whitespace=all|boundary|leading|trailing` to set single code block
+   * - `true`: enable whitespace, but not render any whitespace by default
+   * - `false`: disable whitespace completely
+   * - `'all'`: render all whitespace
+   * - `'boundary'`: render leading and trailing whitespace of each line.
+   * - `'leading'`: render leading whitespace of each line
+   * - `'trailing'`: render trailing whitespace of each line
+   *
+   * You are able to use `:whitespace` or `:no-whitespace` or
+   * `:whitespace=all|boundary|leading|trailing` to set single code block
    *
    * 是否启用渲染空格
-   * - true: 启用空格，但默认不渲染任何空格
-   * - false: 完全禁用空格
-   * - 'all': 渲染所有空格
-   * - 'boundary': 渲染每行的前导和尾随空格
-   * - 'leading': 渲染每行的前导空格
-   * - 'trailing': 渲染每行的尾随空格
    *
-   * 你可以使用 `:whitespace` 或 `:no-whitespace` 或 `:whitespace=all|boundary|leading|trailing` 来设置单个代码块
+   * - `true`: 启用空格，但默认不渲染任何空格
+   * - `false`: 完全禁用空格
+   * - `'all'`: 渲染所有空格
+   * - `'boundary'`: 渲染每行的前导和尾随空格
+   * - `'leading'`: 渲染每行的前导空格
+   * - `'trailing'`: 渲染每行的尾随空格
+   *
+   * 你可以使用 `:whitespace` 或 `:no-whitespace` 或
+   * `:whitespace=all|boundary|leading|trailing` 来设置单个代码块
    *
    * @default false
-   *
    * @see https://shiki.style/packages/transformers#transformerrenderwhitespace
    */
   whitespace?: WhitespacePosition | boolean
@@ -113,16 +111,15 @@ export interface MarkdownItPrismjsHighlightOptions {
  *
  * 用于 prismjs 高亮的 markdown-it 插件
  *
+ * @example
+ *   import { highlightPlugin } from '@vuepress/plugin-prismjs'
+ *   import MarkdownIt from 'markdown-it'
+ *
+ *   const md = new MarkdownIt()
+ *   md.use(highlightPlugin, { highlightLines: true })
+ *
  * @param md - MarkdownIt instance / MarkdownIt 实例
  * @param options - Plugin options / 插件选项
- * @example
- * ```ts
- * import { highlightPlugin } from '@vuepress/plugin-prismjs'
- * import MarkdownIt from 'markdown-it'
- *
- * const md = new MarkdownIt()
- * md.use(highlightPlugin, { highlightLines: true })
- * ```
  */
 export const highlightPlugin = (
   md: Markdown,

@@ -39,6 +39,7 @@ export const Notice = defineComponent({
       const {
         noticeKey,
         actions = [],
+        // oxlint-disable-next-line typescript/no-useless-default-assignment
         title = '',
         content = '',
         ...rest

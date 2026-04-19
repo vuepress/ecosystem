@@ -6,7 +6,7 @@ import type { LocaleConfig } from 'vuepress/shared'
 /**
  * Options for markdown-it-container
  *
- * markdown-it-container 的配置项
+ * `markdown-it-container` 的配置项
  */
 export interface MarkdownItContainerOptions {
   /**
@@ -29,7 +29,8 @@ export interface MarkdownItContainerOptions {
   render?: MarkdownItContainerRenderFunction
 
   /**
-   * Function to validate tail after opening marker, should return `true` on success
+   * Function to validate tail after opening marker, should return `true` on
+   * success
    *
    * 用于验证开始标记后内容的函数，成功时应返回 `true`
    */
@@ -39,7 +40,7 @@ export interface MarkdownItContainerOptions {
 /**
  * Renderer function for markdown-it-container
  *
- * markdown-it-container 的渲染函数
+ * `markdown-it-container` 的渲染函数
  *
  * @param tokens - Token array / Token 数组
  * @param index - Current token index / 当前 token 索引

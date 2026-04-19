@@ -4,7 +4,8 @@
  *
  * 在当前激活的 Service Worker 中调用 `unregister()`
  *
- * @returns `true` if unregister success, `false` if unregister failed / `true` 表示注销成功，`false` 表示注销失败
+ * @returns `true` if unregister success, `false` if unregister failed / `true`
+ *   表示注销成功，`false` 表示注销失败
  */
 export const unregisterSW = async (): Promise<boolean> => {
   try {

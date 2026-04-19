@@ -60,14 +60,14 @@ interface FeedAuthor {
   /**
    * Author site
    *
-   * @description json format only
+   * json format only
    */
   url?: string
 
   /**
    * Author avatar
    *
-   * @description json format only
+   * json format only
    */
   avatar?: string
 }
@@ -92,14 +92,14 @@ interface FeedCategory {
   /**
    * A string that identifies a categorization taxonomy
    *
-   * @description rss format only
+   * rss format only
    */
   domain?: string
 
   /**
    * The categorization scheme via a URI
    *
-   * @description atom format only
+   * atom format only
    */
   scheme?: string
 }
@@ -124,14 +124,14 @@ interface FeedEnclosure {
   /**
    * The MIME type of the enclosure
    *
-   * @description should be a standard MIME Type, rss format only
+   * should be a standard MIME Type, rss format only
    */
   type: string
 
   /**
    * Size in bytes
    *
-   * @description rss format only
+   * rss format only
    */
   length?: number
 }
@@ -188,14 +188,14 @@ interface FeedContributor {
   /**
    * Contributor site
    *
-   * @description json format only
+   * json format only
    */
   url?: string
 
   /**
    * Contributor avatar
    *
-   * @description json format only
+   * json format only
    */
   avatar?: string
 }

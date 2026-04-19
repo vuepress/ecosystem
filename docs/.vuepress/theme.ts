@@ -13,8 +13,8 @@ export default defaultTheme({
     /**
      * English locale config
      *
-     * As the default locale of `@vuepress/theme-default` is English,
-     * we don't need to set all of the locale fields
+     * As the default locale of `@vuepress/theme-default` is English, we don't
+     * need to set all of the locale fields
      */
     '/': {
       // navbar
@@ -25,9 +25,7 @@ export default defaultTheme({
       editLinkText: 'Edit this page on GitHub',
     },
 
-    /**
-     * Chinese locale config
-     */
+    /** Chinese locale config */
     '/zh/': {
       // navbar
       navbar: navbarZh,

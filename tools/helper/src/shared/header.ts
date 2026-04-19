@@ -15,7 +15,7 @@ export interface GetHeadersOptions {
    *
    * The Array of `CSS Selector`
    *
-   * @default []
+   * @default [ ]
    */
   ignore?: string[]
   /**
@@ -25,8 +25,11 @@ export interface GetHeadersOptions {
    *
    * - `false`: No headers.
    * - `number`: only headings of that level will be displayed.
-   * - `[number, number]: headings level tuple, where the first number should be less than the second number, for example, `[2, 4]` which means all headings from `<h2>` to `<h4>` will be displayed.
-   * - `deep`: same as `[2, 6]`, which means all headings from `<h2>` to `<h6>` will be displayed.
+   * - `[number, number]`: headings level tuple, where the first number should be
+   *   less than the second number, for example, `[2, 4]` which means all
+   *   headings from `<h2>` to `<h4>` will be displayed.
+   * - `deep`: same as `[2, 6]`, which means all headings from `<h2>` to `<h6>`
+   *   will be displayed.
    *
    * @default 2
    */

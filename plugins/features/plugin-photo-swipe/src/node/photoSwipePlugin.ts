@@ -20,20 +20,18 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  * VuePress PhotoSwipe 插件
  *
  * @example
- * ```ts
- * import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
+ *   import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
  *
- * export default {
- *   plugins: [
- *     photoSwipePlugin({
- *       selector: '[vp-content] :not(a) > img:not([no-view])',
- *       download: true,
- *       fullscreen: true,
- *       scrollToClose: true,
- *     }),
- *   ],
- * }
- * ```
+ *   export default {
+ *     plugins: [
+ *       photoSwipePlugin({
+ *         selector: '[vp-content] :not(a) > img:not([no-view])',
+ *         download: true,
+ *         fullscreen: true,
+ *         scrollToClose: true,
+ *       }),
+ *     ],
+ *   }
  */
 export const photoSwipePlugin =
   (options: PhotoSwipePluginOptions = {}): PluginFunction =>

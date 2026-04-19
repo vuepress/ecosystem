@@ -20,18 +20,16 @@ import { CLIENT_FOLDER, PLUGIN_NAME, logger } from './utils.js'
  * VuePress 评论插件
  *
  * @example
- * ```ts
- * import { commentPlugin } from '@vuepress/plugin-comment'
+ *   import { commentPlugin } from '@vuepress/plugin-comment'
  *
- * export default {
- *   plugins: [
- *     commentPlugin({
- *       provider: 'Waline',
- *       serverURL: 'https://waline.example.com',
- *     }),
- *   ],
- * }
- * ```
+ *   export default {
+ *     plugins: [
+ *       commentPlugin({
+ *         provider: 'Waline',
+ *         serverURL: 'https://waline.example.com',
+ *       }),
+ *     ],
+ *   }
  */
 export const commentPlugin =
   (options: CommentPluginOptions): PluginFunction =>

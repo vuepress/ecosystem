@@ -11,10 +11,9 @@ let rehypeInstance: Processor | null = null
  *
  * 清理 HTML
  *
- * @see https://github.com/rehypejs/rehype-sanitize
- *
  * @param html - HTML string / HTML 字符串
  * @returns Sanitized HTML string / 清理后的 HTML 字符串
+ * @see https://github.com/rehypejs/rehype-sanitize
  */
 export const sanitizeHTML = (html: string): string => {
   rehypeInstance ??= unified()

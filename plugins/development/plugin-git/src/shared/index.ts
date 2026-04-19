@@ -103,7 +103,7 @@ export interface GitChangelogInfo {
    */
   commitUrl?: string
   /**
-   * release tag
+   * Release tag
    *
    * 发布标签
    */
@@ -147,13 +147,12 @@ export interface GitPluginFrontmatter extends PageFrontmatter {
    * Whether to get the contributors of a page
    *
    * - If the value is `false`, it will be ignored
-   * - If the value is `string[]`, it will be used as the list of extra contributors
+   * - If the value is `string[]`, it will be used as the list of extra
+   *   contributors
    */
   contributors?: string[] | boolean
 
-  /**
-   * Whether to get the changelog of a page
-   */
+  /** Whether to get the changelog of a page */
   changelog?: boolean
 }
 
@@ -172,24 +171,16 @@ export interface GitPluginPageData extends Record<string, unknown> {
  * Git 数据
  */
 export interface GitData {
-  /**
-   * Unix timestamp in milliseconds of the first commit
-   */
+  /** Unix timestamp in milliseconds of the first commit */
   createdTime?: number
 
-  /**
-   * Unix timestamp in milliseconds of the last commit
-   */
+  /** Unix timestamp in milliseconds of the last commit */
   updatedTime?: number
 
-  /**
-   * Contributors of all commits
-   */
+  /** Contributors of all commits */
   contributors?: GitContributorInfo[]
 
-  /**
-   * Changelog of a page
-   */
+  /** Changelog of a page */
   changelog?: GitChangelogInfo[]
 }
 
@@ -199,29 +190,19 @@ export interface GitData {
  * Git 多语言数据
  */
 export interface GitLocaleData {
-  /**
-   * Contributors title
-   */
+  /** Contributors title */
   contributors: string
 
-  /**
-   * Changelog title
-   */
+  /** Changelog title */
   changelog: string
 
-  /**
-   * Word to represent a commit "on" a time
-   */
+  /** Word to represent a commit "on" a time */
   timeOn: string
 
-  /**
-   * Changelog button
-   */
+  /** Changelog button */
   viewChangelog: string
 
-  /**
-   * Latest updated
-   */
+  /** Latest updated */
   latestUpdateAt: string
 }
 

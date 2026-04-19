@@ -33,7 +33,6 @@ type MarkdownItHighlight = (
  * @param extraTransformers - Extra transformers / 额外转换器
  * @param loadLang - Language loader function / 语言加载函数
  * @param markdownFilePathGetter - Markdown file path getter / Markdown 文件路径获取器
- *
  * @returns Highlight function for markdown-it / markdown-it 的高亮函数
  */
 export const getHighLightFunction = (
@@ -51,8 +50,8 @@ export const getHighLightFunction = (
         lang: getLanguage(language, options, loadLang, markdownFilePathGetter),
         meta: {
           /**
-           * Custom `transformers` passed by users may require `attrs`.
-           * e.g. [transformerNotationWordHighlight](https://shiki.style/packages/transformers#transformernotationwordhighlight)
+           * Custom `transformers` passed by users may require `attrs`. e.g.
+           * [transformerNotationWordHighlight](https://shiki.style/packages/transformers#transformernotationwordhighlight)
            */
           __raw: attrs,
         },

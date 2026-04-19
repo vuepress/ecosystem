@@ -17,9 +17,7 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  * `@vuepress/plugin-search` 的配置项
  */
 export interface SearchPluginOptions {
-  /**
-   * Locales config for search box
-   */
+  /** Locales config for search box */
   locales?: LocaleConfig<SearchPluginLocaleData>
 
   /**
@@ -41,13 +39,12 @@ export interface SearchPluginOptions {
   maxSuggestions?: number
 
   /**
-   * A function to determine whether a page should be included in the search index
+   * A function to determine whether a page should be included in the search
+   * index
    */
   isSearchable?: (page: Page) => boolean
 
-  /**
-   * A function to add extra fields to the search index of a page
-   */
+  /** A function to add extra fields to the search index of a page */
   getExtraFields?: (page: Page) => string[]
 }
 

@@ -8,18 +8,16 @@ import type { PalettePluginOptions } from './palettePlugin.js'
  *
  * 准备样式文件
  *
- * @param app - VuePress app instance
- * @param options - prepare options
- * @returns file path of generated style file
- *
  * @example
- * ```ts
- * const stylePath = await prepareStyleFile(app, {
- *   userStyleFile: '.vuepress/styles/index.scss',
- *   tempStyleFile: 'styles/index.scss',
- *   importCode: (filePath) => `@forward 'file:///${filePath}';\n`
- * })
- * ```
+ *   const stylePath = await prepareStyleFile(app, {
+ *     userStyleFile: '.vuepress/styles/index.scss',
+ *     tempStyleFile: 'styles/index.scss',
+ *     importCode: (filePath) => `@forward 'file:///${filePath}';\n`,
+ *   })
+ *
+ * @param app - VuePress app instance
+ * @param options - Prepare options
+ * @returns File path of generated style file
  */
 export const prepareStyleFile = async (
   app: App,

@@ -19,7 +19,8 @@ export interface LLMPage extends Page {
    *
    * 页面的 Markdown 内容
    *
-   * @example '# Guide\n\nA guide'
+   * @example
+   *   '# Guide\n\nA guide'
    */
   markdown: string
 
@@ -28,7 +29,8 @@ export interface LLMPage extends Page {
    *
    * 页面摘要
    *
-   * @example 'Introduction to the guide'
+   * @example
+   *   'Introduction to the guide'
    */
   excerpt: string
 }
@@ -95,13 +97,15 @@ export interface TemplateGetterOptions {
   /**
    * Site title
    *
-   * Extracted from frontmatter or first h1 heading in main document (`README.md`) by default
+   * Extracted from frontmatter or first h1 heading in main document
+   * (`README.md`) by default
    *
    * 站点标题
    *
    * 默认从 frontmatter 或主文档（`README.md`）中的第一个 h1 标题提取
    *
-   * @example 'Awesome Tool'
+   * @example
+   *   'Awesome Tool'
    */
   title?: TemplateGetter | string
 
@@ -110,7 +114,8 @@ export interface TemplateGetterOptions {
    *
    * 站点描述
    *
-   * @example 'Blazing fast build tool'
+   * @example
+   *   'Blazing fast build tool'
    */
   description?: TemplateGetter | string
 
@@ -119,7 +124,8 @@ export interface TemplateGetterOptions {
    *
    * 站点的额外详情
    *
-   * @example 'A multi-user version of the notebook designed for companies, classrooms and research labs'
+   * @example
+   *   'A multi-user version of the notebook designed for companies, classrooms and research labs'
    */
   details?: TemplateGetter | string
 
@@ -128,7 +134,8 @@ export interface TemplateGetterOptions {
    *
    * 自动生成的目录
    *
-   * @example
+   * E.g.:
+   *
    * ```md
    * - [Title](/foo.md): Lorem ipsum dolor sit amet, consectetur adipiscing elit.
    * - [Title 2](/bar/baz.md): Cras vel nibh id ipsum pharetra efficitur.

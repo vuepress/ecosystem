@@ -18,7 +18,6 @@ export const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz', 10)
  * 从代码围栏信息字符串中解析语言
  *
  * @param info - Code fence info string / 代码围栏信息字符串
- *
  * @returns Resolved language / 解析的语言
  */
 export const resolveLanguage = (info: string): string =>
@@ -29,20 +28,21 @@ export const resolveLanguage = (info: string): string =>
  *
  * 将属性转换为行选项
  *
- * @description 3 steps:
- * 1. strip directive tokens (e.g. `:collapsed-lines=5`) from attrs
- * 2. convert attrs into line numbers:
- *    {4,7-13,16,23-27,40} -> [4,7,8,9,10,11,12,13,16,23,24,25,26,27,40]
- * 3. convert line numbers into line options:
- *    [{ line: number, classes: string[] }]
+ * 3 steps:
+ *
+ * 1. Strip directive tokens (e.g. `:collapsed-lines=5`) from attrs
+ * 2. Convert attrs into line numbers: `{4,7-13,16,23-27,40}` ->
+ *    `[4,7,8,9,10,11,12,13,16,23,24,25,26,27,40]`
+ * 3. Convert line numbers into line options: `[{ line: number, classes: string[]
+ *    }]`
  *
  * 转换分为三步：
+ *
  * 1. 从属性中移除指令标记（如 `:collapsed-lines=5`）
  * 2. 将属性转换为行号数组
  * 3. 将行号数组转换为行选项
  *
  * @param attrs - Attributes string / 属性字符串
- *
  * @returns Line options array / 行选项数组
  */
 export const attrsToLines = (attrs: string): TransformerCompactLineOption[] => {

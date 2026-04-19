@@ -1,68 +1,56 @@
-/**
- * @see https://schema.org/Person
- */
+/** @see https://schema.org/Person */
 
 export interface PersonSchema extends Record<string, unknown> {
   '@type': 'Person'
 
-  /**
-   * Person name
-   */
+  /** Person name */
   'name': string
 
   /**
    * Person URL
+   *
    * @recommended
    */
   'url'?: string
 }
 
 /**
- * @see https://schema.org/CreativeWork
- *
  * @tutorial https://developers.google.com/search/docs/appearance/structured-data/article#structured-data-type-definitions
+ * @see https://schema.org/CreativeWork
  */
 export interface CreativeWorkSchema extends Record<string, unknown> {
   '@type': 'CreativeWork'
 
-  /**
-   * An abstract is a short description that summarizes a CreativeWork
-   */
+  /** An abstract is a short description that summarizes a CreativeWork */
   'abstract'?: string
 
-  /**
-   * The author of this content or rating
-   */
+  /** The author of this content or rating */
   'author': PersonSchema[]
 
   /**
-   * Text of a notice appropriate for describing the copyright aspects of this Creative Work, ideally indicating the owner of the copyright for the Work
+   * Text of a notice appropriate for describing the copyright aspects of this
+   * Creative Work, ideally indicating the owner of the copyright for the Work
    */
   'copyrightNotice'?: string
 
   /**
    * Article title
    *
-   * @description No more than 110 characters
+   * No more than 110 characters
    */
   'headline': string
 
-  /**
-   * @recommended
-   */
+  /** @recommended */
   'datePublished'?: string
-  /**
-   * @recommended
-   */
+  /** @recommended */
   'dateModified'?: string
 
   'wordCount'?: number
 }
 
 /**
- * @see https://schema.org/Article
- *
  * @tutorial https://developers.google.com/search/docs/appearance/structured-data/article#structured-data-type-definitions
+ * @see https://schema.org/Article
  */
 export interface ArticleSchema extends Omit<CreativeWorkSchema, 'type'> {
   '@context': 'https://schema.org'
@@ -70,18 +58,15 @@ export interface ArticleSchema extends Omit<CreativeWorkSchema, 'type'> {
 }
 
 /**
- * @see https://schema.org/BlogPosting
- *
  * @tutorial https://developers.google.com/search/docs/appearance/structured-data/article#structured-data-type-definitions
+ * @see https://schema.org/BlogPosting
  */
 export interface BlogPostingSchema extends Omit<ArticleSchema, 'type'> {
   '@context': 'https://schema.org'
   '@type': 'BlogPosting'
 }
 
-/**
- * @see https://schema.org/WebPage
- */
+/** @see https://schema.org/WebPage */
 export interface WebPageSchema extends Omit<CreativeWorkSchema, 'type'> {
   '@context': 'https://schema.org'
   '@type': 'WebPage'

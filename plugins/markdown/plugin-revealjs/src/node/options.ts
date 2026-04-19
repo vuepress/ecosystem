@@ -3,14 +3,14 @@ import type { RevealJsTheme } from '../shared/index.js'
 /**
  * Built-in reveal.js plugin names
  *
- * reveal.js 内置插件名称
+ * Reveal.js 内置插件名称
  */
 export type RevealJsPlugin = 'highlight' | 'math' | 'notes' | 'search' | 'zoom'
 
 /**
- * reveal.js plugin options
+ * Reveal.js plugin options
  *
- * reveal.js 插件选项
+ * Reveal.js 插件选项
  */
 export interface RevealJsPluginOptions {
   /**
@@ -18,7 +18,7 @@ export interface RevealJsPluginOptions {
    *
    * 要启用的 Reveal.js 插件
    *
-   * @default []
+   * @default [ ]
    */
   plugins?: RevealJsPlugin[]
 
@@ -27,7 +27,7 @@ export interface RevealJsPluginOptions {
    *
    * 要启用的 Reveal.js 主题
    *
-   * @default ["auto"]
+   * @default ['auto']
    */
   themes?: RevealJsTheme[]
 

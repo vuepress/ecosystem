@@ -18,7 +18,7 @@ export interface FeedAuthor {
    *
    * 作者网站
    *
-   * @description json format only
+   * Json format only
    */
   url?: string
 
@@ -27,7 +27,7 @@ export interface FeedAuthor {
    *
    * 作者头像
    *
-   * @description json format only
+   * Json format only
    */
   avatar?: string
 }
@@ -47,36 +47,36 @@ export interface FeedCategory {
    *
    * 标识分类法的字符串
    *
-   * @description rss format only
+   * Rss format only
    */
   domain?: string
 
   /**
-   * the categorization scheme via a URI
+   * The categorization scheme via a URI
    *
    * URI 标识的分类 scheme
    *
-   * @description atom format only
+   * Atom format only
    */
   scheme?: string
 }
 
 export interface FeedEnclosure {
   /**
-   * enclosure link
+   * Enclosure link
    *
    * Enclosure 地址
    */
   url: string
 
   /**
-   * what its type is
+   * What its type is
    *
-   * @description should be standard MIME type
+   * Should be standard MIME type
    *
    * 类型
    *
-   * @description 应为一个标准的 MIME 类型
+   * 应为一个标准的 MIME 类型
    */
   type: string
 
@@ -139,15 +139,14 @@ export interface FeedChannelOptions {
   lastUpdated?: Date
 
   /**
-   * time to live.
+   * Time to live.
    *
-   * It’s a number of minutes that indicates how long a channel can be cached before refreshing from the source.
+   * It’s a number of minutes that indicates how long a channel can be cached
+   * before refreshing from the source.
    */
   ttl?: number
 
-  /**
-   * Specifies a GIF, JPEG or PNG image that can be displayed with the channel.
-   */
+  /** Specifies a GIF, JPEG or PNG image that can be displayed with the channel. */
   image?: string
 
   /**
@@ -157,9 +156,7 @@ export interface FeedChannelOptions {
    */
   icon?: string
 
-  /**
-   * Global Author
-   */
+  /** Global Author */
   author?: FeedAuthor | FeedAuthor[]
 
   /**

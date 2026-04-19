@@ -16,7 +16,6 @@ import {
  * @param commits - Git commits / Git 提交记录
  * @param options - Contributors options / 贡献者选项
  * @param gitProvider - Git provider / Git 提供商
- *
  * @returns Raw contributors / 原始贡献者信息
  */
 // oxlint-disable-next-line complexity
@@ -110,7 +109,6 @@ export const getRawContributors = (
  * @param gitProvider - Git provider / Git 提供商
  * @param options - Contributors options / 贡献者选项
  * @param extraContributors - Extra contributors / 额外贡献者
- *
  * @returns Resolved contributors / 解析后的贡献者
  */
 export const resolveContributors = (

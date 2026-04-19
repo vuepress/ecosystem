@@ -17,7 +17,7 @@ import '../styles/copy-code.scss'
 /**
  * Options for the useCopyCode composable
  *
- * useCopyCode 组合式 API 的选项
+ * UseCopyCode 组合式 API 的选项
  */
 export interface UseCopyCodeOptions {
   /**
@@ -55,7 +55,7 @@ export interface UseCopyCodeOptions {
    *
    * @default 2000
    */
-  duration: number
+  duration?: number
 
   /**
    * Whether to display on the mobile devices
@@ -70,24 +70,20 @@ export interface UseCopyCodeOptions {
    *
    * 转换复制前的 pre 元素
    *
-   * @description
-   * For example, deleting certain elements before copying, or inserting copyright information.
-   *
-   * 例如，在复制前删除特定元素，或插入版权信息。
-   *
-   * @param preElement `<pre>` clone Node
+   * For example, deleting certain elements before copying, or inserting
+   * copyright information. 例如，在复制前删除特定元素，或插入版权信息。
    *
    * @example
-   * ```ts
-   * {
-   *   transform(pre) {
-   *     // Remove all `.ignore` elements
-   *     pre.querySelectorAll('.ignore').forEach((el) => el.remove())
-   *     // insert copyright
-   *     pre.innerHTML += `\n Copied by VuePress`
-   *   }
-   * }
-   * ```
+   *   ;({
+   *     transform(pre) {
+   *       // Remove all `.ignore` elements
+   *       pre.querySelectorAll('.ignore').forEach((el) => el.remove())
+   *       // insert copyright
+   *       pre.innerHTML += `\n Copied by VuePress`
+   *     },
+   *   })
+   *
+   * @param preElement `<pre>` clone Node
    */
   transform?: (preElement: HTMLElement) => void
 }
@@ -102,20 +98,18 @@ const SHELL_RE = /language-(shellscript|shell|bash|sh|zsh)/
  * 使用复制代码功能
  *
  * @example
- * ```ts
- * // .vuepress/client.ts
- * import { useCopyCode } from '@vuepress/plugin-copy-code/client'
+ *   // .vuepress/client.ts
+ *   import { useCopyCode } from '@vuepress/plugin-copy-code/client'
  *
- * export default {
- *   setup() {
- *     useCopyCode({
- *       selector: '.custom-code',
- *       duration: 3000,
- *       showInMobile: true
- *     })
+ *   export default {
+ *     setup() {
+ *       useCopyCode({
+ *         selector: '.custom-code',
+ *         duration: 3000,
+ *         showInMobile: true,
+ *       })
+ *     },
  *   }
- * }
- * ```
  */
 // oxlint-disable-next-line max-lines-per-function
 export const useCopyCode = ({
@@ -130,8 +124,9 @@ export const useCopyCode = ({
   if (__VUEPRESS_SSR__) return
 
   /**
-   * On small-screen devices, the copy button is not displayed by default in order to prevent
-   * it from obstructing content, as the `:hover` effect can be triggered by `touch` events.
+   * On small-screen devices, the copy button is not displayed by default in
+   * order to prevent it from obstructing content, as the `:hover` effect can be
+   * triggered by `touch` events.
    */
   const isMobile = useMediaQuery('(max-width: 419px)')
   const enabled = computed(() => !isMobile.value || showInMobile)

@@ -8,7 +8,6 @@ import { camelize, capitalize, getCurrentInstance } from 'vue'
  *
  * @param name - Component name / 组件名称
  * @param app - Vue app instance / Vue 应用实例
- *
  * @returns Whether the global component exists / 全局组件是否存在
  */
 export const hasGlobalComponent = (name: string, app?: App): boolean => {

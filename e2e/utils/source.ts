@@ -1,6 +1,4 @@
-/**
- * fork from @see https://github.com/vuepress/core/blob/main/e2e/utils/source.ts
- */
+/** Fork from @see https://github.com/vuepress/core/blob/main/e2e/utils/source.ts */
 import { fs, getDirname, path } from 'vuepress/utils'
 
 const __dirname = getDirname(import.meta.url)

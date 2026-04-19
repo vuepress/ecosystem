@@ -35,7 +35,7 @@ export const GitContributors = defineComponent({
     /** Contributor title */
     title: String,
 
-    /** header level of contributor title */
+    /** Header level of contributor title */
     headerLevel: {
       type: Number,
       default: 2,

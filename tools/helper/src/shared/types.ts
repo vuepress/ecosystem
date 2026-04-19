@@ -6,27 +6,25 @@ type NotNill<T> = T extends null | undefined ? never : T
 /**
  * Recursively make all properties of an object required
  *
+ * @example
+ *   type A = {
+ *     a?: {
+ *       b?: string
+ *       c?: number
+ *     }
+ *   }
+ *
+ *   type B = DeepRequired<A>
+ *   // B is now:
+ *   // type B = {
+ *   //   a: {
+ *   //     b: string
+ *   //     c: number
+ *   //   }
+ *   // }
+ *
  * @template T - The type to make required
  * @returns The type with all properties required
- *
- * @example
- * ```ts
- * type A = {
- *   a?: {
- *     b?: string
- *    c?: number
- *   }
- * }
- *
- * type B = DeepRequired<A>
- * // B is now:
- * // type B = {
- * //   a: {
- * //     b: string
- * //     c: number
- * //   }
- * // }
- * ```
  */
 export type DeepRequired<T> = T extends Primitive
   ? NotNill<T>
@@ -39,7 +37,8 @@ export type DeepRequired<T> = T extends Primitive
     }
 
 /**
- * A literal type that supports custom further strings but preserves autocompletion in IDEs.
+ * A literal type that supports custom further strings but preserves
+ * autocompletion in IDEs.
  *
  * @see {@link https://github.com/microsoft/TypeScript/issues/29729#issuecomment-471566609 | copied from issue}
  */
@@ -48,8 +47,8 @@ export type LiteralUnion<Union extends Base, Base = string> =
   | (Base & { IGNORE_ME?: never })
 
 /**
- * Convert a union type to an intersection type using [distributive conditional types](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#distributive-conditional-types).
- *
+ * Convert a union type to an intersection type using [distributive conditional
+ * types](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#distributive-conditional-types).
  */
 export type UnionToIntersection<Union> =
   // `extends unknown` is always going to be the case and is used to convert the

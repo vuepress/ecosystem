@@ -38,7 +38,7 @@ export interface BlogCategoryOptions<
    *
    * 分类页面路径模式
    *
-   * @description `:key` will be replaced by slugified category key
+   * `:key` will be replaced by slugified category key
    *
    * `:key` 将被替换为经过 slugify 处理的分类键名
    *
@@ -51,7 +51,7 @@ export interface BlogCategoryOptions<
    *
    * 分类页面的布局组件名称
    *
-   * @default "Layout"
+   * @default 'Layout'
    */
   layout?: string
 
@@ -67,7 +67,7 @@ export interface BlogCategoryOptions<
    *
    * 分类子项页面路径模式
    *
-   * @description `:key` and `:name` will be replaced by slugified values
+   * `:key` and `:name` will be replaced by slugified values
    *
    * `:key` 和 `:name` 将被替换为经过 slugify 处理的值
    *
@@ -80,7 +80,7 @@ export interface BlogCategoryOptions<
    *
    * 分类子项页面的布局组件名称
    *
-   * @default "Layout"
+   * @default 'Layout'
    */
   itemLayout?: string
 
@@ -131,7 +131,7 @@ export interface BlogTypeOptions<
    *
    * 类型页面路径
    *
-   * @default "/:key/"
+   * @default '/:key/'
    */
   path?: string | false
 
@@ -140,7 +140,7 @@ export interface BlogTypeOptions<
    *
    * 类型页面的布局组件名称
    *
-   * @default "Layout"
+   * @default 'Layout'
    */
   layout?: string
 
@@ -218,7 +218,7 @@ export interface BlogPluginOptions extends Pick<
    *
    * 注入文章信息到路由元数据的键名
    *
-   * @default "_blog"
+   * @default '_blog'
    */
   metaScope?: string
 
@@ -245,7 +245,7 @@ export interface BlogPluginOptions extends Pick<
    *
    * 内容中手动摘要的分隔符
    *
-   * @default "<!-- more -->"
+   * @default '<!-- more -->'
    */
   excerptSeparator?: string
   /**
@@ -253,7 +253,7 @@ export interface BlogPluginOptions extends Pick<
    *
    * 自动生成摘要的目标长度
    *
-   * @description Excerpt length will be the minimal possible length reaching this value
+   * Excerpt length will be the minimal possible length reaching this value
    *
    * 摘要长度将是达到此值的最小可能长度
    *
@@ -266,7 +266,7 @@ export interface BlogPluginOptions extends Pick<
    *
    * 用于过滤需要生成摘要的页面的函数
    *
-   * @description Use this to skip pages that don't need excerpt generation
+   * Use this to skip pages that don't need excerpt generation
    *
    * 使用此函数跳过不需要生成摘要的页面
    *
@@ -288,7 +288,7 @@ export interface BlogPluginOptions extends Pick<
    *
    * 是否在开发环境启用热重载
    *
-   * @description May impact performance on large sites
+   * May impact performance on large sites
    *
    * 在大型站点上可能影响性能
    *

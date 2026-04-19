@@ -53,7 +53,6 @@ export interface MarkdownImagePluginOptions {
    * Whether to enable legacy image size support
    *
    * 是否启用旧版图片大小支持。
-   *
    * @default false
    */
   legacySize?: boolean

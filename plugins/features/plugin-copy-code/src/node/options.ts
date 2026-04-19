@@ -15,11 +15,11 @@ export interface CopyCodePluginOptions {
   /**
    * Prompt message display time
    *
-   * @description setting it to `0` will disable the hint.
+   * Setting it to `0` will disable the hint.
    *
    * 提示消息显示时间
    *
-   * @description 设置为 `0` 会禁用提示。
+   * 设置为 `0` 会禁用提示。
    *
    * @default 2000
    */
@@ -35,11 +35,12 @@ export interface CopyCodePluginOptions {
   showInMobile?: boolean
 
   /**
-   * When copying code, selecting to ignore nodes in the code block will result in the text content of the selected nodes not being copied.
+   * When copying code, selecting to ignore nodes in the code block will result
+   * in the text content of the selected nodes not being copied.
    *
    * 复制代码时，选择忽略代码块中的节点，被选中的节点文本内容将不会被复制
    *
-   * @default ""
+   * @default ''
    */
   ignoreSelector?: string[] | string
 
@@ -55,12 +56,10 @@ export interface CopyCodePluginOptions {
    *
    * 是否在双击时复制内联代码内容
    *
-   * @description
-   * - boolean: Whether to copy inline code content when double click.
-   * - string | string[]: The selector of inline code.
-   *
-   * - boolean: 是否在双击时复制内联代码内容
-   * - string | string[]: 内联代码的选择器
+   * - Boolean: Whether to copy inline code content when double click.
+   * - String | string[]: The selector of inline code.
+   * - Boolean: 是否在双击时复制内联代码内容
+   * - String | string[]: 内联代码的选择器
    *
    * @default false
    */

@@ -1,16 +1,17 @@
 /**
- * This module implements some of the functionalities of the `shiki` transformer.
- * You can use the following magic comments:
+ * This module implements some of the functionalities of the `shiki`
+ * transformer. You can use the following magic comments:
  *
- * - line highlight:   `// [!code highlight]`, or `// [!code hl]`
- * - line diff add:    `// [!code ++]`
- * - line diff remove: `// [!code --]`
- * - line focus:       `// [!code focus]`
- * - line warning:     `// [!code warning]`
- * - line error:       `// [!code error]`
- * - highlight word:   `// [!code word:xxx]` `xxx` can be any word
+ * - Line highlight: `// [!code highlight]`, or `// [!code hl]`
+ * - Line diff add: `// [!code ++]`
+ * - Line diff remove: `// [!code --]`
+ * - Line focus: `// [!code focus]`
+ * - Line warning: `// [!code warning]`
+ * - Line error: `// [!code error]`
+ * - Highlight word: `// [!code word:xxx]` `xxx` can be any word
  *
- * You can also add `:\d` to achieve the same effect for the following `number` lines：
+ * You can also add `:\d` to achieve the same effect for the following `number`
+ * lines：
  *
  * - `// [!code highlight:3]`
  * - `// [!code ++:3]`
@@ -70,7 +71,7 @@ const createNotationCommentMarkerRule = (
 }
 
 /**
- * line highlight
+ * Line highlight
  *
  * 行高亮
  *
@@ -90,7 +91,7 @@ export const notationHighlight = (parser: CodeParser): void => {
 }
 
 /**
- * line focus
+ * Line focus
  *
  * 行聚焦
  *
@@ -109,7 +110,7 @@ export const notationFocus = (parser: CodeParser): void => {
 }
 
 /**
- * line diff
+ * Line diff
  *
  * 行差异
  *
@@ -129,7 +130,7 @@ export const notationDiff = (parser: CodeParser): void => {
 }
 
 /**
- * line error level
+ * Line error level
  *
  * 行错误级别
  *
@@ -149,7 +150,7 @@ export const notationErrorLevel = (parser: CodeParser): void => {
 }
 
 /**
- * highlight word
+ * Highlight word
  *
  * 词汇高亮
  *

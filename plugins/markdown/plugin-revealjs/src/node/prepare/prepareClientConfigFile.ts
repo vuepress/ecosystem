@@ -36,7 +36,9 @@ export const prepareClientConfigFile = async (
       const [themeName, fontNames] = config
 
       themes.add(themeName)
-      fontNames?.forEach((fontName) => fonts.add(fontName))
+      fontNames?.forEach((fontName) => {
+        fonts.add(fontName)
+      })
     }
   })
 

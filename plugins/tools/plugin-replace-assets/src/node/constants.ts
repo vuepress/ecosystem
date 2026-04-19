@@ -1,8 +1,6 @@
 export const PLUGIN_NAME = '@vuepress/plugin-replace-assets'
 
-/**
- * images extensions
- */
+/** Images extensions */
 export const KNOWN_IMAGE_EXTENSIONS: string[] = [
   'apng',
   'bmp',
@@ -20,9 +18,7 @@ export const KNOWN_IMAGE_EXTENSIONS: string[] = [
   'jxl',
 ]
 
-/**
- * media extensions
- */
+/** Media extensions */
 export const KNOWN_MEDIA_EXTENSIONS: string[] = [
   'mp4',
   'webm',

@@ -15,19 +15,17 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  * 目录插件
  *
  * @example
- * ```ts
- * import { catalogPlugin } from '@vuepress/plugin-catalog'
+ *   import { catalogPlugin } from '@vuepress/plugin-catalog'
  *
- * export default {
- *   plugins: [
- *     catalogPlugin({
- *       level: 2,
- *       index: true,
- *       exclude: ['/private/']
- *     })
- *   ]
- * }
- * ```
+ *   export default {
+ *     plugins: [
+ *       catalogPlugin({
+ *         level: 2,
+ *         index: true,
+ *         exclude: ['/private/'],
+ *       }),
+ *     ],
+ *   }
  */
 export const catalogPlugin =
   (options: CatalogPluginOptions = {}): PluginFunction =>

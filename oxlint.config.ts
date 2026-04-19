@@ -2,16 +2,21 @@ import { defineHopeConfig } from 'oxc-config-hope/oxlint'
 
 export default defineHopeConfig(
   {
-    ignorePatterns: ['template/', '**/tests/__fixtures__/'],
+    ignore: ['template/', '**/tests/__fixtures__/'],
 
     node: [
       '**/src/{cli,node}/**/*.ts',
       'tools/**/*.ts',
       '**/.vuepress/config.ts',
+      '*.config.ts',
       '.ncurc.cjs',
     ],
     vue: true,
-    vitest: true,
+    vitest: [
+      'plugins/*/*/tests/**/*.spec.ts',
+      'themes/*/tests/**/*.spec.ts',
+      'tools/*/tests/**/*.spec.ts',
+    ],
     playwright: true,
 
     rules: {
@@ -44,6 +49,8 @@ export default defineHopeConfig(
       'unicorn/prefer-global-this': 'off',
       // sometimes we need to check if a defined variable is injected
       'unicorn/no-typeof-undefined': 'off',
+
+      'typescript/no-unnecessary-type-arguments': 'off',
     },
   },
   // node files

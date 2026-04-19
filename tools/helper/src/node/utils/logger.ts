@@ -31,18 +31,17 @@ export class Logger {
    * 创建带文本的加载旋转器
    *
    * @param msg - Loading message / 加载信息
-   *
    * @returns Loading spinner control object / 加载旋转器控制对象
    */
   public load(msg: string): {
-    succeed: (text?: string) => void
-    fail: (text?: string) => void
+    succeed: (text?: string) => Ora
+    fail: (text?: string) => Ora
   } {
     const instance = this.init(msg)
 
     return {
       succeed: (text?: string) => instance.succeed(text),
-      fail: (text?: string) => instance.succeed(text),
+      fail: (text?: string) => instance.fail(text),
     }
   }
 
