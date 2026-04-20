@@ -35,13 +35,12 @@ export type ShikiLoadLang = (lang: string) => boolean
  *
  * 创建带有额外功能的 Shiki 高亮器
  *
+ * @default enableVPre: true
  * @param app - VuePress app instance / VuePress 应用实例
  * @param options - Plugin options / 插件选项
  * @param enableVPre - Whether to enable v-pre transformer / 是否启用 v-pre 转换器
- *
- * @default enableVPre: true
- *
- * @returns Object containing highlighter, loadLang function and extra transformers / 包含高亮器、loadLang 函数和额外转换器的对象
+ * @returns Object containing highlighter, loadLang function and extra
+ *   transformers / 包含高亮器、loadLang 函数和额外转换器的对象
  */
 export const createShikiHighlighter = async (
   app: App,

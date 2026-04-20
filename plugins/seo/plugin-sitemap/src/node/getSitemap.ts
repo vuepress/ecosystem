@@ -29,16 +29,16 @@ export const getSiteMap = async (
     ...(xmlns ? { xmlns } : {}),
   })
 
-  sitemapInfos.forEach(([path, info]) =>
+  sitemapInfos.forEach(([path, info]) => {
     sitemapStream.write({
       url: `${base}${removeLeadingSlash(path)}`,
       ...info,
-    }),
-  )
+    })
+  })
 
-  extraUrls.forEach((item) =>
-    sitemapStream.write({ url: `${base}${removeLeadingSlash(item)}` }),
-  )
+  extraUrls.forEach((item) => {
+    sitemapStream.write({ url: `${base}${removeLeadingSlash(item)}` })
+  })
 
   sitemapStream.end()
 

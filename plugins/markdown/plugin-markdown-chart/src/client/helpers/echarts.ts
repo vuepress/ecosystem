@@ -30,8 +30,7 @@ export const defineEChartsConfig = (config: EChartsConfig): void => {
 }
 
 /**
- * @internal
- *
  * @returns ECharts options defined by user / 用户定义的 ECharts 配置
+ * @internal
  */
 export const useEChartsConfig = (): EChartsConfig => echartsConfig

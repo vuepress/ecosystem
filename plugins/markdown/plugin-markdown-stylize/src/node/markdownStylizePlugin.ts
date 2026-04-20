@@ -25,26 +25,24 @@ declare module 'vuepress/markdown' {
  *
  * Markdown 样式化插件
  *
- * @param options - plugin options / 插件选项
- *
  * @example
- * ```ts
- * import { markdownStylizePlugin } from '@vuepress/plugin-markdown-stylize'
+ *   import { markdownStylizePlugin } from '@vuepress/plugin-markdown-stylize'
  *
- * export default {
- *   plugins: [
- *     markdownStylizePlugin({
- *       align: true,
- *       attrs: true,
- *       mark: true,
- *       layout: true,
- *       spoiler: true,
- *       sub: true,
- *       sup: true,
- *     }),
- *   ],
- * }
- * ```
+ *   export default {
+ *     plugins: [
+ *       markdownStylizePlugin({
+ *         align: true,
+ *         attrs: true,
+ *         mark: true,
+ *         layout: true,
+ *         spoiler: true,
+ *         sub: true,
+ *         sup: true,
+ *       }),
+ *     ],
+ *   }
+ *
+ * @param options - Plugin options / 插件选项
  */
 export const markdownStylizePlugin =
   (options: MarkdownStylizePluginOptions): Plugin =>

@@ -71,7 +71,8 @@ export interface MarkdownHintPluginOptions {
   alert?: boolean
 
   /**
-   * Whether to enable hint containers including important, info, note, tip, warning, caution, details
+   * Whether to enable hint containers including important, info, note, tip,
+   * warning, caution, details
    *
    * 是否启用提示容器，包括 important、info、note、tip、warning、caution、details
    *

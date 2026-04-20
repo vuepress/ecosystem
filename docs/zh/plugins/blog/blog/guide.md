@@ -148,7 +148,7 @@ interface BlogFrontmatterOptions {
   /**
    * 当前分类名称
    *
-   * @description 仅在分类子项页面可用
+   * 仅在分类子项页面可用
    */
   name?: string
 }

@@ -62,25 +62,23 @@ const getDataSource = (
  *
  * 创建 PhotoSwipe 实例
  *
+ * @example
+ *   import { createPhotoSwipe } from '@vuepress/plugin-photo-swipe/client'
+ *
+ *   const state = await createPhotoSwipe(
+ *     ['https://example.com/image1.jpg', 'https://example.com/image2.jpg'],
+ *     {
+ *       download: true,
+ *       fullscreen: true,
+ *     },
+ *   )
+ *
+ *   // Open first image
+ *   state.open(0)
+ *
  * @param images - Image links / 图片链接
  * @param options - PhotoSwipe options / PhotoSwipe 选项
  * @returns PhotoSwipe state / 可操作的 PhotoSwipe 状态
- *
- * @example
- * ```ts
- * import { createPhotoSwipe } from '@vuepress/plugin-photo-swipe/client'
- *
- * const state = await createPhotoSwipe([
- *   'https://example.com/image1.jpg',
- *   'https://example.com/image2.jpg',
- * ], {
- *   download: true,
- *   fullscreen: true,
- * })
- *
- * // Open first image
- * state.open(0)
- * ```
  */
 export const createPhotoSwipe = async (
   images: string[],

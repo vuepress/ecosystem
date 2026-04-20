@@ -12,13 +12,9 @@ import VPAutoLink from '@theme/VPAutoLink.vue'
 import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
 
 const { item, depth = 0 } = defineProps<{
-  /**
-   * The sidebar item to be rendered
-   */
+  /** The sidebar item to be rendered */
   item: SidebarItem
-  /**
-   * The depth of the current sidebar item
-   */
+  /** The depth of the current sidebar item */
   depth?: number
 }>()
 

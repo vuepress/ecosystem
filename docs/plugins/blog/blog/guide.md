@@ -148,7 +148,7 @@ interface BlogFrontmatterOptions {
   /**
    * Current category name
    *
-   * @description Only available in category item page
+   * Only available in category item page
    */
   name?: string
 }

@@ -31,18 +31,16 @@ const revealJsSymbol: InjectionKey<RevealJsOptionsRef> = Symbol(
  *
  * 定义 reveal.js 配置
  *
- * @param options - Reveal.js options / Reveal.js 选项
- *
  * @example
- * ```ts
- * import { defineRevealJsConfig } from '@vuepress/plugin-revealjs/client'
+ *   import { defineRevealJsConfig } from '@vuepress/plugin-revealjs/client'
  *
- * defineRevealJsConfig({
- *   hash: true,
- *   keyboard: true,
- *   overview: true
- * })
- * ```
+ *   defineRevealJsConfig({
+ *     hash: true,
+ *     keyboard: true,
+ *     overview: true,
+ *   })
+ *
+ * @param options - Reveal.js options / Reveal.js 选项
  */
 export const defineRevealJsConfig = (
   options: MaybeRefOrGetter<RevealJsOptions>,
@@ -64,17 +62,15 @@ export const defineRevealJsConfig = (
 }
 
 /**
- * @internal
- *
  * @returns Reveal.js options ref
+ * @internal
  */
 export const useRevealJsConfig = (): RevealJsOptionsRef =>
   inject(revealJsSymbol)!
 
 /**
- * @internal
- *
  * @param app - Vue application instance
+ * @internal
  */
 export const injectRevealJsConfig = (app: App): void => {
   app.provide(revealJsSymbol, revealOptions)

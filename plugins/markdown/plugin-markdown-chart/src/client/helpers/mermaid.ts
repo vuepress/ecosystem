@@ -7,8 +7,7 @@ export const defineMermaidConfig = (options: MermaidOptions): void => {
 }
 
 /**
- * @internal
- *
  * @returns Mermaid options defined by user / 用户定义的 Mermaid 配置
+ * @internal
  */
 export const useMermaidOptions = (): MermaidOptions => mermaidOptions

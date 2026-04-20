@@ -63,17 +63,15 @@ export interface PalettePluginOptions {
  * 创建调色板插件
  *
  * @example
- * ```ts
- * import { palettePlugin } from '@vuepress/plugin-palette'
+ *   import { palettePlugin } from '@vuepress/plugin-palette'
  *
- * export default {
- *   plugins: [
- *     palettePlugin({
- *       preset: 'sass'
- *     })
- *   ]
- * }
- * ```
+ *   export default {
+ *     plugins: [
+ *       palettePlugin({
+ *         preset: 'sass',
+ *       }),
+ *     ],
+ *   }
  */
 export const palettePlugin = ({
   preset = 'css',

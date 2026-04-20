@@ -5,7 +5,8 @@ import type { FileTreeNode, FileTreeNodeProps } from './types.js'
 const FOCUS_RE = /^\*\*(.*)\*\*(?:$|\s+)/
 
 /**
- * Parse the info string of a single node to extract attributes such as file name, comments, and type.
+ * Parse the info string of a single node to extract attributes such as file
+ * name, comments, and type.
  *
  * 解析单个节点的信息字符串以提取属性，如文件名、注释和类型。
  *

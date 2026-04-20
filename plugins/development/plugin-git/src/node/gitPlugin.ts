@@ -27,20 +27,18 @@ import {
  * Git 插件
  *
  * @example
- * ```ts
- * import { gitPlugin } from '@vuepress/plugin-git'
+ *   import { gitPlugin } from '@vuepress/plugin-git'
  *
- * export default {
- *   plugins: [
- *     gitPlugin({
- *       createdTime: true,
- *       updatedTime: true,
- *       contributors: true,
- *       changelog: false
- *     })
- *   ]
- * }
- * ```
+ *   export default {
+ *     plugins: [
+ *       gitPlugin({
+ *         createdTime: true,
+ *         updatedTime: true,
+ *         contributors: true,
+ *         changelog: false,
+ *       }),
+ *     ],
+ *   }
  */
 export const gitPlugin =
   ({

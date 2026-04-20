@@ -13,7 +13,6 @@ import type { DefaultLocaleInfo } from './types.js'
  *
  * @param app - VuePress App / VuePress 应用
  * @param logger - Logger / 日志记录器
- *
  * @returns Array of locale path and language pairs / 本地化路径和语言对的数组
  */
 export const getLocaleInfo = (
@@ -75,9 +74,9 @@ export interface GetLocaleConfigOption<Locale extends LocaleData> {
   app: App
   /** Default locale config */
   default: DefaultLocaleInfo<Locale>
-  /** user locale config */
+  /** User locale config */
   config?: LocaleConfig<Locale> | undefined
-  /** plugin name */
+  /** Plugin name */
   name?: string
 }
 
@@ -87,7 +86,6 @@ export interface GetLocaleConfigOption<Locale extends LocaleData> {
  * 获取客户端的最终本地化配置
  *
  * @param options - Configuration options / 配置选项
- *
  * @returns Final locale config / 最终本地化配置
  */
 export const getFullLocaleConfig = <Locale extends LocaleData>({

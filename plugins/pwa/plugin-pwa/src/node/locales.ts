@@ -2,9 +2,7 @@ import type { DefaultLocaleInfo } from '@vuepress/helper'
 
 import type { PwaPluginLocaleData } from '../shared/index.js'
 
-/**
- * Default locale info for `@vuepress/plugin-pwa`
- */
+/** Default locale info for `@vuepress/plugin-pwa` */
 export const pwaLocaleInfo: DefaultLocaleInfo<PwaPluginLocaleData> = [
   [
     ['en', 'en-US'],

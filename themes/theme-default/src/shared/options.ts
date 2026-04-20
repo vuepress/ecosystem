@@ -44,14 +44,10 @@ export interface DefaultThemeLocaleData extends LocaleData {
    */
   navbar?: NavbarOptions
 
-  /**
-   * Navbar label used for screen readers using the `aria-label` attribute
-   */
+  /** Navbar label used for screen readers using the `aria-label` attribute */
   navbarLabel?: string | null
 
-  /**
-   * Page navbar label used for screen readers using the `aria-label` attribute
-   */
+  /** Page navbar label used for screen readers using the `aria-label` attribute */
   pageNavbarLabel?: string | null
 
   /**
@@ -69,10 +65,9 @@ export interface DefaultThemeLocaleData extends LocaleData {
   logoDark?: string | null
 
   /**
-   * The alt text of navbar logo.
-   * Defaults to the site title if not specified.
-   * If the value is the same as the site title, the site title rendered in the navbar will be
-   * hidden from screen readers to avoid duplication.
+   * The alt text of navbar logo. Defaults to the site title if not specified.
+   * If the value is the same as the site title, the site title rendered in the
+   * navbar will be hidden from screen readers to avoid duplication.
    */
   logoAlt?: string | null
 
@@ -128,11 +123,11 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * - Set to `2` to include `<h2>` and `<h3>`
    * - ...
    *
-   * The max value depends on which headers you have extracted
-   * via `markdown.headers.level`.
+   * The max value depends on which headers you have extracted via
+   * `markdown.headers.level`.
    *
-   * The default value of `markdown.headers.level` is `[2, 3]`,
-   * so the default max value of `sidebarDepth` is `2`
+   * The default value of `markdown.headers.level` is `[2, 3]`, so the default
+   * max value of `sidebarDepth` is `2`
    */
   sidebarDepth?: number
 
@@ -155,7 +150,8 @@ export interface DefaultThemeLocaleData extends LocaleData {
    *
    * Pattern of edit link
    *
-   * @example ':repo/edit/:branch/:path'
+   * @example
+   *   ':repo/edit/:branch/:path'
    */
   editLinkPattern?: string
 
@@ -259,28 +255,18 @@ export interface DefaultThemeLocaleData extends LocaleData {
    */
   backToHome?: string
 
-  /**
-   * A11y text for external link icon
-   */
+  /** A11y text for external link icon */
   openInNewWindow?: string
 
-  /**
-   * A11y text for color mode toggle button
-   */
+  /** A11y text for color mode toggle button */
   toggleColorMode?: string
 
-  /**
-   * A11y text for sidebar toggle button
-   */
+  /** A11y text for sidebar toggle button */
   toggleSidebar?: string
 
-  /**
-   * text for prev link
-   */
+  /** Text for prev link */
   prev?: string | false
 
-  /**
-   * text for next link
-   */
+  /** Text for next link */
   next?: string | false
 }

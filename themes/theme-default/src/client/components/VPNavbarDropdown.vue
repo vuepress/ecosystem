@@ -11,7 +11,7 @@ import type { AutoLinkOptions, NavGroup } from '../../shared/index.js'
 import '@vuepress/helper/transition/fade-in-height-expand.css'
 
 const { config } = defineProps<{
-  /** dropdown config */
+  /** Dropdown config */
   config: NavGroup<AutoLinkOptions | NavGroup<AutoLinkOptions>>
 }>()
 
@@ -25,12 +25,11 @@ const isLastItemOfArray = (arrayItem: unknown, array: unknown[]): boolean =>
 /**
  * Open the dropdown when user tab and click from keyboard.
  *
- * Use event.detail to detect tab and click from keyboard.
- * The Tab + Click is UIEvent > KeyboardEvent, so the detail is 0.
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail
+ * Use event.detail to detect tab and click from keyboard. The Tab + Click is
+ * UIEvent > KeyboardEvent, so the detail is 0.
  *
  * @param event - The UIEvent triggered by the click
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail
  */
 const handleDropdown = (event: UIEvent): void => {
   if (event.detail === 0) toggleOpen()

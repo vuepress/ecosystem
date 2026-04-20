@@ -23,8 +23,8 @@ import type { SidebarHeaderItem, SidebarItem } from '../typings.js'
 /**
  * Util to transform page header to sidebar item
  *
- * @param header page header
- * @returns sidebar item from header
+ * @param header Page header
+ * @returns Sidebar item from header
  */
 export const resolveSidebarPageHeader = (
   header: PageHeader,
@@ -36,10 +36,10 @@ export const resolveSidebarPageHeader = (
 })
 
 /**
- * get sidebar header items from page headers
+ * Get sidebar header items from page headers
  *
- * @param headers page headers
- * @returns sidebar header items
+ * @param headers Page headers
+ * @returns Sidebar header items
  */
 export const resolveSidebarPageHeaders = (
   headers?: PageHeader[],
@@ -47,12 +47,12 @@ export const resolveSidebarPageHeaders = (
   headers ? headers.map((header) => resolveSidebarPageHeader(header)) : []
 
 /**
- * Resolve current page and its header to sidebar items if the config is `heading`
+ * Resolve current page and its header to sidebar items if the config is
+ * `heading`
  *
- * @param page current page data
- * @param headers current page headers
- *
- * @returns sidebar items
+ * @param page Current page data
+ * @param headers Current page headers
+ * @returns Sidebar items
  */
 export const resolveSidebarHeadingItem = (
   page: PageData,
@@ -67,12 +67,11 @@ export const resolveSidebarHeadingItem = (
 /**
  * Resolve sidebar items if the config is an array
  *
- * @param sidebarConfig sidebar config array
- * @param headers current page headers
- * @param path current page path
- * @param prefix path prefix
- *
- * @returns resolved sidebar items
+ * @param sidebarConfig Sidebar config array
+ * @param headers Current page headers
+ * @param path Current page path
+ * @param prefix Path prefix
+ * @returns Resolved sidebar items
  */
 export const resolveArraySidebarItems = (
   sidebarConfig: SidebarArrayOptions,
@@ -124,14 +123,14 @@ export const resolveArraySidebarItems = (
 }
 
 /**
- * Resolve sidebar items if the config is a key -> value (path-prefix -> array) object
+ * Resolve sidebar items if the config is a key -> value (path-prefix -> array)
+ * object
  *
- * @param sidebarConfig sidebar config object
- * @param page current page data
- * @param headers current page headers
- * @param path current page path
- *
- * @returns resolved sidebar items
+ * @param sidebarConfig Sidebar config object
+ * @param page Current page data
+ * @param headers Current page headers
+ * @param path Current page path
+ * @returns Resolved sidebar items
  */
 export const resolveMultiSidebarItems = (
   sidebarConfig: SidebarObjectOptions,
@@ -168,7 +167,7 @@ export const sidebarItemsSymbol: InjectionKey<SidebarItemsRef> =
 /**
  * Inject sidebar items global computed
  *
- * @returns sidebar items global computed
+ * @returns Sidebar items global computed
  */
 export const useSidebarItems = (): SidebarItemsRef => {
   const sidebarItems = inject(sidebarItemsSymbol)
@@ -183,13 +182,12 @@ export const useSidebarItems = (): SidebarItemsRef => {
  *
  * It should only be resolved and provided once
  *
- * @param sidebarConfig sidebar config
- * @param page current page data
- * @param path current page path
- * @param routeLocale current route locale
- * @param headers current page headers
- *
- * @returns resolved sidebar items
+ * @param sidebarConfig Sidebar config
+ * @param page Current page data
+ * @param path Current page path
+ * @param routeLocale Current route locale
+ * @param headers Current page headers
+ * @returns Resolved sidebar items
  */
 
 export const resolveSidebarItems = (
@@ -214,9 +212,7 @@ export const resolveSidebarItems = (
   return []
 }
 
-/**
- * Create sidebar items ref and provide as global computed in setup
- */
+/** Create sidebar items ref and provide as global computed in setup */
 export const setupSidebarItems = (): void => {
   const { frontmatter, page, routeLocale, themeLocale } = useData<
     DefaultThemeHomePageFrontmatter | DefaultThemeNormalPageFrontmatter

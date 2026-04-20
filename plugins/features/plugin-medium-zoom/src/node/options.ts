@@ -18,7 +18,7 @@ export interface MediumZoomPluginOptions {
   /**
    * Options for medium-zoom
    *
-   * medium-zoom 的配置项
+   * Medium-zoom 的配置项
    *
    * @see https://github.com/francoischalifour/medium-zoom#options
    */

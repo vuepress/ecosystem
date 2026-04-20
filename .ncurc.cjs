@@ -14,13 +14,10 @@ module.exports = defineConfig({
     )
       return '@next'
 
+    if (name === '@types/node') return 'minor'
+
     if (['vite'].includes(name)) return 'patch'
 
     return 'latest'
-  },
-  reject: (name) => {
-    if (name === '@types/node') return true
-
-    return false
   },
 })

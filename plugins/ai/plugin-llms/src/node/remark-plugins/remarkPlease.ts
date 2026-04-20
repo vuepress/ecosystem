@@ -7,11 +7,12 @@ import { visit } from 'unist-util-visit'
 import { fullTagRegex, tagRegex } from '../constants.js'
 
 /**
- * Creates a remark plugin that either removes or unwraps specified HTML tags from markdown AST.
+ * Creates a remark plugin that either removes or unwraps specified HTML tags
+ * from markdown AST.
  *
- * @param intent - Specifies whether to 'remove' the tag and its content completely, or 'unwrap' to keep the content but remove the tags
+ * @param intent - Specifies whether to 'remove' the tag and its content
+ *   completely, or 'unwrap' to keep the content but remove the tags
  * @param tag - The HTML tag name to process (e.g., 'div', 'span', etc.)
- *
  * @returns A function that can be used as a remark plugin
  */
 export const remarkPlease =

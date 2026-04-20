@@ -23,6 +23,7 @@ export const getType = (
     ({
       key,
       sorter = (): number => -1,
+      // oxlint-disable-next-line typescript/no-useless-default-assignment
       filter = (): boolean => true,
       path = '/:key/',
       layout = 'Layout',

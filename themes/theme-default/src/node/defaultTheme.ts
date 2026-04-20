@@ -17,10 +17,7 @@ import type { Page, Theme } from 'vuepress/core'
 import { isPlainObject } from 'vuepress/shared'
 import { fs, getDirname, path } from 'vuepress/utils'
 
-import type {
-  DefaultThemeLocaleOptions,
-  DefaultThemePageData,
-} from '../shared/index.js'
+import type { DefaultThemeLocaleOptions } from '../shared/index.js'
 import type { DefaultThemePluginsOptions } from './typings.js'
 import {
   assignDefaultLocaleOptions,
@@ -30,15 +27,10 @@ import {
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
-  /**
-   * deployed hostname
-   */
+  /** Deployed hostname */
   hostname?: string
 
-  /**
-   * To avoid confusion with the root `plugins` option,
-   * we use `themePlugins`
-   */
+  /** To avoid confusion with the root `plugins` option, we use `themePlugins` */
   themePlugins?: DefaultThemePluginsOptions
 }
 
@@ -94,7 +86,7 @@ export const defaultTheme = ({
       addViteOptimizeDepsExclude(bundlerOptions, app, '@theme')
     },
 
-    extendsPage: (page: Page<Partial<DefaultThemePageData>>) => {
+    extendsPage: (page: Page) => {
       // save relative file path into page data to generate edit link
       page.data.filePathRelative = page.filePathRelative
       // save title into route meta to generate navbar and sidebar

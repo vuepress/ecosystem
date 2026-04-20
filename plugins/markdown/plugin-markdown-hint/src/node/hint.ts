@@ -29,7 +29,7 @@ const CONTAINERS: MarkdownHintContainerName[] = [
  * 提示容器 markdown-it 插件
  *
  * @param md - MarkdownIt instance / MarkdownIt 实例
- * @param options - plugin options / 插件选项
+ * @param options - Plugin options / 插件选项
  */
 export const hint: PluginWithOptions<MarkdownItHintOptions> = (
   md,

@@ -1,5 +1,6 @@
 /**
- * Forked from https://github.com/ulivz/vuepress-plugin-flowchart/tree/master/lib/presets
+ * Forked from
+ * https://github.com/ulivz/vuepress-plugin-flowchart/tree/master/lib/presets
  *
  * MIT LICENSED
  */

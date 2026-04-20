@@ -11,7 +11,7 @@ export interface SassPalettePluginOptions {
    *
    * 用户配置文件路径，相对于源文件夹。
    *
-   * @description This is the file where user set style variables.
+   * This is the file where user set style variables.
    *
    * 这是用户设置样式变量的文件。
    *
@@ -24,11 +24,12 @@ export interface SassPalettePluginOptions {
    *
    * 默认的配置文件路径，应为绝对路径。
    *
-   * @description This is the file you should use to provide default style values with `!default`.
+   * This is the file you should use to provide default style values with
+   * `!default`.
    *
    * 这是你应该通过 `!default` 来提供默认样式变量的文件。
    *
-   * @default "@vuepress/plugin-sass-palette/styles/default/config.scss"
+   * @default '@vuepress/plugin-sass-palette/styles/default/config.scss'
    */
   defaultConfig?: string
 
@@ -37,7 +38,8 @@ export interface SassPalettePluginOptions {
    *
    * 用户的调色板文件路径，相对于源文件夹。
    *
-   * @description This is the file where user-controlled injected CSS variables. All the variables will be converted to kebab-case and injected.
+   * This is the file where user-controlled injected CSS variables. All the
+   * variables will be converted to kebab-case and injected.
    *
    * 这是用户控制注入 CSS 变量的文件。所有的变量会被转换为连字符格式然后被注入。
    *
@@ -50,7 +52,9 @@ export interface SassPalettePluginOptions {
    *
    * 默认的调色板文件路径，应为绝对路径。
    *
-   * @description This is the file you should use to provide default CSS variables with `!default`. All the variables will be converted to kebab-case and injected.
+   * This is the file you should use to provide default CSS variables with
+   * `!default`. All the variables will be converted to kebab-case and
+   * injected.
    *
    * 这是你应该通过 `!default` 来提供默认调色板值的文件。所有的变量会被转换为连字符格式然后被注入。
    */
@@ -61,7 +65,7 @@ export interface SassPalettePluginOptions {
    *
    * 自定义的生成器，用于生成调色板配置的衍生值。
    *
-   * @description You may want to provide a `$theme-color-light` based on `$theme-color`.
+   * You may want to provide a `$theme-color-light` based on `$theme-color`.
    *
    * 你可能想要根据 `$theme-color` 的值提供一个 `$theme-color-light`。
    */

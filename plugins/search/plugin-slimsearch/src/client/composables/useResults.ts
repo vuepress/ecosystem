@@ -27,7 +27,7 @@ export const useResults = (queries: Ref<string[]>): Results => {
     const performSearch = useDebounceFn(
       (query: string): void => {
         const {
-          resultsFilter = (items): SearchResult[] => items,
+          resultsFilter = (items: SearchResult[]): SearchResult[] => items,
           querySplitter: _q,
           suggestionsFilter: _s,
           ...rest

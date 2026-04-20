@@ -167,7 +167,7 @@ export default {
     /**
      * 通知键值
      *
-     * @description 用于标识和存储通知的状态
+     * 用于标识和存储通知的状态
      */
     key?: string
 

@@ -18,7 +18,7 @@ export interface NoticeActionOption {
    *
    * 操作类型
    *
-   * @default "default"
+   * @default 'default'
    */
   type?: 'default' | 'primary'
 }
@@ -44,10 +44,10 @@ export interface NoticeItemOptions {
    * Notice content file absolute path, file format should be `.md` or `.html`.
    * Prioritize using the file content as `content`.
    *
-   * 通知内容文件绝对路径, 文件格式支持 `.md` 或 `.html`。
-   * 优先使用文件内容作为 `content`。
+   * 通知内容文件绝对路径, 文件格式支持 `.md` 或 `.html`。 优先使用文件内容作为 `content`。
    *
-   * @example '/path/to/notice.md'
+   * @example
+   *   '/path/to/notice.md'
    */
   contentFile?: string
 
@@ -63,7 +63,7 @@ export interface NoticeItemOptions {
    *
    * 通知键值
    *
-   * @description Used to identify and store the notice status
+   * Used to identify and store the notice status
    *
    * 用于标识和存储通知的状态
    */

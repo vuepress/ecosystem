@@ -7,9 +7,9 @@ export interface PwaPluginLocaleData {
   install: string
 
   /**
-   * iOS install hint text
+   * IOS install hint text
    *
-   * iOS 安装文字
+   * IOS 安装文字
    */
   iOSInstall: string
 

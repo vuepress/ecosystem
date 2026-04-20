@@ -12,27 +12,25 @@ import { PLUGIN_NAME } from './utils.js'
  * DocSearch 插件
  *
  * @example
- * ```ts
- * import { docsearchPlugin } from '@vuepress/plugin-docsearch'
+ *   import { docsearchPlugin } from '@vuepress/plugin-docsearch'
  *
- * export default {
- *   plugins: [
- *     docsearchPlugin({
- *       appId: 'XXXXXX',
- *       apiKey: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
- *       indices: ['xxxxxxxx'],
- *       locales: {
- *         '/': {
- *           placeholder: 'Search Documentation',
+ *   export default {
+ *     plugins: [
+ *       docsearchPlugin({
+ *         appId: 'XXXXXX',
+ *         apiKey: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+ *         indices: ['xxxxxxxx'],
+ *         locales: {
+ *           '/': {
+ *             placeholder: 'Search Documentation',
+ *           },
+ *           '/zh/': {
+ *             placeholder: '搜索文档',
+ *           },
  *         },
- *         '/zh/': {
- *           placeholder: '搜索文档',
- *         },
- *       },
- *     }),
- *   ],
- * }
- * ```
+ *       }),
+ *     ],
+ *   }
  *
  * @returns Plugin object / 插件对象
  */

@@ -9,7 +9,7 @@ export interface GoogleAnalyticsPluginOptions {
    *
    * Google Analytics 4 测量 ID
    *
-   * @description The Measurement ID starting with 'G-' from Google Analytics 4
+   * The Measurement ID starting with 'G-' from Google Analytics 4
    */
   id: string
 
@@ -18,7 +18,8 @@ export interface GoogleAnalyticsPluginOptions {
    *
    * 启用调试模式
    *
-   * @description When enabled, events will be sent to DebugView for testing
+   * When enabled, events will be sent to DebugView for testing
+   *
    * @default false
    */
   debug?: boolean

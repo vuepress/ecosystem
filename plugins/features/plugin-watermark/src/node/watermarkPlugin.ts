@@ -13,22 +13,20 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  * VuePress 水印插件
  *
  * @example
- * ```ts
- * import { watermarkPlugin } from '@vuepress/plugin-watermark'
+ *   import { watermarkPlugin } from '@vuepress/plugin-watermark'
  *
- * export default {
- *   plugins: [
- *     watermarkPlugin({
- *       enabled: true,
- *       watermarkOptions: {
- *         content: 'My Site',
- *         fontColor: '#666',
- *         opacity: 0.3,
- *       },
- *     }),
- *   ],
- * }
- * ```
+ *   export default {
+ *     plugins: [
+ *       watermarkPlugin({
+ *         enabled: true,
+ *         watermarkOptions: {
+ *           content: 'My Site',
+ *           fontColor: '#666',
+ *           opacity: 0.3,
+ *         },
+ *       }),
+ *     ],
+ *   }
  */
 export const watermarkPlugin =
   ({ enabled = true, ...options }: WatermarkPluginOptions = {}): Plugin =>

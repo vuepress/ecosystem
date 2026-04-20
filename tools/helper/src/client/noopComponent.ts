@@ -5,7 +5,7 @@ import type { FunctionalComponent } from 'vue'
  *
  * 一个不渲染任何内容的空组件
  *
- * @returns null
+ * @returns `null`
  */
 const noopComponent: FunctionalComponent = () => null
 

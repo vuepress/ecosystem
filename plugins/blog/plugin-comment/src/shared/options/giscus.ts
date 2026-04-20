@@ -98,7 +98,7 @@ export interface GiscusOptions extends BaseCommentPluginOptions {
    *
    * 页面 ↔️ discussion 映射关系
    *
-   * @default "pathname"
+   * @default 'pathname'
    */
   mapping?: GiscusMapping
 
@@ -134,33 +134,33 @@ export interface GiscusOptions extends BaseCommentPluginOptions {
    *
    * 输入框的位置
    *
-   * @default "top"
+   * @default 'top'
    */
   inputPosition?: GiscusInputPosition
 
   /**
    * Giscus theme used in lightmode
    *
-   * @description Should be a built-in theme keyword or a css link starting with `https://`
+   * Should be a built-in theme keyword or a css link starting with `https://`
    *
    * Giscus 在日间模式下使用的主题
    *
-   * @description 应为一个内置主题关键词或者一个 CSS 链接
+   * 应为一个内置主题关键词或者一个 CSS 链接
    *
-   * @default "light"
+   * @default 'light'
    */
   lightTheme?: GiscusTheme
 
   /**
    * Giscus theme used in darkmode
    *
-   * @description Should be a built-in theme keyword or a css link starting with `https://`
+   * Should be a built-in theme keyword or a css link starting with `https://`
    *
    * Giscus 在夜间模式下使用的主题
    *
-   * @description 应为一个内置主题关键词或者一个 CSS 链接
+   * 应为一个内置主题关键词或者一个 CSS 链接
    *
-   * @default "dark"
+   * @default 'dark'
    */
   darkTheme?: GiscusTheme
 }

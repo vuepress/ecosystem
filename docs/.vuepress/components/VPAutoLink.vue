@@ -8,9 +8,7 @@ export interface AutoLinkConfigWithIcon extends AutoLinkConfig {
 }
 
 const { config } = defineProps<{
-  /**
-   * The auto link config
-   */
+  /** The auto link config */
   config: AutoLinkConfigWithIcon
 }>()
 

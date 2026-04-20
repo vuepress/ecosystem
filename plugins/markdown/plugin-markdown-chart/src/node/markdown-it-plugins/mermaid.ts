@@ -18,7 +18,6 @@ interface MermaidOptions {
  * 获取格式化的 Mermaid 内容
  *
  * @param options - Mermaid options / Mermaid 选项
- *
  * @returns Formatted Mermaid content / 格式化的 Mermaid 内容
  */
 export const getMermaidContent = ({

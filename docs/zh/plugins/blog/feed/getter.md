@@ -60,14 +60,14 @@ interface FeedAuthor {
   /**
    * 作者网站
    *
-   * @description 仅限 JSON 格式
+   * 仅限 JSON 格式
    */
   url?: string
 
   /**
    * 作者头像
    *
-   * @description 仅限 JSON 格式
+   * 仅限 JSON 格式
    */
   avatar?: string
 }
@@ -92,14 +92,14 @@ interface FeedCategory {
   /**
    * 标识分类法的字符串 (Domain)
    *
-   * @description 仅限 RSS 格式
+   * 仅限 RSS 格式
    */
   domain?: string
 
   /**
    * 通过 URI 标识的分类方案 (Scheme)
    *
-   * @description 仅限 Atom 格式
+   * 仅限 Atom 格式
    */
   scheme?: string
 }
@@ -124,14 +124,14 @@ interface FeedEnclosure {
   /**
    * 附件的 MIME 类型
    *
-   * @description 应为标准 MIME 类型，仅限 RSS 格式
+   * 应为标准 MIME 类型，仅限 RSS 格式
    */
   type: string
 
   /**
    * 大小（字节）
    *
-   * @description 仅限 RSS 格式
+   * 仅限 RSS 格式
    */
   length?: number
 }
@@ -188,14 +188,14 @@ interface FeedContributor {
   /**
    * 贡献者网站
    *
-   * @description 仅限 JSON 格式
+   * 仅限 JSON 格式
    */
   url?: string
 
   /**
    * 贡献者头像
    *
-   * @description 仅限 JSON 格式
+   * 仅限 JSON 格式
    */
   avatar?: string
 }

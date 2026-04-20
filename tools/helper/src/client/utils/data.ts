@@ -10,7 +10,6 @@ declare const __VUEPRESS_SSR__: boolean
  *
  * @param data - Data to encode / 要编码的数据
  * @param level - Compression level / 压缩级别
- *
  * @returns Base64 encoded compressed data / Base64 编码的压缩数据
  */
 export const encodeData = (
@@ -33,7 +32,6 @@ export const encodeData = (
  * 解码和解压数据
  *
  * @param base64 - Base64 encoded data / Base64 编码的数据
- *
  * @returns Decoded string / 解码后的字符串
  */
 export const decodeData = (base64: string): string => {

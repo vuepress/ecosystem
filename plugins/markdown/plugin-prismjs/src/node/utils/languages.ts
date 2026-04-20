@@ -1,20 +1,17 @@
-/**
- * Language type for syntax highlight
- */
+/** Language type for syntax highlight */
 export interface HighlightLanguage {
   /**
    * Name of the language
    *
-   * The name to be used for the class name,
-   * e.g. `class="language-typescript"`
+   * The name to be used for the class name, e.g. `class="language-typescript"`
    */
   name: string
 
   /**
    * Extension of the language
    *
-   * The file extension, which will be used for the
-   * class name, e.g. `class="ext-ts"`
+   * The file extension, which will be used for the class name, e.g.
+   * `class="ext-ts"`
    */
   ext: string
 

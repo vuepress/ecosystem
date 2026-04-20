@@ -16,10 +16,11 @@ const DeviceTypeMap = {
 }
 
 /**
- * add listener to detect screen though device type
+ * Add listener to detect screen though device type
  *
  * @param deviceType - Device type to detect / 要检测的设备类型
- * @param callback - Callback function to call when device status changes / 设备状态改变时调用的回调函数
+ * @param callback - Callback function to call when device status changes /
+ *   设备状态改变时调用的回调函数
  */
 export const useUpdateDeviceStatus = (
   deviceType: DeviceType,

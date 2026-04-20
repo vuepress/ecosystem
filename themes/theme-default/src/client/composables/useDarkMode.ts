@@ -39,9 +39,7 @@ export const useDarkMode = (): DarkModeRef => {
   return isDarkMode
 }
 
-/**
- * Create dark mode ref and provide as global computed in setup
- */
+/** Create dark mode ref and provide as global computed in setup */
 export const setupDarkMode = (): void => {
   const { themeLocale } = useData()
   const isDarkPreferred = usePreferredDark()

@@ -9,7 +9,7 @@ export interface AppendDatePluginOptions {
    *
    * 追加时间时使用的 frontmatter 键名
    *
-   * @default "date"
+   * @default 'date'
    */
   key?: string
 
@@ -18,7 +18,7 @@ export interface AppendDatePluginOptions {
    *
    * 追加时间时使用的日期格式
    *
-   * @default "date"
+   * @default 'date'
    */
   format?: 'date' | 'full' | 'time'
 }

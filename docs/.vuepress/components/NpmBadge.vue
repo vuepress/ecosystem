@@ -2,9 +2,9 @@
 import { computed } from 'vue'
 
 const { package: pkg, distTag = 'next' } = defineProps<{
-  /** package name */
+  /** Package name */
   package: string
-  /** dist tag */
+  /** Dist tag */
   distTag?: string
 }>()
 

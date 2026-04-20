@@ -1,11 +1,7 @@
-/**
- * @see https://www.w3.org/TR/mediaqueries-5/#display-mode
- */
+/** @see https://www.w3.org/TR/mediaqueries-5/#display-mode */
 export type DisplayMode = 'browser' | 'fullscreen' | 'minimal-ui' | 'standalone'
 
-/**
- * @see https://github.com/w3c/manifest/wiki/Categories
- */
+/** @see https://github.com/w3c/manifest/wiki/Categories */
 export type ManifestCategory =
   | 'books'
   | 'business'
@@ -36,9 +32,7 @@ export type ManifestCategory =
   | 'utilities'
   | 'weather'
 
-/**
- * @see https://www.w3.org/TR/screen-orientation/#dom-orientationlocktype
- */
+/** @see https://www.w3.org/TR/screen-orientation/#dom-orientationlocktype */
 export type OrientationLockType =
   | 'any'
   | 'landscape-primary'
@@ -49,9 +43,7 @@ export type OrientationLockType =
   | 'portrait-secondary'
   | 'portrait'
 
-/**
- * @see https://www.w3.org/TR/appmanifest/#manifest-image-resources
- */
+/** @see https://www.w3.org/TR/appmanifest/#manifest-image-resources */
 export interface ManifestImageResource {
   src: string
   sizes: string
@@ -62,13 +54,9 @@ export interface ManifestIcon extends ManifestImageResource {
   purpose?: 'any' | 'maskable' | 'monochrome'
 }
 
-/**
- * @see https://www.w3.org/TR/appmanifest/#external-application-resource
- */
+/** @see https://www.w3.org/TR/appmanifest/#external-application-resource */
 export interface ManifestExternalApplicationResource {
-  /**
-   * @see https://github.com/w3c/manifest/wiki/Platforms
-   */
+  /** @see https://github.com/w3c/manifest/wiki/Platforms */
   platform:
     | 'amazon'
     | 'chrome_web_store'
@@ -88,9 +76,7 @@ export interface ManifestExternalApplicationResource {
   fingerprints?: { type: string; value: string }[]
 }
 
-/**
- * @see https://www.w3.org/TR/appmanifest/#shortcut-items
- */
+/** @see https://www.w3.org/TR/appmanifest/#shortcut-items */
 export interface ManifestShortCutItem {
   name: string
   url: string
@@ -99,9 +85,7 @@ export interface ManifestShortCutItem {
   icons?: ManifestIcon[]
 }
 
-/**
- * @see https://www.w3.org/TR/appmanifest/
- */
+/** @see https://www.w3.org/TR/appmanifest/ */
 export interface AppManifest extends Record<string, unknown> {
   /**
    * @see https://www.w3.org/TR/appmanifest/#name-member

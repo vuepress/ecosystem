@@ -61,23 +61,22 @@ const hasBlogDataChanged = (
  *
  * VuePress 的博客插件
  *
- * @description Adds blog functionality including article collection, categorization, type filtering, and excerpt generation
+ * Adds blog functionality including article collection, categorization, type
+ * filtering, and excerpt generation
  *
  * 添加博客功能，包括文章收集、分类、类型过滤和摘要生成
  *
  * @example
- * ```ts
- * import { blogPlugin } from '@vuepress/plugin-blog'
+ *   import { blogPlugin } from '@vuepress/plugin-blog'
  *
- * export default {
- *   plugins: [
- *     blogPlugin({
- *       filter: (page) => Boolean(page.filePathRelative),
- *       excerpt: true
- *     })
- *   ]
- * }
- * ```
+ *   export default {
+ *     plugins: [
+ *       blogPlugin({
+ *         filter: (page) => Boolean(page.filePathRelative),
+ *         excerpt: true,
+ *       }),
+ *     ],
+ *   }
  */
 export const blogPlugin =
   (options: BlogPluginOptions): PluginFunction =>
@@ -86,7 +85,7 @@ export const blogPlugin =
 
     const {
       getInfo = (): Record<string, never> => ({}),
-      filter = (page): boolean =>
+      filter = (page: Page): boolean =>
         Boolean(page.filePathRelative) && !page.frontmatter.home,
       metaScope = '_blog',
       excerpt = true,

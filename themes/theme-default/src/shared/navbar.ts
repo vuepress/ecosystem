@@ -1,22 +1,14 @@
 import type { AutoLinkOptions, NavItemOptions } from './nav.js'
 
-/**
- * Base nav group, has nav items children
- */
+/** Base nav group, has nav items children */
 export interface NavGroup<T> extends NavItemOptions {
-  /**
-   * Link prefix of current group
-   */
+  /** Link prefix of current group */
   prefix?: string
 
-  /**
-   * Link of current group
-   */
+  /** Link of current group */
   link?: string
 
-  /**
-   * Children of current group
-   */
+  /** Children of current group */
   children: T[]
 }
 

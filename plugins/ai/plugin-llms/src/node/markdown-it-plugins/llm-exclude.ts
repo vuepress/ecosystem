@@ -1,7 +1,8 @@
 import type { Markdown } from 'vuepress/markdown'
 
 /**
- * Only remove the `<llm-exclude>` tag itself, and expand the content contained within the `<llm-exclude>` tag
+ * Only remove the `<llm-exclude>` tag itself, and expand the content contained
+ * within the `<llm-exclude>` tag
  *
  * 仅移除 `<llm-exclude>` 标签本身，展开 `<llm-exclude>` 标签包含的内容
  *

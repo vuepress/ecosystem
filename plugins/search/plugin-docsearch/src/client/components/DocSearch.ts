@@ -50,9 +50,7 @@ export const DocSearch = defineComponent({
       }
     })
 
-    /**
-     * Import docsearch js and initialize
-     */
+    /** Import docsearch js and initialize */
     const initialize = async (): Promise<void> => {
       if (__VUEPRESS_SSR__) return
 
@@ -73,9 +71,7 @@ export const DocSearch = defineComponent({
       hasInitialized.value = true
     }
 
-    /**
-     * Trigger docsearch initialization and open it
-     */
+    /** Trigger docsearch initialization and open it */
     const startDocsearch = (): void => {
       if (hasTriggered.value || hasInitialized.value) return
       // mark as triggered

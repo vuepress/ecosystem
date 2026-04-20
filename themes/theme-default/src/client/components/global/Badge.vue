@@ -6,17 +6,11 @@ const {
   text = '',
   vertical = '',
 } = defineProps<{
-  /**
-   * The type of the badge
-   */
+  /** The type of the badge */
   type?: string
-  /**
-   * The text of the badge
-   */
+  /** The text of the badge */
   text?: string
-  /**
-   * The vertical align of the badge
-   */
+  /** The vertical align of the badge */
   vertical?: string
 }>()
 

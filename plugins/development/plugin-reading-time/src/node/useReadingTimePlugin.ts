@@ -8,23 +8,21 @@ import { readingTimePlugin } from './readingTimePlugin.js'
  *
  * 使用 `@vuepress/plugin-reading-time` 的组合式 API
  *
- * @param app - VuePress app instance
- * @param options - plugin options
- *
  * @example
- * ```ts
- * import { useReadingTimePlugin } from '@vuepress/plugin-reading-time'
+ *   import { useReadingTimePlugin } from '@vuepress/plugin-reading-time'
  *
- * export default (options) => (app) => {
- *   useReadingTimePlugin(app, {
- *     wordPerMinute: 250
- *   })
+ *   export default (options) => (app) => {
+ *     useReadingTimePlugin(app, {
+ *       wordPerMinute: 250,
+ *     })
  *
- *   return {
- *     name: 'vuepress-plugin-xxx'
+ *     return {
+ *       name: 'vuepress-plugin-xxx',
+ *     }
  *   }
- * }
- * ```
+ *
+ * @param app - VuePress app instance
+ * @param options - Plugin options
  */
 export const useReadingTimePlugin = (
   app: App,
@@ -43,20 +41,18 @@ export const useReadingTimePlugin = (
  *
  * 移除 `@vuepress/plugin-reading-time` 的组合式 API
  *
- * @param app - VuePress app instance
- *
  * @example
- * ```ts
- * import { removeReadingTimePlugin } from '@vuepress/plugin-reading-time'
+ *   import { removeReadingTimePlugin } from '@vuepress/plugin-reading-time'
  *
- * export default (options) => (app) => {
- *   removeReadingTimePlugin(app)
+ *   export default (options) => (app) => {
+ *     removeReadingTimePlugin(app)
  *
- *   return {
- *     name: 'vuepress-plugin-xxx'
+ *     return {
+ *       name: 'vuepress-plugin-xxx',
+ *     }
  *   }
- * }
- * ```
+ *
+ * @param app - VuePress app instance
  */
 export const removeReadingTimePlugin = (app: App): void => {
   const { plugins } = app.pluginApi

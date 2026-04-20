@@ -23,7 +23,7 @@ export const PwaInstall = defineComponent({
   name: 'PwaInstall',
 
   props: {
-    /** locale data */
+    /** Locale data */
     locales: {
       type: Object as PropType<PwaPluginLocaleConfig>,
       required: true,

@@ -20,18 +20,16 @@ const PLUGIN_NAME = '@vuepress/plugin-markdown-tab'
  * Markdown 选项卡插件
  *
  * @example
- * ```ts
- * import { markdownTabPlugin } from '@vuepress/plugin-markdown-tab'
+ *   import { markdownTabPlugin } from '@vuepress/plugin-markdown-tab'
  *
- * export default {
- *   plugins: [
- *     markdownTabPlugin({
- *       codeTabs: true,
- *       tabs: true,
- *     }),
- *   ],
- * }
- * ```
+ *   export default {
+ *     plugins: [
+ *       markdownTabPlugin({
+ *         codeTabs: true,
+ *         tabs: true,
+ *       }),
+ *     ],
+ *   }
  */
 export const markdownTabPlugin =
   (options: MarkdownTabPluginOptions): Plugin =>

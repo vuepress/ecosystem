@@ -22,15 +22,11 @@ const __dirname = getDirname(import.meta.url)
  * Markdown 预览插件
  *
  * @example
- * ```ts
- * import { markdownPreviewPlugin } from '@vuepress/plugin-markdown-preview'
+ *   import { markdownPreviewPlugin } from '@vuepress/plugin-markdown-preview'
  *
- * export default {
- *   plugins: [
- *     markdownPreviewPlugin(),
- *   ],
- * }
- * ```
+ *   export default {
+ *     plugins: [markdownPreviewPlugin()],
+ *   }
  */
 export const markdownPreviewPlugin =
   (options: MarkdownPreviewPluginOptions = {}): Plugin =>

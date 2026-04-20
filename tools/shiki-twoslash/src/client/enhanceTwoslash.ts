@@ -9,18 +9,16 @@ import 'floating-vue/dist/style.css'
  *
  * 使用 FloatingVue 为 Vue 应用增强 twoslash 支持
  *
- * @param app - Vue app instance / Vue 应用实例
- *
  * @example
- * ```ts
- * import { enhanceTwoslash } from '@vuepress/shiki-twoslash/client'
+ *   import { enhanceTwoslash } from '@vuepress/shiki-twoslash/client'
  *
- * export default {
- *   enhance({ app }) {
- *     enhanceTwoslash(app)
+ *   export default {
+ *     enhance({ app }) {
+ *       enhanceTwoslash(app)
+ *     },
  *   }
- * }
- * ```
+ *
+ * @param app - Vue app instance / Vue 应用实例
  */
 export const enhanceTwoslash = (app: App): void => {
   const isMobileDevice = !__VUEPRESS_SSR__ && isMobile()

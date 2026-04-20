@@ -10,13 +10,9 @@ import VPDropdownTransition from '@theme/VPDropdownTransition.vue'
 import type { SidebarGroupItem, SidebarItem } from '../typings.js'
 
 const { item, depth = 0 } = defineProps<{
-  /**
-   * The sidebar item to be rendered
-   */
+  /** The sidebar item to be rendered */
   item: SidebarItem
-  /**
-   * The depth of the current sidebar item
-   */
+  /** The depth of the current sidebar item */
   depth?: number
 }>()
 

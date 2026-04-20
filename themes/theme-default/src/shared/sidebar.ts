@@ -4,14 +4,10 @@ import type { AutoLinkOptions, NavItemOptions } from './nav.js'
 export type SidebarLinkOptions = AutoLinkOptions
 
 export interface SidebarGroupOptions extends NavItemOptions {
-  /**
-   * Link prefix of current group
-   */
+  /** Link prefix of current group */
   prefix?: string
 
-  /**
-   * Link of current group
-   */
+  /** Link of current group */
   link?: string
 
   /**
@@ -21,9 +17,7 @@ export interface SidebarGroupOptions extends NavItemOptions {
    */
   collapsible?: boolean
 
-  /**
-   * Children of current group
-   */
+  /** Children of current group */
   children: SidebarItemOptions[]
 }
 

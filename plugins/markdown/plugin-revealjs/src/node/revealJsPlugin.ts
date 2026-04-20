@@ -13,34 +13,30 @@ import { revealJs } from './revealJs.js'
 import { PLUGIN_NAME } from './utils.js'
 
 /**
- * reveal.js plugin for VuePress
+ * Reveal.js plugin for VuePress
  *
  * VuePress reveal.js 插件
  *
- * @param plugins - Built-in plugins to enable / 要启用的内置插件
- * @param themes - Themes to enable / 要启用的主题
- * @param layout - Layout component name / 布局组件名称
+ * @example
+ *   import { revealJsPlugin } from '@vuepress/plugin-revealjs'
+ *
+ *   export default {
+ *     plugins: [
+ *       revealJsPlugin({
+ *         plugins: ['highlight', 'math'],
+ *         themes: ['auto', 'black'],
+ *         layout: 'SlidePage',
+ *       }),
+ *     ],
+ *   }
  *
  * @default plugins: []
  * @default themes: ['auto']
  * @default layout: 'SlidePage'
- *
+ * @param plugins - Built-in plugins to enable / 要启用的内置插件
+ * @param themes - Themes to enable / 要启用的主题
+ * @param layout - Layout component name / 布局组件名称
  * @returns VuePress plugin / VuePress 插件
- *
- * @example
- * ```ts
- * import { revealJsPlugin } from '@vuepress/plugin-revealjs'
- *
- * export default {
- *   plugins: [
- *     revealJsPlugin({
- *       plugins: ['highlight', 'math'],
- *       themes: ['auto', 'black'],
- *       layout: 'SlidePage'
- *     })
- *   ]
- * }
- * ```
  */
 export const revealJsPlugin = ({
   plugins = [],

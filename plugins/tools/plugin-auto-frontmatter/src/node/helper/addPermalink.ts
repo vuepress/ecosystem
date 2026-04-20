@@ -6,16 +6,19 @@ import type { AutoFrontmatterData } from '../types.js'
 interface AddShortPermalinkOptions {
   /**
    * Use `nanoid` to generate a random character length
+   *
    * @default 8
    */
   length?: number
   /**
    * Add prefix
+   *
    * @default `/`
    */
   prefix?: string
   /**
    * Add suffix
+   *
    * @default `.html`
    */
   suffix?: string
@@ -24,19 +27,19 @@ interface AddShortPermalinkOptions {
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz1234567890', 8)
 
 /**
- * add permalink to frontmatter
- * @param data - frontmatter data
- * @param options - options
+ * Add permalink to frontmatter
+ *
  * @example
- * ```ts
- * {
- *   handle(data, context) {
- *     addPermalink(data, { prefix: '/posts/', length: 8, suffix: '.html' })
- *     // => data.permalink = '/posts/ac3e7gh2.html'
- *     return data
- *  }
- * }
- * ```
+ *   ;({
+ *     handle(data, context) {
+ *       addPermalink(data, { prefix: '/posts/', length: 8, suffix: '.html' })
+ *       // => data.permalink = '/posts/ac3e7gh2.html'
+ *       return data
+ *     },
+ *   })
+ *
+ * @param data - Frontmatter data
+ * @param options - Options
  */
 export const addShortPermalink = (
   data: AutoFrontmatterData,

@@ -26,7 +26,8 @@ type SassLoaderContext =
  *
  * 使用 "additionalData" 使配置和调色板模块在 SCSS 中可用
  *
- * @description Injects SCSS config and palette modules into bundler configuration using additionalData option.
+ * Injects SCSS config and palette modules into bundler configuration using
+ * additionalData option.
  *
  * 使用 additionalData 选项将 SCSS 配置和调色板模块注入到打包器配置中。
  *

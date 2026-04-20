@@ -10,21 +10,18 @@ import { getElement } from '../utils/index.js'
  *
  * 使用 RTL 功能的组合式函数
  *
- * @param rtlLocalePaths - RTL locale paths
- * @param selectorOptions - RTL selector options
+ * @example
+ *   import { useRtl } from '@vuepress/plugin-rtl'
+ *
+ *   // Use in client side
+ *   useRtl(['/ar/', '/he/'], {
+ *     html: { dir: 'rtl' },
+ *     body: { class: 'rtl-layout' },
+ *   })
  *
  * @default selectorOptions { html: { dir: 'rtl' } }
- *
- * @example
- * ```ts
- * import { useRtl } from '@vuepress/plugin-rtl'
- *
- * // Use in client side
- * useRtl(['/ar/', '/he/'], {
- *   html: { dir: 'rtl' },
- *   body: { class: 'rtl-layout' }
- * })
- * ```
+ * @param rtlLocalePaths - RTL locale paths
+ * @param selectorOptions - RTL selector options
  */
 export const useRtl = (
   rtlLocalePaths: string[],
@@ -38,7 +35,7 @@ export const useRtl = (
   const toggleRTL = (localePath: string): void => {
     const isRTL = rtlLocalePaths.includes(localePath)
 
-    entries(selectorOptions).forEach(([selector, attrs = {}]) => {
+    entries(selectorOptions).forEach(([selector, attrs]) => {
       const element = getElement(selector)
 
       if (element) {

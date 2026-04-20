@@ -14,17 +14,15 @@ import type {
  * 创建 markdown 容器插件
  *
  * @example
- * ```ts
- * import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
+ *   import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
  *
- * markdownContainerPlugin({
- *   type: 'tip',
- *   locales: {
- *     '/': { defaultInfo: 'TIP' },
- *     '/zh/': { defaultInfo: '提示' },
- *   },
- * })
- * ```
+ *   markdownContainerPlugin({
+ *     type: 'tip',
+ *     locales: {
+ *       '/': { defaultInfo: 'TIP' },
+ *       '/zh/': { defaultInfo: '提示' },
+ *     },
+ *   })
  */
 export const markdownContainerPlugin = ({
   // plugin options

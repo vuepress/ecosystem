@@ -3,7 +3,7 @@ export type AutoFrontmatterData = Record<string, unknown>
 /**
  * The context of the markdown file
  *
- * markdown 文件的上下文
+ * Markdown 文件的上下文
  */
 export interface AutoFrontmatterContext {
   /**
@@ -32,12 +32,10 @@ export interface AutoFrontmatterContext {
  * 处理 frontmatter 数据的函数
  *
  * @example
- * ```ts
- * function transform(data, context) {
- *   data.foo ??= 'foo'
- *   return data
- * }
- * ```
+ *   function transform(data, context) {
+ *     data.foo ??= 'foo'
+ *     return data
+ *   }
  */
 export type AutoFrontmatterHandle<
   DataType extends AutoFrontmatterData = AutoFrontmatterData,
@@ -50,7 +48,8 @@ export interface AutoFrontmatterRule {
   /**
    * File filter, matches the relative path of the file
    *
-   * Uses [picomatch](https://github.com/micromatch/picomatch) for pattern matching
+   * Uses [picomatch](https://github.com/micromatch/picomatch) for pattern
+   * matching
    *
    * 文件过滤器，匹配文件的相对路径
    *
@@ -63,14 +62,12 @@ export interface AutoFrontmatterRule {
    * 处理 frontmatter 数据的函数
    *
    * @example
-   * ```ts
-   * {
-   *   handle: (data, context) => {
-   *     data.foo ??= 'foo'
-   *     return data
-   *   }
-   * }
-   * ```
+   *   ;({
+   *     handle: (data, context) => {
+   *       data.foo ??= 'foo'
+   *       return data
+   *     },
+   *   })
    */
   handle: AutoFrontmatterHandle
 }

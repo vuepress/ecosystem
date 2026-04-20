@@ -11,7 +11,7 @@ declare module 'medium-zoom' {
 /**
  * Injection key for medium zoom instance
  *
- * medium zoom 实例的注入键
+ * Medium zoom 实例的注入键
  */
 export const mediumZoomSymbol: InjectionKey<Zoom> = Symbol('mediumZoom')
 
@@ -20,15 +20,13 @@ export const mediumZoomSymbol: InjectionKey<Zoom> = Symbol('mediumZoom')
  *
  * 注入 medium zoom 实例
  *
- * @returns Medium zoom instance / medium zoom 实例
- *
  * @example
- * ```ts
- * import { useMediumZoom } from '@vuepress/plugin-medium-zoom/client'
+ *   import { useMediumZoom } from '@vuepress/plugin-medium-zoom/client'
  *
- * const zoom = useMediumZoom()
- * zoom?.refresh()
- * ```
+ *   const zoom = useMediumZoom()
+ *   zoom?.refresh()
+ *
+ * @returns Medium zoom instance / medium zoom 实例
  */
 export const useMediumZoom = (): Zoom | null => {
   if (__VUEPRESS_SSR__) return null

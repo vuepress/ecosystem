@@ -7,9 +7,7 @@ import { logger } from 'vuepress/utils'
  * `@vuepress/plugin-google-tag-manager` 插件选项
  */
 export interface GoogleTagManagerPluginOptions {
-  /**
-   * The Container ID of Google Tag Manager which should start with `'GTM-'`.
-   */
+  /** The Container ID of Google Tag Manager which should start with `'GTM-'`. */
   id: string
 }
 

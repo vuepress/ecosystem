@@ -14,13 +14,11 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  * 返回顶部插件
  *
  * @example
- * ```ts
- * import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
+ *   import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
  *
- * export default {
- *   plugins: [backToTopPlugin()]
- * }
- * ```
+ *   export default {
+ *     plugins: [backToTopPlugin()],
+ *   }
  */
 export const backToTopPlugin =
   (options: BackToTopPluginOptions = {}): Plugin =>

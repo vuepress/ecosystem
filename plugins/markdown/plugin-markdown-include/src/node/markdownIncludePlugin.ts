@@ -20,18 +20,16 @@ declare module 'vuepress/markdown' {
  * Markdown 导入插件
  *
  * @example
- * ```ts
- * import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
+ *   import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
  *
- * export default {
- *   plugins: [
- *     markdownIncludePlugin({
- *       deep: true,
- *       useComment: true,
- *     }),
- *   ],
- * }
- * ```
+ *   export default {
+ *     plugins: [
+ *       markdownIncludePlugin({
+ *         deep: true,
+ *         useComment: true,
+ *       }),
+ *     ],
+ *   }
  */
 export const markdownIncludePlugin =
   (options: MarkdownIncludePluginOptions): Plugin =>

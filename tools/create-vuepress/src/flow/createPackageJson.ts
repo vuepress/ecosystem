@@ -21,9 +21,7 @@ interface CreatePackageJsonOptions {
   bundler: 'vite' | 'webpack'
 }
 
-/**
- * generate package.json
- */
+/** Generate package.json */
 export const createPackageJson = async ({
   targetDir,
   packageManager,

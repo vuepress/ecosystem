@@ -13,33 +13,21 @@ export interface AtomCDATA {
 }
 
 export interface AtomAuthor {
-  /**
-   * human-readable name
-   */
+  /** Human-readable name */
   name?: string
-  /**
-   * email address
-   */
+  /** Email address */
   email?: string
-  /**
-   * home page
-   */
+  /** Home page */
   uri?: string
 }
 
 export interface AtomCategory {
   _attributes: {
-    /**
-     * identifies the category
-     */
+    /** Identifies the category */
     term: string
-    /**
-     * the categorization scheme via a URI
-     */
+    /** The categorization scheme via a URI */
     scheme?: string
-    /**
-     * a human-readable label for display
-     */
+    /** A human-readable label for display */
     label?: string
   }
 }
@@ -52,35 +40,21 @@ export interface AtomLink {
 }
 
 export interface AtomEntry {
-  /**
-   * Identifies the entry using a universally unique and permanent URI.
-   */
+  /** Identifies the entry using a universally unique and permanent URI. */
   id: string
-  /**
-   * 	Contains a human readable title for the entry.
-   */
+  /** Contains a human readable title for the entry. */
 
   title: AtomText
-  /**
-   * 	Indicates the last time the entry was modified in a significant way.
-   */
+  /** Indicates the last time the entry was modified in a significant way. */
 
   updated: string
-  /**
-   * Names one author of the entry. An entry may have multiple authors.
-   */
+  /** Names one author of the entry. An entry may have multiple authors. */
   author?: AtomAuthor[]
-  /**
-   * Contains or links to the complete content of the entry.
-   */
+  /** Contains or links to the complete content of the entry. */
   content?: AtomCDATA
-  /**
-   * Identifies a related Web page.
-   */
+  /** Identifies a related Web page. */
   link: AtomLink
-  /**
-   * 	Conveys a short summary, abstract, or excerpt of the entry.
-   */
+  /** Conveys a short summary, abstract, or excerpt of the entry. */
   summary?: AtomCDATA | AtomText
   /**
    * Specifies a category that the entry belongs to.
@@ -96,12 +70,11 @@ export interface AtomEntry {
    */
   contributor?: AtomAuthor[]
   /**
-   * 	Contains the time of the initial creation or first availability of the entry.
+   * Contains the time of the initial creation or first availability of the
+   * entry.
    */
   published?: string
-  /**
-   * Conveys information about rights
-   */
+  /** Conveys information about rights */
   rights?: string
 }
 
@@ -120,31 +93,31 @@ export interface AtomContent {
       xmlns: string
       lang?: string
     }
-    /**
-     * 	Identifies the feed using a universally unique and permanent URI.
-     */
+    /** Identifies the feed using a universally unique and permanent URI. */
     id: string
     /**
-     * Contains a human readable title for the feed.
-     * Often the same as the title of the associated website.
+     * Contains a human readable title for the feed. Often the same as the title
+     * of the associated website.
      */
     title: string
-    /**
-     * Indicates the last time the feed was modified in a significant way.
-     */
+    /** Indicates the last time the feed was modified in a significant way. */
     updated: string
     /**
      * Names one author of the feed. A feed may have multiple author elements.
      *
-     * A feed must contain at least one author element unless all of the entry elements contain at least one author element.
+     * A feed must contain at least one author element unless all of the entry
+     * elements contain at least one author element.
      */
     author?: AtomAuthor[]
     /**
-     * 	Identifies a related Web page. The type of relation is defined by the rel attribute. A feed is limited to one alternate per type and hreflang. A feed should contain a link back to the feed itself.
+     * Identifies a related Web page. The type of relation is defined by the rel
+     * attribute. A feed is limited to one alternate per type and hreflang. A
+     * feed should contain a link back to the feed itself.
      */
     link: AtomLink[]
     /**
-     * 	Specifies a category that the feed belongs to. A feed may have multiple category elements.
+     * Specifies a category that the feed belongs to. A feed may have multiple
+     * category elements.
      */
     category?: {
       _attributes: {
@@ -152,12 +125,11 @@ export interface AtomContent {
       }
     }[]
     /**
-     * Names one contributor to the feed. An feed may have multiple contributor elements.
+     * Names one contributor to the feed. An feed may have multiple contributor
+     * elements.
      */
     contributor?: AtomAuthor[]
-    /**
-     * 	Identifies the software used to generate the feed
-     */
+    /** Identifies the software used to generate the feed */
     generator:
       | string
       | {
@@ -168,20 +140,21 @@ export interface AtomContent {
           _text: string
         }
     /**
-     * Identifies a small image which provides iconic visual identification for the feed. Icons should be square.
+     * Identifies a small image which provides iconic visual identification for
+     * the feed. Icons should be square.
      */
     icon?: string
     /**
-     * Identifies a larger image which provides visual identification for the feed. Images should be twice as wide as they are tall.
+     * Identifies a larger image which provides visual identification for the
+     * feed. Images should be twice as wide as they are tall.
      */
     logo?: string
     /**
-     * Conveys information about rights, e.g. copyrights, held in and over the feed.
+     * Conveys information about rights, e.g. copyrights, held in and over the
+     * feed.
      */
     rights?: string
-    /**
-     * Contains a human-readable description or subtitle for the feed.
-     */
+    /** Contains a human-readable description or subtitle for the feed. */
     subtitle?: string
 
     entry?: AtomEntry[]

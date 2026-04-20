@@ -2,9 +2,7 @@ import type { DefaultLocaleInfo } from '@vuepress/helper'
 
 import type { SearchPluginLocaleData } from '../shared/index.js'
 
-/**
- * Default locale info for `@vuepress/plugin-search`
- */
+/** Default locale info for `@vuepress/plugin-search` */
 export const searchLocaleInfo: DefaultLocaleInfo<SearchPluginLocaleData> = [
   [['en', 'en-US'], { placeholder: 'Search' }],
   [['zh', 'zh-CN', 'zh-Hans', 'zh-TW', 'zh-Hant'], { placeholder: '搜索' }],
