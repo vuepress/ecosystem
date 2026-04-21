@@ -114,8 +114,6 @@ export const createShikiHighlighter = async (
                 dir: app.dir.cache('markdown/twoslash'),
               })
             : typesCache,
-        // FIXME: We might need to investigate why a type error will be thrown without this type assertion
-        // @pengzhanbo
       })) as ShikiTransformer,
     )
   }

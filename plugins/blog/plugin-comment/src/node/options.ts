@@ -64,7 +64,6 @@ export interface WalinePluginOptions extends Omit<
    *
    * Waline 本地化配置
    */
-  // FIXME: https://github.com/oxc-project/tsgolint/issues/861
   locales?: LocaleConfig<WalineLocaleData>
 }
 

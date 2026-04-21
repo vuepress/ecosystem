@@ -3,7 +3,6 @@ import type { DefaultLocaleInfo } from '@vuepress/helper'
 import type { WalineLocaleData } from '../shared/index.js'
 
 /** Default locale info for Waline */
-// FIXME: https://github.com/oxc-project/tsgolint/issues/861
 export const walineLocalesInfo: DefaultLocaleInfo<WalineLocaleData> = [
   [
     ['en', 'en-US'],

@@ -24,7 +24,6 @@ import '@waline/client/waline.css'
 import '../styles/waline.scss'
 
 declare const WALINE_META: boolean
-// FIXME: https://github.com/oxc-project/tsgolint/issues/861
 declare const WALINE_LOCALES: ExactLocaleConfig<WalineLocaleData>
 
 const walineLocales = WALINE_LOCALES
