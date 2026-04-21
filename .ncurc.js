@@ -1,6 +1,6 @@
-const { defineConfig } = require('npm-check-updates')
+import { defineConfig } from 'npm-check-updates'
 
-module.exports = defineConfig({
+export default defineConfig({
   workspaces: true,
   upgrade: true,
   timeout: 60000,
