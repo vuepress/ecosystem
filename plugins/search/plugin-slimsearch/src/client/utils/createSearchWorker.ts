@@ -77,6 +77,7 @@ const ERR_MSG = 'Canceled because of new search request.'
 export const createSearchWorker = (): SearchWorker => {
   const worker = new Worker(
     // FIXME: Currently rolldown does not respect `import.meta.url` here. Might need another fix in the future.
+    // See https://github.com/rolldown/rolldown/issues/9180
     __VUEPRESS_DEV__
       ? new URL('worker/dev.js', import.meta.url)
       : `${__VUEPRESS_BASE__}${options.worker}`,

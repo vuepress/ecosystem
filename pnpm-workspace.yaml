@@ -10,10 +10,10 @@ catalog:
   '@vuepress/bundler-webpack': 2.0.0-rc.28
   '@vueuse/core': ^14.2.1
   chokidar: ^5.0.0
-  sass: ^1.98.0
-  sass-embedded: ^1.98.0
+  sass: ^1.99.0
+  sass-embedded: ^1.99.0
   sass-loader: ^16.0.7
-  vue: ^3.5.31
+  vue: ^3.5.32
   vuepress: 2.0.0-rc.28
 
 allowBuilds:
@@ -27,6 +27,7 @@ overrides:
   '@rollup/plugin-replace@2>magic-string': ^0.30.21
   '@surma/rollup-plugin-off-main-thread>magic-string': ^0.30.21
   '@xmldom/xmldom': ^0.9.9
+  esbuild: 0.27.5
   'markmap-html-parser@0.18.11>cheerio': ^1.2.0
   'workbox-build@7.4.0>@rollup/plugin-terser': ^1.0.0
   'workbox-build@7.4.0>glob': ^13.0.6
