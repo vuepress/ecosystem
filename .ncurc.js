@@ -1,11 +1,10 @@
 import { defineConfig } from 'npm-check-updates'
 
 export default defineConfig({
+  peer: true,
   workspaces: true,
   upgrade: true,
   timeout: 60000,
-  // FIXME: https://github.com/raineorshine/npm-check-updates/issues/1604
-  // peer: true,
   target: (name) => {
     if (
       name.startsWith('@vuepress/') ||
