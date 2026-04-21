@@ -27,6 +27,7 @@ overrides:
   '@rollup/plugin-replace@2>magic-string': ^0.30.21
   '@surma/rollup-plugin-off-main-thread>magic-string': ^0.30.21
   '@xmldom/xmldom': ^0.9.9
+  esbuild: 0.27.5
   'markmap-html-parser@0.18.11>cheerio': ^1.2.0
   'workbox-build@7.4.0>@rollup/plugin-terser': ^1.0.0
   'workbox-build@7.4.0>glob': ^13.0.6
