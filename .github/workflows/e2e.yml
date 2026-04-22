@@ -92,6 +92,8 @@ jobs:
         run: pnpm run bundle
 
       - name: E2E test (base /)
+        # FIXME: Allow failing the test on Windows + Vite, as we believe there are bugs with Vite8 on windows sass resolving
+        # See https://github.com/vitejs/vite/issues/22294
         continue-on-error: ${{ matrix.os == 'windows-latest' && matrix.bundler == 'vite' }}
         timeout-minutes: 5
         run: pnpm run test:e2e
@@ -100,6 +102,8 @@ jobs:
           E2E_BUNDLER: ${{ matrix.bundler }}
 
       - name: E2E test (base /e2e/)
+        # FIXME: Allow failing the test on Windows + Vite, as we believe there are bugs with Vite8 on windows sass resolving
+        # See https://github.com/vitejs/vite/issues/22294
         continue-on-error: ${{ matrix.os == 'windows-latest' && matrix.bundler == 'vite' }}
         timeout-minutes: 5
         run: pnpm run test:e2e
