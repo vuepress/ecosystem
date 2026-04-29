@@ -4,7 +4,7 @@ export default defineConfig({
   peer: true,
   workspaces: true,
   upgrade: true,
-  timeout: 60000,
+  timeout: 300000,
   target: (name) => {
     if (
       name.startsWith('@vuepress/') ||
