@@ -16,7 +16,7 @@ describe(getPageText, async () => {
 
   await app.init()
 
-  const getText = (
+  const getPagesText = (
     options: PageTextOptions = {},
   ): { pagePath: string; text: string }[] =>
     app.pages
@@ -27,51 +27,64 @@ describe(getPageText, async () => {
       }))
 
   it('default', () => {
-    getText().forEach(({ text, pagePath }) => {
+    const textData = getPagesText()
+
+    textData.forEach(({ text, pagePath }) => {
       expect(text.length).toBeGreaterThan(0)
       expect(text).toMatchSnapshot(pagePath)
+    })
 
-      if (pagePath === '/markdown.html') {
+    textData
+      .filter(({ pagePath }) => pagePath === '/markdown.html')
+      .forEach(({ text }) => {
         expect(text).not.toContain('console.log(foo(5))')
         expect(text).not.toContain('table text')
-      }
-    })
+      })
   })
 
   it('singleLine', () => {
-    getText({ singleLine: true }).forEach(({ text, pagePath }) => {
-      expect(text.length).toBeGreaterThan(0)
+    const textData = getPagesText({ singleLine: true })
 
+    textData.forEach(({ text, pagePath }) => {
+      expect(text.length).toBeGreaterThan(0)
       expect(text).not.toContain('\n')
       expect(text).toMatchSnapshot(pagePath)
     })
   })
 
   it('removedTags', () => {
-    getText({ removedTags: [] }).forEach(({ text, pagePath }) => {
+    const textData = getPagesText({ removedTags: [] })
+
+    textData.forEach(({ text, pagePath }) => {
       expect(text.length).toBeGreaterThan(0)
       expect(text).toMatchSnapshot(pagePath)
+    })
 
-      if (pagePath === '/markdown.html') {
+    textData
+      .filter(({ pagePath }) => pagePath === '/markdown.html')
+      .forEach(({ text }) => {
         expect(text).toContain('Create a list')
         expect(text).toContain('Integer molestie lorem at massa')
         expect(text).toContain('console.log(foo(5))')
         expect(text).toContain('table text')
-      }
+      })
+
+    const textDataWithRemovedTags = getPagesText({
+      removedTags: ['table', 'pre', 'ol', 'ul', 'dl'],
     })
 
-    getText({ removedTags: ['table', 'pre', 'ol', 'ul', 'dl'] }).forEach(
-      ({ text, pagePath }) => {
-        expect(text.length).toBeGreaterThan(0)
-        expect(text).toMatchSnapshot(pagePath)
+    textDataWithRemovedTags.forEach(({ text, pagePath }) => {
+      expect(text.length).toBeGreaterThan(0)
+      expect(text).toMatchSnapshot(pagePath)
+    })
 
-        if (pagePath === '/markdown.html') {
-          expect(text).not.toContain('Create a list')
-          expect(text).not.toContain('Integer molestie lorem at massa')
-          expect(text).not.toContain('console.log(foo(5))')
-          expect(text).not.toContain('table text')
-        }
-      },
-    )
+    textDataWithRemovedTags
+      .filter(({ pagePath }) => pagePath === '/markdown.html')
+      .forEach(({ text }) => {
+        expect(text).not.toContain('Create a list')
+        expect(text).not.toContain('Integer molestie lorem at massa')
+        expect(text).not.toContain('console.log(foo(5))')
+        expect(text).not.toContain('table text')
+      })
   })
 })

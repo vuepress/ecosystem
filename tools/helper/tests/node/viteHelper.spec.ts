@@ -1,4 +1,4 @@
-import { expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import type { App } from 'vuepress/core'
 
 import {
@@ -18,160 +18,176 @@ const appMock = {
 
 process.env.FORCE_OPTIMIZE_DEPS = 'true'
 
-it('addViteConfig()', () => {
-  const config = {}
+describe(addViteConfig, () => {
+  it('should add vite config', () => {
+    const config = {}
 
-  addViteConfig(config, appMock, {})
+    addViteConfig(config, appMock, {})
 
-  expect(config).toEqual({
-    viteOptions: {},
-  })
+    expect(config).toEqual({
+      viteOptions: {},
+    })
 
-  addViteConfig(config, appMock, {
-    optimizeDeps: {
-      include: ['vue'],
-    },
-  })
-
-  expect(config).toEqual({
-    viteOptions: {
+    addViteConfig(config, appMock, {
       optimizeDeps: {
         include: ['vue'],
       },
-    },
-  })
+    })
 
-  addViteConfig(config, appMock, {
-    optimizeDeps: {
-      include: ['vue-router'],
-    },
-  })
-
-  expect(config).toEqual({
-    viteOptions: {
-      optimizeDeps: {
-        include: ['vue', 'vue-router'],
+    expect(config).toEqual({
+      viteOptions: {
+        optimizeDeps: {
+          include: ['vue'],
+        },
       },
-    },
+    })
+  })
+
+  it('should merge array config', () => {
+    const config = {}
+
+    addViteConfig(config, appMock, {
+      optimizeDeps: {
+        include: ['vue-router'],
+      },
+    })
+
+    expect(config).toEqual({
+      viteOptions: {
+        optimizeDeps: {
+          include: ['vue', 'vue-router'],
+        },
+      },
+    })
   })
 })
 
-it('addViteOptimizeDepsInclude()', () => {
-  const config = {}
+describe(addViteOptimizeDepsInclude, () => {
+  it('should add optimizeDeps.include config', () => {
+    const config = {}
 
-  addViteOptimizeDepsInclude(config, appMock, 'vue')
+    addViteOptimizeDepsInclude(config, appMock, 'vue')
 
-  expect(config).toEqual({
-    viteOptions: {
-      optimizeDeps: {
-        include: ['vue'],
+    expect(config).toEqual({
+      viteOptions: {
+        optimizeDeps: {
+          include: ['vue'],
+        },
       },
-    },
-  })
+    })
 
-  addViteOptimizeDepsInclude(config, appMock, ['vue-router'])
+    addViteOptimizeDepsInclude(config, appMock, ['vue-router'])
 
-  expect(config).toEqual({
-    viteOptions: {
-      optimizeDeps: {
-        include: ['vue', 'vue-router'],
+    expect(config).toEqual({
+      viteOptions: {
+        optimizeDeps: {
+          include: ['vue', 'vue-router'],
+        },
       },
-    },
-  })
-})
-
-it('addViteOptimizeDepsExclude()', () => {
-  const config = {}
-
-  addViteOptimizeDepsExclude(config, appMock, 'vue')
-
-  expect(config).toEqual({
-    viteOptions: {
-      optimizeDeps: {
-        exclude: ['vue'],
-      },
-    },
-  })
-
-  addViteOptimizeDepsExclude(config, appMock, ['vue-router'])
-
-  expect(config).toEqual({
-    viteOptions: {
-      optimizeDeps: {
-        exclude: ['vue', 'vue-router'],
-      },
-    },
+    })
   })
 })
 
-it('addViteOptimizeDepsNeedsInterop()', () => {
-  const config = {}
+describe(addViteOptimizeDepsExclude, () => {
+  it('should add optimizeDeps.exclude config', () => {
+    const config = {}
 
-  addViteOptimizeDepsNeedsInterop(config, appMock, 'vue')
+    addViteOptimizeDepsExclude(config, appMock, 'vue')
 
-  expect(config).toEqual({
-    viteOptions: {
-      optimizeDeps: {
-        needsInterop: ['vue'],
+    expect(config).toEqual({
+      viteOptions: {
+        optimizeDeps: {
+          exclude: ['vue'],
+        },
       },
-    },
-  })
+    })
 
-  addViteOptimizeDepsNeedsInterop(config, appMock, ['vue-router'])
+    addViteOptimizeDepsExclude(config, appMock, ['vue-router'])
 
-  expect(config).toEqual({
-    viteOptions: {
-      optimizeDeps: {
-        needsInterop: ['vue', 'vue-router'],
+    expect(config).toEqual({
+      viteOptions: {
+        optimizeDeps: {
+          exclude: ['vue', 'vue-router'],
+        },
       },
-    },
-  })
-})
-
-it('addViteSsrExternal()', () => {
-  const config = {}
-
-  addViteSsrExternal(config, appMock, 'vue')
-
-  expect(config).toEqual({
-    viteOptions: {
-      ssr: {
-        external: ['vue'],
-      },
-    },
-  })
-
-  addViteSsrExternal(config, appMock, ['vue-router'])
-
-  expect(config).toEqual({
-    viteOptions: {
-      ssr: {
-        external: ['vue', 'vue-router'],
-      },
-    },
+    })
   })
 })
 
-it('addViteSsrNoExternal()', () => {
-  const config = {}
+describe(addViteOptimizeDepsNeedsInterop, () => {
+  it('should add optimizeDeps.needsInterop config', () => {
+    const config = {}
 
-  addViteSsrNoExternal(config, appMock, 'vue')
+    addViteOptimizeDepsNeedsInterop(config, appMock, 'vue')
 
-  expect(config).toEqual({
-    viteOptions: {
-      ssr: {
-        noExternal: ['vue'],
+    expect(config).toEqual({
+      viteOptions: {
+        optimizeDeps: {
+          needsInterop: ['vue'],
+        },
       },
-    },
+    })
+
+    addViteOptimizeDepsNeedsInterop(config, appMock, ['vue-router'])
+
+    expect(config).toEqual({
+      viteOptions: {
+        optimizeDeps: {
+          needsInterop: ['vue', 'vue-router'],
+        },
+      },
+    })
   })
+})
 
-  addViteSsrNoExternal(config, appMock, ['vue-router'])
+describe(addViteSsrExternal, () => {
+  it('should add ssr.external config', () => {
+    const config = {}
 
-  expect(config).toEqual({
-    viteOptions: {
-      ssr: {
-        noExternal: ['vue', 'vue-router'],
+    addViteSsrExternal(config, appMock, 'vue')
+
+    expect(config).toEqual({
+      viteOptions: {
+        ssr: {
+          external: ['vue'],
+        },
       },
-    },
+    })
+
+    addViteSsrExternal(config, appMock, ['vue-router'])
+
+    expect(config).toEqual({
+      viteOptions: {
+        ssr: {
+          external: ['vue', 'vue-router'],
+        },
+      },
+    })
+  })
+})
+
+describe(addViteSsrNoExternal, () => {
+  it('should add ssr.noExternal config', () => {
+    const config = {}
+
+    addViteSsrNoExternal(config, appMock, 'vue')
+
+    expect(config).toEqual({
+      viteOptions: {
+        ssr: {
+          noExternal: ['vue'],
+        },
+      },
+    })
+
+    addViteSsrNoExternal(config, appMock, ['vue-router'])
+
+    expect(config).toEqual({
+      viteOptions: {
+        ssr: {
+          noExternal: ['vue', 'vue-router'],
+        },
+      },
+    })
   })
 })

@@ -93,17 +93,14 @@ export const PwaInstallModal = defineComponent({
 
         const choiceResult = await deferredPrompt.value.userChoice
 
-        if (choiceResult.outcome === 'accepted') {
-          console.info('PWA has been installed')
+        console.info(
+          choiceResult.outcome === 'accepted'
+            ? 'PWA has been installed'
+            : 'You choose to not install PWA',
+        )
 
-          emit('close', false)
-          emit('canInstall', false)
-        } else {
-          console.info('You choose to not install PWA')
-
-          emit('close', false)
-          emit('canInstall', false)
-        }
+        emit('close', false)
+        emit('canInstall', false)
       }
     }
 

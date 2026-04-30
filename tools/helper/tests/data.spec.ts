@@ -32,7 +32,7 @@ const browserAtouResults = compressed.map((data) => clientEncodeData(data))
 const nodeUtoaResults = words.map((word) => nodeDecodeData(word))
 const nodeAutoResults = compressed.map((data) => nodeEncodeData(data))
 
-describe('props', () => {
+describe('encode and decode data', () => {
   it('utoa should return same result', () => {
     expect(browserUtoaResults).toEqual(nodeUtoaResults)
   })

@@ -179,8 +179,10 @@ describe('plugin-replace-assets > replacementAssetWithRules', () => {
     for (const [url, expected] of expects)
       expect(replacementAssetWithRules(rules, url)).toBe(expected)
 
+    // oxlint-disable-next-line vitest/no-conditional-in-test
     if (name === 'function replacement') {
       // should not called with cached, and not called with no supported
+      // oxlint-disable-next-line vitest/no-conditional-expect
       expect(replacementFn).toHaveBeenCalledTimes(expects.length - 3)
     }
   })
