@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`generateIndex > Should generate full index 1`] = `
+exports[`generatePageIndex > Should generate full index 1`] = `
 [
   {
     "h": "",
@@ -14,7 +14,7 @@ exports[`generateIndex > Should generate full index 1`] = `
 ]
 `;
 
-exports[`generateIndex > Should generate full index 2`] = `
+exports[`generatePageIndex > Should generate full index 2`] = `
 [
   {
     "h": "Demo Page",
@@ -45,7 +45,7 @@ exports[`generateIndex > Should generate full index 2`] = `
 ]
 `;
 
-exports[`generateIndex > Should generate full index 3`] = `
+exports[`generatePageIndex > Should generate full index 3`] = `
 [
   {
     "h": "Heading 1",
@@ -188,7 +188,7 @@ exports[`generateIndex > Should generate full index 3`] = `
 ]
 `;
 
-exports[`generateIndex > Should generate full index 4`] = `
+exports[`generatePageIndex > Should generate full index 4`] = `
 [
   {
     "h": "",
@@ -203,7 +203,7 @@ exports[`generateIndex > Should generate full index 4`] = `
 ]
 `;
 
-exports[`generateIndex > Should generate full index 5`] = `
+exports[`generatePageIndex > Should generate full index 5`] = `
 [
   {
     "h": "Tag Test",
@@ -215,7 +215,7 @@ exports[`generateIndex > Should generate full index 5`] = `
 ]
 `;
 
-exports[`generateIndex > Should generate full index 6`] = `
+exports[`generatePageIndex > Should generate full index 6`] = `
 [
   {
     "h": "",
@@ -227,7 +227,7 @@ exports[`generateIndex > Should generate full index 6`] = `
 ]
 `;
 
-exports[`generateIndex > Should generate full index 7`] = `
+exports[`generatePageIndex > Should generate full index 7`] = `
 [
   {
     "h": "西游记第一回",
@@ -306,7 +306,7 @@ exports[`generateIndex > Should generate full index 7`] = `
 ]
 `;
 
-exports[`generateIndex > Should generate full index 8`] = `
+exports[`generatePageIndex > Should generate full index 8`] = `
 [
   {
     "h": "",
@@ -318,7 +318,7 @@ exports[`generateIndex > Should generate full index 8`] = `
 ]
 `;
 
-exports[`generateIndex > Should generate index 1`] = `
+exports[`generatePageIndex > Should generate index 1`] = `
 [
   {
     "h": "",
@@ -327,7 +327,7 @@ exports[`generateIndex > Should generate index 1`] = `
 ]
 `;
 
-exports[`generateIndex > Should generate index 2`] = `
+exports[`generatePageIndex > Should generate index 2`] = `
 [
   {
     "h": "Demo Page",
@@ -347,7 +347,7 @@ exports[`generateIndex > Should generate index 2`] = `
 ]
 `;
 
-exports[`generateIndex > Should generate index 3`] = `
+exports[`generatePageIndex > Should generate index 3`] = `
 [
   {
     "h": "Heading 1",
@@ -428,7 +428,7 @@ exports[`generateIndex > Should generate index 3`] = `
 ]
 `;
 
-exports[`generateIndex > Should generate index 4`] = `
+exports[`generatePageIndex > Should generate index 4`] = `
 [
   {
     "h": "",
@@ -437,7 +437,7 @@ exports[`generateIndex > Should generate index 4`] = `
 ]
 `;
 
-exports[`generateIndex > Should generate index 5`] = `
+exports[`generatePageIndex > Should generate index 5`] = `
 [
   {
     "h": "Tag Test",
@@ -446,7 +446,7 @@ exports[`generateIndex > Should generate index 5`] = `
 ]
 `;
 
-exports[`generateIndex > Should generate index 6`] = `
+exports[`generatePageIndex > Should generate index 6`] = `
 [
   {
     "h": "",
@@ -455,7 +455,7 @@ exports[`generateIndex > Should generate index 6`] = `
 ]
 `;
 
-exports[`generateIndex > Should generate index 7`] = `
+exports[`generatePageIndex > Should generate index 7`] = `
 [
   {
     "h": "西游记第一回",
@@ -464,7 +464,7 @@ exports[`generateIndex > Should generate index 7`] = `
 ]
 `;
 
-exports[`generateIndex > Should generate index 8`] = `
+exports[`generatePageIndex > Should generate index 8`] = `
 [
   {
     "h": "",
@@ -473,7 +473,7 @@ exports[`generateIndex > Should generate index 8`] = `
 ]
 `;
 
-exports[`generateIndex > Should preserve content inside custom tags with preserveTags > not preserve 1`] = `
+exports[`generatePageIndex > Should preserve content inside custom tags with preserveTags > not preserve 1`] = `
 [
   {
     "h": "",
@@ -488,7 +488,7 @@ exports[`generateIndex > Should preserve content inside custom tags with preserv
 ]
 `;
 
-exports[`generateIndex > Should preserve content inside custom tags with preserveTags > preserve 1`] = `
+exports[`generatePageIndex > Should preserve content inside custom tags with preserveTags > preserve 1`] = `
 [
   {
     "h": "",
@@ -511,7 +511,7 @@ exports[`generateIndex > Should preserve content inside custom tags with preserv
 ]
 `;
 
-exports[`generateIndex > Should remove custom tags by default > default 1`] = `
+exports[`generatePageIndex > Should remove custom tags by default > default 1`] = `
 [
   {
     "h": "",
@@ -525,7 +525,7 @@ exports[`generateIndex > Should remove custom tags by default > default 1`] = `
 ]
 `;
 
-exports[`generateIndex > Should support customFields 1`] = `
+exports[`generatePageIndex > Should support customFields 1`] = `
 [
   {
     "h": "",
@@ -534,7 +534,7 @@ exports[`generateIndex > Should support customFields 1`] = `
 ]
 `;
 
-exports[`generateIndex > Should support customFields 2`] = `
+exports[`generatePageIndex > Should support customFields 2`] = `
 [
   {
     "h": "Demo Page",
@@ -560,7 +560,7 @@ exports[`generateIndex > Should support customFields 2`] = `
 ]
 `;
 
-exports[`generateIndex > Should support customFields 3`] = `
+exports[`generatePageIndex > Should support customFields 3`] = `
 [
   {
     "h": "Heading 1",
@@ -641,7 +641,7 @@ exports[`generateIndex > Should support customFields 3`] = `
 ]
 `;
 
-exports[`generateIndex > Should support customFields 4`] = `
+exports[`generatePageIndex > Should support customFields 4`] = `
 [
   {
     "h": "",
@@ -650,7 +650,7 @@ exports[`generateIndex > Should support customFields 4`] = `
 ]
 `;
 
-exports[`generateIndex > Should support customFields 5`] = `
+exports[`generatePageIndex > Should support customFields 5`] = `
 [
   {
     "h": "Tag Test",
@@ -665,7 +665,7 @@ exports[`generateIndex > Should support customFields 5`] = `
 ]
 `;
 
-exports[`generateIndex > Should support customFields 6`] = `
+exports[`generatePageIndex > Should support customFields 6`] = `
 [
   {
     "h": "",
@@ -680,7 +680,7 @@ exports[`generateIndex > Should support customFields 6`] = `
 ]
 `;
 
-exports[`generateIndex > Should support customFields 7`] = `
+exports[`generatePageIndex > Should support customFields 7`] = `
 [
   {
     "h": "西游记第一回",
@@ -689,7 +689,7 @@ exports[`generateIndex > Should support customFields 7`] = `
 ]
 `;
 
-exports[`generateIndex > Should support customFields 8`] = `
+exports[`generatePageIndex > Should support customFields 8`] = `
 [
   {
     "h": "",
@@ -698,7 +698,7 @@ exports[`generateIndex > Should support customFields 8`] = `
 ]
 `;
 
-exports[`generateIndex > Should support customFields with full index 1`] = `
+exports[`generatePageIndex > Should support customFields with full index 1`] = `
 [
   {
     "h": "",
@@ -712,7 +712,7 @@ exports[`generateIndex > Should support customFields with full index 1`] = `
 ]
 `;
 
-exports[`generateIndex > Should support customFields with full index 2`] = `
+exports[`generatePageIndex > Should support customFields with full index 2`] = `
 [
   {
     "h": "Demo Page",
@@ -749,7 +749,7 @@ exports[`generateIndex > Should support customFields with full index 2`] = `
 ]
 `;
 
-exports[`generateIndex > Should support customFields with full index 3`] = `
+exports[`generatePageIndex > Should support customFields with full index 3`] = `
 [
   {
     "h": "Heading 1",
@@ -892,7 +892,7 @@ exports[`generateIndex > Should support customFields with full index 3`] = `
 ]
 `;
 
-exports[`generateIndex > Should support customFields with full index 4`] = `
+exports[`generatePageIndex > Should support customFields with full index 4`] = `
 [
   {
     "h": "",
@@ -907,7 +907,7 @@ exports[`generateIndex > Should support customFields with full index 4`] = `
 ]
 `;
 
-exports[`generateIndex > Should support customFields with full index 5`] = `
+exports[`generatePageIndex > Should support customFields with full index 5`] = `
 [
   {
     "h": "Tag Test",
@@ -925,7 +925,7 @@ exports[`generateIndex > Should support customFields with full index 5`] = `
 ]
 `;
 
-exports[`generateIndex > Should support customFields with full index 6`] = `
+exports[`generatePageIndex > Should support customFields with full index 6`] = `
 [
   {
     "h": "",
@@ -943,7 +943,7 @@ exports[`generateIndex > Should support customFields with full index 6`] = `
 ]
 `;
 
-exports[`generateIndex > Should support customFields with full index 7`] = `
+exports[`generatePageIndex > Should support customFields with full index 7`] = `
 [
   {
     "h": "西游记第一回",
@@ -1022,7 +1022,7 @@ exports[`generateIndex > Should support customFields with full index 7`] = `
 ]
 `;
 
-exports[`generateIndex > Should support customFields with full index 8`] = `
+exports[`generatePageIndex > Should support customFields with full index 8`] = `
 [
   {
     "h": "",
