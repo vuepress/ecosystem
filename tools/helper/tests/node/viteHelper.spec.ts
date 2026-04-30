@@ -48,6 +48,12 @@ describe(addViteConfig, () => {
 
     addViteConfig(config, appMock, {
       optimizeDeps: {
+        include: ['vue'],
+      },
+    })
+
+    addViteConfig(config, appMock, {
+      optimizeDeps: {
         include: ['vue-router'],
       },
     })
