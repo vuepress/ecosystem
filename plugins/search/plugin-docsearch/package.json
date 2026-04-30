@@ -48,16 +48,16 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@docsearch/css": "^4.6.2",
-    "@docsearch/js": "^4.6.2",
+    "@docsearch/css": "^4.6.3",
+    "@docsearch/js": "^4.6.3",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
-    "ts-debounce": "^5.0.0",
+    "ts-debounce": "^5.0.1",
     "vue": "catalog:"
   },
   "devDependencies": {
-    "@docsearch/react": "^4.6.2",
-    "algoliasearch": "5.50.2"
+    "@docsearch/react": "^4.6.3",
+    "algoliasearch": "^5.51.0"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

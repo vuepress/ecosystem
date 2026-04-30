@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { PathStore } from '../src/node/pathStore.js'
 
-describe('pathStore', () => {
+describe(PathStore, () => {
   it('Should add paths and return sequential indexes', () => {
     const store = new PathStore()
 

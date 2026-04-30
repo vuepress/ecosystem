@@ -34,9 +34,7 @@ export const resolveHeaders = (
   outer: for (let i = 0; i < allowedHeaders.length; i++) {
     const current = allowedHeaders[i]
 
-    if (i === 0) {
-      result.push(current)
-    } else {
+    if (i !== 0) {
       for (let j = i - 1; j >= 0; j--) {
         const prev = allowedHeaders[j]
         if (prev.level < current.level) {
@@ -45,8 +43,8 @@ export const resolveHeaders = (
           continue outer
         }
       }
-      result.push(current)
     }
+    result.push(current)
   }
 
   return result

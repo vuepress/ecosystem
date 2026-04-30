@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { sanitizeHTML } from '../../src/node/utils/sanitizeHTML.js'
 
-describe('utils/sanitizeHTML', () => {
+describe(sanitizeHTML, () => {
   it('should work for safe HTML', () => {
     ;[
       '<a href="https://vuejs.org" target="_blank" rel="noopener noreferrer">Vue.js</a>',

@@ -1,3 +1,5 @@
+// oxlint-disable vitest/no-conditional-in-test
+// oxlint-disable vitest/max-expects
 import { getPageExcerpt } from '@vuepress/helper'
 import { describe, expect, it } from 'vitest'
 import type { Bundler, Page } from 'vuepress/core'
@@ -17,7 +19,7 @@ const app = createBuildApp({
 
 await app.init()
 
-describe('generateIndex', () => {
+describe(generatePageIndex, () => {
   it('Should generate index', () => {
     const store = new PathStore()
 

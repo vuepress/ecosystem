@@ -55,7 +55,7 @@
     "markdown-it-cjk-friendly": "^2.0.2"
   },
   "devDependencies": {
-    "@types/js-yaml": "4.0.9",
+    "@types/js-yaml": "^4.0.9",
     "markdown-it": "^14.1.1"
   },
   "peerDependencies": {

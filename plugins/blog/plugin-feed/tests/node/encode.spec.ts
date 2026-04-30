@@ -1,18 +1,22 @@
-import { expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import {
   encodeCDATA,
   encodeXMLContent,
 } from '../../src/node/utils/encodeXML.js'
 
-it('Should encode CDATA', () => {
-  expect(encodeCDATA('Certain tokens like ]]> can be difficult')).toBe(
-    'Certain tokens like ]]]]><![CDATA[> can be difficult',
-  )
+describe(encodeCDATA, () => {
+  it('Should encode CDATA', () => {
+    expect(encodeCDATA('Certain tokens like ]]> can be difficult')).toBe(
+      'Certain tokens like ]]]]><![CDATA[> can be difficult',
+    )
+  })
 })
 
-it('Should encore XMLContent', () => {
-  const content = '"1 > 2"'
+describe(encodeXMLContent, () => {
+  it('Should encode XMLContent', () => {
+    const content = '"1 > 2"'
 
-  expect(encodeXMLContent(content)).toBe('&quot;1 &gt; 2&quot;')
+    expect(encodeXMLContent(content)).toBe('&quot;1 &gt; 2&quot;')
+  })
 })

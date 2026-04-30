@@ -197,37 +197,35 @@ export const rendererFloatingVue = (
               },
             },
       errorCompose: compose,
-      completionCompose({ popup, cursor }) {
-        return [
-          {
-            type: 'element',
-            tagName: 'v-menu',
-            properties: {
-              'popper-class': [
-                'shiki twoslash-completion',
-                classCopyIgnore,
-                classFloatingPanel,
-              ],
-              'theme': floatingVueThemeCompletion,
-              ':shown': 'true',
-            },
-            children: [
-              cursor,
-              {
-                type: 'element',
-                tagName: 'template',
-                properties: {
-                  'v-slot:popper': '{}',
-                },
-                content: {
-                  type: 'root',
-                  children: [addVPreProp(popup)],
-                },
-              },
+      completionCompose: ({ popup, cursor }) => [
+        {
+          type: 'element',
+          tagName: 'v-menu',
+          properties: {
+            'popper-class': [
+              'shiki twoslash-completion',
+              classCopyIgnore,
+              classFloatingPanel,
             ],
-          } as Element,
-        ]
-      },
+            'theme': floatingVueThemeCompletion,
+            ':shown': 'true',
+          },
+          children: [
+            cursor,
+            {
+              type: 'element',
+              tagName: 'template',
+              properties: {
+                'v-slot:popper': '{}',
+              },
+              content: {
+                type: 'root',
+                children: [addVPreProp(popup)],
+              },
+            },
+          ],
+        } as Element,
+      ],
     },
   })
 

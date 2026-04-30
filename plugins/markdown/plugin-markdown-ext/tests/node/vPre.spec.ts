@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 
 import { vPre } from '../../src/node/markdown-it-plugins/vPre.js'
 
-describe('v-pre', () => {
+describe(vPre, () => {
   it('should add v-pre wrapper', () => {
     const markdownIt = new MarkdownIt({ linkify: true }).use(vPre)
 
