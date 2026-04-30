@@ -19,7 +19,6 @@ import {
 describe(isDef, () => {
   it('should return true for defined values', () => {
     expect(isDef(true)).toBe(true)
-    expect(isDef(true)).toBe(true)
     expect(isDef(false)).toBe(true)
     expect(isDef(0)).toBe(true)
     expect(isDef(1)).toBe(true)
