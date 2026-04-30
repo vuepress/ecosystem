@@ -9,8 +9,8 @@ const isActiveLink = (
 ): boolean => {
   if (route.hash === link) return true
 
-  const currentPath = normalizePath(route.path, true)
-  const targetPath = normalizePath(link, true)
+  const currentPath = normalizePath(decodeURI(route.path), true)
+  const targetPath = normalizePath(decodeURI(link), true)
   return currentPath === targetPath
 }
 
