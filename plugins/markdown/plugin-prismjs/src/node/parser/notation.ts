@@ -43,6 +43,7 @@ const createNotationCommentMarkerRule = (
     new RegExp(
       // comment-begin               | marker           | range |   comment-end
       `\\s*(?://|/\\*|<!--|#|--)\\s+\\[!code (${marker})(:\\d+)?\\]\\s*(?:\\*/|-->)?`,
+      'u',
     ),
     ([, match, range = ':1'], index): boolean => {
       const lineNum = Number.parseInt(range.slice(1), 10)
@@ -162,14 +163,14 @@ export const notationWordHighlight = (parser: CodeParser): void => {
   createNotationRule(
     parser,
     // comment-begin             | marker    |word                  | range |   comment-end
-    /\s*(?:\/\/|\/\*|<!--|#)\s+\[!code word:((?:\\.|[^:\\\]])+)(:\d+)?\]\s*(?:\*\/|-->)?/,
+    /\s*(?:\/\/|\/\*|<!--|#)\s+\[!code word:((?:\\.|[^:\\\]])+)(:\d+)?\]\s*(?:\*\/|-->)?/u,
     ([, word, range], index): boolean => {
       const lineNum = range
         ? Number.parseInt(range.slice(1), 10)
         : parser.lines.length - 1
 
       // escape backslashes
-      const normalizedWord = word.replaceAll(/\\(.)/g, '$1')
+      const normalizedWord = word.replaceAll(/\\(.)/gu, '$1')
 
       parser.lines
         // start from the next line after the comment

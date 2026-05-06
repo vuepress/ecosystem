@@ -63,7 +63,7 @@ export const createTwoslashTransformer = async (
 
   const onError = (error: unknown, code: string): string => {
     logger.error(
-      `\n\n--------\nTwoslash error in code:\n--------\n${code.split(/\n/g).slice(0, 15).join('\n').trim()}\n--------\n`,
+      `\n\n--------\nTwoslash error in code:\n--------\n${code.split(/\n/gu).slice(0, 15).join('\n').trim()}\n--------\n`,
     )
 
     if (shouldThrow) throw error
@@ -113,7 +113,7 @@ export const createTwoslashTransformer = async (
   })
 
   const triggerRegExp =
-    explicitTrigger instanceof RegExp ? explicitTrigger : /\btwoslash\b/
+    explicitTrigger instanceof RegExp ? explicitTrigger : /\btwoslash\b/u
 
   return {
     name: 'vuepress:twoslash',

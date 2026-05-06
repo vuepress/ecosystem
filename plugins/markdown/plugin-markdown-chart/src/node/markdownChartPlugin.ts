@@ -98,7 +98,7 @@ export const markdownChartPlugin =
                     // normalize `\` to `/` on Windows
                     .replaceAll('\\', '/')
                     // remove any leading slash
-                    .replace(/^\//, '')
+                    .replace(/^\//u, '')
 
                   // ensure markdown extension
                   return result.endsWith('.md') ? result : `${result}.md`

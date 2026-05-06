@@ -24,7 +24,7 @@ describe(addViteConfig, () => {
 
     addViteConfig(config, appMock, {})
 
-    expect(config).toEqual({
+    expect(config).toStrictEqual({
       viteOptions: {},
     })
 
@@ -34,7 +34,7 @@ describe(addViteConfig, () => {
       },
     })
 
-    expect(config).toEqual({
+    expect(config).toStrictEqual({
       viteOptions: {
         optimizeDeps: {
           include: ['vue'],
@@ -58,7 +58,7 @@ describe(addViteConfig, () => {
       },
     })
 
-    expect(config).toEqual({
+    expect(config).toStrictEqual({
       viteOptions: {
         optimizeDeps: {
           include: ['vue', 'vue-router'],
@@ -74,7 +74,7 @@ describe(addViteOptimizeDepsInclude, () => {
 
     addViteOptimizeDepsInclude(config, appMock, 'vue')
 
-    expect(config).toEqual({
+    expect(config).toStrictEqual({
       viteOptions: {
         optimizeDeps: {
           include: ['vue'],
@@ -84,7 +84,7 @@ describe(addViteOptimizeDepsInclude, () => {
 
     addViteOptimizeDepsInclude(config, appMock, ['vue-router'])
 
-    expect(config).toEqual({
+    expect(config).toStrictEqual({
       viteOptions: {
         optimizeDeps: {
           include: ['vue', 'vue-router'],
@@ -100,7 +100,7 @@ describe(addViteOptimizeDepsExclude, () => {
 
     addViteOptimizeDepsExclude(config, appMock, 'vue')
 
-    expect(config).toEqual({
+    expect(config).toStrictEqual({
       viteOptions: {
         optimizeDeps: {
           exclude: ['vue'],
@@ -110,7 +110,7 @@ describe(addViteOptimizeDepsExclude, () => {
 
     addViteOptimizeDepsExclude(config, appMock, ['vue-router'])
 
-    expect(config).toEqual({
+    expect(config).toStrictEqual({
       viteOptions: {
         optimizeDeps: {
           exclude: ['vue', 'vue-router'],
@@ -126,7 +126,7 @@ describe(addViteOptimizeDepsNeedsInterop, () => {
 
     addViteOptimizeDepsNeedsInterop(config, appMock, 'vue')
 
-    expect(config).toEqual({
+    expect(config).toStrictEqual({
       viteOptions: {
         optimizeDeps: {
           needsInterop: ['vue'],
@@ -136,7 +136,7 @@ describe(addViteOptimizeDepsNeedsInterop, () => {
 
     addViteOptimizeDepsNeedsInterop(config, appMock, ['vue-router'])
 
-    expect(config).toEqual({
+    expect(config).toStrictEqual({
       viteOptions: {
         optimizeDeps: {
           needsInterop: ['vue', 'vue-router'],
@@ -152,7 +152,7 @@ describe(addViteSsrExternal, () => {
 
     addViteSsrExternal(config, appMock, 'vue')
 
-    expect(config).toEqual({
+    expect(config).toStrictEqual({
       viteOptions: {
         ssr: {
           external: ['vue'],
@@ -162,7 +162,7 @@ describe(addViteSsrExternal, () => {
 
     addViteSsrExternal(config, appMock, ['vue-router'])
 
-    expect(config).toEqual({
+    expect(config).toStrictEqual({
       viteOptions: {
         ssr: {
           external: ['vue', 'vue-router'],
@@ -178,7 +178,7 @@ describe(addViteSsrNoExternal, () => {
 
     addViteSsrNoExternal(config, appMock, 'vue')
 
-    expect(config).toEqual({
+    expect(config).toStrictEqual({
       viteOptions: {
         ssr: {
           noExternal: ['vue'],
@@ -188,7 +188,7 @@ describe(addViteSsrNoExternal, () => {
 
     addViteSsrNoExternal(config, appMock, ['vue-router'])
 
-    expect(config).toEqual({
+    expect(config).toStrictEqual({
       viteOptions: {
         ssr: {
           noExternal: ['vue', 'vue-router'],

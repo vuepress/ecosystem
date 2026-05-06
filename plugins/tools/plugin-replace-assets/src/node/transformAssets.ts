@@ -20,7 +20,7 @@ export const isMatchUrl = (find: RegExp | string, url: string): boolean => {
     if (find.startsWith('^') || find.endsWith('$')) {
       let re = regexpCache.get(find)
       if (!re) {
-        re = new RegExp(find)
+        re = new RegExp(find, 'u')
         regexpCache.set(find, re)
       }
       return re.test(url)

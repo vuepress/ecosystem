@@ -53,6 +53,8 @@ export default defineHopeConfig(
       'unicorn/no-typeof-undefined': 'off',
 
       'typescript/no-unnecessary-type-arguments': 'off',
+
+      'vitest/prefer-snapshot-hint': 'off',
     },
   },
   // node files

@@ -18,7 +18,7 @@ const replaceAssetsFactory: UnpluginFactory<ReplacementRule[]> = (
     name: 'vuepress:replace-assets',
     enforce: meta?.framework === 'vite' ? 'pre' : undefined,
     transform: {
-      filter: { id: { exclude: [/\.json(?:$|\?)/, /\.html?$/] } },
+      filter: { id: { exclude: [/\.json(?:$|\?)/u, /\.html?$/u] } },
       handler(code) {
         return transformAssets(code, pattern, rules)
       },

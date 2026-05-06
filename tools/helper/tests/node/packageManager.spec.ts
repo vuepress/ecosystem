@@ -20,69 +20,69 @@ describe(isPackageManagerInstalled, () => {
 })
 
 describe(getPackageManagerSetting, () => {
-  it('Should be npm', () => {
+  it('should be npm', () => {
     expect(
       getPackageManagerSetting(path.resolve(fixtures, 'config/npm')),
-    ).toEqual('npm')
+    ).toBe('npm')
   })
 
-  it('Should be yarn', () => {
+  it('should be yarn', () => {
     expect(
       getPackageManagerSetting(path.resolve(fixtures, 'config/yarn')),
-    ).toEqual('yarn')
+    ).toBe('yarn')
   })
 
-  it('Should be pnpm', () => {
+  it('should be pnpm', () => {
     expect(
       getPackageManagerSetting(path.resolve(fixtures, 'config/pnpm')),
-    ).toEqual('pnpm')
+    ).toBe('pnpm')
   })
 })
 
 describe(getTypeofLockFile, () => {
-  it('Should be npm', () => {
-    expect(getTypeofLockFile(path.resolve(fixtures, 'lock-file/npm'))).toEqual(
+  it('should be npm', () => {
+    expect(getTypeofLockFile(path.resolve(fixtures, 'lock-file/npm'))).toBe(
       'npm',
     )
   })
 
-  it('Should be yarn', () => {
-    expect(getTypeofLockFile(path.resolve(fixtures, 'lock-file/yarn'))).toEqual(
+  it('should be yarn', () => {
+    expect(getTypeofLockFile(path.resolve(fixtures, 'lock-file/yarn'))).toBe(
       'yarn',
     )
   })
 
-  it('Should be pnpm', () => {
-    expect(getTypeofLockFile(path.resolve(fixtures, 'lock-file/pnpm'))).toEqual(
+  it('should be pnpm', () => {
+    expect(getTypeofLockFile(path.resolve(fixtures, 'lock-file/pnpm'))).toBe(
       'pnpm',
     )
   })
 })
 
 describe(getPackageManager, () => {
-  it('Should be npm', () => {
-    expect(getPackageManager(path.resolve(fixtures, 'config/npm'))).toEqual(
+  it('should be npm', () => {
+    expect(getPackageManager(path.resolve(fixtures, 'config/npm'))).toBe(
       'npm',
     )
-    expect(getPackageManager(path.resolve(fixtures, 'lock-file/npm'))).toEqual(
+    expect(getPackageManager(path.resolve(fixtures, 'lock-file/npm'))).toBe(
       'npm',
     )
   })
 
-  it('Should be yarn', () => {
-    expect(getPackageManager(path.resolve(fixtures, 'config/yarn'))).toEqual(
+  it('should be yarn', () => {
+    expect(getPackageManager(path.resolve(fixtures, 'config/yarn'))).toBe(
       'yarn',
     )
-    expect(getPackageManager(path.resolve(fixtures, 'lock-file/yarn'))).toEqual(
+    expect(getPackageManager(path.resolve(fixtures, 'lock-file/yarn'))).toBe(
       'yarn',
     )
   })
 
-  it('Should be pnpm', () => {
-    expect(getPackageManager(path.resolve(fixtures, 'config/pnpm'))).toEqual(
+  it('should be pnpm', () => {
+    expect(getPackageManager(path.resolve(fixtures, 'config/pnpm'))).toBe(
       'pnpm',
     )
-    expect(getPackageManager(path.resolve(fixtures, 'lock-file/pnpm'))).toEqual(
+    expect(getPackageManager(path.resolve(fixtures, 'lock-file/pnpm'))).toBe(
       'pnpm',
     )
   })

@@ -15,7 +15,7 @@ interface ImportCodeInfo {
 
 // regexp to match the import syntax
 const SYNTAX_RE =
-  /^@\[code(?:{(?:(?:(?<lineStart>\d+)?-(?<lineEnd>\d+)?)|(?<lineSingle>\d+))})?(?: (?<info>[^\]]+))?\]\((?<importPath>[^)]*)\)/
+  /^@\[code(?:\{(?:(?:(?<lineStart>\d+)?-(?<lineEnd>\d+)?)|(?<lineSingle>\d+))\})?(?: (?<info>[^\]]+))?\]\((?<importPath>[^)]*)\)/u
 
 const resolveImportCode = (
   cwd: string,
@@ -41,7 +41,7 @@ const resolveImportCode = (
       .split('\n')
       .slice(lineStart ? lineStart - 1 : lineStart, lineEnd)
       .join('\n')
-      .replace(/\n?$/, '\n'),
+      .replace(/\n?$/u, '\n'),
   }
 }
 
@@ -86,7 +86,7 @@ export const remarkImportCode =
         const lineSingle = parseLineNumber(matched.groups.lineSingle)
         const importPath = handleImportPath(matched.groups.importPath)
         const info = matched.groups.info || path.extname(importPath).slice(1)
-        const lang = /^([^ :[{]+)/.exec(info)?.[1] || ''
+        const lang = /^([^ :[{]+)/u.exec(info)?.[1] || ''
 
         const options: ImportCodeInfo = {
           lineStart:

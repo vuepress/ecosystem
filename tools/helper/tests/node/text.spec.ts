@@ -7,25 +7,25 @@ import type { PageTextOptions } from '../../src/node/page/text.js'
 import { getPageText } from '../../src/node/page/text.js'
 import { emptyTheme } from '../__fixtures__/theme/empty.js'
 
-describe(getPageText, async () => {
-  const app = createBuildApp({
-    bundler: {} as Bundler,
-    source: path.resolve(__dirname, '../__fixtures__/src'),
-    theme: emptyTheme,
-  })
+const app = createBuildApp({
+  bundler: {} as Bundler,
+  source: path.resolve(__dirname, '../__fixtures__/src'),
+  theme: emptyTheme,
+})
 
-  await app.init()
+await app.init()
 
-  const getPagesText = (
-    options: PageTextOptions = {},
-  ): { pagePath: string; text: string }[] =>
-    app.pages
-      .filter((page) => page.path !== '/404.html')
-      .map((page) => ({
-        pagePath: page.path,
-        text: getPageText(app, page, options),
-      }))
+const getPagesText = (
+  options: PageTextOptions = {},
+): { pagePath: string; text: string }[] =>
+  app.pages
+    .filter((page) => page.path !== '/404.html')
+    .map((page) => ({
+      pagePath: page.path,
+      text: getPageText(app, page, options),
+    }))
 
+describe(getPageText, () => {
   it('default', () => {
     const textData = getPagesText()
 

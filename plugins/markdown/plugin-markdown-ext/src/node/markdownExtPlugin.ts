@@ -13,7 +13,7 @@ import type { MarkdownExtPluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepreClientConfigFile.js'
 import { PLUGIN_NAME } from './utils.js'
 
-const CJK_LANG_REGEXP = /^(zh|ja|ko)\b/i
+const CJK_LANG_REGEXP = /^(zh|ja|ko)\b/iu
 
 declare module 'vuepress/markdown' {
   interface MarkdownOptions {

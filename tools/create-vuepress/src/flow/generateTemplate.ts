@@ -125,10 +125,10 @@ export const generateTemplate = async ({
     configFilePath,
     content
       .replace(
-        /\n\nexport default defineUserConfig\(\{/,
+        /\n\nexport default defineUserConfig\(\{/u,
         `\nimport { ${bundler}Bundler } from '@vuepress/bundler-${bundler}'\n\nexport default defineUserConfig({`,
       )
-      .replace(/\}\)\n$/, `\n  bundler: ${bundler}Bundler(),\n})\n`),
+      .replace(/\}\)\n$/u, `\n  bundler: ${bundler}Bundler(),\n})\n`),
     { encoding: 'utf-8' },
   )
 

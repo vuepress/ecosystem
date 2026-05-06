@@ -3,7 +3,7 @@
  *
  * 匹配代码块信息中 `:collapsed-lines` 指令的正则表达式
  */
-const COLLAPSED_LINES_REGEXP = /:collapsed-lines\b/
+const COLLAPSED_LINES_REGEXP = /:collapsed-lines\b/u
 
 /**
  * Regular expression to match `:collapsed-lines=num` directive in code block
@@ -11,7 +11,7 @@ const COLLAPSED_LINES_REGEXP = /:collapsed-lines\b/
  *
  * 匹配代码块信息中 `:collapsed-lines=num` 指令的正则表达式
  */
-const COLLAPSED_LINES_START_REGEXP = /:collapsed-lines=(\d+)\b/
+const COLLAPSED_LINES_START_REGEXP = /:collapsed-lines=(\d+)\b/u
 
 /**
  * Regular expression to match `:no-collapsed-lines` directive in code block
@@ -19,7 +19,7 @@ const COLLAPSED_LINES_START_REGEXP = /:collapsed-lines=(\d+)\b/
  *
  * 匹配代码块信息中 `:no-collapsed-lines` 指令的正则表达式
  */
-const NO_COLLAPSED_LINES_REGEXP = /:no-collapsed-lines\b/
+const NO_COLLAPSED_LINES_REGEXP = /:no-collapsed-lines\b/u
 
 /**
  * Resolve the `:collapsed-lines` `:collapsed-lines=num` / `:no-collapsed-lines`

@@ -22,7 +22,7 @@ const getUA = (): string => navigator.userAgent
  *
  * @returns Whether it's iPhone or iPod / 是否为 iPhone 或 iPod
  */
-export const isiPhone = (): boolean => /\biPhone\b/i.test(getPlatform())
+export const isiPhone = (): boolean => /\biPhone\b/iu.test(getPlatform())
 
 /**
  * Check if the user device is Windows.
@@ -32,7 +32,7 @@ export const isiPhone = (): boolean => /\biPhone\b/i.test(getPlatform())
  * @returns Whether it's Windows / 是否为 Windows
  */
 export const isWindows = (): boolean =>
-  /\b(Windows|Win32)\b/i.test(getPlatform())
+  /\b(Windows|Win32)\b/iu.test(getPlatform())
 
 /**
  * Check if the user device is iPad.
@@ -41,7 +41,7 @@ export const isWindows = (): boolean =>
  *
  * @returns Whether it's iPad / 是否为 iPad
  */
-export const isiPad = (): boolean => /\biPad\b/i.test(getPlatform())
+export const isiPad = (): boolean => /\biPad\b/iu.test(getPlatform())
 /**
  * Check if the user device is iOS (iPhone, iPad, or iPod).
  *
@@ -51,7 +51,7 @@ export const isiPad = (): boolean => /\biPad\b/i.test(getPlatform())
  */
 export const isIOS = (): boolean =>
   // UA-CH platform says iOS, or legacy detections
-  /ios/i.test(getPlatform()) || isiPhone() || isiPad()
+  /ios/iu.test(getPlatform()) || isiPhone() || isiPad()
 
 /**
  * Check if the user device is macOS.
@@ -63,10 +63,10 @@ export const isIOS = (): boolean =>
 export const isMacOS = (): boolean => {
   const platform = getPlatform()
 
-  if (platform) return /mac/i.test(platform)
+  if (platform) return /mac/iu.test(platform)
 
   // Explicit macOS platform or legacy UA, while excluding iOS (iPadOS desktop UA)
-  return /macintosh|mac os x/i.test(getUA()) && !isIOS()
+  return /macintosh|mac os x/iu.test(getUA()) && !isIOS()
 }
 
 /**
@@ -83,7 +83,7 @@ export const isMobile = (): boolean => {
   if (isBoolean(uaDataMobile)) return uaDataMobile
 
   // Fallback to UA
-  return /\b(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|CriOS|FxiOS)\b/i.test(
+  return /\b(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|CriOS|FxiOS)\b/iu.test(
     getUA(),
   )
 }
@@ -99,9 +99,9 @@ export const isSafari = (): boolean => {
   const ua = getUA()
 
   return (
-    /safari/i.test(ua) &&
+    /safari/iu.test(ua) &&
     // Safari has 'Safari' but not these chromium/gecko/edge/opera flavors
-    !/chrome|crios|fxios|edgios|edg|opr|opera|ucbrowser|qqbrowser|baidubrowser/i.test(
+    !/chrome|crios|fxios|edgios|edg|opr|opera|ucbrowser|qqbrowser|baidubrowser/iu.test(
       ua,
     )
   )

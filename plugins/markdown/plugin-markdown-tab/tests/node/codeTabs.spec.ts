@@ -7,7 +7,7 @@ import { codeTabs } from '../../src/node/codeTabs.js'
 const markdownIt = new MarkdownIt({ linkify: true }).use(codeTabs)
 
 describe('code tabs', () => {
-  it('Should render single block', () => {
+  it('should render single block', () => {
     expect(
       markdownIt.render(`
 ::: code-tabs
@@ -34,7 +34,7 @@ const a = 1;
     ).toMatchSnapshot()
   })
 
-  it('Should render multiple block', () => {
+  it('should render multiple block', () => {
     expect(
       markdownIt.render(`
 ::: code-tabs
@@ -71,7 +71,7 @@ const a = 1;
     ).toMatchSnapshot()
   })
 
-  it('Should support id', () => {
+  it('should support id', () => {
     expect(
       markdownIt.render(`
 ::: code-tabs#event
@@ -120,7 +120,7 @@ const a = 1;
     ).toMatchSnapshot()
   })
 
-  it('Should support active', () => {
+  it('should support active', () => {
     expect(
       markdownIt.render(`
 ::: code-tabs
@@ -182,7 +182,7 @@ const a = 1;
     ).toMatchSnapshot()
   })
 
-  it('Should support value', () => {
+  it('should support value', () => {
     expect(
       markdownIt.render(`
 ::: code-tabs
@@ -332,7 +332,7 @@ Another text again
     ).toMatchSnapshot()
   })
 
-  it('Should work with code import', () => {
+  it('should work with code import', () => {
     const markdown = createMarkdown()
 
     markdown.use(codeTabs)

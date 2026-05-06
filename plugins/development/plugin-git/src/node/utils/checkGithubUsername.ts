@@ -14,5 +14,5 @@ export const checkGithubUsername = (username: string): boolean => {
   if (username.length > 39) return false
   if (username.startsWith('-') || username.endsWith('-')) return false
 
-  return /^[a-z\d](?:[a-z\d]|-(?=[a-z\d]))*$/i.test(username)
+  return /^[a-z\d](?:[a-z\d]|-(?=[a-z\d]))*$/iu.test(username)
 }

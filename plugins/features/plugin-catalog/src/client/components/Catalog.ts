@@ -98,7 +98,7 @@ export default defineComponent({
           return Object.assign(
             {
               level: endsWith(path, `/`) ? level - 2 : level - 1,
-              base: path.replace(/\/[^/]+\/?$/, `/`),
+              base: path.replace(/\/[^/]+\/?$/u, '/'),
               path,
             },
             info,
@@ -114,7 +114,7 @@ export default defineComponent({
     const catalogData = computed(() => {
       const basePath = props.base
         ? ensureLeadingSlash(ensureEndingSlash(props.base))
-        : page.value.path.replace(/\/[^/]+$/, '/')
+        : page.value.path.replace(/\/[^/]+$/u, '/')
       const baseDepth = basePath.split('/').length - 2
       const result: CatalogData[] = []
 
@@ -197,7 +197,7 @@ export default defineComponent({
 
             default: {
               const grandParent = result.find(
-                (item) => item.path === base.replace(/\/[^/]+\/$/, '/'),
+                (item) => item.path === base.replace(/\/[^/]+\/?$/u, '/'),
               )
 
               if (grandParent) {

@@ -4,12 +4,12 @@
  * node.
  */
 
-const PRE_OPEN_TAG_RE = /^(<pre[^]*?>)/
-const CODE_OPEN_TAG_RE = /^(<code[^]*?>)/
-const FENCE_CLOSE_TAG_RE = /(<\/code><\/pre>(\r?\n))?$/
-const NEWLINE_RE = /(\r?\n)/g
-const CLASS_RE = /class="([^]*)"/
-const CODE_ESCAPE_RE = /\[\\!code/g
+const PRE_OPEN_TAG_RE = /^(<pre[^]*?>)/u
+const CODE_OPEN_TAG_RE = /^(<code[^]*?>)/u
+const FENCE_CLOSE_TAG_RE = /(<\/code><\/pre>(\r?\n))?$/u
+const NEWLINE_RE = /(\r?\n)/gu
+const CLASS_RE = /class="([^]*)"/u
+const CODE_ESCAPE_RE = /\[\\!code/gu
 
 const uniq = <T>(array: T[]): T[] => [...new Set(array)]
 

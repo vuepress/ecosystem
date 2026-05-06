@@ -1,10 +1,10 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`flowchart > Should handle preset 1`] = `"<FlowChart code="eJx1ULFOwzAQ3f0VHotEUrWjpZgJMQFDJoQYXPuSGFKfZZ8bVfLHY6dQwdDlrHd+7927i9TJSCqQ4H19sleRhJyIvNhul2VpR8Rxhlbj8f0wK/f1waCT4Izgj87kIVEKcEPA0O86iR6CIotO8Oczf/1F66TC2P9j9JSGIesUAjhiMR2KQakBE1kHq0N/hdm6k5qtYRqd6WSt9mLzBpFh4C/4kJX3AU9gbmXUJcAf5ROi4daAygE+QRMYZrGT1vlEZWqpgmtFeuIRj0CTdWPbtj93YCxSU9bZbYIdJ7prVuc13uYM8Z5f2/tL02EBdcvNDEP9KNqSqJILsNhIqHCllVNV+A2yapmT" preset="ant"></FlowChart>"`;
+exports[`flowchart > should handle preset 1`] = `"<FlowChart code="eJx1ULFOwzAQ3f0VHotEUrWjpZgJMQFDJoQYXPuSGFKfZZ8bVfLHY6dQwdDlrHd+7927i9TJSCqQ4H19sleRhJyIvNhul2VpR8Rxhlbj8f0wK/f1waCT4Izgj87kIVEKcEPA0O86iR6CIotO8Oczf/1F66TC2P9j9JSGIesUAjhiMR2KQakBE1kHq0N/hdm6k5qtYRqd6WSt9mLzBpFh4C/4kJX3AU9gbmXUJcAf5ROi4daAygE+QRMYZrGT1vlEZWqpgmtFeuIRj0CTdWPbtj93YCxSU9bZbYIdJ7prVuc13uYM8Z5f2/tL02EBdcvNDEP9KNqSqJILsNhIqHCllVNV+A2yapmT" preset="ant"></FlowChart>"`;
 
-exports[`flowchart > Should handle preset 2`] = `"<FlowChart code="eJx1ULFOwzAQ3f0VHotEUrWjpZgJMQFDJoQYXPuSGFKfZZ8bVfLHY6dQwdDlrHd+7927i9TJSCqQ4H19sleRhJyIvNhul2VpR8Rxhlbj8f0wK/f1waCT4Izgj87kIVEKcEPA0O86iR6CIotO8Oczf/1F66TC2P9j9JSGIesUAjhiMR2KQakBE1kHq0N/hdm6k5qtYRqd6WSt9mLzBpFh4C/4kJX3AU9gbmXUJcAf5ROi4daAygE+QRMYZrGT1vlEZWqpgmtFeuIRj0CTdWPbtj93YCxSU9bZbYIdJ7prVuc13uYM8Z5f2/tL02EBdcvNDEP9KNqSqJILsNhIqHCllVNV+A2yapmT" preset="ant"></FlowChart>"`;
+exports[`flowchart > should handle preset 2`] = `"<FlowChart code="eJx1ULFOwzAQ3f0VHotEUrWjpZgJMQFDJoQYXPuSGFKfZZ8bVfLHY6dQwdDlrHd+7927i9TJSCqQ4H19sleRhJyIvNhul2VpR8Rxhlbj8f0wK/f1waCT4Izgj87kIVEKcEPA0O86iR6CIotO8Oczf/1F66TC2P9j9JSGIesUAjhiMR2KQakBE1kHq0N/hdm6k5qtYRqd6WSt9mLzBpFh4C/4kJX3AU9gbmXUJcAf5ROi4daAygE+QRMYZrGT1vlEZWqpgmtFeuIRj0CTdWPbtj93YCxSU9bZbYIdJ7prVuc13uYM8Z5f2/tL02EBdcvNDEP9KNqSqJILsNhIqHCllVNV+A2yapmT" preset="ant"></FlowChart>"`;
 
-exports[`flowchart > Should not render 1`] = `
+exports[`flowchart > should not render 1`] = `
 "<p>st=&gt;start: Start|past:&gt;<a href="http://www.google.com">http://www.google.com</a>[blank]
 e=&gt;end: End|future:&gt;<a href="http://www.google.com">http://www.google.com</a>
 op1=&gt;operation: My Operation|past
@@ -22,7 +22,7 @@ c2(no)-&gt;op2-&gt;e</p>
 "
 `;
 
-exports[`flowchart > Should not render 2`] = `
+exports[`flowchart > should not render 2`] = `
 "<pre><code class="language-md">st=&gt;start: Start|past:&gt;http://www.google.com[blank]
 e=&gt;end: End|future:&gt;http://www.google.com
 op1=&gt;operation: My Operation|past
@@ -42,6 +42,6 @@ c2(no)-&gt;op2-&gt;e
 "
 `;
 
-exports[`flowchart > Should render \`\`\`flow 1`] = `"<FlowChart code="eJx1ULFOwzAQ3f0VHotEUrWjpZgJMQFDJoQYXPuSGFKfZZ8bVfLHY6dQwdDlrHd+7927i9TJSCqQ4H19sleRhJyIvNhul2VpR8Rxhlbj8f0wK/f1waCT4Izgj87kIVEKcEPA0O86iR6CIotO8Oczf/1F66TC2P9j9JSGIesUAjhiMR2KQakBE1kHq0N/hdm6k5qtYRqd6WSt9mLzBpFh4C/4kJX3AU9gbmXUJcAf5ROi4daAygE+QRMYZrGT1vlEZWqpgmtFeuIRj0CTdWPbtj93YCxSU9bZbYIdJ7prVuc13uYM8Z5f2/tL02EBdcvNDEP9KNqSqJILsNhIqHCllVNV+A2yapmT" preset="vue"></FlowChart>"`;
+exports[`flowchart > should render \`\`\`flow 1`] = `"<FlowChart code="eJx1ULFOwzAQ3f0VHotEUrWjpZgJMQFDJoQYXPuSGFKfZZ8bVfLHY6dQwdDlrHd+7927i9TJSCqQ4H19sleRhJyIvNhul2VpR8Rxhlbj8f0wK/f1waCT4Izgj87kIVEKcEPA0O86iR6CIotO8Oczf/1F66TC2P9j9JSGIesUAjhiMR2KQakBE1kHq0N/hdm6k5qtYRqd6WSt9mLzBpFh4C/4kJX3AU9gbmXUJcAf5ROi4daAygE+QRMYZrGT1vlEZWqpgmtFeuIRj0CTdWPbtj93YCxSU9bZbYIdJ7prVuc13uYM8Z5f2/tL02EBdcvNDEP9KNqSqJILsNhIqHCllVNV+A2yapmT" preset="vue"></FlowChart>"`;
 
-exports[`flowchart > Should render \`\`\`flowchart 1`] = `"<FlowChart code="eJx1ULFOwzAQ3f0VHotEUrWjpZgJMQFDJoQYXPuSGFKfZZ8bVfLHY6dQwdDlrHd+7927i9TJSCqQ4H19sleRhJyIvNhul2VpR8Rxhlbj8f0wK/f1waCT4Izgj87kIVEKcEPA0O86iR6CIotO8Oczf/1F66TC2P9j9JSGIesUAjhiMR2KQakBE1kHq0N/hdm6k5qtYRqd6WSt9mLzBpFh4C/4kJX3AU9gbmXUJcAf5ROi4daAygE+QRMYZrGT1vlEZWqpgmtFeuIRj0CTdWPbtj93YCxSU9bZbYIdJ7prVuc13uYM8Z5f2/tL02EBdcvNDEP9KNqSqJILsNhIqHCllVNV+A2yapmT" preset="vue"></FlowChart>"`;
+exports[`flowchart > should render \`\`\`flowchart 1`] = `"<FlowChart code="eJx1ULFOwzAQ3f0VHotEUrWjpZgJMQFDJoQYXPuSGFKfZZ8bVfLHY6dQwdDlrHd+7927i9TJSCqQ4H19sleRhJyIvNhul2VpR8Rxhlbj8f0wK/f1waCT4Izgj87kIVEKcEPA0O86iR6CIotO8Oczf/1F66TC2P9j9JSGIesUAjhiMR2KQakBE1kHq0N/hdm6k5qtYRqd6WSt9mLzBpFh4C/4kJX3AU9gbmXUJcAf5ROi4daAygE+QRMYZrGT1vlEZWqpgmtFeuIRj0CTdWPbtj93YCxSU9bZbYIdJ7prVuc13uYM8Z5f2/tL02EBdcvNDEP9KNqSqJILsNhIqHCllVNV+A2yapmT" preset="vue"></FlowChart>"`;

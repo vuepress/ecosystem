@@ -7,25 +7,25 @@ import type { PageExcerptOptions } from '../../src/node/page/excerpt.js'
 import { getPageExcerpt } from '../../src/node/page/excerpt.js'
 import { emptyTheme } from '../__fixtures__/theme/empty.js'
 
-describe(getPageExcerpt, async () => {
-  const app = createBuildApp({
-    bundler: {} as Bundler,
-    source: path.resolve(__dirname, '../__fixtures__/src'),
-    theme: emptyTheme,
-  })
+const app = createBuildApp({
+  bundler: {} as Bundler,
+  source: path.resolve(__dirname, '../__fixtures__/src'),
+  theme: emptyTheme,
+})
 
-  await app.init()
+await app.init()
 
-  const getPageExcerpts = (
-    options: PageExcerptOptions = {},
-  ): { excerpt: string; pagePath: string }[] =>
-    app.pages
-      .filter((page) => page.path !== '/404.html')
-      .map((page) => ({
-        pagePath: page.path,
-        excerpt: getPageExcerpt(app, page, options),
-      }))
+const getPageExcerpts = (
+  options: PageExcerptOptions = {},
+): { excerpt: string; pagePath: string }[] =>
+  app.pages
+    .filter((page) => page.path !== '/404.html')
+    .map((page) => ({
+      pagePath: page.path,
+      excerpt: getPageExcerpt(app, page, options),
+    }))
 
+describe(getPageExcerpt, () => {
   describe('with default options', () => {
     const excerptData = getPageExcerpts()
 
@@ -128,7 +128,7 @@ describe(getPageExcerpt, async () => {
       data
         .filter(({ pagePath }) => pagePath !== '/separator.html')
         .forEach(({ excerpt }) => {
-          expect(excerpt.length).toBe(0)
+          expect(excerpt).toHaveLength(0)
         })
     })
 

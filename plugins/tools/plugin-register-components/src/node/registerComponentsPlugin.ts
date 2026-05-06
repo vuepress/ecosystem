@@ -30,7 +30,7 @@ export const registerComponentsPlugin = ({
   componentsDir = null,
   componentsPatterns = ['**/*.vue'],
   getComponentName = (filename) =>
-    path.trimExt(filename.replaceAll(/\/|\\/g, '-')),
+    path.trimExt(filename.replaceAll(/\/|\\/gu, '-')),
 }: RegisterComponentsPluginOptions = {}): Plugin => {
   const options = {
     components,

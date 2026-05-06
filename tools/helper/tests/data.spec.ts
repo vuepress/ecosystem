@@ -34,17 +34,17 @@ const nodeAutoResults = compressed.map((data) => nodeEncodeData(data))
 
 describe('encode and decode data', () => {
   it('utoa should return same result', () => {
-    expect(browserUtoaResults).toEqual(nodeUtoaResults)
+    expect(browserUtoaResults).toStrictEqual(nodeUtoaResults)
   })
 
   it('atou should return same result', () => {
-    expect(browserAtouResults).toEqual(nodeAutoResults)
+    expect(browserAtouResults).toStrictEqual(nodeAutoResults)
   })
 
   it('transform should return itself', () => {
-    expect(browserUtoaResults.map((word) => nodeEncodeData(word))).toEqual(
+    expect(browserUtoaResults.map((word) => nodeEncodeData(word))).toStrictEqual(
       words,
     )
-    expect(nodeUtoaResults.map((word) => nodeEncodeData(word))).toEqual(words)
+    expect(nodeUtoaResults.map((word) => nodeEncodeData(word))).toStrictEqual(words)
   })
 })

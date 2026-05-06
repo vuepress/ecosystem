@@ -22,7 +22,7 @@ c2(no)->op2->e`
 describe(flowchart, () => {
   const markdownIt = new MarkdownIt({ linkify: true }).use(flowchart)
 
-  it('Should render ```flow', () => {
+  it('should render ```flow', () => {
     const flowRenderResult = markdownIt.render(`
 \`\`\`flow
 ${demo}
@@ -30,12 +30,12 @@ ${demo}
 `)
 
     expect(flowRenderResult).toMatch(
-      /<FlowChart code=".*?" preset="vue"><\/FlowChart>/,
+      /<FlowChart code=".*?" preset="vue"><\/FlowChart>/u,
     )
     expect(flowRenderResult).toMatchSnapshot()
   })
 
-  it('Should render ```flowchart', () => {
+  it('should render ```flowchart', () => {
     const flowChartRenderResult = markdownIt.render(`
 \`\`\`flowchart
 ${demo}
@@ -43,12 +43,12 @@ ${demo}
 `)
 
     expect(flowChartRenderResult).toMatch(
-      /<FlowChart code=".*?" preset="vue"><\/FlowChart>/,
+      /<FlowChart code=".*?" preset="vue"><\/FlowChart>/u,
     )
     expect(flowChartRenderResult).toMatchSnapshot()
   })
 
-  it('Should not render', () => {
+  it('should not render', () => {
     expect(
       markdownIt.render(`
 ${demo}
@@ -64,7 +64,7 @@ ${demo}
     ).toMatchSnapshot()
   })
 
-  it('Should handle preset', () => {
+  it('should handle preset', () => {
     const flowRenderResult = markdownIt.render(`
 \`\`\`flow:ant
 ${demo}
@@ -72,7 +72,7 @@ ${demo}
 `)
 
     expect(flowRenderResult).toMatch(
-      /<FlowChart code=".*?" preset="ant"><\/FlowChart>/,
+      /<FlowChart code=".*?" preset="ant"><\/FlowChart>/u,
     )
     expect(flowRenderResult).toMatchSnapshot()
 
@@ -83,7 +83,7 @@ ${demo}
 `)
 
     expect(flowChartRenderResult).toMatch(
-      /<FlowChart code=".*?" preset="ant"><\/FlowChart>/,
+      /<FlowChart code=".*?" preset="ant"><\/FlowChart>/u,
     )
     expect(flowChartRenderResult).toMatchSnapshot()
   })

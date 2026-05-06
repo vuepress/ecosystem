@@ -1,4 +1,4 @@
-const MARKDOWN_TITLE_REGEXP = /^#[^#][\s]*(.+?)#*?$/m
+const MARKDOWN_TITLE_REGEXP = /^#[^#][\s]*(.+?)#*?$/mu
 
 /**
  * Extract title from markdown string

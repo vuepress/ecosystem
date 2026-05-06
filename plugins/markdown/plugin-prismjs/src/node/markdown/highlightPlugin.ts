@@ -147,7 +147,7 @@ export const highlightPlugin = (
 
     const code = rawFence(...args)
       // remove the default `language-${ext}` class
-      .replace(/<code[^]*?>/, '<code>')
+      .replace(/<code[^]*?>/u, '<code>')
 
     const parser = getCodeParser(code, language.name)
 

@@ -29,7 +29,7 @@ export const generateLLMFriendlyDocs = async (
       metadata.description = page.frontmatter.description
 
     const markdownFilePathRelative = page.htmlFilePathRelative.replace(
-      /\.html$/,
+      /\.html$/u,
       '.md',
     )
     const markdownFilePath = state.app.dir.dest(markdownFilePathRelative)

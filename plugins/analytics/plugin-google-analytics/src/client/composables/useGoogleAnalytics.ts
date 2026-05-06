@@ -34,7 +34,7 @@ export const useGoogleAnalytics = (
   document.head.append(gtagScript)
 
   // insert gtag snippet
-  window.dataLayer = window.dataLayer ?? []
+  window.dataLayer ??= []
   // the gtag function must use `arguments` object to forward parameters
   // oxlint-disable-next-line func-names
   window.gtag = function (): void {

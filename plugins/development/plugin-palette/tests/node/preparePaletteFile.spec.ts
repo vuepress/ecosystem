@@ -52,7 +52,7 @@ describe('plugin-palette > node > preparePaletteFile', () => {
           importCode,
         })
         const result = (await fs.readFile(tempFile)).toString()
-        expect(result).toEqual(importCode(userPaletteFile))
+        expect(result).toStrictEqual(importCode(userPaletteFile))
       })
     })
   })
@@ -69,6 +69,6 @@ describe('plugin-palette > node > preparePaletteFile', () => {
       importCode: presetOptions.css.importCode,
     })
     const result = (await fs.readFile(tempFile)).toString()
-    expect(result).toEqual('')
+    expect(result).toBe('')
   })
 })

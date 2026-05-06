@@ -18,15 +18,18 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: new RegExp(`^@vuepress/(${pluginPackages.join('|')})$`),
+        find: new RegExp(`^@vuepress/(${pluginPackages.join('|')})$`, 'u'),
         replacement: path.resolve(__dirname, './plugins/$1/src/index.ts'),
       },
       {
-        find: new RegExp(`^@vuepress/(${themePackages.join('|')})$`),
+        find: new RegExp(`^@vuepress/(${themePackages.join('|')})$`, 'u'),
         replacement: path.resolve(__dirname, './themes/$1/src/index.ts'),
       },
       {
-        find: new RegExp(`^@vuepress/(${themePackages.join('|')}/client)$`),
+        find: new RegExp(
+          `^@vuepress/(${themePackages.join('|')}/client)$`,
+          'u',
+        ),
         replacement: path.resolve(__dirname, './themes/$1/src/client/index.ts'),
       },
     ],

@@ -263,7 +263,7 @@ export default defineUserConfig({
           ],
         },
         {
-          match: /^\/notice\/fullscreen\.html$/,
+          match: /^\/notice\/fullscreen\.html$/u,
           title: 'Notice Title',
           content: 'Notice fullscreen content',
           actions: [
@@ -277,7 +277,7 @@ export default defineUserConfig({
           fullscreen: true,
         },
         {
-          match: /^\/notice\/file\.html$/,
+          match: /^\/notice\/file\.html$/u,
           title: 'Notice Title',
           contentFile: path.resolve(__dirname, './notice.md'),
           actions: [
@@ -328,7 +328,7 @@ export default defineUserConfig({
       componentsPatterns: ['**/*.vue', '**/*.ts', '**/*.js'],
     }),
     replaceAssetsPlugin({
-      find: /^\/images\/replace-assets\/.*\.(png|jpg|svg|gif|webp)$/,
+      find: /^\/images\/replace-assets\/.*\.(png|jpg|svg|gif|webp)$/u,
       replacement: 'https://cdn.example.com',
     }),
     sassPalettePlugin({

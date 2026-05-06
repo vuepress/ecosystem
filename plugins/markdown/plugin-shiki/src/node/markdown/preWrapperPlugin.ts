@@ -4,7 +4,7 @@ import type { Markdown } from 'vuepress/markdown'
 
 import { resolveLanguage } from '../utils.js'
 
-const PRE_ATTRS_REGEXP = /<pre([\s\S]*?)style="([^"]*)"([^>]*)>/
+const PRE_ATTRS_REGEXP = /<pre([\s\S]*?)style="([^"]*)"([^>]*)>/u
 
 export interface MarkdownItPreWrapperOptions {
   /**
@@ -45,7 +45,7 @@ export const preWrapperPlugin = (
     const lang = resolveLanguage(info)
     const languageClass = `${options.langPrefix}${lang}`
 
-    result = result.replace(/<code[^]*?>/, `<code class="${languageClass}">`)
+    result = result.replace(/<code[^]*?>/u, `<code class="${languageClass}">`)
     if (!preWrapper) {
       result = `<pre class="${languageClass} ${result.slice('<pre class="'.length)}`
       return result

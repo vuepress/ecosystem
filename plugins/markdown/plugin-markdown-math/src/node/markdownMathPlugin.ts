@@ -88,7 +88,7 @@ export const markdownMathPlugin =
 
       extendsBundlerOptions: (bundlerOptions) => {
         if (mathRenderer === 'mathjax')
-          addCustomElement(bundlerOptions, app, /^mjx-/)
+          addCustomElement(bundlerOptions, app, /^mjx-/u)
       },
 
       extendsMarkdown: async (md) => {
@@ -96,7 +96,7 @@ export const markdownMathPlugin =
           mathjaxInstance = await createMathjaxInstance({
             ...(renderOptions as MarkdownMathjaxPluginOptions),
             transformer: (content: string) =>
-              content.replace(/^<mjx-container/, '<mjx-container v-pre'),
+              content.replace(/^<mjx-container/u, '$1 v-pre'),
           })
           md.use(mathjax, mathjaxInstance)
           // Reset mathjax style in each render
@@ -143,7 +143,7 @@ export const markdownMathPlugin =
             },
             ...(renderOptions as Omit<MarkdownKatexPluginOptions, 'type'>),
             transformer: (content) =>
-              content.replaceAll(/^(<[a-z]+ )/g, '$1v-pre '),
+              content.replaceAll(/^(<[a-z]+ )/gu, '$1v-pre '),
           })
         }
       },

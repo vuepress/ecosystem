@@ -4,7 +4,7 @@ import { KNOWN_IMAGE_EXTENSIONS, KNOWN_MEDIA_EXTENSIONS } from './constants.js'
 import type { ReplaceAssetsPluginOptions, ReplacementRule } from './types.js'
 
 export const createFindPattern = (dir: string, extensions: string[]): RegExp =>
-  new RegExp(`^/${dir}/.*\\.(?:${extensions.join('|')})(\\?.*)?$`)
+  new RegExp(`^/${dir}/.*\\.(?:${extensions.join('|')})(\\?.*)?$`, 'u')
 
 /**
  * Normalize replacement rules

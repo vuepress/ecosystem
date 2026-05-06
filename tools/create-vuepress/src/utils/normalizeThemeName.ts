@@ -10,7 +10,7 @@ const THEME_PREFIX = 'vuepress-theme-'
  */
 export const normalizeThemeName = (name: string): string => {
   // scoped package pattern
-  const scopedMatch = /^@(.*)\/(.*)$/.exec(name)
+  const scopedMatch = /^@(.*)\/(.*)$/u.exec(name)
 
   // handle non-scoped package
   if (scopedMatch == null)

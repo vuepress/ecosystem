@@ -7,7 +7,7 @@ import { logger } from './logger.js'
 
 const INFO_SPLITTER = '[|]'
 const COMMIT_SPLITTER = String.raw`\|/`
-const RE_CO_AUTHOR = /^ *Co-authored-by: ?([^<]*)<([^>]*)> */gim
+const RE_CO_AUTHOR = /^ *Co-authored-by: ?([^<]*)<([^>]*)> */gimu
 
 const getCoAuthorsFromCommitBody = (
   body: string,

@@ -1,6 +1,6 @@
 import { nanoid } from '../../utils.js'
 
-const MUSTACHE_REG = /\{\{[^]*?\}\}/g
+const MUSTACHE_REG = /\{\{[^]*?\}\}/gu
 
 type MustacheStore = Map<string, string>
 

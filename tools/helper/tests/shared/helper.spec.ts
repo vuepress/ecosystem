@@ -112,8 +112,8 @@ test
 
 describe(isRegExp, () => {
   it('should return true for RegExp values', () => {
-    expect(isRegExp(new RegExp('abc'))).toBe(true)
-    expect(isRegExp(/\.html$/)).toBe(true)
+    expect(isRegExp(new RegExp('abc', 'u'))).toBe(true)
+    expect(isRegExp(/\.html$/u)).toBe(true)
   })
 
   it('should return false for non-RegExp values', () => {
@@ -153,7 +153,7 @@ describe(endsWith, () => {
 
 describe(entries, () => {
   it('should return an array of key-value pairs from the object', () => {
-    expect(entries({ a: 1, b: 2 })).toEqual([
+    expect(entries({ a: 1, b: 2 })).toStrictEqual([
       ['a', 1],
       ['b', 2],
     ])
@@ -167,18 +167,18 @@ describe(fromEntries, () => {
         ['a', 1],
         ['b', 2],
       ]),
-    ).toEqual({ a: 1, b: 2 })
+    ).toStrictEqual({ a: 1, b: 2 })
   })
 })
 
 describe(keys, () => {
   it('should return an array of keys from the object', () => {
-    expect(keys({ a: 1, b: 2 })).toEqual(['a', 'b'])
+    expect(keys({ a: 1, b: 2 })).toStrictEqual(['a', 'b'])
   })
 })
 
 describe(values, () => {
   it('should return an array of values from the object', () => {
-    expect(values({ a: 1, b: 2 })).toEqual([1, 2])
+    expect(values({ a: 1, b: 2 })).toStrictEqual([1, 2])
   })
 })
