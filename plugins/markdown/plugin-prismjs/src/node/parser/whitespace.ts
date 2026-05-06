@@ -98,9 +98,9 @@ export const renderWhitespaceInLine = (
   node.content = snippets.join('')
 }
 
-// FIXME: https://github.com/oxc-project/oxc/issues/21550
-// `` ```js :whitespace[=all|boundary|leading|trailing] ``
 /**
+ * ` ```js :whitespace[=all|boundary|leading|trailing] `
+ *
  * Handle whitespace rendering based on meta string
  *
  * 基于元字符串处理空白字符渲染
