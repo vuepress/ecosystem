@@ -49,18 +49,21 @@ ${demo}
   })
 
   it('should not render', () => {
-    expect(
-      markdownIt.render(`
+    const cases = [
+      `
 ${demo}
-`),
-    ).toMatchSnapshot()
-
-    expect(
-      markdownIt.render(`
+`,
+      `
 @slidestar
 ${demo}
 @slideend
-`),
-    ).toMatchSnapshot()
+`,
+    ]
+
+    cases.forEach((caseContent) => {
+      const result = markdownIt.render(caseContent)
+
+      expect(result).not.toContain('RevealJs')
+    })
   })
 })

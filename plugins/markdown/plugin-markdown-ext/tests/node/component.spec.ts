@@ -36,9 +36,9 @@ color: "#000"
     )
 
     expect(result1).toContain('VPCard')
-    expect(result1).toMatchSnapshot()
+    expect(result1).toMatchSnapshot('yaml')
     expect(result2).toContain('VPCard')
-    expect(result2).toMatchSnapshot()
+    expect(result2).toMatchSnapshot('json')
   })
 
   it('should not throw with invalid syntax', () => {

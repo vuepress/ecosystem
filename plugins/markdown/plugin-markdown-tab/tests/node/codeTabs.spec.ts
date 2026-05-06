@@ -20,7 +20,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('loose')
 
     expect(
       markdownIt.render(`
@@ -31,7 +31,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('tight')
   })
 
   it('should render multiple block', () => {
@@ -53,7 +53,7 @@ const a = 1;
 
 :::
 `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('loose')
 
     expect(
       markdownIt.render(`
@@ -68,7 +68,7 @@ const a = 1;
 \`\`\`
 :::
 `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('tight')
   })
 
   it('should support id', () => {
@@ -84,7 +84,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('simple id')
 
     expect(
       markdownIt.render(`
@@ -95,7 +95,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('id with dash')
 
     expect(
       markdownIt.render(`
@@ -106,7 +106,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('id with space')
 
     expect(
       markdownIt.render(`
@@ -117,7 +117,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('id with space in the start and end')
   })
 
   it('should support active', () => {
@@ -133,7 +133,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('loose')
 
     expect(
       markdownIt.render(`
@@ -144,7 +144,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('tight')
 
     expect(
       markdownIt.render(`
@@ -164,7 +164,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('multiple loose')
 
     expect(
       markdownIt.render(`
@@ -179,7 +179,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('multiple tight')
   })
 
   it('should support value', () => {
@@ -195,7 +195,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('loose')
 
     expect(
       markdownIt.render(`
@@ -206,7 +206,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('tight')
 
     expect(
       markdownIt.render(`
@@ -226,7 +226,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('multiple loose')
 
     expect(
       markdownIt.render(`
@@ -241,7 +241,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('multiple tight')
   })
 
   it('should ignore other items', () => {
@@ -265,7 +265,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('loose')
 
     expect(
       markdownIt.render(`
@@ -282,7 +282,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('tight')
 
     expect(
       markdownIt.render(`
@@ -310,7 +310,7 @@ Another text again
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('complex loose')
 
     expect(
       markdownIt.render(`
@@ -329,7 +329,7 @@ const a = 1;
 Another text again
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('complex tight')
   })
 
   it('should work with code import', () => {

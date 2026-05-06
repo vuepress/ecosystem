@@ -48,7 +48,7 @@ describe(getPageText, () => {
     textData.forEach(({ text, pagePath }) => {
       expect(text.length).toBeGreaterThan(0)
       expect(text).not.toContain('\n')
-      expect(text).toMatchSnapshot(pagePath)
+      expect(text).toMatchSnapshot(`pagePath: ${pagePath}`)
     })
   })
 
@@ -57,7 +57,7 @@ describe(getPageText, () => {
 
     textData.forEach(({ text, pagePath }) => {
       expect(text.length).toBeGreaterThan(0)
-      expect(text).toMatchSnapshot(pagePath)
+      expect(text).toMatchSnapshot(`pagePath: ${pagePath}`)
     })
 
     textData
@@ -75,7 +75,7 @@ describe(getPageText, () => {
 
     textDataWithRemovedTags.forEach(({ text, pagePath }) => {
       expect(text.length).toBeGreaterThan(0)
-      expect(text).toMatchSnapshot(pagePath)
+      expect(text).toMatchSnapshot(`pagePath: ${pagePath}`)
     })
 
     textDataWithRemovedTags

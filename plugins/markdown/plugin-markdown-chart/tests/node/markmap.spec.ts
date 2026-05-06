@@ -51,7 +51,7 @@ ${content}
       markdownIt.render(`
 ${content}
 `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('without fence')
 
     expect(
       markdownIt.render(`
@@ -59,6 +59,6 @@ ${content}
 ${content}
 \`\`\`
 `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('wrong fence')
   })
 })

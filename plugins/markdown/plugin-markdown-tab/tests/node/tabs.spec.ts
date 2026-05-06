@@ -19,7 +19,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('loose')
 
     expect(
       markdownIt.render(`
@@ -30,7 +30,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('tight')
   })
 
   it('should render multiple block', () => {
@@ -52,7 +52,7 @@ const a = 1;
 
 :::
 `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('loose')
 
     expect(
       markdownIt.render(`
@@ -67,7 +67,7 @@ const a = 1;
 \`\`\`
 :::
 `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('tight')
   })
 
   it('should support tabs id', () => {
@@ -83,7 +83,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('id')
 
     expect(
       markdownIt.render(`
@@ -94,7 +94,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('complex id')
 
     expect(
       markdownIt.render(`
@@ -105,7 +105,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('id with space')
 
     expect(
       markdownIt.render(`
@@ -116,7 +116,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('id starts and having space in the end')
   })
 
   it('should support active', () => {
@@ -132,7 +132,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('active loose')
 
     expect(
       markdownIt.render(`
@@ -143,7 +143,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('active tight')
 
     expect(
       markdownIt.render(`
@@ -163,7 +163,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('active multiple')
 
     expect(
       markdownIt.render(`
@@ -178,7 +178,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('active tight')
   })
 
   it('should ignore other items', () => {
@@ -202,7 +202,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('loose')
 
     expect(
       markdownIt.render(`
@@ -219,6 +219,6 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('tight')
   })
 })

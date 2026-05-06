@@ -39,23 +39,25 @@ Alice->John: Yes... John, how are you?\
 
 describe(getMermaidContent, () => {
   it('should work with content', () => {
-    expect(getMermaidContent({ content: flowchartDemo })).toMatchSnapshot()
+    expect(getMermaidContent({ content: flowchartDemo })).toMatchSnapshot(
+      'flowchart',
+    )
     expect(
       getMermaidContent({ diagram: 'sequenceDiagram', content: sequenceDemo }),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('sequence')
   })
 
   it('should work with title and content', () => {
     expect(
       getMermaidContent({ title, content: flowchartDemo }),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('flowchart')
     expect(
       getMermaidContent({
         diagram: 'sequenceDiagram',
         title,
         content: sequenceDemo,
       }),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('sequence')
   })
 })
 
@@ -81,7 +83,7 @@ ${flowchartDemo}
       markdownIt.render(`
 ${flowchartDemo}
 `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('without fence')
 
     expect(
       markdownIt.render(`
@@ -89,7 +91,7 @@ ${flowchartDemo}
 ${flowchartDemo}
 \`\`\`
 `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('wrong fence')
   })
 
   it('should render ```sequence', () => {
@@ -118,8 +120,8 @@ Alice->John: Yes... John, how are you?
 \`\`\`
 `)
 
-    expect(renderResult1).toMatchSnapshot()
-    expect(renderResult2).toMatchSnapshot()
+    expect(renderResult1).toMatchSnapshot('without title')
+    expect(renderResult2).toMatchSnapshot('with title')
   })
 
   it('should render ```class', () => {

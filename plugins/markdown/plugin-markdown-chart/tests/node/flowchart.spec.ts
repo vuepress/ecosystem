@@ -53,7 +53,7 @@ ${demo}
       markdownIt.render(`
 ${demo}
 `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('without fence')
 
     expect(
       markdownIt.render(`
@@ -61,7 +61,7 @@ ${demo}
 ${demo}
 \`\`\`
 `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('wrong fence')
   })
 
   it('should handle preset', () => {
@@ -74,7 +74,7 @@ ${demo}
     expect(flowRenderResult).toMatch(
       /<FlowChart code=".*?" preset="ant"><\/FlowChart>/u,
     )
-    expect(flowRenderResult).toMatchSnapshot()
+    expect(flowRenderResult).toMatchSnapshot('short')
 
     const flowChartRenderResult = markdownIt.render(`
 \`\`\`flowchart:ant
@@ -85,6 +85,6 @@ ${demo}
     expect(flowChartRenderResult).toMatch(
       /<FlowChart code=".*?" preset="ant"><\/FlowChart>/u,
     )
-    expect(flowChartRenderResult).toMatchSnapshot()
+    expect(flowChartRenderResult).toMatchSnapshot('full')
   })
 })

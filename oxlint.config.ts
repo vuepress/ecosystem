@@ -51,10 +51,6 @@ export default defineHopeConfig(
       'unicorn/prefer-global-this': 'off',
       // sometimes we need to check if a defined variable is injected
       'unicorn/no-typeof-undefined': 'off',
-
-      'typescript/no-unnecessary-type-arguments': 'off',
-
-      'vitest/prefer-snapshot-hint': 'off',
     },
   },
   // node files
