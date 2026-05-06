@@ -96,7 +96,7 @@ export const markdownMathPlugin =
           mathjaxInstance = await createMathjaxInstance({
             ...(renderOptions as MarkdownMathjaxPluginOptions),
             transformer: (content: string) =>
-              content.replace(/^<mjx-container/u, '$1 v-pre'),
+              content.replace(/^<mjx-container/u, '<mjx-container v-pre'),
           })
           md.use(mathjax, mathjaxInstance)
           // Reset mathjax style in each render
