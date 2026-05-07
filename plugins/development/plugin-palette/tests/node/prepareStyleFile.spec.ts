@@ -37,6 +37,7 @@ describe('plugin-palette > node > prepareStyleFile', () => {
       },
     ]
 
+    // oxlint-disable-next-line vitest/require-hook
     testCases.forEach(({ name, ext }) => {
       it(name, async () => {
         const userStyleFile = path.resolve(

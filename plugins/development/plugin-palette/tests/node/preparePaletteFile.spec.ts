@@ -37,6 +37,7 @@ describe('plugin-palette > node > preparePaletteFile', () => {
       },
     ]
 
+    // oxlint-disable-next-line vitest/require-hook
     testCases.forEach(({ name, ext }) => {
       it(name, async () => {
         const userPaletteFile = path.resolve(

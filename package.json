@@ -27,7 +27,7 @@
     "@lerna-lite/cli": "^5.2.1",
     "@lerna-lite/publish": "^5.2.1",
     "@tsdown/css": "^0.21.10",
-    "@types/node": "^20.19.39",
+    "@types/node": "^22.19.17",
     "@types/webpack-env": "^1.18.8",
     "@vitest/coverage-istanbul": "^4.1.5",
     "cross-env": "^10.1.0",
@@ -61,11 +61,8 @@
     "*.{cjs,js,ts,vue}": "oxlint --fix --deny-warnings --report-unused-disable-directives",
     "*.{css,scss,html,vue}": "stylelint --fix"
   },
-  "devEngines": {
-    "node": ">= 24"
-  },
   "engines": {
-    "node": "^20.19.0 || >= 22.12.0"
+    "node": ">= 22.12.0"
   },
   "packageManager": "pnpm@10.33.3"
 }

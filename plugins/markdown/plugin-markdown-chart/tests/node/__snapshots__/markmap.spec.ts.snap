@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`markmap plugin > should not render 1`] = `
+exports[`markmap plugin > should not render > without fence 1`] = `
 "<hr>
 <h2>markmap:
 colorFreezeLevel: 2</h2>
@@ -31,7 +31,7 @@ text</li>
 "
 `;
 
-exports[`markmap plugin > should not render 2`] = `
+exports[`markmap plugin > should not render > wrong fence 1`] = `
 "<pre><code class="language-md">---
 markmap:
   colorFreezeLevel: 2
