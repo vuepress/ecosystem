@@ -5,7 +5,10 @@ import { getMatchedContent } from '../src/worker/utils/getMatchedContent.js'
 
 describe(getMatchedContent, () => {
   it('should match content', () => {
-    expect(getMatchedContent('a b c d', 'a')).toStrictEqual([['mark', 'a'], ' b c d'])
+    expect(getMatchedContent('a b c d', 'a')).toStrictEqual([
+      ['mark', 'a'],
+      ' b c d',
+    ])
     expect(getMatchedContent('a b c d', 'b')).toStrictEqual([
       'a ',
       ['mark', 'b'],

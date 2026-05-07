@@ -42,9 +42,11 @@ describe('encode and decode data', () => {
   })
 
   it('transform should return itself', () => {
-    expect(browserUtoaResults.map((word) => nodeEncodeData(word))).toStrictEqual(
+    expect(
+      browserUtoaResults.map((word) => nodeEncodeData(word)),
+    ).toStrictEqual(words)
+    expect(nodeUtoaResults.map((word) => nodeEncodeData(word))).toStrictEqual(
       words,
     )
-    expect(nodeUtoaResults.map((word) => nodeEncodeData(word))).toStrictEqual(words)
   })
 })

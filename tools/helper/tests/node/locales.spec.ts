@@ -75,7 +75,9 @@ describe('getFullLocaleConfig() should generate locale', () => {
       theme: emptyTheme,
     })
 
-    expect(getFullLocaleConfig({ app, default: defaultLocaleInfo })).toStrictEqual({
+    expect(
+      getFullLocaleConfig({ app, default: defaultLocaleInfo }),
+    ).toStrictEqual({
       '/': {
         text: '简体中文',
         label: '简体中文',
@@ -114,7 +116,9 @@ describe('getFullLocaleConfig() should generate locale', () => {
       theme: emptyTheme,
     })
 
-    expect(getFullLocaleConfig({ app, default: defaultLocaleInfo })).toStrictEqual({
+    expect(
+      getFullLocaleConfig({ app, default: defaultLocaleInfo }),
+    ).toStrictEqual({
       '/': {
         text: '简体中文',
         label: '简体中文',

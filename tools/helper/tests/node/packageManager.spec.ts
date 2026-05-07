@@ -21,9 +21,9 @@ describe(isPackageManagerInstalled, () => {
 
 describe(getPackageManagerSetting, () => {
   it('should be npm', () => {
-    expect(
-      getPackageManagerSetting(path.resolve(fixtures, 'config/npm')),
-    ).toBe('npm')
+    expect(getPackageManagerSetting(path.resolve(fixtures, 'config/npm'))).toBe(
+      'npm',
+    )
   })
 
   it('should be yarn', () => {
@@ -61,9 +61,7 @@ describe(getTypeofLockFile, () => {
 
 describe(getPackageManager, () => {
   it('should be npm', () => {
-    expect(getPackageManager(path.resolve(fixtures, 'config/npm'))).toBe(
-      'npm',
-    )
+    expect(getPackageManager(path.resolve(fixtures, 'config/npm'))).toBe('npm')
     expect(getPackageManager(path.resolve(fixtures, 'lock-file/npm'))).toBe(
       'npm',
     )
