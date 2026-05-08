@@ -26,16 +26,16 @@
   "devDependencies": {
     "@lerna-lite/cli": "^5.2.1",
     "@lerna-lite/publish": "^5.2.1",
-    "@tsdown/css": "^0.21.10",
-    "@types/node": "^22.19.17",
+    "@tsdown/css": "^0.22.0",
+    "@types/node": "^22.19.18",
     "@types/webpack-env": "^1.18.8",
     "@vitest/coverage-istanbul": "^4.1.5",
     "cross-env": "^10.1.0",
     "husky": "^9.1.7",
     "lightningcss": "^1.32.0",
     "nano-staged": "^1.0.2",
-    "npm-check-updates": "^22.1.0",
-    "oxc-config-hope": "^0.3.3",
+    "npm-check-updates": "^22.1.1",
+    "oxc-config-hope": "^0.3.4",
     "oxfmt": "^0.48.0",
     "oxlint": "^1.63.0",
     "oxlint-tsgolint": "^0.22.1",
@@ -49,10 +49,10 @@
     "stylelint-config-hope": "^11.0.0",
     "stylelint-config-html": "^1.1.0",
     "tsconfig-vuepress": "^7.0.0",
-    "tsdown": "^0.21.10",
+    "tsdown": "^0.22.0",
     "typescript": "^6.0.3",
-    "unrun": "^0.2.37",
-    "vite": "^8.0.10",
+    "unrun": "^0.3.0",
+    "vite": "^8.0.11",
     "vitest": "^4.1.5",
     "vuepress": "catalog:"
   },
@@ -61,8 +61,20 @@
     "*.{cjs,js,ts,vue}": "oxlint --fix --deny-warnings --report-unused-disable-directives",
     "*.{css,scss,html,vue}": "stylelint --fix"
   },
-  "engines": {
-    "node": ">= 22.12.0"
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.0.8",
+      "onFail": "error"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "24.15.0",
+      "onFail": "error"
+    }
   },
-  "packageManager": "pnpm@10.33.3"
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "packageManager": "pnpm@11.0.8"
 }

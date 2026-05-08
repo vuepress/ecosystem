@@ -121,7 +121,7 @@ export const tsdownConfig = (
     sourcemap: true,
     minify: isProduction,
     platform,
-    target: ['node22.12', 'chrome107', 'edge107', 'firefox104', 'safari16'],
+    target: ['node22.18', 'chrome107', 'edge107', 'firefox104', 'safari16'],
     treeshake: treeshake ?? {
       moduleSideEffects: moduleSideEffects ?? defaultModuleSideEffects,
     },
