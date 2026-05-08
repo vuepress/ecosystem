@@ -149,6 +149,12 @@ export const tsdownConfig = (
 
       return item
     }),
+    inputOptions: {
+      experimental: {
+        lazyBarrel: true,
+        nativeMagicString: true,
+      },
+    },
     fixedExtension: false,
     publint,
     ...rest,
