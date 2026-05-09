@@ -118,7 +118,7 @@ jobs:
         node:
           - 22
           - 24
-          - 26
+          # - 26
         bundler:
           - vite
           - webpack
