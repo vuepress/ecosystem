@@ -359,6 +359,7 @@ console.log(message) // prints Hello Bar\
     expect(result).toMatchSnapshot()
   })
 
+  // oxlint-disable-next-line vitest/valid-title
   it(String.raw`should not remove // [\!code xxx]`, () => {
     const code = genCode(`\
 const a = 1 // [\\!code focus]`)

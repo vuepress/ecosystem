@@ -72,8 +72,8 @@ export const markdownIncludePlugin =
               []).push(
               ...includedFiles.map((file) =>
                 path.relative(
-                  path.resolve(source, filePathRelative, '..'),
-                  path.resolve(source, filePathRelative, file),
+                  path.resolve(source, filePathRelative!, '..'),
+                  path.resolve(source, filePathRelative!, file),
                 ),
               ),
             )
