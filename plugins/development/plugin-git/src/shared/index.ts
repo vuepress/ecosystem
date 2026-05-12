@@ -73,6 +73,29 @@ export interface GitContributorInfo {
 }
 
 /**
+ * Submodule information
+ *
+ * 子模块信息
+ */
+export interface SubmoduleInfo {
+  /**
+   * Submodule repository URL
+   *
+   * 子模块仓库地址
+   */
+  repoUrl?: string
+
+  /**
+   * Git provider
+   *
+   * Git 提供商
+   */
+  provider?: KnownGitProvider | null
+
+  pattern?: GitUrlPattern
+}
+
+/**
  * Git changelog information
  *
  * Git 变更日志信息
@@ -133,6 +156,8 @@ export interface GitChangelogInfo {
    * 提交协同作者列表
    */
   coAuthors?: CoAuthorInfo[]
+
+  submodule?: SubmoduleInfo
 }
 
 /**

@@ -46,7 +46,8 @@ export const resolveChangelog = (
     : commits
 
   for (const commit of sliceCommits) {
-    const { hash, message, time, author, email, refs, coAuthors } = commit
+    const { hash, message, time, author, email, refs, coAuthors, submodule } =
+      commit
     const tag = parseTagName(refs)
     const contributor = getContributorInfo(
       { name: getUserNameWithNoreplyEmail(email) ?? author, email },
@@ -63,6 +64,8 @@ export const resolveChangelog = (
     if (coAuthors.length > 0) resolved.coAuthors = coAuthors
 
     if (tag) resolved.tag = tag
+
+    if (submodule) resolved.submodule = submodule
 
     result.push(resolved)
   }

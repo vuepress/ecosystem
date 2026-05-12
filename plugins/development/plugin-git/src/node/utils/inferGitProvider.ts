@@ -48,6 +48,32 @@ export const getRemoteUrl = (cwd: string): string | null => {
 }
 
 /**
+ * Normalize git remote URL to clean HTTPS format
+ *
+ * 将 Git 远程 URL 规范化为干净的 HTTPS 格式
+ *
+ * @param url - The git remote URL / Git 远程 URL
+ * @returns Normalized HTTPS URL / 规范化后的 HTTPS URL
+ *
+ * @example
+ * normalizeRepoUrl('https://github.com/user/repo.git') // 'https://github.com/user/repo'
+ * normalizeRepoUrl('git@github.com:user/repo.git') // 'https://github.com/user/repo'
+ * normalizeRepoUrl('ssh://git@github.com/user/repo.git') // 'https://github.com/user/repo'
+ */
+export const normalizeRepoUrl = (url: string): string => {
+  const normalized = url.replace(/\.git$/, '')
+
+  const sshMatch = /^git@([^:]+):(.+)$/.exec(normalized)
+  if (sshMatch) return `https://${sshMatch[1]}/${sshMatch[2]}`
+
+  const sshProtocolMatch = /^ssh:\/\/git@([^/]+)\/(.+)$/.exec(normalized)
+  if (sshProtocolMatch)
+    return `https://${sshProtocolMatch[1]}/${sshProtocolMatch[2]}`
+
+  return normalized
+}
+
+/**
  * Infer git provider from remote URL
  *
  * 从远程 URL 推断 Git 提供商

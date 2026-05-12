@@ -1,9 +1,11 @@
 import { spawn } from 'node:child_process'
 
-import type { GitContributorInfo } from '../../shared/index.js'
+import { path } from 'vuepress/utils'
+
+import type { GitContributorInfo, SubmoduleInfo } from '../../shared/index.js'
 import type { GitPluginOptions } from '../options.js'
 import type { MergedRawCommit, RawCommit } from '../typings.js'
-import { path } from 'vuepress/utils'
+import { getRemoteUrl, normalizeRepoUrl } from './inferGitProvider.js'
 import { logger } from './logger.js'
 
 const INFO_SPLITTER = '[|]'
@@ -174,18 +176,24 @@ export const getRawCommits = async (
   const gitRoot = await getGitRepoRoot(filepath, cwd)
 
   try {
-    let repoRelativeFilePath = filepath
-    if (gitRoot) {
-      // Resolve to absolute path first, then convert to repo-relative path
-      const absFilePath = path.isAbsolute(repoRelativeFilePath)
-        ? repoRelativeFilePath
-        : path.resolve(cwd, repoRelativeFilePath)
+    const absFilePath = path.isAbsolute(filepath)
+      ? filepath
+      : path.resolve(cwd, filepath)
 
+    let repoRelativeFilePath = filepath
+    let submodule: SubmoduleInfo | null = null
+
+    if (gitRoot) {
       repoRelativeFilePath = path.relative(gitRoot, absFilePath)
-    } else {
-      logger.warn(
-        `Failed to resolve git repo root for "${filepath}" under cwd "${cwd}", falling back to cwd; git history may be incomplete.`,
-      )
+
+      const isSubmodule =
+        gitRoot !== cwd && gitRoot.startsWith(`${cwd}${path.sep}`)
+
+      if (isSubmodule) {
+        submodule = {
+          repoUrl: normalizeRepoUrl(getRemoteUrl(gitRoot) || ''),
+        }
+      }
     }
 
     const stdout = await runGitLog(
@@ -225,6 +233,7 @@ export const getRawCommits = async (
           author,
           email,
           coAuthors: getCoAuthorsFromCommitBody(body),
+          submodule,
         }
       })
   } catch (err) {
