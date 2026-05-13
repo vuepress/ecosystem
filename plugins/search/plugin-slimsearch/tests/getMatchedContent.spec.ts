@@ -1,9 +1,10 @@
+// oxlint-disable vitest/max-expects
 import { describe, expect, it } from 'vitest'
 
 import { getMatchedContent } from '../src/worker/utils/getMatchedContent.js'
 
 describe(getMatchedContent, () => {
-  it('Should match content', () => {
+  it('should match content', () => {
     expect(getMatchedContent('a b c d', 'a')).toEqual([['mark', 'a'], ' b c d'])
     expect(getMatchedContent('a b c d', 'b')).toEqual([
       'a ',
@@ -17,11 +18,11 @@ describe(getMatchedContent, () => {
     ])
   })
 
-  it('Should return null if no content is matched', () => {
+  it('should return null if no content is matched', () => {
     expect(getMatchedContent('b c d', 'a')).toEqual(null)
   })
 
-  it('Should match content multiple times', () => {
+  it('should match content multiple times', () => {
     expect(getMatchedContent('a b c d c b a', 'b')).toEqual([
       'a ',
       ['mark', 'b'],
@@ -31,7 +32,7 @@ describe(getMatchedContent, () => {
     ])
   })
 
-  it('Should cut of long content', () => {
+  it('should cut of long content', () => {
     expect(
       getMatchedContent(
         "The apple is red, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious",

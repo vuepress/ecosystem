@@ -24,6 +24,8 @@ export default defineHopeConfig(
       'max-params': ['warn', 5],
       // allow undefined usage
       'no-undefined': 'off',
+      // define variables are preferred with UPPERCASE surrounded by underscores
+      'no-underscore-dangle': 'off',
       // allow warning comments, like todo, fixme
       'no-warning-comments': 'off',
       // object assign can be performant

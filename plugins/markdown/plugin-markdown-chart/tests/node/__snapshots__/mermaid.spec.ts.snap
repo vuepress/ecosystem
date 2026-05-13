@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getMermaidContent() > Should work with content 1`] = `
+exports[`getMermaidContent > Should work with content 1`] = `
 "flowchart TB
   c1-->a2
   subgraph one
@@ -17,7 +17,7 @@ exports[`getMermaidContent() > Should work with content 1`] = `
   two --> c2"
 `;
 
-exports[`getMermaidContent() > Should work with content 2`] = `
+exports[`getMermaidContent > Should work with content 2`] = `
 "sequenceDiagram
   Alice ->> Bob: Hello Bob, how are you?
   Bob-->>John: How about you John?
@@ -29,7 +29,7 @@ exports[`getMermaidContent() > Should work with content 2`] = `
   Alice->John: Yes... John, how are you?"
 `;
 
-exports[`getMermaidContent() > Should work with title and content 1`] = `
+exports[`getMermaidContent > Should work with title and content 1`] = `
 "---
 title: Sample Title
 ---
@@ -50,7 +50,7 @@ flowchart TB
   two --> c2"
 `;
 
-exports[`getMermaidContent() > Should work with title and content 2`] = `
+exports[`getMermaidContent > Should work with title and content 2`] = `
 "---
 title: Sample Title
 ---

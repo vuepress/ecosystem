@@ -36,6 +36,5 @@ export interface DocSearchOptions extends DocSearchLocaleOptions {
    *
    * 多语言选项
    */
-  // FIXME: https://github.com/oxc-project/tsgolint/issues/861
   locales?: LocaleConfig<DocSearchLocaleOptions>
 }

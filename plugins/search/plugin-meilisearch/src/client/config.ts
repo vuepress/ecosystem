@@ -12,6 +12,7 @@ import { MeiliSearch } from './components/index.js'
 import 'meilisearch-docsearch/css/button'
 // oxlint-disable-next-line import/no-unassigned-import
 import 'meilisearch-docsearch/css/modal'
+
 import './styles/vars.css'
 
 declare const __ML_SEARCH_OPTIONS__: MeiliSearchOptions

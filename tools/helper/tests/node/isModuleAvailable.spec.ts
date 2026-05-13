@@ -13,11 +13,6 @@ describe(isModuleAvailable, () => {
     expect(isModuleAvailable('node:path', import.meta)).toBe(true)
   })
 
-  it('should return true with built-in', () => {
-    expect(isModuleAvailable('path', import.meta)).toBe(true)
-    expect(isModuleAvailable('node:path', import.meta)).toBe(true)
-  })
-
   it('should return false with not existed', () => {
     expect(isModuleAvailable('not-existed', import.meta)).toBe(false)
   })

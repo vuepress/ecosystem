@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { getDate } from '../../src/shared/date.js'
 
-describe('getDate()', () => {
+describe(getDate, () => {
   it('get date object', () => {
     expect(getDate('2020-01-01')).toBeInstanceOf(Date)
     expect(getDate('2020-01-01 12:00:00')).toBeInstanceOf(Date)

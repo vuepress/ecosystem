@@ -37,7 +37,7 @@ Bob-->Alice: Checking with John...
 Alice->John: Yes... John, how are you?\
 `
 
-describe('getMermaidContent()', () => {
+describe(getMermaidContent, () => {
   it('Should work with content', () => {
     expect(getMermaidContent({ content: flowchartDemo })).toMatchSnapshot()
     expect(
@@ -71,9 +71,7 @@ ${flowchartDemo}
 
     expect(renderResult).toMatch(/<Mermaid code=".*?"><\/Mermaid>/)
     expect(
-      decodeData(
-        /<Mermaid code="(.*?)"><\/Mermaid>/.exec(renderResult)?.[1] ?? '',
-      ),
+      decodeData(/<Mermaid code="(.*?)"><\/Mermaid>/.exec(renderResult)![1]),
     ).toMatch(flowchartDemo)
     expect(renderResult).toMatchSnapshot()
   })

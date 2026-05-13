@@ -12,12 +12,14 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 const fixtures = path.resolve(__dirname, '../__fixtures__/package-manager')
 
-it('isPackageManagerInstalled()', () => {
-  expect(isPackageManagerInstalled('npm')).toBe(true)
-  expect(isPackageManagerInstalled('pnpm')).toBe(true)
+describe(isPackageManagerInstalled, () => {
+  it('should check existing package managers', () => {
+    expect(isPackageManagerInstalled('npm')).toBe(true)
+    expect(isPackageManagerInstalled('pnpm')).toBe(true)
+  })
 })
 
-describe('getPackageManagerSetting()', () => {
+describe(getPackageManagerSetting, () => {
   it('Should be npm', () => {
     expect(
       getPackageManagerSetting(path.resolve(fixtures, 'config/npm')),
@@ -37,7 +39,7 @@ describe('getPackageManagerSetting()', () => {
   })
 })
 
-describe('getTypeofLockFile()', () => {
+describe(getTypeofLockFile, () => {
   it('Should be npm', () => {
     expect(getTypeofLockFile(path.resolve(fixtures, 'lock-file/npm'))).toEqual(
       'npm',
@@ -57,7 +59,7 @@ describe('getTypeofLockFile()', () => {
   })
 })
 
-describe('getPackageManager()', () => {
+describe(getPackageManager, () => {
   it('Should be npm', () => {
     expect(getPackageManager(path.resolve(fixtures, 'config/npm'))).toEqual(
       'npm',

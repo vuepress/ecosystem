@@ -1,3 +1,4 @@
+// oxlint-disable vitest/max-expects
 import type {
   MarkdownItCodeBlockTitleOptions,
   MarkdownItCollapsedLinesOptions,
@@ -370,16 +371,16 @@ ${codeFence}
       const result = md.render(source)
 
       expect(result).toMatchSnapshot()
-      expect(result).not.toContain('This is a line comment')
-      expect(result).not.toContain('inline comment')
-      expect(result).not.toContain('block comment')
-      expect(result).not.toContain('Another line comment')
-      expect(result).not.toContain('multi-line')
       expect(result).toContain('foo')
       expect(result).toContain('bar')
       expect(result).toContain('baz')
       expect(result).toContain('hello')
       expect(result).toContain('world')
+      expect(result).not.toContain('This is a line comment')
+      expect(result).not.toContain('inline comment')
+      expect(result).not.toContain('block comment')
+      expect(result).not.toContain('Another line comment')
+      expect(result).not.toContain('multi-line')
     })
 
     it('should keep comments when `removeComments` is not set', () => {

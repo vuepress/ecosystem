@@ -49,13 +49,13 @@
     "chokidar": "catalog:",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.1",
-    "nanoid": "^5.1.7",
+    "nanoid": "^5.1.9",
     "p-map": "^7.0.4",
     "picomatch": "^4.0.4"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
-    "@types/picomatch": "^4.0.2"
+    "@types/picomatch": "^4.0.3"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

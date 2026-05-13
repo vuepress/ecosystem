@@ -1,4 +1,4 @@
-import { entries, isLinkHttp } from '@vuepress/helper/client'
+import { entries, normalizePath, isLinkHttp } from '@vuepress/helper/client'
 import { usePreferredLanguages, watchImmediate } from '@vueuse/core'
 import { computed } from 'vue'
 import {
@@ -11,7 +11,6 @@ import {
 import { redirectMap } from '@temp/redirect/map.js'
 
 import type { RedirectBehaviorConfig } from '../../shared/index.js'
-import { normalizePath } from '../../shared/index.js'
 
 export const setupDevServerRedirect = ({
   autoLocale,

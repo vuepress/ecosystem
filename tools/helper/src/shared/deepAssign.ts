@@ -1,3 +1,5 @@
+// FIXME: linter: false positive in oxc/branches-sharing-code with ; starting at the line
+// oxlint-disable oxc/branches-sharing-code
 import { entries, isArray, isPlainObject } from './helper.js'
 
 // oxlint-disable-next-line typescript/no-explicit-any
