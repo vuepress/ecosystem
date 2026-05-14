@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.130](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.129...v2.0.0-rc.130) (2026-05-14)
+
+### Features
+
+- extract normalizePath to helper ([#671](https://github.com/vuepress/ecosystem/issues/671)) ([0d2830e](https://github.com/vuepress/ecosystem/commit/0d2830ed66baf0de56112397ec32b0e45ca2f631))
+
 # [2.0.0-rc.128](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.127...v2.0.0-rc.128) (2026-04-02)
 
 ### Bug Fixes
