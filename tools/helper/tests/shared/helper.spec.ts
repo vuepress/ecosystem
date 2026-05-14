@@ -112,6 +112,7 @@ test
 
 describe(isRegExp, () => {
   it('should return true for RegExp values', () => {
+    // oxlint-disable-next-line prefer-regex-literals
     expect(isRegExp(new RegExp('abc', 'u'))).toBe(true)
     expect(isRegExp(/\.html$/u)).toBe(true)
   })

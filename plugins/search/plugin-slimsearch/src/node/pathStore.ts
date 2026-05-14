@@ -3,13 +3,13 @@ export class PathStore {
   private indexToPath: string[]
   private freeSlots: number[]
 
-  public constructor() {
+  constructor() {
     this.pathToIndex = new Map()
     this.indexToPath = []
     this.freeSlots = []
   }
 
-  public addPath(item: string): number {
+  addPath(item: string): number {
     const existing = this.pathToIndex.get(item)
 
     if (existing !== undefined) return existing
@@ -29,11 +29,11 @@ export class PathStore {
     return index
   }
 
-  public addPaths(items: string[]): number[] {
+  addPaths(items: string[]): number[] {
     return items.map((item) => this.addPath(item))
   }
 
-  public deletePath(item: string): void {
+  deletePath(item: string): void {
     const index = this.pathToIndex.get(item)
 
     if (index !== undefined) {
@@ -43,13 +43,13 @@ export class PathStore {
     }
   }
 
-  public clear(): void {
+  clear(): void {
     this.pathToIndex = new Map()
     this.indexToPath = []
     this.freeSlots = []
   }
 
-  public toJSON(): string {
+  toJSON(): string {
     const result: Record<number, string> = {}
 
     for (const [path, index] of this.pathToIndex) result[index] = path

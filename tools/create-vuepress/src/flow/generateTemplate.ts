@@ -53,7 +53,7 @@ ${
   packageManager === 'pnpm'
     ? `\
       - name: ${lang === 'zh' ? '安装 pnpm' : 'Install pnpm'}
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
 `
     : ''
 }

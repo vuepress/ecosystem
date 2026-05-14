@@ -17,15 +17,15 @@ import type { FeedItem } from './item.js'
  * 用于管理 Feed 项目和频道信息的存储
  */
 export class FeedStore {
-  public categories = new Set<string>()
-  public contributors: FeedContributor[] = []
-  public items: FeedItem[] = []
+  categories = new Set<string>()
+  contributors: FeedContributor[] = []
+  items: FeedItem[] = []
 
-  private readonly contributorKeys = new Set<string>()
-  public channel: FeedChannelOptions
-  public links: FeedLinks
+  readonly #contributorKeys = new Set<string>()
+  channel: FeedChannelOptions
+  links: FeedLinks
 
-  public constructor(
+  constructor(
     app: App,
     localeOptions: ResolvedFeedOptions,
     localePath: string,
@@ -52,8 +52,8 @@ export class FeedStore {
     // use keys to avoid adding same contributor
     const key = contributor.email || contributor.name
 
-    if (key && !this.contributorKeys.has(key)) {
-      this.contributorKeys.add(key)
+    if (key && !this.#contributorKeys.has(key)) {
+      this.#contributorKeys.add(key)
       this.contributors.push(contributor)
     }
   }
@@ -63,7 +63,7 @@ export class FeedStore {
    *
    * @param item - Item to add / 要添加的项目
    */
-  public add = (item: FeedItem): void => {
+  add = (item: FeedItem): void => {
     if (item.isValid) {
       const { category, contributor } = item
 
