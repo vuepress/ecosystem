@@ -1,4 +1,4 @@
-import { tsdownConfig } from '../../../scripts/tsdown.js'
+import { tsdownConfig } from '../../../scripts/tsdown.ts'
 
 const COMMENT_PROVIDERS = ['Artalk', 'Giscus', 'Twikoo', 'Waline']
 
