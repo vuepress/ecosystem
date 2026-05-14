@@ -32,13 +32,11 @@ export default {
 
 ## 调色板和样式
 
-该插件会提供一个 `@vuepress/plugin-palette/palette`（调色板文件）和一个 `@vuepress/plugin-palette/style`（样式文件），用于在你的主题样式中引入。
+该插件会提供一个 `@vuepress/plugin-palette/palette`（调色板文件），用于在你的主题样式中引入。
 
 调色板文件用于定义样式变量，因此它通常会在你主题样式的开头引入。举例来说，用户可以在调色板中定义 [CSS 变量](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)、[SASS 变量](https://sass-lang.com/documentation/variables)、[LESS 变量](http://lesscss.org/features/#variables-feature)或 [Stylus 变量](https://stylus-lang.com/docs/variables.html)，然后你可以在你的主题样式中使用这些变量。
 
-样式文件用于覆盖默认样式或添加额外样式，因此它通常会在你主题样式的末尾引入。
-
-## 使用
+## 教程
 
 在你的主题中使用该插件，假设你使用 SASS 作为 CSS 预处理器：
 
@@ -76,25 +74,6 @@ $color: red !default;
 
 ```scss
 $color: green;
-```
-
-### 使用样式
-
-在你主题的样式之后引入该插件的样式文件，比如在 `clientConfigFile` 中：
-
-```ts
-// 引入你主题本身的样式文件
-import 'path/to/your/theme/style'
-// 引入该插件的样式文件
-import '@vuepress/plugin-palette/style'
-```
-
-然后，用户就可以在 `.vuepress/styles/index.scss` 中添加额外样式，并可以覆盖你主题的默认样式：
-
-```scss
-h1 {
-  font-size: 2.5rem;
-}
 ```
 
 ## 配置项
@@ -147,42 +126,6 @@ h1 {
 
   你应该通过 `'@vuepress/plugin-palette/palette'` 别名引入调色板文件，因此大部分情况下你不需要修改该配置项。
 
-### userStyleFile
-
-- 类型： `string`
-
-- 默认值：
-  - css: `'.vuepress/styles/index.css'`
-  - less: `'.vuepress/styles/index.less'`
-  - sass: `'.vuepress/styles/index.scss'`
-  - stylus: `'.vuepress/styles/index.styl'`
-
-- 详情：
-
-  用户样式文件的路径，相对于源文件目录。
-
-  默认值依赖于 [preset](#preset) 配置项。
-
-  此文件用于用户覆盖默认样式或添加额外样式，建议保持默认文件路径作为约定。
-
-### tempStyleFile
-
-- 类型： `string`
-
-- 默认值：
-  - css: `'styles/index.css'`
-  - less: `'styles/index.less'`
-  - sass: `'styles/index.scss'`
-  - stylus: `'styles/index.styl'`
-
-- 详情：
-
-  生成的样式临时文件的路径，相对于临时文件目录。
-
-  默认值依赖于 [preset](#preset) 配置项。
-
-  你应该通过 `'@vuepress/plugin-palette/style'` 别名引入样式文件，因此大部分情况下你不需要修改该配置项。
-
 ### importCode
 
 - 类型： `(filePath: string) => string`
@@ -199,4 +142,4 @@ h1 {
 
   默认值依赖于 [preset](#preset) 配置项。
 
-  该配置项用于生成 [tempPaletteFile](#temppalettefile) 和 [tempStyleFile](#tempstylefile)，大部分情况下你不需要修改该配置项。
+  该配置项用于生成 [tempPaletteFile](#temppalettefile)，大部分情况下你不需要修改该配置项。

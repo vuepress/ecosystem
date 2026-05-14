@@ -10,7 +10,6 @@ import {
   prepareConfigSass,
   prepareInjectSass,
   preparePaletteSass,
-  prepareStyleSass,
 } from './prepare/index.js'
 import { EMPTY_FILE, PLUGIN_NAME, getIdPrefix, logger } from './utils.js'
 
@@ -52,12 +51,10 @@ export const sassPalettePlugin =
       palette = `.vuepress/styles/${getIdPrefix(id)}palette.scss`,
       defaultPalette,
       generator = EMPTY_FILE,
-      style = '',
     } = options
 
     const userConfig = app.dir.source(config)
     const userPalette = app.dir.source(palette)
-    const userStyle = style ? app.dir.source(style) : null
 
     return {
       name: PLUGIN_NAME,
@@ -80,13 +77,6 @@ export const sassPalettePlugin =
         [`@sass-palette/${getIdPrefix(id)}palette`]: app.dir.temp(
           `sass-palette/${getIdPrefix(id)}palette.scss`,
         ),
-        ...(style
-          ? {
-              [`@sass-palette/${getIdPrefix(id)}style`]: app.dir.temp(
-                `sass-palette/${getIdPrefix(id)}style.scss`,
-              ),
-            }
-          : {}),
       },
 
       extendsBundlerOptions: (bundlerOptions: unknown) => {
@@ -134,7 +124,6 @@ export const sassPalettePlugin =
             generator,
             userPalette,
           }),
-          prepareStyleSass(app, id, userStyle),
         ]).then(() => {
           if (app.env.isDebug) logger.info(`Style file for ${id} generated`)
         }),
@@ -185,26 +174,6 @@ export const sassPalettePlugin =
         })
 
         watchers.push(paletteWatcher)
-
-        if (userStyle) {
-          const styleWatcher = watch(userStyle, {
-            cwd: app.dir.source(),
-            ignoreInitial: true,
-          })
-
-          const updateStyle = (): Promise<void> =>
-            prepareStyleSass(app, id, userStyle).then(() => {
-              if (app.env.isDebug) logger.info(`Style file for ${id} updated`)
-            })
-
-          styleWatcher.on('add', () => {
-            void updateStyle()
-          })
-          styleWatcher.on('unlink', () => {
-            void updateStyle()
-          })
-          watchers.push(styleWatcher)
-        }
       },
 
       clientConfigFile: () => prepareClientConfigFile(app, id),

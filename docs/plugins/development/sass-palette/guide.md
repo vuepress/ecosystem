@@ -241,13 +241,3 @@ $code-c-bg: abc-config.$highlighter == 'shiki'? #fff: #f8f8f8;
 ```
 
 :::
-
-## User Styles
-
-Theme developers can use the `style` option to allow users to customize the site's appearance with standard CSS/Sass.
-
-You must manually include the user style file by importing the alias `@sass-palette/${id}-style`. This should be imported **after** your theme's base styles to ensure user overrides take precedence.
-
-::: tip
-`@sass-palette/${id}-style` is a direct alias to the user's style file and can be imported in JS, TS, or Sass.
-:::

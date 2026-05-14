@@ -48,7 +48,7 @@ const scopes = [
 ]
 
 const commitRE =
-  /^(revert: )?(?<type>[^(]*?)(?:\((?<scope>[^)]*?)\))?: .{1,50}$/u
+  /^(revert: )?(?<type>[^(]*?)(?:\((?<scope>[^)]*?)\))?!?: .{1,50}$/u
 
 const match = commitRE.exec(msg)
 
