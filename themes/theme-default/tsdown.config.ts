@@ -1,7 +1,7 @@
 import { readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
 
-import { tsdownConfig } from '../../scripts/tsdown.js'
+import { tsdownConfig } from '../../scripts/tsdown.ts'
 
 const __dirname = import.meta.dirname
 

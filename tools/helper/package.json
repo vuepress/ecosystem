@@ -75,7 +75,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsdown --config-loader unrun",
+    "build": "tsdown",
     "clean": "rimraf ./dist"
   },
   "dependencies": {
@@ -91,7 +91,7 @@
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
     "domhandler": "^6.0.1",
-    "vite": "^8.0.12"
+    "vite": "^8.0.13"
   },
   "peerDependencies": {
     "@vuepress/bundler-vite": "catalog:",
