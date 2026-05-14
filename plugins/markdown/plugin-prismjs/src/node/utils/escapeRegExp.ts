@@ -13,4 +13,4 @@
  * @returns Escaped string / 转义后的字符串
  */
 export const escapeRegExp = (str: string): string =>
-  str.replaceAll(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`)
+  str.replaceAll(/[.*+?^${}()|[\]\\]/gu, String.raw`\$&`)

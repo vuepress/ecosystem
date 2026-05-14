@@ -24,7 +24,7 @@ const c = 3
 `)
     const parser = getCodeParser(code)
 
-    expect(parser.lines.length).toBe(4)
+    expect(parser.lines).toHaveLength(4)
     expect(parser.pre.before).toContain('<pre')
     expect(parser.lines.every((line) => line.classList.includes('line'))).toBe(
       true,
@@ -384,7 +384,7 @@ const b = 2\
 
     const result = parser.stringify()
 
-    expect(parser.lines.length).toBe(2)
+    expect(parser.lines).toHaveLength(2)
 
     expect(result).toMatchSnapshot()
   })
@@ -425,11 +425,11 @@ console.log('hello world)\t
       const result = parser.stringify()
       expect(parser.lines[0].content).not.toContain('class="space"')
       expect(
-        parser.lines[1].content.match(/<span class="space">/g)?.length,
+        parser.lines[1].content.match(/<span class="space">/gu)?.length,
       ).toBe(4)
-      expect(parser.lines[3].content.match(/<span class="tab">/g)?.length).toBe(
-        2,
-      )
+      expect(
+        parser.lines[3].content.match(/<span class="tab">/gu)?.length,
+      ).toBe(2)
       expect(result).toMatchSnapshot()
     })
 
@@ -439,7 +439,7 @@ console.log('hello world)\t
       const result = parser.stringify()
       expect(parser.lines[0].content).not.toContain('class="space"')
       expect(
-        parser.lines[1].content.match(/<span class="space">/g)?.length,
+        parser.lines[1].content.match(/<span class="space">/gu)?.length,
       ).toBe(2)
       expect(parser.lines[3].content).not.toContain('class="space"')
       expect(result).toMatchSnapshot()

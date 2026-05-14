@@ -21,7 +21,7 @@ export const OFFICIAL_PACKAGES = [
 ]
 
 export const OFFICIAL_PLUGINS_AND_THEMES_REGEXP =
-  /^@vuepress\/(?:plugin|theme)-/
+  /^@vuepress\/(?:plugin|theme)-/u
 
 export const REMOVED_PACKAGES = ['vuepress-webpack', 'vuepress-vite']
 
@@ -34,8 +34,8 @@ export const DEPRECATED_PACKAGES = [
   '@vuepress/utils',
 ]
 
-export const THIRD_PARTY_PLUGINS = /^(@.*\/)?vuepress-plugin-/
+export const THIRD_PARTY_PLUGINS = /^(@.*\/)?vuepress-plugin-/u
 
-export const THIRD_PARTY_THEMES = /^(@.*\/)?vuepress-theme-/
+export const THIRD_PARTY_THEMES = /^(@.*\/)?vuepress-theme-/u
 
 export const COMMON_PEERS = ['sass', 'sass-embedded', 'sass-loader']

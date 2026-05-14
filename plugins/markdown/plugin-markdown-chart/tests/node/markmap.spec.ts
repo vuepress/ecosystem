@@ -35,23 +35,23 @@ markmap:
 describe('markmap plugin', () => {
   const markdownIt = new MarkdownIt({ linkify: true }).use(markmap)
 
-  it('Should render ```markmap', () => {
+  it('should render ```markmap', () => {
     const renderResult = markdownIt.render(`
 \`\`\`\`markmap
 ${content}
 \`\`\`\`
 `)
 
-    expect(renderResult).toMatch(/<MarkMap content="[^"]*?"><\/MarkMap>/)
+    expect(renderResult).toMatch(/<MarkMap content="[^"]*?"><\/MarkMap>/u)
     expect(renderResult).toMatchSnapshot()
   })
 
-  it('Should not render', () => {
+  it('should not render', () => {
     expect(
       markdownIt.render(`
 ${content}
 `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('without fence')
 
     expect(
       markdownIt.render(`
@@ -59,6 +59,6 @@ ${content}
 ${content}
 \`\`\`
 `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('wrong fence')
   })
 })

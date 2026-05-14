@@ -44,8 +44,8 @@ const queue = (() => {
 
 const camelCase = (content: string): string =>
   content
-    .replace(/^-ms-/, 'ms-')
-    .replaceAll(/-([\da-z])/gi, (_, letter: string) => letter.toUpperCase())
+    .replace(/^-ms-/u, 'ms-')
+    .replaceAll(/-([\da-z])/giu, (_, letter: string) => letter.toUpperCase())
 
 const addStyle = (() => {
   const cssPrefixes = ['Webkit', 'O', 'Moz', 'ms']

@@ -7,7 +7,7 @@ import { codeTabs } from '../../src/node/codeTabs.js'
 const markdownIt = new MarkdownIt({ linkify: true }).use(codeTabs)
 
 describe('code tabs', () => {
-  it('Should render single block', () => {
+  it('should render single block', () => {
     expect(
       markdownIt.render(`
 ::: code-tabs
@@ -20,7 +20,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('loose')
 
     expect(
       markdownIt.render(`
@@ -31,10 +31,10 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('tight')
   })
 
-  it('Should render multiple block', () => {
+  it('should render multiple block', () => {
     expect(
       markdownIt.render(`
 ::: code-tabs
@@ -53,7 +53,7 @@ const a = 1;
 
 :::
 `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('loose')
 
     expect(
       markdownIt.render(`
@@ -68,10 +68,10 @@ const a = 1;
 \`\`\`
 :::
 `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('tight')
   })
 
-  it('Should support id', () => {
+  it('should support id', () => {
     expect(
       markdownIt.render(`
 ::: code-tabs#event
@@ -84,7 +84,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('simple id')
 
     expect(
       markdownIt.render(`
@@ -95,7 +95,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('id with dash')
 
     expect(
       markdownIt.render(`
@@ -106,7 +106,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('id with space')
 
     expect(
       markdownIt.render(`
@@ -117,10 +117,10 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('id with space in the start and end')
   })
 
-  it('Should support active', () => {
+  it('should support active', () => {
     expect(
       markdownIt.render(`
 ::: code-tabs
@@ -133,7 +133,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('loose')
 
     expect(
       markdownIt.render(`
@@ -144,7 +144,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('tight')
 
     expect(
       markdownIt.render(`
@@ -164,7 +164,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('multiple loose')
 
     expect(
       markdownIt.render(`
@@ -179,10 +179,10 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('multiple tight')
   })
 
-  it('Should support value', () => {
+  it('should support value', () => {
     expect(
       markdownIt.render(`
 ::: code-tabs
@@ -195,7 +195,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('loose')
 
     expect(
       markdownIt.render(`
@@ -206,7 +206,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('tight')
 
     expect(
       markdownIt.render(`
@@ -226,7 +226,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('multiple loose')
 
     expect(
       markdownIt.render(`
@@ -241,7 +241,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('multiple tight')
   })
 
   it('should ignore other items', () => {
@@ -265,7 +265,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('loose')
 
     expect(
       markdownIt.render(`
@@ -282,7 +282,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('tight')
 
     expect(
       markdownIt.render(`
@@ -310,7 +310,7 @@ Another text again
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('complex loose')
 
     expect(
       markdownIt.render(`
@@ -329,10 +329,10 @@ const a = 1;
 Another text again
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('complex tight')
   })
 
-  it('Should work with code import', () => {
+  it('should work with code import', () => {
     const markdown = createMarkdown()
 
     markdown.use(codeTabs)

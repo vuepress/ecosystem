@@ -116,7 +116,7 @@ program
           }${removeLeadingSlash(page.path)}`
           const destLocation = path.join(
             outputFolder,
-            removeLeadingSlash(page.path.replace(/\/$/, '/index.html')),
+            removeLeadingSlash(page.path.replace(/\/$/u, '/index.html')),
           )
 
           return fs

@@ -55,7 +55,7 @@
     "mitt": "^3.0.1",
     "register-service-worker": "^1.7.2",
     "vue": "catalog:",
-    "workbox-build": "^7.4.0"
+    "workbox-build": "^7.4.1"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

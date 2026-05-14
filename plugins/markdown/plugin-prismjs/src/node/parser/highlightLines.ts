@@ -20,7 +20,7 @@ export const getHighlightLinesRange = (
   info: string,
 ): HighlightLinesRange[] | null => {
   // try to match highlight-lines mark
-  const match = /{([\d,-]+)}/.exec(info)
+  const match = /\{([\d,-]+)\}/u.exec(info)
 
   // no highlight-lines mark, return `null`
   if (match == null) return null

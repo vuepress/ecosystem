@@ -63,6 +63,7 @@ export const generateServiceWorker = async (
   await generateSW({
     dontCacheBustURLsMatching: new RegExp(
       `\\.[0-9a-f]{8}\\.(${['html', ...cacheExtensions, ...imageExtensions].join('|')})$`,
+      'u',
     ),
     globPatterns,
     cleanupOutdatedCaches: true,

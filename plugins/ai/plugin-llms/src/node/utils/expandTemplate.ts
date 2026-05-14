@@ -11,7 +11,7 @@ import { entries } from '@vuepress/helper'
  * @returns Case-insensitive regex that detects `{key}` occurrences
  */
 const templateVariable = (key: string): RegExp =>
-  new RegExp(`(\\n\\s*\\n)?\\{${key}\\}`, 'gi')
+  new RegExp(`(\\n\\s*\\n)?\\{${key}\\}`, 'giu')
 
 /**
  * Replace template variable `{variable}` with provided value

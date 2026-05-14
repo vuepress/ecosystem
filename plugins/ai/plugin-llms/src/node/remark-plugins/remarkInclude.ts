@@ -26,28 +26,28 @@ interface IncludeInfo {
 }
 
 const REGIONS_RE = [
-  /^\/\/ ?#?((?:end)?region) ([\w*-]+)$/, // javascript, typescript, java
-  /^\/\* ?#((?:end)?region) ([\w*-]+) ?\*\/$/, // css, less, scss
-  /^#pragma ((?:end)?region) ([\w*-]+)$/, // C, C++
-  /^<!-- #?((?:end)?region) ([\w*-]+) -->$/, // HTML, markdown
-  /^#((?:End )Region) ([\w*-]+)$/, // Visual Basic
-  /^::#((?:end)region) ([\w*-]+)$/, // Bat
-  /^# ?((?:end)?region) ([\w*-]+)$/, // C#, PHP, Powershell, Python, perl & misc
+  /^\/\/ ?#?((?:end)?region) ([\w*-]+)$/u, // javascript, typescript, java
+  /^\/\* ?#((?:end)?region) ([\w*-]+) ?\*\/$/u, // css, less, scss
+  /^#pragma ((?:end)?region) ([\w*-]+)$/u, // C, C++
+  /^<!-- #?((?:end)?region) ([\w*-]+) -->$/u, // HTML, markdown
+  /^#((?:End )Region) ([\w*-]+)$/u, // Visual Basic
+  /^::#((?:end)region) ([\w*-]+)$/u, // Bat
+  /^# ?((?:end)?region) ([\w*-]+)$/u, // C#, PHP, Powershell, Python, perl & misc
 ]
 
 // regexp to match the import syntax
 const INCLUDE_COMMENT_RE =
-  /^( *)<!-{2,}\s*@include:\s*([^<>|:"*?]+(?:\.[a-z0-9]+))(?:#([\w-]+))?(?:\{(\d+)?-(\d+)?\})?\s*-{2,}>\s*$/gm
+  /^( *)<!-{2,}\s*@include:\s*([^<>|:"*?]+(?:\.[a-z0-9]+))(?:#([\w-]+))?(?:\{(\d+)?-(\d+)?\})?\s*-{2,}>\s*$/gmu
 const INCLUDE_RE =
-  /^( *)@include:\s*([^<>|:"*?]+(?:\.[a-z0-9]+))(?:#([\w-]+))?(?:\{(\d+)?-(\d+)?\})?\s*$/gm
+  /^( *)@include:\s*([^<>|:"*?]+(?:\.[a-z0-9]+))(?:#([\w-]+))?(?:\{(\d+)?-(\d+)?\})?\s*$/gmu
 
 // single-match (non-global) variants used inside the remark visitor
-const INCLUDE_COMMENT_RE_SINGLE = new RegExp(INCLUDE_COMMENT_RE.source, 'm')
-const INCLUDE_RE_SINGLE = new RegExp(INCLUDE_RE.source, 'm')
+const INCLUDE_COMMENT_RE_SINGLE = new RegExp(INCLUDE_COMMENT_RE.source, 'mu')
+const INCLUDE_RE_SINGLE = new RegExp(INCLUDE_RE.source, 'mu')
 
-const NEWLINE_RE = /\r\n?|\n/g
-const SYNTAX_PUSH_RE = /^<!-- #include-env-start: ([^)]*?) -->$/
-const HTML_LINK_RE = /(?:href|src)="(.*?)"/
+const NEWLINE_RE = /\r\n?|\n/gu
+const SYNTAX_PUSH_RE = /^<!-- #include-env-start: ([^)]*?) -->$/u
+const HTML_LINK_RE = /(?:href|src)="(.*?)"/u
 
 const testLine = (
   line: string,
@@ -61,7 +61,7 @@ const testLine = (
     full &&
     tag &&
     name === regionName &&
-    tag.match(end ? /^[Ee]nd ?[rR]egion$/ : /^[rR]egion$/),
+    tag.match(end ? /^[Ee]nd ?[rR]egion$/u : /^[rR]egion$/u),
   )
 }
 
@@ -151,7 +151,7 @@ export const handleInclude = (
     results.push('<!-- #include-env-end -->')
   }
 
-  return dedent(results.join('\n').replace(/\n?$/, '\n'))
+  return dedent(results.join('\n').replace(/\n?$/u, '\n'))
 }
 
 const resolveInclude = (

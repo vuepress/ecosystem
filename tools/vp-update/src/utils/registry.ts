@@ -20,7 +20,7 @@ export const getRegistry = (packageManager: PackageManager): string => {
     })
       .stdout.toString()
       .trim()
-      .replace(/\/?$/, '/')
+      .replace(/\/?$/u, '/')
   }
 
   if (
@@ -39,25 +39,25 @@ export const getRegistry = (packageManager: PackageManager): string => {
     )
       .stdout.toString()
       .trim()
-      .replace(/\/?$/, '/')
+      .replace(/\/?$/u, '/')
   }
 
   // 优先从环境变量读取 registry
   const envRegistry = process.env.npm_config_registry
-  if (envRegistry) return envRegistry.replace(/\/?$/, '/')
+  if (envRegistry) return envRegistry.replace(/\/?$/u, '/')
 
   return spawnSync(`${packageManager} config get registry`, {
     shell: true,
   })
     .stdout.toString()
     .trim()
-    .replace(/\/?$/, '/')
+    .replace(/\/?$/u, '/')
 }
 
 export const checkTaobaoRegistry = (packageManager: PackageManager): void => {
   const userRegistry = getRegistry(packageManager)
 
-  if (/https:\/\/registry\.npm\.taobao\.org\/?/.test(userRegistry)) {
+  if (/https:\/\/registry\.npm\.taobao\.org\/?/u.test(userRegistry)) {
     console.error(
       'npm.taobao.org is no longer available, resetting it to npmmirror.com',
     )

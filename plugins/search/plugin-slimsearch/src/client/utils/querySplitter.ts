@@ -1,8 +1,8 @@
 const CJK_REGEXP =
-  /[\u4E00-\u9FFF\u3400-\u4DBF\u3040-\u309F\u30A0-\u30FF\uAC00-\uD7AF]/
+  /[\u4E00-\u9FFF\u3400-\u4DBF\u3040-\u309F\u30A0-\u30FF\uAC00-\uD7AF]/u
 
 export const fallbackQuerySplitter = (query: string): string[] =>
-  query.split(/\s+/).flatMap((word) => {
+  query.split(/\s+/u).flatMap((word) => {
     if (word.length > 3) {
       // oxlint-disable-next-line unicorn/prefer-spread
       const chars = word.split('')

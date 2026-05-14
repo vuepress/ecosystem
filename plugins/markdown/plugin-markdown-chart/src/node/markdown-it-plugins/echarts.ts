@@ -97,7 +97,7 @@ export const echarts: PluginWithOptions<EChartsPluginOptions> = (
             console.warn(
               `\
 ${colors.magenta('[echarts]')}: JavaScript in echarts block is found in ${colors.cyan(filePathRelative)}, ${colors.red('it is ignored for security reasons')}.
-To enable the chart, you must manually add it to allowlist, see https://vuepress.vuejs.org/plugin/markdown/markdown-chart/echarts.html for details.
+To enable the chart, you must manually add it to allowlist, see https://ecosystem.vuejs.press/plugins/markdown/markdown-chart/echarts.html#with-scripts for details.
 `,
             )
             tokens[i].hidden = true

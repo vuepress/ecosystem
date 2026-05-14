@@ -1,14 +1,14 @@
 // oxlint-disable-next-line no-control-regex
-const nonASCIIRegExp = /[^\u0000-\u007F]/
+const nonASCIIRegExp = /[^\u0000-\u007F]/u
 
 const splitWords = (content: string): string[] =>
   content
-    .split(/\s+/g)
+    .split(/\s+/gu)
     .map((str) => str.trim())
     .filter(Boolean)
 
 const escapeRegExp = (str: string): string =>
-  str.replaceAll(/[-/\\^$*+?.()|[\]{}]/g, String.raw`\$&`)
+  str.replaceAll(/[-/\\^$*+?.()|[\]{}]/gu, String.raw`\$&`)
 
 export const isQueryMatched = (query: string, toMatch: string[]): boolean => {
   const toMatchStr = toMatch.join(' ')
@@ -32,7 +32,7 @@ export const isQueryMatched = (query: string, toMatch: string[]): boolean => {
         return `(?=.*\\b${escapeRegExp(word)}\\b)`
       })
       .join('')}.+`,
-    'gi',
+    'giu',
   )
   return searchRegex.test(toMatchStr)
 }

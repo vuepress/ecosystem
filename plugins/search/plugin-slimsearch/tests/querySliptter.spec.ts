@@ -18,7 +18,7 @@ describe(defaultQuerySplitter, () => {
 
     for (const [query, expected] of testCases) {
       const result = defaultQuerySplitter(query, 'zh-CN')
-      expect(result).toEqual(expected)
+      expect(result).toStrictEqual(expected)
     }
   })
 })
@@ -36,7 +36,7 @@ describe(fallbackQuerySplitter, () => {
 
     for (const [query, expected] of testCases) {
       const result = fallbackQuerySplitter(query)
-      expect(result).toEqual(expected)
+      expect(result).toStrictEqual(expected)
     }
   })
 })

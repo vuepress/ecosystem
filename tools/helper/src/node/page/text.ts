@@ -164,7 +164,7 @@ export const getText = (
     }
   }
   return (
-    singleLine ? result.replaceAll('\n', ' ').replaceAll(/\s+/g, ' ') : result
+    singleLine ? result.replaceAll('\n', ' ').replaceAll(/\s+/gu, ' ') : result
   ).trim()
 }
 

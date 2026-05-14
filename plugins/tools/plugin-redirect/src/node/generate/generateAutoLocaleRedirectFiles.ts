@@ -22,7 +22,7 @@ export const generateAutoLocaleRedirectFiles = async (
     .forEach(({ path: pagePath, pathLocale }) => {
       const rootPath = pagePath
         .replace(pathLocale, '/')
-        .replace(/\/$/, '/index.html')
+        .replace(/\/$/u, '/index.html')
 
       if (!rootPaths.has(rootPath))
         (localeRedirectMap[rootPath] ??= []).push(pathLocale)

@@ -17,5 +17,5 @@ import type { App } from 'vuepress/core'
 export const getBundlerName = (app: App): string => {
   const { name } = app.options.bundler
 
-  return /^@vuepress\/bundler-(.*)$/.exec(name)?.[1] ?? name
+  return /^@vuepress\/bundler-(.*)$/u.exec(name)?.[1] ?? name
 }

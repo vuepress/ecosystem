@@ -1,7 +1,7 @@
 import type { CodeParser, OpenTag } from './getCodeParser.js'
 
 // prismjs comments
-const COMMENT_EMPTY_TAG = /<span class="token comment">\s*?<\/span>/
+const COMMENT_EMPTY_TAG = /<span class="token comment">\s*?<\/span>/u
 
 /**
  * Create notation rule for code parser

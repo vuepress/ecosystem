@@ -51,8 +51,6 @@ export default defineHopeConfig(
       'unicorn/prefer-global-this': 'off',
       // sometimes we need to check if a defined variable is injected
       'unicorn/no-typeof-undefined': 'off',
-
-      'typescript/no-unnecessary-type-arguments': 'off',
     },
   },
   // node files
@@ -81,30 +79,25 @@ export default defineHopeConfig(
         'vuepress/markdown',
         'vuepress/utils',
       ],
-      // FIXME: not working at all
-      // "typescript/no-floating-promises": [
-      //   "error",
-      //   {
-      //     "allowForKnownSafeCalls": [
-      //       // Avoid explicit marking void for router.push
-      //       {
-      //         "from": "package",
-      //         "name": "push",
-      //         "package": "vue-router"
-      //       },
-      //       // Avoid explicit marking void for router.replace
-      //       {
-      //         "from": "package",
-      //         "name": "replace",
-      //         "package": "vue-router"
-      //       }
-      //     ]
-      //   }
-      // ]
-      // "typescript/prefer-nullish-coalescing": [
-      //   "warn",
-      //   { "ignoreConditionalTests": true }
-      // ]
+      'typescript/no-floating-promises': [
+        'error',
+        {
+          allowForKnownSafeCalls: [
+            // Avoid explicit marking void for router.push
+            {
+              from: 'package',
+              name: 'push',
+              package: 'vue-router',
+            },
+            // Avoid explicit marking void for router.replace
+            {
+              from: 'package',
+              name: 'replace',
+              package: 'vue-router',
+            },
+          ],
+        },
+      ],
     },
   },
   {

@@ -14,8 +14,8 @@ describe(getDate, () => {
   })
 
   it('return null', () => {
-    expect(getDate('')).toBe(null)
-    expect(getDate(undefined)).toBe(null)
-    expect(getDate(null)).toBe(null)
+    expect(getDate('')).toBeNull()
+    expect(getDate(undefined)).toBeNull()
+    expect(getDate(null)).toBeNull()
   })
 })

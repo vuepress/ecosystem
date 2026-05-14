@@ -9,7 +9,7 @@ describe(echarts, () => {
     allowAll: true,
   })
 
-  it('Should resolve echarts container with json block', () => {
+  it('should resolve echarts container with json block', () => {
     const result = markdownIt.render(
       `
 ::: echarts A line chart
@@ -37,13 +37,13 @@ describe(echarts, () => {
       {},
     )
 
-    expect(result).toMatch(/<ECharts.*><\/ECharts>/)
+    expect(result).toMatch(/<ECharts.*><\/ECharts>/u)
     expect(result).toContain(`title="${encodeURIComponent('A line chart')}"`)
     expect(result).not.toContain('type=""')
     expect(result).toMatchSnapshot()
   })
 
-  it('Should resolve echarts container with js block', () => {
+  it('should resolve echarts container with js block', () => {
     const result = markdownIt.render(
       `
 ::: echarts A line chart
@@ -71,13 +71,13 @@ const option = {
       {},
     )
 
-    expect(result).toMatch(/<ECharts.*><\/ECharts>/)
+    expect(result).toMatch(/<ECharts.*><\/ECharts>/u)
     expect(result).toContain(`title="${encodeURIComponent('A line chart')}"`)
     expect(result).toContain('type="js"')
     expect(result).toMatchSnapshot()
   })
 
-  it('Should resolve echarts container with javascript block', () => {
+  it('should resolve echarts container with javascript block', () => {
     const result = markdownIt.render(
       `
 ::: echarts A line chart
@@ -105,13 +105,13 @@ const option = {
       {},
     )
 
-    expect(result).toMatch(/<ECharts.*><\/ECharts>/)
+    expect(result).toMatch(/<ECharts.*><\/ECharts>/u)
     expect(result).toContain(`title="${encodeURIComponent('A line chart')}"`)
     expect(result).toContain('type="js"')
     expect(result).toMatchSnapshot()
   })
 
-  it('Should resolve echarts container with empty title and body', () => {
+  it('should resolve echarts container with empty title and body', () => {
     const result = markdownIt.render(
       `
 ::: echarts
@@ -121,13 +121,13 @@ const option = {
       {},
     )
 
-    expect(result).toMatch(/<ECharts.*><\/ECharts>/)
+    expect(result).toMatch(/<ECharts.*><\/ECharts>/u)
     expect(result).not.toContain('title="')
     expect(result).not.toContain('type=""')
     expect(result).toMatchSnapshot()
   })
 
-  it('Should resolve echarts fence', () => {
+  it('should resolve echarts fence', () => {
     const result = markdownIt.render(
       `
 \`\`\`echarts:A line chart
@@ -151,13 +151,13 @@ const option = {
       {},
     )
 
-    expect(result).toMatch(/<ECharts.*><\/ECharts>/)
+    expect(result).toMatch(/<ECharts.*><\/ECharts>/u)
     expect(result).toContain(`title="${encodeURIComponent('A line chart')}"`)
     expect(result).not.toContain('type=""')
     expect(result).toMatchSnapshot()
   })
 
-  it('Should resolve echarts fence with empty title and body', () => {
+  it('should resolve echarts fence with empty title and body', () => {
     const result = markdownIt.render(
       `
 \`\`\`echarts
@@ -166,13 +166,13 @@ const option = {
       {},
     )
 
-    expect(result).toMatch(/<ECharts.*><\/ECharts>/)
+    expect(result).toMatch(/<ECharts.*><\/ECharts>/u)
     expect(result).not.toContain('title="')
     expect(result).not.toContain('type=""')
     expect(result).toMatchSnapshot()
   })
 
-  it('Should not break markdown fence', () => {
+  it('should not break markdown fence', () => {
     const result = markdownIt.render(
       `
 \`\`\`js
@@ -182,11 +182,11 @@ const a = 1;
       {},
     )
 
-    expect(result).toMatch(/<pre.*>[\s\S]*<\/pre>/)
+    expect(result).toMatch(/<pre.*>[\s\S]*<\/pre>/u)
     expect(result).toMatchSnapshot()
   })
 
-  it('Should remove unsafe script block by default', () => {
+  it('should remove unsafe script block by default', () => {
     const md = new MarkdownIt({ linkify: true }).use(echarts)
 
     const result = md.render(

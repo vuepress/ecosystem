@@ -40,7 +40,7 @@ export const setupDevServerRedirect = ({
         : routes.find(
             ({ path }) =>
               routePathValue.split('/').length >= 3 &&
-              path === routePathValue.replace(/^\/[^/]+\//, '/'),
+              path === routePathValue.replace(/^\/[^/]+\//u, '/'),
           )?.path
 
     let matchedLocalePath: string | null = null

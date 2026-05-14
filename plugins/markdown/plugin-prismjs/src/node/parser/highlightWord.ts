@@ -1,7 +1,7 @@
 import type { CodeParser, OpenTag } from './getCodeParser.js'
 
-const SPLIT_REGEXP = /(<[^>]+>)/
-const META_WORD_REGEXP = /\/((?:\\.|[^\\/])+)\//g
+const SPLIT_REGEXP = /(<[^>]+>)/u
+const META_WORD_REGEXP = /\/((?:\\.|[^\\/])+)\//gu
 
 const WORD_BEFORE = '<span class="highlighted-word">'
 const WORD_AFTER = '</span>'
@@ -47,13 +47,13 @@ export const parseMetaHighlightWords = (meta: string): string[] => {
   return (
     match
       // Escape backslashes
-      .map((part) => part[1].replaceAll(/\\(.)/g, '$1'))
+      .map((part) => part[1].replaceAll(/\\(.)/gu, '$1'))
   )
 }
 
-// FIXME: https://github.com/oxc-project/oxc/issues/21550
-// `` ```js /Hello|Hi/ ``
 /**
+ * ` ```js /Hello|Hi/ `
+ *
  * Meta word highlight
  *
  * 元词汇高亮
@@ -65,7 +65,7 @@ export const metaWordHighlight = (parser: CodeParser, meta: string): void => {
   const words = parseMetaHighlightWords(meta)
 
   if (words.length) {
-    const pattern = new RegExp(words.join('|'), 'g')
+    const pattern = new RegExp(words.join('|'), 'gu')
     parser.line((line) => {
       highlightWordInLine(line, pattern)
     })

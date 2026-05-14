@@ -2,80 +2,80 @@ import { describe, expect, it } from 'vitest'
 
 import { getReadingTime, getWordNumber } from '../../src/node/getReadingTime.js'
 
-describe('Words test', () => {
-  describe('Should handle english', () => {
-    it('Should count words', () => {
+describe('words test', () => {
+  describe('should handle english', () => {
+    it('should count words', () => {
       expect(
         getWordNumber('\n Mr.Hope is handsome, and he is a great man.'),
-      ).toEqual(9)
+      ).toBe(9)
     })
 
-    it('Should ignore marks', () => {
+    it('should ignore marks', () => {
       expect(
         getWordNumber(
           '\n Mr.Hope ! is #$%^&* handsome, and %^&* he is a great man.',
         ),
-      ).toEqual(9)
+      ).toBe(9)
     })
   })
 
-  describe('Should handle chinese', () => {
-    it('Should count words', () => {
-      expect(getWordNumber('春眠不觉晓，处处闻啼鸟。')).toEqual(10)
+  describe('should handle chinese', () => {
+    it('should count words', () => {
+      expect(getWordNumber('春眠不觉晓，处处闻啼鸟。')).toBe(10)
     })
 
-    it('Should ignore marks', () => {
-      expect(getWordNumber('春眠^&*(不觉晓，处处闻!#$%啼鸟。')).toEqual(10)
+    it('should ignore marks', () => {
+      expect(getWordNumber('春眠^&*(不觉晓，处处闻!#$%啼鸟。')).toBe(10)
     })
   })
 
-  describe('Should handle russian', () => {
-    it('Should count words', () => {
+  describe('should handle russian', () => {
+    it('should count words', () => {
       expect(
         getWordNumber('Для меня очень странно было услышать эту причину.'),
-      ).toEqual(8)
+      ).toBe(8)
     })
 
-    it('Should ignore marks', () => {
+    it('should ignore marks', () => {
       expect(
         getWordNumber(
           'Для меня очень **странно** [было][] услышать эту причину.',
         ),
-      ).toEqual(8)
+      ).toBe(8)
     })
   })
 
-  describe('Should handle mixed content', () => {
-    it('Should count words', () => {
+  describe('should handle mixed content', () => {
+    it('should count words', () => {
       expect(
         getWordNumber(
           '  春眠不觉晓，处处闻啼鸟。\n   Mr.Hope is handsome, and he is a great man.',
         ),
-      ).toEqual(19)
+      ).toBe(19)
     })
 
-    it('Should ignore marks', () => {
+    it('should ignore marks', () => {
       expect(
         getWordNumber(
           '春眠^&*(不觉晓，处处闻!#$%啼鸟。\n Mr.Hope ! is #$%^&* handsome, and %^&* he is a great man.',
         ),
-      ).toEqual(19)
+      ).toBe(19)
     })
   })
 })
 
-describe('Reading Time Test', () => {
-  it('Reading Time', () => {
+describe('reading Time Test', () => {
+  it('reading Time', () => {
     expect(
       getReadingTime(
         '\n Mr.Hope ! is #$%^&* handsome, and %^&* he is a great man.',
       ),
-    ).toEqual({
+    ).toStrictEqual({
       minutes: 0.03,
       words: 9,
     })
 
-    expect(getReadingTime('春眠^&*(不觉晓，处处闻!#$%啼鸟。')).toEqual({
+    expect(getReadingTime('春眠^&*(不觉晓，处处闻!#$%啼鸟。')).toStrictEqual({
       minutes: 0.03,
       words: 10,
     })
@@ -84,7 +84,7 @@ describe('Reading Time Test', () => {
       getReadingTime(
         '  春眠不觉晓，处处闻啼鸟。\n   Mr.Hope is handsome, and he is a great man.',
       ),
-    ).toEqual({
+    ).toStrictEqual({
       minutes: 0.06,
       words: 19,
     })
@@ -93,7 +93,7 @@ describe('Reading Time Test', () => {
       getReadingTime(
         '\n  春眠不觉晓，处处闻啼鸟。\n   Mr.Hope is handsome, and he is a great man.\n  春眠不觉晓，处处闻啼鸟。\n   Mr.Hope is handsome, and he is a great man.\n  春眠不觉晓，处处闻啼鸟。\n   Mr.Hope is handsome, and he is a great man.\n  春眠不觉晓，处处闻啼鸟。\n   Mr.Hope is handsome, and he is a great man.\n  春眠不觉晓，处处闻啼鸟。\n   Mr.Hope is handsome, and he is a great man.\n  春眠不觉晓，处处闻啼鸟。\n   Mr.Hope is handsome, and he is a great man.\n  春眠不觉晓，处处闻啼鸟。\n   Mr.Hope is handsome, and he is a great man.',
       ),
-    ).toEqual({
+    ).toStrictEqual({
       minutes: 0.44,
       words: 133,
     })

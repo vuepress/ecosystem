@@ -53,7 +53,7 @@ ${
   packageManager === 'pnpm'
     ? `\
       - name: ${lang === 'zh' ? '安装 pnpm' : 'Install pnpm'}
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
 `
     : ''
 }
@@ -125,10 +125,10 @@ export const generateTemplate = async ({
     configFilePath,
     content
       .replace(
-        /\n\nexport default defineUserConfig\(\{/,
+        /\n\nexport default defineUserConfig\(\{/u,
         `\nimport { ${bundler}Bundler } from '@vuepress/bundler-${bundler}'\n\nexport default defineUserConfig({`,
       )
-      .replace(/\}\)\n$/, `\n  bundler: ${bundler}Bundler(),\n})\n`),
+      .replace(/\}\)\n$/u, `\n  bundler: ${bundler}Bundler(),\n})\n`),
     { encoding: 'utf-8' },
   )
 

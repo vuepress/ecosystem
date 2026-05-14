@@ -6,7 +6,7 @@ import { component } from '../../src/node/markdown-it-plugins/component.js'
 describe(component, () => {
   const markdownIt = new MarkdownIt({ linkify: true }).use(component)
 
-  it('Should resolve component fence', () => {
+  it('should resolve component fence', () => {
     const result1 = markdownIt.render(
       `
 \`\`\`component VPCard
@@ -36,12 +36,12 @@ color: "#000"
     )
 
     expect(result1).toContain('VPCard')
-    expect(result1).toMatchSnapshot()
+    expect(result1).toMatchSnapshot('yaml')
     expect(result2).toContain('VPCard')
-    expect(result2).toMatchSnapshot()
+    expect(result2).toMatchSnapshot('json')
   })
 
-  it('Should not throw with invalid syntax', () => {
+  it('should not throw with invalid syntax', () => {
     const result1 = markdownIt.render(
       `
 \`\`\`component VPCard
@@ -62,11 +62,11 @@ title: b
       {},
     )
 
-    expect(result1).toEqual('')
-    expect(result2).toEqual('')
+    expect(result1).toBe('')
+    expect(result2).toBe('')
   })
 
-  it('Should drop when receiving a invalid syntax', () => {
+  it('should drop when receiving a invalid syntax', () => {
     const result = markdownIt.render(
       `
 \`\`\`component VPCard
@@ -79,7 +79,7 @@ title: b
     expect(result).toMatch('')
   })
 
-  it('Should not break markdown fence', () => {
+  it('should not break markdown fence', () => {
     const result = markdownIt.render(
       `
 \`\`\`js
@@ -89,7 +89,7 @@ const a = 1;
       {},
     )
 
-    expect(result).toMatch(/<pre.*>[\s\S]*<\/pre>/)
+    expect(result).toMatch(/<pre.*>[\s\S]*<\/pre>/u)
     expect(result).toMatchSnapshot()
   })
 })

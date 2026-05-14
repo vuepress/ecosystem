@@ -9,7 +9,7 @@ type Ora = ReturnType<typeof ora>
  * 日志工具类
  */
 export class Logger {
-  public constructor(
+  constructor(
     /**
      * Plugin/Theme name
      *
@@ -33,7 +33,7 @@ export class Logger {
    * @param msg - Loading message / 加载信息
    * @returns Loading spinner control object / 加载旋转器控制对象
    */
-  public load(msg: string): {
+  load(msg: string): {
     succeed: (text?: string) => Ora
     fail: (text?: string) => Ora
   } {
@@ -53,7 +53,7 @@ export class Logger {
    * @param text - Hint text / 提示文本
    * @param args - Additional arguments / 额外参数
    */
-  public info(text = '', ...args: unknown[]): void {
+  info(text = '', ...args: unknown[]): void {
     this.init(colors.blue(text)).info()
 
     if (args.length > 0) console.info(...args)
@@ -67,7 +67,7 @@ export class Logger {
    * @param text - Success text / 成功文本
    * @param args - Additional arguments / 额外参数
    */
-  public succeed(text = '', ...args: unknown[]): void {
+  succeed(text = '', ...args: unknown[]): void {
     this.init(colors.green(text)).succeed()
 
     if (args.length > 0) console.log(...args)
@@ -81,7 +81,7 @@ export class Logger {
    * @param text - Warning text / 警告文本
    * @param args - Additional arguments / 额外参数
    */
-  public warn(text = '', ...args: unknown[]): void {
+  warn(text = '', ...args: unknown[]): void {
     this.init(colors.yellow(text)).warn()
 
     if (args.length > 0) console.warn(...args)
@@ -95,7 +95,7 @@ export class Logger {
    * @param text - Error text / 错误文本
    * @param args - Additional arguments / 额外参数
    */
-  public error(text = '', ...args: unknown[]): void {
+  error(text = '', ...args: unknown[]): void {
     this.init(colors.red(text)).fail()
 
     if (args.length > 0) console.error(...args)

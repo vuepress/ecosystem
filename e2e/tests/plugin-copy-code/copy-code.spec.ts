@@ -15,13 +15,13 @@ test.describe('copy-code', () => {
 
     await locator.first().click()
 
-    await expect(locator.first()).toHaveAttribute('class', /copied/)
+    await expect(locator.first()).toHaveAttribute('class', /copied/u)
 
     const content = await page.evaluate(async () =>
       navigator.clipboard.readText(),
     )
 
-    expect(content).toMatch(/const a = 1\r?\nconst b = 2\r?\n/)
+    expect(content).toMatch(/const a = 1\r?\nconst b = 2\r?\n/u)
 
     await page.evaluate(async () => navigator.clipboard.writeText(''))
   })

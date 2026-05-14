@@ -46,7 +46,7 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@vue/devtools-api": "^8.1.1",
+    "@vue/devtools-api": "^8.1.2",
     "vue": "catalog:"
   },
   "peerDependencies": {

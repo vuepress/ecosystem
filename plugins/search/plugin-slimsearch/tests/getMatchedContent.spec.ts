@@ -5,13 +5,16 @@ import { getMatchedContent } from '../src/worker/utils/getMatchedContent.js'
 
 describe(getMatchedContent, () => {
   it('should match content', () => {
-    expect(getMatchedContent('a b c d', 'a')).toEqual([['mark', 'a'], ' b c d'])
-    expect(getMatchedContent('a b c d', 'b')).toEqual([
+    expect(getMatchedContent('a b c d', 'a')).toStrictEqual([
+      ['mark', 'a'],
+      ' b c d',
+    ])
+    expect(getMatchedContent('a b c d', 'b')).toStrictEqual([
       'a ',
       ['mark', 'b'],
       ' c d',
     ])
-    expect(getMatchedContent('apple banana cherry', 'banana')).toEqual([
+    expect(getMatchedContent('apple banana cherry', 'banana')).toStrictEqual([
       'apple ',
       ['mark', 'banana'],
       ' cherry',
@@ -19,11 +22,11 @@ describe(getMatchedContent, () => {
   })
 
   it('should return null if no content is matched', () => {
-    expect(getMatchedContent('b c d', 'a')).toEqual(null)
+    expect(getMatchedContent('b c d', 'a')).toBeNull()
   })
 
   it('should match content multiple times', () => {
-    expect(getMatchedContent('a b c d c b a', 'b')).toEqual([
+    expect(getMatchedContent('a b c d c b a', 'b')).toStrictEqual([
       'a ',
       ['mark', 'b'],
       ' c d c ',
@@ -38,7 +41,7 @@ describe(getMatchedContent, () => {
         "The apple is red, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious",
         'apple',
       ),
-    ).toEqual([
+    ).toStrictEqual([
       'The ',
       ['mark', 'apple'],
       " is red, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee… ",
@@ -49,7 +52,7 @@ describe(getMatchedContent, () => {
         "The apple is red, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious. The banana is yellow, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious",
         'is',
       ),
-    ).toEqual([
+    ).toStrictEqual([
       'The apple ',
       ['mark', 'is'],
       " red, and it's veeee … licious. The banana ",
@@ -62,7 +65,7 @@ describe(getMatchedContent, () => {
         "The apple is red, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious. The banana is yellow, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious",
         'The',
       ),
-    ).toEqual([
+    ).toStrictEqual([
       ['mark', 'The'],
       ' apple is red, and i … eeeeeery delicious. ',
       ['mark', 'The'],
@@ -74,7 +77,7 @@ describe(getMatchedContent, () => {
         "The apple is red, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious. The banana is yellow, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious",
         'delicious',
       ),
-    ).toEqual([
+    ).toStrictEqual([
       '… eeeeeeeeeeeeeeeeery ',
       ['mark', 'delicious'],
       '. The banana is yell … eeeeeeeeeeeeeeeeery ',
@@ -86,7 +89,7 @@ describe(getMatchedContent, () => {
         "The apple is red, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious. The banana is yellow, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious",
         'T',
       ),
-    ).toEqual([
+    ).toStrictEqual([
       ['mark', 'T'],
       'he apple is red, and …  apple is red, and i',
       ['mark', 'T'],
@@ -102,7 +105,7 @@ describe(getMatchedContent, () => {
         "The apple is red, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious. The banana is yellow, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious",
         'h',
       ),
-    ).toEqual([
+    ).toStrictEqual([
       'T',
       ['mark', 'h'],
       'e apple is red, and  … eeeeery delicious. T',
@@ -115,7 +118,7 @@ describe(getMatchedContent, () => {
         "The apple is red, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious. The banana is yellow, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious",
         'Th',
       ),
-    ).toEqual([
+    ).toStrictEqual([
       ['mark', 'Th'],
       'e apple is red, and  … eeeeeery delicious. ',
       ['mark', 'Th'],
@@ -127,7 +130,7 @@ describe(getMatchedContent, () => {
         "The apple is red, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious. The banana is yellow, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious",
         'e',
       ),
-    ).toEqual([
+    ).toStrictEqual([
       'Th',
       ['mark', 'e'],
       ' appl',
@@ -217,7 +220,7 @@ describe(getMatchedContent, () => {
         "The apple is red, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious. The banana is yellow, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious",
         's',
       ),
-    ).toEqual([
+    ).toStrictEqual([
       'The apple i',
       ['mark', 's'],
       " red, and it'",
@@ -236,7 +239,7 @@ describe(getMatchedContent, () => {
         "The apple is red, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious. The banana is yellow, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious",
         'u',
       ),
-    ).toEqual([
+    ).toStrictEqual([
       '… eeeeeeeeeery delicio',
       ['mark', 'u'],
       's. The banana is yel … eeeeeeeeeery delicio',
@@ -249,7 +252,7 @@ describe(getMatchedContent, () => {
         "The apple is red, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious. The banana is yellow, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeery delicious",
         'us',
       ),
-    ).toEqual([
+    ).toStrictEqual([
       '… eeeeeeeeeery delicio',
       ['mark', 'us'],
       '. The banana is yell … eeeeeeeeeery delicio',
