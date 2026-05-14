@@ -61,7 +61,7 @@ export const getSearchResults = (
     const { id, terms, score } = result
     const isCustomField = id.includes('@')
     const isSection = id.includes('#')
-    const [pageIndex, info] = id.split(/[#@]/)
+    const [pageIndex, info] = id.split(/[#@]/u)
     const pageId = Number(pageIndex)
 
     const displayTerms = terms

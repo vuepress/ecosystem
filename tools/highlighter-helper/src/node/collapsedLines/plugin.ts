@@ -56,13 +56,13 @@ export const collapsedLines = (
     const styles = `--vp-collapsed-lines:${startLines};`
 
     const finalCode = code
-      .replace(/<\/div>$/, `${collapsedLinesCode}</div>`)
-      .replace(/"(language-[^"]*?)"/, '"$1 has-collapsed-lines collapsed"')
-      .replace(/^<div[^>]*>/, (match) => {
+      .replace(/<\/div>$/u, `${collapsedLinesCode}</div>`)
+      .replace(/"(language-[^"]*?)"/u, '"$1 has-collapsed-lines collapsed"')
+      .replace(/^<div[^>]*>/u, (match) => {
         if (!match.includes('style='))
           return `${match.slice(0, -1)} style="${styles}">`
 
-        return match.replace(/(style=")/, `$1${styles}`)
+        return match.replace(/(style=")/u, `$1${styles}`)
       })
 
     return finalCode

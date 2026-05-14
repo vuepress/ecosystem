@@ -97,8 +97,8 @@ export const blogPlugin =
       type = [],
       slugify = (name: string): string =>
         name
-          .replaceAll(/[ _]/g, '-')
-          .replaceAll(/[:?*|\\/<>]/g, '')
+          .replaceAll(/[ _]/gu, '-')
+          .replaceAll(/[:?*|\\/<>]/gu, '')
           .toLowerCase(),
     } = options
     const hotReload = options.hotReload ?? app.env.isDebug

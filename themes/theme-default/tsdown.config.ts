@@ -18,7 +18,7 @@ export default tsdownConfig(
       .map((file) => `client/utils/${file.slice(0, -3)}`),
   ],
   {
-    neverBundle: [/^@theme\//, /\.vue$/, /\.s?css$/],
+    neverBundle: [/^@theme\//u, /\.vue$/u, /\.s?css$/u],
     copy: [
       'client/components/global/*.vue',
       'client/components/*.vue',

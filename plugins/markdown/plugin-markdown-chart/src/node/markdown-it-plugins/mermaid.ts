@@ -26,15 +26,12 @@ export const getMermaidContent = ({
   title = '',
   indent = diagram !== 'mermaid',
 }: MermaidOptions): string => {
-  const [, originalFrontmatter, rest] =
-    /^\s*---\n([^]*?)\n---\n\n([\s\S]*)\s*$/m.exec(content) ?? [
-      null,
-      '',
-      content,
-    ]
+  const match = /^\s*---\n([^]*?)\n---\n\n([\s\S]*)/u.exec(content)
+  const originalFrontmatter = match?.[1] ?? ''
+  const rest = match ? match[2].trimEnd() : content
 
   const frontmatter = (
-    !title || /^title:\s*(.*)/m.test(originalFrontmatter)
+    !title || /^title:\s*(.*)/mu.test(originalFrontmatter)
       ? originalFrontmatter
       : `title: ${title}\n${originalFrontmatter}`
   ).trim()

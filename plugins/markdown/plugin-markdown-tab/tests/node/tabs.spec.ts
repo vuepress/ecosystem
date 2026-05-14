@@ -6,7 +6,7 @@ import { tabs } from '../../src/node/tabs.js'
 const markdownIt = new MarkdownIt({ linkify: true }).use(tabs)
 
 describe(tabs, () => {
-  it('Should render single block', () => {
+  it('should render single block', () => {
     expect(
       markdownIt.render(`
 ::: tabs
@@ -19,7 +19,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('loose')
 
     expect(
       markdownIt.render(`
@@ -30,10 +30,10 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('tight')
   })
 
-  it('Should render multiple block', () => {
+  it('should render multiple block', () => {
     expect(
       markdownIt.render(`
 ::: tabs
@@ -52,7 +52,7 @@ const a = 1;
 
 :::
 `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('loose')
 
     expect(
       markdownIt.render(`
@@ -67,10 +67,10 @@ const a = 1;
 \`\`\`
 :::
 `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('tight')
   })
 
-  it('Should support tabs id', () => {
+  it('should support tabs id', () => {
     expect(
       markdownIt.render(`
 ::: tabs#event
@@ -83,7 +83,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('id')
 
     expect(
       markdownIt.render(`
@@ -94,7 +94,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('complex id')
 
     expect(
       markdownIt.render(`
@@ -105,7 +105,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('id with space')
 
     expect(
       markdownIt.render(`
@@ -116,10 +116,10 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('id starts and having space in the end')
   })
 
-  it('Should support active', () => {
+  it('should support active', () => {
     expect(
       markdownIt.render(`
 ::: tabs
@@ -132,7 +132,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('active loose')
 
     expect(
       markdownIt.render(`
@@ -143,7 +143,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('active tight')
 
     expect(
       markdownIt.render(`
@@ -163,7 +163,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('active multiple')
 
     expect(
       markdownIt.render(`
@@ -178,7 +178,7 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('active tight')
   })
 
   it('should ignore other items', () => {
@@ -202,7 +202,7 @@ const a = 1;
 
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('loose')
 
     expect(
       markdownIt.render(`
@@ -219,6 +219,6 @@ const a = 1;
 \`\`\`
 :::
     `),
-    ).toMatchSnapshot()
+    ).toMatchSnapshot('tight')
   })
 })

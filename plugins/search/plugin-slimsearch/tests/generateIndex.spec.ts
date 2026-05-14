@@ -20,7 +20,7 @@ const app = createBuildApp({
 await app.init()
 
 describe(generatePageIndex, () => {
-  it('Should generate index', () => {
+  it('should generate index', () => {
     const store = new PathStore()
 
     app.pages.forEach((page) => {
@@ -32,7 +32,7 @@ describe(generatePageIndex, () => {
     })
   })
 
-  it('Should generate full index', () => {
+  it('should generate full index', () => {
     const store = new PathStore()
 
     app.pages.forEach((page) => {
@@ -48,7 +48,7 @@ describe(generatePageIndex, () => {
     })
   })
 
-  it('Should support customFields', () => {
+  it('should support customFields', () => {
     const store = new PathStore()
 
     app.pages.forEach((page) => {
@@ -69,7 +69,7 @@ describe(generatePageIndex, () => {
     })
   })
 
-  it('Should support customFields with full index', () => {
+  it('should support customFields with full index', () => {
     const store = new PathStore()
 
     app.pages.forEach((page) => {
@@ -87,7 +87,7 @@ describe(generatePageIndex, () => {
     })
   })
 
-  it('Should remove custom tags by default', () => {
+  it('should remove custom tags by default', () => {
     const store = new PathStore()
 
     // Create a mock page with custom tags
@@ -121,7 +121,7 @@ describe(generatePageIndex, () => {
     expect(text).not.toContain('Text 15')
   })
 
-  it('Should preserve content inside custom tags with preserveTags', () => {
+  it('should preserve content inside custom tags with preserveTags', () => {
     const store = new PathStore()
 
     // Create a mock page with custom tags

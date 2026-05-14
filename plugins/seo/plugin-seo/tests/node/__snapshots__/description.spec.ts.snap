@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Should generate seo information > Should contain basic properties 1`] = `
+exports[`should generate seo information > should contain basic properties 1`] = `
 [
   [
     "script",
@@ -62,7 +62,7 @@ exports[`Should generate seo information > Should contain basic properties 1`] =
 ]
 `;
 
-exports[`Should generate seo information > Should contain basic properties 2`] = `
+exports[`should generate seo information > should contain basic properties 2`] = `
 [
   [
     "script",
@@ -131,7 +131,7 @@ exports[`Should generate seo information > Should contain basic properties 2`] =
 ]
 `;
 
-exports[`Should generate seo information > Should contain basic properties 3`] = `
+exports[`should generate seo information > should contain basic properties 3`] = `
 [
   [
     "script",
@@ -207,7 +207,7 @@ exports[`Should generate seo information > Should contain basic properties 3`] =
 ]
 `;
 
-exports[`Should generate seo information > Should contain basic properties 4`] = `
+exports[`should generate seo information > should contain basic properties 4`] = `
 [
   [
     "script",
@@ -276,7 +276,7 @@ exports[`Should generate seo information > Should contain basic properties 4`] =
 ]
 `;
 
-exports[`Should generate seo information > Should contain basic properties 5`] = `
+exports[`should generate seo information > should contain basic properties 5`] = `
 [
   [
     "script",
@@ -338,7 +338,7 @@ exports[`Should generate seo information > Should contain basic properties 5`] =
 ]
 `;
 
-exports[`Should generate seo information > Should contain basic properties 6`] = `
+exports[`should generate seo information > should contain basic properties 6`] = `
 [
   [
     "script",
@@ -407,7 +407,7 @@ exports[`Should generate seo information > Should contain basic properties 6`] =
 ]
 `;
 
-exports[`Should generate seo information > Should contain basic properties 7`] = `
+exports[`should generate seo information > should contain basic properties 7`] = `
 [
   [
     "script",
@@ -483,7 +483,7 @@ exports[`Should generate seo information > Should contain basic properties 7`] =
 ]
 `;
 
-exports[`Should generate seo information > Should contain basic properties 8`] = `
+exports[`should generate seo information > should contain basic properties 8`] = `
 [
   [
     "script",
@@ -552,7 +552,7 @@ exports[`Should generate seo information > Should contain basic properties 8`] =
 ]
 `;
 
-exports[`Should generate seo information > Should contain basic properties 9`] = `
+exports[`should generate seo information > should contain basic properties 9`] = `
 [
   [
     "script",

@@ -74,7 +74,9 @@ export const gitPlugin =
       ) => {
         page.data.git = {}
 
-        if (!isGitRepo || page.filePathRelative == null) return
+        const { filePathRelative } = page
+
+        if (!isGitRepo || filePathRelative == null) return
 
         if (filter && !filter(page)) return
 
@@ -90,9 +92,9 @@ export const gitPlugin =
           return
 
         const filePaths = [
-          page.filePathRelative,
+          filePathRelative,
           ...(page.frontmatter.gitInclude ?? []).map((item) =>
-            path.join(page.filePathRelative, '..', item),
+            path.join(filePathRelative, '..', item),
           ),
         ]
 

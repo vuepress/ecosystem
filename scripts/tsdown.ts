@@ -1,11 +1,29 @@
 import { NodePackageImporter } from 'sass-embedded'
-import type { UserConfig, CopyEntry, TsdownInputOption } from 'tsdown'
+import type {
+  UserConfig,
+  CopyEntry,
+  TsdownInputOption,
+  TreeshakingOptions,
+} from 'tsdown'
 import { defineConfig } from 'tsdown'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-const defaultModuleSideEffects = (id: string): boolean =>
-  id.endsWith('.css') || id.endsWith('.scss')
+type ModuleSideEffectsOptions = Exclude<
+  TreeshakingOptions['moduleSideEffects'],
+  undefined
+>
+
+const defaultModuleSideEffects: ModuleSideEffectsOptions = [
+  {
+    test: /\.css$/u,
+    sideEffects: true,
+  },
+  {
+    test: /\.scss$/u,
+    sideEffects: true,
+  },
+]
 
 /**
  * Tsdown options
@@ -39,19 +57,11 @@ export interface TsdownOptions extends Omit<UserConfig, 'entry' | 'copy'> {
   neverBundle?: (string | RegExp)[]
 
   /**
-   * Custom module side effects determination
+   * Treeshaking options
    *
-   * By default, only `.css` and `.scss` imports are considered to have side
-   * effects. Use this to add additional side-effect patterns. This is part of
-   * the `treeshake` option in tsdown/rolldown.
-   *
-   * 自定义模块副作用判定，默认仅保留 `.css` 和 `.scss` 导入的副作用。
-   *
-   * @default (id) => id.endsWith('.css') || id.endsWith('.scss')
-   * @param id - Module ID / 模块 ID
-   * @param external - Whether the module is external / 模块是否为外部模块
+   * 摇树选项
    */
-  moduleSideEffects?: (id: string, external: boolean) => boolean | undefined
+  moduleSideEffects?: ModuleSideEffectsOptions
 
   /**
    * Additional files to copy to the output directory
@@ -121,13 +131,13 @@ export const tsdownConfig = (
     sourcemap: true,
     minify: isProduction,
     platform,
-    target: ['node20.19', 'chrome107', 'edge107', 'firefox104', 'safari16'],
+    target: ['node22.18', 'chrome107', 'edge107', 'firefox104', 'safari16'],
     treeshake: treeshake ?? {
       moduleSideEffects: moduleSideEffects ?? defaultModuleSideEffects,
     },
     deps: {
       alwaysBundle,
-      neverBundle: [/^@internal\//, /^@temp\//, ...neverBundle],
+      neverBundle: [/^@internal\//u, /^@temp\//u, ...neverBundle],
       onlyBundle,
     },
     css: {
@@ -149,6 +159,12 @@ export const tsdownConfig = (
 
       return item
     }),
+    inputOptions: {
+      experimental: {
+        lazyBarrel: true,
+        nativeMagicString: true,
+      },
+    },
     fixedExtension: false,
     publint,
     ...rest,

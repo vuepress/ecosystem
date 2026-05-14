@@ -53,7 +53,7 @@ const options: PwaPluginOptions = {
   },
 }
 
-describe('Test head function', () => {
+describe('test head function', () => {
   it('should generate PWA tags because they do not exist', () => {
     // @ts-expect-error: Fake app
     const app = createBuildApp({
@@ -67,7 +67,7 @@ describe('Test head function', () => {
 
     injectLinksToHead(app, options)
 
-    expect(app.siteData.head).toEqual([
+    expect(app.siteData.head).toStrictEqual([
       [
         'meta',
         {
@@ -181,7 +181,7 @@ describe('Test head function', () => {
 
     injectLinksToHead(app, optionsWithManifest)
 
-    expect(app.siteData.head).toEqual([
+    expect(app.siteData.head).toStrictEqual([
       [
         'meta',
         {
@@ -246,7 +246,7 @@ describe('Test head function', () => {
     })
 
     injectLinksToHead(app, options)
-    expect(app.siteData.head).toEqual([
+    expect(app.siteData.head).toStrictEqual([
       [
         'link',
         {

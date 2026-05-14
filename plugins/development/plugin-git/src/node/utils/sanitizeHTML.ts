@@ -21,7 +21,7 @@ export const sanitizeHTML = (html: string): string => {
     .use(rehypeSanitize, {
       tagNames: ['a', 'em', 'strong', 'code'],
       attributes: {
-        a: [['href', /^https?:\/\//], 'target', 'rel'],
+        a: [['href', /^https?:\/\//u], 'target', 'rel'],
       },
       strip: ['script', 'style'],
     })

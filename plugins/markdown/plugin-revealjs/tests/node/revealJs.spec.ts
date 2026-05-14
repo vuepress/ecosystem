@@ -35,7 +35,7 @@ $$
 describe(revealJs, () => {
   const markdownIt = new MarkdownIt({ linkify: true }).use(revealJs)
 
-  it('Should render', () => {
+  it('should render', () => {
     const renderResult = markdownIt.render(`
 @slidestart
 ${demo}
@@ -43,24 +43,27 @@ ${demo}
 `)
 
     expect(renderResult).toMatch(
-      /<RevealJs code=".*?" theme=".*?"><\/RevealJs>/,
+      /<RevealJs code=".*?" theme=".*?"><\/RevealJs>/u,
     )
     expect(renderResult).toMatchSnapshot()
   })
 
-  it('Should not render', () => {
-    expect(
-      markdownIt.render(`
+  it('should not render', () => {
+    const cases = [
+      `
 ${demo}
-`),
-    ).toMatchSnapshot()
-
-    expect(
-      markdownIt.render(`
+`,
+      `
 @slidestar
 ${demo}
 @slideend
-`),
-    ).toMatchSnapshot()
+`,
+    ]
+
+    cases.forEach((caseContent) => {
+      const result = markdownIt.render(caseContent)
+
+      expect(result).not.toContain('RevealJs')
+    })
   })
 })

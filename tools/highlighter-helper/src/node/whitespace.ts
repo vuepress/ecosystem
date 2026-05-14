@@ -4,14 +4,14 @@
  * 匹配代码块信息中 `:whitespace` 指令的正则表达式
  */
 export const WHITESPACE_REGEXP =
-  /:whitespace(?:=(all|boundary|leading|trailing)?)?\b/
+  /:whitespace(?:=(all|boundary|leading|trailing)?)?\b/u
 
 /**
  * Regular expression to match `:no-whitespace` directive in code block info
  *
  * 匹配代码块信息中 `:no-whitespace` 指令的正则表达式
  */
-export const NO_WHITESPACE_REGEXP = /:no-whitespace\b/
+export const NO_WHITESPACE_REGEXP = /:no-whitespace\b/u
 
 /**
  * Whitespace position types

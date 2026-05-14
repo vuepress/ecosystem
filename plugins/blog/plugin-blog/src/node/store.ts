@@ -30,7 +30,7 @@ export class Store {
    */
   private readonly freeSlots: number[]
 
-  public constructor() {
+  constructor() {
     this.pathToIndex = new Map()
     this.indexToPath = []
     this.freeSlots = []
@@ -44,7 +44,7 @@ export class Store {
    * @param item - Page path to add / 要添加的页面路径
    * @returns Index of the item in the store / 条目在存储中的索引
    */
-  public addItem(item: string): number {
+  addItem(item: string): number {
     const existing = this.pathToIndex.get(item)
 
     if (existing !== undefined) return existing
@@ -72,7 +72,7 @@ export class Store {
    * @param items - Page paths to add / 要添加的页面路径数组
    * @returns Array of indexes / 索引数组
    */
-  public addItems(items: string[]): number[] {
+  addItems(items: string[]): number[] {
     return items.map((item) => this.addItem(item))
   }
 
@@ -83,7 +83,7 @@ export class Store {
    *
    * @param item - Page path to clear / 要清除的页面路径
    */
-  public clearItem(item: string): void {
+  clearItem(item: string): void {
     const index = this.pathToIndex.get(item)
 
     if (index !== undefined) {
@@ -101,7 +101,7 @@ export class Store {
    * @returns JSON string of the store as an index-to-path object / 存储的索引到路径对象的
    *   JSON 字符串
    */
-  public toJSON(): string {
+  toJSON(): string {
     const result: Record<number, string> = {}
 
     for (const [path, index] of this.pathToIndex) result[index] = path

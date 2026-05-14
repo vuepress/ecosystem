@@ -11,16 +11,16 @@ import {
 
 describe('plugin-replace-assets > normalizeRules', () => {
   it('should work with empty options', () => {
-    expect(normalizeRules('')).toEqual([])
-    expect(normalizeRules([])).toEqual([])
-    expect(normalizeRules({})).toEqual([])
-    expect(normalizeRules({ rules: [] })).toEqual([])
+    expect(normalizeRules('')).toStrictEqual([])
+    expect(normalizeRules([])).toStrictEqual([])
+    expect(normalizeRules({})).toStrictEqual([])
+    expect(normalizeRules({ rules: [] })).toStrictEqual([])
   })
 
   it('should work with string', () => {
     const rules = normalizeRules('https://example.com/assets/')
 
-    expect(rules).toEqual([
+    expect(rules).toStrictEqual([
       {
         find: createFindPattern('images', KNOWN_IMAGE_EXTENSIONS),
         replacement: 'https://example.com/assets/',
@@ -38,7 +38,7 @@ describe('plugin-replace-assets > normalizeRules', () => {
     )
     const rules = normalizeRules(replacement)
 
-    expect(rules).toEqual([
+    expect(rules).toStrictEqual([
       {
         find: createFindPattern('images', KNOWN_IMAGE_EXTENSIONS),
         replacement,
@@ -56,7 +56,7 @@ describe('plugin-replace-assets > normalizeRules', () => {
       replacement: 'https://example.com/images/',
     })
 
-    expect(rules).toEqual([
+    expect(rules).toStrictEqual([
       {
         find: '^/images/.*\\.(jpe?g|png|gif|svg)$',
         replacement: 'https://example.com/images/',
@@ -76,7 +76,7 @@ describe('plugin-replace-assets > normalizeRules', () => {
       },
     ])
 
-    expect(rules).toEqual([
+    expect(rules).toStrictEqual([
       {
         find: '^/images/.*\\.(jpe?g|png|gif|svg)$',
         replacement: 'https://example.com/images/',
@@ -97,7 +97,7 @@ describe('plugin-replace-assets > normalizeRules', () => {
       media,
     })
 
-    expect(rules).toEqual([
+    expect(rules).toStrictEqual([
       {
         find: createFindPattern('images', KNOWN_IMAGE_EXTENSIONS),
         replacement: 'https://example.com/images/',
@@ -117,7 +117,7 @@ describe('plugin-replace-assets > normalizeRules', () => {
       },
     })
 
-    expect(rules).toEqual([
+    expect(rules).toStrictEqual([
       {
         find: '^/images/.*\\.(jpe?g|png|gif|svg)$',
         replacement: 'https://example.com/images/',
@@ -139,7 +139,7 @@ describe('plugin-replace-assets > normalizeRules', () => {
       ],
     })
 
-    expect(rules).toEqual([
+    expect(rules).toStrictEqual([
       {
         find: '^/images/.*\\.(jpe?g|png|gif|svg)$',
         replacement: 'https://example.com/images/',

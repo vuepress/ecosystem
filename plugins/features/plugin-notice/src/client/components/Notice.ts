@@ -30,7 +30,7 @@ export const Notice = defineComponent({
     const matchedConfig = computed(() => {
       const option = noticeOptions.value.find((item) =>
         'match' in item
-          ? new RegExp(item.match).test(routePath.value)
+          ? new RegExp(item.match, 'u').test(routePath.value)
           : startsWith(routePath.value, item.path),
       )
 

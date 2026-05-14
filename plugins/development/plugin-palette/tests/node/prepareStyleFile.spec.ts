@@ -37,6 +37,7 @@ describe('plugin-palette > node > prepareStyleFile', () => {
       },
     ]
 
+    // oxlint-disable-next-line vitest/require-hook
     testCases.forEach(({ name, ext }) => {
       it(name, async () => {
         const userStyleFile = path.resolve(
@@ -52,7 +53,7 @@ describe('plugin-palette > node > prepareStyleFile', () => {
           importCode,
         })
         const result = (await fs.readFile(tempFile)).toString()
-        expect(result).toEqual(importCode(userStyleFile))
+        expect(result).toStrictEqual(importCode(userStyleFile))
       })
     })
   })
@@ -69,6 +70,6 @@ describe('plugin-palette > node > prepareStyleFile', () => {
       importCode: presetOptions.css.importCode,
     })
     const result = (await fs.readFile(tempFile)).toString()
-    expect(result).toEqual('')
+    expect(result).toBe('')
   })
 })

@@ -44,7 +44,7 @@ const renderMarkdown = function (
   md: string,
 ): ElementContent[] {
   const mdast = fromMarkdown(
-    md.replaceAll(/\{@link ([^}]*)\}/g, '$1'), // replace jsdoc links
+    md.replaceAll(/\{@link ([^}]*)\}/gu, '$1'), // replace jsdoc links
     { mdastExtensions: [gfmFromMarkdown()] },
   )
 
@@ -91,7 +91,7 @@ const renderMarkdownInline = function (
   md: string,
   context?: string,
 ): ElementContent[] {
-  const str = context === 'tag:param' ? md.replace(/^([\w$-]+)/, '`$1` ') : md
+  const str = context === 'tag:param' ? md.replace(/^([\w$-]+)/u, '`$1` ') : md
   const children = renderMarkdown.call(this, str)
 
   // return the children (content) of the first paragraph if it's the only one

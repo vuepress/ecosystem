@@ -1,6 +1,6 @@
-const LINE_NUMBERS_REGEXP = /:line-numbers\b/
-const NO_LINE_NUMBERS_REGEXP = /:no-line-numbers\b/
-const LINE_NUMBERS_START_REGEXP = /:line-numbers=(\d+)\b/
+const LINE_NUMBERS_REGEXP = /:line-numbers\b/u
+const NO_LINE_NUMBERS_REGEXP = /:no-line-numbers\b/u
+const LINE_NUMBERS_START_REGEXP = /:line-numbers=(\d+)\b/u
 
 /**
  * Resolve the `:line-numbers` `:line-numbers=num` / `:no-line-numbers` mark

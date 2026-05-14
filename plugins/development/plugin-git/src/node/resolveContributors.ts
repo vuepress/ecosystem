@@ -87,7 +87,7 @@ export const getRawContributors = (
     // If one of the contributors is a "noreply" email address, and there's
     // already a contributor with the same name, it is very likely a duplicate,
     // so it can be removed.
-    if (/no-?reply/.test(item.email.split('@')[1])) {
+    if (/no-?reply/u.test(item.email.split('@')[1])) {
       const realIndex = self.findIndex((info) => info.name === item.name)
       if (realIndex !== index) {
         // Update the "real" contributor to also include the noreply's commits

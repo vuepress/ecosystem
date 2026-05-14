@@ -9,7 +9,7 @@ describe(chartjs, () => {
     allowAll: true,
   })
 
-  it('Should resolve chartjs info with json block', () => {
+  it('should resolve chartjs info with json block', () => {
     const result = markdownIt.render(
       `
 ::: chartjs A bar chart
@@ -58,13 +58,13 @@ describe(chartjs, () => {
       {},
     )
 
-    expect(result).toMatch(/<ChartJS.*><\/ChartJS>/)
+    expect(result).toMatch(/<ChartJS.*><\/ChartJS>/u)
     expect(result).toContain(`title="${encodeURIComponent('A bar chart')}"`)
     expect(result).not.toContain('type="')
     expect(result).toMatchSnapshot()
   })
 
-  it('Should resolve chartjs info with js block', () => {
+  it('should resolve chartjs info with js block', () => {
     const result = markdownIt.render(
       `
 ::: chartjs A bar chart
@@ -113,13 +113,13 @@ const config = {
       {},
     )
 
-    expect(result).toMatch(/<ChartJS.*><\/ChartJS>/)
+    expect(result).toMatch(/<ChartJS.*><\/ChartJS>/u)
     expect(result).toContain(`title="${encodeURIComponent('A bar chart')}"`)
     expect(result).toContain('type="js"')
     expect(result).toMatchSnapshot()
   })
 
-  it('Should resolve chart info with javascript block', () => {
+  it('should resolve chart info with javascript block', () => {
     const result = markdownIt.render(
       `
 ::: chartjs A bar chart
@@ -168,13 +168,13 @@ const config = {
       {},
     )
 
-    expect(result).toMatch(/<ChartJS.*><\/ChartJS>/)
+    expect(result).toMatch(/<ChartJS.*><\/ChartJS>/u)
     expect(result).toContain(`title="${encodeURIComponent('A bar chart')}"`)
     expect(result).toContain('type="js"')
     expect(result).toMatchSnapshot()
   })
 
-  it('Should resolve chart with empty title and body', () => {
+  it('should resolve chart with empty title and body', () => {
     const result = markdownIt.render(
       `
 ::: chartjs
@@ -184,13 +184,13 @@ const config = {
       {},
     )
 
-    expect(result).toMatch(/<ChartJS.*><\/ChartJS>/)
+    expect(result).toMatch(/<ChartJS.*><\/ChartJS>/u)
     expect(result).not.toContain('title="')
     expect(result).not.toContain('type="')
     expect(result).toMatchSnapshot()
   })
 
-  it('Should not break markdown fence', () => {
+  it('should not break markdown fence', () => {
     const result = markdownIt.render(
       `
 \`\`\`js
@@ -200,11 +200,11 @@ const a = 1;
       {},
     )
 
-    expect(result).toMatch(/<pre.*>[\s\S]*<\/pre>/)
+    expect(result).toMatch(/<pre.*>[\s\S]*<\/pre>/u)
     expect(result).toMatchSnapshot()
   })
 
-  it('Should remove unsafe script block by default', () => {
+  it('should remove unsafe script block by default', () => {
     const md = new MarkdownIt({ linkify: true }).use(chartjs)
 
     const result = md.render(

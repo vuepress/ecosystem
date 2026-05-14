@@ -46,11 +46,13 @@ export const injectScssConfigModule = (
   const configImport = `@use "@sass-palette/${getIdPrefix(id)}config";`
   const configRegExp = new RegExp(
     `@use\\s+(["'])@sass-palette\\/${getIdPrefix(id)}config\\1;`,
+    'u',
   )
   const paletteModuleName = `${getIdPrefix(id)}palette`
   const paletteImport = `@use "@sass-palette/${getIdPrefix(id)}palette";`
   const paletteRegExp = new RegExp(
     `@use\\s+(["'])@sass-palette\\/${getIdPrefix(id)}palette\\1;`,
+    'u',
   )
 
   // For vite

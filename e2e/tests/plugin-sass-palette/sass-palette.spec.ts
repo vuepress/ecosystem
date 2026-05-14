@@ -11,9 +11,9 @@ test.describe('plugin-sass-palette', () => {
   test('default palette', async ({ page }) => {
     await page.goto('sass-palette/')
 
-    await expect(page.locator('#snake-color')).toHaveText(/#f00|red/)
-    await expect(page.locator('#pascal-color')).toHaveText(/#f00|red/)
-    await expect(page.locator('#kebab-color')).toHaveText(/#f00|red/)
+    await expect(page.locator('#snake-color')).toHaveText(/#f00|red/u)
+    await expect(page.locator('#pascal-color')).toHaveText(/#f00|red/u)
+    await expect(page.locator('#kebab-color')).toHaveText(/#f00|red/u)
     await expect(page.locator('#snake_color')).toBeEmpty()
     await expect(page.locator('#PascalColor')).toBeEmpty()
   })
@@ -33,11 +33,11 @@ test.describe('plugin-sass-palette', () => {
   test('generator', async ({ page }) => {
     await page.goto('sass-palette/')
 
-    await expect(page.locator('#color-default')).toHaveText(/#f00|red/)
+    await expect(page.locator('#color-default')).toHaveText(/#f00|red/u)
     await expect(page.locator('#color-user')).toHaveText('#00f')
     await expect(page.locator('#color-generator')).toHaveText('#00f')
     await expect(page.locator('#config-colors')).toHaveText(
-      /(?:#f00|red), #0f0, #00f/,
+      /(?:#f00|red), #0f0, #00f/u,
     )
     await expect(page.locator('#color-count')).toHaveText('3')
     await expect(page.locator('#count')).toBeEmpty()

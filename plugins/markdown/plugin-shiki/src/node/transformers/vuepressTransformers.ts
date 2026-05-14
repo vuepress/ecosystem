@@ -1,6 +1,6 @@
 import type { ShikiTransformer } from 'shiki'
 
-const CODE_ESCAPE_RE = /\[\\!code/g
+const CODE_ESCAPE_RE = /\[\\!code/gu
 
 /** A transformer to add `vp-code` class to code blocks for better styling */
 export const addClassTransformer: ShikiTransformer = {

@@ -6,7 +6,7 @@ import {
 } from '../../src/node/utils/encodeXML.js'
 
 describe(encodeCDATA, () => {
-  it('Should encode CDATA', () => {
+  it('should encode CDATA', () => {
     expect(encodeCDATA('Certain tokens like ]]> can be difficult')).toBe(
       'Certain tokens like ]]]]><![CDATA[> can be difficult',
     )
@@ -14,7 +14,7 @@ describe(encodeCDATA, () => {
 })
 
 describe(encodeXMLContent, () => {
-  it('Should encode XMLContent', () => {
+  it('should encode XMLContent', () => {
     const content = '"1 > 2"'
 
     expect(encodeXMLContent(content)).toBe('&quot;1 &gt; 2&quot;')

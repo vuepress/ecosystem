@@ -8,7 +8,7 @@ import type { IconType } from '../../shared/index.js'
 import '../styles/vp-icon.scss'
 
 const appendFontawesomePrefix = (icon: string): string =>
-  icon.includes('fa-') || /^fa.$/.test(icon) ? icon : `fa-${icon}`
+  icon.includes('fa-') || /^fa.$/u.test(icon) ? icon : `fa-${icon}`
 
 export const VPIcon = defineComponent({
   name: 'VPIcon',

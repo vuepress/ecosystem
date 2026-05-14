@@ -9,7 +9,7 @@ import {
   sanitizeHTML,
 } from './utils/index.js'
 
-const RE_CLEAN_REFS = /[()]/g
+const RE_CLEAN_REFS = /[()]/gu
 
 const parseTagName = (refs: string): string | null => {
   if (!refs) return null

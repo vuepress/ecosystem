@@ -10,7 +10,7 @@ const containerId = 'message-container'
 export class Message {
   private elements: Record<number, HTMLDivElement>
 
-  public constructor() {
+  constructor() {
     this.elements = {}
   }
 
@@ -21,7 +21,7 @@ export class Message {
    *
    * @returns Message container element / 消息容器元素
    */
-  public static get containerElement(): HTMLElement {
+  static get containerElement(): HTMLElement {
     let containerElement = document.querySelector<HTMLElement>(
       `#${containerId}`,
     )
@@ -43,7 +43,7 @@ export class Message {
    * @param messageId - Message ID / 消息 ID
    * @returns Message element / 消息元素
    */
-  public getElement(messageId: number): HTMLDivElement {
+  getElement(messageId: number): HTMLDivElement {
     return this.elements[messageId]
   }
 
@@ -57,7 +57,7 @@ export class Message {
    * @param clickToClose - Whether to close on click / 是否点击关闭
    * @returns Message ID / 消息 ID
    */
-  public pop(html: string, duration = 2000, clickToClose = true): number {
+  pop(html: string, duration = 2000, clickToClose = true): number {
     const messageId = Date.now()
     const messageElement = document.createElement('div')
     messageElement.className = 'message-item move-in'
@@ -88,7 +88,7 @@ export class Message {
    * @param messageId - Message ID to close, if not provided, close all / 要关闭的消息
    *   ID，如果未提供则关闭所有
    */
-  public close(messageId?: number): void {
+  close(messageId?: number): void {
     if (messageId == null) {
       // close all messages
       keys(this.elements).forEach((id) => {
@@ -112,7 +112,7 @@ export class Message {
    *
    * 销毁消息实例
    */
-  public destroy(): void {
+  destroy(): void {
     document.querySelector<HTMLElement>(`#${containerId}`)?.remove()
     this.elements = {}
   }

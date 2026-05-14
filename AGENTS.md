@@ -23,14 +23,13 @@ scripts/      # Shared build scripts (tsdown config, release helpers)
 
 ## Requirements
 
-- **Node.js** ≥ 20.19.0 or ≥ 22.12.0
+- **Node.js** ≥ 22.12.0
 - **pnpm** ≥ 10 (`packageManager` is pinned in `package.json`)
 
 ## Essential Commands
 
 | Command               | What it does                                                  |
 | --------------------- | ------------------------------------------------------------- |
-| `pnpm install`        | Install all dependencies                                      |
 | `pnpm run bundle`     | Build every package with `tsdown` (required before e2e tests) |
 | `pnpm run test:unit`  | Run Vitest unit tests                                         |
 | `pnpm run test:e2e`   | Run Playwright e2e tests                                      |

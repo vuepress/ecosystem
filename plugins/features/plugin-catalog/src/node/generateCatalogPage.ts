@@ -35,7 +35,7 @@ export const generateCatalogPage = async (
     // not 404 page
     if (pagePath !== '/404.html') {
       while (catalogPath !== pathLocale) {
-        catalogPath = catalogPath.replace(/\/(?:[^/]+\/?)$/, '/')
+        catalogPath = catalogPath.replace(/\/(?:[^/]+\/?)$/u, '/')
 
         if (
           // not discovered yet
@@ -57,7 +57,7 @@ export const generateCatalogPage = async (
   await Promise.all(
     Array.from(pathToBeGenerated, (path) => decodeURI(path)).map(
       async (path) => {
-        const [, basename = ''] = /\/([^/]+)\/?$/.exec(path) ?? []
+        const [, basename = ''] = /\/([^/]+)\/?$/u.exec(path) ?? []
         const title = getTitleFromFilename(basename)
 
         return createPage(app, {

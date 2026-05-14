@@ -26,8 +26,8 @@ export const useClarityAnalytics = ({
   // oxlint-disable-next-line func-names
   window.clarity = function (): void {
     // @ts-expect-error: Property 'q' does not exist on type
-    // oxlint-disable-next-line typescript/no-unsafe-member-access, typescript/no-unsafe-call, typescript/no-unsafe-assignment, prefer-rest-params, id-length
-    ;(window.clarity.q = window.clarity.q ?? []).push(arguments)
+    // oxlint-disable-next-line typescript/no-unsafe-member-access, typescript/no-unsafe-call, prefer-rest-params, id-length
+    ;(window.clarity.q ??= []).push(arguments)
   }
 
   const script = document.createElement('script')
