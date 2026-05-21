@@ -92,6 +92,11 @@ export interface SubmoduleInfo {
    */
   provider?: KnownGitProvider | null
 
+  /**
+   * Git URL pattern for the submodule
+   *
+   * 子模块的 Git URL 模式
+   */
   pattern?: GitUrlPattern
 }
 

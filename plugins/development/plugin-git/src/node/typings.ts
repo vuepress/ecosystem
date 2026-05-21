@@ -21,6 +21,10 @@ export interface RawCommit {
   /** The co-authors of the commit */
   coAuthors: CoAuthorInfo[]
 
+  /**
+   * Information about the submodule if the commit is related to a submodule
+   * update, otherwise null.
+   */
   submodule: SubmoduleInfo | null
 }
 
