@@ -90,9 +90,11 @@ const runGitLog = (args: string[], cwd: string): Promise<string> =>
  * This function runs `git rev-parse --show-toplevel` in the directory of the
  * target file to determine the top-level directory of the git repository.
  *
- * @param filePath - File path (relative or absolute) whose repository root is requested
+ * @param filePath - File path (relative or absolute) whose repository root is
+ *   requested
  * @param cwd - Current working directory
- * @returns Promise that resolves to normalized git root path, or null if not in a git repository
+ * @returns Promise that resolves to normalized git root path, or null if not in
+ *   a git repository
  */
 const getGitRepoRoot = (
   filePath: string,
@@ -190,9 +192,9 @@ export const getRawCommits = async (
         gitRoot !== cwd && gitRoot.startsWith(`${cwd}${path.sep}`)
 
       if (isSubmodule) {
-        submodule = {
-          repoUrl: normalizeRepoUrl(getRemoteUrl(gitRoot) || ''),
-        }
+        const remoteUrl = getRemoteUrl(gitRoot)
+
+        if (remoteUrl) submodule = { repoUrl: normalizeRepoUrl(remoteUrl) }
       }
     }
 
