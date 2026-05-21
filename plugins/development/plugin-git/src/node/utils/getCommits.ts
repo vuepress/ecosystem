@@ -97,7 +97,7 @@ const runGit = (args: string[], cwd: string): Promise<string> =>
  * @returns Promise that resolves to normalized git root path, or null if not in
  *   a git repository
  */
-const getGitRepoRoot = async (
+export const getGitRepoRoot = async (
   filePath: string,
   cwd: string,
 ): Promise<string | null> => {
@@ -269,9 +269,26 @@ export const getCommits = async (
   cwd: string,
   options: GitPluginOptions,
 ): Promise<MergedRawCommit[]> => {
+  if (filepaths.length === 0) return []
+
+  const roots = await Promise.all(
+    filepaths.map((filepath) => getGitRepoRoot(filepath, cwd)),
+  )
+  const [primaryRoot] = roots
+
+  const validFilepaths = filepaths.filter((filepath, index) => {
+    if (roots[index] === primaryRoot) return true
+
+    logger.warn(
+      `Skipping '${filepath}': file belongs to a different git repository`,
+    )
+
+    return false
+  })
+
   const rawCommits = (
     await Promise.all(
-      filepaths.map((filepath) => getRawCommits(filepath, cwd, options)),
+      validFilepaths.map((filepath) => getRawCommits(filepath, cwd, options)),
     )
   ).flat()
 
