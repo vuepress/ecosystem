@@ -19,6 +19,9 @@ import { SearchLoading } from './SearchLoading.js'
 
 import '../styles/search-result.scss'
 
+const wordToVNodes = (display: Word[]): (VNode | string)[] =>
+  display.map((word) => (isString(word) ? word : h(word[0], word[1])))
+
 export default defineComponent({
   name: 'SearchResult',
 
@@ -139,9 +142,6 @@ export default defineComponent({
       else activePreviousResult()
     }
 
-    const getVNodes = (display: Word[]): (VNode | string)[] =>
-      display.map((word) => (isString(word) ? word : h(word[0], word[1])))
-
     const getDisplay = (matchedItem: MatchedItem): (VNode | string)[] => {
       if (matchedItem.type === 'customField') {
         const formatterConfig =
@@ -152,11 +152,13 @@ export default defineComponent({
           : formatterConfig.split('$content')
 
         return matchedItem.display.map((display) =>
-          h('div', getVNodes([prefix, ...display, suffix])),
+          h('div', wordToVNodes([prefix, ...display, suffix])),
         )
       }
 
-      return matchedItem.display.map((display) => h('div', getVNodes(display)))
+      return matchedItem.display.map((display) =>
+        h('div', wordToVNodes(display)),
+      )
     }
 
     const resetSearchResult = (): void => {
@@ -269,7 +271,7 @@ export default defineComponent({
                           h(
                             'div',
                             item.display.flatMap((display) =>
-                              getVNodes(display),
+                              wordToVNodes(display),
                             ),
                           ),
                         ]),

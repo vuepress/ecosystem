@@ -54,9 +54,11 @@ describe(isBoolean, () => {
 describe(isFunction, () => {
   it('should return true for function values', () => {
     expect(isFunction(() => {})).toBe(true)
-    expect(isFunction(function test() {})).toBe(true)
-    expect(isFunction(async function test() {})).toBe(true)
     expect(isFunction(async () => {})).toBe(true)
+    // oxlint-disable-next-line prefer-arrow-callback
+    expect(isFunction(function test() {})).toBe(true)
+    // oxlint-disable-next-line prefer-arrow-callback
+    expect(isFunction(async function test() {})).toBe(true)
     // oxlint-disable-next-line no-console
     expect(isFunction(console.log)).toBe(true)
     expect(isFunction(isBoolean)).toBe(true)
