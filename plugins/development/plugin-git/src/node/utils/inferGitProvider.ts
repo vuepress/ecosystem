@@ -31,7 +31,7 @@ export const getRemoteUrl = (cwd: string): string | null => {
       const remotesOutput = execSync('git remote', execOptions)
       const firstRemote = remotesOutput.split('\n')[0]?.trim()
 
-      if (firstRemote) {
+      if (firstRemote && /^[\w.-]+$/u.test(firstRemote)) {
         const remoteUrl = execSync(
           `git remote get-url ${firstRemote}`,
           execOptions,
