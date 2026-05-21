@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowJs": false,
+    "allowImportingTsExtensions": true,
     "allowUmdGlobalAccess": false,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
@@ -12,6 +13,7 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "newLine": "lf",
+    "noEmit": true,
     "noFallthroughCasesInSwitch": false,
     "noImplicitAny": true,
     "noImplicitOverride": true,

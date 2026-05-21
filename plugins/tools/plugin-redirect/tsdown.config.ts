@@ -1,4 +1,4 @@
-import { tsdownConfig } from '../../../scripts/tsdown.js'
+import { tsdownConfig } from '../../../scripts/tsdown.ts'
 
 export default tsdownConfig(
   [

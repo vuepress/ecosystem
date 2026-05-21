@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-markdown-preview",
-  "version": "2.0.0-rc.128",
+  "version": "2.0.0-rc.130",
   "description": "VuePress plugin - preview",
   "keywords": [
     "markdown",
@@ -41,7 +41,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsdown --config-loader unrun",
+    "build": "tsdown",
     "clean": "rimraf ./dist"
   },
   "dependencies": {

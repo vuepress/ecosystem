@@ -70,11 +70,4 @@ export interface SassPalettePluginOptions {
    * 你可能想要根据 `$theme-color` 的值提供一个 `$theme-color-light`。
    */
   generator?: string
-
-  /**
-   * User style file path, relative to source dir.
-   *
-   * 用户的样式文件路径，相对于源文件夹。
-   */
-  style?: string
 }

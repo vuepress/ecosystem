@@ -72,16 +72,10 @@ As a plugin developer, you should use this file to provide default CSS variables
 
   For example, you can use this to generate a `$theme-color-light` variable based on the `$theme-color` provided by the user.
 
-### style
-
-- Type: `string`
-- Details: The path to the user's custom style file, relative to the source directory. This is used for standard CSS/Sass customization.
-
 ## Alias
 
 The following aliases are available for import:
 
 - **config**: `@sass-palette/${id}-config` (Derived from `id`)
 - **palette**: `@sass-palette/${id}-palette` (Derived from `id`)
-- **style**: `@sass-palette/${id}-style` (Only available when the `style` option is set)
 - **helper**: `@sass-palette/helper`

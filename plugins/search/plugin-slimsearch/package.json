@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-slimsearch",
-  "version": "2.0.0-rc.129",
+  "version": "2.0.0-rc.130",
   "description": "VuePress plugin - built-in slimsearch",
   "keywords": [
     "plugin",
@@ -48,7 +48,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsdown --config-loader unrun",
+    "build": "tsdown",
     "clean": "rimraf ./dist"
   },
   "dependencies": {

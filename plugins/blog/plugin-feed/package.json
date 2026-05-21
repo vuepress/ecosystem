@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-feed",
-  "version": "2.0.0-rc.128",
+  "version": "2.0.0-rc.130",
   "description": "Feed plugin for vuepress-theme-hope",
   "keywords": [
     "feed",
@@ -41,7 +41,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsdown --config-loader unrun",
+    "build": "tsdown",
     "clean": "rimraf ./dist"
   },
   "dependencies": {

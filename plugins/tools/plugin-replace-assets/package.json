@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-replace-assets",
-  "version": "2.0.0-rc.128",
+  "version": "2.0.0-rc.130",
   "description": "VuePress plugin - replace assets",
   "keywords": [
     "plugin",
@@ -41,7 +41,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsdown --config-loader unrun",
+    "build": "tsdown",
     "clean": "rimraf ./dist"
   },
   "dependencies": {
@@ -50,7 +50,7 @@
     "unplugin": "^3.0.0"
   },
   "devDependencies": {
-    "webpack": "^5.106.2"
+    "webpack": "^5.107.0"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

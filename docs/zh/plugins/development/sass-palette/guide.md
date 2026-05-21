@@ -246,15 +246,3 @@ $code-c-bg: abc-config.$highlighter == 'shiki'? #fff: #f8f8f8;
 ```
 
 :::
-
-## 用户样式
-
-如果你是主题开发者，你可能希望为用户提供一种自定义主题或站点样式的方法。
-
-在这种情况下，你应该在使用此插件时将 `style` 选项设置为用户样式文件。
-
-随后，你需要手动导入 `@sass-palette/${id}-style`，并确保将其放置在 **你的主题样式之后**。
-
-::: tip
-`@sass-palette/${id}-style` 是用户样式文件的别名，你可以在 JS/TS/SASS 中导入它。
-:::

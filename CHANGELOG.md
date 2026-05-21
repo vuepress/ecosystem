@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.130](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.129...v2.0.0-rc.130) (2026-05-14)
+
+### Bug Fixes
+
+- **plugin-slimsearch:** fix build worker packing, closes [#653](https://github.com/vuepress/ecosystem/issues/653) ([#669](https://github.com/vuepress/ecosystem/issues/669)) ([0cb3f3e](https://github.com/vuepress/ecosystem/commit/0cb3f3e99c7851e6dad255278122b3cb0065f9ed))
+
+### Features
+
+- extract normalizePath to helper ([#671](https://github.com/vuepress/ecosystem/issues/671)) ([0d2830e](https://github.com/vuepress/ecosystem/commit/0d2830ed66baf0de56112397ec32b0e45ca2f631))
+
 # [2.0.0-rc.129](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.128...v2.0.0-rc.129) (2026-04-02)
 
 ### Bug Fixes

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-cache",
-  "version": "2.0.0-rc.128",
+  "version": "2.0.0-rc.130",
   "description": "VuePress plugin - cache",
   "keywords": [
     "cache",
@@ -35,12 +35,12 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsdown --config-loader unrun",
+    "build": "tsdown",
     "clean": "rimraf ./dist"
   },
   "dependencies": {
     "ci-info": "^4.4.0",
-    "lru-cache": "^11.3.6"
+    "lru-cache": "^11.5.0"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

@@ -44,6 +44,8 @@ export const defaultTheme = ({
   return {
     name: '@vuepress/theme-default',
 
+    userStyle: '.vuepress/styles/index.scss',
+
     templateBuild: path.resolve(__dirname, '../../templates/build.html'),
 
     alias: {

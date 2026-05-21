@@ -72,16 +72,10 @@ icon: settings-2
 
   例如：你可以利用它基于用户提供的 `$theme-color` 来生成一个 `$theme-color-light` 变量。
 
-### style
-
-- 类型：`string`
-- 详情：用户自定义样式文件的路径，相对于源码目录。这通常用于标准的 CSS/Sass 样式覆盖。
-
 ## 别名 (Alias)
 
 可用的导入别名如下：
 
 - **config**：`@sass-palette/${id}-config` (基于 `id` 生成)
 - **palette**：`@sass-palette/${id}-palette` (基于 `id` 生成)
-- **style**：`@sass-palette/${id}-style` (仅在设置了 `style` 选项时可用)
 - **helper**：`@sass-palette/helper`
