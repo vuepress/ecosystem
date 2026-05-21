@@ -7,6 +7,7 @@ import type { GitPluginOptions } from '../options.js'
 import type { MergedRawCommit, RawCommit } from '../typings.js'
 import { getRemoteUrl, normalizeRepoUrl } from './inferGitProvider.js'
 import { logger } from './logger.js'
+import { isSafePath } from './safePath.js'
 
 const INFO_SPLITTER = '[|]'
 const COMMIT_SPLITTER = String.raw`\|/`
@@ -49,9 +50,9 @@ const getGitLogFormat = ({
  * @param cwd - The working directory to run the git command in
  * @returns A promise that resolves with the stdout of the git command
  */
-const runGitLog = (args: string[], cwd: string): Promise<string> =>
+const runGit = (args: string[], cwd: string): Promise<string> =>
   new Promise((resolve, reject) => {
-    const gitProcess = spawn('git', ['log', ...args], {
+    const gitProcess = spawn('git', args, {
       cwd,
       stdio: ['ignore', 'pipe', 'pipe'],
     })
@@ -68,7 +69,7 @@ const runGitLog = (args: string[], cwd: string): Promise<string> =>
     })
 
     gitProcess.on('error', (error) => {
-      reject(new Error(`Failed to spawn 'git log': ${error.message}`))
+      reject(new Error(`Failed to spawn 'git ${args[0]}': ${error.message}`))
     })
 
     gitProcess.on('close', (code) => {
@@ -77,7 +78,7 @@ const runGitLog = (args: string[], cwd: string): Promise<string> =>
       } else {
         reject(
           new Error(
-            `'git log' failed with exit code ${code}: ${stderrData.trim()}`,
+            `'git ${args[0]}' failed with exit code ${code}: ${stderrData.trim()}`,
           ),
         )
       }
@@ -96,65 +97,44 @@ const runGitLog = (args: string[], cwd: string): Promise<string> =>
  * @returns Promise that resolves to normalized git root path, or null if not in
  *   a git repository
  */
-const getGitRepoRoot = (
+const getGitRepoRoot = async (
   filePath: string,
   cwd: string,
 ): Promise<string | null> => {
+  if (!isSafePath(filePath)) return null
+
   const absFilePath = path.isAbsolute(filePath)
     ? filePath
     : path.resolve(cwd, filePath)
 
   const dir = path.normalize(path.dirname(absFilePath))
-  const cachedResult = gitRepoRootResultCache.get(dir)
 
-  if (cachedResult !== undefined || gitRepoRootResultCache.has(dir))
-    return Promise.resolve(cachedResult ?? null)
+  if (gitRepoRootResultCache.has(dir))
+    return gitRepoRootResultCache.get(dir) ?? null
 
   const cachedTask = gitRepoRootTaskCache.get(dir)
   if (cachedTask) return cachedTask
 
-  const task = new Promise<string | null>((resolve) => {
-    const gitProcess = spawn('git', ['rev-parse', '--show-toplevel'], {
-      cwd: dir,
-      stdio: ['ignore', 'pipe', 'pipe'],
+  const task = runGit(['rev-parse', '--show-toplevel'], dir)
+    .then((stdout) => path.normalize(stdout.trim()))
+    // oxlint-disable-next-line promise/prefer-await-to-callbacks
+    .catch((err: unknown) => {
+      logger.error(err instanceof Error ? err.message : String(err))
+
+      return null
     })
 
-    let stdoutData = ''
-    let stderrData = ''
+  gitRepoRootTaskCache.set(dir, task)
 
-    gitProcess.stdout.on('data', (chunk: Buffer) => {
-      stdoutData += chunk.toString('utf-8')
-    })
+  try {
+    const gitRoot = await task
 
-    gitProcess.stderr.on('data', (chunk: Buffer) => {
-      stderrData += chunk.toString('utf-8')
-    })
-
-    gitProcess.on('error', (error) => {
-      logger.error(`Failed to spawn git rev-parse: ${error.message}`)
-      resolve(null)
-    })
-
-    gitProcess.on('close', (code) => {
-      if (code === 0) {
-        resolve(path.normalize(stdoutData.trim()))
-      } else {
-        logger.error(
-          `git rev-parse failed (code=${code}): ${stderrData.trim()}`,
-        )
-        resolve(null)
-      }
-    })
-  })
-
-  const cached = task.then((gitRoot) => {
     gitRepoRootResultCache.set(dir, gitRoot)
-    gitRepoRootTaskCache.delete(dir)
-    return gitRoot
-  })
-  gitRepoRootTaskCache.set(dir, cached)
 
-  return cached
+    return gitRoot
+  } finally {
+    gitRepoRootTaskCache.delete(dir)
+  }
 }
 
 /**
@@ -188,8 +168,9 @@ export const getRawCommits = async (
     if (gitRoot) {
       repoRelativeFilePath = path.relative(gitRoot, absFilePath)
 
+      const relative = path.relative(cwd, gitRoot)
       const isSubmodule =
-        gitRoot !== cwd && gitRoot.startsWith(`${cwd}${path.sep}`)
+        gitRoot !== cwd && relative !== '' && !relative.startsWith('..')
 
       if (isSubmodule) {
         const remoteUrl = getRemoteUrl(gitRoot)
@@ -198,8 +179,15 @@ export const getRawCommits = async (
       }
     }
 
-    const stdout = await runGitLog(
+    if (!isSafePath(repoRelativeFilePath)) {
+      logger.warn(`Skipping unsafe file path: ${filepath}`)
+
+      return []
+    }
+
+    const stdout = await runGit(
       [
+        'log',
         '--max-count=-1',
         `--format=${format}${COMMIT_SPLITTER}`,
         '--date=unix',
