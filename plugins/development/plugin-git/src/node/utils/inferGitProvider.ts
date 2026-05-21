@@ -52,23 +52,27 @@ export const getRemoteUrl = (cwd: string): string | null => {
  *
  * 将 Git 远程 URL 规范化为干净的 HTTPS 格式
  *
+ * @example
+ *   normalizeRepoUrl('https://github.com/user/repo.git') // 'https://github.com/user/repo'
+ *   normalizeRepoUrl('git@github.com:user/repo.git') // 'https://github.com/user/repo'
+ *   normalizeRepoUrl('ssh://git@github.com/user/repo.git') // 'https://github.com/user/repo'
+ *
  * @param url - The git remote URL / Git 远程 URL
  * @returns Normalized HTTPS URL / 规范化后的 HTTPS URL
- *
- * @example
- * normalizeRepoUrl('https://github.com/user/repo.git') // 'https://github.com/user/repo'
- * normalizeRepoUrl('git@github.com:user/repo.git') // 'https://github.com/user/repo'
- * normalizeRepoUrl('ssh://git@github.com/user/repo.git') // 'https://github.com/user/repo'
  */
 export const normalizeRepoUrl = (url: string): string => {
-  const normalized = url.replace(/\.git$/, '')
+  const normalized = url.replace(/\.git$/u, '')
 
-  const sshMatch = /^git@([^:]+):(.+)$/.exec(normalized)
+  const sshMatch = /^git@([^:]+):(.+)$/u.exec(normalized)
   if (sshMatch) return `https://${sshMatch[1]}/${sshMatch[2]}`
 
-  const sshProtocolMatch = /^ssh:\/\/git@([^/]+)\/(.+)$/.exec(normalized)
+  const sshProtocolMatch = /^ssh:\/\/git@([^/]+)\/(.+)$/u.exec(normalized)
   if (sshProtocolMatch)
     return `https://${sshProtocolMatch[1]}/${sshProtocolMatch[2]}`
+
+  const gitProtocolMatch = /^git:\/\/([^/]+)\/(.+)$/u.exec(normalized)
+  if (gitProtocolMatch)
+    return `https://${gitProtocolMatch[1]}/${gitProtocolMatch[2]}`
 
   return normalized
 }
