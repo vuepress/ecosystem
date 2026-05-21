@@ -109,7 +109,7 @@ export const getChangedFilesByDiff = (cwd = process.cwd()): string[] => {
  *
  * @param status Output from `git status --porcelain`
  * @returns Array of changed file paths
- * @throws Error if there are unstaged or untracked files
+ * @throws {Error} Error if there are unstaged or untracked files
  */
 export const parseGitStatus = (status: string): string[] => {
   const changedFiles: string[] = []

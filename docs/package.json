@@ -48,7 +48,7 @@
     "@vuepress/theme-default": "workspace:*",
     "@vueuse/core": "catalog:",
     "echarts-wordcloud": "^2.1.0",
-    "katex": "^0.16.46",
+    "katex": "^0.16.47",
     "sass-embedded": "catalog:",
     "sass-loader": "catalog:",
     "vue": "catalog:",
