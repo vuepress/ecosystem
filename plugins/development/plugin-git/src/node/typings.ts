@@ -1,4 +1,4 @@
-import type { CoAuthorInfo } from '../shared/index.js'
+import type { CoAuthorInfo, SubmoduleInfo } from '../shared/index.js'
 
 export interface RawCommit {
   /** File path */
@@ -20,6 +20,12 @@ export interface RawCommit {
 
   /** The co-authors of the commit */
   coAuthors: CoAuthorInfo[]
+
+  /**
+   * Information about the submodule if the commit is related to a submodule
+   * update, otherwise null.
+   */
+  submodule: SubmoduleInfo | null
 }
 
 export interface MergedRawCommit extends Omit<RawCommit, 'filepath'> {
