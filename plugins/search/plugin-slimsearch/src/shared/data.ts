@@ -1,35 +1,35 @@
-// oxlint-disable id-length
 import type { SearchIndex } from 'slimsearch'
 
-// oxlint-disable-next-line oxc/no-const-enum
-export const enum IndexField {
-  Heading = 'h',
-  Anchor = 'a',
-  Text = 't',
-  CustomFields = 'c',
+export const HEADING_INDEX_ID = 'h'
+export const TEXT_INDEX_ID = 't'
+export const CUSTOM_FIELDS_INDEX_ID = 'c'
+
+export const INDEX_FIELD_CONFIG = {
+  fields: [HEADING_INDEX_ID, TEXT_INDEX_ID, CUSTOM_FIELDS_INDEX_ID],
+  storeFields: [HEADING_INDEX_ID, TEXT_INDEX_ID, CUSTOM_FIELDS_INDEX_ID],
 }
 
 export type PageIndexId = `${number}`
 
 export interface PageIndexItem {
   id: PageIndexId
-  /** Heading */ h: string
-  /** Text */ t?: string[]
+  [HEADING_INDEX_ID]: string
+  [TEXT_INDEX_ID]?: string[]
 }
 
 export type SectionIndexId = `${PageIndexId}#${string}`
 
 export interface SectionIndexItem {
   id: SectionIndexId
-  /** Heading */ h: string
-  /** Text */ t?: string[]
+  [HEADING_INDEX_ID]: string
+  [TEXT_INDEX_ID]?: string[]
 }
 
 export type CustomFieldIndexID = `${PageIndexId}@${number}`
 
 export interface CustomFieldIndexItem {
   id: string
-  /** CustomFields */ c: string[]
+  [CUSTOM_FIELDS_INDEX_ID]: string[]
 }
 
 export type IndexItem = CustomFieldIndexItem | PageIndexItem | SectionIndexItem

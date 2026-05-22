@@ -7,6 +7,7 @@ import { createBuildApp } from 'vuepress/core'
 import { path } from 'vuepress/utils'
 
 import { generatePageIndex } from '../src/node/generateIndex.js'
+import { TEXT_INDEX_ID } from '../src/node/index.js'
 import type { SectionIndexItem } from '../src/node/index.js'
 import { PathStore } from '../src/node/pathStore.js'
 import { emptyTheme } from './__fixtures__/theme/empty.js'
@@ -100,7 +101,9 @@ describe(generatePageIndex, () => {
     expect(result).toMatchSnapshot('default')
 
     const text = (
-      result.find((item): item is SectionIndexItem => 't' in item)?.t ?? []
+      result.find((item): item is SectionIndexItem => 't' in item)?.[
+        TEXT_INDEX_ID
+      ] ?? []
     ).join('')
 
     expect(text).toContain('Text 1')

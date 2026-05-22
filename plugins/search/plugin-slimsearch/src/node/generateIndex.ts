@@ -1,10 +1,15 @@
-// oxlint-disable id-length
 /* oxlint-disable typescript/no-unsafe-enum-comparison */
 import { entries, fromEntries, isArray, keys, cheerio } from '@vuepress/helper'
 import type { AnyNode, Element } from 'domhandler'
 import { addAllAsync, createIndex } from 'slimsearch'
 import type { App, Page } from 'vuepress/core'
 
+import {
+  CUSTOM_FIELDS_INDEX_ID,
+  HEADING_INDEX_ID,
+  INDEX_FIELD_CONFIG,
+  TEXT_INDEX_ID,
+} from '../shared/index.js'
 import type {
   IndexItem,
   LocaleIndex,
@@ -62,6 +67,7 @@ const renderHeader = (node: Element): string => {
     .trim()
 }
 
+// oxlint-disable-next-line max-lines-per-function
 export const generatePageIndex = (
   page: Page<{ excerpt?: string }>,
   store: PathStore,
@@ -80,7 +86,10 @@ export const generatePageIndex = (
   const pageId = store.addPath(page.path).toString() as PageIndexId
   const hasExcerpt = Boolean(page.data.excerpt)
 
-  const pageIndex: PageIndexItem = { id: pageId, h: page.title }
+  const pageIndex: PageIndexItem = {
+    id: pageId,
+    [HEADING_INDEX_ID]: page.title,
+  }
   const results: IndexItem[] = [pageIndex]
 
   // Here are some variables holding the current state of the parser
@@ -91,9 +100,8 @@ export const generatePageIndex = (
 
   const addTextToIndex = (): void => {
     if (indexedText && shouldIndexContent) {
-      ;((foundFirstHeader ? sectionIndex! : pageIndex).t ??= []).push(
-        indexedText.replaceAll(/[\n\s]+/gu, ' '),
-      )
+      ;((foundFirstHeader ? sectionIndex! : pageIndex)[TEXT_INDEX_ID] ??=
+        []).push(indexedText.replaceAll(/[\n\s]+/gu, ' '))
       indexedText = ''
     }
   }
@@ -113,10 +121,10 @@ export const generatePageIndex = (
 
           sectionIndex = {
             id: `${pageId}#${id}`,
-            h: header,
+            [HEADING_INDEX_ID]: header,
           }
         } else if (header) {
-          ;((sectionIndex ?? pageIndex).t ??= []).push(header)
+          ;((sectionIndex ?? pageIndex)[TEXT_INDEX_ID] ??= []).push(header)
         }
       } else if (CONTENT_BLOCK_TAGS.includes(node.name)) {
         addTextToIndex()
@@ -182,7 +190,7 @@ export const generatePageIndex = (
   entries(customFields).forEach(([customField, values]) => {
     results.push({
       id: `${pageId}@${customField}`,
-      c: values,
+      [CUSTOM_FIELDS_INDEX_ID]: values,
     })
   })
 
@@ -231,13 +239,7 @@ export const getSearchIndexStore = async (
                 .filter((word) => word.trim()),
         ...indexOptions,
         ...indexLocaleOptions?.[localePath],
-        fields: [/** Heading */ 'h', /** Text */ 't', /** CustomFields */ 'c'],
-        storeFields: [
-          /** Heading */ 'h',
-          /** Anchor */ 'a',
-          /** Text */ 't',
-          /** CustomFields */ 'c',
-        ],
+        ...INDEX_FIELD_CONFIG,
       })
 
       await addAllAsync(index, indexes)
