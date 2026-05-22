@@ -18,9 +18,6 @@ catalogs:
     chokidar:
       specifier: ^5.0.0
       version: 5.0.0
-    sass:
-      specifier: ^1.99.0
-      version: 1.99.0
     sass-embedded:
       specifier: ^1.99.0
       version: 1.99.0
