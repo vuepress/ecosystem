@@ -144,12 +144,13 @@ export default defineComponent({
 
     const getDisplay = (matchedItem: MatchedItem): (VNode | string)[] => {
       if (matchedItem.type === 'customField') {
-        const formatterConfig =
-          customFieldConfig[matchedItem.index] || '$content'
+        const formatterConfig = customFieldConfig[matchedItem.index]
 
-        const [prefix, suffix = ''] = isPlainObject(formatterConfig)
-          ? formatterConfig[routeLocale.value].split('$content')
-          : formatterConfig.split('$content')
+        const [prefix, suffix = ''] = (
+          (isPlainObject(formatterConfig)
+            ? formatterConfig[routeLocale.value]
+            : formatterConfig) ?? ''
+        ).split('$content')
 
         return matchedItem.display.map((display) =>
           h('div', wordToVNodes([prefix, ...display, suffix])),
