@@ -2,6 +2,7 @@ import { defineConfig } from 'npm-check-updates'
 
 export default defineConfig({
   peer: true,
+  cooldown: 1,
   workspaces: true,
   upgrade: true,
   timeout: 300000,

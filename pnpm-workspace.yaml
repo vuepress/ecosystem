@@ -10,8 +10,8 @@ catalog:
   '@vuepress/bundler-webpack': 2.0.0-rc.30
   '@vueuse/core': ^14.3.0
   chokidar: ^5.0.0
-  sass: ^1.99.0
-  sass-embedded: ^1.99.0
+  sass: ^1.100.0
+  sass-embedded: ^1.100.0
   sass-loader: ^17.0.0
   vue: ^3.5.34
   vuepress: 2.0.0-rc.30
@@ -26,12 +26,12 @@ minimumReleaseAgeExclude:
   - '@vuepress/*'
   - vuepress
 
-overrides:
-  rolldown: ^1.0.0
-
 peerDependencyRules:
   allowedVersions:
     artalk>marked: ^17.0.0
     echarts-wordcloud>echarts: ^6.0.0
 
 cleanupUnusedCatalogs: true
+
+configDependencies:
+  pacquet: '^0.2.9'
