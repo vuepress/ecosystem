@@ -43,7 +43,14 @@ export const commentPlugin =
         `Package ${pkg} is not installed, please install it manually!`,
       )
 
-      return { name: PLUGIN_NAME }
+      return {
+        name: PLUGIN_NAME,
+
+        // avoid runtime error when including define function in client config
+        define: {
+          __COMMENT_OPTIONS__: {},
+        },
+      }
     }
 
     return {
