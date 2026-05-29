@@ -1,6 +1,6 @@
 import type { TwoslashRenderer } from '@shikijs/twoslash/core'
 import { rendererRich } from '@shikijs/twoslash/core'
-import type { Element, ElementContent, Text } from 'hast'
+import type { Element, ElementContent, RootContent, Text } from 'hast'
 import { fromMarkdown } from 'mdast-util-from-markdown'
 import { gfmFromMarkdown } from 'mdast-util-gfm'
 import { defaultHandlers, toHast } from 'mdast-util-to-hast'
@@ -220,10 +220,10 @@ export const rendererFloatingVue = (
               },
               content: {
                 type: 'root',
-                children: [addVPreProp(popup)],
+                children: [addVPreProp(popup)] as RootContent[],
               },
             },
-          ],
+          ] as ElementContent[],
         } as Element,
       ],
     },

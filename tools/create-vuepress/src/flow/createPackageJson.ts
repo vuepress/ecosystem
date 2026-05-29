@@ -1,6 +1,6 @@
 /* oxlint-disable no-console */
 import { writeFileSync } from 'node:fs'
-import { join } from 'node:path'
+import path from 'node:path'
 
 import { input } from '@inquirer/prompts'
 
@@ -29,7 +29,7 @@ export const createPackageJson = async ({
   preset,
   bundler,
 }: CreatePackageJsonOptions): Promise<void> => {
-  const packageJsonPath = join(targetDir, 'package.json')
+  const packageJsonPath = path.join(targetDir, 'package.json')
 
   console.info(locale.flow.createPackage)
 
