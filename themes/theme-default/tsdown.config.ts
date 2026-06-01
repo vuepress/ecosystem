@@ -1,5 +1,5 @@
 import { readdirSync } from 'node:fs'
-import { resolve } from 'node:path'
+import path from 'node:path'
 
 import { tsdownConfig } from '../../scripts/tsdown.ts'
 
@@ -10,10 +10,10 @@ export default tsdownConfig(
     'node/index',
     'client/config',
     'client/index',
-    ...readdirSync(resolve(__dirname, './src/client/composables'))
+    ...readdirSync(path.resolve(__dirname, './src/client/composables'))
       .filter((file) => file.endsWith('.ts'))
       .map((file) => `client/composables/${file.slice(0, -3)}`),
-    ...readdirSync(resolve(__dirname, './src/client/utils'))
+    ...readdirSync(path.resolve(__dirname, './src/client/utils'))
       .filter((file) => file.endsWith('.ts'))
       .map((file) => `client/utils/${file.slice(0, -3)}`),
   ],

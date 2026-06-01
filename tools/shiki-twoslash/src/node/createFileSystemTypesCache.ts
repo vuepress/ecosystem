@@ -1,5 +1,5 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { join } from 'node:path'
+import path from 'node:path'
 
 import type { TwoslashTypesCache } from '@shikijs/twoslash'
 import type { TwoslashReturn } from 'twoslash'
@@ -45,7 +45,7 @@ export const createFileSystemTypesCache = ({
    */
   read(code): TwoslashReturn | null {
     const hash = createHash(code)
-    const filePath = join(dir, `${hash}.json`)
+    const filePath = path.join(dir, `${hash}.json`)
     if (!existsSync(filePath)) return null
 
     return JSON.parse(
@@ -63,7 +63,7 @@ export const createFileSystemTypesCache = ({
    */
   write(code, data): void {
     const hash = createHash(code)
-    const filePath = join(dir, `${hash}.json`)
+    const filePath = path.join(dir, `${hash}.json`)
     const json = JSON.stringify(data)
     writeFileSync(filePath, json, { encoding: 'utf-8' })
   },

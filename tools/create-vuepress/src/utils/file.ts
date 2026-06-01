@@ -5,7 +5,7 @@ import {
   statSync,
   writeFileSync,
 } from 'node:fs'
-import { dirname } from 'node:path'
+import path from 'node:path'
 
 export const ensureDirExistSync = (dirPath: string): void => {
   try {
@@ -20,7 +20,7 @@ export const ensureDirExistSync = (dirPath: string): void => {
 }
 
 export const copyFile = (srcFile: string, targetFile: string): void => {
-  const targetDir = dirname(targetFile)
+  const targetDir = path.dirname(targetFile)
 
   ensureDirExistSync(targetDir)
   writeFileSync(targetFile, readFileSync(srcFile))

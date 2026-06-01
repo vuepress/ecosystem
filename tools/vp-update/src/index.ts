@@ -2,7 +2,7 @@
 /* oxlint-disable no-console */
 import { spawnSync } from 'node:child_process'
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
-import { resolve } from 'node:path'
+import path from 'node:path'
 
 import { createCommand } from 'commander'
 
@@ -26,8 +26,8 @@ pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]\
   .action(async (targetDir: string = ''): Promise<void> => {
     console.log('Bumping deps...')
 
-    const dir = resolve(process.cwd(), targetDir)
-    const packageJSON = resolve(dir, 'package.json')
+    const dir = path.resolve(process.cwd(), targetDir)
+    const packageJSON = path.resolve(dir, 'package.json')
 
     if (!existsSync(packageJSON)) {
       return program.error(
