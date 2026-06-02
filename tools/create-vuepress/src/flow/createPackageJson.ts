@@ -93,4 +93,15 @@ export const createPackageJson = async ({
     `${JSON.stringify(packageContent, null, 2)}\n`,
     { encoding: 'utf-8' },
   )
+
+  if (packageManager === 'pnpm' && bundler === 'webpack') {
+    writeFileSync(
+      path.join(targetDir, 'pnpm-workspace.yaml'),
+      `\
+allowBuilds:
+  esbuild: true
+`,
+      { encoding: 'utf-8' },
+    )
+  }
 }
