@@ -79,7 +79,7 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@vue/shared": "^3.5.34",
+    "@vue/shared": "^3.5.35",
     "@vueuse/core": "catalog:",
     "cheerio": "^1.2.0",
     "fflate": "^0.8.3",
