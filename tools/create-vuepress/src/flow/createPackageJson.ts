@@ -1,4 +1,5 @@
 /* oxlint-disable no-console */
+import { execSync } from 'node:child_process'
 import { writeFileSync } from 'node:fs'
 import path from 'node:path'
 
@@ -93,6 +94,11 @@ export const createPackageJson = async ({
     `${JSON.stringify(packageContent, null, 2)}\n`,
     { encoding: 'utf-8' },
   )
+
+  execSync(`corepack use ${packageManager}@latest`, {
+    cwd: targetDir,
+    stdio: 'ignore',
+  })
 
   if (packageManager === 'pnpm' && bundler === 'webpack') {
     writeFileSync(
