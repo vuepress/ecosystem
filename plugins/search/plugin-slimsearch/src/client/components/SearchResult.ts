@@ -145,11 +145,12 @@ export default defineComponent({
     const getDisplay = (matchedItem: MatchedItem): (VNode | string)[] => {
       if (matchedItem.type === 'customField') {
         const formatterConfig = customFieldConfig[matchedItem.index]
+        const formatter = isPlainObject(formatterConfig)
+          ? formatterConfig[routeLocale.value]
+          : formatterConfig
 
         const [prefix, suffix = ''] = (
-          (isPlainObject(formatterConfig)
-            ? formatterConfig[routeLocale.value]
-            : formatterConfig) ?? ''
+          isString(formatter) ? formatter : ''
         ).split('$content')
 
         return matchedItem.display.map((display) =>
