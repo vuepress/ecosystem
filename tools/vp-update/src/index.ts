@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 /* oxlint-disable no-console */
 import { spawnSync } from 'node:child_process'
-import { existsSync } from 'node:fs'
-import { readFile, writeFile } from 'node:fs/promises'
+import { access, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 
 import { createCommand } from 'commander'
@@ -31,7 +30,9 @@ pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]\
     const dir = path.resolve(process.cwd(), targetDir)
     const packageJSON = path.resolve(dir, 'package.json')
 
-    if (!existsSync(packageJSON)) {
+    try {
+      await access(packageJSON)
+    } catch {
       return program.error(
         `No package.json found in ${targetDir || 'current dir'}`,
       )

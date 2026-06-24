@@ -26,6 +26,12 @@ import {
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
+const [componentFiles, composableFiles, utilFiles] = await Promise.all([
+  fs.readdir(path.resolve(__dirname, '../client/components')),
+  fs.readdir(path.resolve(__dirname, '../client/composables')),
+  fs.readdir(path.resolve(__dirname, '../client/utils')),
+])
+
 export interface DefaultThemeOptions extends DefaultThemeLocaleOptions {
   /** Deployed hostname */
   hostname?: string
@@ -51,8 +57,7 @@ export const defaultTheme = ({
     alias: {
       // use alias to make all components replaceable
       ...Object.fromEntries(
-        fs
-          .readdirSync(path.resolve(__dirname, '../client/components'))
+        componentFiles
           .filter((file) => file.endsWith('.vue'))
           .map((file) => [
             `@theme/${file}`,
@@ -61,8 +66,7 @@ export const defaultTheme = ({
       ),
       // use alias to make all composables replaceable
       ...Object.fromEntries(
-        fs
-          .readdirSync(path.resolve(__dirname, '../client/composables'))
+        composableFiles
           .filter((file) => file.endsWith('.js'))
           .map((file) => [
             `@theme/${file.slice(0, -3)}`,
@@ -71,8 +75,7 @@ export const defaultTheme = ({
       ),
       // use alias to make all utils replaceable
       ...Object.fromEntries(
-        fs
-          .readdirSync(path.resolve(__dirname, '../client/utils'))
+        utilFiles
           .filter((file) => file.endsWith('.js'))
           .map((file) => [
             `@theme/${file.slice(0, -3)}`,
