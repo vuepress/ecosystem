@@ -44,9 +44,12 @@ export const getTransformers = (
   if (options.notationErrorLevel)
     transformers.push(transformerNotationErrorLevel())
 
-  if (options.notationWordHighlight) 
-    transformers.push(transformerNotationWordHighlight(), transformerMetaWordHighlight())
-  
+  if (options.notationWordHighlight) {
+    transformers.push(
+      transformerNotationWordHighlight(),
+      transformerMetaWordHighlight(),
+    )
+  }
 
   if (options.removeComments) transformers.push(transformerRemoveComments())
 
