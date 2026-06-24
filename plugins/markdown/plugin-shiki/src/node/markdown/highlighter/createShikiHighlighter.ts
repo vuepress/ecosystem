@@ -105,14 +105,14 @@ export const createShikiHighlighter = async (
       ? options.twoslash
       : {}
 
+    const twoslashCacheDir = app.dir.cache('markdown/twoslash')
+
     extraTransformers.push(
       (await createTwoslashTransformer({
         ...twoslashOptions,
         typesCache:
           typesCache === true || typeof typesCache === 'undefined'
-            ? createFileSystemTypesCache({
-                dir: app.dir.cache('markdown/twoslash'),
-              })
+            ? createFileSystemTypesCache({ dir: twoslashCacheDir })
             : typesCache,
       })) as ShikiTransformer,
     )
