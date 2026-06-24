@@ -45,15 +45,15 @@ export const generateLLMsTxt = async (
 
   await fs.writeFile(app.dir.dest(llmsTxtRelativePath), llmsTxt, 'utf-8')
 
-  logger.succeed(
-    expandTemplate(
-      'Generated {file} (~{tokens} tokens, {size}) with {pageCount} documentation links',
-      {
-        file: colors.cyan(llmsTxtRelativePath),
-        tokens: colors.bold(millify(estimateTokenCount(llmsTxt))),
-        size: colors.bold(getSizeOf(llmsTxt)),
-        pageCount: colors.bold(pages.length),
-      },
-    ),
+  const msg = expandTemplate(
+    'Generated {file} (~{tokens} tokens, {size}) with {pageCount} documentation links',
+    {
+      file: colors.cyan(llmsTxtRelativePath),
+      tokens: colors.bold(millify(estimateTokenCount(llmsTxt))),
+      size: colors.bold(getSizeOf(llmsTxt)),
+      pageCount: colors.bold(pages.length),
+    },
   )
+
+  logger.succeed(msg)
 }
