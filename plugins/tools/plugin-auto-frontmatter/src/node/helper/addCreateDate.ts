@@ -66,7 +66,7 @@ const getGitCreateDate = (filepath: string): Date | undefined => {
         stdio: ['pipe', 'pipe', 'ignore'],
       },
     )
-    return new Date(Number.parseInt(time, 10) * 1000)
+    return new Date(Number(time) * 1000)
   } catch {
     return undefined
   }
