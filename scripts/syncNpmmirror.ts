@@ -36,13 +36,19 @@ const syncPackage = (importPath: string): Promise<void> =>
 const syncDir = (dir: string): Promise<void[]> =>
   readdir(path.resolve(root, dir)).then((names) =>
     Promise.all(
-      names.map((name) => syncPackage(`${root}/${dir}/${name}/package.json`)),
+      names
+        .filter((name) => !name.startsWith('.'))
+        .map((name) => syncPackage(`${root}/${dir}/${name}/package.json`)),
     ),
   )
 
 const syncPlugins = (): Promise<void[][]> =>
   readdir(path.resolve(root, 'plugins')).then((categories) =>
-    Promise.all(categories.map((category) => syncDir(`plugins/${category}`))),
+    Promise.all(
+      categories
+        .filter((name) => !name.startsWith('.'))
+        .map((category) => syncDir(`plugins/${category}`)),
+    ),
   )
 
 await Promise.all([syncPlugins(), syncDir('themes'), syncDir('tools')])
