@@ -6,11 +6,12 @@ interface PackageJson extends Record<string, unknown> {
   devDependencies: Record<string, string>
 }
 
+const packageJSONPath = fileURLToPath(
+  import.meta.resolve('create-vuepress/package.json'),
+)
+
 const packageJSON = JSON.parse(
-  readFileSync(
-    fileURLToPath(import.meta.resolve('create-vuepress/package.json')),
-    'utf-8',
-  ),
+  readFileSync(packageJSONPath, 'utf-8'),
 ) as PackageJson
 
 export const { devDependencies, version } = packageJSON

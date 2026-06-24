@@ -9,12 +9,10 @@ import type { CreateLocaleOptions, Lang } from '../i18n/index.js'
 import type { PackageManager } from '../utils/index.js'
 import { copy, ensureDirExistSync } from '../utils/index.js'
 
-const templateFolder = path.join(
-  path.dirname(
-    fileURLToPath(import.meta.resolve('create-vuepress/package.json')),
-  ),
-  './template',
+const packageJsonPath = fileURLToPath(
+  import.meta.resolve('create-vuepress/package.json'),
 )
+const templateFolder = path.join(path.dirname(packageJsonPath), './template')
 
 const getWorkflowContent = (
   packageManager: PackageManager,
@@ -121,7 +119,7 @@ export const generateTemplate = async ({
 
   const configFilePath = path.join(targetDirPath, 'docs/.vuepress/config.js')
 
-  const content = readFileSync(configFilePath, { encoding: 'utf-8' })
+  const content = readFileSync(configFilePath, 'utf-8')
 
   writeFileSync(
     configFilePath,
@@ -131,7 +129,7 @@ export const generateTemplate = async ({
         `\nimport { ${bundler}Bundler } from '@vuepress/bundler-${bundler}'\n\nexport default defineUserConfig({`,
       )
       .replace(/\}\)\n$/u, `\n  bundler: ${bundler}Bundler(),\n})\n`),
-    { encoding: 'utf-8' },
+    'utf-8',
   )
 
   if (enableWorkflow) {
@@ -142,7 +140,7 @@ export const generateTemplate = async ({
     writeFileSync(
       path.join(workflowDir, 'deploy-docs.yml'),
       getWorkflowContent(packageManager, lang),
-      { encoding: 'utf-8' },
+      'utf-8',
     )
   }
 }
