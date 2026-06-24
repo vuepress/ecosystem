@@ -4,11 +4,11 @@
  * node.
  */
 
-const PRE_OPEN_TAG_RE = /^(<pre[^]*?>)/u
-const CODE_OPEN_TAG_RE = /^(<code[^]*?>)/u
-const FENCE_CLOSE_TAG_RE = /(<\/code><\/pre>(\r?\n))?$/u
-const NEWLINE_RE = /(\r?\n)/gu
-const CLASS_RE = /class="([^]*)"/u
+const PRE_OPEN_TAG_RE = /^(?<tag><pre[^]*?>)/u
+const CODE_OPEN_TAG_RE = /^(?<tag><code[^]*?>)/u
+const FENCE_CLOSE_TAG_RE = /(?<close><\/code><\/pre>(?:\r?\n))?$/u
+const NEWLINE_RE = /(?<newline>\r?\n)/gu
+const CLASS_RE = /class="(?<class>[^]*)"/u
 const CODE_ESCAPE_RE = /\[\\!code/gu
 
 const uniq = <T>(array: T[]): T[] => [...new Set(array)]
@@ -27,7 +27,7 @@ export interface OpenTag {
   after: string
   content: string
 
-  toString(): string
+  toString: () => string
 }
 
 type LineHandler = (node: OpenTag, index: number) => void
@@ -79,7 +79,7 @@ const createOpenTag = (
 
   return {
     before: snippet.slice(0, match.index),
-    classList: [...classList, ...match[1].split(' ')],
+    classList: [...classList, ...match.groups!.class.split(' ')],
     after: snippet.slice(match.index + match[0].length),
     content,
     toString() {
@@ -112,12 +112,12 @@ const createOpenTag = (
  */
 export const getCodeParser = (html: string, lang = ''): CodeParser => {
   let content = html
-  const preOpen = PRE_OPEN_TAG_RE.exec(html)?.[1] ?? ''
+  const preOpen = PRE_OPEN_TAG_RE.exec(html)?.groups?.tag ?? ''
 
   content = content.slice(preOpen.length)
 
-  const code = CODE_OPEN_TAG_RE.exec(content)?.[1] ?? ''
-  const endLine = FENCE_CLOSE_TAG_RE.exec(content)?.[1] ?? ''
+  const code = CODE_OPEN_TAG_RE.exec(content)?.groups?.tag ?? ''
+  const endLine = FENCE_CLOSE_TAG_RE.exec(content)?.groups?.close ?? ''
 
   content = content.slice(
     code.length,

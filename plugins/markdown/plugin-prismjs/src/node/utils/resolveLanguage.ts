@@ -45,7 +45,7 @@ const getLanguagesMap = (): LanguagesMap =>
  */
 export const resolveLanguage = (info: string): HighlightLanguage => {
   // get user-defined language alias
-  const alias = /^([^ :[{]+)/u.exec(info)?.[1] || 'text'
+  const alias = /^(?<lang>[^ :[{]+)/u.exec(info)?.groups?.lang || 'text'
 
   // if the alias does not have a match in the map
   // fallback to the alias itself

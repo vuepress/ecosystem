@@ -1,4 +1,4 @@
-const MARKDOWN_TITLE_REGEXP = /^#[^#][\s]*(.+?)#*?$/mu
+const MARKDOWN_TITLE_REGEXP = /^#[^#][\s]*(?<title>.+?)#*?$/mu
 
 /**
  * Extract title from markdown string
@@ -8,9 +8,5 @@ const MARKDOWN_TITLE_REGEXP = /^#[^#][\s]*(.+?)#*?$/mu
  * @param markdown - Markdown content to extract title from
  * @returns Extracted title or undefined if not found
  */
-export const extractTitle = (markdown: string): string | undefined => {
-  const matches = MARKDOWN_TITLE_REGEXP.exec(markdown)
-  if (matches?.length) return matches.pop()?.trim()
-
-  return undefined
-}
+export const extractTitle = (markdown: string): string | undefined =>
+  MARKDOWN_TITLE_REGEXP.exec(markdown)?.groups?.title.trim()

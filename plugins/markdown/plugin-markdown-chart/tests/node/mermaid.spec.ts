@@ -73,7 +73,10 @@ ${flowchartDemo}
 
     expect(renderResult).toMatch(/<Mermaid code=".*?"><\/Mermaid>/u)
     expect(
-      decodeData(/<Mermaid code="(.*?)"><\/Mermaid>/u.exec(renderResult)![1]),
+      decodeData(
+        /<Mermaid code="(?<code>.*?)"><\/Mermaid>/u.exec(renderResult)!.groups!
+          .code,
+      ),
     ).toMatch(flowchartDemo)
     expect(renderResult).toMatchSnapshot()
   })

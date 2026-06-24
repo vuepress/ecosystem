@@ -1,4 +1,4 @@
-import fs from 'node:fs'
+import { readdirSync, statSync } from 'node:fs'
 import path from 'node:path'
 
 import { defineConfig } from 'vitest/config'
@@ -7,9 +7,9 @@ import { getDirname } from 'vuepress/utils'
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 const getSubDirectories = (dir: string): string[] =>
-  fs
-    .readdirSync(dir)
-    .filter((item) => fs.statSync(path.join(dir, item)).isDirectory())
+  readdirSync(dir).filter((item) =>
+    statSync(path.join(dir, item)).isDirectory(),
+  )
 
 const pluginPackages = getSubDirectories(path.resolve(__dirname, 'plugins'))
 const themePackages = getSubDirectories(path.resolve(__dirname, 'themes'))

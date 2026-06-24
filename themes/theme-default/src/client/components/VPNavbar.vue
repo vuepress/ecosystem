@@ -43,6 +43,7 @@ const getCssValue = (el: HTMLElement | null, property: string): number => {
     property as keyof CSSStyleDeclaration
   ]
 
+  // oxlint-disable-next-line unicorn/prefer-number-coercion
   const num = Number.parseInt(val as string, 10)
 
   return Number.isNaN(num) ? 0 : num

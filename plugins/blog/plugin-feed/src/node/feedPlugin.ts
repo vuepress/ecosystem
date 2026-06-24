@@ -83,12 +83,12 @@ export const feedPlugin =
         if (app.env.isBuild || options.devServer) addFeedLinks(app, feedOptions)
       },
 
-      extendsBundlerOptions: (config) => {
+      extendsBundlerOptions: async (config) => {
         if (options.devServer) {
           ;[
             ...getFeedFiles(app, feedOptions, hostname),
-            ...getAtomTemplates(feedOptions),
-            ...getRSSTemplates(feedOptions),
+            ...(await getAtomTemplates(feedOptions)),
+            ...(await getRSSTemplates(feedOptions)),
           ].forEach(([path, content, contentType]) => {
             customizeDevServer(config, app, {
               path,
@@ -104,10 +104,15 @@ export const feedPlugin =
       },
 
       onGenerated: async () => {
+        const [atomTemplates, rssTemplates] = await Promise.all([
+          getAtomTemplates(feedOptions),
+          getRSSTemplates(feedOptions),
+        ])
+
         await Promise.all([
           ...writeFiles(app, getFeedFiles(app, feedOptions, hostname)),
-          ...writeFiles(app, getAtomTemplates(feedOptions)),
-          ...writeFiles(app, getRSSTemplates(feedOptions)),
+          ...writeFiles(app, atomTemplates),
+          ...writeFiles(app, rssTemplates),
         ])
       },
     }

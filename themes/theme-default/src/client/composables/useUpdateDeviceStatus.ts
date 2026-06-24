@@ -9,10 +9,7 @@ export enum DeviceType {
 }
 
 const DeviceTypeMap = {
-  [DeviceType.Mobile]: Number.parseInt(
-    cssVariables.mobile.replace('px', ''),
-    10,
-  ),
+  [DeviceType.Mobile]: Number(cssVariables.mobile.replace('px', '')),
 }
 
 /**

@@ -19,7 +19,7 @@ export const getTitleFromFilename = (filename: string): string => {
   const words = filename
     .replaceAll(/[-_]/gu, ' ')
     .replaceAll(
-      /(^|[^A-Z])([A-Z])/gu,
+      /(?<prefix>^|[^A-Z])(?<upper>[A-Z])/gu,
       (_all, match1: string, match2: string) =>
         `${match1} ${match2.toLowerCase()}`,
     )

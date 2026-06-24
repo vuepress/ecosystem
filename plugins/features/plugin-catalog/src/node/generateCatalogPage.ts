@@ -57,7 +57,7 @@ export const generateCatalogPage = async (
   await Promise.all(
     Array.from(pathToBeGenerated, (path) => decodeURI(path)).map(
       async (path) => {
-        const [, basename = ''] = /\/([^/]+)\/?$/u.exec(path) ?? []
+        const [, basename = ''] = /\/(?<basename>[^/]+)\/?$/u.exec(path) ?? []
         const title = getTitleFromFilename(basename)
 
         return createPage(app, {

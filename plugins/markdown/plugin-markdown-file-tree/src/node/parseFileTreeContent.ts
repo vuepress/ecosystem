@@ -2,7 +2,7 @@ import { removeEndingSlash } from 'vuepress/shared'
 
 import type { FileTreeNode, FileTreeNodeProps } from './types.js'
 
-const FOCUS_RE = /^\*\*(.*)\*\*(?:$|\s+)/u
+const FOCUS_RE = /^\*\*(?<filename>.*)\*\*(?:$|\s+)/u
 
 /**
  * Parse the info string of a single node to extract attributes such as file
@@ -70,11 +70,12 @@ export const parseFileTreeContent = (content: string): FileTreeNode[] => {
   const spaceLength = /^\s*/u.exec(lines[0])?.[0].length ?? 0
 
   for (const line of lines) {
-    const match = /^(\s*)-(.*)$/u.exec(line)
+    const match = /^(?<indent>\s*)-(?<info>.*)$/u.exec(line)
     if (!match) continue
 
-    const level = Math.floor((match[1].length - spaceLength) / 2)
-    const info = match[2].trim()
+    const { indent, info: rawInfo } = match.groups!
+    const level = Math.floor((indent.length - spaceLength) / 2)
+    const info = rawInfo.trim()
 
     while (stack.length > 0 && stack[stack.length - 1].level >= level)
       stack.pop()

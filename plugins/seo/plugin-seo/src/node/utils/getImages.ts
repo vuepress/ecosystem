@@ -4,7 +4,7 @@ import type { App } from 'vuepress/core'
 import type { ExtendPage } from '../../typings/index.js'
 import { getUrl } from './getUrl.js'
 
-const IMAGE_REG_EXP = /!\[.*?\]\((.*?)\)/gu
+const IMAGE_REG_EXP = /!\[.*?\]\((?<src>.*?)\)/gu
 
 export const getImages = (
   { content }: ExtendPage,
