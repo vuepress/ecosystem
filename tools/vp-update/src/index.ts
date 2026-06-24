@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* oxlint-disable no-console */
-import { spawnSync } from 'node:child_process'
-import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { spawn } from 'node:child_process'
+import { access, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 
 import { createCommand } from 'commander'
@@ -12,6 +12,16 @@ import {
   getPackageManager,
   updatePackages,
 } from './utils/index.js'
+
+const runCommand = (command: string): Promise<void> =>
+  new Promise<void>((resolve, reject) => {
+    const child = spawn(command, { shell: true, stdio: 'inherit' })
+
+    child.on('close', (code) => {
+      if (code === 0) resolve()
+      else reject(new Error(`"${command}" exited with code ${code}`))
+    })
+  })
 
 const program = createCommand('vp-update')
 
@@ -29,7 +39,9 @@ pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]\
     const dir = path.resolve(process.cwd(), targetDir)
     const packageJSON = path.resolve(dir, 'package.json')
 
-    if (!existsSync(packageJSON)) {
+    try {
+      await access(packageJSON)
+    } catch {
       return program.error(
         `No package.json found in ${targetDir || 'current dir'}`,
       )
@@ -39,7 +51,7 @@ pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]\
 
     checkTaobaoRegistry(packageManager)
 
-    const content = readFileSync(packageJSON, { encoding: 'utf-8' })
+    const content = await readFile(packageJSON, 'utf-8')
 
     const packageJSONContent = JSON.parse(content) as Record<
       string,
@@ -58,21 +70,18 @@ pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]\
         : Promise.resolve(),
     ])
 
-    writeFileSync(
+    await writeFile(
       packageJSON,
       `${JSON.stringify(packageJSONContent, null, 2)}\n`,
     )
 
     console.info('Install deps...')
 
-    spawnSync(`${packageManager} install`, {
-      shell: true,
-      stdio: 'inherit',
-    })
+    await runCommand(`${packageManager} install`)
 
     console.info('Upgrading deps...')
 
-    spawnSync(
+    await runCommand(
       packageManager === 'pnpm'
         ? `pnpm update`
         : packageManager === 'yarn1'
@@ -82,10 +91,6 @@ pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]\
             : packageManager === 'bun'
               ? `bun update`
               : `npm update`,
-      {
-        shell: true,
-        stdio: 'inherit',
-      },
     )
   })
 

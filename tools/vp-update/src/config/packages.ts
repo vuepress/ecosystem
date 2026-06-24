@@ -34,8 +34,8 @@ export const DEPRECATED_PACKAGES = [
   '@vuepress/utils',
 ]
 
-export const THIRD_PARTY_PLUGINS = /^(@.*\/)?vuepress-plugin-/u
+export const THIRD_PARTY_PLUGINS = /^(?:@.*\/)?vuepress-plugin-/u
 
-export const THIRD_PARTY_THEMES = /^(@.*\/)?vuepress-theme-/u
+export const THIRD_PARTY_THEMES = /^(?:@.*\/)?vuepress-theme-/u
 
 export const COMMON_PEERS = ['sass', 'sass-embedded', 'sass-loader']

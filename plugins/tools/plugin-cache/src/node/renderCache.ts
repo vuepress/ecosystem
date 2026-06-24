@@ -32,9 +32,10 @@ export const renderCacheWithMemory = async (
   md: Markdown,
   app: App,
 ): Promise<void> => {
-  if (app.env.isBuild && !fs.existsSync(app.dir.cache(CACHE_DIR))) return
-
   const basename = app.dir.cache(CACHE_DIR)
+
+  if (app.env.isBuild && !(await fs.pathExists(basename))) return
+
   const metaFilepath = `${basename}/${META_FILE}`
   const cacheFilepath = `${basename}/${CACHE_FILE}`
 
@@ -90,9 +91,9 @@ export const renderCacheWithFilesystem = async (
   md: Markdown,
   app: App,
 ): Promise<void> => {
-  if (app.env.isBuild && !fs.existsSync(app.dir.cache(CACHE_DIR))) return
-
   const basename = app.dir.cache(CACHE_DIR)
+
+  if (app.env.isBuild && !(await fs.pathExists(basename))) return
 
   await fs.ensureDir(basename)
 

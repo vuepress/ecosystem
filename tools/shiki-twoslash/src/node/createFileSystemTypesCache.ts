@@ -48,9 +48,7 @@ export const createFileSystemTypesCache = ({
     const filePath = path.join(dir, `${hash}.json`)
     if (!existsSync(filePath)) return null
 
-    return JSON.parse(
-      readFileSync(filePath, { encoding: 'utf-8' }),
-    ) as TwoslashReturn
+    return JSON.parse(readFileSync(filePath, 'utf-8')) as TwoslashReturn
   },
 
   /**
@@ -65,6 +63,6 @@ export const createFileSystemTypesCache = ({
     const hash = createHash(code)
     const filePath = path.join(dir, `${hash}.json`)
     const json = JSON.stringify(data)
-    writeFileSync(filePath, json, { encoding: 'utf-8' })
+    writeFileSync(filePath, json, 'utf-8')
   },
 })
