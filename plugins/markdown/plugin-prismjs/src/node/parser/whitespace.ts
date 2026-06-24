@@ -3,7 +3,7 @@ import { resolveWhitespacePosition } from '@vuepress/highlighter-helper'
 
 import type { CodeParser, OpenTag } from './getCodeParser.js'
 
-const SPLIT_REGEXP = /(<[^>]+>)/u
+const SPLIT_REGEXP = /(?<tag><[^>]+>)/u
 const SPACE_REGEXP = /[\s\t]/gu
 
 const classMap: Record<string, string> = {

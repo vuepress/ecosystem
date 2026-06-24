@@ -12,41 +12,51 @@ const TEMPLATE_FOLDER = ensureEndingSlash(
   path.resolve(__dirname, '../../templates'),
 )
 
-const DEFAULT_ATOM_XML_TEMPLATE = fs.readFileSync(
-  `${TEMPLATE_FOLDER}atom.xsl`,
-  'utf-8',
-)
+let defaultAtomXmlTemplate: string
+let defaultRssXmlTemplate: string
 
-const DEFAULT_RSS_XML_TEMPLATE = fs.readFileSync(
-  `${TEMPLATE_FOLDER}rss.xsl`,
-  'utf-8',
-)
-
-export const getAtomTemplates = (
+export const getAtomTemplates = async (
   options: ResolvedFeedOptionsMap,
-): FeedConfig[] =>
-  entries(options)
-    // filter enabled locales
-    .filter(([, { atom }]) => atom)
-    // write template
-    .map(([localePath, localeOptions]) => {
-      const { atomXslTemplate = DEFAULT_ATOM_XML_TEMPLATE } = localeOptions
-      const { atomXslFilename } = getFeedFilenames(localeOptions, localePath)
+): Promise<FeedConfig[]> => {
+  const enabledLocales = entries(options).filter(([, { atom }]) => atom)
 
-      return [atomXslFilename, atomXslTemplate]
-    })
+  if (
+    defaultAtomXmlTemplate === undefined &&
+    enabledLocales.some(([, { atomXslTemplate }]) => !atomXslTemplate)
+  ) {
+    defaultAtomXmlTemplate = await fs.readFile(
+      `${TEMPLATE_FOLDER}atom.xsl`,
+      'utf-8',
+    )
+  }
 
-export const getRSSTemplates = (
+  return enabledLocales.map(([localePath, localeOptions]) => {
+    const { atomXslTemplate = defaultAtomXmlTemplate ?? '' } = localeOptions
+    const { atomXslFilename } = getFeedFilenames(localeOptions, localePath)
+
+    return [atomXslFilename, atomXslTemplate]
+  })
+}
+
+export const getRSSTemplates = async (
   options: ResolvedFeedOptionsMap,
-): FeedConfig[] =>
-  entries(options)
-    // filter enabled locales
-    .filter(([, { rss }]) => rss)
-    // write template
-    .map(([localePath, localeOptions]) => {
-      const { rssXslTemplate = DEFAULT_RSS_XML_TEMPLATE } = localeOptions
+): Promise<FeedConfig[]> => {
+  const enabledLocales = entries(options).filter(([, { rss }]) => rss)
 
-      const { rssXslFilename } = getFeedFilenames(localeOptions, localePath)
+  if (
+    defaultRssXmlTemplate === undefined &&
+    enabledLocales.some(([, { rssXslTemplate }]) => !rssXslTemplate)
+  ) {
+    defaultRssXmlTemplate = await fs.readFile(
+      `${TEMPLATE_FOLDER}rss.xsl`,
+      'utf-8',
+    )
+  }
 
-      return [rssXslFilename, rssXslTemplate]
-    })
+  return enabledLocales.map(([localePath, localeOptions]) => {
+    const { rssXslTemplate = defaultRssXmlTemplate ?? '' } = localeOptions
+    const { rssXslFilename } = getFeedFilenames(localeOptions, localePath)
+
+    return [rssXslFilename, rssXslTemplate]
+  })
+}

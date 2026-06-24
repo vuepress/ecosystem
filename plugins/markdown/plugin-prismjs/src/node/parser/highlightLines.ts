@@ -20,18 +20,18 @@ export const getHighlightLinesRange = (
   info: string,
 ): HighlightLinesRange[] | null => {
   // try to match highlight-lines mark
-  const match = /\{([\d,-]+)\}/u.exec(info)
+  const match = /\{(?<range>[\d,-]+)\}/u.exec(info)
 
   // no highlight-lines mark, return `null`
   if (match == null) return null
 
   // resolve lines ranges from the highlight-lines mark
-  return match[1].split(',').map((item) => {
+  return match.groups!.range.split(',').map((item) => {
     const range = item.split('-')
 
     if (range.length === 1) range.push(range[0])
 
-    return range.map((line) => Number.parseInt(line, 10)) as HighlightLinesRange
+    return range.map(Number) as HighlightLinesRange
   })
 }
 

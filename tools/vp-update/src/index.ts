@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* oxlint-disable no-console */
 import { spawnSync } from 'node:child_process'
-import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { access, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 
 import { createCommand } from 'commander'
@@ -10,6 +10,7 @@ import { VERSION } from './config/index.js'
 import {
   checkTaobaoRegistry,
   getPackageManager,
+  getUpdateCommand,
   updatePackages,
 } from './utils/index.js'
 
@@ -29,7 +30,9 @@ pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]\
     const dir = path.resolve(process.cwd(), targetDir)
     const packageJSON = path.resolve(dir, 'package.json')
 
-    if (!existsSync(packageJSON)) {
+    try {
+      await access(packageJSON)
+    } catch {
       return program.error(
         `No package.json found in ${targetDir || 'current dir'}`,
       )
@@ -39,7 +42,7 @@ pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]\
 
     checkTaobaoRegistry(packageManager)
 
-    const content = readFileSync(packageJSON, { encoding: 'utf-8' })
+    const content = await readFile(packageJSON, 'utf-8')
 
     const packageJSONContent = JSON.parse(content) as Record<
       string,
@@ -58,12 +61,12 @@ pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]\
         : Promise.resolve(),
     ])
 
-    writeFileSync(
+    await writeFile(
       packageJSON,
       `${JSON.stringify(packageJSONContent, null, 2)}\n`,
     )
 
-    console.info('Install deps...')
+    console.info('Installing deps...')
 
     spawnSync(`${packageManager} install`, {
       shell: true,
@@ -72,21 +75,10 @@ pnpm dlx vp-update [dir] / npx vp-update [dir] / bunx vp-update [dir]\
 
     console.info('Upgrading deps...')
 
-    spawnSync(
-      packageManager === 'pnpm'
-        ? `pnpm update`
-        : packageManager === 'yarn1'
-          ? `yarn upgrade`
-          : packageManager === 'yarn'
-            ? `yarn up`
-            : packageManager === 'bun'
-              ? `bun update`
-              : `npm update`,
-      {
-        shell: true,
-        stdio: 'inherit',
-      },
-    )
+    spawnSync(getUpdateCommand(packageManager), {
+      shell: true,
+      stdio: 'inherit',
+    })
   })
 
 program.version(VERSION)

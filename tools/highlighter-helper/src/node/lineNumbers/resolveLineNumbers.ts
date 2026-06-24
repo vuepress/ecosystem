@@ -1,6 +1,6 @@
 const LINE_NUMBERS_REGEXP = /:line-numbers\b/u
 const NO_LINE_NUMBERS_REGEXP = /:no-line-numbers\b/u
-const LINE_NUMBERS_START_REGEXP = /:line-numbers=(\d+)\b/u
+const LINE_NUMBERS_START_REGEXP = /:line-numbers=(?<start>\d+)\b/u
 
 /**
  * Resolve the `:line-numbers` `:line-numbers=num` / `:no-line-numbers` mark
@@ -23,9 +23,9 @@ const LINE_NUMBERS_START_REGEXP = /:line-numbers=(\d+)\b/u
  *   - `null` - No configuration found / 未找到配置
  */
 export const resolveLineNumbers = (info: string): boolean | number | null => {
-  const lineNumber = LINE_NUMBERS_START_REGEXP.exec(info)?.[1]
+  const start = LINE_NUMBERS_START_REGEXP.exec(info)?.groups!.start
 
-  if (lineNumber) return Number(lineNumber)
+  if (start) return Number(start)
 
   if (LINE_NUMBERS_REGEXP.test(info)) return true
 

@@ -59,4 +59,4 @@ peerDependencyRules:
 cleanupUnusedCatalogs: true
 
 configDependencies:
-  pacquet: ^0.2.12
+  pacquet: ^0.11.11

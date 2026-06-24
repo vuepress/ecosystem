@@ -4,7 +4,7 @@
  * 匹配代码块信息中 `:whitespace` 指令的正则表达式
  */
 export const WHITESPACE_REGEXP =
-  /:whitespace(?:=(all|boundary|leading|trailing)?)?\b/u
+  /:whitespace(?:=(?<position>all|boundary|leading|trailing)?)?\b/u
 
 /**
  * Regular expression to match `:no-whitespace` directive in code block info
@@ -57,8 +57,10 @@ export const resolveWhitespacePosition = (
   const match = WHITESPACE_REGEXP.exec(info)
 
   if (match) {
-    if (AVAILABLE_WHITESPACE_POSITIONS.has(match[1]))
-      return match[1] as WhitespacePosition
+    const { position } = match.groups!
+
+    if (AVAILABLE_WHITESPACE_POSITIONS.has(position))
+      return position as WhitespacePosition
 
     return defaultPosition || 'all'
   }

@@ -45,7 +45,9 @@ const queue = (() => {
 const camelCase = (content: string): string =>
   content
     .replace(/^-ms-/u, 'ms-')
-    .replaceAll(/-([\da-z])/giu, (_, letter: string) => letter.toUpperCase())
+    .replaceAll(/-(?<letter>[\da-z])/giu, (_, letter: string) =>
+      letter.toUpperCase(),
+    )
 
 const addStyle = (() => {
   const cssPrefixes = ['Webkit', 'O', 'Moz', 'ms']
@@ -109,18 +111,18 @@ interface NProgressSettings {
 interface NProgress {
   percent: number | null
 
-  set(number: number): NProgress
-  isStarted(): boolean
-  start(): NProgress
-  done(force?: boolean): NProgress
-  increase(amount?: number): NProgress
-  trickle(): NProgress
+  set: (number: number) => NProgress
+  isStarted: () => boolean
+  start: () => NProgress
+  done: (force?: boolean) => NProgress
+  increase: (amount?: number) => NProgress
+  trickle: () => NProgress
 
   /* Internal */
 
-  render(fromStart?: boolean): HTMLDivElement
-  remove(): void
-  isRendered(): boolean
+  render: (fromStart?: boolean) => HTMLDivElement
+  remove: () => void
+  isRendered: () => boolean
 }
 
 const SETTINGS: NProgressSettings = {

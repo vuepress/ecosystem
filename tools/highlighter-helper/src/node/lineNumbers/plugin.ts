@@ -66,7 +66,7 @@ export const lineNumbers = (
 
     const finalCode = rawCode
       .replace(/<\/div>$/u, `${lineNumbersWrapperCode}</div>`)
-      .replace(/"(language-[^"]*?)"/u, '"$1 line-numbers-mode"')
+      .replace(/"(?<lang>language-[^"]*?)"/u, '"$<lang> line-numbers-mode"')
 
     return finalCode
   }
