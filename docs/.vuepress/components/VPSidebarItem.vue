@@ -45,7 +45,7 @@ const onClick = (event: Event): void => {
 
 // reset open status after navigation
 const unregisterRouterHook = router.afterEach(() => {
-  void nextTick(() => {
+  void nextTick().then(() => {
     isOpen.value = isOpenDefault.value
   })
 })

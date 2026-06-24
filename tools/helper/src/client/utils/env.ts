@@ -32,7 +32,7 @@ export const isiPhone = (): boolean => /\biPhone\b/iu.test(getPlatform())
  * @returns Whether it's Windows / 是否为 Windows
  */
 export const isWindows = (): boolean =>
-  /\b(Windows|Win32)\b/iu.test(getPlatform())
+  /\b(?:Windows|Win32)\b/iu.test(getPlatform())
 
 /**
  * Check if the user device is iPad.
@@ -83,7 +83,7 @@ export const isMobile = (): boolean => {
   if (isBoolean(uaDataMobile)) return uaDataMobile
 
   // Fallback to UA
-  return /\b(Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|CriOS|FxiOS)\b/iu.test(
+  return /\b(?:Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|CriOS|FxiOS)\b/iu.test(
     getUA(),
   )
 }

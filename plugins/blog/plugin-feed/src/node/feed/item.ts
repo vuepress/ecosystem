@@ -215,12 +215,13 @@ export class FeedItem {
       if (isLinkWithProtocol(cover)) return cover
     }
 
-    const result = /!\[.*?\]\((.*?)\)/iu.exec(this.page.content)
+    const result = /!\[.*?\]\((?<src>.*?)\)/iu.exec(this.page.content)
 
     if (result) {
-      if (isLinkAbsolute(result[1])) return getUrl(hostname, base, result[1])
+      const { src } = result.groups!
 
-      if (isLinkWithProtocol(result[1])) return result[1]
+      if (isLinkAbsolute(src)) return getUrl(hostname, base, src)
+      if (isLinkWithProtocol(src)) return src
     }
 
     return null

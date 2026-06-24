@@ -19,5 +19,5 @@ export const resolveAttr = (info: string, attr: string): string | null => {
   const match = info.match(regex)
 
   // return content if matched, null if not specified
-  return match?.groups?.content ?? null
+  return match?.groups!.content ?? null
 }

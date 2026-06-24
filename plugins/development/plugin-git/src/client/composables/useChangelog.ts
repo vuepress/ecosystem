@@ -21,7 +21,7 @@ export interface GitChangelogItem extends GitChangelogInfo {
   date: string
 }
 
-const RE_ISSUE = /#(\d+)/gu
+const RE_ISSUE = /#(?<issue>\d+)/gu
 
 /**
  * Changelog composable

@@ -1,3 +1,1 @@
-import Badge from './Badge.vue'
-
-export { Badge }
+export { default as Badge } from './Badge.vue'
