@@ -4,7 +4,8 @@ import type { Markdown } from 'vuepress/markdown'
 
 import { resolveLanguage } from '../utils.js'
 
-const PRE_ATTRS_REGEXP = /<pre([\s\S]*?)style="([^"]*)"([^>]*)>/u
+const PRE_ATTRS_REGEXP =
+  /<pre(?<before>[\s\S]*?)style="(?<style>[^"]*)"(?<after>[^>]*)>/u
 
 export interface MarkdownItPreWrapperOptions {
   /**
