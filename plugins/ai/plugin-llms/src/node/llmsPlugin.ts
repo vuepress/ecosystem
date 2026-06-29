@@ -72,7 +72,7 @@ export const llmsPlugin =
             allLocales: locale === 'all',
           }
 
-          const llmPages = resolveLLMPages(app, {
+          const llmPages = await resolveLLMPages(app, {
             stripHTML,
             filter,
             currentLocale: localePath,

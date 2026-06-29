@@ -1,6 +1,4 @@
-import { defineConfig } from 'npm-check-updates'
-
-export default defineConfig({
+export default {
   peer: true,
   cooldown: 1,
   workspaces: true,
@@ -20,4 +18,4 @@ export default defineConfig({
 
     return 'latest'
   },
-})
+}

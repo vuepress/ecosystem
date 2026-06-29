@@ -91,9 +91,9 @@ export const renderCacheWithFilesystem = async (
   md: Markdown,
   app: App,
 ): Promise<void> => {
-  const cacheDir = app.dir.cache(CACHE_DIR)
+  if (app.env.isBuild && !fs.existsSync(app.dir.cache(CACHE_DIR))) return
 
-  if (app.env.isBuild && !(await fs.pathExists(cacheDir))) return
+  const cacheDir = app.dir.cache(CACHE_DIR)
 
   await fs.ensureDir(cacheDir)
 
