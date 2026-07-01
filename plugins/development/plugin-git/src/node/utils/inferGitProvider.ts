@@ -63,16 +63,21 @@ export const getRemoteUrl = (cwd: string): string | null => {
 export const normalizeRepoUrl = (url: string): string => {
   const normalized = url.replace(/\.git$/u, '')
 
-  const sshMatch = /^git@([^:]+):(.+)$/u.exec(normalized)
-  if (sshMatch) return `https://${sshMatch[1]}/${sshMatch[2]}`
+  const sshMatch = /^git@(?<host>[^:]+):(?<path>.+)$/u.exec(normalized)
+  if (sshMatch?.groups)
+    return `https://${sshMatch.groups.host}/${sshMatch.groups.path}`
 
-  const sshProtocolMatch = /^ssh:\/\/git@([^/]+)\/(.+)$/u.exec(normalized)
-  if (sshProtocolMatch)
-    return `https://${sshProtocolMatch[1]}/${sshProtocolMatch[2]}`
+  const sshProtocolMatch = /^ssh:\/\/git@(?<host>[^/]+)\/(?<path>.+)$/u.exec(
+    normalized,
+  )
+  if (sshProtocolMatch?.groups)
+    return `https://${sshProtocolMatch.groups.host}/${sshProtocolMatch.groups.path}`
 
-  const gitProtocolMatch = /^git:\/\/([^/]+)\/(.+)$/u.exec(normalized)
-  if (gitProtocolMatch)
-    return `https://${gitProtocolMatch[1]}/${gitProtocolMatch[2]}`
+  const gitProtocolMatch = /^git:\/\/(?<host>[^/]+)\/(?<path>.+)$/u.exec(
+    normalized,
+  )
+  if (gitProtocolMatch?.groups)
+    return `https://${gitProtocolMatch.groups.host}/${gitProtocolMatch.groups.path}`
 
   return normalized
 }
