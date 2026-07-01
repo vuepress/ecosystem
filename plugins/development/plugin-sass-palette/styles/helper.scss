@@ -53,7 +53,7 @@
     @return true;
   }
 
-  @warn "Unexpected variable value: getting #{$value}";
+  @warn 'Unexpected variable value: getting #{$value}';
   @return false;
 }
 
@@ -73,7 +73,7 @@
     @return $light-color;
   }
 
-  @warn "Unexpected color: getting #{$color}";
+  @warn 'Unexpected color: getting #{$color}';
   @return transparent;
 }
 
