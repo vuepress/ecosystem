@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.131](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.130...v2.0.0-rc.131) (2026-07-01)
+
+### Bug Fixes
+
+- **plugin-pwa:** correct shouldPrefetch warning condition ([#681](https://github.com/vuepress/ecosystem/issues/681)) ([43d3b39](https://github.com/vuepress/ecosystem/commit/43d3b396aaf64a0dbb92c8665f94a355b438f9c3))
+
 # [2.0.0-rc.130](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.129...v2.0.0-rc.130) (2026-05-14)
 
 **Note:** Version bump only for package @vuepress/plugin-pwa

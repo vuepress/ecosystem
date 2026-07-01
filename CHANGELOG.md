@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.131](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.130...v2.0.0-rc.131) (2026-07-01)
+
+### Bug Fixes
+
+- **create-vuepress:** allow esbuild with pnpm ([9fcd989](https://github.com/vuepress/ecosystem/commit/9fcd9896d668d3a7a17cc99e2e9ecad3f829ac02))
+- **create-vuepress:** remove pnpm field ([#679](https://github.com/vuepress/ecosystem/issues/679)) ([aff9a07](https://github.com/vuepress/ecosystem/commit/aff9a07dad4460194204bbe1c510d591c801e0d3))
+- **plugin-comment:** avoid throw ([756dcf5](https://github.com/vuepress/ecosystem/commit/756dcf54707a2d337e95a79400df81866d095894))
+- **plugin-git:** support submodule ([#621](https://github.com/vuepress/ecosystem/issues/621)) ([aea56bb](https://github.com/vuepress/ecosystem/commit/aea56bbdf3ad870432986fbde2a449ff82ce2d3b))
+- **plugin-pwa:** correct shouldPrefetch warning condition ([#681](https://github.com/vuepress/ecosystem/issues/681)) ([43d3b39](https://github.com/vuepress/ecosystem/commit/43d3b396aaf64a0dbb92c8665f94a355b438f9c3))
+- **plugin-slimsearch:** prevent search crash from broken options ([0bf0a99](https://github.com/vuepress/ecosystem/commit/0bf0a99f689af2da7f7319e53f91390bbf671cd4))
+
+### Features
+
+- **create-vuepress:** add pm info with corepack ([ef1f76d](https://github.com/vuepress/ecosystem/commit/ef1f76d4889732326212a6f9789790499a7726e3))
+- **plugin-slimsearch:** better options handling ([d8aa98e](https://github.com/vuepress/ecosystem/commit/d8aa98e1c4f5e9460ca197ab754acdc2411e10c4))
+
+### Performance Improvements
+
+- improve io performance ([cdf840c](https://github.com/vuepress/ecosystem/commit/cdf840cde9436abbfb20c63365b4c91551d3d77e))
+- **plugin-auto-frontmatter:** improve timestamp parsing ([bbf79df](https://github.com/vuepress/ecosystem/commit/bbf79dffea11ea08c98a3f3bd01ec1c070c6d1ee))
+- **plugin-feed:** lazyload feed template ([#686](https://github.com/vuepress/ecosystem/issues/686)) ([548abcb](https://github.com/vuepress/ecosystem/commit/548abcbc8dfe29b0da232bfafa06800ae6b081a1))
+- **plugin-llms:** use async remark processing with parallel ([#685](https://github.com/vuepress/ecosystem/issues/685)) ([fdaccbe](https://github.com/vuepress/ecosystem/commit/fdaccbe8f20a9f77d6c14dd6798fc192e6f73bde))
+
 # [2.0.0-rc.130](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.129...v2.0.0-rc.130) (2026-05-14)
 
 ### Bug Fixes

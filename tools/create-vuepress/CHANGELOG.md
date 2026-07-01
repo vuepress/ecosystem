@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.131](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.130...v2.0.0-rc.131) (2026-07-01)
+
+### Bug Fixes
+
+- **create-vuepress:** allow esbuild with pnpm ([9fcd989](https://github.com/vuepress/ecosystem/commit/9fcd9896d668d3a7a17cc99e2e9ecad3f829ac02))
+- **create-vuepress:** remove pnpm field ([#679](https://github.com/vuepress/ecosystem/issues/679)) ([aff9a07](https://github.com/vuepress/ecosystem/commit/aff9a07dad4460194204bbe1c510d591c801e0d3))
+
+### Features
+
+- **create-vuepress:** add pm info with corepack ([ef1f76d](https://github.com/vuepress/ecosystem/commit/ef1f76d4889732326212a6f9789790499a7726e3))
+
 # [2.0.0-rc.130](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.129...v2.0.0-rc.130) (2026-05-14)
 
 **Note:** Version bump only for package create-vuepress

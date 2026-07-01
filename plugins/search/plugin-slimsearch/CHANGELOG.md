@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.131](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.130...v2.0.0-rc.131) (2026-07-01)
+
+### Bug Fixes
+
+- **plugin-slimsearch:** prevent search crash from broken options ([0bf0a99](https://github.com/vuepress/ecosystem/commit/0bf0a99f689af2da7f7319e53f91390bbf671cd4))
+
+### Features
+
+- **plugin-slimsearch:** better options handling ([d8aa98e](https://github.com/vuepress/ecosystem/commit/d8aa98e1c4f5e9460ca197ab754acdc2411e10c4))
+
 # [2.0.0-rc.130](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.129...v2.0.0-rc.130) (2026-05-14)
 
 ### Bug Fixes

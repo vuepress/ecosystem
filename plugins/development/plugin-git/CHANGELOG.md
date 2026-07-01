@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.131](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.130...v2.0.0-rc.131) (2026-07-01)
+
+### Bug Fixes
+
+- **plugin-git:** support submodule ([#621](https://github.com/vuepress/ecosystem/issues/621)) ([aea56bb](https://github.com/vuepress/ecosystem/commit/aea56bbdf3ad870432986fbde2a449ff82ce2d3b))
+
 # [2.0.0-rc.130](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.129...v2.0.0-rc.130) (2026-05-14)
 
 **Note:** Version bump only for package @vuepress/plugin-git
