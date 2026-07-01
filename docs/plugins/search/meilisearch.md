@@ -268,7 +268,7 @@ jobs:
     name: re-scrape documentation for Meilisearch
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           # This is required for the helper to compare the current and previous commits
           fetch-depth: 2
