@@ -43,21 +43,6 @@ packageExtensions:
       postcss-html:
         optional: true
 
-  # FIXME: avoid missing type declaration
-  # https://github.com/unjs/unplugin/issues/605
-  unplugin:
-    peerDependencies:
-      rollup: ^4.0.0
-      vite: ^8.0.0
-      webpack: ^5.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-      vite:
-        optional: true
-      webpack:
-        optional: true
-
 peerDependencyRules:
   allowedVersions:
     artalk>marked: ^17.0.0
@@ -66,7 +51,7 @@ peerDependencyRules:
 cleanupUnusedCatalogs: true
 
 configDependencies:
-  pacquet: ^0.11.10
+  pacquet: ^0.11.12
 
 # enableGlobalVirtualStore: true
 

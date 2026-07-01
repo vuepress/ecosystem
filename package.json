@@ -10,7 +10,7 @@
     "format": "oxfmt",
     "lint": "oxlint --fix --report-unused-disable-directives --deny-warnings && stylelint **/*.{css,html,scss,vue} --fix && oxfmt",
     "lint:check": "oxlint --report-unused-disable-directives --deny-warnings && stylelint **/*.{css,html,scss,vue} && oxfmt --check",
-    "pkg:check-update": "ncu",
+    "pkg:check-update": "pnpm dlx npm-check-updates",
     "pkg:update": "pnpm up -r",
     "prepare": "husky",
     "release": "pnpm run release:check && pnpm run release:version && pnpm run release:publish",
@@ -34,10 +34,9 @@
     "husky": "^9.1.7",
     "lightningcss": "^1.32.0",
     "nano-staged": "^1.0.2",
-    "npm-check-updates": "^22.2.8",
     "oxc-config-hope": "^0.3.9",
-    "oxfmt": "^0.56.0",
-    "oxlint": "^1.71.0",
+    "oxfmt": "^0.57.0",
+    "oxlint": "^1.72.0",
     "oxlint-tsgolint": "^0.23.0",
     "picocolors": "^1.1.1",
     "postcss-html": "^1.8.1",
@@ -64,7 +63,7 @@
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "11.8.0",
+      "version": "11.9.0",
       "onFail": "download"
     },
     "runtime": {
