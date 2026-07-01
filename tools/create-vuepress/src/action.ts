@@ -2,7 +2,7 @@
 /* oxlint-disable no-console */
 import { execSync, spawn } from 'node:child_process'
 import { existsSync, readdirSync } from 'node:fs'
-import { resolve as pathResolve } from 'node:path'
+import path from 'node:path'
 
 import { confirm, select } from '@inquirer/prompts'
 import type { Command } from 'commander'
@@ -66,7 +66,7 @@ export const mainAction = async function (
   if (!targetDir || (targetDir.startsWith('[') && targetDir.endsWith(']')))
     this.error(locale.error.dirMissing(packageManager))
 
-  const targetDirPath = pathResolve(process.cwd(), targetDir)
+  const targetDirPath = path.resolve(process.cwd(), targetDir)
 
   // check if the user is trying to cover his files
   if (existsSync(targetDirPath) && readdirSync(targetDirPath).length > 0)

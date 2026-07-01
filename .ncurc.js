@@ -1,7 +1,6 @@
-import { defineConfig } from 'npm-check-updates'
-
-export default defineConfig({
+export default {
   peer: true,
+  cooldown: 1,
   workspaces: true,
   upgrade: true,
   timeout: 300000,
@@ -19,4 +18,4 @@ export default defineConfig({
 
     return 'latest'
   },
-})
+}

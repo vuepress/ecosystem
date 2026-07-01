@@ -57,12 +57,15 @@ export const collapsedLines = (
 
     const finalCode = code
       .replace(/<\/div>$/u, `${collapsedLinesCode}</div>`)
-      .replace(/"(language-[^"]*?)"/u, '"$1 has-collapsed-lines collapsed"')
+      .replace(
+        /"(?<lang>language-[^"]*?)"/u,
+        '"$<lang> has-collapsed-lines collapsed"',
+      )
       .replace(/^<div[^>]*>/u, (match) => {
         if (!match.includes('style='))
           return `${match.slice(0, -1)} style="${styles}">`
 
-        return match.replace(/(style=")/u, `$1${styles}`)
+        return match.replace(/(?<style>style=")/u, `$<style>${styles}`)
       })
 
     return finalCode

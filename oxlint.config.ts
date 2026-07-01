@@ -37,6 +37,9 @@ export default defineHopeConfig(
         { definedTags: ['recommended'], typed: true },
       ],
 
+      // TODO: Check all calls
+      'node/no-sync': 'off',
+
       // we only use this when necessary
       'typescript/no-non-null-assertion': 'off',
       // this can introduce false positives, as though type is required, users might not provide such
@@ -49,6 +52,8 @@ export default defineHopeConfig(
       // globalThis is not supported in some environments, and we already handle SSR carefully
       // so window is still preferred in client codes
       'unicorn/prefer-global-this': 'off',
+      // relax max-nested restrictions
+      'unicorn/max-nested-calls': ['warn', { max: 5 }],
       // sometimes we need to check if a defined variable is injected
       'unicorn/no-typeof-undefined': 'off',
     },
@@ -100,12 +105,28 @@ export default defineHopeConfig(
       ],
     },
   },
+  // component files
+  {
+    files: ['**/src/client/components/**/*.{ts,vue}'],
+    plugins: ['vue'],
+    rules: {
+      'vue/require-default-prop': 'off',
+      'unicorn/max-nested-calls': 'off',
+    },
+  },
   {
     files: ['tools/**/*.ts'],
     plugins: ['node'],
     rules: {
       // alow accessing env variables in tools
       'node/no-process-env': 'off',
+    },
+  },
+  {
+    files: ['tools/create-vuepress/**/*.ts', 'tools/vp-update/**/*.ts'],
+    plugins: ['node'],
+    rules: {
+      'node/no-sync': 'off',
     },
   },
   {

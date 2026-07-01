@@ -3,6 +3,7 @@ import { loadJSONIndex } from 'slimsearch'
 import database from '@temp/slimsearch/index.js'
 import { sortStrategy } from '@temp/slimsearch/worker-options.js'
 
+import { INDEX_FIELD_CONFIG } from '../shared/index.js'
 import type { IndexItem, WorkerMessageData } from '../shared/index.js'
 import { getSearchResults, getSuggestions } from './utils/index.js'
 
@@ -14,14 +15,7 @@ globalThis.onmessage = async ({
 
   const searchLocaleIndex = loadJSONIndex<string, IndexItem, IndexItem>(
     localeIndex,
-    {
-      fields: [/** Heading */ 'h', /** Text */ 't', /** CustomFields */ 'c'],
-      storeFields: [
-        /** Heading */ 'h',
-        /** Text */ 't',
-        /** CustomFields */ 'c',
-      ],
-    },
+    INDEX_FIELD_CONFIG,
   )
 
   if (type === 'suggest') {

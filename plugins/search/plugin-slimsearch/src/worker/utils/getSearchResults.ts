@@ -2,6 +2,11 @@ import { entries } from '@vuepress/helper/shared'
 import type { MatchInfo, SearchIndex } from 'slimsearch'
 import { getStoredFields, search } from 'slimsearch'
 
+import {
+  HEADING_INDEX_ID,
+  TEXT_INDEX_ID,
+  CUSTOM_FIELDS_INDEX_ID,
+} from '../../shared/index.js'
 import type {
   CustomFieldIndexItem,
   IndexItem,
@@ -36,6 +41,7 @@ const sortResultByMax = (valueA: PageResult, valueB: PageResult): number =>
   Math.max(...valueB.contents.map(([, score]) => score)) -
   Math.max(...valueA.contents.map(([, score]) => score))
 
+// oxlint-disable-next-line max-lines-per-function
 export const getSearchResults = (
   query: string,
   localeIndex: SearchIndex<string, IndexItem, IndexItem>,
@@ -46,12 +52,9 @@ export const getSearchResults = (
 
   const results = search(localeIndex, query, {
     boost: {
-      // oxlint-disable-next-line no-useless-computed-key
-      [/** Heading */ 'h']: 2,
-      // oxlint-disable-next-line no-useless-computed-key
-      [/** Text */ 't']: 1,
-      // oxlint-disable-next-line no-useless-computed-key
-      [/** CustomFields */ 'c']: 4,
+      [CUSTOM_FIELDS_INDEX_ID]: 4,
+      [HEADING_INDEX_ID]: 2,
+      [TEXT_INDEX_ID]: 1,
     },
     prefix: true,
     ...searchOptions,
@@ -84,8 +87,8 @@ export const getSearchResults = (
           index: info,
           display: displayTerms
             .flatMap((term) =>
-              (result as CustomFieldIndexItem).c.map((field) =>
-                getMatchedContent(field, term),
+              (result as CustomFieldIndexItem)[CUSTOM_FIELDS_INDEX_ID].map(
+                (field) => getMatchedContent(field, term),
               ),
             )
             .filter((item): item is Word[] => item != null),
@@ -94,7 +97,9 @@ export const getSearchResults = (
       ])
     } else {
       const headerContent = displayTerms
-        .map((term) => getMatchedContent((result as PageIndexItem).h, term))
+        .map((term) =>
+          getMatchedContent((result as PageIndexItem)[HEADING_INDEX_ID], term),
+        )
         .filter((item): item is Word[] => item != null)
 
       if (headerContent.length > 0) {
@@ -109,8 +114,8 @@ export const getSearchResults = (
         ])
       }
 
-      if (/** Text */ 't' in result && result.t) {
-        for (const text of result.t) {
+      if (TEXT_INDEX_ID in result && result[TEXT_INDEX_ID]) {
+        for (const text of result[TEXT_INDEX_ID]) {
           const matchedContent = displayTerms
             .map((term) => getMatchedContent(text, term))
             .filter((item): item is Word[] => item != null)
@@ -143,7 +148,7 @@ export const getSearchResults = (
           | undefined
 
         // oxlint-disable-next-line no-param-reassign
-        if (pageIndex) title = pageIndex.h
+        if (pageIndex) title = pageIndex[HEADING_INDEX_ID]
       }
 
       return {

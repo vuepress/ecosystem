@@ -11,7 +11,7 @@ const COLLAPSED_LINES_REGEXP = /:collapsed-lines\b/u
  *
  * 匹配代码块信息中 `:collapsed-lines=num` 指令的正则表达式
  */
-const COLLAPSED_LINES_START_REGEXP = /:collapsed-lines=(\d+)\b/u
+const COLLAPSED_LINES_START_REGEXP = /:collapsed-lines=(?<lines>\d+)\b/u
 
 /**
  * Regular expression to match `:no-collapsed-lines` directive in code block
@@ -45,7 +45,7 @@ const NO_COLLAPSED_LINES_REGEXP = /:no-collapsed-lines\b/u
 export const resolveCollapsedLines = (
   info: string,
 ): boolean | number | null => {
-  const lines = COLLAPSED_LINES_START_REGEXP.exec(info)?.[1]
+  const lines = COLLAPSED_LINES_START_REGEXP.exec(info)?.groups!.lines
 
   if (lines) return Number(lines)
 

@@ -2,10 +2,11 @@ import { watchImmediate } from '@vueuse/core'
 import type { App, ComputedRef, InjectionKey, MaybeRefOrGetter, Ref } from 'vue'
 import { computed, inject, isRef, readonly, ref } from 'vue'
 import type { PageData } from 'vuepress/client'
-import { useRouteLocale } from 'vuepress/client'
+import { useLang, useRouteLocale } from 'vuepress/client'
 import { isFunction } from 'vuepress/shared'
 
 import type { SearchResult, WorkerSearchOptions } from '../../shared/index.js'
+import { isCJKLang } from '../utils/index.js'
 
 declare const __VUEPRESS_DEV__: boolean
 
@@ -60,6 +61,7 @@ export const defineSearchConfig = (
 }
 
 export const useSearchOptions = (): ComputedRef<SearchLocaleOptions> => {
+  const lang = useLang()
   const routeLocale = useRouteLocale()
   const options = inject(slimsearchSymbol)!
 
@@ -67,6 +69,7 @@ export const useSearchOptions = (): ComputedRef<SearchLocaleOptions> => {
     const { locales = {}, ...rest } = options.value
 
     return {
+      prefix: !isCJKLang(lang.value),
       ...rest,
       ...locales[routeLocale.value],
     }

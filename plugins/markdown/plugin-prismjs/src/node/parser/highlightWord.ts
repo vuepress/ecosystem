@@ -1,7 +1,7 @@
 import type { CodeParser, OpenTag } from './getCodeParser.js'
 
-const SPLIT_REGEXP = /(<[^>]+>)/u
-const META_WORD_REGEXP = /\/((?:\\.|[^\\/])+)\//gu
+const SPLIT_REGEXP = /(?<tag><[^>]+>)/u
+const META_WORD_REGEXP = /\/(?<pattern>(?:\\.|[^\\/])+)\//gu
 
 const WORD_BEFORE = '<span class="highlighted-word">'
 const WORD_AFTER = '</span>'
@@ -47,7 +47,9 @@ export const parseMetaHighlightWords = (meta: string): string[] => {
   return (
     match
       // Escape backslashes
-      .map((part) => part[1].replaceAll(/\\(.)/gu, '$1'))
+      .map((part) =>
+        part.groups!.pattern.replaceAll(/\\(?<char>.)/gu, '$<char>'),
+      )
   )
 }
 

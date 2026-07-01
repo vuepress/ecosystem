@@ -1,49 +1,8 @@
-import { readdirSync } from 'node:fs'
+import { readdir } from 'node:fs/promises'
 import { request } from 'node:https'
 import path from 'node:path'
 
 const root = path.resolve(import.meta.dirname, '../')
-
-const pluginPkgJSONs = await Promise.all(
-  readdirSync(path.resolve(root, 'plugins')).flatMap((category) =>
-    readdirSync(path.resolve(root, 'plugins', category)).map(
-      (packageName) =>
-        import(`${root}/plugins/${category}/${packageName}/package.json`, {
-          with: { type: 'json' },
-        }),
-    ),
-  ),
-)
-
-const plugins = pluginPkgJSONs.map(
-  ({ default: { name } }: { default: { name: string } }) => name,
-)
-
-const themePkgJSONs = await Promise.all(
-  readdirSync(path.resolve(root, 'themes')).map(
-    (packageName) =>
-      import(`${root}/themes/${packageName}/package.json`, {
-        with: { type: 'json' },
-      }),
-  ),
-)
-
-const themes = themePkgJSONs.map(
-  ({ default: { name } }: { default: { name: string } }) => name,
-)
-
-const toolPkgJSONs = await Promise.all(
-  readdirSync(path.resolve(root, 'tools')).map(
-    (packageName) =>
-      import(`${root}/tools/${packageName}/package.json`, {
-        with: { type: 'json' },
-      }),
-  ),
-)
-
-const tools = toolPkgJSONs.map(
-  ({ default: { name } }: { default: { name: string } }) => name,
-)
 
 const syncNpmMirror = (pkg: string): Promise<void> =>
   new Promise<void>((resolve) => {
@@ -66,6 +25,30 @@ const syncNpmMirror = (pkg: string): Promise<void> =>
     req.end()
   })
 
-await Promise.all(
-  [...plugins, ...themes, ...tools].map((pkg) => syncNpmMirror(pkg)),
-)
+const getPackageName = (importPath: string): Promise<string> =>
+  import(importPath, { with: { type: 'json' } }).then(
+    ({ default: { name } }: { default: { name: string } }) => name,
+  )
+
+const syncPackage = (importPath: string): Promise<void> =>
+  getPackageName(importPath).then(syncNpmMirror)
+
+const syncDir = (dir: string): Promise<void[]> =>
+  readdir(path.resolve(root, dir)).then((names) =>
+    Promise.all(
+      names
+        .filter((name) => !name.startsWith('.'))
+        .map((name) => syncPackage(`${root}/${dir}/${name}/package.json`)),
+    ),
+  )
+
+const syncPlugins = (): Promise<void[][]> =>
+  readdir(path.resolve(root, 'plugins')).then((categories) =>
+    Promise.all(
+      categories
+        .filter((name) => !name.startsWith('.'))
+        .map((category) => syncDir(`plugins/${category}`)),
+    ),
+  )
+
+await Promise.all([syncPlugins(), syncDir('themes'), syncDir('tools')])

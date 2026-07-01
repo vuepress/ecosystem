@@ -79,7 +79,7 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@vue/shared": "^3.5.34",
+    "@vue/shared": "^3.5.39",
     "@vueuse/core": "catalog:",
     "cheerio": "^1.2.0",
     "fflate": "^0.8.3",
@@ -91,7 +91,7 @@
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
     "domhandler": "^6.0.1",
-    "vite": "^8.0.13"
+    "vite": "^8.0.16"
   },
   "peerDependencies": {
     "@vuepress/bundler-vite": "catalog:",

@@ -47,14 +47,14 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/plugin-alert": "^0.23.2",
-    "@mdit/plugin-container": "^0.23.2",
+    "@mdit/plugin-alert": "^1.0.0",
+    "@mdit/plugin-container": "^1.0.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:"
   },
   "devDependencies": {
-    "markdown-it": "^14.1.1"
+    "markdown-it": "^14.2.0"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

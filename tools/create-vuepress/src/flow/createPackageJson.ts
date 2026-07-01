@@ -1,6 +1,7 @@
 /* oxlint-disable no-console */
+import { execSync } from 'node:child_process'
 import { writeFileSync } from 'node:fs'
-import { join } from 'node:path'
+import path from 'node:path'
 
 import { input } from '@inquirer/prompts'
 
@@ -29,7 +30,7 @@ export const createPackageJson = async ({
   preset,
   bundler,
 }: CreatePackageJsonOptions): Promise<void> => {
-  const packageJsonPath = join(targetDir, 'package.json')
+  const packageJsonPath = path.join(targetDir, 'package.json')
 
   console.info(locale.flow.createPackage)
 
@@ -86,18 +87,27 @@ export const createPackageJson = async ({
           }
         : {}),
     },
-    ...(packageManager === 'pnpm'
-      ? {
-          pnpm: {
-            onlyBuiltDependencies: ['esbuild'],
-          },
-        }
-      : {}),
   }
 
   writeFileSync(
     packageJsonPath,
     `${JSON.stringify(packageContent, null, 2)}\n`,
-    { encoding: 'utf-8' },
+    'utf-8',
   )
+
+  execSync(`corepack use ${packageManager}@latest`, {
+    cwd: targetDir,
+    stdio: 'ignore',
+  })
+
+  if (packageManager === 'pnpm' && bundler === 'webpack') {
+    writeFileSync(
+      path.join(targetDir, 'pnpm-workspace.yaml'),
+      `\
+allowBuilds:
+  esbuild: true
+`,
+      'utf-8',
+    )
+  }
 }

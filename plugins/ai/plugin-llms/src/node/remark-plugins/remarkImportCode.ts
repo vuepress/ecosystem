@@ -17,21 +17,21 @@ interface ImportCodeInfo {
 const SYNTAX_RE =
   /^@\[code(?:\{(?:(?:(?<lineStart>\d+)?-(?<lineEnd>\d+)?)|(?<lineSingle>\d+))\})?(?: (?<info>[^\]]+))?\]\((?<importPath>[^)]*)\)/u
 
-const resolveImportCode = (
+const resolveImportCode = async (
   cwd: string,
   { importPath, lineStart, lineEnd, lang, meta }: ImportCodeInfo,
-): Code => {
+): Promise<Code> => {
   let importFilePath = importPath
 
   if (!path.isAbsolute(importPath)) importFilePath = path.join(cwd, importPath)
 
   // check file existence
-  if (!fs.existsSync(importFilePath)) {
+  if (!(await fs.pathExists(importFilePath))) {
     logger.error(`Import file ${colors.magenta(importPath)} not found`)
     return { type: 'code', lang, meta, value: 'File Not Found' }
   }
 
-  const fileContent = fs.readFileSync(importFilePath).toString()
+  const fileContent = await fs.readFile(importFilePath, 'utf-8')
 
   return {
     type: 'code',
@@ -46,7 +46,7 @@ const resolveImportCode = (
 }
 
 const parseLineNumber = (line: string | undefined): number | undefined =>
-  line ? Number.parseInt(line, 10) : undefined
+  line ? Math.trunc(Number(line)) : undefined
 
 /**
  * Import code plugin for remark, convert syntax into actual content
@@ -71,7 +71,13 @@ export const remarkImportCode =
     }: ImportCodePluginOptions,
   ) =>
   () =>
-  (tree: Root): void => {
+  async (tree: Root): Promise<void> => {
+    const tasks: {
+      parent: { children: unknown[] }
+      index: number
+      matched: RegExpExecArray
+    }[] = []
+
     visit(tree, (node, index, parent) => {
       if (!parent || typeof index !== 'number') return
 
@@ -83,21 +89,36 @@ export const remarkImportCode =
         const matched = SYNTAX_RE.exec(content)
         if (!matched?.groups) return
 
-        const lineSingle = parseLineNumber(matched.groups.lineSingle)
-        const importPath = handleImportPath(matched.groups.importPath)
-        const info = matched.groups.info || path.extname(importPath).slice(1)
-        const lang = /^([^ :[{]+)/u.exec(info)?.[1] || ''
+        tasks.push({ parent, index, matched })
+      }
+    })
+
+    // Resolve all imports in parallel
+    const resolved = await Promise.all(
+      tasks.reverse().map(async ({ parent, index, matched }) => {
+        const lineSingle = parseLineNumber(matched.groups!.lineSingle)
+        const importPath = handleImportPath(matched.groups!.importPath)
+        const info = matched.groups!.info || path.extname(importPath).slice(1)
+        const lang = /^(?<lang>[^ :[{]+)/u.exec(info)?.groups?.lang || ''
 
         const options: ImportCodeInfo = {
           lineStart:
-            lineSingle ?? parseLineNumber(matched.groups.lineStart) ?? 0,
-          lineEnd: lineSingle ?? parseLineNumber(matched.groups.lineEnd),
+            lineSingle ?? parseLineNumber(matched.groups!.lineStart) ?? 0,
+          lineEnd: lineSingle ?? parseLineNumber(matched.groups!.lineEnd),
           importPath,
           lang: lang.toLowerCase(),
           meta: info.slice(lang.length).trim(),
         }
 
-        parent.children.splice(index, 1, resolveImportCode(cwd, options))
-      }
-    })
+        return {
+          parent,
+          index,
+          code: await resolveImportCode(cwd, options),
+        }
+      }),
+    )
+
+    // Apply replacements in reverse order
+    for (const { parent, index, code } of resolved)
+      parent.children.splice(index, 1, code)
   }

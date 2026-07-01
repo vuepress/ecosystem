@@ -1,6 +1,6 @@
 import type { TwoslashRenderer } from '@shikijs/twoslash/core'
 import { rendererRich } from '@shikijs/twoslash/core'
-import type { Element, ElementContent, Text } from 'hast'
+import type { Element, ElementContent, RootContent, Text } from 'hast'
 import { fromMarkdown } from 'mdast-util-from-markdown'
 import { gfmFromMarkdown } from 'mdast-util-gfm'
 import { defaultHandlers, toHast } from 'mdast-util-to-hast'
@@ -44,7 +44,7 @@ const renderMarkdown = function (
   md: string,
 ): ElementContent[] {
   const mdast = fromMarkdown(
-    md.replaceAll(/\{@link ([^}]*)\}/gu, '$1'), // replace jsdoc links
+    md.replaceAll(/\{@link (?<target>[^}]*)\}/gu, '$<target>'), // replace jsdoc links
     { mdastExtensions: [gfmFromMarkdown()] },
   )
 
@@ -91,7 +91,10 @@ const renderMarkdownInline = function (
   md: string,
   context?: string,
 ): ElementContent[] {
-  const str = context === 'tag:param' ? md.replace(/^([\w$-]+)/u, '`$1` ') : md
+  const str =
+    context === 'tag:param'
+      ? md.replace(/^(?<param>[\w$-]+)/u, '`$<param>` ')
+      : md
   const children = renderMarkdown.call(this, str)
 
   // return the children (content) of the first paragraph if it's the only one
@@ -220,10 +223,10 @@ export const rendererFloatingVue = (
               },
               content: {
                 type: 'root',
-                children: [addVPreProp(popup)],
+                children: [addVPreProp(popup)] as RootContent[],
               },
             },
-          ],
+          ] as ElementContent[],
         } as Element,
       ],
     },

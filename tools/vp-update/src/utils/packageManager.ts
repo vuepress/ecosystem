@@ -1,6 +1,6 @@
 import { spawnSync } from 'node:child_process'
 import { existsSync, readFileSync } from 'node:fs'
-import { dirname, resolve } from 'node:path'
+import path from 'node:path'
 
 export type PackageManager = 'bun' | 'npm' | 'pnpm' | 'yarn' | 'yarn1'
 
@@ -71,9 +71,9 @@ export const getPackageManagerSetting = (
 
   if (status != null) return status
 
-  if (existsSync(resolve(cwd, PACKAGE_CONFIG))) {
+  if (existsSync(path.resolve(cwd, PACKAGE_CONFIG))) {
     const { packageManager: packageManagerSettings } = JSON.parse(
-      readFileSync(resolve(cwd, PACKAGE_CONFIG), 'utf-8'),
+      readFileSync(path.resolve(cwd, PACKAGE_CONFIG), 'utf-8'),
     ) as Record<string, unknown> & { packageManager?: string }
 
     if (packageManagerSettings) {
@@ -90,12 +90,12 @@ export const getPackageManagerSetting = (
   if (deep) {
     let dir = cwd
 
-    while (dir !== dirname(dir)) {
-      dir = dirname(dir)
+    while (dir !== path.dirname(dir)) {
+      dir = path.dirname(dir)
 
-      if (existsSync(resolve(cwd, PACKAGE_CONFIG))) {
+      if (existsSync(path.resolve(cwd, PACKAGE_CONFIG))) {
         const { packageManager: packageManagerSettings } = JSON.parse(
-          readFileSync(resolve(cwd, PACKAGE_CONFIG), 'utf-8'),
+          readFileSync(path.resolve(cwd, PACKAGE_CONFIG), 'utf-8'),
         ) as Record<string, unknown> & { packageManager?: string }
 
         if (packageManagerSettings) {
@@ -115,16 +115,16 @@ export const getPackageManagerSetting = (
 }
 
 const getLockFileTypeInDir = (dir: string): PackageManager | null => {
-  if (existsSync(resolve(dir, PNPM_LOCK))) return 'pnpm'
+  if (existsSync(path.resolve(dir, PNPM_LOCK))) return 'pnpm'
 
-  if (existsSync(resolve(dir, YARN_LOCK))) {
-    const content = readFileSync(resolve(dir, YARN_LOCK), 'utf-8')
+  if (existsSync(path.resolve(dir, YARN_LOCK))) {
+    const content = readFileSync(path.resolve(dir, YARN_LOCK), 'utf-8')
     return content.includes('yarn lockfile v1') ? 'yarn1' : 'yarn'
   }
 
-  if (existsSync(resolve(dir, BUN_LOCK))) return 'bun'
+  if (existsSync(path.resolve(dir, BUN_LOCK))) return 'bun'
 
-  if (existsSync(resolve(dir, NPM_LOCK))) return 'npm'
+  if (existsSync(path.resolve(dir, NPM_LOCK))) return 'npm'
 
   return null
 }
@@ -157,8 +157,8 @@ export const getTypeofLockFile = (
   if (deep) {
     let dir = cwd
 
-    while (dir !== dirname(dir)) {
-      dir = dirname(dir)
+    while (dir !== path.dirname(dir)) {
+      dir = path.dirname(dir)
 
       type = getLockFileTypeInDir(dir)
 
@@ -193,3 +193,23 @@ export const getPackageManager = (
       : isPackageManagerInstalled('bun')
         ? 'bun'
         : 'npm')
+
+export const getUpdateCommand = (packageManager: PackageManager): string => {
+  switch (packageManager) {
+    case 'pnpm': {
+      return 'pnpm update'
+    }
+    case 'yarn1': {
+      return 'yarn upgrade'
+    }
+    case 'yarn': {
+      return 'yarn up'
+    }
+    case 'bun': {
+      return 'bun update'
+    }
+    default: {
+      return 'npm update'
+    }
+  }
+}

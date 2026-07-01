@@ -1,6 +1,6 @@
 /* oxlint-disable no-console */
 import { readFileSync, writeFileSync } from 'node:fs'
-import { dirname, join } from 'node:path'
+import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { confirm } from '@inquirer/prompts'
@@ -9,10 +9,10 @@ import type { CreateLocaleOptions, Lang } from '../i18n/index.js'
 import type { PackageManager } from '../utils/index.js'
 import { copy, ensureDirExistSync } from '../utils/index.js'
 
-const templateFolder = join(
-  dirname(fileURLToPath(import.meta.resolve('create-vuepress/package.json'))),
-  './template',
+const packageJsonPath = fileURLToPath(
+  import.meta.resolve('create-vuepress/package.json'),
 )
+const templateFolder = path.join(path.dirname(packageJsonPath), './template')
 
 const getWorkflowContent = (
   packageManager: PackageManager,
@@ -115,11 +115,11 @@ export const generateTemplate = async ({
   console.info(locale.flow.generateTemplate)
 
   // copy template
-  copy(join(templateFolder, preset), join(targetDirPath, 'docs'))
+  copy(path.join(templateFolder, preset), path.join(targetDirPath, 'docs'))
 
-  const configFilePath = join(targetDirPath, 'docs/.vuepress/config.js')
+  const configFilePath = path.join(targetDirPath, 'docs/.vuepress/config.js')
 
-  const content = readFileSync(configFilePath, { encoding: 'utf-8' })
+  const content = readFileSync(configFilePath, 'utf-8')
 
   writeFileSync(
     configFilePath,
@@ -129,18 +129,18 @@ export const generateTemplate = async ({
         `\nimport { ${bundler}Bundler } from '@vuepress/bundler-${bundler}'\n\nexport default defineUserConfig({`,
       )
       .replace(/\}\)\n$/u, `\n  bundler: ${bundler}Bundler(),\n})\n`),
-    { encoding: 'utf-8' },
+    'utf-8',
   )
 
   if (enableWorkflow) {
-    const workflowDir = join(targetDirPath, '.github/workflows')
+    const workflowDir = path.join(targetDirPath, '.github/workflows')
 
     ensureDirExistSync(workflowDir)
 
     writeFileSync(
-      join(workflowDir, 'deploy-docs.yml'),
+      path.join(workflowDir, 'deploy-docs.yml'),
       getWorkflowContent(packageManager, lang),
-      { encoding: 'utf-8' },
+      'utf-8',
     )
   }
 }

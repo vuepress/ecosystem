@@ -2,6 +2,7 @@ import { entries, fromEntries } from '@vuepress/helper/client'
 import type { IndexObject } from 'slimsearch'
 import { loadIndex } from 'slimsearch'
 
+import { INDEX_FIELD_CONFIG } from '../shared/index.js'
 import type {
   IndexItem,
   SearchIndexStore,
@@ -18,14 +19,7 @@ const searchIndex: SearchIndexStore = fromEntries(
     JSON.parse(__SLIMSEARCH_INDEX__) as Record<string, IndexObject<IndexItem>>,
   ).map(([localePath, index]) => [
     localePath,
-    loadIndex<string, IndexItem, IndexItem>(index, {
-      fields: [/** Heading */ 'h', /** Text */ 't', /** CustomFields */ 'c'],
-      storeFields: [
-        /** Heading */ 'h',
-        /** Text */ 't',
-        /** CustomFields */ 'c',
-      ],
-    }),
+    loadIndex<string, IndexItem, IndexItem>(index, INDEX_FIELD_CONFIG),
   ]),
 )
 
