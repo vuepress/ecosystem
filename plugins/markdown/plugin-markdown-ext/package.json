@@ -46,12 +46,12 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/plugin-container": "^0.23.2",
-    "@mdit/plugin-footnote": "^0.23.2",
-    "@mdit/plugin-tasklist": "^0.23.2",
+    "@mdit/plugin-container": "^1.0.0",
+    "@mdit/plugin-footnote": "^1.0.0",
+    "@mdit/plugin-tasklist": "^1.0.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
-    "js-yaml": "^4.2.0",
+    "js-yaml": "^5.2.0",
     "markdown-it-cjk-friendly": "^2.0.2"
   },
   "devDependencies": {
