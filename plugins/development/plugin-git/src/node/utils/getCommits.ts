@@ -1,13 +1,20 @@
 import { spawn } from 'node:child_process'
 
-import type { GitContributorInfo } from '../../shared/index.js'
+import { path } from 'vuepress/utils'
+
+import type { GitContributorInfo, SubmoduleInfo } from '../../shared/index.js'
 import type { GitPluginOptions } from '../options.js'
 import type { MergedRawCommit, RawCommit } from '../typings.js'
+import { getRemoteUrl, normalizeRepoUrl } from './inferGitProvider.js'
 import { logger } from './logger.js'
+import { isSafePath } from './safePath.js'
 
 const INFO_SPLITTER = '[|]'
 const COMMIT_SPLITTER = String.raw`\|/`
 const RE_CO_AUTHOR = /^ *Co-authored-by: ?(?<name>[^<]*)<(?<email>[^>]*)> */gimu
+
+const gitRepoRootResultCache = new Map<string, string | null>()
+const gitRepoRootTaskCache = new Map<string, Promise<string | null>>()
 
 const getCoAuthorsFromCommitBody = (
   body: string,
@@ -43,9 +50,9 @@ const getGitLogFormat = ({
  * @param cwd - The working directory to run the git command in
  * @returns A promise that resolves with the stdout of the git command
  */
-const runGitLog = (args: string[], cwd: string): Promise<string> =>
+const runGit = (args: string[], cwd: string): Promise<string> =>
   new Promise((resolve, reject) => {
-    const gitProcess = spawn('git', ['log', ...args], {
+    const gitProcess = spawn('git', args, {
       cwd,
       stdio: ['ignore', 'pipe', 'pipe'],
     })
@@ -62,7 +69,7 @@ const runGitLog = (args: string[], cwd: string): Promise<string> =>
     })
 
     gitProcess.on('error', (error) => {
-      reject(new Error(`Failed to spawn 'git log': ${error.message}`))
+      reject(new Error(`Failed to spawn 'git ${args[0]}': ${error.message}`))
     })
 
     gitProcess.on('close', (code) => {
@@ -71,12 +78,64 @@ const runGitLog = (args: string[], cwd: string): Promise<string> =>
       } else {
         reject(
           new Error(
-            `'git log' failed with exit code ${code}: ${stderrData.trim()}`,
+            `'git ${args[0]}' failed with exit code ${code}: ${stderrData.trim()}`,
           ),
         )
       }
     })
   })
+
+/**
+ * Get git repository root directory for a given file path.
+ *
+ * This function runs `git rev-parse --show-toplevel` in the directory of the
+ * target file to determine the top-level directory of the git repository.
+ *
+ * @param filePath - File path (relative or absolute) whose repository root is
+ *   requested
+ * @param cwd - Current working directory
+ * @returns Promise that resolves to normalized git root path, or null if not in
+ *   a git repository
+ */
+export const getGitRepoRoot = async (
+  filePath: string,
+  cwd: string,
+): Promise<string | null> => {
+  if (!isSafePath(filePath)) return null
+
+  const absFilePath = path.isAbsolute(filePath)
+    ? filePath
+    : path.resolve(cwd, filePath)
+
+  const dir = path.normalize(path.dirname(absFilePath))
+
+  if (gitRepoRootResultCache.has(dir))
+    return gitRepoRootResultCache.get(dir) ?? null
+
+  const cachedTask = gitRepoRootTaskCache.get(dir)
+  if (cachedTask) return cachedTask
+
+  const task = runGit(['rev-parse', '--show-toplevel'], dir)
+    .then((stdout) => path.normalize(stdout.trim()))
+    // oxlint-disable-next-line promise/prefer-await-to-callbacks
+    .catch((err: unknown) => {
+      logger.error(err instanceof Error ? err.message : String(err))
+
+      return null
+    })
+
+  gitRepoRootTaskCache.set(dir, task)
+
+  try {
+    const gitRoot = await task
+
+    gitRepoRootResultCache.set(dir, gitRoot)
+
+    return gitRoot
+  } finally {
+    gitRepoRootTaskCache.delete(dir)
+  }
+}
 
 /**
  * Get raw commits for a specific file
@@ -96,18 +155,47 @@ export const getRawCommits = async (
   options: GitPluginOptions,
 ): Promise<RawCommit[]> => {
   const format = getGitLogFormat(options)
+  const gitRoot = await getGitRepoRoot(filepath, cwd)
 
   try {
-    const stdout = await runGitLog(
+    const absFilePath = path.isAbsolute(filepath)
+      ? filepath
+      : path.resolve(cwd, filepath)
+
+    let repoRelativeFilePath = filepath
+    let submodule: SubmoduleInfo | null = null
+
+    if (gitRoot) {
+      repoRelativeFilePath = path.relative(gitRoot, absFilePath)
+
+      const relative = path.relative(cwd, gitRoot)
+      const isSubmodule =
+        gitRoot !== cwd && relative !== '' && !relative.startsWith('..')
+
+      if (isSubmodule) {
+        const remoteUrl = getRemoteUrl(gitRoot)
+
+        if (remoteUrl) submodule = { repoUrl: normalizeRepoUrl(remoteUrl) }
+      }
+    }
+
+    if (!isSafePath(repoRelativeFilePath)) {
+      logger.warn(`Skipping unsafe file path: ${filepath}`)
+
+      return []
+    }
+
+    const stdout = await runGit(
       [
+        'log',
         '--max-count=-1',
         `--format=${format}${COMMIT_SPLITTER}`,
         '--date=unix',
         '--follow',
         '--',
-        filepath,
+        repoRelativeFilePath,
       ],
-      cwd,
+      gitRoot || cwd,
     )
 
     return stdout
@@ -135,6 +223,7 @@ export const getRawCommits = async (
           author,
           email,
           coAuthors: getCoAuthorsFromCommitBody(body),
+          submodule,
         }
       })
   } catch (err) {
@@ -180,11 +269,33 @@ export const getCommits = async (
   cwd: string,
   options: GitPluginOptions,
 ): Promise<MergedRawCommit[]> => {
+  if (filepaths.length === 0) return []
+
+  const roots = await Promise.all(
+    filepaths.map((filepath) => getGitRepoRoot(filepath, cwd)),
+  )
+  const [primaryRoot] = roots
+
+  const validFilepaths = filepaths.filter((filepath, index) => {
+    if (roots[index] === primaryRoot) return true
+
+    logger.warn(
+      `Skipping '${filepath}': file belongs to a different git repository`,
+    )
+
+    return false
+  })
+
   const rawCommits = (
     await Promise.all(
-      filepaths.map((filepath) => getRawCommits(filepath, cwd, options)),
+      validFilepaths.map((filepath) => getRawCommits(filepath, cwd, options)),
     )
   ).flat()
 
   return mergeRawCommits(rawCommits).sort((a, b) => b.time - a.time)
+}
+
+export const clearGitRepoRootCache = (): void => {
+  gitRepoRootResultCache.clear()
+  gitRepoRootTaskCache.clear()
 }

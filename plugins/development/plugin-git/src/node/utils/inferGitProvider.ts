@@ -31,7 +31,7 @@ export const getRemoteUrl = (cwd: string): string | null => {
       const remotesOutput = execSync('git remote', execOptions)
       const firstRemote = remotesOutput.split('\n')[0]?.trim()
 
-      if (firstRemote) {
+      if (firstRemote && /^[\w.-]+$/u.test(firstRemote)) {
         const remoteUrl = execSync(
           `git remote get-url ${firstRemote}`,
           execOptions,
@@ -45,6 +45,41 @@ export const getRemoteUrl = (cwd: string): string | null => {
       return null
     }
   }
+}
+
+/**
+ * Normalize git remote URL to clean HTTPS format
+ *
+ * 将 Git 远程 URL 规范化为干净的 HTTPS 格式
+ *
+ * @example
+ *   normalizeRepoUrl('https://github.com/user/repo.git') // 'https://github.com/user/repo'
+ *   normalizeRepoUrl('git@github.com:user/repo.git') // 'https://github.com/user/repo'
+ *   normalizeRepoUrl('ssh://git@github.com/user/repo.git') // 'https://github.com/user/repo'
+ *
+ * @param url - The git remote URL / Git 远程 URL
+ * @returns Normalized HTTPS URL / 规范化后的 HTTPS URL
+ */
+export const normalizeRepoUrl = (url: string): string => {
+  const normalized = url.replace(/\.git$/u, '')
+
+  const sshMatch = /^git@(?<host>[^:]+):(?<path>.+)$/u.exec(normalized)
+  if (sshMatch?.groups)
+    return `https://${sshMatch.groups.host}/${sshMatch.groups.path}`
+
+  const sshProtocolMatch = /^ssh:\/\/git@(?<host>[^/]+)\/(?<path>.+)$/u.exec(
+    normalized,
+  )
+  if (sshProtocolMatch?.groups)
+    return `https://${sshProtocolMatch.groups.host}/${sshProtocolMatch.groups.path}`
+
+  const gitProtocolMatch = /^git:\/\/(?<host>[^/]+)\/(?<path>.+)$/u.exec(
+    normalized,
+  )
+  if (gitProtocolMatch?.groups)
+    return `https://${gitProtocolMatch.groups.host}/${gitProtocolMatch.groups.path}`
+
+  return normalized
 }
 
 /**

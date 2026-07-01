@@ -42,7 +42,7 @@ export const useChangelog =
         >()
 
         const { pattern = {}, provider } = gitOptions
-        const repo = resolveRepoLink(gitOptions.repo, provider)
+        const mainRepo = resolveRepoLink(gitOptions.repo, provider)
 
         return computed(() => {
           if (frontmatter.value.changelog === false || !toValue(enabled))
@@ -57,6 +57,8 @@ export const useChangelog =
               { date: formatter.format(item.time) },
               item,
             )
+
+            const repo = item.submodule?.repoUrl ?? mainRepo
 
             if (pattern.issue && repo) {
               res.message = res.message.replace(
