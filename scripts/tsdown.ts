@@ -166,6 +166,7 @@ export const tsdownConfig = (
       },
     },
     fixedExtension: false,
+    logLevel: 'warn',
     publint,
     ...rest,
   })

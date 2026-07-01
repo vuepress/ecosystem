@@ -7,7 +7,7 @@ import { logger } from './logger.js'
 
 const INFO_SPLITTER = '[|]'
 const COMMIT_SPLITTER = String.raw`\|/`
-const RE_CO_AUTHOR = /^ *Co-authored-by: ?([^<]*)<([^>]*)> */gimu
+const RE_CO_AUTHOR = /^ *Co-authored-by: ?(?<name>[^<]*)<(?<email>[^>]*)> */gimu
 
 const getCoAuthorsFromCommitBody = (
   body: string,
@@ -128,7 +128,7 @@ export const getRawCommits = async (
         return {
           filepath,
           hash,
-          time: Number.parseInt(time, 10) * 1000,
+          time: Number(time) * 1000,
           message,
           body,
           refs,

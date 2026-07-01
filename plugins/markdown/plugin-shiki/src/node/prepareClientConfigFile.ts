@@ -94,8 +94,6 @@ export const prepareClientConfigFile = (
   if (twoslash) {
     imports.push(
       `import { enhanceTwoslash } from "${getModulePath('@vuepress/shiki-twoslash/client', import.meta)}"`,
-    )
-    imports.push(
       `import "${getModulePath('@vuepress/shiki-twoslash/twoslash.css', import.meta)}"`,
     )
     enhances.push('enhanceTwoslash(app)')

@@ -10,10 +10,10 @@ catalog:
   '@vuepress/bundler-webpack': 2.0.0-rc.30
   '@vueuse/core': ^14.3.0
   chokidar: ^5.0.0
-  sass: ^1.100.0
+  sass: ^1.101.0
   sass-embedded: ^1.100.0
   sass-loader: ^17.0.0
-  vue: ^3.5.35
+  vue: ^3.5.39
   vuepress: 2.0.0-rc.30
 
 catalogMode: prefer
@@ -23,8 +23,15 @@ allowBuilds:
   esbuild: true
 
 minimumReleaseAgeExclude:
+  - '@oxfmt/*'
+  - '@oxlint/*'
   - '@vue/*'
   - '@vuepress/*'
+  - '@vitest/*'
+  - oxfmt
+  - oxlint
+  - vite
+  - vitest
   - vue
   - vuepress
 
@@ -36,21 +43,6 @@ packageExtensions:
       postcss-html:
         optional: true
 
-  # FIXME: avoid missing type declaration
-  # https://github.com/unjs/unplugin/issues/605
-  unplugin:
-    peerDependencies:
-      rollup: ^4.0.0
-      vite: ^8.0.0
-      webpack: ^5.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-      vite:
-        optional: true
-      webpack:
-        optional: true
-
 peerDependencyRules:
   allowedVersions:
     artalk>marked: ^17.0.0
@@ -59,4 +51,14 @@ peerDependencyRules:
 cleanupUnusedCatalogs: true
 
 configDependencies:
-  pacquet: ^0.2.12
+  pacquet: ^0.11.12
+
+# enableGlobalVirtualStore: true
+
+trustPolicy: no-downgrade
+
+trustPolicyExclude:
+  - '@trickfilm400/rollup-plugin-off-main-thread@3.0.0-pre1' # workbox-build
+  - chokidar@4.0.3 # sass@1
+  - semver@6.3.1 # @babel/core@7
+  - undici-types@6.21.0 # @types/node@22

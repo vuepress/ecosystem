@@ -32,13 +32,14 @@ export const renderCacheWithMemory = async (
   md: Markdown,
   app: App,
 ): Promise<void> => {
-  if (app.env.isBuild && !fs.existsSync(app.dir.cache(CACHE_DIR))) return
+  const cacheDir = app.dir.cache(CACHE_DIR)
 
-  const basename = app.dir.cache(CACHE_DIR)
-  const metaFilepath = `${basename}/${META_FILE}`
-  const cacheFilepath = `${basename}/${CACHE_FILE}`
+  if (app.env.isBuild && !(await fs.pathExists(cacheDir))) return
 
-  await fs.ensureDir(basename)
+  const metaFilepath = `${cacheDir}/${META_FILE}`
+  const cacheFilepath = `${cacheDir}/${CACHE_FILE}`
+
+  await fs.ensureDir(cacheDir)
 
   const [metadata, cache] = await Promise.all([
     readJson<Metadata>(metaFilepath),
@@ -92,20 +93,20 @@ export const renderCacheWithFilesystem = async (
 ): Promise<void> => {
   if (app.env.isBuild && !fs.existsSync(app.dir.cache(CACHE_DIR))) return
 
-  const basename = app.dir.cache(CACHE_DIR)
+  const cacheDir = app.dir.cache(CACHE_DIR)
 
-  await fs.ensureDir(basename)
+  await fs.ensureDir(cacheDir)
 
-  const speed = checkIOSpeed(basename)
+  const speed = checkIOSpeed(cacheDir)
 
-  const metaFilepath = `${basename}/${META_FILE}`
+  const metaFilepath = `${cacheDir}/${META_FILE}`
 
   const metadata = (await readJson<Metadata>(metaFilepath)) ?? {}
 
   let timer: ReturnType<typeof setTimeout> | null = null
 
   const update = (filepath: string, data: CacheData): void => {
-    void writeJSON(`${basename}/${filepath}`, data)
+    void writeJSON(`${cacheDir}/${filepath}`, data)
 
     if (timer) clearTimeout(timer)
 
@@ -125,7 +126,7 @@ export const renderCacheWithFilesystem = async (
     const filename = hash(filepath)
 
     if (metadata[filepath] === key) {
-      const cached = readJSONSync<CacheData>(`${basename}/${filename}`)
+      const cached = readJSONSync<CacheData>(`${cacheDir}/${filename}`)
       if (cached) {
         Object.assign(env, cached.env)
         return cached.content

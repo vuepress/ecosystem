@@ -70,7 +70,7 @@ describe('plugin-replace-assets > isMatchUrl', () => {
     },
     {
       name: 'regexp',
-      find: /^\/images\/.*\.(jpe?g|png|gif|svg)$/u,
+      find: /^\/images\/.*\.(?<ext>jpe?g|png|gif|svg)$/u,
       expects: [
         ['/images/foo.jpg', true],
         ['/images/foo.png', true],

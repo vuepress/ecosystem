@@ -26,28 +26,28 @@ interface IncludeInfo {
 }
 
 const REGIONS_RE = [
-  /^\/\/ ?#?((?:end)?region) ([\w*-]+)$/u, // javascript, typescript, java
-  /^\/\* ?#((?:end)?region) ([\w*-]+) ?\*\/$/u, // css, less, scss
-  /^#pragma ((?:end)?region) ([\w*-]+)$/u, // C, C++
-  /^<!-- #?((?:end)?region) ([\w*-]+) -->$/u, // HTML, markdown
-  /^#((?:End )Region) ([\w*-]+)$/u, // Visual Basic
-  /^::#((?:end)region) ([\w*-]+)$/u, // Bat
-  /^# ?((?:end)?region) ([\w*-]+)$/u, // C#, PHP, Powershell, Python, perl & misc
+  /^\/\/ ?#?(?<tag>(?:end)?region) (?<name>[\w*-]+)$/u, // javascript, typescript, java
+  /^\/\* ?#(?<tag>(?:end)?region) (?<name>[\w*-]+) ?\*\/$/u, // css, less, scss
+  /^#pragma (?<tag>(?:end)?region) (?<name>[\w*-]+)$/u, // C, C++
+  /^<!-- #?(?<tag>(?:end)?region) (?<name>[\w*-]+) -->$/u, // HTML, markdown
+  /^#(?<tag>(?:End )Region) (?<name>[\w*-]+)$/u, // Visual Basic
+  /^::#(?<tag>(?:end)region) (?<name>[\w*-]+)$/u, // Bat
+  /^# ?(?<tag>(?:end)?region) (?<name>[\w*-]+)$/u, // C#, PHP, Powershell, Python, perl & misc
 ]
 
 // regexp to match the import syntax
 const INCLUDE_COMMENT_RE =
-  /^( *)<!-{2,}\s*@include:\s*([^<>|:"*?]+(?:\.[a-z0-9]+))(?:#([\w-]+))?(?:\{(\d+)?-(\d+)?\})?\s*-{2,}>\s*$/gmu
+  /^(?<indent> *)<!-{2,}\s*@include:\s*(?<filePath>[^<>|:"*?]+(?:\.[a-z0-9]+))(?:#(?<region>[\w-]+))?(?:\{(?<lineStart>\d+)?-(?<lineEnd>\d+)?\})?\s*-{2,}>\s*$/gmu
 const INCLUDE_RE =
-  /^( *)@include:\s*([^<>|:"*?]+(?:\.[a-z0-9]+))(?:#([\w-]+))?(?:\{(\d+)?-(\d+)?\})?\s*$/gmu
+  /^(?<indent> *)@include:\s*(?<filePath>[^<>|:"*?]+(?:\.[a-z0-9]+))(?:#(?<region>[\w-]+))?(?:\{(?<lineStart>\d+)?-(?<lineEnd>\d+)?\})?\s*$/gmu
 
 // single-match (non-global) variants used inside the remark visitor
 const INCLUDE_COMMENT_RE_SINGLE = new RegExp(INCLUDE_COMMENT_RE.source, 'mu')
 const INCLUDE_RE_SINGLE = new RegExp(INCLUDE_RE.source, 'mu')
 
 const NEWLINE_RE = /\r\n?|\n/gu
-const SYNTAX_PUSH_RE = /^<!-- #include-env-start: ([^)]*?) -->$/u
-const HTML_LINK_RE = /(?:href|src)="(.*?)"/u
+const SYNTAX_PUSH_RE = /^<!-- #include-env-start: (?<dir>[^)]*?) -->$/u
+const HTML_LINK_RE = /(?:href|src)="(?<url>.*?)"/u
 
 const testLine = (
   line: string,
@@ -89,10 +89,10 @@ const findRegion = (
   return null
 }
 
-export const handleInclude = (
+export const handleInclude = async (
   info: ImportFileInfo,
   { cwd, resolvedPath }: IncludeInfo,
-): string => {
+): Promise<string> => {
   const { filePath } = info
   let realPath = filePath
 
@@ -109,14 +109,14 @@ export const handleInclude = (
   }
 
   // check file existence
-  if (!fs.existsSync(realPath)) {
+  if (!(await fs.pathExists(realPath))) {
     logger.error(`${realPath} not found`)
 
     return '\nFile not found\n'
   }
 
   // read file content
-  const fileContent = fs.readFileSync(realPath).toString()
+  const fileContent = await fs.readFile(realPath, 'utf-8')
 
   const lines = fileContent.replace(NEWLINE_RE, '\n').split('\n')
   let results: string[] = []
@@ -154,14 +154,14 @@ export const handleInclude = (
   return dedent(results.join('\n').replace(/\n?$/u, '\n'))
 }
 
-const resolveInclude = (
+const resolveInclude = async (
   cwd: string | null,
   [indent, includePath, region, lineStart, lineEnd]: string[],
   options: Required<MarkdownIncludePluginOptions>,
-): string => {
+): Promise<string> => {
   const actualPath = options.resolvePath(includePath, cwd)
   const resolvedPath = options.resolveImagePath || options.resolveLinkPath
-  let content = handleInclude(
+  let content = await handleInclude(
     {
       filePath: actualPath,
       ...(region
@@ -176,7 +176,7 @@ const resolveInclude = (
 
   if (options.deep && actualPath.endsWith('.md')) {
     // oxlint-disable-next-line no-use-before-define
-    content = replaceInclude(content, options, {
+    content = await replaceInclude(content, options, {
       cwd: path.isAbsolute(actualPath)
         ? path.dirname(actualPath)
         : cwd
@@ -191,21 +191,37 @@ const resolveInclude = (
     .join('\n')
 }
 
-const replaceInclude = (
+const replaceInclude = async (
   content: string,
   options: Required<MarkdownIncludePluginOptions>,
   { cwd }: IncludeInfo,
-): string =>
-  content.replace(
-    options.useComment ? INCLUDE_COMMENT_RE : INCLUDE_RE,
-    (_, ...args: string[]) => resolveInclude(cwd, args, options),
+): Promise<string> => {
+  const regex = options.useComment ? INCLUDE_COMMENT_RE : INCLUDE_RE
+  const matches = [...content.matchAll(regex)]
+
+  const replacements = await Promise.all(
+    matches.map(async (match) => ({
+      index: match.index,
+      length: match[0].length,
+      result: await resolveInclude(cwd, match.slice(1), options),
+    })),
   )
 
-const convertLink = (filepath: string, base: string): string => {
-  if (filepath.startsWith('.')) path.relative(base, filepath)
+  let result = ''
+  let lastIndex = 0
+  for (const { index, length, result: replacement } of replacements) {
+    result += content.slice(lastIndex, index)
+    result += replacement
+    lastIndex = index + length
+  }
 
-  return filepath
+  result += content.slice(lastIndex)
+
+  return result
 }
+
+const convertLink = (filepath: string, base: string): string =>
+  filepath.startsWith('.') ? path.relative(base, filepath) : filepath
 
 const resolveLink = (
   tree: Root,
@@ -281,7 +297,13 @@ const resolveLink = (
 export const remarkInclude =
   (cwd: string, options: Required<MarkdownIncludePluginOptions>) =>
   () =>
-  (tree: Root): void => {
+  async (tree: Root): Promise<void> => {
+    const tasks: {
+      parent: { children: unknown[] }
+      index: number
+      matched: string[]
+    }[] = []
+
     visit(tree, (node, index, parent) => {
       if (!parent || typeof index !== 'number') return
 
@@ -292,11 +314,21 @@ export const remarkInclude =
       else if (node.type === 'text')
         matched = node.value.match(INCLUDE_RE_SINGLE)
 
-      if (!matched) return
+      if (matched) tasks.push({ parent, index, matched })
+    })
 
-      const content = resolveInclude(cwd, matched.slice(1), options)
+    // Resolve all includes in parallel
+    const resolved = await Promise.all(
+      tasks.reverse().map(async ({ parent, index, matched }) => ({
+        parent,
+        index,
+        content: await resolveInclude(cwd, matched.slice(1), options),
+      })),
+    )
 
-      if (content !== (node as { value: string }).value) {
+    // Apply replacements in reverse order
+    for (const { parent, index, content } of resolved) {
+      if (content !== (parent.children[index] as { value: string }).value) {
         const subTree = fromMarkdown(content)
         if (options.resolveLinkPath || options.resolveImagePath) {
           resolveLink(
@@ -308,5 +340,5 @@ export const remarkInclude =
         }
         parent.children.splice(index, 1, ...subTree.children)
       }
-    })
+    }
   }

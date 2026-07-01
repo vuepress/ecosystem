@@ -193,3 +193,23 @@ export const getPackageManager = (
       : isPackageManagerInstalled('bun')
         ? 'bun'
         : 'npm')
+
+export const getUpdateCommand = (packageManager: PackageManager): string => {
+  switch (packageManager) {
+    case 'pnpm': {
+      return 'pnpm update'
+    }
+    case 'yarn1': {
+      return 'yarn upgrade'
+    }
+    case 'yarn': {
+      return 'yarn up'
+    }
+    case 'bun': {
+      return 'bun update'
+    }
+    default: {
+      return 'npm update'
+    }
+  }
+}

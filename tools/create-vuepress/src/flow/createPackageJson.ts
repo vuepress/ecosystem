@@ -92,7 +92,7 @@ export const createPackageJson = async ({
   writeFileSync(
     packageJsonPath,
     `${JSON.stringify(packageContent, null, 2)}\n`,
-    { encoding: 'utf-8' },
+    'utf-8',
   )
 
   execSync(`corepack use ${packageManager}@latest`, {
@@ -107,7 +107,7 @@ export const createPackageJson = async ({
 allowBuilds:
   esbuild: true
 `,
-      { encoding: 'utf-8' },
+      'utf-8',
     )
   }
 }

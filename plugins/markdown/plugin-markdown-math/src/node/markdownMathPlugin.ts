@@ -143,7 +143,7 @@ export const markdownMathPlugin =
             },
             ...(renderOptions as Omit<MarkdownKatexPluginOptions, 'type'>),
             transformer: (content) =>
-              content.replaceAll(/^(<[a-z]+ )/gu, '$1v-pre '),
+              content.replaceAll(/^(?<tag><[a-z]+ )/gu, '$<tag>v-pre '),
           })
         }
       },
