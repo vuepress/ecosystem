@@ -42,7 +42,7 @@ import { replaceAssetsPlugin } from '@vuepress/plugin-replace-assets'
 
 export default {
   plugins: [
-    replaceAssetsPlugin('https://cnd.example.com'), // ReplaceAssetsPluginOptions
+    replaceAssetsPlugin('https://cdn.example.com'), // ReplaceAssetsPluginOptions
   ],
 }
 ```
@@ -186,8 +186,8 @@ import { replaceAssetsPlugin } from '@vuepress/plugin-replace-assets'
 
 export default {
   plugins: [
-    // replaceAssetsPlugin('https://cnd.example.com') // [!code hl]
-    replaceAssetsPlugin((url) => `https://cnd.example.com${url}`), // [!code ++]
+    // replaceAssetsPlugin('https://cdn.example.com') // [!code hl]
+    replaceAssetsPlugin((url) => `https://cdn.example.com${url}`), // [!code ++]
   ],
 }
 ```
