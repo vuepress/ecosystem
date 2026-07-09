@@ -163,6 +163,7 @@ docker run -t --rm \
   --temp [temp]          设置临时文件目录
   --clean-cache          在生成之前清理缓存文件
   --clean-temp           在生成之前清理临时文件
+  --debug                启用调试模式
   -V, --version          输出版本号
   -h, --help             显示帮助信息
 ```

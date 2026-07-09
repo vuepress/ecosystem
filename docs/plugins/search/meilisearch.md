@@ -163,6 +163,7 @@ Options:
   --temp [temp]          Set the directory of the temporary files
   --clean-cache          Clean the cache files before generation
   --clean-temp           Clean the temporary files before generation
+  --debug                Enable debug mode
   -V, --version          output the version number
   -h, --help             display help for command
 ```

@@ -14,11 +14,19 @@ import { shouldRescrape } from './shouldRescrape.js'
 import { getChangedFiles, getGitRelativePath } from './utils.js'
 
 export interface GenerateOnlyUrlOptions {
+  /** The path to the VuePress config file */
   config?: string
+  /** The path to the cache directory */
   cache?: string
+  /** The path to the temp directory */
   temp?: string
+  /** Whether to clean the cache before building */
   cleanCache?: boolean
+  /** Whether to clean the temp directory before building */
   cleanTemp?: boolean
+  /** Whether to enable debug mode */
+  debug?: boolean
+  /** A function to convert the changed files to markdown files */
   convertDiffFilesToMarkdown?: (files: string[]) => string[]
 }
 
@@ -66,6 +74,7 @@ export const generateScraperConfig = async (
     temp,
     cleanCache,
     cleanTemp,
+    debug,
     convertDiffFilesToMarkdown = (files) => files,
   }: GenerateOnlyUrlOptions = {},
 ): Promise<void> => {
@@ -158,6 +167,13 @@ export const generateScraperConfig = async (
     changedMarkdownFilesPathRelative,
     scraperConfig,
   )
+
+  if (debug) {
+    logger.info('Generated only_urls:')
+    onlyUrls.forEach((url) => {
+      logger.info(`- ${url}`)
+    })
+  }
 
   scraperConfig.only_urls = onlyUrls
   fs.writeFileSync(scraperPath, JSON.stringify(scraperConfig, null, 2))

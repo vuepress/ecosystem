@@ -22,6 +22,7 @@ program
   .option('--temp [temp]', 'Set the directory of the temporary files')
   .option('--clean-cache', 'Clean the cache files before generation')
   .option('--clean-temp', 'Clean the temporary files before generation')
+  .option('--debug', 'Enable debug mode')
   .argument('<source>', 'Source directory of VuePress project')
   .argument(
     '[scraper-path]',
