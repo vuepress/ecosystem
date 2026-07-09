@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { realpathSync } from 'node:fs'
 
 import { path } from 'vuepress/utils'
 
@@ -7,7 +8,6 @@ import type { GitPluginOptions } from '../options.js'
 import type { MergedRawCommit, RawCommit } from '../typings.js'
 import { getRemoteUrl, normalizeRepoUrl } from './inferGitProvider.js'
 import { logger } from './logger.js'
-import { isSafePath } from './safePath.js'
 
 const INFO_SPLITTER = '[|]'
 const COMMIT_SPLITTER = String.raw`\|/`
@@ -101,13 +101,21 @@ export const getGitRepoRoot = async (
   filePath: string,
   cwd: string,
 ): Promise<string | null> => {
-  if (!isSafePath(filePath)) return null
-
   const absFilePath = path.isAbsolute(filePath)
     ? filePath
     : path.resolve(cwd, filePath)
 
-  const dir = path.normalize(path.dirname(absFilePath))
+  // Resolve symlinks to use real path as cache key, preventing collisions
+  // when the same directory is accessed via different symlink chains
+  let realPath: string
+  try {
+    realPath = realpathSync(absFilePath)
+  } catch {
+    // File does not exist or cannot be resolved; skip safely
+    return null
+  }
+
+  const dir = path.normalize(path.dirname(realPath))
 
   if (gitRepoRootResultCache.has(dir))
     return gitRepoRootResultCache.get(dir) ?? null
@@ -116,7 +124,16 @@ export const getGitRepoRoot = async (
   if (cachedTask) return cachedTask
 
   const task = runGit(['rev-parse', '--show-toplevel'], dir)
-    .then((stdout) => path.normalize(stdout.trim()))
+    .then((stdout) => {
+      const rawRoot = path.normalize(stdout.trim())
+
+      // Resolve symlinks on the result as well for consistency
+      try {
+        return realpathSync(rawRoot)
+      } catch {
+        return rawRoot
+      }
+    })
     // oxlint-disable-next-line promise/prefer-await-to-callbacks
     .catch((err: unknown) => {
       logger.error(err instanceof Error ? err.message : String(err))
@@ -177,12 +194,6 @@ export const getRawCommits = async (
 
         if (remoteUrl) submodule = { repoUrl: normalizeRepoUrl(remoteUrl) }
       }
-    }
-
-    if (!isSafePath(repoRelativeFilePath)) {
-      logger.warn(`Skipping unsafe file path: ${filepath}`)
-
-      return []
     }
 
     const stdout = await runGit(
