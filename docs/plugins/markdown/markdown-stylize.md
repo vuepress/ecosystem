@@ -136,7 +136,11 @@ You can use `^` for superscript and `~` for subscript.
 
 ::: preview
 
+<!-- prettier-ignore-start -->
+
 H~2~O is a liquid. 2^10^ is 1024.
+
+<!-- prettier-ignore-end -->
 
 :::
 

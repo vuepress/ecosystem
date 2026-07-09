@@ -153,10 +153,7 @@ export interface ReplaceAssetsOptions {
  * Assets Replacement Plugin Options
  */
 export type ReplaceAssetsPluginOptions =
-  | ReplaceAssetsOptions
-  | Replacement
-  | ReplacementRule
-  | ReplacementRule[]
+  ReplaceAssetsOptions | Replacement | ReplacementRule | ReplacementRule[]
 ```
 
 ### Built-in Asset Matching Rules

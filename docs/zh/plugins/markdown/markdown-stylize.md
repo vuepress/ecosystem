@@ -135,7 +135,11 @@ VuePress !!非常强大!!。
 
 ::: preview
 
+<!-- prettier-ignore-start -->
+
 H~2~O 是液体，2^10^ 是 1024.
+
+<!-- prettier-ignore-end -->
 
 :::
 

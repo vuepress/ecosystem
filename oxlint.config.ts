@@ -37,9 +37,6 @@ export default defineHopeConfig(
         { definedTags: ['recommended'], typed: true },
       ],
 
-      // TODO: Check all calls
-      'node/no-sync': 'off',
-
       // we only use this when necessary
       'typescript/no-non-null-assertion': 'off',
       // this can introduce false positives, as though type is required, users might not provide such

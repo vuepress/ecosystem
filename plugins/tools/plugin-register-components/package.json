@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "chokidar": "catalog:",
-    "picomatch": "^4.0.4"
+    "picomatch": "^4.0.5"
   },
   "devDependencies": {
     "@types/picomatch": "^4.0.3"

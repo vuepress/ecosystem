@@ -150,10 +150,7 @@ export interface ReplaceAssetsOptions {
  * 资源替换插件配置项
  */
 export type ReplaceAssetsPluginOptions =
-  | ReplaceAssetsOptions
-  | Replacement
-  | ReplacementRule
-  | ReplacementRule[]
+  ReplaceAssetsOptions | Replacement | ReplacementRule | ReplacementRule[]
 ```
 
 ### 内置资源匹配规则

@@ -75,9 +75,7 @@ export interface AutoFrontmatterRule {
 }
 
 export type AutoFrontmatterPluginOptions =
-  | AutoFrontmatterHandle
-  | AutoFrontmatterRule
-  | AutoFrontmatterRule[]
+  AutoFrontmatterHandle | AutoFrontmatterRule | AutoFrontmatterRule[]
 ```
 
 ### Process all markdown files

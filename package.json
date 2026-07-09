@@ -24,19 +24,19 @@
     "type:check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@lerna-lite/cli": "^5.3.0",
-    "@lerna-lite/publish": "^5.3.0",
-    "@tsdown/css": "^0.22.3",
-    "@types/node": "^22.20.0",
+    "@lerna-lite/cli": "^5.4.0",
+    "@lerna-lite/publish": "^5.4.0",
+    "@tsdown/css": "^0.22.4",
+    "@types/node": "^22.20.1",
     "@types/webpack-env": "^1.18.8",
-    "@vitest/coverage-istanbul": "^4.1.9",
+    "@vitest/coverage-istanbul": "^4.1.10",
     "cross-env": "^10.1.0",
     "husky": "^9.1.7",
     "lightningcss": "^1.32.0",
     "nano-staged": "^1.0.2",
     "oxc-config-hope": "^0.3.9",
-    "oxfmt": "^0.57.0",
-    "oxlint": "^1.72.0",
+    "oxfmt": "^0.58.0",
+    "oxlint": "^1.73.0",
     "oxlint-tsgolint": "^0.23.0",
     "picocolors": "^1.1.1",
     "postcss-html": "^1.8.1",
@@ -48,11 +48,11 @@
     "stylelint-config-hope": "^11.0.0",
     "stylelint-config-html": "^1.1.0",
     "tsconfig-vuepress": "^7.0.0",
-    "tsdown": "^0.22.3",
+    "tsdown": "^0.22.4",
     "typescript": "^6.0.3",
     "unrun": "^0.3.1",
     "vite": "^8.0.16",
-    "vitest": "^4.1.9",
+    "vitest": "^4.1.10",
     "vuepress": "catalog:"
   },
   "nano-staged": {
@@ -63,7 +63,7 @@
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "11.9.0",
+      "version": "11.10.0",
       "onFail": "download"
     },
     "runtime": {

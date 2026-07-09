@@ -227,7 +227,7 @@ export const rendererFloatingVue = (
               },
             },
           ] as ElementContent[],
-        } as Element,
+        },
       ],
     },
   })

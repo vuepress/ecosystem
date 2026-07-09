@@ -2,7 +2,7 @@ import { entries, fromEntries } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { colors } from 'vuepress/utils'
 
-import type { FeedConfig, FeedPage } from '../typings/index.js'
+import type { FeedConfig } from '../typings/index.js'
 import { FeedItem, FeedStore } from './feed/index.js'
 import { getAtomFeed } from './generator/atom/index.js'
 import { getJSONFeed } from './generator/json/index.js'
@@ -45,12 +45,7 @@ export const getFeedFiles = (
 
         // add feed items
         for (const page of pages) {
-          const feedItem = new FeedItem(
-            app,
-            localeOptions,
-            page as FeedPage,
-            hostname,
-          )
+          const feedItem = new FeedItem(app, localeOptions, page, hostname)
 
           feedStore.add(feedItem)
           if (feedStore.items.length === feedCount) break

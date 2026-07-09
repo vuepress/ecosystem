@@ -54,7 +54,7 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/plugin-uml": "^1.0.0",
+    "@mdit/plugin-uml": "^1.0.1",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
@@ -62,7 +62,7 @@
     "vue": "catalog:"
   },
   "devDependencies": {
-    "markdown-it": "^14.2.0"
+    "markdown-it": "^14.3.0"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

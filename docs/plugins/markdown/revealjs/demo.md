@@ -4,6 +4,8 @@ icon: presentation
 layout: SlidePage
 ---
 
+<!-- prettier-ignore-start -->
+
 @slidestart
 
 <!-- .slide: data-transition="slide" -->
@@ -314,6 +316,8 @@ Multiple elements can appear at the same index.
 <!-- .element: class="fragment" data-fragment-index="2"-->
 
 ---
+
+<!-- prettier-ignore-end -->
 
 <!-- .slide: data-transition="slide" data-auto-animate -->
 

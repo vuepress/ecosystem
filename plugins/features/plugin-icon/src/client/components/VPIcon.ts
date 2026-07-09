@@ -85,7 +85,7 @@ export const VPIcon = defineComponent({
       if (props.color) styleObject.color = props.color
       if (size) {
         styleObject['--icon-size'] = Number.isNaN(Number(size))
-          ? (size as string)
+          ? size
           : `${size}px`
       }
       if (verticalAlign) styleObject['--icon-vertical-align'] = verticalAlign

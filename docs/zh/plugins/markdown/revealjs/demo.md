@@ -4,6 +4,8 @@ icon: presentation
 layout: SlidePage
 ---
 
+<!-- prettier-ignore-start -->
+
 @slidestart
 
 <!-- .slide: data-transition="slide" -->
@@ -267,6 +269,8 @@ $$
 
 --
 
+<!-- prettier-ignore-end -->
+
 <!-- .slide: data-auto-animate -->
 
 ## 动画片段
@@ -296,17 +300,21 @@ $$
 不同元素可以有相同的动画顺序。
 
 - 最后显示
+
 <!-- .element: class="fragment" data-fragment-index="3"-->
 
 - 第二个显示
+
 <!-- .element: class="fragment" data-fragment-index="2"-->
 
 <!-- list break -->
 
 - 第一个显示
+
 <!-- .element: class="fragment" data-fragment-index="1"-->
 
 - 第二个显示
+
 <!-- .element: class="fragment" data-fragment-index="2"-->
 
 ---

@@ -46,17 +46,17 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@shikijs/transformers": "^4.3.0",
+    "@shikijs/transformers": "^4.3.1",
     "@vuepress/helper": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
     "nanoid": "^5.1.16",
-    "shiki": "^4.3.0",
+    "shiki": "^4.3.1",
     "synckit": "^0.11.13"
   },
   "devDependencies": {
     "@types/markdown-it": "^14.1.2",
     "@vuepress/shiki-twoslash": "workspace:*",
-    "markdown-it": "^14.2.0"
+    "markdown-it": "^14.3.0"
   },
   "peerDependencies": {
     "@vuepress/shiki-twoslash": "workspace:*",
