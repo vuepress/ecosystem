@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.132](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.131...v2.0.0-rc.132) (2026-07-10)
+
+### Bug Fixes
+
+- **plugin-git:** follow symlinks and allow outer file reference ([#690](https://github.com/vuepress/ecosystem/issues/690)) ([6413927](https://github.com/vuepress/ecosystem/commit/6413927aa5168f9774af69df3bdd9dde6c9a9808))
+
+### Features
+
+- **plugin-meilisearch:** add debug mode ([b86399d](https://github.com/vuepress/ecosystem/commit/b86399d7b3d3823947b264a208ab5c511bd99705))
+
 # [2.0.0-rc.131](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.130...v2.0.0-rc.131) (2026-07-01)
 
 ### Bug Fixes
