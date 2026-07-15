@@ -13,6 +13,9 @@ import { fs, logger, path } from 'vuepress/utils'
 import { shouldRescrape } from './shouldRescrape.js'
 import { getChangedFiles, getGitRelativePath } from './utils.js'
 
+/** Result status of the scraper config generation */
+export type GenerateScrapeStatus = 'full' | 'incremental' | 'skip'
+
 export interface GenerateOnlyUrlOptions {
   /** The path to the VuePress config file */
   config?: string
@@ -26,6 +29,10 @@ export interface GenerateOnlyUrlOptions {
   cleanTemp?: boolean
   /** Whether to enable debug mode */
   debug?: boolean
+  /** Force a full re-scrape regardless of commit message */
+  fullScrape?: boolean
+  /** Number of commits to look back for changes (default: 1) */
+  diffDepth?: number
   /** A function to convert the changed files to markdown files */
   convertDiffFilesToMarkdown?: (files: string[]) => string[]
 }
@@ -75,12 +82,52 @@ export const generateScraperConfig = async (
     cleanCache,
     cleanTemp,
     debug,
+    fullScrape,
+    diffDepth = 1,
     convertDiffFilesToMarkdown = (files) => files,
   }: GenerateOnlyUrlOptions = {},
-): Promise<void> => {
+): Promise<GenerateScrapeStatus> => {
   // ensure NODE_ENV is set
   process.env.NODE_ENV ??= 'production'
 
+  const scraperPath = output
+    ? path.join(process.cwd(), output)
+    : path.join(source, '.vuepress', 'meilisearch-config.json')
+
+  if (!fs.existsSync(source))
+    throw new Error(`Source directory ${source} does not exist!`)
+
+  if (!fs.existsSync(scraperPath))
+    throw new Error(`Scraper file not found at ${scraperPath}`)
+
+  const scraperConfig = fs.readJSONSync(scraperPath, 'utf-8') as ScraperConfig
+
+  // Full scrape: remove only_urls and exit early — no VuePress app needed
+  // If fullScrape is explicitly set (true/false), use it; otherwise fall back to commit message
+  if (fullScrape ?? shouldRescrape()) {
+    logger.info('A full rescrape is needed, removing only_urls...')
+    delete scraperConfig.only_urls
+    fs.writeFileSync(scraperPath, JSON.stringify(scraperConfig, null, 2))
+    return 'full'
+  }
+
+  // Check for changed markdown files — no VuePress app needed yet
+  const sourceRelativePath = getGitRelativePath(source)
+
+  const changedMarkdownFilesPathRelative = convertDiffFilesToMarkdown(
+    getChangedFiles(process.cwd(), diffDepth),
+  )
+    .filter(
+      (line) => line.startsWith(sourceRelativePath) && line.endsWith('.md'),
+    )
+    .map((line) => line.slice(sourceRelativePath.length + 1))
+
+  if (changedMarkdownFilesPathRelative.length === 0) {
+    logger.info('No changed markdown files found, skipping scrape.')
+    return 'skip'
+  }
+
+  // Now we know scraping is needed — create VuePress app
   // resolve app config from cli options
   const cliAppConfig = resolveCliAppConfig(source, {})
 
@@ -101,7 +148,7 @@ export const generateScraperConfig = async (
     userConfig,
   })
 
-  if (appConfig == null) return
+  if (appConfig == null) return 'skip'
 
   // create vuepress app
   const app = createBuildApp(appConfig)
@@ -118,41 +165,6 @@ export const generateScraperConfig = async (
   if (cleanCache) {
     logger.info('Cleaning cache...')
     await fs.remove(app.dir.cache())
-  }
-
-  const scraperPath = output
-    ? path.join(process.cwd(), output)
-    : path.join(app.dir.source(), '.vuepress', 'meilisearch-config.json')
-
-  if (!fs.existsSync(source))
-    throw new Error(`Source directory ${source} does not exist!`)
-
-  if (!fs.existsSync(scraperPath))
-    throw new Error(`Scraper file not found at ${scraperPath}`)
-
-  const scraperConfig = fs.readJSONSync(scraperPath, 'utf-8') as ScraperConfig
-
-  if (shouldRescrape()) {
-    logger.info('A full rescrape is needed, removing only_urls...')
-    delete scraperConfig.only_urls
-    fs.writeFileSync(scraperPath, JSON.stringify(scraperConfig, null, 2))
-    return
-  }
-
-  const sourceRelativePath = getGitRelativePath(app.dir.source())
-
-  const changedMarkdownFilesPathRelative = convertDiffFilesToMarkdown(
-    getChangedFiles(),
-  )
-    .filter(
-      (line) => line.startsWith(sourceRelativePath) && line.endsWith('.md'),
-    )
-
-    .map((line) => line.slice(sourceRelativePath.length + 1))
-
-  if (changedMarkdownFilesPathRelative.length === 0) {
-    logger.info('No changed files found.')
-    return
   }
 
   logger.info('Initializing VuePress and preparing data...')
@@ -177,4 +189,5 @@ export const generateScraperConfig = async (
 
   scraperConfig.only_urls = onlyUrls
   fs.writeFileSync(scraperPath, JSON.stringify(scraperConfig, null, 2))
+  return 'incremental'
 }
