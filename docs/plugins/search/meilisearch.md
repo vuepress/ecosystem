@@ -106,7 +106,17 @@ Then, create a **correct configuration file** for the scraper. Here, we provide 
     }
   },
   "custom_settings": {
-    "filterableAttributes": ["lang"]
+    "filterableAttributes": ["lang"],
+    "searchableAttributes": [
+      "hierarchy_lvl0",
+      "hierarchy_lvl1",
+      "hierarchy_lvl2",
+      "hierarchy_lvl3",
+      "hierarchy_lvl4",
+      "hierarchy_lvl5",
+      "hierarchy_lvl6",
+      "content"
+    ],
   }
 }
 ```
