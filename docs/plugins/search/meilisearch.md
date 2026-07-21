@@ -173,6 +173,8 @@ Options:
   --temp [temp]          Set the directory of the temporary files
   --clean-cache          Clean the cache files before generation
   --clean-temp           Clean the temporary files before generation
+  --full-scrape          Force a full re-scrape
+  --diff-depth <number>  Number of commits to look back for changes (default: 1)
   --debug                Enable debug mode
   -V, --version          output the version number
   -h, --help             display help for command
@@ -182,7 +184,8 @@ Options:
 
 - `vp-meilisearch-crawler` needs to be run in a Git project.
 - `scraper-path` must correctly point to your scraper configuration file, which should be properly set up with all necessary fields except for `only_urls`.
-- If a full scrape is required, add `[full-scrape]` in the commit msg, and the cli will remove `only_urls` from the config file to perform a full scrape.
+- If a full scrape is required, add `[full-scrape]` in the commit msg, or pass `--full-scrape` flag, and the cli will remove `only_urls` from the config file to perform a full scrape. You can also pass `--no-full-scrape` to explicitly disable full scrape even if the commit message contains `[full-scrape]`.
+- When no markdown files are changed, the cli exits with code `2` to indicate that scraping should be skipped.
 
 :::
 
@@ -265,6 +268,18 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      fetch-depth:
+        description: 'Number of commits to fetch for diff'
+        required: false
+        type: number
+        default: 2
+      full-scrape:
+        description: 'Force a full re-scrape'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   deploy:
@@ -281,14 +296,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
         with:
-          # This is required for the helper to compare the current and previous commits
-          fetch-depth: 2
+          fetch-depth: ${{ inputs.fetch-depth || 2 }}
 
       - name: Generate Only URLs
+        id: generate
+        continue-on-error: true
         # You may need to cd to the directory where `@vuepress/plugin-meilisearch` is installed first
-        run: pnpm vp-meilisearch-scrapper <docsDir> <path/to/your/scraper/config.json>
+        run: >
+          pnpm vp-meilisearch-scrapper <docsDir> <path/to/your/scraper/config.json>
+          ${{ inputs.full-scrape && '--full-scrape' || '' }}
+          --diff-depth ${{ (inputs.fetch-depth || 2) - 1 }}
+
+      - name: Skip scrape (no changes)
+        if: steps.generate.outcome == 'failure'
+        run: echo '::notice::No changed markdown files detected, skipping scrape.'
 
       - name: Run scraper
+        if: steps.generate.outcome == 'success'
         env:
           # replace with your own MeiliSearch host URL
           HOST_URL: <YOUR_MEILISEARCH_HOST_URL>
