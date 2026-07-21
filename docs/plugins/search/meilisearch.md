@@ -116,7 +116,7 @@ Then, create a **correct configuration file** for the scraper. Here, we provide 
       "hierarchy_lvl5",
       "hierarchy_lvl6",
       "content"
-    ],
+    ]
   }
 }
 ```
