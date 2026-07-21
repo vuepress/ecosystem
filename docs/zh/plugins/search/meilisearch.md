@@ -163,6 +163,8 @@ docker run -t --rm \
   --temp [temp]          设置临时文件目录
   --clean-cache          在生成之前清理缓存文件
   --clean-temp           在生成之前清理临时文件
+  --full-scrape          强制执行全量抓取
+  --diff-depth <number>  回看提交数以检测变更 (默认: 1)
   --debug                启用调试模式
   -V, --version          输出版本号
   -h, --help             显示帮助信息
@@ -172,7 +174,8 @@ docker run -t --rm \
 
 - `vp-meilisearch-scrapper` 需要在 Git 项目中运行。
 - `scraper-path` 必须正确指向你的抓取器配置文件，这个文件应正确设置除了 `only_urls` 之外的所有必要字段。
-- 如果需要完整抓取，请在提交消息中添加 `[full-scrape]`，CLI 将移除 `only_urls` 字段以执行完整抓取。
+- 如果需要完整抓取，请在提交消息中添加 `[full-scrape]`，或传入 `--full-scrape` 参数，CLI 将移除 `only_urls` 字段以执行完整抓取。你也可以传入 `--no-full-scrape` 来显式禁用全量抓取，即使提交消息中包含 `[full-scrape]`。
+- 当没有 Markdown 文件变更时，CLI 会以退出码 `2` 退出，表示应跳过抓取。
 
 :::
 
@@ -255,6 +258,18 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      fetch-depth:
+        description: '用于 diff 的提交获取数量'
+        required: false
+        type: number
+        default: 2
+      full-scrape:
+        description: '强制执行全量抓取'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   deploy:
@@ -271,14 +286,23 @@ jobs:
       - name: 检出
         uses: actions/checkout@v7
         with:
-          # 这是比较当前和上一个提交所必需的
-          fetch-depth: 2
+          fetch-depth: ${{ inputs.fetch-depth || 2 }}
 
       - name: Generate Only URLs
+        id: generate
+        continue-on-error: true
         # 你可能需要先 cd 到安装 `@vuepress/plugin-meilisearch` 的目录
-        run: pnpm vp-meilisearch-scrapper <docsDir> <path/to/your/scraper/config.json>
+        run: >
+          pnpm vp-meilisearch-scrapper <docsDir> <path/to/your/scraper/config.json>
+          ${{ inputs.full-scrape && '--full-scrape' || '' }}
+          --diff-depth ${{ (inputs.fetch-depth || 2) - 1 }}
+
+      - name: 跳过抓取（无变更）
+        if: steps.generate.outcome == 'failure'
+        run: echo '::notice::未检测到 Markdown 文件变更，跳过抓取。'
 
       - name: 运行抓取器
+        if: steps.generate.outcome == 'success'
         env:
           # 替换为你自己的 MeiliSearch 主机 URL
           HOST_URL: <YOUR_MEILISEARCH_HOST_URL>
