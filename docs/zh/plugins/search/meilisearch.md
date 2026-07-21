@@ -116,7 +116,7 @@ docker pull jqiue/docs-scraper:latest
       "hierarchy_lvl5",
       "hierarchy_lvl6",
       "content"
-    ],
+    ]
   }
 }
 ```
