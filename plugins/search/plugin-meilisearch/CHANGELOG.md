@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.133](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.132...v2.0.0-rc.133) (2026-07-22)
+
+### Features
+
+- **plugin-meilisearch:** support workflow dispatch and full-scrape override ([#692](https://github.com/vuepress/ecosystem/issues/692)) ([f455df5](https://github.com/vuepress/ecosystem/commit/f455df5bee4b8c37b8f9b14e2a7a98883cbf380b))
+
 # [2.0.0-rc.132](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.131...v2.0.0-rc.132) (2026-07-10)
 
 ### Features
