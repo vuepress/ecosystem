@@ -288,14 +288,21 @@ jobs:
         with:
           fetch-depth: ${{ inputs.fetch-depth || 2 }}
 
+      - name: Calculate diff depth
+        id: calc
+        run: echo "diff=$(( ${{ inputs.fetch-depth || 2 }} - 1 ))" >> $GITHUB_OUTPUT
+
       - name: Generate Only URLs
         id: generate
         continue-on-error: true
+        env:
+          DOCS_DIR: <your_docsDir>
+          SCRAPER_CONFIG: <path/to/your/scraper/config.json>
         # You may need to cd to the directory where `@vuepress/plugin-meilisearch` is installed first
         run: >
-          pnpm vp-meilisearch-scrapper <docsDir> <path/to/your/scraper/config.json>
+          pnpm exec vp-meilisearch-scrapper ${{ env.DOCS_DIR }} ${{ env.SCRAPER_CONFIG }}
           ${{ inputs.full-scrape && '--full-scrape' || '' }}
-          --diff-depth ${{ (inputs.fetch-depth || 2) - 1 }}
+          --diff-depth ${{ steps.calc.outputs.diff }}
 
       - name: Skip scrape (no changes)
         if: steps.generate.outcome == 'failure'

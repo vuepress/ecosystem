@@ -288,14 +288,21 @@ jobs:
         with:
           fetch-depth: ${{ inputs.fetch-depth || 2 }}
 
+      - name: 计算 diff 深度
+        id: calc
+        run: echo "diff=$(( ${{ inputs.fetch-depth || 2 }} - 1 ))" >> $GITHUB_OUTPUT
+
       - name: Generate Only URLs
         id: generate
         continue-on-error: true
+        env:
+          DOCS_DIR: <your_docsDir>
+          SCRAPER_CONFIG: <path/to/your/scraper/config.json>
         # 你可能需要先 cd 到安装 `@vuepress/plugin-meilisearch` 的目录
         run: >
-          pnpm vp-meilisearch-scrapper <docsDir> <path/to/your/scraper/config.json>
+          pnpm exec vp-meilisearch-scrapper ${{ env.DOCS_DIR }} ${{ env.SCRAPER_CONFIG }}
           ${{ inputs.full-scrape && '--full-scrape' || '' }}
-          --diff-depth ${{ (inputs.fetch-depth || 2) - 1 }}
+          --diff-depth ${{ steps.calc.outputs.diff }}
 
       - name: 跳过抓取（无变更）
         if: steps.generate.outcome == 'failure'
@@ -365,7 +372,7 @@ jobs:
 
 ### hotKeys
 
-- 类型：`string[] |`
+- 类型：`string[] | false`
 
 - 默认值：`['ctrl+k', 's', '/']`
 
@@ -388,6 +395,10 @@ jobs:
 - 类型：`SearchParams`
 
 - 详情：
+
+  MeiliSearch API 的参数。
+
+- 另请参阅：
   - [Meilisearch API 文档](https://www.meilisearch.com/docs/reference/api/search#search-parameters)
 
 ## 组件
