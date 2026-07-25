@@ -1,6 +1,4 @@
 import type { UmamiOptions } from '../../shared/index.js'
-// oxlint-disable-next-line import/no-unassigned-import
-import './declare.js'
 
 /**
  * Initialize Umami Analytics tracking
