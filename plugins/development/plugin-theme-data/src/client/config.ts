@@ -1,6 +1,5 @@
 import { computed } from 'vue'
-import type { ClientData } from 'vuepress/client'
-import { clientDataSymbol, defineClientConfig } from 'vuepress/client'
+import { defineClientConfig } from 'vuepress/client'
 
 import {
   resolveThemeLocaleData,
@@ -13,11 +12,12 @@ export default defineClientConfig({
   enhance({ app }) {
     // provide theme data & theme locale data
     const themeData = useThemeData()
-    const clientData = app._context.provides[
-      clientDataSymbol as unknown as symbol
-    ] as ClientData
     const themeLocaleData = computed(() =>
-      resolveThemeLocaleData(themeData.value, clientData.routeLocale.value),
+      resolveThemeLocaleData(
+        themeData.value,
+        (app.config.globalProperties as Record<string, unknown>)
+          .$routeLocale as string,
+      ),
     )
     app.provide(themeLocaleDataSymbol, themeLocaleData)
 

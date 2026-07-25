@@ -56,6 +56,8 @@ configDependencies:
 
 # enableGlobalVirtualStore: true
 
+dedupePeers: true
+
 trustPolicy: no-downgrade
 
 trustPolicyExclude:
