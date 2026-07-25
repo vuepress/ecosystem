@@ -90,5 +90,6 @@
     "websub",
     "zoomable"
   ],
-  "stylelint.validate": ["css", "html", "scss", "vue"]
+  "stylelint.validate": ["css", "html", "scss", "vue"],
+  "js/ts.experimental.useTsgo": false
 }

@@ -397,6 +397,7 @@ function foo(bar: string, baz: string) {
 console.log('hello world)\t
 }\
 `)
+
     it('no render whitespace without meta', () => {
       const parser = getCodeParser(code)
       metaWhitespace(parser, '')

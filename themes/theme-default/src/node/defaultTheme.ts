@@ -26,6 +26,7 @@ import {
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
+// oxlint-disable-next-line node/no-top-level-await
 const [componentFiles, composableFiles, utilFiles] = await Promise.all([
   fs.readdir(path.resolve(__dirname, '../client/components')),
   fs.readdir(path.resolve(__dirname, '../client/composables')),
