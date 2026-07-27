@@ -51,7 +51,7 @@
     "@mdit/plugin-tasklist": "^1.0.1",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
-    "js-yaml": "^5.2.1",
+    "js-yaml": "^5.2.2",
     "markdown-it-cjk-friendly": "^2.0.2"
   },
   "devDependencies": {
