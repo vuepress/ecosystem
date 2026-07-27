@@ -63,6 +63,7 @@ export const DocSearch = defineComponent({
         ...rest,
         container: `#${props.containerId}`,
         indices: getIndices(
+          // oxlint-disable-next-line typescript/no-deprecated
           { indices, indexName, searchParameters },
           lang.value,
         ),

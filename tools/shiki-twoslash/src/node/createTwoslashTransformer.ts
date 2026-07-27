@@ -45,6 +45,7 @@ export const createTwoslashTransformer = async (
     ...defaultTwoslashOptions(),
     ..._twoslashOptions,
     compilerOptions: {
+      // oxlint-disable-next-line typescript/no-deprecated
       baseUrl: process.cwd(),
       ...compilerOptions,
       paths: {
