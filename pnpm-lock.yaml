@@ -1447,8 +1447,8 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/highlighter-helper
       nanoid:
-        specifier: ^5.1.16
-        version: 5.1.16
+        specifier: ^6.0.0
+        version: 6.0.0
       shiki:
         specifier: ^4.3.1
         version: 4.3.1
@@ -1635,8 +1635,8 @@ importers:
         specifier: ^5.2.1
         version: 5.2.1
       nanoid:
-        specifier: ^5.1.16
-        version: 5.1.16
+        specifier: ^6.0.0
+        version: 6.0.0
       p-map:
         specifier: ^7.0.5
         version: 7.0.5
@@ -7900,9 +7900,9 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  nanoid@5.1.16:
-    resolution: {integrity: sha512-kVrnsrJqMR8+oLJnGEmSWw9BivK5mt7H3FZatVRjrc5wGqFYuBxX1yG7+A7Gi5AefkX6t/oCkizcQgpu0cY1dQ==}
-    engines: {node: ^18 || >=20}
+  nanoid@6.0.0:
+    resolution: {integrity: sha512-mkUH+rPkwU2qPadJ0oJZOjeZ5Mxn8Q1UhevwkTRWNuUZzyia3h4rhzK39hxaHTk0o2OxB8W2SQ6A8k23ZDi1pQ==}
+    engines: {node: ^22 || ^24 || >=26}
     hasBin: true
 
   negotiator@0.6.3:
@@ -17060,7 +17060,7 @@ snapshots:
 
   nanoid@3.3.15: {}
 
-  nanoid@5.1.16: {}
+  nanoid@6.0.0: {}
 
   negotiator@0.6.3: {}
 
