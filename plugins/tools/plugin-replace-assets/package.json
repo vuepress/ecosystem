@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "magic-string": "^0.30.21",
+    "magic-string": "^1.0.0",
     "unplugin": "^3.3.0"
   },
   "devDependencies": {
