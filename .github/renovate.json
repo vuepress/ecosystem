@@ -1,0 +1,29 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":prHourlyLimitNone",
+    ":prConcurrentLimitNone"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["@types/node"],
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "groupName": "vuepress",
+      "matchPackageNames": ["vuepress", "@vuepress/**", "vuepress-**"]
+    },
+    {
+      "matchPackageNames": ["vite"],
+      "matchUpdateTypes": ["patch"]
+    }
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "commitMessageAction": "update lockfile",
+    "platformAutomerge": true,
+    "extends": ["group:allNonMajor", "schedule:weekly"]
+  },
+  "timezone": "Asia/Shanghai"
+}
