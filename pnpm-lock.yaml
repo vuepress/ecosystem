@@ -526,8 +526,8 @@ importers:
         specifier: ^2.1.0
         version: 2.1.0(echarts@6.1.0)
       katex:
-        specifier: ^0.17.0
-        version: 0.17.0
+        specifier: ^0.18.0
+        version: 0.18.1
       sass-embedded:
         specifier: 'catalog:'
         version: 1.100.0
@@ -1276,7 +1276,7 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/helper
       katex:
-        specifier: ^0.16.38
+        specifier: ^0.16.38 || ^0.18.0
         version: 0.16.47
       vue:
         specifier: 'catalog:'
@@ -7274,8 +7274,8 @@ packages:
     resolution: {integrity: sha512-Eeo8Ys1doU1z+x8AZsPpQu+p/QcZBI5PeOo7QGQdy2x2m0MU/hYagBbGOmXwr5KVbEfVuWv9LpnQWeehogurjg==}
     hasBin: true
 
-  katex@0.17.0:
-    resolution: {integrity: sha512-Vdw0ATsQ9V+LuegM/BTwQqV/6cTl5lbGcIrU+BCgLxyf6bo38ybOr372tuSIxir3CN720flu1meYR6XzNMwQnw==}
+  katex@0.18.1:
+    resolution: {integrity: sha512-Td8GCYSxDAoMhHOlKmCFMJ/hz5qlAAb71n66Dryw9nfCVfumLo7nhuotbvKom/XPADmrYC3O5QR71EPq4DarJQ==}
     hasBin: true
 
   keyv@5.6.0:
@@ -16318,7 +16318,7 @@ snapshots:
     dependencies:
       commander: 8.3.0
 
-  katex@0.17.0:
+  katex@0.18.1:
     dependencies:
       commander: 8.3.0
 
