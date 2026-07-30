@@ -302,15 +302,15 @@ catalogs:
     chokidar:
       specifier: ^5.0.0
       version: 5.0.0
-    sass:
-      specifier: ^1.101.0
-      version: 1.101.0
     sass-embedded:
       specifier: ^1.100.0
       version: 1.100.0
     sass-loader:
       specifier: ^17.0.0
       version: 17.0.0
+    tokenx:
+      specifier: ^1.6.0
+      version: 1.6.0
     vue:
       specifier: ^3.5.39
       version: 3.5.39
@@ -636,7 +636,7 @@ importers:
         version: 15.0.1
       tokenx:
         specifier: ^1.3.0
-        version: 1.3.0
+        version: 1.6.0
       unist-util-remove:
         specifier: ^4.0.0
         version: 4.0.0
@@ -9455,8 +9455,8 @@ packages:
     resolution: {integrity: sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==}
     engines: {node: '>=0.6'}
 
-  tokenx@1.3.0:
-    resolution: {integrity: sha512-NLdXTEZkKiO0gZuLtMoZKjCXTREXeZZt8nnnNeyoXtNZAfG/GKGSbQtLU5STspc0rMSwcA+UJfWZkbNU01iKmQ==}
+  tokenx@1.6.0:
+    resolution: {integrity: sha512-CKTjk345ajvBAUp5xUI9a5KKN0zU0lBueVHQbCskH1Hp6WkUKsPW2qGCYNs0pxNyfzxfo+IIjdt2W4sMbw/qBw==}
 
   tr46@1.0.1:
     resolution: {integrity: sha512-dTpowEjclQ7Kgx5SdBkqRzVhERQXov8/l9Ft9dVM9fmg0W0KQSVaXX9T4i6twCPNtYiZM53lpSSUAwJbFPOHxA==}
@@ -18802,7 +18802,7 @@ snapshots:
 
   toidentifier@1.0.1: {}
 
-  tokenx@1.3.0: {}
+  tokenx@1.6.0: {}
 
   tr46@1.0.1:
     dependencies:
