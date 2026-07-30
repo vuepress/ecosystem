@@ -1578,8 +1578,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0
       slimsearch:
-        specifier: ^2.3.0
-        version: 2.3.0
+        specifier: ^3.0.0
+        version: 3.0.0
       vue:
         specifier: 'catalog:'
         version: 3.5.39(typescript@6.0.3)
@@ -9103,9 +9103,9 @@ packages:
     resolution: {integrity: sha512-qMCMfhY040cVHT43K9BFygqYbUPFZKHOg7K73mtTWJRb8pyP3fzf4Ixd5SzdEJQ6MRUg/WBnOLxghZtKKurENQ==}
     engines: {node: '>=10'}
 
-  slimsearch@2.3.0:
-    resolution: {integrity: sha512-e0L+ke+DGxptl2os/9DshoGVB+XkD2u1nSnRH4Jh0MNIfqkRUmLFLjvwVJiDT7grAYhpCEfHRv5nBNvcADZ4pw==}
-    engines: {node: '>=18.18.0'}
+  slimsearch@3.0.0:
+    resolution: {integrity: sha512-vckFE1PJyPEaj7YptS8AzUT2GzphtTsmWwd9MIGVudjbzagN1G0jNnm3fgkebNOSePM2OSld0mtoxiSczS3GoA==}
+    engines: {node: '>=22'}
 
   smart-buffer@4.2.0:
     resolution: {integrity: sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==}
@@ -18376,7 +18376,7 @@ snapshots:
       astral-regex: 2.0.0
       is-fullwidth-code-point: 3.0.0
 
-  slimsearch@2.3.0: {}
+  slimsearch@3.0.0: {}
 
   smart-buffer@4.2.0: {}
 
