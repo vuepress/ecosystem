@@ -1539,8 +1539,8 @@ importers:
         specifier: ^15.0.0
         version: 15.0.0
       meilisearch:
-        specifier: ^0.59.0
-        version: 0.59.0
+        specifier: ^0.60.0
+        version: 0.60.0
       meilisearch-docsearch:
         specifier: ^0.8.0
         version: 0.8.0
@@ -7624,8 +7624,8 @@ packages:
   meilisearch@0.50.0:
     resolution: {integrity: sha512-9IzIkobvnuS18Eg4dq/eJB9W+eXqeLZjNRgq/kKMswSmVYYSQsXqGgSuCA0JkF+o5RwJlwIsieQee6rh313VhA==}
 
-  meilisearch@0.59.0:
-    resolution: {integrity: sha512-9KxasX98+qYhOVa4PPeaX/yY/ukM9DMuJlUJRgJVwrdCkWw+mkkiIh6EJmYyCxU8nXhj0VEzdYr3dNUJT1BQow==}
+  meilisearch@0.60.0:
+    resolution: {integrity: sha512-z32KgxE6/7hRzbVfzUgzlmNl2OS7TwGE6wSWs2tVEuAY9DWrX6zAmt0s7wTyelH36orIaZ3/t1mQsCsExGtVDQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
   memfs@4.63.0:
@@ -16746,7 +16746,7 @@ snapshots:
 
   meilisearch@0.50.0: {}
 
-  meilisearch@0.59.0: {}
+  meilisearch@0.60.0: {}
 
   memfs@4.63.0(tslib@2.8.1):
     dependencies:
