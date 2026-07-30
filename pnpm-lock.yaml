@@ -290,6 +290,9 @@ settings:
 
 catalogs:
   default:
+    '@docsearch/react':
+      specifier: ^4.7.0
+      version: 4.7.0
     '@vuepress/bundler-vite':
       specifier: 2.0.0-rc.30
       version: 2.0.0-rc.30
@@ -302,9 +305,6 @@ catalogs:
     chokidar:
       specifier: ^5.0.0
       version: 5.0.0
-    sass:
-      specifier: ^1.101.0
-      version: 1.101.0
     sass-embedded:
       specifier: ^1.100.0
       version: 1.100.0
@@ -1525,7 +1525,7 @@ importers:
     devDependencies:
       '@docsearch/react':
         specifier: ^4.6.3
-        version: 4.6.3(@algolia/client-search@5.55.2)(algoliasearch@5.55.2)(search-insights@2.17.3)
+        version: 4.7.0(@algolia/client-search@5.55.2)(algoliasearch@5.55.2)(search-insights@2.17.3)
       algoliasearch:
         specifier: ^5.55.2
         version: 5.55.2
@@ -2605,8 +2605,8 @@ packages:
     peerDependencies:
       postcss-selector-parser: ^7.1.1
 
-  '@docsearch/core@4.6.3':
-    resolution: {integrity: sha512-rUOujwIpxJRgD7+kicVsI3D5sqBvdiRTquzWBpTEXZs8ZXfGbfzpus5HqumaNYTppN2HvH8E2yNuRwYdHJeOlA==}
+  '@docsearch/core@4.7.0':
+    resolution: {integrity: sha512-p/9xVKmPDj3FPvMfPf5naVO3Ej8SCbcUugGvx1+8GgkuBNbqxqN2Irx3WLBv8VY0jH7XpRwKWdlmjXLZsmTLsg==}
     peerDependencies:
       '@types/react': '>= 16.8.0 < 20.0.0'
       react: '>= 16.8.0 < 20.0.0'
@@ -2622,11 +2622,14 @@ packages:
   '@docsearch/css@4.6.3':
     resolution: {integrity: sha512-nlOwcXcsNAptQl4vlL4MA78qNJKO0Qlds5GuBjCoePgkebTXLSf8Qt1oyZ3YBshYupKXG9VRGEsk1zr23d+bzQ==}
 
+  '@docsearch/css@4.7.0':
+    resolution: {integrity: sha512-Sk5xkdRFeE7PeWjG9l4AfTwdvMfr9wHiwNNCpHXT4v4SNyNMKdHGvEILc31BgaVFGDDNbv5u/a73tofRiwbEZw==}
+
   '@docsearch/js@4.6.3':
     resolution: {integrity: sha512-qUIX2b4Apew3tv4F0qhmgShsl/Lfw4m6mqv/5/5dWNxwTcDdLMp2s3YwZ+NMGh3IKCg0pBaXm7Q5VdyU5Rj+cQ==}
 
-  '@docsearch/react@4.6.3':
-    resolution: {integrity: sha512-Bg2wdDsoQVlNCcEKuEJAU04tvHCqgx8rIu+uIoM4pRtcx3TBKJuXutJik3LTA8LRc9YEyHkrYUrmcC0D7BYf+g==}
+  '@docsearch/react@4.7.0':
+    resolution: {integrity: sha512-x6oedjJ8O8/pIDBsMo5Orca3/6cQCz616/CwthVe68l43mqnj2lrJ9kFQITBqy8hMsS3nWeBWFoVO5dJ1DCFKA==}
     peerDependencies:
       '@types/react': '>= 16.8.0 < 20.0.0'
       react: '>= 16.8.0 < 20.0.0'
@@ -11071,17 +11074,19 @@ snapshots:
     dependencies:
       postcss-selector-parser: 7.1.4
 
-  '@docsearch/core@4.6.3': {}
+  '@docsearch/core@4.7.0': {}
 
   '@docsearch/css@4.6.3': {}
 
+  '@docsearch/css@4.7.0': {}
+
   '@docsearch/js@4.6.3': {}
 
-  '@docsearch/react@4.6.3(@algolia/client-search@5.55.2)(algoliasearch@5.55.2)(search-insights@2.17.3)':
+  '@docsearch/react@4.7.0(@algolia/client-search@5.55.2)(algoliasearch@5.55.2)(search-insights@2.17.3)':
     dependencies:
       '@algolia/autocomplete-core': 1.19.2(@algolia/client-search@5.55.2)(algoliasearch@5.55.2)(search-insights@2.17.3)
-      '@docsearch/core': 4.6.3
-      '@docsearch/css': 4.6.3
+      '@docsearch/core': 4.7.0
+      '@docsearch/css': 4.7.0
     optionalDependencies:
       search-insights: 2.17.3
     transitivePeerDependencies:
