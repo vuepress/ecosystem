@@ -290,6 +290,9 @@ settings:
 
 catalogs:
   default:
+    '@mdit/plugin-mathjax-slim':
+      specifier: ^1.1.1
+      version: 1.1.1
     '@vuepress/bundler-vite':
       specifier: 2.0.0-rc.30
       version: 2.0.0-rc.30
@@ -302,9 +305,6 @@ catalogs:
     chokidar:
       specifier: ^5.0.0
       version: 5.0.0
-    sass:
-      specifier: ^1.101.0
-      version: 1.101.0
     sass-embedded:
       specifier: ^1.100.0
       version: 1.100.0
@@ -1268,7 +1268,7 @@ importers:
         version: 1.0.1(katex@0.16.47)(markdown-it@14.3.0)
       '@mdit/plugin-mathjax-slim':
         specifier: ^1.1.0
-        version: 1.1.0(@mathjax/mathjax-newcm-font@4.1.3)(@mathjax/src@4.1.3)(markdown-it@14.3.0)
+        version: 1.1.1(@mathjax/mathjax-newcm-font@4.1.3)(@mathjax/src@4.1.3)(markdown-it@14.3.0)
       '@types/markdown-it':
         specifier: ^14.1.2
         version: 14.1.2
@@ -3544,8 +3544,8 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-mathjax-slim@1.1.0':
-    resolution: {integrity: sha512-1Gwm4yUF7sN1MvQzhwzTyMaeC7bkIiNuiMr1ddaOEPmbCT9lSFtycGFfdz6HFUhjSnSod543wZsnWgwMkN4ZaA==}
+  '@mdit/plugin-mathjax-slim@1.1.1':
+    resolution: {integrity: sha512-9CustTj1/3CegI4ZLmqz+p79f/FXussu3dBYpcmvemfQbjlmz7BbdYH0LlOJ9CEjqK7Di8RQqS9Y6OTZXNkN3Q==}
     engines: {node: '>=22'}
     peerDependencies:
       '@mathjax/mathjax-newcm-font': ^4.1.3
@@ -3624,6 +3624,15 @@ packages:
 
   '@mdit/plugin-tex@1.0.1':
     resolution: {integrity: sha512-ZzU7/ZkkpMvI4+Wxbr22d52LWRy8a+knlDI04wjDWm56ezQMkI7HT5O9x8GBapvFIxjOTVdT/Ie5b4cz+0oHJA==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-tex@1.0.2':
+    resolution: {integrity: sha512-pj4xSLKT7ag7oTSLwQTW+QjEi8+/DgEzDXOI1r9bTX9dmFH15H8kbcZMs6wI5bgW26r4+yIU5OBaVsnesBgzYg==}
     engines: {node: '>=22'}
     peerDependencies:
       markdown-it: ^14.2.0
@@ -11912,9 +11921,9 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.0
 
-  '@mdit/plugin-mathjax-slim@1.1.0(@mathjax/mathjax-newcm-font@4.1.3)(@mathjax/src@4.1.3)(markdown-it@14.3.0)':
+  '@mdit/plugin-mathjax-slim@1.1.1(@mathjax/mathjax-newcm-font@4.1.3)(@mathjax/src@4.1.3)(markdown-it@14.3.0)':
     dependencies:
-      '@mdit/plugin-tex': 1.0.1(markdown-it@14.3.0)
+      '@mdit/plugin-tex': 1.0.2(markdown-it@14.3.0)
       '@types/markdown-it': 14.1.2
     optionalDependencies:
       '@mathjax/mathjax-newcm-font': 4.1.3
@@ -11969,6 +11978,12 @@ snapshots:
       markdown-it: 14.3.0
 
   '@mdit/plugin-tex@1.0.1(markdown-it@14.3.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 14.3.0
+
+  '@mdit/plugin-tex@1.0.2(markdown-it@14.3.0)':
     dependencies:
       '@types/markdown-it': 14.1.2
     optionalDependencies:
