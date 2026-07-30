@@ -290,6 +290,9 @@ settings:
 
 catalogs:
   default:
+    '@mdit/plugin-footnote':
+      specifier: ^1.0.2
+      version: 1.0.2
     '@vuepress/bundler-vite':
       specifier: 2.0.0-rc.30
       version: 2.0.0-rc.30
@@ -302,9 +305,6 @@ catalogs:
     chokidar:
       specifier: ^5.0.0
       version: 5.0.0
-    sass:
-      specifier: ^1.101.0
-      version: 1.101.0
     sass-embedded:
       specifier: ^1.100.0
       version: 1.100.0
@@ -1145,7 +1145,7 @@ importers:
         version: 1.0.1(markdown-it@14.3.0)
       '@mdit/plugin-footnote':
         specifier: ^1.0.1
-        version: 1.0.1(markdown-it@14.3.0)
+        version: 1.0.2(markdown-it@14.3.0)
       '@mdit/plugin-tasklist':
         specifier: ^1.0.1
         version: 1.0.1(markdown-it@14.3.0)
@@ -3455,8 +3455,8 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-footnote@1.0.1':
-    resolution: {integrity: sha512-PrH02dlVQT8/vPvfGrLHpcHq8N0+gOaAVNOfuhwlPqWCL4He3o+buUCxm1Uem02+UR8/TRBW50M/XD/dVSe2jw==}
+  '@mdit/plugin-footnote@1.0.2':
+    resolution: {integrity: sha512-G7pzoczbzVph9s9eyLuG9T24//ub9vK7A8jFCESQIzZj83ZJF3BHs7r/wcQx4KzmH+kDpLiAbhvzT/Y3+7OUig==}
     engines: {node: '>=22'}
     peerDependencies:
       markdown-it: ^14.2.0
@@ -11844,7 +11844,7 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.0
 
-  '@mdit/plugin-footnote@1.0.1(markdown-it@14.3.0)':
+  '@mdit/plugin-footnote@1.0.2(markdown-it@14.3.0)':
     dependencies:
       '@types/markdown-it': 14.1.2
       markdown-it: 14.3.0
