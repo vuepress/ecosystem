@@ -290,6 +290,9 @@ settings:
 
 catalogs:
   default:
+    '@mdit/plugin-img-lazyload':
+      specifier: ^1.0.2
+      version: 1.0.2
     '@vuepress/bundler-vite':
       specifier: 2.0.0-rc.30
       version: 2.0.0-rc.30
@@ -302,9 +305,6 @@ catalogs:
     chokidar:
       specifier: ^5.0.0
       version: 5.0.0
-    sass:
-      specifier: ^1.101.0
-      version: 1.101.0
     sass-embedded:
       specifier: ^1.100.0
       version: 1.100.0
@@ -1226,7 +1226,7 @@ importers:
         version: 1.0.1(markdown-it@14.3.0)
       '@mdit/plugin-img-lazyload':
         specifier: ^1.0.1
-        version: 1.0.1(markdown-it@14.3.0)
+        version: 1.0.2(markdown-it@14.3.0)
       '@mdit/plugin-img-mark':
         specifier: ^1.0.1
         version: 1.0.1(markdown-it@14.3.0)
@@ -3470,8 +3470,8 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-img-lazyload@1.0.1':
-    resolution: {integrity: sha512-DGNEeS6TGARPTgYbv7G/P2/kYsSEiC5rUPjGDdlzBYCuZfInvLSIi5vkzp2fhPpuU2cPx+JTDCsIAHzJ8oVxSQ==}
+  '@mdit/plugin-img-lazyload@1.0.2':
+    resolution: {integrity: sha512-UFG+wRJU7FvZV8o/b4Endw8XRRV2tS3AphhPjRt2F7dKW+ByBWmYPNxgRGqm+j3exFTwCHPhMHZbcl0KtYOrHA==}
     engines: {node: '>=22'}
     peerDependencies:
       markdown-it: ^14.2.0
@@ -11856,7 +11856,7 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.0
 
-  '@mdit/plugin-img-lazyload@1.0.1(markdown-it@14.3.0)':
+  '@mdit/plugin-img-lazyload@1.0.2(markdown-it@14.3.0)':
     dependencies:
       '@types/markdown-it': 14.1.2
     optionalDependencies:
