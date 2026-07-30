@@ -302,9 +302,9 @@ catalogs:
     chokidar:
       specifier: ^5.0.0
       version: 5.0.0
-    sass:
-      specifier: ^1.101.0
-      version: 1.101.0
+    p-map:
+      specifier: ^7.0.6
+      version: 7.0.6
     sass-embedded:
       specifier: ^1.100.0
       version: 1.100.0
@@ -1639,7 +1639,7 @@ importers:
         version: 6.0.0
       p-map:
         specifier: ^7.0.5
-        version: 7.0.5
+        version: 7.0.6
       picomatch:
         specifier: ^4.0.5
         version: 4.0.5
@@ -8093,6 +8093,10 @@ packages:
 
   p-map@7.0.5:
     resolution: {integrity: sha512-e8vJF4XdVkzqqSHguEMz41mQO1wKwxKm5ENrUJQUu9kLDCtn83cxbyHZcszr4QC5zEA7WffRRC4gsTecC7J9oA==}
+    engines: {node: '>=18'}
+
+  p-map@7.0.6:
+    resolution: {integrity: sha512-I4Prw6ivkd6p8PiYR1tXASOAOBzIJwu0TB7fqaX0c/8c3QAehNYmX57EijyGGGBt3c/BIowGwV03RVBtXvHEVg==}
     engines: {node: '>=18'}
 
   p-retry@6.2.1:
@@ -17292,6 +17296,8 @@ snapshots:
       p-limit: 2.3.0
 
   p-map@7.0.5: {}
+
+  p-map@7.0.6: {}
 
   p-retry@6.2.1:
     dependencies:
