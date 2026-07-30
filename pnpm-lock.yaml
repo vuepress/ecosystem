@@ -290,6 +290,9 @@ settings:
 
 catalogs:
   default:
+    '@mdit/plugin-tasklist':
+      specifier: ^1.0.2
+      version: 1.0.2
     '@vuepress/bundler-vite':
       specifier: 2.0.0-rc.30
       version: 2.0.0-rc.30
@@ -302,9 +305,6 @@ catalogs:
     chokidar:
       specifier: ^5.0.0
       version: 5.0.0
-    sass:
-      specifier: ^1.101.0
-      version: 1.101.0
     sass-embedded:
       specifier: ^1.100.0
       version: 1.100.0
@@ -1148,7 +1148,7 @@ importers:
         version: 1.0.1(markdown-it@14.3.0)
       '@mdit/plugin-tasklist':
         specifier: ^1.0.1
-        version: 1.0.1(markdown-it@14.3.0)
+        version: 1.0.2(markdown-it@14.3.0)
       '@types/markdown-it':
         specifier: ^14.1.2
         version: 14.1.2
@@ -3613,8 +3613,8 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-tasklist@1.0.1':
-    resolution: {integrity: sha512-Ks/Tihw5ibbkP2qOZzltkbiTk8RfpxDRvqdn4hl1wIs3VmeKITIQ36gN4DsuotSauA9SBe/mL0QJIfuSCrXqrw==}
+  '@mdit/plugin-tasklist@1.0.2':
+    resolution: {integrity: sha512-h+WCr/h+K0pbyZdJnrPEpgeMFlffzqfviY3TDmj7PdZiVAS1YF1s95+tt9bvmJWKPrALV/IgePxsu5LWnODMmw==}
     engines: {node: '>=22'}
     peerDependencies:
       markdown-it: ^14.2.0
@@ -11962,7 +11962,7 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.0
 
-  '@mdit/plugin-tasklist@1.0.1(markdown-it@14.3.0)':
+  '@mdit/plugin-tasklist@1.0.2(markdown-it@14.3.0)':
     dependencies:
       '@types/markdown-it': 14.1.2
     optionalDependencies:
