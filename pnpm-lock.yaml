@@ -290,6 +290,9 @@ settings:
 
 catalogs:
   default:
+    '@mdit/plugin-img-mark':
+      specifier: ^1.0.2
+      version: 1.0.2
     '@vuepress/bundler-vite':
       specifier: 2.0.0-rc.30
       version: 2.0.0-rc.30
@@ -302,9 +305,6 @@ catalogs:
     chokidar:
       specifier: ^5.0.0
       version: 5.0.0
-    sass:
-      specifier: ^1.101.0
-      version: 1.101.0
     sass-embedded:
       specifier: ^1.100.0
       version: 1.100.0
@@ -1229,7 +1229,7 @@ importers:
         version: 1.0.1(markdown-it@14.3.0)
       '@mdit/plugin-img-mark':
         specifier: ^1.0.1
-        version: 1.0.1(markdown-it@14.3.0)
+        version: 1.0.2(markdown-it@14.3.0)
       '@mdit/plugin-img-size':
         specifier: ^1.0.1
         version: 1.0.1(markdown-it@14.3.0)
@@ -3479,8 +3479,8 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-img-mark@1.0.1':
-    resolution: {integrity: sha512-CNBvL+6BSHGKY4uxhCFG49LO3ZOjWyXE1LO6cakGHZaD+dCWAoqhJQbqr/Oz9/yIT9gA1T+2vHutTgBM/FzQnw==}
+  '@mdit/plugin-img-mark@1.0.2':
+    resolution: {integrity: sha512-p1QmcEsRYySZoB4tWLw9dOcZbqu2z7JnUHhDtMbqJPxGhYfFrh6K61UMyLA8ZMI2RY+Xbf4nbTh1engV+bJVDw==}
     engines: {node: '>=22'}
     peerDependencies:
       markdown-it: ^14.2.0
@@ -11862,7 +11862,7 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.0
 
-  '@mdit/plugin-img-mark@1.0.1(markdown-it@14.3.0)':
+  '@mdit/plugin-img-mark@1.0.2(markdown-it@14.3.0)':
     dependencies:
       '@types/markdown-it': 14.1.2
     optionalDependencies:
