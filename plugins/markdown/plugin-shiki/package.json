@@ -49,7 +49,7 @@
     "@shikijs/transformers": "^4.3.1",
     "@vuepress/helper": "workspace:*",
     "@vuepress/highlighter-helper": "workspace:*",
-    "nanoid": "^5.1.16",
+    "nanoid": "^6.0.0",
     "shiki": "^4.3.1",
     "synckit": "^0.11.13"
   },
