@@ -1285,7 +1285,7 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/helper
       katex:
-        specifier: ^0.16.38
+        specifier: ^0.16.38 || ^0.18.0
         version: 0.16.47
       vue:
         specifier: 'catalog:'
