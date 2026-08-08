@@ -72,6 +72,7 @@ export const plugins = [
     figure: true,
     mark: true,
     size: true,
+    // oxlint-disable-next-line typescript/no-deprecated
     legacySize: true,
   }),
   markdownIncludePlugin({

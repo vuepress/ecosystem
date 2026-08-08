@@ -13,6 +13,7 @@ const app = createBuildApp({
   theme: emptyTheme,
 })
 
+// oxlint-disable-next-line node/no-top-level-await
 await app.init()
 
 const getPageExcerpts = (

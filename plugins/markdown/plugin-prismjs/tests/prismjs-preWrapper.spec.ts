@@ -265,6 +265,7 @@ const line10 = 'line 10'
 const line11 = 'line 11'
 ${codeFence}
 `
+
     it('should work properly if `lineNumbers` is enabled by default', () => {
       const md = createMarkdown({
         lineNumbers: true,
@@ -401,6 +402,7 @@ function foo () {
   const foo = 'foo'  \n  return 'foo'
 }
 `
+
     it('should work whitespace with default options', () => {
       const md = createMarkdown()
       expect(md.render(source)).toMatchSnapshot()
@@ -454,6 +456,7 @@ ${codeFence}ts :no-collapsed-lines=12
 ${genLines(20)}
 ${codeFence}
 `
+
     it('should work properly if `collapsedLines` is disabled by default', () => {
       const md = createMarkdown({ collapsedLines: false })
       expect(md.render(source)).toMatchSnapshot()

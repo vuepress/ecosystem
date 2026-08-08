@@ -8,12 +8,12 @@ packages:
 catalog:
   '@vuepress/bundler-vite': 2.0.0-rc.30
   '@vuepress/bundler-webpack': 2.0.0-rc.30
-  '@vueuse/core': ^14.3.0
+  '@vueuse/core': ^14.4.0
   chokidar: ^5.0.0
-  sass: ^1.101.0
+  sass: ^1.102.0
   sass-embedded: ^1.100.0
   sass-loader: ^17.0.0
-  vue: ^3.5.39
+  vue: ^3.5.41
   vuepress: 2.0.0-rc.30
 
 catalogMode: prefer
@@ -28,6 +28,7 @@ minimumReleaseAgeExclude:
   - '@vue/*'
   - '@vuepress/*'
   - '@vitest/*'
+  - oxc-config-hope
   - oxfmt
   - oxlint
   - vite
@@ -62,3 +63,4 @@ trustPolicyExclude:
   - chokidar@4.0.3 # sass@1
   - semver@6.3.1 # @babel/core@7
   - undici-types@6.21.0 # @types/node@22
+  - undici@5.29.0 # @ai-sdk/react@2 , @ai-sdk/provider-utils@3
