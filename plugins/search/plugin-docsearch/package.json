@@ -49,7 +49,7 @@
   },
   "dependencies": {
     "@docsearch/css": "^4.6.3",
-    "@docsearch/js": "^4.6.3",
+    "@docsearch/js": "^5.0.0",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "ts-debounce": "^5.0.1",
