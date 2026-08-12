@@ -226,6 +226,15 @@ catalogs:
     sass-loader:
       specifier: ^17.0.0
       version: 17.0.0
+    stylelint-config-standard:
+      specifier: 40.0.0
+      version: 40.0.0
+    stylelint-config-standard-scss:
+      specifier: 17.0.0
+      version: 17.0.0
+    stylelint-order:
+      specifier: 8.1.1
+      version: 8.1.1
     vue:
       specifier: ^3.5.41
       version: 3.5.41
@@ -314,6 +323,15 @@ importers:
       stylelint-config-html:
         specifier: ^2.0.0
         version: 2.0.0(postcss-html@2.0.0(postcss@8.5.26))(stylelint@17.14.1(postcss-html@2.0.0(postcss@8.5.26))(supports-color@10.2.2)(typescript@6.0.3))
+      stylelint-config-standard:
+        specifier: 'catalog:'
+        version: 40.0.0(stylelint@17.14.1(postcss-html@2.0.0(postcss@8.5.26))(supports-color@10.2.2)(typescript@6.0.3))
+      stylelint-config-standard-scss:
+        specifier: 'catalog:'
+        version: 17.0.0(postcss@8.5.26)(stylelint@17.14.1(postcss-html@2.0.0(postcss@8.5.26))(supports-color@10.2.2)(typescript@6.0.3))
+      stylelint-order:
+        specifier: 'catalog:'
+        version: 8.1.1(stylelint@17.14.1(postcss-html@2.0.0(postcss@8.5.26))(supports-color@10.2.2)(typescript@6.0.3))
       tsconfig-vuepress:
         specifier: ^7.0.0
         version: 7.0.0
