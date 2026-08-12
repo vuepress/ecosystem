@@ -57,6 +57,7 @@ trustPolicy: no-downgrade
 
 trustPolicyExclude:
   - '@trickfilm400/rollup-plugin-off-main-thread@3.0.0-pre1' # workbox-build
+  - cytoscape@3.34.1 #FIXME:
   - chokidar@4.0.3 # sass@1
   - semver@6.3.1 # @babel/core@7
   - undici-types@6.21.0 # @types/node@22

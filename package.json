@@ -24,10 +24,10 @@
     "type:check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@lerna-lite/cli": "^5.4.2",
-    "@lerna-lite/publish": "^5.4.2",
+    "@lerna-lite/cli": "^5.5.0",
+    "@lerna-lite/publish": "^5.5.0",
     "@tsdown/css": "^0.22.14",
-    "@types/node": "^26.1.2",
+    "@types/node": "^26.2.0",
     "@types/webpack-env": "^1.18.8",
     "@vitest/coverage-istanbul": "^4.1.10",
     "cross-env": "^10.1.0",
