@@ -200,12 +200,6 @@ new Crawler({
 - 参考：
   - [DocSearch > Options > indices](https://docsearch.algolia.com/docs/api#indices)
 
-::: tip indexName
-
-如果只使用单个索引，`indexName` 可以作为 `indices` 的简写，但它已经被弃用并会在未来版本中移除。详情请参阅 [DocSearch > Options > indexName](https://docsearch.algolia.com/docs/api#indexname)。
-
-:::
-
 ### placeholder
 
 - 类型：`string`

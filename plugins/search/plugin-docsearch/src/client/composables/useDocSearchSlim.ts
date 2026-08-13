@@ -36,7 +36,6 @@ export const useDocSearchShim = (): Partial<DocSearchProps> => {
     },
 
     // add search debounce
-    // @ts-expect-error: Return type of search is a type parameter
     transformSearchClient: (searchClient) => ({
       ...searchClient,
       search: debounce(searchClient.search, 500),
