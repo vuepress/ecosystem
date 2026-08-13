@@ -65,3 +65,6 @@ trustPolicyExclude:
   - semver@6.3.1 # @babel/core@7
   - undici-types@6.21.0 # @types/node@22
   - undici@5.29.0 # @ai-sdk/react@2 , @ai-sdk/provider-utils@3
+
+patchedDependencies:
+  '@vuepress/bundler-webpack': patches/@vuepress__bundler-webpack.patch
