@@ -49,7 +49,7 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@shikijs/twoslash": "^4.3.1",
+    "@shikijs/twoslash": "^4.4.3",
     "@vuepress/helper": "workspace:*",
     "floating-vue": "^5.2.2",
     "mdast-util-from-markdown": "^2.0.3",
@@ -60,8 +60,8 @@
     "vue": "catalog:"
   },
   "devDependencies": {
-    "@types/hast": "^3.0.4",
-    "shiki": "^4.3.1",
+    "@types/hast": "^3.0.5",
+    "shiki": "^4.4.3",
     "vue": "catalog:"
   },
   "peerDependencies": {

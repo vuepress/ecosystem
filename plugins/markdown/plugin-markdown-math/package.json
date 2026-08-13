@@ -45,8 +45,8 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/plugin-katex-slim": "^1.0.1",
-    "@mdit/plugin-mathjax-slim": "^1.1.0",
+    "@mdit/plugin-katex-slim": "^1.0.3",
+    "@mdit/plugin-mathjax-slim": "^1.1.2",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
     "vue": "catalog:"

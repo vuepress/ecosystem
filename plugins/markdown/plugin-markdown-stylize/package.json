@@ -45,14 +45,14 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/plugin-align": "^1.0.1",
-    "@mdit/plugin-attrs": "^1.0.2",
-    "@mdit/plugin-layout": "^1.0.1",
-    "@mdit/plugin-mark": "^2.0.0",
-    "@mdit/plugin-spoiler": "^2.0.0",
-    "@mdit/plugin-stylize": "^1.0.1",
-    "@mdit/plugin-sub": "^1.0.2",
-    "@mdit/plugin-sup": "^1.0.2",
+    "@mdit/plugin-align": "^1.0.2",
+    "@mdit/plugin-attrs": "^1.2.0",
+    "@mdit/plugin-layout": "^1.0.3",
+    "@mdit/plugin-mark": "^2.0.2",
+    "@mdit/plugin-spoiler": "^2.0.2",
+    "@mdit/plugin-stylize": "^1.0.3",
+    "@mdit/plugin-sub": "^1.0.4",
+    "@mdit/plugin-sup": "^1.0.4",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*"
   },

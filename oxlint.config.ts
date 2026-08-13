@@ -20,6 +20,13 @@ export default defineHopeConfig(
     playwright: true,
 
     rules: {
+      // The following rules are not working properly, so they have been temporarily disabled
+      'vitest/consistent-test-filename': 'off',
+      'sort-vars': 'off',
+      'one-var': 'off',
+      'promise/always-return': 'off',
+      // ----------- end --------------
+
       // complex states may be needed for some functions
       'max-params': ['warn', 5],
       // allow undefined usage
