@@ -79,7 +79,10 @@ You can enable the following themes in reveal.js via `themes` in plugin options:
 
 - `auto` (Default)
 - `black`
+- `black-contrast`
 - `white`
+- `white-contrast`
+- `dracula`
 - `league`
 - `beige`
 - `sky`

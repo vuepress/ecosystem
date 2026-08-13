@@ -1,0 +1,101 @@
+/**
+ * Dracula Dark theme for reveal.js.
+ * Based on https://draculatheme.com
+ */
+
+@use 'helper/helper';
+@use 'highlight/dracula';
+
+$background: #282a36;
+$foreground: #f8f8f2;
+$orange: #ffb86c;
+$yellow: #f1fa8c;
+$green: #50fa7b;
+$purple: #bd93f9;
+$cyan: #8be9fd;
+$pink: #ff79c6;
+
+@include helper.theme(
+  'dracula',
+  (
+    background-color: #191919,
+    main-font: (
+      -apple-system,
+      blinkmacsystemfont,
+      'avenir next',
+      avenir,
+      'segoe ui',
+      'helvetica neue',
+      helvetica,
+      cantarell,
+      ubuntu,
+      roboto,
+      noto,
+      arial,
+      sans-serif,
+    ),
+    main-color: $foreground,
+    heading-color: $purple,
+    heading-font: (
+      -apple-system,
+      blinkmacsystemfont,
+      'avenir next',
+      avenir,
+      'segoe ui',
+      'helvetica neue',
+      helvetica,
+      cantarell,
+      ubuntu,
+      roboto,
+      noto,
+      arial,
+      sans-serif,
+    ),
+    heading-font-weight: 600,
+    heading-text-transform: none,
+    code-font: (
+      'Fira Code',
+      menlo,
+      consolas,
+      monaco,
+      'Liberation Mono',
+      'Lucida Console',
+      monospace,
+    ),
+    link-color: $pink,
+    link-color-hover: $cyan,
+    selection-color: #fff,
+    selection-background-color: #44475a,
+    heading1-size: 2.5em,
+    heading2-size: 1.6em,
+    heading3-size: 1.3em,
+    heading4-size: 1em,
+  )
+) {
+  @include dracula.highlight;
+  @include helper.lightmode-text-color($background);
+
+  // Dracula colored text effects
+  strong,
+  b {
+    color: $orange;
+  }
+
+  em,
+  i,
+  blockquote {
+    color: $yellow;
+  }
+
+  code {
+    color: $green;
+  }
+
+  // Dracula colored list bullets and numbers
+  ul,
+  ol {
+    li::marker {
+      color: $cyan;
+    }
+  }
+}
