@@ -203,12 +203,6 @@ If you are not using the default theme or encounter issues with search results, 
 - Also see:
   - [DocSearch > Options > indices](https://docsearch.algolia.com/docs/api#indices)
 
-::: tip indexName
-
-`indexName` as is shorthand for `indices` if you are only querying a single index. However, this is deprecated and will be removed in future versions. See [DocSearch > Options > indexName](https://docsearch.algolia.com/docs/api#indexname) for details.
-
-:::
-
 ### placeholder
 
 - Type: `string`

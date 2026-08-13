@@ -16,22 +16,14 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           buttonAriaLabel: '搜索文档',
         },
         modal: {
-          // @ts-expect-error: enterKeyHint and enterKeyHintAskAi do not need to be provided per locale
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
           searchBox: {
             clearButtonTitle: '清除查询条件',
             clearButtonAriaLabel: '清除查询条件',
             closeButtonText: '关闭',
             closeButtonAriaLabel: '关闭',
             placeholderText: '搜索文档',
-            placeholderTextAskAi: '向 AI 助手提问',
-            placeholderTextAskAiStreaming: '回答中...',
             searchInputLabel: '搜索',
-            backToKeywordSearchButtonText: '返回关键字搜索',
-            backToKeywordSearchButtonAriaLabel: '返回关键字搜索',
-            newConversationPlaceholder: '询问问题',
-            conversationHistoryTitle: '对话历史',
-            startNewConversationText: '新对话',
-            viewConversationHistoryText: '对话历史',
           },
           startScreen: {
             recentSearchesTitle: '搜索历史',
@@ -40,8 +32,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             removeRecentSearchButtonTitle: '从搜索历史中移除',
             favoriteSearchesTitle: '收藏',
             removeFavoriteSearchButtonTitle: '从收藏中移除',
-            recentConversationsTitle: '最近对话',
-            removeRecentConversationButtonTitle: '从最近对话中移除',
           },
           errorScreen: {
             titleText: '无法获取结果',
@@ -52,26 +42,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             suggestedQueryText: '你可以尝试查询',
             reportMissingResultsText: '你认为该查询应该有结果？',
             reportMissingResultsLinkText: '告知我们',
-          },
-          resultsScreen: {
-            askAiPlaceholder: '询问AI：',
-            noResultsAskAiPlaceholder: '没有找到文档？让 AI 来帮忙：',
-          },
-          // @ts-expect-error: aggregatedTollCallNode and aggregatedTollCallText shall be remain default
-          askAiScreen: {
-            disclaimerText: 'AI 助手的回答可能不准确。自行验证回复。',
-            relatedSourcesText: '相关资源',
-            thinkingText: '思考中...',
-            copyButtonText: '复制',
-            copyButtonCopiedText: '已复制',
-            copyButtonTitle: '复制',
-            likeButtonTitle: '有帮助',
-            dislikeButtonTitle: '没帮助',
-            thanksForFeedbackText: '感谢您的反馈！',
-            preToolCallText: '搜索中...',
-            duringToolCallText: '搜索',
-            afterToolCallText: '已搜索',
-            stoppedStreamingText: '你停止了此回复',
           },
           footer: {
             selectText: '选择',
@@ -99,7 +69,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           buttonAriaLabel: '搜尋文件',
         },
         modal: {
-          // @ts-expect-error: enterKeyHint and enterKeyHintAskAi do not need to be provided per locale
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
           searchBox: {
             searchInputLabel: '搜尋',
             clearButtonTitle: '清除查詢條件',
@@ -107,14 +77,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             closeButtonText: '關閉',
             closeButtonAriaLabel: '關閉',
             placeholderText: '搜尋文件',
-            placeholderTextAskAi: '向 AI 助手提問',
-            placeholderTextAskAiStreaming: '回答中...',
-            backToKeywordSearchButtonText: '返回關鍵字搜尋',
-            backToKeywordSearchButtonAriaLabel: '返回關鍵字搜尋',
-            newConversationPlaceholder: '詢問問題',
-            conversationHistoryTitle: '對話歷史',
-            startNewConversationText: '新對話',
-            viewConversationHistoryText: '對話歷史',
           },
           startScreen: {
             recentSearchesTitle: '搜尋歷史',
@@ -123,8 +85,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             removeRecentSearchButtonTitle: '從搜尋歷史中移除',
             favoriteSearchesTitle: '收藏',
             removeFavoriteSearchButtonTitle: '從收藏中移除',
-            recentConversationsTitle: '最近對話',
-            removeRecentConversationButtonTitle: '從最近對話中移除',
           },
           errorScreen: {
             titleText: '無法獲取結果',
@@ -162,7 +122,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           buttonAriaLabel: 'Durchsuchen',
         },
         modal: {
-          // @ts-expect-error: enterKeyHint and enterKeyHintAskAi do not need to be provided per locale
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
           searchBox: {
             searchInputLabel: 'Suche',
             clearButtonTitle: 'Suchkriterien zurücksetzen',
@@ -170,14 +130,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             closeButtonText: 'Schließen',
             closeButtonAriaLabel: 'Schließen',
             placeholderText: 'Dokumentation durchsuchen',
-            placeholderTextAskAi: 'Frage den KI-Assistenten',
-            placeholderTextAskAiStreaming: 'Antwort wird generiert...',
-            backToKeywordSearchButtonText: 'Zurück zur Stichwortsuche',
-            backToKeywordSearchButtonAriaLabel: 'Zurück zur Stichwortsuche',
-            newConversationPlaceholder: 'Frage stellen',
-            conversationHistoryTitle: 'Unterhaltungsverlauf',
-            startNewConversationText: 'Neue Unterhaltung',
-            viewConversationHistoryText: 'Unterhaltungsverlauf',
           },
           startScreen: {
             recentSearchesTitle: 'Letzte Suchen',
@@ -186,9 +138,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             removeRecentSearchButtonTitle: 'Aus den letzten Suchen entfernen',
             favoriteSearchesTitle: 'Favoriten',
             removeFavoriteSearchButtonTitle: 'Aus den Favoriten entfernen',
-            recentConversationsTitle: 'Letzte Unterhaltungen',
-            removeRecentConversationButtonTitle:
-              'Aus den letzten Unterhaltungen entfernen',
           },
           errorScreen: {
             titleText: 'Keine Ergebnisse gefunden',
@@ -227,7 +176,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           buttonAriaLabel: 'Tìm kiếm',
         },
         modal: {
-          // @ts-expect-error: enterKeyHint and enterKeyHintAskAi do not need to be provided per locale
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
           searchBox: {
             searchInputLabel: 'Tìm kiếm',
             clearButtonTitle: 'Xóa điều kiện tìm kiếm',
@@ -235,14 +184,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             closeButtonText: 'Đóng',
             closeButtonAriaLabel: 'Đóng',
             placeholderText: 'Tìm kiếm tài liệu',
-            placeholderTextAskAi: 'Hỏi trợ lý AI',
-            placeholderTextAskAiStreaming: 'Đang trả lời...',
-            backToKeywordSearchButtonText: 'Quay lại tìm kiếm từ khóa',
-            backToKeywordSearchButtonAriaLabel: 'Quay lại tìm kiếm từ khóa',
-            newConversationPlaceholder: 'Đặt câu hỏi',
-            conversationHistoryTitle: 'Lịch sử hội thoại',
-            startNewConversationText: 'Cuộc hội thoại mới',
-            viewConversationHistoryText: 'Lịch sử hội thoại',
           },
           startScreen: {
             recentSearchesTitle: 'Lịch sử tìm kiếm',
@@ -251,9 +192,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             removeRecentSearchButtonTitle: 'Xóa khỏi lịch sử tìm kiếm',
             favoriteSearchesTitle: 'Yêu thích',
             removeFavoriteSearchButtonTitle: 'Xóa khỏi yêu thích',
-            recentConversationsTitle: 'Cuộc hội thoại gần đây',
-            removeRecentConversationButtonTitle:
-              'Xóa khỏi cuộc hội thoại gần đây',
           },
           errorScreen: {
             titleText: 'Không tìm thấy kết quả',
@@ -291,7 +229,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           buttonAriaLabel: 'Пошук',
         },
         modal: {
-          // @ts-expect-error: enterKeyHint and enterKeyHintAskAi do not need to be provided per locale
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
           searchBox: {
             searchInputLabel: 'Пошук',
             clearButtonTitle: 'Скинути умови пошуку',
@@ -299,16 +237,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             closeButtonText: 'Закрити',
             closeButtonAriaLabel: 'Закрити',
             placeholderText: 'Пошук документації',
-            placeholderTextAskAi: 'Поставити запитання AI-асистенту',
-            placeholderTextAskAiStreaming: 'Формується відповідь...',
-            backToKeywordSearchButtonText:
-              'Повернутися до пошуку за ключовими словами',
-            backToKeywordSearchButtonAriaLabel:
-              'Повернутися до пошуку за ключовими словами',
-            newConversationPlaceholder: 'Поставте запитання',
-            conversationHistoryTitle: 'Історія розмов',
-            startNewConversationText: 'Нова розмова',
-            viewConversationHistoryText: 'Історія розмов',
           },
           startScreen: {
             recentSearchesTitle: 'Останні пошуки',
@@ -317,8 +245,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             removeRecentSearchButtonTitle: 'Видалити з останніх пошуків',
             favoriteSearchesTitle: 'Обране',
             removeFavoriteSearchButtonTitle: 'Видалити з обраного',
-            recentConversationsTitle: 'Нещодавні розмови',
-            removeRecentConversationButtonTitle: 'Видалити з нещодавніх розмов',
           },
           errorScreen: {
             titleText: 'Немає результатів',
@@ -356,7 +282,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           buttonAriaLabel: 'Поиск',
         },
         modal: {
-          // @ts-expect-error: enterKeyHint and enterKeyHintAskAi do not need to be provided per locale
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
           searchBox: {
             searchInputLabel: 'Поиск',
             clearButtonTitle: 'Сбросить условия поиска',
@@ -364,16 +290,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             closeButtonText: 'Закрыть',
             closeButtonAriaLabel: 'Закрыть',
             placeholderText: 'Поиск документации',
-            placeholderTextAskAi: 'Задайте вопрос ИИ-ассистенту',
-            placeholderTextAskAiStreaming: 'Формируется ответ...',
-            backToKeywordSearchButtonText:
-              'Вернуться к поиску по ключевым словам',
-            backToKeywordSearchButtonAriaLabel:
-              'Вернуться к поиску по ключевым словам',
-            newConversationPlaceholder: 'Задайте вопрос',
-            conversationHistoryTitle: 'История диалогов',
-            startNewConversationText: 'Новый диалог',
-            viewConversationHistoryText: 'История диалогов',
           },
           startScreen: {
             recentSearchesTitle: 'Последние запросы',
@@ -382,8 +298,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             removeRecentSearchButtonTitle: 'Удалить из последних запросов',
             favoriteSearchesTitle: 'Избранное',
             removeFavoriteSearchButtonTitle: 'Удалить из избранного',
-            recentConversationsTitle: 'Недавние диалоги',
-            removeRecentConversationButtonTitle: 'Удалить из недавних диалогов',
           },
           errorScreen: {
             titleText: 'Нет результатов',
@@ -421,7 +335,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           buttonAriaLabel: 'Pesquisar',
         },
         modal: {
-          // @ts-expect-error: enterKeyHint and enterKeyHintAskAi do not need to be provided per locale
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
           searchBox: {
             searchInputLabel: 'Pesquisar',
             clearButtonTitle: 'Limpar critérios de pesquisa',
@@ -429,16 +343,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             closeButtonText: 'Fechar',
             closeButtonAriaLabel: 'Fechar',
             placeholderText: 'Pesquisar documentação',
-            placeholderTextAskAi: 'Pergunte ao assistente de IA',
-            placeholderTextAskAiStreaming: 'Respondendo...',
-            backToKeywordSearchButtonText:
-              'Voltar à pesquisa por palavra-chave',
-            backToKeywordSearchButtonAriaLabel:
-              'Voltar à pesquisa por palavra-chave',
-            newConversationPlaceholder: 'Faça uma pergunta',
-            conversationHistoryTitle: 'Histórico de conversas',
-            startNewConversationText: 'Nova conversa',
-            viewConversationHistoryText: 'Histórico de conversas',
           },
           startScreen: {
             recentSearchesTitle: 'Pesquisas recentes',
@@ -447,9 +351,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             removeRecentSearchButtonTitle: 'Remover das pesquisas recentes',
             favoriteSearchesTitle: 'Favoritos',
             removeFavoriteSearchButtonTitle: 'Remover dos favoritos',
-            recentConversationsTitle: 'Conversas recentes',
-            removeRecentConversationButtonTitle:
-              'Remover das conversas recentes',
           },
           errorScreen: {
             titleText: 'Nenhum resultado encontrado',
@@ -487,7 +388,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           buttonAriaLabel: 'Szukaj',
         },
         modal: {
-          // @ts-expect-error: enterKeyHint and enterKeyHintAskAi do not need to be provided per locale
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
           searchBox: {
             searchInputLabel: 'Szukaj',
             clearButtonTitle: 'Wyczyść kryteria wyszukiwania',
@@ -495,16 +396,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             closeButtonText: 'Zamknij',
             closeButtonAriaLabel: 'Zamknij',
             placeholderText: 'Szukaj dokumentacji',
-            placeholderTextAskAi: 'Zadaj pytanie asystentowi AI',
-            placeholderTextAskAiStreaming: 'Odpowiedź w toku...',
-            backToKeywordSearchButtonText:
-              'Wróć do wyszukiwania słów kluczowych',
-            backToKeywordSearchButtonAriaLabel:
-              'Wróć do wyszukiwania słów kluczowych',
-            newConversationPlaceholder: 'Zadaj pytanie',
-            conversationHistoryTitle: 'Historia rozmów',
-            startNewConversationText: 'Nowa rozmowa',
-            viewConversationHistoryText: 'Historia rozmów',
           },
           startScreen: {
             recentSearchesTitle: 'Ostatnie wyszukiwania',
@@ -513,8 +404,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             removeRecentSearchButtonTitle: 'Usuń z ostatnich wyszukiwań',
             favoriteSearchesTitle: 'Ulubione',
             removeFavoriteSearchButtonTitle: 'Usuń z ulubionych',
-            recentConversationsTitle: 'Ostatnie rozmowy',
-            removeRecentConversationButtonTitle: 'Usuń z ostatnich rozmów',
           },
           errorScreen: {
             titleText: 'Brak wyników',
@@ -552,7 +441,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           buttonAriaLabel: 'Hľadať',
         },
         modal: {
-          // @ts-expect-error: enterKeyHint and enterKeyHintAskAi do not need to be provided per locale
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
           searchBox: {
             searchInputLabel: 'Hľadať',
             clearButtonTitle: 'Vymazať kritériá vyhľadávania',
@@ -560,16 +449,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             closeButtonText: 'Zavrieť',
             closeButtonAriaLabel: 'Zavrieť',
             placeholderText: 'Hľadať dokumentáciu',
-            placeholderTextAskAi: 'Spýtať sa asistenta AI',
-            placeholderTextAskAiStreaming: 'Odpoveď sa generuje...',
-            backToKeywordSearchButtonText:
-              'Späť na vyhľadávanie kľúčových slov',
-            backToKeywordSearchButtonAriaLabel:
-              'Späť na vyhľadávanie kľúčových slov',
-            newConversationPlaceholder: 'Položte otázku',
-            conversationHistoryTitle: 'História konverzácií',
-            startNewConversationText: 'Nová konverzácia',
-            viewConversationHistoryText: 'História konverzácií',
           },
           startScreen: {
             recentSearchesTitle: 'Nedávne vyhľadávania',
@@ -578,9 +457,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             removeRecentSearchButtonTitle: 'Odstrániť z nedávnych vyhľadávaní',
             favoriteSearchesTitle: 'Obľúbené',
             removeFavoriteSearchButtonTitle: 'Odstrániť z obľúbených',
-            recentConversationsTitle: 'Nedávne konverzácie',
-            removeRecentConversationButtonTitle:
-              'Odstrániť z nedávnych konverzácií',
           },
           errorScreen: {
             titleText: 'Žiadne výsledky',
@@ -618,7 +494,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           buttonAriaLabel: 'Rechercher',
         },
         modal: {
-          // @ts-expect-error: enterKeyHint and enterKeyHintAskAi do not need to be provided per locale
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
           searchBox: {
             searchInputLabel: 'Rechercher',
             clearButtonTitle: 'Réinitialiser les critères de recherche',
@@ -626,16 +502,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             closeButtonText: 'Fermer',
             closeButtonAriaLabel: 'Fermer',
             placeholderText: 'Rechercher dans la documentation',
-            placeholderTextAskAi: 'Poser une question à l’assistant IA',
-            placeholderTextAskAiStreaming: 'Réponse en cours...',
-            backToKeywordSearchButtonText:
-              'Retour à la recherche par mots-clés',
-            backToKeywordSearchButtonAriaLabel:
-              'Retour à la recherche par mots-clés',
-            newConversationPlaceholder: 'Poser une question',
-            conversationHistoryTitle: 'Historique des conversations',
-            startNewConversationText: 'Nouvelle conversation',
-            viewConversationHistoryText: 'Historique des conversations',
           },
           startScreen: {
             recentSearchesTitle: 'Recherches récentes',
@@ -645,9 +511,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             removeRecentSearchButtonTitle: 'Supprimer des recherches récentes',
             favoriteSearchesTitle: 'Favoris',
             removeFavoriteSearchButtonTitle: 'Supprimer des favoris',
-            recentConversationsTitle: 'Conversations récentes',
-            removeRecentConversationButtonTitle:
-              'Supprimer des conversations récentes',
           },
           errorScreen: {
             titleText: 'Aucun résultat',
@@ -686,7 +549,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           buttonAriaLabel: 'Buscar',
         },
         modal: {
-          // @ts-expect-error: enterKeyHint and enterKeyHintAskAi do not need to be provided per locale
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
           searchBox: {
             searchInputLabel: 'Buscar',
             clearButtonTitle: 'Restablecer criterios de búsqueda',
@@ -694,16 +557,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             closeButtonText: 'Cerrar',
             closeButtonAriaLabel: 'Cerrar',
             placeholderText: 'Buscar documentación',
-            placeholderTextAskAi: 'Preguntar al asistente de IA',
-            placeholderTextAskAiStreaming: 'Respondiendo...',
-            backToKeywordSearchButtonText:
-              'Volver a la búsqueda por palabras clave',
-            backToKeywordSearchButtonAriaLabel:
-              'Volver a la búsqueda por palabras clave',
-            newConversationPlaceholder: 'Haz una pregunta',
-            conversationHistoryTitle: 'Historial de conversaciones',
-            startNewConversationText: 'Nueva conversación',
-            viewConversationHistoryText: 'Historial de conversaciones',
           },
           startScreen: {
             recentSearchesTitle: 'Búsquedas recientes',
@@ -712,9 +565,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             removeRecentSearchButtonTitle: 'Eliminar de búsquedas recientes',
             favoriteSearchesTitle: 'Favoritos',
             removeFavoriteSearchButtonTitle: 'Eliminar de favoritos',
-            recentConversationsTitle: 'Conversas recientes',
-            removeRecentConversationButtonTitle:
-              'Eliminar de conversaciones recientes',
           },
           errorScreen: {
             titleText: 'No se encontraron resultados',
@@ -752,7 +602,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           buttonAriaLabel: '検索',
         },
         modal: {
-          // @ts-expect-error: enterKeyHint and enterKeyHintAskAi do not need to be provided per locale
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
           searchBox: {
             searchInputLabel: '検索',
             clearButtonTitle: '検索条件をリセット',
@@ -760,14 +610,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             closeButtonText: '閉じる',
             closeButtonAriaLabel: '閉じる',
             placeholderText: 'ドキュメントを検索',
-            placeholderTextAskAi: 'AI アシスタントに質問する',
-            placeholderTextAskAiStreaming: '回答中...',
-            backToKeywordSearchButtonText: 'キーワード検索に戻る',
-            backToKeywordSearchButtonAriaLabel: 'キーワード検索に戻る',
-            newConversationPlaceholder: '質問を入力',
-            conversationHistoryTitle: '会話履歴',
-            startNewConversationText: '新しい会話',
-            viewConversationHistoryText: '会話履歴',
           },
           startScreen: {
             recentSearchesTitle: '最近の検索',
@@ -776,8 +618,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             removeRecentSearchButtonTitle: '最近の検索から削除',
             favoriteSearchesTitle: 'お気に入り',
             removeFavoriteSearchButtonTitle: 'お気に入りから削除',
-            recentConversationsTitle: '最近の会話',
-            removeRecentConversationButtonTitle: '最近の会話から削除',
           },
           errorScreen: {
             titleText: '結果が見つかりません',
@@ -815,7 +655,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           buttonAriaLabel: 'Ara',
         },
         modal: {
-          // @ts-expect-error: enterKeyHint and enterKeyHintAskAi do not need to be provided per locale
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
           searchBox: {
             searchInputLabel: 'Ara',
             clearButtonTitle: 'Arama kriterlerini sıfırla',
@@ -823,15 +663,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             closeButtonText: 'Kapat',
             closeButtonAriaLabel: 'Kapat',
             placeholderText: 'Belgeleri ara',
-            placeholderTextAskAi: 'AI asistanına soru sor',
-            placeholderTextAskAiStreaming: 'Yanıt oluşturuluyor...',
-            backToKeywordSearchButtonText: 'Anahtar kelime aramasına geri dön',
-            backToKeywordSearchButtonAriaLabel:
-              'Anahtar kelime aramasına geri dön',
-            newConversationPlaceholder: 'Soru sor',
-            conversationHistoryTitle: 'Sohbet geçmişi',
-            startNewConversationText: 'Yeni sohbet',
-            viewConversationHistoryText: 'Sohbet geçmişi',
           },
           startScreen: {
             recentSearchesTitle: 'Son Aramalar',
@@ -840,8 +671,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             removeRecentSearchButtonTitle: 'Son aramalardan kaldır',
             favoriteSearchesTitle: 'Favoriler',
             removeFavoriteSearchButtonTitle: 'Favorilerden kaldır',
-            recentConversationsTitle: 'Son sohbetler',
-            removeRecentConversationButtonTitle: 'Son sohbetlerden kaldır',
           },
           errorScreen: {
             titleText: 'Sonuç bulunamadı',
@@ -880,7 +709,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           buttonAriaLabel: '검색',
         },
         modal: {
-          // @ts-expect-error: enterKeyHint and enterKeyHintAskAi do not need to be provided per locale
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
           searchBox: {
             searchInputLabel: '검색',
             clearButtonTitle: '검색 조건 초기화',
@@ -888,14 +717,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             closeButtonText: '닫기',
             closeButtonAriaLabel: '닫기',
             placeholderText: '문서 검색',
-            placeholderTextAskAi: 'AI 도우미에게 질문하기',
-            placeholderTextAskAiStreaming: '답변 중...',
-            backToKeywordSearchButtonText: '키워드 검색으로 돌아가기',
-            backToKeywordSearchButtonAriaLabel: '키워드 검색으로 돌아가기',
-            newConversationPlaceholder: '질문하기',
-            conversationHistoryTitle: '대화 기록',
-            startNewConversationText: '새 대화',
-            viewConversationHistoryText: '대화 기록',
           },
           startScreen: {
             recentSearchesTitle: '최근 검색',
@@ -904,8 +725,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             removeRecentSearchButtonTitle: '최근 검색에서 제거',
             favoriteSearchesTitle: '즐겨찾기',
             removeFavoriteSearchButtonTitle: '즐겨찾기에서 제거',
-            recentConversationsTitle: '최근 대화',
-            removeRecentConversationButtonTitle: '최근 대화에서 제거',
           },
           errorScreen: {
             titleText: '결과를 찾을 수 없습니다',
@@ -943,7 +762,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           buttonAriaLabel: 'Hae',
         },
         modal: {
-          // @ts-expect-error: enterKeyHint and enterKeyHintAskAi do not need to be provided per locale
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
           searchBox: {
             searchInputLabel: 'Hae',
             clearButtonTitle: 'Nollaa hakuehdot',
@@ -951,14 +770,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             closeButtonText: 'Sulje',
             closeButtonAriaLabel: 'Sulje',
             placeholderText: 'Hae dokumentaatiosta',
-            placeholderTextAskAi: 'Kysy AI-avustajalta',
-            placeholderTextAskAiStreaming: 'Vastataan...',
-            backToKeywordSearchButtonText: 'Takaisin avainsanahakuun',
-            backToKeywordSearchButtonAriaLabel: 'Takaisin avainsanahakuun',
-            newConversationPlaceholder: 'Esitä kysymys',
-            conversationHistoryTitle: 'Keskusteluhistoria',
-            startNewConversationText: 'Uusi keskustelu',
-            viewConversationHistoryText: 'Keskusteluhistoria',
           },
           startScreen: {
             recentSearchesTitle: 'Viimeisimmät haut',
@@ -967,9 +778,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             removeRecentSearchButtonTitle: 'Poista viimeisimmistä hauista',
             favoriteSearchesTitle: 'Suosikit',
             removeFavoriteSearchButtonTitle: 'Poista suosikeista',
-            recentConversationsTitle: 'Viimeisimmät keskustelut',
-            removeRecentConversationButtonTitle:
-              'Poista viimeisimmistä keskusteluista',
           },
           errorScreen: {
             titleText: 'Ei tuloksia',
@@ -1007,7 +815,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           buttonAriaLabel: 'Keresés',
         },
         modal: {
-          // @ts-expect-error: enterKeyHint and enterKeyHintAskAi do not need to be provided per locale
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
           searchBox: {
             searchInputLabel: 'Keresés',
             clearButtonTitle: 'Keresési feltételek visszaállítása',
@@ -1015,15 +823,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             closeButtonText: 'Bezárás',
             closeButtonAriaLabel: 'Bezárás',
             placeholderText: 'Dokumentáció keresése',
-            placeholderTextAskAi: 'Kérdezzen az AI asszisztenstől',
-            placeholderTextAskAiStreaming: 'Válasz folyamatban...',
-            backToKeywordSearchButtonText: 'Vissza a kulcsszavas kereséshez',
-            backToKeywordSearchButtonAriaLabel:
-              'Vissza a kulcsszavas kereséshez',
-            newConversationPlaceholder: 'Tegyen fel kérdést',
-            conversationHistoryTitle: 'Beszélgetések előzményei',
-            startNewConversationText: 'Új beszélgetés',
-            viewConversationHistoryText: 'Beszélgetések előzményei',
           },
           startScreen: {
             recentSearchesTitle: 'Legutóbbi keresések',
@@ -1033,9 +832,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
               'Eltávolítás a legutóbbi keresésekből',
             favoriteSearchesTitle: 'Kedvencek',
             removeFavoriteSearchButtonTitle: 'Eltávolítás a kedvencekből',
-            recentConversationsTitle: 'Legutóbbi beszélgetések',
-            removeRecentConversationButtonTitle:
-              'Eltávolítás a legutóbbi beszélgetésekből',
           },
           errorScreen: {
             titleText: 'Nincs találat',
@@ -1074,7 +870,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           buttonAriaLabel: 'Cari',
         },
         modal: {
-          // @ts-expect-error: enterKeyHint and enterKeyHintAskAi do not need to be provided per locale
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
           searchBox: {
             searchInputLabel: 'Cari',
             clearButtonTitle: 'Atur ulang kriteria pencarian',
@@ -1082,15 +878,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             closeButtonText: 'Tutup',
             closeButtonAriaLabel: 'Tutup',
             placeholderText: 'Cari dokumentasi',
-            placeholderTextAskAi: 'Tanyakan ke asisten AI',
-            placeholderTextAskAiStreaming: 'Sedang menjawab...',
-            backToKeywordSearchButtonText: 'Kembali ke pencarian kata kunci',
-            backToKeywordSearchButtonAriaLabel:
-              'Kembali ke pencarian kata kunci',
-            newConversationPlaceholder: 'Ajukan pertanyaan',
-            conversationHistoryTitle: 'Riwayat percakapan',
-            startNewConversationText: 'Percakapan baru',
-            viewConversationHistoryText: 'Riwayat percakapan',
           },
           startScreen: {
             recentSearchesTitle: 'Pencarian terbaru',
@@ -1099,9 +886,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             removeRecentSearchButtonTitle: 'Hapus dari pencarian terbaru',
             favoriteSearchesTitle: 'Favorit',
             removeFavoriteSearchButtonTitle: 'Hapus dari favorit',
-            recentConversationsTitle: 'Percakapan terbaru',
-            removeRecentConversationButtonTitle:
-              'Hapus dari percakapan terbaru',
           },
           errorScreen: {
             titleText: 'Tidak ada hasil',
@@ -1139,7 +923,7 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
           buttonAriaLabel: 'Zoeken',
         },
         modal: {
-          // @ts-expect-error: enterKeyHint and enterKeyHintAskAi do not need to be provided per locale
+          // @ts-expect-error: enterKeyHint do not need to be provided per locale
           searchBox: {
             searchInputLabel: 'Zoeken',
             clearButtonTitle: 'Zoekcriteria resetten',
@@ -1147,15 +931,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
             closeButtonText: 'Sluiten',
             closeButtonAriaLabel: 'Sluiten',
             placeholderText: 'Documentatie doorzoeken',
-            placeholderTextAskAi: 'Stel een vraag aan de AI-assistent',
-            placeholderTextAskAiStreaming: 'Antwoord wordt gegenereerd...',
-            backToKeywordSearchButtonText: 'Terug naar zoeken op trefwoord',
-            backToKeywordSearchButtonAriaLabel:
-              'Terug naar zoeken op trefwoord',
-            newConversationPlaceholder: 'Stel een vraag',
-            conversationHistoryTitle: 'Gespreksgeschiedenis',
-            startNewConversationText: 'Nieuw gesprek',
-            viewConversationHistoryText: 'Gespreksgeschiedenis',
           },
           startScreen: {
             recentSearchesTitle: 'Recente zoekopdrachten',
@@ -1165,9 +940,6 @@ export const docSearchLocaleInfo: DefaultLocaleInfo<DocSearchLocaleData> = [
               'Verwijderen uit recente zoekopdrachten',
             favoriteSearchesTitle: 'Favorieten',
             removeFavoriteSearchButtonTitle: 'Verwijderen uit favorieten',
-            recentConversationsTitle: 'Conversas recentes',
-            removeRecentConversationButtonTitle:
-              'Verwijderen uit conversas recentes',
           },
           errorScreen: {
             titleText: 'Geen resultaten gevonden',
