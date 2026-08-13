@@ -1447,8 +1447,8 @@ importers:
   plugins/search/plugin-docsearch:
     dependencies:
       '@docsearch/css':
-        specifier: ^4.6.3
-        version: 4.7.0
+        specifier: ^5.0.0
+        version: 5.0.1
       '@docsearch/js':
         specifier: ^4.6.3
         version: 4.7.0
@@ -2566,6 +2566,9 @@ packages:
 
   '@docsearch/css@4.7.0':
     resolution: {integrity: sha512-Sk5xkdRFeE7PeWjG9l4AfTwdvMfr9wHiwNNCpHXT4v4SNyNMKdHGvEILc31BgaVFGDDNbv5u/a73tofRiwbEZw==}
+
+  '@docsearch/css@5.0.1':
+    resolution: {integrity: sha512-q1HdKMkROnZIIN+/eSa2f6qtIn9VcBtXelVMScFuWTWPQwIMBt0evl/TJku0HsssMJkuT6jKzY6Yfet/RMG2Tg==}
 
   '@docsearch/js@4.7.0':
     resolution: {integrity: sha512-x5lCqu1tetgsJFkjQ6VSocbHldsRkGEgwg5N98Vx21sq/V5wcmj4u226PY9k+TEpIgQ772zlYbPLTPicWyGnpA==}
@@ -11192,6 +11195,8 @@ snapshots:
   '@docsearch/core@4.7.0': {}
 
   '@docsearch/css@4.7.0': {}
+
+  '@docsearch/css@5.0.1': {}
 
   '@docsearch/js@4.7.0': {}
 
