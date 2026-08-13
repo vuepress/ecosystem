@@ -10,7 +10,9 @@ const REVEAL_THEME_CONFIG: [name: RevealJsTheme, fonts?: string[]][] = [
   ['auto'],
   ['beige', ['lato']],
   ['black'],
+  ['black-contrast'],
   ['blood', ['ubuntu']],
+  ['dracula'],
   ['league'],
   ['moon'],
   ['night', ['montserrat', 'open-sans']],
@@ -19,6 +21,7 @@ const REVEAL_THEME_CONFIG: [name: RevealJsTheme, fonts?: string[]][] = [
   ['sky', ['open-sans', 'quicksand']],
   ['solarized', ['lato']],
   ['white'],
+  ['white-contrast'],
 ]
 
 export const prepareClientConfigFile = async (

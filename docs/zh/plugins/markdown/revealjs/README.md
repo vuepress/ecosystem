@@ -79,7 +79,10 @@ const add = (a, b) => {
 
 - `auto` (默认)
 - `black`
+- `black-contrast`
 - `white`
+- `white-contrast`
+- `dracula`
 - `league`
 - `beige`
 - `sky`

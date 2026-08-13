@@ -50,9 +50,53 @@ const add = (a, b) => {
 
 @slideend
 
+## `black-contrast`
+
+@slidestart black-contrast
+
+## Slide Title
+
+A paragraph with some text and a [link](https://mister-hope.com)
+
+---
+
+## Highlight
+
+```js [2-4|1-5]
+const add = (a, b) => {
+  if (typeof b === 'undefined') return a + 1
+
+  return a + b
+}
+```
+
+@slideend
+
 ## `white`
 
 @slidestart white
+
+## Slide Title
+
+A paragraph with some text and a [link](https://mister-hope.com)
+
+---
+
+## Highlight
+
+```js [2-4|1-5]
+const add = (a, b) => {
+  if (typeof b === 'undefined') return a + 1
+
+  return a + b
+}
+```
+
+@slideend
+
+## `white-contrast`
+
+@slidestart white-contrast
 
 ## Slide Title
 
@@ -251,6 +295,28 @@ const add = (a, b) => {
 ## `moon`
 
 @slidestart moon
+
+## Slide Title
+
+A paragraph with some text and a [link](https://mister-hope.com)
+
+---
+
+## Highlight
+
+```js [2-4|1-5]
+const add = (a, b) => {
+  if (typeof b === 'undefined') return a + 1
+
+  return a + b
+}
+```
+
+@slideend
+
+## `dracula`
+
+@slidestart dracula
 
 ## Slide Title
 

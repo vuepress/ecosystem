@@ -1,0 +1,57 @@
+/**
+ * White compact & high contrast reveal.js theme, with headers not in capitals.
+ *
+ * By Peter Kehl. Based on white.(s)css by Hakim El Hattab, http://hakim.se
+ *
+ * - Keep the source similar to black.css - for easy comparison.
+ * - $mainFontSize controls code blocks, too (although under some ratio).
+ */
+
+@use 'sass:color';
+@use 'helper/helper';
+@use 'highlight/light';
+
+$link-color: #2a76dd;
+
+@include helper.theme(
+  'white-contrast',
+  (
+    background-color: #fff,
+    main-color: #000,
+    heading-color: #000,
+    main-font: (
+      'Source Sans Pro',
+      helvetica,
+      sans-serif,
+    ),
+    heading-font: (
+      'Source Sans Pro',
+      helvetica,
+      sans-serif,
+    ),
+    heading-text-shadow: none,
+    heading-letter-spacing: normal,
+    heading-text-transform: uppercase,
+    heading-font-weight: 600,
+    link-color: $link-color,
+    link-color-hover: color.scale($link-color, $lightness: 15%),
+    selection-background-color: $link-color,
+    heading1-size: 2.5em,
+    heading2-size: 1.6em,
+    heading3-size: 1.3em,
+    heading4-size: 1em,
+    overlay-element-bg-color: (
+      0,
+      0,
+      0,
+    ),
+    overlay-element-fg-color: (
+      240,
+      240,
+      240,
+    ),
+  )
+) {
+  @include light.highlight;
+  @include helper.darkmode-text-color(#fff);
+}

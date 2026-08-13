@@ -1,0 +1,47 @@
+/**
+ * Black compact & high contrast reveal.js theme, with headers not in capitals.
+ *
+ * By Peter Kehl. Based on black.(s)css by Hakim El Hattab, http://hakim.se
+ *
+ * - Keep the source similar to black.css - for easy comparison.
+ * - $mainFontSize controls code blocks, too (although under some ratio).
+ */
+
+@use 'sass:color';
+@use 'helper/helper';
+@use 'highlight/dark';
+
+$link-color: #42affa;
+
+@include helper.theme(
+  'black-contrast',
+  (
+    background-color: #000,
+    main-color: #fff,
+    heading-color: #fff,
+    main-font: (
+      'Source Sans Pro',
+      helvetica,
+      sans-serif,
+    ),
+    heading-font: (
+      'Source Sans Pro',
+      helvetica,
+      sans-serif,
+    ),
+    heading-text-shadow: none,
+    heading-letter-spacing: normal,
+    heading-text-transform: uppercase,
+    heading-font-weight: 600,
+    link-color: $link-color,
+    link-color-hover: color.scale($link-color, $lightness: 15%),
+    selection-background-color: color.scale($link-color, $lightness: -35%),
+    heading1-size: 2.5em,
+    heading2-size: 1.6em,
+    heading3-size: 1.3em,
+    heading4-size: 1em,
+  )
+) {
+  @include dark.highlight;
+  @include helper.lightmode-text-color(#000);
+}
