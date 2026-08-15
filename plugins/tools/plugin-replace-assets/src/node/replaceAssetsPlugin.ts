@@ -37,7 +37,7 @@ export const replaceAssetsPlugin = (
       if (bundle === 'vite') {
         const replaceAssets = createVitePluginReplaceAssets()
         addViteConfig(bundlerOptions, app, {
-          plugins: [replaceAssets(rules)],
+          plugins: [replaceAssets({ rules, base: app.options.base })],
         })
       }
 
@@ -45,7 +45,7 @@ export const replaceAssetsPlugin = (
         configWebpack(bundlerOptions, app, (config) => {
           config.plugins ??= []
           const replaceAssets = createWebpackPluginReplaceAssets()
-          config.plugins.push(replaceAssets(rules))
+          config.plugins.push(replaceAssets({ rules, base: app.options.base }))
         })
       }
     },

@@ -210,7 +210,9 @@ describe('plugin-replace-assets > transformAssets', () => {
 
 <embed src="/medias/foo.pdf" />
 `
-    expect(transformAssets(source, pattern, rules)).toMatchSnapshot()
+    expect(
+      transformAssets(source, pattern, { rules, base: '/' }),
+    ).toMatchSnapshot()
   })
 
   it('should work with like css', () => {
@@ -233,7 +235,9 @@ describe('plugin-replace-assets > transformAssets', () => {
 
 }
 `
-    expect(transformAssets(source, pattern, rules)).toMatchSnapshot()
+    expect(
+      transformAssets(source, pattern, { rules, base: '/' }),
+    ).toMatchSnapshot()
   })
 
   it('should work with like js', () => {
@@ -246,7 +250,9 @@ describe('plugin-replace-assets > transformAssets', () => {
   const json_string = JSON.parse("{\\"a\\":\\"/images/foo.jpg\\"}")
 `
 
-    expect(transformAssets(source, pattern, rules)).toMatchSnapshot()
+    expect(
+      transformAssets(source, pattern, { rules, base: '/' }),
+    ).toMatchSnapshot()
   })
 
   it('should work with no match', () => {
@@ -256,6 +262,6 @@ describe('plugin-replace-assets > transformAssets', () => {
 
 const a = "images/foo.jpg"
 `
-    expect(transformAssets(source, pattern, rules)).toBe(source)
+    expect(transformAssets(source, pattern, { rules, base: '/' })).toBe(source)
   })
 })
