@@ -76,11 +76,12 @@ const ESCAPED_DOUBLE_QUOTE = String.raw`\"`
 export const transformAssets = (
   code: string,
   pattern: RegExp,
-  rules: ReplacementRule[],
+  { rules, base }: { rules: ReplacementRule[]; base: string },
 ): string => {
   const str = new MagicString(code)
   let matched: RegExpExecArray | null
   let hasMatched = false
+  const basePattern = new RegExp(`^${base}`, 'u')
 
   while ((matched = pattern.exec(code))) {
     const assetUrl =
@@ -98,7 +99,10 @@ export const transformAssets = (
 
     const start = matched.index
     const end = start + matched[0].length
-    const resolved = replacementAssetWithRules(rules, assetUrl)
+    const resolved = replacementAssetWithRules(
+      rules,
+      assetUrl.replace(basePattern, '/'),
+    )
     if (resolved) {
       hasMatched = true
       str.update(start, end, `${left}${resolved}${right}`)

@@ -9,8 +9,13 @@ import { transformAssets } from './transformAssets.js'
 import type { ReplacementRule } from './types.js'
 import { createAssetPattern } from './utils.js'
 
-const replaceAssetsFactory: UnpluginFactory<ReplacementRule[]> = (
-  rules,
+interface ReplaceAssetsFactoryOptions {
+  rules: ReplacementRule[]
+  base: string
+}
+
+const replaceAssetsFactory: UnpluginFactory<ReplaceAssetsFactoryOptions> = (
+  options,
   meta,
 ) => {
   const pattern = createAssetPattern('/[^/]')
@@ -20,16 +25,16 @@ const replaceAssetsFactory: UnpluginFactory<ReplacementRule[]> = (
     transform: {
       filter: { id: { exclude: [/\.json(?:$|\?)/u, /\.html?$/u] } },
       handler(code) {
-        return transformAssets(code, pattern, rules)
+        return transformAssets(code, pattern, options)
       },
     },
   }
 }
 
 export const createVitePluginReplaceAssets: () => (
-  options: ReplacementRule[],
+  options: ReplaceAssetsFactoryOptions,
 ) => VitePlugin | VitePlugin[] = () => createVitePlugin(replaceAssetsFactory)
 
 export const createWebpackPluginReplaceAssets: () => (
-  options: ReplacementRule[],
+  options: ReplaceAssetsFactoryOptions,
 ) => WebpackPluginInstance = () => createWebpackPlugin(replaceAssetsFactory)
