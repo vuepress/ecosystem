@@ -1021,8 +1021,8 @@ importers:
         specifier: ^1.0.2
         version: 1.0.2(markdown-it@14.3.0)
       '@mdit/plugin-plantuml':
-        specifier: ^1.0.4
-        version: 1.0.4(markdown-it@14.3.0)
+        specifier: ^2.0.0
+        version: 2.0.0(markdown-it@14.3.0)
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../../../tools/helper
@@ -3423,11 +3423,11 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-plantuml@1.0.4':
-    resolution: {integrity: sha512-0p0HQGxp4IIHiDKAOJpqCKmS30eCNnB/4oeM33XJSzWK5UjvTiSsvpGSl5cVtdn3EWjre0B9CyRaQlExe6mA2A==}
+  '@mdit/plugin-plantuml@2.0.0':
+    resolution: {integrity: sha512-9TLP55jICpCbuxG2fRlNzYfrR1TVXWjnPMul2ZDHIydRPlR1r2mxhwyn8+DRCw4BCp+em/mmPYqJPVZ7cz9DPQ==}
     engines: {node: '>=22'}
     peerDependencies:
-      markdown-it: ^14.2.0
+      markdown-it: ^15.0.0
     peerDependenciesMeta:
       markdown-it:
         optional: true
@@ -3500,6 +3500,15 @@ packages:
     engines: {node: '>=22'}
     peerDependencies:
       markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-uml@2.0.0':
+    resolution: {integrity: sha512-7xH3tMhzo4+f/4rpriGUYU5qyBvg5W6L2CNXf8iIEvdKxsrZ3z+34I+u0/yqGZjNaf8KKi7x9JQMTpguYHf9Xg==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^15.0.0
     peerDependenciesMeta:
       markdown-it:
         optional: true
@@ -4942,6 +4951,7 @@ packages:
   '@xmldom/xmldom@0.9.11':
     resolution: {integrity: sha512-tW8bcK3hsG0/uqSnNz6TK4BkcuZSezoU7DlnYssILmZDktPnSHHuDJJFM0AJv+13gz2r0iGdrj6qqKeUnxXEDg==}
     engines: {node: '>=14.6'}
+    deprecated: this version has critical issues, please update to the latest version
 
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -11968,10 +11978,10 @@ snapshots:
       '@mathjax/src': 4.1.3
       markdown-it: 14.3.0
 
-  '@mdit/plugin-plantuml@1.0.4(markdown-it@14.3.0)':
+  '@mdit/plugin-plantuml@2.0.0(markdown-it@14.3.0)':
     dependencies:
-      '@mdit/plugin-uml': 1.0.3(markdown-it@14.3.0)
-      '@types/markdown-it': 14.1.2
+      '@mdit/helper': 1.1.0(markdown-it@14.3.0)
+      '@mdit/plugin-uml': 2.0.0(markdown-it@14.3.0)
     optionalDependencies:
       markdown-it: 14.3.0
 
@@ -12025,6 +12035,12 @@ snapshots:
     dependencies:
       '@mdit/helper': 1.0.1(markdown-it@14.3.0)
       '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 14.3.0
+
+  '@mdit/plugin-uml@2.0.0(markdown-it@14.3.0)':
+    dependencies:
+      '@mdit/helper': 1.1.0(markdown-it@14.3.0)
     optionalDependencies:
       markdown-it: 14.3.0
 
