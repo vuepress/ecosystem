@@ -1240,8 +1240,8 @@ importers:
         specifier: ^1.0.1
         version: 1.1.0(markdown-it@14.3.0)
       '@mdit/plugin-demo':
-        specifier: ^1.0.3
-        version: 1.0.3(markdown-it@14.3.0)
+        specifier: ^2.0.0
+        version: 2.0.0(markdown-it@14.3.0)
       '@types/markdown-it':
         specifier: ^14.1.2
         version: 14.1.2
@@ -3301,11 +3301,11 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-demo@1.0.3':
-    resolution: {integrity: sha512-Z36QdrXfbzvMZB+/CAm7frae413rOK7olJoGcxKYp+iXzkHGuT+9gGXVlkMX9DGbo2RSFTqZONYD5E/2gG2U5g==}
+  '@mdit/plugin-demo@2.0.0':
+    resolution: {integrity: sha512-rZMh8Bk3PZk+6Ey5qJvhRYoJPzjalbpAqU2eFjaRyLy4b4caooNvnP/HM62nNxtk7/5Ct/foL9HLNsa2PVEzlg==}
     engines: {node: '>=22'}
     peerDependencies:
-      markdown-it: ^14.2.0
+      markdown-it: ^15.0.0
     peerDependenciesMeta:
       markdown-it:
         optional: true
@@ -4942,6 +4942,7 @@ packages:
   '@xmldom/xmldom@0.9.11':
     resolution: {integrity: sha512-tW8bcK3hsG0/uqSnNz6TK4BkcuZSezoU7DlnYssILmZDktPnSHHuDJJFM0AJv+13gz2r0iGdrj6qqKeUnxXEDg==}
     engines: {node: '>=14.6'}
+    deprecated: this version has critical issues, please update to the latest version
 
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -11885,9 +11886,9 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.0
 
-  '@mdit/plugin-demo@1.0.3(markdown-it@14.3.0)':
+  '@mdit/plugin-demo@2.0.0(markdown-it@14.3.0)':
     dependencies:
-      '@types/markdown-it': 14.1.2
+      '@mdit/helper': 1.1.0(markdown-it@14.3.0)
     optionalDependencies:
       markdown-it: 14.3.0
 
