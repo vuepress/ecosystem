@@ -50,7 +50,7 @@
     "@mdit/plugin-layout": "^1.0.3",
     "@mdit/plugin-mark": "^2.0.2",
     "@mdit/plugin-spoiler": "^2.0.2",
-    "@mdit/plugin-stylize": "^1.0.3",
+    "@mdit/plugin-stylize": "^2.0.0",
     "@mdit/plugin-sub": "^1.0.4",
     "@mdit/plugin-sup": "^1.0.4",
     "@types/markdown-it": "^14.1.2",
