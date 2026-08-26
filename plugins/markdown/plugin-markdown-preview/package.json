@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@mdit/helper": "^1.0.1",
-    "@mdit/plugin-demo": "^1.0.3",
+    "@mdit/plugin-demo": "^2.0.0",
     "@types/markdown-it": "^14.1.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
