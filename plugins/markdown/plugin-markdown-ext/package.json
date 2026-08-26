@@ -46,7 +46,7 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/plugin-container": "^1.0.2",
+    "@mdit/plugin-container": "^2.0.0",
     "@mdit/plugin-footnote": "^1.0.2",
     "@mdit/plugin-tasklist": "^1.0.2",
     "@types/markdown-it": "^14.1.2",
