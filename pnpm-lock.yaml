@@ -1280,8 +1280,8 @@ importers:
         specifier: ^2.0.2
         version: 2.1.0(markdown-it@14.3.0)
       '@mdit/plugin-stylize':
-        specifier: ^1.0.3
-        version: 1.0.3(markdown-it@14.3.0)
+        specifier: ^2.0.0
+        version: 2.0.0(markdown-it@14.3.0)
       '@mdit/plugin-sub':
         specifier: ^1.0.4
         version: 1.1.0(markdown-it@14.3.0)
@@ -3441,11 +3441,11 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-stylize@1.0.3':
-    resolution: {integrity: sha512-7sNiokh+lw3/tCZgJi80X7dS1iMd2oJIKQ4tkk1ge56UQIqdljCDPA+JwVT4qfmb8GlPtYMsvuiS1TGKDLu36g==}
+  '@mdit/plugin-stylize@2.0.0':
+    resolution: {integrity: sha512-H88JJQ6/gn90culI/T3E844iCPrTTzOS7O+E3faF2Es4y7xEsVBp0Bhu5b9VUa/3lnipQAbQ2cEUthc354q0vQ==}
     engines: {node: '>=22'}
     peerDependencies:
-      markdown-it: ^14.2.0
+      markdown-it: ^15.0.0
     peerDependenciesMeta:
       markdown-it:
         optional: true
@@ -4942,6 +4942,7 @@ packages:
   '@xmldom/xmldom@0.9.11':
     resolution: {integrity: sha512-tW8bcK3hsG0/uqSnNz6TK4BkcuZSezoU7DlnYssILmZDktPnSHHuDJJFM0AJv+13gz2r0iGdrj6qqKeUnxXEDg==}
     engines: {node: '>=14.6'}
+    deprecated: this version has critical issues, please update to the latest version
 
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -11982,9 +11983,9 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.0
 
-  '@mdit/plugin-stylize@1.0.3(markdown-it@14.3.0)':
+  '@mdit/plugin-stylize@2.0.0(markdown-it@14.3.0)':
     dependencies:
-      '@types/markdown-it': 14.1.2
+      '@mdit/helper': 1.1.0(markdown-it@14.3.0)
     optionalDependencies:
       markdown-it: 14.3.0
 
