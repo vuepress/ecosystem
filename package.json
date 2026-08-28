@@ -31,7 +31,7 @@
     "@types/webpack-env": "^1.18.8",
     "@vitest/coverage-istanbul": "^4.1.10",
     "cross-env": "^10.1.0",
-    "cssnano": "^8.0.5",
+    "cssnano": "^9.0.0",
     "html-minifier-terser": "^7.2.0",
     "husky": "^9.1.7",
     "lightningcss": "^1.33.0",
