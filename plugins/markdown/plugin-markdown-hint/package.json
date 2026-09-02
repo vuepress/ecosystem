@@ -49,12 +49,12 @@
   "dependencies": {
     "@mdit/plugin-alert": "^1.0.3",
     "@mdit/plugin-container": "^1.0.2",
-    "@types/markdown-it": "^14.1.2",
+    "@types/markdown-it": "^14.2.0",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:"
   },
   "devDependencies": {
-    "markdown-it": "^14.3.0"
+    "markdown-it": "^14.3.1"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

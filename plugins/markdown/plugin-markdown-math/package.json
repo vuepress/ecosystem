@@ -47,12 +47,12 @@
   "dependencies": {
     "@mdit/plugin-katex-slim": "^1.0.3",
     "@mdit/plugin-mathjax-slim": "^1.1.2",
-    "@types/markdown-it": "^14.1.2",
+    "@types/markdown-it": "^14.2.0",
     "@vuepress/helper": "workspace:*",
     "vue": "catalog:"
   },
   "devDependencies": {
-    "markdown-it": "^14.3.0"
+    "markdown-it": "^14.3.1"
   },
   "peerDependencies": {
     "@mathjax/src": "^4.1.1",

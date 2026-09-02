@@ -48,10 +48,10 @@
     "@vuepress/helper": "workspace:*",
     "chokidar": "catalog:",
     "gray-matter": "^4.0.3",
-    "js-yaml": "^5.2.3",
+    "js-yaml": "^5.4.1",
     "nanoid": "^6.0.1",
-    "p-map": "^7.0.6",
-    "picomatch": "^4.0.5"
+    "p-map": "^7.0.7",
+    "picomatch": "^4.0.7"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",

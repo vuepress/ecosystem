@@ -49,14 +49,14 @@
     "@mdit/plugin-container": "^1.0.2",
     "@mdit/plugin-footnote": "^1.0.2",
     "@mdit/plugin-tasklist": "^1.0.2",
-    "@types/markdown-it": "^14.1.2",
+    "@types/markdown-it": "^14.2.0",
     "@vuepress/helper": "workspace:*",
-    "js-yaml": "^5.2.3",
-    "markdown-it-cjk-friendly": "^2.0.3"
+    "js-yaml": "^5.4.1",
+    "markdown-it-cjk-friendly": "^3.0.0"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
-    "markdown-it": "^14.3.0"
+    "markdown-it": "^14.3.1"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

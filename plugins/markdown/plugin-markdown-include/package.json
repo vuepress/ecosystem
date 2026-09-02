@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@mdit/plugin-include": "^1.0.4",
-    "@types/markdown-it": "^14.1.2",
+    "@types/markdown-it": "^14.2.0",
     "@vuepress/helper": "workspace:*"
   },
   "peerDependencies": {

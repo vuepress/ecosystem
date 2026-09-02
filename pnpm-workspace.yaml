@@ -10,13 +10,13 @@ catalog:
   '@vuepress/bundler-webpack': 2.0.0-rc.31
   '@vueuse/core': ^14.4.0
   chokidar: ^5.0.0
-  sass: ^1.102.0
-  sass-embedded: ^1.102.0
-  sass-loader: ^17.0.0
+  sass: ^1.103.1
+  sass-embedded: ^1.103.1
+  sass-loader: ^17.0.1
   stylelint-config-standard: 40.0.0
   stylelint-config-standard-scss: 17.0.0
   stylelint-order: 8.1.1
-  vue: ^3.5.41
+  vue: ^3.5.42
   vuepress: 2.0.0-rc.31
 
 catalogMode: prefer
@@ -60,11 +60,41 @@ trustPolicy: no-downgrade
 
 trustPolicyExclude:
   - '@trickfilm400/rollup-plugin-off-main-thread@3.0.0-pre1' # workbox-build
-  - cytoscape@3.34.1 #FIXME:
   - chokidar@4.0.3 # sass@1
   - semver@6.3.1 # @babel/core@7
   - undici-types@6.21.0 # @types/node@22
   - undici@5.29.0 # @ai-sdk/react@2 , @ai-sdk/provider-utils@3
+  # - cssnano@9.0.2 # FIXME:
+  # - cssnano-preset-default@9.0.2 # FIXME:
+  # - cssnano-utils@7.0.1 # FIXME:
+  # - postcss-colormin@9.0.1 # FIXME:
+  # - postcss-convert-values@9.0.1
+  # - postcss-discard-comments@9.0.1
+  # - postcss-discard-duplicates@9.0.1
+  # - postcss-discard-empty@9.0.1
+  # - postcss-discard-overridden@9.0.1
+  # - postcss-merge-longhand@9.0.2
+  # - postcss-merge-rules@9.0.2
+  # - postcss-minify-font-values@9.0.1
+  # - postcss-minify-gradients@9.0.1
+  # - postcss-minify-params@9.0.1
+  # - postcss-minify-selectors@9.0.2
+  # - postcss-normalize-charset@9.0.1
+  # - postcss-normalize-display-values@9.0.1
+  # - postcss-normalize-positions@9.0.1
+  # - postcss-normalize-repeat-style@9.0.1
+  # - postcss-normalize-string@9.0.1
+  # - postcss-normalize-timing-functions@9.0.1
+  # - postcss-normalize-unicode@9.0.1
+  # - postcss-normalize-url@9.0.1
+  # - postcss-normalize-whitespace@9.0.1
+  # - postcss-ordered-values@9.0.1
+  # - postcss-reduce-initial@9.0.1
+  # - postcss-reduce-transforms@9.0.1
+  # - postcss-svgo@9.0.1
+  # - postcss-unique-selectors@9.0.1
+  # - stylehacks@9.0.2
+  # - cytoscape@3.34.1
 
 patchedDependencies:
   '@vuepress/bundler-webpack': patches/@vuepress__bundler-webpack.patch
