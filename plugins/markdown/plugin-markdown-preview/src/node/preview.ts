@@ -5,17 +5,17 @@ import type { PluginSimple } from 'markdown-it'
 
 export const preview: PluginSimple = (md) => {
   const demoOptions: MarkdownItDemoOptions = {
-    openRender: (tokens, index) =>
+    openRenderer: (tokens, index) =>
       `<VPPreview title="${escapeHtml(tokens[index].info)}">\n`,
-    codeRender: (tokens, index, options, _env, self) =>
+    codeRenderer: (tokens, index, options, _env, self) =>
       `\
 <template #code>
 ${self.rules.fence!(tokens, index, options, _env, self)}
 </template>
 `,
-    contentOpenRender: () => `<template #content>\n`,
-    contentCloseRender: () => `</template>\n`,
-    closeRender: () => '</VPPreview>\n',
+    contentOpenRenderer: () => `<template #content>\n`,
+    contentCloseRenderer: () => `</template>\n`,
+    closeRenderer: () => '</VPPreview>\n',
   }
 
   md.use(demo, {

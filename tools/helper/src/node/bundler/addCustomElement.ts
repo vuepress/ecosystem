@@ -38,6 +38,7 @@ export const addCustomElement = (
   if (bundlerName === 'vite') {
     const viteBundlerConfig = bundlerOptions as ViteBundlerOptions
 
+    // oxlint-disable-next-line no-multi-assign
     const { isCustomElement } = (((viteBundlerConfig.vuePluginOptions ??=
       {}).template ??= {}).compilerOptions ??= {})
 
@@ -63,6 +64,7 @@ export const addCustomElement = (
   else if (bundlerName === 'webpack') {
     const webpackBundlerConfig = bundlerOptions as WebpackBundlerOptions
 
+    // oxlint-disable-next-line no-multi-assign
     const { isCustomElement } = ((webpackBundlerConfig.vue ??=
       {}).compilerOptions ??= {})
 

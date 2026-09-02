@@ -1,4 +1,4 @@
-import MagicString from 'magic-string'
+import { MagicString } from 'magic-string'
 
 import type { ReplacementRule } from './types.js'
 import { normalizeUrl } from './utils.js'

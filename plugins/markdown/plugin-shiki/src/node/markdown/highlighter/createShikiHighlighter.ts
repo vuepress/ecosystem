@@ -47,7 +47,7 @@ export const createShikiHighlighter = async (
   {
     langs = [],
     langAlias = {},
-    defaultLang: _,
+    defaultLang: _defaultLang,
     shikiSetup,
     ...options
   }: ShikiPluginOptions = {},

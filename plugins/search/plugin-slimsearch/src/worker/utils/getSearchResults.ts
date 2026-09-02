@@ -73,6 +73,7 @@ export const getSearchResults = (
         terms.slice(index + 1).every((term) => !term.includes(item)),
       )
 
+    // oxlint-disable-next-line no-multi-assign
     const { contents } = (resultMap[pageId] ??= {
       title: '',
       contents: [],

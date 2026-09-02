@@ -52,11 +52,11 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/plugin-figure": "^1.1.1",
-    "@mdit/plugin-img-lazyload": "^1.0.2",
-    "@mdit/plugin-img-mark": "^1.0.3",
-    "@mdit/plugin-img-size": "^1.0.3",
-    "@types/markdown-it": "^14.1.2",
+    "@mdit/plugin-figure": "^1.2.0",
+    "@mdit/plugin-img-lazyload": "^1.1.0",
+    "@mdit/plugin-img-mark": "^1.1.0",
+    "@mdit/plugin-img-size": "^1.1.0",
+    "@types/markdown-it": "^14.2.0",
     "@vuepress/helper": "workspace:*"
   },
   "peerDependencies": {

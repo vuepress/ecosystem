@@ -11,7 +11,7 @@ import type { PluginSimple } from 'markdown-it'
 export const vPre: PluginSimple = (md) => {
   container(md, {
     name: 'v-pre',
-    openRender: () => `<div v-pre>\n`,
-    closeRender: () => '</div>\n',
+    openRenderer: () => `<div v-pre>\n`,
+    closeRenderer: () => '</div>\n',
   })
 }

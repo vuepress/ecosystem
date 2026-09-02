@@ -56,15 +56,15 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/plugin-container": "^1.0.2",
-    "@mdit/plugin-plantuml": "^1.0.4",
+    "@mdit/plugin-container": "^2.0.0",
+    "@mdit/plugin-plantuml": "^2.0.0",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vue": "catalog:"
   },
   "devDependencies": {
-    "@types/markdown-it": "^14.1.2",
-    "markdown-it": "^14.3.0",
+    "@types/markdown-it": "^14.2.0",
+    "markdown-it": "^14.3.1",
     "markmap-common": "^0.18.9"
   },
   "peerDependencies": {
