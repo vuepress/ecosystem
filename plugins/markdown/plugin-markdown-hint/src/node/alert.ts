@@ -25,9 +25,9 @@ export const alert: PluginWithOptions<MarkdownItAlertOptions> = (
 ) => {
   md.use<_MarkdownItAlertOptions>(_alert, {
     alertNames: ['important', 'note', 'tip', 'warning', 'caution', 'info'],
-    openRender: (tokens, index) =>
+    openRenderer: (tokens, index) =>
       `<div class="hint-container ${tokens[index].markup}">\n`,
-    titleRender: (tokens, index, _options, env: MarkdownEnv) => {
+    titleRenderer: (tokens, index, _options, env: MarkdownEnv) => {
       const type = tokens[index].markup
       const relativePath = ensureLeadingSlash(env.filePathRelative ?? '')
       const localePath = resolveLocalePath(options, relativePath)
@@ -39,7 +39,7 @@ export const alert: PluginWithOptions<MarkdownItAlertOptions> = (
       }</p>
 `
     },
-    closeRender: () => '</div>\n',
+    closeRenderer: () => '</div>\n',
     deep: true,
   })
 }

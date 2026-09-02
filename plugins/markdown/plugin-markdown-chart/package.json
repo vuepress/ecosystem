@@ -56,8 +56,8 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/plugin-container": "^1.0.2",
-    "@mdit/plugin-plantuml": "^1.0.4",
+    "@mdit/plugin-container": "^2.0.0",
+    "@mdit/plugin-plantuml": "^2.0.0",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vue": "catalog:"

@@ -15,7 +15,7 @@ export const revealJs: PluginSimple = (md) => {
     name: 'revealjs',
     open: 'slidestart',
     close: 'slideend',
-    render: (tokens, index) => {
+    renderer: (tokens, index) => {
       const token = tokens[index]
       const { content, info } = token
 

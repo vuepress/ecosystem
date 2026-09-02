@@ -48,7 +48,7 @@ export const chartjs: PluginWithOptions<ChartJSPluginOptions> = (
 
   container(md, {
     name: 'chartjs',
-    openRender: (tokens, index, _options, env) => {
+    openRenderer: (tokens, index, _options, env) => {
       const title = tokens[index].info
         .trimStart()
         // "chartjs" length
@@ -104,6 +104,7 @@ To enable the chart, you must manually add it to allowlist, see https://ecosyste
         title ? ` title="${encodeURIComponent(title)}"` : ''
       }${isJavaScript ? ' type="js"' : ''}>`
     },
-    closeRender: (tokens, index) => (tokens[index].hidden ? '' : '</ChartJS>'),
+    closeRenderer: (tokens, index) =>
+      tokens[index].hidden ? '' : '</ChartJS>',
   })
 }

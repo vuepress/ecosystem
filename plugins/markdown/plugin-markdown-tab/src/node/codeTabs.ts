@@ -14,7 +14,7 @@ export const codeTabs: PluginSimple = (md) => {
   tab(md, {
     name: 'code-tabs',
 
-    openRender: ({ active, data }, tokens, index) => {
+    openRenderer: ({ active, data }, tokens, index) => {
       // oxlint-disable-next-line typescript/no-unsafe-assignment
       const { meta } = tokens[index]
       const titles = data.map(({ title }) => md.renderInline(title))
@@ -40,11 +40,11 @@ ${titles
 `
     },
 
-    closeRender: () => `\
+    closeRenderer: () => `\
 </CodeTabs>
 `,
 
-    tabOpenRender: ({ index }, tokens, tokenIndex) => {
+    tabOpenRenderer: ({ index }, tokens, tokenIndex) => {
       let foundFence = false
 
       // Hide all elements excerpt the first fence
@@ -69,7 +69,7 @@ ${titles
 `
     },
 
-    tabCloseRender: () => `\
+    tabCloseRenderer: () => `\
 </template>
 `,
   })
