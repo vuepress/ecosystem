@@ -29,7 +29,7 @@
     "@tsdown/css": "^0.22.14",
     "@types/node": "^26.2.0",
     "@types/webpack-env": "^1.18.8",
-    "@vitest/coverage-istanbul": "^4.1.10",
+    "@vitest/coverage-istanbul": "^5.0.0",
     "cross-env": "^10.1.0",
     "cssnano": "^8.0.5",
     "html-minifier-terser": "^7.2.0",
@@ -58,7 +58,7 @@
     "uglify-js": "^3.19.3",
     "unrun": "^0.3.1",
     "vite": "^8.2.1",
-    "vitest": "^4.1.10",
+    "vitest": "^5.0.0",
     "vuepress": "catalog:"
   },
   "nano-staged": {
