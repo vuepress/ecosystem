@@ -205,6 +205,9 @@ settings:
 
 catalogs:
   default:
+    '@inquirer/prompts':
+      specifier: ^8.7.1
+      version: 8.7.1
     '@vuepress/bundler-vite':
       specifier: 2.0.0-rc.31
       version: 2.0.0-rc.31
@@ -217,9 +220,6 @@ catalogs:
     chokidar:
       specifier: ^5.0.0
       version: 5.0.0
-    sass:
-      specifier: ^1.102.0
-      version: 1.102.0
     sass-embedded:
       specifier: ^1.102.0
       version: 1.102.0
@@ -358,7 +358,7 @@ importers:
         version: 4.1.10(@opentelemetry/api@1.9.0)(@types/node@26.2.0)(@vitest/coverage-istanbul@4.1.10)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(378ecde43e290f5c3aa65c767bf710ed)
+        version: 2.0.0-rc.31(e4b620d60f4e1d02a403af43b4f132df)
 
   docs:
     dependencies:
@@ -367,10 +367,10 @@ importers:
         version: 4.1.3
       '@vuepress/bundler-vite':
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(@types/node@26.2.0)(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(jiti@2.7.0)(rollup@4.62.4)(sass-embedded@1.102.0)(sass@1.102.0)(supports-color@10.2.2)(terser@5.50.0)(typescript@6.0.3)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))(yaml@2.9.0)
+        version: 2.0.0-rc.31(@types/node@26.2.0)(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(supports-color@10.2.2)(terser@5.50.0)(typescript@6.0.3)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))(yaml@2.9.0)
       '@vuepress/bundler-webpack':
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.41)(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.4)(rollup@4.62.4)(supports-color@10.2.2)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))
+        version: 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.41)(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.4)(supports-color@10.2.2)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../tools/helper
@@ -484,16 +484,16 @@ importers:
         version: 3.5.41(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(378ecde43e290f5c3aa65c767bf710ed)
+        version: 2.0.0-rc.31(e4b620d60f4e1d02a403af43b4f132df)
 
   e2e:
     dependencies:
       '@vuepress/bundler-vite':
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(@types/node@26.2.0)(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(jiti@2.7.0)(rollup@4.62.4)(sass-embedded@1.102.0)(sass@1.102.0)(supports-color@10.2.2)(terser@5.50.0)(typescript@6.0.3)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))(yaml@2.9.0)
+        version: 2.0.0-rc.31(@types/node@26.2.0)(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(supports-color@10.2.2)(terser@5.50.0)(typescript@6.0.3)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))(yaml@2.9.0)
       '@vuepress/bundler-webpack':
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.41)(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.4)(rollup@4.62.4)(supports-color@10.2.2)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))
+        version: 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.41)(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.4)(supports-color@10.2.2)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))
       '@vuepress/plugin-auto-frontmatter':
         specifier: workspace:*
         version: link:../plugins/tools/plugin-auto-frontmatter
@@ -550,7 +550,7 @@ importers:
         version: 3.5.41(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(378ecde43e290f5c3aa65c767bf710ed)
+        version: 2.0.0-rc.31(e4b620d60f4e1d02a403af43b4f132df)
     devDependencies:
       '@playwright/test':
         specifier: ^1.62.1
@@ -806,10 +806,10 @@ importers:
     devDependencies:
       '@vuepress/bundler-vite':
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(@types/node@26.2.0)(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(jiti@2.7.0)(rollup@4.62.4)(sass-embedded@1.102.0)(sass@1.102.0)(supports-color@10.2.2)(terser@5.50.0)(typescript@6.0.3)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))(yaml@2.9.0)
+        version: 2.0.0-rc.31(@types/node@26.2.0)(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(supports-color@10.2.2)(terser@5.50.0)(typescript@6.0.3)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))(yaml@2.9.0)
       '@vuepress/bundler-webpack':
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.41)(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.4)(rollup@4.62.4)(supports-color@10.2.2)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))
+        version: 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.41)(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.4)(supports-color@10.2.2)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))
 
   plugins/development/plugin-theme-data:
     dependencies:
@@ -1740,7 +1740,7 @@ importers:
     dependencies:
       '@inquirer/prompts':
         specifier: ^8.5.2
-        version: 8.5.2(@types/node@26.2.0)
+        version: 8.7.1(@types/node@26.2.0)
       commander:
         specifier: ^15.0.0
         version: 15.0.0
@@ -1762,7 +1762,7 @@ importers:
         version: 3.5.41(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(378ecde43e290f5c3aa65c767bf710ed)
+        version: 2.0.0-rc.31(e4b620d60f4e1d02a403af43b4f132df)
 
   tools/helper:
     dependencies:
@@ -1793,10 +1793,10 @@ importers:
         version: 3.4.38
       '@vuepress/bundler-vite':
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(@types/node@26.2.0)(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(jiti@2.7.0)(rollup@4.62.4)(sass-embedded@1.102.0)(sass@1.102.0)(supports-color@10.2.2)(terser@5.50.0)(typescript@6.0.3)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))(yaml@2.9.0)
+        version: 2.0.0-rc.31(@types/node@26.2.0)(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(supports-color@10.2.2)(terser@5.50.0)(typescript@6.0.3)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))(yaml@2.9.0)
       '@vuepress/bundler-webpack':
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.41)(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.4)(rollup@4.62.4)(supports-color@10.2.2)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))
+        version: 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.41)(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.4)(supports-color@10.2.2)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))
       domhandler:
         specifier: ^6.0.1
         version: 6.0.1
@@ -2838,8 +2838,12 @@ packages:
     resolution: {integrity: sha512-3eTuUO1vH2cZm2ZKHeQxnOqlTi9EfZDGgIe3BL3I4u+rJHocr9Fz86M4fjYABPvFnQG/gGK551HqDiIcETwU6Q==}
     engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
 
-  '@inquirer/checkbox@5.2.1':
-    resolution: {integrity: sha512-b6xmA/VlTe0ZgDQHDui+Nav470u7u49nRd8/iuhOcQPO9Ch7lGuogydhi2VOmNlZ+zXcM8IcPuNSwQcdJaF/kw==}
+  '@inquirer/ansi@2.0.8':
+    resolution: {integrity: sha512-WpQM+Ti6Z40EFwwt+uL2p4UabT+W179zHp6HhLVOzfbwnVn05IPO/eXIZXGNqcT1jbQ15SujNLzQ39k4QPPxBQ==}
+    engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
+
+  '@inquirer/checkbox@5.2.4':
+    resolution: {integrity: sha512-oKT5RNeO9oKYizSyOxKb66IrKUsYVMQD2tnjllYW4wmSOe9WawfL3OE2p82JuvAyo+/nDIEem5P4Bm/ZIVYVew==}
     engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
     peerDependencies:
       '@types/node': '>=18'
@@ -2847,8 +2851,8 @@ packages:
       '@types/node':
         optional: true
 
-  '@inquirer/confirm@6.1.1':
-    resolution: {integrity: sha512-eb8DBZcz/2qHWQda4rk2JiQk5h9QV/cVHi1yjt0f69WFZMRFn0sJTye3EAP8icut8UDMjQPsaH5KbcOogefrFQ==}
+  '@inquirer/confirm@6.3.1':
+    resolution: {integrity: sha512-HvnOHal39DTenOVoRpIy8Z+n4YYfNa3Qhi/P8zFqn9/d1crpmQG0DPx34rwOeOFvotgKr9Vov/14OmKR/Iwfjw==}
     engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
     peerDependencies:
       '@types/node': '>=18'
@@ -2865,8 +2869,17 @@ packages:
       '@types/node':
         optional: true
 
-  '@inquirer/editor@5.2.2':
-    resolution: {integrity: sha512-ZRVd/oD+sYsUd5zVm0NflqEzlqfYCyHNsqkHl2oWXEUHs12tCbcSFi+wVFEvD8+LGRaMUsVrE7qeo6lSG/S1Vg==}
+  '@inquirer/core@12.0.2':
+    resolution: {integrity: sha512-9pBhkxE14uUlnHhs8lOt7qVPtS4caRY6CjADl8COejl9Mf7w8i6Uoe3DrljCqYtmYM3Iv2Q6EmPxx/oTYbvTAQ==}
+    engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
+    peerDependencies:
+      '@types/node': '>=18'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+
+  '@inquirer/editor@5.3.2':
+    resolution: {integrity: sha512-7ruKO5d/wxhGHxdCQ3eyP/aBNrPTZ+Ju7ERtnAwuIsu0RSLs6kotlTRkOxHatbD6sDaEEdwsD82pzFiT9ESIyQ==}
     engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
     peerDependencies:
       '@types/node': '>=18'
@@ -2883,8 +2896,17 @@ packages:
       '@types/node':
         optional: true
 
-  '@inquirer/external-editor@3.0.3':
-    resolution: {integrity: sha512-6thf5I8q7lZwzGLAxPaaGEREEkZ3nyePPDQ1oyobblxmEE8mqTLguScP7pDjUTAibiyb4hfXl+qjUEJ+di/aNA==}
+  '@inquirer/expand@5.1.4':
+    resolution: {integrity: sha512-12o4aYnjWouoq0fyVhYIL+hwXAaga+kntA/wrijFmVvn2heinkdvkbEXRt1Ob/9IOJ285US5tntjfI/Ukt2YkA==}
+    engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
+    peerDependencies:
+      '@types/node': '>=18'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+
+  '@inquirer/external-editor@3.0.5':
+    resolution: {integrity: sha512-f3QQJRIX5ZEneBHNUIuPjmbdzHnmRFJA8r2dkcb8q+OM5Uv5KtnuAttQumnrjcBVBM3mcTX1CkmtAkU58VRZxg==}
     engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
     peerDependencies:
       '@types/node': '>=18'
@@ -2896,6 +2918,10 @@ packages:
     resolution: {integrity: sha512-aJ8TBPOGB6f/2qziPfElISTCEd5XOYTFckA2SGjhNmiKzfK/u4ot3v0DUzGVdUnKjN10EqnnEPck36BkyfLnJw==}
     engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
 
+  '@inquirer/figures@2.0.9':
+    resolution: {integrity: sha512-EAWgUTGQ/Umgga51dE3B2PUHbufuXarDfg86uVgoSgNHNNQnyFKcOrQLWVqYMghuSyHh8+2HUH0Js9cTC1WAdg==}
+    engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
+
   '@inquirer/input@5.1.2':
     resolution: {integrity: sha512-9K/DDBSQpOyZSkt6sOVP9Vo0TR7atX2kuILsUu0x3wVcVbe97lJwIJKMLdMw25tDYuXl/qp6erT0Xs1rfmcfZg==}
     engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
@@ -2905,8 +2931,8 @@ packages:
       '@types/node':
         optional: true
 
-  '@inquirer/number@4.1.1':
-    resolution: {integrity: sha512-XF4IXAbPnGPgw0wsbC/i2tPcyfdZgDpUlhsqU0SfT4IRIGWha6Xm9VRgN5yYxJq+jnyXlfXI/nQ3ulfk0iEICA==}
+  '@inquirer/input@5.1.5':
+    resolution: {integrity: sha512-2MkYYFD1Owt1eRBwHhsLSutysRodWasA4DVpl42KJKGmzwBTXRYAIXujisrt0UW0UohUlMjNjLfMDbw4emRbfw==}
     engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
     peerDependencies:
       '@types/node': '>=18'
@@ -2914,8 +2940,8 @@ packages:
       '@types/node':
         optional: true
 
-  '@inquirer/password@5.1.1':
-    resolution: {integrity: sha512-3XBfF7DAsp5qeDsvN5Rd1HmbNokVvEQoUM0QLrRcybC9nX96w3Pbmu7qUsb3IT3J3jBvs2+mTXaKHOUsgHMLzg==}
+  '@inquirer/number@4.2.2':
+    resolution: {integrity: sha512-tjW1gMIQsFb/9Ie11i8SpuPARBdyCVfC5XOeVugWovrdm8CpjzN+A1CBX5QwCCN2mtNmpgDDCnuLCCT94cQ5zA==}
     engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
     peerDependencies:
       '@types/node': '>=18'
@@ -2923,8 +2949,8 @@ packages:
       '@types/node':
         optional: true
 
-  '@inquirer/prompts@8.5.2':
-    resolution: {integrity: sha512-IYR/3C/paEVVQYQvdDlFZVjRCJVYHHON0XXMH91KO9GSxs0TdKYWlUdvfQl2EfAHDxUaN3IBffkE/BDTh5nJ6g==}
+  '@inquirer/password@5.2.1':
+    resolution: {integrity: sha512-InA6nJxMCXPavPBiTKYHIsYiWz/mkIsk1rkI6pKp5w18gVawqrZOj7eSzSmPJa3j0pVxXm6RlrFP1BE9YeOixA==}
     engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
     peerDependencies:
       '@types/node': '>=18'
@@ -2932,8 +2958,8 @@ packages:
       '@types/node':
         optional: true
 
-  '@inquirer/rawlist@5.3.1':
-    resolution: {integrity: sha512-QqdTqQddL3qPX/PPrjobpsO25NZ4dWXgTLenrR445L2ptLEYE6Z+PD5c5CNDJNx4ugRgELAIpSIJxZaO2jJ2Og==}
+  '@inquirer/prompts@8.7.1':
+    resolution: {integrity: sha512-xJIKWyrFNUKj3R5VEub/iKodG9Sh/MbCeApZUbATJgHTw8YoAJ2gOT78HlvO6NMFiRvjm6ySM7aiAew/zVY0Sw==}
     engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
     peerDependencies:
       '@types/node': '>=18'
@@ -2941,8 +2967,17 @@ packages:
       '@types/node':
         optional: true
 
-  '@inquirer/search@4.2.1':
-    resolution: {integrity: sha512-xJj8QWKRSrfKoBIITLZK61dD3zwo0Rz11fgDImku30/Oe81zMdIdGgrLY2h6RkJ+KZ/GhNYIRMKnH/62qBTA5g==}
+  '@inquirer/rawlist@5.3.4':
+    resolution: {integrity: sha512-c4fDwOpQsjJDHjXdHJE1/xXH6w9/BAiyu3QKzH9Ww5Xm1q37mzyUNa20L7qdtM1ECi4e+oUEKjhK8hR37OMAMQ==}
+    engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
+    peerDependencies:
+      '@types/node': '>=18'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+
+  '@inquirer/search@4.3.2':
+    resolution: {integrity: sha512-YIaEhWmfkdHEWOKwhF/oJar35FFTTrAdzNbJDo9lSsRT6E/obRPx9oVm4rkTMtlcJSqGYttNtLbcHQef9Qw2yw==}
     engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
     peerDependencies:
       '@types/node': '>=18'
@@ -2959,8 +2994,26 @@ packages:
       '@types/node':
         optional: true
 
+  '@inquirer/select@5.2.4':
+    resolution: {integrity: sha512-L9ubNaJdoBsiom/AfPKq0QLHTkhhCFCtszzdVidGremrlJjPZfGlmvp+IULKIbnYjtVFWnvb4mhiEdNTZ12ugA==}
+    engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
+    peerDependencies:
+      '@types/node': '>=18'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+
   '@inquirer/type@4.0.7':
     resolution: {integrity: sha512-t28inv14nMQ1PhKpsJPY+kEs/c00qzeCOS2gTNRyTjG5d6qsVA2fItxW4hkvGZ5lvanGLdtCzVIx5dwdRpN1+g==}
+    engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
+    peerDependencies:
+      '@types/node': '>=18'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+
+  '@inquirer/type@4.1.1':
+    resolution: {integrity: sha512-yJoHYrMnxIsJZCY+0Vb66Dy3he3kL3e2wOBKhoSwWWAzZAY82emlxwgprCtp6yRixvNRNq9ztfRWQYPNr3Go7A==}
     engines: {node: '>=23.5.0 || ^22.13.0 || ^20.17.0'}
     peerDependencies:
       '@types/node': '>=18'
@@ -4942,6 +4995,7 @@ packages:
   '@xmldom/xmldom@0.9.11':
     resolution: {integrity: sha512-tW8bcK3hsG0/uqSnNz6TK4BkcuZSezoU7DlnYssILmZDktPnSHHuDJJFM0AJv+13gz2r0iGdrj6qqKeUnxXEDg==}
     engines: {node: '>=14.6'}
+    deprecated: this version has critical issues, please update to the latest version
 
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -11370,19 +11424,21 @@ snapshots:
 
   '@inquirer/ansi@2.0.7': {}
 
-  '@inquirer/checkbox@5.2.1(@types/node@26.2.0)':
+  '@inquirer/ansi@2.0.8': {}
+
+  '@inquirer/checkbox@5.2.4(@types/node@26.2.0)':
     dependencies:
-      '@inquirer/ansi': 2.0.7
-      '@inquirer/core': 11.2.1(@types/node@26.2.0)
-      '@inquirer/figures': 2.0.7
-      '@inquirer/type': 4.0.7(@types/node@26.2.0)
+      '@inquirer/ansi': 2.0.8
+      '@inquirer/core': 12.0.2(@types/node@26.2.0)
+      '@inquirer/figures': 2.0.9
+      '@inquirer/type': 4.1.1(@types/node@26.2.0)
     optionalDependencies:
       '@types/node': 26.2.0
 
-  '@inquirer/confirm@6.1.1(@types/node@26.2.0)':
+  '@inquirer/confirm@6.3.1(@types/node@26.2.0)':
     dependencies:
-      '@inquirer/core': 11.2.1(@types/node@26.2.0)
-      '@inquirer/type': 4.0.7(@types/node@26.2.0)
+      '@inquirer/core': 12.0.2(@types/node@26.2.0)
+      '@inquirer/type': 4.1.1(@types/node@26.2.0)
     optionalDependencies:
       '@types/node': 26.2.0
 
@@ -11398,11 +11454,23 @@ snapshots:
     optionalDependencies:
       '@types/node': 26.2.0
 
-  '@inquirer/editor@5.2.2(@types/node@26.2.0)':
+  '@inquirer/core@12.0.2(@types/node@26.2.0)':
     dependencies:
-      '@inquirer/core': 11.2.1(@types/node@26.2.0)
-      '@inquirer/external-editor': 3.0.3(@types/node@26.2.0)
-      '@inquirer/type': 4.0.7(@types/node@26.2.0)
+      '@inquirer/ansi': 2.0.8
+      '@inquirer/figures': 2.0.9
+      '@inquirer/type': 4.1.1(@types/node@26.2.0)
+      cli-width: 4.1.0
+      fast-wrap-ansi: 0.2.2
+      mute-stream: 3.0.0
+      signal-exit: 4.1.0
+    optionalDependencies:
+      '@types/node': 26.2.0
+
+  '@inquirer/editor@5.3.2(@types/node@26.2.0)':
+    dependencies:
+      '@inquirer/core': 12.0.2(@types/node@26.2.0)
+      '@inquirer/external-editor': 3.0.5(@types/node@26.2.0)
+      '@inquirer/type': 4.1.1(@types/node@26.2.0)
     optionalDependencies:
       '@types/node': 26.2.0
 
@@ -11413,7 +11481,14 @@ snapshots:
     optionalDependencies:
       '@types/node': 26.2.0
 
-  '@inquirer/external-editor@3.0.3(@types/node@26.2.0)':
+  '@inquirer/expand@5.1.4(@types/node@26.2.0)':
+    dependencies:
+      '@inquirer/core': 12.0.2(@types/node@26.2.0)
+      '@inquirer/type': 4.1.1(@types/node@26.2.0)
+    optionalDependencies:
+      '@types/node': 26.2.0
+
+  '@inquirer/external-editor@3.0.5(@types/node@26.2.0)':
     dependencies:
       chardet: 2.2.0
       iconv-lite: 0.7.3
@@ -11422,6 +11497,8 @@ snapshots:
 
   '@inquirer/figures@2.0.7': {}
 
+  '@inquirer/figures@2.0.9': {}
+
   '@inquirer/input@5.1.2(@types/node@26.2.0)':
     dependencies:
       '@inquirer/core': 11.2.1(@types/node@26.2.0)
@@ -11429,48 +11506,55 @@ snapshots:
     optionalDependencies:
       '@types/node': 26.2.0
 
-  '@inquirer/number@4.1.1(@types/node@26.2.0)':
+  '@inquirer/input@5.1.5(@types/node@26.2.0)':
     dependencies:
-      '@inquirer/core': 11.2.1(@types/node@26.2.0)
-      '@inquirer/type': 4.0.7(@types/node@26.2.0)
+      '@inquirer/core': 12.0.2(@types/node@26.2.0)
+      '@inquirer/type': 4.1.1(@types/node@26.2.0)
     optionalDependencies:
       '@types/node': 26.2.0
 
-  '@inquirer/password@5.1.1(@types/node@26.2.0)':
+  '@inquirer/number@4.2.2(@types/node@26.2.0)':
     dependencies:
-      '@inquirer/ansi': 2.0.7
-      '@inquirer/core': 11.2.1(@types/node@26.2.0)
-      '@inquirer/type': 4.0.7(@types/node@26.2.0)
+      '@inquirer/core': 12.0.2(@types/node@26.2.0)
+      '@inquirer/type': 4.1.1(@types/node@26.2.0)
     optionalDependencies:
       '@types/node': 26.2.0
 
-  '@inquirer/prompts@8.5.2(@types/node@26.2.0)':
+  '@inquirer/password@5.2.1(@types/node@26.2.0)':
     dependencies:
-      '@inquirer/checkbox': 5.2.1(@types/node@26.2.0)
-      '@inquirer/confirm': 6.1.1(@types/node@26.2.0)
-      '@inquirer/editor': 5.2.2(@types/node@26.2.0)
-      '@inquirer/expand': 5.1.1(@types/node@26.2.0)
-      '@inquirer/input': 5.1.2(@types/node@26.2.0)
-      '@inquirer/number': 4.1.1(@types/node@26.2.0)
-      '@inquirer/password': 5.1.1(@types/node@26.2.0)
-      '@inquirer/rawlist': 5.3.1(@types/node@26.2.0)
-      '@inquirer/search': 4.2.1(@types/node@26.2.0)
-      '@inquirer/select': 5.2.1(@types/node@26.2.0)
+      '@inquirer/ansi': 2.0.8
+      '@inquirer/core': 12.0.2(@types/node@26.2.0)
+      '@inquirer/type': 4.1.1(@types/node@26.2.0)
     optionalDependencies:
       '@types/node': 26.2.0
 
-  '@inquirer/rawlist@5.3.1(@types/node@26.2.0)':
+  '@inquirer/prompts@8.7.1(@types/node@26.2.0)':
     dependencies:
-      '@inquirer/core': 11.2.1(@types/node@26.2.0)
-      '@inquirer/type': 4.0.7(@types/node@26.2.0)
+      '@inquirer/checkbox': 5.2.4(@types/node@26.2.0)
+      '@inquirer/confirm': 6.3.1(@types/node@26.2.0)
+      '@inquirer/editor': 5.3.2(@types/node@26.2.0)
+      '@inquirer/expand': 5.1.4(@types/node@26.2.0)
+      '@inquirer/input': 5.1.5(@types/node@26.2.0)
+      '@inquirer/number': 4.2.2(@types/node@26.2.0)
+      '@inquirer/password': 5.2.1(@types/node@26.2.0)
+      '@inquirer/rawlist': 5.3.4(@types/node@26.2.0)
+      '@inquirer/search': 4.3.2(@types/node@26.2.0)
+      '@inquirer/select': 5.2.4(@types/node@26.2.0)
     optionalDependencies:
       '@types/node': 26.2.0
 
-  '@inquirer/search@4.2.1(@types/node@26.2.0)':
+  '@inquirer/rawlist@5.3.4(@types/node@26.2.0)':
     dependencies:
-      '@inquirer/core': 11.2.1(@types/node@26.2.0)
-      '@inquirer/figures': 2.0.7
-      '@inquirer/type': 4.0.7(@types/node@26.2.0)
+      '@inquirer/core': 12.0.2(@types/node@26.2.0)
+      '@inquirer/type': 4.1.1(@types/node@26.2.0)
+    optionalDependencies:
+      '@types/node': 26.2.0
+
+  '@inquirer/search@4.3.2(@types/node@26.2.0)':
+    dependencies:
+      '@inquirer/core': 12.0.2(@types/node@26.2.0)
+      '@inquirer/figures': 2.0.9
+      '@inquirer/type': 4.1.1(@types/node@26.2.0)
     optionalDependencies:
       '@types/node': 26.2.0
 
@@ -11483,7 +11567,20 @@ snapshots:
     optionalDependencies:
       '@types/node': 26.2.0
 
+  '@inquirer/select@5.2.4(@types/node@26.2.0)':
+    dependencies:
+      '@inquirer/ansi': 2.0.8
+      '@inquirer/core': 12.0.2(@types/node@26.2.0)
+      '@inquirer/figures': 2.0.9
+      '@inquirer/type': 4.1.1(@types/node@26.2.0)
+    optionalDependencies:
+      '@types/node': 26.2.0
+
   '@inquirer/type@4.0.7(@types/node@26.2.0)':
+    optionalDependencies:
+      '@types/node': 26.2.0
+
+  '@inquirer/type@4.1.1(@types/node@26.2.0)':
     optionalDependencies:
       '@types/node': 26.2.0
 
@@ -13350,6 +13447,48 @@ snapshots:
       - unloader
       - webpack
       - yaml
+    optional: true
+
+  '@vuepress/bundler-vite@2.0.0-rc.31(@types/node@26.2.0)(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(supports-color@10.2.2)(terser@5.50.0)(typescript@6.0.3)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))(yaml@2.9.0)':
+    dependencies:
+      '@vitejs/plugin-vue': 6.0.8(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(vue@3.5.41(typescript@6.0.3))
+      '@vuepress/bundlerutils': 2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      '@vuepress/client': 2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      '@vuepress/core': 2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      '@vuepress/shared': 2.0.0-rc.31
+      '@vuepress/utils': 2.0.0-rc.31(supports-color@10.2.2)
+      autoprefixer: 10.5.4(postcss@8.5.26)
+      connect-history-api-fallback: 2.0.0
+      postcss: 8.5.26
+      postcss-load-config: 6.0.1(jiti@2.7.0)(postcss@8.5.26)(yaml@2.9.0)
+      rolldown: 1.2.4
+      vite: 8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0)
+      vue: 3.5.41(typescript@6.0.3)
+      vue-router: 5.2.0(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(rollup@4.62.4)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(vue@3.5.41(typescript@6.0.3))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+    transitivePeerDependencies:
+      - '@farmfe/core'
+      - '@pinia/colada'
+      - '@rspack/core'
+      - '@types/node'
+      - '@vitejs/devtools'
+      - '@vue/compiler-sfc'
+      - bun-types-no-globals
+      - esbuild
+      - jiti
+      - less
+      - pinia
+      - rollup
+      - sass
+      - sass-embedded
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - tsx
+      - typescript
+      - unloader
+      - webpack
+      - yaml
 
   '@vuepress/bundler-webpack@2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.41)(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.4)(rollup@4.62.4)(supports-color@10.2.2)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))':
     dependencies:
@@ -13358,6 +13497,64 @@ snapshots:
       '@vuepress/bundlerutils': 2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(rollup@4.62.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
       '@vuepress/client': 2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(rollup@4.62.4)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
       '@vuepress/core': 2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(rollup@4.62.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      '@vuepress/shared': 2.0.0-rc.31
+      '@vuepress/utils': 2.0.0-rc.31(supports-color@10.2.2)
+      autoprefixer: 10.5.4(postcss@8.5.26)
+      copy-webpack-plugin: 14.0.0(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      css-loader: 7.1.4(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      css-minimizer-webpack-plugin: 8.0.0(clean-css@5.3.3)(csso@5.0.5)(esbuild@0.28.2)(lightningcss@1.33.0)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      esbuild-loader: 4.5.0(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      express: 4.22.2(supports-color@10.2.2)
+      html-webpack-plugin: 5.6.8(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      lightningcss: 1.33.0
+      mini-css-extract-plugin: 2.10.2(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      postcss: 8.5.26
+      postcss-loader: 8.2.1(postcss@8.5.26)(typescript@6.0.3)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      style-loader: 4.0.0(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      vue: 3.5.41(typescript@6.0.3)
+      vue-loader: 17.4.2(@vue/compiler-sfc@3.5.41)(vue@3.5.41(typescript@6.0.3))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      vue-router: 5.2.0(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(rollup@4.62.4)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(vue@3.5.41(typescript@6.0.3))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      webpack: 5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3)
+      webpack-dev-server: 5.2.6(debug@4.4.3(supports-color@10.2.2))(supports-color@10.2.2)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      webpack-merge: 6.0.1
+      webpack-v5-chain: 2.0.0
+    transitivePeerDependencies:
+      - '@farmfe/core'
+      - '@minify-html/node'
+      - '@parcel/css'
+      - '@pinia/colada'
+      - '@rspack/core'
+      - '@swc/core'
+      - '@swc/css'
+      - '@swc/html'
+      - '@vue/compiler-sfc'
+      - bufferutil
+      - bun-types-no-globals
+      - clean-css
+      - cssnano
+      - csso
+      - debug
+      - esbuild
+      - html-minifier-terser
+      - pinia
+      - rolldown
+      - rollup
+      - supports-color
+      - typescript
+      - uglify-js
+      - unloader
+      - utf-8-validate
+      - vite
+      - webpack-cli
+    optional: true
+
+  '@vuepress/bundler-webpack@2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.41)(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.4)(supports-color@10.2.2)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))':
+    dependencies:
+      '@types/express': 4.17.25
+      '@types/webpack-env': 1.18.8
+      '@vuepress/bundlerutils': 2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      '@vuepress/client': 2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      '@vuepress/core': 2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
       '@vuepress/shared': 2.0.0-rc.31
       '@vuepress/utils': 2.0.0-rc.31(supports-color@10.2.2)
       autoprefixer: 10.5.4(postcss@8.5.26)
@@ -13432,10 +13629,60 @@ snapshots:
       - unloader
       - vite
       - webpack
+    optional: true
+
+  '@vuepress/bundlerutils@2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))':
+    dependencies:
+      '@vuepress/client': 2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      '@vuepress/core': 2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      '@vuepress/markdown': 2.0.0-rc.31(supports-color@10.2.2)
+      '@vuepress/shared': 2.0.0-rc.31
+      '@vuepress/utils': 2.0.0-rc.31(supports-color@10.2.2)
+      vue: 3.5.41(typescript@6.0.3)
+      vue-router: 5.2.0(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(rollup@4.62.4)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(vue@3.5.41(typescript@6.0.3))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+    transitivePeerDependencies:
+      - '@farmfe/core'
+      - '@pinia/colada'
+      - '@rspack/core'
+      - '@vue/compiler-sfc'
+      - bun-types-no-globals
+      - esbuild
+      - pinia
+      - rolldown
+      - rollup
+      - supports-color
+      - typescript
+      - unloader
+      - vite
+      - webpack
 
   '@vuepress/cli@2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rollup@4.62.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))':
     dependencies:
       '@vuepress/core': 2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(rollup@4.62.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      '@vuepress/shared': 2.0.0-rc.31
+      '@vuepress/utils': 2.0.0-rc.31(supports-color@10.2.2)
+      cac: 7.0.0
+      chokidar: 5.0.0
+      envinfo: 7.21.0
+      rolldown: 1.2.4
+    transitivePeerDependencies:
+      - '@farmfe/core'
+      - '@pinia/colada'
+      - '@rspack/core'
+      - '@vue/compiler-sfc'
+      - bun-types-no-globals
+      - esbuild
+      - pinia
+      - rollup
+      - supports-color
+      - typescript
+      - unloader
+      - vite
+      - webpack
+
+  '@vuepress/cli@2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))':
+    dependencies:
+      '@vuepress/core': 2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
       '@vuepress/shared': 2.0.0-rc.31
       '@vuepress/utils': 2.0.0-rc.31(supports-color@10.2.2)
       cac: 7.0.0
@@ -13479,9 +13726,54 @@ snapshots:
       - vite
       - webpack
 
+  '@vuepress/client@2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))':
+    dependencies:
+      '@vue/devtools-api': 8.2.1
+      '@vue/devtools-kit': 8.2.1
+      '@vuepress/shared': 2.0.0-rc.31
+      vue: 3.5.41(typescript@6.0.3)
+      vue-router: 5.2.0(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(rollup@4.62.4)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(vue@3.5.41(typescript@6.0.3))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+    transitivePeerDependencies:
+      - '@farmfe/core'
+      - '@pinia/colada'
+      - '@rspack/core'
+      - '@vue/compiler-sfc'
+      - bun-types-no-globals
+      - esbuild
+      - pinia
+      - rolldown
+      - rollup
+      - typescript
+      - unloader
+      - vite
+      - webpack
+
   '@vuepress/core@2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(rollup@4.62.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))':
     dependencies:
       '@vuepress/client': 2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(rollup@4.62.4)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      '@vuepress/markdown': 2.0.0-rc.31(supports-color@10.2.2)
+      '@vuepress/shared': 2.0.0-rc.31
+      '@vuepress/utils': 2.0.0-rc.31(supports-color@10.2.2)
+      vue: 3.5.41(typescript@6.0.3)
+    transitivePeerDependencies:
+      - '@farmfe/core'
+      - '@pinia/colada'
+      - '@rspack/core'
+      - '@vue/compiler-sfc'
+      - bun-types-no-globals
+      - esbuild
+      - pinia
+      - rolldown
+      - rollup
+      - supports-color
+      - typescript
+      - unloader
+      - vite
+      - webpack
+
+  '@vuepress/core@2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))':
+    dependencies:
+      '@vuepress/client': 2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
       '@vuepress/markdown': 2.0.0-rc.31(supports-color@10.2.2)
       '@vuepress/shared': 2.0.0-rc.31
       '@vuepress/utils': 2.0.0-rc.31(supports-color@10.2.2)
@@ -19068,6 +19360,34 @@ snapshots:
     optionalDependencies:
       '@vuepress/bundler-vite': 2.0.0-rc.31(@types/node@26.2.0)(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(jiti@2.7.0)(rollup@4.62.4)(sass-embedded@1.102.0)(sass@1.102.0)(supports-color@10.2.2)(terser@5.50.0)(typescript@6.0.3)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))(yaml@2.9.0)
       '@vuepress/bundler-webpack': 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.41)(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.4)(rollup@4.62.4)(supports-color@10.2.2)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))
+    transitivePeerDependencies:
+      - '@farmfe/core'
+      - '@pinia/colada'
+      - '@rspack/core'
+      - '@vue/compiler-sfc'
+      - bun-types-no-globals
+      - esbuild
+      - pinia
+      - rolldown
+      - rollup
+      - supports-color
+      - typescript
+      - unloader
+      - vite
+      - webpack
+
+  vuepress@2.0.0-rc.31(e4b620d60f4e1d02a403af43b4f132df):
+    dependencies:
+      '@vuepress/cli': 2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      '@vuepress/client': 2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      '@vuepress/core': 2.0.0-rc.31(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(rolldown@1.2.4)(supports-color@10.2.2)(typescript@6.0.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))
+      '@vuepress/markdown': 2.0.0-rc.31(supports-color@10.2.2)
+      '@vuepress/shared': 2.0.0-rc.31
+      '@vuepress/utils': 2.0.0-rc.31(supports-color@10.2.2)
+      vue: 3.5.41(typescript@6.0.3)
+    optionalDependencies:
+      '@vuepress/bundler-vite': 2.0.0-rc.31(@types/node@26.2.0)(@vue/compiler-sfc@3.5.41)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(supports-color@10.2.2)(terser@5.50.0)(typescript@6.0.3)(webpack@5.109.2(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.26)(uglify-js@3.19.3))(yaml@2.9.0)
+      '@vuepress/bundler-webpack': 2.0.0-rc.31(patch_hash=04b94fa0b74e570a10fc5281985904559acafc30087e7d0c1a55cf60d7fed589)(@vue/compiler-sfc@3.5.41)(clean-css@5.3.3)(cssnano@8.0.5(postcss@8.5.26))(csso@5.0.5)(debug@4.4.3(supports-color@10.2.2))(esbuild@0.28.2)(html-minifier-terser@7.2.0)(rolldown@1.2.4)(supports-color@10.2.2)(typescript@6.0.3)(uglify-js@3.19.3)(vite@8.2.1(@types/node@26.2.0)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.102.0)(sass@1.102.0)(terser@5.50.0)(yaml@2.9.0))
     transitivePeerDependencies:
       - '@farmfe/core'
       - '@pinia/colada'
