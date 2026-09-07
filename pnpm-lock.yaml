@@ -1140,7 +1140,7 @@ importers:
     dependencies:
       '@mdit/helper':
         specifier: ^1.1.0
-        version: 1.1.0(markdown-it@14.3.1)
+        version: 1.1.1(markdown-it@14.3.1)
       '@mdit/plugin-demo':
         specifier: ^2.0.0
         version: 2.0.0(markdown-it@14.3.1)
@@ -3184,6 +3184,15 @@ packages:
     engines: {node: '>=22'}
     peerDependencies:
       markdown-it: ^15.0.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/helper@1.1.1':
+    resolution: {integrity: sha512-Rrl14ZjFerzfAqCt0zxAWbPgRpsumgm9iBLrCVE05WS8dM6v/LnF1ppPFVnRz1F7fAaxn0kTFOlYwzcY+kRsHQ==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^15.0.1
     peerDependenciesMeta:
       markdown-it:
         optional: true
@@ -11840,6 +11849,10 @@ snapshots:
   '@mdit-vue/types@3.0.2': {}
 
   '@mdit/helper@1.1.0(markdown-it@14.3.1)':
+    optionalDependencies:
+      markdown-it: 14.3.1
+
+  '@mdit/helper@1.1.1(markdown-it@14.3.1)':
     optionalDependencies:
       markdown-it: 14.3.1
 
