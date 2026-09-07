@@ -46,13 +46,13 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@types/markdown-it": "^14.1.2",
+    "@types/markdown-it": "^14.2.0",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vue": "catalog:"
   },
   "devDependencies": {
-    "markdown-it": "^14.3.0"
+    "markdown-it": "^14.3.1"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

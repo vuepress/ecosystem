@@ -14,7 +14,7 @@ export const tabs: PluginSimple = (md) => {
   tab(md, {
     name: 'tabs',
 
-    openRender: ({ active, data }, tokens, index) => {
+    openRenderer: ({ active, data }, tokens, index) => {
       // oxlint-disable-next-line typescript/no-unsafe-assignment
       const { meta } = tokens[index]
       const titles = data.map(({ title }) => md.renderInline(title))
@@ -41,16 +41,16 @@ ${titles
 `
     },
 
-    closeRender: () => `\
+    closeRenderer: () => `\
 </Tabs>
 `,
 
-    tabOpenRender: ({ index }) =>
+    tabOpenRenderer: ({ index }) =>
       `\
 <template #tab${index}="{ value, isActive }">
 `,
 
-    tabCloseRender: () => `\
+    tabCloseRenderer: () => `\
 </template>
 `,
   })

@@ -36,7 +36,9 @@ import { resolveTypeScriptPaths } from './resolveTypeScriptPaths.js'
 export const createTwoslashTransformer = async (
   options: ShikiTwoslashOptions = {},
 ): Promise<ShikiTransformer> => {
+  // oxlint-disable-next-line no-multi-assign
   const explicitTrigger = (options.explicitTrigger ??= true)
+  // oxlint-disable-next-line no-multi-assign
   const _twoslashOptions = (options.twoslashOptions ??= {})
 
   const { compilerOptions = {} } = _twoslashOptions

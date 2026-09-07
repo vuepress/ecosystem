@@ -74,7 +74,7 @@ export const echarts: PluginWithOptions<EChartsPluginOptions> = (
   container(md, {
     name: 'echarts',
 
-    openRender: (tokens, index, _options, env) => {
+    openRenderer: (tokens, index, _options, env) => {
       const title = tokens[index].info
         .trimStart()
         // 'echarts' length
@@ -130,6 +130,7 @@ To enable the chart, you must manually add it to allowlist, see https://ecosyste
         title ? ` title="${encodeURIComponent(title)}"` : ''
       }${isJavaScript ? ' type="js"' : ''}>`
     },
-    closeRender: (tokens, index) => (tokens[index].hidden ? '' : '</ECharts>'),
+    closeRenderer: (tokens, index) =>
+      tokens[index].hidden ? '' : '</ECharts>',
   })
 }

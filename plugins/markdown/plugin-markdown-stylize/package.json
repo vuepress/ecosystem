@@ -45,19 +45,19 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/plugin-align": "^1.0.2",
-    "@mdit/plugin-attrs": "^1.2.0",
-    "@mdit/plugin-layout": "^1.0.3",
-    "@mdit/plugin-mark": "^2.0.2",
-    "@mdit/plugin-spoiler": "^2.0.2",
-    "@mdit/plugin-stylize": "^1.0.3",
-    "@mdit/plugin-sub": "^1.0.4",
-    "@mdit/plugin-sup": "^1.0.4",
-    "@types/markdown-it": "^14.1.2",
+    "@mdit/plugin-align": "^1.1.0",
+    "@mdit/plugin-attrs": "^1.3.0",
+    "@mdit/plugin-layout": "^1.1.0",
+    "@mdit/plugin-mark": "^2.1.0",
+    "@mdit/plugin-spoiler": "^2.1.0",
+    "@mdit/plugin-stylize": "^2.0.0",
+    "@mdit/plugin-sub": "^1.1.0",
+    "@mdit/plugin-sup": "^1.1.0",
+    "@types/markdown-it": "^14.2.0",
     "@vuepress/helper": "workspace:*"
   },
   "devDependencies": {
-    "markdown-it": "^14.3.0"
+    "markdown-it": "^14.3.1"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

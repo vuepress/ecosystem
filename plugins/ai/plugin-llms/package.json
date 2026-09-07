@@ -53,9 +53,9 @@
   },
   "devDependencies": {
     "@types/byte-size": "^8.1.2",
-    "@types/markdown-it": "^14.1.2",
+    "@types/markdown-it": "^14.2.0",
     "@vuepress/plugin-markdown-include": "workspace:*",
-    "markdown-it": "^14.3.0",
+    "markdown-it": "^14.3.1",
     "unified": "^11.0.5"
   },
   "peerDependencies": {

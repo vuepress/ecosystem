@@ -49,14 +49,14 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/plugin-tab": "^1.0.4",
-    "@types/markdown-it": "^14.1.2",
+    "@mdit/plugin-tab": "^2.0.0",
+    "@types/markdown-it": "^14.2.0",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vue": "catalog:"
   },
   "devDependencies": {
-    "markdown-it": "^14.3.0"
+    "markdown-it": "^14.3.1"
   },
   "peerDependencies": {
     "vuepress": "catalog:"
