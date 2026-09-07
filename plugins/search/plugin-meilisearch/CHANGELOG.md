@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.134](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.133...v2.0.0-rc.134) (2026-09-07)
+
+### Bug Fixes
+
+- **deps:** update dependency meilisearch to ^0.60.0 ([#750](https://github.com/vuepress/ecosystem/issues/750)) ([b2d092e](https://github.com/vuepress/ecosystem/commit/b2d092e2a8b1827d427a779feb68b6fe34cb10cd))
+
 # [2.0.0-rc.133](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.132...v2.0.0-rc.133) (2026-07-22)
 
 ### Features

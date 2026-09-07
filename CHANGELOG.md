@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.134](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.133...v2.0.0-rc.134) (2026-09-07)
+
+### Bug Fixes
+
+- **deps:** update dependency katex to v0.18.1 ([#749](https://github.com/vuepress/ecosystem/issues/749)) ([7172d04](https://github.com/vuepress/ecosystem/commit/7172d0471ca8d55d588bf36d90ba00bb6561ac43))
+- **deps:** update dependency magic-string to v1 ([#755](https://github.com/vuepress/ecosystem/issues/755)) ([0c2165c](https://github.com/vuepress/ecosystem/commit/0c2165c0e218cf5c3b00a1f670add3cf6e0e2e9a))
+- **deps:** update dependency meilisearch to ^0.60.0 ([#750](https://github.com/vuepress/ecosystem/issues/750)) ([b2d092e](https://github.com/vuepress/ecosystem/commit/b2d092e2a8b1827d427a779feb68b6fe34cb10cd))
+- **deps:** update dependency nanoid to v6 ([#756](https://github.com/vuepress/ecosystem/issues/756)) ([72489c5](https://github.com/vuepress/ecosystem/commit/72489c5303c6aa2ac30667c2fdd2f2cedafd03fe))
+- **deps:** update dependency slimsearch to v3 ([#757](https://github.com/vuepress/ecosystem/issues/757)) ([c5c0839](https://github.com/vuepress/ecosystem/commit/c5c083962150f96e90973b8ca94db8c93ede4d09))
+
+### Features
+
+- bump to vp2rc31 ([#787](https://github.com/vuepress/ecosystem/issues/787)) ([306f94b](https://github.com/vuepress/ecosystem/commit/306f94b14c5666f537a582dfa4018c6d2ce2e320))
+- **plugin-docsearch:** support docsearch v5 ([#777](https://github.com/vuepress/ecosystem/issues/777)) ([8eb13d0](https://github.com/vuepress/ecosystem/commit/8eb13d0709b722c3529216a40ca77508a7e68699))
+- **plugin-revealjs:** add black-contrast, white-contrast and dracula themes ([#786](https://github.com/vuepress/ecosystem/issues/786)) ([91f3fd1](https://github.com/vuepress/ecosystem/commit/91f3fd1216912716af8c32127fe81212c9e90c8b))
+
 # [2.0.0-rc.133](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.132...v2.0.0-rc.133) (2026-07-22)
 
 ### Features

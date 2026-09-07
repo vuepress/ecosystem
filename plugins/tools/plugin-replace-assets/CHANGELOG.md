@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.134](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.133...v2.0.0-rc.134) (2026-09-07)
+
+### Bug Fixes
+
+- **deps:** update dependency magic-string to v1 ([#755](https://github.com/vuepress/ecosystem/issues/755)) ([0c2165c](https://github.com/vuepress/ecosystem/commit/0c2165c0e218cf5c3b00a1f670add3cf6e0e2e9a))
+
+### Features
+
+- bump to vp2rc31 ([#787](https://github.com/vuepress/ecosystem/issues/787)) ([306f94b](https://github.com/vuepress/ecosystem/commit/306f94b14c5666f537a582dfa4018c6d2ce2e320))
+
 # [2.0.0-rc.132](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.131...v2.0.0-rc.132) (2026-07-10)
 
 **Note:** Version bump only for package @vuepress/plugin-replace-assets

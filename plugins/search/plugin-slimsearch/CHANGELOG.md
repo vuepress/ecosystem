@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.134](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.133...v2.0.0-rc.134) (2026-09-07)
+
+### Bug Fixes
+
+- **deps:** update dependency slimsearch to v3 ([#757](https://github.com/vuepress/ecosystem/issues/757)) ([c5c0839](https://github.com/vuepress/ecosystem/commit/c5c083962150f96e90973b8ca94db8c93ede4d09))
+
 # [2.0.0-rc.131](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.130...v2.0.0-rc.131) (2026-07-01)
 
 ### Bug Fixes

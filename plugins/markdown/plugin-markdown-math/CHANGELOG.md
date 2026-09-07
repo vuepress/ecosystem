@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.134](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.133...v2.0.0-rc.134) (2026-09-07)
+
+### Bug Fixes
+
+- **deps:** update dependency katex to v0.18.1 ([#749](https://github.com/vuepress/ecosystem/issues/749)) ([7172d04](https://github.com/vuepress/ecosystem/commit/7172d0471ca8d55d588bf36d90ba00bb6561ac43))
+
 # [2.0.0-rc.132](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.131...v2.0.0-rc.132) (2026-07-10)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-math

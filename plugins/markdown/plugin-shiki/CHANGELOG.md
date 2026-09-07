@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.134](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.133...v2.0.0-rc.134) (2026-09-07)
+
+### Bug Fixes
+
+- **deps:** update dependency nanoid to v6 ([#756](https://github.com/vuepress/ecosystem/issues/756)) ([72489c5](https://github.com/vuepress/ecosystem/commit/72489c5303c6aa2ac30667c2fdd2f2cedafd03fe))
+
 # [2.0.0-rc.132](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.131...v2.0.0-rc.132) (2026-07-10)
 
 **Note:** Version bump only for package @vuepress/plugin-shiki
