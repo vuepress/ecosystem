@@ -992,7 +992,7 @@ importers:
         version: 2.0.0(markdown-it@14.3.1)
       '@mdit/plugin-footnote':
         specifier: ^1.1.0
-        version: 1.1.0(markdown-it@14.3.1)
+        version: 1.1.1(markdown-it@14.3.1)
       '@mdit/plugin-tasklist':
         specifier: ^1.1.0
         version: 1.1.0(markdown-it@14.3.1)
@@ -3188,6 +3188,15 @@ packages:
       markdown-it:
         optional: true
 
+  '@mdit/helper@1.1.1':
+    resolution: {integrity: sha512-Rrl14ZjFerzfAqCt0zxAWbPgRpsumgm9iBLrCVE05WS8dM6v/LnF1ppPFVnRz1F7fAaxn0kTFOlYwzcY+kRsHQ==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^15.0.1
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
   '@mdit/plugin-alert@2.0.0':
     resolution: {integrity: sha512-38dF7mUEGxeK/ez0FTU/FTUXpZNt5o9hhX1QSXZ8IkuBEA+Q7f0JUqX6tp1Ng8ecWVN2c95bGltSN1tar5R1mg==}
     engines: {node: '>=22'}
@@ -3242,11 +3251,11 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-footnote@1.1.0':
-    resolution: {integrity: sha512-EeVs4w9La5nQJbsU7GVq3aBhhgaNxkO89q8EguWc1ogkNaomL0d2B8jZKbDoZBGo1yg6m2nimraCWQI4jqmXWA==}
+  '@mdit/plugin-footnote@1.1.1':
+    resolution: {integrity: sha512-0VV4rhegFSX8mp4/nG1rO3fgoDLofjnXIsAwRDK6Ajs9aj3NqSBB8HyYPnT7Ti0yPNn7XHHtqgrgJzYsbcDfyA==}
     engines: {node: '>=22'}
     peerDependencies:
-      markdown-it: ^15.0.0
+      markdown-it: ^15.0.1
 
   '@mdit/plugin-icon@1.1.0':
     resolution: {integrity: sha512-NQomfD+sQQwGARJsls9mon8hhhLE14rfF8iZgkvX1R3MVAwfZUqBCC7B3JKCNg/8RKs0jETe1KbPl/HsWb87Kg==}
@@ -11843,6 +11852,10 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.1
 
+  '@mdit/helper@1.1.1(markdown-it@14.3.1)':
+    optionalDependencies:
+      markdown-it: 14.3.1
+
   '@mdit/plugin-alert@2.0.0(markdown-it@14.3.1)':
     dependencies:
       '@mdit/helper': 1.1.0(markdown-it@14.3.1)
@@ -11878,9 +11891,9 @@ snapshots:
     dependencies:
       '@mdit/helper': 1.1.0(markdown-it@14.3.1)
 
-  '@mdit/plugin-footnote@1.1.0(markdown-it@14.3.1)':
+  '@mdit/plugin-footnote@1.1.1(markdown-it@14.3.1)':
     dependencies:
-      '@mdit/helper': 1.1.0(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
       markdown-it: 14.3.1
 
   '@mdit/plugin-icon@1.1.0':
