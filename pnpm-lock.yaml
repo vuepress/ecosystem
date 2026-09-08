@@ -1101,7 +1101,7 @@ importers:
     dependencies:
       '@mdit/plugin-include':
         specifier: ^1.1.0
-        version: 1.1.0
+        version: 1.1.1
       '@types/markdown-it':
         specifier: ^14.2.0
         version: 14.2.0
@@ -3312,11 +3312,11 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-include@1.1.0':
-    resolution: {integrity: sha512-jCWROXHsCqiQIoqFgM5MYgxoXncBXc4jrS0mD+gbpUZmmFUY9SK923h16U8IopL06AEnw1Tdfckn+nJQqGiegg==}
+  '@mdit/plugin-include@1.1.1':
+    resolution: {integrity: sha512-DqJ9ztFvsaBbomamVqbVghvfkDlLGYd07VfaCKjjSeVf/zqsHzrqDW8eYluo5uT1d49J72N4Z0RpP6pRVN+NLQ==}
     engines: {node: '>=22'}
     peerDependencies:
-      markdown-it: ^15.0.0
+      markdown-it: ^15.0.1
     peerDependenciesMeta:
       markdown-it:
         optional: true
@@ -11937,9 +11937,9 @@ snapshots:
     dependencies:
       '@mdit/helper': 1.1.0(markdown-it@14.3.1)
 
-  '@mdit/plugin-include@1.1.0':
+  '@mdit/plugin-include@1.1.1':
     dependencies:
-      '@mdit/helper': 1.1.0(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
       upath: 3.0.8
 
   '@mdit/plugin-inline-rule@2.2.0(markdown-it@14.3.1)':
