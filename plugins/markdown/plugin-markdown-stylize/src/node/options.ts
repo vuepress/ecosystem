@@ -69,6 +69,15 @@ export interface MarkdownStylizePluginOptions {
   spoiler?: boolean
 
   /**
+   * Whether to enable steps support
+   *
+   * 是否启用步骤支持。
+   *
+   * @default false
+   */
+  steps?: boolean
+
+  /**
    * Customizing token stylize
    *
    * 自定义标记样式。

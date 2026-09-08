@@ -97,6 +97,7 @@ export const plugins = [
     attrs: true,
     mark: true,
     spoiler: true,
+    steps: true,
     sub: true,
     sup: true,
     custom: [

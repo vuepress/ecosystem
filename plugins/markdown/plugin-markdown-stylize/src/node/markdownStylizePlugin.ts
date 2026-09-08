@@ -13,6 +13,7 @@ import { isPlainObject } from 'vuepress/shared'
 
 import type { MarkdownStylizePluginOptions } from './options.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
+import { steps as stepsPlugin } from './steps.js'
 
 declare module 'vuepress/markdown' {
   interface MarkdownOptions {
@@ -36,6 +37,7 @@ declare module 'vuepress/markdown' {
  *         mark: true,
  *         layout: true,
  *         spoiler: true,
+ *         steps: true,
  *         sub: true,
  *         sup: true,
  *       }),
@@ -49,7 +51,8 @@ export const markdownStylizePlugin =
   (app) => {
     const opts = deepAssign({}, app.options.markdown.stylize, options)
     app.options.markdown.stylize = opts
-    const { attrs, align, custom, layout, mark, spoiler, sup, sub } = opts
+    const { attrs, align, custom, layout, mark, spoiler, steps, sup, sub } =
+      opts
 
     return {
       name: '@vuepress/plugin-markdown-stylize',
@@ -69,8 +72,9 @@ export const markdownStylizePlugin =
         if (sub) md.use(subPlugin)
         if (sup) md.use(supPlugin)
         if (layout) md.use(layoutPlugin)
+        if (steps) md.use(stepsPlugin)
       },
 
-      clientConfigFile: () => prepareClientConfigFile(app, { spoiler }),
+      clientConfigFile: () => prepareClientConfigFile(app, { spoiler, steps }),
     }
   }
