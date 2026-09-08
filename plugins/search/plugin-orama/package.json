@@ -1,0 +1,68 @@
+{
+  "name": "@vuepress/plugin-orama",
+  "version": "2.0.0-rc.134",
+  "description": "VuePress plugin - built-in Orama search",
+  "keywords": [
+    "orama",
+    "plugin",
+    "search",
+    "vuepress",
+    "vuepress-plugin"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/plugins/search/orama.html",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mr.Hope",
+    "email": "mister-hope@outlook.com",
+    "url": "https://mister-hope.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/search/plugin-orama"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "./dist/**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.js"
+    },
+    "./client": {
+      "types": "./dist/client/index.d.ts",
+      "default": "./dist/client/index.js"
+    },
+    "./type": {
+      "types": "./dist/client/shims.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "clean": "rimraf ./dist"
+  },
+  "dependencies": {
+    "@orama/orama": "^3.1.18",
+    "@vuepress/helper": "workspace:*",
+    "@vueuse/core": "catalog:",
+    "cheerio": "^1.2.0",
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "domhandler": "^6.0.1"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
+  }
+}
