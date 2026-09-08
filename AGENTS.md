@@ -92,6 +92,8 @@ package.json
 
 All source files are in `src/`. Compiled output goes to `dist/` (git-ignored).
 
+Plugins that must inject client-side styles or register components **conditionally** based on options use a `src/node/prepareClientConfigFile.ts` that generates a client config at build time. It returns `app.writeTemp('<plugin>/config.js', ...)` and the plugin exposes it via `clientConfigFile: () => prepareClientConfigFile(app, options)`. This is required when the set of imports depends on options (e.g. only import a style when the matching option is enabled) — a static `src/client/config.ts` is used instead when the config is always the same.
+
 ## Coding Standards
 
 ### Import / Export Rules
@@ -108,6 +110,7 @@ All source files are in `src/`. Compiled output goes to `dist/` (git-ignored).
   - `node/` — no browser APIs, no imports from `client/`
   - `shared/` — no Node.js or browser APIs, no imports from `client/` or `node/`
 - **No bundled external dependencies** — the `bundle` command must not emit warnings about bundled externals.
+- **Avoid shadowing imports with option names** — when a plugin option shares a name with an imported markdown-it plugin (e.g. `steps`), alias the import: `import { steps as stepsPlugin } from './steps.js'`.
 
 ### CSS / SCSS
 
@@ -118,6 +121,8 @@ All source files are in `src/`. Compiled output goes to `dist/` (git-ignored).
   - Plugin-scoped variables are prefixed with the plugin name.
   - Theme-scoped variables are prefixed with `vp-`.
   - Icon variables inside class definitions must use `--icon`.
+- Reuse theme-default CSS variables instead of hardcoding colors. Commonly used: `--vp-c-bg-alt`, `--vp-c-bg-elv`, `--vp-c-text`, `--vp-c-text-mute`, `--vp-c-divider`, `--vp-c-border`, `--vp-c-accent`, `--vp-c-shadow`, `--vp-t-color`, `--vp-t-transform`.
+- Use logical properties (`inset-inline-start`, `padding-inline-start`, `margin-inline-start`) rather than `left`/`right` physical properties to support RTL.
 - SCSS files that use `@use 'pkg:@vuepress/helper'` require the package to declare `@vuepress/helper` as a runtime `dependency` or `peerDependency` in its `package.json` (not only as a `devDependency`), so downstream SCSS builds can resolve the import.
 
 ### TypeScript / JSDoc
@@ -178,7 +183,10 @@ All packages use a shared `tsdownConfig` factory defined in `scripts/tsdown.ts`:
 - Source maps are always emitted; code is minified in production (`NODE_ENV=production`).
 - CSS is processed by the `@tsdown/css` plugin with SCSS support via `sass-embedded`. CSS chunks are split and emitted as separate files.
 - Packages that emit CSS must declare `"./dist/**/*.css"` in `sideEffects` in `package.json`.
+- To emit SCSS/CSS from `src/client/styles/`, add a wildcard entry to `tsdown.config.ts`: `tsdownConfig(['node/index', { 'client/styles/*': './src/client/styles/*.scss' }])`. The CSS lands in `dist/client/styles/*.css`.
+- If a CSS chunk must be importable at runtime (e.g. from a generated client config), map it in `package.json` `exports`, e.g. `"./<name>.css": "./dist/client/styles/<name>.css"`, and reference it with `getModulePath('<pkg>/<name>.css', import.meta)` from `@vuepress/helper`.
 - The `tsdownConfig` helper accepts `onlyBundle`, `alwaysBundle`, and `neverBundle` options for fine-grained dependency bundling control. Modules starting with `@internal/` and `@temp/` are never bundled.
+- `pnpm run type:check` resolves `@vuepress/<plugin-name>` from the package `dist/`, so build the affected package (`pnpm --filter <pkg> build`) before type-checking.
 
 ## Testing
 
@@ -208,6 +216,7 @@ The documentation site lives in `docs/` and is built with VuePress. Each plugin 
 - Use "你" instead of "您" in Chinese
 - Ignore any errors with `@[code ...` as they are VuePress code import grammar, which is not standard.
 - Ignore any errors with VuePress components in markdown.
+- When a container (`::: name`) ends right after a list item, oxfmt re-indents the closing `:::` under the list item. Keep the closing marker at column 0 by adding a blank line between the last list item and `:::`.
 
 ### Options Documentation Format
 

@@ -130,6 +130,48 @@ VuePress is !!powerful!!.
 
 :::
 
+### Creating Steps
+
+You can use `::: steps` container to display content in progressive steps. Use ordered (or unordered) lists to represent steps, and any Markdown syntax is supported inside.
+
+:::: preview
+
+::: steps
+
+1. Step 1
+
+   ```ts
+   console.log('Hello World!')
+   ```
+
+2. Step 2
+
+   Related content of step 2
+
+3. End
+
+:::
+
+::::
+
+You can also use an unordered list:
+
+:::: preview
+
+::: steps
+
+- Step 1
+
+  Related content of step 1
+
+- Step 2
+
+  Related content of step 2
+
+:::
+
+::::
+
 ### Superscript and Subscript
 
 You can use `^` for superscript and `~` for subscript.
@@ -235,6 +277,11 @@ Also, you can use `stylize` in frontmatter to provide extra stylize rules for co
 
 - Type: `boolean`
 - Details: Whether to enable spoiler support.
+
+### steps
+
+- Type: `boolean`
+- Details: Whether to enable steps support.
 
 ### sup
 

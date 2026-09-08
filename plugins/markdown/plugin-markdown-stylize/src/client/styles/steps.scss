@@ -1,0 +1,76 @@
+.vp-steps {
+  margin: 16px 0;
+
+  > :where(ol, ul) {
+    padding-inline-start: 0;
+    list-style: none;
+  }
+
+  > :where(ol, ul) > li {
+    position: relative;
+
+    min-height: 28px;
+    margin-bottom: 16px;
+    padding-inline-start: 44px;
+
+    line-height: 28px;
+
+    &::before {
+      content: counter(list-item);
+
+      position: absolute;
+      inset-inline-start: 0;
+      top: 0;
+
+      width: 28px;
+      height: 28px;
+      border: solid 1px var(--vp-c-divider);
+      border-radius: 100%;
+
+      background-color: var(--vp-c-bg-alt);
+      color: var(--vp-c-text);
+
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 28px;
+      text-align: center;
+
+      transition:
+        color,
+        background-color,
+        border-color var(--vp-t-color);
+    }
+
+    &:not(:last-of-type)::after {
+      content: '';
+
+      position: absolute;
+      inset-inline-start: 14px;
+      top: 34px;
+      bottom: -10px;
+
+      width: 1px;
+
+      background-color: var(--vp-c-divider);
+
+      transition: background-color var(--vp-t-color);
+    }
+
+    > :first-child {
+      margin-top: 0;
+    }
+
+    > :first-child:where(h1, h2, h3, h4, h5, h6) {
+      padding-top: 0;
+      border-top: none;
+    }
+
+    > :first-child:where(p) {
+      line-height: 28px;
+    }
+  }
+
+  > :where(ol, ul) > li + li {
+    margin-top: 1px;
+  }
+}

@@ -28,6 +28,9 @@
     "dist"
   ],
   "type": "module",
+  "sideEffects": [
+    "./dist/**/*.css"
+  ],
   "main": "./dist/node/index.js",
   "types": "./dist/node/index.d.ts",
   "exports": {
@@ -35,6 +38,7 @@
       "types": "./dist/node/index.d.ts",
       "default": "./dist/node/index.js"
     },
+    "./steps.css": "./dist/client/styles/steps.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -47,6 +51,7 @@
   "dependencies": {
     "@mdit/plugin-align": "^1.1.0",
     "@mdit/plugin-attrs": "^1.3.0",
+    "@mdit/plugin-container": "^2.0.0",
     "@mdit/plugin-layout": "^1.1.0",
     "@mdit/plugin-mark": "^2.1.0",
     "@mdit/plugin-spoiler": "^2.1.0",
