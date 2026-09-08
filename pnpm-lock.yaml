@@ -1080,7 +1080,7 @@ importers:
         version: 1.2.0
       '@mdit/plugin-img-lazyload':
         specifier: ^1.1.0
-        version: 1.1.0
+        version: 1.1.1
       '@mdit/plugin-img-mark':
         specifier: ^1.1.0
         version: 1.1.0
@@ -3285,11 +3285,11 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-img-lazyload@1.1.0':
-    resolution: {integrity: sha512-/r5m2vqrP3Mlx3X0OTPdkZrvdBIYEgMbYeMUEmPjN1Ic+IGf79cFBTWld03NGjExmqNaFQ45Yw+qLmE3pdCjkA==}
+  '@mdit/plugin-img-lazyload@1.1.1':
+    resolution: {integrity: sha512-aZr/MkM0LLhGMJKjWI6/o0BdHRONzk6j5dOHK/BhyELcIjybKrwUH6QfEzsSFVnuwu3hXloQqOnTi0RLnF5ofQ==}
     engines: {node: '>=22'}
     peerDependencies:
-      markdown-it: ^15.0.0
+      markdown-it: ^15.0.1
     peerDependenciesMeta:
       markdown-it:
         optional: true
@@ -11925,9 +11925,9 @@ snapshots:
     dependencies:
       '@mdit/helper': 1.1.0(markdown-it@14.3.1)
 
-  '@mdit/plugin-img-lazyload@1.1.0':
+  '@mdit/plugin-img-lazyload@1.1.1':
     dependencies:
-      '@mdit/helper': 1.1.0(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
 
   '@mdit/plugin-img-mark@1.1.0':
     dependencies:
