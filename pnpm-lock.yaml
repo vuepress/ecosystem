@@ -294,6 +294,9 @@ importers:
       '@vuepress/plugin-markdown-ext':
         specifier: workspace:*
         version: link:../plugins/markdown/plugin-markdown-ext
+      '@vuepress/plugin-markdown-field':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-field
       '@vuepress/plugin-markdown-file-tree':
         specifier: workspace:*
         version: link:../plugins/markdown/plugin-markdown-file-tree
@@ -1001,6 +1004,28 @@ importers:
         specifier: ^14.3.1
         version: 14.3.1
 
+  plugins/markdown/plugin-markdown-field:
+    dependencies:
+      '@mdit/helper':
+        specifier: ^1.1.0
+        version: 1.1.1(markdown-it@14.3.1)
+      '@mdit/plugin-field':
+        specifier: ^2.0.1
+        version: 2.0.1(markdown-it@14.3.1)
+      '@types/markdown-it':
+        specifier: ^14.2.0
+        version: 14.2.0
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../../tools/helper
+      vuepress:
+        specifier: 'catalog:'
+        version: 2.0.0-rc.31(636537a563f817181b911d10de04e73e)
+    devDependencies:
+      markdown-it:
+        specifier: ^14.3.1
+        version: 14.3.1
+
   plugins/markdown/plugin-markdown-file-tree:
     dependencies:
       '@types/markdown-it':
@@ -1122,7 +1147,7 @@ importers:
     dependencies:
       '@mdit/helper':
         specifier: ^1.1.0
-        version: 1.1.0(markdown-it@14.3.1)
+        version: 1.1.1(markdown-it@14.3.1)
       '@mdit/plugin-demo':
         specifier: ^2.0.0
         version: 2.0.0(markdown-it@14.3.1)
@@ -3173,6 +3198,15 @@ packages:
       markdown-it:
         optional: true
 
+  '@mdit/helper@1.1.1':
+    resolution: {integrity: sha512-Rrl14ZjFerzfAqCt0zxAWbPgRpsumgm9iBLrCVE05WS8dM6v/LnF1ppPFVnRz1F7fAaxn0kTFOlYwzcY+kRsHQ==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^15.0.1
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
   '@mdit/plugin-alert@2.0.0':
     resolution: {integrity: sha512-38dF7mUEGxeK/ez0FTU/FTUXpZNt5o9hhX1QSXZ8IkuBEA+Q7f0JUqX6tp1Ng8ecWVN2c95bGltSN1tar5R1mg==}
     engines: {node: '>=22'}
@@ -3214,6 +3248,15 @@ packages:
     engines: {node: '>=22'}
     peerDependencies:
       markdown-it: ^15.0.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-field@2.0.1':
+    resolution: {integrity: sha512-pu8KRS3K/a4o5tlACccnhhapVBhUY6J6RsBJOKqbtbCyR+SH1J4B6qH72w145EDf+zkRrAIdIiQRdoSqoKaxwg==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      markdown-it: ^15.0.1
     peerDependenciesMeta:
       markdown-it:
         optional: true
@@ -11828,6 +11871,10 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.1
 
+  '@mdit/helper@1.1.1(markdown-it@14.3.1)':
+    optionalDependencies:
+      markdown-it: 14.3.1
+
   '@mdit/plugin-alert@2.0.0(markdown-it@14.3.1)':
     dependencies:
       '@mdit/helper': 1.1.0(markdown-it@14.3.1)
@@ -11856,6 +11903,12 @@ snapshots:
   '@mdit/plugin-demo@2.0.0(markdown-it@14.3.1)':
     dependencies:
       '@mdit/helper': 1.1.0(markdown-it@14.3.1)
+    optionalDependencies:
+      markdown-it: 14.3.1
+
+  '@mdit/plugin-field@2.0.1(markdown-it@14.3.1)':
+    dependencies:
+      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
     optionalDependencies:
       markdown-it: 14.3.1
 

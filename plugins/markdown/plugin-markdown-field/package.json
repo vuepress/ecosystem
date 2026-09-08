@@ -1,0 +1,63 @@
+{
+  "name": "@vuepress/plugin-markdown-field",
+  "version": "2.0.0-rc.134",
+  "description": "VuePress plugin - markdown field",
+  "keywords": [
+    "field",
+    "markdown",
+    "plugin",
+    "vuepress",
+    "vuepress-plugin"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/plugins/markdown/markdown-field.html",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mr.Hope",
+    "email": "mister-hope@outlook.com",
+    "url": "https://mister-hope.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/markdown/plugin-markdown-field"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "./dist/**/*.css"
+  ],
+  "main": "./dist/node/index.js",
+  "types": "./dist/node/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.js"
+    },
+    "./field.css": "./dist/client/styles/field.css",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "clean": "rimraf ./dist"
+  },
+  "dependencies": {
+    "@mdit/helper": "^1.1.0",
+    "@mdit/plugin-field": "^2.0.1",
+    "@types/markdown-it": "^14.2.0",
+    "@vuepress/helper": "workspace:*"
+  },
+  "devDependencies": {
+    "markdown-it": "^14.3.1"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
+  }
+}
