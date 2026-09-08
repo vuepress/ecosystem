@@ -1083,7 +1083,7 @@ importers:
         version: 1.1.0
       '@mdit/plugin-img-mark':
         specifier: ^1.1.0
-        version: 1.1.0
+        version: 1.1.1
       '@mdit/plugin-img-size':
         specifier: ^1.1.0
         version: 1.1.0
@@ -3294,11 +3294,11 @@ packages:
       markdown-it:
         optional: true
 
-  '@mdit/plugin-img-mark@1.1.0':
-    resolution: {integrity: sha512-cgEuFYZ+cj09KBdCQ2r3j/daVaElE6DJ04KOfiPcEw1qmhYHaeexsbDOX3v41P0Aphikj56pG2RkL/7BzcEMLw==}
+  '@mdit/plugin-img-mark@1.1.1':
+    resolution: {integrity: sha512-rh/1lHADSt4HHNF4q6z9qT77us1ZSId0hmmXvwunl7MBNjxNTobiW25g9DbWRgfsi8JDQT2zeR5pViLimAKXWg==}
     engines: {node: '>=22'}
     peerDependencies:
-      markdown-it: ^15.0.0
+      markdown-it: ^15.0.1
     peerDependenciesMeta:
       markdown-it:
         optional: true
@@ -11929,9 +11929,9 @@ snapshots:
     dependencies:
       '@mdit/helper': 1.1.0(markdown-it@14.3.1)
 
-  '@mdit/plugin-img-mark@1.1.0':
+  '@mdit/plugin-img-mark@1.1.1':
     dependencies:
-      '@mdit/helper': 1.1.0(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
 
   '@mdit/plugin-img-size@1.1.0':
     dependencies:
