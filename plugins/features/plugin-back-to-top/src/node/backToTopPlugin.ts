@@ -31,7 +31,7 @@ export const backToTopPlugin =
       define: () => ({
         __BACK_TO_TOP_LOCALES__: getFullLocaleConfig({
           app,
-          name: 'back-to-top',
+          name: PLUGIN_NAME,
           default: backToTopLocaleInfo,
           config: options.locales,
         }),

@@ -48,7 +48,7 @@ export const redirectPlugin =
         __REDIRECT_DIRECT__: options.switchLocale === 'direct',
         __REDIRECT_LOCALES__: getFullLocaleConfig({
           app,
-          name: 'redirect',
+          name: PLUGIN_NAME,
           config: options.locales,
           default: redirectLocaleInfo,
         }),
