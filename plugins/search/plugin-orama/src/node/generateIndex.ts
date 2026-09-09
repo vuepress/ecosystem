@@ -91,8 +91,14 @@ export const generatePageIndex = (
 
   const addTextToIndex = (): void => {
     if (indexedText && shouldIndexContent) {
-      ;((foundFirstHeader ? sectionIndex! : pageIndex)[TEXT_INDEX_ID] ??=
-        []).push(indexedText.replaceAll(/[\n\s]+/gu, ' '))
+      // Trim the text and skip empty content, as whitespace-only text nodes are
+      // now preserved as word separators
+      const text = indexedText.replaceAll(/[\n\s]+/gu, ' ').trim()
+
+      if (text) {
+        ;((foundFirstHeader ? sectionIndex! : pageIndex)[TEXT_INDEX_ID] ??=
+          []).push(text)
+      }
       indexedText = ''
     }
   }
@@ -134,7 +140,15 @@ export const generatePageIndex = (
         })
       }
     } else if (node.type === 'text') {
-      indexedText += preserveSpace || node.data.trim() ? node.data : ''
+      // Whitespace-only text nodes between inline elements are preserved as a
+      // single space, so that adjacent inline elements (e.g. `<span>a</span>
+      // <span>b</span>`) are indexed as separate words instead of being joined.
+      // `preserveSpace` contexts (e.g. `<pre>`) keep the original whitespace.
+      indexedText += node.data.trim()
+        ? node.data
+        : preserveSpace
+          ? node.data
+          : ' '
     } else if (
       // We are expecting to stop at excerpt marker if content is not indexed
       hasExcerpt &&
