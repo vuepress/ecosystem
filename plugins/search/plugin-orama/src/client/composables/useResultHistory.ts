@@ -1,16 +1,16 @@
 import { useLocalStorage } from '@vueuse/core'
 import type { Ref } from 'vue'
 
-import type { MatchedItem, Word } from '../../shared/index.js'
+import type { MatchedContent, MatchedItem } from '../../shared/index.js'
 import { options } from '../define.js'
 import { getResultPath } from '../utils/index.js'
 
-const ORAMA_RESULT_HISTORY_STORAGE = 'ORAMA_RESULT_HISTORY'
+const ORAMA_RESULT_HISTORY_STORAGE = 'ORAMA_RESULT_HISTORY_V2'
 
 export interface ResultHistoryItem {
   header?: string
   link: string
-  display: Word[][]
+  display: MatchedContent[]
 }
 
 export interface ResultHistory {

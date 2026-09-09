@@ -10,13 +10,13 @@ import {
 import type {
   HeadingMatchedItem,
   IndexItem,
+  MatchedContent,
   MatchedItem,
   SearchableProperty,
   SearchIndex,
   SearchResult,
   TitleMatchedItem,
   WorkerSearchOptions,
-  Word,
 } from '../../shared/index.js'
 import { getMatchedContent } from './getMatchedContent.js'
 
@@ -130,7 +130,7 @@ export const getSearchResults = (
             .flatMap((term) =>
               fields.map((field) => getMatchedContent(field, term)),
             )
-            .filter((item): item is Word[] => item != null),
+            .filter((item): item is MatchedContent => item != null),
         },
         score,
       ])
@@ -139,7 +139,7 @@ export const getSearchResults = (
         .map((term) =>
           getMatchedContent(document[HEADING_INDEX_ID] ?? '', term),
         )
-        .filter((item): item is Word[] => item != null)
+        .filter((item): item is MatchedContent => item != null)
 
       if (headerContent.length > 0) {
         contents.push([
@@ -157,7 +157,7 @@ export const getSearchResults = (
         for (const text of document[TEXT_INDEX_ID]) {
           const matchedContent = displayTerms
             .map((term) => getMatchedContent(text, term))
-            .filter((item): item is Word[] => item != null)
+            .filter((item): item is MatchedContent => item != null)
 
           if (matchedContent.length > 0) {
             contents.push([
