@@ -9,7 +9,18 @@ import { getSearchResults, getSuggestions } from './utils/index.js'
 globalThis.onmessage = async ({
   data: { type = 'all', query, locale, options, id },
 }: MessageEvent<WorkerMessageData>): Promise<void> => {
-  const { default: localeIndex } = await database[locale]()
+  // Guard against locales without an index chunk, so that an unknown locale
+  // returns empty results instead of throwing
+  const loadLocaleIndex = database[locale]
+
+  if (!loadLocaleIndex) {
+    if (type === 'suggest') globalThis.postMessage([type, id, []])
+    else if (type === 'search') globalThis.postMessage([type, id, []])
+    else globalThis.postMessage([type, id, { suggestions: [], results: [] }])
+    return
+  }
+
+  const { default: localeIndex } = await loadLocaleIndex()
 
   const { lang, data } = JSON.parse(localeIndex) as SerializedIndex
   const searchLocaleIndex = createIndex(lang, data)

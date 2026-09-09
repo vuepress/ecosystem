@@ -324,6 +324,9 @@ importers:
       '@vuepress/plugin-nprogress':
         specifier: workspace:*
         version: link:../plugins/features/plugin-nprogress
+      '@vuepress/plugin-orama':
+        specifier: workspace:*
+        version: link:../plugins/search/plugin-orama
       '@vuepress/plugin-photo-swipe':
         specifier: workspace:*
         version: link:../plugins/features/plugin-photo-swipe

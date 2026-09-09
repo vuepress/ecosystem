@@ -24,6 +24,15 @@ self.addEventListener(
   }: MessageEvent<WorkerMessageData>) => {
     const searchLocaleIndex = searchIndex[locale]
 
+    // Guard against locales without an index, so that an unknown locale
+    // returns empty results instead of throwing
+    if (!searchLocaleIndex) {
+      if (type === 'suggest') self.postMessage([type, id, []])
+      else if (type === 'search') self.postMessage([type, id, []])
+      else self.postMessage([type, id, { suggestions: [], results: [] }])
+      return
+    }
+
     if (type === 'suggest') {
       self.postMessage([
         type,
