@@ -13,6 +13,35 @@ import type {
 } from '../../shared/index.js'
 
 /**
+ * Find the original-cased occurrence of a (lowercased) token in a field.
+ *
+ * The tokenizer lowercases tokens for indexing, so we look the token up in the
+ * original field text case-insensitively to preserve the document's case in the
+ * suggestions.
+ *
+ * 在字段中查找小写词条对应的原始大小写文本。
+ *
+ * 分词器为索引而将词条小写化，因此我们在原始字段文本中进行不区分大小写的查找， 以便在建议中保留文档原有的大小写。
+ *
+ * @param field - Original field text 原始字段文本
+ * @param token - Lowercased token 小写词条
+ * @returns Original-cased token, or null if not found 原始大小写的词条，未找到时返回 null
+ */
+const getOriginalToken = (field: string, token: string): string | null => {
+  const fieldLowerCase = field.toLowerCase()
+  let index = 0
+
+  while ((index = fieldLowerCase.indexOf(token, index)) !== -1) {
+    const original = field.slice(index, index + token.length)
+
+    if (original.toLowerCase() === token) return original
+    index += token.length
+  }
+
+  return null
+}
+
+/**
  * Get auto suggestions for the query.
  *
  * Orama does not provide a built-in autosuggest API, so we collect tokens from
@@ -63,7 +92,7 @@ export const getSuggestions = (
 
         localeIndex.tokenizer.tokenize(field).forEach((token) => {
           if (token.startsWith(queryToken) && token.length > queryToken.length)
-            suggestions.add(token)
+            suggestions.add(getOriginalToken(field, token) ?? token)
         })
       })
     },

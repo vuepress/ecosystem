@@ -106,6 +106,16 @@ describe(getSuggestions, () => {
     await insertMultiple(index, docs)
 
     const suggestions = getSuggestions('vue', index)
-    expect(suggestions).toContain('vuepress')
+    expect(suggestions).toContain('VuePress')
+  })
+
+  it('should preserve the original case of suggestions', async () => {
+    const index = createIndex('en')
+    const { insertMultiple } = await import('@orama/orama')
+
+    await insertMultiple(index, docs)
+
+    const suggestions = getSuggestions('vue', index)
+    expect(suggestions).toContain('VuePress')
   })
 })
