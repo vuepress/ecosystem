@@ -2,6 +2,7 @@
 import { cachePlugin } from '@vuepress/plugin-cache'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { commentPlugin } from '@vuepress/plugin-comment'
+import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { feedPlugin } from '@vuepress/plugin-feed'
 import { iconPlugin } from '@vuepress/plugin-icon'
 import { llmsPlugin } from '@vuepress/plugin-llms'
@@ -15,7 +16,6 @@ import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 import { markdownPreviewPlugin } from '@vuepress/plugin-markdown-preview'
 import { markdownStylizePlugin } from '@vuepress/plugin-markdown-stylize'
 import type { MarkdownItStylizeResult } from '@vuepress/plugin-markdown-stylize'
-import { oramaPlugin } from '@vuepress/plugin-orama'
 import { redirectPlugin } from '@vuepress/plugin-redirect'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { revealJsPlugin } from '@vuepress/plugin-revealjs'
@@ -36,8 +36,10 @@ export const plugins = [
     category: 'Announcements',
     categoryId: 'DIC_kwDOKPxScM4CbWy7',
   }),
-  oramaPlugin({
-    indexContent: true,
+  docsearchPlugin({
+    appId: 'N7UOPMVZ5B',
+    apiKey: 'aa626dfa43a5e32cd519ba84735ad384',
+    indices: ['ecosystem-vuejs'],
   }),
   feedPlugin({
     hostname: 'https://ecosystem.vuejs.press',
