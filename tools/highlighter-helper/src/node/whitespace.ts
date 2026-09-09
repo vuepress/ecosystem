@@ -3,7 +3,7 @@
  *
  * 匹配代码块信息中 `:whitespace` 指令的正则表达式
  */
-export const WHITESPACE_REGEXP =
+export const WHITESPACE_REGEXP: RegExp =
   /:whitespace(?:=(?<position>all|boundary|leading|trailing)?)?\b/u
 
 /**
@@ -11,7 +11,7 @@ export const WHITESPACE_REGEXP =
  *
  * 匹配代码块信息中 `:no-whitespace` 指令的正则表达式
  */
-export const NO_WHITESPACE_REGEXP = /:no-whitespace\b/u
+export const NO_WHITESPACE_REGEXP: RegExp = /:no-whitespace\b/u
 
 /**
  * Whitespace position types

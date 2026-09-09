@@ -64,6 +64,18 @@ export interface TsdownOptions extends Omit<UserConfig, 'entry' | 'copy'> {
   moduleSideEffects?: ModuleSideEffectsOptions
 
   /**
+   * Whether to enable isolated declarations for faster `.d.ts` generation
+   *
+   * Only packages whose source already satisfies `isolatedDeclarations` should
+   * enable this.
+   *
+   * 是否启用 isolated declarations 以加速 `.d.ts` 生成
+   *
+   * 仅当包的源码已经满足 `isolatedDeclarations` 约束时才应启用
+   */
+  isolatedDeclarations?: boolean
+
+  /**
    * Additional files to copy to the output directory
    *
    * 要复制到输出目录的额外文件
@@ -108,6 +120,7 @@ export const tsdownConfig = (
     moduleSideEffects,
     copy = [],
     publint = isProduction,
+    isolatedDeclarations = false,
     ...rest
   }: TsdownOptions = {},
 ): UserConfig => {
@@ -168,6 +181,15 @@ export const tsdownConfig = (
     fixedExtension: false,
     logLevel: 'warn',
     publint,
+    ...(isolatedDeclarations
+      ? {
+          dts: {
+            compilerOptions: {
+              isolatedDeclarations: true,
+            },
+          },
+        }
+      : {}),
     ...rest,
   })
 }

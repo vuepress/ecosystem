@@ -23,6 +23,7 @@ export default tsdownConfig(
       .map((file) => `client/utils/${file.slice(0, -3)}`),
   ],
   {
+    isolatedDeclarations: true,
     neverBundle: [/^@theme\//u, /\.vue$/u, /\.s?css$/u],
     copy: [
       'client/components/global/*.vue',

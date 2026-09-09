@@ -1,5 +1,6 @@
 import type { ZoomOptions } from 'medium-zoom'
 import mediumZoom from 'medium-zoom'
+import type { ClientConfig } from 'vuepress/client'
 import { defineClientConfig, onContentUpdated } from 'vuepress/client'
 
 import { mediumZoomSymbol, useMediumZoom } from './composables/index.js'
@@ -13,7 +14,7 @@ declare const __MZ_ZOOM_OPTIONS__: ZoomOptions
 const selector = __MZ_SELECTOR__
 const zoomOptions = __MZ_ZOOM_OPTIONS__
 
-export default defineClientConfig({
+const clientConfig: ClientConfig = defineClientConfig({
   enhance({ app }) {
     if (__VUEPRESS_SSR__ || !selector) return
 
@@ -34,3 +35,5 @@ export default defineClientConfig({
     })
   },
 })
+
+export default clientConfig

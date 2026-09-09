@@ -1,3 +1,4 @@
+import type { ClientConfig } from 'vuepress/client'
 import { defineClientConfig } from 'vuepress/client'
 
 import type { GoogleAnalyticsPluginOptions } from '../shared/index.js'
@@ -7,8 +8,10 @@ declare const __GA_OPTIONS__: GoogleAnalyticsPluginOptions
 
 const options = __GA_OPTIONS__
 
-export default defineClientConfig({
+const clientConfig: ClientConfig = defineClientConfig({
   enhance() {
     useGoogleAnalytics(options)
   },
 })
+
+export default clientConfig

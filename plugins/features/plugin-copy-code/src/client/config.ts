@@ -1,3 +1,4 @@
+import type { ClientConfig } from 'vuepress/client'
 import { defineClientConfig } from 'vuepress/client'
 
 import { useCopyCode } from './composables/index.js'
@@ -10,7 +11,7 @@ declare const __CC_IGNORE_SELECTOR__: string
 declare const __CC_INLINE_SELECTOR__: string
 declare const __CC_SHOW_IN_MOBILE__: boolean
 
-export default defineClientConfig({
+const clientConfig: ClientConfig = defineClientConfig({
   setup: () => {
     useCopyCode({
       selector: __CC_SELECTOR__,
@@ -22,3 +23,5 @@ export default defineClientConfig({
     })
   },
 })
+
+export default clientConfig

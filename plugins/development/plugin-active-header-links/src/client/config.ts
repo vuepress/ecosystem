@@ -1,3 +1,4 @@
+import type { ClientConfig } from 'vuepress/client'
 import { defineClientConfig } from 'vuepress/client'
 
 import { useActiveHeaderLinks } from './composables/index.js'
@@ -12,7 +13,7 @@ const headerAnchorSelector = __AHL_HEADER_ANCHOR_SELECTOR__
 const delay = __AHL_DELAY__
 const offset = __AHL_OFFSET__
 
-export default defineClientConfig({
+const clientConfig: ClientConfig = defineClientConfig({
   setup() {
     useActiveHeaderLinks({
       headerLinkSelector,
@@ -22,3 +23,5 @@ export default defineClientConfig({
     })
   },
 })
+
+export default clientConfig
