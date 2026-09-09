@@ -11,6 +11,7 @@ import type {
   HeadingMatchedItem,
   IndexItem,
   MatchedItem,
+  SearchableProperty,
   SearchIndex,
   SearchResult,
   TitleMatchedItem,
@@ -27,10 +28,17 @@ interface PageResult {
 type ResultMap = Record<number, PageResult>
 
 /**
- * Perform a search with the given options, converting the readonly properties
- * array back to a mutable one for Orama.
+ * Perform a search with the given options.
  *
- * 使用给定选项执行搜索，并将只读的 properties 数组转换回可变的以适配 Orama。
+ * The `id` field is excluded from the searched properties by default, because
+ * searching it would produce spurious matches. A `threshold` of `0` is used so
+ * that all query terms must match (AND semantics), consistent with the
+ * slimsearch plugin.
+ *
+ * 使用给定选项执行搜索。
+ *
+ * 默认会从搜索属性中排除 `id` 字段，因为搜索它会带来无效匹配。`threshold` 设为 `0` 使得所有搜索词都必须匹配（AND 语义），与
+ * slimsearch 插件保持一致。
  *
  * @param localeIndex - Locale search index 语言搜索索引
  * @param query - Search query 搜索词
@@ -46,13 +54,17 @@ const searchWithOptions = (
 ): ReturnType<typeof search<SearchIndex, IndexItem>> => {
   const { properties, ...rest } = searchOptions
 
+  const searchedProperties: SearchableProperty[] =
+    properties && properties !== '*'
+      ? [...properties]
+      : [HEADING_INDEX_ID, TEXT_INDEX_ID, CUSTOM_FIELDS_INDEX_ID]
+
   return search(localeIndex, {
     term: query,
+    threshold: 0,
     ...extra,
     ...rest,
-    ...(properties
-      ? { properties: properties === '*' ? properties : [...properties] }
-      : {}),
+    properties: searchedProperties,
   })
 }
 
@@ -89,7 +101,7 @@ export const getSearchResults = (
     results as {
       hits: { id: string; score: number; document: IndexItem }[]
     }
-  ).hits.forEach(({ id, score }) => {
+  ).hits.forEach(({ id, score, document }) => {
     const isCustomField = id.includes('@')
     const isSection = id.includes('#')
     const [pageIndex, info] = id.split(/[#@]/u)
@@ -101,11 +113,13 @@ export const getSearchResults = (
       contents: [],
     })
 
-    const document = getByID(localeIndex, id) as IndexItem | null
+    // The page-level document holds the page title
+    if (document.id === String(pageId))
+      resultMap[pageId].title = document[HEADING_INDEX_ID] ?? ''
 
     // CustomFieldIndexItem
     if (isCustomField) {
-      const fields = document?.[CUSTOM_FIELDS_INDEX_ID] ?? []
+      const fields = document[CUSTOM_FIELDS_INDEX_ID] ?? []
 
       contents.push([
         {
@@ -123,7 +137,7 @@ export const getSearchResults = (
     } else {
       const headerContent = displayTerms
         .map((term) =>
-          getMatchedContent(document?.[HEADING_INDEX_ID] ?? '', term),
+          getMatchedContent(document[HEADING_INDEX_ID] ?? '', term),
         )
         .filter((item): item is Word[] => item != null)
 
@@ -139,7 +153,7 @@ export const getSearchResults = (
         ])
       }
 
-      if (document?.[TEXT_INDEX_ID]) {
+      if (document[TEXT_INDEX_ID]) {
         for (const text of document[TEXT_INDEX_ID]) {
           const matchedContent = displayTerms
             .map((term) => getMatchedContent(text, term))
@@ -162,17 +176,16 @@ export const getSearchResults = (
   })
 
   return entries(resultMap)
+    .filter(([, { contents }]) => contents.length > 0)
     .sort(([, valueA], [, valueB]) =>
-      (sortStrategy ? sortResultByTotal : sortResultByMax)(valueA, valueB),
+      (sortStrategy === 'total' ? sortResultByTotal : sortResultByMax)(
+        valueA,
+        valueB,
+      ),
     )
-    .map(([id, { contents }]) => {
-      // Search to get title
-      const pageIndex = getByID(localeIndex, id) as IndexItem | null
-      const title = pageIndex?.[HEADING_INDEX_ID] ?? ''
-
-      return {
-        title,
-        contents: contents.map(([result]) => result),
-      }
-    })
+    .map(([id, { title, contents }]) => ({
+      // Search to get title if the page-level document did not match
+      title: title || (getByID(localeIndex, id)?.[HEADING_INDEX_ID] ?? ''),
+      contents: contents.map(([result]) => result),
+    }))
 }

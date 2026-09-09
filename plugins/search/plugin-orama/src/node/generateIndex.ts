@@ -199,18 +199,25 @@ export const getSearchIndexStore = async (
     preserveTags = [],
   }: OramaPluginOptions,
   store: PathStore,
+  indexesByPage = new Map<string, string[]>(),
 ): Promise<SearchIndexStore> => {
   const indexesByLocale: Record<string, IndexItem[]> = {}
 
   app.pages.forEach((page) => {
     if (filter(page) && page.frontmatter.search !== false) {
-      ;(indexesByLocale[page.pathLocale] ??= []).push(
-        ...generatePageIndex(page, store, {
-          customFields,
-          indexContent,
-          preserveTags,
-        }),
+      const pageIndexes = generatePageIndex(page, store, {
+        customFields,
+        indexContent,
+        preserveTags,
+      })
+
+      // Track the document ids of each page, so that HMR can remove the stale
+      // documents of a page on update or delete
+      indexesByPage.set(
+        page.path,
+        pageIndexes.map(({ id }) => id),
       )
+      ;(indexesByLocale[page.pathLocale] ??= []).push(...pageIndexes)
     }
   })
 

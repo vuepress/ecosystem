@@ -73,6 +73,29 @@ describe('createIndex and serializeIndex', () => {
     expect(results).toHaveLength(1)
     expect(results[0].title).toBe('VuePress plugin')
   })
+
+  it('should not match the document id', async () => {
+    const index = createIndex('en')
+    const { insertMultiple } = await import('@orama/orama')
+
+    await insertMultiple(index, docs)
+
+    // Searching a digit should not match documents through the `id` field
+    const results = getSearchResults('0', index)
+    expect(results).toHaveLength(0)
+  })
+
+  it('should require all query terms to match', async () => {
+    const index = createIndex('en')
+    const { insertMultiple } = await import('@orama/orama')
+
+    await insertMultiple(index, docs)
+
+    // Only the document containing both terms should match
+    const results = getSearchResults('quick brown', index)
+    expect(results).toHaveLength(1)
+    expect(results[0].title).toBe('Hello world')
+  })
 })
 
 describe(getSuggestions, () => {

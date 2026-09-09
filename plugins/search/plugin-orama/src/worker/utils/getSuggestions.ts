@@ -1,7 +1,13 @@
 import { search } from '@orama/orama'
 
+import {
+  CUSTOM_FIELDS_INDEX_ID,
+  HEADING_INDEX_ID,
+  TEXT_INDEX_ID,
+} from '../../shared/index.js'
 import type {
   IndexItem,
+  SearchableProperty,
   SearchIndex,
   WorkerSearchOptions,
 } from '../../shared/index.js'
@@ -28,13 +34,17 @@ export const getSuggestions = (
 ): string[] => {
   const { properties, ...rest } = searchOptions
 
+  const searchedProperties: SearchableProperty[] =
+    properties && properties !== '*'
+      ? [...properties]
+      : [HEADING_INDEX_ID, TEXT_INDEX_ID, CUSTOM_FIELDS_INDEX_ID]
+
   const results = search(localeIndex, {
     term: query,
+    threshold: 0,
     limit: 10,
     ...rest,
-    ...(properties
-      ? { properties: properties === '*' ? properties : [...properties] }
-      : {}),
+    properties: searchedProperties,
   })
 
   // Use the last token of the query for prefix matching, so that a multi-word

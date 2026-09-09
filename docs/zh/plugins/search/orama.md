@@ -67,7 +67,6 @@ export default {
     oramaPlugin({
       customFields: [
         {
-          name: 'author',
           getter: (page) => page.frontmatter.author,
           formatter: '作者: $content',
         },
@@ -104,7 +103,6 @@ export default defineUserConfig({
     oramaPlugin({
       customFields: [
         {
-          name: 'updateTime',
           getter: (page) => page.data.git?.updateTime.toLocaleString(),
           formatter: {
             '/': 'Update time: $content',

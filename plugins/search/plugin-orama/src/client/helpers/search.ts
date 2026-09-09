@@ -10,10 +10,18 @@ import type { SearchResult, WorkerSearchOptions } from '../../shared/index.js'
 declare const __VUEPRESS_DEV__: boolean
 
 export interface SearchLocaleOptions extends WorkerSearchOptions {
-  /** A function to split words */
+  /**
+   * A function to split words
+   *
+   * 用于分词的函数
+   */
   querySplitter?: (query: string, lang: string) => Promise<string[]>
 
-  /** A function to filter suggestions */
+  /**
+   * A function to filter suggestions
+   *
+   * 用于过滤建议的函数
+   */
   suggestionsFilter?: (
     suggestions: string[],
     query: string,
@@ -21,7 +29,11 @@ export interface SearchLocaleOptions extends WorkerSearchOptions {
     pageData: PageData,
   ) => string[]
 
-  /** A function to filter search results */
+  /**
+   * A function to filter search results
+   *
+   * 用于过滤搜索结果的函数
+   */
   resultsFilter?: (
     results: SearchResult[],
     query: string,
@@ -31,6 +43,11 @@ export interface SearchLocaleOptions extends WorkerSearchOptions {
 }
 
 export interface SearchOptions extends SearchLocaleOptions {
+  /**
+   * Setting different options per locale
+   *
+   * 为每个语言环境设置不同的选项
+   */
   locales?: Record<string, SearchLocaleOptions>
 }
 
@@ -40,6 +57,17 @@ const oramaSymbol: InjectionKey<Ref<SearchOptions>> = Symbol(
   __VUEPRESS_DEV__ ? 'orama' : '',
 )
 
+/**
+ * Set the global search options for the plugin.
+ *
+ * Accepts a plain object, a ref, or a getter function.
+ *
+ * 设置插件的全局搜索选项。
+ *
+ * 接受普通对象、Ref 或 Getter 函数作为参数。
+ *
+ * @param options - Search options 搜索选项
+ */
 export const defineSearchConfig = (
   options: MaybeRefOrGetter<SearchOptions>,
 ): void => {
@@ -59,6 +87,13 @@ export const defineSearchConfig = (
   }
 }
 
+/**
+ * Get the search options for the current route locale.
+ *
+ * 获取当前路由语言环境的搜索选项。
+ *
+ * @returns Search options 搜索选项
+ */
 export const useSearchOptions = (): ComputedRef<SearchLocaleOptions> => {
   const routeLocale = useRouteLocale()
   const options = inject(oramaSymbol)!
@@ -73,6 +108,13 @@ export const useSearchOptions = (): ComputedRef<SearchLocaleOptions> => {
   })
 }
 
+/**
+ * Provide the search options to the app.
+ *
+ * 向应用提供搜索选项。
+ *
+ * @param app - Vue app Vue 应用实例
+ */
 export const injectSearchConfig = (app: App): void => {
   app.provide(oramaSymbol, readonly(searchOptions))
 }

@@ -63,7 +63,14 @@ export const createIndex = (
  * Serialize a live Orama index to JSON-serializable data, including the
  * language used to rebuild the tokenizer.
  *
+ * The language must be embedded separately from `data.language` because the
+ * custom tokenizer captures it when it is created; `load()` only restores the
+ * `tokenizer.language` field, not the tokenizer's behavior.
+ *
  * 将实时的 Orama 索引序列化为可 JSON 序列化的数据，并包含重建分词器所需的语言。
+ *
+ * 语言必须单独嵌入，而不是依赖 `data.language`，因为自定义分词器在创建时捕获了语言； `load()` 只会还原
+ * `tokenizer.language` 字段，而不会还原分词器的行为。
  *
  * @param index - Live Orama index 实时的 Orama 索引
  * @returns Serializable data 可序列化的数据

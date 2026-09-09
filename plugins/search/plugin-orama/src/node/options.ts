@@ -113,7 +113,7 @@ export interface OramaPluginOptions {
    */
   searchDelay?: number
 
-  /*
+  /**
    * Delay to start auto-suggesting after input
    *
    * 结束输入到开始自动建议的延时
@@ -171,8 +171,8 @@ export interface OramaPluginOptions {
    * Result Sort strategy
    *
    * When there are multiple matched results, the result will be sorted by the
-   * strategy. `max` means that page having higher total score will be placed in
-   * front. `total` means that page having higher max score will be placed in
+   * strategy. `max` means that page having higher max score will be placed in
+   * front. `total` means that page having higher total score will be placed in
    * front.
    *
    * 结果排序策略

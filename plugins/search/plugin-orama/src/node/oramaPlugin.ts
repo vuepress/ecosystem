@@ -73,7 +73,12 @@ export const oramaPlugin =
       },
 
       onInitialized: async () => {
-        searchIndexStore = await getSearchIndexStore(app, options, store)
+        searchIndexStore = await getSearchIndexStore(
+          app,
+          options,
+          store,
+          indexesByPage,
+        )
       },
 
       onPrepared: async () => {

@@ -2,7 +2,7 @@ import { insertMultiple, removeMultiple } from '@orama/orama'
 import { entries, keys } from '@vuepress/helper'
 import type { App, Page } from 'vuepress/core'
 
-import { serializeIndex } from '../shared/index.js'
+import { createIndex, serializeIndex } from '../shared/index.js'
 import type { SearchIndex, SearchIndexStore } from '../shared/index.js'
 import { generatePageIndex } from './generateIndex.js'
 import type { OramaPluginOptions } from './options.js'
@@ -99,7 +99,20 @@ export const updateSearchIndex = async (
 ): Promise<void> => {
   const pageIndexes = generatePageIndex(page, store, options)
   const { pathLocale } = page
-  const localeSearchIndex = searchIndexStore[pathLocale]
+
+  // Lazily create the locale index when a page moves to a new locale
+  const localeSearchIndex =
+    searchIndexStore[pathLocale] ??
+    createIndex(
+      app.options.locales[pathLocale]?.lang ?? app.options.lang,
+      null,
+      {
+        tokenizer:
+          options.indexLocaleOptions?.[pathLocale]?.tokenizer ??
+          options.indexOptions?.tokenizer,
+      },
+    )
+  searchIndexStore[pathLocale] = localeSearchIndex
 
   // Remove previous index
   await removeMultiple(localeSearchIndex, indexesByPage.get(page.path) ?? [])

@@ -5,9 +5,9 @@ import type {
   OramaLocaleData,
 } from '../shared/index.js'
 
-type OramaClientCustomFiledConfig = Record<string, OramaCustomFieldFormatter>
+type OramaClientCustomFieldConfig = Record<string, OramaCustomFieldFormatter>
 
-declare const __ORAMA_CUSTOM_FIELDS__: OramaClientCustomFiledConfig
+declare const __ORAMA_CUSTOM_FIELDS__: OramaClientCustomFieldConfig
 declare const __ORAMA_OPTIONS__: {
   searchDelay: number
   suggestDelay: number
