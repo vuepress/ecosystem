@@ -28,8 +28,8 @@ export const generateWorker = async (
   await fs.writeFile(
     workerFilePath,
     workerFileContent
-      .replace('__ORAMA_INDEX__', () => JSON.stringify(searchIndexContent))
-      .replace(
+      .replaceAll('__ORAMA_INDEX__', () => JSON.stringify(searchIndexContent))
+      .replaceAll(
         '__ORAMA_SORT_STRATEGY__',
         JSON.stringify(options.sortStrategy ?? 'max'),
       ),
