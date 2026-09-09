@@ -1,0 +1,78 @@
+import { watchImmediate } from '@vueuse/core'
+import type { App, ComputedRef, InjectionKey, MaybeRefOrGetter, Ref } from 'vue'
+import { computed, inject, isRef, readonly, ref } from 'vue'
+import type { PageData } from 'vuepress/client'
+import { useRouteLocale } from 'vuepress/client'
+import { isFunction } from 'vuepress/shared'
+
+import type { SearchResult, WorkerSearchOptions } from '../../shared/index.js'
+
+declare const __VUEPRESS_DEV__: boolean
+
+export interface SearchLocaleOptions extends WorkerSearchOptions {
+  /** A function to split words */
+  querySplitter?: (query: string, lang: string) => Promise<string[]>
+
+  /** A function to filter suggestions */
+  suggestionsFilter?: (
+    suggestions: string[],
+    query: string,
+    locale: string,
+    pageData: PageData,
+  ) => string[]
+
+  /** A function to filter search results */
+  resultsFilter?: (
+    results: SearchResult[],
+    query: string,
+    locale: string,
+    pageData: PageData,
+  ) => SearchResult[]
+}
+
+export interface SearchOptions extends SearchLocaleOptions {
+  locales?: Record<string, SearchLocaleOptions>
+}
+
+const searchOptions: Ref<SearchOptions> = ref({})
+
+const oramaSymbol: InjectionKey<Ref<SearchOptions>> = Symbol(
+  __VUEPRESS_DEV__ ? 'orama' : '',
+)
+
+export const defineSearchConfig = (
+  options: MaybeRefOrGetter<SearchOptions>,
+): void => {
+  if (isRef(options)) {
+    watchImmediate(
+      () => options.value,
+      (value) => {
+        searchOptions.value = value
+      },
+    )
+  } else if (isFunction(options)) {
+    watchImmediate(computed(options), (value) => {
+      searchOptions.value = value
+    })
+  } else {
+    searchOptions.value = options
+  }
+}
+
+export const useSearchOptions = (): ComputedRef<SearchLocaleOptions> => {
+  const routeLocale = useRouteLocale()
+  const options = inject(oramaSymbol)!
+
+  return computed(() => {
+    const { locales = {}, ...rest } = options.value
+
+    return {
+      ...rest,
+      ...locales[routeLocale.value],
+    }
+  })
+}
+
+export const injectSearchConfig = (app: App): void => {
+  app.provide(oramaSymbol, readonly(searchOptions))
+}
