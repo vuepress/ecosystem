@@ -172,6 +172,7 @@ export const sidebarZh: SidebarOptions = {
     'meilisearch',
     'search',
     'slimsearch',
+    'orama',
   ],
 
   '/zh/plugins/seo/': [

@@ -172,6 +172,7 @@ export const sidebarEn: SidebarOptions = {
     'meilisearch',
     'search',
     'slimsearch',
+    'orama',
   ],
 
   '/plugins/seo/': [
