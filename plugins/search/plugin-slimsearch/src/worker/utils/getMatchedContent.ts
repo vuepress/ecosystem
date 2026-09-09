@@ -14,7 +14,11 @@ export const getMatchedContent = (
   let startIndex = 0
   let contentLength = 0
 
-  const addResult = (text: string, isEnd = false): void => {
+  const addResult = (
+    text: string,
+    isEnd = false,
+    markedText?: string,
+  ): void => {
     let display: string
 
     // A beginning of a long string
@@ -42,8 +46,12 @@ export const getMatchedContent = (
     contentLength += display.length
 
     if (!isEnd) {
-      result.push(['mark', queryString])
-      contentLength += queryString.length
+      // Use the original-cased text from the content for the highlight, so
+      // that the document's case is preserved in the search results
+      const displayMark = markedText ?? queryString
+
+      result.push(['mark', displayMark])
+      contentLength += displayMark.length
 
       if (contentLength >= MAX_LENGTH) result.push(' …')
     }
@@ -56,8 +64,12 @@ export const getMatchedContent = (
   while (matchIndex >= 0) {
     const endIndex = matchIndex + queryStringLowerCase.length
 
-    // Append content before
-    addResult(content.slice(startIndex, matchIndex))
+    // Append content before, highlighting the original-cased matched text
+    addResult(
+      content.slice(startIndex, matchIndex),
+      false,
+      content.slice(matchIndex, endIndex),
+    )
 
     startIndex = endIndex
 
