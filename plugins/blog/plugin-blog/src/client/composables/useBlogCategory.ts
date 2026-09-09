@@ -1,4 +1,4 @@
-import type { ComputedRef } from 'vue'
+import type { ComputedRef, DeepReadonly, ShallowRef } from 'vue'
 import { computed, readonly, shallowRef } from 'vue'
 import { resolveRoute, useData } from 'vuepress/client'
 
@@ -15,7 +15,8 @@ declare const __BLOG_META_SCOPE__: string
 
 const categoryMapRef = shallowRef(categoriesMap)
 
-export const blogCategoryMap = readonly(categoryMapRef)
+export const blogCategoryMap: DeepReadonly<ShallowRef<CategoriesMap>> =
+  readonly(categoryMapRef)
 
 /**
  * Use blog category data

@@ -1,8 +1,6 @@
 import { tsdownConfig } from '../../../scripts/tsdown.ts'
 
-export default tsdownConfig([
-  'node/index',
-  'client/config',
-  'client/index',
-  'client/themeData.d',
-])
+export default tsdownConfig(
+  ['node/index', 'client/config', 'client/index', 'client/themeData.d'],
+  { isolatedDeclarations: true },
+)

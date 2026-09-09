@@ -1,4 +1,5 @@
 import { hasGlobalComponent } from '@vuepress/helper/client'
+import type { ClientConfig } from 'vuepress/client'
 import { defineClientConfig } from 'vuepress/client'
 
 import { setupDarkMode } from '@theme/useDarkMode'
@@ -14,7 +15,7 @@ import '@vuepress/helper/colors.css'
 import '@vuepress/helper/normalize.css'
 import './styles/index.scss'
 
-export default defineClientConfig({
+export const clientConfig: ClientConfig = defineClientConfig({
   enhance({ app, router }) {
     if (!hasGlobalComponent('Badge')) app.component('Badge', Badge)
 
@@ -40,3 +41,5 @@ export default defineClientConfig({
     NotFound,
   },
 })
+
+export default clientConfig
