@@ -473,7 +473,7 @@ terminate()
 ```ts
 interface SearchLocaleOptions extends WorkerSearchOptions {
   /** 分词函数 */
-  querySplitter?: (query: string) => Promise<string[]>
+  querySplitter?: (query: string, lang: string) => Promise<string[]>
 
   /** 建议过滤器函数 */
   suggestionsFilter?: (

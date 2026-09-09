@@ -42,23 +42,19 @@ self.addEventListener(
         ),
       ])
     } else {
-      self.postMessage({
-        suggestions: [
-          type,
-          id,
-          getSuggestions(query, searchLocaleIndex, options),
-        ],
-        results: [
-          type,
-          id,
-          getSearchResults(
+      self.postMessage([
+        type,
+        id,
+        {
+          suggestions: getSuggestions(query, searchLocaleIndex, options),
+          results: getSearchResults(
             query,
             searchLocaleIndex,
             options,
             __ORAMA_SORT_STRATEGY__,
           ),
-        ],
-      })
+        },
+      ])
     }
   },
 )

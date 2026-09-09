@@ -473,7 +473,7 @@ However, to provide more accurate queries, suggestions, and results, we expose `
 ```ts
 interface SearchLocaleOptions extends WorkerSearchOptions {
   /** A function to split words */
-  querySplitter?: (query: string) => Promise<string[]>
+  querySplitter?: (query: string, lang: string) => Promise<string[]>
 
   /** A function to filter suggestions */
   suggestionsFilter?: (

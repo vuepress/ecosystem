@@ -27,17 +27,18 @@ globalThis.onmessage = async ({
       getSearchResults(query, searchLocaleIndex, options, sortStrategy),
     ])
   } else {
-    globalThis.postMessage({
-      suggestions: [
-        type,
-        id,
-        getSuggestions(query, searchLocaleIndex, options),
-      ],
-      results: [
-        type,
-        id,
-        getSearchResults(query, searchLocaleIndex, options, sortStrategy),
-      ],
-    })
+    globalThis.postMessage([
+      type,
+      id,
+      {
+        suggestions: getSuggestions(query, searchLocaleIndex, options),
+        results: getSearchResults(
+          query,
+          searchLocaleIndex,
+          options,
+          sortStrategy,
+        ),
+      },
+    ])
   }
 }

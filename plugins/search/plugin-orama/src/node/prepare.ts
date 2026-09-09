@@ -77,6 +77,40 @@ const writeLocaleIndex = async (
 }
 
 /**
+ * Rewrite the locale chunk, the locale registry and the path store in dev mode
+ * after the search index changes.
+ *
+ * 在开发模式下搜索索引变化后，重写语言分块、语言注册表与路径存储。
+ *
+ * @param app - VuePress app VuePress 应用实例
+ * @param context - Dev context 开发环境上下文
+ * @param locale - The locale to rewrite 需要重写的语言环境
+ * @param index - The index of the locale 该语言环境的索引
+ */
+const writeDevFiles = async (
+  app: App,
+  { searchIndexStore, store }: DevContext,
+  locale: string,
+  index: SearchIndex,
+): Promise<void> => {
+  await Promise.all([
+    writeLocaleIndex(app, locale, index),
+    app.writeTemp(
+      `orama/index.js`,
+      `export default {${keys(searchIndexStore)
+        .map(
+          (localePath) =>
+            `${JSON.stringify(localePath)}: () => import('./${getLocaleChunkName(
+              localePath,
+            )}.js')`,
+        )
+        .join(',')}}`,
+    ),
+    prepareStore(app, store),
+  ])
+}
+
+/**
  * Update the search index of a single page in dev mode.
  *
  * `indexesByPage` in the context maps each page path to the document ids that
@@ -124,8 +158,13 @@ export const updateSearchIndex = async (
 
   await insertMultiple(localeSearchIndex, pageIndexes)
 
-  // Search index file content
-  await writeLocaleIndex(app, pathLocale, localeSearchIndex)
+  // Rewrite dev files
+  await writeDevFiles(
+    app,
+    { searchIndexStore, store, indexesByPage },
+    pathLocale,
+    localeSearchIndex,
+  )
 }
 
 export const removeSearchIndex = async (
@@ -142,6 +181,11 @@ export const removeSearchIndex = async (
   indexesByPage.delete(page.path)
   store.deletePath(page.path)
 
-  // Search index file content
-  await writeLocaleIndex(app, pathLocale, localeSearchIndex)
+  // Rewrite dev files
+  await writeDevFiles(
+    app,
+    { searchIndexStore, store, indexesByPage },
+    pathLocale,
+    localeSearchIndex,
+  )
 }
