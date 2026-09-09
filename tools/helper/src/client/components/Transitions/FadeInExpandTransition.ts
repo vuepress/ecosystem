@@ -1,7 +1,64 @@
-import type { Component, PropType, VNode } from 'vue'
+import type { Component, DefineComponent, PropType, VNode } from 'vue'
 import { Transition, TransitionGroup, defineComponent, h } from 'vue'
 
-export const FadeInExpandTransition = defineComponent({
+/**
+ * Fade-in expand transition component props
+ *
+ * 淡入展开过渡组件的属性
+ */
+export interface FadeInExpandTransitionProps {
+  /**
+   * Whether to group transitions
+   *
+   * 是否分组过渡
+   */
+  group?: boolean
+
+  /**
+   * Whether to enable transition on initial render
+   *
+   * 是否在初始渲染时启用过渡
+   */
+  appear?: boolean
+
+  /**
+   * Whether to switch to the transition of `width`
+   *
+   * 是否切换为 `width` 过渡
+   */
+  width?: boolean
+
+  /**
+   * Transition mode
+   *
+   * 过渡模式
+   */
+  mode?: 'default' | 'in-out' | 'out-in'
+
+  /**
+   * Callback when leave transition starts
+   *
+   * 离开过渡开始时的回调
+   */
+  onLeave?: () => void
+
+  /**
+   * Callback when leave transition ends
+   *
+   * 离开过渡结束时的回调
+   */
+  onAfterLeave?: () => void
+
+  /**
+   * Callback when enter transition ends
+   *
+   * 进入过渡结束时的回调
+   */
+  onAfterEnter?: () => void
+}
+
+export const FadeInExpandTransition: DefineComponent<FadeInExpandTransitionProps> =
+  defineComponent({
   name: 'FadeInExpandTransition',
 
   props: {

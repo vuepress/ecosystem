@@ -36,4 +36,6 @@ export const useLocaleConfig = <Locale extends LocaleData>(
  *
  * `useLocaleConfig` 的简短别名
  */
-export const useLocale = useLocaleConfig
+export const useLocale: <Locale extends LocaleData>(
+  localesConfig: MaybeRef<ExactLocaleConfig<Locale>>,
+) => ComputedRef<Locale> = useLocaleConfig

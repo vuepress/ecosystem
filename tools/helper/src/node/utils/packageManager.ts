@@ -60,7 +60,7 @@ export const isPackageManagerInstalled = (
  * @returns The type of package manager / 包管理器类型
  */
 export const getPackageManagerSetting = (
-  cwd = process.cwd(),
+  cwd: string = process.cwd(),
   deep = true,
 ): PackageManager | null => {
   const key = `package:${cwd}`
@@ -130,7 +130,7 @@ const getLockFileTypeInDir = (dir: string): PackageManager | null => {
  * @returns The type of lock file / 锁文件类型
  */
 export const getTypeofLockFile = (
-  cwd = process.cwd(),
+  cwd: string = process.cwd(),
   deep = true,
 ): PackageManager | null => {
   const key = `local:${cwd}`
@@ -173,7 +173,7 @@ export const getTypeofLockFile = (
  * @returns The type of package manager / 包管理器类型
  */
 export const getPackageManager = (
-  cwd = process.cwd(),
+  cwd: string = process.cwd(),
   deep = true,
 ): PackageManager =>
   getPackageManagerSetting(cwd, deep) ??

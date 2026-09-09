@@ -72,7 +72,7 @@ const serializeHeader = (
 }
 
 export const getHeadersFromDom = (
-  selector = DEFAULT_HEADER_SELECTOR,
+  selector: string = DEFAULT_HEADER_SELECTOR,
   ignore: string[] = [],
 ): HeaderItem[] =>
   [...document.querySelectorAll(selector)]

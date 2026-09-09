@@ -11,6 +11,7 @@
     "declarationMap": false,
     "exactOptionalPropertyTypes": false,
     "forceConsistentCasingInFileNames": true,
+    "isolatedDeclarations": true,
     "isolatedModules": true,
     "newLine": "lf",
     "noEmit": true,

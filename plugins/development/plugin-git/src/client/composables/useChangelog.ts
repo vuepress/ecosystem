@@ -31,7 +31,9 @@ const RE_ISSUE = /#(?<issue>\d+)/gu
  * @param enabled - Whether to enable changelog / 是否启用变更日志
  * @returns Changelog items / 变更日志项目
  */
-export const useChangelog =
+export const useChangelog: (
+  enabled?: MaybeRefOrGetter<boolean>,
+) => ComputedRef<GitChangelogItem[]> =
   typeof __GIT_CHANGELOG__ === 'boolean' && __GIT_CHANGELOG__
     ? (
         enabled: MaybeRefOrGetter<boolean> = true,

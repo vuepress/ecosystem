@@ -121,8 +121,14 @@ export {
 } from 'vuepress/shared'
 
 /* Object helper */
-export const { entries } = Object
-export const { fromEntries } = Object
+export const entries = <ObjectType extends object>(
+  obj: ObjectType,
+): [string, ObjectType[keyof ObjectType]][] =>
+  Object.entries(obj) as [string, ObjectType[keyof ObjectType]][]
+
+export const fromEntries = <ItemType>(
+  entryList: Iterable<readonly [string, ItemType]>,
+): Record<string, ItemType> => Object.fromEntries(entryList)
 
 export const keys = <ObjectType extends object>(
   obj: ObjectType,
@@ -131,4 +137,7 @@ export const keys = <ObjectType extends object>(
     obj,
   ) as `${keyof ObjectType & (string | number | boolean | null | undefined)}`[]
 
-export const { values } = Object
+export const values = <ObjectType extends object>(
+  obj: ObjectType,
+): ObjectType[keyof ObjectType][] =>
+  Object.values(obj) as ObjectType[keyof ObjectType][]

@@ -4,7 +4,10 @@ export const HEADING_INDEX_ID = 'h'
 export const TEXT_INDEX_ID = 't'
 export const CUSTOM_FIELDS_INDEX_ID = 'c'
 
-export const INDEX_FIELD_CONFIG = {
+export const INDEX_FIELD_CONFIG: {
+  fields: string[]
+  storeFields: string[]
+} = {
   fields: [HEADING_INDEX_ID, TEXT_INDEX_ID, CUSTOM_FIELDS_INDEX_ID],
   storeFields: [HEADING_INDEX_ID, TEXT_INDEX_ID, CUSTOM_FIELDS_INDEX_ID],
 }

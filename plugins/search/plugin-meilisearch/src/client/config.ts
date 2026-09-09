@@ -1,5 +1,6 @@
 import type { ExactLocaleConfig } from '@vuepress/helper/client'
 import { h } from 'vue'
+import type { ClientConfig } from 'vuepress/client'
 import { defineClientConfig } from 'vuepress/client'
 
 import type {
@@ -18,7 +19,7 @@ import './styles/vars.css'
 declare const __ML_SEARCH_OPTIONS__: MeiliSearchOptions
 declare const __ML_SEARCH_LOCALES__: ExactLocaleConfig<MeiliSearchLocaleData>
 
-export default defineClientConfig({
+const clientConfig: ClientConfig = defineClientConfig({
   enhance({ app }) {
     app.component('SearchBox', () =>
       h(MeiliSearch, {
@@ -28,3 +29,5 @@ export default defineClientConfig({
     )
   },
 })
+
+export default clientConfig

@@ -18,7 +18,9 @@ declare const __GIT_CONTRIBUTORS__: boolean
  * @param enabled - Whether to enable contributors / 是否启用贡献者
  * @returns The contributors information / 贡献者信息
  */
-export const useContributors =
+export const useContributors: (
+  enabled?: MaybeRefOrGetter<boolean>,
+) => ComputedRef<GitContributorInfo[]> =
   typeof __GIT_CONTRIBUTORS__ === 'boolean' && __GIT_CONTRIBUTORS__
     ? (
         enabled: MaybeRefOrGetter<boolean> = true,

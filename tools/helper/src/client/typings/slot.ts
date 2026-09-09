@@ -1,6 +1,7 @@
 import type { VNode } from 'vue'
 
-const NO_PROPS_MARKER = Symbol('NO_PROPS_MARKER')
+const NO_PROPS_MARKER: unique symbol = Symbol('NO_PROPS_MARKER')
+
 type NoPropsMarker = typeof NO_PROPS_MARKER
 
 export type SlotContent = VNode | VNode[] | string | null | undefined

@@ -4,7 +4,12 @@ export const HEADING_INDEX_ID = 'h'
 export const TEXT_INDEX_ID = 't'
 export const CUSTOM_FIELDS_INDEX_ID = 'c'
 
-export const SCHEMA = {
+export const SCHEMA: {
+  readonly [HEADING_INDEX_ID]: 'string'
+  readonly [TEXT_INDEX_ID]: 'string[]'
+  readonly [CUSTOM_FIELDS_INDEX_ID]: 'string[]'
+  readonly id: 'string'
+} = {
   [HEADING_INDEX_ID]: 'string',
   [TEXT_INDEX_ID]: 'string[]',
   [CUSTOM_FIELDS_INDEX_ID]: 'string[]',

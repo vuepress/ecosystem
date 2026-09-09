@@ -1,6 +1,7 @@
 import RedirectComponent from '@vuepress/plugin-redirect/component'
 import { h } from 'vue'
 import type { VNode } from 'vue'
+import type { ClientConfig } from 'vuepress/client'
 import { defineClientConfig } from 'vuepress/client'
 
 import type { RedirectBehaviorConfig } from '../shared/index.js'
@@ -14,9 +15,9 @@ declare const __REDIRECT_CONFIG__: RedirectBehaviorConfig
 declare const __REDIRECT_LOCALES__: RedirectPluginLocaleConfig
 declare const __REDIRECT_DIRECT__: boolean
 
-export const config = __REDIRECT_CONFIG__
+export const config: RedirectBehaviorConfig = __REDIRECT_CONFIG__
 
-export default defineClientConfig({
+const clientConfig: ClientConfig = defineClientConfig({
   setup() {
     if (__REDIRECT_DIRECT__) setupRedirect(config)
     if (__VUEPRESS_DEV__) setupDevServerRedirect(config)
@@ -33,3 +34,5 @@ export default defineClientConfig({
       }
     : {}),
 })
+
+export default clientConfig

@@ -1,10 +1,11 @@
 import { useEventListener } from '@vueuse/core'
+import type { ClientConfig } from 'vuepress/client'
 import { defineClientConfig } from 'vuepress/client'
 
 import './styles/hint.scss'
 import './styles/vars.css'
 
-export default defineClientConfig({
+const clientConfig: ClientConfig = defineClientConfig({
   setup() {
     // Toggle all <details> open before print
     useEventListener(
@@ -18,3 +19,5 @@ export default defineClientConfig({
     )
   },
 })
+
+export default clientConfig

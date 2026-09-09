@@ -1,4 +1,4 @@
-import type { ComputedRef } from 'vue'
+import type { ComputedRef, DeepReadonly, ShallowRef } from 'vue'
 import { computed, readonly, shallowRef } from 'vue'
 import { resolveRoute, useData } from 'vuepress/client'
 
@@ -15,7 +15,8 @@ declare const __BLOG_META_SCOPE__: string
 
 const typeMapRef = shallowRef(typesMap)
 
-export const blogTypeMap = readonly(typeMapRef)
+export const blogTypeMap: DeepReadonly<ShallowRef<TypesMap>> =
+  readonly(typeMapRef)
 
 /**
  * Use blog type data

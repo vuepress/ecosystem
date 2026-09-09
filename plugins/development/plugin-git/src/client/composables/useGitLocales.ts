@@ -11,7 +11,7 @@ declare const __GIT_LOCALES__: ExactLocaleConfig<GitLocaleData>
  *
  * Git 插件多语言配置
  */
-export const locales =
+export const locales: ExactLocaleConfig<GitLocaleData> =
   typeof __GIT_LOCALES__ === 'undefined' ? {} : __GIT_LOCALES__
 
 /**

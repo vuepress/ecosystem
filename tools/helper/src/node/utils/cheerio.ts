@@ -1,5 +1,5 @@
 import { load } from 'cheerio'
-import type { CheerioOptions } from 'cheerio'
+import type { CheerioAPI, CheerioOptions } from 'cheerio'
 
 export const cheerioOptions: CheerioOptions = {
   xml: {
@@ -9,4 +9,4 @@ export const cheerioOptions: CheerioOptions = {
   },
 }
 
-export const cheerio = load('', cheerioOptions)
+export const cheerio: CheerioAPI = load('', cheerioOptions)
