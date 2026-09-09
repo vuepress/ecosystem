@@ -7,7 +7,7 @@ exports[`generatePageIndex > should generate full index 1`] = `
     "id": "0",
     "t": [
       "Text 1.",
-      "Text 2 with , , , and ., , , and .",
+      "Text 2 with , , , and . , , , and .",
       "Text 11 with , , , and .",
     ],
   },
@@ -21,7 +21,7 @@ exports[`generatePageIndex > should generate full index 2`] = `
     "id": "1",
     "t": [
       "Here is article excerpt.",
-      "const a = 1 ",
+      "const a = 1",
     ],
   },
   {
@@ -32,7 +32,7 @@ exports[`generatePageIndex > should generate full index 2`] = `
       "A",
       "B",
       "C",
-      "const a = 1 ",
+      "const a = 1",
     ],
   },
   {
@@ -115,7 +115,7 @@ exports[`generatePageIndex > should generate full index 3`] = `
     "t": [
       "Create a list by starting a line with -",
       "Make sub-lists by indenting 2 spaces:",
-      "Marker character change forces new list start: ",
+      "Marker character change forces new list start:",
       "Ac tristique libero volutpat at",
       "Facilisis in pretium nisl aliquet",
       "Nulla volutpat aliquam velit link break",
@@ -180,9 +180,9 @@ exports[`generatePageIndex > should generate full index 3`] = `
     "t": [
       "Inline Code: code",
       "Block code:",
-      "Sample text here... ",
+      "Sample text here...",
       "Syntax highlighting:",
-      "function foo(bar) { return \`foo\${bar}\` } console.log(foo(5)) ",
+      "function foo(bar) { return \`foo\${bar}\` } console.log(foo(5))",
     ],
   },
 ]
@@ -496,14 +496,14 @@ exports[`generatePageIndex > should preserve content inside custom tags with pre
     "t": [
       "Human readable content",
       "Human readable content",
-      "Inline , , ",
-      "Human readable content, and ",
+      "Inline , ,",
+      "Human readable content, and",
       "Human readable content mixed together.",
       "Normal content",
-      "Some badges: ",
+      "Some badges:",
       "text1",
       "text2.",
-      "Some other tags: ",
+      "Some other tags:",
       "text3",
       "text4.",
     ],
@@ -518,7 +518,7 @@ exports[`generatePageIndex > should remove custom tags by default > default 1`] 
     "id": "0",
     "t": [
       "Text 1.",
-      "Text 2 with , , , and ., , , and .",
+      "Text 2 with , , , and . , , , and .",
       "Text 11 with , , , and .",
     ],
   },
@@ -705,7 +705,7 @@ exports[`generatePageIndex > should support customFields with full index 1`] = `
     "id": "0",
     "t": [
       "Text 1.",
-      "Text 2 with , , , and ., , , and .",
+      "Text 2 with , , , and . , , , and .",
       "Text 11 with , , , and .",
     ],
   },
@@ -719,7 +719,7 @@ exports[`generatePageIndex > should support customFields with full index 2`] = `
     "id": "1",
     "t": [
       "Here is article excerpt.",
-      "const a = 1 ",
+      "const a = 1",
     ],
   },
   {
@@ -730,7 +730,7 @@ exports[`generatePageIndex > should support customFields with full index 2`] = `
       "A",
       "B",
       "C",
-      "const a = 1 ",
+      "const a = 1",
     ],
   },
   {
@@ -819,7 +819,7 @@ exports[`generatePageIndex > should support customFields with full index 3`] = `
     "t": [
       "Create a list by starting a line with -",
       "Make sub-lists by indenting 2 spaces:",
-      "Marker character change forces new list start: ",
+      "Marker character change forces new list start:",
       "Ac tristique libero volutpat at",
       "Facilisis in pretium nisl aliquet",
       "Nulla volutpat aliquam velit link break",
@@ -884,9 +884,9 @@ exports[`generatePageIndex > should support customFields with full index 3`] = `
     "t": [
       "Inline Code: code",
       "Block code:",
-      "Sample text here... ",
+      "Sample text here...",
       "Syntax highlighting:",
-      "function foo(bar) { return \`foo\${bar}\` } console.log(foo(5)) ",
+      "function foo(bar) { return \`foo\${bar}\` } console.log(foo(5))",
     ],
   },
 ]
