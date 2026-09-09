@@ -21,6 +21,21 @@ describe(getMatchedContent, () => {
     ])
   })
 
+  it('should preserve the original case of the content', () => {
+    expect(getMatchedContent('Hello World', 'hello')).toStrictEqual([
+      ['mark', 'Hello'],
+      ' World',
+    ])
+    expect(getMatchedContent('The Quick Brown Fox', 'quick')).toStrictEqual([
+      'The ',
+      ['mark', 'Quick'],
+      ' Brown Fox',
+    ])
+    expect(getMatchedContent('VuePress Search Plugin', 'search')).toStrictEqual(
+      ['VuePress ', ['mark', 'Search'], ' Plugin'],
+    )
+  })
+
   it('should return null if no content is matched', () => {
     expect(getMatchedContent('b c d', 'a')).toBeNull()
   })
@@ -92,11 +107,11 @@ describe(getMatchedContent, () => {
     ).toStrictEqual([
       ['mark', 'T'],
       'he apple is red, and …  apple is red, and i',
-      ['mark', 'T'],
+      ['mark', 't'],
       "'s veeeeeeeeeeeeeeee … eeeeeery delicious. ",
       ['mark', 'T'],
       'he banana is yellow, … ana is yellow, and i',
-      ['mark', 'T'],
+      ['mark', 't'],
       ' …',
     ])
 
