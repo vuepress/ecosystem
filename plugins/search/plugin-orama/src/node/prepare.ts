@@ -2,7 +2,7 @@ import { insertMultiple, removeMultiple } from '@orama/orama'
 import { entries, keys } from '@vuepress/helper'
 import type { App, Page } from 'vuepress/core'
 
-import { createIndex, serializeIndex } from '../shared/index.js'
+import { createIndex, encodeIndex } from '../shared/index.js'
 import type { SearchIndex, SearchIndexStore } from '../shared/index.js'
 import { generatePageIndex } from './generateIndex.js'
 import type { OramaPluginOptions } from './options.js'
@@ -29,7 +29,7 @@ export const prepareSearchIndex = async (
     entries(searchIndexStore).map(([locale, index]) =>
       app.writeTemp(
         `orama/${getLocaleChunkName(locale)}.js`,
-        `export default ${JSON.stringify(JSON.stringify(serializeIndex(index)))}`,
+        `export default ${JSON.stringify(encodeIndex(index))}`,
       ),
     ),
   )
@@ -72,7 +72,7 @@ const writeLocaleIndex = async (
 ): Promise<void> => {
   await app.writeTemp(
     `orama/${getLocaleChunkName(locale)}.js`,
-    `export default ${JSON.stringify(JSON.stringify(serializeIndex(index)))}`,
+    `export default ${JSON.stringify(encodeIndex(index))}`,
   )
 }
 

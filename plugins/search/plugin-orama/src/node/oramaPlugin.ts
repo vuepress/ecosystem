@@ -68,6 +68,7 @@ export const oramaPlugin =
         addViteSsrNoExternal(bundlerOptions, app, [
           '@orama/orama',
           '@vuepress/helper',
+          'fflate',
           'vuepress-shared',
         ])
       },

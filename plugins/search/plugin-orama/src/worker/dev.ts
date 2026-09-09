@@ -1,8 +1,8 @@
 import database from '@temp/orama/index.js'
 import { sortStrategy } from '@temp/orama/worker-options.js'
 
-import { createIndex } from '../shared/index.js'
-import type { SerializedIndex, WorkerMessageData } from '../shared/index.js'
+import { decodeIndex } from '../shared/index.js'
+import type { WorkerMessageData } from '../shared/index.js'
 import { getSearchResults, getSuggestions } from './utils/index.js'
 
 // oxlint-disable-next-line unicorn/prefer-add-event-listener
@@ -20,10 +20,8 @@ globalThis.onmessage = async ({
     return
   }
 
-  const { default: localeIndex } = await loadLocaleIndex()
-
-  const { lang, data } = JSON.parse(localeIndex) as SerializedIndex
-  const searchLocaleIndex = createIndex(lang, data)
+  const { default: encoded } = await loadLocaleIndex()
+  const searchLocaleIndex = decodeIndex(encoded)
 
   if (type === 'suggest') {
     globalThis.postMessage([

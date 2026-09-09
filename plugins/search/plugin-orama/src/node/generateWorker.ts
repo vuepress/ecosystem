@@ -2,7 +2,7 @@ import { entries, fromEntries } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { fs, path } from 'vuepress/utils'
 
-import { serializeIndex } from '../shared/index.js'
+import { encodeIndex } from '../shared/index.js'
 import type { SearchIndexStore } from '../shared/index.js'
 import type { OramaPluginOptions } from './options.js'
 import { WORKER_FILE } from './utils.js'
@@ -17,7 +17,7 @@ export const generateWorker = async (
     fromEntries(
       entries(searchStore).map(([locale, index]) => [
         locale,
-        serializeIndex(index),
+        encodeIndex(index),
       ]),
     ),
   )

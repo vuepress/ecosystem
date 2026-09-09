@@ -1,19 +1,15 @@
 import { entries, fromEntries } from '@vuepress/helper/client'
 
-import { createIndex } from '../shared/index.js'
-import type {
-  SearchIndexStore,
-  SerializedIndex,
-  WorkerMessageData,
-} from '../shared/index.js'
+import { decodeIndex } from '../shared/index.js'
+import type { SearchIndexStore, WorkerMessageData } from '../shared/index.js'
 import { getSearchResults, getSuggestions } from './utils/index.js'
 
 declare const __ORAMA_INDEX__: string
 declare const __ORAMA_SORT_STRATEGY__: 'max' | 'total'
 
 const searchIndex: SearchIndexStore = fromEntries(
-  entries(JSON.parse(__ORAMA_INDEX__) as Record<string, SerializedIndex>).map(
-    ([localePath, { lang, data }]) => [localePath, createIndex(lang, data)],
+  entries(JSON.parse(__ORAMA_INDEX__) as Record<string, string>).map(
+    ([localePath, encoded]) => [localePath, decodeIndex(encoded)],
   ),
 )
 

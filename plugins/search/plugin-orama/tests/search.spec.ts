@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest'
 
-import { createIndex, serializeIndex } from '../src/shared/index.js'
+import {
+  createIndex,
+  decodeIndex,
+  encodeIndex,
+  serializeIndex,
+} from '../src/shared/index.js'
 import type { IndexItem } from '../src/shared/index.js'
 import { getSearchResults } from '../src/worker/utils/getSearchResults.js'
 import { getSuggestions } from '../src/worker/utils/getSuggestions.js'
@@ -72,6 +77,24 @@ describe('createIndex and serializeIndex', () => {
     const results = getSearchResults('vuepress', restored)
     expect(results).toHaveLength(1)
     expect(results[0].title).toBe('VuePress plugin')
+  })
+
+  it('should roundtrip through gzip encoding', async () => {
+    const index = createIndex('en')
+    const { insertMultiple } = await import('@orama/orama')
+
+    await insertMultiple(index, docs)
+
+    const encoded = encodeIndex(index)
+    const restored = decodeIndex(encoded)
+
+    const results = getSearchResults('vuepress', restored)
+    expect(results).toHaveLength(1)
+    expect(results[0].title).toBe('VuePress plugin')
+
+    // Compression should shrink the payload
+    const raw = JSON.stringify(serializeIndex(index))
+    expect(encoded.length).toBeLessThan(raw.length)
   })
 
   it('should not match the document id', async () => {
