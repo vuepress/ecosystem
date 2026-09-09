@@ -26,10 +26,15 @@ export const getSuggestions = (
   localeIndex: SearchIndex,
   searchOptions: WorkerSearchOptions = {},
 ): string[] => {
+  const { properties, ...rest } = searchOptions
+
   const results = search(localeIndex, {
     term: query,
     limit: 10,
-    ...searchOptions,
+    ...rest,
+    ...(properties
+      ? { properties: properties === '*' ? properties : [...properties] }
+      : {}),
   })
 
   // Use the last token of the query for prefix matching, so that a multi-word

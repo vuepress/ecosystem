@@ -1,4 +1,5 @@
 import { getByID, search } from '@orama/orama'
+import type { SearchParamsFullText } from '@orama/orama'
 import { entries } from '@vuepress/helper/shared'
 
 import {
@@ -25,6 +26,36 @@ interface PageResult {
 
 type ResultMap = Record<number, PageResult>
 
+/**
+ * Perform a search with the given options, converting the readonly properties
+ * array back to a mutable one for Orama.
+ *
+ * 使用给定选项执行搜索，并将只读的 properties 数组转换回可变的以适配 Orama。
+ *
+ * @param localeIndex - Locale search index 语言搜索索引
+ * @param query - Search query 搜索词
+ * @param searchOptions - Search options 搜索选项
+ * @param extra - Extra search params 额外搜索参数
+ * @returns Orama search results Orama 搜索结果
+ */
+const searchWithOptions = (
+  localeIndex: SearchIndex,
+  query: string,
+  searchOptions: WorkerSearchOptions,
+  extra: Partial<SearchParamsFullText<SearchIndex, IndexItem>>,
+): ReturnType<typeof search<SearchIndex, IndexItem>> => {
+  const { properties, ...rest } = searchOptions
+
+  return search(localeIndex, {
+    term: query,
+    ...extra,
+    ...rest,
+    ...(properties
+      ? { properties: properties === '*' ? properties : [...properties] }
+      : {}),
+  })
+}
+
 const sortResultByTotal = (valueA: PageResult, valueB: PageResult): number =>
   valueB.contents.reduce((total, [, score]) => total + score, 0) -
   valueA.contents.reduce((total, [, score]) => total + score, 0)
@@ -45,15 +76,13 @@ export const getSearchResults = (
   // that CJK and case handling are consistent
   const displayTerms = localeIndex.tokenizer.tokenize(query)
 
-  const results = search(localeIndex, {
-    term: query,
+  const results = searchWithOptions(localeIndex, query, searchOptions, {
     boost: {
       [CUSTOM_FIELDS_INDEX_ID]: 4,
       [HEADING_INDEX_ID]: 2,
       [TEXT_INDEX_ID]: 1,
     },
     limit: 100,
-    ...searchOptions,
   })
 
   ;(

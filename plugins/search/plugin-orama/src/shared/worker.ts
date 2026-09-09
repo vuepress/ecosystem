@@ -1,6 +1,8 @@
 import type { SearchParamsFullText } from '@orama/orama'
 
-import type { IndexItem, SearchIndex } from './data.js'
+import type { IndexItem, SCHEMA, SearchIndex } from './data.js'
+
+export type SearchableProperty = keyof typeof SCHEMA
 
 export type WorkerSearchOptions = Omit<
   Pick<
@@ -26,7 +28,7 @@ export type WorkerSearchOptions = Omit<
    *
    * 接受只读数组，因为该选项在通过只读 ref 注入时可能会变为只读。
    */
-  properties?: '*' | readonly string[]
+  properties?: '*' | readonly SearchableProperty[]
 }
 
 export interface WorkerMessageData {
