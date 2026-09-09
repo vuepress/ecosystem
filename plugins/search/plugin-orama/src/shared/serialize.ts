@@ -1,0 +1,74 @@
+import { create, load, save } from '@orama/orama'
+import type { RawData, Tokenizer } from '@orama/orama'
+
+import { SCHEMA } from './data.js'
+import type { SearchIndex } from './data.js'
+import { createTokenizer } from './tokenizer.js'
+
+export interface CreateIndexOptions {
+  /**
+   * Custom tokenizer factory
+   *
+   * When not provided, a tokenizer based on `Intl.Segmenter` will be created
+   * for the given language.
+   *
+   * 自定义分词器工厂
+   *
+   * 未提供时，会为给定语言创建基于 `Intl.Segmenter` 的分词器。
+   */
+  tokenizer?: (language: string) => Tokenizer
+}
+
+export interface SerializedIndex {
+  /** Language of the index 索引的语言 */
+  lang: string
+  /** Serialized index data 序列化的索引数据 */
+  data: RawData
+}
+
+/**
+ * Create a fresh Orama index instance, optionally restoring serialized data.
+ *
+ * The tokenizer is recreated from the language because it cannot be serialized.
+ *
+ * 创建全新的 Orama 索引实例，可选择还原序列化的数据。
+ *
+ * 分词器无法被序列化，因此会根据语言重新创建。
+ *
+ * @param lang - Language 语言
+ * @param data - Serialized index data 序列化的索引数据
+ * @param options - Index options 索引选项
+ * @returns Orama index Orama 索引
+ */
+export const createIndex = (
+  lang: string,
+  data?: RawData | null,
+  options: CreateIndexOptions = {},
+): SearchIndex => {
+  const index = create({
+    schema: SCHEMA,
+    components: {
+      tokenizer: options.tokenizer
+        ? options.tokenizer(lang)
+        : createTokenizer(lang),
+    },
+  })
+
+  if (data) load(index, data)
+
+  return index
+}
+
+/**
+ * Serialize a live Orama index to JSON-serializable data, including the
+ * language used to rebuild the tokenizer.
+ *
+ * 将实时的 Orama 索引序列化为可 JSON 序列化的数据，并包含重建分词器所需的语言。
+ *
+ * @param index - Live Orama index 实时的 Orama 索引
+ * @returns Serializable data 可序列化的数据
+ */
+export const serializeIndex = (index: SearchIndex): SerializedIndex => ({
+  lang: index.tokenizer.language,
+  data: save(index),
+})
