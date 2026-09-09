@@ -1,6 +1,8 @@
+import { entries, fromEntries } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { fs, path } from 'vuepress/utils'
 
+import { encodeJSON } from '../shared/index.js'
 import type { SearchIndexStore } from '../shared/index.js'
 import type { SlimSearchPluginOptions } from './options.js'
 import { WORKER_FILE } from './utils.js'
@@ -11,7 +13,14 @@ export const generateWorker = async (
   searchStore: SearchIndexStore,
 ): Promise<void> => {
   const workerFilePath = app.dir.dest(options.worker ?? 'slimsearch.worker.js')
-  const searchIndexContent = JSON.stringify(searchStore)
+  const searchIndexContent = JSON.stringify(
+    fromEntries(
+      entries(searchStore).map(([locale, index]) => [
+        locale,
+        encodeJSON(index),
+      ]),
+    ),
+  )
 
   const workerFileContent = await fs.readFile(WORKER_FILE, 'utf-8')
 
@@ -19,8 +28,10 @@ export const generateWorker = async (
   await fs.writeFile(
     workerFilePath,
     workerFileContent
-      .replace('__SLIMSEARCH_INDEX__', () => JSON.stringify(searchIndexContent))
-      .replace(
+      .replaceAll('__SLIMSEARCH_INDEX__', () =>
+        JSON.stringify(searchIndexContent),
+      )
+      .replaceAll(
         '__SLIMSEARCH_SORT_STRATEGY__',
         JSON.stringify(options.sortStrategy ?? 'max'),
       ),
