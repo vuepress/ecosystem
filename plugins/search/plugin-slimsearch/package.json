@@ -55,6 +55,7 @@
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "cheerio": "^1.2.0",
+    "fflate": "^0.8.3",
     "slimsearch": "^3.0.0",
     "vue": "catalog:"
   },

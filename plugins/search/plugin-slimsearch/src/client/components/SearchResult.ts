@@ -1,11 +1,11 @@
 // oxlint-disable max-lines-per-function
-import { isPlainObject, isString, useLocale } from '@vuepress/helper/client'
+import { isPlainObject, useLocale } from '@vuepress/helper/client'
 import { useEventListener } from '@vueuse/core'
 import type { PropType, VNode } from 'vue'
 import { computed, defineComponent, h, reactive, ref, toRef, watch } from 'vue'
 import { RouteLink, useRouteLocale, useRouter } from 'vuepress/client'
 
-import type { MatchedItem, Word } from '../../shared/index.js'
+import type { MatchedContent, MatchedItem } from '../../shared/index.js'
 import {
   useQueryHistory,
   useResultHistory,
@@ -19,8 +19,26 @@ import { SearchLoading } from './SearchLoading.js'
 
 import '../styles/search-result.scss'
 
-const wordToVNodes = (display: Word[]): (VNode | string)[] =>
-  display.map((word) => (isString(word) ? word : h(word[0], word[1])))
+const renderMatchedContent = ({
+  text,
+  highlights,
+}: MatchedContent): (VNode | string)[] => {
+  const nodes: (VNode | string)[] = []
+  let cursor = 0
+
+  for (let i = 0; i < highlights.length; i += 2) {
+    const start = highlights[i]
+    const end = highlights[i + 1]
+
+    if (start > cursor) nodes.push(text.slice(cursor, start))
+    nodes.push(h('mark', text.slice(start, end)))
+    cursor = end
+  }
+
+  if (cursor < text.length) nodes.push(text.slice(cursor))
+
+  return nodes
+}
 
 export default defineComponent({
   name: 'SearchResult',
@@ -152,13 +170,13 @@ export default defineComponent({
             : formatterConfig) ?? ''
         ).split('$content')
 
-        return matchedItem.display.map((display) =>
-          h('div', wordToVNodes([prefix, ...display, suffix])),
+        return matchedItem.display.map((content) =>
+          h('div', [prefix, ...renderMatchedContent(content), suffix]),
         )
       }
 
-      return matchedItem.display.map((display) =>
-        h('div', wordToVNodes(display)),
+      return matchedItem.display.map((content) =>
+        h('div', renderMatchedContent(content)),
       )
     }
 
@@ -271,8 +289,8 @@ export default defineComponent({
                             : null,
                           h(
                             'div',
-                            item.display.flatMap((display) =>
-                              wordToVNodes(display),
+                            item.display.flatMap((content) =>
+                              renderMatchedContent(content),
                             ),
                           ),
                         ]),

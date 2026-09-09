@@ -1,5 +1,6 @@
 export type SlimSearchSortStrategy = 'max' | 'total'
 
+export * from './compress.js'
 export * from './data.js'
 export type * from './formatter.js'
 export type * from './locales.js'

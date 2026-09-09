@@ -1,16 +1,24 @@
-export type Word = string | [tag: string, content: string]
+export interface MatchedContent {
+  /** The snippet text (original case preserved) */
+  text: string
+  /**
+   * Flat list of highlight ranges: [start0, end0, start1, end1, ...] into
+   * `text`
+   */
+  highlights: number[]
+}
 
 export interface TitleMatchedItem {
   type: 'title'
   id: number
-  display: Word[][]
+  display: MatchedContent[]
 }
 
 export interface HeadingMatchedItem {
   type: 'heading'
   id: number
   anchor: string
-  display: Word[][]
+  display: MatchedContent[]
 }
 
 export interface ContentMatchedItem {
@@ -18,14 +26,14 @@ export interface ContentMatchedItem {
   id: number
   header?: string
   anchor?: string
-  display: Word[][]
+  display: MatchedContent[]
 }
 
 export interface CustomMatchedItem {
   type: 'customField'
   id: number
   index: string
-  display: Word[][]
+  display: MatchedContent[]
 }
 
 export type MatchedItem =
