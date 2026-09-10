@@ -1,4 +1,3 @@
-/* oxlint-disable max-lines */
 /**
  * Icons of file extensions
  *
@@ -13,627 +12,325 @@
  * 数据源：@yutengjing/vscode-icons@0.1.1
  */
 
-import type { IconIndex } from '../types.js'
+import { parseIconIndex } from '../parseIndex.js'
 
-export const extensions: IconIndex = {
-  'vscode-icons:file-type-access': [
-    'accda',
-    'accdb',
-    'accdc',
-    'accde',
-    'accdp',
-    'accdr',
-    'accdt',
-    'accdu',
-    'ade',
-    'adp',
-    'laccdb',
-    'ldb',
-    'mam',
-    'maq',
-    'mdb',
-    'mdw',
-  ],
-  'vscode-icons:file-type-affinity': ['af', 'aftemplate'],
-  'vscode-icons:file-type-affinitydesigner': ['afdesign', 'affinitydesigner'],
-  'vscode-icons:file-type-affinityphoto': ['affinityphoto', 'afphoto'],
-  'vscode-icons:file-type-affinitypublisher': ['affinitypublisher', 'afpub'],
-  'vscode-icons:file-type-ai': ['ai'],
-  'vscode-icons:file-type-al-dal': ['dal'],
-  'vscode-icons:file-type-appscript': ['gs'],
-  'vscode-icons:file-type-arduino': ['ino', 'pde'],
-  'vscode-icons:file-type-asciidoc': ['adoc', 'asciidoc'],
-  'vscode-icons:file-type-aseprite': ['ase', 'aseprite'],
-  'vscode-icons:file-type-aspx': ['ascx', 'aspx'],
-  'vscode-icons:file-type-assembly': ['asm', 's'],
-  'vscode-icons:file-type-astro': ['astro'],
-  'vscode-icons:file-type-atom': ['atom'],
-  'vscode-icons:file-type-audio': [
-    'aac',
-    'act',
-    'aiff',
-    'amr',
-    'ape',
-    'au',
-    'dct',
-    'dss',
-    'dvf',
-    'flac',
-    'gsm',
-    'iklax',
-    'ivs',
-    'm4a',
-    'm4b',
-    'm4p',
-    'mmf',
-    'mogg',
-    'mp3',
-    'mpc',
-    'msv',
-    'oga',
-    'ogg',
-    'opus',
-    'ra',
-    'raw',
-    'tta',
-    'vox',
-    'wav',
-    'wma',
-  ],
-  'vscode-icons:file-type-avif': ['avif'],
-  'vscode-icons:file-type-awk': ['awk'],
-  'vscode-icons:file-type-bak': ['back', 'backup', 'bak'],
-  'vscode-icons:file-type-bat': ['bat', 'cmd'],
-  'vscode-icons:file-type-bicep': ['bicep'],
-  'vscode-icons:file-type-binary': [
-    'a',
-    'app',
-    'bin',
-    'cma',
-    'cmi',
-    'cmo',
-    'cmx',
-    'cmxa',
-    'dll',
-    'exe',
-    'hl',
-    'ilk',
-    'lib',
-    'n',
-    'ndll',
-    'o',
-    'obj',
-    'pdb',
-    'pyc',
-    'pyd',
-    'pyo',
-    'scpt',
-    'scptd',
-    'so',
-  ],
-  'vscode-icons:file-type-blender': ['blend'],
-  'vscode-icons:file-type-blitzbasic': ['bb'],
-  'vscode-icons:file-type-buf': [
-    'buf.gen.yaml',
-    'buf.gen.yml',
-    'buf.work.yaml',
-    'buf.work.yml',
-    'buf.yaml',
-    'buf.yml',
-  ],
-  'vscode-icons:file-type-bundler': ['gemfile', 'gemfile.lock'],
-  'vscode-icons:file-type-c': ['c'],
-  'vscode-icons:file-type-cake': ['cake'],
-  'vscode-icons:file-type-cert': [
-    'cer',
-    'crl',
-    'crt',
-    'csr',
-    'der',
-    'p12',
-    'p7b',
-    'p7r',
-    'pfx',
-    'src',
-    'sst',
-    'stl',
-  ],
-  'vscode-icons:file-type-cf': ['lucee'],
-  'vscode-icons:file-type-cheader': ['h'],
-  'vscode-icons:file-type-class': ['class'],
-  'vscode-icons:file-type-clojure': ['cjm', 'clj', 'cljc'],
-  'vscode-icons:file-type-clojurescript': ['cljs'],
-  'vscode-icons:file-type-cmake': ['cmake'],
-  'vscode-icons:file-type-cobol': ['cbl', 'cob'],
-  'vscode-icons:file-type-codekit': ['kit'],
-  'vscode-icons:file-type-coffeescript': ['coffee'],
-  'vscode-icons:file-type-config': ['plist', 'properties'],
-  'vscode-icons:file-type-coverage': ['lcov'],
-  'vscode-icons:file-type-cpp': ['cc', 'cpp', 'cxx'],
-  'vscode-icons:file-type-cppheader': ['h++', 'hh', 'hpp', 'hxx'],
-  'vscode-icons:file-type-crystal': ['cr', 'crystal'],
-  'vscode-icons:file-type-csharp': ['cs', 'csx'],
-  'vscode-icons:file-type-csproj': ['csproj'],
-  'vscode-icons:file-type-css': ['css'],
-  'vscode-icons:file-type-cssmap': ['css.map'],
-  'vscode-icons:file-type-cue': ['cue'],
-  'vscode-icons:file-type-cypress-spec': [
-    'cy.cjs',
-    'cy.coffee',
-    'cy.js',
-    'cy.jsx',
-    'cy.mjs',
-    'cy.ts',
-    'cy.tsx',
-  ],
-  'vscode-icons:file-type-dartlang': ['dart'],
-  'vscode-icons:file-type-dartlang-generated': ['freezed.dart', 'g.dart'],
-  'vscode-icons:file-type-db': ['db'],
-  'vscode-icons:file-type-debian': ['deb'],
-  'vscode-icons:file-type-delphi': ['pas', 'pp'],
-  'vscode-icons:file-type-design-tokens': [
-    'resolver.json',
-    'resolver.json5',
-    'resolver.jsonc',
-    'tokens.json',
-    'tokens.json5',
-    'tokens.jsonc',
-  ],
-  'vscode-icons:file-type-diff': ['diff'],
-  'vscode-icons:file-type-django': ['djt'],
-  'vscode-icons:file-type-dlang': ['d'],
-  'vscode-icons:file-type-docpad': ['eco'],
-  'vscode-icons:file-type-dotenv': ['env'],
-  'vscode-icons:file-type-drawio': [
-    'dio',
-    'dio.png',
-    'dio.svg',
-    'drawio',
-    'drawio.png',
-    'drawio.svg',
-  ],
-  'vscode-icons:file-type-dtd': ['dtd'],
-  'vscode-icons:file-type-duckdb': ['duckdb'],
-  'vscode-icons:file-type-editorconfig': ['editorconfig'],
-  'vscode-icons:file-type-eex': ['eex', 'heex', 'html-heex', 'phoenix-heex'],
-  'vscode-icons:file-type-ejs': ['ejs'],
-  'vscode-icons:file-type-elixir': ['ex', 'exs'],
-  'vscode-icons:file-type-elm': ['elm'],
-  'vscode-icons:file-type-emacs': ['el', 'elc'],
-  'vscode-icons:file-type-ensime': ['ensime'],
-  'vscode-icons:file-type-eps': ['eps'],
-  'vscode-icons:file-type-epub': ['epub'],
-  'vscode-icons:file-type-erlang': ['erl', 'hrl'],
-  'vscode-icons:file-type-excalidraw': [
-    'excalidraw',
-    'excalidraw.json',
-    'excalidraw.png',
-    'excalidraw.svg',
-  ],
-  'vscode-icons:file-type-excel': ['xls', 'xlsb', 'xlsm', 'xlsx'],
-  'vscode-icons:file-type-fbx': ['fbx'],
-  'vscode-icons:file-type-fitbit': ['fba'],
-  'vscode-icons:file-type-fla': ['fla'],
-  'vscode-icons:file-type-flash': ['swc', 'swf'],
-  'vscode-icons:file-type-flow': ['js.flow'],
-  'vscode-icons:file-type-flowgorithm': ['fprg'],
-  'vscode-icons:file-type-font': [
-    'eot',
-    'pfa',
-    'pfb',
-    'sfd',
-    'ttf',
-    'woff',
-    'woff2',
-  ],
-  'vscode-icons:file-type-fortran': ['f', 'f90', 'f95', 'for'],
-  'vscode-icons:file-type-fritzing': [
-    'fz',
-    'fzb',
-    'fzbz',
-    'fzp',
-    'fzpz',
-    'fzz',
-  ],
-  'vscode-icons:file-type-fsharp': ['fs', 'fsx'],
-  'vscode-icons:file-type-fsproj': ['fsproj'],
-  'vscode-icons:file-type-gamemaker': ['gmx'],
-  'vscode-icons:file-type-gamemaker2': ['yy', 'yyp'],
-  'vscode-icons:file-type-gduid': ['gd.uid'],
-  'vscode-icons:file-type-geojson': ['geojson'],
-  'vscode-icons:file-type-gimp': ['xcf'],
-  'vscode-icons:file-type-git': ['dockerignore', 'gitignore'],
-  'vscode-icons:file-type-gleam': ['gleam'],
-  'vscode-icons:file-type-glsl': ['frag', 'glsl', 'vert'],
-  'vscode-icons:file-type-gltf': ['glb', 'gltf'],
-  'vscode-icons:file-type-gnu': ['am', 'ld', 'm4', 'makefile'],
-  'vscode-icons:file-type-go': ['go'],
-  'vscode-icons:file-type-godot': ['godot'],
-  'vscode-icons:file-type-gpg': ['gpg', 'pgp'],
-  'vscode-icons:file-type-gradle': ['gradle'],
-  'vscode-icons:file-type-grain': ['gr'],
-  'vscode-icons:file-type-graphql': ['gql', 'graphql'],
-  'vscode-icons:file-type-groovy': ['groovy', 'gvy'],
-  'vscode-icons:file-type-haml': ['haml'],
-  'vscode-icons:file-type-handlebars': ['handlebars', 'hbs'],
-  'vscode-icons:file-type-hashicorp': ['hcl', 'hcl2', 'sentinel'],
-  'vscode-icons:file-type-haskell': ['hs', 'lhs'],
-  'vscode-icons:file-type-haxedevelop': ['hxproj'],
-  'vscode-icons:file-type-hlsl': ['hlsl'],
-  'vscode-icons:file-type-html': ['htm', 'html'],
-  'vscode-icons:file-type-hygen': ['ejs.t'],
-  'vscode-icons:file-type-idris': ['idr', 'lidr'],
-  'vscode-icons:file-type-idrisbin': ['ibc'],
-  'vscode-icons:file-type-idrispkg': ['ipkg'],
-  'vscode-icons:file-type-image': [
-    'bmp',
-    'gif',
-    'heic',
-    'icns',
-    'ico',
-    'jpeg',
-    'jpg',
-    'png',
-    'tiff',
-    'webp',
-  ],
-  'vscode-icons:file-type-imba': ['imba', 'imba2'],
-  'vscode-icons:file-type-inc': ['inc', 'include'],
-  'vscode-icons:file-type-infopath': ['infopathxml', 'xsf', 'xsn', 'xtp2'],
-  'vscode-icons:file-type-ini': ['ini'],
-  'vscode-icons:file-type-jar': ['jar'],
-  'vscode-icons:file-type-java': ['java'],
-  'vscode-icons:file-type-jbuilder': ['jbuilder'],
-  'vscode-icons:file-type-jetbrains': ['iml'],
-  'vscode-icons:file-type-js': ['js', 'mjs'],
-  'vscode-icons:file-type-jsmap': ['cjs.map', 'js.map', 'mjs.map'],
-  'vscode-icons:file-type-json': ['json', 'jsonc', 'jsonl', 'ndjson'],
-  'vscode-icons:file-type-json-schema': ['schema.json'],
-  'vscode-icons:file-type-json5': ['json5'],
-  'vscode-icons:file-type-jsonld': ['json-ld', 'jsonld'],
-  'vscode-icons:file-type-jsp': ['jsp'],
-  'vscode-icons:file-type-jss': ['jss'],
-  'vscode-icons:file-type-juice': ['juice'],
-  'vscode-icons:file-type-julia': ['jl'],
-  'vscode-icons:file-type-jupyter': ['ipynb'],
-  'vscode-icons:file-type-key': ['key', 'pem'],
-  'vscode-icons:file-type-kotlin': ['kt', 'ktm', 'kts'],
-  'vscode-icons:file-type-language-configuration': [
-    'language-configuration.json',
-  ],
-  'vscode-icons:file-type-layout': ['layout.htm', 'layout.html', 'master'],
-  'vscode-icons:file-type-lemon': ['lemon'],
-  'vscode-icons:file-type-less': ['less'],
-  'vscode-icons:file-type-libreoffice-base': ['odb', 'otb'],
-  'vscode-icons:file-type-libreoffice-calc': ['fods', 'ods', 'ots'],
-  'vscode-icons:file-type-libreoffice-draw': ['odg', 'otg'],
-  'vscode-icons:file-type-libreoffice-impress': ['odp', 'otp'],
-  'vscode-icons:file-type-libreoffice-math': ['odf', 'otf'],
-  'vscode-icons:file-type-libreoffice-writer': ['odt', 'ott'],
-  'vscode-icons:file-type-license': ['enc', 'lic', 'license'],
-  'vscode-icons:file-type-lime': ['hxp'],
-  'vscode-icons:file-type-livescript': ['ls'],
-  'vscode-icons:file-type-lnk': ['lnk'],
-  'vscode-icons:file-type-log': ['log', 'tlg'],
-  'vscode-icons:file-type-lua': ['lua'],
-  'vscode-icons:file-type-luau': ['luau'],
-  'vscode-icons:file-type-lync': ['crec', 'ocrec'],
-  'vscode-icons:file-type-map': ['map'],
-  'vscode-icons:file-type-markdown': ['markdown', 'md', 'mdown'],
-  'vscode-icons:file-type-markojs': ['marko.js'],
-  'vscode-icons:file-type-matlab': [
-    'fig',
-    'mex',
-    'mexn',
-    'mexrs6',
-    'mn',
-    'mum',
-    'mx',
-    'mx3',
-    'rwd',
-    'slddc',
-    'slx',
-    'smv',
-    'xvc',
-  ],
-  'vscode-icons:file-type-mdx': ['mdx'],
-  'vscode-icons:file-type-minecraft': ['mca', 'mcmeta'],
-  'vscode-icons:file-type-mojo': ['mojo', '🔥'],
-  'vscode-icons:file-type-mondoo': ['mql.yaml', 'mql.yml'],
-  'vscode-icons:file-type-mustache': ['mst', 'mustache'],
-  'vscode-icons:file-type-n64': ['n64', 'nrm', 'z64'],
-  'vscode-icons:file-type-ndst': ['ndst.json', 'ndst.yaml', 'ndst.yml'],
-  'vscode-icons:file-type-nim': ['nim', 'nims'],
-  'vscode-icons:file-type-nix': ['nix'],
-  'vscode-icons:file-type-njsproj': ['njsproj'],
-  'vscode-icons:file-type-noc': ['noc'],
-  'vscode-icons:file-type-nuget': ['nupkg', 'nuspec', 'psmdcp', 'snupkg'],
-  'vscode-icons:file-type-numpy': ['npy', 'npz'],
-  'vscode-icons:file-type-nunjucks': ['njs', 'nunj'],
-  'vscode-icons:file-type-nushell': ['nu'],
-  'vscode-icons:file-type-objectivec': ['m'],
-  'vscode-icons:file-type-objectivecpp': ['mm'],
-  'vscode-icons:file-type-ocaml': ['ml'],
-  'vscode-icons:file-type-ocaml-intf': ['mli'],
-  'vscode-icons:file-type-onenote': [
-    'one',
-    'onepkg',
-    'onetoc',
-    'onetoc2',
-    'sig',
-  ],
-  'vscode-icons:file-type-opam': ['opam'],
-  'vscode-icons:file-type-opencl': ['cl', 'opencl'],
-  'vscode-icons:file-type-opentofu': [
-    'tofu',
-    'tofu.json',
-    'tofutest.hcl',
-    'tofutest.json',
-  ],
-  'vscode-icons:file-type-org': ['org'],
-  'vscode-icons:file-type-outlook': ['bcmx', 'msg', 'oft', 'otm', 'pst'],
-  'vscode-icons:file-type-ovpn': ['ovpn'],
-  'vscode-icons:file-type-package': ['pkg'],
-  'vscode-icons:file-type-paket': ['paket.references', 'paket.template'],
-  'vscode-icons:file-type-parquet': ['parquet'],
-  'vscode-icons:file-type-patch': ['patch'],
-  'vscode-icons:file-type-pcl': ['pcd'],
-  'vscode-icons:file-type-perl': ['perl', 'pl', 'pm'],
-  'vscode-icons:file-type-photoshop': ['psd'],
-  'vscode-icons:file-type-php': [
-    'phar',
-    'php',
-    'php1',
-    'php2',
-    'php3',
-    'php4',
-    'php5',
-    'php6',
-    'phps',
-    'phpsa',
-    'phpt',
-    'phtml',
-  ],
-  'vscode-icons:file-type-pipeline': ['pipeline'],
-  'vscode-icons:file-type-plantuml': ['iuml', 'plantuml', 'pu', 'puml'],
-  'vscode-icons:file-type-plsql-package': ['pck'],
-  'vscode-icons:file-type-plsql-package-body': ['pkb'],
-  'vscode-icons:file-type-plsql-package-header': ['pkh'],
-  'vscode-icons:file-type-plsql-package-spec': ['pks'],
-  'vscode-icons:file-type-poedit': ['mo', 'po'],
-  'vscode-icons:file-type-postman': [
-    'postman_collection.json',
-    'postman_environment.json',
-    'postman_globals.json',
-  ],
-  'vscode-icons:file-type-powerpoint': [
-    'pa',
-    'pot',
-    'potm',
-    'potx',
-    'ppa',
-    'ppam',
-    'pps',
-    'ppsm',
-    'ppsx',
-    'ppt',
-    'pptm',
-    'pptx',
-    'sldm',
-    'sldx',
-  ],
-  'vscode-icons:file-type-powershell': ['ps1'],
-  'vscode-icons:file-type-powershell-format': ['format.ps1xml'],
-  'vscode-icons:file-type-powershell-psd': ['psd1'],
-  'vscode-icons:file-type-powershell-psm': ['psm1'],
-  'vscode-icons:file-type-powershell-types': ['types.ps1xml'],
-  'vscode-icons:file-type-prisma': ['prisma'],
-  'vscode-icons:file-type-prolog': ['pro'],
-  'vscode-icons:file-type-protobuf': ['proto'],
-  'vscode-icons:file-type-publisher': ['pub', 'puz'],
-  'vscode-icons:file-type-pug': ['jade', 'pug'],
-  'vscode-icons:file-type-purescript': ['purs'],
-  'vscode-icons:file-type-python': ['py', 'pyi', 'pyw'],
-  'vscode-icons:file-type-pythowo': ['pyowo'],
-  'vscode-icons:file-type-q': ['q'],
-  'vscode-icons:file-type-qbs': ['qbs'],
-  'vscode-icons:file-type-qlikview': ['qvd', 'qvw'],
-  'vscode-icons:file-type-r': ['r'],
-  'vscode-icons:file-type-ra-syntax-tree': ['rast'],
-  'vscode-icons:file-type-rake': ['rake'],
-  'vscode-icons:file-type-raku': ['raku', 'rakumod'],
-  'vscode-icons:file-type-reactjs': ['jsx'],
-  'vscode-icons:file-type-reacttemplate': ['rt'],
-  'vscode-icons:file-type-reactts': ['tsx'],
-  'vscode-icons:file-type-reason': ['re', 'reason'],
-  'vscode-icons:file-type-registry': ['reg'],
-  'vscode-icons:file-type-rego': ['rego'],
-  'vscode-icons:file-type-rest': ['rst'],
-  'vscode-icons:file-type-ripple': ['ripple'],
-  'vscode-icons:file-type-rnc': ['rnc'],
-  'vscode-icons:file-type-ron': ['ron'],
-  'vscode-icons:file-type-rproj': ['rproj'],
-  'vscode-icons:file-type-rss': ['rss'],
-  'vscode-icons:file-type-ruby': ['gemspec', 'rb', 'rbs'],
-  'vscode-icons:file-type-rust': ['rs'],
-  'vscode-icons:file-type-safetensors': ['safetensors'],
-  'vscode-icons:file-type-saltstack': ['sls'],
-  'vscode-icons:file-type-sass': ['sass'],
-  'vscode-icons:file-type-scala': ['sc', 'scala'],
-  'vscode-icons:file-type-scss': ['scss', 'scssm'],
-  'vscode-icons:file-type-shaderlab': ['unity'],
-  'vscode-icons:file-type-shell': ['bash', 'fish', 'sh', 'zsh'],
-  'vscode-icons:file-type-siyuan': ['sy'],
-  'vscode-icons:file-type-sketch': ['sketch'],
-  'vscode-icons:file-type-skipper': ['eskip'],
-  'vscode-icons:file-type-sln': ['sln', 'slnf', 'slnx'],
-  'vscode-icons:file-type-solidity': ['sol'],
-  'vscode-icons:file-type-spacengine': ['spe'],
-  'vscode-icons:file-type-sql': ['sql'],
-  'vscode-icons:file-type-sqlite': ['db3', 'sqlite', 'sqlite3'],
-  'vscode-icons:file-type-sss': ['sss'],
-  'vscode-icons:file-type-stata': ['dta'],
-  'vscode-icons:file-type-storyboard': ['storyboard'],
-  'vscode-icons:file-type-storybook': [
-    'stories.js',
-    'stories.jsx',
-    'stories.mdx',
-    'stories.svelte',
-    'stories.ts',
-    'stories.tsx',
-    'story.js',
-    'story.jsx',
-    'story.mdx',
-    'story.svelte',
-    'story.ts',
-    'story.tsx',
-  ],
-  'vscode-icons:file-type-sublime': ['sublime-project'],
-  'vscode-icons:file-type-svelte': ['svelte'],
-  'vscode-icons:file-type-svg': ['svg'],
-  'vscode-icons:file-type-swift': ['swift'],
-  'vscode-icons:file-type-systemverilog': ['sv', 'svh'],
-  'vscode-icons:file-type-tcl': ['exp', 'tcl'],
-  'vscode-icons:file-type-templ': ['templ'],
-  'vscode-icons:file-type-terraform': ['tf', 'tf.json', 'tfstate', 'tfvars'],
-  'vscode-icons:file-type-test': ['tst'],
-  'vscode-icons:file-type-testjs': [
-    'spec.js',
-    'spec.jsx',
-    'spec.mjs',
-    'test.js',
-    'test.jsx',
-    'test.mjs',
-  ],
-  'vscode-icons:file-type-testplane': [
-    'testplane.cjs',
-    'testplane.cts',
-    'testplane.js',
-    'testplane.jsx',
-    'testplane.ts',
-    'testplane.tsx',
-  ],
-  'vscode-icons:file-type-testts': [
-    'e2e-spec.mts',
-    'e2e-spec.ts',
-    'e2e-spec.tsx',
-    'e2e-test.mts',
-    'e2e-test.ts',
-    'e2e-test.tsx',
-    'spec.mts',
-    'spec.ts',
-    'spec.tsx',
-    'test-d.mts',
-    'test-d.ts',
-    'test-d.tsx',
-    'test.mts',
-    'test.ts',
-    'test.tsx',
-  ],
-  'vscode-icons:file-type-tex': ['tex', 'texi', 'tikz'],
-  'vscode-icons:file-type-text': ['csv', 'tsv', 'txt'],
-  'vscode-icons:file-type-tm': ['tm', 'tm.hcl'],
-  'vscode-icons:file-type-todo': ['todo'],
-  'vscode-icons:file-type-toml': ['toml'],
-  'vscode-icons:file-type-tree': ['tree'],
-  'vscode-icons:file-type-tres': ['tres'],
-  'vscode-icons:file-type-tsbuildinfo': ['tsbuildinfo'],
-  'vscode-icons:file-type-tscn': ['tscn'],
-  'vscode-icons:file-type-tt': ['tt2'],
-  'vscode-icons:file-type-twig': ['twig'],
-  'vscode-icons:file-type-typescript': ['cts', 'mts', 'ts'],
-  'vscode-icons:file-type-typescriptdef': ['d.cts', 'd.mts', 'd.ts'],
-  'vscode-icons:file-type-uiua': ['ua'],
-  'vscode-icons:file-type-unison': ['u'],
-  'vscode-icons:file-type-vala': ['vala'],
-  'vscode-icons:file-type-vanilla-extract': ['css.ts'],
-  'vscode-icons:file-type-vapi': ['vapi'],
-  'vscode-icons:file-type-vash': ['vash'],
-  'vscode-icons:file-type-vb': ['vb'],
-  'vscode-icons:file-type-vbhtml': ['vbhtml'],
-  'vscode-icons:file-type-vbproj': ['vbproj'],
-  'vscode-icons:file-type-vcxproj': ['vcxproj'],
-  'vscode-icons:file-type-vento': ['vento', 'vto'],
-  'vscode-icons:file-type-verilog': ['verilog', 'vh'],
-  'vscode-icons:file-type-vhdl': ['vhd', 'vhdl'],
-  'vscode-icons:file-type-video': [
-    '3g2',
-    '3gp',
-    'amv',
-    'asf',
-    'avi',
-    'divx',
-    'f4a',
-    'f4b',
-    'f4p',
-    'f4v',
-    'flv',
-    'm2v',
-    'm4v',
-    'mk3d',
-    'mkv',
-    'mov',
-    'mp2',
-    'mp4',
-    'mpe',
-    'mpeg',
-    'mpeg2',
-    'mpg',
-    'mpv',
-    'nsv',
-    'ogv',
-    'qt',
-    'rm',
-    'rmvb',
-    'svi',
-    'vob',
-    'webm',
-    'wmv',
-  ],
-  'vscode-icons:file-type-vlang': ['v'],
-  'vscode-icons:file-type-vscode': ['code-snippets', 'code-workspace'],
-  'vscode-icons:file-type-vsix': ['vsix'],
-  'vscode-icons:file-type-vsixmanifest': ['vsixmanifest'],
-  'vscode-icons:file-type-vue': ['vue'],
-  'vscode-icons:file-type-vvvvvv': ['vvvvvv'],
-  'vscode-icons:file-type-vyper': ['vyi'],
-  'vscode-icons:file-type-wasm': ['wasm', 'wat'],
-  'vscode-icons:file-type-wasp': ['wasp.ts'],
-  'vscode-icons:file-type-wgsl': ['wgsl'],
-  'vscode-icons:file-type-wikitext': ['wiki', 'wikitext'],
-  'vscode-icons:file-type-word': [
-    'doc',
-    'docm',
-    'docx',
-    'dot',
-    'dotm',
-    'dotx',
-    'wll',
-  ],
-  'vscode-icons:file-type-wxml': ['wxml'],
-  'vscode-icons:file-type-wxss': ['wxss'],
-  'vscode-icons:file-type-xaml': ['axaml', 'xaml'],
-  'vscode-icons:file-type-xcode': ['xcodeproj'],
-  'vscode-icons:file-type-xfl': ['xfl'],
-  'vscode-icons:file-type-xib': ['xib'],
-  'vscode-icons:file-type-xliff': ['xlf', 'xliff'],
-  'vscode-icons:file-type-xml': ['pex', 'tmlanguage', 'xml'],
-  'vscode-icons:file-type-xsl': ['xsl', 'xslt'],
-  'vscode-icons:file-type-yaml': ['yaml', 'yml'],
-  'vscode-icons:file-type-zig': ['zig'],
-  'vscode-icons:file-type-zip': [
-    '7z',
-    'br',
-    'bz',
-    'bz2',
-    'bzip2',
-    'gz',
-    'rar',
-    'tar',
-    'tgz',
-    'whl',
-    'xz',
-    'zip',
-    'zipx',
-  ],
-}
+export const extensions = parseIconIndex(
+  'vscode-icons:file-type-',
+  `access accda accdb accdc accde accdp accdr accdt accdu ade adp laccdb ldb mam maq mdb mdw
+affinity af aftemplate
+affinitydesigner afdesign affinitydesigner
+affinityphoto affinityphoto afphoto
+affinitypublisher affinitypublisher afpub
+ai ai
+al-dal dal
+appscript gs
+arduino ino pde
+asciidoc adoc asciidoc
+aseprite ase aseprite
+aspx ascx aspx
+assembly asm s
+astro astro
+atom atom
+audio aac act aiff amr ape au dct dss dvf flac gsm iklax ivs m4a m4b m4p mmf mogg mp3 mpc msv oga ogg opus ra raw tta vox wav wma
+avif avif
+awk awk
+bak back backup bak
+bat bat cmd
+bicep bicep
+binary a app bin cma cmi cmo cmx cmxa dll exe hl ilk lib n ndll o obj pdb pyc pyd pyo scpt scptd so
+blender blend
+blitzbasic bb
+buf buf.gen.yaml buf.gen.yml buf.work.yaml buf.work.yml buf.yaml buf.yml
+bundler gemfile gemfile.lock
+c c
+cake cake
+cert cer crl crt csr der p12 p7b p7r pfx src sst stl
+cf lucee
+cheader h
+class class
+clojure cjm clj cljc
+clojurescript cljs
+cmake cmake
+cobol cbl cob
+codekit kit
+coffeescript coffee
+config plist properties
+coverage lcov
+cpp cc cpp cxx
+cppheader h++ hh hpp hxx
+crystal cr crystal
+csharp cs csx
+csproj csproj
+css css
+cssmap css.map
+cue cue
+cypress-spec cy.cjs cy.coffee cy.js cy.jsx cy.mjs cy.ts cy.tsx
+dartlang dart
+dartlang-generated freezed.dart g.dart
+db db
+debian deb
+delphi pas pp
+design-tokens resolver.json resolver.json5 resolver.jsonc tokens.json tokens.json5 tokens.jsonc
+diff diff
+django djt
+dlang d
+docpad eco
+dotenv env
+drawio dio dio.png dio.svg drawio drawio.png drawio.svg
+dtd dtd
+duckdb duckdb
+editorconfig editorconfig
+eex eex heex html-heex phoenix-heex
+ejs ejs
+elixir ex exs
+elm elm
+emacs el elc
+ensime ensime
+eps eps
+epub epub
+erlang erl hrl
+excalidraw excalidraw excalidraw.json excalidraw.png excalidraw.svg
+excel xls xlsb xlsm xlsx
+fbx fbx
+fitbit fba
+fla fla
+flash swc swf
+flow js.flow
+flowgorithm fprg
+font eot pfa pfb sfd ttf woff woff2
+fortran f f90 f95 for
+fritzing fz fzb fzbz fzp fzpz fzz
+fsharp fs fsx
+fsproj fsproj
+gamemaker gmx
+gamemaker2 yy yyp
+gduid gd.uid
+geojson geojson
+gimp xcf
+git dockerignore gitignore
+gleam gleam
+glsl frag glsl vert
+gltf glb gltf
+gnu am ld m4 makefile
+go go
+godot godot
+gpg gpg pgp
+gradle gradle
+grain gr
+graphql gql graphql
+groovy groovy gvy
+haml haml
+handlebars handlebars hbs
+hashicorp hcl hcl2 sentinel
+haskell hs lhs
+haxedevelop hxproj
+hlsl hlsl
+html htm html
+hygen ejs.t
+idris idr lidr
+idrisbin ibc
+idrispkg ipkg
+image bmp gif heic icns ico jpeg jpg png tiff webp
+imba imba imba2
+inc inc include
+infopath infopathxml xsf xsn xtp2
+ini ini
+jar jar
+java java
+jbuilder jbuilder
+jetbrains iml
+js js mjs
+jsmap cjs.map js.map mjs.map
+json json jsonc jsonl ndjson
+json-schema schema.json
+json5 json5
+jsonld json-ld jsonld
+jsp jsp
+jss jss
+juice juice
+julia jl
+jupyter ipynb
+key key pem
+kotlin kt ktm kts
+language-configuration language-configuration.json
+layout layout.htm layout.html master
+lemon lemon
+less less
+libreoffice-base odb otb
+libreoffice-calc fods ods ots
+libreoffice-draw odg otg
+libreoffice-impress odp otp
+libreoffice-math odf otf
+libreoffice-writer odt ott
+license enc lic license
+lime hxp
+livescript ls
+lnk lnk
+log log tlg
+lua lua
+luau luau
+lync crec ocrec
+map map
+markdown markdown md mdown
+markojs marko.js
+matlab fig mex mexn mexrs6 mn mum mx mx3 rwd slddc slx smv xvc
+mdx mdx
+minecraft mca mcmeta
+mojo mojo 🔥
+mondoo mql.yaml mql.yml
+mustache mst mustache
+n64 n64 nrm z64
+ndst ndst.json ndst.yaml ndst.yml
+nim nim nims
+nix nix
+njsproj njsproj
+noc noc
+nuget nupkg nuspec psmdcp snupkg
+numpy npy npz
+nunjucks njs nunj
+nushell nu
+objectivec m
+objectivecpp mm
+ocaml ml
+ocaml-intf mli
+onenote one onepkg onetoc onetoc2 sig
+opam opam
+opencl cl opencl
+opentofu tofu tofu.json tofutest.hcl tofutest.json
+org org
+outlook bcmx msg oft otm pst
+ovpn ovpn
+package pkg
+paket paket.references paket.template
+parquet parquet
+patch patch
+pcl pcd
+perl perl pl pm
+photoshop psd
+php phar php php1 php2 php3 php4 php5 php6 phps phpsa phpt phtml
+pipeline pipeline
+plantuml iuml plantuml pu puml
+plsql-package pck
+plsql-package-body pkb
+plsql-package-header pkh
+plsql-package-spec pks
+poedit mo po
+postman postman_collection.json postman_environment.json postman_globals.json
+powerpoint pa pot potm potx ppa ppam pps ppsm ppsx ppt pptm pptx sldm sldx
+powershell ps1
+powershell-format format.ps1xml
+powershell-psd psd1
+powershell-psm psm1
+powershell-types types.ps1xml
+prisma prisma
+prolog pro
+protobuf proto
+publisher pub puz
+pug jade pug
+purescript purs
+python py pyi pyw
+pythowo pyowo
+q q
+qbs qbs
+qlikview qvd qvw
+r r
+ra-syntax-tree rast
+rake rake
+raku raku rakumod
+reactjs jsx
+reacttemplate rt
+reactts tsx
+reason re reason
+registry reg
+rego rego
+rest rst
+ripple ripple
+rnc rnc
+ron ron
+rproj rproj
+rss rss
+ruby gemspec rb rbs
+rust rs
+safetensors safetensors
+saltstack sls
+sass sass
+scala sc scala
+scss scss scssm
+shaderlab unity
+shell bash fish sh zsh
+siyuan sy
+sketch sketch
+skipper eskip
+sln sln slnf slnx
+solidity sol
+spacengine spe
+sql sql
+sqlite db3 sqlite sqlite3
+sss sss
+stata dta
+storyboard storyboard
+storybook stories.js stories.jsx stories.mdx stories.svelte stories.ts stories.tsx story.js story.jsx story.mdx story.svelte story.ts story.tsx
+sublime sublime-project
+svelte svelte
+svg svg
+swift swift
+systemverilog sv svh
+tcl exp tcl
+templ templ
+terraform tf tf.json tfstate tfvars
+test tst
+testjs spec.js spec.jsx spec.mjs test.js test.jsx test.mjs
+testplane testplane.cjs testplane.cts testplane.js testplane.jsx testplane.ts testplane.tsx
+testts e2e-spec.mts e2e-spec.ts e2e-spec.tsx e2e-test.mts e2e-test.ts e2e-test.tsx spec.mts spec.ts spec.tsx test-d.mts test-d.ts test-d.tsx test.mts test.ts test.tsx
+tex tex texi tikz
+text csv tsv txt
+tm tm tm.hcl
+todo todo
+toml toml
+tree tree
+tres tres
+tsbuildinfo tsbuildinfo
+tscn tscn
+tt tt2
+twig twig
+typescript cts mts ts
+typescriptdef d.cts d.mts d.ts
+uiua ua
+unison u
+vala vala
+vanilla-extract css.ts
+vapi vapi
+vash vash
+vb vb
+vbhtml vbhtml
+vbproj vbproj
+vcxproj vcxproj
+vento vento vto
+verilog verilog vh
+vhdl vhd vhdl
+video 3g2 3gp amv asf avi divx f4a f4b f4p f4v flv m2v m4v mk3d mkv mov mp2 mp4 mpe mpeg mpeg2 mpg mpv nsv ogv qt rm rmvb svi vob webm wmv
+vlang v
+vscode code-snippets code-workspace
+vsix vsix
+vsixmanifest vsixmanifest
+vue vue
+vvvvvv vvvvvv
+vyper vyi
+wasm wasm wat
+wasp wasp.ts
+wgsl wgsl
+wikitext wiki wikitext
+word doc docm docx dot dotm dotx wll
+wxml wxml
+wxss wxss
+xaml axaml xaml
+xcode xcodeproj
+xfl xfl
+xib xib
+xliff xlf xliff
+xml pex tmlanguage xml
+xsl xsl xslt
+yaml yaml yml
+zig zig
+zip 7z br bz bz2 bzip2 gz rar tar tgz whl xz zip zipx`,
+)

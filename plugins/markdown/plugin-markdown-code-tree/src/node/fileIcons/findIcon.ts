@@ -7,39 +7,35 @@ import {
   files as overlayFiles,
   folders as overlayFolders,
 } from './overlay.js'
-import type { IconIndex, IconMap } from './types.js'
+import type { IconMap } from './types.js'
 
 /**
- * Build a lookup from a generated reverse index and the overlay
+ * Merge the hand written patches into a generated lookup
  *
- * The overlay wins, so that a patch is never lost when the table is
- * regenerated.
+ * The patches win, so that a patch is never lost when the table is regenerated.
  *
- * 根据生成的反查索引与补丁构建查询表
+ * 将人工补丁合并到生成的查询表中
  *
  * 补丁的优先级更高，因此重新生成表时补丁不会丢失。
  *
- * @param index - Generated reverse index / 生成的反查索引
+ * @param lookup - Generated lookup / 生成的查询表
  * @param overlay - Hand written patches / 人工补丁
- * @returns Key to icon name lookup / 键到图标名称的查询表
+ * @returns Merged lookup / 合并后的查询表
  */
-const createLookup = (
-  index: IconIndex,
+const mergeOverlay = (
+  lookup: Map<string, string>,
   overlay: IconMap,
 ): Map<string, string> => {
-  const lookup = new Map<string, string>()
+  const result = new Map(lookup)
 
-  for (const [icon, keys] of Object.entries(index))
-    for (const key of keys) lookup.set(key, icon)
+  for (const [key, icon] of Object.entries(overlay)) result.set(key, icon)
 
-  for (const [key, icon] of Object.entries(overlay)) lookup.set(key, icon)
-
-  return lookup
+  return result
 }
 
-const files = createLookup(generatedFiles, overlayFiles)
-const extensions = createLookup(generatedExtensions, overlayExtensions)
-const folders = createLookup(generatedFolders, overlayFolders)
+const files = mergeOverlay(generatedFiles, overlayFiles)
+const extensions = mergeOverlay(generatedExtensions, overlayExtensions)
+const folders = mergeOverlay(generatedFolders, overlayFolders)
 
 /**
  * Resolve the icon of a file from its extension

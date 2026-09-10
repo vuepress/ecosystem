@@ -1,3 +1,6 @@
+import fs from 'node:fs'
+import path from 'node:path'
+
 import { aliases, icons } from '@iconify-json/vscode-icons/icons.json'
 import { describe, expect, it } from 'vitest'
 
@@ -10,7 +13,6 @@ import {
   files as overlayFiles,
   folders as overlayFolders,
 } from '../src/node/fileIcons/overlay.js'
-import type { IconIndex } from '../src/node/fileIcons/types.js'
 
 const PREFIX = 'vscode-icons:'
 
@@ -29,8 +31,18 @@ const available = new Set<string>([
   ...Object.keys(aliases),
 ])
 
-const generated: IconIndex[] = [files, extensions, folders]
+/**
+ * Generated lookups
+ *
+ * 生成的查询表
+ */
+const generated: Map<string, string>[] = [files, extensions, folders]
 
+/**
+ * Hand written patches
+ *
+ * 人工补丁
+ */
 const overlay: Record<string, string> = {
   ...overlayExtensions,
   ...overlayFiles,
@@ -39,7 +51,7 @@ const overlay: Record<string, string> = {
 
 const allIcons: string[] = [
   ...new Set([
-    ...generated.flatMap((index) => Object.keys(index)),
+    ...generated.flatMap((index) => [...index.values()]),
     ...Object.values(overlay),
     defaultFile,
     defaultFolder,
@@ -56,20 +68,41 @@ const isAvailable = (name: string): boolean =>
   name.startsWith(PREFIX) && available.has(name.slice(PREFIX.length))
 
 /**
- * Count the keys of a reverse index
+ * Read the compact index text of a generated module
  *
- * @param index - Reverse index / 反查索引
- * @returns Number of keys / 键的数量
+ * @param name - Module name / 模块名称
+ * @returns Index text / 索引文本
  */
-const countKeys = (index: IconIndex): number =>
-  Object.values(index).reduce((sum, keys) => sum + keys.length, 0)
+const readGeneratedData = (name: string): string => {
+  const source = fs.readFileSync(
+    path.resolve(
+      import.meta.dirname,
+      `../src/node/fileIcons/generated/${name}.ts`,
+    ),
+    'utf-8',
+  )
+
+  return /^\s*`(?<data>[^`]*)`,$/mu.exec(source)!.groups!.data
+}
+
+/**
+ * Count the keys listed in an index text
+ *
+ * @param data - Index text / 索引文本
+ * @returns Number of listed keys / 列出的键的数量
+ */
+const countListedKeys = (data: string): number =>
+  data
+    .split('\n')
+    .filter((line) => line !== '')
+    .flatMap((line) => line.slice(line.indexOf(' ') + 1).split(' ')).length
 
 describe('icon table', () => {
   it('should cover far more than a hand written table', () => {
     // The table is derived from a package, so it is expected to be large
-    expect(countKeys(files)).toBeGreaterThan(1000)
-    expect(countKeys(extensions)).toBeGreaterThan(500)
-    expect(countKeys(folders)).toBeGreaterThan(300)
+    expect(files.size).toBeGreaterThan(1000)
+    expect(extensions.size).toBeGreaterThan(500)
+    expect(folders.size).toBeGreaterThan(300)
   })
 
   it('should only use icons that the collection provides', () => {
@@ -77,21 +110,43 @@ describe('icon table', () => {
   })
 
   it('should not map a key to an empty value', () => {
-    const empty = generated.flatMap((index) =>
-      Object.entries(index).flatMap(([icon, keys]) =>
-        [icon, ...keys].filter((value) => value === ''),
+    const empty = [
+      ...generated.flatMap((index) =>
+        [...index.entries()].flatMap(([key, icon]) =>
+          [key, icon].filter((value) => value === ''),
+        ),
       ),
-    )
+      ...Object.keys(overlay).filter((key) => key === ''),
+      ...Object.values(overlay).filter((icon) => icon === ''),
+    ]
 
     expect(empty).toStrictEqual([])
-    expect(Object.keys(overlay).filter((key) => key === '')).toStrictEqual([])
   })
 
-  it('should not map the same key twice in a category', () => {
-    for (const index of generated) {
-      const keys = Object.values(index).flat()
+  it('should parse the shared prefix of every icon name', () => {
+    // The prefix is stripped when the table is generated, and added back when it
+    // is parsed, so a wrong prefix would break every icon at once
+    for (const index of [files, extensions]) {
+      for (const icon of index.values())
+        expect(icon).toMatch(/^vscode-icons:file-type-[a-z0-9-]+$/u)
+    }
 
-      expect(new Set(keys).size).toBe(keys.length)
+    for (const icon of folders.values())
+      expect(icon).toMatch(/^vscode-icons:folder-type-[a-z0-9-]+$/u)
+  })
+
+  it('should not list the same key twice in the generated text', () => {
+    // A `Map` silently overwrites a duplicate key, so the raw text is counted
+    // instead: a duplicated key would make the counts differ
+    for (const [name, index] of [
+      ['files', files],
+      ['extensions', extensions],
+      ['folders', folders],
+    ] as const) {
+      const data = readGeneratedData(name)
+
+      expect(data).not.toBe('')
+      expect(countListedKeys(data)).toBe(index.size)
     }
   })
 
@@ -102,5 +157,19 @@ describe('icon table', () => {
     )
 
     expect(invalid).toStrictEqual([])
+  })
+
+  it('should only patch keys that the generated table does not cover', () => {
+    // Otherwise the patch is redundant, and regenerating would not be the only
+    // source of truth for it
+    expect(
+      Object.keys(overlayFiles).filter((key) => files.has(key)),
+    ).toStrictEqual([])
+    expect(
+      Object.keys(overlayExtensions).filter((key) => extensions.has(key)),
+    ).toStrictEqual([])
+    expect(
+      Object.keys(overlayFolders).filter((key) => folders.has(key)),
+    ).toStrictEqual([])
   })
 })

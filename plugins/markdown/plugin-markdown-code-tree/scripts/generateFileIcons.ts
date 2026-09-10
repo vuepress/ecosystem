@@ -375,10 +375,44 @@ const renderHeader = (description: string, source: string): string => `/**
 `
 
 /**
- * Render a reverse index as a module
+ * Longest prefix shared by every name
+ *
+ * It is cut back to the last separator, so that the remaining names never start
+ * in the middle of a word.
+ *
+ * 所有名称共有的最长前缀
+ *
+ * 会回退到最后一个分隔符，从而保证剩余的图标名称不会从一个词的中间开始。
+ *
+ * @param names - Names / 名称
+ * @returns Shared prefix / 共有的前缀
+ */
+const commonPrefix = (names: string[]): string => {
+  let prefix = names[0] ?? ''
+
+  for (const name of names) {
+    let index = 0
+
+    while (index < prefix.length && prefix[index] === name[index]) index += 1
+
+    prefix = prefix.slice(0, index)
+  }
+
+  return prefix.slice(0, prefix.lastIndexOf('-') + 1)
+}
+
+/**
+ * Render an icon index as a module
+ *
+ * The index is emitted as compact text, with the shared prefix of the icon
+ * names stored once, which keeps the shipped package small.
+ *
+ * 将图标索引渲染为模块
+ *
+ * 索引以紧凑文本输出，图标名称共有的前缀只存储一次，从而让发布包保持较小体积。
  *
  * @param name - Name of the export / 导出名
- * @param index - Reverse index / 反查索引
+ * @param index - Icon name to keys mapping / 图标名称到键的映射
  * @param header - File header / 文件头
  * @returns Module content / 模块内容
  */
@@ -387,21 +421,24 @@ const renderIndex = (
   index: Record<string, string[]>,
   header: string,
 ): string => {
-  const entries = Object.keys(index)
-    .sort()
-    .map(
-      (icon) =>
-        `  ${quote(icon)}: [\n${index[icon]
-          .map((key) => `    ${quote(key)},`)
-          .join('\n')}\n  ],`,
-    )
+  const icons = Object.keys(index).sort()
+  const prefix = commonPrefix(icons)
+  const data = icons
+    .map((icon) => `${icon.slice(prefix.length)} ${index[icon].join(' ')}`)
     .join('\n')
 
-  return `${header}\nimport type { IconIndex } from '../types.js'
+  for (const value of [prefix, data]) {
+    if (value.includes('`') || value.includes('${'))
+      throw new Error(`Unsupported character in the icon index of ${name}`)
+  }
 
-export const ${name}: IconIndex = {
-${entries}
-}
+  return `${header}
+import { parseIconIndex } from '../parseIndex.js'
+
+export const ${name} = parseIconIndex(
+  ${quote(prefix)},
+  \`${data}\`,
+)
 `
 }
 

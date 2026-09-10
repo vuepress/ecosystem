@@ -12,454 +12,184 @@
  * 数据源：@yutengjing/vscode-icons@0.1.1
  */
 
-import type { IconIndex } from '../types.js'
+import { parseIconIndex } from '../parseIndex.js'
 
-export const folders: IconIndex = {
-  'vscode-icons:folder-type-android': ['android'],
-  'vscode-icons:folder-type-angular': ['.angular'],
-  'vscode-icons:folder-type-apache': ['apache', 'apache2', 'httpd'],
-  'vscode-icons:folder-type-api': ['.api', '.apis', 'api', 'apis'],
-  'vscode-icons:folder-type-app': [
-    '.app',
-    'app',
-    'application',
-    'applications',
-    'apps',
-  ],
-  'vscode-icons:folder-type-arangodb': ['arango', 'arangodb'],
-  'vscode-icons:folder-type-asset': ['.assets', 'assets'],
-  'vscode-icons:folder-type-astro': ['.astro'],
-  'vscode-icons:folder-type-audio': [
-    '.audio',
-    '.audios',
-    '.sound',
-    '.sounds',
-    'audio',
-    'audios',
-    'sound',
-    'sounds',
-  ],
-  'vscode-icons:folder-type-aurelia': ['aurelia_project'],
-  'vscode-icons:folder-type-aws': ['.aws', 'aws'],
-  'vscode-icons:folder-type-azure': ['.azure', 'azure'],
-  'vscode-icons:folder-type-azurepipelines': [
-    '.azure-pipelines',
-    '.azuredevops',
-    '.vsts',
-    'azure-pipelines',
-  ],
-  'vscode-icons:folder-type-binary': ['.bin', 'bin'],
-  'vscode-icons:folder-type-bloc': ['bloc', 'blocs'],
-  'vscode-icons:folder-type-blueprint': [
-    '.blueprint',
-    '.blueprints',
-    'blueprint',
-    'blueprints',
-  ],
-  'vscode-icons:folder-type-bot': ['.bot', 'bot'],
-  'vscode-icons:folder-type-bower': ['bower_components'],
-  'vscode-icons:folder-type-buildkite': ['.buildkite'],
-  'vscode-icons:folder-type-cake': ['.cake', 'cake'],
-  'vscode-icons:folder-type-cargo': ['.cargo', 'cargo', 'crates'],
-  'vscode-icons:folder-type-certificate': [
-    '.certificates',
-    'certificates',
-    'certs',
-    'certs.',
-  ],
-  'vscode-icons:folder-type-changesets': ['.changeset'],
-  'vscode-icons:folder-type-chef': ['.chef', 'chef'],
-  'vscode-icons:folder-type-circleci': ['.circleci'],
-  'vscode-icons:folder-type-claude': ['.claude'],
-  'vscode-icons:folder-type-cli': [
-    'cli',
-    'cmd',
-    'command',
-    'commandline',
-    'commands',
-    'console',
-  ],
-  'vscode-icons:folder-type-client': ['client', 'clients'],
-  'vscode-icons:folder-type-cloudflare': ['.cloudflare', 'cloudflare'],
-  'vscode-icons:folder-type-cmake': ['.cmake', 'cmake'],
-  'vscode-icons:folder-type-common': ['common'],
-  'vscode-icons:folder-type-component': [
-    '.components',
-    'component',
-    'components',
-    'gui',
-    'src-ui',
-    'ui',
-    'widgets',
-  ],
-  'vscode-icons:folder-type-composer': ['.composer', 'composer'],
-  'vscode-icons:folder-type-config': [
-    '.conf',
-    '.config',
-    '.configs',
-    '.configuration',
-    '.configurations',
-    '.ini',
-    '.initializers',
-    '.setting',
-    '.settings',
-    'conf',
-    'config',
-    'configs',
-    'configuration',
-    'configurations',
-    'ini',
-    'initializers',
-    'setting',
-    'settings',
-  ],
-  'vscode-icons:folder-type-controller': [
-    '.controllers',
-    '.handler',
-    '.handlers',
-    '__controller__',
-    '__controllers__',
-    '__handler__',
-    '__handlers__',
-    'controller',
-    'controllers',
-    'handler',
-    'handlers',
-  ],
-  'vscode-icons:folder-type-coverage': ['coverage'],
-  'vscode-icons:folder-type-css': ['_css', 'css'],
-  'vscode-icons:folder-type-cubit': ['cubit', 'cubits'],
-  'vscode-icons:folder-type-cursor': ['.cursor'],
-  'vscode-icons:folder-type-cypress': ['cypress'],
-  'vscode-icons:folder-type-dapr': ['.dapr', 'dapr'],
-  'vscode-icons:folder-type-dart': ['.dart_tool', 'dart'],
-  'vscode-icons:folder-type-databricks': ['.databricks'],
-  'vscode-icons:folder-type-datadog': ['.datadog', 'datadog'],
-  'vscode-icons:folder-type-db': [
-    'data',
-    'database',
-    'db',
-    'repo',
-    'repositories',
-    'repository',
-    'sql',
-    'storage',
-    'storages',
-    'store',
-    'stores',
-  ],
-  'vscode-icons:folder-type-debian': ['deb', 'debian'],
-  'vscode-icons:folder-type-dependabot': ['.dependabot'],
-  'vscode-icons:folder-type-devcontainer': ['.devcontainer'],
-  'vscode-icons:folder-type-devenv': ['.devenv'],
-  'vscode-icons:folder-type-dist': [
-    '.build',
-    '.dist',
-    'build',
-    'builds',
-    'dist',
-    'dists',
-    'export',
-    'exports',
-    'out',
-    'outs',
-    'release',
-    'releases',
-    'target',
-    'targets',
-  ],
-  'vscode-icons:folder-type-docker': ['.docker', 'docker'],
-  'vscode-icons:folder-type-docs': ['doc', 'docs', 'document', 'documents'],
-  'vscode-icons:folder-type-e2e': ['e2e'],
-  'vscode-icons:folder-type-elasticbeanstalk': [
-    '.ebextensions',
-    '.elasticbeanstalk',
-  ],
-  'vscode-icons:folder-type-electron': ['electron'],
-  'vscode-icons:folder-type-environments': ['environments'],
-  'vscode-icons:folder-type-expo': ['.expo', '.expo-shared'],
-  'vscode-icons:folder-type-favicon': ['favicon', 'favicons'],
-  'vscode-icons:folder-type-flow': ['flow', 'flow-typed'],
-  'vscode-icons:folder-type-flutter': ['flutter'],
-  'vscode-icons:folder-type-fonts': ['fnt', 'font', 'fonts', 'webfonts'],
-  'vscode-icons:folder-type-frontcommerce': ['.front-commerce'],
-  'vscode-icons:folder-type-gcp': ['.gcp', 'gcp'],
-  'vscode-icons:folder-type-gemini': ['.gemini'],
-  'vscode-icons:folder-type-git': ['.git', '.submodules', 'submodules'],
-  'vscode-icons:folder-type-github': ['.github'],
-  'vscode-icons:folder-type-gitlab': ['.gitlab'],
-  'vscode-icons:folder-type-godot': ['.godot', 'godot'],
-  'vscode-icons:folder-type-gradle': ['.gradle', 'gradle'],
-  'vscode-icons:folder-type-graphql': ['graphql'],
-  'vscode-icons:folder-type-grunt': ['grunt'],
-  'vscode-icons:folder-type-gulp': [
-    'gulp',
-    'gulpfile.babel.coffee',
-    'gulpfile.babel.js',
-    'gulpfile.babel.ts',
-    'gulpfile.coffee',
-    'gulpfile.js',
-    'gulpfile.ts',
-  ],
-  'vscode-icons:folder-type-haxelib': ['.haxelib', 'haxe_libraries'],
-  'vscode-icons:folder-type-helper': [
-    '.helper',
-    '.helpers',
-    'helper',
-    'helpers',
-  ],
-  'vscode-icons:folder-type-histoire': ['.histoire'],
-  'vscode-icons:folder-type-hook': ['.hook', '.hooks', 'hook', 'hooks'],
-  'vscode-icons:folder-type-husky': ['.husky'],
-  'vscode-icons:folder-type-idea': ['.idea'],
-  'vscode-icons:folder-type-images': [
-    '.fig',
-    '.figs',
-    '.img',
-    '.imgs',
-    'ico',
-    'icon',
-    'icons',
-    'image',
-    'images',
-    'img',
-    'imgs',
-    'screenshot',
-    'screenshots',
-    'svg',
-    'texture',
-    'textures',
-  ],
-  'vscode-icons:folder-type-include': [
-    '.inc',
-    '.incl',
-    '.include',
-    '.includes',
-    '_inc',
-    '_incl',
-    '_include',
-    '_includes',
-    'inc',
-    'incl',
-    'include',
-    'includes',
-  ],
-  'vscode-icons:folder-type-interfaces': ['interface', 'interfaces'],
-  'vscode-icons:folder-type-ios': ['ios'],
-  'vscode-icons:folder-type-js': ['js'],
-  'vscode-icons:folder-type-json': ['json'],
-  'vscode-icons:folder-type-junie': ['.junie'],
-  'vscode-icons:folder-type-kiro': ['.kiro'],
-  'vscode-icons:folder-type-kotlin': ['.kotlin', 'kotlin'],
-  'vscode-icons:folder-type-kubernetes': [
-    '.k8s',
-    '.kube',
-    '.kuber',
-    '.kubernetes',
-    'k8s',
-    'kube',
-    'kuber',
-    'kubernetes',
-  ],
-  'vscode-icons:folder-type-less': ['_less', 'less'],
-  'vscode-icons:folder-type-library': [
-    '.lib',
-    '.libs',
-    '__lib__',
-    '__libs__',
-    'lib',
-    'libraries',
-    'library',
-    'libs',
-  ],
-  'vscode-icons:folder-type-linux': ['linux'],
-  'vscode-icons:folder-type-locale': [
-    '_locale',
-    '_locales',
-    'g11n',
-    'globalization',
-    'i18n',
-    'internationalization',
-    'l10n',
-    'lang',
-    'language',
-    'languages',
-    'locale',
-    'locales',
-    'localization',
-  ],
-  'vscode-icons:folder-type-log': ['log', 'logs'],
-  'vscode-icons:folder-type-macos': ['darwin', 'macos'],
-  'vscode-icons:folder-type-mariadb': ['maria', 'mariadb'],
-  'vscode-icons:folder-type-maven': ['.mvn'],
-  'vscode-icons:folder-type-mediawiki': ['mediawiki'],
-  'vscode-icons:folder-type-memcached': ['.memcached', 'memcached'],
-  'vscode-icons:folder-type-meteor': ['.meteor'],
-  'vscode-icons:folder-type-middleware': ['middleware', 'middlewares'],
-  'vscode-icons:folder-type-minecraft': ['.minecraft'],
-  'vscode-icons:folder-type-minikube': ['minik8s', 'minikube', 'minikuber'],
-  'vscode-icons:folder-type-mjml': ['.mjml', 'mjml'],
-  'vscode-icons:folder-type-mobile': [
-    '.mobile',
-    '.mobiles',
-    'mobile',
-    'mobiles',
-  ],
-  'vscode-icons:folder-type-mock': ['.mocks', '__mocks__', 'mocks'],
-  'vscode-icons:folder-type-model': [
-    '.entities',
-    '.model',
-    '.models',
-    'entities',
-    'model',
-    'models',
-  ],
-  'vscode-icons:folder-type-module': ['modules'],
-  'vscode-icons:folder-type-mojo': ['mojo'],
-  'vscode-icons:folder-type-mongodb': ['mongo', 'mongodb'],
-  'vscode-icons:folder-type-mypy': ['.mypy_cache'],
-  'vscode-icons:folder-type-mysql': ['mysql', 'mysqldb'],
-  'vscode-icons:folder-type-netlify': ['netlify'],
-  'vscode-icons:folder-type-next': ['.next'],
-  'vscode-icons:folder-type-nginx': ['conf.d', 'nginx'],
-  'vscode-icons:folder-type-nix': ['.niv', '.nix', 'niv', 'nix'],
-  'vscode-icons:folder-type-node': ['node_modules'],
-  'vscode-icons:folder-type-notebooks': ['notebook', 'notebooks'],
-  'vscode-icons:folder-type-notification': [
-    'event',
-    'events',
-    'notification',
-    'notifications',
-  ],
-  'vscode-icons:folder-type-nuget': ['.nuget'],
-  'vscode-icons:folder-type-nuxt': ['.nuxt', 'nuxt'],
-  'vscode-icons:folder-type-package': [
-    '.package',
-    '.packages',
-    'package',
-    'packages',
-    'pkg',
-  ],
-  'vscode-icons:folder-type-paket': ['.paket'],
-  'vscode-icons:folder-type-php': ['php'],
-  'vscode-icons:folder-type-platformio': ['.pio', '.pioenvs'],
-  'vscode-icons:folder-type-plugin': [
-    '.extension',
-    '.extensions',
-    '.plugin',
-    '.plugins',
-    'extension',
-    'extensions',
-    'plugin',
-    'plugins',
-  ],
-  'vscode-icons:folder-type-prisma': ['prisma'],
-  'vscode-icons:folder-type-private': ['.private', 'private'],
-  'vscode-icons:folder-type-public': ['.public', 'public'],
-  'vscode-icons:folder-type-pytest': ['.pytest_cache'],
-  'vscode-icons:folder-type-python': ['.venv', '.virtualenv', '__pycache__'],
-  'vscode-icons:folder-type-ravendb': ['ravendb'],
-  'vscode-icons:folder-type-redis': ['redis'],
-  'vscode-icons:folder-type-redux': ['redux'],
-  'vscode-icons:folder-type-route': [
-    '_route',
-    '_routes',
-    'route',
-    'router',
-    'routers',
-    'routes',
-  ],
-  'vscode-icons:folder-type-sass': ['_sass', '_scss', 'sass', 'scss'],
-  'vscode-icons:folder-type-script': ['script', 'scripts'],
-  'vscode-icons:folder-type-seedkit': ['.seedkit', 'seedkit'],
-  'vscode-icons:folder-type-server': ['server'],
-  'vscode-icons:folder-type-services': ['service', 'services'],
-  'vscode-icons:folder-type-shared': [
-    '.share',
-    '.shared',
-    '__share__',
-    '__shared__',
-    'share',
-    'shared',
-  ],
-  'vscode-icons:folder-type-snaplet': ['.snaplet'],
-  'vscode-icons:folder-type-spin': ['.spin'],
-  'vscode-icons:folder-type-src': ['__src__', 'source', 'sources', 'src'],
-  'vscode-icons:folder-type-sso': ['sso'],
-  'vscode-icons:folder-type-story': [
-    '.storybook',
-    '__stories__',
-    'stories',
-    'story',
-  ],
-  'vscode-icons:folder-type-style': ['style', 'styles'],
-  'vscode-icons:folder-type-supabase': ['supabase'],
-  'vscode-icons:folder-type-svelte': ['.svelte-kit', 'svelte'],
-  'vscode-icons:folder-type-swagger': ['swagger'],
-  'vscode-icons:folder-type-tauri': ['src-tauri'],
-  'vscode-icons:folder-type-temp': ['.temp', '.tmp', 'temp', 'tmp'],
-  'vscode-icons:folder-type-template': [
-    '.template',
-    '.templates',
-    'template',
-    'templates',
-  ],
-  'vscode-icons:folder-type-test': [
-    '.spec',
-    '.specs',
-    '.test',
-    '.tests',
-    '__test__',
-    '__tests__',
-    'integration',
-    'spec',
-    'specs',
-    'test',
-    'tests',
-  ],
-  'vscode-icons:folder-type-theme': ['theme', 'themes'],
-  'vscode-icons:folder-type-tools': [
-    '.tools',
-    'tool',
-    'tooling',
-    'tools',
-    'util',
-    'utilities',
-    'utils',
-  ],
-  'vscode-icons:folder-type-travis': ['.travis'],
-  'vscode-icons:folder-type-trunk': ['.trunk'],
-  'vscode-icons:folder-type-turbo': ['.turbo'],
-  'vscode-icons:folder-type-typescript': ['ts', 'typescript'],
-  'vscode-icons:folder-type-typings': ['@types', 'types', 'typings'],
-  'vscode-icons:folder-type-vagrant': ['.vagrant', 'vagrant'],
-  'vscode-icons:folder-type-vercel': ['.vercel'],
-  'vscode-icons:folder-type-video': ['.video', '.videos', 'video', 'videos'],
-  'vscode-icons:folder-type-view': [
-    '_layout',
-    '_layouts',
-    '_page',
-    '_pages',
-    '_view',
-    '_views',
-    'html',
-    'layout',
-    'layouts',
-    'page',
-    'pages',
-    'view',
-    'views',
-  ],
-  'vscode-icons:folder-type-vitepress': ['.vitepress'],
-  'vscode-icons:folder-type-vs': ['.vs'],
-  'vscode-icons:folder-type-vscode': ['.vscode', 'vscode'],
-  'vscode-icons:folder-type-vscode-test': ['.vscode-test'],
-  'vscode-icons:folder-type-wasm': ['wasm', 'webassembly'],
-  'vscode-icons:folder-type-wasp': ['wasp'],
-  'vscode-icons:folder-type-webpack': ['.webpack', 'webpack'],
-  'vscode-icons:folder-type-windows': ['win32', 'windows'],
-  'vscode-icons:folder-type-windsurf': ['.windsurf'],
-  'vscode-icons:folder-type-www': ['.web', 'web', 'www', 'wwwroot'],
-  'vscode-icons:folder-type-yarn': ['.yarn'],
-  'vscode-icons:folder-type-zed': ['.zed'],
-}
+export const folders = parseIconIndex(
+  'vscode-icons:folder-type-',
+  `android android
+angular .angular
+apache apache apache2 httpd
+api .api .apis api apis
+app .app app application applications apps
+arangodb arango arangodb
+asset .assets assets
+astro .astro
+audio .audio .audios .sound .sounds audio audios sound sounds
+aurelia aurelia_project
+aws .aws aws
+azure .azure azure
+azurepipelines .azure-pipelines .azuredevops .vsts azure-pipelines
+binary .bin bin
+bloc bloc blocs
+blueprint .blueprint .blueprints blueprint blueprints
+bot .bot bot
+bower bower_components
+buildkite .buildkite
+cake .cake cake
+cargo .cargo cargo crates
+certificate .certificates certificates certs certs.
+changesets .changeset
+chef .chef chef
+circleci .circleci
+claude .claude
+cli cli cmd command commandline commands console
+client client clients
+cloudflare .cloudflare cloudflare
+cmake .cmake cmake
+common common
+component .components component components gui src-ui ui widgets
+composer .composer composer
+config .conf .config .configs .configuration .configurations .ini .initializers .setting .settings conf config configs configuration configurations ini initializers setting settings
+controller .controllers .handler .handlers __controller__ __controllers__ __handler__ __handlers__ controller controllers handler handlers
+coverage coverage
+css _css css
+cubit cubit cubits
+cursor .cursor
+cypress cypress
+dapr .dapr dapr
+dart .dart_tool dart
+databricks .databricks
+datadog .datadog datadog
+db data database db repo repositories repository sql storage storages store stores
+debian deb debian
+dependabot .dependabot
+devcontainer .devcontainer
+devenv .devenv
+dist .build .dist build builds dist dists export exports out outs release releases target targets
+docker .docker docker
+docs doc docs document documents
+e2e e2e
+elasticbeanstalk .ebextensions .elasticbeanstalk
+electron electron
+environments environments
+expo .expo .expo-shared
+favicon favicon favicons
+flow flow flow-typed
+flutter flutter
+fonts fnt font fonts webfonts
+frontcommerce .front-commerce
+gcp .gcp gcp
+gemini .gemini
+git .git .submodules submodules
+github .github
+gitlab .gitlab
+godot .godot godot
+gradle .gradle gradle
+graphql graphql
+grunt grunt
+gulp gulp gulpfile.babel.coffee gulpfile.babel.js gulpfile.babel.ts gulpfile.coffee gulpfile.js gulpfile.ts
+haxelib .haxelib haxe_libraries
+helper .helper .helpers helper helpers
+histoire .histoire
+hook .hook .hooks hook hooks
+husky .husky
+idea .idea
+images .fig .figs .img .imgs ico icon icons image images img imgs screenshot screenshots svg texture textures
+include .inc .incl .include .includes _inc _incl _include _includes inc incl include includes
+interfaces interface interfaces
+ios ios
+js js
+json json
+junie .junie
+kiro .kiro
+kotlin .kotlin kotlin
+kubernetes .k8s .kube .kuber .kubernetes k8s kube kuber kubernetes
+less _less less
+library .lib .libs __lib__ __libs__ lib libraries library libs
+linux linux
+locale _locale _locales g11n globalization i18n internationalization l10n lang language languages locale locales localization
+log log logs
+macos darwin macos
+mariadb maria mariadb
+maven .mvn
+mediawiki mediawiki
+memcached .memcached memcached
+meteor .meteor
+middleware middleware middlewares
+minecraft .minecraft
+minikube minik8s minikube minikuber
+mjml .mjml mjml
+mobile .mobile .mobiles mobile mobiles
+mock .mocks __mocks__ mocks
+model .entities .model .models entities model models
+module modules
+mojo mojo
+mongodb mongo mongodb
+mypy .mypy_cache
+mysql mysql mysqldb
+netlify netlify
+next .next
+nginx conf.d nginx
+nix .niv .nix niv nix
+node node_modules
+notebooks notebook notebooks
+notification event events notification notifications
+nuget .nuget
+nuxt .nuxt nuxt
+package .package .packages package packages pkg
+paket .paket
+php php
+platformio .pio .pioenvs
+plugin .extension .extensions .plugin .plugins extension extensions plugin plugins
+prisma prisma
+private .private private
+public .public public
+pytest .pytest_cache
+python .venv .virtualenv __pycache__
+ravendb ravendb
+redis redis
+redux redux
+route _route _routes route router routers routes
+sass _sass _scss sass scss
+script script scripts
+seedkit .seedkit seedkit
+server server
+services service services
+shared .share .shared __share__ __shared__ share shared
+snaplet .snaplet
+spin .spin
+src __src__ source sources src
+sso sso
+story .storybook __stories__ stories story
+style style styles
+supabase supabase
+svelte .svelte-kit svelte
+swagger swagger
+tauri src-tauri
+temp .temp .tmp temp tmp
+template .template .templates template templates
+test .spec .specs .test .tests __test__ __tests__ integration spec specs test tests
+theme theme themes
+tools .tools tool tooling tools util utilities utils
+travis .travis
+trunk .trunk
+turbo .turbo
+typescript ts typescript
+typings @types types typings
+vagrant .vagrant vagrant
+vercel .vercel
+video .video .videos video videos
+view _layout _layouts _page _pages _view _views html layout layouts page pages view views
+vitepress .vitepress
+vs .vs
+vscode .vscode vscode
+vscode-test .vscode-test
+wasm wasm webassembly
+wasp wasp
+webpack .webpack webpack
+windows win32 windows
+windsurf .windsurf
+www .web web www wwwroot
+yarn .yarn
+zed .zed`,
+)
