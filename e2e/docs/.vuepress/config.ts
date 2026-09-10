@@ -13,6 +13,7 @@ import { blogPlugin } from '@vuepress/plugin-blog'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { copyrightPlugin } from '@vuepress/plugin-copyright'
 import { feedPlugin } from '@vuepress/plugin-feed'
+import { markdownCodeTreePlugin } from '@vuepress/plugin-markdown-code-tree'
 import { noticePlugin } from '@vuepress/plugin-notice'
 import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
 import { pwaPlugin } from '@vuepress/plugin-pwa'
@@ -247,6 +248,7 @@ export default defineUserConfig({
       json: true,
       rss: true,
     }),
+    markdownCodeTreePlugin(),
     noticePlugin({
       config: [
         {

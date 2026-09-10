@@ -291,6 +291,9 @@ importers:
       '@vuepress/plugin-markdown-chart':
         specifier: workspace:*
         version: link:../plugins/markdown/plugin-markdown-chart
+      '@vuepress/plugin-markdown-code-tree':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-code-tree
       '@vuepress/plugin-markdown-ext':
         specifier: workspace:*
         version: link:../plugins/markdown/plugin-markdown-ext
@@ -396,6 +399,9 @@ importers:
       '@vuepress/plugin-feed':
         specifier: workspace:*
         version: link:../plugins/blog/plugin-feed
+      '@vuepress/plugin-markdown-code-tree':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-code-tree
       '@vuepress/plugin-notice':
         specifier: workspace:*
         version: link:../plugins/features/plugin-notice
@@ -953,6 +959,31 @@ importers:
       markmap-common:
         specifier: ^0.18.9
         version: 0.18.9
+
+  plugins/markdown/plugin-markdown-code-tree:
+    dependencies:
+      '@mdit/plugin-container':
+        specifier: ^2.0.1
+        version: 2.0.1(markdown-it@14.3.1)
+      '@types/markdown-it':
+        specifier: ^14.2.0
+        version: 14.2.0
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../../../tools/helper
+      vue:
+        specifier: 'catalog:'
+        version: 3.5.42(typescript@6.0.3)
+      vuepress:
+        specifier: 'catalog:'
+        version: 2.0.0-rc.31(636537a563f817181b911d10de04e73e)
+    devDependencies:
+      '@vuepress/highlighter-helper':
+        specifier: workspace:*
+        version: link:../../../tools/highlighter-helper
+      markdown-it:
+        specifier: ^14.3.1
+        version: 14.3.1
 
   plugins/markdown/plugin-markdown-container:
     dependencies:
