@@ -935,7 +935,7 @@ importers:
         specifier: ^0.18.12
         version: 0.18.12(markmap-common@0.18.9)
       mermaid:
-        specifier: ^11.14.0
+        specifier: ^11.14.0 || ^12.0.0
         version: 11.17.2
       vue:
         specifier: 'catalog:'
