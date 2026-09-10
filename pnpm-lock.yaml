@@ -1363,7 +1363,7 @@ importers:
         version: 5.0.5
       '@docsearch/js':
         specifier: ^5.0.5
-        version: 5.0.5
+        version: 5.1.0
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../../../tools/helper
@@ -2614,8 +2614,8 @@ packages:
   '@docsearch/css@5.0.5':
     resolution: {integrity: sha512-0ETIihH1MKPzIcTZjjJsXGpheg53ZIuQ7mETXZVTnRDxK8BEbUz62IBSz0RuhGa6G3jxMVzWkVKenj7Ru4vUcA==}
 
-  '@docsearch/js@5.0.5':
-    resolution: {integrity: sha512-FZtElUFj23W7KQigRTYRU24zU1p7B70NR3yihlBLtx+uERQmrfconjlRlrbYi4VfksNTm/ZgRBGEaO8kxYLstA==}
+  '@docsearch/js@5.1.0':
+    resolution: {integrity: sha512-OQQN3aW4lR5NYDwvHlqQIzPv4sXhTEz9B7wleXC8ng3n4vCvWRlJV/a64TNx9X7bqjXIPnFAe0RxzG8tO690fw==}
 
   '@docsearch/react@5.0.5':
     resolution: {integrity: sha512-EyD2oQmWLMu/nVq/jh5SZ9f4uc+Ut/3aoBA5xrKqFfdArLNqiyqFbMSZYI2xddv5yS8ENHo1ZU6lYOTPW0YrZQ==}
@@ -11310,7 +11310,7 @@ snapshots:
 
   '@docsearch/css@5.0.5': {}
 
-  '@docsearch/js@5.0.5': {}
+  '@docsearch/js@5.1.0': {}
 
   '@docsearch/react@5.0.5(@algolia/client-search@5.57.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(search-insights@2.17.3)':
     dependencies:
