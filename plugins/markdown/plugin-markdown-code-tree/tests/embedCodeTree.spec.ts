@@ -66,6 +66,81 @@ const createEnv = (file: string, source = FIXTURES_DIR): CodeTreeEnv => ({
   filePath: path.resolve(source, file),
 })
 
+/**
+ * Decode a HTML entity
+ *
+ * @param entity - Entity text / 实体文本
+ * @returns Decoded character, or the input when it is not an entity /
+ *   解码后的字符，不是实体时返回原文本
+ */
+const decodeEntity = (entity: string): string => {
+  const numeric = /^&#(?<code>\d+);$/u.exec(entity)
+
+  if (numeric) return String.fromCodePoint(Number(numeric.groups?.code))
+
+  return (
+    {
+      '&lt;': '<',
+      '&gt;': '>',
+      '&quot;': '"',
+      '&#39;': "'",
+      '&amp;': '&',
+    }[entity] ?? entity
+  )
+}
+
+/**
+ * Read an attribute value of a rendered HTML string, as a browser would
+ *
+ * @param html - Rendered HTML / 渲染结果
+ * @param start - Index of the first character of the value / 值的第一个字符的索引
+ * @returns Value of the attribute / 属性值
+ */
+const readAttrValue = (html: string, start: number): string => {
+  let index = start
+  let value = ''
+
+  while (index < html.length && html[index] !== '"') {
+    if (html[index] === '&') {
+      const semi = html.indexOf(';', index)
+
+      if (semi !== -1 && semi - index <= 12) {
+        const entity = html.slice(index, semi + 1)
+        const decoded = decodeEntity(entity)
+
+        if (decoded !== entity) {
+          value += decoded
+          index = semi + 1
+          continue
+        }
+      }
+    }
+
+    value += html[index]
+    index += 1
+  }
+
+  return value
+}
+
+/**
+ * Read an attribute of a rendered HTML string, as a browser would
+ *
+ * @param html - Rendered HTML / 渲染结果
+ * @param attr - Attribute name / 属性名
+ * @returns Values of the attribute / 属性值
+ */
+const readAttr = (html: string, attr: string): string[] => {
+  const values: string[] = []
+  const pattern = new RegExp(`${attr}="`, 'gu')
+  let match: RegExpExecArray | null
+
+  while ((match = pattern.exec(html)))
+    values.push(readAttrValue(html, match.index + match[0].length))
+
+  return values
+}
+
 describe(embedCodeTree, () => {
   it('should embed a directory as code tree', () => {
     const md = createMarkdown()
@@ -382,6 +457,7 @@ describe(embedCodeTree, () => {
       'quo"te.ts': 'export const a = 1\n',
       'both\'and".ts': 'export const b = 1\n',
       'a&b.ts': 'export const c = 1\n',
+      'ent&amp;ity.ts': 'export const d = 1\n',
     })
 
     try {
@@ -389,12 +465,47 @@ describe(embedCodeTree, () => {
       const env = createEnv('index.md', source)
       const result = md.render('@[code-tree](.)\n', env)
 
-      // The sanitized path never breaks out of the rendered title
-      expect(result).toContain('data-title="quo%22te.ts"')
-      expect(result).toContain('path="quo%22te.ts"')
-      expect(result).toContain('path="both%27and%22.ts"')
-      expect(result).toContain('path="a%26b.ts"')
+      // The rendered title never breaks out of its attribute
       expect(result).not.toContain('quo"te.ts"')
+      expect(result).toContain('data-title="quo%22te.ts"')
+
+      // The name a node displays and the name of its code block always match
+      expect(readAttr(result, 'data-title').sort()).toStrictEqual(
+        readAttr(result, 'path').sort(),
+      )
+      expect(readAttr(result, 'data-title')).toContain('a&b.ts')
+    } finally {
+      removeTempSource(source)
+    }
+  })
+
+  it('should keep an ordinary file name as it is', () => {
+    const source = createTempSource({
+      '中文文件.ts': "export const a = 'a'\n",
+      '文档 说明.md': '# 文档说明\n',
+      "it's a file.ts": "export const b = 'b'\n",
+    })
+
+    try {
+      const md = createMarkdown(source)
+      // The page itself does not exist, only its directory is used
+      const env = createEnv('page.md', source)
+      const result = md.render('@[code-tree](.)\n', env)
+
+      // Neither the file tree nor the code block title encodes the name, so the
+      // displayed name, the tree path and the title always match
+      expect(readAttr(result, 'path').sort()).toStrictEqual([
+        "it's a file.ts",
+        '中文文件.ts',
+        '文档 说明.md',
+      ])
+      expect(readAttr(result, 'data-title').sort()).toStrictEqual([
+        "it's a file.ts",
+        '中文文件.ts',
+        '文档 说明.md',
+      ])
+
+      expect(result).not.toContain('%')
     } finally {
       removeTempSource(source)
     }

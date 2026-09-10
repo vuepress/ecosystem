@@ -64,6 +64,7 @@ Use `@[code-tree](dir_path)` to embed a directory as a code tree. All code files
 - Files that can not be displayed as code (images, media, fonts, documents and archives) are skipped, so do binary files (detected by NUL bytes or control characters) and files larger than 128 KB.
 - `node_modules`, `.git`, `.cache` and `.temp` are ignored, so do `.DS_Store` and `.gitkeep`.
 - A directory that does not exist, is not a directory, is empty, or is outside of the source directory (including through a symbolic link), is skipped with a warning.
+- A file name is kept as it is, including CJK characters and spaces. Only the characters that would break the rendered code block title — a quote, a backtick, `<`, `>`, `\`, an HTML entity, and leading or trailing whitespace — are percent encoded, and an `entry` pointing to such a file must use the encoded value.
 
 **Output:**
 
