@@ -65,7 +65,7 @@ console.log('main')
       '<CodeTreeFileNode path="src/main.ts" type="file" icon="vscode-icons:file-type-typescript">',
     )
     expect(result).toContain(
-      '<CodeTreeFileNode path="package.json" type="file" icon="vscode-icons:file-type-node">',
+      '<CodeTreeFileNode path="package.json" type="file" icon="vscode-icons:file-type-npm">',
     )
   })
 

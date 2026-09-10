@@ -43,7 +43,8 @@
   },
   "scripts": {
     "build": "tsdown",
-    "clean": "rimraf ./dist"
+    "clean": "rimraf ./dist",
+    "generate:icons": "unrun scripts/generateFileIcons.ts"
   },
   "dependencies": {
     "@mdit/plugin-container": "^2.0.1",
@@ -52,7 +53,9 @@
     "vue": "catalog:"
   },
   "devDependencies": {
+    "@iconify-json/vscode-icons": "catalog:",
     "@vuepress/highlighter-helper": "workspace:*",
+    "@yutengjing/vscode-icons": "catalog:",
     "markdown-it": "^14.3.1"
   },
   "peerDependencies": {

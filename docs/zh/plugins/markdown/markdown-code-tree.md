@@ -50,6 +50,12 @@ console.log('main')
 
 文件和文件夹会展示各自的图标。图标来自 <https://icon-sets.iconify.design/>，由 `@vuepress/plugin-icon` 提供的 `<VPIcon />` 渲染。未启用该插件时，将使用通用的文件或文件夹图标。
 
+图标表由 `@yutengjing/vscode-icons` **自动生成**，无需人工维护；图标集未覆盖的缺口由一份精简的补丁表补齐。升级图标集后，可这样更新：
+
+```bash
+pnpm --filter @vuepress/plugin-markdown-code-tree generate:icons
+```
+
 ## 嵌入目录
 
 使用 `@[code-tree](dir_path)` 将目录嵌入为代码树，目录下的所有代码文件都会被读取并渲染为代码块。

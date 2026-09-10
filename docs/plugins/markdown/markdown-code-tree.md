@@ -50,6 +50,12 @@ Code blocks without a `title` attribute are not included in the file tree, and t
 
 Files and folders are displayed with their icons. The icons come from <https://icon-sets.iconify.design/> and are rendered by `<VPIcon />` provided by `@vuepress/plugin-icon`. When that plugin is not enabled, a generic file or folder icon is used instead.
 
+The icon table is **generated** from `@yutengjing/vscode-icons` instead of being maintained by hand, and the gaps that the icon set does not cover are filled by a small overlay. To update it after bumping the icon set:
+
+```bash
+pnpm --filter @vuepress/plugin-markdown-code-tree generate:icons
+```
+
 ## Embedding a directory
 
 Use `@[code-tree](dir_path)` to embed a directory as a code tree. All code files in the directory are read and rendered as code blocks.

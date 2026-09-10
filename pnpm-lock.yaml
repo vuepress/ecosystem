@@ -107,6 +107,9 @@ settings:
 
 catalogs:
   default:
+    '@iconify-json/vscode-icons':
+      specifier: ^1.2.77
+      version: 1.2.77
     '@vuepress/bundler-vite':
       specifier: 2.0.0-rc.31
       version: 2.0.0-rc.31
@@ -116,6 +119,9 @@ catalogs:
     '@vueuse/core':
       specifier: ^14.4.0
       version: 14.4.0
+    '@yutengjing/vscode-icons':
+      specifier: ^0.1.1
+      version: 0.1.1
     chokidar:
       specifier: ^5.0.0
       version: 5.0.0
@@ -978,9 +984,15 @@ importers:
         specifier: 'catalog:'
         version: 2.0.0-rc.31(636537a563f817181b911d10de04e73e)
     devDependencies:
+      '@iconify-json/vscode-icons':
+        specifier: 'catalog:'
+        version: 1.2.77
       '@vuepress/highlighter-helper':
         specifier: workspace:*
         version: link:../../../tools/highlighter-helper
+      '@yutengjing/vscode-icons':
+        specifier: 'catalog:'
+        version: 0.1.1
       markdown-it:
         specifier: ^14.3.1
         version: 14.3.1
@@ -2852,6 +2864,9 @@ packages:
 
   '@gera2ld/jsx-dom@2.2.2':
     resolution: {integrity: sha512-EOqf31IATRE6zS1W1EoWmXZhGfLAoO9FIlwTtHduSrBdud4npYBxYAkv8dZ5hudDPwJeeSjn40kbCL4wAzr8dA==}
+
+  '@iconify-json/vscode-icons@1.2.77':
+    resolution: {integrity: sha512-yl8e3KlFfLLhiL9CH6YwX6syePeSLLwH2dL4cKGYC27SgdNHL3TRpheAyOjO3fw2+Ovp3tOSF5oj3AhSv4MQ8Q==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -5124,6 +5139,10 @@ packages:
 
   '@yuku-toolchain/types@0.9.4':
     resolution: {integrity: sha512-dqnMswJWE7YBbPEvGstgFlWFTRn20V/Hu82XTDjWxzaU18rGpxBqxhKlBlgyWrPARRvNLIqY2XA6S9edR+2AsA==}
+
+  '@yutengjing/vscode-icons@0.1.1':
+    resolution: {integrity: sha512-SAg4IBCFF0oA9KzioowXnec9zwbOgpfDKaXuCKfdwYt+HF+qlLihTlelMRMiB2BoqbxtREXwTMnhsxb/fAmIMQ==}
+    engines: {node: '>=20.0.0'}
 
   '@zeit/schemas@2.36.0':
     resolution: {integrity: sha512-7kjMwcChYEzMKjeex9ZFXkt1AyNov9R5HZtjBKVsmVpw7pa7ZtlCGvCBC2vnnXctaYN+aRI61HjIqeetZW5ROg==}
@@ -11472,6 +11491,10 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.29.7
 
+  '@iconify-json/vscode-icons@1.2.77':
+    dependencies:
+      '@iconify/types': 2.0.0
+
   '@iconify/types@2.0.0': {}
 
   '@iconify/utils@3.1.7':
@@ -13817,6 +13840,8 @@ snapshots:
     optional: true
 
   '@yuku-toolchain/types@0.9.4': {}
+
+  '@yutengjing/vscode-icons@0.1.1': {}
 
   '@zeit/schemas@2.36.0': {}
 
