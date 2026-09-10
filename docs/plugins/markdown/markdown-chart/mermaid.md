@@ -63,6 +63,7 @@ export default {
 
 Besides using mermaid, you can also use the following code blocks:
 
+- block: `block`
 - class: `classDiagram`
 - c4c: `C4Context`
 - er: `erDiagram`
@@ -71,19 +72,24 @@ Besides using mermaid, you can also use the following code blocks:
 - journey: `journey`
 - mindmap: `mindmap`
 - kanban: `kanban`
+- packet: `packet`
 - pie: `pie`
 - quadrant: `quadrantChart`
 - requirement: `requirementDiagram`
+- sankey: `sankey`
 - sequence: `sequenceDiagram`
 - state: `stateDiagram-v2`
 - timeline: `timeline`
+- agentflow: `agentflow-beta`
 - architecture: `architecture-beta`
-- block: `block-beta`
-- packet: `packet-beta`
+- ishikawa: `ishikawa-beta`
 - radar: `radar-beta`
-- sankey: `sankey-beta`
 - treemap: `treemap-beta`
-- xy: `xychart-beta`
+- treeview: `treeView-beta`
+- usecase: `usecase-beta`
+- venn: `venn-beta`
+- wardley: `wardley-beta`
+- xy: `xychart`
 
 You do not need to declare diagram type and intent your code.
 
@@ -575,6 +581,39 @@ axis A, B, C, D, E
 curve c1{1,2,3,4,5}
 curve c2{5,4,3,2,1}
 curve c3{3,3,3,3,3}
+```
+
+:::
+
+::: preview Use Case Diagram
+
+```usecase
+direction LR
+actor Customer("Customer")
+actor Support("Support agent")
+systemBoundary Ordering["Ordering system"]
+  Browse("Browse products")
+  Checkout("Checkout")
+  Payment("Process payment")
+end
+Customer --> Browse
+Customer --> Checkout
+Support --> Checkout
+Checkout ..> : include Payment
+```
+
+:::
+
+::: preview Agentflow Diagram
+
+```agentflow
+flow reviewer["Review Agent"]
+  changes["Gather changes"]@{ shape: input }
+  analyse["Analyse diff"]@{ shape: task }
+  lint["run_linter"]@{ shape: tool }
+  ok["Clean?"]@{ shape: decision }
+  changes --> analyse --> lint --> ok
+end
 ```
 
 :::
