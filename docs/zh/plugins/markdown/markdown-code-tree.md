@@ -50,9 +50,26 @@ console.log('main')
 
 文件和文件夹会展示各自的图标。图标来自 <https://icon-sets.iconify.design/>，由 `@vuepress/plugin-icon` 提供的 `<VPIcon />` 渲染。未启用该插件时，将使用通用的文件或文件夹图标。
 
-## 相关
+## 嵌入目录
 
-仅支持容器语法，不支持其他主题的 `@[code-tree](dir_path)` 语法。
+使用 `@[code-tree](dir_path)` 将目录嵌入为代码树，目录下的所有代码文件都会被读取并渲染为代码块。
+
+```md
+<!-- 以 `/` 开头的路径从源目录开始查找 -->
+
+@[code-tree title="Vue App" height="400px" entry="src/main.ts"](/src)
+```
+
+- 以 `/` 开头的路径从源目录开始查找，其他路径从当前页面所在目录开始查找。
+- 无法作为代码展示的文件（图片、媒体、字体、文档和压缩包）会被跳过，二进制文件（通过 NUL 字节或控制字符判断）与超过 128 KB 的文件同样会被跳过。
+- `node_modules`、`.git`、`.cache` 和 `.temp` 会被忽略，`.DS_Store` 和 `.gitkeep` 同样会被忽略。
+- 不存在、不是目录、为空、或位于源目录之外（包括通过符号链接）的目录会被跳过并给出警告。
+
+**输出：**
+
+本页嵌入了 `docs/code-tree-demo`：
+
+@[code-tree title="Vue App" height="400px" entry="src/main.ts"](/code-tree-demo)
 
 ::: warning
 

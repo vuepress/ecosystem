@@ -48,3 +48,24 @@ export const escapeAttr = (value: string): string =>
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#39;')
+    .replaceAll('`', '&#96;')
+
+/**
+ * Sanitize a file path read from the file system
+ *
+ * A file path ends up both in the info string of a code fence and in the props
+ * of the file tree, and the code block title rendered by the highlighter is not
+ * escaped, so unsafe characters are percent encoded.
+ *
+ * 清洗从文件系统读取的文件路径
+ *
+ * 文件路径会同时出现在代码围栏的信息字符串和文件树的属性中，而高亮器渲染的代码块标题 未做转义，因此需要对其中的不安全字符进行百分号编码。
+ *
+ * @param filePath - File path / 文件路径
+ * @returns Sanitized file path / 清洗后的文件路径
+ */
+export const sanitizeFilePath = (filePath: string): string =>
+  filePath.replaceAll(
+    /[\s"'`&<>\\]/gu,
+    (char) => `%${char.charCodeAt(0).toString(16).toUpperCase()}`,
+  )

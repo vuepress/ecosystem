@@ -1,8 +1,10 @@
-import type { Plugin } from 'vuepress/core'
+import type { App, Plugin } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 
 import { codeTree } from './codeTree.js'
+import { embedCodeTree } from './embedCodeTree.js'
 import type { MarkdownCodeTreePluginOptions } from './options.js'
+import type { CodeTreeEnv } from './renderCodeTree.js'
 
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
@@ -24,14 +26,21 @@ const __dirname = import.meta.dirname || getDirname(import.meta.url)
  *     plugins: [markdownCodeTreePlugin()],
  *   }
  */
-export const markdownCodeTreePlugin = (
-  options: MarkdownCodeTreePluginOptions = {},
-): Plugin => ({
-  name: '@vuepress/plugin-markdown-code-tree',
+export const markdownCodeTreePlugin =
+  (options: MarkdownCodeTreePluginOptions = {}): Plugin =>
+  (app: App) => ({
+    name: '@vuepress/plugin-markdown-code-tree',
 
-  extendsMarkdown: (md) => {
-    md.use(codeTree, options)
-  },
+    extendsMarkdown: (md) => {
+      md.use(codeTree, options)
+      md.use(embedCodeTree, app, options)
+    },
 
-  clientConfigFile: path.resolve(__dirname, '../client/config.js'),
-})
+    extendsPage: (page) => {
+      const { codeTreeFiles = [] } = page.markdownEnv as CodeTreeEnv
+
+      if (codeTreeFiles.length) page.deps.push(...codeTreeFiles)
+    },
+
+    clientConfigFile: path.resolve(__dirname, '../client/config.js'),
+  })

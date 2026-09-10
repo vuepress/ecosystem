@@ -50,9 +50,26 @@ Code blocks without a `title` attribute are not included in the file tree, and t
 
 Files and folders are displayed with their icons. The icons come from <https://icon-sets.iconify.design/> and are rendered by `<VPIcon />` provided by `@vuepress/plugin-icon`. When that plugin is not enabled, a generic file or folder icon is used instead.
 
-## Related
+## Embedding a directory
 
-Only the container syntax is supported. The `@[code-tree](dir_path)` syntax of other themes is not supported.
+Use `@[code-tree](dir_path)` to embed a directory as a code tree. All code files in the directory are read and rendered as code blocks.
+
+```md
+<!-- A path starting with `/` is resolved from the source directory -->
+
+@[code-tree title="Vue App" height="400px" entry="src/main.ts"](/src)
+```
+
+- A path starting with `/` is resolved from the source directory. Any other path is resolved from the directory of the current page.
+- Files that can not be displayed as code (images, media, fonts, documents and archives) are skipped, so do binary files (detected by NUL bytes or control characters) and files larger than 128 KB.
+- `node_modules`, `.git`, `.cache` and `.temp` are ignored, so do `.DS_Store` and `.gitkeep`.
+- A directory that does not exist, is not a directory, is empty, or is outside of the source directory (including through a symbolic link), is skipped with a warning.
+
+**Output:**
+
+This page embeds `docs/code-tree-demo`:
+
+@[code-tree title="Vue App" height="400px" entry="src/main.ts"](/code-tree-demo)
 
 ::: warning
 

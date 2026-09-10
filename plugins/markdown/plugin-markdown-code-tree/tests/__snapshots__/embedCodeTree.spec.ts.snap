@@ -1,0 +1,51 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`embedCodeTree > should embed a directory as code tree 1`] = `
+"<CodeTree height="320px" entry="index.ts"><template #file-tree><CodeTreeFileNode path="index.ts" type="file" icon="vscode-icons:file-type-typescript"></CodeTreeFileNode><CodeTreeFileNode path="notes.md" type="file" icon="vscode-icons:file-type-markdown"></CodeTreeFileNode><CodeTreeFileNode path="package.json" type="file" icon="vscode-icons:file-type-node"></CodeTreeFileNode><CodeTreeFileNode path="src" type="folder" icon="vscode-icons:folder-type-src"><CodeTreeFileNode path="src/App.vue" type="file" icon="vscode-icons:file-type-vue"></CodeTreeFileNode></CodeTreeFileNode><CodeTreeFileNode path="utils.ts" type="file" icon="vscode-icons:file-type-typescript"></CodeTreeFileNode></template><div class="code-block-with-title">
+  <div class="code-block-title-bar" data-title="index.ts">
+    <span>index.ts</span>
+  </div>
+  <pre><code class="language-ts">export * from './utils.js'
+
+</code></pre>
+
+</div><div class="code-block-with-title">
+  <div class="code-block-title-bar" data-title="notes.md">
+    <span>notes.md</span>
+  </div>
+  <pre><code class="language-md">A note with a fenced block:
+
+\`\`\`ts
+const a = 1
+\`\`\`
+
+</code></pre>
+
+</div><div class="code-block-with-title">
+  <div class="code-block-title-bar" data-title="package.json">
+    <span>package.json</span>
+  </div>
+  <pre><code class="language-json">{}
+
+</code></pre>
+
+</div><div class="code-block-with-title">
+  <div class="code-block-title-bar" data-title="src/App.vue">
+    <span>src/App.vue</span>
+  </div>
+  <pre><code class="language-vue">&lt;template&gt;
+  &lt;div /&gt;
+&lt;/template&gt;
+
+</code></pre>
+
+</div><div class="code-block-with-title">
+  <div class="code-block-title-bar" data-title="utils.ts">
+    <span>utils.ts</span>
+  </div>
+  <pre><code class="language-ts">export const foo = 'foo'
+
+</code></pre>
+
+</div></CodeTree>"
+`;

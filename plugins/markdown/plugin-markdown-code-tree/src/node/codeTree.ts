@@ -3,112 +3,9 @@ import type { RendererRule } from 'markdown-it'
 import type Token from 'markdown-it/lib/token.mjs'
 import type { Markdown } from 'vuepress/markdown'
 
-import { getFileIcon } from './fileIcons/index.js'
 import type { MarkdownCodeTreePluginOptions } from './options.js'
-import { escapeAttr, hasMarker, resolveAttrs } from './utils.js'
-
-/**
- * File tree node
- *
- * 文件树节点
- */
-interface FileTreeNode {
-  /**
-   * Full path of the file or the folder
-   *
-   * 文件或文件夹的完整路径
-   */
-  path: string
-  /**
-   * Children of the folder
-   *
-   * 文件夹的子节点
-   */
-  children: FileTreeNode[]
-}
-
-/**
- * Build a file tree from file paths
- *
- * 根据文件路径构建文件树
- *
- * @param files - File paths / 文件路径
- * @returns File tree / 文件树
- */
-const buildFileTree = (files: string[]): FileTreeNode[] => {
-  const root: FileTreeNode[] = []
-
-  for (const file of files) {
-    const segments = file.split('/').filter((segment) => segment !== '')
-    let nodes = root
-
-    for (const index of segments.keys()) {
-      const path = segments.slice(0, index + 1).join('/')
-      let node = nodes.find((item) => item.path === path)
-
-      if (!node) {
-        node = { path, children: [] }
-        nodes.push(node)
-      }
-
-      nodes = node.children
-    }
-  }
-
-  return root
-}
-
-/**
- * Render file tree nodes to component tags
- *
- * 将文件树节点渲染为组件标签
- *
- * @param nodes - File tree nodes / 文件树节点
- * @returns Rendered tags / 渲染结果
- */
-const renderFileTree = (nodes: FileTreeNode[]): string =>
-  nodes
-    .map(({ path, children }) => {
-      const type = children.length ? 'folder' : 'file'
-
-      return `<CodeTreeFileNode path="${escapeAttr(path)}" type="${type}" icon="${escapeAttr(
-        getFileIcon(path, type),
-      )}">${renderFileTree(children)}</CodeTreeFileNode>`
-    })
-    .join('')
-
-/**
- * Render attributes to a HTML attribute string
- *
- * 将属性渲染为 HTML 属性字符串
- *
- * @param attrs - Attributes / 属性
- * @returns Rendered attributes / 渲染结果
- */
-const renderAttrs = (attrs: Record<string, string>): string =>
-  Object.entries(attrs)
-    .filter(([, value]) => value !== '')
-    .map(([name, value]) => ` ${name}="${escapeAttr(value)}"`)
-    .join('')
-
-/**
- * Normalize a height value to a CSS length
- *
- * 将高度值规范化为 CSS 长度
- *
- * @param height - Height value / 高度值
- * @returns CSS length or `null` / CSS 长度或 `null`
- */
-const normalizeHeight = (height: number | string): string | null => {
-  if (typeof height === 'number') return `${height}px`
-
-  const value = height.trim()
-
-  if (value === '') return null
-
-  // A bare number is treated as pixels
-  return /^\d+(?:\.\d+)?$/u.test(value) ? `${value}px` : value
-}
+import { renderCodeTree } from './renderCodeTree.js'
+import { hasMarker, resolveAttrs } from './utils.js'
 
 /**
  * Markdown code tree plugin
@@ -193,22 +90,14 @@ export const codeTree = (
     const height = resolveAttrs(info, 'height')?.trim() || defaultHeight
     const { files, activeFile } = collectFiles(tokens, index)
 
-    const fileTree = buildFileTree(files)
-    // Fallback to the first code block when the expected entry does not exist
-    const expectedEntry = activeFile || entry
-    const active = files.includes(expectedEntry)
-      ? expectedEntry
-      : (files[0] ?? '')
-
-    return `<CodeTree${renderAttrs({
+    return renderCodeTree({
       title,
-      height: normalizeHeight(height) ?? '',
-      entry: active,
-    })}>${
-      fileTree.length
-        ? `<template #file-tree>${renderFileTree(fileTree)}</template>`
-        : ''
-    }`
+      height,
+      entry: activeFile || entry,
+      files,
+      // The content is rendered by the container plugin itself
+      autoClose: false,
+    })
   }
 
   container(md, {

@@ -51,3 +51,5 @@ export const baz = 'baz'
 ```
 
 :::
+
+@[code-tree title="Snippet" height="300px" entry="b.ts"](snippet)

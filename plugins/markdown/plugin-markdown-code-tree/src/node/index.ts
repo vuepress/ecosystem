@@ -1,3 +1,5 @@
 export * from './codeTree.js'
+export * from './embedCodeTree.js'
 export * from './markdownCodeTreePlugin.js'
 export type * from './options.js'
+export type * from './renderCodeTree.js'

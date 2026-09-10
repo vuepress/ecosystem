@@ -133,4 +133,36 @@ test.describe('plugin-markdown-code-tree', () => {
       codeTree.locator('.vp-code-tree-code > div[class*="language-"]'),
     ).toBeHidden()
   })
+
+  test('embed a directory', async ({ page }) => {
+    await page.goto('code-tree/')
+
+    const codeTree = page.locator('.vp-code-tree').nth(3)
+
+    await expect(codeTree.locator('.vp-code-tree-title')).toHaveText('Snippet')
+    await expect(codeTree.locator('.vp-code-tree-node-name')).toHaveText([
+      'a.ts',
+      'b.ts',
+      'package.json',
+    ])
+
+    // The entry file declared by the attribute is opened by default
+    await expect(
+      codeTree.locator(
+        '.vp-code-tree-node-info.active .vp-code-tree-node-name',
+      ),
+    ).toHaveText('b.ts')
+    await expect(
+      codeTree.locator(
+        '.vp-code-tree-code > .code-block-with-title.active .code-block-title-bar',
+      ),
+    ).toHaveText('b.ts')
+
+    // The icon of every node is resolved from its file name
+    await expect(
+      codeTree.locator(
+        '.vp-code-tree-node-icon-fallback-file, .vp-code-tree-node-icon iconify-icon',
+      ),
+    ).toHaveCount(3)
+  })
 })
