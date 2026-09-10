@@ -1,12 +1,12 @@
 import { getFullLocaleConfig } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
-import { getDirname, logger, path } from 'vuepress/utils'
+import { logger, path } from 'vuepress/utils'
 
 import { backToTopLocaleInfo } from './locales.js'
 import { PLUGIN_NAME } from './logger.js'
 import type { BackToTopPluginOptions } from './options.js'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 /**
  * Back to top plugin

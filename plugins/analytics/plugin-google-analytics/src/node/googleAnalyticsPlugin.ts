@@ -1,9 +1,9 @@
 import type { Plugin, PluginObject } from 'vuepress/core'
-import { getDirname, logger, path } from 'vuepress/utils'
+import { logger, path } from 'vuepress/utils'
 
 import type { GoogleAnalyticsPluginOptions } from '../shared/index.js'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 /**
  * Google Analytics plugin for VuePress

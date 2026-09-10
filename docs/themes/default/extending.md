@@ -74,9 +74,9 @@ Then, if you want to replace the `HomeFooter.vue` component, just override the a
 ```ts title=".vuepress/config.ts"
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 export default defineUserConfig({
   theme: defaultTheme(),
@@ -103,9 +103,9 @@ Instead of extending the default theme directly in `.vuepress/config.ts` and `.v
 import type { DefaultThemeOptions } from '@vuepress/theme-default'
 import { defaultTheme } from '@vuepress/theme-default'
 import type { Theme } from 'vuepress/core'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 export const childTheme = (options: DefaultThemeOptions): Theme => ({
   name: 'vuepress-theme-child',

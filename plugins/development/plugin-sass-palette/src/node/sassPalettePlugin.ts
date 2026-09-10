@@ -1,7 +1,7 @@
 import { addViteConfig, chainWebpack } from '@vuepress/helper'
 import { watch } from 'chokidar'
 import type { PluginFunction } from 'vuepress/core'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
 import { injectScssConfigModule } from './injectScssConfigModule.js'
 import type { SassPalettePluginOptions } from './options.js'
@@ -13,7 +13,7 @@ import {
 } from './prepare/index.js'
 import { EMPTY_FILE, PLUGIN_NAME, getIdPrefix, logger } from './utils.js'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 /**
  * Sass palette plugin

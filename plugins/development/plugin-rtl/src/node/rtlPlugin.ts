@@ -1,5 +1,5 @@
 import type { PluginObject } from 'vuepress/core'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
 /**
  * Options for RTL plugin
@@ -31,7 +31,7 @@ export interface RTLPluginOptions {
   }
 }
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 /**
  * Create RTL plugin

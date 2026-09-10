@@ -23,9 +23,9 @@ import { sassPalettePlugin } from '@vuepress/plugin-sass-palette'
 import { watermarkPlugin } from '@vuepress/plugin-watermark'
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress/cli'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 const E2E_BASE = (process.env.E2E_BASE ?? '/') as '/' | `/${string}/`
 const E2E_BUNDLER = process.env.E2E_BUNDLER ?? 'vite'

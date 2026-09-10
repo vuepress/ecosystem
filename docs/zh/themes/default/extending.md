@@ -74,9 +74,9 @@ import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
 ```ts title=".vuepress/config.ts"
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 export default defineUserConfig({
   theme: defaultTheme(),
@@ -103,9 +103,9 @@ export default defineUserConfig({
 import type { DefaultThemeOptions } from '@vuepress/theme-default'
 import { defaultTheme } from '@vuepress/theme-default'
 import type { Theme } from 'vuepress/core'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 export const childTheme = (options: DefaultThemeOptions): Theme => ({
   name: 'vuepress-theme-child',

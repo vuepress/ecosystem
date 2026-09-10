@@ -1,5 +1,5 @@
 import type { Plugin } from 'vuepress/core'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
 import { PLUGIN_NAME, logger } from './logger.js'
 import type { NoticePluginOptions } from './options.js'
@@ -8,7 +8,7 @@ import {
   watchNoticeOptions,
 } from './prepareNoticeOptions.js'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 /**
  * VuePress notice plugin

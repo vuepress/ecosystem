@@ -1,12 +1,12 @@
 import { getFullLocaleConfig, getModulePath } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
 import { pwaLocaleInfo } from './locales.js'
 import { PLUGIN_NAME } from './logger.js'
 import type { PwaPluginOptions } from './options.js'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 export const prepareClientConfigFile = (
   app: App,
