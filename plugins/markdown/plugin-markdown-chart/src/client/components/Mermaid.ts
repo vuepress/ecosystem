@@ -60,7 +60,7 @@ export default defineComponent({
       if (__VUEPRESS_SSR__) return
 
       const { default: mermaid } = await import(
-        /* webpackChunkName: "mermaid" */ 'mermaid/dist/mermaid.esm.min.mjs'
+        /* webpackChunkName: "mermaid" */ 'mermaid'
       )
 
       mermaid.initialize({

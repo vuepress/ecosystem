@@ -272,4 +272,36 @@ commit
 
     expect(renderResult).toMatchSnapshot()
   })
+
+  it('should render ```usecase', () => {
+    const renderResult = markdownIt.render(`
+\`\`\`usecase
+direction LR
+actor Customer("Customer")
+systemBoundary Ordering["Ordering system"]
+  Browse("Browse products")
+  Checkout("Checkout")
+end
+Customer --> Browse
+Customer --> Checkout
+Checkout ..> : include Browse
+\`\`\`
+`)
+
+    expect(renderResult).toMatchSnapshot()
+  })
+
+  it('should render ```agentflow', () => {
+    const renderResult = markdownIt.render(`
+\`\`\`agentflow
+flow reviewer["Review Agent"]
+  changes["Gather changes"]@{ shape: input }
+  analyse["Analyse diff"]@{ shape: task }
+  changes --> analyse
+end
+\`\`\`
+`)
+
+    expect(renderResult).toMatchSnapshot()
+  })
 })
