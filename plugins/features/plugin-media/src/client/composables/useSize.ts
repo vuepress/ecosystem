@@ -4,7 +4,9 @@ import type { MaybeRef, Ref, ShallowRef } from 'vue'
 import { computed, isRef, onMounted, ref, shallowRef, unref, watch } from 'vue'
 
 const getValue = (value: number | string): string =>
-  isString(value) ? value : `${value}px`
+  isString(value) && /(?:%|px|em|rem|vh|vw|auto)$/iu.test(value)
+    ? value
+    : `${value}px`
 
 export interface SizeOptions {
   width: number | string | undefined

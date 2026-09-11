@@ -21,8 +21,9 @@ export type ArtPlayerOptions = Partial<
  * 未内置在 Artplayer 核心包中的语言
  *
  * Since `v5.1.0`, Artplayer only bundles `en` and `zh-cn` in the core, other
- * locales must be imported from `artplayer/i18n/*` manually. 自 `v5.1.0`
- * 起，Artplayer 核心包只内置 `en` 与 `zh-cn`，其他语言需从 `artplayer/i18n/*` 手动导入。
+ * locales must be imported from `artplayer/i18n/*` manually.
+ *
+ * 自 `v5.1.0` 起，Artplayer 核心包只内置 `en` 与 `zh-cn`，其他语言需从 `artplayer/i18n/*` 手动导入。
  */
 export const ART_PLAYER_I18N_LANGS = [
   'ar',

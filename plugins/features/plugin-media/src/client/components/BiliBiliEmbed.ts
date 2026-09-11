@@ -5,12 +5,12 @@ import { computed, defineComponent, h, ref } from 'vue'
 import { useSize } from '../composables/index.js'
 import { videoIframeAllow } from '../utils/index.js'
 
-import '../styles/bili-bili.scss'
+import '../styles/bili-bili-embed.scss'
 
 const BILIBILI_PLAYER_LINK = 'https://player.bilibili.com/player.html'
 
-export const BiliBili = defineComponent({
-  name: 'BiliBili',
+export const BiliBiliEmbed = defineComponent({
+  name: 'BiliBiliEmbed',
 
   props: {
     /**
@@ -23,7 +23,7 @@ export const BiliBili = defineComponent({
     /**
      * BiliBili video aid
      *
-     * B 站视频 a ID
+     * B 站视频 aid
      */
     aid: String,
 
@@ -121,7 +121,7 @@ export const BiliBili = defineComponent({
         ? [
             h(
               'div',
-              { class: 'bilibili-desc' },
+              { class: 'vp-bilibili-desc' },
               h('a', { class: 'sr-only', href: videoLink.value }, props.title),
             ),
             h('iframe', {
@@ -129,7 +129,7 @@ export const BiliBili = defineComponent({
               // Tip: `https://www.bilibili.com/blackboard/newplayer.html?bvid=${props.bvid}&as_wide=1&page=1` only support whitelist sites now
               src: videoLink.value,
               title: props.title,
-              class: 'bilibili-iframe',
+              class: 'vp-bilibili-iframe',
               allow: videoIframeAllow,
               style: {
                 width: width.value,

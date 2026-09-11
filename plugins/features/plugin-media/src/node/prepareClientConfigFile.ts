@@ -1,13 +1,16 @@
 import { entries, getModulePath } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 
-import type { MediaPluginOptions } from './options.js'
 import {
   AVAILABLE_COMPONENTS,
   CLIENT_FOLDER,
   COMPONENT_PKGS,
-  isInstalled,
-} from './utils.js'
+  EMBED_COMPONENTS,
+  VIDEOJS_PROVIDER_COMPONENTS,
+} from './constants.js'
+import { logger } from './logger.js'
+import type { MediaPluginOptions } from './options.js'
+import { isInstalled } from './utils.js'
 
 export const prepareClientConfigFile = (
   app: App,
@@ -17,21 +20,37 @@ export const prepareClientConfigFile = (
   let enhance = ''
   const setups: string[] = []
 
-  entries(AVAILABLE_COMPONENTS).forEach(([key, component]) => {
-    if (
-      options[key as keyof MediaPluginOptions] &&
-      (!COMPONENT_PKGS[key] ||
-        COMPONENT_PKGS[key].every((pkg) => isInstalled(pkg)))
-    ) {
-      imports.push(
-        `import { ${component} } from "${CLIENT_FOLDER}components/${component}.js";`,
-      )
+  // Every option enables its component through one of these three groups
+  const enabledComponents = [
+    ...entries(AVAILABLE_COMPONENTS)
+      .filter(([key]) => options[key as keyof MediaPluginOptions])
+      .map(([, component]) => component),
+    ...(options.embeds ?? []).map((name) => EMBED_COMPONENTS[name]),
+    ...(options.videojsProviders ?? []).map(
+      (name) => VIDEOJS_PROVIDER_COMPONENTS[name],
+    ),
+  ]
 
-      enhance += `\
+  for (const component of new Set(enabledComponents)) {
+    const missing = COMPONENT_PKGS[component]?.filter(
+      (pkg) => !isInstalled(pkg),
+    )
+
+    if (missing?.length) {
+      logger.warn(
+        `Component ${component} is skipped, because ${missing.join(', ')} is not installed.`,
+      )
+      continue
+    }
+
+    imports.push(
+      `import { ${component} } from "${CLIENT_FOLDER}components/${component}.js";`,
+    )
+
+    enhance += `\
 if(!hasGlobalComponent("${component}")) app.component("${component}", ${component});
 `
-    }
-  })
+  }
 
   return app.writeTemp(
     `media/config.js`,

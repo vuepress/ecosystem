@@ -1,0 +1,16 @@
+.vp-youtube-player {
+  margin-block: 8px;
+
+  video-skin {
+    // The skin is a grid host without a height, so it only fills the
+    // component when the component has a definite height
+    height: 100%;
+  }
+
+  // The element is an inline block host with a minimum size
+  youtube-video {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}

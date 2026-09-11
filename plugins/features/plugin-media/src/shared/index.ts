@@ -1,3 +1,5 @@
 export * from './artplayer.js'
+export * from './embeds.js'
+export * from './pdf.js'
+export * from './videojs.js'
 export type * from './locales.js'
-export type * from './share.js'

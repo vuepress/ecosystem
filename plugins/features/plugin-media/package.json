@@ -59,14 +59,49 @@
     "vue": "catalog:"
   },
   "peerDependencies": {
+    "@embedpdf/vue-pdf-viewer": "^2.15.0",
+    "@videojs/dash-video": "10.0.0-rc.2",
+    "@videojs/hlsjs-video": "10.0.0-rc.2",
+    "@videojs/html": "10.0.0-rc.2",
+    "@videojs/spotify-audio": "10.0.0-rc.2",
+    "@videojs/tiktok-video": "10.0.0-rc.2",
+    "@videojs/twitch-video": "10.0.0-rc.2",
+    "@videojs/vimeo-video": "10.0.0-rc.2",
+    "@videojs/youtube-video": "10.0.0-rc.2",
     "artplayer": "^5.3.0",
     "dashjs": "4.7.4",
     "hls.js": "^1.6.13",
     "mpegts.js": "^1.7.3",
-    "vidstack": "^1.12.13",
     "vuepress": "catalog:"
   },
   "peerDependenciesMeta": {
+    "@embedpdf/vue-pdf-viewer": {
+      "optional": true
+    },
+    "@videojs/dash-video": {
+      "optional": true
+    },
+    "@videojs/hlsjs-video": {
+      "optional": true
+    },
+    "@videojs/html": {
+      "optional": true
+    },
+    "@videojs/spotify-audio": {
+      "optional": true
+    },
+    "@videojs/tiktok-video": {
+      "optional": true
+    },
+    "@videojs/twitch-video": {
+      "optional": true
+    },
+    "@videojs/vimeo-video": {
+      "optional": true
+    },
+    "@videojs/youtube-video": {
+      "optional": true
+    },
     "artplayer": {
       "optional": true
     },
@@ -77,9 +112,6 @@
       "optional": true
     },
     "mpegts.js": {
-      "optional": true
-    },
-    "vidstack": {
       "optional": true
     }
   }

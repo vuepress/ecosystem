@@ -1,10 +1,11 @@
 import type { Plugin } from 'vuepress/core'
 
 import { getDefine } from './getDefine.js'
+import { PLUGIN_NAME } from './logger.js'
 import type { MediaPluginOptions } from './options.js'
 import { prepareArtPlayerEntry } from './prepareArtPlayerEntry.js'
 import { prepareClientConfigFile } from './prepareClientConfigFile.js'
-import { PLUGIN_NAME } from './utils.js'
+import { prepareVideoJsEntry } from './prepareVideoJsEntry.js'
 
 export const mediaPlugin = (options: MediaPluginOptions = {}): Plugin => ({
   name: PLUGIN_NAME,
@@ -14,6 +15,9 @@ export const mediaPlugin = (options: MediaPluginOptions = {}): Plugin => ({
   define: getDefine(options),
 
   onPrepared: async (app) => {
-    await prepareArtPlayerEntry(app, Boolean(options.artplayer))
+    await Promise.all([
+      prepareArtPlayerEntry(app, Boolean(options.artplayer)),
+      prepareVideoJsEntry(app, options),
+    ])
   },
 })

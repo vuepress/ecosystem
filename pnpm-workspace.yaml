@@ -35,7 +35,7 @@ minimumReleaseAgeExclude:
   - vitest
   - vue
   - vuepress
-  - stylelint-config-hope@12.1.0
+  - stylelint-config-hope
 
 packageExtensions:
   stylelint:
