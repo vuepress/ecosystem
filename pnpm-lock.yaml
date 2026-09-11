@@ -396,6 +396,9 @@ importers:
       '@vuepress/plugin-feed':
         specifier: workspace:*
         version: link:../plugins/blog/plugin-feed
+      '@vuepress/plugin-media':
+        specifier: workspace:*
+        version: link:../plugins/features/plugin-media
       '@vuepress/plugin-notice':
         specifier: workspace:*
         version: link:../plugins/features/plugin-notice
