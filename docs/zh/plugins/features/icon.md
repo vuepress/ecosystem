@@ -266,6 +266,48 @@ export default {
 - 默认值：`true`
 - 详情：是否在 Markdown 中启用图标语法（`::icon::`）
 
+### fontawesome
+
+- 类型：`boolean | FontAwesomeOffline`
+- 默认值：`false`
+- 详情：
+
+  本地打包 FontAwesome 图标，而非从 CDN 加载。适用于无法访问外网时的部署。
+
+  ```ts
+  export type FontAwesomeStyle = 'brands' | 'regular' | 'solid'
+
+  export type FontAwesomeOffline = Partial<Record<FontAwesomeStyle, string[]>>
+  ```
+
+  - `true`：打包全部 FontAwesome 免费图标。
+  - 传入对象：仅打包对应样式中列出的图标。
+
+  需要安装 `@fortawesome/fontawesome-svg-core` 及对应的 `@fortawesome/free-*-svg-icons` 包：
+
+  ```bash
+  npm i -D @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/free-brands-svg-icons
+  ```
+
+  ```ts title=".vuepress/config.ts"
+  export default {
+    plugins: [
+      iconPlugin({
+        fontawesome: {
+          solid: ['house', 'user'],
+          brands: ['apple'],
+        },
+      }),
+    ],
+  }
+  ```
+
+  ::: tip
+
+  打包全部图标会为客户端产物增加约 1.8 MB，建议仅列出用到的图标。
+
+  :::
+
 ## 组件属性
 
 ### icon {#icon-prop}

@@ -3,6 +3,7 @@ import type { App } from 'vuepress/core'
 import { getDirname, path } from 'vuepress/utils'
 
 import type { IconType } from '../shared/index.js'
+import { getFontAwesomeOfflineCode } from './getFontAwesomeOffline.js'
 import { getIconLinks } from './getIconLinks.js'
 import { getIconPrefix } from './getIconPrefix.js'
 import type { IconPluginOptions } from './options.js'
@@ -15,11 +16,18 @@ export const CLIENT_FOLDER = ensureEndingSlash(
 
 export const prepareConfigFile = (
   app: App,
-  { assets, prefix, component = 'VPIcon' }: IconPluginOptions,
+  { assets, fontawesome, prefix, component = 'VPIcon' }: IconPluginOptions,
   iconType: IconType,
 ): Promise<string> => {
-  const linksInfo = getIconLinks(assets)
+  const offline = fontawesome ?? false
+  const linksInfo = getIconLinks(assets, offline !== false)
   const iconPrefix = getIconPrefix(iconType, prefix)
+  const offlineCode =
+    offline === false
+      ? ''
+      : `\
+${getFontAwesomeOfflineCode(offline)}
+`
 
   return app.writeTemp(
     `icon/config.js`,
@@ -42,7 +50,7 @@ import { useStyleTag } from "${getModulePath('@vueuse/core', import.meta)}";
 `
     : ''
 }\
-import { h } from "vue";
+${offlineCode}import { h } from "vue";
 import { VPIcon } from "${CLIENT_FOLDER}index.js"
 
 export default {

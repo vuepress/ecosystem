@@ -266,6 +266,48 @@ Images links are supported with any icon types (relative links are NOT supported
 - Default: `true`
 - Details: Whether to enable icon syntax (`::icon::`) in markdown
 
+### fontawesome
+
+- Type: `boolean | FontAwesomeOffline`
+- Default: `false`
+- Details:
+
+  Bundle FontAwesome icons locally instead of loading them from CDN, useful when the site is deployed without internet access.
+
+  ```ts
+  export type FontAwesomeStyle = 'brands' | 'regular' | 'solid'
+
+  export type FontAwesomeOffline = Partial<Record<FontAwesomeStyle, string[]>>
+  ```
+
+  - `true`: bundle every FontAwesome free icon.
+  - object: bundle only the icons listed for each style.
+
+  Requires `@fortawesome/fontawesome-svg-core` and the matching `@fortawesome/free-*-svg-icons` packages:
+
+  ```bash
+  npm i -D @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/free-brands-svg-icons
+  ```
+
+  ```ts title=".vuepress/config.ts"
+  export default {
+    plugins: [
+      iconPlugin({
+        fontawesome: {
+          solid: ['house', 'user'],
+          brands: ['apple'],
+        },
+      }),
+    ],
+  }
+  ```
+
+  ::: tip
+
+  Bundling every icon adds about 1.8 MB to the client bundle. List the icons you use to keep it small.
+
+  :::
+
 ## Component Props
 
 ### icon {#icon-prop}
