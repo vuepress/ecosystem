@@ -35,9 +35,7 @@ minimumReleaseAgeExclude:
   - vitest
   - vue
   - vuepress
-  - stylelint-config-hope@12.1.0
-  - '@mermaid-js/parser@2.0.0'
-  - mermaid@12.0.0
+  - stylelint-config-hope
 
 packageExtensions:
   stylelint:
