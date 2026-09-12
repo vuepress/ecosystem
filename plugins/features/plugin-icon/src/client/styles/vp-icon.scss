@@ -1,6 +1,6 @@
 .vp-icon {
-  // FontAwesome 7 renders all icons with a fixed width by default,
-  // keep the automatic width behavior of previous versions
+  // FontAwesome renders all icons on a wider fixed-width canvas by default,
+  // restore the original behavior of hugging the glyph
   --fa-width: auto;
 
   display: inline-block;
@@ -10,11 +10,6 @@
 
   font-size: var(--icon-size, 1em);
   line-height: 1;
-
-  // sizing=width
-  &[sizing='width'] {
-    --icon-width: 1em;
-  }
 
   // sizing=height
   &[sizing='height'] {
@@ -27,18 +22,17 @@
     --icon-height: 1em;
   }
 
+  // image icons are replaced elements, contain them instead of stretching
+  &:is(img) {
+    object-fit: contain;
+  }
+
   &:is(i) {
     vertical-align: var(--icon-vertical-align);
   }
 
   &:not(i) {
     vertical-align: var(--icon-vertical-align, -0.125em);
-  }
-
-  // override fontawesome fixed width
-  &.fa-fw,
-  .fa-fw {
-    --fa-width: 1em;
   }
 
   // override iconfont style

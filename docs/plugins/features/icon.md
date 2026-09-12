@@ -294,9 +294,15 @@ Images links are supported with any icon types (relative links are NOT supported
 
 ### sizing
 
-- Type: `"width" | "height" | "both"`
+- Type: `"height" | "both"`
 - Default: `"height"`
-- Details: Icon size adjustment method.
-  - `width`: Set width only
-  - `height`: Set height only
-  - `both`: Set width and height
+- Details:
+
+  How the icon is constrained:
+
+  - `height`: Constrain the height only, the width follows the icon ratio.
+  - `both`: Constrain the width and the height, the icon is scaled proportionally to fill the box without distortion.
+
+  FontAwesome renders every icon on a `1.25em × 1em` canvas (`20px × 16px` with the default `16px` font size) and centers the glyph inside it, so wide icons are never squeezed. That is exactly what `sizing="both"` does, which keeps FontAwesome icons aligned in lists, sidebars and toolbars.
+
+  Other icon types use a square `1em × 1em` canvas.
