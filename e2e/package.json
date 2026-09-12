@@ -23,6 +23,7 @@
     "@vuepress/plugin-copyright": "workspace:*",
     "@vuepress/plugin-feed": "workspace:*",
     "@vuepress/plugin-markdown-code-tree": "workspace:*",
+    "@vuepress/plugin-media": "workspace:*",
     "@vuepress/plugin-notice": "workspace:*",
     "@vuepress/plugin-photo-swipe": "workspace:*",
     "@vuepress/plugin-pwa": "workspace:*",
