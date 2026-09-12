@@ -1,0 +1,9 @@
+.vp-video-player {
+  margin-block: 8px;
+
+  video-skin {
+    // The skin is a grid host without a height, so it only fills the
+    // component when the component has a definite height
+    height: 100%;
+  }
+}

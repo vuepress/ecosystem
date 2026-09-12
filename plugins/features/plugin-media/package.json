@@ -1,0 +1,116 @@
+{
+  "name": "@vuepress/plugin-media",
+  "version": "2.0.0-rc.91",
+  "description": "VuePress plugin - media",
+  "keywords": [
+    "media",
+    "player",
+    "plugin",
+    "video",
+    "vuepress",
+    "vuepress-plugin",
+    "zoom"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/plugins/features/media.html",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mr.Hope",
+    "email": "mister-hope@outlook.com",
+    "url": "https://mister-hope.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/features/plugin-media"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "./dist/**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.js"
+    },
+    "./client": {
+      "types": "./dist/client/index.d.ts",
+      "default": "./dist/client/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "clean": "rimraf ./dist"
+  },
+  "dependencies": {
+    "@vuepress/helper": "workspace:*",
+    "@vueuse/core": "catalog:",
+    "vue": "catalog:"
+  },
+  "peerDependencies": {
+    "@embedpdf/vue-pdf-viewer": "^2.15.0",
+    "@videojs/dash-video": "10.0.0-rc.2",
+    "@videojs/hlsjs-video": "10.0.0-rc.2",
+    "@videojs/html": "10.0.0-rc.2",
+    "@videojs/spotify-audio": "10.0.0-rc.2",
+    "@videojs/tiktok-video": "10.0.0-rc.2",
+    "@videojs/twitch-video": "10.0.0-rc.2",
+    "@videojs/vimeo-video": "10.0.0-rc.2",
+    "@videojs/youtube-video": "10.0.0-rc.2",
+    "artplayer": "^5.3.0",
+    "dashjs": "4.7.4",
+    "hls.js": "^1.6.13",
+    "mpegts.js": "^1.7.3",
+    "vuepress": "catalog:"
+  },
+  "peerDependenciesMeta": {
+    "@embedpdf/vue-pdf-viewer": {
+      "optional": true
+    },
+    "@videojs/dash-video": {
+      "optional": true
+    },
+    "@videojs/hlsjs-video": {
+      "optional": true
+    },
+    "@videojs/html": {
+      "optional": true
+    },
+    "@videojs/spotify-audio": {
+      "optional": true
+    },
+    "@videojs/tiktok-video": {
+      "optional": true
+    },
+    "@videojs/twitch-video": {
+      "optional": true
+    },
+    "@videojs/vimeo-video": {
+      "optional": true
+    },
+    "@videojs/youtube-video": {
+      "optional": true
+    },
+    "artplayer": {
+      "optional": true
+    },
+    "dashjs": {
+      "optional": true
+    },
+    "hls.js": {
+      "optional": true
+    },
+    "mpegts.js": {
+      "optional": true
+    }
+  }
+}
