@@ -493,7 +493,7 @@ importers:
         version: link:../../markdown/plugin-markdown-include
       markdown-it:
         specifier: ^14.3.1
-        version: 14.3.1
+        version: 14.3.2
       unified:
         specifier: ^11.0.5
         version: 11.0.5
@@ -963,10 +963,10 @@ importers:
     dependencies:
       '@mdit/plugin-container':
         specifier: ^2.0.1
-        version: 2.0.1(markdown-it@14.3.1)
+        version: 2.0.1(markdown-it@14.3.2)
       '@mdit/plugin-plantuml':
         specifier: ^2.0.1
-        version: 2.0.1(markdown-it@14.3.1)
+        version: 2.0.1(markdown-it@14.3.2)
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../../../tools/helper
@@ -1006,7 +1006,7 @@ importers:
         version: 14.2.0
       markdown-it:
         specifier: ^14.3.1
-        version: 14.3.1
+        version: 14.3.2
       markmap-common:
         specifier: ^0.18.9
         version: 0.18.9
@@ -1025,19 +1025,19 @@ importers:
     devDependencies:
       markdown-it:
         specifier: ^14.3.1
-        version: 14.3.1
+        version: 14.3.2
 
   plugins/markdown/plugin-markdown-ext:
     dependencies:
       '@mdit/plugin-container':
         specifier: ^2.0.1
-        version: 2.0.1(markdown-it@14.3.1)
+        version: 2.0.1(markdown-it@14.3.2)
       '@mdit/plugin-footnote':
         specifier: ^1.1.1
-        version: 1.1.1(markdown-it@14.3.1)
+        version: 1.1.1(markdown-it@14.3.2)
       '@mdit/plugin-tasklist':
         specifier: ^1.1.1
-        version: 1.1.1(markdown-it@14.3.1)
+        version: 1.1.1(markdown-it@14.3.2)
       '@types/markdown-it':
         specifier: ^14.2.0
         version: 14.2.0
@@ -1049,7 +1049,7 @@ importers:
         version: 5.4.1
       markdown-it-cjk-friendly:
         specifier: ^3.0.0
-        version: 3.0.0(@types/markdown-it@14.2.0)(markdown-it@14.3.1)
+        version: 3.0.0(@types/markdown-it@14.2.0)(markdown-it@14.3.2)
       vuepress:
         specifier: 'catalog:'
         version: 2.0.0-rc.31(636537a563f817181b911d10de04e73e)
@@ -1059,16 +1059,16 @@ importers:
         version: 4.0.9
       markdown-it:
         specifier: ^14.3.1
-        version: 14.3.1
+        version: 14.3.2
 
   plugins/markdown/plugin-markdown-field:
     dependencies:
       '@mdit/helper':
         specifier: ^1.1.1
-        version: 1.1.1(markdown-it@14.3.1)
+        version: 1.1.1(markdown-it@14.3.2)
       '@mdit/plugin-field':
         specifier: ^2.0.1
-        version: 2.0.1(markdown-it@14.3.1)
+        version: 2.0.1(markdown-it@14.3.2)
       '@types/markdown-it':
         specifier: ^14.2.0
         version: 14.2.0
@@ -1081,7 +1081,7 @@ importers:
     devDependencies:
       markdown-it:
         specifier: ^14.3.1
-        version: 14.3.1
+        version: 14.3.2
 
   plugins/markdown/plugin-markdown-file-tree:
     dependencies:
@@ -1103,16 +1103,16 @@ importers:
     devDependencies:
       markdown-it:
         specifier: ^14.3.1
-        version: 14.3.1
+        version: 14.3.2
 
   plugins/markdown/plugin-markdown-hint:
     dependencies:
       '@mdit/plugin-alert':
         specifier: ^2.0.1
-        version: 2.0.1(markdown-it@14.3.1)
+        version: 2.0.1(markdown-it@14.3.2)
       '@mdit/plugin-container':
         specifier: ^2.0.1
-        version: 2.0.1(markdown-it@14.3.1)
+        version: 2.0.1(markdown-it@14.3.2)
       '@types/markdown-it':
         specifier: ^14.2.0
         version: 14.2.0
@@ -1128,7 +1128,7 @@ importers:
     devDependencies:
       markdown-it:
         specifier: ^14.3.1
-        version: 14.3.1
+        version: 14.3.2
 
   plugins/markdown/plugin-markdown-image:
     dependencies:
@@ -1176,10 +1176,10 @@ importers:
         version: 4.1.3
       '@mdit/plugin-katex-slim':
         specifier: ^1.1.1
-        version: 1.1.1(katex@0.18.7)(markdown-it@14.3.1)
+        version: 1.1.1(katex@0.18.7)(markdown-it@14.3.2)
       '@mdit/plugin-mathjax-slim':
         specifier: ^1.2.1
-        version: 1.2.1(@mathjax/mathjax-newcm-font@4.1.3)(@mathjax/src@4.1.3)(markdown-it@14.3.1)
+        version: 1.2.1(@mathjax/mathjax-newcm-font@4.1.3)(@mathjax/src@4.1.3)(markdown-it@14.3.2)
       '@types/markdown-it':
         specifier: ^14.2.0
         version: 14.2.0
@@ -1198,16 +1198,16 @@ importers:
     devDependencies:
       markdown-it:
         specifier: ^14.3.1
-        version: 14.3.1
+        version: 14.3.2
 
   plugins/markdown/plugin-markdown-preview:
     dependencies:
       '@mdit/helper':
         specifier: ^1.1.1
-        version: 1.1.1(markdown-it@14.3.1)
+        version: 1.1.1(markdown-it@14.3.2)
       '@mdit/plugin-demo':
         specifier: ^2.0.1
-        version: 2.0.1(markdown-it@14.3.1)
+        version: 2.0.1(markdown-it@14.3.2)
       '@types/markdown-it':
         specifier: ^14.2.0
         version: 14.2.0
@@ -1226,37 +1226,37 @@ importers:
     devDependencies:
       markdown-it:
         specifier: ^14.3.1
-        version: 14.3.1
+        version: 14.3.2
 
   plugins/markdown/plugin-markdown-stylize:
     dependencies:
       '@mdit/plugin-align':
         specifier: ^1.1.1
-        version: 1.1.1(markdown-it@14.3.1)
+        version: 1.1.1(markdown-it@14.3.2)
       '@mdit/plugin-attrs':
         specifier: ^1.3.1
-        version: 1.3.1(markdown-it@14.3.1)
+        version: 1.3.1(markdown-it@14.3.2)
       '@mdit/plugin-container':
         specifier: ^2.0.1
-        version: 2.0.1(markdown-it@14.3.1)
+        version: 2.0.1(markdown-it@14.3.2)
       '@mdit/plugin-layout':
         specifier: ^1.1.1
-        version: 1.1.1(markdown-it@14.3.1)
+        version: 1.1.1(markdown-it@14.3.2)
       '@mdit/plugin-mark':
         specifier: ^2.1.1
-        version: 2.1.1(markdown-it@14.3.1)
+        version: 2.1.1(markdown-it@14.3.2)
       '@mdit/plugin-spoiler':
         specifier: ^2.1.1
-        version: 2.1.1(markdown-it@14.3.1)
+        version: 2.1.1(markdown-it@14.3.2)
       '@mdit/plugin-stylize':
         specifier: ^2.0.1
-        version: 2.0.1(markdown-it@14.3.1)
+        version: 2.0.1(markdown-it@14.3.2)
       '@mdit/plugin-sub':
         specifier: ^1.1.1
-        version: 1.1.1(markdown-it@14.3.1)
+        version: 1.1.1(markdown-it@14.3.2)
       '@mdit/plugin-sup':
         specifier: ^1.1.1
-        version: 1.1.1(markdown-it@14.3.1)
+        version: 1.1.1(markdown-it@14.3.2)
       '@types/markdown-it':
         specifier: ^14.2.0
         version: 14.2.0
@@ -1269,13 +1269,13 @@ importers:
     devDependencies:
       markdown-it:
         specifier: ^14.3.1
-        version: 14.3.1
+        version: 14.3.2
 
   plugins/markdown/plugin-markdown-tab:
     dependencies:
       '@mdit/plugin-tab':
         specifier: ^2.0.1
-        version: 2.0.1(markdown-it@14.3.1)
+        version: 2.0.1(markdown-it@14.3.2)
       '@types/markdown-it':
         specifier: ^14.2.0
         version: 14.2.0
@@ -1294,7 +1294,7 @@ importers:
     devDependencies:
       markdown-it:
         specifier: ^14.3.1
-        version: 14.3.1
+        version: 14.3.2
 
   plugins/markdown/plugin-prismjs:
     dependencies:
@@ -1319,13 +1319,13 @@ importers:
         version: 1.26.6
       markdown-it:
         specifier: ^14.3.1
-        version: 14.3.1
+        version: 14.3.2
 
   plugins/markdown/plugin-revealjs:
     dependencies:
       '@mdit/plugin-uml':
         specifier: ^2.0.1
-        version: 2.0.1(markdown-it@14.3.1)
+        version: 2.0.1(markdown-it@14.3.2)
       '@types/markdown-it':
         specifier: ^14.2.0
         version: 14.2.0
@@ -1347,7 +1347,7 @@ importers:
     devDependencies:
       markdown-it:
         specifier: ^14.3.1
-        version: 14.3.1
+        version: 14.3.2
 
   plugins/markdown/plugin-shiki:
     dependencies:
@@ -1381,7 +1381,7 @@ importers:
         version: link:../../../tools/shiki-twoslash
       markdown-it:
         specifier: ^14.3.1
-        version: 14.3.1
+        version: 14.3.2
 
   plugins/pwa/plugin-pwa:
     dependencies:
@@ -8109,6 +8109,10 @@ packages:
     resolution: {integrity: sha512-4Ej49aYTDFIQ+uBkfX8GBvJGccoARxxPep+7aWTs55ozbjQJpW9M26Fe53vnGgvLeVzva/amzjQQaQu9w0vMhA==}
     hasBin: true
 
+  markdown-it@14.3.2:
+    resolution: {integrity: sha512-sHHjZ5fJKlgrG4qns2YwVcdNep35h5fERrfkD2YNsb9UFk0UIHarbiTaHKVMlPuWAoiilyK8Fv/jAm11slsY7Q==}
+    hasBin: true
+
   markdown-table@3.0.4:
     resolution: {integrity: sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw==}
 
@@ -13085,169 +13089,169 @@ snapshots:
 
   '@mdit-vue/types@3.0.2': {}
 
-  '@mdit/helper@1.1.1(markdown-it@14.3.1)':
+  '@mdit/helper@1.1.1(markdown-it@14.3.2)':
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-alert@2.0.1(markdown-it@14.3.1)':
+  '@mdit/plugin-alert@2.0.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-align@1.1.1(markdown-it@14.3.1)':
+  '@mdit/plugin-align@1.1.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
-      '@mdit/plugin-container': 2.0.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
+      '@mdit/plugin-container': 2.0.1(markdown-it@14.3.2)
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-attrs@1.3.1(markdown-it@14.3.1)':
+  '@mdit/plugin-attrs@1.3.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-container@2.0.1(markdown-it@14.3.1)':
+  '@mdit/plugin-container@2.0.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-demo@2.0.1(markdown-it@14.3.1)':
+  '@mdit/plugin-demo@2.0.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-field@2.0.1(markdown-it@14.3.1)':
+  '@mdit/plugin-field@2.0.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
   '@mdit/plugin-figure@1.2.1':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
 
-  '@mdit/plugin-footnote@1.1.1(markdown-it@14.3.1)':
+  '@mdit/plugin-footnote@1.1.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
-      markdown-it: 14.3.1
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
+      markdown-it: 14.3.2
 
   '@mdit/plugin-icon@1.1.1':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
 
   '@mdit/plugin-img-lazyload@1.1.1':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
 
   '@mdit/plugin-img-mark@1.1.1':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
 
   '@mdit/plugin-img-size@1.1.1':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
 
   '@mdit/plugin-include@1.1.1':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
       upath: 3.0.8
 
-  '@mdit/plugin-inline-rule@2.2.1(markdown-it@14.3.1)':
+  '@mdit/plugin-inline-rule@2.2.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-katex-slim@1.1.1(katex@0.18.7)(markdown-it@14.3.1)':
+  '@mdit/plugin-katex-slim@1.1.1(katex@0.18.7)(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
-      '@mdit/plugin-tex': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
+      '@mdit/plugin-tex': 1.1.1(markdown-it@14.3.2)
     optionalDependencies:
       katex: 0.18.7
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-layout@1.1.1(markdown-it@14.3.1)':
+  '@mdit/plugin-layout@1.1.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-mark@2.1.1(markdown-it@14.3.1)':
+  '@mdit/plugin-mark@2.1.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
-      '@mdit/plugin-inline-rule': 2.2.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
+      '@mdit/plugin-inline-rule': 2.2.1(markdown-it@14.3.2)
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-mathjax-slim@1.2.1(@mathjax/mathjax-newcm-font@4.1.3)(@mathjax/src@4.1.3)(markdown-it@14.3.1)':
+  '@mdit/plugin-mathjax-slim@1.2.1(@mathjax/mathjax-newcm-font@4.1.3)(@mathjax/src@4.1.3)(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/plugin-tex': 1.1.1(markdown-it@14.3.1)
+      '@mdit/plugin-tex': 1.1.1(markdown-it@14.3.2)
     optionalDependencies:
       '@mathjax/mathjax-newcm-font': 4.1.3
       '@mathjax/src': 4.1.3
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-plantuml@2.0.1(markdown-it@14.3.1)':
+  '@mdit/plugin-plantuml@2.0.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
-      '@mdit/plugin-uml': 2.0.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
+      '@mdit/plugin-uml': 2.0.1(markdown-it@14.3.2)
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-spoiler@2.1.1(markdown-it@14.3.1)':
+  '@mdit/plugin-spoiler@2.1.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
-      '@mdit/plugin-inline-rule': 2.2.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
+      '@mdit/plugin-inline-rule': 2.2.1(markdown-it@14.3.2)
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-stylize@2.0.1(markdown-it@14.3.1)':
+  '@mdit/plugin-stylize@2.0.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-sub@1.1.1(markdown-it@14.3.1)':
+  '@mdit/plugin-sub@1.1.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
-      '@mdit/plugin-inline-rule': 2.2.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
+      '@mdit/plugin-inline-rule': 2.2.1(markdown-it@14.3.2)
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-sup@1.1.1(markdown-it@14.3.1)':
+  '@mdit/plugin-sup@1.1.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
-      '@mdit/plugin-inline-rule': 2.2.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
+      '@mdit/plugin-inline-rule': 2.2.1(markdown-it@14.3.2)
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-tab@2.0.1(markdown-it@14.3.1)':
+  '@mdit/plugin-tab@2.0.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-tasklist@1.1.1(markdown-it@14.3.1)':
+  '@mdit/plugin-tasklist@1.1.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-tex@1.1.1(markdown-it@14.3.1)':
+  '@mdit/plugin-tex@1.1.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
-  '@mdit/plugin-uml@2.0.1(markdown-it@14.3.1)':
+  '@mdit/plugin-uml@2.0.1(markdown-it@14.3.2)':
     dependencies:
-      '@mdit/helper': 1.1.1(markdown-it@14.3.1)
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
     optionalDependencies:
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
 
   '@mermaid-js/parser@2.0.0':
     dependencies:
@@ -17703,10 +17707,10 @@ snapshots:
       '@types/markdown-it': 14.2.0
       markdown-it: 14.3.1
 
-  markdown-it-cjk-friendly@3.0.0(@types/markdown-it@14.2.0)(markdown-it@14.3.1):
+  markdown-it-cjk-friendly@3.0.0(@types/markdown-it@14.2.0)(markdown-it@14.3.2):
     dependencies:
       get-east-asian-width: 1.6.0
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
     optionalDependencies:
       '@types/markdown-it': 14.2.0
 
@@ -17723,6 +17727,15 @@ snapshots:
   markdown-it-sup@2.0.0: {}
 
   markdown-it@14.3.1:
+    dependencies:
+      argparse: 2.0.1
+      entities: 4.5.0
+      linkify-it: 5.0.2
+      mdurl: 2.1.0
+      punycode.js: 2.3.1
+      uc.micro: 2.1.0
+
+  markdown-it@14.3.2:
     dependencies:
       argparse: 2.0.1
       entities: 4.5.0
@@ -17759,7 +17772,7 @@ snapshots:
       '@vscode/markdown-it-katex': 1.1.2
       highlight.js: 11.12.0
       katex: 0.16.47
-      markdown-it: 14.3.1
+      markdown-it: 14.3.2
       markdown-it-ins: 4.0.0
       markdown-it-mark: 4.0.0
       markdown-it-sub: 2.0.0
