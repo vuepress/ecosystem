@@ -8,8 +8,6 @@ icon: video
 
 This plugin registers components to embed videos, audio, and PDF documents in your pages.
 
-Domestic platforms (Tencent, Youku, iQiyi, Mango, Sohu) are not provided due to trial-view restrictions and permission issues, so only BiliBili is available among them.
-
 ## Usage
 
 ```bash
