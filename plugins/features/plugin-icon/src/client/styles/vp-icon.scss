@@ -1,5 +1,7 @@
 .vp-icon {
-  --fa-fw-width: 1em;
+  // FontAwesome 7 renders all icons with a fixed width by default,
+  // keep the automatic width behavior of previous versions
+  --fa-width: auto;
 
   display: inline-block;
 
@@ -31,6 +33,12 @@
 
   &:not(i) {
     vertical-align: var(--icon-vertical-align, -0.125em);
+  }
+
+  // override fontawesome fixed width
+  &.fa-fw,
+  .fa-fw {
+    --fa-width: 1em;
   }
 
   // override iconfont style

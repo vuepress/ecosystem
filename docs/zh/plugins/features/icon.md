@@ -78,7 +78,7 @@ export default {
 
 ### Font Awesome
 
-有关免费图标列表，请参见 <https://fontawesome.com/v6/search?o=r&m=free>。要使用图标，请复制选择器中的图标名称。
+有关免费图标列表，请参见 <https://fontawesome.com/search?ic=free>。要使用图标，请复制选择器中的图标名称。
 
 `fontawesome` 关键字仅包括免费的实心和常规图标。如果要使用品牌图标，则需要使用 `fontawesome-with-brands` 关键字。
 
@@ -123,7 +123,7 @@ export default {
 
 ::: tip FontAwesome 套件和 Pro 功能
 
-默认情况下，我们使用 jsdelivr CDN 来加载 FontAwesome 免费图标的 V6 版本。这对于大多数开源项目来说应该足够了。
+默认情况下，我们使用 jsdelivr CDN 来加载 FontAwesome 免费图标的 V7 版本。这对于大多数开源项目来说应该足够了。
 
 此外，你可以在 [fontawesome.com](https://fontawesome.com) 购买套件来使用。
 

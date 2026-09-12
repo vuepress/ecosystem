@@ -78,7 +78,7 @@ If you use 1 icon set mostly, you can set the prefix to the icon set name (E.g.:
 
 ### Font Awesome
 
-For free icon list, see <https://fontawesome.com/v6/search?o=r&m=free>. To use a icon, copy it's icon name in the selector.
+For free icon list, see <https://fontawesome.com/search?ic=free>. To use a icon, copy it's icon name in the selector.
 
 The `fontawesome` keyword only includes the free solid and regular icons. If you want to use the brand icons, you need to use the `fontawesome-with-brands` keyword.
 
@@ -123,7 +123,7 @@ See <https://docs.fontawesome.com/web/style/styling> for all available classes.
 
 ::: tip FontAwesome Kits and Pro features
 
-By default, we use jsdelivr CDN to load V6 version of FontAwesome free icons. This should be enough for most open source projects.
+By default, we use jsdelivr CDN to load V7 version of FontAwesome free icons. This should be enough for most open source projects.
 
 Besides, you can purchase at [fontawesome.com](https://fontawesome.com) to use kits.
 
