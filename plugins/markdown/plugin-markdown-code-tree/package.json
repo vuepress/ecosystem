@@ -1,0 +1,64 @@
+{
+  "name": "@vuepress/plugin-markdown-code-tree",
+  "version": "2.0.0-rc.134",
+  "description": "VuePress plugin - markdown code tree",
+  "keywords": [
+    "code-tree",
+    "markdown",
+    "plugin",
+    "vuepress",
+    "vuepress-plugin"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/plugins/markdown/markdown-code-tree.html",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "pengzhanbo",
+    "email": "q942450674@qq.com",
+    "url": "https://github.com/pengzhanbo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "plugins/markdown/plugin-markdown-code-tree"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "./dist/**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "clean": "rimraf ./dist",
+    "generate:icons": "unrun scripts/generateFileIcons.ts"
+  },
+  "dependencies": {
+    "@mdit/plugin-container": "^2.0.1",
+    "@types/markdown-it": "^14.2.0",
+    "@vuepress/helper": "workspace:*",
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "@iconify-json/vscode-icons": "catalog:",
+    "@vuepress/highlighter-helper": "workspace:*",
+    "@yutengjing/vscode-icons": "catalog:",
+    "markdown-it": "^14.3.1"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
+  }
+}

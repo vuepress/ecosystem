@@ -1,0 +1,6 @@
+{
+  "name": "vue-app",
+  "scripts": {
+    "dev": "vite"
+  }
+}
