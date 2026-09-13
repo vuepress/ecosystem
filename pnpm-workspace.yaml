@@ -6,9 +6,11 @@ packages:
   - tools/*
 
 catalog:
+  '@iconify-json/vscode-icons': ^1.2.77
   '@vuepress/bundler-vite': 2.0.0-rc.31
   '@vuepress/bundler-webpack': 2.0.0-rc.31
   '@vueuse/core': ^14.4.0
+  '@yutengjing/vscode-icons': ^0.1.1
   chokidar: ^5.0.0
   sass: ^1.104.0
   sass-embedded: ^1.104.0

@@ -1,0 +1,181 @@
+.vp-code-tree {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+
+  overflow: hidden;
+
+  width: 100%;
+  margin-block: 1rem;
+  border: solid 1px var(--code-tree-c-border);
+  border-radius: 8px;
+
+  transition: border var(--vp-t-color);
+
+  @media (min-width: 768px) {
+    &:not(.no-file-tree) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    }
+  }
+}
+
+.vp-code-tree-files {
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  max-height: var(--code-tree-height);
+  border-bottom: solid 1px var(--code-tree-c-border);
+
+  background-color: var(--code-tree-c-bg);
+
+  @media (min-width: 768px) {
+    border-bottom: none;
+    border-inline-end: solid 1px var(--code-tree-c-border);
+  }
+}
+
+.vp-code-tree-title {
+  flex-shrink: 0;
+
+  overflow: hidden;
+
+  padding-block: 8px;
+  padding-inline: 16px;
+  border-bottom: solid 1px var(--code-tree-c-border);
+
+  color: var(--code-tree-c-text);
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  transition:
+    color var(--vp-t-color),
+    border-color var(--vp-t-color);
+}
+
+.vp-code-tree-tree {
+  flex: 1 1 auto;
+  overflow: auto;
+  padding: 8px;
+}
+
+.vp-code-tree-node-info {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+
+  padding-block: 3px;
+  padding-inline: 8px;
+  border-radius: 4px;
+
+  font-size: 14px;
+  line-height: 20px;
+  text-wrap: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--vp-t-color),
+    color var(--vp-t-color);
+
+  &:hover {
+    background-color: var(--code-tree-c-hover-bg);
+  }
+
+  &.active {
+    background-color: var(--code-tree-c-active-bg);
+  }
+
+  &.active .vp-code-tree-node-name,
+  &.folder:hover .vp-code-tree-node-name {
+    color: var(--code-tree-c-active-text);
+  }
+
+  &.folder .vp-code-tree-node-name {
+    color: var(--code-tree-c-text);
+  }
+}
+
+.vp-code-tree-node-name {
+  overflow: hidden;
+
+  min-width: 0;
+  margin-inline-end: 8px;
+
+  color: var(--code-tree-c-text-mute);
+
+  font-family: var(--code-tree-font-family);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  transition: color var(--vp-t-color);
+}
+
+.vp-code-tree-node-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+}
+
+.vp-code-tree-node-icon-fallback {
+  display: inline-block;
+
+  width: 16px;
+  height: 16px;
+
+  background-color: currentcolor;
+
+  mask: var(--icon) no-repeat;
+  mask-size: 100% 100%;
+}
+
+.vp-code-tree-node-icon-fallback-file {
+  --icon: var(--code-tree-icon-file);
+}
+
+.vp-code-tree-node-icon-fallback-folder {
+  --icon: var(--code-tree-icon-folder);
+}
+
+.vp-code-tree-node-info.folder.expanded
+  .vp-code-tree-node-icon-fallback-folder {
+  --icon: var(--code-tree-icon-folder-expanded);
+}
+
+.vp-code-tree-node-group {
+  padding-inline-start: 16px;
+}
+
+.vp-code-tree-code {
+  overflow: auto;
+  height: var(--code-tree-height);
+
+  /* Only the active code block is displayed */
+  > .code-block-with-title,
+  > div[class*='language-'] {
+    display: none;
+  }
+
+  > .code-block-with-title.active {
+    display: block;
+  }
+
+  .code-block-title-bar {
+    margin-block: 0;
+    border-start-start-radius: 0;
+    border-start-end-radius: 0;
+  }
+
+  div[class*='language-'] {
+    margin-block: 0;
+    border-radius: 0;
+  }
+}

@@ -1,0 +1,16 @@
+:root {
+  --code-tree-icon-file: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath fill='%23c5c5c5' d='M20.414 2H5v28h22V8.586ZM7 28V4h12v6h6v18Z'/%3E%3C/svg%3E");
+  --code-tree-icon-folder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath fill='%23c09553' d='M27.5 5.5h-9.3l-2.1 4.2H4.4v16.8h25.2v-21Zm0 4.2h-8.2l1.1-2.1h7.1Z'/%3E%3C/svg%3E");
+  --code-tree-icon-folder-expanded: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath fill='%23dcb67a' d='M27.4 5.5h-9.2l-2.1 4.2H4.3v16.8h25.2v-21Zm0 18.7H6.6V11.8h20.8Zm0-14.5h-8.2l1-2.1h7.1v2.1Z'/%3E%3Cpath fill='%23dcb67a' d='M25.7 13.7H.5l3.8 12.8h25.2z'/%3E%3C/svg%3E");
+  --code-tree-font-family:
+    ui-monospace, 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono',
+    'Courier New', monospace;
+  --code-tree-height: 320px;
+  --code-tree-c-bg: var(--vp-c-bg-alt);
+  --code-tree-c-text: var(--vp-c-text);
+  --code-tree-c-text-mute: var(--vp-c-text-mute);
+  --code-tree-c-border: var(--vp-c-divider);
+  --code-tree-c-hover-bg: var(--vp-c-control-hover);
+  --code-tree-c-active-bg: var(--vp-c-accent-soft);
+  --code-tree-c-active-text: var(--vp-c-accent);
+}

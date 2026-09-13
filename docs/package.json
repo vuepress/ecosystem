@@ -27,6 +27,7 @@
     "@vuepress/plugin-icon": "workspace:*",
     "@vuepress/plugin-llms": "workspace:*",
     "@vuepress/plugin-markdown-chart": "workspace:*",
+    "@vuepress/plugin-markdown-code-tree": "workspace:*",
     "@vuepress/plugin-markdown-ext": "workspace:*",
     "@vuepress/plugin-markdown-field": "workspace:*",
     "@vuepress/plugin-markdown-file-tree": "workspace:*",

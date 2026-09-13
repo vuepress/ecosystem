@@ -125,6 +125,7 @@ export const sidebarEn: SidebarOptions = {
       ],
     },
     'markdown-container',
+    'markdown-code-tree',
     'markdown-ext',
     'markdown-field',
     'markdown-file-tree',
