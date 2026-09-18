@@ -1417,7 +1417,7 @@ importers:
     dependencies:
       '@docsearch/css':
         specifier: ^5.0.5
-        version: 5.0.5
+        version: 5.1.1
       '@docsearch/js':
         specifier: ^5.0.5
         version: 5.0.5
@@ -2670,6 +2670,9 @@ packages:
 
   '@docsearch/css@5.0.5':
     resolution: {integrity: sha512-0ETIihH1MKPzIcTZjjJsXGpheg53ZIuQ7mETXZVTnRDxK8BEbUz62IBSz0RuhGa6G3jxMVzWkVKenj7Ru4vUcA==}
+
+  '@docsearch/css@5.1.1':
+    resolution: {integrity: sha512-+sPTcGV9QVTB7m9KRl2uym1lY3N3lwV2Y4KRttdZF7MPrS3Wd/Dkp5LarZTk81IpqF3hXxxyxhkl5vwQZGuGUQ==}
 
   '@docsearch/js@5.0.5':
     resolution: {integrity: sha512-FZtElUFj23W7KQigRTYRU24zU1p7B70NR3yihlBLtx+uERQmrfconjlRlrbYi4VfksNTm/ZgRBGEaO8kxYLstA==}
@@ -12047,6 +12050,8 @@ snapshots:
       react-dom: 19.2.8(react@19.2.8)
 
   '@docsearch/css@5.0.5': {}
+
+  '@docsearch/css@5.1.1': {}
 
   '@docsearch/js@5.0.5': {}
 
