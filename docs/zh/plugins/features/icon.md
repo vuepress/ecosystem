@@ -121,6 +121,71 @@ export default {
 
 有关所有可用类的详细信息，请参见 <https://docs.fontawesome.com/web/style/styling>。
 
+#### 离线使用
+
+默认情况下，图标从 jsdelivr CDN 加载。要改为本地打包，请设置 `fontawesome` 选项。
+
+图标由 `@fortawesome` 包提供，需要将它们安装为开发依赖。`@fortawesome/fontawesome-svg-core` 始终需要，每种图标样式还需要各自的包：
+
+| 样式      | 包                                    |
+| --------- | ------------------------------------- |
+| `solid`   | `@fortawesome/free-solid-svg-icons`   |
+| `regular` | `@fortawesome/free-regular-svg-icons` |
+| `brands`  | `@fortawesome/free-brands-svg-icons`  |
+
+只打包页面中用到的图标时，只需安装用到的样式对应的包：
+
+```bash
+# 使用了 solid 和 brands 图标，不需要 regular
+npm i -D @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/free-brands-svg-icons
+```
+
+随后页面中用到的图标会被自动打包：
+
+```ts title=".vuepress/config.ts"
+export default {
+  plugins: [
+    iconPlugin({
+      fontawesome: true,
+    }),
+  ],
+}
+```
+
+无法从页面内容中检测到的图标，例如主题配置或组件中使用的图标，需要由扫描器返回：
+
+```ts
+iconPlugin({
+  // 图标使用与 Markdown 中一致的语法
+  fontawesome: (app) => ['brands:apple', 'solid:house'],
+})
+```
+
+打包全部免费图标时需要三个样式包，因为每个样式都是整体导入的：
+
+```bash
+npm i -D @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-brands-svg-icons
+```
+
+```ts
+iconPlugin({ fontawesome: 'all' })
+```
+
+图标的检测方式与渲染方式一致，因此图标中包含的类可以任意排序：
+
+```md
+::house fa-sm:: <!-- 图标名在前 -->
+::fa-sm fa-house:: <!-- 类在前 -->
+```
+
+缺少包时会终止构建并给出需要安装的包，被跳过的图标会以警告提示。
+
+::: warning
+
+离线模式只支持 FontAwesome 免费图标，因此图标类型固定为 `fontawesome`：`assets` 选项会被忽略，其他类型的图标（如 `::mdi:home::`、iconfont 与图片）将不再渲染。
+
+:::
+
 ::: tip FontAwesome 套件和 Pro 功能
 
 默认情况下，我们使用 jsdelivr CDN 来加载 FontAwesome 免费图标的 V7 版本。这对于大多数开源项目来说应该足够了。
@@ -265,6 +330,40 @@ export default {
 - 类型：`boolean`
 - 默认值：`true`
 - 详情：是否在 Markdown 中启用图标语法（`::icon::`）
+
+### fontawesome
+
+- 类型：`boolean | "all" | FontAwesomeScanner`
+- 默认值：`false`
+- 详情：
+
+  本地打包 FontAwesome 图标，而非从 CDN 加载，使站点无需联网即可访问。需要安装的包见[离线使用](#离线使用)。
+
+  - `true`：打包站点用到的图标，它们会从渲染后的页面内容中检测。
+  - `"all"`：打包全部 FontAwesome 免费图标。
+  - 传入函数：扫描器，返回无法被检测的图标，例如主题配置或组件中使用的图标。它接收 VuePress 应用，返回的图标使用与 Markdown 中一致的语法，例如 `house`、`solid:house`、`fa-solid fa-house` 或 `brands:apple`，未给出样式时样式回退为 `solid`：
+
+  ```ts
+  export type FontAwesomeScanner = (app: App) => string[] | Promise<string[]>
+  ```
+
+  ```ts title=".vuepress/config.ts"
+  export default {
+    plugins: [
+      iconPlugin({
+        fontawesome: true,
+      }),
+    ],
+  }
+  ```
+
+  图标在站点准备阶段检测，因此新增图标后需要重启开发服务器。
+
+  ::: tip
+
+  打包全部图标会为客户端产物增加约 1.8 MB。
+
+  :::
 
 ## 组件属性
 

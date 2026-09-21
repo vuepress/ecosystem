@@ -6,7 +6,11 @@ import {
   isString,
 } from '@vuepress/helper'
 
-import { isFontAwesomeLink } from './getAssetsType.js'
+import {
+  isFontAwesomeAssets,
+  isFontAwesomeLink,
+  isIconifyAssets,
+} from './getAssetsType.js'
 import type { IconAsset } from './options.js'
 import { logger } from './utils.js'
 
@@ -92,5 +96,14 @@ useStyleTag(\`\\
   return []
 }
 
-export const getIconLinks = (assets: IconAsset = 'iconify'): LinkInfo[] =>
-  (isArray(assets) ? assets : [assets]).flatMap((item) => getIconLink(item))
+export const getIconLinks = (
+  assets: IconAsset = 'iconify',
+  offline = false,
+): LinkInfo[] =>
+  (isArray(assets) ? assets : [assets]).flatMap((item) =>
+    // the icon type is determined by the offline setting, built-in assets
+    // would load a second icon library from CDN
+    offline && (isFontAwesomeAssets(item) || isIconifyAssets(item))
+      ? []
+      : getIconLink(item),
+  )

@@ -3,8 +3,10 @@ import { addCustomElement, addViteSsrNoExternal } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 
 import { getAssetsType } from './getAssetsType.js'
+import { getFontAwesomePackages } from './getFontAwesomeOffline.js'
 import type { IconPluginOptions } from './options.js'
 import { prepareConfigFile } from './prepareConfigFile.js'
+import { prepareFontAwesomeEntry } from './prepareFontAwesomeEntry.js'
 import { PLUGIN_NAME } from './utils.js'
 
 /**
@@ -26,13 +28,18 @@ import { PLUGIN_NAME } from './utils.js'
  *   }
  */
 export const iconPlugin = (options: IconPluginOptions = {}): Plugin => {
-  const iconType = options.type ?? getAssetsType(options)
+  const { fontawesome } = options
+  const iconType =
+    options.type ?? (fontawesome ? 'fontawesome' : getAssetsType(options))
 
   return {
     name: PLUGIN_NAME,
 
     extendsBundlerOptions: (bundlerOptions, app) => {
-      addViteSsrNoExternal(bundlerOptions, app, '@vuepress/helper')
+      addViteSsrNoExternal(bundlerOptions, app, [
+        '@vuepress/helper',
+        ...getFontAwesomePackages(fontawesome),
+      ])
 
       if (iconType === 'iconify')
         addCustomElement(bundlerOptions, app, 'iconify-icon')
@@ -54,6 +61,12 @@ export const iconPlugin = (options: IconPluginOptions = {}): Plugin => {
         })
       }
     },
+
+    onPrepared: fontawesome
+      ? async (app) => {
+          await prepareFontAwesomeEntry(app, options)
+        }
+      : undefined,
 
     clientConfigFile: (app) => prepareConfigFile(app, options, iconType),
   }
