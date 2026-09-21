@@ -1,12 +1,10 @@
 import type { App } from 'vuepress'
 import { ensureEndingSlash } from 'vuepress/shared'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
 import type { GitPluginOptions } from './options.js'
 
-const { url } = import.meta
-
-const __dirname = getDirname(url)
+const __dirname = import.meta.dirname
 
 const CLIENT_FOLDER = ensureEndingSlash(path.resolve(__dirname, '../client'))
 

@@ -1,13 +1,13 @@
 import { ensureEndingSlash, getModulePath } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
 import type { IconType } from '../shared/index.js'
 import { getIconLinks } from './getIconLinks.js'
 import { getIconPrefix } from './getIconPrefix.js'
 import type { IconPluginOptions } from './options.js'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 export const CLIENT_FOLDER = ensureEndingSlash(
   path.resolve(__dirname, '../client'),

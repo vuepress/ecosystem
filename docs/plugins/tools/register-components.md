@@ -45,9 +45,9 @@ export default {
 - Example:
 
 ```ts title=".vuepress/config.ts"
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 export default {
   plugins: [
@@ -75,9 +75,9 @@ export default {
 - Example:
 
 ```ts title=".vuepress/config.ts"
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 export default {
   plugins: [

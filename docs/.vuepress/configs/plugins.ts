@@ -21,11 +21,11 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { revealJsPlugin } from '@vuepress/plugin-revealjs'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 import type { Page } from 'vuepress'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
 import { tocGetter } from './llmstxtTOC.js'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 export const plugins = [
   catalogPlugin(),

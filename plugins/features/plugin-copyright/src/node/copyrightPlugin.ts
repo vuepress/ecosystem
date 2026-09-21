@@ -4,7 +4,7 @@ import {
   getFullLocaleConfig,
 } from '@vuepress/helper'
 import type { Page, PluginFunction } from 'vuepress/core'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
 import type {
   CopyrightInfoData,
@@ -17,7 +17,7 @@ const PLUGIN_NAME = '@vuepress/plugin-copyright'
 
 export const logger: Logger = new Logger(PLUGIN_NAME)
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 /**
  * Copyright plugin

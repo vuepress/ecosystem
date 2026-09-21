@@ -1,6 +1,6 @@
 import { deepAssign, getFullLocaleConfig } from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
 import { previewLocaleInfo } from './locales.js'
 import type { MarkdownPreviewPluginOptions } from './options.js'
@@ -14,7 +14,7 @@ declare module 'vuepress/markdown' {
 
 const PLUGIN_NAME = '@vuepress/plugin-markdown-preview'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 /**
  * Markdown preview plugin

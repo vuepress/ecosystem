@@ -6,12 +6,12 @@ import { getModulePath } from '@vuepress/helper'
 import type { DefaultThemePageData } from '@vuepress/theme-default'
 import type { Page } from 'vuepress'
 import { defineUserConfig } from 'vuepress'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
 import { head, plugins } from './configs/index.js'
 import theme from './theme.js'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 export default defineUserConfig({
   // set site base to default value

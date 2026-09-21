@@ -1,10 +1,10 @@
 import { Logger } from '@vuepress/helper'
 import type { Plugin, PluginObject } from 'vuepress/core'
-import { colors, getDirname, path } from 'vuepress/utils'
+import { colors, path } from 'vuepress/utils'
 
 import type { ClarityOptions } from '../shared/index.js'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 const PLUGIN_NAME = '@vuepress/plugin-clarity-analytics'
 

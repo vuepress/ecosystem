@@ -2,9 +2,8 @@ import { readdir, stat, readFile } from 'node:fs/promises'
 import path from 'node:path'
 
 import picocolors from 'picocolors'
-import { getDirname } from 'vuepress/utils'
 
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 const getSubDirectories = async (dir: string): Promise<string[]> => {
   const items = await readdir(dir)
