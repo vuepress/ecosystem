@@ -95,11 +95,13 @@ const DIAGRAM_MAP: Record<string, [diagramName: string, indent?: boolean]> = {
   'timeline': [''],
 
   // beta diagrams
+  'agentflow': ['agentflow-beta'],
   'architecture': ['architecture-beta'],
   'ishikawa': ['ishikawa-beta'],
   'radar': ['radar-beta'],
   'treemap': ['treemap-beta', false],
   'treeview': ['treeView-beta'],
+  'usecase': ['usecase-beta'],
   'venn': ['venn-beta', false],
   'wardley': ['wardley-beta', false],
   'xy': ['xychart', false],

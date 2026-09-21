@@ -13,6 +13,7 @@ import { blogPlugin } from '@vuepress/plugin-blog'
 import { catalogPlugin } from '@vuepress/plugin-catalog'
 import { copyrightPlugin } from '@vuepress/plugin-copyright'
 import { feedPlugin } from '@vuepress/plugin-feed'
+import { mediaPlugin } from '@vuepress/plugin-media'
 import { noticePlugin } from '@vuepress/plugin-notice'
 import { photoSwipePlugin } from '@vuepress/plugin-photo-swipe'
 import { pwaPlugin } from '@vuepress/plugin-pwa'
@@ -239,6 +240,18 @@ export default defineUserConfig({
     }),
     catalogPlugin(),
     copyrightPlugin(),
+    // The embed players need no packages, so they are tested offline
+    mediaPlugin({
+      embeds: [
+        'bilibili',
+        'youtube',
+        'vimeo',
+        'twitch',
+        'dailymotion',
+        'tiktok',
+        'spotify',
+      ],
+    }),
     feedPlugin({
       hostname: 'https://ecosystem-e2e-test.com',
       devServer: true,

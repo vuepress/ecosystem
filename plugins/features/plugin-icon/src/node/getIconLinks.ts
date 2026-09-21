@@ -16,7 +16,7 @@ export interface LinkInfo {
 }
 
 const getFontAwesomeCDNLink = (type: string): string =>
-  `https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/js/${type}.min.js`
+  `https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7/js/${type}.min.js`
 
 const getFontAwesomeLink = (link: string): LinkInfo => ({
   type: 'script',

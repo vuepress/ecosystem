@@ -78,7 +78,7 @@ export default {
 
 ### Font Awesome
 
-有关免费图标列表，请参见 <https://fontawesome.com/v6/search?o=r&m=free>。要使用图标，请复制选择器中的图标名称。
+有关免费图标列表，请参见 <https://fontawesome.com/search?ic=free>。要使用图标，请复制选择器中的图标名称。
 
 `fontawesome` 关键字仅包括免费的实心和常规图标。如果要使用品牌图标，则需要使用 `fontawesome-with-brands` 关键字。
 
@@ -123,7 +123,7 @@ export default {
 
 ::: tip FontAwesome 套件和 Pro 功能
 
-默认情况下，我们使用 jsdelivr CDN 来加载 FontAwesome 免费图标的 V6 版本。这对于大多数开源项目来说应该足够了。
+默认情况下，我们使用 jsdelivr CDN 来加载 FontAwesome 免费图标的 V7 版本。这对于大多数开源项目来说应该足够了。
 
 此外，你可以在 [fontawesome.com](https://fontawesome.com) 购买套件来使用。
 
@@ -294,9 +294,15 @@ export default {
 
 ### sizing
 
-- 类型：`"width" | "height" | "both"`
+- 类型：`"height" | "both"`
 - 默认值：`"height"`
-- 详情：图标尺寸调整方式
-  - `width`：仅设置宽度
-  - `height`：仅设置高度
-  - `both`：设置宽度和高度
+- 详情：
+
+  图标的约束方式：
+
+  - `height`：仅约束高度，宽度随图标比例变化。
+  - `both`：同时约束宽度和高度，图标等比缩放以填满尺寸框，不会被拉伸。
+
+  FontAwesome 将每个图标绘制在 `1.25em × 1em` 的画布上（默认 `16px` 字号下为 `20px × 16px`）并将图形居中，因此宽图标不会被压扁。这正是 `sizing="both"` 的行为，可让 FontAwesome 图标在列表、侧边栏和工具条中保持对齐。
+
+  其他图标类型使用 `1em × 1em` 的方形画布。

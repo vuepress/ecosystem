@@ -78,7 +78,7 @@ If you use 1 icon set mostly, you can set the prefix to the icon set name (E.g.:
 
 ### Font Awesome
 
-For free icon list, see <https://fontawesome.com/v6/search?o=r&m=free>. To use a icon, copy it's icon name in the selector.
+For free icon list, see <https://fontawesome.com/search?ic=free>. To use a icon, copy it's icon name in the selector.
 
 The `fontawesome` keyword only includes the free solid and regular icons. If you want to use the brand icons, you need to use the `fontawesome-with-brands` keyword.
 
@@ -123,7 +123,7 @@ See <https://docs.fontawesome.com/web/style/styling> for all available classes.
 
 ::: tip FontAwesome Kits and Pro features
 
-By default, we use jsdelivr CDN to load V6 version of FontAwesome free icons. This should be enough for most open source projects.
+By default, we use jsdelivr CDN to load V7 version of FontAwesome free icons. This should be enough for most open source projects.
 
 Besides, you can purchase at [fontawesome.com](https://fontawesome.com) to use kits.
 
@@ -294,9 +294,15 @@ Images links are supported with any icon types (relative links are NOT supported
 
 ### sizing
 
-- Type: `"width" | "height" | "both"`
+- Type: `"height" | "both"`
 - Default: `"height"`
-- Details: Icon size adjustment method.
-  - `width`: Set width only
-  - `height`: Set height only
-  - `both`: Set width and height
+- Details:
+
+  How the icon is constrained:
+
+  - `height`: Constrain the height only, the width follows the icon ratio.
+  - `both`: Constrain the width and the height, the icon is scaled proportionally to fill the box without distortion.
+
+  FontAwesome renders every icon on a `1.25em × 1em` canvas (`20px × 16px` with the default `16px` font size) and centers the glyph inside it, so wide icons are never squeezed. That is exactly what `sizing="both"` does, which keeps FontAwesome icons aligned in lists, sidebars and toolbars.
+
+  Other icon types use a square `1em × 1em` canvas.
