@@ -1,3 +1,4 @@
+export * from './data.js'
 export * from './deepAssign.js'
 export * from './date.js'
 export type * from './header.js'

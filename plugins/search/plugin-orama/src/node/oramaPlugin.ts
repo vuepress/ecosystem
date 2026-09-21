@@ -69,7 +69,6 @@ export const oramaPlugin =
           '@orama/orama',
           '@vuepress/helper',
           'fflate',
-          'vuepress-shared',
         ])
       },
 

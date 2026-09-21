@@ -1,8 +1,7 @@
-import { entries, fromEntries } from '@vuepress/helper'
+import { encodeData, entries, fromEntries } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { fs, path } from 'vuepress/utils'
 
-import { encodeJSON } from '../shared/index.js'
 import type { SearchIndexStore } from '../shared/index.js'
 import type { SlimSearchPluginOptions } from './options.js'
 import { WORKER_FILE } from './utils.js'
@@ -17,7 +16,7 @@ export const generateWorker = async (
     fromEntries(
       entries(searchStore).map(([locale, index]) => [
         locale,
-        encodeJSON(index),
+        encodeData(JSON.stringify(index)),
       ]),
     ),
   )
