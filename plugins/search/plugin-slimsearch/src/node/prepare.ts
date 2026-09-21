@@ -1,9 +1,8 @@
-import { entries, keys } from '@vuepress/helper'
+import { encodeData, entries, keys } from '@vuepress/helper'
 import { addAll, discard, vacuum } from 'slimsearch'
 import type { App, Page } from 'vuepress/core'
 
 import type { PageIndexId, SearchIndexStore } from '../shared/index.js'
-import { encodeJSON } from '../shared/index.js'
 import { generatePageIndex } from './generateIndex.js'
 import type { SlimSearchPluginOptions } from './options.js'
 import type { PathStore } from './pathStore.js'
@@ -29,7 +28,7 @@ export const prepareSearchIndex = async (
     entries(searchIndexStore).map(([locale, documents]) =>
       app.writeTemp(
         `slimsearch/${getLocaleChunkName(locale)}.js`,
-        `export default ${JSON.stringify(encodeJSON(documents))}`,
+        `export default ${JSON.stringify(encodeData(JSON.stringify(documents)))}`,
       ),
     ),
   )
@@ -85,7 +84,7 @@ export const updateSearchIndex = async (
 
   // Search index file content
   const content = `\
-export default ${JSON.stringify(encodeJSON(localeSearchIndex))}
+export default ${JSON.stringify(encodeData(JSON.stringify(localeSearchIndex)))}
 `
 
   await app.writeTemp(
@@ -117,7 +116,7 @@ export const removeSearchIndex = async (
 
   // Search index file content
   const content = `\
-export default ${JSON.stringify(encodeJSON(localeSearchIndex))}
+export default ${JSON.stringify(encodeData(JSON.stringify(localeSearchIndex)))}
 `
 
   await app.writeTemp(

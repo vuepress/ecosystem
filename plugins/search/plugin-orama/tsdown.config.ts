@@ -14,7 +14,7 @@ export default [
       '__VUEPRESS_SSR__': 'false',
       'process.env.NODE_ENV': JSON.stringify('production'),
     },
-    alwaysBundle: [/^@vuepress\//u, /^@orama\//u, /^vuepress\//u, 'fflate'],
+    alwaysBundle: [/^@vuepress\//u, /^@orama\//u, /^vuepress\//u],
     format: 'iife',
     outputOptions: {
       entryFileNames: '[name].js',

@@ -14,12 +14,7 @@ export default [
       '__VUEPRESS_SSR__': 'false',
       'process.env.NODE_ENV': JSON.stringify('production'),
     },
-    alwaysBundle: [
-      /^@vuepress\//u,
-      'slimsearch',
-      /^vuepress\//u,
-      /^fflate(?:$|\/)/u,
-    ],
+    alwaysBundle: [/^@vuepress\//u, 'slimsearch', /^vuepress\//u],
     format: 'iife',
     outputOptions: {
       entryFileNames: '[name].js',

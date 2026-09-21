@@ -1546,9 +1546,6 @@ importers:
       domhandler:
         specifier: ^6.0.1
         version: 6.0.1
-      fflate:
-        specifier: ^0.8.3
-        version: 0.8.3
 
   plugins/search/plugin-search:
     dependencies:
@@ -1576,9 +1573,6 @@ importers:
       cheerio:
         specifier: ^1.2.0
         version: 1.2.0
-      fflate:
-        specifier: ^0.8.3
-        version: 0.8.3
       slimsearch:
         specifier: ^3.0.0
         version: 3.0.0
