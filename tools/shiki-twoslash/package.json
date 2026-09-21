@@ -51,7 +51,7 @@
   "dependencies": {
     "@shikijs/twoslash": "^4.4.3",
     "@vuepress/helper": "workspace:*",
-    "floating-vue": "^5.2.2",
+    "floating-vue": "^5.4.0",
     "mdast-util-from-markdown": "^2.0.3",
     "mdast-util-gfm": "^3.1.0",
     "mdast-util-to-hast": "^13.2.1",
