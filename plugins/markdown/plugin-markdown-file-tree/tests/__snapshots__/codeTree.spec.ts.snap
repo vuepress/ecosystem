@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`codeTree > should render code tree 1`] = `
+"<VPCodeTree title="Vue App" height="400px" entry="src/main.ts"><template #file-tree><VPFileTreeNode type="folder" filename="src" filepath="src" :level="0" expanded icon="vscode-icons:folder-type-src"><VPFileTreeNode type="file" filename="utils.ts" filepath="src/utils.ts" :level="1" icon="vscode-icons:file-type-typescript"></VPFileTreeNode><VPFileTreeNode type="file" filename="main.ts" filepath="src/main.ts" :level="1" icon="vscode-icons:file-type-typescript"></VPFileTreeNode></VPFileTreeNode><VPFileTreeNode type="file" filename="package.json" filepath="package.json" :level="0" icon="vscode-icons:file-type-npm"></VPFileTreeNode></template><pre><code class="language-ts">export const foo = 'foo'
+</code></pre>
+<pre><code class="language-ts">console.log('main')
+</code></pre>
+<pre><code class="language-json">{}
+</code></pre>
+</VPCodeTree>"
+`;

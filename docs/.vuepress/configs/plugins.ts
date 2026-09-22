@@ -71,7 +71,10 @@ export const plugins = [
   markdownFieldPlugin({
     fields: true,
   }),
-  markdownFileTreePlugin(),
+  markdownFileTreePlugin({
+    fileTree: true,
+    codeTree: true,
+  }),
   markdownImagePlugin({
     figure: true,
     mark: true,
