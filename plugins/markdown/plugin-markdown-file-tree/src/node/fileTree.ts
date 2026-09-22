@@ -2,8 +2,10 @@ import type { PluginSimple } from 'markdown-it'
 import type StateBlock from 'markdown-it/lib/rules_block/state_block.mjs'
 import type Token from 'markdown-it/lib/token.mjs'
 
+import { getFileIcon } from './fileIcons/index.js'
 import { parseFileTreeContent } from './parseFileTreeContent.js'
 import type { FileTreeNode } from './types.js'
+import { escapeAttr } from './utils.js'
 
 const MARKER = ':'
 const MARKER_MIN_LEN = 3
@@ -95,7 +97,10 @@ export const fileTree: PluginSimple = (md) => {
               (child) => child.filename !== '…' && child.filename !== '...',
             ).length === 0
 
-          const propsRendered = `type="${nodeType}" filename="${filename}" :level="${level}"${nodeType === 'folder' && expanded ? ' expanded' : ''}${focus ? ' focus' : ''}${diff ? ` diff="${diff}"` : ''}${isEmptyFolder ? ' empty' : ''}`
+          // The icon is resolved from the name of the node, so that a file
+          // tree carries the same icons as a code tree
+          const icon = getFileIcon(filename, nodeType)
+          const propsRendered = `type="${nodeType}" filename="${escapeAttr(filename)}" :level="${level}"${nodeType === 'folder' && expanded ? ' expanded' : ''}${focus ? ' focus' : ''}${diff ? ` diff="${diff}"` : ''}${isEmptyFolder ? ' empty' : ''} icon="${escapeAttr(icon)}"`
           const commentRendered = comment
             ? `${indent}  <template #comment>${md.renderInline(comment.replaceAll('#', String.raw`\#`))}</template>`
             : ''
@@ -104,7 +109,7 @@ export const fileTree: PluginSimple = (md) => {
               ? `${indent}  ${renderNodes(children).trimStart()}`
               : ''
 
-          return `${indent}<FileTreeNode ${propsRendered}>${commentRendered}${childrenRendered}${indent}</FileTreeNode>`
+          return `${indent}<VPFileTreeNode ${propsRendered}>${commentRendered}${childrenRendered}${indent}</VPFileTreeNode>`
         },
       )
       .join('')
@@ -117,6 +122,6 @@ export const fileTree: PluginSimple = (md) => {
     const meta = token.meta as { title: string }
     const nodes = parseFileTreeContent(token.content)
 
-    return `<div class="vp-${NAME}">${meta.title ? `\n<div class="${NAME}-title">${meta.title}</div>\n` : ''}${renderNodes(nodes)}\n</div>`
+    return `<VPFileTree${meta.title ? ` title="${escapeAttr(meta.title)}"` : ''}>${renderNodes(nodes)}</VPFileTree>`
   }
 }

@@ -1,0 +1,253 @@
+.vp-code-tree {
+  --vp-code-tree-height: 320px;
+
+  /* Matches the height of the code block title bar, which the toggle aligns to */
+  --vp-code-tree-title-height: 41px;
+  --vp-code-tree-toggle-width: 36px;
+  --vp-code-tree-c-bg: var(--vp-c-bg-alt);
+  --vp-code-tree-c-text: var(--vp-c-text);
+  --vp-code-tree-c-text-mute: var(--vp-c-text-mute);
+  --vp-code-tree-c-border: var(--vp-c-divider);
+  --vp-code-tree-c-hover-bg: var(--vp-c-control-hover);
+  --vp-code-tree-c-mask-bg: rgb(0 0 0 / 50%);
+
+  position: relative;
+
+  display: flex;
+
+  overflow: hidden;
+
+  width: 100%;
+  max-width: 100%;
+  margin-block: 1rem;
+  border: solid 1px var(--vp-code-tree-c-border);
+  border-radius: 8px;
+
+  background-color: var(--vp-code-tree-c-bg);
+
+  transition:
+    border-color var(--vp-t-color),
+    background-color var(--vp-t-color);
+}
+
+/*
+ * The toggle floats over the left end of the code block title bar, so that it
+ * does not take a column of its own on a narrow screen.
+ *
+ * The button is reset, otherwise the browser renders its own border and
+ * background.
+ *
+ * 开关悬浮在代码块标题栏的左端，因此窄屏下不会单独占据一列。
+ *
+ * 按钮会被重置，否则浏览器会渲染自己的边框与背景。
+ */
+.vp-code-tree-toggle {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  z-index: 3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: var(--vp-code-tree-toggle-width);
+  height: var(--vp-code-tree-title-height);
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+
+  background: none;
+  color: inherit;
+  outline: none;
+
+  cursor: pointer;
+
+  appearance: none;
+
+  transition: background-color var(--vp-t-color);
+
+  &:hover {
+    background-color: var(--vp-code-tree-c-hover-bg);
+  }
+}
+
+/* The arrow points at the file tree, which sits on the start side */
+.vp-code-tree-toggle-icon {
+  display: block;
+
+  width: 16px;
+  height: 16px;
+
+  background-color: currentcolor;
+  color: var(--vp-code-tree-c-text-mute);
+
+  mask: var(--vp-file-tree-icon-arrow) no-repeat;
+  mask-size: 100% 100%;
+
+  transition:
+    color var(--vp-t-color),
+    transform var(--vp-t-transform);
+
+  &.collapse {
+    transform: rotate(180deg);
+  }
+
+  [dir='rtl'] &.expand {
+    transform: rotate(180deg);
+  }
+
+  [dir='rtl'] &.collapse {
+    transform: rotate(0);
+  }
+}
+
+.vp-code-tree .vp-file-tree {
+  /* The file tree covers the whole panel, the toggle floats above it */
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  width: min(20rem, 100%);
+  height: 100%;
+  border: none;
+  border-radius: 0;
+
+  background-color: var(--vp-code-tree-c-bg);
+
+  visibility: hidden;
+
+  transition:
+    visibility var(--vp-t-transform),
+    translate var(--vp-t-transform);
+
+  translate: -100% 0;
+
+  [dir='rtl'] & {
+    translate: 100% 0;
+  }
+}
+
+.vp-code-tree.file-tree-expanded .vp-file-tree {
+  visibility: visible;
+  translate: 0 0;
+}
+
+.vp-code-tree .vp-file-tree-title {
+  border-bottom-color: var(--vp-code-tree-c-border);
+  color: var(--vp-code-tree-c-text);
+}
+
+/* Leave room for the floating toggle */
+.vp-code-tree .vp-file-tree-title,
+.vp-code-tree-code .code-block-title-bar {
+  padding-inline-start: calc(var(--vp-code-tree-toggle-width) + 16px);
+}
+
+.vp-code-tree .vp-file-tree-content {
+  flex: 1 2;
+  overflow: auto;
+  min-height: 0;
+  overscroll-behavior: contain;
+}
+
+.vp-code-tree-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  display: none;
+
+  background-color: var(--vp-code-tree-c-mask-bg);
+}
+
+.vp-code-tree.file-tree-expanded .vp-code-tree-mask {
+  display: block;
+}
+
+.vp-code-tree-code {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  min-width: 0;
+  height: var(--vp-code-tree-height);
+
+  /* Only the active code block is displayed, and it fills the panel */
+  > .code-block-with-title,
+  > div[class*='language-'] {
+    display: none;
+  }
+
+  > .code-block-with-title.active {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .code-block-title-bar {
+    flex-shrink: 0;
+    margin-block: 0;
+    border-start-start-radius: 0;
+    border-start-end-radius: 0;
+  }
+
+  > .code-block-with-title.active > div[class*='language-'] {
+    flex: 1 1 auto;
+
+    overflow: auto;
+
+    min-height: 0;
+    margin-block: 0;
+    border-radius: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  /* The file tree is always visible, so the toggle is not needed */
+  .vp-code-tree-toggle,
+  .vp-code-tree-mask,
+  .vp-code-tree.file-tree-expanded .vp-code-tree-mask {
+    display: none;
+  }
+
+  /* The toggle is gone, so the title bars no longer need to leave room for it */
+  .vp-code-tree .vp-file-tree-title,
+  .vp-code-tree-code .code-block-title-bar {
+    padding-inline-start: 16px;
+  }
+
+  .vp-code-tree .vp-file-tree {
+    position: relative;
+    inset: auto;
+    z-index: auto;
+
+    flex: 0 1 auto;
+
+    width: max-content;
+    max-width: min(20rem, 50%);
+    height: auto;
+    border-inline-end: solid 1px var(--vp-code-tree-c-border);
+
+    visibility: visible;
+
+    translate: none;
+
+    [dir='rtl'] & {
+      translate: none;
+    }
+  }
+
+  .vp-code-tree-code {
+    flex: 1 1 0;
+  }
+}

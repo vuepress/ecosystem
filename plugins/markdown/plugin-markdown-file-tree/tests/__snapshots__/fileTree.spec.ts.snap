@@ -1,72 +1,62 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`fileTree > should handle comments 1`] = `
-"<div class="vp-file-tree">
-  <FileTreeNode type="file" filename="file.js " :level="0">
+"<VPFileTree>
+  <VPFileTreeNode type="file" filename="file.js " :level="0" icon="vscode-icons:default-file">
     <template #comment># This is a comment</template>
-  </FileTreeNode>
-</div>"
+  </VPFileTreeNode></VPFileTree>"
 `;
 
 exports[`fileTree > should handle diff 1`] = `
-"<div class="vp-file-tree">
-  <FileTreeNode type="file" filename="added.js" :level="0" diff="add">
-  </FileTreeNode>
-  <FileTreeNode type="file" filename="removed.js" :level="0" diff="remove">
-  </FileTreeNode>
-</div>"
+"<VPFileTree>
+  <VPFileTreeNode type="file" filename="added.js" :level="0" diff="add" icon="vscode-icons:file-type-js">
+  </VPFileTreeNode>
+  <VPFileTreeNode type="file" filename="removed.js" :level="0" diff="remove" icon="vscode-icons:file-type-js">
+  </VPFileTreeNode></VPFileTree>"
 `;
 
 exports[`fileTree > should handle empty folder with ellipsis 1`] = `
-"<div class="vp-file-tree">
-  <FileTreeNode type="folder" filename="empty-folder" :level="0" empty>
-    <FileTreeNode type="file" filename="…" :level="1">
-    </FileTreeNode>
-  </FileTreeNode>
-</div>"
+"<VPFileTree>
+  <VPFileTreeNode type="folder" filename="empty-folder" :level="0" empty icon="vscode-icons:default-folder">
+    <VPFileTreeNode type="file" filename="…" :level="1" icon="vscode-icons:default-file">
+    </VPFileTreeNode>
+  </VPFileTreeNode></VPFileTree>"
 `;
 
 exports[`fileTree > should handle focus 1`] = `
-"<div class="vp-file-tree">
-  <FileTreeNode type="file" filename="file.js" :level="0" focus>
-  </FileTreeNode>
-</div>"
+"<VPFileTree>
+  <VPFileTreeNode type="file" filename="file.js" :level="0" focus icon="vscode-icons:file-type-js">
+  </VPFileTreeNode></VPFileTree>"
 `;
 
 exports[`fileTree > should render basic file tree 1`] = `
-"<div class="vp-file-tree">
-  <FileTreeNode type="file" filename="file1.js" :level="0">
-  </FileTreeNode>
-  <FileTreeNode type="file" filename="file2.ts" :level="0">
-  </FileTreeNode>
-</div>"
+"<VPFileTree>
+  <VPFileTreeNode type="file" filename="file1.js" :level="0" icon="vscode-icons:file-type-js">
+  </VPFileTreeNode>
+  <VPFileTreeNode type="file" filename="file2.ts" :level="0" icon="vscode-icons:file-type-typescript">
+  </VPFileTreeNode></VPFileTree>"
 `;
 
 exports[`fileTree > should render expanded folder 1`] = `
-"<div class="vp-file-tree">
-  <FileTreeNode type="folder" filename="folder" :level="0" expanded>
-    <FileTreeNode type="file" filename="file.js" :level="1">
-    </FileTreeNode>
-  </FileTreeNode>
-</div>"
+"<VPFileTree>
+  <VPFileTreeNode type="folder" filename="folder" :level="0" expanded icon="vscode-icons:default-folder">
+    <VPFileTreeNode type="file" filename="file.js" :level="1" icon="vscode-icons:file-type-js">
+    </VPFileTreeNode>
+  </VPFileTreeNode></VPFileTree>"
 `;
 
 exports[`fileTree > should render nested structure 1`] = `
-"<div class="vp-file-tree">
-  <FileTreeNode type="folder" filename="folder" :level="0">
-    <FileTreeNode type="file" filename="file1.js" :level="1">
-    </FileTreeNode>
-  </FileTreeNode>
-  <FileTreeNode type="file" filename="file2.ts" :level="0">
-  </FileTreeNode>
-</div>"
+"<VPFileTree>
+  <VPFileTreeNode type="folder" filename="folder" :level="0" icon="vscode-icons:default-folder">
+    <VPFileTreeNode type="file" filename="file1.js" :level="1" icon="vscode-icons:file-type-js">
+    </VPFileTreeNode>
+  </VPFileTreeNode>
+  <VPFileTreeNode type="file" filename="file2.ts" :level="0" icon="vscode-icons:file-type-typescript">
+  </VPFileTreeNode></VPFileTree>"
 `;
 
 exports[`fileTree > should render with title 1`] = `
-"<div class="vp-file-tree">
-<div class="file-tree-title">My Project</div>
-
-  <FileTreeNode type="file" filename="file.txt" :level="0">
-  </FileTreeNode>
-</div>"
+"<VPFileTree title="My Project">
+  <VPFileTreeNode type="file" filename="file.txt" :level="0" icon="vscode-icons:file-type-text">
+  </VPFileTreeNode></VPFileTree>"
 `;

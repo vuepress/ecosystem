@@ -164,6 +164,9 @@ settings:
 
 catalogs:
   default:
+    '@iconify-json/vscode-icons':
+      specifier: ^1.2.77
+      version: 1.2.79
     '@vuepress/bundler-vite':
       specifier: 2.0.0-rc.31
       version: 2.0.0-rc.31
@@ -173,6 +176,9 @@ catalogs:
     '@vueuse/core':
       specifier: ^15.0.0
       version: 15.0.0
+    '@yutengjing/vscode-icons':
+      specifier: ^0.1.1
+      version: 0.1.1
     chokidar:
       specifier: ^5.0.0
       version: 5.0.0
@@ -453,6 +459,9 @@ importers:
       '@vuepress/plugin-feed':
         specifier: workspace:*
         version: link:../plugins/blog/plugin-feed
+      '@vuepress/plugin-markdown-file-tree':
+        specifier: workspace:*
+        version: link:../plugins/markdown/plugin-markdown-file-tree
       '@vuepress/plugin-media':
         specifier: workspace:*
         version: link:../plugins/features/plugin-media
@@ -1154,15 +1163,15 @@ importers:
 
   plugins/markdown/plugin-markdown-file-tree:
     dependencies:
+      '@mdit/plugin-container':
+        specifier: ^2.0.1
+        version: 2.0.1(markdown-it@14.3.2)
       '@types/markdown-it':
         specifier: ^14.2.0
         version: 14.2.0
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../../../tools/helper
-      '@vueuse/core':
-        specifier: 'catalog:'
-        version: 15.0.0(vue@3.5.43(typescript@6.0.3))
       vue:
         specifier: 'catalog:'
         version: 3.5.43(typescript@6.0.3)
@@ -1170,6 +1179,15 @@ importers:
         specifier: 'catalog:'
         version: 2.0.0-rc.31(44bfa600f539ac670d74103d4d7af386)
     devDependencies:
+      '@iconify-json/vscode-icons':
+        specifier: 'catalog:'
+        version: 1.2.79
+      '@vuepress/highlighter-helper':
+        specifier: workspace:*
+        version: link:../../../tools/highlighter-helper
+      '@yutengjing/vscode-icons':
+        specifier: 'catalog:'
+        version: 0.1.1
       markdown-it:
         specifier: ^14.3.2
         version: 14.3.2
@@ -3320,6 +3338,9 @@ packages:
 
   '@gera2ld/jsx-dom@2.2.2':
     resolution: {integrity: sha512-EOqf31IATRE6zS1W1EoWmXZhGfLAoO9FIlwTtHduSrBdud4npYBxYAkv8dZ5hudDPwJeeSjn40kbCL4wAzr8dA==}
+
+  '@iconify-json/vscode-icons@1.2.79':
+    resolution: {integrity: sha512-JxGn5iS6a9qyF/tE9F9B8cCjQ8sS7SuLgBw3zIfoDhl4JKlIYHtK0FKQuiV47U65E7Q0OYKw0uZ7SMuCrINBHA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -5781,6 +5802,10 @@ packages:
 
   '@yuku-toolchain/types@0.10.2':
     resolution: {integrity: sha512-sSeo4SSSToiS+sSD+bwn/s94EEcaLJ7tG5LCp8gFYC1G5VzxzX7fqB6m9RU1yMD8KTpu6zdU/I1NlQf8hVBJ9Q==}
+
+  '@yutengjing/vscode-icons@0.1.1':
+    resolution: {integrity: sha512-SAg4IBCFF0oA9KzioowXnec9zwbOgpfDKaXuCKfdwYt+HF+qlLihTlelMRMiB2BoqbxtREXwTMnhsxb/fAmIMQ==}
+    engines: {node: '>=20.0.0'}
 
   '@zeit/schemas@2.36.0':
     resolution: {integrity: sha512-7kjMwcChYEzMKjeex9ZFXkt1AyNov9R5HZtjBKVsmVpw7pa7ZtlCGvCBC2vnnXctaYN+aRI61HjIqeetZW5ROg==}
@@ -12713,6 +12738,10 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.29.7
 
+  '@iconify-json/vscode-icons@1.2.79':
+    dependencies:
+      '@iconify/types': 2.0.0
+
   '@iconify/types@2.0.0': {}
 
   '@iconify/utils@3.1.7':
@@ -15238,6 +15267,8 @@ snapshots:
     optional: true
 
   '@yuku-toolchain/types@0.10.2': {}
+
+  '@yutengjing/vscode-icons@0.1.1': {}
 
   '@zeit/schemas@2.36.0': {}
 
