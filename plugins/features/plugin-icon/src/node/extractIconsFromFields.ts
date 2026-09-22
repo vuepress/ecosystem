@@ -69,18 +69,20 @@ const getFieldValues = (data: unknown, segments: PathSegment[]): unknown[] => {
 
   const value = (data as Record<string, unknown>)[segment.name]
 
-  if (!rest.length)
-    // the last segment may be an array itself, e.g. `files`
+  // the last segment may be an array itself, e.g. `files`, unless the path
+  // gives an index
+  if (!rest.length && segment.index === undefined)
     return isArray(value) ? value : [value]
 
-  if (!isArray(value)) return getFieldValues(value, rest)
+  const values = isArray(value)
+    ? segment.every
+      ? value
+      : [value[segment.index ?? 0]]
+    : [value]
 
-  // an array is only traversed when the path asks for it
-  if (segment.every) return value.flatMap((item) => getFieldValues(item, rest))
-
-  const item = value[segment.index ?? 0]
-
-  return getFieldValues(item, rest)
+  return values.flatMap((item) =>
+    rest.length ? getFieldValues(item, rest) : [item],
+  )
 }
 
 /**

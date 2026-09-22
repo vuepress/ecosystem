@@ -37,6 +37,16 @@ describe(extractIconsFromFields, () => {
       'mdi:c',
       'mdi:d',
     ])
+    expect(extractIconsFromFields(data, ['items[*]'])).toStrictEqual([
+      'mdi:c',
+      'mdi:d',
+    ])
+  })
+
+  it('should read an indexed element of an array field', () => {
+    expect(extractIconsFromFields(data, ['items[0]'])).toStrictEqual(['mdi:c'])
+    expect(extractIconsFromFields(data, ['items[1]'])).toStrictEqual(['mdi:d'])
+    expect(extractIconsFromFields(data, ['items[9]'])).toStrictEqual([])
   })
 
   it('should read a nested field', () => {
