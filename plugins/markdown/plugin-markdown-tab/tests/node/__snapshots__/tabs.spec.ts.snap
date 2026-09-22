@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`tabs > should ignore other items > loose 1`] = `
-"<Tabs :data='[{"id":"js"}]' :active="0">
+"<VPTabs :data='[{"id":"js"}]' :active="0">
 <template #title0="{ value, isActive }">js</template>
 <template #tab0="{ value, isActive }">
 <pre><code class="language-js">const a = 1;
@@ -9,12 +9,12 @@ exports[`tabs > should ignore other items > loose 1`] = `
 <pre><code class="language-ts">const a = 1;
 </code></pre>
 </template>
-</Tabs>
+</VPTabs>
 "
 `;
 
 exports[`tabs > should ignore other items > tight 1`] = `
-"<Tabs :data='[{"id":"js"}]' :active="0">
+"<VPTabs :data='[{"id":"js"}]' :active="0">
 <template #title0="{ value, isActive }">js</template>
 <template #tab0="{ value, isActive }">
 <pre><code class="language-js">const a = 1;
@@ -22,12 +22,12 @@ exports[`tabs > should ignore other items > tight 1`] = `
 <pre><code class="language-ts">const a = 1;
 </code></pre>
 </template>
-</Tabs>
+</VPTabs>
 "
 `;
 
 exports[`tabs > should render multiple block > loose 1`] = `
-"<Tabs :data='[{"id":"js"},{"id":"ts"}]'>
+"<VPTabs :data='[{"id":"js"},{"id":"ts"}]'>
 <template #title0="{ value, isActive }">js</template>
 <template #title1="{ value, isActive }">ts</template>
 <template #tab0="{ value, isActive }">
@@ -38,12 +38,12 @@ exports[`tabs > should render multiple block > loose 1`] = `
 <pre><code class="language-ts">const a = 1;
 </code></pre>
 </template>
-</Tabs>
+</VPTabs>
 "
 `;
 
 exports[`tabs > should render multiple block > tight 1`] = `
-"<Tabs :data='[{"id":"js"},{"id":"ts"}]'>
+"<VPTabs :data='[{"id":"js"},{"id":"ts"}]'>
 <template #title0="{ value, isActive }">js</template>
 <template #title1="{ value, isActive }">ts</template>
 <template #tab0="{ value, isActive }">
@@ -54,45 +54,45 @@ exports[`tabs > should render multiple block > tight 1`] = `
 <pre><code class="language-ts">const a = 1;
 </code></pre>
 </template>
-</Tabs>
+</VPTabs>
 "
 `;
 
 exports[`tabs > should render single block > loose 1`] = `
-"<Tabs :data='[{"id":"js"}]'>
+"<VPTabs :data='[{"id":"js"}]'>
 <template #title0="{ value, isActive }">js</template>
 <template #tab0="{ value, isActive }">
 <pre><code class="language-js">const a = 1;
 </code></pre>
 </template>
-</Tabs>
+</VPTabs>
 "
 `;
 
 exports[`tabs > should render single block > tight 1`] = `
-"<Tabs :data='[{"id":"js"}]'>
+"<VPTabs :data='[{"id":"js"}]'>
 <template #title0="{ value, isActive }">js</template>
 <template #tab0="{ value, isActive }">
 <pre><code class="language-js">const a = 1;
 </code></pre>
 </template>
-</Tabs>
+</VPTabs>
 "
 `;
 
 exports[`tabs > should support active > active loose 1`] = `
-"<Tabs :data='[{"id":"js"}]' :active="0">
+"<VPTabs :data='[{"id":"js"}]' :active="0">
 <template #title0="{ value, isActive }">js</template>
 <template #tab0="{ value, isActive }">
 <pre><code class="language-js">const a = 1;
 </code></pre>
 </template>
-</Tabs>
+</VPTabs>
 "
 `;
 
 exports[`tabs > should support active > active multiple 1`] = `
-"<Tabs :data='[{"id":"js"},{"id":"ts"}]' :active="1">
+"<VPTabs :data='[{"id":"js"},{"id":"ts"}]' :active="1">
 <template #title0="{ value, isActive }">js</template>
 <template #title1="{ value, isActive }">ts</template>
 <template #tab0="{ value, isActive }">
@@ -103,23 +103,23 @@ exports[`tabs > should support active > active multiple 1`] = `
 <pre><code class="language-ts">const a = 1;
 </code></pre>
 </template>
-</Tabs>
+</VPTabs>
 "
 `;
 
 exports[`tabs > should support active > active tight 1`] = `
-"<Tabs :data='[{"id":"js"}]' :active="0">
+"<VPTabs :data='[{"id":"js"}]' :active="0">
 <template #title0="{ value, isActive }">js</template>
 <template #tab0="{ value, isActive }">
 <pre><code class="language-js">const a = 1;
 </code></pre>
 </template>
-</Tabs>
+</VPTabs>
 "
 `;
 
 exports[`tabs > should support active > active tight 2`] = `
-"<Tabs :data='[{"id":"js"},{"id":"ts"}]' :active="1">
+"<VPTabs :data='[{"id":"js"},{"id":"ts"}]' :active="1">
 <template #title0="{ value, isActive }">js</template>
 <template #title1="{ value, isActive }">ts</template>
 <template #tab0="{ value, isActive }">
@@ -130,50 +130,50 @@ exports[`tabs > should support active > active tight 2`] = `
 <pre><code class="language-ts">const a = 1;
 </code></pre>
 </template>
-</Tabs>
+</VPTabs>
 "
 `;
 
 exports[`tabs > should support tabs id > complex id 1`] = `
-"<Tabs :data='[{"id":"js"}]' tab-id="event-id">
+"<VPTabs :data='[{"id":"js"}]' tab-id="event-id">
 <template #title0="{ value, isActive }">js</template>
 <template #tab0="{ value, isActive }">
 <pre><code class="language-js">const a = 1;
 </code></pre>
 </template>
-</Tabs>
+</VPTabs>
 "
 `;
 
 exports[`tabs > should support tabs id > id 1`] = `
-"<Tabs :data='[{"id":"js"}]' tab-id="event">
+"<VPTabs :data='[{"id":"js"}]' tab-id="event">
 <template #title0="{ value, isActive }">js</template>
 <template #tab0="{ value, isActive }">
 <pre><code class="language-js">const a = 1;
 </code></pre>
 </template>
-</Tabs>
+</VPTabs>
 "
 `;
 
 exports[`tabs > should support tabs id > id starts and having space in the end 1`] = `
-"<Tabs :data='[{"id":"js"}]' tab-id="id starts and having space in the end">
+"<VPTabs :data='[{"id":"js"}]' tab-id="id starts and having space in the end">
 <template #title0="{ value, isActive }">js</template>
 <template #tab0="{ value, isActive }">
 <pre><code class="language-js">const a = 1;
 </code></pre>
 </template>
-</Tabs>
+</VPTabs>
 "
 `;
 
 exports[`tabs > should support tabs id > id with space 1`] = `
-"<Tabs :data='[{"id":"js"}]' tab-id="id with space">
+"<VPTabs :data='[{"id":"js"}]' tab-id="id with space">
 <template #title0="{ value, isActive }">js</template>
 <template #tab0="{ value, isActive }">
 <pre><code class="language-js">const a = 1;
 </code></pre>
 </template>
-</Tabs>
+</VPTabs>
 "
 `;
