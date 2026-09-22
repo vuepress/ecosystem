@@ -4,18 +4,15 @@ import path from 'node:path'
 import { aliases, icons } from '@iconify-json/vscode-icons/icons.json'
 import { describe, expect, it } from 'vitest'
 
-import { extensions } from '../src/node/codeTree/fileIcons/generated/extensions.js'
-import { files } from '../src/node/codeTree/fileIcons/generated/files.js'
-import { folders } from '../src/node/codeTree/fileIcons/generated/folders.js'
-import {
-  defaultFile,
-  defaultFolder,
-} from '../src/node/codeTree/fileIcons/index.js'
+import { extensions } from '../src/node/fileIcons/generated/extensions.js'
+import { files } from '../src/node/fileIcons/generated/files.js'
+import { folders } from '../src/node/fileIcons/generated/folders.js'
+import { defaultFile, defaultFolder } from '../src/node/fileIcons/index.js'
 import {
   extensions as overlayExtensions,
   files as overlayFiles,
   folders as overlayFolders,
-} from '../src/node/codeTree/fileIcons/overlay.js'
+} from '../src/node/fileIcons/overlay.js'
 
 const PREFIX = 'vscode-icons:'
 
@@ -80,7 +77,7 @@ const readGeneratedData = (name: string): string => {
   const source = fs.readFileSync(
     path.resolve(
       import.meta.dirname,
-      `../src/node/codeTree/fileIcons/generated/${name}.ts`,
+      `../src/node/fileIcons/generated/${name}.ts`,
     ),
     'utf-8',
   )

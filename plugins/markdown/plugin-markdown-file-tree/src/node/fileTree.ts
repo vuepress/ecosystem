@@ -2,9 +2,10 @@ import type { PluginSimple } from 'markdown-it'
 import type StateBlock from 'markdown-it/lib/rules_block/state_block.mjs'
 import type Token from 'markdown-it/lib/token.mjs'
 
-import { escapeAttr } from './codeTree/utils.js'
+import { getFileIcon } from './fileIcons/index.js'
 import { parseFileTreeContent } from './parseFileTreeContent.js'
 import type { FileTreeNode } from './types.js'
+import { escapeAttr } from './utils.js'
 
 const MARKER = ':'
 const MARKER_MIN_LEN = 3
@@ -96,7 +97,10 @@ export const fileTree: PluginSimple = (md) => {
               (child) => child.filename !== '…' && child.filename !== '...',
             ).length === 0
 
-          const propsRendered = `type="${nodeType}" filename="${escapeAttr(filename)}" :level="${level}"${nodeType === 'folder' && expanded ? ' expanded' : ''}${focus ? ' focus' : ''}${diff ? ` diff="${diff}"` : ''}${isEmptyFolder ? ' empty' : ''}`
+          // The icon is resolved from the name of the node, so that a file
+          // tree carries the same icons as a code tree
+          const icon = getFileIcon(filename, nodeType)
+          const propsRendered = `type="${nodeType}" filename="${escapeAttr(filename)}" :level="${level}"${nodeType === 'folder' && expanded ? ' expanded' : ''}${focus ? ' focus' : ''}${diff ? ` diff="${diff}"` : ''}${isEmptyFolder ? ' empty' : ''} icon="${escapeAttr(icon)}"`
           const commentRendered = comment
             ? `${indent}  <template #comment>${md.renderInline(comment.replaceAll('#', String.raw`\#`))}</template>`
             : ''

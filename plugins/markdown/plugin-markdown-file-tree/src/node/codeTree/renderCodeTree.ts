@@ -1,7 +1,7 @@
 import type { MarkdownEnv } from 'vuepress/markdown'
 
-import { getFileIcon } from './fileIcons/index.js'
-import { escapeAttr } from './utils.js'
+import { getFileIcon } from '../fileIcons/index.js'
+import { escapeAttr } from '../utils.js'
 
 /**
  * Markdown env with the files read by the embedded code tree

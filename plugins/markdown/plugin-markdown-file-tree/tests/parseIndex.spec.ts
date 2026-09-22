@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { parseIconIndex } from '../src/node/codeTree/fileIcons/parseIndex.js'
+import { parseIconIndex } from '../src/node/fileIcons/parseIndex.js'
 
 describe(parseIconIndex, () => {
   it('should add the prefix back to every icon name', () => {

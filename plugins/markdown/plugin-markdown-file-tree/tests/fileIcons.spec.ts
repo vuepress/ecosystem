@@ -3,11 +3,8 @@ import { describe, expect, it } from 'vitest'
 import {
   getFileIcon,
   getFileIconByExtension,
-} from '../src/node/codeTree/fileIcons/findIcon.js'
-import {
-  defaultFile,
-  defaultFolder,
-} from '../src/node/codeTree/fileIcons/index.js'
+} from '../src/node/fileIcons/findIcon.js'
+import { defaultFile, defaultFolder } from '../src/node/fileIcons/index.js'
 
 describe(getFileIconByExtension, () => {
   it('should resolve icon by extension', () => {
