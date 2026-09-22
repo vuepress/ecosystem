@@ -3,11 +3,10 @@ import type { App } from 'vuepress/core'
 import { path } from 'vuepress/utils'
 
 import type { IconType } from '../shared/index.js'
-import { isFontAwesomeAssets } from './getAssetsType.js'
 import { getIconLinks } from './getIconLinks.js'
 import { getIconPrefix } from './getIconPrefix.js'
+import { resolveOffline } from './offline.js'
 import type { IconPluginOptions } from './options.js'
-import { logger } from './utils.js'
 
 const __dirname = import.meta.dirname
 
@@ -17,28 +16,14 @@ export const CLIENT_FOLDER = ensureEndingSlash(
 
 export const prepareConfigFile = (
   app: App,
-  { assets, fontawesome, prefix, component = 'VPIcon' }: IconPluginOptions,
+  { assets, offline, prefix, component = 'VPIcon' }: IconPluginOptions,
   iconType: IconType,
 ): Promise<string> => {
-  const offline = Boolean(fontawesome)
-  const linksInfo = getIconLinks(assets, offline)
+  const offlineType = offline
+    ? resolveOffline(iconType, offline).type
+    : undefined
+  const linksInfo = getIconLinks(assets, offlineType)
   const iconPrefix = getIconPrefix(iconType, prefix)
-
-  if (offline) {
-    // the offline mode only renders locally bundled FontAwesome icons, other
-    // icons would silently disappear
-    if (assets !== undefined && !isFontAwesomeAssets(assets)) {
-      logger.warn(
-        'The `assets` option is ignored, as the offline mode only bundles FontAwesome icons.',
-      )
-    }
-
-    if (iconType !== 'fontawesome') {
-      logger.warn(
-        'The `type` option is ignored, as the offline mode only bundles FontAwesome icons.',
-      )
-    }
-  }
 
   return app.writeTemp(
     `icon/config.js`,
@@ -61,16 +46,24 @@ import { useStyleTag } from "${getModulePath('@vueuse/core', import.meta)}";
 `
     : ''
 }\
-${offline ? `import { setupFontAwesome } from "@temp/icon/fontawesome.js";\n` : ''}\
+${offlineType === 'fontawesome' ? `import { setupFontAwesome } from "@temp/icon/fontawesome.js";\n` : ''}\
+${offlineType === 'iconify' ? `import { setupIconify } from "@temp/icon/iconify.js";\n` : ''}\
 import { h } from "vue";
 import { VPIcon } from "${CLIENT_FOLDER}index.js"
 
 export default {
   enhance: ({ app }) => {
 ${
-  offline
+  offlineType === 'fontawesome'
     ? `\
     setupFontAwesome();
+`
+    : ''
+}\
+${
+  offlineType === 'iconify'
+    ? `\
+    setupIconify();
 `
     : ''
 }\

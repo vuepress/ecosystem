@@ -37,8 +37,6 @@ describe(getFontAwesomePackages, () => {
     ]
 
     expect(getFontAwesomePackages(true)).toStrictEqual(packages)
-    expect(getFontAwesomePackages('all')).toStrictEqual(packages)
-    expect(getFontAwesomePackages(() => [])).toStrictEqual(packages)
   })
 })
 

@@ -61,7 +61,7 @@ describe(prepareFontAwesomeEntry, () => {
     ])
 
     await expect(
-      prepareFontAwesomeEntry(app, { fontawesome: true }),
+      prepareFontAwesomeEntry(app, { offline: true }, false),
     ).rejects.toThrow('@fortawesome/free-brands-svg-icons')
   })
 
@@ -71,7 +71,7 @@ describe(prepareFontAwesomeEntry, () => {
     const app = createApp([{ contentRendered: '<VPIcon icon="house" />' }])
 
     await expect(
-      prepareFontAwesomeEntry(app, { fontawesome: true }),
+      prepareFontAwesomeEntry(app, { offline: true }, false),
     ).rejects.toThrow('@fortawesome/fontawesome-svg-core')
   })
 
@@ -83,7 +83,7 @@ describe(prepareFontAwesomeEntry, () => {
       },
     ])
 
-    await prepareFontAwesomeEntry(app, { fontawesome: true })
+    await prepareFontAwesomeEntry(app, { offline: true }, false)
 
     expect(getAppOutput(app)).toContain(
       'import { faApple } from "@fortawesome/free-brands-svg-icons/faApple";',
@@ -97,9 +97,11 @@ describe(prepareFontAwesomeEntry, () => {
   it('should merge the icons of the scanner', async () => {
     const app = createApp([{ contentRendered: '<VPIcon icon="house" />' }])
 
-    await prepareFontAwesomeEntry(app, {
-      fontawesome: () => Promise.resolve(['regular:clock']),
-    })
+    await prepareFontAwesomeEntry(
+      app,
+      { scan: { scanner: () => Promise.resolve(['regular:clock']) } },
+      false,
+    )
 
     expect(getAppOutput(app)).toContain(
       'import { faClock } from "@fortawesome/free-regular-svg-icons/faClock";',
@@ -110,9 +112,11 @@ describe(prepareFontAwesomeEntry, () => {
   it('should ignore what the scanner returns wrongly', async () => {
     const app = createApp()
 
-    await prepareFontAwesomeEntry(app, {
-      fontawesome: () => ['house', 1, null] as unknown as string[],
-    })
+    await prepareFontAwesomeEntry(
+      app,
+      { scan: { scanner: () => ['house', 1, null] as unknown as string[] } },
+      false,
+    )
 
     expect(getAppOutput(app)).toContain('library.add(faHouse);')
   })
@@ -122,7 +126,7 @@ describe(prepareFontAwesomeEntry, () => {
       { contentRendered: '<VPIcon icon="not-an-icon" />' },
     ])
 
-    await prepareFontAwesomeEntry(app, { fontawesome: true })
+    await prepareFontAwesomeEntry(app, { offline: true }, false)
 
     expect(getAppOutput(app)).toContain('library.add();')
     expect(getAppOutput(app)).not.toContain('not-an-icon')
@@ -138,7 +142,7 @@ describe(prepareFontAwesomeEntry, () => {
       },
     ])
 
-    await prepareFontAwesomeEntry(app, { fontawesome: true })
+    await prepareFontAwesomeEntry(app, { offline: true }, false)
 
     expect(getAppOutput(app)).toContain('library.add(faHouse, faUser);')
   })
@@ -146,7 +150,7 @@ describe(prepareFontAwesomeEntry, () => {
   it('should skip the icons of other libraries', async () => {
     const app = createApp([{ contentRendered: '<VPIcon icon="mdi:home" />' }])
 
-    await prepareFontAwesomeEntry(app, { fontawesome: true })
+    await prepareFontAwesomeEntry(app, { offline: true }, false)
 
     expect(getAppOutput(app)).toContain('library.add();')
     expect(getAppOutput(app)).not.toContain('mdi')
@@ -157,7 +161,7 @@ describe(prepareFontAwesomeEntry, () => {
       { contentRendered: '<VPIcon icon="not-an-icon" />' },
     ])
 
-    await prepareFontAwesomeEntry(app, { fontawesome: 'all' })
+    await prepareFontAwesomeEntry(app, { offline: 'all' }, true)
 
     expect(getAppOutput(app)).toContain(
       'import { fab } from "@fortawesome/free-brands-svg-icons";',
@@ -174,10 +178,11 @@ describe(prepareFontAwesomeEntry, () => {
   it('should use the given component name', async () => {
     const app = createApp([{ contentRendered: '<MyIcon icon="house" />' }])
 
-    await prepareFontAwesomeEntry(app, {
-      component: 'MyIcon',
-      fontawesome: true,
-    })
+    await prepareFontAwesomeEntry(
+      app,
+      { component: 'MyIcon', offline: true },
+      false,
+    )
 
     expect(getAppOutput(app)).toContain('library.add(faHouse);')
   })

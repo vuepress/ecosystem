@@ -49,16 +49,24 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
+    "@iconify/types": "^2.0.0",
+    "@iconify/utils": "^3.1.7",
     "@mdit/plugin-icon": "^1.1.1",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vue": "catalog:"
+  },
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.2.0",
+    "@iconify-json/mdi": "^1.2.3",
+    "iconify-icon": "^3.0.3"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.0",
     "@fortawesome/free-brands-svg-icons": "^7.0.0",
     "@fortawesome/free-regular-svg-icons": "^7.0.0",
     "@fortawesome/free-solid-svg-icons": "^7.0.0",
+    "iconify-icon": "^3.0.0",
     "vuepress": "catalog:"
   },
   "peerDependenciesMeta": {
@@ -72,6 +80,9 @@
       "optional": true
     },
     "@fortawesome/free-solid-svg-icons": {
+      "optional": true
+    },
+    "iconify-icon": {
       "optional": true
     }
   }
