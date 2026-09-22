@@ -195,9 +195,8 @@ export interface IconPluginOptions {
    *
    * 适用于无法访问外网时的私有部署。图标按站点的图标类型打包，因此该选项不会影响图标类型。
    *
-   * - `true`：打包站点用到的图标，会从页面内容中自动检测
+   * - `true`：打包站点用到的图标，会从页面内容、front matter 与组件属性中检测，见 `scan` 选项
    * - `"all"`：打包该图标类型的全部图标，仅 `fontawesome` 支持，因为一个 Iconify 图标集 可能包含数千个图标
-   * - 传入函数：额外的扫描器，返回无法被检测的图标，例如主题配置或组件中使用的图标
    *
    * `fontawesome` 需要 `@fortawesome/fontawesome-svg-core` 及每种图标样式各自的包：
    * `@fortawesome/free-solid-svg-icons`、`@fortawesome/free-regular-svg-icons` 与

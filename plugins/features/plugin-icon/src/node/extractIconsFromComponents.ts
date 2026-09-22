@@ -184,28 +184,6 @@ const getElementProps = (
 }
 
 /**
- * Get the icons of the component props of the site
- *
- * 获取站点组件属性中的图标
- *
- * The props of a component are read as one object, so the prop path is resolved
- * against it, e.g. `VPCustom.icon` reads the `icon` prop, while
- * `VPTest.files[*]` reads every element of the `files` prop.
- *
- * 组件的属性会作为一个对象读取，属性路径在该对象上解析，例如 `VPCustom.icon` 读取 `icon` 属性，而
- * `VPTest.files[*]` 读取 `files` 属性的每个元素。
- *
- * A prop that is bound with `:prop` or `v-bind` is reported when its value
- * cannot be parsed as JSON, as the icons of the prop cannot be bundled then.
- *
- * 用 `:prop` 或 `v-bind` 绑定的属性在值无法解析为 JSON 时会给出警告，因为此时该属性的 图标无法被打包。
- *
- * @param app - VuePress app / VuePress 应用
- * @param fields - Component fields, e.g. `['VPCustom.icon']` / 组件属性，例如
- *   `['VPCustom.icon']`
- * @returns Icons in the props / 属性中的图标
- */
-/**
  * Get the icons of the component props of a content
  *
  * 获取某个内容中组件属性里的图标

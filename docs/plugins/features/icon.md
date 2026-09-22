@@ -99,14 +99,7 @@ export default {
 }
 ```
 
-Icons that cannot be detected from the page content, e.g. icons used by a theme config or a component, need to be returned by a scanner:
-
-```ts
-iconPlugin({
-  // the icons are given in the same syntax as in markdown
-  offline: (app) => ['mdi:home', 'lucide:house'],
-})
-```
+Icons that cannot be detected from the page content, e.g. icons used by a theme config, need to be added with the [scan](#scan) option.
 
 An icon without a prefix is not bundled, set the `prefix` option or write the prefix in the icon.
 
@@ -195,14 +188,7 @@ export default {
 }
 ```
 
-Icons that cannot be detected from the page content, e.g. icons used by a theme config or a component, need to be returned by a scanner:
-
-```ts
-iconPlugin({
-  // the icons are given in the same syntax as in markdown
-  offline: (app) => ['brands:apple', 'solid:house'],
-})
-```
+Icons that cannot be detected from the page content, e.g. icons used by a theme config, need to be added with the [scan](#scan) option.
 
 Bundling every free icon needs all three style packages, as each style is imported as a whole:
 
@@ -225,7 +211,7 @@ A missing package stops the build with the packages to install, and the icons th
 
 ::: warning
 
-The offline mode only supports the FontAwesome free icons, so the icon type is fixed to `fontawesome`: the `assets` option is ignored and icons of other types, like `::mdi:home::` or iconfont, no longer render. Images are not affected.
+The offline mode only bundles the free icons. The Font Awesome assets, including a kit, are not loaded from the CDN in this mode, so an icon that is not bundled is not rendered.
 
 :::
 
@@ -382,7 +368,9 @@ Images links are supported with any icon types (relative links are NOT supported
 
   Bundle the icons locally instead of loading them from a CDN or the Iconify API, so the site works without internet access.
 
-  The icons are bundled for the icon type of the site, so this option does not affect the `type` and `assets` options. See [Offline Usage for Iconify](#offline-usage-for-iconify) and [Offline Usage for Font Awesome](#offline-<redacted>) for the packages to install.
+  The icons are bundled for the icon type of the site, so this option does not affect the `type` and `assets` options. See [Offline Usage for Iconify](#offline-usage-for-iconify) and [Offline Usage for Font Awesome](#offline-usage-for-font-awesome) for the packages to install.
+
+  Only the `fontawesome` and the `iconify` icons can be bundled, the build stops when the icon type is another one, e.g. `iconfont`.
 
   - `true`: bundle the icons used by the site, which are detected from the page content, the front matter and the component props, see the [scan](#scan) option.
   - `"all"`: bundle every icon of the icon type. It is only supported by `fontawesome`, as an Iconify icon set may contain thousands of icons, and the icons used by the site are bundled instead for `iconify`.
@@ -427,59 +415,59 @@ Images links are supported with any icon types (relative links are NOT supported
 
 - Type: `string[]`
 - Default: `['icon']`
-- Details: Front matter fields of the pages, e.g. `['icon', 'features[*].name']`.
+- Details: Front matter fields of the pages, e.g. `['icon', 'features[*].name']`. Set it to `[]` to disable the front matter scan.
 
 #### components
 
 - Type: `string[]`
 - Details: Props of the components used in the pages, in the form `<component>.<prop>`, e.g. `['VPCustom.icon', 'VPTest.files[*]']`.
 
-The props of a component are read as one object, so `VPCustom.icon` reads the `icon` prop, while `VPTest.files[*]` reads every element of the `files` prop. A prop that is bound with `:prop` or `v-bind` is reported when its value cannot be parsed as JSON, as its icons cannot be bundled then.
+  The props of a component are read as one object, so `VPCustom.icon` reads the `icon` prop, while `VPTest.files[*]` reads every element of the `files` prop. A prop that is bound with `:prop` or `v-bind` is reported when its value cannot be parsed as JSON, as its icons cannot be bundled then.
 
 #### scanner
 
 - Type: `(app: App) => string[] | Promise<string[]>`
 - Details: Extra scanner for the icons that cannot be detected, e.g. the icons used by the theme config.
 
-The returned icons use the same syntax as in markdown, e.g. `mdi:home` for Iconify and `solid:house` for Font Awesome.
+  The returned icons use the same syntax as in markdown, e.g. `mdi:home` for Iconify and `solid:house` for Font Awesome.
 
-```ts title=".vuepress/config.ts"
-export default {
-  plugins: [
-    iconPlugin({
-      offline: true,
-      scan: {
-        frontmatter: ['icon', 'features[*].name'],
-        components: ['VPCustom.icon'],
-        scanner: (app) => ['mdi:home'],
-      },
-    }),
-  ],
-}
-```
+  ```ts title=".vuepress/config.ts"
+  export default {
+    plugins: [
+      iconPlugin({
+        offline: true,
+        scan: {
+          frontmatter: ['icon', 'features[*].name'],
+          components: ['VPCustom.icon'],
+          scanner: (app) => ['mdi:home'],
+        },
+      }),
+    ],
+  }
+  ```
 
-::: tip
+  ::: tip
 
-The reusable helpers are exported, so a scanner can build on them:
+  The reusable helpers are exported, so a scanner can build on them:
 
-```ts
-import {
-  extractIconsFromComponents,
-  extractIconsFromFields,
-  parseComponentField,
-} from '@vuepress/plugin-icon'
+  ```ts
+  import {
+    extractIconsFromComponents,
+    extractIconsFromFields,
+    parseComponentField,
+  } from '@vuepress/plugin-icon'
 
-// read the icons of an object, e.g. a theme config or a data file
-extractIconsFromFields(data, ['icon', 'features[*].name'])
+  // read the icons of an object, e.g. a theme config or a data file
+  extractIconsFromFields(data, ['icon', 'features[*].name'])
 
-// read the icons of the component props of the site
-extractIconsFromComponents(
-  app,
-  ['VPCustom.icon'].map(parseComponentField).filter((field) => field != null),
-)
-```
+  // read the icons of the component props of the site
+  extractIconsFromComponents(
+    app,
+    ['VPCustom.icon'].map(parseComponentField).filter((field) => field != null),
+  )
+  ```
 
-:::
+  :::
 
 ## Component Props
 
