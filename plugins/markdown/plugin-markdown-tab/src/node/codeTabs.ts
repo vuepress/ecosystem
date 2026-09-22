@@ -24,7 +24,7 @@ export const codeTabs: PluginSimple = (md) => {
         return { id }
       })
 
-      return `<CodeTabs :data='${stringifyProp(tabsData)}'${
+      return `<VPCodeTabs :data='${stringifyProp(tabsData)}'${
         active === -1 ? '' : ` :active="${active}"`
       }${
         // oxlint-disable-next-line typescript/no-unsafe-member-access
@@ -41,7 +41,7 @@ ${titles
     },
 
     closeRenderer: () => `\
-</CodeTabs>
+</VPCodeTabs>
 `,
 
     tabOpenRenderer: ({ index }, tokens, tokenIndex) => {

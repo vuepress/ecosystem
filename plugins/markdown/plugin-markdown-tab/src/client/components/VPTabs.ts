@@ -21,8 +21,8 @@ const TAB_STORE_NAME = 'VUEPRESS_TAB_STORE'
 
 const tabStore = useStorage<Record<string, string>>(TAB_STORE_NAME, {})
 
-export const Tabs = defineComponent({
-  name: 'Tabs',
+export const VPTabs = defineComponent({
+  name: 'VPTabs',
 
   props: {
     /**
