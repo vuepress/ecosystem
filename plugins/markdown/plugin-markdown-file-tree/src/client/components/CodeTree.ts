@@ -2,23 +2,24 @@ import type { SlotsType, VNode } from 'vue'
 import { defineComponent, h, onMounted, provide, ref, watch } from 'vue'
 
 import { activeFileKey } from '../utils.js'
+import { FileTree } from './FileTree.js'
 
 import '../styles/vars.scss'
 import '../styles/codeTree.scss'
 
 /**
- * Panel that displays code blocks with a file tree
+ * Panel that displays the code blocks of several files with a file tree
  *
- * 配合文件树展示代码块的面板
+ * 配合文件树展示多个文件的代码块的面板
  */
 export const CodeTree = defineComponent({
   name: 'CodeTree',
 
   props: {
     /**
-     * Title of the code tree
+     * Title of the code tree, displayed above the file tree
      *
-     * 代码树的标题
+     * 代码树的标题，显示在文件树上方
      */
     title: {
       type: String,
@@ -52,6 +53,8 @@ export const CodeTree = defineComponent({
   setup(props, { slots }) {
     const activeFile = ref(props.entry)
     const codePanel = ref<HTMLDivElement | null>(null)
+    // The file tree is collapsible and collapsed by default on small screens
+    const showFileTree = ref(false)
 
     provide(activeFileKey, activeFile)
 
@@ -90,7 +93,11 @@ export const CodeTree = defineComponent({
       })
     }
 
-    watch(activeFile, syncActiveFile, { flush: 'post' })
+    watch(activeFile, () => {
+      syncActiveFile()
+      // Collapse the file tree, so that the opened file gets the full width
+      showFileTree.value = false
+    })
     onMounted(syncActiveFile)
 
     return (): VNode => {
@@ -98,34 +105,55 @@ export const CodeTree = defineComponent({
 
       return h(
         'div',
-        { class: { 'vp-code-tree': true, 'no-file-tree': !fileTree } },
+        {
+          class: {
+            'vp-code-tree': true,
+            'no-file-tree': !fileTree,
+            'file-tree-expanded': showFileTree.value,
+          },
+          style: props.height
+            ? { '--vp-code-tree-height': props.height }
+            : undefined,
+        },
         [
           fileTree
-            ? h(
-                'div',
-                {
-                  class: 'vp-code-tree-files',
-                  style: props.height ? { maxHeight: props.height } : undefined,
+            ? h('div', { class: 'vp-code-tree-actions' }, [
+                h(
+                  'button',
+                  {
+                    'type': 'button',
+                    'class': 'vp-code-tree-toggle',
+                    'aria-label': 'Toggle file tree',
+                    'aria-expanded': showFileTree.value,
+                    'onClick': () => {
+                      showFileTree.value = !showFileTree.value
+                    },
+                  },
+                  [
+                    h('span', {
+                      class: [
+                        'vp-code-tree-toggle-icon',
+                        showFileTree.value ? 'collapse' : 'expand',
+                      ],
+                    }),
+                  ],
+                ),
+              ])
+            : null,
+          fileTree
+            ? h(FileTree, { title: props.title }, { default: fileTree })
+            : null,
+          fileTree
+            ? h('div', {
+                class: 'vp-code-tree-mask',
+                onClick: () => {
+                  showFileTree.value = false
                 },
-                [
-                  props.title
-                    ? h(
-                        'div',
-                        { class: 'vp-code-tree-title', title: props.title },
-                        props.title,
-                      )
-                    : null,
-                  h('div', { class: 'vp-code-tree-tree' }, fileTree()),
-                ],
-              )
+              })
             : null,
           h(
             'div',
-            {
-              ref: codePanel,
-              class: 'vp-code-tree-code',
-              style: props.height ? { height: props.height } : undefined,
-            },
+            { ref: codePanel, class: 'vp-code-tree-code' },
             slots.default?.(),
           ),
         ],

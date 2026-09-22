@@ -4,7 +4,7 @@
  * The table is derived from an icon source, so that it never has to be curated
  * by hand. Run it with:
  *
- * `pnpm --filter @vuepress/plugin-markdown-code-tree generate:icons`
+ * `pnpm --filter @vuepress/plugin-markdown-file-tree generate:icons`
  *
  * To replace the icon set, add another {@link IconSource} and point
  * {@link SOURCE} to it.
@@ -13,7 +13,7 @@
  *
  * 该表由图标数据源推导而来，因此永远不需要人工维护。运行方式：
  *
- * `pnpm --filter @vuepress/plugin-markdown-code-tree generate:icons`
+ * `pnpm --filter @vuepress/plugin-markdown-file-tree generate:icons`
  *
  * 如需更换图标集，新增一个 {@link IconSource}，并将 {@link SOURCE} 指向它即可。
  */

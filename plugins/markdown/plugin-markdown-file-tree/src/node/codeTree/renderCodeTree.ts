@@ -18,11 +18,11 @@ export interface CodeTreeEnv extends MarkdownEnv {
 }
 
 /**
- * File tree node
+ * File tree node built from file paths
  *
- * 文件树节点
+ * 根据文件路径构建的文件树节点
  */
-export interface FileTreeNode {
+export interface CodeTreeFileTreeNode {
   /**
    * Full path of the file or the folder
    *
@@ -34,7 +34,7 @@ export interface FileTreeNode {
    *
    * 文件夹的子节点
    */
-  children: FileTreeNode[]
+  children: CodeTreeFileTreeNode[]
 }
 
 /**
@@ -45,8 +45,8 @@ export interface FileTreeNode {
  * @param files - File paths / 文件路径
  * @returns File tree / 文件树
  */
-export const buildFileTree = (files: string[]): FileTreeNode[] => {
-  const root: FileTreeNode[] = []
+export const buildFileTree = (files: string[]): CodeTreeFileTreeNode[] => {
+  const root: CodeTreeFileTreeNode[] = []
 
   for (const file of files) {
     const segments = file.split('/').filter((segment) => segment !== '')
@@ -69,21 +69,26 @@ export const buildFileTree = (files: string[]): FileTreeNode[] => {
 }
 
 /**
- * Render file tree nodes to component tags
+ * Render file tree nodes to `FileTreeNode` component tags
  *
- * 将文件树节点渲染为组件标签
+ * 将文件树节点渲染为 `FileTreeNode` 组件标签
  *
  * @param nodes - File tree nodes / 文件树节点
+ * @param level - Nesting level of the nodes / 节点的嵌套层级
  * @returns Rendered tags / 渲染结果
  */
-export const renderFileTree = (nodes: FileTreeNode[]): string =>
+export const renderFileTree = (
+  nodes: CodeTreeFileTreeNode[],
+  level = 0,
+): string =>
   nodes
     .map(({ path, children }) => {
       const type = children.length ? 'folder' : 'file'
+      const filename = path.split('/').pop() ?? path
+      // Folders of a code tree are expanded by default
+      const expanded = type === 'folder' ? ' expanded' : ''
 
-      return `<CodeTreeFileNode path="${escapeAttr(path)}" type="${type}" icon="${escapeAttr(
-        getFileIcon(path, type),
-      )}">${renderFileTree(children)}</CodeTreeFileNode>`
+      return `<FileTreeNode type="${type}" filename="${escapeAttr(filename)}" filepath="${escapeAttr(path)}" :level="${level}"${expanded} icon="${escapeAttr(getFileIcon(path, type))}">${renderFileTree(children, level + 1)}</FileTreeNode>`
     })
     .join('')
 

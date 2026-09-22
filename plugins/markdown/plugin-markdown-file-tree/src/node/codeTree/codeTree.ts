@@ -3,7 +3,7 @@ import type { RendererRule } from 'markdown-it'
 import type Token from 'markdown-it/lib/token.mjs'
 import type { Markdown } from 'vuepress/markdown'
 
-import type { MarkdownCodeTreePluginOptions } from './options.js'
+import type { MarkdownCodeTreePluginOptions } from '../options.js'
 import { renderCodeTree } from './renderCodeTree.js'
 import { hasMarker, resolveAttrs } from './utils.js'
 
@@ -18,7 +18,7 @@ import { hasMarker, resolveAttrs } from './utils.js'
  * 该插件用于在 VuePress 中渲染代码树，即带有每个文件代码块的文件树。
  *
  * @example
- *   import { codeTree } from '@vuepress/plugin-markdown-code-tree'
+ *   import { codeTree } from '@vuepress/plugin-markdown-file-tree'
  *
  *   md.use(codeTree, { height: '400px' })
  *

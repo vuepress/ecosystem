@@ -4,37 +4,44 @@
   overflow: auto hidden;
 
   max-width: 100%;
-  padding: 16px;
-  border: solid 1px var(--file-tree-c-border);
+  border: solid 1px var(--vp-file-tree-c-border);
   border-radius: 8px;
 
-  background-color: var(--file-tree-c-bg);
+  background-color: var(--vp-file-tree-c-bg);
 
   font-size: 14px;
 
   transition:
-    border var(--vp-t-color),
+    border-color var(--vp-t-color),
     background-color var(--vp-t-color);
 }
 
-.vp-file-tree .file-tree-title {
-  margin-block: -16px 8px;
-  margin-inline: -16px;
+.vp-file-tree-title {
+  overflow: hidden;
+
+  margin-block: 0;
   padding-block: 8px;
   padding-inline: 16px;
-  border-bottom: solid 1px var(--file-tree-c-border);
+  border-bottom: solid 1px var(--vp-file-tree-c-border);
 
-  color: var(--file-tree-c-text);
+  color: var(--vp-file-tree-c-text);
 
-  font-weight: bold;
+  font-weight: 600;
   font-size: 16px;
+  line-height: 22px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   transition:
     color var(--vp-t-color),
     border-color var(--vp-t-color);
 }
 
-.vp-file-tree-node .group {
+.vp-file-tree-content {
+  padding: 16px;
+}
+
+.vp-file-tree-node .vp-file-tree-group {
   position: relative;
   min-width: max-content;
   margin-inline-start: 20px;
@@ -43,19 +50,18 @@
     content: '';
 
     position: absolute;
-    top: 0;
-    left: -18px;
+    inset-block: 0;
+    inset-inline-start: -18px;
 
     width: 1px;
-    height: 100%;
 
-    background-color: var(--file-tree-c-border);
+    background-color: var(--vp-file-tree-c-border);
 
     transition: background-color var(--vp-t-color);
   }
 }
 
-.vp-file-tree-node .node-info {
+.vp-file-tree-info {
   position: relative;
 
   display: flex;
@@ -64,19 +70,20 @@
   justify-content: flex-start;
 
   min-width: max-content;
-  height: 24px;
+  height: 26px;
   margin-block: 0;
   margin-inline-start: 16px;
   padding-block: 2px;
 
-  line-height: 24px;
+  line-height: 26px;
   text-wrap: nowrap;
 
   &::after {
     content: '';
 
     position: absolute;
-    inset: 0 -16px 0 calc(var(--file-tree-level) * 20px - 32px);
+    inset-block: 0;
+    inset-inline: calc(var(--file-tree-level) * 20px - 32px) -16px;
     z-index: 0;
 
     display: block;
@@ -90,7 +97,7 @@
 
   &.active::after,
   &:not(.diff):hover::after {
-    background-color: var(--file-tree-c-bg-hover);
+    background-color: var(--vp-file-tree-c-bg-hover);
   }
 
   &.diff::after {
@@ -100,15 +107,15 @@
 
   &.diff.add::after {
     content: '+';
-    background-color: var(--file-tree-c-diff-add-bg);
-    color: var(--file-tree-c-diff-add-text);
+    background-color: var(--vp-file-tree-c-diff-add-bg);
+    color: var(--vp-file-tree-c-diff-add-text);
   }
 
   &.diff.remove::after {
     content: '-';
     padding-inline-start: 4px;
-    background-color: var(--file-tree-c-diff-remove-bg);
-    color: var(--file-tree-c-diff-remove-text);
+    background-color: var(--vp-file-tree-c-diff-remove-bg);
+    color: var(--vp-file-tree-c-diff-remove-text);
   }
 
   &.folder {
@@ -118,8 +125,8 @@
       content: '';
 
       position: absolute;
-      top: 8px;
-      left: -20px;
+      inset-block-start: 7px;
+      inset-inline-start: -20px;
 
       display: block;
 
@@ -127,15 +134,15 @@
       height: 12px;
 
       background-color: currentcolor;
-      color: var(--file-tree-c-text-mute);
+      color: var(--vp-file-tree-c-text-mute);
 
-      mask: var(--file-tree-icon-folder-arrow) no-repeat;
+      mask: var(--vp-file-tree-icon-arrow) no-repeat;
       mask-size: 100% 100%;
       cursor: pointer;
 
       transition:
         color var(--vp-t-color),
-        transform var(--vp-t-color);
+        transform var(--vp-t-transform);
 
       transform: rotate(0);
     }
@@ -145,26 +152,14 @@
     }
   }
 
-  .name {
-    position: relative;
-    flex-shrink: 99;
-    min-width: 0;
-    font-family: var(--file-tree-font-family);
-  }
-
-  &.folder .name {
-    color: var(--file-tree-c-text);
-    transition: color var(--vp-t-color);
-  }
-
-  &.focus .name {
+  &.focus .vp-file-tree-name {
     margin-block: 0;
     margin-inline: -4px;
     padding-inline: 4px;
     border-radius: 4px;
 
-    background: var(--file-tree-c-focus-bg);
-    color: var(--file-tree-c-focus-text);
+    background: var(--vp-file-tree-c-focus-bg);
+    color: var(--vp-file-tree-c-focus-text);
 
     font-weight: bold;
 
@@ -173,61 +168,74 @@
       background-color var(--vp-t-color);
   }
 
-  &:not(.focus).folder .name:hover {
-    color: var(--file-tree-c-text-hover);
+  &.active .vp-file-tree-name {
+    color: var(--vp-file-tree-c-active-text);
   }
 
-  .name.omit {
-    padding-inline-start: 22px;
-  }
-
-  + .group.empty .name.omit {
-    padding-inline-start: 2px;
-  }
-
-  .comment {
-    display: inline-block;
-    flex: 1 2;
-
-    height: 24px;
-    margin-block: -2px;
-    padding-inline: 20px 16px;
-
-    color: var(--file-tree-c-comment-text);
-
-    line-height: 24px;
-
-    cursor: auto;
-
+  &.folder .vp-file-tree-name {
+    color: var(--vp-file-tree-c-text);
     transition: color var(--vp-t-color);
   }
 
-  .icon-file,
-  .icon-folder {
-    display: inline-block;
-    vertical-align: middle;
+  &:not(.focus).folder .vp-file-tree-name:hover {
+    color: var(--vp-file-tree-c-text-hover);
+  }
+}
 
-    width: 1.2em;
-    height: 1.2em;
-    margin-inline-start: -3px;
+.vp-file-tree-name {
+  position: relative;
+  flex-shrink: 99;
+  min-width: 0;
+  font-family: var(--vp-file-tree-font-family);
 
-    background-color: currentcolor;
-    color: inherit;
+  &.omit {
+    padding-inline-start: 22px;
+  }
+}
 
-    mask: var(--icon) no-repeat;
-    mask-size: 100% 100%;
+.vp-file-tree-group.empty .vp-file-tree-name.omit {
+  padding-inline-start: 2px;
+}
+
+.vp-file-tree-comment {
+  display: inline-block;
+  flex: 1 2;
+
+  height: 26px;
+  margin-block: -2px;
+  padding-inline: 20px 16px;
+
+  color: var(--vp-file-tree-c-comment-text);
+
+  line-height: 26px;
+
+  cursor: auto;
+
+  transition: color var(--vp-t-color);
+}
+
+.vp-file-tree-icon-fallback {
+  display: inline-block;
+  flex-shrink: 0;
+
+  width: 1.2em;
+  height: 1.2em;
+
+  background-color: currentcolor;
+
+  mask: var(--icon) no-repeat;
+  mask-size: 100% 100%;
+
+  &.file {
+    --icon: var(--vp-file-tree-icon-file);
   }
 
-  .icon-file {
-    --icon: var(--file-tree-icon-file);
-  }
-
-  .icon-folder {
-    --icon: var(--file-tree-icon-folder);
+  &.folder {
+    --icon: var(--vp-file-tree-icon-folder);
   }
 
   /* stylelint-disable-next-line selector-max-class */
-  &.folder.expanded .icon-folder {
-    --icon: var(--file-tree-icon-folder-expanded);
+  &.folder.expanded {
+    --icon: var(--vp-file-tree-icon-folder-expanded);
   }
 }

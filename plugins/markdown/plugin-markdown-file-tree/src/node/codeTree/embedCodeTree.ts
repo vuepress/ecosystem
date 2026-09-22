@@ -2,7 +2,7 @@ import type { App } from 'vuepress/core'
 import type { Markdown, MarkdownEnv } from 'vuepress/markdown'
 import { fs, isChildPath, logger, path, tinyglobby } from 'vuepress/utils'
 
-import type { MarkdownCodeTreePluginOptions } from './options.js'
+import type { MarkdownCodeTreePluginOptions } from '../options.js'
 import { addPageDependency, renderCodeTree } from './renderCodeTree.js'
 import { resolveAttrs, sanitizeFilePath } from './utils.js'
 

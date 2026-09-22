@@ -2,6 +2,7 @@ import type { PluginSimple } from 'markdown-it'
 import type StateBlock from 'markdown-it/lib/rules_block/state_block.mjs'
 import type Token from 'markdown-it/lib/token.mjs'
 
+import { escapeAttr } from './codeTree/utils.js'
 import { parseFileTreeContent } from './parseFileTreeContent.js'
 import type { FileTreeNode } from './types.js'
 
@@ -117,6 +118,6 @@ export const fileTree: PluginSimple = (md) => {
     const meta = token.meta as { title: string }
     const nodes = parseFileTreeContent(token.content)
 
-    return `<div class="vp-${NAME}">${meta.title ? `\n<div class="${NAME}-title">${meta.title}</div>\n` : ''}${renderNodes(nodes)}\n</div>`
+    return `<FileTree${meta.title ? ` title="${escapeAttr(meta.title)}"` : ''}>${renderNodes(nodes)}</FileTree>`
   }
 }
