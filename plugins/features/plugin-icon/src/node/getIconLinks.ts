@@ -11,6 +11,7 @@ import {
   isFontAwesomeLink,
   isIconifyAssets,
 } from './getAssetsType.js'
+import type { OfflineIconType } from './offline.js'
 import type { IconAsset } from './options.js'
 import { logger } from './utils.js'
 
@@ -98,12 +99,13 @@ useStyleTag(\`\\
 
 export const getIconLinks = (
   assets: IconAsset = 'iconify',
-  offline = false,
+  offlineType?: OfflineIconType,
 ): LinkInfo[] =>
-  (isArray(assets) ? assets : [assets]).flatMap((item) =>
-    // the icon type is determined by the offline setting, built-in assets
-    // would load a second icon library from CDN
-    offline && (isFontAwesomeAssets(item) || isIconifyAssets(item))
-      ? []
-      : getIconLink(item),
-  )
+  (isArray(assets) ? assets : [assets]).flatMap((item) => {
+    // the icons of the offline mode are bundled locally, their CDN assets
+    // would load a second icon library
+    if (offlineType === 'fontawesome' && isFontAwesomeAssets(item)) return []
+    if (offlineType === 'iconify' && isIconifyAssets(item)) return []
+
+    return getIconLink(item)
+  })

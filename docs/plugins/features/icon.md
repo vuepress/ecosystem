@@ -76,6 +76,41 @@ If you use 1 icon set mostly, you can set the prefix to the icon set name (E.g.:
 ::svg-spinners:180-ring:: <!-- svg-spinners:180-ring -->
 ```
 
+#### Offline Usage for Iconify
+
+By default, icons are loaded from the Iconify API. To bundle them locally instead, set the `offline` option, the icon type is `iconify` by default.
+
+The icons are provided by the `iconify-icon` web component and the `@iconify-json/<prefix>` package of every icon set in use, which need to be installed as dev dependencies. For example, if the icons of the `mdi` set are used:
+
+```bash
+npm i -D iconify-icon @iconify-json/mdi
+```
+
+Then the icons used by your pages are bundled automatically. The icon sets are reduced to the icons in use, so the bundle only contains the icons in use:
+
+```ts title=".vuepress/config.ts"
+export default {
+  plugins: [
+    iconPlugin({
+      prefix: 'mdi:',
+      offline: true,
+    }),
+  ],
+}
+```
+
+Icons that cannot be detected from the page content, e.g. icons used by a theme config, need to be added with the [scan](#scan) option.
+
+An icon without a prefix is not bundled, set the `prefix` option or write the prefix in the icon.
+
+A missing package stops the build with the packages to install, and the icons that are skipped are reported with a warning.
+
+::: warning
+
+An icon that is missing from the bundle shows up as empty in the dev server, as the Iconify API is blocked there. In a build the icon is still loaded from the Iconify API when the visitor is online.
+
+:::
+
 ### Font Awesome
 
 For free icon list, see <https://fontawesome.com/search?ic=free>. To use a icon, copy it's icon name in the selector.
@@ -121,9 +156,9 @@ You can add other classes that fontawesome supports after the icon name and spli
 
 See <https://docs.fontawesome.com/web/style/styling> for all available classes.
 
-#### Offline Usage
+#### Offline Usage for Font Awesome
 
-By default, icons are loaded from the jsdelivr CDN. To bundle them locally instead, set the `fontawesome` option.
+By default, icons are loaded from the jsdelivr CDN. To bundle them locally instead, set the `offline` option, and the `assets` option needs to include the Font Awesome assets so that the icon type is `fontawesome`.
 
 The icons are provided by the `@fortawesome` packages, which need to be installed as dev dependencies. `@fortawesome/fontawesome-svg-core` is always required, and each icon style needs its own package:
 
@@ -146,20 +181,14 @@ Then the icons used by your pages are bundled automatically:
 export default {
   plugins: [
     iconPlugin({
-      fontawesome: true,
+      assets: 'fontawesome',
+      offline: true,
     }),
   ],
 }
 ```
 
-Icons that cannot be detected from the page content, e.g. icons used by a theme config or a component, need to be returned by a scanner:
-
-```ts
-iconPlugin({
-  // the icons are given in the same syntax as in markdown
-  fontawesome: (app) => ['brands:apple', 'solid:house'],
-})
-```
+Icons that cannot be detected from the page content, e.g. icons used by a theme config, need to be added with the [scan](#scan) option.
 
 Bundling every free icon needs all three style packages, as each style is imported as a whole:
 
@@ -168,7 +197,7 @@ npm i -D @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fo
 ```
 
 ```ts
-iconPlugin({ fontawesome: 'all' })
+iconPlugin({ assets: 'fontawesome', offline: 'all' })
 ```
 
 The icons are detected in the same way as they are rendered, so the classes that an icon may contain can be written in any order:
@@ -182,7 +211,7 @@ A missing package stops the build with the packages to install, and the icons th
 
 ::: warning
 
-The offline mode only supports the FontAwesome free icons, so the icon type is fixed to `fontawesome`: the `assets` option is ignored and icons of other types, like `::mdi:home::`, iconfont and images, no longer render.
+The offline mode only bundles the free icons. The Font Awesome assets, including a kit, are not loaded from the CDN in this mode, so an icon that is not bundled is not rendered.
 
 :::
 
@@ -331,27 +360,27 @@ Images links are supported with any icon types (relative links are NOT supported
 - Default: `true`
 - Details: Whether to enable icon syntax (`::icon::`) in markdown
 
-### fontawesome
+### offline
 
-- Type: `boolean | "all" | FontAwesomeScanner`
+- Type: `boolean | "all"`
 - Default: `false`
 - Details:
 
-  Bundle FontAwesome icons locally instead of loading them from a CDN, so the site works without internet access. See [Offline Usage](#offline-usage) for the packages to install.
+  Bundle the icons locally instead of loading them from a CDN or the Iconify API, so the site works without internet access.
 
-  - `true`: bundle the icons used by the site, which are detected from the rendered page content.
-  - `"all"`: bundle every FontAwesome free icon.
-  - Function: a scanner returning the icons that cannot be detected, e.g. icons used by a theme config or a component. It receives the VuePress app and returns icons in the same syntax as in markdown, e.g. `house`, `solid:house`, `fa-solid fa-house` or `brands:apple`, the style falls back to `solid` when it is not given:
+  The icons are bundled for the icon type of the site, so this option does not affect the `type` and `assets` options. See [Offline Usage for Iconify](#offline-usage-for-iconify) and [Offline Usage for Font Awesome](#offline-usage-for-font-awesome) for the packages to install.
 
-  ```ts
-  export type FontAwesomeScanner = (app: App) => string[] | Promise<string[]>
-  ```
+  Only the `fontawesome` and the `iconify` icons can be bundled, the build stops when the icon type is another one, e.g. `iconfont`.
+
+  - `true`: bundle the icons used by the site, which are detected from the page content, the front matter and the component props, see the [scan](#scan) option.
+  - `"all"`: bundle every icon of the icon type. It is only supported by `fontawesome`, as an Iconify icon set may contain thousands of icons, and the icons used by the site are bundled instead for `iconify`.
 
   ```ts title=".vuepress/config.ts"
   export default {
     plugins: [
       iconPlugin({
-        fontawesome: true,
+        prefix: 'mdi:',
+        offline: true,
       }),
     ],
   }
@@ -361,7 +390,82 @@ Images links are supported with any icon types (relative links are NOT supported
 
   ::: tip
 
-  Bundling every icon adds about 1.8 MB to the client bundle.
+  Bundling every Font Awesome icon adds about 1.8 MB to the client bundle, while an Iconify bundle only contains the icons in use.
+
+  :::
+
+### scan
+
+- Type: `IconScan`
+- Details:
+
+  Fields to scan for the icons, which is used by the [offline](#offline) option and has no effect when the offline mode is not enabled.
+
+  ```ts
+  export interface IconScan {
+    frontmatter?: string[]
+    components?: string[]
+    scanner?: (app: App) => string[] | Promise<string[]>
+  }
+  ```
+
+  `frontmatter` and `components` are field paths, which support the field access and the array index, where `[*]` matches every element of an array. A field that does not exist is skipped silently.
+
+#### frontmatter
+
+- Type: `string[]`
+- Default: `['icon']`
+- Details: Front matter fields of the pages, e.g. `['icon', 'features[*].name']`. Set it to `[]` to disable the front matter scan.
+
+#### components
+
+- Type: `string[]`
+- Details: Props of the components used in the pages, in the form `<component>.<prop>`, e.g. `['VPCustom.icon', 'VPTest.files[*]']`.
+
+  The props of a component are read as one object, so `VPCustom.icon` reads the `icon` prop, while `VPTest.files[*]` reads every element of the `files` prop. A prop that is bound with `:prop` or `v-bind` is reported when its value cannot be parsed as JSON, as its icons cannot be bundled then.
+
+#### scanner
+
+- Type: `(app: App) => string[] | Promise<string[]>`
+- Details: Extra scanner for the icons that cannot be detected, e.g. the icons used by the theme config.
+
+  The returned icons use the same syntax as in markdown, e.g. `mdi:home` for Iconify and `solid:house` for Font Awesome.
+
+  ```ts title=".vuepress/config.ts"
+  export default {
+    plugins: [
+      iconPlugin({
+        offline: true,
+        scan: {
+          frontmatter: ['icon', 'features[*].name'],
+          components: ['VPCustom.icon'],
+          scanner: (app) => ['mdi:home'],
+        },
+      }),
+    ],
+  }
+  ```
+
+  ::: tip
+
+  The reusable helpers are exported, so a scanner can build on them:
+
+  ```ts
+  import {
+    extractIconsFromComponents,
+    extractIconsFromFields,
+    parseComponentField,
+  } from '@vuepress/plugin-icon'
+
+  // read the icons of an object, e.g. a theme config or a data file
+  extractIconsFromFields(data, ['icon', 'features[*].name'])
+
+  // read the icons of the component props of the site
+  extractIconsFromComponents(
+    app,
+    ['VPCustom.icon'].map(parseComponentField).filter((field) => field != null),
+  )
+  ```
 
   :::
 

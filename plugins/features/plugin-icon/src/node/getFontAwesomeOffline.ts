@@ -1,7 +1,7 @@
 import { getModulePath, isModuleAvailable } from '@vuepress/helper'
 import { fs } from 'vuepress/utils'
 
-import type { FontAwesomeStyle, IconPluginOptions } from './options.js'
+import type { FontAwesomeStyle } from './options.js'
 
 /**
  * FontAwesome styles, in the order of the generated imports
@@ -123,19 +123,16 @@ export const getFontAwesomeStylePackage = (style: FontAwesomeStyle): string =>
  *
  * 获取离线模式所需的 FontAwesome 包
  *
- * @param fontawesome - FontAwesome option / FontAwesome 选项
+ * @param enabled - Whether the offline mode is enabled / 是否启用离线模式
  * @returns Package names / 包名
  */
-export const getFontAwesomePackages = (
-  fontawesome?: IconPluginOptions['fontawesome'],
-): string[] => {
-  if (!fontawesome) return []
-
-  return [
-    FONTAWESOME_CORE,
-    ...FONTAWESOME_STYLES.map((style) => STYLE_PACKAGES[style]),
-  ]
-}
+export const getFontAwesomePackages = (enabled?: boolean): string[] =>
+  enabled
+    ? [
+        FONTAWESOME_CORE,
+        ...FONTAWESOME_STYLES.map((style) => STYLE_PACKAGES[style]),
+      ]
+    : []
 
 /**
  * Get the code registering FontAwesome icons locally

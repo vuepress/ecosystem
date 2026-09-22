@@ -76,6 +76,41 @@ export default {
 ::svg-spinners:180-ring:: <!-- svg-spinners:180-ring -->
 ```
 
+#### Iconify 离线使用
+
+默认情况下，图标从 Iconify API 加载。要改为本地打包，请设置 `offline` 选项，图标类型默认为 `iconify`。
+
+图标由 `iconify-icon` Web 组件与使用到的每个图标集对应的 `@iconify-json/<prefix>` 包提供，需要将它们安装为开发依赖。例如，如果使用了 `mdi` 集的图标：
+
+```bash
+npm i -D iconify-icon @iconify-json/mdi
+```
+
+随后页面中用到的图标会被自动打包。图标集会裁剪为使用中的图标，因此产物中只包含使用中的图标：
+
+```ts title=".vuepress/config.ts"
+export default {
+  plugins: [
+    iconPlugin({
+      prefix: 'mdi:',
+      offline: true,
+    }),
+  ],
+}
+```
+
+无法从页面内容中检测到的图标，例如主题配置中使用的图标，需要通过 [scan](#scan) 选项补充。
+
+没有前缀的图标不会被打包，请设置 `prefix` 选项或在图标中写出前缀。
+
+缺少包时会终止构建并给出需要安装的包，被跳过的图标会以警告提示。
+
+::: warning
+
+未被打包的图标在开发服务器中会显示为空白，因为那里拦截了 Iconify API。在构建产物中，当访问者在线时该图标仍会从 Iconify API 加载。
+
+:::
+
 ### Font Awesome
 
 有关免费图标列表，请参见 <https://fontawesome.com/search?ic=free>。要使用图标，请复制选择器中的图标名称。
@@ -121,9 +156,9 @@ export default {
 
 有关所有可用类的详细信息，请参见 <https://docs.fontawesome.com/web/style/styling>。
 
-#### 离线使用
+#### Font Awesome 离线使用
 
-默认情况下，图标从 jsdelivr CDN 加载。要改为本地打包，请设置 `fontawesome` 选项。
+默认情况下，图标从 jsdelivr CDN 加载。要改为本地打包，请设置 `offline` 选项，并让 `assets` 选项包含 Font Awesome 资源，使图标类型为 `fontawesome`。
 
 图标由 `@fortawesome` 包提供，需要将它们安装为开发依赖。`@fortawesome/fontawesome-svg-core` 始终需要，每种图标样式还需要各自的包：
 
@@ -146,20 +181,14 @@ npm i -D @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fo
 export default {
   plugins: [
     iconPlugin({
-      fontawesome: true,
+      assets: 'fontawesome',
+      offline: true,
     }),
   ],
 }
 ```
 
-无法从页面内容中检测到的图标，例如主题配置或组件中使用的图标，需要由扫描器返回：
-
-```ts
-iconPlugin({
-  // 图标使用与 Markdown 中一致的语法
-  fontawesome: (app) => ['brands:apple', 'solid:house'],
-})
-```
+无法从页面内容中检测到的图标，例如主题配置中使用的图标，需要通过 [scan](#scan) 选项补充。
 
 打包全部免费图标时需要三个样式包，因为每个样式都是整体导入的：
 
@@ -168,7 +197,7 @@ npm i -D @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fo
 ```
 
 ```ts
-iconPlugin({ fontawesome: 'all' })
+iconPlugin({ assets: 'fontawesome', offline: 'all' })
 ```
 
 图标的检测方式与渲染方式一致，因此图标中包含的类可以任意排序：
@@ -182,7 +211,7 @@ iconPlugin({ fontawesome: 'all' })
 
 ::: warning
 
-离线模式只支持 FontAwesome 免费图标，因此图标类型固定为 `fontawesome`：`assets` 选项会被忽略，其他类型的图标（如 `::mdi:home::`、iconfont 与图片）将不再渲染。
+离线模式只打包免费图标。该模式下不会从 CDN 加载 Font Awesome 资源（包括套件），因此未被打包的图标不会渲染。
 
 :::
 
@@ -331,27 +360,30 @@ iconPlugin({ fontawesome: 'all' })
 - 默认值：`true`
 - 详情：是否在 Markdown 中启用图标语法（`::icon::`）
 
-### fontawesome
+### offline
 
-- 类型：`boolean | "all" | FontAwesomeScanner`
+- 类型：`boolean | "all"`
 - 默认值：`false`
 - 详情：
 
-  本地打包 FontAwesome 图标，而非从 CDN 加载，使站点无需联网即可访问。需要安装的包见[离线使用](#离线使用)。
+  本地打包图标，而非从 CDN 或 Iconify API 加载，使站点无需联网即可访问。
 
-  - `true`：打包站点用到的图标，它们会从渲染后的页面内容中检测。
-  - `"all"`：打包全部 FontAwesome 免费图标。
-  - 传入函数：扫描器，返回无法被检测的图标，例如主题配置或组件中使用的图标。它接收 VuePress 应用，返回的图标使用与 Markdown 中一致的语法，例如 `house`、`solid:house`、`fa-solid fa-house` 或 `brands:apple`，未给出样式时样式回退为 `solid`：
+  图标按站点的图标类型打包，因此该选项不会影响 `type` 与 `assets` 选项。需要安装的包见
+  [Iconify 离线使用](#iconify-离线使用)与 [Font Awesome 离线使用](#font-awesome-离线使用)。
 
-  ```ts
-  export type FontAwesomeScanner = (app: App) => string[] | Promise<string[]>
-  ```
+  仅 `fontawesome` 与 `iconify` 的图标可以打包，图标类型为其他值（如 `iconfont`）时会终止构建。
+
+  - `true`：打包站点用到的图标，它们会从页面内容、front matter 与组件属性中检测，见
+    [scan](#scan) 选项。
+  - `"all"`：打包该图标类型的全部图标。仅 `fontawesome` 支持，因为一个 Iconify 图标集可能
+    包含数千个图标，`iconify` 下会改为打包站点用到的图标。
 
   ```ts title=".vuepress/config.ts"
   export default {
     plugins: [
       iconPlugin({
-        fontawesome: true,
+        prefix: 'mdi:',
+        offline: true,
       }),
     ],
   }
@@ -361,7 +393,87 @@ iconPlugin({ fontawesome: 'all' })
 
   ::: tip
 
-  打包全部图标会为客户端产物增加约 1.8 MB。
+  打包全部 Font Awesome 图标会为客户端产物增加约 1.8 MB，而 Iconify 的产物只包含使用中的图标。
+
+  :::
+
+### scan
+
+- 类型：`IconScan`
+- 详情：
+
+  需要扫描图标的字段，供 [offline](#offline) 选项使用，未启用离线模式时该选项无效。
+
+  ```ts
+  export interface IconScan {
+    frontmatter?: string[]
+    components?: string[]
+    scanner?: (app: App) => string[] | Promise<string[]>
+  }
+  ```
+
+  `frontmatter` 与 `components` 为字段路径，支持字段访问与数组下标，其中 `[*]` 匹配数组的
+  每个元素。不存在的字段会被静默跳过。
+
+#### frontmatter
+
+- 类型：`string[]`
+- 默认值：`['icon']`
+- 详情：页面的 front matter 字段，例如 `['icon', 'features[*].name']`。设为
+  `[]` 可关闭 front matter 扫描。
+
+#### components
+
+- 类型：`string[]`
+- 详情：页面中使用的组件的属性，形式为 `<组件>.<属性>`，例如
+  `['VPCustom.icon', 'VPTest.files[*]']`。
+
+  组件的属性会作为一个对象读取，因此 `VPCustom.icon` 读取 `icon` 属性，而
+  `VPTest.files[*]` 读取 `files` 属性的每个元素。用 `:prop` 或 `v-bind` 绑定的属性在值无法解析为 JSON
+  时会给出警告，因为此时其图标无法被打包。
+
+#### scanner
+
+- 类型：`(app: App) => string[] | Promise<string[]>`
+- 详情：用于获取无法被检测到的图标的额外扫描器，例如主题配置中使用的图标。
+
+  返回的图标使用与 Markdown 中一致的语法，Iconify 为 `mdi:home`，Font Awesome 为 `solid:house`。
+
+  ```ts title=".vuepress/config.ts"
+  export default {
+    plugins: [
+      iconPlugin({
+        offline: true,
+        scan: {
+          frontmatter: ['icon', 'features[*].name'],
+          components: ['VPCustom.icon'],
+          scanner: (app) => ['mdi:home'],
+        },
+      }),
+    ],
+  }
+  ```
+
+  ::: tip
+
+  可复用的辅助函数会被导出，因此扫描器可以基于它们构建：
+
+  ```ts
+  import {
+    extractIconsFromComponents,
+    extractIconsFromFields,
+    parseComponentField,
+  } from '@vuepress/plugin-icon'
+
+  // 读取某个对象中的图标，例如主题配置或数据文件
+  extractIconsFromFields(data, ['icon', 'features[*].name'])
+
+  // 读取站点组件属性中的图标
+  extractIconsFromComponents(
+    app,
+    ['VPCustom.icon'].map(parseComponentField).filter((field) => field != null),
+  )
+  ```
 
   :::
 

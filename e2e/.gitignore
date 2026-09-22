@@ -1,3 +1,6 @@
 
 # Local smoke test site
 .smoke
+
+# Local offline verification sites
+.wp
