@@ -7,7 +7,6 @@ import { feedPlugin } from '@vuepress/plugin-feed'
 import { iconPlugin } from '@vuepress/plugin-icon'
 import { llmsPlugin } from '@vuepress/plugin-llms'
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
-import { markdownCodeTreePlugin } from '@vuepress/plugin-markdown-code-tree'
 import { markdownExtPlugin } from '@vuepress/plugin-markdown-ext'
 import { markdownFieldPlugin } from '@vuepress/plugin-markdown-field'
 import { markdownFileTreePlugin } from '@vuepress/plugin-markdown-file-tree'
@@ -64,7 +63,6 @@ export const plugins = [
       'zh/plugins/markdown/markdown-chart/echarts',
     ],
   }),
-  markdownCodeTreePlugin(),
   markdownExtPlugin({
     gfm: true,
     component: true,
@@ -73,7 +71,10 @@ export const plugins = [
   markdownFieldPlugin({
     fields: true,
   }),
-  markdownFileTreePlugin(),
+  markdownFileTreePlugin({
+    fileTree: true,
+    codeTree: true,
+  }),
   markdownImagePlugin({
     figure: true,
     mark: true,
