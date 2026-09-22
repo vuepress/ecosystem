@@ -11,7 +11,7 @@ import {
   watch,
 } from 'vue'
 
-import type { TabProps } from './Tabs.js'
+import type { TabProps } from './VPTabs.js'
 
 import '../styles/code-tabs.scss'
 
@@ -19,8 +19,8 @@ const CODE_TAB_STORE_NAME = 'VUEPRESS_CODE_TAB_STORE'
 
 const codeTabStore = useStorage<Record<string, string>>(CODE_TAB_STORE_NAME, {})
 
-export const CodeTabs = defineComponent({
-  name: 'CodeTabs',
+export const VPCodeTabs = defineComponent({
+  name: 'VPCodeTabs',
 
   props: {
     /**

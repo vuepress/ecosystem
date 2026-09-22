@@ -2,7 +2,7 @@ import { tsdownConfig } from '../../../scripts/tsdown.ts'
 
 export default tsdownConfig([
   'node/index',
-  'client/components/CodeTabs',
-  'client/components/Tabs',
+  'client/components/VPCodeTabs',
+  'client/components/VPTabs',
   'client/index',
 ])

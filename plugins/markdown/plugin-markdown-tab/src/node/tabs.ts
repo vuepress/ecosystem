@@ -25,7 +25,7 @@ export const tabs: PluginSimple = (md) => {
       })
 
       return `\
-<Tabs :data='${stringifyProp(tabsData)}'${
+<VPTabs :data='${stringifyProp(tabsData)}'${
         active === -1 ? '' : ` :active="${active}"`
       }${
         // oxlint-disable-next-line typescript/no-unsafe-member-access
@@ -42,7 +42,7 @@ ${titles
     },
 
     closeRenderer: () => `\
-</Tabs>
+</VPTabs>
 `,
 
     tabOpenRenderer: ({ index }) =>

@@ -1,2 +1,2 @@
-export * from './CodeTabs.js'
-export * from './Tabs.js'
+export * from './VPCodeTabs.js'
+export * from './VPTabs.js'
