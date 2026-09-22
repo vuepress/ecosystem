@@ -117,28 +117,26 @@ export const VPCodeTree = defineComponent({
         },
         [
           fileTree
-            ? h('div', { class: 'vp-code-tree-actions' }, [
-                h(
-                  'button',
-                  {
-                    'type': 'button',
-                    'class': 'vp-code-tree-toggle',
-                    'aria-label': 'Toggle file tree',
-                    'aria-expanded': showFileTree.value,
-                    'onClick': () => {
-                      showFileTree.value = !showFileTree.value
-                    },
+            ? h(
+                'button',
+                {
+                  'type': 'button',
+                  'class': 'vp-code-tree-toggle',
+                  'aria-label': 'Toggle file tree',
+                  'aria-expanded': showFileTree.value,
+                  'onClick': () => {
+                    showFileTree.value = !showFileTree.value
                   },
-                  [
-                    h('span', {
-                      class: [
-                        'vp-code-tree-toggle-icon',
-                        showFileTree.value ? 'collapse' : 'expand',
-                      ],
-                    }),
-                  ],
-                ),
-              ])
+                },
+                [
+                  h('span', {
+                    class: [
+                      'vp-code-tree-toggle-icon',
+                      showFileTree.value ? 'collapse' : 'expand',
+                    ],
+                  }),
+                ],
+              )
             : null,
           fileTree
             ? h(VPFileTree, { title: props.title }, { default: fileTree })

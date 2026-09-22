@@ -1,5 +1,9 @@
 .vp-code-tree {
   --vp-code-tree-height: 320px;
+
+  /* Matches the height of the code block title bar, which the toggle aligns to */
+  --vp-code-tree-title-height: 41px;
+  --vp-code-tree-toggle-width: 36px;
   --vp-code-tree-c-bg: var(--vp-c-bg-alt);
   --vp-code-tree-c-text: var(--vp-c-text);
   --vp-code-tree-c-text-mute: var(--vp-c-text-mute);
@@ -26,30 +30,31 @@
     background-color var(--vp-t-color);
 }
 
-.vp-code-tree-actions {
-  display: flex;
-  flex-shrink: 0;
-  flex-direction: column;
-  gap: 8px;
-  align-items: center;
-
-  width: 36px;
-  padding-block: 8px;
-  border-inline-end: solid 1px var(--vp-code-tree-c-border);
-
-  transition: border-color var(--vp-t-color);
-}
-
+/*
+ * The toggle floats over the left end of the code block title bar, so that it
+ * does not take a column of its own on a narrow screen.
+ *
+ * 开关悬浮在代码块标题栏的左端，因此窄屏下不会单独占据一列。
+ */
 .vp-code-tree-toggle {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  z-index: 3;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
+  width: var(--vp-code-tree-toggle-width);
+  height: var(--vp-code-tree-title-height);
+  padding: 0;
+  border-width: 0;
 
   background-color: transparent;
+  outline: none;
+
+  cursor: pointer;
 
   transition: background-color var(--vp-t-color);
 
@@ -86,9 +91,9 @@
 }
 
 .vp-code-tree .vp-file-tree {
+  /* The file tree covers the whole panel, the toggle floats above it */
   position: absolute;
-  inset-block: 0;
-  inset-inline-start: 36px;
+  inset: 0;
   z-index: 2;
 
   display: flex;
@@ -96,7 +101,7 @@
 
   overflow: hidden;
 
-  width: min(20rem, calc(100% - 36px));
+  width: min(20rem, 100%);
   height: 100%;
   border: none;
   border-radius: 0;
@@ -126,6 +131,12 @@
   color: var(--vp-code-tree-c-text);
 }
 
+/* Leave room for the floating toggle */
+.vp-code-tree .vp-file-tree-title,
+.vp-code-tree-code .code-block-title-bar {
+  padding-inline-start: calc(var(--vp-code-tree-toggle-width) + 16px);
+}
+
 .vp-code-tree .vp-file-tree-content {
   flex: 1 2;
   overflow: auto;
@@ -135,8 +146,7 @@
 
 .vp-code-tree-mask {
   position: absolute;
-  inset-block: 0;
-  inset-inline: 36px 0;
+  inset: 0;
   z-index: 1;
 
   display: none;
@@ -190,10 +200,17 @@
 }
 
 @media (min-width: 768px) {
-  .vp-code-tree-actions,
+  /* The file tree is always visible, so the toggle is not needed */
+  .vp-code-tree-toggle,
   .vp-code-tree-mask,
   .vp-code-tree.file-tree-expanded .vp-code-tree-mask {
     display: none;
+  }
+
+  /* The toggle is gone, so the title bars no longer need to leave room for it */
+  .vp-code-tree .vp-file-tree-title,
+  .vp-code-tree-code .code-block-title-bar {
+    padding-inline-start: 16px;
   }
 
   .vp-code-tree .vp-file-tree {

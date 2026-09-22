@@ -177,4 +177,48 @@ test.describe('plugin-markdown-file-tree: code tree', () => {
       .click()
     await expect(fileTree).toBeHidden()
   })
+
+  test('float the toggle over the title bar on a small screen', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 500, height: 800 })
+    await page.goto('code-tree/')
+
+    const codeTree = page.locator('.vp-code-tree').first()
+    const toggle = codeTree.locator('.vp-code-tree-toggle')
+    const titleBar = codeTree.locator(
+      '.code-block-with-title.active .code-block-title-bar',
+    )
+
+    // The toggle does not take a column of its own
+    await expect(codeTree.locator('.vp-code-tree-actions')).toHaveCount(0)
+
+    // It floats over the left end of the code block title bar, and it has no
+    // border of its own
+    const [treeBox, toggleBox, barBox] = await Promise.all([
+      codeTree.boundingBox(),
+      toggle.boundingBox(),
+      titleBar.boundingBox(),
+    ])
+
+    expect(toggleBox!.x - treeBox!.x).toBeLessThan(2)
+    expect(Math.abs(toggleBox!.y - barBox!.y)).toBeLessThan(2)
+    await expect(toggle).toHaveCSS('border-width', '0px')
+
+    // The title bars leave room for the toggle
+    await expect(titleBar).toHaveCSS('padding-inline-start', '52px')
+  })
+
+  test('hide the toggle on a wide screen', async ({ page }) => {
+    await page.goto('code-tree/')
+
+    const codeTree = page.locator('.vp-code-tree').first()
+
+    // The file tree is always visible, so the toggle is not rendered
+    await expect(codeTree.locator('.vp-file-tree')).toBeVisible()
+    await expect(codeTree.locator('.vp-code-tree-toggle')).toBeHidden()
+    await expect(
+      codeTree.locator('.code-block-with-title.active .code-block-title-bar'),
+    ).toHaveCSS('padding-inline-start', '16px')
+  })
 })
