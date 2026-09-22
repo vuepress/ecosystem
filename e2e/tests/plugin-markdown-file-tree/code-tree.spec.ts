@@ -215,26 +215,27 @@ test.describe('plugin-markdown-file-tree: code tree', () => {
     await expect(titleBar).toHaveCSS('padding-inline-start', '52px')
   })
 
-  test('point the toggle at the file tree', async ({ page }) => {
+  test('switch the toggle icon with the file tree state', async ({ page }) => {
     await page.setViewportSize({ width: 500, height: 800 })
     await page.goto('code-tree/')
 
     const codeTree = page.locator('.vp-code-tree').first()
     const icon = codeTree.locator('.vp-code-tree-toggle-icon')
 
-    // The icon is a plain chevron, so it does not look like a border
-    await expect(icon).toHaveCSS(
-      'mask-image',
-      /file-tree-icon-arrow|data:image/u,
+    // The collapsed state and the expanded state use different icons
+    await expect(icon).toHaveClass(/expand/u)
+    const collapsedMask = await icon.evaluate(
+      (el) => getComputedStyle(el).maskImage,
     )
-    await expect(icon).not.toHaveCSS('mask-image', /rect/u)
-
-    // The arrow points at the file tree, which sits on the start side
-    await expect(icon).toHaveCSS('transform', 'none')
 
     await codeTree.locator('.vp-code-tree-toggle').click()
     await expect(icon).toHaveClass(/collapse/u)
-    await expect(icon).not.toHaveCSS('transform', 'none')
+
+    const expandedMask = await icon.evaluate(
+      (el) => getComputedStyle(el).maskImage,
+    )
+
+    expect(collapsedMask).not.toBe(expandedMask)
   })
 
   test('hide the toggle on a wide screen', async ({ page }) => {

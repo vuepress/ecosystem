@@ -73,33 +73,30 @@
   }
 }
 
-/* The arrow points at the file tree, which sits on the start side */
 .vp-code-tree-toggle-icon {
   display: block;
 
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
 
   background-color: currentcolor;
   color: var(--vp-code-tree-c-text-mute);
 
-  mask: var(--vp-file-tree-icon-arrow) no-repeat;
+  mask: var(--icon) no-repeat;
   mask-size: 100% 100%;
 
-  transition:
-    color var(--vp-t-color),
-    transform var(--vp-t-transform);
+  transition: color var(--vp-t-color);
+
+  &.expand {
+    --icon: var(--vp-code-tree-icon-expand);
+  }
 
   &.collapse {
-    transform: rotate(180deg);
+    --icon: var(--vp-code-tree-icon-collapse);
   }
 
-  [dir='rtl'] &.expand {
-    transform: rotate(180deg);
-  }
-
-  [dir='rtl'] &.collapse {
-    transform: rotate(0);
+  [dir='rtl'] & {
+    transform: scaleX(-1);
   }
 }
 
