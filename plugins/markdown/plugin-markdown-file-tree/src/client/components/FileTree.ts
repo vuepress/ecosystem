@@ -26,21 +26,18 @@ export const FileTree = defineComponent({
 
   slots: Object as SlotsType<{
     default: () => VNode[]
-    title?: () => VNode[]
   }>,
 
   setup(props, { slots }) {
     return (): VNode =>
       h('div', { class: 'vp-file-tree' }, [
-        slots.title
-          ? slots.title()
-          : props.title
-            ? h(
-                'div',
-                { class: 'vp-file-tree-title', title: props.title },
-                props.title,
-              )
-            : null,
+        props.title
+          ? h(
+              'div',
+              { class: 'vp-file-tree-title', title: props.title },
+              props.title,
+            )
+          : null,
         h('div', { class: 'vp-file-tree-content' }, slots.default?.()),
       ])
   },
