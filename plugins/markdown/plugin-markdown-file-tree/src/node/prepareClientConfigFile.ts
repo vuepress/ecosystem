@@ -23,23 +23,23 @@ export const prepareClientConfigFile = (
   // The file tree node is shared by both features
   if (fileTree || codeTree) {
     imports.add(
-      `import { FileTreeNode } from '${CLIENT_FOLDER}components/FileTreeNode.js'`,
+      `import { VPFileTreeNode } from '${CLIENT_FOLDER}components/VPFileTreeNode.js'`,
     )
-    registrations.add(`app.component('FileTreeNode', FileTreeNode)`)
+    registrations.add(`app.component('VPFileTreeNode', VPFileTreeNode)`)
   }
 
   if (fileTree) {
     imports.add(
-      `import { FileTree } from '${CLIENT_FOLDER}components/FileTree.js'`,
+      `import { VPFileTree } from '${CLIENT_FOLDER}components/VPFileTree.js'`,
     )
-    registrations.add(`app.component('FileTree', FileTree)`)
+    registrations.add(`app.component('VPFileTree', VPFileTree)`)
   }
 
   if (codeTree) {
     imports.add(
-      `import { CodeTree } from '${CLIENT_FOLDER}components/CodeTree.js'`,
+      `import { VPCodeTree } from '${CLIENT_FOLDER}components/VPCodeTree.js'`,
     )
-    registrations.add(`app.component('CodeTree', CodeTree)`)
+    registrations.add(`app.component('VPCodeTree', VPCodeTree)`)
   }
 
   return app.writeTemp(

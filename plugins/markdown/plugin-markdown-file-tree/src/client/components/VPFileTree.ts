@@ -9,8 +9,8 @@ import '../styles/fileTree.scss'
  *
  * 文件树的容器
  */
-export const FileTree = defineComponent({
-  name: 'FileTree',
+export const VPFileTree = defineComponent({
+  name: 'VPFileTree',
 
   props: {
     /**

@@ -73,9 +73,9 @@ describe(prepareClientConfigFile, () => {
       fileTree: true,
     })
 
-    expect(content).toContain("app.component('FileTree'")
-    expect(content).toContain("app.component('FileTreeNode'")
-    expect(content).not.toContain('CodeTree')
+    expect(content).toContain("app.component('VPFileTree'")
+    expect(content).toContain("app.component('VPFileTreeNode'")
+    expect(content).not.toContain('VPCodeTree')
   })
 
   it('should register the code tree without the file tree', async () => {
@@ -83,8 +83,8 @@ describe(prepareClientConfigFile, () => {
       codeTree: true,
     })
 
-    expect(content).toContain("app.component('CodeTree'")
-    expect(content).toContain("app.component('FileTreeNode'")
-    expect(content).not.toContain("app.component('FileTree'")
+    expect(content).toContain("app.component('VPCodeTree'")
+    expect(content).toContain("app.component('VPFileTreeNode'")
+    expect(content).not.toContain("app.component('VPFileTree'")
   })
 })

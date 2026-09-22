@@ -19,8 +19,8 @@ import '../styles/fileTree.scss'
  *
  * 文件树的单个节点
  */
-export const FileTreeNode = defineComponent({
-  name: 'FileTreeNode',
+export const VPFileTreeNode = defineComponent({
+  name: 'VPFileTreeNode',
 
   props: {
     /**

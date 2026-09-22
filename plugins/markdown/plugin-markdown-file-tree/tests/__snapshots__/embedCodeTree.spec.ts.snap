@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`embedCodeTree > should embed a directory as code tree 1`] = `
-"<CodeTree height="320px" entry="index.ts"><template #file-tree><FileTreeNode type="file" filename="index.ts" filepath="index.ts" :level="0" icon="vscode-icons:file-type-typescript"></FileTreeNode><FileTreeNode type="file" filename="notes.md" filepath="notes.md" :level="0" icon="vscode-icons:file-type-markdown"></FileTreeNode><FileTreeNode type="file" filename="package.json" filepath="package.json" :level="0" icon="vscode-icons:file-type-npm"></FileTreeNode><FileTreeNode type="folder" filename="src" filepath="src" :level="0" expanded icon="vscode-icons:folder-type-src"><FileTreeNode type="file" filename="App.vue" filepath="src/App.vue" :level="1" icon="vscode-icons:file-type-vue"></FileTreeNode></FileTreeNode><FileTreeNode type="file" filename="utils.ts" filepath="utils.ts" :level="0" icon="vscode-icons:file-type-typescript"></FileTreeNode></template><div class="code-block-with-title">
+"<VPCodeTree height="320px" entry="index.ts"><template #file-tree><VPFileTreeNode type="file" filename="index.ts" filepath="index.ts" :level="0" icon="vscode-icons:file-type-typescript"></VPFileTreeNode><VPFileTreeNode type="file" filename="notes.md" filepath="notes.md" :level="0" icon="vscode-icons:file-type-markdown"></VPFileTreeNode><VPFileTreeNode type="file" filename="package.json" filepath="package.json" :level="0" icon="vscode-icons:file-type-npm"></VPFileTreeNode><VPFileTreeNode type="folder" filename="src" filepath="src" :level="0" expanded icon="vscode-icons:folder-type-src"><VPFileTreeNode type="file" filename="App.vue" filepath="src/App.vue" :level="1" icon="vscode-icons:file-type-vue"></VPFileTreeNode></VPFileTreeNode><VPFileTreeNode type="file" filename="utils.ts" filepath="utils.ts" :level="0" icon="vscode-icons:file-type-typescript"></VPFileTreeNode></template><div class="code-block-with-title">
   <div class="code-block-title-bar" data-title="index.ts">
     <span>index.ts</span>
   </div>
@@ -47,5 +47,5 @@ const a = 1
 
 </code></pre>
 
-</div></CodeTree>"
+</div></VPCodeTree>"
 `;

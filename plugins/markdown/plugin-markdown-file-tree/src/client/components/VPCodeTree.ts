@@ -2,7 +2,7 @@ import type { SlotsType, VNode } from 'vue'
 import { defineComponent, h, onMounted, provide, ref, watch } from 'vue'
 
 import { activeFileKey } from '../utils.js'
-import { FileTree } from './FileTree.js'
+import { VPFileTree } from './VPFileTree.js'
 
 import '../styles/vars.scss'
 import '../styles/codeTree.scss'
@@ -12,8 +12,8 @@ import '../styles/codeTree.scss'
  *
  * 配合文件树展示多个文件的代码块的面板
  */
-export const CodeTree = defineComponent({
-  name: 'CodeTree',
+export const VPCodeTree = defineComponent({
+  name: 'VPCodeTree',
 
   props: {
     /**
@@ -141,7 +141,7 @@ export const CodeTree = defineComponent({
               ])
             : null,
           fileTree
-            ? h(FileTree, { title: props.title }, { default: fileTree })
+            ? h(VPFileTree, { title: props.title }, { default: fileTree })
             : null,
           fileTree
             ? h('div', {

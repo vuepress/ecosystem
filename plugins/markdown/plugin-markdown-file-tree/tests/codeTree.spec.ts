@@ -27,10 +27,10 @@ console.log('main')
     const result = markdownIt.render(content)
 
     expect(result).toContain(
-      '<CodeTree title="Vue App" height="400px" entry="src/main.ts">',
+      '<VPCodeTree title="Vue App" height="400px" entry="src/main.ts">',
     )
     expect(result).toContain('<template #file-tree>')
-    expect(result).toContain('</CodeTree>')
+    expect(result).toContain('</VPCodeTree>')
     expect(result).toMatchSnapshot()
   })
 
@@ -53,19 +53,19 @@ console.log('main')
     const result = markdownIt.render(content)
 
     expect(result).toContain(
-      '<CodeTree height="320px" entry="src/components/HelloWorld.vue">',
+      '<VPCodeTree height="320px" entry="src/components/HelloWorld.vue">',
     )
     expect(result).toContain(
-      '<FileTreeNode type="folder" filename="src" filepath="src" :level="0" expanded icon="vscode-icons:folder-type-src">',
+      '<VPFileTreeNode type="folder" filename="src" filepath="src" :level="0" expanded icon="vscode-icons:folder-type-src">',
     )
     expect(result).toContain(
-      '<FileTreeNode type="file" filename="App.vue" filepath="src/App.vue" :level="1" icon="vscode-icons:file-type-vue">',
+      '<VPFileTreeNode type="file" filename="App.vue" filepath="src/App.vue" :level="1" icon="vscode-icons:file-type-vue">',
     )
     expect(result).toContain(
-      '<FileTreeNode type="file" filename="main.ts" filepath="src/main.ts" :level="1" icon="vscode-icons:file-type-typescript">',
+      '<VPFileTreeNode type="file" filename="main.ts" filepath="src/main.ts" :level="1" icon="vscode-icons:file-type-typescript">',
     )
     expect(result).toContain(
-      '<FileTreeNode type="file" filename="package.json" filepath="package.json" :level="0" icon="vscode-icons:file-type-npm">',
+      '<VPFileTreeNode type="file" filename="package.json" filepath="package.json" :level="0" icon="vscode-icons:file-type-npm">',
     )
   })
 
@@ -81,7 +81,7 @@ console.log('main')
 `
     const result = markdownIt.render(content)
 
-    expect(result).toContain('<CodeTree height="320px" entry="src/utils.ts">')
+    expect(result).toContain('<VPCodeTree height="320px" entry="src/utils.ts">')
   })
 
   it('should fallback to the first file when entry does not exist', () => {
@@ -96,7 +96,7 @@ console.log('main')
 `
     const result = markdownIt.render(content)
 
-    expect(result).toContain('<CodeTree height="320px" entry="src/index.ts">')
+    expect(result).toContain('<VPCodeTree height="320px" entry="src/index.ts">')
   })
 
   it('should ignore code blocks without title', () => {
@@ -112,12 +112,12 @@ const foo = 'foo'
 `
     const result = markdownIt.render(content)
 
-    expect(result).toContain('<CodeTree height="320px" entry="src/index.ts">')
+    expect(result).toContain('<VPCodeTree height="320px" entry="src/index.ts">')
     expect(result).toContain(
-      '<FileTreeNode type="folder" filename="src" filepath="src" :level="0" expanded icon="vscode-icons:folder-type-src">',
+      '<VPFileTreeNode type="folder" filename="src" filepath="src" :level="0" expanded icon="vscode-icons:folder-type-src">',
     )
     // Only the code block with a title is added to the file tree
-    expect(result.match(/<FileTreeNode/gu)).toHaveLength(2)
+    expect(result.match(/<VPFileTreeNode/gu)).toHaveLength(2)
   })
 
   it('should not render file tree when no code block has title', () => {
@@ -130,7 +130,7 @@ const foo = 'foo'
 `
     const result = markdownIt.render(content)
 
-    expect(result).toContain('<CodeTree height="320px">')
+    expect(result).toContain('<VPCodeTree height="320px">')
     expect(result).not.toContain('file-tree')
   })
 
@@ -156,7 +156,7 @@ A nested container.
 `
     const result = markdown.render(content)
 
-    expect(result).toContain('<CodeTree height="320px" entry="src/index.ts">')
+    expect(result).toContain('<VPCodeTree height="320px" entry="src/index.ts">')
     expect(result).toContain('A nested container.')
     expect(result).toContain('filepath="src/index.ts"')
   })
@@ -170,7 +170,7 @@ A nested container.
 `
     const result = markdownIt.render(content)
 
-    expect(result).toContain('<CodeTree title="A &amp; B"')
+    expect(result).toContain('<VPCodeTree title="A &amp; B"')
     expect(result).toContain('filepath="a&amp;b.ts"')
   })
 
@@ -203,7 +203,7 @@ A nested container.
     const result = markdownIt.render(content)
 
     // Keep it in sync with the rendered code block title
-    expect(result).toContain('<CodeTree height="320px" entry="src/index.ts">')
+    expect(result).toContain('<VPCodeTree height="320px" entry="src/index.ts">')
     expect(result).toContain('filepath="src/index.ts"')
     expect(result).toContain('icon="vscode-icons:file-type-typescript"')
   })
@@ -235,14 +235,14 @@ export const foo = 'foo'
     // The wrapper is a direct child of the code tree, which is required by the
     // styles that hide the inactive code blocks
     expect(result).toMatch(
-      /<CodeTree[^>]*>(?:<template #file-tree>.*?<\/template>)?<div class="code-block-with-title">/su,
+      /<VPCodeTree[^>]*>(?:<template #file-tree>.*?<\/template>)?<div class="code-block-with-title">/su,
     )
-    expect(result).toContain('</CodeTree>')
+    expect(result).toContain('</VPCodeTree>')
   })
 
   it('should not affect other containers', () => {
     const result = markdownIt.render('::: file-tree\n- src\n:::\n')
 
-    expect(result).not.toContain('<CodeTree')
+    expect(result).not.toContain('<VPCodeTree')
   })
 })

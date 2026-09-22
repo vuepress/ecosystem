@@ -105,7 +105,7 @@ export const fileTree: PluginSimple = (md) => {
               ? `${indent}  ${renderNodes(children).trimStart()}`
               : ''
 
-          return `${indent}<FileTreeNode ${propsRendered}>${commentRendered}${childrenRendered}${indent}</FileTreeNode>`
+          return `${indent}<VPFileTreeNode ${propsRendered}>${commentRendered}${childrenRendered}${indent}</VPFileTreeNode>`
         },
       )
       .join('')
@@ -118,6 +118,6 @@ export const fileTree: PluginSimple = (md) => {
     const meta = token.meta as { title: string }
     const nodes = parseFileTreeContent(token.content)
 
-    return `<FileTree${meta.title ? ` title="${escapeAttr(meta.title)}"` : ''}>${renderNodes(nodes)}</FileTree>`
+    return `<VPFileTree${meta.title ? ` title="${escapeAttr(meta.title)}"` : ''}>${renderNodes(nodes)}</VPFileTree>`
   }
 }

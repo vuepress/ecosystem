@@ -103,6 +103,6 @@ export const codeTree = (
   container(md, {
     name: 'code-tree',
     openRenderer,
-    closeRenderer: () => '</CodeTree>',
+    closeRenderer: () => '</VPCodeTree>',
   })
 }

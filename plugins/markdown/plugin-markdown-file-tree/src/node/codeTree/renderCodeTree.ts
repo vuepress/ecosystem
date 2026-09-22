@@ -69,9 +69,9 @@ export const buildFileTree = (files: string[]): CodeTreeFileTreeNode[] => {
 }
 
 /**
- * Render file tree nodes to `FileTreeNode` component tags
+ * Render file tree nodes to `VPFileTreeNode` component tags
  *
- * 将文件树节点渲染为 `FileTreeNode` 组件标签
+ * 将文件树节点渲染为 `VPFileTreeNode` 组件标签
  *
  * @param nodes - File tree nodes / 文件树节点
  * @param level - Nesting level of the nodes / 节点的嵌套层级
@@ -88,7 +88,7 @@ export const renderFileTree = (
       // Folders of a code tree are expanded by default
       const expanded = type === 'folder' ? ' expanded' : ''
 
-      return `<FileTreeNode type="${type}" filename="${escapeAttr(filename)}" filepath="${escapeAttr(path)}" :level="${level}"${expanded} icon="${escapeAttr(getFileIcon(path, type))}">${renderFileTree(children, level + 1)}</FileTreeNode>`
+      return `<VPFileTreeNode type="${type}" filename="${escapeAttr(filename)}" filepath="${escapeAttr(path)}" :level="${level}"${expanded} icon="${escapeAttr(getFileIcon(path, type))}">${renderFileTree(children, level + 1)}</VPFileTreeNode>`
     })
     .join('')
 
@@ -183,7 +183,7 @@ export const renderCodeTree = ({
   // Fallback to the first code block when the expected entry does not exist
   const active = entry && files.includes(entry) ? entry : (files[0] ?? '')
 
-  return `<CodeTree${renderAttrs({
+  return `<VPCodeTree${renderAttrs({
     title,
     height: normalizeHeight(height) ?? '',
     entry: active,
@@ -191,7 +191,7 @@ export const renderCodeTree = ({
     fileTree.length
       ? `<template #file-tree>${renderFileTree(fileTree)}</template>`
       : ''
-  }${content}${autoClose ? '</CodeTree>' : ''}`
+  }${content}${autoClose ? '</VPCodeTree>' : ''}`
 }
 
 /**

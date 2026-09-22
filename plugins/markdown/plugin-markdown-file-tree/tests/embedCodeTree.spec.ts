@@ -147,7 +147,7 @@ describe(embedCodeTree, () => {
     const env = createEnv('index.md')
     const result = md.render('@[code-tree](embed)\n', env)
 
-    expect(result).toContain('<CodeTree height="320px" entry="index.ts">')
+    expect(result).toContain('<VPCodeTree height="320px" entry="index.ts">')
     expect(result).toContain('data-title="index.ts"')
     expect(result).toContain("export * from './utils.js'")
     expect(result).toMatchSnapshot()
@@ -158,16 +158,16 @@ describe(embedCodeTree, () => {
     const env = createEnv('index.md')
     const result = md.render('@[code-tree](embed)\n', env)
 
-    expect(result).toContain('<FileTreeNode type="file" filename="index.ts"')
+    expect(result).toContain('<VPFileTreeNode type="file" filename="index.ts"')
     expect(result).toContain(
-      '<FileTreeNode type="file" filename="package.json"',
+      '<VPFileTreeNode type="file" filename="package.json"',
     )
-    expect(result).toContain('<FileTreeNode type="file" filename="utils.ts"')
+    expect(result).toContain('<VPFileTreeNode type="file" filename="utils.ts"')
     expect(result).toContain(
-      '<FileTreeNode type="folder" filename="src" filepath="src" :level="0" expanded icon="vscode-icons:folder-type-src">',
+      '<VPFileTreeNode type="folder" filename="src" filepath="src" :level="0" expanded icon="vscode-icons:folder-type-src">',
     )
     expect(result).toContain(
-      '<FileTreeNode type="file" filename="App.vue" filepath="src/App.vue" :level="1" icon="vscode-icons:file-type-vue">',
+      '<VPFileTreeNode type="file" filename="App.vue" filepath="src/App.vue" :level="1" icon="vscode-icons:file-type-vue">',
     )
   })
 
@@ -184,7 +184,7 @@ describe(embedCodeTree, () => {
     const env = createEnv('index.md')
     const result = md.render('@[code-tree entry="notes.md"](embed)\n', env)
 
-    expect(result).toContain('<CodeTree height="320px" entry="notes.md">')
+    expect(result).toContain('<VPCodeTree height="320px" entry="notes.md">')
     expect(result).toContain('data-title="notes.md"')
     // The fenced block inside the file does not close the generated code block,
     // so its content is kept as a whole
@@ -202,7 +202,7 @@ describe(embedCodeTree, () => {
     )
 
     expect(result).toContain(
-      '<CodeTree title="Vue App" height="400px" entry="utils.ts">',
+      '<VPCodeTree title="Vue App" height="400px" entry="utils.ts">',
     )
   })
 
@@ -241,9 +241,9 @@ describe(embedCodeTree, () => {
     const env = createEnv('index.md')
 
     expect(md.render('@[code-tree](not-exist)\n', env)).not.toContain(
-      '<CodeTree',
+      '<VPCodeTree',
     )
-    expect(md.render('@[code-tree]()\n', env)).not.toContain('<CodeTree')
+    expect(md.render('@[code-tree]()\n', env)).not.toContain('<VPCodeTree')
 
     warn.mockRestore()
   })
@@ -253,7 +253,7 @@ describe(embedCodeTree, () => {
     const env = createEnv('index.md')
 
     expect(md.render('@[code-tree](../../embed)\n', env)).not.toContain(
-      '<CodeTree',
+      '<VPCodeTree',
     )
   })
 
@@ -262,7 +262,7 @@ describe(embedCodeTree, () => {
     const env = createEnv('index.md')
     const result = md.render('@[code-tree-foo](embed)\n', env)
 
-    expect(result).not.toContain('<CodeTree')
+    expect(result).not.toContain('<VPCodeTree')
   })
 
   it('should reject a directory outside of the source directory', () => {
@@ -276,7 +276,7 @@ describe(embedCodeTree, () => {
       String.raw`../..\..\embed`,
     ]) {
       expect(md.render(`@[code-tree](${dir})\n`, env)).not.toContain(
-        '<CodeTree',
+        '<VPCodeTree',
       )
     }
   })
@@ -286,7 +286,7 @@ describe(embedCodeTree, () => {
     const env = createEnv('index.md')
     const result = md.render('@[code-tree](embed/index.ts)\n', env)
 
-    expect(result).not.toContain('<CodeTree')
+    expect(result).not.toContain('<VPCodeTree')
   })
 
   it('should reject a symbolic link pointing outside of the source directory', () => {
@@ -308,7 +308,9 @@ describe(embedCodeTree, () => {
       const md = createMarkdown(source)
       const env = createEnv('index.md', source)
 
-      expect(md.render('@[code-tree](link)\n', env)).not.toContain('<CodeTree')
+      expect(md.render('@[code-tree](link)\n', env)).not.toContain(
+        '<VPCodeTree',
+      )
     } finally {
       removeTempSource(outside)
       removeTempSource(source)
@@ -545,7 +547,7 @@ describe(embedCodeTree, () => {
       const md = createMarkdown(source)
       const env = createEnv('index.md', source)
 
-      expect(md.render('@[code-tree](.)\n', env)).not.toContain('<CodeTree')
+      expect(md.render('@[code-tree](.)\n', env)).not.toContain('<VPCodeTree')
     } finally {
       removeTempSource(source)
       warn.mockRestore()

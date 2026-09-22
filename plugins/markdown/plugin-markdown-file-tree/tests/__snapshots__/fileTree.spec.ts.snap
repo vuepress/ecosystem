@@ -1,62 +1,62 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`fileTree > should handle comments 1`] = `
-"<FileTree>
-  <FileTreeNode type="file" filename="file.js " :level="0">
+"<VPFileTree>
+  <VPFileTreeNode type="file" filename="file.js " :level="0">
     <template #comment># This is a comment</template>
-  </FileTreeNode></FileTree>"
+  </VPFileTreeNode></VPFileTree>"
 `;
 
 exports[`fileTree > should handle diff 1`] = `
-"<FileTree>
-  <FileTreeNode type="file" filename="added.js" :level="0" diff="add">
-  </FileTreeNode>
-  <FileTreeNode type="file" filename="removed.js" :level="0" diff="remove">
-  </FileTreeNode></FileTree>"
+"<VPFileTree>
+  <VPFileTreeNode type="file" filename="added.js" :level="0" diff="add">
+  </VPFileTreeNode>
+  <VPFileTreeNode type="file" filename="removed.js" :level="0" diff="remove">
+  </VPFileTreeNode></VPFileTree>"
 `;
 
 exports[`fileTree > should handle empty folder with ellipsis 1`] = `
-"<FileTree>
-  <FileTreeNode type="folder" filename="empty-folder" :level="0" empty>
-    <FileTreeNode type="file" filename="…" :level="1">
-    </FileTreeNode>
-  </FileTreeNode></FileTree>"
+"<VPFileTree>
+  <VPFileTreeNode type="folder" filename="empty-folder" :level="0" empty>
+    <VPFileTreeNode type="file" filename="…" :level="1">
+    </VPFileTreeNode>
+  </VPFileTreeNode></VPFileTree>"
 `;
 
 exports[`fileTree > should handle focus 1`] = `
-"<FileTree>
-  <FileTreeNode type="file" filename="file.js" :level="0" focus>
-  </FileTreeNode></FileTree>"
+"<VPFileTree>
+  <VPFileTreeNode type="file" filename="file.js" :level="0" focus>
+  </VPFileTreeNode></VPFileTree>"
 `;
 
 exports[`fileTree > should render basic file tree 1`] = `
-"<FileTree>
-  <FileTreeNode type="file" filename="file1.js" :level="0">
-  </FileTreeNode>
-  <FileTreeNode type="file" filename="file2.ts" :level="0">
-  </FileTreeNode></FileTree>"
+"<VPFileTree>
+  <VPFileTreeNode type="file" filename="file1.js" :level="0">
+  </VPFileTreeNode>
+  <VPFileTreeNode type="file" filename="file2.ts" :level="0">
+  </VPFileTreeNode></VPFileTree>"
 `;
 
 exports[`fileTree > should render expanded folder 1`] = `
-"<FileTree>
-  <FileTreeNode type="folder" filename="folder" :level="0" expanded>
-    <FileTreeNode type="file" filename="file.js" :level="1">
-    </FileTreeNode>
-  </FileTreeNode></FileTree>"
+"<VPFileTree>
+  <VPFileTreeNode type="folder" filename="folder" :level="0" expanded>
+    <VPFileTreeNode type="file" filename="file.js" :level="1">
+    </VPFileTreeNode>
+  </VPFileTreeNode></VPFileTree>"
 `;
 
 exports[`fileTree > should render nested structure 1`] = `
-"<FileTree>
-  <FileTreeNode type="folder" filename="folder" :level="0">
-    <FileTreeNode type="file" filename="file1.js" :level="1">
-    </FileTreeNode>
-  </FileTreeNode>
-  <FileTreeNode type="file" filename="file2.ts" :level="0">
-  </FileTreeNode></FileTree>"
+"<VPFileTree>
+  <VPFileTreeNode type="folder" filename="folder" :level="0">
+    <VPFileTreeNode type="file" filename="file1.js" :level="1">
+    </VPFileTreeNode>
+  </VPFileTreeNode>
+  <VPFileTreeNode type="file" filename="file2.ts" :level="0">
+  </VPFileTreeNode></VPFileTree>"
 `;
 
 exports[`fileTree > should render with title 1`] = `
-"<FileTree title="My Project">
-  <FileTreeNode type="file" filename="file.txt" :level="0">
-  </FileTreeNode></FileTree>"
+"<VPFileTree title="My Project">
+  <VPFileTreeNode type="file" filename="file.txt" :level="0">
+  </VPFileTreeNode></VPFileTree>"
 `;

@@ -2,7 +2,7 @@ import { tsdownConfig } from '../../../scripts/tsdown.ts'
 
 export default tsdownConfig([
   'node/index',
-  'client/components/CodeTree',
-  'client/components/FileTree',
-  'client/components/FileTreeNode',
+  'client/components/VPCodeTree',
+  'client/components/VPFileTree',
+  'client/components/VPFileTreeNode',
 ])
