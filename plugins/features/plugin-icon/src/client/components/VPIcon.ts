@@ -56,10 +56,10 @@ export const VPIcon = defineComponent({
      *
      * 图标尺寸
      *
-     * @default 'height' in main content, and 'both' in others
+     * @default 'height'
      */
     sizing: {
-      type: String as PropType<'both' | 'height' | 'width' | undefined>,
+      type: String as PropType<'both' | 'height' | undefined>,
       default: 'height',
     },
   },
@@ -91,8 +91,17 @@ export const VPIcon = defineComponent({
       if (verticalAlign) styleObject['--icon-vertical-align'] = verticalAlign
 
       if (type === 'iconify') {
-        if (sizing !== 'height') attrsObject.width = props.size || '1em'
-        if (sizing !== 'width') attrsObject.height = props.size || '1em'
+        if (sizing === 'both') attrsObject.width = props.size || '1em'
+
+        attrsObject.height = props.size || '1em'
+      }
+
+      // FontAwesome renders icons on a 1.25em wide canvas and centers the glyph
+      // inside it, the box must be widened to hold the whole canvas.
+      // images and other icon types use the square 1em box
+      if (!imageLink.value && type === 'fontawesome' && sizing === 'both') {
+        styleObject['--icon-width'] = '1.25em'
+        styleObject['--fa-width'] = '1.25em'
       }
 
       if (keys(styleObject).length > 0) attrsObject.style = styleObject
@@ -101,7 +110,7 @@ export const VPIcon = defineComponent({
     })
 
     return (): VNode | null => {
-      const { type, icon, prefix = '', sizing } = props
+      const { type, icon, prefix = '' } = props
 
       if (!icon) return null
 
@@ -142,7 +151,6 @@ export const VPIcon = defineComponent({
             ...rest
               .split(' ')
               .map((iconName) => appendFontawesomePrefix(iconName)),
-            sizing === 'height' ? '' : 'fa-fw',
           ],
           ...attrs.value,
         })

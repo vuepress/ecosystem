@@ -78,7 +78,7 @@ If you use 1 icon set mostly, you can set the prefix to the icon set name (E.g.:
 
 ### Font Awesome
 
-For free icon list, see <https://fontawesome.com/v6/search?o=r&m=free>. To use a icon, copy it's icon name in the selector.
+For free icon list, see <https://fontawesome.com/search?ic=free>. To use a icon, copy it's icon name in the selector.
 
 The `fontawesome` keyword only includes the free solid and regular icons. If you want to use the brand icons, you need to use the `fontawesome-with-brands` keyword.
 
@@ -121,9 +121,74 @@ You can add other classes that fontawesome supports after the icon name and spli
 
 See <https://docs.fontawesome.com/web/style/styling> for all available classes.
 
+#### Offline Usage
+
+By default, icons are loaded from the jsdelivr CDN. To bundle them locally instead, set the `fontawesome` option.
+
+The icons are provided by the `@fortawesome` packages, which need to be installed as dev dependencies. `@fortawesome/fontawesome-svg-core` is always required, and each icon style needs its own package:
+
+| Style     | Package                               |
+| --------- | ------------------------------------- |
+| `solid`   | `@fortawesome/free-solid-svg-icons`   |
+| `regular` | `@fortawesome/free-regular-svg-icons` |
+| `brands`  | `@fortawesome/free-brands-svg-icons`  |
+
+Bundling the icons used by your pages only needs the packages of the styles you use:
+
+```bash
+# solid and brands icons are used, regular is not needed
+npm i -D @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/free-brands-svg-icons
+```
+
+Then the icons used by your pages are bundled automatically:
+
+```ts title=".vuepress/config.ts"
+export default {
+  plugins: [
+    iconPlugin({
+      fontawesome: true,
+    }),
+  ],
+}
+```
+
+Icons that cannot be detected from the page content, e.g. icons used by a theme config or a component, need to be returned by a scanner:
+
+```ts
+iconPlugin({
+  // the icons are given in the same syntax as in markdown
+  fontawesome: (app) => ['brands:apple', 'solid:house'],
+})
+```
+
+Bundling every free icon needs all three style packages, as each style is imported as a whole:
+
+```bash
+npm i -D @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-brands-svg-icons
+```
+
+```ts
+iconPlugin({ fontawesome: 'all' })
+```
+
+The icons are detected in the same way as they are rendered, so the classes that an icon may contain can be written in any order:
+
+```md
+::house fa-sm:: <!-- the icon name comes first -->
+::fa-sm fa-house:: <!-- the classes come first -->
+```
+
+A missing package stops the build with the packages to install, and the icons that are skipped are reported with a warning.
+
+::: warning
+
+The offline mode only supports the FontAwesome free icons, so the icon type is fixed to `fontawesome`: the `assets` option is ignored and icons of other types, like `::mdi:home::`, iconfont and images, no longer render.
+
+:::
+
 ::: tip FontAwesome Kits and Pro features
 
-By default, we use jsdelivr CDN to load V6 version of FontAwesome free icons. This should be enough for most open source projects.
+By default, we use jsdelivr CDN to load V7 version of FontAwesome free icons. This should be enough for most open source projects.
 
 Besides, you can purchase at [fontawesome.com](https://fontawesome.com) to use kits.
 
@@ -266,6 +331,40 @@ Images links are supported with any icon types (relative links are NOT supported
 - Default: `true`
 - Details: Whether to enable icon syntax (`::icon::`) in markdown
 
+### fontawesome
+
+- Type: `boolean | "all" | FontAwesomeScanner`
+- Default: `false`
+- Details:
+
+  Bundle FontAwesome icons locally instead of loading them from a CDN, so the site works without internet access. See [Offline Usage](#offline-usage) for the packages to install.
+
+  - `true`: bundle the icons used by the site, which are detected from the rendered page content.
+  - `"all"`: bundle every FontAwesome free icon.
+  - Function: a scanner returning the icons that cannot be detected, e.g. icons used by a theme config or a component. It receives the VuePress app and returns icons in the same syntax as in markdown, e.g. `house`, `solid:house`, `fa-solid fa-house` or `brands:apple`, the style falls back to `solid` when it is not given:
+
+  ```ts
+  export type FontAwesomeScanner = (app: App) => string[] | Promise<string[]>
+  ```
+
+  ```ts title=".vuepress/config.ts"
+  export default {
+    plugins: [
+      iconPlugin({
+        fontawesome: true,
+      }),
+    ],
+  }
+  ```
+
+  Icons are detected when the site is prepared, so adding an icon requires restarting the dev server.
+
+  ::: tip
+
+  Bundling every icon adds about 1.8 MB to the client bundle.
+
+  :::
+
 ## Component Props
 
 ### icon {#icon-prop}
@@ -294,9 +393,15 @@ Images links are supported with any icon types (relative links are NOT supported
 
 ### sizing
 
-- Type: `"width" | "height" | "both"`
+- Type: `"height" | "both"`
 - Default: `"height"`
-- Details: Icon size adjustment method.
-  - `width`: Set width only
-  - `height`: Set height only
-  - `both`: Set width and height
+- Details:
+
+  How the icon is constrained:
+
+  - `height`: Constrain the height only, the width follows the icon ratio.
+  - `both`: Constrain the width and the height, the icon is scaled proportionally to fill the box without distortion.
+
+  FontAwesome renders every icon on a `1.25em × 1em` canvas (`20px × 16px` with the default `16px` font size) and centers the glyph inside it, so wide icons are never squeezed. That is exactly what `sizing="both"` does, which keeps FontAwesome icons aligned in lists, sidebars and toolbars.
+
+  Other icon types use a square `1em × 1em` canvas.

@@ -46,11 +46,11 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
-    "magic-string": "^1.2.3",
-    "unplugin": "^3.3.0"
+    "magic-string": "^1.4.1",
+    "unplugin": "^3.4.0"
   },
   "devDependencies": {
-    "webpack": "^5.110.3"
+    "webpack": "^5.111.1"
   },
   "peerDependencies": {
     "vuepress": "catalog:"

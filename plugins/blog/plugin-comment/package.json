@@ -69,7 +69,7 @@
   "peerDependencies": {
     "@waline/client": "^3.13.0",
     "artalk": "^2.9.1",
-    "twikoo": "^1.7.2",
+    "twikoo": "^1.7.2 || ^2.0.0",
     "vuepress": "catalog:"
   },
   "peerDependenciesMeta": {

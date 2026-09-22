@@ -2,9 +2,8 @@ import { readdirSync, statSync } from 'node:fs'
 import path from 'node:path'
 
 import { defineConfig } from 'vitest/config'
-import { getDirname } from 'vuepress/utils'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 const getSubDirectories = (dir: string): string[] =>
   readdirSync(dir).filter((item) =>

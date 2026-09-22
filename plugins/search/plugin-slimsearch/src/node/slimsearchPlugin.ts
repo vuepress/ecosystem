@@ -67,7 +67,6 @@ export const slimsearchPlugin =
         addViteSsrNoExternal(bundlerOptions, app, [
           '@vuepress/helper',
           'fflate',
-          'vuepress-shared',
         ])
       },
 

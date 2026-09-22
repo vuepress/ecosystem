@@ -79,7 +79,7 @@ describe('createIndex and serializeIndex', () => {
     expect(results[0].title).toBe('VuePress plugin')
   })
 
-  it('should roundtrip through gzip encoding', async () => {
+  it('should roundtrip through encoded index', async () => {
     const index = createIndex('en')
     const { insertMultiple } = await import('@orama/orama')
 

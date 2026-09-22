@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
 import {
   getPackageManager,
@@ -8,7 +8,7 @@ import {
   isPackageManagerInstalled,
 } from '../../src/node/utils/packageManager.js'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 const fixtures = path.resolve(__dirname, '../__fixtures__/package-manager')
 

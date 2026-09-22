@@ -3,13 +3,13 @@ import { getFullLocaleConfig } from '@vuepress/helper'
 import { watch } from 'chokidar'
 import type { Page, Plugin } from 'vuepress/core'
 import type { LocaleConfig } from 'vuepress/shared'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
 import type { SearchPluginLocaleData } from '../shared/index.js'
 import { searchLocaleInfo } from './locales.js'
 import { prepareSearchIndex } from './prepareSearchIndex.js'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 /**
  * Options for `@vuepress/plugin-search`

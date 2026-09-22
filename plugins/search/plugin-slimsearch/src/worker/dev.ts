@@ -1,10 +1,11 @@
+import { decodeData } from '@vuepress/helper/shared'
 import { loadIndex } from 'slimsearch'
 import type { IndexObject } from 'slimsearch'
 
 import database from '@temp/slimsearch/index.js'
 import { sortStrategy } from '@temp/slimsearch/worker-options.js'
 
-import { decodeJSON, INDEX_FIELD_CONFIG } from '../shared/index.js'
+import { INDEX_FIELD_CONFIG } from '../shared/index.js'
 import type { IndexItem, WorkerMessageData } from '../shared/index.js'
 import { getSearchResults, getSuggestions } from './utils/index.js'
 
@@ -26,7 +27,7 @@ globalThis.onmessage = async ({
   const { default: encoded } = await loadLocaleIndex()
 
   const searchLocaleIndex = loadIndex<string, IndexItem, IndexItem>(
-    decodeJSON<IndexObject<IndexItem>>(encoded),
+    JSON.parse(decodeData(encoded)) as IndexObject<IndexItem>,
     INDEX_FIELD_CONFIG,
   )
 

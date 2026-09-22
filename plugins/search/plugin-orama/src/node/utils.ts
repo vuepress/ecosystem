@@ -1,7 +1,7 @@
 import { Logger, ensureEndingSlash } from '@vuepress/helper'
-import { getDirname, path } from 'vuepress/utils'
+import { path } from 'vuepress/utils'
 
-const __dirname = import.meta.dirname || getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 export const PLUGIN_NAME = '@vuepress/plugin-orama'
 

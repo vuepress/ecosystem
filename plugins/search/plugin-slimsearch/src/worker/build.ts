@@ -1,8 +1,8 @@
-import { entries, fromEntries } from '@vuepress/helper/client'
+import { decodeData, entries, fromEntries } from '@vuepress/helper/shared'
 import type { IndexObject } from 'slimsearch'
 import { loadIndex } from 'slimsearch'
 
-import { decodeJSON, INDEX_FIELD_CONFIG } from '../shared/index.js'
+import { INDEX_FIELD_CONFIG } from '../shared/index.js'
 import type {
   IndexItem,
   SearchIndexStore,
@@ -19,7 +19,7 @@ const searchIndex: SearchIndexStore = fromEntries(
     ([localePath, encoded]) => [
       localePath,
       loadIndex<string, IndexItem, IndexItem>(
-        decodeJSON<IndexObject<IndexItem>>(encoded),
+        JSON.parse(decodeData(encoded)) as IndexObject<IndexItem>,
         INDEX_FIELD_CONFIG,
       ),
     ],

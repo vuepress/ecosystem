@@ -1,6 +1,6 @@
 import { create, load, save } from '@orama/orama'
 import type { RawData, Tokenizer } from '@orama/orama'
-import { gunzipSync, gzipSync } from 'fflate/browser'
+import { decodeData, encodeData } from '@vuepress/helper/shared'
 
 import { SCHEMA } from './data.js'
 import type { SearchIndex } from './data.js'
@@ -81,39 +81,22 @@ export const serializeIndex = (index: SearchIndex): SerializedIndex => ({
   data: save(index),
 })
 
-const toBase64 = (bytes: Uint8Array): string => {
-  let binary = ''
-
-  for (const byte of bytes) binary += String.fromCharCode(byte)
-
-  return btoa(binary)
-}
-
-const fromBase64 = (encoded: string): Uint8Array => {
-  const binary = atob(encoded)
-
-  return Uint8Array.from(binary, (char) => char.charCodeAt(0))
-}
-
 /**
- * Encode a live Orama index into a base64 string by gzipping its serialized
+ * Encode a live Orama index into a base64 string by compressing its serialized
  * JSON representation.
  *
  * The base64 string can be embedded in temp files or in the production worker
  * and decoded later with `decodeIndex`.
  *
- * 将实时的 Orama 索引通过 gzip 压缩其序列化的 JSON 表示，并编码为 base64 字符串。
+ * 将实时的 Orama 索引压缩其序列化的 JSON 表示，并编码为 base64 字符串。
  *
  * 该 base64 字符串可嵌入临时文件或生产环境中的 Worker，后续可通过 `decodeIndex` 解码。
  *
  * @param index - Live Orama index 实时的 Orama 索引
  * @returns Base64-encoded index 编码后的 base64 索引
  */
-export const encodeIndex = (index: SearchIndex): string => {
-  const bytes = new TextEncoder().encode(JSON.stringify(serializeIndex(index)))
-
-  return toBase64(gzipSync(bytes))
-}
+export const encodeIndex = (index: SearchIndex): string =>
+  encodeData(JSON.stringify(serializeIndex(index)))
 
 /**
  * Decode a base64 string produced by `encodeIndex` back into a live Orama
@@ -125,8 +108,7 @@ export const encodeIndex = (index: SearchIndex): string => {
  * @returns Restored Orama index 还原后的 Orama 索引
  */
 export const decodeIndex = (encoded: string): SearchIndex => {
-  const json = new TextDecoder().decode(gunzipSync(fromBase64(encoded)))
-  const { lang, data } = JSON.parse(json) as SerializedIndex
+  const { lang, data } = JSON.parse(decodeData(encoded)) as SerializedIndex
 
   return createIndex(lang, data)
 }
