@@ -14,7 +14,7 @@ describe(fileTree, () => {
 :::
 `
     const result = markdownIt.render(content)
-    expect(result).toContain('<div class="vp-file-tree">')
+    expect(result).toContain('<FileTree>')
     expect(result).toContain('filename="file1.js"')
     expect(result).toContain('filename="file2.ts"')
     expect(result).toContain('type="file"')
@@ -57,7 +57,7 @@ describe(fileTree, () => {
 :::
 `
     const result = markdownIt.render(content)
-    expect(result).toContain('<div class="file-tree-title">My Project</div>')
+    expect(result).toContain('<FileTree title="My Project">')
     expect(result).toMatchSnapshot()
   })
 

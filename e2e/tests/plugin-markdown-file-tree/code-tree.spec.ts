@@ -1,13 +1,13 @@
 import { expect, test } from '@playwright/test'
 
-test.describe('plugin-markdown-code-tree', () => {
+test.describe('plugin-markdown-file-tree: code tree', () => {
   test('render code tree', async ({ page }) => {
     await page.goto('code-tree/')
 
     const codeTree = page.locator('.vp-code-tree').first()
 
-    await expect(codeTree.locator('.vp-code-tree-title')).toHaveText('Vue App')
-    await expect(codeTree.locator('.vp-code-tree-node-name')).toHaveText([
+    await expect(codeTree.locator('.vp-file-tree-title')).toHaveText('Vue App')
+    await expect(codeTree.locator('.vp-file-tree-name')).toHaveText([
       'src',
       'components',
       'HelloWorld.vue',
@@ -18,9 +18,7 @@ test.describe('plugin-markdown-code-tree', () => {
 
     // The entry file is opened by default
     await expect(
-      codeTree.locator(
-        '.vp-code-tree-node-info.active .vp-code-tree-node-name',
-      ),
+      codeTree.locator('.vp-file-tree-info.active .vp-file-tree-name'),
     ).toHaveText('main.ts')
 
     // Only the code block of the active file is displayed
@@ -43,13 +41,11 @@ test.describe('plugin-markdown-code-tree', () => {
     const codeTree = page.locator('.vp-code-tree').first()
 
     await codeTree
-      .locator('.vp-code-tree-node-name', { hasText: /^HelloWorld\.vue$/u })
+      .locator('.vp-file-tree-name', { hasText: /^HelloWorld\.vue$/u })
       .click()
 
     await expect(
-      codeTree.locator(
-        '.vp-code-tree-node-info.active .vp-code-tree-node-name',
-      ),
+      codeTree.locator('.vp-file-tree-info.active .vp-file-tree-name'),
     ).toHaveText('HelloWorld.vue')
     await expect(
       codeTree.locator(
@@ -62,15 +58,15 @@ test.describe('plugin-markdown-code-tree', () => {
     await page.goto('code-tree/')
 
     const codeTree = page.locator('.vp-code-tree').first()
-    const group = codeTree.locator('.vp-code-tree-node-group').first()
+    const group = codeTree.locator('.vp-file-tree-group').first()
 
     await expect(group).toHaveCSS('display', 'block')
 
-    await codeTree.locator('.vp-code-tree-node-info.folder').first().click()
+    await codeTree.locator('.vp-file-tree-info.folder').first().click()
 
     await expect(group).toHaveCSS('display', 'none')
 
-    await codeTree.locator('.vp-code-tree-node-info.folder').first().click()
+    await codeTree.locator('.vp-file-tree-info.folder').first().click()
 
     await expect(group).toHaveCSS('display', 'block')
   })
@@ -84,16 +80,16 @@ test.describe('plugin-markdown-code-tree', () => {
     // since `@vuepress/plugin-icon` is not enabled in the e2e site.
     await expect(
       codeTree.locator(
-        '.vp-code-tree-node-info.folder > .vp-code-tree-node-icon > .vp-code-tree-node-icon-fallback-folder',
+        '.vp-file-tree-info.folder > .vp-file-tree-icon-fallback.folder',
       ),
     ).toHaveCount(2)
     await expect(
       codeTree.locator(
-        '.vp-code-tree-node-info.file > .vp-code-tree-node-icon > .vp-code-tree-node-icon-fallback-file',
+        '.vp-file-tree-info.file > .vp-file-tree-icon-fallback.file',
       ),
     ).toHaveCount(4)
     await expect(
-      codeTree.locator('.vp-code-tree-node-info .vp-code-tree-node-icon'),
+      codeTree.locator('.vp-file-tree-info .vp-file-tree-icon-fallback'),
     ).toHaveCount(6)
   })
 
@@ -103,9 +99,7 @@ test.describe('plugin-markdown-code-tree', () => {
     const codeTree = page.locator('.vp-code-tree').nth(1)
 
     await expect(
-      codeTree.locator(
-        '.vp-code-tree-node-info.active .vp-code-tree-node-name',
-      ),
+      codeTree.locator('.vp-file-tree-info.active .vp-file-tree-name'),
     ).toHaveText('index.ts')
     await expect(
       codeTree.locator(
@@ -119,7 +113,7 @@ test.describe('plugin-markdown-code-tree', () => {
 
     const codeTree = page.locator('.vp-code-tree').nth(2)
 
-    await expect(codeTree.locator('.vp-code-tree-node-name')).toHaveText([
+    await expect(codeTree.locator('.vp-file-tree-name')).toHaveText([
       'untitled.ts',
     ])
     await expect(
@@ -139,8 +133,8 @@ test.describe('plugin-markdown-code-tree', () => {
 
     const codeTree = page.locator('.vp-code-tree').nth(3)
 
-    await expect(codeTree.locator('.vp-code-tree-title')).toHaveText('Snippet')
-    await expect(codeTree.locator('.vp-code-tree-node-name')).toHaveText([
+    await expect(codeTree.locator('.vp-file-tree-title')).toHaveText('Snippet')
+    await expect(codeTree.locator('.vp-file-tree-name')).toHaveText([
       'a.ts',
       'b.ts',
       'package.json',
@@ -148,9 +142,7 @@ test.describe('plugin-markdown-code-tree', () => {
 
     // The entry file declared by the attribute is opened by default
     await expect(
-      codeTree.locator(
-        '.vp-code-tree-node-info.active .vp-code-tree-node-name',
-      ),
+      codeTree.locator('.vp-file-tree-info.active .vp-file-tree-name'),
     ).toHaveText('b.ts')
     await expect(
       codeTree.locator(
@@ -160,9 +152,29 @@ test.describe('plugin-markdown-code-tree', () => {
 
     // The icon of every node is resolved from its file name
     await expect(
-      codeTree.locator(
-        '.vp-code-tree-node-icon-fallback-file, .vp-code-tree-node-icon iconify-icon',
-      ),
+      codeTree.locator('.vp-file-tree-icon-fallback.file'),
     ).toHaveCount(3)
+  })
+
+  test('collapse the file tree on a small screen', async ({ page }) => {
+    await page.setViewportSize({ width: 500, height: 800 })
+    await page.goto('code-tree/')
+
+    const codeTree = page.locator('.vp-code-tree').first()
+    const fileTree = codeTree.locator('.vp-file-tree')
+    const toggle = codeTree.locator('.vp-code-tree-toggle')
+
+    // The file tree is collapsed, and it is toggled by the button
+    await expect(fileTree).toBeHidden()
+    await expect(toggle).toBeVisible()
+
+    await toggle.click()
+    await expect(fileTree).toBeVisible()
+
+    // Selecting a file collapses the file tree again
+    await fileTree
+      .locator('.vp-file-tree-name', { hasText: /^package\.json$/u })
+      .click()
+    await expect(fileTree).toBeHidden()
   })
 })
