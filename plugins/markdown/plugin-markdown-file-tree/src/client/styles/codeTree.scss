@@ -34,7 +34,12 @@
  * The toggle floats over the left end of the code block title bar, so that it
  * does not take a column of its own on a narrow screen.
  *
+ * The button is reset, otherwise the browser renders its own border and
+ * background.
+ *
  * 开关悬浮在代码块标题栏的左端，因此窄屏下不会单独占据一列。
+ *
+ * 按钮会被重置，否则浏览器会渲染自己的边框与背景。
  */
 .vp-code-tree-toggle {
   position: absolute;
@@ -48,13 +53,18 @@
 
   width: var(--vp-code-tree-toggle-width);
   height: var(--vp-code-tree-title-height);
+  margin: 0;
   padding: 0;
-  border-width: 0;
+  border: none;
+  border-radius: 0;
 
-  background-color: transparent;
+  background: none;
+  color: inherit;
   outline: none;
 
   cursor: pointer;
+
+  appearance: none;
 
   transition: background-color var(--vp-t-color);
 
@@ -63,30 +73,33 @@
   }
 }
 
+/* The arrow points at the file tree, which sits on the start side */
 .vp-code-tree-toggle-icon {
   display: block;
 
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 
   background-color: currentcolor;
   color: var(--vp-code-tree-c-text-mute);
 
-  mask: var(--icon) no-repeat;
+  mask: var(--vp-file-tree-icon-arrow) no-repeat;
   mask-size: 100% 100%;
 
-  transition: color var(--vp-t-color);
-
-  &.expand {
-    --icon: var(--vp-code-tree-icon-expand);
-  }
+  transition:
+    color var(--vp-t-color),
+    transform var(--vp-t-transform);
 
   &.collapse {
-    --icon: var(--vp-code-tree-icon-collapse);
+    transform: rotate(180deg);
   }
 
-  [dir='rtl'] & {
-    transform: scaleX(-1);
+  [dir='rtl'] &.expand {
+    transform: rotate(180deg);
+  }
+
+  [dir='rtl'] &.collapse {
+    transform: rotate(0);
   }
 }
 

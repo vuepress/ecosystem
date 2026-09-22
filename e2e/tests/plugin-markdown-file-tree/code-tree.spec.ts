@@ -193,8 +193,7 @@ test.describe('plugin-markdown-file-tree: code tree', () => {
     // The toggle does not take a column of its own
     await expect(codeTree.locator('.vp-code-tree-actions')).toHaveCount(0)
 
-    // It floats over the left end of the code block title bar, and it has no
-    // border of its own
+    // It floats over the left end of the code block title bar
     const [treeBox, toggleBox, barBox] = await Promise.all([
       codeTree.boundingBox(),
       toggle.boundingBox(),
@@ -203,10 +202,39 @@ test.describe('plugin-markdown-file-tree: code tree', () => {
 
     expect(toggleBox!.x - treeBox!.x).toBeLessThan(2)
     expect(Math.abs(toggleBox!.y - barBox!.y)).toBeLessThan(2)
+
+    // The button is reset, otherwise the browser draws its own border and
+    // background around the icon
     await expect(toggle).toHaveCSS('border-width', '0px')
+    await expect(toggle).toHaveCSS('border-style', 'none')
+    await expect(toggle).toHaveCSS('appearance', 'none')
+    await expect(toggle).toHaveCSS('padding', '0px')
+    await expect(toggle).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)')
 
     // The title bars leave room for the toggle
     await expect(titleBar).toHaveCSS('padding-inline-start', '52px')
+  })
+
+  test('point the toggle at the file tree', async ({ page }) => {
+    await page.setViewportSize({ width: 500, height: 800 })
+    await page.goto('code-tree/')
+
+    const codeTree = page.locator('.vp-code-tree').first()
+    const icon = codeTree.locator('.vp-code-tree-toggle-icon')
+
+    // The icon is a plain chevron, so it does not look like a border
+    await expect(icon).toHaveCSS(
+      'mask-image',
+      /file-tree-icon-arrow|data:image/u,
+    )
+    await expect(icon).not.toHaveCSS('mask-image', /rect/u)
+
+    // The arrow points at the file tree, which sits on the start side
+    await expect(icon).toHaveCSS('transform', 'none')
+
+    await codeTree.locator('.vp-code-tree-toggle').click()
+    await expect(icon).toHaveClass(/collapse/u)
+    await expect(icon).not.toHaveCSS('transform', 'none')
   })
 
   test('hide the toggle on a wide screen', async ({ page }) => {
