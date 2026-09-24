@@ -1,8 +1,7 @@
-import { getModulePath, isModuleAvailable } from '@vuepress/helper'
 import { fs } from 'vuepress/utils'
 
 import type { FontAwesomeStyle } from './options.js'
-import type { ModuleResolver } from './utils.js'
+import { isModuleInstalled, resolveModule } from './utils.js'
 
 /**
  * FontAwesome styles, in the order of the generated imports
@@ -64,7 +63,7 @@ export const getIconExportName = (name: string): string =>
  * @returns Whether the core package is available / 核心包是否可用
  */
 export const isFontAwesomeInstalled = (): boolean =>
-  isModuleAvailable(`${FONTAWESOME_CORE}/package.json`, import.meta)
+  isModuleInstalled(`${FONTAWESOME_CORE}/package.json`)
 
 /**
  * Whether the package providing a FontAwesome style is installed
@@ -75,7 +74,7 @@ export const isFontAwesomeInstalled = (): boolean =>
  * @returns Whether the package is available / 包是否可用
  */
 export const isFontAwesomeStyleInstalled = (style: FontAwesomeStyle): boolean =>
-  isModuleAvailable(`${STYLE_PACKAGES[style]}/package.json`, import.meta)
+  isModuleInstalled(`${STYLE_PACKAGES[style]}/package.json`)
 
 /**
  * Whether an icon is provided by the FontAwesome style package
@@ -98,10 +97,7 @@ export const isFontAwesomeIconAvailable = (
 ): boolean => {
   try {
     return fs.pathExistsSync(
-      getModulePath(
-        `${STYLE_PACKAGES[style]}/${getIconExportName(name)}`,
-        import.meta,
-      ),
+      resolveModule(`${STYLE_PACKAGES[style]}/${getIconExportName(name)}`),
     )
   } catch {
     return false
@@ -142,14 +138,13 @@ export const getFontAwesomePackages = (enabled?: boolean): string[] =>
  *
  * @param icons - Icons to register, `true` registers every icon of the free
  *   styles / 需要注册的图标，`true` 会注册全部免费样式的图标
- * @param resolveModule - Resolver of a module path, which makes the imports
- *   resolve from the plugin instead of from the site / 模块路径的解析函数，它会让
- *   导入从插件而非站点解析
+ * @param resolver - Resolver of a module path, which makes the imports resolve
+ *   from the plugin instead of from the site / 模块路径的解析函数，它会让导入 从插件而非站点解析
  * @returns Code of the generated entry / 生成入口的代码
  */
 export const getFontAwesomeOfflineCode = (
   icons: FontAwesomeIcons | true,
-  resolveModule: ModuleResolver,
+  resolver: (module: string) => string,
 ): string => {
   const imports: string[] = []
   const registered: string[] = []
@@ -157,7 +152,7 @@ export const getFontAwesomeOfflineCode = (
   for (const style of FONTAWESOME_STYLES) {
     if (icons === true) {
       imports.push(
-        `import { ${STYLE_BUNDLES[style]} } from "${resolveModule(
+        `import { ${STYLE_BUNDLES[style]} } from "${resolver(
           STYLE_PACKAGES[style],
         )}";`,
       )
@@ -169,7 +164,7 @@ export const getFontAwesomeOfflineCode = (
       const exportName = getIconExportName(name)
 
       imports.push(
-        `import { ${exportName} } from "${resolveModule(
+        `import { ${exportName} } from "${resolver(
           `${STYLE_PACKAGES[style]}/${exportName}`,
         )}";`,
       )
@@ -178,7 +173,7 @@ export const getFontAwesomeOfflineCode = (
   }
 
   return `\
-import { config, dom, library } from "${resolveModule(FONTAWESOME_CORE)}";
+import { config, dom, library } from "${resolver(FONTAWESOME_CORE)}";
 ${imports.join('\n')}
 
 export const setupFontAwesome = () => {

@@ -4,6 +4,8 @@ import type { App } from 'vuepress'
 import type { ShikiPluginOptions } from './options.js'
 import { PLUGIN_NAME } from './utils.js'
 
+const resolve = (module: string): string => getModulePath(module, import.meta)
+
 // oxlint-disable-next-line max-lines-per-function, complexity, max-statements
 export const prepareClientConfigFile = (
   app: App,
@@ -22,8 +24,8 @@ export const prepareClientConfigFile = (
   }: ShikiPluginOptions,
 ): Promise<string> => {
   const imports: string[] = [
-    `import "${getModulePath('@vuepress/highlighter-helper/styles/base.css', import.meta)}"`,
-    `import "${getModulePath(`${PLUGIN_NAME}/shiki.css`, import.meta)}"`,
+    `import "${resolve('@vuepress/highlighter-helper/styles/base.css')}"`,
+    `import "${resolve(`${PLUGIN_NAME}/shiki.css`)}"`,
   ]
 
   const enhances: string[] = []
@@ -31,70 +33,70 @@ export const prepareClientConfigFile = (
 
   if (lineNumbers !== 'disable') {
     imports.push(
-      `import "${getModulePath('@vuepress/highlighter-helper/styles/line-numbers.css', import.meta)}"`,
+      `import "${resolve('@vuepress/highlighter-helper/styles/line-numbers.css')}"`,
     )
   }
 
   if (highlightLines || notationHighlight) {
     imports.push(
-      `import "${getModulePath('@vuepress/highlighter-helper/styles/notation-highlight.css', import.meta)}"`,
+      `import "${resolve('@vuepress/highlighter-helper/styles/notation-highlight.css')}"`,
     )
   }
 
   if (notationDiff) {
     imports.push(
-      `import "${getModulePath('@vuepress/highlighter-helper/styles/notation-diff.css', import.meta)}"`,
+      `import "${resolve('@vuepress/highlighter-helper/styles/notation-diff.css')}"`,
     )
   }
 
   if (notationErrorLevel) {
     imports.push(
-      `import "${getModulePath('@vuepress/highlighter-helper/styles/notation-error-level.css', import.meta)}"`,
+      `import "${resolve('@vuepress/highlighter-helper/styles/notation-error-level.css')}"`,
     )
   }
 
   if (notationFocus) {
     imports.push(
-      `import "${getModulePath('@vuepress/highlighter-helper/styles/notation-focus.css', import.meta)}"`,
+      `import "${resolve('@vuepress/highlighter-helper/styles/notation-focus.css')}"`,
     )
   }
 
   if (notationHighlight) {
     imports.push(
-      `import "${getModulePath('@vuepress/highlighter-helper/styles/notation-highlight.css', import.meta)}"`,
+      `import "${resolve('@vuepress/highlighter-helper/styles/notation-highlight.css')}"`,
     )
   }
 
   if (notationWordHighlight) {
     imports.push(
-      `import "${getModulePath('@vuepress/highlighter-helper/styles/notation-word-highlight.css', import.meta)}"`,
+      `import "${resolve('@vuepress/highlighter-helper/styles/notation-word-highlight.css')}"`,
     )
   }
 
   if (whitespace) {
     imports.push(
-      `import "${getModulePath('@vuepress/highlighter-helper/styles/whitespace.css', import.meta)}"`,
+      `import "${resolve('@vuepress/highlighter-helper/styles/whitespace.css')}"`,
     )
   }
 
   if (collapsedLines !== 'disable') {
     imports.push(
-      `import "${getModulePath('@vuepress/highlighter-helper/styles/collapsed-lines.css', import.meta)}"`,
-      `import { setupCollapsedLines } from "${getModulePath('@vuepress/highlighter-helper/client', import.meta)}"`,
+      `import "${resolve('@vuepress/highlighter-helper/styles/collapsed-lines.css')}"`,
+      `import { setupCollapsedLines } from "${resolve('@vuepress/highlighter-helper/client')}"`,
     )
     setups.push('setupCollapsedLines()')
   }
 
   if (codeBlockTitle) {
     imports.push(
-      `import "${getModulePath('@vuepress/highlighter-helper/styles/code-block-title.css', import.meta)}"`,
+      `import "${resolve('@vuepress/highlighter-helper/styles/code-block-title.css')}"`,
     )
   }
 
   if (twoslash) {
     imports.push(
-      `import { enhanceTwoslash } from "${getModulePath('@vuepress/shiki-twoslash/client', import.meta)}"`,
-      `import "${getModulePath('@vuepress/shiki-twoslash/twoslash.css', import.meta)}"`,
+      `import { enhanceTwoslash } from "${resolve('@vuepress/shiki-twoslash/client')}"`,
+      `import "${resolve('@vuepress/shiki-twoslash/twoslash.css')}"`,
     )
     enhances.push('enhanceTwoslash(app)')
   }
