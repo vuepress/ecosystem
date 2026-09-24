@@ -57,7 +57,7 @@
     "vue": "catalog:"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.0",
+    "@iconify-json/lucide": "^1.2.136",
     "@iconify-json/mdi": "^1.2.3",
     "iconify-icon": "^3.0.3"
   },

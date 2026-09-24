@@ -19,6 +19,13 @@ interface SafariNavigator extends Navigator {
   standalone: boolean
 }
 
+const getInstallStatus = (): boolean => {
+  if ((navigator as SafariNavigator).standalone)
+    return (navigator as SafariNavigator).standalone
+
+  return matchMedia('(display-mode: standalone)').matches
+}
+
 export const PwaInstall = defineComponent({
   name: 'PwaInstall',
 
@@ -47,13 +54,6 @@ export const PwaInstall = defineComponent({
     const showInstall = computed(
       () => (hasRelatedApps.value && canInstall.value) || useHint.value,
     )
-
-    const getInstallStatus = (): boolean => {
-      if ((navigator as SafariNavigator).standalone)
-        return (navigator as SafariNavigator).standalone
-
-      return matchMedia('(display-mode: standalone)').matches
-    }
 
     const hint = (): void => {
       toggleIsOpen(false)
