@@ -19,6 +19,16 @@ import {
 const getIconNames = (set: PrunedIconifySet | null): string[] =>
   Object.keys(set?.icons ?? {}).sort()
 
+/**
+ * Resolver used to make the resolved paths visible in the generated code
+ *
+ * 用于让生成代码中解析后的路径可见的解析函数
+ *
+ * @param module - Module name / 模块名称
+ * @returns Resolved path / 解析后的路径
+ */
+const resolveModule = (module: string): string => `/resolved/${module}`
+
 describe(getIconifySetPackage, () => {
   it('should get the package of an icon set', () => {
     expect(getIconifySetPackage('mdi')).toBe('@iconify-json/mdi')
@@ -137,9 +147,12 @@ describe(getIconifyOfflineCode, () => {
         { icons: { house: { body: '<path d="M1 1"/>' } }, prefix: 'lucide' },
       ],
       false,
+      resolveModule,
     )
 
-    expect(code).toContain('import { addCollection } from "iconify-icon";')
+    expect(code).toContain(
+      'import { addCollection } from "/resolved/iconify-icon";',
+    )
     expect(code.match(/addCollection\(/gu)).toHaveLength(2)
     expect(code).toContain('"prefix":"mdi"')
     expect(code).toContain('"prefix":"lucide"')
@@ -148,10 +161,10 @@ describe(getIconifyOfflineCode, () => {
   })
 
   it('should block the Iconify API in the dev server', () => {
-    const code = getIconifyOfflineCode([], true)
+    const code = getIconifyOfflineCode([], true, resolveModule)
 
     expect(code).toContain(
-      'import { _api, addCollection } from "iconify-icon";',
+      'import { _api, addCollection } from "/resolved/iconify-icon";',
     )
     expect(code).toContain('_api?.setFetch?.(')
     // the missing icon is reported, as the API failure is silent otherwise
@@ -167,10 +180,20 @@ describe(getIconifyOfflineCode, () => {
         { icons: {}, prefix: 'mdi' },
       ],
       false,
+      resolveModule,
     )
 
     expect(code.indexOf('"prefix":"lucide"')).toBeLessThan(
       code.indexOf('"prefix":"mdi"'),
     )
+  })
+
+  it('should resolve the web component from the plugin instead of from the site', () => {
+    const code = getIconifyOfflineCode([], false, resolveModule)
+
+    // a bare specifier is resolved from the generated entry, which lives in the
+    // temp folder of the site and may not see the package
+    expect(code).not.toContain('from "iconify-icon"')
+    expect(code).toContain('from "/resolved/iconify-icon"')
   })
 })

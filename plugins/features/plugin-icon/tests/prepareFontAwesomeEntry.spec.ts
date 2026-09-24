@@ -86,12 +86,15 @@ describe(prepareFontAwesomeEntry, () => {
     await prepareFontAwesomeEntry(app, { offline: true }, false)
 
     expect(getAppOutput(app)).toContain(
-      'import { faApple } from "@fortawesome/free-brands-svg-icons/faApple";',
+      '@fortawesome/free-brands-svg-icons/faApple',
     )
     expect(getAppOutput(app)).toContain(
-      'import { faHouse } from "@fortawesome/free-solid-svg-icons/faHouse";',
+      '@fortawesome/free-solid-svg-icons/faHouse',
     )
     expect(getAppOutput(app)).toContain('library.add(faApple, faHouse);')
+    // the packages are resolved from the plugin, as the entry lives in the temp
+    // folder of the site which may not see them
+    expect(getAppOutput(app)).not.toContain('from "@fortawesome/')
   })
 
   it('should merge the icons of the scanner', async () => {
@@ -104,7 +107,7 @@ describe(prepareFontAwesomeEntry, () => {
     )
 
     expect(getAppOutput(app)).toContain(
-      'import { faClock } from "@fortawesome/free-regular-svg-icons/faClock";',
+      '@fortawesome/free-regular-svg-icons/faClock',
     )
     expect(getAppOutput(app)).toContain('library.add(faClock, faHouse);')
   })
@@ -163,15 +166,9 @@ describe(prepareFontAwesomeEntry, () => {
 
     await prepareFontAwesomeEntry(app, { offline: 'all' }, true)
 
-    expect(getAppOutput(app)).toContain(
-      'import { fab } from "@fortawesome/free-brands-svg-icons";',
-    )
-    expect(getAppOutput(app)).toContain(
-      'import { far } from "@fortawesome/free-regular-svg-icons";',
-    )
-    expect(getAppOutput(app)).toContain(
-      'import { fas } from "@fortawesome/free-solid-svg-icons";',
-    )
+    expect(getAppOutput(app)).toContain('@fortawesome/free-brands-svg-icons')
+    expect(getAppOutput(app)).toContain('@fortawesome/free-regular-svg-icons')
+    expect(getAppOutput(app)).toContain('@fortawesome/free-solid-svg-icons')
     expect(getAppOutput(app)).toContain('library.add(fab, far, fas);')
   })
 

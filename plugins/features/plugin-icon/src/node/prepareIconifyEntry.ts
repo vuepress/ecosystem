@@ -12,7 +12,7 @@ import {
 import { getScannedIcons } from './getScannedIcons.js'
 import { getUsedIcons } from './getUsedIcons.js'
 import type { IconPluginOptions } from './options.js'
-import { logger } from './utils.js'
+import { logger, resolveModule } from './utils.js'
 
 /**
  * Generate the Iconify entry, which registers the icons used by the site
@@ -121,6 +121,6 @@ export const prepareIconifyEntry = async (
 
   return app.writeTemp(
     'icon/iconify.js',
-    getIconifyOfflineCode(usedSets, app.env.isDev),
+    getIconifyOfflineCode(usedSets, app.env.isDev, resolveModule),
   )
 }

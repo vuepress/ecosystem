@@ -2,6 +2,7 @@ import { getModulePath, isModuleAvailable } from '@vuepress/helper'
 import { fs } from 'vuepress/utils'
 
 import type { FontAwesomeStyle } from './options.js'
+import type { ModuleResolver } from './utils.js'
 
 /**
  * FontAwesome styles, in the order of the generated imports
@@ -141,10 +142,14 @@ export const getFontAwesomePackages = (enabled?: boolean): string[] =>
  *
  * @param icons - Icons to register, `true` registers every icon of the free
  *   styles / 需要注册的图标，`true` 会注册全部免费样式的图标
+ * @param resolveModule - Resolver of a module path, which makes the imports
+ *   resolve from the plugin instead of from the site / 模块路径的解析函数，它会让
+ *   导入从插件而非站点解析
  * @returns Code of the generated entry / 生成入口的代码
  */
 export const getFontAwesomeOfflineCode = (
   icons: FontAwesomeIcons | true,
+  resolveModule: ModuleResolver,
 ): string => {
   const imports: string[] = []
   const registered: string[] = []
@@ -152,7 +157,9 @@ export const getFontAwesomeOfflineCode = (
   for (const style of FONTAWESOME_STYLES) {
     if (icons === true) {
       imports.push(
-        `import { ${STYLE_BUNDLES[style]} } from "${STYLE_PACKAGES[style]}";`,
+        `import { ${STYLE_BUNDLES[style]} } from "${resolveModule(
+          STYLE_PACKAGES[style],
+        )}";`,
       )
       registered.push(STYLE_BUNDLES[style])
       continue
@@ -162,14 +169,16 @@ export const getFontAwesomeOfflineCode = (
       const exportName = getIconExportName(name)
 
       imports.push(
-        `import { ${exportName} } from "${STYLE_PACKAGES[style]}/${exportName}";`,
+        `import { ${exportName} } from "${resolveModule(
+          `${STYLE_PACKAGES[style]}/${exportName}`,
+        )}";`,
       )
       registered.push(exportName)
     }
   }
 
   return `\
-import { config, dom, library } from "${FONTAWESOME_CORE}";
+import { config, dom, library } from "${resolveModule(FONTAWESOME_CORE)}";
 ${imports.join('\n')}
 
 export const setupFontAwesome = () => {
