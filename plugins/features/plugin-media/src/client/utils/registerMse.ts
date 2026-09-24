@@ -23,9 +23,9 @@ export const registerMseDash = async (
   startTime = 0,
 ): Promise<void> => {
   if (typeof DASHJS_INSTALLED !== 'undefined' && DASHJS_INSTALLED) {
-    const { supportsMediaSource, MediaPlayer } = (
-      await import(/* webpackChunkName: "dashjs" */ 'dashjs')
-    ).default
+    const { MediaPlayer, supportsMediaSource } = await import(
+      /* webpackChunkName: "dashjs" */ 'dashjs'
+    )
 
     if (supportsMediaSource()) {
       // oxlint-disable-next-line new-cap
