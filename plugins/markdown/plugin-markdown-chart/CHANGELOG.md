@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.135](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.134...v2.0.0-rc.135) (2026-09-24)
+
+### Features
+
+- **plugin-markdown-chart:** support mermaid v12 ([#847](https://github.com/vuepress/ecosystem/issues/847)) ([81aaaa9](https://github.com/vuepress/ecosystem/commit/81aaaa9473762792300d45a47f98104bf78355af))
+
 # [2.0.0-rc.134](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.133...v2.0.0-rc.134) (2026-09-07)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-chart

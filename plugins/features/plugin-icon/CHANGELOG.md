@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.135](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.134...v2.0.0-rc.135) (2026-09-24)
+
+### Features
+
+- **plugin-icon:** bundle fontawesome locally ([#866](https://github.com/vuepress/ecosystem/issues/866)) ([4c22285](https://github.com/vuepress/ecosystem/commit/4c22285be394c0a61e288306bf20c301e5a2d99f))
+- **plugin-icon:** bundle the icons locally ([#868](https://github.com/vuepress/ecosystem/issues/868)) ([3cb2111](https://github.com/vuepress/ecosystem/commit/3cb21116825b0c01d7e6f781cd3c1b2ab4f38e0f))
+
 # [2.0.0-rc.134](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.133...v2.0.0-rc.134) (2026-09-07)
 
 **Note:** Version bump only for package @vuepress/plugin-icon

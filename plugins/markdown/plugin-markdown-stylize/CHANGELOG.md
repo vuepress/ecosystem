@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.135](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.134...v2.0.0-rc.135) (2026-09-24)
+
+### Features
+
+- **plugin-markdown-stylize:** add steps container support ([#838](https://github.com/vuepress/ecosystem/issues/838)) ([2ee99bc](https://github.com/vuepress/ecosystem/commit/2ee99bc0f62833034a87b81eb5dbb782434a117e))
+
 # [2.0.0-rc.134](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.133...v2.0.0-rc.134) (2026-09-07)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-stylize

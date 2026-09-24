@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.135](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.134...v2.0.0-rc.135) (2026-09-24)
+
+### Bug Fixes
+
+- **plugin-slimsearch:** preserve inline whitespace in index ([#842](https://github.com/vuepress/ecosystem/issues/842)) ([22f548c](https://github.com/vuepress/ecosystem/commit/22f548cf42175c2374af5681ff3ca75dfadf98c3))
+- **plugin-slimsearch:** preserve original case in search display ([3bafd11](https://github.com/vuepress/ecosystem/commit/3bafd11894c72939c2b37baab516f31530761b2c))
+
+### Features
+
+- **plugin-slimsearch:** offset highlights and gzip index ([4c5b41a](https://github.com/vuepress/ecosystem/commit/4c5b41ab156bd79db429ae10b6224505a8c11490))
+
 # [2.0.0-rc.134](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.133...v2.0.0-rc.134) (2026-09-07)
 
 ### Bug Fixes

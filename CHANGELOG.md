@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.135](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.134...v2.0.0-rc.135) (2026-09-24)
+
+### Bug Fixes
+
+- **plugin-slimsearch:** preserve inline whitespace in index ([#842](https://github.com/vuepress/ecosystem/issues/842)) ([22f548c](https://github.com/vuepress/ecosystem/commit/22f548cf42175c2374af5681ff3ca75dfadf98c3))
+- **plugin-slimsearch:** preserve original case in search display ([3bafd11](https://github.com/vuepress/ecosystem/commit/3bafd11894c72939c2b37baab516f31530761b2c))
+
+### Features
+
+- add plugin-media ([#470](https://github.com/vuepress/ecosystem/issues/470)) ([69579f2](https://github.com/vuepress/ecosystem/commit/69579f233edc1d40f25cb837c6ae89cd6fac998c))
+- **plugin-icon:** bundle fontawesome locally ([#866](https://github.com/vuepress/ecosystem/issues/866)) ([4c22285](https://github.com/vuepress/ecosystem/commit/4c22285be394c0a61e288306bf20c301e5a2d99f))
+- **plugin-icon:** bundle the icons locally ([#868](https://github.com/vuepress/ecosystem/issues/868)) ([3cb2111](https://github.com/vuepress/ecosystem/commit/3cb21116825b0c01d7e6f781cd3c1b2ab4f38e0f))
+- **plugin-markdown-chart:** support mermaid v12 ([#847](https://github.com/vuepress/ecosystem/issues/847)) ([81aaaa9](https://github.com/vuepress/ecosystem/commit/81aaaa9473762792300d45a47f98104bf78355af))
+- **plugin-markdown-field:** add field container ([#839](https://github.com/vuepress/ecosystem/issues/839)) ([efa8a24](https://github.com/vuepress/ecosystem/commit/efa8a2412c3c8993966bbb7de382996f471a2312))
+- **plugin-markdown-file-tree:** add code tree feature ([#603](https://github.com/vuepress/ecosystem/issues/603)) ([#849](https://github.com/vuepress/ecosystem/issues/849)) ([a811c7a](https://github.com/vuepress/ecosystem/commit/a811c7a54ede9e44d911ec2462235403f1aef8c9))
+- **plugin-markdown-file-tree:** improve toggle icon ([3cfe466](https://github.com/vuepress/ecosystem/commit/3cfe4660e32af2d3a55e9ca477dd1ef2df3ea522))
+- **plugin-markdown-stylize:** add steps container support ([#838](https://github.com/vuepress/ecosystem/issues/838)) ([2ee99bc](https://github.com/vuepress/ecosystem/commit/2ee99bc0f62833034a87b81eb5dbb782434a117e))
+- **plugin-orama:** add Orama search plugin ([#841](https://github.com/vuepress/ecosystem/issues/841)) ([45ce2f4](https://github.com/vuepress/ecosystem/commit/45ce2f4a4e61122b4596468c7453871596f84dce))
+- **plugin-slimsearch:** offset highlights and gzip index ([4c5b41a](https://github.com/vuepress/ecosystem/commit/4c5b41ab156bd79db429ae10b6224505a8c11490))
+
 # [2.0.0-rc.134](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.133...v2.0.0-rc.134) (2026-09-07)
 
 ### Bug Fixes

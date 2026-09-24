@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.135](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.134...v2.0.0-rc.135) (2026-09-24)
+
+### Features
+
+- **plugin-markdown-file-tree:** add code tree feature ([#603](https://github.com/vuepress/ecosystem/issues/603)) ([#849](https://github.com/vuepress/ecosystem/issues/849)) ([a811c7a](https://github.com/vuepress/ecosystem/commit/a811c7a54ede9e44d911ec2462235403f1aef8c9))
+- **plugin-markdown-file-tree:** improve toggle icon ([3cfe466](https://github.com/vuepress/ecosystem/commit/3cfe4660e32af2d3a55e9ca477dd1ef2df3ea522))
+
 # [2.0.0-rc.134](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.133...v2.0.0-rc.134) (2026-09-07)
 
 **Note:** Version bump only for package @vuepress/plugin-markdown-file-tree
