@@ -4,14 +4,13 @@ import {
   fromEntries,
   getFullLocaleConfig,
 } from '@vuepress/helper'
+import { PathStore, searchLocaleInfo } from '@vuepress/search-helper'
 import type { Page, PluginFunction } from 'vuepress/core'
 
 import type { SearchIndexStore } from '../shared/index.js'
 import { getSearchIndexStore } from './generateIndex.js'
 import { generateWorker } from './generateWorker.js'
-import { oramaLocaleInfo } from './locales.js'
 import type { OramaPluginOptions } from './options.js'
-import { PathStore } from './pathStore.js'
 import {
   prepareSearchIndex,
   prepareStore,
@@ -46,7 +45,7 @@ export const oramaPlugin =
           app,
           name: PLUGIN_NAME,
           config: options.locales,
-          default: oramaLocaleInfo,
+          default: searchLocaleInfo,
         }),
         __ORAMA_OPTIONS__: {
           searchDelay: options.searchDelay ?? 150,
@@ -102,25 +101,23 @@ export const oramaPlugin =
       onPageUpdated: async (_, type, newPage, oldPage) => {
         if (!(options.hotReload ?? app.env.isDebug)) return
 
+        const context = {
+          searchIndexStore: searchIndexStore!,
+          store,
+          indexesByPage,
+        }
+
         if (type === 'delete') {
           await removeSearchIndex(
             app,
-            {
-              searchIndexStore: searchIndexStore!,
-              store,
-              indexesByPage,
-            },
+            context,
             oldPage as Page<{ excerpt?: string }>,
           )
         } else {
           await updateSearchIndex(
             app,
             options,
-            {
-              searchIndexStore: searchIndexStore!,
-              store,
-              indexesByPage,
-            },
+            context,
             newPage as Page<{ excerpt?: string }>,
           )
         }

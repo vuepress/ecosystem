@@ -6,11 +6,11 @@ import {
   encodeIndex,
   serializeIndex,
 } from '../src/shared/index.js'
-import type { IndexItem } from '../src/shared/index.js'
+import type { IndexItemDocument } from '../src/shared/index.js'
 import { getSearchResults } from '../src/worker/utils/getSearchResults.js'
 import { getSuggestions } from '../src/worker/utils/getSuggestions.js'
 
-const docs: IndexItem[] = [
+const docs: IndexItemDocument[] = [
   {
     id: '0',
     h: 'Hello world',

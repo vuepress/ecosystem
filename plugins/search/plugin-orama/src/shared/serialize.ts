@@ -4,20 +4,40 @@ import { decodeData, encodeData } from '@vuepress/helper/shared'
 
 import { SCHEMA } from './data.js'
 import type { SearchIndex } from './data.js'
+import type { SearchTokenizer } from './tokenizer.js'
 import { createTokenizer } from './tokenizer.js'
 
 export interface CreateIndexOptions {
   /**
    * Custom tokenizer factory
    *
-   * When not provided, a tokenizer based on `Intl.Segmenter` will be created
-   * for the given language.
+   * When not provided, an out-of-the-box tokenizer is created for the given
+   * language, see `createTokenizer`.
+   *
+   * A custom tokenizer only affects how the index is tokenized: the queries are
+   * tokenized by the out-of-the-box tokenizer of the worker, on words that the
+   * client already split, so it stays compatible as long as it splits words the
+   * same way the client does.
    *
    * 自定义分词器工厂
    *
-   * 未提供时，会为给定语言创建基于 `Intl.Segmenter` 的分词器。
+   * 未提供时，会为给定语言创建开箱即用的分词器，见 `createTokenizer`。
+   *
+   * 自定义分词器只影响索引的分词方式：查询由 Worker 的开箱即用分词器分词，且词语已由客户端拆好，因此只要它的拆分方式与客户端一致就能保持兼容。
    */
   tokenizer?: (language: string) => Tokenizer
+
+  /**
+   * Stop-words of the language, provided by `@orama/stopwords`
+   *
+   * They are only used by the built-in tokenizer, which is created when no
+   * custom `tokenizer` is provided.
+   *
+   * 语言的停用词，由 `@orama/stopwords` 提供
+   *
+   * 它们只会被内置分词器使用，即未提供自定义 `tokenizer` 时创建的分词器。
+   */
+  stopWords?: string[]
 }
 
 export interface SerializedIndex {
@@ -25,6 +45,17 @@ export interface SerializedIndex {
   lang: string
   /** Serialized index data 序列化的索引数据 */
   data: RawData
+  /**
+   * Stop-words of the language
+   *
+   * They are embedded in the payload, so that only the languages used by the
+   * site are shipped to the browser.
+   *
+   * 语言的停用词
+   *
+   * 它们被内嵌在载荷中，因此只有站点实际使用的语言会被发送到浏览器。
+   */
+  stopWords?: string[]
 }
 
 /**
@@ -51,7 +82,7 @@ export const createIndex = (
     components: {
       tokenizer: options.tokenizer
         ? options.tokenizer(lang)
-        : createTokenizer(lang),
+        : createTokenizer(lang, options.stopWords),
     },
   })
 
@@ -76,10 +107,16 @@ export const createIndex = (
  * @param index - Live Orama index 实时的 Orama 索引
  * @returns Serializable data 可序列化的数据
  */
-export const serializeIndex = (index: SearchIndex): SerializedIndex => ({
-  lang: index.tokenizer.language,
-  data: save(index),
-})
+export const serializeIndex = (index: SearchIndex): SerializedIndex => {
+  const { stopWords } = index.tokenizer as SearchTokenizer
+
+  return {
+    lang: index.tokenizer.language,
+    data: save(index),
+    // An empty list is left out, so that the payload stays small
+    ...(stopWords?.length && { stopWords }),
+  }
+}
 
 /**
  * Encode a live Orama index into a base64 string by compressing its serialized
@@ -108,7 +145,25 @@ export const encodeIndex = (index: SearchIndex): string =>
  * @returns Restored Orama index 还原后的 Orama 索引
  */
 export const decodeIndex = (encoded: string): SearchIndex => {
-  const { lang, data } = JSON.parse(decodeData(encoded)) as SerializedIndex
+  const { lang, data, stopWords } = JSON.parse(
+    decodeData(encoded),
+  ) as SerializedIndex
 
-  return createIndex(lang, data)
+  return createIndex(lang, data, { stopWords })
 }
+
+/**
+ * Read the language of an encoded index without restoring it.
+ *
+ * Restoring an index requires a tokenizer, which may need to be loaded first,
+ * so the languages have to be read before the indexes are decoded.
+ *
+ * 读取编码后索引的语言，而不还原它。
+ *
+ * 还原索引需要分词器，而分词器可能需要先被加载，因此必须在解码索引前先读出语言。
+ *
+ * @param encoded - Base64-encoded index base64 编码的索引
+ * @returns Language of the index 索引的语言
+ */
+export const getIndexLanguage = (encoded: string): string =>
+  (JSON.parse(decodeData(encoded)) as SerializedIndex).lang

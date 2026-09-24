@@ -1,4 +1,6 @@
 import { search } from '@orama/orama'
+import { foldDiacritics } from '@vuepress/search-helper/shared'
+import type { IndexItemDocument } from '@vuepress/search-helper/shared'
 
 import {
   CUSTOM_FIELDS_INDEX_ID,
@@ -6,36 +8,37 @@ import {
   TEXT_INDEX_ID,
 } from '../../shared/index.js'
 import type {
-  IndexItem,
   SearchableProperty,
   SearchIndex,
   WorkerSearchOptions,
 } from '../../shared/index.js'
 
 /**
- * Find the original-cased occurrence of a (lowercased) token in a field.
+ * Find the original-cased occurrence of a (lowercased and folded) token in a
+ * field.
  *
- * The tokenizer lowercases tokens for indexing, so we look the token up in the
- * original field text case-insensitively to preserve the document's case in the
- * suggestions.
+ * The tokenizer lowercases tokens and folds their diacritics for indexing, so
+ * we look the token up in the folded field text to preserve the document's case
+ * in the suggestions.
  *
- * 在字段中查找小写词条对应的原始大小写文本。
+ * 在字段中查找小写且已折叠变音符号的词条所对应的原始大小写文本。
  *
- * 分词器为索引而将词条小写化，因此我们在原始字段文本中进行不区分大小写的查找， 以便在建议中保留文档原有的大小写。
+ * 分词器为索引而将词条小写化并折叠变音符号，因此我们在折叠后的字段文本中进行查找，以便在建议中保留文档原有的大小写。
  *
  * @param field - Original field text 原始字段文本
- * @param token - Lowercased token 小写词条
+ * @param token - Lowercased and folded token 小写且已折叠变音符号的词条
  * @returns Original-cased token, or null if not found 原始大小写的词条，未找到时返回 null
  */
 const getOriginalToken = (field: string, token: string): string | null => {
-  const fieldLowerCase = field.toLowerCase()
+  const fieldFolded = foldDiacritics(field.toLowerCase())
+  const tokenFolded = foldDiacritics(token.toLowerCase())
   let index = 0
 
-  while ((index = fieldLowerCase.indexOf(token, index)) !== -1) {
-    const original = field.slice(index, index + token.length)
+  while ((index = fieldFolded.indexOf(tokenFolded, index)) !== -1) {
+    const original = field.slice(index, index + tokenFolded.length)
 
-    if (original.toLowerCase() === token) return original
-    index += token.length
+    if (foldDiacritics(original.toLowerCase()) === tokenFolded) return original
+    index += tokenFolded.length
   }
 
   return null
@@ -83,7 +86,7 @@ export const getSuggestions = (
 
   const suggestions = new Set<string>()
 
-  ;(results as { hits: { document: IndexItem }[] }).hits.forEach(
+  ;(results as { hits: { document: IndexItemDocument }[] }).hits.forEach(
     ({ document }) => {
       const fields = [document.h, ...(document.t ?? []), ...(document.c ?? [])]
 

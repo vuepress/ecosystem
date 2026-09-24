@@ -1,10 +1,10 @@
+import { PathStore } from '@vuepress/search-helper'
 import { describe, expect, it } from 'vitest'
 import type { Bundler } from 'vuepress/core'
 import { createBuildApp } from 'vuepress/core'
 import { path } from 'vuepress/utils'
 
 import { getSearchIndexStore } from '../src/node/generateIndex.js'
-import { PathStore } from '../src/node/pathStore.js'
 import { createIndex, serializeIndex } from '../src/shared/index.js'
 import { getSearchResults } from '../src/worker/utils/getSearchResults.js'
 import { emptyTheme } from './__fixtures__/theme/empty.js'
@@ -24,6 +24,7 @@ describe(getSearchIndexStore, () => {
       app,
       { indexContent: true },
       store,
+      new Map(),
     )
 
     // The fixtures only contain English pages, so they share the root locale
@@ -41,6 +42,7 @@ describe(getSearchIndexStore, () => {
       app,
       { indexContent: true },
       store,
+      new Map(),
     )
 
     for (const locale of Object.keys(searchIndexStore)) {

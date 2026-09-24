@@ -1,7 +1,11 @@
 import database from '@temp/orama/index.js'
 import { sortStrategy } from '@temp/orama/worker-options.js'
 
-import { decodeIndex } from '../shared/index.js'
+import {
+  decodeIndex,
+  getIndexLanguage,
+  preloadTokenizers,
+} from '../shared/index.js'
 import type { WorkerMessageData } from '../shared/index.js'
 import { getSearchResults, getSuggestions } from './utils/index.js'
 
@@ -21,6 +25,11 @@ globalThis.onmessage = async ({
   }
 
   const { default: encoded } = await loadLocaleIndex()
+
+  // The official tokenizers are loaded lazily, so they have to be loaded before
+  // the index is decoded
+  await preloadTokenizers([getIndexLanguage(encoded)])
+
   const searchLocaleIndex = decodeIndex(encoded)
 
   if (type === 'suggest') {
