@@ -426,6 +426,14 @@ Orama 的文档声称支持韩语、波兰语、斯洛伐克语与越南语，�
 
 :::
 
+::: warning 浏览器支持
+
+对不以空格分词的语言（中文、日文、韩文、泰文等）进行分词依赖 [`Intl.Segmenter`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter) API，它在 Chrome 87+、Edge 87+、Safari 14.1+ 与 Firefox 125+ 中可用。
+
+在更旧的浏览器中，查询会被拆分为单个字符，与索引中的词不再匹配，因此**搜索这些语言会返回不到结果或无关结果**。以空格分词的语言不受影响。
+
+:::
+
 ### 自定义索引生成
 
 你可以通过 `indexOptions` 和 `indexLocaleOptions` 自定义索引生成过程，以便获得更好的索引结果，并可针对每个语言环境单独设置。

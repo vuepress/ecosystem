@@ -426,6 +426,14 @@ Orama's documentation lists Korean, Polish, Slovak and Vietnamese as supported, 
 
 :::
 
+::: warning Browser support
+
+Tokenizing the languages that are not separated by whitespace (Chinese, Japanese, Korean, Thai, ...) relies on the [`Intl.Segmenter`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter) API, which is available in Chrome 87+, Edge 87+, Safari 14.1+ and Firefox 125+.
+
+On older browsers the query is split into single characters, which no longer match the words of the index, so **searching those languages returns no result or unrelated results**. Languages separated by whitespace are not affected.
+
+:::
+
 ### Customize Index Generation
 
 You can customize the index generation process using `indexOptions` and `indexLocaleOptions`. This allows you to fine-tune indexing results globally or for specific locales.

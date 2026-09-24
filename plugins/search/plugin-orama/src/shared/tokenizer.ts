@@ -106,12 +106,13 @@ const tokenizerFactories = new Map<string, TokenizerFactory>()
 /**
  * Whether `Intl.Segmenter` is available.
  *
- * It is available in Chrome 87+, Safari 14.1+ and Firefox 125+, and it is
- * required by `@orama/tokenizers`.
+ * It is available in Chrome 87+, Edge 87+, Safari 14.1+ and Firefox 125+, and
+ * it is required by `@orama/tokenizers`.
  *
  * `Intl.Segmenter` 是否可用。
  *
- * 它在 Chrome 87+、Safari 14.1+ 与 Firefox 125+ 中可用，且是 `@orama/tokenizers` 的必需项。
+ * 它在 Chrome 87+、Edge 87+、Safari 14.1+ 与 Firefox 125+ 中可用，且是 `@orama/tokenizers`
+ * 的必需项。
  *
  * @returns Whether `Intl.Segmenter` is available `Intl.Segmenter` 是否可用
  */
