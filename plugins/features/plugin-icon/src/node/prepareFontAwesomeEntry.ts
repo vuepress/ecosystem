@@ -14,7 +14,7 @@ import { getScannedIcons } from './getScannedIcons.js'
 import { getUsedIcons } from './getUsedIcons.js'
 import type { FontAwesomeStyle, IconPluginOptions } from './options.js'
 import { parseFontAwesomeIcon } from './parseFontAwesomeIcon.js'
-import { logger } from './utils.js'
+import { logger, resolveModule } from './utils.js'
 
 /**
  * Generate the FontAwesome entry, which registers the icons used by the site
@@ -127,6 +127,6 @@ export const prepareFontAwesomeEntry = async (
 
   return app.writeTemp(
     'icon/fontawesome.js',
-    getFontAwesomeOfflineCode(all ? true : bundledIcons),
+    getFontAwesomeOfflineCode(all ? true : bundledIcons, resolveModule),
   )
 }

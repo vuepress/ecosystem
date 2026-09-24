@@ -9,6 +9,8 @@ import {
 } from '@vuepress/helper'
 import { fs } from 'vuepress/utils'
 
+import type { ModuleResolver } from './utils.js'
+
 /**
  * Package that provides the Iconify web component
  *
@@ -162,11 +164,15 @@ export const getUsedIconSet = async (
  * @param dev - Whether the dev server is running, where the Iconify API is
  *   blocked so that the icons missing from the bundle are visible / 是否运行在开发
  *   服务器中，此时会拦截 Iconify API，以便发现未被打包的图标
+ * @param resolveModule - Resolver of a module path, which makes the import
+ *   resolve from the plugin instead of from the site / 模块路径的解析函数，它会让
+ *   导入从插件而非站点解析
  * @returns Code of the generated entry / 生成入口的代码
  */
 export const getIconifyOfflineCode = (
   sets: PrunedIconifySet[],
   dev: boolean,
+  resolveModule: ModuleResolver,
 ): string => {
   const registrations = [...sets]
     .sort((a, b) => a.prefix.localeCompare(b.prefix))
@@ -174,7 +180,9 @@ export const getIconifyOfflineCode = (
     .join('\n')
 
   return `\
-import { ${dev ? '_api, ' : ''}addCollection } from "${ICONIFY_ICON}";
+import { ${dev ? '_api, ' : ''}addCollection } from "${resolveModule(
+    ICONIFY_ICON,
+  )}";
 
 export const setupIconify = () => {
 ${registrations}

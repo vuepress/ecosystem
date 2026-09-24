@@ -10,6 +10,16 @@ import {
   isFontAwesomeStyleInstalled,
 } from '../src/node/getFontAwesomeOffline.js'
 
+/**
+ * Resolver used to make the resolved paths visible in the generated code
+ *
+ * 用于让生成代码中解析后的路径可见的解析函数
+ *
+ * @param module - Module name / 模块名称
+ * @returns Resolved path / 解析后的路径
+ */
+const resolveModule = (module: string): string => `/resolved/${module}`
+
 describe(getIconExportName, () => {
   it('should convert kebab-case icon names to export names', () => {
     expect(getIconExportName('house')).toBe('faHouse')
@@ -42,19 +52,19 @@ describe(getFontAwesomePackages, () => {
 
 describe(getFontAwesomeOfflineCode, () => {
   it('should register every style bundle when all icons are bundled', () => {
-    const code = getFontAwesomeOfflineCode(true)
+    const code = getFontAwesomeOfflineCode(true, resolveModule)
 
     expect(code).toContain(
-      'import { config, dom, library } from "@fortawesome/fontawesome-svg-core";',
+      'import { config, dom, library } from "/resolved/@fortawesome/fontawesome-svg-core";',
     )
     expect(code).toContain(
-      'import { fab } from "@fortawesome/free-brands-svg-icons";',
+      'import { fab } from "/resolved/@fortawesome/free-brands-svg-icons";',
     )
     expect(code).toContain(
-      'import { far } from "@fortawesome/free-regular-svg-icons";',
+      'import { far } from "/resolved/@fortawesome/free-regular-svg-icons";',
     )
     expect(code).toContain(
-      'import { fas } from "@fortawesome/free-solid-svg-icons";',
+      'import { fas } from "/resolved/@fortawesome/free-solid-svg-icons";',
     )
     expect(code).toContain('config.autoReplaceSvg = "nest";')
     expect(code).toContain('library.add(fab, far, fas);')
@@ -62,26 +72,40 @@ describe(getFontAwesomeOfflineCode, () => {
   })
 
   it('should register only the given icons', () => {
-    const code = getFontAwesomeOfflineCode({
-      brands: ['apple'],
-      solid: ['house', 'user'],
-    })
+    const code = getFontAwesomeOfflineCode(
+      {
+        brands: ['apple'],
+        solid: ['house', 'user'],
+      },
+      resolveModule,
+    )
 
     expect(code).toContain(
-      'import { faApple } from "@fortawesome/free-brands-svg-icons/faApple";',
+      'import { faApple } from "/resolved/@fortawesome/free-brands-svg-icons/faApple";',
     )
     expect(code).toContain(
-      'import { faHouse } from "@fortawesome/free-solid-svg-icons/faHouse";',
+      'import { faHouse } from "/resolved/@fortawesome/free-solid-svg-icons/faHouse";',
     )
     expect(code).toContain(
-      'import { faUser } from "@fortawesome/free-solid-svg-icons/faUser";',
+      'import { faUser } from "/resolved/@fortawesome/free-solid-svg-icons/faUser";',
     )
     expect(code).not.toContain('free-regular-svg-icons')
     expect(code).toContain('library.add(faApple, faHouse, faUser);')
   })
 
   it('should not register anything when there is no icon', () => {
-    expect(getFontAwesomeOfflineCode({})).toContain('library.add();')
+    expect(getFontAwesomeOfflineCode({}, resolveModule)).toContain(
+      'library.add();',
+    )
+  })
+
+  it('should resolve the packages from the plugin instead of from the site', () => {
+    const code = getFontAwesomeOfflineCode({ solid: ['house'] }, resolveModule)
+
+    // a bare specifier is resolved from the generated entry, which lives in the
+    // temp folder of the site and may not see the packages
+    expect(code).not.toContain('from "@fortawesome/')
+    expect(code).toContain('from "/resolved/@fortawesome/')
   })
 })
 

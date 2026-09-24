@@ -1,4 +1,4 @@
-import { ensureEndingSlash, getModulePath } from '@vuepress/helper'
+import { ensureEndingSlash } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 import { path } from 'vuepress/utils'
 
@@ -7,6 +7,7 @@ import { getIconLinks } from './getIconLinks.js'
 import { getIconPrefix } from './getIconPrefix.js'
 import { resolveOffline } from './offline.js'
 import type { IconPluginOptions } from './options.js'
+import { resolveModule } from './utils.js'
 
 const __dirname = import.meta.dirname
 
@@ -28,21 +29,20 @@ export const prepareConfigFile = (
   return app.writeTemp(
     `icon/config.js`,
     `\
-import { hasGlobalComponent } from "${getModulePath(
+import { hasGlobalComponent } from "${resolveModule(
       '@vuepress/helper/client',
-      import.meta,
     )}";
 ${
   linksInfo.some(({ type }) => type === 'script')
     ? `\
-import { useScriptTag } from "${getModulePath('@vueuse/core', import.meta)}";
+import { useScriptTag } from "${resolveModule('@vueuse/core')}";
 `
     : ''
 }\
 ${
   linksInfo.some(({ type }) => type === 'style')
     ? `\
-import { useStyleTag } from "${getModulePath('@vueuse/core', import.meta)}";
+import { useStyleTag } from "${resolveModule('@vueuse/core')}";
 `
     : ''
 }\
