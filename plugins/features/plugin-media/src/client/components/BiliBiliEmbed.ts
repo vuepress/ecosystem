@@ -112,7 +112,9 @@ export const BiliBiliEmbed = defineComponent({
             autoplay ? 1 : 0
           }&p=${page}`
         : bvid
-          ? `${BILIBILI_PLAYER_LINK}?bvid=${bvid}&t=${time}&autoplay=${autoplay ? 1 : 0}`
+          ? `${BILIBILI_PLAYER_LINK}?bvid=${bvid}&t=${time}&autoplay=${
+              autoplay ? 1 : 0
+            }&p=${page}`
           : null
     })
 

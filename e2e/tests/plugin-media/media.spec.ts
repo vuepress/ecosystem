@@ -34,7 +34,7 @@ test.describe('plugin-media', () => {
       page.locator(selector).getAttribute('src')
 
     expect(await src('.vp-bilibili-iframe')).toBe(
-      'https://player.bilibili.com/player.html?bvid=BV1xx411c7mD&t=0&autoplay=0',
+      'https://player.bilibili.com/player.html?bvid=BV1xx411c7mD&t=0&autoplay=0&p=1',
     )
     expect(await src('.vp-youtube-iframe')).toBe(
       'https://www.youtube.com/embed/dQw4w9WgXcQ',
@@ -60,5 +60,54 @@ test.describe('plugin-media', () => {
     expect(await page.locator('.vp-twitch-iframe').getAttribute('src')).toBe(
       'https://player.twitch.tv/?channel=monstercat&autoplay=false&parent=ecosystem-e2e-test.com',
     )
+  })
+
+  test.describe('link syntax', () => {
+    test('renders the components of the links', async ({ page }) => {
+      await page.goto('media-links.html')
+
+      await expect(page.locator('.vp-bilibili-iframe')).toHaveCount(2)
+      await expect(page.locator('.vp-youtube-iframe')).toHaveCount(1)
+      await expect(page.locator('.vp-vimeo-iframe')).toHaveCount(1)
+      await expect(page.locator('.vp-twitch-iframe')).toHaveCount(1)
+    })
+
+    test('passes the props to the components', async ({ page }) => {
+      await page.goto('media-links.html')
+
+      await expect(page.locator('.vp-youtube')).toHaveAttribute(
+        'style',
+        /width: 80%/u,
+      )
+      await expect(page.locator('.vp-youtube-iframe')).toHaveAttribute(
+        'title',
+        'A YouTube video',
+      )
+    })
+
+    test('builds the BiliBili links', async ({ page }) => {
+      await page.goto('media-links.html')
+
+      const frames = page.locator('.vp-bilibili-iframe')
+
+      // The id and the URL of the link are both accepted, and the `p` and `t`
+      // parameters of the URL become the `page` and `time` props
+      await expect(frames.nth(0)).toHaveAttribute(
+        'src',
+        'https://player.bilibili.com/player.html?bvid=BV1xx411c7mD&t=0&autoplay=0&p=1',
+      )
+      await expect(frames.nth(1)).toHaveAttribute(
+        'src',
+        'https://player.bilibili.com/player.html?bvid=BV1xx411c7mD&t=30&autoplay=0&p=3',
+      )
+    })
+
+    test('passes the parent of the Twitch link', async ({ page }) => {
+      await page.goto('media-links.html')
+
+      expect(await page.locator('.vp-twitch-iframe').getAttribute('src')).toBe(
+        'https://player.twitch.tv/?channel=monstercat&autoplay=false&parent=ecosystem-e2e-test.com',
+      )
+    })
   })
 })

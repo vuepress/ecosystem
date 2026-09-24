@@ -66,6 +66,38 @@ Every other component needs its package installed, and the plugin skips register
 
 :::
 
+## Link Syntax
+
+Every enabled component is also available through the `@[name ...props](link)` syntax, where the link is the source of the component. The syntax must occupy its own line.
+
+```md
+@[youtube title="A video" width="80%"](https://youtu.be/dQw4w9WgXcQ)
+@[video autoplay loop](/assets/video.mp4)
+```
+
+The props are passed to the component as attributes, so they are strings or flags, and a prop without a value is `true`. Options taking an object or a function (`config`, `customPlayer`, `customViewer`) are not available, and `false` is not supported, so an option that is enabled by default is turned off with the matching `no-` attribute, e.g. `@[video no-playsinline](a.mp4)`.
+
+| Syntax           | Component          |
+| ---------------- | ------------------ |
+| `artplayer`      | `ArtPlayer`        |
+| `pdf`            | `PDFViewer`        |
+| `video`          | `VideoPlayer`      |
+| `audio`          | `AudioPlayer`      |
+| `bilibili`       | `BiliBiliEmbed`    |
+| `youtube`        | `YouTubeEmbed`     |
+| `vimeo`          | `VimeoEmbed`       |
+| `twitch`         | `TwitchEmbed`      |
+| `dailymotion`    | `DailymotionEmbed` |
+| `tiktok`         | `TikTokEmbed`      |
+| `spotify`        | `SpotifyEmbed`     |
+| `youtube-player` | `YouTubePlayer`    |
+| `vimeo-player`   | `VimeoPlayer`      |
+| `twitch-player`  | `TwitchPlayer`     |
+| `tiktok-player`  | `TikTokPlayer`     |
+| `spotify-player` | `SpotifyPlayer`    |
+
+The link becomes the `src` of the component, except `bilibili`, whose link is the `bvid` and also accepts a `bilibili.com/video/BV…` URL, whose `p` and `t` parameters become `page` and `time`.
+
 ## Components
 
 ### ArtPlayer
@@ -77,14 +109,16 @@ Requires `artplayer` to be installed. HLS, FLV, and DASH playback need `hls.js`,
 - `src`: Video source URL
 - `type`: Video type, inferred from the extension of `src` when omitted
 - `poster`: Video poster
-- `title`: Video title
+- `title`: Video title, used as the accessible name of the video
 - `width`: Component width, defaults to `100%`
 - `height`: Component height
 - `ratio`: Component width / height ratio, defaults to `16 / 9`
 - `config`: ArtPlayer config, see `ArtPlayerOptions`
 - `customPlayer`: Callback to customize the ArtPlayer instance
 
-ArtPlayer options can also be passed as attributes, e.g. `<ArtPlayer src="/a.mp4" autoplay muted />`. Prefix a boolean option with `no-` to disable it, e.g. `no-setting`.
+Boolean options can also be passed as attributes, e.g. `<ArtPlayer src="/a.mp4" autoplay muted />`. They are enabled by their presence, and the ones enabled by default are turned off with the matching `no-` attribute, e.g. `no-setting`, `no-backdrop`, or `no-gesture`.
+
+Every other option takes an object or a function, so it has to go through `config`. An attribute that is not a boolean option is ignored, and the plugin reports it when the site runs in dev mode.
 
 ```md
 <ArtPlayer src="/assets/video.mp4" />
@@ -138,7 +172,7 @@ Requires `@videojs/html` to be installed. HLS sources are played by the [`hls-vi
 - `autoplay`: Whether to autoplay
 - `muted`: Whether to mute
 - `loop`: Whether to restart the video when it ends
-- `playsinline`: Whether to play inline on mobile devices, defaults to `true`
+- `noPlaysinline`: Whether to disable inline playback on mobile devices
 - `crossorigin`: CORS setting of the video, required for cross-origin captions
 - `width`: Component width, defaults to `100%`
 - `height`: Component height
@@ -202,7 +236,6 @@ Requires `@videojs/html` and `@videojs/youtube-video` to be installed, which pro
 - `autoplay`: Whether to autoplay
 - `muted`: Whether to mute
 - `loop`: Whether to restart the video when it ends
-- `playsinline`: Whether to play inline on mobile devices, defaults to `true`
 - `config`: YouTube player parameters, see `YouTubeEngineConfig`
 - `width`: Component width, defaults to `100%`
 - `height`: Component height
@@ -255,7 +288,6 @@ Requires `@videojs/html` and `@videojs/vimeo-video` to be installed, which provi
 - `autoplay`: Whether to autoplay
 - `muted`: Whether to mute
 - `loop`: Whether to restart the video when it ends
-- `playsinline`: Whether to play inline on mobile devices, defaults to `true`
 - `config`: Vimeo embed parameters, see `VimeoEngineConfig`
 - `width`: Component width, defaults to `100%`
 - `height`: Component height
@@ -305,7 +337,6 @@ Requires `@videojs/html` and `@videojs/twitch-video` to be installed, which prov
 - `autoplay`: Whether to autoplay
 - `muted`: Whether to mute
 - `loop`: Whether to restart the stream when it ends
-- `playsinline`: Whether to play inline on mobile devices, defaults to `true`
 - `config`: Twitch embed parameters, see `TwitchEngineConfig`
 - `width`: Component width, defaults to `100%`
 - `height`: Component height
@@ -362,7 +393,6 @@ Requires `@videojs/html` and `@videojs/tiktok-video` to be installed, which prov
 - `autoplay`: Whether to autoplay
 - `muted`: Whether to mute
 - `loop`: Whether to restart the video when it ends
-- `playsinline`: Whether to play inline on mobile devices, defaults to `true`
 - `config`: TikTok player parameters, see `TikTokEngineConfig`
 - `width`: Component width, defaults to `100%`
 - `height`: Component height
@@ -402,7 +432,6 @@ Requires `@videojs/html` and `@videojs/spotify-audio` to be installed, which pro
 - `src`: Spotify URL, URI, or entity id
 - `autoplay`: Whether to autoplay
 - `loop`: Whether to restart the audio when it ends
-- `playsinline`: Whether to play inline on mobile devices, defaults to `true`
 - `config`: Spotify embed options, see `SpotifyEngineConfig`
 - `width`: Component width, defaults to `100%`
 - `height`: Component height

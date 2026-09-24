@@ -67,3 +67,46 @@ export const COMPONENT_PKGS: Record<string, string[]> = {
 export const CLIENT_FOLDER = ensureEndingSlash(
   path.resolve(__dirname, '../client'),
 )
+
+/**
+ * Name of every component in the link syntax
+ *
+ * 每个组件在链接语法中的名称
+ *
+ * Only the enabled components are registered, so the link syntax is available
+ * for exactly the components the plugin registers.
+ *
+ * 只有启用的组件会被注册，因此链接语法与插件注册的组件完全一致。
+ */
+export const COMPONENT_LINK_NAMES: Record<string, string> = {
+  ArtPlayer: 'artplayer',
+  PDFViewer: 'pdf',
+  VideoPlayer: 'video',
+  AudioPlayer: 'audio',
+  BiliBiliEmbed: 'bilibili',
+  YouTubeEmbed: 'youtube',
+  VimeoEmbed: 'vimeo',
+  TwitchEmbed: 'twitch',
+  DailymotionEmbed: 'dailymotion',
+  TikTokEmbed: 'tiktok',
+  SpotifyEmbed: 'spotify',
+  YouTubePlayer: 'youtube-player',
+  VimeoPlayer: 'vimeo-player',
+  TwitchPlayer: 'twitch-player',
+  TikTokPlayer: 'tiktok-player',
+  SpotifyPlayer: 'spotify-player',
+}
+
+/**
+ * Prop that receives the link of the link syntax
+ *
+ * 链接语法中的链接所传入的属性
+ *
+ * The link is the source of the component, so it is passed to `src` unless the
+ * component takes it through another prop.
+ *
+ * 链接即组件的资源地址，因此除组件通过其他属性接收外，它都会传入 `src`。
+ */
+export const COMPONENT_LINK_PROPS: Record<string, string> = {
+  BiliBiliEmbed: 'bvid',
+}

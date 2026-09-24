@@ -438,6 +438,9 @@ importers:
 
   e2e:
     dependencies:
+      '@videojs/html':
+        specifier: 10.0.0-rc.2
+        version: 10.0.0-rc.2(@videojs/dash-video@10.0.0-rc.2(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@videojs/hlsjs-video@10.0.0-rc.2)(@videojs/spotify-audio@10.0.0-rc.2)(@videojs/tiktok-video@10.0.0-rc.2)(@videojs/twitch-video@10.0.0-rc.2)(@videojs/vimeo-video@10.0.0-rc.2)(@videojs/youtube-video@10.0.0-rc.2)(react@19.3.0)
       '@vuepress/bundler-vite':
         specifier: 'catalog:'
         version: 2.0.0-rc.31(@types/node@22.20.4)(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(jiti@2.7.0)(rollup@4.63.4)(sass-embedded@1.105.0)(sass@1.105.0)(supports-color@10.2.2)(terser@5.51.2)(typescript@6.0.3)(webpack@5.111.1(clean-css@5.3.3)(cssnano@9.0.5(postcss@8.5.28))(csso@5.0.5)(esbuild@0.28.2)(html-minifier-terser@7.2.0)(lightningcss@1.33.0)(postcss@8.5.28)(svgo@4.1.0)(uglify-js@3.19.3))(yaml@2.9.1)
@@ -495,6 +498,9 @@ importers:
       '@vuepress/theme-default':
         specifier: workspace:*
         version: link:../themes/theme-default
+      artplayer:
+        specifier: ^5.3.0
+        version: 5.4.0
       sass-embedded:
         specifier: 'catalog:'
         version: 1.105.0
@@ -902,6 +908,12 @@ importers:
       '@embedpdf/vue-pdf-viewer':
         specifier: ^2.15.0
         version: 2.15.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(svelte@5.57.1)(vue@3.5.43(typescript@6.0.3))
+      '@mdit/helper':
+        specifier: ^1.1.1
+        version: 1.1.1(markdown-it@14.3.2)
+      '@mdit/plugin-advanced-links':
+        specifier: ^0.2.0
+        version: 0.2.0(markdown-it@14.3.2)
       '@videojs/dash-video':
         specifier: 10.0.0-rc.2
         version: 10.0.0-rc.2(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)
@@ -950,6 +962,13 @@ importers:
       vuepress:
         specifier: 'catalog:'
         version: 2.0.0-rc.31(603bf7bd0e97a2e6dd17a4be54e25f8a)
+    devDependencies:
+      '@types/markdown-it':
+        specifier: ^14.2.0
+        version: 14.2.0
+      markdown-it:
+        specifier: ^14.3.2
+        version: 14.3.2
 
   plugins/features/plugin-medium-zoom:
     dependencies:
@@ -3785,6 +3804,15 @@ packages:
     engines: {node: '>=22'}
     peerDependencies:
       markdown-it: ^15.0.1
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-advanced-links@0.2.0':
+    resolution: {integrity: sha512-ma4KgKDoLNvNHfgQIm8m3IwF+x9MmCyF8npDvA/BSLrIzP2iqfbQjASi6Ezldhu4b8U9v3ioW0XzjkqSML8fJg==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^15.0.2
     peerDependenciesMeta:
       markdown-it:
         optional: true
@@ -13275,6 +13303,12 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.3.2
 
+  '@mdit/plugin-advanced-links@0.2.0(markdown-it@14.3.2)':
+    dependencies:
+      '@mdit/helper': 1.1.1(markdown-it@14.3.2)
+    optionalDependencies:
+      markdown-it: 14.3.2
+
   '@mdit/plugin-alert@2.0.1(markdown-it@14.3.2)':
     dependencies:
       '@mdit/helper': 1.1.1(markdown-it@14.3.2)
@@ -14223,47 +14257,57 @@ snapshots:
       acorn: 8.18.0
     optional: true
 
-  '@svta/cml-608@1.0.2': {}
+  '@svta/cml-608@1.0.2':
+    optional: true
 
   '@svta/cml-cmcd@2.3.2(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)':
     dependencies:
       '@svta/cml-structured-field-values': 1.1.3(@svta/cml-utils@1.5.0)
       '@svta/cml-utils': 1.5.0
+    optional: true
 
   '@svta/cml-cmsd@1.0.6(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)':
     dependencies:
       '@svta/cml-cta': 1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)
       '@svta/cml-structured-field-values': 1.1.3(@svta/cml-utils@1.5.0)
       '@svta/cml-utils': 1.5.0
+    optional: true
 
   '@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)':
     dependencies:
       '@svta/cml-structured-field-values': 1.1.3(@svta/cml-utils@1.5.0)
       '@svta/cml-utils': 1.5.0
+    optional: true
 
   '@svta/cml-dash@1.0.6(@svta/cml-utils@1.5.0)':
     dependencies:
       '@svta/cml-utils': 1.5.0
+    optional: true
 
   '@svta/cml-id3@1.0.6(@svta/cml-utils@1.5.0)':
     dependencies:
       '@svta/cml-utils': 1.5.0
+    optional: true
 
   '@svta/cml-request@1.0.12(@svta/cml-cmcd@2.3.2(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)(@svta/cml-xml@1.1.4(@svta/cml-utils@1.5.0))':
     dependencies:
       '@svta/cml-cmcd': 2.3.2(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0)
       '@svta/cml-utils': 1.5.0
       '@svta/cml-xml': 1.1.4(@svta/cml-utils@1.5.0)
+    optional: true
 
   '@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0)':
     dependencies:
       '@svta/cml-utils': 1.5.0
+    optional: true
 
-  '@svta/cml-utils@1.5.0': {}
+  '@svta/cml-utils@1.5.0':
+    optional: true
 
   '@svta/cml-xml@1.1.4(@svta/cml-utils@1.5.0)':
     dependencies:
       '@svta/cml-utils': 1.5.0
+    optional: true
 
   '@trickfilm400/rollup-plugin-off-main-thread@3.0.0-pre1':
     dependencies:
@@ -14631,6 +14675,7 @@ snapshots:
       - '@svta/cml-cta'
       - '@svta/cml-structured-field-values'
       - '@svta/cml-utils'
+    optional: true
 
   '@videojs/element@10.0.0-rc.2':
     dependencies:
@@ -14642,6 +14687,7 @@ snapshots:
       '@videojs/native-hls-video': 10.0.0-rc.2
       '@videojs/utils': 10.0.0-rc.2
       hls.js: 1.6.7
+    optional: true
 
   '@videojs/html@10.0.0-rc.2(@videojs/dash-video@10.0.0-rc.2(@svta/cml-cta@1.0.6(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@svta/cml-structured-field-values@1.1.3(@svta/cml-utils@1.5.0))(@svta/cml-utils@1.5.0))(@videojs/hlsjs-video@10.0.0-rc.2)(@videojs/spotify-audio@10.0.0-rc.2)(@videojs/tiktok-video@10.0.0-rc.2)(@videojs/twitch-video@10.0.0-rc.2)(@videojs/vimeo-video@10.0.0-rc.2)(@videojs/youtube-video@10.0.0-rc.2)(react@19.3.0)':
     dependencies:
@@ -14682,6 +14728,7 @@ snapshots:
     dependencies:
       '@videojs/media': 10.0.0-rc.2
       '@videojs/utils': 10.0.0-rc.2
+    optional: true
 
   '@videojs/store@10.0.0-rc.2(@videojs/element@10.0.0-rc.2)(react@19.3.0)':
     dependencies:
@@ -14694,11 +14741,13 @@ snapshots:
     dependencies:
       '@videojs/media': 10.0.0-rc.2
       '@videojs/utils': 10.0.0-rc.2
+    optional: true
 
   '@videojs/twitch-video@10.0.0-rc.2':
     dependencies:
       '@videojs/media': 10.0.0-rc.2
       '@videojs/utils': 10.0.0-rc.2
+    optional: true
 
   '@videojs/utils@10.0.0-rc.2': {}
 
@@ -14707,16 +14756,19 @@ snapshots:
       '@videojs/media': 10.0.0-rc.2
       '@videojs/utils': 10.0.0-rc.2
       '@vimeo/player': 2.30.3
+    optional: true
 
   '@videojs/youtube-video@10.0.0-rc.2':
     dependencies:
       '@videojs/media': 10.0.0-rc.2
       '@videojs/utils': 10.0.0-rc.2
+    optional: true
 
   '@vimeo/player@2.30.3':
     dependencies:
       native-promise-only: 0.8.1
       weakmap-polyfill: 2.0.4
+    optional: true
 
   '@vitejs/plugin-vue@6.0.9(vite@8.3.0(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.105.0)(sass@1.105.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))':
     dependencies:
@@ -15513,7 +15565,8 @@ snapshots:
 
   bcp-47-match@1.0.3: {}
 
-  bcp-47-match@2.0.3: {}
+  bcp-47-match@2.0.3:
+    optional: true
 
   bcp-47-normalize@1.1.1:
     dependencies:
@@ -15819,7 +15872,8 @@ snapshots:
 
   cmd-shim@8.0.0: {}
 
-  codem-isoboxer@0.3.10: {}
+  codem-isoboxer@0.3.10:
+    optional: true
 
   codem-isoboxer@0.3.9: {}
 
@@ -16381,6 +16435,7 @@ snapshots:
       - '@svta/cml-cta'
       - '@svta/cml-structured-field-values'
       - '@svta/cml-utils'
+    optional: true
 
   data-view-buffer@1.0.2:
     dependencies:
@@ -17210,7 +17265,8 @@ snapshots:
 
   highlight.js@11.12.0: {}
 
-  hls.js@1.6.7: {}
+  hls.js@1.6.7:
+    optional: true
 
   hls.js@1.7.3: {}
 
@@ -17235,7 +17291,8 @@ snapshots:
 
   html-entities@1.4.0: {}
 
-  html-entities@2.6.0: {}
+  html-entities@2.6.0:
+    optional: true
 
   html-minifier-terser@6.1.0:
     dependencies:
@@ -17382,7 +17439,8 @@ snapshots:
 
   ignore@7.0.10: {}
 
-  immediate@3.0.6: {}
+  immediate@3.0.6:
+    optional: true
 
   immutable@5.1.9: {}
 
@@ -17403,6 +17461,7 @@ snapshots:
   imsc@1.1.5:
     dependencies:
       sax: 1.2.1
+    optional: true
 
   imurmurhash@0.1.4: {}
 
@@ -17762,6 +17821,7 @@ snapshots:
   lie@3.1.1:
     dependencies:
       immediate: 3.0.6
+    optional: true
 
   lightningcss-android-arm64@1.33.0:
     optional: true
@@ -17851,6 +17911,7 @@ snapshots:
   localforage@1.10.0:
     dependencies:
       lie: 3.1.1
+    optional: true
 
   locate-character@3.0.0:
     optional: true
@@ -18480,7 +18541,8 @@ snapshots:
 
   nanoid@6.0.1: {}
 
-  native-promise-only@0.8.1: {}
+  native-promise-only@0.8.1:
+    optional: true
 
   negotiator@0.6.3: {}
 
@@ -19746,7 +19808,8 @@ snapshots:
       '@parcel/watcher': 2.6.0
     optional: true
 
-  sax@1.2.1: {}
+  sax@1.2.1:
+    optional: true
 
   sax@1.6.1: {}
 
@@ -20852,7 +20915,8 @@ snapshots:
     dependencies:
       minimalistic-assert: 1.0.1
 
-  weakmap-polyfill@2.0.4: {}
+  weakmap-polyfill@2.0.4:
+    optional: true
 
   web-namespaces@2.0.1: {}
 

@@ -1,48 +1,17 @@
-import { entries, getModulePath } from '@vuepress/helper'
+import { getModulePath } from '@vuepress/helper'
 import type { App } from 'vuepress/core'
 
-import {
-  AVAILABLE_COMPONENTS,
-  CLIENT_FOLDER,
-  COMPONENT_PKGS,
-  EMBED_COMPONENTS,
-  VIDEOJS_PROVIDER_COMPONENTS,
-} from './constants.js'
-import { logger } from './logger.js'
-import type { MediaPluginOptions } from './options.js'
-import { isInstalled } from './utils.js'
+import { CLIENT_FOLDER } from './constants.js'
 
 export const prepareClientConfigFile = (
   app: App,
-  options: MediaPluginOptions,
+  components: string[],
 ): Promise<string> => {
   const imports: string[] = []
   let enhance = ''
   const setups: string[] = []
 
-  // Every option enables its component through one of these three groups
-  const enabledComponents = [
-    ...entries(AVAILABLE_COMPONENTS)
-      .filter(([key]) => options[key as keyof MediaPluginOptions])
-      .map(([, component]) => component),
-    ...(options.embeds ?? []).map((name) => EMBED_COMPONENTS[name]),
-    ...(options.videojsProviders ?? []).map(
-      (name) => VIDEOJS_PROVIDER_COMPONENTS[name],
-    ),
-  ]
-
-  for (const component of new Set(enabledComponents)) {
-    const missing = COMPONENT_PKGS[component]?.filter(
-      (pkg) => !isInstalled(pkg),
-    )
-
-    if (missing?.length) {
-      logger.warn(
-        `Component ${component} is skipped, because ${missing.join(', ')} is not installed.`,
-      )
-      continue
-    }
-
+  for (const component of components) {
     imports.push(
       `import { ${component} } from "${CLIENT_FOLDER}components/${component}.js";`,
     )
