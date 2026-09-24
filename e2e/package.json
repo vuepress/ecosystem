@@ -35,7 +35,7 @@
     "@vuepress/plugin-theme-data": "workspace:*",
     "@vuepress/plugin-watermark": "workspace:*",
     "@vuepress/theme-default": "workspace:*",
-    "artplayer": "^5.3.0",
+    "artplayer": "^5.4.0",
     "sass-embedded": "catalog:",
     "sass-loader": "catalog:",
     "vue": "catalog:",
