@@ -1,0 +1,277 @@
+import { useLocale } from '@vuepress/helper/client'
+import {
+  onClickOutside,
+  useDebounceFn,
+  useEventListener,
+  useScrollLock,
+  watchImmediate,
+} from '@vueuse/core'
+import type { VNode } from 'vue'
+import {
+  computed,
+  defineAsyncComponent,
+  defineComponent,
+  h,
+  onMounted,
+  onUnmounted,
+  ref,
+  shallowRef,
+  watch,
+} from 'vue'
+import { useLang, useSiteLocale } from 'vuepress/client'
+
+import {
+  useActiveState,
+  useArrayCycle,
+  useSuggestions,
+} from '../composables/index.js'
+import { getSearchClientConfig } from '../define.js'
+import { useSearchOptions } from '../helpers/index.js'
+import { CLOSE_ICON } from '../icons/index.js'
+import { defaultQuerySplitter } from '../utils/index.js'
+import { SearchIcon } from './icons.js'
+import SearchKeyHints from './SearchKeyHints.js'
+import { SearchLoading } from './SearchLoading.js'
+
+import '../styles/search-modal.scss'
+
+const SearchResult = defineAsyncComponent({
+  loader: () =>
+    import(/* webpackChunkName: "vp-search-result" */ './SearchResult.js'),
+  loadingComponent: () => {
+    const localeConfig = useLocale(getSearchClientConfig().locales)
+
+    return h(SearchLoading, {
+      class: 'vp-search-result-wrapper',
+      hint: localeConfig.value.loading,
+    })
+  },
+})
+
+const SUGGESTIONS_KEYCODE = new Set([
+  'ArrowDown',
+  'ArrowUp',
+  'Escape',
+  'Tab',
+  'Enter',
+])
+
+export default defineComponent({
+  name: 'SearchModal',
+
+  setup() {
+    const lang = useLang()
+    const { locales, options } = getSearchClientConfig()
+    const locale = useLocale(locales)
+    const siteLocale = useSiteLocale()
+    const searchOptions = useSearchOptions()
+    const [isActive, toggleActive] = useActiveState()
+
+    const input = ref('')
+    const queries = ref<string[]>([])
+    const { enabled: enabledSuggestions, suggestions } = useSuggestions(queries)
+    const showSuggestion = ref(false)
+
+    const {
+      index: activeSuggestionIndex,
+      prev: activePreviousSuggestion,
+      next: activeNextSuggestion,
+    } = useArrayCycle(suggestions)
+
+    const inputElement = shallowRef<HTMLInputElement>()
+    const suggestionsElement = shallowRef<HTMLDivElement>()
+    const body = shallowRef<HTMLElement>()
+    const isLocked = useScrollLock(body.value)
+
+    const hasSuggestions = computed(
+      () =>
+        enabledSuggestions && showSuggestion.value && suggestions.value.length,
+    )
+
+    const applySuggestion = (index = activeSuggestionIndex.value): void => {
+      input.value = suggestions.value[index]
+      showSuggestion.value = false
+    }
+
+    useEventListener(
+      'keydown',
+      (event: KeyboardEvent) => {
+        // handle suggestion keys
+        if (hasSuggestions.value) {
+          if (event.key === 'ArrowUp') activePreviousSuggestion()
+          else if (event.key === 'ArrowDown') activeNextSuggestion()
+          else if (event.key === 'Tab') applySuggestion()
+          else if (event.key === 'Enter' || event.key === 'Escape')
+            showSuggestion.value = false
+        }
+        // hide the modal when pressing the escape key
+        else if (event.key === 'Escape') {
+          toggleActive(false)
+        }
+      },
+      { passive: true },
+    )
+
+    onClickOutside(suggestionsElement, () => {
+      showSuggestion.value = false
+    })
+
+    watchImmediate(
+      input,
+      useDebounceFn(
+        async () => {
+          const result = await (
+            searchOptions.value.querySplitter ?? defaultQuerySplitter
+          )(input.value, lang.value)
+
+          queries.value = result.filter((item) => item.length)
+        },
+        Math.min(options.searchDelay, options.suggestDelay),
+      ),
+    )
+
+    onMounted(() => {
+      body.value = document.body
+
+      watch(
+        isActive,
+        (value) => {
+          if (value) inputElement.value?.focus()
+        },
+        { flush: 'post' },
+      )
+    })
+
+    onUnmounted(() => {
+      isLocked.value = false
+    })
+
+    return (): VNode | null =>
+      isActive.value
+        ? h('div', { class: 'vp-search-modal-wrapper' }, [
+            h('div', {
+              class: 'vp-search-mask',
+              onClick: () => {
+                toggleActive(false)
+                input.value = ''
+              },
+            }),
+            h('div', { class: 'vp-search-modal' }, [
+              h('div', { class: 'vp-search-box' }, [
+                h('form', [
+                  h(
+                    'label',
+                    {
+                      'id': 'vp-search-label',
+                      'for': 'vp-search-input',
+                      'aria-label': locale.value.search,
+                    },
+                    h(SearchIcon),
+                  ),
+                  h('input', {
+                    'ref': inputElement,
+                    'type': 'search',
+                    'class': 'vp-search-input',
+                    'id': 'vp-search-input',
+                    'placeholder': locale.value.placeholder,
+                    'spellcheck': 'false',
+                    'autocapitalize': 'off',
+                    'autocomplete': 'off',
+                    'autocorrect': 'off',
+                    'name': `${siteLocale.value.title}-search`,
+                    'value': input.value,
+                    'aria-controls': 'vp-search-results',
+                    'onKeydown': (event: KeyboardEvent): void => {
+                      if (
+                        hasSuggestions.value &&
+                        // These keys are handled by the suggestion list
+                        SUGGESTIONS_KEYCODE.has(event.key)
+                      )
+                        event.preventDefault()
+                    },
+                    'onInput': ({ target }: InputEvent) => {
+                      input.value = (target as HTMLInputElement).value
+                      showSuggestion.value = true
+                      activeSuggestionIndex.value = 0
+                    },
+                  }),
+                  input.value
+                    ? h('button', {
+                        'type': 'reset',
+                        'class': 'vp-search-clear-button',
+                        'title': locale.value.clear,
+                        'aria-label': locale.value.clear,
+                        'innerHTML': CLOSE_ICON,
+                        'onClick': () => {
+                          input.value = ''
+                        },
+                      })
+                    : null,
+                  hasSuggestions.value
+                    ? h(
+                        'ul',
+                        {
+                          class: 'vp-search-suggestions',
+                          ref: suggestionsElement,
+                        },
+                        suggestions.value.map((suggestion, index) =>
+                          h(
+                            'li',
+                            {
+                              class: [
+                                'vp-search-suggestion',
+                                {
+                                  active: index === activeSuggestionIndex.value,
+                                },
+                              ],
+                              onClick: () => {
+                                applySuggestion(index)
+                              },
+                            },
+                            [
+                              h(
+                                'kbd',
+                                {
+                                  class: 'vp-search-auto-complete',
+                                  title: `Tab ${locale.value.autocomplete}`,
+                                },
+                                'Tab',
+                              ),
+                              suggestion,
+                            ],
+                          ),
+                        ),
+                      )
+                    : null,
+                ]),
+                h(
+                  'button',
+                  {
+                    type: 'button',
+                    class: 'vp-search-close-button',
+                    onClick: () => {
+                      toggleActive(false)
+                      input.value = ''
+                    },
+                  },
+                  locale.value.cancel,
+                ),
+              ]),
+
+              h(SearchResult, {
+                queries: queries.value,
+                isFocusing: !hasSuggestions.value,
+                onClose: () => {
+                  toggleActive(false)
+                },
+                onUpdateQuery: (query: string) => {
+                  input.value = query
+                },
+              }),
+
+              h(SearchKeyHints),
+            ]),
+          ])
+        : null
+  },
+})

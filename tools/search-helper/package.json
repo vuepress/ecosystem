@@ -1,0 +1,67 @@
+{
+  "name": "@vuepress/search-helper",
+  "version": "2.0.0-rc.135",
+  "description": "VuePress search helper",
+  "keywords": [
+    "helper",
+    "search",
+    "search-helper",
+    "vuepress"
+  ],
+  "homepage": "https://ecosystem.vuejs.press/tools/search-helper/",
+  "bugs": {
+    "url": "https://github.com/vuepress/ecosystem/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mr.Hope",
+    "email": "mister-hope@outlook.com",
+    "url": "https://mister-hope.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/ecosystem.git",
+    "directory": "tools/search-helper"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "./dist/**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.js"
+    },
+    "./client": {
+      "types": "./dist/client/index.d.ts",
+      "default": "./dist/client/index.js"
+    },
+    "./shared": {
+      "types": "./dist/shared/index.d.ts",
+      "default": "./dist/shared/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "clean": "rimraf ./dist"
+  },
+  "dependencies": {
+    "@vuepress/helper": "workspace:*",
+    "@vueuse/core": "catalog:",
+    "cheerio": "^1.2.0",
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "domhandler": "^6.0.1"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:"
+  }
+}
