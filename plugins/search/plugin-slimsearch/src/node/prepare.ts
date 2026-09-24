@@ -86,22 +86,31 @@ export const prepareWorkerOptions = async (
 /**
  * Rewrite the temp files of a locale after its index changed.
  *
+ * The path store is rewritten as well, because a page that is added during a
+ * hot reload gets a new index id, which the client could not resolve
+ * otherwise.
+ *
  * 语言环境索引变化后重写其临时文件。
+ *
+ * 路径存储也会被重写，因为热重载期间新增的页面会获得新的索引 id，否则客户端无法解析它。
  *
  * @param app - VuePress app VuePress 应用实例
  * @param searchIndexStore - Index store 索引存储
+ * @param store - Path store 路径存储
  * @param localePath - Path of the locale 语言环境的路径
  * @param index - Index of the locale 该语言环境的索引
  */
 const writeDevFiles = async (
   app: App,
   searchIndexStore: SearchIndexStore,
+  store: PathStore,
   localePath: string,
   index: SearchIndex,
 ): Promise<void> => {
   await Promise.all([
     writeLocaleIndex(app, prepareOptions, localePath, index),
     writeLocaleRegistry(app, TEMP_DIR, Object.keys(searchIndexStore)),
+    prepareStore(app, store),
   ])
 }
 
@@ -153,7 +162,13 @@ export const updateSearchIndex = async (
 
   await vacuum(localeSearchIndex)
 
-  await writeDevFiles(app, searchIndexStore, pathLocale, localeSearchIndex)
+  await writeDevFiles(
+    app,
+    searchIndexStore,
+    store,
+    pathLocale,
+    localeSearchIndex,
+  )
 }
 
 /**
@@ -181,5 +196,11 @@ export const removeSearchIndex = async (
 
   await vacuum(localeSearchIndex)
 
-  await writeDevFiles(app, searchIndexStore, pathLocale, localeSearchIndex)
+  await writeDevFiles(
+    app,
+    searchIndexStore,
+    store,
+    pathLocale,
+    localeSearchIndex,
+  )
 }

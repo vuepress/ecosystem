@@ -11,6 +11,8 @@ import {
   prepareSearchIndex,
   prepareStore,
   prepareWorkerOptions,
+  removeSearchIndex,
+  updateSearchIndex,
 } from '../src/node/prepare.js'
 import { decodeIndex } from '../src/shared/index.js'
 import type { SearchIndex } from '../src/shared/index.js'
@@ -116,5 +118,76 @@ describe('index generation', () => {
     // exactly like the index was tokenized
     expect(serialized.lang).toBe(index.tokenizer.language)
     expect(serialized.stopWords).toHaveLength(180)
+  })
+})
+
+describe('dev hot reload', () => {
+  const makePage = (
+    pagePath: string,
+    title: string,
+  ): Parameters<typeof updateSearchIndex>[3] =>
+    ({
+      path: pagePath,
+      pathLocale: '/',
+      title,
+      frontmatter: {},
+      data: {},
+      contentRendered: `<h2 id="a">Section</h2><p>Fresh content</p>`,
+    }) as unknown as Parameters<typeof updateSearchIndex>[3]
+
+  it('should rewrite the path store when a page is added', async () => {
+    const store = new PathStore()
+    const indexesByPage = new Map<string, string[]>()
+    const searchIndexStore = await getSearchIndexStore(
+      app,
+      { indexContent: true },
+      store,
+      indexesByPage,
+    )
+    const context = { searchIndexStore, store, indexesByPage }
+
+    await updateSearchIndex(
+      app,
+      { indexContent: true },
+      context,
+      makePage('/brand-new-page.html', 'Brand new page'),
+    )
+
+    // A page added during a hot reload gets a new index id, so the store has to
+    // be rewritten, otherwise the client can not resolve the path of its
+    // results
+    const storeContent = fs.readFileSync(
+      app.dir.temp('orama/store.js'),
+      'utf-8',
+    )
+
+    expect(storeContent).toContain('/brand-new-page.html')
+
+    const newPageId = store.addPath('/brand-new-page.html')
+
+    expect(storeContent).toContain(`"${newPageId}":"/brand-new-page.html"`)
+  })
+
+  it('should drop the page from the path store when it is removed', async () => {
+    const store = new PathStore()
+    const indexesByPage = new Map<string, string[]>()
+    const searchIndexStore = await getSearchIndexStore(
+      app,
+      { indexContent: true },
+      store,
+      indexesByPage,
+    )
+    const context = { searchIndexStore, store, indexesByPage }
+    const page = makePage('/temporary-page.html', 'Temporary page')
+
+    await updateSearchIndex(app, { indexContent: true }, context, page)
+    await removeSearchIndex(app, context, page)
+
+    const storeContent = fs.readFileSync(
+      app.dir.temp('orama/store.js'),
+      'utf-8',
+    )
+
+    expect(storeContent).not.toContain('/temporary-page.html')
   })
 })
