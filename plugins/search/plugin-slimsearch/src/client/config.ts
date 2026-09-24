@@ -1,13 +1,19 @@
-import { defineClientConfig } from 'vuepress/client'
+import {
+  createSearchClientConfig,
+  isCJKLang,
+} from '@vuepress/search-helper/client'
 
-import SearchBox from './components/SearchBox.js'
-import SearchModal from './components/SearchModal.js'
-import { injectSearchConfig } from './helpers/index.js'
+import { store } from '@temp/slimsearch/store.js'
 
-export default defineClientConfig({
-  enhance({ app }) {
-    injectSearchConfig(app)
-    app.component('SearchBox', SearchBox)
-  },
-  rootComponents: [SearchModal],
+import { customFieldConfig, locales, options } from './define.js'
+
+export default createSearchClientConfig({
+  options,
+  locales,
+  customFieldConfig,
+  store,
+  // SlimSearch matches prefixes, so prefix search is enabled for languages
+  // that are not separated by whitespace
+  getLocaleSearchOptions: (lang) => ({ prefix: !isCJKLang(lang) }),
+  devWorker: new URL('worker/dev.js', import.meta.url),
 })

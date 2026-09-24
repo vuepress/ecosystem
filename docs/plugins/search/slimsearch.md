@@ -409,6 +409,8 @@ You can customize the index generation process using `indexOptions` and `indexLo
 
 We use the `Intl.Segmenter` API for tokenization (word-splitting) by default. While this works well for most languages, you might want to provide a custom `tokenize` function for specific languages to improve search accuracy.
 
+A custom `tokenize` (and `processTerm`) is used when the index is built. It can not be sent to the search worker, which tokenizes queries with its own default options instead. That is not a problem, because the client splits the query into words with the [`querySplitter`](#definesearchconfig) option (which defaults to `Intl.Segmenter`) and sends those words to the worker: a custom `tokenize` stays compatible as long as it splits words the same way `querySplitter` does.
+
 ### Using with API
 
 To access the search functionality programmatically, import the `createSearchWorker` function from `@vuepress/plugin-slimsearch/client`:

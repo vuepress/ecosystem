@@ -410,6 +410,8 @@ export default defineUserConfig({
 
 目前我们使用 `Intl.Segmenter` API 在构建搜索索引时进行分词。这在大多数语言中效果良好，但为了获得更高的准确性，你可能希望通过 `tokenize` 选项自定义分词过程。
 
+自定义 `tokenize`（与 `processTerm`）会在构建索引时生效。它无法发送给搜索 Worker，Worker 会改用其默认选项对查询分词。这并不是问题，因为客户端会使用 [`querySplitter`](#definesearchconfig) 选项（默认为 `Intl.Segmenter`）将查询拆分为单词并发送给 Worker：只要自定义 `tokenize` 与 `querySplitter` 的拆分方式一致，它就能保持兼容。
+
 ### 使用 API
 
 如果你想访问搜索 API，你需要从 `@vuepress/plugin-slimsearch/client` 导入 `createSearchWorker` 函数：

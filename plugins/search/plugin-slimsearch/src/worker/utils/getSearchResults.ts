@@ -1,55 +1,56 @@
-import { entries } from '@vuepress/helper/shared'
-import type { MatchInfo, SearchIndex } from 'slimsearch'
+import { buildSearchResults } from '@vuepress/search-helper/shared'
 import { getStoredFields, search } from 'slimsearch'
 
 import {
+  CUSTOM_FIELDS_INDEX_ID,
   HEADING_INDEX_ID,
   TEXT_INDEX_ID,
-  CUSTOM_FIELDS_INDEX_ID,
 } from '../../shared/index.js'
 import type {
-  CustomFieldIndexItem,
-  IndexItem,
   PageIndexItem,
-  HeadingMatchedItem,
-  MatchedContent,
-  MatchedItem,
+  SearchIndex,
   SearchResult,
-  TitleMatchedItem,
+  SearchSortStrategy,
   WorkerSearchOptions,
 } from '../../shared/index.js'
-import { getMatchedContent } from './getMatchedContent.js'
 
-export type MiniSearchResult = IndexItem & {
-  terms: string[]
-  score: number
-  match: MatchInfo
-}
+/**
+ * Normalize the matched terms of a result for highlighting.
+ *
+ * Terms are sorted by length and the ones contained in a longer term are
+ * dropped, so that the longest term is highlighted as a whole.
+ *
+ * 规范化命中项的匹配词条，用于高亮。
+ *
+ * 词条会按长度排序，并丢弃被更长词条包含的词条，从而把最长的词条整体高亮。
+ *
+ * @param terms - Matched terms 匹配的词条
+ * @returns Normalized terms 规范化后的词条
+ */
+const normalizeTerms = (terms: string[]): string[] =>
+  terms
+    .sort((a, b) => a.length - b.length)
+    .filter((item, index) =>
+      terms.slice(index + 1).every((term) => !term.includes(item)),
+    )
 
-interface PageResult {
-  title: string
-  contents: [result: MatchedItem, score: number][]
-}
-
-type ResultMap = Record<string, PageResult>
-
-const sortResultByTotal = (valueA: PageResult, valueB: PageResult): number =>
-  valueB.contents.reduce((total, [, score]) => total + score, 0) -
-  valueA.contents.reduce((total, [, score]) => total + score, 0)
-
-const sortResultByMax = (valueA: PageResult, valueB: PageResult): number =>
-  Math.max(...valueB.contents.map(([, score]) => score)) -
-  Math.max(...valueA.contents.map(([, score]) => score))
-
-// oxlint-disable-next-line max-lines-per-function
+/**
+ * Search a locale index and build the search results.
+ *
+ * 搜索某个语言环境的索引并构建搜索结果。
+ *
+ * @param query - Search query 搜索词
+ * @param localeIndex - Locale search index 语言搜索索引
+ * @param searchOptions - Search options 搜索选项
+ * @param sortStrategy - Strategy to sort the results 结果的排序策略
+ * @returns Search results 搜索结果
+ */
 export const getSearchResults = (
   query: string,
-  localeIndex: SearchIndex<string, IndexItem, IndexItem>,
+  localeIndex: SearchIndex,
   searchOptions: WorkerSearchOptions = {},
-  sortStrategy = 'max',
+  sortStrategy: SearchSortStrategy = 'max',
 ): SearchResult[] => {
-  const resultMap: ResultMap = {}
-
   const results = search(localeIndex, query, {
     boost: {
       [CUSTOM_FIELDS_INDEX_ID]: 4,
@@ -60,101 +61,23 @@ export const getSearchResults = (
     ...searchOptions,
   })
 
-  results.forEach((result) => {
-    const { id, terms, score } = result
-    const isCustomField = id.includes('@')
-    const isSection = id.includes('#')
-    const [pageIndex, info] = id.split(/[#@]/u)
-    const pageId = Number(pageIndex)
-
-    const displayTerms = terms
-      .sort((a, b) => a.length - b.length)
-      .filter((item, index) =>
-        terms.slice(index + 1).every((term) => !term.includes(item)),
-      )
-
-    // oxlint-disable-next-line no-multi-assign
-    const { contents } = (resultMap[pageId] ??= {
-      title: '',
-      contents: [],
-    })
-
-    // CustomFieldIndexItem
-    if (isCustomField) {
-      contents.push([
-        {
-          type: 'customField',
-          id: pageId,
-          index: info,
-          display: displayTerms
-            .flatMap((term) =>
-              (result as CustomFieldIndexItem)[CUSTOM_FIELDS_INDEX_ID].map(
-                (field) => getMatchedContent(field, term),
-              ),
-            )
-            .filter((item): item is MatchedContent => item != null),
-        },
-        score,
-      ])
-    } else {
-      const headerContent = displayTerms
-        .map((term) =>
-          getMatchedContent((result as PageIndexItem)[HEADING_INDEX_ID], term),
-        )
-        .filter((item): item is MatchedContent => item != null)
-
-      if (headerContent.length > 0) {
-        contents.push([
-          {
-            type: isSection ? 'heading' : 'title',
-            id: pageId,
-            ...(isSection && { anchor: info }),
-            display: headerContent,
-          } as HeadingMatchedItem | TitleMatchedItem,
-          score,
-        ])
-      }
-
-      if (TEXT_INDEX_ID in result && result[TEXT_INDEX_ID]) {
-        for (const text of result[TEXT_INDEX_ID]) {
-          const matchedContent = displayTerms
-            .map((term) => getMatchedContent(text, term))
-            .filter((item): item is MatchedContent => item != null)
-
-          if (matchedContent.length > 0) {
-            contents.push([
-              {
-                type: 'text',
-                id: pageId,
-                ...(isSection && { anchor: info }),
-                display: matchedContent,
-              },
-              score,
-            ])
-          }
-        }
-      }
-    }
-  })
-
-  return entries(resultMap)
-    .sort(([, valueA], [, valueB]) =>
-      (sortStrategy ? sortResultByTotal : sortResultByMax)(valueA, valueB),
-    )
-    .map(([id, { title, contents }]) => {
-      // Search to get title
-      if (!title) {
-        const pageIndex = getStoredFields(localeIndex, id) as unknown as
+  return buildSearchResults({
+    hits: results.map(({ id, score, terms, ...document }) => ({
+      id,
+      score,
+      terms: normalizeTerms(terms),
+      // SlimSearch does not store the id in the document
+      document: { ...document, id },
+    })),
+    displayTerms: [],
+    // Search the index to get the title when the page-level document did not
+    // match the query
+    getPageTitle: (pageId) =>
+      (
+        getStoredFields(localeIndex, String(pageId)) as unknown as
           | PageIndexItem
           | undefined
-
-        // oxlint-disable-next-line no-param-reassign
-        if (pageIndex) title = pageIndex[HEADING_INDEX_ID]
-      }
-
-      return {
-        title,
-        contents: contents.map(([result]) => result),
-      }
-    })
+      )?.[HEADING_INDEX_ID],
+    sortStrategy,
+  })
 }

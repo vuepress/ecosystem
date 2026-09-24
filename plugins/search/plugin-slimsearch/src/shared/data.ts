@@ -1,42 +1,19 @@
-import type { SearchIndex } from 'slimsearch'
+import {
+  CUSTOM_FIELDS_INDEX_ID,
+  HEADING_INDEX_ID,
+  TEXT_INDEX_ID,
+} from '@vuepress/search-helper/shared'
+import type { IndexItem } from '@vuepress/search-helper/shared'
+import type { SearchIndex as SlimSearchIndex } from 'slimsearch'
 
-export const HEADING_INDEX_ID = 'h'
-export const TEXT_INDEX_ID = 't'
-export const CUSTOM_FIELDS_INDEX_ID = 'c'
-
+/** Field configuration of the SlimSearch index. SlimSearch 索引的字段配置。 */
 export const INDEX_FIELD_CONFIG = {
   fields: [HEADING_INDEX_ID, TEXT_INDEX_ID, CUSTOM_FIELDS_INDEX_ID],
   storeFields: [HEADING_INDEX_ID, TEXT_INDEX_ID, CUSTOM_FIELDS_INDEX_ID],
 }
 
-export type PageIndexId = `${number}`
+/** SlimSearch index. SlimSearch 索引。 */
+export type SearchIndex = SlimSearchIndex<string, IndexItem, IndexItem>
 
-export interface PageIndexItem {
-  id: PageIndexId
-  [HEADING_INDEX_ID]: string
-  [TEXT_INDEX_ID]?: string[]
-}
-
-export type SectionIndexId = `${PageIndexId}#${string}`
-
-export interface SectionIndexItem {
-  id: SectionIndexId
-  [HEADING_INDEX_ID]: string
-  [TEXT_INDEX_ID]?: string[]
-}
-
-export type CustomFieldIndexID = `${PageIndexId}@${number}`
-
-export interface CustomFieldIndexItem {
-  id: string
-  [CUSTOM_FIELDS_INDEX_ID]: string[]
-}
-
-export type IndexItem = CustomFieldIndexItem | PageIndexItem | SectionIndexItem
-
-export type LocaleIndex = Record<string, IndexItem[]>
-
-export type SearchIndexStore = Record<
-  string,
-  SearchIndex<string, IndexItem, IndexItem>
->
+/** Index store of the locales. 各语言环境的索引存储。 */
+export type SearchIndexStore = Record<string, SearchIndex>

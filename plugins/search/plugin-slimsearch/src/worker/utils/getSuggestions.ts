@@ -1,11 +1,10 @@
-import type { SearchIndex } from 'slimsearch'
 import { autoSuggest } from 'slimsearch'
 
-import type { IndexItem, WorkerSearchOptions } from '../../shared/index.js'
+import type { SearchIndex, WorkerSearchOptions } from '../../shared/index.js'
 
 export const getSuggestions = (
   query: string,
-  localeIndex: SearchIndex<string, IndexItem, IndexItem>,
+  localeIndex: SearchIndex,
   searchOptions: WorkerSearchOptions = {},
 ): string[] => {
   const suggestions = autoSuggest(localeIndex, query, {

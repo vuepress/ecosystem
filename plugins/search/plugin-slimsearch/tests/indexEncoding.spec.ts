@@ -21,12 +21,8 @@ const docs: IndexItem[] = [
   },
   { id: '0@0', c: ['author: mr-hope'] },
   { id: '1', h: '你好世界', t: ['这是一段中文内容，用于测试搜索'] },
-  {
-    id: '2',
-    h: 'VuePress plugin',
-    t: ['Search plugin for VuePress'],
-    c: ['tag: search'],
-  },
+  { id: '2', h: 'VuePress plugin', t: ['Search plugin for VuePress'] },
+  { id: '2@0', c: ['tag: search'] },
 ]
 
 const createSearchIndex = (): SearchIndex<string, IndexItem, IndexItem> =>
