@@ -429,8 +429,7 @@ iconPlugin({ assets: 'fontawesome', offline: 'all' })
   `['VPCustom.icon', 'VPTest.files[*]']`。
 
   组件的属性会作为一个对象读取，因此 `VPCustom.icon` 读取 `icon` 属性，而
-  `VPTest.files[*]` 读取 `files` 属性的每个元素。用 `:prop` 或 `v-bind` 绑定的属性在值无法解析为 JSON
-  时会给出警告，因为此时其图标无法被打包。
+  `VPTest.files[*]` 读取 `files` 属性的每个元素。用 `:prop` 或 `v-bind` 绑定的属性在值无法解析为 JSON 时会给出警告，因为此时其图标无法被打包。
 
 #### scanner
 
