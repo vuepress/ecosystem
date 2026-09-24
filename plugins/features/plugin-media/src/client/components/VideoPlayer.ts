@@ -135,16 +135,18 @@ export const VideoPlayer = defineComponent({
     loop: Boolean,
 
     /**
-     * Whether to play inline on mobile devices
+     * Whether to disable inline playback on mobile devices
      *
-     * 是否在移动端内联播放
+     * 是否禁用移动端内联播放
      *
-     * @default true
+     * Inline playback is enabled by default, so it is turned off with this prop
+     * instead of a `playsinline` prop.
+     *
+     * 内联播放默认启用，因此通过该属性关闭它，而不是提供 `playsinline` 属性。
+     *
+     * @default false
      */
-    playsinline: {
-      type: Boolean,
-      default: true,
-    },
+    noPlaysinline: Boolean,
 
     /**
      * CORS setting of the video, which is required for cross-origin captions
@@ -233,9 +235,12 @@ export const VideoPlayer = defineComponent({
     return (): (VNode | null)[] => {
       const mediaProps: Record<string, unknown> = {
         src: getLink(props.src),
-        playsinline: props.playsinline,
       }
       const playerProps: Record<string, unknown> = {}
+
+      // `playsinline` is read by its presence, so it is only passed when inline
+      // playback is wanted
+      if (!props.noPlaysinline) mediaProps.playsinline = true
 
       if (props.autoplay) mediaProps.autoplay = true
       if (props.muted) mediaProps.muted = true

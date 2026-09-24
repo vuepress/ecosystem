@@ -38,6 +38,7 @@ minimumReleaseAgeExclude:
   - vue
   - vuepress
   - stylelint-config-hope
+  - '@mdit/plugin-advanced-links@0.2.0'
 
 packageExtensions:
   stylelint:

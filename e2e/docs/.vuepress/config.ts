@@ -243,6 +243,7 @@ export default defineUserConfig({
     copyrightPlugin(),
     // The embed players need no packages, so they are tested offline
     mediaPlugin({
+      artplayer: true,
       embeds: [
         'bilibili',
         'youtube',
@@ -252,6 +253,7 @@ export default defineUserConfig({
         'tiktok',
         'spotify',
       ],
+      videojs: true,
     }),
     feedPlugin({
       hostname: 'https://ecosystem-e2e-test.com',

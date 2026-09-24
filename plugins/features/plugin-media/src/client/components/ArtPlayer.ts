@@ -20,12 +20,14 @@ import {
 import '../styles/art-player.scss'
 
 const BOOLEAN_TRUE_ATTRS = [
+  'no-backdrop',
   'no-fullscreen',
+  'no-gesture',
   'no-hotkey',
-  'no-playback-rate',
-  'no-setting',
   'no-mutex',
+  'no-playback-rate',
   'no-plays-inline',
+  'no-setting',
 ] as const
 
 const BOOLEAN_FALSE_ATTRS = [
@@ -48,6 +50,14 @@ const BOOLEAN_FALSE_ATTRS = [
   'screenshot',
   'subtitle-offset',
 ] as const
+
+/** Attributes that are not Artplayer options */
+const NON_OPTION_ATTRS = new Set(['class', 'style'])
+
+const BOOLEAN_ATTRS = new Set<string>([
+  ...BOOLEAN_TRUE_ATTRS,
+  ...BOOLEAN_FALSE_ATTRS,
+])
 
 type KebabCaseToCamelCase<
   Input extends string,
@@ -72,6 +82,7 @@ type ArtPlayerBooleanOptionKey =
       : never)
 
 declare const ART_PLAYER_OPTIONS: ArtPlayerOptions
+declare const __VUEPRESS_DEV__: boolean
 
 export const ArtPlayer = defineComponent({
   name: 'ArtPlayer',
@@ -107,6 +118,11 @@ export const ArtPlayer = defineComponent({
      * Video title
      *
      * 视频标题
+     *
+     * It is used as the accessible name of the video, so a page with several
+     * players should give every one a title.
+     *
+     * 它会被用作视频的无障碍名称，因此页面中存在多个播放器时，应分别为它们提供标题。
      */
     title: String,
 
@@ -196,6 +212,24 @@ export const ArtPlayer = defineComponent({
           initOptions[camelize(config) as ArtPlayerBooleanOptionKey] = true
       })
 
+      // Artplayer options taking an object or a function cannot be expressed
+      // as attributes, and a plain attribute would be rejected by the strict
+      // option validator of Artplayer, so the rest is reported instead
+      if (__VUEPRESS_DEV__) {
+        const ignoredAttrs = attrsKeys.filter(
+          (key) => !BOOLEAN_ATTRS.has(key) && !NON_OPTION_ATTRS.has(key),
+        )
+
+        if (ignoredAttrs.length > 0) {
+          // eslint-disable-next-line no-console
+          console.warn(
+            `[ArtPlayer]: ${ignoredAttrs.join(', ')} ${
+              ignoredAttrs.length > 1 ? 'are' : 'is'
+            } ignored, pass the Artplayer options through the \`config\` prop instead.`,
+          )
+        }
+      }
+
       // Auto config mse
       if (initOptions.type) {
         // eslint-disable-next-line no-multi-assign
@@ -271,6 +305,10 @@ export const ArtPlayer = defineComponent({
 
       const player = new Artplayer(initOptions)
 
+      // The title is the accessible name of the video, which Artplayer cannot
+      // receive as an option
+      if (props.title) player.video.setAttribute('aria-label', props.title)
+
       artPlayerInstance = (await props.customPlayer?.(player)) ?? player
       loaded.value = true
       resize()
@@ -284,11 +322,14 @@ export const ArtPlayer = defineComponent({
     return (): (VNode | null)[] => [
       h('div', {
         ref: el,
-        class: 'vp-artplayer',
-        style: {
-          width: width.value,
-          height: height.value,
-        },
+        class: ['vp-artplayer', attrs.class],
+        style: [
+          {
+            width: width.value,
+            height: height.value,
+          },
+          attrs.style,
+        ],
       }),
       loaded.value ? null : h(LoadingIcon),
     ]

@@ -77,18 +77,6 @@ export const TikTokPlayer = defineComponent({
     loop: Boolean,
 
     /**
-     * Whether to play inline on mobile devices
-     *
-     * 是否在移动端内联播放
-     *
-     * @default true
-     */
-    playsinline: {
-      type: Boolean,
-      default: true,
-    },
-
-    /**
      * TikTok player parameters
      *
      * TikTok 播放器参数
@@ -180,7 +168,6 @@ export const TikTokPlayer = defineComponent({
     return (): (VNode | null)[] => {
       const mediaProps: Record<string, unknown> = {
         src: props.src,
-        playsinline: props.playsinline,
       }
 
       if (props.autoplay) mediaProps.autoplay = true

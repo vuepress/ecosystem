@@ -68,6 +68,38 @@ export default {
 
 :::
 
+## 链接语法
+
+每个启用的组件都可以通过 `@[name ...props](link)` 语法使用，其中链接就是组件的资源地址。该语法必须独占一行。
+
+```md
+@[youtube title="A video" width="80%"](https://youtu.be/dQw4w9WgXcQ)
+@[video autoplay loop](/assets/video.mp4)
+```
+
+props 会作为属性传给组件，因此只能是字符串或标志，不带值的 props 即为 `true`。对象与函数类型的选项（`config`、`customPlayer`、`customViewer`）不可用，`false` 也不支持，默认启用的选项需通过对应的 `no-` 属性关闭，例如 `@[video no-playsinline](a.mp4)`。
+
+| 语法             | 组件               |
+| ---------------- | ------------------ |
+| `artplayer`      | `ArtPlayer`        |
+| `pdf`            | `PDFViewer`        |
+| `video`          | `VideoPlayer`      |
+| `audio`          | `AudioPlayer`      |
+| `bilibili`       | `BiliBiliEmbed`    |
+| `youtube`        | `YouTubeEmbed`     |
+| `vimeo`          | `VimeoEmbed`       |
+| `twitch`         | `TwitchEmbed`      |
+| `dailymotion`    | `DailymotionEmbed` |
+| `tiktok`         | `TikTokEmbed`      |
+| `spotify`        | `SpotifyEmbed`     |
+| `youtube-player` | `YouTubePlayer`    |
+| `vimeo-player`   | `VimeoPlayer`      |
+| `twitch-player`  | `TwitchPlayer`     |
+| `tiktok-player`  | `TikTokPlayer`     |
+| `spotify-player` | `SpotifyPlayer`    |
+
+链接会成为组件的 `src`，只有 `bilibili` 例外，它的链接是 `bvid`，同时支持 `bilibili.com/video/BV…` 链接，链接中的 `p` 与 `t` 参数会成为 `page` 与 `time`。
+
 ## 组件
 
 ### ArtPlayer
@@ -79,14 +111,16 @@ export default {
 - `src`：视频源文件地址
 - `type`：视频类型，省略时从 `src` 的扩展名推断
 - `poster`：视频封面
-- `title`：视频标题
+- `title`：视频标题，会作为视频的无障碍名称
 - `width`：组件宽度，默认为 `100%`
 - `height`：组件高度
 - `ratio`：组件长宽比，默认为 `16 / 9`
 - `config`：ArtPlayer 配置，参见 `ArtPlayerOptions`
 - `customPlayer`：对 ArtPlayer 实例进行自定义的回调
 
-ArtPlayer 的选项也可以作为属性传入，例如 `<ArtPlayer src="/a.mp4" autoplay muted />`。布尔选项前加 `no-` 可将其关闭，例如 `no-setting`。
+布尔选项也可以作为属性传入，例如 `<ArtPlayer src="/a.mp4" autoplay muted />`。它们按属性是否存在生效，默认启用的选项则通过对应的 `no-` 属性关闭，例如 `no-setting`、`no-backdrop` 或 `no-gesture`。
+
+其余选项都是对象或函数，只能通过 `config` 传入。不是布尔选项的属性会被忽略，插件在开发模式下会给出提示。
 
 ```md
 <ArtPlayer src="/assets/video.mp4" />
@@ -140,7 +174,7 @@ ArtPlayer 的选项也可以作为属性传入，例如 `<ArtPlayer src="/a.mp4"
 - `autoplay`：是否自动播放
 - `muted`：是否静音
 - `loop`：视频结束后是否重新播放
-- `playsinline`：是否在移动端内联播放，默认为 `true`
+- `noPlaysinline`：是否禁用移动端内联播放
 - `crossorigin`：视频的 CORS 设置，跨域字幕需要该配置
 - `width`：组件宽度，默认为 `100%`
 - `height`：组件高度
@@ -204,7 +238,6 @@ ArtPlayer 的选项也可以作为属性传入，例如 `<ArtPlayer src="/a.mp4"
 - `autoplay`：是否自动播放
 - `muted`：是否静音
 - `loop`：视频结束后是否重新播放
-- `playsinline`：是否在移动端内联播放，默认为 `true`
 - `config`：YouTube 播放器参数，参见 `YouTubeEngineConfig`
 - `width`：组件宽度，默认为 `100%`
 - `height`：组件高度
@@ -257,7 +290,6 @@ YouTube 会渲染自己的封面，因此不提供 `poster` 属性。
 - `autoplay`：是否自动播放
 - `muted`：是否静音
 - `loop`：视频结束后是否重新播放
-- `playsinline`：是否在移动端内联播放，默认为 `true`
 - `config`：Vimeo 嵌入参数，参见 `VimeoEngineConfig`
 - `width`：组件宽度，默认为 `100%`
 - `height`：组件高度
@@ -307,7 +339,6 @@ Twitch 在链接未表态时会自动播放，而浏览器会阻止这种自动�
 - `autoplay`：是否自动播放
 - `muted`：是否静音
 - `loop`：直播结束后是否重新播放
-- `playsinline`：是否在移动端内联播放，默认为 `true`
 - `config`：Twitch 嵌入参数，参见 `TwitchEngineConfig`
 - `width`：组件宽度，默认为 `100%`
 - `height`：组件高度
@@ -364,7 +395,6 @@ Twitch 在链接未表态时会自动播放，而浏览器会阻止这种自动�
 - `autoplay`：是否自动播放
 - `muted`：是否静音
 - `loop`：视频结束后是否重新播放
-- `playsinline`：是否在移动端内联播放，默认为 `true`
 - `config`：TikTok 播放器参数，参见 `TikTokEngineConfig`
 - `width`：组件宽度，默认为 `100%`
 - `height`：组件高度
@@ -404,7 +434,6 @@ Twitch 在链接未表态时会自动播放，而浏览器会阻止这种自动�
 - `src`：Spotify 链接、URI 或实体 ID
 - `autoplay`：是否自动播放
 - `loop`：音频结束后是否重新播放
-- `playsinline`：是否在移动端内联播放，默认为 `true`
 - `config`：Spotify 嵌入选项，参见 `SpotifyEngineConfig`
 - `width`：组件宽度，默认为 `100%`
 - `height`：组件高度

@@ -89,18 +89,6 @@ export const SpotifyPlayer = defineComponent({
     loop: Boolean,
 
     /**
-     * Whether to play inline on mobile devices
-     *
-     * 是否在移动端内联播放
-     *
-     * @default true
-     */
-    playsinline: {
-      type: Boolean,
-      default: true,
-    },
-
-    /**
      * Spotify embed options
      *
      * Spotify 嵌入选项
@@ -186,7 +174,6 @@ export const SpotifyPlayer = defineComponent({
     return (): (VNode | null)[] => {
       const mediaProps: Record<string, unknown> = {
         src: props.src,
-        playsinline: props.playsinline,
       }
 
       if (props.autoplay) mediaProps.autoplay = true
