@@ -15,14 +15,12 @@ export interface SearchLocaleOptions extends WorkerSearchOptions {
   /**
    * A function to split the query into words
    *
-   * The words are joined with spaces and sent to the search worker, which
-   * tokenizes them with its own tokenizer. A custom tokenizer of the index must
-   * therefore split words exactly the same way, otherwise the words of a query
-   * would not match the ones of the index.
+   * It must split words the same way the tokenizer of the index does, otherwise
+   * the queries will not match the index.
    *
    * 用于将搜索词拆分为单词的函数
    *
-   * 单词会用空格拼接后发送给搜索工作线程，由其使用自己的分词器分词。因此索引的自定义分词器必须以完全相同的方式拆分单词，否则查询的单词将无法匹配索引的单词。
+   * 它必须以与索引的分词器相同的方式拆分单词，否则查询将无法匹配索引。
    *
    * @param query - Search query 搜索词
    * @param lang - Language of the locale 语言环境的语言

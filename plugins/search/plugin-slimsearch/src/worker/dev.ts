@@ -1,5 +1,8 @@
 import { decodeData } from '@vuepress/helper/shared'
-import { createWorkerResponse } from '@vuepress/search-helper/shared'
+import {
+  createWorkerResponse,
+  getOwnEntry,
+} from '@vuepress/search-helper/shared'
 import { loadIndex } from 'slimsearch'
 import type { IndexObject } from 'slimsearch'
 
@@ -18,7 +21,7 @@ import { getSearchResults, getSuggestions } from './utils/index.js'
 globalThis.onmessage = async ({
   data,
 }: MessageEvent<WorkerMessageData>): Promise<void> => {
-  const loadLocaleIndex = database[data.locale]
+  const loadLocaleIndex = getOwnEntry(database, data.locale)
 
   // Guard against locales without an index chunk, so that an unknown locale
   // returns empty results instead of throwing

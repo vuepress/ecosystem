@@ -14,16 +14,14 @@ export interface CreateIndexOptions {
    * When not provided, an out-of-the-box tokenizer is created for the given
    * language, see `createTokenizer`.
    *
-   * A custom tokenizer only affects how the index is tokenized: the queries are
-   * tokenized by the out-of-the-box tokenizer of the worker, on words that the
-   * client already split, so it stays compatible as long as it splits words the
-   * same way the client does.
+   * A custom tokenizer must split words the same way the `querySplitter` option
+   * of the client does, otherwise the queries will not match the index.
    *
    * 自定义分词器工厂
    *
    * 未提供时，会为给定语言创建开箱即用的分词器，见 `createTokenizer`。
    *
-   * 自定义分词器只影响索引的分词方式：查询由 Worker 的开箱即用分词器分词，且词语已由客户端拆好，因此只要它的拆分方式与客户端一致就能保持兼容。
+   * 自定义分词器必须以与客户端的 `querySplitter` 选项相同的方式拆分单词，否则查询将无法匹配索引。
    */
   tokenizer?: (language: string) => Tokenizer
 

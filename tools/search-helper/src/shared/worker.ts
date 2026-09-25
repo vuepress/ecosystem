@@ -75,6 +75,34 @@ export interface WorkerSearchOptions {
 /** Type of the worker request. 工作线程请求的类型。 */
 export type WorkerRequestType = 'all' | 'search' | 'suggest'
 
+/**
+ * Get the entry of a lookup table, ignoring the inherited properties.
+ *
+ * The locale registries are plain objects, so a locale named like an inherited
+ * property (`constructor`, `toString`, ...) would return a function of
+ * `Object.prototype` instead of `undefined`, and calling it would throw instead
+ * of returning empty results.
+ *
+ * 获取查找表中的条目，忽略继承的属性。
+ *
+ * 语言环境注册表是普通对象，因此名为继承属性（`constructor`、`toString` 等）的语言环境会返回 `Object.prototype`
+ * 上的函数而非 `undefined`，调用它会抛错而不是返回空结果。
+ *
+ * @example
+ *   import { getOwnEntry } from '@vuepress/search-helper/shared'
+ *
+ *   getOwnEntry({ '/': loader }, 'constructor') // undefined
+ *
+ * @param record - Lookup table 查找表
+ * @param key - Key to look up 需要查找的键
+ * @returns Entry, or `undefined` when the table has none 条目，表中不存在时返回
+ *   `undefined`
+ */
+export const getOwnEntry = <TValue>(
+  record: Record<string, TValue>,
+  key: string,
+): TValue | undefined => (Object.hasOwn(record, key) ? record[key] : undefined)
+
 /** Data of the message sent to the search worker. 发送到搜索工作线程的消息数据。 */
 export interface WorkerMessageData<TSearchOptions = WorkerSearchOptions> {
   /**

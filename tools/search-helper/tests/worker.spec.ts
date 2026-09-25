@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 
 import type { SearchResult, WorkerMessageData } from '../src/shared/index.js'
-import { createWorkerResponse } from '../src/shared/worker.js'
+import { createWorkerResponse, getOwnEntry } from '../src/shared/worker.js'
 
 const results: SearchResult[] = [{ title: 'Page', contents: [] }]
 
@@ -122,5 +122,32 @@ describe(createWorkerResponse, () => {
 
     expect(localHandlers.getSuggestions).not.toHaveBeenCalled()
     expect(localHandlers.getSearchResults).not.toHaveBeenCalled()
+  })
+})
+
+describe(getOwnEntry, () => {
+  const loader = (): string => 'loaded'
+  const registry = { '/': loader, '/zh/': loader }
+
+  it('should return the entry of an existing key', () => {
+    expect(getOwnEntry(registry, '/')).toBe(loader)
+    expect(getOwnEntry(registry, '/zh/')).toBe(loader)
+  })
+
+  it('should return undefined for a missing key', () => {
+    expect(getOwnEntry(registry, '/missing/')).toBeUndefined()
+  })
+
+  it('should ignore the inherited properties', () => {
+    // A locale named like an inherited property would otherwise return a
+    // function of `Object.prototype`, which throws when it is called
+    for (const key of [
+      'constructor',
+      '__proto__',
+      'toString',
+      'hasOwnProperty',
+      'valueOf',
+    ])
+      expect(getOwnEntry(registry, key)).toBeUndefined()
   })
 })

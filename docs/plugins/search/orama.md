@@ -266,7 +266,11 @@ This is disabled by default because rebuilding the index on every file change ca
 
 Options passed to Orama during index creation.
 
-The `tokenizer` option is used when the index is built. A tokenizer can not be sent to the search worker, which tokenizes queries with its out-of-the-box tokenizer of the language instead. That is not a problem for a custom tokenizer, because the client splits the query into words with the [`querySplitter`](#definesearchconfig) option (which defaults to `Intl.Segmenter`) and sends those words to the worker: a custom tokenizer stays compatible as long as it splits words the same way `querySplitter` does.
+::: warning
+
+When you provide a custom `tokenizer`, you must also set the [`querySplitter`](#definesearchconfig) option to split words the same way, otherwise the queries will not match the index.
+
+:::
 
 ### indexLocaleOptions
 
@@ -438,9 +442,7 @@ On older browsers the query is split into single characters, which no longer mat
 
 You can customize the index generation process using `indexOptions` and `indexLocaleOptions`. This allows you to fine-tune indexing results globally or for specific locales.
 
-You can provide a custom `tokenizer` to improve search accuracy for specific languages.
-
-Since a tokenizer can not be sent to the search worker, the client splits the query into words with the [`querySplitter`](#definesearchconfig) option and sends those words to the worker. A custom tokenizer therefore has to split words the same way `querySplitter` does, otherwise a query would not match the index. The default `querySplitter` uses `Intl.Segmenter`, which is also what the out-of-the-box tokenizer uses, so they match by default.
+You can provide a custom `tokenizer` to improve search accuracy for specific languages. When you do, set the [`querySplitter`](#definesearchconfig) option to split words the same way, otherwise the queries will not match the index.
 
 ### Using with API
 

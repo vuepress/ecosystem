@@ -1,5 +1,8 @@
 import { decodeData, entries, fromEntries } from '@vuepress/helper/shared'
-import { createWorkerResponse } from '@vuepress/search-helper/shared'
+import {
+  createWorkerResponse,
+  getOwnEntry,
+} from '@vuepress/search-helper/shared'
 import type { IndexObject } from 'slimsearch'
 import { loadIndex } from 'slimsearch'
 
@@ -32,7 +35,7 @@ self.addEventListener(
     self.postMessage(
       createWorkerResponse(
         data,
-        searchIndex[data.locale],
+        getOwnEntry(searchIndex, data.locale),
         { getSearchResults, getSuggestions },
         __SLIMSEARCH_SORT_STRATEGY__,
       ),

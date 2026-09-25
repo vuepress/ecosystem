@@ -266,7 +266,11 @@ export default defineUserConfig({
 
 用于创建索引的选项。
 
-`tokenizer` 选项会在构建索引时生效。分词器无法发送给搜索 Worker，Worker 会改用该语言开箱即用的分词器对查询分词。这对自定义分词器来说并不是问题，因为客户端会使用 [`querySplitter`](#definesearchconfig) 选项（默认为 `Intl.Segmenter`）将查询拆分为单词并发送给 Worker：只要自定义分词器与 `querySplitter` 的拆分方式一致，它就能保持兼容。
+::: warning
+
+当你提供自定义 `tokenizer` 时，必须同时设置 [`querySplitter`](#definesearchconfig) 选项，使其以相同的方式拆分单词，否则查询将无法匹配索引。
+
+:::
 
 ### indexLocaleOptions
 
@@ -438,9 +442,7 @@ Orama 的文档声称支持韩语、波兰语、斯洛伐克语与越南语，�
 
 你可以通过 `indexOptions` 和 `indexLocaleOptions` 自定义索引生成过程，以便获得更好的索引结果，并可针对每个语言环境单独设置。
 
-你可以提供自定义 `tokenizer` 来提升特定语言的搜索准确性。
-
-由于分词器无法发送给搜索 Worker，客户端会使用 [`querySplitter`](#definesearchconfig) 选项将查询拆分为单词并发送给 Worker。因此自定义分词器必须以与 `querySplitter` 相同的方式拆分单词，否则查询将无法匹配索引。默认的 `querySplitter` 使用 `Intl.Segmenter`，开箱即用的分词器同样如此，因此它们默认就是一致的。
+你可以提供自定义 `tokenizer` 来提升特定语言的搜索准确性。此时需设置 [`querySplitter`](#definesearchconfig) 选项，使其以相同的方式拆分单词，否则查询将无法匹配索引。
 
 ### 使用 API
 
