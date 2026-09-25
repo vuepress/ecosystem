@@ -1,4 +1,8 @@
-import { deepAssign, getFullLocaleConfig } from '@vuepress/helper'
+import {
+  deepAssign,
+  getFullLocaleConfig,
+  isPlainObject,
+} from '@vuepress/helper'
 import type { Plugin } from 'vuepress/core'
 
 import { field } from './field.js'
@@ -54,8 +58,8 @@ export const markdownFieldPlugin =
 
       extendsMarkdown: (md) => {
         const { anchor, slugify } = app.options.markdown
-        const anchorSlugify =
-          typeof anchor === 'object' ? anchor.slugify?.bind(anchor) : undefined
+        // oxlint-disable-next-line typescript/unbound-method -- slugify never uses `this`
+        const anchorSlugify = isPlainObject(anchor) ? anchor.slugify : undefined
 
         md.use(field, {
           locales: locale,
