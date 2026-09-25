@@ -66,7 +66,7 @@
     "@embedpdf/vue-pdf-viewer": "^2.15.0",
     "@videojs/dash-video": "10.0.0-rc.2",
     "@videojs/hlsjs-video": "10.0.0-rc.2",
-    "@videojs/html": "10.0.0-rc.2",
+    "@videojs/html": "10.0.0-rc.3",
     "@videojs/spotify-audio": "10.0.0-rc.2",
     "@videojs/tiktok-video": "10.0.0-rc.2",
     "@videojs/twitch-video": "10.0.0-rc.2",
