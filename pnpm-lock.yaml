@@ -1176,6 +1176,9 @@ importers:
 
   plugins/markdown/plugin-markdown-field:
     dependencies:
+      '@mdit-vue/shared':
+        specifier: ^3.0.2
+        version: 3.0.2
       '@mdit/helper':
         specifier: ^1.1.1
         version: 1.1.1(markdown-it@14.3.2)
@@ -1960,7 +1963,7 @@ importers:
         version: 3.5.43(typescript@6.0.3)
       vuepress:
         specifier: 'catalog:'
-        version: 2.0.0-rc.31(603bf7bd0e97a2e6dd17a4be54e25f8a)
+        version: 2.0.0-rc.31(64fe27a61b2d7fe5486fea782158c0c7)
     devDependencies:
       domhandler:
         specifier: ^6.0.1

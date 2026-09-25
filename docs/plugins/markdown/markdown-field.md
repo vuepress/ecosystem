@@ -53,6 +53,10 @@ By default, all attributes are allowed and displayed as-is. Common attributes in
 - `required`, `optional` and `deprecated` are displayed as badges, and a deprecated field's name is colored red and struck through.
 - Other attributes are displayed as `Name: value` badges.
 
+### Field Id
+
+Each field item gets an `id` generated from its name, so that you can link to it directly (e.g. `#theme`). The id is generated with the same slugify function as headings (`markdown.anchor.slugify`, falling back to `markdown.slugify`), and is unique within the page.
+
 ### Nesting
 
 Fields can be nested to describe fields of an object type. To create a field item inside another field, increase the starting `@` by one for each level of nesting.

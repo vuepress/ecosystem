@@ -18,7 +18,7 @@ Theme Config
     ).toBe(`<div class="vp-fields">
 <div class="vp-field">
 <div class="vp-field-header">
-<span class="vp-field-name">theme</span>
+<span class="vp-field-name" id="theme">theme</span>
 <span class="vp-field-badges">
 <span class="vp-field-required">Required</span>
 </span>
@@ -44,7 +44,7 @@ Whether it's enabled
     ).toBe(`<div class="vp-fields">
 <div class="vp-field">
 <div class="vp-field-header">
-<span class="vp-field-name">enabled</span>
+<span class="vp-field-name" id="enabled">enabled</span>
 <span class="vp-field-badges">
 <span class="vp-field-optional">Optional</span>
 </span>
@@ -111,17 +111,19 @@ Name description.
 
   it('should use locale config for badges', () => {
     const markdownIt = new MarkdownIt().use(field, {
-      '/': {
-        default: 'Default',
-        required: 'Required',
-        optional: 'Optional',
-        deprecated: 'Deprecated',
-      },
-      '/zh/': {
-        default: '默认值',
-        required: '必填',
-        optional: '可选',
-        deprecated: '已弃用',
+      locales: {
+        '/': {
+          default: 'Default',
+          required: 'Required',
+          optional: 'Optional',
+          deprecated: 'Deprecated',
+        },
+        '/zh/': {
+          default: '默认值',
+          required: '必填',
+          optional: '可选',
+          deprecated: '已弃用',
+        },
       },
     })
 
@@ -151,5 +153,68 @@ Theme Config
     )
 
     expect(enResult).toContain('>Required<')
+  })
+
+  it('should add slugified ids to field items', () => {
+    const markdownIt = createMarkdownIt()
+
+    const result = markdownIt.render(`::: fields
+@markdown.chartjs@ type="boolean"
+Chart.js support
+
+@markdown.DANGEROUS_ALLOW_SCRIPT_EXECUTION@ type="boolean"
+Allow script execution
+:::
+`)
+
+    expect(result).toContain(
+      '<span class="vp-field-name" id="markdown-chartjs">',
+    )
+    expect(result).toContain(
+      '<span class="vp-field-name" id="markdown-dangerous-allow-script-execution">',
+    )
+  })
+
+  it('should make duplicate field ids unique', () => {
+    const markdownIt = createMarkdownIt()
+
+    const result = markdownIt.render(`::: fields
+@theme@ type="object"
+Theme config
+
+@@theme@ type="string"
+Nested theme
+:::
+`)
+
+    expect(result).toContain('id="theme"')
+    expect(result).toContain('id="theme-1"')
+  })
+
+  it('should not conflict with ids already used in the page', () => {
+    const markdownIt = createMarkdownIt()
+
+    // `#theme` is used by the fields container, so the field item should not reuse it
+    const result = markdownIt.render(`::: fields #theme
+@theme@ type="object"
+Theme config
+:::
+`)
+
+    expect(result).toContain('<span class="vp-field-name" id="theme-1">')
+  })
+
+  it('should use custom slugify', () => {
+    const markdownIt = new MarkdownIt().use(field, {
+      slugify: (str) => `field-${str}`,
+    })
+
+    const result = markdownIt.render(`::: fields
+@theme@ type="object"
+Theme config
+:::
+`)
+
+    expect(result).toContain('<span class="vp-field-name" id="field-theme">')
   })
 })
