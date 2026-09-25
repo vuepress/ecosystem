@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.136](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.135...v2.0.0-rc.136) (2026-09-25)
+
+### Bug Fixes
+
+- **plugin-icon:** resolve offline packages from the plugin ([#874](https://github.com/vuepress/ecosystem/issues/874)) ([34303cc](https://github.com/vuepress/ecosystem/commit/34303cc6eb1225022852e2f1d8b5daba9b5d891a))
+
 # [2.0.0-rc.135](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.134...v2.0.0-rc.135) (2026-09-24)
 
 ### Features

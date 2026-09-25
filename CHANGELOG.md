@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-rc.136](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.135...v2.0.0-rc.136) (2026-09-25)
+
+### Bug Fixes
+
+- **plugin-icon:** resolve offline packages from the plugin ([#874](https://github.com/vuepress/ecosystem/issues/874)) ([34303cc](https://github.com/vuepress/ecosystem/commit/34303cc6eb1225022852e2f1d8b5daba9b5d891a))
+- **plugin-media:** use dashjs v5 named exports ([d400ea1](https://github.com/vuepress/ecosystem/commit/d400ea15b37130dd513cd8f3a743adf557ce31a3))
+
+### Features
+
+- add search helper and an out-of-the-box Orama tokenizer ([#876](https://github.com/vuepress/ecosystem/issues/876)) ([993857b](https://github.com/vuepress/ecosystem/commit/993857bf1cca35b55a734ec03b233fe72a53f80f))
+- **plugin-media:** add link syntax and reverse boolean props ([#873](https://github.com/vuepress/ecosystem/issues/873)) ([b094734](https://github.com/vuepress/ecosystem/commit/b09473423ea3797416b3c12e10ab043b5cc91dd7))
+
 # [2.0.0-rc.135](https://github.com/vuepress/ecosystem/compare/v2.0.0-rc.134...v2.0.0-rc.135) (2026-09-24)
 
 ### Bug Fixes
