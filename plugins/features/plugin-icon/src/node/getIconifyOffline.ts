@@ -1,15 +1,10 @@
 // the utils are imported lazily and from their subpath, as the entry point of
 // the package also loads the icon loader, which is not needed here
 import type { IconifyJSON } from '@iconify/types'
-import {
-  getModulePath,
-  isLinkAbsolute,
-  isLinkHttp,
-  isModuleAvailable,
-} from '@vuepress/helper'
+import { isLinkAbsolute, isLinkHttp } from '@vuepress/helper'
 import { fs } from 'vuepress/utils'
 
-import type { ModuleResolver } from './utils.js'
+import { isModuleInstalled, resolveModule } from './utils.js'
 
 /**
  * Package that provides the Iconify web component
@@ -67,7 +62,7 @@ export const getIconifySetPackage = (prefix: string): string =>
  * @returns Whether the package is available / 包是否可用
  */
 export const isIconifyInstalled = (): boolean =>
-  isModuleAvailable(`${ICONIFY_ICON}/package.json`, import.meta)
+  isModuleInstalled(`${ICONIFY_ICON}/package.json`)
 
 /**
  * Whether the package providing an Iconify icon set is installed
@@ -78,7 +73,7 @@ export const isIconifyInstalled = (): boolean =>
  * @returns Whether the package is available / 包是否可用
  */
 export const isIconifySetInstalled = (prefix: string): boolean =>
-  isModuleAvailable(`${getIconifySetPackage(prefix)}/package.json`, import.meta)
+  isModuleInstalled(`${getIconifySetPackage(prefix)}/package.json`)
 
 /**
  * Parse an icon written in markdown syntax
@@ -135,7 +130,7 @@ export const getUsedIconSet = async (
   ])
   const set = JSON.parse(
     fs.readFileSync(
-      getModulePath(`${getIconifySetPackage(prefix)}/icons.json`, import.meta),
+      resolveModule(`${getIconifySetPackage(prefix)}/icons.json`),
       'utf-8',
     ),
   ) as IconifyJSON
@@ -164,15 +159,14 @@ export const getUsedIconSet = async (
  * @param dev - Whether the dev server is running, where the Iconify API is
  *   blocked so that the icons missing from the bundle are visible / 是否运行在开发
  *   服务器中，此时会拦截 Iconify API，以便发现未被打包的图标
- * @param resolveModule - Resolver of a module path, which makes the import
- *   resolve from the plugin instead of from the site / 模块路径的解析函数，它会让
- *   导入从插件而非站点解析
+ * @param resolver - Resolver of a module path, which makes the import resolve
+ *   from the plugin instead of from the site / 模块路径的解析函数，它会让导入从插件 而非站点解析
  * @returns Code of the generated entry / 生成入口的代码
  */
 export const getIconifyOfflineCode = (
   sets: PrunedIconifySet[],
   dev: boolean,
-  resolveModule: ModuleResolver,
+  resolver: (module: string) => string,
 ): string => {
   const registrations = [...sets]
     .sort((a, b) => a.prefix.localeCompare(b.prefix))
@@ -180,9 +174,7 @@ export const getIconifyOfflineCode = (
     .join('\n')
 
   return `\
-import { ${dev ? '_api, ' : ''}addCollection } from "${resolveModule(
-    ICONIFY_ICON,
-  )}";
+import { ${dev ? '_api, ' : ''}addCollection } from "${resolver(ICONIFY_ICON)}";
 
 export const setupIconify = () => {
 ${registrations}

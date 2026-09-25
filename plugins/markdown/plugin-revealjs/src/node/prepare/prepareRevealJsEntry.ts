@@ -3,6 +3,8 @@ import type { App } from 'vuepress/core'
 
 import type { RevealJsPlugin } from '../options.js'
 
+const resolve = (module: string): string => getModulePath(module, import.meta)
+
 export const prepareRevealJsEntry = async (
   app: App,
   revealPlugins: RevealJsPlugin[],
@@ -14,20 +16,17 @@ export const useRevealJs = () => Promise.all(
   __VUEPRESS_SSR__
     ? []
     : [
-        import(/* webpackChunkName: "reveal" */ "${getModulePath(
+        import(/* webpackChunkName: "reveal" */ "${resolve(
           'reveal.js',
-          import.meta,
         )}").then(({ default: RevealJs }) => RevealJs),
-        import(/* webpackChunkName: "reveal" */ "${getModulePath(
+        import(/* webpackChunkName: "reveal" */ "${resolve(
           'reveal.js/plugin/markdown',
-          import.meta,
         )}").then(({ default: plugin }) => plugin),
       ${revealPlugins
         .map(
           (plugin) =>
-            `  import(/* webpackChunkName: "reveal" */ "${getModulePath(
+            `  import(/* webpackChunkName: "reveal" */ "${resolve(
               `reveal.js/plugin/${plugin}`,
-              import.meta,
             )}").then(({ default: plugin }) => plugin)`,
         )
         .join(',\n')}

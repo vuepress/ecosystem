@@ -27,7 +27,7 @@ const getIconNames = (set: PrunedIconifySet | null): string[] =>
  * @param module - Module name / 模块名称
  * @returns Resolved path / 解析后的路径
  */
-const resolveModule = (module: string): string => `/resolved/${module}`
+const resolver = (module: string): string => `/resolved/${module}`
 
 describe(getIconifySetPackage, () => {
   it('should get the package of an icon set', () => {
@@ -147,7 +147,7 @@ describe(getIconifyOfflineCode, () => {
         { icons: { house: { body: '<path d="M1 1"/>' } }, prefix: 'lucide' },
       ],
       false,
-      resolveModule,
+      resolver,
     )
 
     expect(code).toContain(
@@ -161,7 +161,7 @@ describe(getIconifyOfflineCode, () => {
   })
 
   it('should block the Iconify API in the dev server', () => {
-    const code = getIconifyOfflineCode([], true, resolveModule)
+    const code = getIconifyOfflineCode([], true, resolver)
 
     expect(code).toContain(
       'import { _api, addCollection } from "/resolved/iconify-icon";',
@@ -180,7 +180,7 @@ describe(getIconifyOfflineCode, () => {
         { icons: {}, prefix: 'mdi' },
       ],
       false,
-      resolveModule,
+      resolver,
     )
 
     expect(code.indexOf('"prefix":"lucide"')).toBeLessThan(
@@ -189,7 +189,7 @@ describe(getIconifyOfflineCode, () => {
   })
 
   it('should resolve the web component from the plugin instead of from the site', () => {
-    const code = getIconifyOfflineCode([], false, resolveModule)
+    const code = getIconifyOfflineCode([], false, resolver)
 
     // a bare specifier is resolved from the generated entry, which lives in the
     // temp folder of the site and may not see the package

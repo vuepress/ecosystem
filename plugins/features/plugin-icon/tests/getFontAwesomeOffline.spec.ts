@@ -18,7 +18,7 @@ import {
  * @param module - Module name / 模块名称
  * @returns Resolved path / 解析后的路径
  */
-const resolveModule = (module: string): string => `/resolved/${module}`
+const resolver = (module: string): string => `/resolved/${module}`
 
 describe(getIconExportName, () => {
   it('should convert kebab-case icon names to export names', () => {
@@ -52,7 +52,7 @@ describe(getFontAwesomePackages, () => {
 
 describe(getFontAwesomeOfflineCode, () => {
   it('should register every style bundle when all icons are bundled', () => {
-    const code = getFontAwesomeOfflineCode(true, resolveModule)
+    const code = getFontAwesomeOfflineCode(true, resolver)
 
     expect(code).toContain(
       'import { config, dom, library } from "/resolved/@fortawesome/fontawesome-svg-core";',
@@ -77,7 +77,7 @@ describe(getFontAwesomeOfflineCode, () => {
         brands: ['apple'],
         solid: ['house', 'user'],
       },
-      resolveModule,
+      resolver,
     )
 
     expect(code).toContain(
@@ -94,13 +94,11 @@ describe(getFontAwesomeOfflineCode, () => {
   })
 
   it('should not register anything when there is no icon', () => {
-    expect(getFontAwesomeOfflineCode({}, resolveModule)).toContain(
-      'library.add();',
-    )
+    expect(getFontAwesomeOfflineCode({}, resolver)).toContain('library.add();')
   })
 
   it('should resolve the packages from the plugin instead of from the site', () => {
-    const code = getFontAwesomeOfflineCode({ solid: ['house'] }, resolveModule)
+    const code = getFontAwesomeOfflineCode({ solid: ['house'] }, resolver)
 
     // a bare specifier is resolved from the generated entry, which lives in the
     // temp folder of the site and may not see the packages
