@@ -158,92 +158,103 @@ export default defineComponent({
             }),
             h('div', { class: 'vp-search-modal' }, [
               h('div', { class: 'vp-search-box' }, [
-                h('form', [
-                  h(
-                    'label',
-                    {
-                      'id': 'vp-search-label',
-                      'for': 'vp-search-input',
-                      'aria-label': locale.value.search,
+                h(
+                  'form',
+                  {
+                    // Pressing Enter in the input would submit the form and
+                    // reload the page, since the search is done client side
+                    onSubmit: (event: Event): void => {
+                      event.preventDefault()
                     },
-                    h(SearchIcon),
-                  ),
-                  h('input', {
-                    'ref': inputElement,
-                    'type': 'search',
-                    'class': 'vp-search-input',
-                    'id': 'vp-search-input',
-                    'placeholder': locale.value.placeholder,
-                    'spellcheck': 'false',
-                    'autocapitalize': 'off',
-                    'autocomplete': 'off',
-                    'autocorrect': 'off',
-                    'name': `${siteLocale.value.title}-search`,
-                    'value': input.value,
-                    'aria-controls': 'vp-search-results',
-                    'onKeydown': (event: KeyboardEvent): void => {
-                      if (
-                        hasSuggestions.value &&
-                        // These keys are handled by the suggestion list
-                        SUGGESTIONS_KEYCODE.has(event.key)
-                      )
-                        event.preventDefault()
-                    },
-                    'onInput': ({ target }: InputEvent) => {
-                      input.value = (target as HTMLInputElement).value
-                      showSuggestion.value = true
-                      activeSuggestionIndex.value = 0
-                    },
-                  }),
-                  input.value
-                    ? h('button', {
-                        'type': 'reset',
-                        'class': 'vp-search-clear-button',
-                        'title': locale.value.clear,
-                        'aria-label': locale.value.clear,
-                        'innerHTML': CLOSE_ICON,
-                        'onClick': () => {
-                          input.value = ''
-                        },
-                      })
-                    : null,
-                  hasSuggestions.value
-                    ? h(
-                        'ul',
-                        {
-                          class: 'vp-search-suggestions',
-                          ref: suggestionsElement,
-                        },
-                        suggestions.value.map((suggestion, index) =>
-                          h(
-                            'li',
-                            {
-                              class: [
-                                'vp-search-suggestion',
-                                {
-                                  active: index === activeSuggestionIndex.value,
+                  },
+                  [
+                    h(
+                      'label',
+                      {
+                        'id': 'vp-search-label',
+                        'for': 'vp-search-input',
+                        'aria-label': locale.value.search,
+                      },
+                      h(SearchIcon),
+                    ),
+                    h('input', {
+                      'ref': inputElement,
+                      'type': 'search',
+                      'class': 'vp-search-input',
+                      'id': 'vp-search-input',
+                      'placeholder': locale.value.placeholder,
+                      'spellcheck': 'false',
+                      'autocapitalize': 'off',
+                      'autocomplete': 'off',
+                      'autocorrect': 'off',
+                      'name': `${siteLocale.value.title}-search`,
+                      'value': input.value,
+                      'aria-controls': 'vp-search-results',
+                      'onKeydown': (event: KeyboardEvent): void => {
+                        if (
+                          hasSuggestions.value &&
+                          // These keys are handled by the suggestion list
+                          SUGGESTIONS_KEYCODE.has(event.key)
+                        )
+                          event.preventDefault()
+                      },
+                      'onInput': ({ target }: InputEvent) => {
+                        input.value = (target as HTMLInputElement).value
+                        showSuggestion.value = true
+                        activeSuggestionIndex.value = 0
+                      },
+                    }),
+                    input.value
+                      ? h('button', {
+                          'type': 'reset',
+                          'class': 'vp-search-clear-button',
+                          'title': locale.value.clear,
+                          'aria-label': locale.value.clear,
+                          'innerHTML': CLOSE_ICON,
+                          'onClick': () => {
+                            input.value = ''
+                          },
+                        })
+                      : null,
+                    hasSuggestions.value
+                      ? h(
+                          'ul',
+                          {
+                            class: 'vp-search-suggestions',
+                            ref: suggestionsElement,
+                          },
+                          suggestions.value.map((suggestion, index) =>
+                            h(
+                              'li',
+                              {
+                                class: [
+                                  'vp-search-suggestion',
+                                  {
+                                    active:
+                                      index === activeSuggestionIndex.value,
+                                  },
+                                ],
+                                onClick: () => {
+                                  applySuggestion(index)
                                 },
-                              ],
-                              onClick: () => {
-                                applySuggestion(index)
                               },
-                            },
-                            [
-                              h(
-                                'kbd',
-                                {
-                                  class: 'vp-search-auto-complete',
-                                  title: `Tab ${locale.value.autocomplete}`,
-                                },
-                                'Tab',
-                              ),
-                              suggestion,
-                            ],
+                              [
+                                h(
+                                  'kbd',
+                                  {
+                                    class: 'vp-search-auto-complete',
+                                    title: `Tab ${locale.value.autocomplete}`,
+                                  },
+                                  'Tab',
+                                ),
+                                suggestion,
+                              ],
+                            ),
                           ),
-                        ),
-                      )
-                    : null,
-                ]),
+                        )
+                      : null,
+                  ],
+                ),
                 h(
                   'button',
                   {

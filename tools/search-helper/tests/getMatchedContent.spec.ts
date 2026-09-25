@@ -76,44 +76,117 @@ describe(getMatchedContent, () => {
       highlights: [22, 31],
     })
 
+    // The single characters below are expanded to the words they belong to
     expect(getMatchedContent(LONG, 'T')).toStrictEqual({
-      text: "The apple is red, and it's veeeeeeeeeeeeeeee …",
-      highlights: [0, 1, 23, 24],
+      text: "The apple is red, and it's veeeeeeeeeeeeeeeeee …",
+      highlights: [0, 3, 22, 26],
     })
 
     expect(getMatchedContent(LONG, 'h')).toStrictEqual({
-      text: '… The apple is red, and  …',
-      highlights: [3, 4],
+      text: 'The apple is red, and i …',
+      highlights: [0, 3],
     })
 
     expect(getMatchedContent(LONG, 'Th')).toStrictEqual({
-      text: 'The apple is red, and  …',
-      highlights: [0, 2],
+      text: 'The apple is red, and i …',
+      highlights: [0, 3],
     })
 
     expect(getMatchedContent(LONG, 'e')).toStrictEqual({
-      text: "… The apple is red, and it's veeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee …",
-      highlights: [
-        4, 5, 10, 11, 16, 17, 30, 31, 31, 32, 32, 33, 33, 34, 34, 35, 35, 36,
-        36, 37, 37, 38, 38, 39, 39, 40, 40, 41, 41, 42, 42, 43, 43, 44, 44, 45,
-        45, 46, 46, 47, 47, 48, 48, 49, 49, 50, 50, 51, 51, 52, 52, 53, 53, 54,
-        54, 55, 55, 56, 56, 57, 57, 58, 58, 59, 59, 60,
-      ],
+      text: "The apple is red, and it's veeeeeeee …",
+      highlights: [0, 3, 4, 9, 13, 16],
     })
 
     expect(getMatchedContent(LONG, 's')).toStrictEqual({
       text: "… The apple is red, and it's veeeeeeeeeeeeeeeeee …",
-      highlights: [13, 14, 27, 28],
+      highlights: [12, 14, 24, 28],
     })
 
     expect(getMatchedContent(LONG, 'u')).toStrictEqual({
-      text: '… eeeeeeeeeery delicious. The banana is yel …',
-      highlights: [22, 23],
+      text: '… eeeeeeeeeeeeeeeeery delicious. The banana is yell …',
+      highlights: [22, 31],
     })
 
     expect(getMatchedContent(LONG, 'us')).toStrictEqual({
-      text: '… eeeeeeeeeery delicious. The banana is yell …',
-      highlights: [22, 24],
+      text: '… eeeeeeeeeeeeeeeeery delicious. The banana is yell …',
+      highlights: [22, 31],
+    })
+  })
+})
+
+describe('whole word highlighting', () => {
+  it('should expand a prefix match to the whole word', () => {
+    // A query is matched as a prefix, so highlighting only the matched part
+    // would cut the word in the middle
+    expect(getMatchedContent('The Quick Brown Fox', 'quic')).toStrictEqual({
+      text: 'The Quick Brown Fox',
+      highlights: [4, 9],
+    })
+    expect(getMatchedContent('The Quick Brown Fox', 'q')).toStrictEqual({
+      text: 'The Quick Brown Fox',
+      highlights: [4, 9],
+    })
+  })
+
+  it('should expand a match in the middle of a word', () => {
+    expect(getMatchedContent('catalog category', 'log')).toStrictEqual({
+      text: 'catalog category',
+      highlights: [0, 7],
+    })
+  })
+
+  it('should expand every match of a query', () => {
+    expect(getMatchedContent('catalog category', 'cat')).toStrictEqual({
+      text: 'catalog category',
+      highlights: [0, 7, 8, 16],
+    })
+  })
+
+  it('should keep the apostrophes of a word', () => {
+    expect(getMatchedContent("don't stop", 'don')).toStrictEqual({
+      text: "don't stop",
+      highlights: [0, 5],
+    })
+  })
+
+  it('should not expand through a hyphen', () => {
+    // Hyphens are not part of a word, so `e-mail` is two words
+    expect(getMatchedContent('e-mail address', 'mail')).toStrictEqual({
+      text: 'e-mail address',
+      highlights: [2, 6],
+    })
+  })
+
+  it('should not expand a Chinese word to its neighbours', () => {
+    // Expanding through the word characters would swallow the whole sentence,
+    // so the words have to be found by segmentation
+    expect(getMatchedContent('上海交通大学', '上海')).toStrictEqual({
+      text: '上海交通大学',
+      highlights: [0, 2],
+    })
+    expect(getMatchedContent('上海交通大学', '交通')).toStrictEqual({
+      text: '上海交通大学',
+      highlights: [2, 4],
+    })
+    expect(getMatchedContent('这是一个中文的测试', '中文')).toStrictEqual({
+      text: '这是一个中文的测试',
+      highlights: [4, 6],
+    })
+  })
+
+  it('should merge the matches that expand to the same word', () => {
+    // `cat` and `catalog` both match `catalog`, and expanding them makes them
+    // overlap, which would highlight the word twice
+    expect(getMatchedContent('catalog', 'cat')).toStrictEqual({
+      text: 'catalog',
+      highlights: [0, 7],
+    })
+  })
+
+  it('should not expand a match spanning several words', () => {
+    expect(getMatchedContent('foo bar baz', 'foo bar')).toStrictEqual({
+      text: 'foo bar baz',
+      highlights: [0, 7],
     })
   })
 })
