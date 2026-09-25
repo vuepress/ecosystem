@@ -53,7 +53,10 @@ export const markdownFieldPlugin =
       name: PLUGIN_NAME,
 
       extendsMarkdown: (md) => {
-        md.use(field, locale)
+        md.use(field, {
+          locales: locale,
+          slugify: app.options.markdown.slugify,
+        })
       },
 
       clientConfigFile: () => prepareClientConfigFile(app, mergedOptions),
