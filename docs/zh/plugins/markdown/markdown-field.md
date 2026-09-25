@@ -55,7 +55,7 @@ export default {
 
 ### 字段 ID
 
-每个字段项目都会根据其名称生成一个 `id`，以便你可以直接链接到它（例如 `#theme`）。该 id 使用 `markdown.slugify` 选项生成，并在页面内保持唯一。
+每个字段项目都会根据其名称生成一个 `id`，以便你可以直接链接到它（例如 `#theme`）。该 id 使用与标题相同的 slugify 函数（`markdown.anchor.slugify`，回退到 `markdown.slugify`）生成，并在页面内保持唯一。
 
 ### 嵌套
 

@@ -55,7 +55,7 @@ By default, all attributes are allowed and displayed as-is. Common attributes in
 
 ### Field Id
 
-Each field item gets an `id` generated from its name, so that you can link to it directly (e.g. `#theme`). The id is generated with the `markdown.slugify` option and is unique within the page.
+Each field item gets an `id` generated from its name, so that you can link to it directly (e.g. `#theme`). The id is generated with the same slugify function as headings (`markdown.anchor.slugify`, falling back to `markdown.slugify`), and is unique within the page.
 
 ### Nesting
 

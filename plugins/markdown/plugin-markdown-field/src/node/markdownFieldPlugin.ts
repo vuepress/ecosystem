@@ -53,9 +53,15 @@ export const markdownFieldPlugin =
       name: PLUGIN_NAME,
 
       extendsMarkdown: (md) => {
+        const { anchor, slugify } = app.options.markdown
+        const anchorSlugify =
+          typeof anchor === 'object' ? anchor.slugify?.bind(anchor) : undefined
+
         md.use(field, {
           locales: locale,
-          slugify: app.options.markdown.slugify,
+          // Reuse the slugify function used for headings, so that field ids are
+          // generated consistently with heading ids
+          slugify: anchorSlugify ?? slugify,
         })
       },
 
