@@ -257,14 +257,20 @@ This is disabled by default because rebuilding the index on every file change ca
     /**
      * Custom tokenizer factory
      *
-     * When not provided, a tokenizer based on `Intl.Segmenter` will be created
-     * for the locale language.
+     * When not provided, an out-of-the-box tokenizer is created for the
+     * language of the locale.
      */
     tokenizer?: (language: string) => Tokenizer
   }
   ```
 
 Options passed to Orama during index creation.
+
+::: warning
+
+When you provide a custom `tokenizer`, you must also set the [`querySplitter`](#definesearchconfig) option to split words the same way, otherwise the queries will not match the index.
+
+:::
 
 ### indexLocaleOptions
 
@@ -400,11 +406,43 @@ Whether to include this page in the search index.
 
 ## Advanced
 
+### Tokenization
+
+Each locale index is tokenized with the tokenizer of its own language, which is detected from the `lang` of the locale.
+
+The tokenizer is chosen automatically:
+
+- Chinese and Japanese use the official [`@orama/tokenizers`](https://docs.orama.com/docs/orama-js/supported-languages/using-chinese-with-orama) tokenizers, which segment words with `Intl.Segmenter` instead of splitting on whitespace.
+- The languages supported by Orama use its built-in tokenizer.
+- Any other language falls back to `Intl.Segmenter`.
+
+Tokens are lowercased, [stop-words](https://docs.orama.com/docs/orama-js/text-analysis/stop-words) are removed and diacritics are folded, so that `VuePress` matches `vuepress` and `Café` matches `cafe`.
+
+::: tip
+
+Stop-words are embedded into the search index, so only the languages your site actually uses are shipped to the browser.
+
+:::
+
+::: note
+
+Orama's documentation lists Korean, Polish, Slovak and Vietnamese as supported, but none of its packages actually implement them. These languages fall back to `Intl.Segmenter`, which still splits them into words, but does not remove their stop-words.
+
+:::
+
+::: warning Browser support
+
+Tokenizing the languages that are not separated by whitespace (Chinese, Japanese, Korean, Thai, ...) relies on the [`Intl.Segmenter`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter) API, which is available in Chrome 87+, Edge 87+, Safari 14.1+ and Firefox 125+.
+
+On older browsers the query is split into single characters, which no longer match the words of the index, so **searching those languages returns no result or unrelated results**. Languages separated by whitespace are not affected.
+
+:::
+
 ### Customize Index Generation
 
 You can customize the index generation process using `indexOptions` and `indexLocaleOptions`. This allows you to fine-tune indexing results globally or for specific locales.
 
-We use the `Intl.Segmenter` API for tokenization (word-splitting) by default. While this works well for most languages, you might want to provide a custom `tokenizer` for specific languages to improve search accuracy.
+You can provide a custom `tokenizer` to improve search accuracy for specific languages. When you do, set the [`querySplitter`](#definesearchconfig) option to split words the same way, otherwise the queries will not match the index.
 
 ### Using with API
 

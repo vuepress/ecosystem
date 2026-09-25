@@ -1,124 +1,118 @@
 import { insertMultiple, removeMultiple } from '@orama/orama'
-import { entries, keys } from '@vuepress/helper'
+import {
+  generatePageIndex,
+  prepareSearchIndex as prepareIndex,
+  prepareStore as preparePathStore,
+  prepareWorkerOptions as prepareSortStrategy,
+  writeLocaleIndex,
+  writeLocaleRegistry,
+} from '@vuepress/search-helper'
+import type { PathStore } from '@vuepress/search-helper'
 import type { App, Page } from 'vuepress/core'
 
-import { createIndex, encodeIndex } from '../shared/index.js'
-import type { SearchIndex, SearchIndexStore } from '../shared/index.js'
-import { generatePageIndex } from './generateIndex.js'
+import { encodeIndex } from '../shared/index.js'
+import type { SearchIndexStore } from '../shared/index.js'
+import { createLocaleIndex } from './generateIndex.js'
 import type { OramaPluginOptions } from './options.js'
-import type { PathStore } from './pathStore.js'
-import { getLocaleChunkName } from './utils.js'
+import { TEMP_DIR } from './utils.js'
 
+const prepareOptions = { tempDir: TEMP_DIR, encode: encodeIndex }
+
+/**
+ * Write the path store of the plugin into a temp file.
+ *
+ * 将插件的路径存储写入临时文件。
+ *
+ * @param app - VuePress app VuePress 应用实例
+ * @param store - Path store 路径存储
+ */
 export const prepareStore = async (
   app: App,
   store: PathStore,
 ): Promise<void> => {
-  await app.writeTemp(
-    `orama/store.js`,
-    `\
-export const store = ${store.toJSON()}
-`,
-  )
+  await preparePathStore(app, TEMP_DIR, store)
 }
 
+/**
+ * Write the search indexes of every locale as temp chunks.
+ *
+ * 将所有语言环境的搜索索引写入临时分块。
+ *
+ * @param app - VuePress app VuePress 应用实例
+ * @param searchIndexStore - Index store 索引存储
+ */
 export const prepareSearchIndex = async (
   app: App,
   searchIndexStore: SearchIndexStore,
 ): Promise<void> => {
-  await Promise.all(
-    entries(searchIndexStore).map(([locale, index]) =>
-      app.writeTemp(
-        `orama/${getLocaleChunkName(locale)}.js`,
-        `export default ${JSON.stringify(encodeIndex(index))}`,
-      ),
-    ),
-  )
-
-  await app.writeTemp(
-    `orama/index.js`,
-    `export default {${keys(searchIndexStore)
-      .map(
-        (locale) =>
-          `${JSON.stringify(locale)}: () => import('./${getLocaleChunkName(
-            locale,
-          )}.js')`,
-      )
-      .join(',')}}`,
-  )
+  await prepareIndex(app, prepareOptions, searchIndexStore)
 }
 
+/**
+ * Write the worker options into a temp file.
+ *
+ * 将工作线程选项写入临时文件。
+ *
+ * @param app - VuePress app VuePress 应用实例
+ * @param options - Plugin options 插件选项
+ */
 export const prepareWorkerOptions = async (
   app: App,
   options: OramaPluginOptions,
 ): Promise<void> => {
-  await app.writeTemp(
-    `orama/worker-options.js`,
-    `\
-export const sortStrategy = "${options.sortStrategy ?? 'max'}"
-`,
-  )
-}
-
-export interface DevContext {
-  searchIndexStore: SearchIndexStore
-  store: PathStore
-  indexesByPage: Map<string, string[]>
-}
-
-const writeLocaleIndex = async (
-  app: App,
-  locale: string,
-  index: SearchIndex,
-): Promise<void> => {
-  await app.writeTemp(
-    `orama/${getLocaleChunkName(locale)}.js`,
-    `export default ${JSON.stringify(encodeIndex(index))}`,
-  )
+  await prepareSortStrategy(app, TEMP_DIR, options.sortStrategy ?? 'max')
 }
 
 /**
- * Rewrite the locale chunk, the locale registry and the path store in dev mode
- * after the search index changes.
+ * Rewrite the temp files of a locale after its index changed.
  *
- * 在开发模式下搜索索引变化后，重写语言分块、语言注册表与路径存储。
+ * The path store is rewritten as well, because a page that is added during a
+ * hot reload gets a new index id, which the client could not resolve
+ * otherwise.
+ *
+ * 语言环境索引变化后重写其临时文件。
+ *
+ * 路径存储也会被重写，因为热重载期间新增的页面会获得新的索引 id，否则客户端无法解析它。
  *
  * @param app - VuePress app VuePress 应用实例
- * @param context - Dev context 开发环境上下文
- * @param locale - The locale to rewrite 需要重写的语言环境
- * @param index - The index of the locale 该语言环境的索引
+ * @param searchIndexStore - Index store 索引存储
+ * @param store - Path store 路径存储
+ * @param localePath - Path of the locale 语言环境的路径
+ * @param index - Index of the locale 该语言环境的索引
  */
 const writeDevFiles = async (
   app: App,
-  { searchIndexStore, store }: DevContext,
-  locale: string,
-  index: SearchIndex,
+  searchIndexStore: SearchIndexStore,
+  store: PathStore,
+  localePath: string,
+  index: SearchIndexStore[string],
 ): Promise<void> => {
   await Promise.all([
-    writeLocaleIndex(app, locale, index),
-    app.writeTemp(
-      `orama/index.js`,
-      `export default {${keys(searchIndexStore)
-        .map(
-          (localePath) =>
-            `${JSON.stringify(localePath)}: () => import('./${getLocaleChunkName(
-              localePath,
-            )}.js')`,
-        )
-        .join(',')}}`,
-    ),
+    writeLocaleIndex(app, prepareOptions, localePath, index),
+    writeLocaleRegistry(app, TEMP_DIR, Object.keys(searchIndexStore)),
     prepareStore(app, store),
   ])
+}
+
+/** Context of the dev server. 开发服务器的上下文。 */
+export interface DevContext {
+  /** Index store 索引存储 */
+  searchIndexStore: SearchIndexStore
+  /** Path store 路径存储 */
+  store: PathStore
+  /** Index ids of each page 每个页面的索引 id */
+  indexesByPage: Map<string, string[]>
 }
 
 /**
  * Update the search index of a single page in dev mode.
  *
- * `indexesByPage` in the context maps each page path to the document ids that
- * belong to it, allowing us to remove stale documents when a page changes.
+ * The index ids of a page are tracked in `indexesByPage`, so that its stale
+ * documents can be removed before the new ones are added.
  *
  * 在开发模式下更新单个页面的搜索索引。
  *
- * 上下文中的 `indexesByPage` 将每个页面路径映射到属于它的文档 id，从而在页面变化时能够移除过期的文档。
+ * 页面的索引 id 会被记录在 `indexesByPage` 中，从而可以在添加新文档之前移除其过期文档。
  *
  * @param app - VuePress app VuePress 应用实例
  * @param options - Plugin options 插件选项
@@ -137,15 +131,7 @@ export const updateSearchIndex = async (
   // Lazily create the locale index when a page moves to a new locale
   const localeSearchIndex =
     searchIndexStore[pathLocale] ??
-    createIndex(
-      app.options.locales[pathLocale]?.lang ?? app.options.lang,
-      null,
-      {
-        tokenizer:
-          options.indexLocaleOptions?.[pathLocale]?.tokenizer ??
-          options.indexOptions?.tokenizer,
-      },
-    )
+    (await createLocaleIndex(app, options, pathLocale))
   searchIndexStore[pathLocale] = localeSearchIndex
 
   // Remove previous index
@@ -158,15 +144,24 @@ export const updateSearchIndex = async (
 
   await insertMultiple(localeSearchIndex, pageIndexes)
 
-  // Rewrite dev files
   await writeDevFiles(
     app,
-    { searchIndexStore, store, indexesByPage },
+    searchIndexStore,
+    store,
     pathLocale,
     localeSearchIndex,
   )
 }
 
+/**
+ * Remove the search index of a single page in dev mode.
+ *
+ * 在开发模式下移除单个页面的搜索索引。
+ *
+ * @param app - VuePress app VuePress 应用实例
+ * @param context - Dev context 开发环境上下文
+ * @param page - The page to remove 需要移除的页面
+ */
 export const removeSearchIndex = async (
   app: App,
   { searchIndexStore, store, indexesByPage }: DevContext,
@@ -175,16 +170,15 @@ export const removeSearchIndex = async (
   const { pathLocale } = page
   const localeSearchIndex = searchIndexStore[pathLocale]
 
-  // Remove previous index
   await removeMultiple(localeSearchIndex, indexesByPage.get(page.path) ?? [])
 
   indexesByPage.delete(page.path)
   store.deletePath(page.path)
 
-  // Rewrite dev files
   await writeDevFiles(
     app,
-    { searchIndexStore, store, indexesByPage },
+    searchIndexStore,
+    store,
     pathLocale,
     localeSearchIndex,
   )

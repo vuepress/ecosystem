@@ -1592,9 +1592,18 @@ importers:
       '@orama/orama':
         specifier: ^3.1.18
         version: 3.1.18
+      '@orama/stopwords':
+        specifier: ^3.1.18
+        version: 3.1.18
+      '@orama/tokenizers':
+        specifier: ^3.1.18
+        version: 3.1.18
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../../../tools/helper
+      '@vuepress/search-helper':
+        specifier: workspace:*
+        version: link:../../../tools/search-helper
       '@vueuse/core':
         specifier: 'catalog:'
         version: 15.0.0(vue@3.5.43(typescript@6.0.3))
@@ -1632,6 +1641,9 @@ importers:
       '@vuepress/helper':
         specifier: workspace:*
         version: link:../../../tools/helper
+      '@vuepress/search-helper':
+        specifier: workspace:*
+        version: link:../../../tools/search-helper
       '@vueuse/core':
         specifier: 'catalog:'
         version: 15.0.0(vue@3.5.43(typescript@6.0.3))
@@ -1931,6 +1943,28 @@ importers:
       vuepress:
         specifier: 'catalog:'
         version: 2.0.0-rc.31(64fe27a61b2d7fe5486fea782158c0c7)
+
+  tools/search-helper:
+    dependencies:
+      '@vuepress/helper':
+        specifier: workspace:*
+        version: link:../helper
+      '@vueuse/core':
+        specifier: 'catalog:'
+        version: 15.0.0(vue@3.5.43(typescript@6.0.3))
+      cheerio:
+        specifier: ^1.2.0
+        version: 1.2.0
+      vue:
+        specifier: 'catalog:'
+        version: 3.5.43(typescript@6.0.3)
+      vuepress:
+        specifier: 'catalog:'
+        version: 2.0.0-rc.31(603bf7bd0e97a2e6dd17a4be54e25f8a)
+    devDependencies:
+      domhandler:
+        specifier: ^6.0.1
+        version: 6.0.1
 
   tools/shiki-twoslash:
     dependencies:
@@ -4217,6 +4251,14 @@ packages:
 
   '@orama/orama@3.1.18':
     resolution: {integrity: sha512-a61ljmRVVyG5MC/698C8/FfFDw5a8LOIvyOLW5fztgUXqUpc1jOfQzOitSCbge657OgXXThmY3Tk8fpiDb4UcA==}
+    engines: {node: '>= 20.0.0'}
+
+  '@orama/stopwords@3.1.18':
+    resolution: {integrity: sha512-W8V7m7RnCme+99OmKl/xs5rf6OUhFpr0aPGVmPrXzTLSg4ZqSbRY2euS2S/lgjjYi/0NhEWqwoq8nDY6Ihx4EA==}
+    engines: {node: '>= 20.0.0'}
+
+  '@orama/tokenizers@3.1.18':
+    resolution: {integrity: sha512-Ra4dFddWZ7hCGPAehnd/6QZjlzQvczYSt1y1Fq4HteJqRu2yvfR6fXvxiUnKi+HIgJYPxKhebJEjvJdF8LYQWg==}
     engines: {node: '>= 20.0.0'}
 
   '@oxc-project/types@0.150.0':
@@ -13652,6 +13694,12 @@ snapshots:
   '@opentelemetry/api@1.9.1': {}
 
   '@orama/orama@3.1.18': {}
+
+  '@orama/stopwords@3.1.18': {}
+
+  '@orama/tokenizers@3.1.18':
+    dependencies:
+      '@orama/orama': 3.1.18
 
   '@oxc-project/types@0.150.0': {}
 

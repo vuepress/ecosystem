@@ -1,9 +1,13 @@
 import type { SearchParamsFullText } from '@orama/orama'
+import type {
+  IndexItem,
+  SearchableProperty,
+  WorkerMessageData as BaseWorkerMessageData,
+} from '@vuepress/search-helper/shared'
 
-import type { IndexItem, SCHEMA, SearchIndex } from './data.js'
+import type { SearchIndex } from './data.js'
 
-export type SearchableProperty = keyof typeof SCHEMA
-
+/** Search options of Orama. Orama 的搜索选项。 */
 export type WorkerSearchOptions = Omit<
   Pick<
     SearchParamsFullText<SearchIndex, IndexItem>,
@@ -31,11 +35,5 @@ export type WorkerSearchOptions = Omit<
   properties?: '*' | readonly SearchableProperty[]
 }
 
-export interface WorkerMessageData {
-  /** @default 'all' */
-  type?: 'all' | 'search' | 'suggest'
-  query: string
-  locale: string
-  options?: WorkerSearchOptions
-  id: number
-}
+/** Data of the message sent to the search worker. 发送到搜索工作线程的消息数据。 */
+export type WorkerMessageData = BaseWorkerMessageData<WorkerSearchOptions>

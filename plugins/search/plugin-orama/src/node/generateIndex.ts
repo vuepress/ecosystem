@@ -1,250 +1,84 @@
 import { insertMultiple } from '@orama/orama'
-/* oxlint-disable typescript/no-unsafe-enum-comparison */
-import { entries, fromEntries, isArray, keys, cheerio } from '@vuepress/helper'
-import type { AnyNode, Element } from 'domhandler'
-import type { App, Page } from 'vuepress/core'
+import { entries } from '@vuepress/helper'
+import { collectPageIndex, getLocaleLanguage } from '@vuepress/search-helper'
+import type { PathStore } from '@vuepress/search-helper'
+import type { App } from 'vuepress/core'
 
-import {
-  CUSTOM_FIELDS_INDEX_ID,
-  HEADING_INDEX_ID,
-  TEXT_INDEX_ID,
-  createIndex,
-} from '../shared/index.js'
-import type { IndexItem, SearchIndexStore } from '../shared/index.js'
+import { createIndex, preloadTokenizers } from '../shared/index.js'
+import type { SearchIndex, SearchIndexStore } from '../shared/index.js'
 import type { OramaPluginOptions } from './options.js'
-import type { PathStore } from './pathStore.js'
-
-/** H1 is removed because it's the title of the page. */
-const HEADING_TAGS = 'h2,h3,h4,h5,h6'.split(',')
+import { getStopWords } from './stopwords.js'
 
 /**
- * Not all the block tags are included, because some of them shall not be
- * indexed
- */
-const CONTENT_BLOCK_TAGS =
-  'header,nav,section,div,dd,dl,dt,figcaption,figure,picture,hr,li,main,ol,p,ul,caption,table,thead,tbody,tfoot,th,tr,td,datalist,fieldset,form,legend,optgroup,option,select,details,dialog,menu,menuitem,summary,blockquote,pre'.split(
-    ',',
-  )
-
-/**
- * Not all the inline tags are included, because some of them shall not be
- * indexed
+ * Create the index of a locale.
  *
- * Routelink and routerlink are added to the list, because they are link
- * components
+ * The tokenizer of the locale language is resolved first: the official
+ * `@orama/tokenizers` tokenizers are loaded lazily, and the stop-words of the
+ * language are embedded into the index.
+ *
+ * 创建某个语言环境的索引。
+ *
+ * 会先解析该语言环境的语言对应的分词器：官方的 `@orama/tokenizers` 分词器是懒加载的，且语言的停用词会被内嵌到索引中。
+ *
+ * @param app - VuePress app VuePress 应用实例
+ * @param options - Plugin options 插件选项
+ * @param localePath - Path of the locale 语言环境的路径
+ * @returns Orama index Orama 索引
  */
-const CONTENT_INLINE_TAGS =
-  'routelink,routerlink,a,b,abbr,bdi,bdo,cite,code,dfn,em,i,kbd,mark,q,rp,rt,ruby,s,samp,small,span,strong,sub,sup,time,u,var,wbr,del,ins,button,label,legend,meter,optgroup,option,output,progress,select'.split(
-    ',',
-  )
+export const createLocaleIndex = async (
+  app: App,
+  options: OramaPluginOptions,
+  localePath: string,
+): Promise<SearchIndex> => {
+  const language = getLocaleLanguage(app, localePath)
 
-const isExcerptMarker = (node: AnyNode): boolean =>
-  node.type === 'comment' && node.data.trim() === 'more'
+  await preloadTokenizers([language])
 
-const renderHeader = (node: Element): string => {
-  if (
-    node.children.length === 1 &&
-    node.children[0].type === 'tag' &&
-    node.children[0].tagName === 'a' &&
-    node.children[0].attribs.class === 'header-anchor'
-  )
-    node.children = (node.children[0].children[0] as Element).children
-
-  return node.children
-    .map((childNode) => (childNode.type === 'text' ? childNode.data : null))
-    .filter(Boolean)
-    .join(' ')
-    .replaceAll(/\s+/gu, ' ')
-    .trim()
+  return createIndex(language, null, {
+    tokenizer:
+      options.indexLocaleOptions?.[localePath]?.tokenizer ??
+      options.indexOptions?.tokenizer,
+    stopWords: await getStopWords(language),
+  })
 }
 
-// oxlint-disable-next-line max-lines-per-function
-export const generatePageIndex = (
-  page: Page<{ excerpt?: string }>,
-  store: PathStore,
-  {
-    customFields: customFieldsGetter = [],
-    indexContent = false,
-    preserveTags = [],
-  }: Pick<
-    OramaPluginOptions,
-    'customFields' | 'indexContent' | 'preserveTags'
-  > = {},
-): IndexItem[] => {
-  const preserveTagsSet = new Set(
-    preserveTags.map((tag) => tag.toLowerCase().replaceAll('-', '')),
-  )
-  const pageId = store.addPath(page.path).toString()
-  const hasExcerpt = Boolean(page.data.excerpt)
-
-  const pageIndex: IndexItem = {
-    id: pageId,
-    [HEADING_INDEX_ID]: page.title,
-  }
-  const results: IndexItem[] = [pageIndex]
-
-  // Here are some variables holding the current state of the parser
-  let shouldIndexContent = hasExcerpt || indexContent
-  let sectionIndex: IndexItem | null = null
-  let indexedText = ''
-  let foundFirstHeader = false
-
-  const addTextToIndex = (): void => {
-    if (indexedText && shouldIndexContent) {
-      // Trim the text and skip empty content, as whitespace-only text nodes are
-      // now preserved as word separators
-      const text = indexedText.replaceAll(/[\n\s]+/gu, ' ').trim()
-
-      if (text) {
-        ;((foundFirstHeader ? sectionIndex! : pageIndex)[TEXT_INDEX_ID] ??=
-          []).push(text)
-      }
-      indexedText = ''
-    }
-  }
-
-  const render = (node: AnyNode, preserveSpace = false): void => {
-    if (node.type === 'tag') {
-      if (HEADING_TAGS.includes(node.name)) {
-        const { id } = node.attribs
-        const header = renderHeader(node)
-
-        addTextToIndex()
-
-        // Update current section index only if it has an id
-        if (id) {
-          if (foundFirstHeader) results.push(sectionIndex!)
-          else foundFirstHeader = true
-
-          sectionIndex = {
-            id: `${pageId}#${id}`,
-            [HEADING_INDEX_ID]: header,
-          }
-        } else if (header) {
-          ;((sectionIndex ?? pageIndex)[TEXT_INDEX_ID] ??= []).push(header)
-        }
-      } else if (CONTENT_BLOCK_TAGS.includes(node.name)) {
-        addTextToIndex()
-        node.childNodes.forEach((item) => {
-          render(item, preserveSpace || node.name === 'pre')
-        })
-      } else if (preserveTagsSet.has(node.name.replaceAll('-', ''))) {
-        // Preserve tags should flush previous text and process children
-        addTextToIndex()
-        node.childNodes.forEach((item) => {
-          render(item, preserveSpace)
-        })
-      } else if (CONTENT_INLINE_TAGS.includes(node.name)) {
-        node.childNodes.forEach((item) => {
-          render(item, preserveSpace)
-        })
-      }
-    } else if (node.type === 'text') {
-      // Whitespace-only text nodes between inline elements are preserved as a
-      // single space, so that adjacent inline elements (e.g. `<span>a</span>
-      // <span>b</span>`) are indexed as separate words instead of being joined.
-      // `preserveSpace` contexts (e.g. `<pre>`) keep the original whitespace.
-      indexedText += node.data.trim()
-        ? node.data
-        : preserveSpace
-          ? node.data
-          : ' '
-    } else if (
-      // We are expecting to stop at excerpt marker if content is not indexed
-      hasExcerpt &&
-      !indexContent &&
-      isExcerptMarker(node)
-    ) {
-      shouldIndexContent = false
-    }
-  }
-
-  // The types are not correct, null is returned if contentRendered is empty
-  const nodes = cheerio.parseHTML(page.contentRendered) ?? []
-
-  // Get custom fields
-  const customFields = fromEntries(
-    customFieldsGetter
-      .map(({ getter }, index) => {
-        const result = getter(page)
-
-        return isArray(result)
-          ? [index.toString(), result]
-          : result
-            ? [index.toString(), [result]]
-            : null
-      })
-      .filter((item): item is [string, string[]] => item != null),
-  )
-
-  // No content in page and no customFields
-  if (nodes.length === 0 && keys(customFields).length === 0) return []
-
-  // Walk through nodes and extract indexes
-  nodes.forEach((node) => {
-    render(node)
-  })
-
-  // Push contents in last block tags
-  addTextToIndex()
-
-  // Push last section
-  if (sectionIndex) results.push(sectionIndex)
-
-  // Add custom fields
-  entries(customFields).forEach(([customField, values]) => {
-    results.push({
-      id: `${pageId}@${customField}`,
-      [CUSTOM_FIELDS_INDEX_ID]: values,
-    })
-  })
-
-  return results
-}
-
+/**
+ * Create the Orama index of every locale.
+ *
+ * 创建各语言环境的 Orama 索引。
+ *
+ * @param app - VuePress app VuePress 应用实例
+ * @param options - Plugin options 插件选项
+ * @param store - Path store 路径存储
+ * @param indexesByPage - Map to fill with the index ids of each page 用于填充每个页面索引
+ *   id 的映射
+ * @returns Index store 索引存储
+ */
 export const getSearchIndexStore = async (
   app: App,
-  {
-    customFields,
-    indexContent,
-    filter = (): boolean => true,
-    indexOptions,
-    indexLocaleOptions,
-    preserveTags = [],
-  }: OramaPluginOptions,
+  options: OramaPluginOptions,
   store: PathStore,
-  indexesByPage = new Map<string, string[]>(),
+  indexesByPage: Map<string, string[]>,
 ): Promise<SearchIndexStore> => {
-  const indexesByLocale: Record<string, IndexItem[]> = {}
-
-  app.pages.forEach((page) => {
-    if (filter(page) && page.frontmatter.search !== false) {
-      const pageIndexes = generatePageIndex(page, store, {
-        customFields,
-        indexContent,
-        preserveTags,
-      })
-
-      // Track the document ids of each page, so that HMR can remove the stale
-      // documents of a page on update or delete
-      indexesByPage.set(
-        page.path,
-        pageIndexes.map(({ id }) => id),
-      )
-      ;(indexesByLocale[page.pathLocale] ??= []).push(...pageIndexes)
-    }
-  })
-
+  const { customFields, filter, indexContent, preserveTags } = options
+  const { indexesByLocale } = collectPageIndex(
+    app,
+    { customFields, filter, indexContent, preserveTags },
+    store,
+    indexesByPage,
+  )
   const searchIndex: SearchIndexStore = {}
+  const locales = entries(indexesByLocale)
+
+  // The official tokenizers are loaded lazily, so they have to be loaded before
+  // the indexes are created
+  await preloadTokenizers(
+    locales.map(([localePath]) => getLocaleLanguage(app, localePath)),
+  )
 
   await Promise.all(
-    entries(indexesByLocale).map(async ([localePath, indexes]) => {
-      const lang = app.options.locales[localePath]?.lang ?? app.options.lang
-      const index = createIndex(lang, null, {
-        tokenizer:
-          indexLocaleOptions?.[localePath]?.tokenizer ??
-          indexOptions?.tokenizer,
-      })
+    locales.map(async ([localePath, indexes]) => {
+      const index = await createLocaleIndex(app, options, localePath)
 
       await insertMultiple(index, indexes)
 

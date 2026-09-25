@@ -1,13 +1,13 @@
-import { defineClientConfig } from 'vuepress/client'
+import { createSearchClientConfig } from '@vuepress/search-helper/client'
 
-import SearchBox from './components/SearchBox.js'
-import SearchModal from './components/SearchModal.js'
-import { injectSearchConfig } from './helpers/index.js'
+import { store } from '@temp/orama/store.js'
 
-export default defineClientConfig({
-  enhance({ app }) {
-    injectSearchConfig(app)
-    app.component('SearchBox', SearchBox)
-  },
-  rootComponents: [SearchModal],
+import { customFieldConfig, locales, options } from './define.js'
+
+export default createSearchClientConfig({
+  options,
+  locales,
+  customFieldConfig,
+  store,
+  devWorker: new URL('worker/dev.js', import.meta.url),
 })

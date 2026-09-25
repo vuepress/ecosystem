@@ -1,7 +1,13 @@
-export type SlimSearchSortStrategy = 'max' | 'total'
-
 export * from './data.js'
-export type * from './formatter.js'
-export type * from './locales.js'
-export type * from './result.js'
-export type * from './worker.js'
+export * from '@vuepress/search-helper/shared'
+
+// The plugin overrides these names with engine specific ones
+export type { SearchIndexStore } from './data.js'
+export type { WorkerMessageData, WorkerSearchOptions } from './worker.js'
+
+// Backward compatible aliases of the shared types
+export type {
+  SearchCustomFieldFormatter as SlimSearchCustomFieldFormatter,
+  SearchLocaleData as SlimSearchLocaleData,
+  SearchSortStrategy as SlimSearchSortStrategy,
+} from '@vuepress/search-helper/shared'

@@ -4,14 +4,14 @@ import {
   fromEntries,
   getFullLocaleConfig,
 } from '@vuepress/helper'
+import { searchLocaleInfo, PathStore } from '@vuepress/search-helper'
+import type { SearchIndexStore } from '@vuepress/search-helper'
 import type { Page, PluginFunction } from 'vuepress/core'
 
-import type { SearchIndexStore } from '../shared/index.js'
+import type { SearchIndex } from '../shared/index.js'
 import { getSearchIndexStore } from './generateIndex.js'
 import { generateWorker } from './generateWorker.js'
-import { slimsearchLocaleInfo } from './locales.js'
 import type { SlimSearchPluginOptions } from './options.js'
-import { PathStore } from './pathStore.js'
 import {
   prepareSearchIndex,
   prepareStore,
@@ -27,7 +27,8 @@ export const slimsearchPlugin =
     if (app.env.isDebug) logger.info('Options:', options)
 
     const store = new PathStore()
-    let searchIndexStore: SearchIndexStore | null = null
+    let searchIndexStore: SearchIndexStore<SearchIndex> | null = null
+    const indexesByPage = new Map<string, string[]>()
 
     return {
       name: PLUGIN_NAME,
@@ -45,7 +46,7 @@ export const slimsearchPlugin =
           app,
           name: PLUGIN_NAME,
           config: options.locales,
-          default: slimsearchLocaleInfo,
+          default: searchLocaleInfo,
         }),
         __SLIMSEARCH_OPTIONS__: {
           searchDelay: options.searchDelay ?? 150,
@@ -71,7 +72,12 @@ export const slimsearchPlugin =
       },
 
       onInitialized: async () => {
-        searchIndexStore = await getSearchIndexStore(app, options, store)
+        searchIndexStore = await getSearchIndexStore(
+          app,
+          options,
+          store,
+          indexesByPage,
+        )
       },
 
       onPrepared: async () => {
@@ -95,19 +101,23 @@ export const slimsearchPlugin =
       onPageUpdated: async (_, type, newPage, oldPage) => {
         if (!(options.hotReload ?? app.env.isDebug)) return
 
+        const context = {
+          searchIndexStore: searchIndexStore!,
+          store,
+          indexesByPage,
+        }
+
         if (type === 'delete') {
           await removeSearchIndex(
             app,
-            searchIndexStore!,
-            store,
+            context,
             oldPage as Page<{ excerpt?: string }>,
           )
         } else {
           await updateSearchIndex(
             app,
             options,
-            searchIndexStore!,
-            store,
+            context,
             newPage as Page<{ excerpt?: string }>,
           )
         }

@@ -409,6 +409,16 @@ You can customize the index generation process using `indexOptions` and `indexLo
 
 We use the `Intl.Segmenter` API for tokenization (word-splitting) by default. While this works well for most languages, you might want to provide a custom `tokenize` function for specific languages to improve search accuracy.
 
+When you provide a custom `tokenize` (or `processTerm`), set the [`querySplitter`](#definesearchconfig) option to split words the same way, otherwise the queries will not match the index.
+
+::: warning Browser support
+
+Splitting the languages that are not separated by whitespace (Chinese, Japanese, Korean, Thai, ...) into words relies on the [`Intl.Segmenter`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter) API, which is available in Chrome 87+, Edge 87+, Safari 14.1+ and Firefox 125+.
+
+On older browsers the client splits the query into single characters, which no longer match the words of the index, so **searching those languages returns no result or unrelated results**. Languages separated by whitespace are not affected.
+
+:::
+
 ### Using with API
 
 To access the search functionality programmatically, import the `createSearchWorker` function from `@vuepress/plugin-slimsearch/client`:

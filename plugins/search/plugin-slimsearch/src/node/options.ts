@@ -1,12 +1,14 @@
 import type { KeyOptions } from '@vuepress/helper'
-import type { LocaleConfig, Page } from 'vuepress/core'
-
 import type {
-  SlimSearchCustomFieldFormatter,
-  SlimSearchLocaleData,
-  SlimSearchSortStrategy,
-} from '../shared/index.js'
+  SearchLocaleData,
+  SearchPluginOptions,
+  SearchSortStrategy,
+} from '@vuepress/search-helper'
+import type { LocaleConfig } from 'vuepress/core'
 
+export type { SearchCustomField as CustomFieldOptions } from '@vuepress/search-helper'
+
+/** Options for creating a SlimSearch index. 创建 SlimSearch 索引的选项。 */
 export interface SlimSearchIndexOptions {
   /**
    * Function to tokenize the index field item.
@@ -14,6 +16,7 @@ export interface SlimSearchIndexOptions {
    * 用于对索引字段项进行分词的函数。
    */
   tokenize?: (text: string, fieldName?: string) => string[]
+
   /**
    * Function to process or normalize terms in the index field.
    *
@@ -22,53 +25,8 @@ export interface SlimSearchIndexOptions {
   processTerm?: (term: string) => string[] | string | false | null | undefined
 }
 
-export interface CustomFieldOptions {
-  /**
-   * Custom field getter
-   *
-   * 自定义项目的获取器
-   */
-  getter: <
-    ExtraPageData extends Record<string, unknown> = Record<never, never>,
-    ExtraPageFrontmatter extends Record<string, unknown> = Record<
-      string,
-      unknown
-    >,
-    ExtraPageFields extends Record<string, unknown> = Record<never, never>,
-  >(
-    page: Page<ExtraPageData, ExtraPageFrontmatter, ExtraPageFields>,
-  ) => string[] | string | null | undefined
-
-  /**
-   * Display content
-   *
-   * `$content` will be replaced by the content returned by `getter`
-   *
-   * 展示的内容
-   *
-   * `$content` 会被 `getter` 返回的内容替换
-   *
-   * @default `$content`
-   */
-  formatter?: SlimSearchCustomFieldFormatter
-}
-
-export interface SlimSearchPluginOptions {
-  /**
-   * Whether index page content
-   *
-   * By default only headings and excerpt of the page will be indexed, and the
-   * content of the page will not be indexed. If you need to index the content
-   * of the page, you can set this option to `true`
-   *
-   * 是否索引正文内容
-   *
-   * 默认情况下，只会索引页面的标题和摘要，不会索引页面的正文内容。如果需要索引页面的正文内容，可以将该选项设置为 `true`
-   *
-   * @default false
-   */
-  indexContent?: boolean
-
+/** Options of `@vuepress/plugin-slimsearch`. `@vuepress/plugin-slimsearch` 的选项。 */
+export interface SlimSearchPluginOptions extends SearchPluginOptions {
   /**
    * Whether provide auto suggestions while typing
    *
@@ -113,7 +71,7 @@ export interface SlimSearchPluginOptions {
    */
   searchDelay?: number
 
-  /*
+  /**
    * Delay to start auto-suggesting after input
    *
    * 结束输入到开始自动建议的延时
@@ -121,9 +79,6 @@ export interface SlimSearchPluginOptions {
    * @default 0
    */
   suggestDelay?: number
-
-  /** Custom field for search */
-  customFields?: CustomFieldOptions[]
 
   /**
    * Specify the [event.key](http://keycode.info/) of the hotkeys
@@ -165,14 +120,14 @@ export interface SlimSearchPluginOptions {
    *
    * 多语言选项
    */
-  locales?: LocaleConfig<SlimSearchLocaleData>
+  locales?: LocaleConfig<SearchLocaleData>
 
   /**
    * Result Sort strategy
    *
    * When there are multiple matched results, the result will be sorted by the
-   * strategy. `max` means that page having higher total score will be placed in
-   * front. `total` means that page having higher max score will be placed in
+   * strategy. `max` means that page having higher max score will be placed in
+   * front. `total` means that page having higher total score will be placed in
    * front.
    *
    * 结果排序策略
@@ -181,7 +136,7 @@ export interface SlimSearchPluginOptions {
    *
    * @default 'max'
    */
-  sortStrategy?: SlimSearchSortStrategy
+  sortStrategy?: SearchSortStrategy
 
   /**
    * Create Index option
@@ -196,29 +151,4 @@ export interface SlimSearchPluginOptions {
    * 按语言的创建索引选项
    */
   indexLocaleOptions?: Record<string, SlimSearchIndexOptions>
-
-  /**
-   * Filter pages to be indexed
-   *
-   * 过滤需要索引的页面
-   *
-   * @param page Page
-   * @returns Whether the page should be indexed
-   */
-  filter?: (page: Page) => boolean
-
-  /**
-   * Tags whose content should be preserved
-   *
-   * Tags not in the default whitelist will not be indexed. For custom Vue
-   * components that render slot content by default (like
-   * `<human-only>contents</human-only>`), you can add their tag names here to
-   * preserve their content.
-   *
-   * 需要保留内容的标签
-   *
-   * 默认白名单之外的标签不会被索引。对于一些会将其插槽内容渲染为默认内容的 Vue 组件（如
-   * `<human-only>contents</human-only>`），你可以将其标签名添加到这里以保留其内容。
-   */
-  preserveTags?: string[]
 }

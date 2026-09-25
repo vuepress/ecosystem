@@ -410,6 +410,16 @@ export default defineUserConfig({
 
 目前我们使用 `Intl.Segmenter` API 在构建搜索索引时进行分词。这在大多数语言中效果良好，但为了获得更高的准确性，你可能希望通过 `tokenize` 选项自定义分词过程。
 
+当你提供自定义 `tokenize`（或 `processTerm`）时，需设置 [`querySplitter`](#definesearchconfig) 选项，使其以相同的方式拆分单词，否则查询将无法匹配索引。
+
+::: warning 浏览器支持
+
+将不以空格分词的语言（中文、日文、韩文、泰文等）拆分为单词依赖 [`Intl.Segmenter`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter) API，它在 Chrome 87+、Edge 87+、Safari 14.1+ 与 Firefox 125+ 中可用。
+
+在更旧的浏览器中，客户端会把查询拆分为单个字符，与索引中的词不再匹配，因此**搜索这些语言会返回不到结果或无关结果**。以空格分词的语言不受影响。
+
+:::
+
 ### 使用 API
 
 如果你想访问搜索 API，你需要从 `@vuepress/plugin-slimsearch/client` 导入 `createSearchWorker` 函数：

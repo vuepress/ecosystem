@@ -71,6 +71,7 @@ Plugins are grouped into sub-categories:
 | ----------------------------------------------------- | -------------------------------------------------------------- |
 | `helper` (`@vuepress/helper`)                         | Shared utilities for node, client, and shared environments     |
 | `highlighter-helper` (`@vuepress/highlighter-helper`) | Shared utilities for syntax highlighter plugins (Shiki, Prism) |
+| `search-helper` (`@vuepress/search-helper`)           | Shared utilities for local search plugins (SlimSearch, Orama)  |
 | `shiki-twoslash` (`@vuepress/shiki-twoslash`)         | TwoSlash integration for the Shiki plugin                      |
 | `create-vuepress`                                     | CLI scaffolding tool (`npm create vuepress`)                   |
 | `vp-update` (`vp-update`)                             | CLI for updating VuePress project dependencies                 |

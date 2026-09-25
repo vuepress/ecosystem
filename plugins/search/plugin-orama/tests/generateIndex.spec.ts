@@ -1,163 +1,193 @@
-// oxlint-disable vitest/no-conditional-in-test
-// oxlint-disable vitest/max-expects
-import { getPageExcerpt } from '@vuepress/helper'
+import { search } from '@orama/orama'
+import { decodeData } from '@vuepress/helper/shared'
+import { PathStore } from '@vuepress/search-helper'
 import { describe, expect, it } from 'vitest'
-import type { Bundler, Page } from 'vuepress/core'
+import type { Bundler } from 'vuepress/core'
 import { createBuildApp } from 'vuepress/core'
-import { path } from 'vuepress/utils'
+import { fs, path } from 'vuepress/utils'
 
-import { generatePageIndex } from '../src/node/generateIndex.js'
-import { TEXT_INDEX_ID } from '../src/node/index.js'
-import type { IndexItem } from '../src/node/index.js'
-import { PathStore } from '../src/node/pathStore.js'
+import { getSearchIndexStore } from '../src/node/generateIndex.js'
+import {
+  prepareSearchIndex,
+  prepareStore,
+  prepareWorkerOptions,
+  removeSearchIndex,
+  updateSearchIndex,
+} from '../src/node/prepare.js'
+import { decodeIndex } from '../src/shared/index.js'
+import type { SearchIndex } from '../src/shared/index.js'
 import { emptyTheme } from './__fixtures__/theme/empty.js'
 
 const app = createBuildApp({
   bundler: {} as Bundler,
   source: path.resolve(__dirname, './__fixtures__/src'),
+  dest: path.resolve(__dirname, './__fixtures__/dist'),
   theme: emptyTheme,
 })
 
 await app.init()
 
-describe(generatePageIndex, () => {
-  it('should generate index', () => {
+// Count the results of a query
+const countResults = (index: SearchIndex, query: string): number =>
+  (
+    search(index, {
+      term: query,
+      threshold: 0,
+      limit: 10,
+    }) as { hits: unknown[] }
+  ).hits.length
+
+describe('index generation', () => {
+  it('should build a searchable index store', async () => {
     const store = new PathStore()
+    const searchIndexStore = await getSearchIndexStore(
+      app,
+      { indexContent: true },
+      store,
+      new Map(),
+    )
 
-    app.pages.forEach((page) => {
-      page.data.excerpt = getPageExcerpt(app, page, {
-        length: 0,
-      })
+    // The fixtures only contain English pages, so they share the root locale
+    const [locale] = Object.keys(searchIndexStore)
+    const index = searchIndexStore[locale]
 
-      expect(generatePageIndex(page, store)).toMatchSnapshot()
-    })
+    expect(countResults(index, 'paragraph')).toBeGreaterThan(0)
   })
 
-  it('should generate full index', () => {
+  it('should write the temp files of the dev server', async () => {
     const store = new PathStore()
+    const searchIndexStore = await getSearchIndexStore(
+      app,
+      { indexContent: true },
+      store,
+      new Map(),
+    )
 
-    app.pages.forEach((page) => {
-      page.data.excerpt = getPageExcerpt(app, page, {
-        length: 0,
-      })
+    await prepareStore(app, store)
+    await prepareSearchIndex(app, searchIndexStore)
+    await prepareWorkerOptions(app, {})
 
-      expect(
-        generatePageIndex(page, store, {
-          indexContent: true,
-        }),
-      ).toMatchSnapshot()
-    })
+    for (const file of [
+      'orama/store.js',
+      'orama/index.js',
+      'orama/worker-options.js',
+      'orama/root.js',
+    ])
+      expect(fs.existsSync(app.dir.temp(file))).toBe(true)
   })
 
-  it('should support customFields', () => {
+  it('should write a locale chunk that can be decoded and searched', async () => {
     const store = new PathStore()
+    const searchIndexStore = await getSearchIndexStore(
+      app,
+      { indexContent: true },
+      store,
+      new Map(),
+    )
 
-    app.pages.forEach((page) => {
-      page.data.excerpt = getPageExcerpt(app, page, {
-        length: 0,
-      })
+    await prepareSearchIndex(app, searchIndexStore)
 
-      expect(
-        generatePageIndex(page, store, {
-          customFields: [
-            {
-              getter: ({ frontmatter }: Page): string[] | string | null =>
-                (frontmatter.tag as string[] | string) || null,
-            },
-          ],
-        }),
-      ).toMatchSnapshot()
-    })
+    const content = fs.readFileSync(app.dir.temp('orama/root.js'), 'utf-8')
+    const encoded = JSON.parse(content.replace('export default ', '')) as string
+    const index = decodeIndex(encoded)
+
+    expect(index.tokenizer.language).toBe('en-US')
+    expect(countResults(index, 'paragraph')).toBeGreaterThan(0)
   })
 
-  it('should support customFields with full index', () => {
+  it('should embed an index carrying its stop-words', async () => {
     const store = new PathStore()
+    const searchIndexStore = await getSearchIndexStore(
+      app,
+      { indexContent: true },
+      store,
+      new Map(),
+    )
+    const index = searchIndexStore[Object.keys(searchIndexStore)[0]]
+    const serialized = JSON.parse(
+      decodeData(
+        JSON.parse(
+          fs
+            .readFileSync(app.dir.temp('orama/root.js'), 'utf-8')
+            .replace('export default ', ''),
+        ) as string,
+      ),
+    ) as { lang: string; stopWords?: string[] }
 
-    app.pages.forEach((page) => {
-      expect(
-        generatePageIndex(page, store, {
-          customFields: [
-            {
-              getter: ({ frontmatter }: Page): string[] | string | null =>
-                (frontmatter.tag as string[] | string) || null,
-            },
-          ],
-          indexContent: true,
-        }),
-      ).toMatchSnapshot()
-    })
+    // English stop-words are embedded, so that the worker tokenizes queries
+    // exactly like the index was tokenized
+    expect(serialized.lang).toBe(index.tokenizer.language)
+    expect(serialized.stopWords).toHaveLength(180)
+  })
+})
+
+describe('dev hot reload', () => {
+  const makePage = (
+    pagePath: string,
+    title: string,
+  ): Parameters<typeof updateSearchIndex>[3] =>
+    ({
+      path: pagePath,
+      pathLocale: '/',
+      title,
+      frontmatter: {},
+      data: {},
+      contentRendered: `<h2 id="a">Section</h2><p>Fresh content</p>`,
+    }) as unknown as Parameters<typeof updateSearchIndex>[3]
+
+  it('should rewrite the path store when a page is added', async () => {
+    const store = new PathStore()
+    const indexesByPage = new Map<string, string[]>()
+    const searchIndexStore = await getSearchIndexStore(
+      app,
+      { indexContent: true },
+      store,
+      indexesByPage,
+    )
+    const context = { searchIndexStore, store, indexesByPage }
+
+    await updateSearchIndex(
+      app,
+      { indexContent: true },
+      context,
+      makePage('/brand-new-page.html', 'Brand new page'),
+    )
+
+    // A page added during a hot reload gets a new index id, so the store has to
+    // be rewritten, otherwise the client can not resolve the path of its
+    // results
+    const storeContent = fs.readFileSync(
+      app.dir.temp('orama/store.js'),
+      'utf-8',
+    )
+
+    expect(storeContent).toContain('/brand-new-page.html')
+
+    const newPageId = store.addPath('/brand-new-page.html')
+
+    expect(storeContent).toContain(`"${newPageId}":"/brand-new-page.html"`)
   })
 
-  it('should remove custom tags by default', () => {
+  it('should drop the page from the path store when it is removed', async () => {
     const store = new PathStore()
+    const indexesByPage = new Map<string, string[]>()
+    const searchIndexStore = await getSearchIndexStore(
+      app,
+      { indexContent: true },
+      store,
+      indexesByPage,
+    )
+    const context = { searchIndexStore, store, indexesByPage }
+    const page = makePage('/temporary-page.html', 'Temporary page')
 
-    // Create a mock page with custom tags
-    const page = app.pages.find((p) => p.path === '/component.html')!
+    await updateSearchIndex(app, { indexContent: true }, context, page)
+    await removeSearchIndex(app, context, page)
 
-    const result = generatePageIndex(page, store, {
-      indexContent: true,
-    })
+    const storeContent = fs.readFileSync(
+      app.dir.temp('orama/store.js'),
+      'utf-8',
+    )
 
-    expect(result).toMatchSnapshot('default')
-
-    const text = (
-      result.find((item): item is IndexItem => 't' in item)?.[TEXT_INDEX_ID] ??
-      []
-    ).join('')
-
-    expect(text).toContain('Text 1')
-    expect(text).toContain('Text 2')
-    expect(text).toContain('Text 11')
-    // Content inside custom tags should be removed
-    expect(text).not.toContain('Text 3')
-    expect(text).not.toContain('Text 4')
-    expect(text).not.toContain('Text 5')
-    expect(text).not.toContain('Text 6')
-    expect(text).not.toContain('Text 7')
-    expect(text).not.toContain('Text 8')
-    expect(text).not.toContain('Text 9')
-    expect(text).not.toContain('Text 10')
-    expect(text).not.toContain('Text 12')
-    expect(text).not.toContain('Text 13')
-    expect(text).not.toContain('Text 14')
-    expect(text).not.toContain('Text 15')
-  })
-
-  it('should preserve content inside custom tags with preserveTags', () => {
-    const store = new PathStore()
-
-    // Create a mock page with custom tags
-    const page = app.pages.find((p) => p.path === '/preserve-tag.html')!
-
-    // Without preserveTags, human-only content should be lost
-    const resultWithoutPreserve = generatePageIndex(page, store, {
-      indexContent: true,
-    })
-
-    // With preserveTags, human-only content should be preserved
-    const resultWithPreserve = generatePageIndex(page, store, {
-      indexContent: true,
-      preserveTags: ['human-only', 'badge', 'donate-info'],
-    })
-
-    expect(resultWithoutPreserve).toMatchSnapshot('not preserve')
-    expect(resultWithPreserve).toMatchSnapshot('preserve')
-
-    const textWithoutPreserve = JSON.stringify(resultWithoutPreserve)
-    const textWithPreserve = JSON.stringify(resultWithPreserve)
-
-    expect(textWithoutPreserve).not.toContain('Human readable content')
-    expect(textWithoutPreserve).not.toContain('text1')
-    expect(textWithoutPreserve).not.toContain('text2')
-    expect(textWithoutPreserve).not.toContain('text3')
-    expect(textWithoutPreserve).not.toContain('text4')
-
-    expect(textWithPreserve).toContain('Human readable content')
-    // Robot-only content should still be lost since it's not in preserveTags
-    expect(textWithPreserve).not.toContain('Robot content')
-    expect(textWithPreserve).toContain('text1')
-    expect(textWithPreserve).toContain('text2')
-    expect(textWithPreserve).toContain('text3')
-    expect(textWithPreserve).toContain('text4')
+    expect(storeContent).not.toContain('/temporary-page.html')
   })
 })

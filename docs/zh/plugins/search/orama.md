@@ -258,13 +258,19 @@ export default defineUserConfig({
     /**
      * 自定义分词器工厂
      *
-     * 未提供时，会为语言环境创建基于 `Intl.Segmenter` 的分词器。
+     * 未提供时，会为语言环境的语言创建开箱即用的分词器。
      */
     tokenizer?: (language: string) => Tokenizer
   }
   ```
 
 用于创建索引的选项。
+
+::: warning
+
+当你提供自定义 `tokenizer` 时，必须同时设置 [`querySplitter`](#definesearchconfig) 选项，使其以相同的方式拆分单词，否则查询将无法匹配索引。
+
+:::
 
 ### indexLocaleOptions
 
@@ -400,11 +406,43 @@ export default defineUserConfig({
 
 ## 进阶
 
+### 分词
+
+每个语言环境的索引都会使用其自身语言的分词器进行分词，语言由该语言环境的 `lang` 检测得到。
+
+分词器会自动选择：
+
+- 中文与日文使用官方的 [`@orama/tokenizers`](https://docs.orama.com/docs/orama-js/supported-languages/using-chinese-with-orama) 分词器，它们使用 `Intl.Segmenter` 分词，而不是按空格拆分。
+- Orama 支持的语言使用其内置分词器。
+- 其他语言回退到 `Intl.Segmenter`。
+
+词条会被转换为小写、移除[停用词](https://docs.orama.com/docs/orama-js/text-analysis/stop-words)并折叠变音符号，因此 `VuePress` 能匹配 `vuepress`，`Café` 能匹配 `cafe`。
+
+::: tip
+
+停用词会被内嵌到搜索索引中，因此只有你站点实际使用的语言会被发送到浏览器。
+
+:::
+
+::: note
+
+Orama 的文档声称支持韩语、波兰语、斯洛伐克语与越南语，但其所有包都并未实现。这些语言会回退到 `Intl.Segmenter`，它仍能将它们分词，但不会移除其停用词。
+
+:::
+
+::: warning 浏览器支持
+
+对不以空格分词的语言（中文、日文、韩文、泰文等）进行分词依赖 [`Intl.Segmenter`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter) API，它在 Chrome 87+、Edge 87+、Safari 14.1+ 与 Firefox 125+ 中可用。
+
+在更旧的浏览器中，查询会被拆分为单个字符，与索引中的词不再匹配，因此**搜索这些语言会返回不到结果或无关结果**。以空格分词的语言不受影响。
+
+:::
+
 ### 自定义索引生成
 
 你可以通过 `indexOptions` 和 `indexLocaleOptions` 自定义索引生成过程，以便获得更好的索引结果，并可针对每个语言环境单独设置。
 
-目前我们使用 `Intl.Segmenter` API 在构建搜索索引时进行分词。这在大多数语言中效果良好，但为了获得更高的准确性，你可能希望通过 `tokenizer` 选项自定义分词过程。
+你可以提供自定义 `tokenizer` 来提升特定语言的搜索准确性。此时需设置 [`querySplitter`](#definesearchconfig) 选项，使其以相同的方式拆分单词，否则查询将无法匹配索引。
 
 ### 使用 API
 

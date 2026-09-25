@@ -53,6 +53,7 @@
   },
   "dependencies": {
     "@vuepress/helper": "workspace:*",
+    "@vuepress/search-helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "cheerio": "^1.2.0",
     "slimsearch": "^3.0.0",
