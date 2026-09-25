@@ -1,4 +1,6 @@
 import type { SearchableProperty } from './data.js'
+import type { QueryResult, SearchResult } from './result.js'
+import type { SearchSortStrategy } from './sortStrategy.js'
 
 /**
  * Search options that can be sent to the search worker.
@@ -95,4 +97,131 @@ export interface WorkerMessageData<TSearchOptions = WorkerSearchOptions> {
 
   /** Id of the request, used to match the response 请求的 id，用于匹配响应 */
   id: number
+}
+
+/**
+ * Response of a search worker.
+ *
+ * The three elements of the tuple are destructured by the client as `[type, id,
+ * payload]`, so its shape is a contract between the worker and the client:
+ * answering with an object instead of a tuple leaves the client waiting
+ * forever.
+ *
+ * 搜索工作线程的响应。
+ *
+ * 客户端会按 `[type, id, payload]`
+ * 解构该元组的三个元素，因此其形状是工作线程与客户端之间的契约：用对象而非元组作答会让客户端永远等待。
+ */
+export type WorkerResponse =
+  | ['all', number, QueryResult]
+  | ['search', number, SearchResult[]]
+  | ['suggest', number, string[]]
+
+/**
+ * Handlers used to answer a request sent to the search worker.
+ * 用于响应搜索工作线程请求的处理函数。
+ */
+export interface WorkerSearchHandlers<TIndex, TOptions> {
+  /**
+   * Get the suggestions of a query
+   *
+   * 获取搜索词的建议
+   *
+   * @param query - Search query 搜索词
+   * @param localeIndex - Locale search index 语言搜索索引
+   * @param options - Search options 搜索选项
+   * @returns Search suggestions 搜索建议
+   */
+  getSuggestions: (
+    query: string,
+    localeIndex: TIndex,
+    options?: TOptions,
+  ) => string[]
+
+  /**
+   * Get the results of a query
+   *
+   * 获取搜索词的结果
+   *
+   * @param query - Search query 搜索词
+   * @param localeIndex - Locale search index 语言搜索索引
+   * @param options - Search options 搜索选项
+   * @param sortStrategy - Strategy to sort the results 结果的排序策略
+   * @returns Search results 搜索结果
+   */
+  getSearchResults: (
+    query: string,
+    localeIndex: TIndex,
+    options: TOptions | undefined,
+    sortStrategy: SearchSortStrategy,
+  ) => SearchResult[]
+}
+
+/**
+ * Build the response of a request sent to the search worker.
+ *
+ * The response is a tuple instead of a plain object, because the client relies
+ * on its shape to resolve the pending promise of the request.
+ *
+ * A request for a locale without an index is answered with empty results rather
+ * than throwing, so that an unknown locale can not break the client.
+ *
+ * 构建发送给搜索工作线程的请求的响应。
+ *
+ * 响应是元组而非普通对象，因为客户端依赖其形状来兑现该请求的待处理 Promise。
+ *
+ * 请求的索引不存在时，会以空结果作答而非抛错，因此未知的语言环境不会使客户端出错。
+ *
+ * @example
+ *   import { createWorkerResponse } from '@vuepress/search-helper/shared'
+ *
+ *   self.postMessage(
+ *     createWorkerResponse(
+ *       data,
+ *       searchIndex[data.locale],
+ *       { getSuggestions, getSearchResults },
+ *       'max',
+ *     ),
+ *   )
+ *
+ * @param data - Data of the request 请求的数据
+ * @param localeIndex - Index of the requested locale, `undefined` when it has
+ *   none 所请求语言环境的索引，不存在时为 `undefined`
+ * @param handlers - Handlers of the search engine 搜索引擎的处理函数
+ * @param sortStrategy - Strategy to sort the results 结果的排序策略
+ * @returns Response to post back to the client 需要回传给客户端的响应
+ */
+export const createWorkerResponse = <TIndex, TOptions>(
+  { id, options, query, type = 'all' }: WorkerMessageData<TOptions>,
+  localeIndex: TIndex | undefined,
+  { getSearchResults, getSuggestions }: WorkerSearchHandlers<TIndex, TOptions>,
+  sortStrategy: SearchSortStrategy,
+): WorkerResponse => {
+  // Guard against locales without an index
+  if (!localeIndex) {
+    if (type === 'suggest') return [type, id, []]
+    if (type === 'search') return [type, id, []]
+
+    return [type, id, { suggestions: [], results: [] }]
+  }
+
+  if (type === 'suggest')
+    return [type, id, getSuggestions(query, localeIndex, options)]
+
+  if (type === 'search') {
+    return [
+      type,
+      id,
+      getSearchResults(query, localeIndex, options, sortStrategy),
+    ]
+  }
+
+  return [
+    type,
+    id,
+    {
+      suggestions: getSuggestions(query, localeIndex, options),
+      results: getSearchResults(query, localeIndex, options, sortStrategy),
+    },
+  ]
 }

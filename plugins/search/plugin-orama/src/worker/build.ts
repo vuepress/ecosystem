@@ -1,4 +1,5 @@
 import { entries, fromEntries } from '@vuepress/helper/client'
+import { createWorkerResponse } from '@vuepress/search-helper/shared'
 
 import {
   decodeIndex,
@@ -33,53 +34,16 @@ const ready = preloadTokenizers(
 
 self.addEventListener(
   'message',
-  ({
-    data: { type = 'all', query, locale, options, id },
-  }: MessageEvent<WorkerMessageData>) => {
+  ({ data }: MessageEvent<WorkerMessageData>) => {
     void ready.then((searchIndex: SearchIndexStore) => {
-      const searchLocaleIndex = searchIndex[locale]
-
-      // Guard against locales without an index, so that an unknown locale
-      // returns empty results instead of throwing
-      if (!searchLocaleIndex) {
-        if (type === 'suggest') self.postMessage([type, id, []])
-        else if (type === 'search') self.postMessage([type, id, []])
-        else self.postMessage([type, id, { suggestions: [], results: [] }])
-        return
-      }
-
-      if (type === 'suggest') {
-        self.postMessage([
-          type,
-          id,
-          getSuggestions(query, searchLocaleIndex, options),
-        ])
-      } else if (type === 'search') {
-        self.postMessage([
-          type,
-          id,
-          getSearchResults(
-            query,
-            searchLocaleIndex,
-            options,
-            __ORAMA_SORT_STRATEGY__,
-          ),
-        ])
-      } else {
-        self.postMessage([
-          type,
-          id,
-          {
-            suggestions: getSuggestions(query, searchLocaleIndex, options),
-            results: getSearchResults(
-              query,
-              searchLocaleIndex,
-              options,
-              __ORAMA_SORT_STRATEGY__,
-            ),
-          },
-        ])
-      }
+      self.postMessage(
+        createWorkerResponse(
+          data,
+          searchIndex[data.locale],
+          { getSearchResults, getSuggestions },
+          __ORAMA_SORT_STRATEGY__,
+        ),
+      )
     })
   },
 )
