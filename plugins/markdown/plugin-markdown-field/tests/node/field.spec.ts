@@ -37,7 +37,7 @@ Theme Config
 
     expect(
       markdownIt.render(`::: fields
-@enabled@ type="boolean" optional default="true"
+@enabled@ type="boolean" optional default=\`true\`
 Whether it's enabled
 :::
 `),
@@ -46,7 +46,7 @@ Whether it's enabled
 <div class="vp-field-header">
 <span class="vp-field-name" id="enabled">enabled</span>
 <span class="vp-field-badges">
-<span class="vp-field-optional">Optional</span>
+  <span class="vp-field-optional">Optional</span>
 </span>
 <code class="vp-field-type">boolean</code>
 </div>

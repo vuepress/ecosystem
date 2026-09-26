@@ -52,15 +52,15 @@
     "clean": "rimraf ./dist"
   },
   "dependencies": {
-    "@mdit/helper": "^1.1.1",
-    "@mdit/plugin-advanced-links": "^0.2.0",
+    "@mdit/helper": "^1.1.2",
+    "@mdit/plugin-advanced-links": "^0.2.1",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vue": "catalog:"
   },
   "devDependencies": {
-    "@types/markdown-it": "^14.2.0",
-    "markdown-it": "^14.3.2"
+    "@types/markdown-it": "catalog:",
+    "markdown-it": "catalog:"
   },
   "peerDependencies": {
     "@embedpdf/vue-pdf-viewer": "^2.15.0",

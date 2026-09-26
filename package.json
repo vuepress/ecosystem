@@ -29,7 +29,7 @@
     "@tsdown/css": "^0.23.0",
     "@types/node": "^22.20.4",
     "@types/webpack-env": "^1.18.8",
-    "@vitest/coverage-istanbul": "^5.0.1",
+    "@vitest/coverage-istanbul": "^5.0.2",
     "cross-env": "^10.1.0",
     "cssnano": "^9.0.5",
     "html-minifier-terser": "^7.2.0",
@@ -39,7 +39,7 @@
     "oxc-config-hope": "^0.3.13",
     "oxfmt": "^0.70.0",
     "oxlint": "^1.85.0",
-    "oxlint-tsgolint": "^7.0.2002",
+    "oxlint-tsgolint": "^7.0.2003",
     "picocolors": "^1.1.1",
     "postcss-html": "^2.0.0",
     "publint": "^0.3.24",
@@ -54,8 +54,8 @@
     "typescript": "^6.0.3",
     "uglify-js": "^3.19.3",
     "unrun": "^0.3.1",
-    "vite": "^8.3.0",
-    "vitest": "^5.0.1",
+    "vite": "^8.3.1",
+    "vitest": "^5.0.2",
     "vuepress": "catalog:"
   },
   "nano-staged": {
@@ -66,12 +66,12 @@
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "12.5.1",
+      "version": "12.7.0",
       "onFail": "download"
     },
     "runtime": {
       "name": "node",
-      "version": "^22.22.0 || ^24.18.0 || ^26.3.0",
+      "version": "^22.23.0 || ^24.21.0 || ^26.10.0",
       "onFail": "error"
     }
   }

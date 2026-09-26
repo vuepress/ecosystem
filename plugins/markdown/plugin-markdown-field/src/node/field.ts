@@ -78,7 +78,7 @@ export const field: PluginWithOptions<FieldPluginOptions> = (
   { locales = {}, slugify = defaultSlugify } = {},
 ) => {
   const fieldOpenRenderer: MarkdownItFieldOpenRenderer = (
-    { attributes, name },
+    { details, name },
     tokens,
     index,
     _options,
@@ -90,11 +90,16 @@ export const field: PluginWithOptions<FieldPluginOptions> = (
     let type = ''
     let defaultValue = ''
 
-    for (const { attr, value } of attributes) {
+    for (const { attr, quote, value } of details) {
       if (attr === 'type') {
         type = `<code class="vp-field-type">${escape(value)}</code>\n`
       } else if (attr === 'default') {
-        defaultValue = `<div class="vp-field-default">\n<span class="vp-field-default-label">${locale.default}</span>\n<code>${escape(value)}</code>\n</div>\n`
+        defaultValue = `\
+<div class="vp-field-default">
+<span class="vp-field-default-label">${locale.default}</span>
+${quote === 'backtick' ? `<code>${escape(value)}</code>` : escape(value)}
+</div>
+`
       } else if (
         attr === 'required' ||
         attr === 'optional' ||
@@ -110,13 +115,25 @@ export const field: PluginWithOptions<FieldPluginOptions> = (
     }
 
     const badgesHtml = badges.length
-      ? `<span class="vp-field-badges">\n${badges.join('')}</span>\n`
+      ? `\
+<span class="vp-field-badges">
+  ${badges.join('\n  ')}\
+</span>
+`
       : ''
 
     const id = tokens[index].attrGet('id')
     const idAttr = id ? ` id="${escapeHtml(id)}"` : ''
 
-    return `<div class="${classNames.join(' ')}">\n<div class="vp-field-header">\n<span class="vp-field-name"${idAttr}>${escapeHtml(name)}</span>\n${badgesHtml}${type}</div>\n${defaultValue}<div class="vp-field-description">\n`
+    return `\
+<div class="${classNames.join(' ')}">
+<div class="vp-field-header">
+<span class="vp-field-name"${idAttr}>${escapeHtml(name)}</span>
+${badgesHtml}${type}\
+</div>
+${defaultValue}\
+<div class="vp-field-description">
+`
   }
 
   md.use<MarkdownItFieldOptions>(fieldPlugin, {

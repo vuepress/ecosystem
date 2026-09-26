@@ -5,26 +5,34 @@ packages:
   - themes/*
   - tools/*
 
+# virtualStoreType: global
+
 catalog:
-  '@iconify-json/vscode-icons': ^1.2.80
+  '@types/markdown-it': ^14.2.0
   '@vuepress/bundler-vite': 2.0.0-rc.31
   '@vuepress/bundler-webpack': 2.0.0-rc.31
   '@vueuse/core': ^15.0.0
-  '@yutengjing/vscode-icons': ^0.1.1
   chokidar: ^5.0.0
+  markdown-it: ^14.3.2
   sass: ^1.105.0
   sass-embedded: ^1.105.0
   sass-loader: ^17.0.1
   vue: ^3.5.43
   vuepress: 2.0.0-rc.31
-
-catalogMode: prefer
+cleanupUnusedCatalogs: true
 
 allowBuilds:
   '@parcel/watcher': true
   esbuild: true
 
+patchedDependencies:
+  '@vuepress/bundler-webpack': patches/@vuepress__bundler-webpack.patch
+peerDependencyRules:
+  allowedVersions:
+    echarts-wordcloud>echarts: ^6.0.0
+
 minimumReleaseAgeExclude:
+  - '@mdit/*'
   - '@oxfmt/*'
   - '@oxlint/*'
   - '@vue/*'
@@ -38,26 +46,6 @@ minimumReleaseAgeExclude:
   - vue
   - vuepress
   - stylelint-config-hope
-  - '@mdit/plugin-advanced-links@0.2.0'
-
-packageExtensions:
-  stylelint:
-    peerDependencies:
-      postcss-html: ^1.8.1
-    peerDependenciesMeta:
-      postcss-html:
-        optional: true
-
-peerDependencyRules:
-  allowedVersions:
-    artalk>marked: ^18.0.0
-    echarts-wordcloud>echarts: ^6.0.0
-
-cleanupUnusedCatalogs: true
-
+minimumReleaseAgeExcludePrune: true
 trustPolicy: no-downgrade
-
 trustPolicyIgnoreAfter: 720
-
-patchedDependencies:
-  '@vuepress/bundler-webpack': patches/@vuepress__bundler-webpack.patch
