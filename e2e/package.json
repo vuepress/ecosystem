@@ -15,7 +15,7 @@
     "e2e:dev-webpack": "cross-env E2E_COMMAND=dev E2E_BUNDLER=webpack playwright test"
   },
   "dependencies": {
-    "@videojs/html": "10.0.0-rc.2",
+    "@videojs/html": "10.0.0-rc.3",
     "@vuepress/bundler-vite": "catalog:",
     "@vuepress/bundler-webpack": "catalog:",
     "@vuepress/plugin-auto-frontmatter": "workspace:*",
