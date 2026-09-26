@@ -11,6 +11,10 @@
       "matchUpdateTypes": ["minor", "patch"]
     },
     {
+      "groupName": "videojs",
+      "matchPackageNames": ["@videojs/**"]
+    },
+    {
       "groupName": "vuepress",
       "matchPackageNames": ["vuepress", "@vuepress/**", "vuepress-**"]
     },
@@ -25,5 +29,6 @@
     "platformAutomerge": true,
     "extends": ["group:allNonMajor", "schedule:weekly"]
   },
+  "minimumReleaseAge": "1 day",
   "timezone": "Asia/Shanghai"
 }
