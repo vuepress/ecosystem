@@ -50,13 +50,13 @@
   },
   "dependencies": {
     "@mdit-vue/shared": "^3.0.2",
-    "@mdit/helper": "^1.1.1",
-    "@mdit/plugin-field": "^2.0.1",
-    "@types/markdown-it": "^14.2.0",
+    "@mdit/helper": "^1.1.2",
+    "@mdit/plugin-field": "^2.1.0",
+    "@types/markdown-it": "catalog:",
     "@vuepress/helper": "workspace:*"
   },
   "devDependencies": {
-    "markdown-it": "^14.3.2"
+    "markdown-it": "catalog:"
   },
   "peerDependencies": {
     "vuepress": "catalog:"
