@@ -51,7 +51,7 @@
   "dependencies": {
     "@iconify/types": "^2.0.0",
     "@iconify/utils": "^3.1.7",
-    "@mdit/plugin-icon": "^1.1.1",
+    "@mdit/plugin-icon": "^1.1.2",
     "@vuepress/helper": "workspace:*",
     "@vueuse/core": "catalog:",
     "vue": "catalog:"
