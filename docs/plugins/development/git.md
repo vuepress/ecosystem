@@ -42,214 +42,134 @@ This plugin may significantly increase data preparation time during builds, espe
 
 ## Options
 
-### createdTime
+::: fields
+@createdTime@ type=boolean default=`true`
 
-- Type: `boolean`
+Whether to collect the creation timestamp of the page.
 
-- Default: `true`
+@updatedTime@ type=boolean default=`true`
 
-- Details:
+Whether to collect the update timestamp of the page.
 
-  Whether to collect the creation timestamp of the page.
+@contributors@ type=`ContributorsOptions | boolean` default=`true`
 
-### updatedTime
+Whether to collect contributor information for the page. You can also pass an object to configure it.
 
-- Type: `boolean`
+@@contributors.info@ type=`ContributorInfo[]`
 
-- Default: `true`
+Pre-defined contributor information.
 
-- Details:
+@@@contributors.info[].username@ type=string required
 
-  Whether to collect the update timestamp of the page.
+The contributor's username on the Git hosting service.
 
-### contributors
+@@@contributors.info[].name@ type=string
 
-- Type: `boolean | ContributorsOptions`
+The contributor's display name on the page. Defaults to `username`.
 
-  ```ts
-  interface ContributorInfo {
-    /**
-     * The contributor's username on the Git hosting service
-     */
-    username: string
-    /**
-     * The contributor's display name on the page. Defaults to `username`.
-     */
-    name?: string
-    /**
-     * Aliases for the contributor.
-     * Useful when a contributor's local Git username differs from their
-     * hosting service username. Use aliases to map them to the correct account.
-     */
-    alias?: string[] | string
-    /**
-     * The primary email of the contributor
-     */
-    email?: string
-    /**
-     * Alternative emails for the contributor (e.g., emails used in past commits).
-     */
-    emailAlias?: string[] | string
-    /**
-     * The avatar URL of the contributor.
-     *
-     * If the hosting service is `github`, this can be left blank,
-     * as the plugin will automatically populate it.
-     */
-    avatar?: string
-    /**
-     * The profile URL of the contributor.
-     *
-     * If the hosting service is `github`, this can be left blank,
-     * as the plugin will automatically populate it.
-     */
-    url?: string
-  }
+@@@contributors.info[].alias@ type=`string[] | string`
 
-  interface ContributorsOptions {
-    /**
-     * Pre-defined contributor information
-     */
-    info?: ContributorInfo[]
+Aliases for the contributor. Useful when a contributor's local Git username differs from their hosting service username. Use aliases to map them to the correct account.
 
-    /**
-     * Whether to include avatars in contributor information
-     * @default false
-     */
-    avatar?: boolean
+@@@contributors.info[].email@ type=string
 
-    /**
-     * The pattern for avatar URLs
-     * - `:username` - Contributor's username
-     *
-     * @example 'https://github.com/:username'
-     */
-    avatarPattern?: string
+The primary email of the contributor.
 
-    /**
-     * A function to transform the contributors list (e.g., to deduplicate or sort).
-     * Accepts the list collected by the plugin and returns the transformed list.
-     */
-    transform?: (contributors: GitContributorInfo[]) => GitContributorInfo[]
-  }
-  ```
+@@@contributors.info[].emailAlias@ type=`string[] | string`
 
-- Default: `true`
+Alternative emails for the contributor (e.g., emails used in past commits).
 
-- Details:
+@@@contributors.info[].avatar@ type=string
 
-  Whether to collect contributor information for the page.
+The avatar URL of the contributor. If the hosting service is `github`, this can be left blank, as the plugin will automatically populate it.
 
-### changelog
+@@@contributors.info[].url@ type=string
 
-- Type: `boolean | ChangelogOptions`
+The profile URL of the contributor. If the hosting service is `github`, this can be left blank, as the plugin will automatically populate it.
 
-  ```ts
-  interface ChangelogOptions {
-    /**
-     * The maximum number of changelog entries to collect
-     */
-    maxCount?: number
+@@contributors.avatar@ type=boolean default=`false`
 
-    /**
-     * The URL of the Git repository, e.g., https://github.com/vuepress/ecosystem
-     */
-    repoUrl?: string
+Whether to include avatars in contributor information.
 
-    /**
-     * The pattern for commit URLs
-     *
-     * - `:repo` - The URL of the Git repository
-     * - `:hash` - The hash of the commit
-     *
-     * @default ':repo/commit/:hash'
-     */
-    commitUrlPattern?: string
+@@contributors.avatarPattern@ type=string
 
-    /**
-     * The pattern for issue URLs
-     *
-     * - `:repo` - The URL of the Git repository
-     * - `:issue` - The ID of the issue
-     *
-     * @default ':repo/issues/:issue'
-     */
-    issueUrlPattern?: string
+The pattern for avatar URLs.
 
-    /**
-     * The pattern for tag URLs
-     *
-     * - `:repo` - The URL of the Git repository
-     * - `:tag` - The name of the tag
-     *
-     * @default ':repo/releases/tag/:tag'
-     */
-    tagUrlPattern?: string
-  }
-  ```
+- `:username` - Contributor's username
 
-- Default: `false`
+@@contributors.transform@ type=`(contributors: GitContributorInfo[]) => GitContributorInfo[]`
 
-- Details:
+A function to transform the contributors list (e.g., to deduplicate or sort). Accepts the list collected by the plugin and returns the transformed list.
 
-  Whether to collect the changelog for the page.
+@changelog@ type=`ChangelogOptions | boolean` default=`false`
 
-### filter
+Whether to collect the changelog for the page. You can also pass an object to configure it.
 
-- Type: `(page: Page) => boolean`
+@@changelog.maxCount@ type=number
 
-- Details:
+The maximum number of changelog entries to collect.
 
-  A function to filter pages. Git information will only be collected if this function returns `true`.
+@@changelog.repoUrl@ type=string
 
-### locales
+The URL of the Git repository, e.g., `https://github.com/vuepress/ecosystem`.
 
-- Type: `Record<string, GitLocaleData>`
+@@changelog.commitUrlPattern@ type=string default=`':repo/commit/:hash'`
 
-  ```ts
-  export interface GitLocaleData {
-    /**
-     * The title for the contributors section
-     */
-    contributors: string
+The pattern for commit URLs.
 
-    /**
-     * The title for the changelog section
-     */
-    changelog: string
+- `:repo` - The URL of the Git repository
+- `:hash` - The hash of the commit
 
-    /**
-     * The text representing a commit "on" a specific date
-     */
-    timeOn: string
+@@changelog.issueUrlPattern@ type=string default=`':repo/issues/:issue'`
 
-    /**
-     * The text for the "View Changelog" button
-     */
-    viewChangelog: string
+The pattern for issue URLs.
 
-    /**
-     * The text for "Latest Updated"
-     */
-    latestUpdateAt: string
-  }
-  ```
+- `:repo` - The URL of the Git repository
+- `:issue` - The ID of the issue
 
-- Details:
+@@changelog.tagUrlPattern@ type=string default=`':repo/releases/tag/:tag'`
 
-  Locale configuration, primarily used by the [Git Components](#component).
+The pattern for tag URLs.
+
+- `:repo` - The URL of the Git repository
+- `:tag` - The name of the tag
+
+@filter@ type=`(page: Page) => boolean`
+
+A function to filter pages. Git information will only be collected if this function returns `true`.
+
+@locales@ type=`Record<string, GitLocaleData>`
+
+Locale configuration, primarily used by the [Git Components](#component).
+
+@@locales.contributors@ type=string
+
+The title for the contributors section.
+
+@@locales.changelog@ type=string
+
+The title for the changelog section.
+
+@@locales.timeOn@ type=string
+
+The text representing a commit "on" a specific date.
+
+@@locales.viewChangelog@ type=string
+
+The text for the "View Changelog" button.
+
+@@locales.latestUpdateAt@ type=string
+
+The text for "Latest Updated".
+
+:::
 
 ## Frontmatter
 
-### gitInclude
+::: fields
+@gitInclude@ type=`string[]`
 
-- Type: `string[]`
-
-- Details:
-
-  An array of relative file paths. The Git history of these files will be included when calculating the current page's data (e.g., timestamps and contributors).
-
-- Example:
+An array of relative file paths. The Git history of these files will be included when calculating the current page's data (e.g., timestamps and contributors).
 
 ```md
 ---
@@ -259,24 +179,19 @@ gitInclude:
 ---
 ```
 
-### contributors
+@contributors@ type=`boolean | string[]`
 
-- Type: `boolean | string[]`
+Controls the collection of contributor information for the current page. This overrides the global [contributors](#contributors) option.
 
-- Details:
+- `true` - Enable collection.
+- `false` - Disable collection.
+- `string[]` - A list of additional contributors. Useful for manually specifying contributors who may not appear in the Git history.
 
-  Controls the collection of contributor information for the current page. This overrides the global [contributors](#contributors) option.
-  - `true` - Enable collection.
-  - `false` - Disable collection.
-  - `string[]` - A list of additional contributors. Useful for manually specifying contributors who may not appear in the Git history.
+@changelog@ type=boolean
 
-### changelog
+Whether to collect the changelog for the current page. This overrides the global [changelog](#changelog) option.
 
-- Type: `boolean`
-
-- Details:
-
-  Whether to collect the changelog for the current page. This overrides the global [changelog](#changelog) option.
+:::
 
 ## Composables
 

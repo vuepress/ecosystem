@@ -85,19 +85,19 @@ Markdown 语法 `[[toc]]` 仅能在 Markdown 文件中使用。它是由 markdow
 
 指定要渲染的标题数组。如果该 Prop 没有被设置，默认会使用当前页面的标题。
 
-@@headers.level@ type=number
+@@headers[].level@ type=number
 
 标题的级别。
 
-@@headers.title@ type=string
+@@headers[].title@ type=string
 
 标题的文本。
 
-@@headers.slug@ type=string
+@@headers[].slug@ type=string
 
 标题的 slug。
 
-@@headers.children@ type=`PageHeader[]`
+@@headers[].children@ type=`PageHeader[]`
 
 标题的子标题。
 

@@ -85,19 +85,19 @@ The TOC component also accepts props for customization.
 
 Specify the headers array to render. If this prop is not specified, the headers of current page will be used.
 
-@@headers.level@ type=number
+@@headers[].level@ type=number
 
 The level of the header.
 
-@@headers.title@ type=string
+@@headers[].title@ type=string
 
 The title of the header.
 
-@@headers.slug@ type=string
+@@headers[].slug@ type=string
 
 The slug of the header.
 
-@@headers.children@ type=`PageHeader[]`
+@@headers[].children@ type=`PageHeader[]`
 
 The children headers.
 
