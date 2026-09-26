@@ -64,7 +64,7 @@
   },
   "peerDependencies": {
     "@embedpdf/vue-pdf-viewer": "^2.15.0",
-    "@videojs/dash-video": "10.0.0-rc.2",
+    "@videojs/dash-video": "10.0.0-rc.4",
     "@videojs/hlsjs-video": "10.0.0-rc.2",
     "@videojs/html": "10.0.0-rc.2",
     "@videojs/spotify-audio": "10.0.0-rc.2",
