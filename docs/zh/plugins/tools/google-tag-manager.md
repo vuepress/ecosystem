@@ -23,6 +23,7 @@ export default {
   plugins: [
     googleTagManagerPlugin({
       // 配置项
+      id: 'GTM-XXXXXXXXXX',
     }),
   ],
 }
@@ -34,14 +35,14 @@ export default {
 
 ```html
 <!-- Google Tag Manager (noscript) -->
-<noscript
-  ><iframe
+<noscript>
+  <iframe
     src="https://www.googletagmanager.com/ns.html?id=GTM-ABCDEFGH"
     height="0"
     width="0"
     style="display:none;visibility:hidden"
-  ></iframe
-></noscript>
+  ></iframe>
+</noscript>
 <!-- End Google Tag Manager (noscript) -->
 ```
 
@@ -49,24 +50,11 @@ export default {
 
 ## 选项
 
-### id
+::: fields
+@id@ type=string required
 
-- 类型： `string`
+Google 跟踪代码管理器的容器 ID，应以 `'GTM-'` 开头。
 
-- 详情：
+你可以在 [这里](https://tagmanager.google.com/#/home) 添加容器并找到容器 ID。
 
-  Google 跟踪代码管理器 的容器 ID ，应以 `'GTM-'` 开头。
-
-  你可以在 [这里](https://tagmanager.google.com/#/home) 添加容器并找到容器 ID。
-
-- 示例：
-
-```ts title=".vuepress/config.ts"
-export default {
-  plugins: [
-    googleTagManagerPlugin({
-      id: 'G-XXXXXXXXXX',
-    }),
-  ],
-}
-```
+:::

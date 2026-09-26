@@ -30,25 +30,18 @@ export default {
 
 ## Options
 
-### selector
+::: fields
+@selector@ type=string default=`'[vp-content] > img, [vp-content] :not(a) > img'`
 
-- Type: `string`
-- Default: `'[vp-content] > img, [vp-content] :not(a) > img'`
-- Details:
+Selector of zoomable images.
 
-  Selector of zoomable images.
+By default this plugin will make all images zoomable except those inside `<a>` tags.
 
-  By default this plugin will make all images zoomable except those inside `<a>` tags.
+@zoomOptions@ type=`ZoomOptions`
 
-### zoomOptions
+Options for medium-zoom, see [medium-zoom > Options](https://github.com/francoischalifour/medium-zoom#options).
 
-- Type: `Object`
-- Details:
-
-  Options for medium-zoom.
-
-- Reference:
-  - [medium-zoom > Options](https://github.com/francoischalifour/medium-zoom#options)
+:::
 
 ## Styles
 

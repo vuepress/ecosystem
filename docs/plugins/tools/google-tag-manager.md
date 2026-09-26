@@ -23,6 +23,7 @@ export default {
   plugins: [
     googleTagManagerPlugin({
       // options
+      id: 'GTM-XXXXXXXXXX',
     }),
   ],
 }
@@ -34,14 +35,14 @@ If you want Google Tag Manager to work properly when javascript is disabled, you
 
 ```html
 <!-- Google Tag Manager (noscript) -->
-<noscript
-  ><iframe
+<noscript>
+  <iframe
     src="https://www.googletagmanager.com/ns.html?id=GTM-ABCDEFGH"
     height="0"
     width="0"
     style="display:none;visibility:hidden"
-  ></iframe
-></noscript>
+  ></iframe>
+</noscript>
 <!-- End Google Tag Manager (noscript) -->
 ```
 
@@ -49,24 +50,11 @@ If you want Google Tag Manager to work properly when javascript is disabled, you
 
 ## Options
 
-### id
+::: fields
+@id@ type=string required
 
-- Type: `string`
+The container ID of Google Tag Manager, which should start with `'GTM-'`.
 
-- Details:
+You can add your container and [find its ID](https://tagmanager.google.com/#/home).
 
-  The container ID of Google Tag Manager 4, which should start with `'GTM-'`.
-
-  You add your container and find its ID [here](https://tagmanager.google.com/#/home).
-
-- Example:
-
-```ts title=".vuepress/config.ts"
-export default {
-  plugins: [
-    googleTagManagerPlugin({
-      id: 'GTM-XXXXXXXXXX',
-    }),
-  ],
-}
-```
+:::

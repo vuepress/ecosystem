@@ -31,52 +31,7 @@ export default {
 }
 ```
 
-## Options
-
-```ts
-export type AutoFrontmatterData = Record<string, unknown>
-
-/**
- * The context of the markdown file
- */
-export interface AutoFrontmatterContext {
-  /**
-   * The absolute path to the file
-   */
-  filepath: string
-  /**
-   * The relative path to the file
-   */
-  relativePath: string
-  /**
-   * The markdown content of the file
-   */
-  content: string
-}
-
-/**
- * The function to handle the frontmatter data
- */
-export type AutoFrontmatterHandle<
-  D extends AutoFrontmatterData = AutoFrontmatterData,
-> = (data: D, context: AutoFrontmatterContext) => D | Promise<D>
-
-export interface AutoFrontmatterRule {
-  /**
-   * File filter, matches the relative path of the file
-   *
-   * Uses [picomatch](https://github.com/micromatch/picomatch) for pattern matching
-   */
-  filter: string[] | string | ((filepath: string) => boolean)
-  /**
-   * The function to handle the frontmatter data
-   */
-  handle: AutoFrontmatterHandle
-}
-
-export type AutoFrontmatterPluginOptions =
-  AutoFrontmatterHandle | AutoFrontmatterRule | AutoFrontmatterRule[]
-```
+## Guide
 
 ### Process all markdown files
 
@@ -192,6 +147,31 @@ export default {
   ],
 }
 ```
+
+## Options
+
+`autoFrontmatterPlugin` accepts a frontmatter handle function, a rule object, or an array of rule objects.
+
+::: fields
+@filter@ type=`string[] | string | ((relativePath: string) => boolean)`
+
+File filter, matches the relative path of the file.
+
+Uses [picomatch](https://github.com/micromatch/picomatch) for pattern matching.
+
+Pass a glob string, an array of glob strings (a string starting with `!` excludes files), or a function returning whether the file matches.
+
+@handle@ type=`(data: AutoFrontmatterData, context: AutoFrontmatterContext) => AutoFrontmatterData | Promise<AutoFrontmatterData>`
+
+The function to handle the frontmatter data.
+
+`data` is the frontmatter data (`Record<string, unknown>`), `context` contains:
+
+- `filepath`: The absolute path to the file.
+- `relativePath`: The relative path to the file.
+- `content`: The markdown content of the file.
+
+:::
 
 ## Helper Functions
 

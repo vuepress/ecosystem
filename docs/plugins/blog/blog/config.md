@@ -4,143 +4,108 @@ icon: settings-2
 
 # Config
 
-## Plugin Options
+## Options
 
-### getInfo
+:::: fields
+@getInfo@ type=`(page: Page) => Record<string, unknown>`
 
-- Type: `(page: Page) => Record<string, unknown>`
-- Reference:
-  - [Guide → Article Collection](./guide.md#gathering-info)
-- Details:
+A function to extract article information from pages.
 
-  A function to extract article information from pages.
+The extracted information is injected into the route meta, making it accessible via client-side composables.
 
-  The extracted information is injected into the route meta, making it accessible via client-side composables.
+See also: [Gathering Info](./guide.md#gathering-info).
 
-### filter
+@filter@ type=`(page: Page) => boolean` default=`(page) => Boolean(page.filePathRelative) && !page.frontmatter.home`
 
-- Type: `(page: Page) => boolean`
-- Default: `(page) => Boolean(page.filePathRelative) && !page.frontmatter.home`
-- Reference:
-  - [Guide → Article Collection](./guide.md#collecting-articles)
-- Details:
+A function to determine which pages are treated as blog articles.
 
-  A function to determine which pages are treated as blog articles.
+By default, it includes all pages generated from Markdown files, excluding the homepage.
 
-  By default, it includes all pages generated from Markdown files, excluding the homepage.
+See also: [Article Collection](./guide.md#article-collection).
 
-### category
+@category@ type=`BlogCategoryOptions[]`
 
-- Type: `BlogCategoryOptions[]`
-- Reference:
-  - [Guide → Categories and Types](./guide.md#customizing-categories-and-types)
-- Details: Category configurations. See [Category Config](#blog-category-config).
+Category configurations. See also: [Blog Category Config](#blog-category-config).
 
-### type
+@type@ type=`BlogTypeOptions[]`
 
-- Type: `BlogTypeOptions[]`
-- Reference:
-  - [Guide → Categories and Types](./guide.md#customizing-categories-and-types)
-- Details: Type configurations. See [Type Config](#blog-type-config).
+Type configurations. See also: [Blog Type Config](#blog-type-config).
 
-### slugify
+@slugify@ type=`(name: string) => string` default=`(name) => name.replaceAll(/[ _]/gu, '-').replaceAll(/[:?*|\\/<>]/gu, '').toLowerCase()`
 
-- Type: `(name: string) => string`
-- Default: `(name) => name.replace(/ _/g, '-').replace(/[:?*|\\/<>]/g, "").toLowerCase()`
-- Details: A function that converts strings into URL-friendly slugs for route registration.
+A function that converts strings into URL-friendly slugs for route registration.
 
-### excerpt
+@excerpt@ type=boolean default=`true`
 
-- Type: `boolean`
-- Default: `true`
-- Reference: [Guide → Excerpt Generation](./guide.md#generating-excerpt)
-- Details: Enables or disables excerpt generation for pages.
+Enables or disables excerpt generation for pages.
 
-### excerptSeparator
+See also: [Generating Excerpt](./guide.md#generating-excerpt).
 
-- Type: `string`
-- Default: `<!-- more -->`
-- Reference:
-  - [Guide → Excerpt Generation](./guide.md#generating-excerpt)
-- Details: The separator used to manually define excerpts within the content.
+@excerptSeparator@ type=string default=`'<!-- more -->'`
 
-### excerptLength
+The separator used to manually define excerpts within the content.
 
-- Type: `number`
-- Default: `300`
-- Reference:
-  - [Guide → Excerpt Generation](./guide.md#generating-excerpt)
-- Details:
+See also: [Generating Excerpt](./guide.md#generating-excerpt).
 
-  The target length for auto-generated excerpts.
+@excerptLength@ type=number default=`300`
 
-  ::: tip
+The target length for auto-generated excerpts.
 
-  The generator will cut the text at the nearest position meeting or exceeding this length.
+See also: [Generating Excerpt](./guide.md#generating-excerpt).
 
-  Set to `0` to disable automatic excerpt generation.
+::: tip
 
-  :::
+The generator will cut the text at the nearest position meeting or exceeding this length.
 
-### excerptFilter
+Set to `0` to disable automatic excerpt generation.
 
-- Type: `(page: Page) => boolean`
-- Default: Same as the `filter` option
-- Reference:
-  - [Guide → Excerpt Generation](./guide.md#generating-excerpt)
-- Details:
+:::
 
-  A function to filter pages for excerpt generation.
+@excerptFilter@ type=`(page: Page) => boolean` default="Same as the filter option"
 
-  ::: tip
+A function to filter pages for excerpt generation.
 
-  Use this to exclude pages from automatic excerpt generation. For instance, if `excerpt` or `description` is already defined in the frontmatter, you might prefer to use those values directly.
+See also: [Generating Excerpt](./guide.md#generating-excerpt).
 
-  :::
+::: tip
 
-### isCustomElement
+Use this to exclude pages from automatic excerpt generation. For instance, if `excerpt` or `description` is already defined in the frontmatter, you might prefer to use those values directly.
 
-- Type: `(tagName: string) => boolean`
-- Default: `() => false`
-- Reference:
-  - [Guide → Generating Excerpt](./guide.md#generating-excerpt)
-- Details:
+:::
 
-  A function to identify custom elements.
+@isCustomElement@ type=`(tagName: string) => boolean` default=`() => false`
 
-  This is used to distinguish custom elements from unknown tags, which are otherwise stripped during excerpt generation.
+A function to identify custom elements.
 
-### metaScope
+This is used to distinguish custom elements from unknown tags, which are otherwise stripped during excerpt generation.
 
-- Type: `string`
-- Default: `"_blog"`
-- Details:
+See also: [Generating Excerpt](./guide.md#generating-excerpt).
 
-  The key under which the extracted information is injected into the route meta.
+@metaScope@ type=string default=`'_blog'`
 
-  ::: tip
+The key under which the extracted information is injected into the route meta.
 
-  Setting this to an empty string will inject the information directly into the route meta root, rather than nesting it under a field.
+::: tip
 
-  :::
+Setting this to an empty string will inject the information directly into the route meta root, rather than nesting it under a field.
 
-### hotReload
+:::
 
-- Type: `boolean`
-- Default: Enabled if the `--debug` flag is used
-- Details:
+@hotReload@ type=boolean default="Enabled if the --debug flag is used"
 
-  Enables hot reload support in the development server.
+Enables hot reload support in the development server.
 
-  ::: tip To theme developers
+::: tip To theme developers
 
-  This is disabled by default due to potential performance impacts on sites with extensive categories and types. It may also slow down hot updates when editing Markdown.
+This is disabled by default due to potential performance impacts on sites with extensive categories and types. It may also slow down hot updates when editing Markdown.
 
-  It is recommended to enable this only when users are actively adding or organizing categories/tags. For general use, keep it disabled.
+It is recommended to enable this only when users are actively adding or organizing categories/tags. For general use, keep it disabled.
 
-  Alternatively, you can detect the number of pages in the user's project and decide whether to enable it programmatically.
+Alternatively, you can detect the number of pages in the user's project and decide whether to enable it programmatically.
 
-  :::
+:::
+
+::::
 
 ## Blog Category Config
 

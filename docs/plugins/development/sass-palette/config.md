@@ -6,17 +6,14 @@ icon: settings-2
 
 ## Options
 
-### id
+:::: fields
+@id@ type=string required
 
-- Type: `string`
-- Required: Yes
-- Details: The unique identifier for the plugin instance. This is used to scope the style system and avoid conflicts between different plugins or themes.
+The unique identifier for the plugin instance. This is used to scope the style system and avoid conflicts between different plugins or themes.
 
-### config
+@config@ type=string default=`.vuepress/styles/${id}-config.scss`
 
-- Type: `string`
-- Default: `` `.vuepress/styles/${id}-config.scss` ``
-- Details: The path to the user's Sass configuration file, relative to the source directory.
+The path to the user's Sass configuration file, relative to the source directory.
 
 ::: tip
 
@@ -26,11 +23,9 @@ The default filename is prefixed with the `id` defined above.
 
 :::
 
-### defaultConfig
+@defaultConfig@ type=string default=`"@vuepress/plugin-sass-palette/styles/default/config.scss"`
 
-- Type: `string`
-- Default: `"@vuepress/plugin-sass-palette/styles/default/config.scss"`
-- Details: The absolute path to the default Sass configuration file.
+The absolute path to the default Sass configuration file.
 
 ::: tip
 
@@ -38,11 +33,9 @@ As a plugin developer, you should use this file to provide fallback values for v
 
 :::
 
-### palette
+@palette@ type=string default=`.vuepress/styles/${id}-palette.scss`
 
-- Type: `string`
-- Default: `` `.vuepress/styles/${id}-palette.scss` ``
-- Details: The path to the user's palette file, relative to the source directory.
+The path to the user's palette file, relative to the source directory.
 
 ::: tip
 
@@ -52,10 +45,9 @@ The default filename is prefixed with the `id` defined above.
 
 :::
 
-### defaultPalette
+@defaultPalette@ type=string
 
-- Type: `string`
-- Details: The absolute path to the default palette file.
+The absolute path to the default palette file.
 
 ::: tip
 
@@ -63,14 +55,13 @@ As a plugin developer, you should use this file to provide default CSS variables
 
 :::
 
-### generator
+@generator@ type=string
 
-- Type: `string`
-- Details:
+The absolute path to a custom generator file. This is used to derive new values based on the palette configuration.
 
-  The absolute path to a custom generator file. This is used to derive new values based on the palette configuration.
+For example, you can use this to generate a `$theme-color-light` variable based on the `$theme-color` provided by the user.
 
-  For example, you can use this to generate a `$theme-color-light` variable based on the `$theme-color` provided by the user.
+::::
 
 ## Alias
 

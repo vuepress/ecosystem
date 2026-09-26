@@ -32,52 +32,7 @@ export default {
 }
 ```
 
-## 配置说明
-
-```ts
-export type AutoFrontmatterData = Record<string, unknown>
-
-/**
- * markdown 文件的上下文
- */
-export interface AutoFrontmatterContext {
-  /**
-   * 文件绝对路径
-   */
-  filepath: string
-  /**
-   * 文件相对路径
-   */
-  relativePath: string
-  /**
-   * 文件 markdown 内容
-   */
-  content: string
-}
-
-/**
- * 处理 frontmatter 数据的函数
- */
-export type AutoFrontmatterHandle<
-  D extends AutoFrontmatterData = AutoFrontmatterData,
-> = (data: D, context: AutoFrontmatterContext) => D | Promise<D>
-
-export interface AutoFrontmatterRule {
-  /**
-   * 文件过滤器，匹配文件的相对路径
-   *
-   * 使用 [picomatch](https://github.com/micromatch/picomatch) 进行模式匹配
-   */
-  filter: string[] | string | ((relativePath: string) => boolean)
-  /**
-   * 处理 frontmatter 数据的函数
-   */
-  handle: AutoFrontmatterHandle
-}
-
-export type AutoFrontmatterPluginOptions =
-  AutoFrontmatterHandle | AutoFrontmatterRule | AutoFrontmatterRule[]
-```
+## 指南
 
 ### 处理所有 markdown 文件
 
@@ -193,6 +148,31 @@ export default {
   ],
 }
 ```
+
+## 选项
+
+`autoFrontmatterPlugin` 接受 frontmatter 处理函数、规则对象，或规则对象数组。
+
+::: fields
+@filter@ type=`string[] | string | ((relativePath: string) => boolean)`
+
+文件过滤器，匹配文件的相对路径。
+
+使用 [picomatch](https://github.com/micromatch/picomatch) 进行模式匹配。
+
+可以传入 glob 字符串、glob 字符串数组（以 `!` 开头的字符串用于排除文件），或返回文件是否匹配的函数。
+
+@handle@ type=`(data: AutoFrontmatterData, context: AutoFrontmatterContext) => AutoFrontmatterData | Promise<AutoFrontmatterData>`
+
+处理 frontmatter 数据的函数。
+
+`data` 为 frontmatter 数据（`Record<string, unknown>`），`context` 包含：
+
+- `filepath`: 文件绝对路径。
+- `relativePath`: 文件相对路径。
+- `content`: 文件 markdown 内容。
+
+:::
 
 ## 帮助函数
 

@@ -34,6 +34,8 @@ export default {
 }
 ```
 
+## Guide
+
 ### Event Tracking
 
 Once configured, the plugin will automatically report page view (PV) events for both initial page loads and subsequent route navigations.
@@ -48,8 +50,9 @@ window._hmt.push(['_trackEvent', 'category', 'action', 'label', 'value'])
 
 ## Options
 
-### id
+::: fields
+@id@ type=string required
 
-- Type: `string`
-- Required: Yes
-- Details: The tracking ID for your Baidu Analytics account. This is usually the string found in the `hm.js` script URL provided by Baidu (e.g., `hm.js?your_tracking_id`).
+The tracking ID for your Baidu Analytics account. This is usually the string found in the `hm.js` script URL provided by Baidu (e.g., `hm.js?your_tracking_id`).
+
+:::

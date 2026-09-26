@@ -30,49 +30,29 @@ export default {
 
 ## 选项
 
-### headerLinkSelector
+::: fields
+@headerLinkSelector@ type=string default=`'a.vp-sidebar-item'`
 
-- 类型： `string`
+_标题链接_ 的选择器。
 
-- 默认值： `'a.vp-sidebar-item'`
+如果一个 _标题锚点_ 没有对应的 _标题链接_，那么即使滚动到这个 _标题锚点_，该插件也不会更改路由 Hash。
 
-- 详情：
+@headerAnchorSelector@ type=string default=`'.header-anchor'`
 
-  _标题链接_ 的选择器。
+_标题锚点_ 的选择器。
 
-  如果一个 _标题锚点_ 没有对应的 _标题链接_ ，那么即使滚动到这个 _标题锚点_ ，该插件也不会更改路由 Hash 。
+你通常不需要设置该选项，除非你通过 [markdown.anchor](https://vuejs.press/zh/reference/config.html#markdown-anchor) 修改了 [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor#readme) 的 `permalinkClass` 选项。
 
-### headerAnchorSelector
+参考：[指南 > Markdown > 语法扩展 > 标题锚点](https://vuejs.press/zh/guide/markdown.html#标题锚点)。
 
-- 类型： `string`
+@delay@ type=number default=`200`
 
-- 默认值： `'.header-anchor'`
+滚动事件监听器的 Debounce 延迟，单位为毫秒。
 
-- 详情：
+@offset@ type=number default=`5`
 
-  _标题锚点_ 的选择器。
+判定 _标题锚点_ 是否激活时使用的偏移量，单位为像素。
 
-  你通常不需要设置该选项，除非你通过 [markdown.anchor](https://vuejs.press/zh/reference/config.html#markdown-anchor) 修改了 [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor#readme) 的 `permalinkClass` 选项。
+即便直接点击 _标题锚点_ 的链接，`scrollTop` 也可能不会完全等于 _标题锚点_ 的 `offsetTop`，所以我们添加一个 Offset 偏移量来避免这个误差。
 
-- 参考：
-  - [指南 > Markdown > 语法扩展 > 标题锚点](https://vuejs.press/zh/guide/markdown.html#标题锚点)
-
-### delay
-
-- 类型： `number`
-
-- 默认值： `200`
-
-- 详情：
-
-  滚动事件监听器的 Debounce 延迟。
-
-### offset
-
-- 类型： `number`
-
-- 默认值： `5`
-
-- 详情：
-
-  即便直接点击 _标题锚点_ 的链接， `scrollTop` 也可能不会完全等于 _标题锚点_ 的 `offsetTop` ，所以我们添加一个 Offset 偏移量来避免这个误差。
+:::

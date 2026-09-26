@@ -6,259 +6,208 @@ icon: settings-2
 
 ## Options
 
-### serviceWorkerFilename
+:::: fields
+@serviceWorkerFilename@ type=string default=`'service-worker.js'`
 
-- Type: `string`
-- Default: `"service-worker.js"`
-- Details: Service Worker file path.
+Service Worker file path.
 
-### showInstall
+@showInstall@ type=boolean default=`true`
 
-- Type: `boolean`
-- Details: Whether to display install button when Service Worker is first registered successfully.
+Whether to display the install button when the Service Worker is first registered successfully.
 
-### manifest
+@manifest@ type=AppManifest
 
-- Type: `AppManifest`
+An object which will be parsed to manifest.webmanifest.
 
-- Reference:
-  - [MDN Web Docs: Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest)
-  - [W3C: Web App Manifest](https://www.w3.org/TR/appmanifest/)
+::: tip
 
-- Details: You can fill with an object which will be parsed to manifest.webmanifest.
+Some options have their fallback if you don't set them.
 
-  ::: tip
+- `name`: `siteConfig.title` || `siteConfig.locales['/'].title` || `"Site"`
+- `short_name`: `siteConfig.title` || `siteConfig.locales['/'].title` || `"Site"`
+- `description`: `siteConfig.description` || `siteConfig.locales['/'].description` || `"A site built with vuepress"`
+- `lang`: `siteConfig.locales['/'].lang` || `"en-US"`
+- `start_url`: `context.base`
+- `scope`: `context.base`
+- `display`: `"standalone"`
+- `theme_color`: `"#46bd87"`
+- `background_color`: `"#ffffff"`
+- `orientation`: `"portrait-primary"`
+- `prefer_related_applications`: `false`
 
-  Some options have their fallback if you don't set them.
-  - name: `siteConfig.title` || `siteConfig.locales['/'].title` || `"Site"`
-  - short_name: `siteConfig.title` || `siteConfig.locales['/'].title` || `"Site"`
-  - description: `siteConfig.description` || `siteConfig.locales['/'].description` || `"A site built with vuepress"`
-  - lang: `siteConfig.locales['/'].lang` || `"en-US"`
-  - start_url: `context.base`
-  - scope: `context.base`
-  - display: `"standalone"`
-  - theme_color: `"#46bd87"`
-  - background_color: `"#ffffff"`
-  - orientation: `"portrait-primary"`
-  - prefer_related_applications: `false`
+:::
 
-  :::
+See also:
 
-### favicon
+- [MDN Web Docs: Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest)
+- [W3C: Web App Manifest](https://www.w3.org/TR/appmanifest/)
 
-- Type: `string`
-- Details: Link of favicon.ico.
+@favicon@ type=string
 
-  ::: warning
+Link of favicon.ico.
 
-  We recommend setting favicon for your site.
+::: warning
 
-  :::
+We recommend setting favicon for your site.
 
-### themeColor
+:::
 
-- Type: `string`
-- Default: `"#46bd87"`
-- Details: Theme color of the PWA.
+@themeColor@ type=string default=`'#46bd87'`
 
-### maxSize
+Theme color of the PWA.
 
-- Type: `number`
-- Default: `2048`
-- Details: Max size allowed to be cached, in KB.
+@maxSize@ type=number default=`2048`
 
-  ::: warning
+Max size allowed to be cached, in KB.
 
-  This option has the highest priority, and any files exceeding this value will be excluded.
+::: warning
 
-  So if you generate very large HTML or JS files, please consider increasing this value, otherwise your PWA may not work normally in offline mode.
+This option has the highest priority, and any files exceeding this value will be excluded.
 
-  :::
+So if you generate very large HTML or JS files, please consider increasing this value, otherwise your PWA may not work normally in offline mode.
 
-### cacheHTML
+:::
 
-- Type: `boolean`
-- Details: Whether to cache HTML files besides home page and 404 page.
+@cacheHTML@ type=boolean
 
-### cacheImage
+Whether to cache HTML files besides home page and 404 page.
 
-- Type: `boolean`
-- Details: Whether to cache pictures.
+@cacheImage@ type=boolean
 
-### maxImageSize
+Whether to cache pictures.
 
-- Type: `number`
-- Default: `1024`
-- Details: Max picture size allowed to be cached, in KB.
+@maxImageSize@ type=number default=`1024`
 
-  ::: tip
+Max picture size allowed to be cached, in KB.
 
-  The value must not be greater than maxSize option.
+::: tip
 
-  :::
+The value must not be greater than [maxSize](#maxsize) option.
 
-### update
+:::
 
-- Type: `"disable" | "available" | "hint" | "force"`
-- Default: `"available"`
-- Details: Control logic when new content is found.
-  - `"disable"`: Do nothing even when new service worker is available. After new service work succeeds installing and starts waiting, it will control page and provide new content in next visit.
-  - `"available"`: Only display update popup when the new service worker is available.
-  - `"hint"`: Display a hint to let user choose to refresh immediately. This is helpful when you want users to see new docs immediately.
+@update@ type=`'available' | 'disable' | 'force' | 'hint'` default=`'available'`
 
-    ::: tip
+Control logic when new content is found.
 
-    If users choose to refresh, the current service worker will be unregister, and request will start coming to web. Later the new service worker will start installing and control current page after installed.
+- `'available'`: Only display update popup when the new service worker is available.
+- `'disable'`: Do nothing even when new service worker is available. After new service work succeeds installing and starts waiting, it will control page and provide new content in next visit.
+- `'hint'`: Display a hint to let user choose to refresh immediately. This is helpful when you want users to see new docs immediately.
 
-    :::
+  If users choose to refresh, the current service worker will be unregister, and request will start coming to web. Later the new service worker will start installing and control current page after installed.
 
-  - `"force"`: unregister current service worker immediately then refresh to get new content.
+- `'force'`: Unregister current service worker immediately then refresh to get new content. This may affect viewing experiences.
 
-    ::: danger
+::: tip
 
-    Although this ensures users are viewing the latest content, it may affect viewing experiences.
+How docs are updated is controlled by a previous version, so the current option only affects the next update from this version.
 
-    :::
+:::
 
-  ::: tip
+@apple@ type=`ApplePwaOptions | false`
 
-  How docs are updated is controlled by a previous version, so the current option only affects the next update from this version.
+Special settings for better supporting Safari, ignoring these options are safe.
 
-  :::
+@@apple.icon@ type=string
 
-### apple
+Icon link used by Safari, recommend 152×152 size.
 
-- Type: `ApplePwaOptions | false`
-- Details: Special settings for better supporting Safari, ignoring these options are safe.
+@@apple.maskIcon@ type=string
 
-#### apple.icon
+Safari mask icon.
 
-- Type: `string`
-- Details: Icon link used by Safari.
+@@apple.statusBarColor@ type=`'black-translucent' | 'black' | 'default'` default=`'default'` deprecated
 
-#### apple.maskIcon
+Status bar color for Safari. Related tag is unstandardized, so you should avoid declaring it.
 
-- Type: `string`
-- Details: Safari mask icon.
+@foundComponent@ type=string default=`'PwaFoundPopup'`
 
-#### apple.statusBarColor
+Path of custom hint popup component.
 
-- Type: `"black-translucent" | "black" | "default"`
-- Default: `"default"`
-- Details: Status bar color for Safari.
+@readyComponent@ type=string default=`'PwaReadyPopup'`
 
-### foundComponent
+Path of custom update popup component.
 
-- Type: `string`
-- Default: `"PwaFoundPopup"`
-- Details: Path of custom hint popup component.
+@appendBase@ type=boolean
 
-### readyComponent
+Whether append base to all absolute links in options.
 
-- Type: `string`
-- Default: `"PwaReadyPopup"`
-- Details: Path of custom update popup component.
+@generateSWConfig@ type=`Partial<GenerateSWOptions>`
 
-### appendBase
+Options passed to `workbox-build`, for details, see [Workbox documentation](https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-build#.generateSW).
 
-- Type: `boolean`
-- Details: Whether append base to all absolute links in options.
+@locales@ type=`LocaleConfig<PwaPluginLocaleData>`
 
-### generateSwConfig
+Locales config for pwa plugin. The locale data is a partial of `PwaPluginLocaleData`.
 
-- Type: `Partial<GenerateSWOptions>`
-- Details: Options passed to `workbox-build`, for details, see [Workbox documentation](https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-build#.generateSW).
+::: details Built-in Supported Languages
 
-### locales
+- **Simplified Chinese** (zh-CN)
+- **Traditional Chinese** (zh-TW)
+- **English (United States)** (en-US)
+- **German** (de-DE)
+- **Russian** (ru-RU)
+- **Ukrainian** (uk-UA)
+- **Vietnamese** (vi-VN)
+- **Portuguese** (pt)
+- **Polish** (pl-PL)
+- **French** (fr-FR)
+- **Spanish** (es-ES)
+- **Slovak** (sk-SK)
+- **Japanese** (ja-JP)
+- **Turkish** (tr-TR)
+- **Korean** (ko-KR)
+- **Finnish** (fi-FI)
+- **Indonesian** (id-ID)
+- **Dutch** (nl-NL)
 
-- Type: `PwaPluginLocaleConfig`
+:::
 
-  ```ts
-  interface PwaPluginLocaleData {
-    /**
-     * Install button text
-     */
-    install: string
+@@locales.install@ type=string
 
-    /**
-     * iOS install hint text
-     */
-    iOSInstall: string
+Install button text.
 
-    /**
-     * Cancel button text
-     */
-    cancel: string
+@@locales.iOSInstall@ type=string
 
-    /**
-     * Close button text
-     */
-    close: string
+IOS install hint text.
 
-    /**
-     * Previous image text
-     */
-    prevImage: string
+@@locales.cancel@ type=string
 
-    /**
-     * Next image text
-     */
-    nextImage: string
+Cancel button text.
 
-    /**
-     * Install explain text
-     */
-    explain: string
+@@locales.close@ type=string
 
-    /**
-     * Description label text
-     */
-    desc: string
+Close button text.
 
-    /**
-     * Feature label text
-     */
-    feature: string
+@@locales.prevImage@ type=string
 
-    /**
-     * Update hint text
-     */
-    hint: string
+Previous image text.
 
-    /**
-     * Update available text
-     */
-    update: string
-  }
+@@locales.nextImage@ type=string
 
-  interface PwaPluginLocaleConfig {
-    [localePath: string]: Partial<PwaPluginLocaleData>
-  }
-  ```
+Next image text.
 
-- Details: Locales config for pwa plugin.
+@@locales.explain@ type=string
 
-  ::: details Built-in Supported Languages
-  - **Simplified Chinese** (zh-CN)
-  - **Traditional Chinese** (zh-TW)
-  - **English (United States)** (en-US)
-  - **German** (de-DE)
-  - **Russian** (ru-RU)
-  - **Ukrainian** (uk-UA)
-  - **Vietnamese** (vi-VN)
-  - **Portuguese** (pt)
-  - **Polish** (pl-PL)
-  - **French** (fr-FR)
-  - **Spanish** (es-ES)
-  - **Slovak** (sk-SK)
-  - **Japanese** (ja-JP)
-  - **Turkish** (tr-TR)
-  - **Korean** (ko-KR)
-  - **Finnish** (fi-FI)
-  - **Indonesian** (id-ID)
-  - **Dutch** (nl-NL)
+Install explain text.
 
-  :::
+@@locales.desc@ type=string
+
+Description label text.
+
+@@locales.feature@ type=string
+
+Feature label text.
+
+@@locales.hint@ type=string
+
+Update hint text.
+
+@@locales.update@ type=string
+
+Update available text.
+
+::::
 
 ## Composition API
 

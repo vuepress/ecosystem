@@ -26,30 +26,6 @@ export default {
 }
 ```
 
-You can set multiple notices for different paths on your site.
-
-Each notice configuration requires either a `path` or `match` option to determine which pages it should appear on. The `path` option is a string that matches all paths starting with it, while the `match` option is a regular expression to test against the page route path.
-
-A notice configuration includes:
-
-- `title`: Notice title, supports both text and HTML strings
-- `content`: Notice content, supports text, HTML strings, and Markdown
-  - When using Markdown as content, set `contentType` to `markdown`.
-
-  - You can also use `contentFile` to specify the absolute path of a file (`.md` or `.html` format) to read the notice content from.
-
-- `actions`: Notice actions
-
-  An array of objects containing:
-  - `text`: Action text
-  - `link`: Action link (optional).
-
-    Pathnames are treated as internal route links and handled by the router, while full URLs are treated as external links and opened in a new window.
-
-  - `type`: `"default"` or `"primary"` (optional)
-
-    Default value is `"default"`.
-
 Here is an example:
 
 ```ts title=".vuepress/config.ts"
@@ -106,9 +82,15 @@ export default {
 }
 ```
 
-We also provide advanced options to control notice display behavior.
+## Guide
 
-::: tip Display Control
+### Path Matching
+
+You can set multiple notices for different paths on your site.
+
+Each notice configuration requires either a `path` or `match` option to determine which pages it should appear on. The `path` option is a string that matches all paths starting with it, while the `match` option is a regular expression to test against the page route path.
+
+### Display Control
 
 By default, notices are shown whenever users enter the site, and remain closed for the session if users close them.
 
@@ -116,106 +98,87 @@ To prevent notices from appearing again after users close them (even in future v
 
 Notice state is remembered based on the notice title and content. You can set a custom `key` option to use your own identifier, allowing you to edit notice content without bothering users who have already acknowledged them.
 
-:::
-
-::: tip Fullscreen Mode
+### Fullscreen Mode
 
 To display a fullscreen popup, use `fullscreen: true` in the notice options. We recommend combining this with `confirm: true`.
 
 The notice will be displayed in the center of the screen, with other areas covered by a blur mask.
 
-:::
-
-::: tip Close Button
+### Close Button
 
 By default, there is a close button on the right side of the notice, allowing users to dismiss it. Users can also close fullscreen notices by clicking the mask.
 
 However, if you want users to acknowledge the notice, set `confirm: true` so users can only close the notice by clicking action buttons.
 
-:::
-
 ## Options
 
-### config
+::: fields
+@config@ type=`NoticeOptions[]` required
 
-- Type: `NoticeOptions[]`
+Notice configuration. Each item needs a `path` or a `match` to decide which pages the notice appears on, see [Path Matching](#path-matching).
 
-  ```ts
-  interface NoticeItemOptions {
-    /**
-     * Notice title
-     */
-    title: string
+@@config.path@ type=string
 
-    /**
-     * Notice content
-     */
-    content?: string
+Path prefix to match.
 
-    /**
-     * Notice content type
-     * @default 'html'
-     */
-    contentType?: 'html' | 'markdown'
+@@config.match@ type=`RegExp`
 
-    /**
-     * Notice content file absolute path, file format should be `.md` or `.html`.
-     * Prioritize using the file content as `content`.
-     * @example '/path/to/notice.md'
-     */
-    contentFile?: string
+A regexp matching the notice path.
 
-    /**
-     * Notice key
-     *
-     * Used to identify and store the notice status
-     */
-    key?: string
+@@config.title@ type=string required
 
-    /**
-     * Whether show notice only once or show it in every visit
-     *
-     * @default false
-     */
-    showOnce?: boolean
+Notice title, which supports both text and HTML strings.
 
-    /**
-     * Whether the notice shall be confirmed
-     *
-     * @default false
-     */
-    confirm?: boolean
+@@config.content@ type=string
 
-    /**
-     * Whether the notice should appear fullscreen
-     *
-     * @default false
-     */
-    fullscreen?: boolean
+Notice content, which supports text, HTML strings, and Markdown. Set `contentType` to `markdown` when using Markdown.
 
-    /**
-     * Notice actions
-     */
-    actions?: NoticeActionOption[]
-  }
+@@config.contentType@ type=`'html' | 'markdown'` default=`'html'`
 
-  interface NoticePathOptions extends NoticeItemOptions {
-    /**
-     * Path prefix to match
-     */
-    path: string
-  }
+Notice content type.
 
-  interface NoticeMatchOptions extends NoticeItemOptions {
-    /**
-     * A regexp matching notice path
-     */
-    match: RegExp
-  }
+@@config.contentFile@ type=string
 
-  type NoticeOptions = NoticeMatchOptions | NoticePathOptions
-  ```
+Absolute path of the notice content file, whose format should be `.md` or `.html`. The file content is used as `content` with a higher priority.
 
-- Details:
+@@config.key@ type=string
 
-  Notice configuration.
+Notice key, used to identify and store the notice status.
+
+See also: [Display Control](#display-control).
+
+@@config.showOnce@ type=boolean
+
+Whether to show the notice only once instead of on every visit.
+
+See also: [Display Control](#display-control).
+
+@@config.confirm@ type=boolean
+
+Whether the notice shall be confirmed.
+
+See also: [Close Button](#close-button).
+
+@@config.fullscreen@ type=boolean
+
+Whether the notice should appear fullscreen.
+
+See also: [Fullscreen Mode](#fullscreen-mode).
+
+@@config.actions@ type=`NoticeActionOption[]`
+
+Notice actions.
+
+@@@config.actions.text@ type=string required
+
+Action text.
+
+@@@config.actions.link@ type=string
+
+Action link. Pathnames are treated as internal route links and handled by the router, while full URLs are treated as external links and opened in a new window.
+
+@@@config.actions.type@ type=`'default' | 'primary'` default=`'default'`
+
+Action type.
+
+:::

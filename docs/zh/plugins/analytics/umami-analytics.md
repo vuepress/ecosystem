@@ -28,6 +28,8 @@ export default {
 
 该插件同时支持 [Umami Cloud](https://cloud.umami.is/login) 和 [自托管（Self-host）](https://umami.is/docs/install) 实例。
 
+## 指南
+
 ### 上报事件
 
 插件开箱即用，会自动捕获首次访问和后续路由切换时的页面浏览事件，从而确保单页应用（SPA）流量数据的准确性。
@@ -36,48 +38,33 @@ export default {
 
 ## 选项
 
-### id
+::: fields
+@id@ type=string required
 
-- 类型：`string`
-- 必填： 是
-- 详情： Umami 控制台提供的唯一网站 ID (Website ID)。
+Umami 控制台提供的唯一网站 ID (Website ID)。
 
-### link
+@link@ type=string default=`'https://us.umami.is/script.js'`
 
-- 类型：`string`
-- 默认值：`'https://us.umami.is/script.js'`
-- 详情： Umami 追踪脚本的源地址 URL。
+Umami 追踪脚本的源地址 URL。
 
-### autoTrack
+@autoTrack@ type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：
+控制是否自动追踪页面浏览和事件。
 
-  控制是否自动追踪页面浏览和事件。
+如果希望禁用自动数据收集并仅依赖手动追踪函数，请将此项设置为 `false`。
 
-  如果希望禁用自动数据收集并仅依赖手动追踪函数，请将此项设置为 `false`。
+@cache@ type=boolean
 
-### cache
+启用缓存以提高追踪脚本的性能。
 
-- 类型：`boolean`
-- 详情：
+**注意：** 此功能会使用 Session Storage。根据你所在地区的法规，你可能需要向用户告知这一情况。
 
-  启用缓存以提高追踪脚本的性能。
+@domains@ type=`string[]`
 
-  **注意：** 此功能会使用 Session Storage。根据你所在地区的法规，你可能需要向用户告知这一情况。
+允许的域名列表。只有通过这些特定域名访问站点时，才会进行追踪。
 
-### domains
+@hostUrl@ type=string default=`link`
 
-- 类型：`string[]`
-- 详情：
+用于发送分析数据的自定义端点。如果未指定，默认使用 [link](#link) 中定义的脚本位置。
 
-  允许的域名列表。只有通过这些特定域名访问站点时，才会进行追踪。
-
-### hostUrl
-
-- 类型：`string`
-- 默认值：`link`
-- 详情：
-
-  用于发送分析数据的自定义端点。如果未指定，默认使用 `link` 中定义的脚本位置。
+:::

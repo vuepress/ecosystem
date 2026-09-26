@@ -30,49 +30,29 @@ export default {
 
 ## Options
 
-### headerLinkSelector
+::: fields
+@headerLinkSelector@ type=string default=`'a.vp-sidebar-item'`
 
-- Type: `string`
+Selector of _header link_.
 
-- Default: `'a.vp-sidebar-item'`
+If a _header anchor_ does not have a corresponding _header link_, this plugin won't change the route hash to that anchor when scrolling to it.
 
-- Details:
+@headerAnchorSelector@ type=string default=`'.header-anchor'`
 
-  Selector of _header link_.
+Selector of _header anchor_.
 
-  If a _header anchor_ does not have a corresponding _header link_, this plugin won't change the route hash to that anchor when scrolling to it.
+You don't need to specify this option unless you have changed the `permalinkClass` option of [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor#readme) via [markdown.anchor](https://vuejs.press/reference/config.html#markdown-anchor).
 
-### headerAnchorSelector
+See also: [Guide > Markdown > Syntax Extensions > Header Anchors](https://vuejs.press/guide/markdown.html#header-anchors).
 
-- Type: `string`
+@delay@ type=number default=`200`
 
-- Default: `'.header-anchor'`
+The delay in milliseconds of the debounced scroll event listener.
 
-- Details:
+@offset@ type=number default=`5`
 
-  Selector of _header anchor_.
+The offset in pixels when a _header anchor_ is determined as active.
 
-  You don't need to specify this option unless you have changed the `permalinkClass` option of [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor#readme) via [markdown.anchor](https://vuejs.press/reference/config.html#markdown-anchor).
+Even if you click the link of the _header anchor_ directly, the `scrollTop` might not be exactly equal to `offsetTop` of the _header anchor_, so we add an offset to avoid the error.
 
-- Also see:
-  - [Guide > Markdown > Syntax Extensions > Header Anchors](https://vuejs.press/guide/markdown.html#header-anchors)
-
-### delay
-
-- Type: `number`
-
-- Default: `200`
-
-- Details:
-
-  The delay of the debounced scroll event listener.
-
-### offset
-
-- Type: `number`
-
-- Default: `5`
-
-- Details:
-
-  Even if you click the link of the _header anchor_ directly, the `scrollTop` might not be exactly equal to `offsetTop` of the _header anchor_, so we add an offset to avoid the error.
+:::

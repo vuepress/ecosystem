@@ -6,258 +6,208 @@ icon: settings-2
 
 ## 选项
 
-### serviceWorkerFilename
+:::: fields
+@serviceWorkerFilename@ type=string default=`'service-worker.js'`
 
-- 类型：`string`
-- 默认值：`"service-worker.js"`
-- 详情：Service Worker 文件路径。
+Service Worker 文件路径。
 
-### showInstall
+@showInstall@ type=boolean default=`true`
 
-- 类型：`boolean`
-- 详情：是否在 Service Worker 首次成功注册时显示 PWA 安装按钮。
+是否在 Service Worker 首次成功注册时显示 PWA 安装按钮。
 
-### manifest
+@manifest@ type=AppManifest
 
-- 类型：`AppManifest`
-- 详情：填充一个将被解析为 manifest.webmanifest 的对象。
+填充一个将被解析为 manifest.webmanifest 的对象。
 
-  ::: tip
+::: tip
 
-  如果未设置某些选项，它们会回退到插件预设值。
-  - name: `siteConfig.title` || `siteConfig.locales['/'].title` || `"Site"`
-  - short_name: `siteConfig.title` || `siteConfig.locales['/'].title` || `"Site"`
-  - description: `siteConfig.description` || `siteConfig.locales['/'].description` || `"A site built with vuepress"`
-  - lang: `siteConfig.locales['/'].lang` || `"en-US"`
-  - start_url: `context.base`
-  - scope: `context.base`
-  - display: `"standalone"`
-  - theme_color: `"#46bd87"`
-  - background_color: `"#ffffff"`
-  - orientation: `"portrait-primary"`
-  - prefer_related_applications: `false`
+如果未设置某些选项，它们会回退到插件预设值。
 
-  :::
+- `name`: `siteConfig.title` || `siteConfig.locales['/'].title` || `"Site"`
+- `short_name`: `siteConfig.title` || `siteConfig.locales['/'].title` || `"Site"`
+- `description`: `siteConfig.description` || `siteConfig.locales['/'].description` || `"A site built with vuepress"`
+- `lang`: `siteConfig.locales['/'].lang` || `"en-US"`
+- `start_url`: `context.base`
+- `scope`: `context.base`
+- `display`: `"standalone"`
+- `theme_color`: `"#46bd87"`
+- `background_color`: `"#ffffff"`
+- `orientation`: `"portrait-primary"`
+- `prefer_related_applications`: `false`
 
-  **参考：**
-  - [MDN Web Docs: Web App Manifest](https://developer.mozilla.org/zh-CN/docs/Web/Manifest)
-  - [W3C Manifest](https://w3c.github.io/manifest/)
+:::
 
-### favicon
+参考：
 
-- 类型：`string`
-- 详情：`favicon.ico` 地址，填入绝对路径。
+- [MDN Web Docs: Web App Manifest](https://developer.mozilla.org/zh-CN/docs/Web/Manifest)
+- [W3C Manifest](https://w3c.github.io/manifest/)
 
-  ::: warning
+@favicon@ type=string
 
-  我们建议你为你的站点生成 favicon。
+`favicon.ico` 地址，填入绝对路径。
 
-  :::
+::: warning
 
-### themeColor
+我们建议你为你的站点生成 favicon。
 
-- 类型：`string`
-- 默认值：`"#46bd87"`
-- 详情：PWA 的主题色。
+:::
 
-### maxSize
+@themeColor@ type=string default=`'#46bd87'`
 
-- 类型：`number`
-- 默认值：`2048`
-- 详情：允许缓存的最大大小 (以 KB 为单位)。
+PWA 的主题色。
 
-  ::: warning
+@maxSize@ type=number default=`2048`
 
-  此选项具有最高优先级，任何超过此值的文件都会被排除。
+允许缓存的最大大小 (以 KB 为单位)。
 
-  所以你如果生成了很大的 HTML 或 JS 文件，请考虑调高此值，否则你的 PWA 可能无法在离线模式下正常运行。
+::: warning
 
-  :::
+此选项具有最高优先级，任何超过此值的文件都会被排除。
 
-### cacheHTML
+所以你如果生成了很大的 HTML 或 JS 文件，请考虑调高此值，否则你的 PWA 可能无法在离线模式下正常运行。
 
-- 类型：`boolean`
-- 详情：是否缓存主页和 404 错误页之外的 HTML 文件。
+:::
 
-### cacheImage
+@cacheHTML@ type=boolean
 
-- 类型：`boolean`
-- 详情：是否缓存图片。
+是否缓存主页和 404 错误页之外的 HTML 文件。
 
-### maxImageSize
+@cacheImage@ type=boolean
 
-- 类型：`number`
-- 默认值：`1024`
-- 详情：图片允许缓存的最大大小 (以 KB 为单位)。
+是否缓存图片。
 
-  ::: tip
+@maxImageSize@ type=number default=`1024`
 
-  该选项不能大于 maxSize 选项。
+图片允许缓存的最大大小 (以 KB 为单位)。
 
-  :::
+::: tip
 
-### update
+该选项不能大于 [maxSize](#maxsize) 选项。
 
-- 类型：`"disable" | "available" | "hint" | "force"`
-- 默认值：`"available"`
-- 详情：发现新内容时的控制逻辑。
-  - `"disable"`: 即使有新的 service worker 也不做任何事情，新的 service work 开始等待后，会在用户下次访问时接管页面，让用户获得新内容。
-  - `"available"`: 仅当新的 service worker 可用时才显示更新弹出窗口。
-  - `"hint"`: 显示更新内容可用提示，并允许用户立即刷新。当新的 SW 成功注册后，将转为更新内容就绪弹窗。当你希望用户立即查看新文档时，这很有帮助。
+:::
 
-    ::: tip
+@update@ type=`'available' | 'disable' | 'force' | 'hint'` default=`'available'`
 
-    如果用户在新 SW 就绪前选择刷新，当前的 Service Worker 将被注销，并且请求将开始向 Web 发出。新的 service worker 将开始安装并在安装后接管页面。
+发现新内容时的控制逻辑。
 
-    :::
+- `'available'`: 仅当新的 service worker 可用时才显示更新弹出窗口。
+- `'disable'`: 即使有新的 service worker 也不做任何事情，新的 service work 开始等待后，会在用户下次访问时接管页面，让用户获得新内容。
+- `'hint'`: 显示更新内容可用提示，并允许用户立即刷新。当新的 SW 成功注册后，将转为更新内容就绪弹窗。当你希望用户立即查看新文档时，这很有帮助。
 
-  - `"force"`: 立即注销当前 Service Worker 然后刷新以获取新内容。
+  如果用户在新 SW 就绪前选择刷新，当前的 Service Worker 将被注销，并且请求将开始向 Web 发出。新的 service worker 将开始安装并在安装后接管页面。
 
-    ::: danger
+- `'force'`: 立即注销当前 Service Worker 然后刷新以获取新内容。这可能会影响访问体验。
 
-    虽然这可以确保用户访问的是最新内容，但这可能会影响访问体验。
+::: tip
 
-    :::
+文档的更新方式由以前的版本控制，因此当前选项仅影响此版本的下一次更新。
 
-  ::: tip
+:::
 
-  文档的更新方式由以前的版本控制，因此当前选项仅影响此版本的下一次更新。
+@apple@ type=`ApplePwaOptions | false`
 
-  :::
+支持苹果的特殊设置，忽略它们是安全的。
 
-### apple
+@@apple.icon@ type=string
 
-- 类型：`ApplePwaOptions | false`
-- 详情：支持苹果的特殊设置，忽略它们是安全的。
+填入苹果使用的图标地址，推荐 152×152 大小。
 
-#### apple.icon
+@@apple.maskIcon@ type=string
 
-- 类型：`string`
-- 详情：填入苹果使用的图标地址，推荐 152×152 大小。
+Safari 图标。
 
-#### apple.maskIcon
+@@apple.statusBarColor@ type=`'black-translucent' | 'black' | 'default'` default=`'default'` deprecated
 
-- 类型：`string`
-- 详情：Safari 图标。
+Safari 状态栏颜色。相关标签尚未标准化，你应该避免声明它。
 
-#### apple.statusBarColor
+@foundComponent@ type=string default=`'PwaFoundPopup'`
 
-- 类型：`"black-translucent" | "black" | "default"`
-- 默认值：`"default"`
-- 详情：Safari 状态栏颜色。
+自定义的提示弹窗组件路径。
 
-### foundComponent
+@readyComponent@ type=string default=`'PwaReadyPopup'`
 
-- 类型：`string`
-- 默认值：`"PwaFoundPopup"`
-- 详情：自定义的提示弹窗组件路径。
+自定义的更新弹窗组件路径。
 
-### readyComponent
+@appendBase@ type=boolean
 
-- 类型：`string`
-- 默认值：`"PwaReadyPopup"`
-- 详情：自定义的更新弹窗组件路径。
+是否为选项中所有绝对链接添加 base。
 
-### appendBase
+@generateSWConfig@ type=`Partial<GenerateSWOptions>`
 
-- 类型：`boolean`
-- 详情：是否为选项中所有绝对链接添加 base。
+传递给 `workbox-build` 的选项，具体详情，请见 [Workbox 文档](https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-build#.generateSW)。
 
-### generateSwConfig
+@locales@ type=`LocaleConfig<PwaPluginLocaleData>`
 
-- 类型：`Partial<GenerateSWOptions>`
-- 详情：传递给 `workbox-build` 的选项，具体详情，请见 [Workbox 文档](https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-build#.generateSW)。
+PWA 插件的国际化配置，各语言的数据为 `PwaPluginLocaleData` 的一部分。
 
-### locales
+::: details 内置支持语言
 
-- 类型：`PwaPluginLocaleConfig`
+- **简体中文** (zh-CN)
+- **繁体中文** (zh-TW)
+- **英文(美国)** (en-US)
+- **德语** (de-DE)
+- **俄语** (ru-RU)
+- **乌克兰语** (uk-UA)
+- **越南语** (vi-VN)
+- **葡萄牙语** (pt)
+- **波兰语** (pl-PL)
+- **法语** (fr-FR)
+- **西班牙语** (es-ES)
+- **斯洛伐克** (sk-SK)
+- **日语** (ja-JP)
+- **土耳其语** (tr-TR)
+- **韩语** (ko-KR)
+- **芬兰语** (fi-FI)
+- **印尼语** (id-ID)
+- **荷兰语** (nl-NL)
 
-  ```ts
-  interface PwaPluginLocaleData {
-    /**
-     * 安装按钮文字
-     */
-    install: string
+:::
 
-    /**
-     * iOS 安装文字
-     */
-    iOSInstall: string
+@@locales.install@ type=string
 
-    /**
-     * 取消按钮文字
-     */
-    cancel: string
+安装按钮文字。
 
-    /**
-     * 关闭按钮文字
-     */
-    close: string
+@@locales.iOSInstall@ type=string
 
-    /**
-     * 上一张图片文字
-     */
-    prevImage: string
+iOS 安装文字。
 
-    /**
-     * 下一张图片文字
-     */
-    nextImage: string
+@@locales.cancel@ type=string
 
-    /**
-     * 安装解释
-     */
-    explain: string
+取消按钮文字。
 
-    /**
-     * 描述标签文字
-     */
-    desc: string
+@@locales.close@ type=string
 
-    /**
-     * 特性标签文字
-     */
-    feature: string
+关闭按钮文字。
 
-    /**
-     * 更新内容提示文字
-     */
-    hint: string
+@@locales.prevImage@ type=string
 
-    /**
-     * 更新内容可用文字
-     */
-    update: string
-  }
+上一张图片文字。
 
-  interface PwaPluginLocaleConfig {
-    [localePath: string]: Partial<PwaPluginLocaleData>
-  }
-  ```
+@@locales.nextImage@ type=string
 
-- 详情：PWA 插件的国际化配置。
+下一张图片文字。
 
-  ::: details 内置支持语言
-  - **简体中文** (zh-CN)
-  - **繁体中文** (zh-TW)
-  - **英文(美国)** (en-US)
-  - **德语** (de-DE)
-  - **俄语** (ru-RU)
-  - **乌克兰语** (uk-UA)
-  - **越南语** (vi-VN)
-  - **葡萄牙语** (pt)
-  - **波兰语** (pl-PL)
-  - **法语** (fr-FR)
-  - **西班牙语** (es-ES)
-  - **斯洛伐克** (sk-SK)
-  - **日语** (ja-JP)
-  - **土耳其语** (tr-TR)
-  - **韩语** (ko-KR)
-  - **芬兰语** (fi-FI)
-  - **印尼语** (id-ID)
-  - **荷兰语** (nl-NL)
+@@locales.explain@ type=string
 
-  :::
+安装解释。
+
+@@locales.desc@ type=string
+
+描述标签文字。
+
+@@locales.feature@ type=string
+
+特性标签文字。
+
+@@locales.hint@ type=string
+
+更新内容提示文字。
+
+@@locales.update@ type=string
+
+更新内容可用文字。
+
+::::
 
 ## 组合式 API
 

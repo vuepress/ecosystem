@@ -4,145 +4,82 @@ icon: settings-2
 
 # Config
 
-## hostname
+## Options
 
-- Type: `string`
-- Required: Yes
-- Details:
+::: fields
+@hostname@ type=string required
 
-  Deploy hostname.
+Deploy hostname.
 
-## author
+@author@ type=SeoAuthor
 
-- Type: `Author`
+Default author.
 
-  ```ts
-  type AuthorName = string
+Its type is:
 
-  interface AuthorInfo {
-    /**
-     * Author name
-     */
-    name: string
+```ts
+type AuthorName = string
 
-    /**
-     * Author website
-     */
-    url?: string
+interface AuthorInfo {
+  /** Author name */
+  name: string
+  /** Author website */
+  url?: string
+  /** Author email */
+  email?: string
+}
 
-    /**
-     * Author email
-     */
-    email?: string
-  }
+type SeoAuthor = AuthorInfo | AuthorInfo[] | AuthorName | AuthorName[]
+```
 
-  type Author = AuthorInfo | AuthorInfo[] | AuthorName | AuthorName[]
-  ```
+@autoDescription@ type=boolean default=`true`
 
-- Details:
+Whether generate description automatically.
 
-  Default author.
+@canonical@ type=`string | ((page: Page) => string | null)`
 
-## autoDescription
+Canonical link.
 
-- Type: `boolean`
-- Default: `true`
-- Details:
+See also: [Canonical Link](./guide.md#canonical-link).
 
-  Whether generate description automatically
+@fallBackImage@ type=string
 
-## canonical
+Fallback Image link when no image are found.
 
-- Type: `string | ((page: Page) => string | null)`
-- Details:
+@restrictions@ type=string
 
-  Canonical link
+Content restrictions. The age rating of the content, the format is `[int]+`, such as `"13+"`.
 
-## fallBackImage
+@twitterID@ type=string
 
-- Type: `string`
-- Details:
+Fill in your twitter username.
 
-  Fallback Image link when no image are found
+@isArticle@ type=`(page: Page) => boolean`
 
-## restrictions
+Use this option to judge whether the page is an article.
 
-- Type: `string`
-- Details:
+See also: [Page Type](./guide.md#page-type).
 
-  The age rating of the content, the format is `[int]+`, such as `"13+"`.
+@ogp@ type=`(ogp: SeoContent, page: Page, app: App) => SeoContent`
 
-## twitterID
+Custom OGP Generator.
 
-- Type: `string`
-- Details:
+You can use this option to edit OGP tags.
 
-  Fill in your twitter username.
+See also: [OGP](./guide.md#ogp).
 
-## isArticle
+@jsonLd@ type=`(jsonLD: ArticleSchema | BlogPostingSchema | WebPageSchema, page: Page, app: App) => ArticleSchema | BlogPostingSchema | WebPageSchema`
 
-- Type: `(page: Page) => boolean`
-- Details:
+Custom JSON-LD Generator.
 
-  Use this option to judge whether the page is an article.
+You can use this option to edit JSON-LD properties.
 
-## ogp
+See also: [JSON-LD](./guide.md#json-ld).
 
-- Type:
+@customHead@ type=`(head: HeadConfig[], page: Page, app: App) => void`
 
-  ```ts
-  function ogp(
-    /** OGP info inferred by plugin */
-    ogpInfo: SeoContent,
-    /** Page Object */
-    page: Page,
-    /** VuePress App */
-    app: App,
-  ): SeoContent
-  ```
+You can use this option to edit tags injected to `<head>`.
 
-- Details:
+See also: [Customize head Tags](./guide.md#customize-head-tags).
 
-  Custom OPG Generator.
-
-  You can use this options to edit OGP tags.
-
-## jsonLd
-
-- Type:
-
-  ```ts
-  function jsonLd(
-    /** JSON-LD Object inferred by plugin */
-    jsonLD: ArticleSchema | BlogPostingSchema | WebPageSchema,
-    /** Page Object */
-    page: Page,
-    /** VuePress App */
-    app: App,
-  ): ArticleSchema | BlogPostingSchema | WebPageSchema
-  ```
-
-- Details:
-
-  Custom JSON-LD Generator.
-
-  You can use this options to edit JSON-LD properties.
-
-## customHead
-
-- Type:
-
-  ```ts
-  function customHead(
-    /** Head tag config */
-    head: HeadConfig[],
-    /** Page Object */
-    page: Page,
-    /** VuePress App */
-    app: App,
-  ): void
-  ```
-
-- Details:
-
-  You can use this options to edit tags injected to `<head>`.
+:::

@@ -75,40 +75,14 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "
 
 ## Options
 
-### wordPerMinute
+:::: fields
+@wordPerMinute@ type=number default=`300`
 
-- Type: `number`
-- Default: `300`
-- Details: Reading speed in words per minute.
+Reading speed in words per minute.
 
-### locales
+@locales@ type=`ReadingTimePluginLocaleConfig`
 
-- Type: `ReadingTimePluginLocaleConfig`
-
-  ```ts
-  interface ReadingTimePluginLocaleData {
-    /**
-     * Word template, `$word` will be automatically replaced by actual words
-     */
-    word: string
-
-    /**
-     * Text for less than one minute
-     */
-    less1Minute: string
-
-    /**
-     * Time template, `$time` will be automatically replaced by actual time
-     */
-    time: string
-  }
-
-  interface ReadingTimePluginLocaleConfig {
-    [localePath: string]: Partial<ReadingTimePluginLocaleData>
-  }
-  ```
-
-- Details: Locale config for reading time text and word count text.
+Locale config for reading time text and word count text.
 
 ::: details Built-in Supported Languages
 
@@ -132,6 +106,19 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "
 - **Dutch** (nl-NL)
 
 :::
+
+@@locales.word@ type=string
+
+Word template, `$word` will be automatically replaced by actual words.
+
+@@locales.less1Minute@ type=string
+
+Text for less than one minute.
+
+@@locales.time@ type=string
+
+Time template, `$time` will be automatically replaced by actual time.
+::::
 
 ## Client API
 

@@ -78,68 +78,50 @@ $color: green;
 
 ## 选项
 
-### preset
+::: fields
+@preset@ type=`'css' | 'less' | 'sass' | 'stylus'` default=`'css'`
 
-- 类型： `'css' | 'less' | 'sass' | 'stylus'`
+为其他配置项设置预设值。
 
-- 默认值： `'css'`
+如果你不需要对插件进行高级自定义，建议只设置该配置项并省略其他配置项。
 
-- 详情：
+@userPaletteFile@ type=string
 
-  为其他配置项设置预设值。
+用户调色板文件的路径，相对于源文件目录。
 
-  如果你不需要对插件进行高级自定义，建议只设置该配置项并省略其他配置项。
+默认值依赖于 [preset](#preset) 配置项：
 
-### userPaletteFile
+- css: `.vuepress/styles/palette.css`
+- less: `.vuepress/styles/palette.less`
+- sass: `.vuepress/styles/palette.scss`
+- stylus: `.vuepress/styles/palette.styl`
 
-- 类型： `string`
+此文件用于用户定义样式变量，建议保持默认文件路径作为约定。
 
-- 默认值：
-  - css: `'.vuepress/styles/palette.css'`
-  - less: `'.vuepress/styles/palette.less'`
-  - sass: `'.vuepress/styles/palette.scss'`
-  - stylus: `'.vuepress/styles/palette.styl'`
+@tempPaletteFile@ type=string
 
-- 详情：
+生成的调色板临时文件的路径，相对于临时文件目录。
 
-  用户调色板文件的路径，相对于源文件目录。
+默认值依赖于 [preset](#preset) 配置项：
 
-  默认值依赖于 [preset](#preset) 配置项。
+- css: `styles/palette.css`
+- less: `styles/palette.less`
+- sass: `styles/palette.scss`
+- stylus: `styles/palette.styl`
 
-  此文件用于用户定义样式变量，建议保持默认文件路径作为约定。
+你应该通过 `@vuepress/plugin-palette/palette` 别名引入调色板文件，因此大部分情况下你不需要修改该配置项。
 
-### tempPaletteFile
+@importCode@ type=`(filePath: string) => string`
 
-- 类型： `string`
+生成引入代码的函数。
 
-- 默认值：
-  - css: `'styles/palette.css'`
-  - less: `'styles/palette.less'`
-  - sass: `'styles/palette.scss'`
-  - stylus: `'styles/palette.styl'`
+默认值依赖于 [preset](#preset) 配置项：
 
-- 详情：
+- css: `` (filePath) => `@import '${filePath}';\n` ``
+- less: `` (filePath) => `@import '${filePath}';\n` ``
+- sass: `` (filePath) => `@forward 'file:///${filePath}';\n` ``
+- stylus: `` (filePath) => `@require '${filePath}';\n` ``
 
-  生成的调色板临时文件的路径，相对于临时文件目录。
+该配置项用于生成 [tempPaletteFile](#temppalettefile)，大部分情况下你不需要修改该配置项。
 
-  默认值依赖于 [preset](#preset) 配置项。
-
-  你应该通过 `'@vuepress/plugin-palette/palette'` 别名引入调色板文件，因此大部分情况下你不需要修改该配置项。
-
-### importCode
-
-- 类型： `(filePath: string) => string`
-
-- 默认值：
-  - css: `` (filePath) => `@import '${filePath}';\n` ``
-  - less: `` (filePath) => `@import '${filePath}';\n` ``
-  - sass: `` (filePath) => `@forward 'file:///${filePath}';\n` ``
-  - stylus: `` (filePath) => `@require '${filePath}';\n` ``
-
-- 详情：
-
-  生成引入代码的函数。
-
-  默认值依赖于 [preset](#preset) 配置项。
-
-  该配置项用于生成 [tempPaletteFile](#temppalettefile)，大部分情况下你不需要修改该配置项。
+:::

@@ -51,35 +51,20 @@ Therefore, this plugin is more useful for theme developers.
 
 ## Options
 
-### componentName
+::: fields
+@componentName@ type=string default=`'Toc'`
 
-- Type: `string`
+Specify the name of the TOC component.
 
-- Default: `'Toc'`
+@headersOptions@ type=GetHeadersOptions default=`{}`
 
-- Details:
+Override the default values of the component [headersOptions](#headersoptions-1) prop.
 
-  Specify the name of the TOC component.
+@renderOptions@ type=TocRenderOptions default=`{}`
 
-### headersOptions
+Override the default values of the component [renderOptions](#renderoptions-1) prop.
 
-- Type: `Partial<GetHeadersOptions>`
-
-- Default: `{}`
-
-- Details:
-
-  Override the default values of the component [headersOptions](#headersoptions-1) prop.
-
-### renderOptions
-
-- Type: `Partial<TocPropsOptions>`
-
-- Default: `{}`
-
-- Details:
-
-  Override the default values of the component [renderOptions](#renderoptions-1) prop.
+:::
 
 ## Component Props
 
@@ -95,129 +80,38 @@ The TOC component also accepts props for customization.
 </template>
 ```
 
-### headers
+::: fields
+@headers@ type=`PageHeader[]`
 
-- Type: `PageHeader[]`
+Specify the headers array to render. If this prop is not specified, the headers of current page will be used.
 
-```ts
-interface PageHeader {
-  level: number
-  title: string
-  slug: string
-  children: PageHeader[]
-}
-```
+@@headers.level@ type=number
 
-- Details:
+The level of the header.
 
-  Specify the headers array to render.
+@@headers.title@ type=string
 
-  If this prop is not specified, the headers of current page will be used.
+The title of the header.
 
-### headersOptions
+@@headers.slug@ type=string
 
-- Type: `Partial<GetHeadersOptions>`
+The slug of the header.
 
-  See [GetHeadersOptions](../../tools/helper/client.md#getheaders)
+@@headers.children@ type=`PageHeader[]`
 
-- Default:
+The children headers.
 
-  See [GetHeadersOptions](../../tools/helper/client.md#getheaders), it can be overridden by [headersOptions](#headersoptions) in plugin options.
+@headersOptions@ type=GetHeadersOptions
 
-- Details:
+Customize header extracting behavior.
 
-  Customize header extracting behavior.
+See [GetHeadersOptions](../../tools/helper/client.md#getheaders) for the available options. It can be overridden by the [headersOptions](#headersoptions) option in plugin options.
 
-### renderOptions
+@renderOptions@ type=TocRenderOptions
 
-- Type: `TocRenderOptions`
+Customize TOC component render behavior. It can be overridden by the [renderOptions](#renderoptions) option in plugin options.
 
-```ts
-interface TocRenderOptions {
-  /**
-   * Container tag name
-   *
-   * @default 'nav'
-   */
-  containerTag?: string
-
-  /**
-   * Container class name
-   *
-   * @default 'vuepress-toc'
-   */
-  containerClass?: string
-
-  /**
-   * List class name
-   *
-   * @default 'vuepress-toc-list'
-   */
-  listClass?: string
-
-  /**
-   * Item class name
-   *
-   * @default 'vuepress-toc-item'
-   */
-  itemClass?: string
-
-  /**
-   * Link tag type
-   *
-   * @default 'RouteLink'
-   */
-  linkTag?: 'a' | 'RouteLink' | 'RouterLink'
-
-  /**
-   * Link class name
-   *
-   * @default 'vuepress-toc-link'
-   */
-  linkClass?: string
-
-  /**
-   * Active link class name
-   *
-   * @default 'active'
-   */
-  linkActiveClass?: string
-
-  /**
-   * Active children link class name
-   *
-   * @default 'active'
-   */
-  linkChildrenActiveClass?: string
-}
-```
-
-- Default:
-
-  Following default values can be overridden by [renderOptions](#renderoptions) in plugin options.
-
-  ```ts
-  const defaultOptions = {
-    containerTag: 'nav',
-    containerClass: 'vuepress-toc',
-    listClass: 'vuepress-toc-list',
-    itemClass: 'vuepress-toc-item',
-    linkTag: 'RouteLink',
-    linkClass: 'vuepress-toc-link',
-    linkActiveClass: 'active',
-    linkChildrenActiveClass: 'active',
-  }
-  ```
-
-- Details:
-
-  Customize TOC component render behavior.
-
-  If the `containerTag` is set to an empty string `''`, the `<nav>` container will be removed totally.
-
-- Example:
-
-  The rendered TOC component with default options looks like:
+The rendered TOC component with default options looks like:
 
 ```vue
 <template>
@@ -249,3 +143,37 @@ interface TocRenderOptions {
   </nav>
 </template>
 ```
+
+@@renderOptions.containerTag@ type=string default=`'nav'`
+
+Container tag name. If the `containerTag` is set to an empty string `''`, the `<nav>` container will be removed totally.
+
+@@renderOptions.containerClass@ type=string default=`'vuepress-toc'`
+
+Container class name.
+
+@@renderOptions.listClass@ type=string default=`'vuepress-toc-list'`
+
+List class name.
+
+@@renderOptions.itemClass@ type=string default=`'vuepress-toc-item'`
+
+Item class name.
+
+@@renderOptions.linkTag@ type=`'a' | 'RouteLink' | 'RouterLink'` default=`'RouteLink'`
+
+Link tag type.
+
+@@renderOptions.linkClass@ type=string default=`'vuepress-toc-link'`
+
+Link class name.
+
+@@renderOptions.linkActiveClass@ type=string default=`'active'`
+
+Active link class name.
+
+@@renderOptions.linkChildrenActiveClass@ type=string default=`'active'`
+
+Active children link class name.
+
+:::

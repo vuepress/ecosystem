@@ -32,19 +32,12 @@ export default {
 
 ## 选项
 
-### themeData
+:::: fields
+@themeData@ type=ThemeData required
 
-- 类型：`ThemeData`
+你希望在客户端中使用的主题数据对象。
 
-- 必填：是
-
-- 详情：
-
-  你希望在客户端中使用的主题数据对象。
-
-  你可以通过该配置项，在 Node 端提供主题数据，然后在客户端通过 [useThemeData](#usethemedata) 和 [useThemeLocaleData](#usethemelocaledata) 来使用主题数据。
-
-- 示例：
+你可以通过该配置项，在 Node 端提供主题数据，然后在客户端通过 [useThemeData](#usethemedata) 和 [useThemeLocaleData](#usethemelocaledata) 来使用主题数据。
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -66,6 +59,8 @@ export default {
 ::: warning
 主题数据对象在传递到客户端之前，会使用 `JSON.stringify()` 进行处理，因此你需要保证你提供的是一个可以被 JSON 序列化的对象。
 :::
+
+::::
 
 ## Composition API
 

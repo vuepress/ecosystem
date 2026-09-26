@@ -28,6 +28,8 @@ export default {
 
 This plugin supports both [Umami Cloud](https://cloud.umami.is/login) and [Self-hosted](https://umami.is/docs/install) instances.
 
+## Guide
+
 ### Reporting Events
 
 Out of the box, the plugin automatically captures page view events during initial visits and subsequent route changes.
@@ -36,48 +38,33 @@ For advanced tracking needs, the global `umami` object is exposed on the `window
 
 ## Options
 
-### id
+::: fields
+@id@ type=string required
 
-- Type: `string`
-- Required: Yes
-- Details: The unique Website ID provided by your Umami dashboard.
+The unique Website ID provided by your Umami dashboard.
 
-### link
+@link@ type=string default=`'https://us.umami.is/script.js'`
 
-- Type: `string`
-- Default: `'https://us.umami.is/script.js'`
-- Details: The source URL of the Umami tracking script.
+The source URL of the Umami tracking script.
 
-### autoTrack
+@autoTrack@ type=boolean default=`true`
 
-- Type: `boolean`
-- Default: `true`
-- Details:
+Whether to track pageviews and events automatically.
 
-  Controls whether to track pageviews and events automatically.
+Set this to `false` if you wish to disable automatic data collection and rely solely on manual tracking functions.
 
-  Set this to `false` if you wish to disable automatic data collection and rely solely on manual tracking functions.
+@cache@ type=boolean
 
-### cache
+Whether to cache the tracking script to improve its performance.
 
-- Type: `boolean`
-- Details:
+**Note:** This feature utilizes Session Storage. Depending on your region's regulations, you may need to disclose this usage to your visitors.
 
-  Enables caching to improve the tracking script's performance.
+@domains@ type=`string[]`
 
-  **Note:** This feature utilizes Session Storage. Depending on your region's regulations, you may need to disclose this usage to your visitors.
+A list of allowed domains. Tracking will only occur when the site is accessed via these specific domains.
 
-### domains
+@hostUrl@ type=string default=`link`
 
-- Type: `string[]`
-- Details:
+A custom endpoint for sending analytics data. If not specified, it defaults to the script location defined in [link](#link).
 
-  A list of allowed domains. Tracking will only occur when the site is accessed via these specific domains.
-
-### hostUrl
-
-- Type: `string`
-- Default: `link`
-- Details:
-
-  A custom endpoint for sending analytics data. If not specified, it defaults to the script location defined in `link`.
+:::

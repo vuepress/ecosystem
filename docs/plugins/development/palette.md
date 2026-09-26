@@ -83,68 +83,50 @@ $color: green;
 
 ## Options
 
-### preset
+::: fields
+@preset@ type=`'css' | 'less' | 'sass' | 'stylus'` default=`'css'`
 
-- Type: `'css' | 'less' | 'sass' | 'stylus'`
+Set preset for other options.
 
-- Default: `'css'`
+If you don't need advanced customization of the plugin, it's recommended to set only this option and omit others.
 
-- Details:
+@userPaletteFile@ type=string
 
-  Set preset for other options.
+File path of the user palette file, relative to source directory.
 
-  If you don't need advanced customization of the plugin, it's recommended to set only this option and omit others.
+The default value depends on the [preset](#preset) option:
 
-### userPaletteFile
+- css: `.vuepress/styles/palette.css`
+- less: `.vuepress/styles/palette.less`
+- sass: `.vuepress/styles/palette.scss`
+- stylus: `.vuepress/styles/palette.styl`
 
-- Type: `string`
+This file is where users define style variables, and it's recommended to keep the default file path as a convention.
 
-- Default:
-  - css: `'.vuepress/styles/palette.css'`
-  - less: `'.vuepress/styles/palette.less'`
-  - sass: `'.vuepress/styles/palette.scss'`
-  - stylus: `'.vuepress/styles/palette.styl'`
+@tempPaletteFile@ type=string
 
-- Details:
+File path of the generated palette temp file, relative to temp directory.
 
-  File path of the user palette file, relative to source directory.
+The default value depends on the [preset](#preset) option:
 
-  The default value depends on the [preset](#preset) option.
+- css: `styles/palette.css`
+- less: `styles/palette.less`
+- sass: `styles/palette.scss`
+- stylus: `styles/palette.styl`
 
-  This file is where users define style variables, and it's recommended to keep the default file path as a convention.
+You should import the palette file via the `@vuepress/plugin-palette/palette` alias, so you don't need to change this option in most cases.
 
-### tempPaletteFile
+@importCode@ type=`(filePath: string) => string`
 
-- Type: `string`
+Function to generate import code.
 
-- Default:
-  - css: `'styles/palette.css'`
-  - less: `'styles/palette.less'`
-  - sass: `'styles/palette.scss'`
-  - stylus: `'styles/palette.styl'`
+The default value depends on the [preset](#preset) option:
 
-- Details:
+- css: `` (filePath) => `@import '${filePath}';\n` ``
+- less: `` (filePath) => `@import '${filePath}';\n` ``
+- sass: `` (filePath) => `@forward 'file:///${filePath}';\n` ``
+- stylus: `` (filePath) => `@require '${filePath}';\n` ``
 
-  File path of the generated palette temp file, relative to temp directory.
+This option is used for generating [tempPaletteFile](#temppalettefile), and you don't need to change this option in most cases.
 
-  The default value depends on the [preset](#preset) option.
-
-  You should import the palette file via `'@vuepress/plugin-palette/palette'` alias, so you don't need to change this option in most cases.
-
-### importCode
-
-- Type: `(filePath: string) => string`
-
-- Default:
-  - css: `` (filePath) => `@import '${filePath}';\n` ``
-  - less: `` (filePath) => `@import '${filePath}';\n` ``
-  - sass: `` (filePath) => `@forward 'file:///${filePath}';\n` ``
-  - stylus: `` (filePath) => `@require '${filePath}';\n` ``
-
-- Details:
-
-  Function to generate import code.
-
-  The default value depends on the [preset](#preset) option.
-
-  This option is used for generating [tempPaletteFile](#temppalettefile) , and you don't need to change this option in most cases.
+:::

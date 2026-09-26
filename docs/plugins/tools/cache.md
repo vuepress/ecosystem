@@ -39,26 +39,18 @@ export default {
 
 ## Options
 
-### type
+::: fields
+@type@ type=`'filesystem' | 'memory'` default=`'memory'`
 
-- Type: `'memory'` | `'filesystem'`
+Cache type.
 
-- Default: `'memory'`
+- `'memory'`: Use memory cache. It can achieve optimal optimization effects, but as the project scales up, it occupies more memory, suitable for projects with fewer pages.
+- `'filesystem'`: Use file system cache, for complex projects with many pages, it is recommended.
 
-- Details:
+@enableInCi@ type=boolean
 
-  Cache Types
-  - `'memory'` is for memory cache, using memory cache can achieve optimal optimization effects, but as the project scales up, it occupies more memory, suitable for projects with fewer pages.
-  - `'filesystem'` is for file system cache, for complex projects with many pages, file cache is recommended.
+Whether to enable the cache in CI environment.
 
-### enableInCi
+In most cases, the cache plugin could slow down the speed in CI.
 
-- Type: `boolean`
-
-- Default: `false`
-
-- Details:
-
-  Whether to enable the cache in CI environment.
-
-  In most cases, the cache plugin could slow down the speed in ci.
+:::

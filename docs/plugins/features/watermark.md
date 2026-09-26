@@ -33,35 +33,24 @@ export default {
 
 ## Options
 
-### enabled
+::: fields
+@enabled@ type=`boolean | ((page: Page) => boolean)` default=`true`
 
-- Type: `boolean | ((page: Page) => boolean)`
+Specify which pages should have watermarks added.
 
-- Default: `true`
+Pages with a `true` value will have watermarks added.
 
-- Details:
+@watermarkOptions@ type=`WatermarkPureOptions`
 
-  Specify which pages should have watermarks added.
+Watermark config, see [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/config/) for all available options.
 
-  Pages with a `true` value will have watermarks added.
+@@watermarkOptions.parent@ type=string default=`'body'`
 
-### watermarkOptions
+Parent element selector for watermark insertion.
 
-- Type: `WatermarkOptions`
+By default, watermarks are inserted into the body element, but you can specify a different parent element on the page.
 
-- Default: `undefined`
-
-- Details: Configuration options. Please refer to [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/config/) for details.
-
-#### watermarkOptions.parent
-
-- Type: `string`
-
-- Default: `'body'`
-
-- Details: Parent element selector for watermark insertion.
-
-  By default, watermarks are inserted into the body element, but you can specify a different parent element on the page.
+:::
 
 ## Frontmatter
 

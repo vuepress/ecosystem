@@ -2,8 +2,6 @@
 icon: chart-no-axes-combined
 ---
 
-s
-
 # clarity-analytics
 
 <NpmBadge package="@vuepress/plugin-clarity-analytics" />
@@ -28,7 +26,9 @@ export default {
 }
 ```
 
-## Features
+## Guide
+
+### Features
 
 Microsoft Clarity is a behavioral analysis tool that helps you understand how users interact with your website. This plugin simplifies the setup process, enabling you to capture actionable insights without complex configuration.
 
@@ -50,14 +50,13 @@ Once the plugin is enabled, the `clarity()` function is exposed on the global `w
 
 ## Options
 
-### id
+::: fields
+@id@ type=string required
 
-- Type: `string`
-- Required: Yes
-- Details: The Project ID assigned by Microsoft Clarity. You can find this in your Clarity dashboard under Settings.
+The Project ID assigned by Microsoft Clarity. You can find this in your Clarity dashboard under Settings.
 
-### crossOrigin
+@crossOrigin@ type=`'' | 'anonymous' | 'use-credentials'`
 
-- Type: `string`
-- Default: `undefined`
-- Details: The `crossorigin` attribute for the injected script tag. This configures the [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) setting for loading the Clarity resources.
+The `crossorigin` attribute for the injected script tag. This configures the [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) setting for loading the Clarity resources.
+
+:::

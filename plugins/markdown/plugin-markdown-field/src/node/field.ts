@@ -97,7 +97,7 @@ export const field: PluginWithOptions<FieldPluginOptions> = (
         defaultValue = `\
 <div class="vp-field-default">
 <span class="vp-field-default-label">${locale.default}</span>
-${quote === 'backtick' ? `<code>${escape(value)}</code>` : escape(value)}
+${quote === 'backtick' ? `<code>${escape(value)}</code>` : md.renderInline(escape(value))}
 </div>
 `
       } else if (

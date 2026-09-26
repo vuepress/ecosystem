@@ -23,10 +23,13 @@ export default {
   plugins: [
     googleAnalyticsPlugin({
       // options
+      id: 'G-XXXXXXXXXX',
     }),
   ],
 }
 ```
+
+## Guide
 
 ### Reporting Events
 
@@ -38,44 +41,15 @@ If you require advanced tracking capabilities, this plugin exposes the global `g
 
 ## Options
 
-### id
+::: fields
+@id@ type=string required
 
-- Type: `string`
-- Required: Yes
+The Google Analytics 4 Measurement ID (must start with `'G-'`).
 
-- Details:
+Please refer to the [official guide](https://support.google.com/analytics/answer/9539598) to locate your Measurement ID. Ensure you are using a GA4 Measurement ID (`G-XXXXXXXXXX`) rather than a Universal Analytics Tracking ID (`UA-XXXXXXXX`).
 
-  The Google Analytics 4 Measurement ID (must start with `'G-'`).
+@debug@ type=boolean
 
-  Please refer to the [official guide](https://support.google.com/analytics/answer/9539598) to locate your Measurement ID. Ensure you are using a GA4 Measurement ID (`G-XXXXXXXXXX`) rather than a Universal Analytics Tracking ID (`UA-XXXXXXXX`).
+Whether to send events to the Google Analytics DebugView. This is useful for verifying your setup and troubleshooting event data during development. [Learn more about DebugView](https://support.google.com/analytics/answer/7201382).
 
-- Example:
-
-  ```ts title=".vuepress/config.ts"
-  export default {
-    plugins: [
-      googleAnalyticsPlugin({
-        id: 'G-XXXXXXXXXX',
-      }),
-    ],
-  }
-  ```
-
-### debug
-
-- Type: `boolean`
-- Details:
-  Enables the sending of events to the Google Analytics DebugView. This is useful for verifying your setup and troubleshooting event data during development. [Learn more about DebugView](https://support.google.com/analytics/answer/7201382).
-
-- Example:
-
-  ```ts title=".vuepress/config.ts"
-  export default {
-    plugins: [
-      googleAnalyticsPlugin({
-        id: 'G-XXXXXXXXXX',
-        debug: true,
-      }),
-    ],
-  }
-  ```
+:::

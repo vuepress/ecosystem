@@ -6,17 +6,14 @@ icon: settings-2
 
 ## 插件选项
 
-### id
+:::: fields
+@id@ type=string required
 
-- 类型：`string`
-- 必填: 是
-- 详情：插件实例的唯一标识符。用于隔离样式系统，避免不同插件或主题之间的重复注册与冲突。
+插件实例的唯一标识符。用于隔离样式系统，避免不同插件或主题之间的重复注册与冲突。
 
-### config
+@config@ type=string default=`.vuepress/styles/${id}-config.scss`
 
-- 类型：`string`
-- 默认值：`` `.vuepress/styles/${id}-config.scss` ``
-- 详情：用户配置文件的路径，相对于源码目录。
+用户配置文件的路径，相对于源码目录。
 
 ::: tip
 
@@ -26,11 +23,9 @@ icon: settings-2
 
 :::
 
-### defaultConfig
+@defaultConfig@ type=string default=`"@vuepress/plugin-sass-palette/styles/default/config.scss"`
 
-- 类型：`string`
-- 默认值：`"@vuepress/plugin-sass-palette/styles/default/config.scss"`
-- 详情：默认 Sass 配置文件的绝对路径。
+默认 Sass 配置文件的绝对路径。
 
 ::: tip
 
@@ -38,11 +33,9 @@ icon: settings-2
 
 :::
 
-### palette
+@palette@ type=string default=`.vuepress/styles/${id}-palette.scss`
 
-- 类型：`string`
-- 默认值：`` `.vuepress/styles/${id}-palette.scss` ``
-- 详情：用户调色板文件的路径，相对于源码目录。
+用户调色板文件的路径，相对于源码目录。
 
 ::: tip
 
@@ -52,10 +45,9 @@ icon: settings-2
 
 :::
 
-### defaultPalette
+@defaultPalette@ type=string
 
-- 类型：`string`
-- 详情：默认调色板文件的绝对路径。
+默认调色板文件的绝对路径。
 
 ::: tip
 
@@ -63,14 +55,13 @@ icon: settings-2
 
 :::
 
-### generator
+@generator@ type=string
 
-- 类型：`string`
-- 详情：
+自定义生成器文件的绝对路径。该文件用于基于调色板配置推导生成新的值。
 
-  自定义生成器文件的绝对路径。该文件用于基于调色板配置推导生成新的值。
+例如：你可以利用它基于用户提供的 `$theme-color` 来生成一个 `$theme-color-light` 变量。
 
-  例如：你可以利用它基于用户提供的 `$theme-color` 来生成一个 `$theme-color-light` 变量。
+::::
 
 ## 别名 (Alias)
 

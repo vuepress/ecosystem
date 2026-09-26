@@ -44,14 +44,13 @@ export default {
 
 ## Options
 
-### cachePatterns
+::: fields
+@cachePatterns@ type=`string[]` default=`[]`
 
-- Type: `string[]`
-- Default: `[]`
-- Details: Regular expression patterns to match cache names for removal. If empty, all caches will be removed.
+Regular expression patterns to match cache names for removal. If empty, all caches will be removed.
 
-### swLocation
+@swLocation@ type=string default=`'service-worker.js'`
 
-- Type: `string`
-- Default: `'service-worker.js'`
-- Details: Original service worker location relative to dest folder.
+Original service worker location relative to dest folder.
+
+:::

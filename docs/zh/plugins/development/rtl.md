@@ -33,26 +33,26 @@ export default {
 
 ## 选项
 
-### locales
+::: fields
+@locales@ type=`string[]` default=`['/']`
 
-- 类型：`string[]`
-- 默认值：`['/']`
-- 详情：启用 RTL 布局的语言路径。
+启用 RTL 布局的语言路径。
 
-### selector
+@selector@ type=SelectorOptions default=`{ 'html': { dir: 'rtl' } }`
 
-- 类型：`SelectorOptions`
+启用 RTL 布局的选择器配置。默认设置意味着在 RTL 语言中，`html` 元素的 `dir` 属性将被设置为 `rtl`。
 
-  ```ts
-  interface SelectorOptions {
-    [cssSelector: string]: {
-      [attr: string]: string
-    }
+其类型为：
+
+```ts
+interface SelectorOptions {
+  [cssSelector: string]: {
+    [attr: string]: string
   }
-  ```
+}
+```
 
-- 默认值：`{ 'html': { dir: 'rtl' } }`
-- 详情：启用 RTL 布局的选择器配置。默认设置意味着在 RTL 语言中，`html` 元素的 `dir` 属性将被设置为 `rtl`。
+:::
 
 <script setup>
 import ToggleRTLButton from '@source/.vuepress/components/ToggleRTLButton.vue'

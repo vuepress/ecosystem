@@ -32,19 +32,12 @@ export default {
 
 ## Options
 
-### themeData
+:::: fields
+@themeData@ type=ThemeData required
 
-- Type: `ThemeData`
+The theme data object that you want to use in client side.
 
-- Required: Yes
-
-- Details:
-
-  The theme data object that you want to use in client side.
-
-  You can provide theme data in Node side via this option, and use it in client side via [useThemeData](#usethemedata) and [useThemeLocaleData](#usethemelocaledata).
-
-- Example:
+You can provide theme data in Node side via this option, and use it in client side via [useThemeData](#usethemedata) and [useThemeLocaleData](#usethemelocaledata).
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -66,6 +59,8 @@ export default {
 ::: warning
 The theme data object will be processed by `JSON.stringify()` before forwarding to client side, so you should ensure that you provide a JSON-friendly object.
 :::
+
+::::
 
 ## Composition API
 

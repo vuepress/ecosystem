@@ -51,35 +51,20 @@ Markdown 语法 `[[toc]]` 仅能在 Markdown 文件中使用。它是由 markdow
 
 ## 选项
 
-### componentName
+::: fields
+@componentName@ type=string default=`'Toc'`
 
-- 类型： `string`
+指定目录组件的名称。
 
-- 默认值： `'Toc'`
+@headersOptions@ type=GetHeadersOptions default=`{}`
 
-- 详情：
+覆盖组件 [headersOptions](#headersoptions-1) Prop 的默认值。
 
-  指定目录组件的名称。
+@renderOptions@ type=TocRenderOptions default=`{}`
 
-### headersOptions
+覆盖组件 [renderOptions](#renderoptions-1) Prop 的默认值。
 
-- 类型： `Partial<GetHeadersOptions>`
-
-- 默认值： `{}`
-
-- 详情：
-
-  覆盖组件 [headersOptions](#headersoptions-1) Prop 的默认值。
-
-### renderOptions
-
-- 类型： `Partial<TocPropsOptions>`
-
-- 默认值： `{}`
-
-- 详情：
-
-  覆盖组件 [renderOptions](#renderoptions-1) Prop 的默认值。
+:::
 
 ## 组件 Props
 
@@ -95,129 +80,38 @@ Markdown 语法 `[[toc]]` 仅能在 Markdown 文件中使用。它是由 markdow
 </template>
 ```
 
-### headers
+::: fields
+@headers@ type=`PageHeader[]`
 
-- 类型： `PageHeader[]`
+指定要渲染的标题数组。如果该 Prop 没有被设置，默认会使用当前页面的标题。
 
-```ts
-interface PageHeader {
-  level: number
-  title: string
-  slug: string
-  children: PageHeader[]
-}
-```
+@@headers.level@ type=number
 
-- 详情：
+标题的级别。
 
-  指定要渲染的标题数组。
+@@headers.title@ type=string
 
-  如果该 Prop 没有被设置，默认会使用当前页面的标题。
+标题的文本。
 
-### headersOptions
+@@headers.slug@ type=string
 
-- 类型： `Partial<GetHeadersOptions>`
+标题的 slug。
 
-  详见 [GetHeadersOptions](../../tools/helper/client.md#getheaders)
+@@headers.children@ type=`PageHeader[]`
 
-- 默认值：
+标题的子标题。
 
-  详见 [GetHeadersOptions](../../tools/helper/client.md#getheaders)，可以通过插件配置项中的 [headersOptions](#headersoptions) 来覆盖。
+@headersOptions@ type=GetHeadersOptions
 
-- 详情：
+自定义标题提取行为。
 
-  自定义标题提取行为。
+可用的选项详见 [GetHeadersOptions](../../tools/helper/client.md#getheaders)，它可以通过插件配置项中的 [headersOptions](#headersoptions) 来覆盖。
 
-### renderOptions
+@renderOptions@ type=TocRenderOptions
 
-- 类型： `TocRenderOptions`
+自定义目录组件渲染行为。它可以通过插件配置项中的 [renderOptions](#renderoptions) 来覆盖。
 
-```ts
-interface TocRenderOptions {
-  /**
-   * Container tag name
-   *
-   * @default 'nav'
-   */
-  containerTag?: string
-
-  /**
-   * Container class name
-   *
-   * @default 'vuepress-toc'
-   */
-  containerClass?: string
-
-  /**
-   * List class name
-   *
-   * @default 'vuepress-toc-list'
-   */
-  listClass?: string
-
-  /**
-   * Item class name
-   *
-   * @default 'vuepress-toc-item'
-   */
-  itemClass?: string
-
-  /**
-   * Link tag type
-   *
-   * @default 'RouteLink'
-   */
-  linkTag?: 'a' | 'RouteLink' | 'RouterLink'
-
-  /**
-   * Link class name
-   *
-   * @default 'vuepress-toc-link'
-   */
-  linkClass?: string
-
-  /**
-   * Active link class name
-   *
-   * @default 'active'
-   */
-  linkActiveClass?: string
-
-  /**
-   * Active children link class name
-   *
-   * @default 'active'
-   */
-  linkChildrenActiveClass?: string
-}
-```
-
-- 默认值：
-
-  下列默认值可以通过插件配置项中的 [renderOptions](#renderoptions) 来覆盖：
-
-```ts
-const defaultOptions = {
-  containerTag: 'nav',
-  containerClass: 'vuepress-toc',
-  listClass: 'vuepress-toc-list',
-  itemClass: 'vuepress-toc-item',
-  linkTag: 'RouteLink',
-  linkClass: 'vuepress-toc-link',
-  linkActiveClass: 'active',
-  linkChildrenActiveClass: 'active',
-}
-```
-
-- 详情：
-
-  自定义目录组件渲染行为。
-
-  如果 `containerTag` 设置为空字符串 `''` ，那么最外层的 `<nav>` Container 会被完全移除。
-
-- 示例：
-
-  使用默认 options 的目录组件的渲染结果类似以下结构：
+使用默认配置的目录组件的渲染结果类似以下结构：
 
 ```vue
 <template>
@@ -249,3 +143,37 @@ const defaultOptions = {
   </nav>
 </template>
 ```
+
+@@renderOptions.containerTag@ type=string default=`'nav'`
+
+容器标签名。如果 `containerTag` 设置为空字符串 `''`，那么最外层的 `<nav>` Container 会被完全移除。
+
+@@renderOptions.containerClass@ type=string default=`'vuepress-toc'`
+
+容器类名。
+
+@@renderOptions.listClass@ type=string default=`'vuepress-toc-list'`
+
+列表类名。
+
+@@renderOptions.itemClass@ type=string default=`'vuepress-toc-item'`
+
+列表项类名。
+
+@@renderOptions.linkTag@ type=`'a' | 'RouteLink' | 'RouterLink'` default=`'RouteLink'`
+
+链接标签类型。
+
+@@renderOptions.linkClass@ type=string default=`'vuepress-toc-link'`
+
+链接类名。
+
+@@renderOptions.linkActiveClass@ type=string default=`'active'`
+
+激活链接的类名。
+
+@@renderOptions.linkChildrenActiveClass@ type=string default=`'active'`
+
+子元素激活链接的类名。
+
+:::

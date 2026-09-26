@@ -16,7 +16,7 @@ icon: chart-no-axes-combined
 
 :::
 
-## Usage
+## 使用方法
 
 ```bash
 npm i -D @vuepress/plugin-baidu-analytics@next
@@ -28,11 +28,13 @@ import { baiduAnalyticsPlugin } from '@vuepress/plugin-baidu-analytics'
 export default {
   plugins: [
     baiduAnalyticsPlugin({
-      // 选项s
+      // 选项
     }),
   ],
 }
 ```
+
+## 指南
 
 ### 事件追踪
 
@@ -48,8 +50,9 @@ window._hmt.push(['_trackEvent', 'category', 'action', 'label', 'value'])
 
 ## 选项
 
-### id
+::: fields
+@id@ type=string required
 
-- 类型：`string`
-- 必填：是
-- 详情：百度统计的 ID。通常是百度统计提供的代码中 `hm.js` 链接后的字符串参数（例如 `hm.js?your_tracking_id`）。
+百度统计的 ID。通常是百度统计提供的代码中 `hm.js` 链接后的字符串参数（例如 `hm.js?your_tracking_id`）。
+
+:::

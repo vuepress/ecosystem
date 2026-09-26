@@ -8,7 +8,9 @@ icon: https://www.meilisearch.com/favicon.ico
 
 将 [MeiliSearch](https://www.meilisearch.com/) 集成到 VuePress 中，为你的文档网站提供搜索功能。
 
-## 安装 MeiliSearch
+## 指南
+
+### 安装 MeiliSearch
 
 要免费使用 MeiliSearch，你需要在自己的服务器上自托管它，否则需要付费使用 MeiliSearch Cloud。
 
@@ -18,7 +20,7 @@ icon: https://www.meilisearch.com/favicon.ico
 
 :::
 
-### 启动 MeiliSearch
+#### 启动 MeiliSearch
 
 ::: tip
 
@@ -65,7 +67,7 @@ docker run -it --rm \
 
 :::
 
-### 设置抓取器
+#### 设置抓取器
 
 ::: tip
 
@@ -179,7 +181,7 @@ docker run -t --rm \
 
 :::
 
-### 设置插件
+#### 设置插件
 
 为了使插件正常工作，需要为插件生成一个仅限搜索的访问密钥。此密钥可以通过 MeiliSearch API 创建。
 你可以使用以下命令创建仅限搜索的访问密钥：
@@ -243,7 +245,7 @@ export default {
 }
 ```
 
-### 使用 GitHub Actions 自动重新抓取
+#### 使用 GitHub Actions 自动重新抓取
 
 将你的抓取器配置文件放在项目中的某个位置。
 
@@ -332,74 +334,42 @@ jobs:
 
 ## 选项
 
-### host
+::: fields
+@host@ type=string required
 
-- 类型：`string`
+MeiliSearch API 的 HTTP 地址。
 
-- 是否必需：`true`
+@apiKey@ type=string required
 
-- 详情：
+MeiliSearch 生成的仅限搜索的 API 密钥。
 
-  提供 MeiliSearch API 的 HTTP 地址。
+@indexUid@ type=string required
 
-### apiKey
+用于搜索的索引名称。
 
-- 类型：`string`
+@locales@ type=`LocaleConfig<MeiliSearchDocSearchLocaleOptions>`
 
-- 是否必需：`true`
+该插件在不同语言环境下的配置。上述所有选项都可以针对特定语言路径进行覆盖。
 
-- 详情：
+@translations@ type=DocSearchTranslations
 
-  MeiliSearch 生成的 API 密钥。
+允许你替换 DocSearch 按钮和弹出框中的默认文本。
 
-### indexUid
+@hotKeys@ type=`string[] | false` default=`['ctrl+k', 's', '/']`
 
-- 类型：`string`
+触发搜索框的热键数组。当设置 `false` 时无法用任何快捷键触发搜索框。
 
-- 是否必需：`true`
+@debounceDuration@ type=`number | false` default=`200`
 
-- 详情：
+在按键之间等待的毫秒数，以确定是否应该进行搜索。设置 `0` 或者 `false` 逻辑上是等效的。
 
-  指定用于搜索的索引名称。
+@searchParams@ type=SearchParams
 
-### translations
+MeiliSearch API 的参数。
 
-- 类型：`DocSearchTranslations`
+参见：[Meilisearch API 文档](https://www.meilisearch.com/docs/reference/api/search#search-parameters)。
 
-- 详情：
-
-  允许你替换 DocSearch 按钮和弹出框中的默认文本。
-
-### hotKeys
-
-- 类型：`string[] | false`
-
-- 默认值：`['ctrl+k', 's', '/']`
-
-- 详情：
-
-  触发搜索框的热键数组, 当设置 `false` 时无法用任何快捷键触发搜索框。
-
-### debounceDuration
-
-- 类型：`number | false`
-
-- 默认值：`200`
-
-- 详情：
-
-  在按键之间等待的毫秒数，以确定是否应该进行搜索。设置 `0` 或者 `false` 逻辑上是等效的。
-
-### searchParams
-
-- 类型：`SearchParams`
-
-- 详情：
-
-  MeiliSearch API 的参数。
-
-- 另请参阅：
-  - [Meilisearch API 文档](https://www.meilisearch.com/docs/reference/api/search#search-parameters)
+:::
 
 ## 组件
 

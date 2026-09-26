@@ -177,7 +177,7 @@ As an internet marketing strategy, SEO considers how search engines work, the co
 
 - [RDFa 1.1](https://www.w3.org/TR/rdfa-primer/)
 
-  RDFa mainly marks HTML structure. This is what the plugin cannot support. <ProjectLink type="theme" name="hope">vuepress-theme-hope</ProjectLink> uses this feature to pass Google's rich media structure test. You can consider using it.
+  RDFa mainly marks HTML structure. This is what the plugin cannot support.
 
 - [Schema.Org](https://schema.org/)
 

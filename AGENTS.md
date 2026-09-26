@@ -217,54 +217,90 @@ The documentation site lives in `docs/` and is built with VuePress. Each plugin 
 - Use "你" instead of "您" in Chinese
 - Ignore any errors with `@[code ...` as they are VuePress code import grammar, which is not standard.
 - Ignore any errors with VuePress components in markdown.
-- When a container (`::: name`) ends right after a list item, oxfmt re-indents the closing `:::` under the list item. Keep the closing marker at column 0 by adding a blank line between the last list item and `:::`.
+- Always keep a blank line before a container closing marker (`:::`, `::::`). Without it oxfmt treats the marker as a list continuation and drops it, leaving the container unclosed.
+
+### Page Structure
+
+Feature descriptions and option references are separated, so that the options section stays short:
+
+- `## Usage`: install command and a minimal config example.
+- `## Guide`: one `###` section per feature, explaining what it does and how to use it, with syntax examples and `::: preview` demos. This is where behavior, syntax markers and caveats belong.
+- `## Options`: only what each option configures, its type and its default. Link to the matching guide section with `See also: [Title](#anchor).` / `参考：[标题](#锚点)。` instead of repeating the explanation.
 
 ### Options Documentation Format
 
-Each option in plugin/theme documentation must include these sections **in this exact order**:
-
-1. **Type**
-   - English: `- Type: \`type\``
-   - Chinese: `- 类型：\`type\``
-   - Follow with code fence for complex types
-
-2. **Required Status**
-   - Only for required options: `- Required: Yes` / `- 必填：是`
-   - **Never write "Required: No" for optional options**
-
-3. **Default Value**
-   - **INCLUDE Default when**: Default value is NOT the expected/obvious value
-   - **OMIT Default when**: Default value is expected/obvious
-     - `boolean` options with `false` default → **OMIT**
-     - `string` options with `''` default → **OMIT**
-     - `object` options with `undefined` default → **OMIT**
-   - Format: `- Default: \`value\``/`- 默认值：\`value\``
-
-4. **Details** (必须包含)
-   - English: `- Details: Brief description`
-   - Chinese: `- 详情：简要描述`
-   - Prefer same line for short contents and paragraph for long contents.
-
-**Example Format:**
+Options are documented with the `::: fields` container provided by `@vuepress/plugin-markdown-field`, not with `###` headings and `- Type:` lists.
 
 ```md
-### optionName
+## Options
 
-- Type: `boolean`
-- Details: Whether to enable this feature.
+::: fields
+@optionName@ type=boolean default=`true`
 
-### requiredOption
+Whether to enable this feature.
 
-- Type: `string`
-- Required: Yes
-- Details: The required configuration.
+@requiredOption@ type=string required
 
-### optionWithNonStandardDefault
+The required configuration.
 
-- Type: `number`
-- Default: `100`
-- Details: Custom timeout value.
+@optionWithNonStandardDefault@ type=number default=`100`
+
+Custom timeout value.
+
+@objectOption@ type=`SomeOptions | boolean`
+
+Whether to enable this feature. You can also pass an object to configure it.
+
+@@objectOption.child@ type=string
+
+A child option of `objectOption`.
+
+:::
 ```
+
+**Field items**
+
+- A field item starts with `@name@` at the beginning of a line, followed by its attributes.
+- The content after the marker, until the next field item or the closing marker, is the description. It supports full markdown, including lists, code fences and containers.
+- Sub-options of an object option are nested by adding one more `@`: `@@parent.child@`. Nesting is also used to expand a type definition instead of pasting a TypeScript interface in a code fence.
+- When the parent field is an array of objects, write `[*]` in the path so it reads as a member type rather than a single value, e.g. `@@contributors.info[*].username@` for `contributors.info: ContributorInfo[]`, or `@@@config[*].actions[*].text@` for `config: NoticeOptions[]` with `actions: NoticeActionOption[]`. Add `[*]` for every array level in the path. A `Record<string, T>` option is a map, not an array, so keep `@@locales.xxx@` as is.
+- Content that applies to the parent option as a whole — a list of accepted values, a note about the option group — belongs right after the parent field's own description, **before** the first sub-field. Putting it after the last sub-field makes it read as if it belonged to that sub-option.
+- Each field item gets an `id` from its name, so it can be linked to directly. Ids are unique within the page, and ids already used by headings are reserved first. Avoid naming a guide heading the same as an option, otherwise the option id gets a `-1` suffix. `[*]` is stripped when generating the id, so adding it does not break existing links.
+
+**Descriptions**
+
+- State the unit whenever the value is not unitless, e.g. `delay` in milliseconds, `offset` in pixels, a size in pixels, a duration in seconds. Write it in the sentence rather than in the type, e.g. `The delay in milliseconds of the debounced scroll event listener.`
+
+**Attributes**
+
+- `type`: the option type. Always rendered as inline code.
+- `default`: the default value. Rendered as inline code **only when wrapped in backticks**, and as plain text otherwise.
+- `required`, `optional`, `deprecated`: rendered as badges. A deprecated field's name is colored red and struck through.
+- Any other attribute is rendered as a `Name: value` badge, which is useful for marking conditional support, e.g. `gfm=Yes`.
+
+**Attribute values**
+
+- An unquoted value ends at the first whitespace, so values containing spaces must be quoted.
+- Values wrapped in `"` or `'` support escaping with `\`.
+- Values wrapped in backticks are kept literal, with no escaping applied.
+- Never put two `*` on the same line: oxfmt normalizes an emphasis pair `*...*` to `_..._`, which would turn a two-level `[*]` path into `[_]`. Split the line, or keep a single `[*]` per line.
+
+Prefer the shortest form that parses correctly:
+
+- Use an unquoted value when it contains no whitespace and no quote, e.g. `type=boolean`, `default=true`, `default={}`.
+- Use backticks for literal values, especially `default`, so that they render as inline code, e.g. `` default=`'nord'` ``, `` type=`boolean | 'error'` ``.
+- Use double quotes for descriptive text, which renders as plain text, e.g. `default="Determined by the theme, set it explicitly to override"`.
+
+**Defaults**
+
+- Include `default` when the value is not the expected/obvious one.
+- Omit `default` when it is expected/obvious: `boolean` options defaulting to `false`, `string` options defaulting to `''`, and `object` options defaulting to `undefined`.
+- A multi-line default cannot be written as an attribute. Describe it in the field content instead, e.g. `Its default value is:` followed by a code fence.
+
+**Containers inside fields**
+
+- Use one more colon for the fields container when it contains a `:::` container, e.g. `:::: fields` with `::: tip` inside, closed by `::::`.
+- Always keep a blank line before the closing marker, otherwise oxfmt treats it as a list continuation and drops it.
 
 ## CI
 

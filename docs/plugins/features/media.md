@@ -447,53 +447,47 @@ The Spotify embed takes no volume or mute command, so the component has no `mute
 
 ## Options
 
-### artplayer
+::: fields
+@artplayer@ type=`boolean | ArtPlayerOptions`
 
-- Type: `boolean | ArtPlayerOptions`
-- Details: Whether to enable the `ArtPlayer` component. Pass an object to set the default config shared by every instance.
+Whether to enable the `ArtPlayer` component. Pass an object to set the default config shared by every instance.
 
-### pdf
+@pdf@ type=`boolean | PDFOptions`
 
-- Type: `boolean | PDFOptions`
-- Details: Whether to enable the `PDFViewer` component. Pass an object to set the default config shared by every instance.
+Whether to enable the `PDFViewer` component. Pass an object to set the default config shared by every instance.
 
-### pdfLocales
+@pdfLocales@ type=`PDFLocaleData[]`
 
-- Type: `PDFLocaleData[]`
-- Details: Locales to register in the EmbedPDF viewer. They **replace** the locales built into EmbedPDF, so every locale the site needs must be provided. See [Internationalization](https://www.embedpdf.com/docs/vue/viewer/plugins/plugin-i18n).
+Locales to register in the EmbedPDF viewer. They **replace** the locales built into EmbedPDF, so every locale the site needs must be provided. See [Internationalization](https://www.embedpdf.com/docs/vue/viewer/plugins/plugin-i18n).
 
-  EmbedPDF bundles `en`, `nl`, `de`, `fr`, `es`, `zh-CN`, `zh-TW`, `ja`, `sv`, and `pt-BR`. The page locale is resolved by the plugin, and a locale with another code must also be enabled via `i18n.defaultLocale` of the viewer config.
+EmbedPDF bundles `en`, `nl`, `de`, `fr`, `es`, `zh-CN`, `zh-TW`, `ja`, `sv`, and `pt-BR`. The page locale is resolved by the plugin, and a locale with another code must also be enabled via `i18n.defaultLocale` of the viewer config.
 
-### embeds
+@embeds@ type=`EmbedName[]`
 
-- Type: `EmbedName[]`
-- Details: Platforms whose own embed player is provided. These players need no packages, so they are the lightest option of the plugin and suit pages that embed a video only once in a while.
+Platforms whose own embed player is provided. These players need no packages, so they are the lightest option of the plugin and suit pages that embed a video only once in a while.
 
-  Available platforms: `bilibili`, `youtube`, `vimeo`, `twitch`, `dailymotion`, `tiktok`, and `spotify`.
+Available platforms: `bilibili`, `youtube`, `vimeo`, `twitch`, `dailymotion`, `tiktok`, and `spotify`.
 
-### videojs
+@videojs@ type=`boolean | 'hlsjs'`
 
-- Type: `boolean | 'hlsjs'`
-- Details: HLS element of the `VideoPlayer` component. It requires `@videojs/html` to be installed. `true` uses [`hls-video`](https://videojs.org/docs/framework/html/reference/hls-video), the lightweight element that covers most HLS playback, while `'hlsjs'` uses [`hlsjs-video`](https://videojs.org/docs/framework/html/reference/hlsjs-video), the more compatible one powered by hls.js, which also requires `@videojs/hlsjs-video`.
+HLS element of the `VideoPlayer` component. It requires `@videojs/html` to be installed. `true` uses [`hls-video`](https://videojs.org/docs/framework/html/reference/hls-video), the lightweight element that covers most HLS playback, while `'hlsjs'` uses [`hlsjs-video`](https://videojs.org/docs/framework/html/reference/hlsjs-video), the more compatible one powered by hls.js, which also requires `@videojs/hlsjs-video`.
 
-### videojsDash
+@videojsDash@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to register [`dash-video`](https://videojs.org/docs/framework/html/reference/dash-video), the DASH element `VideoPlayer` plays DASH sources with. It requires `@videojs/html` and `@videojs/dash-video` to be installed, otherwise DASH sources are left to the browser.
+Whether to register [`dash-video`](https://videojs.org/docs/framework/html/reference/dash-video), the DASH element `VideoPlayer` plays DASH sources with. It requires `@videojs/html` and `@videojs/dash-video` to be installed, otherwise DASH sources are left to the browser.
 
-### videojsAudio
+@videojsAudio@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable the `AudioPlayer` component. It requires `@videojs/html` to be installed.
+Whether to enable the `AudioPlayer` component. It requires `@videojs/html` to be installed.
 
-### videojsProviders
+@videojsProviders@ type=`VideoJsProvider[]`
 
-- Type: `VideoJsProvider[]`
-- Details: Platforms played by Video.js instead of their own player. Unlike `embeds`, the video is controlled by the Video.js skin, so the player UI stays the same as `VideoPlayer`.
+Platforms played by Video.js instead of their own player. Unlike `embeds`, the video is controlled by the Video.js skin, so the player UI stays the same as `VideoPlayer`.
 
-  Available providers: `youtube`, `vimeo`, `twitch`, `tiktok`, and `spotify`. Each one requires `@videojs/html` and its own package to be installed.
+Available providers: `youtube`, `vimeo`, `twitch`, `tiktok`, and `spotify`. Each one requires `@videojs/html` and its own package to be installed.
 
-### videojsLocales
+@videojsLocales@ type=`Record<string, VideoJsLocaleData>`
 
-- Type: `Record<string, VideoJsLocaleData>`
-- Details: Custom translations of Video.js. The partial translations merge into the language pack of the page locale, so only the keys you provide are overridden.
+Custom translations of Video.js. The partial translations merge into the language pack of the page locale, so only the keys you provide are overridden.
+
+:::

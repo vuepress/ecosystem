@@ -33,26 +33,26 @@ export default {
 
 ## Options
 
-### locales
+::: fields
+@locales@ type=`string[]` default=`['/']`
 
-- Type: `string[]`
-- Default: `['/']`
-- Details: RTL locale paths to enable RTL layout.
+RTL locale paths to enable RTL layout.
 
-### selector
+@selector@ type=SelectorOptions default=`{ 'html': { dir: 'rtl' } }`
 
-- Type: `SelectorOptions`
+Selector configuration to enable RTL layout. The default settings mean that the `dir` attribute of the `html` element will be set to `rtl` in RTL locales.
 
-  ```ts
-  interface SelectorOptions {
-    [cssSelector: string]: {
-      [attr: string]: string
-    }
+Its type is:
+
+```ts
+interface SelectorOptions {
+  [cssSelector: string]: {
+    [attr: string]: string
   }
-  ```
+}
+```
 
-- Default: `{ 'html': { dir: 'rtl' } }`
-- Details: Selector configuration to enable RTL layout. The default settings mean that the `dir` attribute of the `html` element will be set to `rtl` in RTL locales.
+:::
 
 <script setup>
 import ToggleRTLButton from '@source/.vuepress/components/ToggleRTLButton.vue'

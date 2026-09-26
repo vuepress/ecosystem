@@ -75,40 +75,14 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "
 
 ## 选项
 
-### wordPerMinute
+:::: fields
+@wordPerMinute@ type=number default=`300`
 
-- 类型：`number`
-- 默认值：`300`
-- 详情：每分钟阅读的字数。
+每分钟阅读的字数。
 
-### locales
+@locales@ type=`ReadingTimePluginLocaleConfig`
 
-- 类型：`ReadingTimePluginLocaleConfig`
-
-  ```ts
-  interface ReadingTimePluginLocaleData {
-    /**
-     * 字数模板，`$word` 会被自动替换为实际字数
-     */
-    word: string
-
-    /**
-     * 小于一分钟时的文本
-     */
-    less1Minute: string
-
-    /**
-     * 时间模板，`$time` 会被自动替换为实际时间
-     */
-    time: string
-  }
-
-  interface ReadingTimePluginLocaleConfig {
-    [localePath: string]: Partial<ReadingTimePluginLocaleData>
-  }
-  ```
-
-- 详情：阅读时间和字数文本的多语言配置。
+阅读时间和字数文本的多语言配置。
 
 ::: details 内置支持语言
 
@@ -132,6 +106,19 @@ const readingTimeLocale = useReadingTimeLocale() // { time: "1 minute", words: "
 - **荷兰语** (nl-NL)
 
 :::
+
+@@locales.word@ type=string
+
+字数模板，`$word` 会被自动替换为实际字数。
+
+@@locales.less1Minute@ type=string
+
+小于一分钟时的文本。
+
+@@locales.time@ type=string
+
+时间模板，`$time` 会被自动替换为实际时间。
+::::
 
 ## 客户端 API
 

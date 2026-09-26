@@ -33,35 +33,24 @@ export default {
 
 ## 选项
 
-### enabled
+::: fields
+@enabled@ type=`boolean | ((page: Page) => boolean)` default=`true`
 
-- 类型：`boolean | ((page: Page) => boolean)`
+指定哪些页面需要添加水印。
 
-- 默认值：`true`
+拥有 `true` 值的页面将会被添加水印。
 
-- 详情：
+@watermarkOptions@ type=`WatermarkPureOptions`
 
-  指定哪些页面需要添加水印。
+水印配置，全部可选项参见 [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/zh/config/)。
 
-  拥有 `true` 值的页面将会被添加水印。
+@@watermarkOptions.parent@ type=string default=`'body'`
 
-### watermarkOptions
+添加水印的父元素选择器。
 
-- 类型：`WatermarkOptions`
+默认插入到 body 中，可以指定插入到页面的某个元素中。
 
-- 默认值：`undefined`
-
-- 详情：配置项请参考 [watermark-js-plus](https://zhensherlock.github.io/watermark-js-plus/zh/config/)。
-
-#### watermarkOptions.parent
-
-- 类型：`string`
-
-- 默认值：`'body'`
-
-- 详情：添加水印的父元素选择器。
-
-  默认插入到 body 中，可以指定插入到页面的某个元素中。
+:::
 
 ## Frontmatter
 
