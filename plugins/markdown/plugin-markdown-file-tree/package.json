@@ -54,9 +54,9 @@
     "vue": "catalog:"
   },
   "devDependencies": {
-    "@iconify-json/vscode-icons": "catalog:",
+    "@iconify-json/vscode-icons": "^1.2.80",
     "@vuepress/highlighter-helper": "workspace:*",
-    "@yutengjing/vscode-icons": "catalog:",
+    "@yutengjing/vscode-icons": "^0.1.1",
     "markdown-it": "^14.3.2"
   },
   "peerDependencies": {
