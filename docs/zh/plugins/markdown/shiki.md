@@ -33,73 +33,33 @@ export default {
 }
 ```
 
-## 配置项
+## 指南
 
-### langs
+### Shiki 主题
 
-- 类型：`ShikiLang[]`
+使用 `theme` 设置单一主题，或使用 `themes` 为亮色和暗色模式分别设置主题。
 
-- 详情：
+使用 `themes` 时，两个主题的样式会分别通过 `--shiki-light` 和 `--shiki-dark` CSS 变量注入到代码块，因此切换颜色模式时无需重新高亮代码：
 
-  被 Shiki 解析的额外语言。
+```html
+<span style="--shiki-light:lightColor;--shiki-dark:darkColor;">code</span>
+```
 
-  ::: tip
+参考：[Shiki > 双主题](https://shiki.tmrs.site/guide/dual-themes)。
 
-  插件会自动加载你的 Markdown 文件中使用的语言，无需手动指定。
+### 语言
 
-  :::
+插件会自动加载你的 Markdown 文件中使用的语言，因此 `langs` 只用于预加载额外语言，`langAlias` 用于添加自定义语言别名。
 
-- 参考：
-  - [Shiki > 语言](https://shiki.tmrs.site/languages)
+参考：[Shiki > 语言](https://shiki.tmrs.site/languages)。
 
-### langAlias
+### 行号
 
-- 类型：`{ [lang: string]: string }`
-- 详情：自定义 Shiki 语言别名。
+行号默认启用。你可以使用标记为单个代码块覆盖行号设置：
 
-- 参考：
-  - [Shiki > 自定义语言别名](https://shiki.tmrs.site/guide/load-lang#custom-language-aliases)
-
-### theme
-
-- 类型：`ShikiTheme`
-
-- 默认值：`'nord'`
-
-- 详情：Shiki 主题，应用于代码块。
-
-- 参考：
-  - [Shiki > 主题](https://shiki.tmrs.site/themes)
-
-### themes
-
-- 类型：`{ light: ShikiTheme; dark: ShikiTheme }`
-
-- 详情：
-
-  Shiki 的暗黑和明亮模式双主题。
-
-  两个主题的样式会分别通过 `--shiki-light` 和 `--shiki-dark` CSS 变量注入到代码块：
-
-  ```html
-  <span style="--shiki-light:lightColor;--shiki-dark:darkColor;">code</span>
-  ```
-
-- 参考：
-  - [Shiki > 双主题](https://shiki.tmrs.site/guide/dual-themes)
-
-### lineNumbers
-
-- 类型：`boolean | number | 'disable'`
-- 默认值：`true`
-- 详情：控制行号的显示。
-  - `number`：显示行号所需的最少行数。
-    例如，设置为 4 时，只有代码块包含至少 4 行代码才会启用行号。
-  - `true`：全局启用行号
-  - `false`：全局禁用行号
-  - `'disable'`：完全禁用行号，`:line-numbers` 标记不生效。
-
-  你可以在代码块添加 `:line-numbers` / `:no-line-numbers` 标记来覆盖配置项设置，还可以在 `:line-numbers` 之后添加 `=` 来自定义起始行号，例如 `:line-numbers=2` 表示代码块行号从 `2` 开始。
+- `:line-numbers`：启用行号。
+- `:no-line-numbers`：禁用行号。
+- `:line-numbers=2`：启用行号并从 `2` 开始计数。
 
 ::: preview
 
@@ -123,16 +83,15 @@ const line4 = 'This is line 4'
 
 :::
 
-### highlightLines
+你也可以将 `lineNumbers` 设置为数字，让只有行数足够的代码块才显示行号；或设置为 `'disable'` 完全关闭该标记。
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否启用行高亮。启用后，可在代码块信息描述中添加行数标记来高亮指定行：
-  - 行数范围：`{5-8}`
-  - 多个单行：`{4,7,9}`
-  - 组合：`{4,7-13,16,23-27,40}`
+### 行高亮
 
-**输入：**
+行高亮默认启用。在代码块的信息描述中添加行数标记即可高亮这些行：
+
+- 行数范围：`{5-8}`
+- 多个单行：`{4,7,9}`
+- 组合：`{4,7-13,16,23-27,40}`
 
 ::: preview
 
@@ -151,17 +110,13 @@ export default defineUserConfig({
 
 :::
 
-### collapsedLines
+### 折叠代码块
 
-- 类型：`boolean | number | 'disable'`
-- 默认值：`'disable'`
-- 详情：代码块折叠的默认行为。
-  - `number`：从第 `number` 行开始折叠代码块，例如 `12` 表示从第 12 行开始折叠。
-  - `true`：等同于 `15`，从第 15 行开始折叠。
-  - `false`：添加代码块折叠支持，但全局禁用此功能
-  - `'disable'`：完全禁用代码块折叠，`:collapsed-lines` 标记不生效。
+折叠代码块默认禁用。设置 `collapsedLines` 后即可启用，并使用标记控制单个代码块：
 
-  你可以在代码块添加 `:collapsed-lines` / `:no-collapsed-lines` 标记来覆盖配置项设置。还可以在 `:collapsed-lines` 之后添加 `=` 来自定义起始折叠行号，例如 `:collapsed-lines=12` 表示代码块从第 12 行开始折叠。
+- `:collapsed-lines`：折叠代码块，默认从第 15 行开始。
+- `:no-collapsed-lines`：不折叠代码块。
+- `:collapsed-lines=10`：从第 `10` 行开始折叠代码块。
 
 ::: preview
 
@@ -266,390 +221,410 @@ body > div {
 
 :::
 
-### codeBlockTitle
+### 代码块标题
 
-- 类型：`boolean | CodeBlockTitleRender`
+代码块标题默认启用。在代码块信息描述中添加 `title="标题"` 即可在代码块上方显示标题栏。
 
-  ```ts
-  type CodeBlockTitleRender = (title: string, code: string) => string
-  ```
+::: preview
 
-- 默认值：`true`
-- 详情：是否启用代码块标题渲染。在代码块 <code>\`\`\`</code> 后面添加 `title="标题"` 来设置标题。
+```ts title="foo/baz.js"
+console.log('hello')
+```
 
-  传入 `CodeBlockTitleRender` 以自定义标题渲染。
+:::
 
-- 示例：
+你可以向 `codeBlockTitle` 传入一个 `CodeBlockTitleRender` 函数来自定义标题的渲染方式。
 
-  ::: preview
+### 移除注释
 
-  ```ts title="foo/baz.js"
-  console.log('hello')
-  ```
+启用 `removeComments` 可以从代码中移除注释。它通过检查语法标记的元数据来判断该标记是否为注释。
 
-  :::
+参考：[Shiki > 移除注释](https://shiki.tmrs.site/packages/transformers#transformerremovecomments)。
 
-### notationDiff
+### 标记
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：是否启用差异标记。
+该插件支持与 [Shiki](https://shiki.style/packages/transformers) 相同的标记转换器。它们默认全部关闭，需要通过对应的配置项启用。
 
-- 示例：
+#### 差异标记
 
-  <VPPreview>
-  <template #code>
+启用 `notationDiff`，即可使用 `[!code ++]` 和 `[!code --]` 高亮新增和删除的行。
 
-  ````md
-  ```ts
-  console.log('拟好') // [\!code --]
-  console.log('你好') // [\!code ++]
-  console.log('再见')
-  ```
-  ````
+<VPPreview>
+<template #code>
 
-  </template>
-  <template #content>
+````md
+```ts
+console.log('拟好') // [\!code --]
+console.log('你好') // [\!code ++]
+console.log('再见')
+```
+````
 
-  ```ts
-  console.log('拟好') // [!code --]
-  console.log('你好') // [!code ++]
-  console.log('再见')
-  ```
+</template>
+<template #content>
 
-  </template>
-  </VPPreview>
+```ts
+console.log('拟好') // [!code --]
+console.log('你好') // [!code ++]
+console.log('再见')
+```
 
-- 参考：
-  - [Shiki > 差异标记](https://shiki.tmrs.site/packages/transformers#transformernotationdiff)
+</template>
+</VPPreview>
 
-### notationFocus
+#### 聚焦标记
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：是否启用聚焦标记。
+启用 `notationFocus`，即可淡化除聚焦行以外的所有行，聚焦行使用 `[!code focus]` 标记。
 
-- 示例：
+<VPPreview>
+<template #code>
 
-  <VPPreview>
-  <template #code>
+````md
+```ts
+console.log('未聚焦')
+console.log('聚焦') // [\!code focus]
+console.log('未聚焦')
+```
+````
 
-  ````md
-  ```ts
-  console.log('未聚焦')
-  console.log('聚焦') // [\!code focus]
-  console.log('未聚焦')
-  ```
-  ````
+</template>
+<template #content>
 
-  </template>
-  <template #content>
+```ts
+console.log('未聚焦')
+console.log('聚焦') // [!code focus]
+console.log('未聚焦')
+```
 
-  ```ts
-  console.log('未聚焦')
-  console.log('聚焦') // [!code focus]
-  console.log('未聚焦')
-  ```
+</template>
+</VPPreview>
 
-  </template>
-  </VPPreview>
+#### 高亮标记
 
-- 参考：
-  - [Shiki > 聚焦标记](https://shiki.tmrs.site/packages/transformers#transformernotationfocus)
+启用 `notationHighlight`，即可高亮使用 `[!code highlight]` 标记的行。
 
-### notationHighlight
+<VPPreview>
+<template #code>
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：是否启用高亮标记。
+````md
+```ts
+console.log('未高亮')
+console.log('高亮') // [\!code highlight]
+console.log('未高亮')
+```
+````
 
-- 示例：
+</template>
+<template #content>
 
-  <VPPreview>
-  <template #code>
+```ts
+console.log('未高亮')
+console.log('高亮') // [!code highlight]
+console.log('未高亮')
+```
 
-  ````md
-  ```ts
-  console.log('未高亮')
-  console.log('高亮') // [\!code highlight]
-  console.log('未高亮')
-  ```
-  ````
+</template>
+</VPPreview>
 
-  </template>
-  <template #content>
+#### 错误级别标记
 
-  ```ts
-  console.log('未高亮')
-  console.log('高亮') // [!code highlight]
-  console.log('未高亮')
-  ```
+启用 `notationErrorLevel`，即可按级别为行着色，使用 `[!code warning]`、`[!code error]` 和 `[!code info]` 标记。
 
-  </template>
-  </VPPreview>
+<VPPreview>
+<template #code>
 
-- 参考：
-  - [Shiki > 高亮标记](https://shiki.tmrs.site/packages/transformers#transformernotationhighlight)
+````md
+```ts
+console.log('无警告或错误')
+console.warn('警告') // [\!code warning]
+console.error('错误') // [\!code error]
+console.log('信息') // [\!code info]
+```
+````
 
-### notationErrorLevel
+</template>
+<template #content>
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：是否启用错误级别标记。
+```ts
+console.log('无警告或错误')
+console.warn('警告') // [!code warning]
+console.error('错误') // [!code error]
+console.log('信息') // [!code info]
+```
 
-- 示例：
+</template>
+</VPPreview>
 
-  <VPPreview>
-  <template #code>
+#### 词高亮标记
 
-  ````md
-  ```ts
-  console.log('无警告或错误')
-  console.warn('警告') // [\!code warning]
-  console.error('错误') // [\!code error]
-  console.log('信息') // [\!code info]
-  ```
-  ````
+启用 `notationWordHighlight`，即可高亮指定的词。该标记必须单独写在一行。
 
-  </template>
-  <template #content>
+根据注释中提供的字符串高亮显示词：
 
-  ```ts
-  console.log('无警告或错误')
-  console.warn('警告') // [!code warning]
-  console.error('错误') // [!code error]
-  console.log('信息') // [!code info]
-  ```
+<VPPreview>
+<template #code>
 
-  </template>
-  </VPPreview>
+````md
+```ts
+// [\!code word:你好]
+const message = '你好世界'
+console.log(message) // prints 你好世界
+```
+````
 
-- 参考：
-  - [Shiki > 错误级别标记](https://shiki.tmrs.site/packages/transformers#transformernotationerrorlevel)
+</template>
+<template #content>
 
-### notationWordHighlight
+```ts
+// [!code word:你好]
+const message = '你好世界'
+console.log(message) // prints 你好世界
+```
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：是否启用词高亮标记。
+</template>
+</VPPreview>
 
-  词高亮标记必须单独写在一行。
+根据代码片段中提供的元字符串高亮显示词：
 
-- 示例：
+::: preview
 
-  根据注释中提供的字符串高亮显示词。
+```js /你好/
+const msg = '你好世界'
+console.log(msg) // 打印 你好世界
+```
 
-  <VPPreview>
-  <template #code>
+:::
 
-  ````md
-  ```ts
-  // [\!code word:你好]
-  const message = '你好世界'
-  console.log(message) // prints 你好世界
-  ```
-  ````
+### 渲染空白符
 
-  </template>
-  <template #content>
+空白符渲染默认禁用。设置 `whitespace` 后即可启用，并使用标记控制单个代码块：
 
-  ```ts
-  // [!code word:你好]
-  const message = '你好世界'
-  console.log(message) // prints 你好世界
-  ```
+- `:whitespace`：按配置项中设置的方式渲染空白符。
+- `:no-whitespace`：不渲染空白符。
+- `:whitespace=boundary`：渲染每行行首和行尾的空白符。
 
-  </template>
-  </VPPreview>
+渲染方式可接受 `'all'`、`'boundary'`、`'leading'` 和 `'trailing'`。
 
-  根据代码片段中提供的元字符串高亮显示词
+::: preview
 
-  ::: preview
+```md :whitespace
+<!-- 渲染所有空白符 -->
 
-  ```js /你好/
-  const msg = '你好世界'
-  console.log(msg) // 打印 你好世界
-  ```
+具有尾随空格  
+的文字
 
-  :::
+    缩进文字
+```
 
-- 参考：
-  - [Shiki > 词高亮标记](https://shiki.tmrs.site/packages/transformers#transformernotationwordhighlight)
+```md :whitespace=boundary
+<!-- 渲染行首行尾的空白符 -->
 
-### removeComments
+具有尾随空格  
+的文字
 
-- 类型：`boolean`
-- 默认值：`false`
-- 详情：是否启用移除注释。通过检查语法标记元数据来判断标记是否为注释。
+    缩进文字
+```
 
-- 参考：
-  - [Shiki > 移除注释](https://shiki.tmrs.site/packages/transformers#transformerremovecomments)
+```md :whitespace=leading
+<!-- 渲染行首的空白符 -->
 
-### whitespace
+具有尾随空格  
+的文字
 
-- 类型：`boolean | 'all' | 'boundary' | 'leading' | 'trailing'`
-- 默认值：`false`
-- 详情：是否启用空白符（空格和 Tab）渲染。
-  - `true`：启用空白符渲染，但默认不渲染任何空白符
-  - `false`：完全禁用空白符渲染，`:whitespace` 标记不生效
-  - `'all'`：渲染所有空白符
-  - `'boundary'`：仅渲染行首行尾的空白符
-  - `'leading'`：仅渲染行首的空白符
-  - `'trailing'`：仅渲染行尾的空白符
+    缩进文字
+```
 
-  你可以在代码块中添加 `:whitespace / :no-whitespace` 标记来覆盖配置项设置。还可以在 `:whitespace` 之后添加 `=` 来定义渲染空白符的方式，例如 `:whitespace=boundary` 将渲染行首行尾的空白符。
+```md :whitespace=trailing
+<!-- 渲染行尾的空白符 -->
 
-- 示例：
+具有尾随空格  
+的文字
 
-  ::: preview
+    缩进文字
+```
 
-  ```md :whitespace
-  <!-- 渲染所有空白符 -->
+```md :no-whitespace
+<!-- 禁用空白符 -->
 
-  具有尾随空格  
-  的文字
+A text
+with line break
 
-      缩进文字
-  ```
+    code block
+```
 
-  ```md :whitespace=boundary
-  <!-- 渲染行首行尾的空白符 -->
+:::
 
-  具有尾随空格  
-  的文字
+### Twoslash 支持
 
-      缩进文字
-  ```
+启用 `twoslash` 即可使用 [twoslash](https://github.com/twoslashes/twoslash) 为代码块提供类型信息。它会为代码添加类型提示、错误信息和补全，并在悬停时以弹窗形式展示。
 
-  ```md :whitespace=leading
-  <!-- 渲染行首的空白符 -->
+```ts twoslash
+const a = 1
+const b = 23
+console.log(a + b)
+```
 
-  具有尾随空格  
-  的文字
+对于启用了 `twoslash` 的代码块：
 
-      缩进文字
-  ```
+- 不要添加 `:v-pre` 标记，这会导致 `twoslash` 无法正常运行。
+- 为避免布局冲突，代码块不再显示行号。
 
-  ```md :whitespace=trailing
-  <!-- 渲染行尾的空白符 -->
+::: tip
 
-  具有尾随空格  
-  的文字
+出于体积考虑，该插件默认不包含 `@vuepress/shiki-twoslash` 包。如需使用，需手动安装。
 
-      缩进文字
-  ```
+:::
 
-  ```md :no-whitespace
-  <!-- 禁用空白符 -->
+参考：[Shiki > Twoslash](https://shiki.style/packages/twoslash)。
 
-  A text
-  with line break
+## 选项
 
-      code block
-  ```
+::: fields
+@langs@ type=`ShikiLang[]`
 
-  :::
+被 Shiki 解析的额外语言。
 
-- 参考：
-  - [Shiki > 空白符渲染](https://shiki.tmrs.site/packages/transformers#transformerrenderwhitespace)
+参考：[语言](#语言)。
 
-### twoslash
+@langAlias@ type=`{ [lang: string]: string }`
 
-- 类型： `boolean | ShikiTwoslashOptions`
+自定义 Shiki 语言别名。
 
-  ```ts
-  interface ShikiTwoslashOptions extends TransformerTwoslashOptions {
-    /**
-     * 是否需要显式地将 `twoslash` 添加到代码块中以运行 twoslash
-     * @default true
-     */
-    explicitTrigger?: RegExp | boolean
+参考：[语言](#语言)。
 
-    /**
-     * twoslash 配置
-     */
-    twoslashOptions?: TransformerTwoslashOptions['twoslashOptions'] &
-      VueSpecificOptions
+@theme@ type=ShikiTheme default=`'nord'`
 
-    /**
-     * 缓存解析后类型
-     * @default true
-     */
-    typesCache?: TwoslashTypesCache | boolean
-  }
-  ```
+应用到代码块的 Shiki 主题。
 
-- 默认值： `false`
-- 详情：是否启用 [twoslash](https://github.com/twoslashes/twoslash)。
+@themes@ type=`{ light: ShikiTheme; dark: ShikiTheme }`
 
-  ::: tip
+为亮色和暗色模式分别设置 Shiki 主题。两个主题的样式会分别通过 `--shiki-light` 和 `--shiki-dark` CSS 变量注入。
 
-  出于体积考虑，该插件默认不包含 `@vuepress/shiki-twoslash` 包。如需使用，需手动安装。
+参考：[Shiki 主题](#shiki-主题)。
 
-  :::
+@lineNumbers@ type=`boolean | number | 'disable'` default=`true`
 
-- 参考：
-  - [Shiki > Twoslash](https://shiki.style/packages/twoslash)
-  - [Twoslash > TransformerTwoslashOptions](https://github.com/shikijs/shiki/blob/main/packages/twoslash/src/types.ts#L30)
-  - [Twoslash > VueSpecificOptions](https://github.com/twoslashes/twoslash/blob/main/packages/twoslash-vue/src/index.ts#L36)
-  - [TwoslashTypesCache](https://github.com/vuepress/ecosystem/blob/main/tools/shiki-twoslash/src/node/options.ts#L47)
+是否启用行号。数字表示代码块显示行号所需的最少行数，`'disable'` 表示完全关闭 `:line-numbers` 标记。
 
-- 示例：
+参考：[行号](#行号)。
 
-  ::: preview
+@highlightLines@ type=boolean default=`true`
 
-  ```ts twoslash
-  const a = 1
-  const b = 23
-  console.log(a + b)
-  ```
+是否启用行数标记的行高亮。
 
-  :::
+参考：[行高亮](#行高亮)。
 
-  ::: warning
+@collapsedLines@ type=`boolean | number | 'disable'` default=`'disable'`
 
-  对于启用了 `twoslash` 的代码块：
-  - 不要在代码块中添加 `:v-pre` 标记，这会导致 `twoslash` 无法正常运行
-  - 为避免布局冲突，代码块不再显示**行号**
+是否启用折叠代码块。数字表示开始折叠的行号，`true` 等同于 `15`。设置为 `false` 时支持 `:collapsed-lines` 标记，但默认不折叠任何代码块。
 
-  :::
+参考：[折叠代码块](#折叠代码块)。
+
+@codeBlockTitle@ type=`boolean | CodeBlockTitleRender` default=`true`
+
+是否为信息描述中带有 `title="标题"` 的代码块渲染标题栏。
+
+传入 `CodeBlockTitleRender` 函数以自定义标题渲染方式。
+
+```ts
+type CodeBlockTitleRender = (title: string, code: string) => string
+```
+
+参考：[代码块标题](#代码块标题)。
+
+@notationDiff@ type=boolean default=`false`
+
+是否启用差异标记转换器。
+
+@notationFocus@ type=boolean default=`false`
+
+是否启用聚焦标记转换器。
+
+@notationHighlight@ type=boolean default=`false`
+
+是否启用高亮标记转换器。
+
+@notationErrorLevel@ type=boolean default=`false`
+
+是否启用错误级别标记转换器。
+
+@notationWordHighlight@ type=boolean default=`false`
+
+是否启用词高亮标记转换器。
+
+参考：[标记](#标记)。
+
+@removeComments@ type=boolean default=`false`
+
+是否从代码中移除注释。
+
+参考：[移除注释](#移除注释)。
+
+@whitespace@ type=`boolean | 'all' | 'boundary' | 'leading' | 'trailing'` default=`false`
+
+是否渲染空白符。`true` 表示启用该语法但默认不渲染任何空白符，`false` 表示完全关闭 `:whitespace` 标记。
+
+参考：[渲染空白符](#渲染空白符)。
+
+@twoslash@ type=`boolean | ShikiTwoslashOptions` default=`false`
+
+是否启用 [twoslash](https://github.com/twoslashes/twoslash)。
+
+```ts
+interface ShikiTwoslashOptions extends TransformerTwoslashOptions {
+  /**
+   * 是否需要显式地将 `twoslash` 添加到代码块中以运行 twoslash
+   * @default true
+   */
+  explicitTrigger?: RegExp | boolean
+
+  /**
+   * twoslash 配置
+   */
+  twoslashOptions?: TransformerTwoslashOptions['twoslashOptions'] &
+    VueSpecificOptions
+
+  /**
+   * 缓存解析后类型
+   * @default true
+   */
+  typesCache?: TwoslashTypesCache | boolean
+}
+```
+
+参考：[Twoslash 支持](#twoslash-支持)。
+
+:::
 
 ## 高级选项
 
-### defaultLang
+::: fields
+@defaultLang@ type=string default=`'plain'`
 
-- 类型：`string`
-- 默认值：`'plain'`
-- 详情：指定语言不可用时所使用的备选语言。
+指定语言不可用时所使用的备选语言。
 
-### logLevel
+@logLevel@ type=`'warn' | 'debug' | 'silent'` default=`'warn'`
 
-- 类型：`'warn' | 'debug' | 'silent'`
-- 默认值：`'warn'`
-- 详情：Shiki 语言检测的日志级别。
-  - `warn`：每次检测到未知语言时发出警告（默认）
-  - `debug`：每次检测到未知代码块时记录其文件路径（设置 `--debug` 标记时默认）
-  - `silent`：不发出警告
+Shiki 语言检测的日志级别。
 
-### preWrapper
+- `warn`：每次检测到未知语言时发出警告（默认）
+- `debug`：每次检测到未知代码块时记录其文件路径（设置 `--debug` 标记时默认）
+- `silent`：不发出警告
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否在 `<pre>` 标签外添加包裹容器。
+@preWrapper@ type=boolean default=`true`
 
-  `lineNumbers` 和 `collapsedLines` 依赖于这个额外的包裹层。换句话说，如果你禁用了 `preWrapper`，那么行号和折叠代码块也会被同时禁用。
+是否在 `<pre>` 标签外添加包裹容器。
 
-### shikiSetup
+`lineNumbers` 和 `collapsedLines` 依赖于这个额外的包裹层，也就是说禁用它会同时禁用行号和折叠代码块。
 
-- 类型：`(shiki: Highlighter) => void | Promise<void>`
-- 详情：用于自定义 Shiki 高亮器的钩子函数。
+@shikiSetup@ type=`(shiki: Highlighter) => void | Promise<void>`
 
-### transformers
+用于自定义 Shiki 高亮器的钩子函数。
 
-- 类型：`ShikiTransformer[]`
-- 详情：添加 Shiki 转换器。
+@transformers@ type=`ShikiTransformer[]`
 
-  该配置项会被传递到 Shiki 的 `codeToHtml()` 方法。
+添加 Shiki 转换器，会被传递到 Shiki 的 `codeToHtml()` 方法。
 
-- 参考：
-  - [Shiki > 转换器](https://shiki.tmrs.site/guide/transformers)
+参考：[Shiki > 转换器](https://shiki.tmrs.site/guide/transformers)。
+
+:::

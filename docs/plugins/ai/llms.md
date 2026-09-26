@@ -138,247 +138,196 @@ For example, if your site has a page at `/guide/quick-start.html`, the plugin ge
 
 ## Options
 
-### llmsTxt
+::: fields
+@llmsTxt@ type=boolean default=`true`
 
-- Type: `boolean`
+Specifies whether to generate the `llms.txt` file (the index file containing links to section summaries).
 
-- Default: `true`
+@llmsFullTxt@ type=boolean default=`true`
 
-- Details: Specifies whether to generate the `llms.txt` file (the index file containing links to section summaries).
+Specifies whether to generate the `llms-full.txt` file (a consolidated text file containing the entire documentation).
 
-### llmsFullTxt
+@llmsPageTxt@ type=boolean default=`true`
 
-- Type: `boolean`
+Specifies whether to generate individual LLM-friendly Markdown files for each page of the website.
 
-- Default: `true`
+@stripHTML@ type=boolean default=`true`
 
-- Details: Specifies whether to generate the `llms-full.txt` file (a consolidated text file containing the entire documentation).
+Determines whether HTML tags should be stripped from the generated Markdown files to ensure cleaner input for LLMs.
 
-### llmsPageTxt
+@filter@ type=`(page: Page) => boolean` default=`() => true`
 
-- Type: `boolean`
+A function to filter which pages are included. If the function returns `true`, the page is included in `llms.txt`.
 
-- Default: `true`
+Note that pages explicitly disabled via `frontmatter.llmstxt` or pages not generated from Markdown sources will always be excluded, regardless of this setting.
 
-- Details: Specifies whether to generate individual LLM-friendly Markdown files for each page of the website.
+@domain@ type=string
 
-### stripHTML
+An optional domain to prepend to all URLs in `llms.txt` and other generated files.
 
-- Type: `boolean`
+While standard relative paths are often sufficient, some AI agents may handle absolute URLs better. Use this option if you need to enforce fully qualified URLs (e.g., `https://example.com/foo/bar.md`).
 
-- Default: `true`
+```md title="llms.txt"
+- [title](/foo/bar.md) <!-- [!code --] -->
+- [title](https://example.com/foo/bar.md) <!-- [!code ++] -->
+```
 
-- Details: Determines whether HTML tags should be stripped from the generated Markdown files to ensure cleaner input for LLMs.
+@locale@ type=`string | 'all'` default=`'/'`
 
-### filter
+Controls which locale to generate content for.
 
-- Type: `(page: Page) => boolean`
+- If unset, it defaults to the site's root locale.
+- If set to a specific locale key (e.g., `'/zh/'`), it generates files only for that language.
+- If set to `'all'`, the plugin generates `llms.txt` resources for every configured locale.
 
-- Default: `() => true`
+If your documentation contains specialized terminology or concepts that LLMs struggle to translate accurately, generating dedicated `llms.txt` files for each language ensures that international users (and their AI assistants) receive the most precise information available.
 
-- Details:
+@llmsTxtTemplate@ type=string
 
-  A function to filter which pages are included. If the function returns `true`, the page is included in `llms.txt`.
+Defines the structure of the `llms.txt` file. You can rearrange the default placeholders—`{title}`, `{description}`, `{details}`, and `{toc}`—or introduce new ones using `llmsTxtTemplateGetter`.
 
-  Note that pages explicitly disabled via `frontmatter.llmstxt` or pages not generated from Markdown sources will always be excluded, regardless of this setting.
+Its default value is:
 
-### domain
+```md
+# {title}
 
-- Type: `string`
+{description}
 
-- Default: `''`
+{details}
 
-- Details:
+## Table of Contents
 
-  An optional domain to prepend to all URLs in `llms.txt` and other generated files.
+{toc}
+```
 
-  While standard relative paths are often sufficient, some AI agents may handle absolute URLs better. Use this option if you need to enforce fully qualified URLs (e.g., `https://example.com/foo/bar.md`).
+@llmsTxtTemplateGetter@ type=TemplateGetterOptions default=`{}`
 
-  ```md title="llms.txt"
-  - [title](/foo/bar.md) <!-- [!code --] -->
-  - [title](https://example.com/foo/bar.md) <!-- [!code ++] -->
-  ```
+Provides custom variables or getter functions for the [`llmsTxtTemplate`](#llmstxttemplate).
 
-### locale
+You can use this to inject static strings or dynamically generated content.
 
-- Types: `string | 'all'`
+```ts
+/**
+ * Link extension options for generated links
+ */
+export type LinkExtension = '.html' | '.md'
 
-- Default: `'/'`
-
-- Details:
-
-  Controls which locale to generate content for.
-  - If unset, it defaults to the site's root locale.
-  - If set to a specific locale key (e.g., `'/zh/'`), it generates files only for that language.
-  - If set to `'all'`, the plugin generates `llms.txt` resources for every configured locale.
-
-  ：：： tip Why use `'all'`?
-
-  If your documentation contains specialized terminology or concepts that LLMs struggle to translate accurately, generating dedicated `llms.txt` files for each language ensures that international users (and their AI assistants) receive the most precise information available.
-
-  :::
-
-### llmsTxtTemplate
-
-- Types: `string`
-
-- Default:
-
-  ```ts
-  const DEFAULT_LLMSTXT_TEMPLATE = `\
-  # {title}
-  
-  {description}
-  
-  {details}
-  
-  ## Table of Contents
-  
-  {toc}`
-  ```
-
-- Details:
-
-  Defines the structure of the `llms.txt` file. You can rearrange the default placeholders—`{title}`, `{description}`, `{details}`, and `{toc}`—or introduce new ones using `llmsTxtTemplateGetter`.
-
-### llmsTxtTemplateGetter
-
-- Type: `TemplateGetterOptions`
-
-  ```ts
+/**
+ * Page with additional LLM-friendly content
+ */
+export interface LLMPage extends Page {
   /**
-   * Link extension options for generated links
+   * The page's Markdown content
+   *
+   * @example '# Guide\n\nA guide'
    */
-  export type LinkExtension = '.html' | '.md'
+  markdown: string
 
   /**
-   * Page with additional LLM-friendly content
+   * The page's excerpt
+   *
+   * @example 'Introduction to the guide'
    */
-  export interface LLMPage extends Page {
-    /**
-     * The page's Markdown content
-     *
-     * @example '# Guide\n\nA guide'
-     */
-    markdown: string
+  excerpt: string
+}
 
-    /**
-     * The page's excerpt
-     *
-     * @example 'Introduction to the guide'
-     */
-    excerpt: string
-  }
+/**
+ * State object for LLM text generation
+ */
+export interface LLMState {
+  /**
+   * VuePress app instance
+   */
+  app: App
 
   /**
-   * State object for LLM text generation
+   * Site base URL
    */
-  export interface LLMState {
-    /**
-     * VuePress app instance
-     */
-    app: App
+  base: string
 
-    /**
-     * Site base URL
-     */
-    base: string
+  /**
+   * Optional domain to prepend to URLs
+   */
+  domain?: string
 
-    /**
-     * Optional domain to prepend to URLs
-     */
-    domain?: string
+  /**
+   * Link extension for generated links
+   */
+  linkExtension?: LinkExtension
 
-    /**
-     * Link extension for generated links
-     */
-    linkExtension?: LinkExtension
+  /**
+   * The path of the current locale.
+   */
+  currentLocale: string
 
-    /**
-     * The path of the current locale.
-     */
-    currentLocale: string
+  /**
+   * Current site locale data
+   */
+  siteLocale: SiteLocaleData
 
-    /**
-     * Current site locale data
-     */
-    siteLocale: SiteLocaleData
+  /**
+   * Whether to generate llms.txt files for all locales.
+   */
+  allLocales: boolean
+}
 
-    /**
-     * Whether to generate llms.txt files for all locales.
-     */
-    allLocales: boolean
-  }
+export type TemplateGetter = (pages: LLMPage[], state: LLMState) => string
 
-  export type TemplateGetter = (pages: LLMPage[], state: LLMState) => string
+export interface TemplateGetterOptions {
+  /** Any custom variable */
+  [key: string]: TemplateGetter | string | undefined
+}
+```
 
-  export interface TemplateGetterOptions {
-    /** Any custom variable */
-    [key: string]: TemplateGetter | string | undefined
-  }
-  ```
+**Example: Overriding the title**
 
-- Default: `{}`
+```ts
+llmsPlugin({
+  llmsTxtTemplateGetter: {
+    title: 'My Custom Docs Title',
+  },
+})
+```
 
-- Details:
+**Example: Adding a custom variable**
 
-  Provides custom variables or getter functions for the [`llmsTxtTemplate`](#llmstxttemplate).
+```ts
+llmsPlugin({
+  llmsTxtTemplate: '# {title}\n\n{customNote}',
+  llmsTxtTemplateGetter: {
+    customNote: 'Note: This content is optimized for AI agents.',
+  },
+})
+```
 
-  You can use this to inject static strings or dynamically generated content.
+**Example: Generating a custom list of pages**
 
-  **Example: Overriding the title**
+```ts
+llmsPlugin({
+  llmsTxtTemplate: '# {title}\n\n## Page List\n\n{pageList}',
+  llmsTxtTemplateGetter: {
+    pageList: (pages, state) =>
+      pages.map((page) => `- ${page.title}`).join('\n'),
+  },
+})
+```
 
-  ```ts
-  llmsPlugin({
-    llmsTxtTemplateGetter: {
-      title: 'My Custom Docs Title',
-    },
-  })
-  ```
+@transformMarkdown@ type=`(markdown: string, page: LLMPage) => string`
 
-  **Example: Adding a custom variable**
+A function used to modify the Markdown content of a page. It accepts a Markdown string and a page object as parameters and returns the modified Markdown string.
 
-  ```ts
-  llmsPlugin({
-    llmsTxtTemplate: '# {title}\n\n{customNote}',
-    llmsTxtTemplateGetter: {
-      customNote: 'Note: This content is optimized for AI agents.',
-    },
-  })
-  ```
+You can use it to apply custom Markdown formatting operations.
 
-  **Example: Generating a custom list of pages**
+```ts
+llmsPlugin({
+  transformMarkdown: (markdown, page) => {
+    // Add custom Markdown formatting operations
+    return markdown
+  },
+})
+```
 
-  ```ts
-  llmsPlugin({
-    llmsTxtTemplate: '# {title}\n\n## Page List\n\n{pageList}',
-    llmsTxtTemplateGetter: {
-      pageList: (pages, state) =>
-        pages.map((page) => `- ${page.title}`).join('\n'),
-    },
-  })
-  ```
-
-### transformMarkdown
-
-- Type: `(markdown: string, page: LLMPage) => string`
-
-- Default: `undefined`
-
-- Details:
-
-  A function used to modify the Markdown content of a page. It accepts a Markdown string and a page object as parameters and returns the modified Markdown string.
-
-  You can use it to apply custom Markdown formatting operations.
-
-  ```ts
-  llmsPlugin({
-    transformMarkdown: (markdown, page) => {
-      // Add custom Markdown formatting operations
-      return markdown
-    },
-  })
-  ```
+:::
 
 ## Frontmatter
 

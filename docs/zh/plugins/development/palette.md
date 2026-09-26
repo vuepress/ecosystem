@@ -76,7 +76,7 @@ $color: red !default;
 $color: green;
 ```
 
-## 配置项
+## 选项
 
 ### preset
 

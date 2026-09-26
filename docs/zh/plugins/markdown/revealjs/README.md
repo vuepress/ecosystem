@@ -184,26 +184,24 @@ Reveal.js 选项，请参见[reveal.js config](https://revealjs.com/config/)，R
 
 ## 选项
 
-### plugins
+::: fields
+@plugins@ type=`RevealJsPlugin[]`
 
-- 类型：`RevealJsPlugin[]`
-- 详情：要启用的 Reveal.js 内置插件。
+要启用的 Reveal.js 内置插件。
 
-  可用值：`highlight`、`math`、`search`、`notes`、`zoom`
+可用值：`highlight`、`math`、`search`、`notes`、`zoom`。
 
-### themes
+@themes@ type=`RevealJsTheme[]` default=`['auto']`
 
-- 类型：`RevealJsTheme[]`
-- 默认值：`['auto']`
-- 详情：要启用的主题。
+要启用的主题。
 
-  可用值：`auto`、`black`、`white`、`league`、`beige`、`sky`、`night`、`serif`、`simple`、`solarized`、`blood`、`moon`
+可用值：`auto`、`black`、`white`、`league`、`beige`、`sky`、`night`、`serif`、`simple`、`solarized`、`blood`、`moon`。
 
-### layout
+@layout@ type=`string | false` default=`'SlidePage'`
 
-- 类型：`string | false`
-- 默认值：`'SlidePage'`
-- 详情：用于渲染幻灯片的布局组件名称。
+用于渲染幻灯片的布局组件名称。
+
+:::
 
 ## 样式
 

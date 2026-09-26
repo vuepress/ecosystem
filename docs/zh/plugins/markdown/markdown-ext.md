@@ -120,79 +120,54 @@ type: tip
 
 ## 选项
 
-### gfm
+::: fields
+@gfm@ type=boolean
 
-- 类型：`boolean`
+是否调整行为和功能，使其更类似于 GitHub Flavored Markdown。
 
-- 详情：
+`markdown-it` 已经默认支持表格与删除线。如果此选项为 `true`，则会启用以下新功能：
 
-  是否调整行为和功能，使其更类似于 GitHub Flavored Markdown。
+- 自动链接（在 `markdown-it` 中命名为 `linkify`）
+- 硬换行
+- 脚注
+- 任务列表
 
-  `markdown-it` 已经默认支持表格与删除线。如果此选项为 `true`，则会启用以下新功能：
-  - 自动链接（在 `markdown-it` 中命名为 `linkify`）
-  - 硬换行
-  - 脚注
-  - 任务列表
+请注意：并不是所有行为都与 GitHub Flavored Markdown 完全相同。
 
-  请注意：并不是所有行为都与 GitHub Flavored Markdown 完全相同。
+@footnote@ type=boolean gfm=Yes
 
-### footnote
+是否启用脚注格式支持。
 
-- 类型：`boolean`
-- 详情：是否启用脚注格式支持。
-- 在 GFM 中启用：是
+@tasklist@ type=`MarkdownItTaskListOptions | boolean` gfm=Yes
 
-### tasklist
+是否启用任务列表格式支持。你可以传递一个对象来配置任务列表。
 
-- 类型：`MarkdownItTaskListOptions | boolean`
+@@tasklist.disabled@ type=boolean default=`true`
 
-  ```ts
-  interface MarkdownItTaskListOptions {
-    /**
-     * 是否禁用 checkbox
-     *
-     * @default true
-     */
-    disabled?: boolean
+是否禁用 checkbox。
 
-    /**
-     * 是否使用 `<label>` 来包裹文字
-     *
-     * @default true
-     */
-    label?: boolean
-  }
-  ```
+@@tasklist.label@ type=boolean default=`true`
 
-- 详情：
+是否使用 `<label>` 来包裹文字。
 
-  是否启用任务列表格式支持。你可以传递一个对象来配置任务列表。
+@breaks@ type=boolean gfm=Yes
 
-- 在 GFM 中启用：是
+是否将段落中的 `\n` 转换为 `<br>`。
 
-### breaks
+@linkify@ type=boolean gfm=Yes
 
-- 类型：`boolean`
-- 详情：是否将段落中的 `\n` 转换为 `<br>`。
-- 在 GFM 中启用：是
+是否将类似 URL 的文本转换为链接。
 
-### linkify
+@component@ type=boolean
 
-- 类型：`boolean`
-- 详情：是否将类似 URL 的文本转换为链接。
-- 在 GFM 中启用：是
+是否启用组件代码块支持。
 
-### component
+@vPre@ type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用组件代码块支持。
+是否启用 v-pre 容器支持。
 
-### vPre
+@cjkFriendly@ type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用 v-pre 容器支持。
+是否启用对强调标记的 CJK 友好支持。未设置时，检测到 CJK 语言（`zh`、`ja`、`ko`）将自动启用。
 
-### cjkFriendly
-
-- 类型：`boolean`
-- 详情：是否启用对强调标记的 CJK 友好支持。未设置时，检测到 CJK 语言（`zh`、`ja`、`ko`）将自动启用。
+:::

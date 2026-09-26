@@ -28,25 +28,11 @@ export default {
 }
 ```
 
-## Options
+## Guide
 
-### theme
+### Prism.js Themes
 
-- Type: `PrismjsTheme`
-
-- Default: `'nord'`
-
-- Details: Prism.js theme that will be applied to code blocks.
-
-### themes
-
-- Type: `{ light: PrismjsTheme; dark: PrismjsTheme }`
-
-- Details:
-
-  Apply light/dark dual themes.
-
-  Note: To use this feature, your theme must set the `data-theme="dark"` attribute on the `<html>` tag when dark mode is enabled.
+Prism.js themes are applied to the whole site. Use `theme` to set a single theme, or `themes` to use different themes for light and dark mode.
 
 ::: tip Available Prism.js Light themes
 
@@ -93,24 +79,23 @@ export default {
 
 :::
 
-### lineNumbers
+::: warning
 
-- Type: `boolean | number | 'disable'`
+To use `themes`, your theme must set the `data-theme="dark"` attribute on the `<html>` tag when dark mode is enabled.
 
-- Default: `true`
+:::
 
-- Details:
-  - `number`: The minimum number of lines to enable line numbers.
-    For example, if you set it to 4, line numbers will only be enabled when your code block has at least 4 lines of code.
-  - `true`: Enable line numbers globally.
-  - `false`: Disable line numbers globally.
-  - `'disable'`: Completely disable line numbers; `:line-numbers` will not take effect.
+### Line Numbers
 
-  You can add `:line-numbers` / `:no-line-numbers` markers in your fenced code blocks to override the value set in config, and customize the beginning number by adding `=` after `:line-numbers`. For example, `:line-numbers=2` means the line numbers in code blocks will start from `2`.
+Line numbers are enabled by default. You can override them per code block with markers:
+
+- `:line-numbers`: enable line numbers.
+- `:no-line-numbers`: disable line numbers.
+- `:line-numbers=2`: enable line numbers and start counting from `2`.
 
 ::: preview
 
-```ts:line-numbers
+```ts :line-numbers
 // line-numbers is enabled
 const line2 = 'This is line 2'
 const line3 = 'This is line 3'
@@ -130,18 +115,15 @@ const line4 = 'This is line 4'
 
 :::
 
-### highlightLines
+You can also set `lineNumbers` to a number to only enable line numbers for code blocks with enough lines, or to `'disable'` to turn the markers off completely.
 
-- Type: `boolean`
+### Highlight Lines
 
-- Default: `true`
+Line highlighting is enabled by default. Add line ranges to the code fence info to highlight them:
 
-- Details:
-
-  Whether to enable code line highlighting. You can highlight specified lines of your code blocks by adding line range markers in your fenced code blocks:
-  - Line ranges: `{5-8}`
-  - Multiple single lines: `{4,7,9}`
-  - Combined: `{4,7-13,16,23-27,40}`
+- Line ranges: `{5-8}`
+- Multiple single lines: `{4,7,9}`
+- Combined: `{4,7-13,16,23-27,40}`
 
 ::: preview
 
@@ -160,19 +142,13 @@ export default defineUserConfig({
 
 :::
 
-### collapsedLines
+### Collapsed Lines
 
-- Type: `boolean | number | 'disable'`
+Code block collapsing is disabled by default. Set `collapsedLines` to enable it, then use markers to control a single code block:
 
-- Default: `'disable'`
-
-- Details: Default behavior of code block collapsing.
-  - `number`: Collapse the code block starting from line `number` by default. For example, `12` means collapsing the code block starting from line 12.
-  - `true`: Equivalent to `15`, collapsing the code block starting from line 15 by default.
-  - `false`: Add support for code block collapsing, but disable it globally.
-  - `'disable'`: Completely disable code block collapsing; `:collapsed-lines` will not take effect.
-
-  To override global settings, you can add the `:collapsed-lines` / `:no-collapsed-lines` markers to the code block. You can also add `=` after `:collapsed-lines` to customize the starting line number being collapsed. For example, `:collapsed-lines=12` means collapsing the code block starting from line 12.
+- `:collapsed-lines`: collapse the code block, starting from line 15 by default.
+- `:no-collapsed-lines`: do not collapse the code block.
+- `:collapsed-lines=10`: collapse the code block starting from line `10`.
 
 ::: preview
 
@@ -277,329 +253,312 @@ body > div {
 
 :::
 
-### codeBlockTitle
+### Code Block Title
 
-- Type: `boolean | CodeBlockTitleRender`
+Code block title is enabled by default. Add `title="Title"` to the code fence info to display a title bar above the code block.
 
-  ```ts
-  type CodeBlockTitleRender = (title: string, code: string) => string
-  ```
+::: preview
 
-- Default: `true`
-
-- Details: Whether to enable code block title rendering. Add `title="Title"` after the code block <code>\`\`\`</code> to set the title.
-
-  Pass `CodeBlockTitleRender` to customize the title rendering.
-
-- Example:
-
-  ::: preview
-
-  ```ts title="foo/baz.js"
-  console.log('hello')
-  ```
-
-  :::
-
-::: tip
-
-In the new version, some functionalities similar to [shiki](https://shiki.style/packages/transformers) have been implemented, allowing you to style code blocks using the same syntax.
+```ts title="foo/baz.js"
+console.log('hello')
+```
 
 :::
 
-### notationDiff
+You can pass a `CodeBlockTitleRender` function to `codeBlockTitle` to customize how the title is rendered.
 
-- Type: `boolean`
+### Notation
 
-- Default: `false`
+The plugin supports the same annotation transformers as [Shiki](https://shiki.style/packages/transformers). Each of them is off by default and needs to be enabled by its matching option.
 
-- Details: Whether to enable notation diff.
+#### Diff
 
-- Example:
+Enable `notationDiff` to highlight added and removed lines with `[!code ++]` and `[!code --]`.
 
-  <VPPreview>
-  <template #code>
+<VPPreview>
+<template #code>
 
-  ````md
-  ```ts
-  console.log('hewwo') // [\!code --]
-  console.log('hello') // [\!code ++]
-  console.log('goodbye')
-  ```
-  ````
+````md
+```ts
+console.log('hewwo') // [\!code --]
+console.log('hello') // [\!code ++]
+console.log('goodbye')
+```
+````
 
-  </template>
-  <template #content>
+</template>
+<template #content>
 
-  ```ts
-  console.log('hewwo') // [!code --]
-  console.log('hello') // [!code ++]
-  console.log('goodbye')
-  ```
+```ts
+console.log('hewwo') // [!code --]
+console.log('hello') // [!code ++]
+console.log('goodbye')
+```
 
-  </template>
-  </VPPreview>
+</template>
+</VPPreview>
 
-- Also see:
-  - [Shiki > Notation Diff](https://shiki.style/packages/transformers#transformernotationdiff)
+#### Focus
 
-### notationFocus
+Enable `notationFocus` to dim all lines except the focused ones, marked with `[!code focus]`.
 
-- Type: `boolean`
+<VPPreview>
+<template #code>
 
-- Default: `false`
+````md
+```ts
+console.log('Not focused')
+console.log('Focused') // [\!code focus]
+console.log('Not focused')
+```
+````
 
-- Details: Whether to enable notation focus.
+</template>
+<template #content>
 
-- Example:
+```ts
+console.log('Not focused')
+console.log('Focused') // [!code focus]
+console.log('Not focused')
+```
 
-  <VPPreview>
-  <template #code>
+</template>
+</VPPreview>
 
-  ````md
-  ```ts
-  console.log('Not focused')
-  console.log('Focused') // [\!code focus]
-  console.log('Not focused')
-  ```
-  ````
+#### Highlight
 
-  </template>
-  <template #content>
+Enable `notationHighlight` to highlight lines marked with `[!code highlight]`.
 
-  ```ts
-  console.log('Not focused')
-  console.log('Focused') // [!code focus]
-  console.log('Not focused')
-  ```
+<VPPreview>
+<template #code>
 
-  </template>
-  </VPPreview>
+````md
+```ts
+console.log('Not highlighted')
+console.log('Highlighted') // [\!code highlight]
+console.log('Not highlighted')
+```
+````
 
-- Also see:
-  - [Shiki > Notation Focus](https://shiki.style/packages/transformers#transformernotationfocus)
+</template>
+<template #content>
 
-### notationHighlight
+```ts
+console.log('Not highlighted')
+console.log('Highlighted') // [!code highlight]
+console.log('Not highlighted')
+```
 
-- Type: `boolean`
+</template>
+</VPPreview>
 
-- Default: `false`
+#### Error Level
 
-- Details: Whether to enable notation highlight.
+Enable `notationErrorLevel` to color lines by level, marked with `[!code warning]` and `[!code error]`.
 
-- Example:
+<VPPreview>
+<template #code>
 
-  <VPPreview>
-  <template #code>
+````md
+```ts
+console.log('No errors or warnings')
+console.warn('Warning') // [\!code warning]
+console.error('Error') // [\!code error]
+```
+````
 
-  ````md
-  ```ts
-  console.log('Not highlighted')
-  console.log('Highlighted') // [\!code highlight]
-  console.log('Not highlighted')
-  ```
-  ````
+</template>
+<template #content>
 
-  </template>
-  <template #content>
+```ts
+console.log('No errors or warnings')
+console.warn('Warning') // [!code warning]
+console.error('Error') // [!code error]
+```
 
-  ```ts
-  console.log('Not highlighted')
-  console.log('Highlighted') // [!code highlight]
-  console.log('Not highlighted')
-  ```
+</template>
+</VPPreview>
 
-  </template>
-  </VPPreview>
+#### Word Highlight
 
-- Also see:
-  - [Shiki > Notation Highlight](https://shiki.style/packages/transformers#transformernotationhighlight)
+Enable `notationWordHighlight` to highlight words. The marker must be written on a separate line.
 
-### notationErrorLevel
+Highlight words with comments:
 
-- Type: `boolean`
+<VPPreview>
+<template #code>
 
-- Default: `false`
+````md
+```ts
+// [\!code word:Hello]
+const message = 'Hello World'
+console.log(message) // prints Hello World
+```
+````
 
-- Details: Whether to enable notation error level.
+</template>
+<template #content>
 
-- Example:
+```ts
+// [!code word:Hello]
+const message = 'Hello World'
+console.log(message) // prints Hello World
+```
 
-  <VPPreview>
-  <template #code>
+</template>
+</VPPreview>
 
-  ````md
-  ```ts
-  console.log('No errors or warnings')
-  console.warn('Warning') // [\!code warning]
-  console.error('Error') // [\!code error]
-  ```
-  ````
+Highlight words based on the meta string provided on the code snippet:
 
-  </template>
-  <template #content>
+::: preview
 
-  ```ts
-  console.log('No errors or warnings')
-  console.warn('Warning') // [!code warning]
-  console.error('Error') // [!code error]
-  ```
+```js /Hello/
+const msg = 'Hello World'
+console.log(msg) // prints Hello World
+```
 
-  </template>
-  </VPPreview>
+:::
 
-- Also see:
-  - [Shiki > Notation Error Level](https://shiki.style/packages/transformers#transformernotationerrorlevel)
+### Render Whitespace
 
-### notationWordHighlight
+Whitespace rendering is disabled by default. Set `whitespace` to enable it, then use markers to control a single code block:
 
-- Type: `boolean`
+- `:whitespace`: render whitespace with the type set in config.
+- `:no-whitespace`: do not render whitespace.
+- `:whitespace=boundary`: render leading and trailing whitespace of each line.
 
-- Default: `false`
+The render type accepts `'all'`, `'boundary'`, `'leading'` and `'trailing'`.
 
-- Details: Whether to enable notation word highlight.
+::: preview
 
-  Word highlight must be written on a separate line.
+```md :whitespace
+<!-- render all whitespace -->
 
-- Example:
+A text  
+with trailing spaces
 
-  Highlight words with comments
+    indented text
+```
 
-  <VPPreview>
-  <template #code>
+```md :whitespace=boundary
+<!-- render leading and trailing whitespace of the line -->
 
-  ````md
-  ```ts
-  // [\!code word:Hello]
-  const message = 'Hello World'
-  console.log(message) // prints Hello World
-  ```
-  ````
+A text  
+with trailing spaces
 
-  </template>
-  <template #content>
+    indented text
+```
 
-  ```ts
-  // [!code word:Hello]
-  const message = 'Hello World'
-  console.log(message) // prints Hello World
-  ```
+```md :whitespace=leading
+<!-- render leading whitespace of the line -->
 
-  </template>
-  </VPPreview>
+A text  
+with trailing spaces
 
-  Highlight words based on the meta string provided on the code snippet
+    indented text
+```
 
-  ::: preview
+```md :whitespace=trailing
+<!-- render trailing whitespace of the line -->
 
-  ```js /Hello/
-  const msg = 'Hello World'
-  console.log(msg) // prints Hello World
-  ```
+A text  
+with trailing spaces
 
-  :::
+    indented text
+```
 
-- Also see:
-  - [Shiki > Notation Word Highlight](https://shiki.style/packages/transformers#transformernotationwordhighlight)
+```md :no-whitespace
+<!-- disable render whitespace -->
 
-### whitespace
+A text  
+with trailing spaces
 
-- Type: `boolean | 'all' | 'boundary' | 'leading' | 'trailing'`
+    indented text
+```
 
-- Default: `false`
+:::
 
-- Details: Whether to enable whitespace characters (Space and Tab).
-  - `true`: Enable whitespace, but not render any whitespace by default.
-  - `false`: Completely disable whitespace rendering; `:whitespace` will not take effect.
-  - `'all'`: Render all whitespace.
-  - `'boundary'`: Render leading and trailing whitespace of the line.
-  - `'leading'`: Render leading whitespace of the line.
-  - `'trailing'`: Render trailing whitespace of the line.
+## Options
 
-  You can add `:whitespace` / `:no-whitespace` markers in your fenced code blocks to override the value set in config, and customize the render type by adding `=` after `:whitespace`. For example, `:whitespace=boundary` will render leading and trailing whitespace of the line.
+::: fields
+@theme@ type=PrismjsTheme default=`'nord'`
 
-- Example:
+Prism.js theme applied to code blocks. See [Prism.js Themes](#prism-js-themes) for the available values.
 
-  ::: preview
+@themes@ type=`{ light: PrismjsTheme; dark: PrismjsTheme }`
 
-  ```md :whitespace
-  <!-- render all whitespace -->
+Use different Prism.js themes for light and dark mode. See [Prism.js Themes](#prism-js-themes) for the available values.
 
-  A text  
-  with trailing spaces
+Requires your theme to set the `data-theme="dark"` attribute on the `<html>` tag when dark mode is enabled.
 
-      indented text
-  ```
+@lineNumbers@ type=`boolean | number | 'disable'` default=`true`
 
-  ```md :whitespace=boundary
-  <!-- render leading and trailing whitespace of the line -->
+Whether to enable line numbers. A number is the minimum number of lines required to enable line numbers on a code block, and `'disable'` turns the `:line-numbers` marker off completely.
 
-  A text  
-  with trailing spaces
+See also: [Line Numbers](#line-numbers).
 
-      indented text
-  ```
+@highlightLines@ type=boolean default=`true`
 
-  ```md :whitespace=leading
-  <!-- render leading whitespace of the line -->
+Whether to enable line highlighting with line range markers.
 
-  A text  
-  with trailing spaces
+See also: [Highlight Lines](#highlight-lines).
 
-      indented text
-  ```
+@collapsedLines@ type=`boolean | number | 'disable'` default=`'disable'`
 
-  ```md :whitespace=trailing
-  <!-- render trailing whitespace of the line -->
+Whether to enable code block collapsing. A number is the line to collapse from, and `true` is equivalent to `15`. Set it to `false` to support the `:collapsed-lines` marker without collapsing any code block by default.
 
-  A text  
-  with trailing spaces
+See also: [Collapsed Lines](#collapsed-lines).
 
-      indented text
-  ```
+@codeBlockTitle@ type=`boolean | CodeBlockTitleRender` default=`true`
 
-  ```md :no-whitespace
-  <!-- disable render whitespace -->
+Whether to render a title bar for code blocks with `title="Title"` in the fence info.
 
-  A text  
-  with trailing spaces
+Pass a `CodeBlockTitleRender` function to customize the title rendering.
 
-      indented text
-  ```
+```ts
+type CodeBlockTitleRender = (title: string, code: string) => string
+```
 
-  :::
+See also: [Code Block Title](#code-block-title).
 
-- Also see:
-  - [Shiki > Render Whitespace](https://shiki.style/packages/transformers#transformerrenderwhitespace)
+@notationDiff@ type=boolean default=`false`
 
-### preloadLanguages
+Whether to enable the notation diff transformer.
 
-- Type: `string[]`
+@notationFocus@ type=boolean default=`false`
 
-- Default: `['markdown', 'jsdoc', 'yaml']`
+Whether to enable the notation focus transformer.
 
-- Details:
+@notationHighlight@ type=boolean default=`false`
 
-  Languages to preload.
+Whether to enable the notation highlight transformer.
 
-  By default, languages will be loaded on demand when parsing markdown files.
+@notationErrorLevel@ type=boolean default=`false`
 
-  However, Prism.js has [some potential issues](https://github.com/PrismJS/prism/issues/2716) about loading languages dynamically. To avoid them, you can preload languages via this option.
+Whether to enable the notation error level transformer.
 
-### preWrapper
+@notationWordHighlight@ type=boolean default=`false`
 
-- Type: `boolean`
+Whether to enable the notation word highlight transformer.
 
-- Default: `true`
+See also: [Notation](#notation).
 
-- Details:
+@whitespace@ type=`boolean | 'all' | 'boundary' | 'leading' | 'trailing'` default=`false`
 
-  Whether to add an extra wrapper outside the `<pre>` tag.
+Whether to render whitespace characters. `true` enables the syntax without rendering any whitespace by default, and `false` turns the `:whitespace` marker off completely.
 
-  The wrapper is required by `lineNumbers` and `collapsedLines`. This means if you disable `preWrapper`, the line numbers and collapsed lines will also be disabled.
+See also: [Render Whitespace](#render-whitespace).
 
-  ::: tip
+@preloadLanguages@ type=`string[]` default=`['markdown', 'jsdoc', 'yaml']`
 
-  You can disable it if you want to implement them on the client side. For example, [Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) or [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/).
+Languages to preload.
 
-  :::
+By default, languages are loaded on demand when parsing markdown files, but Prism.js has [some potential issues](https://github.com/PrismJS/prism/issues/2716) about loading languages dynamically. Preloading languages avoids them.
+
+@preWrapper@ type=boolean default=`true`
+
+Whether to add an extra wrapper outside the `<pre>` tag.
+
+The wrapper is required by `lineNumbers` and `collapsedLines`, which means disabling it also disables line numbers and collapsed lines. You may disable it if you want to implement these features on the client side, for example with [Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) or [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/).
+
+:::

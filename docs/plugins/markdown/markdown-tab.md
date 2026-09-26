@@ -252,15 +252,16 @@ npm i -D @vuepress/plugin-markdown-tab
 
 ## Options
 
-### tabs
+::: fields
+@tabs@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable tabs.
+Whether to enable tabs.
 
-### codeTabs
+@codeTabs@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable code tabs.
+Whether to enable code tabs.
+
+:::
 
 ## Styles
 

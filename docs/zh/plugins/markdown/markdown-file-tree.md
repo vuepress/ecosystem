@@ -254,18 +254,17 @@ createApp(App).mount('#app')
 
 ## 选项
 
-### fileTree
+::: fields
+@fileTree@ type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用文件树，即从 `::: file-tree` 容器内的 Markdown 无序列表渲染目录结构。禁用后 `::: file-tree` 容器不可用。
+是否启用文件树，即从 `::: file-tree` 容器内的 Markdown 无序列表渲染目录结构。禁用后 `::: file-tree` 容器不可用。
 
-### codeTree
+@codeTree@ type=`boolean | MarkdownCodeTreePluginOptions`
 
-- 类型：`boolean | MarkdownCodeTreePluginOptions`
-- 详情：是否启用代码树，即将多个文件的代码块与文件树一起展示。禁用后 `::: code-tree` 容器和 `@[code-tree](dir_path)` 语法不可用。传入对象表示启用代码树并附加选项。
+是否启用代码树，即将多个文件的代码块与文件树一起展示。禁用后 `::: code-tree` 容器和 `@[code-tree](dir_path)` 语法不可用。传入对象表示启用代码树并附加选项。
 
-#### codeTree.height
+@@codeTree.height@ type=`number | string` default=`'320px'`
 
-- 类型：`number | string`
-- 默认值：`'320px'`
-- 详情：代码树的默认高度。数字会被视为像素值。
+代码树的默认高度。数字会被视为像素值。
+
+:::

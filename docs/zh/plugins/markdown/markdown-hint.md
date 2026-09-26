@@ -91,68 +91,49 @@ const a = 1
 
 ## 选项
 
-### hint
+::: fields
+@hint@ type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否启用提示容器，包括 important、info、note、tip、warning、caution、details。
+是否启用提示容器，包括 important、info、note、tip、warning、caution、details。
 
-### alert
+@alert@ type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用 GFM 警告支持。
+是否启用 GFM 警告支持。
 
-### injectStyles
+@injectStyles@ type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否注入默认样式。
+是否注入默认样式。
 
-### locales
+@locales@ type=MarkdownHintPluginLocaleConfig
 
-- 类型：`MarkdownHintPluginLocaleConfig`
+提示容器标题的本地化配置。
 
-  ```ts
-  interface MarkdownHintPluginLocaleConfig {
-    [localePath: string]: Partial<MarkdownHintPluginLocaleData>
-  }
+@@locales.important@ type=string
 
-  interface MarkdownHintPluginLocaleData {
-    /**
-     * 重要块的默认标题
-     */
-    important: string
+重要块的默认标题。
 
-    /**
-     * 注释块的默认标题
-     */
-    note: string
+@@locales.note@ type=string
 
-    /**
-     * 提示块的默认标题
-     */
-    tip: string
+注释块的默认标题。
 
-    /**
-     * 注意块的默认标题
-     */
-    warning: string
+@@locales.tip@ type=string
 
-    /**
-     * 警告块的默认标题
-     */
-    caution: string
+提示块的默认标题。
 
-    /**
-     * 信息块的默认标题
-     */
-    info: string
+@@locales.warning@ type=string
 
-    /**
-     * 详情块的默认标题
-     */
-    details: string
-  }
-  ```
+注意块的默认标题。
 
-- 详情：提示容器标题的本地化配置。
+@@locales.caution@ type=string
+
+警告块的默认标题。
+
+@@locales.info@ type=string
+
+信息块的默认标题。
+
+@@locales.details@ type=string
+
+详情块的默认标题。
+
+:::

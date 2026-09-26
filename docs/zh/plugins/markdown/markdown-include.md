@@ -329,33 +329,27 @@ int main() {
 
 <!-- @include: ./demo.snippet.md#snippet -->
 
-## 配置项
+## 选项
 
-### resolvePath
+::: fields
+@resolvePath@ type=`(path: string, cwd: string | null) => string` default=`(path) => path`
 
-- 类型：`(path: string, cwd: string | null) => string`
-- 默认值：`(path) => path`
-- 详情：处理 include 文件路径。
+处理 include 文件路径。
 
-### deep
+@deep@ type=boolean
 
-- 类型：`boolean`
-- 详情：是否递归包含被包含的 Markdown 文件中引用的文件。
+是否递归包含被包含的 Markdown 文件中引用的文件。
 
-### useComment
+@useComment@ type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否使用 `<!-- @include: xxx -->` 代替 `@include: xxx` 导入文件。
+是否使用 `<!-- @include: xxx -->` 代替 `@include: xxx` 导入文件。
 
-### resolveImagePath
+@resolveImagePath@ type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否解析包含的 Markdown 文件的里的相对图像路径。
+是否解析包含的 Markdown 文件的里的相对图像路径。
 
-### resolveLinkPath
+@resolveLinkPath@ type=boolean default=`true`
 
-- 类型：`boolean`
-- 默认值：`true`
-- 详情：是否解析包含的 Markdown 文件的里的文件相对路径。
+是否解析包含的 Markdown 文件的里的文件相对路径。
+
+:::

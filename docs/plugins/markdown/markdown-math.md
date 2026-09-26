@@ -93,25 +93,25 @@ Mathjax:
 
 ## Options
 
-### type
+::: fields
+@type@ type=`'katex' | 'mathjax'`
 
-- Type: `'katex' | 'mathjax'`
-- Details:
+The package to render $\TeX$ contents.
 
-  The package to render $\TeX$ contents.
-  - `'katex'`: use [KaTeX](https://katex.org/)
-  - `'mathjax'`: use [MathJax](https://www.mathjax.org/)
+- `'katex'`: use [KaTeX](https://katex.org/)
+- `'mathjax'`: use [MathJax](https://www.mathjax.org/)
 
-  When this option is not specified, the plugin will try to detect which package is installed. If both are installed, it will use "mathjax".
+When this option is not specified, the plugin will try to detect which package is installed. If both are installed, it will use "mathjax".
 
-### delimiters
+@delimiters@ type=`'brackets' | 'dollars' | 'all'` default=`'dollars'`
 
-- Type: `'brackets' | 'dollars' | 'all'`
-- Default: `'dollars'`
-- Details: Math delimiter syntax to enable.
-  - `'brackets'`: Use `\(...\)` for inline math and `\[...\]` for display math (LaTeX style).
-  - `'dollars'`: Use `$...$` for inline math and `$$...$$` for display math (common Markdown style).
-  - `'all'`: Enable both bracket and dollar syntaxes.
+Math delimiter syntax to enable.
+
+- `'brackets'`: Use `\(...\)` for inline math and `\[...\]` for display math (LaTeX style).
+- `'dollars'`: Use `$...$` for inline math and `$$...$$` for display math (common Markdown style).
+- `'all'`: Enable both bracket and dollar syntaxes.
+
+:::
 
 ### Using KaTeX
 
@@ -119,37 +119,36 @@ When using KaTeX, any other options will be passed to KaTeX as `KatexOptions`. S
 
 Besides, 2 special options are supported:
 
-#### copy
+::: fields
+@copy@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable copy extension.
+Whether to enable copy extension.
 
-#### mhchem
+@mhchem@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable mhchem extension.
+Whether to enable mhchem extension.
+
+:::
 
 ### Using MathJax
 
 When using MathJax, you can set:
 
-#### tex
+::: fields
+@tex@ type=object
 
-- Type: `object`
-- Details: Options passed to TeX input parser.
+Options passed to TeX input parser.
 
-#### output
+@output@ type=`'svg' | 'chtml'` default=`'svg'`
 
-- Type: `'svg' | 'chtml'`
-- Default: `'svg'`
-- Details: Output format, either SVG or Common HTML.
+Output format, either SVG or Common HTML.
 
-#### chtml
+@chtml@ type=object
 
-- Type: `object`
-- Details: Options passed to Common HTML output parser.
+Options passed to Common HTML output parser.
 
-#### svg
+@svg@ type=object
 
-- Type: `object`
-- Details: Options passed to SVG output parser.
+Options passed to SVG output parser.
+
+:::

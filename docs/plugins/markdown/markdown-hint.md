@@ -91,68 +91,49 @@ The plugin also provides an `alert` option to support gfm alerts:
 
 ## Options
 
-### hint
+::: fields
+@hint@ type=boolean default=`true`
 
-- Type: `boolean`
-- Default: `true`
-- Details: Whether to enable hint containers including important, info, note, tip, warning, caution, details.
+Whether to enable hint containers including important, info, note, tip, warning, caution, details.
 
-### alert
+@alert@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable GFM alert support.
+Whether to enable GFM alert support.
 
-### injectStyles
+@injectStyles@ type=boolean default=`true`
 
-- Type: `boolean`
-- Default: `true`
-- Details: Whether to inject default styles.
+Whether to inject default styles.
 
-### locales
+@locales@ type=MarkdownHintPluginLocaleConfig
 
-- Type: `MarkdownHintPluginLocaleConfig`
+Locale config for hint container titles.
 
-  ```ts
-  interface MarkdownHintPluginLocaleConfig {
-    [localePath: string]: Partial<MarkdownHintPluginLocaleData>
-  }
+@@locales.important@ type=string
 
-  interface MarkdownHintPluginLocaleData {
-    /**
-     * Default title text for important block
-     */
-    important: string
+Default title text for important block.
 
-    /**
-     * Default title text for note block
-     */
-    note: string
+@@locales.note@ type=string
 
-    /**
-     * Default title text for tip block
-     */
-    tip: string
+Default title text for note block.
 
-    /**
-     * Default title text for warning block
-     */
-    warning: string
+@@locales.tip@ type=string
 
-    /**
-     * Default title text for caution block
-     */
-    caution: string
+Default title text for tip block.
 
-    /**
-     * Default title text for info block
-     */
-    info: string
+@@locales.warning@ type=string
 
-    /**
-     * Default title text for details block
-     */
-    details: string
-  }
-  ```
+Default title text for warning block.
 
-- Details: Locale config for hint container titles.
+@@locales.caution@ type=string
+
+Default title text for caution block.
+
+@@locales.info@ type=string
+
+Default title text for info block.
+
+@@locales.details@ type=string
+
+Default title text for details block.
+
+:::

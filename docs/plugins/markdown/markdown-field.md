@@ -35,23 +35,46 @@ Inside the container, lines starting with `@name@` are field items. Attributes a
 
 ```md
 ::: fields
-@theme@ type="ThemeConfig" required default="{ base: '/' }"
+@theme@ type=ThemeConfig required default=`{ base: '/' }`
 
 Theme Config
 
-@enabled@ type="boolean" optional default="true"
+@enabled@ type=boolean optional default=`true`
 
 Whether it's enabled
 
 :::
 ```
 
+### Attributes
+
 By default, all attributes are allowed and displayed as-is. Common attributes include `type`, `required`, `optional`, `default` and `deprecated`.
 
-- `type` is displayed as a code block in the field header.
-- `default` is displayed as a labeled code block below the field header.
+- `type` is displayed as inline code in the field header.
+- `default` is displayed below the field header with a label. It is rendered as inline code when wrapped in backticks, and as plain text otherwise.
 - `required`, `optional` and `deprecated` are displayed as badges, and a deprecated field's name is colored red and struck through.
 - Other attributes are displayed as `Name: value` badges.
+
+Attribute values can be unquoted or wrapped in `"`, `'` or backticks:
+
+- An unquoted value ends at the first whitespace, so values containing spaces must be quoted.
+- Values wrapped in `"` or `'` support escaping with `\`.
+- Values wrapped in backticks are kept literal, with no escaping applied.
+
+Since `default` is rendered as plain text unless it is wrapped in backticks, use backticks for literal values and quotes for descriptions:
+
+```md
+::: fields
+@size@ type=number default=`320px`
+
+Rendered as inline code.
+
+@timeout@ type=number default="Determined by the theme, set it explicitly to override"
+
+Rendered as plain text.
+
+:::
+```
 
 ### Field Id
 
@@ -63,15 +86,15 @@ Fields can be nested to describe fields of an object type. To create a field ite
 
 ```md
 ::: fields
-@options@ type="object"
+@options@ type=object
 
 Options.
 
-@@options.name@ type="string"
+@@options.name@ type=string
 
 Option name.
 
-@other@ type="string"
+@other@ type=string
 
 Other field.
 
@@ -83,15 +106,19 @@ For more syntax details, see [@mdit/plugin-field](https://mdit-plugins.github.io
 ## Demo
 
 ::: fields
-@theme@ type="ThemeConfig" required default="{ base: '/' }"
+@theme@ type=ThemeConfig required default=`{ base: '/' }`
 
 Theme Config
 
-@enabled@ type="boolean" optional default="true"
+@enabled@ type=boolean optional default=`true`
 
 Whether it's enabled
 
-@other@ type="string" deprecated
+@timeout@ type=number default="Determined by the theme, set it explicitly to override"
+
+Descriptive default, rendered as plain text.
+
+@other@ type=string deprecated
 
 Deprecated field
 

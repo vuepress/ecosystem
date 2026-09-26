@@ -253,47 +253,41 @@ Also, you can use `stylize` in frontmatter to provide extra stylize rules for co
 
 ## Options
 
-### align
+::: fields
+@align@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable align support.
+Whether to enable align support.
 
-### attrs
+@attrs@ type=`MarkdownItAttrsOptions | boolean`
 
-- Type: `MarkdownItAttrsOptions | boolean`
-- Details: Whether to enable attrs support. You can also pass an object to specify the options of [@mdit/plugin-attrs](https://mdit-plugins.github.io/attrs.html#advanced).
+Whether to enable attrs support. You can also pass an object to specify the options of [@mdit/plugin-attrs](https://mdit-plugins.github.io/attrs.html#advanced).
 
-### layout
+@layout@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable layout support.
+Whether to enable layout support.
 
-### mark
+@mark@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable mark format support.
+Whether to enable mark format support.
 
-### spoiler
+@spoiler@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable spoiler support.
+Whether to enable spoiler support.
 
-### steps
+@steps@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable steps support.
+Whether to enable steps support.
 
-### sup
+@sup@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable superscript format support.
+Whether to enable superscript format support.
 
-### sub
+@sub@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable subscript format support.
+Whether to enable subscript format support.
 
-### custom
+@custom@ type=`MarkdownItStylizeConfig[]`
 
-- Type: `MarkdownItStylizeConfig[]`
-- Details: Create own stylize customizations. For details, see [@mdit/plugin-stylize](https://mdit-plugins.github.io/stylize.html#usage).
+Create own stylize customizations. For details, see [@mdit/plugin-stylize](https://mdit-plugins.github.io/stylize.html#usage).
+
+:::

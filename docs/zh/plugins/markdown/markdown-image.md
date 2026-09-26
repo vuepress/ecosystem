@@ -155,47 +155,42 @@ interface MarkdownItImgMarkOptions {
 
 :::
 
-## 配置项
+## 选项
 
-### figure
+::: fields
+@figure@ type=`MarkdownItFigureOptions | boolean`
 
-- 类型：`MarkdownItFigureOptions | boolean`
-- 详情：是否启用图片 Figure 支持。
+是否启用图片 Figure 支持。
 
-### lazyload
+@lazyload@ type=boolean
 
-- 类型：`boolean`
-- 详情：是否使用原生方式懒加载页面图片。
+是否使用原生方式懒加载页面图片。
 
-### mark
+@mark@ type=`MarkdownItImgMarkOptions | boolean`
 
-- 类型：`MarkdownItImgMarkOptions | boolean`
+是否启用图片标注支持。
 
-  ```ts
-  interface MarkdownItImgMarkOptions {
-    /** 日间模式的 ID */
-    light?: string[]
-    /** 夜间模式的 ID */
-    dark?: string[]
-  }
-  ```
+@@mark.light@ type=`string[]`
 
-- 详情：是否启用图片标注支持。
+仅日间模式的 ID。
 
-### size
+@@mark.dark@ type=`string[]`
 
-- 类型：`boolean`
-- 详情：是否启用图片尺寸支持。
+仅夜间模式的 ID。
 
-### obsidianSize
+@size@ type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用 Obsidian 图片尺寸支持。
+是否启用图片尺寸支持。
 
-### legacySize
+@obsidianSize@ type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用旧版图片尺寸支持。
+是否启用 Obsidian 图片尺寸支持。
+
+@legacySize@ type=boolean deprecated
+
+是否启用旧版图片尺寸支持。
+
+:::
 
 <script setup>
 import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'

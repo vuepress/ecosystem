@@ -49,7 +49,7 @@ Markdown 语法 `[[toc]]` 仅能在 Markdown 文件中使用。它是由 markdow
 
 因此，该插件对于主题开发者来说更为有用。
 
-## 配置项
+## 选项
 
 ### componentName
 

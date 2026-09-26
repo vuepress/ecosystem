@@ -254,18 +254,17 @@ createApp(App).mount('#app')
 
 ## Options
 
-### fileTree
+::: fields
+@fileTree@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable the file tree, which renders a directory structure from Markdown unordered lists inside a `::: file-tree` container. The `::: file-tree` container is not available when it is disabled.
+Whether to enable the file tree, which renders a directory structure from Markdown unordered lists inside a `::: file-tree` container. The `::: file-tree` container is not available when it is disabled.
 
-### codeTree
+@codeTree@ type=`boolean | MarkdownCodeTreePluginOptions`
 
-- Type: `boolean | MarkdownCodeTreePluginOptions`
-- Details: Whether to enable the code tree, which puts the code blocks of several files together with a file tree. The `::: code-tree` container and the `@[code-tree](dir_path)` syntax are not available when it is disabled. Passing an object enables the code tree with the given options.
+Whether to enable the code tree, which puts the code blocks of several files together with a file tree. The `::: code-tree` container and the `@[code-tree](dir_path)` syntax are not available when it is disabled. Passing an object enables the code tree with the given options.
 
-#### codeTree.height
+@@codeTree.height@ type=`number | string` default=`'320px'`
 
-- Type: `number | string`
-- Default: `'320px'`
-- Details: The default height of the code tree. A number will be treated as pixels.
+The default height of the code tree. A number will be treated as pixels.
+
+:::

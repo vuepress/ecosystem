@@ -96,43 +96,37 @@ export default {
 
 ## Options
 
-### chartjs
+::: fields
+@chartjs@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable Chart.js support.
+Whether to enable Chart.js support.
 
-### echarts
+@echarts@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable ECharts support.
+Whether to enable ECharts support.
 
-### flowchart
+@flowchart@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable Flowchart support.
+Whether to enable Flowchart support.
 
-### markmap
+@markmap@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable Markmap support.
+Whether to enable Markmap support.
 
-### mermaid
+@mermaid@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable Mermaid support.
+Whether to enable Mermaid support.
 
-### plantuml
+@plantuml@ type=`boolean | MarkdownItPlantumlOptions[]`
 
-- Type: `boolean | MarkdownItPlantumlOptions[]`
-- Details: Whether to enable PlantUML support. Can accept configuration options for advanced usage.
+Whether to enable PlantUML support. Can accept configuration options for advanced usage.
 
-### DANGEROUS_ALLOW_SCRIPT_EXECUTION
+@DANGEROUS_ALLOW_SCRIPT_EXECUTION@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to allow script execution in charts.
+Whether to allow script execution in charts.
 
-### DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST
+@DANGEROUS_SCRIPT_EXECUTION_ALLOWLIST@ type=`string[] | '*'` default=[]
 
-- Type: `string[] | '*'`
-- Default: `[]`
-- Details: Only effective when `DANGEROUS_ALLOW_SCRIPT_EXECUTION` is enabled. A list of file paths allowed to execute chart scripts. Use `'*'` to allow all files.
+Only effective when `DANGEROUS_ALLOW_SCRIPT_EXECUTION` is enabled. A list of file paths allowed to execute chart scripts. Use `'*'` to allow all files.
+
+:::

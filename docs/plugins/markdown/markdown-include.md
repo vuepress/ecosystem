@@ -331,31 +331,25 @@ int main() {
 
 ## Options
 
-### resolvePath
+::: fields
+@resolvePath@ type=`(path: string, cwd: string | null) => string` default=`(path) => path`
 
-- Type: `(path: string, cwd: string | null) => string`
-- Default: `(path) => path`
-- Details: Handle the include file path.
+Handle the include file path.
 
-### deep
+@deep@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to recursively include files referenced in included Markdown files.
+Whether to recursively include files referenced in included Markdown files.
 
-### useComment
+@useComment@ type=boolean default=`true`
 
-- Type: `boolean`
-- Default: `true`
-- Details: Whether use `<!-- @include: xxx -->` instead of `@include: xxx` to include files.
+Whether use `<!-- @include: xxx -->` instead of `@include: xxx` to include files.
 
-### resolveImagePath
+@resolveImagePath@ type=boolean default=`true`
 
-- Type: `boolean`
-- Default: `true`
-- Details: Whether resolve the image related path in the included Markdown file.
+Whether resolve the image related path in the included Markdown file.
 
-### resolveLinkPath
+@resolveLinkPath@ type=boolean default=`true`
 
-- Type: `boolean`
-- Default: `true`
-- Details: Whether resolve the related file link path in the included Markdown file.
+Whether resolve the related file link path in the included Markdown file.
+
+:::

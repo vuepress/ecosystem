@@ -250,49 +250,43 @@ export default {
 
 同时，你也可以在 frontmatter 中通过 `stylize` 选项来自定义此页面额外的匹配标记的函数。
 
-## 配置项
+## 选项
 
-### align
+::: fields
+@align@ type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用对齐支持。
+是否启用对齐支持。
 
-### attrs
+@attrs@ type=`MarkdownItAttrsOptions | boolean`
 
-- 类型：`MarkdownItAttrsOptions | boolean`
-- 详情：是否启用 attrs 支持。你也可以传递一个对象来指定 [@mdit/plugin-attrs](https://mdit-plugins.github.io/zh/attrs.html#高级) 的选项。
+是否启用 attrs 支持。你也可以传递一个对象来指定 [@mdit/plugin-attrs](https://mdit-plugins.github.io/zh/attrs.html#高级) 的选项。
 
-### layout
+@layout@ type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用布局支持。
+是否启用布局支持。
 
-### mark
+@mark@ type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用标记格式支持。
+是否启用标记格式支持。
 
-### spoiler
+@spoiler@ type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用剧透支持。
+是否启用剧透支持。
 
-### steps
+@steps@ type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用步骤支持。
+是否启用步骤支持。
 
-### sup
+@sup@ type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用上标格式支持。
+是否启用上标格式支持。
 
-### sub
+@sub@ type=boolean
 
-- 类型：`boolean`
-- 详情：是否启用下标格式支持。
+是否启用下标格式支持。
 
-### custom
+@custom@ type=`MarkdownItStylizeConfig[]`
 
-- 类型：`MarkdownItStylizeConfig[]`
-- 详情：创建自定义样式化。详情请参阅 [@mdit/plugin-stylize](https://mdit-plugins.github.io/zh/stylize.html#使用)。
+创建自定义样式化。详情请参阅 [@mdit/plugin-stylize](https://mdit-plugins.github.io/zh/stylize.html#使用)。
+
+:::

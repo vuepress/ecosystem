@@ -120,79 +120,54 @@ You can use any mustache syntax as raw text in `v-pre` container:
 
 ## Options
 
-### gfm
+::: fields
+@gfm@ type=boolean
 
-- Type: `boolean`
+Whether tweaks the behavior and features to be more similar to GitHub Flavored Markdown.
 
-- Details:
+`markdown-it` already supports tables and strike through by default. If this option is `true`, the following new features will be enabled:
 
-  Whether tweaks the behavior and features to be more similar to GitHub Flavored Markdown.
+- Auto link (named `linkify` in `markdown-it`)
+- Hard breaks
+- Footnote
+- Task list
 
-  `markdown-it` already supports tables and strike through by default. If this option is `true`, the following new features will be enabled:
-  - Auto link (named `linkify` in `markdown-it`)
-  - Hard breaks
-  - Footnote
-  - Task list
+Note: Not all behavior is exactly the same as GitHub Flavored Markdown.
 
-  Note: Not all behavior is exactly the same as GitHub Flavored Markdown.
+@footnote@ type=boolean gfm=Yes
 
-### footnote
+Whether to enable footnote format support.
 
-- Type: `boolean`
-- Details: Whether to enable footnote format support.
-- Enabled in GFM: Yes
+@tasklist@ type=`MarkdownItTaskListOptions | boolean` gfm=Yes
 
-### tasklist
+Whether to enable tasklist format support. You can pass an object to config tasklist.
 
-- Type: `MarkdownItTaskListOptions | boolean`
+@@tasklist.disabled@ type=boolean default=`true`
 
-  ```ts
-  interface MarkdownItTaskListOptions {
-    /**
-     * Whether disable checkbox
-     *
-     * @default true
-     */
-    disabled?: boolean
+Whether disable checkbox.
 
-    /**
-     * Whether use `<label>` to wrap text
-     *
-     * @default true
-     */
-    label?: boolean
-  }
-  ```
+@@tasklist.label@ type=boolean default=`true`
 
-- Details:
+Whether use `<label>` to wrap text.
 
-  Whether to enable tasklist format support. You can pass an object to config tasklist.
+@breaks@ type=boolean gfm=Yes
 
-- Enabled in GFM: Yes
+Whether convert `\n` in paragraphs into `<br>`s.
 
-### breaks
+@linkify@ type=boolean gfm=Yes
 
-- Type: `boolean`
-- Details: Whether convert `\n` in paragraphs into `<br>`s.
-- Enabled in GFM: Yes
+Whether convert URL-like text into links.
 
-### linkify
+@component@ type=boolean
 
-- Type: `boolean`
-- Details: Whether convert URL-like text into links.
-- Enabled in GFM: Yes
+Whether to enable component fence support.
 
-### component
+@vPre@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable component fence support.
+Whether to enable v-pre wrapper.
 
-### vPre
+@cjkFriendly@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to enable v-pre wrapper.
+Whether to enable CJK-friendly support for emphasis marks. When not set, automatically enabled for CJK languages (`zh`, `ja`, `ko`) detected in site configuration.
 
-### cjkFriendly
-
-- Type: `boolean`
-- Details: Whether to enable CJK-friendly support for emphasis marks. When not set, automatically enabled for CJK languages (`zh`, `ja`, `ko`) detected in site configuration.
+:::

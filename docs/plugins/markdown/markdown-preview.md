@@ -84,20 +84,16 @@ document.querySelector('body').innerText = 'Hello world!'
 
 ## Options
 
-### locales
+::: fields
+@locales@ type=`Record<string, MarkdownPreviewLocaleData>`
 
-- Type: `Record<string, MarkdownPreviewLocaleData>`
+Locales configuration for `<VPPreview>`.
 
-  ```ts
-  export interface MarkdownPreviewLocaleData {
-    /**
-     * Toggle code button text
-     */
-    toggle: string
-  }
-  ```
+@@locales.toggle@ type=string
 
-- Details: Locales configuration for `<VPPreview>`.
+Toggle code button text.
+
+:::
 
 ## Styles
 

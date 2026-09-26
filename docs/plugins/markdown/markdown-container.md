@@ -46,29 +46,18 @@ This plugin can be used multiple times to support different types of containers.
 
 ## Options
 
-### type
+::: fields
+@type@ type=string required
 
-- Type: `string`
-- Required: Yes
+The type of the container.
 
-- Details:
+It will be used as the `name` param of [markdown-it-container](https://github.com/markdown-it/markdown-it-container#api).
 
-  The type of the container.
+@locales@ type=`Record<string, { defaultInfo: string }>` default=`{}`
 
-  It will be used as the `name` param of [markdown-it-container](https://github.com/markdown-it/markdown-it-container#api).
+The default `info` of the container in different locales.
 
-### locales
-
-- Type: `Record<string, { defaultInfo: string }>`
-- Default: `{}`
-
-- Details:
-
-  The default `info` of the container in different locales.
-
-  If this option is not specified, the default `info` will fallback to the uppercase of the [type](#type) option.
-
-- Example:
+If this option is not specified, the default `info` will fallback to the uppercase of the [type](#type) option.
 
 ```ts title=".vuepress/config.ts"
 export default {
@@ -88,77 +77,59 @@ export default {
 }
 ```
 
-- Reference:
-  - [Guide > I18n](https://vuejs.press/guide/i18n.html)
+See also: [Guide > I18n](https://vuejs.press/guide/i18n.html).
 
-### before
+@@locales.defaultInfo@ type=string
 
-- Type: `(info: string) => string`
-- Default:
+The default `info` of the container in this locale.
 
-  ```ts
-  ;(info: string): string =>
-    `<div class="custom-container ${type}">${info ? `<p class="custom-container-title">${info}</p>` : ''}\n`
-  ```
+@before@ type=`(info: string) => string`
 
-- Details:
+A function to render the starting tag of the container.
 
-  A function to render the starting tag of the container.
+The first param is the `info` part of [container syntax](#container-syntax).
 
-  The first param is the `info` part of [container syntax](#container-syntax).
+This option will not take effect if you don't specify the [after](#after) option.
 
-  This option will not take effect if you don't specify the [after](#after) option.
+Its default value is:
 
-### after
+```ts
+;(info: string): string =>
+  `<div class="custom-container ${type}">${info ? `<p class="custom-container-title">${info}</p>` : ''}\n`
+```
 
-- Type: `(info: string) => string`
-- Default:
+@after@ type=`(info: string) => string` default=`(): string => '</div>\n'`
 
-  ```ts
-  ;(): string => '</div>\n'
-  ```
+A function to render the ending tag of the container.
 
-- Details:
+The first param is the `info` part of [container syntax](#container-syntax).
 
-  A function to render the ending tag of the container.
+This option will not take effect if you don't specify the [before](#before) option.
 
-  The first param is the `info` part of [container syntax](#container-syntax).
+@render@ type=`MarkdownItContainerRenderFunction`
 
-  This option will not take effect if you don't specify the [before](#before) option.
+The `render` option of [markdown-it-container](https://github.com/markdown-it/markdown-it-container#api).
 
-### render
+This plugin uses a default `render` function. If you specify this option, the default `render` function will be replaced, and the [locales](#locales), [before](#before) and [after](#after) options will be ignored.
 
-- Type:
+Its type is:
 
-  ```ts
-  type MarkdownItContainerRenderFunction = (
-    tokens: Token[],
-    index: number,
-    options: unknown,
-    env: MarkdownEnv,
-    self: Renderer,
-  ) => string
-  ```
+```ts
+type MarkdownItContainerRenderFunction = (
+  tokens: Token[],
+  index: number,
+  options: unknown,
+  env: MarkdownEnv,
+  self: Renderer,
+) => string
+```
 
-- Details:
+@validate@ type=`(params: string) => boolean`
 
-  The `render` option of [markdown-it-container](https://github.com/markdown-it/markdown-it-container#api).
+The `validate` option of [markdown-it-container](https://github.com/markdown-it/markdown-it-container#api).
 
-  This plugin uses a default `render` function. If you specify this option, the default `render` function will be replaced, and the [locales](#locales), [before](#before) and [after](#after) options will be ignored.
+@marker@ type=string default=`':'`
 
-### validate
+The `marker` option of [markdown-it-container](https://github.com/markdown-it/markdown-it-container#api).
 
-- Type: `(params: string) => boolean`
-
-- Details:
-
-  The `validate` option of [markdown-it-container](https://github.com/markdown-it/markdown-it-container#api).
-
-### marker
-
-- Type: `string`
-- Default: `':'`
-
-- Details:
-
-  The `marker` option of [markdown-it-container](https://github.com/markdown-it/markdown-it-container#api).
+:::

@@ -157,45 +157,40 @@ If the image is standalone in a line, wrapped or not wrapped by link, it will be
 
 ## Options
 
-### figure
+::: fields
+@figure@ type=`MarkdownItFigureOptions | boolean`
 
-- Type: `MarkdownItFigureOptions | boolean`
-- Details: Whether enable figure support.
+Whether enable figure support.
 
-### lazyload
+@lazyload@ type=boolean
 
-- Type: `boolean`
-- Details: Whether to lazy load every image in page in native way.
+Whether to lazy load every image in page in native way.
 
-### mark
+@mark@ type=`MarkdownItImgMarkOptions | boolean`
 
-- Type: `MarkdownItImgMarkOptions | boolean`
+Whether enable image mark support.
 
-  ```ts
-  interface MarkdownItImgMarkOptions {
-    /** lightmode only IDs */
-    light?: string[]
-    /** darkmode only IDs */
-    dark?: string[]
-  }
-  ```
+@@mark.light@ type=`string[]`
 
-- Details: Whether enable image mark support.
+IDs for light mode only.
 
-### size
+@@mark.dark@ type=`string[]`
 
-- Type: `boolean`
-- Details: Whether enable image size support.
+IDs for dark mode only.
 
-### obsidianSize
+@size@ type=boolean
 
-- Type: `boolean`
-- Details: Whether enable obsidian image size support.
+Whether enable image size support.
 
-### legacySize
+@obsidianSize@ type=boolean
 
-- Type: `boolean`
-- Details: Whether enable legacy image size support.
+Whether enable obsidian image size support.
+
+@legacySize@ type=boolean deprecated
+
+Whether enable legacy image size support.
+
+:::
 
 <script setup>
 import VPToggleColorModeButton from '@theme/VPToggleColorModeButton.vue'

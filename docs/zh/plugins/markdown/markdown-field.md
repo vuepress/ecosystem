@@ -35,23 +35,46 @@ export default {
 
 ```md
 ::: fields
-@theme@ type="ThemeConfig" required default="{ base: '/' }"
+@theme@ type=ThemeConfig required default=`{ base: '/' }`
 
 主题配置
 
-@enabled@ type="boolean" optional default="true"
+@enabled@ type=boolean optional default=`true`
 
 是否启用
 
 :::
 ```
 
+### 属性
+
 默认情况下，所有属性都允许并按原样显示。常见属性包括 `type`、`required`、`optional`、`default` 和 `deprecated`。
 
-- `type` 显示为字段头部中的代码块。
-- `default` 显示为字段头部下方带标签的代码块。
+- `type` 显示为字段头部中的行内代码。
+- `default` 显示为字段头部下方带标签的内容。使用反引号包裹时渲染为行内代码，否则渲染为普通文字。
 - `required`、`optional` 和 `deprecated` 显示为徽章，已弃用字段的名称会标红并划掉。
 - 其他属性显示为 `名称: 值` 徽章。
+
+属性值可以不加引号，也可以使用 `"`、`'` 或反引号包裹：
+
+- 不加引号的值在第一个空白处结束，包含空格时必须使用引号。
+- 使用 `"` 或 `'` 包裹的值支持用 `\` 转义。
+- 使用反引号包裹的值保持字面量，不做转义处理。
+
+由于 `default` 在不使用反引号时会渲染为普通文字，字面量请使用反引号，描述性文字请使用引号：
+
+```md
+::: fields
+@size@ type=number default=`320px`
+
+渲染为行内代码。
+
+@timeout@ type=number default="由主题决定，显式设置可覆盖"
+
+渲染为普通文字。
+
+:::
+```
 
 ### 字段 ID
 
@@ -63,15 +86,15 @@ export default {
 
 ```md
 ::: fields
-@options@ type="object"
+@options@ type=object
 
 选项。
 
-@@options.name@ type="string"
+@@options.name@ type=string
 
 选项名称。
 
-@other@ type="string"
+@other@ type=string
 
 其他字段。
 
@@ -83,15 +106,19 @@ export default {
 ## 演示
 
 ::: fields
-@theme@ type="ThemeConfig" required default="{ base: '/' }"
+@theme@ type=ThemeConfig required default=`{ base: '/' }`
 
 主题配置
 
-@enabled@ type="boolean" optional default="true"
+@enabled@ type=boolean optional default=`true`
 
 是否启用
 
-@other@ type="string" deprecated
+@timeout@ type=number default="由主题决定，显式设置可覆盖"
+
+描述性默认值，渲染为普通文字。
+
+@other@ type=string deprecated
 
 已弃用字段
 

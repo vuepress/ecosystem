@@ -24,19 +24,17 @@ export default {
 
 ## Options
 
-### key
+::: fields
+@key@ type=string default=`"date"`
 
-- Type: `string`
-- Default: `"date"`
-- Details: Frontmatter key to use when appending date
+Frontmatter key to use when appending date.
 
-### format
+@format@ type=`"date" | "time" | "full"` default=`"date"`
 
-- Type: `"date" | "time" | "full"`
-- Default: `"date"`
-- Details:
+Format of the date value when appending date:
 
-  Format of the date value when appending date:
-  - `"date"`: YYYY-MM-DD format
-  - `"time"`: HH:MM:SS format
-  - `"full"`: YYYY-MM-DD HH:MM:SS format
+- `"date"`: YYYY-MM-DD format
+- `"time"`: HH:MM:SS format
+- `"full"`: YYYY-MM-DD HH:MM:SS format
+
+:::
